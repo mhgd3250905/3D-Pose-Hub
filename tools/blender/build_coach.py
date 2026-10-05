@@ -243,7 +243,7 @@ for name,mesh,saved,mats,world,visibility in mesh_records:
         polygon.material_index=min(original_material_indices[polygon.index],len(mats)-1)
         if len(mats)==1: polygon.material_index=0
         elif name=='Coach_Training_Tee':
-            # A narrow sage cuff on both sleeves, using actual garment polygons.
+            # A narrow grey cuff on both sleeves, using actual garment polygons.
             center=polygon.center
             polygon.material_index=1 if abs(center.x)>.286 else 0
         elif name=='Coach_Training_Shorts': polygon.material_index=0

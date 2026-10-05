@@ -6,9 +6,12 @@ const clonePose = pose => JSON.parse(JSON.stringify(pose));
 const validArray = (value, count) => Array.isArray(value) && value.length === count && value.every(Number.isFinite);
 
 /**
- * Direct controls for the real character rig. State/value coordinates match
- * motion.getEditableHandles(): model local space, Three.js Y-up. World-space
- * markers and the transform proxy are converted at the editor boundary.
+ * Direct controls for the real character rig. Positions match
+ * motion.getEditableHandles(): model local space, Three.js Y-up. Rotations are
+ * model local except the waist quaternion, which is relative to bodyQuaternion
+ * and carries that parentQuaternion. World markers and the transform proxy
+ * apply/remove the model and parent frames at the editor boundary; the waist
+ * rotation gizmo uses local space.
  */
 export function createPoseEditor({ scene, camera, renderer, orbit, motion, onChange, onSelection }) {
   if (!motion?.getEditableHandles || !motion?.editHandle || !motion?.capturePose) throw new Error('人物姿势编辑接口尚未准备好。');
