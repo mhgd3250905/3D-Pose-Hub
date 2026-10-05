@@ -205,14 +205,19 @@ export class BodyViewer {
     else{this.playing=false;this.motion?.reset();if(prior==='motion'||prior==='pose'){this.layer='skin';this.focused=false;}}
     this.applyAppearance();if(prior!==mode&&!(movementView(prior)&&movementView(mode)))this.resetView();this.dirty=true;
   }
-  setSequence(sequence){
+  setSequence(sequence,{preserveView=false}={}){
     if(!this.motion)return;
     const current=this.motion.capturePose(),currentMode=this.motion.getMetrics().mode;
-    this.motion.setSequence(sequence.steps,{period:sequence.period});
+    this.motion.setSequence(sequence.steps,{period:sequence.period,corrections:sequence.corrections||[],legPath:sequence.legPath,interpolation:sequence.interpolation});
     const bounds=new THREE.Box3();
     try{
       for(let i=0;i<sequence.steps.length*2;i++){
         this.motion.update(i*sequence.period/(sequence.steps.length*2));
+        const frame=this.motion.getMetrics().bounds;
+        bounds.union(new THREE.Box3(new THREE.Vector3().fromArray(frame.min),new THREE.Vector3().fromArray(frame.max)));
+      }
+      for(const point of sequence.corrections||[]){
+        this.motion.update((point.segment+point.at)*sequence.period/sequence.steps.length);
         const frame=this.motion.getMetrics().bounds;
         bounds.union(new THREE.Box3(new THREE.Vector3().fromArray(frame.min),new THREE.Vector3().fromArray(frame.max)));
       }
@@ -224,7 +229,7 @@ export class BodyViewer {
     this.motionBounds=bounds.expandByScalar(this.rigData.height*.045);
     this.movementBounds=this.motionBounds.clone();
     this.poseEditor?.refresh();this.dirty=true;
-    if(movementView(this.mode))this.resetView();
+    if(movementView(this.mode)&&!preserveView)this.resetView();
   }
   setTime(time){
     const value=Number(time);if(!Number.isFinite(value))return;
@@ -235,7 +240,7 @@ export class BodyViewer {
     this.callbacks.onTime?.(this.time);this.dirty=true;
   }
   async capture(){
-    this.controls.update();const editing=this.mode==='pose',insets={...this.framingInsets},position=this.camera.position.clone(),target=this.controls.target.clone();
+    this.controls.update();const editing=this.mode==='pose',editorEnabled=this.poseEditor.getState().enabled,insets={...this.framingInsets},position=this.camera.position.clone(),target=this.controls.target.clone();
     try{
       if(editing)this.poseEditor.setEnabled(false);
       this.setFramingInsets({left:30,right:30,top:30,bottom:30});
@@ -243,7 +248,7 @@ export class BodyViewer {
       return await new Promise(resolve=>this.renderer.domElement.toBlob(resolve,'image/png'));
     }finally{
       this.setFramingInsets(insets);this.camera.position.copy(position);this.controls.target.copy(target);this.controls.update();
-      this.renderer.setClearAlpha(0);if(editing)this.poseEditor.setEnabled(true);this.dirty=true;
+      this.renderer.setClearAlpha(0);if(editing)this.poseEditor.setEnabled(editorEnabled);this.dirty=true;
     }
   }
   getStatus(){return{ready:!!this.motion,mode:this.mode,layer:this.layer,selectedGroup:this.selectedGroup,selectedPart:this.selectedPart?.id||null,focused:this.focused,time:this.time,playing:this.playing,character:'Snow Rig',coachVisible:!!this.coach?.visible,anatomyVisible:this.anatomy.visible,parts:this.parts.length,triangles:this.manifest?.triangles,drawCalls:this.renderer.info.render.calls,camera:this.camera.position.toArray(),target:this.controls.target.toArray(),framingInsets:{...this.framingInsets},groupCounts:Object.fromEntries(Object.entries(this.groupIds||{}).map(([id,ids])=>[id,ids.size])),motion:this.motion?.getMetrics()};}

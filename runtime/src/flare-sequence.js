@@ -22,7 +22,7 @@ function finiteValues(value, label) {
 }
 
 function validatePose(pose, index) {
-  const label = `Step ${index + 1}`;
+  const label = typeof index === 'number' ? `Step ${index + 1}` : index;
   if (!pose || pose.version !== 1) throw new TypeError(`${label} needs a version 1 pose.`);
   array(pose.pelvis, 3, `${label} pelvis`);
   quaternion(pose.bodyQuaternion, `${label} bodyQuaternion`);
@@ -73,6 +73,64 @@ function interpolateAngle(start, end, progress) {
   return start + delta * progress;
 }
 
+const smoothstep = progress => progress * progress * (3 - 2 * progress);
+
+// This is smoothstep(end) - smoothstep(start), factored to retain precision
+// when a correction is very close to either end of the original transition.
+function smoothstepDifference(start, end) {
+  if (start + end > 1) [start, end] = [1 - end, 1 - start];
+  return (end - start) * (3 * (start + end) - 2 * (start * start + start * end + end * end));
+}
+
+function interpolatePose(start, end, blend) {
+  const pose = clone(start);
+  pose.pelvis = lerp(start.pelvis, end.pelvis, blend);
+  pose.bodyQuaternion = slerp(start.bodyQuaternion, end.bodyQuaternion, blend);
+  if (Object.hasOwn(start, 'torsoQuaternion') || Object.hasOwn(end, 'torsoQuaternion')) {
+    pose.torsoQuaternion = slerp(start.torsoQuaternion ?? IDENTITY_QUATERNION, end.torsoQuaternion ?? IDENTITY_QUATERNION, blend);
+  }
+  for (const side of SIDES) {
+    const limb = pose.limbs[side];
+    for (const key of VECTORS) limb[key] = lerp(start.limbs[side][key], end.limbs[side][key], blend);
+    for (const key of ROTATIONS) limb[key] = slerp(start.limbs[side][key], end.limbs[side][key], blend);
+    for (const key of TWISTS) {
+      if (Object.hasOwn(start.limbs[side], key) || Object.hasOwn(end.limbs[side], key)) {
+        limb[key] = interpolateAngle(start.limbs[side][key] ?? 0, end.limbs[side][key] ?? 0, blend);
+      }
+    }
+    limb.handLocked = start.limbs[side].handLocked && end.limbs[side].handLocked;
+  }
+  return pose;
+}
+
+function validateCorrections(corrections, count) {
+  if (!Array.isArray(corrections)) throw new TypeError('Transition corrections must be an array.');
+  const ids = new Set();
+  for (const [index, correction] of corrections.entries()) {
+    const label = `Correction ${index + 1}`;
+    if (!correction || typeof correction !== 'object' || Array.isArray(correction)) throw new TypeError(`${label} must be an object.`);
+    if (typeof correction.id !== 'string' || !correction.id.trim()) throw new TypeError(`${label} needs a non-empty string id.`);
+    if (ids.has(correction.id)) throw new TypeError(`${label} repeats a correction id.`);
+    ids.add(correction.id);
+    if (!Number.isInteger(correction.segment) || correction.segment < 0 || correction.segment >= count) {
+      throw new TypeError(`${label} segment must be an existing transition index.`);
+    }
+    if (typeof correction.at !== 'number' || !Number.isFinite(correction.at) || correction.at <= 0 || correction.at >= 1) {
+      throw new TypeError(`${label} at must be strictly between 0 and 1.`);
+    }
+    validatePose(correction.pose, label);
+    finiteValues(correction, label);
+  }
+  const sorted = clone(corrections).sort((a, b) => a.segment - b.segment || a.at - b.at);
+  for (let index = 1; index < sorted.length; index++) {
+    const previous = sorted[index - 1], current = sorted[index];
+    if (previous.segment === current.segment && current.at - previous.at <= 1e-8) {
+      throw new TypeError('A transition cannot have correction points at the same position.');
+    }
+  }
+  return sorted;
+}
+
 function phaseKeyframes(steps) {
   const keyframes = { front: 0, sideA: 2, rear: 4, sideB: 6, frontRepeat: 8 };
   for (const phase of ['front', 'sideA', 'rear', 'sideB']) {
@@ -87,30 +145,58 @@ function phaseKeyframes(steps) {
 
 /** Loop editable key poses without changing their exact saved anchor values.
  * stepAt() is the nearest keyframe index (ties advance to the approaching step).
- * Positions and shortest-arc quaternion rotations use the same smoothstep.
+ * Positions and shortest-arc quaternion rotations share the chosen time curve.
+ * Smooth mode preserves the original transition's global smoothstep across
+ * corrections; linear mode uses elapsed time within each correction span.
  * Interior hand locks retain only support shared by both ends of a transition;
  * anchors retain their original flags, and groundLock uses the previous frame.
  */
-export function createFlareSequence(steps, { period = steps?.length } = {}) {
+export function createFlareSequence(steps, { period = steps?.length, corrections = [], mapTransition, interpolation = 'smooth' } = {}) {
   if (!Array.isArray(steps) || !steps.length) throw new TypeError('A flare sequence needs at least one step.');
   if (typeof period !== 'number' || !Number.isFinite(period) || period <= 0) throw new TypeError('Sequence period must be positive and finite.');
-  steps.forEach((step, index) => {
+  if (mapTransition !== undefined && typeof mapTransition !== 'function') throw new TypeError('mapTransition must be a function.');
+  if (interpolation !== 'smooth' && interpolation !== 'linear') throw new TypeError('Sequence interpolation must be smooth or linear.');
+  for (const [index, step] of steps.entries()) {
     validatePose(step?.pose, index);
     finiteValues(step, `Step ${index + 1}`);
-  });
+  }
+  const corrected = validateCorrections(corrections, steps.length);
   const source = clone(steps), count = source.length;
+  const points = Array.from({ length: count }, (_, index) => [
+    { at: 0, pose: source[index].pose },
+    ...corrected.filter(correction => correction.segment === index),
+    { at: 1, pose: source[(index + 1) % count].pose },
+  ]);
+  const toleranceAt = time => Math.min(1e-8, 32 * Number.EPSILON * Math.max(1, count, Math.abs(time / period) * count));
   const locate = time => {
     if (typeof time !== 'number' || !Number.isFinite(time)) throw new TypeError('Sequence time must be finite.');
     let wrapped = time % period;
     if (wrapped < 0) wrapped += period;
     const coordinate = wrapped / period * count;
     const index = Math.max(0, Math.min(count - 1, Math.floor(coordinate)));
-    return { index, next: (index + 1) % count, progress: coordinate - index };
+    const next = (index + 1) % count, progress = coordinate - index, tolerance = toleranceAt(time);
+    // Snap arithmetic drift at original anchors, without hiding a correction
+    // that deliberately sits close to that anchor.
+    if (progress <= Math.min(tolerance, points[index][1].at / 2)) return { index, next, progress: 0 };
+    if (1 - progress <= Math.min(tolerance, (1 - points[index].at(-2).at) / 2)) {
+      return { index: next, next: (next + 1) % count, progress: 0 };
+    }
+    return { index, next, progress };
+  };
+  const interpolate = (start, end, blend) => {
+    const pose = interpolatePose(start, end, blend);
+    if (!mapTransition) return pose;
+    const mapped = mapTransition(pose, { start: clone(start), end: clone(end), blend });
+    validatePose(mapped, 'Mapped transition');
+    return clone(mapped);
   };
   return {
     steps: clone(source),
     period,
     keyframes: phaseKeyframes(source),
+    transitionAt(time) {
+      return locate(time);
+    },
     stepAt(time) {
       const { index, next, progress } = locate(time);
       return progress >= 0.5 ? next : index;
@@ -119,26 +205,22 @@ export function createFlareSequence(steps, { period = steps?.length } = {}) {
       const { index, next, progress } = locate(time);
       const start = source[index].pose, end = source[next].pose;
       // Do not normalize, reorder or regenerate saved values at a keyframe.
-      if (progress === 0 || count === 1) return clone(start);
-      const blend = progress * progress * (3 - 2 * progress);
-      const pose = clone(start);
-      pose.pelvis = lerp(start.pelvis, end.pelvis, blend);
-      pose.bodyQuaternion = slerp(start.bodyQuaternion, end.bodyQuaternion, blend);
-      if (Object.hasOwn(start, 'torsoQuaternion') || Object.hasOwn(end, 'torsoQuaternion')) {
-        pose.torsoQuaternion = slerp(start.torsoQuaternion ?? IDENTITY_QUATERNION, end.torsoQuaternion ?? IDENTITY_QUATERNION, blend);
+      if (progress === 0) return clone(start);
+      const segment = points[index];
+      if (segment.length === 2) {
+        if (count === 1) return clone(start);
+        return interpolate(start, end, interpolation === 'linear' ? progress : smoothstep(progress));
       }
-      for (const side of SIDES) {
-        const limb = pose.limbs[side];
-        for (const key of VECTORS) limb[key] = lerp(start.limbs[side][key], end.limbs[side][key], blend);
-        for (const key of ROTATIONS) limb[key] = slerp(start.limbs[side][key], end.limbs[side][key], blend);
-        for (const key of TWISTS) {
-          if (Object.hasOwn(start.limbs[side], key) || Object.hasOwn(end.limbs[side], key)) {
-            limb[key] = interpolateAngle(start.limbs[side][key] ?? 0, end.limbs[side][key] ?? 0, blend);
-          }
-        }
-        limb.handLocked = start.limbs[side].handLocked && end.limbs[side].handLocked;
-      }
-      return pose;
+      const nearest = segment.reduce((closest, point) => Math.abs(progress - point.at) < Math.abs(progress - closest.at) ? point : closest);
+      if (Math.abs(progress - nearest.at) <= toleranceAt(time)) return clone(nearest.pose);
+      const rightIndex = segment.findIndex(point => point.at > progress);
+      const left = segment[rightIndex - 1], right = segment[rightIndex];
+      // Smooth timing equals (smoothstep(progress) - smoothstep(left.at)) /
+      // (smoothstep(right.at) - smoothstep(left.at)), without endpoint cancellation.
+      const blend = interpolation === 'linear'
+        ? (progress - left.at) / (right.at - left.at)
+        : smoothstepDifference(left.at, progress) / smoothstepDifference(left.at, right.at);
+      return interpolate(left.pose, right.pose, Math.min(1, Math.max(0, blend)));
     },
   };
 }

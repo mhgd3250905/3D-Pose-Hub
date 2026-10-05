@@ -32,5 +32,5 @@ export function createWorkspace({viewer,refreshIcons,onNotice}){
   document.addEventListener('keydown',event=>{if(event.key.toLowerCase()==='h'&&!/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)&&!document.querySelector('dialog[open]')&&!viewer()?.poseEditor?.getState().dragging){event.preventDefault();focus();}});
   addEventListener('resize',()=>{if(mobile()&&state.libraryOpen&&state.detailsOpen)state.detailsOpen=false;sync();});
   sync();refreshIcons();
-  return {sync,setOpen,focus,getState:()=>({...state}),setMode(mode){document.querySelector('#details-heading').textContent=mode==='pose'?'姿势调整':mode==='motion'?'动作分解':mode==='training'?'练习详情':'肌群与结构';},afterPreset(){if(mobile()){state.libraryOpen=false;state.detailsOpen=false;state.focus=false;sync();}},revealDetails(){setOpen('details',true);}};
+  return {sync,setOpen,focus,getState:()=>({...state}),setMode(mode){document.querySelector('#details-heading').textContent=mode==='transition'?'过渡调整':mode==='pose'?'姿势调整':mode==='motion'?'动作分解':mode==='training'?'练习详情':'肌群与结构';},afterPreset(){if(mobile()){state.libraryOpen=false;state.detailsOpen=false;state.focus=false;sync();}},revealDetails(){setOpen('details',true);}};
 }

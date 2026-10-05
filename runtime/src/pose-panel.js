@@ -285,11 +285,11 @@ export function createPosePanel({viewer,panel,shelf,presetPanel,presets=[],notif
   }
 
   function keydown(event){
-    if(viewer.mode!=='pose'||viewer.poseEditor.getState().dragging||/INPUT|SELECT|TEXTAREA/.test(document.activeElement.tagName))return;
+    if(document.body.dataset.mode!=='pose'||viewer.mode!=='pose'||viewer.poseEditor.getState().dragging||/INPUT|SELECT|TEXTAREA/.test(document.activeElement.tagName))return;
     if((event.ctrlKey||event.metaKey)&&event.key.toLowerCase()==='z'){event.preventDefault();undo();}
     else if(event.key.toLowerCase()==='g'){viewer.poseEditor.setTransformMode('translate');refresh();}
     else if(event.key.toLowerCase()==='r'){viewer.poseEditor.setTransformMode('rotate');refresh();}
   }
   document.addEventListener('keydown',keydown);
-  return {enter,render,refresh,renderPresets,syncDisplayStep,onChange,usePhase,usePreset,undo,getLibrary:()=>clone(library),dispose:()=>{document.removeEventListener('keydown',keydown);clearTimeout(saveTimer);}};
+  return {enter,leave(){if(saveTimer){clearTimeout(saveTimer);saveTimer=null;remember();}},render,refresh,renderPresets,syncDisplayStep,onChange,usePhase,usePreset,undo,getLibrary:()=>clone(library),dispose:()=>{document.removeEventListener('keydown',keydown);clearTimeout(saveTimer);}};
 }

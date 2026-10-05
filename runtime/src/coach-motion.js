@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { createFlareSequence } from './flare-sequence.js';
+import { interpolateLimbArc } from './limb-arc.js';
 import { OFFICIAL_FLARE_SEQUENCE } from './official-poses.js';
 
 const SIDES = ['left', 'right'];
@@ -219,7 +220,11 @@ export function createCoachMotion({ model, rigData }) {
   const footBox = new THREE.Box3();
   let time = 0, angle = Math.PI, mode = 'standing', layer = 'skin', selected = null;
   let boundsDirty = true, neutralBounds = null, minimumFootHeight = FLOOR;
-  let sequence = createFlareSequence(OFFICIAL_FLARE_SEQUENCE.steps, { period: OFFICIAL_FLARE_SEQUENCE.period });
+  const resolvedNodes = new Map();
+  let legPath = 'arc', interpolation = 'smooth';
+  let sequence = createFlareSequence(OFFICIAL_FLARE_SEQUENCE.steps, {
+    period: OFFICIAL_FLARE_SEQUENCE.period, mapTransition: mapPoseTransition,
+  });
   let groundLock = true, poseWarnings = [];
   const bodyTarget = source => source.clone().sub(rest.pelvis).applyQuaternion(bodyRotation).add(pelvis);
   const isNeutralTorso = rotation => !rotation || rotation.x * rotation.x + rotation.y * rotation.y + rotation.z * rotation.z < 1e-24;
@@ -356,9 +361,62 @@ export function createCoachMotion({ model, rigData }) {
     return model;
   }
 
+  function resolvedNode(input) {
+    const key = JSON.stringify(input);
+    if (!resolvedNodes.has(key)) {
+      if (resolvedNodes.size >= 256) resolvedNodes.clear();
+      resolvedNodes.set(key, solvePose(input));
+    }
+    return resolvedNodes.get(key);
+  }
+
+  function mapPoseTransition(pose, { start, end, blend }) {
+    // A saved node's actual IK solution, including its fallback bend plane,
+    // is the endpoint of the animation. The raw pole can be on the limb axis
+    // and its raw pelvis/target can be outside the constrained region.
+    const first = resolvedNode(start), last = resolvedNode(end);
+    pose.pelvis = first.constrainedPelvis.clone().lerp(last.constrainedPelvis, blend).toArray();
+    for (const side of SIDES) {
+      pose.limbs[side].wrist = first.solved[side].arm.end.clone().lerp(last.solved[side].arm.end, blend).toArray();
+    }
+    const requested = validatePose(pose), constrainedPelvis = projectBody(requested);
+    pose.pelvis = constrainedPelvis.toArray();
+    const referenceAt = node => node.requested.bodyQuaternion.clone().multiply(node.requested.torsoQuaternion ?? IDENTITY).toArray();
+    const upper = requested.bodyQuaternion.clone().multiply(requested.torsoQuaternion ?? IDENTITY);
+    for (const side of SIDES) {
+      const value = limbs[side], from = first.solved[side], to = last.solved[side];
+      const shoulder = upperOffset(rest[side + 'Shoulder'], requested.bodyQuaternion, requested.torsoQuaternion).add(constrainedPelvis);
+      const arm = interpolateLimbArc({
+        startRoot: from.shoulder.toArray(), endRoot: to.shoulder.toArray(), currentRoot: shoulder.toArray(),
+        startTarget: from.arm.end.toArray(), endTarget: to.arm.end.toArray(), currentTarget: pose.limbs[side].wrist,
+        startMiddle: from.arm.middle.toArray(), endMiddle: to.arm.middle.toArray(),
+        startReference: referenceAt(first), endReference: referenceAt(last), currentReference: upper.toArray(),
+        blend, upperLength: value.upperArm, lowerLength: value.forearm, arc: !pose.limbs[side].handLocked, side,
+      });
+      pose.limbs[side].wrist = arm.target;pose.limbs[side].elbowPole = arm.pole;
+      const hip = rest[side + 'Hip'].clone().sub(rest.pelvis).applyQuaternion(requested.bodyQuaternion).add(constrainedPelvis);
+      const floorHeight = pose.groundLock ? requiredAnkleHeight(side, requested.limbs[side].footQuaternion) : -Infinity;
+      const leg = interpolateLimbArc({
+        startRoot: from.hip.toArray(), endRoot: to.hip.toArray(), currentRoot: hip.toArray(),
+        startTarget: from.leg.end.toArray(), endTarget: to.leg.end.toArray(), currentTarget: pose.limbs[side].ankle,
+        startMiddle: from.leg.middle.toArray(), endMiddle: to.leg.middle.toArray(),
+        startReference: first.requested.bodyQuaternion.toArray(), endReference: last.requested.bodyQuaternion.toArray(), currentReference: requested.bodyQuaternion.toArray(),
+        blend, upperLength: value.thigh, lowerLength: value.shin, floorHeight, side,
+      });
+      pose.limbs[side].ankle = leg.target;pose.limbs[side].kneePole = leg.pole;
+    }
+    return pose;
+  }
+
   function setSequence(steps, options = {}) {
-    const next = createFlareSequence(steps, options);
+    const nextLegPath = options.legPath === 'linear' ? 'linear' : 'arc';
+    const next = createFlareSequence(steps, {
+      ...options, mapTransition: nextLegPath === 'arc' ? mapPoseTransition : undefined,
+    });
     sequence = next;
+    resolvedNodes.clear();
+    legPath = nextLegPath;
+    interpolation = options.interpolation ?? 'smooth';
     if (mode === 'flare') update(time);
   }
 
@@ -505,7 +563,7 @@ export function createCoachMotion({ model, rigData }) {
     return ankle;
   }
 
-  function applyPose(input) {
+  function solvePose(input) {
     // Validate and solve before mutating bones, so a bad import leaves the
     // current pose intact and cannot introduce NaNs into the live skeleton.
     const requested = validatePose(input);
@@ -529,6 +587,11 @@ export function createCoachMotion({ model, rigData }) {
       solved[side] = { source, shoulder, arm, hip, leg };
     }
 
+    return { requested, constrainedPelvis, warnings, solved };
+  }
+
+  function applyPose(input) {
+    const { requested, constrainedPelvis, warnings, solved } = solvePose(input);
     mode = 'manual';
     groundLock = requested.groundLock;
     poseWarnings = warnings;
@@ -690,7 +753,7 @@ export function createCoachMotion({ model, rigData }) {
       for (const suffix of ['UpperArm', 'Forearm', 'Thigh', 'Shin']) expectedLengths[side + suffix] = value[suffix[0].toLowerCase() + suffix.slice(1)];
     }
     return {
-      time, angle, period: sequence.period, mode, manual: mode === 'manual', layer, selected,
+      time, angle, period: sequence.period, mode, manual: mode === 'manual', layer, selected, legPath, interpolation,
       bodyQuaternion: bodyRotation.toArray(), groundLock, warnings: [...poseWarnings],
       torsoQuaternion: torsoRotation.toArray(),
       name: 'Snow 友善健身主角', source: rigData.source, license: rigData.license,
