@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#101827" />
+    <meta name="description" content="跟着友善的运动人物理解托马斯全旋，在真实局部肌群中探索辅助训练。" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>FLARE / 身体与运动</title>
+  </head>
+  <body>
+    <div id="app">
+      <header class="header workspace-header">
+        <div class="workspace-brand"><button id="toggle-library" class="workspace-button" aria-label="步骤与模式侧栏" aria-controls="library-drawer" aria-expanded="true" title="步骤与模式"><i data-lucide="panel-left"></i><span>步骤</span></button><a class="brand" href="/" aria-label="Flare Anatomy 首页"><span class="brand-mark"><i data-lucide="orbit"></i></span><strong>FLARE<span class="brand-slash"> / </span><span class="brand-sub">STUDIO</span></strong></a></div>
+        <div class="stage-heading"><div><p id="stage-kicker" class="eyebrow">MOVEMENT BREAKDOWN</p><h2 id="stage-title">托马斯 · 9 步展示</h2></div></div>
+        <div class="header-actions"><button id="toggle-details" class="workspace-button" aria-label="调整与详情侧栏" aria-controls="details-drawer" aria-expanded="true" title="调整与详情"><i data-lucide="sliders-horizontal"></i><span>调整</span></button><button id="canvas-focus" class="workspace-button" aria-label="隐藏所有侧栏" aria-pressed="false" title="隐藏所有侧栏 · H"><i data-lucide="eye-off"></i></button><button id="canvas-fullscreen" class="workspace-button" aria-label="进入全屏" aria-pressed="false" title="进入全屏"><i data-lucide="maximize"></i></button><button id="capture-button" class="workspace-button" aria-label="保存视图" title="保存 PNG"><i data-lucide="camera"></i></button><button id="about-button" class="workspace-button" aria-label="模型与来源" title="模型与来源"><i data-lucide="info"></i></button></div>
+      </header>
+      <main class="workspace">
+        <aside id="library-drawer" class="sidebar workspace-drawer library-drawer" aria-label="步骤与模式">
+          <div class="drawer-heading"><div><span class="eyebrow">MOVEMENT LIBRARY</span><h2>步骤与模式</h2></div><button class="icon-button" data-close-drawer="library" aria-label="收起步骤侧栏"><i data-lucide="x"></i></button></div>
+          <div class="drawer-content">
+          <div class="intro"><p class="eyebrow">THE MOVEMENT SERIES <span>01</span></p><h1>理解身体。<br><span>解锁 Flare。</span></h1><p class="intro-copy">从每一次支撑，到完整的托马斯全旋。</p></div>
+          <nav class="mode-nav" aria-label="探索模式"><button data-mode="anatomy" class="mode-button active" aria-pressed="true"><i data-lucide="person-standing"></i><span>肌群探索</span><i data-lucide="arrow-up-right"></i></button><button data-mode="motion" class="mode-button" aria-pressed="false"><i data-lucide="rotate-3d"></i><span>动作分解</span><i data-lucide="arrow-up-right"></i></button><button data-mode="pose" class="mode-button" aria-pressed="false"><i data-lucide="pencil"></i><span>姿势编辑</span><i data-lucide="arrow-up-right"></i></button><button data-mode="training" class="mode-button" aria-pressed="false"><i data-lucide="dumbbell"></i><span>辅助训练</span><i data-lucide="arrow-up-right"></i></button></nav>
+          <div class="pose-sidebar-help"><span class="eyebrow">YOUR STANDARD</span><h2>让你的经验，<br>成为动作参考。</h2><p>先选一个阶段作为起点，再调整身体。保存多个步骤后，可以逐步对照。</p><p>拖彩色轴移动，拖圆环旋转。空白处仍然可以旋转镜头。</p></div>
+          <div class="sidebar-section-head"><h2>关键肌群</h2><span>08</span></div>
+          <label class="search"><i data-lucide="search"></i><input id="muscle-search" type="search" placeholder="搜索肌群 / English" autocomplete="off" aria-label="搜索肌群"/><kbd>/</kbd></label>
+          <div id="muscle-list" class="muscle-list"></div>
+          <div class="viewer-label"><p id="viewer-overline">POSE WORKSHOP</p><h3 id="viewer-label">托马斯关键姿势</h3><span id="viewer-subtitle">选一个步骤，开始调整。</span></div>
+          <section id="pose-presets" class="pose-presets" aria-label="正式展示姿势" hidden></section>
+          <div id="phase-strip" class="phase-strip"></div>
+          <section id="pose-shelf" class="pose-shelf" aria-label="我的托马斯步骤" hidden></section>
+          <div id="training-panel" class="training-panel" hidden></div>
+          <div class="stage-footnote"><p id="stage-footnote">选择关键姿势，调整后保存为自己的版本。</p></div>
+          <div class="sidebar-footer"><i data-lucide="move-3d"></i><p>不止看见肌肉。<br><span>看懂它如何让你移动。</span></p><span class="footer-number">01—08</span></div>
+          <footer class="page-footer"><span>LOCAL / ZERO COST</span><a href="https://studio.blender.org/characters/snow/" target="_blank" rel="noreferrer">Snow · Blender Studio · CC BY 4.0</a></footer>
+          </div>
+        </aside>
+        <section class="stage-column" aria-label="三维探索工作区">
+          <div id="viewport" class="viewport">
+            <div class="viewport-top"><div class="view-caption"><span class="tiny-dot"></span><span id="view-caption">友善运动人物</span><span class="caption-divider"></span><span id="part-count">正在载入</span></div><button id="reset-view" class="icon-button" aria-label="复位镜头" title="复位镜头"><i data-lucide="scan"></i></button></div>
+            <div id="scene" class="scene" role="img" aria-label="全窗口三维工作区。拖动空白处旋转镜头，滚轮缩放；姿势编辑中点选控制点并拖动彩色轴。"></div>
+            <div id="loading" class="loading"><span class="loading-orbit"><i data-lucide="orbit"></i></span><strong>正在准备运动人物与肌群</strong><span id="loading-status">载入人物与真实局部解剖…</span><div class="loading-track"><span id="loading-progress"></span></div></div>
+            <div id="hover-tooltip" class="hover-tooltip" hidden></div>
+            <div class="orientation" aria-hidden="true"><span class="axis-y">Y</span><span class="axis-z">Z</span><span class="axis-x">X</span><i></i></div>
+            <div class="viewport-bottom"><span><i data-lucide="mouse"></i>空白处旋转 <span class="hint-dot">·</span> 滚轮缩放 <span class="hint-dot">·</span> H 收起侧栏</span><span id="model-kind">SNOW / BLENDER STUDIO</span></div>
+          </div>
+        </section>
+        <aside id="details-drawer" class="workspace-drawer details-drawer" aria-label="调整与详情">
+          <div class="drawer-heading"><div><span class="eyebrow">POSE INSPECTOR</span><h2 id="details-heading">姿势调整</h2></div><button class="icon-button" data-close-drawer="details" aria-label="收起调整侧栏"><i data-lucide="x"></i></button></div>
+          <div class="drawer-content">
+            <div id="legend" class="legend"><span><i class="legend-dot lime"></i>当前肌群</span><span><i class="legend-dot muscle"></i>肌肉</span><span><i class="legend-dot bone"></i>骨骼</span></div>
+            <div id="anatomy-toolbar" class="viewer-toolbar"><div class="segmented" aria-label="人体显示"><button data-layer="skin" class="active" aria-pressed="true">完整人物</button><button data-layer="reveal" aria-pressed="false">真实肌群</button></div><span class="toolbar-divider"></span><div class="view-buttons"><button data-view="front" aria-label="正面视角" title="正面"><i data-lucide="user-round"></i></button><button data-view="back" aria-label="背面视角" title="背面"><i data-lucide="rotate-ccw"></i></button><button data-view="side" aria-label="侧面视角" title="侧面"><i data-lucide="panel-right"></i></button></div></div>
+            <div id="motion-toolbar" class="motion-toolbar" hidden><button id="play-button" class="play-button" aria-label="播放动作"><i data-lucide="play"></i></button><div class="timeline-wrap"><div class="timeline-label"><span id="time-label">0.0 / 9.0 s</span><span>一个完整周期</span></div><input id="timeline" type="range" min="0" max="9" step="0.01" value="0" aria-label="Flare 动作时间轴"/></div><select id="speed" aria-label="播放速度"><option value="0.25">0.25×</option><option value="0.5" selected>0.5×</option><option value="1">1×</option></select></div>
+            <div id="pose-view-toolbar" class="viewer-toolbar" hidden><div class="segmented"><button data-pose-operation="translate">移动 · G</button><button data-pose-operation="rotate">旋转 · R</button></div><span class="toolbar-divider"></span><div class="view-buttons"><button data-pose-view="front" aria-label="编辑正面视角"><i data-lucide="user-round"></i></button><button data-pose-view="back" aria-label="编辑背面视角"><i data-lucide="rotate-ccw"></i></button><button data-pose-view="side" aria-label="编辑侧面视角"><i data-lucide="panel-right"></i></button></div></div>
+            <div id="detail-panel" class="detail-panel" aria-label="肌群与动作详情"></div>
+          </div>
+        </aside>
+      </main>
+    </div>
+    <dialog id="about-dialog" class="about-dialog"><div class="dialog-heading"><span class="eyebrow">BEHIND THE MODEL</span><button id="close-about" class="icon-button" aria-label="关闭来源说明"><i data-lucide="x"></i></button></div><h2>友善的人物。真实的结构。</h2><p>运动人物改编自 Blender Studio 的 <strong>Snow Rig</strong>，保留完整外观与自然的角色形态。动作分解使用你保存并微调的 9 个关键姿势，展示分腿环绕与双手／单手交替支撑。</p><p>局部肌群视图使用 <strong>BodyParts3D 4.0</strong> 成人男性参考模型，沿用 human-atlas 的简化几何。点击肌群后独立展示源解剖结构，并自动调整镜头。</p><div id="asset-summary"></div><p>部分肌肉未包含在源模型中，包括腹直肌、腹横肌、腹内斜肌和背阔肌；没有网格不代表它们不参与 Flare。肌群高亮是功能上的教学归纳，颜色不代表肌电或受力测量。</p><div class="source-links"><a href="https://studio.blender.org/characters/snow/" target="_blank" rel="noreferrer">Snow Rig · Blender Studio<i data-lucide="arrow-up-right"></i></a><a href="https://github.com/ashemag/human-atlas" target="_blank" rel="noreferrer">human-atlas<i data-lucide="arrow-up-right"></i></a><a href="https://lifesciencedb.jp/bp3d/" target="_blank" rel="noreferrer">BodyParts3D<i data-lucide="arrow-up-right"></i></a><a href="/anatomy/ATTRIBUTION.md" target="_blank" rel="noreferrer">解剖资产授权与修改说明<i data-lucide="arrow-up-right"></i></a><a href="/research.md" target="_blank" rel="noreferrer">动作与训练资料<i data-lucide="arrow-up-right"></i></a></div><p class="dialog-credit">Snow Rig © Blender Foundation | studio.blender.org · CC BY 4.0<br>服饰、材质和表情已作本地修改，展示动作采用你的保存姿势。<br>BodyParts3D / Anatomography © The Database Center for Life Science · CC BY 4.0<br>human-atlas 应用代码 · MIT · 本地实现 / Flare Anatomy Studio</p></dialog>
+    <div id="toast" class="toast" role="status" hidden></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

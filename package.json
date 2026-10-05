@@ -1,0 +1,29 @@
+{
+  "name": "flare-anatomy-studio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "An offline Three.js anatomy and movement explorer for the breaking flare",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 8810",
+    "build": "vite build",
+    "start": "node tools/server.mjs",
+    "verify": "node tools/verify.mjs",
+    "verify:pose": "node tools/verify-pose-editor.mjs",
+    "verify:mirror": "node tools/verify-pose-mirroring.mjs",
+    "verify:workspace": "node tools/verify-workspace.mjs",
+    "verify:presets": "node tools/verify-flare-presets.mjs",
+    "verify:motion": "node tools/verify-coach-motion.mjs",
+    "verify:asset": "node tools/verify-coach-asset.mjs",
+    "verify:sequence": "node tools/verify-flare-sequence.mjs",
+    "verify:official": "node tools/verify-official-poses.mjs",
+    "verify:demonstration": "node tools/verify-demonstration-ui.mjs"
+  },
+  "dependencies": {
+    "lucide": "0.468.0",
+    "three": "0.170.0"
+  },
+  "devDependencies": {
+    "vite": "7.3.6"
+  }
+}
