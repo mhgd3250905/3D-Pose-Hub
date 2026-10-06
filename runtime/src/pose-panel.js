@@ -10,8 +10,8 @@ const clone=value=>JSON.parse(JSON.stringify(value));
 const escape=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const finite=value=>typeof value==='number'&&Number.isFinite(value);
 const handleHint=(id,current)=>{
-  if(id==='pelvis')return '骨盆可移动和旋转，旋转改变身体整体方向。';
-  if(id==='torso')return '躯干移动调整身体位置，旋转调整整体身体方向。选择腰部可单独弯腰、扭腰和侧弯。';
+  if(id==='pelvis')return '髋部独立移动与旋转。移动时上身不再整体平移，腰部配合弯曲；旋转保留上身方向。整体移动或转身请选择躯干。';
+  if(id==='torso')return '整体移动或转向，带动髋部和上身。单独摆髋请选择髋部；弯腰、扭腰和侧弯请选择腰部。';
   if(id==='waist')return '以腰部为轴，独立调整上身的弯腰、扭腰和侧弯。';
   if(id?.endsWith('Knee'))return '移动膝部调整弯曲方向；旋转以膝关节为轴，带动小腿和脚掌。';
   if(id?.endsWith('Elbow')){
@@ -162,7 +162,7 @@ export function createPosePanel({viewer,panel,shelf,presetPanel,presets=[],notif
     const state=viewer.poseEditor.getState(),current=pose();
     $('#pose-handle-select').value=state.selected||'pelvis';
     $('#pose-handle-note').textContent=handleHint(state.selected,current);
-    $('#pose-rotation-legend').firstChild.textContent=state.selected==='waist'?'腰部角度 ':'角度 ';
+    $('#pose-rotation-legend').firstChild.textContent=state.selected==='waist'?'腰部角度 ':state.selected==='pelvis'?'髋部角度 ':'角度 ';
     const labels=angleLabels(state.selected);
     const position=state.position||[0,0,0],quaternion=state.quaternion||[0,0,0,1];
     const rotation=new Euler().setFromQuaternion(new Quaternion().fromArray(quaternion),'YXZ');

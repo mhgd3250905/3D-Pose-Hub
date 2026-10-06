@@ -20,6 +20,7 @@ export function createPoseEditor({ scene, camera, renderer, orbit, motion, onCha
   const initialTouchAction = canvas.style.touchAction;
   const initialCursor = canvas.style.cursor;
   const model = motion.group;
+  let targetMotion = motion;
   const markers = new THREE.Group();markers.name = 'Pose editor · operation points';markers.visible = false;
   scene.add(markers);
   const proxy = new THREE.Object3D();proxy.name = 'Pose editor · selected transform';markers.add(proxy);
@@ -43,7 +44,7 @@ export function createPoseEditor({ scene, camera, renderer, orbit, motion, onCha
   function getState() {
     const handle = selectedHandle();
     return {
-      enabled, dragging: Boolean(controls.dragging), selected, mode, axis: controls.axis,
+      enabled, dragging: Boolean(controls.dragging), selected, mode, axis: controls.axis, target: targetMotion === motion ? 'pose' : targetMotion.kind ?? 'control',
       handles: handles.map(value => ({ ...value, position: [...value.position], quaternion: [...value.quaternion] })),
       position: handle ? [...handle.position] : null,
       quaternion: handle ? [...handle.quaternion] : null,
@@ -53,7 +54,7 @@ export function createPoseEditor({ scene, camera, renderer, orbit, motion, onCha
   }
   const notifySelection = () => { if (!disposed) onSelection?.(getState()); };
   const emit = (phase, error = null) => {
-    if (!disposed) onChange?.({ phase, pose: motion.capturePose(), state: getState(), ...(error ? { error } : {}) });
+    if (!disposed) onChange?.({ phase, pose: targetMotion.capturePose(), state: getState(), ...(error ? { error } : {}) });
   };
   function lockOrbit() {
     if (orbitSnapshot || !orbit) return;
@@ -95,7 +96,7 @@ export function createPoseEditor({ scene, camera, renderer, orbit, motion, onCha
     if (disposed) return getState();
     synchronizing = true;
     try {
-      handles = motion.getEditableHandles().map(handle => {
+      handles = targetMotion.getEditableHandles().map(handle => {
         if (!validArray(handle.position, 3) || !validArray(handle.quaternion, 4)) throw new Error(`控制点 ${handle.id} 包含无效坐标。`);
         return { ...handle, position: [...handle.position], quaternion: [...handle.quaternion] };
       });
@@ -159,7 +160,7 @@ export function createPoseEditor({ scene, camera, renderer, orbit, motion, onCha
       value.quaternion = new THREE.Quaternion().fromArray(quaternion).normalize().toArray();
     }
     if (!Object.keys(value).length) return getState();
-    try { motion.editHandle(selected, value);lastError = null; }
+    try { targetMotion.editHandle(selected, value);lastError = null; }
     catch (error) { lastError = error.message;refresh();throw error; }
     refresh();emit('commit');return getState();
   }
@@ -177,13 +178,13 @@ export function createPoseEditor({ scene, camera, renderer, orbit, motion, onCha
       if (parent) local.premultiply(new THREE.Quaternion().fromArray(parent).invert());
       value.quaternion = local.normalize().toArray();
     }
-    try { motion.editHandle(selected, value);lastError = null; }
+    try { targetMotion.editHandle(selected, value);lastError = null; }
     catch (error) { lastError = error.message; }
     refresh();emit('update', lastError);
   }
   function onMouseDown() {
     if (!enabled || disposed) return;
-    lockOrbit();dragPose = clonePose(motion.capturePose());dragSession = true;lastError = null;
+    lockOrbit();dragPose = clonePose(targetMotion.capturePose());dragSession = true;lastError = null;
     emit('start');
   }
   function onDraggingChanged(event) {
@@ -193,9 +194,9 @@ export function createPoseEditor({ scene, camera, renderer, orbit, motion, onCha
   }
   function finishDrag(cancel) {
     const pointerId = activePointer;
-    if (cancel && dragPose && motion.applyPose) {
+    if (cancel && dragPose && targetMotion.applyPose) {
       synchronizing = true;
-      try { controls.reset();motion.applyPose(dragPose);lastError = null; }
+      try { controls.reset();targetMotion.applyPose(dragPose);lastError = null; }
       finally { synchronizing = false; }
       refresh();
     }
@@ -258,6 +259,20 @@ export function createPoseEditor({ scene, camera, renderer, orbit, motion, onCha
   }
   function onControlChange() { if (enabled && !disposed && !synchronizing) notifySelection(); }
   function updateSizes() { if (enabled) {const size=gizmoSize();if(Math.abs(controls.size-size)>.01)controls.setSize(size);for (const point of points.values()) markerScale(point);} }
+  function setTarget(value = null) {
+    const next = value ?? motion;
+    if (disposed || next === targetMotion) return getState();
+    if (!next?.getEditableHandles || !next?.editHandle || !next?.capturePose || !next?.applyPose || (next.group && next.group !== model)) {
+      throw new Error('编辑目标需要使用同一人物坐标和有效的控制点接口。');
+    }
+    for (const handle of next.getEditableHandles()) {
+      if (!validArray(handle.position, 3) || !validArray(handle.quaternion, 4)) throw new Error('编辑目标包含无效控制点。');
+    }
+    if (controls.dragging) finishDrag(false);
+    targetMotion = next;selected = null;lastError = null;refresh();
+    if (enabled) { selected = handles.find(handle => handle.id === 'pelvis')?.id ?? handles[0]?.id ?? null;refresh(); }
+    return getState();
+  }
   function setEnabled(value) {
     if (disposed) return getState();
     const next = Boolean(value);if (next === enabled) return getState();
@@ -304,5 +319,5 @@ export function createPoseEditor({ scene, camera, renderer, orbit, motion, onCha
   canvas.addEventListener('lostpointercapture', onPointerCancel);
   documentTarget?.addEventListener('keydown', onKeyDown, true);
   orbit?.addEventListener('change', updateSizes);
-  return { setEnabled, select, setTransformMode, setValue, refresh, getState, dispose };
+  return { setEnabled, setTarget, select, setTransformMode, setValue, refresh, getState, dispose };
 }

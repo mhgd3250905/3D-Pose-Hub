@@ -46,6 +46,34 @@ export function validSequence(value){
   try{createFlareSequence(value.steps,{period:value.period});return true;}catch{return false;}
 }
 
+// Saved JSON object key order has no effect on pose identity or loop closure.
+export function samePose(a,b){
+  if(a===b)return true;
+  if(!a||!b||typeof a!=='object'||typeof b!=='object'||Array.isArray(a)!==Array.isArray(b))return false;
+  const keys=Object.keys(a);
+  return keys.length===Object.keys(b).length&&keys.every(key=>Object.hasOwn(b,key)&&samePose(a[key],b[key]));
+}
+
+/** Replace an existing formal keyframe without creating or renaming steps.
+ * source.sha256 remains the hash of the original exported source file.
+ * When the original end poses match, editing either end keeps that loop closed.
+ * The returned sequence and poses are independent copies; nothing is persisted.
+ */
+export function updateOfficialFrame(sequence,index,pose){
+  if(!validSequence(sequence))throw new Error('展示姿势的数据不完整。');
+  if(!Number.isInteger(index)||index<0||index>=sequence.steps.length)throw new RangeError('请选择有效的原固定帧。');
+  if(sequence.source!==undefined&&(!sequence.source||typeof sequence.source!=='object'||Array.isArray(sequence.source)))throw new TypeError('展示姿势的来源记录不完整。');
+  // Validate before cloning: JSON serialization must not hide invalid numbers.
+  createFlareSequence([{pose}],{period:1});
+  const last=sequence.steps.length-1;
+  const linkedEnds=(index===0||index===last)&&samePose(sequence.steps[0].pose,sequence.steps[last].pose);
+  const result=structuredClone(sequence);
+  result.steps[index].pose=structuredClone(pose);
+  if(linkedEnds)result.steps[index===0?last:0].pose=structuredClone(pose);
+  result.source={...result.source,origin:'browser-keyframe-edit'};
+  return result;
+}
+
 export function resolveOfficialSequence(storage){
   if(!storage)return clone(bundled);
   let published=null;

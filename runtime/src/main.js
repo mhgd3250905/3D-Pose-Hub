@@ -8,7 +8,8 @@ import { createTransitionPanel } from './transition-panel.js';
 import { createWorkspace } from './workspace.js';
 import { createFlarePosePresets } from './pose-presets.js';
 import { renderSources } from './research-ui.js';
-import { resolveOfficialSequence, sequenceFromSavedSteps, saveOfficialSequence, previousOfficialSequence, restoreOfficialSequence } from './official-poses.js';
+import { resolveOfficialSequence, sequenceFromSavedSteps, saveOfficialSequence, previousOfficialSequence, restoreOfficialSequence, updateOfficialFrame } from './official-poses.js';
+import { rebaseTransitionEdits, saveOfficialFrameEdits } from './transition-edits.js';
 
 const icons={Orbit,Info,Camera,ArrowUpRight,PersonStanding,Rotate3d,Dumbbell,Search,Scan,UserRound,RotateCcw,PanelRight,PanelLeft,SlidersHorizontal,EyeOff,Maximize,Mouse,Play,Pause,Move3d,Shield,MoveUp,Hand,MoveHorizontal,Expand,MoveDiagonal2,ChevronRight,CornerUpLeft,ArrowLeft,X,Pencil};
 const refreshIcons=()=>createIcons({icons,attrs:{'stroke-width':1.5}});
@@ -17,6 +18,8 @@ const $$=selector=>[...document.querySelectorAll(selector)];
 const escape=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let mode='anatomy',selectedGroup='shoulders',selectedExercise='supportShift',phaseIndex=0,selectedPart=null,viewer,posePanel,transitionPanel,workspaceUI,presets=[],demonstration=null,displayedStep=-1,ready=false;
 let toastTimeout;
+let motionModel='saved';
+const periodicPhases={rear:'rear',right:'sideA',front:'front',left:'sideB'};
 
 function toast(message){$('#toast').textContent=message;$('#toast').hidden=false;clearTimeout(toastTimeout);toastTimeout=setTimeout(()=>{$('#toast').hidden=true;},4200);}
 function persist(){try{localStorage.setItem('flare-studio-v1',JSON.stringify({group:selectedGroup,exercise:selectedExercise}));}catch{}}
@@ -35,6 +38,7 @@ function renderMuscles(){
 }
 function phaseTime(index){
   const metrics=viewer?.motion?.getMetrics(),frame=metrics?.keyframes?.[phases[index].id];
+  if(motionModel==='periodic')return({rear:0,sideA:.25,front:.5,sideB:.75}[phases[index].id]||0)*metrics.period;
   return Number.isFinite(frame)&&demonstration?.steps.length?frame*metrics.period/demonstration.steps.length:phases[index].time;
 }
 function renderPhases(){
@@ -43,10 +47,11 @@ function renderPhases(){
   $('#phase-strip').querySelectorAll('[data-phase]').forEach(button=>button.addEventListener('click',()=>{const time=phaseTime(Number(button.dataset.phase));if(mode==='pose'){posePanel.usePhase(time);updatePhase(time);return;}setMode('motion');viewer.playing=false;viewer.setTime(time);updatePlayButton();renderDetail();}));
 }
 function updatePhase(time){
-  const step=viewer?.motion?.getMetrics().demonstration?.index??0;
-  const next=Math.max(0,phases.findIndex(p=>p.id===demonstration?.steps[step]?.phase));
+  const metrics=viewer?.motion?.getMetrics(),step=metrics?.periodic?.section??metrics?.demonstration?.index??0;
+  const phase=metrics?.periodic?periodicPhases[metrics.periodic.section]:demonstration?.steps[step]?.phase;
+  const next=Math.max(0,phases.findIndex(p=>p.id===phase));
   if(next!==phaseIndex){phaseIndex=next;$$('[data-phase]').forEach(button=>{const active=Number(button.dataset.phase)===next;button.classList.toggle('active',active);button.setAttribute('aria-pressed',String(active));});}
-  if(step!==displayedStep){displayedStep=step;posePanel?.syncDisplayStep();if(mode==='motion')renderDetail();}
+  if(step!==displayedStep){displayedStep=step;if(!metrics?.periodic)posePanel?.syncDisplayStep();if(mode==='motion')renderDetail();}
 }
 function updateTime(time){
   if(mode==='transition')return;
@@ -55,24 +60,65 @@ function updateTime(time){
 }
 
 function localStore(){try{return localStorage;}catch{return null;}}
+function setMotionModel(value,{render=true}={}){
+  const next=value==='periodic'?'periodic':'saved';
+  try{
+    viewer.setSequence({...demonstration,...transitionPanel.options(),motionModel:next},{preserveView:true});
+    motionModel=next;$('#motion-model').value=next;displayedStep=-1;
+    if(render){updateMotionCaption();renderPhases();updateTime(viewer.time);updateLayerButtons();renderDetail();}
+    return true;
+  }catch(error){$('#motion-model').value=motionModel;toast(error.message);return false;}
+}
+function updateMotionCaption(){
+  if(mode!=='motion')return;
+  const periodic=motionModel==='periodic';
+  $('#pose-presets').hidden=periodic;
+  $('#stage-title').textContent=periodic?'托马斯 · 数学轨迹试验':'托马斯 · 9 步展示';
+  $('#stage-footnote').textContent=periodic?'整圈连续生成。拖动时间轴检查摆腿与换手，切换“你的保存动画”即可对比。':'按照你保存的 9 步展示。点击步骤或拖动时间轴查看，暂停后可以继续编辑。';
+}
 function applyTransitionOptions(options){
   const previous=transitionPanel?.options();
-  try{viewer.setSequence({...demonstration,...options},{preserveView:true});}
-  catch(error){if(previous)viewer.setSequence({...demonstration,...previous},{preserveView:true});throw error;}
+  try{viewer.setSequence({...demonstration,...options,motionModel},{preserveView:true});}
+  catch(error){if(previous)viewer.setSequence({...demonstration,...previous,motionModel},{preserveView:true});throw error;}
 }
 function replaceDemonstration(sequence,action='save'){
   const previous=demonstration;
   try{
-    viewer.setSequence(sequence);
+    viewer.setSequence({...sequence,motionModel});
     if(action==='save')saveOfficialSequence(sequence,localStore());
     else if(action==='restore')restoreOfficialSequence(sequence,localStore());
-  }catch(error){viewer.setSequence({...previous,...transitionPanel?.options()});throw error;}
+  }catch(error){viewer.setSequence({...previous,...transitionPanel?.options(),motionModel});throw error;}
   demonstration=structuredClone(sequence);
   transitionPanel?.setSequence(sequence);
   presets.splice(0,presets.length,...createFlarePosePresets(viewer.motion,demonstration));
   renderPhases();displayedStep=-1;updateTime(viewer.time);posePanel.renderPresets();
   if(mode==='pose')posePanel.render();else renderDetail();
   updateLayerButtons();updatePlayButton();
+}
+
+function saveAnimationFrames(sequence, edits, { restore = false } = {}) {
+  const saved = saveOfficialFrameEdits(sequence, edits, localStore(), { restore });
+  demonstration = structuredClone(sequence);
+  presets.splice(0,presets.length,...createFlarePosePresets(viewer.motion,demonstration));
+  renderPhases();displayedStep=-1;posePanel.renderPresets();
+  return { sequence: demonstration, document: saved };
+}
+function updateAnimationFrame(index, pose, edits) {
+  const sequence = updateOfficialFrame(demonstration, index, pose);
+  return saveAnimationFrames(sequence, rebaseTransitionEdits(edits, demonstration, sequence));
+}
+function undoAnimationFrames(snapshot) {
+  const sequence = snapshot?.sequence || previousOfficialSequence(localStore());
+  if (!sequence) throw new Error('没有可恢复的原姿态更新。');
+  const edits = snapshot?.document || rebaseTransitionEdits(transitionPanel.getDocument(), demonstration, sequence);
+  return saveAnimationFrames(sequence, edits, { restore: true });
+}
+function importAnimationFrames(sequence, edits) {
+  // Importing a complete animation is explicit; unrelated node layouts stay isolated.
+  rebaseTransitionEdits(edits, sequence, demonstration);
+  const imported = structuredClone(sequence);
+  if (imported.source?.origin !== 'browser-keyframe-edit') imported.source = { ...imported.source, origin: 'browser-animation-import' };
+  return saveAnimationFrames(imported, edits);
 }
 
 function exerciseLink(id){const e=exerciseById[id];return`<button class="exercise-link" data-exercise="${e.id}"><span class="exercise-icon"><i data-lucide="${e.icon}"></i></span><span><span class="exercise-name">${e.name}</span><span class="exercise-sub">${e.type} · ${e.difficulty}</span></span><i data-lucide="chevron-right"></i></button>`;}
@@ -85,6 +131,12 @@ function renderDetail(){
     panel.innerHTML=`<div class="detail-kicker"><span>BODY & MOVEMENT</span><span>01</span></div><h2 class="detail-title">先看身体，<br>再理解肌群。</h2><p class="detail-english">Meet your movement companion</p><span class="function-tag"><i data-lucide="person-standing"></i>运动人物 · 完整外观</span><p class="detail-copy">跟着运动人物观察支撑与摆腿。想知道某个部位怎样参与 Flare，点选左侧肌群，进入真实局部解剖视图。</p><div class="detail-section"><div class="detail-section-heading"><h3>Flare 的三类能力</h3><i data-lucide="move-3d"></i></div><div class="function-list"><div class="function-row">肩带、肘腕配合稳定支撑。</div><div class="function-row">躯干连接移重与身体旋回。</div><div class="function-row">髋部控制开腿、抬腿与回收。</div></div></div><div class="detail-section"><div class="detail-section-heading"><h3>从基础练习开始</h3><i data-lucide="arrow-up-right"></i></div>${exerciseLink('wristLoad')}${exerciseLink('scapPush')}</div><button class="focus-button" id="start-exploring"><i data-lucide="scan"></i>查看肩部参与的肌群</button><p class="evidence-note">运动人物改编自 Blender Studio 的 Snow Rig。局部解剖使用 BodyParts3D 的独立结构，保留真实名称与几何。</p>`;
     $('#viewer-overline').textContent='BODY & MOVEMENT';$('#viewer-label').textContent='一起动起来';$('#viewer-subtitle').textContent='观察姿态，探索肌群。';
     $('#start-exploring').addEventListener('click',()=>selectGroup('shoulders'));
+  }else if(mode==='motion'&&motionModel==='periodic'){
+    const metrics=viewer.motion.getMetrics(),p=phases.find(item=>item.id===periodicPhases[metrics.periodic.section]);
+    const supports=metrics.supportHands.map(side=>side==='left'?'左手':'右手').join(' + ');
+    panel.innerHTML=`<div class="detail-kicker"><span>PERIODIC FLARE</span><span>试验版</span></div><h2 class="detail-title">连续摆腿，<br>交替支撑。</h2><p class="detail-english">${p.english}</p><span class="function-tag"><i data-lucide="hand"></i>${supports}支撑</span><p class="detail-copy">统一摆腿幅度和髋部节奏，整圈连续生成。先看腿的扫动与抬起，再看身体是否顺畅地接回下一圈。</p><div class="detail-section"><div class="detail-section-heading"><h3>这一版的动作节奏</h3><i data-lucide="rotate-3d"></i></div><div class="function-list"><div class="function-row">一腿抬起过身，另一腿低位扫过。</div><div class="function-row">落地的手保持固定，换手前后短暂双手支撑。</div><div class="function-row">身体侧倾和髋部摆动接续下一圈。</div></div></div><button class="focus-button" id="compare-saved-animation"><i data-lucide="rotate-ccw"></i>对比你的保存动画</button><p class="evidence-note">这是一版数学轨迹试验。请重点观察腿的圆弧、换手和身体旋回是否自然。</p>`;
+    $('#viewer-overline').textContent='PERIODIC FLARE';$('#viewer-label').textContent=p.name;$('#viewer-subtitle').textContent='数学轨迹 · 整圈连续生成';
+    $('#compare-saved-animation').addEventListener('click',()=>setMotionModel('saved'));
   }else if(mode==='motion'){
     const stepIndex=viewer.motion.getMetrics().demonstration.index,item=presets[stepIndex],p=phases.find(phase=>phase.id===item.phase)||phases[0];
     const supports=item.supportHands.map(side=>side==='left'?'左手':'右手').join(' + ')||'移重过渡';
@@ -138,13 +190,14 @@ function updatePlayButton(){const playing=viewer?.playing;$('#play-button').inne
 function updateLayerButtons(){
   $$('[data-layer]').forEach(button=>{const active=button.dataset.layer===viewer?.layer;button.classList.toggle('active',active);button.setAttribute('aria-pressed',String(active));});
   const motion=mode==='motion',local=!!viewer&&!motion&&viewer.layer!=='skin';
-  $('#view-caption').textContent=mode==='transition'?'逐段修正过渡':mode==='pose'?'自由摆放姿势':motion?'你的托马斯 · 正式展示':local?'真实局部肌群':'友善运动人物';
+  $('#view-caption').textContent=mode==='transition'?'逐段修正过渡':mode==='pose'?'自由摆放姿势':motion?(motionModel==='periodic'?'托马斯 · 数学轨迹试验':'你的托马斯 · 正式展示'):local?'真实局部肌群':'友善运动人物';
   $('#model-kind').textContent=local?'BODYPARTS3D / 4.0':'SNOW / BLENDER STUDIO';
-  if(ready)$('#part-count').textContent=mode==='pose'||mode==='transition'?`${viewer.motion.getEditableHandles().length} 个控制点`:motion?`${presets.length} 个关键姿势`:local?`${selectedPart&&!selectedPart.hotspot?1:viewer.groupIds[selectedGroup]?.size||0} 个真实结构`:'完整人物';
+  if(ready)$('#part-count').textContent=mode==='pose'||mode==='transition'?`${viewer.motion.getEditableHandles().length} 个控制点`:motion?(motionModel==='periodic'?'连续周期轨迹':`${presets.length} 个关键姿势`):local?`${selectedPart&&!selectedPart.hotspot?1:viewer.groupIds[selectedGroup]?.size||0} 个真实结构`:'完整人物';
   $('#legend').hidden=!local;const legend=$$('#legend>span');if(legend.length===3){legend[0].hidden=false;legend[1].hidden=true;legend[2].hidden=true;}
 }
 function setMode(next,{fromCurrent=false}={}){
   if(!ready&&next!=='anatomy'){toast('模型正在载入，请稍等。');return;}
+  if(next!=='motion'&&motionModel==='periodic'&&!setMotionModel('saved',{render:false}))return;
   const previous=mode;if(previous==='transition'&&next!=='transition')transitionPanel?.leave();if(previous==='pose'&&next!=='pose')posePanel?.leave();mode=next;selectedPart=null;viewer?.setMode(next==='transition'?'pose':next);$$('button[data-mode]').forEach(button=>{const active=button.dataset.mode===next;button.classList.toggle('active',active);button.setAttribute('aria-pressed',String(active));});
   const transition=next==='transition',motion=next==='motion',training=next==='training',editing=next==='pose'||transition;document.body.dataset.mode=next;
   $('#anatomy-toolbar').hidden=motion||editing;$('#motion-toolbar').hidden=!motion;$('#training-panel').hidden=!training;$('#pose-shelf').hidden=!editing;$('#pose-presets').hidden=!(editing||motion);$('#pose-view-toolbar').hidden=!editing;$('#phase-strip').hidden=training||editing;$('#legend').hidden=motion||editing;$('#hover-tooltip').hidden=true;
@@ -153,10 +206,10 @@ function setMode(next,{fromCurrent=false}={}){
   $$('.library-drawer .sidebar-section-head,.library-drawer .search,#muscle-list').forEach(element=>{element.hidden=motion||editing;});
   $('#stage-kicker').textContent=transition?'TRANSITION WORKSHOP':editing?'POSE WORKSHOP':motion?'MOVEMENT BREAKDOWN':training?'TRAINING CONNECTIONS':'ANATOMY EXPLORER';
   $('#stage-title').textContent=transition?'托马斯 · 动画编辑':editing?'托马斯 · 关键姿势':motion?'托马斯 · 9 步展示':training?'辅助练习':'身体与肌群';
-  $('#stage-footnote').textContent=transition?'修正点用于两步之间的过渡；原始关键姿势与个人草稿保留。':editing?'这些姿势是可修改的起点。按你的动作标准调整，保存为自己的步骤。':motion?'按照你保存的 9 步展示。点击步骤或拖动时间轴查看，暂停后可以继续编辑。':training?'教学建议基于肌肉功能和动作需求；先掌握受控支撑，再连接专项动作。':'完整人物用于观察姿态；点选肌群，切换真实局部解剖视图。';
+  $('#stage-footnote').textContent=transition?'白色帧更新原姿态，蓝色帧修正过渡；按 K 保存，前后自动补帧。':editing?'这些姿势是可修改的起点。按你的动作标准调整，保存为自己的步骤。':motion?'按照你保存的 9 步展示。点击步骤或拖动时间轴查看，暂停后可以继续编辑。':training?'教学建议基于肌肉功能和动作需求；先掌握受控支撑，再连接专项动作。':'完整人物用于观察姿态；点选肌群，切换真实局部解剖视图。';
   workspaceUI?.setMode(next);
   if(transition)transitionPanel.enter();else if(editing){posePanel.enter(previous,{fromCurrent});}
-  if(motion){posePanel?.renderPresets();displayedStep=-1;updateTime(viewer.time);}
+  if(motion){posePanel?.renderPresets();updateMotionCaption();displayedStep=-1;renderPhases();updateTime(viewer.time);}
   if(training)renderTraining();updateLayerButtons();updatePlayButton();renderMuscles();if(!transition)renderDetail();
 }
 
@@ -171,6 +224,7 @@ $('#muscle-search').addEventListener('input',renderMuscles);
 $('#play-button').addEventListener('click',()=>{if(!ready)return;viewer.playing=!viewer.playing;if(viewer.playing&&viewer.time>=viewer.motion.getMetrics().period)viewer.setTime(0);updatePlayButton();});
 $('#timeline').addEventListener('input',event=>{viewer.playing=false;viewer.setTime(Number(event.target.value));updatePlayButton();});
 $('#speed').addEventListener('change',event=>{if(viewer)viewer.speed=Number(event.target.value);});
+$('#motion-model').addEventListener('change',event=>{if(ready)setMotionModel(event.target.value);});
 $('#about-button').addEventListener('click',()=>$('#about-dialog').showModal());
 $('#close-about').addEventListener('click',()=>$('#about-dialog').close());
 $('#about-dialog').addEventListener('click',event=>{if(event.target===$('#about-dialog')){const rect=event.target.getBoundingClientRect();if(event.clientX<rect.left||event.clientX>rect.right||event.clientY<rect.top||event.clientY>rect.bottom)event.target.close();}});
@@ -180,6 +234,7 @@ document.addEventListener('keydown',event=>{
   const focused=document.activeElement,typing=focused.isContentEditable||/TEXTAREA|SELECT/.test(focused.tagName)||(focused.tagName==='INPUT'&&!['range','checkbox','radio','button'].includes(focused.type));
   if(mode!=='transition'||typing||$('#about-dialog').open||viewer.poseEditor.getState().dragging)return;
   if(event.code==='Space'){event.preventDefault();transitionPanel?.togglePreview();}
+  else if(event.key==='Escape'){transitionPanel?.cancelCurveEdit();}
   if((event.ctrlKey||event.metaKey)&&event.key.toLowerCase()==='z'){event.preventDefault();transitionPanel?.undoPose();}
   if(event.key.toLowerCase()==='k'&&!event.ctrlKey&&!event.metaKey&&!event.altKey){event.preventDefault();transitionPanel?.savePoint();}
   if(['ArrowLeft','ArrowRight'].includes(event.key)&&!event.ctrlKey&&!event.metaKey&&!event.altKey){event.preventDefault();transitionPanel?.stepFrame(event.key==='ArrowLeft'?-1:1);}
@@ -200,7 +255,7 @@ async function initialize(){
     demonstration=resolveOfficialSequence(localStore());viewer.setSequence(demonstration);
     presets=createFlarePosePresets(viewer.motion,demonstration);
     posePanel=createPosePanel({viewer,panel:$('#detail-panel'),shelf:$('#pose-shelf'),presetPanel:$('#pose-presets'),presets,notify:toast,refreshIcons,onTraining:id=>openExercise(id),onDisplayStep:()=>updatePlayButton(),onUseDemonstration:steps=>{replaceDemonstration(sequenceFromSavedSteps(steps));toast('已将这 9 步用于正式展示，个人步骤保留。');},onUndoDemonstration:()=>{const previous=previousOfficialSequence(localStore());if(previous){replaceDemonstration(previous,'restore');toast('已恢复此前的正式展示，个人步骤保留。');}},hasPreviousDemonstration:()=>!!previousOfficialSequence(localStore()),onPresetLoad:()=>workspaceUI.afterPreset()});
-    transitionPanel=createTransitionPanel({viewer,panel:$('#detail-panel'),shelf:$('#transition-shelf'),sequence:demonstration,storage:localStore,notify:toast,refreshIcons,onApply:applyTransitionOptions,onExit:()=>{setMode('motion');workspaceUI.revealDetails();}});
+    transitionPanel=createTransitionPanel({viewer,panel:$('#detail-panel'),shelf:$('#transition-shelf'),sequence:demonstration,storage:localStore,notify:toast,refreshIcons,onApply:applyTransitionOptions,onUpdateFrame:updateAnimationFrame,onRestoreFrames:undoAnimationFrames,onImportFrames:importAnimationFrames,hasPreviousFrameUpdate:()=>['browser-keyframe-edit','browser-animation-import'].includes(demonstration?.source?.origin)&&!!previousOfficialSequence(localStore()),onExit:()=>{setMode('motion');workspaceUI.revealDetails();}});
     viewer.setSequence({...demonstration,...transitionPanel.options()},{preserveView:true});
     renderPhases();$('#part-count').textContent='完整人物';
     const boneCount=manifest.parts.filter(p=>p.system==='skeletal').length,muscleCount=manifest.parts.length-boneCount;
@@ -208,6 +263,8 @@ async function initialize(){
     setMode('motion');workspaceUI.sync();$('#capture-button').disabled=false;
     // Diagnostics are available only on the explicit local verification page.
     if(new URLSearchParams(location.search).has('inspect'))window.flareInspector={status:()=>({...viewer.getStatus(),editor:viewer.poseEditor.getState(),workspace:workspaceUI.getState()}),projectPart:id=>viewer.projectPart(id),projectCoach:()=>viewer.projectCoach(),projectHandle:id=>viewer.projectHandle(id),setTime:t=>viewer.setTime(t),capturePose:()=>viewer.motion.capturePose(),poseLibrary:()=>posePanel.getLibrary(),presetLibrary:()=>JSON.parse(JSON.stringify(presets)),demonstration:()=>structuredClone(demonstration),transitions:()=>({document:transitionPanel.getDocument(),state:transitionPanel.getState()}),parts:()=>manifest.parts.map(p=>({id:p.id,name:p.name,hotspot:p.hotspot,system:p.system,side:p.side})),rigMetrics:()=>viewer.motion.getMetrics(),boneRotations:()=>Object.fromEntries(['left','right'].flatMap(side=>['UpperArm','Forearm','Thigh','Shin'].map(suffix=>{const name=side+suffix,bone=viewer.motion.group.getObjectByName(name);return[name,bone.getWorldQuaternion(bone.quaternion.clone()).toArray()];})))};
+    if(window.flareInspector)window.flareInspector.trajectory=()=>({...viewer.trajectoryGuide.getStatus(),...transitionPanel.getTrajectoryState(),data:viewer.getTrajectoryData()});
+    if(window.flareInspector)window.flareInspector.projectTrajectoryPoint=(joint,time)=>viewer.projectTrajectoryPoint(joint,time);
     document.documentElement.dataset.ready='true';
   }catch(error){
     console.error(error);$('#loading').hidden=false;$('#loading').classList.add('error');$('#loading').querySelector('strong').textContent='模型暂时未能载入';$('#loading-status').textContent=error.message.includes('WebGL')?'请在支持 WebGL 的浏览器中打开本地页面。':`${error.message}。请用 start.cmd 启动本地服务。`;

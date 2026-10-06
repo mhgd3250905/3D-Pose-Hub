@@ -5,6 +5,7 @@ import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
 import { muscleGroups, groupById } from './data.js';
 import { createCoachMotion } from './coach-motion.js';
 import { createPoseEditor } from './pose-editor.js';
+import { createTrajectoryGuide } from './trajectory-guide.js';
 
 const material = (color, options={}) => new THREE.MeshStandardMaterial({color,roughness:.77,metalness:0,...options});
 const nextFrame = () => new Promise(resolve => requestAnimationFrame(resolve));
@@ -15,6 +16,7 @@ export class BodyViewer {
   constructor(container, callbacks) {
     this.container=container;this.callbacks=callbacks;this.mode='anatomy';this.layer='skin';this.selectedGroup='shoulders';this.focused=false;this.parts=[];this.batches=[];this.dirty=true;this.time=0;this.playing=false;this.speed=.5;
     this.scene=new THREE.Scene();
+    this.trajectoryGuide=createTrajectoryGuide({scene:this.scene});this.trajectoryData=null;
     this.camera=new THREE.PerspectiveCamera(32,1,.02,40);
     this.renderer=new THREE.WebGLRenderer({alpha:true,antialias:true,preserveDrawingBuffer:true,powerPreference:'high-performance'});
     this.renderer.setPixelRatio(Math.min(devicePixelRatio,1.75));
@@ -46,7 +48,7 @@ export class BodyViewer {
     // separately when inspecting a muscle group.
     this.raycaster=new THREE.Raycaster();this.pointer=new THREE.Vector2();this.pointerDown=null;this.lastPick=0;
     this.renderer.domElement.addEventListener('pointerdown',event=>{this.pointerDown={x:event.clientX,y:event.clientY};});
-    this.renderer.domElement.addEventListener('pointerup',event=>{if(this.pointerDown&&Math.hypot(event.clientX-this.pointerDown.x,event.clientY-this.pointerDown.y)<6&&this.mode!=='motion'){const hit=this.pick(event);if(hit)this.callbacks.onSelect?.(hit.userData.part);}this.pointerDown=null;});
+    this.renderer.domElement.addEventListener('pointerup',event=>{if(!event.trajectoryHandled&&this.pointerDown&&Math.hypot(event.clientX-this.pointerDown.x,event.clientY-this.pointerDown.y)<6&&this.mode!=='motion'){const hit=this.pick(event);if(hit)this.callbacks.onSelect?.(hit.userData.part);}this.pointerDown=null;});
     this.renderer.domElement.addEventListener('pointermove',event=>{if(event.buttons||this.mode==='motion'||this.mode==='pose'||performance.now()-this.lastPick<55)return;this.lastPick=performance.now();const hit=this.pick(event);this.hoverMesh.visible=!!hit;if(hit){this.hoverMesh.geometry=hit.geometry;this.renderer.domElement.style.cursor='pointer';}else this.renderer.domElement.style.cursor='grab';this.callbacks.onHover?.(hit?.userData.part,event);this.dirty=true;});
     this.renderer.domElement.addEventListener('pointerleave',()=>{this.hoverMesh.visible=false;this.callbacks.onHover?.(null);this.dirty=true;});
     this.resizeObserver=new ResizeObserver(()=>this.resize());this.resizeObserver.observe(container);this.resetView();this.resize();
@@ -117,7 +119,7 @@ export class BodyViewer {
     this.camera.aspect=aspect;
     const inset=this.framingInsets||{left:0,right:0,top:0,bottom:0};
     this.camera.setViewOffset(width,height,(inset.right-inset.left)/2,(inset.bottom-inset.top)/2,width,height);
-    this.camera.updateProjectionMatrix();this.renderer.setSize(width,height);
+    this.camera.updateProjectionMatrix();this.renderer.setSize(width,height);this.trajectoryGuide.resize(width,height);
     if(changed&&this.frame&&!this.poseEditor?.getState().dragging){const direction=this.camera.position.clone().sub(this.controls.target);this.fitBounds(this.frame.box,direction,this.frame.padding);}
     this.dirty=true;
   }
@@ -208,11 +210,12 @@ export class BodyViewer {
   setSequence(sequence,{preserveView=false}={}){
     if(!this.motion)return;
     const current=this.motion.capturePose(),currentMode=this.motion.getMetrics().mode;
-    this.motion.setSequence(sequence.steps,{period:sequence.period,corrections:sequence.corrections||[],legPath:sequence.legPath,interpolation:sequence.interpolation});
+    this.motion.setSequence(sequence.steps,{period:sequence.period,corrections:sequence.corrections||[],legPath:sequence.legPath,interpolation:sequence.interpolation,motionModel:sequence.motionModel,skippedSteps:sequence.skippedSteps||[],footCurves:sequence.footCurves||[],segmentGuides:sequence.segmentGuides||[]});
     const bounds=new THREE.Box3();
     try{
-      for(let i=0;i<sequence.steps.length*2;i++){
-        this.motion.update(i*sequence.period/(sequence.steps.length*2));
+      const samples=sequence.motionModel==='periodic'?96:sequence.steps.length*2;
+      for(let i=0;i<samples;i++){
+        this.motion.update(i*sequence.period/samples);
         const frame=this.motion.getMetrics().bounds;
         bounds.union(new THREE.Box3(new THREE.Vector3().fromArray(frame.min),new THREE.Vector3().fromArray(frame.max)));
       }
@@ -251,7 +254,14 @@ export class BodyViewer {
       this.renderer.setClearAlpha(0);if(editing)this.poseEditor.setEnabled(editorEnabled);this.dirty=true;
     }
   }
-  getStatus(){return{ready:!!this.motion,mode:this.mode,layer:this.layer,selectedGroup:this.selectedGroup,selectedPart:this.selectedPart?.id||null,focused:this.focused,time:this.time,playing:this.playing,character:'Snow Rig',coachVisible:!!this.coach?.visible,anatomyVisible:this.anatomy.visible,parts:this.parts.length,triangles:this.manifest?.triangles,drawCalls:this.renderer.info.render.calls,camera:this.camera.position.toArray(),target:this.controls.target.toArray(),framingInsets:{...this.framingInsets},groupCounts:Object.fromEntries(Object.entries(this.groupIds||{}).map(([id,ids])=>[id,ids.size])),motion:this.motion?.getMetrics()};}
+  setTrajectoryData(data){this.trajectoryGuide.setData(data);this.trajectoryData=data?structuredClone(data):null;this.dirty=true;}
+  setTrajectoryVisible(options){this.trajectoryGuide.setVisible(options);this.dirty=true;}
+  setTrajectoryProgress(time,joints){this.trajectoryGuide.setProgress(time,joints);this.dirty=true;}
+  clearTrajectory(){this.trajectoryGuide.clear();this.trajectoryData=null;this.dirty=true;}
+  getTrajectoryData(){return this.trajectoryData?structuredClone(this.trajectoryData):null;}
+  pickTrajectoryPoint(event,options={}){const rect=this.renderer.domElement.getBoundingClientRect();return this.trajectoryGuide.pickSample({camera:this.camera,x:event.clientX-rect.left,y:event.clientY-rect.top,width:rect.width,height:rect.height,...options});}
+  projectTrajectoryPoint(joint,time){const frames=this.trajectoryData?.frames;if(!frames?.length)return null;const frame=frames.reduce((nearest,value)=>Math.abs(value.time-time)<Math.abs(nearest.time-time)?value:nearest);if(!frame.joints[joint])return null;const p=new THREE.Vector3().fromArray(frame.joints[joint]).project(this.camera);return{x:(p.x+1)/2*this.container.clientWidth,y:(1-p.y)/2*this.container.clientHeight,time:frame.time,joint};}
+  getStatus(){return{ready:!!this.motion,mode:this.mode,layer:this.layer,selectedGroup:this.selectedGroup,selectedPart:this.selectedPart?.id||null,focused:this.focused,time:this.time,playing:this.playing,character:'Snow Rig',coachVisible:!!this.coach?.visible,anatomyVisible:this.anatomy.visible,parts:this.parts.length,triangles:this.manifest?.triangles,drawCalls:this.renderer.info.render.calls,camera:this.camera.position.toArray(),target:this.controls.target.toArray(),framingInsets:{...this.framingInsets},groupCounts:Object.fromEntries(Object.entries(this.groupIds||{}).map(([id,ids])=>[id,ids.size])),trajectory:this.trajectoryGuide.getStatus(),motion:this.motion?.getMetrics()};}
   projectPart(id){const mesh=this.parts.find(m=>m.userData.part.id===id);if(!mesh)return null;const center=mesh.geometry.boundingBox.getCenter(new THREE.Vector3()).project(this.camera);return{x:(center.x+1)/2*this.container.clientWidth,y:(1-center.y)/2*this.container.clientHeight,name:mesh.userData.part.name,hotspot:mesh.userData.part.hotspot};}
   coachBounds(){
     const box=new THREE.Box3();if(!this.coach)return box;
@@ -265,5 +275,5 @@ export class BodyViewer {
     this.coach.traverse(mesh=>{if(!mesh.isMesh||!mesh.geometry.attributes.position)return;mesh.skeleton?.update();for(let i=0;i<mesh.geometry.attributes.position.count;i++){mesh.getVertexPosition(i,point).applyMatrix4(mesh.matrixWorld);box.expandByPoint(point);projected.copy(point).project(this.camera);min[0]=Math.min(min[0],projected.x);min[1]=Math.min(min[1],projected.y);max[0]=Math.max(max[0],projected.x);max[1]=Math.max(max[1],projected.y);}});
     return box.isEmpty()?null:{min,max,bounds:[box.min.toArray(),box.max.toArray()]};
   }
-  projectHandle(id){const handle=this.motion?.getEditableHandles().find(h=>h.id===id);if(!handle)return null;const p=new THREE.Vector3().fromArray(handle.position).project(this.camera);return{x:(p.x+1)/2*this.container.clientWidth,y:(1-p.y)/2*this.container.clientHeight};}
+  projectHandle(id){const state=this.poseEditor?.getState();const handle=(state?.enabled?state.handles:this.motion?.getEditableHandles())?.find(h=>h.id===id);if(!handle)return null;const p=this.motion.group.localToWorld(new THREE.Vector3().fromArray(handle.position)).project(this.camera);return{x:(p.x+1)/2*this.container.clientWidth,y:(1-p.y)/2*this.container.clientHeight};}
 }

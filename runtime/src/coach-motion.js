@@ -2,6 +2,9 @@ import * as THREE from 'three';
 import { createFlareSequence } from './flare-sequence.js';
 import { interpolateLimbArc } from './limb-arc.js';
 import { OFFICIAL_FLARE_SEQUENCE } from './official-poses.js';
+import { createPeriodicFlare } from './periodic-flare.js';
+import { evaluateSegmentArc, evaluateSegmentOrbit, segmentGuideWeight } from './segment-guides.js';
+import { guidedAxisTwist, interpolateGuidedLegRotation, interpolateGuidedRotation, rotateGuidedPole } from './segment-guide-motion.js';
 
 const SIDES = ['left', 'right'];
 const UP = new THREE.Vector3(0, 1, 0);
@@ -23,6 +26,15 @@ function rotationFor(source, destination, bodyRotation = IDENTITY) {
   const from = source.clone().normalize().applyQuaternion(bodyRotation);
   const to = destination.clone().normalize();
   return new THREE.Quaternion().setFromUnitVectors(from, to).multiply(bodyRotation);
+}
+
+function rotationForBendPlane(source, destination, sourceNormal, destinationNormal) {
+  const basis = (axis, normal) => {
+    const x = axis.clone().normalize(), z = normal.clone().normalize();
+    const y = new THREE.Vector3().crossVectors(z, x).normalize();
+    return new THREE.Quaternion().setFromRotationMatrix(new THREE.Matrix4().makeBasis(x, y, z));
+  };
+  return basis(destination, destinationNormal).multiply(basis(source, sourceNormal).invert()).normalize();
 }
 
 function twoBone(start, target, upper, lower, pole) {
@@ -78,6 +90,7 @@ function validatePose(value) {
     limbs: {},
   };
   if (Object.hasOwn(value, 'torsoQuaternion')) result.torsoQuaternion = poseQuaternion(value.torsoQuaternion, '腰部方向');
+  if (Object.hasOwn(value, 'pelvisQuaternion')) result.pelvisQuaternion = poseQuaternion(value.pelvisQuaternion, '髋部方向');
   for (const side of SIDES) {
     const limb = value.limbs?.[side];
     const label = side === 'left' ? '左侧' : '右侧';
@@ -91,7 +104,7 @@ function validatePose(value) {
       footQuaternion: poseQuaternion(limb.footQuaternion, `${label}脚掌方向`),
       handLocked: limb.handLocked,
     };
-    for (const key of ['elbowTwist', 'kneeTwist']) if (Object.hasOwn(limb, key)) {
+    for (const key of ['elbowTwist', 'kneeTwist', 'upperArmTwist', 'thighTwist']) if (Object.hasOwn(limb, key)) {
       if (typeof limb[key] !== 'number' || !Number.isFinite(limb[key])) throw new Error(`${label}关节扭转需要有限角度。`);
       result.limbs[side][key] = limb[key];
     }
@@ -198,6 +211,10 @@ export function createCoachMotion({ model, rigData }) {
       forearm: rest[side + 'Elbow'].distanceTo(rest[side + 'Wrist']),
       thigh: rest[side + 'Hip'].distanceTo(rest[side + 'Knee']),
       shin: rest[side + 'Knee'].distanceTo(rest[side + 'Ankle']),
+      armNormal: rest[side + 'Elbow'].clone().sub(rest[side + 'Shoulder'])
+        .cross(rest[side + 'Wrist'].clone().sub(rest[side + 'Elbow'])),
+      legNormal: rest[side + 'Knee'].clone().sub(rest[side + 'Hip'])
+        .cross(rest[side + 'Ankle'].clone().sub(rest[side + 'Knee'])),
       anchor: new THREE.Vector3(sign * 0.215, FLOOR, 0),
       playAnchor: new THREE.Vector3(sign * 0.215, FLOOR, 0),
       palmOffset, neutralRotation,
@@ -206,9 +223,10 @@ export function createCoachMotion({ model, rigData }) {
   }
 
   const bodyRotation = new THREE.Quaternion();
+  const pelvisRotation = new THREE.Quaternion();
   const torsoRotation = new THREE.Quaternion();
   const waistRest = rest.pelvis.clone().lerp(rest.torso, .30);
-  let hasTorsoRotation = false;
+  let hasTorsoRotation = false, hasPelvisRotation = false;
   const bodyX = new THREE.Vector3(1, 0, 0);
   const bodyY = UP.clone();
   const bodyZ = FRONT.clone();
@@ -221,12 +239,16 @@ export function createCoachMotion({ model, rigData }) {
   let time = 0, angle = Math.PI, mode = 'standing', layer = 'skin', selected = null;
   let boundsDirty = true, neutralBounds = null, minimumFootHeight = FLOOR;
   const resolvedNodes = new Map();
-  let legPath = 'arc', interpolation = 'smooth';
+  const guidedSamples = new WeakMap();
+  let legPath = 'arc', interpolation = 'smooth', activeCorrections = [], skippedSteps = [], footCurves = [], segmentGuides = [];
+  let motionModel = 'saved', periodicMotion = null;
+  let bendPlaneRotation = false;
   let sequence = createFlareSequence(OFFICIAL_FLARE_SEQUENCE.steps, {
-    period: OFFICIAL_FLARE_SEQUENCE.period, mapTransition: mapPoseTransition,
+    period: OFFICIAL_FLARE_SEQUENCE.period, mapTransition: mapPoseTransition, resolveFootEndpoint,
   });
   let groundLock = true, poseWarnings = [];
   const bodyTarget = source => source.clone().sub(rest.pelvis).applyQuaternion(bodyRotation).add(pelvis);
+  const pelvisFrame = pose => pose.pelvisQuaternion ?? pose.bodyQuaternion;
   const isNeutralTorso = rotation => !rotation || rotation.x * rotation.x + rotation.y * rotation.y + rotation.z * rotation.z < 1e-24;
   const upperRotation = () => isNeutralTorso(torsoRotation) ? bodyRotation.clone() : bodyRotation.clone().multiply(torsoRotation);
   function upperOffset(source, body, torso) {
@@ -287,16 +309,24 @@ export function createCoachMotion({ model, rigData }) {
   }
 
   function poseBody() {
-    poseBone('pelvis', bodyTarget(rest.pelvis), bodyRotation);
+    poseBone('pelvis', bodyTarget(rest.pelvis), pelvisRotation);
     const rotation = upperRotation();
     for (const name of ['torso', 'neck', 'head']) poseBone(name, upperTarget(rest[name]), rotation);
   }
 
   function poseArm(side, target, shoulder, elbow, wrist, handRotation) {
     const body = upperRotation();
-    const armRotation = rotationFor(rest[side + 'Elbow'].clone().sub(rest[side + 'Shoulder']), elbow.clone().sub(shoulder), body);
+    const normal = elbow.clone().sub(shoulder).cross(wrist.clone().sub(elbow));
+    // The periodic trial has nonzero elbow/knee bends. Their planes define
+    // stable roll, without the 180-degree branch of an axis-only swing.
+    const rotation = (source, destination) => bendPlaneRotation
+      ? rotationForBendPlane(source, destination, limbs[side].armNormal, normal)
+      : rotationFor(source, destination, body);
+    const armAxis = rest[side + 'Elbow'].clone().sub(rest[side + 'Shoulder']);
+    const armRotation = rotation(armAxis, elbow.clone().sub(shoulder));
+    if (target.upperArmTwist) armRotation.multiply(new THREE.Quaternion().setFromAxisAngle(armAxis.normalize(), target.upperArmTwist));
     const foreAxis = rest[side + 'Wrist'].clone().sub(rest[side + 'Elbow']);
-    const foreRotation = rotationFor(foreAxis, wrist.clone().sub(elbow), body);
+    const foreRotation = rotation(foreAxis, wrist.clone().sub(elbow));
     if (target.elbowTwist) foreRotation.multiply(new THREE.Quaternion().setFromAxisAngle(foreAxis.normalize(), target.elbowTwist));
     poseBone(side + 'Scapula', shoulder, body);
     poseBone(side + 'UpperArm', shoulder, armRotation);
@@ -309,9 +339,15 @@ export function createCoachMotion({ model, rigData }) {
   }
 
   function poseLeg(side, target, hip, knee, ankle, footRotation) {
-    const thighRotation = rotationFor(rest[side + 'Knee'].clone().sub(rest[side + 'Hip']), knee.clone().sub(hip), bodyRotation);
+    const normal = knee.clone().sub(hip).cross(ankle.clone().sub(knee));
+    const rotation = (source, destination) => bendPlaneRotation
+      ? rotationForBendPlane(source, destination, limbs[side].legNormal, normal)
+      : rotationFor(source, destination, pelvisRotation);
+    const thighAxis = rest[side + 'Knee'].clone().sub(rest[side + 'Hip']);
+    const thighRotation = rotation(thighAxis, knee.clone().sub(hip));
+    if (target.thighTwist) thighRotation.multiply(new THREE.Quaternion().setFromAxisAngle(thighAxis.normalize(), target.thighTwist));
     const shinAxis = rest[side + 'Ankle'].clone().sub(rest[side + 'Knee']);
-    const shinRotation = rotationFor(shinAxis, ankle.clone().sub(knee), bodyRotation);
+    const shinRotation = rotation(shinAxis, ankle.clone().sub(knee));
     if (target.kneeTwist) shinRotation.multiply(new THREE.Quaternion().setFromAxisAngle(shinAxis.normalize(), target.kneeTwist));
     poseBone(side + 'Thigh', hip, thighRotation);
     poseBone(side + 'Patella', knee, thighRotation.clone().slerp(shinRotation, 0.52));
@@ -323,11 +359,13 @@ export function createCoachMotion({ model, rigData }) {
 
   function reset() {
     mode = 'standing';
+    bendPlaneRotation = false;
     groundLock = true;
     poseWarnings = [];
     time = 0;
     angle = Math.PI;
     bodyRotation.identity();
+    pelvisRotation.identity();hasPelvisRotation = false;
     torsoRotation.identity();hasTorsoRotation = false;
     bodyX.set(1, 0, 0);
     bodyY.copy(UP);
@@ -355,7 +393,7 @@ export function createCoachMotion({ model, rigData }) {
 
   function update(inputTime = 0) {
     const nextTime = ((Number.isFinite(inputTime) ? inputTime : 0) % sequence.period + sequence.period) % sequence.period;
-    applyPose(sequence.sample(nextTime));
+    applyPose(periodicMotion ? periodicMotion.sample(nextTime) : sequence.sample(nextTime), { alignBendPlanes: Boolean(periodicMotion) });
     mode = 'flare';
     time = nextTime;
     return model;
@@ -368,6 +406,10 @@ export function createCoachMotion({ model, rigData }) {
       resolvedNodes.set(key, solvePose(input));
     }
     return resolvedNodes.get(key);
+  }
+
+  function resolveFootEndpoint(pose, side) {
+    return resolvedNode(pose).solved[side].leg.end.toArray();
   }
 
   function mapPoseTransition(pose, { start, end, blend }) {
@@ -394,13 +436,13 @@ export function createCoachMotion({ model, rigData }) {
         blend, upperLength: value.upperArm, lowerLength: value.forearm, arc: !pose.limbs[side].handLocked, side,
       });
       pose.limbs[side].wrist = arm.target;pose.limbs[side].elbowPole = arm.pole;
-      const hip = rest[side + 'Hip'].clone().sub(rest.pelvis).applyQuaternion(requested.bodyQuaternion).add(constrainedPelvis);
+      const hip = rest[side + 'Hip'].clone().sub(rest.pelvis).applyQuaternion(pelvisFrame(requested)).add(constrainedPelvis);
       const floorHeight = pose.groundLock ? requiredAnkleHeight(side, requested.limbs[side].footQuaternion) : -Infinity;
       const leg = interpolateLimbArc({
         startRoot: from.hip.toArray(), endRoot: to.hip.toArray(), currentRoot: hip.toArray(),
         startTarget: from.leg.end.toArray(), endTarget: to.leg.end.toArray(), currentTarget: pose.limbs[side].ankle,
         startMiddle: from.leg.middle.toArray(), endMiddle: to.leg.middle.toArray(),
-        startReference: first.requested.bodyQuaternion.toArray(), endReference: last.requested.bodyQuaternion.toArray(), currentReference: requested.bodyQuaternion.toArray(),
+        startReference: pelvisFrame(first.requested).toArray(), endReference: pelvisFrame(last.requested).toArray(), currentReference: pelvisFrame(requested).toArray(),
         blend, upperLength: value.thigh, lowerLength: value.shin, floorHeight, side,
       });
       pose.limbs[side].ankle = leg.target;pose.limbs[side].kneePole = leg.pole;
@@ -408,16 +450,255 @@ export function createCoachMotion({ model, rigData }) {
     return pose;
   }
 
+  function boneRotationsFromSolved(node) {
+    const { requested, solved } = node;
+    const upper = requested.bodyQuaternion.clone().multiply(requested.torsoQuaternion ?? IDENTITY);
+    const hips = pelvisFrame(requested);
+    const rotations = { pelvis: hips.clone(), torso: upper.clone(), neck: upper.clone(), head: upper.clone() };
+    for (const side of SIDES) {
+      const { source, shoulder, arm, hip, leg } = solved[side];
+      const definitions = [
+        ['UpperArm', 'Shoulder', 'Elbow', arm.middle.clone().sub(shoulder), upper, 'upperArmTwist'],
+        ['Forearm', 'Elbow', 'Wrist', arm.end.clone().sub(arm.middle), upper, 'elbowTwist'],
+        ['Thigh', 'Hip', 'Knee', leg.middle.clone().sub(hip), hips, 'thighTwist'],
+        ['Shin', 'Knee', 'Ankle', leg.end.clone().sub(leg.middle), hips, 'kneeTwist'],
+      ];
+      for (const [bone, from, to, destination, reference, twist] of definitions) {
+        const axis = rest[side + to].clone().sub(rest[side + from]);
+        const rotation = rotationFor(axis, destination, reference);
+        if (source[twist]) rotation.multiply(new THREE.Quaternion().setFromAxisAngle(axis.normalize(), source[twist]));
+        rotations[side + bone] = rotation;
+      }
+      rotations[side + 'Scapula'] = upper.clone();
+      rotations[side + 'Patella'] = rotations[side + 'Thigh'].clone().slerp(rotations[side + 'Shin'], .52);
+      rotations[side + 'Hand'] = source.handQuaternion.clone();
+      rotations[side + 'Foot'] = source.footQuaternion.clone();
+    }
+    return rotations;
+  }
+
+  function mapGuidedTransition(pose, { start, end, blend, guide }) {
+    // Guides are an opt-in layer over the already sampled route, including old
+    // foot curves. Every edit remains an ordinary replayable pose; no display
+    // correction is attached to the live skeleton or the saved anchors.
+    const result = structuredClone(pose), baseline = solvePose(pose), weight = segmentGuideWeight(blend);
+    const first = resolvedNode(start), last = resolvedNode(end), goals = {}, notes = [];
+    const offset = joint => point(guide.bends?.[joint] ?? [0, 0, 0]).multiplyScalar(weight);
+    const endpointAt = (node, joint) => joint === 'pelvis' ? node.constrainedPelvis
+      : node.solved[joint.startsWith('left') ? 'left' : 'right'][joint.endsWith('Wrist') ? 'arm' : 'leg'].end;
+    // An explicit arc replaces the selected joint's old route. Offsetting an
+    // already floor-clipped path would otherwise retain its flat turns.
+    const goalAt = joint => guide.orbitPaths?.[joint]
+      ? evaluateSegmentOrbit(endpointAt(first, joint).toArray(), endpointAt(last, joint).toArray(), guide.orbitPaths[joint], blend)
+      : guide.smoothPaths?.[joint]
+        ? evaluateSegmentArc(endpointAt(first, joint).toArray(), endpointAt(last, joint).toArray(), guide.smoothPaths[joint].bend, blend)
+        : endpointAt(baseline, joint).clone().add(offset(joint)).toArray();
+    // Route handles are measured on the actual old IK path. An unreachable
+    // legacy foot-curve goal must not add an invisible offset to a new handle.
+    goals.pelvis = goalAt('pelvis');
+    result.pelvis = [...goals.pelvis];
+    for (const side of SIDES) {
+      const limb = result.limbs[side];
+      const shared = first.requested.limbs[side].handLocked && last.requested.limbs[side].handLocked;
+      if (shared) {
+        // A common support anchor belongs to the key poses, not the route.
+        // Differing authored anchors retain their original interpolation.
+        limb.wrist = first.solved[side].arm.end.clone().lerp(last.solved[side].arm.end, blend).toArray();
+        if (guide.orbitPaths?.[side + 'Wrist'] || guide.smoothPaths?.[side + 'Wrist'] || offset(side + 'Wrist').lengthSq() > 1e-16) {
+          notes.push(`${side === 'left' ? '左' : '右'}手在两端均为支撑手，腕部路线偏移已忽略。`);
+        }
+      } else {
+        goals[side + 'Wrist'] = goalAt(side + 'Wrist');
+        limb.wrist = [...goals[side + 'Wrist']];
+      }
+      goals[side + 'Ankle'] = goalAt(side + 'Ankle');
+      limb.ankle = [...goals[side + 'Ankle']];
+    }
+    const projected = solvePose(result);
+    result.pelvis = projected.constrainedPelvis.toArray();
+    const upperAt = node => node.requested.bodyQuaternion.clone().multiply(node.requested.torsoQuaternion ?? IDENTITY);
+    for (const side of SIDES) {
+      const value = limbs[side], from = first.solved[side], to = last.solved[side], current = projected.solved[side];
+      const limb = result.limbs[side];
+      for (const arm of [true, false]) {
+        const root = arm ? current.shoulder : current.hip;
+        const endpoint = arm ? current.arm.end : current.leg.end;
+        const sourceA = arm ? from.arm : from.leg, sourceB = arm ? to.arm : to.leg;
+        const bend = interpolateLimbArc({
+          startRoot: (arm ? from.shoulder : from.hip).toArray(),
+          endRoot: (arm ? to.shoulder : to.hip).toArray(), currentRoot: root.toArray(),
+          startTarget: sourceA.end.toArray(), endTarget: sourceB.end.toArray(), currentTarget: endpoint.toArray(),
+          startMiddle: sourceA.middle.toArray(), endMiddle: sourceB.middle.toArray(),
+          startReference: (arm ? upperAt(first) : pelvisFrame(first.requested)).toArray(),
+          endReference: (arm ? upperAt(last) : pelvisFrame(last.requested)).toArray(),
+          currentReference: (arm ? upperAt(projected) : pelvisFrame(projected.requested)).toArray(),
+          blend, upperLength: arm ? value.upperArm : value.thigh,
+          lowerLength: arm ? value.forearm : value.shin, arc: false, side,
+        });
+        const angle = (guide.bendAngles?.[side + (arm ? 'Elbow' : 'Knee')] ?? 0) * weight;
+        limb[arm ? 'wrist' : 'ankle'] = endpoint.toArray();
+        limb[arm ? 'elbowPole' : 'kneePole'] = rotateGuidedPole(root, endpoint, point(bend.pole), angle).toArray();
+      }
+    }
+    const actual = solvePose(result), firstRotations = boneRotationsFromSolved(first), lastRotations = boneRotationsFromSolved(last);
+    for (const side of SIDES) {
+      const from = first.solved[side], to = last.solved[side], current = actual.solved[side];
+      for (const arm of [true, false]) {
+        const rootAt = node => arm ? node.shoulder : node.hip;
+        const chainAt = node => arm ? node.arm : node.leg;
+        const normalAt = node => chainAt(node).middle.clone().sub(rootAt(node))
+          .cross(chainAt(node).end.clone().sub(chainAt(node).middle));
+        const sourceNormal = arm ? limbs[side].armNormal : limbs[side].legNormal;
+        for (const lower of [false, true]) {
+          const bone = side + (arm ? lower ? 'Forearm' : 'UpperArm' : lower ? 'Shin' : 'Thigh');
+          const twist = arm ? lower ? 'elbowTwist' : 'upperArmTwist' : lower ? 'kneeTwist' : 'thighTwist';
+          const sourceAxis = rest[side + (arm ? lower ? 'Wrist' : 'Elbow' : lower ? 'Ankle' : 'Knee')].clone()
+            .sub(rest[side + (arm ? lower ? 'Elbow' : 'Shoulder' : lower ? 'Knee' : 'Hip')]);
+          const axisAt = node => lower ? chainAt(node).end.clone().sub(chainAt(node).middle)
+            : chainAt(node).middle.clone().sub(rootAt(node));
+          const desired = arm ? interpolateGuidedRotation({ sourceAxis, sourceNormal,
+            startAxis: axisAt(from), endAxis: axisAt(to), currentAxis: axisAt(current),
+            startNormal: normalAt(from), endNormal: normalAt(to), currentNormal: normalAt(current),
+            startRotation: firstRotations[bone], endRotation: lastRotations[bone], blend })
+            : interpolateGuidedLegRotation({ sourceAxis, currentAxis: axisAt(current),
+              startRotation: firstRotations[bone], endRotation: lastRotations[bone],
+              startReference: pelvisFrame(first.requested), endReference: pelvisFrame(last.requested),
+              currentReference: pelvisFrame(actual.requested), blend });
+          const reference = arm ? upperAt(actual) : pelvisFrame(actual.requested);
+          const base = rotationFor(sourceAxis, axisAt(current), reference);
+          result.limbs[side][twist] = guidedAxisTwist(base, desired, sourceAxis);
+        }
+      }
+    }
+    guidedSamples.set(result, { targets: goals, warnings: [...new Set([...projected.warnings, ...actual.warnings, ...notes])] });
+    return result;
+  }
+
   function setSequence(steps, options = {}) {
     const nextLegPath = options.legPath === 'linear' ? 'linear' : 'arc';
     const next = createFlareSequence(steps, {
-      ...options, mapTransition: nextLegPath === 'arc' ? mapPoseTransition : undefined,
+      ...options, mapTransition: nextLegPath === 'arc' ? mapPoseTransition : undefined, resolveFootEndpoint, mapGuidedTransition,
     });
+    if (options.segmentGuides?.some(guide => Object.keys(guide.orbitPaths ?? {}).length)) {
+      // Orbit centers are checked against the actually solved endpoints. Do
+      // this before assigning the new sequence, so an invalid center cannot
+      // leave a failed preview installed in the live animation. Dormant routes
+      // keep their data until their saved anchors become adjacent again.
+      const times = [...new Set([
+        ...steps.map((step, index) => index * next.period / steps.length),
+        ...(options.corrections ?? []).map(point => (point.segment + point.at) * next.period / steps.length),
+      ])].sort((a, b) => a - b);
+      for (let index = 0; index < times.length; index++) {
+        const middle = (times[index] + (times[index + 1] ?? next.period)) / 2;
+        const match = next.guideAt(middle);
+        if (match && Object.keys(match.guide.orbitPaths ?? {}).length) next.sample(middle);
+      }
+    }
+    const nextPeriodic = options.motionModel === 'periodic' ? createPeriodicFlare({
+      landmarks: rigData.landmarks, period: next.period,
+      groundHands: Object.fromEntries(SIDES.map(side => [side, getGroundHandPose(side, [0, 0, 1])])),
+      shoeOffsets: Object.fromEntries(SIDES.map(side => [side, Array.from({ length: 8 }, (_, corner) => {
+        const box = footBounds[side];
+        return new THREE.Vector3(corner & 1 ? box.max.x : box.min.x, corner & 2 ? box.max.y : box.min.y, corner & 4 ? box.max.z : box.min.z)
+          .sub(rest[side + 'Ankle']).toArray();
+      })])),
+    }) : null;
+    // Validate the entire trial before replacing a working animation.
+    if (nextPeriodic) for (let i = 0; i < 180; i++) solvePose(nextPeriodic.sample(i * next.period / 180));
+    const nextCorrections = structuredClone(options.corrections ?? []);
+    const nextSkippedSteps = structuredClone(options.skippedSteps ?? []);
+    const nextFootCurves = structuredClone(options.footCurves ?? []);
+    const nextSegmentGuides = structuredClone(options.segmentGuides ?? []);
     sequence = next;
+    activeCorrections = nextCorrections;
+    skippedSteps = nextSkippedSteps;
+    footCurves = nextFootCurves;
+    segmentGuides = nextSegmentGuides;
+    periodicMotion = nextPeriodic;
+    motionModel = nextPeriodic ? 'periodic' : 'saved';
     resolvedNodes.clear();
     legPath = nextLegPath;
     interpolation = options.interpolation ?? 'smooth';
     if (mode === 'flare') update(time);
+  }
+
+  function sequenceForPreview(options = {}) {
+    if (!options || typeof options !== 'object' || Array.isArray(options)) throw new Error('动画采样选项需要为对象。');
+    const path = options.legPath ?? legPath;
+    if (!['arc', 'linear'].includes(path)) throw new Error('未知的轨迹路线。');
+    const overridden = ['steps', 'corrections', 'legPath', 'interpolation', 'skippedSteps', 'footCurves', 'segmentGuides']
+      .some(key => options[key] !== undefined);
+    return overridden ? createFlareSequence(options.steps ?? sequence.steps, {
+      period: options.period ?? sequence.period,
+      corrections: options.corrections ?? activeCorrections,
+      skippedSteps: options.skippedSteps ?? skippedSteps,
+      footCurves: options.footCurves ?? footCurves, resolveFootEndpoint,
+      segmentGuides: options.segmentGuides ?? segmentGuides, mapGuidedTransition,
+      interpolation: options.interpolation ?? interpolation,
+      mapTransition: path === 'arc' ? mapPoseTransition : undefined,
+    }) : sequence;
+  }
+
+  function samplePose(sampleTime, options = {}) {
+    if (!Number.isFinite(sampleTime)) throw new Error('动画采样时间需要为有限数值。');
+    return sequenceForPreview(options).sample(sampleTime);
+  }
+
+  function getSegmentGuideAt(sampleTime, options = {}) {
+    if (typeof options === 'string') return sequence.guideAt(sampleTime, options);
+    return sequenceForPreview(options).guideAt(sampleTime, { prefer: options.prefer ?? 'next' });
+  }
+
+  function sampleTrajectory(options = {}) {
+    const { startTime, endTime, samples = 64, includeTimes = [] } = options;
+    if (!Number.isFinite(startTime) || !Number.isFinite(endTime) || endTime < startTime) {
+      throw new Error('轨迹起止时间需要有限数值，结束时间不能早于开始时间。');
+    }
+    if (!Number.isInteger(samples) || samples < 2 || samples > 512) throw new Error('轨迹采样数量需要为 2–512 的整数。');
+    if (!Array.isArray(includeTimes) || includeTimes.some(value => !Number.isFinite(value) || value < startTime || value > endTime)) {
+      throw new Error('额外关键帧时间必须位于轨迹区间内。');
+    }
+    const previewSequence = sequenceForPreview(options);
+    const uniformTimes = Array.from({ length: samples }, (_, index) => index === samples - 1
+      ? endTime : startTime + (endTime - startTime) * index / (samples - 1));
+    const times = includeTimes.length && endTime > startTime
+      ? [...new Set([...uniformTimes, ...includeTimes])].sort((a, b) => a - b) : uniformTimes;
+    // Solve the same saved animation as playback without applying any pose to
+    // the live rig. Draft overrides therefore cannot move bones, time or camera.
+    const frames = times.map(sampleTime => {
+      const pose = previewSequence.sample(sampleTime), node = solvePose(pose);
+      const { requested, constrainedPelvis, solved } = node;
+      const upper = name => upperOffset(rest[name], requested.bodyQuaternion, requested.torsoQuaternion).add(constrainedPelvis).toArray();
+      const joints = { pelvis: constrainedPelvis.toArray(),
+        waist: waistRest.clone().sub(rest.pelvis).applyQuaternion(requested.bodyQuaternion).add(constrainedPelvis).toArray(),
+        shoulderCenter: upper('torso'), neck: upper('neck'), head: upper('head') };
+      for (const side of SIDES) {
+        const { source, shoulder, arm, hip, leg } = solved[side];
+        const positions = {
+          shoulder, elbow: arm.middle, wrist: arm.end,
+          palm: limbs[side].palmOffset.clone().applyQuaternion(source.handQuaternion).add(arm.end),
+          hip, knee: leg.middle, ankle: leg.end,
+          toe: new THREE.Vector3(0, 0, .18).applyQuaternion(source.footQuaternion).add(leg.end),
+        };
+        for (const [name, position] of Object.entries(positions)) joints[side + name[0].toUpperCase() + name.slice(1)] = position.toArray();
+      }
+      const curveTargets = {};
+      for (const side of SIDES) {
+        const curve = previewSequence.curveAt(sampleTime, side);
+        if (curve) curveTargets[side] = curve.position;
+      }
+      const guided = guidedSamples.get(pose);
+      const diagnostics = guided ? {
+        warnings: [...new Set([...guided.warnings, ...node.warnings])],
+        goalErrors: Object.fromEntries(Object.entries(guided.targets)
+          .map(([joint, goal]) => [joint, point(joints[joint]).distanceTo(point(goal))])),
+      } : null;
+      return { time: sampleTime, joints, ...(Object.keys(curveTargets).length ? { curveTargets } : {}),
+        ...(guided ? { guideTargets: structuredClone(guided.targets), diagnostics } : {}),
+        ...(options.includeBoneRotations ? { boneRotations: Object.fromEntries(Object.entries(boneRotationsFromSolved(node))
+          .map(([bone, rotation]) => [bone, rotation.toArray()])) } : {}) };
+    });
+    return { startTime, endTime, frames };
   }
 
   function capturePose() {
@@ -425,6 +706,7 @@ export function createCoachMotion({ model, rigData }) {
       version: 1,
       pelvis: pelvis.toArray(),
       bodyQuaternion: bodyRotation.toArray(),
+      ...(hasPelvisRotation ? { pelvisQuaternion: pelvisRotation.toArray() } : {}),
       ...(hasTorsoRotation ? { torsoQuaternion: torsoRotation.toArray() } : {}),
       limbs: Object.fromEntries(SIDES.map(side => [side, {
         wrist: targets[side].wrist.toArray(),
@@ -434,8 +716,8 @@ export function createCoachMotion({ model, rigData }) {
         kneePole: (targets[side].kneePole ?? targets[side].knee).toArray(),
         footQuaternion: descriptors.get(side + 'Foot').rotation.toArray(),
         handLocked: limbs[side].support,
-        ...(targets[side].elbowTwist !== undefined ? { elbowTwist: targets[side].elbowTwist } : {}),
-        ...(targets[side].kneeTwist !== undefined ? { kneeTwist: targets[side].kneeTwist } : {}),
+        ...Object.fromEntries(['elbowTwist', 'kneeTwist', 'upperArmTwist', 'thighTwist']
+          .filter(key => targets[side][key] !== undefined).map(key => [key, targets[side][key]])),
       }])),
       groundLock,
     };
@@ -512,7 +794,7 @@ export function createCoachMotion({ model, rigData }) {
         });
       }
       if (requested.groundLock) {
-        const hipOffset = rest[side + 'Hip'].clone().sub(rest.pelvis).applyQuaternion(requested.bodyQuaternion);
+        const hipOffset = rest[side + 'Hip'].clone().sub(rest.pelvis).applyQuaternion(pelvisFrame(requested));
         minimumY = Math.max(minimumY, requiredAnkleHeight(side, source.footQuaternion) - (value.thigh + value.shin - 1e-5) - hipOffset.y);
       }
     }
@@ -570,7 +852,7 @@ export function createCoachMotion({ model, rigData }) {
     const constrainedPelvis = projectBody(requested);
     const warnings = [];
     const solved = {};
-    const at = name => rest[name].clone().sub(rest.pelvis).applyQuaternion(requested.bodyQuaternion).add(constrainedPelvis);
+    const at = name => rest[name].clone().sub(rest.pelvis).applyQuaternion(pelvisFrame(requested)).add(constrainedPelvis);
     if (constrainedPelvis.distanceTo(requested.pelvis) > 1e-5) warnings.push('躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。');
     for (const side of SIDES) {
       const source = requested.limbs[side], value = limbs[side];
@@ -590,13 +872,16 @@ export function createCoachMotion({ model, rigData }) {
     return { requested, constrainedPelvis, warnings, solved };
   }
 
-  function applyPose(input) {
+  function applyPose(input, { alignBendPlanes = false } = {}) {
     const { requested, constrainedPelvis, warnings, solved } = solvePose(input);
+    bendPlaneRotation = alignBendPlanes;
     mode = 'manual';
     groundLock = requested.groundLock;
     poseWarnings = warnings;
     pelvis.copy(constrainedPelvis);
     bodyRotation.copy(requested.bodyQuaternion);
+    pelvisRotation.copy(pelvisFrame(requested));
+    hasPelvisRotation = requested.pelvisQuaternion !== undefined;
     torsoRotation.copy(requested.torsoQuaternion ?? IDENTITY);
     hasTorsoRotation = requested.torsoQuaternion !== undefined;
     bodyX.set(1, 0, 0).applyQuaternion(bodyRotation);
@@ -612,7 +897,7 @@ export function createCoachMotion({ model, rigData }) {
       value.flight = source.handLocked ? 0 : 1;
       value.anchor.copy(source.wrist).add(value.palmOffset.clone().applyQuaternion(source.handQuaternion));
       const target = targets[side] = { elbowPole: source.elbowPole.clone(), kneePole: source.kneePole.clone() };
-      for (const key of ['elbowTwist', 'kneeTwist']) if (source[key] !== undefined) target[key] = source[key];
+      for (const key of ['elbowTwist', 'kneeTwist', 'upperArmTwist', 'thighTwist']) if (source[key] !== undefined) target[key] = source[key];
       poseArm(side, target, shoulder, arm.middle, arm.end, source.handQuaternion);
       poseLeg(side, target, hip, leg.middle, leg.end, source.footQuaternion);
     }
@@ -622,8 +907,8 @@ export function createCoachMotion({ model, rigData }) {
 
   function getEditableHandles() {
     const handles = [
-      { id: 'pelvis', position: pelvis.toArray(), quaternion: bodyRotation.toArray(), canRotate: true, label: '骨盆 · 全身位置' },
-      { id: 'torso', position: upperTarget(rest.torso).toArray(), quaternion: bodyRotation.toArray(), canRotate: true, label: '躯干 · 身体方向' },
+      { id: 'pelvis', position: pelvis.toArray(), quaternion: pelvisRotation.toArray(), canRotate: true, label: '髋部 · 独立位置与旋转' },
+      { id: 'torso', position: upperTarget(rest.torso).toArray(), quaternion: bodyRotation.toArray(), canRotate: true, label: '躯干 · 整体移动与转向' },
       { id: 'waist', position: bodyTarget(waistRest).toArray(), quaternion: torsoRotation.toArray(), parentQuaternion: bodyRotation.toArray(), canRotate: true, label: '腰部 · 独立弯腰与扭转' },
     ];
     for (const side of SIDES) {
@@ -642,6 +927,274 @@ export function createCoachMotion({ model, rigData }) {
     return handles;
   }
 
+  function independentPelvisPose(pose, position, quaternion, baseSolved = null) {
+    // Ordinary editing keeps the original live-frame arithmetic. Pure joint
+    // edits can instead supply a solved input frame without touching that rig.
+    const oldPelvis = baseSolved ? baseSolved.constrainedPelvis.clone() : pelvis.clone();
+    const oldBody = baseSolved ? baseSolved.requested.bodyQuaternion.clone() : bodyRotation.clone();
+    const oldUpper = baseSolved ? isNeutralTorso(baseSolved.requested.torsoQuaternion) ? oldBody.clone()
+      : oldBody.clone().multiply(baseSolved.requested.torsoQuaternion) : upperRotation();
+    const oldHipRotation = baseSolved ? pelvisFrame(baseSolved.requested).clone() : pelvisRotation.clone();
+    const shoulderCenter = baseSolved
+      ? upperOffset(rest.torso, oldBody, baseSolved.requested.torsoQuaternion).add(oldPelvis) : upperTarget(rest.torso);
+    const oldWaist = baseSolved ? waistRest.clone().sub(rest.pelvis).applyQuaternion(oldBody).add(oldPelvis) : bodyTarget(waistRest);
+    const lowerRest = waistRest.clone().sub(rest.pelvis), upperRest = rest.torso.clone().sub(waistRest);
+    const lowerLength = lowerRest.length(), upperLength = upperRest.length();
+    const oldAxis = shoulderCenter.clone().sub(oldPelvis).normalize();
+    const bend = oldWaist.clone().sub(oldPelvis);
+    bend.addScaledVector(oldAxis, -bend.dot(oldAxis));
+    if (bend.lengthSq() < 1e-10) {
+      bend.copy(FRONT).applyQuaternion(oldUpper);
+      bend.addScaledVector(oldAxis, -bend.dot(oldAxis));
+    }
+    if (bend.lengthSq() < 1e-10) {
+      bend.copy(FRONT).applyQuaternion(oldBody);
+      bend.addScaledVector(oldAxis, -bend.dot(oldAxis));
+    }
+    bend.normalize();
+    const requestedPosition = position ? point(position) : oldPelvis;
+    const requestedRotation = quaternion ? new THREE.Quaternion().fromArray(quaternion) : oldHipRotation;
+    const moves = requestedPosition.distanceToSquared(oldPelvis) > 1e-20;
+    const goalPosition = requestedPosition.clone();
+    if (moves) {
+      // A drag must not pass through the spine's unreachable inner region and
+      // reappear on the opposite side with an abrupt 180-degree upper-body flip.
+      const displacement = goalPosition.clone().sub(oldPelvis);
+      const origin = oldPelvis.clone().sub(shoulderCenter);
+      const lengthSquared = displacement.lengthSq(), toward = origin.dot(displacement);
+      const minimumSquared = (upperLength - lowerLength) ** 2;
+      const closestAt = clamp(-toward / lengthSquared, 0, 1);
+      if (origin.clone().addScaledVector(displacement, closestAt).lengthSq() < minimumSquared - 1e-14) {
+        const discriminant = toward * toward - lengthSquared * (origin.lengthSq() - minimumSquared);
+        const entry = clamp((-toward - Math.sqrt(Math.max(0, discriminant))) / lengthSquared, 0, 1);
+        goalPosition.copy(oldPelvis).addScaledVector(displacement, entry);
+      }
+    }
+    function candidate(progress, preserveUpper = false) {
+      const next = structuredClone(pose);
+      next.pelvisQuaternion = oldHipRotation.clone().slerp(requestedRotation, progress).toArray();
+      if (!moves) return next;
+      const root = oldPelvis.clone().lerp(goalPosition, progress);
+      if (preserveUpper) {
+        // Near-straight locked arms can forbid even a tiny shoulder tilt. Keep
+        // the whole upper frame fixed and swing the pelvis around the waist,
+        // instead of reducing an otherwise useful hip drag to almost zero.
+        const waist = oldWaist.clone(), radial = oldPelvis.clone().sub(waist).normalize();
+        const tangent = root.clone().sub(oldPelvis);
+        tangent.addScaledVector(radial, -tangent.dot(radial));
+        // Discard unreachable radial shortening before mapping the tangential
+        // drag onto the waist sphere. Its lever never crosses zero at the pivot.
+        const offset = radial.multiplyScalar(lowerLength).add(tangent).normalize();
+        root.copy(waist).addScaledVector(offset, lowerLength);
+        const body = rotationFor(lowerRest, waist.clone().sub(root), oldBody);
+        next.pelvis = root.toArray();next.bodyQuaternion = body.toArray();
+        next.torsoQuaternion = body.clone().invert().multiply(oldUpper).normalize().toArray();
+        return next;
+      }
+      const delta = shoulderCenter.clone().sub(root);
+      let distance = delta.length();
+      const axis = distance > 1e-10 ? delta.multiplyScalar(1 / distance) : oldAxis.clone();
+      distance = clamp(distance, Math.abs(upperLength - lowerLength), upperLength + lowerLength);
+      root.copy(shoulderCenter).addScaledVector(axis, -distance);
+      // Unlike limb IK, the spine permits a fully straight chain. Both lengths
+      // and the shoulder anchor stay exact, including at the reach boundary.
+      const along = (lowerLength * lowerLength - upperLength * upperLength + distance * distance) / (2 * distance);
+      const height = Math.sqrt(Math.max(0, lowerLength * lowerLength - along * along));
+      const transportedBend = bend.clone().applyQuaternion(new THREE.Quaternion().setFromUnitVectors(oldAxis, axis));
+      const waist = root.clone().addScaledVector(axis, along).addScaledVector(transportedBend, height);
+      const body = rotationFor(lowerRest, waist.clone().sub(root), oldBody);
+      const upper = rotationFor(upperRest, shoulderCenter.clone().sub(waist), oldUpper);
+      next.pelvis = root.toArray();
+      next.bodyQuaternion = body.toArray();
+      next.torsoQuaternion = body.clone().invert().multiply(upper).normalize().toArray();
+      return next;
+    }
+    function acceptable(next) {
+      try {
+        const solved = solvePose(next);
+        const center = upperOffset(rest.torso, solved.requested.bodyQuaternion, solved.requested.torsoQuaternion).add(solved.constrainedPelvis);
+        return center.distanceTo(shoulderCenter) < 1e-7;
+      } catch { return false; }
+    }
+    let next = candidate(1), limited = false;
+    if (!acceptable(next)) {
+      const preserveUpper = moves && SIDES.some(side => pose.limbs[side].handLocked);
+      const fixedUpper = preserveUpper ? candidate(1, true) : null;
+      if (fixedUpper && acceptable(fixedUpper)) next = fixedUpper;
+      else {
+        // Find a reachable edit without letting the general body projection drag
+        // the upper body away from its anchor. An impossible edit keeps the pose.
+        let start = 0, end = 1;next = pose;limited = true;
+        for (let pass = 0; pass < 28; pass++) {
+          const middle = (start + end) / 2, attempted = candidate(middle, preserveUpper);
+          if (acceptable(attempted)) { start = middle;next = attempted; }
+          else end = middle;
+        }
+      }
+    }
+    if (moves && point(next.pelvis).distanceTo(requestedPosition) > 1e-5) limited = true;
+    return { pose: next, limited };
+  }
+
+  function jointsFromSolved({ requested, constrainedPelvis, solved }) {
+    const upper = name => upperOffset(rest[name], requested.bodyQuaternion, requested.torsoQuaternion).add(constrainedPelvis);
+    const joints = {
+      pelvis: constrainedPelvis.clone(),
+      waist: waistRest.clone().sub(rest.pelvis).applyQuaternion(requested.bodyQuaternion).add(constrainedPelvis),
+      shoulderCenter: upper('torso'), neck: upper('neck'), head: upper('head'),
+    };
+    for (const side of SIDES) {
+      const { source, shoulder, arm, hip, leg } = solved[side];
+      const positions = {
+        Shoulder: shoulder.clone(), Elbow: arm.middle.clone(), Wrist: arm.end.clone(),
+        Palm: limbs[side].palmOffset.clone().applyQuaternion(source.handQuaternion).add(arm.end),
+        Hip: hip.clone(), Knee: leg.middle.clone(), Ankle: leg.end.clone(),
+        Toe: new THREE.Vector3(0, 0, .18).applyQuaternion(source.footQuaternion).add(leg.end),
+      };
+      for (const [name, position] of Object.entries(positions)) joints[side + name] = position;
+    }
+    return joints;
+  }
+
+  function poseFromSolved({ requested, constrainedPelvis, solved }, template) {
+    const result = structuredClone(template);
+    result.pelvis = constrainedPelvis.toArray();result.bodyQuaternion = requested.bodyQuaternion.toArray();
+    for (const key of ['torsoQuaternion', 'pelvisQuaternion']) {
+      if (requested[key]) result[key] = requested[key].toArray();else delete result[key];
+    }
+    for (const side of SIDES) {
+      const { source, arm, leg } = solved[side], limb = result.limbs[side];
+      limb.wrist = arm.end.toArray();limb.ankle = leg.end.toArray();
+      limb.elbowPole = source.elbowPole.toArray();limb.kneePole = source.kneePole.toArray();
+      limb.handQuaternion = source.handQuaternion.toArray();limb.footQuaternion = source.footQuaternion.toArray();
+    }
+    return result;
+  }
+
+  function jointSwing(from, to, reference) {
+    if (from.lengthSq() < 1e-20 || to.lengthSq() < 1e-20) return IDENTITY.clone();
+    const a = from.clone().normalize(), b = to.clone().normalize();
+    const axis = new THREE.Vector3().crossVectors(a, b), sine = axis.length(), cosine = clamp(a.dot(b), -1, 1);
+    if (sine > 1e-10) return new THREE.Quaternion().setFromAxisAngle(axis.multiplyScalar(1 / sine), Math.atan2(sine, cosine));
+    if (cosine >= 0) return IDENTITY.clone();
+    // Exactly opposite directions have no unique minimal swing. Use the input
+    // frame's front/side plane rather than a scene-dependent arbitrary axis.
+    axis.copy(FRONT).applyQuaternion(reference).addScaledVector(a, -FRONT.clone().applyQuaternion(reference).dot(a));
+    if (axis.lengthSq() < 1e-10) axis.set(1, 0, 0).applyQuaternion(reference).addScaledVector(a, -new THREE.Vector3(1, 0, 0).applyQuaternion(reference).dot(a));
+    return new THREE.Quaternion().setFromAxisAngle(axis.normalize(), Math.PI);
+  }
+
+  /** Reverse a displayed joint goal into a replayable pose without changing the
+   * live skeleton, clock or input. Waist, palms and toes are reference points;
+   * shoulders/head/hips use their existing linked rig frames, not new bones. */
+  function solveJointPose(inputPose, { joint, position } = {}) {
+    const requestedPosition = finiteArray(position, 3, '关节目标位置');
+    const initial = solvePose(inputPose), before = jointsFromSolved(initial), goal = point(requestedPosition);
+    if (typeof joint !== 'string' || !Object.hasOwn(before, joint)) throw new Error('未知关节点。');
+    const base = poseFromSolved(initial, inputPose), notes = [];
+    let linkedGroup = joint === 'pelvis' || joint.endsWith('Hip') ? 'pelvis'
+      : joint === 'waist' || joint === 'shoulderCenter' ? 'body'
+        : ['neck', 'head', 'leftShoulder', 'rightShoulder'].includes(joint) ? 'upperBody'
+          : (joint.startsWith('left') ? 'left' : 'right') + (/Elbow|Wrist|Palm$/.test(joint) ? 'Arm' : 'Leg');
+    let candidate;
+    const upper = isNeutralTorso(initial.requested.torsoQuaternion) ? initial.requested.bodyQuaternion.clone()
+      : initial.requested.bodyQuaternion.clone().multiply(initial.requested.torsoQuaternion);
+    const finish = (solved, template) => {
+      const pose = poseFromSolved(solved, template), replay = solvePose(pose), actual = jointsFromSolved(replay);
+      const error = actual[joint].distanceTo(goal), limited = error > 1e-5;
+      const warnings = [...new Set([...initial.warnings, ...solved.warnings, ...replay.warnings, ...notes,
+        ...(limited ? ['目标已按现有联动关系、真实骨长和锁定约束限制；显示的是实际可达位置。'] : [])])];
+      return { pose, joint, position: actual[joint].toArray(), requestedPosition: [...requestedPosition],
+        error, limited, warnings, linkedGroup, beforePosition: before[joint].toArray(),
+        joints: Object.fromEntries(Object.entries(actual).map(([name, value]) => [name, value.toArray()])) };
+    };
+    if (before[joint].distanceToSquared(goal) < 1e-24) return finish(initial, base);
+    if (joint === 'pelvis') {
+      linkedGroup = 'pelvis';
+      const edited = independentPelvisPose(base, requestedPosition, null, initial);
+      if (edited.limited) notes.push('髋部位移已限幅，上身通过原有腰部联动。');
+      return finish(solvePose(edited.pose), edited.pose);
+    }
+    if (joint === 'waist' || joint === 'shoulderCenter') {
+      linkedGroup = 'body';
+      candidate = progress => {
+        const next = structuredClone(base);
+        next.pelvis = point(base.pelvis).add(goal.clone().sub(before[joint]).multiplyScalar(progress)).toArray();
+        return next;
+      };
+    } else if (['neck', 'head', 'leftShoulder', 'rightShoulder'].includes(joint)) {
+      linkedGroup = 'upperBody';
+      const pivot = before.waist, swing = jointSwing(before[joint].clone().sub(pivot), goal.clone().sub(pivot), upper);
+      candidate = progress => {
+        const next = structuredClone(base), delta = IDENTITY.clone().slerp(swing, progress);
+        next.torsoQuaternion = initial.requested.bodyQuaternion.clone().invert().multiply(delta.clone().multiply(upper)).normalize().toArray();
+        for (const side of SIDES) {
+          const limb = next.limbs[side];
+          limb.elbowPole = point(limb.elbowPole).sub(pivot).applyQuaternion(delta).add(pivot).toArray();
+          if (!limb.handLocked) {
+            limb.wrist = point(limb.wrist).sub(pivot).applyQuaternion(delta).add(pivot).toArray();
+            limb.handQuaternion = delta.clone().multiply(initial.requested.limbs[side].handQuaternion).normalize().toArray();
+          }
+        }
+        return next;
+      };
+    } else {
+      const side = joint.startsWith('left') ? 'left' : 'right', suffix = joint.slice(side.length);
+      const limb = initial.solved[side], dimensions = limbs[side];
+      if (suffix === 'Hip') {
+        linkedGroup = 'pelvis';
+        const hipRotation = pelvisFrame(initial.requested), pivot = before.pelvis;
+        const swing = jointSwing(before[joint].clone().sub(pivot), goal.clone().sub(pivot), hipRotation);
+        const rotation = swing.multiply(hipRotation).normalize();
+        const edited = independentPelvisPose(base, null, rotation.toArray(), initial);
+        return finish(solvePose(edited.pose), edited.pose);
+      }
+      if (suffix === 'Elbow' || suffix === 'Knee') {
+        linkedGroup = suffix === 'Elbow' ? side + 'Arm' : side + 'Leg';
+        const arm = suffix === 'Elbow', root = arm ? limb.shoulder : limb.hip, chain = arm ? limb.arm : limb.leg;
+        const direction = chain.end.clone().sub(root).normalize();
+        const center = root.clone().addScaledVector(direction, chain.middle.clone().sub(root).dot(direction));
+        const bend = chain.middle.clone().sub(center), height = bend.length();
+        const desired = goal.clone().sub(center).addScaledVector(direction, -goal.clone().sub(center).dot(direction));
+        // Near extension, changing a tiny circle's azimuth can turn the mesh
+        // around its axis while barely moving the joint. Preserve that plane.
+        if (height < .001) notes.push('肢体接近伸直，已保留原弯曲方向。');
+        else if (desired.lengthSq() < 1e-20) notes.push('目标在肢体轴线上，已保留原弯曲方向。');
+        else bend.copy(desired).normalize().multiplyScalar(height);
+        const next = structuredClone(base);
+        next.limbs[side][arm ? 'elbowPole' : 'kneePole'] = center.add(bend).toArray();
+        return finish(solvePose(next), next);
+      }
+      const arm = suffix === 'Wrist' || suffix === 'Palm';
+      linkedGroup = arm ? side + 'Arm' : side + 'Leg';
+      let target = goal.clone();
+      if (suffix === 'Palm') target.sub(dimensions.palmOffset.clone().applyQuaternion(limb.source.handQuaternion));
+      if (suffix === 'Toe') target.sub(new THREE.Vector3(0, 0, .18).applyQuaternion(limb.source.footQuaternion));
+      if (arm) {
+        // Preserve the existing explicit wrist-edit behavior: the selected hand
+        // anchor can move even when handLocked, while its lock flag stays set.
+        target = twoBone(limb.shoulder, target, dimensions.upperArm, dimensions.forearm, limb.source.elbowPole).end;
+      }
+      const key = arm ? 'wrist' : 'ankle', old = point(base.limbs[side][key]);
+      candidate = progress => {
+        const next = structuredClone(base);next.limbs[side][key] = old.clone().lerp(target, progress).toArray();return next;
+      };
+    }
+    let chosen = initial, chosenPose = base, bestError = before[joint].distanceTo(goal);
+    // Constraint projection can make the full linked change unreachable or
+    // counterproductive. A small deterministic backtracking set keeps the best
+    // measured candidate and reports residual error instead of faking success.
+    for (let pass = 0; pass < 12; pass++) {
+      const next = candidate(2 ** -pass);
+      try {
+        const solved = solvePose(next), error = jointsFromSolved(solved)[joint].distanceTo(goal);
+        if (error < bestError - 1e-12) { chosen = solved;chosenPose = next;bestError = error; }
+        if (error < 1e-8) break;
+      } catch { /* Smaller candidates may still satisfy the unchanged locks. */ }
+    }
+    return finish(chosen, chosenPose);
+  }
+
   function editHandle(id, change) {
     const handle = getEditableHandles().find(value => value.id === id);
     if (!handle) throw new Error('未知姿势控制点。');
@@ -649,13 +1202,19 @@ export function createCoachMotion({ model, rigData }) {
     const position = change.position === undefined ? null : finiteArray(change.position, 3, `${handle.label}位置`);
     const quaternion = change.quaternion === undefined ? null : poseQuaternion(change.quaternion, `${handle.label}方向`).toArray();
     if (quaternion && !handle.canRotate) throw new Error('此控制点不支持旋转。');
-    const pose = capturePose();
-    let endpointLimited = false;
+    let pose = capturePose();
+    let endpointLimited = false, pelvisLimited = false;
     if (id === 'pelvis') {
-      if (position) pose.pelvis = position;
-      if (quaternion) pose.bodyQuaternion = quaternion;
+      const edited = independentPelvisPose(pose, position, quaternion);
+      pose = edited.pose;pelvisLimited = edited.limited;
     } else if (id === 'torso') {
-      if (quaternion) pose.bodyQuaternion = quaternion;
+      if (quaternion) {
+        if (pose.pelvisQuaternion) {
+          const delta = new THREE.Quaternion().fromArray(quaternion).multiply(bodyRotation.clone().invert());
+          pose.pelvisQuaternion = delta.multiply(pelvisRotation).normalize().toArray();
+        }
+        pose.bodyQuaternion = quaternion;
+      }
       const torsoTarget = point(position ?? handle.position);
       const torsoOffset = upperOffset(rest.torso, new THREE.Quaternion().fromArray(pose.bodyQuaternion), pose.torsoQuaternion ? new THREE.Quaternion().fromArray(pose.torsoQuaternion) : null);
       pose.pelvis = torsoTarget.sub(torsoOffset).toArray();
@@ -692,7 +1251,7 @@ export function createCoachMotion({ model, rigData }) {
         value[end] = rotatedEnd.toArray();value[pole] = pivot.toArray();
         value[endQuaternion] = delta.clone().multiply(new THREE.Quaternion().fromArray(value[endQuaternion])).normalize().toArray();
         const sourceAxis = rest[side + (arm ? 'Wrist' : 'Ankle')].clone().sub(rest[side + suffix]);
-        const base = rotationFor(sourceAxis, rotatedEnd.clone().sub(pivot), arm ? upperRotation() : bodyRotation);
+        const base = rotationFor(sourceAxis, rotatedEnd.clone().sub(pivot), arm ? upperRotation() : pelvisRotation);
         value[arm ? 'elbowTwist' : 'kneeTwist'] = twistAroundAxis(base, rotation, sourceAxis);
       }
       if (position && suffix === 'Wrist') {
@@ -709,6 +1268,7 @@ export function createCoachMotion({ model, rigData }) {
       if (quaternion && (suffix === 'Wrist' || suffix === 'Ankle')) value[suffix === 'Wrist' ? 'handQuaternion' : 'footQuaternion'] = quaternion;
     }
     const effective = applyPose(pose);
+    if (pelvisLimited) poseWarnings.unshift('髋部调整已限制在腰部和四肢可达范围内，肩中心保持原位置。');
     if (endpointLimited) poseWarnings.unshift('手腕已限制在当前肩部与真实手臂长度能够到达的位置。');
     return effective;
   }
@@ -733,8 +1293,10 @@ export function createCoachMotion({ model, rigData }) {
   }
 
   function getMetrics() {
+    const periodic = periodicMotion ? periodicMotion.describe(time) : null;
+    const periodicIndex = periodic ? ['rear', 'right', 'front', 'left'].indexOf(periodic.section) : -1;
     const joints = {
-      pelvis: pelvis.toArray(), shoulderCenter: upperTarget(rest.torso).toArray(),
+      pelvis: pelvis.toArray(), waist: bodyTarget(waistRest).toArray(), shoulderCenter: upperTarget(rest.torso).toArray(),
       neck: upperTarget(rest.neck).toArray(), head: upperTarget(rest.head).toArray(),
     };
     const segmentLengths = { torso: rest.pelvis.distanceTo(rest.torso) };
@@ -753,13 +1315,16 @@ export function createCoachMotion({ model, rigData }) {
       for (const suffix of ['UpperArm', 'Forearm', 'Thigh', 'Shin']) expectedLengths[side + suffix] = value[suffix[0].toLowerCase() + suffix.slice(1)];
     }
     return {
-      time, angle, period: sequence.period, mode, manual: mode === 'manual', layer, selected, legPath, interpolation,
+      time, angle, period: sequence.period, mode, manual: mode === 'manual', layer, selected, legPath, interpolation, motionModel, skippedSteps: [...skippedSteps],
+      periodic,
       bodyQuaternion: bodyRotation.toArray(), groundLock, warnings: [...poseWarnings],
+      pelvisQuaternion: pelvisRotation.toArray(),
       torsoQuaternion: torsoRotation.toArray(),
       name: 'Snow 友善健身主角', source: rigData.source, license: rigData.license,
       illustrative: true, motionType: 'Flare 教学示意', automaticallyBound: false,
       keyframes: { ...sequence.keyframes },
-      demonstration: { index: sequence.stepAt(time), count: sequence.steps.length, id: sequence.steps[sequence.stepAt(time)].id, phase: sequence.steps[sequence.stepAt(time)].phase },
+      demonstration: periodic ? { index: periodicIndex, count: 4, id: `periodic-${periodic.section}`, phase: ['rear', 'sideA', 'front', 'sideB'][periodicIndex] }
+        : { index: sequence.stepAt(time), count: sequence.steps.length, id: sequence.steps[sequence.stepAt(time)].id, phase: sequence.steps[sequence.stepAt(time)].phase },
       supportHands, supports, supportDrift, segmentLengths, expectedLengths, joints,
       minFootHeight: minimumFootHeight, chestForward: FRONT.clone().applyQuaternion(upperRotation()).toArray(),
       bounds: calculateBounds(), neutralBounds, neutralHeight: rigData.height,
@@ -770,5 +1335,8 @@ export function createCoachMotion({ model, rigData }) {
 
   model.userData.motionSource = 'Snow Rig / Blender Foundation';
   reset();
-  return { group: model, update, reset, setSequence, setLayer, setHighlight, getMetrics, capturePose, applyPose, getEditableHandles, editHandle, getGroundHandPose, alignGroundHands };
+  return { group: model, update, reset, setSequence, sampleTrajectory, samplePose, getSegmentGuideAt,
+    getFootCurveSpan: (time, options) => sequence.spanAt(time, options),
+    getFootCurveAt: (time, side) => sequence.curveAt(time, side),
+    setLayer, setHighlight, getMetrics, capturePose, applyPose, getEditableHandles, editHandle, solveJointPose, getGroundHandPose, alignGroundHands };
 }

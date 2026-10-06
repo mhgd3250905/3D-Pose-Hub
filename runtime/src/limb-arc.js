@@ -112,12 +112,12 @@ export function interpolateLimbArc({
 // Retain the simple geometry helper used by standalone diagnostics. Production
 // passes the resolved middle/endpoint through interpolateLimbArc() instead.
 export function interpolateLegArc({ start, end, current, side, hipOffset, blend, floorHeight = -Infinity }) {
-  const rootAt = pose => vector(hipOffset).applyQuaternion(rotation(pose.bodyQuaternion)).add(vector(pose.pelvis)).toArray();
+  const rootAt = pose => vector(hipOffset).applyQuaternion(rotation(pose.pelvisQuaternion ?? pose.bodyQuaternion)).add(vector(pose.pelvis)).toArray();
   const limb = interpolateLimbArc({
     startRoot: rootAt(start), endRoot: rootAt(end), currentRoot: rootAt(current),
     startTarget: start.limbs[side].ankle, endTarget: end.limbs[side].ankle, currentTarget: current.limbs[side].ankle,
     startMiddle: start.limbs[side].kneePole, endMiddle: end.limbs[side].kneePole,
-    startReference: start.bodyQuaternion, endReference: end.bodyQuaternion, currentReference: current.bodyQuaternion,
+    startReference: start.pelvisQuaternion ?? start.bodyQuaternion, endReference: end.pelvisQuaternion ?? end.bodyQuaternion, currentReference: current.pelvisQuaternion ?? current.bodyQuaternion,
     blend, floorHeight, side,
   });
   return { ankle: limb.target, kneePole: limb.pole };

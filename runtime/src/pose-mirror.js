@@ -1,7 +1,7 @@
 const SIDES=['left','right'];
 const POINTS=['wrist','elbowPole','ankle','kneePole'];
 const ROTATIONS=['handQuaternion','footQuaternion'];
-const TWISTS=['elbowTwist','kneeTwist'];
+const TWISTS=['elbowTwist','kneeTwist','upperArmTwist','thighTwist'];
 
 function values(value,length,label){
   if(!Array.isArray(value)||value.length!==length||value.some(number=>typeof number!=='number'||!Number.isFinite(number)))throw new Error(`${label}的数据不完整。`);
@@ -35,6 +35,7 @@ export function mirrorPose(pose){
   }
   const mirrored={version:1,pelvis:mirrorPoint(pose.pelvis),bodyQuaternion:mirrorRotation(pose.bodyQuaternion),limbs,groundLock:pose.groundLock};
   if(Object.hasOwn(pose,'torsoQuaternion'))mirrored.torsoQuaternion=mirrorRotation(pose.torsoQuaternion);
+  if(Object.hasOwn(pose,'pelvisQuaternion'))mirrored.pelvisQuaternion=mirrorRotation(pose.pelvisQuaternion);
   return mirrored;
 }
 
