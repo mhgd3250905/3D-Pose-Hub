@@ -33,6 +33,10 @@ export function createPoseEditor({ scene, camera, renderer, orbit, motion, onCha
   const helper = controls.getHelper();helper.name = 'Pose editor · transform gizmo';scene.add(helper);
   controls.enabled = false;controls.detach();controls.disconnect();canvas.style.touchAction = initialTouchAction;
   controls.setSpace('world');
+  // Calmer axis palette that matches the XYZ fields in the inspector.
+  const GIZMO_TINT = { ff0000: 0xf2907f, '00ff00': 0x9fd59a, '0000ff': 0x83b9f6, ffff00: 0xf6e7a8, '00ffff': 0x9fe3ec, ff00ff: 0xe0a6e8, '787878': 0x9aa8bc };
+  const tinted = new Set();
+  helper.traverse(object => { const material = object.material; if (!material?.color || tinted.has(material)) return; tinted.add(material); const tint = GIZMO_TINT[material.color.getHexString()]; if (tint !== undefined) material.color.setHex(tint); });
   const gizmoSize=()=>THREE.MathUtils.clamp(480/(canvas.getBoundingClientRect().height||600),.36,1.12);
   controls.setSize(gizmoSize());
 

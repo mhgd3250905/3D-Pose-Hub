@@ -1,3 +1,4 @@
+import { scrubCheckpoint } from './scrub-fields.js';
 import { Euler, Quaternion, MathUtils } from 'three';
 import { createTransitionEdits, loadTransitionEdits, saveTransitionEdits, validateTransitionEdits, transitionOptions, TRANSITION_STORAGE_KEY } from './transition-edits.js';
 import { samePose, OFFICIAL_FLARE_SEQUENCE } from './official-poses.js';
@@ -1000,12 +1001,12 @@ export function createTransitionPanel({ viewer, panel, shelf, sequence, storage,
     if (guideEditor.active()) { try { action();refresh(); } catch (error) { notify(error.message);refresh(); }return; }
     if (trajectoryPoseEdit) {
       const previous = poseEditSnapshot();
-      try { action();if (!samePose(previous, poseEditSnapshot())) trajectoryPoseHistory.push(previous);refresh(); }
+      try { action();if (scrubCheckpoint() && !samePose(previous, poseEditSnapshot())) trajectoryPoseHistory.push(previous);refresh(); }
       catch (error) { setPoseEditSnapshot(previous);notify(error.message);refresh(); }return;
     }
     if (curveEdit) { try { action(); } catch (error) { notify(error.message);refresh(); }return; }
     const previous = currentPose();applying = true;
-    try { action();checkpoint(previous);markChanged(); }
+    try { action();if (scrubCheckpoint()) checkpoint(previous);markChanged(); }
     catch (error) { viewer.motion.applyPose(previous);viewer.poseEditor.refresh();notify(error.message);refresh(); }
     finally { applying = false; }
   }

@@ -40,7 +40,15 @@ export class BodyViewer {
     this.hoverMaterial=material(0xb6d6ff,{roughness:.65,polygonOffset:true,polygonOffsetFactor:-1,polygonOffsetUnits:-1});
     this.selectedMesh=new THREE.Mesh(new THREE.BufferGeometry(),this.selectionMaterial);this.selectedMesh.visible=false;this.scene.add(this.selectedMesh);
     this.hoverMesh=new THREE.Mesh(new THREE.BufferGeometry(),this.hoverMaterial);this.hoverMesh.visible=false;this.scene.add(this.hoverMesh);
-    const grid=new THREE.GridHelper(4,40,0x577fa8,0x456585);grid.position.y=-.013;grid.material.transparent=true;grid.material.opacity=.18;this.scene.add(grid);this.stageGrid=grid;
+    // Floor grid that dissolves toward the edges instead of ending in a hard square.
+    const gridCanvas=document.createElement('canvas');gridCanvas.width=gridCanvas.height=1024;
+    const gridContext=gridCanvas.getContext('2d');gridContext.strokeStyle='rgba(170,200,235,1)';
+    for(let i=0;i<=40;i++){const p=Math.round(i*1024/40)+.5;gridContext.globalAlpha=i%5===0?.55:.22;gridContext.lineWidth=i%5===0?1.4:1;gridContext.beginPath();gridContext.moveTo(p,0);gridContext.lineTo(p,1024);gridContext.moveTo(0,p);gridContext.lineTo(1024,p);gridContext.stroke();}
+    gridContext.globalAlpha=1;gridContext.globalCompositeOperation='destination-in';
+    const gridFade=gridContext.createRadialGradient(512,512,40,512,512,512);gridFade.addColorStop(0,'rgba(0,0,0,1)');gridFade.addColorStop(.55,'rgba(0,0,0,.55)');gridFade.addColorStop(1,'rgba(0,0,0,0)');
+    gridContext.fillStyle=gridFade;gridContext.fillRect(0,0,1024,1024);
+    const gridTexture=new THREE.CanvasTexture(gridCanvas);gridTexture.anisotropy=8;gridTexture.colorSpace=THREE.SRGBColorSpace;
+    const grid=new THREE.Mesh(new THREE.PlaneGeometry(4,4),new THREE.MeshBasicMaterial({map:gridTexture,transparent:true,opacity:.18,depthWrite:false}));grid.rotation.x=-Math.PI/2;grid.position.y=-.013;this.scene.add(grid);this.stageGrid=grid;
     const circle=new THREE.Mesh(new THREE.RingGeometry(.38,.382,96),new THREE.MeshBasicMaterial({color:0x719bc7,transparent:true,opacity:.2,side:THREE.DoubleSide}));circle.rotation.x=-Math.PI/2;circle.position.y=-.01;this.scene.add(circle);
     const shadowCanvas=document.createElement('canvas');shadowCanvas.width=128;shadowCanvas.height=128;
     const context=shadowCanvas.getContext('2d');const gradient=context.createRadialGradient(64,64,3,64,64,61);gradient.addColorStop(0,'rgba(0,0,0,.48)');gradient.addColorStop(.4,'rgba(0,0,0,.23)');gradient.addColorStop(1,'rgba(0,0,0,0)');context.fillStyle=gradient;context.fillRect(0,0,128,128);
@@ -255,7 +263,7 @@ export class BodyViewer {
   }
   setMode(mode){
     const prior=this.mode;this.mode=mode;this.selectedPart=null;this.selectedMesh.visible=false;this.hoverMesh.visible=false;
-    this.stageGrid.material.opacity=mode==='motion' ? .065 : .18;
+    this.stageGrid.material.opacity=mode==='motion' ? .12 : .32;
     this.poseEditor?.setEnabled(mode==='pose');
     this.pacing=null;
     if(mode==='motion')this.motion?.update(this.time);
