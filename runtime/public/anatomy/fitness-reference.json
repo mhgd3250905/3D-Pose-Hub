@@ -1,0 +1,116 @@
+{
+  "source": "Blender Studio Human Base Meshes",
+  "sourceVersion": "1.4.1",
+  "sourceId": "GEO-body_male_realistic",
+  "sourceUrl": "https://www.blender.org/download/demo-files/",
+  "license": "CC0-1.0",
+  "units": "meters",
+  "upAxis": "+Y",
+  "frontAxis": "+Z",
+  "referencePose": true,
+  "bodyRegistration": "independent",
+  "bounds": {
+    "min": [
+      -0.44132739305496216,
+      0.0,
+      -0.11657273769378662
+    ],
+    "max": [
+      0.4413275718688965,
+      1.6900311708450317,
+      0.17975743114948273
+    ]
+  },
+  "parts": [
+    {
+      "name": "Fitness_Body_Surface",
+      "sourceId": "GEO-body_male_realistic",
+      "partRole": "body-surface",
+      "role": "body-surface",
+      "vertices": 42342,
+      "triangles": 74274
+    },
+    {
+      "name": "Fitness_Sports_Shorts",
+      "sourceId": "GEO-body_male_realistic",
+      "partRole": "clothing",
+      "role": "clothing",
+      "vertices": 3362,
+      "triangles": 6728
+    }
+  ],
+  "triangles": 81002,
+  "sourceBaseGeometry": {
+    "GEO-body_male_realistic": {
+      "vertices": 10582,
+      "faces": 10590
+    },
+    "GEO-body_male_realistic.eye.L": {
+      "vertices": 546,
+      "faces": 544
+    },
+    "GEO-body_male_realistic.eye.R": {
+      "vertices": 546,
+      "faces": 544
+    }
+  },
+  "glbBytes": 2523408,
+  "glbSha256": "47b9427d19d82cb4f573196028e1513c20b719c41a2a5fd961579360412f442d",
+  "modifications": [
+    "Original authored Multires level 1 evaluated on the derivative only; original full body retained; separate source eyes removed from this derivative.",
+    "All source parts uniformly translated to center X and feet Y=0; source Blender -Y becomes GLB front +Z.",
+    "Neutral low-gloss porcelain skin; local smoothing of the closed source anterior face into a low-detail mannequin; no new head or facial anatomy.",
+    "Deep eye/mouth cavity faces replaced by local caps using their original boundary vertices: 5365 pocket faces, 5 caps.",
+    "Localized under-garment private contour softening on derived body only: 249 vertices.",
+    "Source pelvic/thigh surface copied, cut to even waist/leg hems, relaxed and smoothed into opaque matte dark-blue shorts.",
+    "Complete retained body surface below opaque shorts reduced for garment clearance only: 1520 vertices; visible torso/limbs unaffected."
+  ],
+  "limits": [
+    "Static functional body reference; no motion rig, animations, internal muscles, or measured muscle activation.",
+    "Not BodyParts3D and not precisely registered to its internal structures or the Snow motion actor.",
+    "Own body and clothing surface colour indicates functional location, including covered hip regions; eyes are omitted from this derivative; never an anatomical muscle boundary."
+  ],
+  "checks": {
+    "sourceFilesUnchanged": true,
+    "sourceRawGeometryUnchanged": true,
+    "completeBody": true,
+    "independentEyesIncluded": false,
+    "separateEyeMeshCount": 0,
+    "closedBodySurface": true,
+    "derivedClothing": true,
+    "finiteBounds": true,
+    "feetOnGround": true,
+    "centeredX": true,
+    "bodyOutsideFaceAndGarmentUnchanged": true,
+    "changedDerivedFaceVertices": 11937,
+    "changedDerivedVerticesUnderGarment": 1519
+  },
+  "sourceHashesBefore": {
+    "assets\\blender-studio-source\\human-base-meshes-v1.4.1\\human-base-meshes-bundle-v1.4.1\\human_base_meshes_bundle.blend": "3c121505651140ceb4d69fd1d8923f7788ffadd81672f5be14845a5f2c75c137",
+    "assets\\blender-studio-source\\human-base-meshes-bundle-v1.4.1.zip": "811f43accbb31a88266d932f8f5563b2d13586fca0ba2693aad1f5fe582b3515",
+    "public\\anatomy\\manifest.json": "87b548d0143a328ecc8a9691cfd95124a646e3a5082804fd1a76d19e1bb1b179",
+    "public\\anatomy\\muscles.bin": "75c2b823a795d340a680f6ac2915cf7af891ffa0ef1fd0dff9e4e6e16fa9f1ec",
+    "public\\anatomy\\bones.bin": "89e115ff8809a03dc78804fc7972fa1730e5927548b1a616079d4064d8973e35",
+    "public\\anatomy\\skin.bin": "4a8d6c96029905d9c39f282fabfd2335b6067b4b1dc9605729ae85ab56e7cd9c",
+    "public\\anatomy\\skin-manifest.json": "aaf2122842c65964c00a9f813ada438328f85c1d8424ea944756b003a43608b4",
+    "public\\anatomy\\muscle-reference.glb": "d77ee5ecffffa95afa5d71e0ff2ae05878956b98354243cdfbe33e70a9db8d7c",
+    "public\\anatomy\\muscle-reference.json": "253a34c7045e0bbf178ada597ce1f3b2acf99068581ec908b4e7df4a7a423f51",
+    "public\\coach\\flare-coach.glb": "ffb7333e94662e2e27846cee2e3413c184109fd72863e8a2254a3975dcc3c85f",
+    "public\\coach\\coach-rig.json": "b8566c2206181d1ea26568c42af927dd2414130709f1715c25a42fc2c4cdad1a",
+    "public\\coach\\flare-sequence.json": "743b028afef5cb7a854a0445c24a1456ef0dc0b8171a8a85df29241be57cf787"
+  },
+  "sourceHashesAfter": {
+    "assets\\blender-studio-source\\human-base-meshes-v1.4.1\\human-base-meshes-bundle-v1.4.1\\human_base_meshes_bundle.blend": "3c121505651140ceb4d69fd1d8923f7788ffadd81672f5be14845a5f2c75c137",
+    "assets\\blender-studio-source\\human-base-meshes-bundle-v1.4.1.zip": "811f43accbb31a88266d932f8f5563b2d13586fca0ba2693aad1f5fe582b3515",
+    "public\\anatomy\\manifest.json": "87b548d0143a328ecc8a9691cfd95124a646e3a5082804fd1a76d19e1bb1b179",
+    "public\\anatomy\\muscles.bin": "75c2b823a795d340a680f6ac2915cf7af891ffa0ef1fd0dff9e4e6e16fa9f1ec",
+    "public\\anatomy\\bones.bin": "89e115ff8809a03dc78804fc7972fa1730e5927548b1a616079d4064d8973e35",
+    "public\\anatomy\\skin.bin": "4a8d6c96029905d9c39f282fabfd2335b6067b4b1dc9605729ae85ab56e7cd9c",
+    "public\\anatomy\\skin-manifest.json": "aaf2122842c65964c00a9f813ada438328f85c1d8424ea944756b003a43608b4",
+    "public\\anatomy\\muscle-reference.glb": "d77ee5ecffffa95afa5d71e0ff2ae05878956b98354243cdfbe33e70a9db8d7c",
+    "public\\anatomy\\muscle-reference.json": "253a34c7045e0bbf178ada597ce1f3b2acf99068581ec908b4e7df4a7a423f51",
+    "public\\coach\\flare-coach.glb": "ffb7333e94662e2e27846cee2e3413c184109fd72863e8a2254a3975dcc3c85f",
+    "public\\coach\\coach-rig.json": "b8566c2206181d1ea26568c42af927dd2414130709f1715c25a42fc2c4cdad1a",
+    "public\\coach\\flare-sequence.json": "743b028afef5cb7a854a0445c24a1456ef0dc0b8171a8a85df29241be57cf787"
+  }
+}

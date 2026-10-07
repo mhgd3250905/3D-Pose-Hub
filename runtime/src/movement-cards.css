@@ -1,0 +1,413 @@
+.movement-cards-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  overflow: clip;
+  pointer-events: none;
+  font-family: "Segoe UI", "Microsoft YaHei UI", "PingFang SC", sans-serif;
+}
+
+.movement-cards-layer > div,
+.movement-cards-layer > div > div {
+  pointer-events: none;
+}
+
+.movement-world-card {
+  --mwc-accent: #72d6ff;
+  width: 192px;
+  pointer-events: auto;
+  color: #eef2f6;
+  text-align: left;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  contain: layout style;
+}
+
+.movement-world-card,
+.movement-world-card * {
+  box-sizing: border-box;
+}
+
+.movement-world-card .mwc-surface {
+  position: relative;
+  min-height: 66px;
+  border: 1px solid #cad7e029;
+  border-radius: 12px;
+  background: #0b111bdd;
+  backdrop-filter: blur(16px) saturate(115%);
+  -webkit-backdrop-filter: blur(16px) saturate(115%);
+  box-shadow: 0 8px 22px #00000030, inset 0 1px 0 #ffffff0a;
+  overflow: hidden;
+}
+
+.movement-world-card .mwc-surface::before {
+  position: absolute;
+  inset: 11px auto 11px 0;
+  width: 2px;
+  border-radius: 2px;
+  background: var(--mwc-accent);
+  opacity: .62;
+  content: "";
+  pointer-events: none;
+}
+
+.movement-world-card[data-expanded="true"] .mwc-surface {
+  border-color: #d2deec45;
+  background: #0b111bef;
+  box-shadow: 0 15px 36px #00000040, inset 0 1px 0 #ffffff0d;
+}
+
+.movement-world-card .mwc-summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 40px;
+  padding: 8px 11px 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.movement-world-card button:focus-visible,
+.movement-world-card summary:focus-visible {
+  outline: 2px solid var(--mwc-accent);
+  outline-offset: -3px;
+  border-radius: 8px;
+}
+
+.movement-world-card .mwc-region-pin {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 22px;
+  width: 22px;
+  height: 22px;
+  border: 1px solid var(--mwc-accent);
+  border-radius: 50%;
+  background: #14202b;
+  color: var(--mwc-accent);
+  font: 10px/1 ui-monospace, "Cascadia Code", Consolas, monospace;
+}
+
+.movement-body-pin {
+  --mwc-accent: #72d6ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  position: relative;
+  padding: 0;
+  border: 1px solid color-mix(in srgb, var(--mwc-accent) 45%, transparent);
+  border-radius: 50%;
+  background: #10202d4d;
+  color: transparent;
+  box-shadow: 0 0 0 3px #0c182817;
+  font: 10px/1 ui-monospace, "Cascadia Code", Consolas, monospace;
+  pointer-events: auto;
+  cursor: pointer;
+  backface-visibility: hidden;
+  transition: opacity .15s ease, box-shadow .15s ease;
+}
+
+.movement-body-pin::before {
+  position: absolute;
+  inset: -11px;
+  border-radius: 50%;
+  content: "";
+}
+
+.movement-body-pin::after {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--mwc-accent);
+  content: "";
+}
+
+.movement-body-pin[data-active="true"] {
+  border-color: var(--mwc-accent);
+  background: #11232ef5;
+  color: var(--mwc-accent);
+  box-shadow: 0 0 0 4px #0b172b80, 0 0 16px color-mix(in srgb, var(--mwc-accent) 32%, transparent);
+}
+
+.movement-body-pin[data-active="true"]::after { display: none; }
+
+.movement-body-pin:focus-visible { outline: 2px solid var(--mwc-accent);outline-offset: 4px; }
+
+.movement-world-card[data-muted="true"] .mwc-surface {
+  opacity: .62;
+}
+
+.movement-world-card .mwc-region-pin svg {
+  display: block;
+  width: 17px;
+  height: 17px;
+  stroke-width: 1.6px;
+}
+
+.movement-world-card .mwc-heading {
+  flex: 1;
+  min-width: 0;
+}
+
+.movement-world-card .mwc-kicker {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 3px;
+  line-height: 12px;
+}
+
+.movement-world-card .mwc-number {
+  display: none;
+  color: var(--mwc-accent);
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: 9px;
+  letter-spacing: .06em;
+}
+
+.movement-world-card .mwc-title {
+  display: block;
+  overflow: hidden;
+  color: #f3f6f8;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 19px;
+  letter-spacing: .04em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.movement-world-card .mwc-badge {
+  display: block;
+  overflow: hidden;
+  color: #a4afbf;
+  font-size: 9px;
+  line-height: 12px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.movement-world-card .mwc-chevron {
+  display: inline-flex;
+  flex: 0 0 11px;
+  color: #7e8c9f;
+  transition: transform .15s ease;
+}
+
+.movement-world-card .mwc-chevron svg {
+  width: 11px;
+  height: 11px;
+}
+
+.movement-world-card[data-expanded="true"] .mwc-chevron {
+  transform: rotate(180deg);
+  color: var(--mwc-accent);
+}
+
+.movement-world-card .mwc-brief {
+  overflow: hidden;
+  padding: 0 11px 6px 41px;
+  margin: 0;
+  color: #bfcbda;
+  font-size: 11px;
+  line-height: 16px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.movement-world-card[data-tight="true"]:not([data-expanded="true"]) .mwc-surface {
+  min-height: 44px;
+}
+
+.movement-world-card[data-tight="true"]:not([data-expanded="true"]) .mwc-summary {
+  min-height: 42px;
+  padding: 9px 10px;
+  gap: 6px;
+}
+
+.movement-world-card[data-tight="true"]:not([data-expanded="true"]) .mwc-title {
+  font-size: 13px;
+}
+
+.movement-world-card[data-tight="true"]:not([data-expanded="true"]) .mwc-kicker,
+.movement-world-card[data-tight="true"]:not([data-expanded="true"]) .mwc-brief {
+  display: none;
+}
+
+.movement-world-card .mwc-details {
+  max-height: 264px;
+  overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: #647486 #0b111b;
+  padding: 12px 14px;
+  border-top: 1px solid #d1deeb14;
+}
+
+.movement-world-card .mwc-card-actions {
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #d1deeb14;
+}
+
+.movement-world-card .mwc-caption {
+  margin: 0 0 6px;
+  color: #8a97a9;
+  font-size: 9px;
+  font-weight: 500;
+  line-height: 12px;
+  letter-spacing: .06em;
+}
+
+.movement-world-card .mwc-related-muscles {
+  margin: 0;
+  color: var(--mwc-accent);
+  font-size: 12px;
+  font-weight: 550;
+  line-height: 18px;
+  overflow-wrap: anywhere;
+}
+
+.movement-world-card [hidden] {
+  display: none !important;
+}
+
+.movement-world-card .mwc-action {
+  margin: 0 0 14px;
+  color: #d3dde8;
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.movement-world-card .mwc-compare {
+  padding: 0;
+  margin: 0 0 13px;
+  list-style: none;
+  counter-reset: observation;
+}
+
+.movement-world-card .mwc-compare-item {
+  display: grid;
+  grid-template-columns: 17px 1fr;
+  gap: 6px;
+  color: #becbdc;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.movement-world-card .mwc-compare-item::before {
+  counter-increment: observation;
+  content: counter(observation, decimal-leading-zero);
+  color: var(--mwc-accent);
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 9px;
+  line-height: 19px;
+}
+
+.movement-world-card .mwc-compare-item + .mwc-compare-item {
+  margin-top: 6px;
+}
+
+.movement-world-card .mwc-footer {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 7px;
+  padding-top: 9px;
+  margin-top: 2px;
+  border-top: 1px solid #d1deeb14;
+}
+
+.movement-world-card .mwc-play,
+.movement-world-card .mwc-loop {
+  display: inline-flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 32px;
+  padding: 7px 8px;
+  border: 1px solid #d1deeb22;
+  border-radius: 7px;
+  background: #dce9f106;
+  color: #c6d1df;
+  font: inherit;
+  font-size: 11px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.movement-world-card .mwc-play:hover,
+.movement-world-card .mwc-loop:hover {
+  border-color: var(--mwc-accent);
+  color: #f3f7fa;
+  background: #dce9f10d;
+}
+
+.movement-world-card button:disabled {
+  opacity: .45;
+  cursor: default;
+}
+
+.movement-world-card .mwc-play-icon,
+.movement-world-card .mwc-action-icon {
+  display: inline-flex;
+  flex: 0 0 12px;
+}
+
+.movement-world-card .mwc-play-icon svg,
+.movement-world-card .mwc-action-icon svg {
+  width: 12px;
+  height: 12px;
+}
+
+.movement-world-card .mwc-exact-details {
+  margin-top: 11px;
+  border-top: 1px solid #d1deeb14;
+}
+
+.movement-world-card .mwc-exact-summary {
+  padding: 9px 0 1px;
+  color: #899aad;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.movement-world-card .mwc-exact-summary::marker {
+  color: var(--mwc-accent);
+}
+
+.movement-world-card .mwc-muscle-row {
+  margin: 10px 0;
+  padding-left: 8px;
+  border-left: 1px solid var(--mwc-accent);
+}
+
+.movement-world-card .mwc-muscle-name {
+  display: block;
+  color: #d4deeb;
+  font-size: 11px;
+  font-weight: 550;
+  line-height: 1.5;
+}
+
+.movement-world-card .mwc-muscle-role {
+  display: block;
+  margin-top: 3px;
+  color: #8fa1b7;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .movement-world-card .mwc-chevron { transition: none; }
+  .movement-body-pin { transition: none; }
+}

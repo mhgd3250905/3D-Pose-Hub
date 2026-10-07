@@ -6,6 +6,7 @@ import { muscleGroups, groupById } from './data.js';
 import { createCoachMotion } from './coach-motion.js';
 import { createPoseEditor } from './pose-editor.js';
 import { createTrajectoryGuide } from './trajectory-guide.js';
+import { createMovementGuide } from './movement-guide.js';
 
 const material = (color, options={}) => new THREE.MeshStandardMaterial({color,roughness:.77,metalness:0,...options});
 const nextFrame = () => new Promise(resolve => requestAnimationFrame(resolve));
@@ -15,7 +16,7 @@ const movementView = mode => mode === 'motion' || mode === 'pose';
 export class BodyViewer {
   constructor(container, callbacks) {
     this.container=container;this.callbacks=callbacks;this.mode='anatomy';this.layer='skin';this.selectedGroup='shoulders';this.focused=false;this.parts=[];this.batches=[];this.dirty=true;this.time=0;this.playing=false;this.speed=.5;
-    this.scene=new THREE.Scene();
+    this.scene=new THREE.Scene();this.playbackRange=null;
     this.trajectoryGuide=createTrajectoryGuide({scene:this.scene});this.trajectoryData=null;
     this.camera=new THREE.PerspectiveCamera(32,1,.02,40);
     this.renderer=new THREE.WebGLRenderer({alpha:true,antialias:true,preserveDrawingBuffer:true,powerPreference:'high-performance'});
@@ -39,7 +40,7 @@ export class BodyViewer {
     this.hoverMaterial=material(0xb6d6ff,{roughness:.65,polygonOffset:true,polygonOffsetFactor:-1,polygonOffsetUnits:-1});
     this.selectedMesh=new THREE.Mesh(new THREE.BufferGeometry(),this.selectionMaterial);this.selectedMesh.visible=false;this.scene.add(this.selectedMesh);
     this.hoverMesh=new THREE.Mesh(new THREE.BufferGeometry(),this.hoverMaterial);this.hoverMesh.visible=false;this.scene.add(this.hoverMesh);
-    const grid=new THREE.GridHelper(4,40,0x577fa8,0x456585);grid.position.y=-.013;grid.material.transparent=true;grid.material.opacity=.18;this.scene.add(grid);
+    const grid=new THREE.GridHelper(4,40,0x577fa8,0x456585);grid.position.y=-.013;grid.material.transparent=true;grid.material.opacity=.18;this.scene.add(grid);this.stageGrid=grid;
     const circle=new THREE.Mesh(new THREE.RingGeometry(.38,.382,96),new THREE.MeshBasicMaterial({color:0x719bc7,transparent:true,opacity:.2,side:THREE.DoubleSide}));circle.rotation.x=-Math.PI/2;circle.position.y=-.01;this.scene.add(circle);
     const shadowCanvas=document.createElement('canvas');shadowCanvas.width=128;shadowCanvas.height=128;
     const context=shadowCanvas.getContext('2d');const gradient=context.createRadialGradient(64,64,3,64,64,61);gradient.addColorStop(0,'rgba(0,0,0,.48)');gradient.addColorStop(.4,'rgba(0,0,0,.23)');gradient.addColorStop(1,'rgba(0,0,0,0)');context.fillStyle=gradient;context.fillRect(0,0,128,128);
@@ -103,14 +104,21 @@ export class BodyViewer {
     this.poseEditor=createPoseEditor({scene:this.scene,camera:this.camera,renderer:this.renderer,orbit:this.controls,motion:this.motion,
       onChange:event=>{this.dirty=true;this.callbacks.onPoseChange?.(event);},onSelection:state=>{this.dirty=true;this.callbacks.onPoseSelection?.(state);}});
     this.poseEditor.setEnabled(false);
+    this.movementGuide=createMovementGuide({scene:this.scene,model:this.coach});
     this.applyAppearance();this.resetView();this.callbacks.onProgress?.(100,'人物与肌群已就绪');this.dirty=true;
     return this.manifest;
   }
   animate(now){
     const delta=Math.min((now-this.previous)/1000,.06);this.previous=now;
-    if(this.playing&&this.mode==='motion'&&this.motion){this.time=(this.time+delta*this.speed)%this.motion.getMetrics().period;this.motion.update(this.time);this.callbacks.onTime?.(this.time);this.dirty=true;}
+    const previewFrame = this.callbacks.onAnimationFrame?.(delta) === true;
+    if(!previewFrame&&this.playing&&this.mode==='motion'&&this.motion){
+      const range=this.playbackRange;
+      if(range){const duration=range.endTime-range.startTime,elapsed=this.time-range.startTime+delta*this.speed;this.time=range.startTime+(elapsed%duration+duration)%duration;}
+      else this.time=(this.time+delta*this.speed)%this.motion.getMetrics().period;
+      this.motion.update(this.time);this.callbacks.onTime?.(this.time);this.dirty=true;
+    }
     const moved=this.poseEditor?.getState().dragging?false:this.controls.update();
-    if(this.dirty||moved){this.renderer.render(this.scene,this.camera);this.dirty=false;}
+    if(this.dirty||moved||this.callbacks.needsRender?.()){if(this.mode==='motion')this.movementGuide?.update(this.time,this.motion.getMetrics());this.callbacks.onRender?.();this.renderer.render(this.scene,this.camera);this.dirty=false;}
     requestAnimationFrame(this.animate);
   }
   resize(force=false){
@@ -201,6 +209,7 @@ export class BodyViewer {
   }
   setMode(mode){
     const prior=this.mode;this.mode=mode;this.selectedPart=null;this.selectedMesh.visible=false;this.hoverMesh.visible=false;
+    this.stageGrid.material.opacity=mode==='motion' ? .065 : .18;
     this.poseEditor?.setEnabled(mode==='pose');
     if(mode==='motion')this.motion?.update(this.time);
     else if(mode==='pose'){this.playing=false;this.layer='skin';this.focused=false;this.motion?.applyPose(this.motion.capturePose());this.poseEditor?.refresh();}
@@ -241,6 +250,14 @@ export class BodyViewer {
       this.motion?.update(this.time);
     }
     this.callbacks.onTime?.(this.time);this.dirty=true;
+  }
+  setPlaybackRange(range){
+    if(range&&(!Number.isFinite(range.startTime)||!Number.isFinite(range.endTime)||range.startTime<0||range.endTime<=range.startTime||range.endTime>this.motion.getMetrics().period))throw new Error('讲解区间需要位于当前保存动画内。');
+    this.playbackRange=range?{startTime:range.startTime,endTime:range.endTime}:null;
+  }
+  projectMovementPoint(position){
+    if(!position)return null;const p=this.coach.localToWorld(new THREE.Vector3().fromArray(position)).project(this.camera);
+    return{x:(p.x+1)/2*this.container.clientWidth,y:(1-p.y)/2*this.container.clientHeight,visible:p.z>=-1&&p.z<=1};
   }
   async capture(){
     this.controls.update();const editing=this.mode==='pose',editorEnabled=this.poseEditor.getState().enabled,insets={...this.framingInsets},position=this.camera.position.clone(),target=this.controls.target.clone();

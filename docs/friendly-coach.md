@@ -1,6 +1,6 @@
-# 零预算友善卡通人体
+# 零预算动作人物与静态肌群参考
 
-用户最终方向是友善卡通健身人物、零预算，使用本机 Blender。默认展示完整运动人物，点选肌群时查看实际局部解剖，避免全身裸露的肌骨结构。此前现成收费模型文档保留为历史研究，不再作为本阶段的采购建议。
+本项目保持零预算，使用本机 Blender 和合法免费成熟人物网格。Snow 继续承担友善卡通动作教学；点击肌群后，默认在独立浮窗中查看官方 Realistic 男性完整人物与肌群位置色区，解剖结构另行切换。此前收费模型文档保留为历史研究，本轮没有采购或调用收费生成服务。
 
 ## 已交付资产
 
@@ -9,8 +9,10 @@
 - 真实关节点与来源：`public/coach/coach-rig.json`、`public/coach/ATTRIBUTION.md`。
 - Blender 全身渲染：`output/blender/coach-preview.png`；面部近景：`output/blender/coach-portrait.png`。
 - 可复现制作脚本：`tools/blender/build_coach.py`；七个必需生成 helper 及调用顺序见下文“用本机 Blender 重建”。
+- 默认静态肌群位置参考：`public/anatomy/fitness-reference.glb`、`public/anatomy/fitness-reference.json`；可编辑场景为 `assets/coach/fitness-reference.blend`，制作脚本为 `tools/blender/build_fitness_reference.py`。
+- 解剖结构模式保留的同源完整体表：`public/anatomy/muscle-reference.glb`、`public/anatomy/muscle-reference.json`；可编辑文件和制作脚本仍为 `assets/coach/muscle-reference.blend`、`tools/blender/build_muscle_reference.py`。这些静态参考与 Snow 动作资产分开。
 
-人物的身体、面孔、眼睛、眉毛、头发、衣服和鞋均来自 Blender Studio 免费发布的 Snow v4.2。这个项目使用完整成熟网格，调整运动服、肤色、表情和灯光。没有用球、柱等体块拼接人体。原始专业 rig 及贴图仍保存在 `assets/blender-studio-source/snow-rig-v4/Snow/`，未改动源文件。
+Snow 动作人物的身体、面孔、眼睛、眉毛、头发、衣服和鞋均来自 Blender Studio 免费发布的 Snow v4.2。这个项目使用完整成熟网格，调整运动服、肤色、表情和灯光。没有用球、柱等体块拼接人体。原始专业 rig 及贴图仍保存在 `assets/blender-studio-source/snow-rig-v4/Snow/`，未改动源文件。
 
 ## 当前人物与正式展示
 
@@ -21,6 +23,30 @@
 升级此正式循环时独立备份旧展示，不改个人步骤与草稿。个人姿势通过“用于正式展示”显式采用：至少 16 步的库优先匹配正式来源的步骤 ID，否则按列表第 9–16 步再接回第 9 步；完整九步库可按列表发布。旧的 `5.json + 镜像4/3/2/1` 属于此前展示版本，不再是当前正式来源。
 
 动作用于说明 Flare 的支撑与摆腿，需要真实运动捕捉时应另行采集；肌群功能颜色不是肌电激活百分比。
+
+2026-10-07 Snow 主动画的发力提示改为浅色柔边区域，减弱高饱和换色并移除额外发光。整件短裤不参加任何发力区域着色，默认、悬浮及训练时均保留原哑光黑色，避免亮色放大裤裆褶皱；髋部继续由动态卡片、引线和方向箭头说明。此次只改网页显示代码，没有重建人物网格、服装、骨架或保存动画。
+
+同日将动画导览统一为青蓝肩臂支撑、淡紫核心协调、青柠髋腿摆动。默认不常驻三张文字卡片；悬浮身体功能色区或小热点时，仅展开一张发力说明卡。点击暂停当前动画并打开独立的全息肌群浮窗，默认人物改用 Human Base Meshes v1.4.1 的 Realistic male：保留同源头、耳、颈、躯干、双臂与手足，采用浅色低反光皮肤与哑光深蓝运动短裤。派生面部作低细节平滑并闭合眼口深凹，最终不显示独立眼睛。
+
+默认色区落在这个成熟人物的体表与覆盖相关部位的服饰表面，说明相关肌群的位置与功能关联；静态短裤可用宽色区定位其覆盖的髋前与臀部，不增加肌肉形状。深层肌群是所在部位示意，功能区不代表肌肉边界。内部真实网格在 **解剖结构**模式中独立查看，使用原 BodyParts3D 肌群与同源 `muscle-reference.glb`。两个不同人物不混合展示，保留 BodyParts3D 的源名称、左右、网格、坐标与缺失结构说明。
+
+浮窗以独立相机放大相关部位，完整人物留在场景中；同一场景通过 scissor 和第二相机绘制真实全身定位图，可查看全身、返回局部、切换正面／背面、独立旋转、缩放与复位。完整人物通过本地 Three.js `GLTFLoader` 读取，骨骼／肌肉二进制按原加载方式管理。底部固定已有练法的文字入口，本轮没有新增训练动作模型。
+
+默认静态参考没有动作绑定，不用于替换 Snow。原 Skin、肌肉、骨骼、旧完整体表及源人物资产保留；新派生人物的材质、原细分、统一坐标、隐私外观与短裤改动记录在 `fitness-reference.json`。Snow 的完整服装、骨架和保存动画保留；主动作 Snow 黑短裤继续排除着色，上衣不受下肢色区影响，短弧与撑手环仍来自原动画。
+
+## 静态参考人物的来源与制作
+
+默认静态人物取自 Blender Studio 与社区贡献者发布的 [Human Base Meshes v1.4.1](https://www.blender.org/download/demo-files/)，源对象为 `GEO-body_male_realistic`，许可 [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/)。官方完整包、下载地址与原包哈希保留在 `assets/blender-studio-source/SOURCE.md`。它允许免费修改和商业使用，保留来源记录方便追溯。
+
+制作脚本复制源作者的完整身体，在副本上求值原有细分、统一坐标和材质，从源骨盆／大腿表面派生运动短裤，并对同源面部局部低细节平滑、闭合眼口深凹。最终派生模型省略独立眼睛，官方源库中的配套眼结构保持原样。没有用球、柱等程序化体块拼人体；原始 ZIP、Blender 文件和 BodyParts3D、Snow 资产保留。静态人物的实际交付和渲染检查记录见下文。
+
+Adam 免费包本轮未取得或采用：访客下载需要 ArtStation 账号，未找到作者授权匿名文件入口。具体来源与阻碍保存在 `assets/model-candidates/adam/SOURCE.md`，本轮采用已在本地保存的官方 CC0 底模。
+
+### 本轮静态资产交付记录
+
+2026-10-07 最终 `fitness-reference.glb` 实际大小为 **2,523,408 字节，约 2.52 MB**，共 **2 个网格、81,002 个三角形**：身体 74,274、短裤 6,728，无独立眼睛。SHA-256 为 `47b9427d19d82cb4f573196028e1513c20b719c41a2a5fd961579360412f442d`，已与来源 JSON 及实际文件核对；完整高度约 1.690 米，双脚落在 `Y=0`。
+
+实际 Blender 渲染保存在 `output/fitness-reference-20261007/front.png`、`back.png`、`portrait.png`，可编辑场景已保存。最终制作检查覆盖完整身体、闭合体表、独立眼睛省略、独立服装、有限范围、落地和中心，以及源文件与源原始几何保持；面部处理前后，颈以下 27,754 个唯一顶点位置不变，短裤的属性、索引、材质和矩阵逐字节一致。记录保存在同目录 `checks.json` 与公开来源 JSON，其中 `closedBodySurface:true`、`independentEyesIncluded:false`。最终 12 项定向检查已通过，12 份原资产保持。本记录仅说明静态资产交付和文件核对，浏览器功能色区、交互与手机布局由主流程另外验证。
 
 ## 制作与历史验证记录
 
@@ -50,7 +76,7 @@
 
 所有资产与工具费用为 **0 元**。未购买模型、插件、订阅，也未调用收费生成服务。
 
-详细肌群来自独立的 BodyParts3D 4.0。它与 Snow 的比例、拓扑不同，所以只在选中肌群时展示对应的实际局部网格，不把它们宣称为卡通人物体内的精确肌肉。缺少独立结构的肌肉继续在内容中注明。
+默认静态人物为 Human Base Meshes 的 CC0 底模。详细解剖结构来自独立的 BodyParts3D 4.0，其 CC BY 4.0 许可、源几何、名称与本人左右继续保留，缺少独立网格的结构继续注明。表面功能色区只用于位置讲解；Realistic 人物、BodyParts3D 解剖和 Snow 动作均未精确配准。完整来源和覆盖说明见 `docs/anatomy-assets.md`、`public/anatomy/ATTRIBUTION.md`。
 
 ## 用本机 Blender 重建
 
@@ -73,3 +99,14 @@
 ```
 
 脚本会保存派生的 .blend、GLB、关节点 JSON 与两张 Cycles 实际渲染。渲染优先使用本机 NVIDIA GPU，无 GPU 时回退 CPU。源人物文件只读，已验收的 `E:\AII-3D\3D-Wrist` 不参与修改。
+
+
+### 重建独立静态参考
+
+原 Human Base Meshes 包中的 Realistic male 已在本地保存；不要用 `build_coach.py` 将它替换到动作人物骨架。运行独立制作脚本：
+
+```powershell
+& 'E:\AII\toolchains\blender\4.5.3\blender-4.5.3-windows-x64\blender.exe' --background --factory-startup --python 'E:\AII-3D\3D-Body\tools\blender\build_fitness_reference.py'
+```
+
+源场景路径、原包和派生文件的校验记录见 `docs/anatomy-assets.md`。脚本写入 `fitness-reference.blend`、`fitness-reference.glb/json` 和实际渲染，静态窗只显示独立人物。旧 BodyParts3D 体表的复现脚本 `build_muscle_reference.py` 保留用于解剖结构模式。

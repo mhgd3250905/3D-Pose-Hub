@@ -1,24 +1,34 @@
 import './style.css';
 import './workspace.css';
-import { createIcons, Orbit, Info, Camera, ArrowUpRight, PersonStanding, Rotate3d, Dumbbell, Search, Scan, UserRound, RotateCcw, PanelRight, PanelLeft, SlidersHorizontal, EyeOff, Maximize, Mouse, Play, Pause, Move3d, Shield, MoveUp, Hand, MoveHorizontal, Expand, MoveDiagonal2, ChevronRight, CornerUpLeft, ArrowLeft, X, Pencil } from 'lucide';
+import './movement.css';
+import './movement-cards.css';
+import './training-preview.css';
+import './movement-stage.css';
+import './movement-inspector.css';
+import { createIcons, Orbit, Info, Camera, ArrowUpRight, PersonStanding, Rotate3d, Dumbbell, Search, Scan, UserRound, RotateCcw, PanelRight, PanelLeft, SlidersHorizontal, EyeOff, Maximize, Mouse, Play, Pause, Move3d, Shield, MoveUp, Hand, MoveHorizontal, Expand, MoveDiagonal2, ChevronRight, ChevronDown, CircleDot, Repeat2, CornerUpLeft, ArrowLeft, X, Pencil, Activity, MoveUpRight } from 'lucide';
 import { muscleGroups, groupById, phases, exercises, exerciseById } from './data.js';
 import { BodyViewer } from './viewer.js';
 import { createPosePanel } from './pose-panel.js';
 import { createTransitionPanel } from './transition-panel.js';
 import { createWorkspace } from './workspace.js';
+import { createMovementPanel } from './movement-panel.js';
+import { createMovementTransport } from './movement-transport.js';
+import { createMovementInspector } from './movement-inspector.js';
+import { createTrainingPreview } from './training-preview.js';
 import { createFlarePosePresets } from './pose-presets.js';
 import { renderSources } from './research-ui.js';
 import { resolveOfficialSequence, sequenceFromSavedSteps, saveOfficialSequence, previousOfficialSequence, restoreOfficialSequence, updateOfficialFrame } from './official-poses.js';
 import { rebaseTransitionEdits, saveOfficialFrameEdits } from './transition-edits.js';
 
-const icons={Orbit,Info,Camera,ArrowUpRight,PersonStanding,Rotate3d,Dumbbell,Search,Scan,UserRound,RotateCcw,PanelRight,PanelLeft,SlidersHorizontal,EyeOff,Maximize,Mouse,Play,Pause,Move3d,Shield,MoveUp,Hand,MoveHorizontal,Expand,MoveDiagonal2,ChevronRight,CornerUpLeft,ArrowLeft,X,Pencil};
+const icons={Orbit,Info,Camera,ArrowUpRight,PersonStanding,Rotate3d,Dumbbell,Search,Scan,UserRound,RotateCcw,PanelRight,PanelLeft,SlidersHorizontal,EyeOff,Maximize,Mouse,Play,Pause,Move3d,Shield,MoveUp,Hand,MoveHorizontal,Expand,MoveDiagonal2,ChevronRight,ChevronDown,CircleDot,Repeat2,CornerUpLeft,ArrowLeft,X,Pencil,Activity,MoveUpRight};
 const refreshIcons=()=>createIcons({icons,attrs:{'stroke-width':1.5}});
 const $=selector=>document.querySelector(selector);
 const $$=selector=>[...document.querySelectorAll(selector)];
 const escape=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-let mode='anatomy',selectedGroup='shoulders',selectedExercise='supportShift',phaseIndex=0,selectedPart=null,viewer,posePanel,transitionPanel,workspaceUI,presets=[],demonstration=null,displayedStep=-1,ready=false;
+let mode='anatomy',selectedGroup='shoulders',selectedExercise='supportShift',phaseIndex=0,selectedPart=null,viewer,posePanel,transitionPanel,workspaceUI,movementPanel,presets=[],demonstration=null,displayedStep=-1,ready=false;
 let toastTimeout;
 let motionModel='saved';
+let movementTransport, trainingPreview, movementInspector, inspectionTime = null;
 const periodicPhases={rear:'rear',right:'sideA',front:'front',left:'sideB'};
 
 function toast(message){$('#toast').textContent=message;$('#toast').hidden=false;clearTimeout(toastTimeout);toastTimeout=setTimeout(()=>{$('#toast').hidden=true;},4200);}
@@ -54,17 +64,23 @@ function updatePhase(time){
   if(step!==displayedStep){displayedStep=step;if(!metrics?.periodic)posePanel?.syncDisplayStep();if(mode==='motion')renderDetail();}
 }
 function updateTime(time){
-  if(mode==='transition')return;
+  if(mode==='transition'||trainingPreview?.active)return;
+  if(movementInspector?.active&&inspectionTime!==null&&Math.abs(time-inspectionTime)>.005)movementInspector.close();
   const period=viewer?.motion?.getMetrics().period||9;
-  $('#timeline').max=period;$('#timeline').value=time;$('#time-label').textContent=`${time.toFixed(1)} / ${period.toFixed(1)} s`;updatePhase(time);
+  $('#timeline').max=period;$('#timeline').value=time;$('#time-label').textContent=`${time.toFixed(1)} / ${period.toFixed(1)} s`;updatePhase(time);movementPanel?.update(time);movementTransport?.update();
 }
 
 function localStore(){try{return localStorage;}catch{return null;}}
 function setMotionModel(value,{render=true}={}){
   const next=value==='periodic'?'periodic':'saved';
+  movementInspector?.close();
+  if(trainingPreview?.active)trainingPreview.close();
+  if(motionModel!==next)viewer.setPlaybackRange(null);
   try{
     viewer.setSequence({...demonstration,...transitionPanel.options(),motionModel:next},{preserveView:true});
     motionModel=next;$('#motion-model').value=next;displayedStep=-1;
+    movementPanel?.setSequence({...demonstration,...transitionPanel.options(),motionModel:next});
+    movementTransport?.setSequence({...demonstration,...transitionPanel.options(),motionModel:next});
     if(render){updateMotionCaption();renderPhases();updateTime(viewer.time);updateLayerButtons();renderDetail();}
     return true;
   }catch(error){$('#motion-model').value=motionModel;toast(error.message);return false;}
@@ -73,7 +89,7 @@ function updateMotionCaption(){
   if(mode!=='motion')return;
   const periodic=motionModel==='periodic';
   $('#pose-presets').hidden=periodic;
-  $('#stage-title').textContent=periodic?'托马斯 · 数学轨迹试验':'托马斯 · 9 步展示';
+  $('#stage-title').textContent=periodic?'托马斯 · 数学轨迹试验':'托马斯 · 动作与发力';
   $('#stage-footnote').textContent=periodic?'整圈连续生成。拖动时间轴检查摆腿与换手，切换“你的保存动画”即可对比。':'按照你保存的 9 步展示。点击步骤或拖动时间轴查看，暂停后可以继续编辑。';
 }
 function applyTransitionOptions(options){
@@ -192,15 +208,22 @@ function updateLayerButtons(){
   const motion=mode==='motion',local=!!viewer&&!motion&&viewer.layer!=='skin';
   $('#view-caption').textContent=mode==='transition'?'逐段修正过渡':mode==='pose'?'自由摆放姿势':motion?(motionModel==='periodic'?'托马斯 · 数学轨迹试验':'你的托马斯 · 正式展示'):local?'真实局部肌群':'友善运动人物';
   $('#model-kind').textContent=local?'BODYPARTS3D / 4.0':'SNOW / BLENDER STUDIO';
-  if(ready)$('#part-count').textContent=mode==='pose'||mode==='transition'?`${viewer.motion.getEditableHandles().length} 个控制点`:motion?(motionModel==='periodic'?'连续周期轨迹':`${presets.length} 个关键姿势`):local?`${selectedPart&&!selectedPart.hotspot?1:viewer.groupIds[selectedGroup]?.size||0} 个真实结构`:'完整人物';
+  if(ready)$('#part-count').textContent=mode==='pose'||mode==='transition'?`${viewer.motion.getEditableHandles().length} 个控制点`:motion?(motionModel==='periodic'?'连续周期轨迹':movementTransport?.nodeCount?`${movementTransport.nodeCount} 个动作节点`:`${presets.length} 个关键姿势`):local?`${selectedPart&&!selectedPart.hotspot?1:viewer.groupIds[selectedGroup]?.size||0} 个真实结构`:'完整人物';
   $('#legend').hidden=!local;const legend=$$('#legend>span');if(legend.length===3){legend[0].hidden=false;legend[1].hidden=true;legend[2].hidden=true;}
 }
 function setMode(next,{fromCurrent=false}={}){
   if(!ready&&next!=='anatomy'){toast('模型正在载入，请稍等。');return;}
+  if(trainingPreview?.active)trainingPreview.close();
+  movementInspector?.close();
+  if(mode==='motion'&&next!=='motion')viewer?.setPlaybackRange(null);
   if(next!=='motion'&&motionModel==='periodic'&&!setMotionModel('saved',{render:false}))return;
   const previous=mode;if(previous==='transition'&&next!=='transition')transitionPanel?.leave();if(previous==='pose'&&next!=='pose')posePanel?.leave();mode=next;selectedPart=null;viewer?.setMode(next==='transition'?'pose':next);$$('button[data-mode]').forEach(button=>{const active=button.dataset.mode===next;button.classList.toggle('active',active);button.setAttribute('aria-pressed',String(active));});
   const transition=next==='transition',motion=next==='motion',training=next==='training',editing=next==='pose'||transition;document.body.dataset.mode=next;
   $('#anatomy-toolbar').hidden=motion||editing;$('#motion-toolbar').hidden=!motion;$('#training-panel').hidden=!training;$('#pose-shelf').hidden=!editing;$('#pose-presets').hidden=!(editing||motion);$('#pose-view-toolbar').hidden=!editing;$('#phase-strip').hidden=training||editing;$('#legend').hidden=motion||editing;$('#hover-tooltip').hidden=true;
+  $('.motion-source').hidden=!motion;
+  if(motion)movementPanel?.setSequence({...demonstration,...transitionPanel.options(),motionModel});
+  if(motion)movementTransport?.setSequence({...demonstration,...transitionPanel.options(),motionModel});
+  movementPanel?.setMode(next);
   $('#transition-shelf').hidden=!transition;if(transition){$('#pose-shelf').hidden=true;$('#pose-presets').hidden=true;}
   $('#transition-transport').hidden=!transition;
   $$('.library-drawer .sidebar-section-head,.library-drawer .search,#muscle-list').forEach(element=>{element.hidden=motion||editing;});
@@ -213,23 +236,59 @@ function setMode(next,{fromCurrent=false}={}){
   if(training)renderTraining();updateLayerButtons();updatePlayButton();renderMuscles();if(!transition)renderDetail();
 }
 
+function syncMovementLesson(){
+  const active=!!movementPanel?.active;
+  if(!active&&movementInspector?.active)movementInspector.close();
+  $('#movement-lesson-button').hidden=mode!=='motion'||motionModel!=='saved'||!!trainingPreview?.active;
+  $('#movement-lesson-button').setAttribute('aria-pressed',String(active));
+  $('#movement-lesson-button').classList.toggle('active',active);
+  $('#motion-toolbar').hidden=mode!=='motion'||!!trainingPreview?.active;
+  movementTransport?.setVisible(mode==='motion'&&motionModel==='saved');
+  movementTransport?.update();
+  updatePlayButton();
+}
+function toggleMovementLesson(){
+  if(ready&&mode==='motion'&&motionModel==='saved')movementPanel.toggle();
+}
+
+function openMovementInspector(profile,slot){
+  if(!profile||!movementInspector)return;
+  if(movementInspector.open(profile,slot)){
+    inspectionTime=viewer.time;viewer.playing=false;viewer.dirty=true;
+    movementPanel.setInspectionSlot(slot);movementPanel.update(viewer.time);syncMovementLesson();
+  }
+}
+
+function openMovementTraining(proposal,profile,slot){
+  if(!proposal)return;
+  movementPanel.setSuspended(true);
+  try{
+    if(!trainingPreview.open(proposal,{profile,slot})){movementPanel.setSuspended(false);toast('这项练习的动作方法可在卡片中查看。');}
+  }catch(error){trainingPreview.close();movementPanel.setSuspended(false);toast(error.message);}
+}
+
+// Keep the original playback controls available on the animation canvas.
+const motionToolbar=$('#motion-toolbar');
+motionToolbar.before($('.motion-source'));
+$('#viewport').append(motionToolbar);
 refreshIcons();renderMuscles();renderPhases();renderDetail();
 $$('button[data-mode]').forEach(button=>button.addEventListener('click',()=>setMode(button.dataset.mode)));
 $$('[data-layer]').forEach(button=>button.addEventListener('click',()=>{if(!ready)return;selectedPart=null;viewer.setLayer(button.dataset.layer);updateLayerButtons();renderMuscles();renderDetail();}));
 $$('[data-view]').forEach(button=>button.addEventListener('click',()=>{viewer?.setView(button.dataset.view);$$('[data-view]').forEach(b=>b.classList.toggle('active',b===button));}));
 $$('[data-pose-view]').forEach(button=>button.addEventListener('click',()=>viewer?.setView(button.dataset.poseView)));
 $$('[data-pose-operation]').forEach(button=>button.addEventListener('click',()=>{viewer?.poseEditor.setTransformMode(button.dataset.poseOperation);if(mode==='transition')transitionPanel?.refresh();else posePanel?.refresh();}));
-$('#reset-view').addEventListener('click',()=>{viewer?.resetView();$$('[data-view]').forEach(b=>b.classList.remove('active'));});
+$('#reset-view').addEventListener('click',()=>{if(trainingPreview?.active)trainingPreview.resetView();else viewer?.resetView();$$('[data-view]').forEach(b=>b.classList.remove('active'));});
 $('#muscle-search').addEventListener('input',renderMuscles);
 $('#play-button').addEventListener('click',()=>{if(!ready)return;viewer.playing=!viewer.playing;if(viewer.playing&&viewer.time>=viewer.motion.getMetrics().period)viewer.setTime(0);updatePlayButton();});
-$('#timeline').addEventListener('input',event=>{viewer.playing=false;viewer.setTime(Number(event.target.value));updatePlayButton();});
+$('#timeline').addEventListener('input',event=>{viewer.playing=false;viewer.setPlaybackRange(null);viewer.setTime(Number(event.target.value));updatePlayButton();});
 $('#speed').addEventListener('change',event=>{if(viewer)viewer.speed=Number(event.target.value);});
+$('#movement-lesson-button').addEventListener('click',toggleMovementLesson);
 $('#motion-model').addEventListener('change',event=>{if(ready)setMotionModel(event.target.value);});
 $('#about-button').addEventListener('click',()=>$('#about-dialog').showModal());
 $('#close-about').addEventListener('click',()=>$('#about-dialog').close());
 $('#about-dialog').addEventListener('click',event=>{if(event.target===$('#about-dialog')){const rect=event.target.getBoundingClientRect();if(event.clientX<rect.left||event.clientX>rect.right||event.clientY<rect.top||event.clientY>rect.bottom)event.target.close();}});
 $('#capture-button').addEventListener('click',async()=>{if(!ready)return;const button=$('#capture-button');button.disabled=true;try{const blob=await viewer.capture();if(!blob)throw new Error('无法保存图像');const url=URL.createObjectURL(blob);const link=document.createElement('a');link.href=url;link.download=`flare-${mode}-${selectedGroup}-${Date.now()}.png`;link.click();setTimeout(()=>URL.revokeObjectURL(url),30000);toast('当前三维视图已保存为 PNG。');}catch(error){toast(error.message);}finally{button.disabled=false;}});
-document.addEventListener('keydown',event=>{const typing=/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);if(event.key==='/'&&!typing&&mode!=='pose'&&mode!=='transition'){event.preventDefault();workspaceUI.setOpen('library',true);$('#muscle-search').focus();}if(event.code==='Space'&&!typing&&mode==='motion'&&!$('#about-dialog').open){event.preventDefault();viewer.playing=!viewer.playing;updatePlayButton();}});
+document.addEventListener('keydown',event=>{const typing=/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);if(event.key==='/'&&!typing&&mode!=='pose'&&mode!=='transition'){event.preventDefault();workspaceUI.setOpen('library',true);$('#muscle-search').focus();}if(event.key==='Escape'&&trainingPreview?.active){trainingPreview.close();return;}if(event.code==='Space'&&!typing&&mode==='motion'&&!$('#about-dialog').open){event.preventDefault();if(trainingPreview?.active)trainingPreview.togglePlay();else if(movementPanel?.active)movementPanel.togglePlay();else{viewer.playing=!viewer.playing;updatePlayButton();}}});
 document.addEventListener('keydown',event=>{
   const focused=document.activeElement,typing=focused.isContentEditable||/TEXTAREA|SELECT/.test(focused.tagName)||(focused.tagName==='INPUT'&&!['range','checkbox','radio','button'].includes(focused.type));
   if(mode!=='transition'||typing||$('#about-dialog').open||viewer.poseEditor.getState().dragging)return;
@@ -248,6 +307,9 @@ async function initialize(){
       onSelect,
       onHover:(part,event)=>{const tooltip=$('#hover-tooltip');tooltip.hidden=!part;if(part){tooltip.innerHTML=`${escape(part.name)}<small>${escape(part.id)} · ${part.side==='left'?'人体左侧':part.side==='right'?'人体右侧':'中线结构'}</small>`;const rect=$('#viewport').getBoundingClientRect();tooltip.style.left=`${Math.max(10,Math.min(rect.width-220,event.clientX-rect.left+14))}px`;tooltip.style.top=`${Math.min(rect.height-70,event.clientY-rect.top+12)}px`;}},
       onTime:updateTime,
+      onAnimationFrame:delta=>trainingPreview?.tick(delta),
+      onRender:()=>movementPanel?.renderFrame(),
+      needsRender:()=>movementPanel?.needsRender(),
       onPoseChange:event=>{if(mode==='pose')posePanel?.onChange(event);else if(mode==='transition')transitionPanel?.onChange(event);},
       onPoseSelection:()=>{if(mode==='pose')posePanel?.refresh();else if(mode==='transition')transitionPanel?.refresh();}
     });
@@ -257,6 +319,16 @@ async function initialize(){
     posePanel=createPosePanel({viewer,panel:$('#detail-panel'),shelf:$('#pose-shelf'),presetPanel:$('#pose-presets'),presets,notify:toast,refreshIcons,onTraining:id=>openExercise(id),onDisplayStep:()=>updatePlayButton(),onUseDemonstration:steps=>{replaceDemonstration(sequenceFromSavedSteps(steps));toast('已将这 9 步用于正式展示，个人步骤保留。');},onUndoDemonstration:()=>{const previous=previousOfficialSequence(localStore());if(previous){replaceDemonstration(previous,'restore');toast('已恢复此前的正式展示，个人步骤保留。');}},hasPreviousDemonstration:()=>!!previousOfficialSequence(localStore()),onPresetLoad:()=>workspaceUI.afterPreset()});
     transitionPanel=createTransitionPanel({viewer,panel:$('#detail-panel'),shelf:$('#transition-shelf'),sequence:demonstration,storage:localStore,notify:toast,refreshIcons,onApply:applyTransitionOptions,onUpdateFrame:updateAnimationFrame,onRestoreFrames:undoAnimationFrames,onImportFrames:importAnimationFrames,hasPreviousFrameUpdate:()=>['browser-keyframe-edit','browser-animation-import'].includes(demonstration?.source?.origin)&&!!previousOfficialSequence(localStore()),onExit:()=>{setMode('motion');workspaceUI.revealDetails();}});
     viewer.setSequence({...demonstration,...transitionPanel.options()},{preserveView:true});
+    movementPanel=createMovementPanel({viewer,viewport:$('#viewport'),refreshIcons,onChanged:syncMovementLesson,onTrain:openMovementTraining,onInspect:openMovementInspector});
+    movementInspector=createMovementInspector({viewer,container:$('#viewport'),refreshIcons,onClose:()=>{
+      inspectionTime=null;movementPanel.setInspectionSlot();viewer.dirty=true;updatePlayButton();
+    }});
+    movementTransport=createMovementTransport({viewer,toolbar:$('#motion-toolbar'),panel:()=>movementPanel,refreshIcons,onSeek:()=>{updatePlayButton();movementPanel.update(viewer.time);}});
+    trainingPreview=createTrainingPreview({viewer,viewport:$('#viewport'),refreshIcons,onChanged:state=>{
+      if(!state.active){movementPanel.setSuspended(false);updateTime(viewer.time);updateLayerButtons();}
+      else{$('#view-caption').textContent='对应的基础训练';$('#part-count').textContent='辅助动作示范';}
+      syncMovementLesson();
+    }});
     renderPhases();$('#part-count').textContent='完整人物';
     const boneCount=manifest.parts.filter(p=>p.system==='skeletal').length,muscleCount=manifest.parts.length-boneCount;
     $('#asset-summary').innerHTML=`<div class="asset-statistics"><div><strong>${muscleCount}</strong><span>肌肉结构</span></div><div><strong>${boneCount}</strong><span>骨骼结构</span></div><div><strong>08</strong><span>Flare 功能热点</span></div></div>`;
@@ -265,6 +337,9 @@ async function initialize(){
     if(new URLSearchParams(location.search).has('inspect'))window.flareInspector={status:()=>({...viewer.getStatus(),editor:viewer.poseEditor.getState(),workspace:workspaceUI.getState()}),projectPart:id=>viewer.projectPart(id),projectCoach:()=>viewer.projectCoach(),projectHandle:id=>viewer.projectHandle(id),setTime:t=>viewer.setTime(t),capturePose:()=>viewer.motion.capturePose(),poseLibrary:()=>posePanel.getLibrary(),presetLibrary:()=>JSON.parse(JSON.stringify(presets)),demonstration:()=>structuredClone(demonstration),transitions:()=>({document:transitionPanel.getDocument(),state:transitionPanel.getState()}),parts:()=>manifest.parts.map(p=>({id:p.id,name:p.name,hotspot:p.hotspot,system:p.system,side:p.side})),rigMetrics:()=>viewer.motion.getMetrics(),boneRotations:()=>Object.fromEntries(['left','right'].flatMap(side=>['UpperArm','Forearm','Thigh','Shin'].map(suffix=>{const name=side+suffix,bone=viewer.motion.group.getObjectByName(name);return[name,bone.getWorldQuaternion(bone.quaternion.clone()).toArray()];})))};
     if(window.flareInspector)window.flareInspector.trajectory=()=>({...viewer.trajectoryGuide.getStatus(),...transitionPanel.getTrajectoryState(),data:viewer.getTrajectoryData()});
     if(window.flareInspector)window.flareInspector.projectTrajectoryPoint=(joint,time)=>viewer.projectTrajectoryPoint(joint,time);
+    if(window.flareInspector)window.flareInspector.movementLesson=()=>({...movementPanel.getState(),guide:viewer.movementGuide.getStatus()});
+    $('#movement-lesson-button').disabled=false;
+    syncMovementLesson();
     document.documentElement.dataset.ready='true';
   }catch(error){
     console.error(error);$('#loading').hidden=false;$('#loading').classList.add('error');$('#loading').querySelector('strong').textContent='模型暂时未能载入';$('#loading-status').textContent=error.message.includes('WebGL')?'请在支持 WebGL 的浏览器中打开本地页面。':`${error.message}。请用 start.cmd 启动本地服务。`;

@@ -1,4 +1,60 @@
-# Anatomy data attribution
+# Anatomy data and static fitness reference attribution
+
+## Default static fitness reference: Human Base Meshes
+
+`fitness-reference.glb` and `fitness-reference.json` use the official **Human
+Base Meshes v1.4.1** bundle by Blender Studio and community contributors.
+The source body is `GEO-body_male_realistic`. The official bundle retains
+its original paired eye objects, but this final derivative omits independent
+eye meshes. The official source bundle is released under **CC0 1.0**.
+
+- Official bundle and licence: https://www.blender.org/download/demo-files/
+- Official archive: https://download.blender.org/demo/asset-bundles/human-base-meshes/human-base-meshes-bundle-v1.4.1.zip
+- CC0 terms: https://creativecommons.org/publicdomain/zero/1.0/
+- Original archive SHA-256: `811f43accbb31a88266d932f8f5563b2d13586fca0ba2693aad1f5fe582b3515`.
+- Preserved local acquisition record: `assets/blender-studio-source/SOURCE.md`.
+- Editable derivative: `assets/coach/fitness-reference.blend`.
+- Reproduction script: `tools/blender/build_fitness_reference.py`.
+
+The derivative retains the authored complete head, body, arms, hands and feet.
+Original subdivision is evaluated only on the derivative; neutral low-gloss
+skin, independent coordinates, localized under-clothing privacy treatment
+and matte navy shorts copied from the source pelvic/thigh surface are local
+adaptations. The original archive and Blender source file remain preserved.
+The source head, ears and neck retain their natural complete contour.
+Local low-detail smoothing and caps made from original boundary vertices
+close the deep anterior eye/mouth pockets on the derivative. No replacement
+head is constructed. Detailed modifications, object roles, bounds and
+output hashes are recorded in `fitness-reference.json`.
+
+Final GLB: **2 meshes, 81,002 triangles, 2.52 MB (2,523,408 bytes)**:
+74,274 body triangles and 6,728 clothing triangles; no independent eyes.
+SHA-256: `47b9427d19d82cb4f573196028e1513c20b719c41a2a5fd961579360412f442d`.
+The final 12 targeted checks passed. Original source assets remain unchanged;
+27,754 unique below-neck body positions and all shorts attributes, indices,
+materials and matrices match the preceding static derivative.
+
+This is a static body-surface teaching reference. Functional colour regions
+indicate related muscle locations, without adding internal muscle geometry
+or claiming measured activation or strength. Body and clothing surfaces
+may both indicate functional location, including broad shorts regions over
+the covered hips and glutes. Deep muscles are located by body region;
+these surface colours are never anatomical muscle boundaries. This static
+reference clothing display is separate from the Snow motion actor, whose
+matte black shorts remain uncoloured. The reference is not registered to
+BodyParts3D or Snow, and contains no Flare motion rig or animations.
+
+The default reference is loaded locally using bundled Three.js GLTFLoader.
+A second camera and scissor viewport render the same complete model as a
+3D whole-body locator. Surface teaching and the independent BodyParts3D
+structure mode are separate: the existing muscle meshes are not embedded
+into this different body. Existing training remains text-only.
+
+Adam by rreallCakes has not been acquired or adopted. Its publicly visible
+commercial licence and account-required acquisition barrier are recorded
+in `assets/model-candidates/adam/SOURCE.md`.
+
+## BodyParts3D source anatomy
 
 BodyParts3D, © The Database Center for Life Science licensed under CC Attribution 4.0 International.
 
@@ -45,6 +101,44 @@ reclassified as muscular. Original BodyParts3D/FMA identifiers, English names,
 bounds and source-system mappings are preserved. Training-oriented anatomical
 groups and Chinese display labels are added for selection. A separate optional
 body-surface file is repacked from the original Skin structure.
+
+## Retained BodyParts3D structure-mode reference (2026-10-07)
+
+The earlier `muscle-reference.glb` body is retained for the independent
+**anatomical structures** mode. It is no longer the default fitness body.
+
+`muscle-reference.glb` is an independent derivative of the same BodyParts3D
+Skin structure (FJ2810 / FMA7163), with provenance and adaptations recorded in
+`muscle-reference.json`. It retains a complete head, torso, arms, hands and
+feet in the original standing pose and metre/Y-up atlas coordinate system.
+Opaque pale body materials, matte navy athletic shorts, a complete low-detail
+head and cosmetic Skin-scalp-derived hair provide a readable fitness reference.
+Facial openings are closed and nose/mouth detail softened only in the derived
+Skin copy. The final reference displays no independent eye meshes. Clothing,
+hair and the simplified head appearance are adaptations, not additional
+anatomical structures. Limited privacy surface
+adaptations apply only to this derivative; the original Skin, atlas indices
+and muscle/skeleton binary assets remain unchanged.
+
+The local application loads this GLB with its bundled Three.js GLTFLoader,
+separately from the original anatomy binary layers. Local viewing changes
+camera framing instead of cropping the body. A second camera and scissor
+viewport show the same complete 3D reference as a full-body locator, with
+the same selected anatomical muscle highlight. Front/back, independent
+rotation and full-body/local-view controls affect only this reference window.
+
+Muscle display copies borrow the existing source geometry and retain the
+original BodyParts3D/FMA identifiers, names, anatomical sides and positions.
+Functional colour overlays indicate the selected teaching structures, not
+measured activation or strength. The window owns its display materials and
+complete reference GLB; it neither edits nor disposes the borrowed source
+muscle geometries. Related training is presented as text, without creating
+additional training models.
+
+This is a static structure reference, not a precise registration to Snow
+or to the current Flare pose. Cosmetic/privacy adaptations are unsuitable
+for precise body-surface measurements. Source coverage limitations listed
+below continue to apply.
 
 This reference does not include independent meshes for rectus abdominis,
 internal oblique, transversus abdominis, latissimus dorsi or quadratus lumborum.

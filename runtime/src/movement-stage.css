@@ -1,0 +1,62 @@
+/* The animation is the primary surface; this chrome only explains its state. */
+body[data-mode="motion"] .viewport { background: radial-gradient(ellipse at 57% 45%, #213440 0%, #15242f 40%, #0d1722 75%, #080f18 100%); }
+body[data-mode="motion"] .workspace-header { background: linear-gradient(#080f18f5, #080f18a8, transparent); }
+body[data-mode="motion"] .workspace-header .stage-heading .eyebrow { color: #8fa8b5; }
+body[data-mode="motion"] .workspace-header .stage-heading h2 { color: #e4ecf0; }
+body[data-mode="motion"] .workspace-drawer { background: #0d1721ed; border-color: #a4c5d523; }
+#movement-lesson-button.active { border-color: #72d6ff65; background: #72d6ff15; color: #b2eaff; }
+.movement-stage-head { position: absolute; z-index: 4; top: 122px; left: var(--canvas-left, 20px); right: var(--canvas-right, 20px); display: flex; justify-content: space-between; align-items: center; gap: 18px; pointer-events: none; color: #eaf3f7; }
+.movement-stage-copy { min-width: 0; }
+.movement-stage-overline { color: #a1bac8; font-size: 9px; letter-spacing: 2px; font-weight: 500; }
+.movement-stage-heading { display: flex; align-items: center; gap: 12px; margin-top: 7px; }
+.movement-stage-node { font: 400 29px/1.15 "Consolas", "SFMono-Regular", monospace; color: #def2f9; letter-spacing: -1px; }
+.movement-stage-title { font-size: 19px; line-height: 1.3; font-weight: 550; letter-spacing: .3px; }
+.movement-stage-hint { margin-top: 7px; font-size: 11px; line-height: 1.5; color: #8ca9ba; }
+.movement-stage-aside { display: flex; flex-direction: column; align-items: flex-end; gap: 14px; flex-shrink: 0; }
+.movement-stage-state { display: inline-flex; align-items: center; gap: 7px; font-size: 10px; color: #c1d6df; letter-spacing: .6px; }
+.movement-stage-state::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: #72929f; }
+.movement-stage-state[data-playing="true"]::before { background: #d8ef70; box-shadow: 0 0 9px #d8ef7060; animation: movement-live 1.8s ease-in-out infinite; }
+.movement-stage-legend { display: flex; gap: 15px; }
+.movement-stage-key { display: inline-flex; align-items: center; gap: 6px; color: #9db4c0; font-size: 10px; }
+.movement-stage-key::before { content: ""; width: 13px; height: 2px; border-radius: 1px; background: var(--region); }
+.movement-stage-key-support { --region: #72d6ff; }.movement-stage-key-core { --region: #b49bfa; }.movement-stage-key-hips { --region: #d8ef70; }
+@keyframes movement-live { 50% { opacity: .45; } }
+.viewport > #motion-toolbar { bottom: 40px; gap: 18px; flex-wrap: wrap; max-width: 1060px; margin-inline: auto; padding: 15px 19px; border: 1px solid #a1c4d329; border-radius: 16px; background: linear-gradient(135deg, #1a2a36e8, #101c28ed); box-shadow: 0 16px 40px #02070c40, inset 0 1px 0 #d0edfa09; backdrop-filter: blur(18px); }
+.viewport > #motion-toolbar .timeline-wrap { flex: 1 1 221px; min-width: 200px; }
+.viewport > #motion-toolbar .play-button { width: 43px; height: 43px; flex: 0 0 43px; border-radius: 50%; background: #a4e4f9; color: #112831; box-shadow: 0 3px 18px #72d6ff20; }
+.viewport > #motion-toolbar .play-button:hover { background: #c4effe; }
+.viewport > #motion-toolbar .timeline-label { font-size: 11px; color: #b6d0dc; }
+.viewport > #motion-toolbar .timeline-label > span:first-child { flex-shrink: 0; white-space: nowrap; font-family: "Consolas", monospace; font-variant-numeric: tabular-nums; }
+.viewport > #motion-toolbar .timeline-label > span:last-child { color: #859eae; font-size: 10px; }
+.viewport > #motion-toolbar input { margin-top: 11px; height: 4px; accent-color: #8be1fc; }
+.viewport > #motion-toolbar select { font-size: 11px; padding: 8px; background: #162734; border: 1px solid #a1c4d333; border-radius: 8px; color: #cce7f2; }
+.movement-node-nav { gap: 6px; margin-top: 11px; max-width: 490px; }
+.movement-node-nav button { min-width: 31px; min-height: 28px; padding: 4px 7px; border: 1px solid transparent; border-radius: 6px; background: transparent; color: #8da8b8; font: 11px/1.4 "Consolas", monospace; }
+.movement-node-nav button:hover { color: #e1f6ff; background: #72d6ff12; }
+.movement-node-nav button.active { color: #c9f3ff; border-color: #72d6ff60; background: #72d6ff15; }
+.movement-loop-control { gap: 7px; background: #72d6ff09; color: #c5e0eb; border: 1px solid #a1c4d336; border-radius: 8px; padding: 9px 10px; min-height: 36px; font-size: 11px; }
+.movement-loop-control[aria-pressed="true"] { border-color: #d8ef7080; background: #d8ef7012; color: #e5f5aa; }
+.movement-loop-control svg { width: 15px; height: 15px; }
+.movement-current-stage { max-width: 65%; }
+body[data-mode="motion"] .viewport-top .view-caption { background: #101d2bb0; border-color: #a4c5d520; }
+body[data-mode="motion"] .viewport[data-movement-teaching="true"] .viewport-top .view-caption { visibility: hidden; }
+body[data-mode="motion"] .viewport-bottom { color: #6f8b9d; }
+@media (max-width: 1100px) {
+  .movement-stage-title { font-size: 17px; }.movement-stage-legend { gap: 10px; }
+  .viewport > #motion-toolbar { gap: 12px; padding: 12px 14px; }
+  .movement-node-nav { gap: 3px; }.movement-node-nav button { min-width: 25px; padding: 4px 5px; }
+}
+@media (max-width: 700px) {
+  .movement-stage-head { left: 18px; right: 18px; top: 112px; gap: 10px; }
+  .movement-stage-node { font-size: 26px; }.movement-stage-title { font-size: 16px; }.movement-stage-heading { gap: 9px; }.movement-stage-hint { font-size: 10px; }
+  .movement-stage-aside { gap: 12px; }.movement-stage-legend { gap: 8px; }.movement-stage-key { font-size: 9px; gap: 4px; }.movement-stage-key::before { width: 8px; }
+  .viewport > #motion-toolbar { left: 14px; right: 14px; bottom: 34px; flex-wrap: wrap; padding: 11px 13px; gap: 9px; border-radius: 13px; }
+  .viewport > #motion-toolbar .timeline-wrap { flex-basis: calc(100% - 50px); }
+  .viewport > #motion-toolbar > .play-button { align-self: flex-start; margin-top: 13px; width: 36px; height: 36px; flex-basis: 36px; }
+  .viewport > #motion-toolbar > select { margin-left: 45px; max-width: 66px; font-size: 10px; padding: 6px; }
+  .viewport > #motion-toolbar .timeline-label { font-size: 10px; }.viewport > #motion-toolbar .timeline-label > span:last-child { font-size: 9px; }
+  .movement-node-nav { gap: 2px; margin-top: 8px; }.movement-node-nav button { min-width: 25px; min-height: 29px; padding: 3px 4px; font-size: 10px; }
+  .movement-loop-control { min-height: 29px; font-size: 10px; padding: 6px 9px; }.movement-current-stage { max-width: 65%; }
+}
+@media (max-width: 420px) { .movement-stage-state { font-size: 9px; }.movement-stage-title { font-size: 15px; max-width: 172px; }.movement-stage-legend { display: none; } }
+@media (prefers-reduced-motion: reduce) { .movement-stage-state[data-playing="true"]::before { animation: none; } }
