@@ -177,3 +177,31 @@
   .mv-chip-section:first-child { padding-top: 0; }
   .mv-chip-section:not(:first-child) { border-left: 0; margin-left: 0; padding-left: 0; }
 }
+
+/* ---- round 2: calmer header and sheet ----
+   title first, a short subtitle under it; sheet reads filters → chips → answer, with the legend and
+   the disclaimer folded into one quiet footer; reset sits in the sheet's top corner. */
+.mv-heading { display: flex; flex-direction: column; }
+.mv-views { order: 3; align-self: flex-start; }
+.mv-kicker { order: 2; margin: 6px 0 0; font-size: 15px; line-height: 20px; color: var(--label-2, #a1a1aa); }
+.mv-sheet { display: flex; flex-direction: column; padding-top: 4px; box-shadow: var(--mat-edge-lit, none), 0 -12px 40px rgba(0, 0, 0, .35); }
+.mv-handle { order: 0; height: 20px; }
+.mv-filters { order: 1; margin: 2px 0 12px; }
+.mv-chips { order: 2; -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 28px), transparent); mask-image: linear-gradient(90deg, #000 calc(100% - 28px), transparent); }
+.mv-detail { order: 3; margin: 16px 0 0; min-height: 0; }
+.mv-detail-name { font-size: 22px; line-height: 28px; }
+.mv-detail-meta { font-size: 13px; }
+.mv-detail-parts { margin-top: 4px; font-size: 13px; line-height: 18px; color: var(--label-2, #a1a1aa); }
+.mv-detail-role { margin-top: 8px; }
+.mv-legend { order: 4; flex-wrap: wrap; gap: 4px 14px; margin: 14px 0 0; padding-top: 12px; border-top: .5px solid var(--hairline, rgba(255,255,255,.08)); font-size: 12px; line-height: 16px; color: var(--label-3, #8e8e93); }
+.mv-legend .mv-swatch { width: 10px; height: 10px; border-radius: 3px; }
+.mv-note { order: 5; margin: 4px 0 0; font-size: 12px; line-height: 16px; color: var(--label-3, #8e8e93); }
+.mv-note::before { content: none; }
+.mv-reset { margin: -6px 0 -6px auto; width: 32px; height: 32px; background: var(--fill-2, rgba(255,255,255,.075)); }
+.mv-filter { height: 34px; padding: 0 16px; font-size: 14px; }
+.mv-multi .mv-chip { height: 36px; font-size: 14px; }
+.mv-chip-section { font-size: 12px; font-weight: 600; letter-spacing: 0; color: var(--label-3, #8e8e93); }
+@media (min-width: 760px) {
+  .mv-chips { -webkit-mask-image: none; mask-image: none; }
+  .mv-kicker { font-size: 15px; }
+}
