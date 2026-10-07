@@ -250,7 +250,7 @@ function setMode(next,{fromCurrent=false}={}){
 function syncMovementLesson(){
   const active=!!movementPanel?.active;
   if(!active&&movementInspector?.active)movementInspector.close();
-  $('#movement-lesson-button').hidden=mode!=='motion'||motionModel!=='saved'||!!trainingPreview?.active;
+  $('#movement-lesson-button').hidden=true; // teaching overlays are retired from the main motion view
   $('#movement-lesson-button').setAttribute('aria-pressed',String(active));
   $('#movement-lesson-button').classList.toggle('active',active);
   $('#motion-toolbar').hidden=mode!=='motion'||!!trainingPreview?.active;

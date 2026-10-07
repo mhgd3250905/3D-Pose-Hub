@@ -23,7 +23,9 @@ export function resolveTeachingSegment(sequence, profile) {
 
 /** Teaching cards attached to normal playback; no separate view or timeline. */
 export function createMovementPanel({ viewer, viewport, onChanged, onTrain, onInspect, refreshIcons, cardsFactory = createMovementCards }) {
-  let enabled = true, suspended = false, mode = null, sequence = null, annotation = null, signature = null, mounted = false;
+  // The main motion view shows a clean flare only: the teaching layer (support
+  // arrows, swing arcs, joint rings, cards, heading and legend) stays off.
+  let enabled = false, suspended = false, mode = null, sequence = null, annotation = null, signature = null, mounted = false;
   let directionData = null;
   let inspectionSlot = null;
   const sampled = new Map();

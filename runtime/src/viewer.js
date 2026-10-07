@@ -273,6 +273,7 @@ export class BodyViewer {
     const prior=this.mode;this.mode=mode;this.selectedPart=null;this.selectedMesh.visible=false;this.hoverMesh.visible=false;
     this.stageGrid.material.opacity=mode==='motion' ? .12 : .32;
     this.poseEditor?.setEnabled(mode==='pose');
+    if(mode==='motion'){this.trajectoryGuide?.setVisible(false);this.movementGuide?.setVisible({enabled:false});}
     this.pacing=null;
     if(mode==='motion')this.motion?.update(this.time);
     else if(mode==='pose'){this.playing=false;this.layer='skin';this.focused=false;this.motion?.enterManualMode();this.poseEditor?.refresh();}

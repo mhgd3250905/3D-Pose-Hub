@@ -26,7 +26,7 @@ export const MOVEMENT_LESSON = Object.freeze({
       description: '髂腰肌与股直肌参与屈髋，股四头肌协助保持伸膝。',
       anchor: 'leftHip', bodySide: 'left' },
   ].map(group => Object.freeze(group))),
-  teachingNote: '箭头表示运动路线和动作提示，肌群颜色表示功能关联。',
+  teachingNote: '肌群颜色表示功能关联。',
   anatomyNote: '真实肌肉在独立解剖视图中展示；人物上的功能区域为教学示意。',
   missingAnatomyNote: '解剖源缺少腹直肌、腹内斜肌、腹横肌、背阔肌与腰方肌独立网格。',
   evidenceNote: '固定姿态与插值不能确定受力大小或肌肉激活强度。',
@@ -257,7 +257,7 @@ export function resolveMovementPoseAnnotations(sequence, index) {
     title: `原第 ${String(sourceStepNumber).padStart(2, '0')} 步 · ${profile.title}`,
     supportHands, enabled: true, regions, labels, audienceLabels,
     cue: { support, legs: profile.legs, body: profile.body }, cues,
-    teachingNote: '红色表示本姿态讲解的重要相关肌群；箭头表示动作意图，颜色和箭头大小不表示力量或实测激活强度。',
+    teachingNote: '红色表示本姿态讲解的重要相关肌群；颜色不表示力量或实测激活强度。',
     anatomyNote: MOVEMENT_LESSON.anatomyNote,
     missingAnatomyNote: MOVEMENT_LESSON.missingAnatomyNote };
 }
