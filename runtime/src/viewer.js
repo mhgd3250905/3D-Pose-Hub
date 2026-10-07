@@ -268,7 +268,10 @@ export class BodyViewer {
   }
   resetView(){
     // One envelope and target for every saved step and playback frame.
-    if(movementView(this.mode))this.fitBounds(this.movementBounds,STANDARD_VIEW,this.container.clientWidth<=600?1.0:1.1);
+    // The envelope is a 3D box, whose projected corners overshoot the real silhouette by ~40-90 %
+    // (measured over the whole loop: phone 247/366 px wide, desktop 403/780 px). These paddings keep
+    // every frame inside the free canvas while letting the athlete fill the stage.
+    if(movementView(this.mode))this.fitBounds(this.movementBounds,STANDARD_VIEW,this.container.clientWidth<=600?.74:.7);
     else if(this.layer==='reveal'){if(this.selectedPart&&!this.selectedPart.hotspot){const mesh=this.parts.find(m=>m.userData.part.id===this.selectedPart.id);if(mesh)this.fitBounds(mesh.geometry.boundingBox);}else this.fitGroup();}
     else if(this.coachRestBounds)this.fitBounds(this.coachRestBounds,new THREE.Vector3(.58,.04,1),1.18);
     else{this.controls.target.set(0,.85,0);this.camera.position.set(2,.95,3.6);this.controls.update();this.dirty=true;}

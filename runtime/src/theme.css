@@ -206,11 +206,11 @@ body[data-mode="anatomy"] .caption-divider,body[data-mode="training"] .caption-d
 .viewport>#motion-toolbar .play-button svg{width:18px;height:18px;fill:currentColor;stroke-width:0}
 .viewport>#motion-toolbar .timeline-wrap{position:relative;flex:1 1 auto;min-width:0;height:44px}
 .viewport>#motion-toolbar .timeline-label{display:none}
-.viewport>#motion-toolbar #timeline{position:absolute;left:0;right:0;top:4px;width:100%;height:24px!important;margin:0!important;z-index:1}
+.viewport>#motion-toolbar #timeline{position:absolute;left:0;right:0;top:-8px;width:100%;height:40px!important;margin:0!important;z-index:1} /* 40 px hit band, track centred at 12 px */
 .viewport>#motion-toolbar .movement-node-nav{position:absolute;inset:0;z-index:2;display:block;max-width:none;margin:0;pointer-events:none}
 .viewport>#motion-toolbar .movement-node-nav button{position:absolute;top:0;bottom:0;left:calc(8px + var(--at,0) * (100% - 16px));width:0;min-width:0;min-height:0;padding:0;margin:0;border:0!important;background:none!important;pointer-events:none;color:var(--label-3);font:var(--w-medium) var(--t-caption2)/1 var(--font);font-variant-numeric:tabular-nums}
-.viewport>#motion-toolbar .movement-node-nav button::before{content:"";position:absolute;left:-2px;top:14px;width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.55);transition:transform var(--dur-2) var(--ease-out),background var(--dur-2) var(--ease-out)}
-.viewport>#motion-toolbar .movement-node-nav button span{position:absolute;left:-14px;width:28px;top:26px;height:18px;line-height:18px;text-align:center;border-radius:var(--r-xs);pointer-events:auto;cursor:pointer;transition:color var(--dur-2) var(--ease-out)}
+.viewport>#motion-toolbar .movement-node-nav button::before{content:"";position:absolute;left:-2px;top:10px;width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.55);transition:transform var(--dur-2) var(--ease-out),background var(--dur-2) var(--ease-out)}
+.viewport>#motion-toolbar .movement-node-nav button span{position:absolute;left:-14px;width:28px;top:24px;height:20px;line-height:20px;text-align:center;border-radius:var(--r-xs);pointer-events:auto;cursor:pointer;transition:color var(--dur-2) var(--ease-out)}
 .viewport>#motion-toolbar .movement-node-nav button span:hover{color:var(--label-1)}
 .viewport>#motion-toolbar .movement-node-nav button.active{color:var(--accent)}
 .viewport>#motion-toolbar .movement-node-nav button.active::before{background:var(--accent);transform:scale(1.6);box-shadow:0 0 0 2px rgba(0,0,0,.35)}
