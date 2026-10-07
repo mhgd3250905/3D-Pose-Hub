@@ -6,6 +6,7 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { MUSCLE_BY_ID, applyMuscleMap, createMuscleUniforms, muscleAt, resolveGroup, setMuscleColour, setMuscleFocus, setMuscleSelection } from './muscle-map.js';
+import './tokens.css';
 import './muscle-viewer.css';
 
 const MODEL_URL = '/anatomy/mannequin-reference.glb';
@@ -114,10 +115,10 @@ export function createMuscleViewer({ container, title = '目标肌群', subtitle
   const accentColour = new THREE.Color(accent);uniforms.mmAccent.value.copy(accentColour);
   uniforms.mmAccent2.value.copy(accentColour).offsetHSL(.045, 0, .12);setMuscleColour(uniforms, accentColour);
   const scene = new THREE.Scene(), camera = new THREE.PerspectiveCamera(28, 1, .05, 30);scene.add(camera);
-  scene.add(new THREE.HemisphereLight(0xe6eeff, 0x1b2333, .6));
+  scene.add(new THREE.HemisphereLight(0xeef0f8, 0x222226, .6));
   const key = new THREE.DirectionalLight(0xfff3e6, 1.6);key.position.set(1.4, 1.8, 2.6);camera.add(key);key.target.position.set(0, 0, -3);camera.add(key.target);
   const fill = new THREE.DirectionalLight(0xc4d8ff, .55);fill.position.set(-2.4, .4, 1.2);camera.add(fill);fill.target.position.set(0, 0, -3);camera.add(fill.target);
-  const rimA = new THREE.DirectionalLight(0x9cc4ff, 1.5);rimA.position.set(-2.2, 1.4, -3.2);camera.add(rimA);rimA.target.position.set(0, 0, -3);camera.add(rimA.target);
+  const rimA = new THREE.DirectionalLight(0xc6d4ff, 1.5);rimA.position.set(-2.2, 1.4, -3.2);camera.add(rimA);rimA.target.position.set(0, 0, -3);camera.add(rimA.target);
   const rimB = new THREE.DirectionalLight(0xffd1b8, .9);rimB.position.set(2.4, .8, -3.4);camera.add(rimB);rimB.target.position.set(0, 0, -3);camera.add(rimB.target);
   const floorMaterial = new THREE.ShaderMaterial({ transparent: true, depthWrite: false, toneMapped: false,
     uniforms: { uAccent: { value: accentColour.clone() } },
