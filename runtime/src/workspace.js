@@ -1,4 +1,4 @@
-export function createWorkspace({viewer,refreshIcons,onNotice}){
+export function createWorkspace({viewer,refreshIcons,onNotice,extraInsets}){
   const library=document.querySelector('#library-drawer'),details=document.querySelector('#details-drawer');
   const libraryToggle=document.querySelector('#toggle-library'),detailsToggle=document.querySelector('#toggle-details'),focusButton=document.querySelector('#canvas-focus');
   const mobile=()=>innerWidth<=960;
@@ -13,7 +13,9 @@ export function createWorkspace({viewer,refreshIcons,onNotice}){
     document.body.dataset.canvasFocus=String(state.focus);
     const reserve=!mobile(),left=reserve&&state.libraryOpen?library.getBoundingClientRect().right+20:20,right=reserve&&state.detailsOpen?innerWidth-details.getBoundingClientRect().left+20:20;
     document.documentElement.style.setProperty('--canvas-left',`${left}px`);document.documentElement.style.setProperty('--canvas-right',`${right}px`);
-    viewer()?.setFramingInsets({left,right,top:92,bottom:46});
+    // extra room an overlay keeps for itself (the synced muscle body), framing only
+    const extra=extraInsets?.()||{};
+    viewer()?.setFramingInsets({left,right:right+(extra.right||0),top:92,bottom:Math.max(46,extra.bottom||0)});
     try{localStorage.setItem('flare-workspace-v1',JSON.stringify({libraryOpen:state.libraryOpen,detailsOpen:state.detailsOpen}));}catch{}
   }
   function setOpen(side,open){
