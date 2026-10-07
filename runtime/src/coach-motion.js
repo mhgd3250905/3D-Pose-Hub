@@ -582,92 +582,7 @@ export function createCoachMotion({ model, rigData }) {
     for (let i = 0; i < handPoints[side].length; i += 3) low = Math.min(low, handPoints[side][i].clone().sub(wrist).applyQuaternion(quaternion).y);
     return Number.isFinite(low) ? low : -0.035;
   }
-  // v29 LEVEL HAND SWITCH (user's standard for a perfect flare: while the hands
-  // switch, nothing else changes height). Around each support switch (the key where
-  // a hand plants and the other one lets go) the upper body (pelvis, trunk, head,
-  // arms, hands) dwells in the switch pose: it is sampled at a warped time w(t) that
-  // is flat for +/-SWITCH_HOLD s and catches up smoothly (C2) within +/-SWITCH_SPAN s
-  // (the up/down of the loop now happens away from the switch). Both hands are down
-  // during the dwell (the incoming hand lands ~0.4 s early), the shoulders sit
-  // over them (keys built for it, see tools/rekey/v29-switch-geometry.mjs), so the
-  // hips, torso and head stay level. The legs keep their real-time world motion (the
-  // sweep never pauses); they ride along from the dwelling hips. ?level=0 turns it off.
-  const levelOff = (typeof location !== 'undefined' && new URLSearchParams(location.search).get('level') === '0') || globalThis.__COACH_LEVEL_OFF === true;
-  const { hold: SWITCH_HOLD = 0.28, span: SWITCH_SPAN = 1.8, ramp: SWITCH_RAMP = 0.3, pike: SWITCH_PIKE = 53 } = globalThis.__COACH_SWITCH ?? {};
-  const smootherInt = v => v * v * v * v * (v * (v - 3) + 2.5); // integral of smootherstep, 0..0.5
-  function holdCurve(u, a) {
-    // f(0)=0, f(1)=1, f'=0 on [0,a], f'(1)=1, f''(1)=0: flat hold, then a smooth catch-up
-    if (u <= a) return 0;
-    const b = a + (1 - a) * SWITCH_RAMP, m = (b + a) / (1 - a);
-    if (u < b) return (1 + m) * (b - a) * smootherInt((u - a) / (b - a));
-    const v = (u - b) / (1 - b);
-    return (1 + m) * (b - a) / 2 + (u - b) + m * (1 - b) * (v - smootherInt(v));
-  }
-  let switchCache = null;
-  function switchCenters() {
-    const steps = sequence.steps, n = steps.length - 1, seg = sequence.period / (n + 1);
-    if (switchCache?.sequence === sequence) return switchCache.centers;
-    const centers = [];
-    for (const side of SIDES) for (let k = 0; k < n; k++) {
-      const prev = (k - 1 + n) % n, other = side === 'left' ? 'right' : 'left';
-      if (steps[k].pose.limbs[side].handLocked && !steps[prev].pose.limbs[side].handLocked && steps[k].pose.limbs[other].handLocked) centers.push({ center: k * seg });
-    }
-    // windows never overlap: each side reaches at most 45% of the way to the next switch
-    const period = sequence.period;
-    for (const c of centers) {
-      const gaps = centers.filter(o => o !== c).map(o => (((o.center - c.center) % period) + period) % period);
-      const after = gaps.length ? Math.min(...gaps) : period, before = gaps.length ? Math.min(...gaps.map(g => period - g)) : period;
-      c.before = Math.min(SWITCH_SPAN, 0.45 * before); c.after = Math.min(SWITCH_SPAN, 0.45 * after);
-    }
-    switchCache = { sequence, centers };
-    return centers;
-  }
-  function switchWarp(sampleTime) {
-    if (levelOff) return sampleTime;
-    const period = sequence.period;
-    for (const { center, before, after } of switchCenters()) {
-      let x = sampleTime - center;
-      x -= Math.round(x / period) * period;
-      if (x <= -before || x >= after) continue;
-      const span = x < 0 ? before : after;
-      return center + Math.sign(x) * span * holdCurve(Math.abs(x) / span, SWITCH_HOLD / span);
-    }
-    return sampleTime;
-  }
   function smoothLoopSample(sampleTime) {
-    const warped = switchWarp(sampleTime);
-    if (Math.abs(warped - sampleTime) < 1e-9) return smoothLoopSampleRaw(sampleTime);
-    const pose = smoothLoopSampleRaw(warped), real = smoothLoopSampleRaw(sampleTime);
-    // legs: real-time world direction (the sweep never pauses), hung from the dwelling
-    // hips. While the trunk waits, those legs can open the trunk-leg fold, so both legs
-    // turn together toward the fold (in the trunk-leg plane) just enough to keep the
-    // pike at SWITCH_PIKE deg (hard rule >= 50); a soft knee keeps the turn smooth.
-    const frames = p => { const r = validatePose(p), f = pelvisFrame(r).clone(); return { r, f, hip: side => rest[side + 'Hip'].clone().sub(rest.pelvis).applyQuaternion(f).add(r.pelvis) }; };
-    const W = frames(pose), R = frames(real);
-    const hips = SIDES.map(side => ({ side, hw: W.hip(side), hr: R.hip(side) }));
-    const world = hips.map(({ side, hr }) => new THREE.Vector3().fromArray(real.limbs[side].ankle).sub(hr));
-    const hipMid = hips[0].hw.clone().add(hips[1].hw).multiplyScalar(.5);
-    const shoulderMid = SIDES.map(side => upperOffset(rest[side + 'Shoulder'], W.r.bodyQuaternion, W.r.torsoQuaternion)).reduce((a, b) => a.add(b)).multiplyScalar(.5).add(W.r.pelvis);
-    const down = hipMid.clone().sub(shoulderMid), legMid = hips[0].hw.clone().add(world[0]).add(hips[1].hw).add(world[1]).multiplyScalar(.5).sub(hipMid);
-    const pike = THREE.MathUtils.radToDeg(down.angleTo(legMid)), deficit = SWITCH_PIKE - pike, soft = 3;
-    const need = deficit <= -soft ? 0 : deficit >= soft ? deficit : (deficit + soft) ** 2 / (4 * soft);
-    const axis = down.clone().cross(legMid);
-    const turn = need > 0 && axis.lengthSq() > 1e-10 ? new THREE.Quaternion().setFromAxisAngle(axis.normalize(), THREE.MathUtils.degToRad(need)) : new THREE.Quaternion();
-    hips.forEach(({ side, hw, hr }, i) => {
-      const limb = pose.limbs[side], src = real.limbs[side], len = world[i].length(), dir = world[i].clone().applyQuaternion(turn);
-      const ankle = hw.clone().add(dir);
-      limb.footQuaternion = turn.clone().multiply(new THREE.Quaternion().fromArray(src.footQuaternion)).toArray();
-      const floorHeight = pose.groundLock ? requiredAnkleHeight(side, new THREE.Quaternion().fromArray(limb.footQuaternion)) : -Infinity;
-      if (ankle.y < floorHeight && floorHeight - hw.y <= len) {
-        const h = floorHeight - hw.y, flat = new THREE.Vector3(ankle.x - hw.x, 0, ankle.z - hw.z);
-        if (flat.lengthSq() > 1e-10) ankle.copy(hw).addScaledVector(flat.normalize(), Math.sqrt(len * len - h * h)).setY(floorHeight);
-      }
-      limb.ankle = ankle.toArray();
-      limb.kneePole = hw.clone().add(new THREE.Vector3().fromArray(src.kneePole).sub(hr).applyQuaternion(turn)).toArray();
-    });
-    return pose;
-  }
-  function smoothLoopSampleRaw(sampleTime) {
     const steps = sequence.steps, n = steps.length - 1;
     // Keys 0..n-1 keep their saved times (j * period / (n + 1)), so K markers,
     // lessons and training ranges still line up; the repeated last key no longer
@@ -1364,7 +1279,7 @@ export function createCoachMotion({ model, rigData }) {
   let bodySmoothCache = null;
   function lateBodyOffset(sampleTime, rawY = null) {
     const steps = sequence?.steps, n = steps ? steps.length - 1 : 0;
-    if (!n || !Object.keys(LATE_PLANT).length || BODY_SMOOTH_MAX_GIVE <= 0) return 0;
+    if (!n || !Object.keys(LATE_PLANT).length) return 0;
     if (bodySmoothCache?.sequence !== sequence) {
       const period = sequence.period, seg = period / (n + 1), windows = [];
       for (const side of SIDES) for (let k = 0; k < n; k++) {
