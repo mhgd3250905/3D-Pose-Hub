@@ -175,7 +175,7 @@ select option{background:var(--bg-2)}
 .research-sources a{color:var(--label-1)}
 
 /* range sliders (editor + transport) */
-input[type="range"]::-webkit-slider-runnable-track{height:4px;border-radius:4px;background:linear-gradient(90deg,var(--accent) 0 calc(var(--p,0)*100%),rgba(255,255,255,.18) calc(var(--p,0)*100%) 100%)}
+input[type="range"]::-webkit-slider-runnable-track{height:4px;border-radius:4px;background:linear-gradient(90deg,var(--accent) 0 calc(var(--p,0)*100%),rgba(255,255,255,.16) calc(var(--p,0)*100%) 100%)}
 input[type="range"]::-moz-range-track{height:4px;border-radius:4px;background:rgba(255,255,255,.18)}
 input[type="range"]::-moz-range-progress{background:var(--accent)}
 input[type="range"]::-webkit-slider-thumb{width:16px;height:16px;margin-top:-6px;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.4),0 0 0 .5px rgba(0,0,0,.2)}
@@ -206,14 +206,14 @@ body[data-mode="anatomy"] .caption-divider,body[data-mode="training"] .caption-d
 .viewport>#motion-toolbar .play-button svg{width:18px;height:18px;fill:currentColor;stroke-width:0}
 .viewport>#motion-toolbar .timeline-wrap{position:relative;flex:1 1 auto;min-width:0;height:44px}
 .viewport>#motion-toolbar .timeline-label{display:none}
-.viewport>#motion-toolbar #timeline{position:absolute;left:0;right:0;top:-8px;width:100%;height:40px!important;margin:0!important;z-index:1} /* 40 px hit band, track centred at 12 px */
-.viewport>#motion-toolbar .movement-node-nav{position:absolute;inset:0;z-index:2;display:block;max-width:none;margin:0;pointer-events:none}
+.viewport>#motion-toolbar #timeline{position:absolute;left:0;right:0;top:-8px;width:100%;height:40px!important;margin:0!important;z-index:1} /* 40 px hit band, track centred at 12 px; ticks sit under it, labels over it */
+.viewport>#motion-toolbar .movement-node-nav{position:absolute;inset:0;z-index:auto;display:block;max-width:none;margin:0;pointer-events:none}
 .viewport>#motion-toolbar .movement-node-nav button{position:absolute;top:0;bottom:0;left:calc(8px + var(--at,0) * (100% - 16px));width:0;min-width:0;min-height:0;padding:0;margin:0;border:0!important;background:none!important;pointer-events:none;color:var(--label-3);font:var(--w-medium) var(--t-caption2)/1 var(--font);font-variant-numeric:tabular-nums}
-.viewport>#motion-toolbar .movement-node-nav button::before{content:"";position:absolute;left:-2px;top:10px;width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.55);transition:transform var(--dur-2) var(--ease-out),background var(--dur-2) var(--ease-out)}
-.viewport>#motion-toolbar .movement-node-nav button span{position:absolute;left:-14px;width:28px;top:24px;height:20px;line-height:20px;text-align:center;border-radius:var(--r-xs);pointer-events:auto;cursor:pointer;transition:color var(--dur-2) var(--ease-out)}
+.viewport>#motion-toolbar .movement-node-nav button::before{content:"";position:absolute;z-index:0;left:-2px;top:10px;width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.55);transition:transform var(--dur-2) var(--ease-out),background var(--dur-2) var(--ease-out)}
+.viewport>#motion-toolbar .movement-node-nav button span{position:absolute;z-index:2;left:-14px;width:28px;top:24px;height:20px;line-height:20px;text-align:center;border-radius:var(--r-xs);pointer-events:auto;cursor:pointer;transition:color var(--dur-2) var(--ease-out)}
 .viewport>#motion-toolbar .movement-node-nav button span:hover{color:var(--label-1)}
 .viewport>#motion-toolbar .movement-node-nav button.active{color:var(--accent)}
-.viewport>#motion-toolbar .movement-node-nav button.active::before{background:var(--accent);transform:scale(1.6);box-shadow:0 0 0 2px rgba(0,0,0,.35)}
+.viewport>#motion-toolbar .movement-node-nav button.active::before{background:var(--accent)}
 .viewport>#motion-toolbar>select,.viewport>#motion-toolbar select#speed{flex:none;height:36px!important;min-width:0;max-width:none;margin:0;padding:0 26px 0 var(--s-3)!important;border:0!important;border-radius:var(--r-pill)!important;background-color:var(--fill-2)!important;background-position:right 10px center!important;color:var(--label-1)!important;font-size:var(--t-footnote)!important;font-variant-numeric:tabular-nums}
 .viewport>#motion-toolbar .movement-loop-control{flex:none;width:36px;height:36px;min-height:0;padding:0;border:0;border-radius:50%;background:var(--fill-2);color:var(--label-1);position:relative}
 .viewport>#motion-toolbar .movement-loop-control::after{content:"";position:absolute;inset:-4px}
@@ -307,3 +307,4 @@ body[data-mode="anatomy"] .caption-divider,body[data-mode="training"] .caption-d
 @media (prefers-reduced-motion:reduce){
   .app-menu,.workspace-drawer,.drawer-scrim,.app-menu-scrim{animation:none!important}
 }
+.workspace-drawer .motion-source select{border:0!important;max-width:200px}
