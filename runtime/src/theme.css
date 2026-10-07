@@ -40,25 +40,22 @@ body[data-mode="motion"] .workspace-header .stage-heading .eyebrow{color:var(--l
 .workspace-button svg{width:18px;height:18px;stroke-width:1.75}
 .menu-button{width:40px;padding:0}
 
-/* ---------- 更多 menu ---------- */
+/* ---------- 更多 menu: one grouped inset list (modes, then view & tools) ---------- */
 .app-menu-scrim{position:fixed;inset:0;z-index:58;background:transparent}
-.app-menu{position:fixed;z-index:59;top:60px;right:var(--s-4);width:300px;padding:var(--s-2);border-radius:var(--r-lg);background:var(--mat-thick);box-shadow:var(--mat-edge),var(--shadow-3);backdrop-filter:var(--mat-blur-strong);-webkit-backdrop-filter:var(--mat-blur-strong);transform-origin:top right;animation:menu-pop var(--dur-3) var(--ease-spring)}
+.app-menu{position:fixed;z-index:59;top:60px;right:var(--s-4);width:300px;padding:var(--s-2) var(--s-3) var(--s-3);border-radius:var(--r-lg);background:var(--mat-thick);box-shadow:var(--mat-edge-lit),var(--shadow-3);backdrop-filter:var(--mat-blur-strong);-webkit-backdrop-filter:var(--mat-blur-strong);transform-origin:top right;animation:menu-pop var(--dur-3) var(--ease-spring)}
 @keyframes menu-pop{from{opacity:0;transform:scale(.94) translateY(-4px)}}
 .app-menu-grabber{display:none}
-.app-menu-title{margin:var(--s-2) var(--s-3) var(--s-2);font-size:var(--t-caption);line-height:var(--lh-caption);color:var(--label-3);font-weight:var(--w-medium)}
-.app-menu-modes{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--s-1);padding:0 0 var(--s-2);border-bottom:.5px solid var(--hairline-strong);margin-bottom:var(--s-2)}
-.app-menu-modes button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-height:64px;padding:var(--s-2) 0;border:0;border-radius:var(--r-md);background:transparent;color:var(--label-2);font-size:var(--t-caption2);line-height:var(--lh-caption2);font-weight:var(--w-medium);transition:background var(--dur-2) var(--ease-out),color var(--dur-2) var(--ease-out)}
-.app-menu-modes button svg{width:22px;height:22px;stroke-width:1.6;padding:9px;box-sizing:content-box;border-radius:50%;background:var(--fill-2);color:var(--label-1);transition:background var(--dur-2) var(--ease-out),color var(--dur-2) var(--ease-out)}
-.app-menu-modes button:hover{color:var(--label-1)}
-.app-menu-modes button:hover svg{background:var(--fill-3)}
-.app-menu-modes button[aria-checked="true"]{color:var(--label-1)}
-.app-menu-modes button[aria-checked="true"] svg{background:var(--accent);color:var(--on-accent)}
-.app-menu-list{display:flex;flex-direction:column}
-.app-menu-list button{display:flex;align-items:center;gap:var(--s-3);min-height:var(--tap);padding:0 var(--s-3);border:0;border-radius:var(--r-sm);background:transparent;color:var(--label-1);font-size:var(--t-subhead);text-align:left;transition:background var(--dur-1) var(--ease-out)}
-.app-menu-list button:hover,.app-menu-list button:focus-visible{background:var(--fill-2)}
-.app-menu-list button svg{width:19px;height:19px;color:var(--label-2);stroke-width:1.7}
-.app-menu-list button span{flex:1}
-.app-menu-list button[aria-checked="true"]::after{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.app-menu-title{margin:var(--s-3) var(--s-3) 6px;font-size:var(--t-footnote);line-height:var(--lh-footnote);color:var(--label-2);font-weight:var(--w-medium)}
+.app-menu-modes,.app-menu-list{display:flex;flex-direction:column;margin:0;padding:0;border:0;border-radius:var(--r-md);background:var(--fill-1);box-shadow:inset 0 0 0 .5px var(--hairline);overflow:hidden}
+.app-menu-modes button,.app-menu-list button{position:relative;display:flex;flex-direction:row;align-items:center;gap:var(--s-3);min-height:var(--tap);padding:0 var(--s-4) 0 14px;border:0;border-radius:0;background:transparent;color:var(--label-1);font-size:var(--t-subhead);line-height:var(--lh-subhead);font-weight:var(--w-regular);text-align:left;transition:background var(--dur-1) var(--ease-out)}
+.app-menu-modes button+button::before,.app-menu-list button+button::before{content:"";position:absolute;top:0;right:0;left:46px;height:.5px;background:var(--hairline)}
+.app-menu-modes button:hover,.app-menu-list button:hover,.app-menu-modes button:focus-visible,.app-menu-list button:focus-visible{background:var(--fill-2)}
+.app-menu-modes button:active,.app-menu-list button:active{background:var(--fill-3)}
+.app-menu-modes button svg,.app-menu-list button svg{flex:none;width:20px;height:20px;padding:0;margin:0;border-radius:0;background:none;color:var(--label-2);stroke-width:1.75;transition:color var(--dur-2) var(--ease-out)}
+.app-menu-modes button span,.app-menu-list button span{flex:1}
+.app-menu-modes button[aria-checked="true"] svg{color:var(--accent);background:none}
+.app-menu-modes button[aria-checked="true"]::after,.app-menu-list button[aria-checked="true"]::after{content:"";flex:none;width:18px;height:18px;border-radius:0;background:var(--accent);-webkit-mask:var(--check) center/contain no-repeat;mask:var(--check) center/contain no-repeat}
+.app-menu{--check:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E")}
 .app-menu-list kbd{font-family:var(--font);font-size:var(--t-caption);color:var(--label-3);padding:1px 6px;border-radius:5px;background:var(--fill-2)}
 .app-menu-list button:disabled{opacity:.35}
 
@@ -208,11 +205,11 @@ body[data-mode="anatomy"] .caption-divider,body[data-mode="training"] .caption-d
 .viewport>#motion-toolbar .timeline-label{display:none}
 .viewport>#motion-toolbar #timeline{position:absolute;left:0;right:0;top:-8px;width:100%;height:40px!important;margin:0!important;z-index:1} /* 40 px hit band, track centred at 12 px; ticks sit under it, labels over it */
 .viewport>#motion-toolbar .movement-node-nav{position:absolute;inset:0;z-index:auto;display:block;max-width:none;margin:0;pointer-events:none}
-.viewport>#motion-toolbar .movement-node-nav button{position:absolute;top:0;bottom:0;left:calc(8px + var(--at,0) * (100% - 16px));width:0;min-width:0;min-height:0;padding:0;margin:0;border:0!important;background:none!important;pointer-events:none;color:var(--label-3);font:var(--w-medium) var(--t-caption2)/1 var(--font);font-variant-numeric:tabular-nums}
+.viewport>#motion-toolbar .movement-node-nav button{position:absolute;top:0;bottom:0;left:calc(8px + var(--at,0) * (100% - 16px));width:0;min-width:0;min-height:0;padding:0;margin:0;border:0!important;background:none!important;pointer-events:none;color:var(--label-2);font:var(--w-medium) var(--t-caption)/1 var(--font);font-variant-numeric:tabular-nums}
 .viewport>#motion-toolbar .movement-node-nav button::before{content:"";position:absolute;z-index:0;left:-2px;top:10px;width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.55);transition:transform var(--dur-2) var(--ease-out),background var(--dur-2) var(--ease-out)}
 .viewport>#motion-toolbar .movement-node-nav button span{position:absolute;z-index:2;left:-14px;width:28px;top:24px;height:20px;line-height:20px;text-align:center;border-radius:var(--r-xs);pointer-events:auto;cursor:pointer;transition:color var(--dur-2) var(--ease-out)}
 .viewport>#motion-toolbar .movement-node-nav button span:hover{color:var(--label-1)}
-.viewport>#motion-toolbar .movement-node-nav button.active{color:var(--accent)}
+.viewport>#motion-toolbar .movement-node-nav button.active{color:var(--accent);font-weight:var(--w-semibold)}
 .viewport>#motion-toolbar .movement-node-nav button.active::before{background:var(--accent)}
 .viewport>#motion-toolbar>select,.viewport>#motion-toolbar select#speed{flex:none;height:36px!important;min-width:0;max-width:none;margin:0;padding:0 26px 0 var(--s-3)!important;border:0!important;border-radius:var(--r-pill)!important;background-color:var(--fill-2)!important;background-position:right 10px center!important;color:var(--label-1)!important;font-size:var(--t-footnote)!important;font-variant-numeric:tabular-nums}
 .viewport>#motion-toolbar .movement-loop-control{flex:none;width:36px;height:36px;min-height:0;padding:0;border:0;border-radius:50%;background:var(--fill-2);color:var(--label-1);position:relative}
@@ -274,7 +271,10 @@ body[data-mode="anatomy"] .caption-divider,body[data-mode="training"] .caption-d
   .app-menu{top:auto;left:var(--s-2);right:var(--s-2);bottom:calc(var(--s-2) + env(safe-area-inset-bottom,0px));width:auto;padding:var(--s-2) var(--s-2) var(--s-3);border-radius:var(--r-xl);transform-origin:bottom center;animation:sheet-up var(--dur-4) var(--ease-out)}
   @keyframes sheet-up{from{transform:translateY(100%)}}
   .app-menu-grabber{display:block;width:36px;height:5px;margin:2px auto var(--s-2);border-radius:3px;background:var(--fill-4)}
-  .app-menu-list button{min-height:50px;font-size:var(--t-body)}
+  .app-menu{padding:var(--s-1) var(--s-3) var(--s-3)}
+  .app-menu-modes button,.app-menu-list button{min-height:50px;font-size:var(--t-body);line-height:var(--lh-body)}
+  .app-menu-modes button+button::before,.app-menu-list button+button::before{left:48px}
+  .app-menu-modes button svg,.app-menu-list button svg{width:22px;height:22px}
   .app-menu-desktop{display:none!important}
 
   /* drawers: bottom sheets */
@@ -308,3 +308,27 @@ body[data-mode="anatomy"] .caption-divider,body[data-mode="training"] .caption-d
   .app-menu,.workspace-drawer,.drawer-scrim,.app-menu-scrim{animation:none!important}
 }
 .workspace-drawer .motion-source select{border:0!important;max-width:200px}
+
+/* ==========================================================================
+   Round 2 · calmer chrome
+   ========================================================================== */
+/* the home screen needs no mode kicker: the title is the screen */
+body[data-mode="motion"] .workspace-header .stage-heading .eyebrow{display:none!important}
+.workspace-header .stage-heading .eyebrow{letter-spacing:0!important}
+/* motion view: camera reset lives in 更多 */
+body[data-mode="motion"] .viewport-top #reset-view{display:none}
+/* floating glass gets the lit edge */
+.viewport>#motion-toolbar,.workspace-drawer,body[data-mode="motion"] .workspace-drawer,.transition-transport{box-shadow:var(--mat-edge-lit),var(--shadow-2)!important}
+
+@media (max-width:600px){
+  /* steps sheet: the list is the content (the current step is already highlighted in it) */
+  body[data-mode="motion"] .library-drawer .viewer-label,body[data-mode="motion"] .library-drawer .presets-copy{display:none!important}
+  body[data-mode="motion"] .library-drawer .pose-presets{margin-top:0;padding-top:0;border-top:0!important}
+  /* editor transport: two calm rows — [‹ 预览 › 范围 速度] / [跳过 | 保存] */
+  .transition-transport-controls{display:grid!important;grid-template-columns:40px minmax(0,1fr) 40px minmax(0,1.3fr) auto;gap:var(--s-2)!important}
+  .transition-transport-controls>*{width:auto!important;min-width:0!important;margin:0!important}
+  #transition-global-prev,#transition-global-next{width:40px!important;padding:0!important;border-radius:50%!important}
+  #transition-skip-button{grid-column:1/3;background:transparent!important;color:var(--label-2)!important}
+  #transition-keyframe-button{grid-column:3/6;font-weight:var(--w-semibold)}
+  .transition-transport-heading{margin-bottom:var(--s-2)!important}
+}

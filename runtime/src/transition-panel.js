@@ -646,6 +646,8 @@ export function createTransitionPanel({ viewer, panel, shelf, sequence, storage,
     global('#transition-global-play').textContent = previewing ? '暂停' : '预览';
     global('#transition-keyframe-button').disabled = previewing || (endpoint && !dirty);
     global('#transition-keyframe-button').textContent = skipped ? '更新并恢复 · K' : endpoint ? '更新原关键帧 · K' : pointAt() ? '更新关键帧 · K' : '保存关键帧 · K';
+    // keyboard hint only where there is a keyboard
+    if (globalThis.matchMedia?.('(pointer: coarse)')?.matches) global('#transition-keyframe-button').textContent = global('#transition-keyframe-button').textContent.replace(' · K', '');
     for (const button of [global('#transition-skip-button'), $('#transition-skip-current')]) {
       button.disabled = previewing || Boolean(curveEdit) || Boolean(trajectoryPoseEdit) || guideEditor.active() || (fixed === null && !pointAt());
       button.textContent = skipped ? '恢复此帧' : '跳过此帧';
