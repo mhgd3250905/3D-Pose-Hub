@@ -94,9 +94,9 @@ export function createMuscleSync({ viewport, toolbar, onReserve, onOpenViewer, s
     renderer.outputColorSpace = THREE.SRGBColorSpace;renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.domElement.className = 'msync-canvas';renderer.domElement.setAttribute('aria-label', '正面与背面人体，亮色为当前阶段的重点肌群；点按查看说明');
     figure.prepend(renderer.domElement);
-    scene = new THREE.Scene();scene.add(new THREE.HemisphereLight(0xe6eeff, 0x1b2333, 1.25));
+    scene = new THREE.Scene();scene.add(new THREE.HemisphereLight(0xf2f2f5, 0x202024, 1.25));
     key = new THREE.DirectionalLight(0xfff3e6, 1.9);scene.add(key, key.target);
-    rim = new THREE.DirectionalLight(0x9cc4ff, 1.1);scene.add(rim, rim.target);
+    rim = new THREE.DirectionalLight(0xdfe6ff, 1.1);scene.add(rim, rim.target);
     uniforms = createMuscleUniforms();uniforms.mmMulti.value = 1;uniforms.mmReveal.value = 1;uniforms.mmTime.value = 0;
     renderer.domElement.addEventListener('pointerup', onTap);
     return true;
@@ -131,12 +131,16 @@ export function createMuscleSync({ viewport, toolbar, onReserve, onOpenViewer, s
     const vp = viewport.getBoundingClientRect(), width = vp.width - left - right;
     const next = width >= 720 ? 'inset' : 'strip';
     if (next !== layout) { layout = next;root.dataset.layout = layout; }
+    // inset: the card sits beside the play bar (the bar leaves room for it via
+    // --msync-reserve) with both bottoms aligned; strip: stacked above the bar
+    const root_ = document.documentElement, gap = 8;
+    root_.style.setProperty('--msync-reserve', layout === 'inset' ? Math.round(root.offsetWidth + 12) + 'px' : '0px');
     const bar = toolbar && !toolbar.hidden ? toolbar.getBoundingClientRect() : null;
-    const bottom = bar && bar.height ? vp.bottom - bar.top + 10 : 56;
+    const bottom = bar && bar.height ? (layout === 'inset' ? vp.bottom - bar.bottom : vp.bottom - bar.top + gap) : 24;
     root.style.left = layout === 'strip' ? left + 'px' : 'auto';root.style.right = right + 'px';root.style.bottom = bottom + 'px';
     sizeCanvas();
     const rect = root.getBoundingClientRect();
-    const nextReserve = layout === 'inset' ? { right: Math.round(rect.width + 16), bottom: 0 } : { right: 0, bottom: Math.round(vp.bottom - rect.top + 6) };
+    const nextReserve = layout === 'inset' ? { right: Math.round(rect.width + 16), bottom: bar && bar.height ? Math.round(vp.bottom - bar.top + 8) : 0 } : { right: 0, bottom: Math.round(vp.bottom - rect.top + 6) };
     if (nextReserve.right !== reserve.right || nextReserve.bottom !== reserve.bottom) { reserve = nextReserve;onReserve?.(); }
   }
   function sizeCanvas() {
@@ -298,7 +302,7 @@ export function createMuscleSync({ viewport, toolbar, onReserve, onOpenViewer, s
       const next = Boolean(value);if (next === visible) return;
       visible = next;root.hidden = !visible;
       if (visible) { root.dataset.layout = layout;measure();renderText(true);applyState();if (!collapsed) idle(loadModel);requestRender(); }
-      else { reserve = { right: 0, bottom: 0 };onReserve?.(); }
+      else { reserve = { right: 0, bottom: 0 };document.documentElement.style.setProperty('--msync-reserve', '0px');onReserve?.(); }
     },
     reserve: () => (visible ? { ...reserve } : { right: 0, bottom: 0 }),
     relayout: () => measure(),

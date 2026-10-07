@@ -24,7 +24,8 @@ export function createMovementTransport({ viewer, toolbar, panel, onSeek, refres
     });
     root.replaceChildren(...nodes.map(profile => {
       const button = document.createElement('button');button.type = 'button';button.dataset.movementNode = String(profile.sourceStepNumber);
-      button.textContent = String(profile.sourceStepNumber).padStart(2, '0');button.title = profile.title;
+      const label = document.createElement('span');label.textContent = String(profile.sourceStepNumber).padStart(2, '0');button.append(label);button.title = profile.title;
+      button.style.setProperty('--at', (profile.index / sequence.steps.length).toFixed(4)); // tick position on the scrubber
       button.setAttribute('aria-label', `查看原第 ${String(profile.sourceStepNumber).padStart(2, '0')} 步`);
       button.setAttribute('aria-pressed', 'false');button.addEventListener('click', () => seek(profile.index));return button;
     }));
