@@ -790,6 +790,14 @@ export function createCoachMotion({ model, rigData }) {
       pose.limbs[side].wrist = first.solved[side].arm.end.clone().lerp(last.solved[side].arm.end, blend).toArray();
     }
     const requested = validatePose(pose), constrainedPelvis = projectBody(requested);
+    // A hand on the floor never bends (user, 2026-10-07: key of a good flare).
+    // Between keys the blended hips can sag toward a planted hand; lift the whole
+    // body (pelvis, legs) until every floor-contact arm is straight again.
+    const lift = plantedArmLift(requested, constrainedPelvis);
+    if (lift > 0) {
+      constrainedPelvis.y += lift; requested.pelvis.y += lift;
+      for (const side of SIDES) for (const key of ['ankle', 'kneePole']) if (pose.limbs[side][key]) pose.limbs[side][key][1] += lift;
+    }
     pose.pelvis = constrainedPelvis.toArray();
     const referenceAt = node => node.requested.bodyQuaternion.clone().multiply(node.requested.torsoQuaternion ?? IDENTITY).toArray();
     const upper = requested.bodyQuaternion.clone().multiply(requested.torsoQuaternion ?? IDENTITY);
