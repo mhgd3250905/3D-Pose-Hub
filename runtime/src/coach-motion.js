@@ -785,7 +785,7 @@ export function createCoachMotion({ model, rigData }) {
     // is the endpoint of the animation. The raw pole can be on the limb axis
     // and its raw pelvis/target can be outside the constrained region.
     const first = resolvedNode(start), last = resolvedNode(end);
-    pose.pelvis = first.constrainedPelvis.clone().lerp(last.constrainedPelvis, blend).toArray();
+    pose.pelvis = (roundHipPath(start, end, first, last, blend) ?? first.constrainedPelvis.clone().lerp(last.constrainedPelvis, blend)).toArray();
     for (const side of SIDES) {
       pose.limbs[side].wrist = first.solved[side].arm.end.clone().lerp(last.solved[side].arm.end, blend).toArray();
     }
