@@ -5,7 +5,7 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
-import { MUSCLE_BY_ID, applyMuscleMap, createMuscleUniforms, muscleAt, resolveGroup, setMuscleFocus, setMuscleSelection } from './muscle-map.js';
+import { MUSCLE_BY_ID, applyMuscleMap, createMuscleUniforms, muscleAt, resolveGroup, setMuscleColour, setMuscleFocus, setMuscleSelection } from './muscle-map.js';
 import './muscle-viewer.css';
 
 const MODEL_URL = '/anatomy/fitness-reference.glb';
@@ -39,7 +39,8 @@ function normalise(items) {
     const group = resolveGroup(item?.groupId);if (!group) continue;
     const level = item.level === 'secondary' || item.level === 'deep' ? item.level : group.deep ? 'deep' : 'primary';
     const side = item.side === 'left' || item.side === 'right' ? item.side : 'both';
-    result.push({ groupId: item.groupId, label: item.label || group.label, role: item.role || '', level, side, muscles: group.muscles });
+    const colour = typeof item.colour === 'string' && /^#[0-9a-f]{3,8}$/i.test(item.colour) ? item.colour : null;
+    result.push({ groupId: item.groupId, label: item.label || group.label, role: item.role || '', level, side, muscles: group.muscles, colour, section: item.section || '' });
   }
   return result;
 }
@@ -56,7 +57,12 @@ function viewFor(item) {
   return { yaw, target: new THREE.Vector3(item.side === 'both' ? 0 : sign * x * .55, y, .01), span: ySpan[1] - ySpan[0] };
 }
 
-export function createMuscleViewer({ container, title = '目标肌群', subtitle = '', items = [], accent = '#ff5a36', onClose, debug = false, debugTools = false } = {}) {
+/** Options: items [{groupId,label,role,level,side,colour,section}]. When the
+ * items carry their own colours the viewer is in multi-colour mode: one colour
+ * per group (which group, never effort). sections [{id,label,short}] order and
+ * label the chips; filters [{id,label,groups?:[id|{id,side}]}] add a row that
+ * keeps one subset lit (e.g. a role or one pose) and fades the rest. */
+export function createMuscleViewer({ container, title = '目标肌群', subtitle = '', items = [], accent = '#ff5a36', sections = [], filters = [], filter: initialFilter = null, onClose, debug = false, debugTools = false } = {}) {
   if (!container?.appendChild) throw new TypeError('createMuscleViewer 需要一个容器。');
   const document = container.ownerDocument ?? globalThis.document, win = document.defaultView ?? globalThis;
   const reduced = () => win.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches;
@@ -87,8 +93,12 @@ export function createMuscleViewer({ container, title = '目标肌群', subtitle
   for (const level of ['primary', 'secondary', 'deep']) {
     const key = el(document, 'span', 'mv-key mv-key-' + level);key.append(el(document, 'i', 'mv-swatch'), el(document, 'span', '', LEVELS[level] + (level === 'deep' ? '（斜线）' : '')));legend.appendChild(key);
   }
+  const multiKey = el(document, 'span', 'mv-key mv-key-multi');multiKey.append(el(document, 'i', 'mv-swatch mv-swatch-multi'), el(document, 'span', '', '一色一肌群'));
+  const deepKey = el(document, 'span', 'mv-key mv-key-deepmulti');deepKey.append(el(document, 'i', 'mv-swatch mv-swatch-deepmulti'), el(document, 'span', '', '斜线＝深层'));
+  legend.append(multiKey, deepKey);
   const resetButton = el(document, 'button', 'mv-icon mv-reset');resetButton.type = 'button';resetButton.setAttribute('aria-label', '复位视角');resetButton.innerHTML = ICON.reset;
   legend.appendChild(resetButton);sheet.appendChild(legend);
+  const filterRow = el(document, 'div', 'mv-filters');filterRow.setAttribute('role', 'group');filterRow.setAttribute('aria-label', '筛选肌群');sheet.appendChild(filterRow);
   const chips = el(document, 'div', 'mv-chips');chips.setAttribute('role', 'listbox');chips.setAttribute('aria-label', '目标肌群');sheet.appendChild(chips);
   const detail = el(document, 'div', 'mv-detail'), detailName = el(document, 'strong', 'mv-detail-name'), detailMeta = el(document, 'span', 'mv-detail-meta');
   const detailParts = el(document, 'p', 'mv-detail-parts'), detailRole = el(document, 'p', 'mv-detail-role');
@@ -99,7 +109,7 @@ export function createMuscleViewer({ container, title = '目标肌群', subtitle
   // three
   const uniforms = createMuscleUniforms();uniforms.mmDebug.value = debug ? 1 : 0;
   const accentColour = new THREE.Color(accent);uniforms.mmAccent.value.copy(accentColour);
-  uniforms.mmAccent2.value.copy(accentColour).offsetHSL(.045, 0, .12);
+  uniforms.mmAccent2.value.copy(accentColour).offsetHSL(.045, 0, .12);setMuscleColour(uniforms, accentColour);
   const scene = new THREE.Scene(), camera = new THREE.PerspectiveCamera(28, 1, .05, 30);scene.add(camera);
   scene.add(new THREE.HemisphereLight(0xe6eeff, 0x1b2333, .6));
   const key = new THREE.DirectionalLight(0xfff3e6, 1.6);key.position.set(1.4, 1.8, 2.6);camera.add(key);key.target.position.set(0, 0, -3);camera.add(key.target);
@@ -135,7 +145,25 @@ export function createMuscleViewer({ container, title = '目标肌群', subtitle
   const goal = { yaw: 0, pitch: .06, dist: 3, target: new THREE.Vector3(0, .86, 0) };
   let fitDist = 3, homeYaw = 0, offsetY = 0, hintTimer = 0;
   const visible = { top: 0, bottom: 1 };
-  const setSel = () => setMuscleSelection(uniforms, list.flatMap(item => item.muscles.map(muscle => ({ muscle, level: item.level, side: item.side }))));
+  let sectionList = Array.isArray(sections) ? sections : [], filterList = Array.isArray(filters) ? filters : [], filterId = null;
+  const isMulti = () => list.length > 0 && list.every(item => item.colour);
+  const activeFilter = () => filterList.find(entry => entry.id === filterId && Array.isArray(entry.groups)) ?? null;
+  /** groupId -> side override for the active filter, or null when not filtering. */
+  function filterSides() {
+    const current = activeFilter();if (!current) return null;
+    return new Map(current.groups.map(entry => typeof entry === 'string' ? [entry, null] : [entry.id, entry.side === 'left' || entry.side === 'right' ? entry.side : null]));
+  }
+  const inFilter = item => { const sides = filterSides();return !sides || sides.has(item.groupId); };
+  function setSel() {
+    const multi = isMulti(), sides = filterSides();
+    uniforms.mmMulti.value = multi ? 1 : 0;
+    if (!multi) setMuscleColour(uniforms, accentColour);
+    setMuscleSelection(uniforms, list.flatMap(item => {
+      const filtered = sides && !sides.has(item.groupId), side = sides?.get(item.groupId) ?? item.side;
+      const dim = filtered ? 1 : multi && selected && selected !== item ? .88 : 0;
+      return item.muscles.map(muscle => ({ muscle, level: item.level, side, colour: item.colour ?? undefined, dim }));
+    }));
+  }
 
   function homeView() {
     const primaries = list.filter(item => item.level === 'primary');const pool = primaries.length ? primaries : list;
@@ -150,6 +178,9 @@ export function createMuscleViewer({ container, title = '目标肌群', subtitle
     const side = win.getComputedStyle?.(sheet).getPropertyValue('--mv-sheet-side').trim() === '1';
     visible.top = clamp(headerBottom + 6, 0, height * .4);visible.bottom = clamp(side ? height - 40 : sheetTop - 26, visible.top + 120, height);
     root.classList.toggle('mv-wide', side);
+    // Fade the canvas out under the title and view controls so a zoomed body
+    // (head, shoulders) never sits on top of them.
+    root.style.setProperty('--mv-top-fade', Math.round(headerBottom - 8) + 'px');
     if (renderer) renderer.setSize(width, height, false);
     camera.aspect = width / height;
     const vh = visible.bottom - visible.top, f = vh / height, t = Math.tan(THREE.MathUtils.degToRad(camera.fov / 2));
@@ -161,7 +192,7 @@ export function createMuscleViewer({ container, title = '目标肌群', subtitle
     requestFrame();
   }
   function resetView(instant = false) {
-    selected = null;tag.hidden = true;setMuscleFocus(uniforms, []);renderChips();
+    selected = null;tag.hidden = true;setMuscleFocus(uniforms, []);setSel();renderChips();
     goal.yaw = homeYaw + Math.round((cam.yaw - homeYaw) / (2 * Math.PI)) * 2 * Math.PI;goal.pitch = .06;goal.dist = fitDist;goal.target.set(0, .86, 0);
     if (instant) Object.assign(cam, { yaw: goal.yaw, pitch: goal.pitch, dist: goal.dist }), cam.target.copy(goal.target);
     syncViewButtons();requestFrame();
@@ -176,32 +207,63 @@ export function createMuscleViewer({ container, title = '目标肌群', subtitle
   function select(groupId, { toggle = false } = {}) {
     const item = list.find(entry => entry.groupId === groupId);
     if (!item || (toggle && selected === item)) { resetView();return; }
-    selected = item;setSpin(false);setMuscleFocus(uniforms, item.muscles);focusCamera(item);renderChips();
+    selected = item;setSpin(false);setSel();setMuscleFocus(uniforms, item.muscles);focusCamera(item);renderChips();
     lastInteraction = now();tag.hidden = true;
   }
+  function renderFilters() {
+    filterRow.replaceChildren();filterRow.hidden = filterList.length < 2;
+    for (const entry of filterList) {
+      const button = el(document, 'button', 'mv-filter', entry.label);button.type = 'button';
+      button.setAttribute('aria-pressed', String((filterId ?? filterList[0]?.id) === entry.id));
+      button.addEventListener('click', () => setFilter(entry.id));filterRow.appendChild(button);
+    }
+  }
+  function setFilter(id) {
+    filterId = filterList.some(entry => entry.id === id) ? id : filterList[0]?.id ?? null;
+    if (selected && !inFilter(selected)) { selected = null;setMuscleFocus(uniforms, []);goal.target.set(0, .86, 0);goal.pitch = .06;goal.dist = fitDist; }
+    setSel();renderFilters();renderChips();requestFrame();
+  }
   function renderChips() {
-    chips.replaceChildren();
-    for (const level of Object.keys(LEVELS)) legend.querySelector('.mv-key-' + level).hidden = !list.some(item => item.level === level);
-    for (const item of list) {
+    chips.replaceChildren();const multi = isMulti();root.classList.toggle('mv-multi', multi);
+    for (const level of Object.keys(LEVELS)) legend.querySelector('.mv-key-' + level).hidden = multi || !list.some(item => item.level === level);
+    multiKey.hidden = !multi;deepKey.hidden = !multi || !list.some(item => item.level === 'deep');
+    const shownItems = list.filter(inFilter);let lastSection = null;
+    for (const item of shownItems) {
+      if (multi && item.section && item.section !== lastSection) {
+        const section = sectionList.find(entry => entry.id === item.section);lastSection = item.section;
+        if (section) chips.appendChild(el(document, 'span', 'mv-chip-section', section.label));
+      }
       const chip = el(document, 'button', 'mv-chip mv-chip-' + item.level);chip.type = 'button';chip.setAttribute('role', 'option');
-      chip.setAttribute('aria-selected', String(selected === item));
+      chip.setAttribute('aria-selected', String(selected === item));if (item.colour) chip.style.setProperty('--mv-c', item.colour);
       chip.append(el(document, 'i', 'mv-swatch'), el(document, 'span', 'mv-chip-label', item.label));
-      if (item.side !== 'both') chip.appendChild(el(document, 'span', 'mv-chip-side', item.side === 'left' ? '左' : '右'));
+      const side = filterSides()?.get(item.groupId) ?? item.side;
+      if (side !== 'both') chip.appendChild(el(document, 'span', 'mv-chip-side', side === 'left' ? '左' : '右'));
       chip.addEventListener('click', () => select(item.groupId, { toggle: true }));chips.appendChild(chip);
     }
     const shown = selected;
-    detail.hidden = !list.length;
+    detail.hidden = !list.length;detail.style.removeProperty('--mv-c');
     if (!shown && list.length) {
-      detailName.textContent = list.length + ' 个相关肌群';detailMeta.textContent = '';
-      detailParts.textContent = list.map(item => item.label).join(' · ');
-      detailRole.textContent = '点选下方肌群或直接点人体，查看具体位置';detailRole.hidden = false;
+      const current = activeFilter();
+      detailName.textContent = (current ? current.label + ' · ' : '') + shownItems.length + ' 个相关肌群';detailMeta.textContent = '';
+      if (multi && sectionList.length) {
+        detailParts.textContent = sectionList.map(section => [section.short || section.label, shownItems.filter(item => item.section === section.id).length]).filter(([, n]) => n).map(([name, n]) => name + ' ' + n).join(' · ');
+        detailRole.textContent = '颜色只区分肌群；点选肌群或直接点人体，查看具体位置';
+      } else {
+        detailParts.textContent = shownItems.map(item => item.label).join(' · ');
+        detailRole.textContent = '点选下方肌群或直接点人体，查看具体位置';
+      }
+      detailRole.hidden = false;
     }
     if (shown) {
-      detailName.textContent = shown.label;detailMeta.textContent = LEVELS[shown.level] + ' · ' + SIDES[shown.side];
+      const side = filterSides()?.get(shown.groupId) ?? shown.side;
+      if (shown.colour) detail.style.setProperty('--mv-c', shown.colour);
+      const section = sectionList.find(entry => entry.id === shown.section);
+      detailName.textContent = shown.label;detailMeta.textContent = (multi ? (section ? (section.short || section.label) + ' · ' : '') + (shown.level === 'deep' ? '深层 · ' : '') : LEVELS[shown.level] + ' · ') + SIDES[side];
       detailMeta.className = 'mv-detail-meta mv-meta-' + shown.level;
       detailParts.textContent = [...new Set(shown.muscles.map(id => MUSCLE_BY_ID[id].name))].join(' · ');
       detailRole.textContent = shown.role;detailRole.hidden = !detailRole.textContent;
     }
+    if (!shown) chips.scrollLeft = 0;
     chips.querySelector('[aria-selected="true"]')?.scrollIntoView?.({ block: 'nearest', inline: 'center', behavior: reduced() ? 'auto' : 'smooth' });
   }
   function syncViewButtons(yaw = goal.yaw) {
@@ -256,8 +318,9 @@ export function createMuscleViewer({ container, title = '目标肌群', subtitle
     const found = hit ? muscleAt(hit.point) : null;
     if (!found) { tag.hidden = true;tagPoint = null;return; }
     const owner = list.find(item => item.muscles.includes(found.id) && (item.side === 'both' || item.side === found.side));
-    tag.replaceChildren(el(document, 'strong', '', found.name), el(document, 'span', '', (found.side === 'left' ? '左侧' : '右侧') + (owner ? ' · ' + LEVELS[owner.level] : '')));
-    tag.classList.toggle('mv-tag-hot', Boolean(owner));tag.hidden = false;tagPoint = hit.point.clone();placeTag();
+    const multi = isMulti();
+    tag.replaceChildren(el(document, 'strong', '', found.name), el(document, 'span', '', (found.side === 'left' ? '左侧' : '右侧') + (owner ? ' · ' + (multi ? owner.label : LEVELS[owner.level]) : '')));
+    tag.classList.toggle('mv-tag-hot', Boolean(owner));if (owner?.colour) tag.style.setProperty('--mv-c', owner.colour);else tag.style.removeProperty('--mv-c');tag.hidden = false;tagPoint = hit.point.clone();placeTag();
     setMuscleFocus(uniforms, owner ? owner.muscles : selected?.muscles ?? []);
   }
   const projected = new THREE.Vector3();
@@ -327,7 +390,8 @@ export function createMuscleViewer({ container, title = '目标肌群', subtitle
 
   const observer = typeof ResizeObserver === 'function' ? new ResizeObserver(() => layout()) : null;observer?.observe(root);
   const onVisibility = () => { if (!document.hidden) { lastFrame = 0;requestFrame(); } };document.addEventListener('visibilitychange', onVisibility);
-  setSel();renderChips();layout();
+  filterId = filterList.some(entry => entry.id === initialFilter) ? initialFilter : filterList[0]?.id ?? null;
+  setSel();renderFilters();renderChips();layout();
   if (!failed) loadModel().then(model => {
     if (disposed) return;
     model.traverse(object => {
@@ -339,8 +403,12 @@ export function createMuscleViewer({ container, title = '目标肌群', subtitle
     body.add(model);loaded = true;status.hidden = true;root.dataset.ready = 'true';intro();
   }).catch(error => { status.textContent = error.message || '人体模型未能载入';root.dataset.ready = 'error'; });
 
-  function setItems(nextItems, { title: nextTitle, subtitle: nextSubtitle } = {}) {
-    list = normalise(nextItems);selected = null;setSel();setMuscleFocus(uniforms, []);
+  function setItems(nextItems, { title: nextTitle, subtitle: nextSubtitle, sections: nextSections, filters: nextFilters, filter: nextFilter } = {}) {
+    list = normalise(nextItems);selected = null;
+    if (nextSections !== undefined) sectionList = Array.isArray(nextSections) ? nextSections : [];
+    if (nextFilters !== undefined) filterList = Array.isArray(nextFilters) ? nextFilters : [];
+    filterId = filterList.some(entry => entry.id === nextFilter) ? nextFilter : filterList[0]?.id ?? null;
+    setSel();setMuscleFocus(uniforms, []);renderFilters();
     if (nextTitle !== undefined) titleNode.textContent = nextTitle;
     if (nextSubtitle !== undefined) { kicker.textContent = nextSubtitle;kicker.hidden = !nextSubtitle; }
     renderChips();if (loaded) intro();
@@ -351,9 +419,9 @@ export function createMuscleViewer({ container, title = '目标肌群', subtitle
     for (const mesh of meshes) { mesh.geometry.dispose();mesh.material.dispose(); }
     floor.geometry.dispose();floorMaterial.dispose();environment?.dispose();renderer?.dispose();root.remove();
   }
-  return { root, select, setItems, dispose, ...(debug || debugTools ? { debugMeshes: meshes, debugRender: requestFrame, debugCamera: cam, debugGoal: goal, debugReplayTo, debugLive: () => { virtual = null;lastFrame = 0;requestFrame(); } } : {}), resetView: () => resetView(), setSpin,
+  return { root, select, setItems, setFilter, dispose, ...(debug || debugTools ? { debugMeshes: meshes, debugRender: requestFrame, debugCamera: cam, debugGoal: goal, debugReplayTo, debugLive: () => { virtual = null;lastFrame = 0;requestFrame(); } } : {}), resetView: () => resetView(), setSpin,
     setView: direction => { setSpin(false);turnTo(direction === 'back' ? Math.PI : 0); },
-    get state() { return { loaded, failed, items: list.map(({ groupId, level, side }) => ({ groupId, level, side })), selected: selected?.groupId ?? null,
+    get state() { return { loaded, failed, items: list.map(({ groupId, level, side, colour }) => ({ groupId, level, side, colour })), selected: selected?.groupId ?? null, filter: filterId, multiColour: isMulti(),
       yaw: cam.yaw, dist: cam.dist, fitDist, autoSpin, reveal: uniforms.mmReveal.value, purpose: 'location-only' }; } };
 }
 

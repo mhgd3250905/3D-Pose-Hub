@@ -74,12 +74,14 @@ export const GROUP_MUSCLES = {
   'hip-flexors': { label: '髋屈肌', muscles: ['hipFlexor'], deep: true },
   quadriceps: { label: '股四头肌', muscles: ['quadRect', 'quadLat', 'quadMed'] },
   glutes: { label: '臀肌', muscles: ['glutes', 'gluteMed'] },
+  'glute-max': { label: '臀大肌', muscles: ['glutes'] },
+  'hip-abductors': { label: '臀中肌 · 髋外展', muscles: ['gluteMed'] },
   'hip-rotators': { label: '髋外旋肌群', muscles: ['glutes'], deep: true },
   adductors: { label: '内收肌群', muscles: ['adductors'] },
   hamstrings: { label: '腘绳肌', muscles: ['hamLat', 'hamMed'] },
   // extras for the standalone page / future cards
   chest: { label: '胸大肌', muscles: ['pec'] }, pectorals: { label: '胸肌', muscles: ['pec'] }, abs: { label: '腹直肌', muscles: ['abs'] },
-  biceps: { label: '肱二头肌', muscles: ['biceps'] }, forearms: { label: '前臂肌群', muscles: ['forearm'] },
+  biceps: { label: '肱二头肌', muscles: ['biceps'] }, forearms: { label: '前臂肌群', muscles: ['forearmFlex', 'forearmExt'] },
   traps: { label: '斜方肌', muscles: ['trapUpper', 'scapular'] }, lats: { label: '背阔肌', muscles: ['lats'] },
   calves: { label: '小腿三头肌', muscles: ['calfMed', 'calfLat'] }, tibialis: { label: '胫骨前肌', muscles: ['tibialis'] },
   neck: { label: '颈部肌群', muscles: ['neck'] },
@@ -108,15 +110,18 @@ export function muscleAt(point, height = 1.69) {
   return best > 0.02 && !MUSCLE_BY_ID[id].skin ? { id, name: MUSCLE_BY_ID[id].name, side: point.x >= 0 ? 'left' : 'right', score: best, margin: best - Math.max(second, 0) } : null;
 }
 
-/** Uniforms shared by every body material. sel[i]: 0 none, 1 primary,
- * .6 secondary, -1 deep (hatched). side: 1 left only, -1 right only, 0 both. */
+/** Uniforms shared by every body material. Per panel, mmState = (sel, side,
+ * focus, dim): sel 0 none, 1 primary, .6 secondary, -1 deep (hatched); side 1
+ * left only, -1 right only, 0 both; dim 0..1 fades a highlight toward the
+ * plain body. mmCol is the panel's colour (one accent, or one per group in
+ * multi-colour mode). Packed to stay well under phone uniform limits. */
 export function createMuscleUniforms() {
   return {
     mmC: { value: MUSCLES.map(m => new THREE.Vector3(...m.centre)) },
     mmR: { value: MUSCLES.map(m => new THREE.Vector3(...m.radius)) },
     mmT: { value: MUSCLES.map(m => new THREE.Vector4(Math.cos(m.tz), Math.sin(m.tz), Math.cos(m.tx), Math.sin(m.tx))) },
     mmF: { value: MUSCLES.map(m => new THREE.Vector4(FAMILIES.indexOf(m.family), m.mid ? 1 : 0, m.abs ? 1 : 0, m.cloth ? 1 : 0)) },
-    mmSel: { value: new Array(N).fill(0) }, mmSide: { value: new Array(N).fill(0) }, mmFoc: { value: new Array(N).fill(0) },
+    mmState: { value: MUSCLES.map(() => new THREE.Vector4(0, 0, 0, 0)) }, mmCol: { value: MUSCLES.map(() => new THREE.Color('#ff5a36')) }, mmMulti: { value: 0 },
     mmScale: { value: 1 }, mmTime: { value: 0 }, mmReveal: { value: 1 }, mmDebug: { value: 0 },
     mmAccent: { value: new THREE.Color('#ff5a36') }, mmAccent2: { value: new THREE.Color('#ffae5c') },
     mmBase: { value: new THREE.Color('#939dab') }, mmSkin: { value: new THREE.Color('#7f8896') }, mmGroove: { value: new THREE.Color('#3f4859') },
@@ -127,11 +132,11 @@ export function createMuscleUniforms() {
 const GLSL_HEAD = `
 #define MM_N ${N}
 uniform vec3 mmC[MM_N]; uniform vec3 mmR[MM_N]; uniform vec4 mmT[MM_N]; uniform vec4 mmF[MM_N];
-uniform float mmSel[MM_N]; uniform float mmSide[MM_N]; uniform float mmFoc[MM_N];
+uniform vec4 mmState[MM_N]; uniform vec3 mmCol[MM_N]; uniform float mmMulti;
 uniform float mmScale; uniform float mmTime; uniform float mmReveal; uniform float mmDebug;
 uniform vec3 mmAccent; uniform vec3 mmAccent2; uniform vec3 mmBase; uniform vec3 mmSkin; uniform vec3 mmGroove; uniform vec3 mmFabric;
 varying vec3 vMmPos;
-float mmS1; float mmEdge; float mmCloth; float mmRevealT; float mmSelV; float mmGrooveV; float mmIsMuscle; float mmFocusV; float mmCore; float mmShown; float mmIdx;
+vec3 mmPc; float mmDimV; float mmS1; float mmEdge; float mmCloth; float mmRevealT; float mmSelV; float mmGrooveV; float mmIsMuscle; float mmFocusV; float mmCore; float mmShown; float mmIdx;
 vec3 mmHue(float i){ return 0.55 + 0.45 * cos(6.2831 * (i * 0.137 + vec3(0.0, 0.33, 0.67))); }
 void mmEval(){
   vec3 p = vec3(abs(vMmPos.x), vMmPos.y, vMmPos.z) * mmScale; float sd = vMmPos.x >= 0.0 ? 1.0 : -1.0;
@@ -143,8 +148,9 @@ void mmEval(){
     float s = 1.0 - length(d / mmR[i]);
     if (s > b1) { b2 = b1; i2 = i1; b1 = s; i1 = i; } else if (s > b2) { b2 = s; i2 = i; }
   }
-  float on = (mmSide[i1] == 0.0 || mmSide[i1] == sd) ? 1.0 : 0.0;
-  mmCloth = mmF[i1].w; mmS1 = b1; mmSelV = mmSel[i1] * on; mmFocusV = mmFoc[i1] * on; mmIdx = float(i1);
+  vec4 st = mmState[i1];
+  float on = (st.y == 0.0 || st.y == sd) ? 1.0 : 0.0;
+  mmCloth = mmF[i1].w; mmS1 = b1; mmSelV = st.x * on; mmFocusV = st.z * on; mmIdx = float(i1); mmPc = mmCol[i1]; mmDimV = st.w;
   float s2 = max(b2, 0.0);
   float gap = b1 - s2; float g = length(vec2(dFdx(gap), dFdy(gap))) + 1e-6; float px = gap / g;
   bool sameFamily = b2 > 0.0 && mmF[i1].x == mmF[i2].x;
@@ -196,21 +202,27 @@ export function applyMuscleMap(material, uniforms, { clothing = false } = {}) {
         {
           float primary = step(0.9, mmSelV), secondary = step(0.3, mmSelV) * (1.0 - primary), deep = step(mmSelV, -0.5);
           float sh = mmShown * mmIsMuscle;
-          vec3 hot = mix(mmAccent2, mmAccent, 0.55 + 0.45 * smoothstep(0.0, 0.5, mmS1)) * mix(0.78, 1.0, mmEdge);
+          vec3 pc = mmPc;
+          vec3 hot = mmMulti > 0.5
+            ? pc * mix(0.70, 0.86, smoothstep(0.0, 0.5, mmS1)) * mix(0.74, 1.0, mmEdge)
+            : mix(mmAccent2, pc, 0.55 + 0.45 * smoothstep(0.0, 0.5, mmS1)) * mix(0.78, 1.0, mmEdge);
+          float anySel = primary + secondary + deep;
           float hA = max(fwidth(vMmPos.y) * 140.0, 0.02);
           float hatch = smoothstep(0.5 - hA, 0.5 + hA, abs(fract((vMmPos.x * 0.6 + vMmPos.y - vMmPos.z * 0.5) * 70.0) - 0.5) * 2.0);
           ${clothing ? `
           vec3 col = mmFabric; sh *= mmCloth;
-          col = mix(col, mix(mmFabric, mmAccent * mix(0.86, 1.0, mmEdge), 0.86), primary * sh);
-          col = mix(col, mix(mmFabric, mmAccent, 0.42), secondary * sh);
-          col = mix(col, mix(mmFabric, mmAccent, 0.70), deep * sh * mix(0.25, 1.0, hatch));
-          col = mix(col, col * 0.6, mmGrooveV * mmIsMuscle * (primary + secondary + deep) * sh * 0.6);
+          col = mix(col, mix(mmFabric, pc * mix(0.86, 1.0, mmEdge), 0.86), primary * sh);
+          col = mix(col, mix(mmFabric, pc, 0.42), secondary * sh);
+          col = mix(col, mix(mmFabric, pc, 0.70), deep * sh * mix(0.25, 1.0, hatch));
+          col = mix(col, mix(mmFabric, col, 0.12), mmDimV * anySel * sh);
+          col = mix(col, col * 0.6, mmGrooveV * mmIsMuscle * anySel * sh * 0.6);
           ` : `
           vec3 base = mix(mmSkin, mmBase * mix(0.80, 1.04, mmEdge), mmIsMuscle);
           vec3 col = base;
           col = mix(col, hot, primary * sh);
-          col = mix(col, mix(mmBase, mmAccent, 0.52) * mix(0.85, 1.0, mmEdge), secondary * sh);
-          col = mix(col, mix(mmBase, mmAccent, 0.80), deep * sh * mix(0.18, 1.0, hatch));
+          col = mix(col, mix(mmBase, pc, 0.52) * mix(0.85, 1.0, mmEdge), secondary * sh);
+          col = mix(col, mix(mmBase, pc, 0.80), deep * sh * mix(0.18, 1.0, hatch));
+          col = mix(col, mix(base, col, 0.10), mmDimV * anySel * sh);
           if (mmDebug > 0.5) col = mix(mmSkin, mmHue(mmIdx), mmIsMuscle);
           col = mix(col, mmGroove, mmGrooveV * mix(0.40, 0.82, mmIsMuscle));
           `}
@@ -231,31 +243,38 @@ export function applyMuscleMap(material, uniforms, { clothing = false } = {}) {
           float pulse = 0.5 + 0.5 * sin(mmTime * 2.4);
           float front = smoothstep(0.0, 0.08, mmS1) * (1.0 - smoothstep(0.0, 0.10, abs(mmS1 / 0.85 + 0.12 - mmRevealT))) * step(mmReveal, 0.985);
           ${clothing ? 'lit *= mmCloth; front *= mmCloth;' : ''}
-          totalEmissiveRadiance += mmAccent * (lit * (0.10 + 0.08 * pulse + 0.40 * mmFocusV * pulse) + front * 0.6 * step(0.3, abs(mmSelV)));
+          lit *= 1.0 - 0.85 * mmDimV;
+          totalEmissiveRadiance += mmPc * (lit * (0.10 + 0.08 * pulse + 0.40 * mmFocusV * pulse) + front * 0.6 * step(0.3, abs(mmSelV)));
           float rim = pow(1.0 - clamp(abs(dot(normal, normalize(vViewPosition))), 0.0, 1.0), 3.0);
           totalEmissiveRadiance += vec3(0.50, 0.60, 0.80) * rim * ${clothing ? '0.18' : '0.32'};
         }`);
   };
-  material.customProgramCacheKey = () => 'muscle-map-v2' + (clothing ? '-c' : '');
+  material.customProgramCacheKey = () => 'muscle-map-v3' + (clothing ? '-c' : '');
   material.needsUpdate = true;
 }
 
 /** Set which panels are highlighted. items: [{ muscle, level: 'primary'|'secondary'|'deep', side: 'left'|'right'|'both' }] */
 export function setMuscleSelection(uniforms, items) {
-  const sel = uniforms.mmSel.value, side = uniforms.mmSide.value, seen = new Set();sel.fill(0);side.fill(0);
+  const state = uniforms.mmState.value, seen = new Set();for (const v of state) { v.x = 0;v.y = 0;v.w = 0; }
   for (const item of items) {
-    const m = MUSCLE_BY_ID[item.muscle];if (!m) continue;
+    const m = MUSCLE_BY_ID[item.muscle];if (!m) continue;const v = state[m.index];
     const level = item.level === 'deep' ? -1 : item.level === 'secondary' ? .6 : 1;
     const rank = value => value === 1 ? 3 : value === -1 ? 2 : value ? 1 : 0;
-    if (rank(level) > rank(sel[m.index])) sel[m.index] = level;
-    const sd = item.side === 'left' ? 1 : item.side === 'right' ? -1 : 0;
-    side[m.index] = seen.has(m.index) && side[m.index] !== sd ? 0 : sd;seen.add(m.index);
+    if (rank(level) > rank(v.x)) v.x = level;
+    const sd = item.side === 'left' ? 1 : item.side === 'right' ? -1 : 0, first = !seen.has(m.index);
+    v.y = !first && v.y !== sd ? 0 : sd;seen.add(m.index);
+    if (item.colour) uniforms.mmCol.value[m.index].set(item.colour);
+    v.w = first ? item.dim ?? 0 : Math.min(v.w, item.dim ?? 0);
   }
+}
+/** Use one colour for every panel (single-accent mode). */
+export function setMuscleColour(uniforms, colour) {
+  for (const c of uniforms.mmCol.value) c.set(colour);
 }
 /** Pulse-highlight a set of panels (ids). */
 export function setMuscleFocus(uniforms, ids = []) {
-  const foc = uniforms.mmFoc.value;foc.fill(0);
-  for (const id of ids) { const m = MUSCLE_BY_ID[id];if (m) foc[m.index] = 1; }
+  const state = uniforms.mmState.value;for (const v of state) v.z = 0;
+  for (const id of ids) { const m = MUSCLE_BY_ID[id];if (m) state[m.index].z = 1; }
 }
 /** Panel centre in model space for one side. */
 export function muscleCentre(id, side = 'left', height = 1.69) {

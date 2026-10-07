@@ -8,6 +8,7 @@ import { createFitnessMovementContext } from './fitness-movement-context.js';
 import { isDeepSurfaceGroup } from './movement-surface-regions.js';
 import { openMuscleViewer } from './muscle-viewer.js';
 import { resolveGroup } from './muscle-map.js';
+import { FLARE_SECTIONS, flareFilters, flareItems, flarePoseFilter } from './flare-muscle-groups.js';
 
 const SLOTS = [
   { id: 'shoulder-arm-support', title: '肩臂支撑', colour: '#72d6ff', groups: ['shoulders', 'scapular', 'arms'],
@@ -52,23 +53,6 @@ function availableGroups(viewer, profile, slot) {
     return { id, label: asset.label ?? asset.name ?? id, meshes, role: matching.map(label => text(label.role)).filter(Boolean).join(' '),
       view: ['erectors', 'scapular', 'glutes', 'triceps', 'hamstrings', 'hip-rotators', 'rotator-cuff'].includes(id) ? 'back' : 'front' };
   }).filter(Boolean);
-}
-
-// Items for the full-screen 3D muscle viewer. Same slot/profile data as the
-// popup, but it needs no atlas meshes: the viewer draws location panels on
-// the smooth CC0 body. Level is only primary or deep (hatched) — never a
-// strength or activation ranking.
-function viewerItems(viewer, profile, slot) {
-  const atlas = new Map((viewer.manifest?.groups ?? []).map(group => [group.id, group]));
-  const labels = (profile.labels ?? []).filter(label => slot.groups.includes(label.group));
-  const requested = [...new Set(labels.flatMap(label => label.anatomyGroups ?? []))];
-  const ids = requested.length ? requested : slot.groups.flatMap(id => groupById[id]?.assetGroups ?? []);
-  return [...new Set([...slot.assets, ...ids])].filter(id => ids.includes(id) && resolveGroup(id)).map(id => {
-    const matching = labels.filter(label => label.anatomyGroups?.includes(id));
-    const sides = new Set(slot.id === SLOTS[0].id ? profile.supportHands : matching.flatMap(label => label.side === 'left' || label.side === 'right' ? [label.side] : ['left', 'right']));
-    return { groupId: id, label: atlas.get(id)?.label ?? resolveGroup(id).label, role: matching.map(label => text(label.role)).filter(Boolean).join(' '),
-      level: isDeepSurfaceGroup(id) ? 'deep' : 'primary', side: sides.size === 1 ? [...sides][0] : 'both' };
-  });
 }
 
 const GROUP_POSITIONS = {
@@ -466,9 +450,12 @@ export function createMovementInspector({ viewer, container, onClose, refreshIco
   function openFullscreen(ownsInspector) {
     if (!profile || !slot) return;
     closeOverlay();overlayOwnsInspector = ownsInspector;
-    const handle = openMuscleViewer({ document, title: slot.title, accent: '#ff5a36',
+    // The full Flare set, one colour per group; "本帧" keeps this pose's
+    // annotated groups (with their support / leg sides) lit.
+    const [all, ...roles] = flareFilters(), pose = flarePoseFilter(profile);
+    const handle = openMuscleViewer({ document, title: '托马斯全旋 · 核心肌群', accent: slot.colour,
       subtitle: '原 ' + String(profile.sourceStepNumber).padStart(2, '0') + ' · ' + supportName(profile.supportHands) + ' · 肌群位置',
-      items: viewerItems(viewer, profile, slot),
+      items: flareItems(), sections: FLARE_SECTIONS, filters: pose ? [all, pose, ...roles] : [all, ...roles], filter: 'all',
       onClose: () => {
         if (overlay === handle) overlay = null;
         if (overlayOwnsInspector && active) close();
