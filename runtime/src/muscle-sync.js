@@ -43,10 +43,11 @@ export function createMuscleSync({ viewport, toolbar, onReserve, onOpenViewer, s
   // header
   const head = el(document, 'header', 'msync-head');
   const titles = el(document, 'div', 'msync-titles');
-  const kicker = el(document, 'p', 'msync-kicker'), stepNo = el(document, 'span', 'msync-step', '09'), support = el(document, 'span', 'msync-support', '双手支撑');
-  kicker.append(stepNo, el(document, 'span', 'msync-kicker-label', '发力肌群'), support);
-  const name = el(document, 'h3', 'msync-name'), nameMain = el(document, 'span', 'msync-name-main', '后侧支撑'), nameDetail = el(document, 'span', 'msync-name-detail', '长腿过前方');
-  name.append(nameMain, nameDetail);titles.append(kicker, name);
+  // title + one quiet subline (support · phase detail); the step number lives in the play bar
+  const support = el(document, 'span', 'msync-support', '双手支撑');
+  const name = el(document, 'h3', 'msync-name'), nameMain = el(document, 'span', 'msync-name-main', '后侧支撑');
+  const sub = el(document, 'p', 'msync-sub'), nameDetail = el(document, 'span', 'msync-name-detail', '长腿过前方');
+  name.append(nameMain);sub.append(support, el(document, 'span', 'msync-sub-sep', '·'), nameDetail);titles.append(name, sub);
   const expand = el(document, 'button', 'msync-icon msync-open');expand.type = 'button';expand.innerHTML = ICON.expand;
   expand.setAttribute('aria-label', '全屏查看当前阶段的 3D 肌群');expand.title = '全屏 3D';
   const collapse = el(document, 'button', 'msync-icon msync-collapse');collapse.type = 'button';collapse.innerHTML = ICON.down;
@@ -56,10 +57,8 @@ export function createMuscleSync({ viewport, toolbar, onReserve, onOpenViewer, s
   const figure = el(document, 'div', 'msync-figure');
   const labels = el(document, 'div', 'msync-view-labels');labels.setAttribute('aria-hidden', 'true');
   for (const [text, cls] of [['正面', 'front'], ['背面', 'back']]) labels.appendChild(el(document, 'span', 'msync-view msync-view-' + cls, text));
-  const sides = el(document, 'div', 'msync-sides');sides.setAttribute('aria-hidden', 'true');
-  for (const text of ['右', '左', '左', '右']) sides.appendChild(el(document, 'span', '', text));
   const status = el(document, 'p', 'msync-status', '载入人体…');
-  figure.append(labels, sides, status);
+  figure.append(labels, status);
   const text = el(document, 'div', 'msync-text');
   const caption = el(document, 'p', 'msync-caption');caption.setAttribute('aria-live', 'polite');
   const chips = el(document, 'div', 'msync-chips');chips.setAttribute('role', 'list');chips.setAttribute('aria-label', '本阶段主要肌群');
@@ -188,7 +187,7 @@ export function createMuscleSync({ viewport, toolbar, onReserve, onOpenViewer, s
     if (id === phaseKey && !force) return;
     const changed = id !== phaseKey;phaseKey = id;
     const phase = current.phase;
-    stepNo.textContent = String(phase.source).padStart(2, '0');support.textContent = supportLabel(current.support);
+    support.textContent = supportLabel(current.support);
     support.dataset.side = current.support;nameMain.textContent = phase.name;nameDetail.textContent = phase.detail;
     caption.textContent = phase.caption;
     chips.replaceChildren();
@@ -197,7 +196,9 @@ export function createMuscleSync({ viewport, toolbar, onReserve, onOpenViewer, s
       const chip = el(document, 'button', 'msync-chip');chip.type = 'button';chip.setAttribute('role', 'listitem');
       chip.style.setProperty('--c', group.colour);chip.dataset.group = item.groupId;chip.setAttribute('aria-pressed', String(selected === item.groupId));
       chip.append(el(document, 'i', 'msync-swatch'), el(document, 'span', '', shortLabel(group.label)));
-      if (item.side !== 'both') chip.appendChild(el(document, 'span', 'msync-chip-side', item.side === 'left' ? '左' : '右'));
+      // the side is already in the subline (右手支撑); keep it for screen readers and the tooltip
+      const sideName = item.side === 'both' ? '' : item.side === 'left' ? '（左侧）' : '（右侧）';
+      chip.setAttribute('aria-label', shortLabel(group.label) + sideName);chip.title = group.label + sideName;
       chip.addEventListener('click', () => openCard(item.groupId, { toggle: true }));
       chips.appendChild(chip);
     }
@@ -281,7 +282,7 @@ export function createMuscleSync({ viewport, toolbar, onReserve, onOpenViewer, s
     const current = sample?.current;if (!current) return;
     const items = phaseItems(current.phase, current.support).map(item => ({ ...GROUP[item.groupId], level: item.level, side: item.side, role: item.why || GROUP[item.groupId]?.role }))
       .filter(item => item.groupId).sort((a, b) => FLARE_SECTIONS.findIndex(x => x.id === a.section) - FLARE_SECTIONS.findIndex(x => x.id === b.section)); // one heading per role
-    onOpenViewer?.({ title: `${current.phase.name} · ${current.phase.detail}`, subtitle: `原第 ${String(current.phase.source).padStart(2, '0')} 步 · ${supportLabel(current.support)} · 本阶段发力肌群`, items, sections: FLARE_SECTIONS });
+    onOpenViewer?.({ title: `${current.phase.name} · ${current.phase.detail}`, subtitle: `${supportLabel(current.support)} · 第 ${String(current.phase.source).padStart(2, '0')} 步`, items, sections: FLARE_SECTIONS });
   });
   const observer = typeof ResizeObserver === 'function' ? new ResizeObserver(() => measure()) : null;
   observer?.observe(viewport);if (toolbar) observer?.observe(toolbar);observer?.observe(figure);
