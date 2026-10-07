@@ -4,17 +4,16 @@
    or behaviour lives here, so removing this import restores the old look.
    ========================================================================== */
 :root{
-  --ink-0:#0a101b;--ink-1:#0f1726;--ink-2:#152033;
-  --glass:rgba(14,21,34,.74);--glass-strong:rgba(16,24,38,.9);
-  --hair:rgba(160,184,216,.12);--hair-strong:rgba(160,184,216,.22);
-  --fill-1:rgba(255,255,255,.035);--fill-2:rgba(255,255,255,.06);--fill-3:rgba(255,255,255,.09);
-  --text-1:#e9eff8;--text-2:#a6b3c6;--text-3:#728198;
-  --accent:#8cc4ff;--accent-strong:#a9d3ff;--accent-ink:#0c1a2b;--accent-soft:rgba(140,196,255,.14);
-  --axis-x:#f2907f;--axis-y:#9fd59a;--axis-z:#83b9f6;
-  --r-sm:8px;--r-md:11px;--r-lg:16px;
-  --ease:cubic-bezier(.2,.7,.2,1);
-  --font:-apple-system,BlinkMacSystemFont,"PingFang SC","HarmonyOS Sans SC","Microsoft YaHei UI","Segoe UI",sans-serif;
-  --mono:"SF Mono","JetBrains Mono","Cascadia Mono",Consolas,monospace;
+  /* mapped onto src/tokens.css — the old names stay so this layer keeps working */
+  --ink-0:var(--bg-0);--ink-1:var(--bg-1);--ink-2:var(--bg-2);
+  --glass:var(--mat-regular);--glass-strong:var(--mat-thick);
+  --hair:var(--hairline);--hair-strong:var(--hairline-strong);
+  --text-1:var(--label-1);--text-2:var(--label-2);--text-3:var(--label-3);
+  --accent-strong:var(--accent-hi);
+  --axis-x:#ff7b6b;--axis-y:#8fd694;--axis-z:#7fb2ff;
+  --r-sm:10px;--r-md:14px;--r-lg:20px;
+  --ease:var(--ease-out);
+  --mono:var(--font-mono);
   font-family:var(--font);color:var(--text-1);background:var(--ink-0);
   -webkit-font-smoothing:antialiased;
 }
