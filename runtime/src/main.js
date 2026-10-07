@@ -1,3 +1,4 @@
+import './tokens.css';
 import './style.css';
 import './workspace.css';
 import './movement.css';
@@ -8,7 +9,7 @@ import './movement-inspector.css';
 import './refine.css';
 import { installScrubFields } from './scrub-fields.js';
 installScrubFields();
-import { createIcons, Orbit, Info, Camera, ArrowUpRight, PersonStanding, Rotate3d, Dumbbell, Search, Scan, UserRound, RotateCcw, PanelRight, PanelLeft, SlidersHorizontal, EyeOff, Maximize, Mouse, Play, Pause, Move3d, Shield, MoveUp, Hand, MoveHorizontal, Expand, MoveDiagonal2, ChevronRight, ChevronDown, CircleDot, Repeat2, CornerUpLeft, ArrowLeft, X, Pencil, Activity, MoveUpRight } from 'lucide';
+import { createIcons, Orbit, Info, Camera, ArrowUpRight, PersonStanding, Rotate3d, Dumbbell, Search, Scan, UserRound, RotateCcw, PanelRight, PanelLeft, SlidersHorizontal, EyeOff, Maximize, Mouse, Play, Pause, Move3d, Shield, MoveUp, Hand, MoveHorizontal, Expand, MoveDiagonal2, ChevronRight, ChevronDown, CircleDot, Repeat2, CornerUpLeft, ArrowLeft, X, Pencil, Activity, MoveUpRight, Ellipsis } from 'lucide';
 import { muscleGroups, groupById, phases, exercises, exerciseById } from './data.js';
 import { BodyViewer } from './viewer.js';
 import { createPosePanel } from './pose-panel.js';
@@ -24,8 +25,10 @@ import { createFlarePosePresets } from './pose-presets.js';
 import { renderSources } from './research-ui.js';
 import { OFFICIAL_FLARE_SEQUENCE, resolveOfficialSequence, sequenceFromSavedSteps, saveOfficialSequence, saveV41DefaultSequence, previousOfficialSequence, restoreOfficialSequence, updateOfficialFrame } from './official-poses.js';
 import { rebaseTransitionEdits, saveOfficialFrameEdits } from './transition-edits.js';
+import { createAppMenu } from './app-menu.js';
+import './theme.css';
 
-const icons={Orbit,Info,Camera,ArrowUpRight,PersonStanding,Rotate3d,Dumbbell,Search,Scan,UserRound,RotateCcw,PanelRight,PanelLeft,SlidersHorizontal,EyeOff,Maximize,Mouse,Play,Pause,Move3d,Shield,MoveUp,Hand,MoveHorizontal,Expand,MoveDiagonal2,ChevronRight,ChevronDown,CircleDot,Repeat2,CornerUpLeft,ArrowLeft,X,Pencil,Activity,MoveUpRight};
+const icons={Orbit,Info,Camera,ArrowUpRight,PersonStanding,Rotate3d,Dumbbell,Search,Scan,UserRound,RotateCcw,PanelRight,PanelLeft,SlidersHorizontal,EyeOff,Maximize,Mouse,Play,Pause,Move3d,Shield,MoveUp,Hand,MoveHorizontal,Expand,MoveDiagonal2,ChevronRight,ChevronDown,CircleDot,Repeat2,CornerUpLeft,ArrowLeft,X,Pencil,Activity,MoveUpRight,Ellipsis};
 const refreshIcons=()=>createIcons({icons,attrs:{'stroke-width':1.5}});
 const $=selector=>document.querySelector(selector);
 const $$=selector=>[...document.querySelectorAll(selector)];
@@ -72,7 +75,7 @@ function updateTime(time){
   if(mode==='transition'||trainingPreview?.active)return;
   if(movementInspector?.active&&inspectionTime!==null&&Math.abs(time-inspectionTime)>.005)movementInspector.close();
   const period=viewer?.motion?.getMetrics().period||9;
-  $('#timeline').max=period;$('#timeline').value=time;$('#time-label').textContent=`${time.toFixed(1)} / ${period.toFixed(1)} s`;updatePhase(time);movementPanel?.update(time);movementTransport?.update();muscleSync?.update(time);
+  $('#timeline').max=period;$('#timeline').value=time;$('#timeline').style.setProperty('--p',(time/period).toFixed(4));$('#time-label').textContent=`${time.toFixed(1)} / ${period.toFixed(1)} s`;updatePhase(time);movementPanel?.update(time);movementTransport?.update();muscleSync?.update(time);
 }
 
 function localStore(){try{return localStorage;}catch{return null;}}
@@ -98,7 +101,7 @@ function updateMotionCaption(){
   if(mode!=='motion')return;
   const periodic=motionModel==='periodic';
   $('#pose-presets').hidden=periodic;
-  $('#stage-title').textContent=periodic?'托马斯 · 数学轨迹试验':'托马斯 · 动作与发力';
+  $('#stage-title').textContent=periodic?'托马斯全旋 · 轨迹试验':'托马斯全旋';
   $('#stage-footnote').textContent=periodic?'整圈连续生成。拖动时间轴检查摆腿与换手，切换“你的保存动画”即可对比。':'按照你保存的 9 步展示。点击步骤或拖动时间轴查看，暂停后可以继续编辑。';
 }
 function applyTransitionOptions(options){
@@ -237,8 +240,8 @@ function setMode(next,{fromCurrent=false}={}){
   $('#transition-shelf').hidden=!transition;if(transition){$('#pose-shelf').hidden=true;$('#pose-presets').hidden=true;}
   $('#transition-transport').hidden=!transition;
   $$('.library-drawer .sidebar-section-head,.library-drawer .search,#muscle-list').forEach(element=>{element.hidden=motion||editing;});
-  $('#stage-kicker').textContent=transition?'TRANSITION WORKSHOP':editing?'POSE WORKSHOP':motion?'MOVEMENT BREAKDOWN':training?'TRAINING CONNECTIONS':'ANATOMY EXPLORER';
-  $('#stage-title').textContent=transition?'托马斯 · 动画编辑':editing?'托马斯 · 关键姿势':motion?'托马斯 · 9 步展示':training?'辅助练习':'身体与肌群';
+  $('#stage-kicker').textContent=transition?'动画编辑':editing?'姿势编辑':motion?'动作分解':training?'辅助训练':'肌群探索';
+  $('#stage-title').textContent=transition?'托马斯全旋':editing?'关键姿势':motion?'托马斯全旋':training?'辅助练习':'身体与肌群';
   $('#stage-footnote').textContent=transition?'白色帧更新原姿态，蓝色帧修正过渡；按 K 保存，前后自动补帧。':editing?'这些姿势是可修改的起点。按你的动作标准调整，保存为自己的步骤。':motion?'按照你保存的 9 步展示。点击步骤或拖动时间轴查看，暂停后可以继续编辑。':training?'教学建议基于肌肉功能和动作需求；先掌握受控支撑，再连接专项动作。':'完整人物用于观察姿态；点选肌群，切换真实局部解剖视图。';
   workspaceUI?.setMode(next);
   if(transition)transitionPanel.enter();else if(editing){posePanel.enter(previous,{fromCurrent});}
@@ -374,5 +377,6 @@ async function initialize(){
   }
 }
 $('#capture-button').disabled=true;
+createAppMenu({refreshIcons});
 workspaceUI=createWorkspace({viewer:()=>viewer,refreshIcons,onNotice:toast,extraInsets:()=>{muscleSync?.relayout();return muscleSync?.reserve();}});
 initialize();
