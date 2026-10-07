@@ -8,7 +8,7 @@ import { createFitnessMovementContext } from './fitness-movement-context.js';
 import { isDeepSurfaceGroup } from './movement-surface-regions.js';
 import { openMuscleViewer } from './muscle-viewer.js';
 import { resolveGroup } from './muscle-map.js';
-import { FLARE_SECTIONS, flareFilters, flareItems, flarePoseFilter } from './flare-muscle-groups.js';
+import { FLARE_SECTIONS, flareFilters, flareItems, flarePoseFilter, flareSectionFor } from './flare-muscle-groups.js';
 
 const SLOTS = [
   { id: 'shoulder-arm-support', title: '肩臂支撑', colour: '#72d6ff', groups: ['shoulders', 'scapular', 'arms'],
@@ -451,11 +451,12 @@ export function createMovementInspector({ viewer, container, onClose, refreshIco
     if (!profile || !slot) return;
     closeOverlay();overlayOwnsInspector = ownsInspector;
     // The full Flare set, one colour per group; "本帧" keeps this pose's
-    // annotated groups (with their support / leg sides) lit.
+    // annotated groups (with their support / leg sides) lit. It opens on the
+    // role of the card that was tapped (肩臂 → 支撑, 核心 → 核心, 髋腿 → 腿部).
     const [all, ...roles] = flareFilters(), pose = flarePoseFilter(profile);
     const handle = openMuscleViewer({ document, title: '托马斯全旋 · 核心肌群', accent: slot.colour,
       subtitle: '原 ' + String(profile.sourceStepNumber).padStart(2, '0') + ' · ' + supportName(profile.supportHands) + ' · 肌群位置',
-      items: flareItems(), sections: FLARE_SECTIONS, filters: pose ? [all, pose, ...roles] : [all, ...roles], filter: 'all',
+      items: flareItems(), sections: FLARE_SECTIONS, filters: pose ? [all, pose, ...roles] : [all, ...roles], filter: flareSectionFor(slot.id) ?? 'all',
       onClose: () => {
         if (overlay === handle) overlay = null;
         if (overlayOwnsInspector && active) close();
