@@ -1,5 +1,5 @@
 // Full-screen, phone-first 3D muscle viewer. A smooth CC0 body (Blender
-// Studio base mesh) with a fitness-app style muscle map drawn per pixel by
+// Studio base mesh; the unclothed copy built by tools/mannequin/build_mannequin.py) with a fitness-app style muscle map drawn per pixel by
 // muscle-map.js. Colours show WHERE a muscle group sits — never activation,
 // force or EMG. Offline: the model is served from /anatomy.
 import * as THREE from 'three';
@@ -8,7 +8,7 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { MUSCLE_BY_ID, applyMuscleMap, createMuscleUniforms, muscleAt, resolveGroup, setMuscleColour, setMuscleFocus, setMuscleSelection } from './muscle-map.js';
 import './muscle-viewer.css';
 
-const MODEL_URL = '/anatomy/fitness-reference.glb';
+const MODEL_URL = '/anatomy/mannequin-reference.glb';
 const LEVELS = { primary: '主要', secondary: '辅助', deep: '深层' };
 const SIDES = { left: '左侧', right: '右侧', both: '双侧' };
 const ICON = {

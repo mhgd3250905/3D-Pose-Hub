@@ -50,6 +50,12 @@ const RAW = [
   ['calfMed', '腓肠肌内侧头', 'calf', [.130, .350, -.085], [.040, .100, .045], 0, 0, ''],
   ['calfLat', '腓肠肌外侧头', 'calf', [.180, .350, -.080], [.040, .100, .045], 0, 0, ''],
 ];
+// Extra lobes: scored like any ellipsoid but they extend their parent panel
+// (no border between parent and lobe). [parent id, centre, radius, tiltZ, tiltX]
+// They cover the pelvis that the old shorts used to hide.
+const LOBES = [
+  ['adductors', [.000, .790, .020], [.055, .070, .065], 0, 0], // centred: no relief ridge on the midline
+];
 // Muscle ellipsoids are inflated so neighbours meet (the Voronoi decides the
 // borders); skin blockers keep joints, head, hands and feet plain.
 const INFLATE = 1.4;
@@ -60,6 +66,21 @@ export const MUSCLES = RAW.map(([id, name, family, centre, radius, tz, tx, flags
 export const MUSCLE_BY_ID = Object.fromEntries(MUSCLES.map(m => [m.id, m]));
 const FAMILIES = ['skin', ...new Set(MUSCLES.map(m => m.family).filter(f => f !== 'skin'))];
 const N = MUSCLES.length;
+// scoring entries = every panel + its lobes; `parent` is the panel a lobe lights
+const ELLIPSOIDS = [...MUSCLES.map(m => ({ ...m, parent: m.index })), ...LOBES.map(([parent, centre, radius, tz, tx]) => ({ centre, radius: radius.map(r => r * INFLATE), tz, tx, parent: MUSCLE_BY_ID[parent].index }))];
+const NE = ELLIPSOIDS.length;
+const ABS = MUSCLE_BY_ID.abs.index;
+
+// Rectus abdominis: drawn from an explicit outline instead of an ellipsoid so
+// the sheath edge (linea semilunaris) curves like the real muscle: widest at
+// the navel, narrower under the ribs, tapering to the pubic crest. Distances
+// are metres in model space (x already mirrored to |x|); > 0 inside.
+const ABS_K = 14; // score per metre across the outline (sets the groove width)
+const absHalfWidth = y => { const t = Math.min(Math.max((1.03 - y) / 0.20, 0), 1), u = Math.min(Math.max((y - 1.08) / 0.14, 0), 1);
+  return 0.090 - 0.064 * t ** 1.6 - 0.014 * u * u * (3 - 2 * u); };
+const absInside = (x, y, z) => { const a = absHalfWidth(y) - x, b = y - 0.832, h = Math.max(0.012 - Math.abs(a - b), 0) / 0.012;
+  return Math.min(Math.min(a, b) - h * h * 0.003, z - 0.04); };
+const smoothstep = (a, b, v) => { const t = Math.min(Math.max((v - a) / (b - a), 0), 1);return t * t * (3 - 2 * t); };
 
 // App groups (movement-surface-regions ids + a few common extras) -> map
 // panels. `deep` groups lie under the panel shown, so they are drawn hatched.
@@ -101,12 +122,15 @@ function rotateLocal(m, x, y, z) {
 // CPU twin of the shader scoring (picking, focus, label anchors).
 export function muscleAt(point, height = 1.69) {
   const s = 1.69 / height, x = Math.abs(point.x) * s, y = point.y * s, z = point.z * s;
-  let best = -1, second = -1, id = null;
-  for (const m of MUSCLES) {
-    const [dx, dy, dz] = rotateLocal(m, x, y, z);
-    const score = 1 - Math.hypot(dx / m.radius[0], dy / m.radius[1], dz / m.radius[2]);
-    if (score > best) { second = best;best = score;id = m.id; } else if (score > second) second = score;
+  const panel = new Float64Array(N).fill(-9);let sAbs = -9;
+  for (const m of ELLIPSOIDS) {
+    const [dx, dy, dz] = rotateLocal(m, x, y, z), s = 1 - Math.hypot(dx / m.radius[0], dy / m.radius[1], dz / m.radius[2]);
+    if (m.parent === ABS) sAbs = s;else panel[m.parent] = Math.max(panel[m.parent], s);
   }
+  const b1 = Math.max(...panel), top = (sAbs - b1) * 0.1 + smoothstep(1.13, 1.08, y);
+  panel[ABS] = Math.max(b1, 0) + ABS_K * Math.min(absInside(x, y, z), top);
+  let best = -1, second = -1, id = null;
+  panel.forEach((score, i) => { if (score > best) { second = best;best = score;id = MUSCLES[i].id; } else if (score > second) second = score; });
   return best > 0.02 && !MUSCLE_BY_ID[id].skin ? { id, name: MUSCLE_BY_ID[id].name, side: point.x >= 0 ? 'left' : 'right', score: best, margin: best - Math.max(second, 0) } : null;
 }
 
@@ -117,9 +141,9 @@ export function muscleAt(point, height = 1.69) {
  * multi-colour mode). Packed to stay well under phone uniform limits. */
 export function createMuscleUniforms() {
   return {
-    mmC: { value: MUSCLES.map(m => new THREE.Vector3(...m.centre)) },
-    mmR: { value: MUSCLES.map(m => new THREE.Vector3(...m.radius)) },
-    mmT: { value: MUSCLES.map(m => new THREE.Vector4(Math.cos(m.tz), Math.sin(m.tz), Math.cos(m.tx), Math.sin(m.tx))) },
+    mmC: { value: ELLIPSOIDS.map(m => new THREE.Vector4(...m.centre, m.parent)) }, // w = panel index
+    mmR: { value: ELLIPSOIDS.map(m => new THREE.Vector3(...m.radius)) },
+    mmT: { value: ELLIPSOIDS.map(m => new THREE.Vector4(Math.cos(m.tz), Math.sin(m.tz), Math.cos(m.tx), Math.sin(m.tx))) },
     mmF: { value: MUSCLES.map(m => new THREE.Vector4(FAMILIES.indexOf(m.family), m.mid ? 1 : 0, m.abs ? 1 : 0, m.cloth ? 1 : 0)) },
     mmState: { value: MUSCLES.map(() => new THREE.Vector4(0, 0, 0, 0)) }, mmCol: { value: MUSCLES.map(() => new THREE.Color('#ff5a36')) }, mmMulti: { value: 0 },
     mmScale: { value: 1 }, mmTime: { value: 0 }, mmReveal: { value: 1 }, mmDebug: { value: 0 },
@@ -131,23 +155,55 @@ export function createMuscleUniforms() {
 
 const GLSL_HEAD = `
 #define MM_N ${N}
-uniform vec3 mmC[MM_N]; uniform vec3 mmR[MM_N]; uniform vec4 mmT[MM_N]; uniform vec4 mmF[MM_N];
+#define MM_NE ${NE}
+#define MM_ABS ${ABS}
+uniform vec4 mmC[MM_NE]; uniform vec3 mmR[MM_NE]; uniform vec4 mmT[MM_NE]; uniform vec4 mmF[MM_N];
 uniform vec4 mmState[MM_N]; uniform vec3 mmCol[MM_N]; uniform float mmMulti;
 uniform float mmScale; uniform float mmTime; uniform float mmReveal; uniform float mmDebug;
 uniform vec3 mmAccent; uniform vec3 mmAccent2; uniform vec3 mmBase; uniform vec3 mmSkin; uniform vec3 mmGroove; uniform vec3 mmFabric;
 varying vec3 vMmPos;
 vec3 mmPc; float mmDimV; float mmS1; float mmEdge; float mmCloth; float mmRevealT; float mmSelV; float mmGrooveV; float mmIsMuscle; float mmFocusV; float mmCore; float mmShown; float mmIdx;
 vec3 mmHue(float i){ return 0.55 + 0.45 * cos(6.2831 * (i * 0.137 + vec3(0.0, 0.33, 0.67))); }
+float mmAbsInside(vec3 p){
+  float t = clamp((1.03 - p.y) / 0.20, 0.0, 1.0);
+  float w = 0.090 - 0.064 * pow(t, 1.6) - 0.014 * smoothstep(1.08, 1.22, p.y);
+  float a = w - p.x, b = p.y - 0.832, h = max(0.012 - abs(a - b), 0.0) / 0.012; // rounded tip on the pubis
+  return min(min(a, b) - h * h * 0.003, p.z - 0.04);
+}
+// tendinous intersections: signed vertical distance to line k (0 top .. 2
+// at the navel). Each is slightly bowed and uneven; the top ones are higher,
+// shorter and rise laterally along the rib arch; the right side sits a few
+// millimetres off the left, as on a real six-pack. sx = signed model x (+ left)
+float mmAbsLine(vec3 p, float sx, int k){
+  float ax = p.x; float r = smoothstep(0.003, -0.003, sx); // 0 left .. 1 right, continuous across the midline
+  float t = clamp(ax / 0.085, 0.0, 1.0); float bow = sin(3.1416 * t);
+  if (k == 0) return p.y - (1.178 + 0.15 * ax + 0.0050 * bow + r * 0.0040 + 0.0014 * sin(ax * 140.0));
+  if (k == 1) return p.y - (1.103 + 0.10 * ax + 0.0040 * bow - r * 0.0035 + 0.0014 * sin(ax * 120.0 + 2.1));
+  return p.y - (1.031 - 0.03 * ax + 0.0030 * bow + r * 0.0030 + 0.0012 * sin(ax * 100.0 + 4.2));
+}
 void mmEval(){
   vec3 p = vec3(abs(vMmPos.x), vMmPos.y, vMmPos.z) * mmScale; float sd = vMmPos.x >= 0.0 ? 1.0 : -1.0;
-  float b1 = -9.0, b2 = -9.0; int i1 = 0, i2 = 0;
-  for (int i = 0; i < MM_N; i++) {
-    vec3 d = p - mmC[i]; vec4 t = mmT[i];
+  float b1 = -9.0, b2 = -9.0, sAbs = -9.0; int i1 = -1, i2 = -1;
+  for (int i = 0; i < MM_NE; i++) {
+    int k = int(mmC[i].w + 0.5);
+    vec3 d = p - mmC[i].xyz; vec4 t = mmT[i];
     d.xy = vec2(d.x * t.x + d.y * t.y, d.y * t.x - d.x * t.y);
     d.yz = vec2(d.y * t.z + d.z * t.w, d.z * t.z - d.y * t.w);
     float s = 1.0 - length(d / mmR[i]);
-    if (s > b1) { b2 = b1; i2 = i1; b1 = s; i1 = i; } else if (s > b2) { b2 = s; i2 = i; }
+    if (k == MM_ABS) { sAbs = s; continue; }
+    if (k == i1) b1 = max(b1, s);
+    else if (s > b1) { b2 = b1; i2 = i1; b1 = s; i1 = k; }
+    else if (k == i2) b2 = max(b2, s);
+    else if (s > b2) { b2 = s; i2 = k; }
   }
+  { // rectus abdominis outline wins inside, meets its neighbours along the outline
+    // top edge: the original panel border under the chest (its ellipsoid vs
+    // the neighbours), so the pectoral curves stay exactly as before
+    float top = (sAbs - b1) * 0.1 + smoothstep(1.13, 1.08, p.y);
+    float sa = max(b1, 0.0) + ${ABS_K.toFixed(1)} * min(mmAbsInside(p), top);
+    if (sa > b1) { b2 = b1; i2 = i1; b1 = sa; i1 = MM_ABS; } else if (sa > b2) { b2 = sa; i2 = MM_ABS; }
+  }
+  i1 = max(i1, 0); i2 = max(i2, 0);
   vec4 st = mmState[i1];
   float on = (st.y == 0.0 || st.y == sd) ? 1.0 : 0.0;
   mmCloth = mmF[i1].w; mmS1 = b1; mmSelV = st.x * on; mmFocusV = st.z * on; mmIdx = float(i1); mmPc = mmCol[i1]; mmDimV = st.w;
@@ -162,15 +218,24 @@ void mmEval(){
   // midline seam (linea alba, spine) for mirrored central panels
   if (mmF[i1].y > 0.5) {
     float ax = abs(vMmPos.x) * mmScale; float ag = length(vec2(dFdx(ax), dFdy(ax))) + 1e-7;
-    float mw = max(0.0022 / ag, 0.7);
-    mmGrooveV = max(mmGrooveV, 1.0 - smoothstep(mw - 0.65, mw + 0.65, ax / ag));
+    // linea alba: a touch wider above the navel, finer toward the pubis
+    float mw = max((mmF[i1].z > 0.5 ? mix(0.0015, 0.0024, smoothstep(0.95, 1.05, p.y)) : 0.0022) / ag, 0.7);
+    // the buttock cleft line stops before it reaches the smooth perineum
+    float keep = 1.0 - (1.0 - smoothstep(0.80, 0.84, p.y)) * smoothstep(-0.075, -0.045, p.z);
+    mmGrooveV = max(mmGrooveV, (1.0 - smoothstep(mw - 0.65, mw + 0.65, ax / ag)) * keep);
   }
-  // tendinous intersections of the rectus abdominis: fine horizontal lines
+  // rectus abdominis: three tendinous intersections + the linea alba, drawn
+  // like the other division lines and rounding each segment into a block
   if (mmF[i1].z > 0.5) {
-    float yy = (p.y - 0.985) / 0.068; float fy = abs(fract(yy) - 0.5) * 0.068;
-    float yg = length(vec2(dFdx(p.y), dFdy(p.y))) + 1e-7; float lw = max(0.0016 / yg, 0.55);
-    float line = (1.0 - smoothstep(lw - 0.6, lw + 0.6, fy / yg)) * step(0.0, yy) * step(yy, 2.99);
-    mmGrooveV = max(mmGrooveV, line * 0.6);
+    float edge = 1.0;
+    for (int k = 0; k < 3; k++) {
+      float dy = mmAbsLine(p, vMmPos.x, k);
+      float yg = length(vec2(dFdx(dy), dFdy(dy))) + 1e-7; float lw = max(0.0015 / yg, 0.6);
+      mmGrooveV = max(mmGrooveV, (1.0 - smoothstep(lw - 0.6, lw + 0.6, abs(dy) / yg)) * 0.85);
+      edge *= mix(0.45, 1.0, smoothstep(0.0, 0.016, abs(dy)));
+    }
+    edge *= mix(0.55, 1.0, smoothstep(0.0, 0.012, p.x));
+    mmEdge *= edge;
   }
   float bg = length(vec2(dFdx(b1), dFdy(b1))) + 1e-6;
   mmIsMuscle = smoothstep(-0.5, 0.7, b1 / bg) * (mmF[i1].x < 0.5 ? 0.0 : 1.0);
@@ -249,7 +314,7 @@ export function applyMuscleMap(material, uniforms, { clothing = false } = {}) {
           totalEmissiveRadiance += vec3(0.50, 0.60, 0.80) * rim * ${clothing ? '0.18' : '0.32'};
         }`);
   };
-  material.customProgramCacheKey = () => 'muscle-map-v3' + (clothing ? '-c' : '');
+  material.customProgramCacheKey = () => 'muscle-map-v4' + (clothing ? '-c' : '');
   material.needsUpdate = true;
 }
 
