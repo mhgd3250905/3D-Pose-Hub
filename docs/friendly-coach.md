@@ -112,3 +112,11 @@ Adam 免费包本轮未取得或采用：访客下载需要 ArtStation 账号，
 ```
 
 源场景路径、原包和派生文件的校验记录见 `docs/anatomy-assets.md`。脚本写入 `fitness-reference.blend`、`fitness-reference.glb/json` 和实际渲染，静态窗只显示独立人物。旧 BodyParts3D 体表的复现脚本 `build_muscle_reference.py` 保留用于解剖结构模式。
+
+## 2026-10-07 动画与模型优化（design/elegant-editor 分支）
+
+- **关键姿势 v2**：`public/coach/flare-sequence.json` 改为 v2，原稿完整保留为 `flare-sequence-before-rekey-2026-10-07.json`，`tools/rekey/rekey-flare-v2.mjs` 可从原稿复现。腿的环绕每段约 45°（消除 10→11、16→15 的倒转），下方脚踝离地 ≥0.30 m，V 字两脚间距 ≥1.13 m，单撑空手降到 0.50–0.58 m，前双撑躯干后仰 84°、髋部 0.40→0.48 m，单撑时髋部相对胸口转 20°。14–16 仍为 10–12 的镜像。
+- **匀速播放**：播放时钟按手、脚、骨盆的实际位移调速，去掉循环接缝处 1 秒定格（重复的第 09 步）。只改时钟，不改姿势、K 帧和时间。`?pacing=raw` 对比原节奏。
+- **分段脊柱**：`src/spine-helpers.js` 在 20 个可编辑关节之外增加两根隐藏的下/上脊柱辅助骨，每帧取骨盆与躯干之间的插值，腹部权重平滑分配，腰部不再在裤腰处折成一道硬折痕。存档格式不变，`?spine=off` 对比。
+- **投影与环境光**：主光投射柔和阴影到透明接影地面，低强度 RoomEnvironment 反射。
+- **模型瘦身**：`flare-coach.glb` 15.1 MB → 7.5 MB（gzip 约 3.7 MB），去掉无贴图时用不到的 UV 与第二套顶点色，KHR_mesh_quantization 量化；外观 PSNR 52 dB，与原版肉眼无差。脚本 `tools/slim-coach-glb.mjs`。
