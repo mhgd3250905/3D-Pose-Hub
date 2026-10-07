@@ -22,7 +22,7 @@ export class BodyViewer {
     this.camera=new THREE.PerspectiveCamera(32,1,.02,40);
     this.renderer=new THREE.WebGLRenderer({alpha:true,antialias:true,preserveDrawingBuffer:true,powerPreference:'high-performance'});
     this.renderer.setPixelRatio(Math.min(devicePixelRatio,1.75));
-    this.renderer.setClearColor(0x101827,0);
+    this.renderer.setClearColor(0x08080a,0);
     this.renderer.outputColorSpace=THREE.SRGBColorSpace;
     this.renderer.toneMapping=THREE.ACESFilmicToneMapping;
     this.renderer.toneMappingExposure=1.15;
@@ -30,17 +30,17 @@ export class BodyViewer {
     this.controls=new OrbitControls(this.camera,this.renderer.domElement);
     this.controls.enableDamping=true;this.controls.dampingFactor=.13;this.controls.enablePan=true;this.controls.minDistance=.45;this.controls.maxDistance=7;this.controls.minPolarAngle=.12;this.controls.maxPolarAngle=Math.PI*.90;
     this.controls.addEventListener('change',()=>{this.dirty=true;this.callbacks.onCameraChange?.();});
-    this.scene.add(new THREE.HemisphereLight(0xf4f1df,0x485873,2));
+    this.scene.add(new THREE.HemisphereLight(0xf6f2ea,0x3c3a3e,2)); // neutral graphite bounce (was navy)
     const key=new THREE.DirectionalLight(0xffead2,3.7);key.position.set(-2.5,4,4);this.scene.add(key);
     // Real contact shadows: hands, feet and the body now cast onto the floor.
     this.renderer.shadowMap.enabled=true;this.renderer.shadowMap.type=THREE.PCFSoftShadowMap;
     key.castShadow=true;key.shadow.mapSize.set(2048,2048);key.shadow.bias=-.0004;key.shadow.normalBias=.02;key.shadow.radius=6;
     Object.assign(key.shadow.camera,{left:-1.9,right:1.9,top:1.9,bottom:-1.9,near:1,far:12});key.shadow.camera.updateProjectionMatrix();
-    const shadowCatcher=new THREE.Mesh(new THREE.PlaneGeometry(8,8),new THREE.ShadowMaterial({color:0x020611,opacity:.42}));shadowCatcher.rotation.x=-Math.PI/2;shadowCatcher.position.y=-.006;shadowCatcher.receiveShadow=true;this.scene.add(shadowCatcher);this.shadowCatcher=shadowCatcher;
+    const shadowCatcher=new THREE.Mesh(new THREE.PlaneGeometry(8,8),new THREE.ShadowMaterial({color:0x000000,opacity:.5}));shadowCatcher.rotation.x=-Math.PI/2;shadowCatcher.position.y=-.006;shadowCatcher.receiveShadow=true;this.scene.add(shadowCatcher);this.shadowCatcher=shadowCatcher;
     // Soft studio reflections so skin, cotton and rubber read as different materials.
     const pmrem=new THREE.PMREMGenerator(this.renderer);this.scene.environment=pmrem.fromScene(new RoomEnvironment(),.04).texture;this.scene.environmentIntensity=.32;pmrem.dispose();
-    const rim=new THREE.DirectionalLight(0xe4efff,2);rim.position.set(2,2,-3);this.scene.add(rim);
-    const fill=new THREE.DirectionalLight(0xcdd9f0,.8);fill.position.set(4,.7,2);this.scene.add(fill);
+    const rim=new THREE.DirectionalLight(0xf0f2ff,2.2);rim.position.set(2,2,-3);this.scene.add(rim);
+    const fill=new THREE.DirectionalLight(0xe2e2ea,.8);fill.position.set(4,.7,2);this.scene.add(fill);
     this.anatomy=new THREE.Group();this.scene.add(this.anatomy);
     this.muscleMaterial=material(0x9c7766);this.boneMaterial=material(0xd4c9ab,{roughness:.65});
     this.activeMaterial=material(0x79b8ff,{roughness:.7,emissive:0x123154,emissiveIntensity:.13});
@@ -50,14 +50,18 @@ export class BodyViewer {
     this.hoverMesh=new THREE.Mesh(new THREE.BufferGeometry(),this.hoverMaterial);this.hoverMesh.visible=false;this.scene.add(this.hoverMesh);
     // Floor grid that dissolves toward the edges instead of ending in a hard square.
     const gridCanvas=document.createElement('canvas');gridCanvas.width=gridCanvas.height=1024;
-    const gridContext=gridCanvas.getContext('2d');gridContext.strokeStyle='rgba(170,200,235,1)';
+    const gridContext=gridCanvas.getContext('2d');gridContext.strokeStyle='rgba(220,220,228,1)';
     for(let i=0;i<=40;i++){const p=Math.round(i*1024/40)+.5;gridContext.globalAlpha=i%5===0?.55:.22;gridContext.lineWidth=i%5===0?1.4:1;gridContext.beginPath();gridContext.moveTo(p,0);gridContext.lineTo(p,1024);gridContext.moveTo(0,p);gridContext.lineTo(1024,p);gridContext.stroke();}
     gridContext.globalAlpha=1;gridContext.globalCompositeOperation='destination-in';
     const gridFade=gridContext.createRadialGradient(512,512,40,512,512,512);gridFade.addColorStop(0,'rgba(0,0,0,1)');gridFade.addColorStop(.55,'rgba(0,0,0,.55)');gridFade.addColorStop(1,'rgba(0,0,0,0)');
     gridContext.fillStyle=gridFade;gridContext.fillRect(0,0,1024,1024);
     const gridTexture=new THREE.CanvasTexture(gridCanvas);gridTexture.anisotropy=8;gridTexture.colorSpace=THREE.SRGBColorSpace;
     const grid=new THREE.Mesh(new THREE.PlaneGeometry(4,4),new THREE.MeshBasicMaterial({map:gridTexture,transparent:true,opacity:.18,depthWrite:false}));grid.rotation.x=-Math.PI/2;grid.position.y=-.013;this.scene.add(grid);this.stageGrid=grid;
-    const circle=new THREE.Mesh(new THREE.RingGeometry(.38,.382,96),new THREE.MeshBasicMaterial({color:0x719bc7,transparent:true,opacity:.2,side:THREE.DoubleSide}));circle.rotation.x=-Math.PI/2;circle.position.y=-.01;this.scene.add(circle);
+    const circle=new THREE.Mesh(new THREE.RingGeometry(.38,.382,96),new THREE.MeshBasicMaterial({color:0xffffff,transparent:true,opacity:.08,side:THREE.DoubleSide}));circle.rotation.x=-Math.PI/2;circle.position.y=-.01;this.scene.add(circle);this.stageRing=circle;
+    // Soft lit floor: a pool of light under the athlete that fades into the graphite stage.
+    const floorCanvas=document.createElement('canvas');floorCanvas.width=floorCanvas.height=256;const floorContext=floorCanvas.getContext('2d');const floorGradient=floorContext.createRadialGradient(128,128,0,128,128,128);floorGradient.addColorStop(0,'rgba(255,255,255,.16)');floorGradient.addColorStop(.45,'rgba(255,255,255,.06)');floorGradient.addColorStop(1,'rgba(255,255,255,0)');floorContext.fillStyle=floorGradient;floorContext.fillRect(0,0,256,256);
+    const floorTexture=new THREE.CanvasTexture(floorCanvas);floorTexture.colorSpace=THREE.SRGBColorSpace;
+    const floor=new THREE.Mesh(new THREE.PlaneGeometry(4.2,4.2),new THREE.MeshBasicMaterial({map:floorTexture,transparent:true,depthWrite:false}));floor.rotation.x=-Math.PI/2;floor.position.y=-.014;floor.renderOrder=-1;this.scene.add(floor);this.stageFloor=floor;
     const shadowCanvas=document.createElement('canvas');shadowCanvas.width=128;shadowCanvas.height=128;
     const context=shadowCanvas.getContext('2d');const gradient=context.createRadialGradient(64,64,3,64,64,61);gradient.addColorStop(0,'rgba(0,0,0,.48)');gradient.addColorStop(.4,'rgba(0,0,0,.23)');gradient.addColorStop(1,'rgba(0,0,0,0)');context.fillStyle=gradient;context.fillRect(0,0,128,128);
     const shadow=new THREE.Mesh(new THREE.PlaneGeometry(1.25,.9),new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(shadowCanvas),transparent:true,depthWrite:false}));shadow.rotation.x=-Math.PI/2;shadow.position.y=-.008;this.scene.add(shadow);
@@ -264,14 +268,14 @@ export class BodyViewer {
   }
   resetView(){
     // One envelope and target for every saved step and playback frame.
-    if(movementView(this.mode))this.fitBounds(this.movementBounds,STANDARD_VIEW,1.12);
+    if(movementView(this.mode))this.fitBounds(this.movementBounds,STANDARD_VIEW,this.container.clientWidth<=600?1.0:1.1);
     else if(this.layer==='reveal'){if(this.selectedPart&&!this.selectedPart.hotspot){const mesh=this.parts.find(m=>m.userData.part.id===this.selectedPart.id);if(mesh)this.fitBounds(mesh.geometry.boundingBox);}else this.fitGroup();}
     else if(this.coachRestBounds)this.fitBounds(this.coachRestBounds,new THREE.Vector3(.58,.04,1),1.18);
     else{this.controls.target.set(0,.85,0);this.camera.position.set(2,.95,3.6);this.controls.update();this.dirty=true;}
   }
   setMode(mode){
     const prior=this.mode;this.mode=mode;this.selectedPart=null;this.selectedMesh.visible=false;this.hoverMesh.visible=false;
-    this.stageGrid.material.opacity=mode==='motion' ? .12 : .32;
+    this.stageGrid.material.opacity=mode==='motion' ? 0 : .22;this.stageGrid.visible=mode!=='motion';if(this.stageRing)this.stageRing.visible=mode!=='motion';
     this.poseEditor?.setEnabled(mode==='pose');
     if(mode==='motion'){this.trajectoryGuide?.setVisible(false);this.movementGuide?.setVisible({enabled:false});}
     this.pacing=null;
