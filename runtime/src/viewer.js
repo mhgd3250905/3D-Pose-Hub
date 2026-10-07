@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
 import { muscleGroups, groupById } from './data.js';
 import { createCoachMotion } from './coach-motion.js';
@@ -31,6 +32,13 @@ export class BodyViewer {
     this.controls.addEventListener('change',()=>{this.dirty=true;this.callbacks.onCameraChange?.();});
     this.scene.add(new THREE.HemisphereLight(0xf4f1df,0x485873,2));
     const key=new THREE.DirectionalLight(0xffead2,3.7);key.position.set(-2.5,4,4);this.scene.add(key);
+    // Real contact shadows: hands, feet and the body now cast onto the floor.
+    this.renderer.shadowMap.enabled=true;this.renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+    key.castShadow=true;key.shadow.mapSize.set(2048,2048);key.shadow.bias=-.0004;key.shadow.normalBias=.02;key.shadow.radius=6;
+    Object.assign(key.shadow.camera,{left:-1.9,right:1.9,top:1.9,bottom:-1.9,near:1,far:12});key.shadow.camera.updateProjectionMatrix();
+    const shadowCatcher=new THREE.Mesh(new THREE.PlaneGeometry(8,8),new THREE.ShadowMaterial({color:0x020611,opacity:.42}));shadowCatcher.rotation.x=-Math.PI/2;shadowCatcher.position.y=-.006;shadowCatcher.receiveShadow=true;this.scene.add(shadowCatcher);this.shadowCatcher=shadowCatcher;
+    // Soft studio reflections so skin, cotton and rubber read as different materials.
+    const pmrem=new THREE.PMREMGenerator(this.renderer);this.scene.environment=pmrem.fromScene(new RoomEnvironment(),.04).texture;this.scene.environmentIntensity=.32;pmrem.dispose();
     const rim=new THREE.DirectionalLight(0xe4efff,2);rim.position.set(2,2,-3);this.scene.add(rim);
     const fill=new THREE.DirectionalLight(0xcdd9f0,.8);fill.position.set(4,.7,2);this.scene.add(fill);
     this.anatomy=new THREE.Group();this.scene.add(this.anatomy);
@@ -92,7 +100,7 @@ export class BodyViewer {
     this.callbacks.onProgress?.(88,'载入运动人物与骨骼…');await nextFrame();
     const [gltf,rigResponse]=await Promise.all([new GLTFLoader().loadAsync('/coach/flare-coach.glb'),fetch('/coach/coach-rig.json')]);
     if(!rigResponse.ok)throw new Error('无法读取运动人物骨骼');
-    this.coach=gltf.scene;this.coach.name='Snow · Flare coach';
+    this.coach=gltf.scene;this.coach.name='Snow · Flare coach';this.coach.traverse(object=>{if(object.isMesh){object.castShadow=true;}});
     this.rigData=await rigResponse.json();
     this.motion=createCoachMotion({model:this.coach,rigData:this.rigData});
     this.motion.reset();this.scene.add(this.coach);
