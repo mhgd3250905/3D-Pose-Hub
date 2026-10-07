@@ -6,6 +6,8 @@ import { resolveMovementTraining } from './movement-training.js';
 import { createMovementContext as createAtlasMovementContext } from './movement-context.js';
 import { createFitnessMovementContext } from './fitness-movement-context.js';
 import { isDeepSurfaceGroup } from './movement-surface-regions.js';
+import { openMuscleViewer } from './muscle-viewer.js';
+import { resolveGroup } from './muscle-map.js';
 
 const SLOTS = [
   { id: 'shoulder-arm-support', title: '肩臂支撑', colour: '#72d6ff', groups: ['shoulders', 'scapular', 'arms'],
@@ -50,6 +52,23 @@ function availableGroups(viewer, profile, slot) {
     return { id, label: asset.label ?? asset.name ?? id, meshes, role: matching.map(label => text(label.role)).filter(Boolean).join(' '),
       view: ['erectors', 'scapular', 'glutes', 'triceps', 'hamstrings', 'hip-rotators', 'rotator-cuff'].includes(id) ? 'back' : 'front' };
   }).filter(Boolean);
+}
+
+// Items for the full-screen 3D muscle viewer. Same slot/profile data as the
+// popup, but it needs no atlas meshes: the viewer draws location panels on
+// the smooth CC0 body. Level is only primary or deep (hatched) — never a
+// strength or activation ranking.
+function viewerItems(viewer, profile, slot) {
+  const atlas = new Map((viewer.manifest?.groups ?? []).map(group => [group.id, group]));
+  const labels = (profile.labels ?? []).filter(label => slot.groups.includes(label.group));
+  const requested = [...new Set(labels.flatMap(label => label.anatomyGroups ?? []))];
+  const ids = requested.length ? requested : slot.groups.flatMap(id => groupById[id]?.assetGroups ?? []);
+  return [...new Set([...slot.assets, ...ids])].filter(id => ids.includes(id) && resolveGroup(id)).map(id => {
+    const matching = labels.filter(label => label.anatomyGroups?.includes(id));
+    const sides = new Set(slot.id === SLOTS[0].id ? profile.supportHands : matching.flatMap(label => label.side === 'left' || label.side === 'right' ? [label.side] : ['left', 'right']));
+    return { groupId: id, label: atlas.get(id)?.label ?? resolveGroup(id).label, role: matching.map(label => text(label.role)).filter(Boolean).join(' '),
+      level: isDeepSurfaceGroup(id) ? 'deep' : 'primary', side: sides.size === 1 ? [...sides][0] : 'both' };
+  });
 }
 
 const GROUP_POSITIONS = {
@@ -99,6 +118,10 @@ export function createMovementInspector({ viewer, container, onClose, refreshIco
   const locatorText = node(document, 'span', 'mvi-locator-label', '查看全身');locatorCaption.append(locatorIcon, locatorText);locator.append(locatorPlot, locatorCaption);viewport.appendChild(locator);
   const empty = node(document, 'p', 'mvi-empty', '正在载入完整参考人体…');empty.setAttribute('role', 'status');viewport.appendChild(empty);
   const hint = node(document, 'span', 'mvi-view-hint', '拖动旋转 · 滚轮缩放');viewport.appendChild(hint);
+  const fullscreenButton = node(document, 'button', 'mvi-fullscreen');fullscreenButton.type = 'button';
+  fullscreenButton.setAttribute('aria-label', '全屏查看 3D 肌群位置');
+  fullscreenButton.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg><span>全屏 3D</span>';
+  viewport.appendChild(fullscreenButton);
   const modelKey = node(document, 'p', 'mvi-model-key', '亮色标出肌群所在区域');modelKey.hidden = true;anatomyPane.appendChild(modelKey);
   const contextStatus = node(document, 'p', 'mvi-context-status');contextStatus.hidden = true;contextStatus.setAttribute('role', 'status');anatomyPane.appendChild(contextStatus);
   const role = node(document, 'p', 'mvi-role');anatomyPane.appendChild(role);
@@ -162,7 +185,7 @@ export function createMovementInspector({ viewer, container, onClose, refreshIco
   let profile = null, slot = null, groups = [], currentGroup = null, selectedPartId = null, tab = 'anatomy', rendererFailed = false;
   let pointerDown = null, renderCount = 0, width = 1, height = 1, framedWidth = 0, returnFocus = null;
   let viewMode = 'local', viewDirection = 'front', manualDirection = null, fullBodyBounds = null, localBounds = null, pendingFrame = true;
-  let representation = 'surface';
+  let representation = 'surface', overlay = null, overlayOwnsInspector = false;
   const bodyContext = createFitnessMovementContext({ reference, requestRender, onReady: () => {
     if (active && currentGroup && !disposed && representation === 'surface') { frameCurrentReference();requestRender(); }
   } });
@@ -253,7 +276,8 @@ export function createMovementInspector({ viewer, container, onClose, refreshIco
     return elapsed < INTRO_MS;
   }
   function render() {
-    frame = 0;if (!active || disposed || !renderer || tab !== 'anatomy') return;
+    frame = 0;if (!active || disposed || !renderer || tab !== 'anatomy' || overlayOwnsInspector) return;
+    if (overlay) { frame = requestAnimationFrame(render);return; }
     const now = globalThis.performance?.now?.() ?? Date.now(), intro = animateLook(now);
     // Breathing glow: ~24 fps while the card is open; full rate during the intro.
     if (intro || now - lastLookTime > 41) { dirty = true;lastLookTime = now; }
@@ -437,6 +461,21 @@ export function createMovementInspector({ viewer, container, onClose, refreshIco
     }
     drills.appendChild(article);
   }
+  const narrow = () => (container.getBoundingClientRect?.().width || globalThis.innerWidth || 1024) < 700;
+  function closeOverlay() { const current = overlay;overlay = null;current?.close(); }
+  function openFullscreen(ownsInspector) {
+    if (!profile || !slot) return;
+    closeOverlay();overlayOwnsInspector = ownsInspector;
+    const handle = openMuscleViewer({ document, title: slot.title, accent: '#ff5a36',
+      subtitle: '原 ' + String(profile.sourceStepNumber).padStart(2, '0') + ' · ' + supportName(profile.supportHands) + ' · 肌群位置',
+      items: viewerItems(viewer, profile, slot),
+      onClose: () => {
+        if (overlay === handle) overlay = null;
+        if (overlayOwnsInspector && active) close();
+        else requestRender();
+      } });
+    overlay = handle;
+  }
   function open(nextProfile, slotId) {
     if (disposed) return false;
     const nextSlot = slotFor(slotId), number = Number(nextProfile?.sourceStepNumber), hands = nextProfile?.supportHands;
@@ -445,6 +484,12 @@ export function createMovementInspector({ viewer, container, onClose, refreshIco
     const training = resolveMovementTraining(nextProfile, nextSlot.id);
     let next;try { next = structuredClone(nextProfile); } catch { return false; }
     if (!active) returnFocus = document.activeElement;
+    if (narrow()) {
+      // Phones: the full-screen 3D viewer replaces the small popup.
+      if (active && !overlayOwnsInspector) { root.hidden = true;if (frame) cancelAnimationFrame(frame);frame = 0; }
+      profile = next;slot = nextSlot;active = true;openFullscreen(true);return true;
+    }
+    if (overlayOwnsInspector) { overlayOwnsInspector = false;closeOverlay(); }
     profile = next;slot = nextSlot;groups = availableGroups(viewer, profile, slot);active = true;root.hidden = false;framedWidth = 0;
     viewMode = 'local';manualDirection = null;representation = 'surface';secondary.open = false;setLocatorCaption();updateRepresentationCopy();
     root.style.setProperty('--mvi-accent', slot.colour);root.dataset.slot = slot.id;
@@ -478,6 +523,8 @@ export function createMovementInspector({ viewer, container, onClose, refreshIco
   function close() {
     if (!active) return;
     const restoreFocus = root.contains(document.activeElement);active = false;pointerDown = null;
+    const ownedByOverlay = overlayOwnsInspector;overlayOwnsInspector = false;closeOverlay();
+    if (ownedByOverlay) { root.hidden = true;onClose?.();returnFocus = null;return; }
     root.classList.remove('mvi-opening');
     if (reducedMotion()) root.hidden = true;
     else { root.classList.add('mvi-closing');clearTimeout(closingTimer);closingTimer = setTimeout(() => { if (!active) { root.hidden = true;root.classList.remove('mvi-closing'); } }, 230); }
@@ -485,7 +532,7 @@ export function createMovementInspector({ viewer, container, onClose, refreshIco
     if (restoreFocus && returnFocus?.isConnected && returnFocus.getClientRects?.().length) returnFocus.focus?.({ preventScroll: true });returnFocus = null;
   }
   function setDirection(direction) { manualDirection = direction;viewDirection = direction;pendingFrame = true;fitMainCamera(); }
-  listen(closeButton, 'click', close);listen(frontButton, 'click', () => setDirection('front'));listen(backButton, 'click', () => setDirection('back'));
+  listen(closeButton, 'click', close);listen(fullscreenButton, 'click', () => openFullscreen(false));listen(frontButton, 'click', () => setDirection('front'));listen(backButton, 'click', () => setDirection('back'));
   listen(resetButton, 'click', () => { manualDirection = null;viewDirection = currentGroup?.view ?? 'front';fitMainCamera(); });
   listen(locator, 'click', () => { viewMode = viewMode === 'full' ? 'local' : 'full';setLocatorCaption();fitMainCamera(); });
   listen(anatomyTab, 'click', () => setTab('anatomy'));listen(trainingTab, 'click', () => setTab('training'));
@@ -499,7 +546,11 @@ export function createMovementInspector({ viewer, container, onClose, refreshIco
       event.preventDefault();setTab(tab === 'anatomy' ? 'training' : 'anatomy');(tab === 'anatomy' ? anatomyTab : trainingTab).focus?.({ preventScroll: true });
     }
   });
-  listen(document, 'keydown', event => { if (active && event.key === 'Escape') { event.preventDefault();close(); } });
+  listen(document, 'keydown', event => {
+    if (!active || event.key !== 'Escape') return;
+    event.preventDefault();
+    if (overlay && !overlayOwnsInspector) closeOverlay();else close();
+  });
   const observer = typeof ResizeObserver === 'function' ? new ResizeObserver(resize) : null;observer?.observe(viewport);observer?.observe(container);
   function dispose() {
     if (disposed) return;close();disposed = true;observer?.disconnect();
@@ -514,6 +565,7 @@ export function createMovementInspector({ viewer, container, onClose, refreshIco
       parts: copies.map(mesh => ({ id: mesh.userData.part.id, name: mesh.userData.part.name, side: mesh.userData.part.side })),
       selectedPartId, rendererReady: Boolean(renderer), renderCount, referencePose: true, geometryOwnership: 'borrowed', bodyContext: bodyContext.state, atlasContext: atlasContext.state,
       representation, visibleAtlasMeshes: copies.filter(mesh => mesh.visible).length, trainingMode: 'text',
+      fullscreen: Boolean(overlay), fullscreenReplacesPopup: overlayOwnsInspector,
       viewMode, viewDirection, locatorRenderer: 'shared-scissor', fullBodyBounds: fullBodyBounds ? [fullBodyBounds.min.toArray(), fullBodyBounds.max.toArray()] : null,
       localBounds: localBounds ? [localBounds.min.toArray(), localBounds.max.toArray()] : null }; } };
 }
