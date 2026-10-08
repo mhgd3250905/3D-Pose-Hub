@@ -159,8 +159,7 @@ export class BodyViewer {
     const names=['pelvis','leftHand','rightHand','leftFoot','rightFoot'],nodes=names.map(name=>this.coach.getObjectByName(name)).filter(Boolean);
     if(nodes.length<3)return null;
     const period=motion.getMetrics().period,bins=240,saved=this.time,points=[],v=new THREE.Vector3();
-    // v39: measured without the snap lift (motion.withoutSnap), so the loop keeps v38's timing
-    (motion.withoutSnap??(f=>f()))(()=>{for(let i=0;i<=bins;i++){motion.update(i*period/bins);this.coach.updateMatrixWorld(true);points.push(nodes.map(node=>node.getWorldPosition(v).clone()));}});
+    for(let i=0;i<=bins;i++){motion.update(i*period/bins);this.coach.updateMatrixWorld(true);points.push(nodes.map(node=>node.getWorldPosition(v).clone()));}
     motion.update(saved);this.coach.updateMatrixWorld(true);
     // speeds per unit of pose progress (the smooth loop's closing transition runs
     // at half clock speed and is scaled back up in pacingRate)
