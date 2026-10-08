@@ -576,6 +576,50 @@ export function createCoachMotion({ model, rigData }) {
     return foot.normalize().toArray();
   }
   const LATE_PLANT = { right: 0.7 }, LATE_CONVERGE = 0.85, LATE_BLEND = 0.3, APPROACH_OVER = 0.6, APPROACH_FLAT_FROM = 0.0, APPROACH_FLAT_TO = 0.75, APPROACH_POW = 1.8, LATE_EASE_OUT = true, APPROACH_FLAT_TO_LATE = 0.55;
+  // v39 SNAP LIFT (user: when a support hand lets go, it rose from the floor to its highest
+  // point too slowly; in a real flare the released hand snaps up). In v38 the released arm hung
+  // straight down for about half a key while only the shoulder rose, then swung up late. For the
+  // keys after a lift-off (u = keys since release) the free arm keeps up with an ease-out goal,
+  // E(x) = 1 - (1 - x)^4 (1 + 4x), x = u / SNAP.rise (zero speed at release, fastest at x = 1/4,
+  // eases into the top): first an arm angle from world-up going from the release angle to the
+  // v38 peak-key angle, then (x 0.2 -> 0.6) a wrist height going from the release height to the
+  // v38 peak height; from x = SNAP.rideFrom the height target also rides up with the shoulder, so
+  // the raised arm keeps moving instead of pinning the hand. Where the v38 arm is lower, the
+  // shoulder->wrist line turns up in its vertical plane (smooth-min over SNAP.soft deg); hand and
+  // elbow pole turn with it, so the arm stays straight and the wrist does not bend. The goal fades
+  // out over SNAP.fadeFrom..fadeTo keys, at / past the v38 peak. Body, legs, plants and landings
+  // are untouched (the hip lift reads the v38 wrist; the viewer's pacing table is measured
+  // without the snap). ?snap=0 restores v38.
+  const snapOff = (typeof location !== 'undefined' && new URLSearchParams(location.search).get('snap') === '0');
+  const SNAP_DEFAULT = { rise: 1.8, soft: 15, peelIn: 0.2, fadeFrom: 1.9, fadeTo: 2.4, heightFrom: 0.2, heightTo: 0.6, rideFrom: 0.6 };
+  let SNAP = SNAP_DEFAULT;
+  const snapCache = new WeakMap(), snapBodyWrists = new WeakMap();
+  // the viewer's even-pacing table is measured without the snap, so the faster hand does not
+  // slow the paced clock down (the loop's timing stays v38's)
+  let snapSuspended = false;
+  function withoutSnap(fn) { const was = snapSuspended; snapSuspended = true; try { return fn(); } finally { snapSuspended = was; } }
+  function snapLiftOff(side, i, tBody) {
+    if (snapOff || snapSuspended || globalThis.__COACH_SNAP_OFF === true) return null;
+    SNAP = globalThis.__COACH_SNAP ? { ...SNAP_DEFAULT, ...globalThis.__COACH_SNAP } : SNAP_DEFAULT;
+    if (!(SNAP.rise > 0)) return null;
+    const steps = sequence.steps, n = steps.length - 1;
+    let cache = snapCache.get(steps);
+    if (!cache) {
+      // a lift-off key k0 (hand locked) followed by three free keys, all unit-length segments
+      cache = {};
+      for (const s of SIDES) for (let k0 = 0; k0 + 3 <= n - 1; k0++) {
+        if (!steps[k0].pose.limbs[s].handLocked || [1, 2, 3].some(j => steps[k0 + j].pose.limbs[s].handLocked)) continue;
+        const end = k => { const node = resolvedNode(steps[k].pose); return { wrist: node.solved[s].arm.end, shoulder: node.solved[s].shoulder }; };
+        const release = end(k0), peak = end(k0 + 2), angle = e => e.wrist.clone().sub(e.shoulder).angleTo(UP);
+        // shoulder height (v38 keys, spline) at u = SNAP.rise: from then on the hand rides up with the shoulder
+        const r = Math.min(SNAP.rise, 2.999), j = Math.floor(r), riseShoulderY = hermiteV(...[-1, 0, 1, 2].map(o => end(((k0 + j + o) % n + n) % n).shoulder), r - j).y;
+        cache[s] = { k0, releaseY: release.wrist.y, peakY: peak.wrist.y, releaseAngle: angle(release), peakAngle: angle(peak), riseShoulderY };
+      }
+      snapCache.set(steps, cache);
+    }
+    const c = cache[side], u = c ? i + tBody - c.k0 : -1;
+    return c && u > 0 && u < SNAP.fadeTo ? { ...c, u } : null;
+  }
   function lowestHandOffset(side, quaternion) {
     let low = Infinity;
     const wrist = rest[side + 'Wrist'];
@@ -600,7 +644,7 @@ export function createCoachMotion({ model, rigData }) {
     if (P1.torsoQuaternion || P2.torsoQuaternion) pose.torsoQuaternion = hermiteQ(...[P0, P1, P2, P3].map(p => p.torsoQuaternion ?? [0, 0, 0, 1]), t);
     const nodes = [P0, P1, P2, P3].map(pose => resolvedNode(pose, true));
     pose.pelvis = hermiteV(...nodes.map(node => node.constrainedPelvis), t).toArray();
-    const swingLater = {}, armPoleFrom = {}, lateSides = new Map(), capFade = {};
+    const swingLater = {}, armPoleFrom = {}, lateSides = new Map(), capFade = {}, snapTurns = {}, snapBody = new Map();
     for (const side of SIDES) {
       const LB = [P0, P1, P2, P3].map(p => p.limbs[side]), limb = pose.limbs[side];
       // v25 late plant: a hand whose shoulder is not yet over its spot at the plant key
@@ -672,6 +716,30 @@ export function createCoachMotion({ model, rigData }) {
       const shoulder = upperOffset(rest[side + 'Shoulder'], requested.bodyQuaternion, requested.torsoQuaternion).add(constrainedPelvis);
       const swing = shoulder.clone().add(sw.local);
       pose.limbs[side].wrist = sw.world.clone().lerp(swing, sw.w).toArray();
+      const snap = snapLiftOff(side, i, tBody);
+      if (snap) {
+        // v39 snap lift (see SNAP above). The v38 wrist is kept for solvePose's hip lift.
+        snapBody.set(side, new THREE.Vector3().fromArray(pose.limbs[side].wrist));
+        const d0 = new THREE.Vector3().fromArray(pose.limbs[side].wrist).sub(shoulder), axis = d0.clone().cross(UP);
+        const x = Math.min(1, snap.u / SNAP.rise), E = 1 - (1 - x) ** 4 * (1 + 4 * x);
+        // ...and once there it rides with the shoulder (a raised arm), instead of pinning the hand at one height
+        const h = snap.releaseY + (snap.peakY - snap.releaseY) * E + (shoulder.y - snap.riseShoulderY) * THREE.MathUtils.smoothstep(x, SNAP.rideFrom, 1);
+        const angleGoal = snap.releaseAngle + (snap.peakAngle - snap.releaseAngle) * E, heightGoal = Math.acos(THREE.MathUtils.clamp((h - shoulder.y) / d0.length(), -1, 1));
+        // near the bottom of the arm's circle a few cm of height cost a big swing, so the height
+        // goal takes over from the angle goal only once the arm is on its way (x 0.2 -> 0.6)
+        const goal = angleGoal + Math.min(0, heightGoal - angleGoal) * THREE.MathUtils.smoothstep(x, SNAP.heightFrom, SNAP.heightTo);
+        // smooth min of the v38 angle and the goal (never lower than either, so no dip where
+        // v38 catches up), its rounding faded in over the first SNAP.peelIn keys after release
+        const a = d0.angleTo(UP), k = THREE.MathUtils.degToRad(SNAP.soft), gap = Math.abs(a - goal);
+        const bias = gap < k ? k / 4 * (1 - gap / k) ** 2 * THREE.MathUtils.smootherstep(snap.u, 0, SNAP.peelIn) : 0;
+        const ang = (a - (Math.min(a, goal) - bias)) * (1 - THREE.MathUtils.smootherstep(snap.u, SNAP.fadeFrom, SNAP.fadeTo));
+        if (axis.lengthSq() > 1e-10 && ang > 0) {
+          const turn = new THREE.Quaternion().setFromAxisAngle(axis.normalize(), ang);
+          snapTurns[side] = turn;
+          pose.limbs[side].wrist = shoulder.clone().add(d0.applyQuaternion(turn)).toArray();
+          pose.limbs[side].handQuaternion = turn.clone().multiply(new THREE.Quaternion().fromArray(pose.limbs[side].handQuaternion)).toArray();
+        }
+      }
       // v23: an incoming hand comes down steadily: its lowest point keeps a clearance
       // that shrinks to zero at contact, rather than hovering just above the floor
       if (sw.approach) {
@@ -774,7 +842,9 @@ export function createCoachMotion({ model, rigData }) {
         const approachPole = shoulder.clone().add(hermiteV(...vs, lateArm.t).applyQuaternion(upper));
         pose.limbs[side].elbowPole = approachPole.lerp(new THREE.Vector3().fromArray(pose.limbs[side].elbowPole), lateArm.mix).toArray();
       }
+      if (snapTurns[side]) pose.limbs[side].elbowPole = new THREE.Vector3().fromArray(pose.limbs[side].elbowPole).sub(shoulder).applyQuaternion(snapTurns[side]).add(shoulder).toArray();
     }
+    if (snapBody.size) snapBodyWrists.set(pose, snapBody);
     if (lateSides.size) latePlantSpots.set(pose, lateSides);
     if (Object.keys(capFade).length) liftOffCaps.set(pose, capFade);
     return pose;
