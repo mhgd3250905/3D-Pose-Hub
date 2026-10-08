@@ -448,10 +448,10 @@ export function createCoachMotion({ model, rigData }) {
   // An airborne hand travels on a straight arm (user, 2026-10-07: from lift-off to
   // re-plant the arm never bends). Keep the shoulder->wrist direction and extend
   // to full reach; if that would go through the floor, slide along the floor ring.
-  function straightenFreeArms(requested, pelvis) {
+  function straightenFreeArms(requested, pelvis, tucked = null) {
     for (const side of SIDES) {
       const source = requested.limbs[side], value = limbs[side];
-      if (source.handLocked || source.wrist.y <= PLANT_FULL) continue;
+      if (source.handLocked || source.wrist.y <= PLANT_FULL || tucked?.[side]) continue; // v40: a tucking arm bends on purpose
       // Fade the straightening in over the lift-off band instead of snapping the
       // forearm to full reach the frame the wrist crosses PLANT_FULL (v21 jitter).
       const fade = THREE.MathUtils.smoothstep(source.wrist.y, PLANT_FULL, PLANT_NONE);
@@ -620,6 +620,52 @@ export function createCoachMotion({ model, rigData }) {
     const c = cache[side], u = c ? i + tBody - c.k0 : -1;
     return c && u > 0 && u < SNAP.fadeTo ? { ...c, u } : null;
   }
+  // v40 TUCK (user, from real flare videos: "手稍微弯着贴着身躯" - after a support hand lets go the
+  // arm bends and stays close along the torso while the legs sweep past, then reaches out straight
+  // to plant; user approved overriding the v20 rule "a free hand never bends between lift-off and
+  // re-plant"). After the v39 snap peels the hand off the floor, the free arm folds in joint space:
+  // the upper arm turns (slerp) from the v39 shoulder->wrist line to a direction down along the
+  // torso side (TUCK.lat/up/fwd in the upper-body frame), and the elbow closes from 180 to
+  // TUCK.elbow deg with the forearm bending toward the chest (TUCK.hLat/hUp/hFwd), elbow pointing
+  // out/back. tau = smootherstep(u, in0, in1) * smootherstep(v, out1, out0), u = keys since release,
+  // v = keys left to touchdown (late plant included), the same rule in key units for both hands.
+  // tau is 0 for the last out1 keys, so the arm is straight (v39) at touchdown and the plants are
+  // v38's. Body, legs and the hip lift read the v39 wrist; the pacing table is measured without it
+  // (withoutSnap). ?tuck=0 restores v39.
+  const tuckOff = (typeof location !== 'undefined' && new URLSearchParams(location.search).get('tuck') === '0');
+  const TUCK_DEFAULT = { in0: 0.1, in1: 1.0, out0: 1.6, out1: 0.2, elbow: 100, lat: 0.1, up: -1, fwd: 0.3, hLat: -0.5, hUp: -0.3, hFwd: 1, aLead: -0.6, latOut: 0.6, latRamp: 0.4 };
+  let TUCK = TUCK_DEFAULT;
+  const tuckCache = new WeakMap(), tuckSides = new WeakMap();
+  function tuckFree(side, i, tBody) {
+    if (tuckOff || snapSuspended || globalThis.__COACH_TUCK_OFF === true) return null;
+    TUCK = globalThis.__COACH_TUCK ? { ...TUCK_DEFAULT, ...globalThis.__COACH_TUCK } : TUCK_DEFAULT;
+    const steps = sequence.steps, n = steps.length - 1;
+    let cache = tuckCache.get(steps);
+    if (!cache) {
+      // free spans in key units: release key k0 (locked, next key free) .. next locked key k1 (a late-planting
+      // hand touches down just before its key: v39 right at raw 8.86, key units 7.93)
+      cache = {};
+      for (const s of SIDES) for (let k0 = 0; k0 < n; k0++) {
+        if (!steps[k0].pose.limbs[s].handLocked || steps[(k0 + 1) % n].pose.limbs[s].handLocked) continue;
+        let k1 = k0 + 1;
+        while (k1 < k0 + n && !steps[k1 % n].pose.limbs[s].handLocked) k1++;
+        cache[s] = { k0, k1, plant: resolvedNode(steps[k1 % n].pose).solved[s].arm.end.clone() };
+      }
+      tuckCache.set(steps, cache);
+    }
+    const c = cache[side];
+    if (!c) return null;
+    let u = i + tBody - c.k0;
+    if (u < 0) u += n;
+    const v = c.k1 - c.k0 - u;
+    if (!(u > 0 && v > 0)) return null;
+    const tau = THREE.MathUtils.smootherstep(u, TUCK.in0, TUCK.in1) * THREE.MathUtils.smootherstep(v, TUCK.out1, TUCK.out0);
+    const tauA = THREE.MathUtils.smootherstep(u, TUCK.in0, TUCK.in1) * THREE.MathUtils.smootherstep(v, TUCK.out1, Math.max(TUCK.out1 + 0.1, TUCK.out0 + TUCK.aLead));
+    // the upper arm swings in from / out to the side (latOut) around the fold, so the forearm never sweeps across the chest
+    const open = Math.max(1 - THREE.MathUtils.smootherstep(u, TUCK.in1, TUCK.in1 + TUCK.latRamp), 1 - THREE.MathUtils.smootherstep(v, TUCK.out0, TUCK.out0 + TUCK.latRamp));
+    // in the second half the fold opens toward the floor spot (the v39 arm is still up near its peak there)
+    return tau > 0 ? { tau, tauA, u, v, plant: v < u ? c.plant : null, lat: TUCK.lat + (TUCK.latOut - TUCK.lat) * open } : null;
+  }
   function lowestHandOffset(side, quaternion) {
     let low = Infinity;
     const wrist = rest[side + 'Wrist'];
@@ -644,7 +690,7 @@ export function createCoachMotion({ model, rigData }) {
     if (P1.torsoQuaternion || P2.torsoQuaternion) pose.torsoQuaternion = hermiteQ(...[P0, P1, P2, P3].map(p => p.torsoQuaternion ?? [0, 0, 0, 1]), t);
     const nodes = [P0, P1, P2, P3].map(pose => resolvedNode(pose, true));
     pose.pelvis = hermiteV(...nodes.map(node => node.constrainedPelvis), t).toArray();
-    const swingLater = {}, armPoleFrom = {}, lateSides = new Map(), capFade = {}, snapTurns = {}, snapBody = new Map();
+    const swingLater = {}, armPoleFrom = {}, lateSides = new Map(), capFade = {}, snapTurns = {}, snapBody = new Map(), tucked = {};
     for (const side of SIDES) {
       const LB = [P0, P1, P2, P3].map(p => p.limbs[side]), limb = pose.limbs[side];
       // v25 late plant: a hand whose shoulder is not yet over its spot at the plant key
@@ -843,8 +889,36 @@ export function createCoachMotion({ model, rigData }) {
         pose.limbs[side].elbowPole = approachPole.lerp(new THREE.Vector3().fromArray(pose.limbs[side].elbowPole), lateArm.mix).toArray();
       }
       if (snapTurns[side]) pose.limbs[side].elbowPole = new THREE.Vector3().fromArray(pose.limbs[side].elbowPole).sub(shoulder).applyQuaternion(snapTurns[side]).add(shoulder).toArray();
+      const tuck = tuckFree(side, i, tBody);
+      if (tuck) {
+        // v40 tuck (see TUCK above): fold the straight free arm in joint space
+        const wrist39 = new THREE.Vector3().fromArray(pose.limbs[side].wrist), d = wrist39.clone().sub(shoulder), L = d.length();
+        if (L > 1e-6) {
+          const ds = d.clone().divideScalar(L), full = value.upperArm + value.forearm, tau = tuck.tau;
+          const lat = new THREE.Vector3(side === 'left' ? 1 : -1, 0, 0).applyQuaternion(upper), up = UP.clone().applyQuaternion(upper), fw = FRONT.clone().applyQuaternion(upper);
+          const aT = lat.clone().multiplyScalar(tuck.lat).addScaledVector(up, TUCK.up).addScaledVector(fw, TUCK.fwd).normalize();
+          if (tuck.plant) {
+            const dp = tuck.plant.clone().sub(shoulder).normalize();
+            ds.applyQuaternion(new THREE.Quaternion().slerpQuaternions(IDENTITY, new THREE.Quaternion().setFromUnitVectors(ds, dp), tau));
+          }
+          const a = new THREE.Vector3().copy(ds).applyQuaternion(new THREE.Quaternion().slerpQuaternions(IDENTITY, new THREE.Quaternion().setFromUnitVectors(ds, aT), tuck.tauA));
+          const h = lat.clone().multiplyScalar(TUCK.hLat).addScaledVector(up, TUCK.hUp).addScaledVector(fw, TUCK.hFwd);
+          const hp = h.addScaledVector(a, -h.dot(a));
+          if (hp.lengthSq() < 1e-8) hp.copy(fw).addScaledVector(a, -fw.dot(a));
+          hp.normalize();
+          const bend = THREE.MathUtils.degToRad(180 - TUCK.elbow) * tau, f = a.clone().multiplyScalar(Math.cos(bend)).addScaledVector(hp, Math.sin(bend));
+          const elbow = shoulder.clone().addScaledVector(a, value.upperArm), wj = elbow.clone().addScaledVector(f, value.forearm);
+          // the v39 wrist aims just past full reach (the IK clamps it straight), so scale by at most 1
+          pose.limbs[side].wrist = shoulder.clone().add(wj.sub(shoulder).multiplyScalar(Math.min(L, full) / full)).toArray();
+          pose.limbs[side].elbowPole = elbow.clone().addScaledVector(hp, -0.3).toArray();
+          pose.limbs[side].handQuaternion = new THREE.Quaternion().setFromUnitVectors(d.clone().divideScalar(L), f).multiply(new THREE.Quaternion().fromArray(pose.limbs[side].handQuaternion)).toArray();
+          if (!snapBody.has(side)) snapBody.set(side, wrist39);
+          tucked[side] = tau;
+        }
+      }
     }
     if (snapBody.size) snapBodyWrists.set(pose, snapBody);
+    if (Object.keys(tucked).length) tuckSides.set(pose, tucked);
     if (lateSides.size) latePlantSpots.set(pose, lateSides);
     if (Object.keys(capFade).length) liftOffCaps.set(pose, capFade);
     return pose;
