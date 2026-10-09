@@ -45,8 +45,8 @@ export default {
     blobs: [{ j: 'leftAnkle', rx: 46, ry: 11, a: 0.65 }, { j: 'rightToe', rx: 36, ry: 10, a: 0.6 }],
     bands: [{ from: 'rightToe', to: 'leftAnkle', mid: 'pelvis', rx: 60, ry: 14, a: 0.28, dy: 4, sag: 0.0 }] },
   props: [
-    { type: 'cableStack', name: 'pulley', at: [-0.70, 0, -0.98], yaw: 0, height: 2.15, pulleyY: 1.30 },
-    { type: 'dHandle', side: 'right', name: 'handle', toward: 'pulley', lean: 0.55 },
+    { type: 'cableStack', name: 'pulley', at: [-0.65, 0, -0.98], yaw: 0, height: 2.15, pulleyY: 0.85 },
+    { type: 'dHandle', side: 'right', name: 'handle', toward: 'pulley', shift: 0.01, len: 0.15, angle: 295 },
     { type: 'cable', from: 'pulley', to: 'handle' },
   ],
   keyFrames: [0.4, 1.5, 3.0],
