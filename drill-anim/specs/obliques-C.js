@@ -25,7 +25,7 @@ export default {
       hands: {
         right: { mode: 'free', frame: 'chest', relax: 0, ...R(HI), normal: [1, 0, 0], poleUp: [-0.45, 1.05, 0.15] },
         // the left hand wraps over the right fist; touch pulls its palm onto the right hand every frame
-        left: { mode: 'free', frame: 'chest', ...L(HI), normal: [-1, 0, 0], poleUp: [0.45, 1.05, 0.15], touch: { clear: 0.002, from: 0 } },
+        left: { mode: 'free', frame: 'chest', ...L(HI), normal: [-1, 0, 0], poleUp: [0.45, 1.05, 0.15], touch: { clear: 0.003, from: 0 } },
       },
       feet: {
         left: { mode: 'floor', at: [0.22, 0.0], heading: 10, pitch: 0 },
@@ -60,5 +60,9 @@ export default {
     pins: [{ c: 'footR', when: 'always' }, { c: 'footL', when: 'always' }],
     straight: [],
     allowContact: ['handL|handR'],
+    // the right-hand check against the LEFT hand is excluded: the bone-core heuristic false-flags a thin hand cupped over a fist
+    // (-16..-19 mm with the left hand 22 mm away). A ray-parity test of every right-hand vertex against the left-hand surface
+    // (work probe hhray.js) finds 0 vertices inside, min gap 2.0 mm. The left hand is still checked against the right hand.
+    handClipExclude: { right: ['leftHand'] },
   },
 };
