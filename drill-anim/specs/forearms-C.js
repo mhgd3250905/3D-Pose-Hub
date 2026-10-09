@@ -29,7 +29,7 @@ export default {
       hips: { up: [0, 1, 0], front: [0, 0, 1] },
       chest: { body: [[[1, 0, 0], 2]] },
       hands: {
-        right: { mode: 'free', frame: 'chest', relax: 0, wrist: [-0.25, 1.45, 0.21], finger: [-0.02, 1, 0.03], normal: [1, 0, 0], poleUp: [-0.45, 1.05, 0.35] },
+        right: { mode: 'free', frame: 'chest', relax: 0, wrist: [-0.37, 1.44, 0.16], finger: [-0.02, 1, 0.03], normal: [1, 0, 0], poleUp: [-0.45, 1.05, 0.35] },
         left: { mode: 'free', frame: 'chest', wrist: [0.255, 0.91, 0.03], finger: [-0.05, -1, 0.06], normal: [-1, 0, 0.1], poleUp: [0.3, 1.1, -0.5] },
       },
       feet: {
@@ -51,7 +51,7 @@ export default {
     },
   },
   highlight: { groups: ['forearms'], side: 'right', pulseBase: 0.55 },
-  camera: { dir: [-0.9, 0.12, 0.45], fit: ['head', 'leftToe', 'rightToe', 'pelvis', 'rightPalm', 'leftAnkle', 'rightAnkle'], pad: 0.22, k: 1.0, drift: 0.9, at: 0 },
+  camera: { dir: [-0.5, 0.12, 0.85], fit: ['head', 'leftToe', 'rightToe', 'pelvis', 'rightPalm', 'leftAnkle', 'rightAnkle'], pad: 0.22, k: 1.0, drift: 0.9, at: 0 },
   frame: { mode: 'fit', width: 480, height: 700, cx: 512, cy: 560 },
   stillAt: 0,
   shadow: { joints: ['leftToe', 'rightToe', 'leftAnkle', 'rightAnkle', 'pelvis'],
