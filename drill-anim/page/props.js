@@ -73,7 +73,9 @@ P.place = function(o) { const t = T(), v = flareInspector.viewer, s = o.userData
   const rot = (s.rot || []).reduce((q, [ax, d]) => q.premultiply(new t.Quaternion().setFromAxisAngle(new t.Vector3(...ax).normalize(), d * Math.PI / 180)), new t.Quaternion());
   if (!s.attach || s.attach === 'world') { o.position.set(...(s.at || [0, 0, 0])); o.quaternion.copy(new t.Quaternion().setFromAxisAngle(new t.Vector3(0, 1, 0), (s.yaw || 0) * Math.PI / 180)).multiply(rot); }
   else { const bone = v.coach.getObjectByName(s.attach); const bp = bone.getWorldPosition(new t.Vector3()), bq = bone.getWorldQuaternion(new t.Quaternion());
-    o.position.copy(new t.Vector3(...(s.offset || [0, 0, 0])).applyQuaternion(bq).add(bp)); o.quaternion.copy(bq).multiply(rot); }
+    o.position.copy(new t.Vector3(...(s.offset || [0, 0, 0])).applyQuaternion(bq).add(bp)); o.quaternion.copy(bq).multiply(rot);
+    // flat: follow the bone point in x/z only, stay on the floor (y = s.floorY) and level (yaw only), e.g. sliders under a moving foot
+    if (s.flat) { o.position.y = s.floorY ?? 0; o.quaternion.setFromAxisAngle(new t.Vector3(0, 1, 0), (s.yaw || 0) * Math.PI / 180).multiply(rot); } }
   o.updateMatrixWorld(true); };
 P.pt = function(p) { const t = T(), v = flareInspector.viewer; if (Array.isArray(p)) return new t.Vector3(...p); const b = v.coach.getObjectByName(p.bone); return new t.Vector3(...(p.offset || [0, 0, 0])).applyQuaternion(b.getWorldQuaternion(new t.Quaternion())).add(b.getWorldPosition(new t.Vector3())); };
 P.update = function() { for (const o of P.list) P.place(o); };
