@@ -22,7 +22,7 @@ let PIV = [-0.04, 0, 1.50], PIVT = v.add(PIV, [0, 0.055, 0]);         // bar piv
 const SH = [-0.188, 0.930, 0.050];                                     // right shoulder (kneeling, measured)
 const UA = 0.25678, FA = 0.22805, reach = ang => Math.sqrt(UA * UA + FA * FA - 2 * UA * FA * Math.cos(ang * DEG));
 const N0 = v.unit([0.55, 0.15, 0.82]);                                 // palm faces forward and in
-const W0 = [-0.14, 0.74, 0.18];                                     // wrist at the start (in front of the shoulder)
+const W0 = [-0.16, 0.76, 0.23];                                     // wrist at the start (in front of the shoulder)
 const U1 = v.unit([0.10, 0.55, 0.83]);                                 // locked-out arm direction
 const W1 = v.add(SH, U1, reach(179.5));
 const grip = (w, d) => { const f = frameFor(d, N0); return v.add(w, f.R(cL)); };
@@ -53,11 +53,11 @@ export default {
       hips: { up: [0, 1, 0], front: [0, 0, 1] },
       hands: {
         right: { mode: 'free', frame: 'world', relax: 0, wrist: r4(E0.w), finger: r4(E0.f.F), normal: r4(E0.f.N), pole: [-0.42, 0.62, 0.12] },
-        left: { mode: 'free', frame: 'world', wrist: [0.13, 0.53, 0.20], finger: [0.0, -0.25, 1], normal: [0, -1, -0.15], pole: [0.45, 0.6, -0.1] },
+        left: { mode: 'free', frame: 'world', wrist: [0.13, 0.56, 0.20], finger: [0.0, -0.25, 1], normal: [0, -1, -0.15], pole: [0.45, 0.6, -0.1], touch: { clear: 0.003, from: 0 } },
       },
       feet: {
         left: { mode: 'floor', at: [0.12, 0.47], heading: 3, pitch: 0 },
-        right: { mode: 'free', frame: 'world', ankle: [-0.09, 0.105, -0.36], rot: [[[1, 0, 0], 70]], pole: [-0.085, 0.0, 0.40] },
+        right: { mode: 'free', frame: 'world', ankle: [-0.09, 0.238, -0.31], rot: [[[1, 0, 0], 80]], pole: [-0.085, 0.0, 0.40] },
       },
       constraints: [],
       solve: { vars: [], reg: {} },
@@ -71,7 +71,7 @@ export default {
   },
   highlight: { groups: ['deltoids'], side: 'right', pulseTrack: 'press', pulseBase: 0.3 },
   camera: { dir: [-1, 0.14, 0.15], fit: ['head', 'leftToe', 'rightToe', 'pelvis', 'rightPalm', 'rightKnee', 'leftKnee'], pad: 0.16, k: 1.0, drift: 0.9, at: 1.6 },
-  frame: { mode: 'fit', width: 330, height: 430, cx: 300, cy: 640 },
+  frame: { mode: 'fit', width: 320, height: 420, cx: 280, cy: 630 },
   stillAt: 1.6,
   shadow: { joints: ['leftToe', 'rightToe', 'leftAnkle', 'rightKnee', 'pelvis'],
     blobs: [{ j: 'leftAnkle', rx: 46, ry: 11, a: 0.65 }, { j: 'rightKnee', rx: 40, ry: 10, a: 0.6 }],
