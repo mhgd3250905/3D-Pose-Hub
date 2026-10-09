@@ -29,8 +29,10 @@ for p in q.get('pins',[]):
 for p in q.get('jointPins',[]):  # a joint (elbow/knee on the mat) that must not slide: drift of the joint centre + its lowest height
     act=[r for r in fr if when(r,p.get('when'))]
     if not act:continue
-    ref=np.array(act[0]['J'][p['j']]);d=[float(np.linalg.norm(np.array(r['J'][p['j']])-ref)*1000) for r in act]
-    pins[p['j']]={'frames':len(act),'drift_mm_max':round(max(d),2),'height_mm_range':[round(min(r['J'][p['j']][1] for r in act)*1000,1),round(max(r['J'][p['j']][1] for r in act)*1000,1)],'ok':max(d)<5.0}
+    # axes='xz': horizontal slide only (a foot pivoting on its ball rolls the toe joint up a few mm while the contact stays put)
+    M=np.array([1,0,1]) if p.get('axes')=='xz' else np.array([1,1,1])
+    ref=np.array(act[0]['J'][p['j']]);d=[float(np.linalg.norm((np.array(r['J'][p['j']])-ref)*M)*1000) for r in act]
+    pins[p['j']+(' '+p['when'] if p.get('when') else '')]={'frames':len(act),'drift_mm_max':round(max(d),2),'height_mm_range':[round(min(r['J'][p['j']][1] for r in act)*1000,1),round(max(r['J'][p['j']][1] for r in act)*1000,1)],'ok':max(d)<5.0}
 res['pins']=pins
 st={}
 for s in q.get('straight',[]):

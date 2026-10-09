@@ -153,7 +153,7 @@ QA is numeric only. Always look at the contact sheet and a few in-between frames
 
 ### Shoulders and mid-limb pins
 - `shoulders.shift: [x, y, z]` (chest frame, metres) shifts the scapula for protraction/retraction/elevation/depression. The scapula bone moves against the chest and the arm is re-solved from the shifted shoulder to the same wrist. It can be animated through `deltas`.
-- `{ type: 'mid', limb, at: [x, y, z], weight }` pins an elbow or knee at a world point, e.g. a forearm plank or kneeling. `qa.jointPins: [{ j: 'leftElbow' }]` checks its drift.
+- `{ type: 'mid', limb, at: [x, y, z], weight }` pins an elbow or knee at a world point, e.g. a forearm plank or kneeling. `qa.jointPins: [{ j: 'leftElbow' }]` checks its drift. Add `when` to limit it to a phase and `axes: 'xz'` to check only the horizontal slide (obliques-A: the support foot pivots on its ball, so the toe joint rolls up ~6 mm while its contact stays put).
 
 ### Timelines
 - Descriptor blending is linear, so blending two points on an arc (such as an abducting ankle) cuts the chord and bends the limb. Add a second track that carries the arc's sagitta (hip-abductors-A: `bow = 4p(1 − p)`) and sample both tracks per frame as `linear` keys from one eased curve; a spec is a JS module, so it can compute its own keys.
