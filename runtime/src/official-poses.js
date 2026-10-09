@@ -1,10 +1,13 @@
 import bundled from '../public/coach/flare-sequence.json' with {type:'json'};
-import previousDefault from '../public/coach/flare-sequence-before-9-16.json' with {type:'json'};
+import beforeWebV41 from '../public/coach/flare-sequence-before-web-v41.json' with {type:'json'};
 import { createFlareSequence } from './flare-sequence.js';
 
 export const OFFICIAL_FLARE_SEQUENCE=bundled;
 export const OFFICIAL_LOOP_UPGRADE_BACKUP_KEY='flare-demonstration-before-loop-20261005';
 export const OFFICIAL_LOOP_UPGRADE_MARKER_KEY='flare-demonstration-loop-upgrade-20261005';
+export const MOTION_V41_UPGRADE_MARKER_KEY='flare-demonstration-motion-v41-upgrade';
+export const MOTION_V41_UPGRADE_BACKUP_KEY='flare-demonstration-before-motion-v41';
+export const MOTION_V41_SELECTION_BACKUP_KEY='flare-demonstration-v41-selection-history';
 const KEY='flare-demonstration-v1';
 const BACKUP='flare-demonstration-backup-v1';
 const LOOP_NUMBERS=[9,10,11,12,13,14,15,16,9];
@@ -76,27 +79,45 @@ export function updateOfficialFrame(sequence,index,pose){
 
 export function resolveOfficialSequence(storage){
   if(!storage)return clone(bundled);
-  let published=null;
+  let published=null, snapshot=null;
   try{
     const raw=storage.getItem(KEY);published=parse(raw);
-    const validPublished=validSequence(published),revision=loopRevision();
-    if(!revision)return validPublished?clone(published):clone(bundled);
-    if(validPublished&&published.source?.revision===revision)return clone(published);
-    if(storage.getItem(OFFICIAL_LOOP_UPGRADE_MARKER_KEY)===revision)return validPublished?clone(published):clone(bundled);
-    // Keep the exact old storage bytes independently of the ordinary undo slot.
-    // A browser without a published selection can undo to the old default too.
-    const undoRaw=validPublished?raw:JSON.stringify(previousDefault);
-    const originalRaw=raw??undoRaw;
-    if(storage.getItem(OFFICIAL_LOOP_UPGRADE_BACKUP_KEY)===null){
-      storage.setItem(OFFICIAL_LOOP_UPGRADE_BACKUP_KEY,originalRaw);
-      if(storage.getItem(OFFICIAL_LOOP_UPGRADE_BACKUP_KEY)!==originalRaw)return validPublished?clone(published):clone(bundled);
+    const validPublished=validSequence(published);
+    if(storage.getItem(MOTION_V41_UPGRADE_MARKER_KEY)==='v41')return validPublished?clone(published):clone(bundled);
+    const keys=[KEY,BACKUP,'flare-transition-library-v1',OFFICIAL_LOOP_UPGRADE_MARKER_KEY,OFFICIAL_LOOP_UPGRADE_BACKUP_KEY];
+    snapshot=Object.fromEntries(keys.map(key=>[key,storage.getItem(key)]));
+    // Preserve exact bytes of the selected animation, undo slot and K/routes.
+    // Personal pose libraries and drafts are never written during this upgrade.
+    if(storage.getItem(MOTION_V41_UPGRADE_BACKUP_KEY)===null){
+      const backup=JSON.stringify({format:'flare-motion-upgrade-backup',version:1,target:'v41',storage:snapshot,defaultSequence:beforeWebV41});
+      storage.setItem(MOTION_V41_UPGRADE_BACKUP_KEY,backup);
+      if(storage.getItem(MOTION_V41_UPGRADE_BACKUP_KEY)!==backup)throw new Error('Motion backup was not stored.');
     }
+    // Corrupt state and explicitly authored selections remain recoverable in place.
+    if(raw!==null&&!validPublished)return clone(bundled);
+    // Timing, routes, phase labels and metadata can be authored without moving
+    // a key pose. Only the entire unchanged bundled default is auto-upgraded.
+    const isOldDefault=validPublished&&samePose(published,beforeWebV41);
+    if(validPublished&&!isOldDefault){
+      storage.setItem(MOTION_V41_UPGRADE_MARKER_KEY,'v41');
+      return clone(published);
+    }
+    const undoRaw=raw??JSON.stringify(beforeWebV41),nextRaw=JSON.stringify(bundled);
     storage.setItem(BACKUP,undoRaw);
-    const nextRaw=JSON.stringify(bundled);storage.setItem(KEY,nextRaw);
-    if(storage.getItem(KEY)!==nextRaw)return validPublished?clone(published):clone(bundled);
-    try{storage.setItem(OFFICIAL_LOOP_UPGRADE_MARKER_KEY,revision);}catch{}
+    if(storage.getItem(BACKUP)!==undoRaw)throw new Error('Motion undo was not stored.');
+    storage.setItem(KEY,nextRaw);
+    if(storage.getItem(KEY)!==nextRaw)throw new Error('Motion sequence was not stored.');
+    storage.setItem(MOTION_V41_UPGRADE_MARKER_KEY,'v41');
     return clone(bundled);
-  }catch{return validSequence(published)?clone(published):clone(bundled);}
+  }catch{
+    // A rejected backup or write must not turn a failed migration into data loss.
+    if(snapshot)for(const key of [KEY,BACKUP])try{
+      if(storage.getItem(key)!==snapshot[key]){
+        if(snapshot[key]===null)storage.removeItem(key);else storage.setItem(key,snapshot[key]);
+      }
+    }catch{}
+    return validSequence(published)?clone(published):clone(bundled);
+  }
 }
 
 export function saveOfficialSequence(sequence,storage){
@@ -107,6 +128,33 @@ export function saveOfficialSequence(sequence,storage){
   if(revision)storage.setItem(OFFICIAL_LOOP_UPGRADE_MARKER_KEY,revision);
   storage.setItem(BACKUP,previous);
   storage.setItem(KEY,JSON.stringify(sequence));
+}
+
+/** Explicitly choose the new default, preserving the previous animation and K library. */
+export function saveV41DefaultSequence(storage){
+  if(!storage)throw new Error('本地备份不可用，请先导出你的动画。');
+  const keys=[KEY,BACKUP,OFFICIAL_LOOP_UPGRADE_MARKER_KEY,MOTION_V41_UPGRADE_MARKER_KEY,'flare-transition-library-v1'];
+  const snapshot=Object.fromEntries(keys.map(key=>[key,storage.getItem(key)]));
+  const historyRaw=storage.getItem(MOTION_V41_SELECTION_BACKUP_KEY);
+  const history=historyRaw===null?{format:'flare-motion-selection-history',version:1,entries:[]}:parse(historyRaw);
+  if(history?.format!=='flare-motion-selection-history'||history.version!==1||!Array.isArray(history.entries))throw new Error('已有动作备份无法读取，当前动画已保留。');
+  history.entries.push({selectedAt:new Date().toISOString(),target:'v41',storage:snapshot});
+  const raw=JSON.stringify(history);
+  storage.setItem(MOTION_V41_SELECTION_BACKUP_KEY,raw);
+  if(storage.getItem(MOTION_V41_SELECTION_BACKUP_KEY)!==raw)throw new Error('动作备份未保存成功，当前动画已保留。');
+  try{
+    saveOfficialSequence(bundled,storage);
+    if(storage.getItem(KEY)!==JSON.stringify(bundled)||storage.getItem(BACKUP)!==(snapshot[KEY]||JSON.stringify(bundled)))throw new Error('动作未保存成功。');
+    storage.setItem(MOTION_V41_UPGRADE_MARKER_KEY,'v41');
+    return clone(bundled);
+  }catch(error){
+    for(const key of keys)try{
+      if(storage.getItem(key)!==snapshot[key]){
+        if(snapshot[key]===null)storage.removeItem(key);else storage.setItem(key,snapshot[key]);
+      }
+    }catch{}
+    throw new Error('采用新版动作失败，之前动画仍保留在独立备份中。',{cause:error});
+  }
 }
 
 export function previousOfficialSequence(storage){

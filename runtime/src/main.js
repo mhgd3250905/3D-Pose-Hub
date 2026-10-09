@@ -17,7 +17,7 @@ import { createMovementInspector } from './movement-inspector.js';
 import { createTrainingPreview } from './training-preview.js';
 import { createFlarePosePresets } from './pose-presets.js';
 import { renderSources } from './research-ui.js';
-import { resolveOfficialSequence, sequenceFromSavedSteps, saveOfficialSequence, previousOfficialSequence, restoreOfficialSequence, updateOfficialFrame } from './official-poses.js';
+import { OFFICIAL_FLARE_SEQUENCE, resolveOfficialSequence, sequenceFromSavedSteps, saveOfficialSequence, saveV41DefaultSequence, previousOfficialSequence, restoreOfficialSequence, updateOfficialFrame } from './official-poses.js';
 import { rebaseTransitionEdits, saveOfficialFrameEdits } from './transition-edits.js';
 
 const icons={Orbit,Info,Camera,ArrowUpRight,PersonStanding,Rotate3d,Dumbbell,Search,Scan,UserRound,RotateCcw,PanelRight,PanelLeft,SlidersHorizontal,EyeOff,Maximize,Mouse,Play,Pause,Move3d,Shield,MoveUp,Hand,MoveHorizontal,Expand,MoveDiagonal2,ChevronRight,ChevronDown,CircleDot,Repeat2,CornerUpLeft,ArrowLeft,X,Pencil,Activity,MoveUpRight};
@@ -103,6 +103,7 @@ function replaceDemonstration(sequence,action='save'){
     viewer.setSequence({...sequence,motionModel});
     if(action==='save')saveOfficialSequence(sequence,localStore());
     else if(action==='restore')restoreOfficialSequence(sequence,localStore());
+    else if(action==='v41')saveV41DefaultSequence(localStore());
   }catch(error){viewer.setSequence({...previous,...transitionPanel?.options(),motionModel});throw error;}
   demonstration=structuredClone(sequence);
   transitionPanel?.setSequence(sequence);
@@ -284,6 +285,17 @@ $('#timeline').addEventListener('input',event=>{viewer.playing=false;viewer.setP
 $('#speed').addEventListener('change',event=>{if(viewer)viewer.speed=Number(event.target.value);});
 $('#movement-lesson-button').addEventListener('click',toggleMovementLesson);
 $('#motion-model').addEventListener('change',event=>{if(ready)setMotionModel(event.target.value);});
+$('#use-v41-default').addEventListener('click',()=>{
+  if(!ready)return;
+  viewer.playing=false;
+  if(!setMotionModel('saved',{render:false}))return;
+  try{
+    replaceDemonstration(structuredClone(OFFICIAL_FLARE_SEQUENCE),'v41');
+    movementPanel?.setSequence({...demonstration,...transitionPanel.options(),motionModel});
+    movementTransport?.setSequence({...demonstration,...transitionPanel.options(),motionModel});
+    toast('已采用 v41 默认动作；之前动画、个人步骤和过渡草稿已保留，可撤销展示替换。');
+  }catch(error){toast(error.message);}
+});
 $('#about-button').addEventListener('click',()=>$('#about-dialog').showModal());
 $('#close-about').addEventListener('click',()=>$('#about-dialog').close());
 $('#about-dialog').addEventListener('click',event=>{if(event.target===$('#about-dialog')){const rect=event.target.getBoundingClientRect();if(event.clientX<rect.left||event.clientX>rect.right||event.clientY<rect.top||event.clientY>rect.bottom)event.target.close();}});

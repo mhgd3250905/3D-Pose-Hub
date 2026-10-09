@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { createFlareSequence } from './flare-sequence.js';
 import { interpolateLimbArc } from './limb-arc.js';
+import { installSpineHelpers } from './spine-helpers.js';
 import { OFFICIAL_FLARE_SEQUENCE } from './official-poses.js';
 import { createPeriodicFlare } from './periodic-flare.js';
 import { evaluateSegmentArc, evaluateSegmentOrbit, segmentGuideWeight } from './segment-guides.js';
@@ -124,6 +125,7 @@ export function createCoachMotion({ model, rigData }) {
   const bones = new Map();
   const meshes = [];
   const skeletons = new Set();
+  let spine = null;
   model.traverse(object => {
     if (object.isBone) bones.set(object.name, object);
     if (object.isSkinnedMesh) {
@@ -133,6 +135,11 @@ export function createCoachMotion({ model, rigData }) {
       object.frustumCulled = false;
     }
   });
+  // Hidden lower/upper spine helpers (see spine-helpers.js); ?spine=off to compare.
+  // Installed while the model is still in its bind pose.
+  if (!(typeof location !== 'undefined' && new URLSearchParams(location.search).get('spine') === 'off')) {
+    spine = installSpineHelpers({ model, meshes, skeletons, landmarks: rigData.landmarks });
+  }
   const descriptors = new Map();
   for (const { name } of rigData.bones ?? []) {
     const bone = bones.get(name);
@@ -172,7 +179,8 @@ export function createCoachMotion({ model, rigData }) {
       for (let component = 0; component < 4; component++) {
         const weight = weights.getComponent(i, component);
         if (weight <= 1e-7) continue;
-        const name = mesh.skeleton.bones[indices.getComponent(i, component)]?.name;
+        const raw = mesh.skeleton.bones[indices.getComponent(i, component)]?.name;
+        const name = raw === 'spineLower' || raw === 'spineUpper' ? 'torso' : raw;
         descriptors.get(name)?.bounds.expandByPoint(vertex);
         for (const side of SIDES) {
           if (name === side + 'Hand' && weight > 0.70) {
@@ -242,6 +250,7 @@ export function createCoachMotion({ model, rigData }) {
   const guidedSamples = new WeakMap();
   let legPath = 'arc', interpolation = 'smooth', activeCorrections = [], skippedSteps = [], footCurves = [], segmentGuides = [];
   let motionModel = 'saved', periodicMotion = null;
+  let sequenceRevision = 0;
   let bendPlaneRotation = false;
   let sequence = createFlareSequence(OFFICIAL_FLARE_SEQUENCE.steps, {
     period: OFFICIAL_FLARE_SEQUENCE.period, mapTransition: mapPoseTransition, resolveFootEndpoint,
@@ -297,6 +306,7 @@ export function createCoachMotion({ model, rigData }) {
     // SkinnedMesh updates its bindMatrixInverse in updateMatrixWorld(), not
     // updateWorldMatrix(). This also keeps parent transforms from applying twice.
     model.updateMatrixWorld(true);
+    spine?.update();
     for (const skeleton of skeletons) skeleton.update();
     minimumFootHeight = Math.min(footFloor('left'), footFloor('right'));
     boundsDirty = true;
@@ -393,23 +403,381 @@ export function createCoachMotion({ model, rigData }) {
 
   function update(inputTime = 0) {
     const nextTime = ((Number.isFinite(inputTime) ? inputTime : 0) % sequence.period + sequence.period) % sequence.period;
-    applyPose(periodicMotion ? periodicMotion.sample(nextTime) : sequence.sample(nextTime), { alignBendPlanes: Boolean(periodicMotion) });
+    const smooth = !periodicMotion && smoothLoopActive();
+    applyPose(periodicMotion ? periodicMotion.sample(nextTime) : smooth ? smoothLoopSample(nextTime) : sequence.sample(nextTime), { playback: smooth, alignBendPlanes: Boolean(periodicMotion), bodyOffset: smooth ? rawY => lateBodyOffset(nextTime, rawY) : 0 });
     mode = 'flare';
     time = nextTime;
     return model;
   }
 
-  function resolvedNode(input) {
-    const key = JSON.stringify(input);
+  function resolvedNode(input, playback = false) {
+    const key = `${playback ? 'playback' : 'editable'}:${JSON.stringify(input)}`;
     if (!resolvedNodes.has(key)) {
       if (resolvedNodes.size >= 256) resolvedNodes.clear();
-      resolvedNodes.set(key, solvePose(input));
+      resolvedNodes.set(key, solvePose(input, { playback }));
     }
     return resolvedNodes.get(key);
   }
 
   function resolveFootEndpoint(pose, side) {
     return resolvedNode(pose).solved[side].leg.end.toArray();
+  }
+
+  // Round hip orbit: a looping sequence (last key repeats the first) moves the hips
+  // along a Catmull-Rom curve through the neighbouring keys instead of straight
+  // chords, so the pelvis traces one full rounded loop. ?hip=linear restores chords.
+  const linearHips = typeof location !== 'undefined' && new URLSearchParams(location.search).get('hip') === 'linear';
+  const samePelvisKey = (a, b) => a.pelvis.every((v, i) => Math.abs(v - b.pelvis[i]) < 1e-9)
+    && a.bodyQuaternion.every((v, i) => Math.abs(v - b.bodyQuaternion[i]) < 1e-9);
+  function roundHipPath(start, end, first, last, blend) {
+    const steps = sequence?.steps;
+    if (linearHips || !steps || steps.length < 4 || !samePelvisKey(steps[0].pose, steps[steps.length - 1].pose)) return null;
+    const n = steps.length - 1; // unique keys in the loop
+    const i = steps.findIndex(step => samePelvisKey(step.pose, start));
+    if (i < 0 || !samePelvisKey(steps[(i + 1) % steps.length].pose, end)) return null;
+    const prev = resolvedNode(steps[(i - 1 + n) % n].pose).constrainedPelvis, next = resolvedNode(steps[(i + 2) % n].pose).constrainedPelvis;
+    const p1 = first.constrainedPelvis, p2 = last.constrainedPelvis, t = blend, t2 = t * t, t3 = t2 * t;
+    return new THREE.Vector3(0, 0, 0)
+      .addScaledVector(prev, -0.5 * t3 + t2 - 0.5 * t)
+      .addScaledVector(p1, 1.5 * t3 - 2.5 * t2 + 1)
+      .addScaledVector(p2, -1.5 * t3 + 2 * t2 + 0.5 * t)
+      .addScaledVector(next, 0.5 * t3 - 0.5 * t2);
+  }
+
+  const PLANT_FULL = FLOOR + 0.06, PLANT_NONE = FLOOR + 0.12, ARM_STRAIGHT = 0.9985, PLANT_STRAIGHT = 0.99993; // v21: planted arms near full reach (the IK is steep at .9985)
+  // An airborne hand travels on a straight arm (user, 2026-10-07: from lift-off to
+  // re-plant the arm never bends). Keep the shoulder->wrist direction and extend
+  // to full reach; if that would go through the floor, slide along the floor ring.
+  function straightenFreeArms(requested, pelvis) {
+    for (const side of SIDES) {
+      const source = requested.limbs[side], value = limbs[side];
+      if (source.handLocked || source.wrist.y <= PLANT_FULL) continue;
+      // Fade the straightening in over the lift-off band instead of snapping the
+      // forearm to full reach the frame the wrist crosses PLANT_FULL (v21 jitter).
+      const fade = THREE.MathUtils.smoothstep(source.wrist.y, PLANT_FULL, PLANT_NONE);
+      const shoulder = upperOffset(rest[side + 'Shoulder'], requested.bodyQuaternion, requested.torsoQuaternion).add(pelvis);
+      const reach = (value.upperArm + value.forearm) * ARM_STRAIGHT, d = source.wrist.clone().sub(shoulder);
+      if (d.length() < 1e-6 || d.length() >= reach) continue;
+      const ext = shoulder.clone().addScaledVector(d.normalize(), reach), low = FLOOR + 0.03;
+      if (ext.y < low) {
+        const h = shoulder.y - low, flat = new THREE.Vector3(d.x, 0, d.z);
+        if (h < reach && flat.lengthSq() > 1e-8) ext.copy(shoulder).addScaledVector(flat.normalize(), Math.sqrt(reach * reach - h * h)).setY(low);
+        else ext.y = low;
+      }
+      source.wrist.lerp(ext, fade);
+    }
+  }
+
+  // v25: a late-planting hand still in the air counts as planted on its spot for the
+  // hip lift, so the hips move exactly as in v24 (poses tagged by smoothLoopSample)
+  const latePlantSpots = new WeakMap();
+  // v33: a hand that has just lifted off keeps capping the hip lift for a moment (its cap
+  // fades out over LIFTOFF_CAP_FADE of the segment) instead of letting go in one frame:
+  // with the right spot moved, releasing it at once jumped the hips ~1 cm at the seam and at key 4
+  const liftOffCaps = new WeakMap();
+  let liftCapFade = null;
+  function liftWithLateSpots(requested, pelvis, spots, capFade = null) {
+    liftCapFade = capFade;
+    try { return liftWithSpots(requested, pelvis, spots); } finally { liftCapFade = null; }
+  }
+  function liftWithSpots(requested, pelvis, spots) {
+    if (!spots?.size) return plantedArmLift(requested, pelvis);
+    const saved = [...spots.keys()].map(side => [side, requested.limbs[side].wrist.clone(), requested.limbs[side].handLocked]);
+    for (const [side, spot] of spots) { requested.limbs[side].wrist.copy(spot); requested.limbs[side].handLocked = true; }
+    const lift = plantedArmLift(requested, pelvis);
+    for (const [side, wrist, locked] of saved) { requested.limbs[side].wrist.copy(wrist); requested.limbs[side].handLocked = locked; }
+    return lift;
+  }
+  function plantedArmLift(requested, pelvis) {
+    let lift = 0;
+    const capParts = [];
+    for (const side of SIDES) {
+      const wrist = requested.limbs[side].wrist, value = limbs[side];
+      // Lift to (almost) full reach: at ARM_STRAIGHT the elbow sits on the steep
+      // part of the IK curve, so a 1 mm change flipped it between 174 and 179 deg
+      // (v21 jitter). Holding planted arms at ~179 deg keeps them visibly still.
+      const full = value.upperArm + value.forearm - 2e-5, reach = full * PLANT_STRAIGHT;
+      const shoulder = upperOffset(rest[side + 'Shoulder'], requested.bodyQuaternion, requested.torsoQuaternion).add(pelvis);
+      const d = shoulder.clone().sub(wrist), flat = Math.hypot(d.x, d.z);
+      // never lift a locked/low hand's shoulder out of its arm's reach
+      // The cap fades in as a hand comes down (v21: switching it on at one height
+      // dropped the hips 3.5 cm in one frame and buckled the support elbow).
+      const capWeight = requested.limbs[side].handLocked ? 1 : smoothOff ? 1 - THREE.MathUtils.smoothstep(wrist.y, PLANT_FULL, PLANT_NONE + 0.05) : liftCapFade?.[side] ?? 0;
+      if (capWeight > 0) capParts.push([capWeight, flat < full ? Math.sqrt(full * full - flat * flat) - d.y : 0]);
+      const weight = THREE.MathUtils.clamp((PLANT_NONE - wrist.y) / (PLANT_NONE - PLANT_FULL), 0, 1);
+      if (weight <= 0 || d.length() >= reach || flat >= reach) continue;
+      lift = Math.max(lift, weight * (Math.sqrt(reach * reach - flat * flat) - d.y));
+    }
+    for (const [weight, limit] of capParts) lift = Math.min(lift, lift + weight * (Math.min(lift, limit) - lift));
+    return Math.max(0, lift);
+  }
+
+  // v21 SMOOTH LOOP (user: the animation still judders; make the flare silky).
+  // A saved loop used to play key-to-key: smoothstep time stopped every key, the
+  // repeated last key was a dead second, and lerp/slerp/arc blends turned sharply
+  // at each key. Playback now runs one periodic Catmull-Rom (Hermite) spline
+  // through the unique keys at constant parameter speed: hips, wrists, leg
+  // directions in the pelvis frame and every orientation are C1 across keys.
+  // Planted hands get zero tangents, so they stay put and lift off softly.
+  // ?smooth=0 restores the old key-to-key playback.
+  const smoothOff = (typeof location !== 'undefined' && new URLSearchParams(location.search).get('smooth') === '0') || globalThis.__COACH_SMOOTH_OFF === true;
+  const H = t => { const t2 = t * t, t3 = t2 * t; return [2 * t3 - 3 * t2 + 1, t3 - 2 * t2 + t, -2 * t3 + 3 * t2, t3 - t2]; };
+  function hermiteV(p0, p1, p2, p3, t, hold1 = false, hold2 = false) {
+    const [a, b, c, d] = H(t);
+    const m1 = hold1 ? new THREE.Vector3() : p2.clone().sub(p0).multiplyScalar(.5);
+    const m2 = hold2 ? new THREE.Vector3() : p3.clone().sub(p1).multiplyScalar(.5);
+    return p1.clone().multiplyScalar(a).addScaledVector(m1, b).addScaledVector(p2, c).addScaledVector(m2, d);
+  }
+  function hermiteQ(q0, q1, q2, q3, t, hold1 = false, hold2 = false) {
+    const v = q => new THREE.Vector4().fromArray(q);
+    const a1 = v(q1), a2 = v(q2), a0 = v(q0), a3 = v(q3);
+    if (a2.dot(a1) < 0) a2.negate(); if (a0.dot(a1) < 0) a0.negate(); if (a3.dot(a2) < 0) a3.negate();
+    const [h1, h2, h3, h4] = H(t);
+    const m1 = hold1 ? new THREE.Vector4() : a2.clone().sub(a0).multiplyScalar(.5);
+    const m2 = hold2 ? new THREE.Vector4() : a3.clone().sub(a1).multiplyScalar(.5);
+    const r = a1.clone().multiplyScalar(h1).add(m1.multiplyScalar(h2)).add(a2.clone().multiplyScalar(h3)).add(m2.multiplyScalar(h4)).normalize();
+    return r.toArray();
+  }
+  function smoothLoopActive() {
+    const steps = sequence?.steps;
+    return !smoothOff && !periodicMotion && legPath === 'arc' && interpolation === 'smooth' && steps && steps.length >= 5 && !activeCorrections.length && !skippedSteps.length
+      && !footCurves.length && !segmentGuides.length && samePelvisKey(steps[0].pose, steps[steps.length - 1].pose);
+  }
+  const LIFTOFF_CAP_FADE = 0.12, LATE_VERTICAL_RAISE = true, SHOULDER_GIVE = 0.03, LATE_SNAP = [0.003, 0.03];
+  // v41 (user: a raised shoe looked twisted on the shin like a sprained ankle): during
+  // playback a foot keeps its hook (shin-foot angle) but its yaw about the shin axis
+  // follows the knee (thigh front), and its inversion/eversion roll stays small. The keys'
+  // world foot orientations had drifted up to 110 deg from the knee at the sides. Both
+  // are soft limits (L*tanh(x/L)), so a small natural offset stays and nothing pops.
+  // ?ankle=0 (or globalThis.__COACH_ANKLE_OFF) restores v38.
+  const ANKLE_ALIGN = !((typeof location !== 'undefined' && new URLSearchParams(location.search).get('ankle') === '0') || globalThis.__COACH_ANKLE_OFF === true);
+  const ANKLE_TWIST_LIMIT = 8 * Math.PI / 180, ANKLE_ROLL_LIMIT = 6 * Math.PI / 180;
+  function alignFootToKnee(side, footArray, hip, ankle, frame, thighTwist = 0) {
+    const legAxis = ankle.clone().sub(hip);
+    if (legAxis.lengthSq() < 1e-10) return footArray;
+    const ax = legAxis.normalize();
+    const thighRest = rest[side + 'Knee'].clone().sub(rest[side + 'Hip']);
+    const thighRotation = rotationFor(thighRest, ax, frame);
+    if (thighTwist) thighRotation.multiply(new THREE.Quaternion().setFromAxisAngle(thighRest.clone().normalize(), thighTwist));
+    const foot = new THREE.Quaternion().fromArray(footArray);
+    const perp = v => v.addScaledVector(ax, -v.dot(ax));
+    const knee = perp(FRONT.clone().applyQuaternion(thighRotation)), toe = perp(FRONT.clone().applyQuaternion(foot));
+    if (knee.lengthSq() < 1e-8 || toe.lengthSq() < 1e-8) return footArray;
+    const twist = Math.atan2(knee.clone().cross(toe).dot(ax), knee.dot(toe));
+    const keepTwist = ANKLE_TWIST_LIMIT * Math.tanh(twist / ANKLE_TWIST_LIMIT);
+    foot.premultiply(new THREE.Quaternion().setFromAxisAngle(ax, keepTwist - twist));
+    const f = FRONT.clone().applyQuaternion(foot), lateral = new THREE.Vector3(1, 0, 0).applyQuaternion(foot);
+    const ideal = new THREE.Vector3().crossVectors(f, ax).normalize();
+    lateral.addScaledVector(f, -lateral.dot(f)).normalize();
+    let roll = Math.atan2(ideal.clone().cross(lateral).dot(f), ideal.dot(lateral));
+    if (Math.abs(roll) > Math.PI / 2) roll -= Math.sign(roll) * Math.PI;
+    const keepRoll = ANKLE_ROLL_LIMIT * Math.tanh(roll / ANKLE_ROLL_LIMIT);
+    foot.premultiply(new THREE.Quaternion().setFromAxisAngle(f.normalize(), keepRoll - roll));
+    return foot.normalize().toArray();
+  }
+  const LATE_PLANT = { right: 0.7 }, LATE_CONVERGE = 0.85, LATE_BLEND = 0.3, APPROACH_OVER = 0.6, APPROACH_FLAT_FROM = 0.0, APPROACH_FLAT_TO = 0.75, APPROACH_POW = 1.8, LATE_EASE_OUT = true, APPROACH_FLAT_TO_LATE = 0.55;
+  function lowestHandOffset(side, quaternion) {
+    let low = Infinity;
+    const wrist = rest[side + 'Wrist'];
+    for (let i = 0; i < handPoints[side].length; i += 3) low = Math.min(low, handPoints[side][i].clone().sub(wrist).applyQuaternion(quaternion).y);
+    return Number.isFinite(low) ? low : -0.035;
+  }
+  function smoothLoopSample(sampleTime) {
+    const steps = sequence.steps, n = steps.length - 1;
+    // Keys 0..n-1 keep their saved times (j * period / (n + 1)), so K markers,
+    // lessons and training ranges still line up; the repeated last key no longer
+    // holds still: its second is folded into the closing n-1 -> 0 transition.
+    const seg = sequence.period / (n + 1), wrapped = ((sampleTime % sequence.period) + sequence.period) % sequence.period;
+    const u = wrapped <= (n - 1) * seg ? wrapped / seg : (n - 1) + (wrapped - (n - 1) * seg) / (2 * seg);
+    const i = Math.min(n - 1, Math.floor(u)), tBody = u - i;
+    let t = tBody;
+    const K = j => steps[((j % n) + n) % n].pose;
+    const P0 = K(i - 1), P1 = K(i), P2 = K(i + 1), P3 = K(i + 2);
+    const pose = structuredClone(P1);
+    const q = key => hermiteQ(P0[key] ?? P0.bodyQuaternion, P1[key] ?? P1.bodyQuaternion, P2[key] ?? P2.bodyQuaternion, P3[key] ?? P3.bodyQuaternion, t);
+    pose.bodyQuaternion = q('bodyQuaternion');
+    if (P1.pelvisQuaternion || P2.pelvisQuaternion) pose.pelvisQuaternion = q('pelvisQuaternion');
+    if (P1.torsoQuaternion || P2.torsoQuaternion) pose.torsoQuaternion = hermiteQ(...[P0, P1, P2, P3].map(p => p.torsoQuaternion ?? [0, 0, 0, 1]), t);
+    const nodes = [P0, P1, P2, P3].map(pose => resolvedNode(pose, true));
+    pose.pelvis = hermiteV(...nodes.map(node => node.constrainedPelvis), t).toArray();
+    const swingLater = {}, armPoleFrom = {}, lateSides = new Map(), capFade = {};
+    for (const side of SIDES) {
+      const LB = [P0, P1, P2, P3].map(p => p.limbs[side]), limb = pose.limbs[side];
+      // v25 late plant: a hand whose shoulder is not yet over its spot at the plant key
+      // keeps coming down for LATE_PLANT[side] of the next segment, so the arm lands
+      // near vertical (like the other hand) instead of leaning and then rolling up.
+      let L = LB, an = nodes, t = tBody, hold1 = LB[1].handLocked, hold2 = LB[2].handLocked;
+      const late = LATE_PLANT[side] || 0, dur = j => (((j % n) + n) % n) === n - 1 ? 2 : 1;
+      if (late && hold2 && !hold1) {
+        t = tBody * dur(i) / (dur(i) + late);
+        armPoleFrom[side] = { nodes: an, t, mix: 0 };
+      }
+      else if (late && hold1 && !LB[0].handLocked && tBody < late) {
+        const Ps = [K(i - 2), K(i - 1), K(i), K(i + 1)];
+        L = Ps.map(p => p.limbs[side]); an = Ps.map(pose => resolvedNode(pose, true));
+        t = (dur(i - 1) + tBody) / (dur(i - 1) + late); hold1 = false; hold2 = true;
+        armPoleFrom[side] = { nodes: an, t, mix: THREE.MathUtils.smootherstep(tBody, 0, late) };
+        lateSides.set(side, an[2].solved[side].arm.end.clone());
+      }
+      limb.handLocked = hold1 && hold2;
+      if (LIFTOFF_CAP_FADE && LB[1].handLocked && !LB[2].handLocked) capFade[side] = 1 - THREE.MathUtils.smoothstep(tBody, 0, LIFTOFF_CAP_FADE);
+      limb.handQuaternion = hermiteQ(...L.map(l => l.handQuaternion), t, hold1, hold2);
+      // v23: a hand coming in to plant flattens its palm before contact, so it
+      // lands palm-first instead of touching down on the fingertips and slapping flat
+      if (hold2 && !hold1) {
+        const flat = THREE.MathUtils.smoothstep(t, APPROACH_FLAT_FROM, late ? APPROACH_FLAT_TO_LATE : APPROACH_FLAT_TO);
+        if (flat > 0) limb.handQuaternion = new THREE.Quaternion().fromArray(limb.handQuaternion).slerp(new THREE.Quaternion().fromArray(L[2].handQuaternion), flat).toArray();
+      }
+      limb.footQuaternion = hermiteQ(...LB.map(l => l.footQuaternion), tBody);
+      limb.wrist = hermiteV(...an.map(node => node.solved[side].arm.end), t, hold1, hold2).toArray();
+      if (!limb.handLocked) {
+        // An airborne hand swings round its shoulder in the upper-body frame (like the
+        // old arc), so it does not cut the chord into the legs; near the floor it
+        // blends back to the world path so a planting / lifting hand never slides.
+        const upperOf = node => node.requested.bodyQuaternion.clone().multiply(node.requested.torsoQuaternion ?? IDENTITY);
+        const lv = an.map(node => node.solved[side].arm.end.clone().sub(node.solved[side].shoulder).applyQuaternion(upperOf(node).invert()));
+        // a free arm is always fully straight: aim just past full reach so the IK
+        // clamps to 180 deg every frame (keys alone sit at 179, which flickered)
+        const lenS = Math.max(hermiteV(...lv.map(v => new THREE.Vector3(v.length(), 0, 0)), t).x, limbs[side].upperArm + limbs[side].forearm + 1e-3);
+        const pq = new THREE.Quaternion().fromArray(pose.bodyQuaternion).multiply(pose.torsoQuaternion ? new THREE.Quaternion().fromArray(pose.torsoQuaternion) : IDENTITY.clone());
+        const shoulderS = upperOffset(rest[side + 'Shoulder'], new THREE.Quaternion().fromArray(pose.bodyQuaternion), pose.torsoQuaternion ? new THREE.Quaternion().fromArray(pose.torsoQuaternion) : undefined).add(new THREE.Vector3().fromArray(pose.pelvis));
+        const local = hermiteV(...lv, t).setLength(lenS).applyQuaternion(pq);
+        const swing = shoulderS.clone().add(local);
+        const world = new THREE.Vector3().fromArray(limb.wrist);
+        const w = THREE.MathUtils.smoothstep(Math.min(world.y, swing.y), PLANT_FULL, PLANT_NONE + 0.1);
+        limb.wrist = world.clone().lerp(swing, w).toArray();
+        swingLater[side] = { local, world, w, shoulderS, t };
+        if (hold2) {
+          const plantQ = new THREE.Quaternion().fromArray(L[2].handQuaternion);
+          swingLater[side].approach = true;
+          swingLater[side].plantWrist = an[2].solved[side].arm.end.clone();
+          swingLater[side].startWrist = an[1].solved[side].arm.end.clone();
+          swingLater[side].plantLow = an[2].solved[side].arm.end.y + lowestHandOffset(side, plantQ);
+          swingLater[side].startLow = an[1].solved[side].arm.end.y + lowestHandOffset(side, new THREE.Quaternion().fromArray(L[1].handQuaternion));
+        }
+      }
+      limb.elbowPole = hermiteV(...L.map(l => new THREE.Vector3().fromArray(l.elbowPole)), t).toArray();
+      limb.kneePole = hermiteV(...LB.map(l => new THREE.Vector3().fromArray(l.kneePole)), tBody).toArray();
+    }
+    t = tBody;
+    const requested = validatePose(pose), constrainedPelvis = projectBody(requested);
+    const lift = liftWithLateSpots(requested, constrainedPelvis, lateSides, capFade);
+    if (lift > 0) { constrainedPelvis.y += lift; requested.pelvis.y += lift; }
+    pose.pelvis = constrainedPelvis.toArray();
+    // re-anchor airborne hands on the final (projected + lifted) shoulders so the
+    // straight arm stays straight; otherwise the lift changed its length each frame
+    for (const side of SIDES) {
+      const sw = swingLater[side];
+      if (!sw) continue;
+      const shoulder = upperOffset(rest[side + 'Shoulder'], requested.bodyQuaternion, requested.torsoQuaternion).add(constrainedPelvis);
+      const swing = shoulder.clone().add(sw.local);
+      pose.limbs[side].wrist = sw.world.clone().lerp(swing, sw.w).toArray();
+      // v23: an incoming hand comes down steadily: its lowest point keeps a clearance
+      // that shrinks to zero at contact, rather than hovering just above the floor
+      if (sw.approach) {
+        // v24: like the left hand, the hand gets over its spot first and then drops:
+        // the horizontal gap closes ahead of the height, with the arm kept at its length
+        {
+          const wrist = new THREE.Vector3().fromArray(pose.limbs[side].wrist), R = THREE.MathUtils.lerp(limbs[side].upperArm + limbs[side].forearm + 1e-3, (LATE_PLANT[side] ? sw.plantWrist : wrist).distanceTo(shoulder), THREE.MathUtils.smootherstep(sw.t, LATE_PLANT[side] ? 0.85 : 0.6, 1));
+          const k = 1 - APPROACH_OVER * THREE.MathUtils.smootherstep(sw.t, 0, 1);
+          const target = sw.plantWrist.clone().add(new THREE.Vector3(wrist.x - sw.plantWrist.x, 0, wrist.z - sw.plantWrist.z).multiplyScalar(k));
+          const h2 = (target.x - shoulder.x) ** 2 + (target.z - shoulder.z) ** 2;
+          if (h2 < R * R) pose.limbs[side].wrist = target.setY(shoulder.y - Math.sqrt(R * R - h2)).toArray();
+          // v26: a late-planting hand heads straight for its spot (like the left hand)
+          // instead of reaching out wide and sweeping in along the floor at the end
+          if (LATE_PLANT[side]) {
+            const cur = new THREE.Vector3().fromArray(pose.limbs[side].wrist), P = sw.plantWrist, S = sw.startWrist;
+            const u = THREE.MathUtils.clamp(sw.t / LATE_CONVERGE, 0, 1), f = LATE_EASE_OUT ? (1 - u) ** 3 * (1 + 3 * u) : 1 - THREE.MathUtils.smootherstep(sw.t, 0, LATE_CONVERGE), b = THREE.MathUtils.smoothstep(sw.t, 0, LATE_BLEND);
+            let hx = THREE.MathUtils.lerp(cur.x, P.x + (S.x - P.x) * f, b), hz = THREE.MathUtils.lerp(cur.z, P.z + (S.z - P.z) * f, b);
+            let g2 = (hx - shoulder.x) ** 2 + (hz - shoulder.z) ** 2;
+            let y = g2 < R * R ? shoulder.y - Math.sqrt(R * R - g2) : shoulder.y;
+            // v33: in the last few cm above the floor the hand is pulled onto its spot, so it
+            // touches down where it stays (no slide on the floor after contact)
+            const near = LATE_SNAP ? 1 - THREE.MathUtils.smoothstep(THREE.MathUtils.lerp(cur.y, y, b) - P.y, LATE_SNAP[0], LATE_SNAP[1]) : 0;
+            if (near > 0) {
+              hx = THREE.MathUtils.lerp(hx, P.x, near); hz = THREE.MathUtils.lerp(hz, P.z, near);
+              g2 = (hx - shoulder.x) ** 2 + (hz - shoulder.z) ** 2;
+              y = g2 < R * R ? shoulder.y - Math.sqrt(R * R - g2) : shoulder.y;
+            }
+            pose.limbs[side].wrist = [hx, THREE.MathUtils.lerp(cur.y, y, b), hz];
+            // v33: while blending in (b < 1) the lerp of two points on the arm sphere cut
+            // inside it, so the free arm bent to ~174 deg around raw 7.2-7.7; keep it at full length
+            if (b < 1) {
+              const reachV = new THREE.Vector3().fromArray(pose.limbs[side].wrist).sub(shoulder);
+              if (reachV.length() > 1e-6 && reachV.length() < R) pose.limbs[side].wrist = shoulder.clone().add(reachV.setLength(R)).toArray();
+            }
+          }
+        }
+        const plantLow = sw.plantLow, q = new THREE.Quaternion().fromArray(pose.limbs[side].handQuaternion);
+        const low = pose.limbs[side].wrist[1] + lowestHandOffset(side, q);
+        const want = LATE_PLANT[side] ? plantLow : plantLow + Math.max(0, sw.startLow - plantLow) * Math.pow(1 - sw.t, APPROACH_POW);
+        if (low < want && LATE_PLANT[side] && LATE_VERTICAL_RAISE) {
+          // v33: a late-planting hand that would dip below its floor clearance is raised
+          // straight up. The old raise slid it out radially on the shoulder sphere; with the
+          // shoulder almost over the spot a 1 mm raise threw the hand 2-3 cm sideways
+          // (floor slide, then a pop). solvePose lets the shoulder give the last few mm.
+          pose.limbs[side].wrist[1] += want - low;
+        } else if (low < want) {
+          // raise the wrist on its own sphere round the shoulder, so the arm length is kept
+          const wrist = new THREE.Vector3().fromArray(pose.limbs[side].wrist), reach = wrist.distanceTo(shoulder);
+          const dy = wrist.y + want - low - shoulder.y, flat = new THREE.Vector3(wrist.x - shoulder.x, 0, wrist.z - shoulder.z);
+          if (Math.abs(dy) < reach && flat.lengthSq() > 1e-10) pose.limbs[side].wrist = shoulder.clone().addScaledVector(flat.normalize(), Math.sqrt(reach * reach - dy * dy)).setY(shoulder.y + dy).toArray();
+        }
+      }
+      requested.limbs[side].wrist.fromArray(pose.limbs[side].wrist);
+    }
+    const upper = requested.bodyQuaternion.clone().multiply(requested.torsoQuaternion ?? IDENTITY);
+    const upperAt = node => node.requested.bodyQuaternion.clone().multiply(node.requested.torsoQuaternion ?? IDENTITY);
+    const [first, last] = [nodes[1], nodes[2]];
+    for (const side of SIDES) {
+      const value = limbs[side], from = first.solved[side], to = last.solved[side];
+      // legs: spline the hip->ankle vector in each key's pelvis frame, keep its length
+      const local = node => node.solved[side].leg.end.clone().sub(node.solved[side].hip).applyQuaternion(pelvisFrame(node.requested).clone().invert());
+      const lv = nodes.map(local), lenS = hermiteV(...lv.map(v => new THREE.Vector3(v.length(), 0, 0)), t).x;
+      const frame = pelvisFrame(requested);
+      const hip = rest[side + 'Hip'].clone().sub(rest.pelvis).applyQuaternion(frame).add(constrainedPelvis);
+      const ankle = hip.clone().add(hermiteV(...lv, t).setLength(lenS).applyQuaternion(frame));
+      // keep a straight leg straight near the floor: swing it up on its own sphere
+      const floorHeight = pose.groundLock ? requiredAnkleHeight(side, requested.limbs[side].footQuaternion) : -Infinity;
+      if (ankle.y < floorHeight && floorHeight - hip.y <= lenS) {
+        const h = floorHeight - hip.y, flat = new THREE.Vector3(ankle.x - hip.x, 0, ankle.z - hip.z);
+        if (flat.lengthSq() > 1e-10) ankle.copy(hip).addScaledVector(flat.normalize(), Math.sqrt(lenS * lenS - h * h)).setY(floorHeight);
+      }
+      const leg = interpolateLimbArc({
+        startRoot: from.hip.toArray(), endRoot: to.hip.toArray(), currentRoot: hip.toArray(),
+        startTarget: from.leg.end.toArray(), endTarget: to.leg.end.toArray(), currentTarget: ankle.toArray(),
+        startMiddle: from.leg.middle.toArray(), endMiddle: to.leg.middle.toArray(),
+        startReference: pelvisFrame(first.requested).toArray(), endReference: pelvisFrame(last.requested).toArray(), currentReference: frame.toArray(),
+        blend: t, upperLength: value.thigh, lowerLength: value.shin, arc: false, side,
+      });
+      // Poles also follow the spline (in the pelvis / upper-body frame), so the
+      // roll of a straight limb has no kink at a key (v21: forearm snapped at keys).
+      const splinePole = (rootAt, middleAt, frameAt, curFrame, root) => {
+        const vs = nodes.map(node => middleAt(node).clone().sub(rootAt(node)).applyQuaternion(frameAt(node).clone().invert()));
+        return root.clone().add(hermiteV(...vs, t).applyQuaternion(curFrame)).toArray();
+      };
+      pose.limbs[side].ankle = leg.target;
+      if (ANKLE_ALIGN) pose.limbs[side].footQuaternion = alignFootToKnee(side, pose.limbs[side].footQuaternion, hip, new THREE.Vector3().fromArray(leg.target), frame, pose.limbs[side].thighTwist ?? 0);
+      pose.limbs[side].kneePole = splinePole(node => node.solved[side].hip, node => node.requested.limbs[side].kneePole, node => pelvisFrame(node.requested), frame, hip);
+      const shoulder = upperOffset(rest[side + 'Shoulder'], requested.bodyQuaternion, requested.torsoQuaternion).add(constrainedPelvis);
+      const arm = interpolateLimbArc({
+        startRoot: from.shoulder.toArray(), endRoot: to.shoulder.toArray(), currentRoot: shoulder.toArray(),
+        startTarget: from.arm.end.toArray(), endTarget: to.arm.end.toArray(), currentTarget: pose.limbs[side].wrist,
+        startMiddle: from.arm.middle.toArray(), endMiddle: to.arm.middle.toArray(),
+        startReference: upperAt(first).toArray(), endReference: upperAt(last).toArray(), currentReference: upper.toArray(),
+        blend: t, upperLength: value.upperArm, lowerLength: value.forearm, arc: false, side,
+      });
+      pose.limbs[side].elbowPole = splinePole(node => node.solved[side].shoulder, node => node.requested.limbs[side].elbowPole, upperAt, upper, shoulder);
+      const lateArm = armPoleFrom[side];
+      if (lateArm) {
+        const vs = lateArm.nodes.map(node => node.requested.limbs[side].elbowPole.clone().sub(node.solved[side].shoulder).applyQuaternion(upperAt(node).clone().invert()));
+        const approachPole = shoulder.clone().add(hermiteV(...vs, lateArm.t).applyQuaternion(upper));
+        pose.limbs[side].elbowPole = approachPole.lerp(new THREE.Vector3().fromArray(pose.limbs[side].elbowPole), lateArm.mix).toArray();
+      }
+    }
+    if (lateSides.size) latePlantSpots.set(pose, lateSides);
+    if (Object.keys(capFade).length) liftOffCaps.set(pose, capFade);
+    return pose;
   }
 
   function mapPoseTransition(pose, { start, end, blend }) {
@@ -610,6 +978,7 @@ export function createCoachMotion({ model, rigData }) {
     const nextFootCurves = structuredClone(options.footCurves ?? []);
     const nextSegmentGuides = structuredClone(options.segmentGuides ?? []);
     sequence = next;
+    sequenceRevision++;
     activeCorrections = nextCorrections;
     skippedSteps = nextSkippedSteps;
     footCurves = nextFootCurves;
@@ -626,8 +995,10 @@ export function createCoachMotion({ model, rigData }) {
     if (!options || typeof options !== 'object' || Array.isArray(options)) throw new Error('动画采样选项需要为对象。');
     const path = options.legPath ?? legPath;
     if (!['arc', 'linear'].includes(path)) throw new Error('未知的轨迹路线。');
-    const overridden = ['steps', 'corrections', 'legPath', 'interpolation', 'skippedSteps', 'footCurves', 'segmentGuides']
-      .some(key => options[key] !== undefined);
+    const current = { steps: sequence.steps, corrections: activeCorrections, legPath, interpolation,
+      skippedSteps, footCurves, segmentGuides };
+    const overridden = Object.keys(current)
+      .some(key => options[key] !== undefined && JSON.stringify(options[key]) !== JSON.stringify(current[key]));
     return overridden ? createFlareSequence(options.steps ?? sequence.steps, {
       period: options.period ?? sequence.period,
       corrections: options.corrections ?? activeCorrections,
@@ -641,7 +1012,8 @@ export function createCoachMotion({ model, rigData }) {
 
   function samplePose(sampleTime, options = {}) {
     if (!Number.isFinite(sampleTime)) throw new Error('动画采样时间需要为有限数值。');
-    return sequenceForPreview(options).sample(sampleTime);
+    const preview = sequenceForPreview(options);
+    return preview === sequence && smoothLoopActive() ? smoothLoopSample(sampleTime) : preview.sample(sampleTime);
   }
 
   function getSegmentGuideAt(sampleTime, options = {}) {
@@ -659,6 +1031,7 @@ export function createCoachMotion({ model, rigData }) {
       throw new Error('额外关键帧时间必须位于轨迹区间内。');
     }
     const previewSequence = sequenceForPreview(options);
+    const smooth = previewSequence === sequence && smoothLoopActive();
     const uniformTimes = Array.from({ length: samples }, (_, index) => index === samples - 1
       ? endTime : startTime + (endTime - startTime) * index / (samples - 1));
     const times = includeTimes.length && endTime > startTime
@@ -666,7 +1039,10 @@ export function createCoachMotion({ model, rigData }) {
     // Solve the same saved animation as playback without applying any pose to
     // the live rig. Draft overrides therefore cannot move bones, time or camera.
     const frames = times.map(sampleTime => {
-      const pose = previewSequence.sample(sampleTime), node = solvePose(pose);
+      const playbackTime = ((sampleTime % sequence.period) + sequence.period) % sequence.period;
+      const pose = smooth ? smoothLoopSample(playbackTime) : previewSequence.sample(sampleTime);
+      const node = solvePose(pose, { playback: smooth });
+      if (smooth) offsetSolvedBody(node, lateBodyOffset(playbackTime, node.constrainedPelvis.y));
       const { requested, constrainedPelvis, solved } = node;
       const upper = name => upperOffset(rest[name], requested.bodyQuaternion, requested.torsoQuaternion).add(constrainedPelvis).toArray();
       const joints = { pelvis: constrainedPelvis.toArray(),
@@ -845,11 +1221,18 @@ export function createCoachMotion({ model, rigData }) {
     return ankle;
   }
 
-  function solvePose(input) {
+  function solvePose(input, { playback = false } = {}) {
     // Validate and solve before mutating bones, so a bad import leaves the
     // current pose intact and cannot introduce NaNs into the live skeleton.
     const requested = validatePose(input);
     const constrainedPelvis = projectBody(requested);
+    // Playback constraints must not straighten a user's bent-arm manual draft.
+    const lift = playback ? liftWithLateSpots(requested, constrainedPelvis, latePlantSpots.get(input), liftOffCaps.get(input)) : 0;
+    if (lift > 0) {
+      constrainedPelvis.y += lift; requested.pelvis.y += lift;
+      for (const side of SIDES) { requested.limbs[side].ankle.y += lift; if (requested.limbs[side].kneePole) requested.limbs[side].kneePole.y += lift; }
+    }
+    if (playback) straightenFreeArms(requested, constrainedPelvis);
     const warnings = [];
     const solved = {};
     const at = name => rest[name].clone().sub(rest.pelvis).applyQuaternion(pelvisFrame(requested)).add(constrainedPelvis);
@@ -858,6 +1241,13 @@ export function createCoachMotion({ model, rigData }) {
       const source = requested.limbs[side], value = limbs[side];
       const label = side === 'left' ? '左' : '右';
       const shoulder = upperOffset(rest[side + 'Shoulder'], requested.bodyQuaternion, requested.torsoQuaternion).add(constrainedPelvis);
+      // v33: a hand on (or at) the floor whose shoulder sits closer than a straight arm
+      // (both hands down, the hips held by the other straight arm) keeps its arm straight:
+      // the shoulder gives along the arm (a small push / shrug, <= SHOULDER_GIVE) instead of the elbow bending
+      if (playback && SHOULDER_GIVE && (source.handLocked || source.wrist.y <= PLANT_FULL)) {
+        const away = shoulder.clone().sub(source.wrist), d = away.length(), want = (value.upperArm + value.forearm) * PLANT_STRAIGHT;
+        if (d > 1e-6 && d < want - 1e-4) shoulder.copy(source.wrist).addScaledVector(away, Math.min(want, d + SHOULDER_GIVE) / d);
+      }
       const arm = twoBone(shoulder, source.wrist, value.upperArm, value.forearm, source.elbowPole);
       if (source.handLocked && arm.end.distanceTo(source.wrist) > 1e-5) throw new Error(`${label}手锁定位置无法到达，请先解锁手掌。`);
       if (arm.end.distanceTo(source.wrist) > 1e-5) warnings.push(`${label}手腕已限制在原始手臂能够到达的位置。`);
@@ -872,8 +1262,86 @@ export function createCoachMotion({ model, rigData }) {
     return { requested, constrainedPelvis, warnings, solved };
   }
 
-  function applyPose(input, { alignBendPlanes = false } = {}) {
-    const { requested, constrainedPelvis, warnings, solved } = solvePose(input);
+  // v27/v28 (applied to every support hand-over, right and left). v27 (user: as the right hand lands the whole body dips and pops back up): with
+  // both support arms straight, the hand-over from the left to the right arm put a
+  // sharp corner into the body height at the plant key. Around a late plant the body
+  // (hips, torso, head, legs) follows a smoothed height instead; the arms keep their
+  // exact paths, so the shoulders give the ~1 cm difference (a small shrug / push).
+  const BODY_SMOOTH_SIGMA = 0.22, BODY_SMOOTH_BEFORE = 0.9, BODY_SMOOTH_AFTER = 1.2, BODY_SMOOTH_EDGE = 0.3, BODY_SMOOTH_STEP = 0.02, BODY_SMOOTH_MAX_GIVE = 0.015, BODY_MONO_BEFORE = 0.85, BODY_MONO_AFTER = 1.15, BODY_MONO_EXACT = true;
+  let bodySmoothCache = null;
+  function lateBodyOffset(sampleTime, rawY = null) {
+    const steps = sequence?.steps, n = steps ? steps.length - 1 : 0;
+    if (!n || !Object.keys(LATE_PLANT).length) return 0;
+    if (bodySmoothCache?.sequence !== sequence) {
+      const period = sequence.period, seg = period / (n + 1), windows = [];
+      for (const side of SIDES) for (let k = 0; k < n; k++) {
+        if (steps[k].pose.limbs[side].handLocked && !steps[(k - 1 + n) % n].pose.limbs[side].handLocked) windows.push({ center: k * seg, mono: side in LATE_PLANT });
+      }
+      const tables = windows.map(({ center, mono }) => {
+        const from = center - Math.max(BODY_SMOOTH_BEFORE, BODY_MONO_BEFORE) - 3 * BODY_SMOOTH_SIGMA, count = Math.ceil((Math.max(BODY_SMOOTH_BEFORE, BODY_MONO_BEFORE) + Math.max(BODY_SMOOTH_AFTER, BODY_MONO_AFTER) + 6 * BODY_SMOOTH_SIGMA) / BODY_SMOOTH_STEP) + 1;
+        const ys = Array.from({ length: count }, (_, j) => solvePose(smoothLoopSample(from + j * BODY_SMOOTH_STEP), { playback: true }).constrainedPelvis.y);
+        if (mono) {
+          // v30 (user: when the right hand takes the weight, the lower body drops and
+          // comes back up). Across the late plant the hips follow one monotone ease from
+          // the high point before it straight down toward the front, with no dip and no
+          // rebound. The arms keep their paths, so the shoulders absorb the difference.
+          const at = t => (t - from) / BODY_SMOOTH_STEP, ia = Math.round(at(center - BODY_MONO_BEFORE)), ib = Math.round(at(center + BODY_MONO_AFTER));
+          const slope = j => (ys[j + 1] - ys[j - 1]) / (2 * BODY_SMOOTH_STEP), span = (ib - ia) * BODY_SMOOTH_STEP;
+          const y0 = ys[ia], y1 = ys[ib], m0 = slope(ia) * span, m1 = slope(ib) * span;
+          const offset = ys.map((y, j) => {
+            if (j <= ia || j >= ib) return 0;
+            const u = (j - ia) / (ib - ia), u2 = u * u, u3 = u2 * u;
+            return (2 * u3 - 3 * u2 + 1) * y0 + (u3 - 2 * u2 + u) * m0 + (-2 * u3 + 3 * u2) * y1 + (u3 - u2) * m1 - y;
+          });
+          // v33: the ease itself is kept (not only its offsets at 0.02 s samples), so the hips
+          // follow it exactly between samples even where the raw solve bends sharply
+          const ease = { t0: from + ia * BODY_SMOOTH_STEP, span, y0, y1, m0, m1 };
+          return { center, from, offset, period, before: BODY_MONO_BEFORE, after: BODY_MONO_AFTER, edge: 0, ease };
+        }
+        // widest smoothing whose shoulder give stays within BODY_SMOOTH_MAX_GIVE
+        let offset = null;
+        for (let sigma = BODY_SMOOTH_SIGMA; sigma > 0.03; sigma *= 0.85) {
+          const radius = Math.ceil(3 * sigma / BODY_SMOOTH_STEP), weights = Array.from({ length: 2 * radius + 1 }, (_, j) => Math.exp(-0.5 * ((j - radius) * BODY_SMOOTH_STEP / sigma) ** 2));
+          offset = ys.map((y, j) => {
+            if (j < radius || j >= count - radius) return 0;
+            let sum = 0, total = 0;
+            for (let m = -radius; m <= radius; m++) { sum += ys[j + m] * weights[m + radius]; total += weights[m + radius]; }
+            return sum / total - y;
+          });
+          if (Math.max(...offset.map(Math.abs)) <= BODY_SMOOTH_MAX_GIVE) break;
+        }
+        return { center, from, offset, period, before: BODY_SMOOTH_BEFORE, after: BODY_SMOOTH_AFTER, edge: BODY_SMOOTH_EDGE };
+      });
+      bodySmoothCache = { sequence, tables };
+    }
+    let result = 0;
+    for (const { center, from, offset, period, before, after, edge, ease } of bodySmoothCache.tables) {
+      let dt = sampleTime - center;
+      dt -= Math.round(dt / period) * period;
+      if (dt < -before || dt > after) continue;
+      if (ease && rawY !== null && BODY_MONO_EXACT) {
+        const u = THREE.MathUtils.clamp((center + dt - ease.t0) / ease.span, 0, 1), u2 = u * u, u3 = u2 * u;
+        result += (2 * u3 - 3 * u2 + 1) * ease.y0 + (u3 - 2 * u2 + u) * ease.m0 + (-2 * u3 + 3 * u2) * ease.y1 + (u3 - u2) * ease.m1 - rawY;
+        continue;
+      }
+      const w = edge ? THREE.MathUtils.smoothstep(dt, -before, -before + edge) * (1 - THREE.MathUtils.smoothstep(dt, after - edge, after)) : 1;
+      const x = (center + dt - from) / BODY_SMOOTH_STEP, j = Math.floor(x), f = x - j;
+      result += w * THREE.MathUtils.lerp(offset[j] ?? 0, offset[j + 1] ?? 0, f);
+    }
+    return result;
+  }
+
+  function offsetSolvedBody(node, bodyOffset) {
+    if (!bodyOffset) return;
+    node.constrainedPelvis.y += bodyOffset;
+    for (const side of SIDES) for (const p of [node.solved[side].hip, node.solved[side].leg.middle, node.solved[side].leg.end]) p.y += bodyOffset;
+  }
+
+  function applyPose(input, { playback = mode === 'flare', alignBendPlanes = false, bodyOffset = 0 } = {}) {
+    const node = solvePose(input, { playback });
+    const { requested, constrainedPelvis, warnings, solved } = node;
+    if (typeof bodyOffset === 'function') bodyOffset = bodyOffset(constrainedPelvis.y);
+    offsetSolvedBody(node, bodyOffset);
     bendPlaneRotation = alignBendPlanes;
     mode = 'manual';
     groundLock = requested.groundLock;
@@ -1335,8 +1803,23 @@ export function createCoachMotion({ model, rigData }) {
 
   model.userData.motionSource = 'Snow Rig / Blender Foundation';
   reset();
-  return { group: model, update, reset, setSequence, sampleTrajectory, samplePose, getSegmentGuideAt,
-    getFootCurveSpan: (time, options) => sequence.spanAt(time, options),
+  // How much slower the pose advances per second of clock time at `time`: the
+  // closing n-1 -> 0 transition of a smooth loop spans two clock seconds, so the
+  // viewer runs its clock twice as fast there and the seam keeps full speed.
+  function getLoopTimeScale(time) {
+    if (!smoothLoopActive()) return 1;
+    const n = sequence.steps.length - 1, seg = sequence.period / (n + 1);
+    const wrapped = ((time % sequence.period) + sequence.period) % sequence.period;
+    return wrapped > (n - 1) * seg ? 2 : 1;
+  }
+  function enterManualMode() {
+    // Entering the editor keeps the exact paused surface until a control changes.
+    mode = 'manual';
+    return capturePose();
+  }
+  return { group: model, update, reset, setSequence, sampleTrajectory, samplePose, getSegmentGuideAt, getLoopTimeScale, isSmoothLoopActive: smoothLoopActive,
+    getSequenceRevision: () => sequenceRevision,
+    enterManualMode, getFootCurveSpan: (time, options) => sequence.spanAt(time, options),
     getFootCurveAt: (time, side) => sequence.curveAt(time, side),
     setLayer, setHighlight, getMetrics, capturePose, applyPose, getEditableHandles, editHandle, solveJointPose, getGroundHandPose, alignGroundHands };
 }
