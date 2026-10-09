@@ -107,6 +107,8 @@ Joint names come from the rig metrics: `head`, `pelvis`, `waist`, `shoulderCente
 - `dumbbell`, `kettlebell`, `band`, `parallettes`, `rings`, `sliders`, `machine`: geometry stubs, not yet validated against a drill. `machine` is a placeholder API.
 - Not written yet: pull-up bar, foam roller, Swiss ball, landmine, cable stack, dip bars, Roman chair/GHD, reverse hyper, abductor and leg-extension machines.
 
+Extra prop files `page/props-<name>.js` are loaded after `props.js` (by `lib/boot.mjs`, sorted by name). Each registers its own types through `__props.add` without editing `props.js`, so prop branches merge without conflicts. Such props may declare QA primitives (capsules `{a,b,r}`, tori `{c,n,R,r}`); `__props.qaPrims()` returns them in world space and `node tools/probe.mjs specs/<id>.js tools/propclear.js` reports each hand's and bone's clearance to them in mm.
+
 Props are drawn in the main pass only. The glow pass, whose alpha is the body silhouette, drives the ember outline, so props get no outline. The body outline is drawn over the props.
 
 ## Theme format (`theme.json`, `themes/*.json`)
