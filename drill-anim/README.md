@@ -14,7 +14,7 @@ specs/<id>.js       one drill = one plain-data ES module (export default {...})
 page/               browser-side: toon.js (shader/theme), engine.js (pose/solver/camera/metrics), props.js,
                     anim-sideplank.js (frozen v7 solver used by deltoids-A), head.js, posedlib.js
 lib/                boot.mjs (launch + install), render.mjs (frame loop), comp.py (compositing), qa.py,
-                    masks.mjs + masksheet.py (17-group highlight sheet), swatch.py (theme comparison), config.mjs
+                    masks.mjs + masksheet.py (17-group highlight sheet), swatch.py (theme comparison), tiersheet.py (per-tier overview), config.mjs
 assets/             handdef.json (relaxed-hand deltas), srchead.json (mannequin head), sideplank-cfg.json (v7 base pose)
 tools/probe.mjs     ad-hoc pose probe
 ```
@@ -42,6 +42,7 @@ python3 drill.py render triceps-A --jobs 1            # default 2 parallel brows
 python3 drill.py qa triceps-A                         # recompute metrics from the last render's frame data
 python3 drill.py masks --out mask-sheet.png           # 17-group highlight check sheet (neutral standing pose)
 python3 drill.py swatch deltoids-A --frames 63 --themes themes/outfit-teal.json,themes/outfit-sand.json --out swatch-sheet.png
+python3 lib/tiersheet.py A A-tier-sheet_v1.png        # one labelled tile per drill of a tier, from <out_dir>/<id>.mp4 (missing drills = placeholder)
 ```
 
 Speed on 2 vCPU with SwiftShader is about 0.4 frames/s per job pair: a 240-frame loop takes about 11 min to render, plus about 1.5 min to composite and encode. A preview of 3 frames takes about 40 s, mostly boot time. Always preview with `--frames` before a full render.
