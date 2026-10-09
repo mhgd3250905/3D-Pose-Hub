@@ -118,5 +118,14 @@ python3 drill.py render deltoids-A --frames 0,63   # 冒烟测试
 - 短裤约一半法线朝内，碰撞检测别用法线判断（`hand_clip` 用的是骨骼核心线距离）。
 - 道具只出现在主渲染通道里，没有描边，这是有意为之。
 
+## 10b. 渲染后端 / GPU（ARM 机器必读）
+- Hark 的环境：Linux **aarch64**，没有 GPU；Playwright 1.48.2 自带 Chromium（chromium-1140），无头模式；参数 `--use-gl=swiftshader --enable-unsafe-swiftshader`，即 CPU 软件渲染。
+- 启动参数可以在 `config.json` 的 `chromium_args` 里配置，也可以用环境变量 `CHROMIUM_ARGS` 覆盖：
+  - macOS Apple Silicon：用硬件 GPU，`"chromium_args": ["--use-angle=metal"]` 或 `[]`。
+  - Linux ARM，SwiftShader 起不来时：`["--use-gl=angle","--use-angle=swiftshader","--enable-unsafe-swiftshader"]`；也可以改用系统 Chrome，设 `"chromium_channel": "chrome"`。
+  - Windows 或有独显的 Linux：`[]`。
+- 换后端后，先跑 `deltoids-A --frames 0,63`，和 `4_质量标杆/deltoids-A-sheet.png` 对比，确认画面一致。
+- Playwright 版本建议固定为 `npm i playwright@1.48.2`。
+
 ## 11. 联系
 有问题先找盛开。共享核心的改动在 PR 里 @ 对方。

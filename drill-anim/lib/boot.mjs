@@ -4,7 +4,8 @@ const C=config();
 const PG=f=>fs.readFileSync(path.join(ROOT,'page',f),'utf8');
 export async function boot({size=1080,pr=2,theme,bakeHands=[]}){
   const {chromium}=await import(C.playwright_module);
-  const b=await chromium.launch({args:['--use-gl=swiftshader','--enable-unsafe-swiftshader']});
+  const args=C.chromium_args!==undefined?(Array.isArray(C.chromium_args)?C.chromium_args:String(C.chromium_args).split(/\s+/).filter(Boolean)):['--use-gl=swiftshader','--enable-unsafe-swiftshader'];
+  const b=await chromium.launch({args,...(C.chromium_channel?{channel:C.chromium_channel}:{})});
   const p=await b.newPage({viewport:{width:size,height:size},deviceScaleFactor:1});
   p.on('pageerror',e=>console.log('pageerror',e.message));p.on('console',m=>{if(m.type()==='error')console.log('console',m.text().slice(0,300));});
   await p.goto(C.app_url+'/?inspect');await p.waitForFunction(()=>document.documentElement.dataset.ready==='true',null,{timeout:170000});

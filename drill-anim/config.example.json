@@ -11,5 +11,10 @@
   "drills_json": "./data/drills.json",
   "out_dir": "./out",
   "work_dir": "/tmp/drill-anim-work",
-  "python_path": ""
+  "python_path": "",
+  "chromium_args": [
+    "--use-gl=swiftshader",
+    "--enable-unsafe-swiftshader"
+  ],
+  "_gpu_doc": "chromium_args: Linux without GPU = swiftshader flags (default). macOS Apple Silicon = [\"--use-angle=metal\"] or [] (hardware GPU). Linux ARM if swiftshader fails = [\"--use-gl=angle\",\"--use-angle=swiftshader\",\"--enable-unsafe-swiftshader\"]. chromium_channel: optional, e.g. \"chrome\" to use installed Google Chrome. Env override: CHROMIUM_ARGS=\"--use-angle=metal\"."
 }
