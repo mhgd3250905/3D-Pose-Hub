@@ -70,7 +70,7 @@ export default {
     },
   },
   highlight: { groups: ['deltoids'], side: 'right', pulseTrack: 'press', pulseBase: 0.3 },
-  camera: { dir: [-1, 0.14, 0.15], fit: ['head', 'leftToe', 'rightToe', 'pelvis', 'rightPalm', 'rightKnee', 'leftKnee'], pad: 0.16, k: 1.0, drift: 0.9, at: 1.6 },
+  camera: { dir: [-1, 0.14, 0.15], fit: ['head', 'leftToe', 'rightToe', 'pelvis', 'rightPalm', 'rightKnee', 'leftKnee'], pad: 0.16, k: 1.5, drift: 0.9, at: 1.6 },
   frame: { mode: 'fit', width: 320, height: 420, cx: 280, cy: 630 },
   stillAt: 1.6,
   shadow: { joints: ['leftToe', 'rightToe', 'leftAnkle', 'rightKnee', 'pelvis'],
