@@ -42,7 +42,7 @@ export default {
   },
   highlight: { groups: ['quadriceps'], side: 'both', pulseTrack: 'ext', pulseBase: 0.3 },
   camera: { dir: [-1, 0.15, 0.32], fit: ['head', 'leftToe', 'rightToe', 'pelvis', 'rightKnee', 'rightAnkle'], pad: 0.18, k: 1.0, drift: 0.9, at: 1.6 },
-  frame: { mode: 'fit', width: 520, height: 560, cx: 540, cy: 560 },
+  frame: { mode: 'fit', width: 420, height: 450, cx: 650, cy: 460 },
   stillAt: 1.6,
   shadow: { joints: ['pelvis'], blobs: [], bands: [] },
   props: [{ type: 'legExtension', seatY: 0.481, seatZ: [-0.16, 0.26], back: { y: 1.0, z: -0.153, tilt: 8, h: 0.66 }, handles: { x: 0.25, y: 0.514, z: [-0.02, 0.26] }, rollerUp: 0.09, rollerR: 0.045, gap: -0.001, armX: -0.25 }],
