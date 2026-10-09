@@ -191,6 +191,37 @@ Object.assign(B, {
     const arm = tube(t, new t.Vector3(), new t.Vector3(0, 1, 0), 0.02, frame, 12), hub = new t.Mesh(new t.CylinderGeometry(0.055, 0.055, 0.05, 24), dark); hub.rotation.z = Math.PI / 2; g.add(arm); g.add(hub);
     const sq = shin.getWorldQuaternion(new t.Quaternion()).invert();
     g.userData = { rg, arm, hub, ro: shin.worldToLocal(rc.clone()), rq: sq, roller: { R, front } }; E_reset(); return g; },
+  // hip-abductor machine: seat + upright back pad + side handles + frame + stack (static, from the spec), and per side a knee pad
+  // fitted at build time to the outside of the rest thigh above the knee (+gap) and fixed to that thigh bone, a footrest fitted under
+  // the rest sole and fixed to the foot bone, and a lever (pivot under the seat -> under the pad -> down to the footrest).
+  // spec: {type:'hipAbductor', seatY, seatZ:[z0,z1], back:{y,z,tilt,h}, handles:{x,y,z:[z0,z1]}, padUp:0.09, gap:0.003, pivotY}
+  hipAbductor(th, s) { const t = T(), v = flareInspector.viewer; v.motion.reset(); v.coach.updateMatrixWorld(true);
+    const g = new t.Group(), pad = P.mat(th, { base: '#2b2e35', rimK: 0.55 }), frame = P.mat(th, { rimK: 0.9 }), dark = P.mat(th, { base: '#202228', rimK: 0.5 });
+    const box = (sz, c, m, rx = 0, par = g) => { const b = new t.Mesh(new t.BoxGeometry(...sz), m); b.position.set(...c); b.rotation.x = rx; par.add(b); return b; };
+    const [z0, z1] = s.seatZ, sy = s.seatY; box([0.40, 0.07, z1 - z0], [0, sy - 0.035, (z0 + z1) / 2], pad); box([0.30, 0.03, z1 - z0 - 0.04], [0, sy - 0.085, (z0 + z1) / 2], frame);
+    const B = s.back, a = (B.tilt || 0) * Math.PI / 180, H = B.h || 0.62, u = new t.Vector3(0, Math.cos(a), -Math.sin(a)), n = new t.Vector3(0, Math.sin(a), Math.cos(a));
+    const bc = new t.Vector3(0, B.y, B.z).addScaledVector(u, H / 2 - 0.2).addScaledVector(n, -0.035); box([0.40, H, 0.07], bc.toArray(), pad, -a); box([0.06, H, 0.04], bc.clone().addScaledVector(n, -0.06).toArray(), frame, -a);
+    const post = (x, z, h, w = 0.06) => box([w, h, w], [x, h / 2, z], frame);
+    post(0, (z0 + z1) / 2 - 0.05, sy - 0.1, 0.08); box([0.6, 0.04, 0.9], [0, 0.02, (z0 + z1) / 2 - 0.15], frame); post(0, bc.z - 0.12, bc.y + 0.05);
+    const stZ = Math.min(z0, B.z) - 0.32; box([0.34, 0.60, 0.16], [0.36, 0.32, stZ], dark); post(0.17, stZ, 1.35, 0.05); post(0.55, stZ, 1.35, 0.05); box([0.43, 0.05, 0.08], [0.36, 1.37, stZ], frame);
+    const hd = s.handles; for (const sx of [-1, 1]) { g.add(tube(t, new t.Vector3(sx * hd.x, hd.y, hd.z[0]), new t.Vector3(sx * hd.x, hd.y, hd.z[1]), 0.016, pad, 20));
+      g.add(tube(t, new t.Vector3(sx * hd.x, hd.y, hd.z[0]), new t.Vector3(sx * 0.17, sy - 0.08, hd.z[0]), 0.012, frame, 12)); }
+    const p = new t.Vector3(), ms = []; v.coach.traverse(o => { if (o.isSkinnedMesh && o.visible) ms.push(o); });
+    const sides = {};
+    for (const side of ['left', 'right']) { const sg = side === 'left' ? 1 : -1, thigh = v.coach.getObjectByName(side + 'Thigh'), shin = v.coach.getObjectByName(side + 'Shin'), foot = v.coach.getObjectByName(side + 'Foot');
+      const Hp = thigh.getWorldPosition(new t.Vector3()), K = shin.getWorldPosition(new t.Vector3()), ax = Hp.clone().sub(K).normalize(), c0 = K.clone().addScaledVector(ax, s.padUp ?? 0.09);
+      let out = -1, soleY = 9, fx0 = 9, fx1 = -9, fz0 = 9, fz1 = -9;
+      for (const o of ms) { const N = o.geometry.attributes.position.count; for (let i = 0; i < N; i++) { o.getVertexPosition(i, p); p.applyMatrix4(o.matrixWorld);
+        if (Math.abs(p.clone().sub(c0).dot(ax)) < 0.075 && Math.abs(p.z - c0.z) < 0.09 && sg * p.x > 0 && sg * (p.x - c0.x) > out) out = sg * (p.x - c0.x);
+        if (p.y < 0.13 && sg * p.x > 0) { if (p.y < soleY) soleY = p.y; fx0 = Math.min(fx0, p.x); fx1 = Math.max(fx1, p.x); fz0 = Math.min(fz0, p.z); fz1 = Math.max(fz1, p.z); } } }
+      const gp = s.gap ?? 0.003, padC = c0.clone().add(new t.Vector3(sg * (out + gp + 0.025), 0, 0));
+      const pg = new t.Group(); box([0.05, 0.16, 0.14], [0, 0, 0], pad, 0, pg); g.add(pg);
+      const fg = new t.Group(); box([fx1 - fx0 + 0.03, 0.02, fz1 - fz0 + 0.04], [0, -0.01, 0], frame, 0, fg); g.add(fg);
+      const footC = new t.Vector3((fx0 + fx1) / 2, soleY - gp, (fz0 + fz1) / 2);
+      const tq = thigh.getWorldQuaternion(new t.Quaternion()).invert(), fq = foot.getWorldQuaternion(new t.Quaternion()).invert();
+      const arms = [0, 1, 2].map(() => { const m = tube(t, new t.Vector3(), new t.Vector3(0, 1, 0), 0.018, frame, 12); g.add(m); return m; });
+      sides[side] = { pg, fg, arms, po: thigh.worldToLocal(padC.clone()), pq: tq, fo: foot.worldToLocal(footC.clone()), fq, sg }; }
+    g.userData = { sides }; E_reset(); return g; },
   // straight steel cable from a cableStack pulley exit to a handle anchor; spec: {type:'cable', from:'pulley1', to:'h1', r:0.0032}
   cable(th, s) { const t = T(); const m = tube(t, new t.Vector3(), new t.Vector3(0, 1, 0), s.r || 0.0032, P.mat(th, { base: s.colour || '#a3a8b2', rimK: 0.4 }), 10); m.userData.cable = true; return m; },
 });
@@ -238,6 +269,13 @@ P.place = function(o) { const t = T(), v = flareInspector.viewer, s = o.userData
     U.rg.position.copy(shin.localToWorld(U.ro.clone())); U.rg.quaternion.copy(shin.getWorldQuaternion(new t.Quaternion())).multiply(U.rq);
     const knee = shin.getWorldPosition(new t.Vector3()), ax = s.armX ?? -0.25; const hubP = new t.Vector3(ax, knee.y, knee.z); U.hub.position.copy(hubP);
     const end = U.rg.position.clone(); end.x = ax; setTube(t, U.arm, hubP, end); o.updateMatrixWorld(true); return; }
+  if (s.type === 'hipAbductor') { for (const [side, S] of Object.entries(o.userData.sides)) { const th = v.coach.getObjectByName(side + 'Thigh'), ft = v.coach.getObjectByName(side + 'Foot'); th.updateMatrixWorld(true); ft.updateMatrixWorld(true);
+      S.pg.position.copy(th.localToWorld(S.po.clone())); S.pg.quaternion.copy(th.getWorldQuaternion(new t.Quaternion())).multiply(S.pq);
+      S.fg.position.copy(ft.localToWorld(S.fo.clone())); S.fg.quaternion.copy(ft.getWorldQuaternion(new t.Quaternion())).multiply(S.fq);
+      const py = s.pivotY ?? s.seatY - 0.13, hip = th.getWorldPosition(new t.Vector3()), piv = new t.Vector3(S.sg * 0.05, py, hip.z);
+      const under = new t.Vector3(S.pg.position.x + S.sg * 0.01, py, S.pg.position.z), low = new t.Vector3(under.x, S.fg.position.y - 0.01, under.z);
+      setTube(t, S.arms[0], piv, under); setTube(t, S.arms[1], S.pg.position.clone().add(new t.Vector3(S.sg * 0.01, -0.06, 0)), low); setTube(t, S.arms[2], low, S.fg.position.clone().add(new t.Vector3(0, -0.01, 0))); }
+    o.updateMatrixWorld(true); return; }
   if (s.type === 'cableStack') { place0(o); o.updateMatrixWorld(true); P.anchors[s.name || 'pulley'] = o.userData.exit.clone().applyMatrix4(o.matrixWorld);
     // the sheave turns to face the cable
     return; }
