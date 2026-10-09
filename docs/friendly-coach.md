@@ -4,6 +4,12 @@
 
 本项目保持零预算，使用本机 Blender 和合法免费成熟人物网格。Snow 继续承担友善卡通动作教学；点击肌群后，默认在独立浮窗中查看官方 Realistic 男性完整人物与肌群位置色区，解剖结构另行切换。此前收费模型文档保留为历史研究，本轮没有采购或调用收费生成服务。
 
+## 当前网页肌群参考（PR3整合后）
+
+首页同步面板与全屏3D肌群查看器实际加载 `public/anatomy/mannequin-reference.glb`，来源/改动为同名JSON，制作工具为 `tools/mannequin/build_mannequin.py`。它从已有CC0 Realistic male体表派生，去掉短裤并局部平顺人台裆部；静态、1网格/74,274三角形，1,338,688字节，记录SHA-256为 `ac4c0dd92d42504a949fd0aff0063aaff0886a68278f95878bc3da9df177e056`。本次只读取元数据与加载代码，没有重读或重建GLB。功能色区为位置示意，不是BodyParts3D内部网格或肌电百分比。
+
+下方 `fitness-reference.glb` 及有短裤浮窗描述属于保留资产/此前入口，不能覆盖PR3首页。App的人台、穿衣详情与v41烘焙人物以App合约为准；版本身份见 [版本管理台账](../app/docs/version-ledger.md)。
+
 ## 已交付资产
 
 - 可编辑人物与灯光场景：`assets/coach/flare-coach.blend`。
@@ -11,14 +17,14 @@
 - 真实关节点与来源：`public/coach/coach-rig.json`、`public/coach/ATTRIBUTION.md`。
 - Blender 全身渲染：`output/blender/coach-preview.png`；面部近景：`output/blender/coach-portrait.png`。
 - 可复现制作脚本：`tools/blender/build_coach.py`；七个必需生成 helper 及调用顺序见下文“用本机 Blender 重建”。
-- 默认静态肌群位置参考：`public/anatomy/fitness-reference.glb`、`public/anatomy/fitness-reference.json`；可编辑场景为 `assets/coach/fitness-reference.blend`，制作脚本为 `tools/blender/build_fitness_reference.py`。
+- 保留的有短裤静态参考及当前人台派生源：`public/anatomy/fitness-reference.glb`、`public/anatomy/fitness-reference.json`；可编辑场景为 `assets/coach/fitness-reference.blend`，制作脚本为 `tools/blender/build_fitness_reference.py`。当前网页人台见上节。
 - 解剖结构模式保留的同源完整体表：`public/anatomy/muscle-reference.glb`、`public/anatomy/muscle-reference.json`；可编辑文件和制作脚本仍为 `assets/coach/muscle-reference.blend`、`tools/blender/build_muscle_reference.py`。这些静态参考与 Snow 动作资产分开。
 
 Snow 动作人物的身体、面孔、眼睛、眉毛、头发、衣服和鞋均来自 Blender Studio 免费发布的 Snow v4.2。这个项目使用完整成熟网格，调整运动服、肤色、表情和灯光。没有用球、柱等体块拼接人体。原始专业 rig 及贴图仍保存在 `assets/blender-studio-source/snow-rig-v4/Snow/`，未改动源文件。
 
 ## 当前人物与正式展示
 
-当前人物为深棕短寸头、浅灰上衣、哑光黑色短裤和白鞋，保留自然掌弓与手掌厚度。网页使用 20 个平行变形骨，原有身体权重按身体区域归并，面孔表情烘焙后随头骨运动，服装与皮肤共用骨架。自然手掌版本的既有导出计数为 211,060 个 GLB 顶点；本次文档对齐没有重新导出模型或重跑下文所列的历史资产与姿势检查。
+当前人物为深棕短寸头、浅灰上衣、哑光黑色短裤和白鞋，保留自然掌弓与手掌厚度。制作导出保留20个可编辑变形骨，身体权重按身体区域归并，面孔表情烘焙后随头骨运动，服装与皮肤共用骨架；网页v41运行时另有2根腰部辅助骨，App烘焙片段为22骨/44轨道，以v41合约为准。自然手掌版本的既有导出计数为211,060个GLB顶点；本次文档对齐没有重新导出模型或重跑下文所列的历史资产与姿势检查。
 
 正式分步骤来自 `托马斯/16.json` 的原步骤 **9 → 10 → 11 → 12 → 13 → 14 → 15 → 16 → 9**，末帧复用原第 9 步，保持保存的位置、手脚朝向及支撑锁定。网页展示的阶段名称遵照用户确认的画面方位，人物左／右支撑手则以保存的锁定标记为准。
 
@@ -113,7 +119,9 @@ Adam 免费包本轮未取得或采用：访客下载需要 ArtStation 账号，
 
 源场景路径、原包和派生文件的校验记录见 `docs/anatomy-assets.md`。脚本写入 `fitness-reference.blend`、`fitness-reference.glb/json` 和实际渲染，静态窗只显示独立人物。旧 BodyParts3D 体表的复现脚本 `build_muscle_reference.py` 保留用于解剖结构模式。
 
-## 2026-10-07 动画与模型优化（design/elegant-editor 分支）
+## 历史：2026-10-07 动画与模型优化（design/elegant-editor 分支）
+
+以下为PR3带入的早期v4–v21与旧浮窗记录，保留当时数值和说明；当前默认动作是v41，当前全屏人台来源以上方“当前网页肌群参考”为准。
 
 - **关键姿势 v4（髋带腿）**：`public/coach/flare-sequence.json`，原稿完整保留为 `flare-sequence-before-rekey-2026-10-07.json`，`tools/rekey/rekey-flare.mjs --write` 从原稿复现（v3 在提交 5a71a30）。分腿形状固定在髋部坐标里（每侧外展约 56°），髋部朝向由“离胸口最近、屈髋在 -15°~110° 内”自动求出，所以髋与腿一起转；侧撑时分腿平面跟随胸口左右轴竖起（高腿上到耳侧），离地下限约束低腿 ≥0.23 m；第 10/16 步整个身体绕支撑手转到腿方位 ±135°，消除倒转；空手自动推离双腿 ≥0.36 m（受手臂长度限制，网格间隙 ≥8.6 cm）。整圈膝角 ≥176°。依据：Thomas flair 生物力学（进入阶段由躯干和下肢驱动髋部翻转；髋关节角度变动过大不利于轨迹稳定）。
 - **v5 髋部圆弧轨迹**（用户反馈后侧髋部轨迹不够圆润饱满）：俯视看，v4 的髋在后撑段先往里缩再甩出（第 9 步在两条折线的尖角上，第 10 步髋和腿往相反方向走）。v5 把第 9/10/16 步的髋放到以 (0, -0.1) 为圆心、半径约 0.3 m 的圆上（第 10 步重新瞄准躯干，让支撑肩落在支撑手上方），运行时 `src/coach-motion.js` 的 `roundHipPath` 让循环序列的髋部沿相邻关键帧的 Catmull-Rom 曲线移动，不再走直线（`?hip=linear` 可对比旧行为）。后半圈半径 0.29–0.31 m，高度 0.80→0.68→0.56 m 连续下降。

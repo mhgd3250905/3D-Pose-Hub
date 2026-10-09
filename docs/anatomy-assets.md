@@ -4,13 +4,20 @@
 
 **解剖结构**模式使用真实 BodyParts3D 4.0 几何，由 [ashemag/human-atlas](https://github.com/ashemag/human-atlas) 中已优化的模型整理而来。固定来源提交为 `1c38bf35c254a891200d3cedecfd57abebe83d8d`。它保持原成人男性站姿，肌肉与骨骼均可按结构选中。
 
+## 当前网页人台与保留资产
+
+2026-10-09 PR3整合后，网页同步面板 `src/muscle-sync.js` 与全屏查看器 `src/muscle-viewer.js` 加载 `public/anatomy/mannequin-reference.glb`。它派生自CC0 Human Base Meshes的既有 `fitness-reference.glb`，去掉短裤、局部平顺裆部，保持静态自然人体；1网格、74,274三角形、1,338,688字节，元数据记录SHA-256 `ac4c0dd92d42504a949fd0aff0063aaff0886a68278f95878bc3da9df177e056`。来源、坐标、修改和限制见同名JSON。它的shader色区是肌群位置示意，不是独立真实解剖网格或与Snow精确配准。
+
+以下有短裤 `fitness-reference.glb` / BodyParts3D说明保留原资产与独立结构入口，不能作为当前首页加载人台的文件身份；App采用其打包参考副本，以 [v41合约](../app/docs/motion-v41.md) 为准。本次未重做资产或复跑历史几何检查。
+
 ## 文件与范围
 
 | 文件 | 用途 |
 | --- | --- |
-| `public/anatomy/fitness-reference.glb` | 默认完整静态健身人物：官方 Realistic male、浅色皮肤与深蓝运动短裤 |
-| `public/anatomy/fitness-reference.json` | 默认人物的来源、独立坐标、外观改动、体积与校验记录 |
-| `assets/coach/fitness-reference.blend` | 默认静态人物的可编辑本地 Blender 场景 |
+| `public/anatomy/mannequin-reference.glb` / `.json` | 当前网页同步面板/全屏人台，CC0完整体表派生及元数据 |
+| `public/anatomy/fitness-reference.glb` | 保留的完整静态健身人物及当前人台派生源：官方 Realistic male、浅色皮肤与深蓝运动短裤 |
+| `public/anatomy/fitness-reference.json` | 保留的有短裤人物来源、独立坐标、外观改动、体积与校验记录 |
+| `assets/coach/fitness-reference.blend` | 保留的有短裤静态人物可编辑本地 Blender 场景 |
 | `public/anatomy/manifest.json` | 主索引、结构名称、BodyParts3D/FMA ID、肌群映射、偏移与范围 |
 | `public/anatomy/bones.bin` / `.bin.gz` | 238 个骨骼系统结构，含椎间盘与肋软骨 |
 | `public/anatomy/muscles.bin` / `.bin.gz` | 399 个肌肉结构，含深层结构 |
