@@ -66,12 +66,13 @@ for side in ['left','right']:
 for tc in q.get('touch',[]):  # a hand that must rest on the body while `when` holds: gap <= max_gap
     act=[r for r in fr if when(r,tc.get('when')) and r.get('handClip')]
     if act:g=[r['handClip'][tc['side']] for r in act];hcres['contact_'+tc['side']]={'frames':len(act),'gap_mm_range':[round(min(g),2),round(max(g),2)],'ok':max(g)<=tc.get('max_gap',4.0) and min(g)>=-0.5}
-res['hand_clip']=dict(hcres,method='per hand skin vertex: K=6 nearest vertices of each outer body layer (skin, tee, cuff, shorts, head; own hand/forearm excluded, radius 45 mm); inside if the vertex is closer to the nearest bone core line than those surface vertices; value = depth (<0) or euclidean gap (>0); ok if >= -0.5 mm')
+res['hand_clip']=dict(hcres,method='per hand skin vertex: K=6 nearest vertices of each outer body layer (skin, tee, cuff, shorts, head; own hand/forearm excluded, radius 45 mm); inside if the vertex is closer to the nearest bone core line than those surface vertices; value = depth (<0) or gap (>0: radial gap over the surface patch, capped by the euclidean distance); ok if >= -0.5 mm')
 res['solver_warning_frames']=sum(1 for r in fr if r.get('solverWarn'))
 if CD:
     E={};[E.update(json.load(open(f))) for f in glob.glob(CD+'/edge-*.json')]
     res['frame_edge_touch_frames']=sum(1 for v in E.values() if v>0.05)
-res['pass']=bool(not res['below_floor'] and all(p.get('ok',True) for p in pins.values()) and all(s['ok'] for s in st.values()) and lim['knee_flex_backward'] and lim['elbow_flex_forward'] and lim['hip_ok'] and lim['waist_ok'] and res['self_clip']['ok'] and all(v.get('ok',True) for v in res['hand_clip'].values() if isinstance(v,dict)) and not res.get('frame_edge_touch_frames'))
+res['frames_complete']=len(fr)==round(spec['timeline']['duration']*spec.get('fps',30))
+res['pass']=bool(res['frames_complete'] and not res['below_floor'] and all(p.get('ok',True) for p in pins.values()) and all(s['ok'] for s in st.values()) and lim['knee_flex_backward'] and lim['elbow_flex_forward'] and lim['hip_ok'] and lim['waist_ok'] and res['self_clip']['ok'] and all(v.get('ok',True) for v in res['hand_clip'].values() if isinstance(v,dict)) and not res.get('frame_edge_touch_frames'))
 res['per_frame']=[{'f':r['f'],'params':{k:round(v,4) for k,v in r['params'].items()},'elbow':{k:round(v,1) for k,v in r['elbow'].items()},'knee':{k:round(v,1) for k,v in r['knee'].items()},'minY':round(r['minY'],4),'clip_mm':r['clip']['worstGapMm'],'hand_clip':r.get('handClip'),'touch_shift_mm':r.get('touch')} for r in fr]
 json.dump(res,open(OUTF,'w'),indent=1)
 print(json.dumps({k:v for k,v in res.items() if k!='per_frame'},indent=0))

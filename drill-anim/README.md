@@ -143,6 +143,24 @@ Also reported: `solver_warning_frames` (LM did not reach tolerance; check visual
 
 QA is numeric only. Always look at the contact sheet and a few in-between frames as well: hand shape, mask readability and occlusion are not measured.
 
+## Engine features added in the A-tier run
+
+### Hands touching the body
+- `hands.<side>.mode: 'free'` with `palmAt: [x, y, z]` (in the hand's `frame`) places the PALM joint on a body-surface point instead of placing the wrist.
+- `hands.<side>.touch = { clear, from, pull, iters, exclude, solve, toward }` makes a free hand rest on the body without clipping. After the pose, the wrist moves along the surface normal until the hand rests `clear` (default 2 mm) above the surface. `pull` (default 1, eased in from `w = from`) controls how far a hovering hand is pulled in. With `solve: 'bisect'` (recommended) the offset is found by bisection: it is robust where the gap is not smooth, always ends outside, and walks the wrist toward `toward` (default `waist`) in 15 mm steps first if the hand starts more than 45 mm away. The default iterative solve also has a push-only guard so it never ends inside. The iterative solve measures the legacy nearest-vertex (euclidean) gap unless `gap: 'radial'` is set, so deltoids-A and rotator-cuff-A render exactly as before; `bisect` always uses the radial gap. The v7 solver takes the same option as `solverArgs.touch`.
+- QA `hand_clip` checks every hand skin vertex against the outer body layers (skin, tee, cuff, shorts, head). A vertex is inside when it is closer to the nearest bone's core line than the 6 nearest surface vertices; the gap outside is the radial gap, capped by the euclidean distance. It fails below −0.5 mm. `qa.touch: [{ side, when, max_gap }]` also checks a resting hand's gap (≤ 4 mm by default). `qa.handClipExclude` skips bones.
+
+### Shoulders and mid-limb pins
+- `shoulders.shift: [x, y, z]` (chest frame, metres) shifts the scapula for protraction/retraction/elevation/depression. The scapula bone moves against the chest and the arm is re-solved from the shifted shoulder to the same wrist. It can be animated through `deltas`.
+- `{ type: 'mid', limb, at: [x, y, z], weight }` pins an elbow or knee at a world point, e.g. a forearm plank or kneeling. `qa.jointPins: [{ j: 'leftElbow' }]` checks its drift.
+
+### Timelines
+- Descriptor blending is linear, so blending two points on an arc (such as an abducting ankle) cuts the chord and bends the limb. Add a second track that carries the arc's sagitta (hip-abductors-A: `bow = 4p(1 − p)`) and sample both tracks per frame as `linear` keys from one eased curve; a spec is a JS module, so it can compute its own keys.
+- Keep reps even: each rep's up/hold/down/rest must have the same lengths, including the wrap from `duration` back to t = 0.
+
+### Robustness
+- `drill.py render` re-runs any parallel job whose frames are missing (a Chromium launch can fail transiently) and aborts if frames are still missing. QA reports `frames_complete`, which is part of `pass`.
+
 ## Known residuals
 
 - Relaxed hand: deltoids-A bakes the v7 relaxed hand permanently (`bakeHands`). The other drills blend it per frame with a CPU morph (`__setRelax`, weight `relax`, default 1 on lifted or free hands, 0 on pinned floor hands). The shader path (`aHandD`) is unused.
