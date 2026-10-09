@@ -2,27 +2,28 @@
 // arms locked straight, knees pinned on the mat under the hips (two-bone knee target), toes tucked. 'rock' moves the shoulders
 // forward over the wrists (+1 = ~8 cm, more wrist extension) and back (-0.6); 2 slow rocks / 8 s.
 // Head points +X, body faces the floor (-Y), body left = -Z (same frame as rotator-cuff-A).
-const HZ = 0.19, KX = -0.47, KZ = 0.10, FX = -0.90;
+const HZ = 0.19, KX = -0.524, KZ = 0.0857, FX = -0.90;
 const floorHand = z => ({ mode: 'floor', at: [0.0, z], finger: [1, 0], poleUp: [Math.sign(z) * -0.24, 0.95, 0.18] });
-const ROCK = 0.08;
+const ROCK = 0.10;
 export default {
   id: 'forearms-A', name: '跪姿多方向腕部摇摆', nameEn: 'Quadruped Wrist Rocks',
   timeline: { duration: 8, tracks: { rock: [[0, 0], [1.1, 1], [1.6, 1], [2.9, -0.6], [3.3, -0.6], [4.0, 0], [5.1, 1], [5.6, 1], [6.9, -0.6], [7.3, -0.6]] } },
   pose: {
     base: {
-      pelvis: [-0.45, 0.43, 0],
-      hips: { up: [1, 0, 0], front: [0, -1, 0], rot: [[[0, 0, 1], 14]] },
+      pelvis: [-0.52, 0.45, 0],
+      hips: { up: [1, 0, 0], front: [0, -1, 0], rot: [[[0, 0, 1], 8]] },
+      chest: { waist: [[[0, 0, 1], 0]] },
       hands: { right: floorHand(HZ), left: floorHand(-HZ) },
       feet: {
-        right: { mode: 'floor', at: [FX, KZ], heading: 90, pitch: 62, poleLow: [-0.09, 0.5, 0.6] },
-        left: { mode: 'floor', at: [FX, -KZ], heading: 90, pitch: 62, poleLow: [0.09, 0.5, 0.6] },
+        right: { mode: 'floor', at: [FX, KZ], heading: 90, pitch: 62, pole: [KX, 0.0765, KZ] },
+        left: { mode: 'floor', at: [FX, -KZ], heading: 90, pitch: 62, pole: [KX, 0.0765, -KZ] },
       },
       constraints: [
         { type: 'reach', limb: 'rightArm', angle: 178.5 }, { type: 'reach', limb: 'leftArm', angle: 178.5 },
-        { type: 'mid', limb: 'rightLeg', at: [KX, 0.055, KZ], weight: 1 }, { type: 'mid', limb: 'leftLeg', at: [KX, 0.055, -KZ], weight: 1 },
+        { type: 'mid', limb: 'rightLeg', at: [KX, 0.0765, KZ], weight: 1 }, { type: 'mid', limb: 'leftLeg', at: [KX, 0.0765, -KZ], weight: 1 },
         { type: 'joint', joint: 'shoulderCenter', axis: [1, 0, 0], value: 0.0, weight: 0.5 },
       ],
-      solve: { vars: ['px', 'py', 'pz', 'h0'], reg: { px: 0.3, py: 0.3, pz: 1, h0: 0.01 } },
+      solve: { vars: ['px', 'py', 'pz', 'h0', 'c0'], reg: { px: 0.3, py: 0.3, pz: 1, h0: 0.01, c0: 0.3 }, iters: 80 },
     },
     deltas: { rock: { constraints: [{}, {}, {}, {}, { value: ROCK }] } },
   },
