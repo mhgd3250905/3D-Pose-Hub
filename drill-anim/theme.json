@@ -1,0 +1,15 @@
+{
+  "name": "default (approved v7 look)",
+  "_colours": "\"#rrggbb\" = sRGB hex (converted to linear like THREE.Color); [r,g,b] = raw linear shader values (0..1)",
+  "_finish": "matte | satin | sheen, or {\"sheen\":0..1,\"gloss\":exponent}",
+  "_pattern": "optional {\"type\":\"stripes|check|dots\",\"colour\":..., \"scale\": metres per repeat, \"strength\":0..1}",
+  "_texture": "optional {\"image\":\"path relative to this file\",\"scale\": metres per tile} (planar map on rest-pose x+z / y, multiplies base)",
+  "skin":   { "base": "#7b7e85", "shadeK": 0.52, "finish": "matte" },
+  "top":    { "base": "#3b3e46", "shadeK": 0.52, "finish": "matte", "pattern": null, "texture": null },
+  "bottom": { "base": "#3b3e46", "shadeK": 0.52, "finish": "matte", "pattern": null, "texture": null },
+  "shoes":  { "base": "#45484f", "shadeK": 0.52, "finish": "matte", "pattern": null, "texture": null },
+  "rim": { "body": [1.0, 0.30, 0.12], "outline": [255, 106, 61], "halo": 0.12 },
+  "highlight": { "colour": [0.18, 0.82, 1.0], "shade": [0.62, 0.30, 0.22] },
+  "background": { "centre": [36, 34, 35], "edge": [13, 13, 15], "warm": [22, 8, 3], "floorBand": [6, 6, 6] },
+  "props": { "base": "#2c2e34", "edge": "#3a3d44", "shadeK": 0.52, "rim": [1.0, 0.30, 0.12] }
+}
