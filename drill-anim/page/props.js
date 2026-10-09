@@ -74,7 +74,9 @@ P.bakeGrip = function(side) {
     for (let k = 0; k < 4; k++) { const w = sw.getComponent(i, k); if (w <= 0) continue; const e = BM[si.getComponent(i, k)].elements; for (let q = 0; q < 16; q++) M.elements[q] += w * e[q]; }
     const A = new t.Matrix4().multiplyMatrices(o.matrixWorld, new t.Matrix4().multiplyMatrices(o.bindMatrixInverse, M).multiply(o.bindMatrix));
     const lin = new t.Matrix3().setFromMatrix4(A), inv = lin.clone().invert();
-    const dl = new t.Vector3(...G.d[j]).applyMatrix3(inv); pos.setXYZ(i, pos.getX(i) + dl.x, pos.getY(i) + dl.y, pos.getZ(i) + dl.z);
+    // absolute rest-world target (independent of whatever base shape / relax morph the hand currently has)
+    if (G.T) { const q = new t.Vector3(...G.T[j]).applyMatrix4(A.clone().invert()); pos.setXYZ(i, q.x, q.y, q.z); }
+    else { const dl = new t.Vector3(...G.d[j]).applyMatrix3(inv); pos.setXYZ(i, pos.getX(i) + dl.x, pos.getY(i) + dl.y, pos.getZ(i) + dl.z); }
     const J = new t.Matrix3().fromArray(G.J[j]).transpose(); const nw = new t.Vector3().fromBufferAttribute(nor, i).applyMatrix3(lin).applyMatrix3(J.invert().transpose()).normalize();
     const nl = nw.applyMatrix3(inv).normalize(); nor.setXYZ(i, nl.x, nl.y, nl.z);
     if (S) { S.P0[i * 3] = pos.getX(i); S.P0[i * 3 + 1] = pos.getY(i); S.P0[i * 3 + 2] = pos.getZ(i); S.N0[i * 3] = nl.x; S.N0[i * 3 + 1] = nl.y; S.N0[i * 3 + 2] = nl.z; } }
@@ -141,14 +143,14 @@ const place0 = P.place;
 P.place = function(o) { const t = T(), v = flareInspector.viewer, s = o.userData.spec;
   if (s.type === 'dHandle') { const G = o.userData.G, bone = v.coach.getObjectByName((s.side || 'right') + 'Hand'); bone.updateMatrixWorld(true);
     const bp = bone.getWorldPosition(new t.Vector3()), bq = bone.getWorldQuaternion(new t.Quaternion());
-    const c = G.c.clone().applyQuaternion(bq).add(bp), a = G.a.clone().applyQuaternion(bq).normalize(); o.position.copy(c); o.quaternion.setFromUnitVectors(new t.Vector3(0, 1, 0), a);
+    const a = G.a.clone().applyQuaternion(bq).normalize(), c = G.c.clone().applyQuaternion(bq).add(bp).addScaledVector(a, s.shift || 0); o.position.copy(c);   /* shift: slide the handle along its axis to centre it in the fist */ o.quaternion.setFromUnitVectors(new t.Vector3(0, 1, 0), a);
     o.updateMatrixWorld(true);
     // swivel: loop apex toward the cable (pulley), but never closer than `lean` to the palmar side
     const tgt = P.anchors[s.toward] ? P.anchors[s.toward].clone() : c.clone().add(new t.Vector3(0, 0, -1));
     const want = tgt.sub(c); want.addScaledVector(a, -want.dot(a)); want.normalize();
     const dors = G.pal.clone().applyQuaternion(bq).negate(); dors.addScaledVector(a, -dors.dot(a)).normalize();
     const dir = dors.clone().multiplyScalar(s.lean ?? 0.6).add(want.multiplyScalar(1 - (s.lean ?? 0.6))).normalize();
-    const inv = o.quaternion.clone().invert(); const dl = dir.clone().applyQuaternion(inv); o.userData.loop.rotation.set(0, -Math.atan2(dl.z, dl.x), 0);
+    const inv = o.quaternion.clone().invert(); const dl = dir.clone().applyQuaternion(inv); o.userData.loop.rotation.set(0, s.angle !== undefined ? -s.angle * Math.PI / 180 : -Math.atan2(dl.z, dl.x), 0);   // angle: fixed loop direction in the handle frame (deg), chosen clear of hand + wrist
     o.updateMatrixWorld(true); P.anchors[s.name || 'handle'] = o.userData.apexLocal.clone().applyMatrix4(o.userData.loop.matrixWorld); return; }
   if (s.type === 'cableStack') { place0(o); o.updateMatrixWorld(true); P.anchors[s.name || 'pulley'] = o.userData.exit.clone().applyMatrix4(o.matrixWorld);
     // the sheave turns to face the cable
