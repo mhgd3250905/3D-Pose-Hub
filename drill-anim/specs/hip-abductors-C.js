@@ -44,7 +44,7 @@ export default {
   },
   highlight: { groups: ['hip-abductors'], side: 'both', pulseTrack: 'abd', pulseBase: 0.3 },
   camera: { dir: [0.85, 0.3, 0.8], fit: ['head', 'leftToe', 'rightToe', 'pelvis', 'rightKnee', 'leftKnee'], pad: 0.18, k: 1.0, drift: 0.9, at: 1.6 },
-  frame: { mode: 'fit', width: 520, height: 600, cx: 520, cy: 560 },
+  frame: { mode: 'fit', width: 520, height: 600, cx: 430, cy: 560 },
   stillAt: 1.6,
   shadow: { joints: ['pelvis'], blobs: [], bands: [] },
   props: [{ type: 'hipAbductor', seatY: 0.481, seatZ: [-0.16, 0.26], back: { y: 1.0, z: -0.153, tilt: 8, h: 0.66 }, handles: { x: 0.29, y: 0.575, z: [-0.28, 0.0] }, padUp: 0.09, gap: 0.003 }],
