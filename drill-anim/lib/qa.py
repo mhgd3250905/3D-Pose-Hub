@@ -56,7 +56,9 @@ def _abd(r,s):
     lat=[h[i]-o[i] for i in range(3)];n=math.sqrt(sum(c*c for c in lat)) or 1;th=[k[i]-h[i] for i in range(3)];m=math.sqrt(sum(c*c for c in th)) or 1
     return round(math.degrees(math.asin(max(-1,min(1,sum(lat[i]*th[i] for i in range(3))/n/m)))),1)
 hat=[_abd(r,s) for r in fr for s in ['left','right']];lim['hip_abd_true_deg_range']=[min(hat),max(hat)]
-lim['hip_ok']=min(hf)>-35 and max(hf)<135 and min(hat)>-35 and max(hat)<75
+# hip flexion limit: 135 deg unless the spec sets qa.hipFlexMax with a written justification (e.g. obliques-A thread-through)
+HFX=float(q.get('hipFlexMax',135));lim['hip_flex_max_deg']=HFX
+lim['hip_ok']=min(hf)>-35 and max(hf)<HFX and min(hat)>-35 and max(hat)<75
 wb=[r['limits']['waistBendDeg'] for r in fr];lim['waist_bend_deg_max']=max(wb);lim['waist_ok']=max(wb)<45
 lim['pelvis_to_chest_deg_max']=max(r['limits']['pelvisToChestDeg'] for r in fr)
 lim['elbow_deg_range']=[round(min(min(r['elbow'].values()) for r in fr),1),round(max(max(r['elbow'].values()) for r in fr),1)]

@@ -137,7 +137,7 @@ QA runs automatically after every full render. Each check and its pass condition
 | `below_floor` | lowest skinned vertex | ≥ −2 mm |
 | `pins` | drift of each pinned contact centroid while its `when` holds | < 5 mm |
 | `straight` | minimum elbow or knee angle while `when` holds | ≥ `min` |
-| `limits` | knee and elbow bend direction, hip flexion and abduction ranges, waist bend | within joint limits (hip abduction judged by `hip_abd_true_deg_range`: thigh vs the pelvis's sagittal plane; the frontal projection `hip_abd_deg_range` exceeds 90° when the thigh is near horizontal, e.g. a Cossack squat) |
+| `limits` | knee and elbow bend direction, hip flexion and abduction ranges, waist bend | within joint limits (hip flexion < 135° unless the spec sets `qa.hipFlexMax`, only with a justification in the spec; hip abduction judged by `hip_abd_true_deg_range`: thigh vs the pelvis's sagittal plane; the frontal projection `hip_abd_deg_range` exceeds 90° when the thigh is near horizontal, e.g. a Cossack squat) |
 | `self_clip` | capsule-hull overlap between non-adjacent segments (spec-allowed pairs skipped) | < 8 mm |
 
 Also reported: `solver_warning_frames` (LM did not reach tolerance; check visually) and `frame_edge_touch_frames` (body touches the canvas edge). `pass` is the AND of the checks.
