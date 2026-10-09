@@ -127,6 +127,26 @@ Object.assign(B, {
     const hub = new t.Mesh(new t.CylinderGeometry(0.014, 0.014, 0.034, 12), steel); hub.rotation.z = Math.PI / 2; wheel.add(hub);
     const yoke = new t.Mesh(new t.BoxGeometry(0.05, 0.03, out), frame); yoke.position.set(0, py, 0.085 + out / 2); g.add(yoke);
     g.userData.exit = new t.Vector3(0, py, 0.085 + out); return g; },
+  // ankle strap: padded cuff round the shin just above the ankle (fixed to the shin bone, radius fitted to the rest mesh + gap so it
+  // never cuts into skin/leggings), with a D-ring + carabiner that swivel about the shin axis toward the cable.
+  // spec: {type:'ankleStrap', side:'right', name:'strap', toward:'pulley', up:0.07, width:0.055, gap:0.002}
+  ankleStrap(th, s) { const t = T(), v = flareInspector.viewer; v.motion.reset(); v.coach.updateMatrixWorld(true);
+    const side = s.side || 'right', shin = v.coach.getObjectByName(side + 'Shin'), foot = v.coach.getObjectByName(side + 'Foot');
+    const K = shin.getWorldPosition(new t.Vector3()), A = foot.getWorldPosition(new t.Vector3()), u = A.clone().sub(K).normalize();
+    const c0 = A.clone().addScaledVector(u, -(s.up ?? 0.07)), W = s.width || 0.055, p = new t.Vector3(); let r = 0;
+    v.coach.traverse(o => { if (!o.isSkinnedMesh || !o.visible) return; const n = o.geometry.attributes.position.count;
+      for (let i = 0; i < n; i++) { o.getVertexPosition(i, p); p.applyMatrix4(o.matrixWorld); const d = p.sub(c0), ax = d.dot(u); if (Math.abs(ax) > W / 2 + 0.008) continue;
+        const rad = d.addScaledVector(u, -ax).length(); if (rad < 0.085 && rad > r) r = rad; } });
+    r += s.gap ?? 0.002;
+    const g = new t.Group(), pad = P.mat(th, { base: s.colour || '#2b2e35', rimK: 0.5 }), steel = P.mat(th, { base: '#8a8f99', rimK: 1.0 });
+    pad.side = t.DoubleSide; const cuff = new t.Mesh(new t.CylinderGeometry(r, r, W, 40, 1, true), pad); g.add(cuff);
+    for (const e of [-1, 1]) { const rim = new t.Mesh(new t.TorusGeometry(r, 0.003, 8, 40), pad); rim.rotation.x = Math.PI / 2; rim.position.y = e * W / 2; g.add(rim); }
+    const ring = new t.Group(); g.add(ring); const R0 = r + 0.006;
+    const d = new t.Mesh(new t.TorusGeometry(0.016, 0.0032, 8, 20), steel); d.position.set(R0 + 0.016, 0, 0); ring.add(d);
+    const cb = new t.Mesh(new t.TorusGeometry(0.011, 0.003, 8, 16), steel); cb.position.set(R0 + 0.040, 0, 0); cb.rotation.y = Math.PI / 2; ring.add(cb);
+    const sq = shin.getWorldQuaternion(new t.Quaternion());
+    g.userData = { ring, apex: new t.Vector3(R0 + 0.051, 0, 0), lo: shin.worldToLocal(c0.clone()), lq: sq.invert().multiply(new t.Quaternion().setFromUnitVectors(new t.Vector3(0, 1, 0), u)), r, side };
+    E_reset(); return g; },
   // straight steel cable from a cableStack pulley exit to a handle anchor; spec: {type:'cable', from:'pulley1', to:'h1', r:0.0032}
   cable(th, s) { const t = T(); const m = tube(t, new t.Vector3(), new t.Vector3(0, 1, 0), s.r || 0.0032, P.mat(th, { base: s.colour || '#a3a8b2', rimK: 0.4 }), 10); m.userData.cable = true; return m; },
 });
@@ -156,6 +176,11 @@ P.place = function(o) { const t = T(), v = flareInspector.viewer, s = o.userData
     const dir = dors.clone().multiplyScalar(s.lean ?? 0.6).add(want.multiplyScalar(1 - (s.lean ?? 0.6))).normalize();
     const inv = o.quaternion.clone().invert(); const dl = dir.clone().applyQuaternion(inv); o.userData.loop.rotation.set(0, s.angle !== undefined ? -s.angle * Math.PI / 180 : -Math.atan2(dl.z, dl.x), 0);   // angle: fixed loop direction in the handle frame (deg), chosen clear of hand + wrist
     o.updateMatrixWorld(true); P.anchors[s.name || 'handle'] = o.userData.apexLocal.clone().applyMatrix4(o.userData.loop.matrixWorld); return; }
+  if (s.type === 'ankleStrap') { const U = o.userData, bone = v.coach.getObjectByName(U.side + 'Shin'); bone.updateMatrixWorld(true);
+    o.position.copy(bone.localToWorld(U.lo.clone())); o.quaternion.copy(bone.getWorldQuaternion(new t.Quaternion())).multiply(U.lq); o.updateMatrixWorld(true);
+    const tgt = P.anchors[s.toward] ? P.anchors[s.toward].clone() : o.position.clone().add(new t.Vector3(0, 0, -1));
+    const dl = tgt.sub(o.position).applyQuaternion(o.quaternion.clone().invert()); U.ring.rotation.set(0, -Math.atan2(dl.z, dl.x), 0);
+    o.updateMatrixWorld(true); P.anchors[s.name || 'strap'] = U.apex.clone().applyMatrix4(U.ring.matrixWorld); return; }
   if (s.type === 'cableStack') { place0(o); o.updateMatrixWorld(true); P.anchors[s.name || 'pulley'] = o.userData.exit.clone().applyMatrix4(o.matrixWorld);
     // the sheave turns to face the cable
     return; }
