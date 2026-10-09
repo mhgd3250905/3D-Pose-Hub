@@ -123,6 +123,20 @@ Object.assign(B, {
     const hub = new t.Mesh(new t.CylinderGeometry(0.014, 0.014, 0.034, 12), steel); hub.rotation.z = Math.PI / 2; wheel.add(hub);
     const yoke = new t.Mesh(new t.BoxGeometry(0.05, 0.03, out), frame); yoke.position.set(0, py, 0.085 + out / 2); g.add(yoke);
     g.userData.exit = new t.Vector3(0, py, 0.085 + out); return g; },
+  // landmine: floor base + pivot sleeve at s.pivot, a straight bar from the pivot through the centre of the hand's baked power grip
+  // (the bar end is gripped; it re-aims at the grip every frame, so the hand path in the spec must keep the grip on the bar's sphere),
+  // an end cap past the fist and one plate on the bar below the hand. spec: {type:'landmine', side:'right', pivot:[x,0,z], plate:0.165, plateAt:0.2}
+  landmine(th, s) { const t = T(); const G = P.bakeGrip(s.side || 'right'); const g = new t.Group(); const r = G.r;
+    const frame = P.mat(th, { rimK: 0.9 }), steel = P.mat(th, { base: '#8a8f99', rimK: 1.0 }), dark = P.mat(th, { base: '#202228', rimK: 0.5 });
+    const base = new t.Mesh(new t.CylinderGeometry(0.13, 0.15, 0.02, 32), frame); base.position.set(...s.pivot); base.position.y += 0.01; g.add(base);
+    const yoke = new t.Mesh(new t.BoxGeometry(0.07, 0.07, 0.05), frame); yoke.position.set(...s.pivot); yoke.position.y += 0.055; g.add(yoke);
+    const sleeve = tube(t, new t.Vector3(), new t.Vector3(0, 1, 0), 0.03, frame, 20); g.add(sleeve);
+    const bar = tube(t, new t.Vector3(), new t.Vector3(0, 1, 0), r, steel, 20); g.add(bar);
+    const collar = tube(t, new t.Vector3(), new t.Vector3(0, 1, 0), r * 1.6, steel, 20); g.add(collar);
+    const cap = tube(t, new t.Vector3(), new t.Vector3(0, 1, 0), r * 1.15, steel, 20); g.add(cap);
+    const pr = s.plate ?? 0.165; const plate = new t.Mesh(new t.CylinderGeometry(pr, pr, 0.035, 40), dark); g.add(plate);
+    const hub = new t.Mesh(new t.CylinderGeometry(0.035, 0.035, 0.05, 20), steel); g.add(hub);
+    g.userData = { G, sleeve, bar, collar, cap, plate, hub, piv: new t.Vector3(...s.pivot).add(new t.Vector3(0, 0.055, 0)) }; return g; },
   // straight steel cable from a cableStack pulley exit to a handle anchor; spec: {type:'cable', from:'pulley1', to:'h1', r:0.0032}
   cable(th, s) { const t = T(); const m = tube(t, new t.Vector3(), new t.Vector3(0, 1, 0), s.r || 0.0032, P.mat(th, { base: s.colour || '#a3a8b2', rimK: 0.4 }), 10); m.userData.cable = true; return m; },
 });
@@ -152,6 +166,15 @@ P.place = function(o) { const t = T(), v = flareInspector.viewer, s = o.userData
     const dir = dors.clone().multiplyScalar(s.lean ?? 0.6).add(want.multiplyScalar(1 - (s.lean ?? 0.6))).normalize();
     const inv = o.quaternion.clone().invert(); const dl = dir.clone().applyQuaternion(inv); o.userData.loop.rotation.set(0, s.angle !== undefined ? -s.angle * Math.PI / 180 : -Math.atan2(dl.z, dl.x), 0);   // angle: fixed loop direction in the handle frame (deg), chosen clear of hand + wrist
     o.updateMatrixWorld(true); P.anchors[s.name || 'handle'] = o.userData.apexLocal.clone().applyMatrix4(o.userData.loop.matrixWorld); return; }
+  if (s.type === 'landmine') { const U = o.userData, G = U.G, bone = v.coach.getObjectByName((s.side || 'right') + 'Hand'); bone.updateMatrixWorld(true);
+    const bq = bone.getWorldQuaternion(new t.Quaternion()), a = G.a.clone().applyQuaternion(bq).normalize();
+    const c = G.c.clone().applyQuaternion(bq).add(bone.getWorldPosition(new t.Vector3())).addScaledVector(a, s.shift || 0);
+    const p0 = U.piv, d = c.clone().sub(p0); const L = d.length(); d.normalize(); o.userData.grip = c; o.userData.dir = d; o.userData.axis = a;
+    const at = k => p0.clone().addScaledVector(d, k);
+    setTube(t, U.sleeve, at(-0.03), at(0.16)); setTube(t, U.bar, at(0.16), at(L + 0.085)); setTube(t, U.cap, at(L + 0.085), at(L + 0.11));
+    const pa = L - (s.plateAt ?? 0.2); setTube(t, U.collar, at(pa + 0.02), at(pa + 0.045));
+    for (const m of [U.plate, U.hub]) { m.position.copy(at(pa)); m.quaternion.setFromUnitVectors(new t.Vector3(0, 1, 0), d); }
+    o.updateMatrixWorld(true); return; }
   if (s.type === 'cableStack') { place0(o); o.updateMatrixWorld(true); P.anchors[s.name || 'pulley'] = o.userData.exit.clone().applyMatrix4(o.matrixWorld);
     // the sheave turns to face the cable
     return; }
