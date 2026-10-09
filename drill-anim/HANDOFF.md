@@ -8,8 +8,9 @@
 ## 2. 分工（并行，互不阻塞）
 | 谁 | 负责 | 数量 |
 |---|---|---|
-| **你（同事）** | **B 档：家用器械，全部 17 个**；外加 B 档要用的道具 | 17 |
-| Hark | A 档剩余部分（进行中），之后做 C 档健身房 17 个，以及 C 档的器械道具 | 12 + 17 |
+| **同事 1** | **B 档：家用器械，全部 17 个**；外加 B 档要用的道具 | 17 |
+| **同事 2** | **C 档 9 个**：绳索器械、地雷杆、固定器械和壶铃行走，详见 `HANDOFF-C.md` | 9 |
+| Hark | A 档剩余部分（进行中）；C 档 8 个：双杠、吊环、罗马椅/GHD、反向背伸 | 12 + 8 |
 
 ### 你的 17 个动作（id · 名称 · 器械）
 | id | 名称 | 器械 | 难度提示 |
@@ -38,7 +39,7 @@
 - `specs/*-B.js`：**你独占**。
 - `page/props.js` 里的道具：
   - **你负责**：哑铃、壶铃、弹力带/弹力圈、平行杆、单杠、泡沫轴、瑞士球、滑盘、长凳、墙。
-  - **Hark 负责**：地雷杆、绳索器械、双杠、吊环、罗马椅/GHD、反向背伸机、髋外展机、腿屈伸机。
+  - **同事 2 负责**：地雷杆、绳索器械（龙门架/单柄/绳/脚踝扣）、髋外展机、腿屈伸机。**Hark 负责**：双杠、吊环、罗马椅/GHD、反向背伸机。
   - 每个道具写成独立函数，各加各的，不改对方的函数。
 - **共享核心**（`page/engine.js`、`page/toon.js`、`lib/*`、`drill.py`、`theme.json`）：
   - 能不改就不改。
@@ -48,7 +49,7 @@
 ## 3. 代码与分支
 - 仓库：https://github.com/mhgd3250905/3D-Body
 - 共享分支：`feature/drill-anim`（基于 `design/muscle-sync`）。引擎在 `tools/drill-anim/`。
-- 你的工作分支：从 `feature/drill-anim` 拉出 `feature/drill-anim-B`，阶段性 PR 回 `feature/drill-anim`。
+- 工作分支：同事 1 用 `feature/drill-anim-B`，同事 2 用 `feature/drill-anim-C2`，都从 `feature/drill-anim` 拉出，阶段性 PR 回 `feature/drill-anim`。
 - **永远不要合并进 master**（master 是线上 Flutter App）。
 
 ## 4. 环境搭建（约 30 分钟）
