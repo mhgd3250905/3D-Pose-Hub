@@ -123,6 +123,36 @@ Object.assign(B, {
     const hub = new t.Mesh(new t.CylinderGeometry(0.014, 0.014, 0.034, 12), steel); hub.rotation.z = Math.PI / 2; wheel.add(hub);
     const yoke = new t.Mesh(new t.BoxGeometry(0.05, 0.03, out), frame); yoke.position.set(0, py, 0.085 + out / 2); g.add(yoke);
     g.userData.exit = new t.Vector3(0, py, 0.085 + out); return g; },
+  // leg-extension machine: seat + reclined back pad + side handles + frame + weight stack (static, sized from the spec), and the
+  // moving lever: a roller pad fitted at build time to the front of the rest shins (+gap) and fixed to the right shin bone, an arm
+  // from the pivot hub (on the knee axis, outside the right knee) to the roller. spec: {type:'legExtension', seatY, seatZ:[z0,z1],
+  // back:{y, z, tilt}, handles:{x, y, z:[z0,z1]}, rollerUp:0.09, rollerR:0.045, gap:0.003, armX:-0.25}
+  legExtension(th, s) { const t = T(), v = flareInspector.viewer; v.motion.reset(); v.coach.updateMatrixWorld(true);
+    const g = new t.Group(), pad = P.mat(th, { base: '#2b2e35', rimK: 0.55 }), frame = P.mat(th, { rimK: 0.9 }), steel = P.mat(th, { base: '#8a8f99', rimK: 1.0 }), dark = P.mat(th, { base: '#202228', rimK: 0.5 });
+    const box = (sz, c, m, rx = 0) => { const b = new t.Mesh(new t.BoxGeometry(...sz), m); b.position.set(...c); b.rotation.x = rx; g.add(b); return b; };
+    const [z0, z1] = s.seatZ, sy = s.seatY; box([0.40, 0.07, z1 - z0], [0, sy - 0.035, (z0 + z1) / 2], pad);
+    box([0.34, 0.03, z1 - z0 - 0.04], [0, sy - 0.085, (z0 + z1) / 2], frame);
+    const B = s.back, a = (B.tilt || 8) * Math.PI / 180, H = B.h || 0.62, u = new t.Vector3(0, Math.cos(a), -Math.sin(a)), n = new t.Vector3(0, Math.sin(a), Math.cos(a));
+    const bc = new t.Vector3(0, B.y, B.z).addScaledVector(u, H / 2 - 0.2).addScaledVector(n, -0.035); box([0.38, H, 0.07], bc.toArray(), pad, -a);
+    box([0.06, H, 0.04], bc.clone().addScaledVector(n, -0.06).toArray(), frame, -a);
+    const post = (x, z, h, w = 0.06) => box([w, h, w], [x, h / 2, z], frame);
+    post(0, z0 + 0.05, sy - 0.1); post(0, z1 - 0.05, sy - 0.1); box([0.5, 0.04, z1 - z0 + 0.5], [0, 0.02, (z0 + z1) / 2 - 0.1], frame);
+    post(0, bc.z - 0.12, bc.y - 0.1 + 0.05);
+    const stackZ = Math.min(z0, B.z) - 0.35; box([0.30, 0.55, 0.16], [-0.30, 0.30, stackZ], dark); post(-0.46, stackZ, 1.25, 0.05); post(-0.14, stackZ, 1.25, 0.05); box([0.37, 0.05, 0.08], [-0.30, 1.27, stackZ], frame);
+    const hd = s.handles; for (const sx of [-1, 1]) { const h = tube(t, new t.Vector3(sx * hd.x, hd.y, hd.z[0]), new t.Vector3(sx * hd.x, hd.y, hd.z[1]), 0.016, pad, 20); g.add(h);
+      g.add(tube(t, new t.Vector3(sx * hd.x, hd.y, hd.z[0]), new t.Vector3(sx * 0.17, sy - 0.08, hd.z[0]), 0.012, frame, 12)); }
+    // roller fitted to the rest shins
+    const shin = v.coach.getObjectByName('rightShin'), foot = v.coach.getObjectByName('rightFoot');
+    const K = shin.getWorldPosition(new t.Vector3()), A = foot.getWorldPosition(new t.Vector3()), up = K.clone().sub(A).normalize();
+    const c0 = A.clone().addScaledVector(up, s.rollerUp ?? 0.09), p = new t.Vector3(); let front = 0;
+    v.coach.traverse(o => { if (!o.isSkinnedMesh || !o.visible) return; const N = o.geometry.attributes.position.count;
+      for (let i = 0; i < N; i++) { o.getVertexPosition(i, p); p.applyMatrix4(o.matrixWorld); const d = p.clone().sub(c0); if (Math.abs(d.dot(up)) > (s.rollerR ?? 0.045) + 0.01 || Math.abs(p.x) > 0.25) continue; if (p.z - c0.z > front) front = p.z - c0.z; } });
+    const R = s.rollerR ?? 0.045, rc = new t.Vector3(0, c0.y, c0.z + front + R + (s.gap ?? 0.003));
+    const roller = new t.Mesh(new t.CylinderGeometry(R, R, 0.40, 32), pad); roller.rotation.z = Math.PI / 2; const rg = new t.Group(); rg.add(roller);
+    const capM = new t.Mesh(new t.CylinderGeometry(0.018, 0.018, 0.46, 12), steel); capM.rotation.z = Math.PI / 2; rg.add(capM); g.add(rg);
+    const arm = tube(t, new t.Vector3(), new t.Vector3(0, 1, 0), 0.02, frame, 12), hub = new t.Mesh(new t.CylinderGeometry(0.055, 0.055, 0.05, 24), dark); hub.rotation.z = Math.PI / 2; g.add(arm); g.add(hub);
+    const sq = shin.getWorldQuaternion(new t.Quaternion()).invert();
+    g.userData = { rg, arm, hub, ro: shin.worldToLocal(rc.clone()), rq: sq, roller: { R, front } }; E_reset(); return g; },
   // straight steel cable from a cableStack pulley exit to a handle anchor; spec: {type:'cable', from:'pulley1', to:'h1', r:0.0032}
   cable(th, s) { const t = T(); const m = tube(t, new t.Vector3(), new t.Vector3(0, 1, 0), s.r || 0.0032, P.mat(th, { base: s.colour || '#a3a8b2', rimK: 0.4 }), 10); m.userData.cable = true; return m; },
 });
@@ -152,6 +182,10 @@ P.place = function(o) { const t = T(), v = flareInspector.viewer, s = o.userData
     const dir = dors.clone().multiplyScalar(s.lean ?? 0.6).add(want.multiplyScalar(1 - (s.lean ?? 0.6))).normalize();
     const inv = o.quaternion.clone().invert(); const dl = dir.clone().applyQuaternion(inv); o.userData.loop.rotation.set(0, s.angle !== undefined ? -s.angle * Math.PI / 180 : -Math.atan2(dl.z, dl.x), 0);   // angle: fixed loop direction in the handle frame (deg), chosen clear of hand + wrist
     o.updateMatrixWorld(true); P.anchors[s.name || 'handle'] = o.userData.apexLocal.clone().applyMatrix4(o.userData.loop.matrixWorld); return; }
+  if (s.type === 'legExtension') { const U = o.userData, shin = v.coach.getObjectByName('rightShin'); shin.updateMatrixWorld(true);
+    U.rg.position.copy(shin.localToWorld(U.ro.clone())); U.rg.quaternion.copy(shin.getWorldQuaternion(new t.Quaternion())).multiply(U.rq);
+    const knee = shin.getWorldPosition(new t.Vector3()), ax = s.armX ?? -0.25; const hubP = new t.Vector3(ax, knee.y, knee.z); U.hub.position.copy(hubP);
+    const end = U.rg.position.clone(); end.x = ax; setTube(t, U.arm, hubP, end); o.updateMatrixWorld(true); return; }
   if (s.type === 'cableStack') { place0(o); o.updateMatrixWorld(true); P.anchors[s.name || 'pulley'] = o.userData.exit.clone().applyMatrix4(o.matrixWorld);
     // the sheave turns to face the cable
     return; }
