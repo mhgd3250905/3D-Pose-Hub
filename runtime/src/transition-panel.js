@@ -1,3 +1,4 @@
+import { scrubCheckpoint } from './scrub-fields.js';
 import { Euler, Quaternion, MathUtils } from 'three';
 import { createTransitionEdits, loadTransitionEdits, saveTransitionEdits, validateTransitionEdits, transitionOptions, TRANSITION_STORAGE_KEY } from './transition-edits.js';
 import { samePose, OFFICIAL_FLARE_SEQUENCE } from './official-poses.js';
@@ -645,6 +646,8 @@ export function createTransitionPanel({ viewer, panel, shelf, sequence, storage,
     global('#transition-global-play').textContent = previewing ? '暂停' : '预览';
     global('#transition-keyframe-button').disabled = previewing || (endpoint && !dirty);
     global('#transition-keyframe-button').textContent = skipped ? '更新并恢复 · K' : endpoint ? '更新原关键帧 · K' : pointAt() ? '更新关键帧 · K' : '保存关键帧 · K';
+    // keyboard hint only where there is a keyboard
+    if (globalThis.matchMedia?.('(pointer: coarse)')?.matches) global('#transition-keyframe-button').textContent = global('#transition-keyframe-button').textContent.replace(' · K', '');
     for (const button of [global('#transition-skip-button'), $('#transition-skip-current')]) {
       button.disabled = previewing || Boolean(curveEdit) || Boolean(trajectoryPoseEdit) || guideEditor.active() || (fixed === null && !pointAt());
       button.textContent = skipped ? '恢复此帧' : '跳过此帧';
@@ -1000,12 +1003,12 @@ export function createTransitionPanel({ viewer, panel, shelf, sequence, storage,
     if (guideEditor.active()) { try { action();refresh(); } catch (error) { notify(error.message);refresh(); }return; }
     if (trajectoryPoseEdit) {
       const previous = poseEditSnapshot();
-      try { action();if (!samePose(previous, poseEditSnapshot())) trajectoryPoseHistory.push(previous);refresh(); }
+      try { action();if (scrubCheckpoint() && !samePose(previous, poseEditSnapshot())) trajectoryPoseHistory.push(previous);refresh(); }
       catch (error) { setPoseEditSnapshot(previous);notify(error.message);refresh(); }return;
     }
     if (curveEdit) { try { action(); } catch (error) { notify(error.message);refresh(); }return; }
     const previous = currentPose();applying = true;
-    try { action();checkpoint(previous);markChanged(); }
+    try { action();if (scrubCheckpoint()) checkpoint(previous);markChanged(); }
     catch (error) { viewer.motion.applyPose(previous);viewer.poseEditor.refresh();notify(error.message);refresh(); }
     finally { applying = false; }
   }

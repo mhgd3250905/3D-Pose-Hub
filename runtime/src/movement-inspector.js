@@ -6,6 +6,9 @@ import { resolveMovementTraining } from './movement-training.js';
 import { createMovementContext as createAtlasMovementContext } from './movement-context.js';
 import { createFitnessMovementContext } from './fitness-movement-context.js';
 import { isDeepSurfaceGroup } from './movement-surface-regions.js';
+import { openMuscleViewer } from './muscle-viewer.js';
+import { resolveGroup } from './muscle-map.js';
+import { FLARE_SECTIONS, flareFilters, flareItems, flarePoseFilter, flareSectionFor } from './flare-muscle-groups.js';
 
 const SLOTS = [
   { id: 'shoulder-arm-support', title: '肩臂支撑', colour: '#72d6ff', groups: ['shoulders', 'scapular', 'arms'],
@@ -99,6 +102,10 @@ export function createMovementInspector({ viewer, container, onClose, refreshIco
   const locatorText = node(document, 'span', 'mvi-locator-label', '查看全身');locatorCaption.append(locatorIcon, locatorText);locator.append(locatorPlot, locatorCaption);viewport.appendChild(locator);
   const empty = node(document, 'p', 'mvi-empty', '正在载入完整参考人体…');empty.setAttribute('role', 'status');viewport.appendChild(empty);
   const hint = node(document, 'span', 'mvi-view-hint', '拖动旋转 · 滚轮缩放');viewport.appendChild(hint);
+  const fullscreenButton = node(document, 'button', 'mvi-fullscreen');fullscreenButton.type = 'button';
+  fullscreenButton.setAttribute('aria-label', '全屏查看 3D 肌群位置');
+  fullscreenButton.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg><span>全屏 3D</span>';
+  viewport.appendChild(fullscreenButton);
   const modelKey = node(document, 'p', 'mvi-model-key', '亮色标出肌群所在区域');modelKey.hidden = true;anatomyPane.appendChild(modelKey);
   const contextStatus = node(document, 'p', 'mvi-context-status');contextStatus.hidden = true;contextStatus.setAttribute('role', 'status');anatomyPane.appendChild(contextStatus);
   const role = node(document, 'p', 'mvi-role');anatomyPane.appendChild(role);
@@ -133,9 +140,27 @@ export function createMovementInspector({ viewer, container, onClose, refreshIco
   camera.layers.enable(1);
   const raycaster = new THREE.Raycaster(), pointer = new THREE.Vector2(), anchor = new THREE.Vector3(), projected = new THREE.Vector3();
   const renderDirection = new THREE.Vector3(), lineStart = new THREE.Vector3();
-  scene.add(new THREE.HemisphereLight(0xe5efff, 0x334258, 1.4));
+  scene.add(new THREE.HemisphereLight(0xdbe7ff, 0x22324a, 1.0));
   const key = new THREE.DirectionalLight(0xfff4e7, 1.65);key.position.set(2, 3, 4);scene.add(key);
   const fill = new THREE.DirectionalLight(0xb9d8ff, .5);fill.position.set(-3, 1, -2);scene.add(fill);
+  // Studio staging: an accent rim light from behind and a soft glowing floor disc.
+  const rim = new THREE.DirectionalLight(0x72d6ff, 1.25);rim.position.set(-1.5, 2.2, -3.5);scene.add(rim);
+  const floorMaterial = new THREE.ShaderMaterial({ transparent: true, depthWrite: false, toneMapped: false,
+    uniforms: { uColour: { value: new THREE.Color(0x72d6ff) }, uTime: { value: 0 }, uReveal: { value: 1 } },
+    vertexShader: 'varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}',
+    fragmentShader: `uniform vec3 uColour;uniform float uTime;uniform float uReveal;varying vec2 vUv;void main(){
+      float r=length(vUv-0.5)*2.0;float glow=(1.0-smoothstep(0.0,1.0,r))*0.30;
+      float ring=(smoothstep(0.66,0.70,r)-smoothstep(0.70,0.75,r))*0.55;
+      float wave=r<uReveal?(smoothstep(uReveal-0.18,uReveal,r)*(1.0-step(0.999,uReveal)))*0.8:0.0;
+      float a=(glow+ring*(0.75+0.25*sin(uTime*1.6))+wave)*smoothstep(1.0,0.86,r);
+      gl_FragColor=vec4(uColour*(0.6+glow),a);}` });
+  const floor = new THREE.Mesh(new THREE.CircleGeometry(.5, 64), floorMaterial);floor.rotation.x = -Math.PI / 2;floor.position.y = .002;floor.renderOrder = -1;reference.add(floor);
+  let introStart = 0, lastLookTime = 0, closingTimer = 0, originX = .5, originY = .1;
+  const INTRO_MS = 1250, reducedMotion = () => globalThis.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches;
+  const easeOut = t => 1 - Math.pow(1 - Math.max(0, Math.min(1, t)), 3);
+  // Remember where the user pressed, so the card unfolds out of that hotspot.
+  const rememberOrigin = event => { originX = event.clientX;originY = event.clientY; };
+  document.addEventListener('pointerdown', rememberOrigin, true);
   const leaderGeometry = new THREE.BufferGeometry();leaderGeometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(6), 3));
   const leaderMaterial = new THREE.LineBasicMaterial({ color: 0x72d6ff, transparent: true, opacity: .80, depthTest: false, depthWrite: false, toneMapped: false });
   const leader = new THREE.Line(leaderGeometry, leaderMaterial);leader.name = 'inspector-muscle-label';leader.layers.set(1);leader.renderOrder = 3;leader.frustumCulled = false;leader.visible = false;scene.add(leader);
@@ -144,7 +169,7 @@ export function createMovementInspector({ viewer, container, onClose, refreshIco
   let profile = null, slot = null, groups = [], currentGroup = null, selectedPartId = null, tab = 'anatomy', rendererFailed = false;
   let pointerDown = null, renderCount = 0, width = 1, height = 1, framedWidth = 0, returnFocus = null;
   let viewMode = 'local', viewDirection = 'front', manualDirection = null, fullBodyBounds = null, localBounds = null, pendingFrame = true;
-  let representation = 'surface';
+  let representation = 'surface', overlay = null, overlayOwnsInspector = false;
   const bodyContext = createFitnessMovementContext({ reference, requestRender, onReady: () => {
     if (active && currentGroup && !disposed && representation === 'surface') { frameCurrentReference();requestRender(); }
   } });
@@ -207,8 +232,8 @@ export function createMovementInspector({ viewer, container, onClose, refreshIco
     const side = sides.size > 1 ? 'both' : best.side;
     viewSide.textContent = (side === 'left' ? '左侧' : side === 'right' ? '右侧' : side === 'both' ? '双侧' : '中线') + ' · ' + (GROUP_POSITIONS[currentGroup.id] ?? '相关部位');
     callout.setAttribute('aria-label', groupName.textContent + '，' + sideName(side) + '，' + (GROUP_POSITIONS[currentGroup.id] ?? '相关部位'));
-    const rectangle = callout.getBoundingClientRect(), viewRect = viewport.getBoundingClientRect();
-    const x = rectangle.width ? rectangle.left - viewRect.left + 5 : width - 120, y = rectangle.height ? rectangle.bottom - viewRect.top + 3 : 90;
+    const rectangle = callout.getBoundingClientRect(), viewRect = viewport.getBoundingClientRect(), k = viewRect.width ? width / viewRect.width : 1;
+    const x = rectangle.width ? (rectangle.left - viewRect.left) * k + 5 : width - 120, y = rectangle.height ? (rectangle.bottom - viewRect.top) * k + 3 : 90;
     projected.copy(anchor).project(camera);
     lineStart.set(x / width * 2 - 1, 1 - y / height * 2, projected.z).unproject(camera);
     const positions = leaderGeometry.attributes.position;
@@ -217,24 +242,36 @@ export function createMovementInspector({ viewer, container, onClose, refreshIco
   }
   function renderLocator() {
     if (!fullBodyBounds || !locator || locator.hidden) return;
-    const viewRect = viewport.getBoundingClientRect(), rectangle = locatorPlot.getBoundingClientRect();
-    const plotWidth = Math.max(1, rectangle.width || 76), plotHeight = Math.max(1, rectangle.height || 112);
-    const x = Math.round(rectangle.left - viewRect.left), y = Math.round(height - (rectangle.bottom - viewRect.top));
+    const viewRect = viewport.getBoundingClientRect(), rectangle = locatorPlot.getBoundingClientRect(), k = viewRect.width ? width / viewRect.width : 1;
+    const plotWidth = Math.max(1, (rectangle.width || 76) * k), plotHeight = Math.max(1, (rectangle.height || 112) * k);
+    const x = Math.round((rectangle.left - viewRect.left) * k), y = Math.round(height - (rectangle.bottom - viewRect.top) * k);
     renderDirection.copy(camera.position).sub(controls?.target ?? localBounds.getCenter(new THREE.Vector3())).normalize();
     fitCamera(miniCamera, fullBodyBounds, renderDirection, plotWidth / plotHeight, 1.18);
     renderer.setViewport(x, y, plotWidth, plotHeight);renderer.setScissor(x, y, plotWidth, plotHeight);renderer.setScissorTest(true);
     renderer.setClearColor(0x112132, 1);renderer.clear(true, true, false);renderer.render(scene, miniCamera);
     renderer.setScissorTest(false);renderer.setViewport(0, 0, width, height);renderer.setClearColor(0x000000, 0);
   }
+  function animateLook(now) {
+    const elapsed = introStart ? now - introStart : INTRO_MS;
+    const reveal = reducedMotion() ? 1 : easeOut((elapsed - 180) / 950), spin = reducedMotion() ? 0 : (1 - easeOut(elapsed / INTRO_MS)) * .62;
+    bodyContext.setLook?.({ time: now / 1000, reveal });
+    floorMaterial.uniforms.uTime.value = now / 1000;floorMaterial.uniforms.uReveal.value = reducedMotion() ? 1 : easeOut(elapsed / 900);
+    reference.rotation.y = spin;floor.visible = representation === 'surface' && viewMode === 'full' || elapsed < INTRO_MS;
+    return elapsed < INTRO_MS;
+  }
   function render() {
-    frame = 0;if (!active || disposed || !renderer || tab !== 'anatomy') return;
+    frame = 0;if (!active || disposed || !renderer || tab !== 'anatomy' || overlayOwnsInspector) return;
+    if (overlay) { frame = requestAnimationFrame(render);return; }
+    const now = globalThis.performance?.now?.() ?? Date.now(), intro = animateLook(now);
+    // Breathing glow: ~24 fps while the card is open; full rate during the intro.
+    if (intro || now - lastLookTime > 41) { dirty = true;lastLookTime = now; }
     const changed = controls?.update() ?? false;
     if (pendingFrame && fullBodyBounds) fitMainCamera();
     if (dirty || changed) {
       scene.updateMatrixWorld(true);camera.updateMatrixWorld(true);updateLabel();
       renderer.setScissorTest(false);renderer.setViewport(0, 0, width, height);renderer.clear();renderer.render(scene, camera);renderLocator();renderCount++;dirty = false;
     }
-    if (changed) requestRender();
+    if (active && !disposed) frame = requestAnimationFrame(render);
   }
   function resize() {
     if (!active || disposed) return;
@@ -263,7 +300,8 @@ export function createMovementInspector({ viewer, container, onClose, refreshIco
     framedWidth = containerRect.width;
     if (!renderer || tab !== 'anatomy') return;
     const rectangle = viewport.getBoundingClientRect();
-    const nextWidth = Math.max(1, rectangle.width || viewport.clientWidth || 364), nextHeight = Math.max(1, rectangle.height || viewport.clientHeight || 300);
+    // clientWidth ignores the unfold transform, so the canvas is never sized while scaled down.
+    const nextWidth = Math.max(1, viewport.clientWidth || rectangle.width || 364), nextHeight = Math.max(1, viewport.clientHeight || rectangle.height || 300);
     if (nextWidth !== width || nextHeight !== height) {
       width = nextWidth;height = nextHeight;renderer.setSize(width, height, false);camera.aspect = width / height;camera.updateProjectionMatrix();pendingFrame = true;
     }
@@ -407,6 +445,25 @@ export function createMovementInspector({ viewer, container, onClose, refreshIco
     }
     drills.appendChild(article);
   }
+  const narrow = () => (container.getBoundingClientRect?.().width || globalThis.innerWidth || 1024) < 700;
+  function closeOverlay() { const current = overlay;overlay = null;current?.close(); }
+  function openFullscreen(ownsInspector) {
+    if (!profile || !slot) return;
+    closeOverlay();overlayOwnsInspector = ownsInspector;
+    // The full Flare set, one colour per group; "本帧" keeps this pose's
+    // annotated groups (with their support / leg sides) lit. It opens on the
+    // role of the card that was tapped (肩臂 → 支撑, 核心 → 核心, 髋腿 → 腿部).
+    const [all, ...roles] = flareFilters(), pose = flarePoseFilter(profile);
+    const handle = openMuscleViewer({ document, title: '托马斯全旋 · 核心肌群', accent: slot.colour,
+      subtitle: '原 ' + String(profile.sourceStepNumber).padStart(2, '0') + ' · ' + supportName(profile.supportHands) + ' · 肌群位置',
+      items: flareItems(), sections: FLARE_SECTIONS, filters: pose ? [all, pose, ...roles] : [all, ...roles], filter: flareSectionFor(slot.id) ?? 'all',
+      onClose: () => {
+        if (overlay === handle) overlay = null;
+        if (overlayOwnsInspector && active) close();
+        else requestRender();
+      } });
+    overlay = handle;
+  }
   function open(nextProfile, slotId) {
     if (disposed) return false;
     const nextSlot = slotFor(slotId), number = Number(nextProfile?.sourceStepNumber), hands = nextProfile?.supportHands;
@@ -415,9 +472,20 @@ export function createMovementInspector({ viewer, container, onClose, refreshIco
     const training = resolveMovementTraining(nextProfile, nextSlot.id);
     let next;try { next = structuredClone(nextProfile); } catch { return false; }
     if (!active) returnFocus = document.activeElement;
+    if (narrow()) {
+      // Phones: the full-screen 3D viewer replaces the small popup.
+      if (active && !overlayOwnsInspector) { root.hidden = true;if (frame) cancelAnimationFrame(frame);frame = 0; }
+      profile = next;slot = nextSlot;active = true;openFullscreen(true);return true;
+    }
+    if (overlayOwnsInspector) { overlayOwnsInspector = false;closeOverlay(); }
     profile = next;slot = nextSlot;groups = availableGroups(viewer, profile, slot);active = true;root.hidden = false;framedWidth = 0;
     viewMode = 'local';manualDirection = null;representation = 'surface';secondary.open = false;setLocatorCaption();updateRepresentationCopy();
     root.style.setProperty('--mvi-accent', slot.colour);root.dataset.slot = slot.id;
+    rim.color.set(slot.colour);floorMaterial.uniforms.uColour.value.set(slot.colour);
+    clearTimeout(closingTimer);root.classList.remove('mvi-closing');
+    {const host = root.getBoundingClientRect?.(), left = host?.left ?? 0, top = host?.top ?? 0;
+     root.style.setProperty('--mvi-origin-x', Math.round(originX - left) + 'px');root.style.setProperty('--mvi-origin-y', Math.round(originY - top) + 'px');}
+    root.classList.remove('mvi-opening');void root.offsetWidth;root.classList.add('mvi-opening');introStart = globalThis.performance?.now?.() ?? Date.now();
     title.textContent = slot.title;stage.textContent = '肌群解析 · 原 ' + String(profile.sourceStepNumber).padStart(2, '0') + ' · ' + supportName(profile.supportHands);
     const audience = profile.audienceLabels?.find(label => label.id === slot.id);
     task.textContent = text(profile.cue?.[slot.id === SLOTS[0].id ? 'support' : slot.id === SLOTS[1].id ? 'body' : 'legs']) || text(audience?.role) || text(training?.cue);
@@ -442,12 +510,17 @@ export function createMovementInspector({ viewer, container, onClose, refreshIco
   }
   function close() {
     if (!active) return;
-    const restoreFocus = root.contains(document.activeElement);active = false;root.hidden = true;pointerDown = null;
+    const restoreFocus = root.contains(document.activeElement);active = false;pointerDown = null;
+    const ownedByOverlay = overlayOwnsInspector;overlayOwnsInspector = false;closeOverlay();
+    if (ownedByOverlay) { root.hidden = true;onClose?.();returnFocus = null;return; }
+    root.classList.remove('mvi-opening');
+    if (reducedMotion()) root.hidden = true;
+    else { root.classList.add('mvi-closing');clearTimeout(closingTimer);closingTimer = setTimeout(() => { if (!active) { root.hidden = true;root.classList.remove('mvi-closing'); } }, 230); }
     if (frame) cancelAnimationFrame(frame);frame = 0;dirty = false;onClose?.();
     if (restoreFocus && returnFocus?.isConnected && returnFocus.getClientRects?.().length) returnFocus.focus?.({ preventScroll: true });returnFocus = null;
   }
   function setDirection(direction) { manualDirection = direction;viewDirection = direction;pendingFrame = true;fitMainCamera(); }
-  listen(closeButton, 'click', close);listen(frontButton, 'click', () => setDirection('front'));listen(backButton, 'click', () => setDirection('back'));
+  listen(closeButton, 'click', close);listen(fullscreenButton, 'click', () => openFullscreen(false));listen(frontButton, 'click', () => setDirection('front'));listen(backButton, 'click', () => setDirection('back'));
   listen(resetButton, 'click', () => { manualDirection = null;viewDirection = currentGroup?.view ?? 'front';fitMainCamera(); });
   listen(locator, 'click', () => { viewMode = viewMode === 'full' ? 'local' : 'full';setLocatorCaption();fitMainCamera(); });
   listen(anatomyTab, 'click', () => setTab('anatomy'));listen(trainingTab, 'click', () => setTab('training'));
@@ -461,11 +534,15 @@ export function createMovementInspector({ viewer, container, onClose, refreshIco
       event.preventDefault();setTab(tab === 'anatomy' ? 'training' : 'anatomy');(tab === 'anatomy' ? anatomyTab : trainingTab).focus?.({ preventScroll: true });
     }
   });
-  listen(document, 'keydown', event => { if (active && event.key === 'Escape') { event.preventDefault();close(); } });
+  listen(document, 'keydown', event => {
+    if (!active || event.key !== 'Escape') return;
+    event.preventDefault();
+    if (overlay && !overlayOwnsInspector) closeOverlay();else close();
+  });
   const observer = typeof ResizeObserver === 'function' ? new ResizeObserver(resize) : null;observer?.observe(viewport);observer?.observe(container);
   function dispose() {
     if (disposed) return;close();disposed = true;observer?.disconnect();
-    for (const remove of listeners) remove();controls?.removeEventListener('change', requestRender);controls?.dispose();clearCopies();bodyContext.dispose();atlasContext.dispose();
+    document.removeEventListener('pointerdown', rememberOrigin, true);clearTimeout(closingTimer);floor.geometry.dispose();floorMaterial.dispose();for (const remove of listeners) remove();controls?.removeEventListener('change', requestRender);controls?.dispose();clearCopies();bodyContext.dispose();atlasContext.dispose();
     leaderGeometry.dispose();leaderMaterial.dispose();environmentTarget?.dispose();environmentTarget = null;scene.environment = null;
     renderer?.dispose();renderer?.domElement.remove();renderer = null;controls = null;root.remove();scene.clear();profile = null;groups = [];currentGroup = null;
   }
@@ -476,6 +553,7 @@ export function createMovementInspector({ viewer, container, onClose, refreshIco
       parts: copies.map(mesh => ({ id: mesh.userData.part.id, name: mesh.userData.part.name, side: mesh.userData.part.side })),
       selectedPartId, rendererReady: Boolean(renderer), renderCount, referencePose: true, geometryOwnership: 'borrowed', bodyContext: bodyContext.state, atlasContext: atlasContext.state,
       representation, visibleAtlasMeshes: copies.filter(mesh => mesh.visible).length, trainingMode: 'text',
+      fullscreen: Boolean(overlay), fullscreenReplacesPopup: overlayOwnsInspector,
       viewMode, viewDirection, locatorRenderer: 'shared-scissor', fullBodyBounds: fullBodyBounds ? [fullBodyBounds.min.toArray(), fullBodyBounds.max.toArray()] : null,
       localBounds: localBounds ? [localBounds.min.toArray(), localBounds.max.toArray()] : null }; } };
 }

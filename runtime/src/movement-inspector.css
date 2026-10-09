@@ -105,3 +105,79 @@
   .mvi-locator-plot { height: 92px; }.mvi-callout { top: 46px; }
 }
 @media (prefers-reduced-motion: reduce) { .movement-inspector { animation: none; } }
+
+/* ---- Studio look + unfold motion (2026-10-07) ---- */
+.movement-inspector {
+  --mvi-origin-x: 50%; --mvi-origin-y: 0px;
+  background:
+    radial-gradient(120% 60% at 50% -10%, color-mix(in srgb, var(--mvi-accent) 16%, transparent), transparent 60%),
+    linear-gradient(180deg, #13243aee, #0c1828f2);
+  box-shadow: 0 28px 70px #020a1773, 0 0 0 1px #ffffff08 inset, 0 0 42px color-mix(in srgb, var(--mvi-accent) 14%, transparent);
+  animation: none;
+}
+.movement-inspector::before {
+  content: ""; position: absolute; inset: 0; z-index: 0; border-radius: inherit; padding: 1px; pointer-events: none;
+  background: conic-gradient(from var(--mvi-sweep, 0deg), transparent 0 70%, color-mix(in srgb, var(--mvi-accent) 90%, #fff) 82%, transparent 94%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude;
+  opacity: 0;
+}
+.movement-inspector > * { position: relative; z-index: 1; }
+@property --mvi-sweep { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+.movement-inspector.mvi-opening {
+  transform-origin: var(--mvi-origin-x) var(--mvi-origin-y);
+  animation: mvi-unfold .62s cubic-bezier(.16, .9, .22, 1) both;
+}
+.movement-inspector.mvi-opening::before { animation: mvi-sweep 1.1s .18s cubic-bezier(.4, 0, .2, 1) both; }
+.movement-inspector.mvi-opening .mvi-header,
+.movement-inspector.mvi-opening .mvi-task,
+.movement-inspector.mvi-opening .mvi-viewer,
+.movement-inspector.mvi-opening .mvi-model-key,
+.movement-inspector.mvi-opening .mvi-drill-preview,
+.movement-inspector.mvi-opening .mvi-footer { animation: mvi-rise .55s cubic-bezier(.2, .8, .2, 1) both; }
+.movement-inspector.mvi-opening .mvi-header { animation-delay: .10s; }
+.movement-inspector.mvi-opening .mvi-task { animation-delay: .16s; }
+.movement-inspector.mvi-opening .mvi-viewer { animation-delay: .20s; }
+.movement-inspector.mvi-opening .mvi-model-key { animation-delay: .30s; }
+.movement-inspector.mvi-opening .mvi-drill-preview { animation-delay: .34s; }
+.movement-inspector.mvi-opening .mvi-footer { animation-delay: .40s; }
+.movement-inspector.mvi-closing { display: flex !important; transform-origin: var(--mvi-origin-x) var(--mvi-origin-y); animation: mvi-fold .22s cubic-bezier(.4, 0, 1, 1) both; pointer-events: none; }
+.movement-inspector.mvi-closing[hidden] { display: none !important; }
+@keyframes mvi-unfold {
+  0% { opacity: 0; transform: scale(.42); filter: blur(10px) saturate(1.4); clip-path: inset(30% 30% 30% 30% round 40px); }
+  45% { opacity: 1; filter: blur(0) saturate(1.15); }
+  100% { opacity: 1; transform: none; filter: none; clip-path: inset(0 0 0 0 round 22px); }
+}
+@keyframes mvi-fold { to { opacity: 0; transform: scale(.82); filter: blur(6px); } }
+@keyframes mvi-rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes mvi-sweep { 0% { opacity: 0; --mvi-sweep: 0deg; } 15% { opacity: 1; } 85% { opacity: 1; } 100% { opacity: 0; --mvi-sweep: 360deg; } }
+
+/* Viewer stage: spotlight, faint grid and a one-off scan line */
+.mvi-viewer {
+  background:
+    radial-gradient(70% 55% at 50% 42%, color-mix(in srgb, var(--mvi-accent) 13%, #1a2f48) 0%, #0d1a2b 62%, #0a1524 100%);
+  box-shadow: 0 0 0 1px #9cc4ea14 inset, 0 -30px 60px #050d1a66 inset;
+}
+.mvi-viewer::before {
+  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: .5;
+  background-image: linear-gradient(#8fb6dd0d 1px, transparent 1px), linear-gradient(90deg, #8fb6dd0d 1px, transparent 1px);
+  background-size: 22px 22px; -webkit-mask: radial-gradient(75% 70% at 50% 45%, #000 30%, transparent 85%); mask: radial-gradient(75% 70% at 50% 45%, #000 30%, transparent 85%);
+}
+.mvi-viewer::after {
+  content: ""; position: absolute; left: 0; right: 0; top: -20%; height: 20%; z-index: 1; pointer-events: none; opacity: 0;
+  background: linear-gradient(180deg, transparent, color-mix(in srgb, var(--mvi-accent) 22%, transparent) 70%, color-mix(in srgb, var(--mvi-accent) 60%, #fff) 98%, transparent);
+}
+.movement-inspector.mvi-opening .mvi-viewer::after { animation: mvi-scan 1.05s .32s cubic-bezier(.45, 0, .2, 1) both; }
+@keyframes mvi-scan { 0% { opacity: 0; transform: translateY(0); } 12% { opacity: .9; } 88% { opacity: .7; } 100% { opacity: 0; transform: translateY(600%); } }
+.mvi-canvas { z-index: 0; }
+.mvi-view-name { text-shadow: 0 0 18px color-mix(in srgb, var(--mvi-accent) 45%, transparent), 0 2px 8px #081525; }
+.mvi-drill-preview { transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+.mvi-drill-preview:hover { transform: translateY(-1px); box-shadow: 0 10px 26px #02081440, 0 0 0 1px color-mix(in srgb, var(--mvi-accent) 40%, transparent) inset; }
+@media (prefers-reduced-motion: reduce) {
+  .movement-inspector.mvi-opening, .movement-inspector.mvi-opening *, .movement-inspector.mvi-opening::before, .movement-inspector.mvi-opening .mvi-viewer::after { animation: none !important; }
+}
+
+/* 「全屏 3D」: opens the full-screen muscle viewer (muscle-viewer.js). */
+.mvi-fullscreen { position: absolute; z-index: 2; top: 8px; right: 8px; display: inline-flex; align-items: center; gap: 5px; height: 32px; padding: 0 11px 0 9px; border: 1px solid color-mix(in srgb, var(--mvi-accent) 55%, #a7c7e31f); border-radius: 9px; background: #0c1a29e6; color: #eaf4fc; font-size: 12px; font-weight: 600; line-height: 1; cursor: pointer; box-shadow: 0 4px 14px #020a1740; }
+.mvi-fullscreen svg { width: 15px; height: 15px; fill: none; stroke: var(--mvi-accent); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.mvi-fullscreen:hover { background: #142a40f0; color: #fff; }
+.mvi-fullscreen:focus-visible { outline: 2px solid var(--mvi-accent); outline-offset: 2px; }

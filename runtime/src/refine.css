@@ -1,0 +1,223 @@
+/* ==========================================================================
+   Refine layer · 设计系统统一层
+   Loaded last. Only visual: colours, type, spacing, controls. No layout logic
+   or behaviour lives here, so removing this import restores the old look.
+   ========================================================================== */
+:root{
+  /* mapped onto src/tokens.css — the old names stay so this layer keeps working */
+  --ink-0:var(--bg-0);--ink-1:var(--bg-1);--ink-2:var(--bg-2);
+  --glass:var(--mat-regular);--glass-strong:var(--mat-thick);
+  --hair:var(--hairline);--hair-strong:var(--hairline-strong);
+  --text-1:var(--label-1);--text-2:var(--label-2);--text-3:var(--label-3);
+  --accent-strong:var(--accent-hi);
+  --axis-x:#ff7b6b;--axis-y:#8fd694;--axis-z:#7fb2ff;
+  --r-sm:10px;--r-md:14px;--r-lg:20px;
+  --ease:var(--ease-out);
+  --mono:var(--font-mono);
+  font-family:var(--font);color:var(--text-1);background:var(--ink-0);
+  -webkit-font-smoothing:antialiased;
+}
+body{background:var(--ink-0)}
+button,input,select,textarea{font-family:var(--font)}
+::selection{background:var(--accent-soft)}
+
+/* ---------- Stage ---------- */
+.viewport{background:
+  radial-gradient(120% 90% at 50% 42%,#1a2a42 0%,#111c2e 48%,var(--ink-0) 100%)!important}
+.viewport-bottom{color:var(--text-3);font-size:11px;letter-spacing:0}
+.viewport-bottom>span:last-child{display:none}
+.orientation{opacity:.35}
+
+/* ---------- Header ---------- */
+.workspace-header{height:64px;background:linear-gradient(rgba(10,16,27,.86),rgba(10,16,27,0))}
+.workspace-header .brand strong{font-size:15px;letter-spacing:2.4px;font-weight:600}
+.workspace-header .brand-sub{font-size:10px;letter-spacing:2.4px;color:var(--text-3)}
+.workspace-header .brand-mark,.workspace-header .brand-mark svg{width:22px;height:22px}
+.workspace-header .stage-heading .eyebrow{display:none}
+.workspace-header .stage-heading h2{font-size:14px;font-weight:500;color:var(--text-1);letter-spacing:.3px;margin:0}
+.workspace-header .header-actions{gap:6px}
+.workspace-button{height:36px;min-width:36px;padding:0 11px;border:1px solid transparent;background:var(--fill-2);border-radius:10px;color:var(--text-2);font-size:12.5px;box-shadow:none;backdrop-filter:blur(14px);transition:background .18s var(--ease),color .18s var(--ease),border-color .18s var(--ease)}
+.workspace-button:hover{background:var(--fill-3);color:var(--text-1);border-color:transparent}
+.workspace-button[aria-expanded="true"],.workspace-button[aria-pressed="true"]{background:var(--accent-soft);color:var(--accent-strong);border-color:transparent}
+.workspace-button svg{width:16px;height:16px;stroke-width:1.6}
+
+/* ---------- Drawers ---------- */
+.workspace-drawer{top:72px;bottom:16px;border:1px solid var(--hair);background:var(--glass);border-radius:var(--r-lg);backdrop-filter:blur(26px) saturate(1.2);-webkit-backdrop-filter:blur(26px) saturate(1.2);box-shadow:0 24px 70px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.04)}
+.library-drawer{left:16px}.details-drawer{right:16px}
+.drawer-heading{padding:16px 18px 14px;border-bottom:1px solid var(--hair);background:transparent}
+.drawer-heading .eyebrow{display:none}
+.drawer-heading h2{font-size:15px;font-weight:600;margin:0;color:var(--text-1);letter-spacing:.2px}
+.drawer-heading .icon-button{height:28px;width:28px;background:transparent;border:0;color:var(--text-3);border-radius:8px}
+.drawer-heading .icon-button:hover{background:var(--fill-2);color:var(--text-1)}
+.drawer-content{padding:16px 18px 20px;scrollbar-color:rgba(160,184,216,.18) transparent}
+.drawer-content::-webkit-scrollbar{width:8px}.drawer-content::-webkit-scrollbar-thumb{background:rgba(160,184,216,.16);border-radius:8px;border:2px solid transparent;background-clip:padding-box}
+
+/* Mode switcher: one quiet segmented surface instead of five boxed buttons */
+.workspace-drawer .mode-nav{grid-template-columns:repeat(2,1fr);gap:4px;padding:4px;background:var(--fill-1);border:1px solid var(--hair);border-radius:12px;margin-bottom:22px}
+.workspace-drawer .mode-button{justify-content:flex-start;gap:8px;padding:9px 11px;background:transparent;border:0;border-radius:9px;color:var(--text-2);font-size:13px;transition:background .18s var(--ease),color .18s var(--ease)}
+.workspace-drawer .mode-button:hover{background:var(--fill-2);color:var(--text-1)}
+.workspace-drawer .mode-button.active{background:var(--fill-3);color:var(--text-1);box-shadow:inset 0 0 0 1px var(--hair-strong)}
+.workspace-drawer .mode-button.active svg{color:var(--accent)}
+.workspace-drawer .mode-button svg{width:15px;height:15px}
+
+/* ---------- Type ---------- */
+.eyebrow{font-size:10.5px;letter-spacing:1.6px;color:var(--text-3)}
+.workspace-drawer .viewer-label p{font-size:10.5px;letter-spacing:1.4px;color:var(--text-3)}
+.workspace-drawer .viewer-label h3{font-size:20px!important;font-weight:600;color:var(--text-1);letter-spacing:.2px}
+.workspace-drawer .viewer-label>span{font-size:12.5px;color:var(--text-2);line-height:1.7}
+.workspace-drawer .detail-title{font-size:21px;font-weight:600;line-height:1.45;margin:6px 0 10px;color:var(--text-1);letter-spacing:.2px}
+.workspace-drawer .detail-copy,.detail-copy{font-size:13px;line-height:1.75;color:var(--text-2)}
+.workspace-drawer .detail-section{border-top:1px solid var(--hair);margin-top:20px;padding-top:18px}
+.workspace-drawer .detail-section h3,.detail-section h3{font-size:13px;font-weight:600;color:var(--text-1);letter-spacing:.2px}
+.workspace-drawer .function-row{font-size:12.5px;line-height:1.75;color:var(--text-2)}
+.pose-note,.workspace-drawer .stage-footnote p,.evidence-note{font-size:11.5px!important;line-height:1.7!important;color:var(--text-3)!important}
+.presets-heading h3{font-size:13px;font-weight:600;color:var(--text-1)}
+.presets-heading span{font-size:11px;color:var(--text-3);letter-spacing:.6px;font-family:var(--mono)}
+.presets-copy{font-size:12px;line-height:1.7;color:var(--text-3)}
+.pose-presets,.workspace-drawer .pose-shelf{border-top:1px solid var(--hair)}
+
+/* ---------- Lists: steps / presets ---------- */
+.preset-list{gap:4px}
+.preset-button{align-items:center;gap:12px;border:1px solid transparent;background:transparent;border-radius:var(--r-md);padding:10px 12px;transition:background .18s var(--ease),border-color .18s var(--ease)}
+.preset-button:hover{background:var(--fill-2);border-color:transparent}
+.preset-button.active{background:var(--accent-soft);border-color:rgba(140,196,255,.28)}
+.preset-number{font-family:var(--mono);font-style:normal;font-size:13px;line-height:1;color:var(--text-3);min-width:22px;padding:6px 0;text-align:center;border-radius:6px;background:var(--fill-2)}
+.preset-button.active .preset-number{background:var(--accent);color:var(--accent-ink)}
+.preset-text strong{font-size:13.5px;font-weight:500;color:var(--text-1)}
+.preset-text span{font-size:11.5px;color:var(--text-3);-webkit-line-clamp:1}
+.preset-button.active .preset-text span{color:var(--text-2)}
+.pose-step{border:1px solid transparent;background:var(--fill-1);border-radius:var(--r-md)}
+.pose-step.active{border-color:rgba(140,196,255,.28);background:var(--accent-soft)}
+.pose-step>button span{font-family:var(--mono);font-style:normal;font-size:12px;color:var(--text-3)}
+.pose-step strong{font-size:12.5px;color:var(--text-1)}
+.pose-step-actions button{background:transparent;color:var(--text-3);border-radius:7px}
+.pose-step-actions button:hover{background:var(--fill-3);color:var(--text-1)}
+
+/* Transition segments grid (09 → 10 …) */
+.transition-segments{gap:6px!important}
+.transition-segments button{border:1px solid transparent!important;background:var(--fill-1)!important;border-radius:var(--r-md)!important;transition:background .18s var(--ease)}
+.transition-segments button:hover{background:var(--fill-2)!important}
+.transition-segments button.active{background:var(--accent-soft)!important;border-color:rgba(140,196,255,.3)!important}
+.transition-segments button strong,.transition-segments button b{font-family:var(--mono);font-weight:500;letter-spacing:.5px}
+
+/* ---------- Form controls ---------- */
+.pose-field{font-size:12px;color:var(--text-2);gap:7px}
+.pose-field input,.pose-field select,.motion-toolbar select,.transition-transport-controls select,.workspace-drawer select{
+  appearance:none;-webkit-appearance:none;height:36px;padding:0 34px 0 12px;
+  background:var(--fill-2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23a6b3c6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 12px center;
+  border:1px solid transparent;border-radius:var(--r-sm);color:var(--text-1);font-size:12.5px;transition:border-color .18s var(--ease),background-color .18s var(--ease)}
+.pose-field input{background-image:none;padding-right:12px}
+.pose-field select:hover,.workspace-drawer select:hover{background-color:var(--fill-3)}
+select:focus-visible,input:focus-visible{outline:none!important;border-color:rgba(140,196,255,.55)!important;box-shadow:0 0 0 3px rgba(140,196,255,.14)}
+select option{background:var(--ink-2);color:var(--text-1)}
+
+/* XYZ numeric triplets: colour lives in a slim axis tick, numbers are tabular */
+.pose-values{gap:6px;margin-top:18px}
+.pose-values legend{font-size:12px;font-weight:600;color:var(--text-1);padding-bottom:8px}
+.pose-values legend span{font-size:11px;font-weight:400;color:var(--text-3)}
+.pose-values label{position:relative;font-size:11px;color:var(--text-3);border-top:0!important;line-height:1.6}
+.pose-values label::before{content:"";position:absolute;left:0;top:7px;width:6px;height:6px;border-radius:50%;background:var(--text-3)}
+.pose-values label{padding-left:11px}
+.pose-values label:nth-of-type(1)::before{background:var(--axis-x)}.pose-values label:nth-of-type(2)::before{background:var(--axis-y)}.pose-values label:nth-of-type(3)::before{background:var(--axis-z)}
+.pose-values input{margin:5px 0 0 -11px;width:calc(100% + 11px);height:36px;padding:0 10px;background:var(--fill-2);border:1px solid transparent;border-radius:var(--r-sm);color:var(--text-1);font-family:var(--mono);font-size:13px;font-variant-numeric:tabular-nums;transition:border-color .18s var(--ease),background .18s var(--ease)}
+.pose-values input:hover{background:var(--fill-3)}
+.pose-values input::-webkit-inner-spin-button{opacity:.35}
+
+/* Checkboxes → soft rounded checks */
+.workspace-drawer input[type="checkbox"]{appearance:none;-webkit-appearance:none;width:16px;height:16px;margin:0;flex-shrink:0;border-radius:5px;background:var(--fill-3);border:1px solid var(--hair-strong);display:inline-grid;place-content:center;cursor:pointer;transition:background .15s var(--ease),border-color .15s var(--ease)}
+.workspace-drawer input[type="checkbox"]::after{content:"";width:9px;height:9px;transform:scale(0);transition:transform .15s var(--ease);background:var(--accent-ink);clip-path:polygon(14% 44%,0 59%,40% 100%,100% 22%,86% 8%,40% 70%)}
+.workspace-drawer input[type="checkbox"]:checked{background:var(--accent);border-color:var(--accent)}
+.workspace-drawer input[type="checkbox"]:checked::after{transform:scale(1)}
+.workspace-drawer input[type="checkbox"]:disabled{opacity:.4;cursor:default}
+.pose-locks{gap:8px;font-size:12px;color:var(--text-2)}
+.pose-locks label{gap:7px;padding:7px 10px;border-radius:999px;background:var(--fill-1);cursor:pointer}
+.pose-locks label:hover{background:var(--fill-2)}
+
+/* Range sliders */
+input[type="range"]{-webkit-appearance:none;appearance:none;background:transparent;height:20px!important;margin:0!important;cursor:pointer}
+input[type="range"]::-webkit-slider-runnable-track{height:4px;border-radius:4px;background:linear-gradient(90deg,rgba(140,196,255,.45),rgba(160,184,216,.18))}
+input[type="range"]::-moz-range-track{height:4px;border-radius:4px;background:rgba(160,184,216,.2)}
+input[type="range"]::-moz-range-progress{height:4px;border-radius:4px;background:var(--accent)}
+input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;margin-top:-6px;border-radius:50%;background:#fff;border:0;box-shadow:0 0 0 4px rgba(140,196,255,.28),0 2px 8px rgba(0,0,0,.4);transition:box-shadow .15s var(--ease)}
+input[type="range"]:hover::-webkit-slider-thumb{box-shadow:0 0 0 6px rgba(140,196,255,.3),0 2px 8px rgba(0,0,0,.4)}
+input[type="range"]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:#fff;border:0;box-shadow:0 0 0 4px rgba(140,196,255,.28)}
+
+/* ---------- Buttons ---------- */
+.pose-transform-buttons button,.pose-save-actions button,.pose-file-actions button,.pose-tools button,.focus-button,.pose-mirror-completion button,.pose-restore{
+  height:36px;padding:0 12px;border:1px solid transparent!important;background:var(--fill-2)!important;border-radius:var(--r-sm)!important;color:var(--text-1)!important;font-size:12.5px!important;font-weight:500;display:inline-flex;align-items:center;justify-content:center;gap:6px;transition:background .18s var(--ease),color .18s var(--ease),transform .12s var(--ease)}
+.pose-transform-buttons button:hover,.pose-save-actions button:hover,.pose-file-actions button:hover,.pose-tools button:hover,.focus-button:hover,.pose-mirror-completion button:hover{background:var(--fill-3)!important}
+.pose-transform-buttons button:active,.pose-tools button:active,.focus-button:active{transform:scale(.98)}
+.pose-transform-buttons{padding:3px;gap:3px;background:var(--fill-1);border-radius:10px}
+.pose-transform-buttons button{background:transparent!important;color:var(--text-2)!important}
+.pose-transform-buttons button.active{background:var(--fill-3)!important;color:var(--text-1)!important;box-shadow:inset 0 0 0 1px var(--hair-strong)}
+.pose-transform-buttons kbd{font-family:var(--mono);font-size:10px;color:var(--text-3);margin-left:6px;padding:1px 5px;border-radius:4px;background:var(--fill-2)}
+.pose-save-actions #pose-save,.focus-button.transition-save,#transition-keyframe-button{background:var(--accent)!important;color:var(--accent-ink)!important;border-color:var(--accent)!important;font-weight:600!important}
+.pose-save-actions #pose-save:hover,.focus-button.transition-save:hover,#transition-keyframe-button:hover{background:var(--accent-strong)!important}
+button:disabled,.focus-button:disabled{opacity:.38!important}
+
+/* Disclosure */
+.workspace-drawer details>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:8px;padding:11px 12px;border-radius:var(--r-sm);background:var(--fill-1);font-size:12.5px;color:var(--text-1)}
+.workspace-drawer details>summary::-webkit-details-marker{display:none}
+.workspace-drawer details>summary::before{content:"";width:6px;height:6px;border-right:1.6px solid var(--text-3);border-bottom:1.6px solid var(--text-3);transform:rotate(-45deg);transition:transform .2s var(--ease)}
+.workspace-drawer details[open]>summary::before{transform:rotate(45deg)}
+.workspace-drawer details>summary:hover{background:var(--fill-2)}
+
+/* Inspector toolbar (移动/旋转 + views) */
+.workspace-drawer .viewer-toolbar{background:var(--fill-1)!important;border:1px solid var(--hair)!important;border-radius:12px!important;padding:4px!important;justify-content:space-between!important;backdrop-filter:none}
+.segmented{gap:2px}
+.segmented>button{padding:7px 12px;border-radius:8px;font-size:12px;color:var(--text-2);transition:background .18s var(--ease),color .18s var(--ease)}
+.segmented>button.active{background:var(--fill-3);color:var(--text-1);box-shadow:inset 0 0 0 1px var(--hair-strong)}
+.view-buttons button{width:30px;height:30px;border-radius:8px;color:var(--text-3)}
+.view-buttons button:hover{background:var(--fill-2);color:var(--text-1)}
+.view-buttons button.active{background:var(--fill-3);color:var(--accent)}
+.toolbar-divider{background:var(--hair-strong)}
+/* 姿势编辑里面板自带更完整的移动/旋转切换，顶部这组重复，收起 */
+body[data-mode="pose"] #pose-view-toolbar .segmented,body[data-mode="pose"] #pose-view-toolbar .toolbar-divider{display:none}
+body[data-mode="pose"] #pose-view-toolbar{justify-content:flex-end!important}
+
+/* ---------- Canvas chips ---------- */
+.view-caption{font-size:11.5px;color:var(--text-2);padding:6px 11px;border-radius:999px;background:var(--glass);border:1px solid var(--hair);backdrop-filter:blur(14px)}
+#part-count{font-size:11px;color:var(--text-3)}
+.icon-button{border-color:transparent;background:var(--glass);color:var(--text-2);border-radius:9px}
+.icon-button:hover{background:var(--fill-3);color:var(--text-1)}
+.hover-tooltip{background:var(--glass-strong);border:1px solid var(--hair-strong);border-radius:10px;font-size:12px;color:var(--text-1);backdrop-filter:blur(16px);box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.hover-tooltip small{font-size:11px;color:var(--text-3)}
+
+/* ---------- Transport bars ---------- */
+.motion-toolbar{border:1px solid var(--hair)!important;background:var(--glass)!important;border-radius:var(--r-lg)!important;backdrop-filter:blur(24px);box-shadow:0 16px 50px rgba(0,0,0,.35)}
+.play-button{width:40px;height:40px;background:var(--text-1);color:var(--ink-0);box-shadow:0 4px 18px rgba(140,196,255,.25);transition:transform .15s var(--ease)}
+.play-button:hover{transform:scale(1.05)}
+.timeline-label{font-size:11.5px;color:var(--text-2);font-family:var(--mono);letter-spacing:0}
+.timeline-label>span:last-child{font-family:var(--font);color:var(--text-3)}
+
+.transition-transport{border:1px solid var(--hair)!important;background:var(--glass)!important;border-radius:var(--r-lg)!important;padding:14px 18px 14px!important;backdrop-filter:blur(26px) saturate(1.2);box-shadow:0 18px 60px rgba(0,0,0,.4)}
+.transition-transport.is-range-locked{border-color:rgba(140,196,255,.4)!important}
+.transition-transport-heading{font-size:12px!important;color:var(--text-1)!important;font-family:var(--mono)}
+.transition-transport-heading span:last-child{font-family:var(--font);font-size:11px!important;color:var(--text-3)!important}
+.transition-transport-controls{gap:6px!important}
+.transition-transport-controls button,.transition-transport-controls select{height:34px;padding:0 12px!important;background-color:var(--fill-2)!important;border:1px solid transparent!important;border-radius:var(--r-sm)!important;color:var(--text-1)!important;font-size:12px!important;transition:background-color .18s var(--ease)}
+.transition-transport-controls select{padding-right:30px!important}
+.transition-transport-controls button:hover,.transition-transport-controls select:hover{background-color:var(--fill-3)!important}
+#transition-global-prev,#transition-global-next{width:34px;padding:0!important;font-family:var(--mono)}
+#transition-global-play{min-width:64px}
+.transition-transport-controls #transition-skip-button[aria-pressed="true"]{background-color:rgba(242,144,127,.18)!important;color:#ffc2b6!important}
+
+/* ---------- Dialog / toast ---------- */
+.about-dialog{background:var(--glass-strong);border:1px solid var(--hair-strong);border-radius:20px;backdrop-filter:blur(30px)}
+.about-dialog p{font-size:13px;line-height:1.8;color:var(--text-2)}
+.toast{background:var(--glass-strong);border:1px solid var(--hair-strong);border-radius:12px;font-size:12.5px;color:var(--text-1);backdrop-filter:blur(20px)}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* ---------- Round 1b fixes ---------- */
+.pose-values label{font-size:11.5px!important;cursor:ew-resize;user-select:none}
+.pose-values label:hover{color:var(--text-2)}
+.pose-values label.is-scrubbing{color:var(--accent)}
+.pose-values label.is-scrubbing input{border-color:rgba(140,196,255,.55);background:var(--accent-soft)}
+body.is-scrubbing,body.is-scrubbing *{cursor:ew-resize!important}
+.pose-values input{-moz-appearance:textfield}
+.pose-values input::-webkit-inner-spin-button,.pose-values input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+body[data-mode="pose"] #pose-view-toolbar{width:fit-content!important;margin:0 0 4px auto!important;padding:2px!important}
+.workspace-drawer select{text-overflow:ellipsis;white-space:nowrap;overflow:hidden;padding-right:28px;background-position:right 9px center}
+.viewport .view-caption,.viewport-top .view-caption{font-size:11.5px!important}
+.viewport #part-count{font-size:11px!important}

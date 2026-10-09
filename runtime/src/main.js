@@ -1,3 +1,4 @@
+import './tokens.css';
 import './style.css';
 import './workspace.css';
 import './movement.css';
@@ -5,7 +6,10 @@ import './movement-cards.css';
 import './training-preview.css';
 import './movement-stage.css';
 import './movement-inspector.css';
-import { createIcons, Orbit, Info, Camera, ArrowUpRight, PersonStanding, Rotate3d, Dumbbell, Search, Scan, UserRound, RotateCcw, PanelRight, PanelLeft, SlidersHorizontal, EyeOff, Maximize, Mouse, Play, Pause, Move3d, Shield, MoveUp, Hand, MoveHorizontal, Expand, MoveDiagonal2, ChevronRight, ChevronDown, CircleDot, Repeat2, CornerUpLeft, ArrowLeft, X, Pencil, Activity, MoveUpRight } from 'lucide';
+import './refine.css';
+import { installScrubFields } from './scrub-fields.js';
+installScrubFields();
+import { createIcons, Orbit, Info, Camera, ArrowUpRight, PersonStanding, Rotate3d, Dumbbell, Search, Scan, UserRound, RotateCcw, PanelRight, PanelLeft, SlidersHorizontal, EyeOff, Maximize, Mouse, Play, Pause, Move3d, Shield, MoveUp, Hand, MoveHorizontal, Expand, MoveDiagonal2, ChevronRight, ChevronDown, CircleDot, Repeat2, CornerUpLeft, ArrowLeft, X, Pencil, Activity, MoveUpRight, Ellipsis } from 'lucide';
 import { muscleGroups, groupById, phases, exercises, exerciseById } from './data.js';
 import { BodyViewer } from './viewer.js';
 import { createPosePanel } from './pose-panel.js';
@@ -15,12 +19,16 @@ import { createMovementPanel } from './movement-panel.js';
 import { createMovementTransport } from './movement-transport.js';
 import { createMovementInspector } from './movement-inspector.js';
 import { createTrainingPreview } from './training-preview.js';
+import { createMuscleSync } from './muscle-sync.js';
+import { openMuscleViewer } from './muscle-viewer.js';
 import { createFlarePosePresets } from './pose-presets.js';
 import { renderSources } from './research-ui.js';
 import { OFFICIAL_FLARE_SEQUENCE, resolveOfficialSequence, sequenceFromSavedSteps, saveOfficialSequence, saveV41DefaultSequence, previousOfficialSequence, restoreOfficialSequence, updateOfficialFrame } from './official-poses.js';
 import { rebaseTransitionEdits, saveOfficialFrameEdits } from './transition-edits.js';
+import { createAppMenu } from './app-menu.js';
+import './theme.css';
 
-const icons={Orbit,Info,Camera,ArrowUpRight,PersonStanding,Rotate3d,Dumbbell,Search,Scan,UserRound,RotateCcw,PanelRight,PanelLeft,SlidersHorizontal,EyeOff,Maximize,Mouse,Play,Pause,Move3d,Shield,MoveUp,Hand,MoveHorizontal,Expand,MoveDiagonal2,ChevronRight,ChevronDown,CircleDot,Repeat2,CornerUpLeft,ArrowLeft,X,Pencil,Activity,MoveUpRight};
+const icons={Orbit,Info,Camera,ArrowUpRight,PersonStanding,Rotate3d,Dumbbell,Search,Scan,UserRound,RotateCcw,PanelRight,PanelLeft,SlidersHorizontal,EyeOff,Maximize,Mouse,Play,Pause,Move3d,Shield,MoveUp,Hand,MoveHorizontal,Expand,MoveDiagonal2,ChevronRight,ChevronDown,CircleDot,Repeat2,CornerUpLeft,ArrowLeft,X,Pencil,Activity,MoveUpRight,Ellipsis};
 const refreshIcons=()=>createIcons({icons,attrs:{'stroke-width':1.5}});
 const $=selector=>document.querySelector(selector);
 const $$=selector=>[...document.querySelectorAll(selector)];
@@ -28,7 +36,7 @@ const escape=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&
 let mode='anatomy',selectedGroup='shoulders',selectedExercise='supportShift',phaseIndex=0,selectedPart=null,viewer,posePanel,transitionPanel,workspaceUI,movementPanel,presets=[],demonstration=null,displayedStep=-1,ready=false;
 let toastTimeout;
 let motionModel='saved';
-let movementTransport, trainingPreview, movementInspector, inspectionTime = null;
+let movementTransport, trainingPreview, movementInspector, inspectionTime = null, muscleSync = null;
 const periodicPhases={rear:'rear',right:'sideA',front:'front',left:'sideB'};
 
 function toast(message){$('#toast').textContent=message;$('#toast').hidden=false;clearTimeout(toastTimeout);toastTimeout=setTimeout(()=>{$('#toast').hidden=true;},4200);}
@@ -67,10 +75,13 @@ function updateTime(time){
   if(mode==='transition'||trainingPreview?.active)return;
   if(movementInspector?.active&&inspectionTime!==null&&Math.abs(time-inspectionTime)>.005)movementInspector.close();
   const period=viewer?.motion?.getMetrics().period||9;
-  $('#timeline').max=period;$('#timeline').value=time;$('#time-label').textContent=`${time.toFixed(1)} / ${period.toFixed(1)} s`;updatePhase(time);movementPanel?.update(time);movementTransport?.update();
+  $('#timeline').max=period;$('#timeline').value=time;$('#timeline').style.setProperty('--p',(time/period).toFixed(4));$('#time-label').textContent=`${time.toFixed(1)} / ${period.toFixed(1)} s`;updatePhase(time);movementPanel?.update(time);movementTransport?.update();muscleSync?.update(time);
 }
 
 function localStore(){try{return localStorage;}catch{return null;}}
+// Synced muscle body: same sequence and clock as the main animation, shown only over the saved animation.
+function syncMuscleSequence(){if(muscleSync&&demonstration&&transitionPanel)muscleSync.setSequence({...demonstration,...transitionPanel.options(),motionModel},viewer.motion);}
+function syncMuscleVisibility(){muscleSync?.setVisible(ready&&mode==='motion'&&motionModel==='saved'&&!trainingPreview?.active&&!movementInspector?.active);}
 function setMotionModel(value,{render=true}={}){
   const next=value==='periodic'?'periodic':'saved';
   movementInspector?.close();
@@ -81,6 +92,7 @@ function setMotionModel(value,{render=true}={}){
     motionModel=next;$('#motion-model').value=next;displayedStep=-1;
     movementPanel?.setSequence({...demonstration,...transitionPanel.options(),motionModel:next});
     movementTransport?.setSequence({...demonstration,...transitionPanel.options(),motionModel:next});
+    syncMuscleSequence();syncMuscleVisibility();
     if(render){updateMotionCaption();renderPhases();updateTime(viewer.time);updateLayerButtons();renderDetail();}
     return true;
   }catch(error){$('#motion-model').value=motionModel;toast(error.message);return false;}
@@ -89,12 +101,12 @@ function updateMotionCaption(){
   if(mode!=='motion')return;
   const periodic=motionModel==='periodic';
   $('#pose-presets').hidden=periodic;
-  $('#stage-title').textContent=periodic?'托马斯 · 数学轨迹试验':'托马斯 · 动作与发力';
+  $('#stage-title').textContent=periodic?'托马斯全旋 · 轨迹试验':'托马斯全旋';
   $('#stage-footnote').textContent=periodic?'整圈连续生成。拖动时间轴检查摆腿与换手，切换“你的保存动画”即可对比。':'按照你保存的 9 步展示。点击步骤或拖动时间轴查看，暂停后可以继续编辑。';
 }
 function applyTransitionOptions(options){
   const previous=transitionPanel?.options();
-  try{viewer.setSequence({...demonstration,...options,motionModel},{preserveView:true});}
+  try{viewer.setSequence({...demonstration,...options,motionModel},{preserveView:true});muscleSync?.setSequence({...demonstration,...options,motionModel},viewer.motion);}
   catch(error){if(previous)viewer.setSequence({...demonstration,...previous,motionModel},{preserveView:true});throw error;}
 }
 function replaceDemonstration(sequence,action='save'){
@@ -107,7 +119,7 @@ function replaceDemonstration(sequence,action='save'){
   }catch(error){viewer.setSequence({...previous,...transitionPanel?.options(),motionModel});throw error;}
   demonstration=structuredClone(sequence);
   transitionPanel?.setSequence(sequence);
-  presets.splice(0,presets.length,...createFlarePosePresets(viewer.motion,demonstration));
+  presets.splice(0,presets.length,...createFlarePosePresets(viewer.motion,demonstration));syncMuscleSequence();
   renderPhases();displayedStep=-1;updateTime(viewer.time);posePanel.renderPresets();
   if(mode==='pose')posePanel.render();else renderDetail();
   updateLayerButtons();updatePlayButton();
@@ -117,7 +129,7 @@ function saveAnimationFrames(sequence, edits, { restore = false } = {}) {
   const saved = saveOfficialFrameEdits(sequence, edits, localStore(), { restore });
   demonstration = structuredClone(sequence);
   presets.splice(0,presets.length,...createFlarePosePresets(viewer.motion,demonstration));
-  renderPhases();displayedStep=-1;posePanel.renderPresets();
+  renderPhases();displayedStep=-1;posePanel.renderPresets();syncMuscleSequence();
   return { sequence: demonstration, document: saved };
 }
 function updateAnimationFrame(index, pose, edits) {
@@ -228,25 +240,26 @@ function setMode(next,{fromCurrent=false}={}){
   $('#transition-shelf').hidden=!transition;if(transition){$('#pose-shelf').hidden=true;$('#pose-presets').hidden=true;}
   $('#transition-transport').hidden=!transition;
   $$('.library-drawer .sidebar-section-head,.library-drawer .search,#muscle-list').forEach(element=>{element.hidden=motion||editing;});
-  $('#stage-kicker').textContent=transition?'TRANSITION WORKSHOP':editing?'POSE WORKSHOP':motion?'MOVEMENT BREAKDOWN':training?'TRAINING CONNECTIONS':'ANATOMY EXPLORER';
-  $('#stage-title').textContent=transition?'托马斯 · 动画编辑':editing?'托马斯 · 关键姿势':motion?'托马斯 · 9 步展示':training?'辅助练习':'身体与肌群';
+  $('#stage-kicker').textContent=transition?'动画编辑':editing?'姿势编辑':motion?'动作分解':training?'辅助训练':'肌群探索';
+  $('#stage-title').textContent=transition?'托马斯全旋':editing?'关键姿势':motion?'托马斯全旋':training?'辅助练习':'身体与肌群';
   $('#stage-footnote').textContent=transition?'白色帧更新原姿态，蓝色帧修正过渡；按 K 保存，前后自动补帧。':editing?'这些姿势是可修改的起点。按你的动作标准调整，保存为自己的步骤。':motion?'按照你保存的 9 步展示。点击步骤或拖动时间轴查看，暂停后可以继续编辑。':training?'教学建议基于肌肉功能和动作需求；先掌握受控支撑，再连接专项动作。':'完整人物用于观察姿态；点选肌群，切换真实局部解剖视图。';
   workspaceUI?.setMode(next);
   if(transition)transitionPanel.enter();else if(editing){posePanel.enter(previous,{fromCurrent});}
   if(motion){posePanel?.renderPresets();updateMotionCaption();displayedStep=-1;renderPhases();updateTime(viewer.time);}
-  if(training)renderTraining();updateLayerButtons();updatePlayButton();renderMuscles();if(!transition)renderDetail();
+  if(motion)syncMuscleSequence();
+  if(training)renderTraining();updateLayerButtons();updatePlayButton();renderMuscles();if(!transition)renderDetail();syncMuscleVisibility();
 }
 
 function syncMovementLesson(){
   const active=!!movementPanel?.active;
   if(!active&&movementInspector?.active)movementInspector.close();
-  $('#movement-lesson-button').hidden=mode!=='motion'||motionModel!=='saved'||!!trainingPreview?.active;
+  $('#movement-lesson-button').hidden=true; // teaching overlays are retired from the main motion view
   $('#movement-lesson-button').setAttribute('aria-pressed',String(active));
   $('#movement-lesson-button').classList.toggle('active',active);
   $('#motion-toolbar').hidden=mode!=='motion'||!!trainingPreview?.active;
   movementTransport?.setVisible(mode==='motion'&&motionModel==='saved');
   movementTransport?.update();
-  updatePlayButton();
+  updatePlayButton();syncMuscleVisibility();
 }
 function toggleMovementLesson(){
   if(ready&&mode==='motion'&&motionModel==='saved')movementPanel.toggle();
@@ -333,7 +346,7 @@ async function initialize(){
     viewer.setSequence({...demonstration,...transitionPanel.options()},{preserveView:true});
     movementPanel=createMovementPanel({viewer,viewport:$('#viewport'),refreshIcons,onChanged:syncMovementLesson,onTrain:openMovementTraining,onInspect:openMovementInspector});
     movementInspector=createMovementInspector({viewer,container:$('#viewport'),refreshIcons,onClose:()=>{
-      inspectionTime=null;movementPanel.setInspectionSlot();viewer.dirty=true;updatePlayButton();
+      inspectionTime=null;movementPanel.setInspectionSlot();viewer.dirty=true;updatePlayButton();syncMuscleVisibility();
     }});
     movementTransport=createMovementTransport({viewer,toolbar:$('#motion-toolbar'),panel:()=>movementPanel,refreshIcons,onSeek:()=>{updatePlayButton();movementPanel.update(viewer.time);}});
     trainingPreview=createTrainingPreview({viewer,viewport:$('#viewport'),refreshIcons,onChanged:state=>{
@@ -341,14 +354,19 @@ async function initialize(){
       else{$('#view-caption').textContent='对应的基础训练';$('#part-count').textContent='辅助动作示范';}
       syncMovementLesson();
     }});
+    muscleSync=createMuscleSync({viewport:$('#viewport'),toolbar:$('#motion-toolbar'),storage:localStore,onReserve:()=>workspaceUI.sync(),
+      onOpenViewer:info=>{viewer.playing=false;updatePlayButton();openMuscleViewer({title:info.title,subtitle:info.subtitle,items:info.items,sections:info.sections});}});
+    syncMuscleSequence();
     renderPhases();$('#part-count').textContent='完整人物';
     const boneCount=manifest.parts.filter(p=>p.system==='skeletal').length,muscleCount=manifest.parts.length-boneCount;
     $('#asset-summary').innerHTML=`<div class="asset-statistics"><div><strong>${muscleCount}</strong><span>肌肉结构</span></div><div><strong>${boneCount}</strong><span>骨骼结构</span></div><div><strong>08</strong><span>Flare 功能热点</span></div></div>`;
     setMode('motion');workspaceUI.sync();$('#capture-button').disabled=false;
     // Diagnostics are available only on the explicit local verification page.
-    if(new URLSearchParams(location.search).has('inspect'))window.flareInspector={status:()=>({...viewer.getStatus(),editor:viewer.poseEditor.getState(),workspace:workspaceUI.getState()}),projectPart:id=>viewer.projectPart(id),projectCoach:()=>viewer.projectCoach(),projectHandle:id=>viewer.projectHandle(id),setTime:t=>viewer.setTime(t),capturePose:()=>viewer.motion.capturePose(),poseLibrary:()=>posePanel.getLibrary(),presetLibrary:()=>JSON.parse(JSON.stringify(presets)),demonstration:()=>structuredClone(demonstration),transitions:()=>({document:transitionPanel.getDocument(),state:transitionPanel.getState()}),parts:()=>manifest.parts.map(p=>({id:p.id,name:p.name,hotspot:p.hotspot,system:p.system,side:p.side})),rigMetrics:()=>viewer.motion.getMetrics(),boneRotations:()=>Object.fromEntries(['left','right'].flatMap(side=>['UpperArm','Forearm','Thigh','Shin'].map(suffix=>{const name=side+suffix,bone=viewer.motion.group.getObjectByName(name);return[name,bone.getWorldQuaternion(bone.quaternion.clone()).toArray()];})))};
+    if(new URLSearchParams(location.search).has('inspect'))window.flareInspector={viewer,status:()=>({...viewer.getStatus(),editor:viewer.poseEditor.getState(),workspace:workspaceUI.getState()}),projectPart:id=>viewer.projectPart(id),projectCoach:()=>viewer.projectCoach(),projectHandle:id=>viewer.projectHandle(id),setTime:t=>viewer.setTime(t),capturePose:()=>viewer.motion.capturePose(),poseLibrary:()=>posePanel.getLibrary(),presetLibrary:()=>JSON.parse(JSON.stringify(presets)),demonstration:()=>structuredClone(demonstration),transitions:()=>({document:transitionPanel.getDocument(),state:transitionPanel.getState()}),parts:()=>manifest.parts.map(p=>({id:p.id,name:p.name,hotspot:p.hotspot,system:p.system,side:p.side})),rigMetrics:()=>viewer.motion.getMetrics(),boneRotations:()=>Object.fromEntries(['left','right'].flatMap(side=>['UpperArm','Forearm','Thigh','Shin'].map(suffix=>{const name=side+suffix,bone=viewer.motion.group.getObjectByName(name);return[name,bone.getWorldQuaternion(bone.quaternion.clone()).toArray()];})))};
     if(window.flareInspector)window.flareInspector.trajectory=()=>({...viewer.trajectoryGuide.getStatus(),...transitionPanel.getTrajectoryState(),data:viewer.getTrajectoryData()});
     if(window.flareInspector)window.flareInspector.projectTrajectoryPoint=(joint,time)=>viewer.projectTrajectoryPoint(joint,time);
+    if(window.flareInspector)window.flareInspector.muscleSync=()=>muscleSync.getState();
+    if(window.flareInspector)window.flareInspector.muscleSyncApi=muscleSync;
     if(window.flareInspector)window.flareInspector.movementLesson=()=>({...movementPanel.getState(),guide:viewer.movementGuide.getStatus()});
     $('#movement-lesson-button').disabled=false;
     syncMovementLesson();
@@ -359,5 +377,6 @@ async function initialize(){
   }
 }
 $('#capture-button').disabled=true;
-workspaceUI=createWorkspace({viewer:()=>viewer,refreshIcons,onNotice:toast});
+createAppMenu({refreshIcons});
+workspaceUI=createWorkspace({viewer:()=>viewer,refreshIcons,onNotice:toast,extraInsets:()=>{muscleSync?.relayout();return muscleSync?.reserve();}});
 initialize();

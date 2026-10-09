@@ -33,6 +33,7 @@ export function createFitnessMovementContext({ reference, requestRender, onReady
   let error = null, checksumValidated = false, generation = 0, currentSlot = null, currentSide = null, currentGroup = null;
   let vertexCount = 0, triangleCount = 0, meshCount = 0, targetBounds = null, highlightedVertices = 0;
   const surfaces = [], patches = [], currentColour = new THREE.Color('#72d6ff');
+  const uniforms = { mviAccent: { value: currentColour }, mviTime: { value: 0 }, mviReveal: { value: 1 }, mviRim: { value: new THREE.Color('#6f9fd0') } };
   const notify = () => { if (!disposed) requestRender?.(); };
 
   function prepareSurface(object) {
@@ -51,16 +52,37 @@ export function createFitnessMovementContext({ reference, requestRender, onReady
       colours.setXYZ(i, baseColour.r, baseColour.g, baseColour.b);
     }
     object.geometry.setAttribute('color', colours);object.geometry.setAttribute('mviRegionWeight', weights);
+    // Studio look (2026-10-07): cool graphite body with a soft rim, clothing a
+    // deep navy, and the located region drawn as a lit "muscle" patch: crisp
+    // contour, faint fibre striation, slow breathing glow, revealed from its
+    // centre outwards when the inspector opens. Still a surface LOCATION cue,
+    // never measured activation.
+    if (role === 'body-surface') baseColour.set('#8a97a9');else baseColour.set('#1b2638');
+    for (let i = 0; i < positions.count; i++) colours.setXYZ(i, baseColour.r, baseColour.g, baseColour.b);
     for (const material of originalMaterials) {
       material.color.set(0xffffff);material.vertexColors = true;
+      if ('roughness' in material) material.roughness = role === 'clothing' ? .82 : .58;
+      if ('metalness' in material) material.metalness = 0;
       material.onBeforeCompile = shader => {
-        shader.uniforms.mviAccent = { value: currentColour };
-        shader.vertexShader = 'attribute float mviRegionWeight; varying float vMviRegionWeight;\n' + shader.vertexShader;
-        shader.fragmentShader = 'uniform vec3 mviAccent; varying float vMviRegionWeight;\n' + shader.fragmentShader;
-        shader.vertexShader = shader.vertexShader.replace('#include <begin_vertex>', '#include <begin_vertex>\nvMviRegionWeight = mviRegionWeight;');
-        shader.fragmentShader = shader.fragmentShader.replace('#include <emissivemap_fragment>', '#include <emissivemap_fragment>\ntotalEmissiveRadiance += mviAccent * vMviRegionWeight * 0.13;');
+        Object.assign(shader.uniforms, uniforms);
+        shader.vertexShader = 'attribute float mviRegionWeight; varying float vMviRegionWeight; varying vec3 vMviWorld;\n' + shader.vertexShader;
+        shader.fragmentShader = 'uniform vec3 mviAccent; uniform float mviTime; uniform float mviReveal; uniform vec3 mviRim; varying float vMviRegionWeight; varying vec3 vMviWorld;\n' + shader.fragmentShader;
+        shader.vertexShader = shader.vertexShader.replace('#include <begin_vertex>', '#include <begin_vertex>\nvMviRegionWeight = mviRegionWeight;vMviWorld = (modelMatrix * vec4(transformed, 1.0)).xyz;');
+        shader.fragmentShader = shader.fragmentShader.replace('#include <color_fragment>', `#include <color_fragment>
+          float mviW = vMviRegionWeight;
+          float mviShown = smoothstep(1.0 - mviReveal - 0.06, 1.0 - mviReveal + 0.03, mviW) * step(0.015, mviW);
+          float mviCore = smoothstep(0.16, 0.82, mviW) * mviShown;
+          float mviFibre = 0.86 + 0.14 * sin((vMviWorld.x * 0.55 + vMviWorld.z * 0.85) * 320.0 + vMviWorld.y * 18.0);
+          diffuseColor.rgb = mix(diffuseColor.rgb, mviAccent * 0.62 * mviFibre, mviCore * 0.88);`);
+        shader.fragmentShader = shader.fragmentShader.replace('#include <emissivemap_fragment>', `#include <emissivemap_fragment>
+          float mviEdge = (smoothstep(0.12, 0.17, mviW) - smoothstep(0.19, 0.26, mviW)) * mviShown;
+          float mviFront = smoothstep(0.0, 0.10, mviW) * (1.0 - smoothstep(0.10, 0.22, abs(mviW - (1.0 - mviReveal)))) * step(mviReveal, 0.985);
+          float mviPulse = 0.80 + 0.20 * sin(mviTime * 2.2 + mviW * 4.0);
+          totalEmissiveRadiance += mviAccent * (mviCore * 0.75 * mviPulse * mviFibre + mviEdge * 1.1 + mviFront * 0.9);
+          float mviFresnel = pow(1.0 - clamp(abs(dot(normal, normalize(vViewPosition))), 0.0, 1.0), 3.0);
+          totalEmissiveRadiance += mviRim * mviFresnel * 0.9;`);
       };
-      material.customProgramCacheKey = () => 'fitness-location-tint-v1';material.needsUpdate = true;
+      material.customProgramCacheKey = () => 'fitness-location-studio-v2';material.needsUpdate = true;
     }
     surfaces.push({ mesh: object, role, baseColour, worldPositions, worldNormals, colours, weights });
   }
@@ -130,7 +152,7 @@ export function createFitnessMovementContext({ reference, requestRender, onReady
     const regions = surfaceRegionsFor(groupId, sides, bounds.max.y);if (!regions.length) return null;
     currentSlot = slotId;currentGroup = groupId;currentSide = sides.length === 1 ? sides[0] : 'both';currentColour.set(colour);
     const hsl = currentColour.getHSL({}, THREE.SRGBColorSpace);
-    currentColour.setHSL(hsl.h, .88, .48, THREE.SRGBColorSpace);
+    currentColour.setHSL(hsl.h, .92, .56, THREE.SRGBColorSpace);uniforms.mviRim.value.copy(currentColour).lerp(new THREE.Color('#7fa8d8'), .6);
     targetBounds = new THREE.Box3();
     const patchMap = new Map(sides.map(side => [side, { side, centre: new THREE.Vector3(), weight: 0, points: [] }]));
     const tint = new THREE.Color(), point = new THREE.Vector3();
@@ -142,7 +164,7 @@ export function createFitnessMovementContext({ reference, requestRender, onReady
           const value = surfaceRegionWeight(region, point, normals[offset], normals[offset + 1], normals[offset + 2]);
           if (value > weight) { weight = value;side = region.side; }
         }
-        weights.setX(i, weight);tint.copy(baseColour).lerp(currentColour, Math.min(.91, weight * .94));colours.setXYZ(i, tint.r, tint.g, tint.b);
+        weights.setX(i, weight);tint.copy(baseColour).lerp(currentColour, Math.min(.30, weight * .30));colours.setXYZ(i, tint.r, tint.g, tint.b);
         if (weight > .24) { targetBounds.expandByPoint(point);highlightedVertices++; }
         if (weight > .44 && side) {
           const patch = patchMap.get(side);patch.centre.addScaledVector(point, weight);patch.weight += weight;
@@ -173,7 +195,13 @@ export function createFitnessMovementContext({ reference, requestRender, onReady
     disposed = true;generation++;loading = false;clear();releaseModel(model);model = null;metadata = null;bounds = null;
     surfaces.length = 0;group.removeFromParent();
   }
-  return { load, show, clear, dispose, anchors,
+  // Animated look: time drives the slow breathing glow, reveal (0..1) lights the
+  // region from its centre outwards; the rim takes a cool tint of the accent.
+  function setLook({ time, reveal } = {}) {
+    if (Number.isFinite(time)) uniforms.mviTime.value = time;
+    if (Number.isFinite(reveal)) uniforms.mviReveal.value = Math.max(0, Math.min(1, reveal));
+  }
+  return { load, show, clear, dispose, anchors, setLook,
     get targetBounds() { return targetBounds?.clone() ?? null; },
     get state() { return { loaded: Boolean(model), loading, disposed, visible: group.visible && Boolean(model), meshCount,
       slotId: currentSlot, groupId: currentGroup, side: currentSide, source: SOURCE, sourceId: metadata?.sourceId ?? null,

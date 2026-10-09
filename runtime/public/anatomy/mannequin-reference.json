@@ -1,0 +1,42 @@
+{
+  "source": "Blender Studio Human Base Meshes (via public/anatomy/fitness-reference.glb)",
+  "sourceId": "GEO-body_male_realistic",
+  "license": "CC0-1.0",
+  "units": "meters",
+  "upAxis": "+Y",
+  "frontAxis": "+Z",
+  "usedBy": "muscle viewer (src/muscle-viewer.js)",
+  "look": "the fitness reference body (same sculpt, head and face) without clothing; smooth one-piece shop-mannequin pelvis without sex features",
+  "parts": [
+    {
+      "name": "Fitness_Body_Surface",
+      "partRole": "body-surface",
+      "vertices": 37141,
+      "triangles": 74274
+    }
+  ],
+  "bounds": {
+    "min": [
+      -0.44132739305496216,
+      0.0,
+      -0.1113329827785492
+    ],
+    "max": [
+      0.4413275718688965,
+      1.6900311708450317,
+      0.17975743114948273
+    ]
+  },
+  "glbBytes": 1338688,
+  "glbSha256": "ac4c0dd92d42504a949fd0aff0063aaff0886a68278f95878bc3da9df177e056",
+  "modifications": [
+    "Shorts mesh and unused UVs removed; UV-seam duplicates welded (identical normals, lossless).",
+    "Groin/perineum: biharmonic fairing of 331 vertices, Taubin relaxation of the patch + 3-ring rim, Laplacian rounding of the crotch apex -> smooth continuous mannequin surface.",
+    "Normals recomputed on the faired patch only and feathered into the original normals over 4 edge rings; every other vertex and normal is unchanged."
+  ],
+  "limits": [
+    "Static reference pose.",
+    "Muscle panels are drawn per pixel by src/muscle-map.js: location only, never EMG or effort."
+  ],
+  "tool": "tools/mannequin/build_mannequin.py"
+}

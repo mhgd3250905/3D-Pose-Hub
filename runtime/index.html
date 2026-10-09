@@ -2,20 +2,43 @@
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#101827" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#08080a" />
     <meta name="description" content="跟着友善的运动人物理解托马斯全旋，在真实局部肌群中探索辅助训练。" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <title>FLARE / 身体与运动</title>
+    <title>Flare · 托马斯全旋</title>
   </head>
   <body>
     <div id="app">
       <header class="header workspace-header">
-        <div class="workspace-brand"><button id="toggle-library" class="workspace-button" aria-label="步骤与模式侧栏" aria-controls="library-drawer" aria-expanded="true" title="步骤与模式"><i data-lucide="panel-left"></i><span>步骤</span></button><a class="brand" href="/" aria-label="Flare Anatomy 首页"><span class="brand-mark"><i data-lucide="orbit"></i></span><strong>FLARE<span class="brand-slash"> / </span><span class="brand-sub">STUDIO</span></strong></a></div>
-        <div class="stage-heading"><div><p id="stage-kicker" class="eyebrow">MOVEMENT BREAKDOWN</p><h2 id="stage-title">托马斯 · 9 步展示</h2></div></div>
-        <div class="header-actions"><button id="movement-lesson-button" class="workspace-button" aria-label="发力提示" aria-pressed="false" title="显示或隐藏动画中的发力卡片" disabled><i data-lucide="move-up"></i><span>发力提示</span></button><button id="toggle-details" class="workspace-button" aria-label="调整与详情侧栏" aria-controls="details-drawer" aria-expanded="true" title="调整与详情"><i data-lucide="sliders-horizontal"></i><span>调整</span></button><button id="canvas-focus" class="workspace-button" aria-label="隐藏所有侧栏" aria-pressed="false" title="隐藏所有侧栏 · H"><i data-lucide="eye-off"></i></button><button id="canvas-fullscreen" class="workspace-button" aria-label="进入全屏" aria-pressed="false" title="进入全屏"><i data-lucide="maximize"></i></button><button id="capture-button" class="workspace-button" aria-label="保存视图" title="保存 PNG"><i data-lucide="camera"></i></button><button id="about-button" class="workspace-button" aria-label="模型与来源" title="模型与来源"><i data-lucide="info"></i></button></div>
+        <div class="workspace-brand"><button id="toggle-library" class="workspace-button" aria-label="步骤与模式侧栏" aria-controls="library-drawer" aria-expanded="true" title="步骤与模式"><i data-lucide="panel-left"></i><span>步骤</span></button><a class="brand" href="/" aria-label="Flare 首页"><span class="brand-mark" aria-hidden="true"></span><strong>Flare</strong></a></div>
+        <div class="stage-heading"><div><p id="stage-kicker" class="eyebrow">动作分解</p><h2 id="stage-title">托马斯 · 9 步展示</h2></div></div>
+        <div class="header-actions"><button id="movement-lesson-button" class="workspace-button" hidden aria-label="发力提示" aria-pressed="false" title="显示或隐藏动画中的发力卡片" disabled><i data-lucide="move-up"></i><span>发力提示</span></button><button id="toggle-details" class="workspace-button" aria-label="调整与详情侧栏" aria-controls="details-drawer" aria-expanded="true" title="调整与详情"><i data-lucide="sliders-horizontal"></i><span>调整</span></button><button id="canvas-focus" class="workspace-button" aria-label="隐藏所有侧栏" aria-pressed="false" title="隐藏所有侧栏 · H"><i data-lucide="eye-off"></i></button><button id="canvas-fullscreen" class="workspace-button" aria-label="进入全屏" aria-pressed="false" title="进入全屏"><i data-lucide="maximize"></i></button><button id="capture-button" class="workspace-button" aria-label="保存视图" title="保存 PNG"><i data-lucide="camera"></i></button><button id="about-button" class="workspace-button" aria-label="模型与来源" title="模型与来源"><i data-lucide="info"></i></button><button id="menu-button" class="workspace-button menu-button" aria-label="更多" title="更多" aria-haspopup="menu" aria-expanded="false" aria-controls="app-menu"><i data-lucide="ellipsis"></i></button></div>
       </header>
+      <div id="app-menu-scrim" class="app-menu-scrim" hidden></div>
+      <div id="app-menu" class="app-menu" role="menu" aria-label="更多" hidden>
+        <div class="app-menu-grabber" aria-hidden="true"></div>
+        <p class="app-menu-title">模式</p>
+        <div class="app-menu-modes">
+          <button type="button" role="menuitemradio" data-menu-mode="motion"><i data-lucide="rotate-3d"></i><span>动作分解</span></button>
+          <button type="button" role="menuitemradio" data-menu-mode="anatomy"><i data-lucide="person-standing"></i><span>肌群探索</span></button>
+          <button type="button" role="menuitemradio" data-menu-mode="training"><i data-lucide="dumbbell"></i><span>辅助训练</span></button>
+          <button type="button" role="menuitemradio" data-menu-mode="pose"><i data-lucide="pencil"></i><span>姿势编辑</span></button>
+          <button type="button" role="menuitemradio" data-menu-mode="transition"><i data-lucide="sliders-horizontal"></i><span>动画编辑</span></button>
+        </div>
+        <p class="app-menu-title">视图与工具</p>
+        <div class="app-menu-list">
+          <button type="button" role="menuitem" data-menu-proxy="#toggle-library"><i data-lucide="panel-left"></i><span>步骤与模式</span></button>
+          <button type="button" role="menuitem" data-menu-proxy="#toggle-details"><i data-lucide="panel-right"></i><span>详情与调整</span></button>
+          <button type="button" role="menuitem" data-menu-proxy="#reset-view"><i data-lucide="scan"></i><span>复位镜头</span></button>
+          <button type="button" role="menuitem" data-menu-proxy="#canvas-focus" class="app-menu-desktop"><i data-lucide="eye-off"></i><span>隐藏侧栏</span><kbd>H</kbd></button>
+          <button type="button" role="menuitem" data-menu-proxy="#canvas-fullscreen"><i data-lucide="maximize"></i><span>全屏</span></button>
+          <button type="button" role="menuitem" data-menu-proxy="#capture-button"><i data-lucide="camera"></i><span>保存截图</span></button>
+          <button type="button" role="menuitem" data-menu-proxy="#about-button"><i data-lucide="info"></i><span>模型与来源</span></button>
+        </div>
+      </div>
       <main class="workspace">
+        <div id="drawer-scrim" class="drawer-scrim" hidden></div>
         <aside id="library-drawer" class="sidebar workspace-drawer library-drawer" aria-label="步骤与模式">
           <div class="drawer-heading"><div><span class="eyebrow">MOVEMENT LIBRARY</span><h2>步骤与模式</h2></div><button class="icon-button" data-close-drawer="library" aria-label="收起步骤侧栏"><i data-lucide="x"></i></button></div>
           <div class="drawer-content">

@@ -1,3 +1,4 @@
+import { scrubCheckpoint } from './scrub-fields.js';
 import { Euler, Quaternion, MathUtils } from 'three';
 import { exerciseById } from './data.js';
 import { renderSources, poseSources } from './research-ui.js';
@@ -41,7 +42,7 @@ export function createPosePanel({viewer,panel,shelf,presetPanel,presets=[],notif
   const checkpoint=previous=>{history.push(clone(previous||pose()));if(history.length>50)history.shift();};
   const id=()=>crypto.randomUUID();
   const changed=()=>{remember();refresh(true);};
-  const applyEdit=edit=>{checkpoint();try{edit();changed();}catch(error){history.pop();notify(error.message);refresh(true);}};
+  const applyEdit=edit=>{const took=scrubCheckpoint();if(took)checkpoint();try{edit();changed();}catch(error){if(took)history.pop();notify(error.message);refresh(true);}};
   let selectedPreset=presets.some(item=>item.id===library.presetId)?library.presetId:null;
 
   function updateCaption(){
