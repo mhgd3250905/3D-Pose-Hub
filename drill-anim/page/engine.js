@@ -246,7 +246,7 @@ E.metrics = function(spec, full) {
     const fore = V(J[s + 'Wrist']).sub(V(J[s + 'Elbow'])).applyQuaternion(rel(s + 'UpperArm').invert()).normalize();
     const thigh = V(J[s + 'Knee']).sub(V(J[s + 'Hip'])).applyQuaternion(rel('pelvis').invert()).normalize();
     const sg = s === 'left' ? 1 : -1;
-    lim[s] = { kneeFlexDirZ: +shin.z.toFixed(3), elbowFlexDirZ: +fore.z.toFixed(3), hipFlexDeg: +(Math.atan2(thigh.z, -thigh.y) / DEG).toFixed(1), hipAbdDeg: +(Math.atan2(thigh.x * sg, -thigh.y) / DEG).toFixed(1) };
+    lim[s] = { kneeFlexDirZ: +shin.z.toFixed(3), elbowFlexDirZ: +fore.z.toFixed(3), hipFlexDeg: +(Math.atan2(thigh.z, -thigh.y) / DEG).toFixed(1), hipAbdDeg: +(Math.atan2(thigh.x * sg, Math.hypot(thigh.y, thigh.z)) / DEG).toFixed(1) };   // lateral elevation of the thigh: stays defined when the hip flexes past 90 deg (tucks); == old formula for a hanging leg
   }
   const tq = M.torsoQuaternion ? new (T().Quaternion)(...M.torsoQuaternion) : null; lim.waistBendDeg = tq ? +(2 * Math.acos(Math.min(1, Math.abs(tq.w))) / DEG).toFixed(1) : 0;
   const pq = new (T().Quaternion)(...M.pelvisQuaternion), bqq = new (T().Quaternion)(...M.bodyQuaternion);
