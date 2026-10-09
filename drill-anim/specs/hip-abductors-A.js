@@ -7,16 +7,27 @@ const TH = 10;                         // body incline, deg (solved further by h
 const HIP = [-0.0815, 0.852], LEG = 0.762;
 const ank = a => { const r = a * Math.PI / 180; return [+(HIP[0] - LEG * Math.sin(r)).toFixed(4), +(HIP[1] - LEG * Math.cos(r)).toFixed(4), -0.0186]; };
 const A0 = -2, A1 = 36;
+// the descriptor blend is linear, so a straight blend of the two ankle points cuts the arc's chord and bends the knee mid-lift
+// (141° before). Fix: track 'bow' = 4p(1-p) of the lift adds the arc's sagitta back, so the leg stays straight on the arc.
+// Both tracks are sampled per frame (linear keys) from one cosine-eased lift curve.
+const DUR = 6, LK = [[0, 0], [0.3, 0], [1.3, 1], [1.9, 1], [3.0, 0], [3.3, 0], [4.3, 1], [4.9, 1]];
+const liftAt = t => { for (let i = 0; i < LK.length; i++) { const [ta, va] = LK[i], [tb, vb] = LK[i + 1] || [DUR, LK[0][1]];
+  if (t >= ta && t < tb) return va + (vb - va) * (1 - Math.cos(Math.PI * (t - ta) / (tb - ta))) / 2; } return LK[0][1]; };
+const TS = Array.from({ length: DUR * 30 }, (_, k) => k / 30);
+const LIFT = TS.map(t => [+t.toFixed(4), +liftAt(t).toFixed(5), 'linear']);
+const BOW = TS.map(t => { const p = liftAt(t); return [+t.toFixed(4), +(4 * p * (1 - p)).toFixed(5), 'linear']; });
+const a0 = ank(A0), a1 = ank(A1), am = ank((A0 + A1) / 2);
+const ANK_BOW = a0.map((v, i) => +(v + am[i] - (a0[i] + a1[i]) / 2).toFixed(4));
 export default {
   id: 'hip-abductors-A', name: '侧平板抬腿', nameEn: 'Side Plank Hip Abduction',
-  timeline: { duration: 6, tracks: { lift: [[0, 0], [0.3, 0], [1.3, 1], [1.9, 1], [3.0, 0], [3.3, 0], [4.3, 1], [4.9, 1]] } },
+  timeline: { duration: DUR, tracks: { lift: LIFT, bow: BOW } },
   pose: {
     base: {
       pelvis: [-0.45, 0.42, 0],
       hips: { up: [1, 0, 0], front: [0, 0, 1], rot: [[[0, 0, 1], TH], [[1, 0, 0], 0]] },
       hands: {
         left: { mode: 'floor', at: [0.0, 0.215], finger: [0.15, 1], poleUp: [0.6, 1.25, -0.15] },
-        right: { mode: 'free', frame: 'hips', palmAt: [-0.165, 1.06, 0.03], finger: [0.05, -0.35, 0.94], normal: [1, 0, 0], poleUp: [-0.55, 1.15, -0.25], touch: { clear: 0.0015, from: 0.0, iters: 20 } },
+        right: { mode: 'free', frame: 'hips', palmAt: [-0.15, 1.055, 0.05], finger: [0.05, -0.35, 0.94], normal: [1, 0, 0], poleUp: [-0.55, 1.15, -0.25], touch: { clear: 0.0015, from: 0.0, solve: 'bisect', iters: 16 } },
       },
       feet: {
         left: { mode: 'floor', at: [-1.27, 0.0], heading: 0, pitch: 0, roll: -82 },
@@ -31,10 +42,10 @@ export default {
       ],
       solve: { vars: ['px', 'py', 'pz', 'h0', 'h1'], reg: { px: 0.5, py: 0.5, pz: 0.5, h0: 0.01, h1: 0.05 } },
     },
-    deltas: { lift: { feet: { right: { ankle: ank(A1), rot: [[[0, 0, 1], -A1]] } } } },
+    deltas: { lift: { feet: { right: { ankle: ank(A1), rot: [[[0, 0, 1], -A1]] } } }, bow: { feet: { right: { ankle: ANK_BOW } } } },
   },
   highlight: { groups: ['hip-abductors'], side: 'right', pulseAt: [1.6, 4.6], pulseWidth: 0.5, pulseBase: 0.25 },
-  camera: { dir: [-0.12, 0.30, 1], fit: ['head', 'leftPalm', 'leftElbow', 'leftToe', 'rightToe', 'pelvis', 'rightAnkle', 'rightElbow'], pad: 0.12, k: 0.75, drift: 0.9, at: 1.6 },
+  camera: { dir: [-0.12, 0.8, 1], fit: ['head', 'leftPalm', 'leftElbow', 'leftToe', 'rightToe', 'pelvis', 'rightAnkle', 'rightElbow'], pad: 0.12, k: 0.75, drift: 0.9, at: 1.6 },
   frame: { mode: 'fit', width: 820, cx: 512, cy: 520 },
   stillAt: 1.6,
   shadow: { joints: ['leftPalm', 'leftElbow', 'leftAnkle', 'pelvis', 'leftShoulder'],
