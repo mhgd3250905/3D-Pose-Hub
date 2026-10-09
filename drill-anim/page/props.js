@@ -219,6 +219,17 @@ Object.assign(B, {
       const arms = [0, 1, 2].map(() => { const m = tube(t, new t.Vector3(), new t.Vector3(0, 1, 0), 0.018, frame, 12); g.add(m); return m; });
       sides[side] = { pg, fg, arms, po: thigh.worldToLocal(padC.clone()), pq: tq, fo: foot.worldToLocal(footC.clone()), fq, sg }; }
     g.userData = { sides }; E_reset(); return g; },
+  // bottoms-up kettlebell PLACEHOLDER (until colleague 1's shared kettlebell lands): the handle bar runs through the baked power grip
+  // of the hand (P.bakeGrip), two horns rise from the bar ends and carry the bell above the fist along the hand's long axis.
+  // spec: {type:'kbBottomsUp', side:'right', r:0.085, horn:0.075, len:0.12, shift}
+  kbBottomsUp(th, s) { const t = T(); const G = P.bakeGrip(s.side || 'right'); const g = new t.Group(); const r = s.r || 0.085, H = s.horn ?? 0.075, L = s.len || 0.12;
+    const iron = P.mat(th, { base: s.colour || '#33363d', rimK: 0.8 });
+    const bar = new t.Mesh(new t.CylinderGeometry(G.r, G.r, L, 24), iron); g.add(bar);
+    for (const e of [-1, 1]) { const horn = new t.Mesh(new t.CylinderGeometry(G.r, G.r, H, 16), iron); horn.position.set(H / 2, e * L / 2, 0); horn.rotation.z = Math.PI / 2; g.add(horn);
+      const knee = new t.Mesh(new t.SphereGeometry(G.r, 16, 12), iron); knee.position.set(0, e * L / 2, 0); g.add(knee); }
+    const bell = new t.Mesh(new t.SphereGeometry(r, 36, 24), iron); bell.position.set(H + r * 0.8, 0, 0); g.add(bell);
+    const base = new t.Mesh(new t.CylinderGeometry(r * 0.62, r * 0.62, 0.012, 32), iron); base.rotation.z = Math.PI / 2; base.position.set(H + r * 1.75, 0, 0); g.add(base);
+    g.userData = { G, bellR: r, bellX: H + r * 0.8 }; return g; },
   // straight steel cable from a cableStack pulley exit to a handle anchor; spec: {type:'cable', from:'pulley1', to:'h1', r:0.0032}
   cable(th, s) { const t = T(); const m = tube(t, new t.Vector3(), new t.Vector3(0, 1, 0), s.r || 0.0032, P.mat(th, { base: s.colour || '#a3a8b2', rimK: 0.4 }), 10); m.userData.cable = true; return m; },
 });
@@ -273,6 +284,11 @@ P.place = function(o) { const t = T(), v = flareInspector.viewer, s = o.userData
       const under = new t.Vector3(S.pg.position.x + S.sg * 0.01, py, S.pg.position.z), low = new t.Vector3(under.x, S.fg.position.y - 0.01, under.z);
       setTube(t, S.arms[0], piv, under); setTube(t, S.arms[1], S.pg.position.clone().add(new t.Vector3(S.sg * 0.01, -0.06, 0)), low); setTube(t, S.arms[2], low, S.fg.position.clone().add(new t.Vector3(0, -0.01, 0))); }
     o.updateMatrixWorld(true); return; }
+  if (s.type === 'kbBottomsUp') { const G = o.userData.G, bone = v.coach.getObjectByName((s.side || 'right') + 'Hand'); bone.updateMatrixWorld(true);
+    const bp = bone.getWorldPosition(new t.Vector3()), bq = bone.getWorldQuaternion(new t.Quaternion()), a = G.a.clone().applyQuaternion(bq).normalize();
+    const c = G.c.clone().applyQuaternion(bq).add(bp).addScaledVector(a, s.shift || 0);
+    const up = c.clone().sub(bp); up.addScaledVector(a, -up.dot(a)).normalize();      // the hand's long axis (wrist -> fist), square to the bar
+    const m = new t.Matrix4().makeBasis(up, a, up.clone().cross(a)); o.quaternion.setFromRotationMatrix(m); o.position.copy(c); o.updateMatrixWorld(true); return; }
   if (s.type === 'cableStack') { place0(o); o.updateMatrixWorld(true); P.anchors[s.name || 'pulley'] = o.userData.exit.clone().applyMatrix4(o.matrixWorld);
     // the sheave turns to face the cable
     return; }
