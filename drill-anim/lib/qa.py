@@ -23,14 +23,19 @@ res['below_floor']=res['min_vertex_y_m']<FLOOR_TOL
 pins={}
 for p in q.get('pins',[]):
     act=[r for r in fr if when(r,p.get('when')) and r['cen'].get(p['c'])]
-    if not act:pins[p['c']]={'frames':0};continue
+    # the same contact may be pinned in several phases (forearms-A: each hand is re-planted per finger direction); a repeated
+    # contact is keyed '<c> <when>' so the phases do not overwrite each other (single pins keep the plain key)
+    key=p['c']+(' '+p['when'] if sum(x['c']==p['c'] for x in q.get('pins',[]))>1 and p.get('when') else '')
+    if not act:pins[key]={'frames':0};continue
     ref=np.array(act[0]['cen'][p['c']]);d=[float(np.linalg.norm(np.array(r['cen'][p['c']])-ref)*1000) for r in act]
-    pins[p['c']]={'frames':len(act),'drift_mm_max':round(max(d),2),'ok':max(d)<5.0}
+    pins[key]={'frames':len(act),'drift_mm_max':round(max(d),2),'ok':max(d)<5.0}
 for p in q.get('jointPins',[]):  # a joint (elbow/knee on the mat) that must not slide: drift of the joint centre + its lowest height
     act=[r for r in fr if when(r,p.get('when'))]
     if not act:continue
-    ref=np.array(act[0]['J'][p['j']]);d=[float(np.linalg.norm(np.array(r['J'][p['j']])-ref)*1000) for r in act]
-    pins[p['j']]={'frames':len(act),'drift_mm_max':round(max(d),2),'height_mm_range':[round(min(r['J'][p['j']][1] for r in act)*1000,1),round(max(r['J'][p['j']][1] for r in act)*1000,1)],'ok':max(d)<5.0}
+    # axes='xz': horizontal slide only (a foot pivoting on its ball rolls the toe joint up a few mm while the contact stays put)
+    M=np.array([1,0,1]) if p.get('axes')=='xz' else np.array([1,1,1])
+    ref=np.array(act[0]['J'][p['j']]);d=[float(np.linalg.norm((np.array(r['J'][p['j']])-ref)*M)*1000) for r in act]
+    pins[p['j']+(' '+p['when'] if p.get('when') else '')]={'frames':len(act),'drift_mm_max':round(max(d),2),'height_mm_range':[round(min(r['J'][p['j']][1] for r in act)*1000,1),round(max(r['J'][p['j']][1] for r in act)*1000,1)],'ok':max(d)<5.0}
 res['pins']=pins
 st={}
 for s in q.get('straight',[]):
@@ -47,7 +52,18 @@ for r in fr:
         if r['elbow'][s]<170 and L['elbowFlexDirZ']<-0.15:lim['elbow_flex_forward']=False;worst.setdefault('elbow',(r['f'],s,L['elbowFlexDirZ']))
 hf=[r['limits'][s]['hipFlexDeg'] for r in fr for s in ['left','right']];ha=[r['limits'][s]['hipAbdDeg'] for r in fr for s in ['left','right']]
 lim['hip_flex_deg_range']=[min(hf),max(hf)];lim['hip_abd_deg_range']=[min(ha),max(ha)]
-lim['hip_ok']=min(hf)>-35 and max(hf)<135 and min(ha)>-35 and max(ha)<75
+# true abduction = angle between the thigh and the pelvis's sagittal plane (normal = hip axis). The frontal projection
+# hipAbdDeg = atan2(x,-y) blows up past 90 deg when the thigh is near horizontal (deep squat, Cossack), so the limit uses this one.
+import math
+def _abd(r,s):
+    J=r.get('J') or {};h,k,o=J.get(s+'Hip'),J.get(s+'Knee'),J.get(('right' if s=='left' else 'left')+'Hip')
+    if not (h and k and o):return r['limits'][s]['hipAbdDeg']
+    lat=[h[i]-o[i] for i in range(3)];n=math.sqrt(sum(c*c for c in lat)) or 1;th=[k[i]-h[i] for i in range(3)];m=math.sqrt(sum(c*c for c in th)) or 1
+    return round(math.degrees(math.asin(max(-1,min(1,sum(lat[i]*th[i] for i in range(3))/n/m)))),1)
+hat=[_abd(r,s) for r in fr for s in ['left','right']];lim['hip_abd_true_deg_range']=[min(hat),max(hat)]
+# hip flexion limit: 135 deg unless the spec sets qa.hipFlexMax with a written justification (e.g. obliques-A thread-through)
+HFX=float(q.get('hipFlexMax',135));lim['hip_flex_max_deg']=HFX
+lim['hip_ok']=min(hf)>-35 and max(hf)<HFX and min(hat)>-35 and max(hat)<75
 wb=[r['limits']['waistBendDeg'] for r in fr];lim['waist_bend_deg_max']=max(wb);lim['waist_ok']=max(wb)<45
 lim['pelvis_to_chest_deg_max']=max(r['limits']['pelvisToChestDeg'] for r in fr)
 lim['elbow_deg_range']=[round(min(min(r['elbow'].values()) for r in fr),1),round(max(max(r['elbow'].values()) for r in fr),1)]
