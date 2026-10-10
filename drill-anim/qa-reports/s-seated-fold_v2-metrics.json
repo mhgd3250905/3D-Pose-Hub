@@ -1,0 +1,7088 @@
+{
+  "id": "s-seated-fold",
+  "frames": 240,
+  "fps": 30,
+  "duration_s": 8,
+  "min_vertex_y_m": -0.0015,
+  "min_vertex_mesh": "Coach_Training_Shorts",
+  "below_floor": false,
+  "pins": {
+    "footL": {
+      "frames": 240,
+      "drift_mm_max": 0.0,
+      "ok": true
+    },
+    "footR": {
+      "frames": 240,
+      "drift_mm_max": 0.0,
+      "ok": true
+    },
+    "leftAnkle": {
+      "frames": 240,
+      "drift_mm_max": 0.0,
+      "height_mm_range": [
+        75.0,
+        75.0
+      ],
+      "ok": true
+    },
+    "rightAnkle": {
+      "frames": 240,
+      "drift_mm_max": 0.0,
+      "height_mm_range": [
+        75.0,
+        75.0
+      ],
+      "ok": true
+    }
+  },
+  "straight": {
+    "knee.left": {
+      "frames": 240,
+      "min_deg": 179.02,
+      "ok": true
+    },
+    "knee.right": {
+      "frames": 240,
+      "min_deg": 178.8,
+      "ok": true
+    }
+  },
+  "limits": {
+    "knee_flex_backward": true,
+    "elbow_flex_forward": true,
+    "hip_flex_deg_range": [
+      84.4,
+      127.9
+    ],
+    "hip_abd_deg_range": [
+      5.8,
+      179
+    ],
+    "hip_abd_true_deg_range": [
+      0.6,
+      0.7
+    ],
+    "hip_flex_max_deg": 135.0,
+    "hip_ok": true,
+    "waist_bend_deg_max": 6,
+    "waist_ok": true,
+    "pelvis_to_chest_deg_max": 0,
+    "elbow_deg_range": [
+      104.9,
+      179.9
+    ],
+    "knee_deg_range": [
+      178.8,
+      179.3
+    ],
+    "neck_note": "head/neck rigid with the upper torso in this rig (no neck bend possible)",
+    "first_violation": {}
+  },
+  "self_clip": {
+    "worst_pair": "forearmL|thighL",
+    "worst_gap_mm": 6.6,
+    "at_frame": 36,
+    "ok": true,
+    "method": "capsule hulls per segment (torso r115, upper arm r42, forearm r34, hand r28, thigh r68, shin r48, foot r45 mm), adjacent + spec-allowed pairs skipped; ok if overlap < 8 mm"
+  },
+  "hand_clip": {
+    "left": {
+      "min_signed_mm": 0.5,
+      "at_frame": 24,
+      "nearest_bone": "leftThigh",
+      "penetrating_frames": 0,
+      "ok": true
+    },
+    "right": {
+      "min_signed_mm": 0.5,
+      "at_frame": 21,
+      "nearest_bone": "rightThigh",
+      "penetrating_frames": 0,
+      "ok": true
+    },
+    "contact_left": {
+      "frames": 240,
+      "gap_mm_range": [
+        0.5,
+        2.05
+      ],
+      "ok": false
+    },
+    "contact_right": {
+      "frames": 240,
+      "gap_mm_range": [
+        0.5,
+        1.33
+      ],
+      "ok": true
+    },
+    "method": "per hand skin vertex: K=6 nearest vertices of each outer body layer (skin, tee, cuff, shorts, head; own hand/forearm excluded, radius 45 mm); inside if the vertex is closer to the nearest bone core line than those surface vertices; value = depth (<0) or gap (>0: radial gap over the surface patch, capped by the euclidean distance); ok if >= -0.5 mm"
+  },
+  "solver_warning_frames": 63,
+  "frame_edge_touch_frames": 0,
+  "frames_complete": true,
+  "pass": false,
+  "per_frame": [
+    {
+      "f": 0,
+      "params": {
+        "open": 0,
+        "hand": 0,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.3,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 19,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.52,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -55.65,
+        "right": -49.78
+      }
+    },
+    {
+      "f": 1,
+      "params": {
+        "open": 0,
+        "hand": 0,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.3,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 19,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.52,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -55.65,
+        "right": -49.78
+      }
+    },
+    {
+      "f": 2,
+      "params": {
+        "open": 0,
+        "hand": 0,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.3,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 19,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.52,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -55.65,
+        "right": -49.78
+      }
+    },
+    {
+      "f": 3,
+      "params": {
+        "open": 0,
+        "hand": 0,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.3,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 19,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.52,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -55.65,
+        "right": -49.78
+      }
+    },
+    {
+      "f": 4,
+      "params": {
+        "open": 0,
+        "hand": 0,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.3,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 19,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.52,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -55.65,
+        "right": -49.78
+      }
+    },
+    {
+      "f": 5,
+      "params": {
+        "open": 0,
+        "hand": 0,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.3,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 19,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.52,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -55.65,
+        "right": -49.78
+      }
+    },
+    {
+      "f": 6,
+      "params": {
+        "open": 0,
+        "hand": 0,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.3,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 19,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.52,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -55.65,
+        "right": -49.78
+      }
+    },
+    {
+      "f": 7,
+      "params": {
+        "open": 0,
+        "hand": 0,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.3,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 19,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.52,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -55.65,
+        "right": -49.78
+      }
+    },
+    {
+      "f": 8,
+      "params": {
+        "open": 0,
+        "hand": 0,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.3,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 19,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.52,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -55.65,
+        "right": -49.78
+      }
+    },
+    {
+      "f": 9,
+      "params": {
+        "open": 0,
+        "hand": 0,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.3,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 19,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.52,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -55.65,
+        "right": -49.78
+      }
+    },
+    {
+      "f": 10,
+      "params": {
+        "open": 0,
+        "hand": 0,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.3,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 19,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.52,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -55.65,
+        "right": -49.78
+      }
+    },
+    {
+      "f": 11,
+      "params": {
+        "open": 0,
+        "hand": 0,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.3,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 19,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.52,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -55.65,
+        "right": -49.78
+      }
+    },
+    {
+      "f": 12,
+      "params": {
+        "open": 0,
+        "hand": 0,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.3,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 19,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.52,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -55.65,
+        "right": -49.78
+      }
+    },
+    {
+      "f": 13,
+      "params": {
+        "open": 0,
+        "hand": 0,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.3,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 19,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.52,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -55.65,
+        "right": -49.78
+      }
+    },
+    {
+      "f": 14,
+      "params": {
+        "open": 0,
+        "hand": 0,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.3,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 19,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.52,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -55.65,
+        "right": -49.78
+      }
+    },
+    {
+      "f": 15,
+      "params": {
+        "open": 0,
+        "hand": 0,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.3,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 19,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.52,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -55.65,
+        "right": -49.78
+      }
+    },
+    {
+      "f": 16,
+      "params": {
+        "open": 0,
+        "hand": 0,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.3,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 19,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.52,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -55.65,
+        "right": -49.78
+      }
+    },
+    {
+      "f": 17,
+      "params": {
+        "open": 0,
+        "hand": 0,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.3,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 19,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.52,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -55.65,
+        "right": -49.78
+      }
+    },
+    {
+      "f": 18,
+      "params": {
+        "open": 0,
+        "hand": 0,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.3,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 19,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.52,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -55.65,
+        "right": -49.78
+      }
+    },
+    {
+      "f": 19,
+      "params": {
+        "open": 0.0012,
+        "hand": 0,
+        "sag": 0.0043,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.3,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 19,
+      "hand_clip": {
+        "left": 0.52,
+        "right": 0.51,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -55.01,
+        "right": -49.25
+      }
+    },
+    {
+      "f": 20,
+      "params": {
+        "open": 0.0047,
+        "hand": 0,
+        "sag": 0.017,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.2,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 19,
+      "hand_clip": {
+        "left": 0.52,
+        "right": 0.52,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -53.2,
+        "right": -48.18
+      }
+    },
+    {
+      "f": 21,
+      "params": {
+        "open": 0.0107,
+        "hand": 0,
+        "sag": 0.0381,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.2,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 18.9,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.5,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -50.22,
+        "right": -45.31
+      }
+    },
+    {
+      "f": 22,
+      "params": {
+        "open": 0.0189,
+        "hand": 0,
+        "sag": 0.067,
+        "rl": 0.0199
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.2,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 18.8,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.5,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -45.95,
+        "right": -41.59
+      }
+    },
+    {
+      "f": 23,
+      "params": {
+        "open": 0.0294,
+        "hand": 0,
+        "sag": 0.1033,
+        "rl": 0.078
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.2,
+        "right": 178.8
+      },
+      "minY": 0.0002,
+      "clip_mm": 18.7,
+      "hand_clip": {
+        "left": 0.52,
+        "right": 0.51,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -40.41,
+        "right": -36.39
+      }
+    },
+    {
+      "f": 24,
+      "params": {
+        "open": 0.0421,
+        "hand": 0,
+        "sag": 0.1464,
+        "rl": 0.1697
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.2,
+        "right": 178.8
+      },
+      "minY": 0.0002,
+      "clip_mm": 18.1,
+      "hand_clip": {
+        "left": 0.5,
+        "right": 0.5,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -34.88,
+        "right": -30.04
+      }
+    },
+    {
+      "f": 25,
+      "params": {
+        "open": 0.0569,
+        "hand": 0,
+        "sag": 0.1956,
+        "rl": 0.2876
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 171.6
+      },
+      "knee": {
+        "left": 179.2,
+        "right": 178.8
+      },
+      "minY": 0.0002,
+      "clip_mm": 17.7,
+      "hand_clip": {
+        "left": 0.5,
+        "right": 0.57,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -26.97,
+        "right": -28.21
+      }
+    },
+    {
+      "f": 26,
+      "params": {
+        "open": 0.0738,
+        "hand": 0,
+        "sag": 0.25,
+        "rl": 0.4225
+      },
+      "elbow": {
+        "left": 166.2,
+        "right": 163.8
+      },
+      "knee": {
+        "left": 179.2,
+        "right": 178.8
+      },
+      "minY": 0.0002,
+      "clip_mm": 17.7,
+      "hand_clip": {
+        "left": 0.61,
+        "right": 0.57,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -26.74,
+        "right": -28.31
+      }
+    },
+    {
+      "f": 27,
+      "params": {
+        "open": 0.0927,
+        "hand": 0,
+        "sag": 0.3087,
+        "rl": 0.5635
+      },
+      "elbow": {
+        "left": 159.9,
+        "right": 157.4
+      },
+      "knee": {
+        "left": 179.2,
+        "right": 178.8
+      },
+      "minY": 0.0002,
+      "clip_mm": 18,
+      "hand_clip": {
+        "left": 0.61,
+        "right": 0.52,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -26.82,
+        "right": -27.64
+      }
+    },
+    {
+      "f": 28,
+      "params": {
+        "open": 0.1135,
+        "hand": 0.0019,
+        "sag": 0.3706,
+        "rl": 0.6995
+      },
+      "elbow": {
+        "left": 155.1,
+        "right": 153.1
+      },
+      "knee": {
+        "left": 179.2,
+        "right": 178.8
+      },
+      "minY": 0.0002,
+      "clip_mm": 18,
+      "hand_clip": {
+        "left": 0.61,
+        "right": 0.52,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -26.88,
+        "right": -27.72
+      }
+    },
+    {
+      "f": 29,
+      "params": {
+        "open": 0.1359,
+        "hand": 0.0077,
+        "sag": 0.4347,
+        "rl": 0.8196
+      },
+      "elbow": {
+        "left": 151.4,
+        "right": 150.3
+      },
+      "knee": {
+        "left": 179.2,
+        "right": 178.8
+      },
+      "minY": 0.0002,
+      "clip_mm": 17.6,
+      "hand_clip": {
+        "left": 0.62,
+        "right": 0.5,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -26.88,
+        "right": -28.59
+      }
+    },
+    {
+      "f": 30,
+      "params": {
+        "open": 0.16,
+        "hand": 0.0172,
+        "sag": 0.5,
+        "rl": 0.9143
+      },
+      "elbow": {
+        "left": 149.1,
+        "right": 147.5
+      },
+      "knee": {
+        "left": 179.2,
+        "right": 178.8
+      },
+      "minY": 0.0002,
+      "clip_mm": 17.1,
+      "hand_clip": {
+        "left": 0.61,
+        "right": 0.5,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -27.68,
+        "right": -28.59
+      }
+    },
+    {
+      "f": 31,
+      "params": {
+        "open": 0.1856,
+        "hand": 0.0304,
+        "sag": 0.5653,
+        "rl": 0.976
+      },
+      "elbow": {
+        "left": 146.9,
+        "right": 146.4
+      },
+      "knee": {
+        "left": 179.2,
+        "right": 178.8
+      },
+      "minY": 0.0002,
+      "clip_mm": 15.6,
+      "hand_clip": {
+        "left": 2.05,
+        "right": 1.12,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -28.02,
+        "right": -30.25
+      }
+    },
+    {
+      "f": 32,
+      "params": {
+        "open": 0.2125,
+        "hand": 0.0472,
+        "sag": 0.6294,
+        "rl": 0.9998
+      },
+      "elbow": {
+        "left": 148.3,
+        "right": 147.3
+      },
+      "knee": {
+        "left": 179.2,
+        "right": 178.8
+      },
+      "minY": 0.0002,
+      "clip_mm": 11.6,
+      "hand_clip": {
+        "left": 1.03,
+        "right": 0.59,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -32.67,
+        "right": -34.03
+      }
+    },
+    {
+      "f": 33,
+      "params": {
+        "open": 0.2406,
+        "hand": 0.0675,
+        "sag": 0.6913,
+        "rl": 0.9797
+      },
+      "elbow": {
+        "left": 148.5,
+        "right": 147.8
+      },
+      "knee": {
+        "left": 179.2,
+        "right": 178.9
+      },
+      "minY": 0.0002,
+      "clip_mm": 8,
+      "hand_clip": {
+        "left": 0.99,
+        "right": 0.53,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -35.85,
+        "right": -37.31
+      }
+    },
+    {
+      "f": 34,
+      "params": {
+        "open": 0.2697,
+        "hand": 0.0909,
+        "sag": 0.75,
+        "rl": 0.9118
+      },
+      "elbow": {
+        "left": 146.5,
+        "right": 145.6
+      },
+      "knee": {
+        "left": 179.2,
+        "right": 178.9
+      },
+      "minY": 0.0002,
+      "clip_mm": 7.6,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.6,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -35.69,
+        "right": -37.19
+      }
+    },
+    {
+      "f": 35,
+      "params": {
+        "open": 0.2997,
+        "hand": 0.1174,
+        "sag": 0.8044,
+        "rl": 0.8028
+      },
+      "elbow": {
+        "left": 144.9,
+        "right": 144.0
+      },
+      "knee": {
+        "left": 179.2,
+        "right": 178.9
+      },
+      "minY": 0.0002,
+      "clip_mm": 7.4,
+      "hand_clip": {
+        "left": 1.42,
+        "right": 0.5,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -35.9,
+        "right": -37.02
+      }
+    },
+    {
+      "f": 36,
+      "params": {
+        "open": 0.3304,
+        "hand": 0.1467,
+        "sag": 0.8536,
+        "rl": 0.6635
+      },
+      "elbow": {
+        "left": 143.7,
+        "right": 142.4
+      },
+      "knee": {
+        "left": 179.1,
+        "right": 178.9
+      },
+      "minY": 0.0002,
+      "clip_mm": 6.6,
+      "hand_clip": {
+        "left": 0.5,
+        "right": 0.5,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -36.43,
+        "right": -36.78
+      }
+    },
+    {
+      "f": 37,
+      "params": {
+        "open": 0.3617,
+        "hand": 0.1785,
+        "sag": 0.8967,
+        "rl": 0.5079
+      },
+      "elbow": {
+        "left": 141.0,
+        "right": 139.8
+      },
+      "knee": {
+        "left": 179.1,
+        "right": 178.9
+      },
+      "minY": 0.0002,
+      "clip_mm": 8.4,
+      "hand_clip": {
+        "left": 0.5,
+        "right": 0.5,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -34.35,
+        "right": -34.68
+      }
+    },
+    {
+      "f": 38,
+      "params": {
+        "open": 0.3932,
+        "hand": 0.2125,
+        "sag": 0.933,
+        "rl": 0.3515
+      },
+      "elbow": {
+        "left": 138.5,
+        "right": 137.5
+      },
+      "knee": {
+        "left": 179.1,
+        "right": 178.9
+      },
+      "minY": 0.0002,
+      "clip_mm": 10.1,
+      "hand_clip": {
+        "left": 0.5,
+        "right": 0.5,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -32.4,
+        "right": -32.72
+      }
+    },
+    {
+      "f": 39,
+      "params": {
+        "open": 0.425,
+        "hand": 0.2484,
+        "sag": 0.9619,
+        "rl": 0.21
+      },
+      "elbow": {
+        "left": 135.9,
+        "right": 135.4
+      },
+      "knee": {
+        "left": 179.1,
+        "right": 178.9
+      },
+      "minY": 0.0002,
+      "clip_mm": 11.9,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.59,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -29.94,
+        "right": -30.89
+      }
+    },
+    {
+      "f": 40,
+      "params": {
+        "open": 0.4568,
+        "hand": 0.286,
+        "sag": 0.983,
+        "rl": 0.0974
+      },
+      "elbow": {
+        "left": 133.9,
+        "right": 133.2
+      },
+      "knee": {
+        "left": 179.1,
+        "right": 178.9
+      },
+      "minY": 0.0002,
+      "clip_mm": 13.7,
+      "hand_clip": {
+        "left": 0.55,
+        "right": 0.56,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -28.46,
+        "right": -28.74
+      }
+    },
+    {
+      "f": 41,
+      "params": {
+        "open": 0.4883,
+        "hand": 0.3248,
+        "sag": 0.9957,
+        "rl": 0.025
+      },
+      "elbow": {
+        "left": 132.0,
+        "right": 131.4
+      },
+      "knee": {
+        "left": 179.1,
+        "right": 178.9
+      },
+      "minY": 0.0002,
+      "clip_mm": 15.2,
+      "hand_clip": {
+        "left": 0.5,
+        "right": 0.55,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -26.93,
+        "right": -27.13
+      }
+    },
+    {
+      "f": 42,
+      "params": {
+        "open": 0.5196,
+        "hand": 0.3645,
+        "sag": 1,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 130.8,
+        "right": 130.1
+      },
+      "knee": {
+        "left": 179.1,
+        "right": 178.9
+      },
+      "minY": 0.0002,
+      "clip_mm": 16.9,
+      "hand_clip": {
+        "left": 0.5,
+        "right": 0.59,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -26.06,
+        "right": -26.32
+      }
+    },
+    {
+      "f": 43,
+      "params": {
+        "open": 0.5503,
+        "hand": 0.4048,
+        "sag": 0.9957,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 129.2,
+        "right": 128.8
+      },
+      "knee": {
+        "left": 179.1,
+        "right": 178.9
+      },
+      "minY": 0.0001,
+      "clip_mm": 22.1,
+      "hand_clip": {
+        "left": 0.5,
+        "right": 0.55,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -25.13,
+        "right": -25.33
+      }
+    },
+    {
+      "f": 44,
+      "params": {
+        "open": 0.5803,
+        "hand": 0.4452,
+        "sag": 0.983,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 128.1,
+        "right": 127.9
+      },
+      "knee": {
+        "left": 179.1,
+        "right": 178.9
+      },
+      "minY": 0.0001,
+      "clip_mm": 27.7,
+      "hand_clip": {
+        "left": 0.5,
+        "right": 0.57,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -24.25,
+        "right": -24.86
+      }
+    },
+    {
+      "f": 45,
+      "params": {
+        "open": 0.6094,
+        "hand": 0.4855,
+        "sag": 0.9619,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 127.7,
+        "right": 127.4
+      },
+      "knee": {
+        "left": 179.1,
+        "right": 178.9
+      },
+      "minY": 0.0001,
+      "clip_mm": 34.7,
+      "hand_clip": {
+        "left": 0.54,
+        "right": 0.64,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -25.2,
+        "right": -25.37
+      }
+    },
+    {
+      "f": 46,
+      "params": {
+        "open": 0.6375,
+        "hand": 0.5252,
+        "sag": 0.933,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 127.2,
+        "right": 127.1
+      },
+      "knee": {
+        "left": 179.1,
+        "right": 178.9
+      },
+      "minY": 0.0001,
+      "clip_mm": 38.2,
+      "hand_clip": {
+        "left": 0.54,
+        "right": 0.52,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -26.38,
+        "right": -26.11
+      }
+    },
+    {
+      "f": 47,
+      "params": {
+        "open": 0.6644,
+        "hand": 0.564,
+        "sag": 0.8967,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 127.0,
+        "right": 126.7
+      },
+      "knee": {
+        "left": 179.1,
+        "right": 178.9
+      },
+      "minY": 0.0002,
+      "clip_mm": 38.9,
+      "hand_clip": {
+        "left": 0.54,
+        "right": 0.54,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -27.21,
+        "right": -27.34
+      }
+    },
+    {
+      "f": 48,
+      "params": {
+        "open": 0.69,
+        "hand": 0.6016,
+        "sag": 0.8536,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 127.4,
+        "right": 127.3
+      },
+      "knee": {
+        "left": 179.1,
+        "right": 178.9
+      },
+      "minY": 0.0002,
+      "clip_mm": 37.7,
+      "hand_clip": {
+        "left": 0.62,
+        "right": 0.52,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -29.21,
+        "right": -29.42
+      }
+    },
+    {
+      "f": 49,
+      "params": {
+        "open": 0.7141,
+        "hand": 0.6375,
+        "sag": 0.8044,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 128.0,
+        "right": 127.8
+      },
+      "knee": {
+        "left": 179.1,
+        "right": 178.9
+      },
+      "minY": 0.0002,
+      "clip_mm": 36.7,
+      "hand_clip": {
+        "left": 0.61,
+        "right": 0.61,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -31.44,
+        "right": -31.54
+      }
+    },
+    {
+      "f": 50,
+      "params": {
+        "open": 0.7365,
+        "hand": 0.6715,
+        "sag": 0.75,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 128.0,
+        "right": 127.9
+      },
+      "knee": {
+        "left": 179.1,
+        "right": 178.9
+      },
+      "minY": 0.0002,
+      "clip_mm": 38.1,
+      "hand_clip": {
+        "left": 0.63,
+        "right": 0.5,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -34.5,
+        "right": -34.73
+      }
+    },
+    {
+      "f": 51,
+      "params": {
+        "open": 0.7573,
+        "hand": 0.7033,
+        "sag": 0.6913,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 129.1,
+        "right": 129.0
+      },
+      "knee": {
+        "left": 179.1,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 35.9,
+      "hand_clip": {
+        "left": 0.53,
+        "right": 0.53,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -36.54,
+        "right": -36.61
+      }
+    },
+    {
+      "f": 52,
+      "params": {
+        "open": 0.7762,
+        "hand": 0.7326,
+        "sag": 0.6294,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 129.1,
+        "right": 129.0
+      },
+      "knee": {
+        "left": 179.1,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 37.3,
+      "hand_clip": {
+        "left": 0.63,
+        "right": 0.64,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -38.25,
+        "right": -38.3
+      }
+    },
+    {
+      "f": 53,
+      "params": {
+        "open": 0.7931,
+        "hand": 0.7591,
+        "sag": 0.5653,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 129.6,
+        "right": 129.8
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 36.8,
+      "hand_clip": {
+        "left": 0.62,
+        "right": 0.57,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -40.61,
+        "right": -40.64
+      }
+    },
+    {
+      "f": 54,
+      "params": {
+        "open": 0.8079,
+        "hand": 0.7825,
+        "sag": 0.5,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 130.5,
+        "right": 130.1
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 36.5,
+      "hand_clip": {
+        "left": 0.5,
+        "right": 0.57,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -42.1,
+        "right": -42.11
+      }
+    },
+    {
+      "f": 55,
+      "params": {
+        "open": 0.8206,
+        "hand": 0.8028,
+        "sag": 0.4347,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 129.9,
+        "right": 130.7
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 37.1,
+      "hand_clip": {
+        "left": 0.54,
+        "right": 0.64,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -43.35,
+        "right": -43.15
+      }
+    },
+    {
+      "f": 56,
+      "params": {
+        "open": 0.8311,
+        "hand": 0.8196,
+        "sag": 0.3706,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 130.6,
+        "right": 130.8
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 37.7,
+      "hand_clip": {
+        "left": 0.52,
+        "right": 0.6,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -44.2,
+        "right": -43.87
+      }
+    },
+    {
+      "f": 57,
+      "params": {
+        "open": 0.8393,
+        "hand": 0.8328,
+        "sag": 0.3087,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 125.8,
+        "right": 125.7
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 39.3,
+      "hand_clip": {
+        "left": 0.65,
+        "right": 0.65,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -57.33,
+        "right": -57.39
+      }
+    },
+    {
+      "f": 58,
+      "params": {
+        "open": 0.8453,
+        "hand": 0.8423,
+        "sag": 0.25,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 126.6,
+        "right": 125.9
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 37.6,
+      "hand_clip": {
+        "left": 0.64,
+        "right": 0.65,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -58.18,
+        "right": -57.87
+      }
+    },
+    {
+      "f": 59,
+      "params": {
+        "open": 0.8488,
+        "hand": 0.8481,
+        "sag": 0.1956,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 125.7,
+        "right": 125.1
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 40.9,
+      "hand_clip": {
+        "left": 0.63,
+        "right": 0.65,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -58.41,
+        "right": -58.09
+      }
+    },
+    {
+      "f": 60,
+      "params": {
+        "open": 0.85,
+        "hand": 0.85,
+        "sag": 0.1464,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 125.7,
+        "right": 125.7
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 41,
+      "hand_clip": {
+        "left": 0.62,
+        "right": 0.54,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -58.52,
+        "right": -58.43
+      }
+    },
+    {
+      "f": 61,
+      "params": {
+        "open": 0.8501,
+        "hand": 0.8501,
+        "sag": 0.1033,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 125.8,
+        "right": 125.7
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 41,
+      "hand_clip": {
+        "left": 0.63,
+        "right": 0.58,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -58.52,
+        "right": -58.4
+      }
+    },
+    {
+      "f": 62,
+      "params": {
+        "open": 0.8505,
+        "hand": 0.8505,
+        "sag": 0.067,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 125.7,
+        "right": 125.7
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 41,
+      "hand_clip": {
+        "left": 0.62,
+        "right": 0.58,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -58.55,
+        "right": -58.42
+      }
+    },
+    {
+      "f": 63,
+      "params": {
+        "open": 0.8511,
+        "hand": 0.8511,
+        "sag": 0.0381,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 125.7,
+        "right": 126.0
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 39.8,
+      "hand_clip": {
+        "left": 0.62,
+        "right": 0.62,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -58.58,
+        "right": -58.48
+      }
+    },
+    {
+      "f": 64,
+      "params": {
+        "open": 0.852,
+        "hand": 0.852,
+        "sag": 0.017,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 125.7,
+        "right": 126.3
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 39,
+      "hand_clip": {
+        "left": 0.61,
+        "right": 0.56,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -58.63,
+        "right": -58.8
+      }
+    },
+    {
+      "f": 65,
+      "params": {
+        "open": 0.8532,
+        "hand": 0.8532,
+        "sag": 0.0043,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 125.6,
+        "right": 126.2
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 39.1,
+      "hand_clip": {
+        "left": 0.6,
+        "right": 0.56,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -58.7,
+        "right": -58.85
+      }
+    },
+    {
+      "f": 66,
+      "params": {
+        "open": 0.8545,
+        "hand": 0.8545,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 125.5,
+        "right": 126.0
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 39.2,
+      "hand_clip": {
+        "left": 0.6,
+        "right": 0.57,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -58.78,
+        "right": -58.62
+      }
+    },
+    {
+      "f": 67,
+      "params": {
+        "open": 0.8561,
+        "hand": 0.8561,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 125.3,
+        "right": 125.4
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 41.2,
+      "hand_clip": {
+        "left": 0.6,
+        "right": 0.5,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -58.56,
+        "right": -58.79
+      }
+    },
+    {
+      "f": 68,
+      "params": {
+        "open": 0.858,
+        "hand": 0.858,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 131.0,
+        "right": 131.0
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 38.1,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.5,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -45.13,
+        "right": -45.2
+      }
+    },
+    {
+      "f": 69,
+      "params": {
+        "open": 0.86,
+        "hand": 0.86,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 130.8,
+        "right": 130.8
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 38.2,
+      "hand_clip": {
+        "left": 0.61,
+        "right": 0.62,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -45.08,
+        "right": -45.16
+      }
+    },
+    {
+      "f": 70,
+      "params": {
+        "open": 0.8623,
+        "hand": 0.8623,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 130.6,
+        "right": 130.6
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 38.3,
+      "hand_clip": {
+        "left": 0.55,
+        "right": 0.52,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -45.26,
+        "right": -45.29
+      }
+    },
+    {
+      "f": 71,
+      "params": {
+        "open": 0.8648,
+        "hand": 0.8648,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 130.5,
+        "right": 130.4
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 38.3,
+      "hand_clip": {
+        "left": 0.5,
+        "right": 0.56,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -45.43,
+        "right": -45.29
+      }
+    },
+    {
+      "f": 72,
+      "params": {
+        "open": 0.8675,
+        "hand": 0.8675,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 130.3,
+        "right": 130.2
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 38.4,
+      "hand_clip": {
+        "left": 0.59,
+        "right": 0.56,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -45.48,
+        "right": -45.45
+      }
+    },
+    {
+      "f": 73,
+      "params": {
+        "open": 0.8704,
+        "hand": 0.8704,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 120.0,
+        "right": 120.0
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 41.7,
+      "hand_clip": {
+        "left": 0.5,
+        "right": 0.5,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -71.95,
+        "right": -72.02
+      }
+    },
+    {
+      "f": 74,
+      "params": {
+        "open": 0.8735,
+        "hand": 0.8735,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 129.8,
+        "right": 129.7
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 38.6,
+      "hand_clip": {
+        "left": 0.54,
+        "right": 0.57,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -45.65,
+        "right": -45.52
+      }
+    },
+    {
+      "f": 75,
+      "params": {
+        "open": 0.8768,
+        "hand": 0.8768,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 129.4,
+        "right": 129.5
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 38.8,
+      "hand_clip": {
+        "left": 0.57,
+        "right": 0.52,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -45.23,
+        "right": -45.57
+      }
+    },
+    {
+      "f": 76,
+      "params": {
+        "open": 0.8802,
+        "hand": 0.8802,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 130.1,
+        "right": 130.0
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 36.8,
+      "hand_clip": {
+        "left": 0.5,
+        "right": 0.58,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -46.19,
+        "right": -46.01
+      }
+    },
+    {
+      "f": 77,
+      "params": {
+        "open": 0.8838,
+        "hand": 0.8838,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 128.8,
+        "right": 128.9
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 39,
+      "hand_clip": {
+        "left": 0.58,
+        "right": 0.53,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -45.26,
+        "right": -45.59
+      }
+    },
+    {
+      "f": 78,
+      "params": {
+        "open": 0.8875,
+        "hand": 0.8875,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 129.3,
+        "right": 129.4
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 37.1,
+      "hand_clip": {
+        "left": 0.59,
+        "right": 0.53,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -45.64,
+        "right": -45.98
+      }
+    },
+    {
+      "f": 79,
+      "params": {
+        "open": 0.8913,
+        "hand": 0.8913,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 119.4,
+        "right": 119.3
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 40.3,
+      "hand_clip": {
+        "left": 0.63,
+        "right": 0.64,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -73.39,
+        "right": -73.38
+      }
+    },
+    {
+      "f": 80,
+      "params": {
+        "open": 0.8953,
+        "hand": 0.8953,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 119.2,
+        "right": 118.2
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 40.4,
+      "hand_clip": {
+        "left": 0.5,
+        "right": 0.61,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -73.74,
+        "right": -73.38
+      }
+    },
+    {
+      "f": 81,
+      "params": {
+        "open": 0.8993,
+        "hand": 0.8993,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 118.6,
+        "right": 118.3
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 41.8,
+      "hand_clip": {
+        "left": 0.57,
+        "right": 0.55,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -73.88,
+        "right": -73.66
+      }
+    },
+    {
+      "f": 82,
+      "params": {
+        "open": 0.9035,
+        "hand": 0.9035,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 118.1,
+        "right": 118.1
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 42.7,
+      "hand_clip": {
+        "left": 0.53,
+        "right": 0.55,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -74.07,
+        "right": -73.87
+      }
+    },
+    {
+      "f": 83,
+      "params": {
+        "open": 0.9077,
+        "hand": 0.9077,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 117.8,
+        "right": 117.8
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 42.8,
+      "hand_clip": {
+        "left": 0.61,
+        "right": 0.56,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -73.99,
+        "right": -74.16
+      }
+    },
+    {
+      "f": 84,
+      "params": {
+        "open": 0.912,
+        "hand": 0.912,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 113.1,
+        "right": 113.1
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 42.8,
+      "hand_clip": {
+        "left": 0.5,
+        "right": 0.5,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -86.69,
+        "right": -86.77
+      }
+    },
+    {
+      "f": 85,
+      "params": {
+        "open": 0.9163,
+        "hand": 0.9163,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 112.8,
+        "right": 113.0
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 42.6,
+      "hand_clip": {
+        "left": 0.64,
+        "right": 0.5,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -86.77,
+        "right": -87.03
+      }
+    },
+    {
+      "f": 86,
+      "params": {
+        "open": 0.9206,
+        "hand": 0.9206,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 112.6,
+        "right": 112.6
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 41.6,
+      "hand_clip": {
+        "left": 0.61,
+        "right": 0.61,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -87.14,
+        "right": -87.22
+      }
+    },
+    {
+      "f": 87,
+      "params": {
+        "open": 0.925,
+        "hand": 0.925,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 112.4,
+        "right": 112.6
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 41,
+      "hand_clip": {
+        "left": 0.58,
+        "right": 0.57,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -87.48,
+        "right": -87.55
+      }
+    },
+    {
+      "f": 88,
+      "params": {
+        "open": 0.9294,
+        "hand": 0.9294,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 112.7,
+        "right": 112.3
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 41,
+      "hand_clip": {
+        "left": 0.64,
+        "right": 0.64,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -87.89,
+        "right": -87.7
+      }
+    },
+    {
+      "f": 89,
+      "params": {
+        "open": 0.9337,
+        "hand": 0.9337,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 112.0,
+        "right": 112.1
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 39.3,
+      "hand_clip": {
+        "left": 0.5,
+        "right": 0.62,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -88.24,
+        "right": -88.24
+      }
+    },
+    {
+      "f": 90,
+      "params": {
+        "open": 0.938,
+        "hand": 0.938,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 112.4,
+        "right": 111.8
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 39.3,
+      "hand_clip": {
+        "left": 0.56,
+        "right": 0.61,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -88.54,
+        "right": -88.51
+      }
+    },
+    {
+      "f": 91,
+      "params": {
+        "open": 0.9423,
+        "hand": 0.9423,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 111.9,
+        "right": 112.2
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 39.1,
+      "hand_clip": {
+        "left": 0.57,
+        "right": 0.59,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -88.68,
+        "right": -88.88
+      }
+    },
+    {
+      "f": 92,
+      "params": {
+        "open": 0.9465,
+        "hand": 0.9465,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 112.0,
+        "right": 112.0
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 38.8,
+      "hand_clip": {
+        "left": 0.64,
+        "right": 0.62,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -88.96,
+        "right": -89.08
+      }
+    },
+    {
+      "f": 93,
+      "params": {
+        "open": 0.9507,
+        "hand": 0.9507,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 111.2,
+        "right": 111.2
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 37.3,
+      "hand_clip": {
+        "left": 0.53,
+        "right": 0.56,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -89.09,
+        "right": -89.03
+      }
+    },
+    {
+      "f": 94,
+      "params": {
+        "open": 0.9547,
+        "hand": 0.9547,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 111.0,
+        "right": 106.9
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0002,
+      "clip_mm": 37.3,
+      "hand_clip": {
+        "left": 0.52,
+        "right": 0.58,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -89.31,
+        "right": -101.51
+      }
+    },
+    {
+      "f": 95,
+      "params": {
+        "open": 0.9587,
+        "hand": 0.9587,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 106.7,
+        "right": 106.7
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0001,
+      "clip_mm": 35.4,
+      "hand_clip": {
+        "left": 0.62,
+        "right": 0.61,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -101.65,
+        "right": -101.73
+      }
+    },
+    {
+      "f": 96,
+      "params": {
+        "open": 0.9625,
+        "hand": 0.9625,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 106.5,
+        "right": 106.5
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": -0.0001,
+      "clip_mm": 34.9,
+      "hand_clip": {
+        "left": 0.62,
+        "right": 0.62,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -101.85,
+        "right": -101.92
+      }
+    },
+    {
+      "f": 97,
+      "params": {
+        "open": 0.9662,
+        "hand": 0.9662,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 106.3,
+        "right": 106.4
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": -0.0002,
+      "clip_mm": 34.3,
+      "hand_clip": {
+        "left": 0.61,
+        "right": 0.52,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -102.04,
+        "right": -102.27
+      }
+    },
+    {
+      "f": 98,
+      "params": {
+        "open": 0.9698,
+        "hand": 0.9698,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 106.1,
+        "right": 106.2
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": -0.0004,
+      "clip_mm": 33.6,
+      "hand_clip": {
+        "left": 0.57,
+        "right": 0.5,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -102.34,
+        "right": -102.56
+      }
+    },
+    {
+      "f": 99,
+      "params": {
+        "open": 0.9732,
+        "hand": 0.9732,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 106.0,
+        "right": 106.0
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": -0.0005,
+      "clip_mm": 33,
+      "hand_clip": {
+        "left": 0.57,
+        "right": 0.5,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -102.66,
+        "right": -102.74
+      }
+    },
+    {
+      "f": 100,
+      "params": {
+        "open": 0.9765,
+        "hand": 0.9765,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 105.9,
+        "right": 105.9
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": -0.0006,
+      "clip_mm": 32.2,
+      "hand_clip": {
+        "left": 0.5,
+        "right": 0.5,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -102.99,
+        "right": -103.07
+      }
+    },
+    {
+      "f": 101,
+      "params": {
+        "open": 0.9796,
+        "hand": 0.9796,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 105.7,
+        "right": 105.7
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": -0.0007,
+      "clip_mm": 31.8,
+      "hand_clip": {
+        "left": 0.5,
+        "right": 0.52,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -103.15,
+        "right": -103.23
+      }
+    },
+    {
+      "f": 102,
+      "params": {
+        "open": 0.9825,
+        "hand": 0.9825,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 105.6,
+        "right": 105.6
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": -0.0009,
+      "clip_mm": 31.5,
+      "hand_clip": {
+        "left": 0.5,
+        "right": 0.53,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -103.3,
+        "right": -103.35
+      }
+    },
+    {
+      "f": 103,
+      "params": {
+        "open": 0.9852,
+        "hand": 0.9852,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 105.4,
+        "right": 105.8
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": -0.001,
+      "clip_mm": 31.9,
+      "hand_clip": {
+        "left": 0.5,
+        "right": 0.65,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -103.44,
+        "right": -103.25
+      }
+    },
+    {
+      "f": 104,
+      "params": {
+        "open": 0.9877,
+        "hand": 0.9877,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 105.3,
+        "right": 105.8
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": -0.0011,
+      "clip_mm": 31.3,
+      "hand_clip": {
+        "left": 0.5,
+        "right": 0.64,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -103.58,
+        "right": -103.69
+      }
+    },
+    {
+      "f": 105,
+      "params": {
+        "open": 0.99,
+        "hand": 0.99,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 105.2,
+        "right": 105.9
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": -0.0011,
+      "clip_mm": 31.2,
+      "hand_clip": {
+        "left": 0.5,
+        "right": 0.6,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -103.7,
+        "right": -103.88
+      }
+    },
+    {
+      "f": 106,
+      "params": {
+        "open": 0.992,
+        "hand": 0.992,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 105.1,
+        "right": 105.8
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": -0.0012,
+      "clip_mm": 30.8,
+      "hand_clip": {
+        "left": 0.5,
+        "right": 0.53,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -103.81,
+        "right": -104.04
+      }
+    },
+    {
+      "f": 107,
+      "params": {
+        "open": 0.9939,
+        "hand": 0.9939,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 105.1,
+        "right": 105.2
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": -0.0013,
+      "clip_mm": 30.5,
+      "hand_clip": {
+        "left": 0.63,
+        "right": 0.63,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -103.78,
+        "right": -103.9
+      }
+    },
+    {
+      "f": 108,
+      "params": {
+        "open": 0.9955,
+        "hand": 0.9955,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 105.0,
+        "right": 105.1
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": -0.0013,
+      "clip_mm": 30.3,
+      "hand_clip": {
+        "left": 0.62,
+        "right": 0.65,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -103.87,
+        "right": -103.97
+      }
+    },
+    {
+      "f": 109,
+      "params": {
+        "open": 0.9968,
+        "hand": 0.9968,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 105.0,
+        "right": 105.0
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": -0.0014,
+      "clip_mm": 30.1,
+      "hand_clip": {
+        "left": 0.62,
+        "right": 0.57,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -103.94,
+        "right": -104.03
+      }
+    },
+    {
+      "f": 110,
+      "params": {
+        "open": 0.998,
+        "hand": 0.998,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 104.9,
+        "right": 105.0
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": -0.0014,
+      "clip_mm": 29.9,
+      "hand_clip": {
+        "left": 0.61,
+        "right": 0.56,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -104,
+        "right": -104.09
+      }
+    },
+    {
+      "f": 111,
+      "params": {
+        "open": 0.9989,
+        "hand": 0.9989,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 104.9,
+        "right": 104.9
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": -0.0015,
+      "clip_mm": 29.8,
+      "hand_clip": {
+        "left": 0.61,
+        "right": 0.55,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -104.05,
+        "right": -104.14
+      }
+    },
+    {
+      "f": 112,
+      "params": {
+        "open": 0.9995,
+        "hand": 0.9995,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 104.9,
+        "right": 104.9
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": -0.0015,
+      "clip_mm": 29.6,
+      "hand_clip": {
+        "left": 0.57,
+        "right": 0.55,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -104.24,
+        "right": -104.17
+      }
+    },
+    {
+      "f": 113,
+      "params": {
+        "open": 0.9999,
+        "hand": 0.9999,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 104.9,
+        "right": 104.9
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": -0.0015,
+      "clip_mm": 29.4,
+      "hand_clip": {
+        "left": 0.56,
+        "right": 0.5,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -104.27,
+        "right": -104.35
+      }
+    },
+    {
+      "f": 114,
+      "params": {
+        "open": 1,
+        "hand": 1,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 104.9,
+        "right": 104.9
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": -0.0015,
+      "clip_mm": 29.3,
+      "hand_clip": {
+        "left": 0.57,
+        "right": 0.5,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -104.27,
+        "right": -104.36
+      }
+    },
+    {
+      "f": 115,
+      "params": {
+        "open": 0.9999,
+        "hand": 0.9999,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 104.9,
+        "right": 104.9
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": -0.0015,
+      "clip_mm": 29.4,
+      "hand_clip": {
+        "left": 0.56,
+        "right": 0.5,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -104.27,
+        "right": -104.35
+      }
+    },
+    {
+      "f": 116,
+      "params": {
+        "open": 0.9995,
+        "hand": 0.9995,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 104.9,
+        "right": 104.9
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": -0.0015,
+      "clip_mm": 29.6,
+      "hand_clip": {
+        "left": 0.57,
+        "right": 0.55,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -104.24,
+        "right": -104.17
+      }
+    },
+    {
+      "f": 117,
+      "params": {
+        "open": 0.9989,
+        "hand": 0.9989,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 104.9,
+        "right": 104.9
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": -0.0015,
+      "clip_mm": 29.8,
+      "hand_clip": {
+        "left": 0.61,
+        "right": 0.55,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -104.05,
+        "right": -104.14
+      }
+    },
+    {
+      "f": 118,
+      "params": {
+        "open": 0.998,
+        "hand": 0.998,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 104.9,
+        "right": 105.0
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": -0.0014,
+      "clip_mm": 29.9,
+      "hand_clip": {
+        "left": 0.61,
+        "right": 0.56,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -104,
+        "right": -104.09
+      }
+    },
+    {
+      "f": 119,
+      "params": {
+        "open": 0.9968,
+        "hand": 0.9968,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 105.0,
+        "right": 105.0
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": -0.0014,
+      "clip_mm": 30.1,
+      "hand_clip": {
+        "left": 0.62,
+        "right": 0.57,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -103.94,
+        "right": -104.03
+      }
+    },
+    {
+      "f": 120,
+      "params": {
+        "open": 0.9955,
+        "hand": 0.9955,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 105.0,
+        "right": 105.1
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": -0.0013,
+      "clip_mm": 30.3,
+      "hand_clip": {
+        "left": 0.62,
+        "right": 0.65,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -103.87,
+        "right": -103.97
+      }
+    },
+    {
+      "f": 121,
+      "params": {
+        "open": 0.9939,
+        "hand": 0.9939,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 105.1,
+        "right": 105.2
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": -0.0013,
+      "clip_mm": 30.5,
+      "hand_clip": {
+        "left": 0.63,
+        "right": 0.63,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -103.78,
+        "right": -103.9
+      }
+    },
+    {
+      "f": 122,
+      "params": {
+        "open": 0.992,
+        "hand": 0.992,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 105.1,
+        "right": 105.8
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": -0.0012,
+      "clip_mm": 30.8,
+      "hand_clip": {
+        "left": 0.5,
+        "right": 0.53,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -103.81,
+        "right": -104.04
+      }
+    },
+    {
+      "f": 123,
+      "params": {
+        "open": 0.99,
+        "hand": 0.99,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 105.2,
+        "right": 105.9
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": -0.0011,
+      "clip_mm": 31.2,
+      "hand_clip": {
+        "left": 0.5,
+        "right": 0.6,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -103.7,
+        "right": -103.88
+      }
+    },
+    {
+      "f": 124,
+      "params": {
+        "open": 0.9877,
+        "hand": 0.9877,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 105.3,
+        "right": 105.8
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": -0.0011,
+      "clip_mm": 31.3,
+      "hand_clip": {
+        "left": 0.5,
+        "right": 0.64,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -103.58,
+        "right": -103.69
+      }
+    },
+    {
+      "f": 125,
+      "params": {
+        "open": 0.9852,
+        "hand": 0.9852,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 105.4,
+        "right": 105.8
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": -0.001,
+      "clip_mm": 31.9,
+      "hand_clip": {
+        "left": 0.5,
+        "right": 0.65,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -103.44,
+        "right": -103.25
+      }
+    },
+    {
+      "f": 126,
+      "params": {
+        "open": 0.9825,
+        "hand": 0.9825,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 105.6,
+        "right": 105.6
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": -0.0009,
+      "clip_mm": 31.5,
+      "hand_clip": {
+        "left": 0.5,
+        "right": 0.53,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -103.3,
+        "right": -103.35
+      }
+    },
+    {
+      "f": 127,
+      "params": {
+        "open": 0.9796,
+        "hand": 0.9796,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 105.7,
+        "right": 105.7
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": -0.0007,
+      "clip_mm": 31.8,
+      "hand_clip": {
+        "left": 0.5,
+        "right": 0.52,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -103.15,
+        "right": -103.23
+      }
+    },
+    {
+      "f": 128,
+      "params": {
+        "open": 0.9765,
+        "hand": 0.9765,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 105.9,
+        "right": 105.9
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": -0.0006,
+      "clip_mm": 32.2,
+      "hand_clip": {
+        "left": 0.5,
+        "right": 0.5,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -102.99,
+        "right": -103.07
+      }
+    },
+    {
+      "f": 129,
+      "params": {
+        "open": 0.9732,
+        "hand": 0.9732,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 106.0,
+        "right": 106.0
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": -0.0005,
+      "clip_mm": 33,
+      "hand_clip": {
+        "left": 0.57,
+        "right": 0.5,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -102.66,
+        "right": -102.74
+      }
+    },
+    {
+      "f": 130,
+      "params": {
+        "open": 0.9698,
+        "hand": 0.9698,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 106.1,
+        "right": 106.2
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": -0.0004,
+      "clip_mm": 33.6,
+      "hand_clip": {
+        "left": 0.57,
+        "right": 0.5,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -102.34,
+        "right": -102.56
+      }
+    },
+    {
+      "f": 131,
+      "params": {
+        "open": 0.9662,
+        "hand": 0.9662,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 106.3,
+        "right": 106.4
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": -0.0002,
+      "clip_mm": 34.3,
+      "hand_clip": {
+        "left": 0.61,
+        "right": 0.52,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -102.04,
+        "right": -102.27
+      }
+    },
+    {
+      "f": 132,
+      "params": {
+        "open": 0.9625,
+        "hand": 0.9625,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 106.5,
+        "right": 106.5
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": -0.0001,
+      "clip_mm": 34.9,
+      "hand_clip": {
+        "left": 0.62,
+        "right": 0.62,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -101.85,
+        "right": -101.92
+      }
+    },
+    {
+      "f": 133,
+      "params": {
+        "open": 0.9587,
+        "hand": 0.9587,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 106.7,
+        "right": 106.7
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0001,
+      "clip_mm": 35.4,
+      "hand_clip": {
+        "left": 0.62,
+        "right": 0.61,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -101.65,
+        "right": -101.73
+      }
+    },
+    {
+      "f": 134,
+      "params": {
+        "open": 0.9547,
+        "hand": 0.9547,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 111.0,
+        "right": 106.9
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0002,
+      "clip_mm": 37.3,
+      "hand_clip": {
+        "left": 0.52,
+        "right": 0.58,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -89.31,
+        "right": -101.51
+      }
+    },
+    {
+      "f": 135,
+      "params": {
+        "open": 0.9507,
+        "hand": 0.9507,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 111.2,
+        "right": 111.2
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 37.3,
+      "hand_clip": {
+        "left": 0.53,
+        "right": 0.56,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -89.09,
+        "right": -89.03
+      }
+    },
+    {
+      "f": 136,
+      "params": {
+        "open": 0.9465,
+        "hand": 0.9465,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 112.0,
+        "right": 112.0
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 38.8,
+      "hand_clip": {
+        "left": 0.64,
+        "right": 0.62,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -88.96,
+        "right": -89.08
+      }
+    },
+    {
+      "f": 137,
+      "params": {
+        "open": 0.9423,
+        "hand": 0.9423,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 111.9,
+        "right": 112.2
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 39.1,
+      "hand_clip": {
+        "left": 0.57,
+        "right": 0.59,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -88.68,
+        "right": -88.88
+      }
+    },
+    {
+      "f": 138,
+      "params": {
+        "open": 0.938,
+        "hand": 0.938,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 112.4,
+        "right": 111.8
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 39.3,
+      "hand_clip": {
+        "left": 0.56,
+        "right": 0.61,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -88.54,
+        "right": -88.51
+      }
+    },
+    {
+      "f": 139,
+      "params": {
+        "open": 0.9337,
+        "hand": 0.9337,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 112.0,
+        "right": 112.1
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 39.3,
+      "hand_clip": {
+        "left": 0.5,
+        "right": 0.62,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -88.24,
+        "right": -88.24
+      }
+    },
+    {
+      "f": 140,
+      "params": {
+        "open": 0.9294,
+        "hand": 0.9294,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 112.7,
+        "right": 112.3
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 41,
+      "hand_clip": {
+        "left": 0.64,
+        "right": 0.64,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -87.89,
+        "right": -87.7
+      }
+    },
+    {
+      "f": 141,
+      "params": {
+        "open": 0.925,
+        "hand": 0.925,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 112.4,
+        "right": 112.6
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 41,
+      "hand_clip": {
+        "left": 0.58,
+        "right": 0.57,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -87.48,
+        "right": -87.55
+      }
+    },
+    {
+      "f": 142,
+      "params": {
+        "open": 0.9206,
+        "hand": 0.9206,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 112.6,
+        "right": 112.6
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 41.6,
+      "hand_clip": {
+        "left": 0.61,
+        "right": 0.61,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -87.14,
+        "right": -87.22
+      }
+    },
+    {
+      "f": 143,
+      "params": {
+        "open": 0.9163,
+        "hand": 0.9163,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 112.8,
+        "right": 113.0
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 42.6,
+      "hand_clip": {
+        "left": 0.64,
+        "right": 0.5,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -86.77,
+        "right": -87.03
+      }
+    },
+    {
+      "f": 144,
+      "params": {
+        "open": 0.912,
+        "hand": 0.912,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 113.1,
+        "right": 113.1
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 42.8,
+      "hand_clip": {
+        "left": 0.5,
+        "right": 0.5,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -86.69,
+        "right": -86.77
+      }
+    },
+    {
+      "f": 145,
+      "params": {
+        "open": 0.9077,
+        "hand": 0.9077,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 117.8,
+        "right": 117.8
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 42.8,
+      "hand_clip": {
+        "left": 0.61,
+        "right": 0.56,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -73.99,
+        "right": -74.16
+      }
+    },
+    {
+      "f": 146,
+      "params": {
+        "open": 0.9035,
+        "hand": 0.9035,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 118.1,
+        "right": 118.1
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 42.7,
+      "hand_clip": {
+        "left": 0.53,
+        "right": 0.55,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -74.07,
+        "right": -73.87
+      }
+    },
+    {
+      "f": 147,
+      "params": {
+        "open": 0.8993,
+        "hand": 0.8993,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 118.6,
+        "right": 118.3
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 41.8,
+      "hand_clip": {
+        "left": 0.57,
+        "right": 0.55,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -73.88,
+        "right": -73.66
+      }
+    },
+    {
+      "f": 148,
+      "params": {
+        "open": 0.8953,
+        "hand": 0.8953,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 119.2,
+        "right": 118.2
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 40.4,
+      "hand_clip": {
+        "left": 0.5,
+        "right": 0.61,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -73.74,
+        "right": -73.38
+      }
+    },
+    {
+      "f": 149,
+      "params": {
+        "open": 0.8913,
+        "hand": 0.8913,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 119.4,
+        "right": 119.3
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 40.3,
+      "hand_clip": {
+        "left": 0.63,
+        "right": 0.64,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -73.39,
+        "right": -73.38
+      }
+    },
+    {
+      "f": 150,
+      "params": {
+        "open": 0.8875,
+        "hand": 0.8875,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 129.3,
+        "right": 129.4
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 37.1,
+      "hand_clip": {
+        "left": 0.59,
+        "right": 0.53,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -45.64,
+        "right": -45.98
+      }
+    },
+    {
+      "f": 151,
+      "params": {
+        "open": 0.8838,
+        "hand": 0.8838,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 128.8,
+        "right": 128.9
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 39,
+      "hand_clip": {
+        "left": 0.58,
+        "right": 0.53,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -45.26,
+        "right": -45.59
+      }
+    },
+    {
+      "f": 152,
+      "params": {
+        "open": 0.8802,
+        "hand": 0.8802,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 130.1,
+        "right": 130.0
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 36.8,
+      "hand_clip": {
+        "left": 0.5,
+        "right": 0.58,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -46.19,
+        "right": -46.01
+      }
+    },
+    {
+      "f": 153,
+      "params": {
+        "open": 0.8768,
+        "hand": 0.8768,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 129.4,
+        "right": 129.5
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 38.8,
+      "hand_clip": {
+        "left": 0.57,
+        "right": 0.52,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -45.23,
+        "right": -45.57
+      }
+    },
+    {
+      "f": 154,
+      "params": {
+        "open": 0.8735,
+        "hand": 0.8735,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 129.8,
+        "right": 129.7
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 38.6,
+      "hand_clip": {
+        "left": 0.54,
+        "right": 0.57,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -45.65,
+        "right": -45.52
+      }
+    },
+    {
+      "f": 155,
+      "params": {
+        "open": 0.8704,
+        "hand": 0.8704,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 120.0,
+        "right": 120.0
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 41.7,
+      "hand_clip": {
+        "left": 0.5,
+        "right": 0.5,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -71.95,
+        "right": -72.02
+      }
+    },
+    {
+      "f": 156,
+      "params": {
+        "open": 0.8675,
+        "hand": 0.8675,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 130.3,
+        "right": 130.2
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 38.4,
+      "hand_clip": {
+        "left": 0.59,
+        "right": 0.56,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -45.48,
+        "right": -45.45
+      }
+    },
+    {
+      "f": 157,
+      "params": {
+        "open": 0.8648,
+        "hand": 0.8648,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 130.5,
+        "right": 130.4
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 38.3,
+      "hand_clip": {
+        "left": 0.5,
+        "right": 0.56,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -45.43,
+        "right": -45.29
+      }
+    },
+    {
+      "f": 158,
+      "params": {
+        "open": 0.8623,
+        "hand": 0.8623,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 130.6,
+        "right": 130.6
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 38.3,
+      "hand_clip": {
+        "left": 0.55,
+        "right": 0.52,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -45.26,
+        "right": -45.29
+      }
+    },
+    {
+      "f": 159,
+      "params": {
+        "open": 0.86,
+        "hand": 0.86,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 130.8,
+        "right": 130.8
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 38.2,
+      "hand_clip": {
+        "left": 0.61,
+        "right": 0.62,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -45.08,
+        "right": -45.16
+      }
+    },
+    {
+      "f": 160,
+      "params": {
+        "open": 0.858,
+        "hand": 0.858,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 131.0,
+        "right": 131.0
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 38.1,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.5,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -45.13,
+        "right": -45.2
+      }
+    },
+    {
+      "f": 161,
+      "params": {
+        "open": 0.8561,
+        "hand": 0.8561,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 125.3,
+        "right": 125.4
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 41.2,
+      "hand_clip": {
+        "left": 0.6,
+        "right": 0.5,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -58.56,
+        "right": -58.79
+      }
+    },
+    {
+      "f": 162,
+      "params": {
+        "open": 0.8545,
+        "hand": 0.8545,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 125.5,
+        "right": 126.0
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 39.2,
+      "hand_clip": {
+        "left": 0.6,
+        "right": 0.57,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -58.78,
+        "right": -58.62
+      }
+    },
+    {
+      "f": 163,
+      "params": {
+        "open": 0.8532,
+        "hand": 0.8532,
+        "sag": 0.0043,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 125.6,
+        "right": 126.2
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 39.1,
+      "hand_clip": {
+        "left": 0.6,
+        "right": 0.56,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -58.7,
+        "right": -58.85
+      }
+    },
+    {
+      "f": 164,
+      "params": {
+        "open": 0.852,
+        "hand": 0.852,
+        "sag": 0.017,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 125.7,
+        "right": 126.3
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 39,
+      "hand_clip": {
+        "left": 0.61,
+        "right": 0.56,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -58.63,
+        "right": -58.8
+      }
+    },
+    {
+      "f": 165,
+      "params": {
+        "open": 0.8511,
+        "hand": 0.8511,
+        "sag": 0.0381,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 125.7,
+        "right": 126.0
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 39.8,
+      "hand_clip": {
+        "left": 0.62,
+        "right": 0.62,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -58.58,
+        "right": -58.48
+      }
+    },
+    {
+      "f": 166,
+      "params": {
+        "open": 0.8505,
+        "hand": 0.8505,
+        "sag": 0.067,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 125.7,
+        "right": 125.7
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 41,
+      "hand_clip": {
+        "left": 0.62,
+        "right": 0.58,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -58.55,
+        "right": -58.42
+      }
+    },
+    {
+      "f": 167,
+      "params": {
+        "open": 0.8501,
+        "hand": 0.8501,
+        "sag": 0.1033,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 125.8,
+        "right": 125.7
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 41,
+      "hand_clip": {
+        "left": 0.63,
+        "right": 0.58,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -58.52,
+        "right": -58.4
+      }
+    },
+    {
+      "f": 168,
+      "params": {
+        "open": 0.85,
+        "hand": 0.85,
+        "sag": 0.1464,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 125.7,
+        "right": 125.7
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 41,
+      "hand_clip": {
+        "left": 0.62,
+        "right": 0.54,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -58.52,
+        "right": -58.43
+      }
+    },
+    {
+      "f": 169,
+      "params": {
+        "open": 0.8488,
+        "hand": 0.8481,
+        "sag": 0.1956,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 125.7,
+        "right": 125.1
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 40.9,
+      "hand_clip": {
+        "left": 0.63,
+        "right": 0.65,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -58.41,
+        "right": -58.09
+      }
+    },
+    {
+      "f": 170,
+      "params": {
+        "open": 0.8453,
+        "hand": 0.8423,
+        "sag": 0.25,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 126.6,
+        "right": 125.9
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 37.6,
+      "hand_clip": {
+        "left": 0.64,
+        "right": 0.65,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -58.18,
+        "right": -57.87
+      }
+    },
+    {
+      "f": 171,
+      "params": {
+        "open": 0.8393,
+        "hand": 0.8328,
+        "sag": 0.3087,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 125.8,
+        "right": 125.7
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 39.3,
+      "hand_clip": {
+        "left": 0.65,
+        "right": 0.65,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -57.33,
+        "right": -57.39
+      }
+    },
+    {
+      "f": 172,
+      "params": {
+        "open": 0.8311,
+        "hand": 0.8196,
+        "sag": 0.3706,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 130.6,
+        "right": 130.8
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 37.7,
+      "hand_clip": {
+        "left": 0.52,
+        "right": 0.6,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -44.2,
+        "right": -43.87
+      }
+    },
+    {
+      "f": 173,
+      "params": {
+        "open": 0.8206,
+        "hand": 0.8028,
+        "sag": 0.4347,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 129.9,
+        "right": 130.7
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 37.1,
+      "hand_clip": {
+        "left": 0.54,
+        "right": 0.64,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -43.35,
+        "right": -43.15
+      }
+    },
+    {
+      "f": 174,
+      "params": {
+        "open": 0.8079,
+        "hand": 0.7825,
+        "sag": 0.5,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 130.5,
+        "right": 130.1
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 36.5,
+      "hand_clip": {
+        "left": 0.5,
+        "right": 0.57,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -42.1,
+        "right": -42.11
+      }
+    },
+    {
+      "f": 175,
+      "params": {
+        "open": 0.7931,
+        "hand": 0.7591,
+        "sag": 0.5653,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 129.6,
+        "right": 129.8
+      },
+      "knee": {
+        "left": 179.0,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 36.8,
+      "hand_clip": {
+        "left": 0.62,
+        "right": 0.57,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -40.61,
+        "right": -40.64
+      }
+    },
+    {
+      "f": 176,
+      "params": {
+        "open": 0.7762,
+        "hand": 0.7326,
+        "sag": 0.6294,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 129.1,
+        "right": 129.0
+      },
+      "knee": {
+        "left": 179.1,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 37.3,
+      "hand_clip": {
+        "left": 0.63,
+        "right": 0.64,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -38.25,
+        "right": -38.3
+      }
+    },
+    {
+      "f": 177,
+      "params": {
+        "open": 0.7573,
+        "hand": 0.7033,
+        "sag": 0.6913,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 129.1,
+        "right": 129.0
+      },
+      "knee": {
+        "left": 179.1,
+        "right": 179.0
+      },
+      "minY": 0.0003,
+      "clip_mm": 35.9,
+      "hand_clip": {
+        "left": 0.53,
+        "right": 0.53,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -36.54,
+        "right": -36.61
+      }
+    },
+    {
+      "f": 178,
+      "params": {
+        "open": 0.7365,
+        "hand": 0.6715,
+        "sag": 0.75,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 128.0,
+        "right": 127.9
+      },
+      "knee": {
+        "left": 179.1,
+        "right": 178.9
+      },
+      "minY": 0.0002,
+      "clip_mm": 38.1,
+      "hand_clip": {
+        "left": 0.63,
+        "right": 0.5,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -34.5,
+        "right": -34.73
+      }
+    },
+    {
+      "f": 179,
+      "params": {
+        "open": 0.7141,
+        "hand": 0.6375,
+        "sag": 0.8044,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 128.0,
+        "right": 127.8
+      },
+      "knee": {
+        "left": 179.1,
+        "right": 178.9
+      },
+      "minY": 0.0002,
+      "clip_mm": 36.7,
+      "hand_clip": {
+        "left": 0.61,
+        "right": 0.61,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -31.44,
+        "right": -31.54
+      }
+    },
+    {
+      "f": 180,
+      "params": {
+        "open": 0.69,
+        "hand": 0.6016,
+        "sag": 0.8536,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 127.4,
+        "right": 127.3
+      },
+      "knee": {
+        "left": 179.1,
+        "right": 178.9
+      },
+      "minY": 0.0002,
+      "clip_mm": 37.7,
+      "hand_clip": {
+        "left": 0.62,
+        "right": 0.52,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -29.21,
+        "right": -29.42
+      }
+    },
+    {
+      "f": 181,
+      "params": {
+        "open": 0.6644,
+        "hand": 0.564,
+        "sag": 0.8967,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 127.0,
+        "right": 126.7
+      },
+      "knee": {
+        "left": 179.1,
+        "right": 178.9
+      },
+      "minY": 0.0002,
+      "clip_mm": 38.9,
+      "hand_clip": {
+        "left": 0.54,
+        "right": 0.54,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -27.21,
+        "right": -27.34
+      }
+    },
+    {
+      "f": 182,
+      "params": {
+        "open": 0.6375,
+        "hand": 0.5252,
+        "sag": 0.933,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 127.2,
+        "right": 127.1
+      },
+      "knee": {
+        "left": 179.1,
+        "right": 178.9
+      },
+      "minY": 0.0001,
+      "clip_mm": 38.2,
+      "hand_clip": {
+        "left": 0.54,
+        "right": 0.52,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -26.38,
+        "right": -26.11
+      }
+    },
+    {
+      "f": 183,
+      "params": {
+        "open": 0.6094,
+        "hand": 0.4855,
+        "sag": 0.9619,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 127.7,
+        "right": 127.4
+      },
+      "knee": {
+        "left": 179.1,
+        "right": 178.9
+      },
+      "minY": 0.0001,
+      "clip_mm": 34.7,
+      "hand_clip": {
+        "left": 0.54,
+        "right": 0.64,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -25.2,
+        "right": -25.37
+      }
+    },
+    {
+      "f": 184,
+      "params": {
+        "open": 0.5803,
+        "hand": 0.4452,
+        "sag": 0.983,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 128.1,
+        "right": 127.9
+      },
+      "knee": {
+        "left": 179.1,
+        "right": 178.9
+      },
+      "minY": 0.0001,
+      "clip_mm": 27.7,
+      "hand_clip": {
+        "left": 0.5,
+        "right": 0.57,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -24.25,
+        "right": -24.86
+      }
+    },
+    {
+      "f": 185,
+      "params": {
+        "open": 0.5503,
+        "hand": 0.4048,
+        "sag": 0.9957,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 129.2,
+        "right": 128.8
+      },
+      "knee": {
+        "left": 179.1,
+        "right": 178.9
+      },
+      "minY": 0.0001,
+      "clip_mm": 22.1,
+      "hand_clip": {
+        "left": 0.5,
+        "right": 0.55,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -25.13,
+        "right": -25.33
+      }
+    },
+    {
+      "f": 186,
+      "params": {
+        "open": 0.5196,
+        "hand": 0.3645,
+        "sag": 1,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 130.8,
+        "right": 130.1
+      },
+      "knee": {
+        "left": 179.1,
+        "right": 178.9
+      },
+      "minY": 0.0002,
+      "clip_mm": 16.9,
+      "hand_clip": {
+        "left": 0.5,
+        "right": 0.59,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -26.06,
+        "right": -26.32
+      }
+    },
+    {
+      "f": 187,
+      "params": {
+        "open": 0.4883,
+        "hand": 0.3248,
+        "sag": 0.9957,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 132.0,
+        "right": 131.4
+      },
+      "knee": {
+        "left": 179.1,
+        "right": 178.9
+      },
+      "minY": 0.0002,
+      "clip_mm": 15.2,
+      "hand_clip": {
+        "left": 0.5,
+        "right": 0.55,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -26.93,
+        "right": -27.13
+      }
+    },
+    {
+      "f": 188,
+      "params": {
+        "open": 0.4568,
+        "hand": 0.286,
+        "sag": 0.983,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 133.9,
+        "right": 133.3
+      },
+      "knee": {
+        "left": 179.1,
+        "right": 178.9
+      },
+      "minY": 0.0002,
+      "clip_mm": 13.7,
+      "hand_clip": {
+        "left": 0.55,
+        "right": 0.56,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -28.46,
+        "right": -28.73
+      }
+    },
+    {
+      "f": 189,
+      "params": {
+        "open": 0.425,
+        "hand": 0.2484,
+        "sag": 0.9619,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 135.9,
+        "right": 135.4
+      },
+      "knee": {
+        "left": 179.1,
+        "right": 178.9
+      },
+      "minY": 0.0003,
+      "clip_mm": 11.9,
+      "hand_clip": {
+        "left": 0.5,
+        "right": 0.59,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -29.94,
+        "right": -30.87
+      }
+    },
+    {
+      "f": 190,
+      "params": {
+        "open": 0.3932,
+        "hand": 0.2125,
+        "sag": 0.933,
+        "rl": 0.0199
+      },
+      "elbow": {
+        "left": 138.5,
+        "right": 137.6
+      },
+      "knee": {
+        "left": 179.1,
+        "right": 178.9
+      },
+      "minY": 0.0003,
+      "clip_mm": 10.1,
+      "hand_clip": {
+        "left": 0.5,
+        "right": 0.5,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -32.39,
+        "right": -32.68
+      }
+    },
+    {
+      "f": 191,
+      "params": {
+        "open": 0.3617,
+        "hand": 0.1785,
+        "sag": 0.8967,
+        "rl": 0.078
+      },
+      "elbow": {
+        "left": 140.9,
+        "right": 139.9
+      },
+      "knee": {
+        "left": 179.1,
+        "right": 178.9
+      },
+      "minY": 0.0003,
+      "clip_mm": 8.4,
+      "hand_clip": {
+        "left": 0.5,
+        "right": 0.5,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -34.33,
+        "right": -34.63
+      }
+    },
+    {
+      "f": 192,
+      "params": {
+        "open": 0.3304,
+        "hand": 0.1467,
+        "sag": 0.8536,
+        "rl": 0.1697
+      },
+      "elbow": {
+        "left": 143.7,
+        "right": 142.5
+      },
+      "knee": {
+        "left": 179.1,
+        "right": 178.9
+      },
+      "minY": 0.0002,
+      "clip_mm": 6.6,
+      "hand_clip": {
+        "left": 0.5,
+        "right": 0.5,
+        "leftBone": "leftShin",
+        "rightBone": "rightShin"
+      },
+      "touch_shift_mm": {
+        "left": -36.41,
+        "right": -36.71
+      }
+    },
+    {
+      "f": 193,
+      "params": {
+        "open": 0.2997,
+        "hand": 0.1174,
+        "sag": 0.8044,
+        "rl": 0.2876
+      },
+      "elbow": {
+        "left": 144.9,
+        "right": 144.0
+      },
+      "knee": {
+        "left": 179.1,
+        "right": 178.9
+      },
+      "minY": 0.0002,
+      "clip_mm": 7.5,
+      "hand_clip": {
+        "left": 1.42,
+        "right": 0.6,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -35.88,
+        "right": -36.8
+      }
+    },
+    {
+      "f": 194,
+      "params": {
+        "open": 0.2697,
+        "hand": 0.0909,
+        "sag": 0.75,
+        "rl": 0.4225
+      },
+      "elbow": {
+        "left": 146.4,
+        "right": 145.7
+      },
+      "knee": {
+        "left": 179.2,
+        "right": 178.9
+      },
+      "minY": 0.0002,
+      "clip_mm": 7.5,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.55,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -35.67,
+        "right": -37.13
+      }
+    },
+    {
+      "f": 195,
+      "params": {
+        "open": 0.2406,
+        "hand": 0.0675,
+        "sag": 0.6913,
+        "rl": 0.5635
+      },
+      "elbow": {
+        "left": 148.5,
+        "right": 147.8
+      },
+      "knee": {
+        "left": 179.2,
+        "right": 178.9
+      },
+      "minY": 0.0002,
+      "clip_mm": 8,
+      "hand_clip": {
+        "left": 0.99,
+        "right": 0.52,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -35.84,
+        "right": -37.21
+      }
+    },
+    {
+      "f": 196,
+      "params": {
+        "open": 0.2125,
+        "hand": 0.0472,
+        "sag": 0.6294,
+        "rl": 0.6995
+      },
+      "elbow": {
+        "left": 148.3,
+        "right": 147.3
+      },
+      "knee": {
+        "left": 179.2,
+        "right": 178.9
+      },
+      "minY": 0.0002,
+      "clip_mm": 11.6,
+      "hand_clip": {
+        "left": 1.03,
+        "right": 0.59,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -32.66,
+        "right": -33.96
+      }
+    },
+    {
+      "f": 197,
+      "params": {
+        "open": 0.1856,
+        "hand": 0.0304,
+        "sag": 0.5653,
+        "rl": 0.8196
+      },
+      "elbow": {
+        "left": 146.9,
+        "right": 145.9
+      },
+      "knee": {
+        "left": 179.2,
+        "right": 178.8
+      },
+      "minY": 0.0001,
+      "clip_mm": 16.3,
+      "hand_clip": {
+        "left": 2.04,
+        "right": 1.33,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -28.02,
+        "right": -29.68
+      }
+    },
+    {
+      "f": 198,
+      "params": {
+        "open": 0.16,
+        "hand": 0.0172,
+        "sag": 0.5,
+        "rl": 0.9143
+      },
+      "elbow": {
+        "left": 149.1,
+        "right": 147.5
+      },
+      "knee": {
+        "left": 179.2,
+        "right": 178.8
+      },
+      "minY": 0.0002,
+      "clip_mm": 17.1,
+      "hand_clip": {
+        "left": 0.61,
+        "right": 0.5,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -27.68,
+        "right": -28.59
+      }
+    },
+    {
+      "f": 199,
+      "params": {
+        "open": 0.1359,
+        "hand": 0.0077,
+        "sag": 0.4347,
+        "rl": 0.976
+      },
+      "elbow": {
+        "left": 151.5,
+        "right": 149.5
+      },
+      "knee": {
+        "left": 179.2,
+        "right": 178.8
+      },
+      "minY": 0.0002,
+      "clip_mm": 18,
+      "hand_clip": {
+        "left": 0.62,
+        "right": 0.6,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -26.89,
+        "right": -27.69
+      }
+    },
+    {
+      "f": 200,
+      "params": {
+        "open": 0.1135,
+        "hand": 0.0019,
+        "sag": 0.3706,
+        "rl": 0.9998
+      },
+      "elbow": {
+        "left": 155.1,
+        "right": 153.7
+      },
+      "knee": {
+        "left": 179.2,
+        "right": 178.8
+      },
+      "minY": 0.0002,
+      "clip_mm": 17.7,
+      "hand_clip": {
+        "left": 0.61,
+        "right": 0.57,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -26.9,
+        "right": -28.57
+      }
+    },
+    {
+      "f": 201,
+      "params": {
+        "open": 0.0927,
+        "hand": 0,
+        "sag": 0.3087,
+        "rl": 0.9797
+      },
+      "elbow": {
+        "left": 159.9,
+        "right": 156.9
+      },
+      "knee": {
+        "left": 179.2,
+        "right": 178.8
+      },
+      "minY": 0.0002,
+      "clip_mm": 17.9,
+      "hand_clip": {
+        "left": 0.61,
+        "right": 0.6,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -26.85,
+        "right": -27.62
+      }
+    },
+    {
+      "f": 202,
+      "params": {
+        "open": 0.0738,
+        "hand": 0,
+        "sag": 0.25,
+        "rl": 0.9118
+      },
+      "elbow": {
+        "left": 166.2,
+        "right": 162.1
+      },
+      "knee": {
+        "left": 179.2,
+        "right": 178.8
+      },
+      "minY": 0.0002,
+      "clip_mm": 17.9,
+      "hand_clip": {
+        "left": 0.62,
+        "right": 0.6,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -26.77,
+        "right": -27.53
+      }
+    },
+    {
+      "f": 203,
+      "params": {
+        "open": 0.0569,
+        "hand": 0,
+        "sag": 0.1956,
+        "rl": 0.8028
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 168.7
+      },
+      "knee": {
+        "left": 179.2,
+        "right": 178.8
+      },
+      "minY": 0.0002,
+      "clip_mm": 17.9,
+      "hand_clip": {
+        "left": 0.54,
+        "right": 0.61,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -27.01,
+        "right": -27.43
+      }
+    },
+    {
+      "f": 204,
+      "params": {
+        "open": 0.0421,
+        "hand": 0,
+        "sag": 0.1464,
+        "rl": 0.6635
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.3,
+        "right": 178.8
+      },
+      "minY": 0.0002,
+      "clip_mm": 18.1,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.52,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -35.03,
+        "right": -29.37
+      }
+    },
+    {
+      "f": 205,
+      "params": {
+        "open": 0.0294,
+        "hand": 0,
+        "sag": 0.1033,
+        "rl": 0.5079
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.3,
+        "right": 178.8
+      },
+      "minY": 0.0002,
+      "clip_mm": 18.6,
+      "hand_clip": {
+        "left": 0.52,
+        "right": 0.51,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -40.55,
+        "right": -36.28
+      }
+    },
+    {
+      "f": 206,
+      "params": {
+        "open": 0.0189,
+        "hand": 0,
+        "sag": 0.067,
+        "rl": 0.3515
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.3,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 18.8,
+      "hand_clip": {
+        "left": 0.5,
+        "right": 0.51,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -46.09,
+        "right": -41.46
+      }
+    },
+    {
+      "f": 207,
+      "params": {
+        "open": 0.0107,
+        "hand": 0,
+        "sag": 0.0381,
+        "rl": 0.21
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.3,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 18.9,
+      "hand_clip": {
+        "left": 0.5,
+        "right": 0.51,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -50.33,
+        "right": -45.26
+      }
+    },
+    {
+      "f": 208,
+      "params": {
+        "open": 0.0047,
+        "hand": 0,
+        "sag": 0.017,
+        "rl": 0.0974
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.3,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 18.9,
+      "hand_clip": {
+        "left": 0.5,
+        "right": 0.51,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -53.31,
+        "right": -48.21
+      }
+    },
+    {
+      "f": 209,
+      "params": {
+        "open": 0.0012,
+        "hand": 0,
+        "sag": 0.0043,
+        "rl": 0.025
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.3,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 19,
+      "hand_clip": {
+        "left": 0.52,
+        "right": 0.51,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -55.01,
+        "right": -49.25
+      }
+    },
+    {
+      "f": 210,
+      "params": {
+        "open": 0,
+        "hand": 0,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.3,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 19,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.52,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -55.65,
+        "right": -49.78
+      }
+    },
+    {
+      "f": 211,
+      "params": {
+        "open": 0,
+        "hand": 0,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.3,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 19,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.52,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -55.65,
+        "right": -49.78
+      }
+    },
+    {
+      "f": 212,
+      "params": {
+        "open": 0,
+        "hand": 0,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.3,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 19,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.52,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -55.65,
+        "right": -49.78
+      }
+    },
+    {
+      "f": 213,
+      "params": {
+        "open": 0,
+        "hand": 0,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.3,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 19,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.52,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -55.65,
+        "right": -49.78
+      }
+    },
+    {
+      "f": 214,
+      "params": {
+        "open": 0,
+        "hand": 0,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.3,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 19,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.52,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -55.65,
+        "right": -49.78
+      }
+    },
+    {
+      "f": 215,
+      "params": {
+        "open": 0,
+        "hand": 0,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.3,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 19,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.52,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -55.65,
+        "right": -49.78
+      }
+    },
+    {
+      "f": 216,
+      "params": {
+        "open": 0,
+        "hand": 0,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.3,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 19,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.52,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -55.65,
+        "right": -49.78
+      }
+    },
+    {
+      "f": 217,
+      "params": {
+        "open": 0,
+        "hand": 0,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.3,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 19,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.52,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -55.65,
+        "right": -49.78
+      }
+    },
+    {
+      "f": 218,
+      "params": {
+        "open": 0,
+        "hand": 0,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.3,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 19,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.52,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -55.65,
+        "right": -49.78
+      }
+    },
+    {
+      "f": 219,
+      "params": {
+        "open": 0,
+        "hand": 0,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.3,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 19,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.52,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -55.65,
+        "right": -49.78
+      }
+    },
+    {
+      "f": 220,
+      "params": {
+        "open": 0,
+        "hand": 0,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.3,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 19,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.52,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -55.65,
+        "right": -49.78
+      }
+    },
+    {
+      "f": 221,
+      "params": {
+        "open": 0,
+        "hand": 0,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.3,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 19,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.52,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -55.65,
+        "right": -49.78
+      }
+    },
+    {
+      "f": 222,
+      "params": {
+        "open": 0,
+        "hand": 0,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.3,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 19,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.52,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -55.65,
+        "right": -49.78
+      }
+    },
+    {
+      "f": 223,
+      "params": {
+        "open": 0,
+        "hand": 0,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.3,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 19,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.52,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -55.65,
+        "right": -49.78
+      }
+    },
+    {
+      "f": 224,
+      "params": {
+        "open": 0,
+        "hand": 0,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.3,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 19,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.52,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -55.65,
+        "right": -49.78
+      }
+    },
+    {
+      "f": 225,
+      "params": {
+        "open": 0,
+        "hand": 0,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.3,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 19,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.52,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -55.65,
+        "right": -49.78
+      }
+    },
+    {
+      "f": 226,
+      "params": {
+        "open": 0,
+        "hand": 0,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.3,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 19,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.52,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -55.65,
+        "right": -49.78
+      }
+    },
+    {
+      "f": 227,
+      "params": {
+        "open": 0,
+        "hand": 0,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.3,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 19,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.52,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -55.65,
+        "right": -49.78
+      }
+    },
+    {
+      "f": 228,
+      "params": {
+        "open": 0,
+        "hand": 0,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.3,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 19,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.52,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -55.65,
+        "right": -49.78
+      }
+    },
+    {
+      "f": 229,
+      "params": {
+        "open": 0,
+        "hand": 0,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.3,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 19,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.52,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -55.65,
+        "right": -49.78
+      }
+    },
+    {
+      "f": 230,
+      "params": {
+        "open": 0,
+        "hand": 0,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.3,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 19,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.52,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -55.65,
+        "right": -49.78
+      }
+    },
+    {
+      "f": 231,
+      "params": {
+        "open": 0,
+        "hand": 0,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.3,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 19,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.52,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -55.65,
+        "right": -49.78
+      }
+    },
+    {
+      "f": 232,
+      "params": {
+        "open": 0,
+        "hand": 0,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.3,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 19,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.52,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -55.65,
+        "right": -49.78
+      }
+    },
+    {
+      "f": 233,
+      "params": {
+        "open": 0,
+        "hand": 0,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.3,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 19,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.52,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -55.65,
+        "right": -49.78
+      }
+    },
+    {
+      "f": 234,
+      "params": {
+        "open": 0,
+        "hand": 0,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.3,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 19,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.52,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -55.65,
+        "right": -49.78
+      }
+    },
+    {
+      "f": 235,
+      "params": {
+        "open": 0,
+        "hand": 0,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.3,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 19,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.52,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -55.65,
+        "right": -49.78
+      }
+    },
+    {
+      "f": 236,
+      "params": {
+        "open": 0,
+        "hand": 0,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.3,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 19,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.52,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -55.65,
+        "right": -49.78
+      }
+    },
+    {
+      "f": 237,
+      "params": {
+        "open": 0,
+        "hand": 0,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.3,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 19,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.52,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -55.65,
+        "right": -49.78
+      }
+    },
+    {
+      "f": 238,
+      "params": {
+        "open": 0,
+        "hand": 0,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.3,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 19,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.52,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -55.65,
+        "right": -49.78
+      }
+    },
+    {
+      "f": 239,
+      "params": {
+        "open": 0,
+        "hand": 0,
+        "sag": 0,
+        "rl": 0
+      },
+      "elbow": {
+        "left": 179.9,
+        "right": 179.9
+      },
+      "knee": {
+        "left": 179.3,
+        "right": 178.8
+      },
+      "minY": 0.0003,
+      "clip_mm": 19,
+      "hand_clip": {
+        "left": 0.51,
+        "right": 0.52,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "touch_shift_mm": {
+        "left": -55.65,
+        "right": -49.78
+      }
+    }
+  ]
+}
