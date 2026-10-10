@@ -12,6 +12,9 @@ export async function boot({size=1080,pr=2,theme,bakeHands=[]}){
   await p.addStyleTag({content:`html,body{background:transparent!important} body *{visibility:hidden!important;} canvas{visibility:visible!important} .msync-canvas{visibility:hidden!important} *::before,*::after{background:transparent!important}`});
   for(const f of ['posedlib.js','toon.js','anim-sideplank.js','engine.js','props.js'])await p.addScriptTag({content:PG(f)});
   await p.addScriptTag({content:'window.__srcHead='+fs.readFileSync(path.join(ROOT,'assets/srchead.json'),'utf8')});await p.addScriptTag({content:PG('head.js')});
+  // baked grip data (assets/grip-<side>.json) injected like srchead, so P.bakeGrip never depends on the app server's file layout
+  {const gs=fs.readdirSync(path.join(ROOT,'assets')).filter(f=>/^grip-\w+\.json$/.test(f));
+   if(gs.length)await p.addScriptTag({content:'window.__gripData={'+gs.map(f=>JSON.stringify(f.slice(5,-5))+':'+fs.readFileSync(path.join(ROOT,'assets',f),'utf8')).join(',')+'}'});}
   // garment textures (optional): read files here, decode in the page
   const tex={};['skin','top','bottom','shoes'].forEach((k,i)=>{const t=theme[k]?.texture;if(t&&t.image){const f=path.resolve(theme.__dir,t.image);tex[i]='data:image/png;base64,'+fs.readFileSync(f).toString('base64');}});
   const SP=JSON.parse(fs.readFileSync(path.join(ROOT,'assets/sideplank-cfg.json'),'utf8'));

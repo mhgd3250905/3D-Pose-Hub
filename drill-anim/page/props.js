@@ -65,7 +65,8 @@ P.loadJSON = function(url) { const x = new XMLHttpRequest(); x.open('GET', url, 
 P.bakeGrip = function(side) {
   if (P.gripData[side]) return P.gripData[side];
   const t = T(), v = flareInspector.viewer, m = v.motion; m.reset(); v.coach.updateMatrixWorld(true);
-  const G = P.loadJSON('/tools/drill-anim/assets/grip-' + side + '.json');
+  // injected by lib/boot.mjs (window.__gripData); the XHR to the app server is only a fallback
+  const G = (window.__gripData && window.__gripData[side]) || P.loadJSON('/tools/drill-anim/assets/grip-' + side + '.json');
   const o = v.coach.getObjectByName('Coach_Body'), g = o.geometry, si = g.attributes.skinIndex, sw = g.attributes.skinWeight, sk = o.skeleton; sk.update();
   const pos = g.attributes.position, nor = g.attributes.normal;
   const BM = sk.bones.map((b, k) => new t.Matrix4().multiplyMatrices(b.matrixWorld, sk.boneInverses[k]));
@@ -123,6 +124,70 @@ Object.assign(B, {
     const hub = new t.Mesh(new t.CylinderGeometry(0.014, 0.014, 0.034, 12), steel); hub.rotation.z = Math.PI / 2; wheel.add(hub);
     const yoke = new t.Mesh(new t.BoxGeometry(0.05, 0.03, out), frame); yoke.position.set(0, py, 0.085 + out / 2); g.add(yoke);
     g.userData.exit = new t.Vector3(0, py, 0.085 + out); return g; },
+  // ankle strap: padded cuff round the shin just above the ankle (fixed to the shin bone, radius fitted to the rest mesh + gap so it
+  // never cuts into skin/leggings), with a D-ring + carabiner that swivel about the shin axis toward the cable.
+  // spec: {type:'ankleStrap', side:'right', name:'strap', toward:'pulley', up:0.07, width:0.055, gap:0.002}
+  ankleStrap(th, s) { const t = T(), v = flareInspector.viewer; v.motion.reset(); v.coach.updateMatrixWorld(true);
+    const side = s.side || 'right', shin = v.coach.getObjectByName(side + 'Shin'), foot = v.coach.getObjectByName(side + 'Foot');
+    const K = shin.getWorldPosition(new t.Vector3()), A = foot.getWorldPosition(new t.Vector3()), u = A.clone().sub(K).normalize();
+    const c0 = A.clone().addScaledVector(u, -(s.up ?? 0.07)), W = s.width || 0.055, p = new t.Vector3(); let r = 0;
+    v.coach.traverse(o => { if (!o.isSkinnedMesh || !o.visible) return; const n = o.geometry.attributes.position.count;
+      for (let i = 0; i < n; i++) { o.getVertexPosition(i, p); p.applyMatrix4(o.matrixWorld); const d = p.sub(c0), ax = d.dot(u); if (Math.abs(ax) > W / 2 + 0.008) continue;
+        const rad = d.addScaledVector(u, -ax).length(); if (rad < 0.085 && rad > r) r = rad; } });
+    r += s.gap ?? 0.002;
+    const g = new t.Group(), pad = P.mat(th, { base: s.colour || '#2b2e35', rimK: 0.5 }), steel = P.mat(th, { base: '#8a8f99', rimK: 1.0 });
+    pad.side = t.DoubleSide; const cuff = new t.Mesh(new t.CylinderGeometry(r, r, W, 40, 1, true), pad); g.add(cuff);
+    for (const e of [-1, 1]) { const rim = new t.Mesh(new t.TorusGeometry(r, 0.003, 8, 40), pad); rim.rotation.x = Math.PI / 2; rim.position.y = e * W / 2; g.add(rim); }
+    const ring = new t.Group(); g.add(ring); const R0 = r + 0.006;
+    const d = new t.Mesh(new t.TorusGeometry(0.016, 0.0032, 8, 20), steel); d.position.set(R0 + 0.016, 0, 0); ring.add(d);
+    const cb = new t.Mesh(new t.TorusGeometry(0.011, 0.003, 8, 16), steel); cb.position.set(R0 + 0.040, 0, 0); cb.rotation.y = Math.PI / 2; ring.add(cb);
+    const sq = shin.getWorldQuaternion(new t.Quaternion());
+    g.userData = { ring, apex: new t.Vector3(R0 + 0.051, 0, 0), lo: shin.worldToLocal(c0.clone()), lq: sq.invert().multiply(new t.Quaternion().setFromUnitVectors(new t.Vector3(0, 1, 0), u)), r, side };
+    E_reset(); return g; },
+  // landmine: floor base + pivot sleeve at s.pivot, a straight bar from the pivot through the centre of the hand's baked power grip
+  // (the bar end is gripped; it re-aims at the grip every frame, so the hand path in the spec must keep the grip on the bar's sphere),
+  // an end cap past the fist and one plate on the bar below the hand. spec: {type:'landmine', side:'right', pivot:[x,0,z], plate:0.165, plateAt:0.2}
+  landmine(th, s) { const t = T(); const G = P.bakeGrip(s.side || 'right'); const g = new t.Group(); const r = G.r;
+    const frame = P.mat(th, { rimK: 0.9 }), steel = P.mat(th, { base: '#8a8f99', rimK: 1.0 }), dark = P.mat(th, { base: '#202228', rimK: 0.5 });
+    const base = new t.Mesh(new t.CylinderGeometry(0.13, 0.15, 0.02, 32), frame); base.position.set(...s.pivot); base.position.y += 0.01; g.add(base);
+    const yoke = new t.Mesh(new t.BoxGeometry(0.07, 0.07, 0.05), frame); yoke.position.set(...s.pivot); yoke.position.y += 0.055; g.add(yoke);
+    const sleeve = tube(t, new t.Vector3(), new t.Vector3(0, 1, 0), 0.03, frame, 20); g.add(sleeve);
+    const bar = tube(t, new t.Vector3(), new t.Vector3(0, 1, 0), r, steel, 20); g.add(bar);
+    const collar = tube(t, new t.Vector3(), new t.Vector3(0, 1, 0), r * 1.6, steel, 20); g.add(collar);
+    const cap = tube(t, new t.Vector3(), new t.Vector3(0, 1, 0), r * 1.15, steel, 20); g.add(cap);
+    const pr = s.plate ?? 0.165; const plate = new t.Mesh(new t.CylinderGeometry(pr, pr, 0.035, 40), dark); g.add(plate);
+    const hub = new t.Mesh(new t.CylinderGeometry(0.035, 0.035, 0.05, 20), steel); g.add(hub);
+    g.userData = { G, sleeve, bar, collar, cap, plate, hub, piv: new t.Vector3(...s.pivot).add(new t.Vector3(0, 0.055, 0)) }; return g; },
+  // leg-extension machine: seat + reclined back pad + side handles + frame + weight stack (static, sized from the spec), and the
+  // moving lever: a roller pad fitted at build time to the front of the rest shins (+gap) and fixed to the right shin bone, an arm
+  // from the pivot hub (on the knee axis, outside the right knee) to the roller. spec: {type:'legExtension', seatY, seatZ:[z0,z1],
+  // back:{y, z, tilt}, handles:{x, y, z:[z0,z1]}, rollerUp:0.09, rollerR:0.045, gap:0.003, armX:-0.25}
+  legExtension(th, s) { const t = T(), v = flareInspector.viewer; v.motion.reset(); v.coach.updateMatrixWorld(true);
+    const g = new t.Group(), pad = P.mat(th, { base: '#2b2e35', rimK: 0.55 }), frame = P.mat(th, { rimK: 0.9 }), steel = P.mat(th, { base: '#8a8f99', rimK: 1.0 }), dark = P.mat(th, { base: '#202228', rimK: 0.5 });
+    const box = (sz, c, m, rx = 0) => { const b = new t.Mesh(new t.BoxGeometry(...sz), m); b.position.set(...c); b.rotation.x = rx; g.add(b); return b; };
+    const [z0, z1] = s.seatZ, sy = s.seatY; box([0.40, 0.07, z1 - z0], [0, sy - 0.035, (z0 + z1) / 2], pad);
+    box([0.34, 0.03, z1 - z0 - 0.04], [0, sy - 0.085, (z0 + z1) / 2], frame);
+    const B = s.back, a = (B.tilt || 8) * Math.PI / 180, H = B.h || 0.62, u = new t.Vector3(0, Math.cos(a), -Math.sin(a)), n = new t.Vector3(0, Math.sin(a), Math.cos(a));
+    const bc = new t.Vector3(0, B.y, B.z).addScaledVector(u, H / 2 - 0.2).addScaledVector(n, -0.035); box([0.38, H, 0.07], bc.toArray(), pad, -a);
+    box([0.06, H, 0.04], bc.clone().addScaledVector(n, -0.06).toArray(), frame, -a);
+    const post = (x, z, h, w = 0.06) => box([w, h, w], [x, h / 2, z], frame);
+    post(0, z0 + 0.05, sy - 0.1); post(0, z1 - 0.05, sy - 0.1); box([0.5, 0.04, z1 - z0 + 0.5], [0, 0.02, (z0 + z1) / 2 - 0.1], frame);
+    post(0, bc.z - 0.12, bc.y - 0.1 + 0.05);
+    const stackZ = Math.min(z0, B.z) - 0.35; box([0.30, 0.55, 0.16], [-0.30, 0.30, stackZ], dark); post(-0.46, stackZ, 1.25, 0.05); post(-0.14, stackZ, 1.25, 0.05); box([0.37, 0.05, 0.08], [-0.30, 1.27, stackZ], frame);
+    const hd = s.handles; for (const sx of [-1, 1]) { const h = tube(t, new t.Vector3(sx * hd.x, hd.y, hd.z[0]), new t.Vector3(sx * hd.x, hd.y, hd.z[1]), 0.016, pad, 20); g.add(h);
+      g.add(tube(t, new t.Vector3(sx * hd.x, hd.y, hd.z[0]), new t.Vector3(sx * 0.17, sy - 0.08, hd.z[0]), 0.012, frame, 12)); }
+    // roller fitted to the rest shins
+    const shin = v.coach.getObjectByName('rightShin'), foot = v.coach.getObjectByName('rightFoot');
+    const K = shin.getWorldPosition(new t.Vector3()), A = foot.getWorldPosition(new t.Vector3()), up = K.clone().sub(A).normalize();
+    const c0 = A.clone().addScaledVector(up, s.rollerUp ?? 0.09), p = new t.Vector3(); let front = 0;
+    v.coach.traverse(o => { if (!o.isSkinnedMesh || !o.visible) return; const N = o.geometry.attributes.position.count;
+      for (let i = 0; i < N; i++) { o.getVertexPosition(i, p); p.applyMatrix4(o.matrixWorld); const d = p.clone().sub(c0); if (Math.abs(d.dot(up)) > (s.rollerR ?? 0.045) + 0.01 || Math.abs(p.x) > 0.25) continue; if (p.z - c0.z > front) front = p.z - c0.z; } });
+    const R = s.rollerR ?? 0.045, rc = new t.Vector3(0, c0.y, c0.z + front + R + (s.gap ?? 0.003));
+    const roller = new t.Mesh(new t.CylinderGeometry(R, R, 0.40, 32), pad); roller.rotation.z = Math.PI / 2; const rg = new t.Group(); rg.add(roller);
+    const capM = new t.Mesh(new t.CylinderGeometry(0.018, 0.018, 0.46, 12), steel); capM.rotation.z = Math.PI / 2; rg.add(capM); g.add(rg);
+    const arm = tube(t, new t.Vector3(), new t.Vector3(0, 1, 0), 0.02, frame, 12), hub = new t.Mesh(new t.CylinderGeometry(0.055, 0.055, 0.05, 24), dark); hub.rotation.z = Math.PI / 2; g.add(arm); g.add(hub);
+    const sq = shin.getWorldQuaternion(new t.Quaternion()).invert();
+    g.userData = { rg, arm, hub, ro: shin.worldToLocal(rc.clone()), rq: sq, roller: { R, front } }; E_reset(); return g; },
   // hip-abductor machine: seat + upright back pad + side handles + frame + stack (static, from the spec), and per side a knee pad
   // fitted at build time to the outside of the rest thigh above the knee (+gap) and fixed to that thigh bone, a footrest fitted under
   // the rest sole and fixed to the foot bone, and a lever (pivot under the seat -> under the pad -> down to the footrest).
@@ -183,6 +248,24 @@ P.place = function(o) { const t = T(), v = flareInspector.viewer, s = o.userData
     const dir = dors.clone().multiplyScalar(s.lean ?? 0.6).add(want.multiplyScalar(1 - (s.lean ?? 0.6))).normalize();
     const inv = o.quaternion.clone().invert(); const dl = dir.clone().applyQuaternion(inv); o.userData.loop.rotation.set(0, s.angle !== undefined ? -s.angle * Math.PI / 180 : -Math.atan2(dl.z, dl.x), 0);   // angle: fixed loop direction in the handle frame (deg), chosen clear of hand + wrist
     o.updateMatrixWorld(true); P.anchors[s.name || 'handle'] = o.userData.apexLocal.clone().applyMatrix4(o.userData.loop.matrixWorld); return; }
+  if (s.type === 'ankleStrap') { const U = o.userData, bone = v.coach.getObjectByName(U.side + 'Shin'); bone.updateMatrixWorld(true);
+    o.position.copy(bone.localToWorld(U.lo.clone())); o.quaternion.copy(bone.getWorldQuaternion(new t.Quaternion())).multiply(U.lq); o.updateMatrixWorld(true);
+    const tgt = P.anchors[s.toward] ? P.anchors[s.toward].clone() : o.position.clone().add(new t.Vector3(0, 0, -1));
+    const dl = tgt.sub(o.position).applyQuaternion(o.quaternion.clone().invert()); U.ring.rotation.set(0, -Math.atan2(dl.z, dl.x), 0);
+    o.updateMatrixWorld(true); P.anchors[s.name || 'strap'] = U.apex.clone().applyMatrix4(U.ring.matrixWorld); return; }
+  if (s.type === 'landmine') { const U = o.userData, G = U.G, bone = v.coach.getObjectByName((s.side || 'right') + 'Hand'); bone.updateMatrixWorld(true);
+    const bq = bone.getWorldQuaternion(new t.Quaternion()), a = G.a.clone().applyQuaternion(bq).normalize();
+    const c = G.c.clone().applyQuaternion(bq).add(bone.getWorldPosition(new t.Vector3())).addScaledVector(a, s.shift || 0);
+    const p0 = U.piv, d = c.clone().sub(p0); const L = d.length(); d.normalize(); o.userData.grip = c; o.userData.dir = d; o.userData.axis = a;
+    const at = k => p0.clone().addScaledVector(d, k);
+    setTube(t, U.sleeve, at(-0.03), at(0.16)); setTube(t, U.bar, at(0.16), at(L + 0.085)); setTube(t, U.cap, at(L + 0.085), at(L + 0.11));
+    const pa = L - (s.plateAt ?? 0.2); setTube(t, U.collar, at(pa + 0.02), at(pa + 0.045));
+    for (const m of [U.plate, U.hub]) { m.position.copy(at(pa)); m.quaternion.setFromUnitVectors(new t.Vector3(0, 1, 0), d); }
+    o.updateMatrixWorld(true); return; }
+  if (s.type === 'legExtension') { const U = o.userData, shin = v.coach.getObjectByName('rightShin'); shin.updateMatrixWorld(true);
+    U.rg.position.copy(shin.localToWorld(U.ro.clone())); U.rg.quaternion.copy(shin.getWorldQuaternion(new t.Quaternion())).multiply(U.rq);
+    const knee = shin.getWorldPosition(new t.Vector3()), ax = s.armX ?? -0.25; const hubP = new t.Vector3(ax, knee.y, knee.z); U.hub.position.copy(hubP);
+    const end = U.rg.position.clone(); end.x = ax; setTube(t, U.arm, hubP, end); o.updateMatrixWorld(true); return; }
   if (s.type === 'hipAbductor') { for (const [side, S] of Object.entries(o.userData.sides)) { const th = v.coach.getObjectByName(side + 'Thigh'), ft = v.coach.getObjectByName(side + 'Foot'); th.updateMatrixWorld(true); ft.updateMatrixWorld(true);
       S.pg.position.copy(th.localToWorld(S.po.clone())); S.pg.quaternion.copy(th.getWorldQuaternion(new t.Quaternion())).multiply(S.pq);
       S.fg.position.copy(ft.localToWorld(S.fo.clone())); S.fg.quaternion.copy(ft.getWorldQuaternion(new t.Quaternion())).multiply(S.fq);
