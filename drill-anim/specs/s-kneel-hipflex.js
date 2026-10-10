@@ -12,19 +12,20 @@ export default {
       hips: { up: [0, 1, 0], front: [0, 0, 1], rot: [[[1, 0, 0], 0]] },
       chest: { waist: [[[1, 0, 0], 0]] },
       hands: {
-        left: { mode: 'free', frame: 'hips', wrist: [0.171, 1.10, -0.02], finger: [-0.15, -0.35, 0.92], normal: [-1, 0, 0.1], pole: [0.75, 1.15, -0.35] },
-        right: { mode: 'free', frame: 'hips', wrist: [-0.171, 1.10, -0.02], finger: [0.15, -0.35, 0.92], normal: [1, 0, 0.1], pole: [-0.75, 1.15, -0.35] },
+        left: { mode: 'free', frame: 'hips', wrist: [0.171, 1.10, -0.02], finger: [-0.15, -0.35, 0.92], normal: [-0.9, 0.35, 0.1], pole: [0.75, 1.15, -0.35], relax: 1, touch: { solve: 'bisect', clear: 0.0008 } },
+        right: { mode: 'free', frame: 'hips', wrist: [-0.171, 1.10, -0.02], finger: [0.15, -0.35, 0.92], normal: [0.9, 0.35, 0.1], pole: [-0.75, 1.15, -0.35], relax: 1, touch: { solve: 'bisect', clear: 0.0008 } },
       },
       feet: {
         right: { mode: 'floor', at: [-0.12, 0.47], heading: -3, pitch: 0 },
-        left: { mode: 'free', frame: 'world', ankle: [0.09, 0.07, -0.36], rot: [[[1, 0, 0], 167]], pole: [0.085, 0.0, 0.40] },
+        left: { mode: 'free', frame: 'world', ankle: [0.09, 0.0405, -0.36], rot: [[[1, 0, 0], 157.8]], pole: [0.085, 0.0, 0.40] },   // v2: top of the foot flat on the mat (toe 0.9 mm, was 38 mm up)
       },
-      constraints: [],
-      solve: { vars: [], reg: {} },
+      // v2: back knee pinned on the mat (joint y 48.8 mm -> lowest knee vertex 0.1 mm); the solver lowers the pelvis (py) to keep it there
+      constraints: [{ type: 'mid', limb: 'leftLeg', at: [0.087, 0.0488, 0.0496], axes: [0, 1, 0], weight: 3 }],
+      solve: { vars: ['py'], reg: { py: 0.1 } },
     },
     deltas: { open: { pelvis: [0, 0.438, 0.165], hips: { rot: [[[1, 0, 0], -10]] }, chest: { waist: [[[1, 0, 0], 8]] } } },
   },
-  highlight: { groups: ['hip-flexors'], side: 'left', pulseTrack: 'open', pulseBase: 0.3 },
+  highlight: { groups: ['hip-flexors'], side: 'left', pulseTrack: 'open', pulseBase: 0.45 },
   camera: { dir: [1, 0.14, 0.1], fit: ['head', 'leftToe', 'rightToe', 'pelvis', 'leftKnee', 'rightKnee'], pad: 0.16, k: 1.0, drift: 0.9, at: 3.8 },
   frame: { mode: 'fit', width: 600, height: 700, cx: 512, cy: 530 },
   stillAt: 3.8,
@@ -34,7 +35,9 @@ export default {
   props: [{ type: 'mat', at: [0, 0, 0.05], size: [0.61, 1.83, 0.006], yaw: 0 }],
   keyFrames: [0.3, 2.0, 3.8],
   qa: {
-    pins: [{ c: 'footR', when: 'always' }],
+    pins: [{ c: 'footR', when: 'always' }, { c: 'footL', when: 'always' }],
+    jointPins: [{ j: 'leftKnee' }, { j: 'leftAnkle' }],
+    touch: [{ side: 'left', max_gap: 1.0 }, { side: 'right', max_gap: 1.0 }],
     allowContact: ['handL|torso', 'handR|torso', 'handL|thighL', 'handR|thighR'],
   },
 };
