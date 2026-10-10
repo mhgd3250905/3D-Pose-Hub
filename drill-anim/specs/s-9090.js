@@ -14,8 +14,8 @@ export default {
       hips: { up: [0, 1, 0], front: [0.6, 0, 0.8], rot: [[[1, 0, 0], 0]] },
       chest: { waist: [[[1, 0, 0], 0], [[0, 1, 0], -20]] },
       hands: {
-        left: { mode: 'free', frame: 'world', relax: 0, palmAt: [0.36, 0.20, 0.06], finger: [0.3, 0, 1], normal: [0, -1, 0], pole: [0.6, 0.3, -0.3] },
-        right: { mode: 'free', frame: 'world', relax: 0, palmAt: [-0.10, 0.19, 0.33], finger: [0.3, 0, 1], normal: [0, -1, 0], pole: [-0.6, 0.3, -0.3] },
+        left: { mode: 'free', frame: 'world', relax: 0, palmAt: [0.25, 0.17, 0.0], finger: [0.3, 0, 1], normal: [0, -1, 0], pole: [0.6, 0.3, -0.3], relax: 1, touch: { solve: 'bisect', clear: 0.0008, toward: 'leftKnee' } },
+        right: { mode: 'free', frame: 'world', relax: 0, palmAt: [-0.09, 0.17, 0.24], finger: [0.3, 0, 1], normal: [0, -1, 0], pole: [-0.6, 0.3, -0.3], relax: 1, touch: { solve: 'bisect', clear: 0.0008, toward: 'rightKnee' } },
       },
       feet: {
         right: { mode: 'free', frame: 'world', ankle: [0.33, 0.085, 0.36], rot: [[[0, 1, 0], 90]], pole: [-0.3, 0.1, 1.0], thighTwist: 60 },
@@ -27,19 +27,20 @@ export default {
     deltas: { open: {
       pelvis: [0, 0.145, 0.01],
       hips: { rot: [[[1, 0, 0], 20]] }, chest: { waist: [[[1, 0, 0], 12], [[0, 1, 0], -20]] },
-      hands: { left: { palmAt: [0.35, 0.21, 0.12] }, right: { palmAt: [-0.06, 0.17, 0.38] } },
+      hands: { left: { palmAt: [0.27, 0.17, 0.04] }, right: { palmAt: [-0.07, 0.17, 0.28] } },
     } },
   },
-  highlight: { groups: ['glute-max'], side: 'right', pulseTrack: 'open', pulseBase: 0.3 },
-  camera: { dir: [-0.55, 0.45, 1], fit: ['head', 'leftKnee', 'rightKnee', 'pelvis', 'leftToe', 'rightToe'], pad: 0.18, k: 1.0, drift: 0.9, at: 0 },
-  frame: { mode: 'fit', width: 700, height: 600, cx: 512, cy: 540 },
+  highlight: { groups: ['glute-max'], panels: ['gluteMed'], side: 'right', pulseTrack: 'open', pulseBase: 0.7 },
+  camera: { dir: [0.0, 0.85, 1], fit: ['head', 'leftKnee', 'rightKnee', 'pelvis', 'leftToe', 'rightToe'], pad: 0.18, k: 1.0, drift: 0.9, at: 0 },
+  frame: { mode: 'fit', width: 600, height: 540, cx: 512, cy: 580 },
   stillAt: 3.8,
   shadow: { joints: ['leftKnee', 'rightKnee', 'pelvis', 'rightAnkle'],
     blobs: [{ j: 'pelvis', rx: 80, ry: 16, a: 0.7 }, { j: 'leftKnee', rx: 40, ry: 10, a: 0.5 }, { j: 'rightKnee', rx: 40, ry: 10, a: 0.5 }],
     bands: [{ from: 'leftKnee', to: 'rightKnee', mid: 'pelvis', rx: 80, ry: 14, a: 0.3, dy: 4, sag: 0.0 }] },
-  props: [{ type: 'mat', at: [0.1, 0, 0.05], size: [0.61, 1.83, 0.006], yaw: 0 }],
+  props: [{ type: 'mat', at: [0.15, 0, -0.25], size: [0.61, 1.83, 0.006], yaw: 0 }],
   keyFrames: [0.3, 2.0, 3.8],
   qa: {
+    touch: [{ side: 'left', max_gap: 1.0 }, { side: 'right', max_gap: 1.0 }],
     allowContact: ['handR|thighR', 'handR|shinR', 'handL|thighL', 'handL|shinL', 'footR|shinL', 'footR|thighL', 'shinR|thighL', 'thighR|shinR', 'thighL|shinL'],
   },
 };
