@@ -65,7 +65,8 @@ P.loadJSON = function(url) { const x = new XMLHttpRequest(); x.open('GET', url, 
 P.bakeGrip = function(side) {
   if (P.gripData[side]) return P.gripData[side];
   const t = T(), v = flareInspector.viewer, m = v.motion; m.reset(); v.coach.updateMatrixWorld(true);
-  const G = P.loadJSON('/tools/drill-anim/assets/grip-' + side + '.json');
+  // injected by lib/boot.mjs (window.__gripData); the XHR to the app server is only a fallback
+  const G = (window.__gripData && window.__gripData[side]) || P.loadJSON('/tools/drill-anim/assets/grip-' + side + '.json');
   const o = v.coach.getObjectByName('Coach_Body'), g = o.geometry, si = g.attributes.skinIndex, sw = g.attributes.skinWeight, sk = o.skeleton; sk.update();
   const pos = g.attributes.position, nor = g.attributes.normal;
   const BM = sk.bones.map((b, k) => new t.Matrix4().multiplyMatrices(b.matrixWorld, sk.boneInverses[k]));
