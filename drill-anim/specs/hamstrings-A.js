@@ -42,7 +42,7 @@ export default {
     },
   },
   highlight: { groups: ['hamstrings'], side: 'both', pulseAt: [2.0, 6.0], pulseWidth: 0.7, pulseBase: 0.3 },
-  camera: { dir: [0.12, 0.14, 1], fit: ['head', 'leftToe', 'rightToe', 'pelvis', 'leftPalm', 'rightPalm', 'rightAnkle', 'leftAnkle'], pad: 0.12, k: 0.75, drift: 0.9, at: 0.2 },
+  camera: { dir: [0.12, 0.14, 1], fit: ['head', 'leftToe', 'rightToe', 'pelvis', 'leftPalm', 'rightPalm', 'rightAnkle', 'leftAnkle'], pad: 0.12, k: 0.9, drift: 0.9, at: 0.2 },
   frame: { mode: 'fit', width: 2000, height: 800, cx: 512, cy: 535 },
   stillAt: 0.2,
   shadow: { joints: ['leftToe', 'leftAnkle', 'pelvis'], blobs: [{ j: 'leftAnkle', dx: 15, rx: 60, ry: 13, a: 0.7 }], bands: [] },
