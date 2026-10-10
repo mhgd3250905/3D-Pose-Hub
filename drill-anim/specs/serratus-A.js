@@ -4,11 +4,12 @@
 // Head points -X, body faces the floor, body left = +Z. Rest chest frame: +Z = front (toward the floor here), -Z = back.
 const TH = -17;
 const HZ = 0.19, FX = 1.21, FZ = 0.10;
-// 3 s per rep: 0.4 s neutral, 1.1 s sink (scap -1), 1.0 s push to full protraction (scap +1), 0.5 s hold, 0.4 s back to neutral
+// v2: two identical 3 s reps, including the wrap at 6 s: 0.3 s neutral, 1.0 s sink (scap -1), 1.0 s push to full protraction
+// (scap +1), 0.3 s hold, 0.4 s back to neutral (v1's last key sat at 5.9 s, so the loop snapped back in 0.1 s)
 const floorHand = (z, side) => ({ mode: 'floor', at: [0, z], finger: [-1, Math.sign(z) * 0.08], poleUp: [side === 'right' ? -0.30 : 0.30, 0.95, 0.10] });
 export default {
   id: 'serratus-A', name: '俯撑肩胛前伸', nameEn: 'Push-Up Plus',
-  timeline: { duration: 6, tracks: { scap: [[0, 0], [0.4, 0], [1.5, -1], [2.5, 1], [3.0, 1], [3.4, 0], [4.5, -1], [5.5, 1], [5.9, 1]] } },
+  timeline: { duration: 6, tracks: { scap: [[0, 0], [0.3, 0], [1.3, -1], [2.3, 1], [2.6, 1], [3.0, 0], [3.3, 0], [4.3, -1], [5.3, 1], [5.6, 1]] } },
   pose: {
     base: {
       pelvis: [0.42, 0.40, 0],
@@ -27,14 +28,14 @@ export default {
     },
     deltas: { scap: { shoulders: { shift: [0, 0, 0.03] } } },   // scap = +1 protraction (+3 cm), -1 retraction (-3 cm)
   },
-  highlight: { groups: ['serratus'], side: 'both', pulseAt: [2.6, 5.6], pulseWidth: 0.6, pulseBase: 0.25 },
+  highlight: { groups: ['serratus'], side: 'both', pulseAt: [2.45, 5.45], pulseWidth: 0.6, pulseBase: 0.25 },
   camera: { dir: [-0.55, 0.42, 1], fit: ['head', 'leftPalm', 'rightPalm', 'leftToe', 'rightToe', 'pelvis', 'leftShoulder', 'rightShoulder'], pad: 0.12, k: 0.6, drift: 0.9 },
   frame: { mode: 'fit', width: 800, cx: 512, cy: 520 },
   shadow: { joints: ['rightPalm', 'leftPalm', 'rightToe', 'leftToe', 'pelvis', 'shoulderCenter'],
     blobs: [{ j: 'rightPalm', rx: 50, ry: 13, a: 0.7 }, { j: 'leftPalm', rx: 50, ry: 13, a: 0.7 }, { j: 'rightToe', rx: 34, ry: 10, a: 0.6 }, { j: 'leftToe', rx: 34, ry: 10, a: 0.6 }],
     bands: [{ from: 'shoulderCenter', to: 'rightToe', mid: 'pelvis', rx: 70, ry: 16, a: 0.28, dy: 6, sag: 0.3 }] },
   props: [{ type: 'mat', at: [0.55, 0, 0], size: [1.83, 0.61, 0.006] }],
-  keyFrames: [0, 1.5, 2.6],
+  keyFrames: [0.15, 1.3, 2.45],
   qa: {
     pins: [{ c: 'handR', when: 'always' }, { c: 'handL', when: 'always' }, { c: 'footR', when: 'always' }, { c: 'footL', when: 'always' }],
     straight: [{ j: 'elbow.right', min: 172 }, { j: 'elbow.left', min: 172 }, { j: 'knee.right', min: 172 }, { j: 'knee.left', min: 172 }],
