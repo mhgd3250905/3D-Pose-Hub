@@ -61,7 +61,18 @@ const B = {
       for (const e of [-1, 1]) { const post = new t.Mesh(new t.CylinderGeometry(0.025, 0.025, H, 12), toonMat(th)); post.position.set(sg * gap / 2, H / 2, e * L * 0.45); g.add(post); } } return g; },
   foamRoller(th, s) { const t = T(); const m = new t.Mesh(new t.CylinderGeometry(s.r || 0.075, s.r || 0.075, s.length || 0.9, 32), toonMat(th)); m.rotation.z = Math.PI / 2; const g = new t.Group(); g.add(m); return g; },
   swissBall(th, s) { const t = T(); const g = new t.Group(); const r = s.r || 0.325; const m = new t.Mesh(new t.SphereGeometry(r, 48, 32), toonMat(th)); m.position.y = r; g.add(m); return g; },
-  sliders(th, s) { const t = T(); const g = new t.Group(); const m = new t.Mesh(new t.CylinderGeometry(s.r || 0.09, s.r || 0.09, 0.008, 32), toonMat(th, { base: th.edge })); m.position.y = 0.004; g.add(m); return g; },
+  sliders(th, s) { const t = T(); const g = new t.Group(); const m = new t.Mesh(new t.CylinderGeometry(s.r || 0.09, s.r || 0.09, 0.008, 32), toonMat(th, { base: s.colour || th.edge })); m.position.y = 0.004; g.add(m); return g; },
+  // band anchor post (B-tier band drills): heavy round post on a square base plate, standing at s.at (floor); s.height (0.7 m),
+  // s.r (0.035), s.tieY = height of the band knot ring (bands are separate `band` props from a world point at the post to the body).
+  bandPost(th, s) { const t = T(); const g = new t.Group(); const H = s.height || 0.7, r = s.r || 0.035;
+    const post = new t.Mesh(new t.CylinderGeometry(r, r, H, 28), toonMat(th)); post.position.y = H / 2; g.add(post);
+    const cap = new t.Mesh(new t.CylinderGeometry(r * 1.15, r * 1.15, 0.02, 28), toonMat(th, { base: th.edge })); cap.position.y = H - 0.01; g.add(cap);
+    const plate = new t.Mesh(new t.BoxGeometry(0.26, 0.022, 0.26), toonMat(th)); plate.position.y = 0.011; g.add(plate);
+    const knot = new t.Mesh(new t.TorusGeometry(r + 0.007, 0.008, 8, 28), toonMat(th, { base: s.colour || '#7a4a32', rimK: 0.5 })); knot.rotation.x = Math.PI / 2; knot.position.y = s.tieY ?? 0.3; g.add(knot);
+    return g; },
+  // flat wall panel (hand support): s.at = centre of the face on the floor line, s.normal yaw via s.yaw (face toward +Z at yaw 0)
+  wall(th, s) { const t = T(); const g = new t.Group(); const [W, H, D] = s.size || [1.4, 2.2, 0.12];
+    const m = new t.Mesh(new t.BoxGeometry(W, H, D), toonMat(th, { base: s.base || '#2a2c31', rimK: 0.35 })); m.position.set(0, H / 2, -D / 2); g.add(m); return g; },
   // placeholder for machines (cable stack, landmine, GHD, reverse hyper, abductor, leg extension): a labelled box until modelled
   machine(th, s) { const t = T(); const g = new t.Group(); const [w, h, d] = s.size || [0.8, 1.6, 0.8]; const m = new t.Mesh(new t.BoxGeometry(w, h, d), toonMat(th)); m.position.y = h / 2; g.add(m); g.userData.machine = s.kind || 'unknown'; return g; },
 };
