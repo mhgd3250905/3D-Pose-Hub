@@ -56,9 +56,9 @@ export default {
     deltas,
   },
   highlight: { groups: ['scapular'], side: 'both', pulseAt: [1.7, 5.7, 9.7], pulseWidth: 0.8, pulseBase: 0.3 },
-  camera: { dir: [-0.6, 1, 0], fit: ['head', 'leftPalm', 'rightPalm', 'leftToe', 'rightToe', 'pelvis', 'leftElbow', 'rightElbow'], pad: 0.1, k: 0.8, drift: 0.9, at: 5.7 },
-  frame: { mode: 'fit', width: 820, cx: 512, cy: 540 },
-  stillAt: 5.7,
+  camera: { dir: [-0.35, 0.42, -1], fit: ['head', 'leftPalm', 'rightPalm', 'leftToe', 'rightToe', 'pelvis', 'leftElbow', 'rightElbow'], pad: 0.12, k: 0.85, drift: 0.9, at: 1.7 },   // v2: low side view from the left/feet (was top-down [-0.6,1,0]) so the arms' lift off the mat reads; fitted to the Y (widest)
+  frame: { mode: 'fit', width: 840, cx: 520, cy: 540 },
+  stillAt: 1.7,
   shadow: { joints: ['pelvis', 'shoulderCenter', 'leftPalm', 'rightPalm'], blobs: [{ j: 'shoulderCenter', rx: 110, ry: 30, a: 0.45 }, { j: 'pelvis', rx: 90, ry: 26, a: 0.45 }], bands: [] },
   props: [{ type: 'mat', at: [-0.5, 0, 0], size: [1.83, 0.61, 0.006] }],
   keyFrames: [1.7, 5.7, 9.7],
