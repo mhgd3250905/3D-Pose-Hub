@@ -1,12 +1,13 @@
 // adductors-C 绳索站姿髋内收 (standing cable hip adduction). Facing forward, standing tall on the straight RIGHT leg; ankle strap on
-// the LEFT ankle, LOW pulley out to the left. 'add' 0 = straight left leg out to the side (15 deg abduction), 1 = swept across in
-// front of the standing leg (16 deg adduction). The leg keeps a fixed 23 deg of hip flexion so it passes in front of the right leg.
+// the LEFT ankle, LOW pulley out to the left. 'add' 0 = straight left leg out to the side (28 deg abduction), 1 = swept across in
+// front of the standing leg (7 deg adduction, ankle ~1 cm past the midline): 35 deg of sweep. The leg keeps a fixed 15 deg of hip flexion (just enough to pass in
+// front of the right leg; shoe-to-shoe mesh gap >= 3.5 mm at the hold). Camera front-right and low, so the inner left thigh (adductors) faces the camera as it crosses the midline.
 // Both knees locked; pelvis level, trunk still. 2 reps / 8 s: 1.2 s in, 0.8 s hold, 1.2 s out, 0.8 s pause.
 // Head points +Y, front faces +Z, body left = +X (rest frame). Cable column to the left (+X).
 const DEG = Math.PI / 180;
 const HIP = [0.0815, 0.852, 0.0057], TH = 0.35292, SH = 0.40981;
 const LEN = Math.sqrt(TH * TH + SH * SH - 2 * TH * SH * Math.cos(179.2 * DEG));
-const FLEX = 23, P0 = 15, P1 = -16;
+const FLEX = 15, P0 = 28, P1 = -7;   // v2: P1 -8 / FLEX 14 put the left sneaker ~12 mm into the right one at the hold (ray-parity probe)
 const ankle = phi => { const p = phi * DEG, f = FLEX * DEG; const d = [Math.sin(p), -Math.cos(p) * Math.cos(f), Math.cos(p) * Math.sin(f)]; const n = Math.hypot(...d);
   return d.map((v, i) => +(HIP[i] + LEN * v / n).toFixed(5)); };
 const A0 = ankle(P0), A1 = ankle(P1);
@@ -47,8 +48,8 @@ export default {
       offZ: { feet: { left: { ankle: unit(2) } } },
     },
   },
-  highlight: { groups: ['adductors'], side: 'left', pulseTrack: 'add', pulseBase: 0.3 },
-  camera: { dir: [0.12, 0.12, 1], fit: ['head', 'leftToe', 'rightToe', 'pelvis', 'leftAnkle', 'rightAnkle', 'leftPalm', 'rightPalm'], pad: 0.16, k: 1.0, drift: 0.9, at: 1.6 },
+  highlight: { groups: ['adductors'], side: 'left', pulseTrack: 'add', pulseBase: 0.55 },
+  camera: { dir: [-0.6, 0.0, 1], fit: ['head', 'leftToe', 'rightToe', 'pelvis', 'leftAnkle', 'rightAnkle', 'leftPalm', 'rightPalm'], pad: 0.16, k: 1.0, drift: 0.9, at: 1.6 },
   frame: { mode: 'fit', width: 380, height: 600, cx: 430, cy: 590 },
   stillAt: 1.6,
   shadow: { joints: ['rightToe', 'rightAnkle', 'leftAnkle', 'pelvis'],
