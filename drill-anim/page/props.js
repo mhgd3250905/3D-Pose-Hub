@@ -163,7 +163,11 @@ P.place = function(o) { const t = T(), v = flareInspector.viewer, s = o.userData
 // bar, dumbbell). Pose the hand with a free/world target whose baked grip axis lies on the bar (tools/grip/gripfit.py).
 // spec: {type:'gripHand', side:'right'}
 // Band / cable endpoints may also name an anchor (a dHandle's name): {type:'band', from:[x,y,z], to:'h1'}.
+// spec: {type:'anchor', name:'door', at:[x,y,z]}
   B.gripHand = (th, s) => { P.bakeGrip(s.side || 'right'); return new (T().Group)(); };
   if (!P.types.includes('gripHand')) P.types.push('gripHand');
+  // anchor: a named world point (nothing drawn) that a dHandle can turn toward ({type:'dHandle', toward:'door'}) - list it before the handle
+  B.anchor = (th, s) => { P.anchors[s.name] = new (T().Vector3)(...s.at); return new (T().Group)(); };
+  if (!P.types.includes('anchor')) P.types.push('anchor');
   const pt0 = P.pt; P.pt = function(p) { if (typeof p === 'string') { const a = P.anchors[p]; return a ? a.clone() : new (T().Vector3)(); } return pt0(p); };
 })();
