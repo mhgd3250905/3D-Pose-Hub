@@ -20,18 +20,18 @@ export default {
       },
       feet: {
         left: { mode: 'floor', at: [0.11, 0.50], heading: 0, pitch: 0, pole: [0.12, 1.0, 0.3] },
-        right: { mode: 'free', frame: 'world', ankle: AR, rot: [[[0, 1, 0], 90], [[0, 0, 1], 15]], pole: [-0.8, 0.22, 0.2], thighTwist: 100 },
+        right: { mode: 'free', frame: 'world', ankle: AR, rot: [[[0, 1, 0], 90], [[0, 0, 1], 15]], pole: [-1.0, -0.15, 0.25], thighTwist: 100 },
       },
       constraints: [],
       solve: { vars: [], reg: {} },
     },
     deltas: { open: {
-      feet: { left: { at: [0.11, 0.44] }, right: { ankle: add(AR, [0, 0.025, -0.045]), pole: [-0.9, 0.06, 0.25] } },
+      feet: { right: { ankle: add(AR, [0.01, -0.01, 0.0]), pole: [-1.0, -0.4, 0.25] } },
     } },
   },
-  highlight: { groups: ['glute-max'], side: 'right', pulseTrack: 'open', pulseBase: 0.3 },
-  camera: { dir: [-1, 0.7, 0.2], fit: ['head', 'leftKnee', 'rightKnee', 'pelvis', 'leftToe', 'rightToe', 'leftShoulder'], pad: 0.18, k: 1.0, drift: 0.9, at: 0 },
-  frame: { mode: 'fit', width: 760, height: 640, cx: 512, cy: 530 },
+  highlight: { groups: ['glute-max'], side: 'right', pulseTrack: 'open', pulseBase: 0.5 },
+  camera: { dir: [-0.45, 0.75, 0.9], fit: ['head', 'leftKnee', 'rightKnee', 'pelvis', 'leftToe', 'rightToe', 'leftShoulder'], pad: 0.18, k: 1.0, drift: 0.9, at: 0 },
+  frame: { mode: 'fit', width: 690, height: 640, cx: 578, cy: 545 },
   stillAt: 3.8,
   shadow: { joints: ['head', 'pelvis', 'leftShoulder', 'rightShoulder'],
     blobs: [{ j: 'pelvis', rx: 80, ry: 16, a: 0.7 }, { j: 'head', rx: 50, ry: 12, a: 0.5 }],
@@ -39,7 +39,7 @@ export default {
   props: [{ type: 'mat', at: [0, 0, -0.25], size: [0.61, 1.83, 0.006], yaw: 0 }],
   keyFrames: [0.3, 2.0, 3.8],
   qa: {
-    pins: [{ c: 'footL', when: 'params.open<0.001' }],
+    pins: [{ c: 'footL', when: 'always' }],
     allowContact: ['handL|thighL', 'handR|thighL', 'footR|thighL', 'shinR|thighL', 'footR|kneeL', 'shinR|shinL', 'handR|thighR', 'forearmR|thighR', 'forearmR|shinR', 'handR|shinR'],
   },
 };
