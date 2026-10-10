@@ -88,8 +88,9 @@ export default {
     fit: ['head', 'leftPalm', 'rightPalm', 'leftToe', 'rightToe', 'pelvis', 'leftShoulder', 'rightShoulder'], pad: 0.16, k: 1.0, at: 3.5 },
   frame: { mode: 'fit', width: 820, height: 780, cx: 512, cy: 520 },
   stillAt: 3.5,
+  // v2: palm blobs fade out as the hand lifts (3 -> 10 cm): the airborne hand's blob used to land off the mat
   shadow: { joints: ['rightPalm', 'leftPalm', 'rightToe', 'leftToe', 'pelvis', 'shoulderCenter'],
-    blobs: [{ j: 'rightPalm', rx: 50, ry: 13, a: 0.7 }, { j: 'leftPalm', rx: 50, ry: 13, a: 0.7 }, { j: 'rightToe', rx: 34, ry: 10, a: 0.6 }, { j: 'leftToe', rx: 34, ry: 10, a: 0.6 }],
+    blobs: [{ j: 'rightPalm', rx: 50, ry: 13, a: 0.7, fade: [0.03, 0.10] }, { j: 'leftPalm', rx: 50, ry: 13, a: 0.7, fade: [0.03, 0.10] }, { j: 'rightToe', rx: 34, ry: 10, a: 0.6 }, { j: 'leftToe', rx: 34, ry: 10, a: 0.6 }],
     bands: [{ from: 'shoulderCenter', to: 'rightToe', mid: 'pelvis', rx: 70, ry: 16, a: 0.28, dy: 6, sag: 0.3 }] },
   props: [{ type: 'mat', at: [-0.55, 0, 0], size: [1.83, 0.61, 0.006] }],
   keyFrames: [1.15, 3.5, 9.5],
