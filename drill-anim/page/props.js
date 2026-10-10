@@ -58,6 +58,15 @@ const B = {
     for (const sg of [-1, 1]) { const bar = new t.Mesh(new t.CylinderGeometry(0.022, 0.022, L, 16), toonMat(th)); bar.rotation.x = Math.PI / 2; bar.position.set(sg * gap / 2, H, 0); g.add(bar);
       for (const e of [-1, 1]) { const post = new t.Mesh(new t.CylinderGeometry(0.025, 0.025, H, 12), toonMat(th)); post.position.set(sg * gap / 2, H / 2, e * L * 0.45); g.add(post); } } return g; },
   foamRoller(th, s) { const t = T(); const m = new t.Mesh(new t.CylinderGeometry(s.r || 0.075, s.r || 0.075, s.length || 0.9, 32), toonMat(th)); m.rotation.z = Math.PI / 2; const g = new t.Group(); g.add(m); return g; },
+  // flat bench (B-tier): padded top (s.length 1.1, s.width 0.29, top surface at s.height 0.44), two splayed steel feet; long axis X at yaw 0
+  bench(th, s) { const t = T(); const g = new t.Group(); const L = s.length || 1.1, W = s.width || 0.29, H = s.height || 0.44, pt = 0.06;
+    const pad = new t.Mesh(new t.BoxGeometry(L, pt, W), toonMat(th, { base: s.padColour || '#26282d', rimK: 0.6 })); pad.position.y = H - pt / 2; g.add(pad);
+    const steel = toonMat(th, { base: '#4a4e57', rimK: 0.8 });
+    const rail = new t.Mesh(new t.BoxGeometry(L * 0.86, 0.04, 0.05), steel); rail.position.y = H - pt - 0.02; g.add(rail);
+    for (const e of [-1, 1]) { const x = e * L * 0.36;
+      const post = new t.Mesh(new t.BoxGeometry(0.05, H - pt - 0.04, 0.05), steel); post.position.set(x, (H - pt - 0.04) / 2 + 0.02, 0); g.add(post);
+      const foot = new t.Mesh(new t.BoxGeometry(0.06, 0.04, W + 0.12), steel); foot.position.set(x, 0.02, 0); g.add(foot); }
+    return g; },
   swissBall(th, s) { const t = T(); const g = new t.Group(); const r = s.r || 0.325; const m = new t.Mesh(new t.SphereGeometry(r, 48, 32), toonMat(th)); m.position.y = r; g.add(m); return g; },
   sliders(th, s) { const t = T(); const g = new t.Group(); const m = new t.Mesh(new t.CylinderGeometry(s.r || 0.09, s.r || 0.09, 0.008, 32), toonMat(th, { base: th.edge })); m.position.y = 0.004; g.add(m); return g; },
   // placeholder for machines (cable stack, landmine, GHD, reverse hyper, abductor, leg extension): a labelled box until modelled
