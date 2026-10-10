@@ -105,6 +105,9 @@ Object.assign(B, {
     const curve = new t.CatmullRomCurve3(pts); loop.add(new t.Mesh(new t.TubeGeometry(curve, 40, rr, 10, false), steel));
     const ring = new t.Mesh(new t.TorusGeometry(0.014, 0.004, 8, 20), steel); ring.position.set(depth + 0.012, 0, 0); ring.rotation.y = Math.PI / 2; loop.add(ring);
     g.userData.apexLocal = new t.Vector3(depth + 0.024, 0, 0); g.userData.G = G; return g; },
+  // grip bake only (no geometry): closes the hand round an existing bar of another prop (machine handles, a bar...).
+  // Pose the hand so the grip cylinder lies on the bar (P.bakeGrip data: centre/axis in the hand frame). spec: {type:'grip', side:'left'}
+  grip(th, s) { const t = T(); P.bakeGrip(s.side || 'right'); const g = new t.Group(); g.userData.grip = s.side || 'right'; return g; },
   // cable column: base, upright with a rail, carriage + pulley at pulleyY, weight stack. Facing +Z at yaw 0 (pulley on the front face).
   // spec: {type:'cableStack', name:'pulley1', at:[x,0,z], yaw, height:2.1, pulleyY:1.3, pulleyOut:0.09}
   cableStack(th, s) { const t = T(); const g = new t.Group(); const H = s.height || 2.15, py = s.pulleyY ?? 1.3;
