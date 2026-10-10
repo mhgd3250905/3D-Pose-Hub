@@ -39,7 +39,7 @@ export default {
     },
   },
   highlight: { groups: ['serratus'], side: 'both', pulseTrack: 'scap', pulseBase: 0.35 },
-  camera: { dir: [0.18, 0.42, 1], fit: ['head', 'leftPalm', 'rightPalm', 'leftToe', 'rightToe', 'pelvis', 'leftShoulder', 'rightShoulder'], pad: 0.14, k: 0.6, drift: 4, at: 0 },
+  camera: { dir: [1.1, 0.35, 1], fit: ['head', 'leftPalm', 'rightPalm', 'leftToe', 'rightToe', 'pelvis', 'leftShoulder', 'rightShoulder'], pad: 0.14, k: 0.6, drift: 2, at: 0 },   // v2: was [0.18, 0.42, 1] / drift 4 - the near strap crossed the neck at f0/f120; now the near strap stays >=59 px from the head centre (head r 39 px) all loop
   frame: { mode: 'fit', width: 800, cx: 512, cy: 560 },
   shadow: { joints: ['rightToe', 'leftToe', 'pelvis', 'shoulderCenter'],
     blobs: [{ j: 'rightToe', rx: 34, ry: 10, a: 0.6 }, { j: 'leftToe', rx: 34, ry: 10, a: 0.6 }],
