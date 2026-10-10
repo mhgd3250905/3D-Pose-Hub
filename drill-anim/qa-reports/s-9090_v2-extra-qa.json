@@ -1,0 +1,7920 @@
+{
+  "frame_range_complete_unique": true,
+  "frames": 240,
+  "main_png_count": 240,
+  "composited_png_count": 240,
+  "strict_hand_gap": {
+    "left": {
+      "minimum_signed_gap_mm": 0.8,
+      "maximum_gap_mm": 0.97,
+      "violations": [],
+      "pass": true
+    },
+    "right": {
+      "minimum_signed_gap_mm": 0.8,
+      "maximum_gap_mm": 0.95,
+      "violations": [],
+      "pass": true
+    }
+  },
+  "strict_hand_gap_pass": true,
+  "strict_pins": {
+    "left_foot_contact_centroid": {
+      "frames": 240,
+      "reference_f0_xyz_m": [
+        0.44774350894592646,
+        0.042336066044024206,
+        -0.40873654574761714
+      ],
+      "max_drift_from_f0_mm": 0.0002266037186980244,
+      "max_drift_frame": 114,
+      "max_pairwise_span_mm": 0.0002266037186980244,
+      "max_pairwise_span_frames": [
+        0,
+        114
+      ],
+      "axis_ranges_mm": [
+        [
+          447.74337604478916,
+          447.74350894592646
+        ],
+        [
+          42.33606294206741,
+          42.33606948226422
+        ],
+        [
+          -408.73654574761713,
+          -408.73636224091007
+        ]
+      ],
+      "pass": true
+    },
+    "right_foot_contact_centroid": {
+      "frames": 240,
+      "reference_f0_xyz_m": [
+        0.40894854453383783,
+        0.0424930503105108,
+        0.36279317818168766
+      ],
+      "max_drift_from_f0_mm": 0.0008947134072010252,
+      "max_drift_frame": 114,
+      "max_pairwise_span_mm": 0.0008947134072010252,
+      "max_pairwise_span_frames": [
+        0,
+        114
+      ],
+      "axis_ranges_mm": [
+        [
+          408.94846892705743,
+          408.94854453383783
+        ],
+        [
+          42.49215896682849,
+          42.4930503105108
+        ],
+        [
+          362.79317818168767,
+          362.7932240360403
+        ]
+      ],
+      "pass": true
+    },
+    "left_ankle_joint": {
+      "frames": 240,
+      "reference_f0_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "max_drift_from_f0_mm": 7.850462293418876e-14,
+      "max_drift_frame": 23,
+      "max_pairwise_span_mm": 1.570092458683775e-13,
+      "max_pairwise_span_frames": [
+        32,
+        52
+      ],
+      "axis_ranges_mm": [
+        [
+          449.99999999999994,
+          450.00000000000006
+        ],
+        [
+          84.99999999999999,
+          85.00000000000001
+        ],
+        [
+          -330.00000000000006,
+          -329.99999999999994
+        ]
+      ],
+      "pass": true
+    },
+    "right_ankle_joint": {
+      "frames": 240,
+      "reference_f0_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "max_drift_from_f0_mm": 1.2412670766236365e-13,
+      "max_drift_frame": 35,
+      "max_pairwise_span_mm": 1.7554167342883506e-13,
+      "max_pairwise_span_frames": [
+        35,
+        38
+      ],
+      "axis_ranges_mm": [
+        [
+          329.99999999999994,
+          330.00000000000006
+        ],
+        [
+          85.0,
+          85.0
+        ],
+        [
+          359.9999999999999,
+          360.00000000000006
+        ]
+      ],
+      "pass": true
+    }
+  },
+  "strict_pins_pass": true,
+  "pin_method": "All 240 frames; three-dimensional Euclidean distance relative to f0 AND maximum pairwise distance; tolerance 0.5 mm. Raw foot contact centroid and ankle joint fields measured independently of empty spec.qa.pins.",
+  "min_vertex_y_m": 0.0009792222113203539,
+  "floor_pass": true,
+  "solver_warning_frames": 0,
+  "solver_pass": true,
+  "margins_pass": true,
+  "engine_qa_pass": true,
+  "cyan_method": "G>R+25 && B>R+25 && min(G,B)>100; readability proxy, not muscle activity or anatomical coverage",
+  "cyan_sampled": [
+    {
+      "f": 0,
+      "cyan_pixels": 88,
+      "bbox": [
+        414,
+        621,
+        426,
+        660
+      ]
+    },
+    {
+      "f": 8,
+      "cyan_pixels": 89,
+      "bbox": [
+        414,
+        620,
+        425,
+        660
+      ]
+    },
+    {
+      "f": 16,
+      "cyan_pixels": 89,
+      "bbox": [
+        414,
+        619,
+        425,
+        659
+      ]
+    },
+    {
+      "f": 24,
+      "cyan_pixels": 87,
+      "bbox": [
+        414,
+        632,
+        425,
+        658
+      ]
+    },
+    {
+      "f": 32,
+      "cyan_pixels": 45,
+      "bbox": [
+        416,
+        643,
+        424,
+        658
+      ]
+    },
+    {
+      "f": 40,
+      "cyan_pixels": 0,
+      "bbox": null
+    },
+    {
+      "f": 48,
+      "cyan_pixels": 0,
+      "bbox": null
+    },
+    {
+      "f": 56,
+      "cyan_pixels": 378,
+      "bbox": [
+        504,
+        551,
+        551,
+        571
+      ]
+    },
+    {
+      "f": 60,
+      "cyan_pixels": 481,
+      "bbox": [
+        502,
+        551,
+        553,
+        574
+      ]
+    },
+    {
+      "f": 64,
+      "cyan_pixels": 489,
+      "bbox": [
+        502,
+        551,
+        553,
+        574
+      ]
+    },
+    {
+      "f": 72,
+      "cyan_pixels": 577,
+      "bbox": [
+        500,
+        550,
+        555,
+        576
+      ]
+    },
+    {
+      "f": 80,
+      "cyan_pixels": 724,
+      "bbox": [
+        499,
+        549,
+        559,
+        578
+      ]
+    },
+    {
+      "f": 88,
+      "cyan_pixels": 1063,
+      "bbox": [
+        497,
+        548,
+        574,
+        582
+      ]
+    },
+    {
+      "f": 96,
+      "cyan_pixels": 1328,
+      "bbox": [
+        496,
+        547,
+        578,
+        585
+      ]
+    },
+    {
+      "f": 104,
+      "cyan_pixels": 1456,
+      "bbox": [
+        496,
+        546,
+        578,
+        586
+      ]
+    },
+    {
+      "f": 112,
+      "cyan_pixels": 1480,
+      "bbox": [
+        495,
+        546,
+        578,
+        586
+      ]
+    },
+    {
+      "f": 120,
+      "cyan_pixels": 1473,
+      "bbox": [
+        495,
+        547,
+        578,
+        586
+      ]
+    },
+    {
+      "f": 128,
+      "cyan_pixels": 1390,
+      "bbox": [
+        496,
+        547,
+        578,
+        586
+      ]
+    },
+    {
+      "f": 136,
+      "cyan_pixels": 1218,
+      "bbox": [
+        496,
+        548,
+        577,
+        585
+      ]
+    },
+    {
+      "f": 144,
+      "cyan_pixels": 865,
+      "bbox": [
+        497,
+        550,
+        569,
+        581
+      ]
+    },
+    {
+      "f": 152,
+      "cyan_pixels": 657,
+      "bbox": [
+        497,
+        551,
+        556,
+        578
+      ]
+    },
+    {
+      "f": 160,
+      "cyan_pixels": 512,
+      "bbox": [
+        500,
+        553,
+        553,
+        576
+      ]
+    },
+    {
+      "f": 168,
+      "cyan_pixels": 475,
+      "bbox": [
+        500,
+        553,
+        553,
+        575
+      ]
+    },
+    {
+      "f": 176,
+      "cyan_pixels": 126,
+      "bbox": [
+        506,
+        554,
+        542,
+        562
+      ]
+    },
+    {
+      "f": 180,
+      "cyan_pixels": 0,
+      "bbox": null
+    },
+    {
+      "f": 184,
+      "cyan_pixels": 0,
+      "bbox": null
+    },
+    {
+      "f": 192,
+      "cyan_pixels": 0,
+      "bbox": null
+    },
+    {
+      "f": 200,
+      "cyan_pixels": 82,
+      "bbox": [
+        416,
+        636,
+        426,
+        662
+      ]
+    },
+    {
+      "f": 208,
+      "cyan_pixels": 90,
+      "bbox": [
+        415,
+        621,
+        427,
+        662
+      ]
+    },
+    {
+      "f": 216,
+      "cyan_pixels": 90,
+      "bbox": [
+        414,
+        621,
+        426,
+        662
+      ]
+    },
+    {
+      "f": 220,
+      "cyan_pixels": 86,
+      "bbox": [
+        414,
+        631,
+        426,
+        661
+      ]
+    },
+    {
+      "f": 224,
+      "cyan_pixels": 88,
+      "bbox": [
+        415,
+        630,
+        426,
+        661
+      ]
+    },
+    {
+      "f": 232,
+      "cyan_pixels": 89,
+      "bbox": [
+        415,
+        631,
+        426,
+        661
+      ]
+    }
+  ],
+  "known_visual_issue": "Hark accepted possible cyan occlusion during forward hinge, provided upright f0 and f220 show hip highlight. No radius or engine change made.",
+  "per_frame_contacts": [
+    {
+      "f": 0,
+      "handClip": {
+        "left": 0.84,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774350894592646,
+        0.042336066044024206,
+        -0.40873654574761714
+      ],
+      "footR_cen_xyz_m": [
+        0.40894854453383783,
+        0.0424930503105108,
+        0.36279317818168766
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 1,
+      "handClip": {
+        "left": 0.84,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774350894592646,
+        0.042336066044024206,
+        -0.40873654574761714
+      ],
+      "footR_cen_xyz_m": [
+        0.40894854453383783,
+        0.0424930503105108,
+        0.36279317818168766
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 2,
+      "handClip": {
+        "left": 0.84,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774350894592646,
+        0.042336066044024206,
+        -0.40873654574761714
+      ],
+      "footR_cen_xyz_m": [
+        0.40894854453383783,
+        0.0424930503105108,
+        0.36279317818168766
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 3,
+      "handClip": {
+        "left": 0.84,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774350894592646,
+        0.042336066044024206,
+        -0.40873654574761714
+      ],
+      "footR_cen_xyz_m": [
+        0.40894854453383783,
+        0.0424930503105108,
+        0.36279317818168766
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 4,
+      "handClip": {
+        "left": 0.84,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774350894592646,
+        0.042336066044024206,
+        -0.40873654574761714
+      ],
+      "footR_cen_xyz_m": [
+        0.40894854453383783,
+        0.0424930503105108,
+        0.36279317818168766
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 5,
+      "handClip": {
+        "left": 0.84,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774350894592646,
+        0.042336066044024206,
+        -0.40873654574761714
+      ],
+      "footR_cen_xyz_m": [
+        0.40894854453383783,
+        0.0424930503105108,
+        0.36279317818168766
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 6,
+      "handClip": {
+        "left": 0.84,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774350894592646,
+        0.042336066044024206,
+        -0.40873654574761714
+      ],
+      "footR_cen_xyz_m": [
+        0.40894854453383783,
+        0.0424930503105108,
+        0.36279317818168766
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 7,
+      "handClip": {
+        "left": 0.84,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774350894592646,
+        0.042336066044024206,
+        -0.40873654574761714
+      ],
+      "footR_cen_xyz_m": [
+        0.40894854453383783,
+        0.0424930503105108,
+        0.36279317818168766
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 8,
+      "handClip": {
+        "left": 0.84,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774350894592646,
+        0.042336066044024206,
+        -0.40873654574761714
+      ],
+      "footR_cen_xyz_m": [
+        0.40894854453383783,
+        0.0424930503105108,
+        0.36279317818168766
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 9,
+      "handClip": {
+        "left": 0.84,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774350894592646,
+        0.042336066044024206,
+        -0.40873654574761714
+      ],
+      "footR_cen_xyz_m": [
+        0.40894854453383783,
+        0.0424930503105108,
+        0.36279317818168766
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 10,
+      "handClip": {
+        "left": 0.84,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774350894592646,
+        0.042336066044024206,
+        -0.40873654574761714
+      ],
+      "footR_cen_xyz_m": [
+        0.40894854453383783,
+        0.0424930503105108,
+        0.36279317818168766
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 11,
+      "handClip": {
+        "left": 0.84,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774350894592646,
+        0.042336066044024206,
+        -0.40873654574761714
+      ],
+      "footR_cen_xyz_m": [
+        0.40894854453383783,
+        0.0424930503105108,
+        0.36279317818168766
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 12,
+      "handClip": {
+        "left": 0.84,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774350894592646,
+        0.042336066044024206,
+        -0.40873654574761714
+      ],
+      "footR_cen_xyz_m": [
+        0.40894854453383783,
+        0.0424930503105108,
+        0.36279317818168766
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 13,
+      "handClip": {
+        "left": 0.84,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774350894592646,
+        0.042336066044024206,
+        -0.40873654574761714
+      ],
+      "footR_cen_xyz_m": [
+        0.40894854453383783,
+        0.0424930503105108,
+        0.36279317818168766
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 14,
+      "handClip": {
+        "left": 0.84,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774350894592646,
+        0.042336066044024206,
+        -0.40873654574761714
+      ],
+      "footR_cen_xyz_m": [
+        0.40894854453383783,
+        0.0424930503105108,
+        0.36279317818168766
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 15,
+      "handClip": {
+        "left": 0.84,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774350894592646,
+        0.042336066044024206,
+        -0.40873654574761714
+      ],
+      "footR_cen_xyz_m": [
+        0.40894854453383783,
+        0.0424930503105108,
+        0.36279317818168766
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 16,
+      "handClip": {
+        "left": 0.84,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774350894592646,
+        0.042336066044024206,
+        -0.40873654574761714
+      ],
+      "footR_cen_xyz_m": [
+        0.40894854453383783,
+        0.0424930503105108,
+        0.36279317818168766
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 17,
+      "handClip": {
+        "left": 0.84,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774350894592646,
+        0.042336066044024206,
+        -0.40873654574761714
+      ],
+      "footR_cen_xyz_m": [
+        0.40894854453383783,
+        0.0424930503105108,
+        0.36279317818168766
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 18,
+      "handClip": {
+        "left": 0.84,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774350894592646,
+        0.042336066044024206,
+        -0.40873654574761714
+      ],
+      "footR_cen_xyz_m": [
+        0.40894854453383783,
+        0.0424930503105108,
+        0.36279317818168766
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 19,
+      "handClip": {
+        "left": 0.85,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477435087755472,
+        0.04233606602474735,
+        -0.408736545542932
+      ],
+      "footR_cen_xyz_m": [
+        0.4089485444671149,
+        0.042493049242587094,
+        0.36279317837960273
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.32999999999999996,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 20,
+      "handClip": {
+        "left": 0.85,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774350826553916,
+        0.04233606596740232,
+        -0.4087365449297349
+      ],
+      "footR_cen_xyz_m": [
+        0.40894854426695315,
+        0.042493046044693804,
+        0.36279317896963825
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.32999999999999996,
+        0.085,
+        0.35999999999999993
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 21,
+      "handClip": {
+        "left": 0.8,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477435074192802,
+        0.04233606587343279,
+        -0.40873654391060676
+      ],
+      "footR_cen_xyz_m": [
+        0.4089485439333817,
+        0.04249304073444222,
+        0.3627931799407464
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 22,
+      "handClip": {
+        "left": 0.8,
+        "right": 0.93,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477435062423651,
+        0.04233606574520214,
+        -0.40873654248986474
+      ],
+      "footR_cen_xyz_m": [
+        0.40894854346647924,
+        0.04249303334110975,
+        0.3627931812747841
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 23,
+      "handClip": {
+        "left": 0.93,
+        "right": 0.89,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774350474255215,
+        0.04233606558593075,
+        -0.4087365406735842
+      ],
+      "footR_cen_xyz_m": [
+        0.4089485428664185,
+        0.04249302390552599,
+        0.3627931829469107
+      ],
+      "ankleL_xyz_m": [
+        0.45000000000000007,
+        0.085,
+        -0.32999999999999996
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 24,
+      "handClip": {
+        "left": 0.82,
+        "right": 0.9,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477435029296909,
+        0.04233606539961094,
+        -0.40873653846962815
+      ],
+      "footR_cen_xyz_m": [
+        0.4089485421335258,
+        0.04249301247990903,
+        0.36279318492613283
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.32999999999999996,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 25,
+      "handClip": {
+        "left": 0.95,
+        "right": 0.92,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477435008156329,
+        0.042336065190902314,
+        -0.4087365358876783
+      ],
+      "footR_cen_xyz_m": [
+        0.4089485412683549,
+        0.04249299912764867,
+        0.3627931871759807
+      ],
+      "ankleL_xyz_m": [
+        0.45000000000000007,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.32999999999999996,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 26,
+      "handClip": {
+        "left": 0.91,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477434984141232,
+        0.04233606496501052,
+        -0.4087365329392686
+      ],
+      "footR_cen_xyz_m": [
+        0.40894854027177274,
+        0.042492983923032586,
+        0.36279318965530344
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 27,
+      "handClip": {
+        "left": 0.81,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477434957406802,
+        0.04233606472755321,
+        -0.4087365296378153
+      ],
+      "footR_cen_xyz_m": [
+        0.4089485391450534,
+        0.042492966950911114,
+        0.3627931923191622
+      ],
+      "ankleL_xyz_m": [
+        0.44999999999999996,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.32999999999999996,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 28,
+      "handClip": {
+        "left": 0.94,
+        "right": 0.89,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477434928124606,
+        0.04233606448441696,
+        -0.40873652599864035
+      ],
+      "footR_cen_xyz_m": [
+        0.40894853788997854,
+        0.04249294830629698,
+        0.3627931951198007
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 29,
+      "handClip": {
+        "left": 0.93,
+        "right": 0.93,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477434896481148,
+        0.042336064241609364,
+        -0.4087365220389844
+      ],
+      "footR_cen_xyz_m": [
+        0.4089485365089393,
+        0.04249292809389664,
+        0.3627931980076709
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 30,
+      "handClip": {
+        "left": 0.93,
+        "right": 0.95,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477434862676332,
+        0.04233606400511025,
+        -0.4087365177780061
+      ],
+      "footR_cen_xyz_m": [
+        0.4089485350050375,
+        0.04249290642757105,
+        0.36279320093249
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 31,
+      "handClip": {
+        "left": 0.81,
+        "right": 0.9,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477434826921862,
+        0.042336063780726005,
+        -0.4087365132367637
+      ],
+      "footR_cen_xyz_m": [
+        0.4089485333821818,
+        0.04249288342972509,
+        0.362793203844303
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.32999999999999996
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 32,
+      "handClip": {
+        "left": 0.82,
+        "right": 0.82,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477434789439583,
+        0.04233606357395078,
+        -0.4087365084381765
+      ],
+      "footR_cen_xyz_m": [
+        0.40894853164517553,
+        0.0424928592306261,
+        0.3627932066945285
+      ],
+      "ankleL_xyz_m": [
+        0.44999999999999996,
+        0.085,
+        -0.32999999999999996
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 33,
+      "handClip": {
+        "left": 0.86,
+        "right": 0.8,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774347504597944,
+        0.04233606338983792,
+        -0.40873650340696305
+      ],
+      "footR_cen_xyz_m": [
+        0.40894852979979174,
+        0.04249283396765411,
+        0.36279320943696153
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 34,
+      "handClip": {
+        "left": 0.92,
+        "right": 0.89,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774347102195505,
+        0.04233606323288453,
+        -0.4087364981695541
+      ],
+      "footR_cen_xyz_m": [
+        0.40894852785283403,
+        0.04249280778448774,
+        0.3627932120287124
+      ],
+      "ankleL_xyz_m": [
+        0.45000000000000007,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33000000000000007,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 35,
+      "handClip": {
+        "left": 0.93,
+        "right": 0.86,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774346689609434,
+        0.04233606310693189,
+        -0.40873649275398166
+      ],
+      "footR_cen_xyz_m": [
+        0.40894852581217883,
+        0.0424927808302319,
+        0.362793214431061
+      ],
+      "ankleL_xyz_m": [
+        0.45000000000000007,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.32999999999999996,
+        0.085,
+        0.3599999999999999
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 36,
+      "handClip": {
+        "left": 0.93,
+        "right": 0.8,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774346269294113,
+        0.04233606301508345,
+        -0.40873648718974037
+      ],
+      "footR_cen_xyz_m": [
+        0.4089485236867973,
+        0.04249275325849456,
+        0.36279321661020636
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 37,
+      "handClip": {
+        "left": 0.93,
+        "right": 0.85,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477434584372067,
+        0.042336062959642075,
+        -0.40873648150762504
+      ],
+      "footR_cen_xyz_m": [
+        0.4089485214867553,
+        0.042492725226421835,
+        0.36279321853789737
+      ],
+      "ankleL_xyz_m": [
+        0.44999999999999996,
+        0.085,
+        -0.32999999999999996
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 38,
+      "handClip": {
+        "left": 0.84,
+        "right": 0.93,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774345415360534,
+        0.042336062942067404,
+        -0.40873647573954425
+      ],
+      "footR_cen_xyz_m": [
+        0.4089485192231912,
+        0.04249269689370142,
+        0.3627932201919314
+      ],
+      "ankleL_xyz_m": [
+        0.44999999999999996,
+        0.085,
+        -0.32999999999999996
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36000000000000004
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 39,
+      "handClip": {
+        "left": 0.83,
+        "right": 0.81,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774344986669623,
+        0.0423360629629536,
+        -0.4087364699183131
+      ],
+      "footR_cen_xyz_m": [
+        0.4089485169082688,
+        0.04249266842154539,
+        0.36279322155651106
+      ],
+      "ankleL_xyz_m": [
+        0.44999999999999996,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 40,
+      "handClip": {
+        "left": 0.88,
+        "right": 0.85,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774344560073104,
+        0.042336063022027526,
+        -0.40873646407742825
+      ],
+      "footR_cen_xyz_m": [
+        0.4089485145551087,
+        0.04249263997166403,
+        0.3627932226224533
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 41,
+      "handClip": {
+        "left": 0.88,
+        "right": 0.83,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477434413795086,
+        0.04233606311816664,
+        -0.40873645825082805
+      ],
+      "footR_cen_xyz_m": [
+        0.40894851217769684,
+        0.04249261170524235,
+        0.3627932233872485
+      ],
+      "ankleL_xyz_m": [
+        0.44999999999999996,
+        0.085,
+        -0.32999999999999996
+      ],
+      "ankleR_xyz_m": [
+        0.33000000000000007,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 42,
+      "handClip": {
+        "left": 0.94,
+        "right": 0.87,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477434372262395,
+        0.04233606324943553,
+        -0.4087364524726442
+      ],
+      "footR_cen_xyz_m": [
+        0.4089485097907732,
+        0.04249258378193075,
+        0.36279322385497037
+      ],
+      "ankleL_xyz_m": [
+        0.44999999999999996,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.32999999999999996,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 43,
+      "handClip": {
+        "left": 0.94,
+        "right": 0.85,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774343316341886,
+        0.04233606341313969,
+        -0.4087364467769443
+      ],
+      "footR_cen_xyz_m": [
+        0.4089485074097016,
+        0.04249255635886094,
+        0.36279322403604025
+      ],
+      "ankleL_xyz_m": [
+        0.44999999999999996,
+        0.085,
+        -0.32999999999999996
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36000000000000004
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 44,
+      "handClip": {
+        "left": 0.94,
+        "right": 0.86,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774342921271226,
+        0.042336063605894717,
+        -0.40873644119747754
+      ],
+      "footR_cen_xyz_m": [
+        0.4089485050503255,
+        0.04249252958969714,
+        0.362793223946855
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 45,
+      "handClip": {
+        "left": 0.92,
+        "right": 0.81,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.447743425394851,
+        0.04233606382370888,
+        -0.40873643576741875
+      ],
+      "footR_cen_xyz_m": [
+        0.40894850272880906,
+        0.042492503623731595,
+        0.3627932236092866
+      ],
+      "ankleL_xyz_m": [
+        0.45000000000000007,
+        0.085,
+        -0.32999999999999996
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 46,
+      "handClip": {
+        "left": 0.94,
+        "right": 0.85,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774342172954174,
+        0.042336064062076746,
+        -0.4087364305191236
+      ],
+      "footR_cen_xyz_m": [
+        0.40894850046147113,
+        0.0424924786050322,
+        0.3627932230500681
+      ],
+      "ankleL_xyz_m": [
+        0.45000000000000007,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 47,
+      "handClip": {
+        "left": 0.85,
+        "right": 0.9,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774341823538794,
+        0.042336064316081536,
+        -0.4087364254838904
+      ],
+      "footR_cen_xyz_m": [
+        0.40894849826461144,
+        0.042492454671648305,
+        0.36279322230008004
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 48,
+      "handClip": {
+        "left": 0.95,
+        "right": 0.95,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477434149298249,
+        0.04233606458050367,
+        -0.40873642069173927
+      ],
+      "footR_cen_xyz_m": [
+        0.40894849615433493,
+        0.04249243195487943,
+        0.36279322139355497
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.32999999999999996
+      ],
+      "ankleR_xyz_m": [
+        0.32999999999999996,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 49,
+      "handClip": {
+        "left": 0.95,
+        "right": 0.93,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774341182906646,
+        0.04233606484993307,
+        -0.40873641617120543
+      ],
+      "footR_cen_xyz_m": [
+        0.40894849414637563,
+        0.04249241057860994,
+        0.36279322036721784
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.35999999999999993
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 50,
+      "handClip": {
+        "left": 0.83,
+        "right": 0.93,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774340894806475,
+        0.04233606511888275,
+        -0.40873641194915045
+      ],
+      "footR_cen_xyz_m": [
+        0.40894849225592456,
+        0.042492390658711014,
+        0.36279321925938335
+      ],
+      "ankleL_xyz_m": [
+        0.44999999999999996,
+        0.085,
+        -0.32999999999999996
+      ],
+      "ankleR_xyz_m": [
+        0.33000000000000007,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 51,
+      "handClip": {
+        "left": 0.86,
+        "right": 0.8,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774340630048115,
+        0.04233606538190154,
+        -0.4087364080505948
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484904974633,
+        0.042492372302510024,
+        0.3627932181090275
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 52,
+      "handClip": {
+        "left": 0.81,
+        "right": 0.92,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477434038986669,
+        0.04233606563368352,
+        -0.4087364044985668
+      ],
+      "footR_cen_xyz_m": [
+        0.40894848888460567,
+        0.042492355608325726,
+        0.3627932169548573
+      ],
+      "ankleL_xyz_m": [
+        0.45000000000000007,
+        0.085,
+        -0.33000000000000007
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 53,
+      "handClip": {
+        "left": 0.92,
+        "right": 0.9,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774340175365285,
+        0.042336065869172594,
+        -0.4087364013139745
+      ],
+      "footR_cen_xyz_m": [
+        0.40894848742995005,
+        0.042492340665066845,
+        0.3627932158343956
+      ],
+      "ankleL_xyz_m": [
+        0.44999999999999996,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 54,
+      "handClip": {
+        "left": 0.84,
+        "right": 0.88,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433998751474,
+        0.0423360660836601,
+        -0.40873639851549465
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484861449443,
+        0.042492327551890474,
+        0.3627932147831028
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 55,
+      "handClip": {
+        "left": 0.93,
+        "right": 0.92,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433982715379,
+        0.04233606627287423,
+        -0.4087363961194798
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484850397631,
+        0.042492316337916,
+        0.3627932138335528
+      ],
+      "ankleL_xyz_m": [
+        0.45000000000000007,
+        0.085,
+        -0.32999999999999996
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36000000000000004
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 56,
+      "handClip": {
+        "left": 0.87,
+        "right": 0.84,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433969498983,
+        0.04233606643305978,
+        -0.40873639413988294
+      ],
+      "footR_cen_xyz_m": [
+        0.40894848412320095,
+        0.04249230708199014,
+        0.36279321301468065
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 57,
+      "handClip": {
+        "left": 0.83,
+        "right": 0.89,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774339591599793,
+        0.042336066561047325,
+        -0.4087363925881957
+      ],
+      "footR_cen_xyz_m": [
+        0.40894848340258033,
+        0.042492299832498075,
+        0.36279321235111806
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.32999999999999996
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.35999999999999993
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 58,
+      "handClip": {
+        "left": 0.8,
+        "right": 0.88,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774339517431105,
+        0.042336066654310806,
+        -0.40873639147340207
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484828836756,
+        0.04249229462721639,
+        0.36279321186263025
+      ],
+      "ankleL_xyz_m": [
+        0.45000000000000007,
+        0.085,
+        -0.32999999999999996
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 59,
+      "handClip": {
+        "left": 0.93,
+        "right": 0.88,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433947280256,
+        0.04233606671101302,
+        -0.4087363908019431
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484825706539,
+        0.042492291493203424,
+        0.3627932115636651
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.32999999999999996
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 60,
+      "handClip": {
+        "left": 0.93,
+        "right": 0.87,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433945790519,
+        0.042336066730038445,
+        -0.40873639057769257
+      ],
+      "footR_cen_xyz_m": [
+        0.40894848246603266,
+        0.04249229044672366,
+        0.36279321146302457
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 61,
+      "handClip": {
+        "left": 0.93,
+        "right": 0.87,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433945631474,
+        0.0423360667320725,
+        -0.4087363905537481
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484824548594,
+        0.042492290334991585,
+        0.36279321145225524
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 62,
+      "handClip": {
+        "left": 0.93,
+        "right": 0.87,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774339451549,
+        0.04233606673817082,
+        -0.40873639048199556
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484824213744,
+        0.042492290000178325,
+        0.36279321141995613
+      ],
+      "ankleL_xyz_m": [
+        0.45000000000000007,
+        0.085,
+        -0.33000000000000007
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 63,
+      "handClip": {
+        "left": 0.92,
+        "right": 0.88,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774339443624767,
+        0.04233606674832191,
+        -0.4087363903626762
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484823656821,
+        0.04249228944343133,
+        0.3627932113661552
+      ],
+      "ankleL_xyz_m": [
+        0.45000000000000007,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.32999999999999996,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 64,
+      "handClip": {
+        "left": 0.91,
+        "right": 0.87,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433943256995,
+        0.04233606676250645,
+        -0.40873639019619173
+      ],
+      "footR_cen_xyz_m": [
+        0.40894848228795677,
+        0.042492288666658565,
+        0.36279321129089975
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36000000000000004
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 65,
+      "handClip": {
+        "left": 0.9,
+        "right": 0.8,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774339418423514,
+        0.042336066780697214,
+        -0.40873638998310263
+      ],
+      "footR_cen_xyz_m": [
+        0.40894848218844126,
+        0.04249228767252169,
+        0.36279321119425817
+      ],
+      "ankleL_xyz_m": [
+        0.45000000000000007,
+        0.085,
+        -0.33000000000000007
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 66,
+      "handClip": {
+        "left": 0.9,
+        "right": 0.8,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433940123524,
+        0.04233606680285885,
+        -0.4087363897241263
+      ],
+      "footR_cen_xyz_m": [
+        0.40894848206744744,
+        0.0424922864644267,
+        0.3627932110763228
+      ],
+      "ankleL_xyz_m": [
+        0.44999999999999996,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 67,
+      "handClip": {
+        "left": 0.89,
+        "right": 0.8,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774339381065625,
+        0.04233606682894762,
+        -0.40873638942013474
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484819253545,
+        0.042492285046511896,
+        0.3627932109372124
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 68,
+      "handClip": {
+        "left": 0.88,
+        "right": 0.94,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774339357985576,
+        0.04233606685891113,
+        -0.4087363890721518
+      ],
+      "footR_cen_xyz_m": [
+        0.40894848176260895,
+        0.04249228342363322,
+        0.3627932107770754
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 69,
+      "handClip": {
+        "left": 0.87,
+        "right": 0.94,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433933207618,
+        0.042336066892687985,
+        -0.40873638868134976
+      ],
+      "footR_cen_xyz_m": [
+        0.40894848157972324,
+        0.04249228160134718,
+        0.3627932105960944
+      ],
+      "ankleL_xyz_m": [
+        0.45000000000000007,
+        0.085,
+        -0.33000000000000007
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 70,
+      "handClip": {
+        "left": 0.86,
+        "right": 0.94,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433930342833,
+        0.04233606693020745,
+        -0.40873638824904546
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484813772745,
+        0.04249227958589121,
+        0.3627932103944897
+      ],
+      "ankleL_xyz_m": [
+        0.44999999999999996,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 71,
+      "handClip": {
+        "left": 0.85,
+        "right": 0.94,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433927214246,
+        0.04233606697138906,
+        -0.40873638777669585
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484811559033,
+        0.042492277384161704,
+        0.3627932101725247
+      ],
+      "ankleL_xyz_m": [
+        0.44999999999999996,
+        0.085,
+        -0.32999999999999996
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 72,
+      "handClip": {
+        "left": 0.83,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.447743392383281,
+        0.04233606701614227,
+        -0.40873638726589395
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484809163121,
+        0.04249227500368972,
+        0.36279320993050984
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33000000000000007
+      ],
+      "ankleR_xyz_m": [
+        0.32999999999999996,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 73,
+      "handClip": {
+        "left": 0.81,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433920210348,
+        0.04233606706436607,
+        -0.40873638671836193
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484806592634,
+        0.042492272452614485,
+        0.3627932096688084
+      ],
+      "ankleL_xyz_m": [
+        0.45000000000000007,
+        0.085,
+        -0.33000000000000007
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 74,
+      "handClip": {
+        "left": 0.91,
+        "right": 0.86,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433916359504,
+        0.04233606711594861,
+        -0.4087363861359472
+      ],
+      "footR_cen_xyz_m": [
+        0.40894848038557813,
+        0.042492269739654816,
+        0.3627932093878407
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 75,
+      "handClip": {
+        "left": 0.89,
+        "right": 0.89,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774339122937024,
+        0.04233606717076689,
+        -0.4087363855206154
+      ],
+      "footR_cen_xyz_m": [
+        0.40894848009613305,
+        0.04249226687407846,
+        0.3627932090880897
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.35999999999999993
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 76,
+      "handClip": {
+        "left": 0.87,
+        "right": 0.88,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774339080270914,
+        0.04233606722868647,
+        -0.4087363848744437
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484797918593,
+        0.04249226386566969,
+        0.36279320877010535
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.08499999999999999,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 77,
+      "handClip": {
+        "left": 0.83,
+        "right": 0.9,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774339035744914,
+        0.04233606728956119,
+        -0.4087363841996142
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484794737388,
+        0.042492260724694954,
+        0.36279320843450885
+      ],
+      "ankleL_xyz_m": [
+        0.44999999999999996,
+        0.085,
+        -0.32999999999999996
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 78,
+      "handClip": {
+        "left": 0.82,
+        "right": 0.9,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.447743389895134,
+        0.042336067353233024,
+        -0.4087363834984069
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484791428027,
+        0.04249225746186709,
+        0.36279320808199705
+      ],
+      "ankleL_xyz_m": [
+        0.44999999999999996,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.35999999999999993
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 79,
+      "handClip": {
+        "left": 0.9,
+        "right": 0.88,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433894173636,
+        0.042336067419531914,
+        -0.4087363827731912
+      ],
+      "footR_cen_xyz_m": [
+        0.40894847880012763,
+        0.042492254088307896,
+        0.3627932077133461
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 80,
+      "handClip": {
+        "left": 0.82,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433889257877,
+        0.04233606748827578,
+        -0.4087363820264186
+      ],
+      "footR_cen_xyz_m": [
+        0.40894847844683324,
+        0.04249225061550942,
+        0.362793207329414
+      ],
+      "ankleL_xyz_m": [
+        0.44999999999999996,
+        0.08500000000000002,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 81,
+      "handClip": {
+        "left": 0.88,
+        "right": 0.87,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433884221003,
+        0.0423360675592705,
+        -0.40873638126061446
+      ],
+      "footR_cen_xyz_m": [
+        0.40894847808407864,
+        0.04249224705529405,
+        0.3627932069311434
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.35999999999999993
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 82,
+      "handClip": {
+        "left": 0.82,
+        "right": 0.83,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774338790803336,
+        0.04233606763231016,
+        -0.40873638047836897
+      ],
+      "footR_cen_xyz_m": [
+        0.40894847771305914,
+        0.042492243419773444,
+        0.3627932065195632
+      ],
+      "ankleL_xyz_m": [
+        0.44999999999999996,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.32999999999999996,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 83,
+      "handClip": {
+        "left": 0.93,
+        "right": 0.83,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433873853504,
+        0.042336067707177176,
+        -0.40873637968232895
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484773350023,
+        0.04249223972130673,
+        0.3627932060957889
+      ],
+      "ankleL_xyz_m": [
+        0.44999999999999996,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 84,
+      "handClip": {
+        "left": 0.85,
+        "right": 0.83,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433868558405,
+        0.04233606778364271,
+        -0.40873637887518816
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484769511645,
+        0.04249223597245779,
+        0.3627932056610231
+      ],
+      "ankleL_xyz_m": [
+        0.45000000000000007,
+        0.085,
+        -0.33000000000000007
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 85,
+      "handClip": {
+        "left": 0.96,
+        "right": 0.84,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433863213114,
+        0.04233606786146711,
+        -0.40873637805967905
+      ],
+      "footR_cen_xyz_m": [
+        0.40894847656282696,
+        0.04249223218595203,
+        0.3627932052165543
+      ],
+      "ankleL_xyz_m": [
+        0.44999999999999996,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.35999999999999993
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 86,
+      "handClip": {
+        "left": 0.88,
+        "right": 0.84,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433857835841,
+        0.04233606794040049,
+        -0.4087363772385627
+      ],
+      "footR_cen_xyz_m": [
+        0.40894847617129143,
+        0.04249222837463272,
+        0.3627932047637549
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33000000000000007,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 87,
+      "handClip": {
+        "left": 0.91,
+        "right": 0.84,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433852444855,
+        0.04233606802018338,
+        -0.4087363764146198
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484757778758,
+        0.04249222455141702,
+        0.3627932043040783
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.35999999999999993
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 88,
+      "handClip": {
+        "left": 0.85,
+        "right": 0.84,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433847058428,
+        0.042336068100547575,
+        -0.4087363755906409
+      ],
+      "footR_cen_xyz_m": [
+        0.40894847538391027,
+        0.04249222072925191,
+        0.3627932038390555
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 89,
+      "handClip": {
+        "left": 0.8,
+        "right": 0.83,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433841694771,
+        0.04233606818121698,
+        -0.40873637476941727
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484749907322,
+        0.04249221692107017,
+        0.36279320337028925
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 90,
+      "handClip": {
+        "left": 0.93,
+        "right": 0.83,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.447743383637197,
+        0.04233606826190869,
+        -0.40873637395373086
+      ],
+      "footR_cen_xyz_m": [
+        0.408948474599682,
+        0.042492213139746514,
+        0.3627932028994491
+      ],
+      "ankleL_xyz_m": [
+        0.45000000000000007,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 91,
+      "handClip": {
+        "left": 0.9,
+        "right": 0.83,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774338311079276,
+        0.042336068342334,
+        -0.4087363731463454
+      ],
+      "footR_cen_xyz_m": [
+        0.40894847421209785,
+        0.04249220939805411,
+        0.36279320242826407
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33000000000000007
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 92,
+      "handClip": {
+        "left": 0.83,
+        "right": 0.83,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774338259203045,
+        0.04233606842219971,
+        -0.4087363723499962
+      ],
+      "footR_cen_xyz_m": [
+        0.40894847382931176,
+        0.042492205708621555,
+        0.3627932019585152
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36000000000000004
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 93,
+      "handClip": {
+        "left": 0.95,
+        "right": 0.83,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.447743382082646,
+        0.042336068501209405,
+        -0.4087363715673816
+      ],
+      "footR_cen_xyz_m": [
+        0.40894847345264396,
+        0.042492202083890526,
+        0.3627932014920266
+      ],
+      "ankleL_xyz_m": [
+        0.44999999999999996,
+        0.085,
+        -0.32999999999999996
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.35999999999999993
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 94,
+      "handClip": {
+        "left": 0.88,
+        "right": 0.83,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774338158433974,
+        0.042336068579064745,
+        -0.4087363708011533
+      ],
+      "footR_cen_xyz_m": [
+        0.40894847308339866,
+        0.042492198536074194,
+        0.36279320103065665
+      ],
+      "ankleL_xyz_m": [
+        0.44999999999999996,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.35999999999999993
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 95,
+      "handClip": {
+        "left": 0.83,
+        "right": 0.83,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774338109877077,
+        0.04233606865546702,
+        -0.40873637005390717
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484727228588,
+        0.04249219507711654,
+        0.36279320057628733
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.32999999999999996
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 96,
+      "handClip": {
+        "left": 0.97,
+        "right": 0.83,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774338062755187,
+        0.042336068730118546,
+        -0.40873636932817503
+      ],
+      "footR_cen_xyz_m": [
+        0.40894847237228144,
+        0.0424921917186527,
+        0.36279320013081373
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 97,
+      "handClip": {
+        "left": 0.93,
+        "right": 0.83,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433801722443,
+        0.04233606880272429,
+        -0.4087363686264152
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484720328931,
+        0.04249218847197055,
+        0.36279319969613294
+      ],
+      "ankleL_xyz_m": [
+        0.45000000000000007,
+        0.085,
+        -0.33000000000000007
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 98,
+      "handClip": {
+        "left": 0.89,
+        "right": 0.83,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433797343531,
+        0.04233606887299337,
+        -0.40873636795100476
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484717058849,
+        0.04249218534797354,
+        0.3627931992741321
+      ],
+      "ankleL_xyz_m": [
+        0.44999999999999996,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 99,
+      "handClip": {
+        "left": 0.87,
+        "right": 0.83,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433793153224,
+        0.042336068940640716,
+        -0.4087363673042313
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484713924079,
+        0.04249218235714485,
+        0.3627931988666767
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.08499999999999999,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 100,
+      "handClip": {
+        "left": 0.86,
+        "right": 0.83,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774337891653115,
+        0.04233606900538862,
+        -0.40873636668828506
+      ],
+      "footR_cen_xyz_m": [
+        0.40894847109356885,
+        0.04249217950951322,
+        0.3627931984755979
+      ],
+      "ankleL_xyz_m": [
+        0.44999999999999996,
+        0.085,
+        -0.32999999999999996
+      ],
+      "ankleR_xyz_m": [
+        0.33000000000000007,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 101,
+      "handClip": {
+        "left": 0.86,
+        "right": 0.83,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774337853928886,
+        0.04233606906696834,
+        -0.40873636610525205
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484708104257,
+        0.042492176814620204,
+        0.3627931981026805
+      ],
+      "ankleL_xyz_m": [
+        0.45000000000000007,
+        0.085,
+        -0.33000000000000007
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 102,
+      "handClip": {
+        "left": 0.86,
+        "right": 0.83,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774337818483156,
+        0.042336069125121695,
+        -0.4087363655571057
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484705439831,
+        0.042492174281489235,
+        0.3627931977496511
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36000000000000004
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 103,
+      "handClip": {
+        "left": 0.89,
+        "right": 0.83,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433778543188,
+        0.042336069179602566,
+        -0.4087363650457017
+      ],
+      "footR_cen_xyz_m": [
+        0.408948470295189,
+        0.042492171918596486,
+        0.36279319741816496
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.08500000000000002,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36000000000000004
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 104,
+      "handClip": {
+        "left": 0.93,
+        "right": 0.83,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433775488294,
+        0.042336069230178366,
+        -0.4087363645727708
+      ],
+      "footR_cen_xyz_m": [
+        0.40894847006493046,
+        0.042492169733843455,
+        0.3627931971097952
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.32999999999999996
+      ],
+      "ankleR_xyz_m": [
+        0.32999999999999996,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 105,
+      "handClip": {
+        "left": 0.89,
+        "right": 0.83,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774337726935914,
+        0.04233606927663154,
+        -0.4087363641399136
+      ],
+      "footR_cen_xyz_m": [
+        0.40894846985403005,
+        0.04249216773453166,
+        0.3627931968260211
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.08500000000000002,
+        -0.32999999999999996
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 106,
+      "handClip": {
+        "left": 0.85,
+        "right": 0.83,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774337701681743,
+        0.0423360693187608,
+        -0.4087363637485947
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484696632427,
+        0.04249216592733921,
+        0.36279319656821696
+      ],
+      "ankleL_xyz_m": [
+        0.45000000000000007,
+        0.085,
+        -0.33000000000000007
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.35999999999999993
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 107,
+      "handClip": {
+        "left": 0.93,
+        "right": 0.84,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433767920247,
+        0.04233606935638247,
+        -0.40873636340013775
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484694932523,
+        0.04249216431829945,
+        0.3627931963376423
+      ],
+      "ankleL_xyz_m": [
+        0.45000000000000007,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 108,
+      "handClip": {
+        "left": 0.95,
+        "right": 0.85,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433765957104,
+        0.042336069389331606,
+        -0.4087363630957215
+      ],
+      "footR_cen_xyz_m": [
+        0.40894846934466933,
+        0.04249216291278176,
+        0.3627931961354319
+      ],
+      "ankleL_xyz_m": [
+        0.44999999999999996,
+        0.08500000000000002,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 109,
+      "handClip": {
+        "left": 0.87,
+        "right": 0.85,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774337642851103,
+        0.04233606941746301,
+        -0.4087363628363755
+      ],
+      "footR_cen_xyz_m": [
+        0.40894846921802785,
+        0.042492161715474513,
+        0.36279319596258774
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33000000000000007
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36000000000000004
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 110,
+      "handClip": {
+        "left": 0.8,
+        "right": 0.84,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774337629096805,
+        0.042336069440652255,
+        -0.40873636262297697
+      ],
+      "footR_cen_xyz_m": [
+        0.40894846911378374,
+        0.04249216073037013,
+        0.3627931958199711
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36000000000000004
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 111,
+      "handClip": {
+        "left": 0.94,
+        "right": 0.85,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433761835262,
+        0.04233606945879638,
+        -0.40873636245624745
+      ],
+      "footR_cen_xyz_m": [
+        0.40894846903231247,
+        0.04249215996075249,
+        0.3627931957082959
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 112,
+      "handClip": {
+        "left": 0.91,
+        "right": 0.85,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774337610653314,
+        0.04233606947181463,
+        -0.40873636233675054
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484689739079,
+        0.042492159409186554,
+        0.36279319562812334
+      ],
+      "ankleL_xyz_m": [
+        0.44999999999999996,
+        0.08500000000000002,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.32999999999999996,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 113,
+      "handClip": {
+        "left": 0.88,
+        "right": 0.84,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433760602377,
+        0.042336069479648894,
+        -0.40873636226489046
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484689387806,
+        0.042492159077510194,
+        0.36279319557985734
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 114,
+      "handClip": {
+        "left": 0.88,
+        "right": 0.84,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774337604478914,
+        0.04233606948226422,
+        -0.4087363622409101
+      ],
+      "footR_cen_xyz_m": [
+        0.40894846892705744,
+        0.042492158966828494,
+        0.36279319556374146
+      ],
+      "ankleL_xyz_m": [
+        0.44999999999999996,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 115,
+      "handClip": {
+        "left": 0.88,
+        "right": 0.84,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433760602377,
+        0.042336069479648894,
+        -0.40873636226489046
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484689387806,
+        0.042492159077510194,
+        0.36279319557985734
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 116,
+      "handClip": {
+        "left": 0.91,
+        "right": 0.85,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774337610653314,
+        0.04233606947181463,
+        -0.40873636233675054
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484689739079,
+        0.042492159409186554,
+        0.36279319562812334
+      ],
+      "ankleL_xyz_m": [
+        0.44999999999999996,
+        0.08500000000000002,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.32999999999999996,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 117,
+      "handClip": {
+        "left": 0.94,
+        "right": 0.85,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433761835262,
+        0.04233606945879638,
+        -0.40873636245624745
+      ],
+      "footR_cen_xyz_m": [
+        0.40894846903231247,
+        0.04249215996075249,
+        0.3627931957082959
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 118,
+      "handClip": {
+        "left": 0.8,
+        "right": 0.84,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774337629096805,
+        0.042336069440652255,
+        -0.40873636262297697
+      ],
+      "footR_cen_xyz_m": [
+        0.40894846911378374,
+        0.04249216073037013,
+        0.3627931958199711
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36000000000000004
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 119,
+      "handClip": {
+        "left": 0.87,
+        "right": 0.85,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774337642851103,
+        0.04233606941746301,
+        -0.4087363628363755
+      ],
+      "footR_cen_xyz_m": [
+        0.40894846921802785,
+        0.042492161715474513,
+        0.36279319596258774
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33000000000000007
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36000000000000004
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 120,
+      "handClip": {
+        "left": 0.95,
+        "right": 0.85,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433765957104,
+        0.042336069389331606,
+        -0.4087363630957215
+      ],
+      "footR_cen_xyz_m": [
+        0.40894846934466933,
+        0.04249216291278176,
+        0.3627931961354319
+      ],
+      "ankleL_xyz_m": [
+        0.44999999999999996,
+        0.08500000000000002,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 121,
+      "handClip": {
+        "left": 0.93,
+        "right": 0.84,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433767920247,
+        0.04233606935638247,
+        -0.40873636340013775
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484694932523,
+        0.04249216431829945,
+        0.3627931963376423
+      ],
+      "ankleL_xyz_m": [
+        0.45000000000000007,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 122,
+      "handClip": {
+        "left": 0.85,
+        "right": 0.83,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774337701681743,
+        0.0423360693187608,
+        -0.4087363637485947
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484696632427,
+        0.04249216592733921,
+        0.36279319656821696
+      ],
+      "ankleL_xyz_m": [
+        0.45000000000000007,
+        0.085,
+        -0.33000000000000007
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.35999999999999993
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 123,
+      "handClip": {
+        "left": 0.89,
+        "right": 0.83,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774337726935914,
+        0.04233606927663154,
+        -0.4087363641399136
+      ],
+      "footR_cen_xyz_m": [
+        0.40894846985403005,
+        0.04249216773453166,
+        0.3627931968260211
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.08500000000000002,
+        -0.32999999999999996
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 124,
+      "handClip": {
+        "left": 0.93,
+        "right": 0.83,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433775488294,
+        0.042336069230178366,
+        -0.4087363645727708
+      ],
+      "footR_cen_xyz_m": [
+        0.40894847006493046,
+        0.042492169733843455,
+        0.3627931971097952
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.32999999999999996
+      ],
+      "ankleR_xyz_m": [
+        0.32999999999999996,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 125,
+      "handClip": {
+        "left": 0.89,
+        "right": 0.83,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433778543188,
+        0.042336069179602566,
+        -0.4087363650457017
+      ],
+      "footR_cen_xyz_m": [
+        0.408948470295189,
+        0.042492171918596486,
+        0.36279319741816496
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.08500000000000002,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36000000000000004
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 126,
+      "handClip": {
+        "left": 0.86,
+        "right": 0.83,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774337818483156,
+        0.042336069125121695,
+        -0.4087363655571057
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484705439831,
+        0.042492174281489235,
+        0.3627931977496511
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36000000000000004
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 127,
+      "handClip": {
+        "left": 0.86,
+        "right": 0.83,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774337853928886,
+        0.04233606906696834,
+        -0.40873636610525205
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484708104257,
+        0.042492176814620204,
+        0.3627931981026805
+      ],
+      "ankleL_xyz_m": [
+        0.45000000000000007,
+        0.085,
+        -0.33000000000000007
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 128,
+      "handClip": {
+        "left": 0.86,
+        "right": 0.83,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774337891653115,
+        0.04233606900538862,
+        -0.40873636668828506
+      ],
+      "footR_cen_xyz_m": [
+        0.40894847109356885,
+        0.04249217950951322,
+        0.3627931984755979
+      ],
+      "ankleL_xyz_m": [
+        0.44999999999999996,
+        0.085,
+        -0.32999999999999996
+      ],
+      "ankleR_xyz_m": [
+        0.33000000000000007,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 129,
+      "handClip": {
+        "left": 0.87,
+        "right": 0.83,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433793153224,
+        0.042336068940640716,
+        -0.4087363673042313
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484713924079,
+        0.04249218235714485,
+        0.3627931988666767
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.08499999999999999,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 130,
+      "handClip": {
+        "left": 0.89,
+        "right": 0.83,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433797343531,
+        0.04233606887299337,
+        -0.40873636795100476
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484717058849,
+        0.04249218534797354,
+        0.3627931992741321
+      ],
+      "ankleL_xyz_m": [
+        0.44999999999999996,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 131,
+      "handClip": {
+        "left": 0.93,
+        "right": 0.83,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433801722443,
+        0.04233606880272429,
+        -0.4087363686264152
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484720328931,
+        0.04249218847197055,
+        0.36279319969613294
+      ],
+      "ankleL_xyz_m": [
+        0.45000000000000007,
+        0.085,
+        -0.33000000000000007
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 132,
+      "handClip": {
+        "left": 0.97,
+        "right": 0.83,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774338062755187,
+        0.042336068730118546,
+        -0.40873636932817503
+      ],
+      "footR_cen_xyz_m": [
+        0.40894847237228144,
+        0.0424921917186527,
+        0.36279320013081373
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 133,
+      "handClip": {
+        "left": 0.83,
+        "right": 0.83,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774338109877077,
+        0.04233606865546702,
+        -0.40873637005390717
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484727228588,
+        0.04249219507711654,
+        0.36279320057628733
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.32999999999999996
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 134,
+      "handClip": {
+        "left": 0.88,
+        "right": 0.83,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774338158433974,
+        0.042336068579064745,
+        -0.4087363708011533
+      ],
+      "footR_cen_xyz_m": [
+        0.40894847308339866,
+        0.042492198536074194,
+        0.36279320103065665
+      ],
+      "ankleL_xyz_m": [
+        0.44999999999999996,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.35999999999999993
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 135,
+      "handClip": {
+        "left": 0.95,
+        "right": 0.83,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.447743382082646,
+        0.042336068501209405,
+        -0.4087363715673816
+      ],
+      "footR_cen_xyz_m": [
+        0.40894847345264396,
+        0.042492202083890526,
+        0.3627932014920266
+      ],
+      "ankleL_xyz_m": [
+        0.44999999999999996,
+        0.085,
+        -0.32999999999999996
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.35999999999999993
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 136,
+      "handClip": {
+        "left": 0.83,
+        "right": 0.83,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774338259203045,
+        0.04233606842219973,
+        -0.4087363723499962
+      ],
+      "footR_cen_xyz_m": [
+        0.40894847382931176,
+        0.042492205708621555,
+        0.3627932019585152
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.08500000000000002,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36000000000000004
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 137,
+      "handClip": {
+        "left": 0.9,
+        "right": 0.83,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774338311079276,
+        0.042336068342334,
+        -0.4087363731463454
+      ],
+      "footR_cen_xyz_m": [
+        0.40894847421209785,
+        0.04249220939805411,
+        0.36279320242826407
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33000000000000007
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 138,
+      "handClip": {
+        "left": 0.93,
+        "right": 0.83,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.447743383637197,
+        0.04233606826190869,
+        -0.40873637395373086
+      ],
+      "footR_cen_xyz_m": [
+        0.408948474599682,
+        0.042492213139746514,
+        0.3627932028994491
+      ],
+      "ankleL_xyz_m": [
+        0.45000000000000007,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 139,
+      "handClip": {
+        "left": 0.8,
+        "right": 0.83,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433841694771,
+        0.04233606818121698,
+        -0.40873637476941727
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484749907322,
+        0.04249221692107017,
+        0.36279320337028925
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 140,
+      "handClip": {
+        "left": 0.85,
+        "right": 0.84,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433847058428,
+        0.042336068100547575,
+        -0.4087363755906409
+      ],
+      "footR_cen_xyz_m": [
+        0.40894847538391027,
+        0.04249222072925191,
+        0.3627932038390555
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 141,
+      "handClip": {
+        "left": 0.91,
+        "right": 0.84,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433852444855,
+        0.04233606802018338,
+        -0.4087363764146198
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484757778758,
+        0.04249222455141702,
+        0.3627932043040783
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.35999999999999993
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 142,
+      "handClip": {
+        "left": 0.88,
+        "right": 0.84,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433857835841,
+        0.04233606794040049,
+        -0.4087363772385627
+      ],
+      "footR_cen_xyz_m": [
+        0.40894847617129143,
+        0.04249222837463272,
+        0.3627932047637549
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33000000000000007,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 143,
+      "handClip": {
+        "left": 0.96,
+        "right": 0.84,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433863213114,
+        0.04233606786146711,
+        -0.40873637805967905
+      ],
+      "footR_cen_xyz_m": [
+        0.40894847656282696,
+        0.04249223218595203,
+        0.3627932052165543
+      ],
+      "ankleL_xyz_m": [
+        0.44999999999999996,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.35999999999999993
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 144,
+      "handClip": {
+        "left": 0.85,
+        "right": 0.83,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433868558405,
+        0.04233606778364271,
+        -0.40873637887518816
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484769511645,
+        0.04249223597245779,
+        0.3627932056610231
+      ],
+      "ankleL_xyz_m": [
+        0.45000000000000007,
+        0.085,
+        -0.33000000000000007
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 145,
+      "handClip": {
+        "left": 0.93,
+        "right": 0.83,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433873853504,
+        0.042336067707177176,
+        -0.40873637968232895
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484773350023,
+        0.04249223972130673,
+        0.3627932060957889
+      ],
+      "ankleL_xyz_m": [
+        0.44999999999999996,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 146,
+      "handClip": {
+        "left": 0.82,
+        "right": 0.83,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774338790803336,
+        0.04233606763231016,
+        -0.40873638047836897
+      ],
+      "footR_cen_xyz_m": [
+        0.40894847771305914,
+        0.042492243419773444,
+        0.3627932065195632
+      ],
+      "ankleL_xyz_m": [
+        0.44999999999999996,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.32999999999999996,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 147,
+      "handClip": {
+        "left": 0.88,
+        "right": 0.87,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433884221003,
+        0.0423360675592705,
+        -0.40873638126061446
+      ],
+      "footR_cen_xyz_m": [
+        0.40894847808407864,
+        0.04249224705529405,
+        0.3627932069311434
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.35999999999999993
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 148,
+      "handClip": {
+        "left": 0.82,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433889257877,
+        0.04233606748827578,
+        -0.4087363820264186
+      ],
+      "footR_cen_xyz_m": [
+        0.40894847844683324,
+        0.04249225061550942,
+        0.362793207329414
+      ],
+      "ankleL_xyz_m": [
+        0.44999999999999996,
+        0.08500000000000002,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 149,
+      "handClip": {
+        "left": 0.9,
+        "right": 0.88,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433894173636,
+        0.042336067419531914,
+        -0.4087363827731912
+      ],
+      "footR_cen_xyz_m": [
+        0.40894847880012763,
+        0.042492254088307896,
+        0.3627932077133461
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 150,
+      "handClip": {
+        "left": 0.82,
+        "right": 0.9,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.447743389895134,
+        0.042336067353233024,
+        -0.4087363834984069
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484791428027,
+        0.04249225746186709,
+        0.36279320808199705
+      ],
+      "ankleL_xyz_m": [
+        0.44999999999999996,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.35999999999999993
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 151,
+      "handClip": {
+        "left": 0.83,
+        "right": 0.9,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774339035744914,
+        0.04233606728956119,
+        -0.4087363841996142
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484794737388,
+        0.042492260724694954,
+        0.36279320843450885
+      ],
+      "ankleL_xyz_m": [
+        0.44999999999999996,
+        0.085,
+        -0.32999999999999996
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 152,
+      "handClip": {
+        "left": 0.87,
+        "right": 0.88,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774339080270914,
+        0.04233606722868647,
+        -0.4087363848744437
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484797918593,
+        0.04249226386566969,
+        0.36279320877010535
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.08499999999999999,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 153,
+      "handClip": {
+        "left": 0.89,
+        "right": 0.89,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774339122937024,
+        0.04233606717076689,
+        -0.4087363855206154
+      ],
+      "footR_cen_xyz_m": [
+        0.40894848009613305,
+        0.04249226687407846,
+        0.3627932090880897
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.35999999999999993
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 154,
+      "handClip": {
+        "left": 0.91,
+        "right": 0.86,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433916359504,
+        0.04233606711594861,
+        -0.4087363861359472
+      ],
+      "footR_cen_xyz_m": [
+        0.40894848038557813,
+        0.042492269739654816,
+        0.3627932093878407
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 155,
+      "handClip": {
+        "left": 0.81,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433920210348,
+        0.04233606706436607,
+        -0.40873638671836193
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484806592634,
+        0.042492272452614485,
+        0.3627932096688084
+      ],
+      "ankleL_xyz_m": [
+        0.45000000000000007,
+        0.085,
+        -0.33000000000000007
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 156,
+      "handClip": {
+        "left": 0.83,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.447743392383281,
+        0.04233606701614227,
+        -0.40873638726589395
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484809163121,
+        0.04249227500368972,
+        0.36279320993050984
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33000000000000007
+      ],
+      "ankleR_xyz_m": [
+        0.32999999999999996,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 157,
+      "handClip": {
+        "left": 0.85,
+        "right": 0.94,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433927214246,
+        0.04233606697138906,
+        -0.40873638777669585
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484811559033,
+        0.042492277384161704,
+        0.3627932101725247
+      ],
+      "ankleL_xyz_m": [
+        0.44999999999999996,
+        0.085,
+        -0.32999999999999996
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 158,
+      "handClip": {
+        "left": 0.86,
+        "right": 0.94,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433930342833,
+        0.04233606693020745,
+        -0.40873638824904546
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484813772745,
+        0.04249227958589121,
+        0.3627932103944897
+      ],
+      "ankleL_xyz_m": [
+        0.44999999999999996,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 159,
+      "handClip": {
+        "left": 0.87,
+        "right": 0.94,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433933207618,
+        0.042336066892687985,
+        -0.40873638868134976
+      ],
+      "footR_cen_xyz_m": [
+        0.40894848157972324,
+        0.04249228160134718,
+        0.3627932105960944
+      ],
+      "ankleL_xyz_m": [
+        0.45000000000000007,
+        0.085,
+        -0.33000000000000007
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 160,
+      "handClip": {
+        "left": 0.88,
+        "right": 0.94,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774339357985576,
+        0.04233606685891113,
+        -0.4087363890721518
+      ],
+      "footR_cen_xyz_m": [
+        0.40894848176260895,
+        0.04249228342363322,
+        0.3627932107770754
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 161,
+      "handClip": {
+        "left": 0.89,
+        "right": 0.8,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774339381065625,
+        0.04233606682894762,
+        -0.40873638942013474
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484819253545,
+        0.042492285046511896,
+        0.3627932109372124
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 162,
+      "handClip": {
+        "left": 0.9,
+        "right": 0.8,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433940123524,
+        0.04233606680285885,
+        -0.4087363897241263
+      ],
+      "footR_cen_xyz_m": [
+        0.40894848206744744,
+        0.0424922864644267,
+        0.3627932110763228
+      ],
+      "ankleL_xyz_m": [
+        0.44999999999999996,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 163,
+      "handClip": {
+        "left": 0.9,
+        "right": 0.8,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774339418423514,
+        0.042336066780697214,
+        -0.40873638998310263
+      ],
+      "footR_cen_xyz_m": [
+        0.40894848218844126,
+        0.04249228767252169,
+        0.36279321119425817
+      ],
+      "ankleL_xyz_m": [
+        0.45000000000000007,
+        0.085,
+        -0.33000000000000007
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 164,
+      "handClip": {
+        "left": 0.91,
+        "right": 0.87,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433943256995,
+        0.04233606676250645,
+        -0.40873639019619173
+      ],
+      "footR_cen_xyz_m": [
+        0.40894848228795677,
+        0.042492288666658565,
+        0.36279321129089975
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36000000000000004
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 165,
+      "handClip": {
+        "left": 0.92,
+        "right": 0.88,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774339443624767,
+        0.04233606674832191,
+        -0.4087363903626762
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484823656821,
+        0.04249228944343133,
+        0.3627932113661552
+      ],
+      "ankleL_xyz_m": [
+        0.45000000000000007,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.32999999999999996,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 166,
+      "handClip": {
+        "left": 0.93,
+        "right": 0.87,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774339451549,
+        0.04233606673817082,
+        -0.40873639048199556
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484824213744,
+        0.042492290000178325,
+        0.36279321141995613
+      ],
+      "ankleL_xyz_m": [
+        0.45000000000000007,
+        0.085,
+        -0.33000000000000007
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 167,
+      "handClip": {
+        "left": 0.93,
+        "right": 0.87,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433945631474,
+        0.0423360667320725,
+        -0.4087363905537481
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484824548594,
+        0.042492290334991585,
+        0.36279321145225524
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 168,
+      "handClip": {
+        "left": 0.93,
+        "right": 0.87,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433945790519,
+        0.042336066730038445,
+        -0.40873639057769257
+      ],
+      "footR_cen_xyz_m": [
+        0.40894848246603266,
+        0.04249229044672366,
+        0.36279321146302457
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 169,
+      "handClip": {
+        "left": 0.93,
+        "right": 0.88,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433947280256,
+        0.04233606671101302,
+        -0.4087363908019431
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484825706539,
+        0.042492291493203424,
+        0.3627932115636651
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.32999999999999996
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 170,
+      "handClip": {
+        "left": 0.8,
+        "right": 0.88,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774339517431105,
+        0.042336066654310806,
+        -0.40873639147340207
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484828836756,
+        0.04249229462721639,
+        0.36279321186263025
+      ],
+      "ankleL_xyz_m": [
+        0.45000000000000007,
+        0.085,
+        -0.32999999999999996
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 171,
+      "handClip": {
+        "left": 0.83,
+        "right": 0.89,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774339591599793,
+        0.042336066561047325,
+        -0.4087363925881957
+      ],
+      "footR_cen_xyz_m": [
+        0.40894848340258033,
+        0.042492299832498075,
+        0.36279321235111806
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.32999999999999996
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.35999999999999993
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 172,
+      "handClip": {
+        "left": 0.87,
+        "right": 0.84,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433969498983,
+        0.04233606643305978,
+        -0.40873639413988294
+      ],
+      "footR_cen_xyz_m": [
+        0.40894848412320095,
+        0.04249230708199014,
+        0.36279321301468065
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 173,
+      "handClip": {
+        "left": 0.93,
+        "right": 0.92,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433982715379,
+        0.04233606627287423,
+        -0.40873639611948
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484850397631,
+        0.042492316337916,
+        0.3627932138335528
+      ],
+      "ankleL_xyz_m": [
+        0.45000000000000007,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36000000000000004
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 174,
+      "handClip": {
+        "left": 0.84,
+        "right": 0.88,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477433998751474,
+        0.0423360660836601,
+        -0.40873639851549465
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484861449443,
+        0.042492327551890474,
+        0.3627932147831028
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 175,
+      "handClip": {
+        "left": 0.92,
+        "right": 0.9,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774340175365285,
+        0.042336065869172594,
+        -0.4087364013139745
+      ],
+      "footR_cen_xyz_m": [
+        0.40894848742995005,
+        0.042492340665066845,
+        0.3627932158343956
+      ],
+      "ankleL_xyz_m": [
+        0.44999999999999996,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 176,
+      "handClip": {
+        "left": 0.81,
+        "right": 0.92,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477434038986669,
+        0.04233606563368352,
+        -0.4087364044985668
+      ],
+      "footR_cen_xyz_m": [
+        0.40894848888460567,
+        0.042492355608325726,
+        0.3627932169548573
+      ],
+      "ankleL_xyz_m": [
+        0.45000000000000007,
+        0.085,
+        -0.33000000000000007
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 177,
+      "handClip": {
+        "left": 0.86,
+        "right": 0.8,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774340630048115,
+        0.04233606538190154,
+        -0.4087364080505948
+      ],
+      "footR_cen_xyz_m": [
+        0.4089484904974633,
+        0.042492372302510024,
+        0.3627932181090275
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 178,
+      "handClip": {
+        "left": 0.83,
+        "right": 0.93,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774340894806475,
+        0.04233606511888275,
+        -0.40873641194915045
+      ],
+      "footR_cen_xyz_m": [
+        0.40894849225592456,
+        0.042492390658711014,
+        0.36279321925938335
+      ],
+      "ankleL_xyz_m": [
+        0.44999999999999996,
+        0.085,
+        -0.32999999999999996
+      ],
+      "ankleR_xyz_m": [
+        0.33000000000000007,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 179,
+      "handClip": {
+        "left": 0.95,
+        "right": 0.93,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774341182906646,
+        0.04233606484993307,
+        -0.40873641617120543
+      ],
+      "footR_cen_xyz_m": [
+        0.40894849414637563,
+        0.04249241057860994,
+        0.36279322036721784
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.35999999999999993
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 180,
+      "handClip": {
+        "left": 0.95,
+        "right": 0.95,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477434149298249,
+        0.04233606458050367,
+        -0.40873642069173927
+      ],
+      "footR_cen_xyz_m": [
+        0.40894849615433493,
+        0.04249243195487943,
+        0.36279322139355497
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.32999999999999996
+      ],
+      "ankleR_xyz_m": [
+        0.32999999999999996,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 181,
+      "handClip": {
+        "left": 0.85,
+        "right": 0.9,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774341823538794,
+        0.042336064316081536,
+        -0.4087364254838904
+      ],
+      "footR_cen_xyz_m": [
+        0.40894849826461144,
+        0.042492454671648305,
+        0.36279322230008004
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 182,
+      "handClip": {
+        "left": 0.94,
+        "right": 0.85,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774342172954174,
+        0.042336064062076746,
+        -0.4087364305191236
+      ],
+      "footR_cen_xyz_m": [
+        0.40894850046147113,
+        0.0424924786050322,
+        0.3627932230500681
+      ],
+      "ankleL_xyz_m": [
+        0.45000000000000007,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 183,
+      "handClip": {
+        "left": 0.92,
+        "right": 0.81,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.447743425394851,
+        0.04233606382370888,
+        -0.40873643576741875
+      ],
+      "footR_cen_xyz_m": [
+        0.40894850272880906,
+        0.042492503623731595,
+        0.3627932236092866
+      ],
+      "ankleL_xyz_m": [
+        0.45000000000000007,
+        0.085,
+        -0.32999999999999996
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 184,
+      "handClip": {
+        "left": 0.94,
+        "right": 0.86,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774342921271226,
+        0.042336063605894717,
+        -0.40873644119747754
+      ],
+      "footR_cen_xyz_m": [
+        0.4089485050503255,
+        0.04249252958969714,
+        0.362793223946855
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 185,
+      "handClip": {
+        "left": 0.94,
+        "right": 0.85,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774343316341886,
+        0.04233606341313969,
+        -0.40873644677694443
+      ],
+      "footR_cen_xyz_m": [
+        0.4089485074097016,
+        0.04249255635886094,
+        0.36279322403604025
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36000000000000004
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 186,
+      "handClip": {
+        "left": 0.94,
+        "right": 0.87,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477434372262395,
+        0.04233606324943553,
+        -0.4087364524726442
+      ],
+      "footR_cen_xyz_m": [
+        0.4089485097907732,
+        0.04249258378193075,
+        0.36279322385497037
+      ],
+      "ankleL_xyz_m": [
+        0.44999999999999996,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.32999999999999996,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 187,
+      "handClip": {
+        "left": 0.88,
+        "right": 0.83,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477434413795086,
+        0.04233606311816664,
+        -0.40873645825082805
+      ],
+      "footR_cen_xyz_m": [
+        0.40894851217769684,
+        0.04249261170524235,
+        0.3627932233872485
+      ],
+      "ankleL_xyz_m": [
+        0.44999999999999996,
+        0.085,
+        -0.32999999999999996
+      ],
+      "ankleR_xyz_m": [
+        0.33000000000000007,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 188,
+      "handClip": {
+        "left": 0.88,
+        "right": 0.85,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774344560073104,
+        0.042336063022027526,
+        -0.40873646407742825
+      ],
+      "footR_cen_xyz_m": [
+        0.4089485145551087,
+        0.04249263997166403,
+        0.3627932226224533
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 189,
+      "handClip": {
+        "left": 0.83,
+        "right": 0.81,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774344986669623,
+        0.0423360629629536,
+        -0.4087364699183131
+      ],
+      "footR_cen_xyz_m": [
+        0.4089485169082688,
+        0.04249266842154539,
+        0.36279322155651106
+      ],
+      "ankleL_xyz_m": [
+        0.44999999999999996,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 190,
+      "handClip": {
+        "left": 0.84,
+        "right": 0.93,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774345415360534,
+        0.042336062942067404,
+        -0.40873647573954425
+      ],
+      "footR_cen_xyz_m": [
+        0.4089485192231912,
+        0.04249269689370142,
+        0.3627932201919314
+      ],
+      "ankleL_xyz_m": [
+        0.44999999999999996,
+        0.085,
+        -0.32999999999999996
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36000000000000004
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 191,
+      "handClip": {
+        "left": 0.93,
+        "right": 0.85,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477434584372067,
+        0.042336062959642075,
+        -0.40873648150762504
+      ],
+      "footR_cen_xyz_m": [
+        0.4089485214867553,
+        0.042492725226421835,
+        0.36279321853789737
+      ],
+      "ankleL_xyz_m": [
+        0.44999999999999996,
+        0.085,
+        -0.32999999999999996
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 192,
+      "handClip": {
+        "left": 0.93,
+        "right": 0.8,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774346269294113,
+        0.04233606301508345,
+        -0.40873648718974037
+      ],
+      "footR_cen_xyz_m": [
+        0.4089485236867973,
+        0.04249275325849456,
+        0.36279321661020636
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 193,
+      "handClip": {
+        "left": 0.93,
+        "right": 0.86,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774346689609434,
+        0.04233606310693189,
+        -0.40873649275398155
+      ],
+      "footR_cen_xyz_m": [
+        0.40894852581217883,
+        0.0424927808302319,
+        0.362793214431061
+      ],
+      "ankleL_xyz_m": [
+        0.45000000000000007,
+        0.085,
+        -0.32999999999999996
+      ],
+      "ankleR_xyz_m": [
+        0.32999999999999996,
+        0.085,
+        0.35999999999999993
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 194,
+      "handClip": {
+        "left": 0.92,
+        "right": 0.89,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774347102195505,
+        0.04233606323288453,
+        -0.4087364981695541
+      ],
+      "footR_cen_xyz_m": [
+        0.40894852785283403,
+        0.04249280778448774,
+        0.3627932120287124
+      ],
+      "ankleL_xyz_m": [
+        0.45000000000000007,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33000000000000007,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 195,
+      "handClip": {
+        "left": 0.86,
+        "right": 0.8,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774347504597944,
+        0.04233606338983792,
+        -0.40873650340696305
+      ],
+      "footR_cen_xyz_m": [
+        0.40894852979979174,
+        0.04249283396765411,
+        0.36279320943696153
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 196,
+      "handClip": {
+        "left": 0.82,
+        "right": 0.82,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477434789439583,
+        0.04233606357395078,
+        -0.4087365084381765
+      ],
+      "footR_cen_xyz_m": [
+        0.40894853164517553,
+        0.0424928592306261,
+        0.3627932066945285
+      ],
+      "ankleL_xyz_m": [
+        0.44999999999999996,
+        0.085,
+        -0.32999999999999996
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 197,
+      "handClip": {
+        "left": 0.81,
+        "right": 0.9,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477434826921862,
+        0.042336063780726005,
+        -0.4087365132367637
+      ],
+      "footR_cen_xyz_m": [
+        0.4089485333821818,
+        0.04249288342972509,
+        0.362793203844303
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.32999999999999996
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 198,
+      "handClip": {
+        "left": 0.93,
+        "right": 0.95,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477434862676332,
+        0.04233606400511025,
+        -0.4087365177780061
+      ],
+      "footR_cen_xyz_m": [
+        0.4089485350050375,
+        0.04249290642757105,
+        0.36279320093249
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 199,
+      "handClip": {
+        "left": 0.93,
+        "right": 0.93,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477434896481148,
+        0.042336064241609364,
+        -0.4087365220389844
+      ],
+      "footR_cen_xyz_m": [
+        0.4089485365089393,
+        0.04249292809389664,
+        0.3627931980076709
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 200,
+      "handClip": {
+        "left": 0.94,
+        "right": 0.89,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477434928124606,
+        0.04233606448441696,
+        -0.40873652599864035
+      ],
+      "footR_cen_xyz_m": [
+        0.40894853788997854,
+        0.04249294830629698,
+        0.3627931951198007
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 201,
+      "handClip": {
+        "left": 0.81,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477434957406802,
+        0.04233606472755321,
+        -0.4087365296378153
+      ],
+      "footR_cen_xyz_m": [
+        0.4089485391450534,
+        0.042492966950911114,
+        0.3627931923191622
+      ],
+      "ankleL_xyz_m": [
+        0.44999999999999996,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.32999999999999996,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 202,
+      "handClip": {
+        "left": 0.91,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477434984141232,
+        0.04233606496501052,
+        -0.4087365329392686
+      ],
+      "footR_cen_xyz_m": [
+        0.40894854027177274,
+        0.042492983923032586,
+        0.36279318965530344
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 203,
+      "handClip": {
+        "left": 0.95,
+        "right": 0.92,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477435008156329,
+        0.042336065190902314,
+        -0.4087365358876783
+      ],
+      "footR_cen_xyz_m": [
+        0.4089485412683549,
+        0.04249299912764867,
+        0.3627931871759807
+      ],
+      "ankleL_xyz_m": [
+        0.45000000000000007,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.32999999999999996,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 204,
+      "handClip": {
+        "left": 0.82,
+        "right": 0.9,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477435029296909,
+        0.04233606539961094,
+        -0.40873653846962815
+      ],
+      "footR_cen_xyz_m": [
+        0.4089485421335258,
+        0.04249301247990903,
+        0.36279318492613283
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.32999999999999996,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 205,
+      "handClip": {
+        "left": 0.93,
+        "right": 0.89,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774350474255215,
+        0.04233606558593075,
+        -0.4087365406735843
+      ],
+      "footR_cen_xyz_m": [
+        0.4089485428664185,
+        0.04249302390552599,
+        0.3627931829469107
+      ],
+      "ankleL_xyz_m": [
+        0.45000000000000007,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 206,
+      "handClip": {
+        "left": 0.8,
+        "right": 0.93,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477435062423651,
+        0.04233606574520214,
+        -0.40873654248986474
+      ],
+      "footR_cen_xyz_m": [
+        0.40894854346647924,
+        0.04249303334110975,
+        0.3627931812747841
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 207,
+      "handClip": {
+        "left": 0.8,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477435074192802,
+        0.04233606587343279,
+        -0.40873654391060676
+      ],
+      "footR_cen_xyz_m": [
+        0.4089485439333817,
+        0.04249304073444222,
+        0.3627931799407464
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 208,
+      "handClip": {
+        "left": 0.85,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774350826553916,
+        0.04233606596740232,
+        -0.4087365449297349
+      ],
+      "footR_cen_xyz_m": [
+        0.40894854426695315,
+        0.042493046044693804,
+        0.36279317896963825
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.32999999999999996,
+        0.085,
+        0.35999999999999993
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 209,
+      "handClip": {
+        "left": 0.85,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.4477435087755472,
+        0.04233606602474735,
+        -0.408736545542932
+      ],
+      "footR_cen_xyz_m": [
+        0.4089485444671149,
+        0.042493049242587094,
+        0.36279317837960273
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.32999999999999996,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 210,
+      "handClip": {
+        "left": 0.84,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774350894592646,
+        0.042336066044024206,
+        -0.40873654574761714
+      ],
+      "footR_cen_xyz_m": [
+        0.40894854453383783,
+        0.0424930503105108,
+        0.36279317818168766
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 211,
+      "handClip": {
+        "left": 0.84,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774350894592646,
+        0.042336066044024206,
+        -0.40873654574761714
+      ],
+      "footR_cen_xyz_m": [
+        0.40894854453383783,
+        0.0424930503105108,
+        0.36279317818168766
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 212,
+      "handClip": {
+        "left": 0.84,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774350894592646,
+        0.042336066044024206,
+        -0.40873654574761714
+      ],
+      "footR_cen_xyz_m": [
+        0.40894854453383783,
+        0.0424930503105108,
+        0.36279317818168766
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 213,
+      "handClip": {
+        "left": 0.84,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774350894592646,
+        0.042336066044024206,
+        -0.40873654574761714
+      ],
+      "footR_cen_xyz_m": [
+        0.40894854453383783,
+        0.0424930503105108,
+        0.36279317818168766
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 214,
+      "handClip": {
+        "left": 0.84,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774350894592646,
+        0.042336066044024206,
+        -0.40873654574761714
+      ],
+      "footR_cen_xyz_m": [
+        0.40894854453383783,
+        0.0424930503105108,
+        0.36279317818168766
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 215,
+      "handClip": {
+        "left": 0.84,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774350894592646,
+        0.042336066044024206,
+        -0.40873654574761714
+      ],
+      "footR_cen_xyz_m": [
+        0.40894854453383783,
+        0.0424930503105108,
+        0.36279317818168766
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 216,
+      "handClip": {
+        "left": 0.84,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774350894592646,
+        0.042336066044024206,
+        -0.40873654574761714
+      ],
+      "footR_cen_xyz_m": [
+        0.40894854453383783,
+        0.0424930503105108,
+        0.36279317818168766
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 217,
+      "handClip": {
+        "left": 0.84,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774350894592646,
+        0.042336066044024206,
+        -0.40873654574761714
+      ],
+      "footR_cen_xyz_m": [
+        0.40894854453383783,
+        0.0424930503105108,
+        0.36279317818168766
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 218,
+      "handClip": {
+        "left": 0.84,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774350894592646,
+        0.042336066044024206,
+        -0.40873654574761714
+      ],
+      "footR_cen_xyz_m": [
+        0.40894854453383783,
+        0.0424930503105108,
+        0.36279317818168766
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 219,
+      "handClip": {
+        "left": 0.84,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774350894592646,
+        0.042336066044024206,
+        -0.40873654574761714
+      ],
+      "footR_cen_xyz_m": [
+        0.40894854453383783,
+        0.0424930503105108,
+        0.36279317818168766
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 220,
+      "handClip": {
+        "left": 0.84,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774350894592646,
+        0.042336066044024206,
+        -0.40873654574761714
+      ],
+      "footR_cen_xyz_m": [
+        0.40894854453383783,
+        0.0424930503105108,
+        0.36279317818168766
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 221,
+      "handClip": {
+        "left": 0.84,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774350894592646,
+        0.042336066044024206,
+        -0.40873654574761714
+      ],
+      "footR_cen_xyz_m": [
+        0.40894854453383783,
+        0.0424930503105108,
+        0.36279317818168766
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 222,
+      "handClip": {
+        "left": 0.84,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774350894592646,
+        0.042336066044024206,
+        -0.40873654574761714
+      ],
+      "footR_cen_xyz_m": [
+        0.40894854453383783,
+        0.0424930503105108,
+        0.36279317818168766
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 223,
+      "handClip": {
+        "left": 0.84,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774350894592646,
+        0.042336066044024206,
+        -0.40873654574761714
+      ],
+      "footR_cen_xyz_m": [
+        0.40894854453383783,
+        0.0424930503105108,
+        0.36279317818168766
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 224,
+      "handClip": {
+        "left": 0.84,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774350894592646,
+        0.042336066044024206,
+        -0.40873654574761714
+      ],
+      "footR_cen_xyz_m": [
+        0.40894854453383783,
+        0.0424930503105108,
+        0.36279317818168766
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 225,
+      "handClip": {
+        "left": 0.84,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774350894592646,
+        0.042336066044024206,
+        -0.40873654574761714
+      ],
+      "footR_cen_xyz_m": [
+        0.40894854453383783,
+        0.0424930503105108,
+        0.36279317818168766
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 226,
+      "handClip": {
+        "left": 0.84,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774350894592646,
+        0.042336066044024206,
+        -0.40873654574761714
+      ],
+      "footR_cen_xyz_m": [
+        0.40894854453383783,
+        0.0424930503105108,
+        0.36279317818168766
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 227,
+      "handClip": {
+        "left": 0.84,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774350894592646,
+        0.042336066044024206,
+        -0.40873654574761714
+      ],
+      "footR_cen_xyz_m": [
+        0.40894854453383783,
+        0.0424930503105108,
+        0.36279317818168766
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 228,
+      "handClip": {
+        "left": 0.84,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774350894592646,
+        0.042336066044024206,
+        -0.40873654574761714
+      ],
+      "footR_cen_xyz_m": [
+        0.40894854453383783,
+        0.0424930503105108,
+        0.36279317818168766
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 229,
+      "handClip": {
+        "left": 0.84,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774350894592646,
+        0.042336066044024206,
+        -0.40873654574761714
+      ],
+      "footR_cen_xyz_m": [
+        0.40894854453383783,
+        0.0424930503105108,
+        0.36279317818168766
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 230,
+      "handClip": {
+        "left": 0.84,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774350894592646,
+        0.042336066044024206,
+        -0.40873654574761714
+      ],
+      "footR_cen_xyz_m": [
+        0.40894854453383783,
+        0.0424930503105108,
+        0.36279317818168766
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 231,
+      "handClip": {
+        "left": 0.84,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774350894592646,
+        0.042336066044024206,
+        -0.40873654574761714
+      ],
+      "footR_cen_xyz_m": [
+        0.40894854453383783,
+        0.0424930503105108,
+        0.36279317818168766
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 232,
+      "handClip": {
+        "left": 0.84,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774350894592646,
+        0.042336066044024206,
+        -0.40873654574761714
+      ],
+      "footR_cen_xyz_m": [
+        0.40894854453383783,
+        0.0424930503105108,
+        0.36279317818168766
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 233,
+      "handClip": {
+        "left": 0.84,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774350894592646,
+        0.042336066044024206,
+        -0.40873654574761714
+      ],
+      "footR_cen_xyz_m": [
+        0.40894854453383783,
+        0.0424930503105108,
+        0.36279317818168766
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 234,
+      "handClip": {
+        "left": 0.84,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774350894592646,
+        0.042336066044024206,
+        -0.40873654574761714
+      ],
+      "footR_cen_xyz_m": [
+        0.40894854453383783,
+        0.0424930503105108,
+        0.36279317818168766
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 235,
+      "handClip": {
+        "left": 0.84,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774350894592646,
+        0.042336066044024206,
+        -0.40873654574761714
+      ],
+      "footR_cen_xyz_m": [
+        0.40894854453383783,
+        0.0424930503105108,
+        0.36279317818168766
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 236,
+      "handClip": {
+        "left": 0.84,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774350894592646,
+        0.042336066044024206,
+        -0.40873654574761714
+      ],
+      "footR_cen_xyz_m": [
+        0.40894854453383783,
+        0.0424930503105108,
+        0.36279317818168766
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 237,
+      "handClip": {
+        "left": 0.84,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774350894592646,
+        0.042336066044024206,
+        -0.40873654574761714
+      ],
+      "footR_cen_xyz_m": [
+        0.40894854453383783,
+        0.0424930503105108,
+        0.36279317818168766
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 238,
+      "handClip": {
+        "left": 0.84,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774350894592646,
+        0.042336066044024206,
+        -0.40873654574761714
+      ],
+      "footR_cen_xyz_m": [
+        0.40894854453383783,
+        0.0424930503105108,
+        0.36279317818168766
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    },
+    {
+      "f": 239,
+      "handClip": {
+        "left": 0.84,
+        "right": 0.91,
+        "leftBone": "leftThigh",
+        "rightBone": "rightThigh"
+      },
+      "footL_cen_xyz_m": [
+        0.44774350894592646,
+        0.042336066044024206,
+        -0.40873654574761714
+      ],
+      "footR_cen_xyz_m": [
+        0.40894854453383783,
+        0.0424930503105108,
+        0.36279317818168766
+      ],
+      "ankleL_xyz_m": [
+        0.45,
+        0.085,
+        -0.33
+      ],
+      "ankleR_xyz_m": [
+        0.33,
+        0.085,
+        0.36
+      ],
+      "min_vertex_y_m": 0.0009792222113203539,
+      "solverWarn": []
+    }
+  ],
+  "strict_numeric_pass": true,
+  "upright_cyan_pixels": {
+    "0": 88,
+    "220": 86
+  },
+  "upright_cyan_nonzero": true,
+  "knee_angle_ranges_deg": {
+    "left": {
+      "min_deg": 76.73153463282206,
+      "max_deg": 76.94969210819008,
+      "interpretation": "Raw observed joint angle; no exact 90-degree acceptance threshold added."
+    },
+    "right": {
+      "min_deg": 83.04319456457335,
+      "max_deg": 84.17861968771626,
+      "interpretation": "Raw observed joint angle; no exact 90-degree acceptance threshold added."
+    }
+  }
+}

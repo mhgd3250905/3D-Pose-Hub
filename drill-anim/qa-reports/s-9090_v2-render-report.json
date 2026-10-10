@@ -1,0 +1,888 @@
+{
+  "id": "s-9090",
+  "status": "All specified full numeric criteria passed; delivered under Hark prior conditional authorization; known visual occlusion retained.",
+  "execution": {
+    "id": "s-9090",
+    "base_commit": "55a454a6a0892efbed7ed1915dfdc8f4fda4da78",
+    "spec_sha256": "3d762e9ce643ba198b4734b6e054dc6343b1730b9e883ee32a3df6338987622e",
+    "jobs": 1,
+    "render_and_comp_seconds": 692.1043407000834,
+    "encode_seconds": 1.8429942999500781,
+    "total_seconds": 694.2115170001052,
+    "reference_sheet": "omitted; no provided s-9090 reference image",
+    "known_visual_issue": "Forward hinge may occlude cyan hip highlights; Hark accepts visibility at upright f0/f220."
+  },
+  "strict_numeric_pass": true,
+  "partial_summary": {
+    "frame_range_complete_unique": true,
+    "frames": 240,
+    "main_png_count": 240,
+    "composited_png_count": 240,
+    "strict_hand_gap": {
+      "left": {
+        "minimum_signed_gap_mm": 0.8,
+        "maximum_gap_mm": 0.97,
+        "violations": [],
+        "pass": true
+      },
+      "right": {
+        "minimum_signed_gap_mm": 0.8,
+        "maximum_gap_mm": 0.95,
+        "violations": [],
+        "pass": true
+      }
+    },
+    "strict_hand_gap_pass": true,
+    "strict_pins": {
+      "left_foot_contact_centroid": {
+        "frames": 240,
+        "reference_f0_xyz_m": [
+          0.44774350894592646,
+          0.042336066044024206,
+          -0.40873654574761714
+        ],
+        "max_drift_from_f0_mm": 0.0002266037186980244,
+        "max_drift_frame": 114,
+        "max_pairwise_span_mm": 0.0002266037186980244,
+        "max_pairwise_span_frames": [
+          0,
+          114
+        ],
+        "axis_ranges_mm": [
+          [
+            447.74337604478916,
+            447.74350894592646
+          ],
+          [
+            42.33606294206741,
+            42.33606948226422
+          ],
+          [
+            -408.73654574761713,
+            -408.73636224091007
+          ]
+        ],
+        "pass": true
+      },
+      "right_foot_contact_centroid": {
+        "frames": 240,
+        "reference_f0_xyz_m": [
+          0.40894854453383783,
+          0.0424930503105108,
+          0.36279317818168766
+        ],
+        "max_drift_from_f0_mm": 0.0008947134072010252,
+        "max_drift_frame": 114,
+        "max_pairwise_span_mm": 0.0008947134072010252,
+        "max_pairwise_span_frames": [
+          0,
+          114
+        ],
+        "axis_ranges_mm": [
+          [
+            408.94846892705743,
+            408.94854453383783
+          ],
+          [
+            42.49215896682849,
+            42.4930503105108
+          ],
+          [
+            362.79317818168767,
+            362.7932240360403
+          ]
+        ],
+        "pass": true
+      },
+      "left_ankle_joint": {
+        "frames": 240,
+        "reference_f0_xyz_m": [
+          0.45,
+          0.085,
+          -0.33
+        ],
+        "max_drift_from_f0_mm": 7.850462293418876e-14,
+        "max_drift_frame": 23,
+        "max_pairwise_span_mm": 1.570092458683775e-13,
+        "max_pairwise_span_frames": [
+          32,
+          52
+        ],
+        "axis_ranges_mm": [
+          [
+            449.99999999999994,
+            450.00000000000006
+          ],
+          [
+            84.99999999999999,
+            85.00000000000001
+          ],
+          [
+            -330.00000000000006,
+            -329.99999999999994
+          ]
+        ],
+        "pass": true
+      },
+      "right_ankle_joint": {
+        "frames": 240,
+        "reference_f0_xyz_m": [
+          0.33,
+          0.085,
+          0.36
+        ],
+        "max_drift_from_f0_mm": 1.2412670766236365e-13,
+        "max_drift_frame": 35,
+        "max_pairwise_span_mm": 1.7554167342883506e-13,
+        "max_pairwise_span_frames": [
+          35,
+          38
+        ],
+        "axis_ranges_mm": [
+          [
+            329.99999999999994,
+            330.00000000000006
+          ],
+          [
+            85.0,
+            85.0
+          ],
+          [
+            359.9999999999999,
+            360.00000000000006
+          ]
+        ],
+        "pass": true
+      }
+    },
+    "strict_pins_pass": true,
+    "pin_method": "All 240 frames; three-dimensional Euclidean distance relative to f0 AND maximum pairwise distance; tolerance 0.5 mm. Raw foot contact centroid and ankle joint fields measured independently of empty spec.qa.pins.",
+    "min_vertex_y_m": 0.0009792222113203539,
+    "floor_pass": true,
+    "solver_warning_frames": 0,
+    "solver_pass": true,
+    "margins_pass": true,
+    "engine_qa_pass": true,
+    "cyan_method": "G>R+25 && B>R+25 && min(G,B)>100; readability proxy, not muscle activity or anatomical coverage",
+    "known_visual_issue": "Hark accepted possible cyan occlusion during forward hinge, provided upright f0 and f220 show hip highlight. No radius or engine change made.",
+    "strict_numeric_pass": true,
+    "upright_cyan_pixels": {
+      "0": 88,
+      "220": 86
+    },
+    "upright_cyan_nonzero": true,
+    "knee_angle_ranges_deg": {
+      "left": {
+        "min_deg": 76.73153463282206,
+        "max_deg": 76.94969210819008,
+        "interpretation": "Raw observed joint angle; no exact 90-degree acceptance threshold added."
+      },
+      "right": {
+        "min_deg": 83.04319456457335,
+        "max_deg": 84.17861968771626,
+        "interpretation": "Raw observed joint angle; no exact 90-degree acceptance threshold added."
+      }
+    }
+  },
+  "engine_qa": {
+    "id": "s-9090",
+    "frames": 240,
+    "fps": 30,
+    "duration_s": 8,
+    "min_vertex_y_m": 0.001,
+    "min_vertex_mesh": "Coach_Soles",
+    "below_floor": false,
+    "pins": {},
+    "straight": {},
+    "limits": {
+      "knee_flex_backward": true,
+      "elbow_flex_forward": true,
+      "hip_flex_deg_range": [
+        90.3,
+        115.9
+      ],
+      "hip_abd_deg_range": [
+        90.3,
+        121.2
+      ],
+      "hip_abd_true_deg_range": [
+        31.7,
+        38.5
+      ],
+      "hip_flex_max_deg": 135.0,
+      "hip_ok": true,
+      "waist_bend_deg_max": 23.3,
+      "waist_ok": true,
+      "pelvis_to_chest_deg_max": 0,
+      "elbow_deg_range": [
+        88.8,
+        149.7
+      ],
+      "knee_deg_range": [
+        76.7,
+        84.2
+      ],
+      "neck_note": "head/neck rigid with the upper torso in this rig (no neck bend possible)",
+      "first_violation": {}
+    },
+    "self_clip": {
+      "worst_pair": "forearmL|thighL",
+      "worst_gap_mm": 5.1,
+      "at_frame": 105,
+      "ok": true,
+      "method": "capsule hulls per segment (torso r115, upper arm r42, forearm r34, hand r28, thigh r68, shin r48, foot r45 mm), adjacent + spec-allowed pairs skipped; ok if overlap < 8 mm"
+    },
+    "hand_clip": {
+      "left": {
+        "min_signed_mm": 0.8,
+        "at_frame": 21,
+        "nearest_bone": "leftThigh",
+        "penetrating_frames": 0,
+        "ok": true
+      },
+      "right": {
+        "min_signed_mm": 0.8,
+        "at_frame": 33,
+        "nearest_bone": "rightThigh",
+        "penetrating_frames": 0,
+        "ok": true
+      },
+      "contact_left": {
+        "frames": 240,
+        "gap_mm_range": [
+          0.8,
+          0.97
+        ],
+        "ok": true
+      },
+      "contact_right": {
+        "frames": 240,
+        "gap_mm_range": [
+          0.8,
+          0.95
+        ],
+        "ok": true
+      },
+      "method": "per hand skin vertex: K=6 nearest vertices of each outer body layer (skin, tee, cuff, shorts, head; own hand/forearm excluded, radius 45 mm); inside if the vertex is closer to the nearest bone core line than those surface vertices; value = depth (<0) or gap (>0: radial gap over the surface patch, capped by the euclidean distance); ok if >= -0.5 mm"
+    },
+    "solver_warning_frames": 0,
+    "frame_edge_touch_frames": 0,
+    "frames_complete": true,
+    "pass": true
+  },
+  "margins": {
+    "method": "every eighth composited frame; max(R,G,B)>48 && B>=R-6; R/B count empty pixels after final foreground",
+    "frames_sampled": 30,
+    "minimum_px": {
+      "L": 320,
+      "T": 119,
+      "R": 316,
+      "B": 118
+    },
+    "all_at_least_60px": true,
+    "per_frame": [
+      {
+        "f": 0,
+        "L": 347,
+        "T": 121,
+        "R": 319,
+        "B": 121
+      },
+      {
+        "f": 8,
+        "L": 347,
+        "T": 120,
+        "R": 320,
+        "B": 120
+      },
+      {
+        "f": 16,
+        "L": 347,
+        "T": 120,
+        "R": 320,
+        "B": 120
+      },
+      {
+        "f": 24,
+        "L": 345,
+        "T": 120,
+        "R": 321,
+        "B": 120
+      },
+      {
+        "f": 32,
+        "L": 340,
+        "T": 119,
+        "R": 321,
+        "B": 119
+      },
+      {
+        "f": 40,
+        "L": 332,
+        "T": 119,
+        "R": 322,
+        "B": 119
+      },
+      {
+        "f": 48,
+        "L": 325,
+        "T": 119,
+        "R": 322,
+        "B": 119
+      },
+      {
+        "f": 56,
+        "L": 322,
+        "T": 119,
+        "R": 322,
+        "B": 119
+      },
+      {
+        "f": 64,
+        "L": 321,
+        "T": 119,
+        "R": 322,
+        "B": 119
+      },
+      {
+        "f": 72,
+        "L": 321,
+        "T": 119,
+        "R": 322,
+        "B": 119
+      },
+      {
+        "f": 80,
+        "L": 321,
+        "T": 119,
+        "R": 322,
+        "B": 119
+      },
+      {
+        "f": 88,
+        "L": 320,
+        "T": 119,
+        "R": 321,
+        "B": 119
+      },
+      {
+        "f": 96,
+        "L": 320,
+        "T": 120,
+        "R": 321,
+        "B": 120
+      },
+      {
+        "f": 104,
+        "L": 320,
+        "T": 120,
+        "R": 320,
+        "B": 120
+      },
+      {
+        "f": 112,
+        "L": 320,
+        "T": 120,
+        "R": 320,
+        "B": 120
+      },
+      {
+        "f": 120,
+        "L": 320,
+        "T": 121,
+        "R": 319,
+        "B": 121
+      },
+      {
+        "f": 128,
+        "L": 321,
+        "T": 121,
+        "R": 318,
+        "B": 120
+      },
+      {
+        "f": 136,
+        "L": 322,
+        "T": 120,
+        "R": 318,
+        "B": 120
+      },
+      {
+        "f": 144,
+        "L": 323,
+        "T": 120,
+        "R": 317,
+        "B": 119
+      },
+      {
+        "f": 152,
+        "L": 324,
+        "T": 120,
+        "R": 317,
+        "B": 119
+      },
+      {
+        "f": 160,
+        "L": 325,
+        "T": 120,
+        "R": 316,
+        "B": 118
+      },
+      {
+        "f": 168,
+        "L": 325,
+        "T": 120,
+        "R": 316,
+        "B": 118
+      },
+      {
+        "f": 176,
+        "L": 327,
+        "T": 119,
+        "R": 316,
+        "B": 118
+      },
+      {
+        "f": 184,
+        "L": 331,
+        "T": 119,
+        "R": 316,
+        "B": 118
+      },
+      {
+        "f": 192,
+        "L": 338,
+        "T": 120,
+        "R": 316,
+        "B": 118
+      },
+      {
+        "f": 200,
+        "L": 344,
+        "T": 120,
+        "R": 316,
+        "B": 118
+      },
+      {
+        "f": 208,
+        "L": 348,
+        "T": 120,
+        "R": 317,
+        "B": 119
+      },
+      {
+        "f": 216,
+        "L": 348,
+        "T": 120,
+        "R": 317,
+        "B": 119
+      },
+      {
+        "f": 224,
+        "L": 347,
+        "T": 120,
+        "R": 318,
+        "B": 120
+      },
+      {
+        "f": 232,
+        "L": 347,
+        "T": 121,
+        "R": 318,
+        "B": 120
+      }
+    ]
+  },
+  "cyan": [
+    {
+      "f": 0,
+      "cyan_pixels": 88,
+      "bbox": [
+        414,
+        621,
+        426,
+        660
+      ]
+    },
+    {
+      "f": 8,
+      "cyan_pixels": 89,
+      "bbox": [
+        414,
+        620,
+        425,
+        660
+      ]
+    },
+    {
+      "f": 16,
+      "cyan_pixels": 89,
+      "bbox": [
+        414,
+        619,
+        425,
+        659
+      ]
+    },
+    {
+      "f": 24,
+      "cyan_pixels": 87,
+      "bbox": [
+        414,
+        632,
+        425,
+        658
+      ]
+    },
+    {
+      "f": 32,
+      "cyan_pixels": 45,
+      "bbox": [
+        416,
+        643,
+        424,
+        658
+      ]
+    },
+    {
+      "f": 40,
+      "cyan_pixels": 0,
+      "bbox": null
+    },
+    {
+      "f": 48,
+      "cyan_pixels": 0,
+      "bbox": null
+    },
+    {
+      "f": 56,
+      "cyan_pixels": 378,
+      "bbox": [
+        504,
+        551,
+        551,
+        571
+      ]
+    },
+    {
+      "f": 60,
+      "cyan_pixels": 481,
+      "bbox": [
+        502,
+        551,
+        553,
+        574
+      ]
+    },
+    {
+      "f": 64,
+      "cyan_pixels": 489,
+      "bbox": [
+        502,
+        551,
+        553,
+        574
+      ]
+    },
+    {
+      "f": 72,
+      "cyan_pixels": 577,
+      "bbox": [
+        500,
+        550,
+        555,
+        576
+      ]
+    },
+    {
+      "f": 80,
+      "cyan_pixels": 724,
+      "bbox": [
+        499,
+        549,
+        559,
+        578
+      ]
+    },
+    {
+      "f": 88,
+      "cyan_pixels": 1063,
+      "bbox": [
+        497,
+        548,
+        574,
+        582
+      ]
+    },
+    {
+      "f": 96,
+      "cyan_pixels": 1328,
+      "bbox": [
+        496,
+        547,
+        578,
+        585
+      ]
+    },
+    {
+      "f": 104,
+      "cyan_pixels": 1456,
+      "bbox": [
+        496,
+        546,
+        578,
+        586
+      ]
+    },
+    {
+      "f": 112,
+      "cyan_pixels": 1480,
+      "bbox": [
+        495,
+        546,
+        578,
+        586
+      ]
+    },
+    {
+      "f": 120,
+      "cyan_pixels": 1473,
+      "bbox": [
+        495,
+        547,
+        578,
+        586
+      ]
+    },
+    {
+      "f": 128,
+      "cyan_pixels": 1390,
+      "bbox": [
+        496,
+        547,
+        578,
+        586
+      ]
+    },
+    {
+      "f": 136,
+      "cyan_pixels": 1218,
+      "bbox": [
+        496,
+        548,
+        577,
+        585
+      ]
+    },
+    {
+      "f": 144,
+      "cyan_pixels": 865,
+      "bbox": [
+        497,
+        550,
+        569,
+        581
+      ]
+    },
+    {
+      "f": 152,
+      "cyan_pixels": 657,
+      "bbox": [
+        497,
+        551,
+        556,
+        578
+      ]
+    },
+    {
+      "f": 160,
+      "cyan_pixels": 512,
+      "bbox": [
+        500,
+        553,
+        553,
+        576
+      ]
+    },
+    {
+      "f": 168,
+      "cyan_pixels": 475,
+      "bbox": [
+        500,
+        553,
+        553,
+        575
+      ]
+    },
+    {
+      "f": 176,
+      "cyan_pixels": 126,
+      "bbox": [
+        506,
+        554,
+        542,
+        562
+      ]
+    },
+    {
+      "f": 180,
+      "cyan_pixels": 0,
+      "bbox": null
+    },
+    {
+      "f": 184,
+      "cyan_pixels": 0,
+      "bbox": null
+    },
+    {
+      "f": 192,
+      "cyan_pixels": 0,
+      "bbox": null
+    },
+    {
+      "f": 200,
+      "cyan_pixels": 82,
+      "bbox": [
+        416,
+        636,
+        426,
+        662
+      ]
+    },
+    {
+      "f": 208,
+      "cyan_pixels": 90,
+      "bbox": [
+        415,
+        621,
+        427,
+        662
+      ]
+    },
+    {
+      "f": 216,
+      "cyan_pixels": 90,
+      "bbox": [
+        414,
+        621,
+        426,
+        662
+      ]
+    },
+    {
+      "f": 220,
+      "cyan_pixels": 86,
+      "bbox": [
+        414,
+        631,
+        426,
+        661
+      ]
+    },
+    {
+      "f": 224,
+      "cyan_pixels": 88,
+      "bbox": [
+        415,
+        630,
+        426,
+        661
+      ]
+    },
+    {
+      "f": 232,
+      "cyan_pixels": 89,
+      "bbox": [
+        415,
+        631,
+        426,
+        661
+      ]
+    }
+  ],
+  "resources": {
+    "pid": 10496,
+    "started_at_utc": "2026-10-10T17:55:10.906920+00:00",
+    "ended_at_utc": "2026-10-10T18:06:46.007501+00:00",
+    "elapsed_seconds": 695.0821598999901,
+    "exitcode": 0,
+    "baseline": {
+      "system_ram_used_bytes": 23584636928,
+      "gpus": [
+        {
+          "index": "0",
+          "name": "NVIDIA GeForce RTX 4080 Laptop GPU",
+          "memory_used_mib": 2483.0,
+          "utilization_percent": 25.0
+        }
+      ]
+    },
+    "peaks": {
+      "tree_rss_bytes": 1138397184,
+      "tree_private_bytes": 2185924608,
+      "system_ram_used_bytes": 25571069952,
+      "gpu_total_memory_used_mib": 3405.0
+    },
+    "gpu_peaks": [
+      {
+        "index": "0",
+        "name": "NVIDIA GeForce RTX 4080 Laptop GPU",
+        "memory_used_mib": 3405.0,
+        "utilization_percent": 67.0
+      }
+    ],
+    "sampling_errors": [
+      "process PID not found (pid=10496)"
+    ]
+  },
+  "resource_definition": "Memory tree RSS/private and system RAM in bytes. GPU memory in MiB and utilization percent are system-wide; they are not exclusively this render.",
+  "reference": "No provided reference image. No reference comparison was fabricated.",
+  "artifacts": {
+    "E:\\AII-3D\\3D-Pose\\hark-4080-9090\\tools\\drill-anim\\out\\s-9090.mp4": {
+      "bytes": 763149,
+      "sha256": "da9c4c73e4a8fc04c7b4abdbe354908f4470046ec5a5e7ef1cb1b24dbe84064c"
+    },
+    "E:\\AII-3D\\3D-Pose\\hark-4080-9090\\tools\\drill-anim\\out\\s-9090.gif": {
+      "bytes": 1462256,
+      "sha256": "bd97a507bd11dc15483a5608b40161746d9ec3c3967f6760fad114caa5668bf1"
+    },
+    "E:\\AII-3D\\3D-Pose\\hark-4080-9090\\tools\\drill-anim\\out\\s-9090_v2-full-five-frame.png": {
+      "bytes": 269914,
+      "sha256": "d01075b9dcf81c29f512d96ee5011d615b267cdbaa7bb12a1a49f55ceac173c8"
+    },
+    "E:\\AII-3D\\3D-Pose\\hark-4080-9090\\tools\\drill-anim\\out\\metrics\\s-9090.json": {
+      "bytes": 103061,
+      "sha256": "06addd818bbcf41f0cb105d4209bd554e629277a54efdf25b1a5ddadaade6bd4"
+    },
+    "E:\\AII-3D\\3D-Pose\\hark-4080-9090-work\\s-9090\\fr\\met--1-239.json": {
+      "bytes": 663939,
+      "sha256": "95c9d95a8ba41301346371612611765579d1c89b810f32a7f9b5d0aa21280998"
+    }
+  },
+  "extra_qa_path": "E:\\AII-3D\\3D-Pose\\hark-4080-9090-work\\extra-qa-full.json",
+  "local_only_compatibility_files": [
+    "tools/drill-anim/drill.py",
+    "tools/drill-anim/lib/boot.mjs"
+  ],
+  "media_probe": {
+    "mp4": {
+      "codec": "h264",
+      "width": 1080,
+      "height": 1080,
+      "fps": 30,
+      "duration_seconds": 8,
+      "frames": 240
+    },
+    "gif": {
+      "codec": "gif",
+      "width": 540,
+      "height": 540,
+      "fps": 15,
+      "duration_seconds": 8,
+      "frames": 120
+    },
+    "method": "ffprobe decoded container stream metadata after full encode."
+  },
+  "port_8843_released": true,
+  "conditional_acceptance_comment": "https://github.com/mhgd3250905/3D-Body/issues/93#issuecomment-6100462094"
+}
