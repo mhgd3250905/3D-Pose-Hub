@@ -153,10 +153,12 @@ function residuals(D, x, names) {
     const w = c.weight ?? 1; if (!w) continue;
     if (c.type === 'reach') {
       const [side, kind] = c.limb.split(/(?=[A-Z])/); const s = side, arm = kind === 'Arm';
-      if (arm && (D.hands[s].w || 0) > 1e-4) continue; // a lifted hand no longer constrains the body
+      // a lifted hand no longer constrains the body, unless the hand sets keepReach (0..1, animatable): a free hand that bears
+      // weight (forearms-A: back of the hand on the mat) keeps its reach constraint, scaled by keepReach
+      let kw = 1; if (arm && (D.hands[s].w || 0) > 1e-4) { kw = D.hands[s].keepReach || 0; if (!(kw > 1e-4)) continue; }
       const p0 = arm ? Lm[s].shoulder : Lm[s].hip, p1 = arm ? Lm[s].wrist : Lm[s].ankle;
       const L = arm ? reachFor(E.L[s + 'UpperArm'], E.L[s + 'Forearm'], c.angle) : reachFor(E.L[s + 'Thigh'], E.L[s + 'Shin'], c.angle);
-      r.push((p0.distanceTo(p1) - L) * 1000 * w);
+      r.push((p0.distanceTo(p1) - L) * 1000 * w * kw);
     } else if (c.type === 'joint') {
       const src = E.R[c.joint]; const isLow = /Hip|pelvis/.test(c.joint); const p = isLow ? B.low(src) : B.up(src);
       r.push((p.dot(V(c.axis || [0, 1, 0])) - c.value) * 1000 * w);
@@ -287,12 +289,42 @@ E.metrics = function(spec, full) {
 E.touchResolve = function(pose, s, tc, w, after) {
   const v = flareInspector.viewer, m = v.motion;
   const clear = tc.clear ?? 0.002, from = tc.from ?? 0.75, pull = (tc.pull ?? 1) * ease.smooth((w - from) / (1 - from)); let shift = 0;
-  for (let it = 0; it < (tc.iters ?? 12); it++) { const c = E.handClip([s], { exclude: tc.exclude })[s]; if (!c.normal) break;
+  if (tc.solve === 'bisect') return E.touchBisect(pose, s, tc, clear, pull, after);
+  E._tdbg = [];
+  // the iterative solve keeps the legacy nearest-vertex (euclidean) gap unless tc.gap = 'radial', so renders made before the radial
+  // gap (deltoids-A, rotator-cuff-A) stay pixel-identical; 'bisect' always uses the radial gap
+  const gopt = { exclude: tc.exclude, gap: tc.gap === 'radial' ? 'radial' : 'euclid' };
+  for (let it = 0; it < (tc.iters ?? 12); it++) { const c = E.handClip([s], gopt)[s]; E._tdbg.push([c.minMm, c.bone, c.normal && c.normal.map(x => +x.toFixed(2))]); if (!c.normal) break;
     const gap = c.minMm / 1000; let d = 0; if (gap < clear) d = clear - gap; else if (pull > 0) d = -(gap - clear) * pull;
     if (Math.abs(d) < 0.0002) break; const n = V(c.normal); // radial surface normal; push out (d > 0) or pull in (d < 0) along it
     pose.limbs[s].wrist = V(pose.limbs[s].wrist).addScaledVector(n, d).toArray(); shift += d;
     m.applyPose(pose, { playback: false }); v.coach.updateMatrixWorld(true); after && after(); }
+  // guard: never leave the hand inside the body (the pull can overshoot when the nearest-vertex gap jumps): push-only passes
+  for (let it = 0; it < 8; it++) { const c = E.handClip([s], gopt)[s]; if (!c.normal || c.minMm / 1000 >= clear * 0.5) break;
+    const n = V(c.normal), d = clear - c.minMm / 1000; pose.limbs[s].wrist = V(pose.limbs[s].wrist).addScaledVector(n, d).toArray(); shift += d;
+    m.applyPose(pose, { playback: false }); v.coach.updateMatrixWorld(true); after && after(); }
   return +(shift * 1000).toFixed(2);
+};
+// robust variant (hands.<side>.touch.solve = 'bisect'): the nearest-vertex gap is not smooth in the wrist offset (the iterative
+// push/pull above can oscillate ±5 mm), so bisect the offset along the first surface normal until the gap hits the target
+// (clear, or clear + (gap0 - clear)(1 - pull) while blending in). Always ends on the outside of the bracket.
+E.touchBisect = function(pose, s, tc, clear, pull, after) {
+  const v = flareInspector.viewer, m = v.motion; let w0 = V(pose.limbs[s].wrist), pre = 0;
+  let c0 = E.handClip([s], { exclude: tc.exclude })[s]; E._tdbg = [[c0.minMm]];
+  // out of the 45 mm search radius: walk the wrist toward the body core (tc.toward joint, default waist) in 15 mm steps
+  for (let k = 0; k < 8 && !c0.normal; k++) { const J = m.getMetrics().joints; const dir = V(J[tc.toward || 'waist']).sub(V(J[s + 'Palm'])).normalize();
+    w0 = w0.addScaledVector(dir, 0.015); pre += 0.015; pose.limbs[s].wrist = w0.toArray(); m.applyPose(pose, { playback: false }); v.coach.updateMatrixWorld(true); after && after();
+    c0 = E.handClip([s], { exclude: tc.exclude })[s]; E._tdbg.push(['pre', c0.minMm]); }
+  if (!c0.normal) return 0;
+  const n = V(c0.normal), g0 = c0.minMm / 1000, target = g0 > clear ? clear + (g0 - clear) * (1 - Math.min(1, pull)) : clear;
+  const at = off => { pose.limbs[s].wrist = w0.clone().addScaledVector(n, off).toArray(); m.applyPose(pose, { playback: false }); v.coach.updateMatrixWorld(true); after && after();
+    const g = E.handClip([s], { exclude: tc.exclude })[s].minMm / 1000; E._tdbg.push([+(off * 1000).toFixed(2), +(g * 1000).toFixed(2)]); return g; };
+  // warm start: guess the offset from the measured gap and bracket it tightly (±2.5 mm); widen when the bracket misses
+  const guess = target - g0; let lo = guess - 0.0025, hi = guess + 0.0025;
+  if (at(hi) < target) { lo = hi; hi = Math.max(0, target - g0) + 0.026; if (at(hi) < target) hi += 0.02; }
+  else if (at(lo) >= target) { hi = lo; lo = -Math.max(0, g0 - target) - 0.03; if (at(lo) >= target) return +((lo - pre) * 1000).toFixed(2); }
+  for (let it = 0; it < (tc.iters ?? 14); it++) { const mid = (lo + hi) / 2; if (at(mid) < target) lo = mid; else hi = mid; if (hi - lo < 0.0002) break; }
+  at(hi); E._lastTouchPose = pose; E._lastTouchN = n.toArray(); return +((hi - pre) * 1000).toFixed(2);
 };
 E.shiftShoulders = function(Lm, pose) {
   const t = T(), v = flareInspector.viewer, M = v.motion.getMetrics(), J = M.joints; E._jo = {};
@@ -428,7 +460,12 @@ E.handClip = function(sides, opts = {}) {
         const ax = axisOf(kn[0][1][4]); if (!ax) continue;
         let rs = 0; const c3 = [0, 0, 0]; for (const [, q] of kn) { rs += segD(q, ax); c3[0] += q[0]; c3[1] += q[1]; c3[2] += q[2]; } rs /= kn.length; for (let k = 0; k < 3; k++) c3[k] /= kn.length;
         const rh = segD(h, ax); const inside = rh < rs;
-        const sd = inside ? rh - rs : Math.sqrt(kn[0][0]);
+        // outside: the nearest-VERTEX distance overstates the gap by up to ~half the mesh spacing (a hand resting on a triangle read
+        // as a 6 mm hover, and it jumped from -0.2 to +6.6 mm across the surface). Use the radial gap (continuous with the depth)
+        // when the hand vertex sits over the K-vertex patch (tangential offset < 45 mm, i.e. anywhere in the search radius; near a layer edge such as the shorts waistband the patch is one-sided), else the euclidean distance.
+        let sd = inside ? rh - rs : Math.sqrt(kn[0][0]);
+        if (!inside && opts.gap !== 'euclid') { const f0 = segFoot(h, ax), nr = [h[0] - f0[0], h[1] - f0[1], h[2] - f0[2]], nl0 = Math.hypot(...nr) || 1; const dv = [h[0] - c3[0], h[1] - c3[1], h[2] - c3[2]];
+          const dn = (dv[0] * nr[0] + dv[1] * nr[1] + dv[2] * nr[2]) / nl0; const tg = Math.sqrt(Math.max(0, dv[0] ** 2 + dv[1] ** 2 + dv[2] ** 2 - dn * dn)); if (tg < 0.045) sd = Math.min(sd, rh - rs); }
         if (sd * 1000 < best.minMm) { const f = segFoot(h, ax); const n3 = [h[0] - f[0], h[1] - f[1], h[2] - f[2]]; const nl = Math.hypot(...n3) || 1;
           best = { minMm: +(sd * 1000).toFixed(2), bone: kn[0][1][4], layer: l.o.name, at: c3, normal: n3.map(x => x / nl), deep: h }; } } }
     res[side] = best;
