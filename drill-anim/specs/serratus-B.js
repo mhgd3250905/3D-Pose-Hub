@@ -11,6 +11,11 @@ const W0 = sg => { const e = elbowAt(sg, 90); return [sg * 0.17, +(e[1] + FA).to
 // top: elbow at 135 deg flexion; forearm mid stays at the same depth as at the start (roller against the wall)
 const W1 = sg => { const e0 = elbowAt(sg, 90), e = elbowAt(sg, 135); const wz = 2 * e0[2] - e[2], dz = wz - e[2], dy = Math.sqrt(FA * FA - dz * dz);
   return [sg * 0.17, +(e[1] + dy).toFixed(4), +wz.toFixed(4)]; };
+// v2 (Hark self-QA #91): v1 drove the forearms 16-29 mm INTO the roller at the top (chord-vs-arc of the wrist path + the 22 mm
+// protraction shift). The wrist targets are pulled back from the wall by SLZ at the top of the slide and by PRZ more while the
+// shoulder blades protract, so the roller stays pinned between forearms and wall: SLZ .046 / PRZ .016 -> forearm-roller
+// -0.7 .. +3.4 mm over the loop (contact gap measured with da-r2/b/pmesh2.js, pr-serratus6.json).
+const SLZ = 0.046, PRZ = 0.016, dz = (w, d) => [w[0], w[1], +(w[2] + d).toFixed(4)];
 const ROLLR = 0.075, ZR = +(elbowAt(1, 90)[2] + 0.036 + ROLLR - 0.0102).toFixed(4);   // roller centre depth (world)
 const WALLZ = +(ZR + ROLLR).toFixed(4);
 const rep = s => [[s + 0.2, 0], [s + 1.5, 1], [s + 3.0, 1], [s + 4.0, 0]];
@@ -36,8 +41,8 @@ export default {
       solve: { vars: ['px', 'py', 'pz'], reg: { px: 1, py: 0.2, pz: 1 } },
     },
     deltas: {
-      slide: { hands: { right: { wrist: W1(-1) }, left: { wrist: W1(1) } } },
-      prot: { shoulders: { shift: [0, 0, 0.022] } },
+      slide: { hands: { right: { wrist: dz(W1(-1), -SLZ) }, left: { wrist: dz(W1(1), -SLZ) } } },
+      prot: { shoulders: { shift: [0, 0, 0.022] }, hands: { right: { wrist: dz(W0(-1), -PRZ) }, left: { wrist: dz(W0(1), -PRZ) } } },
     },
   },
   highlight: { groups: ['serratus'], side: 'both', pulseTrack: 'slide', pulseBase: 0.3 },
