@@ -1,6 +1,7 @@
 // hip-flexors-C 绳索站姿直腿前抬 (standing cable straight-leg raise). Standing tall with the back to a LOW pulley; an ankle strap
-// on the RIGHT ankle. 'lift' 0 = right foot just off the floor beside the left, 1 = straight right leg raised forward to 60 deg of hip
-// flexion. Both knees stay locked (>=176 deg), trunk upright, pelvis level. 2 reps / 8 s: 1.2 s up, 0.8 s hold, 1.2 s down, 0.8 s pause.
+// on the RIGHT ankle. 'lift' 0 = right foot just off the floor beside the left, 1 = straight right leg raised forward to 80 deg of hip
+// flexion (near horizontal, like the reference). Both knees stay locked (>=176 deg), trunk upright, pelvis level. 2 reps / 8 s: 1.2 s up, 0.8 s hold, 1.2 s down, 0.8 s pause.
+// Camera from the right, slightly in front (dir [-1, 0.05, 0.55]): the front of the right hip (iliopsoas highlight) faces the camera.
 // Head points +Y, front faces +Z, body left = +X (rest frame). Cable column behind the body (-Z), pulley at shin height.
 const DEG = Math.PI / 180;
 const HIP = [-0.0815, 0.852, 0.0057], TH = 0.35292, SH = 0.40981;
@@ -8,7 +9,7 @@ const LEN = Math.sqrt(TH * TH + SH * SH - 2 * TH * SH * Math.cos(179.2 * DEG)); 
 const ankle = (flex, out = 0) => { const a = flex * DEG; return [+(HIP[0] - out).toFixed(4), +(HIP[1] - LEN * Math.cos(a)).toFixed(4), +(HIP[2] + LEN * Math.sin(a)).toFixed(4)]; };
 // the straight leg swings on an arc about the hip: 'lift' is the angle fraction q (cos-eased per phase); the ankle is the chord point
 // A0 + q (A1 - A0) plus an exact in-plane correction (offY, offZ) back onto the arc, keyed every frame (linear between keys)
-const F0 = 5, F1 = 60, OUT = 0.008, A0 = ankle(F0, OUT), A1 = ankle(F1, OUT);
+const F0 = 5, F1 = 80, OUT = 0.008, A0 = ankle(F0, OUT), A1 = ankle(F1, OUT);
 const cosE = u => (1 - Math.cos(Math.PI * Math.min(1, Math.max(0, u)))) / 2;
 const qAt = t => { const r = t % 4; return r < 0.4 ? 0 : r < 1.6 ? cosE((r - 0.4) / 1.2) : r < 2.4 ? 1 : r < 3.6 ? 1 - cosE((r - 2.4) / 1.2) : 0; };
 const KEYS = { lift: [], offY: [], offZ: [] };
@@ -36,13 +37,13 @@ export default {
       solve: { vars: ['px', 'py', 'pz'], reg: { px: 1, py: 0.2, pz: 0.2 } },
     },
     deltas: {
-      lift: { feet: { right: { ankle: A1, rot: [[[1, 0, 0], -50]], poleLow: [-0.085, 0.75, 0.6] } } },
+      lift: { feet: { right: { ankle: A1, rot: [[[1, 0, 0], -68]], poleLow: [-0.085, 0.85, 0.6] } } },
       offY: { feet: { right: { ankle: [A0[0], A0[1] + 1, A0[2]] } } },
       offZ: { feet: { right: { ankle: [A0[0], A0[1], A0[2] + 1] } } },
     },
   },
-  highlight: { groups: ['hip-flexors'], side: 'right', pulseTrack: 'lift', pulseBase: 0.3 },
-  camera: { dir: [-1, 0.16, 0.38], fit: ['head', 'leftToe', 'rightToe', 'pelvis', 'rightAnkle', 'leftAnkle'], pad: 0.16, k: 1.0, drift: 0.9, at: 1.6 },
+  highlight: { groups: ['hip-flexors'], side: 'right', pulseTrack: 'lift', pulseBase: 0.5 },
+  camera: { dir: [-1, 0.05, 0.55], fit: ['head', 'leftToe', 'rightToe', 'pelvis', 'rightAnkle', 'leftAnkle'], pad: 0.16, k: 1.0, drift: 0.9, at: 1.6 },
   frame: { mode: 'fit', width: 500, height: 600, cx: 580, cy: 590 },
   stillAt: 1.6,
   shadow: { joints: ['leftToe', 'leftAnkle', 'rightAnkle', 'pelvis'],
