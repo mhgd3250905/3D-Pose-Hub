@@ -4,23 +4,26 @@
 // Head points +X, front faces +Z (camera side), body left = -Y (down).
 const TH = 10;                         // body incline, deg (solved further by h0)
 // abducted right ankle (rest hips frame): rotate the rest leg about the hip joint around rest +Z by -a (right = rest -X)
-const HIP = [-0.0815, 0.852], LEG = 0.762;
+const HIP = [-0.0815, 0.852], LEG = 0.7624;   // v2: 0.762 left the knee at 176.2° even at rest
 const ank = a => { const r = a * Math.PI / 180; return [+(HIP[0] - LEG * Math.sin(r)).toFixed(4), +(HIP[1] - LEG * Math.cos(r)).toFixed(4), -0.0186]; };
 const A0 = -2, A1 = 36;
-// the descriptor blend is linear, so a straight blend of the two ankle points cuts the arc's chord and bends the knee mid-lift
-// (141° before). Fix: track 'bow' = 4p(1-p) of the lift adds the arc's sagitta back, so the leg stays straight on the arc.
-// Both tracks are sampled per frame (linear keys) from one cosine-eased lift curve.
+// v2: exact arc. With the abduction phi = A0 + d (d = p·(A1−A0)), ankle = ank(A0) + (1 − cos d)·U + sin d·W with
+// U = LEG·[sin A0, cos A0, 0] and W = LEG·[−cos A0, sin A0, 0]; tracks 'ac' = 1 − cos d and 'as' = sin d carry it exactly
+// (v1 used a chord + parabolic sagitta and the knee dipped to 175.1°). 'lift' (p) still drives the foot rotation and QA.
 const DUR = 6, LK = [[0, 0], [0.3, 0], [1.3, 1], [1.9, 1], [3.0, 0], [3.3, 0], [4.3, 1], [4.9, 1]];
 const liftAt = t => { for (let i = 0; i < LK.length; i++) { const [ta, va] = LK[i], [tb, vb] = LK[i + 1] || [DUR, LK[0][1]];
   if (t >= ta && t < tb) return va + (vb - va) * (1 - Math.cos(Math.PI * (t - ta) / (tb - ta))) / 2; } return LK[0][1]; };
 const TS = Array.from({ length: DUR * 30 }, (_, k) => k / 30);
+const R = Math.PI / 180, dOf = p => p * (A1 - A0) * R;
 const LIFT = TS.map(t => [+t.toFixed(4), +liftAt(t).toFixed(5), 'linear']);
-const BOW = TS.map(t => { const p = liftAt(t); return [+t.toFixed(4), +(4 * p * (1 - p)).toFixed(5), 'linear']; });
-const a0 = ank(A0), a1 = ank(A1), am = ank((A0 + A1) / 2);
-const ANK_BOW = a0.map((v, i) => +(v + am[i] - (a0[i] + a1[i]) / 2).toFixed(4));
+const AC = TS.map(t => [+t.toFixed(4), +(1 - Math.cos(dOf(liftAt(t)))).toFixed(6), 'linear']);
+const AS = TS.map(t => [+t.toFixed(4), +Math.sin(dOf(liftAt(t))).toFixed(6), 'linear']);
+const a0 = ank(A0), sA = Math.sin(A0 * R), cA = Math.cos(A0 * R);
+const ANK_C = [+(a0[0] + LEG * sA).toFixed(5), +(a0[1] + LEG * cA).toFixed(5), a0[2]];
+const ANK_S = [+(a0[0] - LEG * cA).toFixed(5), +(a0[1] + LEG * sA).toFixed(5), a0[2]];
 export default {
   id: 'hip-abductors-A', name: '侧平板抬腿', nameEn: 'Side Plank Hip Abduction',
-  timeline: { duration: DUR, tracks: { lift: LIFT, bow: BOW } },
+  timeline: { duration: DUR, tracks: { lift: LIFT, ac: AC, as: AS } },
   pose: {
     base: {
       pelvis: [-0.45, 0.42, 0],
@@ -42,7 +45,7 @@ export default {
       ],
       solve: { vars: ['px', 'py', 'pz', 'h0', 'h1'], reg: { px: 0.5, py: 0.5, pz: 0.5, h0: 0.01, h1: 0.05 } },
     },
-    deltas: { lift: { feet: { right: { ankle: ank(A1), rot: [[[0, 0, 1], -A1]] } } }, bow: { feet: { right: { ankle: ANK_BOW } } } },
+    deltas: { lift: { feet: { right: { rot: [[[0, 0, 1], -A1]] } } }, ac: { feet: { right: { ankle: ANK_C } } }, as: { feet: { right: { ankle: ANK_S } } } },
   },
   highlight: { groups: ['hip-abductors'], side: 'right', pulseAt: [1.6, 4.6], pulseWidth: 0.5, pulseBase: 0.25 },
   camera: { dir: [-0.12, 0.8, 1], fit: ['head', 'leftPalm', 'leftElbow', 'leftToe', 'rightToe', 'pelvis', 'rightAnkle', 'rightElbow'], pad: 0.12, k: 0.75, drift: 0.9, at: 1.6 },
@@ -56,7 +59,7 @@ export default {
   qa: {
     pins: [{ c: 'handL', when: 'always' }, { c: 'footL', when: 'always' }],
     jointPins: [{ j: 'leftElbow' }],
-    straight: [{ j: 'knee.right', min: 172 }, { j: 'knee.left', min: 172 }],
+    straight: [{ j: 'knee.right', min: 176 }, { j: 'knee.left', min: 176 }],
     touch: [{ side: 'right', when: 'always' }],
     allowContact: ['handR|torso', 'forearmR|torso', 'handR|thighR', 'thighL|thighR', 'shinL|shinR', 'footL|footR'],
   },
