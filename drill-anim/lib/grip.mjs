@@ -18,6 +18,10 @@ export function gripPose(side, bar, axis, palm) {
   const g = G[side], Bw = basis(axis, sc(palm, -1)), Bl = basis(g.a, g.pal);
   return { wrist: r4(sub(bar, apply(Bw, Bl, g.c))), finger: r4(apply(Bw, Bl, PF[side][0])), normal: r4(apply(Bw, Bl, PF[side][1])) };
 }
-// world placement of a prop attached to a gripping hand so its handle axis runs through the fist: {offset, rot} for attach:<side>Hand
-// propAxis = the prop's own handle axis in its local frame (dumbbell: [1,0,0]? check the prop); returns offset (bone local) + a rot list
-export function gripAttach(side) { return { offset: G[side].c, axis: G[side].a }; }
+// prop held in a gripping hand (attach: '<side>Hand'): {offset, rot} that put the prop's own handle axis (propAxis, local; the
+// dumbbell's handle runs along X) through the baked fist, centred. Spread into the prop spec: {type:'dumbbell', attach:'rightHand', ...gripAttach('right')}
+export function gripAttach(side, propAxis = [1, 0, 0]) {
+  const g = G[side], u = nrm(propAxis), a = nrm(g.a), ax = cross(u, a), sn = Math.hypot(...ax), cs = dot(u, a);
+  const deg = Math.atan2(sn, cs) * 180 / Math.PI;
+  return { offset: r4(g.c), rot: sn < 1e-9 ? [] : [[r4(nrm(ax)), +deg.toFixed(3)]] };
+}
