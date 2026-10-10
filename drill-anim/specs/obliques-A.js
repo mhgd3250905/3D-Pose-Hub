@@ -100,13 +100,17 @@ export default {
     },
   },
   highlight: { groups: ['obliques'], side: 'both', pulseAt: [2.0, 6.0], pulseWidth: 0.7, pulseBase: 0.3 },
-  camera: { dir: [1, 0.5, 0.0], driftPeriod: 8, driftPhase: 3.1416, drift: 42,
+  // v2 (review r1): low side camera from the body's right (+Z) side, no yaw sway (v1/WIP: front-high [1, 0.5, 0] swaying +-42 deg).
+  // The bear shape, both kicks and the oblique highlight read from the side; the mat stays whole in frame.
+  camera: { dir: [0.2, 0.25, 1], drift: 0,
     fit: ['head', 'leftPalm', 'rightPalm', 'leftToe', 'rightToe', 'pelvis', 'leftShoulder', 'rightShoulder', 'leftKnee', 'rightKnee'], pad: 0.22, k: 1.0, at: 2.0 },
   frame: { mode: 'fit', width: 760, height: 720, cx: 512, cy: 520 },   // v2: was 820/780/cy 550, the mat's near edge left the frame in the bear frames
   stillAt: 2.0,
-  // v2: palm blobs fade out as the hand lifts (3 -> 10 cm): the airborne hand's blob used to land off the mat
+  // v2: contact blobs fade out as soon as the hand/foot leaves the floor (probe footh.js: grounded palm joint 6 mm, grounded
+  // tucked toe joint 84-94 mm incl. the support-foot pivot; the threading foot's toe joint sits at 158 mm while that foot hovers
+  // 37 mm up, so the WIP fade [0.10, 0.20] still drew a 42% blob under it). Palm [8, 30] mm, toe [95, 105] mm -> 0 when airborne.
   shadow: { joints: ['rightPalm', 'leftPalm', 'rightToe', 'leftToe', 'pelvis', 'shoulderCenter'],
-    blobs: [{ j: 'rightPalm', rx: 50, ry: 13, a: 0.7, fade: [0.03, 0.10] }, { j: 'leftPalm', rx: 50, ry: 13, a: 0.7, fade: [0.03, 0.10] }, { j: 'rightToe', rx: 34, ry: 10, a: 0.6, fade: [0.10, 0.20] }, { j: 'leftToe', rx: 34, ry: 10, a: 0.6, fade: [0.10, 0.20] }, { j: 'pelvis', rx: 70, ry: 18, a: 0.35 }] },
+    blobs: [{ j: 'rightPalm', rx: 50, ry: 13, a: 0.7, fade: [0.008, 0.03] }, { j: 'leftPalm', rx: 50, ry: 13, a: 0.7, fade: [0.008, 0.03] }, { j: 'rightToe', rx: 34, ry: 10, a: 0.6, fade: [0.095, 0.105] }, { j: 'leftToe', rx: 34, ry: 10, a: 0.6, fade: [0.095, 0.105] }, { j: 'pelvis', rx: 70, ry: 18, a: 0.35 }] },
   props: [{ type: 'mat', at: [-0.45, 0, 0], size: [1.83, 0.61, 0.006] }],
   keyFrames: [0, 2.0, 6.0],
   qa: {
