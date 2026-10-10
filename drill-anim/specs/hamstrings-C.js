@@ -15,7 +15,8 @@ const add = (a, b) => a.map((v, i) => v + b[i]);
 // arc pivot = the knee joint the leg IK actually lands on at theta = 0 (measured: 0.5 mm above K), so the knees stay put
 const KR = [0, K[1] + 0.00049, K[2] - 0.00022];
 const foot = sg => ({ mode: 'free', frame: 'world', ankle: ankle(sg), rot: [[[1, 0, 0], 90]], pole: [sg * HXK, K[1] - 0.5, K[2] + 0.3] });
-const hand = sg => ({ mode: 'free', frame: 'chest', wrist: [sg * 0.17, 1.17, 0.30], finger: [sg * 0.1, 0.8, 0.55], normal: [0, -0.1, 1], poleUp: [sg * 0.42, 0.95, -0.25] });
+// v2: hands guarded close in front of the chest (elbows ~70 deg; WIP had them 30 cm out, reading as reaching for the floor at the bottom)
+const hand = sg => ({ mode: 'free', frame: 'chest', wrist: [sg * 0.13, 1.20, 0.21], finger: [sg * 0.05, 0.85, 0.5], normal: [0, -0.1, 1], poleUp: [sg * 0.42, 0.95, -0.25] });
 // contact geometry (tuned with tools/propclear.js)
 const PAD = [0, K[1] - 0.205 + 0.0113 - 0.004, 0.035 - 0.006], PADR = 0.14, ROL = add(ankle(0), [0, 0.095, 0.045]), PLATE = add(ankle(0), [0, -0.067, -0.084]);   // v2: pad 4 mm lower - at 78 deg the thighs reached 2.1 mm into it
 const ez = x => 0.5 - 0.5 * Math.cos(Math.PI * x);
