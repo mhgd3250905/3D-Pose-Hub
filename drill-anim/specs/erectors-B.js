@@ -3,9 +3,12 @@
 // rounded down over the ball (waist flexed ~40 deg) up to one straight line with the legs, no further (no lumbar
 // hyperextension), holds 1 s and lowers slowly. Head +X, body faces the floor at the bottom, body left = -Z.
 // 2 reps / 8 s: 1.2 s up, 1.0 s hold, 1.5 s down, 0.3 s rest.
-const BX = 0.22, BR = 0.37;                         // ball centre x, radius
+// v2 (Hark self-QA #91): ball moved/sized to the body (v1 BX .22 / BR .37 put the thighs 68 mm and the pelvis 33 mm INSIDE the ball):
+// BX .335 / BR .372 -> thighs + lower belly rest on the ball, -0.6 .. +3.1 mm over the whole loop (vertex probe da-r2/b/vdump.js)
+const BX = 0.335, BR = 0.372;                       // ball centre x, radius
 const INC = 45;                                     // body-line inclination (toes on the floor -> head up), deg
-const FX = -0.45, FZ = 0.09, WALLX = -0.60;
+// v2: wall face moved onto the toes (v1 WALLX -0.60 left the toes 75 mm off the wall)
+const FX = -0.45, FZ = 0.09, WALLX = -0.5256;
 const c = Math.cos(INC * Math.PI / 180), s = Math.sin(INC * Math.PI / 180);
 const rep = t => [[t + 0.3, 0], [t + 1.5, 1], [t + 2.5, 1], [t + 4.0, 0]];
 const hand = sg => ({ mode: 'free', frame: 'chest', wrist: [sg * 0.14, 1.56, -0.05], finger: [-sg * 0.55, 0.3, -0.78], normal: [-sg, 0, 0], poleUp: [sg * 0.8, 1.35, -1.6], touch: { clear: 0.002 } });
