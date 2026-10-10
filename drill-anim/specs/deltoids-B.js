@@ -1,3 +1,7 @@
+import { gripAttach, G as GRIP } from '../lib/grip.mjs';
+// the baked fist spans -54..+99 mm along its grip axis (probe): the dumbbell slides +22 mm along the axis to centre it, and is
+// 0.32 m long so both plates clear the fist (~10 mm each side)
+const DBA = gripAttach('right'), DBO = DBA.offset.map((x, i) => +(x + 0.022 * GRIP.right.a[i]).toFixed(4));
 // deltoids-B 哑铃土耳其起立（前半程：仰卧 → 肘撑 → 手撑坐起 → 高桥 → 原路返回）. Light dumbbell locked out over the right
 // shoulder the whole time (arm vertical in world), left hand flat on the mat and pinned, right foot flat and pinned (knee bent),
 // left leg straight with the heel pinned. Phases: 'elb' rolls onto the left forearm, 'sit' presses up onto the straight left arm
@@ -32,7 +36,7 @@ export default {
       pelvis: PH.pelvis[0],
       hips: { up: [-1, 0, 0], front: [0, 1, 0], rot: [[[1, 0, 0], 0], [[0, 0, 1], 0]] },
       hands: {
-        right: { mode: 'free', frame: 'world', wrist: PH.wristR[0], finger: [0, 1, 0], normal: [1, 0, 0], poleUp: [-0.2, 0.3, 1.0] },
+        right: { mode: 'free', frame: 'world', relax: 0, wrist: PH.wristR[0], finger: [0, 1, 0], normal: [1, 0, 0], poleUp: [-0.2, 0.3, 1.0] },
         left: { mode: 'floor', at: HL, finger: [0.7, -0.7], poleUp: [0.0, 1.5, -0.2] },
       },
       feet: {
@@ -51,12 +55,15 @@ export default {
   },
   highlight: { groups: ['deltoids'], side: 'both', pulseTrack: 'sit', pulseBase: 0.35 },
   camera: { dir: [0.9, 0.55, 0.8], fit: ['head', 'leftToe', 'rightToe', 'pelvis', 'leftPalm', 'rightPalm'], pad: 0.15, k: 1.0, drift: 2, at: 6.0 },
-  frame: { mode: 'fit', width: 760, height: 820, cx: 540, cy: 560 },
+  // v2: framed so the whole mat stays in the picture (v1 cut ~54 px off its left and bottom edges); framing probe margins >=80 px
+  frame: { mode: 'fit', width: 600, height: 640, cx: 558, cy: 498 },
   stillAt: 6.0,
   shadow: { joints: ['leftPalm', 'rightAnkle', 'leftAnkle', 'pelvis'], blobs: [{ j: 'leftPalm', rx: 40, ry: 10, a: 0.6 }, { j: 'rightAnkle', rx: 40, ry: 10, a: 0.6 }, { j: 'leftAnkle', rx: 40, ry: 10, a: 0.6 }, { j: 'pelvis', rx: 80, ry: 16, a: 0.45 }], bands: [] },
   props: [
     { type: 'mat', at: [0.15, 0, -0.2], size: [1.83, 1.0, 0.006] },
-    { type: 'dumbbell', length: 0.26, plate: 0.045, attach: 'rightHand', offset: [-0.095, -0.035, 0], rot: [[[0, 1, 0], 90]] },
+    { type: 'gripHand', side: 'right' },
+    // v2: closed power grip (fist baked by P.bakeGrip #23 / gripHand #82); the handle runs through the fist centre (lib/grip.mjs gripAttach)
+    { type: 'dumbbell', length: 0.32, plate: 0.045, attach: 'rightHand', offset: DBO, rot: DBA.rot },
   ],
   keyFrames: [2.6, 4.0, 6.0],
   qa: {
