@@ -222,6 +222,7 @@ Object.assign(B, {
       const arms = [0, 1, 2].map(() => { const m = tube(t, new t.Vector3(), new t.Vector3(0, 1, 0), 0.018, frame, 12); g.add(m); return m; });
       sides[side] = { pg, fg, arms, po: thigh.worldToLocal(padC.clone()), pq: tq, fo: foot.worldToLocal(footC.clone()), fq, sg }; }
     g.userData = { sides }; E_reset(); return g; },
+  // TODO: delete this placeholder once colleague 1's shared kettlebell prop is merged (forearms-C then switches to it).
   // bottoms-up kettlebell PLACEHOLDER (until colleague 1's shared kettlebell lands): the handle bar runs through the baked power grip
   // of the hand (P.bakeGrip), two horns rise from the bar ends and carry the bell above the fist along the hand's long axis.
   // spec: {type:'kbBottomsUp', side:'right', r:0.085, horn:0.075, len:0.12, shift}
@@ -290,7 +291,9 @@ P.place = function(o) { const t = T(), v = flareInspector.viewer, s = o.userData
   if (s.type === 'kbBottomsUp') { const G = o.userData.G, bone = v.coach.getObjectByName((s.side || 'right') + 'Hand'); bone.updateMatrixWorld(true);
     const bp = bone.getWorldPosition(new t.Vector3()), bq = bone.getWorldQuaternion(new t.Quaternion()), a = G.a.clone().applyQuaternion(bq).normalize();
     const c = G.c.clone().applyQuaternion(bq).add(bp).addScaledVector(a, s.shift || 0);
-    const up = c.clone().sub(bp); up.addScaledVector(a, -up.dot(a)).normalize();      // the hand's long axis (wrist -> fist), square to the bar
+    // bell direction: world up (square to the bar) so the bell stays upright above the fist whatever the wrist does (spec upright:false =
+    // the old behaviour, along the hand's long axis wrist -> fist)
+    const up = s.upright === false ? c.clone().sub(bp) : new t.Vector3(0, 1, 0); up.addScaledVector(a, -up.dot(a)).normalize();
     const m = new t.Matrix4().makeBasis(up, a, up.clone().cross(a)); o.quaternion.setFromRotationMatrix(m); o.position.copy(c); o.updateMatrixWorld(true); return; }
   if (s.type === 'cableStack') { place0(o); o.updateMatrixWorld(true); P.anchors[s.name || 'pulley'] = o.userData.exit.clone().applyMatrix4(o.matrixWorld);
     // the sheave turns to face the cable
