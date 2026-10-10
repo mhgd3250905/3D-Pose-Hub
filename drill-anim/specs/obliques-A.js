@@ -37,9 +37,12 @@ const freeHand = (W, FN) => ({ mode: 'free', frame: 'chest', wrist: W, finger: F
 const unit = (Bv, i) => Bv.map((v, k) => (k === i ? v + 1 : v));
 const tucked = z => ({ mode: 'floor', at: [FX, z], heading: 90, pitch: PT, roll: 0, lift: 0, pole: [-0.2, -0.4, z] });
 const lift = u => 0.035 * u + 0.06 * 4 * u * (1 - u);                                   // clearance of the threading foot's lowest point
-const TOFF = [[0.1157, 0.0], [0.12151, 0.00478], [0.12687, 0.01], [0.13178, 0.01561], [0.13616, 0.02159], [0.14006, 0.02786], [0.14334, 0.03444], [0.14606, 0.04123], [0.14821, 0.04819], [0.14977, 0.05526], [0.15072, 0.06243], [0.15099, 0.06963], [0.15066, 0.07678], [0.14973, 0.08387], [0.14821, 0.09083], [0.14612, 0.09763], [0.14338, 0.10418], [0.14014, 0.11048], [0.13634, 0.11645], [0.13204, 0.12206], [0.12728, 0.12728]];   // (toe - ankle) x/z of the support foot vs r, r = 0..1 step 0.05
-const toeOff = r => { const q = Math.max(0, Math.min(1, r)) * 20, i = Math.min(19, Math.floor(q)), f = q - i; return [0, 1].map(k => TOFF[i][k] + (TOFF[i + 1][k] - TOFF[i][k]) * f); };
-const TOE0 = [FX + TOFF[0][0], FZ + TOFF[0][1]];                                        // bear toe (x, |z|)
+// v2: (toe - ankle) x/z of the support foot measured at EVERY roll value r the loop samples (kick R frames 0..120; kick L
+// samples the same r values 120 frames later), [r, dx, dz]. v1 interpolated a 21-entry table (r step 0.05): toe slide 0.13 mm.
+const TOFF = [[0, 0.115702, 0], [0.001906, 0.115931, 0.000174], [0.007594, 0.116611, 0.000696], [0.01704, 0.117729, 0.001576], [0.030167, 0.119258, 0.002826], [0.046833, 0.121157, 0.004459], [0.06699, 0.123389, 0.006498], [0.090447, 0.125895, 0.008958], [0.116953, 0.128604, 0.011846], [0.14645, 0.131458, 0.015188], [0.178645, 0.134374, 0.018978], [0.213175, 0.137263, 0.023199], [0.25, 0.14006, 0.02786], [0.28873, 0.142676, 0.032921], [0.32895, 0.14503, 0.038326], [0.37059, 0.147066, 0.044056], [0.413223, 0.148721, 0.050036], [0.456377, 0.149946, 0.056173], [0.5, 0.150717, 0.062429], [0.543623, 0.151018, 0.068705], [0.586777, 0.150852, 0.0749], [0.62941, 0.150237, 0.080974], [0.67105, 0.149208, 0.086831], [0.71127, 0.147817, 0.092392], [0.75, 0.146117, 0.097632], [0.786825, 0.144179, 0.102489], [0.821355, 0.142084, 0.106916], [0.85355, 0.139895, 0.110919], [0.883047, 0.137697, 0.114469], [0.909553, 0.135569, 0.117557], [0.93301, 0.133568, 0.120204], [0.953167, 0.131764, 0.12241], [0.969833, 0.130214, 0.124185], [0.98296, 0.128957, 0.125551], [0.992406, 0.128033, 0.126515], [0.998094, 0.127469, 0.127088], [1, 0.127279, 0.127279]];
+const toeOff = r => { r = Math.max(0, Math.min(1, r)); let i = 0; while (i < TOFF.length - 2 && TOFF[i + 1][0] <= r) i++;
+  const [r0, x0, z0] = TOFF[i], [r1, x1, z1] = TOFF[i + 1], f = r1 > r0 ? Math.min(1, (r - r0) / (r1 - r0)) : 0; return [x0 + (x1 - x0) * f, z0 + (z1 - z0) * f]; };
+const TOE0 = [FX + TOFF[0][1], FZ + TOFF[0][2]];                                        // bear toe (x, |z|)
 const trk = {}, dl = {};
 for (const [s, side, r, th, W0, FN0, tag, kick] of [[-1, 'right', rR, tR, W0R, FN0R, 'R', 'left'], [1, 'left', rL, tL, W0L, FN0L, 'L', 'right']]) {
   const ph = t => 90 * r(t), zs = kick === 'left' ? 1 : -1;
@@ -99,10 +102,11 @@ export default {
   highlight: { groups: ['obliques'], side: 'both', pulseAt: [2.0, 6.0], pulseWidth: 0.7, pulseBase: 0.3 },
   camera: { dir: [1, 0.5, 0.0], driftPeriod: 8, driftPhase: 3.1416, drift: 42,
     fit: ['head', 'leftPalm', 'rightPalm', 'leftToe', 'rightToe', 'pelvis', 'leftShoulder', 'rightShoulder', 'leftKnee', 'rightKnee'], pad: 0.22, k: 1.0, at: 2.0 },
-  frame: { mode: 'fit', width: 820, height: 780, cx: 512, cy: 550 },
+  frame: { mode: 'fit', width: 760, height: 720, cx: 512, cy: 520 },   // v2: was 820/780/cy 550, the mat's near edge left the frame in the bear frames
   stillAt: 2.0,
+  // v2: palm blobs fade out as the hand lifts (3 -> 10 cm): the airborne hand's blob used to land off the mat
   shadow: { joints: ['rightPalm', 'leftPalm', 'rightToe', 'leftToe', 'pelvis', 'shoulderCenter'],
-    blobs: [{ j: 'rightPalm', rx: 50, ry: 13, a: 0.7 }, { j: 'leftPalm', rx: 50, ry: 13, a: 0.7 }, { j: 'rightToe', rx: 34, ry: 10, a: 0.6 }, { j: 'leftToe', rx: 34, ry: 10, a: 0.6 }, { j: 'pelvis', rx: 70, ry: 18, a: 0.35 }] },
+    blobs: [{ j: 'rightPalm', rx: 50, ry: 13, a: 0.7, fade: [0.03, 0.10] }, { j: 'leftPalm', rx: 50, ry: 13, a: 0.7, fade: [0.03, 0.10] }, { j: 'rightToe', rx: 34, ry: 10, a: 0.6, fade: [0.10, 0.20] }, { j: 'leftToe', rx: 34, ry: 10, a: 0.6, fade: [0.10, 0.20] }, { j: 'pelvis', rx: 70, ry: 18, a: 0.35 }] },
   props: [{ type: 'mat', at: [-0.45, 0, 0], size: [1.83, 0.61, 0.006] }],
   keyFrames: [0, 2.0, 6.0],
   qa: {
