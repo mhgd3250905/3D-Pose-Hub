@@ -91,7 +91,7 @@ export default {
     bands: [{ from: 'rightAnkle', to: 'leftAnkle', mid: 'pelvis', rx: 70, ry: 14, a: 0.28, dy: 4, sag: 0.0 }] },
   props: [
     { type: 'cableStack', name: 'pulley', at: [-1.2, 0, 0.55], yaw: 90, height: 2.25, pulleyY: 1.98 },
-    { type: 'dHandle', side: 'right', name: 'handle', toward: 'pulley', shift: +(0.01 - SEP / 2).toFixed(4), len: 0.25, lean: 0.25 },
+    { type: 'dHandle', side: 'right', name: 'handle', toward: 'pulley', shift: +(0.01 - SEP / 2).toFixed(4), len: 0.25, lean: 0.4 },   // lean 0.4 (was 0.25): D-loop apex tilts toward the knuckles so the cable clears the right forearm (>=4.4 mm at the chop end)
     { type: 'grip', side: 'left' },
     { type: 'cable', from: 'pulley', to: 'handle' },
   ],
