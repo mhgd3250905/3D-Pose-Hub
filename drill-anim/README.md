@@ -14,7 +14,7 @@ specs/<id>.js       one drill = one plain-data ES module (export default {...})
 page/               browser-side: toon.js (shader/theme), engine.js (pose/solver/camera/metrics), props.js,
                     anim-sideplank.js (frozen v7 solver used by deltoids-A), head.js, posedlib.js
 lib/                boot.mjs (launch + install), render.mjs (frame loop), comp.py (compositing), qa.py,
-                    masks.mjs + masksheet.py (17-group highlight sheet), swatch.py (theme comparison), config.mjs
+                    masks.mjs + masksheet.py (17-group highlight sheet), swatch.py (theme comparison), tiersheet.py (per-tier overview), config.mjs
 assets/             handdef.json (relaxed-hand deltas), srchead.json (mannequin head), sideplank-cfg.json (v7 base pose)
 tools/probe.mjs     ad-hoc pose probe
 ```
@@ -42,6 +42,7 @@ python3 drill.py render triceps-A --jobs 1            # default 2 parallel brows
 python3 drill.py qa triceps-A                         # recompute metrics from the last render's frame data
 python3 drill.py masks --out mask-sheet.png           # 17-group highlight check sheet (neutral standing pose)
 python3 drill.py swatch deltoids-A --frames 63 --themes themes/outfit-teal.json,themes/outfit-sand.json --out swatch-sheet.png
+python3 lib/tiersheet.py A A-tier-sheet_v1.png        # one labelled tile per drill of a tier, from <out_dir>/<id>.mp4 (missing drills = placeholder)
 ```
 
 Speed on 2 vCPU with SwiftShader is about 0.4 frames/s per job pair: a 240-frame loop takes about 11 min to render, plus about 1.5 min to composite and encode. A preview of 3 frames takes about 40 s, mostly boot time. Always preview with `--frames` before a full render.
@@ -86,7 +87,9 @@ export default {
             drift: deg (yaw sway), driftPeriod: s (default = loop; must divide the loop), driftPhase: rad },
   frame: { mode: 'fit', width, height?, cx, cy } | { mode: 'v7', width, left, top },  // placement of the body on the canvas
   stillAt: t,                               // the pose the frame placement is fitted to (default 0)
-  shadow: { joints: [...], blobs: [{ j, dx, dy, rx, ry, a }], bands: [{ from, to, mid, rx, ry, a, dy, sag }] },
+  shadow: { joints: [...], blobs: [{ j, dx, dy, rx, ry, a, fade?: [y0, y1] }], bands: [{ from, to, mid, rx, ry, a, dy, sag }] },
+                                            // fade: the blob's alpha falls linearly to 0 as its joint rises from y0 to y1 m
+                                            // (a lifted hand casts no floor blob; without it the blob stays put under the hand)
   props: [{ type: 'mat', at: [x, y, z], size: [L, W, H], yaw }],          // see page/props.js
   keyFrames: [t, t, t],                     // shown on the contact sheet
   qa: {
@@ -136,7 +139,7 @@ QA runs automatically after every full render. Each check and its pass condition
 | `below_floor` | lowest skinned vertex | ≥ −2 mm |
 | `pins` | drift of each pinned contact centroid while its `when` holds | < 5 mm |
 | `straight` | minimum elbow or knee angle while `when` holds | ≥ `min` |
-| `limits` | knee and elbow bend direction, hip flexion and abduction ranges, waist bend | within joint limits (hip abduction judged by `hip_abd_true_deg_range`: thigh vs the pelvis's sagittal plane; the frontal projection `hip_abd_deg_range` exceeds 90° when the thigh is near horizontal, e.g. a Cossack squat) |
+| `limits` | knee and elbow bend direction, hip flexion and abduction ranges, waist bend | within joint limits (hip flexion < 135° unless the spec sets `qa.hipFlexMax`, only with a justification in the spec; hip abduction judged by `hip_abd_true_deg_range`: thigh vs the pelvis's sagittal plane; the frontal projection `hip_abd_deg_range` exceeds 90° when the thigh is near horizontal, e.g. a Cossack squat) |
 | `self_clip` | capsule-hull overlap between non-adjacent segments (spec-allowed pairs skipped) | < 8 mm |
 
 Also reported: `solver_warning_frames` (LM did not reach tolerance; check visually) and `frame_edge_touch_frames` (body touches the canvas edge). `pass` is the AND of the checks.
@@ -150,9 +153,13 @@ QA is numeric only. Always look at the contact sheet and a few in-between frames
 - `hands.<side>.touch = { clear, from, pull, iters, exclude, solve, toward }` makes a free hand rest on the body without clipping. After the pose, the wrist moves along the surface normal until the hand rests `clear` (default 2 mm) above the surface. `pull` (default 1, eased in from `w = from`) controls how far a hovering hand is pulled in. With `solve: 'bisect'` (recommended) the offset is found by bisection: it is robust where the gap is not smooth, always ends outside, and walks the wrist toward `toward` (default `waist`) in 15 mm steps first if the hand starts more than 45 mm away. The default iterative solve also has a push-only guard so it never ends inside. The iterative solve measures the legacy nearest-vertex (euclidean) gap unless `gap: 'radial'` is set, so deltoids-A and rotator-cuff-A render exactly as before; `bisect` always uses the radial gap. The v7 solver takes the same option as `solverArgs.touch`.
 - QA `hand_clip` checks every hand skin vertex against the outer body layers (skin, tee, cuff, shorts, head). A vertex is inside when it is closer to the nearest bone's core line than the 6 nearest surface vertices; the gap outside is the radial gap, capped by the euclidean distance. It fails below −0.5 mm. `qa.touch: [{ side, when, max_gap }]` also checks a resting hand's gap (≤ 4 mm by default). `qa.handClipExclude` skips bones.
 
+### Weight-bearing free hands
+- A hand with `w > 0` (lifted or free) normally drops its arm's `reach` constraint. `hands.<side>.keepReach` (0..1, animatable through `deltas`) keeps it, scaled by the value: use it for a free-mode hand that still bears weight, e.g. forearms-A's back of the hand on the mat (a world-frame free pose, since `floor` mode is palm-down only).
+- `qa.pins` may pin the same contact in several phases (`{ c: 'handR', when: 'params.qF>0.5' }`, `{ c: 'handR', when: 'params.qS>0.5' }`); a repeated contact is reported as `'<c> <when>'`, a single one keeps the plain key.
+
 ### Shoulders and mid-limb pins
 - `shoulders.shift: [x, y, z]` (chest frame, metres) shifts the scapula for protraction/retraction/elevation/depression. The scapula bone moves against the chest and the arm is re-solved from the shifted shoulder to the same wrist. It can be animated through `deltas`.
-- `{ type: 'mid', limb, at: [x, y, z], weight }` pins an elbow or knee at a world point, e.g. a forearm plank or kneeling. `qa.jointPins: [{ j: 'leftElbow' }]` checks its drift.
+- `{ type: 'mid', limb, at: [x, y, z], weight }` pins an elbow or knee at a world point, e.g. a forearm plank or kneeling. `qa.jointPins: [{ j: 'leftElbow' }]` checks its drift. Add `when` to limit it to a phase and `axes: 'xz'` to check only the horizontal slide (obliques-A: the support foot pivots on its ball, so the toe joint rolls up ~6 mm while its contact stays put).
 
 ### Timelines
 - Descriptor blending is linear, so blending two points on an arc (such as an abducting ankle) cuts the chord and bends the limb. Add a second track that carries the arc's sagitta (hip-abductors-A: `bow = 4p(1 − p)`) and sample both tracks per frame as `linear` keys from one eased curve; a spec is a JS module, so it can compute its own keys.
