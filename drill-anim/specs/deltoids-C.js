@@ -76,7 +76,9 @@ export default {
   shadow: { joints: ['leftToe', 'rightToe', 'leftAnkle', 'rightKnee', 'pelvis'],
     blobs: [{ j: 'leftAnkle', rx: 46, ry: 11, a: 0.65 }, { j: 'rightKnee', rx: 40, ry: 10, a: 0.6 }],
     bands: [{ from: 'rightToe', to: 'leftAnkle', mid: 'rightKnee', rx: 70, ry: 14, a: 0.3, dy: 4, sag: 0.0 }] },
-  props: [{ type: 'landmine', side: 'right', pivot: PIV, shift: 0.01 }],
+  // v2: shift 0.01 -> -0.03 slides the aim point 4 cm toward the pivot along the bar (bar direction unchanged; grip path unchanged):
+  // the end cap now stops just past the fist instead of reaching onto the front deltoid in the start position (f0/f120/f239)
+  props: [{ type: 'landmine', side: 'right', pivot: PIV, shift: -0.03 }],
   keyFrames: [0.4, 1.6, 3.0],
   qa: {
     pins: [{ c: 'footL', when: 'always' }, { c: 'footR', when: 'always' }],
