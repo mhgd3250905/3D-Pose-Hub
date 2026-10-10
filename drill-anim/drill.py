@@ -72,6 +72,14 @@ def render(sid, theme=None, jobs=2, frames=None, keep=False, tag=''):
             a, b = i * step, min(N, (i + 1) * step)
             ps.append(node_render(specf, fr, a, b, theme, ['--with-still'] if i == 0 else []))
         [p.wait() for p in ps]
+        for attempt in range(2):  # a browser launch can fail transiently: re-run any job whose frames are missing
+            miss = [i for i in range(jobs) if any(not os.path.exists(f'{fr}/m-{f:04d}.png') for f in range(i * step, min(N, (i + 1) * step)))]
+            if not miss: break
+            log(sid, 'retrying render jobs', miss)
+            ps = [node_render(specf, fr, i * step, min(N, (i + 1) * step), theme, ['--with-still'] if i == 0 else []) for i in miss]
+            [p.wait() for p in ps]
+        lost = [f for f in range(N) if not os.path.exists(f'{fr}/m-{f:04d}.png')]
+        if lost: raise SystemExit(f'{sid}: {len(lost)} of {N} frames missing after retries (first {lost[0]})')
     log(sid, 'render', round(time.time() - t0), 's')
     for f in glob.glob(fr + '-log-*.txt'):
         t = open(f).read()
