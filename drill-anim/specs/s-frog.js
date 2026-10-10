@@ -11,25 +11,32 @@ export default {
       pelvis: [0, 0.30, 0.0],
       hips: { up: [0, 0, 1], front: [0, -1, 0], rot: [[[1, 0, 0], 0]] },
       chest: { waist: [[[1, 0, 0], 0]] },
-      hands: {
-        left: { mode: 'floor', at: [0.13, 0.66], finger: [-0.15, 1], poleUp: [0.5, 0.2, -0.4] },
-        right: { mode: 'floor', at: [-0.13, 0.66], finger: [0.15, 1], poleUp: [-0.5, 0.2, -0.4] },
+      hands: {   // v2: free palms placed on the mat (floor mode left the hand 6 mm up); palm 0.5 mm, never moves
+        left: { mode: 'free', frame: 'world', palmAt: [0.12, 0.015, 0.727], finger: [-0.15, 0, 1], normal: [0, -1, 0], pole: [0.187, 0.0497, 0.441] },
+        right: { mode: 'free', frame: 'world', palmAt: [-0.12, 0.015, 0.727], finger: [0.15, 0, 1], normal: [0, -1, 0], pole: [-0.187, 0.0497, 0.441] },
       },
-      feet: {
-        left: { mode: 'free', frame: 'world', ankle: [0.42, 0.07, -0.38], rot: [[[0, 1, 0], -90], [[0, 0, 1], -80]], pole: [0.40, 0.0, 0.3] },
-        right: { mode: 'free', frame: 'world', ankle: [-0.42, 0.07, -0.38], rot: [[[0, 1, 0], 90], [[0, 0, 1], 80]], pole: [-0.40, 0.0, 0.3] },
+      feet: {   // v2: ankles 9 mm lower (shoe on the mat); knee pole = the knee pin so the knee never leaves its spot
+        left: { mode: 'free', frame: 'world', ankle: [0.42, 0.0607, -0.38], rot: [[[0, 1, 0], -90], [[0, 0, 1], -80]], pole: [0.345, 0.0485, 0.023] },
+        right: { mode: 'free', frame: 'world', ankle: [-0.42, 0.0607, -0.38], rot: [[[0, 1, 0], 90], [[0, 0, 1], 80]], pole: [-0.345, 0.0485, 0.023] },
       },
+      // v2: v1 had solve.vars [] so these constraints were ignored (knees 31-38 mm up and sliding 10 mm, elbows sliding 4 mm).
+      // Knees and elbows are now pinned at mat height; the solver sets the hip height (py) and the waist bend (c0) so that both hold
+      // while the hips rock back. The elbow height eases 1.2 mm with 'open' because the forearm rolls as the elbow opens.
       constraints: [
-        { type: 'mid', limb: 'leftArm', at: [0.17, 0.045, 0.40], weight: 6 },
-        { type: 'mid', limb: 'rightArm', at: [-0.17, 0.045, 0.40], weight: 6 },
+        { type: 'mid', limb: 'leftLeg', at: [0.345, 0.0485, 0.023], weight: 3 },
+        { type: 'mid', limb: 'rightLeg', at: [-0.345, 0.0485, 0.023], weight: 3 },
+        { type: 'mid', limb: 'leftArm', at: [0.187, 0.0497, 0.441], weight: 3 },
+        { type: 'mid', limb: 'rightArm', at: [-0.187, 0.0497, 0.441], weight: 3 },
       ],
-      solve: { vars: [], reg: {} },
+      solve: { vars: ['py', 'c0'], reg: { py: 0.1, c0: 0.05 } },
     },
-    deltas: { open: { pelvis: [0, 0.298, -0.05] } },
+    deltas: { open: { pelvis: [0, 0.298, -0.09],   // v2: rock back 9 cm (v1 5 cm)
+      hands: { left: { pole: [0.187, 0.0485, 0.441] }, right: { pole: [-0.187, 0.0485, 0.441] } },
+      constraints: [{}, {}, { at: [0.187, 0.0485, 0.441] }, { at: [-0.187, 0.0485, 0.441] }] } },
   },
   highlight: { groups: ['adductors'], side: 'both', pulseTrack: 'open', pulseBase: 0.3 },
-  camera: { dir: [0.6, 0.8, -0.55], fit: ['head', 'leftKnee', 'rightKnee', 'pelvis', 'leftToe', 'rightToe', 'leftElbow'], pad: 0.16, k: 1.0, drift: 0.9, at: 0 },
-  frame: { mode: 'fit', width: 720, height: 600, cx: 512, cy: 530 },
+  camera: { dir: [0.8, 0.45, -0.6], fit: ['head', 'leftKnee', 'rightKnee', 'pelvis', 'leftToe', 'rightToe', 'leftElbow'], pad: 0.16, k: 1.0, drift: 0.9, at: 0 },
+  frame: { mode: 'fit', width: 560, height: 470, cx: 534, cy: 500 },   // v2: smaller so the whole mat is in frame (v1: left and right ends cut)
   stillAt: 3.8,
   shadow: { joints: ['leftKnee', 'rightKnee', 'leftElbow', 'rightElbow', 'pelvis'],
     blobs: [{ j: 'leftKnee', rx: 40, ry: 10, a: 0.6 }, { j: 'rightKnee', rx: 40, ry: 10, a: 0.6 }, { j: 'leftElbow', rx: 40, ry: 10, a: 0.5 }, { j: 'rightElbow', rx: 40, ry: 10, a: 0.5 }],
@@ -37,8 +44,8 @@ export default {
   props: [{ type: 'mat', at: [0, 0, 0.2], size: [1.0, 1.83, 0.006], yaw: 0 }],
   keyFrames: [0.3, 2.0, 3.8],
   qa: {
-    pins: [{ c: 'handL', when: 'always' }, { c: 'handR', when: 'always' }],
-    jointPins: [{ j: 'leftElbow' }, { j: 'rightElbow' }],
+    pins: [{ c: 'handL', when: 'always' }, { c: 'handR', when: 'always' }, { c: 'footL', when: 'always' }, { c: 'footR', when: 'always' }],
+    jointPins: [{ j: 'leftElbow', axes: 'xz' }, { j: 'rightElbow', axes: 'xz' }, { j: 'leftKnee' }, { j: 'rightKnee' }, { j: 'leftAnkle' }, { j: 'rightAnkle' }],
     allowContact: ['forearmL|upperArmL', 'forearmR|upperArmR'],
   },
 };
