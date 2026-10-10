@@ -8,7 +8,10 @@
 // Hands: plant = flat palm on the floor (finger direction animated, changed only while the hand is in the air);
 // free = a world-frame pose (the hover between two plants, or the back-of-hand pose). keepReach keeps the straight-arm reach
 // constraint on the back-of-hand pose, which bears weight (engine: a free hand otherwise drops its reach constraint).
-const HZ = 0.19, KX = -0.524, KZ = 0.0857, FX = -0.90, ROCK = 0.13, BACK = -0.7;
+// v3 (Hark self-QA, same fix as glute-max-B #28 v2): v2 pinned both knee joints at y 0.0765, which left the knee/shin skin ~40 mm
+// above the floor (~34 mm above the mat): the kneeling knees floated. KY 0.0407 puts the kneecaps on the mat, the pelvis drops by
+// the same amount, and KX -0.524 -> -0.515 / FX -0.90 -> -0.868 keep the knee-ankle distance = the real shin length (tucked toes).
+const HZ = 0.19, KX = -0.515, KY = 0.0407, KZ = 0.0857, FX = -0.868, ROCK = 0.13, BACK = -0.7;
 const DUR = 16, TS = Array.from({ length: DUR * 30 }, (_, k) => k / 30), DEG = Math.PI / 180;
 const cosE = u => (1 - Math.cos(Math.PI * Math.max(0, Math.min(1, u)))) / 2;
 const seg = (K, t) => { for (let i = 0; i < K.length - 1; i++) { const [ta, va] = K[i], [tb, vb] = K[i + 1]; if (t >= ta && t < tb) return va + (vb - va) * cosE((t - ta) / (tb - ta)); } return K[K.length - 1][1]; };
@@ -65,17 +68,17 @@ export default {
   timeline: { duration: DUR, tracks: { rock: lin(rock), qF: ph(0), qS: ph(1), qB: ph(2), qD: ph(3), ...trk } },
   pose: {
     base: {
-      pelvis: [-0.52, 0.45, 0],
+      pelvis: [-0.52, 0.414, 0],
       hips: { up: [1, 0, 0], front: [0, -1, 0], rot: [[[0, 0, 1], 8]] },
       chest: { waist: [[[0, 0, 1], 0]] },
       hands: base,
       feet: {
-        right: { mode: 'floor', at: [FX, KZ], heading: 90, pitch: 62, pole: [KX, 0.0765, KZ] },
-        left: { mode: 'floor', at: [FX, -KZ], heading: 90, pitch: 62, pole: [KX, 0.0765, -KZ] },
+        right: { mode: 'floor', at: [FX, KZ], heading: 90, pitch: 62, pole: [KX, KY, KZ] },
+        left: { mode: 'floor', at: [FX, -KZ], heading: 90, pitch: 62, pole: [KX, KY, -KZ] },
       },
       constraints: [
         { type: 'reach', limb: 'rightArm', angle: 178.5 }, { type: 'reach', limb: 'leftArm', angle: 178.5 },
-        { type: 'mid', limb: 'rightLeg', at: [KX, 0.0765, KZ], weight: 1 }, { type: 'mid', limb: 'leftLeg', at: [KX, 0.0765, -KZ], weight: 1 },
+        { type: 'mid', limb: 'rightLeg', at: [KX, KY, KZ], weight: 1 }, { type: 'mid', limb: 'leftLeg', at: [KX, KY, -KZ], weight: 1 },
         { type: 'joint', joint: 'shoulderCenter', axis: [1, 0, 0], value: 0.0, weight: 0.5 },
       ],
       solve: { vars: ['px', 'py', 'pz', 'h0', 'c0'], reg: { px: 0.3, py: 0.3, pz: 1, h0: 0.01, c0: 0.3 }, iters: 80 },
