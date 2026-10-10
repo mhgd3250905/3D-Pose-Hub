@@ -40,7 +40,11 @@ def comp(nm):
     def ell(c,rx,ry,a):
         nonlocal sh;sh=np.maximum(sh,a*np.exp(-(((xq-c[0])/(rx*K))**2+((yq-c[1])/(ry*K))**2)))
     for bl in sh_spec.get('blobs',[]):
-        p=P(bl['j']);ell((p[0]+bl.get('dx',0)*K,p[1]+bl.get('dy',0)*K),bl['rx'],bl['ry'],bl['a'])
+        a=bl['a']
+        if 'fade' in bl:  # [y0, y1] m: the blob fades out linearly as its joint rises from y0 to y1 (an airborne hand casts no contact shadow)
+            y=m['J'][bl['j']][1];y0,y1=bl['fade'];a*=float(np.clip((y1-y)/max(y1-y0,1e-6),0,1))
+        if a<=0:continue
+        p=P(bl['j']);ell((p[0]+bl.get('dx',0)*K,p[1]+bl.get('dy',0)*K),bl['rx'],bl['ry'],a)
     for bd in sh_spec.get('bands',[]):
         a=np.array(P(bd['from']));b=np.array(P(bd['to']));pv=np.array(P(bd.get('mid','pelvis')))
         hk=1.0
