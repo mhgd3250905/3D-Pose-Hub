@@ -39,26 +39,6 @@ const B = {
   parallettes(th, s) { const t = T(); const g = new t.Group(); const L = s.length || 0.5, H = s.height || 0.2, gap = s.gap || 0.5;
     for (const sg of [-1, 1]) { const bar = new t.Mesh(new t.CylinderGeometry(0.018, 0.018, L, 16), toonMat(th)); bar.rotation.x = Math.PI / 2; bar.position.set(sg * gap / 2, H, 0); g.add(bar);
       for (const e of [-1, 1]) { const leg = new t.Mesh(new t.CylinderGeometry(0.016, 0.016, H, 12), toonMat(th)); leg.position.set(sg * gap / 2, H / 2, e * L * 0.42); g.add(leg); } } return g; },
-  // band anchor post (B-tier band drills): heavy round post on a square base plate, standing at s.at (floor); s.height (0.7 m),
-  // s.r (0.035), s.tieY = height of the band knot ring (bands are separate `band` props from a world point at the post to the body).
-  bandPost(th, s) { const t = T(); const g = new t.Group(); const H = s.height || 0.7, r = s.r || 0.035;
-    const post = new t.Mesh(new t.CylinderGeometry(r, r, H, 28), toonMat(th)); post.position.y = H / 2; g.add(post);
-    const cap = new t.Mesh(new t.CylinderGeometry(r * 1.15, r * 1.15, 0.02, 28), toonMat(th, { base: th.edge })); cap.position.y = H - 0.01; g.add(cap);
-    const plate = new t.Mesh(new t.BoxGeometry(0.26, 0.022, 0.26), toonMat(th)); plate.position.y = 0.011; g.add(plate);
-    const knot = new t.Mesh(new t.TorusGeometry(r + 0.007, 0.008, 8, 28), toonMat(th, { base: s.colour || '#7a4a32', rimK: 0.5 })); knot.rotation.x = Math.PI / 2; knot.position.y = s.tieY ?? 0.3; g.add(knot);
-    return g; },
-  // flat wall panel (hand support): s.at = centre of the face on the floor line, s.normal yaw via s.yaw (face toward +Z at yaw 0)
-  wall(th, s) { const t = T(); const g = new t.Group(); const [W, H, D] = s.size || [1.4, 2.2, 0.12];
-    const m = new t.Mesh(new t.BoxGeometry(W, H, D), toonMat(th, { base: s.base || '#2a2c31', rimK: 0.35 })); m.position.set(0, H / 2, -D / 2); g.add(m); return g; },
-  // flat bench (B-tier): padded top (s.length 1.1, s.width 0.29, top surface at s.height 0.44), two splayed steel feet; long axis X at yaw 0
-  bench(th, s) { const t = T(); const g = new t.Group(); const L = s.length || 1.1, W = s.width || 0.29, H = s.height || 0.44, pt = 0.06;
-    const pad = new t.Mesh(new t.BoxGeometry(L, pt, W), toonMat(th, { base: s.padColour || '#26282d', rimK: 0.6 })); pad.position.y = H - pt / 2; g.add(pad);
-    const steel = toonMat(th, { base: '#4a4e57', rimK: 0.8 });
-    const rail = new t.Mesh(new t.BoxGeometry(L * 0.86, 0.04, 0.05), steel); rail.position.y = H - pt - 0.02; g.add(rail);
-    for (const e of [-1, 1]) { const x = e * L * 0.36;
-      const post = new t.Mesh(new t.BoxGeometry(0.05, H - pt - 0.04, 0.05), steel); post.position.set(x, (H - pt - 0.04) / 2 + 0.02, 0); g.add(post);
-      const foot = new t.Mesh(new t.BoxGeometry(0.06, 0.04, W + 0.12), steel); foot.position.set(x, 0.02, 0); g.add(foot); }
-    return g; },
   pullupBar(th, s) { const t = T(); const g = new t.Group(); const W = s.width || 1.0, H = s.height || 2.2;
     const bar = new t.Mesh(new t.CylinderGeometry(0.016, 0.016, W, 16), toonMat(th)); bar.rotation.z = Math.PI / 2; bar.position.y = H; g.add(bar);
     for (const sg of [-1, 1]) { const post = new t.Mesh(new t.BoxGeometry(0.05, H, 0.05), toonMat(th)); post.position.set(sg * W / 2, H / 2, 0); g.add(post); } return g; },
