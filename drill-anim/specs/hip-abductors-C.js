@@ -1,7 +1,10 @@
 // hip-abductors-C 器械髋外展 (seated machine hip abduction). Seated tall on a hip-abductor machine (back pad, torso reclined 8 deg),
-// thighs level, knees at 90 deg, feet on the footrests, pads on the outside of both knees. 'abd' 0 = thighs 8 deg out from straight
-// ahead, 1 = 35 deg out (each side), 1 s squeeze. The thighs turn about the vertical axis through each hip, so knees and feet travel
-// on exact circles (chord + per-frame offX/offZ tracks). Hands rest on the side handles.
+// thighs level, knees at 90 deg, feet on the footrests, pads on the outside of both knees. 'abd' drives the ankle yaw about the vertical
+// axis through each hip from 8 to 35 deg; measured true hip abduction (QA hip_abd) is ~7 deg -> ~29 deg each side, i.e. ~22 deg of travel
+// per side, 0.8 s squeeze. Knees and feet travel on exact circles (chord + per-frame offX/offZ tracks).
+// Both hands grip the side handles (geometry-free 'grip' prop from #23 = baked power grip; the handle bars run along Z, so the wrist
+// targets slide with the handles). Handles sit behind the hips (z -0.373..-0.093) so the arms reach back and the left-side camera sees
+// the glute medius (upper outer hip) unblocked.
 // 2 reps / 8 s: 1.2 s out, 0.8 s hold, 1.2 s in, 0.8 s pause. Head points +Y, front faces +Z, body left = +X.
 const DEG = Math.PI / 180;
 const TH = 0.35292, SH = 0.40981;
@@ -29,8 +32,8 @@ export default {
       pelvis: [0, 0.62, 0.02],
       hips: { up: [0, 1, 0], front: [0, 0, 1], rot: [[[1, 0, 0], -8]] },
       hands: {
-        right: { mode: 'free', frame: 'world', wrist: [-0.29, 0.64, -0.12], finger: [-0.05, -0.35, 1], normal: [0.1, -1, 0.1], pole: [-0.5, 0.75, -0.3] },
-        left: { mode: 'free', frame: 'world', wrist: [0.29, 0.64, -0.12], finger: [0.05, -0.35, 1], normal: [-0.1, -1, 0.1], pole: [0.5, 0.75, -0.3] },
+        right: { mode: 'free', frame: 'world', relax: 0, wrist: [-0.3141, 0.6712, -0.25], finger: [-0.1375, -0.9456, 0.295], normal: [0.9844, -0.0974, 0.1467], pole: [-0.6, 0.9, -0.4] },
+        left: { mode: 'free', frame: 'world', relax: 0, wrist: [0.3141, 0.6712, -0.25], finger: [0.1375, -0.9456, 0.295], normal: [-0.9844, -0.0974, 0.1467], pole: [0.6, 0.9, -0.4] },
       },
       feet: { right: foot('right', P0), left: foot('left', P0) },
       constraints: [],
@@ -43,11 +46,12 @@ export default {
     },
   },
   highlight: { groups: ['hip-abductors'], side: 'both', pulseTrack: 'abd', pulseBase: 0.3 },
-  camera: { dir: [0.85, 0.3, 0.8], fit: ['head', 'leftToe', 'rightToe', 'pelvis', 'rightKnee', 'leftKnee'], pad: 0.18, k: 1.0, drift: 0.9, at: 1.6 },
+  camera: { dir: [1, 0.35, 0.45], fit: ['head', 'leftToe', 'rightToe', 'pelvis', 'rightKnee', 'leftKnee'], pad: 0.18, k: 1.0, drift: 0.9, at: 1.6 },
   frame: { mode: 'fit', width: 520, height: 600, cx: 430, cy: 560 },
   stillAt: 1.6,
   shadow: { joints: ['pelvis'], blobs: [], bands: [] },
-  props: [{ type: 'hipAbductor', seatY: 0.481, seatZ: [-0.16, 0.26], back: { y: 1.0, z: -0.153, tilt: 8, h: 0.66 }, handles: { x: 0.29, y: 0.575, z: [-0.28, 0.0] }, padUp: 0.09, gap: 0.003 }],
+  props: [{ type: 'hipAbductor', seatY: 0.481, seatZ: [-0.16, 0.26], back: { y: 1.0, z: -0.153, tilt: 8, h: 0.66 }, handles: { x: 0.29, y: 0.575, z: [-0.373, -0.093] }, padUp: 0.09, gap: 0.003 },
+    { type: 'grip', side: 'right' }, { type: 'grip', side: 'left' }],
   keyFrames: [0.4, 1.6, 3.0],
   qa: { pins: [], straight: [], allowContact: [] },
 };
