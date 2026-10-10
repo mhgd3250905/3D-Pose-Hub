@@ -23,9 +23,12 @@ res['below_floor']=res['min_vertex_y_m']<FLOOR_TOL
 pins={}
 for p in q.get('pins',[]):
     act=[r for r in fr if when(r,p.get('when')) and r['cen'].get(p['c'])]
-    if not act:pins[p['c']]={'frames':0};continue
+    # the same contact may be pinned in several phases (forearms-A: each hand is re-planted per finger direction); a repeated
+    # contact is keyed '<c> <when>' so the phases do not overwrite each other (single pins keep the plain key)
+    key=p['c']+(' '+p['when'] if sum(x['c']==p['c'] for x in q.get('pins',[]))>1 and p.get('when') else '')
+    if not act:pins[key]={'frames':0};continue
     ref=np.array(act[0]['cen'][p['c']]);d=[float(np.linalg.norm(np.array(r['cen'][p['c']])-ref)*1000) for r in act]
-    pins[p['c']]={'frames':len(act),'drift_mm_max':round(max(d),2),'ok':max(d)<5.0}
+    pins[key]={'frames':len(act),'drift_mm_max':round(max(d),2),'ok':max(d)<5.0}
 for p in q.get('jointPins',[]):  # a joint (elbow/knee on the mat) that must not slide: drift of the joint centre + its lowest height
     act=[r for r in fr if when(r,p.get('when'))]
     if not act:continue
