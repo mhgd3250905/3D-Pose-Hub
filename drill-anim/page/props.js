@@ -158,4 +158,12 @@ P.place = function(o) { const t = T(), v = flareInspector.viewer, s = o.userData
     return; }
   if (s.type === 'cable') { const a = P.anchors[s.from], b = P.anchors[s.to]; if (a && b) setTube(t, o, a, b); o.updateMatrixWorld(true); return; }
   return place0(o); };
+// ---- grip on fixed bars + band ends on handles (B-tier, needs P.bakeGrip from engine/cable-machine #23)
+// gripHand: bakes the power grip into one hand and draws nothing - for bars that are props of their own (parallettes, pull-up
+// bar, dumbbell). Pose the hand with a free/world target whose baked grip axis lies on the bar (tools/grip/gripfit.py).
+// spec: {type:'gripHand', side:'right'}
+// Band / cable endpoints may also name an anchor (a dHandle's name): {type:'band', from:[x,y,z], to:'h1'}.
+  B.gripHand = (th, s) => { P.bakeGrip(s.side || 'right'); return new (T().Group)(); };
+  if (!P.types.includes('gripHand')) P.types.push('gripHand');
+  const pt0 = P.pt; P.pt = function(p) { if (typeof p === 'string') { const a = P.anchors[p]; return a ? a.clone() : new (T().Vector3)(); } return pt0(p); };
 })();
