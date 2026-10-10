@@ -39,7 +39,7 @@ export default {
   },
   highlight: { groups: ['erectors'], side: 'both', pulseTrack: 'h', pulseBase: 1.0 },
   camera: { dir: [1, 0.55, 0.1], fit: ['head', 'rightPalm', 'leftToe', 'rightToe', 'pelvis', 'leftKnee', 'rightKnee', 'leftShoulder', 'rightShoulder'], pad: 0.24, k: 1.0, drift: 6, at: 0 },
-  frame: { mode: 'fit', width: 760, cx: 512, cy: 530 },
+  frame: { mode: 'fit', width: 700, cx: 512, cy: 422 },   // v2: was width 760 / cy 530 - the chair base was cut by the bottom edge; now the whole chair + head room fit
   stillAt: 0,
   shadow: { joints: ['pelvis'], blobs: [{ j: 'pelvis', rx: 160, ry: 18, a: 0.25 }], bands: [] },
   props: [{ type: 'romanChair', angle: 45, pad: PAD, roller: ROL, plate: PLATE }],
