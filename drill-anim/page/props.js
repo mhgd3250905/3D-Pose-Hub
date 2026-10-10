@@ -65,7 +65,8 @@ P.loadJSON = function(url) { const x = new XMLHttpRequest(); x.open('GET', url, 
 P.bakeGrip = function(side) {
   if (P.gripData[side]) return P.gripData[side];
   const t = T(), v = flareInspector.viewer, m = v.motion; m.reset(); v.coach.updateMatrixWorld(true);
-  const G = P.loadJSON('/tools/drill-anim/assets/grip-' + side + '.json');
+  // injected by lib/boot.mjs (window.__gripData); the XHR to the app server is only a fallback
+  const G = (window.__gripData && window.__gripData[side]) || P.loadJSON('/tools/drill-anim/assets/grip-' + side + '.json');
   const o = v.coach.getObjectByName('Coach_Body'), g = o.geometry, si = g.attributes.skinIndex, sw = g.attributes.skinWeight, sk = o.skeleton; sk.update();
   const pos = g.attributes.position, nor = g.attributes.normal;
   const BM = sk.bones.map((b, k) => new t.Matrix4().multiplyMatrices(b.matrixWorld, sk.boneInverses[k]));
@@ -104,6 +105,9 @@ Object.assign(B, {
     const curve = new t.CatmullRomCurve3(pts); loop.add(new t.Mesh(new t.TubeGeometry(curve, 40, rr, 10, false), steel));
     const ring = new t.Mesh(new t.TorusGeometry(0.014, 0.004, 8, 20), steel); ring.position.set(depth + 0.012, 0, 0); ring.rotation.y = Math.PI / 2; loop.add(ring);
     g.userData.apexLocal = new t.Vector3(depth + 0.024, 0, 0); g.userData.G = G; return g; },
+  // grip bake only (no geometry): closes the hand round an existing bar of another prop (machine handles, a bar...).
+  // Pose the hand so the grip cylinder lies on the bar (P.bakeGrip data: centre/axis in the hand frame). spec: {type:'grip', side:'left'}
+  grip(th, s) { const t = T(); P.bakeGrip(s.side || 'right'); const g = new t.Group(); g.userData.grip = s.side || 'right'; return g; },
   // cable column: base, upright with a rail, carriage + pulley at pulleyY, weight stack. Facing +Z at yaw 0 (pulley on the front face).
   // spec: {type:'cableStack', name:'pulley1', at:[x,0,z], yaw, height:2.1, pulleyY:1.3, pulleyOut:0.09}
   cableStack(th, s) { const t = T(); const g = new t.Group(); const H = s.height || 2.15, py = s.pulleyY ?? 1.3;
