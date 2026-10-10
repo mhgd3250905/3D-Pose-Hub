@@ -29,11 +29,13 @@ const MY = {
 P.add = function(theme, s) { if (!MY[s.type]) return add0(theme, s);
   const v = flareInspector.viewer; const o = MY[s.type](theme.props, s); o.name = 'prop_' + s.type; o.userData.spec = s; o.frustumCulled = false; o.traverse(c => { c.frustumCulled = false; });
   v.scene.add(o); P.list.push(o); P.place(o); return o; };
-// world-space QA primitives of every placed prop that declares them (capsules {a,b,r}; tori {c,n,R,r})
+// world-space QA primitives of every placed prop that declares them (capsules {a,b,r}; tori {c,n,R,r}; boxes {c,ax:[x,y,z axes],h:[half sizes]})
 P.qaPrims = function() { const t = T(); const out = [];
   for (const o of P.list) for (const q of o.userData.qaPrims || []) { o.updateMatrixWorld(true); const m = o.matrixWorld; const nq = new t.Quaternion(); o.getWorldQuaternion(nq);
-    if (q.a) out.push({ a: new t.Vector3(...q.a).applyMatrix4(m).toArray(), b: new t.Vector3(...q.b).applyMatrix4(m).toArray(), r: q.r, kind: o.userData.spec.type });
-    else out.push({ c: new t.Vector3(...q.c).applyMatrix4(m).toArray(), n: new t.Vector3(...q.n).applyQuaternion(nq).toArray(), R: q.R, r: q.r, kind: o.userData.spec.type }); }
+    const W = a => new t.Vector3(...a).applyMatrix4(m).toArray(), Wd = a => new t.Vector3(...a).applyQuaternion(nq).toArray();
+    if (q.a) out.push({ a: W(q.a), b: W(q.b), r: q.r, kind: o.userData.spec.type });
+    else if (q.ax) out.push({ c: W(q.c), ax: q.ax.map(Wd), h: q.h, kind: o.userData.spec.type });
+    else out.push({ c: W(q.c), n: Wd(q.n), R: q.R, r: q.r, kind: o.userData.spec.type }); }
   return out; };
 P.types = [...new Set([...(P.types || []), ...Object.keys(MY)])];
 })();
