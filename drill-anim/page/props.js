@@ -36,9 +36,19 @@ const B = {
     const hd = new t.Mesh(new t.TorusGeometry(r * 0.62, 0.014, 10, 24, Math.PI), toonMat(th)); hd.position.y = r * 0.75; g.add(hd); return g; },
   band(th, s) { // tube between two points (world or bone-attached endpoints updated every frame via s.from/s.to)
     const t = T(); const m = new t.Mesh(new t.BufferGeometry(), toonMat(th, { base: s.colour || '#5a3a2a' })); m.userData.band = s; return m; },
-  parallettes(th, s) { const t = T(); const g = new t.Group(); const L = s.length || 0.5, H = s.height || 0.2, gap = s.gap || 0.5;
-    for (const sg of [-1, 1]) { const bar = new t.Mesh(new t.CylinderGeometry(0.018, 0.018, L, 16), toonMat(th)); bar.rotation.x = Math.PI / 2; bar.position.set(sg * gap / 2, H, 0); g.add(bar);
-      for (const e of [-1, 1]) { const leg = new t.Mesh(new t.CylinderGeometry(0.016, 0.016, H, 12), toonMat(th)); leg.position.set(sg * gap / 2, H / 2, e * L * 0.42); g.add(leg); } } return g; },
+  // parallettes (B-tier): per side a grip bar along Z at height H (bar centre; s.gap = centre-to-centre in X), two uprights bent
+  // down to the floor and a flat base foot along X under each upright. s.r = grip radius (default 0.016).
+  parallettes(th, s) { const t = T(); const g = new t.Group(); const L = s.length || 0.42, H = s.height || 0.26, gap = s.gap || 0.52, r = s.r || 0.016;
+    const tube = (a, b, rr) => { const A = new t.Vector3(...a), B = new t.Vector3(...b); const m = new t.Mesh(new t.CylinderGeometry(rr, rr, A.distanceTo(B), 20), toonMat(th));
+      m.position.copy(A).lerp(B, 0.5); m.quaternion.setFromUnitVectors(new t.Vector3(0, 1, 0), B.clone().sub(A).normalize()); g.add(m); };
+    const ball = (p, rr) => { const m = new t.Mesh(new t.SphereGeometry(rr, 20, 14), toonMat(th)); m.position.set(...p); g.add(m); };
+    const ez = L / 2, fz = ez + 0.035, fw = s.footW || 0.21, fr = 0.014;
+    for (const sg of [-1, 1]) { const x = sg * gap / 2;
+      tube([x, H, -ez], [x, H, ez], r);                                   // grip bar
+      for (const e of [-1, 1]) { const z0 = e * ez, z1 = e * fz;
+        ball([x, H, z0], r); tube([x, H, z0], [x, fr * 2.2, z1], r * 0.95); ball([x, fr * 2.2, z1], r * 0.95);   // upright, splayed slightly outwards
+        tube([x - fw / 2, fr, z1], [x + fw / 2, fr, z1], fr); for (const q of [-1, 1]) ball([x + q * fw / 2, fr, z1], fr); } }   // base foot along X
+    return g; },
   pullupBar(th, s) { const t = T(); const g = new t.Group(); const W = s.width || 1.0, H = s.height || 2.2;
     const bar = new t.Mesh(new t.CylinderGeometry(0.016, 0.016, W, 16), toonMat(th)); bar.rotation.z = Math.PI / 2; bar.position.y = H; g.add(bar);
     for (const sg of [-1, 1]) { const post = new t.Mesh(new t.BoxGeometry(0.05, H, 0.05), toonMat(th)); post.position.set(sg * W / 2, H / 2, 0); g.add(post); } return g; },
