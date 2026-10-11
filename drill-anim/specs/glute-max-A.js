@@ -34,7 +34,7 @@ export default {
   },
   highlight: { groups: ['glute-max'], side: 'both', pulseAt: [2.1, 6.1], pulseWidth: 0.8, pulseBase: 0.25 },
   camera: { dir: [0.05, 0.13, 1], fit: ['head', 'leftToe', 'rightToe', 'pelvis', 'leftKnee', 'rightAnkle', 'leftPalm'], pad: 0.14, k: 0.7, drift: 0.9, at: 2.1 },
-  frame: { mode: 'fit', width: 820, cx: 512, cy: 540 },
+  frame: { mode: 'fit', width: 760, cx: 492, cy: 540 },   // v2: was width 820 / cx 512, the raised shoe touched the right edge
   shadow: { joints: ['leftToe', 'leftAnkle', 'rightPalm', 'leftPalm', 'pelvis', 'shoulderCenter', 'head'],
     blobs: [{ j: 'leftAnkle', rx: 46, ry: 11, a: 0.6 }, { j: 'shoulderCenter', rx: 90, ry: 14, a: 0.55 }, { j: 'head', rx: 55, ry: 12, a: 0.5 }],
     bands: [{ from: 'shoulderCenter', to: 'leftAnkle', mid: 'pelvis', rx: 60, ry: 12, a: 0.25, dy: 4, sag: 0.6 }] },
