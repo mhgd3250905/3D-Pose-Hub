@@ -153,10 +153,12 @@ function residuals(D, x, names) {
     const w = c.weight ?? 1; if (!w) continue;
     if (c.type === 'reach') {
       const [side, kind] = c.limb.split(/(?=[A-Z])/); const s = side, arm = kind === 'Arm';
-      if (arm && (D.hands[s].w || 0) > 1e-4) continue; // a lifted hand no longer constrains the body
+      // a lifted hand no longer constrains the body, unless the hand sets keepReach (0..1, animatable): a free hand that bears
+      // weight (forearms-A: back of the hand on the mat) keeps its reach constraint, scaled by keepReach
+      let kw = 1; if (arm && (D.hands[s].w || 0) > 1e-4) { kw = D.hands[s].keepReach || 0; if (!(kw > 1e-4)) continue; }
       const p0 = arm ? Lm[s].shoulder : Lm[s].hip, p1 = arm ? Lm[s].wrist : Lm[s].ankle;
       const L = arm ? reachFor(E.L[s + 'UpperArm'], E.L[s + 'Forearm'], c.angle) : reachFor(E.L[s + 'Thigh'], E.L[s + 'Shin'], c.angle);
-      r.push((p0.distanceTo(p1) - L) * 1000 * w);
+      r.push((p0.distanceTo(p1) - L) * 1000 * w * kw);
     } else if (c.type === 'joint') {
       const src = E.R[c.joint]; const isLow = /Hip|pelvis/.test(c.joint); const p = isLow ? B.low(src) : B.up(src);
       r.push((p.dot(V(c.axis || [0, 1, 0])) - c.value) * 1000 * w);
