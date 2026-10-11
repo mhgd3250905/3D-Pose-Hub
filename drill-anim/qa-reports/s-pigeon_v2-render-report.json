@@ -1,0 +1,542 @@
+{
+  "state": "local self-check complete, awaiting Hark final visual acceptance; no push/commit/PR/Issue action performed",
+  "id": "s-pigeon",
+  "version": "v3",
+  "head": "b8737ec6ea3279f3f1d825638be6c7a6d5e5eda0",
+  "new_scheme_previews": 2,
+  "hand_block_full_attempts": 1,
+  "qa": {
+    "id": "s-pigeon",
+    "frames": 240,
+    "fps": 30,
+    "duration_s": 8,
+    "min_vertex_y_m": -0.001,
+    "min_vertex_mesh": "Coach_Body",
+    "below_floor": false,
+    "pins": {
+      "footL": {
+        "frames": 240,
+        "drift_mm_max": 0.0,
+        "ok": true
+      },
+      "footR": {
+        "frames": 240,
+        "drift_mm_max": 0.0,
+        "ok": true
+      },
+      "handL": {
+        "frames": 240,
+        "drift_mm_max": 0.0,
+        "ok": true
+      },
+      "handR": {
+        "frames": 240,
+        "drift_mm_max": 0.0,
+        "ok": true
+      },
+      "leftKnee": {
+        "frames": 240,
+        "drift_mm_max": 0.0,
+        "height_mm_range": [
+          50.0,
+          50.0
+        ],
+        "ok": true
+      },
+      "rightKnee": {
+        "frames": 240,
+        "drift_mm_max": 0.0,
+        "height_mm_range": [
+          50.0,
+          50.0
+        ],
+        "ok": true
+      },
+      "leftAnkle": {
+        "frames": 240,
+        "drift_mm_max": 0.0,
+        "height_mm_range": [
+          38.9,
+          38.9
+        ],
+        "ok": true
+      },
+      "rightAnkle": {
+        "frames": 240,
+        "drift_mm_max": 0.0,
+        "height_mm_range": [
+          65.7,
+          65.7
+        ],
+        "ok": true
+      }
+    },
+    "straight": {},
+    "limits": {
+      "knee_flex_backward": true,
+      "elbow_flex_forward": true,
+      "hip_flex_deg_range": [
+        -21.9,
+        111.7
+      ],
+      "hip_abd_deg_range": [
+        24.8,
+        110.5
+      ],
+      "hip_abd_true_deg_range": [
+        23.2,
+        44.6
+      ],
+      "hip_flex_max_deg": 135.0,
+      "hip_ok": true,
+      "waist_bend_deg_max": 43,
+      "waist_ok": true,
+      "pelvis_to_chest_deg_max": 0,
+      "elbow_deg_range": [
+        101.2,
+        106.3
+      ],
+      "knee_deg_range": [
+        46.2,
+        138.4
+      ],
+      "neck_note": "head/neck rigid with the upper torso in this rig (no neck bend possible)",
+      "first_violation": {}
+    },
+    "self_clip": {
+      "worst_pair": "handR|thighR",
+      "worst_gap_mm": 52.7,
+      "at_frame": 0,
+      "ok": true,
+      "method": "capsule hulls per segment (torso r115, upper arm r42, forearm r34, hand r28, thigh r68, shin r48, foot r45 mm), adjacent + spec-allowed pairs skipped; ok if overlap < 8 mm"
+    },
+    "hand_clip": {
+      "left": {
+        "min_signed_mm": 99,
+        "at_frame": 0,
+        "nearest_bone": null,
+        "penetrating_frames": 0,
+        "ok": true
+      },
+      "right": {
+        "min_signed_mm": 30.79,
+        "at_frame": 0,
+        "nearest_bone": "rightThigh",
+        "penetrating_frames": 0,
+        "ok": true
+      },
+      "method": "per hand skin vertex: K=6 nearest vertices of each outer body layer (skin, tee, cuff, shorts, head; own hand/forearm excluded, radius 45 mm); inside if the vertex is closer to the nearest bone core line than those surface vertices; value = depth (<0) or gap (>0: radial gap over the surface patch, capped by the euclidean distance); ok if >= -0.5 mm"
+    },
+    "solver_warning_frames": 0,
+    "frame_edge_touch_frames": 0,
+    "frames_complete": true,
+    "pass": true
+  },
+  "extra": {
+    "complete_unique_range": true,
+    "frames": 240,
+    "unique_frames": 240,
+    "hand_block_method": "Final live getVertexPosition after pose/touch; Coach_Body vertices whose dominant skin bone is sideHand and x/z lies inside corresponding box footprint. All vertices inspected on all 240 frames.",
+    "hand_block_physical_criterion_mm": [
+      0,
+      3
+    ],
+    "hand_block_float_tolerance_mm": 0.001,
+    "hand_block_pass": true,
+    "kneeFlexDirZ_range": {
+      "left": [
+        -0.585,
+        -0.585
+      ],
+      "right": [
+        -0.295,
+        -0.295
+      ]
+    },
+    "minY_mm_exact": -1.0423928014658967,
+    "main_frames": 240,
+    "composite_frames": 240
+  },
+  "hand_block": {
+    "left": {
+      "frames_measured": 240,
+      "gap_mm_min_raw": -4.367820499728836e-05,
+      "gap_mm_max_raw": -4.367820488626606e-05,
+      "skin_y_mm_range": [
+        254.999956321795,
+        254.9999563217951
+      ],
+      "overblock_vertex_count_range": [
+        4531,
+        4531
+      ],
+      "block_top_mm": 255.0,
+      "block_bottom_mm": 0,
+      "violations": []
+    },
+    "right": {
+      "frames_measured": 240,
+      "gap_mm_min_raw": -3.882686372413957e-05,
+      "gap_mm_max_raw": -3.882686361311727e-05,
+      "skin_y_mm_range": [
+        254.99996117313628,
+        254.9999611731364
+      ],
+      "overblock_vertex_count_range": [
+        4517,
+        4517
+      ],
+      "block_top_mm": 255.0,
+      "block_bottom_mm": 0,
+      "violations": []
+    }
+  },
+  "margins": {
+    "method": "Every eighth composited frame; maxRGB>48 and B>=R-6",
+    "frames_sampled": 30,
+    "minimum_px": {
+      "L": 205,
+      "T": 351,
+      "R": 85,
+      "B": 213
+    },
+    "all_at_least_60px": true,
+    "per_frame": [
+      {
+        "f": 0,
+        "L": 206,
+        "T": 352,
+        "R": 87,
+        "B": 214
+      },
+      {
+        "f": 8,
+        "L": 206,
+        "T": 352,
+        "R": 87,
+        "B": 215
+      },
+      {
+        "f": 16,
+        "L": 206,
+        "T": 352,
+        "R": 87,
+        "B": 215
+      },
+      {
+        "f": 24,
+        "L": 207,
+        "T": 352,
+        "R": 86,
+        "B": 215
+      },
+      {
+        "f": 32,
+        "L": 206,
+        "T": 352,
+        "R": 86,
+        "B": 215
+      },
+      {
+        "f": 40,
+        "L": 206,
+        "T": 352,
+        "R": 86,
+        "B": 216
+      },
+      {
+        "f": 48,
+        "L": 207,
+        "T": 352,
+        "R": 85,
+        "B": 215
+      },
+      {
+        "f": 56,
+        "L": 207,
+        "T": 353,
+        "R": 85,
+        "B": 215
+      },
+      {
+        "f": 64,
+        "L": 207,
+        "T": 353,
+        "R": 85,
+        "B": 215
+      },
+      {
+        "f": 72,
+        "L": 207,
+        "T": 353,
+        "R": 85,
+        "B": 215
+      },
+      {
+        "f": 80,
+        "L": 206,
+        "T": 353,
+        "R": 86,
+        "B": 216
+      },
+      {
+        "f": 88,
+        "L": 206,
+        "T": 352,
+        "R": 86,
+        "B": 215
+      },
+      {
+        "f": 96,
+        "L": 207,
+        "T": 352,
+        "R": 86,
+        "B": 215
+      },
+      {
+        "f": 104,
+        "L": 206,
+        "T": 352,
+        "R": 87,
+        "B": 215
+      },
+      {
+        "f": 112,
+        "L": 206,
+        "T": 352,
+        "R": 87,
+        "B": 215
+      },
+      {
+        "f": 120,
+        "L": 206,
+        "T": 352,
+        "R": 87,
+        "B": 214
+      },
+      {
+        "f": 128,
+        "L": 206,
+        "T": 352,
+        "R": 88,
+        "B": 214
+      },
+      {
+        "f": 136,
+        "L": 206,
+        "T": 352,
+        "R": 88,
+        "B": 214
+      },
+      {
+        "f": 144,
+        "L": 205,
+        "T": 352,
+        "R": 89,
+        "B": 214
+      },
+      {
+        "f": 152,
+        "L": 206,
+        "T": 351,
+        "R": 89,
+        "B": 213
+      },
+      {
+        "f": 160,
+        "L": 205,
+        "T": 351,
+        "R": 90,
+        "B": 213
+      },
+      {
+        "f": 168,
+        "L": 205,
+        "T": 351,
+        "R": 90,
+        "B": 213
+      },
+      {
+        "f": 176,
+        "L": 205,
+        "T": 351,
+        "R": 90,
+        "B": 213
+      },
+      {
+        "f": 184,
+        "L": 205,
+        "T": 351,
+        "R": 90,
+        "B": 213
+      },
+      {
+        "f": 192,
+        "L": 205,
+        "T": 351,
+        "R": 90,
+        "B": 213
+      },
+      {
+        "f": 200,
+        "L": 205,
+        "T": 351,
+        "R": 90,
+        "B": 213
+      },
+      {
+        "f": 208,
+        "L": 206,
+        "T": 351,
+        "R": 89,
+        "B": 213
+      },
+      {
+        "f": 216,
+        "L": 205,
+        "T": 351,
+        "R": 89,
+        "B": 214
+      },
+      {
+        "f": 224,
+        "L": 206,
+        "T": 351,
+        "R": 88,
+        "B": 214
+      },
+      {
+        "f": 232,
+        "L": 206,
+        "T": 352,
+        "R": 88,
+        "B": 214
+      }
+    ]
+  },
+  "resources": {
+    "command": [
+      "E:/AII-3D/3D-Pose/hark-4080-venv/Scripts/python.exe",
+      "E:/AII-3D/3D-Pose/hark-4080-pigeon-work/run-pigeon-full.py"
+    ],
+    "cwd": "E:\\AII-3D\\3D-Pose\\hark-4080-pigeon",
+    "monitor_python": "E:\\AII-3D\\3D-Pose\\hark-4080-venv\\Scripts\\python.exe",
+    "pid": 7516,
+    "observed_pids": [
+      2116,
+      7516,
+      14004,
+      27664,
+      29280,
+      30984,
+      39132,
+      40868,
+      41152,
+      44088,
+      54472,
+      55536,
+      56344,
+      57492,
+      67072,
+      68504,
+      70592
+    ],
+    "started_at_utc": "2026-10-10T17:44:42.841368+00:00",
+    "ended_at_utc": "2026-10-10T17:50:34.936609+00:00",
+    "elapsed_seconds": 352.08590419997927,
+    "exitcode": 0,
+    "interrupted": false,
+    "sample_count": 353,
+    "requested_sample_interval_seconds": 1.0,
+    "baseline": {
+      "system_ram_used_bytes": 23460687872,
+      "gpus": [
+        {
+          "index": "0",
+          "name": "NVIDIA GeForce RTX 4080 Laptop GPU",
+          "memory_used_mib": 2486.0,
+          "utilization_percent": 26.0
+        }
+      ]
+    },
+    "peaks": {
+      "tree_rss_bytes": 1175953408,
+      "tree_private_bytes": 2187259904,
+      "system_ram_used_bytes": 24400478208,
+      "gpu_total_memory_used_mib": 3108.0
+    },
+    "gpu_peaks": [
+      {
+        "index": "0",
+        "name": "NVIDIA GeForce RTX 4080 Laptop GPU",
+        "memory_used_mib": 3108.0,
+        "utilization_percent": 65.0
+      }
+    ],
+    "units": {
+      "process_and_system_memory": "bytes",
+      "gpu_memory": "MiB",
+      "gpu_utilization": "percent",
+      "elapsed": "seconds"
+    },
+    "definitions": {
+      "tree_memory": "Sampled sum of root and live descendant processes; shared RSS may be counted multiple times; brief processes or between-sample peaks may be missed.",
+      "tree_private": "Windows psutil memory_info.private, summed; null if unavailable.",
+      "gpu_memory": "nvidia-smi system-wide memory.used across all GPUs, not exclusive to this render. WDDM per-PID memory is unavailable here.",
+      "gpu_peaks": "Each GPU metric is independently maximized; baseline included.",
+      "sampling": "Target interval 1 second; nvidia-smi query latency may extend an interval.",
+      "file_changes": "Relative cwd namespaces compared by file size and mtime_ns; content is not hashed; monitor output files excluded; .git, node_modules, __pycache__, .venv and venv directories skipped."
+    },
+    "file_changes": {
+      "added": [
+        "tools\\drill-anim\\out\\s-pigeon.gif",
+        "tools\\drill-anim\\out\\s-pigeon.mp4"
+      ],
+      "deleted": [],
+      "modified": [
+        "tools\\drill-anim\\out\\metrics\\s-pigeon.json"
+      ]
+    },
+    "sampling_errors": [
+      "process PID not found (pid=7516)"
+    ],
+    "log_path": "E:\\AII-3D\\3D-Pose\\hark-4080-pigeon-work\\render-full-bricks255.log",
+    "csv_path": "E:\\AII-3D\\3D-Pose\\hark-4080-pigeon-work\\resources-full-bricks255.csv"
+  },
+  "execution": {
+    "id": "s-pigeon",
+    "spec_sha256": "f373f9da8d76fdd289f24fa32da1470f0c8b037a5cc62376f3680fe9c94590b8",
+    "jobs": 1,
+    "render_comp_seconds": 349.9288672999246,
+    "encode_seconds": 1.6299630000721663,
+    "total_seconds": 351.8148282999173,
+    "reference_sheet": "omitted: five-frame artifact created separately; no reference supplied"
+  },
+  "elapsed_log_seconds": {
+    "render": 49,
+    "render_node": 48.9,
+    "comp": 298
+  },
+  "hand_clip_note": "Left 99 is the no-near-body sentinel; right 30.79 mm is distance from skin to nearby right thigh. Contact with the blocks is independently verified on every frame in extra-qa-full.json.",
+  "visual_review": "Viewed original f0 and final five-frame sheet f0/60/120/180/220: body, rear instep, front knee, both blocks and hip bolster remain visible; palms appear on raised block tops; cyan right hip highlight visible; mat remains framed.",
+  "publishing_guard": "Only specs/s-pigeon.js is an action change. drill.py/boot.mjs/render.mjs are local Windows compatibility and diagnostic changes, never push these files.",
+  "artifacts": {
+    "work_dir": "E:\\AII-3D\\3D-Pose\\hark-4080-pigeon-work",
+    "output_dir": "E:\\AII-3D\\3D-Pose\\hark-4080-pigeon\\tools\\drill-anim\\out",
+    "five_frame": "s-pigeon_v3-five-frame.png",
+    "mp4": "s-pigeon_v3.mp4",
+    "gif": "s-pigeon_v3.gif",
+    "metrics": "s-pigeon_v3-metrics.json",
+    "spec_diff": "s-pigeon-v3-final-spec.patch",
+    "local_diagnostics_diff": "local-engine-diagnostics.patch",
+    "extra_contact": "extra-qa-full.json",
+    "margin": "margins-full.json",
+    "raw_met": "s-pigeon/fr/met--1-239.json",
+    "render_log": "s-pigeon/fr-log-0.txt",
+    "full_log": "render-full-bricks255.log",
+    "resource_json": "resources-full-bricks255.json",
+    "resource_csv": "resources-full-bricks255.csv"
+  },
+  "delivery_version": "v2",
+  "local_run_label": "v3 (attempt iteration label)"
+}
