@@ -1,13 +1,13 @@
 // erectors-A 反向平板（后撑抬髋） reverse plank. Supine, hands flat under the shoulders with fingers toward the feet,
 // arms locked straight, heels on the floor with straight legs. 'lift' 0 = hips sagging ~13 cm below the line, 1 = one straight
-// line from shoulders to heels (squeeze + hold). 2 reps / 8 s: 1.2 s up, 2.0 s hold, 1.2 s down, short rest at the bottom.
+// line from shoulders to heels (squeeze + hold). 2 reps / 8 s, each 4 s: 1.0 s up, 1.7 s hold, 1.0 s down, 0.3 s rest at the bottom (even tempo).
 // Head points -X, front (chest) faces up (+Y), body left = -Z.
 const TH = -20;
 const HZ = 0.205, FX = 1.30, FZ = 0.10;
 const floorHand = (z, side) => ({ mode: 'floor', at: [0.0, z], finger: [1, 0], poleUp: [side === 'right' ? -0.30 : 0.30, 1.05, -0.35] });
 export default {
   id: 'erectors-A', name: '反向平板（后撑抬髋）', nameEn: 'Reverse Plank',
-  timeline: { duration: 8, tracks: { lift: [[0, 0], [0.4, 0], [1.6, 1], [3.6, 1], [4.8, 0], [5.2, 0], [6.4, 1], [7.6, 1]] } },
+  timeline: { duration: 8, tracks: { lift: [[0, 0], [0.3, 0], [1.3, 1], [3.0, 1], [4.0, 0], [4.3, 0], [5.3, 1], [7.0, 1]] } },
   pose: {
     base: {
       pelvis: [0.45, 0.30, 0],
@@ -24,7 +24,7 @@ export default {
     },
     deltas: { lift: { constraints: [{}, {}, {}, {}, { weight: 0.1 }, { weight: 0.1 }, { weight: 0 }] } },
   },
-  highlight: { groups: ['erectors'], side: 'both', pulseAt: [2.6, 6.6], pulseWidth: 0.9, pulseBase: 0.25 },
+  highlight: { groups: ['erectors'], side: 'both', pulseAt: [2.15, 6.15], pulseWidth: 0.9, pulseBase: 0.25 },
   camera: { dir: [-0.62, -0.03, 1], driftPeriod: 4, driftPhase: 0.628, fit: ['head', 'leftPalm', 'rightPalm', 'leftToe', 'rightToe', 'pelvis', 'leftShoulder', 'rightShoulder', 'leftAnkle'], pad: 0.12, k: 0.7, drift: 22, at: 2.6 },
   frame: { mode: 'fit', width: 820, cx: 512, cy: 540 },
   stillAt: 2.6,
