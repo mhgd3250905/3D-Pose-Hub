@@ -1,5 +1,7 @@
 # 训练动作制作工具整合记录
 
+本文件保留首次纳入 `feature/drill-anim` 的阶段事实，范围截至 `1f87cc6180532857c1b53dba4c9898915a9aa49a`；下文59项数量及PR #8待处理均是当时状态。后续PR #94–#105、#107、#108已合入master，默认制作源现75项，PR #8已被iOS整合覆盖并在GitHub标为MERGED。当前收据见 [主线整合审核](integration-pr-audit-2026-10-12.md)，版本/验证/待办分别以 [版本台账](../app/docs/version-ledger.md)、[验证记录](../app/docs/verification.md)、[实施路线](../app/docs/development-roadmap.md) 为准；本文件不是后续主线全量验证报告。
+
 2026-10-12，按用户批准的计划将 `feature/drill-anim` 的制作源码纳入本地 L43，并把已有成片备份到用户 Google Drive。App 仍为 L43 / 1.0.0+1 / v41，当前51项视频、封面、媒体清单和运行时代码保持；此次没有创建 L44 或新安装包。
 
 ## 源码与版本

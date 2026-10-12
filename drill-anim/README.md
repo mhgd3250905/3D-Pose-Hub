@@ -1,10 +1,12 @@
 # drill-anim: looping 3D toon animations for the training drills
 
-2026-10-12：本工具已按用户明确授权整合到 L43 的本地主线。历史 `HANDOFF.md` / `COLLAB.md` 描述原三人制作分工；本次源码纳入与备份以 [整合记录](../../docs/drill-anim-integration-2026-10-12.md) 为准。它不会自动替换 App 媒体。59 个分支 spec 保持原内容；`3D-Pose` 的五项最终本地修订另保留在正式成片备份中。
+2026-10-12：本工具已按用户明确授权整合到 `master`，以 L43 为App底座。当前默认制作源共75项：原59项参数、办公室8项 `o-*`、久坐强化8项 `w-*`；原59项内容仍强制核对来源，16项新增源按审核后SHA-256固定。App仍选用51项正式视频，制作源增加不会自动替换App媒体。原始纳入与备份见 [早期工具整合记录](../../docs/drill-anim-integration-2026-10-12.md)，后续PR和验证范围见 [主线整合审核](../../docs/integration-pr-audit-2026-10-12.md)。历史 `HANDOFF.md` / `COLLAB.md` 描述原三人制作分工，不覆盖用户本次明确整合授权。
 
 Windows 配置可从 `config.windows.example.json` 复制为 gitignored `config.json`，填已安装的 Playwright 模块、浏览器缓存、字体和参考图路径。使用带 numpy / scipy / Pillow 的 Python，ffmpeg 在 PATH 中；项目根目录先 `npm ci`。相对路径统一以本工具目录为基准，新输出与临时帧留在项目盘。当前本机配置借用既有 E 盘 Python/Playwright 环境，不向 Git 提交机器配置。
 
 `3D-Pose` 的五项最终修订现另在 [Hark-4080交付包](revisions/hark-4080-v1/README.md)，含最终spec/theme、MP4/GIF、封面及原始QA；[成果接手地图](../../docs/drill-anim/hark-4080-v1.md) 给出完整60动作的索引与云盘入口。这是新增审阅目录，不替换原59项spec、App选版或正式视频。
+
+PR #106 的12项托马斯专项 `t-*` 仍在草稿分支，未进入这75项制作源，也未注册App；低清预览已可读取，动作优化及高清渲染等待用户下一步安排。新增办公室/久坐源不表示所有动作已有全片验收；具体覆盖和原始警告随审核记录保留。
 
 ```powershell
 node tools/drill-anim/verify.mjs
