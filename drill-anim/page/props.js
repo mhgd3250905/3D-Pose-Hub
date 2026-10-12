@@ -82,6 +82,25 @@ const B = {
   wall(th, s) { const t = T(); const g = new t.Group(); const [W, H, D] = s.size || [1.4, 2.2, 0.12];
     const m = new t.Mesh(new t.BoxGeometry(W, H, D), toonMat(th, { base: s.base || '#2a2c31', rimK: 0.35 })); m.position.set(0, H / 2, -D / 2); g.add(m); return g; },
   // placeholder for machines (cable stack, landmine, GHD, reverse hyper, abductor, leg extension): a labelled box until modelled
+  // office chair (S2 office series): padded seat (top at seatY), tilted backrest, gas-lift column and a 5-star caster base. Group origin =
+  // floor point under the seat centre, front = +Z (rotate with yaw). spec: {type:'officeChair', at, yaw, seatY:0.46, seat:[w,d], back:{h,tilt}, arms:false}
+  officeChair(th, s) { const t = T(); const g = new t.Group(), pad = toonMat(th, { base: '#2b2e35', rimK: 0.55 }), frame = toonMat(th, { rimK: 0.9 }), dark = toonMat(th, { base: '#202228', rimK: 0.5 });
+    const sy = s.seatY ?? 0.46, [sw, sd] = s.seat || [0.48, 0.46], bk = s.back || {}, bh = bk.h ?? 0.50, a = (bk.tilt ?? 8) * Math.PI / 180;
+    const box = (sz, c, m, rx = 0) => { const b = new t.Mesh(new t.BoxGeometry(...sz), m); b.position.set(...c); b.rotation.x = rx; g.add(b); return b; };
+    const bar = (a, b, r, m) => { const d = b.clone().sub(a), L = d.length(), o = new t.Mesh(new t.CylinderGeometry(r, r, L, 12), m); o.position.copy(a).addScaledVector(d, 0.5); o.quaternion.setFromUnitVectors(new t.Vector3(0, 1, 0), d.normalize()); g.add(o); return o; };
+    const cyl = (r, h, c, m, seg = 24) => { const b = new t.Mesh(new t.CylinderGeometry(r, r, h, seg), m); b.position.set(...c); g.add(b); return b; };
+    const seat = new t.Mesh(new t.BoxGeometry(sw, 0.07, sd, 4, 1, 4), pad); seat.position.set(0, sy - 0.035, 0); g.add(seat);
+    box([sw * 0.7, 0.03, sd * 0.7], [0, sy - 0.085, 0], dark);
+    cyl(0.028, sy - 0.2, [0, 0.11 + (sy - 0.2) / 2, 0], frame); cyl(0.04, 0.06, [0, 0.11, 0], dark);
+    for (let i = 0; i < 5; i++) { const ang = i * 2 * Math.PI / 5, dx = Math.sin(ang), dz = Math.cos(ang), L = 0.31;
+      const leg = new t.Mesh(new t.BoxGeometry(0.035, 0.03, L), frame); leg.position.set(dx * L / 2, 0.085, dz * L / 2); leg.rotation.y = ang; g.add(leg);
+      const w = new t.Mesh(new t.SphereGeometry(0.028, 16, 12), dark); w.position.set(dx * (L - 0.01), 0.03, dz * (L - 0.01)); g.add(w); }
+    const by = sy + 0.10, bz = -sd / 2 - 0.02, u = new t.Vector3(0, Math.cos(a), -Math.sin(a));
+    const bc = new t.Vector3(0, by, bz).addScaledVector(u, bh / 2); box([sw * 0.92, bh, 0.06], bc.toArray(), pad, -a);
+    const sp0 = new t.Vector3(0, sy - 0.08, -0.06), sp1 = new t.Vector3(0, sy - 0.08, bz - 0.05), sp2 = new t.Vector3(0, by + 0.1, bz - 0.05).addScaledVector(u, 0.05);
+    bar(sp0, sp1, 0.018, frame); bar(sp1, sp2, 0.018, frame);
+    if (s.arms) for (const sx of [-1, 1]) { box([0.05, 0.03, 0.26], [sx * (sw / 2 + 0.03), sy + 0.21, -0.02], pad); bar(new t.Vector3(sx * (sw / 2 + 0.03), sy - 0.06, -0.06), new t.Vector3(sx * (sw / 2 + 0.03), sy + 0.2, -0.06), 0.015, frame); }
+    return g; },
   machine(th, s) { const t = T(); const g = new t.Group(); const [w, h, d] = s.size || [0.8, 1.6, 0.8]; const m = new t.Mesh(new t.BoxGeometry(w, h, d), toonMat(th)); m.position.y = h / 2; g.add(m); g.userData.machine = s.kind || 'unknown'; return g; },
 };
 
