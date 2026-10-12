@@ -134,7 +134,8 @@ function limbs(D, B) {
     if (HD.free && w > 0) { const b = handPose(side, HD.free, B); hw = a.wrist.clone().lerp(b.wrist, w); hq = a.q.clone().slerp(b.q, w);
       if (HD.arc) hw.add(V(HD.arcDir || [0, 1, 0]).multiplyScalar(HD.arc * Math.sin(Math.PI * w))); }
     const sh = B.up(E.R[side + 'Shoulder']); const shift = D.shoulders?.[side] || D.shoulders?.shift; if (shift) sh.add(V(shift).applyQuaternion(B.qUpper));
-    const ep = poleW(HD.free && w > 0.5 ? HD.free : (HD.plant || HD), B, sh.clone().add(V([0, -0.3, -0.3])));
+    const defaultPole = sh.clone().add(V([0, -0.3, -0.3]));
+    const ep = HD.blendPole === true && HD.free ? poleW(HD.plant || HD, B, defaultPole).lerp(poleW(HD.free, B, defaultPole), w) : poleW(HD.free && w > 0.5 ? HD.free : (HD.plant || HD), B, defaultPole);
     const FD = D.feet[side]; const f = footPose(side, FD, B);
     const hip = B.low(E.R[side + 'Hip']);
     const kp = poleW(FD, B, hip.clone().add(f.ankle).multiplyScalar(0.5).add(V([0, 0, 0.4]).applyQuaternion(B.qP)));
@@ -215,11 +216,13 @@ E.pose = function(spec, params, warm) {
   const pose = { version: 1, pelvis: B.P.toArray(), bodyQuaternion: B.qB.toArray(), pelvisQuaternion: B.qP.toArray(), groundLock: false, limbs: {} };
   if (B.qT) pose.torsoQuaternion = B.qT.toArray();
   for (const s of ['left', 'right']) { const l = Lm[s];
-    pose.limbs[s] = { wrist: l.wrist.toArray(), handQuaternion: l.hq.toArray(), elbowPole: l.elbowPole.toArray(), ankle: l.ankle.toArray(), kneePole: l.kneePole.toArray(), footQuaternion: l.fq.toArray(), handLocked: l.locked && !l.shift };
+    pose.limbs[s] = { wrist: l.wrist.toArray(), handQuaternion: l.hq.toArray(), elbowPole: l.elbowPole.toArray(), ankle: l.ankle.toArray(), kneePole: l.kneePole.toArray(), footQuaternion: l.fq.toArray(), handLocked: l.locked && (spec.solveShoulders === true || !l.shift) };
     for (const k of ['upperArmTwist', 'elbowTwist']) if (D.hands[s][k] !== undefined) pose.limbs[s][k] = D.hands[s][k] * DEG;
     for (const k of ['thighTwist', 'kneeTwist']) if (D.feet[s][k] !== undefined) pose.limbs[s][k] = D.feet[s][k] * DEG; }
-  m.applyPose(pose, { playback: false }); v.coach.updateMatrixWorld(true); E._jo = null;
-  if (Lm.left.shift || Lm.right.shift) E.shiftShoulders(Lm, pose);
+  E.poseTargets = spec.solveShoulders === true ? structuredClone(pose) : null;
+  m.applyPose(pose, { playback: false, alignBendPlanes: spec.alignBendPlanes === true,
+    shoulderOffsets: spec.solveShoulders === true ? Object.fromEntries(['left', 'right'].map(s => [s, Lm[s].shift?.toArray() || [0, 0, 0]])) : null }); v.coach.updateMatrixWorld(true); E._jo = null;
+  if (spec.solveShoulders !== true && (Lm.left.shift || Lm.right.shift)) E.shiftShoulders(Lm, pose);
   window.__setRelax(Lm.left.relax, Lm.right.relax);
   // surface contact for free hands that touch the body (hands.<side>.touch = {clear, pull, from}): push the wrist out along the
   // surface normal while the hand penetrates, and (while w > from) pull it in until it rests `clear` above the surface.
@@ -235,6 +238,15 @@ E.metrics = function(spec, full) {
   const v = flareInspector.viewer, m = v.motion, M = m.getMetrics(), J = Object.assign({}, M.joints, E._jo || {});
   const ang = (a, b, c) => V(J[a]).sub(V(J[b])).angleTo(V(J[c]).sub(V(J[b]))) / DEG;
   const out = { joints: J, warn: M.warnings || [] };
+  if (spec.solveShoulders === true && E.poseTargets) {
+    out.finalReach = { pelvisTargetErrorMm: +V(J.pelvis).distanceTo(V(E.poseTargets.pelvis)).toFixed(9) * 1000 };
+    for (const s of ['left', 'right']) {
+      const target = E.poseTargets.limbs[s];
+      out.finalReach[s] = { wristTargetErrorMm: V(J[s+'Wrist']).distanceTo(V(target.wrist))*1000,
+        ankleTargetErrorMm: V(J[s+'Ankle']).distanceTo(V(target.ankle))*1000,
+        boneLengthErrorMm: Math.max(...['UpperArm','Forearm','Thigh','Shin'].map(k => Math.abs(M.segmentLengths[s+k]-M.expectedLengths[s+k])*1000)) };
+    }
+  }
   out.elbow = { left: ang('leftShoulder', 'leftElbow', 'leftWrist'), right: ang('rightShoulder', 'rightElbow', 'rightWrist') };
   out.knee = { left: ang('leftHip', 'leftKnee', 'leftAnkle'), right: ang('rightHip', 'rightKnee', 'rightAnkle') };
   // joint direction sanity in each bone's rest frame (world rest -> current rotation of the parent bone)
@@ -253,6 +265,7 @@ E.metrics = function(spec, full) {
   const tq = M.torsoQuaternion ? new (T().Quaternion)(...M.torsoQuaternion) : null; lim.waistBendDeg = tq ? +(2 * Math.acos(Math.min(1, Math.abs(tq.w))) / DEG).toFixed(1) : 0;
   const pq = new (T().Quaternion)(...M.pelvisQuaternion), bqq = new (T().Quaternion)(...M.bodyQuaternion);
   lim.pelvisToChestDeg = +(pq.angleTo(bqq) / DEG).toFixed(1); lim.neckDeg = 0; // head/neck are rigid with the chest in this rig
+  lim.pelvisToUpperTorsoDeg = +(pq.angleTo(tq ? bqq.clone().multiply(tq) : bqq) / DEG).toFixed(1);
   out.limits = lim;
   // contact centroids
   const p = new (T().Vector3)(); let minY = 9, minName = ''; const cen = {};
@@ -365,9 +378,13 @@ E.applyAt = function(spec, t, warm) {
   const r = E.pose(spec, params, warm); return { params, x: r.x, warn: r.warn, locked: r.locked, touch: r.touch };
 };
 E.setupCamera = function(spec, size) {
-  const v = flareInspector.viewer, c = spec.camera; E.applyAt(spec, c.at ?? 0, null);
-  const J = Object.assign({}, v.motion.getMetrics().joints, E._jo || {}); const box = new (T().Box3)();
-  for (const j of c.fit) box.expandByPoint(V(J[j]));
+  const v = flareInspector.viewer, c = spec.camera, box = new (T().Box3)();
+  const times = c.fitTimeline === true ? [...Array.from({length: 60}, (_, i) => i * spec.timeline.duration / 60), ...(spec.keyFrames || []), c.at ?? 0] : [c.at ?? 0];
+  for (const t of times) {
+    E.applyAt(spec, t, null);
+    const J = Object.assign({}, v.motion.getMetrics().joints, E._jo || {});
+    for (const j of c.fit) box.expandByPoint(V(J[j]));
+  }
   box.expandByScalar(c.pad ?? 0.1); v.fitBounds(box, V(c.dir), c.k ?? 1.0); v.camera.aspect = 1; v.camera.updateProjectionMatrix();
   if (c.fov) { v.camera.fov = c.fov; v.camera.updateProjectionMatrix(); }
   E.cam0 = { pos: v.camera.position.clone(), tgt: v.controls.target.clone() }; v.playing = false; return true;

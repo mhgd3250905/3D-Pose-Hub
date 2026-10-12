@@ -62,7 +62,7 @@ window.__toon = async function(theme){
         
         { vec3 cp=(vRest.xyz-vec3(0.0,1.24,0.06))/vec3(0.16,0.12,0.10); float bm=exp(-dot(cp,cp)*1.6)*step(0.5,uFieldOn);
           transformed+=objectNormal*uBreath*bm; }`).replace('#include <skinning_vertex>','#include <skinning_vertex>\n transformed-=normalize(objectNormal)*texelFetch(uMMT,ivec2(gl_VertexID%1024,gl_VertexID/1024),0).w*step(0.5,uFieldOn)*uSinkK;');
-      sh.fragmentShader=`uniform vec3 uDbgCol;uniform float uGlow;uniform float uRim;uniform float uCollar;uniform float uPulse;uniform float uMapGate;
+      sh.fragmentShader=`uniform vec3 uDbgCol;uniform float uGlow;uniform float uRim;uniform float uCollar;uniform float uPulse;uniform float uMapGate;uniform float uSkipBottomHL;
         uniform vec3 uLc[2];uniform mat3 uLm[2];uniform float uLt[2];uniform float uLobeOn;
         uniform vec3 uBase[4];uniform vec3 uShadeC[4];uniform vec3 uRimC[4];uniform vec4 uFin[4];uniform vec4 uPat[4];uniform vec3 uPatC[4];
         uniform vec3 uHiC;uniform float uHiShade[3];
@@ -105,6 +105,7 @@ window.__toon = async function(theme){
           float seam=(1.0-smoothstep(0.0,0.07+fwidth(e1-e2)*1.5,abs(e1-e2)))*min(i1,i2);
           d=max(i1,i2)*(1.0-0.9*seam);core=clamp(1.0-min(e1,e2),0.0,1.0); }
         if(uMapGate>0.5 && uSelN>0.5){ float c2; float d2=hlMask(c2); if(d2>d){d=d2;core=c2;} }
+        d*=1.0-uSkipBottomHL*clamp(W4.b,0.0,1.0);
         vec3 cy=uHiC;
         vec3 cyl=cy*(uHiShade[0]+uHiShade[1]*b+uHiShade[2]*core)*(0.92+0.16*uPulse);
         lit=mix(lit,cyl,d*0.94);
@@ -154,7 +155,7 @@ window.__buildMM=function(MM,T){const u=MM.createMuscleUniforms();const N=MM.MUS
 window.__setHighlight=function(h){const MM=window.__MM,U=window.__mmUni;const sel=new Array(MM.MUSCLES.length).fill(0);let n=0;
   for(const gid of (h.lobes?[]:h.groups||[])){const g=MM.resolveGroup(gid);if(!g)continue;for(const id of g.muscles){sel[MM.MUSCLE_BY_ID[id].index]=1;n++;}}
   for(const id of h.panels||[]){sel[MM.MUSCLE_BY_ID[id].index]=1;n++;}
-  U.uSel.value=sel;U.uSelN.value=n?1:0;U.uSide.value=h.side==='left'?1:h.side==='right'?-1:0;window.__toonUni.uLobeOn.value=h.lobes?1:0;if(h.inset!==undefined)U.uMapInset.value=h.inset;return n;};
+  U.uSel.value=sel;U.uSelN.value=n?1:0;U.uSide.value=h.side==='left'?1:h.side==='right'?-1:0;window.__toonUni.uLobeOn.value=h.lobes?1:0;window.__toonUni.uSkipBottomHL.value=h.skipBottom?1:0;if(h.inset!==undefined)U.uMapInset.value=h.inset;return n;};
 window.__lobeP={};
 window.__setLobes=function(o){const T=window.__toonT,v=flareInspector.viewer,m=v.motion;m.reset();v.coach.updateMatrixWorld(true);const J=m.getMetrics().joints;
   const P=Object.assign({front:{u:0.035,f:0.052,l:0.026,ru:0.085,rf:0.060,rl:0.034,t:0.6},side:{u:0.03,f:0.006,l:0.056,ru:0.088,rf:0.034,rl:0.060,t:0.6}},o);
@@ -166,7 +167,7 @@ window.__setLobes=function(o){const T=window.__toonT,v=flareInspector.viewer,m=v
     const M=new T.Matrix3().set(u.x/p.ru,u.y/p.ru,u.z/p.ru, f.x/p.rf,f.y/p.rf,f.z/p.rf, l.x/p.rl,l.y/p.rl,l.z/p.rl);U.uLm.value.push(M);U.uLt.value.push(p.t);}
   return {S:S.toArray(),u:u.toArray(),f:f.toArray(),l:l.toArray()};};
 window.__glowU={value:0};window.__rimU={value:1};
-window.__toonUni={uGlow:window.__glowU,uRim:window.__rimU,uPulse:{value:0},uBreath:{value:0},uLc:{value:[]},uLm:{value:[]},uLt:{value:[0.5,0.5]},uLobeOn:{value:0},uRelax:{value:[0,0]},uSinkK:{value:1},
+window.__toonUni={uGlow:window.__glowU,uRim:window.__rimU,uPulse:{value:0},uBreath:{value:0},uLc:{value:[]},uLm:{value:[]},uLt:{value:[0.5,0.5]},uLobeOn:{value:0},uRelax:{value:[0,0]},uSinkK:{value:1},uSkipBottomHL:{value:0},
   uBase:{value:[]},uShadeC:{value:[]},uRimC:{value:[]},uFin:{value:[]},uPat:{value:[]},uPatC:{value:[]},uHiC:{value:null},uHiShade:{value:[0.62,0.30,0.22]},uTex0:{value:null},uTex1:{value:null},uTex2:{value:null},uTex3:{value:null},uTexOn:{value:null},uTexS:{value:null}};
 window.__project=function(names){const v=flareInspector.viewer,T=window.__toonT;const c=v.renderer.domElement.getBoundingClientRect();const o={};
   for(const [k,a] of Object.entries(names)){const V=new T.Vector3(...a).project(v.camera);o[k]=[(V.x+1)/2*c.width+c.left,(1-V.y)/2*c.height+c.top];}return o;};

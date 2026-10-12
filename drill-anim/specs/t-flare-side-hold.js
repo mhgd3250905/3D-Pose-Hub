@@ -1,29 +1,52 @@
-import { floorDrill, curve, qaStd, norm, reach } from './_thomas.mjs';
-// t-flare-side-hold 托马斯侧撑定格 (flare side hold). Body faces +Z (the camera), body left = +X, head points toward -X here:
-// the trunk is rolled ~80 deg onto its right side, balanced on the locked right arm (right hand flat on the floor under the
-// right shoulder). The legs are split wide in the frontal plane (left leg high, right leg low, feet off the floor), the left
-// arm reaches straight up. Static hold with a slow breathing sway. Loop 8 s.
-const T = 8, br = t => 0.5 - 0.5 * Math.cos(2 * Math.PI * t / 4);
-const D = Math.PI / 180;
-// leg in the body (rest) frame: abduction a deg out to its side, plus a little forward flexion f deg
-const legRel = (sg, a, f) => norm([sg * Math.sin(a * D) * Math.cos(f * D), -Math.cos(a * D) * Math.cos(f * D), Math.sin(f * D)]).map(v => v * reach(179));
-// raised left arm in the chest rest frame: straight out to the body's left (= up in the world when rolled 80 deg)
-const SH = [0.1879, 1.3702, -0.0042], AL = 0.4846, adir = norm([0.906, 0.423, 0.05]);
-const wristL = SH.map((v, i) => v + AL * adir[i]);
-export default floorDrill({
+import { floorDrill, qaStd, norm, leg, legFields, dirW } from './_thomas.mjs';
+import { mirrorSpec } from './_thomas-mirror.mjs';
+
+// Reference 3c541c...gif: the lower foot and the same-side palm bear the load.
+// The trunk is almost horizontal, the upper leg is lifted, and the free arm
+// reaches upward. Author one hold precisely; its left-side demo is a true
+// skeleton mirror, because the source cuts between sides rather than changing
+// support continuously. Body front is +Z, body left is +X.
+const T = 8;
+const breath = t => 0.5 - 0.5 * Math.cos(2 * Math.PI * t / 4);
+const shoulderL = [0.1879, 1.3702, -0.0042], armLength = 0.4846;
+const armUp = norm([0.965, 0.257, 0.025]);
+const wristL = shoulderL.map((v, i) => v + armLength * armUp[i]);
+
+const rightSide = floorDrill({
   id: 't-flare-side-hold', name: '托马斯侧撑定格', nameEn: 'Flare Side Hold', T,
   handsDesc: {
     right: { mode: 'floor', at: [-0.50, 0.02], finger: [-0.6, 0.8], poleUp: [-0.2, -0.3, -1] },
-    left: { mode: 'free', frame: 'chest', wrist: wristL, finger: adir, normal: [0, 0, 1], poleUp: [0.3, 1.0, -1] },
+    left: { mode: 'free', frame: 'chest', wrist: wristL, finger: armUp, normal: [0, 0, 1], poleUp: [0.3, 1.0, -1] },
   },
-  elbow: 179,
+  feetDesc: {
+    // These Euler angles approximate a shin tilted 53 degrees from -Y with
+    // plantar flexion, while floor mode places the actual shoe surface at y=0.
+    right: { mode: 'floor', at: [0.635, 0.035], heading: 29.2, pitch: 20.2, roll: 58.3, pole: [0.36, 0.38, 0.6] },
+    left: { mode: 'free', frame: 'hips' },
+  },
+  elbow: 178,
+  constraints: [{ type: 'reach', limb: 'rightLeg', angle: 178, weight: 1 }],
   solve: { vars: ['px', 'py', 'pz'], reg: { px: 0.05, py: 0.05, pz: 0.3 }, iters: 80 },
-  fn: t => { const b = br(t);
-    return { pitch: 4, roll: 65 + 2 * b, py: 0.52 + 0.01 * b, pw: 0.6, shift: 0, elbow: 177.5, elbowL: 179,
-      legs: { left: { rel: legRel(1, 70 + 2 * b, 8), pf: 35, kneeUp: [0, 0, 1] }, right: { rel: legRel(-1, -18 - 2 * b, 8), pf: 35, kneeUp: [0, 0, 1] } } }; },
+  fn: t => {
+    const b = breath(t);
+    return { pitch: 3, roll: 80 + 0.6 * b, py: 0.64 + 0.003 * b, pw: 0.01,
+      pz: 0, pzw: 0.01, shift: 0, waist: 0, elbow: 178, elbowL: 178 };
+  },
+  extra: (t, s) => ({
+    // The upper leg is a world-space target, not an abduction vector rotated
+    // twice with the side-lying pelvis. Only the lower leg is floor-constrained.
+    ...legFields('left', leg('left', dirW(1, 40 + 0.5 * breath(t), 87), s.pitch, 32, 178, [0, 0, 1], null, s.roll, 0)),
+    'constraints.1.weight': 0,
+  }),
   highlight: { groups: ['obliques', 'deltoids'], side: 'right', pulseAt: [2, 6], pulseWidth: 1.2, pulseBase: 0.35 },
-  camera: { dir: [0.15, 0.12, 1], fit: ['head', 'leftWrist', 'rightPalm', 'leftToe', 'rightToe', 'pelvis', 'leftKnee', 'rightKnee'], pad: 0.18, k: 1.0, drift: 5, at: 2 },
-  shadow: { joints: ['rightPalm', 'rightAnkle', 'pelvis'], blobs: [{ j: 'rightPalm', rx: 40, ry: 12, a: 0.7 }, { j: 'pelvis', rx: 110, ry: 18, a: 0.3 }, { j: 'rightAnkle', rx: 40, ry: 10, a: 0.4, fade: [0.08, 0.4] }], bands: [] },
+  camera: { dir: [0.08, 0.10, 1], fit: ['head', 'leftWrist', 'rightPalm', 'leftToe', 'rightToe', 'pelvis', 'leftKnee', 'rightKnee'], pad: 0.18, k: 1.0, drift: 3, at: 2 },
+  shadow: { joints: ['rightPalm', 'rightAnkle', 'pelvis'], blobs: [{ j: 'rightPalm', rx: 40, ry: 12, a: 0.7 }, { j: 'pelvis', rx: 110, ry: 18, a: 0.3 }, { j: 'rightAnkle', rx: 40, ry: 10, a: 0.6 }], bands: [] },
+  props: [{ type: 'mat', at: [0.06, 0, 0.12], size: [1.83, 1.1, 0.006] }],
   keyFrames: [0, 2, 4],
-  qa: qaStd({ more: { pins: [{ c: 'handR', when: 'always' }] } }),
+  qa: qaStd({
+    straightArms: [{ j: 'elbow.right', min: 176 }, { j: 'elbow.left', min: 176 }],
+    more: { pins: [{ c: 'handR', when: 'always' }, { c: 'footR', when: 'always' }] },
+  }),
 });
+export default rightSide;
+export const leftSide = mirrorSpec(rightSide);

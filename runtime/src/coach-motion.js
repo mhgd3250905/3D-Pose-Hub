@@ -1154,13 +1154,14 @@ export function createCoachMotion({ model, rigData }) {
     return capturePose();
   }
 
-  function projectBody(requested) {
+  function projectBody(requested, shoulderShifts = null) {
     const position = requested.pelvis.clone();
     const constraints = [];
     let minimumY = -Infinity;
     for (const side of SIDES) {
       const source = requested.limbs[side], value = limbs[side];
       const shoulderOffset = upperOffset(rest[side + 'Shoulder'], requested.bodyQuaternion, requested.torsoQuaternion);
+      if (shoulderShifts) shoulderOffset.add(shoulderShifts[side]);
       if (source.handLocked) {
         constraints.push({
           center: source.wrist.clone().sub(shoulderOffset),
@@ -1221,11 +1222,17 @@ export function createCoachMotion({ model, rigData }) {
     return ankle;
   }
 
-  function solvePose(input, { playback = false } = {}) {
+  function solvePose(input, { playback = false, shoulderOffsets = null } = {}) {
     // Validate and solve before mutating bones, so a bad import leaves the
     // current pose intact and cannot introduce NaNs into the live skeleton.
     const requested = validatePose(input);
-    const constrainedPelvis = projectBody(requested);
+    // Renderer-authored scapular depression belongs in the reach calculation,
+    // before either arm is solved. Post-solve shoulder moves can stretch a forearm.
+    // Omitted offsets preserve the original editor/playback arithmetic.
+    const shoulderShifts = shoulderOffsets ? Object.fromEntries(SIDES.map(side => [side,
+      shoulderOffsets[side] ? point(finiteArray(shoulderOffsets[side], 3, `${side}肩部偏移`)) : new THREE.Vector3(),
+    ])) : null;
+    const constrainedPelvis = projectBody(requested, shoulderShifts);
     // Playback constraints must not straighten a user's bent-arm manual draft.
     const lift = playback ? liftWithLateSpots(requested, constrainedPelvis, latePlantSpots.get(input), liftOffCaps.get(input)) : 0;
     if (lift > 0) {
@@ -1241,6 +1248,7 @@ export function createCoachMotion({ model, rigData }) {
       const source = requested.limbs[side], value = limbs[side];
       const label = side === 'left' ? '左' : '右';
       const shoulder = upperOffset(rest[side + 'Shoulder'], requested.bodyQuaternion, requested.torsoQuaternion).add(constrainedPelvis);
+      if (shoulderShifts) shoulder.add(shoulderShifts[side]);
       // v33: a hand on (or at) the floor whose shoulder sits closer than a straight arm
       // (both hands down, the hips held by the other straight arm) keeps its arm straight:
       // the shoulder gives along the arm (a small push / shrug, <= SHOULDER_GIVE) instead of the elbow bending
@@ -1337,8 +1345,8 @@ export function createCoachMotion({ model, rigData }) {
     for (const side of SIDES) for (const p of [node.solved[side].hip, node.solved[side].leg.middle, node.solved[side].leg.end]) p.y += bodyOffset;
   }
 
-  function applyPose(input, { playback = mode === 'flare', alignBendPlanes = false, bodyOffset = 0 } = {}) {
-    const node = solvePose(input, { playback });
+  function applyPose(input, { playback = mode === 'flare', alignBendPlanes = false, bodyOffset = 0, shoulderOffsets = null } = {}) {
+    const node = solvePose(input, { playback, shoulderOffsets });
     const { requested, constrainedPelvis, warnings, solved } = node;
     if (typeof bodyOffset === 'function') bodyOffset = bodyOffset(constrainedPelvis.y);
     offsetSolvedBody(node, bodyOffset);

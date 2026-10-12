@@ -1,21 +1,39 @@
-import { floorDrill, curve, qaStd, leg, dirW } from './_thomas.mjs';
-// t-half-straddle 半分腿支撑 (half straddle support). Head up (+Y), body faces +Z, body left = +X.
-// Wide straddle sit, hands flat between the thighs; press the floor away (arms locked, shoulders down) and lift the hips off the
-// floor while the heels stay planted - the half version of the straddle support; hold, sit back down. Loop 8 s.
-const T = 8, up = curve([[0, 0], [0.7, 0], [1.7, 1], [6.5, 1], [7.5, 0]], T);
-// feet fixed in the world where the seated straddle puts them (pelvis at y 0.134, z 0): hip + reach * dir(elev -1.2, spread 44)
-const foot = sg => { const L = leg(sg > 0 ? 'left' : 'right', dirW(sg, -1.2, 44), 0, 8);
-  return { mode: 'free', frame: 'world', ankle: [L.ankle[0], L.ankle[1] - 0.8996 + 0.134, L.ankle[2] - 0.0102], rot: L.rot.slice(1, 3), pole: [sg * 0.5, 1.2, 0.5] }; };
+import { floorDrill, qaStd } from './_thomas.mjs';
+
+// Reference 0bce...gif: both knees stay straight in a nearly transverse split,
+// with a small pelvis/foot clearance and palms close to the pelvis. At least
+// one shoe is clearly unsupported; the compressed source does not establish
+// whether the opposite heel lightly touches. Use a low suspended hold instead
+// of the previous two planted heels and repeated hip presses. The source's
+// camera cuts do not establish a continuous torso turn, so the palms stay planted.
+const T = 8;
+const breath = t => 0.5 - 0.5 * Math.cos(2 * Math.PI * t / 4);
+const D = Math.PI / 180;
+const handAt = (sg, yaw) => {
+  const a = yaw * D;
+  return [sg * 0.10 * Math.cos(a) + 0.082 * Math.sin(a),
+    0.087 + 0.082 * Math.cos(a) - sg * 0.10 * Math.sin(a)];
+};
+
 export default floorDrill({
   id: 't-half-straddle', name: '半分腿支撑', nameEn: 'Half Straddle Support', T,
-  hands: { left: [0.075, 0.24, [0.25, 1]], right: [-0.075, 0.24, [-0.25, 1]] },
-  feetDesc: { left: foot(1), right: foot(-1) },
-  constraints: [{ type: 'reach', limb: 'leftLeg', angle: 179, weight: 2 }, { type: 'reach', limb: 'rightLeg', angle: 179, weight: 2 }],
-  solve: { vars: ['py', 'pz', 'c0', 'h0'], reg: { py: 0.3, pz: 0.05, c0: 0.05, h0: 0.05 }, iters: 60 },
-  fn: t => { const u = up(t); return { pitch: 8 + 12 * u, py: 0.134 + 0.05 * u, pw: 0.6, shift: 0.05 * u, elbow: 160 + 17.5 * Math.min(1, u * 1.6) }; },
-  tags: { up },
-  highlight: { groups: ['triceps', 'hip-flexors'], side: 'both', pulseTrack: 'up', pulseBase: 0.3 },
-  camera: { dir: [0.35, 0.22, 1], fit: ['head', 'leftPalm', 'rightPalm', 'leftToe', 'rightToe', 'pelvis', 'leftKnee', 'rightKnee'], pad: 0.16, k: 1.0, drift: 3, at: 3.5 },
-  keyFrames: [0.3, 1.2, 3.5],
-  qa: qaStd({ more: { pins: [{ c: 'handR', when: 'always' }, { c: 'handL', when: 'always' }, { c: 'footR', when: 'always' }, { c: 'footL', when: 'always' }] } }),
+  hands: { left: [0.10, 0.169, [0.25, 1]], right: [-0.10, 0.169, [-0.25, 1]] },
+  solve: { vars: ['px', 'py', 'pz'], reg: { px: 0.3, py: 0.3, pz: 0.05 }, iters: 80 },
+  fn: t => {
+    const b = breath(t), yaw = 0, elev = 0.8 + 0.35 * b;
+    return { pitch: 24, waist: -15, waistYaw: yaw,
+      py: 0.17 + 0.002 * b, pw: 0.01, pz: 0, pzw: 0.15, shift: 0.09,
+      elbow: 178, hands: { left: handAt(1, yaw), right: handAt(-1, yaw) },
+      legs: {
+        left: { elev, spread: 72, pf: 6, knee: 178, kneeUp: [0, 1, 0] },
+        right: { elev, spread: 72, pf: 6, knee: 178, kneeUp: [0, 1, 0] },
+      } };
+  },
+  tags: { up: () => 1 },
+  highlight: { groups: ['triceps'], side: 'both', pulseAt: [2, 6], pulseWidth: 1.2, pulseBase: 0.3 },
+  camera: { dir: [0.20, 0.18, 1], fit: ['head', 'leftPalm', 'rightPalm', 'leftToe', 'rightToe', 'pelvis', 'leftKnee', 'rightKnee'], pad: 0.16, k: 1.0, drift: 3, at: 5.5 },
+  keyFrames: [0.3, 2, 5.5],
+  qa: qaStd({
+    straightArms: [{ j: 'elbow.right', min: 176 }, { j: 'elbow.left', min: 176 }],
+  }),
 });
