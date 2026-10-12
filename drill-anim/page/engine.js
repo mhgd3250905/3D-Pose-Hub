@@ -124,7 +124,7 @@ function handPose(side, H, B) {
   if (H.mode === 'fingertips') {
     // Keep the original straight hand mesh. Raise the wrist until its lowest
     // fingertip rests on the floor; the palm remains above the contact plane.
-    const q = E.handQ(side, V([0, -1, 0]), V(H.normal || [0, 0, -1]));
+    const q = E.handQ(side, V(H.finger || [0, -1, 0]), V(H.normal || [0, 0, -1]));
     const mn = Math.min(...E.handPts[side].map(p => p.clone().applyQuaternion(q).y));
     return { wrist: V([H.at[0], (H.floor ?? 0) + (H.clear ?? 0.001) - mn, H.at[1]]), q, floor: true };
   }
@@ -235,7 +235,7 @@ E.pose = function(spec, params, warm) {
     for (const k of ['upperArmTwist', 'elbowTwist']) if (D.hands[s][k] !== undefined) pose.limbs[s][k] = D.hands[s][k] * DEG;
     for (const k of ['thighTwist', 'kneeTwist']) if (D.feet[s][k] !== undefined) pose.limbs[s][k] = D.feet[s][k] * DEG; }
   E.poseTargets = spec.solveShoulders === true ? structuredClone(pose) : null;
-  m.applyPose(pose, { playback: false, alignBendPlanes: spec.alignBendPlanes === true,
+  m.applyPose(pose, { playback: false, alignBendPlanes: spec.alignBendPlanes === true, alignClavicles: spec.alignClavicles === true,
     shoulderOffsets: spec.solveShoulders === true ? Object.fromEntries(['left', 'right'].map(s => [s, Lm[s].shift?.toArray() || [0, 0, 0]])) : null }); v.coach.updateMatrixWorld(true); E._jo = null;
   if (spec.solveShoulders !== true && (Lm.left.shift || Lm.right.shift)) E.shiftShoulders(Lm, pose);
   window.__setRelax(Lm.left.relax, Lm.right.relax);
@@ -419,7 +419,8 @@ E.frame = function(spec, t, f, warm, opts) {
   U.uPulse.value = E.pulseAt(spec.highlight, spec.timeline, t);
   const drift = f < 0 ? 0 : Math.sin(2 * Math.PI * t / (spec.camera.driftPeriod ?? TL) + (spec.camera.driftPhase ?? 0)) * (spec.camera.drift ?? 0.9) * Math.PI / 180; // yaw sway (deg) about the target; driftPeriod must divide the loop
   const orbit = f < 0 ? 0 : (spec.camera.orbitDegrees ?? 0) * t / (spec.camera.orbitDuration ?? TL) * Math.PI / 180;
-  const c0 = E.cam0; const off = c0.pos.clone().sub(c0.tgt).applyAxisAngle(V([0, 1, 0]), drift + orbit); v.camera.position.copy(c0.tgt).add(off); v.camera.lookAt(c0.tgt); v.camera.updateMatrixWorld();
+  const frontSweep = f < 0 ? 0 : -(spec.camera.frontSweepDegrees ?? 0) / 2 * Math.cos(2 * Math.PI * t / (spec.camera.frontSweepPeriod ?? TL)) * Math.PI / 180;
+  const c0 = E.cam0; const off = c0.pos.clone().sub(c0.tgt).applyAxisAngle(V([0, 1, 0]), drift + orbit + frontSweep); v.camera.position.copy(c0.tgt).add(off); v.camera.lookAt(c0.tgt); v.camera.updateMatrixWorld();
   window.__props?.update();
   const M = E.metrics(spec, opts.full); const J = M.joints;
   const hc = E.handClip(['left', 'right'], { exclude: spec.qa?.handClipExclude }); M.handClip = { left: hc.left.minMm, right: hc.right.minMm, leftBone: hc.left.bone || null, rightBone: hc.right.bone || null }; M.touch = r.touch || {};

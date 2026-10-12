@@ -4,7 +4,7 @@ const T=8,up=()=>1;
 const ext=curve([[0,0],[1.5,0],[2.5,1],[3,1],[4,0],[4.5,0],[5.5,1],[6,1],[7,0]],T);
 const mix=(a,b,u)=>a.map((x,i)=>x+(b[i]-x)*u);
 const tuck=[0.05,0.02,0.36],lsit=dirW(1,5,2).map(x=>x*reach(178));
-export default floorDrill({
+const spec = floorDrill({
  id:'t-lsit-tuck',name:'L 撑↔团身',nameEn:'L-Sit to Tuck',T,
  hands:{left:[0.26,-0.045],right:[-0.26,-0.045]},
  fn:t=>{const u=up(t),e=ext(t),leg=sg=>{const r=mix(tuck,lsit,e);r[0]*=sg;return {rel:r,pf:8+16*e,kneeUp:[sg*0.16,1,0.15]};};
@@ -17,3 +17,4 @@ export default floorDrill({
  camera:{dir:[0.9,0.22,0.6],fit:['head','leftPalm','rightPalm','leftToe','rightToe','pelvis','leftKnee','rightKnee'],pad:0.16,k:1,drift:4,at:2.8,fitTimeline:false},
  keyFrames:[1.5,2.8,4.2],qa:qaStd({straightLegs:[{j:'knee.right',min:176,when:'params.ext>0.999'},{j:'knee.left',min:176,when:'params.ext>0.999'}],more:{hipFlexMax:155}}),
 });
+export default { ...spec, alignClavicles: true };

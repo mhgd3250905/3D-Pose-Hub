@@ -10,7 +10,7 @@ const shape=p=>{let e=0,s=0;
  else if(p<0.75)e=1-smooth((p-0.5)/0.25);
  return {e,s};};
 const height=t=>{const p=phase(t);return shape(reverse(t)?(1-p)%1:p).e;};
-export default floorDrill({
+const spec = floorDrill({
  id:'t-lsit-vsit-circles',name:'L 撑到 V 撑画圈',nameEn:'L-Sit to V-Sit Circles',T,
  hands:{left:[0.26,-0.11,[0.9,0.3]],right:[-0.26,-0.11,[-0.9,0.3]]},
  fn:t=>{const u=up(t),p=phase(t),{e,s}=shape(reverse(t)?(1-p)%1:p),l={elev:-1+6*u+72*e*u,spread:2+66*s*u,pf:3+23*u,knee:178};
@@ -25,3 +25,4 @@ export default floorDrill({
  // High circle point is a deep pike seen in R12/R13, not the default standing limit.
  qa:qaStd({more:{hipFlexMax:165}}),
 });
+export default { ...spec, alignClavicles: true };

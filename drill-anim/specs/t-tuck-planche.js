@@ -25,8 +25,9 @@ const original = floorDrill({
 
 // The last frame of the original approved 5 fps preview is f=234 / t=7.8 s.
 // All descriptor tracks equal zero there, so original.pose.base is exactly that
-// frame's descriptor. Preserve the original IK and shoulder path. Only orbit
-// the camera; do not reanimate, resculpt, straighten or reinterpret the posture.
+// frame's descriptor. Preserve the original IK and shoulder path. The camera
+// eases from one side through the front to the other side, then returns through
+// the front; its 180-degree sweep never enters the rear half-space.
 const holdDuration = 24;
 export default {
   ...original,
@@ -34,7 +35,8 @@ export default {
   breath: 0,
   pose: { base: original.pose.base, deltas: {} },
   timeline: { duration: holdDuration, tracks: { up: [[0, 0, 'linear']] } },
-  camera: { ...original.camera, drift: 0, orbitDegrees: 360, orbitDuration: holdDuration, at: 0 },
+  camera: { ...original.camera, dir: [0, 0.18, Math.hypot(1, 0.15)], drift: 0,
+    frontSweepDegrees: 180, frontSweepPeriod: holdDuration, at: 0 },
   stillAt: 0, keyFrames: [0, 6, 12, 18],
   restoration: { source: '3d20434213f4a42d93cfec17e285af382334e36d', sourceFrame: 234, sourceTime: 7.8,
     posture: 'original final preview frame', cameraOnly: true },

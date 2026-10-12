@@ -6,7 +6,7 @@ Windows 配置可从 `config.windows.example.json` 复制为 gitignored `config.
 
 `3D-Pose` 的五项最终修订现另在 [Hark-4080交付包](revisions/hark-4080-v1/README.md)，含最终spec/theme、MP4/GIF、封面及原始QA；[成果接手地图](../../docs/drill-anim/hark-4080-v1.md) 给出完整60动作的索引与云盘入口。这是新增审阅目录，不替换原59项spec、App选版或正式视频。
 
-PR #106 的托马斯专项 `t-*` 仍为草稿，未进入上述75项正式制作源，也未注册App。用户反馈后的当前候选保留原编号2–12及左侧撑镜像；1半分腿停止制作，原规格与历史预览保留。修复位于隔离分支 `codex/thomas-reference-optimization`，逐项评价、人体恢复与本轮证据见 [反馈修复记录](../../docs/thomas-feedback-repair-2026-10-12.md)，第一轮参考映射保存在 [托马斯素材优化历史](../../docs/thomas-reference-optimization-2026-10-12.md)。当前交付为动作对比预览，高清全片与App媒体替换待视觉确认。新增办公室/久坐源不表示所有动作已有全片验收；具体覆盖和原始警告随审核记录保留。
+PR #106 的托马斯专项 `t-*` 仍为草稿，未进入上述75项正式制作源，也未注册App。用户反馈后的当前候选保留原编号2–12及左侧撑镜像；1半分腿停止制作，原规格与历史预览保留。修复位于隔离分支 `codex/thomas-reference-optimization`，当前逐项评价与肩颈实证见 [第二轮反馈](../../docs/thomas-feedback-v2-2026-10-12.md)；此前 [反馈修复记录](../../docs/thomas-feedback-repair-2026-10-12.md) 和 [托马斯素材优化历史](../../docs/thomas-reference-optimization-2026-10-12.md) 保留。当前交付为动作对比预览，高清全片与App媒体替换待视觉确认。新增办公室/久坐源不表示所有动作已有全片验收；具体覆盖和原始警告随审核记录保留。
 
 ```powershell
 node tools/drill-anim/verify.mjs
@@ -99,8 +99,10 @@ export default {
   solver: 'sideplank-v7',                   // optional: use the frozen v7 solver instead (deltoids-A only)
   highlight: { groups: ['triceps'], side: 'both'|'left'|'right', lobes?, panels?, inset?,
                pulseAt: [t...], pulseWidth: s, pulseBase: 0.25 } | { ..., pulseTrack: 'down' },
+  alignClavicles: true,                     // optional floor-support clavicle rotation; original skin/landmarks retained, default false
   camera: { dir: [x, y, z], fit: [joint names], pad: m, k: 1.0, at: t (pose used for fitting), fov?,
-            drift: deg (yaw sway), driftPeriod: s (default = loop; must divide the loop), driftPhase: rad },
+            drift: deg (yaw sway), driftPeriod: s (default = loop; must divide the loop), driftPhase: rad,
+            frontSweepDegrees: 180, frontSweepPeriod: s }, // optional front-only side-to-side yaw, centred on dir +Z
   frame: { mode: 'fit', width, height?, cx, cy } | { mode: 'v7', width, left, top },  // placement of the body on the canvas
   stillAt: t,                               // the pose the frame placement is fitted to (default 0)
   shadow: { joints: [...], blobs: [{ j, dx, dy, rx, ry, a, fade?: [y0, y1] }], bands: [{ from, to, mid, rx, ry, a, dy, sag }] },

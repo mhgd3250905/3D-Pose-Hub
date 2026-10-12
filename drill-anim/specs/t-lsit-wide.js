@@ -5,7 +5,7 @@ import { floorDrill, qaStd, rotX } from './_thomas-pr106.mjs';
 const T = 8;
 // Three complete original 2.4 s breaths, then a quiet hold to join the loop.
 const br = t => t < 7.2 ? 0.5 - 0.5 * Math.cos(2 * Math.PI * t / 2.4) : 0;
-const leg = b => ({ elev: 7.8 + b, spread: 28, pf: 43 });
+const leg = b => ({ elev: 7.8 + b, spread: 34, pf: 43 });
 const DEG = Math.PI / 180, waist = 44.8, tilt = -8, handZ = -0.1;
 // Bind-pose offsets from the unchanged Snow asset. Align shoulder->wrist to
 // pelvis->shoulder-centre in YZ, while allowing the original curved upper torso.
@@ -28,4 +28,4 @@ const spec = floorDrill({
   camera: { dir: [0.3, 0.2, 1], fit: ['head', 'leftPalm', 'rightPalm', 'leftToe', 'rightToe', 'pelvis', 'leftKnee', 'rightKnee'], pad: 0.16, k: 1, drift: 4, at: 3.5 },
   keyFrames: [0.3, 1.2, 3.5], qa: qaStd(),
 });
-export default { ...spec, alignBendPlanes: false, solveShoulders: true };
+export default { ...spec, alignBendPlanes: false, alignClavicles: true, solveShoulders: true };

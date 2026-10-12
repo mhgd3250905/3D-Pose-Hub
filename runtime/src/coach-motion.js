@@ -324,7 +324,7 @@ export function createCoachMotion({ model, rigData }) {
     for (const name of ['torso', 'neck', 'head']) poseBone(name, upperTarget(rest[name]), rotation);
   }
 
-  function poseArm(side, target, shoulder, elbow, wrist, handRotation) {
+  function poseArm(side, target, shoulder, elbow, wrist, handRotation, alignClavicles = false) {
     const body = upperRotation();
     const normal = elbow.clone().sub(shoulder).cross(wrist.clone().sub(elbow));
     // The periodic trial has nonzero elbow/knee bends. Their planes define
@@ -338,7 +338,13 @@ export function createCoachMotion({ model, rigData }) {
     const foreAxis = rest[side + 'Wrist'].clone().sub(rest[side + 'Elbow']);
     const foreRotation = rotation(foreAxis, wrist.clone().sub(elbow));
     if (target.elbowTwist) foreRotation.multiply(new THREE.Quaternion().setFromAxisAngle(foreAxis.normalize(), target.elbowTwist));
-    poseBone(side + 'Scapula', shoulder, body);
+    // Floor-support shoulder depression rotates the original clavicle around
+    // the chest. Translating it with an unchanged rotation pulls the collar
+    // into a shelf. Keep this opt-in so saved poses retain their original skin.
+    const scapulaRotation = alignClavicles
+      ? rotationFor(rest[side + 'Shoulder'].clone().sub(rest.torso), shoulder.clone().sub(upperTarget(rest.torso)), body)
+      : body;
+    poseBone(side + 'Scapula', shoulder, scapulaRotation);
     poseBone(side + 'UpperArm', shoulder, armRotation);
     poseBone(side + 'Forearm', elbow, foreRotation);
     poseBone(side + 'Hand', wrist, handRotation);
@@ -1345,7 +1351,7 @@ export function createCoachMotion({ model, rigData }) {
     for (const side of SIDES) for (const p of [node.solved[side].hip, node.solved[side].leg.middle, node.solved[side].leg.end]) p.y += bodyOffset;
   }
 
-  function applyPose(input, { playback = mode === 'flare', alignBendPlanes = false, bodyOffset = 0, shoulderOffsets = null } = {}) {
+  function applyPose(input, { playback = mode === 'flare', alignBendPlanes = false, alignClavicles = false, bodyOffset = 0, shoulderOffsets = null } = {}) {
     const node = solvePose(input, { playback, shoulderOffsets });
     const { requested, constrainedPelvis, warnings, solved } = node;
     if (typeof bodyOffset === 'function') bodyOffset = bodyOffset(constrainedPelvis.y);
@@ -1374,7 +1380,7 @@ export function createCoachMotion({ model, rigData }) {
       value.anchor.copy(source.wrist).add(value.palmOffset.clone().applyQuaternion(source.handQuaternion));
       const target = targets[side] = { elbowPole: source.elbowPole.clone(), kneePole: source.kneePole.clone() };
       for (const key of ['elbowTwist', 'kneeTwist', 'upperArmTwist', 'thighTwist']) if (source[key] !== undefined) target[key] = source[key];
-      poseArm(side, target, shoulder, arm.middle, arm.end, source.handQuaternion);
+      poseArm(side, target, shoulder, arm.middle, arm.end, source.handQuaternion, alignClavicles);
       poseLeg(side, target, hip, leg.middle, leg.end, source.footQuaternion);
     }
     finishPose();

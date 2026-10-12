@@ -1,7 +1,7 @@
 import { floorDrill, curve, qaStd } from './_thomas.mjs';
 // R09: thighs fold toward the chest. A backward whole-body lean is not hip compression.
 const T=8, up=()=>1;
-export default floorDrill({
+const spec = floorDrill({
   id:'t-vsit',name:'V 撑',nameEn:'V-Sit',T,
   hands:{left:[0.235,-0.025],right:[-0.235,-0.025]},
   fn:t=>{const u=up(t),l={elev:-1+66*u,spread:2,pf:3+32*u,knee:178};
@@ -16,3 +16,4 @@ export default floorDrill({
   // R09 visibly requires deep pike compression; other specs retain the 135-degree default.
   qa:qaStd({more:{hipFlexMax:155}}),
 });
+export default { ...spec, alignClavicles: true };
