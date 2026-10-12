@@ -1,0 +1,5843 @@
+{
+ "id": "hip-abductors-B",
+ "frames": 240,
+ "fps": 30,
+ "duration_s": 8,
+ "min_vertex_y_m": 0.0059,
+ "min_vertex_mesh": "Coach_Body",
+ "below_floor": false,
+ "pins": {},
+ "straight": {
+  "knee.right": {
+   "frames": 240,
+   "min_deg": 176.03,
+   "ok": true
+  },
+  "knee.left": {
+   "frames": 240,
+   "min_deg": 176.03,
+   "ok": true
+  }
+ },
+ "limits": {
+  "knee_flex_backward": true,
+  "elbow_flex_forward": true,
+  "hip_flex_deg_range": [
+   88.9,
+   90.1
+  ],
+  "hip_abd_deg_range": [
+   0.3,
+   39.2
+  ],
+  "hip_abd_true_deg_range": [
+   0.3,
+   39.2
+  ],
+  "hip_flex_max_deg": 135.0,
+  "hip_ok": true,
+  "waist_bend_deg_max": 0,
+  "waist_ok": true,
+  "pelvis_to_chest_deg_max": 0,
+  "elbow_deg_range": [
+   179.9,
+   179.9
+  ],
+  "knee_deg_range": [
+   176.0,
+   178.2
+  ],
+  "neck_note": "head/neck rigid with the upper torso in this rig (no neck bend possible)",
+  "first_violation": {}
+ },
+ "self_clip": {
+  "worst_pair": "thighL|shinR",
+  "worst_gap_mm": 50.2,
+  "at_frame": 0,
+  "ok": true,
+  "method": "capsule hulls per segment (torso r115, upper arm r42, forearm r34, hand r28, thigh r68, shin r48, foot r45 mm), adjacent + spec-allowed pairs skipped; ok if overlap < 8 mm"
+ },
+ "hand_clip": {
+  "left": {
+   "min_signed_mm": 99,
+   "at_frame": 0,
+   "nearest_bone": null,
+   "penetrating_frames": 0,
+   "ok": true
+  },
+  "right": {
+   "min_signed_mm": 99,
+   "at_frame": 0,
+   "nearest_bone": null,
+   "penetrating_frames": 0,
+   "ok": true
+  },
+  "method": "per hand skin vertex: K=6 nearest vertices of each outer body layer (skin, tee, cuff, shorts, head; own hand/forearm excluded, radius 45 mm); inside if the vertex is closer to the nearest bone core line than those surface vertices; value = depth (<0) or gap (>0: radial gap over the surface patch, capped by the euclidean distance); ok if >= -0.5 mm"
+ },
+ "solver_warning_frames": 240,
+ "frame_edge_touch_frames": 0,
+ "frames_complete": true,
+ "pass": true,
+ "per_frame": [
+  {
+   "f": 0,
+   "params": {
+    "open": 0,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 178.0,
+    "right": 178.0
+   },
+   "minY": 0.0059,
+   "clip_mm": 50.2,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 1,
+   "params": {
+    "open": 0,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 178.0,
+    "right": 178.0
+   },
+   "minY": 0.0059,
+   "clip_mm": 50.2,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 2,
+   "params": {
+    "open": 0,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 178.0,
+    "right": 178.0
+   },
+   "minY": 0.0059,
+   "clip_mm": 50.2,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 3,
+   "params": {
+    "open": 0,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 178.0,
+    "right": 178.0
+   },
+   "minY": 0.0059,
+   "clip_mm": 50.2,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 4,
+   "params": {
+    "open": 0,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 178.0,
+    "right": 178.0
+   },
+   "minY": 0.0059,
+   "clip_mm": 50.2,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 5,
+   "params": {
+    "open": 0,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 178.0,
+    "right": 178.0
+   },
+   "minY": 0.0059,
+   "clip_mm": 50.2,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 6,
+   "params": {
+    "open": 0,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 178.0,
+    "right": 178.0
+   },
+   "minY": 0.0059,
+   "clip_mm": 50.2,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 7,
+   "params": {
+    "open": 0,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 178.0,
+    "right": 178.0
+   },
+   "minY": 0.0059,
+   "clip_mm": 50.2,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 8,
+   "params": {
+    "open": 0,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 178.0,
+    "right": 178.0
+   },
+   "minY": 0.0059,
+   "clip_mm": 50.2,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 9,
+   "params": {
+    "open": 0,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 178.0,
+    "right": 178.0
+   },
+   "minY": 0.0059,
+   "clip_mm": 50.2,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 10,
+   "params": {
+    "open": 0.0034,
+    "bow": 0.0135
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 52.1,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 11,
+   "params": {
+    "open": 0.0135,
+    "bow": 0.0531
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.5,
+    "right": 177.5
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 12,
+   "params": {
+    "open": 0.0301,
+    "bow": 0.117
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.0,
+    "right": 177.0
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 13,
+   "params": {
+    "open": 0.0532,
+    "bow": 0.2015
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 176.6,
+    "right": 176.6
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 14,
+   "params": {
+    "open": 0.0822,
+    "bow": 0.3019
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 176.3,
+    "right": 176.3
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 15,
+   "params": {
+    "open": 0.117,
+    "bow": 0.4132
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 176.1,
+    "right": 176.1
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 16,
+   "params": {
+    "open": 0.1569,
+    "bow": 0.5292
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 176.0,
+    "right": 176.0
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 17,
+   "params": {
+    "open": 0.2014,
+    "bow": 0.6433
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 176.2,
+    "right": 176.2
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 18,
+   "params": {
+    "open": 0.25,
+    "bow": 0.75
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 176.5,
+    "right": 176.5
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 19,
+   "params": {
+    "open": 0.302,
+    "bow": 0.8432
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 176.9,
+    "right": 176.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 20,
+   "params": {
+    "open": 0.3565,
+    "bow": 0.9177
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.4,
+    "right": 177.4
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 21,
+   "params": {
+    "open": 0.4132,
+    "bow": 0.9698
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.8,
+    "right": 177.8
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 22,
+   "params": {
+    "open": 0.471,
+    "bow": 0.9966
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 178.2,
+    "right": 178.2
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 23,
+   "params": {
+    "open": 0.529,
+    "bow": 0.9966
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 178.2,
+    "right": 178.2
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 24,
+   "params": {
+    "open": 0.5868,
+    "bow": 0.9698
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 25,
+   "params": {
+    "open": 0.6435,
+    "bow": 0.9177
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.4,
+    "right": 177.4
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 26,
+   "params": {
+    "open": 0.698,
+    "bow": 0.8432
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 176.9,
+    "right": 176.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 27,
+   "params": {
+    "open": 0.75,
+    "bow": 0.75
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 176.5,
+    "right": 176.5
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 28,
+   "params": {
+    "open": 0.7986,
+    "bow": 0.6433
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 176.2,
+    "right": 176.2
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 29,
+   "params": {
+    "open": 0.8431,
+    "bow": 0.5292
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 176.0,
+    "right": 176.0
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 30,
+   "params": {
+    "open": 0.883,
+    "bow": 0.4132
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 176.1,
+    "right": 176.1
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 31,
+   "params": {
+    "open": 0.9178,
+    "bow": 0.3019
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 176.2,
+    "right": 176.2
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 32,
+   "params": {
+    "open": 0.9468,
+    "bow": 0.2015
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 176.5,
+    "right": 176.5
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 33,
+   "params": {
+    "open": 0.9698,
+    "bow": 0.117
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.0,
+    "right": 177.0
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 34,
+   "params": {
+    "open": 0.9865,
+    "bow": 0.0531
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.4,
+    "right": 177.4
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 35,
+   "params": {
+    "open": 0.9966,
+    "bow": 0.0135
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.7,
+    "right": 177.7
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 36,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 37,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 38,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 39,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 40,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 41,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 42,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 43,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 44,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 45,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 46,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 47,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 48,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 49,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 50,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 51,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 52,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 53,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 54,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 55,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 56,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 57,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 58,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 59,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 60,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 61,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 62,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 63,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 64,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 65,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 66,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 67,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 68,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 69,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 70,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 71,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 72,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 73,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 74,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 75,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 76,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 77,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 78,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 79,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 80,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 81,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 82,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 83,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 84,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 85,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 86,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 87,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 88,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 89,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 90,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 91,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 92,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 93,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 94,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 95,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 96,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 97,
+   "params": {
+    "open": 0.9957,
+    "bow": 0.0171
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.7,
+    "right": 177.7
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 98,
+   "params": {
+    "open": 0.983,
+    "bow": 0.0669
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.3,
+    "right": 177.3
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 99,
+   "params": {
+    "open": 0.9619,
+    "bow": 0.1464
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 176.8,
+    "right": 176.8
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 100,
+   "params": {
+    "open": 0.933,
+    "bow": 0.2501
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 176.4,
+    "right": 176.4
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 101,
+   "params": {
+    "open": 0.8967,
+    "bow": 0.3705
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 176.1,
+    "right": 176.1
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 102,
+   "params": {
+    "open": 0.8536,
+    "bow": 0.5
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 176.0,
+    "right": 176.0
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 103,
+   "params": {
+    "open": 0.8043,
+    "bow": 0.6295
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 176.2,
+    "right": 176.2
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 104,
+   "params": {
+    "open": 0.7501,
+    "bow": 0.7499
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 176.5,
+    "right": 176.5
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 105,
+   "params": {
+    "open": 0.6913,
+    "bow": 0.8536
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.0,
+    "right": 177.0
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 106,
+   "params": {
+    "open": 0.6293,
+    "bow": 0.9331
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.5,
+    "right": 177.5
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 107,
+   "params": {
+    "open": 0.5653,
+    "bow": 0.9829
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 178.0,
+    "right": 178.0
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 108,
+   "params": {
+    "open": 0.5,
+    "bow": 1
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 178.2,
+    "right": 178.2
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 109,
+   "params": {
+    "open": 0.4347,
+    "bow": 0.9829
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 178.0,
+    "right": 178.0
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 110,
+   "params": {
+    "open": 0.3707,
+    "bow": 0.9331
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.5,
+    "right": 177.5
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 111,
+   "params": {
+    "open": 0.3087,
+    "bow": 0.8536
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 176.9,
+    "right": 176.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 112,
+   "params": {
+    "open": 0.2499,
+    "bow": 0.7499
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 176.5,
+    "right": 176.5
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 113,
+   "params": {
+    "open": 0.1957,
+    "bow": 0.6295
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 176.1,
+    "right": 176.1
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 114,
+   "params": {
+    "open": 0.1464,
+    "bow": 0.5
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 176.0,
+    "right": 176.0
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 115,
+   "params": {
+    "open": 0.1033,
+    "bow": 0.3705
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 176.1,
+    "right": 176.1
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 116,
+   "params": {
+    "open": 0.067,
+    "bow": 0.2501
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 176.4,
+    "right": 176.4
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 117,
+   "params": {
+    "open": 0.0381,
+    "bow": 0.1464
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 176.9,
+    "right": 176.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 118,
+   "params": {
+    "open": 0.017,
+    "bow": 0.0669
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.4,
+    "right": 177.4
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 119,
+   "params": {
+    "open": 0.0043,
+    "bow": 0.0171
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.8,
+    "right": 177.8
+   },
+   "minY": 0.0059,
+   "clip_mm": 52.6,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 120,
+   "params": {
+    "open": 0,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 178.0,
+    "right": 178.0
+   },
+   "minY": 0.0059,
+   "clip_mm": 50.2,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 121,
+   "params": {
+    "open": 0,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 178.0,
+    "right": 178.0
+   },
+   "minY": 0.0059,
+   "clip_mm": 50.2,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 122,
+   "params": {
+    "open": 0,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 178.0,
+    "right": 178.0
+   },
+   "minY": 0.0059,
+   "clip_mm": 50.2,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 123,
+   "params": {
+    "open": 0,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 178.0,
+    "right": 178.0
+   },
+   "minY": 0.0059,
+   "clip_mm": 50.2,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 124,
+   "params": {
+    "open": 0,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 178.0,
+    "right": 178.0
+   },
+   "minY": 0.0059,
+   "clip_mm": 50.2,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 125,
+   "params": {
+    "open": 0,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 178.0,
+    "right": 178.0
+   },
+   "minY": 0.0059,
+   "clip_mm": 50.2,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 126,
+   "params": {
+    "open": 0,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 178.0,
+    "right": 178.0
+   },
+   "minY": 0.0059,
+   "clip_mm": 50.2,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 127,
+   "params": {
+    "open": 0,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 178.0,
+    "right": 178.0
+   },
+   "minY": 0.0059,
+   "clip_mm": 50.2,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 128,
+   "params": {
+    "open": 0,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 178.0,
+    "right": 178.0
+   },
+   "minY": 0.0059,
+   "clip_mm": 50.2,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 129,
+   "params": {
+    "open": 0,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 178.0,
+    "right": 178.0
+   },
+   "minY": 0.0059,
+   "clip_mm": 50.2,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 130,
+   "params": {
+    "open": 0.0034,
+    "bow": 0.0135
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 52.1,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 131,
+   "params": {
+    "open": 0.0135,
+    "bow": 0.0531
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.5,
+    "right": 177.5
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 132,
+   "params": {
+    "open": 0.0301,
+    "bow": 0.117
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.0,
+    "right": 177.0
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 133,
+   "params": {
+    "open": 0.0532,
+    "bow": 0.2015
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 176.6,
+    "right": 176.6
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 134,
+   "params": {
+    "open": 0.0822,
+    "bow": 0.3019
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 176.3,
+    "right": 176.3
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 135,
+   "params": {
+    "open": 0.117,
+    "bow": 0.4132
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 176.1,
+    "right": 176.1
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 136,
+   "params": {
+    "open": 0.1569,
+    "bow": 0.5292
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 176.0,
+    "right": 176.0
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 137,
+   "params": {
+    "open": 0.2014,
+    "bow": 0.6433
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 176.2,
+    "right": 176.2
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 138,
+   "params": {
+    "open": 0.25,
+    "bow": 0.75
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 176.5,
+    "right": 176.5
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 139,
+   "params": {
+    "open": 0.302,
+    "bow": 0.8432
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 176.9,
+    "right": 176.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 140,
+   "params": {
+    "open": 0.3565,
+    "bow": 0.9177
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.4,
+    "right": 177.4
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 141,
+   "params": {
+    "open": 0.4132,
+    "bow": 0.9698
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.8,
+    "right": 177.8
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 142,
+   "params": {
+    "open": 0.471,
+    "bow": 0.9966
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 178.2,
+    "right": 178.2
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 143,
+   "params": {
+    "open": 0.529,
+    "bow": 0.9966
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 178.2,
+    "right": 178.2
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 144,
+   "params": {
+    "open": 0.5868,
+    "bow": 0.9698
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 145,
+   "params": {
+    "open": 0.6435,
+    "bow": 0.9177
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.4,
+    "right": 177.4
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 146,
+   "params": {
+    "open": 0.698,
+    "bow": 0.8432
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 176.9,
+    "right": 176.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 147,
+   "params": {
+    "open": 0.75,
+    "bow": 0.75
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 176.5,
+    "right": 176.5
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 148,
+   "params": {
+    "open": 0.7986,
+    "bow": 0.6433
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 176.2,
+    "right": 176.2
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 149,
+   "params": {
+    "open": 0.8431,
+    "bow": 0.5292
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 176.0,
+    "right": 176.0
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 150,
+   "params": {
+    "open": 0.883,
+    "bow": 0.4132
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 176.1,
+    "right": 176.1
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 151,
+   "params": {
+    "open": 0.9178,
+    "bow": 0.3019
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 176.2,
+    "right": 176.2
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 152,
+   "params": {
+    "open": 0.9468,
+    "bow": 0.2015
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 176.5,
+    "right": 176.5
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 153,
+   "params": {
+    "open": 0.9698,
+    "bow": 0.117
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.0,
+    "right": 177.0
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 154,
+   "params": {
+    "open": 0.9865,
+    "bow": 0.0531
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.4,
+    "right": 177.4
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 155,
+   "params": {
+    "open": 0.9966,
+    "bow": 0.0135
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.7,
+    "right": 177.7
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 156,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 157,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 158,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 159,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 160,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 161,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 162,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 163,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 164,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 165,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 166,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 167,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 168,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 169,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 170,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 171,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 172,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 173,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 174,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 175,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 176,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 177,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 178,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 179,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 180,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 181,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 182,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 183,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 184,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 185,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 186,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 187,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 188,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 189,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 190,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 191,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 192,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 193,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 194,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 195,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 196,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 197,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 198,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 199,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 200,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 201,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 202,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 203,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 204,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 205,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 206,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 207,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 208,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 209,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 210,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 211,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 212,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 213,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 214,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 215,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 216,
+   "params": {
+    "open": 1,
+    "bow": 0
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.9,
+    "right": 177.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 217,
+   "params": {
+    "open": 0.9957,
+    "bow": 0.0171
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.7,
+    "right": 177.7
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 218,
+   "params": {
+    "open": 0.983,
+    "bow": 0.0669
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.3,
+    "right": 177.3
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 219,
+   "params": {
+    "open": 0.9619,
+    "bow": 0.1464
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 176.8,
+    "right": 176.8
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 220,
+   "params": {
+    "open": 0.933,
+    "bow": 0.2501
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 176.4,
+    "right": 176.4
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 221,
+   "params": {
+    "open": 0.8967,
+    "bow": 0.3705
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 176.1,
+    "right": 176.1
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 222,
+   "params": {
+    "open": 0.8536,
+    "bow": 0.5
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 176.0,
+    "right": 176.0
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 223,
+   "params": {
+    "open": 0.8043,
+    "bow": 0.6295
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 176.2,
+    "right": 176.2
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 224,
+   "params": {
+    "open": 0.7501,
+    "bow": 0.7499
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 176.5,
+    "right": 176.5
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 225,
+   "params": {
+    "open": 0.6913,
+    "bow": 0.8536
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.0,
+    "right": 177.0
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 226,
+   "params": {
+    "open": 0.6293,
+    "bow": 0.9331
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.5,
+    "right": 177.5
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 227,
+   "params": {
+    "open": 0.5653,
+    "bow": 0.9829
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 178.0,
+    "right": 178.0
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 228,
+   "params": {
+    "open": 0.5,
+    "bow": 1
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 178.2,
+    "right": 178.2
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 229,
+   "params": {
+    "open": 0.4347,
+    "bow": 0.9829
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 178.0,
+    "right": 178.0
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 230,
+   "params": {
+    "open": 0.3707,
+    "bow": 0.9331
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.5,
+    "right": 177.5
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 231,
+   "params": {
+    "open": 0.3087,
+    "bow": 0.8536
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 176.9,
+    "right": 176.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 232,
+   "params": {
+    "open": 0.2499,
+    "bow": 0.7499
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 176.5,
+    "right": 176.5
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 233,
+   "params": {
+    "open": 0.1957,
+    "bow": 0.6295
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 176.1,
+    "right": 176.1
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 234,
+   "params": {
+    "open": 0.1464,
+    "bow": 0.5
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 176.0,
+    "right": 176.0
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 235,
+   "params": {
+    "open": 0.1033,
+    "bow": 0.3705
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 176.1,
+    "right": 176.1
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 236,
+   "params": {
+    "open": 0.067,
+    "bow": 0.2501
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 176.4,
+    "right": 176.4
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 237,
+   "params": {
+    "open": 0.0381,
+    "bow": 0.1464
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 176.9,
+    "right": 176.9
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 238,
+   "params": {
+    "open": 0.017,
+    "bow": 0.0669
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.4,
+    "right": 177.4
+   },
+   "minY": 0.0059,
+   "clip_mm": 55,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  },
+  {
+   "f": 239,
+   "params": {
+    "open": 0.0043,
+    "bow": 0.0171
+   },
+   "elbow": {
+    "left": 179.9,
+    "right": 179.9
+   },
+   "knee": {
+    "left": 177.8,
+    "right": 177.8
+   },
+   "minY": 0.0059,
+   "clip_mm": 52.6,
+   "hand_clip": {
+    "left": 99,
+    "right": 99,
+    "leftBone": null,
+    "rightBone": null
+   },
+   "touch_shift_mm": {}
+  }
+ ]
+}

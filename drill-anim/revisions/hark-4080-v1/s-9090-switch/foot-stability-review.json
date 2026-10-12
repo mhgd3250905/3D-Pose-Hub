@@ -1,0 +1,841 @@
+{
+  "candidate": "s-9090-switch candidate4",
+  "accepted_for_full_render": true,
+  "source_spec_path": "E:\\AII-3D\\3D-Pose\\hark-4080-revisions\\s-9090-switch\\candidate4\\spec.json",
+  "source_spec_sha256": "a06995bc0a3d22fd91751475e31a1ef4062f067eead2719a53bc1fd28f058bd2",
+  "derivation_sha256": "e56bdfd6140c23079bbf72a4ac5f53558f5b0639bb2cc7de065df98e5376f2da",
+  "samples": {
+    "full30fps": 360,
+    "half60fps": 720
+  },
+  "method": {
+    "persistent_point": "Fixed rear100mm Soles source vertex indices selected once in rest pose; constant weights exp(-(rest local Y-minRestY)/0.002). Per-frame reported material_pivot uses these same actual skinned vertices. Not a ground-contact point.",
+    "contact": "Dynamic soft-lowest centroid of whole shoe reported separately, with exact sampled support-vertex minY; mat top=0.",
+    "bbox": "Heel-region bounding boxes below reconstructed rigidly from saved rest offsets and measured foot delta quaternion plus actual ankle; not a second skinned-mesh probe.",
+    "loop": "Periodic finite differences include last-to-first sample."
+  },
+  "feet": {
+    "left": {
+      "full30": {
+        "material_pivot_xz_error_mm": 1.2523886564118046e-12,
+        "material_pivot_y_mm": [
+          42.23846144893326,
+          61.41273975206844
+        ],
+        "rigid_vs_actual_material_reconstruction_max_mm": 1.2530804777263562e-12,
+        "actual_shoe_minY_mm": [
+          0.3150344176886949,
+          0.6000000000000449
+        ],
+        "heel_region_minY_mm": [
+          0.6486830086892409,
+          13.637981306288822
+        ],
+        "contact_to_material_xz_distance_mm": [
+          18.185334107388407,
+          146.44583475899242
+        ],
+        "contact_centroid": {
+          "max_step_mm": 44.55288230245104,
+          "max_second_difference_mm": 19.722758085235824,
+          "loop_step_mm": 9.551367956554339e-08
+        },
+        "ankle": {
+          "max_step_mm": 3.0574975225737058,
+          "max_second_difference_mm": 2.3267338914149023,
+          "loop_step_mm": 2.6576566843933903e-07
+        },
+        "heel_bbox_min_xyz_ranges_m": [
+          [
+            0.3759243281281295,
+            0.41745161487687693
+          ],
+          [
+            0.000648683008689227,
+            0.013637981306288849
+          ],
+          [
+            0.34738629549812317,
+            0.392875536647575
+          ]
+        ],
+        "heel_bbox_max_xyz_ranges_m": [
+          [
+            0.43843230206273015,
+            0.500837852642682
+          ],
+          [
+            0.07932873229202775,
+            0.11311515289623478
+          ],
+          [
+            0.4058176963081397,
+            0.4565546011273516
+          ]
+        ]
+      },
+      "half60": {
+        "material_pivot_xz_error_mm": 0.032111128119392804,
+        "material_pivot_y_mm": [
+          42.18697966494682,
+          61.41273975206844
+        ],
+        "rigid_vs_actual_material_reconstruction_max_mm": 1.3710945331071745e-12,
+        "actual_shoe_minY_mm": [
+          0.3150344176886949,
+          0.6000000000000588
+        ],
+        "heel_region_minY_mm": [
+          0.6439716999156464,
+          13.637981306288822
+        ],
+        "contact_to_material_xz_distance_mm": [
+          17.894466393480254,
+          146.44583475899242
+        ],
+        "contact_centroid": {
+          "max_step_mm": 24.31695327943993,
+          "max_second_difference_mm": 6.6951632041854054,
+          "loop_step_mm": 4.77588274122894e-08
+        },
+        "ankle": {
+          "max_step_mm": 1.5597758622155826,
+          "max_second_difference_mm": 1.0272632298108457,
+          "loop_step_mm": 1.3288281894642712e-07
+        },
+        "heel_bbox_min_xyz_ranges_m": [
+          [
+            0.37589763588591035,
+            0.41745161487687693
+          ],
+          [
+            0.0006439716999156464,
+            0.013637981306288849
+          ],
+          [
+            0.34738629549812317,
+            0.392875536647575
+          ]
+        ],
+        "heel_bbox_max_xyz_ranges_m": [
+          [
+            0.43843230206273015,
+            0.500837852642682
+          ],
+          [
+            0.07925234394417835,
+            0.11311515289623478
+          ],
+          [
+            0.4058176963081397,
+            0.4565546011273516
+          ]
+        ]
+      },
+      "fixed_source_vertices": 1026,
+      "fixed_index_weight_sha256": "a6ce6e9ef0e9afb0ba4710ad446f86221e9a398e67378f4d32e505e348666979",
+      "rest_material_local_m": [
+        0.001436124997503838,
+        -0.08335340395791217,
+        0.007494270179907407
+      ],
+      "rest_whole_shoe_dimensions_xyz_mm": [
+        125.59743212068086,
+        106.29838032110219,
+        276.89897411328076
+      ]
+    },
+    "right": {
+      "full30": {
+        "material_pivot_xz_error_mm": 1.457101633618084e-12,
+        "material_pivot_y_mm": [
+          40.93196549874123,
+          59.99655903085263
+        ],
+        "rigid_vs_actual_material_reconstruction_max_mm": 1.2820439784924217e-12,
+        "actual_shoe_minY_mm": [
+          0.28395725141894257,
+          0.6000000000000727
+        ],
+        "heel_region_minY_mm": [
+          0.7536900140448777,
+          13.637981320508253
+        ],
+        "contact_to_material_xz_distance_mm": [
+          18.16486966815645,
+          146.55700939940047
+        ],
+        "contact_centroid": {
+          "max_step_mm": 44.59741392463261,
+          "max_second_difference_mm": 19.700065287098944,
+          "loop_step_mm": 6.588901987577187e-07
+        },
+        "ankle": {
+          "max_step_mm": 3.0087584835697285,
+          "max_second_difference_mm": 2.326573763926306,
+          "loop_step_mm": 4.842544570719734e-07
+        },
+        "heel_bbox_min_xyz_ranges_m": [
+          [
+            -0.5001224776766464,
+            -0.4382954102014588
+          ],
+          [
+            0.0007536900140448777,
+            0.013637981320508225
+          ],
+          [
+            0.3477093396443153,
+            0.3930026091276889
+          ]
+        ],
+        "heel_bbox_max_xyz_ranges_m": [
+          [
+            -0.4172238107404008,
+            -0.3755727435761229
+          ],
+          [
+            0.07932873294463973,
+            0.11311515291541539
+          ],
+          [
+            0.405936231319781,
+            0.4573762756126822
+          ]
+        ]
+      },
+      "half60": {
+        "material_pivot_xz_error_mm": 0.0318147027341546,
+        "material_pivot_y_mm": [
+          40.89113497789284,
+          59.99655903085263
+        ],
+        "rigid_vs_actual_material_reconstruction_max_mm": 1.5877183957517318e-12,
+        "actual_shoe_minY_mm": [
+          0.21541600432417596,
+          0.6000000000000727
+        ],
+        "heel_region_minY_mm": [
+          0.6395855660234484,
+          13.637981320508253
+        ],
+        "contact_to_material_xz_distance_mm": [
+          18.16486966815645,
+          146.55700939940047
+        ],
+        "contact_centroid": {
+          "max_step_mm": 24.323746339907085,
+          "max_second_difference_mm": 6.718121795263881,
+          "loop_step_mm": 3.2944522396909385e-07
+        },
+        "ankle": {
+          "max_step_mm": 1.5386261154582892,
+          "max_second_difference_mm": 1.027172561053745,
+          "loop_step_mm": 2.4212724359693383e-07
+        },
+        "heel_bbox_min_xyz_ranges_m": [
+          [
+            -0.5001224776766464,
+            -0.4382954102014588
+          ],
+          [
+            0.0006395855660234345,
+            0.013637981320508225
+          ],
+          [
+            0.3477093396443153,
+            0.3930026091276889
+          ]
+        ],
+        "heel_bbox_max_xyz_ranges_m": [
+          [
+            -0.4172238107404008,
+            -0.3755454323777203
+          ],
+          [
+            0.07925234456151592,
+            0.11311515291541539
+          ],
+          [
+            0.405936231319781,
+            0.4573762756126822
+          ]
+        ]
+      },
+      "fixed_source_vertices": 1031,
+      "fixed_index_weight_sha256": "9e9ac4a2ad6f7a69b7cb07673554b9e4f7f6d74bed0028c512d9950184ff89c7",
+      "rest_material_local_m": [
+        -0.002850861208078374,
+        -0.08335723420085676,
+        0.007181194360261883
+      ],
+      "rest_whole_shoe_dimensions_xyz_mm": [
+        125.59743212068086,
+        106.29838032110219,
+        276.89897411328076
+      ]
+    }
+  },
+  "poses": {
+    "0": {
+      "chest_forward": [
+        0.8191522524652018,
+        0.0,
+        0.5735761390444918
+      ],
+      "pelvis": [
+        0.08459546421658673,
+        0.145,
+        -0.06305863103439824
+      ],
+      "legs": {
+        "left": {
+          "thigh_dot_chest_forward": 0.8838784560291645,
+          "shin_dot_chest_forward": 0.46699156170282324,
+          "shin_dot_own_medial": 0.880618860653861,
+          "toe_dot_thigh": 0.9980989173386783,
+          "knee_deg": 89.99999999999996,
+          "toe_minus_ankle_y_mm": 3.214623789550661
+        },
+        "right": {
+          "thigh_dot_chest_forward": 0.6288725657624593,
+          "shin_dot_chest_forward": -0.7732175539564867,
+          "shin_dot_own_medial": -0.6270696608469818,
+          "toe_dot_thigh": 0.9980989169982873,
+          "knee_deg": 89.99999999999997,
+          "toe_minus_ankle_y_mm": 3.3963516770800646
+        }
+      }
+    },
+    "96": {
+      "chest_forward": [
+        3.6294424027019453e-07,
+        0.0,
+        0.9999999999999342
+      ],
+      "pelvis": [
+        -0.00016118507414540997,
+        0.145,
+        -0.10954187751964756
+      ],
+      "legs": {
+        "left": {
+          "thigh_dot_chest_forward": 0.5477827927543023,
+          "shin_dot_chest_forward": 0.6133197296254671,
+          "shin_dot_own_medial": -0.4243858729368549,
+          "toe_dot_thigh": 0.9980989173500718,
+          "knee_deg": 90,
+          "toe_minus_ankle_y_mm": 141.3844118085394
+        },
+        "right": {
+          "thigh_dot_chest_forward": 0.5488230849627351,
+          "shin_dot_chest_forward": 0.6144844953476873,
+          "shin_dot_own_medial": -0.4226976164707168,
+          "toe_dot_thigh": 0.9980989173500721,
+          "knee_deg": 89.99999999999999,
+          "toe_minus_ankle_y_mm": 141.38441294050068
+        }
+      }
+    },
+    "177": {
+      "chest_forward": [
+        -0.8191518361126738,
+        0.0,
+        0.5735767336575248
+      ],
+      "pelvis": [
+        -0.08482032599430363,
+        0.145,
+        -0.06290377264803015
+      ],
+      "legs": {
+        "left": {
+          "thigh_dot_chest_forward": 0.6280798321419713,
+          "shin_dot_chest_forward": -0.7738563272643301,
+          "shin_dot_own_medial": -0.6262811909343062,
+          "toe_dot_thigh": 0.998098917350072,
+          "knee_deg": 89.99999999999996,
+          "toe_minus_ankle_y_mm": 3.3963517293252865
+        },
+        "right": {
+          "thigh_dot_chest_forward": 0.8838291141342872,
+          "shin_dot_chest_forward": 0.46708448689447063,
+          "shin_dot_own_medial": 0.8805695761755084,
+          "toe_dot_thigh": 0.9980989173500718,
+          "knee_deg": 89.99999999999999,
+          "toe_minus_ankle_y_mm": 3.214623736859962
+        }
+      }
+    }
+  },
+  "continuity": {
+    "full30": {
+      "joints": {
+        "pelvis": {
+          "max_step_mm": 4.636583651676562,
+          "max_second_difference_mm": 0.35112013447830454,
+          "loop_step_mm": 2.2890888738962657e-07
+        },
+        "waist": {
+          "max_step_mm": 4.719663997159907,
+          "max_second_difference_mm": 0.5201505699396115,
+          "loop_step_mm": 2.2890888738962657e-07
+        },
+        "shoulderCenter": {
+          "max_step_mm": 12.126128160646354,
+          "max_second_difference_mm": 1.1412078244785309,
+          "loop_step_mm": 2.2890888738962657e-07
+        },
+        "neck": {
+          "max_step_mm": 13.062277565045356,
+          "max_second_difference_mm": 1.210655630906642,
+          "loop_step_mm": 2.2890888738962657e-07
+        },
+        "head": {
+          "max_step_mm": 16.084402649085593,
+          "max_second_difference_mm": 1.4298796762733401,
+          "loop_step_mm": 2.2890891172027036e-07
+        },
+        "leftShoulder": {
+          "max_step_mm": 16.14955291505597,
+          "max_second_difference_mm": 1.3175328695686062,
+          "loop_step_mm": 2.2890888738962657e-07
+        },
+        "leftElbow": {
+          "max_step_mm": 20.667285234648475,
+          "max_second_difference_mm": 1.7782031629451063,
+          "loop_step_mm": 2.2890888738962657e-07
+        },
+        "leftWrist": {
+          "max_step_mm": 17.56457829084608,
+          "max_second_difference_mm": 1.428971721792131,
+          "loop_step_mm": 2.2890888738962657e-07
+        },
+        "leftPalm": {
+          "max_step_mm": 15.787061849113364,
+          "max_second_difference_mm": 1.2767043495260229,
+          "loop_step_mm": 2.2890888738962657e-07
+        },
+        "leftHip": {
+          "max_step_mm": 6.860194856307611,
+          "max_second_difference_mm": 0.4728354180486673,
+          "loop_step_mm": 2.2890891172027036e-07
+        },
+        "leftKnee": {
+          "max_step_mm": 21.170119708395333,
+          "max_second_difference_mm": 1.5339983099342167,
+          "loop_step_mm": 1.857874028836111e-07
+        },
+        "leftAnkle": {
+          "max_step_mm": 3.0574975225737058,
+          "max_second_difference_mm": 2.3267338914149023,
+          "loop_step_mm": 2.6576566843933903e-07
+        },
+        "leftToe": {
+          "max_step_mm": 11.795246262237866,
+          "max_second_difference_mm": 2.892565270830744,
+          "loop_step_mm": 3.226818379228598e-07
+        },
+        "rightShoulder": {
+          "max_step_mm": 16.140874550641037,
+          "max_second_difference_mm": 1.313495651560233,
+          "loop_step_mm": 2.2890886305898357e-07
+        },
+        "rightElbow": {
+          "max_step_mm": 20.6569397289417,
+          "max_second_difference_mm": 1.7534992892803056,
+          "loop_step_mm": 2.2890886305898357e-07
+        },
+        "rightWrist": {
+          "max_step_mm": 17.555899374013638,
+          "max_second_difference_mm": 1.4250093529064063,
+          "loop_step_mm": 2.2890886305898357e-07
+        },
+        "rightPalm": {
+          "max_step_mm": 15.778799454535145,
+          "max_second_difference_mm": 1.273142146839853,
+          "loop_step_mm": 2.2890886305898357e-07
+        },
+        "rightHip": {
+          "max_step_mm": 6.8577858991240905,
+          "max_second_difference_mm": 0.480675939986509,
+          "loop_step_mm": 2.2890888738962657e-07
+        },
+        "rightKnee": {
+          "max_step_mm": 21.12576352401107,
+          "max_second_difference_mm": 1.5329430883669402,
+          "loop_step_mm": 1.1484774257027127e-07
+        },
+        "rightAnkle": {
+          "max_step_mm": 3.0087584835697285,
+          "max_second_difference_mm": 2.326573763926306,
+          "loop_step_mm": 4.842544570719734e-07
+        },
+        "rightToe": {
+          "max_step_mm": 11.856810977187857,
+          "max_second_difference_mm": 2.892204053255654,
+          "loop_step_mm": 1.0220381676990378e-06
+        }
+      },
+      "bone_max_step_deg": {
+        "leftUpperArm": 2.3221228686077846,
+        "leftThigh": 3.5883143956997974,
+        "leftShin": 3.5883144304935786,
+        "leftFoot": 3.5883144197692953,
+        "rightUpperArm": 2.3221227440951564,
+        "rightThigh": 3.596165492569594,
+        "rightShin": 3.5961655248627933,
+        "rightFoot": 3.5961655377215243
+      },
+      "knee_degrees": {
+        "left": [
+          89.99999999999994,
+          90.00000000000004
+        ],
+        "right": [
+          89.99999999999994,
+          90.00000000000004
+        ]
+      },
+      "max_bone_length_error_mm": 1.6653345369377348e-13
+    },
+    "half60": {
+      "joints": {
+        "pelvis": {
+          "max_step_mm": 2.318291825838343,
+          "max_second_difference_mm": 0.17556006723919027,
+          "loop_step_mm": 1.1445444369481328e-07
+        },
+        "waist": {
+          "max_step_mm": 2.375559272411748,
+          "max_second_difference_mm": 0.26164728652818575,
+          "loop_step_mm": 1.1445444369481328e-07
+        },
+        "shoulderCenter": {
+          "max_step_mm": 6.083720660432998,
+          "max_second_difference_mm": 0.5720986473259422,
+          "loop_step_mm": 1.1445445586013518e-07
+        },
+        "neck": {
+          "max_step_mm": 6.551822489183292,
+          "max_second_difference_mm": 0.606745250424544,
+          "loop_step_mm": 1.1445445586013518e-07
+        },
+        "head": {
+          "max_step_mm": 8.06402726612617,
+          "max_second_difference_mm": 0.7160825561929995,
+          "loop_step_mm": 1.1445448019078014e-07
+        },
+        "leftShoulder": {
+          "max_step_mm": 8.094986063920905,
+          "max_second_difference_mm": 0.6574284853655147,
+          "loop_step_mm": 1.1445444369481328e-07
+        },
+        "leftElbow": {
+          "max_step_mm": 10.33897376851849,
+          "max_second_difference_mm": 0.8060546952826526,
+          "loop_step_mm": 1.1445444369481328e-07
+        },
+        "leftWrist": {
+          "max_step_mm": 8.782289145423041,
+          "max_second_difference_mm": 0.7144858608961374,
+          "loop_step_mm": 1.1445444369481328e-07
+        },
+        "leftPalm": {
+          "max_step_mm": 7.903674811171765,
+          "max_second_difference_mm": 0.6361080771507517,
+          "loop_step_mm": 1.1445444369481328e-07
+        },
+        "leftHip": {
+          "max_step_mm": 3.432566026305532,
+          "max_second_difference_mm": 0.23639092682651713,
+          "loop_step_mm": 1.1445445586013518e-07
+        },
+        "leftKnee": {
+          "max_step_mm": 10.601968271765063,
+          "max_second_difference_mm": 0.7567472960491466,
+          "loop_step_mm": 9.28938283767778e-08
+        },
+        "leftAnkle": {
+          "max_step_mm": 1.5597758622155826,
+          "max_second_difference_mm": 1.0272632298108457,
+          "loop_step_mm": 1.3288281894642712e-07
+        },
+        "leftToe": {
+          "max_step_mm": 5.935372275046572,
+          "max_second_difference_mm": 1.3107785867423176,
+          "loop_step_mm": 1.613409064775227e-07
+        },
+        "rightShoulder": {
+          "max_step_mm": 8.090660652516078,
+          "max_second_difference_mm": 0.6555085125258092,
+          "loop_step_mm": 1.1445443152949179e-07
+        },
+        "rightElbow": {
+          "max_step_mm": 10.333791670932312,
+          "max_second_difference_mm": 0.8092398423596473,
+          "loop_step_mm": 1.1445443152949179e-07
+        },
+        "rightWrist": {
+          "max_step_mm": 8.777949687006966,
+          "max_second_difference_mm": 0.7125046764532174,
+          "loop_step_mm": 1.1445443152949179e-07
+        },
+        "rightPalm": {
+          "max_step_mm": 7.899545674005457,
+          "max_second_difference_mm": 0.6343108286625971,
+          "loop_step_mm": 1.1445443152949179e-07
+        },
+        "rightHip": {
+          "max_step_mm": 3.4313735304666007,
+          "max_second_difference_mm": 0.24052883845161424,
+          "loop_step_mm": 1.1445444369481328e-07
+        },
+        "rightKnee": {
+          "max_step_mm": 10.580505053754656,
+          "max_second_difference_mm": 0.7562356402217973,
+          "loop_step_mm": 5.742392170712994e-08
+        },
+        "rightAnkle": {
+          "max_step_mm": 1.5386261154582892,
+          "max_second_difference_mm": 1.027172561053745,
+          "loop_step_mm": 2.4212724359693383e-07
+        },
+        "rightToe": {
+          "max_step_mm": 5.962935098970047,
+          "max_second_difference_mm": 1.3106039584965807,
+          "loop_step_mm": 5.110190901725781e-07
+        }
+      },
+      "bone_max_step_deg": {
+        "leftUpperArm": 1.1675335303961407,
+        "leftThigh": 1.8309472355557834,
+        "leftShin": 1.7976424140243297,
+        "leftFoot": 1.7995901720690173,
+        "rightUpperArm": 1.167533460417214,
+        "rightThigh": 1.8361722836237664,
+        "rightShin": 1.8007140767723189,
+        "rightFoot": 1.8044692815077876
+      },
+      "knee_degrees": {
+        "left": [
+          89.99673450527555,
+          90.00155207846129
+        ],
+        "right": [
+          89.99671377273177,
+          90.00213167813934
+        ]
+      },
+      "max_bone_length_error_mm": 2.220446049250313e-13
+    }
+  },
+  "hands": {
+    "left": {
+      "actual_mesh_minY_mm": [
+        -4.367820499728836e-05,
+        25.888812621433445
+      ],
+      "hold_mesh_minY_mm": [
+        -4.367820499728836e-05,
+        -4.367820494177721e-05
+      ],
+      "max_intentional_lift_mm": 25.888856299638412,
+      "wrist": {
+        "max_step_mm": 17.56457829084608,
+        "max_second_difference_mm": 1.428971721792131,
+        "loop_step_mm": 2.2890888738962657e-07
+      }
+    },
+    "right": {
+      "actual_mesh_minY_mm": [
+        -3.882686366862842e-05,
+        25.88881747277477
+      ],
+      "hold_mesh_minY_mm": [
+        -3.882686366862842e-05,
+        -3.882686366862842e-05
+      ],
+      "max_intentional_lift_mm": 25.888856299638412,
+      "wrist": {
+        "max_step_mm": 17.555899374013638,
+        "max_second_difference_mm": 1.4250093529064063,
+        "loop_step_mm": 2.2890886305898357e-07
+      }
+    }
+  },
+  "warnings": {
+    "full30": {
+      "solver_warning_frames": 0,
+      "engine_warning_frames": 0,
+      "minimum_sampled_mesh_Y_mm": -4.367820499728836e-05
+    },
+    "half60": {
+      "solver_warning_frames": 0,
+      "engine_warning_frames": 0,
+      "minimum_sampled_mesh_Y_mm": -4.367820499728836e-05
+    }
+  },
+  "limitations": [
+    "Geometric / animation review, not a clinical biomechanics certification.",
+    "Material heel centroid can rise during roll; contact point and ankle are not claimed fixed.",
+    "Mesh QA uses vertices and capsule checks, not exhaustive triangle intersections.",
+    "Head and neck follow rigid torso.",
+    "Hands intentionally lift and replant during transitions; only hold intervals have pins."
+  ],
+  "spec_motion_sha256_excluding_frame": "00ace08aac9f74fe3fae6994cf10fcfeb748e7c64c57b4532318f60ccaf42ce2",
+  "source_files": {
+    "E:\\AII-3D\\3D-Pose\\hark-4080-revisions\\s-9090-switch\\candidate4\\spec.json": "a06995bc0a3d22fd91751475e31a1ef4062f067eead2719a53bc1fd28f058bd2",
+    "E:\\AII-3D\\3D-Pose\\hark-4080-revisions\\s-9090-switch\\candidate4\\derivation.json": "e56bdfd6140c23079bbf72a4ac5f53558f5b0639bb2cc7de065df98e5376f2da",
+    "E:\\AII-3D\\3D-Pose\\hark-4080-revisions\\s-9090-switch\\candidate4\\full360\\met-0-359.json": "0932abb4e010827397417635d9f9e4a5bfd7e41c38280c7d615cce11d5d26162",
+    "E:\\AII-3D\\3D-Pose\\hark-4080-revisions\\s-9090-switch\\candidate4\\half720\\met-0-719.json": "6de9947c76bd97a594e80d9c12c0c3f610959b0a2c09af0ee091249e20ebe259"
+  },
+  "integer_vs_half_max_joint_error_mm": 0.0,
+  "preview_vs_full_metrics_max_joint_error_mm": 0.0,
+  "engine_qa": {
+    "id": "s-9090-switch",
+    "frames": 360,
+    "fps": 30,
+    "duration_s": 12,
+    "min_vertex_y_m": -0.0,
+    "min_vertex_mesh": "Coach_Body",
+    "below_floor": false,
+    "pins": {
+      "handL params.restA>0.99": {
+        "frames": 97,
+        "drift_mm_max": 0.0,
+        "ok": true
+      },
+      "handL params.restM>0.99": {
+        "frames": 26,
+        "drift_mm_max": 0.0,
+        "ok": true
+      },
+      "handL params.restB>0.99": {
+        "frames": 61,
+        "drift_mm_max": 0.0,
+        "ok": true
+      },
+      "handR params.restA>0.99": {
+        "frames": 97,
+        "drift_mm_max": 0.0,
+        "ok": true
+      },
+      "handR params.restM>0.99": {
+        "frames": 26,
+        "drift_mm_max": 0.0,
+        "ok": true
+      },
+      "handR params.restB>0.99": {
+        "frames": 61,
+        "drift_mm_max": 0.0,
+        "ok": true
+      }
+    },
+    "straight": {},
+    "limits": {
+      "knee_flex_backward": true,
+      "elbow_flex_forward": true,
+      "hip_flex_deg_range": [
+        90.8,
+        129.8
+      ],
+      "hip_abd_deg_range": [
+        19.2,
+        51.1
+      ],
+      "hip_abd_true_deg_range": [
+        19.2,
+        51.1
+      ],
+      "hip_flex_max_deg": 135.0,
+      "hip_ok": true,
+      "waist_bend_deg_max": 0,
+      "waist_ok": true,
+      "pelvis_to_chest_deg_max": 43,
+      "elbow_deg_range": [
+        124.8,
+        140.0
+      ],
+      "knee_deg_range": [
+        90.0,
+        90.0
+      ],
+      "neck_note": "head/neck rigid with the upper torso in this rig (no neck bend possible)",
+      "first_violation": {}
+    },
+    "self_clip": {
+      "worst_pair": "head|upperArmL",
+      "worst_gap_mm": 55,
+      "at_frame": 0,
+      "ok": true,
+      "method": "capsule hulls per segment (torso r115, upper arm r42, forearm r34, hand r28, thigh r68, shin r48, foot r45 mm), adjacent + spec-allowed pairs skipped; ok if overlap < 8 mm"
+    },
+    "hand_clip": {
+      "left": {
+        "min_signed_mm": 99,
+        "at_frame": 0,
+        "nearest_bone": null,
+        "penetrating_frames": 0,
+        "ok": true
+      },
+      "right": {
+        "min_signed_mm": 99,
+        "at_frame": 0,
+        "nearest_bone": null,
+        "penetrating_frames": 0,
+        "ok": true
+      },
+      "method": "per hand skin vertex: K=6 nearest vertices of each outer body layer (skin, tee, cuff, shorts, head; own hand/forearm excluded, radius 45 mm); inside if the vertex is closer to the nearest bone core line than those surface vertices; value = depth (<0) or gap (>0: radial gap over the surface patch, capped by the euclidean distance); ok if >= -0.5 mm"
+    },
+    "solver_warning_frames": 0,
+    "frames_complete": true,
+    "pass": true
+  },
+  "visual_review": {
+    "frames": [
+      0,
+      67,
+      96,
+      125,
+      177,
+      258,
+      330
+    ],
+    "fixed_camera": true,
+    "images": [
+      {
+        "path": "E:\\AII-3D\\3D-Pose\\hark-4080-revisions\\s-9090-switch\\preview4\\c\\0000.png",
+        "sha256": "136ef9a457956ad6ea3e2eba370b098447d1b7fba3a20b52dd3cb702c129fb17"
+      },
+      {
+        "path": "E:\\AII-3D\\3D-Pose\\hark-4080-revisions\\s-9090-switch\\preview4\\c\\0067.png",
+        "sha256": "ec22f3f8bd203da038ee46640b75b18f3ce3d058060fe5b2f75f99724f9e9020"
+      },
+      {
+        "path": "E:\\AII-3D\\3D-Pose\\hark-4080-revisions\\s-9090-switch\\preview4\\c\\0096.png",
+        "sha256": "3bec5c9d6c76998ec1aa3f497a4d2027f9ca43ceb120d6bd85fcd89eddb0c542"
+      },
+      {
+        "path": "E:\\AII-3D\\3D-Pose\\hark-4080-revisions\\s-9090-switch\\preview4\\c\\0125.png",
+        "sha256": "9dc4216061f480f1cc2c5884468f7847eb9653db40a348a175efc2f87841a4e8"
+      },
+      {
+        "path": "E:\\AII-3D\\3D-Pose\\hark-4080-revisions\\s-9090-switch\\preview4\\c\\0177.png",
+        "sha256": "7fc63c858ad6b1c350ae7ad71963bb32bc14c25b55488c2cc5b9d6542f2cfd97"
+      },
+      {
+        "path": "E:\\AII-3D\\3D-Pose\\hark-4080-revisions\\s-9090-switch\\preview4\\c\\0258.png",
+        "sha256": "0f3c3f80d088323136f35c542520c47a9e522380ddaf8702e870eb4377ceedcb"
+      },
+      {
+        "path": "E:\\AII-3D\\3D-Pose\\hark-4080-revisions\\s-9090-switch\\preview4\\c\\0330.png",
+        "sha256": "399fe83bacfc94cee45e7dcf0d0bda567c7d90e952d51ed7bc7c09bfc62dfa48"
+      }
+    ],
+    "conclusion": "Both endpoint leg roles and mirrored return are visible; knees sweep up through middle while feet roll around the same heel region instead of translating across the mat. Heel lift/side roll and light palm replant are visible and compatible with numerical data. No visible branch jump or new foot-orientation error in reviewed poses.",
+    "limitations": "Seven stills are not a complete video review; final encoded loop and all-frame framing remain parent-agent checks."
+  },
+  "contact_interpretation": "The changing actual contact centroid can move up to 44.6mm per 30fps frame as the lowest shoe patch changes; this is not material travel. Same material heel-centre remains fixed within 0.03212mm at 60fps. Contact-to-material distance up to146.56mm is inside 276.90mm shoe-length scale. This demonstrates nearly fixed heel placement, not a friction/no-slip ground-contact model.",
+  "decision": "Accept candidate4 for full render: endpoint front/rear roles, constant-source foot anchors, actual shoe contact, intentional hand replant, bone lengths, continuous knee branch and loop checked. This approval excludes rejected candidate3 and old dynamic-contact anchor versions."
+}

@@ -1,0 +1,65 @@
+{
+  "verified_on": "2026-10-12",
+  "pr_base_commit": "80298ceccf58c958e557e1b45c44ddaf1ae2c6b6",
+  "render_source_commit": "68043f71651056c57c72a3b8813cbb354979346f",
+  "scope": "Integrity, parameter serialization, syntax, portability regressions and local preview links; no new GPU full render.",
+  "checks": {
+    "delivery_sha256_file_set_and_5_specs": true,
+    "original_59_specs_preserved": true,
+    "original_51_app_ids_preserved": true,
+    "portability_regressions_passed": 7,
+    "markdown_and_preview_links": true,
+    "app_src_public_and_default_specs_unchanged": true,
+    "local_boot_patch_not_included": true
+  },
+  "original_engine_qa": [
+    {
+      "id": "hip-abductors-B",
+      "pass": true,
+      "solver_warning_frames": 240,
+      "frames": 240,
+      "fps": 30,
+      "known_issues": [
+        "Engine QA passes with 240 solver-warning frames retained."
+      ]
+    },
+    {
+      "id": "s-frog",
+      "pass": true,
+      "solver_warning_frames": 0,
+      "frames": 240,
+      "fps": 30,
+      "known_issues": []
+    },
+    {
+      "id": "rotator-cuff-B",
+      "pass": true,
+      "solver_warning_frames": 0,
+      "frames": 240,
+      "fps": 30,
+      "known_issues": []
+    },
+    {
+      "id": "deltoids-B",
+      "pass": true,
+      "solver_warning_frames": 0,
+      "frames": 360,
+      "fps": 30,
+      "known_issues": [
+        "Half Turkish get-up to high bridge, not a full standing get-up.",
+        "Supporting elbow skin remains about 10.31 mm above the mat surface."
+      ]
+    },
+    {
+      "id": "s-9090-switch",
+      "pass": true,
+      "solver_warning_frames": 0,
+      "frames": 360,
+      "fps": 30,
+      "known_issues": [
+        "Separate left/right switch action; original s-9090 is the forward-fold stretch.",
+        "Heel material-center XZ is nearly fixed; shoes roll and this is not a fixed floor contact point."
+      ]
+    }
+  ]
+}
