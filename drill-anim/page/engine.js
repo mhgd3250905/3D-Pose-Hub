@@ -224,6 +224,10 @@ E.solve = function(D, warm) {
 };
 // ---------- apply a spec pose for params
 E.pose = function(spec, params, warm) {
+  if (spec.modelProfile && !['training-human-v2', 'legacy-v7'].includes(spec.modelProfile)) throw new Error('Unknown training model profile: ' + spec.modelProfile);
+  const trainingCollar = spec.modelProfile === 'training-human-v2' || spec.trainingCollar === true;
+  if (trainingCollar && !window.__setTrainingCollar) throw new Error('Training collar profile is not loaded');
+  window.__setTrainingCollar?.(trainingCollar);
   E.init(); const v = flareInspector.viewer, m = v.motion;
   const D = blend(spec.pose.base, spec.pose.deltas, params);
   E.currentDescriptor = D;

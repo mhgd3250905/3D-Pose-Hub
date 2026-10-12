@@ -25,4 +25,4 @@ const spec = floorDrill({
  // High circle point is a deep pike seen in R12/R13, not the default standing limit.
  qa:qaStd({more:{hipFlexMax:165}}),
 });
-export default { ...spec, alignClavicles: true };
+export default { ...spec, alignClavicles: false, modelProfile: 'training-human-v2' };

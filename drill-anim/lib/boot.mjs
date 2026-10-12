@@ -12,7 +12,7 @@ export async function boot({size=1080,pr=2,theme,bakeHands=[]}){
   p.on('pageerror',e=>console.log('pageerror',e.message));p.on('console',m=>{if(m.type()==='error')console.log('console',m.text().slice(0,300));});
   await p.goto(C.app_url+'/?inspect');await p.waitForFunction(()=>document.documentElement.dataset.ready==='true',null,{timeout:170000});
   await p.addStyleTag({content:`html,body{background:transparent!important} body *{visibility:hidden!important;} canvas{visibility:visible!important} .msync-canvas{visibility:hidden!important} *::before,*::after{background:transparent!important}`});
-  for(const f of ['posedlib.js','toon.js','anim-sideplank.js','engine.js','props.js',...fs.readdirSync(path.join(ROOT,'page')).filter(f=>/^props-.+\.js$/.test(f)).sort()])await p.addScriptTag({content:PG(f)});
+  for(const f of ['posedlib.js','toon.js','anim-sideplank.js','engine.js','training-collar.js','props.js',...fs.readdirSync(path.join(ROOT,'page')).filter(f=>/^props-.+\.js$/.test(f)).sort()])await p.addScriptTag({content:PG(f)});
   await p.addScriptTag({content:'window.__srcHead='+fs.readFileSync(path.join(ROOT,'assets/srchead.json'),'utf8')});await p.addScriptTag({content:PG('head.js')});
   // baked grip data (assets/grip-<side>.json) injected like srchead, so P.bakeGrip never depends on the app server's file layout
   {const gs=fs.readdirSync(path.join(ROOT,'assets')).filter(f=>/^grip-\w+\.json$/.test(f));

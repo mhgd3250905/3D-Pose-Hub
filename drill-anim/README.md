@@ -1,12 +1,14 @@
 # drill-anim: looping 3D toon animations for the training drills
 
+后续新动作统一使用 [training-human-v2 人体基准](../../docs/training-human-v2.md)：在spec中设置 `modelProfile: 'training-human-v2'`、`alignClavicles: false`。当前肩颈修复保留App训练人物的成熟网格、头、服装与骨架；人体身份、配置与源码哈希固定在 [模型清单](models/training-human-v2.json)。已交付的旧视频保留，按用户后续安排才使用新人体另出重渲版本。
+
 2026-10-12：本工具已按用户明确授权整合到 `master`，以 L43 为App底座。当前默认制作源共75项：原59项参数、办公室8项 `o-*`、久坐强化8项 `w-*`；原59项内容仍强制核对来源，16项新增源按审核后SHA-256固定。App仍选用51项正式视频，制作源增加不会自动替换App媒体。原始纳入与备份见 [早期工具整合记录](../../docs/drill-anim-integration-2026-10-12.md)，后续PR和验证范围见 [主线整合审核](../../docs/integration-pr-audit-2026-10-12.md)。历史 `HANDOFF.md` / `COLLAB.md` 描述原三人制作分工，不覆盖用户本次明确整合授权。
 
 Windows 配置可从 `config.windows.example.json` 复制为 gitignored `config.json`，填已安装的 Playwright 模块、浏览器缓存、字体和参考图路径。使用带 numpy / scipy / Pillow 的 Python，ffmpeg 在 PATH 中；项目根目录先 `npm ci`。相对路径统一以本工具目录为基准，新输出与临时帧留在项目盘。当前本机配置借用既有 E 盘 Python/Playwright 环境，不向 Git 提交机器配置。
 
 `3D-Pose` 的五项最终修订现另在 [Hark-4080交付包](revisions/hark-4080-v1/README.md)，含最终spec/theme、MP4/GIF、封面及原始QA；[成果接手地图](../../docs/drill-anim/hark-4080-v1.md) 给出完整60动作的索引与云盘入口。这是新增审阅目录，不替换原59项spec、App选版或正式视频。
 
-PR #106 的托马斯专项 `t-*` 仍为草稿，未进入上述75项正式制作源，也未注册App。用户反馈后的当前候选保留原编号2–12及左侧撑镜像；1半分腿停止制作，原规格与历史预览保留。修复位于隔离分支 `codex/thomas-reference-optimization`，当前逐项评价与肩颈实证见 [第二轮反馈](../../docs/thomas-feedback-v2-2026-10-12.md)；此前 [反馈修复记录](../../docs/thomas-feedback-repair-2026-10-12.md) 和 [托马斯素材优化历史](../../docs/thomas-reference-optimization-2026-10-12.md) 保留。当前交付为动作对比预览，高清全片与App媒体替换待视觉确认。新增办公室/久坐源不表示所有动作已有全片验收；具体覆盖和原始警告随审核记录保留。
+PR #106 的托马斯专项 `t-*` 仍为草稿，未进入上述75项正式制作源，也未注册App。用户反馈后的当前候选保留原编号2–12及左侧撑镜像；1半分腿停止制作，原规格与历史预览保留。修复位于隔离分支 `codex/thomas-reference-optimization`，当前要求以Flare App其他训练的实际成片为人体外观基准，逐项认可范围、来源实证与当前进展见 [第三轮App人物修复](../../docs/thomas-app-model-v3-2026-10-12.md)。此前 [第二轮反馈](../../docs/thomas-feedback-v2-2026-10-12.md)、[反馈修复记录](../../docs/thomas-feedback-repair-2026-10-12.md) 和 [托马斯素材优化历史](../../docs/thomas-reference-optimization-2026-10-12.md) 保留；第二轮肩颈尝试尚未得到用户认可，不能以资源哈希相同代替视觉验收。当前交付为动作对比预览，高清全片与App媒体替换待视觉确认。新增办公室/久坐源不表示所有动作已有全片验收；具体覆盖和原始警告随审核记录保留。
 
 ```powershell
 node tools/drill-anim/verify.mjs
@@ -99,7 +101,8 @@ export default {
   solver: 'sideplank-v7',                   // optional: use the frozen v7 solver instead (deltoids-A only)
   highlight: { groups: ['triceps'], side: 'both'|'left'|'right', lobes?, panels?, inset?,
                pulseAt: [t...], pulseWidth: s, pulseBase: 0.25 } | { ..., pulseTrack: 'down' },
-  alignClavicles: true,                     // optional floor-support clavicle rotation; original skin/landmarks retained, default false
+  modelProfile: 'training-human-v2',         // required for new drills: fixed Flare training-human benchmark
+  alignClavicles: false,                    // use the benchmark's original clavicle orientation
   camera: { dir: [x, y, z], fit: [joint names], pad: m, k: 1.0, at: t (pose used for fitting), fov?,
             drift: deg (yaw sway), driftPeriod: s (default = loop; must divide the loop), driftPhase: rad,
             frontSweepDegrees: 180, frontSweepPeriod: s }, // optional front-only side-to-side yaw, centred on dir +Z

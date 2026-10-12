@@ -20,6 +20,9 @@ const armLengths = { left: [0.256780513668, 0.228046537247], right: [0.256780546
 // Lowest native fingertip in its hand frame (long axis, palm normal, cross axis).
 // It remains the extreme point over this drill's full -68..+68-degree hand turn.
 const tip = { left: [0.222652190982, 0.000841853935, 0.002467969823], right: [0.222653010539, 0.000841904626, -0.002468118457] };
+// Use the author's native shoulder-to-neck shape. A seated finger support does
+// not require the 30 mm scapular depression added during our reference repair.
+const shoulderDepression = 0;
 const add = (a, b) => a.map((x, i) => x + b[i]), sub = (a, b) => a.map((x, i) => x - b[i]);
 const scaled = (a, k) => a.map(x => x * k);
 const forearm = (side, s, w) => {
@@ -35,7 +38,7 @@ const supportPose = q => {
   const waist = rotY(rotX([0, 0.14120757, -0.00431367], 5), yaw);
   return Object.fromEntries(['left', 'right'].map(side => {
     const sg = side === 'left' ? 1 : -1;
-    const s = upper([sg * 0.1879072, 0.32948433 - 0.03, -0.01006523]).map((v, i) => v + waist[i] + (i === 1 ? 0.134 : 0));
+    const s = upper([sg * 0.1879072, 0.32948433 - shoulderDepression, -0.01006523]).map((v, i) => v + waist[i] + (i === 1 ? 0.134 : 0));
     const [ua, fa] = armLengths[side], reach = Math.sqrt(ua * ua + fa * fa - 2 * ua * fa * Math.cos(177.5 * Math.PI / 180));
     const normal = [-Math.sin(a), 0, -Math.cos(a)], lateral = 0.055;
     const candidate = y => {
@@ -56,7 +59,7 @@ const hand = (sg, at) => ({
   free: { mode: 'free', frame: 'world', relativeToPlant: true, wrist: [0, 0, 0], finger: [0, -1, 0], normal: [-0.927, 0, -0.375], pole: [sg * 0.7, 0.4, -0.40] },
   w: 0, keepReach: 0, blendPole: true, relax: 0,
 });
-export default floorDrill({
+const spec = floorDrill({
   id: 't-seated-straddle-lift-1leg', name: '坐姿分腿单腿抬起', nameEn: 'Seated Straddle Lifts (1 Leg)', T,
   hands: { left: [0.324, -0.064, [0.927, 0.375]], right: [0.211, 0.214, [0.927, 0.375]] },
   handsDesc: { left: hand(1, [0.324, -0.064]), right: hand(-1, [0.211, 0.214]) },
@@ -67,7 +70,7 @@ export default floorDrill({
     // Use the working leg's WORLD direction, rather than the chest heading, to find its two sides.
     // The 8-degree pelvis turn keeps the leg's true abduction below the existing 75-degree QA limit.
     return {
-      pitch: 5, yaw, waist: 4, waistYaw: 35 * q, py: 0.134, px: 0, rootZ: 0, pw: 8, shift: 0.03, elbow: 177.5,
+      pitch: 5, yaw, waist: 4, waistYaw: 35 * q, py: 0.134, px: 0, rootZ: 0, pw: 8, shift: shoulderDepression, elbow: 177.5,
       hands: Object.fromEntries(Object.entries(supportPose(q)).map(([side, h]) => [side, h.at])),
       legs: { left: leg(l), right: leg(r) },
     };
@@ -113,3 +116,4 @@ export default floorDrill({
     ] },
   }),
 });
+export default { ...spec, alignClavicles: false, modelProfile: 'training-human-v2' };

@@ -16,4 +16,4 @@ const spec = floorDrill({
   // R09 visibly requires deep pike compression; other specs retain the 135-degree default.
   qa:qaStd({more:{hipFlexMax:155}}),
 });
-export default { ...spec, alignClavicles: true };
+export default { ...spec, alignClavicles: false, modelProfile: 'training-human-v2' };

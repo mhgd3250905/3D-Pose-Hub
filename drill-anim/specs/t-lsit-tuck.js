@@ -17,4 +17,4 @@ const spec = floorDrill({
  camera:{dir:[0.9,0.22,0.6],fit:['head','leftPalm','rightPalm','leftToe','rightToe','pelvis','leftKnee','rightKnee'],pad:0.16,k:1,drift:4,at:2.8,fitTimeline:false},
  keyFrames:[1.5,2.8,4.2],qa:qaStd({straightLegs:[{j:'knee.right',min:176,when:'params.ext>0.999'},{j:'knee.left',min:176,when:'params.ext>0.999'}],more:{hipFlexMax:155}}),
 });
-export default { ...spec, alignClavicles: true };
+export default { ...spec, alignClavicles: false, modelProfile: 'training-human-v2' };

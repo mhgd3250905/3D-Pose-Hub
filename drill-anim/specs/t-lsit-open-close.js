@@ -29,4 +29,4 @@ const spec = floorDrill({
   camera: { dir: [0.3, 0.25, 1], fit: ['head', 'leftPalm', 'rightPalm', 'leftToe', 'rightToe', 'pelvis', 'leftKnee', 'rightKnee'], pad: 0.16, k: 1, drift: 4, at: 2.85 },
   keyFrames: [1.5, 2.85, 4.4], qa: qaStd(),
 });
-export default { ...spec, alignBendPlanes: false, alignClavicles: true, solveShoulders: true };
+export default { ...spec, alignBendPlanes: false, alignClavicles: false, solveShoulders: true, modelProfile: 'training-human-v2' };
