@@ -8,17 +8,19 @@ import {createHash} from 'node:crypto';
 const root = path.dirname(fileURLToPath(import.meta.url));
 const repo = path.resolve(root, '../..');
 const source = '68043f71651056c57c72a3b8813cbb354979346f';
-// Reviewed additions are optional while PRs land one by one. An unknown file
-// fails closed; a reviewed source remains immutable, like the original 59.
+// Reviewed candidates are optional while PRs land one by one. These canonical
+// text hashes identify the reviewed parameter revision without requiring an
+// unmerged audit-worktree Git object on a fresh clone. This is source integrity,
+// not acceptance of a full rendered movie or the App's existing 51 videos.
 const additions = {
-  'o-seated-fig4.js': '7c537dfda1f757f9076a5ae1457460778862be27',
-  'o-seated-twist.js': '407da515443a618dbcb492e429c0080d7989d17a',
-  'o-seated-ham.js': '7bb7b1a771aa40f062cd502dafdf945be0fc77d5',
-  'o-stand-lunge.js': 'bff173f302dc9570c6d0af844ba44576e566a8ec',
-  'o-stand-quad.js': 'e46569d0e60db567ee4b6b991f68cb4121e6b1c9',
-  'o-stand-crossreach.js': '80d79a6c53f76896d62251e757f93176498288a9',
-  'o-stand-sidebend.js': '699b4a7fa54c6f12148b571cff633c03b13f48f2',
-  'o-seated-catcow.js': '0aceae2aacbd1c5698a6a3ba70b17ea93b01cc89',
+  'o-seated-fig4.js': {pr:97, sha256:'66a147a7da04a444f705bcd3e2fd23788a1349c533847bba9f1a36ae32a0ac48'},
+  'o-seated-twist.js': {pr:98, sha256:'e4f0c990b184f7999dcfa73c6d505a6486048bcea10fabb81810e5038cdebd6b'},
+  'o-seated-ham.js': {pr:99, sha256:'871ccbd2022c8a9d2ce561750d1d75b7a45b2853ff357ca76c133a49db5a6527'},
+  'o-stand-lunge.js': {pr:100, sha256:'c2f3984febb97819713bbbbea85196498fa6f95c8cb1a5e869cc89e580b4beaa'},
+  'o-stand-quad.js': {pr:101, sha256:'95a4eead342c558dabcac458a0e14cb64dd64a7fc872d552a91b87eaf507ab49'},
+  'o-stand-crossreach.js': {pr:102, sha256:'9c79a2e76a8b7f87134ccec346740dc0a7122305579dd839a422056cdb464b3b'},
+  'o-stand-sidebend.js': {pr:103, sha256:'971b40526a08ecf039b675f9d3c156b45aad3e3bd332b203fbe866fb0861413e'},
+  'o-seated-catcow.js': {pr:104, sha256:'732e8a213f1a4c851b48b9a157b537e79d5ec016f7fe3ee7ae15b7e293ade42a'},
 };
 const catalog = JSON.parse(fs.readFileSync(path.join(root, 'data/drills.json'), 'utf8'));
 const ids = Object.values(catalog.drills).flatMap(tiers => Object.values(tiers).map(d => d.id));
@@ -35,13 +37,16 @@ const result = [];
 for (const file of files) {
   const absolute = path.join(root, 'specs', file);
   const bytes = fs.readFileSync(absolute);
-  const sourceCommit = baseline.includes(file) ? source : additions[file];
-  assert.ok(sourceCommit, `Unreviewed action spec: ${file}`);
-  const original = spawnSync('git', ['show', `${sourceCommit}:tools/drill-anim/specs/${file}`], {cwd:repo,windowsHide:true});
-  assert.equal(original.status, 0, `Source missing ${file}`);
   // Git may check out CRLF on Windows; compare source text in Git's LF form.
   const canonical = b => b.toString('utf8').replace(/\r\n/g,'\n');
-  assert.equal(canonical(bytes), canonical(original.stdout), `Original action spec changed: ${file}`);
+  if (baseline.includes(file)) {
+    const original = spawnSync('git', ['show', `${source}:tools/drill-anim/specs/${file}`], {cwd:repo,windowsHide:true});
+    assert.equal(original.status, 0, `Source missing ${file}`);
+    assert.equal(canonical(bytes), canonical(original.stdout), `Original action spec changed: ${file}`);
+  } else {
+    assert.ok(additions[file], `Unreviewed action spec: ${file}`);
+    assert.equal(hash(Buffer.from(canonical(bytes))), additions[file].sha256, `Reviewed PR #${additions[file].pr} spec changed: ${file}`);
+  }
   const {default: spec} = await import(pathToFileURL(absolute).href);
   assert.equal(spec.id, file.slice(0,-3));
   assert.ok(Number.isFinite(spec.timeline.duration) && spec.timeline.duration > 0, `Invalid duration: ${file}`);
