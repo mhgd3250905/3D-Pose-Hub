@@ -6,12 +6,12 @@ import { REST, r4, sampler, track, DEG } from '../lib/ss-geo.mjs';
 const DUR = 8;
 const HIPR = [-0.503, 0.391, 0.077];
 const AN0 = [-0.868, 0.238, 0.077];                                   // kneeling right ankle (mirror of the left, toes tucked)
-const LIFT = 4 * DEG, LEG = 0.7615;
+const LIFT = 4 * DEG, LEG = 0.763;
 const AN1 = r4([HIPR[0] - LEG * Math.cos(LIFT), HIPR[1] + LEG * Math.sin(LIFT), HIPR[2]]);   // straight leg, a touch above level
 const PO0 = [-0.159, -0.512, 0.077], PO1 = [-0.88, -0.45, 0.077];       // knee poles: kneeling (down/forward) -> extended (below)
 const BOW = [0, 0.07, 0];                                             // the foot rises first (knee clears the mat), then travels back
 // trunk is pitched 12.78 deg (head up) by the quadruped; the reaching arm is tilted back down by that so it ends level
-const TILT = 12.78 * DEG, AR = 0.483;
+const TILT = 12.78 * DEG, AR = 0.4843;
 const dir = [0, Math.cos(TILT), Math.sin(TILT)];
 const S = REST.shoulder('left'), WR = r4([S[0] - 0.02, S[1] + AR * dir[1], S[2] + AR * dir[2]]);
 const K = [[0, 0], [0.3, 0], [1.5, 1], [2.9, 1], [3.9, 0], [4.3, 0], [5.5, 1], [6.9, 1], [7.9, 0]];
@@ -54,7 +54,9 @@ export default {
   keyFrames: [0.2, 0.9, 2.2],
   qa: {
     pins: [{ c: 'handR', when: 'always' }, { c: 'footL', when: 'always' }, { c: 'handL', when: 'params.ext<0.001' }],
-    straight: [{ j: 'elbow.right', min: 176 }, { j: 'knee.right', min: 172, when: 'params.ext>0.99' }],
+    // The knee bends while travelling out/back; verify straightness during the
+    // completed extension hold, rather than including the last bent transition.
+    straight: [{ j: 'elbow.right', min: 176 }, { j: 'elbow.left', min: 176, when: 'params.ext>0.9999' }, { j: 'knee.right', min: 176, when: 'params.ext>0.9999' }],
     allowContact: ['thighL|shinL', 'thighR|shinR'],
   },
 };

@@ -3,7 +3,7 @@
 // rotating so the palms face up at the hips, then sweep back. 2 reps / 8 s (1.5 s down, 0.5 s hold, 1.5 s up, 0.5 s hold).
 // Head points +X, face down (-Y), body left = -Z (frame of scapular-A). Arm geometry per frame -> coordinate tracks (scapular-A).
 import { REST, r4, frames, sampler } from '../lib/ss-geo.mjs';
-const S = REST.shoulder('left'), AR = 0.4840, DEG = Math.PI / 180;
+const S = REST.shoulder('left'), AR = 0.4845, DEG = Math.PI / 180;
 const TH0 = 28, TH1 = 166, LIFT = 11, DUR = 8;              // arm angle from rest +Y toward +X (out); elevation off the mat
 const K = [[0, 0], [1.5, 1], [2.0, 1], [3.5, 0], [4.0, 0], [5.5, 1], [6.0, 1], [7.5, 0]];
 const pAt = sampler(K, DUR);
