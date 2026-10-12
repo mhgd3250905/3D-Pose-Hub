@@ -43,4 +43,6 @@
 
 真实渲染与日志位于 `output/playwright/drill-anim-integration-20261012/`。这项验证证明工具在当前Windows工程中可启动和输出代表静帧，不承诺与上游成片逐像素一致，也不将历史qa-reports当作新版全片验证。全片动作、接触、穿模与循环仍应逐项预览、QA和人工审阅。
 
-本次只本地保存与合入，未推送GitHub、未发布PR或新App包；iOS PR #8的三项审核问题保持独立待处理。
+2026-10-12，用户随后明确授权直接同步 GitHub `master`，无需另提 PR。同步范围包含此前本地 L43 提交、drill-anim 原分支历史、Windows 补修与本记录；推送后以本地 `HEAD`、`origin/master` 和 GitHub `refs/heads/master` 的完整 SHA 一致核对。
+
+云盘 Git bundle 固定在 `8a75ff30a9b2d6b8fcb684746555eab90aa4832a`，保存工具与 L43 源码，不含随后这项同步说明提交。GitHub 保存已提交的源码和 App 运行素材；`dist/`、`output/`、机器配置、原始 Blender 资源、个人备份及21项用户未跟踪资源继续保留在本机，不因推送而自动进入 GitHub。成片和制作源码云盘备份见上文。本轮不发布新 App 包；iOS PR #8 的三项审核问题保持独立待处理，未纳入此次整合。
