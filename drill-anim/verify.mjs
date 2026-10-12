@@ -21,6 +21,14 @@ const additions = {
   'o-stand-crossreach.js': {pr:102, sha256:'9c79a2e76a8b7f87134ccec346740dc0a7122305579dd839a422056cdb464b3b'},
   'o-stand-sidebend.js': {pr:103, sha256:'971b40526a08ecf039b675f9d3c156b45aad3e3bd332b203fbe866fb0861413e'},
   'o-seated-catcow.js': {pr:104, sha256:'732e8a213f1a4c851b48b9a157b537e79d5ec016f7fe3ee7ae15b7e293ade42a'},
+  'w-bird-dog.js': {pr:105, sha256:'58b052b8d254e4ffbab5fd07bcc5945696cb5e26d2d9b9dfdc6c135473c3ca7a'},
+  'w-chair-hip-thrust.js': {pr:105, sha256:'85e0e27abe7f323f82858e8206540fa25c1b21c93007fb8a88d695934cdb199a'},
+  'w-clamshell.js': {pr:105, sha256:'f3647e83bf4a87521600cbc96d5c124c1e8413bdd06c3f72235ff3cbb9a05ff1'},
+  'w-dead-bug.js': {pr:105, sha256:'89c13a96b9cb23f6fe055586ef2990506f65d4b996257f33fffad7d4660a894a'},
+  'w-feet-on-chair-bridge.js': {pr:105, sha256:'a1f5f1fd1997ae56a5692ce4c5e9f6aea65db5b20d7715209a104ddde4f65a7d'},
+  'w-fire-hydrant.js': {pr:105, sha256:'6b53673cd7026ac41ae02db04ee054c3da4f0090582c9b516b9cfef11c219d9f'},
+  'w-prone-swimmer.js': {pr:105, sha256:'d4f9b0a41b0b09e6feacb7c37e9bceb2070c2e583ed82deebc49062a68a55734'},
+  'w-wall-sit.js': {pr:105, sha256:'d9e8e0a3ffad2b701c1b7758028f71561e4b65620a03324bc29bd4c111c775fa'},
 };
 const catalog = JSON.parse(fs.readFileSync(path.join(root, 'data/drills.json'), 'utf8'));
 const ids = Object.values(catalog.drills).flatMap(tiers => Object.values(tiers).map(d => d.id));
@@ -78,4 +86,4 @@ function checkTree(directory) {
   }
 }
 checkTree(root);
-console.log(JSON.stringify({ok:true,source,appDrills:ids.length,specs:result.length,stretchSpecs:result.filter(s=>s.id.startsWith('s-')).length,reviewedOfficeSpecs:result.filter(s=>s.id.startsWith('o-')).length,originalSpecHashesPreserved:true},null,2));
+console.log(JSON.stringify({ok:true,source,appDrills:ids.length,specs:result.length,stretchSpecs:result.filter(s=>s.id.startsWith('s-')).length,reviewedOfficeSpecs:result.filter(s=>s.id.startsWith('o-')).length,reviewedSittingSpecs:result.filter(s=>s.id.startsWith('w-')).length,originalSpecHashesPreserved:true},null,2));
