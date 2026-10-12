@@ -1,0 +1,1121 @@
+{
+  "meta": {
+    "version": "2026-10-08",
+    "tiers": {
+      "A": "徒手",
+      "B": "家用器械",
+      "C": "健身房"
+    },
+    "note": "教学建议，非医疗处方；面向初中级 breaker 的保守剂量。",
+    "count": 51
+  },
+  "groups": {
+    "deltoids": {
+      "label": "三角肌",
+      "section": "support",
+      "colour": "#4cc9f0",
+      "role": "前、中、后束协同控制承重肩，接住每一次换手。"
+    },
+    "rotator-cuff": {
+      "label": "肩袖肌群",
+      "section": "support",
+      "colour": "#a29bfe",
+      "role": "位于深层，帮助稳定肱骨头，支撑方向不断变化时护住肩关节。"
+    },
+    "triceps": {
+      "label": "肱三头肌",
+      "section": "support",
+      "colour": "#2f6bff",
+      "role": "伸肘锁住支撑臂，手臂保持伸直受控。"
+    },
+    "forearms": {
+      "label": "前臂 · 腕屈伸肌",
+      "section": "support",
+      "colour": "#9ad1e8",
+      "role": "掌根撑地时控制手腕与手指，平稳落手、卸载。"
+    },
+    "serratus": {
+      "label": "前锯肌",
+      "section": "support",
+      "colour": "#5eead4",
+      "role": "让肩胛贴着胸廓前伸，主动把地面推远。"
+    },
+    "scapular": {
+      "label": "斜方肌中下部 · 菱形肌",
+      "section": "support",
+      "colour": "#86efc4",
+      "role": "协同调整肩胛位置，维持肩带与地面之间的支撑空间。"
+    },
+    "chest": {
+      "label": "胸大肌",
+      "section": "support",
+      "colour": "#6f8dff",
+      "role": "前撑转侧撑时，配合控制上臂相对胸廓的方向。"
+    },
+    "lats": {
+      "label": "背阔肌",
+      "section": "support",
+      "colour": "#00a896",
+      "role": "连接上臂与躯干，参与肩部下压与身体随支撑转移。"
+    },
+    "abs": {
+      "label": "腹直肌（含深层腹横肌）",
+      "section": "core",
+      "colour": "#c466ff",
+      "role": "卷腹折叠躯干，与深层腹横肌一起稳住骨盆，给抬腿留出空间。"
+    },
+    "obliques": {
+      "label": "腹斜肌",
+      "section": "core",
+      "colour": "#ff6fb5",
+      "role": "参与躯干旋转与侧向控制，让肩与骨盆随摆腿转动。"
+    },
+    "erectors": {
+      "label": "竖脊肌",
+      "section": "core",
+      "colour": "#e3b3ff",
+      "role": "控制脊柱伸展与躯干位置，后撑时帮助保持髋高。"
+    },
+    "hip-flexors": {
+      "label": "髋屈肌",
+      "section": "core",
+      "colour": "#ff9ec7",
+      "role": "位于骨盆深处，主动屈髋，把长腿从身体前方抬过去。"
+    },
+    "glute-max": {
+      "label": "臀大肌",
+      "section": "legs",
+      "colour": "#ffb703",
+      "role": "髋伸展与后方扫腿（深层髋旋转肌配合调整腿的方向）。"
+    },
+    "hip-abductors": {
+      "label": "臀中肌 · 髋外展",
+      "section": "legs",
+      "colour": "#ff7b2e",
+      "role": "主动开腿并控制骨盆，离地后双腿不合拢。"
+    },
+    "adductors": {
+      "label": "内收肌群",
+      "section": "legs",
+      "colour": "#b5e655",
+      "role": "控制腿向中线回收与开度变化，衔接下一段扫腿。"
+    },
+    "quadriceps": {
+      "label": "股四头肌",
+      "section": "legs",
+      "colour": "#ffe45c",
+      "role": "保持膝部伸直，让长腿连续绕行。"
+    },
+    "hamstrings": {
+      "label": "腘绳肌",
+      "section": "legs",
+      "colour": "#e9a46a",
+      "role": "后侧长腿线条，参与髋伸与膝部控制。"
+    }
+  },
+  "drills": {
+    "deltoids": {
+      "A": {
+        "id": "deltoids-A",
+        "groupId": "deltoids",
+        "tier": "A",
+        "tierLabel": "徒手",
+        "name": "直臂侧平板支撑",
+        "nameEn": "Straight-Arm Side Plank",
+        "equipment": "无（瑜伽垫可选）",
+        "prescription": "3 组 × 每侧 20–30 秒",
+        "cues": [
+          "支撑手在肩正下方，推地让肩远离耳朵",
+          "髋抬到与肩同高，身体侧面成一条直线"
+        ],
+        "mistake": "肩往耳朵方向塌、髋下沉，重量压进肩关节。",
+        "why": "与第一侧支撑同一姿态：单臂承担全身重量，练三角肌接住侧撑。",
+        "difficulty": 1,
+        "safety": "先做 2–3 分钟手腕热身；腕部刺痛或麻木立即停止。",
+        "image": "img/deltoids-A.png"
+      },
+      "B": {
+        "id": "deltoids-B",
+        "groupId": "deltoids",
+        "tier": "B",
+        "tierLabel": "家用器械",
+        "name": "哑铃土耳其起立",
+        "nameEn": "Dumbbell Turkish Get-Up",
+        "equipment": "轻哑铃或壶铃 · 瑜伽垫",
+        "prescription": "3 组 × 每侧 2–3 次（慢速）",
+        "cues": [
+          "负重手臂始终垂直指天，眼睛看着哑铃",
+          "撑地手推地抬髋，像侧撑一样把身体顶起"
+        ],
+        "mistake": "负重臂向头后或身体前方倒，肩失去锁定。",
+        "why": "在身体转向不断变化时稳住双肩，正是换手时三角肌要做的事。",
+        "difficulty": 2,
+        "safety": "从很轻的重量开始，每一步做稳再进入下一步。肩前侧夹痛时缩短时长或改简单版本，不要硬撑。",
+        "image": "img/deltoids-B.png"
+      },
+      "C": {
+        "id": "deltoids-C",
+        "groupId": "deltoids",
+        "tier": "C",
+        "tierLabel": "健身房",
+        "name": "地雷杆半跪单臂推举",
+        "nameEn": "Half-Kneeling Landmine Press",
+        "equipment": "地雷杆 + 杠铃杆（可加小片）",
+        "prescription": "3 组 × 每侧 8 次",
+        "cues": [
+          "斜向前上方推到手臂伸直，最后肩胛向前送",
+          "收紧臀部和腹部，躯干不后仰"
+        ],
+        "mistake": "推起时腰往后仰借力，肋骨外翻。",
+        "why": "斜线推举对肩更友好，强化三角肌在手臂高于肩时的力量，对应支撑臂举过头承重。",
+        "difficulty": 2,
+        "safety": "肩前侧夹痛时缩短时长或改简单版本，不要硬撑。",
+        "image": "img/deltoids-C.png"
+      }
+    },
+    "rotator-cuff": {
+      "A": {
+        "id": "rotator-cuff-A",
+        "groupId": "rotator-cuff",
+        "tier": "A",
+        "tierLabel": "徒手",
+        "name": "俯撑交替触肩",
+        "nameEn": "Plank Shoulder Taps",
+        "equipment": "无",
+        "prescription": "3 组 × 每侧 8–10 次",
+        "cues": [
+          "双脚略分开，触肩时骨盆不左右晃",
+          "承重手推地、肘锁直，肩不往下塌"
+        ],
+        "mistake": "触得太快，身体跟着手左右摇晃。",
+        "why": "单手瞬间接住体重时，肩袖要把肱骨头稳在关节里，模拟每一次换手。",
+        "difficulty": 1,
+        "safety": "先做 2–3 分钟手腕热身；腕部刺痛或麻木立即停止。",
+        "image": "img/rotator-cuff-A.png"
+      },
+      "B": {
+        "id": "rotator-cuff-B",
+        "groupId": "rotator-cuff",
+        "tier": "B",
+        "tierLabel": "家用器械",
+        "name": "弹力带肘贴体侧外旋",
+        "nameEn": "Band External Rotation",
+        "equipment": "轻阻力弹力带（毛巾夹在腋下）",
+        "prescription": "3 组 × 每侧 12–15 次",
+        "cues": [
+          "肘贴住身体、弯 90°，只让前臂向外打开",
+          "慢放 3 秒，肩不耸起"
+        ],
+        "mistake": "用转身代替转肩，或手肘离开身体。",
+        "why": "直接加强深层外旋肌，让肩在支撑方向变化时更稳、更耐用。",
+        "difficulty": 1,
+        "safety": null,
+        "image": "img/rotator-cuff-B.png"
+      },
+      "C": {
+        "id": "rotator-cuff-C",
+        "groupId": "rotator-cuff",
+        "tier": "C",
+        "tierLabel": "健身房",
+        "name": "绳索 90/90 外旋",
+        "nameEn": "Cable 90/90 External Rotation",
+        "equipment": "绳索器械 · 单柄",
+        "prescription": "3 组 × 每侧 10–12 次（轻重量）",
+        "cues": [
+          "上臂与肩同高、肘成 90°，前臂由前向上转到竖直",
+          "肩胛下沉后收，躯干不动"
+        ],
+        "mistake": "重量太重，用耸肩或后仰把绳子拉上去。",
+        "why": "练手臂举起位置的肩袖控制，对应支撑臂在高位承重时的肩部稳定。",
+        "difficulty": 2,
+        "safety": "选很轻的重量，出现肩前部疼痛立即停止。",
+        "image": "img/rotator-cuff-C.png"
+      }
+    },
+    "triceps": {
+      "A": {
+        "id": "triceps-A",
+        "groupId": "triceps",
+        "tier": "A",
+        "tierLabel": "徒手",
+        "name": "窄距俯卧撑（锁肘停顿）",
+        "nameEn": "Close-Grip Push-Up with Lockout",
+        "equipment": "无",
+        "prescription": "3 组 × 6–10 次",
+        "cues": [
+          "双手与肩同宽或略窄，肘贴身体向后弯",
+          "顶端肘完全伸直并停 1 秒，再把地面推远"
+        ],
+        "mistake": "肘向外翻，顶端没伸直就开始下一次。",
+        "why": "练出顶端锁肘的力量，支撑臂才能伸直撑住、不弯不软。",
+        "difficulty": 1,
+        "safety": "先做 2–3 分钟手腕热身；腕部刺痛或麻木立即停止。",
+        "image": "img/triceps-A.png"
+      },
+      "B": {
+        "id": "triceps-B",
+        "groupId": "triceps",
+        "tier": "B",
+        "tierLabel": "家用器械",
+        "name": "平行杆直臂支撑",
+        "nameEn": "Parallette Support Hold",
+        "equipment": "平行杆（俯撑架）一对",
+        "prescription": "4 组 × 15–20 秒",
+        "cues": [
+          "手臂伸直锁肘，肩往下压、远离耳朵",
+          "屈膝收腿把身体撑离地面，可脚尖轻点地辅助"
+        ],
+        "mistake": "肘微弯、耸肩，身体挂在肩关节上。",
+        "why": "全身重量压在伸直的手臂上，正是托马斯支撑臂需要的锁肘承重。",
+        "difficulty": 2,
+        "safety": "先做 2–3 分钟手腕热身；腕部刺痛或麻木立即停止。",
+        "image": "img/triceps-B.png"
+      },
+      "C": {
+        "id": "triceps-C",
+        "groupId": "triceps",
+        "tier": "C",
+        "tierLabel": "健身房",
+        "name": "双杠臂屈伸",
+        "nameEn": "Parallel Bar Dips",
+        "equipment": "双杠",
+        "prescription": "3 组 × 5–8 次",
+        "cues": [
+          "下放到上臂约与地面平行即可，不要过深",
+          "顶端肘锁直、肩下压，停 1 秒"
+        ],
+        "mistake": "下得太深、肩前倾塌陷，或用摆腿借力。",
+        "why": "在完整幅度里加强伸肘力量，支撑和换手时手臂更不容易弯。",
+        "difficulty": 3,
+        "safety": "肩部不适者先做顶端支撑停留；下放深度控制在不痛的范围。",
+        "image": "img/triceps-C.png"
+      }
+    },
+    "forearms": {
+      "A": {
+        "id": "forearms-A",
+        "groupId": "forearms",
+        "tier": "A",
+        "tierLabel": "徒手",
+        "name": "跪姿多方向腕部摇摆",
+        "nameEn": "Quadruped Wrist Rocks",
+        "equipment": "无（瑜伽垫可选）",
+        "prescription": "2 轮 × 4 个方向 × 10 次",
+        "cues": [
+          "手指朝前、朝侧、朝后、掌背着地依次摇",
+          "前后移动身体重心，力度由轻到重"
+        ],
+        "mistake": "一上来就压全重，或只做手指朝前一个方向。",
+        "why": "托马斯中掌根要从各个角度接地，这是让腕屈伸肌和腕关节适应负荷的基础。",
+        "difficulty": 1,
+        "safety": "先做 2–3 分钟手腕热身；腕部刺痛或麻木立即停止。",
+        "image": "img/forearms-A.png"
+      },
+      "B": {
+        "id": "forearms-B",
+        "groupId": "forearms",
+        "tier": "B",
+        "tierLabel": "家用器械",
+        "name": "哑铃腕屈 + 腕伸",
+        "nameEn": "Dumbbell Wrist Curl & Reverse Curl",
+        "equipment": "轻哑铃 · 凳子或膝盖",
+        "prescription": "各 2–3 组 × 15 次",
+        "cues": [
+          "前臂平放在大腿上，只动手腕",
+          "上 1 秒、下 3 秒，全幅度慢放"
+        ],
+        "mistake": "甩动借力，或用前臂抬起代替手腕屈伸。",
+        "why": "腕屈肌稳住掌根、腕伸肌控制落手卸力，两侧都练才能平稳换手。",
+        "difficulty": 1,
+        "safety": null,
+        "image": "img/forearms-B.png"
+      },
+      "C": {
+        "id": "forearms-C",
+        "groupId": "forearms",
+        "tier": "C",
+        "tierLabel": "健身房",
+        "name": "壶铃倒握行走",
+        "nameEn": "Bottoms-Up Kettlebell Carry",
+        "equipment": "轻壶铃",
+        "prescription": "3 组 × 每侧 20–30 米",
+        "cues": [
+          "壶铃底朝上，前臂竖直、手腕中立",
+          "握紧手柄，肘在肩前下方，慢步走"
+        ],
+        "mistake": "手腕后折、握力松，壶铃倒下。",
+        "why": "倒握需要手指与手腕持续微调，练出支撑手掌根的控制力。",
+        "difficulty": 2,
+        "safety": "重量宜轻；手腕要保持中立，不要后折。",
+        "image": "img/forearms-C.png"
+      }
+    },
+    "serratus": {
+      "A": {
+        "id": "serratus-A",
+        "groupId": "serratus",
+        "tier": "A",
+        "tierLabel": "徒手",
+        "name": "俯撑肩胛前伸",
+        "nameEn": "Push-Up Plus",
+        "equipment": "无",
+        "prescription": "3 组 × 10–12 次",
+        "cues": [
+          "手臂始终伸直，只让胸口下沉再推高",
+          "顶端把背部推圆，肩胛向前包住胸廓"
+        ],
+        "mistake": "弯肘变成俯卧撑，或塌腰代替肩胛动作。",
+        "why": "直接练肩胛前伸——把地面推远，是托马斯支撑的核心动作。",
+        "difficulty": 1,
+        "safety": "先做 2–3 分钟手腕热身；腕部刺痛或麻木立即停止。",
+        "image": "img/serratus-A.png"
+      },
+      "B": {
+        "id": "serratus-B",
+        "groupId": "serratus",
+        "tier": "B",
+        "tierLabel": "家用器械",
+        "name": "泡沫轴墙面上滑",
+        "nameEn": "Foam Roller Wall Slide",
+        "equipment": "泡沫轴",
+        "prescription": "3 组 × 10 次",
+        "cues": [
+          "前臂贴住泡沫轴，往前推墙并向上滚",
+          "最高处手臂略离开泡沫轴，停 2 秒"
+        ],
+        "mistake": "耸肩向上滑，或腰向前挺出。",
+        "why": "练手臂举过头时前锯肌上旋肩胛，支撑臂高位承重更稳。",
+        "difficulty": 1,
+        "safety": null,
+        "image": "img/serratus-B.png"
+      },
+      "C": {
+        "id": "serratus-C",
+        "groupId": "serratus",
+        "tier": "C",
+        "tierLabel": "健身房",
+        "name": "吊环俯卧撑加前伸",
+        "nameEn": "Ring Push-Up Plus",
+        "equipment": "吊环（低位）",
+        "prescription": "3 组 × 6–8 次",
+        "cues": [
+          "吊环离地 10–20 厘米，环贴身体两侧",
+          "推起后再把背推圆一点，稳住环不外散"
+        ],
+        "mistake": "环向两侧散开，肩前倾塌陷。",
+        "why": "不稳定的支撑面迫使前锯肌持续发力，最接近地面上不断变化的支撑。",
+        "difficulty": 3,
+        "safety": "肩前侧夹痛时缩短时长或改简单版本，不要硬撑。",
+        "image": "img/serratus-C.png"
+      }
+    },
+    "scapular": {
+      "A": {
+        "id": "scapular-A",
+        "groupId": "scapular",
+        "tier": "A",
+        "tierLabel": "徒手",
+        "name": "俯卧 Y-T-W 举",
+        "nameEn": "Prone Y-T-W Raise",
+        "equipment": "无（瑜伽垫）",
+        "prescription": "2 组 × 每个字母 8 次",
+        "cues": [
+          "额头轻贴地，先把肩胛下沉后收再抬手",
+          "拇指朝上，顶端停 2 秒"
+        ],
+        "mistake": "抬头、耸肩，用腰把上身抬高。",
+        "why": "加强斜方肌中下部与菱形肌，在支撑中把肩胛摆在正确位置。",
+        "difficulty": 1,
+        "safety": null,
+        "image": "img/scapular-A.png"
+      },
+      "B": {
+        "id": "scapular-B",
+        "groupId": "scapular",
+        "tier": "B",
+        "tierLabel": "家用器械",
+        "name": "单杠肩胛引体",
+        "nameEn": "Scapular Pull-Up",
+        "equipment": "单杠（门框单杠）",
+        "prescription": "3 组 × 8 次",
+        "cues": [
+          "手臂始终伸直，只靠肩胛下沉把身体抬起几厘米",
+          "顶端停 1 秒，再慢慢回到悬垂"
+        ],
+        "mistake": "弯肘拉起，变成小幅引体向上。",
+        "why": "练肩胛下压与稳定，这是支撑时“推地、肩远离耳朵”的同一组肌肉。",
+        "difficulty": 2,
+        "safety": "悬垂前先确认单杠安装牢固；肩前侧夹痛时缩短时长或改简单版本，不要硬撑。",
+        "image": "img/scapular-B.png"
+      },
+      "C": {
+        "id": "scapular-C",
+        "groupId": "scapular",
+        "tier": "C",
+        "tierLabel": "健身房",
+        "name": "吊环直臂支撑",
+        "nameEn": "Ring Support Hold",
+        "equipment": "吊环",
+        "prescription": "4 组 × 10–20 秒",
+        "cues": [
+          "手臂伸直，环贴身体两侧，掌心微微外旋",
+          "肩胛下压，身体保持中空、不晃"
+        ],
+        "mistake": "环向外飘、耸肩，手臂弯曲。",
+        "why": "最难的直臂支撑练习之一，强迫肩胛肌群持续调整，维持肩带与支撑点之间的空间。",
+        "difficulty": 3,
+        "safety": "先在双杠上练稳支撑，再上吊环；肩前侧夹痛时缩短时长或改简单版本，不要硬撑。",
+        "image": "img/scapular-C.png"
+      }
+    },
+    "chest": {
+      "A": {
+        "id": "chest-A",
+        "groupId": "chest",
+        "tier": "A",
+        "tierLabel": "徒手",
+        "name": "俯卧撑转侧撑",
+        "nameEn": "Push-Up to Side Plank Rotation",
+        "equipment": "无",
+        "prescription": "3 组 × 每侧 5–6 次",
+        "cues": [
+          "推起后整体转向侧面，支撑手不动",
+          "转动时胸和骨盆一起走，不先扭腰"
+        ],
+        "mistake": "转身太快，支撑肩塌下去。",
+        "why": "就是前撑转侧撑的过程：胸大肌配合控制上臂与胸廓的方向。",
+        "difficulty": 2,
+        "safety": "先做 2–3 分钟手腕热身；腕部刺痛或麻木立即停止。",
+        "image": "img/chest-A.png"
+      },
+      "B": {
+        "id": "chest-B",
+        "groupId": "chest",
+        "tier": "B",
+        "tierLabel": "家用器械",
+        "name": "平行杆深幅俯卧撑",
+        "nameEn": "Parallette Deficit Push-Up",
+        "equipment": "平行杆（俯撑架）一对",
+        "prescription": "3 组 × 6–10 次",
+        "cues": [
+          "胸口下沉到双手之间，肘约 45° 夹向身体",
+          "推起后手臂锁直，肩胛前伸"
+        ],
+        "mistake": "下沉过深导致肩前顶，或塌腰。",
+        "why": "握杆让手腕中立，更大幅度强化胸大肌，支撑转换更有力。",
+        "difficulty": 2,
+        "safety": "肩前侧夹痛时缩短时长或改简单版本，不要硬撑。",
+        "image": "img/chest-B.png"
+      },
+      "C": {
+        "id": "chest-C",
+        "groupId": "chest",
+        "tier": "C",
+        "tierLabel": "健身房",
+        "name": "绳索单臂站姿推胸",
+        "nameEn": "Single-Arm Standing Cable Press",
+        "equipment": "绳索器械 · 单柄",
+        "prescription": "3 组 × 每侧 8–10 次",
+        "cues": [
+          "弓步站稳，单臂向前推到伸直",
+          "推的时候躯干不跟着转，核心抗旋转"
+        ],
+        "mistake": "用转身代替推，或耸肩。",
+        "why": "单侧推需要胸大肌和核心一起控制方向，对应单手支撑时手臂与胸廓的关系。",
+        "difficulty": 2,
+        "safety": null,
+        "image": "img/chest-C.png"
+      }
+    },
+    "lats": {
+      "A": {
+        "id": "lats-A",
+        "groupId": "lats",
+        "tier": "A",
+        "tierLabel": "徒手",
+        "name": "坐姿撑地抬臀",
+        "nameEn": "Floor Support Lift (Seated Dip Shrug)",
+        "equipment": "无（瑜伽垫可选）",
+        "prescription": "3 组 × 8 次（顶端停 2 秒）",
+        "cues": [
+          "长坐，双手撑在髋两侧，手臂伸直",
+          "用肩往下压把臀部抬离地面，不靠弯肘"
+        ],
+        "mistake": "弯肘撑起或耸肩，变成三头肌练习。",
+        "why": "背阔肌下压肩带把身体撑起，正是后撑和换手时躯干跟着支撑转移的感觉。",
+        "difficulty": 2,
+        "safety": "先做 2–3 分钟手腕热身；腕部刺痛或麻木立即停止。",
+        "image": "img/lats-A.png"
+      },
+      "B": {
+        "id": "lats-B",
+        "groupId": "lats",
+        "tier": "B",
+        "tierLabel": "家用器械",
+        "name": "弹力带直臂下拉",
+        "nameEn": "Band Straight-Arm Pulldown",
+        "equipment": "弹力带（固定在高处）",
+        "prescription": "3 组 × 12–15 次",
+        "cues": [
+          "手臂伸直，从额头高度下拉到大腿旁",
+          "下拉时肩胛下沉，肋骨不外翻"
+        ],
+        "mistake": "弯肘、身体前后摆动借力。",
+        "why": "直臂下压正是背阔肌在托马斯中的工作方式：连接上臂与躯干。",
+        "difficulty": 1,
+        "safety": null,
+        "image": "img/lats-B.png"
+      },
+      "C": {
+        "id": "lats-C",
+        "groupId": "lats",
+        "tier": "C",
+        "tierLabel": "健身房",
+        "name": "双杠支撑耸肩下压",
+        "nameEn": "Dip-Bar Scapular Depression",
+        "equipment": "双杠",
+        "prescription": "3 组 × 8–10 次",
+        "cues": [
+          "手臂锁直，让肩慢慢升向耳朵",
+          "再用力下压把身体顶高，顶端停 1 秒"
+        ],
+        "mistake": "弯肘上下，变成臂屈伸。",
+        "why": "全身重量下练肩下压，直接迁移到支撑时身体随手移动的控制。",
+        "difficulty": 2,
+        "safety": "肩前侧夹痛时缩短时长或改简单版本，不要硬撑。",
+        "image": "img/lats-C.png"
+      }
+    },
+    "abs": {
+      "A": {
+        "id": "abs-A",
+        "groupId": "abs",
+        "tier": "A",
+        "tierLabel": "徒手",
+        "name": "空心体支撑",
+        "nameEn": "Hollow Body Hold",
+        "equipment": "无（瑜伽垫）",
+        "prescription": "3 组 × 15–25 秒",
+        "cues": [
+          "下背压实地面，肩胛离地",
+          "手和腿离地越低越难，以腰不离地为准"
+        ],
+        "mistake": "腰拱起离开地面，憋气。",
+        "why": "练腹直肌与腹横肌稳住骨盆的“中空”体态，摆腿时躯干不散。",
+        "difficulty": 1,
+        "safety": "全程保持腰椎中立，腰部发紧或疼痛时减小幅度。",
+        "image": "img/abs-A.png"
+      },
+      "B": {
+        "id": "abs-B",
+        "groupId": "abs",
+        "tier": "B",
+        "tierLabel": "家用器械",
+        "name": "平行杆团身 L 撑",
+        "nameEn": "Parallette Tuck L-Sit",
+        "equipment": "平行杆（俯撑架）一对",
+        "prescription": "4 组 × 8–12 秒",
+        "cues": [
+          "手臂锁直、肩下压，把膝盖抬到胸前",
+          "能力够了再一条腿伸直，逐步到 L 撑"
+        ],
+        "mistake": "弓背耸肩，膝盖下垂碰地。",
+        "why": "同时做“直臂支撑 + 卷腹折叠”，就是后撑抬长腿过前方的组合。",
+        "difficulty": 2,
+        "safety": "先做 2–3 分钟手腕热身；腕部刺痛或麻木立即停止。",
+        "image": "img/abs-B.png"
+      },
+      "C": {
+        "id": "abs-C",
+        "groupId": "abs",
+        "tier": "C",
+        "tierLabel": "健身房",
+        "name": "双杠直臂支撑举腿",
+        "nameEn": "Dip-Bar Support Leg Raise",
+        "equipment": "双杠（或举腿椅）",
+        "prescription": "3 组 × 6–10 次",
+        "cues": [
+          "手臂锁直撑起，骨盆后倾卷腹抬腿",
+          "慢慢放下，腿不摆动"
+        ],
+        "mistake": "甩腿借惯性，肩往耳朵塌。",
+        "why": "在支撑中做折叠，给抬腿留空间，正对应腹直肌在托马斯中的作用。",
+        "difficulty": 2,
+        "safety": "肩前侧夹痛时缩短时长或改简单版本，不要硬撑。",
+        "image": "img/abs-C.png"
+      }
+    },
+    "obliques": {
+      "A": {
+        "id": "obliques-A",
+        "groupId": "obliques",
+        "tier": "A",
+        "tierLabel": "徒手",
+        "name": "熊爬穿腿",
+        "nameEn": "Kick-Through (Beast Flow)",
+        "equipment": "无",
+        "prescription": "3 组 × 每侧 6 次",
+        "cues": [
+          "从四足悬膝位起，单手撑地，腿从身体下方穿过去",
+          "转体时支撑手推地，髋不要落地"
+        ],
+        "mistake": "臀部坐到地上，支撑肩塌。",
+        "why": "在单手支撑下旋转躯干、腿从身下穿过，是托马斯转体的雏形。",
+        "difficulty": 2,
+        "safety": "先做 2–3 分钟手腕热身；腕部刺痛或麻木立即停止。",
+        "image": "img/obliques-A.png"
+      },
+      "B": {
+        "id": "obliques-B",
+        "groupId": "obliques",
+        "tier": "B",
+        "tierLabel": "家用器械",
+        "name": "弹力带抗旋转推",
+        "nameEn": "Band Pallof Press",
+        "equipment": "弹力带（侧向固定）",
+        "prescription": "3 组 × 每侧 10 次（停 2 秒）",
+        "cues": [
+          "侧对固定点，双手握带在胸前向前推直",
+          "推直后停 2 秒，身体不被拉转"
+        ],
+        "mistake": "跟着弹力带转身，或耸肩。",
+        "why": "抗旋转是转体的另一半：腹斜肌要把肩与骨盆的转动控制住。",
+        "difficulty": 1,
+        "safety": null,
+        "image": "img/obliques-B.png"
+      },
+      "C": {
+        "id": "obliques-C",
+        "groupId": "obliques",
+        "tier": "C",
+        "tierLabel": "健身房",
+        "name": "绳索高位伐木",
+        "nameEn": "Cable High-to-Low Woodchop",
+        "equipment": "绳索器械 · 单柄或绳",
+        "prescription": "3 组 × 每侧 8–10 次",
+        "cues": [
+          "从高处斜向下拉到对侧髋外，手臂基本伸直",
+          "肩与骨盆一起转，后脚跟随转动"
+        ],
+        "mistake": "只用手臂拉，或腰椎过度扭转。",
+        "why": "练肩和骨盆协同旋转，对应随摆腿转身的控制。",
+        "difficulty": 2,
+        "safety": "全程保持腰椎中立，腰部发紧或疼痛时减小幅度。",
+        "image": "img/obliques-C.png"
+      }
+    },
+    "erectors": {
+      "A": {
+        "id": "erectors-A",
+        "groupId": "erectors",
+        "tier": "A",
+        "tierLabel": "徒手",
+        "name": "反向平板（后撑抬髋）",
+        "nameEn": "Reverse Plank",
+        "equipment": "无（瑜伽垫可选）",
+        "prescription": "3 组 × 15–25 秒",
+        "cues": [
+          "双手在肩下方，手指朝脚或朝两侧",
+          "推地抬髋到身体一条直线，夹紧臀部"
+        ],
+        "mistake": "髋下坠、头后仰，肩往前塌。",
+        "why": "后撑时竖脊肌帮助保持髋高，这个姿势就是后侧支撑的静态版。",
+        "difficulty": 1,
+        "safety": "先做 2–3 分钟手腕热身；腕部刺痛或麻木立即停止。手指可朝两侧减轻腕部压力。",
+        "image": "img/erectors-A.png"
+      },
+      "B": {
+        "id": "erectors-B",
+        "groupId": "erectors",
+        "tier": "B",
+        "tierLabel": "家用器械",
+        "name": "瑞士球背伸",
+        "nameEn": "Stability Ball Back Extension",
+        "equipment": "瑞士球（健身球）· 墙边抵脚",
+        "prescription": "3 组 × 10–12 次",
+        "cues": [
+          "髋压在球上，双脚抵住墙根",
+          "抬到身体一条直线即可，不过度后仰"
+        ],
+        "mistake": "甩起上身、抬过头造成腰椎过伸。",
+        "why": "练竖脊肌控制脊柱伸展，帮助后撑和侧撑时躯干不塌。",
+        "difficulty": 1,
+        "safety": "全程保持腰椎中立，腰部发紧或疼痛时减小幅度。",
+        "image": "img/erectors-B.png"
+      },
+      "C": {
+        "id": "erectors-C",
+        "groupId": "erectors",
+        "tier": "C",
+        "tierLabel": "健身房",
+        "name": "45° 罗马椅背伸",
+        "nameEn": "45° Hyperextension",
+        "equipment": "45° 罗马椅 / GHD",
+        "prescription": "3 组 × 10 次",
+        "cues": [
+          "垫子顶在髋骨下方，以髋为轴下放",
+          "起到身体一条直线、停 1 秒，不再往后仰"
+        ],
+        "mistake": "腰椎过伸甩起，或圆背下放太快。",
+        "why": "用器械稳定地加强后链，后撑抬髋更有力、更持久。",
+        "difficulty": 2,
+        "safety": "全程保持腰椎中立，腰部发紧或疼痛时减小幅度。",
+        "image": "img/erectors-C.png"
+      }
+    },
+    "hip-flexors": {
+      "A": {
+        "id": "hip-flexors-A",
+        "groupId": "hip-flexors",
+        "tier": "A",
+        "tierLabel": "徒手",
+        "name": "坐姿直腿抬腿（压缩）",
+        "nameEn": "Seated Pike Leg Lifts",
+        "equipment": "无（瑜伽垫）",
+        "prescription": "3 组 × 8–10 次",
+        "cues": [
+          "长坐，双手撑在膝盖两侧，腿伸直",
+          "躯干前倾，主动把双腿抬离地面 2–5 厘米"
+        ],
+        "mistake": "身体后仰去抬腿，或膝盖弯曲。",
+        "why": "练屈髋肌在缩短位主动发力，把长腿从身体前方抬过去。",
+        "difficulty": 2,
+        "safety": null,
+        "image": "img/hip-flexors-A.png"
+      },
+      "B": {
+        "id": "hip-flexors-B",
+        "groupId": "hip-flexors",
+        "tier": "B",
+        "tierLabel": "家用器械",
+        "name": "弹力带站姿高抬膝",
+        "nameEn": "Banded Standing Knee Drive",
+        "equipment": "弹力带（套在脚上，另一端固定或踩住）",
+        "prescription": "3 组 × 每侧 10 次（顶端停 2 秒）",
+        "cues": [
+          "站直扶墙，膝盖抬过髋的高度",
+          "顶端停 2 秒，骨盆不后倾、不弯腰"
+        ],
+        "mistake": "后仰或耸肩，把膝抬到髋以下就停。",
+        "why": "在超过 90° 的屈髋范围加阻力，正是长腿抬过前方需要的力量。",
+        "difficulty": 1,
+        "safety": null,
+        "image": "img/hip-flexors-B.png"
+      },
+      "C": {
+        "id": "hip-flexors-C",
+        "groupId": "hip-flexors",
+        "tier": "C",
+        "tierLabel": "健身房",
+        "name": "绳索站姿直腿前抬",
+        "nameEn": "Cable Straight-Leg Raise",
+        "equipment": "绳索器械 · 脚踝扣",
+        "prescription": "3 组 × 每侧 8–10 次",
+        "cues": [
+          "脚踝扣连低位绳索，膝伸直、脚尖勾起",
+          "抬到能控制的最高点，慢放"
+        ],
+        "mistake": "用后仰或摆动把腿甩上去。",
+        "why": "长杠杆直腿屈髋，对应托马斯中伸直的长腿绕过身体前方。",
+        "difficulty": 2,
+        "safety": "全程保持腰椎中立，腰部发紧或疼痛时减小幅度。",
+        "image": "img/hip-flexors-C.png"
+      }
+    },
+    "glute-max": {
+      "A": {
+        "id": "glute-max-A",
+        "groupId": "glute-max",
+        "tier": "A",
+        "tierLabel": "徒手",
+        "name": "单腿臀桥",
+        "nameEn": "Single-Leg Glute Bridge",
+        "equipment": "无（瑜伽垫）",
+        "prescription": "3 组 × 每侧 10 次",
+        "cues": [
+          "支撑脚跟发力推地，把髋抬平",
+          "顶端夹臀停 2 秒，骨盆不歪"
+        ],
+        "mistake": "用腰拱起代替伸髋，骨盆向一侧掉。",
+        "why": "练臀大肌伸髋，为后方扫腿和后撑抬髋打基础。",
+        "difficulty": 1,
+        "safety": null,
+        "image": "img/glute-max-A.png"
+      },
+      "B": {
+        "id": "glute-max-B",
+        "groupId": "glute-max",
+        "tier": "B",
+        "tierLabel": "家用器械",
+        "name": "弹力带四足直腿后踢",
+        "nameEn": "Banded Straight-Leg Kickback",
+        "equipment": "弹力带（套在双脚）· 瑜伽垫",
+        "prescription": "3 组 × 每侧 12 次",
+        "cues": [
+          "四足跪姿，腿伸直向后上方抬",
+          "腰不塌，只让髋发力"
+        ],
+        "mistake": "抬太高导致腰椎过伸。",
+        "why": "直腿向后扫，对应托马斯中长腿向后方绕过去的动作。",
+        "difficulty": 1,
+        "safety": "全程保持腰椎中立，腰部发紧或疼痛时减小幅度。",
+        "image": "img/glute-max-B.png"
+      },
+      "C": {
+        "id": "glute-max-C",
+        "groupId": "glute-max",
+        "tier": "C",
+        "tierLabel": "健身房",
+        "name": "反向背伸机",
+        "nameEn": "Reverse Hyperextension",
+        "equipment": "反向背伸机（Reverse Hyper）",
+        "prescription": "3 组 × 10–12 次",
+        "cues": [
+          "上身趴在垫上握紧把手，双腿伸直",
+          "靠臀发力把腿抬到与躯干同高，慢放"
+        ],
+        "mistake": "甩腿借力，抬过躯干高度。",
+        "why": "直腿在身后做伸髋，是长腿后扫最接近的器械动作。",
+        "difficulty": 2,
+        "safety": "全程保持腰椎中立，腰部发紧或疼痛时减小幅度。",
+        "image": "img/glute-max-C.png"
+      }
+    },
+    "hip-abductors": {
+      "A": {
+        "id": "hip-abductors-A",
+        "groupId": "hip-abductors",
+        "tier": "A",
+        "tierLabel": "徒手",
+        "name": "侧平板抬腿",
+        "nameEn": "Side Plank Hip Abduction",
+        "equipment": "无（瑜伽垫）",
+        "prescription": "3 组 × 每侧 8 次",
+        "cues": [
+          "前臂侧撑，髋抬起成一条直线",
+          "上方腿伸直抬起，脚尖朝前不外转"
+        ],
+        "mistake": "髋下沉，或上腿向前摆。",
+        "why": "臀中肌在支撑下主动开腿，像侧撑时撑开高 V 字。",
+        "difficulty": 2,
+        "safety": null,
+        "image": "img/hip-abductors-A.png"
+      },
+      "B": {
+        "id": "hip-abductors-B",
+        "groupId": "hip-abductors",
+        "tier": "B",
+        "tierLabel": "家用器械",
+        "name": "仰卧弹力带 V 字开腿",
+        "nameEn": "Banded Supine Straddle Opens",
+        "equipment": "小弹力圈（套在脚踝）· 瑜伽垫",
+        "prescription": "3 组 × 12 次（开到最大停 2 秒）",
+        "cues": [
+          "仰卧，双腿伸直举起与地面垂直",
+          "对抗弹力带把腿分开成大 V 字，再慢慢合拢"
+        ],
+        "mistake": "屈膝、腰离地。",
+        "why": "双腿离地时主动撑开 V 字，正是托马斯中开腿不合拢需要的力量。",
+        "difficulty": 1,
+        "safety": null,
+        "image": "img/hip-abductors-B.png"
+      },
+      "C": {
+        "id": "hip-abductors-C",
+        "groupId": "hip-abductors",
+        "tier": "C",
+        "tierLabel": "健身房",
+        "name": "器械髋外展",
+        "nameEn": "Hip Abduction Machine",
+        "equipment": "髋外展机",
+        "prescription": "3 组 × 12–15 次（顶端停 1 秒）",
+        "cues": [
+          "坐稳靠背，膝外侧推开垫子",
+          "慢回 3 秒，不让重量砸回"
+        ],
+        "mistake": "身体前后晃动借力，回程失控。",
+        "why": "稳定地给臀中肌加负荷，提升开腿的力量和耐力。",
+        "difficulty": 1,
+        "safety": null,
+        "image": "img/hip-abductors-C.png"
+      }
+    },
+    "adductors": {
+      "A": {
+        "id": "adductors-A",
+        "groupId": "adductors",
+        "tier": "A",
+        "tierLabel": "徒手",
+        "name": "哥萨克蹲",
+        "nameEn": "Cossack Squat",
+        "equipment": "无",
+        "prescription": "3 组 × 每侧 5–6 次",
+        "cues": [
+          "宽站距，蹲向一侧，另一腿伸直脚尖朝上",
+          "脚跟踩实，胸口挺起"
+        ],
+        "mistake": "伸直腿的膝盖弯曲，或蹲的那侧脚跟离地。",
+        "why": "在拉长位置训练内收肌的控制，对应开度变化中把腿收回中线。",
+        "difficulty": 2,
+        "safety": "膝关节不适时减小下蹲深度。",
+        "image": "img/adductors-A.png"
+      },
+      "B": {
+        "id": "adductors-B",
+        "groupId": "adductors",
+        "tier": "B",
+        "tierLabel": "家用器械",
+        "name": "屈膝哥本哈根侧撑",
+        "nameEn": "Short-Lever Copenhagen Plank",
+        "equipment": "长凳或结实的沙发边",
+        "prescription": "3 组 × 每侧 15–20 秒",
+        "cues": [
+          "上方腿膝内侧压在凳上，前臂撑地",
+          "用内收肌把髋顶起，身体成一条直线"
+        ],
+        "mistake": "髋下沉、身体前倾。",
+        "why": "内收肌在支撑负荷下发力，强化腿向中线回收的控制。",
+        "difficulty": 2,
+        "safety": "从屈膝短力臂版本开始；腹股沟刺痛立即停止。",
+        "image": "img/adductors-B.png"
+      },
+      "C": {
+        "id": "adductors-C",
+        "groupId": "adductors",
+        "tier": "C",
+        "tierLabel": "健身房",
+        "name": "绳索站姿髋内收",
+        "nameEn": "Cable Standing Hip Adduction",
+        "equipment": "绳索器械 · 脚踝扣",
+        "prescription": "3 组 × 每侧 12 次",
+        "cues": [
+          "侧对器械，内侧腿扣绳索，腿伸直",
+          "从外侧拉回并越过中线，慢放"
+        ],
+        "mistake": "用上身侧倾带动腿。",
+        "why": "从外开位置控制收回，对应衔接下一段扫腿时的开度变化。",
+        "difficulty": 1,
+        "safety": null,
+        "image": "img/adductors-C.png"
+      }
+    },
+    "quadriceps": {
+      "A": {
+        "id": "quadriceps-A",
+        "groupId": "quadriceps",
+        "tier": "A",
+        "tierLabel": "徒手",
+        "name": "跪姿反向北欧",
+        "nameEn": "Reverse Nordic",
+        "equipment": "无（瑜伽垫）",
+        "prescription": "3 组 × 6 次（小幅度起）",
+        "cues": [
+          "跪立，膝到肩一条直线，夹紧臀部",
+          "向后倾到可控范围再回正，不在髋处折叠"
+        ],
+        "mistake": "屈髋后坐，或倒得太深回不来。",
+        "why": "在拉长位加强股四头肌（含股直肌），让膝在长腿绕行时保持伸直。",
+        "difficulty": 2,
+        "safety": "膝前不适时减小后倾幅度，可在膝下加垫。",
+        "image": "img/quadriceps-A.png"
+      },
+      "B": {
+        "id": "quadriceps-B",
+        "groupId": "quadriceps",
+        "tier": "B",
+        "tierLabel": "家用器械",
+        "name": "弹力带终末伸膝",
+        "nameEn": "Banded Terminal Knee Extension",
+        "equipment": "弹力带（固定在低处）",
+        "prescription": "3 组 × 每侧 15 次（锁直停 2 秒）",
+        "cues": [
+          "弹力带套在膝后，微屈膝开始",
+          "用力把膝锁直，大腿前侧绷紧"
+        ],
+        "mistake": "只是挺髋，膝并没有完全伸直。",
+        "why": "专练最后锁直膝盖的那一下，长腿才能保持伸直。",
+        "difficulty": 1,
+        "safety": null,
+        "image": "img/quadriceps-B.png"
+      },
+      "C": {
+        "id": "quadriceps-C",
+        "groupId": "quadriceps",
+        "tier": "C",
+        "tierLabel": "健身房",
+        "name": "器械腿屈伸（顶端锁直）",
+        "nameEn": "Leg Extension with Lockout Hold",
+        "equipment": "腿屈伸机",
+        "prescription": "3 组 × 10–12 次（顶端停 2 秒）",
+        "cues": [
+          "膝关节对齐器械转轴",
+          "踢到完全伸直、脚尖回勾，停 2 秒慢放"
+        ],
+        "mistake": "重量太重，用甩踢代替控制。",
+        "why": "在完全伸直位加强股四头肌，让膝在快速绕腿中不弯。",
+        "difficulty": 1,
+        "safety": "重量从轻开始；膝前痛时缩小幅度。",
+        "image": "img/quadriceps-C.png"
+      }
+    },
+    "hamstrings": {
+      "A": {
+        "id": "hamstrings-A",
+        "groupId": "hamstrings",
+        "tier": "A",
+        "tierLabel": "徒手",
+        "name": "徒手单腿罗马尼亚硬拉",
+        "nameEn": "Bodyweight Single-Leg RDL",
+        "equipment": "无",
+        "prescription": "3 组 × 每侧 8 次",
+        "cues": [
+          "支撑腿膝微屈，以髋为轴向前折",
+          "后腿与躯干成一条直线，骨盆端平"
+        ],
+        "mistake": "圆背、骨盆向外翻开。",
+        "why": "练腘绳肌拉长下的控制，长腿后侧线条又稳又有力。",
+        "difficulty": 1,
+        "safety": "全程保持腰椎中立，腰部发紧或疼痛时减小幅度。",
+        "image": "img/hamstrings-A.png"
+      },
+      "B": {
+        "id": "hamstrings-B",
+        "groupId": "hamstrings",
+        "tier": "B",
+        "tierLabel": "家用器械",
+        "name": "滑盘腿弯举",
+        "nameEn": "Slider Hamstring Curl",
+        "equipment": "滑盘或毛巾（光滑地面）",
+        "prescription": "3 组 × 6–8 次",
+        "cues": [
+          "仰卧抬髋，脚跟踩在滑盘上",
+          "保持髋高，脚跟向臀部拉回再慢慢推出"
+        ],
+        "mistake": "髋往下掉，动作变成蹭地。",
+        "why": "同时练伸髋与屈膝控制，对应腘绳肌参与髋伸与膝部控制。",
+        "difficulty": 2,
+        "safety": "腘绳肌易抽筋，先从脚跟推出的离心部分练起。",
+        "image": "img/hamstrings-B.png"
+      },
+      "C": {
+        "id": "hamstrings-C",
+        "groupId": "hamstrings",
+        "tier": "C",
+        "tierLabel": "健身房",
+        "name": "GHD 北欧离心",
+        "nameEn": "GHD Nordic Eccentric",
+        "equipment": "GHD（臀腿训练器）或北欧挺器械",
+        "prescription": "3 组 × 4–5 次（下放 4 秒）",
+        "cues": [
+          "脚跟扣紧，膝到头一条直线",
+          "尽量慢地向前下放，手推地辅助回起"
+        ],
+        "mistake": "屈髋撅臀，或一下子摔下去。",
+        "why": "离心加强腘绳肌，提升后侧长腿的力量与抗拉伤能力。",
+        "difficulty": 3,
+        "safety": "初学者只做小幅离心并用手接住；腘绳肌拉伤史者先咨询专业人士。",
+        "image": "img/hamstrings-C.png"
+      }
+    }
+  }
+}
