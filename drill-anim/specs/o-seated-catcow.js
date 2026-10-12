@@ -2,7 +2,7 @@
 // Sitting near the front of an office chair, feet flat hip-width, hands resting on the knees. 'cat' = pelvis tucks back and the
 // back rounds (chin follows), 'cow' = pelvis tips forward and the chest lifts. One slow cycle / 8 s: cat in 1.6 s, hold, through
 // neutral to cow, hold, back to neutral. Head points +Y, front faces +Z, body left = +X.
-const hand = (sg) => ({ mode: 'free', frame: 'world', palmAt: [sg * 0.12, 0.575, 0.27], wrist: [sg * 0.12, 0.595, 0.21], finger: [0, -0.35, 1], normal: [0, -1, 0.05], pole: [sg * 0.55, 0.8, -0.2] });
+const hand = (sg) => ({ mode: 'free', frame: 'world', palmAt: [sg * 0.12, 0.61, 0.27], wrist: [sg * 0.12, 0.63, 0.21], finger: [0, -0.35, 1], normal: [0, -1, 0.05], pole: [sg * 0.55, 0.8, -0.2] });
 export default {
   id: 'o-seated-catcow', name: '坐姿猫牛式', nameEn: 'Seated Cat-Cow',
   timeline: { duration: 8, tracks: {
@@ -22,7 +22,7 @@ export default {
       solve: { vars: [], reg: {} },
     },
     deltas: {
-      cat: { pelvis: [0, 0.565, 0.02], hips: { rot: [[[1, 0, 0], -20]] }, chest: { waist: [[[1, 0, 0], 44]] }, hands: { left: { palmAt: [0.13, 0.53, 0.44], wrist: [0.13, 0.56, 0.38] }, right: { palmAt: [-0.13, 0.53, 0.44], wrist: [-0.13, 0.56, 0.38] } } },
+      cat: { pelvis: [0, 0.565, 0.02], hips: { rot: [[[1, 0, 0], -20]] }, chest: { waist: [[[1, 0, 0], 44]] }, hands: { left: { palmAt: [0.13, 0.60, 0.30], wrist: [0.13, 0.63, 0.24] }, right: { palmAt: [-0.13, 0.60, 0.30], wrist: [-0.13, 0.63, 0.24] } } },
       cow: { pelvis: [0, 0.57, 0.05], hips: { rot: [[[1, 0, 0], 14]] }, chest: { waist: [[[1, 0, 0], -12]] } },
     },
   },
