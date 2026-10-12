@@ -1,11 +1,13 @@
 // boots the 3D Coach page (served by Vite) in headless chromium and installs the drill-anim page libs
-import fs from 'node:fs';import path from 'node:path';import {ROOT,config} from './config.mjs';
+import fs from 'node:fs';import path from 'node:path';import {pathToFileURL} from 'node:url';import {ROOT,config} from './config.mjs';
 const C=config();
 const PG=f=>fs.readFileSync(path.join(ROOT,'page',f),'utf8');
 export async function boot({size=1080,pr=2,theme,bakeHands=[]}){
-  const {chromium}=await import(C.playwright_module);
+  if(C.playwright_browsers_path)process.env.PLAYWRIGHT_BROWSERS_PATH=C.playwright_browsers_path;
+  const {chromium}=await import(pathToFileURL(C.playwright_module).href);
   const args=C.chromium_args!==undefined?(Array.isArray(C.chromium_args)?C.chromium_args:String(C.chromium_args).split(/\s+/).filter(Boolean)):['--use-gl=swiftshader','--enable-unsafe-swiftshader'];
   const b=await chromium.launch({args,...(C.chromium_channel?{channel:C.chromium_channel}:{})});
+  try {
   const p=await b.newPage({viewport:{width:size,height:size},deviceScaleFactor:1});
   p.on('pageerror',e=>console.log('pageerror',e.message));p.on('console',m=>{if(m.type()==='error')console.log('console',m.text().slice(0,300));});
   await p.goto(C.app_url+'/?inspect');await p.waitForFunction(()=>document.documentElement.dataset.ready==='true',null,{timeout:170000});
@@ -19,7 +21,9 @@ export async function boot({size=1080,pr=2,theme,bakeHands=[]}){
   const tex={};['skin','top','bottom','shoes'].forEach((k,i)=>{const t=theme[k]?.texture;if(t&&t.image){const f=path.resolve(theme.__dir,t.image);tex[i]='data:image/png;base64,'+fs.readFileSync(f).toString('base64');}});
   const SP=JSON.parse(fs.readFileSync(path.join(ROOT,'assets/sideplank-cfg.json'),'utf8'));
   await p.evaluate(async ([th,tex,SP])=>{window.__theme=th;window.__toonCfg=SP;
-    window.__texCache={};const ver=(await (await fetch('/src/viewer.js')).text()).match(/three\.js\?v=(\w+)/)[1];const T=await import('/node_modules/.vite/deps/three.js?v='+ver);
+    window.__texCache={};const response=await fetch('/src/viewer.js');if(!response.ok)throw new Error('drill-anim requires the root Vite dev server: /src/viewer.js returned '+response.status);
+    const source=await response.text();const match=source.match(/three\.js\?v=(\w+)/);if(!match)throw new Error('drill-anim could not find the Vite Three.js dependency URL in /src/viewer.js; run the root Vite dev server with dependency optimization enabled.');
+    const T=await import('/node_modules/.vite/deps/three.js?v='+match[1]);
     for(const [i,u] of Object.entries(tex)){const t=await new T.TextureLoader().loadAsync(u);t.wrapS=t.wrapT=T.RepeatWrapping;t.colorSpace=T.SRGBColorSpace;window.__texCache[i]=t;}
     await __toon(th);},[theme,tex,SP]);
   const hr=await p.evaluate(()=>__mannequinHead4({}));
@@ -37,4 +41,5 @@ export async function boot({size=1080,pr=2,theme,bakeHands=[]}){
     // custom attributes uploaded before our programs existed do not reach the toon shader until re-uploaded once after a render
     v.renderer.render(v.scene,v.camera);v.coach.traverse(o=>{if(!o.isSkinnedMesh)return;for(const k of ['mmRest','aSink','aHandD','aHandN']){const a=o.geometry.attributes[k];if(a)a.needsUpdate=true;}});v.renderer.render(v.scene,v.camera);},[size,pr]);
   return {b,p,info:{weld,hand,head:hr.head}};
+  } catch (error) { await b.close().catch(()=>{});throw error; }
 }

@@ -1,5 +1,17 @@
 # drill-anim: looping 3D toon animations for the training drills
 
+2026-10-12：本工具已按用户明确授权整合到 L43 的本地主线。历史 `HANDOFF.md` / `COLLAB.md` 描述原三人制作分工；本次源码纳入与备份以 [整合记录](../../docs/drill-anim-integration-2026-10-12.md) 为准。它不会自动替换 App 媒体。59 个分支 spec 保持原内容；`3D-Pose` 的五项最终本地修订另保留在正式成片备份中。
+
+Windows 配置可从 `config.windows.example.json` 复制为 gitignored `config.json`，填已安装的 Playwright 模块、浏览器缓存、字体和参考图路径。使用带 numpy / scipy / Pillow 的 Python，ffmpeg 在 PATH 中；项目根目录先 `npm ci`。相对路径统一以本工具目录为基准，新输出与临时帧留在项目盘。当前本机配置借用既有 E 盘 Python/Playwright 环境，不向 Git 提交机器配置。
+
+```powershell
+node tools/drill-anim/verify.mjs
+python tools/drill-anim/test_portability.py
+python tools/drill-anim/drill.py render deltoids-A --frames 0,63,120 --jobs 1
+```
+
+先预览再决定全片；全机最多两路渲染，每路 `--jobs 1`。原有同名 MP4、GIF、对照图、QA 和总览图默认拒绝覆盖，只有主动加 `--overwrite` 才替换。临时帧仍按动作 ID 管理，重新渲染会清理该动作的工作帧；边界检查禁止删除源码或成品目录，历史工作帧需要保留时先换 `work_dir`。`--keep` 仅复用工作帧，不代表新版已通过 QA。
+
 This renders each drill (one per muscle group and tier, `<group>-<A|B|C>`) as a seamless loop: a 1080² 30 fps H.264 MP4, a 540 px GIF, a contact sheet and a QA metrics file. It uses the approved "v7" look: dark background, ember rim and outline, grey faceless mannequin head, and a cyan highlight on the target muscle.
 
 The renderer boots the 3D Coach app (Vite dev server) in headless Chromium through Playwright. It injects the page libraries from `page/`, poses the rig with a small data-driven IK and LM solver, renders a main pass and a glow pass per frame, and composites them in Python (`lib/comp.py`).
@@ -21,7 +33,7 @@ tools/probe.mjs     ad-hoc pose probe
 
 ## Requirements and config
 
-- Node ≥ 18, Python 3 with numpy, scipy and Pillow, ffmpeg with libx264.
+- Node `^20.19.0 || >=22.12.0`（当前根工程 Vite 的要求）, Python 3 with numpy, scipy and Pillow, ffmpeg with libx264.
 - Playwright and a Chromium build. Software GL is fine (`--use-gl=swiftshader`).
 - A checkout of the 3D Coach app with `node_modules` installed. `drill.py` starts `vite` on `app_port` if nothing is listening there, and stops it again on exit.
 

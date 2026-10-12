@@ -73,5 +73,5 @@ def comp(nm):
 names=sorted(met)
 if rng:a,b_=map(int,rng.split(':'));names=[n for n in names if n!='still' and a<=int(n)<b_]
 edges={n:comp(n) for n in names}
-json.dump({k:float(v) for k,v in edges.items()},open(f'{OUT}/edge-{rng or "all"}.json','w'))
+json.dump({k:float(v) for k,v in edges.items()},open(f'{OUT}/edge-{(rng or "all").replace(":", "-")}.json','w'))
 print('done',len(names))
