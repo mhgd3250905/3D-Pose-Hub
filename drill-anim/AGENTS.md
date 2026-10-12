@@ -1,8 +1,8 @@
 # 训练人物制作基准
 
-用户于2026-10-12明确指定：本次修复肩颈的人体作为后续动作的统一标杆。
+用户于2026-10-12指定肩颈修复后的人体作为标杆，并于2026-10-13验收第三轮效果。后续新动作、旧动作优化及安排重渲统一采用此版本。
 
-新动作必须使用 `modelProfile: 'training-human-v2'`，配套 `alignClavicles: false`。模型身份及固定源见 `models/training-human-v2.json`，实现为 `page/training-collar.js`；沿用当前Flare训练人物、灰色人台头、原服装和原骨架，不从参考视频的宽松衣服推断人体轮廓。
+新动作以及后续优化/重渲的旧动作必须使用 `modelProfile: 'training-human-v2'`，配套 `alignClavicles: false`。模型身份及固定源见 `models/training-human-v2.json`，实现为 `page/training-collar.js`；沿用当前Flare训练人物、灰色人台头、原服装和原骨架，不从参考视频的宽松衣服推断人体轮廓。
 
 人体配置与动作参数分开。肩颈修复不得改变动作支点、髋部、腿轨迹、节奏或镜头；生成新动作后核对正面、侧面和完整循环。
 

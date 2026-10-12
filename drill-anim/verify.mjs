@@ -29,6 +29,20 @@ const additions = {
   'w-fire-hydrant.js': {pr:105, sha256:'6b53673cd7026ac41ae02db04ee054c3da4f0090582c9b516b9cfef11c219d9f'},
   'w-prone-swimmer.js': {pr:105, sha256:'d4f9b0a41b0b09e6feacb7c37e9bceb2070c2e583ed82deebc49062a68a55734'},
   'w-wall-sit.js': {pr:105, sha256:'d9e8e0a3ffad2b701c1b7758028f71561e4b65620a03324bc29bd4c111c775fa'},
+  // Local revision 4ef5556, visually accepted on 2026-10-13. These remain
+  // a separate preview collection; half-straddle is stopped, not accepted.
+  't-flare-side-hold.js': {pr:106, sha256:'760349503c03b402fdaceb28888856915053163b6d1070843a5e5288da5d52e2'},
+  't-half-straddle.js': {pr:106, sha256:'df59518eb023662e4ae2581418f469e795091a83f8855628316411104f9ca760'},
+  't-lsit-open-close.js': {pr:106, sha256:'9c1bba1e5e9a9eec862f748b02fd422b8db9b2b2dcb123c0ee0e3f0ba6990daa'},
+  't-lsit-tuck.js': {pr:106, sha256:'2973832f55d1143f5bc8fbe135e99547deaeb5fb85d16674a323e26f3c365f22'},
+  't-lsit-vsit-circles.js': {pr:106, sha256:'a799d4804a429f9cf4aa48feb4107afe7b827224a309f44f1c6fa67cec617348'},
+  't-lsit-wide.js': {pr:106, sha256:'022a41e08db8222b75f730df7b56e7f5dbdc9bba7de11fc75f697cf3db17b0d2'},
+  't-seated-straddle-ext.js': {pr:106, sha256:'b3cc83958d1a9a8abc71877a7b920d34ef1ad831055e8f0aba332f19d9a7fbf9'},
+  't-seated-straddle-lift-1leg.js': {pr:106, sha256:'ae5d188dcdda9bc3b9aa446fa14138f41e14b15f2e3d810d76060f4045bd3d30'},
+  't-seated-straddle-lifts.js': {pr:106, sha256:'e5424a98d9965ec2b2b3f63cde4bf83ffca5aeb7884d8fede247ef1fd3fd4c41'},
+  't-straddle-hold.js': {pr:106, sha256:'2af9da74124b17c1f4a852d7cd87e8e9aa4e6fc2793f8afebe6bb0ea54b84d05'},
+  't-tuck-planche.js': {pr:106, sha256:'cf3a12bcc38413a0c9bd93d37533564280175f0e4bec9fc2c39b8e47ecf6c497'},
+  't-vsit.js': {pr:106, sha256:'4f51eff6ec4876713da3f10c62269b6026e0fc38d0138f64a7fc24552294e540'},
 };
 const catalog = JSON.parse(fs.readFileSync(path.join(root, 'data/drills.json'), 'utf8'));
 const ids = Object.values(catalog.drills).flatMap(tiers => Object.values(tiers).map(d => d.id));
@@ -41,6 +55,19 @@ const baseline = listing.stdout.trim().split(/\r?\n/).map(f => path.basename(f))
 assert.equal(baseline.length, 59, 'Original spec inventory changed');
 for (const file of baseline) assert.ok(files.includes(file), `Original action spec missing: ${file}`);
 const hash = b => createHash('sha256').update(b).digest('hex');
+const textHash = file => hash(Buffer.from(fs.readFileSync(file, 'utf8').replace(/\r\n/g, '\n')));
+for (const [file, expected] of Object.entries({
+  '_thomas.mjs': '5154ceb449ecaee9aaa8c370f8712bf9778229ac5bf2b77c2d8626dc2b2c6d9a',
+  '_thomas-pr106.mjs': 'bb034087440df871aab2854180fcc9680d0b63119feedafeb2312c50e14e36fd',
+  '_thomas-mirror.mjs': '478fa7a901007c40c9ed64d6dc0908e622cf60cef4d5f8018229385bc73c847d',
+})) assert.equal(textHash(path.join(root, 'specs', file)), expected, `Thomas helper changed: ${file}`);
+const model = JSON.parse(fs.readFileSync(path.join(root, 'models/training-human-v2.json'), 'utf8'));
+assert.equal(model.id, 'training-human-v2');
+assert.equal(model.defaultForNewDrills, true);
+for (const [file, expected] of Object.entries(model.sourceSha256)) {
+  const absolute = path.join(repo, file);
+  assert.equal(file.endsWith('.glb') ? hash(fs.readFileSync(absolute)) : textHash(absolute), expected, `Training human source changed: ${file}`);
+}
 const result = [];
 for (const file of files) {
   const absolute = path.join(root, 'specs', file);
@@ -86,4 +113,4 @@ function checkTree(directory) {
   }
 }
 checkTree(root);
-console.log(JSON.stringify({ok:true,source,appDrills:ids.length,specs:result.length,stretchSpecs:result.filter(s=>s.id.startsWith('s-')).length,reviewedOfficeSpecs:result.filter(s=>s.id.startsWith('o-')).length,reviewedSittingSpecs:result.filter(s=>s.id.startsWith('w-')).length,originalSpecHashesPreserved:true},null,2));
+console.log(JSON.stringify({ok:true,source,appDrills:ids.length,specs:result.length,defaultSpecs:result.filter(s=>!s.id.startsWith('t-')).length,thomasPreviewSpecs:result.filter(s=>s.id.startsWith('t-')).length,stoppedThomasSpecs:1,modelProfile:model.id,modelSources:Object.keys(model.sourceSha256).length,stretchSpecs:result.filter(s=>s.id.startsWith('s-')).length,reviewedOfficeSpecs:result.filter(s=>s.id.startsWith('o-')).length,reviewedSittingSpecs:result.filter(s=>s.id.startsWith('w-')).length,originalSpecHashesPreserved:true},null,2));
