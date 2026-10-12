@@ -4,6 +4,8 @@
 
 Windows 配置可从 `config.windows.example.json` 复制为 gitignored `config.json`，填已安装的 Playwright 模块、浏览器缓存、字体和参考图路径。使用带 numpy / scipy / Pillow 的 Python，ffmpeg 在 PATH 中；项目根目录先 `npm ci`。相对路径统一以本工具目录为基准，新输出与临时帧留在项目盘。当前本机配置借用既有 E 盘 Python/Playwright 环境，不向 Git 提交机器配置。
 
+`3D-Pose` 的五项最终修订现另在 [Hark-4080交付包](revisions/hark-4080-v1/README.md)，含最终spec/theme、MP4/GIF、封面及原始QA；[成果接手地图](../../docs/drill-anim/hark-4080-v1.md) 给出完整60动作的索引与云盘入口。这是新增审阅目录，不替换原59项spec、App选版或正式视频。
+
 ```powershell
 node tools/drill-anim/verify.mjs
 python tools/drill-anim/test_portability.py
