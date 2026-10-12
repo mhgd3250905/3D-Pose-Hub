@@ -16,7 +16,8 @@ export default {
       },
       feet: {
         left: { mode: 'floor', at: [0.12, 0.44], heading: 4, pitch: 0 },
-        right: { mode: 'free', frame: 'world', ankle: [0.04, 0.60, 0.40], rot: [[[0, 1, 0], 80], [[0, 0, 1], -10]], pole: [-0.9, 0.7, 0.3] },
+        // Explicit femur axial rotation aligns the knee hinge with the crossed-leg bend plane.
+        right: { mode: 'free', frame: 'world', ankle: [0.04, 0.60, 0.40], rot: [[[0, 1, 0], 80], [[0, 0, 1], -10]], pole: [-0.9, 0.7, 0.3], thighTwist: 120 },
       },
       constraints: [],
       solve: { vars: [], reg: {} },
