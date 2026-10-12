@@ -14,6 +14,7 @@ const wristL = shoulderL.map((v, i) => v + armLength * armUp[i]);
 
 const rightSide = floorDrill({
   id: 't-flare-side-hold', name: '托马斯侧撑定格', nameEn: 'Flare Side Hold', T,
+  alignBendPlanes: true,
   handsDesc: {
     right: { mode: 'floor', at: [-0.50, 0.02], finger: [-0.6, 0.8], poleUp: [-0.2, -0.3, -1] },
     left: { mode: 'free', frame: 'chest', wrist: wristL, finger: armUp, normal: [0, 0, 1], poleUp: [0.3, 1.0, -1] },

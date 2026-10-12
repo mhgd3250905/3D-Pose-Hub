@@ -51,8 +51,13 @@ E.blend = blend;
 // ---------- rest data
 E.init = function() {
   if (E.R) return E;
-  const v = flareInspector.viewer, m = v.motion; m.reset(); v.coach.updateMatrixWorld(true);
+  const v = flareInspector.viewer, m = v.motion; m.reset(); window.__setRelax(0, 0); v.coach.updateMatrixWorld(true);
+  // CPU skinning reads skeleton matrices; reset() alone does not upload them.
+  // Contact point clouds must come from the bind pose, never the last animation frame.
+  v.coach.traverse(o => { if (o.isSkinnedMesh) o.skeleton.update(); });
   const M = m.getMetrics(); E.R = M.joints; E.L = M.expectedLengths;
+  const neutralPose = m.capturePose();
+  const handToBind = Object.fromEntries(['left', 'right'].map(s => [s, new (T().Quaternion)(...neutralPose.limbs[s].handQuaternion).invert()]));
   // foot point clouds (shoe verts on the foot bone, rest, relative to the rest ankle)
   E.footPts = {}; E.handPts = {};
   const q = new (T().Vector3)();
@@ -63,7 +68,7 @@ E.init = function() {
     for (let i = 0; i < g.attributes.position.count; i += 2) { let bi = -1, bw = -1; for (let k = 0; k < 4; k++) if (sw.getComponent(i, k) > bw) { bw = sw.getComponent(i, k); bi = si.getComponent(i, k); }
       const bn = bs[bi].name; o.getVertexPosition(i, q); q.applyMatrix4(o.matrixWorld);
       if (isShoe && /Foot/.test(bn)) { const s = bn.startsWith('left') ? 'left' : 'right'; E.footPts[s].push(q.clone().sub(V(E.R[s + 'Ankle']))); }
-      if (isBody && /Hand$/.test(bn) && bw > 0.9) { const s = bn.startsWith('left') ? 'left' : 'right'; E.handPts[s].push(q.clone().sub(V(E.R[s + 'Wrist']))); } } });
+      if (isBody && /Hand$/.test(bn) && bw > 0.9) { const s = bn.startsWith('left') ? 'left' : 'right'; E.handPts[s].push(q.clone().sub(V(E.R[s + 'Wrist'])).applyQuaternion(handToBind[s])); } } });
   return E;
 };
 
@@ -116,6 +121,13 @@ function handPose(side, H, B) {
   // H: {mode:'floor', at:[x,z], finger:[dx,dz]} | {mode:'free', frame:'chest'|'hips'|'world', wrist:[rest xyz], finger:[rest dir], normal:[rest dir]}
   const m = flareInspector.viewer.motion;
   if (H.mode === 'floor') { const g = m.getGroundHandPose(side, [H.finger[0], 0, H.finger[1]], [H.at[0], 0, H.at[1]]); return { wrist: V(g.wrist), q: new (T().Quaternion)(...g.handQuaternion), floor: true }; }
+  if (H.mode === 'fingertips') {
+    // Keep the original straight hand mesh. Raise the wrist until its lowest
+    // fingertip rests on the floor; the palm remains above the contact plane.
+    const q = E.handQ(side, V([0, -1, 0]), V(H.normal || [0, 0, -1]));
+    const mn = Math.min(...E.handPts[side].map(p => p.clone().applyQuaternion(q).y));
+    return { wrist: V([H.at[0], (H.floor ?? 0) + (H.clear ?? 0.001) - mn, H.at[1]]), q, floor: true };
+  }
   const qC = H.frame === 'world' ? new (T().Quaternion)() : H.frame === 'hips' ? B.qP : B.qUpper;
   const toW = a => H.frame === 'world' ? V(a) : H.frame === 'hips' ? B.low(a) : B.up(a);
   const q = E.handQ(side, V(H.finger).applyQuaternion(qC), V(H.normal).applyQuaternion(qC));
@@ -131,7 +143,9 @@ function limbs(D, B) {
   for (const side of ['left', 'right']) {
     const HD = D.hands[side]; const w = ease.smooth(HD.w || 0);
     const a = handPose(side, HD.plant || HD, B); let hw = a.wrist, hq = a.q, locked = !!(a.floor && w < 1e-4);
-    if (HD.free && w > 0) { const b = handPose(side, HD.free, B); hw = a.wrist.clone().lerp(b.wrist, w); hq = a.q.clone().slerp(b.q, w);
+    if (HD.free && w > 0) { const b = handPose(side, HD.free, B);
+      if (HD.free.relativeToPlant === true) b.wrist = a.wrist.clone().add(V(HD.free.wrist));
+      hw = a.wrist.clone().lerp(b.wrist, w); hq = a.q.clone().slerp(b.q, w);
       if (HD.arc) hw.add(V(HD.arcDir || [0, 1, 0]).multiplyScalar(HD.arc * Math.sin(Math.PI * w))); }
     const sh = B.up(E.R[side + 'Shoulder']); const shift = D.shoulders?.[side] || D.shoulders?.shift; if (shift) sh.add(V(shift).applyQuaternion(B.qUpper));
     const defaultPole = sh.clone().add(V([0, -0.3, -0.3]));
@@ -212,6 +226,7 @@ E.solve = function(D, warm) {
 E.pose = function(spec, params, warm) {
   E.init(); const v = flareInspector.viewer, m = v.motion;
   const D = blend(spec.pose.base, spec.pose.deltas, params);
+  E.currentDescriptor = D;
   const x = E.solve(D, warm); const B = body(D, x), Lm = limbs(D, B);
   const pose = { version: 1, pelvis: B.P.toArray(), bodyQuaternion: B.qB.toArray(), pelvisQuaternion: B.qP.toArray(), groundLock: false, limbs: {} };
   if (B.qT) pose.torsoQuaternion = B.qT.toArray();
@@ -268,15 +283,22 @@ E.metrics = function(spec, full) {
   lim.pelvisToUpperTorsoDeg = +(pq.angleTo(tq ? bqq.clone().multiply(tq) : bqq) / DEG).toFixed(1);
   out.limits = lim;
   // contact centroids
-  const p = new (T().Vector3)(); let minY = 9, minName = ''; const cen = {};
+  const p = new (T().Vector3)(); let minY = 9, minName = ''; const cen = {}, handMin = { left: Infinity, right: Infinity };
   const keys = { rightHand: 'handR', leftHand: 'handL', rightFoot: 'footR', leftFoot: 'footL' };
   for (const k of Object.values(keys)) cen[k] = [0, 0, 0, 0];
   v.coach.traverse(o => { if (!o.isSkinnedMesh || !o.visible) return; const g = o.geometry, n = g.attributes.position.count, si = g.attributes.skinIndex, sw = g.attributes.skinWeight, bs = o.skeleton.bones;
-    for (let i = 0; i < n; i += 3) { o.getVertexPosition(i, p); p.applyMatrix4(o.matrixWorld); if (p.y < minY) { minY = p.y; minName = o.name; }
+    for (let i = 0; i < n; i += full ? 1 : 3) { o.getVertexPosition(i, p); p.applyMatrix4(o.matrixWorld); if (p.y < minY) { minY = p.y; minName = o.name; }
       let bi = -1, bw = -1; for (let k = 0; k < 4; k++) if (sw.getComponent(i, k) > bw) { bw = sw.getComponent(i, k); bi = si.getComponent(i, k); }
-      const c = cen[keys[bs[bi].name]]; if (c && bw > 0.9) { c[0] += p.x; c[1] += p.y; c[2] += p.z; c[3]++; } } });
+      const bn = bs[bi].name;
+      const c = cen[keys[bn]]; if (c && bw > 0.9) { c[0] += p.x; c[1] += p.y; c[2] += p.z; c[3]++; }
+      if (/Hand$/.test(bn) && bw > 0.9) handMin[bn.startsWith('left') ? 'left' : 'right'] = Math.min(handMin[bn.startsWith('left') ? 'left' : 'right'], p.y);
+    } });
   for (const k in cen) { const c = cen[k]; cen[k] = c[3] ? [c[0] / c[3], c[1] / c[3], c[2] / c[3]] : null; }
   out.minY = minY; out.minYMesh = minName; out.cen = cen;
+  out.handContact = Object.fromEntries(['left', 'right'].map(s => [s, {
+    mode: E.currentDescriptor?.hands[s]?.plant?.mode || E.currentDescriptor?.hands[s]?.mode,
+    minSurfaceY: handMin[s], palmY: J[s + 'Palm'][1], wristY: J[s + 'Wrist'][1],
+  }]));
   // capsule self-clip (non-adjacent pairs); gap < 0 = overlap of the capsule hulls
   const seg = { torso: ['pelvis', 'shoulderCenter', 0.115], head: ['neck', 'head', 0.095] };
   for (const s of ['left', 'right']) { const S = s[0].toUpperCase();
@@ -396,7 +418,8 @@ E.frame = function(spec, t, f, warm, opts) {
   U.uBreath.value = (spec.breath ?? 0.0018) * Math.sin(2 * Math.PI * t / (TL / 2));
   U.uPulse.value = E.pulseAt(spec.highlight, spec.timeline, t);
   const drift = f < 0 ? 0 : Math.sin(2 * Math.PI * t / (spec.camera.driftPeriod ?? TL) + (spec.camera.driftPhase ?? 0)) * (spec.camera.drift ?? 0.9) * Math.PI / 180; // yaw sway (deg) about the target; driftPeriod must divide the loop
-  const c0 = E.cam0; const off = c0.pos.clone().sub(c0.tgt).applyAxisAngle(V([0, 1, 0]), drift); v.camera.position.copy(c0.tgt).add(off); v.camera.lookAt(c0.tgt); v.camera.updateMatrixWorld();
+  const orbit = f < 0 ? 0 : (spec.camera.orbitDegrees ?? 0) * t / (spec.camera.orbitDuration ?? TL) * Math.PI / 180;
+  const c0 = E.cam0; const off = c0.pos.clone().sub(c0.tgt).applyAxisAngle(V([0, 1, 0]), drift + orbit); v.camera.position.copy(c0.tgt).add(off); v.camera.lookAt(c0.tgt); v.camera.updateMatrixWorld();
   window.__props?.update();
   const M = E.metrics(spec, opts.full); const J = M.joints;
   const hc = E.handClip(['left', 'right'], { exclude: spec.qa?.handClipExclude }); M.handClip = { left: hc.left.minMm, right: hc.right.minMm, leftBone: hc.left.bone || null, rightBone: hc.right.bone || null }; M.touch = r.touch || {};

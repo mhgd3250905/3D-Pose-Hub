@@ -127,10 +127,11 @@ export function floorDrill(cfg) {
     id: cfg.id, name: cfg.name, nameEn: cfg.nameEn,
     timeline: { duration: T, tracks: S.tracks },
     pose: { base, deltas: S.deltas },
-    alignBendPlanes: true,
+    // Preserve the original Snow skin roll unless an accepted drill explicitly opts in.
+    alignBendPlanes: cfg.alignBendPlanes ?? false,
     solveShoulders: true,
     highlight: { ...cfg.highlight, skipBottom: true },
-    camera: { ...cfg.camera, fitTimeline: true },
+    camera: { fitTimeline: true, ...cfg.camera },
     frame: cfg.frame || { mode: 'fit', width: 900, height: 700, cx: 512, cy: 540 },
     stillAt: cfg.stillAt ?? cfg.camera.at,
     shadow: cfg.shadow || { joints: ['rightPalm', 'leftPalm', 'rightAnkle', 'leftAnkle', 'pelvis'],

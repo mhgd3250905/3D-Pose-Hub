@@ -6,7 +6,7 @@ Windows 配置可从 `config.windows.example.json` 复制为 gitignored `config.
 
 `3D-Pose` 的五项最终修订现另在 [Hark-4080交付包](revisions/hark-4080-v1/README.md)，含最终spec/theme、MP4/GIF、封面及原始QA；[成果接手地图](../../docs/drill-anim/hark-4080-v1.md) 给出完整60动作的索引与云盘入口。这是新增审阅目录，不替换原59项spec、App选版或正式视频。
 
-PR #106 的12项托马斯专项 `t-*` 仍为草稿，未进入上述75项正式制作源，也未注册App。2026-10-12按用户原素材进行的优化位于隔离分支 `codex/thomas-reference-optimization`，参考映射、修改范围、低清循环QA与待验收项见 [托马斯素材优化记录](../../docs/thomas-reference-optimization-2026-10-12.md)。当前交付为动作对比预览，高清全片与App媒体替换待视觉确认。新增办公室/久坐源不表示所有动作已有全片验收；具体覆盖和原始警告随审核记录保留。
+PR #106 的托马斯专项 `t-*` 仍为草稿，未进入上述75项正式制作源，也未注册App。用户反馈后的当前候选保留原编号2–12及左侧撑镜像；1半分腿停止制作，原规格与历史预览保留。修复位于隔离分支 `codex/thomas-reference-optimization`，逐项评价、人体恢复与本轮证据见 [反馈修复记录](../../docs/thomas-feedback-repair-2026-10-12.md)，第一轮参考映射保存在 [托马斯素材优化历史](../../docs/thomas-reference-optimization-2026-10-12.md)。当前交付为动作对比预览，高清全片与App媒体替换待视觉确认。新增办公室/久坐源不表示所有动作已有全片验收；具体覆盖和原始警告随审核记录保留。
 
 ```powershell
 node tools/drill-anim/verify.mjs
