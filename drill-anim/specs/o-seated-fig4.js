@@ -11,8 +11,8 @@ export default {
       hips: { up: [0, 1, 0], front: [0, 0, 1], rot: [[[1, 0, 0], 0]] },
       chest: { waist: [[[1, 0, 0], 0]] },
       hands: {
-        left: { mode: 'free', frame: 'world', palmAt: [0.05, 0.62, 0.36], wrist: [0.09, 0.66, 0.31], finger: [-0.4, -0.4, 0.8], normal: [0, -1, 0], pole: [0.55, 0.8, -0.1] },
-        right: { mode: 'free', frame: 'world', palmAt: [-0.30, 0.62, 0.24], wrist: [-0.26, 0.67, 0.19], finger: [-0.5, -0.4, 0.75], normal: [0, -1, 0], pole: [-0.6, 0.9, -0.2] },
+        left: { mode: 'free', frame: 'world', palmAt: [0.05, 0.66, 0.36], wrist: [0.09, 0.70, 0.31], finger: [-0.4, -0.4, 0.8], normal: [0, -1, 0], pole: [0.65, 0.85, 0.2] },
+        right: { mode: 'free', frame: 'world', palmAt: [-0.30, 0.66, 0.24], wrist: [-0.26, 0.71, 0.19], finger: [-0.5, -0.4, 0.75], normal: [0, -1, 0], pole: [-0.65, 0.85, 0.2] },
       },
       feet: {
         left: { mode: 'floor', at: [0.12, 0.44], heading: 4, pitch: 0 },
@@ -22,7 +22,7 @@ export default {
       solve: { vars: [], reg: {} },
     },
     deltas: { open: { pelvis: [0, 0.565, 0.035], hips: { rot: [[[1, 0, 0], 18]] }, chest: { waist: [[[1, 0, 0], 12]] },
-      hands: { left: { palmAt: [0.05, 0.62, 0.37], wrist: [0.10, 0.66, 0.33] }, right: { palmAt: [-0.30, 0.61, 0.27], wrist: [-0.25, 0.65, 0.23] } } } },
+      hands: { left: { palmAt: [0.05, 0.66, 0.37], wrist: [0.10, 0.70, 0.33] }, right: { palmAt: [-0.30, 0.65, 0.27], wrist: [-0.25, 0.69, 0.23] } } } },
   },
   highlight: { groups: ['glute-max'], side: 'right', pulseTrack: 'open', pulseBase: 0.3 },
   camera: { dir: [-0.85, 0.2, 0.65], fit: ['head', 'leftToe', 'rightToe', 'pelvis', 'leftKnee', 'rightKnee'], pad: 0.2, k: 1.15, drift: 0.9, at: 3.8 },
