@@ -1,5 +1,7 @@
 # drill-anim: looping 3D toon animations for the training drills
 
+2026-10-13用户明确安排的94项演示已全部另存成片，共23,454帧/781.8秒，母版1080²、手机版720²、封面540²。冻结来源见[batches/training-human-v2-20261013](batches/training-human-v2-20261013/README.md)，制作流程83ready/11review，最终独立审计56ready/38review、failed/pending均0；所选188视频完整解码。原QA与警告保留，不替换旧成片或App51视频。执行用 `batch-rerender.mjs`，独立解码/关节审计用 `batch-library-audit.mjs`，便携目录用 `package-library.mjs`另建；生产 `audit-final/`、2项恒定构图派生、便携使用与边界见[统一素材库](../../docs/training-media-library-2026-10-13.md)。入口补丁2.0.1不改变已验收2.0.0外观，既有普通CLI继续保留。
+
 2026-10-13用户已验收肩颈优化；后续新动作、旧动作优化及安排重渲统一使用 [training-human-v2 人体基准](../../docs/training-human-v2.md)：在spec中设置 `modelProfile: 'training-human-v2'`、`alignClavicles: false`。当前肩颈修复保留App训练人物的成熟网格、头、服装与骨架；人体身份、配置与源码哈希固定在 [模型清单](models/training-human-v2.json)。已交付的旧视频保留，按用户后续安排才使用新人体另出重渲版本。
 
 2026-10-12：本工具已按用户明确授权整合到 `master`，以 L43 为App底座。当前默认制作源共75项：原59项参数、办公室8项 `o-*`、久坐强化8项 `w-*`；原59项内容仍强制核对来源，16项新增源按审核后SHA-256固定。App仍选用51项正式视频，制作源增加不会自动替换App媒体。原始纳入与备份见 [早期工具整合记录](../../docs/drill-anim-integration-2026-10-12.md)，后续PR和验证范围见 [主线整合审核](../../docs/integration-pr-audit-2026-10-12.md)。历史 `HANDOFF.md` / `COLLAB.md` 描述原三人制作分工，不覆盖用户本次明确整合授权。
@@ -8,7 +10,7 @@ Windows 配置可从 `config.windows.example.json` 复制为 gitignored `config.
 
 `3D-Pose` 的五项最终修订现另在 [Hark-4080交付包](revisions/hark-4080-v1/README.md)，含最终spec/theme、MP4/GIF、封面及原始QA；[成果接手地图](../../docs/drill-anim/hark-4080-v1.md) 给出完整60动作的索引与云盘入口。这是新增审阅目录，不替换原59项spec、App选版或正式视频。
 
-PR #106来源的12份托马斯专项 `t-*` 已作为独立制作源保存，另计于上述75项原库之外，当前共87份spec；App51项选版不变，专项未注册App。用户反馈后的当前候选保留原编号2–12及左侧撑镜像；1半分腿停止制作，原规格与历史预览保留。本地优化保存点 `4ef5556` 已由隔离分支快进纳入主目录master；GitHub原PR仍为Draft，当前要求以Flare App其他训练的实际成片为人体外观基准，逐项认可范围、来源实证与当前进展见 [第三轮App人物修复](../../docs/thomas-app-model-v3-2026-10-12.md)。此前 [第二轮反馈](../../docs/thomas-feedback-v2-2026-10-12.md)、[反馈修复记录](../../docs/thomas-feedback-repair-2026-10-12.md) 和 [托马斯素材优化历史](../../docs/thomas-reference-optimization-2026-10-12.md) 保留；第二轮肩颈尝试被第三轮取代；第三轮预览及肩颈已于10-13获得用户验收，不能把验收回填到第二轮。当前为预览/源码交付，高清全片、正式选版与App媒体替换按后续安排实施。新增办公室/久坐源不表示所有动作已有全片验收；具体覆盖和原始警告随审核记录保留。
+PR #106来源的12份托马斯专项 `t-*` 已作为独立制作源保存，另计于上述75项原库之外，当前共87份spec；App51项选版不变，专项未注册App。用户反馈后的当前候选保留原编号2–12及左侧撑镜像；1半分腿停止制作，原规格与历史预览保留。本地优化保存点 `4ef5556` 已由隔离分支快进纳入主目录master；GitHub原PR仍为Draft，当前要求以Flare App其他训练的实际成片为人体外观基准，逐项认可范围、来源实证与当前进展见 [第三轮App人物修复](../../docs/thomas-app-model-v3-2026-10-12.md)。此前 [第二轮反馈](../../docs/thomas-feedback-v2-2026-10-12.md)、[反馈修复记录](../../docs/thomas-feedback-repair-2026-10-12.md) 和 [托马斯素材优化历史](../../docs/thomas-reference-optimization-2026-10-12.md) 保留；第二轮肩颈尝试被第三轮取代；第三轮预览及肩颈已于10-13获得用户验收，不能把验收回填到第二轮。后续明确授权的本批高清全片已完成，2/10另存不改动作/运镜的恒定构图版本；原身体QA和review保留，正式选版与App媒体替换另行安排。成片生成不等于新增办公室/久坐或全部动作获得全片视觉/设备验收。
 
 ```powershell
 node tools/drill-anim/verify.mjs

@@ -1,0 +1,114 @@
+{
+  "id": "history-rearSupport",
+  "legacyClipId": "rearSupport",
+  "name": "脚辅助后撑 · 单腿小幅抬起",
+  "nameEn": "rearSupport",
+  "modelProfile": "training-human-v2",
+  "alignClavicles": false,
+  "alignBendPlanes": true,
+  "timeline": {
+    "duration": 6.4,
+    "tracks": {}
+  },
+  "breath": 0,
+  "highlight": {
+    "groups": [
+      "deltoids",
+      "triceps",
+      "scapular",
+      "abs",
+      "glutes"
+    ],
+    "side": "both",
+    "pulseBase": 1,
+    "skipBottom": true
+  },
+  "camera": {
+    "dir": [
+      1,
+      0.58,
+      0.85
+    ],
+    "fit": [
+      "head",
+      "leftPalm",
+      "rightPalm",
+      "leftToe",
+      "rightToe",
+      "pelvis"
+    ],
+    "pad": 0.05,
+    "k": 1.2,
+    "drift": 0,
+    "at": 0
+  },
+  "frame": {
+    "mode": "fit",
+    "width": 900,
+    "height": 760,
+    "cx": 512,
+    "cy": 530
+  },
+  "stillAt": 0,
+  "shadow": {
+    "joints": [
+      "rightPalm",
+      "leftPalm",
+      "rightAnkle",
+      "leftAnkle",
+      "pelvis"
+    ],
+    "blobs": [
+      {
+        "j": "rightPalm",
+        "rx": 40,
+        "ry": 12,
+        "a": 0.7
+      },
+      {
+        "j": "leftPalm",
+        "rx": 40,
+        "ry": 12,
+        "a": 0.7
+      },
+      {
+        "j": "pelvis",
+        "rx": 80,
+        "ry": 20,
+        "a": 0.5
+      }
+    ],
+    "bands": []
+  },
+  "props": [],
+  "keyFrames": [
+    0,
+    1.6,
+    3.2,
+    4.800000000000001
+  ],
+  "qa": {
+    "pins": [
+      {
+        "c": "handR",
+        "when": "always"
+      },
+      {
+        "c": "handL",
+        "when": "always"
+      }
+    ],
+    "straight": [],
+    "allowContact": []
+  },
+  "fps": 30,
+  "size": 1080,
+  "source": {
+    "type": "historical-runtime-demo",
+    "module": "src/training-motion.js",
+    "legacyClipId": "rearSupport",
+    "originalGroundLock": true,
+    "qaAuthored": false,
+    "highlightSource": "Semantic mapping of training-preview.js regions to existing muscle-map groups; not an exact reproduction of the old guide overlay."
+  }
+}

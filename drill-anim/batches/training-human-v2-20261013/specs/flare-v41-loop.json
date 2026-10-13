@@ -1,0 +1,103 @@
+{
+  "id": "flare-v41-loop",
+  "name": "Flare 托马斯全旋（v41正式循环）",
+  "nameEn": "Flare Tomas Full Circle (Official v41)",
+  "modelProfile": "training-human-v2",
+  "alignClavicles": false,
+  "bakedClipPath": "/app/scene/source/coach/flare-coach-v41-animated.glb",
+  "bakedClipName": "flare_v41_loop",
+  "bakedClipSha256": "1cb8b14812641749626b63068007aa90ae047019b95c410d681fbb3d6724f3ff",
+  "bakedPhasePath": "/app/scene/src/v41-phases.json",
+  "originalPeriodSeconds": 8.991662288489888,
+  "encodingDurationSeconds": 9,
+  "encodingFrames": 270,
+  "samplingTimePolicy": "Frame f samples original paced AnimationMixer at f/30, modulo originalPeriodSeconds; no IK, second pacing pass, rebake or time stretch. Final encoded frame t=269/30=8.9666666667s; MP4 duration9s differs from original loop by8.3377115ms.",
+  "timeline": {
+    "duration": 9,
+    "tracks": {}
+  },
+  "fps": 30,
+  "size": 1080,
+  "breath": 0,
+  "highlight": {
+    "groups": [],
+    "side": "both",
+    "pulseBase": 1
+  },
+  "camera": {
+    "type": "orthographic",
+    "position": [
+      -2.666784958743134,
+      3.432565814494523,
+      4.630724350329437
+    ],
+    "target": [
+      -0.017942180166353378,
+      0.6157364377791779,
+      0.04279407657253509
+    ],
+    "span": 2.705691222578835,
+    "drift": 0,
+    "source": "output/flare-loading-20261011/three/render-metadata.json camera: measured full v41 cycle at azimuth-30°, elevation28°, 80% occupancy; only camera is reused, not white-silhouette material or cyclic0.25 start offset. Website full-person fallback camera export source was not available.",
+    "azimuthDegrees": -30,
+    "elevationDegrees": 28,
+    "fov": null
+  },
+  "frame": {
+    "mode": "canvas"
+  },
+  "stillAt": 0,
+  "shadow": {
+    "joints": [
+      "leftPalm",
+      "rightPalm",
+      "pelvis"
+    ],
+    "blobs": [
+      {
+        "j": "leftPalm",
+        "rx": 40,
+        "ry": 12,
+        "a": 0.45
+      },
+      {
+        "j": "rightPalm",
+        "rx": 40,
+        "ry": 12,
+        "a": 0.45
+      }
+    ],
+    "bands": []
+  },
+  "props": [],
+  "keyFrames": [
+    0,
+    0.9,
+    2.2,
+    4.2,
+    6.3,
+    8.5
+  ],
+  "qa": {
+    "pins": [],
+    "straight": [],
+    "allowContact": []
+  },
+  "source": {
+    "type": "baked-animation-mixer-v41",
+    "commit": "53d72b412840a942fefc818836b68ad2a2d7e0d1",
+    "boneCount": 22,
+    "trackCount": 44,
+    "bakedFrameCount": 540,
+    "sourceClock": "app/scene/src/v41-clock.json",
+    "sourceManifest": "app/scene/tools/v41-source-manifest.json",
+    "adapter": "tools/drill-anim/page/flare-v41-demo-adapter.js",
+    "rootBody": "Original mature Snow rig/mesh with accepted training-human-v2 collar, toon and gray head. Copy original clip WORLD matrices, including helper bones.",
+    "originalBodyFloorLimitation": "Source v41 validation previously recorded minimum foot height about-8.66mm; new-body rerender must record actual geometry without changing accepted animation to hide it.",
+    "highlightScope": "Neutral whole-motion demonstration; no static muscle selection. Original phase/support metadata is retained for contact reporting, not inferred from pose.",
+    "qaAuthored": false,
+    "compositor": "Original whole-cycle square canvas is scaled to the output square without per-still bbox fitting; camera and choreography are unchanged.",
+    "cameraSnapshot": "tools/drill-anim/batches/training-human-v2-20261013/flare-loading-camera-source.json"
+  },
+  "bakedPhaseSha256": "d7886ef77cc6d05c48796b5773427e2dcf9a0c75f863b35d4e31a65acbb4bc32"
+}

@@ -222,12 +222,17 @@ E.solve = function(D, warm) {
   }
   E.lastCost = c0; return x;
 };
-// ---------- apply a spec pose for params
-E.pose = function(spec, params, warm) {
+// Shared by both the descriptor solver and the retained v7 side-plank solver.
+// Switching the appearance profile must not change either solver's arithmetic.
+E.selectModelProfile = function(spec) {
   if (spec.modelProfile && !['training-human-v2', 'legacy-v7'].includes(spec.modelProfile)) throw new Error('Unknown training model profile: ' + spec.modelProfile);
   const trainingCollar = spec.modelProfile === 'training-human-v2' || spec.trainingCollar === true;
   if (trainingCollar && !window.__setTrainingCollar) throw new Error('Training collar profile is not loaded');
   window.__setTrainingCollar?.(trainingCollar);
+};
+// ---------- apply a spec pose for params
+E.pose = function(spec, params, warm) {
+  E.selectModelProfile(spec);
   E.init(); const v = flareInspector.viewer, m = v.motion;
   const D = blend(spec.pose.base, spec.pose.deltas, params);
   E.currentDescriptor = D;
@@ -395,6 +400,7 @@ E.captureRestBoneQ = function() { const v = flareInspector.viewer; v.motion.rese
 (function(){
 const E = window.__drill; const T = () => window.__toonT; const V = a => new (T().Vector3)(...a);
 E.applyAt = function(spec, t, warm) {
+  E.selectModelProfile(spec);
   const params = E.sample(spec.timeline, t);
   if (spec.solver === 'sideplank-v7') { // deltoids-A: the approved v7 solver, unchanged (anim-sideplank.js __pose6)
     const so = __pose6(window.__toonCfg, params.dip || 0, spec.solverArgs.HC, warm); window.__toonUni.uRelax.value = [0, 0];

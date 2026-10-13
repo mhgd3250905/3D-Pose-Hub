@@ -15,7 +15,8 @@ if os.path.exists(plf):P0=json.load(open(plf));s,ox,oy=P0['s'],P0['ox'],P0['oy']
 else:
     A0=np.array(Image.open(D+'/g-still.png'))[...,3]  # body-only silhouette (props are not in the glow pass)
     ys,xs=np.nonzero(A0>10);x0,x1,y0,y1=xs.min(),xs.max(),ys.min(),ys.max()
-    if pl['mode']=='v7':s=pl['width']*K/(x1-x0);ox=pl['left']*K-x0*s;oy=pl['top']*K-y0*s
+    if pl['mode']=='canvas':s=W/A0.shape[1];ox=0;oy=0
+    elif pl['mode']=='v7':s=pl['width']*K/(x1-x0);ox=pl['left']*K-x0*s;oy=pl['top']*K-y0*s
     else:  # fit: scale so the still's bbox width (or height) fills width px, centred at (cx,cy)
         s=min(pl['width']*K/(x1-x0),pl.get('height',9999)*K/(y1-y0));ox=pl.get('cx',512)*K-(x0+x1)/2*s;oy=pl.get('cy',512)*K-(y0+y1)/2*s
     json.dump({'s':s,'ox':ox,'oy':oy},open(plf,'w'))
@@ -71,7 +72,8 @@ def comp(nm):
     edge=fa[:2].max()+fa[-2:].max()+fa[:,:2].max()+fa[:,-2:].max()
     return edge
 names=sorted(met)
-if rng:a,b_=map(int,rng.split(':'));names=[n for n in names if n!='still' and a<=int(n)<b_]
+if rng=='still':names=['still']
+elif rng:a,b_=map(int,rng.split(':'));names=[n for n in names if n!='still' and a<=int(n)<b_]
 edges={n:comp(n) for n in names}
 json.dump({k:float(v) for k,v in edges.items()},open(f'{OUT}/edge-{(rng or "all").replace(":", "-")}.json','w'))
 print('done',len(names))
