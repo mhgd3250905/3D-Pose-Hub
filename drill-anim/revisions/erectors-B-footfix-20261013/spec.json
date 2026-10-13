@@ -1,0 +1,361 @@
+{
+  "id": "erectors-B",
+  "name": "瑞士球背伸",
+  "nameEn": "Swiss Ball Back Extension",
+  "timeline": {
+    "duration": 8,
+    "tracks": {
+      "ext": [
+        [
+          0,
+          0
+        ],
+        [
+          0.3,
+          0
+        ],
+        [
+          1.5,
+          1
+        ],
+        [
+          2.5,
+          1
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          4.3,
+          0
+        ],
+        [
+          5.5,
+          1
+        ],
+        [
+          6.5,
+          1
+        ],
+        [
+          8,
+          0
+        ]
+      ]
+    }
+  },
+  "pose": {
+    "base": {
+      "pelvis": [
+        0.1,
+        0.8,
+        0
+      ],
+      "hips": {
+        "up": [
+          0.7071067811865476,
+          0.7071067811865475,
+          0
+        ],
+        "front": [
+          0.7071067811865475,
+          -0.7071067811865476,
+          0
+        ],
+        "rot": [
+          [
+            [
+              0,
+              0,
+              1
+            ],
+            0
+          ]
+        ]
+      },
+      "chest": {
+        "waist": [
+          [
+            [
+              0,
+              0,
+              1
+            ],
+            -40
+          ]
+        ]
+      },
+      "hands": {
+        "right": {
+          "mode": "free",
+          "frame": "chest",
+          "wrist": [
+            -0.14,
+            1.56,
+            -0.05
+          ],
+          "finger": [
+            0.55,
+            0.3,
+            -0.78
+          ],
+          "normal": [
+            1,
+            0,
+            0
+          ],
+          "poleUp": [
+            -0.8,
+            1.35,
+            -1.6
+          ],
+          "touch": {
+            "clear": 0.002
+          }
+        },
+        "left": {
+          "mode": "free",
+          "frame": "chest",
+          "wrist": [
+            0.14,
+            1.56,
+            -0.05
+          ],
+          "finger": [
+            -0.55,
+            0.3,
+            -0.78
+          ],
+          "normal": [
+            -1,
+            0,
+            0
+          ],
+          "poleUp": [
+            0.8,
+            1.35,
+            -1.6
+          ],
+          "touch": {
+            "clear": 0.002
+          }
+        }
+      },
+      "feet": {
+        "right": {
+          "mode": "floor",
+          "at": [
+            -0.45,
+            0.09
+          ],
+          "heading": 90,
+          "pitch": 58
+        },
+        "left": {
+          "mode": "floor",
+          "at": [
+            -0.45,
+            -0.09
+          ],
+          "heading": 90,
+          "pitch": 58
+        }
+      },
+      "constraints": [
+        {
+          "type": "reach",
+          "limb": "rightLeg",
+          "angle": 179.5,
+          "weight": 4
+        },
+        {
+          "type": "reach",
+          "limb": "leftLeg",
+          "angle": 179.5,
+          "weight": 4
+        },
+        {
+          "type": "legAlign",
+          "limb": "rightLeg",
+          "flex": 0,
+          "weight": 0.1
+        },
+        {
+          "type": "legAlign",
+          "limb": "leftLeg",
+          "flex": 0,
+          "weight": 0.1
+        },
+        {
+          "type": "joint",
+          "joint": "pelvis",
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "value": 0.1,
+          "weight": 0.4
+        },
+        {
+          "type": "joint",
+          "joint": "pelvis",
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "value": 0.8,
+          "weight": 0.4
+        }
+      ],
+      "solve": {
+        "vars": [
+          "px",
+          "py",
+          "h0"
+        ],
+        "reg": {
+          "px": 0.2,
+          "py": 0.05,
+          "h0": 0.02
+        }
+      }
+    },
+    "deltas": {
+      "ext": {
+        "chest": {
+          "waist": [
+            [
+              [
+                0,
+                0,
+                1
+              ],
+              0
+            ]
+          ]
+        }
+      }
+    }
+  },
+  "highlight": {
+    "groups": [
+      "erectors"
+    ],
+    "side": "both",
+    "pulseTrack": "ext",
+    "pulseBase": 0.3
+  },
+  "camera": {
+    "dir": [
+      0.15,
+      0.32,
+      1
+    ],
+    "fit": [
+      "head",
+      "leftToe",
+      "rightToe",
+      "pelvis",
+      "leftElbow",
+      "rightElbow",
+      "leftPalm",
+      "rightPalm"
+    ],
+    "pad": 0.3,
+    "k": 0.75,
+    "drift": 4,
+    "at": 2
+  },
+  "frame": {
+    "mode": "fit",
+    "width": 760,
+    "cx": 512,
+    "cy": 540
+  },
+  "stillAt": 2,
+  "shadow": {
+    "joints": [
+      "leftToe",
+      "rightToe",
+      "pelvis"
+    ],
+    "blobs": [
+      {
+        "j": "rightToe",
+        "rx": 34,
+        "ry": 9,
+        "a": 0.55
+      },
+      {
+        "j": "leftToe",
+        "rx": 34,
+        "ry": 9,
+        "a": 0.55
+      }
+    ],
+    "bands": []
+  },
+  "props": [
+    {
+      "type": "swissBall",
+      "at": [
+        0.335,
+        0,
+        0
+      ],
+      "r": 0.372
+    },
+    {
+      "type": "wall",
+      "at": [
+        -0.545584,
+        0,
+        0
+      ],
+      "yaw": 90,
+      "size": [
+        1.4,
+        1.6,
+        0.12
+      ]
+    }
+  ],
+  "keyFrames": [
+    0.3,
+    1.5,
+    3.2
+  ],
+  "qa": {
+    "pins": [
+      {
+        "c": "footR",
+        "when": "always"
+      },
+      {
+        "c": "footL",
+        "when": "always"
+      }
+    ],
+    "straight": [
+      {
+        "j": "knee.right",
+        "min": 176
+      },
+      {
+        "j": "knee.left",
+        "min": 176
+      }
+    ],
+    "allowContact": [
+      "handR|head",
+      "handL|head",
+      "upperArmR|head",
+      "upperArmL|head",
+      "forearmR|head",
+      "forearmL|head"
+    ]
+  }
+}
