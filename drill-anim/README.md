@@ -1,5 +1,7 @@
 # drill-anim: looping 3D toon animations for the training drills
 
+2026-10-13当前选用素材库为`output/training-human-v2-library-footfix-20261013`，用户已认可瑞士球背伸鞋向修正版，其它93项沿用原媒体。该项使用[修订规格与原目标重放](revisions/erectors-B-footfix-20261013/README.md)及`render-footfix.mjs`，保留原met-cycle求解值/腕目标；单独spec不是完整复现配方。下述原94冻结批次与首次便携包保留历史身份，整体版本见[阶段台账](../../app/docs/version-ledger.md#2026-10-13-素材制作阶段收口)。
+
 2026-10-13用户明确安排的94项演示已全部另存成片，共23,454帧/781.8秒，母版1080²、手机版720²、封面540²。冻结来源见[batches/training-human-v2-20261013](batches/training-human-v2-20261013/README.md)，制作流程83ready/11review，最终独立审计56ready/38review、failed/pending均0；所选188视频完整解码。原QA与警告保留，不替换旧成片或App51视频。执行用 `batch-rerender.mjs`，独立解码/关节审计用 `batch-library-audit.mjs`，便携目录用 `package-library.mjs`另建；生产 `audit-final/`、2项恒定构图派生、便携使用与边界见[统一素材库](../../docs/training-media-library-2026-10-13.md)。入口补丁2.0.1不改变已验收2.0.0外观，既有普通CLI继续保留。
 
 2026-10-13用户已验收肩颈优化；后续新动作、旧动作优化及安排重渲统一使用 [training-human-v2 人体基准](../../docs/training-human-v2.md)：在spec中设置 `modelProfile: 'training-human-v2'`、`alignClavicles: false`。当前肩颈修复保留App训练人物的成熟网格、头、服装与骨架；人体身份、配置与源码哈希固定在 [模型清单](models/training-human-v2.json)。已交付的旧视频保留，按用户后续安排才使用新人体另出重渲版本。
