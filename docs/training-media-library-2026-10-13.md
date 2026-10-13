@@ -2,7 +2,7 @@
 
 用户后续验看追加并认可[瑞士球背伸鞋向修正](erectors-B-footfix-2026-10-13.md)，当前选用94项图库另存`output/training-human-v2-library-footfix-20261013`。仅该项更新鞋向与墙面，其余93项与以下原批次保持；原素材包和冻结来源作为历史基线保留。当前选用仍56ready/38review，新鞋修两视频另有独立完整解码，其它93项以不变媒体哈希绑定原解码证据；用户认可鞋修不扩大为所有QA或App验收。
 
-用户明确要求在本会话把所有已制作的演示动作改用已验收的 `training-human-v2` 重渲，并另存素材。此次制作不替换现有 App 视频，也不重新调整已验收的动作、节奏、高亮、道具和镜头。原成片、原参数与历史检查点保留。
+用户明确要求在本会话把所有已制作的演示动作改用已验收的 `training-human-v2` 重渲，并另存素材。该素材制作阶段不替换当时的 App 视频，也不重新调整已验收的动作、节奏、高亮、道具和镜头。原成片、原参数与历史检查点保留。
 
 94个冻结版本已全部另存成片，共23,454帧、781.8秒：60个正式动作库版本、8个办公室、8个久坐强化、11个托马斯专项与1个左侧变体、5个实际早期运行时示范，以及1个正式Flare v41全旋。明确停止的托马斯第1项不恢复。用户提供的Air-Flare原片、静态条目和图标不计作自产演示，同一Flare动作的启动剪影与旧历史版本不重复计数。制作流程最终记录为83项ready、11项review_required；最终独立审计为56项ready、38项review_required、failed/pending均0。两种状态的检查范围不同，94项成片完成不表示全部动作QA或用户验收通过。
 
@@ -38,4 +38,4 @@ Flare v41 使用原烘焙 GLB 的 AnimationMixer 与 22 骨世界矩阵，不再
 node tools/drill-anim/batch-rerender.mjs --catalog tools/drill-anim/batches/training-human-v2-20261013/job-catalog.json --out output/training-human-v2-library-final-20261013 --app-url http://127.0.0.1:8871 --workers 2
 ```
 
-当前 App 安装身份仍为 L43；完整素材库的生成不表示手机已安装新版本，也不表示待核对动作已经取得用户验收。
+完整素材库刚制作完成时，App安装身份仍为L43；随后用户另行授权在L44按原51个ID替换视频和封面，采用当前鞋修选版，实际已保留数据安装。选中51项的23ready/28review与完整94项的56ready/38review各自保留；安装或选版不等于待核对动作通过验收。当前App记录见[L44台账](../app/docs/version-ledger.md#2026-10-13-l44-形象切换与媒体升级)，冻结包及其内部索引/SHA不改。

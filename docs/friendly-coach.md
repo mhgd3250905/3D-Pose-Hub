@@ -1,6 +1,6 @@
 # 零预算动作人物与静态肌群参考
 
-2026-10-13训练示范视频的统一人体标准为已验收的 [training-human-v2](training-human-v2.md)：保留Snow派生网格、灰色人台头、原服装/骨架并修复肩颈。后续新动作及旧动作优化/重渲采用完整版本，13份来源SHA见[模型清单](../tools/drill-anim/models/training-human-v2.json)。这项制作标准与下述网页/App首页详情的v41人物分开，现有成片和Blender原件保留。
+2026-10-13训练示范视频的统一人体标准为已验收的 [training-human-v2](training-human-v2.md)：保留Snow派生网格、灰色人台头、原服装/骨架并修复肩颈。后续新动作及旧动作优化/重渲采用完整版本，13份来源SHA见[模型清单](../tools/drill-anim/models/training-human-v2.json)。制作人体标准与动作时钟分别管理。L44 App可在设置中保存选择原卡通教练或领口修复训练人台，两者沿用Snow来源及v41骨骼/动画；App51视频也已按用户授权更新为该标准素材，见[L44记录](../app/docs/pr109-l44-upgrade-2026-10-13.md)。根网页原人物、旧成片和Blender原件保留。
 
 2026-10-09当前默认网页/App动作已同步到v41：脚踝扭转与领口蒙皮优化，保留Snow原衣服、面孔及材质。网页保留原编辑器，App使用对应烘焙GLB；来源、复现与验证以 [v41同步合约](../app/docs/motion-v41.md) 为准。以下制作与历史展示说明保留；原网页GLB已独立备份为 `public/coach/flare-coach-before-web-v41.glb`，没有覆盖Blender原件或个人导出。
 
