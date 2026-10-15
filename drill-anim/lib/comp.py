@@ -29,6 +29,8 @@ BG+=np.exp(-(((xx-wc[0]*K)/(wc[2]*K))**2+((yy-wc[1]*K)/(wc[3]*K))**2))[...,None]
 fb=spec.get('floorBand',[800,520,70,450])
 BG+=(np.exp(-((yy-fb[0]*K)/(fb[2]*K))**2)*np.exp(-((xx-fb[1]*K)/(fb[3]*K))**2))[...,None]*np.array(bg['floorBand'],float)
 ember=np.array(th['rim']['outline'],float);halok=th['rim'].get('halo',0.12)
+# optional theme.highlight.bloom {strength, radii:[px,px], wide, inner, norm, heal:px}; defaults reproduce v7 (screen blend of 9px + 0.9*22px blur)
+_bl=th.get('highlight',{}).get('bloom') or {};BS=float(_bl.get('strength',1.0));BR=_bl.get('radii',[9,22]);BW=_bl.get('wide',0.9);BI=float(_bl.get('inner',1.0));HN=float(_bl.get('norm',0.45));BH=float(_bl.get('heal',0))
 def place(im):
     im=im.resize((round(im.width*s),round(im.height*s)),Image.LANCZOS)
     c=Image.new('RGBA',(W,W),(0,0,0,0));c.paste(im,(round(ox),round(oy)),im);return c
@@ -66,7 +68,13 @@ def comp(nm):
     o=o*(1-fa[...,None])+fr[...,:3]*fa[...,None]
     inner=np.clip(fa-nd.grey_erosion(fa,size=(3,3)),0,1)*0.6;o=o*(1-inner[...,None])+ember*inner[...,None]
     g=np.array(gl).astype(float);g=g[...,:3]*(g[...,3:]/255);gi=Image.fromarray(np.clip(g,0,255).astype(np.uint8))
-    bloom=np.array(gi.filter(ImageFilter.GaussianBlur(9*K))).astype(float)+0.9*np.array(gi.filter(ImageFilter.GaussianBlur(22*K))).astype(float)
+    bloom=np.array(gi.filter(ImageFilter.GaussianBlur(BR[0]*K))).astype(float)+BW*np.array(gi.filter(ImageFilter.GaussianBlur(BR[1]*K))).astype(float)
+    if BS!=1.0:bloom=bloom*BS
+    hm=np.clip(g.max(axis=2)/(255*HN),0,1);hm=nd.gaussian_filter(hm,1.2*K)
+    if BH>0:  # heal: grey closing inside the lit muscle only, fills thin dark mesh/garment seam lines (e.g. a shorts hem) that the full bloom used to hide
+        n=max(3,int(round(BH*K))|1);cl=np.stack([nd.grey_closing(o[...,c],size=(n,n)) for c in range(3)],-1);o=o*(1-hm[...,None])+cl*hm[...,None]
+    if BI<1.0:  # keep the haze off the lit muscle itself (its toon light/shade stays readable); the glow survives as a halo around the muscle edge
+        bloom=bloom*(1-(1-BI)*hm[...,None])
     o=255-(255-o)*(1-np.clip(bloom/255,0,1))
     Image.fromarray(np.clip(o,0,255).astype(np.uint8)).save(f'{OUT}/{nm}.png')
     edge=fa[:2].max()+fa[-2:].max()+fa[:,:2].max()+fa[:,-2:].max()

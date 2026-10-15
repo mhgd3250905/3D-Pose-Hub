@@ -9,14 +9,17 @@ const T = () => window.__toonT;
 const add0 = P.add;
 const MY = {
   chair(th, s) { const t = T(); const g = new t.Group(); const H = s.height ?? 0.45, W = s.width ?? 0.44, D = s.depth ?? 0.42, BK = s.back ?? 0.42, st = 0.045, lg = 0.034;
+    // back < 0.01 = stool/backless: no backrest panel and rear legs end under the seat like the front ones. (A zero-height panel at y=H
+    // put its -Y face coplanar with the seat top -> z-fighting, and that face's rim term (N.V<0 -> fr=1) flashed orange along the edge.)
+    const hasBack = BK >= 0.01;
     const wood = P.mat(th, { base: s.colour || '#3a3d44', rimK: 0.7 }), pad = P.mat(th, { base: s.padColour || '#2c2f36', rimK: 0.6 });
     const seat = new t.Mesh(new t.BoxGeometry(W, st, D), pad); seat.position.y = H - st / 2; g.add(seat);
     const apron = new t.Mesh(new t.BoxGeometry(W - 0.03, 0.06, D - 0.03), wood); apron.position.y = H - st - 0.03; g.add(apron);
     for (const sx of [-1, 1]) for (const sz of [-1, 1]) { const x = sx * (W / 2 - lg / 2 - 0.01), z = sz * (D / 2 - lg / 2 - 0.01);
-      const hgt = sz < 0 ? H + BK : H - st; const leg = new t.Mesh(new t.BoxGeometry(lg, hgt, lg), wood); leg.position.set(x, hgt / 2, z); g.add(leg); }
+      const hgt = sz < 0 && hasBack ? H + BK : H - st; const leg = new t.Mesh(new t.BoxGeometry(lg, hgt, lg), wood); leg.position.set(x, hgt / 2, z); g.add(leg); }
     const rail = new t.Mesh(new t.BoxGeometry(W - 0.04, 0.02, 0.02), wood); rail.position.set(0, 0.16, D / 2 - lg / 2 - 0.01); g.add(rail);
     const rail2 = rail.clone(); rail2.position.z = -(D / 2 - lg / 2 - 0.01); g.add(rail2);
-    const back = new t.Mesh(new t.BoxGeometry(W - 0.02, BK * 0.42, 0.022), pad); back.position.set(0, H + BK * 0.72, -(D / 2 - lg / 2 - 0.01)); g.add(back);
+    if (hasBack) { const back = new t.Mesh(new t.BoxGeometry(W - 0.02, BK * 0.42, 0.022), pad); back.position.set(0, H + BK * 0.72, -(D / 2 - lg / 2 - 0.01)); g.add(back); }
     g.userData.qaPrims = [{ c: [0, H - st / 2, 0], ax: [[1, 0, 0], [0, 1, 0], [0, 0, 1]], h: [W / 2, st / 2, D / 2] }];
     return g; },
 };
