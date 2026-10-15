@@ -104,7 +104,7 @@ def theme_json(path, tag):
     return out
 
 def node_render(specf, fr, a, b, theme, extra=()):
-    args = ['node', os.path.join(ROOT, 'lib/render.mjs'), specf, fr, str(a), str(b)] + (['--theme', theme] if theme else []) + list(extra)
+    args = ['node', os.path.join(ROOT, 'lib/render.mjs'), specf, fr, str(a), str(b)] + (['--theme', theme] if theme else []) + (['--pr', os.environ['DRILL_PR']] if os.environ.get('DRILL_PR') else []) + list(extra)
     return popen(args, env=ENV, cwd=ROOT, stdout=open(f'{fr}-log-{a}.txt', 'w'), stderr=subprocess.STDOUT)
 
 def render(sid, theme=None, jobs=2, frames=None, keep=False, tag=''):
@@ -178,7 +178,9 @@ def qa(sid, fr=None):
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument('cmd'); ap.add_argument('ids', nargs='*'); ap.add_argument('--theme'); ap.add_argument('--themes')
     ap.add_argument('--jobs', type=int, default=2); ap.add_argument('--frames'); ap.add_argument('--keep', action='store_true'); ap.add_argument('--out'); ap.add_argument('--overwrite', action='store_true')
+    ap.add_argument('--pr', type=float, help='render pixel ratio (default 2; 1.4 is ~1.7x faster and still supersampled at the usual fit scale)')
     a = ap.parse_args()
+    if a.pr: os.environ['DRILL_PR'] = str(a.pr)
     if a.cmd not in ('render', 'qa', 'masks', 'swatch'): ap.error('Unknown command: ' + a.cmd)
     if a.jobs < 1: ap.error('--jobs must be positive')
     if a.cmd in ('render', 'qa', 'swatch') and not a.ids: ap.error('At least one drill id is required')

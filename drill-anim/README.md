@@ -1,5 +1,7 @@
 # drill-anim: looping 3D toon animations for the training drills
 
+2026-10-15新增居家/肌群补充/开胯/开肩51份`h-*`候选，制作规格共138份（原87份保持）。来源、合并审核补修和验证边界见[居家动作记录](../../docs/home-drill-integration-2026-10-15.md)，精确规格哈希见[data/home-pr-candidates.json](data/home-pr-candidates.json)。B风格以`--theme themes/glow-b.json`显式选择；默认theme保留已验收人体固定源。下方75/87项为历史阶段数量；App仍选原51视频，不据新增规格或PR作者QA声明全片/设备验收完成。
+
 2026-10-13当前选用素材库为`output/training-human-v2-library-footfix-20261013`，用户已认可瑞士球背伸鞋向修正版，其它93项沿用原媒体。该项使用[修订规格与原目标重放](revisions/erectors-B-footfix-20261013/README.md)及`render-footfix.mjs`，保留原met-cycle求解值/腕目标；单独spec不是完整复现配方。下述原94冻结批次与首次便携包保留历史身份，整体版本见[阶段台账](../../app/docs/version-ledger.md#2026-10-13-素材制作阶段收口)。
 
 2026-10-13用户明确安排的94项演示已全部另存成片，共23,454帧/781.8秒，母版1080²、手机版720²、封面540²。冻结来源见[batches/training-human-v2-20261013](batches/training-human-v2-20261013/README.md)，制作流程83ready/11review，最终独立审计56ready/38review、failed/pending均0；所选188视频完整解码。原QA与警告保留，不替换旧成片或App51视频。执行用 `batch-rerender.mjs`，独立解码/关节审计用 `batch-library-audit.mjs`，便携目录用 `package-library.mjs`另建；生产 `audit-final/`、2项恒定构图派生、便携使用与边界见[统一素材库](../../docs/training-media-library-2026-10-13.md)。入口补丁2.0.1不改变已验收2.0.0外观，既有普通CLI继续保留。
