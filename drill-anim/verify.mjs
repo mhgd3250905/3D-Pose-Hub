@@ -12,7 +12,9 @@ const source = '68043f71651056c57c72a3b8813cbb354979346f';
 // text hashes identify the reviewed parameter revision without requiring an
 // unmerged audit-worktree Git object on a fresh clone. This is source integrity,
 // not acceptance of a full rendered movie or the App's existing 51 videos.
+const homeCandidates = JSON.parse(fs.readFileSync(path.join(root, 'data/home-pr-candidates.json'), 'utf8')).specs;
 const additions = {
+  ...homeCandidates,
   'o-seated-fig4.js': {pr:97, sha256:'66a147a7da04a444f705bcd3e2fd23788a1349c533847bba9f1a36ae32a0ac48'},
   'o-seated-twist.js': {pr:98, sha256:'e4f0c990b184f7999dcfa73c6d505a6486048bcea10fabb81810e5038cdebd6b'},
   'o-seated-ham.js': {pr:99, sha256:'871ccbd2022c8a9d2ce561750d1d75b7a45b2853ff357ca76c133a49db5a6527'},
@@ -113,4 +115,4 @@ function checkTree(directory) {
   }
 }
 checkTree(root);
-console.log(JSON.stringify({ok:true,source,appDrills:ids.length,specs:result.length,defaultSpecs:result.filter(s=>!s.id.startsWith('t-')).length,thomasPreviewSpecs:result.filter(s=>s.id.startsWith('t-')).length,stoppedThomasSpecs:1,modelProfile:model.id,modelSources:Object.keys(model.sourceSha256).length,stretchSpecs:result.filter(s=>s.id.startsWith('s-')).length,reviewedOfficeSpecs:result.filter(s=>s.id.startsWith('o-')).length,reviewedSittingSpecs:result.filter(s=>s.id.startsWith('w-')).length,originalSpecHashesPreserved:true},null,2));
+console.log(JSON.stringify({ok:true,source,appDrills:ids.length,specs:result.length,defaultSpecs:result.filter(s=>!s.id.startsWith('t-')).length,thomasPreviewSpecs:result.filter(s=>s.id.startsWith('t-')).length,stoppedThomasSpecs:1,modelProfile:model.id,modelSources:Object.keys(model.sourceSha256).length,stretchSpecs:result.filter(s=>s.id.startsWith('s-')).length,reviewedHomeSpecs:result.filter(s=>s.id.startsWith('h-')).length,reviewedOfficeSpecs:result.filter(s=>s.id.startsWith('o-')).length,reviewedSittingSpecs:result.filter(s=>s.id.startsWith('w-')).length,originalSpecHashesPreserved:true},null,2));
