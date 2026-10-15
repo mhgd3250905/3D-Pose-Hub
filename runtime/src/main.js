@@ -23,10 +23,12 @@ import { createMuscleSync } from './muscle-sync.js';
 import { openMuscleViewer } from './muscle-viewer.js';
 import { createFlarePosePresets } from './pose-presets.js';
 import { renderSources } from './research-ui.js';
-import { OFFICIAL_FLARE_SEQUENCE, resolveOfficialSequence, sequenceFromSavedSteps, saveOfficialSequence, saveV41DefaultSequence, previousOfficialSequence, restoreOfficialSequence, updateOfficialFrame } from './official-poses.js';
+import { OFFICIAL_FLARE_SEQUENCE, sequenceFromSavedSteps, saveOfficialSequence, saveV41DefaultSequence, previousOfficialSequence, restoreOfficialSequence, updateOfficialFrame } from './official-poses.js';
+import { V42_DEFAULT_SEQUENCE, resolveV42Sequence, saveV42DefaultSequence } from './v42-default.js';
 import { rebaseTransitionEdits, saveOfficialFrameEdits } from './transition-edits.js';
 import { createAppMenu } from './app-menu.js';
 import './theme.css';
+import './v42-playback.css';
 
 const icons={Orbit,Info,Camera,ArrowUpRight,PersonStanding,Rotate3d,Dumbbell,Search,Scan,UserRound,RotateCcw,PanelRight,PanelLeft,SlidersHorizontal,EyeOff,Maximize,Mouse,Play,Pause,Move3d,Shield,MoveUp,Hand,MoveHorizontal,Expand,MoveDiagonal2,ChevronRight,ChevronDown,CircleDot,Repeat2,CornerUpLeft,ArrowLeft,X,Pencil,Activity,MoveUpRight,Ellipsis};
 const refreshIcons=()=>createIcons({icons,attrs:{'stroke-width':1.5}});
@@ -102,7 +104,7 @@ function updateMotionCaption(){
   const periodic=motionModel==='periodic';
   $('#pose-presets').hidden=periodic;
   $('#stage-title').textContent=periodic?'托马斯全旋 · 轨迹试验':'托马斯全旋';
-  $('#stage-footnote').textContent=periodic?'整圈连续生成。拖动时间轴检查摆腿与换手，切换“你的保存动画”即可对比。':'按照你保存的 9 步展示。点击步骤或拖动时间轴查看，暂停后可以继续编辑。';
+  $('#stage-footnote').textContent=periodic?'整圈连续生成。拖动时间轴检查摆腿与换手，切换“你的保存动画”即可对比。':viewer.motion.isV42Playback()?'Flare v42 / R12。点击步骤或拖动时间轴查看，原关键姿势与编辑器继续保留。':'按照你保存的 9 步展示。点击步骤或拖动时间轴查看，暂停后可以继续编辑。';
 }
 function applyTransitionOptions(options){
   const previous=transitionPanel?.options();
@@ -116,6 +118,7 @@ function replaceDemonstration(sequence,action='save'){
     if(action==='save')saveOfficialSequence(sequence,localStore());
     else if(action==='restore')restoreOfficialSequence(sequence,localStore());
     else if(action==='v41')saveV41DefaultSequence(localStore());
+    else if(action==='v42')saveV42DefaultSequence(localStore());
   }catch(error){viewer.setSequence({...previous,...transitionPanel?.options(),motionModel});throw error;}
   demonstration=structuredClone(sequence);
   transitionPanel?.setSequence(sequence);
@@ -123,6 +126,7 @@ function replaceDemonstration(sequence,action='save'){
   renderPhases();displayedStep=-1;updateTime(viewer.time);posePanel.renderPresets();
   if(mode==='pose')posePanel.render();else renderDetail();
   updateLayerButtons();updatePlayButton();
+  updateMotionCaption();
 }
 
 function saveAnimationFrames(sequence, edits, { restore = false } = {}) {
@@ -171,9 +175,18 @@ function renderDetail(){
     const supports=item.supportHands.map(side=>side==='left'?'左手':'右手').join(' + ')||'移重过渡';
     panel.innerHTML=`<div class="detail-kicker"><span>MOVEMENT BREAKDOWN</span><span>${String(stepIndex+1).padStart(2,'0')} / ${String(presets.length).padStart(2,'0')}</span></div><h2 class="detail-title">${escape(item.name)}</h2><p class="detail-english">YOUR FLARE SEQUENCE</p><span class="function-tag"><i data-lucide="hand"></i>${escape(supports)}支撑</span><p class="detail-copy">${escape(item.technique.body)}</p><div class="detail-section"><div class="detail-section-heading"><h3>手脚朝向</h3><i data-lucide="move-3d"></i></div><div class="function-list"><div class="function-row">${escape(item.technique.hands)}</div><div class="function-row">${escape(item.technique.feet)}</div></div><p class="motion-cue">${escape(item.technique.cue)}</p><div class="phase-pills">${p.focus.map(id=>`<button class="phase-pill" data-related-group="${id}">${groupById[id].name}</button>`).join('')}</div></div><div class="detail-section"><div class="detail-section-heading"><h3>对应的辅助训练</h3><i data-lucide="arrow-up-right"></i></div>${item.technique.exercises.slice(0,2).map(exerciseLink).join('')}</div><button class="focus-button" id="return-anatomy"><i data-lucide="person-standing"></i>返回完整人物</button><p class="evidence-note">正式展示采用你保存并微调的 9 个关键姿势。点击左侧步骤可逐个查看，暂停后可继续编辑。</p>`;
     $('#viewer-overline').textContent='YOUR FLARE SEQUENCE';$('#viewer-label').textContent=item.name;$('#viewer-subtitle').textContent=`第 ${stepIndex+1} / ${presets.length} 步${item.sourceStepNumber?` · 原第 ${String(item.sourceStepNumber).padStart(2,'0')} 步`:''} · ${item.summary}`;
+    if(viewer.motion.isV42Playback()){
+      panel.querySelector('.evidence-note').textContent='当前展示 Flare v42 / R12。原关键姿势、个人步骤和动画编辑器继续保留。';
+      panel.querySelector('.detail-english').textContent='FLARE v42 / R12';
+      $('#viewer-overline').textContent='FLARE v42 / R12';
+    }
     $('#return-anatomy').addEventListener('click',()=>setMode('anatomy'));
     const edit=document.createElement('button');edit.className='focus-button pose-edit-current';edit.id='edit-current-pose';edit.innerHTML='<i data-lucide="pencil"></i>编辑这个姿势';panel.querySelector('#return-anatomy').before(edit);edit.addEventListener('click',()=>setMode('pose',{fromCurrent:true}));
     const transition=document.createElement('button');transition.className='focus-button';transition.id='edit-current-transition';transition.innerHTML='<i data-lucide="sliders-horizontal"></i>编辑动画 · K帧';edit.before(transition);transition.addEventListener('click',()=>{setMode('transition');workspaceUI.revealDetails();});
+    if(viewer.motion.isV42Playback()){
+      edit.innerHTML='<i data-lucide="pencil"></i>编辑原关键姿势';
+      transition.innerHTML='<i data-lucide="sliders-horizontal"></i>编辑原动画 · K帧';
+    }
   }else if(mode==='training'){
     const e=exerciseById[selectedExercise];
     panel.innerHTML=`<div class="detail-kicker"><span>TRAINING LIBRARY</span><span>${String(exercises.indexOf(e)+1).padStart(2,'0')} / 08</span></div><h2 class="detail-title">${e.name}</h2><p class="detail-english">${e.english}</p><span class="function-tag"><i data-lucide="${e.icon}"></i>${e.type} · ${e.difficulty}</span><p class="detail-copy">${e.description}</p><div class="detail-section"><div class="detail-section-heading"><h3>怎么做</h3><i data-lucide="move-3d"></i></div><ol class="training-detail-steps">${e.steps.map(step=>`<li>${step}</li>`).join('')}</ol></div><div class="detail-section"><div class="detail-section-heading"><h3>什么时候进阶</h3><i data-lucide="arrow-up-right"></i></div><p class="detail-copy">${e.progression}</p><p class="motion-cue">${e.cue}</p><div class="phase-pills">${e.groups.map(id=>`<button class="phase-pill" data-related-group="${id}">${groupById[id].name}</button>`).join('')}</div></div><button class="training-return" id="return-anatomy"><i data-lucide="arrow-left"></i>返回肌群探索</button><p class="evidence-note">根据肌肉功能与动作需求编排的教学建议。训练量由当前能力决定；掌根、肩或腹股沟出现疼痛时，停止并调整练习。</p>`;
@@ -234,6 +247,7 @@ function setMode(next,{fromCurrent=false}={}){
   const transition=next==='transition',motion=next==='motion',training=next==='training',editing=next==='pose'||transition;document.body.dataset.mode=next;
   $('#anatomy-toolbar').hidden=motion||editing;$('#motion-toolbar').hidden=!motion;$('#training-panel').hidden=!training;$('#pose-shelf').hidden=!editing;$('#pose-presets').hidden=!(editing||motion);$('#pose-view-toolbar').hidden=!editing;$('#phase-strip').hidden=training||editing;$('#legend').hidden=motion||editing;$('#hover-tooltip').hidden=true;
   $('.motion-source').hidden=!motion;
+  if(motion)viewer.setSequence({...demonstration,...transitionPanel.options(),motionModel},{preserveView:true});
   if(motion)movementPanel?.setSequence({...demonstration,...transitionPanel.options(),motionModel});
   if(motion)movementTransport?.setSequence({...demonstration,...transitionPanel.options(),motionModel});
   movementPanel?.setMode(next);
@@ -298,6 +312,17 @@ $('#timeline').addEventListener('input',event=>{viewer.playing=false;viewer.setP
 $('#speed').addEventListener('change',event=>{if(viewer)viewer.speed=Number(event.target.value);});
 $('#movement-lesson-button').addEventListener('click',toggleMovementLesson);
 $('#motion-model').addEventListener('change',event=>{if(ready)setMotionModel(event.target.value);});
+$('#use-v42-default').addEventListener('click',()=>{
+  if(!ready)return;
+  viewer.playing=false;
+  if(!setMotionModel('saved',{render:false}))return;
+  try{
+    replaceDemonstration(structuredClone(V42_DEFAULT_SEQUENCE),'v42');
+    movementPanel?.setSequence({...demonstration,...transitionPanel.options(),motionModel});
+    movementTransport?.setSequence({...demonstration,...transitionPanel.options(),motionModel});
+    toast('已采用 v42 / R12；此前动画已独立备份，个人步骤和过渡草稿保留，可撤销展示替换。');
+  }catch(error){toast(error.message);}
+});
 $('#use-v41-default').addEventListener('click',()=>{
   if(!ready)return;
   viewer.playing=false;
@@ -339,7 +364,7 @@ async function initialize(){
       onPoseSelection:()=>{if(mode==='pose')posePanel?.refresh();else if(mode==='transition')transitionPanel?.refresh();}
     });
     workspaceUI.sync();viewer.selectGroup(selectedGroup);const manifest=await viewer.load();ready=true;$('#loading').hidden=true;
-    demonstration=resolveOfficialSequence(localStore());viewer.setSequence(demonstration);
+    demonstration=resolveV42Sequence(localStore());viewer.setSequence(demonstration);
     presets=createFlarePosePresets(viewer.motion,demonstration);
     posePanel=createPosePanel({viewer,panel:$('#detail-panel'),shelf:$('#pose-shelf'),presetPanel:$('#pose-presets'),presets,notify:toast,refreshIcons,onTraining:id=>openExercise(id),onDisplayStep:()=>updatePlayButton(),onUseDemonstration:steps=>{replaceDemonstration(sequenceFromSavedSteps(steps));toast('已将这 9 步用于正式展示，个人步骤保留。');},onUndoDemonstration:()=>{const previous=previousOfficialSequence(localStore());if(previous){replaceDemonstration(previous,'restore');toast('已恢复此前的正式展示，个人步骤保留。');}},hasPreviousDemonstration:()=>!!previousOfficialSequence(localStore()),onPresetLoad:()=>workspaceUI.afterPreset()});
     transitionPanel=createTransitionPanel({viewer,panel:$('#detail-panel'),shelf:$('#transition-shelf'),sequence:demonstration,storage:localStore,notify:toast,refreshIcons,onApply:applyTransitionOptions,onUpdateFrame:updateAnimationFrame,onRestoreFrames:undoAnimationFrames,onImportFrames:importAnimationFrames,hasPreviousFrameUpdate:()=>['browser-keyframe-edit','browser-animation-import'].includes(demonstration?.source?.origin)&&!!previousOfficialSequence(localStore()),onExit:()=>{setMode('motion');workspaceUI.revealDetails();}});

@@ -8,6 +8,7 @@ import { createCoachMotion } from './coach-motion.js';
 import { createPoseEditor } from './pose-editor.js';
 import { createTrajectoryGuide } from './trajectory-guide.js';
 import { createMovementGuide } from './movement-guide.js';
+import { createV42Playback } from './v42-playback.js';
 
 const material = (color, options={}) => new THREE.MeshStandardMaterial({color,roughness:.77,metalness:0,...options});
 const nextFrame = () => new Promise(resolve => requestAnimationFrame(resolve));
@@ -102,8 +103,9 @@ export class BodyViewer {
     }
     for(const [key,geometries] of batchParts){const mesh=new THREE.Mesh(mergeGeometries(geometries,false),key==='bones'?this.boneMaterial:this.muscleMaterial);mesh.userData.batch=key;this.batches.push(mesh);this.anatomy.add(mesh);}
     this.callbacks.onProgress?.(88,'载入运动人物与骨骼…');await nextFrame();
-    const [gltf,rigResponse]=await Promise.all([new GLTFLoader().loadAsync('/coach/flare-coach.glb'),fetch('/coach/coach-rig.json')]);
+    const [gltf,rigResponse,v42Gltf,clockResponse]=await Promise.all([new GLTFLoader().loadAsync('/coach/flare-coach.glb'),fetch('/coach/coach-rig.json'),new GLTFLoader().loadAsync('/coach/flare-coach-v42-r12-animated.glb'),fetch('/coach/flare-v42-clock.json')]);
     if(!rigResponse.ok)throw new Error('无法读取运动人物骨骼');
+    if(!clockResponse.ok)throw new Error('无法读取 v42 动作时间映射');
     this.coach=gltf.scene;this.coach.name='Snow · Flare coach';this.coach.traverse(object=>{if(object.isMesh){object.castShadow=true;}});
     this.rigData=await rigResponse.json();
     this.motion=createCoachMotion({model:this.coach,rigData:this.rigData});
@@ -118,6 +120,7 @@ export class BodyViewer {
       if(bounds?.min?.length===3&&bounds?.max?.length===3&&[...bounds.min,...bounds.max].every(Number.isFinite))this.motionBounds.union(new THREE.Box3(new THREE.Vector3().fromArray(bounds.min),new THREE.Vector3().fromArray(bounds.max)));
     }
     this.motion.reset();
+    this.motion=createV42Playback({base:this.motion,gltf:v42Gltf,clockDocument:await clockResponse.json(),scene:this.scene,rigData:this.rigData});
     if(this.motionBounds.isEmpty())this.motionBounds.set(new THREE.Vector3(-height*.72,0,-height*.72),new THREE.Vector3(height*.72,height*.96,height*.72));
     else this.motionBounds.expandByScalar(height*.045);
     this.movementBounds=this.motionBounds.clone();
@@ -150,6 +153,8 @@ export class BodyViewer {
   // integrate the paced clock in small sub-steps, so a frame that crosses a rate
   // change (the smooth loop's seam) neither stalls nor jumps
   paceStep(delta){
+    const mapped=this.motion?.advanceDisplayTime?.(this.time,delta*this.speed);
+    if(mapped!==null&&mapped!==undefined)return (mapped-this.time+9)%9;
     const sub=8,step=delta*this.speed/sub;let advance=0;
     for(let i=0;i<sub;i++)advance+=step*this.pacingRate(this.time+advance);
     return advance;
@@ -179,7 +184,9 @@ export class BodyViewer {
     const previewFrame = this.callbacks.onAnimationFrame?.(delta) === true;
     if(!previewFrame&&this.playing&&this.mode==='motion'&&this.motion){
       const range=this.playbackRange;
-      if(range){const duration=range.endTime-range.startTime,elapsed=this.time-range.startTime+this.paceStep(delta);this.time=range.startTime+(elapsed%duration+duration)%duration;}
+      const mapped=this.motion.advanceDisplayTime?.(this.time,delta*this.speed,range);
+      if(mapped!==null&&mapped!==undefined)this.time=mapped;
+      else if(range){const duration=range.endTime-range.startTime,elapsed=this.time-range.startTime+this.paceStep(delta);this.time=range.startTime+(elapsed%duration+duration)%duration;}
       else this.time=(this.time+this.paceStep(delta))%this.motion.getMetrics().period;
       this.motion.update(this.time);this.callbacks.onTime?.(this.time);this.dirty=true;
     }
@@ -219,7 +226,7 @@ export class BodyViewer {
     if(this.extraHighlights){this.extraHighlights.forEach(mesh=>this.anatomy.remove(mesh));this.extraHighlights=[];}
     if(local&&highlight&&this.layer!=='bones'&&(!this.selectedPart||this.selectedPart.hotspot)){this.extraHighlights=this.parts.filter(mesh=>highlight.has(mesh.userData.part.id)&&mesh.userData.part.hotspot!==this.selectedGroup).map(mesh=>{const clone=new THREE.Mesh(mesh.geometry,this.activeMaterial);this.anatomy.add(clone);return clone;});}
     this.selectedMesh.visible=local&&!!this.selectedPart&&(this.layer==='bones'?this.selectedPart.system==='skeletal':this.layer==='muscles'?this.selectedPart.system==='muscular':true);
-    this.motion?.setHighlight(this.selectedGroup);this.motion?.setLayer(this.layer);this.hoverMesh.visible=false;this.dirty=true;
+    this.motion?.setHighlight(this.selectedGroup);this.motion?.setLayer(this.layer);this.motion?.syncDisplayVisibility?.(!local);this.hoverMesh.visible=false;this.dirty=true;
   }
   selectGroup(id){this.selectedGroup=id;this.selectedPart=null;this.selectedMesh.visible=false;if(this.parts.length){this.layer='reveal';this.focused=true;}this.applyAppearance();if(this.focused&&this.mode!=='motion')this.fitGroup();}
   selectPart(part){this.selectedPart=part;const mesh=this.parts.find(m=>m.userData.part.id===part.id);if(mesh)this.selectedMesh.geometry=mesh.geometry;this.layer='reveal';this.focused=true;this.applyAppearance();if(mesh&&!part.hotspot)this.fitBounds(mesh.geometry.boundingBox,new THREE.Vector3(.32,.08,1),1.35);}
@@ -278,6 +285,7 @@ export class BodyViewer {
   }
   setMode(mode){
     const prior=this.mode;this.mode=mode;this.selectedPart=null;this.selectedMesh.visible=false;this.hoverMesh.visible=false;
+    this.motion?.setDisplayMode?.(mode);
     this.stageGrid.material.opacity=mode==='motion' ? 0 : .22;this.stageGrid.visible=mode!=='motion';if(this.stageRing)this.stageRing.visible=mode!=='motion';
     this.poseEditor?.setEnabled(mode==='pose');
     if(mode==='motion'){this.trajectoryGuide?.setVisible(false);this.movementGuide?.setVisible({enabled:false});}
@@ -290,6 +298,7 @@ export class BodyViewer {
   setSequence(sequence,{preserveView=false}={}){
     if(!this.motion)return;
     const current=this.motion.capturePose(),currentMode=this.motion.getMetrics().mode;
+    this.motion.setDisplaySequence?.(sequence);
     this.motion.setSequence(sequence.steps,{period:sequence.period,corrections:sequence.corrections||[],legPath:sequence.legPath,interpolation:sequence.interpolation,motionModel:sequence.motionModel,skippedSteps:sequence.skippedSteps||[],footCurves:sequence.footCurves||[],segmentGuides:sequence.segmentGuides||[]});
     this.pacing=null;
     const bounds=new THREE.Box3();
@@ -350,18 +359,19 @@ export class BodyViewer {
   getTrajectoryData(){return this.trajectoryData?structuredClone(this.trajectoryData):null;}
   pickTrajectoryPoint(event,options={}){const rect=this.renderer.domElement.getBoundingClientRect();return this.trajectoryGuide.pickSample({camera:this.camera,x:event.clientX-rect.left,y:event.clientY-rect.top,width:rect.width,height:rect.height,...options});}
   projectTrajectoryPoint(joint,time){const frames=this.trajectoryData?.frames;if(!frames?.length)return null;const frame=frames.reduce((nearest,value)=>Math.abs(value.time-time)<Math.abs(nearest.time-time)?value:nearest);if(!frame.joints[joint])return null;const p=new THREE.Vector3().fromArray(frame.joints[joint]).project(this.camera);return{x:(p.x+1)/2*this.container.clientWidth,y:(1-p.y)/2*this.container.clientHeight,time:frame.time,joint};}
-  getStatus(){return{ready:!!this.motion,mode:this.mode,layer:this.layer,selectedGroup:this.selectedGroup,selectedPart:this.selectedPart?.id||null,focused:this.focused,time:this.time,playing:this.playing,character:'Snow Rig',coachVisible:!!this.coach?.visible,anatomyVisible:this.anatomy.visible,parts:this.parts.length,triangles:this.manifest?.triangles,drawCalls:this.renderer.info.render.calls,camera:this.camera.position.toArray(),target:this.controls.target.toArray(),framingInsets:{...this.framingInsets},groupCounts:Object.fromEntries(Object.entries(this.groupIds||{}).map(([id,ids])=>[id,ids.size])),trajectory:this.trajectoryGuide.getStatus(),motion:this.motion?.getMetrics()};}
+  getStatus(){return{ready:!!this.motion,mode:this.mode,layer:this.layer,selectedGroup:this.selectedGroup,selectedPart:this.selectedPart?.id||null,focused:this.focused,time:this.time,playing:this.playing,character:'Snow Rig',coachVisible:!!(this.motion?.getDisplayModel?.()??this.coach)?.visible,anatomyVisible:this.anatomy.visible,parts:this.parts.length,triangles:this.manifest?.triangles,drawCalls:this.renderer.info.render.calls,camera:this.camera.position.toArray(),target:this.controls.target.toArray(),framingInsets:{...this.framingInsets},groupCounts:Object.fromEntries(Object.entries(this.groupIds||{}).map(([id,ids])=>[id,ids.size])),trajectory:this.trajectoryGuide.getStatus(),motion:this.motion?.getMetrics()};}
   projectPart(id){const mesh=this.parts.find(m=>m.userData.part.id===id);if(!mesh)return null;const center=mesh.geometry.boundingBox.getCenter(new THREE.Vector3()).project(this.camera);return{x:(center.x+1)/2*this.container.clientWidth,y:(1-center.y)/2*this.container.clientHeight,name:mesh.userData.part.name,hotspot:mesh.userData.part.hotspot};}
   coachBounds(){
     const box=new THREE.Box3();if(!this.coach)return box;
-    this.coach.updateMatrixWorld(true);
-    this.coach.traverse(mesh=>{if(!mesh.isMesh)return;if(mesh.isSkinnedMesh){mesh.skeleton.update();mesh.computeBoundingBox();box.union(mesh.boundingBox.clone().applyMatrix4(mesh.matrixWorld));}else{mesh.geometry.computeBoundingBox();box.union(mesh.geometry.boundingBox.clone().applyMatrix4(mesh.matrixWorld));}});
+    const coach=this.motion?.getDisplayModel?.()??this.coach;coach.updateMatrixWorld(true);
+    coach.traverse(mesh=>{if(!mesh.isMesh)return;if(mesh.isSkinnedMesh){mesh.skeleton.update();mesh.computeBoundingBox();box.union(mesh.boundingBox.clone().applyMatrix4(mesh.matrixWorld));}else{mesh.geometry.computeBoundingBox();box.union(mesh.geometry.boundingBox.clone().applyMatrix4(mesh.matrixWorld));}});
     return box;
   }
   projectCoach(){
     if(!this.coach)return null;
-    const box=new THREE.Box3(),point=new THREE.Vector3(),projected=new THREE.Vector3(),min=[Infinity,Infinity],max=[-Infinity,-Infinity];this.coach.updateMatrixWorld(true);this.camera.updateMatrixWorld();
-    this.coach.traverse(mesh=>{if(!mesh.isMesh||!mesh.geometry.attributes.position)return;mesh.skeleton?.update();for(let i=0;i<mesh.geometry.attributes.position.count;i++){mesh.getVertexPosition(i,point).applyMatrix4(mesh.matrixWorld);box.expandByPoint(point);projected.copy(point).project(this.camera);min[0]=Math.min(min[0],projected.x);min[1]=Math.min(min[1],projected.y);max[0]=Math.max(max[0],projected.x);max[1]=Math.max(max[1],projected.y);}});
+    const coach=this.motion?.getDisplayModel?.()??this.coach;
+    const box=new THREE.Box3(),point=new THREE.Vector3(),projected=new THREE.Vector3(),min=[Infinity,Infinity],max=[-Infinity,-Infinity];coach.updateMatrixWorld(true);this.camera.updateMatrixWorld();
+    coach.traverse(mesh=>{if(!mesh.isMesh||!mesh.geometry.attributes.position)return;mesh.skeleton?.update();for(let i=0;i<mesh.geometry.attributes.position.count;i++){mesh.getVertexPosition(i,point).applyMatrix4(mesh.matrixWorld);box.expandByPoint(point);projected.copy(point).project(this.camera);min[0]=Math.min(min[0],projected.x);min[1]=Math.min(min[1],projected.y);max[0]=Math.max(max[0],projected.x);max[1]=Math.max(max[1],projected.y);}});
     return box.isEmpty()?null:{min,max,bounds:[box.min.toArray(),box.max.toArray()]};
   }
   projectHandle(id){const state=this.poseEditor?.getState();const handle=(state?.enabled?state.handles:this.motion?.getEditableHandles())?.find(h=>h.id===id);if(!handle)return null;const p=this.motion.group.localToWorld(new THREE.Vector3().fromArray(handle.position)).project(this.camera);return{x:(p.x+1)/2*this.container.clientWidth,y:(1-p.y)/2*this.container.clientHeight};}
