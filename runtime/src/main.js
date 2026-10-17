@@ -320,7 +320,7 @@ $('#use-v42-default').addEventListener('click',()=>{
     replaceDemonstration(structuredClone(V42_DEFAULT_SEQUENCE),'v42');
     movementPanel?.setSequence({...demonstration,...transitionPanel.options(),motionModel});
     movementTransport?.setSequence({...demonstration,...transitionPanel.options(),motionModel});
-    toast('已采用 v42 / R16；此前动画已独立备份，个人步骤和过渡草稿保留，可撤销展示替换。');
+    toast('已采用 v42 / R17；此前动画已独立备份，个人步骤和过渡草稿保留，可撤销展示替换。');
   }catch(error){toast(error.message);}
 });
 $('#use-v41-default').addEventListener('click',()=>{

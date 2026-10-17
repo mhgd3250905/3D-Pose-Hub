@@ -103,9 +103,9 @@ export class BodyViewer {
     }
     for(const [key,geometries] of batchParts){const mesh=new THREE.Mesh(mergeGeometries(geometries,false),key==='bones'?this.boneMaterial:this.muscleMaterial);mesh.userData.batch=key;this.batches.push(mesh);this.anatomy.add(mesh);}
     this.callbacks.onProgress?.(88,'载入运动人物与骨骼…');await nextFrame();
-    const [gltf,rigResponse,v42Gltf,clockResponse,r12Gltf,r12ClockResponse,r15Gltf,r15ClockResponse]=await Promise.all([new GLTFLoader().loadAsync('/coach/flare-coach.glb'),fetch('/coach/coach-rig.json'),new GLTFLoader().loadAsync('/coach/flare-coach-v42-r16-animated.glb'),fetch('/coach/flare-v42-r16-clock.json'),new GLTFLoader().loadAsync('/coach/flare-coach-v42-r12-animated.glb'),fetch('/coach/flare-v42-clock.json'),new GLTFLoader().loadAsync('/coach/flare-coach-v42-r15-animated.glb'),fetch('/coach/flare-v42-r15-clock.json')]);
+    const [gltf,rigResponse,v42Gltf,clockResponse,r12Gltf,r12ClockResponse,r15Gltf,r15ClockResponse,r16Gltf,r16ClockResponse]=await Promise.all([new GLTFLoader().loadAsync('/coach/flare-coach.glb'),fetch('/coach/coach-rig.json'),new GLTFLoader().loadAsync('/coach/flare-coach-v42-r17-animated.glb'),fetch('/coach/flare-v42-r17-clock.json'),new GLTFLoader().loadAsync('/coach/flare-coach-v42-r12-animated.glb'),fetch('/coach/flare-v42-clock.json'),new GLTFLoader().loadAsync('/coach/flare-coach-v42-r15-animated.glb'),fetch('/coach/flare-v42-r15-clock.json'),new GLTFLoader().loadAsync('/coach/flare-coach-v42-r16-animated.glb'),fetch('/coach/flare-v42-r16-clock.json')]);
     if(!rigResponse.ok)throw new Error('无法读取运动人物骨骼');
-    if(!clockResponse.ok||!r12ClockResponse.ok||!r15ClockResponse.ok)throw new Error('无法读取 v42 动作时间映射');
+    if(!clockResponse.ok||!r12ClockResponse.ok||!r15ClockResponse.ok||!r16ClockResponse.ok)throw new Error('无法读取 v42 动作时间映射');
     this.coach=gltf.scene;this.coach.name='Snow · Flare coach';this.coach.traverse(object=>{if(object.isMesh){object.castShadow=true;}});
     this.rigData=await rigResponse.json();
     this.motion=createCoachMotion({model:this.coach,rigData:this.rigData});
@@ -120,7 +120,7 @@ export class BodyViewer {
       if(bounds?.min?.length===3&&bounds?.max?.length===3&&[...bounds.min,...bounds.max].every(Number.isFinite))this.motionBounds.union(new THREE.Box3(new THREE.Vector3().fromArray(bounds.min),new THREE.Vector3().fromArray(bounds.max)));
     }
     this.motion.reset();
-    this.motion=createV42Playback({base:this.motion,gltf:v42Gltf,clockDocument:await clockResponse.json(),historical:[{gltf:r12Gltf,clockDocument:await r12ClockResponse.json()},{gltf:r15Gltf,clockDocument:await r15ClockResponse.json()}],scene:this.scene,rigData:this.rigData});
+    this.motion=createV42Playback({base:this.motion,gltf:v42Gltf,clockDocument:await clockResponse.json(),historical:[{gltf:r12Gltf,clockDocument:await r12ClockResponse.json()},{gltf:r15Gltf,clockDocument:await r15ClockResponse.json()},{gltf:r16Gltf,clockDocument:await r16ClockResponse.json()}],scene:this.scene,rigData:this.rigData});
     if(this.motionBounds.isEmpty())this.motionBounds.set(new THREE.Vector3(-height*.72,0,-height*.72),new THREE.Vector3(height*.72,height*.96,height*.72));
     else this.motionBounds.expandByScalar(height*.045);
     this.movementBounds=this.motionBounds.clone();

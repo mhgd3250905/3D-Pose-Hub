@@ -8,8 +8,8 @@ export const V42_DEFAULT_SEQUENCE = {
   ...clone(OFFICIAL_FLARE_SEQUENCE),
   // Separate playback identity keeps all v41 K frames and routes in their
   // original library entry instead of applying them to the accepted clip.
-  steps: OFFICIAL_FLARE_SEQUENCE.steps.map(step => ({ ...clone(step), id: `${step.id}-v42-r16` })),
-  source: { ...clone(OFFICIAL_FLARE_SEQUENCE.source), playback: 'flare-v42-r16' },
+  steps: OFFICIAL_FLARE_SEQUENCE.steps.map(step => ({ ...clone(step), id: `${step.id}-v42-r17` })),
+  source: { ...clone(OFFICIAL_FLARE_SEQUENCE.source), playback: 'flare-v42-r17' },
 };
 export const V42_R12_SEQUENCE = {
   ...clone(V42_DEFAULT_SEQUENCE),
@@ -21,12 +21,17 @@ export const V42_R15_SEQUENCE = {
   steps: OFFICIAL_FLARE_SEQUENCE.steps.map(step => ({ ...clone(step), id: `${step.id}-v42-r15` })),
   source: { ...clone(OFFICIAL_FLARE_SEQUENCE.source), playback: 'flare-v42-r15' },
 };
+export const V42_R16_SEQUENCE = {
+  ...clone(V42_DEFAULT_SEQUENCE),
+  steps: OFFICIAL_FLARE_SEQUENCE.steps.map(step => ({ ...clone(step), id: `${step.id}-v42-r16` })),
+  source: { ...clone(OFFICIAL_FLARE_SEQUENCE.source), playback: 'flare-v42-r16' },
+};
 export function v42SequenceVersion(sequence) {
-  return ['flare-v42-r12', 'flare-v42-r15', 'flare-v42-r16'].includes(sequence?.source?.playback) ? sequence.source.playback : null;
+  return ['flare-v42-r12', 'flare-v42-r15', 'flare-v42-r16', 'flare-v42-r17'].includes(sequence?.source?.playback) ? sequence.source.playback : null;
 }
 export function isV42Sequence(sequence) {
   return v42SequenceVersion(sequence) !== null && sequence.period === 9 &&
-    samePose(sequence.steps, sequence.source.playback === 'flare-v42-r12' ? V42_R12_SEQUENCE.steps : sequence.source.playback === 'flare-v42-r15' ? V42_R15_SEQUENCE.steps : V42_DEFAULT_SEQUENCE.steps) && sequence.motionModel !== 'periodic' &&
+    samePose(sequence.steps, sequence.source.playback === 'flare-v42-r12' ? V42_R12_SEQUENCE.steps : sequence.source.playback === 'flare-v42-r15' ? V42_R15_SEQUENCE.steps : sequence.source.playback === 'flare-v42-r16' ? V42_R16_SEQUENCE.steps : V42_DEFAULT_SEQUENCE.steps) && sequence.motionModel !== 'periodic' &&
     !['corrections', 'footCurves', 'segmentGuides', 'skippedSteps'].some(key => sequence[key]?.length) &&
     sequence.interpolation !== 'linear' && sequence.legPath !== 'linear';
 }
@@ -53,7 +58,7 @@ export function saveV42DefaultSequence(storage) {
   catch { throw new Error('已有动作备份无法读取，当前动画已保留。'); }
   if (history?.format !== 'flare-v42-selection-history' || history.version !== 1 || !Array.isArray(history.entries))
     throw new Error('已有动作备份无法读取，当前动画已保留。');
-  history.entries.push({ selectedAt: new Date().toISOString(), target: 'flare-v42-r16', storage: snapshot, previous });
+  history.entries.push({ selectedAt: new Date().toISOString(), target: 'flare-v42-r17', storage: snapshot, previous });
   const backup = JSON.stringify(history);
   storage.setItem(V42_SELECTION_HISTORY_KEY, backup);
   if (storage.getItem(V42_SELECTION_HISTORY_KEY) !== backup) throw new Error('动作备份未保存成功，当前动画已保留。');
