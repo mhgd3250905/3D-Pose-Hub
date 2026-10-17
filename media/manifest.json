@@ -8,7 +8,7 @@
       "createdAt": "2026-10-17T14:59:26Z",
       "publishedAt": null,
       "model": "training-human-v2@2.0.1",
-      "notes": "HipLab 2026-10-17 final 46 selections. Existing dark videos and posters only; light deferred to a new release. Render overrides: fps=30, modelProfile=training-human-v2, alignClavicles=false; glow-b plus inherited default theme. Dark derived from exact alpha onto #101013, H.264 yuv420p CRF18. Three accepted action repairs are bound through specOverrides. Provenance: media/releases/0.1.0.sources.json; review: media/releases/0.1.0.md. Greenscreen masters and alpha frames are local-only; originals retained and verified copies kept on E drive as requested. R2 not published.",
+      "notes": "HipLab 46 selected actions; four accepted r2 repairs rerendered on Pose-Hub RTX 4080 at 1080/30fps/PR2 after PR #1 review. Seven revision bindings total; original-ID wrappers for s-frog, s-9090, h-9090-liftoff, h-quad-cars. Exact-alpha dark #101013, H.264 yuv420p CRF18; glow-b with inherited defaults. Provenance: media/releases/0.1.0.sources.json; review and limitations: media/releases/0.1.0.md. Existing media backed up on E drive before replacement. Greenscreen and alpha local-only. Light deferred to a new release; FlareLab not included. Status remains draft; R2 not published.",
       "items": [
         {
           "id": "glute-max-A",
@@ -109,14 +109,14 @@
           "file": "h-9090-liftoff/h-9090-liftoff.alpha.frames.1080.frames/",
           "local": "greenscreen/alpha/h-9090-liftoff/",
           "storage": "local",
-          "bytes": 33320992,
-          "sha256": "0d0d5e40709e81fe4c5a12d0a2a759101e8a033ccd3c7f75b7710839ad3521df",
+          "bytes": 34454570,
+          "sha256": "da16ae322076d67ea99474edbcd4ea3d96f8360e9abe885c2a641115ab8db2ec",
           "width": 1080,
           "height": 1080,
           "frames": 240,
           "spec": {
-            "path": "drill-anim/specs/h-9090-liftoff.js",
-            "sha256": "fc2f115704e833006110f23a82ad963c9b5986b8169f4410bfedc2b46c2aed52"
+            "path": "drill-anim/specs/h-9090-liftoff-r2.js",
+            "sha256": "970923cb389bef0c36da460477edf38b6c4e9b52926081dc6df357a9ff1cdacc"
           },
           "theme": {
             "path": "drill-anim/themes/glow-b.json",
@@ -131,13 +131,13 @@
           "file": "h-9090-liftoff/h-9090-liftoff.dark.poster.1080.jpg",
           "local": "dark/posters/h-9090-liftoff.jpg",
           "storage": "r2",
-          "bytes": 23371,
-          "sha256": "3ac8b31f0e2d154252a92cf7ed7ce5bc51dfa1715c9dc55223d7e8fcb3f0e6a6",
+          "bytes": 23795,
+          "sha256": "cd08dc42e6fccb06b98994478f2cdb36400d855be18f383b56bbd28cd79aa52f",
           "width": 1080,
           "height": 1080,
           "spec": {
-            "path": "drill-anim/specs/h-9090-liftoff.js",
-            "sha256": "fc2f115704e833006110f23a82ad963c9b5986b8169f4410bfedc2b46c2aed52"
+            "path": "drill-anim/specs/h-9090-liftoff-r2.js",
+            "sha256": "970923cb389bef0c36da460477edf38b6c4e9b52926081dc6df357a9ff1cdacc"
           },
           "theme": {
             "path": "drill-anim/themes/glow-b.json",
@@ -152,16 +152,16 @@
           "file": "h-9090-liftoff/h-9090-liftoff.dark.1080.mp4",
           "local": "dark/h-9090-liftoff.mp4",
           "storage": "r2",
-          "bytes": 770579,
-          "sha256": "d4d29269c3ce3cd7ce64b60e1d6db66fc1ec1abed3ae3f5125f15ae262858708",
+          "bytes": 808819,
+          "sha256": "f21385aa8270cfc4cf673232b36863e8efdf91af29ec21b1ab0cfef5c3eca432",
           "width": 1080,
           "height": 1080,
           "durationSec": 8.0,
           "fps": 30.0,
           "frames": 240,
           "spec": {
-            "path": "drill-anim/specs/h-9090-liftoff.js",
-            "sha256": "fc2f115704e833006110f23a82ad963c9b5986b8169f4410bfedc2b46c2aed52"
+            "path": "drill-anim/specs/h-9090-liftoff-r2.js",
+            "sha256": "970923cb389bef0c36da460477edf38b6c4e9b52926081dc6df357a9ff1cdacc"
           },
           "theme": {
             "path": "drill-anim/themes/glow-b.json",
@@ -176,16 +176,16 @@
           "file": "h-9090-liftoff/h-9090-liftoff.greenscreen.1080.mp4",
           "local": "greenscreen/media/master/h-9090-liftoff-greenscreen.mp4",
           "storage": "local",
-          "bytes": 1276719,
-          "sha256": "cb342b6b20808270e143a59bb52674a0551136f2c802369e8693075a6d514a29",
+          "bytes": 1722319,
+          "sha256": "a28c83b00494e28caaa7dcf600064d5c9887109164a2a5c42e277ea192b885c3",
           "width": 1080,
           "height": 1080,
           "durationSec": 8.0,
           "fps": 30.0,
           "frames": 240,
           "spec": {
-            "path": "drill-anim/specs/h-9090-liftoff.js",
-            "sha256": "fc2f115704e833006110f23a82ad963c9b5986b8169f4410bfedc2b46c2aed52"
+            "path": "drill-anim/specs/h-9090-liftoff-r2.js",
+            "sha256": "970923cb389bef0c36da460477edf38b6c4e9b52926081dc6df357a9ff1cdacc"
           },
           "theme": {
             "path": "drill-anim/themes/glow-b.json",
@@ -837,14 +837,14 @@
           "file": "h-quad-cars/h-quad-cars.alpha.frames.1080.frames/",
           "local": "greenscreen/alpha/h-quad-cars/",
           "storage": "local",
-          "bytes": 39263582,
-          "sha256": "776595e5d7a221b3d6e88154f2b4cb1ca6cee25101400b3b6680e1072f4a6221",
+          "bytes": 39941322,
+          "sha256": "59ae363d1db789ed08eee1dd0e440d5ea555fd3b7895a82be12875c045fd434b",
           "width": 1080,
           "height": 1080,
           "frames": 240,
           "spec": {
-            "path": "drill-anim/specs/h-quad-cars.js",
-            "sha256": "33b82f385715391f2142e9c8eb9fef5302652cf73a8fac61142a68fa23248929"
+            "path": "drill-anim/specs/h-quad-cars-r2.js",
+            "sha256": "9daa31fc3d0cb9b4b1007f80b1e697c44e8c47ad52dcf037497104c4ccad4d8b"
           },
           "theme": {
             "path": "drill-anim/themes/glow-b.json",
@@ -859,13 +859,13 @@
           "file": "h-quad-cars/h-quad-cars.dark.poster.1080.jpg",
           "local": "dark/posters/h-quad-cars.jpg",
           "storage": "r2",
-          "bytes": 27742,
-          "sha256": "420fe6fc5f37525b175f6b40cfdaa4a8500292950f7a7cbede23b501f102af0f",
+          "bytes": 27594,
+          "sha256": "062eccf6cf312b0a7b9471180be3b7cc2a64c3f9df3587c09ef7d8296714b301",
           "width": 1080,
           "height": 1080,
           "spec": {
-            "path": "drill-anim/specs/h-quad-cars.js",
-            "sha256": "33b82f385715391f2142e9c8eb9fef5302652cf73a8fac61142a68fa23248929"
+            "path": "drill-anim/specs/h-quad-cars-r2.js",
+            "sha256": "9daa31fc3d0cb9b4b1007f80b1e697c44e8c47ad52dcf037497104c4ccad4d8b"
           },
           "theme": {
             "path": "drill-anim/themes/glow-b.json",
@@ -880,16 +880,16 @@
           "file": "h-quad-cars/h-quad-cars.dark.1080.mp4",
           "local": "dark/h-quad-cars.mp4",
           "storage": "r2",
-          "bytes": 1062963,
-          "sha256": "3660c41f4631ff4e1fd1eff999226e8ff9a0008d345a646d50cc4fd1e5dc5d51",
+          "bytes": 1054053,
+          "sha256": "d95a36a950cb1e0823f606d55a87198070b3508029d8e23c6e0539a428819d51",
           "width": 1080,
           "height": 1080,
           "durationSec": 8.0,
           "fps": 30.0,
           "frames": 240,
           "spec": {
-            "path": "drill-anim/specs/h-quad-cars.js",
-            "sha256": "33b82f385715391f2142e9c8eb9fef5302652cf73a8fac61142a68fa23248929"
+            "path": "drill-anim/specs/h-quad-cars-r2.js",
+            "sha256": "9daa31fc3d0cb9b4b1007f80b1e697c44e8c47ad52dcf037497104c4ccad4d8b"
           },
           "theme": {
             "path": "drill-anim/themes/glow-b.json",
@@ -904,16 +904,16 @@
           "file": "h-quad-cars/h-quad-cars.greenscreen.1080.mp4",
           "local": "greenscreen/media/master/h-quad-cars-greenscreen.mp4",
           "storage": "local",
-          "bytes": 2210011,
-          "sha256": "cf1443c4e86b7cca7607655ca2b54c5c3b93375b711e08d9d9c3f0e917af9f0a",
+          "bytes": 2193307,
+          "sha256": "a648066ab9c6481b6054ce15f027eec59862593a8f30f2dc4bce44fa51da326f",
           "width": 1080,
           "height": 1080,
           "durationSec": 8.0,
           "fps": 30.0,
           "frames": 240,
           "spec": {
-            "path": "drill-anim/specs/h-quad-cars.js",
-            "sha256": "33b82f385715391f2142e9c8eb9fef5302652cf73a8fac61142a68fa23248929"
+            "path": "drill-anim/specs/h-quad-cars-r2.js",
+            "sha256": "9daa31fc3d0cb9b4b1007f80b1e697c44e8c47ad52dcf037497104c4ccad4d8b"
           },
           "theme": {
             "path": "drill-anim/themes/glow-b.json",
@@ -3203,14 +3203,14 @@
           "file": "s-9090/s-9090.alpha.frames.1080.frames/",
           "local": "greenscreen/alpha/s-9090/",
           "storage": "local",
-          "bytes": 27245966,
-          "sha256": "ea9da123de46ec915aa8366294b94649ae5c7592b3024dddcb5f12591632a1e4",
+          "bytes": 25840760,
+          "sha256": "81dcfb86a8f0e771997fa1a7c2c5a1f7b3e6862f455d0f71166530f69d82d157",
           "width": 1080,
           "height": 1080,
           "frames": 240,
           "spec": {
-            "path": "drill-anim/specs/s-9090.js",
-            "sha256": "78e9d75e8aaefecab5db9ae8921085d426cc50baac5f6ade796854f8a92e7f62"
+            "path": "drill-anim/specs/s-9090-r2.js",
+            "sha256": "81d8d8629e9c90559dd715465ad4002e6bc7d3baa6a5e261eb3ad97a55f4aa2e"
           },
           "theme": {
             "path": "drill-anim/themes/glow-b.json",
@@ -3225,13 +3225,13 @@
           "file": "s-9090/s-9090.dark.poster.1080.jpg",
           "local": "dark/posters/s-9090.jpg",
           "storage": "r2",
-          "bytes": 22213,
-          "sha256": "cdd2754b260da9fd9109ca67cf64e4e2266fffa929a487fcfbae13c47797045f",
+          "bytes": 20957,
+          "sha256": "3bfc3cc8d3725aaf16caf5cf89110faef7d2379c1fa0829db36bfac3f3bc5df1",
           "width": 1080,
           "height": 1080,
           "spec": {
-            "path": "drill-anim/specs/s-9090.js",
-            "sha256": "78e9d75e8aaefecab5db9ae8921085d426cc50baac5f6ade796854f8a92e7f62"
+            "path": "drill-anim/specs/s-9090-r2.js",
+            "sha256": "81d8d8629e9c90559dd715465ad4002e6bc7d3baa6a5e261eb3ad97a55f4aa2e"
           },
           "theme": {
             "path": "drill-anim/themes/glow-b.json",
@@ -3246,16 +3246,16 @@
           "file": "s-9090/s-9090.dark.1080.mp4",
           "local": "dark/s-9090.mp4",
           "storage": "r2",
-          "bytes": 758425,
-          "sha256": "6fcfc6cce6bf62cca222e01b81cc549b7693922f3aa394a1de23398d4377479a",
+          "bytes": 673379,
+          "sha256": "c7900c5c419924ab522b23c1212b4ea60b2b3faff6dd0424179f0be58ab57b87",
           "width": 1080,
           "height": 1080,
           "durationSec": 8.0,
           "fps": 30.0,
           "frames": 240,
           "spec": {
-            "path": "drill-anim/specs/s-9090.js",
-            "sha256": "78e9d75e8aaefecab5db9ae8921085d426cc50baac5f6ade796854f8a92e7f62"
+            "path": "drill-anim/specs/s-9090-r2.js",
+            "sha256": "81d8d8629e9c90559dd715465ad4002e6bc7d3baa6a5e261eb3ad97a55f4aa2e"
           },
           "theme": {
             "path": "drill-anim/themes/glow-b.json",
@@ -3270,16 +3270,16 @@
           "file": "s-9090/s-9090.greenscreen.1080.mp4",
           "local": "greenscreen/media/master/s-9090-greenscreen.mp4",
           "storage": "local",
-          "bytes": 1601433,
-          "sha256": "323072ee90c49c9a1c3b193ef15217fd63f32c206ba129280bbad30524bd76ae",
+          "bytes": 1419854,
+          "sha256": "d3542cd08c2e3c095f1c2342fe0f27bf701ee7b04a944fb781bfc7ebea31c4b3",
           "width": 1080,
           "height": 1080,
           "durationSec": 8.0,
           "fps": 30.0,
           "frames": 240,
           "spec": {
-            "path": "drill-anim/specs/s-9090.js",
-            "sha256": "78e9d75e8aaefecab5db9ae8921085d426cc50baac5f6ade796854f8a92e7f62"
+            "path": "drill-anim/specs/s-9090-r2.js",
+            "sha256": "81d8d8629e9c90559dd715465ad4002e6bc7d3baa6a5e261eb3ad97a55f4aa2e"
           },
           "theme": {
             "path": "drill-anim/themes/glow-b.json",
@@ -3476,14 +3476,14 @@
           "file": "s-frog/s-frog.alpha.frames.1080.frames/",
           "local": "greenscreen/alpha/s-frog/",
           "storage": "local",
-          "bytes": 27773146,
-          "sha256": "a5f32cb0d0ecd6363b8f95c5f0c59ee1eb6673f67c95f0b871d188ccd9a6469c",
+          "bytes": 22603539,
+          "sha256": "b24123875d3eeeb87cf2f39d59adef433c044d458fef1b47eed84cacb6a07ee8",
           "width": 1080,
           "height": 1080,
           "frames": 240,
           "spec": {
-            "path": "drill-anim/specs/s-frog.js",
-            "sha256": "bf056bbfb6f1024a18077509ecdf691d2ce4118b32b95930a6fefb2e80915277"
+            "path": "drill-anim/specs/s-frog-r2.js",
+            "sha256": "3acf8825596f68d494ca1cb938fc76cdabe7f8cdf3c2827c71ba3ce408eabffa"
           },
           "theme": {
             "path": "drill-anim/themes/glow-b.json",
@@ -3498,13 +3498,13 @@
           "file": "s-frog/s-frog.dark.poster.1080.jpg",
           "local": "dark/posters/s-frog.jpg",
           "storage": "r2",
-          "bytes": 21182,
-          "sha256": "a5dfdf3d78fbaa94bbd23b39a4e649194648b4b3869c51b6df4f28ba9a1f7cf3",
+          "bytes": 18890,
+          "sha256": "39101bc8ab35345b1bf77a3e2bd5aa2d1ed39d1da58ddbb02d7582ce70537f26",
           "width": 1080,
           "height": 1080,
           "spec": {
-            "path": "drill-anim/specs/s-frog.js",
-            "sha256": "bf056bbfb6f1024a18077509ecdf691d2ce4118b32b95930a6fefb2e80915277"
+            "path": "drill-anim/specs/s-frog-r2.js",
+            "sha256": "3acf8825596f68d494ca1cb938fc76cdabe7f8cdf3c2827c71ba3ce408eabffa"
           },
           "theme": {
             "path": "drill-anim/themes/glow-b.json",
@@ -3519,16 +3519,16 @@
           "file": "s-frog/s-frog.dark.1080.mp4",
           "local": "dark/s-frog.mp4",
           "storage": "r2",
-          "bytes": 565677,
-          "sha256": "5c2bc9aeb71d6acc1ec0f743b7a9afbb963129f79f3501ea7945728385adbeee",
+          "bytes": 485993,
+          "sha256": "3b44392a7d2955d2ea0df3ff41fd3067477ce742d438aa3b280018035a3c1fd7",
           "width": 1080,
           "height": 1080,
           "durationSec": 8.0,
           "fps": 30.0,
           "frames": 240,
           "spec": {
-            "path": "drill-anim/specs/s-frog.js",
-            "sha256": "bf056bbfb6f1024a18077509ecdf691d2ce4118b32b95930a6fefb2e80915277"
+            "path": "drill-anim/specs/s-frog-r2.js",
+            "sha256": "3acf8825596f68d494ca1cb938fc76cdabe7f8cdf3c2827c71ba3ce408eabffa"
           },
           "theme": {
             "path": "drill-anim/themes/glow-b.json",
@@ -3543,16 +3543,16 @@
           "file": "s-frog/s-frog.greenscreen.1080.mp4",
           "local": "greenscreen/media/master/s-frog-greenscreen.mp4",
           "storage": "local",
-          "bytes": 1263195,
-          "sha256": "5931946be9d5a5f1506edfed9892be2a74a79efc2f77697ca033ba5c721d6876",
+          "bytes": 1045435,
+          "sha256": "0746bc3e58d71acc0ce81ba1968fc28dadba4d8d85c151bc4ce6faf2fd23f6e7",
           "width": 1080,
           "height": 1080,
           "durationSec": 8.0,
           "fps": 30.0,
           "frames": 240,
           "spec": {
-            "path": "drill-anim/specs/s-frog.js",
-            "sha256": "bf056bbfb6f1024a18077509ecdf691d2ce4118b32b95930a6fefb2e80915277"
+            "path": "drill-anim/specs/s-frog-r2.js",
+            "sha256": "3acf8825596f68d494ca1cb938fc76cdabe7f8cdf3c2827c71ba3ce408eabffa"
           },
           "theme": {
             "path": "drill-anim/themes/glow-b.json",
@@ -4197,7 +4197,7 @@
           }
         }
       ],
-      "updatedAt": "2026-10-17T15:00:45Z"
+      "updatedAt": "2026-10-17T15:45:28Z"
     }
   },
   "_doc": "Pose-Hub media manifest. Releases are added by media/tools/ingest.py and marked published by media/tools/publish.py. A published release is immutable. See media/README.md."

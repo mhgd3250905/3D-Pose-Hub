@@ -1,12 +1,21 @@
 {
   "schema": 1,
   "version": "0.1.0",
-  "selectionSha256": "6e0e8f41a0bdf32901d03e0eb2a5015e9ddb5bf1e288e8305376ea39ae5f7b1a",
+  "selectionSha256": "7d3f0a9f73b3d43fa582c4d4c457fd648d1bfbeef1bbc9e078ec0f1cfa8cba83",
   "materializedSpecHashMeaning": "SHA256 of original serialized JSON bytes, not JS source text. JS source hashes use UTF-8 with CRLF normalized to LF.",
   "renderProfile": {
     "fps": 30,
     "modelProfile": "training-human-v2",
-    "alignClavicles": false
+    "alignClavicles": false,
+    "appSlotIdWrapper": {
+      "appliesTo": [
+        "s-frog",
+        "s-9090",
+        "h-9090-liftoff",
+        "h-quad-cars"
+      ],
+      "expression": "{...source, id:'<original-id>', fps:30, modelProfile:'training-human-v2', alignClavicles:false}"
+    }
   },
   "theme": {
     "overlay": {
@@ -35,7 +44,11 @@
   "specOverrides": {
     "h-knee-hug": "drill-anim/specs/h-knee-hug-r2.js",
     "h-supine-twist": "drill-anim/specs/h-supine-twist-r2.js",
-    "s-seated-fold": "drill-anim/specs/s-seated-fold-r3.js"
+    "s-seated-fold": "drill-anim/specs/s-seated-fold-r3.js",
+    "s-frog": "drill-anim/specs/s-frog-r2.js",
+    "s-9090": "drill-anim/specs/s-9090-r2.js",
+    "h-9090-liftoff": "drill-anim/specs/h-9090-liftoff-r2.js",
+    "h-quad-cars": "drill-anim/specs/h-quad-cars-r2.js"
   },
   "greenRecipes": {
     "v3": {
@@ -67,54 +80,1005 @@
       "codec": "h264",
       "pixel_format": "yuv444p",
       "crf": 12
+    },
+    "r2-v3": {
+      "version": 3,
+      "producer_sha256": "3c0d6b3a91e3427c00811dbc3b497c973560c986e914ae870778025c46cd708c",
+      "background": "#00FF00",
+      "size": 1080,
+      "fps": 30,
+      "codec": "h264",
+      "pixel_format": "yuv444p",
+      "crf": 12,
+      "placement": "Source place.json with Python comp.py rounding; Pillow Lanczos resize, paste without mask",
+      "alpha": "straight, FFmpeg overlay alpha=straight; optional exact placed PNG sequence",
+      "keep_alpha": true,
+      "omitted": [
+        "gradient",
+        "synthetic floor shadow",
+        "outer halo",
+        "external bloom"
+      ],
+      "foreground": "Original m- RGBA body, muscle highlights and props; no recoloring or 3D rendering",
+      "ordinary_key": "Preview only: normalized RGB distance .10/.20; fixed thresholds, no muscle erosion",
+      "scope": "Composition/codec QA only; source posture pass/review is inherited; no App replacement",
+      "delegate_producer_sha256": "2d58dddd48121734e432661b34a4fc4cd32d9e3a69a49de16c6f57f791f5ce75",
+      "purpose": "4:4:4 editing/chroma-key master; derive a compatible format before Android integration",
+      "qa": "Frozen compare_pixels thresholds unchanged, including cyan MAE < 10",
+      "hq_producer_sha256": "cf0e9f31724690f57e04bebadc4d6d177a16aa606c3f5ce23d67ea23e709393a",
+      "base_producer_sha256": "2d58dddd48121734e432661b34a4fc4cd32d9e3a69a49de16c6f57f791f5ce75",
+      "cache_producer_sha256": "177cae832ba40f480358e547ad45d4c38313465a3dddfbbf4b2aae42cdcfb535",
+      "cache_delegate_sha256": "2b4820611cc2d519655be8fff387cc0f281408c3e7d49db589f1e50720b37c8a",
+      "cache_policy": "Full contiguous frame set; all current raw/spec/place/certificate/cache SHA verified; copy bytes, never resample on a cache hit; frozen calculation on miss"
     }
   },
   "items": [
-    {"id":"glute-max-A","spec":{"path":"drill-anim/specs/glute-max-A.js","sha256":"2d5844dc5caa3cfdd6ff1368133a4f798c4571da8b2908a387eb30d65f6d0c8c"},"sourceCommit":"175ff31c29895f5730fc344519da6cbe1108ab30","selectedBatch":"hiplab-hd-20261017","selectedResultSha256":"07adbbe9ba98ed4e7b15891371acf311c439db0d3c6c600e7ddd3665ceed4732","resultShaMatches":true,"materializedSpec":{"sha256":"6007b68fa0c21070713aa982c23436db283dbe0d4daf028db9b350951ad1835f","matchesPortableFields":true,"serializedBytesMatch":true},"applyRenderProfile":true,"greenRecipe":"v3","alpha":"greenscreen/alpha/glute-max-A/","frames":240},
-    {"id":"h-9090-liftoff","spec":{"path":"drill-anim/specs/h-9090-liftoff.js","sha256":"fc2f115704e833006110f23a82ad963c9b5986b8169f4410bfedc2b46c2aed52"},"sourceCommit":"175ff31c29895f5730fc344519da6cbe1108ab30","selectedBatch":"hiplab-hd-20261017","selectedResultSha256":"894cc99f8a748b2f08acc1ebda2f595d0d013f9d8d4d399a41f1f54d6a9ef622","resultShaMatches":true,"materializedSpec":{"sha256":"089fc554ed31614cf8415ac0e3745403dac55e044adee51dfeaf2bea9a81d6ed","matchesPortableFields":true,"serializedBytesMatch":true},"applyRenderProfile":true,"greenRecipe":"v1","alpha":"greenscreen/alpha/h-9090-liftoff/","frames":240},
-    {"id":"h-adductor-rock","spec":{"path":"drill-anim/specs/h-adductor-rock.js","sha256":"d8d0601eb573cac10093a6d8fe6faec47040fbe22ab269801666b62f3f12eddd"},"sourceCommit":"175ff31c29895f5730fc344519da6cbe1108ab30","selectedBatch":"hiplab-hd-20261017","selectedResultSha256":"f2b6043c811ed5482bc233e1716586222a20cd011976f939f032adc6232acf0a","resultShaMatches":true,"materializedSpec":{"sha256":"4321dea23c008d3b71957080baa73ca5a3c2517e0ea88d43b1259baa465862bf","matchesPortableFields":true,"serializedBytesMatch":true},"applyRenderProfile":true,"greenRecipe":"v2","alpha":"greenscreen/alpha/h-adductor-rock/","frames":240},
-    {"id":"h-band-hip-ir","spec":{"path":"drill-anim/specs/h-band-hip-ir.js","sha256":"161ef46ee190db2fa35ed56a8c85756d6cb9f5cca0634d5102d6024d539bf8a6"},"sourceCommit":"175ff31c29895f5730fc344519da6cbe1108ab30","selectedBatch":"hiplab-hd-20261017","selectedResultSha256":"ec5bb42023d4a0ad2888e55fd4c946c15a382bd6fe54f202a82941ca74dee28c","resultShaMatches":true,"materializedSpec":{"sha256":"d134251b3768d994ca39527ebde4fef5f18690db6db12e71d82ddbdb21302c87","matchesPortableFields":true,"serializedBytesMatch":true},"applyRenderProfile":true,"greenRecipe":"v2","alpha":"greenscreen/alpha/h-band-hip-ir/","frames":240},
-    {"id":"h-band-leg-out","spec":{"path":"drill-anim/specs/h-band-leg-out.js","sha256":"619802cda867facd7f7dd0a6b4eed82ab97f8f5b2ea38377cfdea7208fa19057"},"sourceCommit":"175ff31c29895f5730fc344519da6cbe1108ab30","selectedBatch":"hiplab-hd-20261017","selectedResultSha256":"a4d4a5a7dc920a2c7535307e8926561a82ec47990e2bd1e7738720777c0c4dd5","resultShaMatches":true,"materializedSpec":{"sha256":"e90449c493b01fccfcca0c7d78a5346bad8a0f58be06268f7f7a293e2ca55fba","matchesPortableFields":true,"serializedBytesMatch":true},"applyRenderProfile":true,"greenRecipe":"v2","alpha":"greenscreen/alpha/h-band-leg-out/","frames":240},
-    {"id":"h-butterfly-active","spec":{"path":"drill-anim/specs/h-butterfly-active.js","sha256":"58be080dfcac5075cb466e7c990e4b1a171da4bc77fb652a6b8865131ff13bb5"},"sourceCommit":"175ff31c29895f5730fc344519da6cbe1108ab30","selectedBatch":"hiplab-hd-20261017","selectedResultSha256":"6d30c5462092f86fbe07437780e7e22a1d28e93943891c1c17e7978c14ec42ed","resultShaMatches":true,"materializedSpec":{"sha256":"8fb9a84c4c40a5fe4c2289cf7f487ac114342411c7856379d4aa346af8a6321c","matchesPortableFields":true,"serializedBytesMatch":true},"applyRenderProfile":true,"greenRecipe":"v2","alpha":"greenscreen/alpha/h-butterfly-active/","frames":240},
-    {"id":"h-couch-stretch","spec":{"path":"drill-anim/specs/h-couch-stretch.js","sha256":"717616a1d48eaf389c904c37f71e67ddfeaf1b5a4c4b080c65d920760c186ef5"},"sourceCommit":"175ff31c29895f5730fc344519da6cbe1108ab30","selectedBatch":"hiplab-hd-20261017","selectedResultSha256":"2880510210f181d6c4b5f90ecf80844d481b65ac63f9ae8301b7c7ea97c1c1e7","resultShaMatches":true,"materializedSpec":{"sha256":"eec6e1023596d714a07b7f624b47641e922510373de91495ffaff71169002794","matchesPortableFields":true,"serializedBytesMatch":true},"applyRenderProfile":true,"greenRecipe":"v2","alpha":"greenscreen/alpha/h-couch-stretch/","frames":240},
-    {"id":"h-hip-gate","spec":{"path":"drill-anim/specs/h-hip-gate.js","sha256":"f65d09ec9010e2c5aecaea4a0a0bb912b3ef7af8ff3b941e74adea080ae325b6"},"sourceCommit":"175ff31c29895f5730fc344519da6cbe1108ab30","selectedBatch":"hiplab-hd-20261017","selectedResultSha256":"da243a99ceb7ab38a6cc3cbedbedc90a0f6a3160e1aa1d68cc49aace680e0d4e","resultShaMatches":true,"materializedSpec":{"sha256":"eecbfd84c6f0f50ac5bb8a96168953ed9b8d3c8da248fa8b4edfe906c3588f9d","matchesPortableFields":true,"serializedBytesMatch":true},"applyRenderProfile":true,"greenRecipe":"v2","alpha":"greenscreen/alpha/h-hip-gate/","frames":240},
-    {"id":"h-knee-hug","spec":{"path":"drill-anim/specs/h-knee-hug-r2.js","sha256":"73db57f4a968ef93b49cad8dfa07838791f5a2808ae6d1add6b36b3f12ae3e2a"},"sourceCommit":"175ff31c29895f5730fc344519da6cbe1108ab30","selectedBatch":"hiplab-fix-kneehug-20261017-r1","selectedResultSha256":"c404e7231af72b679ca5848ab5a7c48da761330929e7891b9b16ac6737318e90","resultShaMatches":true,"materializedSpec":{"sha256":"82444356c4da7a726236e1a0f1f688d28f2cf03e64a6e80aebc6c3957ec5fcdb","matchesPortableFields":true,"serializedBytesMatch":true},"applyRenderProfile":false,"greenRecipe":"v3","alpha":"greenscreen/alpha/h-knee-hug/","frames":240},
-    {"id":"h-quad-cars","spec":{"path":"drill-anim/specs/h-quad-cars.js","sha256":"33b82f385715391f2142e9c8eb9fef5302652cf73a8fac61142a68fa23248929"},"sourceCommit":"175ff31c29895f5730fc344519da6cbe1108ab30","selectedBatch":"hiplab-hd-20261017","selectedResultSha256":"3725b9d403dc3eb04a8165f8568185660762deb4035e75a22ebcc2b7f69cb519","resultShaMatches":true,"materializedSpec":{"sha256":"188c401c94bc5041dedb2909e578bcd8e590f055f7bb861037d483bb7aefe369","matchesPortableFields":true,"serializedBytesMatch":true},"applyRenderProfile":true,"greenRecipe":"v2","alpha":"greenscreen/alpha/h-quad-cars/","frames":240},
-    {"id":"h-reverse-clam","spec":{"path":"drill-anim/specs/h-reverse-clam.js","sha256":"d6dc4d1b87390a988f617381cb2bc8fe5d6cac45d353ba9fae84e550aef97db2"},"sourceCommit":"175ff31c29895f5730fc344519da6cbe1108ab30","selectedBatch":"hiplab-hd-20261017","selectedResultSha256":"deb83dff9990eec781c53ada211e35273ae84dfede03322046481bb00fc428d4","resultShaMatches":true,"materializedSpec":{"sha256":"aad01eaaa7e50bf0049a59d785b74e05c7d36f41a391305624099d8ecc8cd324","matchesPortableFields":true,"serializedBytesMatch":true},"applyRenderProfile":true,"greenRecipe":"v2","alpha":"greenscreen/alpha/h-reverse-clam/","frames":240},
-    {"id":"h-squat","spec":{"path":"drill-anim/specs/h-squat.js","sha256":"349e5313795134d9554245b07c13ca94c6f9102a4d41c2ed8ae61cd782e1e58d"},"sourceCommit":"175ff31c29895f5730fc344519da6cbe1108ab30","selectedBatch":"hiplab-hd-20261017","selectedResultSha256":"036184a07455d4ec7192de6cd7757994000759ff4bca12ba6544aef5c0e32d78","resultShaMatches":true,"materializedSpec":{"sha256":"181446627e77aaad119eb1c6dd41dd4b23fdd1280321a4d0e2e33ddddf056973","matchesPortableFields":true,"serializedBytesMatch":true},"applyRenderProfile":true,"greenRecipe":"v2","alpha":"greenscreen/alpha/h-squat/","frames":240},
-    {"id":"h-sumo-pry","spec":{"path":"drill-anim/specs/h-sumo-pry.js","sha256":"2822e6600f341862bc8491d7e58b35876bddc53c0635a727d69ec270baadac7a"},"sourceCommit":"175ff31c29895f5730fc344519da6cbe1108ab30","selectedBatch":"hiplab-hd-20261017","selectedResultSha256":"3e5b40acb2de4c5cb0583f62e510de61531a4b845e09984d272089e4d62fc14d","resultShaMatches":true,"materializedSpec":{"sha256":"f011b9e12c59a512abe7b5051a3b26799ef5af6cf468e3a0471b116786dbd2d0","matchesPortableFields":true,"serializedBytesMatch":true},"applyRenderProfile":true,"greenRecipe":"v2","alpha":"greenscreen/alpha/h-sumo-pry/","frames":240},
-    {"id":"h-supine-twist","spec":{"path":"drill-anim/specs/h-supine-twist-r2.js","sha256":"14103d9993b464853abb2502345f60bb83c2a52ecfa7ee7456b81d14385a4299"},"sourceCommit":"175ff31c29895f5730fc344519da6cbe1108ab30","selectedBatch":"hiplab-fix-twist-20261017-r1","selectedResultSha256":"8bf4e003559cb2353ee0c51af3862b34a1360430fdf35bef88e6c38850f7fc9e","resultShaMatches":true,"materializedSpec":{"sha256":"727040ab939a60e9f0d37b04ebf1374bd6937d31642af6cd3c29e87fdd2937a5","matchesPortableFields":true,"serializedBytesMatch":true},"applyRenderProfile":false,"greenRecipe":"v3","alpha":"greenscreen/alpha/h-supine-twist/","frames":240},
-    {"id":"h-wall-straddle","spec":{"path":"drill-anim/specs/h-wall-straddle.js","sha256":"e2119b273d8fc552dbaa2adab7fa09d76103d78b861f46ed1a422f93e911cf28"},"sourceCommit":"175ff31c29895f5730fc344519da6cbe1108ab30","selectedBatch":"hiplab-hd-20261017","selectedResultSha256":"2ec874c931da77c8ed923854dbea9dc38f3e1e5aa92a0bf6385f944794f9cc25","resultShaMatches":true,"materializedSpec":{"sha256":"e70ed06747331e1a7515fb9dcdb5cace7c5d0c25f0a7ff3d04104cd693001ad1","matchesPortableFields":true,"serializedBytesMatch":true},"applyRenderProfile":true,"greenRecipe":"v2","alpha":"greenscreen/alpha/h-wall-straddle/","frames":240},
-    {"id":"hip-flexors-A","spec":{"path":"drill-anim/specs/hip-flexors-A.js","sha256":"1aa89cba0c2962a1f89370d7b347e14074d0684474b76962bb17ab27efe345b5"},"sourceCommit":"175ff31c29895f5730fc344519da6cbe1108ab30","selectedBatch":"hiplab-hd-20261017","selectedResultSha256":"82c0a60c89d9a9ffc09312c8fdbd449eddb3e30bf14c65ba5b82760c9c3abe76","resultShaMatches":true,"materializedSpec":{"sha256":"af84acb2185383b93ded547d66276c723802fc885a1bd3f6907aeca6b0693cc7","matchesPortableFields":true,"serializedBytesMatch":true},"applyRenderProfile":true,"greenRecipe":"v3","alpha":"greenscreen/alpha/hip-flexors-A/","frames":240},
-    {"id":"n-chair-wiper","spec":{"path":"drill-anim/specs/n-chair-wiper.js","sha256":"5f336da54c7fb677ae7c421f23a41705ee297c5145cb12d92a1045d5f1fdfde9"},"sourceCommit":"175ff31c29895f5730fc344519da6cbe1108ab30","selectedBatch":"hiplab-hd-20261017","selectedResultSha256":"13b2a2b12817c93ab4b598566fec283f41981dd7c96a33ac2707f75edab9030a","resultShaMatches":true,"materializedSpec":{"sha256":"59099905470e916f0ac5e0a34448b4177910197f50c8ff235e8a42e8eb84c542","matchesPortableFields":true,"serializedBytesMatch":true},"applyRenderProfile":true,"greenRecipe":"v1","alpha":"greenscreen/alpha/n-chair-wiper/","frames":240},
-    {"id":"n-half-split","spec":{"path":"drill-anim/specs/n-half-split.js","sha256":"9f7e2a885349c3ae02e088e0cc932ba18ace8753e603f40f21b3963581009047"},"sourceCommit":"175ff31c29895f5730fc344519da6cbe1108ab30","selectedBatch":"hiplab-hd-20261017","selectedResultSha256":"d2a006bd3926e99931c7e2dfe1b96b3dc63d506cf8631e26a3106a26b2789e61","resultShaMatches":true,"materializedSpec":{"sha256":"71e6d946e2368520a7a198695772eb71ef47849c87063c1acb670060b16874cc","matchesPortableFields":true,"serializedBytesMatch":true},"applyRenderProfile":true,"greenRecipe":"v3","alpha":"greenscreen/alpha/n-half-split/","frames":240},
-    {"id":"n-leg-circles","spec":{"path":"drill-anim/specs/n-leg-circles.js","sha256":"36041116f7706901d5bbebf549c69e12ce6f175548776e0f7ac1ef02db29e013"},"sourceCommit":"175ff31c29895f5730fc344519da6cbe1108ab30","selectedBatch":"hiplab-hd-20261017","selectedResultSha256":"72eb5f5d6f3eae596fb383dcb9c284e4657cc0377b6dc385471e4dfc32fc466f","resultShaMatches":true,"materializedSpec":{"sha256":"4abae0cb2f1f73b6cc6d84a1a985aa7205cd56dbb6311643c7466c137e7f17af","matchesPortableFields":true,"serializedBytesMatch":true},"applyRenderProfile":true,"greenRecipe":"v3","alpha":"greenscreen/alpha/n-leg-circles/","frames":360},
-    {"id":"n-pelvis-circle","spec":{"path":"drill-anim/specs/n-pelvis-circle.js","sha256":"5e1e140167ac622a79c2874e5957b1bb1f12799d26e4950857b36c32e4690381"},"sourceCommit":"175ff31c29895f5730fc344519da6cbe1108ab30","selectedBatch":"hiplab-hd-20261017","selectedResultSha256":"5a7aa6599403058262679a10cec82188417e7ade93274eae4b32f49ec758a632","resultShaMatches":true,"materializedSpec":{"sha256":"2dd7bf2ddba984ac9df44b0ad6068411e3c89af2e69b05bdd2867493804872e3","matchesPortableFields":true,"serializedBytesMatch":true},"applyRenderProfile":true,"greenRecipe":"v3","alpha":"greenscreen/alpha/n-pelvis-circle/","frames":240},
-    {"id":"n-prone-hip-ext","spec":{"path":"drill-anim/specs/n-prone-hip-ext.js","sha256":"3e0ff5d44ecd637d6a43ef96024f4c57717cc9d3ced540203ad8002bc2412573"},"sourceCommit":"175ff31c29895f5730fc344519da6cbe1108ab30","selectedBatch":"hiplab-hd-20261017","selectedResultSha256":"19aedf4bac3e3209f2bfde5ad3639eee1caaeb1825ce2821a2955445c3f88d6f","resultShaMatches":true,"materializedSpec":{"sha256":"76e19185103be81e6ec247a44b23467826c293841a8f90c6d7ea950d698f3e79","matchesPortableFields":true,"serializedBytesMatch":true},"applyRenderProfile":true,"greenRecipe":"v3","alpha":"greenscreen/alpha/n-prone-hip-ext/","frames":240},
-    {"id":"n-prone-ir","spec":{"path":"drill-anim/specs/n-prone-ir.js","sha256":"5dc95dd335ea18a21b1b2a1f0b3faa876cf5f3f936c64649d079a19dcb3f32d5"},"sourceCommit":"175ff31c29895f5730fc344519da6cbe1108ab30","selectedBatch":"hiplab-hd-20261017","selectedResultSha256":"6b466c4c72ed1083bb044d22d9021bdd15730a4492120cf60c9599c379d517ee","resultShaMatches":true,"materializedSpec":{"sha256":"ab0c81d9deefd019cb73b7cf2250164fba2870f343c0a2bcfbc0f57f3cad64f8","matchesPortableFields":true,"serializedBytesMatch":true},"applyRenderProfile":true,"greenRecipe":"v3","alpha":"greenscreen/alpha/n-prone-ir/","frames":240},
-    {"id":"n-seated-ir-drop","spec":{"path":"drill-anim/specs/n-seated-ir-drop.js","sha256":"48e44c56e8c7de96f905d2f572c85368cab18ac313ba2413942c22726c49676a"},"sourceCommit":"175ff31c29895f5730fc344519da6cbe1108ab30","selectedBatch":"hiplab-hd-20261017","selectedResultSha256":"d886074274246b3c14de75bc1148fbb4448a322eb90c9dc86974c848d6599634","resultShaMatches":true,"materializedSpec":{"sha256":"8aef53bb5b56e956a87826f153da8406f03a34459cef32ace394e9249e956864","matchesPortableFields":true,"serializedBytesMatch":true},"applyRenderProfile":true,"greenRecipe":"v3","alpha":"greenscreen/alpha/n-seated-ir-drop/","frames":240},
-    {"id":"n-seated-knee-lift","spec":{"path":"drill-anim/specs/n-seated-knee-lift.js","sha256":"a885cd9687ee3411287999ce0d710ca380206eefed2ca88f1f16d3437552b0eb"},"sourceCommit":"175ff31c29895f5730fc344519da6cbe1108ab30","selectedBatch":"hiplab-hd-20261017","selectedResultSha256":"035664842713db91d7ced9dcb417183234e7b9429e84e9271d9b40ac35e00eda","resultShaMatches":true,"materializedSpec":{"sha256":"cb9f610e4cc63aec2c1c689ce83c13e6642ddb5525d8570b692dfd6f0a0a8938","matchesPortableFields":true,"serializedBytesMatch":true},"applyRenderProfile":true,"greenRecipe":"v3","alpha":"greenscreen/alpha/n-seated-knee-lift/","frames":240},
-    {"id":"n-seated-squeeze","spec":{"path":"drill-anim/specs/n-seated-squeeze.js","sha256":"74ba65d71cf733e7929c4cc94595a33b0cf47071dc263552abda354766ea27f1"},"sourceCommit":"175ff31c29895f5730fc344519da6cbe1108ab30","selectedBatch":"hiplab-hd-20261017","selectedResultSha256":"4fac8004e73fc30b6473cd1b9563a0658550bfb59d6fee843ed01dcf772b3e22","resultShaMatches":true,"materializedSpec":{"sha256":"024d00011080906ae880c5a3333e3dae1f5f94b7dc8f4566003e4e60f131e06e","matchesPortableFields":true,"serializedBytesMatch":true},"applyRenderProfile":true,"greenRecipe":"v3","alpha":"greenscreen/alpha/n-seated-squeeze/","frames":240},
-    {"id":"n-slider-lateral","spec":{"path":"drill-anim/specs/n-slider-lateral.js","sha256":"a6f6463269d394ad688df00a0174dd3514b52d9ead41f28be19ef7cc6f2da5b8"},"sourceCommit":"175ff31c29895f5730fc344519da6cbe1108ab30","selectedBatch":"hiplab-hd-20261017","selectedResultSha256":"29d4d235519ecc9d4de43929020d9d84ca5444cf0f37d120ae0f3bbaae672ed3","resultShaMatches":true,"materializedSpec":{"sha256":"ee6abe6ccdd87a22f6b474215c247c93c75f42f11baf36cb1ad87c393a8a72a0","matchesPortableFields":true,"serializedBytesMatch":true},"applyRenderProfile":true,"greenRecipe":"v3","alpha":"greenscreen/alpha/n-slider-lateral/","frames":240},
-    {"id":"n-squat-shift","spec":{"path":"drill-anim/specs/n-squat-shift.js","sha256":"273960ac6a819c7b0438f4647efa7606926b3e1e23a5b6d67b26ec59c25e2191"},"sourceCommit":"175ff31c29895f5730fc344519da6cbe1108ab30","selectedBatch":"hiplab-hd-20261017","selectedResultSha256":"a8317ea19837887823e84f56315aaab11bcec32a4c9c0ff23936230006397419","resultShaMatches":true,"materializedSpec":{"sha256":"df54a66b76eca79c6efeda9ebf963f32a6c2a1c8bfb278ee0b0f2fd4718b8361","matchesPortableFields":true,"serializedBytesMatch":true},"applyRenderProfile":true,"greenRecipe":"v3","alpha":"greenscreen/alpha/n-squat-shift/","frames":240},
-    {"id":"n-straddle-fold","spec":{"path":"drill-anim/specs/n-straddle-fold.js","sha256":"d23a2d5ae7bd9f218232dd0c0b4cac85af427ef46054b445d1f587a20a954d9d"},"sourceCommit":"175ff31c29895f5730fc344519da6cbe1108ab30","selectedBatch":"hiplab-hd-20261017","selectedResultSha256":"ef47cf125e277989cc6af86c3b355769b6d7816dd8769206c742ca58514f4aa9","resultShaMatches":true,"materializedSpec":{"sha256":"4abaef7d6c8896cc6ccc3f17fde00e67f14cda5433bb828b64e9389224de515d","matchesPortableFields":true,"serializedBytesMatch":true},"applyRenderProfile":true,"greenRecipe":"v3","alpha":"greenscreen/alpha/n-straddle-fold/","frames":240},
-    {"id":"n-thomas-test","spec":{"path":"drill-anim/specs/n-thomas-test.js","sha256":"62d3cfa853048dc695812c3042b2ddad2afa313aea938d02dc24ca40c824037f"},"sourceCommit":"175ff31c29895f5730fc344519da6cbe1108ab30","selectedBatch":"hiplab-hd-20261017","selectedResultSha256":"2f679ab7dde222b87b2fc8daea8d5827e6a6825aef1393a873bb4644f7710636","resultShaMatches":true,"materializedSpec":{"sha256":"df834a02cf3a2ceae4df61a041d78faae5aeaba096d2c6f94df8416b9ba1e4cf","matchesPortableFields":true,"serializedBytesMatch":true},"applyRenderProfile":true,"greenRecipe":"v3","alpha":"greenscreen/alpha/n-thomas-test/","frames":240},
-    {"id":"n-wide-fold","spec":{"path":"drill-anim/specs/n-wide-fold.js","sha256":"94f49696bdc8a7464ed3cf1ccaf2180220229da07d1deeccad05aaa8a1834452"},"sourceCommit":"175ff31c29895f5730fc344519da6cbe1108ab30","selectedBatch":"hiplab-hd-20261017","selectedResultSha256":"b1d3dc7be11b2998548c9efde5093def9fcf539a28c8530fa21cac98ba2b9f24","resultShaMatches":true,"materializedSpec":{"sha256":"e03b80c304c38e29d3f81fd94695d90a9ec669a1254d73c3cac558326d7007f9","matchesPortableFields":true,"serializedBytesMatch":true},"applyRenderProfile":true,"greenRecipe":"v3","alpha":"greenscreen/alpha/n-wide-fold/","frames":240},
-    {"id":"n-windshield","spec":{"path":"drill-anim/specs/n-windshield.js","sha256":"10d16b2ccd6c637b95b6f134236e6fa3c6bccc7943f9be72712cdc5b829f3b75"},"sourceCommit":"175ff31c29895f5730fc344519da6cbe1108ab30","selectedBatch":"hiplab-hd-20261017","selectedResultSha256":"7ad155ba07dd9bfc8d535de920ba5b594e2a0b65174fc0b490e466b25a841b53","resultShaMatches":true,"materializedSpec":{"sha256":"b37afa7b88aded84a6c942a7271226619ee0c9757fe7071e62b6a3081699a3dd","matchesPortableFields":true,"serializedBytesMatch":true},"applyRenderProfile":true,"greenRecipe":"v3","alpha":"greenscreen/alpha/n-windshield/","frames":240},
-    {"id":"o-seated-fig4","spec":{"path":"drill-anim/specs/o-seated-fig4.js","sha256":"66a147a7da04a444f705bcd3e2fd23788a1349c533847bba9f1a36ae32a0ac48"},"sourceCommit":"175ff31c29895f5730fc344519da6cbe1108ab30","selectedBatch":"hiplab-hd-20261017","selectedResultSha256":"fba6d5cf827b725502cf4a9395bc729b4eac1064b6c1ee39160d025440ba7da3","resultShaMatches":true,"materializedSpec":{"sha256":"358b5f94556707cf09761618b900ba294a89b5fc523843c69b6d2789a43dd4fc","matchesPortableFields":true,"serializedBytesMatch":true},"applyRenderProfile":true,"greenRecipe":"v2","alpha":"greenscreen/alpha/o-seated-fig4/","frames":240},
-    {"id":"o-seated-ham","spec":{"path":"drill-anim/specs/o-seated-ham.js","sha256":"871ccbd2022c8a9d2ce561750d1d75b7a45b2853ff357ca76c133a49db5a6527"},"sourceCommit":"175ff31c29895f5730fc344519da6cbe1108ab30","selectedBatch":"hiplab-hd-20261017","selectedResultSha256":"dbf57e55427e5a78a19848f86b079d0691c020149bdd5c5d4296bf7a15694c2b","resultShaMatches":true,"materializedSpec":{"sha256":"d1a541c71c2d62c0696ef0f69ba0eebd64f080e7c5255473acb64e8938003636","matchesPortableFields":true,"serializedBytesMatch":true},"applyRenderProfile":true,"greenRecipe":"v2","alpha":"greenscreen/alpha/o-seated-ham/","frames":240},
-    {"id":"o-stand-crossreach","spec":{"path":"drill-anim/specs/o-stand-crossreach.js","sha256":"9c79a2e76a8b7f87134ccec346740dc0a7122305579dd839a422056cdb464b3b"},"sourceCommit":"175ff31c29895f5730fc344519da6cbe1108ab30","selectedBatch":"hiplab-hd-20261017","selectedResultSha256":"6f22a9ccbc12a137ff10b270c26d188f48b34d976a3e3437260e0b4a40c84bd3","resultShaMatches":true,"materializedSpec":{"sha256":"a13bd15aa65fa7e5ceda10c96f15e5f77127f30eea8a0845b319169305828b2a","matchesPortableFields":true,"serializedBytesMatch":true},"applyRenderProfile":true,"greenRecipe":"v2","alpha":"greenscreen/alpha/o-stand-crossreach/","frames":240},
-    {"id":"o-stand-lunge","spec":{"path":"drill-anim/specs/o-stand-lunge.js","sha256":"c2f3984febb97819713bbbbea85196498fa6f95c8cb1a5e869cc89e580b4beaa"},"sourceCommit":"175ff31c29895f5730fc344519da6cbe1108ab30","selectedBatch":"hiplab-hd-20261017","selectedResultSha256":"634cd16baceb997a86e73c435d3bddfa9ce7fe9a3543cdcec6eab1cf7b1db43e","resultShaMatches":true,"materializedSpec":{"sha256":"31bee1bd821dc571ae130e96234dc2bea2bf784d897191532d566cfb12ea3384","matchesPortableFields":true,"serializedBytesMatch":true},"applyRenderProfile":true,"greenRecipe":"v2","alpha":"greenscreen/alpha/o-stand-lunge/","frames":240},
-    {"id":"s-9090","spec":{"path":"drill-anim/specs/s-9090.js","sha256":"78e9d75e8aaefecab5db9ae8921085d426cc50baac5f6ade796854f8a92e7f62"},"sourceCommit":"175ff31c29895f5730fc344519da6cbe1108ab30","selectedBatch":"hiplab-hd-20261017","selectedResultSha256":"cd45d732ab120ff710f8ec8d917b852469eb0028fd41931f744178d7c51de6d8","resultShaMatches":true,"materializedSpec":{"sha256":"1ad79e2d27ac82b80919f5eac6e23c49624db3be8b7d284ed8315a9d3ca46cc0","matchesPortableFields":true,"serializedBytesMatch":true},"applyRenderProfile":true,"greenRecipe":"v2","alpha":"greenscreen/alpha/s-9090/","frames":240},
-    {"id":"s-butterfly","spec":{"path":"drill-anim/specs/s-butterfly.js","sha256":"67b29f53ee83bdc31f5e8b2f5526205b94d814ffbcf771e7cc7c4b9a7564b866"},"sourceCommit":"175ff31c29895f5730fc344519da6cbe1108ab30","selectedBatch":"hiplab-hd-20261017","selectedResultSha256":"cb11d32871140b845fc34bfc59bfd671b61e49ceb005933e934b6da2c66eeb8b","resultShaMatches":true,"materializedSpec":{"sha256":"dfbcbbe44ccad01264a14d5755e4be4e9bbdff4144b834a5776fae87b07caa8b","matchesPortableFields":true,"serializedBytesMatch":true},"applyRenderProfile":true,"greenRecipe":"v3","alpha":"greenscreen/alpha/s-butterfly/","frames":240},
-    {"id":"s-figure4","spec":{"path":"drill-anim/specs/s-figure4.js","sha256":"cca7676b36347c5c44a56efa9847eef733182d4bfeea5954da55fee148278800"},"sourceCommit":"175ff31c29895f5730fc344519da6cbe1108ab30","selectedBatch":"hiplab-hd-20261017","selectedResultSha256":"461883fad7f508301d5afcf1814b0a32886ea9d9b6f92b02c10317df1343e03f","resultShaMatches":true,"materializedSpec":{"sha256":"427a7f6fea4fc65c11252e037bed6d74053f861dc6f32ad962b58a93cde0bc3b","matchesPortableFields":true,"serializedBytesMatch":true},"applyRenderProfile":true,"greenRecipe":"v2","alpha":"greenscreen/alpha/s-figure4/","frames":240},
-    {"id":"s-frog","spec":{"path":"drill-anim/specs/s-frog.js","sha256":"bf056bbfb6f1024a18077509ecdf691d2ce4118b32b95930a6fefb2e80915277"},"sourceCommit":"175ff31c29895f5730fc344519da6cbe1108ab30","selectedBatch":"hiplab-hd-20261017","selectedResultSha256":"9daa39b7617f9b37989e2b4dc43da8742d886d3bc85a1ceb08ff5292d4bfa0f6","resultShaMatches":true,"materializedSpec":{"sha256":"4a1f0b3019c203906c5e4bc4ede1f6db3cc72a654938554c7a0c00ce8adfed65","matchesPortableFields":true,"serializedBytesMatch":true},"applyRenderProfile":true,"greenRecipe":"v2","alpha":"greenscreen/alpha/s-frog/","frames":240},
-    {"id":"s-kneel-hipflex","spec":{"path":"drill-anim/specs/s-kneel-hipflex.js","sha256":"e5ce7dfa048f12a7ea8b7436e0af4972d179c6766652c98739f1438f85dafee2"},"sourceCommit":"175ff31c29895f5730fc344519da6cbe1108ab30","selectedBatch":"hiplab-hd-20261017","selectedResultSha256":"e3ca570707931538ed777bf65295c6aae6d6477bd7b1c9cb7e1fb30205371c93","resultShaMatches":true,"materializedSpec":{"sha256":"174da062e27d66a01ecb7ac013ffb893173f4ab1a9c4bbf1d12be60669dce6be","matchesPortableFields":true,"serializedBytesMatch":true},"applyRenderProfile":true,"greenRecipe":"v2","alpha":"greenscreen/alpha/s-kneel-hipflex/","frames":240},
-    {"id":"s-lizard","spec":{"path":"drill-anim/specs/s-lizard.js","sha256":"b80255afd4411b2197c93ae881cdb6058ef1104f20938c9d3dcf4ee174a3a7a5"},"sourceCommit":"175ff31c29895f5730fc344519da6cbe1108ab30","selectedBatch":"hiplab-hd-20261017","selectedResultSha256":"9cd7de6dd273ff77340b320f81997934cc2165f65f76b57c8514e7b9ab232aaa","resultShaMatches":true,"materializedSpec":{"sha256":"7ff966dca7450a0ddba71c7389aa8d719caa8c9b66a4ceb5acb3d4532c4236da","matchesPortableFields":true,"serializedBytesMatch":true},"applyRenderProfile":true,"greenRecipe":"v2","alpha":"greenscreen/alpha/s-lizard/","frames":240},
-    {"id":"s-pigeon","spec":{"path":"drill-anim/specs/s-pigeon.js","sha256":"0aab3fdce6ae6995dec95f1a71e2a3f33c8783931136fd71e99fde33c7bd3b2c"},"sourceCommit":"175ff31c29895f5730fc344519da6cbe1108ab30","selectedBatch":"hiplab-hd-20261017","selectedResultSha256":"8449f285a7eec3bb64f0bee27709217dfd864f3a495288668e7d72af7f2281ea","resultShaMatches":true,"materializedSpec":{"sha256":"a8771343c295a0b448cc21b8942bf52feb391ba0e28eaeab9a2bcc3de2ba37dc","matchesPortableFields":true,"serializedBytesMatch":true},"applyRenderProfile":true,"greenRecipe":"v2","alpha":"greenscreen/alpha/s-pigeon/","frames":240},
-    {"id":"s-seated-fold","spec":{"path":"drill-anim/specs/s-seated-fold-r3.js","sha256":"13e38b9e0fb74935868633656b8cc98040f93cf13565132aa95f32c87cd75cc8"},"sourceCommit":"175ff31c29895f5730fc344519da6cbe1108ab30","selectedBatch":"hiplab-fix-fold-20261017-r3","selectedResultSha256":"2317fc59555031e421df38929536ee22d8915edc180d2b6f7daa8d3e2e56d7ff","resultShaMatches":true,"materializedSpec":{"sha256":"be79551f5e0c87c50c52327179338b6e235fcf7aee09b1ce098e0af363d586fb","matchesPortableFields":true,"serializedBytesMatch":true},"applyRenderProfile":false,"greenRecipe":"v3","alpha":"greenscreen/alpha/s-seated-fold/","frames":240},
-    {"id":"t-seated-straddle-lift-1leg","spec":{"path":"drill-anim/specs/t-seated-straddle-lift-1leg.js","sha256":"ae5d188dcdda9bc3b9aa446fa14138f41e14b15f2e3d810d76060f4045bd3d30"},"sourceCommit":"175ff31c29895f5730fc344519da6cbe1108ab30","selectedBatch":"hiplab-hd-20261017","selectedResultSha256":"a3f77765c604922699cad4f3c95f4b4007c69176ef4743162d34daf1bec42fd7","resultShaMatches":true,"materializedSpec":{"sha256":"4228e1827d02a9409d1a14ed2c2bc3c6a811cf67a53900375c5f3cf409cc74ee","matchesPortableFields":true,"serializedBytesMatch":true},"applyRenderProfile":true,"greenRecipe":"v3","alpha":"greenscreen/alpha/t-seated-straddle-lift-1leg/","frames":300},
-    {"id":"w-clamshell","spec":{"path":"drill-anim/specs/w-clamshell.js","sha256":"f3647e83bf4a87521600cbc96d5c124c1e8413bdd06c3f72235ff3cbb9a05ff1"},"sourceCommit":"175ff31c29895f5730fc344519da6cbe1108ab30","selectedBatch":"hiplab-hd-20261017","selectedResultSha256":"ad543f2a0d0de91a6e34d0eee2dfc962977f736b89b8dc527e98ca1b6a9b8253","resultShaMatches":true,"materializedSpec":{"sha256":"5fb462bb04c3c0d3476224d1a09760a7eea50c089ece81c1c288654e5428a893","matchesPortableFields":true,"serializedBytesMatch":true},"applyRenderProfile":true,"greenRecipe":"v2","alpha":"greenscreen/alpha/w-clamshell/","frames":240},
-    {"id":"w-feet-on-chair-bridge","spec":{"path":"drill-anim/specs/w-feet-on-chair-bridge.js","sha256":"a1f5f1fd1997ae56a5692ce4c5e9f6aea65db5b20d7715209a104ddde4f65a7d"},"sourceCommit":"175ff31c29895f5730fc344519da6cbe1108ab30","selectedBatch":"hiplab-hd-20261017","selectedResultSha256":"697d20d787c426b8dc6f9884ef236bd3c7754c4d9feda245d7c5fa0f8eadada0","resultShaMatches":true,"materializedSpec":{"sha256":"b4d6df21fd52e8ddccc0de81b94476dfc645fcadfdcbe4f013ba4c4548ed07b8","matchesPortableFields":true,"serializedBytesMatch":true},"applyRenderProfile":true,"greenRecipe":"v2","alpha":"greenscreen/alpha/w-feet-on-chair-bridge/","frames":240}
-  ]
+    {
+      "id": "glute-max-A",
+      "spec": {
+        "path": "drill-anim/specs/glute-max-A.js",
+        "sha256": "2d5844dc5caa3cfdd6ff1368133a4f798c4571da8b2908a387eb30d65f6d0c8c"
+      },
+      "sourceCommit": "175ff31c29895f5730fc344519da6cbe1108ab30",
+      "selectedBatch": "hiplab-hd-20261017",
+      "selectedResultSha256": "07adbbe9ba98ed4e7b15891371acf311c439db0d3c6c600e7ddd3665ceed4732",
+      "resultShaMatches": true,
+      "materializedSpec": {
+        "sha256": "6007b68fa0c21070713aa982c23436db283dbe0d4daf028db9b350951ad1835f",
+        "matchesPortableFields": true,
+        "serializedBytesMatch": true
+      },
+      "applyRenderProfile": true,
+      "greenRecipe": "v3",
+      "alpha": "greenscreen/alpha/glute-max-A/",
+      "frames": 240
+    },
+    {
+      "id": "h-9090-liftoff",
+      "spec": {
+        "path": "drill-anim/specs/h-9090-liftoff-r2.js",
+        "sha256": "970923cb389bef0c36da460477edf38b6c4e9b52926081dc6df357a9ff1cdacc"
+      },
+      "sourceCommit": "fd3c067436fc183d021330ba37915d98e37fe7df",
+      "selectedBatch": "media-v0.1.0-r2-20261017",
+      "selectedResultSha256": "19cc87818bf3440f7a0e38b22ce03b3e6412a1454d2535534f2ac394e4b684b5",
+      "resultShaMatches": true,
+      "materializedSpec": {
+        "sha256": "edcc077a2c14bd76212b61cb4e49fcf8dbcfa9175f8047794ef8dd8e6cc30f07",
+        "matchesPortableFields": true,
+        "serializedBytesMatch": true
+      },
+      "applyRenderProfile": true,
+      "greenRecipe": "r2-v3",
+      "alpha": "greenscreen/alpha/h-9090-liftoff/",
+      "frames": 240,
+      "appSlotIdWrapper": true,
+      "greenRecipeRawSha256": "fa7e129e6c982400ac540f6a0027fbe8aeb6b70900523112939cc5e6895be299",
+      "darkRecipe": "r2"
+    },
+    {
+      "id": "h-adductor-rock",
+      "spec": {
+        "path": "drill-anim/specs/h-adductor-rock.js",
+        "sha256": "d8d0601eb573cac10093a6d8fe6faec47040fbe22ab269801666b62f3f12eddd"
+      },
+      "sourceCommit": "175ff31c29895f5730fc344519da6cbe1108ab30",
+      "selectedBatch": "hiplab-hd-20261017",
+      "selectedResultSha256": "f2b6043c811ed5482bc233e1716586222a20cd011976f939f032adc6232acf0a",
+      "resultShaMatches": true,
+      "materializedSpec": {
+        "sha256": "4321dea23c008d3b71957080baa73ca5a3c2517e0ea88d43b1259baa465862bf",
+        "matchesPortableFields": true,
+        "serializedBytesMatch": true
+      },
+      "applyRenderProfile": true,
+      "greenRecipe": "v2",
+      "alpha": "greenscreen/alpha/h-adductor-rock/",
+      "frames": 240
+    },
+    {
+      "id": "h-band-hip-ir",
+      "spec": {
+        "path": "drill-anim/specs/h-band-hip-ir.js",
+        "sha256": "161ef46ee190db2fa35ed56a8c85756d6cb9f5cca0634d5102d6024d539bf8a6"
+      },
+      "sourceCommit": "175ff31c29895f5730fc344519da6cbe1108ab30",
+      "selectedBatch": "hiplab-hd-20261017",
+      "selectedResultSha256": "ec5bb42023d4a0ad2888e55fd4c946c15a382bd6fe54f202a82941ca74dee28c",
+      "resultShaMatches": true,
+      "materializedSpec": {
+        "sha256": "d134251b3768d994ca39527ebde4fef5f18690db6db12e71d82ddbdb21302c87",
+        "matchesPortableFields": true,
+        "serializedBytesMatch": true
+      },
+      "applyRenderProfile": true,
+      "greenRecipe": "v2",
+      "alpha": "greenscreen/alpha/h-band-hip-ir/",
+      "frames": 240
+    },
+    {
+      "id": "h-band-leg-out",
+      "spec": {
+        "path": "drill-anim/specs/h-band-leg-out.js",
+        "sha256": "619802cda867facd7f7dd0a6b4eed82ab97f8f5b2ea38377cfdea7208fa19057"
+      },
+      "sourceCommit": "175ff31c29895f5730fc344519da6cbe1108ab30",
+      "selectedBatch": "hiplab-hd-20261017",
+      "selectedResultSha256": "a4d4a5a7dc920a2c7535307e8926561a82ec47990e2bd1e7738720777c0c4dd5",
+      "resultShaMatches": true,
+      "materializedSpec": {
+        "sha256": "e90449c493b01fccfcca0c7d78a5346bad8a0f58be06268f7f7a293e2ca55fba",
+        "matchesPortableFields": true,
+        "serializedBytesMatch": true
+      },
+      "applyRenderProfile": true,
+      "greenRecipe": "v2",
+      "alpha": "greenscreen/alpha/h-band-leg-out/",
+      "frames": 240
+    },
+    {
+      "id": "h-butterfly-active",
+      "spec": {
+        "path": "drill-anim/specs/h-butterfly-active.js",
+        "sha256": "58be080dfcac5075cb466e7c990e4b1a171da4bc77fb652a6b8865131ff13bb5"
+      },
+      "sourceCommit": "175ff31c29895f5730fc344519da6cbe1108ab30",
+      "selectedBatch": "hiplab-hd-20261017",
+      "selectedResultSha256": "6d30c5462092f86fbe07437780e7e22a1d28e93943891c1c17e7978c14ec42ed",
+      "resultShaMatches": true,
+      "materializedSpec": {
+        "sha256": "8fb9a84c4c40a5fe4c2289cf7f487ac114342411c7856379d4aa346af8a6321c",
+        "matchesPortableFields": true,
+        "serializedBytesMatch": true
+      },
+      "applyRenderProfile": true,
+      "greenRecipe": "v2",
+      "alpha": "greenscreen/alpha/h-butterfly-active/",
+      "frames": 240
+    },
+    {
+      "id": "h-couch-stretch",
+      "spec": {
+        "path": "drill-anim/specs/h-couch-stretch.js",
+        "sha256": "717616a1d48eaf389c904c37f71e67ddfeaf1b5a4c4b080c65d920760c186ef5"
+      },
+      "sourceCommit": "175ff31c29895f5730fc344519da6cbe1108ab30",
+      "selectedBatch": "hiplab-hd-20261017",
+      "selectedResultSha256": "2880510210f181d6c4b5f90ecf80844d481b65ac63f9ae8301b7c7ea97c1c1e7",
+      "resultShaMatches": true,
+      "materializedSpec": {
+        "sha256": "eec6e1023596d714a07b7f624b47641e922510373de91495ffaff71169002794",
+        "matchesPortableFields": true,
+        "serializedBytesMatch": true
+      },
+      "applyRenderProfile": true,
+      "greenRecipe": "v2",
+      "alpha": "greenscreen/alpha/h-couch-stretch/",
+      "frames": 240
+    },
+    {
+      "id": "h-hip-gate",
+      "spec": {
+        "path": "drill-anim/specs/h-hip-gate.js",
+        "sha256": "f65d09ec9010e2c5aecaea4a0a0bb912b3ef7af8ff3b941e74adea080ae325b6"
+      },
+      "sourceCommit": "175ff31c29895f5730fc344519da6cbe1108ab30",
+      "selectedBatch": "hiplab-hd-20261017",
+      "selectedResultSha256": "da243a99ceb7ab38a6cc3cbedbedc90a0f6a3160e1aa1d68cc49aace680e0d4e",
+      "resultShaMatches": true,
+      "materializedSpec": {
+        "sha256": "eecbfd84c6f0f50ac5bb8a96168953ed9b8d3c8da248fa8b4edfe906c3588f9d",
+        "matchesPortableFields": true,
+        "serializedBytesMatch": true
+      },
+      "applyRenderProfile": true,
+      "greenRecipe": "v2",
+      "alpha": "greenscreen/alpha/h-hip-gate/",
+      "frames": 240
+    },
+    {
+      "id": "h-knee-hug",
+      "spec": {
+        "path": "drill-anim/specs/h-knee-hug-r2.js",
+        "sha256": "73db57f4a968ef93b49cad8dfa07838791f5a2808ae6d1add6b36b3f12ae3e2a"
+      },
+      "sourceCommit": "175ff31c29895f5730fc344519da6cbe1108ab30",
+      "selectedBatch": "hiplab-fix-kneehug-20261017-r1",
+      "selectedResultSha256": "c404e7231af72b679ca5848ab5a7c48da761330929e7891b9b16ac6737318e90",
+      "resultShaMatches": true,
+      "materializedSpec": {
+        "sha256": "82444356c4da7a726236e1a0f1f688d28f2cf03e64a6e80aebc6c3957ec5fcdb",
+        "matchesPortableFields": true,
+        "serializedBytesMatch": true
+      },
+      "applyRenderProfile": false,
+      "greenRecipe": "v3",
+      "alpha": "greenscreen/alpha/h-knee-hug/",
+      "frames": 240
+    },
+    {
+      "id": "h-quad-cars",
+      "spec": {
+        "path": "drill-anim/specs/h-quad-cars-r2.js",
+        "sha256": "9daa31fc3d0cb9b4b1007f80b1e697c44e8c47ad52dcf037497104c4ccad4d8b"
+      },
+      "sourceCommit": "fd3c067436fc183d021330ba37915d98e37fe7df",
+      "selectedBatch": "media-v0.1.0-r2-20261017",
+      "selectedResultSha256": "20799ef2095f3fdbe973322486ad2415f907c324bcf29d854a77564925ed43cf",
+      "resultShaMatches": true,
+      "materializedSpec": {
+        "sha256": "666a726c08c26425170bdc776e5575b3a39fa33387cdb2d5f67839cb85415e1c",
+        "matchesPortableFields": true,
+        "serializedBytesMatch": true
+      },
+      "applyRenderProfile": true,
+      "greenRecipe": "r2-v3",
+      "alpha": "greenscreen/alpha/h-quad-cars/",
+      "frames": 240,
+      "appSlotIdWrapper": true,
+      "greenRecipeRawSha256": "fa7e129e6c982400ac540f6a0027fbe8aeb6b70900523112939cc5e6895be299",
+      "darkRecipe": "r2"
+    },
+    {
+      "id": "h-reverse-clam",
+      "spec": {
+        "path": "drill-anim/specs/h-reverse-clam.js",
+        "sha256": "d6dc4d1b87390a988f617381cb2bc8fe5d6cac45d353ba9fae84e550aef97db2"
+      },
+      "sourceCommit": "175ff31c29895f5730fc344519da6cbe1108ab30",
+      "selectedBatch": "hiplab-hd-20261017",
+      "selectedResultSha256": "deb83dff9990eec781c53ada211e35273ae84dfede03322046481bb00fc428d4",
+      "resultShaMatches": true,
+      "materializedSpec": {
+        "sha256": "aad01eaaa7e50bf0049a59d785b74e05c7d36f41a391305624099d8ecc8cd324",
+        "matchesPortableFields": true,
+        "serializedBytesMatch": true
+      },
+      "applyRenderProfile": true,
+      "greenRecipe": "v2",
+      "alpha": "greenscreen/alpha/h-reverse-clam/",
+      "frames": 240
+    },
+    {
+      "id": "h-squat",
+      "spec": {
+        "path": "drill-anim/specs/h-squat.js",
+        "sha256": "349e5313795134d9554245b07c13ca94c6f9102a4d41c2ed8ae61cd782e1e58d"
+      },
+      "sourceCommit": "175ff31c29895f5730fc344519da6cbe1108ab30",
+      "selectedBatch": "hiplab-hd-20261017",
+      "selectedResultSha256": "036184a07455d4ec7192de6cd7757994000759ff4bca12ba6544aef5c0e32d78",
+      "resultShaMatches": true,
+      "materializedSpec": {
+        "sha256": "181446627e77aaad119eb1c6dd41dd4b23fdd1280321a4d0e2e33ddddf056973",
+        "matchesPortableFields": true,
+        "serializedBytesMatch": true
+      },
+      "applyRenderProfile": true,
+      "greenRecipe": "v2",
+      "alpha": "greenscreen/alpha/h-squat/",
+      "frames": 240
+    },
+    {
+      "id": "h-sumo-pry",
+      "spec": {
+        "path": "drill-anim/specs/h-sumo-pry.js",
+        "sha256": "2822e6600f341862bc8491d7e58b35876bddc53c0635a727d69ec270baadac7a"
+      },
+      "sourceCommit": "175ff31c29895f5730fc344519da6cbe1108ab30",
+      "selectedBatch": "hiplab-hd-20261017",
+      "selectedResultSha256": "3e5b40acb2de4c5cb0583f62e510de61531a4b845e09984d272089e4d62fc14d",
+      "resultShaMatches": true,
+      "materializedSpec": {
+        "sha256": "f011b9e12c59a512abe7b5051a3b26799ef5af6cf468e3a0471b116786dbd2d0",
+        "matchesPortableFields": true,
+        "serializedBytesMatch": true
+      },
+      "applyRenderProfile": true,
+      "greenRecipe": "v2",
+      "alpha": "greenscreen/alpha/h-sumo-pry/",
+      "frames": 240
+    },
+    {
+      "id": "h-supine-twist",
+      "spec": {
+        "path": "drill-anim/specs/h-supine-twist-r2.js",
+        "sha256": "14103d9993b464853abb2502345f60bb83c2a52ecfa7ee7456b81d14385a4299"
+      },
+      "sourceCommit": "175ff31c29895f5730fc344519da6cbe1108ab30",
+      "selectedBatch": "hiplab-fix-twist-20261017-r1",
+      "selectedResultSha256": "8bf4e003559cb2353ee0c51af3862b34a1360430fdf35bef88e6c38850f7fc9e",
+      "resultShaMatches": true,
+      "materializedSpec": {
+        "sha256": "727040ab939a60e9f0d37b04ebf1374bd6937d31642af6cd3c29e87fdd2937a5",
+        "matchesPortableFields": true,
+        "serializedBytesMatch": true
+      },
+      "applyRenderProfile": false,
+      "greenRecipe": "v3",
+      "alpha": "greenscreen/alpha/h-supine-twist/",
+      "frames": 240
+    },
+    {
+      "id": "h-wall-straddle",
+      "spec": {
+        "path": "drill-anim/specs/h-wall-straddle.js",
+        "sha256": "e2119b273d8fc552dbaa2adab7fa09d76103d78b861f46ed1a422f93e911cf28"
+      },
+      "sourceCommit": "175ff31c29895f5730fc344519da6cbe1108ab30",
+      "selectedBatch": "hiplab-hd-20261017",
+      "selectedResultSha256": "2ec874c931da77c8ed923854dbea9dc38f3e1e5aa92a0bf6385f944794f9cc25",
+      "resultShaMatches": true,
+      "materializedSpec": {
+        "sha256": "e70ed06747331e1a7515fb9dcdb5cace7c5d0c25f0a7ff3d04104cd693001ad1",
+        "matchesPortableFields": true,
+        "serializedBytesMatch": true
+      },
+      "applyRenderProfile": true,
+      "greenRecipe": "v2",
+      "alpha": "greenscreen/alpha/h-wall-straddle/",
+      "frames": 240
+    },
+    {
+      "id": "hip-flexors-A",
+      "spec": {
+        "path": "drill-anim/specs/hip-flexors-A.js",
+        "sha256": "1aa89cba0c2962a1f89370d7b347e14074d0684474b76962bb17ab27efe345b5"
+      },
+      "sourceCommit": "175ff31c29895f5730fc344519da6cbe1108ab30",
+      "selectedBatch": "hiplab-hd-20261017",
+      "selectedResultSha256": "82c0a60c89d9a9ffc09312c8fdbd449eddb3e30bf14c65ba5b82760c9c3abe76",
+      "resultShaMatches": true,
+      "materializedSpec": {
+        "sha256": "af84acb2185383b93ded547d66276c723802fc885a1bd3f6907aeca6b0693cc7",
+        "matchesPortableFields": true,
+        "serializedBytesMatch": true
+      },
+      "applyRenderProfile": true,
+      "greenRecipe": "v3",
+      "alpha": "greenscreen/alpha/hip-flexors-A/",
+      "frames": 240
+    },
+    {
+      "id": "n-chair-wiper",
+      "spec": {
+        "path": "drill-anim/specs/n-chair-wiper.js",
+        "sha256": "5f336da54c7fb677ae7c421f23a41705ee297c5145cb12d92a1045d5f1fdfde9"
+      },
+      "sourceCommit": "175ff31c29895f5730fc344519da6cbe1108ab30",
+      "selectedBatch": "hiplab-hd-20261017",
+      "selectedResultSha256": "13b2a2b12817c93ab4b598566fec283f41981dd7c96a33ac2707f75edab9030a",
+      "resultShaMatches": true,
+      "materializedSpec": {
+        "sha256": "59099905470e916f0ac5e0a34448b4177910197f50c8ff235e8a42e8eb84c542",
+        "matchesPortableFields": true,
+        "serializedBytesMatch": true
+      },
+      "applyRenderProfile": true,
+      "greenRecipe": "v1",
+      "alpha": "greenscreen/alpha/n-chair-wiper/",
+      "frames": 240
+    },
+    {
+      "id": "n-half-split",
+      "spec": {
+        "path": "drill-anim/specs/n-half-split.js",
+        "sha256": "9f7e2a885349c3ae02e088e0cc932ba18ace8753e603f40f21b3963581009047"
+      },
+      "sourceCommit": "175ff31c29895f5730fc344519da6cbe1108ab30",
+      "selectedBatch": "hiplab-hd-20261017",
+      "selectedResultSha256": "d2a006bd3926e99931c7e2dfe1b96b3dc63d506cf8631e26a3106a26b2789e61",
+      "resultShaMatches": true,
+      "materializedSpec": {
+        "sha256": "71e6d946e2368520a7a198695772eb71ef47849c87063c1acb670060b16874cc",
+        "matchesPortableFields": true,
+        "serializedBytesMatch": true
+      },
+      "applyRenderProfile": true,
+      "greenRecipe": "v3",
+      "alpha": "greenscreen/alpha/n-half-split/",
+      "frames": 240
+    },
+    {
+      "id": "n-leg-circles",
+      "spec": {
+        "path": "drill-anim/specs/n-leg-circles.js",
+        "sha256": "36041116f7706901d5bbebf549c69e12ce6f175548776e0f7ac1ef02db29e013"
+      },
+      "sourceCommit": "175ff31c29895f5730fc344519da6cbe1108ab30",
+      "selectedBatch": "hiplab-hd-20261017",
+      "selectedResultSha256": "72eb5f5d6f3eae596fb383dcb9c284e4657cc0377b6dc385471e4dfc32fc466f",
+      "resultShaMatches": true,
+      "materializedSpec": {
+        "sha256": "4abae0cb2f1f73b6cc6d84a1a985aa7205cd56dbb6311643c7466c137e7f17af",
+        "matchesPortableFields": true,
+        "serializedBytesMatch": true
+      },
+      "applyRenderProfile": true,
+      "greenRecipe": "v3",
+      "alpha": "greenscreen/alpha/n-leg-circles/",
+      "frames": 360
+    },
+    {
+      "id": "n-pelvis-circle",
+      "spec": {
+        "path": "drill-anim/specs/n-pelvis-circle.js",
+        "sha256": "5e1e140167ac622a79c2874e5957b1bb1f12799d26e4950857b36c32e4690381"
+      },
+      "sourceCommit": "175ff31c29895f5730fc344519da6cbe1108ab30",
+      "selectedBatch": "hiplab-hd-20261017",
+      "selectedResultSha256": "5a7aa6599403058262679a10cec82188417e7ade93274eae4b32f49ec758a632",
+      "resultShaMatches": true,
+      "materializedSpec": {
+        "sha256": "2dd7bf2ddba984ac9df44b0ad6068411e3c89af2e69b05bdd2867493804872e3",
+        "matchesPortableFields": true,
+        "serializedBytesMatch": true
+      },
+      "applyRenderProfile": true,
+      "greenRecipe": "v3",
+      "alpha": "greenscreen/alpha/n-pelvis-circle/",
+      "frames": 240
+    },
+    {
+      "id": "n-prone-hip-ext",
+      "spec": {
+        "path": "drill-anim/specs/n-prone-hip-ext.js",
+        "sha256": "3e0ff5d44ecd637d6a43ef96024f4c57717cc9d3ced540203ad8002bc2412573"
+      },
+      "sourceCommit": "175ff31c29895f5730fc344519da6cbe1108ab30",
+      "selectedBatch": "hiplab-hd-20261017",
+      "selectedResultSha256": "19aedf4bac3e3209f2bfde5ad3639eee1caaeb1825ce2821a2955445c3f88d6f",
+      "resultShaMatches": true,
+      "materializedSpec": {
+        "sha256": "76e19185103be81e6ec247a44b23467826c293841a8f90c6d7ea950d698f3e79",
+        "matchesPortableFields": true,
+        "serializedBytesMatch": true
+      },
+      "applyRenderProfile": true,
+      "greenRecipe": "v3",
+      "alpha": "greenscreen/alpha/n-prone-hip-ext/",
+      "frames": 240
+    },
+    {
+      "id": "n-prone-ir",
+      "spec": {
+        "path": "drill-anim/specs/n-prone-ir.js",
+        "sha256": "5dc95dd335ea18a21b1b2a1f0b3faa876cf5f3f936c64649d079a19dcb3f32d5"
+      },
+      "sourceCommit": "175ff31c29895f5730fc344519da6cbe1108ab30",
+      "selectedBatch": "hiplab-hd-20261017",
+      "selectedResultSha256": "6b466c4c72ed1083bb044d22d9021bdd15730a4492120cf60c9599c379d517ee",
+      "resultShaMatches": true,
+      "materializedSpec": {
+        "sha256": "ab0c81d9deefd019cb73b7cf2250164fba2870f343c0a2bcfbc0f57f3cad64f8",
+        "matchesPortableFields": true,
+        "serializedBytesMatch": true
+      },
+      "applyRenderProfile": true,
+      "greenRecipe": "v3",
+      "alpha": "greenscreen/alpha/n-prone-ir/",
+      "frames": 240
+    },
+    {
+      "id": "n-seated-ir-drop",
+      "spec": {
+        "path": "drill-anim/specs/n-seated-ir-drop.js",
+        "sha256": "48e44c56e8c7de96f905d2f572c85368cab18ac313ba2413942c22726c49676a"
+      },
+      "sourceCommit": "175ff31c29895f5730fc344519da6cbe1108ab30",
+      "selectedBatch": "hiplab-hd-20261017",
+      "selectedResultSha256": "d886074274246b3c14de75bc1148fbb4448a322eb90c9dc86974c848d6599634",
+      "resultShaMatches": true,
+      "materializedSpec": {
+        "sha256": "8aef53bb5b56e956a87826f153da8406f03a34459cef32ace394e9249e956864",
+        "matchesPortableFields": true,
+        "serializedBytesMatch": true
+      },
+      "applyRenderProfile": true,
+      "greenRecipe": "v3",
+      "alpha": "greenscreen/alpha/n-seated-ir-drop/",
+      "frames": 240
+    },
+    {
+      "id": "n-seated-knee-lift",
+      "spec": {
+        "path": "drill-anim/specs/n-seated-knee-lift.js",
+        "sha256": "a885cd9687ee3411287999ce0d710ca380206eefed2ca88f1f16d3437552b0eb"
+      },
+      "sourceCommit": "175ff31c29895f5730fc344519da6cbe1108ab30",
+      "selectedBatch": "hiplab-hd-20261017",
+      "selectedResultSha256": "035664842713db91d7ced9dcb417183234e7b9429e84e9271d9b40ac35e00eda",
+      "resultShaMatches": true,
+      "materializedSpec": {
+        "sha256": "cb9f610e4cc63aec2c1c689ce83c13e6642ddb5525d8570b692dfd6f0a0a8938",
+        "matchesPortableFields": true,
+        "serializedBytesMatch": true
+      },
+      "applyRenderProfile": true,
+      "greenRecipe": "v3",
+      "alpha": "greenscreen/alpha/n-seated-knee-lift/",
+      "frames": 240
+    },
+    {
+      "id": "n-seated-squeeze",
+      "spec": {
+        "path": "drill-anim/specs/n-seated-squeeze.js",
+        "sha256": "74ba65d71cf733e7929c4cc94595a33b0cf47071dc263552abda354766ea27f1"
+      },
+      "sourceCommit": "175ff31c29895f5730fc344519da6cbe1108ab30",
+      "selectedBatch": "hiplab-hd-20261017",
+      "selectedResultSha256": "4fac8004e73fc30b6473cd1b9563a0658550bfb59d6fee843ed01dcf772b3e22",
+      "resultShaMatches": true,
+      "materializedSpec": {
+        "sha256": "024d00011080906ae880c5a3333e3dae1f5f94b7dc8f4566003e4e60f131e06e",
+        "matchesPortableFields": true,
+        "serializedBytesMatch": true
+      },
+      "applyRenderProfile": true,
+      "greenRecipe": "v3",
+      "alpha": "greenscreen/alpha/n-seated-squeeze/",
+      "frames": 240
+    },
+    {
+      "id": "n-slider-lateral",
+      "spec": {
+        "path": "drill-anim/specs/n-slider-lateral.js",
+        "sha256": "a6f6463269d394ad688df00a0174dd3514b52d9ead41f28be19ef7cc6f2da5b8"
+      },
+      "sourceCommit": "175ff31c29895f5730fc344519da6cbe1108ab30",
+      "selectedBatch": "hiplab-hd-20261017",
+      "selectedResultSha256": "29d4d235519ecc9d4de43929020d9d84ca5444cf0f37d120ae0f3bbaae672ed3",
+      "resultShaMatches": true,
+      "materializedSpec": {
+        "sha256": "ee6abe6ccdd87a22f6b474215c247c93c75f42f11baf36cb1ad87c393a8a72a0",
+        "matchesPortableFields": true,
+        "serializedBytesMatch": true
+      },
+      "applyRenderProfile": true,
+      "greenRecipe": "v3",
+      "alpha": "greenscreen/alpha/n-slider-lateral/",
+      "frames": 240
+    },
+    {
+      "id": "n-squat-shift",
+      "spec": {
+        "path": "drill-anim/specs/n-squat-shift.js",
+        "sha256": "273960ac6a819c7b0438f4647efa7606926b3e1e23a5b6d67b26ec59c25e2191"
+      },
+      "sourceCommit": "175ff31c29895f5730fc344519da6cbe1108ab30",
+      "selectedBatch": "hiplab-hd-20261017",
+      "selectedResultSha256": "a8317ea19837887823e84f56315aaab11bcec32a4c9c0ff23936230006397419",
+      "resultShaMatches": true,
+      "materializedSpec": {
+        "sha256": "df54a66b76eca79c6efeda9ebf963f32a6c2a1c8bfb278ee0b0f2fd4718b8361",
+        "matchesPortableFields": true,
+        "serializedBytesMatch": true
+      },
+      "applyRenderProfile": true,
+      "greenRecipe": "v3",
+      "alpha": "greenscreen/alpha/n-squat-shift/",
+      "frames": 240
+    },
+    {
+      "id": "n-straddle-fold",
+      "spec": {
+        "path": "drill-anim/specs/n-straddle-fold.js",
+        "sha256": "d23a2d5ae7bd9f218232dd0c0b4cac85af427ef46054b445d1f587a20a954d9d"
+      },
+      "sourceCommit": "175ff31c29895f5730fc344519da6cbe1108ab30",
+      "selectedBatch": "hiplab-hd-20261017",
+      "selectedResultSha256": "ef47cf125e277989cc6af86c3b355769b6d7816dd8769206c742ca58514f4aa9",
+      "resultShaMatches": true,
+      "materializedSpec": {
+        "sha256": "4abaef7d6c8896cc6ccc3f17fde00e67f14cda5433bb828b64e9389224de515d",
+        "matchesPortableFields": true,
+        "serializedBytesMatch": true
+      },
+      "applyRenderProfile": true,
+      "greenRecipe": "v3",
+      "alpha": "greenscreen/alpha/n-straddle-fold/",
+      "frames": 240
+    },
+    {
+      "id": "n-thomas-test",
+      "spec": {
+        "path": "drill-anim/specs/n-thomas-test.js",
+        "sha256": "62d3cfa853048dc695812c3042b2ddad2afa313aea938d02dc24ca40c824037f"
+      },
+      "sourceCommit": "175ff31c29895f5730fc344519da6cbe1108ab30",
+      "selectedBatch": "hiplab-hd-20261017",
+      "selectedResultSha256": "2f679ab7dde222b87b2fc8daea8d5827e6a6825aef1393a873bb4644f7710636",
+      "resultShaMatches": true,
+      "materializedSpec": {
+        "sha256": "df834a02cf3a2ceae4df61a041d78faae5aeaba096d2c6f94df8416b9ba1e4cf",
+        "matchesPortableFields": true,
+        "serializedBytesMatch": true
+      },
+      "applyRenderProfile": true,
+      "greenRecipe": "v3",
+      "alpha": "greenscreen/alpha/n-thomas-test/",
+      "frames": 240
+    },
+    {
+      "id": "n-wide-fold",
+      "spec": {
+        "path": "drill-anim/specs/n-wide-fold.js",
+        "sha256": "94f49696bdc8a7464ed3cf1ccaf2180220229da07d1deeccad05aaa8a1834452"
+      },
+      "sourceCommit": "175ff31c29895f5730fc344519da6cbe1108ab30",
+      "selectedBatch": "hiplab-hd-20261017",
+      "selectedResultSha256": "b1d3dc7be11b2998548c9efde5093def9fcf539a28c8530fa21cac98ba2b9f24",
+      "resultShaMatches": true,
+      "materializedSpec": {
+        "sha256": "e03b80c304c38e29d3f81fd94695d90a9ec669a1254d73c3cac558326d7007f9",
+        "matchesPortableFields": true,
+        "serializedBytesMatch": true
+      },
+      "applyRenderProfile": true,
+      "greenRecipe": "v3",
+      "alpha": "greenscreen/alpha/n-wide-fold/",
+      "frames": 240
+    },
+    {
+      "id": "n-windshield",
+      "spec": {
+        "path": "drill-anim/specs/n-windshield.js",
+        "sha256": "10d16b2ccd6c637b95b6f134236e6fa3c6bccc7943f9be72712cdc5b829f3b75"
+      },
+      "sourceCommit": "175ff31c29895f5730fc344519da6cbe1108ab30",
+      "selectedBatch": "hiplab-hd-20261017",
+      "selectedResultSha256": "7ad155ba07dd9bfc8d535de920ba5b594e2a0b65174fc0b490e466b25a841b53",
+      "resultShaMatches": true,
+      "materializedSpec": {
+        "sha256": "b37afa7b88aded84a6c942a7271226619ee0c9757fe7071e62b6a3081699a3dd",
+        "matchesPortableFields": true,
+        "serializedBytesMatch": true
+      },
+      "applyRenderProfile": true,
+      "greenRecipe": "v3",
+      "alpha": "greenscreen/alpha/n-windshield/",
+      "frames": 240
+    },
+    {
+      "id": "o-seated-fig4",
+      "spec": {
+        "path": "drill-anim/specs/o-seated-fig4.js",
+        "sha256": "66a147a7da04a444f705bcd3e2fd23788a1349c533847bba9f1a36ae32a0ac48"
+      },
+      "sourceCommit": "175ff31c29895f5730fc344519da6cbe1108ab30",
+      "selectedBatch": "hiplab-hd-20261017",
+      "selectedResultSha256": "fba6d5cf827b725502cf4a9395bc729b4eac1064b6c1ee39160d025440ba7da3",
+      "resultShaMatches": true,
+      "materializedSpec": {
+        "sha256": "358b5f94556707cf09761618b900ba294a89b5fc523843c69b6d2789a43dd4fc",
+        "matchesPortableFields": true,
+        "serializedBytesMatch": true
+      },
+      "applyRenderProfile": true,
+      "greenRecipe": "v2",
+      "alpha": "greenscreen/alpha/o-seated-fig4/",
+      "frames": 240
+    },
+    {
+      "id": "o-seated-ham",
+      "spec": {
+        "path": "drill-anim/specs/o-seated-ham.js",
+        "sha256": "871ccbd2022c8a9d2ce561750d1d75b7a45b2853ff357ca76c133a49db5a6527"
+      },
+      "sourceCommit": "175ff31c29895f5730fc344519da6cbe1108ab30",
+      "selectedBatch": "hiplab-hd-20261017",
+      "selectedResultSha256": "dbf57e55427e5a78a19848f86b079d0691c020149bdd5c5d4296bf7a15694c2b",
+      "resultShaMatches": true,
+      "materializedSpec": {
+        "sha256": "d1a541c71c2d62c0696ef0f69ba0eebd64f080e7c5255473acb64e8938003636",
+        "matchesPortableFields": true,
+        "serializedBytesMatch": true
+      },
+      "applyRenderProfile": true,
+      "greenRecipe": "v2",
+      "alpha": "greenscreen/alpha/o-seated-ham/",
+      "frames": 240
+    },
+    {
+      "id": "o-stand-crossreach",
+      "spec": {
+        "path": "drill-anim/specs/o-stand-crossreach.js",
+        "sha256": "9c79a2e76a8b7f87134ccec346740dc0a7122305579dd839a422056cdb464b3b"
+      },
+      "sourceCommit": "175ff31c29895f5730fc344519da6cbe1108ab30",
+      "selectedBatch": "hiplab-hd-20261017",
+      "selectedResultSha256": "6f22a9ccbc12a137ff10b270c26d188f48b34d976a3e3437260e0b4a40c84bd3",
+      "resultShaMatches": true,
+      "materializedSpec": {
+        "sha256": "a13bd15aa65fa7e5ceda10c96f15e5f77127f30eea8a0845b319169305828b2a",
+        "matchesPortableFields": true,
+        "serializedBytesMatch": true
+      },
+      "applyRenderProfile": true,
+      "greenRecipe": "v2",
+      "alpha": "greenscreen/alpha/o-stand-crossreach/",
+      "frames": 240
+    },
+    {
+      "id": "o-stand-lunge",
+      "spec": {
+        "path": "drill-anim/specs/o-stand-lunge.js",
+        "sha256": "c2f3984febb97819713bbbbea85196498fa6f95c8cb1a5e869cc89e580b4beaa"
+      },
+      "sourceCommit": "175ff31c29895f5730fc344519da6cbe1108ab30",
+      "selectedBatch": "hiplab-hd-20261017",
+      "selectedResultSha256": "634cd16baceb997a86e73c435d3bddfa9ce7fe9a3543cdcec6eab1cf7b1db43e",
+      "resultShaMatches": true,
+      "materializedSpec": {
+        "sha256": "31bee1bd821dc571ae130e96234dc2bea2bf784d897191532d566cfb12ea3384",
+        "matchesPortableFields": true,
+        "serializedBytesMatch": true
+      },
+      "applyRenderProfile": true,
+      "greenRecipe": "v2",
+      "alpha": "greenscreen/alpha/o-stand-lunge/",
+      "frames": 240
+    },
+    {
+      "id": "s-9090",
+      "spec": {
+        "path": "drill-anim/specs/s-9090-r2.js",
+        "sha256": "81d8d8629e9c90559dd715465ad4002e6bc7d3baa6a5e261eb3ad97a55f4aa2e"
+      },
+      "sourceCommit": "fd3c067436fc183d021330ba37915d98e37fe7df",
+      "selectedBatch": "media-v0.1.0-r2-20261017",
+      "selectedResultSha256": "af3d20640cb051b4e13ba4d7f402ad74407efc37ccb42e7db089991ccd1018d3",
+      "resultShaMatches": true,
+      "materializedSpec": {
+        "sha256": "a532001d37906e8941d48ebc87f1d5a5a0d5f7c484736b9ce2fb11a2ae0ecfcb",
+        "matchesPortableFields": true,
+        "serializedBytesMatch": true
+      },
+      "applyRenderProfile": true,
+      "greenRecipe": "r2-v3",
+      "alpha": "greenscreen/alpha/s-9090/",
+      "frames": 240,
+      "appSlotIdWrapper": true,
+      "greenRecipeRawSha256": "fa7e129e6c982400ac540f6a0027fbe8aeb6b70900523112939cc5e6895be299",
+      "darkRecipe": "r2"
+    },
+    {
+      "id": "s-butterfly",
+      "spec": {
+        "path": "drill-anim/specs/s-butterfly.js",
+        "sha256": "67b29f53ee83bdc31f5e8b2f5526205b94d814ffbcf771e7cc7c4b9a7564b866"
+      },
+      "sourceCommit": "175ff31c29895f5730fc344519da6cbe1108ab30",
+      "selectedBatch": "hiplab-hd-20261017",
+      "selectedResultSha256": "cb11d32871140b845fc34bfc59bfd671b61e49ceb005933e934b6da2c66eeb8b",
+      "resultShaMatches": true,
+      "materializedSpec": {
+        "sha256": "dfbcbbe44ccad01264a14d5755e4be4e9bbdff4144b834a5776fae87b07caa8b",
+        "matchesPortableFields": true,
+        "serializedBytesMatch": true
+      },
+      "applyRenderProfile": true,
+      "greenRecipe": "v3",
+      "alpha": "greenscreen/alpha/s-butterfly/",
+      "frames": 240
+    },
+    {
+      "id": "s-figure4",
+      "spec": {
+        "path": "drill-anim/specs/s-figure4.js",
+        "sha256": "cca7676b36347c5c44a56efa9847eef733182d4bfeea5954da55fee148278800"
+      },
+      "sourceCommit": "175ff31c29895f5730fc344519da6cbe1108ab30",
+      "selectedBatch": "hiplab-hd-20261017",
+      "selectedResultSha256": "461883fad7f508301d5afcf1814b0a32886ea9d9b6f92b02c10317df1343e03f",
+      "resultShaMatches": true,
+      "materializedSpec": {
+        "sha256": "427a7f6fea4fc65c11252e037bed6d74053f861dc6f32ad962b58a93cde0bc3b",
+        "matchesPortableFields": true,
+        "serializedBytesMatch": true
+      },
+      "applyRenderProfile": true,
+      "greenRecipe": "v2",
+      "alpha": "greenscreen/alpha/s-figure4/",
+      "frames": 240
+    },
+    {
+      "id": "s-frog",
+      "spec": {
+        "path": "drill-anim/specs/s-frog-r2.js",
+        "sha256": "3acf8825596f68d494ca1cb938fc76cdabe7f8cdf3c2827c71ba3ce408eabffa"
+      },
+      "sourceCommit": "fd3c067436fc183d021330ba37915d98e37fe7df",
+      "selectedBatch": "media-v0.1.0-r2-20261017",
+      "selectedResultSha256": "d3d7df5b47563ae002a1f724b4c6b1c0c6b35d909e005d14a44680b460d405d0",
+      "resultShaMatches": true,
+      "materializedSpec": {
+        "sha256": "fc07aa6de7c4e79e30fefd3989d061d6968d2f5441f74323500d6b0b8b800d8c",
+        "matchesPortableFields": true,
+        "serializedBytesMatch": true
+      },
+      "applyRenderProfile": true,
+      "greenRecipe": "r2-v3",
+      "alpha": "greenscreen/alpha/s-frog/",
+      "frames": 240,
+      "appSlotIdWrapper": true,
+      "greenRecipeRawSha256": "fa7e129e6c982400ac540f6a0027fbe8aeb6b70900523112939cc5e6895be299",
+      "darkRecipe": "r2"
+    },
+    {
+      "id": "s-kneel-hipflex",
+      "spec": {
+        "path": "drill-anim/specs/s-kneel-hipflex.js",
+        "sha256": "e5ce7dfa048f12a7ea8b7436e0af4972d179c6766652c98739f1438f85dafee2"
+      },
+      "sourceCommit": "175ff31c29895f5730fc344519da6cbe1108ab30",
+      "selectedBatch": "hiplab-hd-20261017",
+      "selectedResultSha256": "e3ca570707931538ed777bf65295c6aae6d6477bd7b1c9cb7e1fb30205371c93",
+      "resultShaMatches": true,
+      "materializedSpec": {
+        "sha256": "174da062e27d66a01ecb7ac013ffb893173f4ab1a9c4bbf1d12be60669dce6be",
+        "matchesPortableFields": true,
+        "serializedBytesMatch": true
+      },
+      "applyRenderProfile": true,
+      "greenRecipe": "v2",
+      "alpha": "greenscreen/alpha/s-kneel-hipflex/",
+      "frames": 240
+    },
+    {
+      "id": "s-lizard",
+      "spec": {
+        "path": "drill-anim/specs/s-lizard.js",
+        "sha256": "b80255afd4411b2197c93ae881cdb6058ef1104f20938c9d3dcf4ee174a3a7a5"
+      },
+      "sourceCommit": "175ff31c29895f5730fc344519da6cbe1108ab30",
+      "selectedBatch": "hiplab-hd-20261017",
+      "selectedResultSha256": "9cd7de6dd273ff77340b320f81997934cc2165f65f76b57c8514e7b9ab232aaa",
+      "resultShaMatches": true,
+      "materializedSpec": {
+        "sha256": "7ff966dca7450a0ddba71c7389aa8d719caa8c9b66a4ceb5acb3d4532c4236da",
+        "matchesPortableFields": true,
+        "serializedBytesMatch": true
+      },
+      "applyRenderProfile": true,
+      "greenRecipe": "v2",
+      "alpha": "greenscreen/alpha/s-lizard/",
+      "frames": 240
+    },
+    {
+      "id": "s-pigeon",
+      "spec": {
+        "path": "drill-anim/specs/s-pigeon.js",
+        "sha256": "0aab3fdce6ae6995dec95f1a71e2a3f33c8783931136fd71e99fde33c7bd3b2c"
+      },
+      "sourceCommit": "175ff31c29895f5730fc344519da6cbe1108ab30",
+      "selectedBatch": "hiplab-hd-20261017",
+      "selectedResultSha256": "8449f285a7eec3bb64f0bee27709217dfd864f3a495288668e7d72af7f2281ea",
+      "resultShaMatches": true,
+      "materializedSpec": {
+        "sha256": "a8771343c295a0b448cc21b8942bf52feb391ba0e28eaeab9a2bcc3de2ba37dc",
+        "matchesPortableFields": true,
+        "serializedBytesMatch": true
+      },
+      "applyRenderProfile": true,
+      "greenRecipe": "v2",
+      "alpha": "greenscreen/alpha/s-pigeon/",
+      "frames": 240
+    },
+    {
+      "id": "s-seated-fold",
+      "spec": {
+        "path": "drill-anim/specs/s-seated-fold-r3.js",
+        "sha256": "13e38b9e0fb74935868633656b8cc98040f93cf13565132aa95f32c87cd75cc8"
+      },
+      "sourceCommit": "175ff31c29895f5730fc344519da6cbe1108ab30",
+      "selectedBatch": "hiplab-fix-fold-20261017-r3",
+      "selectedResultSha256": "2317fc59555031e421df38929536ee22d8915edc180d2b6f7daa8d3e2e56d7ff",
+      "resultShaMatches": true,
+      "materializedSpec": {
+        "sha256": "be79551f5e0c87c50c52327179338b6e235fcf7aee09b1ce098e0af363d586fb",
+        "matchesPortableFields": true,
+        "serializedBytesMatch": true
+      },
+      "applyRenderProfile": false,
+      "greenRecipe": "v3",
+      "alpha": "greenscreen/alpha/s-seated-fold/",
+      "frames": 240
+    },
+    {
+      "id": "t-seated-straddle-lift-1leg",
+      "spec": {
+        "path": "drill-anim/specs/t-seated-straddle-lift-1leg.js",
+        "sha256": "ae5d188dcdda9bc3b9aa446fa14138f41e14b15f2e3d810d76060f4045bd3d30"
+      },
+      "sourceCommit": "175ff31c29895f5730fc344519da6cbe1108ab30",
+      "selectedBatch": "hiplab-hd-20261017",
+      "selectedResultSha256": "a3f77765c604922699cad4f3c95f4b4007c69176ef4743162d34daf1bec42fd7",
+      "resultShaMatches": true,
+      "materializedSpec": {
+        "sha256": "4228e1827d02a9409d1a14ed2c2bc3c6a811cf67a53900375c5f3cf409cc74ee",
+        "matchesPortableFields": true,
+        "serializedBytesMatch": true
+      },
+      "applyRenderProfile": true,
+      "greenRecipe": "v3",
+      "alpha": "greenscreen/alpha/t-seated-straddle-lift-1leg/",
+      "frames": 300
+    },
+    {
+      "id": "w-clamshell",
+      "spec": {
+        "path": "drill-anim/specs/w-clamshell.js",
+        "sha256": "f3647e83bf4a87521600cbc96d5c124c1e8413bdd06c3f72235ff3cbb9a05ff1"
+      },
+      "sourceCommit": "175ff31c29895f5730fc344519da6cbe1108ab30",
+      "selectedBatch": "hiplab-hd-20261017",
+      "selectedResultSha256": "ad543f2a0d0de91a6e34d0eee2dfc962977f736b89b8dc527e98ca1b6a9b8253",
+      "resultShaMatches": true,
+      "materializedSpec": {
+        "sha256": "5fb462bb04c3c0d3476224d1a09760a7eea50c089ece81c1c288654e5428a893",
+        "matchesPortableFields": true,
+        "serializedBytesMatch": true
+      },
+      "applyRenderProfile": true,
+      "greenRecipe": "v2",
+      "alpha": "greenscreen/alpha/w-clamshell/",
+      "frames": 240
+    },
+    {
+      "id": "w-feet-on-chair-bridge",
+      "spec": {
+        "path": "drill-anim/specs/w-feet-on-chair-bridge.js",
+        "sha256": "a1f5f1fd1997ae56a5692ce4c5e9f6aea65db5b20d7715209a104ddde4f65a7d"
+      },
+      "sourceCommit": "175ff31c29895f5730fc344519da6cbe1108ab30",
+      "selectedBatch": "hiplab-hd-20261017",
+      "selectedResultSha256": "697d20d787c426b8dc6f9884ef236bd3c7754c4d9feda245d7c5fa0f8eadada0",
+      "resultShaMatches": true,
+      "materializedSpec": {
+        "sha256": "b4d6df21fd52e8ddccc0de81b94476dfc645fcadfdcbe4f013ba4c4548ed07b8",
+        "matchesPortableFields": true,
+        "serializedBytesMatch": true
+      },
+      "applyRenderProfile": true,
+      "greenRecipe": "v2",
+      "alpha": "greenscreen/alpha/w-feet-on-chair-bridge/",
+      "frames": 240
+    }
+  ],
+  "originalSelectionSha256": "6e0e8f41a0bdf32901d03e0eb2a5015e9ddb5bf1e288e8305376ea39ae5f7b1a",
+  "combinedSelectionSha256": "7d3f0a9f73b3d43fa582c4d4c457fd648d1bfbeef1bbc9e078ec0f1cfa8cba83",
+  "fourSelectionSha256": "4d3bb6010cec6d35e5e52b91b72fb4ab5ae8251ef8499f22dc422a25a6da7ac1",
+  "darkDeliveryFourSha256": "a820b8d7b8baad2834429b48984308f5940533443f5da26ed2ea431411fb8280",
+  "toolMigrationSha256": "d607df59b911c7715a0df72f1aaccf8d7b4ccedb83cdf0fabcb0d5ee01d5faff",
+  "darkRecipes": {
+    "original": {
+      "producer_sha256": "476dc781d36f80396eda2781143ea4d7c576f90c8f592b617acc3e257ec3fce9",
+      "background": "#101013",
+      "source": "Exact 1080 straight-alpha PNGs; no green key",
+      "codec": "h264",
+      "pixel_format": "yuv420p",
+      "size": 1080,
+      "fps": 30,
+      "crf": 18,
+      "audio": false,
+      "faststart": true,
+      "preset": "slow"
+    },
+    "r2": {
+      "producer_sha256": "476dc781d36f80396eda2781143ea4d7c576f90c8f592b617acc3e257ec3fce9",
+      "background": "#101013",
+      "source": "Exact 1080 straight-alpha PNGs; no green key",
+      "codec": "h264",
+      "pixel_format": "yuv420p",
+      "size": 1080,
+      "fps": 30,
+      "crf": 18,
+      "audio": false,
+      "faststart": true,
+      "preset": "slow"
+    }
+  },
+  "darkRecipeR2RawSha256": "a817882f6c68a2124990da8a6e182aade7e494b49fa4a6590215e1683d27db9b",
+  "recipeHashMeaning": "Raw full recipe JSON serialized with sorted keys and compact separators; machine path strings are replaced by their SHA256 in the portable table."
 }
