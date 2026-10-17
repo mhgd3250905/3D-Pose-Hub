@@ -1,11 +1,12 @@
 // node lib/render.mjs <spec.js> <outdir> <f0> <f1> [--theme t.json] [--frames 0,10,20] [--still] [--mask] [--pr 2]
-import fs from 'node:fs';import path from 'node:path';import {pathToFileURL} from 'node:url';import {boot} from './boot.mjs';import {loadTheme} from './config.mjs';
+import fs from 'node:fs';import path from 'node:path';import {pathToFileURL} from 'node:url';import {boot} from './boot.mjs';import {loadTheme} from './config.mjs';import {applySoftHighlight} from './soft-highlight.mjs';
 const A=process.argv.slice(2);const opt=k=>{const i=A.indexOf(k);return i>=0?A[i+1]:null;};const flag=k=>A.includes(k);
 const pos=A.filter((a,i)=>!a.startsWith('--')&&!(i>0&&A[i-1].startsWith('--')&&!['--still','--mask','--with-still'].includes(A[i-1])));
 const [specP,out,f0s,f1s]=pos;fs.mkdirSync(out,{recursive:true});
 const spec=(await import(pathToFileURL(path.resolve(specP)).href)).default;const theme=loadTheme(opt('--theme'));
 const SZ=spec.size||1080,PR=+(opt('--pr')||2),FPS=spec.fps||30,N=Math.round(spec.timeline.duration*FPS);
 const t0=Date.now();const {b,p,info}=await boot({size:SZ,pr:PR,theme,bakeHands:spec.bakeHands||[]});console.log('boot',((Date.now()-t0)/1000).toFixed(1)+'s',JSON.stringify(info));
+const soft=await applySoftHighlight(p,theme);if(soft)console.log('highlight',JSON.stringify(soft));
 await p.evaluate(([spec,th,SZ])=>{__setHighlight(spec.highlight);__toonUni.uSinkK.value=spec.clothSink??1;for(const pr of spec.props||[])__props.add(th,pr);__drill.setupCamera(spec,SZ);},[spec,theme,SZ]);
 // warm-up: the first render after boot can still show stale geometry (app render loop); render + settle twice, discard
 for(let k=0;k<3;k++){await p.evaluate(([s,SZ])=>{__drill.frame(s,0,0,null,{size:SZ,full:false});return 1;},[spec,SZ]);await p.waitForTimeout(400);}

@@ -104,6 +104,7 @@ async function worker(folder){
   if(!alreadyRendered){
    state('rendering');process.env.APP_URL=option('--app-url','http://127.0.0.1:8871');process.env.APP_DIR=REPO;
    const {boot}=await import('./lib/boot.mjs');const {b,p,info}=await boot({size:1080,pr:2,theme:input.theme,bakeHands:spec.bakeHands||[]});
+   const {applySoftHighlight}=await import('./lib/soft-highlight.mjs');const softHighlight=await applySoftHighlight(p,input.theme);
    const errors=[];p.on('pageerror',e=>errors.push(e.message));p.on('console',m=>{if(m.type()==='error')errors.push(m.text())});
    try{
     if(spec.legacyClipId){await p.addScriptTag({content:fs.readFileSync(path.join(TOOL,'page/history-demo-adapter.js'),'utf8')});await p.evaluate(s=>__installHistoricalDemo(s),spec);}
@@ -168,7 +169,7 @@ async function worker(folder){
     }
     assert.deepEqual(errors,[],'Browser error');write(folder+'/frames/met-cycle.json',metrics);write(folder+'/reference/met-cycle.json',baseline);
     const invariance=read(folder+'/motion-invariance.json');invariance.fullCycle={frames:N,checkedIncludingStill:cycleChecks.length,boneDeltaMax:Math.max(...cycleChecks.map(c=>c.boneDelta)),jointMmMax:Math.max(...cycleChecks.map(c=>c.jointMm)),pass:true};write(folder+'/motion-invariance.json',invariance);
-    write(folder+'/renderer.json',{info,errors,profile:await p.evaluate(()=>__trainingCollarReport),sampler:await p.evaluate(()=>({historical:window.__historicalDemoInfo??null,baked:window.__flareV41DemoInfo??null})),completeFrames:N});
+    write(folder+'/renderer.json',{info,softHighlight,errors,profile:await p.evaluate(()=>__trainingCollarReport),sampler:await p.evaluate(()=>({historical:window.__historicalDemoInfo??null,baked:window.__flareV41DemoInfo??null})),completeFrames:N});
    }finally{await b.close();}
    completeFiles(folder,N);
   }
