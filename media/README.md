@@ -1,108 +1,76 @@
-# media/：成片素材清单与发布工具
+# media/：清单、版本 ZIP 与本地同步
 
-Git 里**不放成片**。这里只有一份带 sha256 的素材清单 `manifest.json`，加上三个脚本（只用 Python 标准库，Windows 可直接跑）：
+代码、规格、模型和媒体清单进 Git；成片通过用户谷歌云盘公开链接分发。**一版一个 `pose-hub-media-v<版本>.zip`，不建 R2。** 主线维护方按用户授权直接在 main 完成清单、打包与发布记录，无需清单 PR。
 
-| 脚本 | 谁用 | 做什么 |
-|---|---|---|
-| `tools/ingest.py` | 渲染方（用户本地 4080 机器） | 扫描本地成片目录，把每个文件的 id、变体、分辨率、sha256、字节数，以及渲染所用 spec / theme 的 sha256 写进 `manifest.json` 的某个版本（草稿） |
-| `tools/publish.py` | 渲染方，**需用户同意** | 把该版本里 `storage: "r2"` 的文件上传到 Cloudflare R2 的 `v<版本>/` 目录，再上传冻结的 `v<版本>/manifest.json`，并把版本标为 `published` |
-| `tools/sync.py` | App 仓库（FlareLab、HipLab） | 读取**一个固定版本**的清单，只下载指定的动作 id 到目标目录，逐个校验 sha256 |
+| 工具 | 用途 |
+| --- | --- |
+| `tools/ingest.py` | 扫描本地成片，生成带大小、SHA-256、规格和主题来源的 draft 清单 |
+| `tools/pack.py` | 核验公开媒体并按 `item.file` 打成确定性 ZIP，输出 ZIP 的 SHA-256 |
+| `tools/sync.py` | App 按 lock 从解压目录复制需要的文件，逐个核验大小与 SHA-256 |
 
-## 存储分工（已定）
+`tools/publish.py` 保留旧 R2 协议兼容和回归测试；当前发布流程不调用它，不需要桶、域名或凭据。
 
-| 内容 | 放哪里 |
-|---|---|
-| 代码、人物模型、动作规格、这份清单 | Git（本仓库） |
-| App 用的压缩成片（深色 / 浅色 mp4、封面、静图） | Cloudflare R2，按版本分目录 `v0.1.0/…`，**只增不改** |
-| 绿幕母版、透明 PNG 母帧（`greenscreen` / `alpha`） | **不进 Git、不上 R2**；用户本地 + 异地备份。清单里仍记录 sha256（`storage: "local"`），用来核对备份 |
+## 固定云盘目录
 
-R2 桶还没有建。建桶、开公开访问、拿 API Token 都由用户决定，见交接文档 `to-user-local.md`。脚本里没有任何密钥，全部从环境变量读。
+[3D-Pose-Hub](https://drive.google.com/drive/folders/1TU64lGHbNb-09pNy6nRBLnTxQ6NeHbRH) 下复用如下结构；目录 ID 已保存在 [drive-layout.json](drive-layout.json)，后续先按 ID 定位，避免重复创建同名根目录。
 
-## 清单格式（`manifest.json`，schema `pose-hub/media-manifest@1`）
-
-```jsonc
-{
-  "schema": "pose-hub/media-manifest@1",
-  "repository": "mhgd3250905/3D-Pose-Hub",
-  "storageLayout": "v{version}/{file}",          // R2 对象路径
-  "releases": {
-    "0.1.0": {
-      "status": "draft",                          // draft → published（发布后不可修改）
-      "createdAt": "2026-10-18T02:00:00Z", "updatedAt": "…", "publishedAt": null,
-      "model": "training-human-v2@2.0.1",          // drill-anim/models/training-human-v2.json 的 id@version
-      "notes": "",
-      "items": [
-        {
-          "id": "h-9090-liftoff",                  // 动作 id = drill-anim/specs/<id>.js
-          "variant": "dark",                       // dark | light | greenscreen | alpha
-          "role": "video",                         // video | poster | still | frames
-          // "tag": "a",                           // 可选：同一 id 下多个文件时区分（自测静图 a/b/c/front/back），来自规则里的 {tag}
-          "kind": "file",                          // file | frames（PNG 序列目录）
-          "file": "h-9090-liftoff/h-9090-liftoff.dark.1080.mp4",   // 版本目录下的发布文件名
-          "local": "dark/h-9090-liftoff.mp4",      // 相对 config.json 里 src 的本地路径（不记机器绝对路径）
-          "storage": "r2",                         // r2 | local
-          "bytes": 1234567,
-          "sha256": "…",
-          "width": 1080, "height": 1080, "durationSec": 4.0, "fps": 30.0, "frames": 120,
-          "spec":  {"path": "drill-anim/specs/h-9090-liftoff.js", "sha256": "…"},   // CRLF→LF 后的 sha256，与 verify.mjs 同规则
-          "theme": {"path": "drill-anim/themes/glow-b.json", "sha256": "…"}
-        }
-      ]
-    }
-  }
-}
+```text
+3D-Pose-Hub/                         私有管理目录
+  releases/                         私有管理目录
+    v0.1.0/                         已批准发布的版本目录，知道链接的人可查看
+      pose-hub-media-v0.1.0.zip
+      pose-hub-media-v0.1.0.zip.sha256
+      manifest.json                 冻结的单版本清单，单独下载
+      README.txt                    校验与接入说明
+    v0.1.1/                         下次发布时新建，沿用同样四个文件
 ```
 
-- 同一版本内，`(id, variant, role, tag, width)` 唯一。
-- `kind: "frames"` 的 sha256 = 对目录内文件按相对路径排序后，逐行 `相对路径<TAB>sha256<LF>` 再整体求 sha256。
-- 分辨率、时长、帧数直接从 mp4 / png / webp / jpg 文件头读，不依赖 ffprobe。
-- `spec` 为 `null` 表示仓库里找不到对应 spec（例如 r2 修订稿），请在 `config.json` 的 `specOverrides` 里指明。
+`v0.1.1/` 是未来结构示例，不提前建空发布目录。公开权限只开到经过核验的版本目录，父目录保持受限；绿幕、透明帧和本机备份不进入这个云盘树。版本目录 URL 保存在对应清单的 `distribution.folderUrl`。
 
-## 本地配置 `media/config.json`
+## 存储约定
 
-从 `config.example.json` 复制（已被 .gitignore 排除）。`src` 是本地成片根目录，`rules` 把目录结构映射成清单条目：
+公开成片、封面和静图使用 `storage: "archive"`，进入对应版本 ZIP。绿幕母版和透明帧使用 `storage: "local"`，只在清单记录哈希，不进 ZIP、不进 Git。用户当前要求原件与备份保留在 E 盘。
 
-```json
-{"variant": "dark", "role": "video", "pattern": "dark/{id}.mp4", "storage": "r2", "theme": "drill-anim/themes/glow-b.json"}
+ZIP 根路径严格等于清单的 `file`，例如：
+
+```text
+h-9090-liftoff/h-9090-liftoff.dark.1080.mp4
+h-9090-liftoff/h-9090-liftoff.dark.poster.1080.jpg
 ```
 
-`{id}` 匹配一个动作 id（不含 `/`），`{tag}` 匹配一段不含 `-` 和 `/` 的标签（如 `stills/{id}-{tag}.webp`），`*` 匹配不含 `/` 的任意字符，结尾带 `/` 表示匹配一个 PNG 帧目录。先用 `--dry-run` 看匹配结果。
+没有额外 `v0.1.0/` 前缀。ZIP 只含媒体，不含清单或 ZIP 校验文件，避免在清单记录 ZIP 哈希时形成循环依赖。清单由 Git 分发，App 保存同一发布版本的清单副本。
 
-## 命令
+## 每版的发布步骤
+
+1. 从 `config.example.json` 复制忽略的 `config.json`，设置本地 `src` 和规则；修订规格用 `specOverrides` 绑定。先 ingest 演练，再生成草稿。
+2. pack 核验并打包，经用户授权上传到固定云盘路径的新版本目录，设为“知道链接的人可查看”。下载回读并比对 ZIP SHA-256。
+3. 确认公开查看权限后，在版本发布记录登记链接、ZIP 字节数和 SHA-256；清单登记分发元数据并把版本设为 `published`、填写 `publishedAt`。链接到位前保持 draft；版本目录另存冻结的 `manifest.json` 和接入说明。
+4. 在 main 提交并推送。已发布版本的 ZIP、媒体条目和哈希固定，变更内容要发布新版本。
 
 ```powershell
-# 1) 生成/更新草稿清单（只写 media/manifest.json）
 py media/tools/ingest.py --version 0.1.0 --dry-run
 py media/tools/ingest.py --version 0.1.0
-# 2) 提交清单 PR（一个版本一个 PR）
-# 3) 用户同意后发布到 R2（默认 dry run；加 --yes 才上传）
-$env:POSE_HUB_R2_BUCKET="…"; $env:POSE_HUB_R2_ACCOUNT_ID="…"
-$env:POSE_HUB_R2_ACCESS_KEY_ID="…"; $env:POSE_HUB_R2_SECRET_ACCESS_KEY="…"
-py media/tools/publish.py --version 0.1.0
-py media/tools/publish.py --version 0.1.0 --yes
-# 也可以用 wrangler：--backend wrangler（需要 wrangler login 和 POSE_HUB_MEDIA_BASE_URL）
-# 4) 把被改成 published 的 manifest.json 再提一个 PR
+py media/tools/pack.py --version 0.1.0 --output E:/AII-3D/pose-hub-media/releases/pose-hub-media-v0.1.0.zip
 ```
 
-App 侧：
+`pack.py` 默认读取 `media/config.json` 的 `src`，也可以 `--src` 指定。默认输出为忽略目录 `media/dist/`；ZIP 旁有 `.sha256` 校验侧车。固定排序、时间戳及权限保证相同媒体集合重建相同 ZIP。不同内容拒绝覆盖已有同名包；坏源文件不会替换已有包。
 
-```bash
-python tools/pose_hub_sync.py --lock pose-hub.lock.json          # 下载缺的、校验已有的
-python tools/pose_hub_sync.py --lock pose-hub.lock.json --check  # 只校验（CI 或提交前）
-```
+## 清单字段
 
-锁定文件格式见 `tools/sync.py` 文件头和 [docs/consumers.md](../docs/consumers.md)。
+清单 schema 保持 `pose-hub/media-manifest@1`，`releases.<版本>` 包含 `status`、日期、模型、notes 和 items。每个 item 保存 id、variant、role、kind、file、local、storage、bytes、sha256、尺寸，以及规格和主题的 LF 规范化源码哈希。`local` 相对本机配置的 `src`，清单不保存机器绝对路径。
 
-## 不变的规则
+同一版本的 `(id, variant, role, tag, width)` 唯一。透明帧目录的哈希是按相对路径排序的 `相对路径<TAB>SHA256<LF>` 行整体求 SHA-256。发布分发元数据记录 ZIP 文件名、文件数、字节数、SHA-256 与核验过的公开链接；ZIP 本身不依赖这些元数据。
 
-1. **发布版本只增不改。** `publish.py` 遇到同名但内容不同的对象直接中止；`ingest.py` 拒绝修改已发布版本。要改成片就发新版本（例如 0.1.1）。
-2. App 只用 `published` 的版本，并在自己的锁定文件里写死版本号。
-3. 推送和发布都要用户同意（见根目录 `AGENTS.md`）。
+新配置使用 `archive`；旧 `r2` 值仍可被打包和同步工具读取，以兼容历史清单。旧 HTTP/mirror 路径沿用 `v<版本>/...`，新 `--from-dir` 直接使用 `item.file`。
 
-## 测试
+## App 接入
+
+下载 ZIP → 核对 ZIP SHA-256 → 解压 → `sync --from-dir` → `--check`。App 的 lock 指定固定版本、清单副本与 targets，无需 `baseUrl`。Windows、macOS、离线清单和文件命名示例见 [接入说明](../docs/consumers.md)。
+
+## 验证
 
 ```bash
 python -m unittest discover -s media/tests -v
 ```
 
-测试用合成的 mp4/png 和本地假 R2 服务器，覆盖：清单生成与幂等、已发布版本拒改、dry run、上传与重跑跳过、拒绝覆盖、本地文件被改后拒绝上传、SigV4 与 AWS 文档示例签名一致、按 id 子集同步、篡改检测、损坏下载不落盘、缺 id / 本地母版 / 草稿版本报错、本地镜像同步。
+测试覆盖 ingest、确定性打包、损坏源、原子复制、lock、按 id 选取、漂移检查、草稿和本地母版拒绝，以及旧 HTTP / mirror / R2 协议兼容。测试使用合成素材和本地假服务，不需要云账号。

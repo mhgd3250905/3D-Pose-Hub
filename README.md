@@ -8,7 +8,7 @@ Pose-Hub 是 FlareLab（托马斯训练助手）和 HipLab（开胯训练助手�
 
 ```
 drill-anim/          动作渲染工具（原 3D-Body tools/drill-anim）
-  specs/<id>.js      一个动作一个规格文件（162 个文件：159 个动作 + 3 个托马斯共用模块）
+  specs/<id>.js      动作规格与版本化修订；共用模块为 specs/_*.mjs
   page/ lib/         浏览器端求解/着色、Node/Python 渲染与合成、QA
   models/            人物模型清单 training-human-v2.json（版本 2.0.1，13 个固定源文件的 sha256）
   themes/ theme.json 外观（默认 v7；方案 B 为 themes/glow-b.json）
@@ -16,7 +16,7 @@ drill-anim/          动作渲染工具（原 3D-Body tools/drill-anim）
 runtime/             渲染时启动的 3D 场景（原 3D-Body 根目录的 index.html、src/、public/coach、public/anatomy 中渲染用到的部分）
 tools/               人物模型制作工具：blender/（Snow 派生教练、健身/肌肉参考体）、mannequin/（灰色人台头）、cloth/（衣服蒙皮）、face/
 assets/              blender-studio-source/SOURCE.md（Blender 源文件获取说明；.blend 本体不进 Git）
-media/               成片素材清单 manifest.json + ingest / publish / sync 脚本（见 media/README.md）
+media/               成片素材清单 manifest.json + ingest / pack / sync 脚本（见 media/README.md）
 docs/                人物标准、动作批次与审核记录；docs/consumers.md 是 App 接入说明；docs/migration/ 是迁移对照表
 licenses/            three / lucide 许可、动作媒体署名
 package.json         根目录 npm 工程（three 0.170.0、lucide、vite 7.3.6），vite.config.js 把 root 指到 runtime/
@@ -53,24 +53,24 @@ python drill-anim/drill.py render h-9090-liftoff --theme themes/glow-b.json     
 
 ## 发布成片
 
-Git 只放代码、模型、规格和一份带 sha256 的清单。App 用的压缩成片放 Cloudflare R2，路径 `v<版本>/<id>/<文件>`，**只增不改**；绿幕和透明母帧不进 Git、不上 R2，留在用户本地并做异地备份。
+Git 只放代码、模型、规格与 SHA-256 清单。公开媒体一版一个 `pose-hub-media-v<版本>.zip`，主线维护方经用户授权上传谷歌云盘并开放链接；绿幕与透明母帧只留本地备份，不进 ZIP。当前不建 R2。
 
 ```powershell
-copy media\config.example.json media\config.json      # 填 src（本地成片根目录）和匹配规则
+Copy-Item media/config.example.json media/config.json  # 设置本地 src 和规则
 py media/tools/ingest.py --version 0.1.0 --dry-run
-py media/tools/ingest.py --version 0.1.0              # 写入 media/manifest.json（草稿）→ 提 PR
-py media/tools/publish.py --version 0.1.0             # 预演；用户同意后加 --yes 上传到 R2
+py media/tools/ingest.py --version 0.1.0
+py media/tools/pack.py --version 0.1.0
 ```
 
-R2 桶还没建，凭据只从环境变量读取（`POSE_HUB_R2_*`），详见 [media/README.md](media/README.md)。
+ZIP 内按清单 `file` 命名，只有媒体，不含清单。上传后在版本发布记录和清单登记公开链接、ZIP 大小和 SHA-256，才标为 `published`。主线维护方按用户授权直接提交推送 main，不开清单 PR。已发布包与条目固定，内容变化发新版本。详见 [media/README.md](media/README.md) 与 [v0.1.0](media/releases/0.1.0.md)。
 
 ## App 怎么取
 
-App 仓库里放一个锁定文件 `pose-hub.lock.json`（固定版本号 + 需要的动作 id 列表），用 `media/tools/sync.py`（单文件，可直接复制进 App 仓库）同步：
+App 保存固定版本的 lock、`media/tools/sync.py` 的单文件副本，以及同一发布提交的清单副本。下载 ZIP、核对 SHA-256 并解压后：
 
 ```bash
-python tools/pose_hub_sync.py --lock pose-hub.lock.json          # 只下载列出的 id，逐个校验 sha256
-python tools/pose_hub_sync.py --lock pose-hub.lock.json --check  # 只校验
+python tools/pose_hub_sync.py --lock pose-hub.lock.json --from-dir ./pose-hub-media-v0.1.0
+python tools/pose_hub_sync.py --lock pose-hub.lock.json --check
 ```
 
-具体写法见 [docs/consumers.md](docs/consumers.md)。要新动作或改动作：到本仓库提 issue / PR，等发布新版本后在 App 里改锁定文件的版本号。
+每个文件都核对大小和 SHA-256；无需 baseUrl。Windows、macOS 和离线接入示例见 [docs/consumers.md](docs/consumers.md)。要新动作或改动作，由贡献方到本仓库提 issue / PR；发布后 App 更新 lock 和清单副本。

@@ -6,6 +6,7 @@ import json
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 from fixtures import FakeR2, make_mp4, make_png, write_config  # noqa: E402  (also puts media/tools on sys.path)
 import posehub_media as pm  # noqa: E402
@@ -221,6 +222,150 @@ class MediaToolsTest(unittest.TestCase):
                               '--variant', 'light', '--dest', str(dest), '--name', '{id}.{variant}{ext}')
         self.assertEqual(code, 0, log)
         self.assertEqual(sorted(p.name for p in dest.iterdir()), ['deltoids-A.light.mp4', 'h-9090-liftoff.light.mp4'])
+
+    def archive_fixture(self):
+        """An extracted ZIP uses item.file, independent of the renderer's item.local."""
+        self.ingest()
+        data = pm.load_manifest(self.manifest)
+        rel = data['releases']['0.1.0']; rel['status'] = 'published'
+        archive = Path(self.tmp.name) / 'extracted'; archive.mkdir()
+        for item in rel['items']:
+            if item['storage'] != 'r2':
+                continue
+            item['storage'] = 'archive'
+            target = archive / item['file']; target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_bytes((self.src / item['local']).read_bytes())
+        pm.save_manifest(data, self.manifest)
+        item = next(i for i in rel['items'] if i['id'] == 'deltoids-A' and i['variant'] == 'dark' and i['role'] == 'video')
+        dest = Path(self.tmp.name) / 'archive-out'
+        args = ['--version', '0.1.0', '--manifest', str(self.manifest), '--from-dir', str(archive),
+                '--ids', 'deltoids-A', '--dest', str(dest), '--name', '{id}{ext}']
+        return archive, dest, item, args
+
+    def test_sync_extracted_archive_copy_idempotence_and_check(self):
+        archive, dest, item, args = self.archive_fixture()
+        self.assertFalse((archive / 'manifest.json').exists())
+        self.assertFalse((archive / 'v0.1.0').exists())
+        code, log = self.sync(*args); self.assertEqual(code, 0, log)
+        out = dest / 'deltoids-A.mp4'
+        self.assertEqual(out.read_bytes(), (archive / item['file']).read_bytes())
+        timestamp = out.stat().st_mtime_ns
+        code, log = self.sync(*args); self.assertIn('1 up to date, 0 downloaded', log)
+        self.assertEqual(out.stat().st_mtime_ns, timestamp)
+        # Check needs only the independent manifest and destinations, never source media bytes.
+        (archive / item['file']).unlink()
+        code, log = self.sync(*args, '--check'); self.assertEqual(code, 0, log)
+        out.write_bytes(b'keep this drifted destination')
+        code, log = self.sync(*args, '--check'); self.assertEqual(code, 1, log)
+        self.assertEqual(out.read_bytes(), b'keep this drifted destination')
+        self.assertFalse(list(dest.rglob('*.part')))
+
+    def test_sync_archive_corruption_preserves_destination_and_removes_part(self):
+        archive, dest, item, args = self.archive_fixture()
+        source = archive / item['file']; original = source.read_bytes()
+        dest.mkdir(); out = dest / 'deltoids-A.mp4'
+        for corrupt in (original[:-1], bytes([original[0] ^ 1]) + original[1:]):
+            with self.subTest(bytes=len(corrupt)):
+                out.write_bytes(b'old destination'); source.write_bytes(corrupt)
+                with self.assertRaises(SystemExit) as e:
+                    self.sync(*args)
+                self.assertIn('nothing written', str(e.exception))
+                self.assertEqual(out.read_bytes(), b'old destination')
+                self.assertFalse(list(dest.rglob('*.part')))
+
+    def test_sync_archive_lock_relative_manifest_without_base_url(self):
+        archive, _, item, _ = self.archive_fixture()
+        app = Path(self.tmp.name) / 'app'; app.mkdir()
+        lock = app / 'pose-hub.lock.json'
+        lock.write_text(json.dumps({'poseHub': {'version': '0.1.0'}, 'manifest': '../manifest.json',
+                                    'targets': [{'dest': 'assets', 'name': '{id}{ext}', 'ids': ['deltoids-A']}]}))
+        # Run from another directory so accidentally using cwd to resolve the manifest fails.
+        with mock.patch.dict(sync.os.environ, {}, clear=True):
+            code, log = self.sync('--lock', str(lock), '--from-dir', str(archive))
+        self.assertEqual(code, 0, log)
+        self.assertEqual((app / 'assets/deltoids-A.mp4').read_bytes(), (archive / item['file']).read_bytes())
+        # The standalone offline check also resolves manifest against the lock, with no source root or base URL.
+        with mock.patch.dict(sync.os.environ, {}, clear=True):
+            code, log = self.sync('--lock', str(lock), '--check')
+        self.assertEqual(code, 0, log)
+        self.assertIn('1 up to date, 0 downloaded', log)
+        # CLI manifest overrides the lock and follows the same lock-relative convention.
+        data = json.loads(lock.read_text()); data['manifest'] = 'missing.json'; lock.write_text(json.dumps(data))
+        code, log = self.sync('--lock', str(lock), '--manifest', '../manifest.json', '--from-dir', str(archive), '--check')
+        self.assertEqual(code, 0, log)
+
+    def test_sync_archive_manifest_url_and_legacy_r2_storage(self):
+        archive, dest, item, args = self.archive_fixture()
+        data = pm.load_manifest(self.manifest)
+        for row in data['releases']['0.1.0']['items']:
+            if row['storage'] == 'archive':
+                row['storage'] = 'r2'
+        r2 = FakeR2()
+        try:
+            r2.objects['manifest.json'] = {'body': json.dumps(data).encode(), 'meta': '', 'type': 'application/json'}
+            args[args.index('--manifest') + 1] = r2.url + '/manifest.json'
+            code, log = self.sync(*args); self.assertEqual(code, 0, log)
+            self.assertEqual((dest / 'deltoids-A.mp4').read_bytes(), (archive / item['file']).read_bytes())
+            self.assertTrue(all(request[1] == 'manifest.json' for request in r2.requests), r2.requests)
+        finally:
+            r2.close()
+
+    def test_sync_archive_default_manifest_only_in_hub_checkout(self):
+        archive, _, _, args = self.archive_fixture()
+        del args[args.index('--manifest'):args.index('--manifest') + 2]
+        fake_tools = Path(self.tmp.name) / 'hub/media/tools'; fake_tools.mkdir(parents=True)
+        (fake_tools.parent / 'manifest.json').write_bytes(self.manifest.read_bytes())
+        with mock.patch.object(sync, '__file__', str(fake_tools / 'sync.py')):
+            code, log = self.sync(*args); self.assertEqual(code, 0, log)
+        with mock.patch.object(sync, '__file__', str(Path(self.tmp.name) / 'app/tools/pose_hub_sync.py')):
+            with self.assertRaises(SystemExit) as e:
+                self.sync(*args, '--check')
+            self.assertIn('separate --manifest', str(e.exception))
+
+    def test_sync_archive_rejects_invalid_roots_and_missing_files(self):
+        archive, dest, item, args = self.archive_fixture()
+        root_index = args.index('--from-dir') + 1
+        for invalid in (str(archive / 'missing'), 'https://drive.example/share/archive'):
+            with self.subTest(root=invalid):
+                args[root_index] = invalid
+                with self.assertRaises(SystemExit):
+                    self.sync(*args)
+                self.assertFalse(dest.exists())
+        args[root_index] = str(archive)
+        (archive / item['file']).unlink()
+        with self.assertRaises(SystemExit) as e:
+            self.sync(*args)
+        self.assertIn('archive file not found', str(e.exception))
+        self.assertFalse(dest.exists())
+        with self.assertRaises(SystemExit):
+            self.sync(*args, '--source-dir', str(archive))
+
+    def test_sync_archive_rejects_source_and_target_path_escape(self):
+        archive, dest, item, args = self.archive_fixture()
+        data = pm.load_manifest(self.manifest)
+        row = next(i for i in data['releases']['0.1.0']['items'] if i['file'] == item['file'])
+        for unsafe in ('../outside.mp4', '/absolute.mp4', 'C:/absolute.mp4', '..\\outside.mp4'):
+            with self.subTest(file=unsafe):
+                row['file'] = unsafe; pm.save_manifest(data, self.manifest)
+                with self.assertRaises(SystemExit) as e:
+                    self.sync(*args)
+                self.assertIn('unsafe path', str(e.exception))
+                self.assertFalse(dest.exists())
+        row['file'] = item['file']; pm.save_manifest(data, self.manifest)
+        args[args.index('--name') + 1] = '../outside.mp4'
+        with self.assertRaises(SystemExit) as e:
+            self.sync(*args)
+        self.assertIn('target name', str(e.exception))
+        self.assertFalse((dest.parent / 'outside.mp4').exists())
+
+    def test_sync_archive_rejects_local_masters_and_frame_groups(self):
+        archive, dest, _, args = self.archive_fixture()
+        for variant, role in (('greenscreen', 'video'), ('alpha', 'frames')):
+            with self.subTest(variant=variant):
+                with self.assertRaises(SystemExit) as e:
+                    self.sync(*args, '--variant', variant, '--role', role)
+                self.assertIn('local-only master', str(e.exception))
+        self.assertFalse(dest.exists())
 
 
 if __name__ == '__main__':

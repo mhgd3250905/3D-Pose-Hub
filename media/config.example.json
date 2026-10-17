@@ -1,13 +1,46 @@
 {
-  "_doc": "Copy to media/config.json (gitignored) and edit. 'src' = root folder of your local renders. Each rule maps a path pattern under src to one manifest item; {id} = drill id (no slash), * = any text without slash, a trailing / = a folder of PNG frames. storage 'r2' = published to Cloudflare R2 by publish.py; 'local' = tracked by sha256 only, never uploaded (keep on your disk + off-site backup). theme = the theme file the variant was rendered with (its sha256 is recorded). The rules below follow tools/hiplab-render's batch layout; change them to match your folders and check with: py media/tools/ingest.py --version 0.1.0 --dry-run",
+  "_doc": "Copy to media/config.json (gitignored) and edit. 'src' = root folder of your local renders. Each rule maps a path pattern under src to one manifest item; {id} = drill id (no slash), * = any text without slash, a trailing / = a folder of PNG frames. storage 'archive' = included in the version ZIP by pack.py; legacy 'r2' is accepted only for compatibility; 'local' = tracked by sha256 only, never uploaded (keep on your disk + off-site backup). theme = the theme file the variant was rendered with (its sha256 is recorded). The rules below follow tools/hiplab-render's batch layout; change them to match your folders and check with: py media/tools/ingest.py --version 0.1.0 --dry-run",
   "src": "E:/AII-3D/pose-hub-media",
   "rules": [
-    {"variant": "dark", "role": "video", "pattern": "dark/{id}.mp4", "storage": "r2", "theme": "drill-anim/themes/glow-b.json"},
-    {"variant": "dark", "role": "poster", "pattern": "dark/posters/{id}.jpg", "storage": "r2", "theme": "drill-anim/themes/glow-b.json"},
-    {"variant": "light", "role": "video", "pattern": "light/{id}.mp4", "storage": "r2"},
-    {"variant": "light", "role": "poster", "pattern": "light/posters/{id}.jpg", "storage": "r2"},
-    {"variant": "greenscreen", "role": "video", "pattern": "greenscreen/media/master/{id}-greenscreen.mp4", "storage": "local", "theme": "drill-anim/themes/glow-b.json"},
-    {"variant": "alpha", "role": "frames", "pattern": "greenscreen/alpha/{id}/", "storage": "local"}
+    {
+      "variant": "dark",
+      "role": "video",
+      "pattern": "dark/{id}.mp4",
+      "storage": "archive",
+      "theme": "drill-anim/themes/glow-b.json"
+    },
+    {
+      "variant": "dark",
+      "role": "poster",
+      "pattern": "dark/posters/{id}.jpg",
+      "storage": "archive",
+      "theme": "drill-anim/themes/glow-b.json"
+    },
+    {
+      "variant": "light",
+      "role": "video",
+      "pattern": "light/{id}.mp4",
+      "storage": "archive"
+    },
+    {
+      "variant": "light",
+      "role": "poster",
+      "pattern": "light/posters/{id}.jpg",
+      "storage": "archive"
+    },
+    {
+      "variant": "greenscreen",
+      "role": "video",
+      "pattern": "greenscreen/media/master/{id}-greenscreen.mp4",
+      "storage": "local",
+      "theme": "drill-anim/themes/glow-b.json"
+    },
+    {
+      "variant": "alpha",
+      "role": "frames",
+      "pattern": "greenscreen/alpha/{id}/",
+      "storage": "local"
+    }
   ],
   "specOverrides": {
     "_doc": "drill id -> spec file actually rendered, when it is not drill-anim/specs/<id>.js (e.g. an r2 revision)"

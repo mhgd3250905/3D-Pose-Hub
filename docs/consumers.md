@@ -1,74 +1,73 @@
 # App 接入 Pose-Hub 成片
 
-适用于 FlareLab（3D-Body 仓库 `app/`，Flutter）和 HipLab（独立仓库，Flutter）。原则：**App 只取已发布（published）的固定版本，只取自己列出的动作 id，每个文件都校验 sha256。** App 仓库里不再渲染、不再改动作规格。
+App 只取 `published` 的固定版本，按 lock 选动作，并逐文件核对大小与 SHA-256。当前分发方式是谷歌云盘公开 ZIP：一版一个包，开发机和 Mac 手动下载、解压后从本地同步。App 不修改动作规格或渲染素材。
 
-## 1. 放进 App 仓库的两样东西
+## App 中保存的文件
 
-1. `tools/pose_hub_sync.py`：直接复制 Pose-Hub 的 [`media/tools/sync.py`](../media/tools/sync.py)（单文件、只用 Python 标准库）。复制时在文件头注明来源提交，例如 `# copied from 3D-Pose-Hub media/tools/sync.py @ <commit>`。
-2. `pose-hub.lock.json`：锁定版本 + 要用的 id。提交进 Git，改版本号就是"升级动作素材"。
+将本仓库的 `media/tools/sync.py` 复制为 App 的 `tools/pose_hub_sync.py`，将同一发布提交的 `media/manifest.json` 复制为 `tools/pose-hub-manifest.json`。脚本只依赖 Python 3.9+ 标准库；这两份文件与 lock 一起提交，离线构建也能校验。
+
+`pose-hub.lock.json` 示例：
 
 ```json
 {
   "poseHub": {"repo": "mhgd3250905/3D-Pose-Hub", "version": "0.1.0"},
-  "baseUrl": "https://<R2 公开域名，桶建好后填>",
+  "manifest": "tools/pose-hub-manifest.json",
   "targets": [
-    {"variant": "dark", "role": "video",  "width": 1080, "dest": "assets/drill_media", "name": "hip-{id_lower}.mp4",
+    {"variant": "dark", "role": "video", "width": 1080,
+     "dest": "assets/drill_media", "name": "hip-{id_lower}.mp4",
      "ids": ["glute-max-A", "h-9090-liftoff"]},
-    {"variant": "dark", "role": "poster", "dest": "assets/drill_media", "name": "hip-{id_lower}{ext}",
+    {"variant": "dark", "role": "poster", "width": 1080,
+     "dest": "assets/drill_media", "name": "hip-{id_lower}{ext}",
      "ids": ["glute-max-A", "h-9090-liftoff"]}
   ]
 }
 ```
 
-- `variant`：`dark`（深色底，现在 App 用的）、`light`（浅色主题）。`greenscreen` / `alpha` 是本地母版，不发布，App 取不到。
-- `role`：`video`、`poster`（封面）、`still`（静图，如自测三档对比图，一个 id 下按 `tag` 区分 a/b/c/front/back）。
-- `width`：同一 id 有多个分辨率时必须写。
-- `name` 可用字段：`{id}` `{id_lower}` `{tag}` `{variant}` `{role}` `{width}` `{ext}` `{file}`；有 tag 的条目 `name` 里必须带 `{tag}`。
-- `dest` 相对锁定文件所在目录。
-- `baseUrl` 也可以不写，改用环境变量 `POSE_HUB_MEDIA_BASE_URL`。
+`manifest` 和 `dest` 的相对路径以 lock 所在目录为基准。清单也可通过 `--manifest` 指定本地路径或 URL；采用本地清单即可完成离线同步和检查。当前流程不需要 `baseUrl`。
 
-## 2. 命令
+## 下载、解压、同步
 
-```bash
-python tools/pose_hub_sync.py --lock pose-hub.lock.json --dry-run   # 看会下载什么
-python tools/pose_hub_sync.py --lock pose-hub.lock.json             # 下载缺的 / 不一致的，已一致的不动
-python tools/pose_hub_sync.py --lock pose-hub.lock.json --check     # 只校验，有缺失或不一致时退出码 1
-python tools/pose_hub_sync.py --lock pose-hub.lock.json --receipt tools/pose-hub-receipt.json   # 可选回执
+从对应的 [发布记录](../media/releases/0.1.0.md) 取得云盘链接和 ZIP SHA-256。先核对整个 ZIP，再解压到任意目录。ZIP 根目录直接是 `<id>/<发布文件名>`，不含 `v0.1.0/` 前缀，也不含清单、绿幕或透明母帧。
+
+Windows PowerShell：
+
+```powershell
+Get-FileHash .\pose-hub-media-v0.1.0.zip -Algorithm SHA256
+Expand-Archive -LiteralPath .\pose-hub-media-v0.1.0.zip -DestinationPath .\pose-hub-media-v0.1.0
+py tools\pose_hub_sync.py --lock pose-hub.lock.json --from-dir .\pose-hub-media-v0.1.0
+py tools\pose_hub_sync.py --lock pose-hub.lock.json --check
 ```
 
-- 下载先写临时文件，大小和 sha256 都对上才替换目标文件；对不上就报错、什么都不写。
-- 脚本从不删除文件。从锁定文件里去掉的 id，对应旧文件要在 App 的 PR 里手动删。
-- 离线 / CI 可用 `--source-dir <本地镜像>`（目录里是 `v0.1.0/...`，与 R2 结构相同）。
-- 清单默认取 `<baseUrl>/v<版本>/manifest.json`（发布时冻结上传的那份），也可 `--manifest` 指定 Pose-Hub 仓库里某个 tag 的 `media/manifest.json`。
-
-## 3. 动作 id 从哪来
-
-- id 就是 Pose-Hub `drill-anim/specs/<id>.js` 的文件名（不含 `.js`），也是清单里每条的 `id`。
-- 修订稿（例如 `h-9090-liftoff-r2.js`）发布时仍用 App 认识的 id（`h-9090-liftoff`），清单条目里的 `spec.path` 指向实际渲染的修订稿。
-- 查某个版本有哪些 id：
+macOS：
 
 ```bash
-python -c "import json,urllib.request;r=json.load(urllib.request.urlopen('<baseUrl>/v0.1.0/manifest.json'))['release'];print(sorted({i['id'] for i in r['items'] if i['variant']=='dark' and i['role']=='video'}))"
+shasum -a 256 pose-hub-media-v0.1.0.zip
+unzip pose-hub-media-v0.1.0.zip -d pose-hub-media-v0.1.0
+python3 tools/pose_hub_sync.py --lock pose-hub.lock.json --from-dir ./pose-hub-media-v0.1.0
+python3 tools/pose_hub_sync.py --lock pose-hub.lock.json --check
 ```
 
-## 4. FlareLab（3D-Body `app/`）
-
-- 现状：51 个训练视频在 `app/assets/drill_media/<id>.mp4`（720×720）和 `<id>.jpg`（540×540 封面），来源记录在 `app/assets/data/drill-media-manifest.json`，由 `app/tools/import-drill-media.py` 从 3D-Pose v1.0.0 导入。51 个 id 与 Pose-Hub `drill-anim/data/drills.json` 一致。
-- 接入后：`app/pose-hub.lock.json` 的 targets 用 `"dest": "assets/drill_media", "name": "{id}.mp4"`（视频）和 `"{id}.jpg"`（封面），ids 取 `drills.json` 里的 51 个：
+`--from-dir` 参数必须指向解压后直接包含动作 id 目录的那一层。脚本不会解析云盘分享链接，也不会批量下载云盘文件。已匹配的目标文件不重写；复制先写临时文件，大小和 SHA-256 均通过才替换目标。源文件损坏会报错并保留原目标；`--check` 只检查 App 目标文件，漂移时返回 1。脚本不删除旧文件。
 
 ```bash
-python -c "import json;d=json.load(open('drill-anim/data/drills.json'));print(json.dumps([t['id'] for g in d['drills'].values() for t in g.values()]))"
+python3 tools/pose_hub_sync.py --lock pose-hub.lock.json --from-dir ./pose-hub-media-v0.1.0 --dry-run
+python3 tools/pose_hub_sync.py --lock pose-hub.lock.json --from-dir ./pose-hub-media-v0.1.0 --receipt tools/pose-hub-receipt.json
 ```
 
-- 注意：现有 51 个文件是 720² 版本。Pose-Hub 第一版素材发布前，FlareLab 保持现有文件不动；发布时如果分辨率或文件名变化，要在同一个 FlareLab PR 里改 `drill-media-manifest.json` 和用到它的 Dart 代码。
+旧的 HTTP 同步和 `--source-dir` 镜像模式仍兼容，镜像目录需要 `v<版本>/...`；它与新 ZIP 解压根目录的 `--from-dir` 模式不同，不能混用。
 
-## 5. HipLab
+## 选取文件
 
-- 现状：视频 `assets/drill_media/hip-<id 小写>.mp4`、封面 `hip-<id 小写>.jpg`，元数据 `tools/hip_content/source/hip-media.json`（key 是动作 id），自测对比图 `assets/hip/assessment/<项目>-<a|b|c|front|back>.webp`；`tools/hip_content/build_hip_content.py` 据此生成 `assets/hip/hip-content.json`。旧的 `tools/sync_drill_media.py` 直接从 3D-Body 的输出目录拷贝。
-- 接入后：锁定文件 targets 用 `"name": "hip-{id_lower}.mp4"` / `"hip-{id_lower}{ext}"`，自测静图用 `"role": "still"`、`"name": "{tag}..."` 这一类模板（以 Pose-Hub 发布时清单里的 tag 为准）；`build_hip_content.py` 不变，只是媒体来自 sync 后的目录。ids 取 `hip-media.json` 的 key。
+`variant` 可选 `dark` / `light`，`role` 可选 `video` / `poster` / `still`。绿幕和透明帧标为 `storage: "local"`，不会进入 ZIP，也不能同步到 App。公开 ZIP 条目使用 `storage: "archive"`；脚本兼容旧清单的 `r2` 值。
 
-## 6. 要新动作 / 改动作
+同一 id 有多个分辨率时要写 `width`。`name` 支持 `{id}`、`{id_lower}`、`{tag}`、`{variant}`、`{role}`、`{width}`、`{ext}`、`{file}`；有 tag 的静图必须在目标文件名里保留 `{tag}`。修订规格仍发布成原动作 id，实际规格通过清单的 `spec.path` 记录。
 
-1. 在 Pose-Hub 提 issue（写清楚 App、动作、问题、期望），或直接按 [AGENTS.md](../AGENTS.md) 开 `drill/<id>` / `fix/<id>-…` 分支和 PR。
-2. Pose-Hub 合并后渲染、ingest、发布新版本（例如 0.1.1）。
-3. App 侧开 PR：改 `pose-hub.lock.json` 的版本号 / ids，运行 sync，提交新媒体文件。
+## 当前 App 范围
+
+v0.1.0 只含 HipLab 46 个动作的深色成片和封面；自测静图、light 以及 FlareLab 的 51 个动作均不在本包。FlareLab 当前不接入，保留既有媒体。后续发布覆盖它的动作集后，可使用 `{id}.mp4` / `{id}.jpg` 的目标模板。
+
+HipLab 采用 `hip-{id_lower}.mp4` / `hip-{id_lower}{ext}`；同步后仍由自己的内容生成器维护元数据。这里提供工具和接入约定，不自动改动 App 仓库。
+
+## 后续升级
+
+动作贡献继续从 main 拉分支并提 PR。主线维护方审核、渲染、ingest 后打出新版本 ZIP，经用户授权上传云盘并核验，登记链接和 ZIP SHA-256，将该版本标为 `published`，直接提交推送 main。已发布包不覆盖；App 升级时更新清单副本和 lock 的版本号，再下载、解压、同步及检查。

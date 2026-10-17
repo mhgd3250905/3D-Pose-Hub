@@ -16,8 +16,7 @@ Ad-hoc:
 Lock file:
     {
       "poseHub": {"repo": "mhgd3250905/3D-Pose-Hub", "version": "0.1.0"},
-      "baseUrl": "https://<public R2 domain>",          # optional; else env POSE_HUB_MEDIA_BASE_URL
-      "manifest": "https://.../v0.1.0/manifest.json",   # optional; default <baseUrl>/v<version>/manifest.json
+      "manifest": "tools/pose-hub-manifest.json",      # frozen local copy, relative to lock folder
       "targets": [
         {"variant": "dark", "role": "video", "width": 1080, "dest": "assets/hip/videos", "name": "{id}.mp4",
          "ids": ["h-frog", "s-9090"]}
@@ -26,7 +25,10 @@ Lock file:
 Relative `dest` paths resolve against the lock file's folder. `name` fields: {id} {id_lower} {tag} {variant}
 {role} {width} {ext} {file}. Items with a tag (e.g. self-test stills a/b/c/front/back) are all fetched for
 an id unless the target lists "tags"; their `name` must then contain {tag}. `--source-dir` reads from a local mirror of the bucket (a folder containing v<version>/...)
-instead of HTTP, e.g. for offline builds or tests.
+instead of HTTP, e.g. for offline builds or tests. `--from-dir` reads an extracted release ZIP whose
+root contains each manifest item's `file` path directly (no v<version>/ prefix or manifest inside).
+Use a separate --manifest or lock "manifest" (local paths are relative to the lock folder); a Pose-Hub
+checkout can default to its media/manifest.json. Neither local mode requires baseUrl.
 """
 from __future__ import annotations
 
@@ -37,7 +39,7 @@ import os
 import sys
 import tempfile
 import urllib.request
-from pathlib import Path
+from pathlib import Path, PureWindowsPath
 
 SCHEMA = 'pose-hub/media-manifest@1'
 
@@ -59,7 +61,14 @@ def _open(location, source_dir=None):
     return open(location, 'rb')
 
 
-def load_manifest(version, manifest=None, base_url=None, source_dir=None):
+def load_manifest(version, manifest=None, base_url=None, source_dir=None, from_dir=None):
+    if from_dir and not manifest:
+        media_dir = Path(__file__).resolve().parent.parent
+        default_manifest = media_dir / 'manifest.json'
+        if media_dir.name != 'media' or not default_manifest.is_file():
+            raise SystemExit('--from-dir needs a separate --manifest or lock "manifest" path/URL; '
+                             'the extracted media archive does not contain a manifest')
+        manifest = str(default_manifest)
     if manifest and not source_dir:
         loc = manifest
     elif source_dir:
@@ -83,6 +92,19 @@ def load_manifest(version, manifest=None, base_url=None, source_dir=None):
     return rel
 
 
+def _within(root, relative, label):
+    """Archive item paths and generated names must stay inside their selected roots."""
+    p = Path(relative)
+    if not relative or '\\' in relative or p.root or PureWindowsPath(relative).drive or '..' in p.parts:
+        raise SystemExit(f'{label}: unsafe path {relative!r}; expected a relative path inside the root')
+    result = (root / p).resolve()
+    try:
+        result.relative_to(root.resolve())
+    except ValueError:
+        raise SystemExit(f'{label}: path escapes root: {relative!r}') from None
+    return result
+
+
 def pick(rel, item_id, variant, role, width, tags=None):
     c = [i for i in rel['items'] if i['id'] == item_id and i['variant'] == variant and i.get('role', 'video') == role]
     if width:
@@ -99,8 +121,14 @@ def pick(rel, item_id, variant, role, width, tags=None):
     return [g[0] for _, g in sorted(per_tag.items())]
 
 
-def fetch(it, out, version, base_url, source_dir):
-    src = f'v{version}/{it["file"]}' if source_dir else f'{base_url.rstrip("/")}/v{version}/{it["file"]}'
+def fetch(it, out, version, base_url, source_dir, from_dir=None):
+    if from_dir:
+        src = str(_within(Path(from_dir), it['file'], 'archive item'))
+        if not Path(src).is_file():
+            raise SystemExit(f'{it["id"]}: archive file not found: {src}; extract the ZIP so item.file paths '
+                             'are directly under --from-dir (no v<version>/ prefix)')
+    else:
+        src = f'v{version}/{it["file"]}' if source_dir else f'{base_url.rstrip("/")}/v{version}/{it["file"]}'
     out.parent.mkdir(parents=True, exist_ok=True)
     fd, tmp = tempfile.mkstemp(dir=out.parent, prefix='.pose-hub-', suffix='.part')
     try:
@@ -117,7 +145,7 @@ def fetch(it, out, version, base_url, source_dir):
             os.remove(tmp)
 
 
-def run_target(rel, version, t, base_dir, base_url, source_dir, check, dry, log):
+def run_target(rel, version, t, base_dir, base_url, source_dir, check, dry, log, from_dir=None):
     variant = t.get('variant', 'dark'); role = t.get('role', 'video'); width = t.get('width')
     dest = Path(t['dest']); dest = dest if dest.is_absolute() else base_dir / dest
     name = t.get('name', '{file}')
@@ -129,10 +157,15 @@ def run_target(rel, version, t, base_dir, base_url, source_dir, check, dry, log)
         if any(i.get('tag') for i in found) and '{tag}' not in name:
             raise SystemExit(f'{item_id}: {variant}/{role} has tagged items; the target "name" needs {{tag}}')
         for it in found:
-            if it.get('storage') != 'r2' or it.get('kind', 'file') != 'file':
-                raise SystemExit(f'{item_id}: {variant}/{role} is a local-only master and is not published to R2')
-            out = dest / name.format(id=it['id'], id_lower=it['id'].lower(), tag=it.get('tag') or '', variant=variant,
-                                     role=role, width=it.get('width'), ext=Path(it['file']).suffix, file=it['file'])
+            if it.get('storage') not in ('archive', 'r2') or it.get('kind', 'file') != 'file':
+                raise SystemExit(f'{item_id}: {variant}/{role} is a local-only master and is not published media')
+            output_name = name.format(id=it['id'], id_lower=it['id'].lower(), tag=it.get('tag') or '', variant=variant,
+                                      role=role, width=it.get('width'), ext=Path(it['file']).suffix, file=it['file'])
+            if from_dir:
+                _within(Path(from_dir), it['file'], 'archive item')
+                out = _within(dest, output_name, 'target name')
+            else:
+                out = dest / output_name
             done.append({'id': it['id'], 'tag': it.get('tag'), 'file': it['file'], 'sha256': it['sha256'], 'path': str(out)})
             if out.is_file() and out.stat().st_size == it['bytes'] and _sha(out) == it['sha256']:
                 stats['ok'] += 1; continue
@@ -140,7 +173,7 @@ def run_target(rel, version, t, base_dir, base_url, source_dir, check, dry, log)
                 stats['drift'] += 1; log(f'  DRIFT {out} (missing or sha256 differs from v{version}/{it["file"]})'); continue
             if dry:
                 log(f'  would fetch v{version}/{it["file"]} -> {out}'); continue
-            fetch(it, out, version, base_url, source_dir); stats['downloaded'] += 1; log(f'  fetched {out}')
+            fetch(it, out, version, base_url, source_dir, from_dir); stats['downloaded'] += 1; log(f'  fetched {out}')
     if missing:
         raise SystemExit(f'version {version} has no {variant}/{role}{"/" + str(width) if width else ""} media for: '
                          + ', '.join(missing))
@@ -153,7 +186,10 @@ def main(argv=None):
     ap.add_argument('--version'); ap.add_argument('--ids', help='comma-separated ids'); ap.add_argument('--ids-file')
     ap.add_argument('--variant', default='dark'); ap.add_argument('--role', default='video'); ap.add_argument('--width', type=int)
     ap.add_argument('--dest'); ap.add_argument('--name', default='{file}')
-    ap.add_argument('--manifest'); ap.add_argument('--base-url'); ap.add_argument('--source-dir')
+    ap.add_argument('--manifest'); ap.add_argument('--base-url')
+    local = ap.add_mutually_exclusive_group()
+    local.add_argument('--source-dir', help='legacy bucket mirror containing v<version>/...')
+    local.add_argument('--from-dir', help='extracted media ZIP root containing item.file paths directly; no baseUrl needed')
     ap.add_argument('--allow-draft', action='store_true', help='accept an unpublished release (testing only)')
     ap.add_argument('--receipt', help='write a JSON receipt of what is in place')
     ap.add_argument('--check', action='store_true', help='verify only; exit 1 if anything is missing or differs')
@@ -172,14 +208,22 @@ def main(argv=None):
         version = a.version; base_dir = Path.cwd(); manifest = a.manifest
         base_url = a.base_url or os.environ.get('POSE_HUB_MEDIA_BASE_URL')
         targets = [{'variant': a.variant, 'role': a.role, 'width': a.width, 'dest': a.dest, 'name': a.name, 'ids': ids}]
-    if not a.source_dir and not base_url and not a.check:
-        ap.error('set baseUrl in the lock file, --base-url, or POSE_HUB_MEDIA_BASE_URL (or use --source-dir)')
-    rel = load_manifest(version, manifest, base_url, a.source_dir)
+    if a.from_dir:
+        archive_root = Path(a.from_dir)
+        if not archive_root.is_dir():
+            ap.error(f'--from-dir is not an existing directory: {a.from_dir}; extract the ZIP first '
+                     '(cloud-drive share links are not file download URLs)')
+    if manifest and not a.source_dir and not str(manifest).startswith(('http://', 'https://')):
+        manifest = str(base_dir / manifest)
+    if not a.source_dir and not a.from_dir and not base_url and not a.check:
+        ap.error('set baseUrl in the lock file, --base-url, or POSE_HUB_MEDIA_BASE_URL '
+                 '(or use --from-dir / --source-dir for local media)')
+    rel = load_manifest(version, manifest, base_url, a.source_dir, a.from_dir)
     if rel.get('status') != 'published' and not a.allow_draft:
         raise SystemExit(f'version {version} is not published (status {rel.get("status")}); apps only use published versions')
     total = {'ok': 0, 'downloaded': 0, 'drift': 0}; receipt = []
     for t in targets:
-        s, done = run_target(rel, version, t, base_dir, base_url or '', a.source_dir, a.check, a.dry_run, print)
+        s, done = run_target(rel, version, t, base_dir, base_url or '', a.source_dir, a.check, a.dry_run, print, a.from_dir)
         for k in total:
             total[k] += s[k]
         receipt += done

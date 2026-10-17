@@ -60,7 +60,7 @@ def version_ok(v: str) -> bool:
 
 def empty_manifest():
     return {'schema': SCHEMA, 'repository': 'mhgd3250905/3D-Pose-Hub',
-            'storageLayout': 'v{version}/{file}', 'releases': {}}
+            'storageLayout': '{file}', 'releases': {}}
 
 
 def load_manifest(path=DEFAULT_MANIFEST):

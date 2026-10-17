@@ -4,8 +4,8 @@
 
 ## 主线维护分工
 
-- 开哥本地 `E:\AII-3D\3D-Pose-Hub` 是主线维护方，负责 main、贡献 PR 审核、清单 PR、合并、tag 与 R2 发布；外部操作仍遵守第 5 条的用户授权要求。
-- Hark 是贡献方：从 main 拉分支、提交 PR，由本地主线维护方审核；不代替主线维护方开清单 PR 或合并。
+- 开哥本地 `E:\AII-3D\3D-Pose-Hub` 是主线维护方，负责 main、贡献 PR 审核、合并、tag 与素材 ZIP 发布；外部操作仍遵守第 5 条的用户授权要求。
+- Hark 是贡献方：从 main 拉分支、提交 PR，由本地主线维护方审核；不代替主线维护方发布素材或合并。
 - FlareLab、HipLab 各自维护 App 功能，通过已发布的固定素材版本消费本仓库成果。
 
 ## 1. 动作只在这里改
@@ -26,9 +26,10 @@
 
 ## 3. 发布版本只增不改
 
-- 素材版本号用 `MAJOR.MINOR.PATCH`，R2 路径 `v<版本>/`。版本一旦 `published`，其中的文件和 `v<版本>/manifest.json` 永不覆盖、不删除；要改成片就发新版本。
-- 清单变更（`media/manifest.json`）走 PR：ingest 后提一个 PR，发布后把状态改为 published 的清单再提一个 PR。
-- 绿幕母版、透明 PNG 母帧不进 Git、不上 R2（`storage: "local"`），由用户本地保存并做异地备份。
+- 素材版本号用 `MAJOR.MINOR.PATCH`，一版一个 `pose-hub-media-v<版本>.zip`。ZIP 内按清单 `file` 原样存放，不加版本目录前缀，只包含 `storage: "archive"` 的公开媒体。主线维护方经用户授权上传谷歌云盘，设为“知道链接的人可查看”，回读核验后记录公开链接、ZIP 字节数和 SHA-256，再把版本标为 `published`。
+- 版本一旦 `published`，该 ZIP、版本清单条目和 ZIP 哈希固定；要改成片就发新版本。ZIP 不包含清单，避免清单中记录 ZIP 哈希形成循环依赖。
+- 主线维护方的素材清单、打包和发布记录可按用户授权直接在 main 完成并推送，不必开 PR；贡献方仍从 main 拉分支提 PR。当前分发不建 R2 桶、不需要公开域名或 R2 凭据。
+- 绿幕母版、透明 PNG 母帧不进 Git、不进发布 ZIP（`storage: "local"`），由用户本地保存并备份；当前用户要求保留在 E 盘。
 - 不要把成片（mp4/webm/gif、帧 PNG）提交进 Git；`.gitignore` 已排除。仓库里历史上已有的少量预览 mp4/gif 保留原样。
 
 ## 4. 人物模型版本
@@ -38,8 +39,8 @@
 
 ## 5. 推送和发布需要用户同意
 
-- 推送到 GitHub（包括新分支）、开 PR、合并、打 tag、上传到 R2（`publish.py --yes`）、建桶或任何花钱的操作，都要先得到用户明确同意。
-- 不在仓库里放任何密钥或机器配置：`drill-anim/config.json`、`media/config.json`、`.env` 都被忽略；R2 凭据只从环境变量读。
+- 推送到 GitHub（包括新分支）、开 PR、合并、打 tag、公开上传素材或任何花钱的操作，都要先得到用户明确同意；已有明确授权不重复询问。本次用户已授权本地主线直接上传云盘、开放发布链接并提交推送 main。
+- 不在仓库里放任何密钥或机器配置：`drill-anim/config.json`、`media/config.json`、`.env` 都被忽略。
 
 ## 6. 渲染机器的规矩
 

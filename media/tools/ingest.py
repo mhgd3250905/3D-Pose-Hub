@@ -7,7 +7,7 @@ Typical use (Windows PowerShell, from the Pose-Hub checkout):
 
 Rules come from media/config.json (copy media/config.example.json). Each rule maps a path pattern under
 `src` to a variant (dark/light/greenscreen/alpha) and a role (video/poster/still/frames), e.g.
-    {"variant": "dark", "role": "video", "pattern": "android/{id}.mp4", "storage": "r2", "theme": "drill-anim/themes/glow-b.json"}
+    {"variant": "dark", "role": "video", "pattern": "android/{id}.mp4", "storage": "archive", "theme": "drill-anim/themes/glow-b.json"}
 `{id}` matches one drill id (no slash); optional `{tag}` names one of several files per id (e.g. self-test stills
 a/b/c/front/back). A pattern ending in "/" matches a directory (a PNG frame sequence).
 
@@ -81,8 +81,8 @@ def scan(src: Path, rules, repo: Path, overrides, ids_filter=None):
             raise SystemExit(f'unknown variant {variant!r}; use one of {pm.VARIANTS}')
         if role not in pm.ROLES:
             raise SystemExit(f'unknown role {role!r}; use one of {pm.ROLES}')
-        if storage not in ('r2', 'local'):
-            raise SystemExit(f'storage must be r2 or local, got {storage!r}')
+        if storage not in ('archive', 'r2', 'local'):
+            raise SystemExit(f'storage must be archive, local, or legacy r2, got {storage!r}')
         is_dir = rule['pattern'].endswith('/')
         rx = pattern_regex(rule['pattern'])
         pool = rel_dirs if is_dir else rel_files
@@ -129,7 +129,7 @@ def scan(src: Path, rules, repo: Path, overrides, ids_filter=None):
 
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument('--version', required=True, help='media release version, e.g. 0.1.0 (published under R2 v<version>/)')
+    ap.add_argument('--version', required=True, help='media release version, e.g. 0.1.0 (one immutable ZIP per version)')
     ap.add_argument('--config', default=str(pm.DEFAULT_CONFIG))
     ap.add_argument('--manifest', default=str(pm.DEFAULT_MANIFEST))
     ap.add_argument('--src', help='override config "src" (root folder of local renders)')
