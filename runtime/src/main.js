@@ -104,7 +104,7 @@ function updateMotionCaption(){
   const periodic=motionModel==='periodic';
   $('#pose-presets').hidden=periodic;
   $('#stage-title').textContent=periodic?'托马斯全旋 · 轨迹试验':'托马斯全旋';
-  $('#stage-footnote').textContent=periodic?'整圈连续生成。拖动时间轴检查摆腿与换手，切换“你的保存动画”即可对比。':viewer.motion.isV42Playback()?'Flare v42 / R12。点击步骤或拖动时间轴查看，原关键姿势与编辑器继续保留。':'按照你保存的 9 步展示。点击步骤或拖动时间轴查看，暂停后可以继续编辑。';
+  $('#stage-footnote').textContent=periodic?'整圈连续生成。拖动时间轴检查摆腿与换手，切换“你的保存动画”即可对比。':viewer.motion.isV42Playback()?`Flare ${viewer.motion.getV42DisplayLabel()}。点击步骤或拖动时间轴查看，原关键姿势与编辑器继续保留。`:'按照你保存的 9 步展示。点击步骤或拖动时间轴查看，暂停后可以继续编辑。';
 }
 function applyTransitionOptions(options){
   const previous=transitionPanel?.options();
@@ -176,9 +176,9 @@ function renderDetail(){
     panel.innerHTML=`<div class="detail-kicker"><span>MOVEMENT BREAKDOWN</span><span>${String(stepIndex+1).padStart(2,'0')} / ${String(presets.length).padStart(2,'0')}</span></div><h2 class="detail-title">${escape(item.name)}</h2><p class="detail-english">YOUR FLARE SEQUENCE</p><span class="function-tag"><i data-lucide="hand"></i>${escape(supports)}支撑</span><p class="detail-copy">${escape(item.technique.body)}</p><div class="detail-section"><div class="detail-section-heading"><h3>手脚朝向</h3><i data-lucide="move-3d"></i></div><div class="function-list"><div class="function-row">${escape(item.technique.hands)}</div><div class="function-row">${escape(item.technique.feet)}</div></div><p class="motion-cue">${escape(item.technique.cue)}</p><div class="phase-pills">${p.focus.map(id=>`<button class="phase-pill" data-related-group="${id}">${groupById[id].name}</button>`).join('')}</div></div><div class="detail-section"><div class="detail-section-heading"><h3>对应的辅助训练</h3><i data-lucide="arrow-up-right"></i></div>${item.technique.exercises.slice(0,2).map(exerciseLink).join('')}</div><button class="focus-button" id="return-anatomy"><i data-lucide="person-standing"></i>返回完整人物</button><p class="evidence-note">正式展示采用你保存并微调的 9 个关键姿势。点击左侧步骤可逐个查看，暂停后可继续编辑。</p>`;
     $('#viewer-overline').textContent='YOUR FLARE SEQUENCE';$('#viewer-label').textContent=item.name;$('#viewer-subtitle').textContent=`第 ${stepIndex+1} / ${presets.length} 步${item.sourceStepNumber?` · 原第 ${String(item.sourceStepNumber).padStart(2,'0')} 步`:''} · ${item.summary}`;
     if(viewer.motion.isV42Playback()){
-      panel.querySelector('.evidence-note').textContent='当前展示 Flare v42 / R12。原关键姿势、个人步骤和动画编辑器继续保留。';
-      panel.querySelector('.detail-english').textContent='FLARE v42 / R12';
-      $('#viewer-overline').textContent='FLARE v42 / R12';
+      panel.querySelector('.evidence-note').textContent=`当前展示 Flare ${viewer.motion.getV42DisplayLabel()}。原关键姿势、个人步骤和动画编辑器继续保留。`;
+      panel.querySelector('.detail-english').textContent=`FLARE ${viewer.motion.getV42DisplayLabel()}`;
+      $('#viewer-overline').textContent=`FLARE ${viewer.motion.getV42DisplayLabel()}`;
     }
     $('#return-anatomy').addEventListener('click',()=>setMode('anatomy'));
     const edit=document.createElement('button');edit.className='focus-button pose-edit-current';edit.id='edit-current-pose';edit.innerHTML='<i data-lucide="pencil"></i>编辑这个姿势';panel.querySelector('#return-anatomy').before(edit);edit.addEventListener('click',()=>setMode('pose',{fromCurrent:true}));
@@ -320,7 +320,7 @@ $('#use-v42-default').addEventListener('click',()=>{
     replaceDemonstration(structuredClone(V42_DEFAULT_SEQUENCE),'v42');
     movementPanel?.setSequence({...demonstration,...transitionPanel.options(),motionModel});
     movementTransport?.setSequence({...demonstration,...transitionPanel.options(),motionModel});
-    toast('已采用 v42 / R12；此前动画已独立备份，个人步骤和过渡草稿保留，可撤销展示替换。');
+    toast('已采用 v42 / R16；此前动画已独立备份，个人步骤和过渡草稿保留，可撤销展示替换。');
   }catch(error){toast(error.message);}
 });
 $('#use-v41-default').addEventListener('click',()=>{
