@@ -66,6 +66,11 @@ for (const [file, expected] of Object.entries({
   '_thomas-pr106.mjs': 'bb034087440df871aab2854180fcc9680d0b63119feedafeb2312c50e14e36fd',
   '_thomas-mirror.mjs': '478fa7a901007c40c9ed64d6dc0908e622cf60cef4d5f8018229385bc73c847d',
 })) assert.equal(textHash(path.join(root, 'specs', file)), expected, `Thomas helper changed: ${file}`);
+// Shared helpers of the HipLab media-fix r2 revisions (PR #121); their importers are hashed above.
+for (const [file, expected] of Object.entries({
+  'specs/_9090-feet.mjs': '3e9d1a0bc673d7b1e35e37a3e45d1aac5b7e2c910152b61bdf443358ef88af12',
+  'lib/foot-orient.mjs': 'eb7b0452b75ef7701a2baf359908272bd3139a04ef56eacfffc4084b732ce431',
+})) assert.equal(textHash(path.join(root, file)), expected, `HipLab media-fix helper changed: ${file}`);
 const model = JSON.parse(fs.readFileSync(path.join(root, 'models/training-human-v2.json'), 'utf8'));
 assert.equal(model.id, 'training-human-v2');
 assert.equal(model.defaultForNewDrills, true);

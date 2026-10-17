@@ -1,0 +1,153 @@
+{
+  "revision": "hiplab-media-fix-20261017",
+  "date": "2026-10-17",
+  "specCommit": "8f0ac32af12237dea5251d365cc1d4120ba2768c",
+  "renderTooling": {
+    "checkout": "3D-Body f8b5138 (codex/hiplab-hd-20261017, PR #120) tools/hiplab-render/render_batch.py render --format green --pr 2",
+    "appSlotWrapper": "export default {...import('<id>-r2.js'), id:'<id>'} so the green/alpha export binds to the App drill id"
+  },
+  "normalization": "UTF-8 text, CRLF normalized to LF",
+  "helpers": {
+    "specs/_9090-feet.mjs": "3e9d1a0bc673d7b1e35e37a3e45d1aac5b7e2c910152b61bdf443358ef88af12",
+    "lib/foot-orient.mjs": "eb7b0452b75ef7701a2baf359908272bd3139a04ef56eacfffc4084b732ce431"
+  },
+  "drills": {
+    "s-frog": {
+      "issue": 9,
+      "spec": "specs/s-frog-r2.js",
+      "sha256": "3acf8825596f68d494ca1cb938fc76cdabe7f8cdf3c2827c71ba3ce408eabffa",
+      "baseSpec": "specs/s-frog.js",
+      "baseSha256": "bf056bbfb6f1024a18077509ecdf691d2ce4118b32b95930a6fefb2e80915277",
+      "app": {
+        "video": "assets/drill_media/hip-s-frog.mp4",
+        "poster": "assets/drill_media/hip-s-frog.jpg",
+        "androidSha256": "c0c1cb3ffd5e50a6bd8bad0e0c43fbcde53186c68abff11e7a5bb1a7e3e3fac4"
+      },
+      "qa": {
+        "sourcePass": true,
+        "frames": 240,
+        "fps": 30,
+        "solverWarningFrames": 0,
+        "frameEdgeTouchFrames": 0,
+        "green": "green_media_complete",
+        "compositionQaPass": true,
+        "fullCpuDecode": true,
+        "propscanBadFrames": 0,
+        "flickscanBadFrames": 0
+      }
+    },
+    "s-9090": {
+      "issue": 10,
+      "spec": "specs/s-9090-r2.js",
+      "sha256": "81d8d8629e9c90559dd715465ad4002e6bc7d3baa6a5e261eb3ad97a55f4aa2e",
+      "baseSpec": "specs/s-9090.js",
+      "baseSha256": "78e9d75e8aaefecab5db9ae8921085d426cc50baac5f6ade796854f8a92e7f62",
+      "app": {
+        "video": "assets/drill_media/hip-s-9090.mp4",
+        "poster": "assets/drill_media/hip-s-9090.jpg",
+        "androidSha256": "4cc98ae965a6526c4c5b7cb156a4d6cf5a4e539622310bf6819af32127f0439e"
+      },
+      "qa": {
+        "sourcePass": true,
+        "frames": 240,
+        "fps": 30,
+        "solverWarningFrames": 0,
+        "frameEdgeTouchFrames": 0,
+        "green": "green_media_complete",
+        "compositionQaPass": true,
+        "fullCpuDecode": true,
+        "propscanBadFrames": 0,
+        "flickscanBadFrames": 0
+      }
+    },
+    "h-9090-liftoff": {
+      "issue": 10,
+      "spec": "specs/h-9090-liftoff-r2.js",
+      "sha256": "970923cb389bef0c36da460477edf38b6c4e9b52926081dc6df357a9ff1cdacc",
+      "baseSpec": "specs/h-9090-liftoff.js",
+      "baseSha256": "fc2f115704e833006110f23a82ad963c9b5986b8169f4410bfedc2b46c2aed52",
+      "app": {
+        "video": "assets/drill_media/hip-h-9090-liftoff.mp4",
+        "poster": "assets/drill_media/hip-h-9090-liftoff.jpg",
+        "androidSha256": "c4f47c6e677faf77d42ca4b1eed860d9a2d68858e3df34f39804d2a2af83af2a"
+      },
+      "qa": {
+        "sourcePass": true,
+        "frames": 240,
+        "fps": 30,
+        "solverWarningFrames": 0,
+        "frameEdgeTouchFrames": 0,
+        "green": "green_media_complete",
+        "compositionQaPass": true,
+        "fullCpuDecode": true,
+        "propscanBadFrames": 0,
+        "flickscanBadFrames": 0
+      }
+    },
+    "h-quad-cars": {
+      "issue": 8,
+      "spec": "specs/h-quad-cars-r2.js",
+      "sha256": "9daa31fc3d0cb9b4b1007f80b1e697c44e8c47ad52dcf037497104c4ccad4d8b",
+      "baseSpec": "specs/h-quad-cars.js",
+      "baseSha256": "33b82f385715391f2142e9c8eb9fef5302652cf73a8fac61142a68fa23248929",
+      "app": {
+        "video": "assets/drill_media/hip-h-quad-cars.mp4",
+        "poster": "assets/drill_media/hip-h-quad-cars.jpg",
+        "androidSha256": "b36728711abe8cc977a80e9f55ff987a761ca0d45abaf54fc759182e10933456"
+      },
+      "qa": {
+        "sourcePass": true,
+        "frames": 240,
+        "fps": 30,
+        "solverWarningFrames": 0,
+        "frameEdgeTouchFrames": 0,
+        "green": "green_media_complete",
+        "compositionQaPass": true,
+        "fullCpuDecode": true,
+        "propscanBadFrames": 0,
+        "flickscanBadFrames": 163,
+        "note": "flickscan 163 bad frames sit on the circling shin/shoe tread; the published App clip of the original spec scores 169 at the same spots (inherited, not from this revision)"
+      }
+    }
+  },
+  "stills": {
+    "a-deep-squat-r2": {
+      "issue": 6,
+      "spec": "specs/a-deep-squat-r2.js",
+      "sha256": "b0cd0f98b4de992805366c5e781be4d3889b59f286ccfee2ab9be90666ee1724",
+      "render": "drill.py render --theme themes/glow-b.json --pr 2 --keep",
+      "frames": {
+        "15": "assets/hip/assessment/deep-squat-a.webp",
+        "45": "assets/hip/assessment/deep-squat-b.webp",
+        "75": "assets/hip/assessment/deep-squat-c.webp"
+      },
+      "qa": "no solver warnings, no self/hand clip, soles on the floor (met-*.json)"
+    },
+    "a-thomas-r2": {
+      "issue": 6,
+      "spec": "specs/a-thomas-r2.js",
+      "sha256": "7e764e7b41776c8fd8595b8c1ca77f86333ff0bfdedfffdba71e20196e6e6906",
+      "render": "drill.py render --theme themes/glow-b.json --pr 2 --keep",
+      "frames": {
+        "15": "assets/hip/assessment/thomas-a.webp",
+        "45": "assets/hip/assessment/thomas-b.webp",
+        "75": "assets/hip/assessment/thomas-c.webp"
+      },
+      "qa": "no solver warnings, no self/hand clip, soles on the floor (met-*.json)"
+    },
+    "a-9090-r2": {
+      "issue": 10,
+      "spec": "specs/a-9090-r2.js",
+      "sha256": "01ef49b251294d9d48d609b47db84d8b0b3e1735b0147e7d5984fc84ca12f887",
+      "render": "drill.py render --theme themes/glow-b.json --pr 2 --keep",
+      "frames": {
+        "15": "assets/hip/assessment/9090-a.webp",
+        "45": "assets/hip/assessment/9090-b.webp",
+        "75": "assets/hip/assessment/9090-c.webp",
+        "105": "assets/hip/assessment/9090-front.webp",
+        "135": "assets/hip/assessment/9090-back.webp"
+      },
+      "qa": "no solver warnings, no self/hand clip, soles on the floor (met-*.json)"
+    }
+  }
+}
