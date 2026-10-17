@@ -27,7 +27,7 @@
 
 此前页面的“PR旧预览”来自本机按原PR spec重渲的432px GIF及其MP4转码，不是作者上传的原成片。第三轮已只读取回 [PR #106](https://github.com/mhgd3250905/3D-Body/pull/106) 正文的 [Drive原交付](https://drive.google.com/drive/folders/11HIEesP7B7sQ-67ED1OlQRdVhOJJLiuQ)：12个360px GIF与总览。原文件、SHA、时序与解码结果保存在 `E:/AII-3D/3D-Body/output/playwright/thomas-author-model-v3-20261012/source-audit/author-originals/`，原代码快照在同级 `author-pipeline-git-snapshot/`。这些用于历史溯源，按用户最新要求不再作为本轮目标。
 
-App的51项正式视频直接来自用户 `3D-Pose` v1.0.0 的冻结选择。当前App、冻结源和媒体清单三方哈希一致；这能证明当前展示的具体视频版本，不能反推全部55份下载原片的未跟踪渲染现场。详见 [App媒体记录](../app/docs/drill-media-2026-10-11.md) 和 [素材接手地图](drill-anim/hark-4080-v1.md)。
+App的51项正式视频直接来自用户 `3D-Pose` v1.0.0 的冻结选择。当前App、冻结源和媒体清单三方哈希一致；这能证明当前展示的具体视频版本，不能反推全部55份下载原片的未跟踪渲染现场。详见 [App媒体记录](https://github.com/mhgd3250905/3D-Body/blob/66067a6/app/docs/drill-media-2026-10-11.md) 和 [素材接手地图](drill-anim/hark-4080-v1.md)。
 
 本轮选取四份 **当前App实际视频** 作人体外观参考，原字节复制、不转码：
 
@@ -52,7 +52,7 @@ App的51项正式视频直接来自用户 `3D-Pose` v1.0.0 的冻结选择。当
 
 ## 修复与复用方式
 
-完整人体基准为 [training-human-v2](training-human-v2.md)，版本及来源哈希见 [模型清单](../tools/drill-anim/models/training-human-v2.json)，后续制作要求写入 [drill-anim/AGENTS.md](../tools/drill-anim/AGENTS.md)。新动作显式指定 `modelProfile: 'training-human-v2'` 和 `alignClavicles: false`；历史spec未指定profile时保留原默认。已有成片保持原版本，待用户安排后另存新渲染。
+完整人体基准为 [training-human-v2](training-human-v2.md)，版本及来源哈希见 [模型清单](../drill-anim/models/training-human-v2.json)，后续制作要求写入 [drill-anim/AGENTS.md](../drill-anim/AGENTS.md)。新动作显式指定 `modelProfile: 'training-human-v2'` 和 `alignClavicles: false`；历史spec未指定profile时保留原默认。已有成片保持原版本，待用户安排后另存新渲染。
 
 `page/training-collar.js` 在已有成熟网格上修正肩颈局部权重，使用CPU蒙皮后的中立坐标确定修复范围，让头/颈/躯干/肩胛的权重连续过渡，消除肩部下沉时衣领形成的硬平台。颈部原shader重复绘制的黑领去掉；真实上衣、灰色人台头、服装、轮廓光与透明度保留。权重按四个逻辑分量读写，兼容原GLB的共享交错缓冲区。切回旧profile恢复原权重、材质回调及缓存标识。
 

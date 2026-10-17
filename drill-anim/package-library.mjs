@@ -6,6 +6,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import assert from 'node:assert/strict';
 import { fileURLToPath } from 'node:url';
+import { toCurrentRepoPath, legacyModel } from './lib/legacy-paths.mjs';
 
 const args = process.argv.slice(2);
 function option(key, fallback) {
@@ -15,11 +16,11 @@ function option(key, fallback) {
 if (args.includes('--help')) {
   console.log('Usage: node package-library.mjs --library <root> --audit <audit-dir> --out <new-dir> [--delivery <reframed-dir>] [--catalog <canonical-json>] [--source-root <repo>] [--fixture]'); process.exit(0);
 }
-const repo = path.resolve(option('--source-root', path.join(path.dirname(fileURLToPath(import.meta.url)), '../..')));
+const repo = path.resolve(option('--source-root', path.join(path.dirname(fileURLToPath(import.meta.url)), '..')));
 const libraryArg = option('--library'), outArg = option('--out');
 assert(libraryArg && outArg, '--library and --out are required');
 const library = path.resolve(libraryArg), auditDir = path.resolve(option('--audit', path.join(library, 'audit'))), out = path.resolve(outArg);
-const catalogueFile = path.resolve(option('--catalog', path.join(repo, 'tools/drill-anim/batches/training-human-v2-20261013/job-catalog.json')));
+const catalogueFile = path.resolve(option('--catalog', path.join(repo, 'drill-anim/batches/training-human-v2-20261013/job-catalog.json')));
 const canonicalDir = path.dirname(catalogueFile), fixture = args.includes('--fixture');
 const deliveryRoot = option('--delivery') ? path.resolve(option('--delivery')) : null;
 const slash = p => p.split(path.sep).join('/');
@@ -108,7 +109,7 @@ async function queue(file, target, expected, kind, auditBound = false) {
 }
 function sourceLocation(originalPath) {
   const record = sourceRegistry.get(originalPath);
-  const p = record?.repositoryRelativePath ? within(repo, record.repositoryRelativePath) : originalPath;
+  const p = record?.repositoryRelativePath ? within(repo, toCurrentRepoPath(record.repositoryRelativePath)) : originalPath;
   assert(typeof p === 'string' && fs.existsSync(p), `Authored source is unavailable: ${originalPath}`);
   return p;
 }
@@ -196,23 +197,23 @@ for (const name of ['job-catalog.json', 'source-sha256.json', 'historical-source
   if (fixture && !fs.existsSync(file)) continue;
   await queue(file, 'sources/canonical/' + (name === 'README.md' ? 'README.original.md' : name), null, 'canonical source catalogue');
 }
-const modelFile = within(repo, 'tools/drill-anim/models/training-human-v2.json');
-assert.equal(stable(read(modelFile)), stable(plan.model), 'Current model manifest differs from frozen batch');
+const modelFile = within(repo, 'drill-anim/models/training-human-v2.json');
+assert.equal(stable(legacyModel(read(modelFile))), stable(legacyModel(plan.model)), 'Current model manifest differs from frozen batch');
 await queue(modelFile, 'sources/model/training-human-v2.json', null, 'model manifest');
 const documents = [
   ['docs/training-human-v2.md', 'documentation/training-human-v2.md'],
   ['docs/training-media-library-2026-10-13.md', 'documentation/training-media-library.md'],
   ['output/rerender-planning-20261013/material-attribution.md', 'documentation/material-attribution.md'],
-  ['public/coach/ATTRIBUTION.md', 'licenses/Snow-coach-ATTRIBUTION.md'],
-  ['public/anatomy/ATTRIBUTION.md', 'licenses/head-and-historical-anatomy-ATTRIBUTION.md'],
-  ['app/assets/licenses/Drill-media-ATTRIBUTION.md', 'licenses/Drill-media-ATTRIBUTION.md'],
+  ['runtime/public/coach/ATTRIBUTION.md', 'licenses/Snow-coach-ATTRIBUTION.md'],
+  ['runtime/public/anatomy/ATTRIBUTION.md', 'licenses/head-and-historical-anatomy-ATTRIBUTION.md'],
+  ['licenses/Drill-media-ATTRIBUTION.md', 'licenses/Drill-media-ATTRIBUTION.md'],
   ['assets/blender-studio-source/SOURCE.md', 'licenses/Blender-source-acquisition.original.md'],
 ];
 const linkTargets = new Map(documents.map(([source, target]) => [path.resolve(repo, source), target]));
 linkTargets.set(modelFile, 'sources/model/training-human-v2.json');
 for (const name of ['job-catalog.json', 'source-sha256.json', 'historical-source-manifest.json', 'flare-v41-source-manifest.json', 'flare-loading-camera-source.json']) {
   const target = 'sources/canonical/' + name;
-  if (exactCopies.some(copy => copy.target === target)) linkTargets.set(path.join(repo, 'tools/drill-anim/batches/training-human-v2-20261013', name), target);
+  if (exactCopies.some(copy => copy.target === target)) linkTargets.set(path.join(repo, 'drill-anim/batches/training-human-v2-20261013', name), target);
 }
 // Preserve the exact original documents separately. Companion documentation uses only real package links;
 // links to omitted project files become explicit historical source locations rather than broken package links.

@@ -7,16 +7,16 @@ globalThis.createImageBitmap ??= async()=>({width:1,height:1,close(){}});
 globalThis.ProgressEvent ??= class {constructor(t,v){Object.assign(this,v);}};
 const R=new URL('../../',import.meta.url).pathname;
 export const BODY=/^Coach_(Body|Face)/, CLOTH=/^Coach_(Training_Tee|Training_Shorts|Sneakers|Soles|Shoe_Details)/;
-export async function loadCoach(glb=R+'public/coach/flare-coach.glb'){
-  const {createCoachMotion}=await import(R+'src/coach-motion.js');const {createFlareRig}=await import(R+'src/flare-rig.js');
+export async function loadCoach(glb=R+'runtime/public/coach/flare-coach.glb'){
+  const {createCoachMotion}=await import(R+'runtime/src/coach-motion.js');const {createFlareRig}=await import(R+'runtime/src/flare-rig.js');
   const data=fs.readFileSync(glb);
   const {scene:model}=await new GLTFLoader().parseAsync(data.buffer.slice(data.byteOffset,data.byteOffset+data.byteLength),'');
-  const rigData=JSON.parse(fs.readFileSync(R+'public/coach/coach-rig.json','utf8'));
+  const rigData=JSON.parse(fs.readFileSync(R+'runtime/public/coach/coach-rig.json','utf8'));
   const motion=createCoachMotion({model,driver:createFlareRig(),rigData});
   const meshes=[];model.traverse(o=>{if(o.isSkinnedMesh)meshes.push(o)});
   const nameOf=m=>{let o=m;while(o&&!/^Coach_/.test(o.name))o=o.parent;return o?.name??m.name;};
   for(const m of meshes)m.userData.coach=nameOf(m);
-  const seq=JSON.parse(fs.readFileSync(R+'public/coach/flare-sequence.json','utf8'));
+  const seq=JSON.parse(fs.readFileSync(R+'runtime/public/coach/flare-sequence.json','utf8'));
   return {model,motion,meshes,seq,R};
 }
 export function posed(mesh,out){const p=mesh.geometry.attributes.position,n=p.count,v=new THREE.Vector3();out??=new Float32Array(n*3);

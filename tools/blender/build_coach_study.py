@@ -27,7 +27,7 @@ OUT.mkdir(parents=True, exist_ok=True)
 GLB.parent.mkdir(parents=True, exist_ok=True)
 
 def sha(path): return hashlib.sha256(path.read_bytes()).hexdigest()
-original_hashes = {str(p.relative_to(ROOT)): sha(p) for p in (SOURCE, CLOTHED, ROOT/'public/coach/flare-coach.glb', ROOT/'public/coach/coach-rig.json')}
+original_hashes = {str(p.relative_to(ROOT)): sha(p) for p in (SOURCE, CLOTHED, ROOT/'runtime/public/coach/flare-coach.glb', ROOT/'runtime/public/coach/coach-rig.json')}
 if Path(bpy.data.filepath).resolve() != SOURCE.resolve():
     raise ValueError('Open the retained original Snow source before this script.')
 
@@ -58,7 +58,7 @@ mesh = bpy.data.meshes.new_from_object(source_body.evaluated_get(depsgraph), pre
 mesh.name = 'Coach_Study_Source_Full_Skin'
 source_world = [list(row) for row in source_body.matrix_world]
 groups = {group.index: group.name for group in source_body.vertex_groups}
-rig_data = json.loads((ROOT/'public/coach/coach-rig.json').read_text(encoding='utf-8'))
+rig_data = json.loads((ROOT/'runtime/public/coach/coach-rig.json').read_text(encoding='utf-8'))
 landmarks = {name: Vector((p[0], -p[2], p[1])) for name, p in rig_data['landmarks'].items()}
 
 def map_group(name):

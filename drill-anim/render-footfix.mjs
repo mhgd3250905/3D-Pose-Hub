@@ -6,9 +6,9 @@ import crypto from 'node:crypto';
 import assert from 'node:assert/strict';
 import {spawn,spawnSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
-const repo=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../..');
+const repo=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const source=path.join(repo,'output/training-human-v2-library-final-20261013/jobs/erectors-B');
-const revision=path.join(repo,'tools/drill-anim/revisions/erectors-B-footfix-20261013');
+const revision=path.join(repo,'drill-anim/revisions/erectors-B-footfix-20261013');
 const out=path.join(repo,'output/training-human-v2-erectors-B-footfix-20261013');
 const py='E:/AII-3D/3D-Pose/hark-4080-venv/Scripts/python.exe';
 const read=p=>JSON.parse(fs.readFileSync(p,'utf8'));
@@ -19,14 +19,14 @@ const original=read(source+'/spec.json'),authored=read(revision+'/spec.json');
 const spec={...authored,modelProfile:'training-human-v2',alignClavicles:false,size:1080,fps:30};
 const expected=structuredClone(original);for(const side of ['left','right'])expected.pose.base.feet[side].heading=90;expected.props.find(p=>p.type==='wall').at[0]=-0.545584;
 assert.deepEqual(spec,expected,'Only two foot headings and wall support face may change');
-const model=read(path.join(repo,'tools/drill-anim/models/training-human-v2.json'));
+const model=read(path.join(repo,'drill-anim/models/training-human-v2.json'));
 for(const [p,sha]of Object.entries(model.sourceSha256)){
  const bytes=fs.readFileSync(path.join(repo,p));assert.equal(crypto.createHash('sha256').update(p.endsWith('.glb')?bytes:bytes.toString('utf8').replace(/\r\n/g,'\n')).digest('hex'),sha,p);
 }
 const protectedFiles=['spec.json','input.json','result.json','frames/met-cycle.json','composite/place.json','theme.json'];
 const sourceHashes=Object.fromEntries(protectedFiles.map(p=>[p,hash(source+'/'+p)]));
 const rows=read(source+'/frames/met-cycle.json');assert.equal(rows.length,241);assert.deepEqual(rows.filter(r=>r.f>=0).map(r=>r.f),Array.from({length:240},(_,i)=>i));
-const modelHash=hash(path.join(repo,'tools/drill-anim/models/training-human-v2.json'));
+const modelHash=hash(path.join(repo,'drill-anim/models/training-human-v2.json'));
 fs.mkdirSync(out+'/frames',{recursive:true});fs.mkdirSync(out+'/composite');fs.mkdirSync(out+'/media');
 write(out+'/spec.json',spec);write(out+'/model.json',model);fs.copyFileSync(source+'/theme.json',out+'/theme.json');fs.copyFileSync(source+'/composite/place.json',out+'/composite/place.json');
 write(out+'/status.json',{phase:'rendering',completedFrames:0,totalFrames:240});
@@ -80,8 +80,8 @@ try{
 write(out+'/frames/met-cycle.json',metrics);write(out+'/footfix-preservation.json',{pass:true,frames:240,checkedIncludingStill:241,originalActualTouchGoldenChecks:golden,nonFootBoneDeltaMax:Math.max(...checks.map(c=>c.nonFootBoneDelta)),bodyJointMmMax:Math.max(...checks.map(c=>c.bodyJointMm)),sourceHashes,checks});
 const child=(exe,args,log)=>new Promise((resolve,reject)=>{const stream=fs.createWriteStream(out+'/'+log,{flags:'a'}),p=spawn(exe,args,{cwd:repo,windowsHide:true,env:{...process.env,PYTHONUTF8:'1',OMP_NUM_THREADS:'2',OPENBLAS_NUM_THREADS:'2'}});p.stdout.pipe(stream);p.stderr.pipe(stream);p.on('error',reject);p.on('close',c=>{stream.end();c===0?resolve():reject(Error(exe+' exited '+c))})});
 write(out+'/status.json',{phase:'compositing'});
-await Promise.all(['still','0:60','60:120','120:180','180:240'].map((range,i)=>child(py,['tools/drill-anim/lib/comp.py',out+'/frames',out+'/spec.json',out+'/theme.json',out+'/composite',range],'composite-'+i+'.log')));
-await child(py,['tools/drill-anim/lib/qa.py',out+'/frames',out+'/spec.json',out+'/qa.json',out+'/composite'],'qa.log');
+await Promise.all(['still','0:60','60:120','120:180','180:240'].map((range,i)=>child(py,['drill-anim/lib/comp.py',out+'/frames',out+'/spec.json',out+'/theme.json',out+'/composite',range],'composite-'+i+'.log')));
+await child(py,['drill-anim/lib/qa.py',out+'/frames',out+'/spec.json',out+'/qa.json',out+'/composite'],'qa.log');
 const qa=read(out+'/qa.json');assert(qa.frames_complete&&qa.frames===240&&!qa.below_floor&&qa.frame_edge_touch_frames===0);
 write(out+'/status.json',{phase:'encoding'});
 const media={};for(const [name,size,crf]of[['master',1080,18],['mobile',720,20]]){
@@ -90,6 +90,6 @@ const media={};for(const [name,size,crf]of[['master',1080,18],['mobile',720,20]]
  await child('ffmpeg',['-v','error','-xerror','-threads','1','-i',file,'-f','null','-'],'decode-'+name+'.log');media[name]={path:path.relative(out,file).replaceAll('\\','/'),sha256:hash(file),bytes:fs.statSync(file).size,decodeVerified:true,probe:data};
 }
 await child(py,['-c',"from PIL import Image;import sys;Image.open(sys.argv[1]).convert('RGB').resize((540,540),Image.Resampling.LANCZOS).save(sys.argv[2],quality=92)",out+'/composite/still.png',out+'/media/erectors-B-poster.jpg'],'poster.log');
-assert.deepEqual(Object.fromEntries(protectedFiles.map(p=>[p,hash(source+'/'+p)])),sourceHashes);assert.equal(hash(path.join(repo,'tools/drill-anim/models/training-human-v2.json')),modelHash);
+assert.deepEqual(Object.fromEntries(protectedFiles.map(p=>[p,hash(source+'/'+p)])),sourceHashes);assert.equal(hash(path.join(repo,'drill-anim/models/training-human-v2.json')),modelHash);
 write(out+'/result.json',{id:'erectors-B',name:'瑞士球背伸',revision:'footfix-20261013',frames:240,duration:8,fps:30,modelProfile:model.id,modelVersion:model.version,sourceHashes,preservation:'footfix-preservation.json',qa,media,poster:{path:'media/erectors-B-poster.jpg',sha256:hash(out+'/media/erectors-B-poster.jpg'),time:2},status:qa.pass&&qa.solver_warning_frames===0?'ready':'review_required'});
 write(out+'/status.json',{phase:'complete',complete:true});console.log('Completed foot correction '+out);

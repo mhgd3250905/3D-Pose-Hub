@@ -1,5 +1,5 @@
 // Independent, renderer-free audit and portable offline gallery for batch-rerender output.
-// node tools/drill-anim/batch-library-audit.mjs <output-root> [--out <audit-dir>] [--decode] [--bundle]
+// node drill-anim/batch-library-audit.mjs <output-root> [--out <audit-dir>] [--decode] [--bundle]
 // --decode independently decodes both videos; without it, producer frame counts remain reported evidence.
 // Only audit files and optional bundled copies are written. Production jobs/media are read-only.
 import fs from 'node:fs';
@@ -82,7 +82,7 @@ fs.mkdirSync(out, { recursive: true });
 const lock = path.join(out, '.audit-lock');
 const evidenceFiles = new Set([path.join(root, 'plan.json')]);
 const inventoryHashes = new Map();
-const sourceRoot = path.resolve(value('--source-root', path.join(path.dirname(fileURLToPath(import.meta.url)), '../..')));
+const sourceRoot = path.resolve(value('--source-root', path.join(path.dirname(fileURLToPath(import.meta.url)), '..')));
 const modelSourceChecks = [];
 for (const [name, expected] of Object.entries(plan.model?.sourceSha256 || {})) {
   const p = path.resolve(sourceRoot, name), available = inside(sourceRoot, p) && exists(p);

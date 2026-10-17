@@ -10,7 +10,7 @@
 //    where the cloth stands off the skin: (1 - smoothstep(dSkin, NEAR[0], NEAR[1])).
 // Positions, normals, UVs, materials and topology are untouched; only JOINTS_0/WEIGHTS_0 change.
 //   npm i --no-save @gltf-transform/core@4 @gltf-transform/functions@4 @gltf-transform/extensions@4
-//   node tools/cloth/fit-cloth-weights.mjs public/coach/flare-coach-before-v41.glb public/coach/flare-coach.glb
+//   node tools/cloth/fit-cloth-weights.mjs <before.glb> runtime/public/coach/flare-coach.glb
 import fs from 'node:fs';
 import * as THREE from 'three';
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';

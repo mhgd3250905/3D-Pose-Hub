@@ -19,7 +19,7 @@ from fix_coach_hem import relax_coach_hem
 
 ROOT=Path(__file__).resolve().parents[2]
 ASSET=ROOT/'assets'/'coach'
-PUBLIC=ROOT/'public'/'coach'
+PUBLIC=ROOT/'runtime'/'public'/'coach'
 OUTPUT=ROOT/'output'/'blender'
 for path in (ASSET,PUBLIC,OUTPUT): path.mkdir(parents=True,exist_ok=True)
 

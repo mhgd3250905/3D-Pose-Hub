@@ -73,7 +73,7 @@ def main():
     for obj in meshes:
         obj.select_set(True)
     bpy.context.view_layer.objects.active = rig
-    bpy.ops.export_scene.gltf(filepath=str(ROOT / 'public' / 'coach' / 'flare-coach.glb'),
+    bpy.ops.export_scene.gltf(filepath=str(ROOT / 'runtime' / 'public' / 'coach' / 'flare-coach.glb'),
         export_format='GLB', use_selection=True, export_animations=False, export_yup=True,
         export_apply=False, export_skins=True, export_all_influences=False,
         export_cameras=False, export_lights=False, export_extras=True)

@@ -8,7 +8,7 @@ import bpy,json,math,sys
 from pathlib import Path
 from mathutils import Vector,Quaternion,Matrix
 
-ROOT=Path('E:/AII-3D/3D-Body')
+ROOT=Path(__file__).resolve().parents[2]  # was Path('E:/AII-3D/3D-Body') in 3D-Body
 OUT=ROOT/'output'/'iteration-blue'
 
 def smooth(t):
@@ -117,7 +117,7 @@ def main():
     rig=bpy.data.objects['Coach_Rig'];body=bpy.data.objects['Coach_Body']
     matrices={b.name:b.matrix.copy() for b in rig.pose.bones}
     rest_before={b.name:[list(row) for row in b.matrix_local] for b in rig.data.bones}
-    rig_path=ROOT/'public'/'coach'/'coach-rig.json'
+    rig_path=ROOT/'runtime'/'public'/'coach'/'coach-rig.json'
     rig_bytes=rig_path.read_bytes()
     report=refine_coach_ankles(body,rig)
     for bone in rig.pose.bones:bone.matrix_basis.identity()
@@ -126,7 +126,7 @@ def main():
     for ob in bpy.data.objects:
         if ob.type=='MESH' and ob.name.startswith('Coach_'):ob.select_set(True)
     bpy.context.view_layer.objects.active=rig
-    bpy.ops.export_scene.gltf(filepath=str(ROOT/'public'/'coach'/'flare-coach.glb'),export_format='GLB',
+    bpy.ops.export_scene.gltf(filepath=str(ROOT/'runtime'/'public'/'coach'/'flare-coach.glb'),export_format='GLB',
         use_selection=True,export_animations=False,export_yup=True,export_apply=False,
         export_skins=True,export_all_influences=False,export_cameras=False,export_lights=False,export_extras=True)
     for bone in rig.pose.bones:bone.matrix=matrices[bone.name]

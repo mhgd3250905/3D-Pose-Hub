@@ -1,8 +1,8 @@
 # 零预算动作人物与静态肌群参考
 
-2026-10-13训练示范视频的统一人体标准为已验收的 [training-human-v2](training-human-v2.md)：保留Snow派生网格、灰色人台头、原服装/骨架并修复肩颈。后续新动作及旧动作优化/重渲采用完整版本，13份来源SHA见[模型清单](../tools/drill-anim/models/training-human-v2.json)。制作人体标准与动作时钟分别管理。L44 App可在设置中保存选择原卡通教练或领口修复训练人台，两者沿用Snow来源及v41骨骼/动画；App51视频也已按用户授权更新为该标准素材，见[L44记录](../app/docs/pr109-l44-upgrade-2026-10-13.md)。根网页原人物、旧成片和Blender原件保留。
+2026-10-13训练示范视频的统一人体标准为已验收的 [training-human-v2](training-human-v2.md)：保留Snow派生网格、灰色人台头、原服装/骨架并修复肩颈。后续新动作及旧动作优化/重渲采用完整版本，13份来源SHA见[模型清单](../drill-anim/models/training-human-v2.json)。制作人体标准与动作时钟分别管理。L44 App可在设置中保存选择原卡通教练或领口修复训练人台，两者沿用Snow来源及v41骨骼/动画；App51视频也已按用户授权更新为该标准素材，见[L44记录](https://github.com/mhgd3250905/3D-Body/blob/66067a6/app/docs/pr109-l44-upgrade-2026-10-13.md)。根网页原人物、旧成片和Blender原件保留。
 
-2026-10-09当前默认网页/App动作已同步到v41：脚踝扭转与领口蒙皮优化，保留Snow原衣服、面孔及材质。网页保留原编辑器，App使用对应烘焙GLB；来源、复现与验证以 [v41同步合约](../app/docs/motion-v41.md) 为准。以下制作与历史展示说明保留；原网页GLB已独立备份为 `public/coach/flare-coach-before-web-v41.glb`，没有覆盖Blender原件或个人导出。
+2026-10-09当前默认网页/App动作已同步到v41：脚踝扭转与领口蒙皮优化，保留Snow原衣服、面孔及材质。网页保留原编辑器，App使用对应烘焙GLB；来源、复现与验证以 [v41同步合约](https://github.com/mhgd3250905/3D-Body/blob/66067a6/app/docs/motion-v41.md) 为准。以下制作与历史展示说明保留；原网页GLB已独立备份为 `public/coach/flare-coach-before-web-v41.glb`，没有覆盖Blender原件或个人导出。
 
 本项目保持零预算，使用本机 Blender 和合法免费成熟人物网格。Snow 继续承担友善卡通动作教学；点击肌群后，默认在独立浮窗中查看官方 Realistic 男性完整人物与肌群位置色区，解剖结构另行切换。此前收费模型文档保留为历史研究，本轮没有采购或调用收费生成服务。
 
@@ -10,7 +10,7 @@
 
 首页同步面板与全屏3D肌群查看器实际加载 `public/anatomy/mannequin-reference.glb`，来源/改动为同名JSON，制作工具为 `tools/mannequin/build_mannequin.py`。它从已有CC0 Realistic male体表派生，去掉短裤并局部平顺人台裆部；静态、1网格/74,274三角形，1,338,688字节，记录SHA-256为 `ac4c0dd92d42504a949fd0aff0063aaff0886a68278f95878bc3da9df177e056`。本次只读取元数据与加载代码，没有重读或重建GLB。功能色区为位置示意，不是BodyParts3D内部网格或肌电百分比。
 
-下方 `fitness-reference.glb` 及有短裤浮窗描述属于保留资产/此前入口，不能覆盖PR3首页。App的人台、穿衣详情与v41烘焙人物以App合约为准；版本身份见 [版本管理台账](../app/docs/version-ledger.md)。
+下方 `fitness-reference.glb` 及有短裤浮窗描述属于保留资产/此前入口，不能覆盖PR3首页。App的人台、穿衣详情与v41烘焙人物以App合约为准；版本身份见 [版本管理台账](https://github.com/mhgd3250905/3D-Body/blob/66067a6/app/docs/version-ledger.md)。
 
 ## 已交付资产
 

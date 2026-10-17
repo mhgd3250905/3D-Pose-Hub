@@ -49,7 +49,7 @@ def clean_scratch(sid, tag):
     work = os.path.realpath(WORK); target = os.path.realpath(os.path.join(WORK, sid + tag))
     protected = [os.path.realpath(p) for p in (ROOT, OUT, C['app_dir'])]
     protected += [os.path.realpath(os.path.join(ROOT, p)) for p in ('specs', 'page', 'assets', 'lib', 'tools')]
-    protected += [os.path.realpath(os.path.join(C['app_dir'], p)) for p in ('src', 'public', 'app', 'assets', 'docs', 'dist')]
+    protected += [os.path.realpath(os.path.join(C['app_dir'], p)) for p in ('src', 'public', 'app', 'assets', 'docs', 'dist', 'runtime', 'drill-anim', 'media', 'tools', 'licenses')]
     if target == work or not contains(work, target) or any(contains(target, p) for p in protected):
         raise ValueError('Refusing to delete outside drill scratch: ' + target)
     if any(contains(p, target) for p in protected[3:]) or contains(os.path.realpath(OUT), target):

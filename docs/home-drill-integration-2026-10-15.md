@@ -11,11 +11,11 @@
 | #113 | `52a2b3c9c83124e0368a17abacd595ab2939358e` | drill/home-muscle-gaps / `e32dc51d1605714f4b39578e3d644dc36d0cfbc1` |
 | #115 | `ccc9c2bd71bf61df8daa726c17fd991197bc542f` | drill/home-hip-opening / `52a2b3c9c83124e0368a17abacd595ab2939358e` |
 
-原51项新增规格的规范化SHA及PR归属固定在[data/home-pr-candidates.json](../tools/drill-anim/data/home-pr-candidates.json)，合并补修不改动作参数。实际远端合并SHA与时间另见版本台账。
+原51项新增规格的规范化SHA及PR归属固定在[data/home-pr-candidates.json](../drill-anim/data/home-pr-candidates.json)，合并补修不改动作参数。实际远端合并SHA与时间另见版本台账。
 
 ## 查实问题与处理
 
-原链条不能通过 `node tools/drill-anim/verify.mjs`：#113直接替换默认theme.json，违反training-human-v2清单的主题哈希；随后51项新规格也未加入已审核规格清单。恢复默认主题到原固定SHA `9880592142016b460c364a68df29d0f61ee802b49427aa13c4146db03bd69074`，保留完整B风格为独立[glow-b.json](../tools/drill-anim/themes/glow-b.json)，并明确注册51份候选哈希。没有修改冻结人体版本或伪写新验收。
+原链条不能通过 `node tools/drill-anim/verify.mjs`：#113直接替换默认theme.json，违反training-human-v2清单的主题哈希；随后51项新规格也未加入已审核规格清单。恢复默认主题到原固定SHA `9880592142016b460c364a68df29d0f61ee802b49427aa13c4146db03bd69074`，保留完整B风格为独立[glow-b.json](../drill-anim/themes/glow-b.json)，并明确注册51份候选哈希。没有修改冻结人体版本或伪写新验收。
 
 重建#113/#115所述B风格时显式使用：
 

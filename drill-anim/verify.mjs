@@ -6,8 +6,11 @@ import {pathToFileURL, fileURLToPath} from 'node:url';
 import {spawnSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
 const root = path.dirname(fileURLToPath(import.meta.url));
-const repo = path.resolve(root, '../..');
-const source = '68043f71651056c57c72a3b8813cbb354979346f';
+const repo = path.resolve(root, '..');
+// Pose-Hub commit 1adcab8 = 3D-Body 68043f71651056c57c72a3b8813cbb354979346f (Merge PR #89), rewritten by
+// git filter-repo during the 2026-10-17 migration; tools/drill-anim/ became drill-anim/. See MIGRATION.md.
+const source = '1adcab8343186c29a36483339ddee6e2725f8ca1';
+const legacySource = '68043f71651056c57c72a3b8813cbb354979346f';
 // Reviewed candidates are optional while PRs land one by one. These canonical
 // text hashes identify the reviewed parameter revision without requiring an
 // unmerged audit-worktree Git object on a fresh clone. This is source integrity,
@@ -51,7 +54,7 @@ const ids = Object.values(catalog.drills).flatMap(tiers => Object.values(tiers).
 assert.equal(ids.length, 51);
 assert.equal(new Set(ids).size, 51);
 const files = fs.readdirSync(path.join(root, 'specs')).filter(f => f.endsWith('.js')).sort();
-const listing = spawnSync('git', ['ls-tree', '--name-only', source, 'tools/drill-anim/specs/'], {cwd:repo,encoding:'utf8',windowsHide:true});
+const listing = spawnSync('git', ['ls-tree', '--name-only', source, 'drill-anim/specs/'], {cwd:repo,encoding:'utf8',windowsHide:true});
 assert.equal(listing.status, 0, 'Original spec inventory unavailable');
 const baseline = listing.stdout.trim().split(/\r?\n/).map(f => path.basename(f));
 assert.equal(baseline.length, 59, 'Original spec inventory changed');
@@ -77,7 +80,7 @@ for (const file of files) {
   // Git may check out CRLF on Windows; compare source text in Git's LF form.
   const canonical = b => b.toString('utf8').replace(/\r\n/g,'\n');
   if (baseline.includes(file)) {
-    const original = spawnSync('git', ['show', `${source}:tools/drill-anim/specs/${file}`], {cwd:repo,windowsHide:true});
+    const original = spawnSync('git', ['show', `${source}:drill-anim/specs/${file}`], {cwd:repo,windowsHide:true});
     assert.equal(original.status, 0, `Source missing ${file}`);
     assert.equal(canonical(bytes), canonical(original.stdout), `Original action spec changed: ${file}`);
   } else {
@@ -115,4 +118,4 @@ function checkTree(directory) {
   }
 }
 checkTree(root);
-console.log(JSON.stringify({ok:true,source,appDrills:ids.length,specs:result.length,defaultSpecs:result.filter(s=>!s.id.startsWith('t-')).length,thomasPreviewSpecs:result.filter(s=>s.id.startsWith('t-')).length,stoppedThomasSpecs:1,modelProfile:model.id,modelSources:Object.keys(model.sourceSha256).length,stretchSpecs:result.filter(s=>s.id.startsWith('s-')).length,reviewedHomeSpecs:result.filter(s=>s.id.startsWith('h-')).length,reviewedOfficeSpecs:result.filter(s=>s.id.startsWith('o-')).length,reviewedSittingSpecs:result.filter(s=>s.id.startsWith('w-')).length,originalSpecHashesPreserved:true},null,2));
+console.log(JSON.stringify({ok:true,source,legacySource,appDrills:ids.length,specs:result.length,defaultSpecs:result.filter(s=>!s.id.startsWith('t-')).length,thomasPreviewSpecs:result.filter(s=>s.id.startsWith('t-')).length,stoppedThomasSpecs:1,modelProfile:model.id,modelSources:Object.keys(model.sourceSha256).length,stretchSpecs:result.filter(s=>s.id.startsWith('s-')).length,reviewedHomeSpecs:result.filter(s=>s.id.startsWith('h-')).length,reviewedOfficeSpecs:result.filter(s=>s.id.startsWith('o-')).length,reviewedSittingSpecs:result.filter(s=>s.id.startsWith('w-')).length,originalSpecHashesPreserved:true},null,2));

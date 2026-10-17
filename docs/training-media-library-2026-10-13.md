@@ -6,7 +6,7 @@
 
 94个冻结版本已全部另存成片，共23,454帧、781.8秒：60个正式动作库版本、8个办公室、8个久坐强化、11个托马斯专项与1个左侧变体、5个实际早期运行时示范，以及1个正式Flare v41全旋。明确停止的托马斯第1项不恢复。用户提供的Air-Flare原片、静态条目和图标不计作自产演示，同一Flare动作的启动剪影与旧历史版本不重复计数。制作流程最终记录为83项ready、11项review_required；最终独立审计为56项ready、38项review_required、failed/pending均0。两种状态的检查范围不同，94项成片完成不表示全部动作QA或用户验收通过。
 
-冻结输入见 [批次清单](../tools/drill-anim/batches/training-human-v2-20261013/job-catalog.json)与 [来源哈希](../tools/drill-anim/batches/training-human-v2-20261013/source-sha256.json)。已有 App 51 项只是此集合中的使用子集。55 个普通旧成片无法精确追溯当时的渲染输入，故使用已冻结的成熟参数生成新版，不能宣称与旧视频逐像素重现。14 项缺少旧成片，但有实际制作源。5 个早期示范使用原 `src/training-motion.js`，没有用相似动作替代。
+冻结输入见 [批次清单](../drill-anim/batches/training-human-v2-20261013/job-catalog.json)与 [来源哈希](../drill-anim/batches/training-human-v2-20261013/source-sha256.json)。已有 App 51 项只是此集合中的使用子集。55 个普通旧成片无法精确追溯当时的渲染输入，故使用已冻结的成熟参数生成新版，不能宣称与旧视频逐像素重现。14 项缺少旧成片，但有实际制作源。5 个早期示范使用原 `src/training-motion.js`，没有用相似动作替代。
 
 ## 手机与母版
 
@@ -22,20 +22,20 @@
 
 托马斯2 `t-tuck-planche` 与10 `t-lsit-vsit-circles` 的原raw全身完整，原静帧构图在环绕/宽腿阶段产生手机成片裁边。两项在独立目录 `output/training-human-v2-library-framing-20261013/` 另存整周期恒定二维缩放/位置的构图派生：720＋300编码帧及两份原静帧共1022次边界检查，边缘触碰均0，1080画布最小人体边距分别58/59px。原raw和原成片保持，动作、时序、运镜路径、高亮及道具不变；只选择派生媒体，不改变原QA和review状态。派生清单、原/新place与全周期证明见该目录的 `delivery-manifest.json` 及各项 `framing-proof.json`。这两项不增加冻结动作数量或23,454帧的动作采样总数。
 
-Flare v41 使用原烘焙 GLB 的 AnimationMixer 与 22 骨世界矩阵，不再做 IK、节奏处理或重烘焙。实际循环 8.991662288 秒按原时钟取样，输出 270 帧／9 秒，只在编码时产生 8.3377 毫秒循环尾间隔，不拉伸动作。机位采用原完整周期实测正交相机，保留原画布占比，不按初始姿态再次放大。来源及 270 帧实际对照见 [Flare v41 清单](../tools/drill-anim/batches/training-human-v2-20261013/flare-v41-source-manifest.json)。
+Flare v41 使用原烘焙 GLB 的 AnimationMixer 与 22 骨世界矩阵，不再做 IK、节奏处理或重烘焙。实际循环 8.991662288 秒按原时钟取样，输出 270 帧／9 秒，只在编码时产生 8.3377 毫秒循环尾间隔，不拉伸动作。机位采用原完整周期实测正交相机，保留原画布占比，不按初始姿态再次放大。来源及 270 帧实际对照见 [Flare v41 清单](../drill-anim/batches/training-human-v2-20261013/flare-v41-source-manifest.json)。
 
-每个版本保留源规格、新规格、主题、来源 SHA256、制作代码哈希、动作对照、完整帧指标、QA 和编码探测结果。完成条件包括所有帧齐全、实际视频尺寸与帧数正确、两种视频完整解码及输出哈希。[独立审计工具](../tools/drill-anim/batch-library-audit.mjs)再次读取实际视频并解码，独立比对整圈旧、新关节记录；骨矩阵保持来自制作流程逐帧记录，不冒称另有原下载视频逐帧骨架。既有数值问题或未满足检查的成片仍保存到待核对集合，不标成全部通过；早期示范和烘焙 Flare 没有原生 drill-anim QA，单独注明检查范围。
+每个版本保留源规格、新规格、主题、来源 SHA256、制作代码哈希、动作对照、完整帧指标、QA 和编码探测结果。完成条件包括所有帧齐全、实际视频尺寸与帧数正确、两种视频完整解码及输出哈希。[独立审计工具](../drill-anim/batch-library-audit.mjs)再次读取实际视频并解码，独立比对整圈旧、新关节记录；骨矩阵保持来自制作流程逐帧记录，不冒称另有原下载视频逐帧骨架。既有数值问题或未满足检查的成片仍保存到待核对集合，不标成全部通过；早期示范和烘焙 Flare 没有原生 drill-anim QA，单独注明检查范围。
 
 最终94项旧/新关节记录的独立整循环比对全部通过；全部骨矩阵逐帧最大差0来自producer记录，独立审计没有重新渲染骨架。身体QA归因为1项新版提示、9项继承提示、84项无身体标记；独立38项review还包含原求解警告等检查条件，不能等同于38项新身体问题。唯一新增身体提示为 `quadriceps-A`：左手新体表接触估计6/240帧记录4.02mm，超过原4mm标准最多0.02mm；原对应值3.19mm。该K6顶点片区估计不是手到三角面的精确距离，动作关节及接触质心差0、无穿模或新求解警告，仍保留 `qa.pass=false` 与待核对状态，不改阈值、不重求解姿态。实证见 `output/rerender-planning-20261013/quadriceps-contact-triage.md` 和同名JSON。
 
-首次便携包历史目录为 `output/training-human-v2-library-portable-20261013/`，由 [package-library.mjs](../tools/drill-anim/package-library.mjs)独立保存，不覆盖。当前选用包为 `output/training-human-v2-library-footfix-20261013/`，由 [package-footfix.mjs](../tools/drill-anim/package-footfix.mjs)保留原全部文件后新增鞋修素材与选版清单。打开当前包内 `index.html` 播放720视频，`portable-catalog.json` 提供1080母版、540封面及证据的相对链接；整个目录可一起搬移，播放不依赖原项目路径或联网。包包含离线播放和规格/QA追溯所需内容，不附全部原始PNG、3D资源或运行时依赖，不承诺异机直接重渲；原机器绝对路径仅作历史出处。实际文件身份由包内 `package-manifest.json`、`directory-manifest.json` 与 `SHA256SUMS.txt` 保存，回读及手机画廊检查归入版本台账与验证记录。
+首次便携包历史目录为 `output/training-human-v2-library-portable-20261013/`，由 [package-library.mjs](../drill-anim/package-library.mjs)独立保存，不覆盖。当前选用包为 `output/training-human-v2-library-footfix-20261013/`，由 [package-footfix.mjs](../drill-anim/package-footfix.mjs)保留原全部文件后新增鞋修素材与选版清单。打开当前包内 `index.html` 播放720视频，`portable-catalog.json` 提供1080母版、540封面及证据的相对链接；整个目录可一起搬移，播放不依赖原项目路径或联网。包包含离线播放和规格/QA追溯所需内容，不附全部原始PNG、3D资源或运行时依赖，不承诺异机直接重渲；原机器绝对路径仅作历史出处。实际文件身份由包内 `package-manifest.json`、`directory-manifest.json` 与 `SHA256SUMS.txt` 保存，回读及手机画廊检查归入版本台账与验证记录。
 
 ## 断点执行
 
-生产入口是 [batch-rerender.mjs](../tools/drill-anim/batch-rerender.mjs)。先启动项目 Vite 服务，再使用同一清单和新的输出目录；最多两个渲染浏览器，合成按互不重叠帧段并行。运行中的冻结源和制作代码不得修改。恢复时校验已完成视频及封面的哈希，完整项目跳过，失败项目单独重试。制作代码或人体版本改变时使用新的批次目录，不能覆盖先前产物。
+生产入口是 [batch-rerender.mjs](../drill-anim/batch-rerender.mjs)。先启动项目 Vite 服务，再使用同一清单和新的输出目录；最多两个渲染浏览器，合成按互不重叠帧段并行。运行中的冻结源和制作代码不得修改。恢复时校验已完成视频及封面的哈希，完整项目跳过，失败项目单独重试。制作代码或人体版本改变时使用新的批次目录，不能覆盖先前产物。
 
 ```powershell
 node tools/drill-anim/batch-rerender.mjs --catalog tools/drill-anim/batches/training-human-v2-20261013/job-catalog.json --out output/training-human-v2-library-final-20261013 --app-url http://127.0.0.1:8871 --workers 2
 ```
 
-完整素材库刚制作完成时，App安装身份仍为L43；随后用户另行授权在L44按原51个ID替换视频和封面，采用当前鞋修选版，实际已保留数据安装。选中51项的23ready/28review与完整94项的56ready/38review各自保留；安装或选版不等于待核对动作通过验收。当前App记录见[L44台账](../app/docs/version-ledger.md#2026-10-13-l44-形象切换与媒体升级)，冻结包及其内部索引/SHA不改。
+完整素材库刚制作完成时，App安装身份仍为L43；随后用户另行授权在L44按原51个ID替换视频和封面，采用当前鞋修选版，实际已保留数据安装。选中51项的23ready/28review与完整94项的56ready/38review各自保留；安装或选版不等于待核对动作通过验收。当前App记录见[L44台账](https://github.com/mhgd3250905/3D-Body/blob/66067a6/app/docs/version-ledger.md#2026-10-13-l44-形象切换与媒体升级)，冻结包及其内部索引/SHA不改。

@@ -5,8 +5,9 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import assert from 'node:assert/strict';
 import {spawn,spawnSync} from 'node:child_process';
+import {legacyModel} from './lib/legacy-paths.mjs';
 import {pathToFileURL,fileURLToPath} from 'node:url';
-const TOOL=path.dirname(fileURLToPath(import.meta.url)),REPO=path.resolve(TOOL,'../..');
+const TOOL=path.dirname(fileURLToPath(import.meta.url)),REPO=path.resolve(TOOL,'..');
 const args=process.argv.slice(2),option=(key,fallback)=>{const i=args.indexOf(key);return i<0?fallback:args[i+1];};
 const PY=option('--python','E:/AII-3D/3D-Pose/hark-4080-venv/Scripts/python.exe');
 const hash=data=>crypto.createHash('sha256').update(data).digest('hex');
@@ -25,7 +26,7 @@ function verifyModel(model){
  }
 }
 function recipe(){
- const files=['batch-rerender.mjs','theme.json','config.json',...['page','lib','assets'].flatMap(d=>fs.readdirSync(path.join(TOOL,d)).filter(n=>/\.(mjs|js|py|json)$/.test(n)).map(n=>d+'/'+n)),...fs.readdirSync(path.join(REPO,'src')).filter(n=>n.endsWith('.js')).map(n=>'../../src/'+n)];
+ const files=['batch-rerender.mjs','theme.json','config.json',...['page','lib','assets'].flatMap(d=>fs.readdirSync(path.join(TOOL,d)).filter(n=>/\.(mjs|js|py|json)$/.test(n)).map(n=>d+'/'+n)),...fs.readdirSync(path.join(REPO,'runtime/src')).filter(n=>n.endsWith('.js')).map(n=>'../runtime/src/'+n)];
  const sha256=Object.fromEntries(files.sort().map(n=>[n,hash(fs.readFileSync(path.join(TOOL,n)).toString('utf8').replace(/\r\n/g,'\n'))]));
  return {id:'full-library-r2',contactReference:'legacy authoring surface',placementReference:'legacy same-source silhouette',pairedFullCycleMetrics:true,pixelRatio:2,sha256};
 }
@@ -34,7 +35,7 @@ async function prepare(catalog,out){
  fs.mkdirSync(out,{recursive:true});const model=read(path.join(TOOL,'models/training-human-v2.json'));verifyModel(model);
  const {loadTheme}=await import('./lib/config.mjs');const productionRecipe=recipe();
  const previous=fs.existsSync(out+'/plan.json')?read(out+'/plan.json'):null;
- if(previous)assert.equal(JSON.stringify(previous.model),JSON.stringify(model),'A different model requires a new batch directory');
+ if(previous)assert.equal(JSON.stringify(legacyModel(previous.model)),JSON.stringify(legacyModel(model)),'A different model requires a new batch directory');
  if(previous)assert.deepEqual(previous.recipe,productionRecipe,'A different production recipe requires a new batch directory');
  const jobs=[];
  for(const entry of catalog.jobs){

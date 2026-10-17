@@ -1,7 +1,7 @@
 {
-  "_doc": "Copy to config.json, set the installed Playwright module/cache and Python environment. Relative paths resolve against tools/drill-anim. All new outputs stay on the project drive.",
+  "_doc": "Copy to config.json, set the installed Playwright module/cache and Python environment. Relative paths resolve against drill-anim/ (app_dir '..' = Pose-Hub repo root with package.json and vite.config.js). All new outputs stay on the project drive.",
   "app_url": "http://127.0.0.1:8848",
-  "app_dir": "../..",
+  "app_dir": "..",
   "app_port": 8848,
   "playwright_module": "./node_modules/playwright/index.mjs",
   "playwright_browsers_path": "",
@@ -9,8 +9,8 @@
   "font": "C:/Windows/Fonts/msyh.ttc",
   "ref_dir": "./refs",
   "drills_json": "./data/drills.json",
-  "out_dir": "../../output/drill-anim/rendered",
-  "work_dir": "../../output/drill-anim/work",
+  "out_dir": "../output/drill-anim/rendered",
+  "work_dir": "../output/drill-anim/work",
   "python_path": "",
   "chromium_args": ["--use-angle=d3d11", "--ignore-gpu-blocklist", "--enable-webgl"]
 }

@@ -1,8 +1,8 @@
 # 网站、动作库及 iOS 整合审核（2026-10-12）
 
-本页14项PR收据及下方待确认段记录截至 `6fbf7a7` 的10-12阶段。2026-10-13用户已验收托马斯第三轮与肩颈；本地优化 `4ef5556`（含原接入及四轮保存点）已快进保存到master，人体采用[training-human-v2](training-human-v2.md)作为新动作及旧动作优化标准。GitHub #106仍OPEN/DRAFT/head3d204；当前验收/源码身份见[版本台账](../app/docs/version-ledger.md#2026-10-13-人体标准与托马斯版本整理)，具体证据见[第三轮记录](thomas-app-model-v3-2026-10-12.md)。真实作者12GIF及总览已取回审计，仅作为历史；外观基准为App其他正式训练视频。原14行合并SHA再次与Git双亲及祖先关系核对一致，不改写旧收据。
+本页14项PR收据及下方待确认段记录截至 `6fbf7a7` 的10-12阶段。2026-10-13用户已验收托马斯第三轮与肩颈；本地优化 `4ef5556`（含原接入及四轮保存点）已快进保存到master，人体采用[training-human-v2](training-human-v2.md)作为新动作及旧动作优化标准。GitHub #106仍OPEN/DRAFT/head3d204；当前验收/源码身份见[版本台账](https://github.com/mhgd3250905/3D-Body/blob/66067a6/app/docs/version-ledger.md#2026-10-13-人体标准与托马斯版本整理)，具体证据见[第三轮记录](thomas-app-model-v3-2026-10-12.md)。真实作者12GIF及总览已取回审计，仅作为历史；外观基准为App其他正式训练视频。原14行合并SHA再次与Git双亲及祖先关系核对一致，不改写旧收据。
 
-本文件维护本轮PR来源/合并收据与审核范围；源码检查点和安装/发布身份统一归入 [版本台账](../app/docs/version-ledger.md#2026-10-12-主线整合源码检查点)，收束验证归入 [验证记录](../app/docs/verification.md#主线整合文档收束2026-10-12)，未完成事项归入 [实施路线](../app/docs/development-roadmap.md#主线整合后待安排事项2026-10-12)。原工具初次整合记录属于阶段历史，不代表后续主线的源数量或PR状态。
+本文件维护本轮PR来源/合并收据与审核范围；源码检查点和安装/发布身份统一归入 [版本台账](https://github.com/mhgd3250905/3D-Body/blob/66067a6/app/docs/version-ledger.md#2026-10-12-主线整合源码检查点)，收束验证归入 [验证记录](https://github.com/mhgd3250905/3D-Body/blob/66067a6/app/docs/verification.md#主线整合文档收束2026-10-12)，未完成事项归入 [实施路线](https://github.com/mhgd3250905/3D-Body/blob/66067a6/app/docs/development-roadmap.md#主线整合后待安排事项2026-10-12)。原工具初次整合记录属于阶段历史，不代表后续主线的源数量或PR状态。
 
 按用户提供的整合顺序，将 PR #94 官网、#95 网页使用站、#96 办公椅、#97–#104 办公室拉伸、ios/main（#107）及 #105 久坐强化依次合入 master，随后合入 #108 五项历史修订归档。来源 PR 原先以 feature/drill-anim 为目标者先改为 master；补修均普通推送来源分支，按最终固定 head 合并。没有 force push、reset、clean 或删除历史分支。原21个用户未跟踪条目保留。
 
@@ -35,9 +35,9 @@
 
 办公室8项修复手部穿模、超reach、交叉脚碰胫骨、关节局部方向等；256个周期采样及关键复合帧核对通过，未调低QA容差或修改引擎/人物。源完整性验证仍强制保留原59参数，新增候选只允许已审核canonical SHA-256。详见 [办公室审核](office-drill-pr-audit-2026-10-12.md)。这些是制作候选，没有切换App的视频。
 
-iOS解决25项冲突，以L43界面和资产为底座；补修后台/手动暂停/首次后台挂载的恢复、详情模型和同帧恢复、SDK自检、短屏大字号，保留原脚本配置保护。Dart分析、50项针对性测试及14语校验完成；844×390/2倍字号横屏详情仍有40px溢出（原L43为44px），失败断言保留。Mac/Xcode编译、签名、iPhone和Apple重新验包待验。详见 [iOS审核](../app/docs/ios-main-integration-audit-2026-10-12.md)。PR #8 的 ad72f1c 已完整被ios来源覆盖，GitHub在 #107 合入时自动将 #8 标为MERGED。
+iOS解决25项冲突，以L43界面和资产为底座；补修后台/手动暂停/首次后台挂载的恢复、详情模型和同帧恢复、SDK自检、短屏大字号，保留原脚本配置保护。Dart分析、50项针对性测试及14语校验完成；844×390/2倍字号横屏详情仍有40px溢出（原L43为44px），失败断言保留。Mac/Xcode编译、签名、iPhone和Apple重新验包待验。详见 [iOS审核](https://github.com/mhgd3250905/3D-Body/blob/66067a6/app/docs/ios-main-integration-audit-2026-10-12.md)。PR #8 的 ad72f1c 已完整被ios来源覆盖，GitHub在 #107 合入时自动将 #8 标为MERGED。
 
-久坐强化8项只新增制作源/椅子道具。鸟狗及游泳的小幅伸展修复，各240帧几何与手部QA通过；其余6项为关键姿态初筛。两项修复源另已真实重渲为1080²、30fps、240帧/8秒MP4及540²、15fps、120帧/8秒GIF；完整边界、解码及QA通过。详见 [PR105审核](../tools/drill-anim/pr105-audit-2026-10-12.md)。
+久坐强化8项只新增制作源/椅子道具。鸟狗及游泳的小幅伸展修复，各240帧几何与手部QA通过；其余6项为关键姿态初筛。两项修复源另已真实重渲为1080²、30fps、240帧/8秒MP4及540²、15fps、120帧/8秒GIF；完整边界、解码及QA通过。详见 [PR105审核](../drill-anim/pr105-audit-2026-10-12.md)。
 
 每一次主线合并后执行用户指定的根目录 npm ci、npm run build、node tools/drill-anim/verify.mjs，均通过；构建仅有原有大chunk提示。日志及逐项摘要保存在 output/drill-anim-integration-20261012/pr-N-* 和 merge-checks.txt。#105合后制作源75项：原59、办公室8、久坐8；App ID仍51。
 
@@ -47,7 +47,7 @@ iOS解决25项冲突，以L43界面和资产为底座；补修后台/手动暂�
 
 此前60项正式视频与三项脚部/镜头修订已在 [v1.0.0](https://drive.google.com/drive/folders/1nRi_L9WrysQzOt-zT9rZTlTO3Xx6uI4w) 和 [训练工具整合备份](https://drive.google.com/drive/folders/16ErhrmGbJMner-h0g9Tv7XNWJYoC1tXR) 保存并核验。hip-abductors-B、s-frog、rotator-cuff-B的本机候选/成片/QA与冻结v1一致；hip原240帧solver警告如实保留，不把pass布尔等同没有警告。
 
-PR #108 又将这三项及 deltoids-B、s-9090-switch 共五项的参数、主题、MP4/GIF、封面与原始QA纳入独立交付目录；[入口](../tools/drill-anim/revisions/hark-4080-v1/README.md)。来源 f0d53e9260c9b374cf86861c8309a115acb670df 的64文件哈希、5项源/QA/媒体与冻结v1逐字节和语义核对，5MP4/5GIF完整解码通过。确认了原待查三项的实际修订来源，旧source-8a75备份仍是原分支参数，最终五项归档从v1来源保留。hip240帧警告及deltoids约10.31mm肘部间隙等历史限制随包保留；原QA不代表当前主线的新全量渲染。此次归档不提升为默认参数或App新选版。
+PR #108 又将这三项及 deltoids-B、s-9090-switch 共五项的参数、主题、MP4/GIF、封面与原始QA纳入独立交付目录；[入口](../drill-anim/revisions/hark-4080-v1/README.md)。来源 f0d53e9260c9b374cf86861c8309a115acb670df 的64文件哈希、5项源/QA/媒体与冻结v1逐字节和语义核对，5MP4/5GIF完整解码通过。确认了原待查三项的实际修订来源，旧source-8a75备份仍是原分支参数，最终五项归档从v1来源保留。hip240帧警告及deltoids约10.31mm肘部间隙等历史限制随包保留；原QA不代表当前主线的新全量渲染。此次归档不提升为默认参数或App新选版。
 
 ## 历史：待用户确认与保留项（截至2026-10-12原收束）
 

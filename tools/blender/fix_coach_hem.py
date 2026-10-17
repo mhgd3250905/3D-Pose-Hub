@@ -76,7 +76,7 @@ def main():
     for ob in bpy.data.objects:
         if ob.type=='MESH' and ob.name.startswith('Coach_'):ob.select_set(True)
     bpy.context.view_layer.objects.active=rig
-    bpy.ops.export_scene.gltf(filepath=str(ROOT/'public'/'coach'/'flare-coach.glb'),export_format='GLB',
+    bpy.ops.export_scene.gltf(filepath=str(ROOT/'runtime'/'public'/'coach'/'flare-coach.glb'),export_format='GLB',
         use_selection=True,export_animations=False,export_yup=True,export_apply=False,
         export_skins=True,export_all_influences=False,export_cameras=False,export_lights=False,export_extras=True)
     for bone in rig.pose.bones:bone.matrix=matrices[bone.name]

@@ -1,0 +1,38 @@
+# Dependencies / build
+node_modules/
+/dist/
+__pycache__/
+*.pyc
+*.log
+
+# Local machine config (copy from the *.example.json next to it)
+config.json
+
+# Render output, scratch frames and local media stay on disk / R2, never in Git
+/output/
+out/
+refs/
+/media/local/
+/media/staging/
+/media/download/
+/media/cache/
+*.mp4
+*.webm
+*.mov
+*.mkv
+*.gif
+/media/**/*.png
+/media/**/*.webp
+/media/**/*.jpg
+/media/**/*.zip
+frames/
+fr/
+composite/
+**/work/
+
+/.playwright-cli/
+/.playwright-mcp/
+/keys/
+.env
+.env.*
+.dev.vars

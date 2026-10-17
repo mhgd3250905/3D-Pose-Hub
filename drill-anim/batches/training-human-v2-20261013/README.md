@@ -1,6 +1,6 @@
 # training-human-v2 整批重渲固定来源（2026-10-13）
 
-用户已授权本会话用已验收人体重渲全部已制作演示，并保存新素材。固定94变体、781.8秒、30fps共23,454帧；组成60正式＋8办公室＋8久坐＋12托马斯＋5早期示范＋1Flare，App原51项是此批子集。94项成片现已全部另存于 `output/training-human-v2-library-final-20261013`，producer83ready/11review、最终独立audit-final为56ready/38review、failed/pending均0；所选188视频完整解码。此目录只保存冻结参数来源，完整结果见[统一素材库](../../../../docs/training-media-library-2026-10-13.md)，不表示全部动作QA或App安装更新通过。
+用户已授权本会话用已验收人体重渲全部已制作演示，并保存新素材。固定94变体、781.8秒、30fps共23,454帧；组成60正式＋8办公室＋8久坐＋12托马斯＋5早期示范＋1Flare，App原51项是此批子集。94项成片现已全部另存于 `output/training-human-v2-library-final-20261013`，producer83ready/11review、最终独立audit-final为56ready/38review、failed/pending均0；所选188视频完整解码。此目录只保存冻结参数来源，完整结果见[统一素材库](../../../docs/training-media-library-2026-10-13.md)，不表示全部动作QA或App安装更新通过。
 
 `job-catalog.json`保存完整批次。原88项映射对象保持；历史五项使用本目录`specs/*.json`，需要显式加载`page/history-demo-adapter.js`并调用`__installHistoricalDemo`。它们调用原createTrainingClip采样与applyOptions，不替换为类似drill。原1半分腿保持停止；第94项纳入正式v41烘焙循环，前93项对象不变。
 

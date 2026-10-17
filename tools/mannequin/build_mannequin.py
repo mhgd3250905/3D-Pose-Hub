@@ -1,8 +1,8 @@
 """Derive the unclothed muscle-viewer body from the fitness reference.
 
-Input : public/anatomy/fitness-reference.glb (body + shorts). Left unchanged:
+Input : runtime/public/anatomy/fitness-reference.glb (body + shorts). Left unchanged:
         the movement inspector still uses the dressed reference.
-Output: public/anatomy/mannequin-reference.glb (+ .json), muscle viewer only.
+Output: runtime/public/anatomy/mannequin-reference.glb (+ .json), muscle viewer only.
 
 Only the pelvis changes; head, face, ears and every other sculpted detail keep
 the original vertices and normals bit for bit.
@@ -25,8 +25,8 @@ from glbio import read_glb, write_glb, weld
 from meshops import vertex_normals, adjacency, umbrella, smooth, laplace, smoothstep
 
 ROOT = os.path.join(os.path.dirname(__file__), '..', '..')
-SRC = os.path.join(ROOT, 'public/anatomy/fitness-reference.glb')
-DST = os.path.join(ROOT, 'public/anatomy/mannequin-reference.glb')
+SRC = os.path.join(ROOT, 'runtime/public/anatomy/fitness-reference.glb')
+DST = os.path.join(ROOT, 'runtime/public/anatomy/mannequin-reference.glb')
 SMOOTH_ITERS = 20                                   # Taubin passes on the patch + rim
 APEX_C = np.array([0.0, 0.768, 0.0]); APEX_R = np.array([0.035, 0.03, 0.05])
 APEX_W, APEX_ITERS = 0.8, 30                        # Laplacian rounding of the crotch apex

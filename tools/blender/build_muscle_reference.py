@@ -16,7 +16,7 @@ from mathutils import Vector
 from mathutils.bvhtree import BVHTree
 
 ROOT = Path(__file__).resolve().parents[2]
-ANATOMY = ROOT / 'public' / 'anatomy'
+ANATOMY = ROOT / 'runtime' / 'public' / 'anatomy'
 ASSET = ROOT / 'assets' / 'coach'
 OUTPUT = ROOT / 'output' / 'muscle-reference-20261007'
 for directory in (ASSET, OUTPUT):

@@ -1,6 +1,6 @@
 # 训练动作制作工具整合记录
 
-本文件保留首次纳入 `feature/drill-anim` 的阶段事实，范围截至 `1f87cc6180532857c1b53dba4c9898915a9aa49a`；下文59项数量及PR #8待处理均是当时状态。后续PR #94–#105、#107、#108已合入master，默认制作源现75项，PR #8已被iOS整合覆盖并在GitHub标为MERGED。当前收据见 [主线整合审核](integration-pr-audit-2026-10-12.md)，版本/验证/待办分别以 [版本台账](../app/docs/version-ledger.md)、[验证记录](../app/docs/verification.md)、[实施路线](../app/docs/development-roadmap.md) 为准；本文件不是后续主线全量验证报告。
+本文件保留首次纳入 `feature/drill-anim` 的阶段事实，范围截至 `1f87cc6180532857c1b53dba4c9898915a9aa49a`；下文59项数量及PR #8待处理均是当时状态。后续PR #94–#105、#107、#108已合入master，默认制作源现75项，PR #8已被iOS整合覆盖并在GitHub标为MERGED。当前收据见 [主线整合审核](integration-pr-audit-2026-10-12.md)，版本/验证/待办分别以 [版本台账](https://github.com/mhgd3250905/3D-Body/blob/66067a6/app/docs/version-ledger.md)、[验证记录](https://github.com/mhgd3250905/3D-Body/blob/66067a6/app/docs/verification.md)、[实施路线](https://github.com/mhgd3250905/3D-Body/blob/66067a6/app/docs/development-roadmap.md) 为准；本文件不是后续主线全量验证报告。
 
 2026-10-12，按用户批准的计划将 `feature/drill-anim` 的制作源码纳入本地 L43，并把已有成片备份到用户 Google Drive。App 仍为 L43 / 1.0.0+1 / v41，当前51项视频、封面、媒体清单和运行时代码保持；此次没有创建 L44 或新安装包。
 
@@ -14,11 +14,11 @@
 
 ## Windows 运行与输出保护
 
-配置与运行见 [工具说明](../tools/drill-anim/README.md)，示例为 `config.windows.example.json`。本机 gitignored 配置使用项目根 Vite、既有 E 盘 Python / Playwright 环境及新 E 盘输出目录。启动不依赖 POSIX `.bin/vite`、`python3`、`killpg` 或 `/tmp`；文件模块通过 Node file URL 导入，Python子进程使用当前解释器并隐藏辅助窗口。相对路径以工具根目录解析。
+配置与运行见 [工具说明](../drill-anim/README.md)，示例为 `config.windows.example.json`。本机 gitignored 配置使用项目根 Vite、既有 E 盘 Python / Playwright 环境及新 E 盘输出目录。启动不依赖 POSIX `.bin/vite`、`python3`、`killpg` 或 `/tmp`；文件模块通过 Node file URL 导入，Python子进程使用当前解释器并隐藏辅助窗口。相对路径以工具根目录解析。
 
 已有成品默认拒覆盖；显式 `--overwrite` 只用于主动替换。删除动作临时帧前校验动作ID、存在的源参数及绝对路径边界，禁止删除源码或成品目录。编码临时文件位于 `work_dir`，合成失败或缺帧停止编码。Windows文件名中的范围冒号改为连字符。Three.js或浏览器启动失败时关闭本次浏览器并给出诊断，Vite只关闭本次自行启动的进程。
 
-运行时人物继续来自 Snow 的既有派生；无新模型采购、无收费生成、无CDN。来源与许可见 [人物来源](friendly-coach.md)、[训练媒体来源](../app/assets/licenses/Drill-media-ATTRIBUTION.md)。色区表示功能关联；这些自定义动作参数尚不是60个标准GLB AnimationClip，也不表示实测肌电。
+运行时人物继续来自 Snow 的既有派生；无新模型采购、无收费生成、无CDN。来源与许可见 [人物来源](friendly-coach.md)、[训练媒体来源](../licenses/Drill-media-ATTRIBUTION.md)。色区表示功能关联；这些自定义动作参数尚不是60个标准GLB AnimationClip，也不表示实测肌电。
 
 ## 云盘备份
 

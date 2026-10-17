@@ -20,8 +20,8 @@ SOURCE = ROOT / 'assets/blender-studio-source/human-base-meshes-v1.4.1/human-bas
 SOURCE_ZIP = ROOT / 'assets/blender-studio-source/human-base-meshes-bundle-v1.4.1.zip'
 OUTPUT = ROOT / 'output/fitness-reference-20261007'
 ASSET = ROOT / 'assets/coach/fitness-reference.blend'
-GLB = ROOT / 'public/anatomy/fitness-reference.glb'
-META = ROOT / 'public/anatomy/fitness-reference.json'
+GLB = ROOT / 'runtime/public/anatomy/fitness-reference.glb'
+META = ROOT / 'runtime/public/anatomy/fitness-reference.json'
 for directory in (OUTPUT, ASSET.parent, GLB.parent):
     directory.mkdir(parents=True, exist_ok=True)
 
@@ -31,10 +31,10 @@ def file_hash(path):
 
 
 monitored = [SOURCE, SOURCE_ZIP]
-monitored += [ROOT / 'public/anatomy' / name for name in
+monitored += [ROOT / 'runtime/public/anatomy' / name for name in
               ('manifest.json', 'muscles.bin', 'bones.bin', 'skin.bin',
                'skin-manifest.json', 'muscle-reference.glb', 'muscle-reference.json')]
-monitored += [ROOT / 'public/coach' / name for name in
+monitored += [ROOT / 'runtime/public/coach' / name for name in
               ('flare-coach.glb', 'coach-rig.json', 'flare-sequence.json')]
 before = {str(path.relative_to(ROOT)): file_hash(path) for path in monitored}
 bpy.ops.wm.open_mainfile(filepath=str(SOURCE))

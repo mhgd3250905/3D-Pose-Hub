@@ -1,7 +1,7 @@
 // Add the verified one-action shoe correction to a new complete94-item archive.
 // The original package and all its original media/evidence remain untouched.
 import fs from 'node:fs';import path from 'node:path';import crypto from 'node:crypto';import assert from 'node:assert/strict';import {spawnSync} from 'node:child_process';import {fileURLToPath} from 'node:url';
-const repo=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../..');
+const repo=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const base=path.join(repo,'output/training-human-v2-library-portable-20261013'),fix=path.join(repo,'output/training-human-v2-erectors-B-footfix-20261013'),out=path.join(repo,'output/training-human-v2-library-footfix-20261013');
 const read=p=>JSON.parse(fs.readFileSync(p,'utf8')),hash=p=>crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');
 const write=(p,j)=>fs.writeFileSync(p,JSON.stringify(j,null,2)+'\n');
@@ -21,7 +21,7 @@ fs.mkdirSync(out+'/evidence/previous-package',{recursive:true});
 for(const n of['manifest.json','portable-catalog.json','package-manifest.json','directory-manifest.json','SHA256SUMS.txt','README.md'])fs.copyFileSync(base+'/'+n,out+'/evidence/previous-package/'+n);
 fs.mkdirSync(out+'/evidence/footfix',{recursive:true});
 for(const n of['source.json','spec.json','model.json','qa.json','result.json','footfix-preservation.json','renderer.json'])fs.copyFileSync(fix+'/'+n,out+'/evidence/footfix/'+n);
-fs.copyFileSync(path.join(repo,'tools/drill-anim/render-footfix.mjs'),out+'/evidence/footfix/render-footfix.mjs');
+fs.copyFileSync(path.join(repo,'drill-anim/render-footfix.mjs'),out+'/evidence/footfix/render-footfix.mjs');
 fs.mkdirSync(out+'/evidence/footfix/frames');fs.copyFileSync(fix+'/frames/met-cycle.json',out+'/evidence/footfix/frames/met-cycle.json');
 fs.copyFileSync(fix+'/composite/place.json',out+'/evidence/footfix/place.json');
 const media={};for(const kind of['master','mobile']){

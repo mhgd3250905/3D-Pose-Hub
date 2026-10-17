@@ -1,5 +1,5 @@
 """Focused regressions for filesystem protection and real Node file imports.
-Run with a configured config.json: python tools/drill-anim/test_portability.py
+Run with a configured config.json: python drill-anim/test_portability.py
 """
 import importlib.util
 import json
@@ -26,8 +26,8 @@ class PortabilityTests(unittest.TestCase):
         self.assertEqual(json.loads(Path(output).read_text(encoding='utf-8'))['top']['base'], theme['top']['base'])
 
     def test_config_paths_resolve_from_tool_not_cwd(self):
-        with patch.dict(os.environ, {'WORK_DIR':'../../output/portability-test-work'}):
-            self.assertEqual(drill.cfg()['work_dir'], str((ROOT/'../../output/portability-test-work').resolve()))
+        with patch.dict(os.environ, {'WORK_DIR':'../output/portability-test-work'}):
+            self.assertEqual(drill.cfg()['work_dir'], str((ROOT/'../output/portability-test-work').resolve()))
 
     def test_invalid_drill_cannot_delete_any_scratch(self):
         with patch.object(drill.shutil, 'rmtree') as remove:

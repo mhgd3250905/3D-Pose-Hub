@@ -8,7 +8,7 @@
 
 2026-10-09 PR3整合后，网页同步面板 `src/muscle-sync.js` 与全屏查看器 `src/muscle-viewer.js` 加载 `public/anatomy/mannequin-reference.glb`。它派生自CC0 Human Base Meshes的既有 `fitness-reference.glb`，去掉短裤、局部平顺裆部，保持静态自然人体；1网格、74,274三角形、1,338,688字节，元数据记录SHA-256 `ac4c0dd92d42504a949fd0aff0063aaff0886a68278f95878bc3da9df177e056`。来源、坐标、修改和限制见同名JSON。它的shader色区是肌群位置示意，不是独立真实解剖网格或与Snow精确配准。
 
-以下有短裤 `fitness-reference.glb` / BodyParts3D说明保留原资产与独立结构入口，不能作为当前首页加载人台的文件身份；App采用其打包参考副本，以 [v41合约](../app/docs/motion-v41.md) 为准。本次未重做资产或复跑历史几何检查。
+以下有短裤 `fitness-reference.glb` / BodyParts3D说明保留原资产与独立结构入口，不能作为当前首页加载人台的文件身份；App采用其打包参考副本，以 [v41合约](https://github.com/mhgd3250905/3D-Body/blob/66067a6/app/docs/motion-v41.md) 为准。本次未重做资产或复跑历史几何检查。
 
 ## 文件与范围
 

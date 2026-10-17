@@ -1,6 +1,6 @@
 # 新增51项训练动作：本地保存与后续接入规划
 
-2026-10-15按用户“在本地帮我保存清楚，规划好，我以后会用”的要求，将PR #111的20项、#112的10项、#113的11项、#115的10项另存为独立制作源归档。源固定于整合提交 `e521969311188b296262b3384f8b30d667d61fc1`，51项规范UTF-8/LF规格SHA逐项与[原审核清单](../tools/drill-anim/data/home-pr-candidates.json)一致。原来源、合并补修及验证边界见[整合记录](home-drill-integration-2026-10-15.md)。
+2026-10-15按用户“在本地帮我保存清楚，规划好，我以后会用”的要求，将PR #111的20项、#112的10项、#113的11项、#115的10项另存为独立制作源归档。源固定于整合提交 `e521969311188b296262b3384f8b30d667d61fc1`，51项规范UTF-8/LF规格SHA逐项与[原审核清单](../drill-anim/data/home-pr-candidates.json)一致。原来源、合并补修及验证边界见[整合记录](home-drill-integration-2026-10-15.md)。
 
 本机归档入口：[中文指南](../output/home-drills-51-archive-20261015/README.md)、[51项Excel索引](../output/home-drills-51-archive-20261015/index.csv)、[机器索引](../output/home-drills-51-archive-20261015/index.json)、[完整源码ZIP](../output/home-drills-51-archive-20261015/home-drills-51-source-20261015.zip)、[打包回读收据](../output/home-drills-51-archive-20261015/receipt.json)。实际目录为 `E:/AII-3D/3D-Body/output/home-drills-51-archive-20261015/`。output被Git忽略，不随clone或普通push分发，也没有因此自动云备份；换电脑需另行复制完整ZIP及收据并核对。
 
