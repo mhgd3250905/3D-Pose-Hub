@@ -1,0 +1,43 @@
+{
+  "name": "glow-soft (highlight v2 soft, 2026-10-18)",
+  "highlight": {
+    "colour": [
+      0.18,
+      0.82,
+      1.0
+    ],
+    "shade": [
+      0.26,
+      0.74,
+      0.06
+    ],
+    "_bloom": "glow-B (2026-10-15): toon-shaded muscle, halo only at its edge (inner 0.12), heal closes thin seam lines inside the lit muscle. v7 was shade [0.62,0.30,0.22] + no bloom block",
+    "bloom": {
+      "strength": 0.55,
+      "radii": [
+        6,
+        16
+      ],
+      "inner": 0.12,
+      "heal": 5
+    },
+    "_soft": "highlight v2 'soft' (page/soft-highlight.js via lib/soft-highlight.mjs): round feathered glow from a continuous skinned muscle-map coordinate, union of the selected ellipsoids with a wide falloff, soft lambert + fresnel. Same cyan; everything else is glow-B. Remove 'soft' (or set on:false) to get glow-B exactly.",
+    "soft": {
+      "on": true,
+      "version": "soft-v1",
+      "e0": 0.35,
+      "e1": 1.1,
+      "size": 1.0,
+      "depth": 1.4,
+      "compete": 0.4,
+      "margin": 0.22,
+      "gain": 0.95,
+      "ambient": 0.68,
+      "lambert": 0.14,
+      "core": 0.22,
+      "fresnel": 0.22,
+      "rim": 0.6,
+      "midline": 0.035
+    }
+  }
+}
