@@ -93,15 +93,17 @@ for (const file of files) {
     assert.equal(hash(Buffer.from(canonical(bytes))), additions[file].sha256, `Reviewed PR #${additions[file].pr} spec changed: ${file}`);
   }
   const {default: spec} = await import(pathToFileURL(absolute).href);
-  assert.equal(spec.id, file.slice(0,-3));
+  assert.equal(spec.id, additions[file]?.renderId ?? file.slice(0,-3));
   assert.ok(Number.isFinite(spec.timeline.duration) && spec.timeline.duration > 0, `Invalid duration: ${file}`);
   assert.ok(spec.timeline.tracks && typeof spec.timeline.tracks === 'object');
   for (const [track, keys] of Object.entries(additions[file] ? spec.timeline.tracks : {})) {
     assert.ok(Array.isArray(keys) && keys.length > 0, `Empty track ${file}:${track}`);
     let previous = -Infinity;
-    for (const key of keys) {
+    for (const [index, key] of keys.entries()) {
       assert.ok(Array.isArray(key) && Number.isFinite(key[0]) && Number.isFinite(key[1]), `Invalid key ${file}:${track}`);
-      assert.ok(key[0] >= 0 && key[0] < spec.timeline.duration && key[0] > previous, `Invalid key time ${file}:${track}`);
+      const terminal = additions[file]?.terminalTracks?.includes(track)
+        && index === keys.length - 1 && key[0] === spec.timeline.duration && key[1] === keys[0][1];
+      assert.ok(key[0] >= 0 && (key[0] < spec.timeline.duration || terminal) && key[0] > previous, `Invalid key time ${file}:${track}`);
       previous = key[0];
     }
   }

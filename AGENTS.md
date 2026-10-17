@@ -2,6 +2,12 @@
 
 给在本仓库工作的人和 agent。动作、人物模型和成片的唯一来源是这里。
 
+## 主线维护分工
+
+- 开哥本地 `E:\AII-3D\3D-Pose-Hub` 是主线维护方，负责 main、贡献 PR 审核、清单 PR、合并、tag 与 R2 发布；外部操作仍遵守第 5 条的用户授权要求。
+- Hark 是贡献方：从 main 拉分支、提交 PR，由本地主线维护方审核；不代替主线维护方开清单 PR 或合并。
+- FlareLab、HipLab 各自维护 App 功能，通过已发布的固定素材版本消费本仓库成果。
+
 ## 1. 动作只在这里改
 
 - 动作规格（`drill-anim/specs/*.js`）、渲染工具（`drill-anim/`）、人物模型（`runtime/public/coach`、`runtime/public/anatomy`、`drill-anim/models/`）和模型制作工具（`tools/`）只在 Pose-Hub 修改。
