@@ -105,14 +105,14 @@ const D = {
   t3: 'docs/thomas-app-model-v3-2026-10-12.md', pr105: 'drill-anim/pr105-audit-2026-10-12.md',
 };
 const KNOWN = {
-  'h-quad-cars': [`v0.1.0 绑定 r2；soft-v1 下建议 v0.2.0 改回原规格（${D.soft}）`, `flickscan 小腿/鞋底纹 169 坏帧，既有问题（${D.fix}）`],
-  'h-quad-cars-r2': [`高亮仅部分修复（拼面板 glutes+gluteMed+oblique）；soft-v1 下腰侧多一团（${D.soft}）`, `flickscan 163 坏帧，位于鞋底纹（${D.fix}）`],
+  'h-quad-cars': [`v0.1.0 绑定 r2；v0.2.0 已用原规格和 soft-v1 发布（${D.soft}）`, `flickscan 小腿/鞋底纹 169 坏帧，既有问题（${D.fix}）`],
+  'h-quad-cars-r2': [`v0.1.0 高亮仅部分修复（拼面板 glutes+gluteMed+oblique）；soft-v1 下腰侧多一团，v0.2.0 已改用原规格和 soft-v1 发布（${D.soft}）`, `flickscan 163 坏帧，位于鞋底纹（${D.fix}）`],
   's-seated-fold-r3': [`63 条历史腕部可达范围警告保留（${D.rel}）`],
   's-seated-fold': [`v2 原片 f154→155 手跳约 30 mm（${D.lib}）`],
   'a-deep-squat-r2': [`glow-B 下几乎无青色高亮（臀肌朝后）（${D.fix}）`],
   'a-thomas-r2': [`glow-B 下 hip-flexors 只亮一个小点（${D.fix}）`],
-  'glute-max-A': [`glow-B 下几乎看不到高亮，soft-v1 已改善（${D.soft}）`],
-  'hip-flexors-A': [`glow-B 下几乎看不到高亮，soft-v1 已改善（${D.soft}）`],
+  'glute-max-A': [`glow-B 下几乎看不到高亮，v0.2.0 已用 soft-v1 发布并改善（${D.soft}）`],
+  'hip-flexors-A': [`glow-B 下几乎看不到高亮，v0.2.0 已用 soft-v1 发布并改善（${D.soft}）`],
   'n-leg-circles': [`求解器提示 29 帧，指标全过（${D.p1}）`],
   'n-seated-squeeze': [`原计划“夹拳+外推”改为夹砖，外推半部分未做（${D.p1}）`, `2 vCPU/SwiftShader 预览 >75 s 不出第一帧，原因未查（docs/onboarding-audit-2026-10-18.md）`],
   'n-seated-ir-drop': [`替代未完成的 n-9090-ir-lean（${D.p1}）`],
@@ -131,7 +131,6 @@ const PLANNED = [
   {id: 'n-9090-ir-lean', name: '90/90 向后腿侧倾（被动内旋末端）', why: '两轮后手掌贴垫/腰弯 ≤45° 做不到，暂以 n-seated-ir-drop 代替；需模型手部/腰部改进', src: D.p1},
   {id: '（无 id）坐姿夹砖“外推”半部分', name: '坐姿膝外推（弹力带版）', why: '手掌放膝内侧会陷入大腿，改夹砖；文档建议以后做弹力带版', src: D.p1},
   {id: 's-9090-switch', name: '90/90 左右换髋', why: '最终修订只在 drill-anim/revisions/hark-4080-v1/s-9090-switch/，specs/ 下无同名 spec，未进 verify 契约', src: D.h4080},
-  {id: '（复用髋部动作的 B/soft 重渲）', name: 's-9090、s-seated-fold、h-squat 等', why: '第 1 阶段文档列为待重渲；v0.1.0 已覆盖其中 46 项，v0.2.0 需整体换 glow-soft', src: `${D.p1}；${D.soft}`},
   {id: '（道具）', name: '引体杆/泡沫轴/瑞士球/地雷杆/绳索等道具复核', why: 'drill-anim/README 写“未写/未验证”，但 specs 已在用 pullupBar、foamRoller、swissBall、landmine、cableStack —— README 道具一节过时，需逐个复核穿模', src: 'drill-anim/README.md#props'},
   {id: '（h-* 51 项接入）', name: '居家/肌群补充/开胯/开肩 51 项', why: '源码已审，作者成片/QA 未取回，未注册任何 App（被 HipLab v0.1.0 选中的除外）', src: D.h51},
 ];

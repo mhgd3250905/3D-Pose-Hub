@@ -48,7 +48,7 @@
 | `forearms-A` | 跪姿多方向腕部摇摆 | 前臂 · 腕屈伸肌 | 垫 | 16s/480f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `forearms-B` | 哑铃腕屈 + 腕伸 | 前臂 · 腕屈伸肌（right） | 凳、哑铃 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `forearms-C` | 壶铃倒握行走 | 前臂 · 腕屈伸肌（right） | 壶铃 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
-| `glute-max-A` | 单腿臀桥 | 臀大肌 | 垫 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布）；HipLab v0.1.0；HipLab v0.2.0 | 基线 59（git） | glow-B 下几乎看不到高亮，soft-v1 已改善（docs/soft-highlight-2026-10-18.md） |
+| `glute-max-A` | 单腿臀桥 | 臀大肌 | 垫 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布）；HipLab v0.1.0；HipLab v0.2.0 | 基线 59（git） | glow-B 下几乎看不到高亮，v0.2.0 已用 soft-v1 发布并改善（docs/soft-highlight-2026-10-18.md） |
 | `glute-max-B` | 弹力带四足直腿后踢 | 臀大肌（right） | 垫、弹力带 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `glute-max-C` | 反向背伸机 | 臀大肌 | 反向背伸机 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `hamstrings-A` | 徒手单腿罗马尼亚硬拉 | 腘绳肌 | — | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
@@ -57,7 +57,7 @@
 | `hip-abductors-A` | 侧平板抬腿 | 臀中肌 · 髋外展（right） | 垫 | 6s/180f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `hip-abductors-B` | 仰卧弹力带 V 字开腿 | 臀中肌 · 髋外展 | 垫、弹力带 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） | hark-4080-v1 修订 240 帧求解警告保留（docs/drill-anim/hark-4080-v1.md）；10-13库：Source engine pass is true with 240 solver-warning frames retained.；10-13库：Historical original engine pass=true but solver_warning_frames=240; do not hide or turn into zero. |
 | `hip-abductors-C` | 器械髋外展 | 臀中肌 · 髋外展 | 髋外展机 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
-| `hip-flexors-A` | 坐姿直腿抬腿（压缩） | 髋屈肌 | 垫 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布）；HipLab v0.1.0；HipLab v0.2.0 | 基线 59（git） | glow-B 下几乎看不到高亮，soft-v1 已改善（docs/soft-highlight-2026-10-18.md） |
+| `hip-flexors-A` | 坐姿直腿抬腿（压缩） | 髋屈肌 | 垫 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布）；HipLab v0.1.0；HipLab v0.2.0 | 基线 59（git） | glow-B 下几乎看不到高亮，v0.2.0 已用 soft-v1 发布并改善（docs/soft-highlight-2026-10-18.md） |
 | `hip-flexors-B` | 弹力带站姿高抬膝 | 髋屈肌（right） | 墙、弹力带 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `hip-flexors-C` | 绳索站姿直腿前抬 | 髋屈肌（right） | 绳索、脚踝扣 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `lats-A` | 坐姿撑地抬臀 | 背阔肌 | 垫 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
@@ -177,8 +177,8 @@
 | `h-mountain-climber` | 慢速登山跑 | 腹直肌（含深层腹横肌）+髋屈肌 | 垫 | 8s/120f@15 | v2 |  | — | PR #111 |  |
 | `h-open-book` | 侧卧开书式 | 胸大肌+腹斜肌（right） | 垫 | 8s/120f@15 | v2 |  | — | PR #115 |  |
 | `h-pike-pushup` | 派克俯卧撑 | 三角肌+肱三头肌 | 垫 | 8s/120f@15 | v2 |  | — | PR #111 |  |
-| `h-quad-cars-r2` | 四足髋关节画圈 | 面板 glutes/gluteMed/oblique（right） | 垫 | 8s/120f@15 | v2 | `h-quad-cars` | HipLab v0.1.0 作 h-quad-cars | PR #121 | 高亮仅部分修复（拼面板 glutes+gluteMed+oblique）；soft-v1 下腰侧多一团（docs/soft-highlight-2026-10-18.md）；flickscan 163 坏帧，位于鞋底纹（drill-anim/revisions/hiplab-media-fix-20261017/README.md） |
-| `h-quad-cars` | 四足髋关节画圈 | 臀大肌+臀中肌 · 髋外展（right） | 垫 | 8s/120f@15 | v2 |  | HipLab v0.2.0；原版；v0.1.0 绑定 h-quad-cars-r2 | PR #113 | v0.1.0 绑定 r2；soft-v1 下建议 v0.2.0 改回原规格（docs/soft-highlight-2026-10-18.md）；flickscan 小腿/鞋底纹 169 坏帧，既有问题（drill-anim/revisions/hiplab-media-fix-20261017/README.md） |
+| `h-quad-cars-r2` | 四足髋关节画圈 | 面板 glutes/gluteMed/oblique（right） | 垫 | 8s/120f@15 | v2 | `h-quad-cars` | HipLab v0.1.0 作 h-quad-cars | PR #121 | v0.1.0 高亮仅部分修复（拼面板 glutes+gluteMed+oblique）；soft-v1 下腰侧多一团，v0.2.0 已改用原规格和 soft-v1 发布（docs/soft-highlight-2026-10-18.md）；flickscan 163 坏帧，位于鞋底纹（drill-anim/revisions/hiplab-media-fix-20261017/README.md） |
+| `h-quad-cars` | 四足髋关节画圈 | 臀大肌+臀中肌 · 髋外展（right） | 垫 | 8s/120f@15 | v2 |  | HipLab v0.2.0；原版；v0.1.0 绑定 h-quad-cars-r2 | PR #113 | v0.1.0 绑定 r2；v0.2.0 已用原规格和 soft-v1 发布（docs/soft-highlight-2026-10-18.md）；flickscan 小腿/鞋底纹 169 坏帧，既有问题（drill-anim/revisions/hiplab-media-fix-20261017/README.md） |
 | `h-reverse-clam` | 侧卧反向蚌式 | 臀中肌 · 髋外展+臀大肌（right） | 垫 | 8s/120f@15 | v2 |  | HipLab v0.1.0；HipLab v0.2.0 | PR #113 |  |
 | `h-reverse-crunch` | 反向卷腹 | 腹直肌（含深层腹横肌） | 垫 | 8s/120f@15 | v2 |  | — | PR #111 |  |
 | `h-reverse-lunge` | 后撤步弓步蹲 | 股四头肌+臀大肌 | 垫 | 8s/120f@15 | v2 |  | — | PR #111 |  |
@@ -253,7 +253,6 @@
 | n-9090-ir-lean | 90/90 向后腿侧倾（被动内旋末端） | 两轮后手掌贴垫/腰弯 ≤45° 做不到，暂以 n-seated-ir-drop 代替；需模型手部/腰部改进 | docs/hiplab-phase1-drills-2026-10-16.md |
 | （无 id）坐姿夹砖“外推”半部分 | 坐姿膝外推（弹力带版） | 手掌放膝内侧会陷入大腿，改夹砖；文档建议以后做弹力带版 | docs/hiplab-phase1-drills-2026-10-16.md |
 | s-9090-switch | 90/90 左右换髋 | 最终修订只在 drill-anim/revisions/hark-4080-v1/s-9090-switch/，specs/ 下无同名 spec，未进 verify 契约 | docs/drill-anim/hark-4080-v1.md |
-| （复用髋部动作的 B/soft 重渲） | s-9090、s-seated-fold、h-squat 等 | 第 1 阶段文档列为待重渲；v0.1.0 已覆盖其中 46 项，v0.2.0 需整体换 glow-soft | docs/hiplab-phase1-drills-2026-10-16.md；docs/soft-highlight-2026-10-18.md |
 | （道具） | 引体杆/泡沫轴/瑞士球/地雷杆/绳索等道具复核 | drill-anim/README 写“未写/未验证”，但 specs 已在用 pullupBar、foamRoller、swissBall、landmine、cableStack —— README 道具一节过时，需逐个复核穿模 | drill-anim/README.md#props |
 | （h-* 51 项接入） | 居家/肌群补充/开胯/开肩 51 项 | 源码已审，作者成片/QA 未取回，未注册任何 App（被 HipLab v0.1.0 选中的除外） | docs/home-drills-51-plan-2026-10-15.md |
 
