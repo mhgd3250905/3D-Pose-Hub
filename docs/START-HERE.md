@@ -79,6 +79,7 @@ node drill-anim/tools/catalog.mjs --check                    # 只检查是否�
 | 找不到主题文件 | `--theme` 路径相对 `drill-anim/`，写 `themes/glow-soft.json`，不是 `drill-anim/themes/...` |
 | 预览后 `qa` 显示 `pass: false` | 只渲了几帧，`frames_complete=false` 必然 false。看各单项的 `ok`，不要看总 `pass` |
 | 对不上文档里的帧号 | 帧号 = 秒 × spec 的 `fps`。76 份 spec 是 `fps: 15`，其余默认 30；HipLab 发布时统一包装成 30 fps（`media/releases/0.1.0.sources.json` 的 `renderProfile`）。h-* 的“发布片第 120 帧”= spec 原生第 60 帧 |
+| 预览卡住：boot 和 `highlight` 日志之后很久没有 `frame N` | 个别动作（实测 `n-seated-squeeze`，两个主题都 >75 s 不出第一帧）在 2 vCPU/SwiftShader 上极慢，`drill.py` 还会自动重跑缺帧任务。用 `timeout 180 python3 drill-anim/drill.py ...` 包一层；超时就在 PR 里写明，交给主线本机预览。日志在 `<work_dir>/<id>/fr-log-*.txt` |
 | 渲染拒绝覆盖 | 已有同名成片默认不覆盖；预览帧按 id 放在 `work_dir/<id>/`，重渲会清理这个目录 |
 | `node drill-anim/tools/probe.mjs` 连不上 | probe 不会自己启动 Vite；先在仓库根另开一个终端 `npx vite --host 127.0.0.1 --port <config 的 app_port>` |
 | 文档里的 `flickscan` / `propscan` / `render_batch.py` 找不到 | 它们在 3D-Body PR #120 的 `tools/hiplab-render/`，没迁进 Pose-Hub；只有主线本机有，低配机做不了 |

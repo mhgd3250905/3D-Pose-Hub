@@ -20,6 +20,8 @@
 | Chromium 启动 | **非 root 机器缺 libatk / libatk-bridge / libXcomposite / libXdamage / libatspi**，需 root 跑 `npx playwright install-deps chromium`，或把这 5 个 .so 放一个目录填进 `ld_library_path` | — |
 | 预览 `h-quad-cars --frames 66 --pr 0.5 --jobs 1 --theme themes/glow-soft.json` | 通过，日志有 `highlight {"version":"soft-v1"…}`，画面正常 | 墙钟 30 s（Vite 启动约 4 s + 浏览器 boot 10.6 s + 每帧约 3.5 s + 合成 2 s） |
 | 预览 `s-frog-r2 --frames 0,60 --pr 0.5` | 通过 | 墙钟 24 s |
+| 第二个干净 clone（本分支）按 START-HERE 原样走：示例 config 的 `../node_modules/playwright/index.mjs` | 浏览器 boot 成功（13.5 s），说明路径修正有效 | — |
+| 预览 `n-seated-squeeze --frames 30 --pr 0.5`（glow-soft、glow-b 各一次） | **boot 完成后 75 s 以上没出第一帧**，被超时打断；同一环境其它动作正常。原因未查（怀疑手贴大腿的 `touch: bisect` 求解在 SwiftShader/2 vCPU 上很慢），按“同一问题不循环两次以上”的规则停下，留给后续排查 | >90 s 未完成 |
 | `drill.py qa h-quad-cars`（预览后） | 各单项 ok，但 `pass=false`，因为 `frames_complete=false`（只渲了 1 帧） | 2 s |
 
 ## 卡住 / 含糊 / 要猜的点
@@ -39,7 +41,8 @@
 13. **文档提到但本仓库没有的工具**：`flickscan`、`propscan`、`render_batch.py`（绿幕/透明母帧链）在 3D-Body PR #120 的 `tools/hiplab-render/`，未迁入 Pose-Hub。低配机做不了这些检查，只能交给主线本机。
 14. **verify 输出的分类计数**不含 `n-*`、`a-*`，`defaultSpecs` 等字段名不直观；想知道“有哪些动作、谁在用”没有入口。（新增 `drill-anim/tools/catalog.mjs` → `docs/drill-catalog.md`。）
 15. **推送需要用户同意**（AGENTS 第 5 条），远程 agent 要知道这条在派任务时是否已授权。
-16. `drill-anim/tools/probe.mjs` 不会自己启动 Vite（`drill.py` 会），直接用会连不上。
+16. **个别动作在低配机上预览极慢或卡住**：`n-seated-squeeze` 两个主题都 >75 s 不出帧（见上表），`drill.py` 会自动重跑缺帧的任务，看起来像挂起。给预览加外层超时，卡住就记录 id 交给主线本机。
+17. `drill-anim/tools/probe.mjs` 不会自己启动 Vite（`drill.py` 会），直接用会连不上。
 
 ## 结论
 
