@@ -187,7 +187,7 @@ def build_catalog(plan, receipts, folders, transport_plan=None, indexes=None, at
                     'attachmentBytes': sum(item['bytes'] for item in (attachments or []))})
     return {'schema': 'pose-hub/private-drive-catalog@1', 'folders': folders, 'indexLinks': indexes or [],
             'attachments': attachments or [], 'summary': summary, 'entries': entries,
-            'policy': '私有制作备份；云端链接仅来自 verified 回执。上传不等于制作验收，缺项与停止状态保留。'}
+            'policy': '制作素材归档；访问权限以素材库当前共享设置为准。云端链接仅来自 verified 回执。上传不等于制作验收，缺项与停止状态保留。'}
 
 
 def summary_text(summary):
@@ -243,8 +243,8 @@ def render_html(catalog):
     return '''<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pose-Hub 动作素材库</title><style>
 *{box-sizing:border-box}body{font:16px/1.65 system-ui,sans-serif;margin:0;background:#f3f5f8;color:#17283b}main{max-width:1320px;margin:auto;padding:32px 20px}h1{margin:0}h2{font-size:20px;margin:0}header{margin-bottom:24px}.summary{max-width:1000px}.filters{display:flex;gap:12px;flex-wrap:wrap;background:white;padding:16px;border-radius:12px;position:sticky;top:0;z-index:1}input,select{font:inherit;padding:8px;border:1px solid #aebccc;border-radius:6px}input{flex:1;min-width:200px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:16px}.card{background:white;border:1px solid #dae1e9;border-radius:12px;padding:20px;min-width:0}.card[hidden]{display:none}.badge{font-size:13px;color:#49627d}dl{display:grid;grid-template-columns:90px 1fr;font-size:14px}dt{color:#586d83}dd{margin:0;overflow-wrap:anywhere}.hash{font:12px/1.6 monospace}.links{display:flex;gap:12px;flex-wrap:wrap}a{color:#075da8}.pending,.missing{color:#91551a}.missing{font-size:13px}#count{color:#49627d}footer{margin-top:32px;color:#49627d}
-</style><main><header><h1>Pose-Hub 动作素材库</h1><p class="summary">''' + escape(summary_text(catalog['summary'])) + '''</p><p>私有归档 · E 盘原件保留 · 上传不等于 QA 验收。只有完成回读验证的文件显示云盘链接，未完成显示 pending。</p><p><a href="catalog.json" download>下载 JSON 目录</a> · <a href="动作目录.csv" download>下载 CSV 目录</a> · <a href="README.txt">使用说明</a></p></header>
-''' + attachment_section + '''<div class="filters"><input id="q" type="search" aria-label="关键词" placeholder="搜索中文名称、动作 ID 或版本"><select id="category" aria-label="分类"><option value="">全部分类</option>''' + options + '''</select><select id="qa" aria-label="QA 状态"><option value="">全部 QA 状态</option>''' + states + '''</select></div><p id="count" aria-live="polite"></p><section class="grid">''' + ''.join(rows) + '''</section><footer>透明 PNG 母帧在配套 ZIP 中；包已验证即完成包内素材备份，独立播放 pending 不影响备份状态。绿幕播放需登录有权访问该私有素材库的 Google 账号。停止制作条目仅保存元数据与证据。</footer></main><script>
+</style><main><header><h1>Pose-Hub 动作素材库</h1><p class="summary">''' + escape(summary_text(catalog['summary'])) + '''</p><p>制作归档 · E 盘原件保留 · 上传不等于 QA 验收。只有完成回读验证的文件显示云盘链接，未完成显示 pending。</p><p><a href="catalog.json" download>下载 JSON 目录</a> · <a href="动作目录.csv" download>下载 CSV 目录</a> · <a href="README.txt">使用说明</a></p></header>
+''' + attachment_section + '''<div class="filters"><input id="q" type="search" aria-label="关键词" placeholder="搜索中文名称、动作 ID 或版本"><select id="category" aria-label="分类"><option value="">全部分类</option>''' + options + '''</select><select id="qa" aria-label="QA 状态"><option value="">全部 QA 状态</option>''' + states + '''</select></div><p id="count" aria-live="polite"></p><section class="grid">''' + ''.join(rows) + '''</section><footer>透明 PNG 母帧在配套 ZIP 中；包已验证即完成包内素材备份，独立播放 pending 不影响备份状态。绿幕与配套按素材库当前共享权限访问。停止制作条目仅保存元数据与证据。</footer></main><script>
 const q=document.querySelector('#q'),c=document.querySelector('#category'),s=document.querySelector('#qa'),cards=[...document.querySelectorAll('.card')];function filter(){let count=0;for(const card of cards){const visible=(!c.value||card.dataset.category===c.value)&&(!s.value||card.dataset.state===s.value)&&card.dataset.search.includes(q.value.trim().toLowerCase());card.hidden=!visible;if(visible)count++;}document.querySelector('#count').textContent=`显示 ${count} / ${cards.length} 个归档条目`; }for(const e of [q,c,s]){e.addEventListener('input',filter);e.addEventListener('change',filter);}filter();</script></html>'''
 
 
@@ -266,13 +266,13 @@ def write_outputs(catalog, output, registry=None):
             writer.writerow([csv_safe(v) for v in [row['name'], row['id'], row['actionId'], row['category'], row['variantLabel'], row['kind'], row['state'], row['alphaFrameCount'], row['staticAlphaCount'], row['bytes'], row['sha256'], package_links, '; '.join(g.get('url', 'pending') for g in row['greens']), json.dumps(row['missing'], ensure_ascii=False), row['backupStatus'], row['playbackStatus'], row['greenCount'], json.dumps(row['transportFiles'], ensure_ascii=False), '; '.join(item['url'] for item in row.get('attachments', []))]])
     readme = summary_text(catalog['summary']) + '\n\n' + (
         '打开 index.html 可离线按分类、关键词、QA 状态筛选；目录另提供 catalog.json 与动作目录.csv。\n'
-        '云盘为私有目录，需使用获授权的 Google 账号。绿幕链接直接播放；透明 PNG 母帧及规格、QA 证据在配套 ZIP 中。\n'
+        '通过素材库共享链接访问，权限以云盘当前共享设置为准。绿幕链接直接播放；透明 PNG 母帧及规格、QA 证据在配套 ZIP 中。\n'
         '链接仅取自 verified 上传回执，并以 SHA-256 与字节数匹配。pending 表示尚未找到完成验证的回执，不表示源素材不存在。\n'
         '配套备份状态与独立播放状态分别记录：ZIP 已验证即完成包内素材备份，播放链接 pending 不影响已完成备份。\n'
         '多 ZIP 动作必须下载所有 parts，全部解压到同一目录；原 SHA256SUMS.txt 用于完整集合。所有 parts 校验通过后整套备份才为 verified。\n'
         '附加素材包保留选版清单外的已完成母图及 QA，按原动作 ID 关联，独立于主配套包和传输 ZIP 数统计。\n'
         '归档不改变 QA：review_required 仍待复核；static 为静图；stopped 仅元数据与已有证据，不自动恢复制作。\n'
-        '保留 E 盘原件，后续制作或修订按内容指纹增量同步；不覆盖旧包，不修改公开 published 版本。\n')
+        '保留 E 盘原件，收到用户整理请求后按内容指纹增量同步；不建立定时器，不覆盖旧包，不修改公开 published 版本。\n')
     (output / 'README.txt').write_text(readme, encoding='utf-8')
     if registry:
         record = {'schema': 'pose-hub/private-drive-sync@1', 'folders': catalog['folders'],
