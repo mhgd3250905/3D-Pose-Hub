@@ -45,6 +45,12 @@ h-9090-liftoff/h-9090-liftoff.dark.poster.540.jpg
 
 以上是 v0.2.0 的 1080 视频与 540 封面命名；v0.1.0 的封面仍为 1080。没有额外版本目录前缀。ZIP 只含媒体，不含清单或 ZIP 校验文件，避免在清单记录 ZIP 哈希时形成循环依赖。清单由 Git 分发，App 保存同一发布版本的清单副本。
 
+## 本地制作库存
+
+已验收但尚未发布为 App 素材 ZIP 的制作母版，另存于本机 `E:/AII-3D/pose-hub-media/inventory/`。库存登记见 [PR #5 / #6 高清母版](inventory/pr5-pr6-hd-2026-10-18.json)，审核、实看帧号和备份说明见 [主线验收记录](../docs/pr5-pr6-main-review-2026-10-18.md)。本地 `index.html` 提供绿幕播放、透明帧和证据入口。
+
+库存登记只保存来源、路径、QA 和 SHA；媒体原件与同盘备份不进 Git。库存完成与公开版本发布分别登记，后续从 exact alpha 派生背景或尺寸时复用这些母帧。
+
 ## 每版的发布步骤
 
 1. 从 `config.example.json` 复制忽略的 `config.json`，设置本地 `src` 和规则；修订规格用 `specOverrides` 绑定。先 ingest 演练，再生成草稿。

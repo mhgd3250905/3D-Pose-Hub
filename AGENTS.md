@@ -5,6 +5,7 @@
 ## 主线维护分工
 
 - 开哥本地 `E:\AII-3D\3D-Pose-Hub` 是主线维护方，负责 main、贡献 PR 审核、合并、tag 与素材 ZIP 发布；外部操作仍遵守第 5 条的用户授权要求。
+- 主线维护方自己的改动在分支完成验证，经开哥同意后直接合入本地 main 并推送，不必另开 PR；贡献方仍提交 PR，由主线维护方审核、验证并经开哥同意后合并。
 - Hark 是贡献方：从 main 拉分支、提交 PR，由本地主线维护方审核；不代替主线维护方发布素材或合并。
 - FlareLab、HipLab 各自维护 App 功能，通过已发布的固定素材版本消费本仓库成果。
 
@@ -14,10 +15,10 @@
 - FlareLab（3D-Body）和 HipLab 不再改动作规格、不再自己渲染交付用成片；它们只通过 `media/tools/sync.py` 取已发布版本。需要新动作或修动作，就在本仓库提 issue 或 PR。
 - 3D-Body 里仍保留 FlareLab 自己运行需要的 `src/`、`public/coach`、`public/anatomy` 副本。两边的人物模型文件改动必须同步，并在 `drill-anim/models/training-human-v2.json` 里升级模型版本（见第 4 条）。
 
-## 2. 一个动作一个分支一个 PR
+## 2. 贡献方一个动作一个分支一个 PR
 
 - 分支名：`drill/<动作id>`（新动作或重做）、`fix/<动作id>-<要点>`（修复）。一批相关修复可以合在一个 PR，但 PR 说明里逐个列出动作 id。
-- 新增或修改 spec 时：
+- 主线维护方和贡献方新增或修改 spec 时，都需要：
   1. 把规格的 LF 规范化 sha256 登记到 `drill-anim/data/home-pr-candidates.json`（或 `verify.mjs` 的对应表），共用模块（`specs/_*.mjs`、`lib/*.mjs`）的哈希登记进 `verify.mjs`；
   2. 原有规格不覆盖，修订版另存为 `<id>-r2.js` 这类新文件；
   3. `node drill-anim/verify.mjs` 和 `python drill-anim/test_portability.py` 必须通过；
