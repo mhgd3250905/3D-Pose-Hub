@@ -132,6 +132,7 @@ const KNOWN = {
   't-tuck-planche': [`原构图手机成片裁边，另存恒定构图派生（${D.lib}）`],
   't-lsit-vsit-circles': [`原构图手机成片裁边，另存恒定构图派生（${D.lib}）`],
   'o-seated-calf-raise': ['office-calf-squat-05：屈膝坐位低负荷提踵；实际前足网格锚点另查，双股座面近接触0.7–4.12mm，待GPU全片（docs/office-calf-squat-05-2026-10-18.md）'],
+  'h-donkey-kick': ['floor-glute-07：非办公地面；右膝约90°矢状面后踢，短垫承托双掌/左膝；低分抽查通过待GPU（docs/floor-glute-07-2026-10-18.md）'],
   'o-supported-single-leg-rdl': ['office-support-06：右掌扶稳椅背、左腿支撑髋铰链；近接触1.57mm，待GPU全片（docs/office-support-06-2026-10-18.md）'],
   'o-supported-mini-squat': ['office-calf-squat-05：双掌扶60cm宽稳椅高背、浅幅动态蹲；双掌网格与背板间隙1.62mm，待GPU全片（docs/office-calf-squat-05-2026-10-18.md）'],
   'o-seated-catcow': [`人体无独立颈屈，头随上躯干刚性（${D.lib}）`],
