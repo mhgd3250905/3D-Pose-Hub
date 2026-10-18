@@ -3,7 +3,7 @@
 //   node drill-anim/tools/catalog.mjs                 # writes docs/drill-catalog.md
 //   node drill-anim/tools/catalog.mjs --out -         # print to stdout instead
 //   node drill-anim/tools/catalog.mjs --json out.json # also dump the rows as JSON
-//   node drill-anim/tools/catalog.mjs --check         # exit 1 if docs/drill-catalog.md is out of date (writes nothing)
+//   node drill-anim/tools/catalog.mjs --check         # check Markdown and any --json output; write nothing
 //
 // Sources (all read-only): specs/*.js (imported, never rendered), data/drills.json (FlareLab App 51),
 // data/home-pr-candidates.json and verify.mjs (registered SHA-256), media/manifest.json and
@@ -238,10 +238,22 @@ for (const p of PLANNED) L.push(`| ${esc(p.id)} | ${esc(p.name)} | ${esc(p.why)}
 L.push('', '新增候选请同时补到 `drill-anim/tools/catalog.mjs` 的 `PLANNED` 表并重新生成。', '');
 const md = L.join('\n');
 
-if (jsonOut) fs.writeFileSync(path.resolve(jsonOut), JSON.stringify({generatedFrom: 'drill-anim/tools/catalog.mjs', rows, planned: PLANNED}, null, 1) + '\n');
+const json = JSON.stringify({generatedFrom: 'drill-anim/tools/catalog.mjs', rows, planned: PLANNED}, null, 1) + '\n';
 if (checkOnly) {
-  const cur = fs.existsSync(out) ? fs.readFileSync(out, 'utf8').replace(/\r\n/g, '\n') : '';
-  if (cur !== md) { console.error(`out of date: ${path.relative(repo, out)} (run node drill-anim/tools/catalog.mjs)`); process.exit(1); }
+  const outputs = [[out, md]];
+  if (jsonOut) outputs.push([path.resolve(jsonOut), json]);
+  let stale = false;
+  for (const [file, expected] of outputs) {
+    const cur = fs.existsSync(file) ? fs.readFileSync(file, 'utf8').replace(/\r\n/g, '\n') : '';
+    if (cur !== expected) {
+      console.error(`out of date: ${path.relative(repo, file)} (run node drill-anim/tools/catalog.mjs)`);
+      stale = true;
+    }
+  }
+  if (stale) process.exit(1);
   console.log('catalog up to date');
-} else if (out === '-') process.stdout.write(md);
-else { fs.writeFileSync(out, md); console.log(JSON.stringify({wrote: path.relative(repo, out), specs: total, revisions: revs, flare: flareN, hiplabReleaseSpecs: hipFiles, hiplabStills: stills, superseded: superseded.length, unused: unused.length, planned: PLANNED.length})); }
+} else {
+  if (jsonOut) fs.writeFileSync(path.resolve(jsonOut), json);
+  if (out === '-') process.stdout.write(md);
+  else { fs.writeFileSync(out, md); console.log(JSON.stringify({wrote: path.relative(repo, out), specs: total, revisions: revs, flare: flareN, hiplabReleaseSpecs: hipFiles, hiplabStills: stills, superseded: superseded.length, unused: unused.length, planned: PLANNED.length})); }
+}
