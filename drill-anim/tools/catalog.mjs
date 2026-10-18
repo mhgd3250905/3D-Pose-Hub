@@ -121,7 +121,7 @@ const KNOWN = {
   'h-kb-swing': [`单臂版：双手握同一提手时两只拳头重叠，改单臂（${D.hse}）`],
   'h-band-row': [`propscan 8 坏帧是两根弹力带互相扫过，不是 z-fighting（${D.hse}）`],
   'h-band-pallof': [`obliques-B 的 training-human-v2 重做，推到顶 z 0.4356→0.431（${D.hse}）`],
-  'h-good-morning': [`双手交叉抱胸（手放脑后会穿进刚性头部），手不做 touch 吸附，掌心离胸约 1–5 mm（${D.hpc}）`],
+  'h-good-morning': [`双手交叉抱胸（手放脑后时手网格贴不到刚性头部后侧），手不做 touch 吸附，掌心离胸约 1–5 mm（${D.hpc}）`],
   'h-bridge-march': [`第 0 帧即保持中的臀桥（只教踏步，不教起桥）；右掌比左掌靠脚 5 mm，让右肘 ≥170°（qa 肘向判据按站姿 +Z）（${D.hpc}）`],
   'h-chair-step-up': [`用无靠背椅（back: 0）；构图按站上椅面的最高姿态放置（stillAt 2.2），所以 still.png 不是起始站姿（${D.hpc}）`],
   'erectors-B': [`用户认可的鞋向修正在 revisions/erectors-B-footfix-20261013，本 spec 单独不是完整配方（${D.erb}）`],
@@ -150,7 +150,7 @@ const CATS = [
   {key: 't', title: 't-* 托马斯专项（Flare，PR #106）', test: id => id.startsWith('t-')},
   {key: 'o', title: 'o-* 办公室（PR #97–104）', test: id => id.startsWith('o-')},
   {key: 'w', title: 'w-* 久坐强化（PR #105）', test: id => id.startsWith('w-')},
-  {key: 'h', title: 'h-* 居家/肌群补充/开胯/开肩/小器械力量/徒手后链候选（PR #111–115 + r2 + Pose-Hub PR #5 + 2026-10-18 徒手后链批）', test: id => id.startsWith('h-')},
+  {key: 'h', title: 'h-* 居家/肌群补充/开胯/开肩/小器械力量/徒手后链候选（PR #111–115 + r2 + Pose-Hub PR #5、#6）', test: id => id.startsWith('h-')},
   {key: 'n', title: 'n-* HipLab 开胯 MVP 新增（PR #119）', test: id => id.startsWith('n-')},
   {key: 'a', title: 'a-* HipLab 自测对比静图（PR #119 + r2）', test: id => id.startsWith('a-')},
 ];

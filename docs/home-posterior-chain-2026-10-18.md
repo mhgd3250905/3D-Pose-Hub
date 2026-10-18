@@ -1,6 +1,6 @@
 # 居家徒手后链 / 腿 4 个（无器械 + 椅子）· 2026-10-18
 
-分支 `drill/home-posterior-chain`，叠在 `drill/home-small-equipment`（PR #5，`be80d06`，未合并）之上，**请在 PR #5 之后合并**。4 个新 spec 都用 `training-human-v2`、`alignClavicles: false`、15 fps × 8 s（120 帧）。本文档的 QA 来自沙盒快速渲染（`DRILL_PR=0.75`、`themes/glow-soft.json`、SwiftShader），**不是成片**；成片请 Windows 4080 主线按 §5 渲染。
+分支 `drill/home-posterior-chain`（PR #6），叠在 `drill/home-small-equipment`（PR #5，`be80d06`，未合并）之上，**请在 PR #5 之后合并**。4 个新 spec 都用 `training-human-v2`、`alignClavicles: false`、15 fps × 8 s（120 帧）。本文档的 QA 来自沙盒快速渲染（`DRILL_PR=0.75`、`themes/glow-soft.json`、SwiftShader），**不是成片**；成片请 Windows 4080 主线按 §5 渲染。
 
 ## 1. 动作清单
 
@@ -11,11 +11,11 @@
 | 3 | `h-bridge-march` | 臀桥交替踏步 | Glute Bridge March | 臀大肌+腘绳肌（`glute-max`, `hamstrings`） | 垫 | 右、左、右、左 / 8 s，每步 0.7 s 抬 · 0.5 s 停 · 0.6 s 落 |
 | 4 | `h-chair-step-up` | 椅子上步 | Chair Step-Up | 股四头肌+臀大肌（`quadriceps`, `glute-max`） | 无靠背椅（`chair`, `back: 0`），座高 45 cm | 2 次 / 8 s，第 1 次右腿领步，第 2 次左腿领步 |
 
-SHA-256 已登记在 `drill-anim/data/home-pr-candidates.json`（sourceCommit `33af421`），`node drill-anim/verify.mjs` 通过。
+SHA-256 已登记在 `drill-anim/data/home-pr-candidates.json`（PR #6，sourceCommit `33af421`），`node drill-anim/verify.mjs` 通过。
 
 ## 2. 逐个 QA
 
-指标：`drill.py qa` 对全部 120 帧；道具闪烁 `propscan` 也对全部 120 帧。目视：关键帧条（下表“目视帧”，原生 15 fps 帧号）+ 全片逐帧条（每 6–10 帧一张）+ MP4 过一遍，首帧 0 与末帧 119 并排核对循环。
+指标：`drill.py qa` 对全部 120 帧；道具闪烁 `propscan` 也对全部 120 帧。目视：预览帧 + 全片逐帧条（每 6–15 帧一张，原生 15 fps 帧号），首帧 0 与末帧 119 并排核对循环；下表“目视帧”是关键帧条（`keyFrames` + 末帧）的帧号。
 4 个全部：`pass=True`、求解器警告 0 帧、出画 0 帧、膝/肘无反折、propscan 0 热点 0 坏帧。“自碰”列是全片最近的两段身体及间隙（≥ 0 即未穿插）。
 
 | id | 结论 | 目视帧 | 最低顶点 mm | 钉住漂移 mm | 手部穿插检测最小有符号距 mm（99 = 封顶） | 自碰最近 | 伸直最小角 | 髋屈范围 ° | 备注 |
