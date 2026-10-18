@@ -37,12 +37,14 @@ drill.py            CLI: render / qa / masks / swatch
 config.json         every environment-specific path (the ONLY file with machine paths)
 theme.json          default look; themes/*.json are partial overrides
 specs/<id>.js       one drill = one plain-data ES module (export default {...})
-page/               browser-side: toon.js (shader/theme), engine.js (pose/solver/camera/metrics), props.js,
-                    anim-sideplank.js (frozen v7 solver used by deltoids-A), head.js, posedlib.js
+page/               browser-side: toon.js (shader/theme), engine.js (pose/solver/camera/metrics), props.js + props-*.js,
+                    anim-sideplank.js (frozen v7 solver used by deltoids-A), head.js, posedlib.js,
+                    soft-highlight.js (opt-in soft-v1 highlight, enabled by themes/glow-soft.json)
 lib/                boot.mjs (launch + install), render.mjs (frame loop), comp.py (compositing), qa.py,
                     masks.mjs + masksheet.py (17-group highlight sheet), swatch.py (theme comparison), tiersheet.py (per-tier overview), config.mjs
 assets/             handdef.json (relaxed-hand deltas), srchead.json (mannequin head), sideplank-cfg.json (v7 base pose)
-tools/probe.mjs     ad-hoc pose probe
+tools/probe.mjs     ad-hoc pose probe (does not start Vite; start it first)
+tools/catalog.mjs   read-only drill catalog -> ../docs/drill-catalog.md (see ../docs/START-HERE.md)
 ```
 
 ## Requirements and config
@@ -133,10 +135,12 @@ Joint names come from the rig metrics: `head`, `pelvis`, `waist`, `shoulderCente
 
 ### Props
 
-`page/props.js` contains:
+> 2026-10-18 更新：下面原来的“stub / 还没写”清单已过时。`page/props.js` 现有 `mat`、`dumbbell`、`kettlebell`、`band`、`bandPost`、`parallettes`、`sliders`、`bench`、`wall`、`officeChair`、`pullupBar`、`foamRoller`、`swissBall`、`cableStack`/`cable`/`dHandle`/`ankleStrap`、`landmine`、`legExtension`、`hipAbductor`、`kbBottomsUp` 等，`page/props-*.js` 另有 `chair`、`dipBars`、`rings`、`romanChair`、`ghd`、`reverseHyper`；它们都已被 spec 使用（各类型用量见 [drill-catalog](../docs/drill-catalog.md) 的“场景/道具”列）。“被某个 spec 用过”不等于“对任意新姿势都验证过”，新动作仍要查道具接触与穿模。
+
+`page/props.js` originally (2026-10-09) contained:
 - `mat`: finished and validated.
-- `dumbbell`, `kettlebell`, `band`, `parallettes`, `rings`, `sliders`, `machine`: geometry stubs, not yet validated against a drill. `machine` is a placeholder API.
-- Not written yet: pull-up bar, foam roller, Swiss ball, landmine, cable stack, dip bars, Roman chair/GHD, reverse hyper, abductor and leg-extension machines.
+- `dumbbell`, `kettlebell`, `band`, `parallettes`, `rings`, `sliders`, `machine`: geometry stubs at the time.
+- Not written at the time (all added since): pull-up bar, foam roller, Swiss ball, landmine, cable stack, dip bars, Roman chair/GHD, reverse hyper, abductor and leg-extension machines.
 
 Extra prop files `page/props-<name>.js` are loaded after `props.js` (by `lib/boot.mjs`, sorted by name). Each registers its own types through `__props.add` without editing `props.js`, so prop branches merge without conflicts. Such props may declare QA primitives (capsules `{a,b,r}`, tori `{c,n,R,r}`, boxes `{c,ax,h}`); `__props.qaPrims()` returns them in world space and `node tools/probe.mjs specs/<id>.js tools/propclear.js` reports each hand's and bone's clearance to them in mm.
 
