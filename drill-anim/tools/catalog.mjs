@@ -114,7 +114,7 @@ const KNOWN = {
   'glute-max-A': [`glow-B 下几乎看不到高亮，soft-v1 已改善（${D.soft}）`],
   'hip-flexors-A': [`glow-B 下几乎看不到高亮，soft-v1 已改善（${D.soft}）`],
   'n-leg-circles': [`求解器提示 29 帧，指标全过（${D.p1}）`],
-  'n-seated-squeeze': [`原计划“夹拳+外推”改为夹砖，外推半部分未做（${D.p1}）`],
+  'n-seated-squeeze': [`原计划“夹拳+外推”改为夹砖，外推半部分未做（${D.p1}）`, `2 vCPU/SwiftShader 预览 >75 s 不出第一帧，原因未查（docs/onboarding-audit-2026-10-18.md）`],
   'n-seated-ir-drop': [`替代未完成的 n-9090-ir-lean（${D.p1}）`],
   'h-wall-pec': [`PR #112 作者 QA 右肘报警（${D.h51}）`],
   'erectors-B': [`用户认可的鞋向修正在 revisions/erectors-B-footfix-20261013，本 spec 单独不是完整配方（${D.erb}）`],

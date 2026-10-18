@@ -213,7 +213,7 @@
 | `n-prone-ir` | 俯卧小腿外摆（髋内旋） | 臀中肌 · 髋外展+臀大肌 | 垫 | 8s/120f@15 | v2 |  | HipLab v0.1.0 | PR #119 |  |
 | `n-seated-ir-drop` | 坐姿后撑单膝内倒 | 臀大肌+臀中肌 · 髋外展 | 垫 | 8s/120f@15 | v2 |  | HipLab v0.1.0 | PR #119 | 替代未完成的 n-9090-ir-lean（docs/hiplab-phase1-drills-2026-10-16.md） |
 | `n-seated-knee-lift` | 坐姿抬膝悬停 | 髋屈肌 | 椅 | 8s/120f@15 | v2 |  | HipLab v0.1.0 | PR #119 |  |
-| `n-seated-squeeze` | 坐姿夹砖（膝内夹） | 内收肌群 | 椅、垫 | 8s/120f@15 | v2 |  | HipLab v0.1.0 | PR #119 | 原计划“夹拳+外推”改为夹砖，外推半部分未做（docs/hiplab-phase1-drills-2026-10-16.md） |
+| `n-seated-squeeze` | 坐姿夹砖（膝内夹） | 内收肌群 | 椅、垫 | 8s/120f@15 | v2 |  | HipLab v0.1.0 | PR #119 | 原计划“夹拳+外推”改为夹砖，外推半部分未做（docs/hiplab-phase1-drills-2026-10-16.md）；2 vCPU/SwiftShader 预览 >75 s 不出第一帧，原因未查（docs/onboarding-audit-2026-10-18.md） |
 | `n-slider-lateral` | 滑垫侧向滑 | 内收肌群（right） | 滑垫 | 8s/120f@15 | v2 |  | HipLab v0.1.0 | PR #119 |  |
 | `n-squat-shift` | 低位蹲姿左右移重心 | 内收肌群+臀大肌 | 垫 | 8s/120f@15 | v2 |  | HipLab v0.1.0 | PR #119 |  |
 | `n-straddle-fold` | 坐姿分腿体前屈 | 内收肌群+腘绳肌 | 垫 | 8s/120f@15 | v2 |  | HipLab v0.1.0 | PR #119 |  |
