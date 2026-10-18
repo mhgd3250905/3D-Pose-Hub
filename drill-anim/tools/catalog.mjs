@@ -108,6 +108,8 @@ const D = {
 const KNOWN = {
   'h-db-split-squat': ['dumbbell-leg-14：双哑铃原地分腿蹲；前脚全掌、后脚前足固定地面，左侧示范；低分抽查保留待GPU，非普通办公（docs/dumbbell-leg-14-2026-10-18.md）'],
   'h-db-calf-raise': ['dumbbell-leg-14：双脚双哑铃站姿提踵；实际鞋底前端支点，负荷变式非新运动模式；低分抽查保留待GPU（docs/dumbbell-leg-14-2026-10-18.md）'],
+  'h-supported-single-leg-calf': ['supported-calf-15：扶墙单腿提踵；左足承重、右足离地；条件办公需稳墙与基础能力；低分抽查保留待GPU（docs/supported-calf-15-2026-10-18.md）'],
+  'h-db-supported-calf-raise': ['supported-calf-15：单手哑铃扶墙双脚提踵；补原计划单手扶墙意图，014双哑铃版保留；条件办公需墙与器械净空；低分抽查保留待GPU（docs/supported-calf-15-2026-10-18.md）'],
   'h-band-standing-abduction': ['band-hip-sides-13：扶椅弹力带站姿外展；独立可靠固定低位锚点，胫骨踝扣，约5–24°外展；低分抽查通过待GPU，非普通办公（docs/band-hip-sides-13-2026-10-18.md）'],
   'h-band-standing-adduction': ['band-hip-sides-13：家用弹力带站姿内收；右腿前方通过中线，约25°屈髋避开支撑鞋；低分抽查通过待GPU，椅子不是锚点（docs/band-hip-sides-13-2026-10-18.md）'],
   'g-cable-hip-extension': ['cable-hip-12：低位绳索髋后伸；踝扣绑定胫骨，右髋8–20°后伸，左脚/左掌轻扶支撑；低分抽查通过待GPU全片，非普通办公（docs/cable-hip-12-2026-10-18.md）'],
