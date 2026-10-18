@@ -132,11 +132,13 @@ const KNOWN = {
   't-tuck-planche': [`原构图手机成片裁边，另存恒定构图派生（${D.lib}）`],
   't-lsit-vsit-circles': [`原构图手机成片裁边，另存恒定构图派生（${D.lib}）`],
   'o-seated-calf-raise': ['office-calf-squat-05：屈膝坐位低负荷提踵；实际前足网格锚点另查，双股座面近接触0.7–4.12mm，待GPU全片（docs/office-calf-squat-05-2026-10-18.md）'],
+  'o-supported-single-leg-rdl': ['office-support-06：右掌扶稳椅背、左腿支撑髋铰链；近接触1.57mm，待GPU全片（docs/office-support-06-2026-10-18.md）'],
   'o-supported-mini-squat': ['office-calf-squat-05：双掌扶60cm宽稳椅高背、浅幅动态蹲；双掌网格与背板间隙1.62mm，待GPU全片（docs/office-calf-squat-05-2026-10-18.md）'],
   'o-seated-catcow': [`人体无独立颈屈，头随上躯干刚性（${D.lib}）`],
 };
 // Planned in docs but no spec under specs/: the pool of "待补全" candidates.
 const PLANNED = [
+  {id:'o-wall-forearm-plank',name:'站姿扶墙前臂支撑',why:'office-support-06：两轮后掌接触近似成立，肘部网格距墙仍5.66mm，停止未登记，不计完成',src:'docs/office-support-06-2026-10-18.md'},
   {id: 'o-chair-adductor-stretch / o-chair-wide-adductor-stretch', name: '坐椅宽膝内收肌拉伸（侧移/前倾候选）', why: 'office-adductor-back-03：侧移目标机制不充分且手撑座不可达；前倾版两轮座面修正仍有5–7.5mm大腿穿座，撤下未登记；由o-seated-hip-er顺延补位', src: 'docs/office-adductor-back-03-2026-10-18.md'},
   {id: 'o-seated-knee-hug', name: '坐椅单膝抱近胸', why: 'office-hip-leg-02两轮修正后手腕可达/手贴小腿仍不可信，撤下；由坐椅侧伸替补，不计完成，待接触条件解决', src: 'docs/office-hip-leg-02-2026-10-18.md'},
   {id: 'n-9090-ir-lean', name: '90/90 向后腿侧倾（被动内旋末端）', why: '两轮后手掌贴垫/腰弯 ≤45° 做不到，暂以 n-seated-ir-drop 代替；需模型手部/腰部改进', src: D.p1},
@@ -152,7 +154,7 @@ const CATS = [
   {key: 'flare', title: 'FlareLab 肌群动作（17 肌群 × A 徒手 / B 家用 / C 健身房）', test: id => /^[a-z-]+-[ABC]$/.test(id)},
   {key: 's', title: 's-* 拉伸（原 8 项 + 修订）', test: id => id.startsWith('s-')},
   {key: 't', title: 't-* 托马斯专项（Flare，PR #106）', test: id => id.startsWith('t-')},
-  {key: 'o', title: 'o-* 办公室（PR #97–104 + office-hip-leg-02 + office-adductor-back-03 + office-knee-march-04 + office-calf-squat-05）', test: id => id.startsWith('o-')},
+  {key: 'o', title: 'o-* 办公室（PR #97–104 + office-hip-leg-02 + office-adductor-back-03 + office-knee-march-04 + office-calf-squat-05 + office-support-06）', test: id => id.startsWith('o-')},
   {key: 'w', title: 'w-* 久坐强化（PR #105）', test: id => id.startsWith('w-')},
   {key: 'h', title: 'h-* 居家/肌群补充/开胯/开肩/小器械力量/徒手后链/办公下肢候选（PR #111–115 + r2 + Pose-Hub PR #5、#6 + office-lower-body-01）', test: id => id.startsWith('h-')},
   {key: 'n', title: 'n-* HipLab 开胯 MVP 新增（PR #119）', test: id => id.startsWith('n-')},

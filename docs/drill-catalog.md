@@ -6,19 +6,19 @@
 
 | 项 | 数 |
 |---|---:|
-| spec 文件（specs/*.js，不含 _*.mjs 共用模块） | 193 |
+| spec 文件（specs/*.js，不含 _*.mjs 共用模块） | 194 |
 | 其中修订版（-r2/-r3） | 10 |
 | FlareLab App 51（data/drills.json） | 51 |
 | HipLab 已发布素材绑定的 spec 文件（v0.1.0（published）46 个动作 id、v0.2.0（published）46 个动作 id） | 47 |
 | HipLab 自测静图在用 spec | 6 |
 | 原版已被在用的修订版取代（保留不删） | 9 |
-| 有 spec 但没有被任何 App/发布版本使用 | 82 |
+| 有 spec 但没有被任何 App/发布版本使用 | 83 |
 | SHA 未登记 / 哈希不符 | 0 |
 
 - FlareLab 肌群动作（17 肌群 × A 徒手 / B 家用 / C 健身房）：51
 - s-* 拉伸（原 8 项 + 修订）：11
 - t-* 托马斯专项（Flare，PR #106）：12
-- o-* 办公室（PR #97–104 + office-hip-leg-02 + office-adductor-back-03 + office-knee-march-04 + office-calf-squat-05）：16
+- o-* 办公室（PR #97–104 + office-hip-leg-02 + office-adductor-back-03 + office-knee-march-04 + office-calf-squat-05 + office-support-06）：17
 - w-* 久坐强化（PR #105）：8
 - h-* 居家/肌群补充/开胯/开肩/小器械力量/徒手后链/办公下肢候选（PR #111–115 + r2 + Pose-Hub PR #5、#6 + office-lower-body-01）：71
 - n-* HipLab 开胯 MVP 新增（PR #119）：15
@@ -115,7 +115,7 @@
 | `t-tuck-planche` | 团身俄挺 | 三角肌+前锯肌 | 垫 | 24s/720f@30 | 旧 |  | — | PR #106（verify.mjs） | 原构图手机成片裁边，另存恒定构图派生（docs/training-media-library-2026-10-13.md）；10-13库：历史预览求解警告 120 帧（已视觉认可） |
 | `t-vsit` | V 撑 | 腹直肌（含深层腹横肌） | 垫 | 8s/240f@30 | v2 |  | — | PR #106（verify.mjs） |  |
 
-## o-* 办公室（PR #97–104 + office-hip-leg-02 + office-adductor-back-03 + office-knee-march-04 + office-calf-squat-05）
+## o-* 办公室（PR #97–104 + office-hip-leg-02 + office-adductor-back-03 + office-knee-march-04 + office-calf-squat-05 + office-support-06）
 
 | id | 中文名 | 目标高亮 | 场景/道具 | 时长/帧 | profile | 修订自 | 使用方 | SHA | 已知问题 |
 |---|---|---|---|---|---|---|---|---|---|
@@ -134,6 +134,7 @@
 | `o-stand-sidebend` | 站姿举手侧屈 | 腹斜肌（right） | 办公椅 | 8s/240f@30 | 旧 |  | — | PR #103（verify.mjs） |  |
 | `o-supported-march` | 扶椅站姿交替抬膝 | 髋屈肌 | 椅 | 8s/120f@15 | v2 |  | — | 已登记（home-pr-candidates） |  |
 | `o-supported-mini-squat` | 扶椅浅蹲 | 股四头肌+臀大肌 | 椅 | 8s/120f@15 | v2 |  | — | 已登记（home-pr-candidates） | office-calf-squat-05：双掌扶60cm宽稳椅高背、浅幅动态蹲；双掌网格与背板间隙1.62mm，待GPU全片（docs/office-calf-squat-05-2026-10-18.md） |
+| `o-supported-single-leg-rdl` | 扶椅单腿髋铰链 | 腘绳肌+臀大肌（left） | 椅 | 8s/120f@15 | v2 |  | — | 已登记（home-pr-candidates） | office-support-06：右掌扶稳椅背、左腿支撑髋铰链；近接触1.57mm，待GPU全片（docs/office-support-06-2026-10-18.md） |
 | `o-wall-hip-hinge-stretch` | 扶墙髋后移躯干延展 | 背阔肌 | 墙 | 8s/120f@15 | v2 |  | — | 已登记（home-pr-candidates） |  |
 
 ## w-* 久坐强化（PR #105）
@@ -264,7 +265,7 @@
 这些是“可直接拿来出新版本”的存量；动作审核优化优先从这里挑。
 
 - **t**（11）：`t-flare-side-hold` `t-half-straddle` `t-lsit-open-close` `t-lsit-tuck` `t-lsit-vsit-circles` `t-lsit-wide` `t-seated-straddle-ext` `t-seated-straddle-lifts` `t-straddle-hold` `t-tuck-planche` `t-vsit`
-- **o**（12）：`o-chair-knee-extension` `o-seated-calf-raise` `o-seated-catcow` `o-seated-hip-er` `o-seated-sidebend` `o-seated-twist` `o-stand-ham` `o-stand-quad` `o-stand-sidebend` `o-supported-march` `o-supported-mini-squat` `o-wall-hip-hinge-stretch`
+- **o**（13）：`o-chair-knee-extension` `o-seated-calf-raise` `o-seated-catcow` `o-seated-hip-er` `o-seated-sidebend` `o-seated-twist` `o-stand-ham` `o-stand-quad` `o-stand-sidebend` `o-supported-march` `o-supported-mini-squat` `o-supported-single-leg-rdl` `o-wall-hip-hinge-stretch`
 - **w**（6）：`w-bird-dog` `w-chair-hip-thrust` `w-dead-bug` `w-fire-hydrant` `w-prone-swimmer` `w-wall-sit`
 - **h**（53）：`h-banana` `h-band-pallof` `h-band-pull-apart` `h-band-row` `h-bear-plank` `h-biceps-self` `h-bridge-march` `h-bridge-overhead` `h-bulgarian` `h-calf-raise` `h-catcow-quad` `h-chair-dip` `h-chair-kickback` `h-chair-lat` `h-chair-sit-to-stand` `h-chair-step-up` `h-chair-tspine` `h-cobra` `h-crossbody` `h-crunch` `h-db-curl` `h-db-floor-press` `h-db-lateral` `h-db-press` `h-db-rdl` `h-db-reverse-fly` `h-db-row` `h-dd-shoulder` `h-forearm-plank` `h-good-morning` `h-incline-pushup` `h-inner-thigh` `h-kb-swing` `h-mountain-climber` `h-open-book` `h-pike-pushup` `h-reverse-crunch` `h-reverse-lunge` `h-russian-twist` `h-seated-reachback` `h-side-er` `h-side-leg-raise` `h-step-jack` `h-superman` `h-tabletop` `h-tib-raise` `h-towel-behind` `h-towel-pass` `h-towel-pulldown` `h-wall-angel` `h-wall-calf-bent-knee` `h-wall-calf` `h-wall-pec`
 
@@ -274,6 +275,7 @@
 
 | 候选 | 内容 | 为什么还没有 | 出处 |
 |---|---|---|---|
+| o-wall-forearm-plank | 站姿扶墙前臂支撑 | office-support-06：两轮后掌接触近似成立，肘部网格距墙仍5.66mm，停止未登记，不计完成 | docs/office-support-06-2026-10-18.md |
 | o-chair-adductor-stretch / o-chair-wide-adductor-stretch | 坐椅宽膝内收肌拉伸（侧移/前倾候选） | office-adductor-back-03：侧移目标机制不充分且手撑座不可达；前倾版两轮座面修正仍有5–7.5mm大腿穿座，撤下未登记；由o-seated-hip-er顺延补位 | docs/office-adductor-back-03-2026-10-18.md |
 | o-seated-knee-hug | 坐椅单膝抱近胸 | office-hip-leg-02两轮修正后手腕可达/手贴小腿仍不可信，撤下；由坐椅侧伸替补，不计完成，待接触条件解决 | docs/office-hip-leg-02-2026-10-18.md |
 | n-9090-ir-lean | 90/90 向后腿侧倾（被动内旋末端） | 两轮后手掌贴垫/腰弯 ≤45° 做不到，暂以 n-seated-ir-drop 代替；需模型手部/腰部改进 | docs/hiplab-phase1-drills-2026-10-16.md |
