@@ -6,7 +6,7 @@
 
 - **Pose-Hub = 训练动作库。** 每个动作是一份 JS 规格（`drill-anim/specs/<id>.js`），由 `drill-anim/drill.py` 在无头 Chromium 里驱动一个固定的 3D 训练人物（`training-human-v2`）渲成无缝循环视频。Git 里只放规格、渲染工具、人物模型和成片的 SHA-256 清单；成片本体按版本打成 ZIP 放谷歌云盘。
 - **谁在用：**
-  - **HipLab（开胯训练助手）**：取已发布素材 **v0.1.0（published，46 个动作，深色 1080 视频 + 封面，主题 glow-b）**。下一版 v0.2.0 计划换柔和高亮主题 `themes/glow-soft.json`，由主线本机全量重渲。另有 6 份 `a-*` 自测对比静图（App 里是 webp，不在 ZIP）。
+  - **HipLab（开胯训练助手）**：取已发布素材 **v0.2.0（published 2026-10-18，46 个动作，主题 soft-v1 `themes/glow-soft.json`，main `59fb7b9`）**；v0.1.0（glow-b）保留原样。另有 6 份 `a-*` 自测对比静图（App 里是 webp，不在 ZIP）。
   - **FlareLab（托马斯训练助手）**：App 里是 51 个肌群动作（`data/drills.json`，17 肌群 × A 徒手 / B 家用 / C 健身房）的旧媒体，**还没有通过 Pose-Hub 发布**，目前不接入。
   - 逐个动作谁在用、用的哪个修订、有哪些已知问题：看 [drill-catalog.md](drill-catalog.md)（脚本生成）。
 - **你的角色是贡献方。** 主线（main、审核、合并、tag、渲染全片、打包发布）在开哥 Windows 本机 `E:\AII-3D\3D-Pose-Hub`（RTX 4080）。你：从 `origin/main` 拉分支 → 改 → 低配验证 → 提 PR，PR 里写清楚要主线渲什么。**不要合并、打 tag、改 `media/manifest.json` 的已发布版本、上传云盘。** 推送分支和开 PR 本身也要用户同意（[AGENTS.md](../AGENTS.md) 第 5 条）：派你任务时说了可以推就推，没说就先问。
@@ -104,7 +104,7 @@ node drill-anim/tools/catalog.mjs --check                    # 只检查是否�
 
 新 spec 多用 `lib/home-anim.mjs` 的 `build()` / `keys()` 帮助函数生成姿态，`lib/ss-geo.mjs` 给出休息姿态下的骨点。照着同类动作（同场景、同支撑方式）抄一份最快。
 
-**主题：** `theme.json` = 默认 v7（固定源，不改）；`themes/glow-b.json` = v0.1.0 发布用的方案 B；`themes/glow-soft.json` = soft-v1 柔和高亮，**HipLab 新成片和 v0.2.0 用这个**。预览审核时用你打算交付的那个主题。
+**主题：** `theme.json` = 默认 v7（固定源，不改）；`themes/glow-b.json` = v0.1.0 发布用的方案 B；`themes/glow-soft.json` = soft-v1 柔和高亮，**v0.2.0 已用它发布，新成片一律用这个**。预览审核时用你打算交付的那个主题。
 
 ## 5. 在低配机上验证到什么程度
 
@@ -189,6 +189,6 @@ node drill-anim/tools/catalog.mjs --check                    # 只检查是否�
 | 人物模型标准 | [training-human-v2.md](training-human-v2.md)、`drill-anim/models/training-human-v2.json` |
 | 柔和高亮 soft-v1、v0.2.0 重渲步骤 | [soft-highlight-2026-10-18.md](soft-highlight-2026-10-18.md) |
 | HipLab 第 1 阶段动作、替换与待办 | [hiplab-phase1-drills-2026-10-16.md](hiplab-phase1-drills-2026-10-16.md)、`drill-anim/revisions/hiplab-media-fix-20261017/README.md` |
-| 已发布版本、规格绑定 | [media/releases/0.1.0.md](../media/releases/0.1.0.md)、`0.1.0.sources.json`、[media/README.md](../media/README.md) |
+| 已发布版本、规格绑定 | [media/releases/0.2.0.md](../media/releases/0.2.0.md)、`0.2.0.sources.json`（旧版 [0.1.0](../media/releases/0.1.0.md)）、[media/README.md](../media/README.md) |
 | App 怎么取素材 | [consumers.md](consumers.md) |
 | 从 3D-Body 迁来的路径/提交号对照 | [MIGRATION.md](../MIGRATION.md) |
