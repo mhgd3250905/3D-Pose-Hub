@@ -140,6 +140,7 @@ const KNOWN = {
 };
 // Planned in docs but no spec under specs/: the pool of "待补全" candidates.
 const PLANNED = [
+  {id:'h-band-seated-hip-er',name:'坐椅弹力带髋外旋',why:'band-hip-knee-10：撤回初评；实际臀/工作侧大腿悬空，只有左大腿接近座前缘，未形成可靠坐姿承托；停止未登记。既有o-seated-hip-er同姿势列待复核，不改旧spec',src:'docs/band-hip-knee-10-2026-10-18.md'},
   {id:'h-band-standing-knee-curl',name:'扶椅弹力带屈膝',why:'band-hip-knee-10：身体/扶椅合格但两轮绑带修正后顶点带路仍与右鞋相交，停止未登记，不计完成',src:'docs/band-hip-knee-10-2026-10-18.md'},
   {id:'h-quadruped-rockback',name:'四足中立背后坐',why:'rockback-hold-09：初稿及两次修正后直臂/可达不能同时满足，停止未登记，不计完成；膝掌接触本身已分别验证',src:'docs/rockback-hold-09-2026-10-18.md'},
   {id:'h-side-lying-hip-abduction',name:'侧卧直腿外展',why:'floor-hip-knee-08：两轮后托头手穿头6.57mm、短裤穿地20.4mm及可达告警，停止未登记，不计完成',src:'docs/floor-hip-knee-08-2026-10-18.md'},
