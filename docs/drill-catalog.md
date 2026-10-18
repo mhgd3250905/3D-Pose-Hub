@@ -13,7 +13,7 @@
 | HipLab 自测静图在用 spec | 6 |
 | 原版已被在用的修订版取代（保留不删） | 9 |
 | 有 spec 但没有被任何 App/发布版本使用 | 94 |
-| SHA 未登记 / 哈希不符 | 1 |
+| SHA 未登记 / 哈希不符 | 0 |
 
 - g-* 健身房补充（cable-hip-12；非普通办公）：2
 - FlareLab 肌群动作（17 肌群 × A 徒手 / B 家用 / C 健身房）：51
@@ -241,7 +241,7 @@
 | `h-wall-calf` | 靠墙小腿拉伸 | 小腿三头肌（right） | 墙 | 8s/120f@15 | v2 |  | — | PR #112 |  |
 | `h-wall-pec` | 靠墙单臂胸肌拉伸 | 胸大肌+肱二头肌（right） | 墙 | 8s/120f@15 | v2 |  | — | PR #112 | PR #112 作者 QA 右肘报警（docs/home-drills-51-plan-2026-10-15.md） |
 | `h-wall-straddle` | 靠墙仰卧V字分腿 | 内收肌群+腘绳肌 | 垫、墙 | 8s/120f@15 | v2 |  | HipLab v0.1.0；HipLab v0.2.0 | PR #113 |  |
-| `h-wall-wrist-flexor-stretch` | 站姿扶墙腕屈肌拉伸 | 前臂 · 腕屈伸肌（right） | 墙 | 8s/120f@15 | v2 |  | — | ✗ 未登记 | home-wrist-stretch-18：站姿墙面单一腕伸，区别于跪姿多向腕摇摆；真实掌面接触分布检查通过，低分保留待GPU（docs/home-wrist-stretch-18-2026-10-18.md） |
+| `h-wall-wrist-flexor-stretch` | 站姿扶墙腕屈肌拉伸 | 前臂 · 腕屈伸肌（right） | 墙 | 8s/120f@15 | v2 |  | — | 已登记（home-pr-candidates） | home-wrist-stretch-18：站姿墙面单一腕伸，区别于跪姿多向腕摇摆；真实掌面接触分布检查通过，低分保留待GPU（docs/home-wrist-stretch-18-2026-10-18.md） |
 
 ## n-* HipLab 开胯 MVP 新增（PR #119）
 
