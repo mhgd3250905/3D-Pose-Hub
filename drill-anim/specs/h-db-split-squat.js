@@ -34,7 +34,7 @@ export default {
  timeline:{duration:DUR,tracks:P.tracks},pose:{base:P.base,deltas:P.deltas},
  highlight:{groups:['quadriceps','glute-max'],side:'left',pulseTrack:'work',pulseBase:0.3},
  camera:{dir:[1,0.16,0.6],fit:['head','leftToe','rightToe','leftAnkle','rightAnkle','pelvis','leftKnee','rightKnee','leftPalm','rightPalm'],pad:0.15,k:0.9,drift:0,at:2,fitTimeline:true},
- frame:{mode:'fit',width:800,height:800,cx:512,cy:510},stillAt:2,
+ frame:{mode:'fit',width:760,height:760,cx:512,cy:540},stillAt:0.2,
  shadow:{joints:['leftToe','rightToe','leftAnkle','rightAnkle','pelvis'],blobs:[{j:'leftToe',rx:38,ry:10,a:0.6},{j:'rightToe',rx:38,ry:10,a:0.6}],bands:[]},
  props:[{type:'gripHand',side:'right'},{type:'gripHand',side:'left'},
  {type:'dumbbell',length:0.30,plate:0.042,attach:'rightHand',...DB('right')},
