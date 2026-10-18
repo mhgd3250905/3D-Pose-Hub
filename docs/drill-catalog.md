@@ -292,6 +292,8 @@
 
 | 候选 | 内容 | 为什么还没有 | 出处 |
 |---|---|---|---|
+| g-cable-knee-curl | 绳索站姿腿弯举 | curl-sideplank-16：胫骨扣不同于010脚随动带；两次修正后绳路虽清除，但扣边圆环仍穿胫骨约2.50mm/顶点鞋约2.22mm，停止不登记 | docs/curl-sideplank-16-2026-10-18.md |
+| h-short-side-plank | 屈膝短杠杆侧平板 | curl-sideplank-16：前臂与中段侧胫接近地面，但真实膝部50mm邻域仍悬空12.52mm；两次修正后静态门槛失败，头本来悬空不是失败原因，停止不登记 | docs/curl-sideplank-16-2026-10-18.md |
 | h-band-seated-hip-er | 坐椅弹力带髋外旋 | band-hip-knee-10：撤回初评；实际臀/工作侧大腿悬空，只有左大腿接近座前缘，未形成可靠坐姿承托；停止未登记。既有o-seated-hip-er同姿势列待复核，不改旧spec | docs/band-hip-knee-10-2026-10-18.md |
 | h-band-standing-knee-curl | 扶椅弹力带屈膝 | band-hip-knee-10：身体/扶椅合格但两轮绑带修正后顶点带路仍与右鞋相交，停止未登记，不计完成 | docs/band-hip-knee-10-2026-10-18.md |
 | h-quadruped-rockback | 四足中立背后坐 | rockback-hold-09：初稿及两次修正后直臂/可达不能同时满足，停止未登记，不计完成；膝掌接触本身已分别验证 | docs/rockback-hold-09-2026-10-18.md |
