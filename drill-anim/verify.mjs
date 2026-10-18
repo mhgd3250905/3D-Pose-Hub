@@ -71,6 +71,12 @@ for (const [file, expected] of Object.entries({
   'specs/_9090-feet.mjs': '3e9d1a0bc673d7b1e35e37a3e45d1aac5b7e2c910152b61bdf443358ef88af12',
   'lib/foot-orient.mjs': 'eb7b0452b75ef7701a2baf359908272bd3139a04ef56eacfffc4084b732ce431',
 })) assert.equal(textHash(path.join(root, file)), expected, `HipLab media-fix helper changed: ${file}`);
+// Highlight v2 soft-v1 (2026-10-18): opt-in runtime patch, its loader and the theme that enables it. Old themes never load it.
+for (const [file, expected] of Object.entries({
+  'page/soft-highlight.js': '7782d797dcc76f9f4be2372a9768421041f1345b2335a76e3cd095791d69ee32',
+  'lib/soft-highlight.mjs': 'dd15110cc2dfa1eefb75bed721a5f815317251c429692524a64108de044f6b80',
+  'themes/glow-soft.json': '7f26f07e38a500c565b7dbdb51a4e0b7eedfdf42657feea569fcc026ce85d2db',
+})) assert.equal(textHash(path.join(root, file)), expected, `Soft highlight v1 source changed (make a soft-v2 instead): ${file}`);
 const model = JSON.parse(fs.readFileSync(path.join(root, 'models/training-human-v2.json'), 'utf8'));
 assert.equal(model.id, 'training-human-v2');
 assert.equal(model.defaultForNewDrills, true);
