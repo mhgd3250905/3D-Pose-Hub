@@ -293,6 +293,7 @@
 
 | 候选 | 内容 | 为什么还没有 | 出处 |
 |---|---|---|---|
+| h-overhead-triceps-stretch | 站姿过头肱三头肌拉伸 | 019两轮修正后辅助左手对右上臂径向穿入指标仍−5.85mm；停止未登记，不计完成；需新接触参考再开 | docs/home-triceps-stretch-19-2026-10-18.md |
 | h-dead-bug-heel-tap | 死虫式脚跟点地 | 017：共享仰卧底座两轮后头/背/臀承托与前臂穿地未同时解决；blocked，整组停止，不计完成 | docs/remaining-pose-bases-17-2026-10-18.md |
 | h-supine-pelvic-tilt | 仰卧骨盆前后倾 | 017：共享仰卧底座两轮后头/背/臀承托与前臂穿地未同时解决；blocked，整组停止，不计完成 | docs/remaining-pose-bases-17-2026-10-18.md |
 | h-supine-active-ham | 仰卧主动腘绳肌拉伸 | 017：共享仰卧底座两轮后头/背/臀承托与前臂穿地未同时解决；blocked，整组停止，不计完成 | docs/remaining-pose-bases-17-2026-10-18.md |

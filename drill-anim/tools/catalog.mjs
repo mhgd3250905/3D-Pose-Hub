@@ -149,6 +149,7 @@ const KNOWN = {
 };
 // Planned in docs but no spec under specs/: the pool of "待补全" candidates.
 const PLANNED = [
+  {"id": "h-overhead-triceps-stretch", "name": "站姿过头肱三头肌拉伸", "why": "019两轮修正后辅助左手对右上臂径向穿入指标仍−5.85mm；停止未登记，不计完成；需新接触参考再开", "src": "docs/home-triceps-stretch-19-2026-10-18.md"},
   {"id": "h-dead-bug-heel-tap", "name": "死虫式脚跟点地", "why": "017：共享仰卧底座两轮后头/背/臀承托与前臂穿地未同时解决；blocked，整组停止，不计完成", "src": "docs/remaining-pose-bases-17-2026-10-18.md"},
   {"id": "h-supine-pelvic-tilt", "name": "仰卧骨盆前后倾", "why": "017：共享仰卧底座两轮后头/背/臀承托与前臂穿地未同时解决；blocked，整组停止，不计完成", "src": "docs/remaining-pose-bases-17-2026-10-18.md"},
   {"id": "h-supine-active-ham", "name": "仰卧主动腘绳肌拉伸", "why": "017：共享仰卧底座两轮后头/背/臀承托与前臂穿地未同时解决；blocked，整组停止，不计完成", "src": "docs/remaining-pose-bases-17-2026-10-18.md"},
