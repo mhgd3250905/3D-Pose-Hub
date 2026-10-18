@@ -6,20 +6,20 @@
 
 | 项 | 数 |
 |---|---:|
-| spec 文件（specs/*.js，不含 _*.mjs 共用模块） | 206 |
+| spec 文件（specs/*.js，不含 _*.mjs 共用模块） | 207 |
 | 其中修订版（-r2/-r3） | 10 |
 | FlareLab App 51（data/drills.json） | 51 |
 | HipLab 已发布素材绑定的 spec 文件（v0.1.0（published）46 个动作 id、v0.2.0（published）46 个动作 id） | 47 |
 | HipLab 自测静图在用 spec | 6 |
 | 原版已被在用的修订版取代（保留不删） | 9 |
-| 有 spec 但没有被任何 App/发布版本使用 | 95 |
+| 有 spec 但没有被任何 App/发布版本使用 | 96 |
 | SHA 未登记 / 哈希不符 | 0 |
 
 - g-* 健身房补充（cable-hip-12；非普通办公）：2
 - FlareLab 肌群动作（17 肌群 × A 徒手 / B 家用 / C 健身房）：51
 - s-* 拉伸（原 8 项 + 修订）：11
 - t-* 托马斯专项（Flare，PR #106）：12
-- o-* 办公室（PR #97–104 + office-hip-leg-02 + office-adductor-back-03 + office-knee-march-04 + office-calf-squat-05 + office-support-06）：17
+- o-* 办公室（PR #97–104 + office-hip-leg-02 + office-adductor-back-03 + office-knee-march-04 + office-calf-squat-05 + office-support-06）：18
 - w-* 久坐强化（PR #105）：8
 - h-* 居家/肌群补充/开胯/开肩/小器械力量/徒手后链/办公下肢候选（PR #111–115 + r2 + Pose-Hub PR #5、#6 + office-lower-body-01）：81
 - n-* HipLab 开胯 MVP 新增（PR #119）：15
@@ -140,6 +140,7 @@
 | `o-stand-lunge` | 扶椅站姿弓步屈髋拉伸 | 髋屈肌（left） | 办公椅 | 8s/240f@30 | 旧 |  | HipLab v0.1.0；HipLab v0.2.0 | PR #100（verify.mjs） |  |
 | `o-stand-quad` | 扶椅站姿股四头肌拉伸 | 股四头肌（right） | 办公椅 | 8s/240f@30 | 旧 |  | — | PR #101（verify.mjs） |  |
 | `o-stand-sidebend` | 站姿举手侧屈 | 腹斜肌（right） | 办公椅 | 8s/240f@30 | 旧 |  | — | PR #103（verify.mjs） |  |
+| `o-supported-ankle-pump` | 扶椅悬空踝屈伸 | 小腿三头肌+胫骨前肌（right） | 椅 | 8s/120f@15 | v2 |  | — | 已登记（home-pr-candidates） | supported-ankle-pump-21：扶椅轻触平衡、固定髋膝的悬空踝屈伸；低负荷主动活动控制，区别于承重提踵/靠墙勾脚；低分保留待GPU（docs/supported-ankle-pump-21-2026-10-18.md） |
 | `o-supported-march` | 扶椅站姿交替抬膝 | 髋屈肌 | 椅 | 8s/120f@15 | v2 |  | — | 已登记（home-pr-candidates） |  |
 | `o-supported-mini-squat` | 扶椅浅蹲 | 股四头肌+臀大肌 | 椅 | 8s/120f@15 | v2 |  | — | 已登记（home-pr-candidates） | office-calf-squat-05：双掌扶60cm宽稳椅高背、浅幅动态蹲；双掌网格与背板间隙1.62mm，待GPU全片（docs/office-calf-squat-05-2026-10-18.md） |
 | `o-supported-single-leg-rdl` | 扶椅单腿髋铰链 | 腘绳肌+臀大肌（left） | 椅 | 8s/120f@15 | v2 |  | — | 已登记（home-pr-candidates） | office-support-06：右掌扶稳椅背、左腿支撑髋铰链；近接触1.57mm，待GPU全片（docs/office-support-06-2026-10-18.md） |
@@ -284,7 +285,7 @@
 
 - **g**（2）：`g-cable-hip-abduction` `g-cable-hip-extension`
 - **t**（11）：`t-flare-side-hold` `t-half-straddle` `t-lsit-open-close` `t-lsit-tuck` `t-lsit-vsit-circles` `t-lsit-wide` `t-seated-straddle-ext` `t-seated-straddle-lifts` `t-straddle-hold` `t-tuck-planche` `t-vsit`
-- **o**（13）：`o-chair-knee-extension` `o-seated-calf-raise` `o-seated-catcow` `o-seated-hip-er` `o-seated-sidebend` `o-seated-twist` `o-stand-ham` `o-stand-quad` `o-stand-sidebend` `o-supported-march` `o-supported-mini-squat` `o-supported-single-leg-rdl` `o-wall-hip-hinge-stretch`
+- **o**（14）：`o-chair-knee-extension` `o-seated-calf-raise` `o-seated-catcow` `o-seated-hip-er` `o-seated-sidebend` `o-seated-twist` `o-stand-ham` `o-stand-quad` `o-stand-sidebend` `o-supported-ankle-pump` `o-supported-march` `o-supported-mini-squat` `o-supported-single-leg-rdl` `o-wall-hip-hinge-stretch`
 - **w**（6）：`w-bird-dog` `w-chair-hip-thrust` `w-dead-bug` `w-fire-hydrant` `w-prone-swimmer` `w-wall-sit`
 - **h**（63）：`h-banana` `h-band-pallof` `h-band-pull-apart` `h-band-row` `h-band-standing-abduction` `h-band-standing-adduction` `h-bear-plank` `h-biceps-self` `h-bridge-march` `h-bridge-overhead` `h-bulgarian` `h-calf-raise` `h-catcow-quad` `h-chair-dip` `h-chair-kickback` `h-chair-lat` `h-chair-sit-to-stand` `h-chair-step-up` `h-chair-tspine` `h-cobra` `h-crossbody` `h-crunch` `h-db-calf-raise` `h-db-curl` `h-db-floor-press` `h-db-lateral` `h-db-press` `h-db-rdl` `h-db-reverse-fly` `h-db-row` `h-db-split-squat` `h-db-supported-calf-raise` `h-dd-shoulder` `h-donkey-kick` `h-forearm-plank` `h-good-morning` `h-incline-pushup` `h-inner-thigh` `h-kb-swing` `h-mountain-climber` `h-open-book` `h-pike-pushup` `h-reverse-crunch` `h-reverse-lunge` `h-russian-twist` `h-seated-reachback` `h-side-er` `h-side-leg-raise` `h-standing-wrist-extensor-stretch` `h-step-jack` `h-suitcase-hold` `h-superman` `h-supported-single-leg-calf` `h-tabletop` `h-tib-raise` `h-towel-behind` `h-towel-pass` `h-towel-pulldown` `h-wall-angel` `h-wall-calf-bent-knee` `h-wall-calf` `h-wall-pec` `h-wall-wrist-flexor-stretch`
 

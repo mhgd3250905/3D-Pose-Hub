@@ -109,6 +109,7 @@ const KNOWN = {
   'h-db-split-squat': ['dumbbell-leg-14：双哑铃原地分腿蹲；前脚全掌、后脚前足固定地面，左侧示范；低分抽查保留待GPU，非普通办公（docs/dumbbell-leg-14-2026-10-18.md）'],
   'h-db-calf-raise': ['dumbbell-leg-14：双脚双哑铃站姿提踵；实际鞋底前端支点，负荷变式非新运动模式；低分抽查保留待GPU（docs/dumbbell-leg-14-2026-10-18.md）'],
   'h-wall-wrist-flexor-stretch': ['home-wrist-stretch-18：站姿墙面单一腕伸，区别于跪姿多向腕摇摆；真实掌面接触分布检查通过，低分保留待GPU（docs/home-wrist-stretch-18-2026-10-18.md）'],
+  'o-supported-ankle-pump': ['supported-ankle-pump-21：扶椅轻触平衡、固定髋膝的悬空踝屈伸；低负荷主动活动控制，区别于承重提踵/靠墙勾脚；低分保留待GPU（docs/supported-ankle-pump-21-2026-10-18.md）'],
   'h-standing-wrist-extensor-stretch': ['home-wrist-extensor-20：站姿无承重主动腕屈，拉伸腕伸肌；办公单向基础式，区别018腕伸与跪姿多向摇摆；低分保留待GPU（docs/home-wrist-extensor-20-2026-10-18.md）'],
   'h-supported-single-leg-calf': ['supported-calf-15：扶墙单腿提踵；左足承重、右足离地；条件办公需稳墙与基础能力；低分抽查保留待GPU（docs/supported-calf-15-2026-10-18.md）'],
   'h-db-supported-calf-raise': ['supported-calf-15：单手哑铃扶墙双脚提踵；补原计划单手扶墙意图，014双哑铃版保留；条件办公需墙与器械净空；低分抽查保留待GPU（docs/supported-calf-15-2026-10-18.md）'],
