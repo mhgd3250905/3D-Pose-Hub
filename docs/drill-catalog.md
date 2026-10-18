@@ -292,6 +292,11 @@
 
 | 候选 | 内容 | 为什么还没有 | 出处 |
 |---|---|---|---|
+| h-dead-bug-heel-tap | 死虫式脚跟点地 | 017：共享仰卧底座两轮后头/背/臀承托与前臂穿地未同时解决；blocked，整组停止，不计完成 | docs/remaining-pose-bases-17-2026-10-18.md |
+| h-supine-pelvic-tilt | 仰卧骨盆前后倾 | 017：共享仰卧底座两轮后头/背/臀承托与前臂穿地未同时解决；blocked，整组停止，不计完成 | docs/remaining-pose-bases-17-2026-10-18.md |
+| h-supine-active-ham | 仰卧主动腘绳肌拉伸 | 017：共享仰卧底座两轮后头/背/臀承托与前臂穿地未同时解决；blocked，整组停止，不计完成 | docs/remaining-pose-bases-17-2026-10-18.md |
+| h-strap-supine-ham | 仰卧带辅助直腿拉伸 | 017：共享仰卧底座两轮后头/背/臀承托与前臂穿地未同时解决；blocked，整组停止，不计完成 | docs/remaining-pose-bases-17-2026-10-18.md |
+| s-9090-switch-new | 90/90左右换髋新规格 | 017：真左右换髋关键姿态两轮后端点臀仍悬空且大腿穿地；blocked，不登记，不计完成 | docs/remaining-pose-bases-17-2026-10-18.md |
 | g-cable-knee-curl | 绳索站姿腿弯举 | curl-sideplank-16：胫骨扣不同于010脚随动带；两次修正后绳路虽清除，但扣边圆环仍穿胫骨约2.50mm/顶点鞋约2.22mm，停止不登记 | docs/curl-sideplank-16-2026-10-18.md |
 | h-short-side-plank | 屈膝短杠杆侧平板 | curl-sideplank-16：前臂与中段侧胫接近地面，但真实膝部50mm邻域仍悬空12.52mm；两次修正后静态门槛失败，头本来悬空不是失败原因，停止不登记 | docs/curl-sideplank-16-2026-10-18.md |
 | h-band-seated-hip-er | 坐椅弹力带髋外旋 | band-hip-knee-10：撤回初评；实际臀/工作侧大腿悬空，只有左大腿接近座前缘，未形成可靠坐姿承托；停止未登记。既有o-seated-hip-er同姿势列待复核，不改旧spec | docs/band-hip-knee-10-2026-10-18.md |

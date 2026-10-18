@@ -148,6 +148,11 @@ const KNOWN = {
 };
 // Planned in docs but no spec under specs/: the pool of "待补全" candidates.
 const PLANNED = [
+  {"id": "h-dead-bug-heel-tap", "name": "死虫式脚跟点地", "why": "017：共享仰卧底座两轮后头/背/臀承托与前臂穿地未同时解决；blocked，整组停止，不计完成", "src": "docs/remaining-pose-bases-17-2026-10-18.md"},
+  {"id": "h-supine-pelvic-tilt", "name": "仰卧骨盆前后倾", "why": "017：共享仰卧底座两轮后头/背/臀承托与前臂穿地未同时解决；blocked，整组停止，不计完成", "src": "docs/remaining-pose-bases-17-2026-10-18.md"},
+  {"id": "h-supine-active-ham", "name": "仰卧主动腘绳肌拉伸", "why": "017：共享仰卧底座两轮后头/背/臀承托与前臂穿地未同时解决；blocked，整组停止，不计完成", "src": "docs/remaining-pose-bases-17-2026-10-18.md"},
+  {"id": "h-strap-supine-ham", "name": "仰卧带辅助直腿拉伸", "why": "017：共享仰卧底座两轮后头/背/臀承托与前臂穿地未同时解决；blocked，整组停止，不计完成", "src": "docs/remaining-pose-bases-17-2026-10-18.md"},
+  {"id": "s-9090-switch-new", "name": "90/90左右换髋新规格", "why": "017：真左右换髋关键姿态两轮后端点臀仍悬空且大腿穿地；blocked，不登记，不计完成", "src": "docs/remaining-pose-bases-17-2026-10-18.md"},
   {id:'g-cable-knee-curl',name:'绳索站姿腿弯举',why:'curl-sideplank-16：胫骨扣不同于010脚随动带；两次修正后绳路虽清除，但扣边圆环仍穿胫骨约2.50mm/顶点鞋约2.22mm，停止不登记',src:'docs/curl-sideplank-16-2026-10-18.md'},
   {id:'h-short-side-plank',name:'屈膝短杠杆侧平板',why:'curl-sideplank-16：前臂与中段侧胫接近地面，但真实膝部50mm邻域仍悬空12.52mm；两次修正后静态门槛失败，头本来悬空不是失败原因，停止不登记',src:'docs/curl-sideplank-16-2026-10-18.md'},
   {id:'h-band-seated-hip-er',name:'坐椅弹力带髋外旋',why:'band-hip-knee-10：撤回初评；实际臀/工作侧大腿悬空，只有左大腿接近座前缘，未形成可靠坐姿承托；停止未登记。既有o-seated-hip-er同姿势列待复核，不改旧spec',src:'docs/band-hip-knee-10-2026-10-18.md'},
