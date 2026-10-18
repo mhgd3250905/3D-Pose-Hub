@@ -1,3 +1,5 @@
+> **历史文档（2026-10-09，3D-Body 三人分工时期），已过时，不要照做。** 仓库、分支（`feature/drill-anim`）、Drive 目录和交付规则都已作废；现行流程见 [docs/START-HERE.md](../docs/START-HERE.md) 与 [AGENTS.md](../AGENTS.md)。正文保留原样作背景。
+
 # 三人协作规范（必读，优先级高于 HANDOFF.md 中的旧说法）
 
 更新：2026-10-09 23:00 · 适用于：Hark、同事 1（GitHub `UUU GK`）、同事 2（GitHub `uuugk2`）

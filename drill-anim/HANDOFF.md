@@ -1,3 +1,5 @@
+> **历史文档（2026-10-09，3D-Body 三人分工时期），已过时，不要照做。** 仓库、分支（`feature/drill-anim`）、Drive 目录和交付规则都已作废；现行流程见 [docs/START-HERE.md](../docs/START-HERE.md) 与 [AGENTS.md](../AGENTS.md)。正文保留原样作背景。
+
 # 训练动作 3D 动画 · 并行交接文档
 
 > ⚠️ **分支、PR、Drive 存放、进度表的规则一律以 `COLLAB.md` 为准**：一个动作一个 `drill/<id>` 分支、一个 PR，base 是 `feature/drill-anim`；Drive 按 `<档位>/<id>/<id>_vN.*` 存放。本文中与 COLLAB.md 冲突的旧说法作废。

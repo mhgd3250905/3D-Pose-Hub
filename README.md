@@ -1,5 +1,7 @@
 # Pose-Hub · 动作库
 
+> **第一次来？先读 [docs/START-HERE.md](docs/START-HERE.md)**（半小时上手、低配机验证、贡献流程）；动作总表见 [docs/drill-catalog.md](docs/drill-catalog.md)，审核标准见 [docs/review-rubric.md](docs/review-rubric.md)。
+
 Pose-Hub 是 FlareLab（托马斯训练助手）和 HipLab（开胯训练助手）共用的**动作库**：动作渲染工具 drill-anim、训练人物模型及其制作工具、每个动作的规格（spec）、以及成片素材清单都在这里。各 App 不再自己改动作，只按固定版本从这里取成片。
 
 2026-10-17 从 [3D-Body](https://github.com/mhgd3250905/3D-Body) `master@66067a6` 迁来，保留了相关文件的 Git 历史。迁移细节、路径对照和验证结果见 [MIGRATION.md](MIGRATION.md)；协作规则见 [AGENTS.md](AGENTS.md)。
@@ -11,7 +13,7 @@ drill-anim/          动作渲染工具（原 3D-Body tools/drill-anim）
   specs/<id>.js      动作规格与版本化修订；共用模块为 specs/_*.mjs
   page/ lib/         浏览器端求解/着色、Node/Python 渲染与合成、QA
   models/            人物模型清单 training-human-v2.json（版本 2.0.1，13 个固定源文件的 sha256）
-  themes/ theme.json 外观（默认 v7；方案 B 为 themes/glow-b.json）
+  themes/ theme.json 外观（默认 v7；方案 B themes/glow-b.json = v0.1.0；柔和高亮 themes/glow-soft.json = HipLab 新成片）
   batches/ revisions/ qa-reports/ data/   历史批次、修订稿、QA 记录、App 选用清单
 runtime/             渲染时启动的 3D 场景（原 3D-Body 根目录的 index.html、src/、public/coach、public/anatomy 中渲染用到的部分）
 tools/               人物模型制作工具：blender/（Snow 派生教练、健身/肌肉参考体）、mannequin/（灰色人台头）、cloth/（衣服蒙皮）、face/
@@ -25,10 +27,10 @@ package.json         根目录 npm 工程（three 0.170.0、lucide、vite 7.3.6�
 ## 环境
 
 - Node `^20.19.0 || >=22.12.0`；Python 3（渲染需要 numpy、scipy、Pillow；media 脚本只用标准库）；ffmpeg（带 libx264）。
-- Playwright + Chromium。无 GPU 时用 SwiftShader（`--use-gl=swiftshader --enable-unsafe-swiftshader`）；Windows 4080 用 `config.windows.example.json` 里的 `--use-angle=d3d11`。
+- Playwright + Chromium（不在 package.json，按需 `npm i --no-save playwright@1.48.2 && npx playwright install chromium`，config 里 `playwright_module` 填 `../node_modules/playwright/index.mjs`；详见 START-HERE）。无 GPU 时用 SwiftShader（`--use-gl=swiftshader --enable-unsafe-swiftshader`）；Windows 4080 用 `config.windows.example.json` 里的 `--use-angle=d3d11`。
 
 ```bash
-npm ci                                   # 仓库根目录
+npm ci                                   # 仓库根目录（需完整 clone：verify 要读基线提交 1adcab8，--depth 1 会失败）
 cp drill-anim/config.example.json drill-anim/config.json        # Windows: config.windows.example.json
 # 编辑 config.json：playwright_module、playwright_browsers_path、font、out_dir、work_dir（app_dir 保持 ".."）
 ```
