@@ -82,7 +82,8 @@ node drill-anim/tools/catalog.mjs --check                    # 只检查是否�
 | 预览卡住：boot 和 `highlight` 日志之后很久没有 `frame N` | 个别动作（实测 `n-seated-squeeze`，两个主题都 >75 s 不出第一帧）在 2 vCPU/SwiftShader 上极慢，`drill.py` 还会自动重跑缺帧任务。用 `timeout 180 python3 drill-anim/drill.py ...` 包一层；超时就在 PR 里写明，交给主线本机预览。日志在 `<work_dir>/<id>/fr-log-*.txt` |
 | 渲染拒绝覆盖 | 已有同名成片默认不覆盖；预览帧按 id 放在 `work_dir/<id>/`，重渲会清理这个目录 |
 | `node drill-anim/tools/probe.mjs` 连不上 | probe 不会自己启动 Vite；先在仓库根另开一个终端 `npx vite --host 127.0.0.1 --port <config 的 app_port>` |
-| 文档里的 `flickscan` / `propscan` / `render_batch.py` 找不到 | 它们在 3D-Body PR #120 的 `tools/hiplab-render/`，没迁进 Pose-Hub；只有主线本机有，低配机做不了 |
+| 高清制作工具 `render_batch.py` 在哪里 | 已由 PR #7 迁入 `drill-anim/tools/hd/`，入口见 [高清制作线](../drill-anim/tools/hd/README.md)。工具测试可在低配机运行；2160² 全片制作交给主线 4080 |
+| 文档里的 `flickscan` / `propscan` 在哪里 | 当前 `drill-anim/tools/` 未提供这两个通用 CLI。审核记录须注明实际使用的扫描器、输入和报告 SHA；闪烁候选须看邻帧确认，道具接触另做人工核对，不把候选数当坏帧数，也不冒认运行过未提供的工具 |
 | Windows 下命令 | 用 `py` 代替 `python3`，config 从 `config.windows.example.json` 复制（`--use-angle=d3d11`） |
 
 ## 4. 怎么读一份 spec
@@ -114,7 +115,7 @@ node drill-anim/tools/catalog.mjs --check                    # 只检查是否�
 | 工具 | `python3 drill-anim/test_portability.py`、`python3 -m unittest discover -s media/tests` | 路径解析、删除保护、素材脚本 |
 | 预览帧 | `drill.py render <id> --frames a,b,c --pr 0.5 --jobs 1 --theme ...` | 看图：姿态、朝向、接触、高亮落点、构图。帧选 `keyFrames` 对应帧 + 每次重复的起/顶/回 + 循环首尾（0 和最后一帧） |
 | 稀疏 QA | 多渲一些均匀分布的帧（如每 0.5 s 一帧，8 s 动作约 16 帧 ≈ 1 分钟）再 `drill.py qa <id>` | 在这些帧上的数值检查；漂移以第一帧为参照，帧越密越可信 |
-| 全片 QA | 只能主线本机 | `frames_complete`、整圈求解告警、触边、编码、flickscan、propscan |
+| 全片 QA | 主线本机完成 | `frames_complete`、整圈求解告警、触边、合成与完整解码；按实际使用工具记录闪烁候选并复核邻帧，道具接触另做人工核对 |
 
 **metrics 字段与阈值**（`<out_dir>/metrics/<id>.json`）：
 
@@ -163,7 +164,7 @@ node drill-anim/tools/catalog.mjs --check                    # 只检查是否�
 - 先抽查的帧（发布片 30 fps 帧号）：<...>，重点看：<脚锁定 / 手接触 / 高亮 / 循环接缝 …>
 - 目标发布：HipLab v0.x.y 的哪个槽位；替换还是新增
 - 低配机已做：verify ✓ portability ✓ media tests ✓；预览帧 <列表>（--pr 0.5）；稀疏 QA <单项结果>
-- 低配机没做：全片 QA、flickscan、propscan、绿幕/透明母帧、编码
+- 低配机没做：全片 QA、绿幕/透明母帧、编码及完整解码；闪烁/道具核对的工具、覆盖帧和未完成项请按实际填写
 ```
 
 ## 7. 低配机能做 / 不能做
@@ -172,7 +173,7 @@ node drill-anim/tools/catalog.mjs --check                    # 只检查是否�
 |---|---|
 | 读 spec、设计/修订动作参数、写新 spec | 全片渲染（240+ 帧）、`--pr 2` 高清帧批量 |
 | verify、portability、media tests、catalog | 绿幕母版、透明 PNG 母帧、深色导出与 H.264 编码 |
-| `--frames` 低分辨率预览（`--pr 0.5`，每帧约 3.5 s） | flickscan、propscan（工具不在本仓库） |
+| `--frames` 低分辨率预览（`--pr 0.5`，每帧约 3.5 s） | 全片闪烁候选复核与道具接触检查（记录实际工具和人工查看范围） |
 | 少量帧的 `drill.py qa` 稀疏 QA | ingest、pack、上传云盘、改 manifest 发布状态 |
 | 共享核心的小改动 + 同帧像素对比（单路 `--jobs 1`） | 合并 PR、打 tag、改冻结人物源 |
 
