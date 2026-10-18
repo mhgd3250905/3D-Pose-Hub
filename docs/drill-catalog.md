@@ -276,6 +276,8 @@
 
 | 候选 | 内容 | 为什么还没有 | 出处 |
 |---|---|---|---|
+| h-side-lying-hip-abduction | 侧卧直腿外展 | floor-hip-knee-08：两轮后托头手穿头6.57mm、短裤穿地20.4mm及可达告警，停止未登记，不计完成 | docs/floor-hip-knee-08-2026-10-18.md |
+| h-prone-knee-curl | 俯卧徒手屈膝 | floor-hip-knee-08：两轮后头手穿插33.87–38.84mm、前臂穿地4.5mm且大腿/膝悬空，停止未登记，不计完成 | docs/floor-hip-knee-08-2026-10-18.md |
 | o-wall-forearm-plank | 站姿扶墙前臂支撑 | office-support-06：两轮后掌接触近似成立，肘部网格距墙仍5.66mm，停止未登记，不计完成 | docs/office-support-06-2026-10-18.md |
 | o-chair-adductor-stretch / o-chair-wide-adductor-stretch | 坐椅宽膝内收肌拉伸（侧移/前倾候选） | office-adductor-back-03：侧移目标机制不充分且手撑座不可达；前倾版两轮座面修正仍有5–7.5mm大腿穿座，撤下未登记；由o-seated-hip-er顺延补位 | docs/office-adductor-back-03-2026-10-18.md |
 | o-seated-knee-hug | 坐椅单膝抱近胸 | office-hip-leg-02两轮修正后手腕可达/手贴小腿仍不可信，撤下；由坐椅侧伸替补，不计完成，待接触条件解决 | docs/office-hip-leg-02-2026-10-18.md |
