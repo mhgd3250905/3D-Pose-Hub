@@ -103,6 +103,7 @@ const D = {
   soft: 'docs/soft-highlight-2026-10-18.md', rel: 'media/releases/0.1.0.md', h51: 'docs/home-drills-51-plan-2026-10-15.md',
   lib: 'docs/training-media-library-2026-10-13.md', h4080: 'docs/drill-anim/hark-4080-v1.md', erb: 'docs/erectors-B-footfix-2026-10-13.md',
   t3: 'docs/thomas-app-model-v3-2026-10-12.md', pr105: 'drill-anim/pr105-audit-2026-10-12.md',
+  hse: 'docs/home-small-equipment-2026-10-18.md',
 };
 const KNOWN = {
   'h-quad-cars': [`v0.1.0 绑定 r2；v0.2.0 已用原规格和 soft-v1 发布（${D.soft}）`, `flickscan 小腿/鞋底纹 169 坏帧，既有问题（${D.fix}）`],
@@ -117,6 +118,9 @@ const KNOWN = {
   'n-seated-squeeze': [`原计划“夹拳+外推”改为夹砖，外推半部分未做（${D.p1}）`, `2 vCPU/SwiftShader 预览 >75 s 不出第一帧，原因未查（docs/onboarding-audit-2026-10-18.md）`],
   'n-seated-ir-drop': [`替代未完成的 n-9090-ir-lean（${D.p1}）`],
   'h-wall-pec': [`PR #112 作者 QA 右肘报警（${D.h51}）`],
+  'h-kb-swing': [`单臂版：双手握同一提手时两只拳头重叠，改单臂（${D.hse}）`],
+  'h-band-row': [`propscan 8 坏帧是两根弹力带互相扫过，不是 z-fighting（${D.hse}）`],
+  'h-band-pallof': [`obliques-B 的 training-human-v2 重做，推到顶 z 0.4356→0.431（${D.hse}）`],
   'erectors-B': [`用户认可的鞋向修正在 revisions/erectors-B-footfix-20261013，本 spec 单独不是完整配方（${D.erb}）`],
   'hip-abductors-B': [`hark-4080-v1 修订 240 帧求解警告保留（${D.h4080}）`],
   'deltoids-B': [`只到高桥的半程土耳其起立；支撑肘与垫约 10.31 mm 间隙（${D.h4080}）`],
@@ -132,6 +136,7 @@ const PLANNED = [
   {id: '（无 id）坐姿夹砖“外推”半部分', name: '坐姿膝外推（弹力带版）', why: '手掌放膝内侧会陷入大腿，改夹砖；文档建议以后做弹力带版', src: D.p1},
   {id: 's-9090-switch', name: '90/90 左右换髋', why: '最终修订只在 drill-anim/revisions/hark-4080-v1/s-9090-switch/，specs/ 下无同名 spec，未进 verify 契约', src: D.h4080},
   {id: '（道具）', name: '引体杆/泡沫轴/瑞士球/地雷杆/绳索等道具复核', why: 'drill-anim/README 写“未写/未验证”，但 specs 已在用 pullupBar、foamRoller、swissBall、landmine、cableStack —— README 道具一节过时，需逐个复核穿模', src: 'drill-anim/README.md#props'},
+  {id: 'h-goblet-squat', name: '哑铃高脚杯深蹲', why: '双掌托哑铃头的握法 2 轮以上仍不可信（手掌张平、和哑铃有缝），本批放弃，由 h-db-reverse-fly 补位；需模型手部改进', src: D.hse},
   {id: '（h-* 51 项接入）', name: '居家/肌群补充/开胯/开肩 51 项', why: '源码已审，作者成片/QA 未取回，未注册任何 App（被 HipLab v0.1.0 选中的除外）', src: D.h51},
 ];
 
@@ -142,7 +147,7 @@ const CATS = [
   {key: 't', title: 't-* 托马斯专项（Flare，PR #106）', test: id => id.startsWith('t-')},
   {key: 'o', title: 'o-* 办公室（PR #97–104）', test: id => id.startsWith('o-')},
   {key: 'w', title: 'w-* 久坐强化（PR #105）', test: id => id.startsWith('w-')},
-  {key: 'h', title: 'h-* 居家/肌群补充/开胯/开肩候选（PR #111–115 + r2）', test: id => id.startsWith('h-')},
+  {key: 'h', title: 'h-* 居家/肌群补充/开胯/开肩/小器械力量候选（PR #111–115 + r2 + Pose-Hub PR #5）', test: id => id.startsWith('h-')},
   {key: 'n', title: 'n-* HipLab 开胯 MVP 新增（PR #119）', test: id => id.startsWith('n-')},
   {key: 'a', title: 'a-* HipLab 自测对比静图（PR #119 + r2）', test: id => id.startsWith('a-')},
 ];
@@ -150,7 +155,7 @@ const catOf = id => (CATS.find(c => c.test(id)) || {key: 'other'}).key;
 
 // ---------- rows ----------
 const SCENE = {mat: '垫', chair: '椅', officeChair: '办公椅', wall: '墙', band: '弹力带', bandPost: '弹力带', anchor: '锚点',
-  parallettes: '平行杆', dipBars: '双杠', rings: '吊环', pullupBar: '单杠', bench: '凳', dumbbell: '哑铃', kbBottomsUp: '壶铃',
+  parallettes: '平行杆', dipBars: '双杠', rings: '吊环', pullupBar: '单杠', bench: '凳', dumbbell: '哑铃', kbBottomsUp: '壶铃', kettlebell: '壶铃',
   cableStack: '绳索', cable: '绳索', dHandle: '单柄', ankleStrap: '脚踝扣', landmine: '地雷杆', swissBall: '瑞士球', foamRoller: '泡沫轴',
   sliders: '滑垫', romanChair: '罗马椅', ghd: 'GHD', reverseHyper: '反向背伸机', hipAbductor: '髋外展机', legExtension: '腿屈伸机'};
 const ignoreProps = new Set(['gripHand', 'grip']);
