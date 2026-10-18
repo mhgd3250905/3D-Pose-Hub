@@ -17,6 +17,18 @@
     "manifest.json",
     "README.txt"
   ],
-  "sharing": "Root and releases stay restricted. Each approved version folder is anyone-with-link reader, not discoverable. Never overwrite a published version.",
-  "excluded": ["greenscreen masters", "alpha frames", "machine config", "credentials"]
+  "materials": {
+    "name": "动作素材库",
+    "id": "1SYZ1Ww3LRpMX4MZOSZeV6gpWl0Tc7fJe",
+    "url": "https://drive.google.com/drive/folders/1SYZ1Ww3LRpMX4MZOSZeV6gpWl0Tc7fJe",
+    "visibility": "restricted",
+    "categories": ["肌群训练", "拉伸", "托马斯专项", "办公室", "久坐强化", "居家训练", "开髋训练", "自测静态", "历史示范与变体"],
+    "contents": ["playable greenscreen videos", "per-action content-fingerprinted ZIPs", "transparent master frames", "posters and derivatives", "selected source and QA evidence", "catalog and checksums"],
+    "syncPolicy": "After every completed production or inventory revision, incrementally upload and download-verify SHA-256. Keep E-drive originals, retain prior packages, preserve actual QA and missing-asset states.",
+    "record": "media/drive-sync.json",
+    "documentation": "docs/material-cloud-sync.md"
+  },
+  "sharing": "Root, releases and materials stay restricted. Only each approved public release version folder is anyone-with-link reader, not discoverable. Never overwrite a published version. Private materials do not inherit public release sharing.",
+  "excludedFromPublicReleases": ["greenscreen masters", "alpha frames", "machine config", "credentials"],
+  "excluded": ["machine config", "credentials"]
 }
