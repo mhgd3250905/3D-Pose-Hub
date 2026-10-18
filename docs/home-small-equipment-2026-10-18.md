@@ -17,7 +17,7 @@
 | 9 | `h-band-pallof` | 弹力带抗旋转推 | Banded Pallof Press | 腹斜肌 | 弹力带+立柱锚点+单柄 |
 | 10 | `h-db-reverse-fly` | 哑铃俯身飞鸟 | Bent-Over Dumbbell Reverse Fly | 三角肌（后束）+斜方肌中下部·菱形肌 | 双哑铃 |
 
-SHA-256 已登记在 `drill-anim/data/home-pr-candidates.json`（sourceCommit `8754eac`），`node drill-anim/verify.mjs` 通过。
+SHA-256 已登记在 `drill-anim/data/home-pr-candidates.json`（PR #5，sourceCommit `8754eac`），`node drill-anim/verify.mjs` 通过。
 
 ## 2. 逐个 QA
 

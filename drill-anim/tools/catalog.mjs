@@ -147,7 +147,7 @@ const CATS = [
   {key: 't', title: 't-* 托马斯专项（Flare，PR #106）', test: id => id.startsWith('t-')},
   {key: 'o', title: 'o-* 办公室（PR #97–104）', test: id => id.startsWith('o-')},
   {key: 'w', title: 'w-* 久坐强化（PR #105）', test: id => id.startsWith('w-')},
-  {key: 'h', title: 'h-* 居家/肌群补充/开胯/开肩/小器械力量候选（PR #111–115 + r2 + 2026-10-18 小器械批）', test: id => id.startsWith('h-')},
+  {key: 'h', title: 'h-* 居家/肌群补充/开胯/开肩/小器械力量候选（PR #111–115 + r2 + Pose-Hub PR #5）', test: id => id.startsWith('h-')},
   {key: 'n', title: 'n-* HipLab 开胯 MVP 新增（PR #119）', test: id => id.startsWith('n-')},
   {key: 'a', title: 'a-* HipLab 自测对比静图（PR #119 + r2）', test: id => id.startsWith('a-')},
 ];
