@@ -106,6 +106,8 @@ const D = {
   hse: 'docs/home-small-equipment-2026-10-18.md', hpc: 'docs/home-posterior-chain-2026-10-18.md',
 };
 const KNOWN = {
+  'h-band-standing-abduction': ['band-hip-sides-13：扶椅弹力带站姿外展；独立可靠固定低位锚点，胫骨踝扣，约5–24°外展；低分抽查通过待GPU，非普通办公（docs/band-hip-sides-13-2026-10-18.md）'],
+  'h-band-standing-adduction': ['band-hip-sides-13：家用弹力带站姿内收；右腿前方通过中线，约25°屈髋避开支撑鞋；低分抽查通过待GPU，椅子不是锚点（docs/band-hip-sides-13-2026-10-18.md）'],
   'g-cable-hip-extension': ['cable-hip-12：低位绳索髋后伸；踝扣绑定胫骨，右髋8–20°后伸，左脚/左掌轻扶支撑；低分抽查通过待GPU全片，非普通办公（docs/cable-hip-12-2026-10-18.md）'],
   'g-cable-hip-abduction': ['cable-hip-12：低位绳索髋外展；滑轮左前方，右髋5–24°外展并轻度屈髋避开支撑腿；低分抽查通过待GPU，非普通办公（docs/cable-hip-12-2026-10-18.md）'],
   'h-quad-cars': [`v0.1.0 绑定 r2；v0.2.0 已用原规格和 soft-v1 发布（${D.soft}）`, `flickscan 小腿/鞋底纹 169 坏帧，既有问题（${D.fix}）`],
