@@ -22,23 +22,28 @@
       pose-hub-media-v0.1.0.zip.sha256
       manifest.json                 冻结的单版本清单，单独下载
       README.txt                    校验与接入说明
-    v0.1.1/                         下次发布时新建，沿用同样四个文件
+    v0.2.0/                         soft-v1，沿用同样四个文件
+    v<下一版本>/                    发布时新建，沿用同样四个文件
 ```
 
-`v0.1.1/` 是未来结构示例，不提前建空发布目录。公开权限只开到经过核验的版本目录，父目录保持受限；绿幕、透明帧和本机备份不进入这个云盘树。版本目录 URL 保存在对应清单的 `distribution.folderUrl`。
+每版使用独立目录；制作中准备的目录保持私有，核验通过后才开放该版本。公开权限只开到经过核验的版本目录，父目录保持受限；绿幕、透明帧和本机备份不进入这个云盘树。版本目录 URL 保存在对应清单的 `distribution.folderUrl`。
 
 ## 存储约定
 
 公开成片、封面和静图使用 `storage: "archive"`，进入对应版本 ZIP。绿幕母版和透明帧使用 `storage: "local"`，只在清单记录哈希，不进 ZIP、不进 Git。用户当前要求原件与备份保留在 E 盘。
 
+先检查已有素材的规格、模型、主题和 SHA，再补缺项。只换背景或缩小尺寸时，复用相同外观的 exact-alpha 母帧进行后期合成和编码；已有透明母帧时优先使用它，避免从绿幕 MP4 再次抠像。新高亮着色、人物材质或姿态变化需要新的主渲染母帧，同一份新母帧供不同背景和尺寸派生，不为每个变体重复跑 3D。旧 glow-B/v7 的主体颜色已经烘焙旧高亮，不能将换底或简单模糊称为 soft-v1。
+
+`ingest` 只登记来源，不改变图片。规则中的 `theme` 必须是素材实际渲染时使用的主题；修改配置中的主题名称不能把旧素材转换成新高亮。
+
 ZIP 根路径严格等于清单的 `file`，例如：
 
 ```text
 h-9090-liftoff/h-9090-liftoff.dark.1080.mp4
-h-9090-liftoff/h-9090-liftoff.dark.poster.1080.jpg
+h-9090-liftoff/h-9090-liftoff.dark.poster.540.jpg
 ```
 
-没有额外 `v0.1.0/` 前缀。ZIP 只含媒体，不含清单或 ZIP 校验文件，避免在清单记录 ZIP 哈希时形成循环依赖。清单由 Git 分发，App 保存同一发布版本的清单副本。
+以上是 v0.2.0 的 1080 视频与 540 封面命名；v0.1.0 的封面仍为 1080。没有额外版本目录前缀。ZIP 只含媒体，不含清单或 ZIP 校验文件，避免在清单记录 ZIP 哈希时形成循环依赖。清单由 Git 分发，App 保存同一发布版本的清单副本。
 
 ## 每版的发布步骤
 
@@ -47,10 +52,12 @@ h-9090-liftoff/h-9090-liftoff.dark.poster.1080.jpg
 3. 确认公开查看权限后，在版本发布记录登记链接、ZIP 字节数和 SHA-256；清单登记分发元数据并把版本设为 `published`、填写 `publishedAt`。链接到位前保持 draft；版本目录另存冻结的 `manifest.json` 和接入说明。
 4. 在 main 提交并推送。已发布版本的 ZIP、媒体条目和哈希固定，变更内容要发布新版本。
 
+下面以 v0.2.0 的制作过程为例。新发布时改为新的版本号和对应素材目录；已经 `published` 的版本禁止重新 ingest。
+
 ```powershell
-py media/tools/ingest.py --version 0.1.0 --dry-run
-py media/tools/ingest.py --version 0.1.0
-py media/tools/pack.py --version 0.1.0 --output E:/AII-3D/pose-hub-media/releases/pose-hub-media-v0.1.0.zip
+py media/tools/ingest.py --version 0.2.0 --dry-run
+py media/tools/ingest.py --version 0.2.0
+py media/tools/pack.py --version 0.2.0 --output E:/AII-3D/pose-hub-media/releases/pose-hub-media-v0.2.0.zip
 ```
 
 `pack.py` 默认读取 `media/config.json` 的 `src`，也可以 `--src` 指定。默认输出为忽略目录 `media/dist/`；ZIP 旁有 `.sha256` 校验侧车。固定排序、时间戳及权限保证相同媒体集合重建相同 ZIP。不同内容拒绝覆盖已有同名包；坏源文件不会替换已有包。

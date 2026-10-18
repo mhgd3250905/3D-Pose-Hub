@@ -10,13 +10,13 @@ App 只取 `published` 的固定版本，按 lock 选动作，并逐文件核对
 
 ```json
 {
-  "poseHub": {"repo": "mhgd3250905/3D-Pose-Hub", "version": "0.1.0"},
+  "poseHub": {"repo": "mhgd3250905/3D-Pose-Hub", "version": "0.2.0"},
   "manifest": "tools/pose-hub-manifest.json",
   "targets": [
     {"variant": "dark", "role": "video", "width": 1080,
      "dest": "assets/drill_media", "name": "hip-{id_lower}.mp4",
      "ids": ["glute-max-A", "h-9090-liftoff"]},
-    {"variant": "dark", "role": "poster", "width": 1080,
+    {"variant": "dark", "role": "poster", "width": 540,
      "dest": "assets/drill_media", "name": "hip-{id_lower}{ext}",
      "ids": ["glute-max-A", "h-9090-liftoff"]}
   ]
@@ -25,33 +25,35 @@ App 只取 `published` 的固定版本，按 lock 选动作，并逐文件核对
 
 `manifest` 和 `dest` 的相对路径以 lock 所在目录为基准。清单也可通过 `--manifest` 指定本地路径或 URL；采用本地清单即可完成离线同步和检查。当前流程不需要 `baseUrl`。
 
+v0.2.0 的视频仍是 1080²，封面改为 540²；从 v0.1.0 升级时，需要同时把 lock 的版本和 poster 的 `width` 改好。v0.1.0 的 1080² 封面保持原样，继续使用旧版的 App 不需修改。
+
 ## 下载、解压、同步
 
-从对应的 [发布记录](../media/releases/0.1.0.md) 取得云盘链接和 ZIP SHA-256。先核对整个 ZIP，再解压到任意目录。ZIP 根目录直接是 `<id>/<发布文件名>`，不含 `v0.1.0/` 前缀，也不含清单、绿幕或透明母帧。
+从对应的 [发布记录](../media/releases/0.2.0.md) 取得云盘链接和 ZIP SHA-256。先核对整个 ZIP，再解压到任意目录。ZIP 根目录直接是 `<id>/<发布文件名>`，不含 `v0.2.0/` 前缀，也不含清单、绿幕或透明母帧。
 
 Windows PowerShell：
 
 ```powershell
-Get-FileHash .\pose-hub-media-v0.1.0.zip -Algorithm SHA256
-Expand-Archive -LiteralPath .\pose-hub-media-v0.1.0.zip -DestinationPath .\pose-hub-media-v0.1.0
-py tools\pose_hub_sync.py --lock pose-hub.lock.json --from-dir .\pose-hub-media-v0.1.0
+Get-FileHash .\pose-hub-media-v0.2.0.zip -Algorithm SHA256
+Expand-Archive -LiteralPath .\pose-hub-media-v0.2.0.zip -DestinationPath .\pose-hub-media-v0.2.0
+py tools\pose_hub_sync.py --lock pose-hub.lock.json --from-dir .\pose-hub-media-v0.2.0
 py tools\pose_hub_sync.py --lock pose-hub.lock.json --check
 ```
 
 macOS：
 
 ```bash
-shasum -a 256 pose-hub-media-v0.1.0.zip
-unzip pose-hub-media-v0.1.0.zip -d pose-hub-media-v0.1.0
-python3 tools/pose_hub_sync.py --lock pose-hub.lock.json --from-dir ./pose-hub-media-v0.1.0
+shasum -a 256 pose-hub-media-v0.2.0.zip
+unzip pose-hub-media-v0.2.0.zip -d pose-hub-media-v0.2.0
+python3 tools/pose_hub_sync.py --lock pose-hub.lock.json --from-dir ./pose-hub-media-v0.2.0
 python3 tools/pose_hub_sync.py --lock pose-hub.lock.json --check
 ```
 
 `--from-dir` 参数必须指向解压后直接包含动作 id 目录的那一层。脚本不会解析云盘分享链接，也不会批量下载云盘文件。已匹配的目标文件不重写；复制先写临时文件，大小和 SHA-256 均通过才替换目标。源文件损坏会报错并保留原目标；`--check` 只检查 App 目标文件，漂移时返回 1。脚本不删除旧文件。
 
 ```bash
-python3 tools/pose_hub_sync.py --lock pose-hub.lock.json --from-dir ./pose-hub-media-v0.1.0 --dry-run
-python3 tools/pose_hub_sync.py --lock pose-hub.lock.json --from-dir ./pose-hub-media-v0.1.0 --receipt tools/pose-hub-receipt.json
+python3 tools/pose_hub_sync.py --lock pose-hub.lock.json --from-dir ./pose-hub-media-v0.2.0 --dry-run
+python3 tools/pose_hub_sync.py --lock pose-hub.lock.json --from-dir ./pose-hub-media-v0.2.0 --receipt tools/pose-hub-receipt.json
 ```
 
 旧的 HTTP 同步和 `--source-dir` 镜像模式仍兼容，镜像目录需要 `v<版本>/...`；它与新 ZIP 解压根目录的 `--from-dir` 模式不同，不能混用。
@@ -64,7 +66,7 @@ python3 tools/pose_hub_sync.py --lock pose-hub.lock.json --from-dir ./pose-hub-m
 
 ## 当前 App 范围
 
-v0.1.0 只含 HipLab 46 个动作的深色成片和封面；自测静图、light 以及 FlareLab 的 51 个动作均不在本包。FlareLab 当前不接入，保留既有媒体。后续发布覆盖它的动作集后，可使用 `{id}.mp4` / `{id}.jpg` 的目标模板。
+v0.2.0 与 v0.1.0 均只含 HipLab 46 个动作的深色成片和封面；v0.2.0 使用 soft-v1 柔化高亮。自测静图、light 以及 FlareLab 的 51 个动作均不在本包。FlareLab 当前不接入，保留既有媒体。后续发布覆盖它的动作集后，可使用 `{id}.mp4` / `{id}.jpg` 的目标模板。
 
 HipLab 采用 `hip-{id_lower}.mp4` / `hip-{id_lower}{ext}`；同步后仍由自己的内容生成器维护元数据。这里提供工具和接入约定，不自动改动 App 仓库。
 

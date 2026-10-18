@@ -55,21 +55,23 @@ python drill-anim/drill.py render h-9090-liftoff --theme themes/glow-b.json     
 
 Git 只放代码、模型、规格与 SHA-256 清单。公开媒体一版一个 `pose-hub-media-v<版本>.zip`，主线维护方经用户授权上传谷歌云盘并开放链接；绿幕与透明母帧只留本地备份，不进 ZIP。当前不建 R2。
 
+制作新版本时先设置新的版本号和实际素材目录。以下以 v0.2.0 制作过程为例；已发布版本不能重新 ingest。
+
 ```powershell
 Copy-Item media/config.example.json media/config.json  # 设置本地 src 和规则
-py media/tools/ingest.py --version 0.1.0 --dry-run
-py media/tools/ingest.py --version 0.1.0
-py media/tools/pack.py --version 0.1.0
+py media/tools/ingest.py --version 0.2.0 --dry-run
+py media/tools/ingest.py --version 0.2.0
+py media/tools/pack.py --version 0.2.0
 ```
 
-ZIP 内按清单 `file` 命名，只有媒体，不含清单。上传后在版本发布记录和清单登记公开链接、ZIP 大小和 SHA-256，才标为 `published`。主线维护方按用户授权直接提交推送 main，不开清单 PR。已发布包与条目固定，内容变化发新版本。详见 [media/README.md](media/README.md) 与 [v0.1.0](media/releases/0.1.0.md)。
+ZIP 内按清单 `file` 命名，只有媒体，不含清单。上传后在版本发布记录和清单登记公开链接、ZIP 大小和 SHA-256，才标为 `published`。主线维护方按用户授权直接提交推送 main，不开清单 PR。已发布包与条目固定，内容变化发新版本。详见 [media/README.md](media/README.md)、[v0.2.0 soft-v1](media/releases/0.2.0.md) 与 [v0.1.0](media/releases/0.1.0.md)。
 
 ## App 怎么取
 
 App 保存固定版本的 lock、`media/tools/sync.py` 的单文件副本，以及同一发布提交的清单副本。下载 ZIP、核对 SHA-256 并解压后：
 
 ```bash
-python tools/pose_hub_sync.py --lock pose-hub.lock.json --from-dir ./pose-hub-media-v0.1.0
+python tools/pose_hub_sync.py --lock pose-hub.lock.json --from-dir ./pose-hub-media-v0.2.0
 python tools/pose_hub_sync.py --lock pose-hub.lock.json --check
 ```
 

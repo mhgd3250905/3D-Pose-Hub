@@ -79,7 +79,7 @@ python drill-anim/drill.py render <id> --theme themes/glow-soft.json --jobs 1 --
 
 # 3) 新批次目录（不要覆盖 v0.1.0 的批次和统一目录），QA：动作 QA、绿幕合成 QA、全片解码、flickscan；
 #    抽看每项首/中/末帧的高亮
-# 4) ingest → manifest PR → 打包 pose-hub-media-v0.2.0.zip → 云盘 releases/v0.2.0/ → 状态改 published 再提 PR
+# 4) ingest → 打包 pose-hub-media-v0.2.0.zip → 云盘 releases/v0.2.0/ → 回读核验 → published；主线按用户授权直接提交推送 main
 ```
 
 v0.1.0 保持 published、文件不动；App 端改为同步 v0.2.0 即可。
