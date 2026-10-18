@@ -6,15 +6,16 @@
 
 | 项 | 数 |
 |---|---:|
-| spec 文件（specs/*.js，不含 _*.mjs 共用模块） | 196 |
+| spec 文件（specs/*.js，不含 _*.mjs 共用模块） | 198 |
 | 其中修订版（-r2/-r3） | 10 |
 | FlareLab App 51（data/drills.json） | 51 |
 | HipLab 已发布素材绑定的 spec 文件（v0.1.0（published）46 个动作 id、v0.2.0（published）46 个动作 id） | 47 |
 | HipLab 自测静图在用 spec | 6 |
 | 原版已被在用的修订版取代（保留不删） | 9 |
-| 有 spec 但没有被任何 App/发布版本使用 | 85 |
+| 有 spec 但没有被任何 App/发布版本使用 | 87 |
 | SHA 未登记 / 哈希不符 | 0 |
 
+- g-* 健身房补充（cable-hip-12；非普通办公）：2
 - FlareLab 肌群动作（17 肌群 × A 徒手 / B 家用 / C 健身房）：51
 - s-* 拉伸（原 8 项 + 修订）：11
 - t-* 托马斯专项（Flare，PR #106）：12
@@ -25,6 +26,13 @@
 - a-* HipLab 自测对比静图（PR #119 + r2）：9
 
 列说明：时长 = `timeline.duration` 秒；帧 = 时长 × spec 的 fps（未写 fps 按 30）。发布时 HipLab 统一包装成 30 fps，所以**发布片的帧号 ≠ spec 原生帧号**。profile 空 = 旧人物（未设 `modelProfile`），新做/重做必须写 `training-human-v2`。SHA 列：基线 59 = 由 git 提交 `1adcab8` 固定；PR #n = 在 `data/home-pr-candidates.json` 或 `verify.mjs` 登记。
+
+## g-* 健身房补充（cable-hip-12；非普通办公）
+
+| id | 中文名 | 目标高亮 | 场景/道具 | 时长/帧 | profile | 修订自 | 使用方 | SHA | 已知问题 |
+|---|---|---|---|---|---|---|---|---|---|
+| `g-cable-hip-abduction` | 低位绳索髋外展 | 臀中肌 · 髋外展（right） | 椅、绳索、脚踝扣 | 8s/120f@15 | v2 |  | — | 已登记（cable-hip-12） | cable-hip-12：低位绳索髋外展；滑轮左前方，右髋5–24°外展并轻度屈髋避开支撑腿；低分抽查通过待GPU，非普通办公（docs/cable-hip-12-2026-10-18.md） |
+| `g-cable-hip-extension` | 低位绳索髋后伸 | 臀大肌（right） | 椅、绳索、脚踝扣 | 8s/120f@15 | v2 |  | — | 已登记（cable-hip-12） | cable-hip-12：低位绳索髋后伸；踝扣绑定胫骨，右髋8–20°后伸，左脚/左掌轻扶支撑；低分抽查通过待GPU全片，非普通办公（docs/cable-hip-12-2026-10-18.md） |
 
 ## FlareLab 肌群动作（17 肌群 × A 徒手 / B 家用 / C 健身房）
 
@@ -266,6 +274,7 @@
 
 这些是“可直接拿来出新版本”的存量；动作审核优化优先从这里挑。
 
+- **g**（2）：`g-cable-hip-abduction` `g-cable-hip-extension`
 - **t**（11）：`t-flare-side-hold` `t-half-straddle` `t-lsit-open-close` `t-lsit-tuck` `t-lsit-vsit-circles` `t-lsit-wide` `t-seated-straddle-ext` `t-seated-straddle-lifts` `t-straddle-hold` `t-tuck-planche` `t-vsit`
 - **o**（13）：`o-chair-knee-extension` `o-seated-calf-raise` `o-seated-catcow` `o-seated-hip-er` `o-seated-sidebend` `o-seated-twist` `o-stand-ham` `o-stand-quad` `o-stand-sidebend` `o-supported-march` `o-supported-mini-squat` `o-supported-single-leg-rdl` `o-wall-hip-hinge-stretch`
 - **w**（6）：`w-bird-dog` `w-chair-hip-thrust` `w-dead-bug` `w-fire-hydrant` `w-prone-swimmer` `w-wall-sit`

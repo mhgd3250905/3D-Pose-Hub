@@ -106,6 +106,8 @@ const D = {
   hse: 'docs/home-small-equipment-2026-10-18.md', hpc: 'docs/home-posterior-chain-2026-10-18.md',
 };
 const KNOWN = {
+  'g-cable-hip-extension': ['cable-hip-12：低位绳索髋后伸；踝扣绑定胫骨，右髋8–20°后伸，左脚/左掌轻扶支撑；低分抽查通过待GPU全片，非普通办公（docs/cable-hip-12-2026-10-18.md）'],
+  'g-cable-hip-abduction': ['cable-hip-12：低位绳索髋外展；滑轮左前方，右髋5–24°外展并轻度屈髋避开支撑腿；低分抽查通过待GPU，非普通办公（docs/cable-hip-12-2026-10-18.md）'],
   'h-quad-cars': [`v0.1.0 绑定 r2；v0.2.0 已用原规格和 soft-v1 发布（${D.soft}）`, `flickscan 小腿/鞋底纹 169 坏帧，既有问题（${D.fix}）`],
   'h-quad-cars-r2': [`v0.1.0 高亮仅部分修复（拼面板 glutes+gluteMed+oblique）；soft-v1 下腰侧多一团，v0.2.0 已改用原规格和 soft-v1 发布（${D.soft}）`, `flickscan 163 坏帧，位于鞋底纹（${D.fix}）`],
   's-seated-fold-r3': [`63 条历史腕部可达范围警告保留（${D.rel}）`],
@@ -158,6 +160,7 @@ const PLANNED = [
 
 // ---------- categories ----------
 const CATS = [
+  {key: 'g', title: 'g-* 健身房补充（cable-hip-12；非普通办公）', test: id => id.startsWith('g-')},
   {key: 'flare', title: 'FlareLab 肌群动作（17 肌群 × A 徒手 / B 家用 / C 健身房）', test: id => /^[a-z-]+-[ABC]$/.test(id)},
   {key: 's', title: 's-* 拉伸（原 8 项 + 修订）', test: id => id.startsWith('s-')},
   {key: 't', title: 't-* 托马斯专项（Flare，PR #106）', test: id => id.startsWith('t-')},
