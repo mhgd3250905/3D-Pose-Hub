@@ -132,6 +132,7 @@ const KNOWN = {
   't-tuck-planche': [`原构图手机成片裁边，另存恒定构图派生（${D.lib}）`],
   't-lsit-vsit-circles': [`原构图手机成片裁边，另存恒定构图派生（${D.lib}）`],
   'o-seated-calf-raise': ['office-calf-squat-05：屈膝坐位低负荷提踵；实际前足网格锚点另查，双股座面近接触0.7–4.12mm，待GPU全片（docs/office-calf-squat-05-2026-10-18.md）'],
+  'h-suitcase-hold': ['rockback-hold-09：单手静态提握抗侧屈；居家小器械，有哑铃/安全空间才适合办公；低分抽查通过待GPU（docs/rockback-hold-09-2026-10-18.md）'],
   'h-donkey-kick': ['floor-glute-07：非办公地面；右膝约90°矢状面后踢，短垫承托双掌/左膝；低分抽查通过待GPU（docs/floor-glute-07-2026-10-18.md）'],
   'o-supported-single-leg-rdl': ['office-support-06：右掌扶稳椅背、左腿支撑髋铰链；近接触1.57mm，待GPU全片（docs/office-support-06-2026-10-18.md）'],
   'o-supported-mini-squat': ['office-calf-squat-05：双掌扶60cm宽稳椅高背、浅幅动态蹲；双掌网格与背板间隙1.62mm，待GPU全片（docs/office-calf-squat-05-2026-10-18.md）'],
@@ -139,6 +140,7 @@ const KNOWN = {
 };
 // Planned in docs but no spec under specs/: the pool of "待补全" candidates.
 const PLANNED = [
+  {id:'h-quadruped-rockback',name:'四足中立背后坐',why:'rockback-hold-09：初稿及两次修正后直臂/可达不能同时满足，停止未登记，不计完成；膝掌接触本身已分别验证',src:'docs/rockback-hold-09-2026-10-18.md'},
   {id:'h-side-lying-hip-abduction',name:'侧卧直腿外展',why:'floor-hip-knee-08：两轮后托头手穿头6.57mm、短裤穿地20.4mm及可达告警，停止未登记，不计完成',src:'docs/floor-hip-knee-08-2026-10-18.md'},
   {id:'h-prone-knee-curl',name:'俯卧徒手屈膝',why:'floor-hip-knee-08：两轮后头手穿插33.87–38.84mm、前臂穿地4.5mm且大腿/膝悬空，停止未登记，不计完成',src:'docs/floor-hip-knee-08-2026-10-18.md'},
   {id:'o-wall-forearm-plank',name:'站姿扶墙前臂支撑',why:'office-support-06：两轮后掌接触近似成立，肘部网格距墙仍5.66mm，停止未登记，不计完成',src:'docs/office-support-06-2026-10-18.md'},

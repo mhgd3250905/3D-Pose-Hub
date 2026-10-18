@@ -6,13 +6,13 @@
 
 | 项 | 数 |
 |---|---:|
-| spec 文件（specs/*.js，不含 _*.mjs 共用模块） | 195 |
+| spec 文件（specs/*.js，不含 _*.mjs 共用模块） | 196 |
 | 其中修订版（-r2/-r3） | 10 |
 | FlareLab App 51（data/drills.json） | 51 |
 | HipLab 已发布素材绑定的 spec 文件（v0.1.0（published）46 个动作 id、v0.2.0（published）46 个动作 id） | 47 |
 | HipLab 自测静图在用 spec | 6 |
 | 原版已被在用的修订版取代（保留不删） | 9 |
-| 有 spec 但没有被任何 App/发布版本使用 | 84 |
+| 有 spec 但没有被任何 App/发布版本使用 | 85 |
 | SHA 未登记 / 哈希不符 | 0 |
 
 - FlareLab 肌群动作（17 肌群 × A 徒手 / B 家用 / C 健身房）：51
@@ -20,7 +20,7 @@
 - t-* 托马斯专项（Flare，PR #106）：12
 - o-* 办公室（PR #97–104 + office-hip-leg-02 + office-adductor-back-03 + office-knee-march-04 + office-calf-squat-05 + office-support-06）：17
 - w-* 久坐强化（PR #105）：8
-- h-* 居家/肌群补充/开胯/开肩/小器械力量/徒手后链/办公下肢候选（PR #111–115 + r2 + Pose-Hub PR #5、#6 + office-lower-body-01）：72
+- h-* 居家/肌群补充/开胯/开肩/小器械力量/徒手后链/办公下肢候选（PR #111–115 + r2 + Pose-Hub PR #5、#6 + office-lower-body-01）：73
 - n-* HipLab 开胯 MVP 新增（PR #119）：15
 - a-* HipLab 自测对比静图（PR #119 + r2）：9
 
@@ -212,6 +212,7 @@
 | `h-side-leg-raise` | 站姿侧抬腿 | 臀中肌 · 髋外展（right） | — | 8s/120f@15 | v2 |  | — | PR #111 |  |
 | `h-squat` | 徒手深蹲 | 股四头肌+臀大肌 | — | 8s/240f@30 | v2 |  | HipLab v0.1.0；HipLab v0.2.0 | PR #111 |  |
 | `h-step-jack` | 低冲击开合跳 | 三角肌+臀中肌 · 髋外展 | — | 8s/120f@15 | v2 |  | — | PR #111 |  |
+| `h-suitcase-hold` | 单手哑铃静态提握抗侧屈 | 腹斜肌 | 哑铃 | 8s/120f@15 | v2 |  | — | 已登记（home-pr-candidates） | rockback-hold-09：单手静态提握抗侧屈；居家小器械，有哑铃/安全空间才适合办公；低分抽查通过待GPU（docs/rockback-hold-09-2026-10-18.md） |
 | `h-sumo-pry` | 相扑深蹲肘推膝停留 | 内收肌群+臀大肌 | 垫 | 8s/120f@15 | v2 |  | HipLab v0.1.0；HipLab v0.2.0 | PR #113 |  |
 | `h-superman` | 俯卧超人式 | 竖脊肌+臀大肌 | 垫 | 8s/120f@15 | v2 |  | — | PR #6 |  |
 | `h-supine-twist-r2` | 仰卧屈膝扭转 | 腹斜肌+竖脊肌 | 垫 | 8s/240f@30 | v2 | `h-supine-twist` | HipLab v0.1.0 作 h-supine-twist；HipLab v0.2.0 作 h-supine-twist | 已登记（2026-10-17 HipLab accepted media） |  |
@@ -268,7 +269,7 @@
 - **t**（11）：`t-flare-side-hold` `t-half-straddle` `t-lsit-open-close` `t-lsit-tuck` `t-lsit-vsit-circles` `t-lsit-wide` `t-seated-straddle-ext` `t-seated-straddle-lifts` `t-straddle-hold` `t-tuck-planche` `t-vsit`
 - **o**（13）：`o-chair-knee-extension` `o-seated-calf-raise` `o-seated-catcow` `o-seated-hip-er` `o-seated-sidebend` `o-seated-twist` `o-stand-ham` `o-stand-quad` `o-stand-sidebend` `o-supported-march` `o-supported-mini-squat` `o-supported-single-leg-rdl` `o-wall-hip-hinge-stretch`
 - **w**（6）：`w-bird-dog` `w-chair-hip-thrust` `w-dead-bug` `w-fire-hydrant` `w-prone-swimmer` `w-wall-sit`
-- **h**（54）：`h-banana` `h-band-pallof` `h-band-pull-apart` `h-band-row` `h-bear-plank` `h-biceps-self` `h-bridge-march` `h-bridge-overhead` `h-bulgarian` `h-calf-raise` `h-catcow-quad` `h-chair-dip` `h-chair-kickback` `h-chair-lat` `h-chair-sit-to-stand` `h-chair-step-up` `h-chair-tspine` `h-cobra` `h-crossbody` `h-crunch` `h-db-curl` `h-db-floor-press` `h-db-lateral` `h-db-press` `h-db-rdl` `h-db-reverse-fly` `h-db-row` `h-dd-shoulder` `h-donkey-kick` `h-forearm-plank` `h-good-morning` `h-incline-pushup` `h-inner-thigh` `h-kb-swing` `h-mountain-climber` `h-open-book` `h-pike-pushup` `h-reverse-crunch` `h-reverse-lunge` `h-russian-twist` `h-seated-reachback` `h-side-er` `h-side-leg-raise` `h-step-jack` `h-superman` `h-tabletop` `h-tib-raise` `h-towel-behind` `h-towel-pass` `h-towel-pulldown` `h-wall-angel` `h-wall-calf-bent-knee` `h-wall-calf` `h-wall-pec`
+- **h**（55）：`h-banana` `h-band-pallof` `h-band-pull-apart` `h-band-row` `h-bear-plank` `h-biceps-self` `h-bridge-march` `h-bridge-overhead` `h-bulgarian` `h-calf-raise` `h-catcow-quad` `h-chair-dip` `h-chair-kickback` `h-chair-lat` `h-chair-sit-to-stand` `h-chair-step-up` `h-chair-tspine` `h-cobra` `h-crossbody` `h-crunch` `h-db-curl` `h-db-floor-press` `h-db-lateral` `h-db-press` `h-db-rdl` `h-db-reverse-fly` `h-db-row` `h-dd-shoulder` `h-donkey-kick` `h-forearm-plank` `h-good-morning` `h-incline-pushup` `h-inner-thigh` `h-kb-swing` `h-mountain-climber` `h-open-book` `h-pike-pushup` `h-reverse-crunch` `h-reverse-lunge` `h-russian-twist` `h-seated-reachback` `h-side-er` `h-side-leg-raise` `h-step-jack` `h-suitcase-hold` `h-superman` `h-tabletop` `h-tib-raise` `h-towel-behind` `h-towel-pass` `h-towel-pulldown` `h-wall-angel` `h-wall-calf-bent-knee` `h-wall-calf` `h-wall-pec`
 
 原版已被在用修订取代（9）：`a-9090`→`a-9090-r2` `a-deep-squat`→`a-deep-squat-r2` `a-thomas`→`a-thomas-r2` `h-9090-liftoff`→`h-9090-liftoff-r2` `h-knee-hug`→`h-knee-hug-r2` `h-supine-twist`→`h-supine-twist-r2` `s-9090`→`s-9090-r2` `s-frog`→`s-frog-r2` `s-seated-fold`→`s-seated-fold-r3`
 
@@ -276,6 +277,7 @@
 
 | 候选 | 内容 | 为什么还没有 | 出处 |
 |---|---|---|---|
+| h-quadruped-rockback | 四足中立背后坐 | rockback-hold-09：初稿及两次修正后直臂/可达不能同时满足，停止未登记，不计完成；膝掌接触本身已分别验证 | docs/rockback-hold-09-2026-10-18.md |
 | h-side-lying-hip-abduction | 侧卧直腿外展 | floor-hip-knee-08：两轮后托头手穿头6.57mm、短裤穿地20.4mm及可达告警，停止未登记，不计完成 | docs/floor-hip-knee-08-2026-10-18.md |
 | h-prone-knee-curl | 俯卧徒手屈膝 | floor-hip-knee-08：两轮后头手穿插33.87–38.84mm、前臂穿地4.5mm且大腿/膝悬空，停止未登记，不计完成 | docs/floor-hip-knee-08-2026-10-18.md |
 | o-wall-forearm-plank | 站姿扶墙前臂支撑 | office-support-06：两轮后掌接触近似成立，肘部网格距墙仍5.66mm，停止未登记，不计完成 | docs/office-support-06-2026-10-18.md |
