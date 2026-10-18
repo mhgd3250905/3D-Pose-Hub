@@ -78,7 +78,7 @@ node drill-anim/tools/catalog.mjs --check                    # 只检查是否�
 | Chromium 起不来：`libatk-1.0.so.0: cannot open shared object file` | 缺系统库（libatk、libatk-bridge、libXcomposite、libXdamage、libatspi）。有 root 就 `npx playwright install-deps chromium`；没 root 就把这几个 .so 放一个目录，填进 config 的 `ld_library_path` |
 | 找不到主题文件 | `--theme` 路径相对 `drill-anim/`，写 `themes/glow-soft.json`，不是 `drill-anim/themes/...` |
 | 预览后 `qa` 显示 `pass: false` | 只渲了几帧，`frames_complete=false` 必然 false。看各单项的 `ok`，不要看总 `pass` |
-| 对不上文档里的帧号 | 帧号 = 秒 × spec 的 `fps`。76 份 spec 是 `fps: 15`，其余默认 30；HipLab 发布时统一包装成 30 fps（`media/releases/0.1.0.sources.json` 的 `renderProfile`）。h-* 的“发布片第 120 帧”= spec 原生第 60 帧 |
+| 对不上文档里的帧号 | 以实际选中的 spec 为准：原生帧号 = 秒 × 该 spec 的 `fps`（未写时为 30）。HipLab 发布统一包装成 30 fps（`media/releases/0.1.0.sources.json` 的 `renderProfile`），所以同一时刻的原生帧号 = 发布帧号 × spec fps / 30。仅当 spec 为 15 fps 时，发布帧号 = 原生帧号 × 2，例如发布第 120 帧对应原生第 60 帧；`h-knee-hug-r2`、`h-supine-twist-r2` 已是 30 fps，不换算，不按 id 前缀推断 |
 | 预览卡住：boot 和 `highlight` 日志之后很久没有 `frame N` | 个别动作（实测 `n-seated-squeeze`，两个主题都 >75 s 不出第一帧）在 2 vCPU/SwiftShader 上极慢，`drill.py` 还会自动重跑缺帧任务。用 `timeout 180 python3 drill-anim/drill.py ...` 包一层；超时就在 PR 里写明，交给主线本机预览。日志在 `<work_dir>/<id>/fr-log-*.txt` |
 | 渲染拒绝覆盖 | 已有同名成片默认不覆盖；预览帧按 id 放在 `work_dir/<id>/`，重渲会清理这个目录 |
 | `node drill-anim/tools/probe.mjs` 连不上 | probe 不会自己启动 Vite；先在仓库根另开一个终端 `npx vite --host 127.0.0.1 --port <config 的 app_port>` |
@@ -128,7 +128,7 @@ node drill-anim/tools/catalog.mjs --check                    # 只检查是否�
 | `self_clip.worst_gap_mm` | 胶囊体重叠 < 8 mm（`allowContact` 的对跳过） | 自穿模；`worst_pair` 指出哪两段 |
 | `hand_clip.<side>.min_signed_mm` | ≥ −0.5 mm | 手陷进身体/衣服 |
 | `touch` | 贴身的手间隙 ≤ 4 mm（默认） | 该贴住的手悬空 |
-| `solver_warning_frames` | 越少越好（不进 pass） | 求解没收敛，必须看对应帧 |
+| `solver_warning_frames` | 越少越好（不进 pass） | 求解告警帧（含未收敛及肢体目标超出可达范围）；该计数本身不区分类别，必须看对应帧的具体告警消息，按类别判断，不能统一当作未收敛 |
 | `frame_edge_touch_frames` | 0 | 身体碰画面边缘（手机裁切会切掉） |
 | `frames_complete` | 全片才可能 true | 预览时忽略 |
 
