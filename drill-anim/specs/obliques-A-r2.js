@@ -70,7 +70,7 @@ for (const [s, side, r, th, W0, FN0, tag, kick] of [[-1, 'right', rR, tR, W0R, F
   trk['T' + tag] = lin(th); trk['s' + tag] = lin(t => Math.max(0, (th(t) - 0.75) / 0.25) ** 2);
 }
 // Accepted body baseline (drill-anim/AGENTS.md): training-human-v2 with alignClavicles false; pose arithmetic unchanged.
-export default { modelProfile: 'training-human-v2', alignClavicles: false, 
+export default { modelProfile: 'training-human-v2', alignClavicles: false,
   id: 'obliques-A-r2', name: '熊爬穿腿', nameEn: 'Kick-Through (Beast Flow)',
   timeline: { duration: DUR, tracks: { R: lin(rR), L: lin(rL), rot: lin(t => rR(t) + rL(t)), ...trk } },
   pose: {

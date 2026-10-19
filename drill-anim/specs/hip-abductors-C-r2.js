@@ -28,7 +28,7 @@ const foot = (side, psi) => { const sg = side === 'left' ? 1 : -1, a = ank(side,
   pole: [+(a[0] + sg * 0.15 * Math.sin(psi * DEG)).toFixed(4), 0.95, +(a[2] + 0.3).toFixed(4)] }; };
 const shift = (side, i, k) => { const a = ank(side, P0); a[i] += k; return { ankle: a }; };
 // Accepted body baseline (drill-anim/AGENTS.md): training-human-v2 with alignClavicles false; pose arithmetic unchanged.
-export default { modelProfile: 'training-human-v2', alignClavicles: false, 
+export default { modelProfile: 'training-human-v2', alignClavicles: false,
   id: 'hip-abductors-C-r2', name: '器械髋外展', nameEn: 'Seated Machine Hip Abduction',
   timeline: { duration: 8, tracks: KEYS },
   pose: {

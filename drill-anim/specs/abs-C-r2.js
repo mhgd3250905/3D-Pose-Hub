@@ -23,7 +23,7 @@ const prof = t => { const r = ((t % 4) + 4) % 4; return r < 1.0 ? ez(r / 1.0) : 
 const N = 240, uK = [], bK = [];
 for (let i = 0; i <= N; i++) { const t = 8 * i / N, u = prof(t); uK.push([t, u, 'linear']); bK.push([t, 4 * u * (1 - u), 'linear']); }
 // Accepted body baseline (drill-anim/AGENTS.md): training-human-v2 with alignClavicles false; pose arithmetic unchanged.
-export default { modelProfile: 'training-human-v2', alignClavicles: false, 
+export default { modelProfile: 'training-human-v2', alignClavicles: false,
   id: 'abs-C-r2', name: '双杠直臂支撑举腿', nameEn: 'Dip-Bar Support Leg Raise',
   timeline: { duration: 8, tracks: { u: uK, bow: bK } },
   pose: {

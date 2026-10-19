@@ -5,7 +5,7 @@
 // 'open' 0 = tall, 1 = the right hip pushes out to the right while the trunk leans left toward the chair (stretch along the outer
 // right hip / glute medius and the right side of the waist). One slow rep / 8 s. Head +Y, front +Z, body left = +X.
 // Accepted body baseline (drill-anim/AGENTS.md): training-human-v2 with alignClavicles false; pose arithmetic unchanged.
-export default { modelProfile: 'training-human-v2', alignClavicles: false, 
+export default { modelProfile: 'training-human-v2', alignClavicles: false,
   id: 'o-stand-crossreach-r2', name: '扶椅站姿交叉侧伸', nameEn: 'Chair-Supported Cross-Leg Side Reach',
   timeline: { duration: 8, tracks: { open: [[0, 0], [0.6, 0], [2.0, 0.85], [3.8, 1], [5.6, 0.85], [7.0, 0]] } },
   pose: {

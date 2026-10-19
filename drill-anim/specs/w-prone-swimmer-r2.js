@@ -28,7 +28,7 @@ for (const [g, key] of Object.entries(keyOf)) for (let i = 0; i < 3; i++) {
 }
 const Z = [0, 0, 0], hand0 = { mode: 'free', frame: 'chest', wrist: Z, finger: Z, normal: Z, poleUp: Z };
 // Accepted body baseline (drill-anim/AGENTS.md): training-human-v2 with alignClavicles false; pose arithmetic unchanged.
-export default { modelProfile: 'training-human-v2', alignClavicles: false, 
+export default { modelProfile: 'training-human-v2', alignClavicles: false,
   id: 'w-prone-swimmer-r2', name: '俯卧游泳式', nameEn: 'Prone Swimmers',
   timeline: { duration: DUR, tracks },
   pose: {

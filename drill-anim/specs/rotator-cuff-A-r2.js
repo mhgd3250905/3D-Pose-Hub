@@ -10,7 +10,7 @@ const tapWin = s => [[s, 0], [s + 0.2, 0], [s + 0.75, 1], [s + 1.0, 1], [s + 1.5
 const env = starts => starts.flatMap(tapWin).sort((a, b) => a[0] - b[0]);
 const floorHand = z => ({ mode: 'floor', at: [HX, z], finger: [1, 0], poleUp: [Math.sign(z) * -0.24, 0.95, 0.18] });
 // Accepted body baseline (drill-anim/AGENTS.md): training-human-v2 with alignClavicles false; pose arithmetic unchanged.
-export default { modelProfile: 'training-human-v2', alignClavicles: false, 
+export default { modelProfile: 'training-human-v2', alignClavicles: false,
   id: 'rotator-cuff-A-r2', name: '俯撑交替触肩', nameEn: 'Plank Shoulder Taps',
   timeline: { duration: 8, tracks: { tapR: [[0, 0], ...env([0.0, 4.0]).slice(1)], tapL: [[0, 0], ...env([2.0, 6.0])] } },
   pose: {

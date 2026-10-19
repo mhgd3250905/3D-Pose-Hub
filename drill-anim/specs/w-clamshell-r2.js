@@ -29,7 +29,7 @@ const deltas = {};
 ['x', 'y', 'z'].forEach((c, i) => { tracks['q' + c] = track(DUR, t => poleAt(t)[i]); const u = [0, 0, 0]; u[i] = 1; deltas['q' + c] = { feet: { right: { poleLow: u } } }; });
 const FROT = footRotW(hips, [[[1, 0, 0], 55]]);
 // Accepted body baseline (drill-anim/AGENTS.md): training-human-v2 with alignClavicles false; pose arithmetic unchanged.
-export default { modelProfile: 'training-human-v2', alignClavicles: false, 
+export default { modelProfile: 'training-human-v2', alignClavicles: false,
   id: 'w-clamshell-r2', name: '侧卧蚌式开合', nameEn: 'Side-Lying Clamshell',
   timeline: { duration: DUR, tracks },
   pose: {
