@@ -13,7 +13,7 @@
 set -e
 DIR="$(cd "$(dirname "$0")" && pwd)"; REPO="$(cd "$DIR/../../.." && pwd)"
 WORK="${1:-$REPO/output/human-v2plus-torso-work}"; mkdir -p "$WORK"; cd "$WORK"
-export PYTHONPATH="$DIR:$WORK${PYTHONPATH:+:$PYTHONPATH}"
+export PYTHONPATH="$DIR:$WORK"
 python3 - "$DIR/stage1.py" "$WORK/stage1lib.py" <<'P'
 import sys; s=open(sys.argv[1]).read(); i=s.index('# ---------- SDF on grid')
 open(sys.argv[2],'w').write(s[:i].replace("VOX=float(sys.argv[1]) if len(sys.argv)>1 else 0.005","VOX=0.005"))

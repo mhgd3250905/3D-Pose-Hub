@@ -28,9 +28,9 @@ for hl in ['plain', 'hl']:
     row = [(f'{v} · {c}', tile(f'stand-{v}-{hl}-{k}.png', 420)) for v in ['front', 'side', 'back'] for c, k in (A, B)]
     t = 'standing h-squat t=0, ' + ('highlights on (front: chest/abs/deltoids/quads; side: deltoids/obliques/glutes/quads; back: lats/scapular/glutes/hamstrings/triceps)' if hl == 'hl' else 'no highlight')
     sheet(t, [('', row)], 420, os.path.join(DST, f'standing-{hl}.jpg'))
-C = ['neck', 'neck-back', 'shoulder', 'armpit', 'arm-weld', 'arm-weld-front', 'waist', 'hip-back']
+C = ['neck', 'neck-back', 'shoulder', 'armpit', 'waist', 'hip-back']
 tl = [[(f'{c} · {cap}', tile(f'close-{c}-{k}.png', 440)) for cap, k in (A, B)] for c in C]
 pr = [('', tl[i] + tl[i + 1]) for i in range(0, len(tl), 2)]
-sheet('standing close-ups: neck seam front/back, shoulder, armpit, arm weld ring back/front (no highlight), waist, hip/glutes', pr, 440, os.path.join(DST, 'closeups-standing.jpg'))
+sheet('standing close-ups: neck seam front/back, shoulder, armpit, waist, hip/glutes (highlights on to show continuity)', pr, 440, os.path.join(DST, 'closeups-standing.jpg'))
 row = [(f'{c} · {cap}', tile(f'squatclose-{c}-{k}.png', 440)) for c in ['hip', 'hip-back', 'shoulder'] for cap, k in (A, B)]
 sheet('deep squat (h-squat t=1.20) close-ups: hip crease front, hip/glute back, shoulder', [('', row)], 440, os.path.join(DST, 'closeups-squat.jpg'))

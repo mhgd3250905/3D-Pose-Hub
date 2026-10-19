@@ -36,9 +36,7 @@ bsel=((np.abs(B[:,0])>0.12)&(B[:,1]>1.10)&(B[:,1]<1.32))|((B[:,1]>0.58)&(B[:,1]<
 src.append(B[bsel]); srcW.append(Db[bsel]); srcN.append(nB[bsel])
 S=np.vstack(src); SW=np.vstack(srcW); SN=np.vstack(srcN)
 Nv=vnormals(V,F)
-import os
-KNN=int(os.environ.get('T_KNN','8')); DIFF=int(os.environ.get('T_DIFF','15')); SHR=int(os.environ.get('T_SHOULDER','1'))
-tree=cKDTree(S); dd,jj=tree.query(V,k=KNN)
+tree=cKDTree(S); dd,jj=tree.query(V,k=24)
 cos=np.einsum('ikj,ij->ik',SN[jj],Nv)
 w=np.where(cos>0.2,(cos-0.2)/0.8,0)/(dd+0.004)**2
 w[w.sum(1)==0]=1.0/(dd[w.sum(1)==0]+0.004)**2
@@ -53,29 +51,23 @@ W[nMC:]=seamW
 # ---- diffuse (heat) on the torso graph, seams pinned ----
 E=edges_of(F); A=adjacency(n,E); deg=np.asarray(A.sum(1)).ravel()
 free=np.ones(n,bool); free[nMC:]=False
-for it in range(DIFF):
+for it in range(90):
     Wn=A@W/np.maximum(deg,1)[:,None]; W[free]=0.5*W[free]+0.5*Wn[free]
 # ---- shoulders: upper-arm share by geometry (1 on the arm tube, ramping in over the deltoid cap, 0 on the armpit web and chest/back
 #      wall) so raising the arm stretches the armpit instead of folding a half-arm/half-torso web ----
 import stage1lib as S1
 armI={sd:[bi[b] for b in BONES if b==sd+'UpperArm' or b==sd+'Forearm' or b==sd+'Hand'] for sd in ('left','right')}
-for sgn,sd in (((1,'left'),(-1,'right')) if SHR else ()):
+for sgn,sd in ((1,'left'),(-1,'right')):
     tb,TSa,Ea,_=S1.arm[sd]; t,ph,r=tb.coords(V); Rs=S1.tube_eval(Ea,TSa,0.005,t,ph)
-    rad=(V-tb.A)-np.outer(t,tb.u); rad/=np.maximum(np.linalg.norm(rad,axis=1,keepdims=True),1e-9)
-    facing=np.einsum('ij,ij->i',Nv,rad)              # arm tube faces away from its axis; the chest wall under the arm faces it
-    m=np.maximum((1-sstep(0.004,0.020,r-Rs))*sstep(0.25,0.75,facing),d['snapW']*(V[:,0]*sgn>0)); a=sstep(-0.035,0.055,t); tgt=m*a
+    m=1-sstep(0.003,0.025,r-Rs); a=sstep(-0.035,0.055,t); tgt=m*a
     reg=sstep(0.05,0.09,V[:,0]*sgn)*sstep(1.04,1.12,V[:,1])*free
     ai=armI[sd]; cur=W[:,ai].sum(1); oth=1-cur
     Wn=W.copy(); Wn[:,ai]=0; Wn[:,bi[sd+'UpperArm']]=tgt
     sc=np.where(oth>1e-6,(1-tgt)/np.maximum(oth,1e-6),0); Wn[:,[k for k in range(NBn) if k not in ai]]*=sc[:,None]
     lack=oth<=1e-6; Wn[lack,bi[sd+'Scapula']]+=1-tgt[lack]
     W=np.where(reg[:,None]>0,(1-reg[:,None])*W+reg[:,None]*Wn,W)
-# snapped arm band = the v2 arm skin there: its own weights (blended by the snap weight)
-swp=np.maximum(d['snapW'],((ring>=1)&(ring<=4)&(np.abs(V[:,0])>0.12)&(V[:,1]>1.08)&(V[:,1]<1.30)).astype(float)); armSk=(np.abs(B[:,0])>0.10)&(B[:,1]>1.0)
-_,jn=cKDTree(B[armSk]).query(V); Wsk=Db[armSk][jn]; W=W*(1-swp[:,None])+Wsk*swp[:,None]
-free2=free&(swp<0.5)
 for it in range(12):
-    Wn=A@W/np.maximum(deg,1)[:,None]; W[free2]=0.5*W[free2]+0.5*Wn[free2]
+    Wn=A@W/np.maximum(deg,1)[:,None]; W[free]=0.5*W[free]+0.5*Wn[free]
 # ---- top 4, normalised, quantised to /255 (seams exact) ----
 order=np.argsort(-W,1)[:,:4]; top=np.take_along_axis(W,order,1); top/=top.sum(1,keepdims=True)
 q=np.round(top*255).astype(int); q[:,0]+=255-q.sum(1)
@@ -93,7 +85,6 @@ for r_,a in ((1,0.6),(2,0.3),(3,0.12)):
     ok=np.linalg.norm(acc,axis=1)>0
     N[sel[ok]]=(1-a)*N[sel[ok]]+a*acc[ok]/np.linalg.norm(acc[ok],axis=1,keepdims=True)
 N/=np.linalg.norm(N,axis=1,keepdims=True)
-
 # ---- short-sleeve paint gate: 1 on the arm tube (sleeve hem goes round the arm), 0 on the armpit web / torso ----
 import stage1lib as S1
 gate=np.zeros(n)

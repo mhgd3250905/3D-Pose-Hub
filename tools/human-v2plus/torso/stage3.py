@@ -1,7 +1,6 @@
 # smoothing + seam fairing -> fair.npz
 from common import *
 from meshops import *
-from scipy.spatial import cKDTree
 d=np.load('zip.npz',allow_pickle=True); V,F,nMC=d['V'],d['F'],int(d['nMC']); seam=d['seam']
 n=len(V); pinned=np.zeros(n,bool); pinned[nMC:]=True
 # graph distance (rings) from the seam
@@ -73,23 +72,8 @@ def fair(V,free):
     sol=spsolve(Q[fi][:,fi].tocsc(),-Q[fi][:,xi]@Vall[xi]); X=Vall.copy(); X[fi]=sol; return X[:n]
 import scipy.sparse as sp
 from scipy.sparse.linalg import spsolve
-# ---------- below the old sleeve cuff the arm tube follows the v2 arm skin (field = skin ring fit); mark that band (weights) ----------
-import stage1lib as S1
-B=P[BODY]; NBo=np.array(M[BODY]['N']).reshape(-1,3); snapW=np.zeros(len(V)); snapN=np.zeros((len(V),3))
-for sgn,sd in ((1,'left'),(-1,'right')):
-    tb,TSa,Ea,_=S1.arm[sd]; t,ph,r=tb.coords(V); Rs=S1.tube_eval(Ea,TSa,0.005,t,ph)
-    rad=(V-tb.A)-np.outer(t,tb.u); rad/=np.maximum(np.linalg.norm(rad,axis=1,keepdims=True),1e-9); Nv=vnormals(V,F)
-    tB,_,rB=tb.coords(B); skin=(B[:,0]*sgn>0.10)&(tB>0.05)&(tB<0.26)&(rB<0.09)
-    tr=cKDTree(B[skin]); dd,jj=tr.query(V,k=3)
-    w=sstep(0.085,0.115,t)*sstep(0.3,0.7,np.einsum('ij,ij->i',Nv,rad))*(1-sstep(0.006,0.015,r-Rs))*(V[:,0]*sgn>0.10)
-    w[nMC:]=0; w*=sstep(1.5,3.5,ring.astype(float))
-    Sp=B[skin][jj]; Sn=NBo[skin][jj]; iw=1/(dd+1e-4); iw/=iw.sum(1,keepdims=True)
-    spp=(Sp*iw[...,None]).sum(1); sn=(Sn*iw[...,None]).sum(1); sn/=np.linalg.norm(sn,axis=1,keepdims=True)
-    tgt=V+sn*np.einsum("ij,ij->i",spp-V,sn)[:,None]
-    m=w>snapW; snapN[m]=sn[m]; snapW[m]=w[m]     # positions are not moved (nearest-skin projection is not smooth); the band keeps the field shape, which is the skin ring fit
-print('arm-skin band verts',int((snapW>0.5).sum()))
-free=(ring>=1)&(ring<=7)&(snapW<0.5)
+free=(ring>=1)&(ring<=7)
 V=fair(V,free)
-V=taubin(V,F,pinned|(ring<=3)|(snapW>0.5),5)
-np.savez('fair.npz',V=V,F=F,nMC=nMC,seam=seam,keepT=d['keepT'],keepB=d['keepB'],ring=ring,snapW=snapW,snapN=snapN)
+V=taubin(V,F,pinned|(ring<=3),5)
+np.savez('fair.npz',V=V,F=F,nMC=nMC,seam=seam,keepT=d['keepT'],keepB=d['keepB'],ring=ring)
 print('verts',len(V),'max move from MC',np.linalg.norm(V-V0,axis=1).max())
