@@ -8,7 +8,9 @@ const { boot } = await import(pathToFileURL(path.join(REPO, 'drill-anim/lib/boot
 const { loadTheme } = await import(pathToFileURL(path.join(REPO, 'drill-anim/lib/config.mjs')).href);
 const A = process.argv.slice(2); const opt = (k, d) => { const i = A.indexOf(k); return i >= 0 ? A[i + 1] : d; };
 const OUT = path.resolve(A[0] || 'output/human-v2plus-regions'); fs.mkdirSync(path.join(OUT, 'raw'), { recursive: true });
-const SZ = +opt('--size', '640'), HL = opt('--hl', 'obliques').split(',');
+const SZ = +opt('--size', '640'), HLO = opt('--hl', null)?.split(','), ANCH = A.includes('--anchors'), ONLY = opt('--only', null)?.split(',');
+// --hl a,b: highlight these groups / base keys in every pose instead of the defaults; --anchors: debug dots + normal sticks at the
+// highlighted regions' label anchors (getRegionAnchor); --only id,...: only these poses; --stand: add the standing pose (t=0)
 const theme = loadTheme(null); const R = f => JSON.parse(fs.readFileSync(path.join(REPO, 'drill-anim/models', f), 'utf8'));
 const t0 = Date.now(); const log = (...a) => console.log(((Date.now() - t0) / 1000).toFixed(0) + 's', ...a);
 const { b, p } = await boot({ size: SZ, pr: 1, theme, bakeHands: [] }); log('boot ok');
@@ -27,7 +29,9 @@ const POSES = [ // id, t, highlight, [view name, dir, joint for close-up | null 
   ['h-squat', 1.2, ['quadriceps', 'glute-max'], [['front', [0.55, 0.15, 1], null], ['thigh', [0.8, 0.2, 0.7], 'leftKnee', 0.5], ['back', [0.4, 0.2, -1], null]]],
   ['scapular-B', 1.9, ['lats', 'scapular'], [['back', [0.25, 0.0, -1], null], ['lat', [0.7, -0.05, -0.8], 'leftShoulder', 0.5], ['front', [0.3, 0.0, 1], null]]],
 ];
-for (const [id, t, hl, views] of POSES) {
+if (A.includes('--stand')) POSES.unshift(['h-squat', 0.0, ['chest'], [['stand-front', [0.35, 0.1, 1], null], ['stand-back', [0.35, 0.1, -1], null]]]);
+if (ANCH) await p.evaluate(() => __v2p.regions.showAnchors(true));
+for (const [id, t, hl0, views] of POSES) { if (ONLY && !ONLY.includes(id)) continue; const hl = HLO || hl0;
   const s0 = (await import(pathToFileURL(path.join(REPO, 'drill-anim/specs', id + '.js')).href)).default;
   const spec = Object.assign({}, s0, { modelProfile: 'training-human-v2plus', v2plus: { outfit: 'compression', torso: 'base', regions: 'baked' } });
   await p.evaluate(([spec, th, SZ]) => { (__props.list || []).forEach(o => o.parent?.remove(o)); if (__props.list) __props.list.length = 0;

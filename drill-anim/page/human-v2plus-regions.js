@@ -217,6 +217,34 @@ V2P.setRegions = function(on) { R.on = on; R.uni.uV2pRon.value = on ? 1 : 0; if 
   return { meshes: R.meshInfo, channels: R.bakeInfo.channels, maxDeg: R.bakeInfo.maxDeg, present: R.bakeInfo.present, verts: R.bakeInfo.verts }; };
 const SHOE = /Shoe|Sneaker|Sole/i;
 R._dev = { S, charts, MID }; // offline tools (tools/human-v2plus/regions/offline.mjs)
+// ---------- label anchors (M4) ----------
+// table.anchors.list[id] = { mesh, meshVerts, vertex, rest, normal, ring, ringSign } (tools/human-v2plus/regions/anchors.py, rest pose).
+// getRegionAnchor(id) -> { id, key, side, position: [x,y,z], normal: [x,y,z], mesh, stale } at the CURRENT pose: the anchor vertex and its
+// triangle ring are skinned on the CPU (SkinnedMesh.getVertexPosition, bones as last posed), world space. null when the region has no
+// anchor or the mesh is missing. stale = the bake state differs from the one the anchors were computed for (positions may be off).
+const _v = [0, 0, 0, 0].map(() => null);
+function meshByName(nm) { for (const o of (R.patched ? R.patched.keys() : [])) if (o.name === nm) return o; return null; }
+R.getRegionAnchor = function(id) { const A = R.data?.anchors?.list?.[id]; if (!A) return null; const o = meshByName(A.mesh); if (!o || o.geometry.attributes.position.count !== A.meshVerts) return null;
+  const t = T(); if (!_v[0]) for (let i = 0; i < 4; i++) _v[i] = new t.Vector3(); const [p, a, b, c] = _v; const n = new t.Vector3();
+  const wp = (i, out) => { o.getVertexPosition(i, out); return out.applyMatrix4(o.matrixWorld); };
+  for (const tri of A.ring) { wp(tri[0], a); wp(tri[1], b); wp(tri[2], c); n.add(b.sub(a).cross(c.sub(a))); }
+  n.multiplyScalar(A.ringSign || 1).normalize(); wp(A.vertex, p); const r = R.data.regions[id];
+  return { id, key: r.key, side: r.side, position: [p.x, p.y, p.z], normal: [n.x, n.y, n.z], mesh: A.mesh, stale: !!(R.key && R.data.anchors.state && R.key !== R.data.anchors.state) }; };
+V2P.getRegionAnchor = R.getRegionAnchor;
+// debug overlay: R.showAnchors(true) draws a dot + short normal stick at the anchors of the highlighted regions (or of ids given),
+// refreshed right before every render (scene.onBeforeRender, after the scene's matrices are updated). No labels / arrows yet.
+R.showAnchors = function(on, ids) { const t = T(), v = flareInspector.viewer; R.anchorIds = ids || null;
+  if (!R.anchorDbg) { const g = new t.Group(); g.name = 'v2pRegionAnchors'; g.renderOrder = 10; R.anchorDbg = g; v.scene.add(g);
+    const s0 = v.scene.onBeforeRender; v.scene.onBeforeRender = function(...a) { if (s0) s0.apply(this, a); if (R.anchorDbg.visible) R.updateAnchors(); }; }
+  R.anchorDbg.visible = !!on; return on; };
+R.updateAnchors = function() { const t = T(), g = R.anchorDbg; const sel = R.uni.uV2pRSel.value; const ids = R.anchorIds || sel.map((s, i) => s > 0.5 ? i : -1).filter(i => i >= 0);
+  while (g.children.length) { const c = g.children.pop(); if (c.isLine) c.geometry.dispose(); }
+  if (!R.anchorMat) R.anchorMat = { dot: new t.MeshBasicMaterial({ color: 0xe0303a }), line: new t.LineBasicMaterial({ color: 0xe0303a }) };
+  const sph = R.anchorSph || (R.anchorSph = new t.SphereGeometry(0.0065, 10, 8));
+  for (const id of ids) { const a = R.getRegionAnchor(id); if (!a) continue; const P = new t.Vector3(...a.position), N = new t.Vector3(...a.normal);
+    const m = new t.Mesh(sph, R.anchorMat.dot); m.position.copy(P).addScaledVector(N, 0.003); m.renderOrder = 11; g.add(m);
+    const l = new t.Line(new t.BufferGeometry().setFromPoints([P, P.clone().addScaledVector(N, 0.06)]), R.anchorMat.line); l.renderOrder = 11; g.add(l); }
+  g.updateMatrixWorld(true); };
 const b_has = o => !!R.bakeInfo?.tex.get(o);
 R.setHighlight = function(h) { const sel = new Array(96).fill(0); let n = 0; const D = R.data;
   const side = h?.side === 'left' ? 'L' : h?.side === 'right' ? 'R' : null;
