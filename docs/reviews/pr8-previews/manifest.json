@@ -1,0 +1,604 @@
+{
+  "schemaVersion": 1,
+  "pullRequest": "https://github.com/mhgd3250905/3D-Pose-Hub/pull/8",
+  "sourceCommit": "dc33af6e39473064cf25974dea35b0cfd52336fc",
+  "sourceCommitMeaning": "Specification inputs; two corrected comparison images are generated after this commit.",
+  "layout": {
+    "before": "top row",
+    "after": "bottom row",
+    "frames": "left to right; same indices for both rows"
+  },
+  "render": {
+    "theme": "glow-soft",
+    "pixelRatio": 0.5,
+    "jobsPerProcess": 1,
+    "fps": 30
+  },
+  "provenance": {
+    "originalImageCommit": "a80c7a8d45169fa219ef11fe8e9e4c75135eabe8",
+    "originalFrameDeclaration": "https://github.com/mhgd3250905/3D-Pose-Hub/pull/8#issuecomment-6258916486",
+    "correctedComparisons": [
+      "rotator-cuff-B-r2",
+      "hip-abductors-B-r2"
+    ],
+    "correction": "The earlier before rows did not clearly lock both frozen source paths; rotator-cuff-B was confirmed to use another historical camera, while no wrong-source conclusion is asserted for the earlier hip-abductors-B image. To remove ambiguity, both comparisons are rebuilt from the frozen hark-4080-v1 inputs with explicit training-human-v2 / alignClavicles false for both rows. They replace the earlier images at the same repository paths; historical comments are retained."
+  },
+  "acceptance": {
+    "scope": "Sampled comparison frames for camera/framing review; no full production movie was rendered.",
+    "fullCycleVisualQA": false,
+    "fullMovieQA": false,
+    "actualModelWarning": "Nine retained before-source specs omit modelProfile, and the author's retained images do not preserve a per-row override recipe. Their actual before render model and alignClavicles setting are unconfirmed and must not be inferred solely from source declarations. A normal CLI render with no override would use legacy-v7.",
+    "immutableInputs": "No primary source specs, frozen revision records, published media versions or historical comments are rewritten by this evidence correction.",
+    "maintainerReview": {
+      "date": "2026-10-19",
+      "reviewedAfterFrames": 51,
+      "reviewedComparisons": 17,
+      "scope": "All 17 after rows visually inspected, 3 frames each. The two corrected comparisons were additionally regenerated from explicitly identified frozen before inputs and visually inspected in both rows.",
+      "result": "Sampled movement readability accepted; no new body clipping observed. Existing highlighted-mask and pose limitations remain recorded; not full-cycle or movie acceptance.",
+      "validationCodeCommit": "dc33af6e39473064cf25974dea35b0cfd52336fc",
+      "validationResults": {
+        "verifySpecs": 200,
+        "modelSourceHashes": 13,
+        "portabilityTests": 7,
+        "mediaTests": 45,
+        "allPassed": true
+      },
+      "validationReuse": "This evidence-only follow-up does not change drill-anim, runtime or media code/inputs; reuse the independently completed checks on the identical code commit."
+    }
+  },
+  "comparisons": [
+    {
+      "id": "rotator-cuff-B-r2",
+      "image": "rotator-cuff-B-r2.jpg",
+      "frames": [
+        9,
+        30,
+        54
+      ],
+      "before": {
+        "spec": "drill-anim/revisions/hark-4080-v1/rotator-cuff-B/spec.js",
+        "modelProfile": "training-human-v2",
+        "alignClavicles": false,
+        "profileSelection": "explicit render override",
+        "alignClaviclesMeaning": "explicit false",
+        "specSha256LF": "413892481a9b283cd83f18a256b4976826b70e3375af2d2eea0d127e81340088"
+      },
+      "after": {
+        "spec": "drill-anim/specs/rotator-cuff-B-r2.js",
+        "modelProfile": "training-human-v2",
+        "alignClavicles": false,
+        "profileSelection": "revision spec",
+        "specSha256LF": "e18a5c0e33db25fe83e18330b602f183f2a8c9285fc468670115e32d61061d27"
+      },
+      "evidence": "corrected comparison from frozen source",
+      "isolatesCameraWithSameModel": true,
+      "imageSha256": "e9e2ba8d2bf75b362f875eb8b0615dc29392f278d215250927bdb3278aeb1d49",
+      "regeneratedSampleQA": {
+        "before": {
+          "frames": [
+            9,
+            30,
+            54
+          ],
+          "bodyEdgeTouchFrames": 0,
+          "visuallyReviewed": true
+        },
+        "after": {
+          "frames": [
+            9,
+            30,
+            54
+          ],
+          "bodyEdgeTouchFrames": 0,
+          "visuallyReviewed": true
+        }
+      }
+    },
+    {
+      "id": "rotator-cuff-C-r2",
+      "image": "rotator-cuff-C-r2.jpg",
+      "frames": [
+        0,
+        22,
+        45
+      ],
+      "before": {
+        "spec": "drill-anim/specs/rotator-cuff-C.js",
+        "modelProfile": null,
+        "alignClavicles": null,
+        "profileSelection": "actual retained-image override recipe unrecorded; model unconfirmed",
+        "alignClaviclesMeaning": "actual retained-image value unconfirmed; source spec omits this field",
+        "sourceDeclaredModelProfile": null,
+        "sourceDeclaredAlignClavicles": null,
+        "normalCliDefaultModelProfile": "legacy-v7",
+        "specSha256LF": "858895b5e6f49bed3e4e094c735a6251e7fcb8b93f6207571dc104fdea13b6ab"
+      },
+      "after": {
+        "spec": "drill-anim/specs/rotator-cuff-C-r2.js",
+        "modelProfile": "training-human-v2",
+        "alignClavicles": false,
+        "profileSelection": "revision spec",
+        "specSha256LF": "e3dad693e9efe0b2b8eefe88911e6647585be10d3db9e129db50cd5ea536be99"
+      },
+      "evidence": "retained original image; frame indices declared by author",
+      "isolatesCameraWithSameModel": null,
+      "cameraIsolationEvidence": "Retained image lacks a per-row override recipe; source declarations alone do not prove actual render settings.",
+      "imageSha256": "f2bfebbf4b30d18e0d4eb721332b2c69e4557f49b49add376141f789efd9c7f1"
+    },
+    {
+      "id": "h-band-pull-apart-r2",
+      "image": "h-band-pull-apart-r2.jpg",
+      "frames": [
+        0,
+        15,
+        30
+      ],
+      "before": {
+        "spec": "drill-anim/specs/h-band-pull-apart.js",
+        "modelProfile": "training-human-v2",
+        "alignClavicles": false,
+        "profileSelection": "based on explicit source spec; no additional per-row render recipe preserved",
+        "alignClaviclesMeaning": "explicit false",
+        "sourceDeclaredModelProfile": "training-human-v2",
+        "sourceDeclaredAlignClavicles": false,
+        "specSha256LF": "5bf7a0a0aec1da38f4b8da99df4bd9397eec01939c49b96f34ac2e4f9277f00d"
+      },
+      "after": {
+        "spec": "drill-anim/specs/h-band-pull-apart-r2.js",
+        "modelProfile": "training-human-v2",
+        "alignClavicles": false,
+        "profileSelection": "revision spec",
+        "specSha256LF": "b6bf56949a3c41f30419941a9f0c182a99a8b420e136dbf0c2beec23630325ef"
+      },
+      "evidence": "retained original image; frame indices declared by author",
+      "isolatesCameraWithSameModel": null,
+      "cameraIsolationEvidence": "Retained image lacks a per-row override recipe; source declarations alone do not prove actual render settings.",
+      "imageSha256": "7154421c9655b6214e9bc648e9843138d9b790bde27509e755784d5e952f17fe"
+    },
+    {
+      "id": "w-prone-swimmer-r2",
+      "image": "w-prone-swimmer-r2.jpg",
+      "frames": [
+        0,
+        15,
+        30
+      ],
+      "before": {
+        "spec": "drill-anim/specs/w-prone-swimmer.js",
+        "modelProfile": null,
+        "alignClavicles": null,
+        "profileSelection": "actual retained-image override recipe unrecorded; model unconfirmed",
+        "alignClaviclesMeaning": "actual retained-image value unconfirmed; source spec omits this field",
+        "sourceDeclaredModelProfile": null,
+        "sourceDeclaredAlignClavicles": null,
+        "normalCliDefaultModelProfile": "legacy-v7",
+        "specSha256LF": "d4f9b0a41b0b09e6feacb7c37e9bceb2070c2e583ed82deebc49062a68a55734"
+      },
+      "after": {
+        "spec": "drill-anim/specs/w-prone-swimmer-r2.js",
+        "modelProfile": "training-human-v2",
+        "alignClavicles": false,
+        "profileSelection": "revision spec",
+        "specSha256LF": "fafbf91af452f728231b97705a4af61649e67cd1ea630c47ce2a7b84cd5bfca9"
+      },
+      "evidence": "retained original image; frame indices declared by author",
+      "isolatesCameraWithSameModel": null,
+      "cameraIsolationEvidence": "Retained image lacks a per-row override recipe; source declarations alone do not prove actual render settings.",
+      "imageSha256": "a241f827cbe5d52e6fd3374b9c9d909a96832d76884e3fbcb640501f8c74b482"
+    },
+    {
+      "id": "h-incline-pushup-r2",
+      "image": "h-incline-pushup-r2.jpg",
+      "frames": [
+        0,
+        22,
+        45
+      ],
+      "before": {
+        "spec": "drill-anim/specs/h-incline-pushup.js",
+        "modelProfile": "training-human-v2",
+        "alignClavicles": false,
+        "profileSelection": "based on explicit source spec; no additional per-row render recipe preserved",
+        "alignClaviclesMeaning": "explicit false",
+        "sourceDeclaredModelProfile": "training-human-v2",
+        "sourceDeclaredAlignClavicles": false,
+        "specSha256LF": "e88d1d1bc15b06f21b834c1d14f62bcf7222db4cb677765ead45e515a4cb8434"
+      },
+      "after": {
+        "spec": "drill-anim/specs/h-incline-pushup-r2.js",
+        "modelProfile": "training-human-v2",
+        "alignClavicles": false,
+        "profileSelection": "revision spec",
+        "specSha256LF": "d87370db2d230571a18f92fdbd352394409f16039875045d8d2d3e1aebaa9d2d"
+      },
+      "evidence": "retained original image; frame indices declared by author",
+      "isolatesCameraWithSameModel": null,
+      "cameraIsolationEvidence": "Retained image lacks a per-row override recipe; source declarations alone do not prove actual render settings.",
+      "imageSha256": "e69b4e9f0834b255b979c26b78c3c6b93a61f64550eeadab2dd80596855e2d57"
+    },
+    {
+      "id": "hip-abductors-B-r2",
+      "image": "hip-abductors-B-r2.jpg",
+      "frames": [
+        5,
+        24,
+        66
+      ],
+      "before": {
+        "spec": "drill-anim/revisions/hark-4080-v1/hip-abductors-B/spec.js",
+        "modelProfile": "training-human-v2",
+        "alignClavicles": false,
+        "profileSelection": "explicit render override",
+        "alignClaviclesMeaning": "explicit false",
+        "specSha256LF": "44e688cf643785efa40171dd795ebe9e4404a5e25406dd7fc99dd522e2bf1cd3"
+      },
+      "after": {
+        "spec": "drill-anim/specs/hip-abductors-B-r2.js",
+        "modelProfile": "training-human-v2",
+        "alignClavicles": false,
+        "profileSelection": "revision spec",
+        "specSha256LF": "728c3d30a0faab23673591e3bcc51bb78f6ac794835bee419108e0c2d7f3407b"
+      },
+      "evidence": "corrected comparison from frozen source",
+      "isolatesCameraWithSameModel": true,
+      "imageSha256": "7ee7d8dbdfd09578fff3fd9f39a1482a18f234ddc31fc51f525039bc49484830",
+      "regeneratedSampleQA": {
+        "before": {
+          "frames": [
+            5,
+            24,
+            66
+          ],
+          "bodyEdgeTouchFrames": 0,
+          "visuallyReviewed": true
+        },
+        "after": {
+          "frames": [
+            5,
+            24,
+            66
+          ],
+          "bodyEdgeTouchFrames": 0,
+          "visuallyReviewed": true
+        }
+      }
+    },
+    {
+      "id": "o-stand-crossreach-r2",
+      "image": "o-stand-crossreach-r2.jpg",
+      "frames": [
+        0,
+        15,
+        30
+      ],
+      "before": {
+        "spec": "drill-anim/specs/o-stand-crossreach.js",
+        "modelProfile": null,
+        "alignClavicles": null,
+        "profileSelection": "actual retained-image override recipe unrecorded; model unconfirmed",
+        "alignClaviclesMeaning": "actual retained-image value unconfirmed; source spec omits this field",
+        "sourceDeclaredModelProfile": null,
+        "sourceDeclaredAlignClavicles": null,
+        "normalCliDefaultModelProfile": "legacy-v7",
+        "specSha256LF": "9c79a2e76a8b7f87134ccec346740dc0a7122305579dd839a422056cdb464b3b"
+      },
+      "after": {
+        "spec": "drill-anim/specs/o-stand-crossreach-r2.js",
+        "modelProfile": "training-human-v2",
+        "alignClavicles": false,
+        "profileSelection": "revision spec",
+        "specSha256LF": "3292b8c1503c2113d6176403cd5dd4482b92c055052b05a36d7e8e530e565674"
+      },
+      "evidence": "retained original image; frame indices declared by author",
+      "isolatesCameraWithSameModel": null,
+      "cameraIsolationEvidence": "Retained image lacks a per-row override recipe; source declarations alone do not prove actual render settings.",
+      "imageSha256": "88497d649c81ae64e5f13662bff4a06b42f086bea5a1ffb1b9d37cd732c3d26a"
+    },
+    {
+      "id": "s-9090-r3",
+      "image": "s-9090-r3.jpg",
+      "frames": [
+        0,
+        22,
+        45
+      ],
+      "before": {
+        "spec": "drill-anim/specs/s-9090-r2.js",
+        "modelProfile": "training-human-v2",
+        "alignClavicles": false,
+        "profileSelection": "based on explicit source spec; no additional per-row render recipe preserved",
+        "alignClaviclesMeaning": "explicit false",
+        "sourceDeclaredModelProfile": "training-human-v2",
+        "sourceDeclaredAlignClavicles": false,
+        "specSha256LF": "81d8d8629e9c90559dd715465ad4002e6bc7d3baa6a5e261eb3ad97a55f4aa2e"
+      },
+      "after": {
+        "spec": "drill-anim/specs/s-9090-r3.js",
+        "modelProfile": "training-human-v2",
+        "alignClavicles": false,
+        "profileSelection": "revision spec",
+        "specSha256LF": "a787f597a5ba6071b2bb095e16016170f7563c689c73aa3875c32ea1938ef5ec"
+      },
+      "evidence": "retained original image; frame indices declared by author",
+      "isolatesCameraWithSameModel": null,
+      "cameraIsolationEvidence": "Retained image lacks a per-row override recipe; source declarations alone do not prove actual render settings.",
+      "imageSha256": "37f931e20b544d9cd82adeb077a51b739d44a31ed9495c734d4f7ba25aff4ab9"
+    },
+    {
+      "id": "abs-C-r2",
+      "image": "abs-C-r2.jpg",
+      "frames": [
+        0,
+        15,
+        30
+      ],
+      "before": {
+        "spec": "drill-anim/specs/abs-C.js",
+        "modelProfile": null,
+        "alignClavicles": null,
+        "profileSelection": "actual retained-image override recipe unrecorded; model unconfirmed",
+        "alignClaviclesMeaning": "actual retained-image value unconfirmed; source spec omits this field",
+        "sourceDeclaredModelProfile": null,
+        "sourceDeclaredAlignClavicles": null,
+        "normalCliDefaultModelProfile": "legacy-v7",
+        "specSha256LF": "2de30bffc4a774c228a6d66f245e3f0b9dcc56b8998384d17bf0e6ba98a2bf64"
+      },
+      "after": {
+        "spec": "drill-anim/specs/abs-C-r2.js",
+        "modelProfile": "training-human-v2",
+        "alignClavicles": false,
+        "profileSelection": "revision spec",
+        "specSha256LF": "31be4e7adf08e05248d169e60e17068d7f0e33c58a5389f71e161d051f9e01a1"
+      },
+      "evidence": "retained original image; frame indices declared by author",
+      "isolatesCameraWithSameModel": null,
+      "cameraIsolationEvidence": "Retained image lacks a per-row override recipe; source declarations alone do not prove actual render settings.",
+      "imageSha256": "3ab3b4ae5a8415875e86de080c6bc9d2db67691a8fb1c8c2ddcd99fe8f1c55dd"
+    },
+    {
+      "id": "chest-A-r2",
+      "image": "chest-A-r2.jpg",
+      "frames": [
+        0,
+        22,
+        45
+      ],
+      "before": {
+        "spec": "drill-anim/specs/chest-A.js",
+        "modelProfile": null,
+        "alignClavicles": null,
+        "profileSelection": "actual retained-image override recipe unrecorded; model unconfirmed",
+        "alignClaviclesMeaning": "actual retained-image value unconfirmed; source spec omits this field",
+        "sourceDeclaredModelProfile": null,
+        "sourceDeclaredAlignClavicles": null,
+        "normalCliDefaultModelProfile": "legacy-v7",
+        "specSha256LF": "c059e0a40b597768e1f9e8971655d044820f626a69236b9a3f4b8a49fee84714"
+      },
+      "after": {
+        "spec": "drill-anim/specs/chest-A-r2.js",
+        "modelProfile": "training-human-v2",
+        "alignClavicles": false,
+        "profileSelection": "revision spec",
+        "specSha256LF": "9748ed5a2163dc52a2acb7515a6382358242ff831fdd5925221fc24b4ba47236"
+      },
+      "evidence": "retained original image; frame indices declared by author",
+      "isolatesCameraWithSameModel": null,
+      "cameraIsolationEvidence": "Retained image lacks a per-row override recipe; source declarations alone do not prove actual render settings.",
+      "imageSha256": "2606d5a36b43f5b58dfcb79169a139de9645af9652a40ef2541f6280731e5bca"
+    },
+    {
+      "id": "rotator-cuff-A-r2",
+      "image": "rotator-cuff-A-r2.jpg",
+      "frames": [
+        0,
+        15,
+        30
+      ],
+      "before": {
+        "spec": "drill-anim/specs/rotator-cuff-A.js",
+        "modelProfile": null,
+        "alignClavicles": null,
+        "profileSelection": "actual retained-image override recipe unrecorded; model unconfirmed",
+        "alignClaviclesMeaning": "actual retained-image value unconfirmed; source spec omits this field",
+        "sourceDeclaredModelProfile": null,
+        "sourceDeclaredAlignClavicles": null,
+        "normalCliDefaultModelProfile": "legacy-v7",
+        "specSha256LF": "495eb70bdd29f8dc9f65c90fe85718d50d24b11f4bd77b6a01647632fb2a1b70"
+      },
+      "after": {
+        "spec": "drill-anim/specs/rotator-cuff-A-r2.js",
+        "modelProfile": "training-human-v2",
+        "alignClavicles": false,
+        "profileSelection": "revision spec",
+        "specSha256LF": "29bf03a7176ceaca15262705c009b1f9c4f665d2919e5336c39a8afcd0537953"
+      },
+      "evidence": "retained original image; frame indices declared by author",
+      "isolatesCameraWithSameModel": null,
+      "cameraIsolationEvidence": "Retained image lacks a per-row override recipe; source declarations alone do not prove actual render settings.",
+      "imageSha256": "efcfa17e7d58f92d0419c2818203a4348fc636b2043d53d43cffb07d011fd870"
+    },
+    {
+      "id": "obliques-A-r2",
+      "image": "obliques-A-r2.jpg",
+      "frames": [
+        0,
+        30,
+        60
+      ],
+      "before": {
+        "spec": "drill-anim/specs/obliques-A.js",
+        "modelProfile": null,
+        "alignClavicles": null,
+        "profileSelection": "actual retained-image override recipe unrecorded; model unconfirmed",
+        "alignClaviclesMeaning": "actual retained-image value unconfirmed; source spec omits this field",
+        "sourceDeclaredModelProfile": null,
+        "sourceDeclaredAlignClavicles": null,
+        "normalCliDefaultModelProfile": "legacy-v7",
+        "specSha256LF": "07a7fb90103e762e2a15d52e4ca96a34668e7b697e9683578df1220b092d76d0"
+      },
+      "after": {
+        "spec": "drill-anim/specs/obliques-A-r2.js",
+        "modelProfile": "training-human-v2",
+        "alignClavicles": false,
+        "profileSelection": "revision spec",
+        "specSha256LF": "15805a6c13cd5ae58b337d8301f0b23e777267d1b276cbe43ebf18cd0422eb57"
+      },
+      "evidence": "retained original image; frame indices declared by author",
+      "isolatesCameraWithSameModel": null,
+      "cameraIsolationEvidence": "Retained image lacks a per-row override recipe; source declarations alone do not prove actual render settings.",
+      "imageSha256": "340feecb625f992d8232551eddc51911e968c7d7c7aa1dfca8bbc9165d6c90c1"
+    },
+    {
+      "id": "t-lsit-wide-r2",
+      "image": "t-lsit-wide-r2.jpg",
+      "frames": [
+        0,
+        15,
+        30
+      ],
+      "before": {
+        "spec": "drill-anim/specs/t-lsit-wide.js",
+        "modelProfile": "training-human-v2",
+        "alignClavicles": false,
+        "profileSelection": "based on explicit source spec; no additional per-row render recipe preserved",
+        "alignClaviclesMeaning": "explicit false",
+        "sourceDeclaredModelProfile": "training-human-v2",
+        "sourceDeclaredAlignClavicles": false,
+        "specSha256LF": "022a41e08db8222b75f730df7b56e7f5dbdc9bba7de11fc75f697cf3db17b0d2"
+      },
+      "after": {
+        "spec": "drill-anim/specs/t-lsit-wide-r2.js",
+        "modelProfile": "training-human-v2",
+        "alignClavicles": false,
+        "profileSelection": "revision spec",
+        "specSha256LF": "0abaed3126cb55b3ba002d74b5e20ca99d60fbc90a49806e2fa58d9ede6992c5"
+      },
+      "evidence": "retained original image; frame indices declared by author",
+      "isolatesCameraWithSameModel": null,
+      "cameraIsolationEvidence": "Retained image lacks a per-row override recipe; source declarations alone do not prove actual render settings.",
+      "imageSha256": "bebd8e80502e6bc39b5100007d5a61652d900515a3cd11f083856c48d8da52c8"
+    },
+    {
+      "id": "t-lsit-open-close-r2",
+      "image": "t-lsit-open-close-r2.jpg",
+      "frames": [
+        0,
+        45,
+        90
+      ],
+      "before": {
+        "spec": "drill-anim/specs/t-lsit-open-close.js",
+        "modelProfile": "training-human-v2",
+        "alignClavicles": false,
+        "profileSelection": "based on explicit source spec; no additional per-row render recipe preserved",
+        "alignClaviclesMeaning": "explicit false",
+        "sourceDeclaredModelProfile": "training-human-v2",
+        "sourceDeclaredAlignClavicles": false,
+        "specSha256LF": "9c1bba1e5e9a9eec862f748b02fd422b8db9b2b2dcb123c0ee0e3f0ba6990daa"
+      },
+      "after": {
+        "spec": "drill-anim/specs/t-lsit-open-close-r2.js",
+        "modelProfile": "training-human-v2",
+        "alignClavicles": false,
+        "profileSelection": "revision spec",
+        "specSha256LF": "6ff22c1d13788b0e885ec1d85e052c7f969bea8c3bc9912f7ca92a94a63d9edd"
+      },
+      "evidence": "retained original image; frame indices declared by author",
+      "isolatesCameraWithSameModel": null,
+      "cameraIsolationEvidence": "Retained image lacks a per-row override recipe; source declarations alone do not prove actual render settings.",
+      "imageSha256": "15cf1ad07778cdd92604146272cb05fec538bce57a3333561186f11f26dcf46b"
+    },
+    {
+      "id": "w-clamshell-r2",
+      "image": "w-clamshell-r2.jpg",
+      "frames": [
+        0,
+        15,
+        30
+      ],
+      "before": {
+        "spec": "drill-anim/specs/w-clamshell.js",
+        "modelProfile": null,
+        "alignClavicles": null,
+        "profileSelection": "actual retained-image override recipe unrecorded; model unconfirmed",
+        "alignClaviclesMeaning": "actual retained-image value unconfirmed; source spec omits this field",
+        "sourceDeclaredModelProfile": null,
+        "sourceDeclaredAlignClavicles": null,
+        "normalCliDefaultModelProfile": "legacy-v7",
+        "specSha256LF": "f3647e83bf4a87521600cbc96d5c124c1e8413bdd06c3f72235ff3cbb9a05ff1"
+      },
+      "after": {
+        "spec": "drill-anim/specs/w-clamshell-r2.js",
+        "modelProfile": "training-human-v2",
+        "alignClavicles": false,
+        "profileSelection": "revision spec",
+        "specSha256LF": "a8ca45becfd77e106896d03e1ee754880eb02cb14b4463078a342458fdadd739"
+      },
+      "evidence": "retained original image; frame indices declared by author",
+      "isolatesCameraWithSameModel": null,
+      "cameraIsolationEvidence": "Retained image lacks a per-row override recipe; source declarations alone do not prove actual render settings.",
+      "imageSha256": "77bf5fa8ff007f50891b2417e3fdd13b909d4e5c3ccfeaed51f13136500f1ca9"
+    },
+    {
+      "id": "h-supine-twist-r3",
+      "image": "h-supine-twist-r3.jpg",
+      "frames": [
+        0,
+        30,
+        60
+      ],
+      "before": {
+        "spec": "drill-anim/specs/h-supine-twist-r2.js",
+        "modelProfile": "training-human-v2",
+        "alignClavicles": false,
+        "profileSelection": "based on explicit source spec; no additional per-row render recipe preserved",
+        "alignClaviclesMeaning": "explicit false",
+        "sourceDeclaredModelProfile": "training-human-v2",
+        "sourceDeclaredAlignClavicles": false,
+        "specSha256LF": "14103d9993b464853abb2502345f60bb83c2a52ecfa7ee7456b81d14385a4299"
+      },
+      "after": {
+        "spec": "drill-anim/specs/h-supine-twist-r3.js",
+        "modelProfile": "training-human-v2",
+        "alignClavicles": false,
+        "profileSelection": "revision spec",
+        "specSha256LF": "4e1efbf0db45e48c0c54a206542e170834217a5b9e4d16d1b8861f6dbbf183e4"
+      },
+      "evidence": "retained original image; frame indices declared by author",
+      "isolatesCameraWithSameModel": null,
+      "cameraIsolationEvidence": "Retained image lacks a per-row override recipe; source declarations alone do not prove actual render settings.",
+      "imageSha256": "495882165930d8715a1685696ad75e79f47664e017a4449cba68162a9c94b7cf"
+    },
+    {
+      "id": "hip-abductors-C-r2",
+      "image": "hip-abductors-C-r2.jpg",
+      "frames": [
+        0,
+        30,
+        60
+      ],
+      "before": {
+        "spec": "drill-anim/specs/hip-abductors-C.js",
+        "modelProfile": null,
+        "alignClavicles": null,
+        "profileSelection": "actual retained-image override recipe unrecorded; model unconfirmed",
+        "alignClaviclesMeaning": "actual retained-image value unconfirmed; source spec omits this field",
+        "sourceDeclaredModelProfile": null,
+        "sourceDeclaredAlignClavicles": null,
+        "normalCliDefaultModelProfile": "legacy-v7",
+        "specSha256LF": "befb6903f1919af5a536c644bf93ec362c548714f7b9465821c3cc6498424d16"
+      },
+      "after": {
+        "spec": "drill-anim/specs/hip-abductors-C-r2.js",
+        "modelProfile": "training-human-v2",
+        "alignClavicles": false,
+        "profileSelection": "revision spec",
+        "specSha256LF": "c15aafee4410f8e1e86c35e85630cc2a5775efe4e10fefaa94dc428f0421ee30"
+      },
+      "evidence": "retained original image; frame indices declared by author",
+      "isolatesCameraWithSameModel": null,
+      "cameraIsolationEvidence": "Retained image lacks a per-row override recipe; source declarations alone do not prove actual render settings.",
+      "imageSha256": "86213800d4ddb026a978c891c6d4c9a8e7f4b6724ee6e1f2449392313475e922"
+    }
+  ]
+}
