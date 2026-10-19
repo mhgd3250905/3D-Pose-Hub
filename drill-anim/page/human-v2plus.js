@@ -90,7 +90,7 @@ V2P.pickHandPose = function(spec, side) {
 //   shin  : t along knee->ankle,   a = 0.045 * angle (0 lateral, + front, - back)
 // region SDF: < 0 inside (metres). Regions are drawn shapes, not anatomy-exact.
 const GLSL = `
-uniform float uV2pOn; uniform float uV2pSel[24]; uniform float uV2pSide; uniform float uV2pDeep; uniform float uV2pSleeve; uniform vec4 uV2pCuffL; uniform vec4 uV2pCuffR;
+uniform float uV2pOn; uniform float uV2pSel[24]; uniform float uV2pSide; uniform float uV2pDeep; uniform float uV2pSleeve; uniform float uV2pOut; uniform vec4 uV2pCuffL; uniform vec4 uV2pCuffR;
 varying vec4 vV2p;
 float v2sm(float a,float b,float k){ float h=clamp(0.5+0.5*(b-a)/k,0.0,1.0); return mix(b,a,h)-k*h*(1.0-h); }   // smooth min
 float v2sx(float a,float b,float k){ return -v2sm(-a,-b,k); }                                                       // smooth max
@@ -192,7 +192,7 @@ V2P.GROUPS = { chest: ['chest'], pectorals: ['chest'], abs: ['abs'], obliques: [
   'hip-flexors': ['hip-flexors'], quadriceps: ['quadriceps'], hamstrings: ['hamstrings'], adductors: ['adductors'], calves: ['calves'], tibialis: ['tibialis'], neck: ['neck'] };
 V2P.DEEP = new Set(['rotator-cuff', 'hip-flexors', 'hip-rotators']);
 V2P.uni = { uV2pOn: { value: 0 }, uV2pSel: { value: new Array(24).fill(0) }, uV2pSide: { value: 0 }, uV2pDeep: { value: 0 },
-  uV2pSleeve: { value: 0 }, uV2pCuffL: { value: [0, -1, 0, -9] }, uV2pCuffR: { value: [0, -1, 0, -9] } };
+  uV2pSleeve: { value: 0 }, uV2pOut: { value: 0 }, uV2pCuffL: { value: [0, -1, 0, -9] }, uV2pCuffR: { value: [0, -1, 0, -9] } };
 function restTextures() {
   // CPU-skinned reset-pose world positions (one continuous canvas for skin, tee and shorts) + arm weight
   const t = T(), v = flareInspector.viewer; v.motion.reset(); v.coach.updateMatrixWorld(true); const q = new t.Vector3(); const out = {};
@@ -211,9 +211,14 @@ function patchMaterials() {
       sh.vertexShader = 'uniform sampler2D uV2pT;varying vec4 vV2p;\n' + sh.vertexShader.replace('#include <begin_vertex>', '#include <begin_vertex>\n vV2p=texelFetch(uV2pT,ivec2(gl_VertexID%1024,gl_VertexID/1024),0);');
       const fs = sh.fragmentShader; if (!/hlMask\(c2\)/.test(fs)) throw new Error('v2plus: toon fragment shader has no hlMask(c2) call');
       if (isBody && fs.indexOf('vec3 alb=vec3(0.0)') < 0) throw new Error('v2plus: toon fragment shader has no albedo block');
+      if (fs.indexOf('float fr=pow(1.0-clamp(dot(Nn,V),0.0,1.0),2.6);') < 0) throw new Error('v2plus: toon fragment shader has no rim term');
       // compression outfit, short sleeve: the arm skin below the (shrink-wrapped) sleeve cuff shows the grey skin instead of
       // the painted v2 sleeve. Cut = the cuff ring's plane in the rest pose, 6 mm up under the cuff, anti-aliased.
-      sh.fragmentShader = GLSL + fs.replace(/hlMask\(c2\)/, '(uV2pOn>0.5?v2pMask(c2):hlMask(c2))').replace('vec3 alb=vec3(0.0)', isBody ?
+      sh.fragmentShader = GLSL + fs.replace(/hlMask\(c2\)/, '(uV2pOn>0.5?v2pMask(c2):hlMask(c2))').replace('float fr=pow(1.0-clamp(dot(Nn,V),0.0,1.0),2.6);',
+        // compression outfit draws garments double-sided: what is seen through a cuff (back faces, or faces that clearly face the
+        // camera while their shading normal turns away, e.g. the shoulder's inner shell) is plain shade colour, no rim light
+        'float fr=pow(1.0-clamp(dot(Nn,V),0.0,1.0),2.6); if(uV2pOut>0.5){ vec3 fN=normalize(cross(dFdx(vViewPosition),dFdy(vViewPosition))); if(!gl_FrontFacing||(abs(dot(fN,V))>0.45&&dot(Nn,V)<0.15)){ lit=shc*0.8; fr=0.0; } }')
+        .replace('vec3 alb=vec3(0.0)', isBody ?
         'if(uV2pOn>0.5&&uV2pSleeve>0.5&&vV2p.w>0.3){ vec4 pl=vV2p.x>0.0?uV2pCuffL:uV2pCuffR; float fc=dot(vV2p.xyz,pl.xyz)-pl.w+0.006; float ac=max(fwidth(fc),1e-5)*0.9; W4=mix(W4,vec4(1.0,0.0,0.0,0.0),smoothstep(-ac,ac,fc)); }\n vec3 alb=vec3(0.0)' : 'vec3 alb=vec3(0.0)'); };
     mat.customProgramCacheKey = () => 'toon-drill1-v2p'; mat.needsUpdate = true; n++; });
   return n;
@@ -252,7 +257,10 @@ function prepOutfit(data) {
       rec.p0.push(pa.getX(i), pa.getY(i), pa.getZ(i)); rec.n0.push(na.getX(i), na.getY(i), na.getZ(i));
       o.getVertexPosition(i, q); q.applyMatrix4(o.matrixWorld); rec.rest.push(q.x, q.y, q.z);                  // rest world with the current weights
       q.x += D.d[r * 3] * 1e-5; q.y += D.d[r * 3 + 1] * 1e-5; q.z += D.d[r * 3 + 2] * 1e-5;
-      skinM(i, wmap.get(i)); Minv.copy(M).invert(); q.applyMatrix4(Minv); rec.p1.push(q.x, q.y, q.z);
+      skinM(i, wmap.get(i)); Minv.copy(M).invert(); q.applyMatrix4(Minv);
+      // KHR_mesh_quantization: normalized int16 positions must stay in [-1, 1] (an overshoot wraps around in the typed array)
+      if (pa.normalized) { q.x = Math.max(-1, Math.min(1, q.x)); q.y = Math.max(-1, Math.min(1, q.y)); q.z = Math.max(-1, Math.min(1, q.z)); }
+      rec.p1.push(q.x, q.y, q.z);
       // world normal -> bind: n_local ~ A^T n_world (A = linear part of M)
       N3.setFromMatrix4(M).transpose(); n.set(D.n[r * 3], D.n[r * 3 + 1], D.n[r * 3 + 2]).multiplyScalar(1e-4).applyMatrix3(N3).normalize(); rec.n1.push(n.x, n.y, n.z); });
     O.meshes.push(rec); });
@@ -267,6 +275,10 @@ function writeOutfit(on) {
       R.w.idx.forEach((i, r) => { for (let k = 0; k < 4; k++) { si.setComponent(i, k, J[r][k]); sw.setComponent(i, k, W[r][k]); } });
       for (const a of [si, sw]) { a.needsUpdate = true; if (a.isInterleavedBufferAttribute) a.data.needsUpdate = true; } }
     g.computeBoundingSphere?.(); g.boundingBox = null;
+    // tight sleeves/legs: where a limb swings inside its cuff the garment's inside can face the camera; draw it (front-side
+    // only would show a see-through hole lit by the rim term) - three flips the normal for back faces
+    const mat = R.o.material; if (R.side0 === undefined) R.side0 = mat.side; const side = on ? T().DoubleSide : R.side0;
+    if (mat.side !== side) { mat.side = side; mat.needsUpdate = true; }
     // the designed muscle regions read the rest position: give the moved vertices their new rest position
     const tx = V2P.restTex?.[R.o.uuid]; if (tx) { const a = tx.image.data, D = V2P.outfit.data.meshes[R.o.name];
       R.idx.forEach((i, r) => { for (let c = 0; c < 3; c++) a[i * 4 + c] = R.rest[r * 3 + c] + (on ? D.d[r * 3 + c] * 1e-5 : 0); }); tx.needsUpdate = true; } }
@@ -278,7 +290,7 @@ V2P.setOutfit = function(name, opts = {}) {
   if (V2P.outfit && (on !== !!V2P.outfitOn || (on && tag !== V2P.collarTag))) writeOutfit(on);
   V2P.collarTag = tag;
   V2P.outfitOn = on; const sleeve = on ? (opts.sleeve || 'short') : null; V2P.outfitState = on ? { outfit: name, sleeve } : null;
-  V2P.uni.uV2pSleeve.value = sleeve === 'short' ? 1 : 0;
+  V2P.uni.uV2pSleeve.value = sleeve === 'short' ? 1 : 0; V2P.uni.uV2pOut.value = on ? 1 : 0;
   if (V2P.outfit) { V2P.uni.uV2pCuffL.value = V2P.outfit.data.cuffPlanes.left; V2P.uni.uV2pCuffR.value = V2P.outfit.data.cuffPlanes.right; }
   return V2P.outfitState;
 };
