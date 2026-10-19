@@ -106,6 +106,7 @@ const D = {
   hse: 'docs/home-small-equipment-2026-10-18.md', hpc: 'docs/home-posterior-chain-2026-10-18.md',
 };
 const KNOWN = {
+  'h-band-triceps-pressdown': ['band-triceps-pressdown-27：单臂高位弹力带伸肘；实际握柄/D环/足底分布独立检查；低分保留待GPU，需稳固锚点', 'docs/band-triceps-pressdown-27-2026-10-19.md'],
   'h-db-split-squat': ['dumbbell-leg-14：双哑铃原地分腿蹲；前脚全掌、后脚前足固定地面，左侧示范；低分抽查保留待GPU，非普通办公（docs/dumbbell-leg-14-2026-10-18.md）'],
   'h-db-calf-raise': ['dumbbell-leg-14：双脚双哑铃站姿提踵；实际鞋底前端支点，负荷变式非新运动模式；低分抽查保留待GPU（docs/dumbbell-leg-14-2026-10-18.md）'],
   'h-wall-wrist-flexor-stretch': ['home-wrist-stretch-18：站姿墙面单一腕伸，区别于跪姿多向腕摇摆；真实掌面接触分布检查通过，低分保留待GPU（docs/home-wrist-stretch-18-2026-10-18.md）'],
