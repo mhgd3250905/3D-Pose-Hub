@@ -1,6 +1,6 @@
 // training-human-v2plus: BAKED muscle regions (opt-in: spec.v2plus.regions = 'baked'; DRAFT 2026-10-20).
 // The whole body (base-mesh torso, tee collar band, v2 arm/leg skin, head, hands, shoes) is partitioned into named muscle regions
-// (drill-anim/models/training-human-v2plus-regions.json: 40 base regions x L/R = 80 ids), drawn like an anatomy atlas: plain light
+// (drill-anim/models/training-human-v2plus-regions.json: 42 base regions x L/R = 84 ids; shader slots for 96), drawn like an anatomy atlas: plain light
 // grey, thin dark outlines on every region border, crisp per-region highlight.
 // Technique:
 //   1. Each base region is a designed shape (rounded polygon / box / ellipse / capsule) in a smooth chart of the REST surface
@@ -12,7 +12,7 @@
 //      vertex ring, welded across meshes) never share a channel. Each vertex stores, per channel, the min distance over that
 //      channel's regions and which region it was (4 RGBA texels per vertex, read in the vertex shader by gl_VertexID).
 //   3. Per pixel: linear interpolation of the 8 channel distances; region = best channel, border = where the best and second best
-//      meet. g = f2 - f1 >= 0 and g / fwidth(g) is the pixel distance to the border -> constant ~1.5 px anti-aliased outline,
+//      meet. g = f2 - f1 >= 0 over the length of its screen gradient (dFdx/dFdy of the two channel varyings, so it never folds to 0 across the border) is the pixel distance to the border -> constant ~1.5 px anti-aliased outline,
 //      sub-triangle accurate (no staircase), identical on both sides of a weld; highlight = selected ids, blended at the border.
 // Nothing changes unless a spec sets v2plus.regions:'baked' (lib/human-v2plus.mjs loads this file only then).
 (function(){
@@ -46,22 +46,22 @@ const pos = x => Math.max(0, x);
 // ---------- base region shapes: fn(c) -> signed distance (m), c = per-vertex charts + gates ----------
 const S = {
   // torso front (q = [s, y]; s = 0 front midline .. 0.408 back midline)
-  'pec': c => poly(c.s, c.y, [[0.012, 1.200], [0.070, 1.180], [0.128, 1.215], [0.150, 1.290], [0.142, 1.335], [0.012, 1.345]], 0.012) + c.gT,
-  'rectus-upper': c => box(c.s, c.y, 0.0, 1.110, 0.086, 1.190, 0.012) + c.gT,
-  'rectus-mid': c => box(c.s, c.y, 0.0, 1.040, 0.086, 1.110, 0.006) + c.gT,
-  'rectus-lower': c => box(c.s, c.y, 0.0, 0.870, 0.086, 1.040, 0.018) + c.gT,
+  'pec': c => poly(c.s, c.y, [[0.010, 1.205], [0.060, 1.188], [0.110, 1.200], [0.148, 1.236], [0.168, 1.288], [0.158, 1.345], [0.090, 1.362], [0.010, 1.360]], 0.010) + c.gT,
+  'rectus-upper': c => box(c.s, c.y, 0.0, 1.126, 0.084, 1.192, 0.012) + c.gT,
+  'rectus-mid': c => box(c.s, c.y, 0.0, 1.062, 0.084, 1.120, 0.010) + c.gT,
+  'rectus-lower': c => box(c.s, c.y, 0.0, 0.998, 0.082, 1.056, 0.010) + c.gT,
   'oblique': c => poly(c.s, c.y, [[0.112, 0.900], [0.228, 0.925], [0.232, 1.040], [0.175, 1.120], [0.112, 1.165]], 0.012) + c.gT,
   'serratus': c => poly(c.s, c.y, [[0.150, 1.165], [0.200, 1.175], [0.200, 1.255], [0.158, 1.240]], 0.010) + c.gT,
   'hip-flexor': c => ell(c.s, c.y, 0.108, 0.845, 0.027, 0.070, 0.62) + c.gT,
   'neck': c => box(c.s, c.y, 0.0, 1.380, 0.075, 1.470, 0.014) + c.gT,
   // torso back (b = 0.408 - s: 0 spine .. lateral)
-  'trap-upper': c => poly(c.b, c.y, [[0.0, 1.360], [0.095, 1.355], [0.175, 1.390], [0.150, 1.420], [0.040, 1.450], [0.0, 1.455]], 0.010) + c.gT,
-  'trap-mid': c => poly(c.b, c.y, [[0.0, 1.085], [0.050, 1.180], [0.105, 1.300], [0.090, 1.350], [0.0, 1.360]], 0.012) + c.gT,
+  'trap-upper': c => poly(c.b, c.y, [[0.0, 1.420], [0.100, 1.388], [0.180, 1.372], [0.172, 1.430], [0.050, 1.470], [0.0, 1.472]], 0.008) + c.gT,
+  'trap-mid': c => poly(c.b, c.y, [[0.0, 1.075], [0.040, 1.140], [0.080, 1.215], [0.118, 1.300], [0.172, 1.366], [0.100, 1.384], [0.0, 1.414]], 0.010) + c.gT,
   'rhomboid': c => poly(c.b, c.y, [[0.040, 1.215], [0.072, 1.235], [0.084, 1.305], [0.046, 1.315]], 0.008) + c.gT + 0.004,
   'infraspinatus': c => ell(c.b, c.y, 0.135, 1.272, 0.040, 0.036) + c.gT,
   'teres-major': c => ell(c.b, c.y, 0.160, 1.212, 0.034, 0.016, -0.5) + c.gT,
-  'lat': c => poly(c.b, c.y, [[0.030, 0.975], [0.110, 1.010], [0.190, 1.140], [0.205, 1.235], [0.150, 1.200], [0.070, 1.150], [0.030, 1.110]], 0.016) + c.gT,
-  'erector': c => box(c.b, c.y, 0.0, 0.860, 0.048, 1.150, 0.016) + c.gT,
+  'lat': c => poly(c.b, c.y, [[0.050, 1.105], [0.068, 1.010], [0.130, 0.970], [0.198, 1.020], [0.214, 1.140], [0.206, 1.235], [0.168, 1.212], [0.105, 1.170]], 0.014) + c.gT,
+  'erector': c => poly(c.b, c.y, [[0.0, 0.875], [0.060, 0.895], [0.092, 0.965], [0.045, 1.060], [0.0, 1.075]], 0.010) + c.gT,
   'glute-max': c => box(c.b, c.y, 0.0, 0.705, 0.128, 0.895, 0.045) + c.gT,
   'glute-med': c => ell(c.b, c.y, 0.190, 0.905, 0.060, 0.050) + c.gT,
   // deltoid cap in the upper-arm chart, split by angle (front / lateral / back); not gated by arm weight (the shoulder cap is torso-weighted)
@@ -73,8 +73,8 @@ const S = {
   'triceps': c => wrap(UA, c.ua[1], a => box(a, c.ua[0], -0.125, 0.095, -0.030, 0.240, 0.016)) + c.gA + c.gU,
   'brachialis': c => wrap(UA, c.ua[1], a => box(a, c.ua[0], -0.022, 0.160, 0.026, 0.240, 0.010)) + c.gA + c.gU,
   // forearm (a: 0 lateral, + front, - back)
-  'forearm-flexor': c => wrap(FA, c.fa[1], a => box(a, c.fa[0], 0.006, 0.010, 0.104, 0.215, 0.012)) + c.gA + c.gF,
-  'forearm-extensor': c => wrap(FA, c.fa[1], a => box(a, c.fa[0], -0.104, 0.010, 0.000, 0.215, 0.012)) + c.gA + c.gF,
+  'forearm-flexor': c => wrap(FA, c.fa[1], a => box(a, c.fa[0], 0.040, 0.010, 0.104, 0.215, 0.012)) + c.gA + c.gF,
+  'forearm-extensor': c => wrap(FA, c.fa[1], a => box(a, c.fa[0], -0.104, 0.010, -0.014, 0.215, 0.012)) + c.gA + c.gF,
   'hand': c => Math.max(0.226 - c.fa[0], c.fa[0] - 0.46) + 4 * c.gA,
   // thigh (a: 0 medial, + front, - back, lateral seam)
   'rectus-femoris': c => wrap(TH, c.th[1], a => poly(a, c.th[0], [[0.088, 0.075], [0.138, 0.075], [0.142, 0.200], [0.124, 0.300], [0.094, 0.300], [0.082, 0.200]], 0.012)) + c.gL,
@@ -87,11 +87,14 @@ const S = {
   // shin (a: 0 lateral, + front, - back, medial seam)
   'tibialis': c => wrap(SH, c.sh[1], a => box(a, c.sh[0], 0.012, 0.050, 0.060, 0.300, 0.012)) + c.gS,
   'peroneal': c => wrap(SH, c.sh[1], a => box(a, c.sh[0], -0.026, 0.070, 0.002, 0.280, 0.010)) + c.gS,
-  'gastro-lat': c => wrap(SH, c.sh[1], a => ell(a, c.sh[0], -0.054, 0.120, 0.024, 0.085)) + c.gS,
-  'gastro-med': c => wrap(SH, c.sh[1], a => ell(a, c.sh[0], -0.106, 0.130, 0.028, 0.095)) + c.gS,
-  'soleus': c => wrap(SH, c.sh[1], a => box(a, c.sh[0], -0.135, 0.230, -0.030, 0.330, 0.020)) + c.gS,
+  'gastro-lat': c => wrap(SH, c.sh[1], a => poly(a, c.sh[0], [[-0.020, 0.030], [-0.072, 0.030], [-0.075, 0.120], [-0.068, 0.200], [-0.042, 0.172], [-0.020, 0.105]], 0.010)) + c.gS,
+  'gastro-med': c => wrap(SH, c.sh[1], a => poly(a, c.sh[0], [[-0.076, 0.030], [-0.135, 0.030], [-0.142, 0.125], [-0.112, 0.238], [-0.082, 0.218], [-0.077, 0.120]], 0.010)) + c.gS,
+  'soleus': c => wrap(SH, c.sh[1], a => poly(a, c.sh[0], [[-0.152, 0.170], [-0.112, 0.262], [-0.075, 0.240], [-0.040, 0.192], [-0.014, 0.130], [-0.014, 0.300], [-0.070, 0.345], [-0.150, 0.305]], 0.010)) + c.gS,
   'foot': c => 0.398 - c.sh[0] + c.gB,
   'head': c => 1.488 - c.y + c.gB,
+  // appended in M3 (ids 80+): 4th rectus row (8-pack look), brachioradialis strip on the forearm
+  'rectus-pubic': c => poly(c.s, c.y, [[0.0, 0.875], [0.040, 0.880], [0.074, 0.925], [0.080, 0.992], [0.0, 0.992]], 0.010) + c.gT,
+  'brachioradialis': c => wrap(FA, c.fa[1], a => poly(a, c.fa[0], [[-0.010, 0.000], [0.032, 0.000], [0.026, 0.120], [0.004, 0.170], [-0.010, 0.120]], 0.008)) + c.gA + c.gF,
 };
 // per-vertex charts + part gates (x mirrored to |x|; arm = skin weight on arm/hand bones)
 function charts(x, y, z, arm) { const p = [Math.abs(x), y, z]; const s = 0.13 * Math.atan2(p[0], z - zc(y));
@@ -146,7 +149,7 @@ function bake(meshes, table) {
 const VS = 'uniform sampler2D uV2pR;varying vec4 vR0;varying vec4 vR1;varying vec4 vR2;varying vec4 vR3;\n';
 const VB = '\n { int b4=gl_VertexID*4; vR0=texelFetch(uV2pR,ivec2(b4%1024,b4/1024),0); vR1=texelFetch(uV2pR,ivec2((b4+1)%1024,(b4+1)/1024),0); vR2=texelFetch(uV2pR,ivec2((b4+2)%1024,(b4+2)/1024),0); vR3=texelFetch(uV2pR,ivec2((b4+3)%1024,(b4+3)/1024),0); }';
 const FS = `
-uniform float uV2pRon; uniform float uV2pRm; uniform float uV2pRSel[80]; uniform vec3 uV2pRGrey; uniform vec3 uV2pRShade; uniform vec3 uV2pRLine; uniform float uV2pRLw; uniform float uV2pRDbg;
+uniform float uV2pRon; uniform float uV2pRm; uniform float uV2pRSel[96]; uniform float uV2pRBody[96]; uniform vec3 uV2pRGrey; uniform vec3 uV2pRShade; uniform vec3 uV2pRLine; uniform float uV2pRLw; uniform float uV2pRDbg;
 varying vec4 vR0; varying vec4 vR1; varying vec4 vR2; varying vec4 vR3;
 float v2rAct=0.0; float v2rLine=0.0; float v2rG=0.0; float v2rGp=1.0; int v2rId1=-1; int v2rId2=-1;
 void v2rEval(){ float f[8]; float d[8]; f[0]=vR0.x; f[1]=vR0.y; f[2]=vR0.z; f[3]=vR0.w; f[4]=vR1.x; f[5]=vR1.y; f[6]=vR1.z; f[7]=vR1.w;
@@ -157,8 +160,10 @@ void v2rEval(){ float f[8]; float d[8]; f[0]=vR0.x; f[1]=vR0.y; f[2]=vR0.z; f[3]
   // screen gradient of the (signed) channel difference from the per-channel varyings: identical for the whole 2x2 quad, so it does not
   // collapse where the quad straddles the border (fwidth(f2-f1) folds to ~0 there -> the old dashed lines)
   v2rG=f[c2]-f[c1]; v2rGp=v2rG/max(length(vec2(fx[c2]-fx[c1],fy[c2]-fy[c1])),1e-7); v2rId1=int(floor(d[c1]+0.5)); v2rId2=int(floor(d[c2]+0.5));
-  v2rLine=1.0-smoothstep(uV2pRLw-0.5,uV2pRLw+0.5,v2rGp); v2rAct=1.0; }
-float v2rSel(int i){ return (i<0||i>79)?0.0:uV2pRSel[i]; }
+  v2rLine=1.0-smoothstep(uV2pRLw-0.5,uV2pRLw+0.5,v2rGp); v2rAct=1.0;
+  // no midline split on head / hands / feet (L/R of one non-muscle part)
+  if(v2rId1>=0&&v2rId1<96&&v2rId1/2==v2rId2/2&&uV2pRBody[v2rId1]>0.5) v2rLine=0.0; }
+float v2rSel(int i){ return (i<0||i>95)?0.0:uV2pRSel[i]; }
 float v2rMask(out float core){ float s1=v2rSel(v2rId1), s2=v2rSel(v2rId2); float k=smoothstep(0.0,1.0,v2rGp); core=s1*clamp(v2rG/0.03,0.0,1.0); return mix(0.5*(s1+s2),s1,k); }
 `;
 function patch(o, tex) { const mat = o.material, ob = mat.onBeforeCompile;
@@ -168,18 +173,18 @@ function patch(o, tex) { const mat = o.material, ob = mat.onBeforeCompile;
     need.push('if(uV2pOut>0.5){');
     for (const s of need) if (fs.indexOf(s) < 0) throw new Error('v2plus regions: shader has no ' + s);
     fs = fs.replace('vec3 alb=vec3(0.0)', 'if(uV2pRon>0.5&&uV2pRm>0.5&&uV2pOn>0.5) v2rEval();\n vec3 alb=vec3(0.0)')
-      .replace('alb*=1.0-cav; shc*=1.0-cav;', 'alb*=1.0-cav; shc*=1.0-cav; if(v2rAct>0.5){ alb=uV2pRGrey*(1.0-cav); shc=uV2pRShade*(1.0-cav); W4=vec4(1.0,0.0,0.0,0.0); rimc=uRimC[0]; fin=vec4(0.0); v2cuff=0.0; }')
+      .replace('alb*=1.0-cav; shc*=1.0-cav;', 'alb*=1.0-cav; shc*=1.0-cav; if(v2rAct>0.5){ alb=uV2pRGrey*(1.0-cav); shc=uV2pRShade*(1.0-cav); W4=vec4(1.0,0.0,0.0,0.0); rimc=uV2pRGrey*0.9; fin=vec4(0.0); v2cuff=0.0; }')
       .replace('(uV2pOn>0.5?v2pMask(c2):hlMask(c2))', '(v2rAct>0.5?v2rMask(c2):(uV2pOn>0.5?v2pMask(c2):hlMask(c2)))')
       .replace('if(uV2pOut>0.5){', 'if(uV2pOut>0.5&&v2rAct<0.5){')   // atlas look: no inside-of-sleeve shade override
       .replace('#include <opaque_fragment>', 'if(uV2pRDbg>0.5&&v2rAct>0.5) outgoingLight = uV2pRDbg>2.5 ? fract(vec3(float(v2rId1)*0.37,float(v2rId1)*0.61,float(v2rId1)*0.13)) : uV2pRDbg>1.5 ? vec3(fract(v2rG*100.0), fract(v2rGp*0.1), 0.0) : vec3(1.0-v2rLine);\n#include <opaque_fragment>')
       .replace('lit=mix(lit,cyl,d*0.94);', 'lit=mix(lit,cyl,d*0.94); if(v2rAct>0.5) lit=mix(lit,uV2pRLine,v2rLine*0.85);');
     sh.fragmentShader = FS + fs; };
   const k0 = mat.customProgramCacheKey; mat.customProgramCacheKey = () => k0.call(mat) + '|v2pr'; mat.needsUpdate = true; }
-R.uni = { uV2pRon: { value: 0 }, uV2pRSel: { value: new Array(80).fill(0) }, uV2pRGrey: { value: null }, uV2pRShade: { value: null }, uV2pRLine: { value: null }, uV2pRLw: { value: 1.0 }, uV2pRDbg: { value: 0 } };
+R.uni = { uV2pRon: { value: 0 }, uV2pRSel: { value: new Array(96).fill(0) }, uV2pRBody: { value: new Array(96).fill(0) }, uV2pRGrey: { value: null }, uV2pRShade: { value: null }, uV2pRLine: { value: null }, uV2pRLw: { value: 1.0 }, uV2pRDbg: { value: 0 } };
 function meshes() { const v = flareInspector.viewer, out = []; v.coach.traverse(o => { if (o.isSkinnedMesh && o.material && /^toon-drill1-v2p($|\|)/.test(o.material.customProgramCacheKey?.() || '')) out.push(o); }); return out; }
 // load(table): call after __v2p.load (and __v2p.loadTorso when used). Bakes lazily per outfit/torso state on first enable.
 V2P.loadRegions = function(table) { if (R.data) return { already: true }; const t = T();
-  R.data = table; R.uni.uV2pRGrey.value = new t.Color(0.835, 0.850, 0.880); R.uni.uV2pRShade.value = new t.Color(0.640, 0.660, 0.705); R.uni.uV2pRLine.value = new t.Color(0.30, 0.32, 0.37);
+  R.data = table; if (table.count > 96) throw new Error('v2plus regions: > 96 ids'); R.uni.uV2pRBody.value = Array.from({ length: 96 }, (_, i) => table.regions[i]?.kind === 'body' ? 1 : 0); R.uni.uV2pRGrey.value = new t.Color(0.835, 0.850, 0.880); R.uni.uV2pRShade.value = new t.Color(0.640, 0.660, 0.705); R.uni.uV2pRLine.value = new t.Color(0.30, 0.32, 0.37);
   const dummy = new t.DataTexture(new Float32Array(4 * 1024).fill(9), 1024, 1, t.RGBAFormat, t.FloatType); dummy.needsUpdate = true; R.dummy = dummy;
   R.patched = new Map(); for (const o of meshes()) { const holder = { value: dummy }; R.patched.set(o, holder); patchHolder(o, holder); }
   const E = window.__drill, sel0 = E.selectModelProfile;
@@ -194,14 +199,15 @@ V2P.setRegions = function(on) { R.on = on; R.uni.uV2pRon.value = on ? 1 : 0; if 
   // training-collar swaps its own onBeforeCompile / cache key onto the neck mesh when the profile enables it: re-wrap those
   for (const [o, h] of R.patched) if (o.material.onBeforeCompile !== o.material.__v2prHook) patchHolder(o, h);
   if (R.key !== st) { const v = flareInspector.viewer; v.motion.reset(); v.coach.updateMatrixWorld(true); v.coach.traverse(o => { if (o.isSkinnedMesh) o.skeleton.update(); });
-    const list = [...R.patched.keys()].filter(o => o.visible && (o.geometry.drawRange.count > 0)); const b = bake(list, R.data); R.bakeInfo = b;
+    const list = [...R.patched.keys()].filter(o => o.visible && (o.geometry.drawRange.count > 0) && !SHOE.test(o.name)); /* shoes keep their own material */ const b = bake(list, R.data); R.bakeInfo = b;
     for (const [o, h] of R.patched) { const e = b.tex.get(o); h.value = e ? e.tex : R.dummy; (h.m || (h.m = { value: 0 })).value = e ? 1 : 0; }
     R.key = st; }
   if (V2P.lastHL) R.setHighlight(V2P.lastHL);
   R.meshInfo = [...R.patched.keys()].map(o => o.material.uuid.slice(0, 4) + ':' + o.name + (o.visible ? '' : '(hidden)') + ':' + o.geometry.drawRange.count + (b_has(o) ? '*' : ''));
   return { meshes: R.meshInfo, channels: R.bakeInfo.channels, maxDeg: R.bakeInfo.maxDeg, present: R.bakeInfo.present, verts: R.bakeInfo.verts }; };
+const SHOE = /Shoe|Sneaker|Sole/i;
 const b_has = o => !!R.bakeInfo?.tex.get(o);
-R.setHighlight = function(h) { const sel = new Array(80).fill(0); let n = 0; const D = R.data;
+R.setHighlight = function(h) { const sel = new Array(96).fill(0); let n = 0; const D = R.data;
   const side = h?.side === 'left' ? 'L' : h?.side === 'right' ? 'R' : null;
   for (const gid of (h?.lobes ? [] : h?.groups || [])) { const keys = D.groups[gid] || (D.base.includes(gid) ? [gid] : []);
     for (const k of keys) { const b = D.base.indexOf(k); for (const s of [0, 1]) { if (side && side !== (s ? 'R' : 'L')) continue; sel[2 * b + s] = 1; n++; } } }
