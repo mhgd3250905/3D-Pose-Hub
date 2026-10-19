@@ -79,14 +79,32 @@ keepE|=(np.abs(V[E[:,0],2])>FZ)&(np.abs(V[E[:,1],2])>FZ)
 Ac=adjacency(n,E[keepE]).tocsr(); degc=np.asarray(Ac.sum(1)).ravel()
 for it2 in range(SMI):
     Wn=Ac@W/np.maximum(degc,1)[:,None]; W[free]=0.5*W[free]+0.5*Wn[free]
+# ---- armpit apex: stage A2 packed the hollow's apex (and the zipper rows around it) into a few dense rows where the transferred
+#      field still alternates (arm share 0.4 / 0.7 on vertices 2 mm apart). With the arm overhead those edges stretch 10-20x into a
+#      small dark crease ringed by rim light (back armpit in the hang). Re-solve the weights of that small patch only as the
+#      harmonic interpolation of its border (Gauss-Seidel-style Jacobi on the full graph, border fixed): the shear spreads evenly
+#      across the patch, nothing outside it changes, so no broad partial shares come back (those made the overhead shoulder bowls).
+AX=os.environ.get('T_APEX','0.150,1.270,1.345,-0.065,0.055')
+if AX!='0':
+    ax0,ay0,ay1,az0,az1=map(float,AX.split(','))
+    patch=free&(np.abs(V[:,0])>ax0)&(np.abs(V[:,0])<0.21)&(V[:,1]>ay0)&(V[:,1]<ay1)&(V[:,2]>az0)&(V[:,2]<az1)
+    Af=adjacency(n,E).tocsr(); degf=np.asarray(Af.sum(1)).ravel()
+    for it3 in range(int(os.environ.get('T_APEXIT','400'))):
+        Wn=Af@W/np.maximum(degf,1)[:,None]; W[patch]=Wn[patch]
+    print('armpit apex patch: harmonic weights on',int(patch.sum()),'verts')
 print('weights: closest-point transfer, source dist mm p50/p99',np.percentile(dist*1000,[50,99]).round(1),'majority-filter passes',it+1)
 # ---- top 4, normalised, quantised to /255 (seams exact) ----
 order=np.argsort(-W,1)[:,:4]; top=np.take_along_axis(W,order,1); top/=top.sum(1,keepdims=True)
 q=np.round(top*255).astype(int); q[:,0]+=255-q.sum(1)
-# ---- normals: computed, seam vertices take the authored normal of the vertex they weld to ----
+# ---- normals: computed, seam vertices take the rest normal of the vertex they weld to. rest.json's N is the authored normal
+#      rotated by matrixWorld only (not skinned): fine for the tee and the legs, but Coach_Body's arms are bound in another pose
+#      (its arm normals there are ~50 deg off), so rest normals are the welded vertex normals of the skinned rest positions ----
+def restN(k):
+    Pk=P[k]; Fk=np.array(M[k]['index']).reshape(-1,3); inv,first=weld(Pk); return vnormals(Pk[first],inv[Fk])[inv]
+NR={TEE:restN(TEE),BODY:restN(BODY)}
 N=vnormals(V,F)
 for k,(name,mesh,vid) in enumerate(seam):
-    N[nMC+k]=np.array(M[mesh]['N'][int(vid)*3:int(vid)*3+3])
+    N[nMC+k]=NR[mesh][int(vid)]
 # blend the first rings toward the seam normals so shading continues across the weld
 for r_,a in ((1,0.6),(2,0.3),(3,0.12)):
     sel=np.where(ring==r_)[0]
@@ -97,7 +115,45 @@ for r_,a in ((1,0.6),(2,0.3),(3,0.12)):
     ok=np.linalg.norm(acc,axis=1)>0
     N[sel[ok]]=(1-a)*N[sel[ok]]+a*acc[ok]/np.linalg.norm(acc[ok],axis=1,keepdims=True)
 N/=np.linalg.norm(N,axis=1,keepdims=True)
+# armpit apex shading: at rest the armpit is a ~1 cm wide slot whose top is a tight U-turn of small, crumpled triangles (stage
+# A2's lift); their normals swing 60-120 deg between neighbours. With the arm overhead the slot opens and those normals show as a
+# small dark crease with rim-light lines (shade-colour branch where the shading normal turns from the camera). Give the crumpled
+# faces' vertices (dilated 3 rings, smooth falloff) the 6-ring smoothed normal field instead; positions are not touched.
+NSM=int(os.environ.get('T_APEXN','1'))
+if NSM:
+    fnn=np.cross(V[F[:,1]]-V[F[:,0]],V[F[:,2]]-V[F[:,0]]); fnn/=np.maximum(np.linalg.norm(fnn,axis=1,keepdims=True),1e-15)
+    Nr=vnormals(V,F)
+    for _ in range(6): Nr=A@Nr+Nr; Nr/=np.linalg.norm(Nr,axis=1,keepdims=True)
+    rf=Nr[F].mean(1); rf/=np.linalg.norm(rf,axis=1,keepdims=True); C0=V[F].mean(1)
+    crum=((fnn*rf).sum(1)<0.7)&(np.abs(C0[:,0])>0.12)&(C0[:,1]>1.15)&(C0[:,1]<1.40)
+    hop=np.full(n,99); hop[F[crum].ravel()]=0
+    for h in range(1,4):
+        nb=np.unique(A[np.where(hop==h-1)[0]].indices); nb=nb[hop[nb]==99]; hop[nb]=h
+    wn=np.where(hop<=3,1-(hop/4.0)**2,0.0); wn[nMC:]=0
+    N=(1-wn)[:,None]*N+wn[:,None]*Nr; N/=np.linalg.norm(N,axis=1,keepdims=True)
+    print('armpit apex normals: crumpled faces',int(crum.sum()),'verts re-shaded',int((wn>0).sum()))
 
+# short-sleeve skin strip: the torso's upper arm between the compression cuff plane (where the short sleeve now ends, shader) and
+# the arm weld ring shows as skin. Its base-mesh normals carry anatomical detail the v2 arm skin does not have (toon shading turns
+# it into grey blotches and a lighter band that stops at the weld). Give that strip the normals of the v2 arm skin just below
+# the weld ring (Coach_Body arm, 0.17-0.20 m down the shoulder->elbow axis), matched by angle around the axis, so the skin from the
+# cuff down shades as one smooth tube and continues across the weld without a step. Full from the cut down, fading out over 1.5 cm under the sleeve. Positions unchanged.
+SKN=int(os.environ.get('T_SKINN','1'))
+if SKN:
+    NB=NR[BODY]; nsk=0
+    for sgn,sd in ((1,'left'),(-1,'right')):
+        pl=np.array(outfit['cuffPlanes'][sd]); fc=V@pl[:3]-pl[3]+0.006; tb=TUBE[sd]
+        armsh=W[:,armI].sum(1)
+        wv=sstep(-0.015,0.0,fc)*sstep(0.2,0.4,armsh)*(V[:,0]*sgn>0.13); wv[nMC:]=0
+        sel=np.where(wv>0)[0]
+        tB,aB,rB=tb.coords(B); bm=(B[:,0]*sgn>0.12)&(tB>0.17)&(tB<0.20)&(rB<0.09)
+        key=lambda t,a: np.c_[0.0*t,0.05*np.cos(a),0.05*np.sin(a)]
+        tree=cKDTree(key(tB[bm],aB[bm])); tV,aV,_=tb.coords(V[sel])
+        dd,ii=tree.query(key(tV,aV),k=6); ww=1/np.maximum(dd,1e-4); ww/=ww.sum(1,keepdims=True)
+        Nt=np.einsum('ik,ikc->ic',ww,NB[np.where(bm)[0]][ii]); Nt/=np.linalg.norm(Nt,axis=1,keepdims=True)
+        N[sel]=(1-wv[sel])[:,None]*N[sel]+wv[sel][:,None]*Nt; nsk+=len(sel)
+    N/=np.linalg.norm(N,axis=1,keepdims=True)
+    print('short-sleeve skin strip: v2 arm-skin normals on',nsk,'verts')
 # ---- hidden parts of the existing meshes in torso mode ----
 keepT=d['keepT']; keepB=d['keepB']
 b64=lambda a: base64.b64encode(np.ascontiguousarray(a).tobytes()).decode()

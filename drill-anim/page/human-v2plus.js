@@ -212,6 +212,7 @@ function patchMaterials() {
       const fs = sh.fragmentShader; if (!/hlMask\(c2\)/.test(fs)) throw new Error('v2plus: toon fragment shader has no hlMask(c2) call');
       if (fs.indexOf('vec3 alb=vec3(0.0)') < 0) throw new Error('v2plus: toon fragment shader has no albedo block');
       if (fs.indexOf('float fr=pow(1.0-clamp(dot(Nn,V),0.0,1.0),2.6);') < 0) throw new Error('v2plus: toon fragment shader has no rim term');
+      if (fs.indexOf('alb*=1.0-cav; shc*=1.0-cav;') < 0) throw new Error('v2plus: toon fragment shader has no cavity term');
       // compression outfit, short sleeve: the arm skin below the (shrink-wrapped) sleeve cuff shows the grey skin instead of
       // the painted v2 sleeve. Cut = the cuff ring's plane in the rest pose, 6 mm up under the cuff, anti-aliased.
       sh.fragmentShader = GLSL + fs.replace(/hlMask\(c2\)/, '(uV2pOn>0.5?v2pMask(c2):hlMask(c2))').replace('float fr=pow(1.0-clamp(dot(Nn,V),0.0,1.0),2.6);',
@@ -219,11 +220,17 @@ function patchMaterials() {
         // camera while their shading normal turns away, e.g. the shoulder's inner shell) is plain shade colour, no rim light
         'float fr=pow(1.0-clamp(dot(Nn,V),0.0,1.0),2.6); if(uV2pOut>0.5){ vec3 fN=normalize(cross(dFdx(vViewPosition),dFdy(vViewPosition))); if(!gl_FrontFacing||(abs(dot(fN,V))>0.45&&dot(Nn,V)<0.15)){ lit=shc*0.8; fr=0.0; } }')
         // all coach toon materials share one program (same cache key), so the source is identical for every mesh: the base-mesh
-        // torso is top above uV2pWaist and tights below (its short sleeve ends at the arm weld ring, where the v2 arm skin takes
-        // over); the other meshes keep the short-sleeve skin paint (arm-weighted pixels below the cuff plane)
+        // torso is top above uV2pWaist and tights below, with the short-sleeve cut at the compression cuff plane; the other meshes
+        // keep the short-sleeve skin paint (arm-weighted pixels below the cuff plane)
         .replace('vec3 alb=vec3(0.0)',
-        'if(uV2pTorso>0.5){ float fw=vV2p.y-uV2pWaist; float aw=max(fwidth(fw),1e-5)*0.9; W4=mix(vec4(0.0,0.0,1.0,0.0),vec4(0.0,1.0,0.0,0.0),smoothstep(-aw,aw,fw)); }\n' +
-        'if(uV2pTorso<0.5&&uV2pOn>0.5&&uV2pSleeve>0.5&&vV2p.w>0.3){ vec4 pl=vV2p.x>0.0?uV2pCuffL:uV2pCuffR; float fc=dot(vV2p.xyz,pl.xyz)-pl.w+0.006; float ac=max(fwidth(fc),1e-5)*0.9; W4=mix(W4,vec4(1.0,0.0,0.0,0.0),smoothstep(-ac,ac,fc)); }\n vec3 alb=vec3(0.0)'); };
+        'float v2cuff=0.0;\n' +
+        'if(uV2pTorso>0.5){ float fw=vV2p.y-uV2pWaist; float aw=max(fwidth(fw),1e-5)*0.9; W4=mix(vec4(0.0,0.0,1.0,0.0),vec4(0.0,1.0,0.0,0.0),smoothstep(-aw,aw,fw));\n' +
+        // short sleeve on the torso: arm-weighted pixels below the compression outfit's cuff plane (same plane, same 6 mm) are skin,
+        // so the sleeve ends where the compression sleeve does; a 6 mm band above the cut is shaded a little darker (cuff edge)
+        '  if(uV2pSleeve>0.5){ vec4 pl=vV2p.x>0.0?uV2pCuffL:uV2pCuffR; float fc=dot(vV2p.xyz,pl.xyz)-pl.w+0.006; float ac=max(fwidth(fc),1e-5)*0.9; float g=smoothstep(0.3,0.5,vV2p.w);\n' +
+        '    float sk=smoothstep(-ac,ac,fc)*g; W4=mix(W4,vec4(1.0,0.0,0.0,0.0),sk); v2cuff=g*smoothstep(-0.006-ac,-0.006+ac,fc)*(1.0-smoothstep(-ac,ac,fc)); } }\n' +
+        'if(uV2pTorso<0.5&&uV2pOn>0.5&&uV2pSleeve>0.5&&vV2p.w>0.3){ vec4 pl=vV2p.x>0.0?uV2pCuffL:uV2pCuffR; float fc=dot(vV2p.xyz,pl.xyz)-pl.w+0.006; float ac=max(fwidth(fc),1e-5)*0.9; W4=mix(W4,vec4(1.0,0.0,0.0,0.0),smoothstep(-ac,ac,fc)); }\n vec3 alb=vec3(0.0)')
+        .replace('alb*=1.0-cav; shc*=1.0-cav;', 'alb*=1.0-cav; shc*=1.0-cav; alb*=1.0-0.22*v2cuff; shc*=1.0-0.22*v2cuff;'); };
     mat.customProgramCacheKey = () => 'toon-drill1-v2p'; mat.needsUpdate = true; n++; });
   return n;
 }
@@ -307,7 +314,9 @@ V2P.setOutfit = function(name, opts = {}) {
 // fitted to the v2 rest skeleton / compression silhouette. It replaces the tee below the collar band, the sleeve trim and the
 // shorts. It is welded vertex-for-vertex to the kept tee collar band and to the arm/leg skin of Coach_Body (seam vertices take the
 // live position, weights and normal of the vertex they weld to), skinned to the same skeleton, and painted by the shader (top above
-// uV2pWaist, tights below; the short sleeve ends at the arm weld ring). Hidden in this mode: tee faces below the collar band,
+// uV2pWaist, tights below; the short sleeve ends at the compression version's cuff plane with a darker cuff band, the skin
+// between that cut and the arm weld ring carries the v2 arm skin's normals; sleeve:'long' = top colour everywhere, v2 arms as in
+// v2). Hidden in this mode: tee faces below the collar band,
 // Coach_Body arm faces above the weld ring (the v2 arm skin flares into the loose tee there), the sleeve trim and the shorts.
 // Off = all of those back exactly as they were; the torso mesh is not drawn.
 const unb64 = (s, C) => { const b = atob(s), u = new Uint8Array(b.length); for (let i = 0; i < b.length; i++) u[i] = b.charCodeAt(i); return new C(u.buffer); };
@@ -327,7 +336,11 @@ V2P.loadTorso = function(data) {
   const q = new t.Vector3(), nn = new t.Vector3(); let seamN = 0;
   data.seam.vid.forEach((vid, s) => { const o = get(data.seam.mesh[s]), g = o.geometry, i = data.seam.first + s, ob = o.skeleton.bones;
     o.getVertexPosition(vid, q); q.applyMatrix4(o.matrixWorld); world.set([q.x, q.y, q.z], i * 3);
-    nn.fromBufferAttribute(g.attributes.normal, vid).applyMatrix3(new t.Matrix3().getNormalMatrix(o.matrixWorld)).normalize(); nw.set([nn.x, nn.y, nn.z], i * 3);
+    // rest normal = the authored normal through the welded vertex's own skinning at reset (Coach_Body's arms are bound in another pose)
+    const S0 = new t.Matrix4(), B0 = new t.Matrix4(), e0 = S0.elements.fill(0), bm0 = o.skeleton.boneMatrices;
+    for (let k = 0; k < 4; k++) { const w = g.attributes.skinWeight.getComponent(vid, k); if (!w) continue; B0.fromArray(bm0, g.attributes.skinIndex.getComponent(vid, k) * 16); for (let c = 0; c < 16; c++) e0[c] += w * B0.elements[c]; }
+    S0.premultiply(o.bindMatrixInverse).premultiply(o.matrixWorld).multiply(o.bindMatrix);
+    nn.fromBufferAttribute(g.attributes.normal, vid).applyMatrix3(new t.Matrix3().getNormalMatrix(S0)).normalize(); nw.set([nn.x, nn.y, nn.z], i * 3);
     for (let k = 0; k < 4; k++) { const j = bi[ob[g.attributes.skinIndex.getComponent(vid, k)].name]; si[i * 4 + k] = j ?? 0; sw[i * 4 + k] = g.attributes.skinWeight.getComponent(vid, k); } seamN++; });
   // bind space: p' = (tee skinning matrix at reset)^-1 * rest world (same solve as the compression outfit)
   const bm = tee.skeleton.boneMatrices, S = new t.Matrix4(), B = new t.Matrix4(), Mx = new t.Matrix4(), Mi = new t.Matrix4(), N3 = new t.Matrix3();

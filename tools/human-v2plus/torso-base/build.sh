@@ -11,8 +11,9 @@
 #  stage B  cut under the kept tee collar band, at the arm weld ring and the leg skin top, snap, zipper to the exact
 #           rings of the existing meshes                                                                           -> zip.npz
 #  stage C1 bi-Laplacian seam fairing with the neighbouring rings as fixed ghosts                                   -> fair.npz
-#  stage C2 weights (closest-point barycentric transfer of the compression outfit's weights, seams exact), normals,
-#           short-sleeve paint gate, export
+#  stage C2 weights (closest-point barycentric transfer of the compression outfit's weights, seams exact; harmonic weights on
+#           the small armpit-apex patch), normals (seams = skinned rest normals of the welded vertex; smoothed normals on the
+#           crumpled armpit apex; v2 arm-skin normals on the short-sleeve skin strip), export
 set -e
 DIR="$(cd "$(dirname "$0")" && pwd)"; REPO="$(cd "$DIR/../../.." && pwd)"
 WORK="${1:-$REPO/output/human-v2plus-torso-base-work}"; mkdir -p "$WORK"; cd "$WORK"
