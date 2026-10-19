@@ -77,6 +77,12 @@ for (const [file, expected] of Object.entries({
   'lib/soft-highlight.mjs': 'dd15110cc2dfa1eefb75bed721a5f815317251c429692524a64108de044f6b80',
   'themes/glow-soft.json': '7f26f07e38a500c565b7dbdb51a4e0b7eedfdf42657feea569fcc026ce85d2db',
 })) assert.equal(textHash(path.join(root, file)), expected, `Soft highlight v1 source changed (make a soft-v2 instead): ${file}`);
+// training-human-v2plus prototype (2026-10-19): opt-in profile on top of the unchanged training-human-v2 sources.
+{ const v2p = JSON.parse(fs.readFileSync(path.join(root, 'models/training-human-v2plus.json'), 'utf8'));
+  assert.equal(v2p.id, 'training-human-v2plus'); assert.equal(v2p.defaultForNewDrills, false);
+  const hands = JSON.parse(fs.readFileSync(path.join(root, 'models/training-human-v2plus-hands.json'), 'utf8'));
+  assert.equal(hands.mesh, 'Coach_Body'); assert.equal(hands.bones.length, 15);
+  for (const side of ['left', 'right']) for (const w of hands.weights[side].w) assert.equal(w.reduce((a, b) => a + b, 0), 255, 'v2plus weights must sum to 255'); }
 const model = JSON.parse(fs.readFileSync(path.join(root, 'models/training-human-v2.json'), 'utf8'));
 assert.equal(model.id, 'training-human-v2');
 assert.equal(model.defaultForNewDrills, true);

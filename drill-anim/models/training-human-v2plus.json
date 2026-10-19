@@ -1,0 +1,27 @@
+{
+  "id": "training-human-v2plus",
+  "version": "0.1.0-proto",
+  "status": "prototype (draft PR, not accepted)",
+  "name": "Flare训练人物 v2 + 手指骨骼 + 设计肌群分区（原型）",
+  "defaultForNewDrills": false,
+  "spec": {
+    "modelProfile": "training-human-v2plus",
+    "alignClavicles": false,
+    "v2plus": { "handPose": { "left": "optional: open | relaxed | palm-floor | grip-bar | band-grip", "right": "optional" } }
+  },
+  "base": "training-human-v2 exactly: same flare-coach.glb, head, neck/collar profile (training-collar.js runs as for training-human-v2), tee, shorts, shoes, solver and camera code. All 13 training-human-v2 source hashes are unchanged.",
+  "runtime": "drill-anim/page/human-v2plus.js (loaded by drill-anim/lib/human-v2plus.mjs only when a spec sets modelProfile 'training-human-v2plus')",
+  "data": "drill-anim/models/training-human-v2plus-hands.json (finger joints, hand-region weights, named hand poses)",
+  "build": "tools/human-v2plus/build_hand.py (input: tools/human-v2plus/probe.mjs dump of the v2 rest mesh)",
+  "adds": [
+    "15 finger bones per hand (thumb/index/middle/ring/pinky x 3) parented to <side>Hand of Coach_Body; identity rest rotation and the hand's inverse bind, so the rest mesh equals v2.",
+    "Hand-region skin weights only: the hand-bone share of hand vertices is split among hand + finger bones; forearm shares and every vertex outside the hands keep their v2 weights.",
+    "Named hand poses; grip-bar is least-squares fitted to the accepted v2 baked power grip (drill-anim/assets/grip-left.json) with a 1.5 mm bar clearance term.",
+    "Designed muscle-group regions (22 regions, 25 spec group ids) drawn per pixel from the interpolated rest position; replaces the v2 Voronoi mask only while the profile is active."
+  ],
+  "notChanged": [
+    "No twist bones, extra spine segments or dual-quaternion skinning (not needed for the rest shape; left for a later step).",
+    "The v7 relax morph and the P.bakeGrip vertex bake are bypassed in this profile (grip data is still computed so props are placed exactly as in v2)."
+  ],
+  "record": "docs/training-human-v2plus-proto.md"
+}
