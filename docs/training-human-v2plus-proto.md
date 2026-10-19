@@ -96,14 +96,14 @@ python3 tools/human-v2plus/outfit_sheet.py output/human-v2plus-outfit docs/revie
 - `compare-triceps-A.jpg` / `compare-scapular-B.jpg`（悬垂，手臂过头）/ `compare-h-squat.jpg`
 - `standing-plain.jpg` / `standing-hl.jpg`（正 / 侧 / 背）
 - `closeups-standing.jpg`（领口缝前后、肩、腋窝、手臂焊接环前后、腰、臀）、`closeups-hang.jpg`（悬垂时腋窝 / 肩前后、双肩正面）、`closeups-squat.jpg`（深蹲髋部折痕、臀、肩）
-- 全片 `video/`（720×720，H.264，各 <0.3 MB）：`torso-base-<动作>.mp4`（spec 自带的肌群高亮关掉），动作 = triceps-A / scapular-B / h-squat；`video/contact-torso-base-*.jpg` 是每段均匀抽 12 帧的缩略图。用 `drill.py render` 的临时 spec（`v2plus: { outfit: 'compression', torso: 'base' }`, `highlight: { groups: [] }`）出帧后重编码，临时 spec 不入库。高亮版未出。
+- 全片 `video/`（720×720，H.264，各 <0.3 MB）：`torso-base-<动作>.mp4`（spec 自带的肌群高亮关掉），动作 = triceps-A / scapular-B（h-squat 旧版修复前已删，待本地重出；mp4 被 .gitignore 忽略，不在仓库里）；`video/contact-torso-base-*.jpg` 是每段均匀抽 12 帧的缩略图。用 `drill.py render` 的临时 spec（`v2plus: { outfit: 'compression', torso: 'base' }`, `highlight: { groups: [] }`, `size: 720`；合成尺寸决定橙色描边/光晕粗细，用默认 1080 再缩到 720 描边会偏细）出帧后重编码，临时 spec 不入库。高亮版未出。
 
 已知粗糙处：
 1. 悬垂（手臂过头）时双肩不鼓包，轮廓是 V 形；背面腋窝的小暗褶已去掉（权重调和 + 腋窝顶点那块皱三角形的法线换成 6 环平滑法线，位置不动）。腋窝下沿轮廓上仍有正常的橙色轮廓光（紧身服版同样有）。
 2. 为了能举手，腋窝比真实解剖高（跟 v2 一样），站姿正面看腋窝更"紧"。
 3. 袖口是涂色（压暗一圈），不是几何滚边；背面特写里袖口到焊接环这段皮肤比下面略暗一点（约 4%）。
 4. 只验证了这 3 个动作（全片）+ 站姿 + 特写；没测其它主题。离线检查工具 `posecheck.py` 只覆盖导出的 5 个姿势。
-5. h-squat 手臂前平举（约 90° 屈肩）时近侧前腋窝的小橙色轮廓光 + 暗块已去掉：只改法线（腋窝缝顶 |x| 0.15–0.21、y 1.24–1.385、z ±0.065 一块，1.5 cm 平滑过渡，换成 40 环平滑法线，缝核心再往外侧偏），权重、位置、体形都没动，所以悬垂时肩部不会再鼓包。400 px 检查图里腋下只剩手臂下沿正常的一道细轮廓光（紧身服版同样有）。注意：`video/torso-base-h-squat.mp4`、`contact-torso-base-h-squat.jpg`、`compare-h-squat.jpg`、`closeups-squat.jpg` 还是修复前的版本，待重出。
+5. h-squat 手臂前平举（约 90° 屈肩）时近侧前腋窝的小橙色轮廓光 + 暗块已去掉：只改法线（腋窝缝顶 |x| 0.15–0.21、y 1.24–1.385、z ±0.065 一块，1.5 cm 平滑过渡，换成 40 环平滑法线，缝核心再往外侧偏），权重、位置、体形都没动，所以悬垂时肩部不会再鼓包。400 px 检查图里腋下只剩手臂下沿正常的一道细轮廓光（紧身服版同样有）。`video/torso-base-h-squat.mp4`、`contact-torso-base-h-squat.jpg`、`compare-h-squat.jpg`、`closeups-squat.jpg` 处理（2026-10-20）：`compare-h-squat.jpg`、`closeups-squat.jpg` 已按修复后重出；旧的 h-squat 视频和 `contact-torso-base-h-squat.jpg` 是修复前的，已删掉，成片改在本地（4080）出，这里不再跑整段视频。修复效果见关键帧 `keyframes-armpit-fix.jpg`（h-squat t=2.10 前腋窝、scapular-B t=1.90 双肩、站立前/后腋窝）：前腋窝橙色条和暗块都没了，深蹲底部手臂下沿只剩一道细轮廓光，不比紧身服版那道大；肩部无鼓包。
 6. 悬垂时左侧腰部（髂嵴）有一个约 3 px 的小暗点 + 轮廓光；紧身服版同一位置也有，几何无翻面、权重无跳变，判断是光照下的自然轮廓，未处理。
 
 复现（不需要 Blender；numpy / scipy，zstandard 或 zstd 命令行；首次会下载 50 MB 官方包并校验 SHA-256）：
