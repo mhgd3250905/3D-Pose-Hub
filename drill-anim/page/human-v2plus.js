@@ -90,7 +90,7 @@ V2P.pickHandPose = function(spec, side) {
 //   shin  : t along knee->ankle,   a = 0.045 * angle (0 lateral, + front, - back)
 // region SDF: < 0 inside (metres). Regions are drawn shapes, not anatomy-exact.
 const GLSL = `
-uniform float uV2pOn; uniform float uV2pSel[24]; uniform float uV2pSide; uniform float uV2pDeep;
+uniform float uV2pOn; uniform float uV2pSel[24]; uniform float uV2pSide; uniform float uV2pDeep; uniform float uV2pSleeve; uniform vec4 uV2pCuffL; uniform vec4 uV2pCuffR;
 varying vec4 vV2p;
 float v2sm(float a,float b,float k){ float h=clamp(0.5+0.5*(b-a)/k,0.0,1.0); return mix(b,a,h)-k*h*(1.0-h); }   // smooth min
 float v2sx(float a,float b,float k){ return -v2sm(-a,-b,k); }                                                       // smooth max
@@ -191,7 +191,8 @@ V2P.GROUPS = { chest: ['chest'], pectorals: ['chest'], abs: ['abs'], obliques: [
   forearms: ['forearms'], 'glute-max': ['glute-max'], glutes: ['glute-max', 'glute-med'], 'hip-abductors': ['glute-med'], 'hip-rotators': ['glute-max'],
   'hip-flexors': ['hip-flexors'], quadriceps: ['quadriceps'], hamstrings: ['hamstrings'], adductors: ['adductors'], calves: ['calves'], tibialis: ['tibialis'], neck: ['neck'] };
 V2P.DEEP = new Set(['rotator-cuff', 'hip-flexors', 'hip-rotators']);
-V2P.uni = { uV2pOn: { value: 0 }, uV2pSel: { value: new Array(24).fill(0) }, uV2pSide: { value: 0 }, uV2pDeep: { value: 0 } };
+V2P.uni = { uV2pOn: { value: 0 }, uV2pSel: { value: new Array(24).fill(0) }, uV2pSide: { value: 0 }, uV2pDeep: { value: 0 },
+  uV2pSleeve: { value: 0 }, uV2pCuffL: { value: [0, -1, 0, -9] }, uV2pCuffR: { value: [0, -1, 0, -9] } };
 function restTextures() {
   // CPU-skinned reset-pose world positions (one continuous canvas for skin, tee and shorts) + arm weight
   const t = T(), v = flareInspector.viewer; v.motion.reset(); v.coach.updateMatrixWorld(true); const q = new t.Vector3(); const out = {};
@@ -204,12 +205,16 @@ function restTextures() {
   return out;
 }
 function patchMaterials() {
-  const tex = restTextures(); let n = 0; const v = flareInspector.viewer;
-  v.coach.traverse(o => { if (!o.isSkinnedMesh || !o.material || o.material.customProgramCacheKey?.() !== 'toon-drill1') return; const mat = o.material, ob = mat.onBeforeCompile, tx = tex[o.uuid];
+  const tex = V2P.restTex = restTextures(); let n = 0; const v = flareInspector.viewer;
+  v.coach.traverse(o => { if (!o.isSkinnedMesh || !o.material || o.material.customProgramCacheKey?.() !== 'toon-drill1') return; const mat = o.material, ob = mat.onBeforeCompile, tx = tex[o.uuid], isBody = o.name === 'Coach_Body';
     mat.onBeforeCompile = (sh, r) => { ob(sh, r); Object.assign(sh.uniforms, V2P.uni); sh.uniforms.uV2pT = { value: tx };
       sh.vertexShader = 'uniform sampler2D uV2pT;varying vec4 vV2p;\n' + sh.vertexShader.replace('#include <begin_vertex>', '#include <begin_vertex>\n vV2p=texelFetch(uV2pT,ivec2(gl_VertexID%1024,gl_VertexID/1024),0);');
       const fs = sh.fragmentShader; if (!/hlMask\(c2\)/.test(fs)) throw new Error('v2plus: toon fragment shader has no hlMask(c2) call');
-      sh.fragmentShader = GLSL + fs.replace(/hlMask\(c2\)/, '(uV2pOn>0.5?v2pMask(c2):hlMask(c2))'); };
+      if (isBody && fs.indexOf('vec3 alb=vec3(0.0)') < 0) throw new Error('v2plus: toon fragment shader has no albedo block');
+      // compression outfit, short sleeve: the arm skin below the (shrink-wrapped) sleeve cuff shows the grey skin instead of
+      // the painted v2 sleeve. Cut = the cuff ring's plane in the rest pose, 6 mm up under the cuff, anti-aliased.
+      sh.fragmentShader = GLSL + fs.replace(/hlMask\(c2\)/, '(uV2pOn>0.5?v2pMask(c2):hlMask(c2))').replace('vec3 alb=vec3(0.0)', isBody ?
+        'if(uV2pOn>0.5&&uV2pSleeve>0.5&&vV2p.w>0.3){ vec4 pl=vV2p.x>0.0?uV2pCuffL:uV2pCuffR; float fc=dot(vV2p.xyz,pl.xyz)-pl.w+0.006; float ac=max(fwidth(fc),1e-5)*0.9; W4=mix(W4,vec4(1.0,0.0,0.0,0.0),smoothstep(-ac,ac,fc)); }\n vec3 alb=vec3(0.0)' : 'vec3 alb=vec3(0.0)'); };
     mat.customProgramCacheKey = () => 'toon-drill1-v2p'; mat.needsUpdate = true; n++; });
   return n;
 }
@@ -218,6 +223,65 @@ V2P.setHighlight = function(h) { const sel = new Array(24).fill(0); let n = 0, d
   V2P.uni.uV2pSel.value = sel; V2P.uni.uV2pSide.value = h?.side === 'left' ? 1 : h?.side === 'right' ? -1 : 0; V2P.uni.uV2pDeep.value = deep;
   // the toon shader only calls the mask when uSelN > 0
   if (V2P.on && window.__mmUni?.uSelN) window.__mmUni.uSelN.value = n ? 1 : 0; return n; };
+
+// ---------------- 3. compression outfit (opt-in: spec.v2plus.outfit = 'compression') ----------------
+// drill-anim/models/training-human-v2plus-outfit.json (tools/human-v2plus/build_outfit.py): the v2 tee, sleeve trim and shorts
+// shrink-wrapped by smooth fields (no skin exists under them): rest-world displacements + normals per moved vertex, tee-hem skin
+// weights copied from the shorts, sleeve-cuff planes. Applied in bind space: p' = (skinning matrix at reset)^-1 (rest world + d),
+// so the reset pose shows exactly the built shape and every pose skins it with the v2 bones. Off = the original buffers, untouched.
+const OUTFIT_MESHES = ['Mesh005', 'Mesh005_1', 'Coach_Training_Shorts'];
+function prepOutfit(data) {
+  const t = T(), v = flareInspector.viewer; v.motion.reset(); v.coach.updateMatrixWorld(true); const O = { meshes: [], data };
+  v.coach.traverse(o => { if (!o.isSkinnedMesh || !OUTFIT_MESHES.includes(o.name)) return; const D = data.meshes[o.name]; if (!D) return;
+    o.skeleton.update(); const g = o.geometry, pa = g.attributes.position, na = g.attributes.normal, si = g.attributes.skinIndex, sw = g.attributes.skinWeight;
+    const names = o.skeleton.bones.map(b => b.name), bi = Object.fromEntries(names.map((n, i) => [n, i])), bm = o.skeleton.boneMatrices;
+    const rec = { o, idx: D.idx, p0: [], n0: [], p1: [], n1: [], w: null, rest: [] };
+    // new weights first (the bind-space solve must use the weights the vertex will be skinned with)
+    const W = data.weights?.[o.name]; const wmap = new Map();
+    if (W) { rec.w = { idx: W.idx, j0: [], w0: [], j1: [], w1: [] };
+      W.idx.forEach((i, r) => { const j0 = [], w0 = [], j1 = [], w1 = [];
+        for (let k = 0; k < 4; k++) { j0.push(si.getComponent(i, k)); w0.push(sw.getComponent(i, k)); }
+        for (let k = 0; k < 4; k++) { const nm = W.bones[r][k]; if (nm === undefined) { j1.push(0); w1.push(0); continue; } if (bi[nm] === undefined) throw new Error('v2plus outfit: bone ' + nm);
+          j1.push(bi[nm]); w1.push(W.w[r][k] / 255); }
+        rec.w.j0.push(j0); rec.w.w0.push(w0); rec.w.j1.push(j1); rec.w.w1.push(w1); wmap.set(i, [j1, w1]); }); }
+    const M = new t.Matrix4(), S = new t.Matrix4(), B = new t.Matrix4(), Minv = new t.Matrix4(), N3 = new t.Matrix3(), q = new t.Vector3(), n = new t.Vector3();
+    const skinM = (i, jw) => { const e = S.elements.fill(0); for (let k = 0; k < 4; k++) { const j = jw ? jw[0][k] : si.getComponent(i, k), w = jw ? jw[1][k] : sw.getComponent(i, k);
+        if (!w) continue; B.fromArray(bm, j * 16); for (let c = 0; c < 16; c++) e[c] += w * B.elements[c]; }
+      return M.copy(o.matrixWorld).multiply(o.bindMatrixInverse).multiply(S).multiply(o.bindMatrix); };
+    D.idx.forEach((i, r) => {
+      rec.p0.push(pa.getX(i), pa.getY(i), pa.getZ(i)); rec.n0.push(na.getX(i), na.getY(i), na.getZ(i));
+      o.getVertexPosition(i, q); q.applyMatrix4(o.matrixWorld); rec.rest.push(q.x, q.y, q.z);                  // rest world with the current weights
+      q.x += D.d[r * 3] * 1e-5; q.y += D.d[r * 3 + 1] * 1e-5; q.z += D.d[r * 3 + 2] * 1e-5;
+      skinM(i, wmap.get(i)); Minv.copy(M).invert(); q.applyMatrix4(Minv); rec.p1.push(q.x, q.y, q.z);
+      // world normal -> bind: n_local ~ A^T n_world (A = linear part of M)
+      N3.setFromMatrix4(M).transpose(); n.set(D.n[r * 3], D.n[r * 3 + 1], D.n[r * 3 + 2]).multiplyScalar(1e-4).applyMatrix3(N3).normalize(); rec.n1.push(n.x, n.y, n.z); });
+    O.meshes.push(rec); });
+  if (O.meshes.length !== OUTFIT_MESHES.length) throw new Error('v2plus outfit: found ' + O.meshes.length + ' of ' + OUTFIT_MESHES.length + ' garment meshes');
+  return O;
+}
+function writeOutfit(on) {
+  for (const R of V2P.outfit.meshes) { const g = R.o.geometry, pa = g.attributes.position, na = g.attributes.normal, P = on ? R.p1 : R.p0, Nn = on ? R.n1 : R.n0;
+    R.idx.forEach((i, r) => { pa.setXYZ(i, P[r * 3], P[r * 3 + 1], P[r * 3 + 2]); na.setXYZ(i, Nn[r * 3], Nn[r * 3 + 1], Nn[r * 3 + 2]); });
+    for (const a of [pa, na]) { a.needsUpdate = true; if (a.isInterleavedBufferAttribute) a.data.needsUpdate = true; }
+    if (R.w) { const si = g.attributes.skinIndex, sw = g.attributes.skinWeight, J = on ? R.w.j1 : R.w.j0, W = on ? R.w.w1 : R.w.w0;
+      R.w.idx.forEach((i, r) => { for (let k = 0; k < 4; k++) { si.setComponent(i, k, J[r][k]); sw.setComponent(i, k, W[r][k]); } });
+      for (const a of [si, sw]) { a.needsUpdate = true; if (a.isInterleavedBufferAttribute) a.data.needsUpdate = true; } }
+    g.computeBoundingSphere?.(); g.boundingBox = null;
+    // the designed muscle regions read the rest position: give the moved vertices their new rest position
+    const tx = V2P.restTex?.[R.o.uuid]; if (tx) { const a = tx.image.data, D = V2P.outfit.data.meshes[R.o.name];
+      R.idx.forEach((i, r) => { for (let c = 0; c < 3; c++) a[i * 4 + c] = R.rest[r * 3 + c] + (on ? D.d[r * 3 + c] * 1e-5 : 0); }); tx.needsUpdate = true; } }
+}
+V2P.setOutfit = function(name, opts = {}) {
+  const on = name === 'compression'; if (on && !V2P.outfit) throw new Error('v2plus: outfit data not loaded');
+  // selectModelProfile runs every frame: write only on a change, or when training-collar has toggled (it rewrites all tee weights)
+  const tag = window.__trainingCollarReport || null;
+  if (V2P.outfit && (on !== !!V2P.outfitOn || (on && tag !== V2P.collarTag))) writeOutfit(on);
+  V2P.collarTag = tag;
+  V2P.outfitOn = on; const sleeve = on ? (opts.sleeve || 'short') : null; V2P.outfitState = on ? { outfit: name, sleeve } : null;
+  V2P.uni.uV2pSleeve.value = sleeve === 'short' ? 1 : 0;
+  if (V2P.outfit) { V2P.uni.uV2pCuffL.value = V2P.outfit.data.cuffPlanes.left; V2P.uni.uV2pCuffR.value = V2P.outfit.data.cuffPlanes.right; }
+  return V2P.outfitState;
+};
 
 // ---------------- profile switch + hooks ----------------
 // hand vertex buffers: v2 keeps its own (relax morph / baked grips); v2plus always shows the pristine authored hand + bones
@@ -229,12 +293,14 @@ function put(s) { bufs().forEach((a, k) => { const v = s[k]; for (let i = 0; i <
 V2P.enable = function(on) { if (!V2P.loaded) throw new Error('v2plus not loaded'); if (V2P.on === on) return; V2P.on = on; writeWeights(on); V2P.uni.uV2pOn.value = on ? 1 : 0;
   if (on) { V2P.v2buf = snap(); put(V2P.pristine); window.__setRelax0?.(0, 0); } else { V2P.restHands(); if (V2P.v2buf) put(V2P.v2buf); }
   if (V2P.lastHL) { window.__setHighlight0(V2P.lastHL); if (on) V2P.setHighlight(V2P.lastHL); } };
-V2P.load = function(meta) {
+V2P.load = function(meta, outfit) {
   if (V2P.loaded) return { already: true };
   const E = window.__drill; const rig = graftFingers(meta); const patched = patchMaterials(); V2P.pristine = snap();
+  if (outfit) V2P.outfit = prepOutfit(outfit);
   const sel0 = E.selectModelProfile.bind(E);
-  E.selectModelProfile = function(spec) { if (spec.modelProfile === 'training-human-v2plus') { sel0(Object.assign({}, spec, { modelProfile: 'training-human-v2' })); V2P.enable(true); }
-    else { if (V2P.on) V2P.enable(false); sel0(spec); } };
+  E.selectModelProfile = function(spec) { if (spec.modelProfile === 'training-human-v2plus') { sel0(Object.assign({}, spec, { modelProfile: 'training-human-v2' })); V2P.enable(true);
+      V2P.setOutfit(spec.v2plus?.outfit || null, { sleeve: spec.v2plus?.sleeve }); }
+    else { if (V2P.on) { V2P.setOutfit(null); V2P.enable(false); } sel0(spec); } };
   const pose0 = E.pose.bind(E);
   E.pose = function(spec, params, warm) { const r = pose0(spec, params, warm);
     if (V2P.on) { for (const s of ['left', 'right']) { const nm = V2P.pickHandPose(spec, s);
@@ -249,6 +315,6 @@ V2P.load = function(meta) {
   const P = window.__props; if (P && P.bakeGrip) { const bg0 = P.bakeGrip;
     P.bakeGrip = function(side) { if (!V2P.on || P.gripData[side]) return bg0(side);
       put(V2P.v2buf); const r = bg0(side); V2P.v2buf = snap(); put(V2P.pristine); return r; }; }
-  V2P.loaded = true; return { ...rig, patched };
+  V2P.loaded = true; return { ...rig, patched, outfit: V2P.outfit ? V2P.outfit.meshes.map(R => R.o.name + ':' + R.idx.length) : null };
 };
 })();

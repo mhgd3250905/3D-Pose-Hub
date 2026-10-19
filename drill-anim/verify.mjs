@@ -82,7 +82,13 @@ for (const [file, expected] of Object.entries({
   assert.equal(v2p.id, 'training-human-v2plus'); assert.equal(v2p.defaultForNewDrills, false);
   const hands = JSON.parse(fs.readFileSync(path.join(root, 'models/training-human-v2plus-hands.json'), 'utf8'));
   assert.equal(hands.mesh, 'Coach_Body'); assert.equal(hands.bones.length, 15);
-  for (const side of ['left', 'right']) for (const w of hands.weights[side].w) assert.equal(w.reduce((a, b) => a + b, 0), 255, 'v2plus weights must sum to 255'); }
+  for (const side of ['left', 'right']) for (const w of hands.weights[side].w) assert.equal(w.reduce((a, b) => a + b, 0), 255, 'v2plus weights must sum to 255');
+  // opt-in compression outfit (spec.v2plus.outfit = 'compression'): garment displacements, hem weights, cuff planes
+  const outfit = JSON.parse(fs.readFileSync(path.join(root, 'models/training-human-v2plus-outfit.json'), 'utf8'));
+  assert.deepEqual(Object.keys(outfit.meshes).sort(), ['Coach_Training_Shorts', 'Mesh005', 'Mesh005_1']);
+  for (const m of Object.values(outfit.meshes)) { assert.equal(m.d.length, m.idx.length * 3); assert.equal(m.n.length, m.idx.length * 3); assert.ok(m.d.every(x => Math.abs(x) <= 2500), 'v2plus outfit: displacement > 25 mm'); }
+  for (const W of Object.values(outfit.weights)) for (const w of W.w) assert.equal(w.reduce((a, b) => a + b, 0), 255, 'v2plus outfit weights must sum to 255');
+  for (const side of ['left', 'right']) assert.equal(outfit.cuffPlanes[side].length, 4); }
 const model = JSON.parse(fs.readFileSync(path.join(root, 'models/training-human-v2.json'), 'utf8'));
 assert.equal(model.id, 'training-human-v2');
 assert.equal(model.defaultForNewDrills, true);
