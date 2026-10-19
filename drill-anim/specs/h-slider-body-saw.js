@@ -1,0 +1,9 @@
+// 双脚滑盘长杠杆回收：居家小器械，非办公。只教固定双掌时的动态抗伸展。
+// 两脚同时滑远8cm并受控回位；保持肘膝近直，胸廓骨盆一体，不塌腰。
+// 仅适合已有无痛直臂支撑基础者，先1组4次；腕肩腰疼痛停止。
+import {build,keys} from '../lib/home-anim.mjs';
+const DUR=8,p=keys([[0,0],[.6,0],[2.1,1],[2.4,1],[3.6,0],[4.6,0],[6.1,1],[6.4,1],[7.6,0]],DUR);
+const hand=z=>({mode:'floor',at:[0,z],finger:[-1,0],poleUp:[0,.9,.05]});
+const foot=z=>({mode:'floor',at:t=>[1.21+.08*p(t),z],heading:-90,pitch:42,floor:.008,pole:[-.3,.05,z]});
+const P=build(DUR,{pelvis:[.42,.40,0],hips:{up:[-1,0,0],front:[0,-1,0],rot:[[[0,0,1],-17]]},hands:{left:hand(.165),right:hand(-.165)},feet:{left:foot(.1),right:foot(-.1)},constraints:[{type:'reach',limb:'rightArm',angle:174},{type:'reach',limb:'leftArm',angle:174},{type:'reach',limb:'rightLeg',angle:174},{type:'reach',limb:'leftLeg',angle:174},{type:'legAlign',limb:'rightLeg',flex:0,weight:.3},{type:'legAlign',limb:'leftLeg',flex:0,weight:.3}],solve:{vars:['px','py','h0'],reg:{px:.01,py:.01,h0:.001},iters:80}},{out:p});
+export default {id:'h-slider-body-saw',name:'双脚滑盘长杠杆回收',nameEn:'Straight-Arm Slider Body Saw',modelProfile:'training-human-v2',alignClavicles:false,fps:15,timeline:{duration:DUR,tracks:P.tracks},pose:{base:P.base,deltas:P.deltas},highlight:{groups:['abs'],side:'both',pulseTrack:'out',pulseBase:.3},camera:{dir:[-.25,.22,1],fit:['head','leftPalm','rightPalm','leftToe','rightToe','pelvis','leftElbow','rightElbow'],pad:.15,k:.8,drift:0,at:2.2},frame:{mode:'fit',width:820,height:800,cx:512,cy:520},stillAt:2.2,props:[{type:'mat',at:[-.1,0,0],size:[.6,.6,.006]},...['left','right'].map(side=>({type:'sliders',colour:'#8c929c',follow:[{bone:side+'Foot'}],fixY:0,offset:[-.10,0,0],r:.09}))],keyFrames:[0,1.3,2.2,3.0],qa:{pins:[{c:'handR',when:'always'},{c:'handL',when:'always'}],straight:[{j:'elbow.right',min:170},{j:'elbow.left',min:170},{j:'knee.right',min:170},{j:'knee.left',min:170}],allowContact:[]}};
