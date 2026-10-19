@@ -14,7 +14,7 @@ BASE = [  # key, zh, en, kind
  ('neck', '胸锁乳突肌 / 颈前', 'sternocleidomastoid / front neck', 'muscle'),
  ('trap-upper', '斜方肌上部', 'upper trapezius', 'muscle'),
  ('trap-mid', '斜方肌中下部', 'middle / lower trapezius', 'muscle'),
- ('rhomboid', '菱形肌区', 'rhomboid area', 'muscle'),
+ ('rhomboid', '菱形肌区（M4 起并入斜方肌中下部，保留 id）', 'rhomboid area (retired in M4: folded into middle / lower trapezius; id kept)', 'retired'),
  ('infraspinatus', '冈下肌 / 小圆肌', 'infraspinatus / teres minor', 'muscle'),
  ('teres-major', '大圆肌', 'teres major', 'muscle'),
  ('lat', '背阔肌', 'latissimus dorsi', 'muscle'),
@@ -49,7 +49,7 @@ BASE = [  # key, zh, en, kind
 ]
 GROUPS = {  # spec group id (the 25 the specs / muscle-map use) -> base keys
  'chest': ['pec'], 'pectorals': ['pec'], 'abs': ['rectus-upper', 'rectus-mid', 'rectus-lower', 'rectus-pubic'], 'obliques': ['oblique'], 'serratus': ['serratus'],
- 'lats': ['lat', 'teres-major'], 'scapular': ['trap-mid', 'rhomboid'], 'rotator-cuff': ['infraspinatus'], 'erectors': ['erector'],
+ 'lats': ['lat', 'teres-major'], 'scapular': ['trap-mid', 'infraspinatus', 'teres-major'], 'rotator-cuff': ['infraspinatus'], 'erectors': ['erector'],
  'traps': ['trap-upper', 'trap-mid'], 'deltoids': ['delt-front', 'delt-side', 'delt-rear'], 'triceps': ['triceps'], 'biceps': ['biceps', 'brachialis'],
  'forearms': ['forearm-flexor', 'forearm-extensor', 'brachioradialis'], 'glute-max': ['glute-max'], 'glutes': ['glute-max', 'glute-med'], 'hip-abductors': ['glute-med'],
  'hip-rotators': ['glute-max'], 'hip-flexors': ['hip-flexor', 'sartorius'], 'quadriceps': ['rectus-femoris', 'vastus-lat', 'vastus-med'],

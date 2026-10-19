@@ -46,7 +46,7 @@ const pos = x => Math.max(0, x);
 // ---------- base region shapes: fn(c) -> signed distance (m), c = per-vertex charts + gates ----------
 const S = {
   // torso front (q = [s, y]; s = 0 front midline .. 0.408 back midline)
-  'pec': c => poly(c.s, c.y, [[0.010, 1.205], [0.060, 1.188], [0.110, 1.200], [0.148, 1.236], [0.168, 1.288], [0.158, 1.345], [0.090, 1.362], [0.010, 1.360]], 0.010) + c.gT,
+  'pec': c => poly(c.s, c.y, [[0.010, 1.205], [0.060, 1.188], [0.110, 1.200], [0.148, 1.236], [0.168, 1.288], [0.166, 1.352], [0.130, 1.384], [0.070, 1.398], [0.010, 1.388]], 0.010) + c.gT,
   'rectus-upper': c => box(c.s, c.y, 0.0, 1.126, 0.084, 1.192, 0.012) + c.gT,
   'rectus-mid': c => box(c.s, c.y, 0.0, 1.062, 0.084, 1.120, 0.010) + c.gT,
   'rectus-lower': c => box(c.s, c.y, 0.0, 0.998, 0.082, 1.056, 0.010) + c.gT,
@@ -55,19 +55,24 @@ const S = {
   'hip-flexor': c => ell(c.s, c.y, 0.108, 0.845, 0.027, 0.070, 0.62) + c.gT,
   'neck': c => box(c.s, c.y, 0.0, 1.380, 0.075, 1.470, 0.014) + c.gT,
   // torso back (b = 0.408 - s: 0 spine .. lateral)
-  'trap-upper': c => poly(c.b, c.y, [[0.0, 1.420], [0.100, 1.388], [0.180, 1.372], [0.172, 1.430], [0.050, 1.470], [0.0, 1.472]], 0.008) + c.gT,
-  'trap-mid': c => poly(c.b, c.y, [[0.0, 1.075], [0.040, 1.140], [0.080, 1.215], [0.118, 1.300], [0.172, 1.366], [0.100, 1.384], [0.0, 1.414]], 0.010) + c.gT,
-  'rhomboid': c => poly(c.b, c.y, [[0.040, 1.215], [0.072, 1.235], [0.084, 1.305], [0.046, 1.315]], 0.008) + c.gT + 0.004,
-  'infraspinatus': c => ell(c.b, c.y, 0.135, 1.272, 0.040, 0.036) + c.gT,
-  'teres-major': c => ell(c.b, c.y, 0.160, 1.212, 0.034, 0.016, -0.5) + c.gT,
-  'lat': c => poly(c.b, c.y, [[0.050, 1.105], [0.068, 1.010], [0.130, 0.970], [0.198, 1.020], [0.214, 1.140], [0.206, 1.235], [0.168, 1.212], [0.105, 1.170]], 0.014) + c.gT,
+  // M4: reaches over the top of the shoulder girdle to the clavicle (the torso chart's s is wide there), so the front deltoid stays on the cap
+  'trap-upper': c => poly(c.b, c.y, [[0.0, 1.420], [0.100, 1.388], [0.170, 1.375], [0.215, 1.393], [0.256, 1.404], [0.252, 1.446], [0.172, 1.452], [0.050, 1.470], [0.0, 1.472]], 0.008) + c.gT,
+  // M4: trapezius diamond narrowed to the medial scapular border + the scapular spine, so the shoulder-blade blocks below the spine
+  // (infraspinatus / teres minor, teres major) sit on the visible back of the scapula like the reference
+  'trap-mid': c => poly(c.b, c.y, [[0.0, 1.075], [0.035, 1.150], [0.060, 1.245], [0.072, 1.300], [0.118, 1.334], [0.150, 1.352], [0.100, 1.384], [0.0, 1.414]], 0.010) + c.gT,
+  'rhomboid': c => 1.0, // retired in M4 (folded into trap-mid; the scapular group maps to trap-mid + infraspinatus + teres major); id kept so ids stay stable
+  'infraspinatus': c => poly(c.b, c.y, [[0.080, 1.302], [0.120, 1.328], [0.168, 1.346], [0.184, 1.300], [0.170, 1.248], [0.128, 1.232], [0.088, 1.246], [0.074, 1.272]], 0.012) + c.gT,
+  'teres-major': c => poly(c.b, c.y, [[0.090, 1.232], [0.130, 1.222], [0.176, 1.240], [0.206, 1.262], [0.212, 1.226], [0.168, 1.196], [0.112, 1.198]], 0.008) + c.gT,
+  'lat': c => poly(c.b, c.y, [[0.050, 1.105], [0.068, 1.010], [0.130, 0.970], [0.198, 1.020], [0.214, 1.140], [0.212, 1.205], [0.168, 1.186], [0.110, 1.180]], 0.014) + c.gT,
   'erector': c => poly(c.b, c.y, [[0.0, 0.875], [0.060, 0.895], [0.092, 0.965], [0.045, 1.060], [0.0, 1.075]], 0.010) + c.gT,
   'glute-max': c => box(c.b, c.y, 0.0, 0.705, 0.128, 0.895, 0.045) + c.gT,
   'glute-med': c => ell(c.b, c.y, 0.190, 0.905, 0.060, 0.050) + c.gT,
-  // deltoid cap in the upper-arm chart, split by angle (front / lateral / back); not gated by arm weight (the shoulder cap is torso-weighted)
-  'delt-front': c => Math.max(c.delt, 0.035 - c.ua[1]),
-  'delt-side': c => Math.max(c.delt, Math.abs(c.ua[1]) - 0.035),
-  'delt-rear': c => Math.max(c.delt, c.ua[1] + 0.035),
+  // deltoid cap in the upper-arm chart; not gated by arm weight (the shoulder cap is torso-weighted). M4: the three heads are split by
+  // CURVED borders that converge at the insertion (deltoid tuberosity): front head a tear-drop wide at the clavicle, rear head wide at the
+  // scapular spine, the lateral head between them (dFront / dRear = signed distance to the border curves, see charts())
+  'delt-front': c => Math.max(c.delt, c.dF),
+  'delt-side': c => Math.max(c.delt, -c.dF, -c.dR),
+  'delt-rear': c => Math.max(c.delt, c.dR),
   // upper arm (a: 0 lateral, + front, - back, medial seam)
   'biceps': c => wrap(UA, c.ua[1], a => box(a, c.ua[0], 0.032, 0.105, 0.125, 0.240, 0.016)) + c.gA + c.gU,
   'triceps': c => wrap(UA, c.ua[1], a => box(a, c.ua[0], -0.125, 0.095, -0.030, 0.240, 0.016)) + c.gA + c.gU,
@@ -96,6 +101,8 @@ const S = {
   'rectus-pubic': c => poly(c.s, c.y, [[0.0, 0.875], [0.040, 0.880], [0.074, 0.925], [0.080, 0.992], [0.0, 0.992]], 0.010) + c.gT,
   'brachioradialis': c => wrap(FA, c.fa[1], a => poly(a, c.fa[0], [[-0.010, 0.000], [0.032, 0.000], [0.026, 0.120], [0.004, 0.170], [-0.010, 0.120]], 0.008)) + c.gA + c.gF,
 };
+// deltoid outline (a, t) in the upper-arm chart: front edge reaches toward the clavicle / pec, rear edge toward the scapular spine
+const DELT = [[0.0, -0.066], [0.108, -0.040], [0.112, 0.018], [0.090, 0.074], [0.046, 0.124], [0.0, 0.152], [-0.042, 0.128], [-0.086, 0.080], [-0.112, 0.024], [-0.120, -0.032]];
 // per-vertex charts + part gates (x mirrored to |x|; arm = skin weight on arm/hand bones)
 function charts(x, y, z, arm) { const p = [Math.abs(x), y, z]; const s = 0.13 * Math.atan2(p[0], z - zc(y));
   const ua = UA.f(p), fa = FA.f(p), th = TH.f(p), sh = SH.f(p);
@@ -109,7 +116,10 @@ function charts(x, y, z, arm) { const p = [Math.abs(x), y, z]; const s = 0.13 * 
   c.gF = 2 * pos(-fa[0] - 0.005);                                                  // forearm starts at the elbow
   c.gL = gArm + 2 * pos(tTop - th[0]) + 2 * pos(th[0] - 0.372);                   // thigh: groin / fold .. knee
   c.gS = gArm + 2 * pos(-sh[0] + 0.005) + 2 * pos(sh[0] - 0.40);                  // shin: knee .. ankle
-  c.delt = Math.max(Math.max(poly(ua[1], ua[0], [[-0.105, -0.030], [-0.080, 0.085], [0.0, 0.150], [0.080, 0.085], [0.105, -0.030], [0.0, -0.060]], 0.012), ua[2] - 0.090), 0.115 - p[0]);
+  c.delt = Math.max(Math.max(poly(ua[1], ua[0], DELT, 0.012), ua[2] - 0.090), 2 * (0.118 - p[0]));
+  // head borders: a = +-B(t), B from ~0.062 (top) to ~0.010 (insertion), bowed (sin term) so the border is a curve, not a straight cut
+  const k = ss(-0.045, 0.150, ua[0]), B = mix(0.064, 0.010, k) + 0.010 * Math.sin(Math.PI * k);
+  c.dF = B - ua[1]; c.dR = ua[1] + mix(0.060, 0.010, k) + 0.012 * Math.sin(Math.PI * k);
   return c; }
 // ---------- bake ----------
 const MID = 2.0; // midline gate slope: id side L (+x) pays MID * max(0, -x), R pays MID * max(0, x)
@@ -206,6 +216,7 @@ V2P.setRegions = function(on) { R.on = on; R.uni.uV2pRon.value = on ? 1 : 0; if 
   R.meshInfo = [...R.patched.keys()].map(o => o.material.uuid.slice(0, 4) + ':' + o.name + (o.visible ? '' : '(hidden)') + ':' + o.geometry.drawRange.count + (b_has(o) ? '*' : ''));
   return { meshes: R.meshInfo, channels: R.bakeInfo.channels, maxDeg: R.bakeInfo.maxDeg, present: R.bakeInfo.present, verts: R.bakeInfo.verts }; };
 const SHOE = /Shoe|Sneaker|Sole/i;
+R._dev = { S, charts, MID }; // offline tools (tools/human-v2plus/regions/offline.mjs)
 const b_has = o => !!R.bakeInfo?.tex.get(o);
 R.setHighlight = function(h) { const sel = new Array(96).fill(0); let n = 0; const D = R.data;
   const side = h?.side === 'left' ? 'L' : h?.side === 'right' ? 'R' : null;
