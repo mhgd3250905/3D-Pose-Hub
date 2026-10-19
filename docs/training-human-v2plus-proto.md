@@ -128,14 +128,14 @@ python3 tools/human-v2plus/sheet.py output/human-v2plus docs/reviews/human-v2plu
 
 不需要 Blender。依赖：Python numpy / scipy / Pillow。
 
-## 烘焙肌群分区（opt-in，草稿，2026-10-20 M2 / M3 打磨）
+## 烘焙肌群分区（opt-in，草稿，2026-10-20 M2 / M3 / M4 打磨）
 
 > 开哥的想法：把肌群分区"烤"进身体本身，像 Thomas app 的人体模型那样：浅灰身体、整身分成肌群区、细深色分区线，高亮左右对称、标准、清晰，以后能用标签 + 箭头指向某块肌肉。
 > spec 写 `modelProfile: 'training-human-v2plus', v2plus: { outfit: 'compression', torso: 'base', regions: 'baked' }` 才生效；不写 `regions` 一切不变（`lib/human-v2plus.mjs` 只在这时才加载 `page/human-v2plus-regions.js`）。
 
 | 项 | 内容 |
 |---|---|
-| 分区表 | `drill-anim/models/training-human-v2plus-regions.json`（`tools/human-v2plus/regions/make_table.py` 生成）：42 个基础区 × 左右 = **84 个 id**（M3 在末尾追加了 `rectus-pubic`、`brachioradialis`，原 80 个 id 不变；shader 上限 96）（id = 2×基础序号 + 侧，0 = 左 = +x）。37 个肌肉区（胸大肌、腹直肌上/中/下、腹外斜肌、前锯肌、髋屈肌、颈前、斜方肌上/中下、菱形肌区、冈下肌/小圆肌、大圆肌、背阔肌、竖脊肌、臀大/中肌、三角肌前/中/后束、肱二头肌、肱三头肌、肱肌、前臂屈/伸肌群、股直肌、股外侧/内侧肌、缝匠肌、内收肌群、腘绳肌外/内、胫骨前肌、腓骨肌、腓肠肌外/内侧头、比目鱼肌）+ 头 / 手 / 脚（非肌肉区，只为分界）。表里有中英文名、侧别，和 25 个 spec 肌群名 → 新分区的映射（`groups`）；高亮也可以直接用基础区 key（如 `delt-front`）或 `regionIds`。 |
+| 分区表 | `drill-anim/models/training-human-v2plus-regions.json`（`tools/human-v2plus/regions/make_table.py` 生成）：42 个基础区 × 左右 = **84 个 id**（M3 在末尾追加了 `rectus-pubic`、`brachioradialis`，原 80 个 id 不变；shader 上限 96）（id = 2×基础序号 + 侧，0 = 左 = +x）。37 个肌肉区（M4 起菱形肌区退役，实际 36 个）（胸大肌、腹直肌上/中/下、腹外斜肌、前锯肌、髋屈肌、颈前、斜方肌上/中下、菱形肌区、冈下肌/小圆肌、大圆肌、背阔肌、竖脊肌、臀大/中肌、三角肌前/中/后束、肱二头肌、肱三头肌、肱肌、前臂屈/伸肌群、股直肌、股外侧/内侧肌、缝匠肌、内收肌群、腘绳肌外/内、胫骨前肌、腓骨肌、腓肠肌外/内侧头、比目鱼肌）+ 头 / 手 / 脚（非肌肉区，只为分界）。表里有中英文名、侧别，和 25 个 spec 肌群名 → 新分区的映射（`groups`）；高亮也可以直接用基础区 key（如 `delt-front`）或 `regionIds`。 |
 | 做法 | ①每个基础区是一个设计形状（圆角多边形 / 盒 / 椭圆 / 胶囊），画在静止姿势表面的平滑展开图上（沿用 v2plus 的躯干圆柱 + 上臂 / 前臂 / 大腿 / 小腿图，肢体绕缝线 wrap），加软的部位门（手臂权重、腹股沟—臀褶线、肘、腕、膝、踝、颈）；值是有符号距离，分区 = 80 个 id 取最小（中线用左右门），所以每个顶点都有区，形状之间的空隙对半分。②**逐顶点烘焙**：把相邻的区（同一三角形 / 顶点环，跨网格按静止位置焊接）贪心着色到 8 个通道，每个顶点存每个通道的最小距离和对应 id（每顶点 4 个 RGBA texel，顶点着色器按 gl_VertexID 读）。③**逐像素**：8 个通道距离线性插值，最小者 = 所在区，最小与次小之差 g 除以它的屏幕梯度长度（由两个通道各自的 dFdx/dFdy 相减得到，M3 修正）= 到分界的像素距离 → 固定约 2 px 宽的抗锯齿分区线，三角形内亚像素精确，焊缝两侧一致；高亮 = 选中的 id，分界处平滑过渡。浅灰 / 暗灰阴影 / 线色是 uniform。 |
 | 运行时 | 加载时只打补丁（材质 onBeforeCompile 再包一层，cache key 加 `|v2pr`）；第一次启用时按当前衣服 / 躯干状态烘焙（约 10 s，15.6 万顶点，7 个网格：Coach_Body、颈部 Mesh001、头、鞋 ×3、领口带 Mesh005、基础网格躯干），状态变了才重烤。training-collar 会把自己的 hook 换到颈部网格上，所以每次切换 profile 时检查并重新包。 |
 
@@ -154,7 +154,24 @@ python3 tools/human-v2plus/regions/sheet.py output/rg docs/reviews/human-v2plus-
 python3 tools/human-v2plus/regions/poses_sheet.py output/rgp docs/reviews/human-v2plus-proto/regions/m3-poses.jpg
 ```
 
+M4（2026-10-20）：肩部形状 + 标注锚点
+1. **三角肌**：前 / 中 / 后束的分界改成曲线（a = ±B(t)，从肩峰处约 6 cm 弧长收到止点约 1 cm，再加一个正弦弓形），三束在三角肌粗隆处汇合；前束是靠近锁骨 / 胸大肌的泪滴形，后束朝肩胛冈展开，中束在两者之间。三角肌外形多边形也改圆。斜方肌上部延伸到肩上缘—锁骨（躯干展开图在颈根处 s 很宽，之前那片被前束"抢"走，前束一直延伸到颈旁），三角肌门改为 `2×(0.118-|x|)`，前束只留在肩头。左右镜像。
+2. **肩胛区**：斜方肌中下部的菱形收窄到肩胛骨内缘 + 肩胛冈；冈下肌 / 小圆肌移到肩胛冈下方、肩胛骨背面（下缘向内下斜到下角），大圆肌是从下角斜向腋窝的一条，背阔肌上缘让开——从背后看就是参考图那样的肩胛块。**菱形肌区退役**（之前 0 个顶点，只是占位）：id 20/21 保留（`kind: 'retired'`，形状永不取胜），`scapular` 映射改为 `trap-mid + infraspinatus + teres-major`。
+3. **标注锚点**：每个区 id 一个稳定的表面点，写进分区表 `anchors`（`tools/human-v2plus/regions/anchors.py`，输入为 `regions.mjs --dump` 的静止姿势烘焙）：取该区三角形最多的网格，算面积加权质心，在区内"深度"（到区边界的图距离）≥ 最大深度一半的顶点里取离质心最近的那个；法线 = 该顶点一圈三角形的面积加权法线（朝外）。存 `mesh`、`meshVerts`、`vertex`、`rest`、`normal`、`ring`（顶点环三角形）、`ringSign`；`state` 记录烘焙状态（compression + base 躯干）。80/84 个 id 有锚点；缺的是 rhomboid（已退役）和 sartorius（缝匠肌条太细，0 个顶点，见下）。`make_table.py` 重写表时保留 `anchors`；改形状后要重跑 `anchors.py`。
+4. **运行时 API**：`__v2p.getRegionAnchor(id)`（= `__v2p.regions.getRegionAnchor`）→ `{ id, key, side, position, normal, mesh, stale }`，当前姿势下世界坐标：锚点顶点和它的三角形环在 CPU 上蒙皮（`SkinnedMesh.getVertexPosition`，用最近一次摆好的骨骼），法线由蒙皮后的三角形重算。`stale` = 当前烘焙状态和锚点计算时不同。调试叠加：`__v2p.regions.showAnchors(true[, ids])` 在高亮区（或给定 id）的锚点画红点 + 6 cm 法线短棍（scene.onBeforeRender 里刷新），还没有文字 / 箭头 UI。
+5. **工具**：`regions.mjs` 的 `--extra` 第 5 段可写高亮组 / 基础 key（逗号分隔）或 `dbg3`（区域 id 色）；`--dump` 额外导出三角形索引；`regions-poses.mjs` 加 `--hl`、`--anchors`、`--stand`、`--only`；`regions/offline.mjs` 不开浏览器、按 dump 重新算每顶点分区（改形状时 1 s 自查顶点数）；`regions/grid_sheet.py` 拼带文件名的关键帧网格。
+
+图：`docs/reviews/human-v2plus-proto/regions/m4-shoulders.jpg`（肩部正 / 侧 / 背特写：无高亮、前束、中束、后束 + 冈下肌、大圆肌 + 斜方肌中下部；站姿背面无高亮 / 三角肌 + 肩胛区高亮），`m4-anchors.jpg`（锚点调试：站姿正 / 背、h-squat t=1.2、scapular-B t=1.9；胸、背阔肌（含大圆肌）、股四头肌、冈下肌），`m4-poses-shoulders.jpg`（h-squat t=1.2、scapular-B t=1.9，三角肌 + 冈下肌高亮）。
+复现（只出关键帧）：
+```bash
+/workspace/bin/heavy -- tools/human-v2plus/run.sh tools/human-v2plus/regions.mjs output/rg5 --size 640 --dump --hl deltoids,scapular --extra "4-back:0.13,1.28,-0.02:0.5:0.45,0.1,-1;5-back-hl:0.13,1.28,-0.02:0.5:0.45,0.1,-1:delt-rear,infraspinatus"
+PYTHONPATH=/workspace/work/pylib python3 tools/human-v2plus/regions/anchors.py output/rg5/dump.json
+/workspace/bin/heavy -- tools/human-v2plus/run.sh tools/human-v2plus/regions-poses.mjs output/rga --size 512 --anchors --stand --hl chest,lats,quadriceps,rotator-cuff
+PYTHONPATH=/workspace/work/pylib python3 tools/human-v2plus/regions/grid_sheet.py out.jpg --cols 3 output/rga/raw/*.png
+```
+
 还剩的粗糙处：
-1. 三角肌前 / 中 / 后束仍按上臂图的角度直切，线条不如参考图那样顺；冈下肌 / 大圆肌的线从背后看靠近侧面轮廓，不太显眼。
-2. 菱形肌区仍是斜方肌中下部里的一小块（为了 `scapular` 映射保留），参考图里没有。
-3. `regions` 只在 `torso: 'base'` 下试过；只看了 h-squat 和 scapular-B 两个动作。
+1. 缝匠肌（`sartorius`）是 6 mm 宽的线段形状，烘焙后 0 个顶点（M3 起就这样，之前没发现）：图上看不到，也没有锚点；要么加宽成条带，要么并入股直肌 / 内收肌。另外大圆肌、肱肌、腓骨肌顶点很少（< 200），锚点"深度"只有 1。
+2. 锚点只对 compression + base 躯干这个烘焙状态有效（`stale` 会标出来）；位置来自 CPU 蒙皮，不含着色器里的额外位移（若有），贴面误差几毫米级，调试图上看不出偏。
+3. 斜方肌中下部在肩胛冈上方向外伸到肩峰，背面看像 T 形；参考图里冈上部分不单独画，可以接受，但还可以再收。
+4. `regions` 只在 `torso: 'base'` 下试过；动作只看了 h-squat 和 scapular-B。
