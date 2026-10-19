@@ -96,13 +96,15 @@ python3 tools/human-v2plus/outfit_sheet.py output/human-v2plus-outfit docs/revie
 - `compare-triceps-A.jpg` / `compare-scapular-B.jpg`（悬垂，手臂过头）/ `compare-h-squat.jpg`
 - `standing-plain.jpg` / `standing-hl.jpg`（正 / 侧 / 背）
 - `closeups-standing.jpg`（领口缝前后、肩、腋窝、手臂焊接环前后、腰、臀）、`closeups-hang.jpg`（悬垂时腋窝 / 肩前后、双肩正面）、`closeups-squat.jpg`（深蹲髋部折痕、臀、肩）
-- 全片 `video/`（720×720，H.264）：`torso-base-<动作>.mp4`（无高亮）和 `torso-base-<动作>-hl.mp4`（spec 自带的肌群高亮），动作 = triceps-A / scapular-B / h-squat；`video/contact-*.jpg` 是每段均匀抽 12 帧的缩略图。
+- 全片 `video/`（720×720，H.264，各 <0.3 MB）：`torso-base-<动作>.mp4`（spec 自带的肌群高亮关掉），动作 = triceps-A / scapular-B / h-squat；`video/contact-torso-base-*.jpg` 是每段均匀抽 12 帧的缩略图。用 `drill.py render` 的临时 spec（`v2plus: { outfit: 'compression', torso: 'base' }`, `highlight: { groups: [] }`）出帧后重编码，临时 spec 不入库。高亮版未出。
 
 已知粗糙处：
 1. 悬垂（手臂过头）时双肩不鼓包，轮廓是 V 形；背面腋窝的小暗褶已去掉（权重调和 + 腋窝顶点那块皱三角形的法线换成 6 环平滑法线，位置不动）。腋窝下沿轮廓上仍有正常的橙色轮廓光（紧身服版同样有）。
 2. 为了能举手，腋窝比真实解剖高（跟 v2 一样），站姿正面看腋窝更"紧"。
 3. 袖口是涂色（压暗一圈），不是几何滚边；背面特写里袖口到焊接环这段皮肤比下面略暗一点（约 4%）。
 4. 只验证了这 3 个动作（全片）+ 站姿 + 特写；没测其它主题。离线检查工具 `posecheck.py` 只覆盖导出的 5 个姿势。
+5. h-squat 手臂前平举（约 90° 屈肩）时，近侧前腋褶（腋窝顶点块前缘外，z≈+0.055–0.07）仍有一小条橙色轮廓光 + 暗块（视频里约 8 px）。把调和权重块往前扩到这里能消掉它，但悬垂时肩部圆包会回来（已试过、已撤回），需要另想办法（例如只改这几排的法线 / 几何）。
+6. 悬垂时左侧腰部（髂嵴）有一个约 3 px 的小暗点 + 轮廓光；紧身服版同一位置也有，几何无翻面、权重无跳变，判断是光照下的自然轮廓，未处理。
 
 复现（不需要 Blender；numpy / scipy，zstandard 或 zstd 命令行；首次会下载 50 MB 官方包并校验 SHA-256）：
 ```bash
