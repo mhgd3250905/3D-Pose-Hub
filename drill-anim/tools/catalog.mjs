@@ -106,6 +106,7 @@ const D = {
   hse: 'docs/home-small-equipment-2026-10-18.md', hpc: 'docs/home-posterior-chain-2026-10-18.md',
 };
 const KNOWN = {
+  'h-band-straight-leg-raise': ['band-straight-leg-raise-34：居家后置弹力带长杠杆髋屈，膝基本固定；区别屈膝高抬膝与健身房绳索，低分保留待GPU（docs/band-straight-leg-raise-34-2026-10-19.md）'],
   'h-band-chest-fly': ['band-chest-fly-28：轻屈肘固定的单臂弹力带水平内收；独立握持/带路/足底接触检查，低分保留待GPU，需稳固胸高锚点', 'docs/band-chest-fly-28-2026-10-19.md'],
   'h-db-shrug': ['dumbbell-shrug-29：双哑铃肩带上提35mm；上斜方肌目标无独立高亮，实际足底/握持/肩部网格检查，低分保留待GPU', 'docs/dumbbell-shrug-29-2026-10-19.md'],
   'h-db-front-raise': ['dumbbell-front-raise-30：双哑铃固定软肘肩屈曲前举；区别侧平举/过头推举/耸肩，实际足底握持器械避让检查，低分保留待GPU', 'docs/dumbbell-front-raise-30-2026-10-19.md'],
