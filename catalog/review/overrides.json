@@ -1,0 +1,1669 @@
+{
+ "_doc": "人工审阅数据：build_catalog.py 先自动合并三方数据，再按本文件覆盖。flarelab = FlareLab 独有动作的标签（drills.json 里没有结构化标签，逐条手标）；fixes = 对已有数据的更正（_why 写原因）；purpose = 手写一句话用途（未列的由 SmartFit intro 台词自动生成）；doubts = 待开哥拍板的疑点。",
+ "flarelab": {
+  "deltoids-A": {
+   "category": "strength",
+   "equipment": [],
+   "position": "side_lying",
+   "unilateral": true,
+   "level": 1,
+   "scenes": [
+    "home",
+    "gym"
+   ],
+   "defaultDose": {
+    "mode": "time",
+    "sets": 3,
+    "seconds": 25,
+    "restSeconds": 30
+   },
+   "doseRange": {
+    "seconds": [
+     15,
+     45
+    ]
+   },
+   "cautions": [
+    "肩",
+    "手腕"
+   ],
+   "alternative": "rotator-cuff-A",
+   "purpose": "单臂撑起全身，练承重肩的稳定",
+   "extraGroups": [
+    "obliques"
+   ]
+  },
+  "deltoids-B": {
+   "category": "strength",
+   "equipment": [
+    "dumbbell",
+    "mat"
+   ],
+   "position": "supine",
+   "unilateral": true,
+   "level": 2,
+   "scenes": [
+    "home",
+    "gym"
+   ],
+   "defaultDose": {
+    "mode": "reps",
+    "sets": 3,
+    "reps": 3,
+    "restSeconds": 60
+   },
+   "doseRange": {
+    "reps": [
+     2,
+     5
+    ]
+   },
+   "cautions": [
+    "肩",
+    "手腕"
+   ],
+   "alternative": "deltoids-A",
+   "purpose": "半程土耳其起立，在体位变化中稳住肩",
+   "extraGroups": []
+  },
+  "deltoids-C": {
+   "category": "strength",
+   "equipment": [
+    "landmine"
+   ],
+   "position": "kneeling",
+   "unilateral": true,
+   "level": 2,
+   "scenes": [
+    "gym"
+   ],
+   "defaultDose": {
+    "mode": "reps",
+    "sets": 3,
+    "reps": 8,
+    "restSeconds": 60
+   },
+   "doseRange": {
+    "reps": [
+     6,
+     12
+    ]
+   },
+   "cautions": [
+    "肩"
+   ],
+   "alternative": "h-db-press",
+   "purpose": "斜向单臂推举，强化过头承重的肩力",
+   "extraGroups": [
+    "serratus"
+   ]
+  },
+  "rotator-cuff-A": {
+   "category": "strength",
+   "equipment": [],
+   "position": "prone",
+   "unilateral": true,
+   "level": 1,
+   "scenes": [
+    "home",
+    "gym"
+   ],
+   "defaultDose": {
+    "mode": "reps",
+    "sets": 3,
+    "reps": 8,
+    "restSeconds": 30
+   },
+   "doseRange": {
+    "reps": [
+     6,
+     12
+    ]
+   },
+   "cautions": [
+    "手腕",
+    "肩"
+   ],
+   "alternative": "h-forearm-plank",
+   "purpose": "高平板交替触肩，练单手支撑时的肩稳定",
+   "extraGroups": [
+    "abs"
+   ]
+  },
+  "rotator-cuff-B": {
+   "category": "strength",
+   "equipment": [
+    "band"
+   ],
+   "position": "standing",
+   "unilateral": true,
+   "level": 1,
+   "scenes": [
+    "home",
+    "gym"
+   ],
+   "defaultDose": {
+    "mode": "reps",
+    "sets": 3,
+    "reps": 12,
+    "restSeconds": 30
+   },
+   "doseRange": {
+    "reps": [
+     10,
+     15
+    ]
+   },
+   "cautions": [
+    "肩"
+   ],
+   "alternative": "h-side-er",
+   "purpose": "肘贴体侧弹力带外旋，护住肩袖",
+   "extraGroups": []
+  },
+  "rotator-cuff-C": {
+   "category": "strength",
+   "equipment": [
+    "cable"
+   ],
+   "position": "standing",
+   "unilateral": true,
+   "level": 2,
+   "scenes": [
+    "gym"
+   ],
+   "defaultDose": {
+    "mode": "reps",
+    "sets": 3,
+    "reps": 10,
+    "restSeconds": 45
+   },
+   "doseRange": {
+    "reps": [
+     8,
+     12
+    ]
+   },
+   "cautions": [
+    "肩"
+   ],
+   "alternative": "rotator-cuff-B",
+   "purpose": "90/90 位绳索外旋，强化肩袖",
+   "extraGroups": []
+  },
+  "triceps-A": {
+   "category": "strength",
+   "equipment": [],
+   "position": "prone",
+   "unilateral": false,
+   "level": 2,
+   "scenes": [
+    "home",
+    "gym"
+   ],
+   "defaultDose": {
+    "mode": "reps",
+    "sets": 3,
+    "reps": 8,
+    "restSeconds": 45
+   },
+   "doseRange": {
+    "reps": [
+     6,
+     10
+    ]
+   },
+   "cautions": [
+    "手腕",
+    "肩"
+   ],
+   "alternative": "h-incline-pushup",
+   "purpose": "窄距俯卧撑锁肘停顿，练支撑臂伸直力",
+   "extraGroups": [
+    "chest"
+   ]
+  },
+  "triceps-B": {
+   "category": "strength",
+   "equipment": [
+    "parallettes"
+   ],
+   "position": "support",
+   "unilateral": false,
+   "level": 2,
+   "scenes": [
+    "home",
+    "gym"
+   ],
+   "defaultDose": {
+    "mode": "time",
+    "sets": 4,
+    "seconds": 15,
+    "restSeconds": 45
+   },
+   "doseRange": {
+    "seconds": [
+     10,
+     20
+    ]
+   },
+   "cautions": [
+    "手腕",
+    "肩"
+   ],
+   "alternative": "h-chair-dip",
+   "purpose": "平行杆直臂撑起，练锁肘承重",
+   "extraGroups": [
+    "deltoids"
+   ]
+  },
+  "triceps-C": {
+   "category": "strength",
+   "equipment": [
+    "dip-bars"
+   ],
+   "position": "support",
+   "unilateral": false,
+   "level": 3,
+   "scenes": [
+    "gym"
+   ],
+   "defaultDose": {
+    "mode": "reps",
+    "sets": 3,
+    "reps": 6,
+    "restSeconds": 60
+   },
+   "doseRange": {
+    "reps": [
+     5,
+     8
+    ]
+   },
+   "cautions": [
+    "肩"
+   ],
+   "alternative": "h-chair-dip",
+   "purpose": "双杠臂屈伸，练推撑力量",
+   "extraGroups": [
+    "chest"
+   ]
+  },
+  "forearms-A": {
+   "category": "mobility",
+   "equipment": [],
+   "position": "quadruped",
+   "unilateral": false,
+   "level": 1,
+   "scenes": [
+    "home",
+    "gym"
+   ],
+   "defaultDose": {
+    "mode": "reps",
+    "sets": 2,
+    "reps": 10,
+    "restSeconds": 15
+   },
+   "doseRange": {
+    "reps": [
+     8,
+     12
+    ]
+   },
+   "cautions": [
+    "手腕"
+   ],
+   "alternative": null,
+   "purpose": "多方向腕部摇摆，撑地训练前的手腕热身",
+   "extraGroups": []
+  },
+  "forearms-B": {
+   "category": "strength",
+   "equipment": [
+    "dumbbell",
+    "chair"
+   ],
+   "position": "seated",
+   "unilateral": false,
+   "level": 1,
+   "scenes": [
+    "home",
+    "gym"
+   ],
+   "defaultDose": {
+    "mode": "reps",
+    "sets": 2,
+    "reps": 15,
+    "restSeconds": 30
+   },
+   "doseRange": {
+    "reps": [
+     12,
+     20
+    ]
+   },
+   "cautions": [
+    "手腕"
+   ],
+   "alternative": "forearms-A",
+   "purpose": "哑铃腕屈腕伸，练腕部力量与耐力",
+   "extraGroups": []
+  },
+  "forearms-C": {
+   "category": "strength",
+   "equipment": [
+    "kettlebell"
+   ],
+   "position": "standing",
+   "unilateral": true,
+   "level": 2,
+   "scenes": [
+    "home",
+    "gym"
+   ],
+   "defaultDose": {
+    "mode": "time",
+    "sets": 3,
+    "seconds": 30,
+    "restSeconds": 45
+   },
+   "doseRange": {
+    "seconds": [
+     20,
+     45
+    ]
+   },
+   "cautions": [
+    "手腕",
+    "肩"
+   ],
+   "alternative": "forearms-B",
+   "purpose": "倒握壶铃行走，练腕部稳定和握力",
+   "extraGroups": [
+    "rotator-cuff"
+   ]
+  },
+  "serratus-A": {
+   "category": "strength",
+   "equipment": [],
+   "position": "prone",
+   "unilateral": false,
+   "level": 1,
+   "scenes": [
+    "home",
+    "gym"
+   ],
+   "defaultDose": {
+    "mode": "reps",
+    "sets": 3,
+    "reps": 10,
+    "restSeconds": 30
+   },
+   "doseRange": {
+    "reps": [
+     8,
+     12
+    ]
+   },
+   "cautions": [
+    "手腕"
+   ],
+   "alternative": "serratus-B",
+   "purpose": "俯撑把地面推远，激活前锯肌",
+   "extraGroups": []
+  },
+  "serratus-B": {
+   "category": "strength",
+   "equipment": [
+    "foam-roller",
+    "wall"
+   ],
+   "position": "standing",
+   "unilateral": false,
+   "level": 1,
+   "scenes": [
+    "home",
+    "gym"
+   ],
+   "defaultDose": {
+    "mode": "reps",
+    "sets": 3,
+    "reps": 10,
+    "restSeconds": 30
+   },
+   "doseRange": {
+    "reps": [
+     8,
+     12
+    ]
+   },
+   "cautions": [
+    "肩"
+   ],
+   "alternative": "h-wall-angel",
+   "purpose": "泡沫轴贴墙上滑，练肩胛上回旋",
+   "extraGroups": []
+  },
+  "serratus-C": {
+   "category": "strength",
+   "equipment": [
+    "rings"
+   ],
+   "position": "prone",
+   "unilateral": false,
+   "level": 3,
+   "scenes": [
+    "gym"
+   ],
+   "defaultDose": {
+    "mode": "reps",
+    "sets": 3,
+    "reps": 6,
+    "restSeconds": 60
+   },
+   "doseRange": {
+    "reps": [
+     5,
+     8
+    ]
+   },
+   "cautions": [
+    "肩",
+    "手腕"
+   ],
+   "alternative": "serratus-A",
+   "purpose": "吊环俯卧撑加前伸，练不稳定支撑",
+   "extraGroups": [
+    "chest"
+   ]
+  },
+  "scapular-A": {
+   "category": "strength",
+   "equipment": [
+    "mat"
+   ],
+   "position": "prone",
+   "unilateral": false,
+   "level": 1,
+   "scenes": [
+    "home",
+    "gym"
+   ],
+   "defaultDose": {
+    "mode": "reps",
+    "sets": 2,
+    "reps": 8,
+    "restSeconds": 30
+   },
+   "doseRange": {
+    "reps": [
+     6,
+     10
+    ]
+   },
+   "cautions": [
+    "肩"
+   ],
+   "alternative": "w-prone-swimmer",
+   "purpose": "俯卧 Y-T-W 举，练中下斜方肌与菱形肌",
+   "extraGroups": []
+  },
+  "scapular-B": {
+   "category": "strength",
+   "equipment": [
+    "pullup-bar"
+   ],
+   "position": "hanging",
+   "unilateral": false,
+   "level": 2,
+   "scenes": [
+    "home",
+    "gym"
+   ],
+   "defaultDose": {
+    "mode": "reps",
+    "sets": 3,
+    "reps": 8,
+    "restSeconds": 45
+   },
+   "doseRange": {
+    "reps": [
+     6,
+     10
+    ]
+   },
+   "cautions": [
+    "肩"
+   ],
+   "alternative": "lats-B",
+   "purpose": "单杠悬垂下沉肩胛，练肩胛控制",
+   "extraGroups": [
+    "lats"
+   ]
+  },
+  "scapular-C": {
+   "category": "strength",
+   "equipment": [
+    "rings"
+   ],
+   "position": "support",
+   "unilateral": false,
+   "level": 3,
+   "scenes": [
+    "gym"
+   ],
+   "defaultDose": {
+    "mode": "time",
+    "sets": 4,
+    "seconds": 15,
+    "restSeconds": 60
+   },
+   "doseRange": {
+    "seconds": [
+     10,
+     20
+    ]
+   },
+   "cautions": [
+    "肩",
+    "手腕"
+   ],
+   "alternative": "triceps-B",
+   "purpose": "吊环直臂支撑，练不稳定支撑下的肩胛稳定",
+   "extraGroups": [
+    "triceps"
+   ]
+  },
+  "chest-A": {
+   "category": "strength",
+   "equipment": [],
+   "position": "prone",
+   "unilateral": true,
+   "level": 2,
+   "scenes": [
+    "home",
+    "gym"
+   ],
+   "defaultDose": {
+    "mode": "reps",
+    "sets": 3,
+    "reps": 5,
+    "restSeconds": 45
+   },
+   "doseRange": {
+    "reps": [
+     4,
+     8
+    ]
+   },
+   "cautions": [
+    "手腕",
+    "肩"
+   ],
+   "alternative": "h-incline-pushup",
+   "purpose": "俯卧撑接转体侧撑，练前撑转侧撑",
+   "extraGroups": [
+    "obliques",
+    "deltoids"
+   ]
+  },
+  "chest-B": {
+   "category": "strength",
+   "equipment": [
+    "parallettes"
+   ],
+   "position": "prone",
+   "unilateral": false,
+   "level": 2,
+   "scenes": [
+    "home",
+    "gym"
+   ],
+   "defaultDose": {
+    "mode": "reps",
+    "sets": 3,
+    "reps": 8,
+    "restSeconds": 45
+   },
+   "doseRange": {
+    "reps": [
+     6,
+     10
+    ]
+   },
+   "cautions": [
+    "肩",
+    "手腕"
+   ],
+   "alternative": "h-incline-pushup",
+   "purpose": "平行杆深幅俯卧撑，加大胸肌行程",
+   "extraGroups": [
+    "triceps"
+   ]
+  },
+  "chest-C": {
+   "category": "strength",
+   "equipment": [
+    "cable"
+   ],
+   "position": "standing",
+   "unilateral": true,
+   "level": 2,
+   "scenes": [
+    "gym"
+   ],
+   "defaultDose": {
+    "mode": "reps",
+    "sets": 3,
+    "reps": 8,
+    "restSeconds": 45
+   },
+   "doseRange": {
+    "reps": [
+     6,
+     12
+    ]
+   },
+   "cautions": [
+    "肩"
+   ],
+   "alternative": "h-db-floor-press",
+   "purpose": "绳索单臂站姿推胸，练推力与抗旋",
+   "extraGroups": []
+  },
+  "lats-A": {
+   "category": "strength",
+   "equipment": [],
+   "position": "seated",
+   "unilateral": false,
+   "level": 2,
+   "scenes": [
+    "home",
+    "gym"
+   ],
+   "defaultDose": {
+    "mode": "reps",
+    "sets": 3,
+    "reps": 8,
+    "restSeconds": 45
+   },
+   "doseRange": {
+    "reps": [
+     6,
+     10
+    ]
+   },
+   "cautions": [
+    "手腕",
+    "肩"
+   ],
+   "alternative": "h-tabletop",
+   "purpose": "坐姿撑地抬臀，练肩下压与支撑",
+   "extraGroups": [
+    "triceps"
+   ]
+  },
+  "lats-B": {
+   "category": "strength",
+   "equipment": [
+    "band",
+    "pullup-bar"
+   ],
+   "position": "standing",
+   "unilateral": false,
+   "level": 1,
+   "scenes": [
+    "home",
+    "gym"
+   ],
+   "defaultDose": {
+    "mode": "reps",
+    "sets": 3,
+    "reps": 12,
+    "restSeconds": 30
+   },
+   "doseRange": {
+    "reps": [
+     10,
+     15
+    ]
+   },
+   "cautions": [
+    "肩"
+   ],
+   "alternative": null,
+   "purpose": "弹力带直臂下拉，练背阔肌下压",
+   "extraGroups": []
+  },
+  "lats-C": {
+   "category": "strength",
+   "equipment": [
+    "dip-bars"
+   ],
+   "position": "support",
+   "unilateral": false,
+   "level": 2,
+   "scenes": [
+    "gym"
+   ],
+   "defaultDose": {
+    "mode": "reps",
+    "sets": 3,
+    "reps": 8,
+    "restSeconds": 45
+   },
+   "doseRange": {
+    "reps": [
+     6,
+     12
+    ]
+   },
+   "cautions": [
+    "肩"
+   ],
+   "alternative": "lats-A",
+   "purpose": "双杠支撑耸肩下压，练支撑时的肩下沉",
+   "extraGroups": []
+  },
+  "abs-A": {
+   "category": "core",
+   "equipment": [
+    "mat"
+   ],
+   "position": "supine",
+   "unilateral": false,
+   "level": 1,
+   "scenes": [
+    "home",
+    "gym"
+   ],
+   "defaultDose": {
+    "mode": "time",
+    "sets": 3,
+    "seconds": 20,
+    "restSeconds": 30
+   },
+   "doseRange": {
+    "seconds": [
+     15,
+     30
+    ]
+   },
+   "cautions": [
+    "腰"
+   ],
+   "alternative": "w-dead-bug",
+   "purpose": "空心体支撑，练腹部整体张力",
+   "extraGroups": []
+  },
+  "abs-B": {
+   "category": "core",
+   "equipment": [
+    "parallettes"
+   ],
+   "position": "support",
+   "unilateral": false,
+   "level": 2,
+   "scenes": [
+    "home",
+    "gym"
+   ],
+   "defaultDose": {
+    "mode": "time",
+    "sets": 4,
+    "seconds": 10,
+    "restSeconds": 45
+   },
+   "doseRange": {
+    "seconds": [
+     10,
+     15
+    ]
+   },
+   "cautions": [
+    "手腕",
+    "肩"
+   ],
+   "alternative": "hip-flexors-A",
+   "purpose": "平行杆团身 L 撑，练压缩与支撑",
+   "extraGroups": [
+    "hip-flexors",
+    "triceps"
+   ]
+  },
+  "abs-C": {
+   "category": "core",
+   "equipment": [
+    "dip-bars"
+   ],
+   "position": "support",
+   "unilateral": false,
+   "level": 2,
+   "scenes": [
+    "gym"
+   ],
+   "defaultDose": {
+    "mode": "reps",
+    "sets": 3,
+    "reps": 8,
+    "restSeconds": 45
+   },
+   "doseRange": {
+    "reps": [
+     6,
+     10
+    ]
+   },
+   "cautions": [
+    "肩"
+   ],
+   "alternative": "h-reverse-crunch",
+   "purpose": "双杠直臂支撑举腿，练下腹与压缩",
+   "extraGroups": [
+    "hip-flexors"
+   ]
+  },
+  "obliques-A": {
+   "category": "core",
+   "equipment": [],
+   "position": "quadruped",
+   "unilateral": true,
+   "level": 2,
+   "scenes": [
+    "home",
+    "gym"
+   ],
+   "defaultDose": {
+    "mode": "reps",
+    "sets": 3,
+    "reps": 6,
+    "restSeconds": 45
+   },
+   "doseRange": {
+    "reps": [
+     4,
+     8
+    ]
+   },
+   "cautions": [
+    "手腕"
+   ],
+   "alternative": "h-russian-twist",
+   "purpose": "熊爬穿腿，练转体与侧向控制",
+   "extraGroups": []
+  },
+  "obliques-B": {
+   "category": "core",
+   "equipment": [
+    "band"
+   ],
+   "position": "standing",
+   "unilateral": true,
+   "level": 1,
+   "scenes": [
+    "home",
+    "gym"
+   ],
+   "defaultDose": {
+    "mode": "reps",
+    "sets": 3,
+    "reps": 10,
+    "restSeconds": 30
+   },
+   "doseRange": {
+    "reps": [
+     8,
+     12
+    ]
+   },
+   "cautions": [],
+   "alternative": "h-band-pallof",
+   "purpose": "弹力带抗旋转推，练核心抗扭",
+   "extraGroups": []
+  },
+  "obliques-C": {
+   "category": "core",
+   "equipment": [
+    "cable"
+   ],
+   "position": "standing",
+   "unilateral": true,
+   "level": 2,
+   "scenes": [
+    "gym"
+   ],
+   "defaultDose": {
+    "mode": "reps",
+    "sets": 3,
+    "reps": 8,
+    "restSeconds": 45
+   },
+   "doseRange": {
+    "reps": [
+     6,
+     12
+    ]
+   },
+   "cautions": [
+    "腰"
+   ],
+   "alternative": "obliques-B",
+   "purpose": "绳索高位伐木，练转体发力",
+   "extraGroups": []
+  },
+  "erectors-A": {
+   "category": "core",
+   "equipment": [],
+   "position": "supine",
+   "unilateral": false,
+   "level": 1,
+   "scenes": [
+    "home",
+    "gym"
+   ],
+   "defaultDose": {
+    "mode": "time",
+    "sets": 3,
+    "seconds": 20,
+    "restSeconds": 30
+   },
+   "doseRange": {
+    "seconds": [
+     15,
+     30
+    ]
+   },
+   "cautions": [
+    "手腕",
+    "肩"
+   ],
+   "alternative": "h-tabletop",
+   "purpose": "后撑抬髋成一直线，练后链与后撑",
+   "extraGroups": [
+    "glute-max"
+   ]
+  },
+  "erectors-B": {
+   "category": "strength",
+   "equipment": [
+    "swiss-ball",
+    "wall"
+   ],
+   "position": "prone",
+   "unilateral": false,
+   "level": 1,
+   "scenes": [
+    "home",
+    "gym"
+   ],
+   "defaultDose": {
+    "mode": "reps",
+    "sets": 3,
+    "reps": 10,
+    "restSeconds": 30
+   },
+   "doseRange": {
+    "reps": [
+     8,
+     12
+    ]
+   },
+   "cautions": [
+    "腰"
+   ],
+   "alternative": "h-superman",
+   "purpose": "瑞士球背伸，练竖脊肌",
+   "extraGroups": []
+  },
+  "erectors-C": {
+   "category": "strength",
+   "equipment": [
+    "roman-chair"
+   ],
+   "position": "prone",
+   "unilateral": false,
+   "level": 2,
+   "scenes": [
+    "gym"
+   ],
+   "defaultDose": {
+    "mode": "reps",
+    "sets": 3,
+    "reps": 10,
+    "restSeconds": 45
+   },
+   "doseRange": {
+    "reps": [
+     8,
+     12
+    ]
+   },
+   "cautions": [
+    "腰"
+   ],
+   "alternative": "erectors-B",
+   "purpose": "45° 罗马椅背伸，练下背与臀",
+   "extraGroups": [
+    "glute-max"
+   ]
+  },
+  "hip-flexors-B": {
+   "category": "strength",
+   "equipment": [
+    "band"
+   ],
+   "position": "standing",
+   "unilateral": true,
+   "level": 1,
+   "scenes": [
+    "home",
+    "gym"
+   ],
+   "defaultDose": {
+    "mode": "reps",
+    "sets": 3,
+    "reps": 10,
+    "restSeconds": 30
+   },
+   "doseRange": {
+    "reps": [
+     8,
+     12
+    ]
+   },
+   "cautions": [],
+   "alternative": "n-seated-knee-lift",
+   "purpose": "弹力带站姿高抬膝，练主动屈髋",
+   "extraGroups": []
+  },
+  "hip-flexors-C": {
+   "category": "strength",
+   "equipment": [
+    "cable"
+   ],
+   "position": "standing",
+   "unilateral": true,
+   "level": 2,
+   "scenes": [
+    "gym"
+   ],
+   "defaultDose": {
+    "mode": "reps",
+    "sets": 3,
+    "reps": 8,
+    "restSeconds": 45
+   },
+   "doseRange": {
+    "reps": [
+     6,
+     12
+    ]
+   },
+   "cautions": [
+    "腰"
+   ],
+   "alternative": "hip-flexors-B",
+   "purpose": "绳索站姿直腿前抬，练屈髋力量",
+   "extraGroups": []
+  },
+  "glute-max-B": {
+   "category": "strength",
+   "equipment": [
+    "band",
+    "mat"
+   ],
+   "position": "quadruped",
+   "unilateral": true,
+   "level": 1,
+   "scenes": [
+    "home",
+    "gym"
+   ],
+   "defaultDose": {
+    "mode": "reps",
+    "sets": 3,
+    "reps": 12,
+    "restSeconds": 30
+   },
+   "doseRange": {
+    "reps": [
+     10,
+     15
+    ]
+   },
+   "cautions": [
+    "腰"
+   ],
+   "alternative": "n-prone-hip-ext",
+   "purpose": "四足直腿后踢，练臀大肌伸髋",
+   "extraGroups": []
+  },
+  "glute-max-C": {
+   "category": "strength",
+   "equipment": [
+    "reverse-hyper"
+   ],
+   "position": "prone",
+   "unilateral": false,
+   "level": 2,
+   "scenes": [
+    "gym"
+   ],
+   "defaultDose": {
+    "mode": "reps",
+    "sets": 3,
+    "reps": 10,
+    "restSeconds": 45
+   },
+   "doseRange": {
+    "reps": [
+     8,
+     15
+    ]
+   },
+   "cautions": [
+    "腰"
+   ],
+   "alternative": "w-chair-hip-thrust",
+   "purpose": "反向背伸机，练臀大肌与后链",
+   "extraGroups": [
+    "hamstrings"
+   ]
+  },
+  "hip-abductors-A": {
+   "category": "strength",
+   "equipment": [
+    "mat"
+   ],
+   "position": "side_lying",
+   "unilateral": true,
+   "level": 2,
+   "scenes": [
+    "home",
+    "gym"
+   ],
+   "defaultDose": {
+    "mode": "reps",
+    "sets": 3,
+    "reps": 8,
+    "restSeconds": 30
+   },
+   "doseRange": {
+    "reps": [
+     6,
+     10
+    ]
+   },
+   "cautions": [
+    "肩"
+   ],
+   "alternative": "w-clamshell",
+   "purpose": "侧平板抬腿，练臀中肌与侧向支撑",
+   "extraGroups": [
+    "obliques"
+   ]
+  },
+  "hip-abductors-B": {
+   "category": "strength",
+   "equipment": [
+    "band",
+    "mat"
+   ],
+   "position": "supine",
+   "unilateral": false,
+   "level": 1,
+   "scenes": [
+    "home",
+    "gym"
+   ],
+   "defaultDose": {
+    "mode": "reps",
+    "sets": 3,
+    "reps": 12,
+    "restSeconds": 30
+   },
+   "doseRange": {
+    "reps": [
+     10,
+     15
+    ]
+   },
+   "cautions": [],
+   "alternative": "w-clamshell",
+   "purpose": "仰卧弹力带 V 字开腿，练髋外展",
+   "extraGroups": []
+  },
+  "hip-abductors-C": {
+   "category": "strength",
+   "equipment": [
+    "hip-abductor-machine"
+   ],
+   "position": "seated",
+   "unilateral": false,
+   "level": 1,
+   "scenes": [
+    "gym"
+   ],
+   "defaultDose": {
+    "mode": "reps",
+    "sets": 3,
+    "reps": 12,
+    "restSeconds": 45
+   },
+   "doseRange": {
+    "reps": [
+     10,
+     15
+    ]
+   },
+   "cautions": [],
+   "alternative": "hip-abductors-B",
+   "purpose": "器械髋外展，练臀中肌",
+   "extraGroups": []
+  },
+  "adductors-A": {
+   "category": "strength",
+   "equipment": [],
+   "position": "standing",
+   "unilateral": true,
+   "level": 2,
+   "scenes": [
+    "home",
+    "gym"
+   ],
+   "defaultDose": {
+    "mode": "reps",
+    "sets": 3,
+    "reps": 5,
+    "restSeconds": 45
+   },
+   "doseRange": {
+    "reps": [
+     4,
+     8
+    ]
+   },
+   "cautions": [
+    "膝"
+   ],
+   "alternative": "n-squat-shift",
+   "purpose": "哥萨克蹲，练内收肌与侧向深蹲",
+   "extraGroups": [
+    "glute-max",
+    "quadriceps"
+   ]
+  },
+  "adductors-B": {
+   "category": "strength",
+   "equipment": [
+    "chair",
+    "mat"
+   ],
+   "position": "side_lying",
+   "unilateral": true,
+   "level": 2,
+   "scenes": [
+    "home",
+    "gym"
+   ],
+   "defaultDose": {
+    "mode": "time",
+    "sets": 3,
+    "seconds": 15,
+    "restSeconds": 30
+   },
+   "doseRange": {
+    "seconds": [
+     10,
+     25
+    ]
+   },
+   "cautions": [
+    "大腿内侧"
+   ],
+   "alternative": "n-seated-squeeze",
+   "purpose": "屈膝哥本哈根侧撑，练内收肌",
+   "extraGroups": [
+    "obliques"
+   ]
+  },
+  "adductors-C": {
+   "category": "strength",
+   "equipment": [
+    "cable"
+   ],
+   "position": "standing",
+   "unilateral": true,
+   "level": 1,
+   "scenes": [
+    "gym"
+   ],
+   "defaultDose": {
+    "mode": "reps",
+    "sets": 3,
+    "reps": 12,
+    "restSeconds": 30
+   },
+   "doseRange": {
+    "reps": [
+     10,
+     15
+    ]
+   },
+   "cautions": [],
+   "alternative": "adductors-B",
+   "purpose": "绳索站姿髋内收，练大腿内侧",
+   "extraGroups": []
+  },
+  "quadriceps-A": {
+   "category": "strength",
+   "equipment": [
+    "mat"
+   ],
+   "position": "kneeling",
+   "unilateral": false,
+   "level": 2,
+   "scenes": [
+    "home",
+    "gym"
+   ],
+   "defaultDose": {
+    "mode": "reps",
+    "sets": 3,
+    "reps": 6,
+    "restSeconds": 45
+   },
+   "doseRange": {
+    "reps": [
+     4,
+     8
+    ]
+   },
+   "cautions": [
+    "膝"
+   ],
+   "alternative": "w-wall-sit",
+   "purpose": "跪姿反向北欧，练股四头肌离心",
+   "extraGroups": []
+  },
+  "quadriceps-B": {
+   "category": "strength",
+   "equipment": [
+    "band"
+   ],
+   "position": "standing",
+   "unilateral": true,
+   "level": 1,
+   "scenes": [
+    "home",
+    "gym"
+   ],
+   "defaultDose": {
+    "mode": "reps",
+    "sets": 3,
+    "reps": 15,
+    "restSeconds": 30
+   },
+   "doseRange": {
+    "reps": [
+     12,
+     20
+    ]
+   },
+   "cautions": [
+    "膝"
+   ],
+   "alternative": "w-wall-sit",
+   "purpose": "弹力带终末伸膝，练膝关节锁直",
+   "extraGroups": []
+  },
+  "quadriceps-C": {
+   "category": "strength",
+   "equipment": [
+    "leg-extension-machine"
+   ],
+   "position": "seated",
+   "unilateral": false,
+   "level": 1,
+   "scenes": [
+    "gym"
+   ],
+   "defaultDose": {
+    "mode": "reps",
+    "sets": 3,
+    "reps": 10,
+    "restSeconds": 45
+   },
+   "doseRange": {
+    "reps": [
+     8,
+     15
+    ]
+   },
+   "cautions": [
+    "膝"
+   ],
+   "alternative": "quadriceps-B",
+   "purpose": "器械腿屈伸，练股四头肌",
+   "extraGroups": []
+  },
+  "hamstrings-A": {
+   "category": "strength",
+   "equipment": [],
+   "position": "standing",
+   "unilateral": true,
+   "level": 2,
+   "scenes": [
+    "home",
+    "gym"
+   ],
+   "defaultDose": {
+    "mode": "reps",
+    "sets": 3,
+    "reps": 8,
+    "restSeconds": 30
+   },
+   "doseRange": {
+    "reps": [
+     6,
+     10
+    ]
+   },
+   "cautions": [
+    "腰"
+   ],
+   "alternative": "h-good-morning",
+   "purpose": "徒手单腿罗马尼亚硬拉，练腘绳肌与平衡",
+   "extraGroups": [
+    "glute-max"
+   ]
+  },
+  "hamstrings-B": {
+   "category": "strength",
+   "equipment": [
+    "slider",
+    "mat"
+   ],
+   "position": "supine",
+   "unilateral": false,
+   "level": 2,
+   "scenes": [
+    "home",
+    "gym"
+   ],
+   "defaultDose": {
+    "mode": "reps",
+    "sets": 3,
+    "reps": 6,
+    "restSeconds": 45
+   },
+   "doseRange": {
+    "reps": [
+     4,
+     10
+    ]
+   },
+   "cautions": [],
+   "alternative": "w-feet-on-chair-bridge",
+   "purpose": "滑盘腿弯举，练腘绳肌",
+   "extraGroups": [
+    "glute-max"
+   ]
+  },
+  "hamstrings-C": {
+   "category": "strength",
+   "equipment": [
+    "ghd"
+   ],
+   "position": "kneeling",
+   "unilateral": false,
+   "level": 3,
+   "scenes": [
+    "gym"
+   ],
+   "defaultDose": {
+    "mode": "reps",
+    "sets": 3,
+    "reps": 4,
+    "restSeconds": 90
+   },
+   "doseRange": {
+    "reps": [
+     3,
+     6
+    ]
+   },
+   "cautions": [
+    "膝"
+   ],
+   "alternative": "hamstrings-B",
+   "purpose": "GHD 北欧离心，强化腘绳肌",
+   "extraGroups": []
+  }
+ },
+ "fixes": {
+  "glute-max-A": {
+   "unilateral": true,
+   "_why": "单腿臀桥左右各做：FlareLab 处方『每侧 10 次』、HipLab action-kit sided=true；SmartFit pack 写成 false（SmartFit pack 需同步改）"
+  },
+  "h-db-row": {
+   "equipment": [
+    "dumbbell",
+    "chair"
+   ],
+   "_why": "扶椅单臂划船，spec 场景含椅"
+  },
+  "n-seated-squeeze": {
+   "equipment": [
+    "chair",
+    "block"
+   ],
+   "_why": "坐姿夹砖，需瑜伽砖（可用厚书/抱枕代替）"
+  },
+  "s-lizard": {
+   "equipment": [
+    "mat",
+    "block"
+   ],
+   "_why": "HipLab 备注需瑜伽砖扶手"
+  },
+  "s-pigeon": {
+   "equipment": [
+    "mat",
+    "block"
+   ],
+   "_why": "直立扶砖版"
+  },
+  "h-supine-twist": {
+   "unilateral": true,
+   "_why": "HipLab action-kit sided=true，路线剂量『每侧 40 秒』；SmartFit pack 写成 false（需同步）"
+  },
+  "n-seated-ir-drop": {
+   "unilateral": true,
+   "_why": "HipLab sided=true，『每侧 30 秒』；SmartFit pack 写成 false（需同步）"
+  },
+  "n-seated-knee-lift": {
+   "unilateral": true,
+   "_why": "HipLab sided=true，『每侧 3 次 × 停 5 秒』；SmartFit pack 写成 false（需同步）"
+  },
+  "s-9090": {
+   "unilateral": true,
+   "_why": "HipLab sided=true，『每侧 35 秒』；SmartFit pack 写成 false（需同步）"
+  },
+  "t-seated-straddle-lift-1leg": {
+   "unilateral": true,
+   "_why": "HipLab sided=true，『每侧 6 次』；SmartFit pack 写成 false（需同步）；SmartFit pack muscleGroups 为空，按 Pose-Hub 目标高亮补",
+   "muscleGroups": [
+    "hip-flexors"
+   ]
+  },
+  "h-band-pallof": {
+   "unilateral": true,
+   "_why": "与 FlareLab obliques-B（同动作旧版）处方『每侧 10 次』一致；SmartFit pack 写成 false（需同步）"
+  },
+  "h-9090-liftoff": {
+   "muscleGroups": [
+    "hip-abductors",
+    "glute-max"
+   ],
+   "_why": "SmartFit pack muscleGroups 为空，按 Pose-Hub 目标高亮补"
+  },
+  "n-slider-lateral": {
+   "muscleGroups": [
+    "adductors"
+   ],
+   "_why": "SmartFit pack muscleGroups 为空，按 Pose-Hub 目标高亮补"
+  },
+  "s-frog": {
+   "muscleGroups": [
+    "adductors"
+   ],
+   "_why": "SmartFit pack muscleGroups 为空，按 Pose-Hub 目标高亮补"
+  }
+ },
+ "purpose": {
+  "s-figure4": "仰卧 4 字拉伸臀部，膝不受扭力，膝不适时可替代鸽子式",
+  "h-9090-liftoff": "90/90 坐姿后腿主动抬起，练髋内旋主动控制",
+  "h-quad-cars": "四足髋关节六方向画圈，全面活动髋关节",
+  "h-couch-stretch": "后脚搭椅的沙发拉伸，深度拉伸髋前侧与大腿前侧",
+  "hip-flexors-A": "坐姿直腿抬腿（压缩），练 L 撑所需的屈髋力量",
+  "t-seated-straddle-lift-1leg": "坐姿分腿单腿抬起，练分腿位屈髋控制",
+  "h-wall-straddle": "靠墙仰卧 V 字分腿，被动拉伸大腿内侧（横叉入门）",
+  "glute-max-A": "单腿臀桥，练臀大肌伸髋（每侧）",
+  "h-knee-hug": "仰卧抱膝，放松下背和臀部（睡前常用）",
+  "n-thomas-test": "仰卧单膝抱胸，拉伸对侧髋前侧",
+  "s-9090": "90/90 坐姿换髋，活动髋内外旋",
+  "h-step-jack": "低冲击开合跳，不跳起的有氧热身"
+ },
+ "doubts": [
+  {
+   "id": "forearms-A",
+   "note": "FlareLab 处方『2 轮 × 4 方向 × 10 次』，TrainingPlan 没有多段动作概念，暂记为 2 组 × 10 次（每组含 4 个方向）。"
+  },
+  {
+   "id": "scapular-A",
+   "note": "处方『2 组 × 每个字母 8 次』，暂记为 2 组 × 8 次（Y/T/W 各 8 次算一组）。"
+  },
+  {
+   "id": "forearms-C",
+   "note": "处方按距离『每侧 20–30 米』，改为计时每侧 30 秒（10–120 秒范围内）。"
+  },
+  {
+   "id": "adductors-B",
+   "note": "器械『长凳或结实的沙发边』记为 chair；没有 bench 器械枚举。"
+  },
+  {
+   "id": "t-seated-straddle-lift-1leg",
+   "note": "t-* 托马斯专项、HipLab 在用，但 FlareLab App 内没有该成片；flarelab profile 暂不收（只收 App 内有视频的 51 个）。"
+  },
+  {
+   "id": "deltoids-B",
+   "note": "FlareLab 名称已改『哑铃半程土耳其起立（至高桥）』，Pose-Hub catalog 仍叫『哑铃土耳其起立』；本目录用 App 名。"
+  },
+  {
+   "id": "glute-max-A",
+   "note": "unilateral 由 false 改为 true 的 7 个动作（glute-max-A、h-band-pallof、h-supine-twist、n-seated-ir-drop、n-seated-knee-lift、s-9090、t-seated-straddle-lift-1leg）需要同步改 SmartFit pack（unilateral + side_switch 台词），否则 SmartFit 现有 Dart 校验会拒绝 perSide=true。level：SmartFit=2、FlareLab=1，保留 2。"
+  }
+ ]
+}
