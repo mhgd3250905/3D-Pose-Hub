@@ -62,3 +62,24 @@
 
 预览：`--pr 0.5`、glow-soft，每个候选机位渲染起点/中间/终点三帧对比定稿。
 稀疏 QA：姿态与来源逐字相同；镜头改动后需主线全片确认 `frame_edge_touch_frames`。
+
+## Round 3 — movement-first cameras for the remaining list (2026-10-19 10:00 CST)
+
+Scored 20 actions with `bestview.py`, rendered 3-frame candidates for 14, kept a new camera only when the move itself reads better.
+
+Accepted (camera-only; `rotator-cuff-A-r2` and `chest-A-r2` also shrink the fit box so the moving body stays off the edge):
+- `abs-C-r2` `[0.9,0.3,0.3]` side 3/4: hanging on the bars, knees rising to hip height (front view pointed the knees at the lens).
+- `chest-A-r2` `[0.5,0.35,0.8]`: straight plank and the rotation into side plank, arm up.
+- `rotator-cuff-A-r2` `[-0.69,0.42,0.58]`: plank line and the hand lifting.
+- `obliques-A-r2` `[-0.75,0.17,0.63]`: crawl, reach under, open to the side.
+- `t-lsit-wide-r2` `[0.97,0.17,0.17]`: hands pressing beside the hips, legs wide (pose height issue still P0).
+- `t-lsit-open-close-r2` `[0,0.42,0.91]`: centred high front, symmetric open/close.
+- `w-clamshell-r2` `[0.16,0.42,0.89]`: side-lying stack, feet together, top knee opening.
+- `h-supine-twist-r3` (on published r2) `[0,0.6,0.8]`: 90° knees, arms out, knees dropping each side.
+- `hip-abductors-C-r2` `[0,0.5,0.87]` centred front: both knees pressing out. Outer-hip highlight is not visible from the front; accepted on movement-first rule.
+
+Kept original (no clear gain): `s-figure4` (only the source view shows the ankle-over-knee cross), `obliques-B`, `h-band-pallof` (side view hides the band's pull direction), `scapular-A`, `t-vsit`, `t-lsit-vsit-circles`, `w-wall-sit`, `h-pike-pushup`, `n-wide-fold`, `w-fire-hydrant` (current view already within ~5% of best score).
+
+Not a camera-dir fix: `t-tuck-planche` uses an orbit camera and its framing is too tight; changing dir has no effect. Needs orbit/framing change.
+
+Sampled 8-frame edge check for all 9 new revisions: 0 edge touches.
