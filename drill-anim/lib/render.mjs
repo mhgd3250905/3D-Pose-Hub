@@ -8,7 +8,7 @@ const SZ=spec.size||1080,PR=+(opt('--pr')||2),FPS=spec.fps||30,N=Math.round(spec
 const t0=Date.now();const {b,p,info}=await boot({size:SZ,pr:PR,theme,bakeHands:spec.bakeHands||[]});console.log('boot',((Date.now()-t0)/1000).toFixed(1)+'s',JSON.stringify(info));
 const soft=await applySoftHighlight(p,theme);if(soft)console.log('highlight',JSON.stringify(soft));
 // opt-in training-human-v2plus (finger rig + designed muscle regions); other profiles never load it
-if(spec.modelProfile==='training-human-v2plus'){const {applyHumanV2plus}=await import('./human-v2plus.mjs');console.log('v2plus',JSON.stringify(await applyHumanV2plus(p,spec)));}
+if(spec.modelProfile==='training-human-v2plus'){const {applyHumanV2plus}=await import('./human-v2plus.mjs');console.log('v2plus',JSON.stringify(await applyHumanV2plus(p)));}
 await p.evaluate(([spec,th,SZ])=>{__setHighlight(spec.highlight);__toonUni.uSinkK.value=spec.clothSink??1;for(const pr of spec.props||[])__props.add(th,pr);__drill.setupCamera(spec,SZ);},[spec,theme,SZ]);
 // warm-up: the first render after boot can still show stale geometry (app render loop); render + settle twice, discard
 for(let k=0;k<3;k++){await p.evaluate(([s,SZ])=>{__drill.frame(s,0,0,null,{size:SZ,full:false});return 1;},[spec,SZ]);await p.waitForTimeout(400);}

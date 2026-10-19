@@ -90,7 +90,7 @@ V2P.pickHandPose = function(spec, side) {
 //   shin  : t along knee->ankle,   a = 0.045 * angle (0 lateral, + front, - back)
 // region SDF: < 0 inside (metres). Regions are drawn shapes, not anatomy-exact.
 const GLSL = `
-uniform float uV2pOn; uniform float uV2pSel[24]; uniform float uV2pSide; uniform float uV2pDeep; uniform float uV2pSleeve; uniform float uV2pOut; uniform vec4 uV2pCuffL; uniform vec4 uV2pCuffR; uniform float uV2pTorso; uniform float uV2pWaist;
+uniform float uV2pOn; uniform float uV2pSel[24]; uniform float uV2pSide; uniform float uV2pDeep; uniform float uV2pSleeve; uniform float uV2pOut; uniform vec4 uV2pCuffL; uniform vec4 uV2pCuffR;
 varying vec4 vV2p;
 float v2sm(float a,float b,float k){ float h=clamp(0.5+0.5*(b-a)/k,0.0,1.0); return mix(b,a,h)-k*h*(1.0-h); }   // smooth min
 float v2sx(float a,float b,float k){ return -v2sm(-a,-b,k); }                                                       // smooth max
@@ -192,7 +192,7 @@ V2P.GROUPS = { chest: ['chest'], pectorals: ['chest'], abs: ['abs'], obliques: [
   'hip-flexors': ['hip-flexors'], quadriceps: ['quadriceps'], hamstrings: ['hamstrings'], adductors: ['adductors'], calves: ['calves'], tibialis: ['tibialis'], neck: ['neck'] };
 V2P.DEEP = new Set(['rotator-cuff', 'hip-flexors', 'hip-rotators']);
 V2P.uni = { uV2pOn: { value: 0 }, uV2pSel: { value: new Array(24).fill(0) }, uV2pSide: { value: 0 }, uV2pDeep: { value: 0 },
-  uV2pSleeve: { value: 0 }, uV2pOut: { value: 0 }, uV2pCuffL: { value: [0, -1, 0, -9] }, uV2pCuffR: { value: [0, -1, 0, -9] }, uV2pWaist: { value: 0.935 } };
+  uV2pSleeve: { value: 0 }, uV2pOut: { value: 0 }, uV2pCuffL: { value: [0, -1, 0, -9] }, uV2pCuffR: { value: [0, -1, 0, -9] } };
 function restTextures() {
   // CPU-skinned reset-pose world positions (one continuous canvas for skin, tee and shorts) + arm weight
   const t = T(), v = flareInspector.viewer; v.motion.reset(); v.coach.updateMatrixWorld(true); const q = new t.Vector3(); const out = {};
@@ -207,10 +207,10 @@ function restTextures() {
 function patchMaterials() {
   const tex = V2P.restTex = restTextures(); let n = 0; const v = flareInspector.viewer;
   v.coach.traverse(o => { if (!o.isSkinnedMesh || !o.material || o.material.customProgramCacheKey?.() !== 'toon-drill1') return; const mat = o.material, ob = mat.onBeforeCompile, tx = tex[o.uuid], isBody = o.name === 'Coach_Body';
-    mat.onBeforeCompile = (sh, r) => { ob(sh, r); Object.assign(sh.uniforms, V2P.uni); sh.uniforms.uV2pT = { value: tx }; sh.uniforms.uV2pTorso = { value: 0 };
+    mat.onBeforeCompile = (sh, r) => { ob(sh, r); Object.assign(sh.uniforms, V2P.uni); sh.uniforms.uV2pT = { value: tx };
       sh.vertexShader = 'uniform sampler2D uV2pT;varying vec4 vV2p;\n' + sh.vertexShader.replace('#include <begin_vertex>', '#include <begin_vertex>\n vV2p=texelFetch(uV2pT,ivec2(gl_VertexID%1024,gl_VertexID/1024),0);');
       const fs = sh.fragmentShader; if (!/hlMask\(c2\)/.test(fs)) throw new Error('v2plus: toon fragment shader has no hlMask(c2) call');
-      if (fs.indexOf('vec3 alb=vec3(0.0)') < 0) throw new Error('v2plus: toon fragment shader has no albedo block');
+      if (isBody && fs.indexOf('vec3 alb=vec3(0.0)') < 0) throw new Error('v2plus: toon fragment shader has no albedo block');
       if (fs.indexOf('float fr=pow(1.0-clamp(dot(Nn,V),0.0,1.0),2.6);') < 0) throw new Error('v2plus: toon fragment shader has no rim term');
       // compression outfit, short sleeve: the arm skin below the (shrink-wrapped) sleeve cuff shows the grey skin instead of
       // the painted v2 sleeve. Cut = the cuff ring's plane in the rest pose, 6 mm up under the cuff, anti-aliased.
@@ -218,13 +218,8 @@ function patchMaterials() {
         // compression outfit draws garments double-sided: what is seen through a cuff (back faces, or faces that clearly face the
         // camera while their shading normal turns away, e.g. the shoulder's inner shell) is plain shade colour, no rim light
         'float fr=pow(1.0-clamp(dot(Nn,V),0.0,1.0),2.6); if(uV2pOut>0.5){ vec3 fN=normalize(cross(dFdx(vViewPosition),dFdy(vViewPosition))); if(!gl_FrontFacing||(abs(dot(fN,V))>0.45&&dot(Nn,V)<0.15)){ lit=shc*0.8; fr=0.0; } }')
-        // all coach toon materials share one program (same cache key), so the source is identical for every mesh: the sculpted
-        // torso's top/tights paint (uV2pTorso, per material) runs first, then the short-sleeve skin paint (arm-weighted pixels below the cuff plane)
-        .replace('vec3 alb=vec3(0.0)',
-        'if(uV2pTorso>0.5){ float fw=vV2p.y-uV2pWaist; float aw=max(fwidth(fw),1e-5)*0.9; W4=mix(vec4(0.0,0.0,1.0,0.0),vec4(0.0,1.0,0.0,0.0),smoothstep(-aw,aw,fw));\n' +
-        // torso: the sleeve hem only goes round the arm tube (vTone.a gate), never onto the armpit web
-        '  if(uV2pSleeve>0.5&&vTone.a>0.5){ vec4 pl=vV2p.x>0.0?uV2pCuffL:uV2pCuffR; float fc=dot(vV2p.xyz,pl.xyz)-pl.w+0.006; float ac=max(fwidth(fc),1e-5)*0.9; W4=mix(W4,vec4(1.0,0.0,0.0,0.0),smoothstep(-ac,ac,fc)); } }\n' +
-        'if(uV2pTorso<0.5&&uV2pOn>0.5&&uV2pSleeve>0.5&&vV2p.w>0.3){ vec4 pl=vV2p.x>0.0?uV2pCuffL:uV2pCuffR; float fc=dot(vV2p.xyz,pl.xyz)-pl.w+0.006; float ac=max(fwidth(fc),1e-5)*0.9; W4=mix(W4,vec4(1.0,0.0,0.0,0.0),smoothstep(-ac,ac,fc)); }\n vec3 alb=vec3(0.0)'); };
+        .replace('vec3 alb=vec3(0.0)', isBody ?
+        'if(uV2pOn>0.5&&uV2pSleeve>0.5&&vV2p.w>0.3){ vec4 pl=vV2p.x>0.0?uV2pCuffL:uV2pCuffR; float fc=dot(vV2p.xyz,pl.xyz)-pl.w+0.006; float ac=max(fwidth(fc),1e-5)*0.9; W4=mix(W4,vec4(1.0,0.0,0.0,0.0),smoothstep(-ac,ac,fc)); }\n vec3 alb=vec3(0.0)' : 'vec3 alb=vec3(0.0)'); };
     mat.customProgramCacheKey = () => 'toon-drill1-v2p'; mat.needsUpdate = true; n++; });
   return n;
 }
@@ -294,78 +289,11 @@ V2P.setOutfit = function(name, opts = {}) {
   const tag = window.__trainingCollarReport || null;
   if (V2P.outfit && (on !== !!V2P.outfitOn || (on && tag !== V2P.collarTag))) writeOutfit(on);
   V2P.collarTag = tag;
-  const torso = on && opts.torso === 'sculpted'; if (opts.torso && opts.torso !== 'sculpted') throw new Error('v2plus: unknown torso ' + opts.torso);
-  if (torso && !V2P.torso) throw new Error('v2plus: sculpted torso data not loaded'); if (V2P.torso) V2P.setTorso(torso);
-  V2P.outfitOn = on; const sleeve = on ? (opts.sleeve || 'short') : null; V2P.outfitState = on ? Object.assign({ outfit: name, sleeve }, torso ? { torso: 'sculpted' } : {}) : null;
+  V2P.outfitOn = on; const sleeve = on ? (opts.sleeve || 'short') : null; V2P.outfitState = on ? { outfit: name, sleeve } : null;
   V2P.uni.uV2pSleeve.value = sleeve === 'short' ? 1 : 0; V2P.uni.uV2pOut.value = on ? 1 : 0;
   if (V2P.outfit) { V2P.uni.uV2pCuffL.value = V2P.outfit.data.cuffPlanes.left; V2P.uni.uV2pCuffR.value = V2P.outfit.data.cuffPlanes.right; }
   return V2P.outfitState;
 };
-
-// ---------------- 4. sculpted torso (opt-in: spec.v2plus.torso = 'sculpted'; implies outfit 'compression') ----------------
-// drill-anim/models/training-human-v2plus-torso.json (tools/human-v2plus/build_torso.py): a new smooth body from below the collar
-// band to the upper thighs (chest, abdomen, obliques, back, glutes, upper arms/deltoids, upper thighs) that replaces the tee below
-// the collar band, the sleeve trim and the shorts. It is welded vertex-for-vertex to the kept tee collar band and to the arm/leg
-// skin of Coach_Body (seam vertices take the live position, weights and normal of the vertex they weld to), skinned to the same
-// skeleton, and painted by the shader (top above uV2pWaist, tights below, short-sleeve skin below the cuff plane). Hidden in this
-// mode: tee faces below the collar band, Coach_Body arm faces above the weld ring (the v2 arm skin flares into the loose tee
-// there), the sleeve trim and the shorts. Off = all of those back exactly as they were; the torso mesh is not drawn.
-const unb64 = (s, C) => { const b = atob(s), u = new Uint8Array(b.length); for (let i = 0; i < b.length; i++) u[i] = b.charCodeAt(i); return new C(u.buffer); };
-V2P.loadTorso = function(data) {
-  if (V2P.torso) return { already: true }; if (!V2P.loaded) throw new Error('v2plus: load() before loadTorso()');
-  const t = T(), v = flareInspector.viewer, get = nm => { const o = v.coach.getObjectByName(nm); if (!o) throw new Error('v2plus torso: no mesh ' + nm); return o; };
-  const tee = get('Mesh005'), n = data.n;
-  // the profile always runs training-collar: read seam weights in that state
-  const collar0 = window.__trainingCollarReport?.enabled === true; if (window.__setTrainingCollar && !collar0) window.__setTrainingCollar(true);
-  v.motion.reset(); v.coach.updateMatrixWorld(true); v.coach.traverse(o => { if (o.isSkinnedMesh) o.skeleton.update(); });
-  const G8 = unb64(data.paint.sleeveGate.u8, Uint8Array), Pq = unb64(data.pos.u16, Uint16Array), N8 = unb64(data.nrm.i8, Int8Array), I16 = unb64(data.index.u16, Uint16Array), J8 = unb64(data.joints.u8, Uint8Array), W8 = unb64(data.weights.u8, Uint8Array);
-  const names = tee.skeleton.bones.map(b => b.name), bi = Object.fromEntries(names.map((nm, i) => [nm, i]));
-  const world = new Float32Array(n * 3), nw = new Float32Array(n * 3), si = new Uint16Array(n * 4), sw = new Float32Array(n * 4);
-  for (let i = 0; i < n; i++) { for (let c = 0; c < 3; c++) { world[i * 3 + c] = data.pos.lo[c] + Pq[i * 3 + c] * data.pos.scale[c]; nw[i * 3 + c] = N8[i * 3 + c] / 127; }
-    for (let k = 0; k < 4; k++) { const nm = data.bones[J8[i * 4 + k]], j = bi[nm]; if (j === undefined) throw new Error('v2plus torso: bone ' + nm); si[i * 4 + k] = j; sw[i * 4 + k] = W8[i * 4 + k] / 255; } }
-  // seams: exact live rest position, weights and normal of the welded vertex (tee collar band / Coach_Body arm + leg skin)
-  const q = new t.Vector3(), nn = new t.Vector3(); let seamN = 0;
-  data.seam.vid.forEach((vid, s) => { const o = get(data.seam.mesh[s]), g = o.geometry, i = data.seam.first + s, ob = o.skeleton.bones;
-    o.getVertexPosition(vid, q); q.applyMatrix4(o.matrixWorld); world.set([q.x, q.y, q.z], i * 3);
-    nn.fromBufferAttribute(g.attributes.normal, vid).applyMatrix3(new t.Matrix3().getNormalMatrix(o.matrixWorld)).normalize(); nw.set([nn.x, nn.y, nn.z], i * 3);
-    for (let k = 0; k < 4; k++) { const j = bi[ob[g.attributes.skinIndex.getComponent(vid, k)].name]; si[i * 4 + k] = j ?? 0; sw[i * 4 + k] = g.attributes.skinWeight.getComponent(vid, k); } seamN++; });
-  // bind space: p' = (tee skinning matrix at reset)^-1 * rest world (same solve as the compression outfit)
-  const bm = tee.skeleton.boneMatrices, S = new t.Matrix4(), B = new t.Matrix4(), Mx = new t.Matrix4(), Mi = new t.Matrix4(), N3 = new t.Matrix3();
-  const pos = new Float32Array(n * 3), nor = new Float32Array(n * 3);
-  for (let i = 0; i < n; i++) { const e = S.elements.fill(0);
-    for (let k = 0; k < 4; k++) { const w = sw[i * 4 + k]; if (!w) continue; B.fromArray(bm, si[i * 4 + k] * 16); for (let c = 0; c < 16; c++) e[c] += w * B.elements[c]; }
-    Mx.copy(tee.matrixWorld).multiply(tee.bindMatrixInverse).multiply(S).multiply(tee.bindMatrix); Mi.copy(Mx).invert();
-    q.set(world[i * 3], world[i * 3 + 1], world[i * 3 + 2]).applyMatrix4(Mi); pos.set([q.x, q.y, q.z], i * 3);
-    N3.setFromMatrix4(Mx).transpose(); nn.set(nw[i * 3], nw[i * 3 + 1], nw[i * 3 + 2]).applyMatrix3(N3).normalize(); nor.set([nn.x, nn.y, nn.z], i * 3); }
-  if (window.__setTrainingCollar && !collar0) window.__setTrainingCollar(false);
-  const geo = new t.BufferGeometry(); geo.setAttribute('position', new t.BufferAttribute(pos, 3)); geo.setAttribute('normal', new t.BufferAttribute(nor, 3));
-  geo.setAttribute('skinIndex', new t.Uint16BufferAttribute(si, 4)); geo.setAttribute('skinWeight', new t.BufferAttribute(sw, 4)); geo.setIndex(new t.BufferAttribute(I16, 1));
-  // per-vertex textures read by gl_VertexID (tone weights + short-sleeve gate in .a, rest position, muscle-map/sink, v2plus rest + arm weight)
-  const H = Math.ceil(n / 1024), tex = () => new Float32Array(1024 * H * 4), vt = tex(), vr = tex(), mm = tex(), rp = tex(), wy = data.paint.waistY;
-  for (let i = 0; i < n; i++) { const x = world[i * 3], y = world[i * 3 + 1], z = world[i * 3 + 2]; let arm = 0;
-    for (let k = 0; k < 4; k++) if (/UpperArm|Forearm|Hand|^v2p_/.test(names[si[i * 4 + k]])) arm += sw[i * 4 + k];
-    vt.set(y > wy ? [0, 1, 0, G8[i] / 255] : [0, 0, 1, G8[i] / 255], i * 4); vr.set([x, y, z, 1], i * 4); rp.set([x, y, z, arm], i * 4); }
-  const dt = a => { const d = new t.DataTexture(a, 1024, H, t.RGBAFormat, t.FloatType); d.magFilter = d.minFilter = t.NearestFilter; d.needsUpdate = true; return d; };
-  const TX = { uVT: dt(vt), uVR: dt(vr), uMMT: dt(mm), uV2pT: dt(rp) };
-  const base = tee.material, mat = base.clone(), ob = base.onBeforeCompile;
-  mat.onBeforeCompile = function(sh, r) { ob.call(this, sh, r); for (const k in TX) sh.uniforms[k] = { value: TX[k] }; sh.uniforms.uV2pTorso = { value: 1 }; };
-  mat.customProgramCacheKey = base.customProgramCacheKey; mat.side = t.FrontSide;
-  const mesh = new t.SkinnedMesh(geo, mat); mesh.name = 'V2P_Sculpted_Torso'; mesh.frustumCulled = false; mesh.castShadow = mesh.receiveShadow = false;
-  tee.parent.add(mesh); mesh.position.copy(tee.position); mesh.quaternion.copy(tee.quaternion); mesh.scale.copy(tee.scale); mesh.updateMatrixWorld(true);
-  mesh.bind(tee.skeleton, tee.bindMatrix); mesh.visible = false;
-  // what torso mode hides: filtered index buffers (tee below the collar band, Coach_Body arm faces above the weld ring), draw range 0 for trim + shorts
-  const filt = (o, keep) => { const a = o.geometry.index.array, out = []; keep.forEach(f => out.push(a[f * 3], a[f * 3 + 1], a[f * 3 + 2])); return new t.BufferAttribute(new (o.geometry.index.array.constructor)(out), 1); };
-  const swaps = [];
-  for (const nm in data.keepFaces) { const o = get(nm); swaps.push({ g: o.geometry, idx0: o.geometry.index, idx1: filt(o, data.keepFaces[nm]) }); }
-  for (const nm in data.hideFaces) { const o = get(nm), nf = o.geometry.index.count / 3, h = new Set(data.hideFaces[nm]), keep = []; for (let f = 0; f < nf; f++) if (!h.has(f)) keep.push(f);
-    swaps.push({ g: o.geometry, idx0: o.geometry.index, idx1: filt(o, keep) }); }
-  const hidden = data.hideMeshes.map(nm => { const g = get(nm).geometry; return { g, dr: { start: g.drawRange.start, count: g.drawRange.count } }; });
-  V2P.torso = { mesh, swaps, hidden, seamN, on: false };
-  return { torso: n, faces: I16.length / 3, seam: seamN, hidden: data.hideMeshes, keep: Object.fromEntries(Object.entries(data.keepFaces).map(([k, f]) => [k, f.length])), hide: Object.fromEntries(Object.entries(data.hideFaces).map(([k, f]) => [k, f.length])) };
-};
-V2P.setTorso = function(on) { const R = V2P.torso; if (!R || R.on === on) return; R.on = on; R.mesh.visible = on;
-  for (const s of R.swaps) s.g.setIndex(on ? s.idx1 : s.idx0);
-  for (const h of R.hidden) h.g.setDrawRange(on ? 0 : h.dr.start, on ? 0 : h.dr.count); };
 
 // ---------------- profile switch + hooks ----------------
 // hand vertex buffers: v2 keeps its own (relax morph / baked grips); v2plus always shows the pristine authored hand + bones
@@ -383,7 +311,7 @@ V2P.load = function(meta, outfit) {
   if (outfit) V2P.outfit = prepOutfit(outfit);
   const sel0 = E.selectModelProfile.bind(E);
   E.selectModelProfile = function(spec) { if (spec.modelProfile === 'training-human-v2plus') { sel0(Object.assign({}, spec, { modelProfile: 'training-human-v2' })); V2P.enable(true);
-      V2P.setOutfit(spec.v2plus?.outfit || (spec.v2plus?.torso ? 'compression' : null), { sleeve: spec.v2plus?.sleeve, torso: spec.v2plus?.torso }); }
+      V2P.setOutfit(spec.v2plus?.outfit || null, { sleeve: spec.v2plus?.sleeve }); }
     else { if (V2P.on) { V2P.setOutfit(null); V2P.enable(false); } sel0(spec); } };
   const pose0 = E.pose.bind(E);
   E.pose = function(spec, params, warm) { const r = pose0(spec, params, warm);
