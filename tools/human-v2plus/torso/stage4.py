@@ -51,7 +51,22 @@ W[nMC:]=seamW
 # ---- diffuse (heat) on the torso graph, seams pinned ----
 E=edges_of(F); A=adjacency(n,E); deg=np.asarray(A.sum(1)).ravel()
 free=np.ones(n,bool); free[nMC:]=False
-for it in range(60):
+for it in range(90):
+    Wn=A@W/np.maximum(deg,1)[:,None]; W[free]=0.5*W[free]+0.5*Wn[free]
+# ---- shoulders: upper-arm share by geometry (1 on the arm tube, ramping in over the deltoid cap, 0 on the armpit web and chest/back
+#      wall) so raising the arm stretches the armpit instead of folding a half-arm/half-torso web ----
+import stage1lib as S1
+armI={sd:[bi[b] for b in BONES if b==sd+'UpperArm' or b==sd+'Forearm' or b==sd+'Hand'] for sd in ('left','right')}
+for sgn,sd in ((1,'left'),(-1,'right')):
+    tb,TSa,Ea,_=S1.arm[sd]; t,ph,r=tb.coords(V); Rs=S1.tube_eval(Ea,TSa,0.005,t,ph)
+    m=1-sstep(0.003,0.025,r-Rs); a=sstep(-0.035,0.055,t); tgt=m*a
+    reg=sstep(0.05,0.09,V[:,0]*sgn)*sstep(1.04,1.12,V[:,1])*free
+    ai=armI[sd]; cur=W[:,ai].sum(1); oth=1-cur
+    Wn=W.copy(); Wn[:,ai]=0; Wn[:,bi[sd+'UpperArm']]=tgt
+    sc=np.where(oth>1e-6,(1-tgt)/np.maximum(oth,1e-6),0); Wn[:,[k for k in range(NBn) if k not in ai]]*=sc[:,None]
+    lack=oth<=1e-6; Wn[lack,bi[sd+'Scapula']]+=1-tgt[lack]
+    W=np.where(reg[:,None]>0,(1-reg[:,None])*W+reg[:,None]*Wn,W)
+for it in range(12):
     Wn=A@W/np.maximum(deg,1)[:,None]; W[free]=0.5*W[free]+0.5*Wn[free]
 # ---- top 4, normalised, quantised to /255 (seams exact) ----
 order=np.argsort(-W,1)[:,:4]; top=np.take_along_axis(W,order,1); top/=top.sum(1,keepdims=True)
@@ -70,6 +85,15 @@ for r_,a in ((1,0.6),(2,0.3),(3,0.12)):
     ok=np.linalg.norm(acc,axis=1)>0
     N[sel[ok]]=(1-a)*N[sel[ok]]+a*acc[ok]/np.linalg.norm(acc[ok],axis=1,keepdims=True)
 N/=np.linalg.norm(N,axis=1,keepdims=True)
+# ---- short-sleeve paint gate: 1 on the arm tube (sleeve hem goes round the arm), 0 on the armpit web / torso ----
+import stage1lib as S1
+gate=np.zeros(n)
+for sgn,sd in ((1,'left'),(-1,'right')):
+    tb,TSa,Ea,_=S1.arm[sd]; t,ph,r=tb.coords(V); Rs=S1.tube_eval(Ea,TSa,0.005,t,ph)
+    g=(1-sstep(0.002,0.006,r-Rs))*sstep(0.03,0.06,t)*(V[:,0]*sgn>0.10)
+    gate=np.maximum(gate,g)
+
+gate[nMC:]=np.where(np.array([s[0].startswith('arm') for s in seam]),1.0,0.0)
 # ---- hidden parts of the existing meshes in torso mode ----
 keepT=d['keepT']; keepB=d['keepB']
 b64=lambda a: base64.b64encode(np.ascontiguousarray(a).tobytes()).decode()
@@ -84,7 +108,7 @@ out={'version':1,'n':int(n),'bones':BONES,
  'seam':{'first':int(nMC),'mesh':[str(s[1]) for s in seam],'vid':[int(s[2]) for s in seam]},
  'keepFaces':{TEE:np.where(keepT)[0].tolist()},'hideFaces':{BODY:np.where(~keepB)[0].tolist()},
  'hideMeshes':[TRIM,SH],
- 'paint':{'waistY':0.935}}
+ 'paint':{'waistY':0.935,'sleeveGate':{'u8':b64(np.round(gate*255).astype(np.uint8))}}}
 json.dump(out,open(sys.argv[1],'w'),separators=(',',':'))
 np.savez('final.npz',V=V,F=F,N=N,J=order,Wq=q,nMC=nMC)
 import os; print('verts',n,'faces',len(F),'json bytes',os.path.getsize(sys.argv[1]))

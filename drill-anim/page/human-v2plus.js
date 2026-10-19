@@ -221,8 +221,10 @@ function patchMaterials() {
         // all coach toon materials share one program (same cache key), so the source is identical for every mesh: the sculpted
         // torso's top/tights paint (uV2pTorso, per material) runs first, then the short-sleeve skin paint (arm-weighted pixels below the cuff plane)
         .replace('vec3 alb=vec3(0.0)',
-        'if(uV2pTorso>0.5){ float fw=vV2p.y-uV2pWaist; float aw=max(fwidth(fw),1e-5)*0.9; W4=mix(vec4(0.0,0.0,1.0,0.0),vec4(0.0,1.0,0.0,0.0),smoothstep(-aw,aw,fw)); }\n' +
-        'if(uV2pOn>0.5&&uV2pSleeve>0.5&&vV2p.w>0.3){ vec4 pl=vV2p.x>0.0?uV2pCuffL:uV2pCuffR; float fc=dot(vV2p.xyz,pl.xyz)-pl.w+0.006; float ac=max(fwidth(fc),1e-5)*0.9; W4=mix(W4,vec4(1.0,0.0,0.0,0.0),smoothstep(-ac,ac,fc)); }\n vec3 alb=vec3(0.0)'); };
+        'if(uV2pTorso>0.5){ float fw=vV2p.y-uV2pWaist; float aw=max(fwidth(fw),1e-5)*0.9; W4=mix(vec4(0.0,0.0,1.0,0.0),vec4(0.0,1.0,0.0,0.0),smoothstep(-aw,aw,fw));\n' +
+        // torso: the sleeve hem only goes round the arm tube (vTone.a gate), never onto the armpit web
+        '  if(uV2pSleeve>0.5&&vTone.a>0.5){ vec4 pl=vV2p.x>0.0?uV2pCuffL:uV2pCuffR; float fc=dot(vV2p.xyz,pl.xyz)-pl.w+0.006; float ac=max(fwidth(fc),1e-5)*0.9; W4=mix(W4,vec4(1.0,0.0,0.0,0.0),smoothstep(-ac,ac,fc)); } }\n' +
+        'if(uV2pTorso<0.5&&uV2pOn>0.5&&uV2pSleeve>0.5&&vV2p.w>0.3){ vec4 pl=vV2p.x>0.0?uV2pCuffL:uV2pCuffR; float fc=dot(vV2p.xyz,pl.xyz)-pl.w+0.006; float ac=max(fwidth(fc),1e-5)*0.9; W4=mix(W4,vec4(1.0,0.0,0.0,0.0),smoothstep(-ac,ac,fc)); }\n vec3 alb=vec3(0.0)'); };
     mat.customProgramCacheKey = () => 'toon-drill1-v2p'; mat.needsUpdate = true; n++; });
   return n;
 }
@@ -316,7 +318,7 @@ V2P.loadTorso = function(data) {
   // the profile always runs training-collar: read seam weights in that state
   const collar0 = window.__trainingCollarReport?.enabled === true; if (window.__setTrainingCollar && !collar0) window.__setTrainingCollar(true);
   v.motion.reset(); v.coach.updateMatrixWorld(true); v.coach.traverse(o => { if (o.isSkinnedMesh) o.skeleton.update(); });
-  const Pq = unb64(data.pos.u16, Uint16Array), N8 = unb64(data.nrm.i8, Int8Array), I16 = unb64(data.index.u16, Uint16Array), J8 = unb64(data.joints.u8, Uint8Array), W8 = unb64(data.weights.u8, Uint8Array);
+  const G8 = unb64(data.paint.sleeveGate.u8, Uint8Array), Pq = unb64(data.pos.u16, Uint16Array), N8 = unb64(data.nrm.i8, Int8Array), I16 = unb64(data.index.u16, Uint16Array), J8 = unb64(data.joints.u8, Uint8Array), W8 = unb64(data.weights.u8, Uint8Array);
   const names = tee.skeleton.bones.map(b => b.name), bi = Object.fromEntries(names.map((nm, i) => [nm, i]));
   const world = new Float32Array(n * 3), nw = new Float32Array(n * 3), si = new Uint16Array(n * 4), sw = new Float32Array(n * 4);
   for (let i = 0; i < n; i++) { for (let c = 0; c < 3; c++) { world[i * 3 + c] = data.pos.lo[c] + Pq[i * 3 + c] * data.pos.scale[c]; nw[i * 3 + c] = N8[i * 3 + c] / 127; }
@@ -338,11 +340,11 @@ V2P.loadTorso = function(data) {
   if (window.__setTrainingCollar && !collar0) window.__setTrainingCollar(false);
   const geo = new t.BufferGeometry(); geo.setAttribute('position', new t.BufferAttribute(pos, 3)); geo.setAttribute('normal', new t.BufferAttribute(nor, 3));
   geo.setAttribute('skinIndex', new t.Uint16BufferAttribute(si, 4)); geo.setAttribute('skinWeight', new t.BufferAttribute(sw, 4)); geo.setIndex(new t.BufferAttribute(I16, 1));
-  // per-vertex textures read by gl_VertexID (tone weights, rest position, muscle-map/sink, v2plus rest + arm weight)
+  // per-vertex textures read by gl_VertexID (tone weights + short-sleeve gate in .a, rest position, muscle-map/sink, v2plus rest + arm weight)
   const H = Math.ceil(n / 1024), tex = () => new Float32Array(1024 * H * 4), vt = tex(), vr = tex(), mm = tex(), rp = tex(), wy = data.paint.waistY;
   for (let i = 0; i < n; i++) { const x = world[i * 3], y = world[i * 3 + 1], z = world[i * 3 + 2]; let arm = 0;
     for (let k = 0; k < 4; k++) if (/UpperArm|Forearm|Hand|^v2p_/.test(names[si[i * 4 + k]])) arm += sw[i * 4 + k];
-    vt.set(y > wy ? [0, 1, 0, 0] : [0, 0, 1, 0], i * 4); vr.set([x, y, z, 1], i * 4); rp.set([x, y, z, arm], i * 4); }
+    vt.set(y > wy ? [0, 1, 0, G8[i] / 255] : [0, 0, 1, G8[i] / 255], i * 4); vr.set([x, y, z, 1], i * 4); rp.set([x, y, z, arm], i * 4); }
   const dt = a => { const d = new t.DataTexture(a, 1024, H, t.RGBAFormat, t.FloatType); d.magFilter = d.minFilter = t.NearestFilter; d.needsUpdate = true; return d; };
   const TX = { uVT: dt(vt), uVR: dt(vr), uMMT: dt(mm), uV2pT: dt(rp) };
   const base = tee.material, mat = base.clone(), ob = base.onBeforeCompile;

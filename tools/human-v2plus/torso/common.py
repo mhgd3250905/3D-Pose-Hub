@@ -1,6 +1,9 @@
-import json, numpy as np, collections
-REST='/workspace/work/pose-hub/output/human-v2plus-work/rest.json'
-OUTF='/workspace/work/pose-hub/drill-anim/models/training-human-v2plus-outfit.json'
+# shared inputs for the sculpted-torso build (tools/human-v2plus/torso/build.sh): the v2 rest dump from probe.mjs and the
+# compression outfit (its tightened tee/shorts are the shape scaffold).
+import json, os, numpy as np, collections
+REPO=os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)),'../../..'))
+REST=os.environ.get('HV2P_REST',os.path.join(REPO,'output/human-v2plus-work/rest.json'))
+OUTF=os.environ.get('HV2P_OUTFIT',os.path.join(REPO,'drill-anim/models/training-human-v2plus-outfit.json'))
 rest=json.load(open(REST)); M=rest['meshes']; outfit=json.load(open(OUTF))
 def arr(k,f,c=3): return np.array(M[k][f],dtype=np.float64).reshape(-1,c)
 TEE,TRIM,SH,BODY='Mesh005','Mesh005_1','Coach_Training_Shorts','Coach_Body'

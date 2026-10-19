@@ -68,11 +68,14 @@ class Tube:
         s.A=np.array(A,float); B=np.array(B,float); s.u=(B-s.A)/np.linalg.norm(B-s.A); e0=np.array(ref,float); e0-=s.u*(e0@s.u); s.e0=e0/np.linalg.norm(e0); s.e1=np.cross(s.u,s.e0)
     def coords(s,Pt):
         d=Pt-s.A; t=d@s.u; rr=d-np.outer(t,s.u); return t,np.arctan2(rr@s.e1,rr@s.e0),np.linalg.norm(rr,axis=1)
-def tube_env(tube,Pt,mask,TS,h):
+def tube_env(tube,Pt,mask,TS,h,mean=False):
     t,ph,r=tube.coords(Pt); ai=((ph+np.pi)/(2*np.pi)*NB).astype(int)%NB; E=np.full((len(TS),NB),np.nan)
     for j,tt in enumerate(TS):
         s=mask&(np.abs(t-tt)<h)
-        if s.any(): np.fmax.at(E[j],ai[s],r[s])
+        if not s.any(): continue
+        if mean:   # skin: the surface itself (a max over the slab overestimates the radius on a sloped tube)
+            sm=np.bincount(ai[s],r[s],NB); c=np.bincount(ai[s],None,NB); E[j]=np.where(c>0,sm/np.maximum(c,1),np.nan)
+        else: np.fmax.at(E[j],ai[s],r[s])
     return E
 def tube_eval(E,TS,dt,t,ph):
     a=(ph+np.pi)/(2*np.pi)*NB-0.5; a0=np.floor(a).astype(int); fa=a-a0; nb=E.shape[1]
@@ -85,7 +88,7 @@ for sgn,sd in ((1,'left'),(-1,'right')):
     # ---- arm: shoulder -> elbow
     tb=Tube(LM[sd+'Shoulder'],LM[sd+'Elbow'],[sgn,0,0]); TS=np.round(np.arange(-0.06,0.2001,0.005),4)
     skin=(P[BODY][:,0]*sgn>0.12)&(P[BODY][:,1]>1.0)
-    eSk=ring_fill(tube_env(tb,P[BODY],skin,TS,0.006))
+    eSk=ring_fill(tube_env(tb,P[BODY],skin,TS,0.004,mean=True))
     sl=(PC[TEE][:,0]*sgn>0.10)&(armT>0.30)
     eSl=tube_env(tb,np.concatenate([PC[TEE][sl],PC[TRIM][PC[TRIM][:,0]*sgn>0]]),np.ones(sl.sum()+(PC[TRIM][:,0]*sgn>0).sum(),bool),TS,0.006)
     eSl=ring_fill(eSl)
@@ -109,7 +112,7 @@ for sgn,sd in ((1,'left'),(-1,'right')):
     # ---- thigh: hip -> knee
     tb2=Tube(LM[sd+'Hip'],LM[sd+'Knee'],[-sgn,0,0]); TS2=np.round(np.arange(-0.02,0.30,0.005),4)
     skinL=(P[BODY][:,0]*sgn>0.0)&(P[BODY][:,1]<0.70)&(P[BODY][:,1]>0.40)
-    eSkL=ring_fill(tube_env(tb2,P[BODY],skinL,TS2,0.006))
+    eSkL=ring_fill(tube_env(tb2,P[BODY],skinL,TS2,0.004,mean=True))
     shL=(PC[SH][:,0]*sgn>0.004)&(PC[SH][:,1]<0.80)
     eShL=ring_fill(tube_env(tb2,PC[SH],shL,TS2,0.006))
     El=np.zeros((len(TS2),NB)); yl=0.6312
@@ -133,7 +136,7 @@ for sd,(tb,TS,Ea,_) in arm.items():
     for j,y in enumerate(YS):
         s_=ok&(np.abs(Pt[:,1]-y)<0.004)
         if s_.any(): xlim[j]=min(xlim[j],np.abs(Pt[s_,0]).min())
-gap=0.012*(1-sstep(1.255,1.31,YS)); xl=xlim-gap
+gap=0.010-0.004*sstep(1.18,1.26,YS); gap=gap*(1-sstep(1.255,1.31,YS)); xl=xlim-gap
 thb=(np.arange(NA)+0.5)/NA*2*np.pi-np.pi
 for j,y in enumerate(YS):
     if xlim[j]>1: continue
@@ -159,7 +162,7 @@ for i in range(nx):
     for sd in ('left','right'):
         tb,TS,Ea,tloop=arm[sd]; t,ph,rr=tb.coords(Pt); dA=rr-tube_eval(Ea,TS,0.005,t,ph)
         dA=smax(dA, -(t+0.045), 0.02); dA=smax(dA, t-(TCUT+0.03), 0.005)
-        k=0.036*sstep(1.225,1.33,Pt[:,1])
+        k=0.036*sstep(1.205,1.33,Pt[:,1])
         f=smin(f,dA,k)
     dL=np.full(len(Pt),9.0)
     for sd in ('left','right'):
