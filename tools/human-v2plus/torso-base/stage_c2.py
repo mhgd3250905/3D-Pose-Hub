@@ -154,6 +154,25 @@ if SKN:
         N[sel]=(1-wv[sel])[:,None]*N[sel]+wv[sel][:,None]*Nt; nsk+=len(sel)
     N/=np.linalg.norm(N,axis=1,keepdims=True)
     print('short-sleeve skin strip: v2 arm-skin normals on',nsk,'verts')
+# front armpit slot, arms raised forward (h-squat, ~90 deg flexion, camera from the side): the slot top between the apex patch and
+# the arm-side wall (|x| 0.15-0.21, y 1.24-1.385, z -0.065..0.065) keeps the per-vertex normals of the rest slot's U-turn, which
+# point down / into the slot. When the slot opens forward they turn edge-on to the camera: a small orange rim streak and a dark
+# shade patch at the front armpit. Normals only (positions and weights unchanged, so the hang silhouette and its shoulders stay as
+# they are): blend that box (1.5 cm smooth falloff) to a 40-ring smoothed normal field, tilted toward the lateral axis in the slot
+# core (|x| > 0.17, y 1.29-1.37, z -0.04..0.05; 1.2 cm falloff) so the open slot faces sideways like the side wall around it.
+FAN=int(os.environ.get('T_FRONTN','1'))
+if FAN:
+    from scipy.sparse import csr_matrix
+    Au=csr_matrix((np.ones(len(F)*6),(np.r_[F[:,0],F[:,1],F[:,2],F[:,1],F[:,2],F[:,0]],np.r_[F[:,1],F[:,2],F[:,0],F[:,0],F[:,1],F[:,2]])),shape=(n,n)); Au.data[:]=1
+    Nr=N.copy()
+    for _ in range(40): Nr=Au@Nr+Nr; Nr/=np.linalg.norm(Nr,axis=1,keepdims=True)
+    ax_,ay_,az_=np.abs(V[:,0]),V[:,1],V[:,2]
+    def boxw(b,f): return sstep(b[0]-f,b[0],ax_)*sstep(b[1]-f,b[1],ay_)*(1-sstep(b[2],b[2]+f,ay_))*sstep(b[3]-f,b[3],az_)*(1-sstep(b[4],b[4]+f,az_))
+    core=boxw((0.17,1.29,1.37,-0.04,0.05),0.012)
+    Nr=Nr+core[:,None]*np.c_[np.sign(V[:,0]),0*ax_,0*ax_]; Nr/=np.linalg.norm(Nr,axis=1,keepdims=True)
+    reg=boxw((0.15,1.24,1.385,-0.065,0.065),0.015); reg[nMC:]=0
+    N=(1-reg)[:,None]*N+reg[:,None]*Nr; N/=np.linalg.norm(N,axis=1,keepdims=True)
+    print('front armpit slot normals: re-shaded',int((reg>0).sum()),'verts')
 # ---- hidden parts of the existing meshes in torso mode ----
 keepT=d['keepT']; keepB=d['keepB']
 b64=lambda a: base64.b64encode(np.ascontiguousarray(a).tobytes()).decode()
