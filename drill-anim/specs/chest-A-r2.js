@@ -48,7 +48,8 @@ for (const [side, W0, FN0, tag] of [['right', W0R, FN0R, 'R'], ['left', W0L, FN0
   ['x', 'y'].forEach((a, i) => { dl['f' + a + tag] = hd(side, 'finger', FN0, i); });
   dl['h' + tag] = { hands: { [side]: { w: 1 } } };
 }
-export default {
+// Accepted body baseline (drill-anim/AGENTS.md): training-human-v2 with alignClavicles false; pose arithmetic unchanged.
+export default { modelProfile: 'training-human-v2', alignClavicles: false, 
   id: 'chest-A-r2', name: '俯卧撑转侧撑', nameEn: 'Push-Up to Side Plank Rotation',
   timeline: { duration: DUR, tracks: { down: lin(down), rotR: lin(rR), rotL: lin(rL), rot: lin(t => rR(t) + rL(t)), ...trk } },   // rot: QA gate only
   pose: {

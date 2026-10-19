@@ -1,7 +1,8 @@
 // hip-abductors-B-r2: camera-only revision of revisions/hark-4080-v1/hip-abductors-B (v3-local, published) (review 2026-10-19). head-end overhead camera: legs pointed at the lens, highlight invisible; feet-end high 3/4.
 // Pose, timeline, props, highlight and QA are byte-identical to the source; only camera.dir changes.
 // Local foot orientation correction; original retained in original.json.
-export default {
+// Accepted body baseline (drill-anim/AGENTS.md): training-human-v2 with alignClavicles false; pose arithmetic unchanged.
+export default { modelProfile: 'training-human-v2', alignClavicles: false, 
   "id": "hip-abductors-B-r2",
   "name": "仰卧弹力带 V 字开腿",
   "nameEn": "Supine Banded V-Leg Abduction",

@@ -16,7 +16,8 @@ const W0 = at(0), W1 = at(Math.PI / 2);
 const n2 = Math.SQRT1_2, ARC = +(FA * (n2 - 0.5) * Math.SQRT2).toFixed(4);  // chord midpoint -> arc midpoint
 const pole = d => [0, 1, 2].map(i => +(E[i] + 0.2 * u[i] - 0.12 * d[i]).toFixed(4));
 const rep = s => [[s + 0.4, 0], [s + 1.6, 1], [s + 2.4, 1], [s + 3.6, 0]];
-export default {
+// Accepted body baseline (drill-anim/AGENTS.md): training-human-v2 with alignClavicles false; pose arithmetic unchanged.
+export default { modelProfile: 'training-human-v2', alignClavicles: false, 
   id: 'rotator-cuff-C-r2', name: '绳索 90/90 外旋', nameEn: 'Cable 90/90 External Rotation',
   timeline: { duration: 8, tracks: { rot: [[0, 0], ...rep(0), ...rep(4)] } },
   pose: {
