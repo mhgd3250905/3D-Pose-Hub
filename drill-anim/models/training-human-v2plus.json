@@ -7,18 +7,19 @@
   "spec": {
     "modelProfile": "training-human-v2plus",
     "alignClavicles": false,
-    "v2plus": { "handPose": { "left": "optional: open | relaxed | palm-floor | grip-bar | band-grip", "right": "optional" }, "outfit": "optional: compression (default: the v2 tee + shorts)", "sleeve": "optional with outfit compression: short (default) | long" }
+    "v2plus": { "handPose": { "left": "optional: open | relaxed | palm-floor | grip-bar | band-grip", "right": "optional" }, "outfit": "optional: compression (default: the v2 tee + shorts)", "sleeve": "optional with outfit compression: short (default) | long", "torso": "optional: sculpted (new smooth body replaces the tee below the collar band + shorts; implies outfit compression)" }
   },
   "base": "training-human-v2 exactly: same flare-coach.glb, head, neck/collar profile (training-collar.js runs as for training-human-v2), tee, shorts, shoes, solver and camera code. All 13 training-human-v2 source hashes are unchanged.",
   "runtime": "drill-anim/page/human-v2plus.js (loaded by drill-anim/lib/human-v2plus.mjs only when a spec sets modelProfile 'training-human-v2plus')",
-  "data": "drill-anim/models/training-human-v2plus-hands.json (finger joints, hand-region weights, named hand poses); drill-anim/models/training-human-v2plus-outfit.json (opt-in compression outfit)",
-  "build": "tools/human-v2plus/build_hand.py and tools/human-v2plus/build_outfit.py (input: tools/human-v2plus/probe.mjs dump of the v2 rest mesh)",
+  "data": "drill-anim/models/training-human-v2plus-hands.json (finger joints, hand-region weights, named hand poses); drill-anim/models/training-human-v2plus-outfit.json (opt-in compression outfit); drill-anim/models/training-human-v2plus-torso.json (opt-in sculpted torso, loaded only for specs with v2plus.torso)",
+  "build": "tools/human-v2plus/build_hand.py, tools/human-v2plus/build_outfit.py and tools/human-v2plus/torso/build.sh (input: tools/human-v2plus/probe.mjs dump of the v2 rest mesh)",
   "adds": [
     "15 finger bones per hand (thumb/index/middle/ring/pinky x 3) parented to <side>Hand of Coach_Body; identity rest rotation and the hand's inverse bind, so the rest mesh equals v2.",
     "Hand-region skin weights only: the hand-bone share of hand vertices is split among hand + finger bones; forearm shares and every vertex outside the hands keep their v2 weights.",
     "Named hand poses; grip-bar is least-squares fitted to the accepted v2 baked power grip (drill-anim/assets/grip-left.json) with a 1.5 mm bar clearance term.",
     "Designed muscle-group regions (22 regions, 25 spec group ids) drawn per pixel from the interpolated rest position; replaces the v2 Voronoi mask only while the profile is active.",
-    "Opt-in compression outfit (v2plus.outfit: 'compression'): the v2 tee, sleeve trim and shorts shrink-wrapped by smooth fields (no skin exists under them), fold smoothing, hems re-weighted to follow the skin/shorts below them, short-sleeve paint on the arm skin. Body, head, neck, collar zone and shoes untouched; default stays the current clothes."
+    "Opt-in compression outfit (v2plus.outfit: 'compression'): the v2 tee, sleeve trim and shorts shrink-wrapped by smooth fields (no skin exists under them), fold smoothing, hems re-weighted to follow the skin/shorts below them, short-sleeve paint on the arm skin. Body, head, neck, collar zone and shoes untouched; default stays the current clothes.",
+    "Opt-in sculpted torso (v2plus.torso: 'sculpted'): a new smooth body (chest, abdomen, obliques, back, glutes, deltoids/upper arms, upper thighs) built from fields fitted to the compression tee/shorts and the arm/leg skin, welded vertex-for-vertex to the kept tee collar band and the Coach_Body arm/leg skin, skinned to the same skeleton; the compression top + tights are shader colour regions on it. Tee below the collar band, sleeve trim, shorts and the hidden top of the arm skin are not drawn in this mode."
   ],
   "notChanged": [
     "No twist bones, extra spine segments or dual-quaternion skinning (not needed for the rest shape; left for a later step).",

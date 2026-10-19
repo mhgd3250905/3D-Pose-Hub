@@ -90,3 +90,36 @@ python3 tools/human-v2plus/sheet.py output/human-v2plus docs/reviews/human-v2plu
 ```
 
 不需要 Blender。依赖：Python numpy / scipy / Pillow。
+
+## 雕刻躯干（opt-in，2026-10-19 追加）
+
+> 开哥要求：紧身服版本仍看得到 T 恤/短裤的褶皱（衣服下面本来没有身体，只是把衣服收紧），所以**重新做一个躯干**。
+> spec 写 `modelProfile: 'training-human-v2plus', v2plus: { torso: 'sculpted' }`（自动带 `outfit: 'compression'`；也可写 `{ outfit: 'compression', torso: 'sculpted' }`）才生效。
+> 不写 `torso` = 上一节的紧身服，其它一切不变；不是 v2plus 的 spec 完全不受影响（数据只在 spec 要求时加载）。
+
+| 项 | 内容 |
+|---|---|
+| 范围 | 一个新的光滑身体网格：锁骨下 / 领口条以下到大腿上段——胸（胸大肌）、腹、腹斜肌、背（背阔肌、斜方肌下部）、臀、三角肌和上臂上段、大腿上段。替换：领口条以下的 T 恤、袖口条、短裤，以及 v2 手臂皮肤在焊接环以上被袖子盖住的一段（那段皮肤内侧向上张开插进宽松 T 恤里，露出来会和胸壁穿插）。 |
+| 不动的部分 | 头、脖子、`training-collar.js` 的领口修复（T 恤领口条约 3 cm 宽一圈原样保留，新身体焊在它下沿）、手臂/腿的皮肤（焊接环以下）、手、鞋、骨骼、求解器、相机。对比帧关节最大差 **0 mm**（6 帧全部 0.000）。 |
+| 造型 | `tools/human-v2plus/torso/`：①躯干截面 R(角度, 高度) 取自紧身服版的 T 恤 / 短裤外轮廓（所以轮廓接近现在，肩、胸不变窄），去褶皱：角度方向只留前 9 个谐波 + 竖直方向高斯平滑；腰以下两侧收 6.5%（紧身裤而不是短裤）；腋下躯干侧面让开手臂 ≥1.2 cm。②三角肌 / 上臂管：袖子形状（三角肌）→ 旧袖口以下完全是 v2 手臂皮肤截面（按皮肤点平均拟合）。③大腿管：裤口处 = 大腿皮肤截面，往上平滑加粗 17%（内侧 8%）。④三者用平滑并集（腋窝、裆部的圆角大小按高度变化），5 mm marching cubes。⑤在领口条、手臂焊接环（肩关节下 17 cm）、大腿皮肤上沿处切开，切口环和现有网格的环逐顶点缝合（zipper），Taubin 平滑 + 解剖细节（胸大肌下缘、胸骨线、腹白线 + 两道腱划、腹直肌外缘、脊柱沟 + 竖脊肌、臀部），再用双拉普拉斯在缝合带求解，现有网格两圈顶点作为固定条件 → 跨缝 C1 连续。 |
+| 无缝 | 缝合顶点在运行时直接取被焊接顶点的**实时**静止位置、蒙皮权重、法线（领口条按 training-collar 开启后的权重）→ 任何姿势下缝上的点和原网格同一个点同步移动，没有缝隙；静止姿势跨缝两侧面的夹角平均 5–6°（zipper 三角形本身的离散误差），封闭无洞（新网格只剩 5 个边界环，都是焊接环）。 |
+| 权重 | 从 v2 T 恤（含 training-collar 规则）/ 短裤（含紧身服裤口权重）/ 手臂和大腿皮肤按法线朝向过滤的 8 近邻插值，再在网格上扩散 15 次（缝合点固定）。肩部按几何重写：上臂管上 = 上臂骨（三角肌帽上从肩胛骨渐变），腋下胸壁、背阔肌一侧 = 躯干（法线朝向手臂的面不跟手臂走），否则抬臂时胸侧会被拉出"翅膀"；旧袖口以下那段上臂直接用 v2 手臂皮肤的权重。髋部沿用短裤的骨盆/大腿权重（扩散后过渡更宽），深蹲髋前折痕不塌。 |
+| 上色 | 紧身服只是颜色区：shader 里按静止高度 y=0.935 分上衣 / 紧身裤（抗锯齿曲线），短袖仍用袖口平面，只画在上臂管上（顶点上的 0/1 标记），不会画到腋窝。肌群高亮与其它网格同一套静止坐标，过缝连续。 |
+| 运行时 | `page/human-v2plus.js` 第 4 节 `V2P.loadTorso` / `V2P.setTorso`：新建 SkinnedMesh 绑定到 T 恤的同一骨架，位置用复位姿势蒙皮矩阵逆解回绑定空间；材质克隆 T 恤的 toon 材质（同一 shader 程序），自带静止位置纹理。开启时替换 T 恤 / Coach_Body 的索引缓冲（只隐藏面，不改顶点），袖口条和短裤 drawRange = 0；关闭时全部原样恢复。`lib/human-v2plus.mjs` 只在 spec 写了 `v2plus.torso` 时读取 `models/training-human-v2plus-torso.json`（约 1.7 MB，二进制 base64：4.3 万顶点 / 8.5 万三角形）。 |
+
+图（左 = 紧身服（当前 PR），右 = 雕刻躯干；同一 spec、同一求解、同一机位）：`docs/reviews/human-v2plus-proto/torso/`
+- `compare-triceps-A.jpg` / `compare-scapular-B.jpg` / `compare-h-squat.jpg`
+- `standing-plain.jpg` / `standing-hl.jpg`（正 / 侧 / 背）
+- `closeups-standing.jpg`（领口缝前 / 后、肩、腋下、手臂焊接环前 / 后（不开高亮）、腰、臀）
+- `closeups-squat.jpg`（深蹲 t=1.2：髋前折痕、髋 / 臀后侧、肩）
+
+已知粗糙处：见 PR 评论（同步记录在下面）。
+
+复现：
+```bash
+/workspace/bin/heavy -- tools/human-v2plus/run.sh tools/human-v2plus/probe.mjs output/human-v2plus-work      # 若还没有 rest.json
+/workspace/bin/heavy -- tools/human-v2plus/torso/build.sh                                                  # numpy/scipy/scikit-image，约 1 分钟
+/workspace/bin/heavy -- tools/human-v2plus/run.sh tools/human-v2plus/torso.mjs output/human-v2plus-torso --size 700
+python3 tools/human-v2plus/torso_sheet.py output/human-v2plus-torso docs/reviews/human-v2plus-proto/torso
+# 离线检查（可选）：tools/human-v2plus/probe-pose.mjs 导出姿势矩阵 -> torso/posecheck.py；torso/seamcheck.py 量跨缝夹角
+```

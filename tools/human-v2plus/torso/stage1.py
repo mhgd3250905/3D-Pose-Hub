@@ -95,7 +95,7 @@ for sgn,sd in ((1,'left'),(-1,'right')):
     phb=(np.arange(NB)+0.5)/NB*2*np.pi-np.pi; jc=int(np.argmin(np.abs(TS-TCUT)))
     Ea=np.zeros((len(TS),NB))
     for j,tt in enumerate(TS):
-        w=sstep(TCUT-0.050,TCUT-0.012,tt)          # 0 = sleeve shape (deltoid), 1 = arm skin
+        w=sstep(0.055,0.10,tt)          # 0 = sleeve shape (deltoid), 1 = arm skin (from the old cuff down)
         sk=eSk[j]; slv=eSl[j]
         Ea[j]=(1-w)*(slv-0.0015)+w*sk
     # medial half above the cut: no wider than the skin ring at the cut (the v2 arm skin flares into the loose tee there)
@@ -136,7 +136,7 @@ for sd,(tb,TS,Ea,_) in arm.items():
     for j,y in enumerate(YS):
         s_=ok&(np.abs(Pt[:,1]-y)<0.004)
         if s_.any(): xlim[j]=min(xlim[j],np.abs(Pt[s_,0]).min())
-gap=0.010-0.004*sstep(1.18,1.26,YS); gap=gap*(1-sstep(1.255,1.31,YS)); xl=xlim-gap
+gap=0.012*(1-sstep(1.255,1.31,YS)); xl=xlim-gap
 thb=(np.arange(NA)+0.5)/NA*2*np.pi-np.pi
 for j,y in enumerate(YS):
     if xlim[j]>1: continue
@@ -162,7 +162,7 @@ for i in range(nx):
     for sd in ('left','right'):
         tb,TS,Ea,tloop=arm[sd]; t,ph,rr=tb.coords(Pt); dA=rr-tube_eval(Ea,TS,0.005,t,ph)
         dA=smax(dA, -(t+0.045), 0.02); dA=smax(dA, t-(TCUT+0.03), 0.005)
-        k=0.036*sstep(1.205,1.33,Pt[:,1])
+        k=0.036*sstep(1.225,1.33,Pt[:,1])
         f=smin(f,dA,k)
     dL=np.full(len(Pt),9.0)
     for sd in ('left','right'):

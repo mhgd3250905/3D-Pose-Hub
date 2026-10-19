@@ -75,6 +75,7 @@ if (ONLY.includes('stand') || ONLY.includes('close')) {
     if (ONLY.includes('close')) {
       const C = [['neck', [0.0, 1.36, 0.04], [0.35, 0.2, 1], 0.26, ['chest', 'deltoids', 'neck']], ['neck-back', [0.0, 1.37, -0.04], [-0.35, 0.25, -1], 0.26, ['traps-upper', 'scapular', 'deltoids']],
         ['shoulder', [0.17, 1.27, 0.0], [1, 0.1, 0.55], 0.26, ['deltoids', 'chest', 'triceps']], ['armpit', [0.16, 1.24, -0.01], [0.55, -0.2, -1], 0.26, ['lats', 'deltoids', 'triceps']],
+        ['arm-weld', [0.225, 1.21, -0.02], [0.45, 0.05, -1], 0.17, []], ['arm-weld-front', [0.225, 1.21, 0.02], [0.6, 0.05, 1], 0.17, []],
         ['waist', [0.0, 0.95, 0.03], [0.6, 0.1, 1], 0.40, ['abs', 'obliques', 'hip-flexors']], ['hip-back', [0.0, 0.84, -0.02], [-0.5, 0.0, -1], 0.36, ['glute-max', 'hamstrings', 'erectors']]];
       for (const [cn, c, dir, sz, g] of C) {
         await p.evaluate(([c, dir, sz, g]) => { const T = window.__toonT; __setHighlight({ groups: g, side: 'both' }); __toonUni.uPulse.value = 1;
