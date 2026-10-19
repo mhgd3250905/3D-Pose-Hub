@@ -76,6 +76,40 @@ python3 tools/human-v2plus/build_outfit.py output/human-v2plus-work/rest.json dr
 python3 tools/human-v2plus/outfit_sheet.py output/human-v2plus-outfit docs/reviews/human-v2plus-proto/outfit
 ```
 
+## 基础网格躯干（opt-in，2026-10-19 追加）
+
+> 开哥确认保留紧身服（收紧版）的样子，但希望衣服下面有真正的躯干。spec 写
+> `modelProfile: 'training-human-v2plus', v2plus: { outfit: 'compression', torso: 'base' }` 才生效（写了 `torso: 'base'` 时 `outfit` 自动是 `compression`）；
+> 不写 `torso` = 上面的紧身服，不写 `outfit` = 现在的衣服，其它一切不变。默认值不变。
+
+| 项 | 内容 |
+|---|---|
+| 来源 | Blender 官方 **Human Base Meshes v1.4.1**（Blender Studio 与社区贡献者，**CC0 1.0**，https://www.blender.org/download/demo-files/ ），对象 `GEO-body_male_realistic`。原包 SHA-256 `811f43ac…3515`，来源记录见 `assets/blender-studio-source/SOURCE.md`。CC0 不要求署名，这里保留来源以便追溯。不需要 Blender：`tools/human-v2plus/torso-base/blendread.py` 直接读 .blend（底模 cage + multires 位移），Catmull-Clark ×2 + 位移。 |
+| 拟合（只有平滑变形） | 相似变换 → 手臂 / 大腿按估计关节平滑重摆 → 双拉普拉斯正则的低频位移场贴到 v2 紧身服轮廓（stage A）。**腋窝抬高（stage A2）**：解剖底模的腋窝顶点在肩关节下约 12 cm，v2（紧身服）腋窝只在关节下约 4.5 cm；骨骼只有普通 LBS，关节下这么远的皮肤在手臂举过头时要么鼓成圆包（部分权重），要么拉成薄片（硬分界），所以用同类平滑位移场把腋窝顶点（含前后腋褶）抬到 v2 的袖窿高度（1.315 m，往前后褶升高 4 cm）。 |
+| 缝合 | 在保留的领口带下沿、手臂皮肤焊接环（离肩 0.17 m）、腿皮肤上沿切开，环形吸附 + 逐顶点 zipper 到已有网格的环（208 个缝顶点，无洞）；缝顶点在运行时直接取被焊顶点的实时位置 / 权重 / 法线。接缝两侧二面角平均 2.9°（领口）/ 5°（手臂）/ 7°（腿），最大 12°。 |
+| 权重 | **逐点复制紧身服自己的蒙皮**（它举手悬垂时是干净的 V 形）：每个躯干顶点找最近的、法线方向一致的源三角形（紧身 T 恤，含 training-collar 规则 / 紧身裤的 outfit 权重 / 可见的手臂、腿皮肤），按重心坐标插值权重，所以场是连续的，没有最近点的条纹。腋窝分界保持锐利：先做多数滤波（单个顶点与邻居中位数差 >0.5 时整点复制邻居权重，不引入部分权重），再做 30 次平滑但**切断跨分界的边**，只去掉三角形跳变带来的细褶。缝顶点权重 = 被焊顶点的权重。 |
+| 涂色 | shader 画：腰线（y = 0.935）以上上衣色、以下紧身裤色；短袖直接到手臂焊接环为止（袖口线 = 几何接缝，下面是 v2 灰色手臂皮肤），比紧身服版的袖口低 2–3 cm。肌群高亮用同一套静止位置画布，跨缝连续。 |
+| 运行时 | `page/human-v2plus.js` 第 4 节 `loadTorso` / `setTorso`：加载时把静止位置解回绑定空间，作为第二个 SkinnedMesh 绑在同一骨架上；开时隐藏领口带以下的 T 恤、焊接环以上的手臂皮肤面、袖口条和短裤（只换 index / drawRange），关时原样恢复。只有 spec 写了 `torso` 才读这份数据（`lib/human-v2plus.mjs`）。 |
+| 不动的部分 | 头、脖子、手、手臂和腿的皮肤、鞋、骨架、求解器、相机；对比 6 帧关节最大差 0 mm。 |
+
+图（左 = 紧身服（当前 PR），右 = 基础网格躯干；同一 spec、同一求解、同一机位）：`docs/reviews/human-v2plus-proto/torso-base/`
+- `compare-triceps-A.jpg` / `compare-scapular-B.jpg`（悬垂，手臂过头）/ `compare-h-squat.jpg`
+- `standing-plain.jpg` / `standing-hl.jpg`（正 / 侧 / 背）
+- `closeups-standing.jpg`（领口缝前后、肩、腋窝、手臂焊接环前后、腰、臀）、`closeups-hang.jpg`（悬垂时腋窝 / 肩前后、双肩正面）、`closeups-squat.jpg`（深蹲髋部折痕、臀、肩）
+
+已知粗糙处：
+1. 悬垂（手臂过头）时双肩不再鼓包，轮廓是 V 形；但腋窝分界那一圈三角形仍会被拉长，背面腋窝特写里能看到一小块暗色褶皱和几条橙色轮廓光（紧身服版同一位置也有轮廓光，只是更平）。
+2. 为了能举手，腋窝比真实解剖高（跟 v2 一样），站姿正面看腋窝更"紧"。
+3. 短袖比紧身服版长 2–3 cm（袖口在焊接环上），没有袖口滚边。
+4. 只验证了这 3 个动作 6 帧 + 站姿 + 特写；没出全片，没测 `sleeve: 'long'`、其它主题。离线检查工具 `posecheck.py` 只覆盖导出的 5 个姿势。
+
+复现（不需要 Blender；numpy / scipy，zstandard 或 zstd 命令行；首次会下载 50 MB 官方包并校验 SHA-256）：
+```bash
+/workspace/bin/heavy -- tools/human-v2plus/torso-base/build.sh          # -> drill-anim/models/training-human-v2plus-torso-base.json（约 1.5 分钟，结果逐字节可复现）
+/workspace/bin/heavy -- tools/human-v2plus/run.sh tools/human-v2plus/torso-base.mjs output/human-v2plus-torso-base --only drills,stand,close,hangclose,squatclose
+python3 tools/human-v2plus/torso_base_sheet.py output/human-v2plus-torso-base docs/reviews/human-v2plus-proto/torso-base
+```
+
 ## 复现
 
 ```bash
