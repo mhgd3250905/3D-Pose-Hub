@@ -120,6 +120,7 @@ const KNOWN = {
   'h-band-shoulder-ir': ['band-shoulder-ir-26：外侧锚点弹力带肩内旋，区别既有卸载内旋回程及前臂旋转；低分保留待GPU（docs/band-shoulder-ir-26-2026-10-19.md）'],
   'o-supported-ankle-eversion': ['supported-ankle-eversion-25：扶椅悬空足外翻12°再回中立；腓骨长短肌低负荷控制，固定模型无独立高亮故不误标胫前肌；低分保留待GPU（docs/supported-ankle-eversion-25-2026-10-19.md）'],
   'o-supported-ankle-inversion': ['supported-ankle-inversion-24：扶椅悬空足内翻12°后回中立；真实足骨/鞋网格转动而胫骨不转，非踝泵屈伸；低分保留待GPU（docs/supported-ankle-inversion-24-2026-10-18.md）'],
+  'o-supported-hip-hitch': ['supported-hip-hitch-45：单腿承重额状面骨盆提拉6度，胸廓直立；轻扶椅背、真实足底分布及120时点核验；待GPU（docs/supported-hip-hitch-45-2026-10-19.md）'],
   'o-supported-hip-ir': ['supported-hip-ir-36：站姿轻扶椅背，固定大腿与膝中心主动髋内旋；股骨/胫骨/足整体旋转，非踝内外翻；办公低负荷控制，待GPU全片（docs/supported-hip-ir-36-2026-10-19.md）'],
   'o-supported-ankle-pump': ['supported-ankle-pump-21：扶椅轻触平衡、固定髋膝的悬空踝屈伸；低负荷主动活动控制，区别于承重提踵/靠墙勾脚；低分保留待GPU（docs/supported-ankle-pump-21-2026-10-18.md）'],
   'h-standing-wrist-extensor-stretch': ['home-wrist-extensor-20：站姿无承重主动腕屈，拉伸腕伸肌；办公单向基础式，区别018腕伸与跪姿多向摇摆；低分保留待GPU（docs/home-wrist-extensor-20-2026-10-18.md）'],
