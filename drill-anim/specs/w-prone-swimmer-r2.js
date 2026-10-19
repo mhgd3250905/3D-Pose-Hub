@@ -1,4 +1,4 @@
-// w-prone-swimmer-r2: camera-only revision of w-prone-swimmer (review 2026-10-19). High head-end camera made the hovering arm look vertical; low side view.
+// w-prone-swimmer-r2: camera-only revision of w-prone-swimmer (review 2026-10-19). the source camera sat at about 30 deg, so the arm passing overhead looked like it lifted straight up off the floor; a higher (about 58 deg) side view shows the arms sweeping along the floor from overhead (Y) to T to hands at the hips.
 // Pose, timeline, props, highlight and QA are byte-identical to the source; only camera.dir changes.
 // w-prone-swimmer 俯卧游泳式 (prone swimmers). Prone on the mat, legs long, chest held slightly lifted (upper back extension).
 // Straight arms hover just off the mat and sweep in a wide arc from overhead (Y) out to the sides and down to the hips, the arm
@@ -46,7 +46,7 @@ export default {
     deltas,
   },
   highlight: { groups: ['scapular', 'erectors'], side: 'both', pulseTrack: 'sw', pulseBase: 0.35 },
-  camera: { dir: [0.15, 0.2, -1], fit: ['head', 'leftPalm', 'rightPalm', 'leftToe', 'rightToe', 'pelvis', 'leftElbow', 'rightElbow'], pad: 0.12, k: 0.85, drift: 3, at: 0.0 },
+  camera: { dir: [-0.1, 0.85, 0.5], fit: ['head', 'leftPalm', 'rightPalm', 'leftToe', 'rightToe', 'pelvis', 'leftElbow', 'rightElbow'], pad: 0.12, k: 0.85, drift: 3, at: 0.0 },
   frame: { mode: 'fit', width: 880, cx: 520, cy: 540 },
   stillAt: 0.0,
   shadow: { joints: ['pelvis', 'shoulderCenter', 'leftPalm', 'rightPalm'], blobs: [{ j: 'shoulderCenter', rx: 110, ry: 30, a: 0.4 }, { j: 'pelvis', rx: 90, ry: 26, a: 0.45 }], bands: [] },

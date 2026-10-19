@@ -27,23 +27,38 @@
 ## 优先级
 
 - **P0 安全/动作错误**：复核后**无确认项**。待用数值复核的剩余候选：t-lsit-wide / t-lsit-tuck / t-lsit-vsit-circles / t-lsit-open-close（L 撑臀部离地仅约 2–3 cm，正面机位下看起来就是坐着）、hip-flexors-A（脚跟只抬 6 cm）、s-9090（名为换髋但不换边；换边版是 s-9090-switch）。
-- **P1 镜头让动作或目标肌不可读**（本 PR 处理 10 项，见下）；剩余：hip-flexors-B（试过前右 3/4，抬膝顶点仍被大腿挡住，需改高亮而非镜头，未纳入）、adductors-B、n-seated-ir-drop、s-figure4、hip-abductors-C、n-slider-lateral、chest-A、scapular-A、t-vsit、t-lsit-*、w-wall-sit、h-pike-pushup、rotator-cuff-A、obliques-A/B、h-band-pallof。
+- **P1 镜头让动作看不懂（其次：目标肌不可见）**（本 PR 处理 8 项，见下）；剩余：hip-flexors-B（试过前右 3/4，抬膝顶点仍被大腿挡住，需改高亮而非镜头，未纳入）、adductors-B、n-seated-ir-drop、s-figure4、hip-abductors-C、n-slider-lateral、chest-A、scapular-A、t-vsit、t-lsit-*、w-wall-sit、h-pike-pushup、rotator-cuff-A、obliques-A/B、h-band-pallof。
 - **P2 高亮美术/构图**：上面第 3 条的共性问题，以及人物偏小（s-frog、s-pigeon、hamstrings-B）、动作幅度偏小（h-9090-liftoff、n-seated-knee-lift、quadriceps-B、h-band-pull-apart 拉开约 55°）。
+
+## 镜头原则（2026-10-19 用户确认）
+
+**第一位：让用户看懂这个动作怎么做；第二位：在不牺牲第一位的前提下，让目标肌群可见。**
+具体做法：
+1. 用关节轨迹算出动作的主运动平面，镜头尽量正对它（运动轨迹不被透视压缩）。
+2. 关键关节角（肘/膝/髋）、支撑接触点（手、脚、坐骨与地面/器械）、道具和锚点都要在画面里读得出。
+3. 略带俯角（约 10–35°）表达深度；水平面内的动作（如贴地画弧、肘贴体侧外旋）用更高的俯角。
+4. 避免肢体正对镜头、被躯干挡住、俯视压扁站姿。
+5. 只有在几个机位同样清楚时，才挑能露出目标肌群的那个；为了露高亮而转到背面、让动作变难读的不采用。
+
+评分工具：对候选机位（方位每 10°、俯角 0–60°）计算「肢体投影长度 + 关节运动投影比例」，取前几名后人工看三帧（起点/中间/终点）定稿。
 
 ## 本 PR：只改镜头的修订版（不动姿态/时间轴/高亮/道具）
 
-| 修订版 | 来源 | 改动理由 | 预览结论 |
-|---|---|---|---|
-| rotator-cuff-B-r2 | hark-4080-v1 v3-local（已发布） | 正面机位下肩袖高亮全程不可见 | 右后上方：前臂外旋弧线 + 肩后高亮都可见 |
-| hip-abductors-B-r2 | hark-4080-v1 v3-local（已发布） | 头端俯视，腿朝镜头，高亮 0 | 脚端高位 3/4：V 字开腿与髋外侧高亮可见 |
-| n-chair-wiper-r2 | n-chair-wiper | 高亮 0 | 前右 3/4：膝内倒与髋外侧高亮可见 |
-| o-stand-crossreach-r2 | o-stand-crossreach | 臀中肌高亮几乎为 0 | 臀中肌高亮清楚 |
-| rotator-cuff-C-r2 | rotator-cuff-C | 侧面看像直臂前伸 | 后方：90/90 与前臂上转、肩后高亮清楚 |
-| h-band-pull-apart-r2 | h-band-pull-apart | 正面只见前束发亮，像练前肩 | 后上方：T 字与上背高亮清楚 |
-| h-crossbody-r2 | h-crossbody | 目标在背面 | 右后 3/4：肩后高亮可见 |
-| h-incline-pushup-r2 | h-incline-pushup | 看起来双脚悬空 | 纯侧面：脚贴地、身体一条线 |
-| w-prone-swimmer-r2 | w-prone-swimmer | 手臂看起来竖直朝天 | 低侧面：手臂贴垫画弧 |
-| s-9090-r3 | s-9090-r2（已发布） | 正俯视读不出 90/90 | 前左高位 3/4：两膝 90° 与前屈可读 |
+按上面的原则复审后，原先 10 个里有 2 个（n-chair-wiper-r2、h-crossbody-r2）是为露高亮而换到侧后方、反而让动作更难读，已撤回，保留来源机位；另有 4 个改了方向。最终 8 个：
 
-预览帧（`--pr 0.5`，glow-soft）：rotator-cuff-B-r2 f5/27、hip-abductors-B-r2 f2/33、n-chair-wiper-r2 f5/30/90、o-stand-crossreach-r2 f5/30/57、rotator-cuff-C-r2 f6/24、h-band-pull-apart-r2 f3/30、h-crossbody-r2 f3/57、w-prone-swimmer-r2 f0/26、h-incline-pushup-r2 f3/20、s-9090-r3 f5/57（spec 原生 15 fps 帧号）。
-稀疏 QA：姿态与来源逐字相同，关节/接触数值与来源一致；镜头改动后需主线全片确认 `frame_edge_touch_frames`。
+| 修订版 | 来源 | 来源机位的问题 | 新机位让用户看到什么 |
+|---|---|---|---|
+| rotator-cuff-B-r2 | hark-4080-v1 v3-local（已发布） | 几乎平视，水平面内的前臂弧线被压成一条线 | 略高的前右方：肘贴体侧不动、前臂向外打开到弹力带立柱方向 |
+| rotator-cuff-C-r2 | rotator-cuff-C | 侧面看上臂缩短，90/90 像直臂前伸 | 高位前左方：上臂平举到肩高、屈肘 90°、前臂由向前转到竖直，绳索连到立柱 |
+| h-band-pull-apart-r2 | h-band-pull-apart | 前上方但偏向一侧，T 字左右不对称 | 居中的前上方：双臂对称拉开成 T，弹力带到胸前 |
+| w-prone-swimmer-r2 | w-prone-swimmer | 约 30° 俯角，经过头顶的手臂看起来竖直离地 | 约 58° 侧上方：双臂贴垫从头顶（Y）→ T → 手到髋侧画弧 |
+| h-incline-pushup-r2 | h-incline-pushup | 3/4 视角下看似双脚悬空 | 纯侧面：脚贴地、身体一条直线、胸到凳沿的距离 |
+| hip-abductors-B-r2 | hark-4080-v1 v3-local（已发布） | 头端俯视，双腿竖直时正对镜头被压缩 | 脚端高位 3/4：仰卧、双腿竖起、V 字打开 |
+| o-stand-crossreach-r2 | o-stand-crossreach | 正面看两腿重叠，读不出后交叉步 | 后侧方：腿向后交叉、髋外推、手扶椅背、手臂过头侧伸 |
+| s-9090-r3 | s-9090-r2（已发布） | 正俯视，读不出坐姿和两膝角度 | 前左高位 3/4：坐姿直立、前后两膝各 90°、前屈方向 |
+
+已撤回：n-chair-wiper-r2（正面更能看清双膝同时倒向一侧）、h-crossbody-r2（正面更能看清手臂横过胸前）。
+未纳入：hip-flexors-B（抬膝顶点高亮被大腿挡住，需改高亮遮罩，不是镜头问题）。
+
+预览：`--pr 0.5`、glow-soft，每个候选机位渲染起点/中间/终点三帧对比定稿。
+稀疏 QA：姿态与来源逐字相同；镜头改动后需主线全片确认 `frame_edge_touch_frames`。

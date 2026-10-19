@@ -6,13 +6,13 @@
 
 | 项 | 数 |
 |---|---:|
-| spec 文件（specs/*.js，不含 _*.mjs 共用模块） | 193 |
-| 其中修订版（-r2/-r3） | 20 |
+| spec 文件（specs/*.js，不含 _*.mjs 共用模块） | 191 |
+| 其中修订版（-r2/-r3） | 18 |
 | FlareLab App 51（data/drills.json） | 51 |
 | HipLab 已发布素材绑定的 spec 文件（v0.1.0（published）46 个动作 id、v0.2.0（published）46 个动作 id） | 47 |
 | HipLab 自测静图在用 spec | 6 |
 | 原版已被在用的修订版取代（保留不删） | 9 |
-| 有 spec 但没有被任何 App/发布版本使用 | 82 |
+| 有 spec 但没有被任何 App/发布版本使用 | 80 |
 | SHA 未登记 / 哈希不符 | 0 |
 
 - FlareLab 肌群动作（17 肌群 × A 徒手 / B 家用 / C 健身房）：54
@@ -20,8 +20,8 @@
 - t-* 托马斯专项（Flare，PR #106）：12
 - o-* 办公室（PR #97–104）：9
 - w-* 久坐强化（PR #105）：9
-- h-* 居家/肌群补充/开胯/开肩/小器械力量/徒手后链候选（PR #111–115 + r2 + Pose-Hub PR #5、#6）：72
-- n-* HipLab 开胯 MVP 新增（PR #119）：16
+- h-* 居家/肌群补充/开胯/开肩/小器械力量/徒手后链候选（PR #111–115 + r2 + Pose-Hub PR #5、#6）：71
+- n-* HipLab 开胯 MVP 新增（PR #119）：15
 - a-* HipLab 自测对比静图（PR #119 + r2）：9
 
 列说明：时长 = `timeline.duration` 秒；帧 = 时长 × spec 的 fps（未写 fps 按 30）。发布时 HipLab 统一包装成 30 fps，所以**发布片的帧号 ≠ spec 原生帧号**。profile 空 = 旧人物（未设 `modelProfile`），新做/重做必须写 `training-human-v2`。SHA 列：基线 59 = 由 git 提交 `1adcab8` 固定；PR #n = 在 `data/home-pr-candidates.json` 或 `verify.mjs` 登记。
@@ -176,7 +176,6 @@
 | `h-chair-tspine` | 跪姿椅面胸椎伸展 | 背阔肌+竖脊肌 | 垫、椅 | 8s/120f@15 | v2 |  | — | PR #115 |  |
 | `h-cobra` | 眼镜蛇式 | 腹直肌（含深层腹横肌） | 垫 | 8s/120f@15 | v2 |  | — | PR #111 |  |
 | `h-couch-stretch` | 沙发拉伸 | 髋屈肌+股四头肌（left） | 垫、椅 | 8s/120f@15 | v2 |  | HipLab v0.1.0；HipLab v0.2.0 | PR #113 |  |
-| `h-crossbody-r2` | 交叉臂肩后侧拉伸 | 面板 deltRear/infraspinatus（right） | — | 8s/120f@15 | v2 | `h-crossbody` | — | 已登记（2026-10-19 camera/target-visibility review） |  |
 | `h-crossbody` | 交叉臂肩后侧拉伸 | 面板 deltRear/infraspinatus（right） | — | 8s/120f@15 | v2 |  | — | PR #112 |  |
 | `h-crunch` | 卷腹 | 腹直肌（含深层腹横肌） | 垫 | 8s/120f@15 | v2 |  | — | PR #111 |  |
 | `h-db-curl` | 哑铃交替弯举 | 肱二头肌 | 哑铃 | 8s/120f@15 | v2 |  | — | PR #5 |  |
@@ -228,7 +227,6 @@
 
 | id | 中文名 | 目标高亮 | 场景/道具 | 时长/帧 | profile | 修订自 | 使用方 | SHA | 已知问题 |
 |---|---|---|---|---|---|---|---|---|---|
-| `n-chair-wiper-r2` | 坐椅雨刷（膝内倒） | 臀中肌 · 髋外展+臀大肌 | 椅 | 8s/120f@15 | v2 | `n-chair-wiper` | — | 已登记（2026-10-19 camera/target-visibility review） |  |
 | `n-chair-wiper` | 坐椅雨刷（膝内倒） | 臀中肌 · 髋外展+臀大肌 | 椅 | 8s/120f@15 | v2 |  | HipLab v0.1.0；HipLab v0.2.0 | PR #119 |  |
 | `n-half-split` | 半跪半劈叉（扶砖） | 腘绳肌（right） | 垫 | 8s/120f@15 | v2 |  | HipLab v0.1.0；HipLab v0.2.0 | PR #119 |  |
 | `n-leg-circles` | 仰卧直腿画圈 | 髋屈肌+臀中肌 · 髋外展（right） | 垫 | 12s/180f@15 | v2 |  | HipLab v0.1.0；HipLab v0.2.0 | PR #119 | 求解器提示 29 帧，指标全过（docs/hiplab-phase1-drills-2026-10-16.md） |
@@ -268,8 +266,7 @@
 - **t**（11）：`t-flare-side-hold` `t-half-straddle` `t-lsit-open-close` `t-lsit-tuck` `t-lsit-vsit-circles` `t-lsit-wide` `t-seated-straddle-ext` `t-seated-straddle-lifts` `t-straddle-hold` `t-tuck-planche` `t-vsit`
 - **o**（5）：`o-seated-catcow` `o-seated-twist` `o-stand-crossreach-r2` `o-stand-quad` `o-stand-sidebend`
 - **w**（7）：`w-bird-dog` `w-chair-hip-thrust` `w-dead-bug` `w-fire-hydrant` `w-prone-swimmer-r2` `w-prone-swimmer` `w-wall-sit`
-- **h**（54）：`h-banana` `h-band-pallof` `h-band-pull-apart-r2` `h-band-pull-apart` `h-band-row` `h-bear-plank` `h-biceps-self` `h-bridge-march` `h-bridge-overhead` `h-bulgarian` `h-calf-raise` `h-catcow-quad` `h-chair-dip` `h-chair-kickback` `h-chair-lat` `h-chair-step-up` `h-chair-tspine` `h-cobra` `h-crossbody-r2` `h-crossbody` `h-crunch` `h-db-curl` `h-db-floor-press` `h-db-lateral` `h-db-press` `h-db-rdl` `h-db-reverse-fly` `h-db-row` `h-dd-shoulder` `h-forearm-plank` `h-good-morning` `h-incline-pushup-r2` `h-incline-pushup` `h-inner-thigh` `h-kb-swing` `h-mountain-climber` `h-open-book` `h-pike-pushup` `h-reverse-crunch` `h-reverse-lunge` `h-russian-twist` `h-seated-reachback` `h-side-er` `h-side-leg-raise` `h-step-jack` `h-superman` `h-tabletop` `h-tib-raise` `h-towel-behind` `h-towel-pass` `h-towel-pulldown` `h-wall-angel` `h-wall-calf` `h-wall-pec`
-- **n**（1）：`n-chair-wiper-r2`
+- **h**（53）：`h-banana` `h-band-pallof` `h-band-pull-apart-r2` `h-band-pull-apart` `h-band-row` `h-bear-plank` `h-biceps-self` `h-bridge-march` `h-bridge-overhead` `h-bulgarian` `h-calf-raise` `h-catcow-quad` `h-chair-dip` `h-chair-kickback` `h-chair-lat` `h-chair-step-up` `h-chair-tspine` `h-cobra` `h-crossbody` `h-crunch` `h-db-curl` `h-db-floor-press` `h-db-lateral` `h-db-press` `h-db-rdl` `h-db-reverse-fly` `h-db-row` `h-dd-shoulder` `h-forearm-plank` `h-good-morning` `h-incline-pushup-r2` `h-incline-pushup` `h-inner-thigh` `h-kb-swing` `h-mountain-climber` `h-open-book` `h-pike-pushup` `h-reverse-crunch` `h-reverse-lunge` `h-russian-twist` `h-seated-reachback` `h-side-er` `h-side-leg-raise` `h-step-jack` `h-superman` `h-tabletop` `h-tib-raise` `h-towel-behind` `h-towel-pass` `h-towel-pulldown` `h-wall-angel` `h-wall-calf` `h-wall-pec`
 
 原版已被在用修订取代（9）：`a-9090`→`a-9090-r2` `a-deep-squat`→`a-deep-squat-r2` `a-thomas`→`a-thomas-r2` `h-9090-liftoff`→`h-9090-liftoff-r2` `h-knee-hug`→`h-knee-hug-r2` `h-supine-twist`→`h-supine-twist-r2` `s-9090`→`s-9090-r2` `s-frog`→`s-frog-r2` `s-seated-fold`→`s-seated-fold-r3`
 

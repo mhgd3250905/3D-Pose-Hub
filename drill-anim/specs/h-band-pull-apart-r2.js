@@ -1,4 +1,4 @@
-// h-band-pull-apart-r2: camera-only revision of h-band-pull-apart (review 2026-10-19). front-high camera only showed the front delts; rear-high 3/4 shows the T and the upper-back highlight.
+// h-band-pull-apart-r2: camera-only revision of h-band-pull-apart (review 2026-10-19). the source front-high camera was off to one side, so the T read lopsided; a centred high front view shows both arms opening to a T with the band reaching the chest.
 // Pose, timeline, props, highlight and QA are byte-identical to the source; only camera.dir changes.
 // h-band-pull-apart 弹力带水平拉开 (band pull-apart) · H 居家开肩系列.
 // Standing tall, a light resistance band held in both fists (overhand, palms down) about shoulder-width apart, arms straight in
@@ -43,7 +43,7 @@ export default {
   timeline: { duration: DUR, tracks: P.tracks },
   pose: { base: P.base, deltas: P.deltas },
   highlight: { groups: ['scapular', 'deltoids'], side: 'both', pulseTrack: 'pull', pulseBase: 0.3 },
-  camera: { dir: [0.5, 0.7, -0.9], fit: ['head', 'leftToe', 'rightToe', 'pelvis', 'leftPalm', 'rightPalm', 'leftElbow', 'rightElbow'], pad: 0.12, k: 0.85, drift: 3, at: 2.0, fitTimeline: true },
+  camera: { dir: [0, 0.57, 0.82], fit: ['head', 'leftToe', 'rightToe', 'pelvis', 'leftPalm', 'rightPalm', 'leftElbow', 'rightElbow'], pad: 0.12, k: 0.85, drift: 3, at: 2.0, fitTimeline: true },
   frame: { mode: 'fit', width: 840, height: 880, cx: 512, cy: 505 },
   stillAt: 2.0,
   shadow: { joints: ['leftToe', 'rightToe', 'leftAnkle', 'rightAnkle', 'pelvis'],

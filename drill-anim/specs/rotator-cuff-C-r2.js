@@ -1,4 +1,4 @@
-// rotator-cuff-C-r2: camera-only revision of rotator-cuff-C (review 2026-10-19). right-side camera foreshortened the forearm so 90/90 read as a straight-arm reach; rear view shows 90/90 and the cuff.
+// rotator-cuff-C-r2: camera-only revision of rotator-cuff-C (review 2026-10-19). right-side camera foreshortened the upper arm so 90/90 read as a straight-arm reach; high front-left view shows the upper arm out at shoulder height, elbow at 90 deg, the forearm turning from forward to vertical, and the cable to the column.
 // Pose, timeline, props, highlight and QA are byte-identical to the source; only camera.dir changes.
 // rotator-cuff-C 绳索 90/90 外旋 (cable 90/90 external rotation). Standing tall facing the cable column, feet hip-width.
 // The RIGHT upper arm is held out at shoulder height in the scapular plane (30 deg forward of the frontal plane), elbow at 90 deg.
@@ -45,7 +45,7 @@ export default {
     deltas: { rot: { hands: { right: { w: 1 } } } },
   },
   highlight: { groups: ['rotator-cuff'], side: 'right', pulseTrack: 'rot', pulseBase: 0.45 },
-  camera: { dir: [-0.25, 0.5, -0.83], fit: ['head', 'leftToe', 'rightToe', 'pelvis', 'rightPalm', 'rightElbow', 'leftShoulder'], pad: 0.16, k: 1.0, drift: 0.9, at: 1.6 },
+  camera: { dir: [0.4, 0.65, 0.65], fit: ['head', 'leftToe', 'rightToe', 'pelvis', 'rightPalm', 'rightElbow', 'leftShoulder'], pad: 0.16, k: 1.0, drift: 0.9, at: 1.6 },
   frame: { mode: 'fit', width: 530, height: 720, cx: 490, cy: 540 },
   stillAt: 1.6,
   shadow: { joints: ['leftToe', 'rightToe', 'leftAnkle', 'rightAnkle', 'pelvis'],
