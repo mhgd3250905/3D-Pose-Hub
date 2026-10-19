@@ -146,13 +146,17 @@ function bake(meshes, table) {
 const VS = 'uniform sampler2D uV2pR;varying vec4 vR0;varying vec4 vR1;varying vec4 vR2;varying vec4 vR3;\n';
 const VB = '\n { int b4=gl_VertexID*4; vR0=texelFetch(uV2pR,ivec2(b4%1024,b4/1024),0); vR1=texelFetch(uV2pR,ivec2((b4+1)%1024,(b4+1)/1024),0); vR2=texelFetch(uV2pR,ivec2((b4+2)%1024,(b4+2)/1024),0); vR3=texelFetch(uV2pR,ivec2((b4+3)%1024,(b4+3)/1024),0); }';
 const FS = `
-uniform float uV2pRon; uniform float uV2pRm; uniform float uV2pRSel[80]; uniform vec3 uV2pRGrey; uniform vec3 uV2pRShade; uniform vec3 uV2pRLine; uniform float uV2pRLw;
+uniform float uV2pRon; uniform float uV2pRm; uniform float uV2pRSel[80]; uniform vec3 uV2pRGrey; uniform vec3 uV2pRShade; uniform vec3 uV2pRLine; uniform float uV2pRLw; uniform float uV2pRDbg;
 varying vec4 vR0; varying vec4 vR1; varying vec4 vR2; varying vec4 vR3;
 float v2rAct=0.0; float v2rLine=0.0; float v2rG=0.0; float v2rGp=1.0; int v2rId1=-1; int v2rId2=-1;
 void v2rEval(){ float f[8]; float d[8]; f[0]=vR0.x; f[1]=vR0.y; f[2]=vR0.z; f[3]=vR0.w; f[4]=vR1.x; f[5]=vR1.y; f[6]=vR1.z; f[7]=vR1.w;
   d[0]=vR2.x; d[1]=vR2.y; d[2]=vR2.z; d[3]=vR2.w; d[4]=vR3.x; d[5]=vR3.y; d[6]=vR3.z; d[7]=vR3.w;
   int c1=0; for(int i=1;i<8;i++) if(f[i]<f[c1]) c1=i; int c2=c1==0?1:0; for(int i=0;i<8;i++) if(i!=c1&&f[i]<f[c2]) c2=i;
-  v2rG=f[c2]-f[c1]; v2rGp=v2rG/max(fwidth(v2rG),1e-7); v2rId1=int(floor(d[c1]+0.5)); v2rId2=int(floor(d[c2]+0.5));
+  vec4 x0=dFdx(vR0), y0=dFdy(vR0), x1=dFdx(vR1), y1=dFdy(vR1); float fx[8]; float fy[8]; fx[0]=x0.x; fx[1]=x0.y; fx[2]=x0.z; fx[3]=x0.w; fx[4]=x1.x; fx[5]=x1.y; fx[6]=x1.z; fx[7]=x1.w;
+  fy[0]=y0.x; fy[1]=y0.y; fy[2]=y0.z; fy[3]=y0.w; fy[4]=y1.x; fy[5]=y1.y; fy[6]=y1.z; fy[7]=y1.w;
+  // screen gradient of the (signed) channel difference from the per-channel varyings: identical for the whole 2x2 quad, so it does not
+  // collapse where the quad straddles the border (fwidth(f2-f1) folds to ~0 there -> the old dashed lines)
+  v2rG=f[c2]-f[c1]; v2rGp=v2rG/max(length(vec2(fx[c2]-fx[c1],fy[c2]-fy[c1])),1e-7); v2rId1=int(floor(d[c1]+0.5)); v2rId2=int(floor(d[c2]+0.5));
   v2rLine=1.0-smoothstep(uV2pRLw-0.5,uV2pRLw+0.5,v2rGp); v2rAct=1.0; }
 float v2rSel(int i){ return (i<0||i>79)?0.0:uV2pRSel[i]; }
 float v2rMask(out float core){ float s1=v2rSel(v2rId1), s2=v2rSel(v2rId2); float k=smoothstep(0.0,1.0,v2rGp); core=s1*clamp(v2rG/0.03,0.0,1.0); return mix(0.5*(s1+s2),s1,k); }
@@ -167,10 +171,11 @@ function patch(o, tex) { const mat = o.material, ob = mat.onBeforeCompile;
       .replace('alb*=1.0-cav; shc*=1.0-cav;', 'alb*=1.0-cav; shc*=1.0-cav; if(v2rAct>0.5){ alb=uV2pRGrey*(1.0-cav); shc=uV2pRShade*(1.0-cav); W4=vec4(1.0,0.0,0.0,0.0); rimc=uRimC[0]; fin=vec4(0.0); v2cuff=0.0; }')
       .replace('(uV2pOn>0.5?v2pMask(c2):hlMask(c2))', '(v2rAct>0.5?v2rMask(c2):(uV2pOn>0.5?v2pMask(c2):hlMask(c2)))')
       .replace('if(uV2pOut>0.5){', 'if(uV2pOut>0.5&&v2rAct<0.5){')   // atlas look: no inside-of-sleeve shade override
+      .replace('#include <opaque_fragment>', 'if(uV2pRDbg>0.5&&v2rAct>0.5) outgoingLight = uV2pRDbg>2.5 ? fract(vec3(float(v2rId1)*0.37,float(v2rId1)*0.61,float(v2rId1)*0.13)) : uV2pRDbg>1.5 ? vec3(fract(v2rG*100.0), fract(v2rGp*0.1), 0.0) : vec3(1.0-v2rLine);\n#include <opaque_fragment>')
       .replace('lit=mix(lit,cyl,d*0.94);', 'lit=mix(lit,cyl,d*0.94); if(v2rAct>0.5) lit=mix(lit,uV2pRLine,v2rLine*0.85);');
     sh.fragmentShader = FS + fs; };
   const k0 = mat.customProgramCacheKey; mat.customProgramCacheKey = () => k0.call(mat) + '|v2pr'; mat.needsUpdate = true; }
-R.uni = { uV2pRon: { value: 0 }, uV2pRSel: { value: new Array(80).fill(0) }, uV2pRGrey: { value: null }, uV2pRShade: { value: null }, uV2pRLine: { value: null }, uV2pRLw: { value: 1.0 } };
+R.uni = { uV2pRon: { value: 0 }, uV2pRSel: { value: new Array(80).fill(0) }, uV2pRGrey: { value: null }, uV2pRShade: { value: null }, uV2pRLine: { value: null }, uV2pRLw: { value: 1.0 }, uV2pRDbg: { value: 0 } };
 function meshes() { const v = flareInspector.viewer, out = []; v.coach.traverse(o => { if (o.isSkinnedMesh && o.material && /^toon-drill1-v2p($|\|)/.test(o.material.customProgramCacheKey?.() || '')) out.push(o); }); return out; }
 // load(table): call after __v2p.load (and __v2p.loadTorso when used). Bakes lazily per outfit/torso state on first enable.
 V2P.loadRegions = function(table) { if (R.data) return { already: true }; const t = T();
