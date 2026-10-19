@@ -128,27 +128,33 @@ python3 tools/human-v2plus/sheet.py output/human-v2plus docs/reviews/human-v2plu
 
 不需要 Blender。依赖：Python numpy / scipy / Pillow。
 
-## 烘焙肌群分区（opt-in，草稿，2026-10-20 M2）
+## 烘焙肌群分区（opt-in，草稿，2026-10-20 M2 / M3 打磨）
 
 > 开哥的想法：把肌群分区"烤"进身体本身，像 Thomas app 的人体模型那样：浅灰身体、整身分成肌群区、细深色分区线，高亮左右对称、标准、清晰，以后能用标签 + 箭头指向某块肌肉。
 > spec 写 `modelProfile: 'training-human-v2plus', v2plus: { outfit: 'compression', torso: 'base', regions: 'baked' }` 才生效；不写 `regions` 一切不变（`lib/human-v2plus.mjs` 只在这时才加载 `page/human-v2plus-regions.js`）。
 
 | 项 | 内容 |
 |---|---|
-| 分区表 | `drill-anim/models/training-human-v2plus-regions.json`（`tools/human-v2plus/regions/make_table.py` 生成）：40 个基础区 × 左右 = **80 个 id**（id = 2×基础序号 + 侧，0 = 左 = +x）。37 个肌肉区（胸大肌、腹直肌上/中/下、腹外斜肌、前锯肌、髋屈肌、颈前、斜方肌上/中下、菱形肌区、冈下肌/小圆肌、大圆肌、背阔肌、竖脊肌、臀大/中肌、三角肌前/中/后束、肱二头肌、肱三头肌、肱肌、前臂屈/伸肌群、股直肌、股外侧/内侧肌、缝匠肌、内收肌群、腘绳肌外/内、胫骨前肌、腓骨肌、腓肠肌外/内侧头、比目鱼肌）+ 头 / 手 / 脚（非肌肉区，只为分界）。表里有中英文名、侧别，和 25 个 spec 肌群名 → 新分区的映射（`groups`）；高亮也可以直接用基础区 key（如 `delt-front`）或 `regionIds`。 |
-| 做法 | ①每个基础区是一个设计形状（圆角多边形 / 盒 / 椭圆 / 胶囊），画在静止姿势表面的平滑展开图上（沿用 v2plus 的躯干圆柱 + 上臂 / 前臂 / 大腿 / 小腿图，肢体绕缝线 wrap），加软的部位门（手臂权重、腹股沟—臀褶线、肘、腕、膝、踝、颈）；值是有符号距离，分区 = 80 个 id 取最小（中线用左右门），所以每个顶点都有区，形状之间的空隙对半分。②**逐顶点烘焙**：把相邻的区（同一三角形 / 顶点环，跨网格按静止位置焊接）贪心着色到 8 个通道，每个顶点存每个通道的最小距离和对应 id（每顶点 4 个 RGBA texel，顶点着色器按 gl_VertexID 读）。③**逐像素**：8 个通道距离线性插值，最小者 = 所在区，最小与次小之差 g 除以 fwidth(g) = 到分界的像素距离 → 固定约 2 px 宽的抗锯齿分区线，三角形内亚像素精确，焊缝两侧一致；高亮 = 选中的 id，分界处平滑过渡。浅灰 / 暗灰阴影 / 线色是 uniform。 |
+| 分区表 | `drill-anim/models/training-human-v2plus-regions.json`（`tools/human-v2plus/regions/make_table.py` 生成）：42 个基础区 × 左右 = **84 个 id**（M3 在末尾追加了 `rectus-pubic`、`brachioradialis`，原 80 个 id 不变；shader 上限 96）（id = 2×基础序号 + 侧，0 = 左 = +x）。37 个肌肉区（胸大肌、腹直肌上/中/下、腹外斜肌、前锯肌、髋屈肌、颈前、斜方肌上/中下、菱形肌区、冈下肌/小圆肌、大圆肌、背阔肌、竖脊肌、臀大/中肌、三角肌前/中/后束、肱二头肌、肱三头肌、肱肌、前臂屈/伸肌群、股直肌、股外侧/内侧肌、缝匠肌、内收肌群、腘绳肌外/内、胫骨前肌、腓骨肌、腓肠肌外/内侧头、比目鱼肌）+ 头 / 手 / 脚（非肌肉区，只为分界）。表里有中英文名、侧别，和 25 个 spec 肌群名 → 新分区的映射（`groups`）；高亮也可以直接用基础区 key（如 `delt-front`）或 `regionIds`。 |
+| 做法 | ①每个基础区是一个设计形状（圆角多边形 / 盒 / 椭圆 / 胶囊），画在静止姿势表面的平滑展开图上（沿用 v2plus 的躯干圆柱 + 上臂 / 前臂 / 大腿 / 小腿图，肢体绕缝线 wrap），加软的部位门（手臂权重、腹股沟—臀褶线、肘、腕、膝、踝、颈）；值是有符号距离，分区 = 80 个 id 取最小（中线用左右门），所以每个顶点都有区，形状之间的空隙对半分。②**逐顶点烘焙**：把相邻的区（同一三角形 / 顶点环，跨网格按静止位置焊接）贪心着色到 8 个通道，每个顶点存每个通道的最小距离和对应 id（每顶点 4 个 RGBA texel，顶点着色器按 gl_VertexID 读）。③**逐像素**：8 个通道距离线性插值，最小者 = 所在区，最小与次小之差 g 除以它的屏幕梯度长度（由两个通道各自的 dFdx/dFdy 相减得到，M3 修正）= 到分界的像素距离 → 固定约 2 px 宽的抗锯齿分区线，三角形内亚像素精确，焊缝两侧一致；高亮 = 选中的 id，分界处平滑过渡。浅灰 / 暗灰阴影 / 线色是 uniform。 |
 | 运行时 | 加载时只打补丁（材质 onBeforeCompile 再包一层，cache key 加 `|v2pr`）；第一次启用时按当前衣服 / 躯干状态烘焙（约 10 s，15.6 万顶点，7 个网格：Coach_Body、颈部 Mesh001、头、鞋 ×3、领口带 Mesh005、基础网格躯干），状态变了才重烤。training-collar 会把自己的 hook 换到颈部网格上，所以每次切换 profile 时检查并重新包。 |
 
-草图：`docs/reviews/human-v2plus-proto/regions/draft-front-back.jpg`（站姿正 / 背，无高亮 + 腹外斜肌高亮，背部 / 大腿特写；只出关键帧）。
-复现：
+M3 打磨（2026-10-20）：
+1. **虚线 → 连续线（已修）**：真正原因不是 z-fighting（大腿处只有一个网格，隐藏其他网格后照样断），而是线宽用了 `fwidth(f2-f1)`：g = f2-f1 在分界处是 |x| 形折线，2×2 像素块跨过分界时两侧的 g 相等，导数折到≈0 → 线宽算成无穷细，于是按三角形 / 像素块一段一段地断。改为用两个通道各自插值值的屏幕导数相减求梯度长度（整个像素块一致、不会折叠），线现在连续、等宽、抗锯齿。调试 uniform `uV2pRDbg`（1 线遮罩，2 距离条纹，3 区域 id 色）默认 0。
+2. **形状**：腹直肌 4 行 × 2 = 8 块（新 `rectus-pubic` 最下一行）+ 白线；胸大肌下缘改成圆弧并扫到腋窝；斜方肌中下部改成参考图那样的大菱形（颈根→肩峰→T12），上部只留肩上缘；背阔肌改成从脊柱下段到腋窝的翼形，竖脊肌改成下背中央的菱形；腓肠肌内 / 外侧头改成下端尖的形状（内侧头更低），比目鱼肌包在两侧和下方；前臂加肱桡肌条（`brachioradialis`），伸肌群让出位置。左右仍然严格镜像；25 个 spec 肌群名全部有映射（`abs` 加 `rectus-pubic`，`forearms` 加 `brachioradialis`）。
+3. **鞋**不再烘焙（保持原材质，无灰色、无分区线）；头 / 手 / 脚不再画左右中线（脸上的竖线去掉），只保留颈 / 腕 / 踝分界；轮廓光改成灰色（不再有粉边）。
+4. **动作**：h-squat t=1.2（股四头肌 + 臀大肌高亮）、scapular-B t=1.9（背阔肌 + 肩胛区高亮）关键帧，线和高亮跟着变形的身体走，没有漂移或断裂。
+
+图：`docs/reviews/human-v2plus-proto/regions/m3-front-back.jpg`（站姿正 / 背，无高亮 + 腹肌 / 背阔肌 / 小腿高亮，背 / 小腿 / 大腿 / 躯干特写），`docs/reviews/human-v2plus-proto/regions/m3-poses.jpg`（两个动作关键帧，全身 + 特写）。M2 草图 `draft-front-back.jpg` 保留作对比。
+复现（只出关键帧）：
 ```bash
-/workspace/bin/heavy -- tools/human-v2plus/run.sh tools/human-v2plus/regions.mjs output/human-v2plus-regions --extra "back:0,1.15,-0.05:0.6:0,0.05,-1;thigh:0.08,0.65,0.05:0.45:0.3,0,1"
-python3 tools/human-v2plus/regions/sheet.py output/human-v2plus-regions docs/reviews/human-v2plus-proto/regions/draft-front-back.jpg
+/workspace/bin/heavy -- tools/human-v2plus/run.sh tools/human-v2plus/regions.mjs output/rg --size 640 --hl abs,lats,calves --extra "torso:0,1.15,0.05:0.6:0,0.05,1;back:0,1.15,-0.05:0.6:0,0.05,-1;calf:0.09,0.3,-0.05:0.4:0.2,0.05,-1;thigh:0.08,0.65,0.05:0.45:0.3,0,1"
+python3 tools/human-v2plus/regions/sheet.py output/rg docs/reviews/human-v2plus-proto/regions/m3-front-back.jpg
+/workspace/bin/heavy -- tools/human-v2plus/run.sh tools/human-v2plus/regions-poses.mjs output/rgp --size 512
+python3 tools/human-v2plus/regions/poses_sheet.py output/rgp docs/reviews/human-v2plus-proto/regions/m3-poses.jpg
 ```
 
-已知粗糙处（草稿）：
-1. **分区线在不少地方是虚线**（大腿、背部最明显）：分界位置是连续的，但线宽在某些三角形里断开。怀疑是同一身体还有第二遍绘制（场景里每个身体网格都有一份非 toon 材质的副本）在同深度上 z-fighting，或 fwidth(g) 在细长三角形上跳变；下一步先查这个。
-2. 形状是按 v2plus 旧分区放大 / 细分的，比参考图粗：腹直肌只分三段（参考是 6–8 块）、胸大肌 / 三角肌 / 背部的线条走向还不像参考那样顺；小腿、前臂分得较少。
-3. 头 / 手 / 脚是单独的区，所以腕、踝、颈根有分界线；鞋也涂成浅灰（参考是赤脚）。
-4. 只验证了站姿；动作中（深蹲、悬垂）的样子和高亮未看；`regions` 只在 `torso: 'base'` 下试过。
-5. 菱形肌区是在斜方肌中下部里挖出来的一小块（解剖上在斜方肌下面），参考图里没有，可以去掉。
+还剩的粗糙处：
+1. 三角肌前 / 中 / 后束仍按上臂图的角度直切，线条不如参考图那样顺；冈下肌 / 大圆肌的线从背后看靠近侧面轮廓，不太显眼。
+2. 菱形肌区仍是斜方肌中下部里的一小块（为了 `scapular` 映射保留），参考图里没有。
+3. `regions` 只在 `torso: 'base'` 下试过；只看了 h-squat 和 scapular-B 两个动作。
