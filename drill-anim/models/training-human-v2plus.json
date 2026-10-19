@@ -7,7 +7,15 @@
   "spec": {
     "modelProfile": "training-human-v2plus",
     "alignClavicles": false,
-    "v2plus": { "handPose": { "left": "optional: open | relaxed | palm-floor | grip-bar | band-grip", "right": "optional" }, "outfit": "optional: compression (default: the v2 tee + shorts)", "sleeve": "optional with outfit compression: short (default) | long" }
+    "v2plus": {
+      "handPose": {
+        "left": "optional: open | relaxed | palm-floor | grip-bar | band-grip",
+        "right": "optional"
+      },
+      "outfit": "optional: compression (default: the v2 tee + shorts)",
+      "sleeve": "optional with outfit compression: short (default) | long",
+      "regions": "optional, DRAFT: baked (whole-body muscle-region atlas: light grey, thin outlines, 80 L/R region ids; table models/training-human-v2plus-regions.json, runtime page/human-v2plus-regions.js). Default: off"
+    }
   },
   "base": "training-human-v2 exactly: same flare-coach.glb, head, neck/collar profile (training-collar.js runs as for training-human-v2), tee, shorts, shoes, solver and camera code. All 13 training-human-v2 source hashes are unchanged.",
   "runtime": "drill-anim/page/human-v2plus.js (loaded by drill-anim/lib/human-v2plus.mjs only when a spec sets modelProfile 'training-human-v2plus')",
