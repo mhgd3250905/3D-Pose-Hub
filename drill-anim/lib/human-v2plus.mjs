@@ -4,6 +4,7 @@
 // The base-mesh torso (Blender Human Base Meshes, CC0; models/training-human-v2plus-torso-base.json) is loaded only when the spec sets v2plus.torso:'base'.
 // The base-mesh limbs (same source; models/training-human-v2plus-limbs-base.json) load only when the spec sets v2plus.limbs:'base'.
 // The base-mesh hands (same source; models/training-human-v2plus-hands-base.json) load only when the spec sets v2plus.hands:'base'.
+// The base-mesh head + neck (same source; models/training-human-v2plus-head-base.json) load only when the spec sets v2plus.head:'base'.
 // Baked muscle regions (page/human-v2plus-regions.js + models/training-human-v2plus-regions.json) load only when the spec sets v2plus.regions:'baked'
 // or an outline skin (v2plus.skin: 'tech-white' | 'neon-night' | 'hologram' (+ '-b' variants) | 'plaster'; 'realistic' needs nothing).
 import fs from 'node:fs';import path from 'node:path';import {ROOT} from './config.mjs';
@@ -18,6 +19,8 @@ export async function applyHumanV2plus(p,spec){
   if(spec?.v2plus?.limbs){const limbs=JSON.parse(fs.readFileSync(path.join(ROOT,'models/training-human-v2plus-limbs-base.json'),'utf8'));r.limbs=await p.evaluate(d=>__v2p.loadLimbs(d),limbs);}
   // opt-in base-mesh hands (v2plus.hands:'base', needs limbs:'base'): only loaded for specs that ask for it
   if(spec?.v2plus?.hands){const hands=JSON.parse(fs.readFileSync(path.join(ROOT,'models/training-human-v2plus-hands-base.json'),'utf8'));r.hands=await p.evaluate(d=>__v2p.loadHands(d),hands);}
+  // opt-in base-mesh head + neck (v2plus.head:'base', needs torso:'base'): only loaded for specs that ask for it
+  if(spec?.v2plus?.head){const head=JSON.parse(fs.readFileSync(path.join(ROOT,'models/training-human-v2plus-head-base.json'),'utf8'));r.head=await p.evaluate(d=>__v2p.loadHead(d),head);}
   // opt-in baked muscle regions (v2plus.regions:'baked', draft): only loaded for specs that ask for it
   const sk=spec?.v2plus?.skin;if(spec?.v2plus?.regions==='baked'||(sk&&sk!=='realistic'&&sk!=='default')){await p.addScriptTag({content:fs.readFileSync(path.join(ROOT,'page/human-v2plus-regions.js'),'utf8')});
     r.regions=await p.evaluate(d=>__v2p.loadRegions(d),JSON.parse(fs.readFileSync(path.join(ROOT,'models/training-human-v2plus-regions.json'),'utf8')));}

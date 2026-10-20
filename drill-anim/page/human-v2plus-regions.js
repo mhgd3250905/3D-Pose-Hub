@@ -282,7 +282,8 @@ R._dev = { S, charts, MID }; // offline tools (tools/human-v2plus/regions/offlin
 const _v = [0, 0, 0, 0].map(() => null);
 function meshByName(nm) { for (const o of (R.patched ? R.patched.keys() : [])) if (o.name === nm) return o; return null; }
 // hands:'base' moves no anchor mesh (anchors sit on torso / limbs / tee / Coach_Body regions, none on the hands): use the limbs state's set
-const anchorKey = () => R.key && R.key.replace(',"hands":"base"', '');
+// head:'base' likewise (no anchor sits on Mesh001 / the v2 head in any state)
+const anchorKey = () => R.key && R.key.replace(',"hands":"base"', '').replace(',"head":"base"', '');
 const anchorSet = () => (R.key && R.data?.anchorsByState?.[anchorKey()]) || R.data?.anchors;   // per bake state (limbs:'base' has its own set)
 R.getRegionAnchor = function(id) { const AS = anchorSet(), A = AS?.list?.[id]; if (!A) return null; const o = meshByName(A.mesh); if (!o || o.geometry.attributes.position.count !== A.meshVerts) return null;
   const t = T(); if (!_v[0]) for (let i = 0; i < 4; i++) _v[i] = new t.Vector3(); const [p, a, b, c] = _v; const n = new t.Vector3();

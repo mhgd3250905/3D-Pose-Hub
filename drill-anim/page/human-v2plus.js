@@ -312,8 +312,11 @@ V2P.setOutfit = function(name, opts = {}) {
   if (limbs && !V2P.limbs) throw new Error('v2plus: base-mesh limbs data not loaded');
   const hands = limbs && opts.hands === 'base'; if (opts.hands && opts.hands !== 'base') throw new Error('v2plus: unknown hands ' + opts.hands);
   if (opts.hands && !limbs) throw new Error("v2plus: hands:'base' needs limbs:'base'"); if (hands && !V2P.hands) throw new Error('v2plus: base-mesh hands data not loaded');
+  const head = torso && opts.head === 'base'; if (opts.head && opts.head !== 'base') throw new Error('v2plus: unknown head ' + opts.head);
+  if (opts.head && !torso) throw new Error("v2plus: head:'base' needs torso:'base'"); if (head && !V2P.head) throw new Error('v2plus: base-mesh head data not loaded');
   if (V2P.hands && !hands) V2P.setHands(false); if (V2P.limbs && !limbs) V2P.setLimbs(false); if (V2P.torso) V2P.setTorso(torso); if (V2P.limbs && limbs) V2P.setLimbs(true); if (V2P.hands && hands) V2P.setHands(true);
-  V2P.outfitOn = on; const sleeve = on ? (opts.sleeve || 'short') : null; V2P.outfitState = on ? Object.assign({ outfit: name, sleeve }, torso ? { torso: 'base' } : {}, limbs ? { limbs: 'base' } : {}, hands ? { hands: 'base' } : {}) : null;
+  if (V2P.head) V2P.setHead(head);
+  V2P.outfitOn = on; const sleeve = on ? (opts.sleeve || 'short') : null; V2P.outfitState = on ? Object.assign({ outfit: name, sleeve }, torso ? { torso: 'base' } : {}, limbs ? { limbs: 'base' } : {}, hands ? { hands: 'base' } : {}, head ? { head: 'base' } : {}) : null;
   V2P.uni.uV2pSleeve.value = sleeve === 'short' ? 1 : 0; V2P.uni.uV2pOut.value = on ? 1 : 0;
   if (V2P.outfit) { V2P.uni.uV2pCuffL.value = V2P.outfit.data.cuffPlanes.left; V2P.uni.uV2pCuffR.value = V2P.outfit.data.cuffPlanes.right; }
   return V2P.outfitState;
@@ -436,6 +439,20 @@ V2P.loadHands = function(data) {
     V2P.hands.nrmSwap = { na, idx, a0, a1 }; }
   return Object.assign({ hands: V2P.hands.report.verts, limbsNrm: data.limbsNrm ? data.limbsNrm.idx.length : 0 }, V2P.hands.report);
 };
+// ---------------- 7. base-mesh head + neck (opt-in: spec.v2plus.head = 'base'; needs torso:'base') ----------------
+// drill-anim/models/training-human-v2plus-head-base.json (tools/human-v2plus/head-base/build.sh): the head and neck of the same Blender
+// base-mesh body (M8 sketch alignment: same skull height / ear position as the v2 head), eye openings closed with faired, slightly domed
+// lids; the lower neck follows the v2 neck skin (Mesh001) under the tee collar band and is welded vertex-for-vertex to Mesh001's own bottom
+// boundary loop (seam vertices take its live position / weights; normals are the piece's own, the ring sits under the collar). Weights =
+// the training-collar neck rule (torso -> neck -> head with height, scapula share by |x|) with a head mask over face / chin / skull.
+// Always skin-painted. Hidden in this mode: Toon_Mannequin_Head_v5 and Mesh001 (draw range 0); off = both back exactly as they were.
+V2P.loadHead = function(data) {
+  if (V2P.head) return { already: true }; if (!V2P.torso) throw new Error('v2plus: loadTorso() before loadHead()');
+  if (V2P.torso.on || V2P.outfitOn) throw new Error('v2plus: loadHead() with the profile off');
+  V2P.head = buildPiece(data, 'V2P_Base_Head', false); return Object.assign({ head: V2P.head.report.verts }, V2P.head.report);
+};
+V2P.setHead = function(on) { const R = V2P.head; if (!R || R.on === on) return; R.on = on; R.mesh.visible = on;
+  for (const h of R.hidden) h.g.setDrawRange(on ? 0 : h.dr.start, on ? 0 : h.dr.count); };
 // applied after setLimbs (same stacking: remembers the index each swap replaced)
 V2P.setHands = function(on) { const R = V2P.hands; if (!R || R.on === on) return; R.on = on; R.mesh.visible = on;
   if (R.nrmSwap) { const { na, idx, a0, a1 } = R.nrmSwap, src = on ? a1 : a0; idx.forEach((i, k) => na.setXYZ(i, src[k * 3], src[k * 3 + 1], src[k * 3 + 2])); na.needsUpdate = true; }
@@ -463,7 +480,7 @@ V2P.load = function(meta, outfit) {
   if (outfit) V2P.outfit = prepOutfit(outfit);
   const sel0 = E.selectModelProfile.bind(E);
   E.selectModelProfile = function(spec) { if (spec.modelProfile === 'training-human-v2plus') { sel0(Object.assign({}, spec, { modelProfile: 'training-human-v2' })); V2P.enable(true);
-      V2P.setOutfit(spec.v2plus?.outfit || (spec.v2plus?.torso ? 'compression' : null), { sleeve: spec.v2plus?.sleeve, torso: spec.v2plus?.torso, limbs: spec.v2plus?.limbs, hands: spec.v2plus?.hands }); }
+      V2P.setOutfit(spec.v2plus?.outfit || (spec.v2plus?.torso ? 'compression' : null), { sleeve: spec.v2plus?.sleeve, torso: spec.v2plus?.torso, limbs: spec.v2plus?.limbs, hands: spec.v2plus?.hands, head: spec.v2plus?.head }); }
     else { if (V2P.on) { V2P.setOutfit(null); V2P.enable(false); } sel0(spec); } };
   const pose0 = E.pose.bind(E);
   E.pose = function(spec, params, warm) { const r = pose0(spec, params, warm);
