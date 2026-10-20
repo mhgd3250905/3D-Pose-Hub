@@ -262,5 +262,8 @@ Base Meshes v1.4.1 realistic male (CC0). Needs `limbs:'base'` (throws otherwise)
 - Images (`docs/reviews/human-v2plus-proto/hands-base/`): `sketch2.jpg` / `sketch2-closeup.jpg` (offline v2 vs base, thumb web),
   `poses.jpg` (key frames), `regions.jpg` (regions bake with hands). `sketch.jpg` = the earlier folded thumb.
 - Remaining: the thenar sits a few mm below the palm plane at rest; palm-floor (chest-A) left hand not checked close up (camera
-  inside the body), right hand fine; a faint shading line can show at the wrist weld in some lights; `sleeve:'long'` with
-  `limbs:'base'` still throws.
+  inside the body), right hand fine; a faint shading line can show at the wrist weld in some lights.
+- `sleeve:'long'` with `limbs:'base'` (with or without `hands:'base'`) now works: the base-mesh arms are top colour down to the
+  wrist weld ring with the darker 8 mm cuff band (`uV2pLimb` on the limbs piece only, wrist planes `uV2pWristL/R` from the ring
+  centroids + forearm->hand direction at reset); legs and the short sleeve unchanged. `hands-poses.mjs --sleeve long`,
+  `sleeve-long.jpg`.

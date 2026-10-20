@@ -1,6 +1,6 @@
 // base-mesh hands (v2plus.hands:'base') key-frame check: each frame rendered with limbs:'base' (current) and with
 // limbs:'base' + hands:'base', same solve / camera, whole body + both hands close up; prints the joint max diff (must be 0). Key frames only (no clips). Run through run.sh (private Vite + one Chromium):
-//   tools/human-v2plus/run.sh tools/human-v2plus/hands-poses.mjs <outdir> [--size 480] [--set poses|regions] [--only id,...]
+//   tools/human-v2plus/run.sh tools/human-v2plus/hands-poses.mjs <outdir> [--size 480] [--set poses|regions] [--only id,...] [--sleeve long]
 // --set regions: regions:'baked' plain (no highlight) + region outlines, standing front / back, limbs on only (+ anchors check)
 import fs from 'node:fs'; import path from 'node:path'; import { pathToFileURL, fileURLToPath } from 'node:url';
 const REPO = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
@@ -8,7 +8,7 @@ const { boot } = await import(pathToFileURL(path.join(REPO, 'drill-anim/lib/boot
 const { loadTheme } = await import(pathToFileURL(path.join(REPO, 'drill-anim/lib/config.mjs')).href);
 const A = process.argv.slice(2); const opt = (k, d) => { const i = A.indexOf(k); return i >= 0 ? A[i + 1] : d; };
 const OUT = path.resolve(A[0] || 'output/human-v2plus-hands'); fs.mkdirSync(OUT, { recursive: true });
-const SZ = +opt('--size', '480'), SET = opt('--set', 'poses'), ONLY = opt('--only', null)?.split(',');
+const SZ = +opt('--size', '480'), SET = opt('--set', 'poses'), ONLY = opt('--only', null)?.split(','), SLEEVE = opt('--sleeve', null);
 const theme = loadTheme(null); const R = f => JSON.parse(fs.readFileSync(path.join(REPO, 'drill-anim/models', f), 'utf8'));
 const t0 = Date.now(); const log = (...a) => console.log(((Date.now() - t0) / 1000).toFixed(0) + 's', ...a);
 const { b, p } = await boot({ size: SZ, pr: 1, theme, bakeHands: [] }); log('boot ok');
@@ -40,7 +40,7 @@ const VARS = REG ? [['hands', 'base']] : [['limbs', null], ['hands', 'base']]; c
 for (const [id, t, views] of SETS[SET]) { if (ONLY && !ONLY.includes(id)) continue;
   const s0 = (await import(pathToFileURL(path.join(REPO, 'drill-anim/specs', id + '.js')).href)).default;
   for (const [vname, limbs] of VARS) {
-    const v2plus = Object.assign({ outfit: 'compression', torso: 'base', limbs: 'base' }, limbs ? { hands: limbs } : {}, REG ? { regions: 'baked' } : {});
+    const v2plus = Object.assign({ outfit: 'compression', torso: 'base', limbs: 'base' }, limbs ? { hands: limbs } : {}, REG ? { regions: 'baked' } : {}, SLEEVE ? { sleeve: SLEEVE } : {});
     const spec = Object.assign({}, s0, { modelProfile: 'training-human-v2plus', v2plus }, REG ? {} : { highlight: { groups: [] } });
     await p.evaluate(([spec, th, SZ]) => { (__props.list || []).forEach(o => o.parent?.remove(o)); if (__props.list) __props.list.length = 0;
       __toonUni.uSinkK.value = spec.clothSink ?? 1; for (const pr of spec.props || []) __props.add(th, pr); __drill.setupCamera(spec, SZ); }, [spec, theme, SZ]);
