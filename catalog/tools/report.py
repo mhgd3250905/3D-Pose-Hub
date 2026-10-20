@@ -22,6 +22,8 @@ def dose_text(x):
     d = x["defaultDose"]
     per = "每侧" if x["unilateral"] else ""
     amt = f"{per}{d['reps']} 次" if d["mode"] == "reps" else f"{per}{d['seconds']} 秒"
+    if d.get("holdSeconds"):
+        amt += f"（每次停 {d['holdSeconds']} 秒）"
     return f"{d['sets']}×{amt} 休{d['restSeconds']}"
 
 

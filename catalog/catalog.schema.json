@@ -69,7 +69,7 @@
       "required": ["app", "path"],
       "properties": {
         "app": {"type": "string", "description": "apps 里的 appId；pose-hub = Pose-Hub 发布 ZIP 内路径"},
-        "path": {"type": "string"},
+        "path": {"type": "string", "description": "相对 apps.<app>.repo 仓库根（FlareLab 素材在 Flutter 工程 app/ 下：app/assets/drill_media/...）；app=pose-hub 时为发布 ZIP 内路径"},
         "variant": {"type": "string", "description": "dark | light | default"},
         "width": {"type": "integer"},
         "height": {"type": "integer"},
@@ -91,11 +91,12 @@
         "sets": {"type": "integer", "minimum": 1, "maximum": 6},
         "reps": {"type": "integer", "minimum": 1, "maximum": 30, "description": "mode=reps 必填；单侧动作指每侧"},
         "seconds": {"type": "integer", "minimum": 10, "maximum": 120, "description": "mode=time 必填；单侧动作指每侧"},
+        "holdSeconds": {"type": "integer", "minimum": 1, "maximum": 60, "description": "仅 mode=reps 可选：每次动作到位后停留的秒数（HipLab rep_hold，如『3次，每次停10秒』）。执行：每次 = 动作到位 + 停 holdSeconds 秒 + 回位，单侧动作每侧都如此；时长估算每次多计 holdSeconds 秒。不支持的消费端至少把『每次停N秒』展示给用户，不得丢弃。"},
         "restSeconds": {"type": "integer", "minimum": 0, "maximum": 180}
       },
       "allOf": [
         {"if": {"properties": {"mode": {"const": "reps"}}}, "then": {"required": ["reps"]}},
-        {"if": {"properties": {"mode": {"const": "time"}}}, "then": {"required": ["seconds"]}}
+        {"if": {"properties": {"mode": {"const": "time"}}}, "then": {"required": ["seconds"], "not": {"required": ["holdSeconds"]}}}
       ]
     },
     "drill": {

@@ -1,5 +1,5 @@
 {
- "_doc": "人工审阅数据：build_catalog.py 先自动合并三方数据，再按本文件覆盖。flarelab = FlareLab 独有动作的标签（drills.json 里没有结构化标签，逐条手标）；fixes = 对已有数据的更正（_why 写原因）；purpose = 手写一句话用途（未列的由 SmartFit intro 台词自动生成）；doubts = 待开哥拍板的疑点。",
+ "_doc": "人工审阅数据：build_catalog.py 先自动合并三方数据，再按本文件覆盖。flarelab = FlareLab 独有动作的标签（drills.json 里没有结构化标签，逐条手标）；fixes = 对已有数据的更正（_why 写原因）；purpose = 手写一句话用途（未列的由 SmartFit intro 台词自动生成）；doubts = 待开哥拍板的疑点。 doses = 剂量语义裁定：目录与 HipLab 可执行动作包（training.unit/kind）冲突时以哪方为准（source=hiplab 即整组采用动作包 defaults，含 rep_hold 的 holdSeconds）；未裁定的冲突生成时自动标 doubt。",
  "flarelab": {
   "deltoids-A": {
    "category": "strength",
@@ -1620,6 +1620,13 @@
     "adductors"
    ],
    "_why": "SmartFit pack muscleGroups 为空，按 Pose-Hub 目标高亮补"
+  },
+  "h-band-hip-ir": {
+   "equipment": [
+    "band",
+    "chair"
+   ],
+   "_why": "spec 坐在椅上、弹力带固定椅腿，场景实际建了椅子；补 chair"
   }
  },
  "purpose": {
@@ -1663,7 +1670,41 @@
   },
   {
    "id": "glute-max-A",
-   "note": "unilateral 由 false 改为 true 的 7 个动作（glute-max-A、h-band-pallof、h-supine-twist、n-seated-ir-drop、n-seated-knee-lift、s-9090、t-seated-straddle-lift-1leg）需要同步改 SmartFit pack（unilateral + side_switch 台词），否则 SmartFit 现有 Dart 校验会拒绝 perSide=true。level：SmartFit=2、FlareLab=1，保留 2。"
+   "note": "unilateral 由 false 改为 true 的 7 个动作（glute-max-A、h-band-pallof、h-supine-twist、n-seated-ir-drop、n-seated-knee-lift、s-9090、t-seated-straddle-lift-1leg）需要同步改 SmartFit pack（unilateral + side_switch 台词），否则 SmartFit 现有 Dart 校验会拒绝 perSide=true。level：SmartFit=2、FlareLab=1，保留 2。 另：8 个动作（h-adductor-rock、h-knee-hug、h-sumo-pry、n-pelvis-circle、n-seated-ir-drop、n-seated-knee-lift、n-seated-squeeze、n-squat-shift）剂量已按 HipLab 动作包统一，SmartFit pack 的 defaultDose 也需同步，消费端需支持 defaultDose.holdSeconds（rep_hold）。"
   }
- ]
+ ],
+ "doses": {
+  "h-adductor-rock": {
+   "source": "hiplab",
+   "_why": "HipLab 动作包（rep_updown 每侧5次）是按成片实测节拍做的可执行剂量，视频本身就是一前一后的计次循环；SmartFit pack 的计时剂量是批量默认值，按动作包统一（SmartFit pack defaultDose 需同步）。"
+  },
+  "h-knee-hug": {
+   "source": "hiplab",
+   "_why": "HipLab 动作包（rep_breath 6次）是按成片实测节拍做的可执行剂量，视频本身就是呼气抱膝/吸气放开的计次循环；SmartFit pack 的计时剂量是批量默认值，按动作包统一（SmartFit pack defaultDose 需同步）。"
+  },
+  "h-sumo-pry": {
+   "source": "hiplab",
+   "_why": "HipLab 动作包（rep_hold 3次×每次停10秒）是按成片实测节拍做的可执行剂量，视频本身就是下蹲-停-起的计次停留；SmartFit pack 的计时剂量是批量默认值，按动作包统一（SmartFit pack defaultDose 需同步）。"
+  },
+  "n-pelvis-circle": {
+   "source": "hiplab",
+   "_why": "HipLab 动作包（rep_cycle 4次）是按成片实测节拍做的可执行剂量，视频本身就是顺/逆各一圈的计次循环；SmartFit pack 的计时剂量是批量默认值，按动作包统一（SmartFit pack defaultDose 需同步）。"
+  },
+  "n-seated-ir-drop": {
+   "source": "hiplab",
+   "_why": "HipLab 动作包是 hold 每侧30秒（与本目录 fixes 备注『每侧 30 秒』一致）；SmartFit pack 的『8次』与成片（静态保持）不符，按动作包统一（SmartFit pack defaultDose 需同步）。"
+  },
+  "n-seated-knee-lift": {
+   "source": "hiplab",
+   "_why": "HipLab 动作包（rep_hold 每侧3次×每次停5秒）是按成片实测节拍做的可执行剂量，视频本身就是抬-停-放的计次停留；SmartFit pack 的计时剂量是批量默认值，按动作包统一（SmartFit pack defaultDose 需同步）。"
+  },
+  "n-seated-squeeze": {
+   "source": "hiplab",
+   "_why": "HipLab 动作包（rep_updown 8次）是按成片实测节拍做的可执行剂量，视频本身就是夹-松的计次循环；SmartFit pack 的计时剂量是批量默认值，按动作包统一（SmartFit pack defaultDose 需同步）。"
+  },
+  "n-squat-shift": {
+   "source": "hiplab",
+   "_why": "HipLab 动作包（rep_alternate 8次（左右交替各算1次））是按成片实测节拍做的可执行剂量，视频本身就是左右交替的计次循环；SmartFit pack 的计时剂量是批量默认值，按动作包统一（SmartFit pack defaultDose 需同步）。"
+  }
+ }
 }

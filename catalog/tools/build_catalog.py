@@ -78,10 +78,50 @@ def clean_dose(d):
     out = {"mode": d["mode"], "sets": int(d["sets"])}
     if d["mode"] == "reps":
         out["reps"] = int(d["reps"])
+        if d.get("holdSeconds"):
+            out["holdSeconds"] = int(d["holdSeconds"])
     else:
         out["seconds"] = int(d.get("seconds") or d.get("workSeconds"))
     out["restSeconds"] = int(d.get("restSeconds", 20))
     return out
+
+
+# HipLab 注意部位 → 目录词表（taxonomy.cautions）。只做词表归一，不增删含义。
+HIPLAB_CAUTION_ALIAS = {"内收肌根": "大腿内侧", "髋前侧夹痛": "髋"}
+
+
+def hiplab_dose(h):
+    """HipLab action-kit training → 目录 defaultDose。unit=reps → mode=reps（rep_hold 带 holdSeconds）；unit=seconds → mode=time。"""
+    t, df = h["training"], h["training"]["defaults"]
+    d = {"mode": "reps" if t["unit"] == "reps" else "time", "sets": df["sets"], "restSeconds": df.get("restSeconds", 15)}
+    if d["mode"] == "reps":
+        d["reps"] = df["reps"]
+        if t.get("kind") == "rep_hold" or df.get("holdSeconds"):
+            d["holdSeconds"] = df["holdSeconds"]
+    else:
+        d["seconds"] = df["seconds"]
+    return clean_dose(d)
+
+
+def dose_semantics(d):
+    """剂量语义：计次/计时 + 是否每次停留。只比较语义，不比较数值（各 App 默认量本来就不同）。"""
+    return (d["mode"], bool(d.get("holdSeconds")))
+
+
+def dose_text(d, sided):
+    per = "每侧" if sided else ""
+    if d["mode"] == "reps":
+        amt = f"{per}{d['reps']}次" + (f"，每次停{d['holdSeconds']}秒" if d.get("holdSeconds") else "")
+    else:
+        amt = f"{per}{d['seconds']}秒"
+    return f"{d['sets']}×{amt}"
+
+
+def asset_path(app, path):
+    """统一成「相对该 App 仓库根」的路径。FlareLab manifest 记的是 Flutter 工程（app/）内路径，补 app/ 前缀。"""
+    if app == "flarelab" and not path.startswith("app/"):
+        return "app/" + path
+    return path
 
 
 def main():
@@ -143,7 +183,7 @@ def main():
     for i in ids:
         s, h, f = sf.get(i), hk.get(i), fl.get(i)
         apps = [k for k, v in (("flarelab", f), ("hiplab", h), ("smartfit", s)) if v]
-        review = []
+        review, doubt_extra = [], []
         if s:
             e = {
                 "id": i, "name": dict(s["name"]),
@@ -193,6 +233,31 @@ def main():
             review.append("人工更正：" + fx.get("_why", ""))
 
         # 交叉核对（更正之后仍不一致的才记）
+        if h:
+            # 注意部位：并入 HipLab 已有标注（词表归一后取并集，只增不减）
+            hcaut = [HIPLAB_CAUTION_ALIAS.get(c, c) for c in h["display"].get("cautions", [])]
+            unknown = [c for c in hcaut if c not in tax["cautions"]]
+            add = [c for c in hcaut if c in tax["cautions"] and c not in e["cautions"]]
+            if add:
+                e["cautions"] = e["cautions"] + add
+                review.append(f"cautions 并入 HipLab 动作包标注：{'、'.join(add)}（原文 {'、'.join(h['display'].get('cautions', []))}）")
+            if unknown:
+                review.append(f"HipLab 注意部位 {'、'.join(unknown)} 未登记到词表（待审）")
+                doubt_extra.append(f"HipLab 注意部位 {'、'.join(unknown)} 未登记到词表，未并入")
+            # 剂量语义：目录与 HipLab 可执行动作包必须一致；有裁定（overrides.doses）则按裁定，否则标待审
+            hd = hiplab_dose(h)
+            dv = ov.get("doses", {}).get(i)
+            if dv:
+                if dv["source"] != "hiplab":
+                    raise SystemExit(f"{i}: doses.source 只支持 hiplab")
+                before = dose_text(e["defaultDose"], e["unilateral"])
+                e["defaultDose"] = hd
+                e["doseRange"] = auto_range(hd)
+                review.append(f"剂量按 HipLab 动作包裁定：{before} → {dose_text(hd, e['unilateral'])}。{dv.get('_why', '')}")
+            if dose_semantics(e["defaultDose"]) != dose_semantics(hd):
+                doubt_extra.append(
+                    f"剂量单位与 HipLab 动作包冲突（待审）：目录 {dose_text(e['defaultDose'], e['unilateral'])}，"
+                    f"HipLab {h['training']['kind']} {dose_text(hd, e['unilateral'])}")
         if h and bool(h["display"].get("sided")) != e["unilateral"]:
             review.append(f"unilateral={e['unilateral']} 与 HipLab sided={h['display'].get('sided')} 不一致")
         if f:
@@ -259,8 +324,8 @@ def main():
                     videos.append(vv)
         if f:
             m = fm[i]
-            covers.append({"app": "flarelab", "path": m["poster_asset"], "width": m.get("poster_width"), "height": m.get("poster_height"), "sha256": m.get("poster_sha256")})
-            videos.append({"app": "flarelab", "path": m["video_asset"], "width": m.get("width"), "height": m.get("height"), "loopSeconds": m.get("duration_seconds"), "sha256": m.get("sha256"), "bytes": m.get("bytes")})
+            covers.append({"app": "flarelab", "path": asset_path("flarelab", m["poster_asset"]), "width": m.get("poster_width"), "height": m.get("poster_height"), "sha256": m.get("poster_sha256")})
+            videos.append({"app": "flarelab", "path": asset_path("flarelab", m["video_asset"]), "width": m.get("width"), "height": m.get("height"), "loopSeconds": m.get("duration_seconds"), "sha256": m.get("sha256"), "bytes": m.get("bytes")})
         for ver, it in rel["items"]:
             src = {"app": "pose-hub", "release": ver, "variant": it["variant"], "path": it["file"], "width": it.get("width"), "height": it.get("height"), "sha256": it["sha256"], "bytes": it["bytes"]}
             (covers if it["role"] == "poster" else videos).append(src)
@@ -304,7 +369,7 @@ def main():
         if not rel["versions"]:
             missing.append("release")
         e["completeness"] = {"complete": not [m for m in missing if m != "voice.en"], "missing": missing}
-        doubt = [d["note"] for d in ov["doubts"] if d["id"] == i]
+        doubt = [d["note"] for d in ov["doubts"] if d["id"] == i] + doubt_extra
         e["review"] = {"status": "doubt" if doubt else ("reviewed" if review else "auto"), "notes": review + doubt}
 
         order = ["id", "name", "purpose", "category", "muscles", "muscleGroups", "equipment", "position", "unilateral", "level",

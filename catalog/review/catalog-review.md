@@ -1,4 +1,4 @@
-# 动作目录审阅表（catalog v0.1.0，生成于 2026-10-19T23:59:26+08:00）
+# 动作目录审阅表（catalog v0.2.0，生成于 2026-10-19T23:59:26+08:00）
 
 > 由 `python3 catalog/tools/report.py` 从 `catalog/catalog.json` 生成，不要手改。改数据请改 `catalog/review/overrides.json` 后重跑 build → validate → report。
 
@@ -10,17 +10,18 @@
 - `deltoids-B` 哑铃半程土耳其起立（至高桥）：FlareLab 名称已改『哑铃半程土耳其起立（至高桥）』，Pose-Hub catalog 仍叫『哑铃土耳其起立』；本目录用 App 名。
 - `forearms-A` 跪姿多方向腕部摇摆：FlareLab 处方『2 轮 × 4 方向 × 10 次』，TrainingPlan 没有多段动作概念，暂记为 2 组 × 10 次（每组含 4 个方向）。
 - `forearms-C` 壶铃倒握行走：处方按距离『每侧 20–30 米』，改为计时每侧 30 秒（10–120 秒范围内）。
-- `glute-max-A` 单腿臀桥：人工更正：单腿臀桥左右各做：FlareLab 处方『每侧 10 次』、HipLab action-kit sided=true；SmartFit pack 写成 false（SmartFit pack 需同步改）；unilateral 由 false 改为 true 的 7 个动作（glute-max-A、h-band-pallof、h-supine-twist、n-seated-ir-drop、n-seated-knee-lift、s-9090、t-seated-straddle-lift-1leg）需要同步改 SmartFit pack（unilateral + side_switch 台词），否则 SmartFit 现有 Dart 校验会拒绝 perSide=true。level：SmartFit=2、FlareLab=1，保留 2。
+- `glute-max-A` 单腿臀桥：人工更正：单腿臀桥左右各做：FlareLab 处方『每侧 10 次』、HipLab action-kit sided=true；SmartFit pack 写成 false（SmartFit pack 需同步改）；unilateral 由 false 改为 true 的 7 个动作（glute-max-A、h-band-pallof、h-supine-twist、n-seated-ir-drop、n-seated-knee-lift、s-9090、t-seated-straddle-lift-1leg）需要同步改 SmartFit pack（unilateral + side_switch 台词），否则 SmartFit 现有 Dart 校验会拒绝 perSide=true。level：SmartFit=2、FlareLab=1，保留 2。 另：8 个动作（h-adductor-rock、h-knee-hug、h-sumo-pry、n-pelvis-circle、n-seated-ir-drop、n-seated-knee-lift、n-seated-squeeze、n-squat-shift）剂量已按 HipLab 动作包统一，SmartFit pack 的 defaultDose 也需同步，消费端需支持 defaultDose.holdSeconds（rep_hold）。
 - `h-9090-liftoff` 90/90 后腿主动抬起：人工更正：SmartFit pack muscleGroups 为空，按 Pose-Hub 目标高亮补
+- `h-band-hip-ir` 坐椅弹力带髋内旋：人工更正：spec 坐在椅上、弹力带固定椅腿，场景实际建了椅子；补 chair
 - `h-band-pallof` 弹力带抗旋转推：人工更正：与 FlareLab obliques-B（同动作旧版）处方『每侧 10 次』一致；SmartFit pack 写成 false（需同步）
 - `h-db-row` 扶椅单臂哑铃划船：人工更正：扶椅单臂划船，spec 场景含椅
 - `h-supine-twist` 仰卧屈膝扭转：人工更正：HipLab action-kit sided=true，路线剂量『每侧 40 秒』；SmartFit pack 写成 false（需同步）
-- `n-seated-ir-drop` 坐姿后撑单膝内倒：人工更正：HipLab sided=true，『每侧 30 秒』；SmartFit pack 写成 false（需同步）
-- `n-seated-knee-lift` 坐姿抬膝悬停：人工更正：HipLab sided=true，『每侧 3 次 × 停 5 秒』；SmartFit pack 写成 false（需同步）
-- `n-seated-squeeze` 坐姿夹砖（膝内夹）：人工更正：坐姿夹砖，需瑜伽砖（可用厚书/抱枕代替）
-- `n-slider-lateral` 滑垫侧向滑：人工更正：SmartFit pack muscleGroups 为空，按 Pose-Hub 目标高亮补
+- `n-seated-ir-drop` 坐姿后撑单膝内倒：人工更正：HipLab sided=true，『每侧 30 秒』；SmartFit pack 写成 false（需同步）；剂量按 HipLab 动作包裁定：1×每侧8次 → 1×每侧30秒。HipLab 动作包是 hold 每侧30秒（与本目录 fixes 备注『每侧 30 秒』一致）；SmartFit pack 的『8次』与成片（静态保持）不符，按动作包统一（SmartFit pack defaultDose 需同步）。
+- `n-seated-knee-lift` 坐姿抬膝悬停：人工更正：HipLab sided=true，『每侧 3 次 × 停 5 秒』；SmartFit pack 写成 false（需同步）；剂量按 HipLab 动作包裁定：2×每侧30秒 → 1×每侧3次，每次停5秒。HipLab 动作包（rep_hold 每侧3次×每次停5秒）是按成片实测节拍做的可执行剂量，视频本身就是抬-停-放的计次停留；SmartFit pack 的计时剂量是批量默认值，按动作包统一（SmartFit pack defaultDose 需同步）。
+- `n-seated-squeeze` 坐姿夹砖（膝内夹）：人工更正：坐姿夹砖，需瑜伽砖（可用厚书/抱枕代替）；剂量按 HipLab 动作包裁定：2×30秒 → 1×8次。HipLab 动作包（rep_updown 8次）是按成片实测节拍做的可执行剂量，视频本身就是夹-松的计次循环；SmartFit pack 的计时剂量是批量默认值，按动作包统一（SmartFit pack defaultDose 需同步）。
+- `n-slider-lateral` 滑垫侧向滑：人工更正：SmartFit pack muscleGroups 为空，按 Pose-Hub 目标高亮补；cautions 并入 HipLab 动作包标注：大腿内侧（原文 膝、内收肌根）
 - `s-9090` 90/90 坐姿换髋：人工更正：HipLab sided=true，『每侧 35 秒』；SmartFit pack 写成 false（需同步）
-- `s-frog` 青蛙式：人工更正：SmartFit pack muscleGroups 为空，按 Pose-Hub 目标高亮补
+- `s-frog` 青蛙式：人工更正：SmartFit pack muscleGroups 为空，按 Pose-Hub 目标高亮补；cautions 并入 HipLab 动作包标注：大腿内侧（原文 膝、内收肌根）
 - `s-lizard` 蜥蜴式低弓步：人工更正：HipLab 备注需瑜伽砖扶手
 - `s-pigeon` 鸽子式（直立扶砖版）：人工更正：直立扶砖版
 - `scapular-A` 俯卧 Y-T-W 举：处方『2 组 × 每个字母 8 次』，暂记为 2 组 × 8 次（Y/T/W 各 8 次算一组）。
@@ -89,31 +90,31 @@ FlareLab 独有的 49 个动作在 drills.json 里只有文字处方，类型/�
 | id | 中文名 | 用途 | 类型 | 肌群 | 器械 | 体位 | 单侧 | 难度 | 场所 | 默认剂量 | 可调范围 | 注意部位 | 替代 | App | 缺素材 | 审阅 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | h-9090-liftoff | 90/90 后腿主动抬起 | 90/90 坐姿后腿主动抬起，练髋内旋主动控制 | 灵活/活动度 | 臀中肌 · 髋外展、臀大肌 | 瑜伽垫 | 坐姿 | 是 | 3 | 居家 | 2×每侧8 次 休10 | 组1–3 次4–12 | 膝 | h-reverse-clam | hiplab/smartfit |  | 已审 |
-| h-adductor-rock | 四足单腿侧伸后摇 | 拉伸大腿内侧 | 拉伸 | 内收肌群 | 瑜伽垫 | 四足跪撑 | 是 | 1 | 居家 | 1×每侧30 秒 休10 | 组1–2 秒15–60 | 膝 |  | hiplab/smartfit |  |  |
-| h-band-hip-ir | 坐椅弹力带髋内旋 | 练臀部 | 力量 | 臀中肌 · 髋外展、臀大肌 | 弹力带 | 坐姿 | 是 | 1 | 居家、办公室 | 2×每侧12 次 休30 | 组1–3 次6–18 | 膝 |  | hiplab/smartfit |  |  |
+| h-adductor-rock | 四足单腿侧伸后摇 | 拉伸大腿内侧 | 拉伸 | 内收肌群 | 瑜伽垫 | 四足跪撑 | 是 | 1 | 居家 | 1×每侧5 次 休15 | 组1–2 次2–8 | 膝 |  | hiplab/smartfit |  | 已审 |
+| h-band-hip-ir | 坐椅弹力带髋内旋 | 练臀部 | 力量 | 臀中肌 · 髋外展、臀大肌 | 弹力带、椅子/凳子 | 坐姿 | 是 | 1 | 居家、办公室 | 2×每侧12 次 休30 | 组1–3 次6–18 | 膝 |  | hiplab/smartfit |  | 已审 |
 | h-band-leg-out | 仰卧弹力带单腿侧落 | 拉伸大腿内侧和大腿后侧 | 拉伸 | 内收肌群、腘绳肌 | 弹力带 | 仰卧 | 是 | 1 | 居家 | 1×每侧30 秒 休10 | 组1–2 秒15–60 | 大腿内侧 |  | hiplab/smartfit |  |  |
-| h-butterfly-active | 仰卧蝴蝶主动开合 | 活动大腿内侧 | 灵活/活动度 | 内收肌群 | 瑜伽垫 | 仰卧 |  | 1 | 居家 | 1×10 次 休10 | 组1–2 次5–15 |  |  | hiplab/smartfit |  |  |
+| h-butterfly-active | 仰卧蝴蝶主动开合 | 活动大腿内侧 | 灵活/活动度 | 内收肌群 | 瑜伽垫 | 仰卧 |  | 1 | 居家 | 1×10 次 休10 | 组1–2 次5–15 | 大腿内侧 |  | hiplab/smartfit |  | 已审 |
 | h-couch-stretch | 沙发拉伸（后脚搭矮凳） | 后脚搭椅的沙发拉伸，深度拉伸髋前侧与大腿前侧 | 拉伸 | 髋屈肌、股四头肌 | 椅子/凳子 | 跪姿 | 是 | 3 | 居家 | 1×每侧30 秒 休10 | 组1–2 秒15–60 | 膝、腰 | s-kneel-hipflex | hiplab/smartfit |  |  |
 | h-hip-gate | 扶椅站姿开髋门 | 活动髋前侧和臀部外侧 | 灵活/活动度 | 髋屈肌、臀中肌 · 髋外展 | 椅子/凳子 | 站姿 | 是 | 1 | 居家、办公室 | 1×每侧6 次 休10 | 组1–2 次3–9 |  |  | hiplab/smartfit |  |  |
-| h-knee-hug | 仰卧抱膝 | 仰卧抱膝，放松下背和臀部（睡前常用） | 拉伸 | 竖脊肌、臀大肌 | 瑜伽垫 | 仰卧 |  | 1 | 居家 | 1×30 秒 休10 | 组1–2 秒15–60 | 髋 |  | hiplab/smartfit |  |  |
+| h-knee-hug | 仰卧抱膝 | 仰卧抱膝，放松下背和臀部（睡前常用） | 拉伸 | 竖脊肌、臀大肌 | 瑜伽垫 | 仰卧 |  | 1 | 居家 | 1×6 次 休15 | 组1–2 次3–9 | 髋 |  | hiplab/smartfit |  | 已审 |
 | h-quad-cars | 四足髋关节画圈 | 四足髋关节六方向画圈，全面活动髋关节 | 灵活/活动度 | 臀大肌、臀中肌 · 髋外展 | 瑜伽垫 | 四足跪撑 | 是 | 3 | 居家 | 1×每侧5 次 休10 | 组1–2 次2–8 | 腰 | h-hip-gate | hiplab/smartfit |  |  |
 | h-reverse-clam | 侧卧反向蚌式 | 练臀部 | 力量 | 臀中肌 · 髋外展、臀大肌 | 瑜伽垫 | 侧卧/侧撑 | 是 | 1 | 居家 | 2×每侧12 次 休30 | 组1–3 次6–18 | 膝 |  | hiplab/smartfit |  |  |
 | h-squat | 徒手深蹲 | 练大腿前侧和臀部 | 力量 | 股四头肌、臀大肌 | 徒手 | 站姿 |  | 1 | 居家、办公室 | 3×12 次 休30 | 组1–4 次6–18 | 膝 |  | hiplab/smartfit |  |  |
-| h-sumo-pry | 相扑深蹲肘推膝停留 | 拉伸大腿内侧和臀部 | 拉伸 | 内收肌群、臀大肌 | 徒手 | 站姿 |  | 3 | 居家 | 1×30 秒 休10 | 组1–2 秒15–60 | 膝 | h-squat | hiplab/smartfit |  |  |
+| h-sumo-pry | 相扑深蹲肘推膝停留 | 拉伸大腿内侧和臀部 | 拉伸 | 内收肌群、臀大肌 | 徒手 | 站姿 |  | 3 | 居家 | 1×3 次（每次停 10 秒） 休15 | 组1–2 次2–5 | 膝、髋 | h-squat | hiplab/smartfit |  | 已审 |
 | h-supine-twist | 仰卧屈膝扭转 | 拉伸腰两侧和下背 | 拉伸 | 腹斜肌、竖脊肌 | 瑜伽垫 | 仰卧 | 是 | 1 | 居家 | 1×每侧40 秒 休10 | 组1–2 秒20–80 | 腰 |  | hiplab/smartfit |  | 已审 |
-| h-wall-straddle | 靠墙仰卧 V 字分腿 | 靠墙仰卧 V 字分腿，被动拉伸大腿内侧（横叉入门） | 拉伸 | 内收肌群、腘绳肌 | 墙 | 仰卧 |  | 1 | 居家 | 1×45 秒 休10 | 组1–2 秒22–90 |  |  | hiplab/smartfit |  |  |
+| h-wall-straddle | 靠墙仰卧 V 字分腿 | 靠墙仰卧 V 字分腿，被动拉伸大腿内侧（横叉入门） | 拉伸 | 内收肌群、腘绳肌 | 墙 | 仰卧 |  | 1 | 居家 | 1×45 秒 休10 | 组1–2 秒22–90 | 大腿内侧 |  | hiplab/smartfit |  | 已审 |
 | n-chair-wiper | 坐椅雨刷（膝内倒） | 膝内倒，活动臀部 | 灵活/活动度 | 臀中肌 · 髋外展、臀大肌 | 椅子/凳子 | 坐姿 |  | 1 | 居家、办公室 | 1×6 次 休10 | 组1–2 次3–9 | 膝 |  | hiplab/smartfit |  |  |
 | n-half-split | 半跪半劈叉 | 拉伸大腿后侧 | 拉伸 | 腘绳肌 | 瑜伽砖（可用厚书代替） | 跪姿 | 是 | 1 | 居家 | 1×每侧30 秒 休10 | 组1–2 秒15–60 | 膝、腰 | o-seated-ham | hiplab/smartfit |  |  |
 | n-leg-circles | 仰卧直腿画圈 | 活动髋前侧和臀部外侧 | 灵活/活动度 | 髋屈肌、臀中肌 · 髋外展 | 瑜伽垫 | 仰卧 | 是 | 1 | 居家 | 1×每侧6 次 休10 | 组1–2 次3–9 | 腰 |  | hiplab/smartfit |  |  |
-| n-pelvis-circle | 站姿骨盆画圈 | 活动髋前侧和臀部 | 灵活/活动度 | 髋屈肌、臀大肌、臀中肌 · 髋外展 | 徒手 | 站姿 |  | 1 | 居家、办公室 | 1×30 秒 休10 | 组1–2 秒15–60 |  |  | hiplab/smartfit |  |  |
+| n-pelvis-circle | 站姿骨盆画圈 | 活动髋前侧和臀部 | 灵活/活动度 | 髋屈肌、臀大肌、臀中肌 · 髋外展 | 徒手 | 站姿 |  | 1 | 居家、办公室 | 1×4 次 休15 | 组1–2 次2–6 |  |  | hiplab/smartfit |  | 已审 |
 | n-prone-hip-ext | 俯卧屈膝抬腿 | 练臀部 | 力量 | 臀大肌 | 瑜伽垫 | 俯卧/俯撑 | 是 | 1 | 居家 | 2×每侧10 次 休30 | 组1–3 次5–15 | 腰 |  | hiplab/smartfit |  |  |
 | n-prone-ir | 俯卧小腿外摆 | 活动臀部 | 灵活/活动度 | 臀中肌 · 髋外展、臀大肌 | 瑜伽垫 | 俯卧/俯撑 |  | 1 | 居家 | 1×10 次 休10 | 组1–2 次5–15 | 膝 |  | hiplab/smartfit |  |  |
-| n-seated-ir-drop | 坐姿后撑单膝内倒 | 活动臀部 | 灵活/活动度 | 臀大肌、臀中肌 · 髋外展 | 瑜伽垫 | 坐姿 | 是 | 1 | 居家 | 1×每侧8 次 休10 | 组1–2 次4–12 | 膝 |  | hiplab/smartfit |  | 已审 |
-| n-seated-knee-lift | 坐姿抬膝悬停 | 练髋前侧 | 核心 | 髋屈肌 | 椅子/凳子 | 坐姿 | 是 | 1 | 居家、办公室 | 2×每侧30 秒 休30 | 组1–3 秒15–60 |  |  | hiplab/smartfit |  | 已审 |
-| n-seated-squeeze | 坐姿夹砖（膝内夹） | 膝内夹，练大腿内侧 | 力量 | 内收肌群 | 椅子/凳子、瑜伽砖（可用厚书代替） | 坐姿 |  | 1 | 居家、办公室 | 2×30 秒 休30 | 组1–3 秒15–60 |  |  | hiplab/smartfit |  | 已审 |
-| n-slider-lateral | 滑垫侧向滑 | 活动大腿内侧 | 灵活/活动度 | 内收肌群 | 滑垫（可用毛巾代替） | 站姿 | 是 | 3 | 居家 | 2×每侧8 次 休10 | 组1–3 次4–12 | 膝 | h-adductor-rock | hiplab/smartfit |  | 已审 |
-| n-squat-shift | 低位蹲姿左右移重心 | 活动大腿内侧和臀部 | 灵活/活动度 | 内收肌群、臀大肌 | 徒手 | 站姿 |  | 3 | 居家 | 1×30 秒 休10 | 组1–2 秒15–60 | 膝 | h-adductor-rock | hiplab/smartfit |  |  |
-| n-straddle-fold | 坐姿分腿体前屈 | 拉伸大腿内侧和大腿后侧 | 拉伸 | 内收肌群、腘绳肌 | 瑜伽砖（可用厚书代替） | 坐姿 |  | 1 | 居家 | 1×40 秒 休10 | 组1–2 秒20–80 | 腰 |  | hiplab/smartfit |  |  |
+| n-seated-ir-drop | 坐姿后撑单膝内倒 | 活动臀部 | 灵活/活动度 | 臀大肌、臀中肌 · 髋外展 | 瑜伽垫 | 坐姿 | 是 | 1 | 居家 | 1×每侧30 秒 休15 | 组1–2 秒15–60 | 膝 |  | hiplab/smartfit |  | 已审 |
+| n-seated-knee-lift | 坐姿抬膝悬停 | 练髋前侧 | 核心 | 髋屈肌 | 椅子/凳子 | 坐姿 | 是 | 1 | 居家、办公室 | 1×每侧3 次（每次停 5 秒） 休15 | 组1–2 次2–5 |  |  | hiplab/smartfit |  | 已审 |
+| n-seated-squeeze | 坐姿夹砖（膝内夹） | 膝内夹，练大腿内侧 | 力量 | 内收肌群 | 椅子/凳子、瑜伽砖（可用厚书代替） | 坐姿 |  | 1 | 居家、办公室 | 1×8 次 休15 | 组1–2 次4–12 |  |  | hiplab/smartfit |  | 已审 |
+| n-slider-lateral | 滑垫侧向滑 | 活动大腿内侧 | 灵活/活动度 | 内收肌群 | 滑垫（可用毛巾代替） | 站姿 | 是 | 3 | 居家 | 2×每侧8 次 休10 | 组1–3 次4–12 | 膝、大腿内侧 | h-adductor-rock | hiplab/smartfit |  | 已审 |
+| n-squat-shift | 低位蹲姿左右移重心 | 活动大腿内侧和臀部 | 灵活/活动度 | 内收肌群、臀大肌 | 徒手 | 站姿 |  | 3 | 居家 | 1×8 次 休15 | 组1–2 次4–12 | 膝 | h-adductor-rock | hiplab/smartfit |  | 已审 |
+| n-straddle-fold | 坐姿分腿体前屈 | 拉伸大腿内侧和大腿后侧 | 拉伸 | 内收肌群、腘绳肌 | 瑜伽砖（可用厚书代替） | 坐姿 |  | 1 | 居家 | 1×40 秒 休10 | 组1–2 秒20–80 | 腰、大腿内侧 |  | hiplab/smartfit |  | 已审 |
 | n-thomas-test | 仰卧单膝抱胸 | 仰卧单膝抱胸，拉伸对侧髋前侧 | 拉伸 | 髋屈肌 | 瑜伽垫 | 仰卧 | 是 | 1 | 居家 | 1×每侧30 秒 休10 | 组1–2 秒15–60 | 髋 |  | hiplab/smartfit |  |  |
 | n-wide-fold | 站姿宽距体前屈（扶椅） | 扶椅，拉伸大腿内侧和大腿后侧 | 拉伸 | 内收肌群、腘绳肌 | 椅子/凳子 | 站姿 |  | 1 | 居家、办公室 | 1×30 秒 休10 | 组1–2 秒15–60 | 腰 |  | hiplab/smartfit |  |  |
 | n-windshield | 仰卧雨刷式 | 活动臀部 | 灵活/活动度 | 臀大肌、臀中肌 · 髋外展 | 瑜伽垫 | 仰卧 |  | 1 | 居家 | 1×8 次 休10 | 组1–2 次4–12 |  |  | hiplab/smartfit |  |  |
@@ -122,10 +123,10 @@ FlareLab 独有的 49 个动作在 drills.json 里只有文字处方，类型/�
 | o-stand-crossreach | 扶椅站姿交叉侧伸 | 拉伸臀部外侧 | 拉伸 | 臀中肌 · 髋外展 | 椅子/凳子 | 站姿 | 是 | 1 | 居家、办公室 | 1×每侧30 秒 休10 | 组1–2 秒15–60 |  |  | hiplab/smartfit |  |  |
 | o-stand-lunge | 扶椅站姿弓步屈髋拉伸 | 拉伸髋前侧 | 拉伸 | 髋屈肌 | 椅子/凳子 | 站姿 | 是 | 1 | 居家、办公室 | 1×每侧30 秒 休10 | 组1–2 秒15–60 | 腰 |  | hiplab/smartfit |  |  |
 | s-9090 | 90/90 坐姿换髋 | 90/90 坐姿换髋，活动髋内外旋 | 灵活/活动度 | 臀大肌 | 瑜伽垫 | 坐姿 | 是 | 1 | 居家 | 1×每侧40 秒 休10 | 组1–2 秒20–80 | 膝 |  | hiplab/smartfit |  | 已审 |
-| s-butterfly | 蝴蝶式 | 拉伸大腿内侧 | 拉伸 | 内收肌群 | 瑜伽垫 | 坐姿 |  | 1 | 居家 | 1×40 秒 休10 | 组1–2 秒20–80 |  |  | hiplab/smartfit |  |  |
+| s-butterfly | 蝴蝶式 | 拉伸大腿内侧 | 拉伸 | 内收肌群 | 瑜伽垫 | 坐姿 |  | 1 | 居家 | 1×40 秒 休10 | 组1–2 秒20–80 | 大腿内侧 |  | hiplab/smartfit |  | 已审 |
 | s-figure4 | 仰卧 4 字拉伸 | 仰卧 4 字拉伸臀部，膝不受扭力，膝不适时可替代鸽子式 | 拉伸 | 臀大肌 | 瑜伽垫 | 仰卧 | 是 | 1 | 居家 | 1×每侧30 秒 休10 | 组1–2 秒15–60 |  |  | hiplab/smartfit |  |  |
-| s-frog | 青蛙式 | 拉伸大腿内侧 | 拉伸 | 内收肌群 | 瑜伽垫 | 四足跪撑 |  | 3 | 居家 | 1×40 秒 休10 | 组1–2 秒20–80 | 膝 | s-butterfly | hiplab/smartfit |  | 已审 |
-| s-kneel-hipflex | 半跪髋屈肌拉伸 | 拉伸髋前侧 | 拉伸 | 髋屈肌 | 瑜伽垫 | 跪姿 | 是 | 1 | 居家 | 1×每侧30 秒 休10 | 组1–2 秒15–60 | 膝 |  | hiplab/smartfit |  |  |
+| s-frog | 青蛙式 | 拉伸大腿内侧 | 拉伸 | 内收肌群 | 瑜伽垫 | 四足跪撑 |  | 3 | 居家 | 1×40 秒 休10 | 组1–2 秒20–80 | 膝、大腿内侧 | s-butterfly | hiplab/smartfit |  | 已审 |
+| s-kneel-hipflex | 半跪髋屈肌拉伸 | 拉伸髋前侧 | 拉伸 | 髋屈肌 | 瑜伽垫 | 跪姿 | 是 | 1 | 居家 | 1×每侧30 秒 休10 | 组1–2 秒15–60 | 膝、腰 |  | hiplab/smartfit |  | 已审 |
 | s-lizard | 蜥蜴式低弓步 | 拉伸髋前侧 | 拉伸 | 髋屈肌 | 瑜伽垫、瑜伽砖（可用厚书代替） | 跪姿 | 是 | 3 | 居家 | 1×每侧30 秒 休10 | 组1–2 秒15–60 |  | o-stand-lunge | hiplab/smartfit |  | 已审 |
 | s-pigeon | 鸽子式（直立扶砖版） | 直立扶砖版，拉伸臀部 | 拉伸 | 臀大肌 | 瑜伽垫、瑜伽砖（可用厚书代替） | 坐姿 | 是 | 3 | 居家 | 1×每侧30 秒 休10 | 组1–2 秒15–60 | 膝 | s-figure4 | hiplab/smartfit |  | 已审 |
 | s-seated-fold | 坐姿体前屈 | 拉伸大腿后侧 | 拉伸 | 腘绳肌 | 瑜伽垫 | 坐姿 |  | 1 | 居家 | 1×40 秒 休10 | 组1–2 秒20–80 | 腰 |  | hiplab/smartfit |  |  |
