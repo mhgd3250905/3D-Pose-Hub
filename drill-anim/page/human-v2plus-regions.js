@@ -197,7 +197,7 @@ function patch(o, tex) { const mat = o.material, ob = mat.onBeforeCompile;
       .replace('lit=mix(lit,cyl,d*0.94);', 'lit=mix(lit,cyl,d*0.94); if(v2rPaint>0.5) lit*=uV2pRTint; if(v2rAct>0.5){ lit=mix(lit,uV2pRLine,v2rLine*uV2pRLa); if(uV2pRGlow.y>0.0) lit+=uV2pRLine*uV2pRGlow.y*v2rLk*exp(-max(v2rGp-uV2pRLw,0.0)/max(uV2pRGlow.x,0.01)); }')
       // hologram (skin): the canvas alpha is written directly (opaque material = no blending, depth test as usual, so only the front-most
       // surface shows: no transparency sorting); premultiplied colour for the transparent canvas
-      .replace('#include <dithering_fragment>', '#include <dithering_fragment>\n if(uV2pRHolo.x>0.5&&v2rPaint>0.5&&uGlow<0.5){ float sc=0.5+0.5*sin(vRest.y*565.5); float aS=clamp(fwidth(vRest.y*565.5)*0.5,0.0,1.0); sc=mix(sc,0.5,aS);\n   float ha=clamp(uV2pRHolo.y*(1.0-uV2pRHolo.w+uV2pRHolo.w*sc)+uV2pRHolo.z*smoothstep(0.15,0.95,fr)+v2rLine*uV2pRLa+0.6*d,0.0,1.0); gl_FragColor=vec4(gl_FragColor.rgb*ha,ha); }');
+      .replace('#include <dithering_fragment>', '#include <dithering_fragment>\n if(uV2pRHolo.x>0.5&&v2rPaint>0.5&&uGlow<0.5){ float sc=0.5+0.5*sin(vRest.y*251.3); float aS=clamp(fwidth(vRest.y*251.3)*0.5,0.0,1.0); sc=mix(sc,0.5,aS);\n   float ha=clamp(uV2pRHolo.y*(1.0-uV2pRHolo.w+uV2pRHolo.w*sc)+uV2pRHolo.z*smoothstep(0.15,0.95,fr)+v2rLine*uV2pRLa+0.6*d,0.0,1.0); gl_FragColor=vec4(gl_FragColor.rgb*ha,ha); }');
     sh.fragmentShader = FS + fs; };
   const k0 = mat.customProgramCacheKey; mat.customProgramCacheKey = () => k0.call(mat) + '|v2pr'; mat.needsUpdate = true; }
 R.uni = { uV2pRon: { value: 0 }, uV2pRSel: { value: new Array(96).fill(0) }, uV2pRBody: { value: new Array(96).fill(0) }, uV2pRGrey: { value: null }, uV2pRShade: { value: null }, uV2pRLine: { value: null }, uV2pRLw: { value: 1.0 }, uV2pRDbg: { value: 0 },
@@ -237,14 +237,14 @@ const SHOE = /Shoe|Sneaker|Sole/i;
 // rim = fresnel rim colour, tint = lit multiplier, holo = [on, body alpha, rim alpha, scan-line strength], hi = active-muscle highlight
 // (toon uHiC / uHiShade), bg = suggested background (centre / edge sRGB 0-255) for the compositor. 'realistic' = the textured compression look, no outlines.
 const SKINS = V2P.SKINS = {
-  'tech-white': { lines: true, grey: [0.935, 0.945, 0.960], shade: [0.735, 0.765, 0.815], line: [0.0, 0.72, 1.0], lw: 1.1, la: 0.95, glow: [2.6, 0.32], rim: [0.80, 0.93, 1.0], tint: [1, 1, 1], sk: 1,
-    hi: { c: [1.0, 0.42, 0.16], shade: [0.66, 0.30, 0.22] }, bg: { centre: [236, 241, 247], edge: [196, 206, 220] } },
-  'neon-night': { lines: true, grey: [0.150, 0.158, 0.185], shade: [0.070, 0.074, 0.092], line: [0.78, 0.36, 1.0], lw: 1.0, la: 1.0, glow: [3.2, 0.55], rim: [0.10, 0.75, 1.0], tint: [1, 1, 1], sk: 1,
+  'tech-white': { lines: true, grey: [0.935, 0.945, 0.960], shade: [0.690, 0.725, 0.785], line: [0.0, 0.72, 1.0], lw: 1.1, la: 0.95, glow: [2.6, 0.32], rim: [0.80, 0.93, 1.0], tint: [1, 1, 1], sk: 1,
+    hi: { c: [1.0, 0.42, 0.16], shade: [0.66, 0.30, 0.22] }, bg: { centre: [206, 218, 232], edge: [128, 146, 170] } },
+  'neon-night': { lines: true, grey: [0.150, 0.158, 0.185], shade: [0.070, 0.074, 0.092], line: [0.78, 0.36, 1.0], lw: 1.0, la: 1.0, glow: [2.4, 0.34], rim: [0.10, 0.75, 1.0], tint: [1, 1, 1], sk: 1,
     hi: { c: [1.0, 0.26, 0.62], shade: [0.85, 0.20, 0.25] }, bg: { centre: [26, 24, 40], edge: [6, 6, 12] } },
-  'hologram': { lines: true, grey: [0.22, 0.52, 0.95], shade: [0.10, 0.28, 0.62], line: [0.62, 0.96, 1.0], lw: 1.0, la: 1.0, glow: [2.8, 0.45], rim: [0.55, 0.90, 1.0], tint: [1, 1, 1], sk: 1,
-    holo: [1, 0.34, 0.55, 0.35], hi: { c: [1.0, 0.78, 0.28], shade: [0.90, 0.20, 0.20] }, bg: { centre: [12, 26, 44], edge: [2, 6, 14] } },
+  'hologram': { lines: true, grey: [0.22, 0.78, 1.0], shade: [0.08, 0.40, 0.86], line: [0.62, 0.96, 1.0], lw: 1.0, la: 1.0, glow: [2.8, 0.45], rim: [0.75, 1.0, 1.0], tint: [1.15, 1.15, 1.15], sk: 1,
+    holo: [1, 0.55, 0.45, 0.6], hi: { c: [1.0, 0.78, 0.28], shade: [0.90, 0.20, 0.20] }, bg: { centre: [12, 26, 44], edge: [2, 6, 14] } },
   'plaster': { lines: true, grey: [0.905, 0.885, 0.850], shade: [0.700, 0.675, 0.640], line: [0.56, 0.53, 0.50], lw: 0.75, la: 0.55, glow: [0, 0], rim: [0.93, 0.91, 0.87], tint: [1, 1, 1], sk: 1,
-    hi: { c: [0.86, 0.36, 0.26], shade: [0.62, 0.30, 0.22] }, bg: { centre: [214, 208, 198], edge: [150, 144, 136] } },
+    hi: { c: [0.86, 0.36, 0.26], shade: [0.62, 0.30, 0.22] }, bg: { centre: [178, 170, 158], edge: [98, 92, 84] } },
   'realistic': { lines: false, bg: null },
 };
 function applySkin(name) { if (name === 'default') name = null; if (name && !SKINS[name]) throw new Error('v2plus: unknown skin ' + name + ' (' + Object.keys(SKINS).join(', ') + ')');
