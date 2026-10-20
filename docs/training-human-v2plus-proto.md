@@ -236,3 +236,12 @@ python3 tools/human-v2plus/limbs_sheet.py output/human-v2plus-limbs out.jpg h-sq
 /workspace/bin/heavy -- tools/human-v2plus/run.sh tools/human-v2plus/regions.mjs output/rg-limbs --limbs --dump
 python3 tools/human-v2plus/regions/anchors.py output/rg-limbs/dump.json '{"outfit":"compression","sleeve":"short","torso":"base","limbs":"base"}|torso'
 ```
+
+## M7 hands-base (WIP, 2026-10-20) — direction sketch only
+
+Opt-in `hands:'base'` is **not** implemented yet; defaults and all existing options are untouched (no runtime change).
+`tools/human-v2plus/hands-base/` (hands_a.py retarget, sketch.py offline LBS on the v2plus finger rig, README.md with findings).
+Sketch `docs/reviews/human-v2plus-proto/hands-base/sketch.jpg` (v2 vs base, rest + grip-bar; `sketch-narrow-thenar.jpg` = the
+earlier narrow thumb falloff). Fingers: clearly more realistic (knuckles, tendons, palm volume) and the grip curl works. Blocking
+issue: thumb web / thenar folds when the base's adducted thumb is turned onto the v2 thumb. `sleeve:'long'` with `limbs:'base'`
+still throws (not attempted in this time-box).
