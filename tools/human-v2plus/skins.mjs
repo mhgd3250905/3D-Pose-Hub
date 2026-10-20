@@ -25,17 +25,19 @@ await p.evaluate(() => { const v = flareInspector.viewer, T = window.__toonT;
     v.camera.clearViewOffset(); v.camera.aspect = 1; v.camera.updateProjectionMatrix(); const dist = r / Math.sin(v.camera.fov * Math.PI / 360) * k;
     v.camera.position.copy(c).addScaledVector(new T.Vector3(...dir).normalize(), dist); v.controls.target.copy(c); v.camera.lookAt(c); v.camera.updateMatrixWorld(); }; });
 const SK = (ONLY || ['tech-white', 'neon-night', 'hologram', 'plaster', 'realistic']).filter(s => !ONLY || ONLY.includes(s));
-const ROW = { stand: ['h-squat', 0.0, [0.55, 0.08, 1], { groups: [] }], rdl: ['h-db-rdl', 1.2, [-0.75, 0.15, -1], { groups: ['glutes', 'hamstrings'], side: 'both' }] };
+const ROW = { torso: ['h-squat', 0.0, [0.3, 0.06, 1], { groups: ['pectorals'], side: 'both' }, 'upper'], stand: ['h-squat', 0.0, [0.55, 0.08, 1], { groups: [] }], rdl: ['h-db-rdl', 1.2, [-0.75, 0.15, -1], { groups: ['glutes', 'hamstrings'], side: 'both' }] };
 const meta = { skins: {}, rows: ROWS };
-for (const rk of ROWS) { const [id, t, dir, hl] = ROW[rk]; const s0 = (await import(pathToFileURL(path.join(REPO, 'drill-anim/specs', id + '.js')).href)).default;
-  for (const sk of SK) {
+const TORSO_ONLY = opt('--torso-only', null)?.split(',');
+for (const rk of ROWS) { const [id, t, dir, hl, crop] = ROW[rk]; const s0 = (await import(pathToFileURL(path.join(REPO, 'drill-anim/specs', id + '.js')).href)).default;
+  for (const sk of SK) { if (crop && TORSO_ONLY && !TORSO_ONLY.includes(sk)) continue;
     const spec = Object.assign({}, s0, { modelProfile: 'training-human-v2plus', v2plus: { outfit: 'compression', torso: 'base', limbs: 'base', hands: 'base', skin: sk }, highlight: hl });
     await p.evaluate(([spec, th, SZ]) => { (__props.list || []).forEach(o => o.parent?.remove(o)); if (__props.list) __props.list.length = 0;
       __toonUni.uSinkK.value = spec.clothSink ?? 1; for (const pr of spec.props || []) __props.add(th, pr); __drill.setupCamera(spec, SZ); }, [spec, theme, SZ]);
     for (let k = 0; k < 2; k++) await p.evaluate(([s, SZ]) => { __drill.frame(s, 0, -1, null, { size: SZ, full: false }); return 1; }, [spec, SZ]);
-    const img = await p.evaluate(([s, t, dir, hl, SZ]) => { __drill.frame(s, t, -1, null, { size: SZ, full: false }); __setHighlight(hl); __toonUni.uPulse.value = 1;
+    const img = await p.evaluate(([s, t, dir, hl, SZ, crop]) => { __drill.frame(s, t, -1, null, { size: SZ, full: false }); __setHighlight(hl); __toonUni.uPulse.value = 1;
       const v = flareInspector.viewer, T = window.__toonT; const J = v.motion.getMetrics().joints; const box = new T.Box3(); for (const k in J) box.expandByPoint(new T.Vector3(...J[k])); box.expandByScalar(0.1);
-      __aim(box, dir, 0.95); v.renderer.setSize(SZ, SZ, false); v.renderer.render(v.scene, v.camera); return v.renderer.domElement.toDataURL('image/png'); }, [spec, t, dir, hl, SZ]);
+      if (crop) { const y0 = box.min.y, y1 = box.max.y; box.min.y = y0 + (y1 - y0) * 0.52; box.max.y = y1 - (y1 - y0) * 0.12; box.min.x += 0.12; box.max.x -= 0.12; box.min.z += 0.06; box.max.z -= 0.06; } // torso close-up
+      __aim(box, dir, crop ? 0.8 : 0.95); v.renderer.setSize(SZ, SZ, false); v.renderer.render(v.scene, v.camera); return v.renderer.domElement.toDataURL('image/png'); }, [spec, t, dir, hl, SZ, crop]);
     fs.writeFileSync(path.join(OUT, `${rk}-${sk}.png`), Buffer.from(img.split(',')[1], 'base64'));
     const st = await p.evaluate(() => __v2p.skinState()); meta.skins[sk] = st; log(rk, sk, JSON.stringify(st)); } }
 // default (no skin) must leave the shader uniforms as before: compare the regions uniforms + highlight colour after a no-skin frame

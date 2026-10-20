@@ -15,14 +15,15 @@ for rk in ROWS:
     row = []
     for sk in SK:
         f = os.path.join(D, f'{rk}-{sk}.png')
-        if not os.path.exists(f): continue
+        if not os.path.exists(f): row.append((sk, None)); continue
         fg = Image.open(f).convert('RGBA'); sz = fg.size[0]; im = bg(sz, M['skins'][sk]['bg'] or THEME_BG).convert('RGBA'); im.alpha_composite(fg); row.append((sk, im.convert('RGB')))
     tiles.append(row)
-sz = tiles[0][0][1].size[0]; H = 26; W = len(tiles[0]) * sz
+sz = next(im for r in tiles for _, im in r if im is not None).size[0]; H = 26; W = len(tiles[0]) * sz
 sheet = Image.new('RGB', (W, len(tiles) * sz + H), (18, 18, 20)); d = ImageDraw.Draw(sheet)
 try: font = ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf', 16)
 except Exception: font = ImageFont.load_default()
 for j, (sk, _) in enumerate(tiles[0]): d.text((j * sz + 8, 4), M.get('labels', {}).get(sk, sk), fill=(235, 235, 235), font=font)
 for i, row in enumerate(tiles):
-    for j, (sk, im) in enumerate(row): sheet.paste(im, (j * sz, H + i * sz))
+    for j, (sk, im) in enumerate(row):
+        if im is not None: sheet.paste(im, (j * sz, H + i * sz))
 sheet.save(OUT, quality=88); print(OUT, sheet.size)

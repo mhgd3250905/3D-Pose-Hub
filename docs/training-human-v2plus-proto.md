@@ -326,3 +326,10 @@ Feedback: plaster + realistic good; 1–3 right idea but colours ugly and lines 
   - `neon-night` (dark premium) body #50545b / #1d1f23, line icy cyan #a6d6e2 @0.42, amber #d39a5c @0.72, bg #26282d→#08090b. `neon-night-b` warm graphite #4b4a49 / #1c1b1b, champagne line #d8c49e @0.45, copper-amber #c8875a @0.72.
   - `hologram` teal #6aa3b4 / #2a5566, line #dcedf5 @0.55, pale gold #e9d49c @0.58, body alpha 0.42. `hologram-b` blue #7896bd / #2e4468, line #e6efff @0.5, white-cyan #c6eef2 @0.58.
 - Sheet: `docs/reviews/human-v2plus-proto/skins/redo.jpg` (6 cols 1A…3B; standing + RDL glute/ham; bottom strip = torso 1:1 crops of a 720 px render). `skins.mjs --only` now keeps the given order; `skins.json` may carry `labels`.
+
+### M9c skins — user's own palettes (2026-10-20)
+Feedback on M9b: better, still not pretty enough; user gave the colours. Hairline line system unchanged (`lw` 0.5, AA ~1 px). hologram / plaster / realistic / default untouched.
+- `tech-white`: matte white body #eeece8 / shade #b4b0aa, rim #f2f0ec (≈ albedo → no sheen; painted meshes already have fin = 0), dark-gold line #9a7a3a @0.90, no glow; highlight translucent orange #f08a3c, `hi.a` 0.55, `hi.fe` 7 px, shade [0.62, 0.36, 0.06]; bg #f3f2ef→#cfccc6. `tech-white-b` is now an alias of `tech-white`.
+- `neon-night` (A): matte skin-like dark body #3e3a38 / #161414, rim #4a4240 (low, warm), fluorescent blue line #39c6ff @0.95, halo [1.2 px, 0.13]; highlight light blue #9fdcff `hi.a` 0.45, `hi.fe` 7, shade [0.60, 0.38, 0.06]; bg #22252a→#07080a.
+- `neon-night-b` (B): same body, fluorescent green line #4dff9a @0.95, halo [1.2, 0.13]; highlight #b6ffd0 @0.45.
+- Sheet: `docs/reviews/human-v2plus-proto/skins/user-palette.jpg` (3 cols; standing h-squat t=0 + h-db-rdl t=1.2 glute/ham; bottom = torso close-up with pecs highlighted, white-gold + dark-blue, 400 px tiles unscaled). `skins.mjs` gained `--rows torso` (upper-body framing) and `--torso-only <skins>`; `skins_sheet.py` leaves missing tiles blank.

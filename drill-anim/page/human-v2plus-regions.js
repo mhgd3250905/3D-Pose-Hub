@@ -242,14 +242,15 @@ const SHOE = /Shoe|Sneaker|Sole/i;
 const L = h => { const n = parseInt(h.slice(1), 16); return [n >> 16, (n >> 8) & 255, n & 255].map(c => { c /= 255; return c <= 0.04045 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4); }); };
 const B = (c, e) => ({ centre: [c >> 16, (c >> 8) & 255, c & 255], edge: [e >> 16, (e >> 8) & 255, e & 255] });
 const SKINS = V2P.SKINS = {
-  'tech-white': { lines: true, grey: L('#e9ecf0'), shade: L('#a3aebd'), line: L('#7f93a8'), lw: 0.5, la: 0.55, glow: [0, 0], rim: L('#f2f6fb'), tint: [1, 1, 1], sk: 1,
-    hi: { c: L('#e08a72'), shade: [0.74, 0.22, 0.10], a: 0.78, fe: 5 }, bg: B(0xeef1f4, 0xb9c1cb) },
-  'tech-white-b': { lines: true, grey: L('#e6ebf1'), shade: L('#9eabbd'), line: L('#8eaecb'), lw: 0.5, la: 0.65, glow: [1.0, 0.05], rim: L('#eef5fc'), tint: [1, 1, 1], sk: 1,
-    hi: { c: L('#6f96cf'), shade: [0.74, 0.22, 0.10], a: 0.72, fe: 5 }, bg: B(0xe8edf2, 0xa8b2c0) },
-  'neon-night': { lines: true, grey: L('#50545b'), shade: L('#1d1f23'), line: L('#a6d6e2'), lw: 0.5, la: 0.42, glow: [1.4, 0.07], rim: L('#7d8fa0'), tint: [1, 1, 1], sk: 1,
-    hi: { c: L('#d39a5c'), shade: [0.70, 0.22, 0.10], a: 0.72, fe: 5 }, bg: B(0x26282d, 0x08090b) },
-  'neon-night-b': { lines: true, grey: L('#4b4a49'), shade: L('#1c1b1b'), line: L('#d8c49e'), lw: 0.5, la: 0.45, glow: [1.4, 0.06], rim: L('#8d8578'), tint: [1, 1, 1], sk: 1,
-    hi: { c: L('#c8875a'), shade: [0.70, 0.22, 0.10], a: 0.72, fe: 5 }, bg: B(0x29272a, 0x09090a) },
+  // M9c (2026-10-20): the user's own palettes. tech-white = matte white body + dark-gold hairlines + soft translucent orange highlight;
+  // neon-night = matte skin-like dark body + fluorescent blue (A) / green (B) hairlines with a small halo + light translucent highlight.
+  // rim ~ the lit albedo (no sheen); fin is already 0 (matte) on painted meshes. tech-white-b is kept as an alias of tech-white.
+  'tech-white': { lines: true, grey: L('#eeece8'), shade: L('#b4b0aa'), line: L('#9a7a3a'), lw: 0.5, la: 0.9, glow: [0, 0], rim: L('#f2f0ec'), tint: [1, 1, 1], sk: 1,
+    hi: { c: L('#f08a3c'), shade: [0.62, 0.36, 0.06], a: 0.55, fe: 7 }, bg: B(0xf3f2ef, 0xcfccc6) },
+  'neon-night': { lines: true, grey: L('#3e3a38'), shade: L('#161414'), line: L('#39c6ff'), lw: 0.5, la: 0.95, glow: [1.2, 0.13], rim: L('#4a4240'), tint: [1, 1, 1], sk: 1,
+    hi: { c: L('#9fdcff'), shade: [0.60, 0.38, 0.06], a: 0.45, fe: 7 }, bg: B(0x22252a, 0x07080a) },
+  'neon-night-b': { lines: true, grey: L('#3e3a38'), shade: L('#161414'), line: L('#4dff9a'), lw: 0.5, la: 0.95, glow: [1.2, 0.13], rim: L('#4a4240'), tint: [1, 1, 1], sk: 1,
+    hi: { c: L('#b6ffd0'), shade: [0.60, 0.38, 0.06], a: 0.45, fe: 7 }, bg: B(0x22262a, 0x07080a) },
   'hologram': { lines: true, grey: L('#6aa3b4'), shade: L('#2a5566'), line: L('#dcedf5'), lw: 0.5, la: 0.55, glow: [1.4, 0.10], rim: L('#cfe8f0'), tint: [1.05, 1.05, 1.05], sk: 1,
     holo: [1, 0.42, 0.35, 0.16], scan: 520, hi: { c: L('#e9d49c'), shade: [0.74, 0.22, 0.10], a: 0.58, fe: 5 }, bg: B(0x122030, 0x03070c) },
   'hologram-b': { lines: true, grey: L('#7896bd'), shade: L('#2e4468'), line: L('#e6efff'), lw: 0.5, la: 0.5, glow: [1.4, 0.08], rim: L('#d6e2f6'), tint: [1.05, 1.05, 1.05], sk: 1,
@@ -258,6 +259,7 @@ const SKINS = V2P.SKINS = {
     hi: { c: [0.86, 0.36, 0.26], shade: [0.62, 0.30, 0.22] }, bg: { centre: [178, 170, 158], edge: [98, 92, 84] } },
   'realistic': { lines: false, bg: null },
 };
+SKINS['tech-white-b'] = SKINS['tech-white']; // M9c: B dropped, alias of A
 function applySkin(name) { if (name === 'default') name = null; if (name && !SKINS[name]) throw new Error('v2plus: unknown skin ' + name + ' (' + Object.keys(SKINS).join(', ') + ')');
   if (R.skin === name) return; const t = T(), U = R.uni, K = name && SKINS[name].lines ? SKINS[name] : null, TU = window.__toonUni;
   if (!R.skin0) R.skin0 = { grey: U.uV2pRGrey.value.clone(), shade: U.uV2pRShade.value.clone(), line: U.uV2pRLine.value.clone(), lw: U.uV2pRLw.value, hiC: TU.uHiC.value.clone(), hiS: TU.uHiShade.value.slice() };
