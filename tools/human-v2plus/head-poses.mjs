@@ -68,7 +68,7 @@ const JD = {}; const VIEWS = process.env.VIEWS?.split(',');
 for (const [id, t, skin, views] of SETS[SETS[SET] ? SET : 'm10']) { if (ONLY && !ONLY.includes(id)) continue;
   const s0 = (await import(pathToFileURL(path.join(REPO, 'drill-anim/specs', id + '.js')).href)).default;
   for (const vname of (skin ? ['head'] : ['old', 'head'])) {
-    const v2plus = Object.assign({ outfit: 'compression', torso: 'base', limbs: 'base', hands: 'base' }, vname === 'head' ? { head: 'base' } : {}, skin ? { skin } : {});
+    const v2plus = Object.assign({ outfit: 'compression', torso: 'base', limbs: 'base', hands: 'base' }, (vname === 'head' && !process.env.OLDHEAD) ? { head: 'base' } : {}, skin ? { skin } : {});
     const spec = Object.assign({}, s0, { modelProfile: 'training-human-v2plus', v2plus, highlight: { groups: [] } });
     await p.evaluate(([spec, th, SZ]) => { (__props.list || []).forEach(o => o.parent?.remove(o)); if (__props.list) __props.list.length = 0;
       __toonUni.uSinkK.value = spec.clothSink ?? 1; for (const pr of spec.props || []) __props.add(th, pr); __drill.setupCamera(spec, SZ); }, [spec, theme, SZ]);
