@@ -336,3 +336,40 @@ Feedback on M9b: better, still not pretty enough; user gave the colours. Hairlin
 
 ### M9d skins tweak (2026-10-20)
 `tech-white` line one step darker #9a7a3a → #8a6a2e (lw 0.5, @0.90 unchanged); highlights more transparent: `tech-white` `hi.a` 0.55 → 0.45, `neon-night` / `neon-night-b` 0.45 → 0.38. Sheet: `docs/reviews/human-v2plus-proto/skins/user-palette-m9d.jpg` (RDL rear row ×3 + torso close-up tech-white / neon-night).
+
+## M10 head-base (2026-10-20) — opt-in `v2plus.head:'base'`; defaults unchanged
+
+`v2plus: { outfit:'compression', torso:'base', …, head:'base' }` swaps the v2 head (`Toon_Mannequin_Head_v5`) and the v2 neck skin
+(`Mesh001`) for the head + neck of the same Blender Human Base Meshes v1.4.1 realistic male (CC0, `male_l2.npz`). Needs `torso:'base'`
+(throws otherwise; works with or without limbs / hands). Build: `tools/human-v2plus/head-base/build.sh` (numpy / scipy, < 1 min) ->
+`drill-anim/models/training-human-v2plus-head-base.json` (55 124 verts, 110 046 faces, 2.1 MB; loaded only for specs that ask for it).
+
+- **Align / scale**: the M8 sketch transform (skull depth / ear position, base + (0, 0.043, −0.023)): same skull height as the v2 head
+  (1.727 vs 1.729), so camera framing is unchanged.
+- **Neck** (head_a.py): cut on the angle-dependent height of Mesh001's own bottom boundary loop (200 verts; the v2 neck skin's edge,
+  which sits just under the tee collar band all round) + 4 mm. The band under / just above the collar is moved radially onto the v2
+  neck surface (alpha 1 up to 2 cm above the loop, 0 at y 1.478, below the chin), as a bi-Laplacian displacement field, so the base
+  neck's SCM / trapezius / clavicle shape shows above the collar and runs under it where the v2 skin did. Collar clearance
+  (head_b.py): band vertices closer than 2.5 mm to the collar band are pushed under it (654 verts, smoothed).
+- **Weld** (head_b.py): polar-angle snap (monotone) of the cut loop onto the Mesh001 loop (+3 mm), 12-ring bi-Laplacian field, zipper to
+  the exact loop vertices (seam = Mesh001 vids: live position / weights at runtime), 4-ring fairing. Piece closed (one boundary loop
+  = the seam). Seam normals are the piece's own (`ownNormals`; the ring is under the collar band).
+- **Eyes**: the base lids wrap into an empty socket; the inward-facing socket lining is cut (normal z < 0.35 inside the eye box) and
+  each opening capped with 5 concentric rings, faired together with 2 rings of lid margin, then domed 2.5 mm forward (closed lids
+  over an eyeball). Jaw, cheekbones, brow, nose, lips and ears are the base mesh untouched.
+- **Weights**: the training-collar neck rule (the field the live Mesh001 neck gets: torso -> neck with height 1.39–1.48, scapula share
+  by |x|, head above 1.49–1.53) times (1 − head mask) + head mask (smoothstep over y + 0.1 (z − 0.02) from 1.475 to 1.505: face, chin,
+  skull 100 % head), 10 smoothing passes; seams = live Mesh001 weights.
+- **Runtime**: `V2P.loadHead` / `setHead` (section 7 of `page/human-v2plus.js`, `buildPiece` bound to Coach_Body's skeleton, skin
+  paint); hides `Toon_Mannequin_Head_v5` and `Mesh001` by draw range, off = restored. `outfitState.head`; regions bake picks the piece
+  up (bake key carries `head`; 82 ids present); label anchors reuse the head-less state's set (`anchorKey` strips head; no anchor sits
+  on Mesh001 / the v2 head).
+- **Check**: `tools/human-v2plus/run.sh tools/human-v2plus/head-poses.mjs <out>` (8 key-frame close-ups; joint max diff with vs without
+  head 0.0000 mm at h-squat 0 / chest-A 1.15 / scapular-B 1.9). Image: `docs/reviews/human-v2plus-proto/head-base/m10.jpg` (front 3/4,
+  side, neck into collar from behind, neck front, push-up chest-A 1.15, hang scapular-B 1.9, tech-white, neon-night). `verify.mjs`
+  originalSpecHashesPreserved true. Tag `v2plus-head-base`.
+- **Remaining**: build stats report 34 folded edges (dihedral > 120°) — around y 1.61–1.62 (lid margin creases at the eye caps) and a
+  few at the weld; none visible in the key frames. A thin crease line stays along the upper lid. The seam was checked under the
+  default lights only (no extra strong side light) and the push-up frame shows the neck from above (flexion region partly hidden);
+  deep head nods / turns were not rendered separately. The base neck is a little more upright than the base pose (lower band follows
+  the v2 neck, up to ~5 cm radial move under the collar).

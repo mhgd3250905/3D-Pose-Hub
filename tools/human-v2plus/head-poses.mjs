@@ -28,8 +28,8 @@ await p.evaluate(() => { const v = flareInspector.viewer, T = window.__toonT;
     v.camera.position.copy(c).addScaledVector(new T.Vector3(...dir).normalize(), dist); v.controls.target.copy(c); v.camera.lookAt(c); v.camera.updateMatrixWorld(); }; });
 const SETS = { m10: [
   // [spec id, t, skin, views [name, dir, joint, box]]
-  ['h-squat', 0.0, null, [['head-34', [0.75, 0.08, 0.66], 'head', 0.36], ['head-side', [1, 0.02, 0.02], 'head', 0.36], ['seam-side', [0.95, -0.25, -0.25], 'neck', 0.2], ['seam-front', [0.15, 0.1, 1], 'neck', 0.2]]],
-  ['chest-A', 1.15, null, [['neck-flex', [0.9, 0.3, 0.45], 'neck', 0.4]]],
+  ['h-squat', 0.0, null, [['head-34', [0.75, 0.08, 0.66], 'head', 0.36], ['head-side', [1, 0.02, 0.02], 'head', 0.36], ['seam-side', [1, 0.12, -0.35], 'neck', 0.24], ['seam-front', [0.15, 0.1, 1], 'neck', 0.2]]],
+  ['chest-A', 1.15, null, [['neck-flex', [1, 0.12, -0.05], 'neck', 0.5]]],
   ['scapular-B', 1.9, null, [['neck-hang', [0.6, 0.1, 0.8], 'neck', 0.45]]],
   ['h-squat', 0.0, 'tech-white', [['tw-34', [0.75, 0.08, 0.66], 'head', 0.5]]],
   ['h-squat', 0.0, 'neon-night', [['nn-34', [0.75, 0.08, 0.66], 'head', 0.5]]],
