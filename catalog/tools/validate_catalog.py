@@ -39,6 +39,7 @@ PROP_EQUIP = {"chair": "chair", "bench": "chair", "band": "band", "dumbbell": "d
               "kettlebell": "kettlebell"}
 # 道具只是代用品、不算器械的个案（spec 注释为证）
 PROP_EXEMPT = {("rotator-cuff-B", "foamRoller"): "foamRoller 模型代表夹在腋下的卷毛巾"}
+RHYTHM_KINDS = ("rep_updown", "rep_cycle", "rep_alternate", "rep_hold", "rep_breath", "hold", "self_paced")
 HIPLAB_CAUTION_ALIAS = {"内收肌根": "大腿内侧", "髋前侧夹痛": "髋"}  # 与 build_catalog.py 一致
 
 
@@ -105,6 +106,24 @@ def semantic(cat, check_files=False):
                     E(f"doseRange.{k}={r} 非法")
                 elif v is not None and not (r[0] <= v <= r[1]):
                     E(f"defaultDose.{k}={v} 不在 doseRange {r} 内")
+        rh = d.get("rhythm")
+        if rh is not None:
+            k = rh.get("kind")
+            if k not in RHYTHM_KINDS:
+                E(f"rhythm.kind {k} 未知")
+            elif k in ("hold", "self_paced"):
+                if rh.get("phases"):
+                    E(f"rhythm {k} 不应有 phases")
+            else:
+                ph = rh.get("phases") or []
+                if not ph:
+                    E(f"rhythm {k} 缺 phases")
+                if any(not (p.get("seconds") or 0) > 0 for p in ph):
+                    E("rhythm 相位秒数须 > 0")
+                if k == "rep_hold" and not any(p.get("id") == "hold" for p in ph):
+                    E("rhythm rep_hold 缺 hold 相位")
+            if rh.get("holdSeconds") is not None and dose["mode"] == "reps" and dose.get("holdSeconds") not in (None, rh["holdSeconds"]):
+                E(f"rhythm.holdSeconds={rh['holdSeconds']} 与 defaultDose.holdSeconds={dose.get('holdSeconds')} 不一致")
         if not d["apps"]:
             E("apps 为空")
         for a in d["apps"]:
@@ -178,6 +197,12 @@ def external(cat, roots):
             if (dose["mode"], bool(dose.get("holdSeconds"))) != (hm, hold):
                 if not (d["review"]["status"] == "doubt" and "剂量单位与 HipLab" in notes):
                     errs.append(f"{h['id']}: 剂量语义与 HipLab 动作包冲突且未标待审（目录 {dose['mode']}，HipLab {t['kind']}/{t['unit']}）")
+            t_ph = [{k: v for k, v in p.items() if k in ("id", "seconds", "cue", "cueAt")} for p in (t.get("cycle") or {}).get("phases", [])]
+            rh = d.get("rhythm") or {}
+            if rh.get("kind") != t["kind"] or [{k: v for k, v in p.items()} for p in rh.get("phases", [])] != t_ph \
+                    or rh.get("holdSeconds") != t["defaults"].get("holdSeconds") or rh.get("reps") != t["defaults"].get("reps") \
+                    or float(rh.get("leadSeconds", 1)) != float(t.get("leadSeconds", 1)):
+                errs.append(f"{h['id']}: rhythm 与 HipLab 动作包 training 不一致")
             want = {HIPLAB_CAUTION_ALIAS.get(c, c) for c in h["display"].get("cautions", [])}
             lack = sorted(want - set(d["cautions"]))
             if lack and not (d["review"]["status"] == "doubt" and "注意部位" in notes):

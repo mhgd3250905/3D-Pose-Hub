@@ -1,4 +1,4 @@
-# 缺素材清单（catalog v0.2.0）
+# 缺素材清单（catalog v0.3.0）
 
 > 由 `catalog/tools/report.py` 生成。“一个动作”的整套素材 = 定义 + 封面 + 视频 + spec + 语音 + 进入 Pose-Hub 已发布素材版本。`complete` 不要求英文语音。
 
