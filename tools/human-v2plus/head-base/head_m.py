@@ -1,4 +1,4 @@
-# head stage M (M10b): mannequin face — head_fit.npz -> head_fit.npz (in place; skipped with HD_MANNEQUIN=0)
+# head stage M (M10b): mannequin face — head_fit.npz -> head_fit.npz (in place; runs only with HD_FACE=soft; HD_MANNEQUIN=0 = detail)
 #  A shop-mannequin face: skull, jaw, chin, cheekbones, neck and weld unchanged; lips, eyelids / eye shapes, nostrils and ear folds
 #  removed. Detail split: S = screened bi-Laplacian low-pass of the whole piece (no shrink, keeps the large forms: cheek / jaw / brow mass,
 #  shallow eye recess), D = V - S (the fine detail). V' = S + k * D with a smooth per-region detail factor k:
@@ -9,7 +9,8 @@
 import os, numpy as np
 from meshops import *
 def sstep(a,b,x): u=np.clip((x-a)/(b-a),0,1); return u*u*(3-2*u)
-if os.environ.get('HD_MANNEQUIN','1')=='0': print('mannequin face: off'); raise SystemExit
+FACE=os.environ.get('HD_FACE','egg') if os.environ.get('HD_MANNEQUIN','1')!='0' else 'detail'
+if FACE!='soft': print('mannequin face (soft): off, HD_FACE =',FACE); raise SystemExit
 h=dict(np.load('head_fit.npz')); V=h['V'].astype(float); F=h['F']; n=len(V)
 f=lambda k,d: float(os.environ.get(k,d))
 T_LOW=f('HD_M_T','15000'); K_FACE=f('HD_M_KFACE','0.25'); K_EYE=f('HD_M_KEYE','0.0'); K_MOUTH=f('HD_M_KMOUTH','0.06')
