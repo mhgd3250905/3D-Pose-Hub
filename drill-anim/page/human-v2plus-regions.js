@@ -56,13 +56,14 @@ const S = {
   'neck': c => box(c.s, c.y, 0.0, 1.380, 0.075, 1.470, 0.014) + c.gT,
   // torso back (b = 0.408 - s: 0 spine .. lateral)
   // M4: reaches over the top of the shoulder girdle to the clavicle (the torso chart's s is wide there), so the front deltoid stays on the cap
-  'trap-upper': c => poly(c.b, c.y, [[0.0, 1.420], [0.100, 1.388], [0.170, 1.375], [0.215, 1.393], [0.256, 1.404], [0.252, 1.446], [0.172, 1.452], [0.050, 1.470], [0.0, 1.472]], 0.008) + c.gT,
-  // M4: trapezius diamond narrowed to the medial scapular border + the scapular spine, so the shoulder-blade blocks below the spine
-  // (infraspinatus / teres minor, teres major) sit on the visible back of the scapula like the reference
-  'trap-mid': c => poly(c.b, c.y, [[0.0, 1.075], [0.035, 1.150], [0.060, 1.245], [0.072, 1.300], [0.118, 1.334], [0.150, 1.352], [0.100, 1.384], [0.0, 1.414]], 0.010) + c.gT,
+  'trap-upper': c => poly(c.b, c.y, [[0.0, 1.402], [0.062, 1.382], [0.098, 1.364], [0.150, 1.362], [0.200, 1.375], [0.256, 1.404], [0.252, 1.446], [0.172, 1.452], [0.050, 1.470], [0.0, 1.472]], 0.008) + c.gT,
+  // M5: middle / lower trapezius = the lower half of the classic kite: from under the upper fibres (C7..T3) its lateral edge runs
+  // down-and-in from the medial end of the scapular spine (b ~0.10) and converges to ~T12 on the spine; it no longer reaches out
+  // along the scapular spine toward the shoulder tip (the M4 'T' arms). The upper fibres (trap-upper) carry neck -> acromion.
+  'trap-mid': c => poly(c.b, c.y, [[0.0, 1.075], [0.026, 1.140], [0.046, 1.205], [0.062, 1.265], [0.078, 1.318], [0.088, 1.352], [0.060, 1.378], [0.0, 1.400]], 0.010) + c.gT,
   'rhomboid': c => 1.0, // retired in M4 (folded into trap-mid; the scapular group maps to trap-mid + infraspinatus + teres major); id kept so ids stay stable
-  'infraspinatus': c => poly(c.b, c.y, [[0.080, 1.302], [0.120, 1.328], [0.168, 1.346], [0.186, 1.305], [0.176, 1.270], [0.132, 1.242], [0.096, 1.222], [0.074, 1.262]], 0.012) + c.gT,
-  'teres-major': c => poly(c.b, c.y, [[0.094, 1.214], [0.130, 1.236], [0.178, 1.262], [0.208, 1.276], [0.214, 1.240], [0.170, 1.214], [0.116, 1.194], [0.096, 1.199]], 0.008) + c.gT,
+  'infraspinatus': c => poly(c.b, c.y, [[0.086, 1.290], [0.098, 1.340], [0.150, 1.352], [0.188, 1.345], [0.188, 1.305], [0.176, 1.272], [0.132, 1.246], [0.098, 1.228], [0.080, 1.262]], 0.012) + c.gT,
+  'teres-major': c => poly(c.b, c.y, [[0.092, 1.218], [0.130, 1.240], [0.178, 1.264], [0.212, 1.280], [0.220, 1.232], [0.172, 1.200], [0.118, 1.180], [0.094, 1.188]], 0.008) + c.gT,
   'lat': c => poly(c.b, c.y, [[0.050, 1.105], [0.068, 1.010], [0.130, 0.970], [0.198, 1.020], [0.214, 1.140], [0.212, 1.205], [0.168, 1.186], [0.110, 1.180]], 0.014) + c.gT,
   'erector': c => poly(c.b, c.y, [[0.0, 0.875], [0.060, 0.895], [0.092, 0.965], [0.045, 1.060], [0.0, 1.075]], 0.010) + c.gT,
   'glute-max': c => box(c.b, c.y, 0.0, 0.705, 0.128, 0.895, 0.045) + c.gT,
@@ -74,33 +75,37 @@ const S = {
   'delt-side': c => Math.max(c.delt, -c.dF, -c.dR),
   'delt-rear': c => Math.max(c.delt, c.dR),
   // upper arm (a: 0 lateral, + front, - back, medial seam)
-  'biceps': c => wrap(UA, c.ua[1], a => box(a, c.ua[0], 0.032, 0.105, 0.125, 0.240, 0.016)) + c.gA + c.gU,
-  'triceps': c => wrap(UA, c.ua[1], a => box(a, c.ua[0], -0.125, 0.095, -0.030, 0.240, 0.016)) + c.gA + c.gU,
-  'brachialis': c => wrap(UA, c.ua[1], a => box(a, c.ua[0], -0.022, 0.160, 0.026, 0.240, 0.010)) + c.gA + c.gU,
+  'biceps': c => wrap(UA, c.ua[1], a => box(a, c.ua[0], 0.040, 0.105, 0.125, 0.240, 0.016)) + c.gA + c.gU,
+  'triceps': c => wrap(UA, c.ua[1], a => box(a, c.ua[0], -0.125, 0.095, -0.036, 0.240, 0.016)) + c.gA + c.gU,
+  'brachialis': c => wrap(UA, c.ua[1], a => box(a, c.ua[0], -0.028, 0.135, 0.032, 0.246, 0.010)) + c.gA + c.gU,
   // forearm (a: 0 lateral, + front, - back)
   'forearm-flexor': c => wrap(FA, c.fa[1], a => box(a, c.fa[0], 0.040, 0.010, 0.104, 0.215, 0.012)) + c.gA + c.gF,
   'forearm-extensor': c => wrap(FA, c.fa[1], a => box(a, c.fa[0], -0.104, 0.010, -0.014, 0.215, 0.012)) + c.gA + c.gF,
   'hand': c => Math.max(0.226 - c.fa[0], c.fa[0] - 0.46) + 4 * c.gA,
   // thigh (a: 0 medial, + front, - back, lateral seam)
-  'rectus-femoris': c => wrap(TH, c.th[1], a => poly(a, c.th[0], [[0.088, 0.075], [0.138, 0.075], [0.142, 0.200], [0.124, 0.300], [0.094, 0.300], [0.082, 0.200]], 0.012)) + c.gL,
-  'vastus-lat': c => wrap(TH, c.th[1], a => poly(a, c.th[0], [[0.150, 0.110], [0.236, 0.100], [0.250, 0.290], [0.160, 0.330], [0.145, 0.220]], 0.012)) + c.gL,
+  'rectus-femoris': c => wrap(TH, c.th[1], a => poly(a, c.th[0], [[0.128, 0.110], [0.156, 0.082], [0.152, 0.200], [0.126, 0.300], [0.096, 0.300], [0.090, 0.210], [0.102, 0.160]], 0.012)) + c.gL,
+  'vastus-lat': c => wrap(TH, c.th[1], a => poly(a, c.th[0], [[0.166, 0.082], [0.236, 0.080], [0.250, 0.290], [0.160, 0.330], [0.145, 0.220]], 0.012)) + c.gL,
   'vastus-med': c => wrap(TH, c.th[1], a => poly(a, c.th[0], [[0.034, 0.205], [0.076, 0.195], [0.086, 0.300], [0.060, 0.338], [0.032, 0.305]], 0.012)) + c.gL,
-  'sartorius': c => wrap(TH, c.th[1], a => seg(a, c.th[0], 0.150, 0.040, 0.030, 0.290, 0.006)) + c.gL,
-  'adductor': c => wrap(TH, c.th[1], a => poly(a, c.th[0], [[-0.040, 0.075], [0.050, 0.075], [0.030, 0.190], [-0.010, 0.245]], 0.012)) + c.gL,
+    // M5: sartorius = a visible diagonal strip ASIS (top, lateral-front) -> medial knee. A thin band loses the argmin to the big quad
+  // interiors it crosses, so its distance is steepened (x SART_K): ~1.4 cm wide where it meets them, continuous (no jump in the bake)
+  'sartorius': c => SART_K * (wrap(TH, c.th[1], a => sart(a, c.th[0])) - 0.013) + c.gL,
+  'adductor': c => wrap(TH, c.th[1], a => poly(a, c.th[0], [[-0.040, 0.075], [0.100, 0.075], [0.060, 0.150], [0.030, 0.200], [-0.010, 0.245]], 0.012)) + c.gL,
   'hamstring-med': c => wrap(TH, c.th[1], a => box(a, c.th[0], -0.122, 0.125, -0.050, 0.315, 0.014)) + c.gL,
   'hamstring-lat': c => wrap(TH, c.th[1], a => box(a, c.th[0], -0.205, 0.115, -0.130, 0.315, 0.014)) + c.gL,
   // shin (a: 0 lateral, + front, - back, medial seam)
-  'tibialis': c => wrap(SH, c.sh[1], a => box(a, c.sh[0], 0.012, 0.050, 0.060, 0.300, 0.012)) + c.gS,
-  'peroneal': c => wrap(SH, c.sh[1], a => box(a, c.sh[0], -0.026, 0.070, 0.002, 0.280, 0.010)) + c.gS,
+  'tibialis': c => wrap(SH, c.sh[1], a => box(a, c.sh[0], 0.016, 0.050, 0.060, 0.300, 0.012)) + c.gS,
+  'peroneal': c => wrap(SH, c.sh[1], a => box(a, c.sh[0], -0.034, 0.060, 0.008, 0.292, 0.010)) + c.gS,
   'gastro-lat': c => wrap(SH, c.sh[1], a => poly(a, c.sh[0], [[-0.020, 0.030], [-0.072, 0.030], [-0.075, 0.120], [-0.068, 0.200], [-0.042, 0.172], [-0.020, 0.105]], 0.010)) + c.gS,
   'gastro-med': c => wrap(SH, c.sh[1], a => poly(a, c.sh[0], [[-0.076, 0.030], [-0.135, 0.030], [-0.142, 0.125], [-0.112, 0.238], [-0.082, 0.218], [-0.077, 0.120]], 0.010)) + c.gS,
-  'soleus': c => wrap(SH, c.sh[1], a => poly(a, c.sh[0], [[-0.152, 0.170], [-0.112, 0.262], [-0.075, 0.240], [-0.040, 0.192], [-0.014, 0.130], [-0.014, 0.300], [-0.070, 0.345], [-0.150, 0.305]], 0.010)) + c.gS,
+  'soleus': c => wrap(SH, c.sh[1], a => poly(a, c.sh[0], [[-0.152, 0.170], [-0.112, 0.262], [-0.075, 0.240], [-0.040, 0.192], [-0.040, 0.150], [-0.040, 0.300], [-0.070, 0.345], [-0.150, 0.305]], 0.010)) + c.gS,
   'foot': c => 0.398 - c.sh[0] + c.gB,
   'head': c => 1.488 - c.y + c.gB,
   // appended in M3 (ids 80+): 4th rectus row (8-pack look), brachioradialis strip on the forearm
   'rectus-pubic': c => poly(c.s, c.y, [[0.0, 0.875], [0.040, 0.880], [0.074, 0.925], [0.080, 0.992], [0.0, 0.992]], 0.010) + c.gT,
   'brachioradialis': c => wrap(FA, c.fa[1], a => poly(a, c.fa[0], [[-0.010, 0.000], [0.032, 0.000], [0.026, 0.120], [0.004, 0.170], [-0.010, 0.120]], 0.008)) + c.gA + c.gF,
 };
+const SART_K = 4.0, SART = [[0.150, 0.070], [0.112, 0.130], [0.076, 0.186], [0.040, 0.236], [0.010, 0.296], [-0.012, 0.352]];
+function sart(a, t) { let d = 1e9; for (let i = 1; i < SART.length; i++) d = Math.min(d, seg(a, t, SART[i - 1][0], SART[i - 1][1], SART[i][0], SART[i][1], 0)); return d; }
 // deltoid outline (a, t) in the upper-arm chart: front edge reaches toward the clavicle / pec, rear edge toward the scapular spine
 const DELT = [[0.0, -0.066], [0.108, -0.040], [0.112, 0.018], [0.090, 0.074], [0.046, 0.124], [0.0, 0.152], [-0.042, 0.128], [-0.086, 0.080], [-0.112, 0.024], [-0.120, -0.032]];
 // per-vertex charts + part gates (x mirrored to |x|; arm = skin weight on arm/hand bones)
