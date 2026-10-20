@@ -424,3 +424,23 @@ Image: `docs/reviews/human-v2plus-proto/head-base/m10d.jpg` (target three-view o
 neon-night; `head-poses.mjs --set m10d`). Tag `v2plus-head-wrap`.
 Remaining: the toon ramp quantises the face into hard bands (brow shadow, nose-underside band, a diagonal light band across the skull) —
 the head shares the global toon material, so softening it is not an isolated change; the geometry itself is smooth (max 21°).
+
+### M10e display-mannequin head (2026-10-20) — `head:'base'` head is now an analytic faceless mannequin head (default)
+User found M10d too detailed / rough (M10c egg too plain) and asked to re-create by hand ("临摹", no download) a clothing-store faceless
+mannequin head; primary reference the user's "MANNEQUIN HEAD three view modeling sheet" (`pose-hub-ref/demo_s.jpg`, its neck peg ignored),
+Kielwo "Base Mesh Faceless Male" secondary. `build.sh` switch `HD_FACE=mannequin` (default) | `wrap` | `egg` | `soft` | `detail`; built in
+`head_e.py` (same meridian grid / plane-cut seam / zipper as the egg, NA 256 × NR 160). Implicit = smooth union of: super-ellipsoid cranium
+(exp 2.25, semi-axes 80 / 97.5 / 101 mm, full back of skull), a face mass (super-ellipsoid exp 2.4, rotated 10° chin-forward, x semi-axis
+tapered toward the chin → cheek planes, round U jaw, chin that tucks back into the neck), minus an additive soft nose ridge (4.5 mm high,
+Gaussian σ 11 mm across, y 1.552–1.642: brow → mid-face, no tip / nostrils), then the base-neck profile as before. No eye sockets, mouth
+or ears (no primitive carries them). Exact symmetry: grid mirrored; the seam fade's asymmetric part is confined to the last 5 rows.
+All `HD_K_*` env knobs. Neck below 1.46 / weld / weights / collar rule unchanged; joints 0.0000 mm.
+Stats: 44 652 verts / 89 102 faces (1.73 MB); generated head mirror error above y 1.475 = 0.0 mm (max 1.77 mm only in the seam band
+y 1.46–1.475, following the asymmetric base neck); head part max dihedral 16.8°, 0 edges > 30°, 0 folded; whole piece folded 8 (weld
+under the collar, as before), zipper flips 11.
+Toon: the face is now one convex smooth surface, so the default skin shows only the two broad ramp bands (no blotches / brow / nose
+bands) — head-only change, global toon material untouched.
+Image: `docs/reviews/human-v2plus-proto/head-base/m10e.jpg` (reference on top; front / side / 3/4, tech-white, neon-night;
+`head-poses.mjs --set m10e`). Tag `v2plus-head-mannequin2`.
+Remaining: the nose ridge is too faint to read under the toon ramp (visible only as shading in smooth light); the profile chin tuck and
+forward face plane are milder than the reference; cranium is a bit narrower / less bulbous at the back than the sheet.
