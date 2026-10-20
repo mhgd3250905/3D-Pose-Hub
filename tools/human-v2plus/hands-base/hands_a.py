@@ -83,7 +83,7 @@ if __name__=='__main__':
     for fi,f in enumerate(FN):
         m=fstar==fi; J=JB[f]
         if f=='thumb': w1=sstep(-0.030,0.020,TT[m,fi])*(1-sstep(0.020,0.050,D[m,fi]))   # wide thenar falloff (the thumb turns ~60 deg)
-        else: w1=sstep(-0.010,0.008,TT[m,fi])*(1-sstep(0.016,0.024,D[m,fi]))
+        else: w1=sstep(-float(os.environ.get('H_FB0','0.010')),0.008,TT[m,fi])*(1-sstep(0.016,0.024,D[m,fi]))
         # split along the chain at j1, j2 (+-5 mm)
         u1=(J[1]-J[0])/np.linalg.norm(J[1]-J[0]); u2=(J[2]-J[1])/np.linalg.norm(J[2]-J[1]); u3=(J[3]-J[2])/np.linalg.norm(J[3]-J[2])
         a1=sstep(-0.005,0.005,(X[m]-J[1])@(u1+u2)/np.linalg.norm(u1+u2)); a2=sstep(-0.005,0.005,(X[m]-J[2])@(u2+u3)/np.linalg.norm(u2+u3))
@@ -150,6 +150,21 @@ if __name__=='__main__':
     # smooth the thumb chain split across the band / thumb border (else thumb-2 starts with a step at the band edge in grips)
     sm=om|Tset
     for it in range(int(os.environ.get('H_TSMOOTH','10'))): Wn=(A@Wf)/deg[:,None]; Wf[sm]=0.5*Wf[sm]+0.5*Wn[sm]
+    # --- finger roots: the base MCPs sit up to ~3 cm from the v2 ones and the finger / palm blend band is ~2 cm, so linear blending
+    # creases the palmar knuckle skin.  Same Poisson trick: band = vertices with a partial finger share; target edges = base edges
+    # through the weight-blended finger-1 rotation; fixed = everything else at its LBS position.
+    wfg=Wf[:,4:].sum(1); bandF=(wfg>0.01)&(wfg<0.99)&~om&~Tset
+    if bandF.any():
+        rvs=np.zeros((n,3))
+        for fi,f in enumerate(FN[1:]):
+            Jx=JBs[f]; Jt=Jv[f]; rv=Rr.from_matrix(rot_to(Jx[1]-Jx[0],Jt[1]-Jt[0])).as_rotvec(); rvs+=Wf[:,4+fi*3:7+fi*3].sum(1,keepdims=True)*rv
+        Mf=Rr.from_rotvec(rvs).as_matrix(); fi2=np.where(bandF)[0]; fx2=np.where(~bandF)[0]
+        e2=Xs[E1[:,1]]-Xs[E1[:,0]]; e2=0.5*(np.einsum('eab,eb->ea',Mf[E1[:,0]],e2)+np.einsum('eab,eb->ea',Mf[E1[:,1]],e2))
+        use=bandF[E1[:,0]]|bandF[E1[:,1]]; Ee=E1[use]; ee=e2[use]; m_=len(Ee)
+        G2=sp.coo_matrix((np.r_[-np.ones(m_),np.ones(m_)],(np.r_[np.arange(m_),np.arange(m_)],np.r_[Ee[:,0],Ee[:,1]])),shape=(m_,n)).tocsr()
+        Gf=G2[:,fi2]; Gx=G2[:,fx2]; Q2=(Gf.T@Gf).tocsc(); new2=out.copy()
+        for c in range(3): new2[fi2,c]=spsolve(Q2,Gf.T@(ee[:,c]-Gx@out[fx2,c]))
+        print('finger-root band verts',len(fi2),'max change mm',(np.linalg.norm(new2-out,axis=1).max()*1000).round(1)); out=new2
     print('max move mm',(np.linalg.norm(out-X,axis=1).max()*1000).round(1))
     for f in FN: print(f,'base joints',JBs[f].round(3).tolist(),'v2',Jv[f].round(3).tolist())
     np.savez('hands_fit.npz',X=out,Xb=X,F=F1,Wf=Wf,idx=idx,**{'J_'+f:JBs[f] for f in FN})
