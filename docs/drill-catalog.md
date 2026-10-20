@@ -6,20 +6,20 @@
 
 | 项 | 数 |
 |---|---:|
-| spec 文件（specs/*.js，不含 _*.mjs 共用模块） | 228 |
+| spec 文件（specs/*.js，不含 _*.mjs 共用模块） | 229 |
 | 其中修订版（-r2/-r3） | 10 |
 | FlareLab App 51（data/drills.json） | 51 |
 | HipLab 已发布素材绑定的 spec 文件（v0.1.0（published）46 个动作 id、v0.2.0（published）46 个动作 id） | 47 |
 | HipLab 自测静图在用 spec | 6 |
 | 原版已被在用的修订版取代（保留不删） | 9 |
-| 有 spec 但没有被任何 App/发布版本使用 | 117 |
+| 有 spec 但没有被任何 App/发布版本使用 | 118 |
 | SHA 未登记 / 哈希不符 | 0 |
 
 - g-* 健身房补充（cable-hip-12；非普通办公）：2
 - FlareLab 肌群动作（17 肌群 × A 徒手 / B 家用 / C 健身房）：51
 - s-* 拉伸（原 8 项 + 修订）：11
 - t-* 托马斯专项（Flare，PR #106）：12
-- o-* 办公室（PR #97–104 + office-hip-leg-02 + office-adductor-back-03 + office-knee-march-04 + office-calf-squat-05 + office-support-06）：24
+- o-* 办公室（PR #97–104 + office-hip-leg-02 + office-adductor-back-03 + office-knee-march-04 + office-calf-squat-05 + office-support-06）：25
 - w-* 久坐强化（PR #105）：8
 - h-* 居家/肌群补充/开胯/开肩/小器械力量/徒手后链/办公下肢候选（PR #111–115 + r2 + Pose-Hub PR #5、#6 + office-lower-body-01）：96
 - n-* HipLab 开胯 MVP 新增（PR #119）：15
@@ -150,6 +150,7 @@
 | `o-supported-march` | 扶椅站姿交替抬膝 | 髋屈肌 | 椅 | 8s/120f@15 | v2 |  | — | 已登记（home-pr-candidates） |  |
 | `o-supported-mini-squat` | 扶椅浅蹲 | 股四头肌+臀大肌 | 椅 | 8s/120f@15 | v2 |  | — | 已登记（home-pr-candidates） | office-calf-squat-05：双掌扶60cm宽稳椅高背、浅幅动态蹲；双掌网格与背板间隙1.62mm，待GPU全片（docs/office-calf-squat-05-2026-10-18.md） |
 | `o-supported-single-leg-rdl` | 扶椅单腿髋铰链 | 腘绳肌+臀大肌（left） | 椅 | 8s/120f@15 | v2 |  | — | 已登记（home-pr-candidates） | office-support-06：右掌扶稳椅背、左腿支撑髋铰链；近接触1.57mm，待GPU全片（docs/office-support-06-2026-10-18.md） |
+| `o-supported-star-reach` | 扶椅单腿三向点地 | 臀大肌+臀中肌 · 髋外展+股四头肌（left） | 椅 | 8s/120f@15 | v2 |  | — | 已登记（home-pr-candidates） | supported-star-reach-53：固定单脚下浅屈膝，另一脚前/侧/后轻点地；120时点真实接触与13帧稀疏QA；待GPU（docs/supported-star-reach-53-2026-10-20.md） |
 | `o-wall-hip-hinge-stretch` | 扶墙髋后移躯干延展 | 背阔肌 | 墙 | 8s/120f@15 | v2 |  | — | 已登记（home-pr-candidates） |  |
 
 ## w-* 久坐强化（PR #105）
@@ -306,7 +307,7 @@
 
 - **g**（2）：`g-cable-hip-abduction` `g-cable-hip-extension`
 - **t**（11）：`t-flare-side-hold` `t-half-straddle` `t-lsit-open-close` `t-lsit-tuck` `t-lsit-vsit-circles` `t-lsit-wide` `t-seated-straddle-ext` `t-seated-straddle-lifts` `t-straddle-hold` `t-tuck-planche` `t-vsit`
-- **o**（20）：`o-chair-knee-extension` `o-seated-calf-raise` `o-seated-catcow` `o-seated-hip-er` `o-seated-sidebend` `o-seated-twist` `o-stand-ham` `o-stand-quad` `o-stand-sidebend` `o-supported-ankle-eversion` `o-supported-ankle-inversion` `o-supported-ankle-pump` `o-supported-hip-airplane` `o-supported-hip-hitch` `o-supported-hip-ir` `o-supported-knee-curl` `o-supported-march` `o-supported-mini-squat` `o-supported-single-leg-rdl` `o-wall-hip-hinge-stretch`
+- **o**（21）：`o-chair-knee-extension` `o-seated-calf-raise` `o-seated-catcow` `o-seated-hip-er` `o-seated-sidebend` `o-seated-twist` `o-stand-ham` `o-stand-quad` `o-stand-sidebend` `o-supported-ankle-eversion` `o-supported-ankle-inversion` `o-supported-ankle-pump` `o-supported-hip-airplane` `o-supported-hip-hitch` `o-supported-hip-ir` `o-supported-knee-curl` `o-supported-march` `o-supported-mini-squat` `o-supported-single-leg-rdl` `o-supported-star-reach` `o-wall-hip-hinge-stretch`
 - **w**（6）：`w-bird-dog` `w-chair-hip-thrust` `w-dead-bug` `w-fire-hydrant` `w-prone-swimmer` `w-wall-sit`
 - **h**（78）：`h-banana` `h-band-chest-fly` `h-band-hip-extension` `h-band-pallof` `h-band-pull-apart` `h-band-row` `h-band-shoulder-ir` `h-band-standing-abduction` `h-band-standing-adduction` `h-band-stepout` `h-band-straight-leg-raise` `h-band-triceps-pressdown` `h-bear-plank` `h-biceps-self` `h-bridge-march` `h-bridge-overhead` `h-bulgarian` `h-calf-raise` `h-catcow-quad` `h-chair-dip` `h-chair-kickback` `h-chair-lat` `h-chair-sit-to-stand` `h-chair-step-up` `h-chair-tspine` `h-cobra` `h-crossbody` `h-crunch` `h-db-calf-raise` `h-db-curl` `h-db-floor-press` `h-db-front-raise` `h-db-hammer-curl` `h-db-kickback` `h-db-lateral` `h-db-press` `h-db-rdl` `h-db-reverse-fly` `h-db-row` `h-db-shrug` `h-db-split-squat` `h-db-supported-calf-raise` `h-dd-shoulder` `h-donkey-kick` `h-forearm-plank` `h-good-morning` `h-incline-pushup` `h-inner-thigh` `h-kb-swing` `h-mountain-climber` `h-open-book` `h-pike-pushup` `h-pike-scapular-elevation` `h-reverse-crunch` `h-reverse-lunge` `h-russian-twist` `h-seated-reachback` `h-side-er` `h-side-leg-raise` `h-slider-body-saw` `h-standing-forearm-rotation` `h-standing-wrist-deviation` `h-standing-wrist-extensor-stretch` `h-step-jack` `h-suitcase-hold` `h-suitcase-march` `h-superman` `h-supported-single-leg-calf` `h-tabletop` `h-tib-raise` `h-towel-behind` `h-towel-pass` `h-towel-pulldown` `h-wall-angel` `h-wall-calf-bent-knee` `h-wall-calf` `h-wall-pec` `h-wall-wrist-flexor-stretch`
 
