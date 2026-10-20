@@ -108,7 +108,7 @@ out={'version':1,'n':int(nV),'bones':BONES,
  'joints':{'u8':b64(order.astype(np.uint8))},'weights':{'u8':b64(q.astype(np.uint8))},
  'seam':{'first':int(n),'mesh':['Mesh001']*len(ring),'vid':[int(v) for v in ring],'ring':['neck']*len(ring),'ownNormals':True},
  'keepFaces':{},'hideFaces':{},'hideMeshes':['Toon_Mannequin_Head_v5','Mesh001'],'requires':'torso','skin':'Coach_Body',
- 'source':'Blender Human Base Meshes v1.4.1 (realistic male body, CC0, blender.org): head + neck, eye openings closed',
+ 'source':'Blender Human Base Meshes v1.4.1 (realistic male body, CC0, blender.org): head + neck, mannequin face (M10b: mouth / nostrils closed, eyes re-capped, face low-passed)',
  'paint':{'waistY':-1.0,'skin':True},'report':report}
 _json.dump(out,open(sys.argv[1],'w'),separators=(',',':'))
 np.savez('head_final.npz',V=V2,F=F2,N=N,W=Wd,nMC=n)

@@ -373,3 +373,17 @@ Feedback on M9b: better, still not pretty enough; user gave the colours. Hairlin
   default lights only (no extra strong side light) and the push-up frame shows the neck from above (flexion region partly hidden);
   deep head nods / turns were not rendered separately. The base neck is a little more upright than the base pose (lower band follows
   the v2 neck, up to ~5 cm radial move under the collar).
+
+### M10b mannequin face (2026-10-20) — `head:'base'` face is now a shop-mannequin face
+User feedback: no rich facial detail, just a clothing-store mannequin face. New stage `head_m.py` (between head_a and head_b in
+`build.sh`; `HD_MANNEQUIN=0` gives the M10 face back): (1) the mouth slit and nostril cavities (box vertices hidden from the front by a
++z ray) and the whole M10 lid + eye-cap patch are cut and re-capped (rings + bi-Laplacian fairing); (2) the piece is split into a
+screened bi-Laplacian low-pass S ((I + T LᵀL) S = V, T 15000) and detail D, V' = S + k·D with smooth region factors (face 0.25, nose 0.25,
+eyes 0, mouth 0.06, ears 0.15, y < 1.505 = neck / weld exactly 1); (3) mouth + eye cores bi-Laplacian faired (one gently convex mouth
+plane, shallow smooth eye recess). Skull, jaw, chin, cheekbone mass, neck, weld and weights unchanged (y < 1.505 max move 0.000 mm;
+joint max diff with vs without head 0.0000 mm). Folded edges (dihedral > 120°) 34 → 7 (all 7 at the weld, y ≈ 1.445, pre-existing;
+0 in the face); zipper flips 11 as before. 46 919 verts / 93 636 faces (cavity linings removed), 1.8 MB.
+Image: `docs/reviews/human-v2plus-proto/head-base/m10b.jpg` (M10 vs M10b front, 3/4, side, tech-white, neon-night;
+`head-poses.mjs --set m10b`). Tag `v2plus-head-mannequin`.
+Remaining: in strong front light the nose underside still reads as a darker toon band (nostrils are closed, the low nose ridge keeps its
+underside); ears keep a faint inner fold in side view; a very faint mouth-plane shading remains (intended).

@@ -33,9 +33,15 @@ const SETS = { m10: [
   ['scapular-B', 1.9, null, [['neck-hang', [0.6, 0.1, 0.8], 'neck', 0.45]]],
   ['h-squat', 0.0, 'tech-white', [['tw-34', [0.75, 0.08, 0.66], 'head', 0.5]]],
   ['h-squat', 0.0, 'neon-night', [['nn-34', [0.75, 0.08, 0.66], 'head', 0.5]]],
+],
+  // M10b mannequin face: front / 3/4 / side close-ups (default skin) + tech-white + neon-night (--set m10b; VIEWS=a,b filters views)
+  m10b: [
+  ['h-squat', 0.0, null, [['head-front', [0.0, 0.06, 1], 'head', 0.3], ['head-34', [0.75, 0.08, 0.66], 'head', 0.3], ['head-side', [1, 0.02, 0.02], 'head', 0.3]]],
+  ['h-squat', 0.0, 'tech-white', [['tw-34', [0.75, 0.08, 0.66], 'head', 0.36]]],
+  ['h-squat', 0.0, 'neon-night', [['nn-34', [0.75, 0.08, 0.66], 'head', 0.36]]],
 ] };
-const JD = {};
-for (const [id, t, skin, views] of SETS.m10) { if (ONLY && !ONLY.includes(id)) continue;
+const JD = {}; const VIEWS = process.env.VIEWS?.split(',');
+for (const [id, t, skin, views] of SETS[SETS[SET] ? SET : 'm10']) { if (ONLY && !ONLY.includes(id)) continue;
   const s0 = (await import(pathToFileURL(path.join(REPO, 'drill-anim/specs', id + '.js')).href)).default;
   for (const vname of (skin ? ['head'] : ['old', 'head'])) {
     const v2plus = Object.assign({ outfit: 'compression', torso: 'base', limbs: 'base', hands: 'base' }, vname === 'head' ? { head: 'base' } : {}, skin ? { skin } : {});
@@ -45,7 +51,7 @@ for (const [id, t, skin, views] of SETS.m10) { if (ONLY && !ONLY.includes(id)) c
     for (let k = 0; k < 2; k++) await p.evaluate(([s, SZ]) => { __drill.frame(s, 0, -1, null, { size: SZ, full: false }); return 1; }, [spec, SZ]);
     JD[id + t + vname] = await p.evaluate(([s, t, SZ]) => { __drill.frame(s, t, -1, null, { size: SZ, full: false }); return flareInspector.viewer.motion.getMetrics().joints; }, [spec, t, SZ]);
     if (vname === 'old') continue;
-    for (const [vn, dir, jn, sz] of views) {
+    for (const [vn, dir, jn, sz] of views) { if (VIEWS && !VIEWS.includes(vn)) continue;
       const img = await p.evaluate(([s, t, dir, jn, sz, SZ]) => { __setHighlight({ groups: [], side: 'both' }); __toonUni.uPulse.value = 1; __drill.frame(s, t, -1, null, { size: SZ, full: false });
         const v = flareInspector.viewer, T = window.__toonT; const J = Object.assign({}, v.motion.getMetrics().joints, __drill._jo || {});
         const box = new T.Box3().setFromCenterAndSize(new T.Vector3(...J[jn]), new T.Vector3(sz, sz, sz));
