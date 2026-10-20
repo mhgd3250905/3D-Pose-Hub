@@ -250,6 +250,75 @@ R.updateAnchors = function() { const t = T(), g = R.anchorDbg; const sel = R.uni
     const m = new t.Mesh(sph, R.anchorMat.dot); m.position.copy(P).addScaledVector(N, 0.003); m.renderOrder = 11; g.add(m);
     const l = new t.Line(new t.BufferGeometry().setFromPoints([P, P.clone().addScaledVector(N, 0.06)]), R.anchorMat.line); l.renderOrder = 11; g.add(l); }
   g.updateMatrixWorld(true); };
+// ---------- label + arrow annotation (M5, opt-in, default off) ----------
+// R.setLabels(list, opts): list = [{ id } | { key (base region key, e.g. 'delt-front'), side?: 'L'|'R' }, text?: string]; null / [] = off.
+//   A base key without side picks the side whose anchor faces the camera more (per frame). Text defaults to the table's Chinese name
+//   (opts.lang 'zh' | 'en' | 'both'; side suffix dropped for base-key labels).
+// opts: { lang, auto: true = also label every highlighted base region (one label per key, facing side), fontPx, color, maxAuto }.
+// Per frame (scene.onBeforeRender): anchor at the current pose (getRegionAnchor) -> small dot, a leader along the projected normal,
+// then a horizontal elbow out to a label column left / right of the body (by which side of the body the anchor projects to);
+// labels on one side are stacked without overlap (sorted by height, pushed apart, kept on screen); a label fades out as its anchor
+// turns away from the camera (normal . view). Drawn on a 2D canvas that is uploaded to a full-screen quad rendered last in the same
+// WebGL pass (so screenshots / frame capture include it); no new dependencies.
+const LBL = { list: null, opts: {}, items: [] };
+R.labelState = LBL;
+R.setLabels = function(list, opts = {}) { LBL.list = list && list.length ? list : null; LBL.opts = opts; if (opts.auto) LBL.list = LBL.list || [];
+  const on = !!(LBL.list || opts.auto); ensureLabelLayer(); LBL.mesh.visible = on; if (!on) { LBL.items = []; } return on; };
+V2P.setLabels = R.setLabels;
+function ensureLabelLayer() { if (LBL.mesh) return; const t = T(), v = flareInspector.viewer;
+  LBL.canvas = document.createElement('canvas'); LBL.ctx = LBL.canvas.getContext('2d'); LBL.tex = new t.CanvasTexture(LBL.canvas); LBL.tex.minFilter = LBL.tex.magFilter = t.LinearFilter; LBL.tex.generateMipmaps = false;
+  const mat = new t.ShaderMaterial({ uniforms: { map: { value: LBL.tex } }, transparent: true, depthTest: false, depthWrite: false, toneMapped: false,
+    vertexShader: 'varying vec2 vUv; void main(){ vUv = uv; gl_Position = vec4(position.xy * 2.0, 0.0, 1.0); }',
+    fragmentShader: 'uniform sampler2D map; varying vec2 vUv; void main(){ gl_FragColor = texture2D(map, vUv); }' });
+  mat.premultipliedAlpha = false; const m = new t.Mesh(new t.PlaneGeometry(1, 1), mat); m.name = 'v2pRegionLabels'; m.frustumCulled = false; m.renderOrder = 1e6; m.visible = false; LBL.mesh = m;
+  m.onBeforeRender = (renderer, scene, camera) => drawLabels(renderer, camera); v.scene.add(m); }
+function labelText(r, it, lang, dropSide) { if (it.text) return it.text; const strip = s => dropSide ? s.replace(/（[左右]）$/, '').replace(/ \((left|right)\)$/, '') : s;
+  return lang === 'en' ? strip(r.en) : lang === 'both' ? strip(r.zh) + ' ' + strip(r.en) : strip(r.zh); }
+function drawLabels(renderer, camera) { const t = T(), v = flareInspector.viewer, D = R.data; if (!D) return;
+  const size = renderer.getDrawingBufferSize(new t.Vector2()), W = size.x, H = size.y, cv = LBL.canvas, g = LBL.ctx;
+  if (cv.width !== W || cv.height !== H) { cv.width = W; cv.height = H; }
+  g.clearRect(0, 0, W, H); const o = LBL.opts, lang = o.lang || 'zh', fp = o.fontPx || Math.max(11, Math.round(H / 40)), col = o.color || '#2b2f36';
+  // what to label: explicit list + (auto) highlighted base keys
+  const want = []; const seen = new Set();
+  for (const it of LBL.list || []) { if (it.id != null) { want.push({ ids: [it.id], it, dropSide: false }); seen.add(D.regions[it.id]?.key); continue; }
+    const b = D.base.indexOf(it.key); if (b < 0) continue; seen.add(it.key); want.push({ ids: it.side ? [2 * b + (it.side === 'R' ? 1 : 0)] : [2 * b, 2 * b + 1], it, dropSide: !it.side }); }
+  if (o.auto) { const sel = R.uni.uV2pRSel.value; let n = 0; for (let b = 0; b < D.base.length; b++) { const k = D.base[b]; if (seen.has(k) || !(sel[2 * b] > 0.5 || sel[2 * b + 1] > 0.5)) continue;
+      if (n++ >= (o.maxAuto || 8)) break; want.push({ ids: [2 * b, 2 * b + 1].filter(i => sel[i] > 0.5), it: {}, dropSide: true }); } }
+  camera.updateMatrixWorld(); const cp = new t.Vector3().setFromMatrixPosition(camera.matrixWorld);
+  const proj = p => { const q = p.clone().project(camera); return { x: (q.x * 0.5 + 0.5) * W, y: (0.5 - q.y * 0.5) * H, z: q.z }; };
+  // body extent on screen from the joints (label columns sit just outside it)
+  const J = v.motion.getMetrics().joints; let bx0 = 1e9, bx1 = -1e9, cxs = 0, nj = 0; for (const k in J) { const s = proj(new t.Vector3(...J[k])); bx0 = Math.min(bx0, s.x); bx1 = Math.max(bx1, s.x); cxs += s.x; nj++; }
+  const bc = cxs / Math.max(nj, 1), pad = fp * 1.6; bx0 -= pad * 1.5; bx1 += pad * 1.5;
+  const items = [];
+  for (const w of want) { let best = null;
+    for (const id of w.ids) { const a = R.getRegionAnchor(id); if (!a) continue; const P = new t.Vector3(...a.position), N = new t.Vector3(...a.normal);
+      const face = N.dot(cp.clone().sub(P).normalize()); if (!best || face > best.face) best = { id, P, N, face }; }
+    if (!best) continue; const alpha = ss(0.05, 0.35, best.face); if (alpha < 0.04) continue;
+    const A = proj(best.P), E0 = proj(best.P.clone().addScaledVector(best.N, 0.05)); if (A.z > 1) continue;
+    const r = D.regions[best.id]; const side = A.x < bc ? -1 : 1;
+    items.push({ A, E0, side, alpha, text: labelText(r, w.it, lang, w.dropSide), y: E0.y }); }
+  g.font = `500 ${fp}px V2PLabelCJK, "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", "Source Han Sans SC", sans-serif`; g.textBaseline = 'middle';
+  const gap = fp * 1.5, top = fp, bot = H - fp;
+  for (const sd of [-1, 1]) { const L = items.filter(i => i.side === sd).sort((a, b) => a.y - b.y); if (!L.length) continue;
+    for (const i of L) i.y = Math.max(top, Math.min(bot, i.E0.y));
+    for (let it = 0; it < 40; it++) { let moved = false; for (let k = 1; k < L.length; k++) { const d = L[k].y - L[k - 1].y; if (d < gap) { const s2 = (gap - d) / 2; L[k - 1].y -= s2; L[k].y += s2; moved = true; } }
+      for (const i of L) i.y = Math.max(top, Math.min(bot, i.y)); if (!moved) break; }
+    // stack overflowing the bottom / top: final pass top-down
+    for (let k = 1; k < L.length; k++) L[k].y = Math.max(L[k].y, L[k - 1].y + gap);
+    const over = L[L.length - 1].y - bot; if (over > 0) for (const i of L) i.y -= over;
+    for (const i of L) { const tw = g.measureText(i.text).width; let colX = sd < 0 ? Math.max(bx0, tw + fp * 0.8) : Math.min(bx1, W - tw - fp * 0.8);
+      colX = sd < 0 ? Math.min(colX, i.A.x - fp) : Math.max(colX, i.A.x + fp);
+      // elbow: along the projected normal (clamped outward toward the label side, at least a short step), at the label's height
+      let ex = i.E0.x; if (sd < 0) ex = Math.min(ex, i.A.x - fp * 0.6); else ex = Math.max(ex, i.A.x + fp * 0.6);
+      ex = sd < 0 ? Math.max(ex, colX + fp * 0.4) : Math.min(ex, colX - fp * 0.4);
+      g.globalAlpha = i.alpha; g.lineWidth = Math.max(1, fp / 12); g.strokeStyle = col; g.fillStyle = col; g.lineJoin = 'round';
+      g.beginPath(); g.moveTo(i.A.x, i.A.y); g.lineTo(ex, i.y); g.lineTo(colX, i.y); g.stroke();
+      g.beginPath(); g.arc(i.A.x, i.A.y, Math.max(2, fp / 6), 0, Math.PI * 2); g.fill();
+      g.beginPath(); g.arc(i.A.x, i.A.y, Math.max(2, fp / 6), 0, Math.PI * 2); g.strokeStyle = 'rgba(255,255,255,0.9)'; g.lineWidth = 1; g.stroke();
+      const tx = sd < 0 ? colX - fp * 0.3 - tw : colX + fp * 0.3; g.lineWidth = Math.max(2, fp / 5); g.strokeStyle = 'rgba(255,255,255,0.85)'; g.strokeText(i.text, tx, i.y); g.fillStyle = col; g.fillText(i.text, tx, i.y);
+      i.box = [tx, i.y - fp / 2, tw, fp]; } }
+  g.globalAlpha = 1; LBL.items = items.map(i => ({ text: i.text, side: i.side < 0 ? 'left' : 'right', alpha: +i.alpha.toFixed(2), anchor: [Math.round(i.A.x), Math.round(i.A.y)], box: i.box?.map(Math.round) }));
+  LBL.tex.needsUpdate = true; }
 const b_has = o => !!R.bakeInfo?.tex.get(o);
 R.setHighlight = function(h) { const sel = new Array(96).fill(0); let n = 0; const D = R.data;
   const side = h?.side === 'left' ? 'L' : h?.side === 'right' ? 'R' : null;
