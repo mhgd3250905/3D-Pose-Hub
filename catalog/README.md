@@ -2,6 +2,8 @@
 
 三个 App（托马斯 FlareLab、开胯 HipLab、智能健身 SmartFit）和共用 SDK `ugk_coach` 的动作数据源。Pose-Hub 只放数据；SDK、AI 提示词、App profile 在 SDK 仓库（mhgd3250905/ugk-3d-pose-sdk）。
 
+当前目录版本与合入记录见 [版本对齐台账](../docs/version-ledger.md)，版本号、固定提交和消费端接入规则见 [版本管理](../docs/version-management.md)。目录版本独立于 `media/` 的成片 ZIP 版本；`docs/drill-catalog.md` 是包含历史修订的 spec 开发总表。
+
 “一个动作”是最小单位：**动作定义 + 封面静帧 + 示范视频 + 建模源（spec）+ 语音**。目录里每条 drill 给一个 Pose-Hub id，带齐定义字段，`assets` 段列出这个 id 的各类素材在哪、齐不齐。
 
 ## 文件

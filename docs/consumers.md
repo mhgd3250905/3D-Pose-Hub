@@ -73,3 +73,11 @@ HipLab 采用 `hip-{id_lower}.mp4` / `hip-{id_lower}{ext}`；同步后仍由自�
 ## 后续升级
 
 动作贡献继续从 main 拉分支并提 PR。主线维护方审核、渲染、ingest 后打出新版本 ZIP，经用户授权上传云盘并核验，登记链接和 ZIP SHA-256，将该版本标为 `published`，直接提交推送 main。已发布包不覆盖；App 升级时更新清单副本和 lock 的版本号，再下载、解压、同步及检查。
+
+## AI 目录接入单独登记
+
+本页的 lock 与 ZIP 流程针对 `media/manifest.json`。AI 选动作和剂量数据另取 [catalog/catalog.json](../catalog/catalog.json)，按固定提交或经过发布的独立目录 tag 锁定，不能把 `poseHub.version` 的媒体版本号当作目录版本号。
+
+当前 catalog 0.2.0 已随 PR #11 合入，但没有独立目录发布 tag；可审计内容提交为 `884074701d8ec93e6d25d410786336532cc664de`，main 合入提交为 `4bb02f96768c5e704b2db65c806fbbaf6eda36fb`。接入前核对 `formatVersion`、单侧 `perSide`、剂量单位以及 `holdSeconds` 的停留执行、展示与时长计算。SmartFit 的 8 项剂量、7 项侧别同步及 SDK `holdSeconds` 支持仍待验收，目录合入不能替代 App / SDK 的执行验证。
+
+具体字段见 [目录说明](../catalog/README.md)，各项接入状态见 [版本对齐台账](version-ledger.md)。

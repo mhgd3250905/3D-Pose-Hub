@@ -13,9 +13,12 @@
 
 ## 2. 目录：哪些是现役，哪些别碰
 
+AI 动作元数据另有 [统一目录](../catalog/README.md)：当前 **catalog 0.2.0 / formatVersion 1，142 个动作 id**。它与本页的 spec 总表、媒体 ZIP 0.2.0 分别管理；目录已合入不代表 SmartFit 或 SDK 已完成接入。版本规则和当前待办见 [版本管理](version-management.md)、[版本对齐台账](version-ledger.md)。
+
 | 路径 | 状态 | 说明 |
 |---|---|---|
 | `drill-anim/specs/<id>.js` | **现役**，但已登记的文件**不能改** | 一份 = 一个动作。改动作 = 新建 `<id>-r2.js`（见 §6）。`specs/_*.mjs` 是共用模块，哈希登记在 `verify.mjs` |
+| `catalog/` | 现役 AI 动作元数据 | `catalog.json` 是生成物；修改人工裁定后按 `catalog/README.md` 重建、校验并更新审阅表，勿直接手改目录 |
 | `drill-anim/data/home-pr-candidates.json` | 现役 | 新 spec 的 LF 规范化 SHA-256 登记处 |
 | `drill-anim/data/drills.json` | 现役（FlareLab 51 的名称、器械、处方、安全提示） | 改它会让 verify 的 51 数量断言失败，别动 |
 | `drill-anim/drill.py`、`lib/`、`page/`、`themes/` | 现役，**共享核心** | 能不改就不改；必须改就单独开 `engine/<简述>` 分支，并证明旧渲染像素不变 |
@@ -184,6 +187,8 @@ node drill-anim/tools/catalog.mjs --check                    # 只检查是否�
 | 想知道 | 读 |
 |---|---|
 | 协作规则、谁能做什么 | [AGENTS.md](../AGENTS.md) |
+| AI 目录、媒体和模型的版本规则 | [version-management.md](version-management.md) |
+| 当前版本、合入记录、消费端接入待办 | [version-ledger.md](version-ledger.md) |
 | 渲染工具全部参数、spec 字段、QA、主题格式 | [drill-anim/README.md](../drill-anim/README.md) |
 | 每个动作的状态、使用方、已知问题、待补全候选 | [drill-catalog.md](drill-catalog.md)（`node drill-anim/tools/catalog.mjs` 生成） |
 | 动作设计审核标准 | [review-rubric.md](review-rubric.md) |

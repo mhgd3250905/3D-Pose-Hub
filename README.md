@@ -2,6 +2,8 @@
 
 > **第一次来？先读 [docs/START-HERE.md](docs/START-HERE.md)**（半小时上手、低配机验证、贡献流程）；动作总表见 [docs/drill-catalog.md](docs/drill-catalog.md)，审核标准见 [docs/review-rubric.md](docs/review-rubric.md)。
 
+AI 选动作与剂量元数据以 [catalog/catalog.json](catalog/catalog.json) 为事实源，字段与生成规则见 [catalog/README.md](catalog/README.md)。版本规则见 [版本管理](docs/version-management.md)，当前版本、PR 合入与接入待办见 [版本对齐台账](docs/version-ledger.md)。
+
 Pose-Hub 是 FlareLab（托马斯训练助手）和 HipLab（开胯训练助手）共用的**动作库**：动作渲染工具 drill-anim、训练人物模型及其制作工具、每个动作的规格（spec）、以及成片素材清单都在这里。各 App 不再自己改动作，只按固定版本从这里取成片。
 
 2026-10-17 从 [3D-Body](https://github.com/mhgd3250905/3D-Body) `master@66067a6` 迁来，保留了相关文件的 Git 历史。迁移细节、路径对照和验证结果见 [MIGRATION.md](MIGRATION.md)；协作规则见 [AGENTS.md](AGENTS.md)。
@@ -19,6 +21,7 @@ runtime/             渲染时启动的 3D 场景（原 3D-Body 根目录的 ind
 tools/               人物模型制作工具：blender/（Snow 派生教练、健身/肌肉参考体）、mannequin/（灰色人台头）、cloth/（衣服蒙皮）、face/
 assets/              blender-studio-source/SOURCE.md（Blender 源文件获取说明；.blend 本体不进 Git）
 media/               成片素材清单 manifest.json + ingest / pack / sync 脚本（见 media/README.md）
+catalog/             三 App / ugk_coach 的统一 AI 动作目录、Schema、人工裁定与生成校验工具（见 catalog/README.md）
 docs/                人物标准、动作批次与审核记录；docs/consumers.md 是 App 接入说明；docs/migration/ 是迁移对照表
 licenses/            three / lucide 许可、动作媒体署名
 package.json         根目录 npm 工程（three 0.170.0、lucide、vite 7.3.6），vite.config.js 把 root 指到 runtime/
@@ -78,3 +81,9 @@ python tools/pose_hub_sync.py --lock pose-hub.lock.json --check
 ```
 
 每个文件都核对大小和 SHA-256；无需 baseUrl。Windows、macOS 和离线接入示例见 [docs/consumers.md](docs/consumers.md)。要新动作或改动作，由贡献方到本仓库提 issue / PR；发布后 App 更新 lock 和清单副本。
+
+## AI 动作目录版本
+
+PR [#11](https://github.com/mhgd3250905/3D-Pose-Hub/pull/11) 已合入目录 **0.2.0 / formatVersion 1**，收录 142 个稳定动作 id：FlareLab 51、HipLab 46、SmartFit 93，各 App 有重叠。它与 200 个 spec 文件的开发总表、46 个动作的媒体发布包分别统计。
+
+目录 0.2.0 与媒体 ZIP 0.2.0 是独立版本。目录合入不等于消费端已升级：SmartFit 的 8 项剂量、7 项侧别同步与 SDK `holdSeconds` 支持仍待接入验收；本次没有新增目录发布 tag 或媒体 ZIP。具体提交、验证范围与待办见 [版本对齐台账](docs/version-ledger.md)。
