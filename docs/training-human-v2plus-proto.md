@@ -444,3 +444,22 @@ Image: `docs/reviews/human-v2plus-proto/head-base/m10e.jpg` (reference on top; f
 `head-poses.mjs --set m10e`). Tag `v2plus-head-mannequin2`.
 Remaining: the nose ridge is too faint to read under the toon ramp (visible only as shading in smooth light); the profile chin tuck and
 forward face plane are milder than the reference; cranium is a bit narrower / less bulbous at the back than the sheet.
+
+### M10f ready-made mannequin head (2026-10-20) — `head:'base'` head is now a downloaded model (default)
+User rejected the hand-sculpted heads ("太糟糕了…还是找现成的吧") and asked for a ready-made model. Used **"Free Mannequin Head" by SPLiNER**
+(Printables model 1257615, <https://www.printables.com/model/1257615-free-mannequin-head>), licensed **CC BY 4.0** — smooth egg
+display-mannequin head with a soft nose ridge, no eyes / mouth / ears, on a neck stub; matches `pose-hub-ref/demo_s.jpg`. Files and
+attribution: `tools/human-v2plus/head-base/assets/` (`ATTRIBUTION.md`; the author's lightweight STL unmodified; `spliner-head-pts.npz` =
+vertex cloud + normals of the author's high-res STL, written by `prep_ready.py`).
+`build.sh` switch `HD_FACE=ready` (default) | `mannequin` (M10e) | `wrap` | `egg` | `soft` | `detail`; built in `head_e.py` in place of the
+analytic egg: STL (mm, up +z, face −y) → ours (up +y, face +z), uniform scale 4.5 mm/mm (`HD_R_SCALE`; head width 179 mm, crown on the old
+crown 1.7275, stub axis on the neck axis), x ≥ 0 half mirrored (exact symmetry; the scan's own mirror error is 0.08 mm mean), used as a
+point-cloud signed distance (k = 8 IDW of vertex tangent-plane distances) sampled once on a 1.5 mm volume and read with cubic B-spline
+interpolation; its neck stub is shrunk out below the chin (`HD_R_YCUT` 1.494, C1 quadratic) and smooth-unioned with the base neck, then
+the same symmetric meridian grid (NA 256 × NR 160), plane-cut seam at 1.46 and zipper as M10c/M10e. Neck below 1.46 / weld / weights /
+collar rule unchanged; joints 0.0000 mm. Build ~90 s.
+Stats: 44 652 verts / 89 102 faces (1.73 MB); generated head mirror error above y 1.475 = 0.0 mm (max 1.77 mm in the seam band
+y 1.46–1.475, following the asymmetric base neck, as M10e); head part max dihedral 25.1° (at y 1.484, under the chin where the model's
+jaw edge meets the neck blend), 0 edges > 30°, 0 folded; whole piece folded 8 / zipper flips 11 (weld under the collar, unchanged from M10e).
+Image: `docs/reviews/human-v2plus-proto/head-base/m10f.jpg` (reference; front / side / 3/4, tech-white, neon-night; `head-poses.mjs --set m10f`).
+Tag `v2plus-head-ready`.
