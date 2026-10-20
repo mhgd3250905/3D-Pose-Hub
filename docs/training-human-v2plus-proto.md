@@ -463,3 +463,7 @@ y 1.46–1.475, following the asymmetric base neck, as M10e); head part max dihe
 jaw edge meets the neck blend), 0 edges > 30°, 0 folded; whole piece folded 8 / zipper flips 11 (weld under the collar, unchanged from M10e).
 Image: `docs/reviews/human-v2plus-proto/head-base/m10f.jpg` (reference; front / side / 3/4, tech-white, neon-night; `head-poses.mjs --set m10f`).
 Tag `v2plus-head-ready`.
+
+### M11 reverted (2026-10-20) — final head = the untouched v2 head
+开哥 judged the eye-socket smoothing worse; it is reverted. Final: the original v2 head (`Toon_Mannequin_Head_v5`) exactly as it was,
+`head:'base'` stays opt-in and off. Head work closed.
