@@ -19,6 +19,8 @@ FN=['thumb','index','middle','ring','pinky']; FB=[f+str(j) for f in FN for j in 
 LM={k:np.array(v) for k,v in rest['landmarks'].items()}
 GAP=float(os.environ.get('L_GAP','0.004'))
 h=np.load('hands_fit.npz'); XL,FL,Wf=h['X'],h['F'],h['Wf']
+from thenar import lift_thenar
+XL,threp=lift_thenar(XL,FL,Wf)            # M8: thenar pad lifted to the hypothenar pad line (it hung ~1 cm below it at rest)
 z=np.load('limbs_zip.npz',allow_pickle=True); seamL=z['seam']; segF=z['segF']; keepB0=z['keepB0']
 B=P[BODY]; Fb=np.array(M[BODY]['index']).reshape(-1,3); invB,firstB=weld(B); FbW=invB[Fb]
 BONES=list(rest['bones'].keys())+['v2p_%s_%s'%(s,b) for s in 'LR' for b in FB]; bi={b:i for i,b in enumerate(BONES)}
@@ -126,19 +128,68 @@ for (o_,n,ring) in nMC_list:
 Fall=np.vstack([idmap[k][out_F[k]-nMC_list[k][0]] for k in range(2)])
 seam=[('wrist_'+sd,BODY,int(v)) for sd,(o_,n,ring) in zip(('left','right'),nMC_list) for v in ring]
 assert len(seam)==len(Vall)-nMC
-# seam-adjacent normal blend toward the seam's (rest) normal
-def restN(k):
-    Pk=P[k]; Fk_=np.array(M[k]['index']).reshape(-1,3); inv,first=weld(Pk); return vnormals(Pk[first],inv[Fk_])[inv]
-NRB=restN(BODY); N=vnormals(Vall,Fall)
-for k,s in enumerate(seam): N[nMC+k]=NRB[s[2]]
-A=adjacency(len(Vall),edges_of(Fall)).tocsr(); rg=np.full(len(Vall),99); rg[nMC:]=0; fr=rg==0
-for k in range(1,4):
-    nb=(A@fr.astype(float))>0; new=nb&(rg==99); rg[new]=k; fr=new
-for r_,a in ((1,0.6),(2,0.3),(3,0.12)):
-    for i in np.where(rg==r_)[0]:
-        js=A.indices[A.indptr[i]:A.indptr[i+1]]; js=js[rg[js]==r_-1]
-        if len(js): mm=N[js].mean(0); N[i]=(1-a)*N[i]+a*mm/np.linalg.norm(mm)
+# wrist weld normals (M8): the seam vertices used to take Coach_Body's own (v2 forearm) rest normal at runtime, with the first
+# rings on both sides blended toward it; that normal is not the normal of either welded surface, so a faint shading line showed at
+# the weld in some lights.  Now one shared normal per wrist seam vertex = area-weighted face normals of BOTH pieces around it (hands
+# + limbs), the rings next to it keep their own geometric normals (continuous with it), and the limbs piece's wrist rings get the
+# same treatment in hands mode (limbsNrm, swapped in by setHands; limbs-only mode keeps its weld to the v2 hand untouched).
+def rawN(V,F):
+    fn=np.cross(V[F[:,1]]-V[F[:,0]],V[F[:,2]]-V[F[:,0]]); n_=np.zeros_like(V)
+    for c in range(3): np.add.at(n_,F[:,c],fn)
+    return n_
+WELDN=os.environ.get('H_WELDN','1')!='0'
+RH_=rawN(Vall,Fall); RL_=rawN(LV,LF); lseam_all=[int(s_[2]) for s_ in seamL]; lring_all=[str(s_[0]) for s_ in seamL]
+if WELDN:
+    N=RH_/np.maximum(np.linalg.norm(RH_,axis=1,keepdims=True),1e-15)
+    NLnew=RL_/np.maximum(np.linalg.norm(RL_,axis=1,keepdims=True),1e-15)
+    angs=[]; NRB=None
+    def restN(k):
+        Pk=P[k]; Fk_=np.array(M[k]['index']).reshape(-1,3); inv,first=weld(Pk); return vnormals(Pk[first],inv[Fk_])[inv]
+    NRB=restN(BODY)
+    for k,s_ in enumerate(seam):
+        li_=[LnMC+j for j,(v,r) in enumerate(zip(lseam_all,lring_all)) if v==s_[2] and r==s_[0]]; assert len(li_)==1
+        c=RH_[nMC+k]+RL_[li_[0]]; c/=np.linalg.norm(c); N[nMC+k]=c; NLnew[li_[0]]=c; angs.append(np.degrees(np.arccos(np.clip(c@NRB[s_[2]],-1,1))))
+    # limbs vertices to override: the wrist seams + NB rings into the limbs piece
+    NBR=int(os.environ.get('H_WELD_RINGS','5'))
+    wl=np.array([LnMC+j for j,r in enumerate(lring_all) if r.startswith('wrist_')]); rgL=np.full(len(LV),99); rgL[wl]=0; frL=rgL==0
+    for k in range(1,NBR+1):
+        nb=(LA_@frL.astype(float))>0; new=nb&(rgL==99); rgL[new]=k; frL=new
+    limbsIdx=np.where(rgL<=NBR)[0]
+    # the zipper / fairing band has small ripples along the ring, so the toon terminator crossing it stepped (a faint jagged line):
+    # relax the normals (not positions) over the weld band of both pieces as one surface (limbs seam vertex == hands seam vertex)
+    AH=adjacency(len(Vall),edges_of(Fall)).tocsr(); rgH=np.full(len(Vall),99); rgH[nMC:]=0; frH=rgH==0
+    for k in range(1,NBR+1):
+        nb=(AH@frH.astype(float))>0; new=nb&(rgH==99); rgH[new]=k; frH=new
+    lmap={}
+    for k,s_ in enumerate(seam):
+        lmap[[LnMC+j for j,(v,r) in enumerate(zip(lseam_all,lring_all)) if v==s_[2] and r==s_[0]][0]]=nMC+k
+    nH=len(Vall); gid=np.r_[np.arange(nH),nH+np.arange(len(LV))]
+    for li_,hi_ in lmap.items(): gid[nH+li_]=hi_
+    EH=edges_of(Fall); EL=edges_of(LF); EU=np.vstack([EH,gid[nH+EL]]); nU=nH+len(LV); AU=adjacency(nU,EU).tocsr(); degU=np.asarray(AU.sum(1)).ravel()
+    NU=np.zeros((nU,3)); NU[:nH]=N; NU[nH:]=NLnew; band=np.zeros(nU,bool); band[:nH]=rgH<NBR; band[nH:]=rgL<NBR
+    wgt=np.zeros(nU); wgt[:nH]=1-np.clip(rgH/NBR,0,1); wgt[nH:]=1-np.clip(rgL/NBR,0,1)
+    for it in range(int(os.environ.get('H_WELD_NIT','8'))):
+        Nn=AU@NU/np.maximum(degU,1)[:,None]; NU[band]=(1-0.6*wgt[band,None])*NU[band]+0.6*wgt[band,None]*Nn[band]; NU/=np.maximum(np.linalg.norm(NU,axis=1,keepdims=True),1e-15)
+    N=NU[:nH].copy(); NLnew=NU[gid[nH:]].copy()
+    NL0=np.frombuffer(base64.b64decode(limbsJ['nrm']['i8']),np.int8).reshape(-1,3)/127.0
+    dL=np.degrees(np.arccos(np.clip(np.einsum('ij,ij->i',NL0[limbsIdx],NLnew[limbsIdx]),-1,1)))
+    print('weld normals: shared seam normal vs Coach_Body rest normal deg p50/max',np.percentile(angs,50).round(1),np.max(angs).round(1),
+          '| limbs wrist-ring override verts',len(limbsIdx),'change deg p50/max',np.percentile(dL,50).round(1),dL.max().round(1))
+    report['weldNormals']={'seamVsCoachDegMax':float(np.max(angs)),'limbsOverride':int(len(limbsIdx))}
+else:
+    def restN(k):
+        Pk=P[k]; Fk_=np.array(M[k]['index']).reshape(-1,3); inv,first=weld(Pk); return vnormals(Pk[first],inv[Fk_])[inv]
+    NRB=restN(BODY); N=vnormals(Vall,Fall)
+    for k,s in enumerate(seam): N[nMC+k]=NRB[s[2]]
+    A=adjacency(len(Vall),edges_of(Fall)).tocsr(); rg=np.full(len(Vall),99); rg[nMC:]=0; fr=rg==0
+    for k in range(1,4):
+        nb=(A@fr.astype(float))>0; new=nb&(rg==99); rg[new]=k; fr=new
+    for r_,a in ((1,0.6),(2,0.3),(3,0.12)):
+        for i in np.where(rg==r_)[0]:
+            js=A.indices[A.indptr[i]:A.indptr[i+1]]; js=js[rg[js]==r_-1]
+            if len(js): mm=N[js].mean(0); N[i]=(1-a)*N[i]+a*mm/np.linalg.norm(mm)
 N/=np.linalg.norm(N,axis=1,keepdims=True)
+report['thenar']=threp
 # global checks: flipped faces vs the rest mesh's own outward normals (closed check: boundary loops), hole-free
 loops=boundary_loops_F(Fall); print('piece boundary loops (must be [] before the Coach_Body weld; seam rings are the hand-side boundary)',[len(l) for l in loops])
 order=np.argsort(-Wall,1)[:,:4]; top=np.take_along_axis(Wall,order,1); top/=top.sum(1,keepdims=True)
@@ -151,10 +202,11 @@ out={'version':1,'n':int(n),'bones':BONES,
  'nrm':{'i8':b64(np.round(N*127).astype(np.int8))},
  'index':{'u16':b64(Fall.astype(np.uint16))},
  'joints':{'u8':b64(order.astype(np.uint8))},'weights':{'u8':b64(q.astype(np.uint8))},
- 'seam':{'first':int(nMC),'mesh':[s[1] for s in seam],'vid':[s[2] for s in seam],'ring':[s[0] for s in seam]},
+ 'seam':dict({'first':int(nMC),'mesh':[s[1] for s in seam],'vid':[s[2] for s in seam],'ring':[s[0] for s in seam]},**({'ownNormals':True} if WELDN else {})),
  'keepFaces':{},'hideFaces':{BODY:hide},'hideMeshes':[],'requires':'limbs','skin':BODY,
  'source':'Blender Human Base Meshes v1.4.1 (realistic male body, CC0, blender.org): hands (left retargeted onto the v2plus finger rig, right = mirror)',
  'paint':{'waistY':-1.0,'skin':True},'report':report}
+if WELDN: out['limbsNrm']={'idx':limbsIdx.tolist(),'i8':b64(np.round(NLnew[limbsIdx]*127).astype(np.int8))}
 _json.dump(out,open(sys.argv[1],'w'),separators=(',',':'))
 np.savez('hands_final.npz',V=Vall,F=Fall,N=N,J=order,Wq=q,nMC=nMC,W=Wall)
 print('verts',n,'faces',len(Fall),'hidden Coach_Body faces',len(hide),'(hand islands',len(handHide),') json bytes',os.path.getsize(sys.argv[1]))

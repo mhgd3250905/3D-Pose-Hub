@@ -18,7 +18,7 @@ await p.addScriptTag({ content: fs.readFileSync(path.join(REPO, 'drill-anim/page
 log('v2plus', JSON.stringify(await p.evaluate(([m, o]) => __v2p.load(m, o), [R('training-human-v2plus-hands.json'), R('training-human-v2plus-outfit.json')])));
 log('torso', JSON.stringify(await p.evaluate(d => __v2p.loadTorso(d), R('training-human-v2plus-torso-base.json'))));
 log('limbs', JSON.stringify(await p.evaluate(d => __v2p.loadLimbs(d), R('training-human-v2plus-limbs-base.json'))));
-log('hands', JSON.stringify(await p.evaluate(d => __v2p.loadHands(d), R('training-human-v2plus-hands-base.json'))));
+log('hands', JSON.stringify(await p.evaluate(d => __v2p.loadHands(d), process.env.HANDS_JSON ? JSON.parse(fs.readFileSync(process.env.HANDS_JSON, 'utf8')) : R('training-human-v2plus-hands-base.json'))));
 const REG = SET === 'regions';
 if (REG) { await p.addScriptTag({ content: fs.readFileSync(path.join(REPO, 'drill-anim/page/human-v2plus-regions.js'), 'utf8') });
   log('regions', JSON.stringify(await p.evaluate(d => __v2p.loadRegions(d), R('training-human-v2plus-regions.json')))); }
@@ -34,9 +34,14 @@ const SETS = {
     ['chest-A', 1.15, [['side', [0.3, 0.5, 1], null], ['rhand', [0.6, 0.5, 1], 'rightWrist', 0.3], ['rhand-top', [0.1, 1, 0.2], 'rightWrist', 0.28]]],
     ['h-squat', 1.2, [['side', [1, 0.15, 0.5], null], ...HV]],
   ],
+  // M8 fix check (hands only): thenar at rest, wrist weld close-ups, chest-A left hand from outside the body
+  fix: [
+    ['h-squat', 0.0, [['lhand-thenar', [0.5, -0.1, 1], 'leftWrist', 0.22], ['lhand-weld', [1, 0.1, -0.3], 'leftWrist', 0.13], ['rhand-weld', [-0.3, 0.2, 1], 'rightWrist', 0.13]]],
+    ['chest-A', 1.15, [['lhand-out', [1, 0.35, 0.5], 'leftWrist', 0.28], ['lhand-front', [0.4, 0.5, 1], 'leftWrist', 0.28]]],
+  ],
   regions: [['h-squat', 0.0, [['front', [0, 0.05, 1], null], ['back', [0, 0.05, -1], null], ['lhand', [0.8, 0.1, 0.6], 'leftWrist', 0.3]]]],
 };
-const VARS = REG ? [['hands', 'base']] : [['limbs', null], ['hands', 'base']]; const JD = {};
+const VARS = REG || SET === 'fix' ? [['hands', 'base']] : [['limbs', null], ['hands', 'base']]; const JD = {};
 for (const [id, t, views] of SETS[SET]) { if (ONLY && !ONLY.includes(id)) continue;
   const s0 = (await import(pathToFileURL(path.join(REPO, 'drill-anim/specs', id + '.js')).href)).default;
   for (const [vname, limbs] of VARS) {

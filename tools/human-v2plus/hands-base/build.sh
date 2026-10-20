@@ -5,7 +5,7 @@
 # and output/human-v2plus-work/rest.json.
 #  limbs_pre  limbs stage A up to its skin fit (the intact base hand; the fit breaks the index)                 -> limbs_pre.npz
 #  hands_a    left base hand -> v2plus finger rig (geodesic tips, thumb field + Poisson, finger-root Poisson)  -> hands_fit.npz
-#  hands_b    right = mirror, wrist weld onto the limbs' Coach_Body wrist rings, weights, export               -> the JSON
+#  hands_b    (thenar.py lift) right = mirror, wrist weld onto the limbs' Coach_Body wrist rings, weights, export               -> the JSON
 #  sketch.py / sketch2.py <out.jpg> [pose ...]  optional offline looks (v2 vs base; thumb close-ups)
 set -e
 DIR="$(cd "$(dirname "$0")" && pwd)"; REPO="$(cd "$DIR/../../.." && pwd)"

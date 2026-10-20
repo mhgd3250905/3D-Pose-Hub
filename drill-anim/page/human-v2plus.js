@@ -351,7 +351,8 @@ function buildPiece(data, meshName, torsoPaint) {
     const S0 = new t.Matrix4(), B0 = new t.Matrix4(), e0 = S0.elements.fill(0), bm0 = o.skeleton.boneMatrices;
     for (let k = 0; k < 4; k++) { const w = g.attributes.skinWeight.getComponent(vid, k); if (!w) continue; B0.fromArray(bm0, g.attributes.skinIndex.getComponent(vid, k) * 16); for (let c = 0; c < 16; c++) e0[c] += w * B0.elements[c]; }
     S0.premultiply(o.bindMatrixInverse).premultiply(o.matrixWorld).multiply(o.bindMatrix);
-    nn.fromBufferAttribute(g.attributes.normal, vid).applyMatrix3(new t.Matrix3().getNormalMatrix(S0)).normalize(); nw.set([nn.x, nn.y, nn.z], i * 3);
+    // (data.seam.ownNormals: the file carries a rest normal shared by both welded pieces — the hands' wrist weld, M8)
+    if (!data.seam.ownNormals) { nn.fromBufferAttribute(g.attributes.normal, vid).applyMatrix3(new t.Matrix3().getNormalMatrix(S0)).normalize(); nw.set([nn.x, nn.y, nn.z], i * 3); }
     for (let k = 0; k < 4; k++) { const j = bi[ob[g.attributes.skinIndex.getComponent(vid, k)].name]; si[i * 4 + k] = j ?? 0; sw[i * 4 + k] = g.attributes.skinWeight.getComponent(vid, k); } seamN++; });
   // bind space: p' = (tee skinning matrix at reset)^-1 * rest world (same solve as the compression outfit)
   const bm = tee.skeleton.boneMatrices, S = new t.Matrix4(), B = new t.Matrix4(), Mx = new t.Matrix4(), Mi = new t.Matrix4(), N3 = new t.Matrix3();
@@ -421,10 +422,23 @@ V2P.loadLimbs = function(data) {
 V2P.loadHands = function(data) {
   if (V2P.hands) return { already: true }; if (!V2P.limbs) throw new Error('v2plus: loadLimbs() before loadHands()');
   if (V2P.limbs.on || V2P.torso.on || V2P.outfitOn) throw new Error('v2plus: loadHands() with the profile off (reads the unmodified index buffers)');
-  V2P.hands = buildPiece(data, 'V2P_Base_Hands', false); return Object.assign({ hands: V2P.hands.report.verts }, V2P.hands.report);
+  V2P.hands = buildPiece(data, 'V2P_Base_Hands', false);
+  // limbsNrm (M8): the limbs piece's wrist seams + 3 rings get the normals shared with the hands' weld while hands are on (rest world
+  // -> bind space through the limbs piece's own skinning at reset, same solve as buildPiece); setHands swaps them in / out
+  if (data.limbsNrm) { const t = T(), v = flareInspector.viewer, L = V2P.limbs.mesh, g = L.geometry, na = g.attributes.normal, N8 = unb64(data.limbsNrm.i8, Int8Array);
+    v.motion.reset(); v.coach.updateMatrixWorld(true); L.skeleton.update();
+    const bm = L.skeleton.boneMatrices, S = new t.Matrix4(), B = new t.Matrix4(), Mx = new t.Matrix4(), N3 = new t.Matrix3(), nn = new t.Vector3();
+    const idx = data.limbsNrm.idx, a0 = new Float32Array(idx.length * 3), a1 = new Float32Array(idx.length * 3);
+    idx.forEach((i, k) => { const e = S.elements.fill(0);
+      for (let c = 0; c < 4; c++) { const w = g.attributes.skinWeight.getComponent(i, c); if (!w) continue; B.fromArray(bm, g.attributes.skinIndex.getComponent(i, c) * 16); for (let q = 0; q < 16; q++) e[q] += w * B.elements[q]; }
+      Mx.copy(L.matrixWorld).multiply(L.bindMatrixInverse).multiply(S).multiply(L.bindMatrix); N3.setFromMatrix4(Mx).transpose();
+      nn.set(N8[k * 3] / 127, N8[k * 3 + 1] / 127, N8[k * 3 + 2] / 127).applyMatrix3(N3).normalize(); a1.set([nn.x, nn.y, nn.z], k * 3); a0.set([na.getX(i), na.getY(i), na.getZ(i)], k * 3); });
+    V2P.hands.nrmSwap = { na, idx, a0, a1 }; }
+  return Object.assign({ hands: V2P.hands.report.verts, limbsNrm: data.limbsNrm ? data.limbsNrm.idx.length : 0 }, V2P.hands.report);
 };
 // applied after setLimbs (same stacking: remembers the index each swap replaced)
 V2P.setHands = function(on) { const R = V2P.hands; if (!R || R.on === on) return; R.on = on; R.mesh.visible = on;
+  if (R.nrmSwap) { const { na, idx, a0, a1 } = R.nrmSwap, src = on ? a1 : a0; idx.forEach((i, k) => na.setXYZ(i, src[k * 3], src[k * 3 + 1], src[k * 3 + 2])); na.needsUpdate = true; }
   for (const s of R.swaps) { if (on) { s.prev = s.g.index; s.g.setIndex(s.idx1); } else s.g.setIndex(s.prev || s.idx0); } };
 // applied after setTorso: remembers the index each swap replaced, so turning limbs off restores the torso-mode (or plain) buffers
 V2P.setLimbs = function(on) { const R = V2P.limbs; if (!R || R.on === on) return; R.on = on; R.mesh.visible = on;

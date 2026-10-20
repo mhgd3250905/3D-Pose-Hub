@@ -267,3 +267,21 @@ Base Meshes v1.4.1 realistic male (CC0). Needs `limbs:'base'` (throws otherwise)
   wrist weld ring with the darker 8 mm cuff band (`uV2pLimb` on the limbs piece only, wrist planes `uV2pWristL/R` from the ring
   centroids + forearm->hand direction at reset); legs and the short sleeve unchanged. `hands-poses.mjs --sleeve long`,
   `sleeve-long.jpg`.
+
+## M8 hands polish (2026-10-20) — `hands:'base'` only; defaults unchanged
+
+- **Thenar** (`tools/human-v2plus/hands-base/thenar.py`, called by hands_b.py on the left hand before mirroring): the retargeted thenar
+  pad hung up to ~14 mm palmar of the hypothenar pad line at rest (side profile: a lump under the palm). Reference = the hypothenar
+  pad's most palmar point per 5 mm bin (linear in x, flat across the palm); the thenar's excess is soft-clamped to ≤ 2 mm (tanh) and the
+  lift is spread as a Laplacian-relaxed displacement field (max lift 10.4 mm, residual excess ≤ 4.4 mm where the region fades out).
+  Thumb proper, wrist ring and finger roots are outside the region, so the weld and the grips are unchanged.
+- **Wrist weld normals**: the wrist seam vertices used to take Coach_Body's own (v2 forearm) rest normal at runtime and the first rings on
+  both sides blended toward it — up to 9.5° off either welded surface, which showed as a faint line in some lights. Now
+  `seam.ownNormals` (hands JSON): one normal per wrist seam vertex = area-weighted face normals of both pieces, then the normals (not
+  positions) are relaxed over 5 rings on both sides as one surface (the zipper band's small ripples made the toon terminator step).
+  The limbs piece gets the same normals for its wrist seams + 5 rings (`limbsNrm`, 927 verts, converted to bind space in `loadHands`,
+  swapped in / out by `setHands`), so limbs-only mode keeps its weld to the v2 hand exactly as before. `H_WELDN=0` rebuilds the old way.
+- **chest-A t=1.15 left hand** (palm on the floor) checked with cameras outside the body: flat palm, fingers on the floor, no folds.
+- Check: `tools/human-v2plus/run.sh tools/human-v2plus/hands-poses.mjs <out> --set fix` (hands only, 5 close-ups; `HANDS_JSON=<file>`
+  loads another hands build for an A/B). Image: `docs/reviews/human-v2plus-proto/hands-base/fix.jpg` (top: M8; bottom: wrist welds with
+  the old seam normals). `verify.mjs` originalSpecHashesPreserved true. Tag `v2plus-hands-fix`.

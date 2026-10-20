@@ -21,5 +21,6 @@ Findings:
   re-pose the base thumb with a rotation field (per-vertex slerp over the thenar) or fit the thumb web to the v2 hand's web.
 - Weld (hands_b.py): right = mirror; cut at the limbs' Coach_Body wrist rings, arc-length snap (angle interpolation folded the
   zipper fans over the jagged cut), zipper, ghost-ring fairing against the limbs piece -> 0 folded / flipped zipper faces.
+- M8: thenar.py lifts the thenar to the hypothenar pad line; hands_b shares + relaxes the wrist-weld normals across both pieces (seam.ownNormals, limbsNrm).
 - Runtime piece bound to Coach_Body's skeleton (finger bones), checks in tools/human-v2plus/hands-poses.mjs; see the M7 section of
   docs/training-human-v2plus-proto.md for results and remaining issues.
