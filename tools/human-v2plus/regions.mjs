@@ -1,6 +1,6 @@
 // training-human-v2plus baked muscle regions (DRAFT, v2plus.regions:'baked'): standing front / back, plain atlas look + one
 // highlighted example. Key frames only. Run through run.sh (private Vite + one Chromium):
-//   tools/human-v2plus/run.sh tools/human-v2plus/regions.mjs <outdir> [--size 640] [--hl obliques] [--limbs] [--dump]
+//   tools/human-v2plus/run.sh tools/human-v2plus/regions.mjs <outdir> [--size 640] [--hl obliques] [--limbs] [--hands] [--dump]
 import fs from 'node:fs'; import path from 'node:path'; import { pathToFileURL, fileURLToPath } from 'node:url';
 const REPO = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const { boot } = await import(pathToFileURL(path.join(REPO, 'drill-anim/lib/boot.mjs')).href);
@@ -17,10 +17,12 @@ log('v2plus', JSON.stringify(await p.evaluate(([m, o]) => __v2p.load(m, o), [R('
 log('torso', JSON.stringify(await p.evaluate(d => __v2p.loadTorso(d), R('training-human-v2plus-torso-base.json'))));
 const LIMBS = A.includes('--limbs');   // --limbs: v2plus.limbs:'base' (base-mesh arms + legs) on top of torso:'base'
 if (LIMBS) log('limbs', JSON.stringify(await p.evaluate(d => __v2p.loadLimbs(d), R('training-human-v2plus-limbs-base.json'))));
+const HANDS = LIMBS && A.includes('--hands');   // --hands: v2plus.hands:'base' (base-mesh hands) on top of limbs:'base'
+if (HANDS) log('hands', JSON.stringify(await p.evaluate(d => __v2p.loadHands(d), R('training-human-v2plus-hands-base.json'))));
 await p.addScriptTag({ content: fs.readFileSync(path.join(REPO, 'drill-anim/page/human-v2plus-regions.js'), 'utf8') });
 log('regions', JSON.stringify(await p.evaluate(d => __v2p.loadRegions(d), R('training-human-v2plus-regions.json'))));
 const spec0 = (await import(pathToFileURL(path.join(REPO, 'drill-anim/specs/h-squat.js')).href)).default;
-const spec = Object.assign({}, spec0, { modelProfile: 'training-human-v2plus', v2plus: Object.assign({ outfit: 'compression', torso: 'base', regions: 'baked' }, LIMBS ? { limbs: 'base' } : {}) });
+const spec = Object.assign({}, spec0, { modelProfile: 'training-human-v2plus', v2plus: Object.assign({ outfit: 'compression', torso: 'base', regions: 'baked' }, LIMBS ? { limbs: 'base' } : {}, HANDS ? { hands: 'base' } : {}) });
 await p.evaluate(([spec, th, SZ]) => { (__props.list || []).forEach(o => o.parent?.remove(o)); if (__props.list) __props.list.length = 0;
   __setHighlight({ groups: [] }); __toonUni.uSinkK.value = spec.clothSink ?? 1; for (const pr of spec.props || []) __props.add(th, pr); __drill.setupCamera(spec, SZ); }, [spec, theme, SZ]);
 for (let k = 0; k < 2; k++) await p.evaluate(([s, SZ]) => { __drill.frame(s, 0, -1, null, { size: SZ, full: false }); return 1; }, [spec, SZ]);

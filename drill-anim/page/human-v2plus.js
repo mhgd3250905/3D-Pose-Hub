@@ -305,8 +305,10 @@ V2P.setOutfit = function(name, opts = {}) {
   const limbs = torso && opts.limbs === 'base'; if (opts.limbs && opts.limbs !== 'base') throw new Error('v2plus: unknown limbs ' + opts.limbs);
   if (opts.limbs && !torso) throw new Error("v2plus: limbs:'base' needs torso:'base'"); if (limbs && opts.sleeve === 'long') throw new Error("v2plus: limbs:'base' supports the short sleeve only");
   if (limbs && !V2P.limbs) throw new Error('v2plus: base-mesh limbs data not loaded');
-  if (V2P.limbs && !limbs) V2P.setLimbs(false); if (V2P.torso) V2P.setTorso(torso); if (V2P.limbs && limbs) V2P.setLimbs(true);
-  V2P.outfitOn = on; const sleeve = on ? (opts.sleeve || 'short') : null; V2P.outfitState = on ? Object.assign({ outfit: name, sleeve }, torso ? { torso: 'base' } : {}, limbs ? { limbs: 'base' } : {}) : null;
+  const hands = limbs && opts.hands === 'base'; if (opts.hands && opts.hands !== 'base') throw new Error('v2plus: unknown hands ' + opts.hands);
+  if (opts.hands && !limbs) throw new Error("v2plus: hands:'base' needs limbs:'base'"); if (hands && !V2P.hands) throw new Error('v2plus: base-mesh hands data not loaded');
+  if (V2P.hands && !hands) V2P.setHands(false); if (V2P.limbs && !limbs) V2P.setLimbs(false); if (V2P.torso) V2P.setTorso(torso); if (V2P.limbs && limbs) V2P.setLimbs(true); if (V2P.hands && hands) V2P.setHands(true);
+  V2P.outfitOn = on; const sleeve = on ? (opts.sleeve || 'short') : null; V2P.outfitState = on ? Object.assign({ outfit: name, sleeve }, torso ? { torso: 'base' } : {}, limbs ? { limbs: 'base' } : {}, hands ? { hands: 'base' } : {}) : null;
   V2P.uni.uV2pSleeve.value = sleeve === 'short' ? 1 : 0; V2P.uni.uV2pOut.value = on ? 1 : 0;
   if (V2P.outfit) { V2P.uni.uV2pCuffL.value = V2P.outfit.data.cuffPlanes.left; V2P.uni.uV2pCuffR.value = V2P.outfit.data.cuffPlanes.right; }
   return V2P.outfitState;
@@ -326,7 +328,8 @@ V2P.setOutfit = function(name, opts = {}) {
 const unb64 = (s, C) => { const b = atob(s), u = new Uint8Array(b.length); for (let i = 0; i < b.length; i++) u[i] = b.charCodeAt(i); return new C(u.buffer); };
 function buildPiece(data, meshName, torsoPaint) {
   const t = T(), v = flareInspector.viewer, get = nm => { const o = v.coach.getObjectByName(nm); if (!o) throw new Error('v2plus ' + meshName + ': no mesh ' + nm); return o; };
-  const tee = get('Mesh005'), n = data.n;
+  // skinned like (bound to the skeleton of) the tee by default; the hands piece names Coach_Body (the finger bones live only there)
+  const tee = get(data.skin || 'Mesh005'), n = data.n, skinPaint = !!data.paint.skin;
   // the profile always runs training-collar: read seam weights in that state
   const collar0 = window.__trainingCollarReport?.enabled === true; if (window.__setTrainingCollar && !collar0) window.__setTrainingCollar(true);
   v.motion.reset(); v.coach.updateMatrixWorld(true); v.coach.traverse(o => { if (o.isSkinnedMesh) o.skeleton.update(); });
@@ -360,7 +363,7 @@ function buildPiece(data, meshName, torsoPaint) {
   const H = Math.ceil(n / 1024), tex = () => new Float32Array(1024 * H * 4), vt = tex(), vr = tex(), mm = tex(), rp = tex(), wy = data.paint.waistY;
   for (let i = 0; i < n; i++) { const x = world[i * 3], y = world[i * 3 + 1], z = world[i * 3 + 2]; let arm = 0;
     for (let k = 0; k < 4; k++) if (/UpperArm|Forearm|Hand|^v2p_/.test(names[si[i * 4 + k]])) arm += sw[i * 4 + k];
-    vt.set(!torsoPaint ? (y > wy ? [1, 0, 0, 0] : [0, 0, 1, 0]) : y > wy ? [0, 1, 0, 0] : [0, 0, 1, 0], i * 4); vr.set([x, y, z, 1], i * 4); rp.set([x, y, z, arm], i * 4); }
+    vt.set(skinPaint ? [1, 0, 0, 0] : !torsoPaint ? (y > wy ? [1, 0, 0, 0] : [0, 0, 1, 0]) : y > wy ? [0, 1, 0, 0] : [0, 0, 1, 0], i * 4); vr.set([x, y, z, 1], i * 4); rp.set([x, y, z, arm], i * 4); }
   const dt = a => { const d = new t.DataTexture(a, 1024, H, t.RGBAFormat, t.FloatType); d.magFilter = d.minFilter = t.NearestFilter; d.needsUpdate = true; return d; };
   const TX = { uVT: dt(vt), uVR: dt(vr), uMMT: dt(mm), uV2pT: dt(rp) };
   const base = tee.material, mat = base.clone(), ob = base.onBeforeCompile;
@@ -394,6 +397,21 @@ V2P.loadLimbs = function(data) {
   if (V2P.torso.on || V2P.outfitOn) throw new Error('v2plus: loadLimbs() with the profile off (reads the unmodified index buffers)');
   V2P.limbs = buildPiece(data, 'V2P_Base_Limbs', false); return Object.assign({ limbs: V2P.limbs.report.verts }, V2P.limbs.report);
 };
+// ---------------- 6. base-mesh hands (opt-in: spec.v2plus.hands = 'base'; needs limbs:'base') ----------------
+// drill-anim/models/training-human-v2plus-hands-base.json (tools/human-v2plus/hands-base/build.sh): the hands of the same Blender
+// base-mesh body (left retargeted onto the v2plus finger rig: per-finger re-pose onto the v2 phalanges, the adducted base thumb
+// turned out by a harmonic rotation field + Poisson solve over the thenar; right = exact mirror), welded vertex-for-vertex to the
+// same Coach_Body wrist rings the limbs piece ends at. Bound to Coach_Body's skeleton (the grafted v2p_* finger bones), so the
+// named hand poses drive it exactly like the v2 hand. Always skin-painted (any sleeve). Hidden in this mode: everything limbs
+// hides plus the Coach_Body hands beyond the wrist rings.
+V2P.loadHands = function(data) {
+  if (V2P.hands) return { already: true }; if (!V2P.limbs) throw new Error('v2plus: loadLimbs() before loadHands()');
+  if (V2P.limbs.on || V2P.torso.on || V2P.outfitOn) throw new Error('v2plus: loadHands() with the profile off (reads the unmodified index buffers)');
+  V2P.hands = buildPiece(data, 'V2P_Base_Hands', false); return Object.assign({ hands: V2P.hands.report.verts }, V2P.hands.report);
+};
+// applied after setLimbs (same stacking: remembers the index each swap replaced)
+V2P.setHands = function(on) { const R = V2P.hands; if (!R || R.on === on) return; R.on = on; R.mesh.visible = on;
+  for (const s of R.swaps) { if (on) { s.prev = s.g.index; s.g.setIndex(s.idx1); } else s.g.setIndex(s.prev || s.idx0); } };
 // applied after setTorso: remembers the index each swap replaced, so turning limbs off restores the torso-mode (or plain) buffers
 V2P.setLimbs = function(on) { const R = V2P.limbs; if (!R || R.on === on) return; R.on = on; R.mesh.visible = on;
   for (const s of R.swaps) { if (on) { s.prev = s.g.index; s.g.setIndex(s.idx1); } else s.g.setIndex(s.prev || s.idx0); } };
@@ -417,7 +435,7 @@ V2P.load = function(meta, outfit) {
   if (outfit) V2P.outfit = prepOutfit(outfit);
   const sel0 = E.selectModelProfile.bind(E);
   E.selectModelProfile = function(spec) { if (spec.modelProfile === 'training-human-v2plus') { sel0(Object.assign({}, spec, { modelProfile: 'training-human-v2' })); V2P.enable(true);
-      V2P.setOutfit(spec.v2plus?.outfit || (spec.v2plus?.torso ? 'compression' : null), { sleeve: spec.v2plus?.sleeve, torso: spec.v2plus?.torso, limbs: spec.v2plus?.limbs }); }
+      V2P.setOutfit(spec.v2plus?.outfit || (spec.v2plus?.torso ? 'compression' : null), { sleeve: spec.v2plus?.sleeve, torso: spec.v2plus?.torso, limbs: spec.v2plus?.limbs, hands: spec.v2plus?.hands }); }
     else { if (V2P.on) { V2P.setOutfit(null); V2P.enable(false); } sel0(spec); } };
   const pose0 = E.pose.bind(E);
   E.pose = function(spec, params, warm) { const r = pose0(spec, params, warm);
