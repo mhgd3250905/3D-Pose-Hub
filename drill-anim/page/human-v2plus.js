@@ -322,74 +322,6 @@ V2P.setOutfit = function(name, opts = {}) {
   return V2P.outfitState;
 };
 
-// ---------------- eye-socket seams of the v2 head (on whenever the v2plus profile is active and head:'base' is not set) ----------------
-// The closed-lid slit inside each eye socket of the v2 head (Toon_Mannequin_Head_v5, built by head.js from assets/srchead.json) is
-// bridged by a few long sliver triangles fanned between the upper and lower lid rows; they render as streaky, sharp seams.
-// Here those triangles are replaced by an even grid between the two lid rows (eyeRows bands); the new vertices are linear blends
-// of lid-row vertices (positions, normals, vertex-texture texels), so the socket keeps its depth and the shading blends smoothly
-// from upper to lower lid. No existing vertex moves. Off = the original index buffer back (new vertices are simply not indexed).
-const EYE = { C: [0.031, 1.5795, 0.128], R: [0.024, 0.017, 0.03], slit: 0.009, rows: 4 };
-function eyePlan(H) {
-  const S = H.pos, N = H.nor, I = H.idx, ns = S.length / 3;
-  const inR = i => Math.hypot((Math.abs(S[i * 3]) - EYE.C[0]) / EYE.R[0], (S[i * 3 + 1] - EYE.C[1]) / EYE.R[1], (S[i * 3 + 2] - EYE.C[2]) / EYE.R[2]) < 1;
-  const L = (a, b) => Math.hypot(S[a * 3] - S[b * 3], S[a * 3 + 1] - S[b * 3 + 1], S[a * 3 + 2] - S[b * 3 + 2]);
-  const idx = [], eyes = { 1: [], [-1]: [] };
-  for (let t = 0; t < I.length; t += 3) { const a = I[t], b = I[t + 1], c = I[t + 2];
-    if (inR(a) && inR(b) && inR(c) && Math.max(L(a, b), L(b, c), L(c, a)) > EYE.slit) eyes[Math.sign(S[a * 3])].push(a, b, c); else idx.push(a, b, c); }
-  const rec = []; let nv = ns; const SP = Array.from(S), NP = Array.from(N);   // source-space positions/normals incl. new verts (winding test)
-  const lin = (W, A, k) => W.reduce((s, [v, w]) => s + A[v * 3 + k] * w, 0);
-  for (const sx of [1, -1]) { const T = eyes[sx]; if (!T.length) continue; const V = [...new Set(T)];
-    let lo = V[0], hi = V[0]; for (const v of V) { if (sx * S[v * 3] < sx * S[lo * 3]) lo = v; if (sx * S[v * 3] > sx * S[hi * 3]) hi = v; }
-    const yl = x => S[lo * 3 + 1] + (S[hi * 3 + 1] - S[lo * 3 + 1]) * (x - S[lo * 3]) / ((S[hi * 3] - S[lo * 3]) || 1e-9);
-    const side = up => V.filter(v => v !== lo && v !== hi && (S[v * 3 + 1] > yl(S[v * 3])) === up).sort((a, b) => sx * (S[a * 3] - S[b * 3]));
-    const U = [lo, ...side(true), hi], D = [lo, ...side(false), hi];
-    const arc = r => { const s = [0]; for (let i = 1; i < r.length; i++) s.push(s[i - 1] + L(r[i - 1], r[i])); return s.map(x => x / (s[s.length - 1] || 1)); };
-    const sU = arc(U), sD = arc(D);
-    const at = (r, sr, u) => { let i = 1; while (i < sr.length - 1 && sr[i] < u) i++; const f = Math.min(1, Math.max(0, (u - sr[i - 1]) / ((sr[i] - sr[i - 1]) || 1))); return [[r[i - 1], 1 - f], [r[i], f]]; };
-    const M = Math.max(U.length, D.length), rows = [U];
-    for (let r = 1; r < EYE.rows; r++) { const t = r / EYE.rows, row = [U[0]];
-      for (let m = 1; m < M - 1; m++) { const u = m / (M - 1); const W = [...at(U, sU, u).map(([v, w]) => [v, w * (1 - t)]), ...at(D, sD, u).map(([v, w]) => [v, w * t])];
-        rec.push(W); for (let k = 0; k < 3; k++) { SP.push(lin(W, S, k)); NP.push(lin(W, N, k)); } row.push(nv++); }
-      row.push(U[U.length - 1]); rows.push(row); }
-    rows.push(D);
-    const prm = r => { const s = [0]; for (let i = 1; i < r.length; i++) s.push(s[i - 1] + Math.hypot(SP[r[i] * 3] - SP[r[i - 1] * 3], SP[r[i] * 3 + 1] - SP[r[i - 1] * 3 + 1], SP[r[i] * 3 + 2] - SP[r[i - 1] * 3 + 2])); return s.map(x => x / (s[s.length - 1] || 1)); };
-    const facing = (a, b, c) => { const ux = SP[b * 3] - SP[a * 3], uy = SP[b * 3 + 1] - SP[a * 3 + 1], uz = SP[b * 3 + 2] - SP[a * 3 + 2], vx = SP[c * 3] - SP[a * 3], vy = SP[c * 3 + 1] - SP[a * 3 + 1], vz = SP[c * 3 + 2] - SP[a * 3 + 2];
-      return (uy * vz - uz * vy) * (NP[a * 3] + NP[b * 3] + NP[c * 3]) + (uz * vx - ux * vz) * (NP[a * 3 + 1] + NP[b * 3 + 1] + NP[c * 3 + 1]) + (ux * vy - uy * vx) * (NP[a * 3 + 2] + NP[b * 3 + 2] + NP[c * 3 + 2]); };
-    const want = facing(T[0], T[1], T[2]) >= 0;   // the source slivers' own orientation
-    const push = (a, b, c) => { if (a === b || b === c || a === c) return; if ((facing(a, b, c) >= 0) === want) idx.push(a, b, c); else idx.push(a, c, b); };
-    for (let r = 0; r < rows.length - 1; r++) { const A = rows[r], B = rows[r + 1], sa = prm(A), sb = prm(B); let i = 0, j = 0;
-      while (i < A.length - 1 || j < B.length - 1) { if (j >= B.length - 1 || (i < A.length - 1 && sa[i + 1] <= sb[j + 1])) { push(A[i], A[i + 1], B[j]); i++; } else { push(A[i], B[j + 1], B[j]); j++; } } } }
-  return { ns, rec, idx: new Uint32Array(idx), slivers: eyes[1].length / 3 + eyes[-1].length / 3 };
-}
-V2P.setEyes = function(on) {
-  const hm = window.flareInspector?.viewer?.coach?.getObjectByName('Toon_Mannequin_Head_v5'); if (!hm || !window.__srcHead) return null;
-  if (!V2P.eyes || V2P.eyes.mesh !== hm) {
-    const plan = eyePlan(window.__srcHead), g = hm.geometry, ns = plan.ns, n2 = ns + plan.rec.length;
-    if (g.attributes.position.count !== ns) return null;
-    const grow = (A, C) => { const o = new C(n2 * A.itemSize); o.set(A.array); return o; };
-    const P = grow(g.attributes.position, Float32Array), N = grow(g.attributes.normal, Float32Array), SI = grow(g.attributes.skinIndex, Uint16Array), SW = grow(g.attributes.skinWeight, Float32Array);
-    plan.rec.forEach((W, r) => { const i = ns + r; let nx = 0, ny = 0, nz = 0; let best = W[0];
-      for (const [v, w] of W) { P[i * 3] += P[v * 3] * w; P[i * 3 + 1] += P[v * 3 + 1] * w; P[i * 3 + 2] += P[v * 3 + 2] * w; nx += N[v * 3] * w; ny += N[v * 3 + 1] * w; nz += N[v * 3 + 2] * w; if (w > best[1]) best = [v, w]; }
-      const l = Math.hypot(nx, ny, nz) || 1; N[i * 3] = nx / l; N[i * 3 + 1] = ny / l; N[i * 3 + 2] = nz / l; for (let k = 0; k < 4; k++) { SI[i * 4 + k] = SI[best[0] * 4 + k]; SW[i * 4 + k] = SW[best[0] * 4 + k]; } });
-    V2P.eyes = { mesh: hm, plan, orig: g.index, n2, attrs: { position: new (T().BufferAttribute)(P, 3), normal: new (T().BufferAttribute)(N, 3), skinIndex: new (T().BufferAttribute)(SI, 4), skinWeight: new (T().BufferAttribute)(SW, 4) },
-      origAttrs: { position: g.attributes.position, normal: g.attributes.normal, skinIndex: g.attributes.skinIndex, skinWeight: g.attributes.skinWeight }, index: new (T().BufferAttribute)(plan.idx, 1), on: false };
-    // the head's vertex texture (uVT, read by gl_VertexID; head.js hands it to the material in onBeforeCompile): copy each new
-    // vertex's main lid-vertex texel into the spare texels after the source vertices (the texture is 1024 wide, rows rounded up)
-    const vt = window.flareInspector.viewer.renderer.properties.get(hm.material)?.uniforms?.uVT?.value || null;
-    if (!vt) { V2P.eyes = null; return null; }   // head material not compiled yet: retry on a later frame
-    const cap = vt.image ? vt.image.width * vt.image.height : 0;
-    if (cap < n2) { V2P.eyes = { mesh: hm, skipped: 'uVT too small', on: false }; return false; }
-    const D = vt.image.data; plan.rec.forEach((W, r) => { const i = ns + r; const b = W.reduce((m, x) => x[1] > m[1] ? x : m)[0]; for (let k = 0; k < 4; k++) D[i * 4 + k] = D[b * 4 + k]; D[i * 4 + 1] = 0; });
-    // texel .y is head.js's cavity crease darkening: none on the new grid, half on the lid rows it joins (restored when off)
-    const lid = [...new Set(plan.rec.flatMap(W => W.map(x => x[0])))]; V2P.eyes.vt = vt; V2P.eyes.lid = lid.map(v => [v, D[v * 4 + 1]]); vt.needsUpdate = true; }
-  if (V2P.eyes.skipped) return false;
-  const E = V2P.eyes, g = hm.geometry; if (E.on === !!on) return E.on;
-  const D = E.vt.image.data; for (const [v, c] of E.lid) D[v * 4 + 1] = on ? c * 0.5 : c; E.vt.needsUpdate = true;
-  if (on) { for (const k in E.attrs) g.setAttribute(k, E.attrs[k]); g.setIndex(E.index); }
-  else { for (const k in E.origAttrs) g.setAttribute(k, E.origAttrs[k]); g.setIndex(E.orig); }
-  E.on = !!on; return E.on;
-};
-
 // ---------------- 4. base-mesh torso (opt-in: spec.v2plus.torso = 'base'; implies outfit 'compression') ----------------
 // drill-anim/models/training-human-v2plus-torso-base.json (tools/human-v2plus/torso-base/build.sh): the torso of Blender's
 // "Human Base Meshes" realistic male body (CC0, blender.org) from below the collar band to the upper thighs, re-posed and smoothly
@@ -548,8 +480,8 @@ V2P.load = function(meta, outfit) {
   if (outfit) V2P.outfit = prepOutfit(outfit);
   const sel0 = E.selectModelProfile.bind(E);
   E.selectModelProfile = function(spec) { if (spec.modelProfile === 'training-human-v2plus') { sel0(Object.assign({}, spec, { modelProfile: 'training-human-v2' })); V2P.enable(true);
-      V2P.setOutfit(spec.v2plus?.outfit || (spec.v2plus?.torso ? 'compression' : null), { sleeve: spec.v2plus?.sleeve, torso: spec.v2plus?.torso, limbs: spec.v2plus?.limbs, hands: spec.v2plus?.hands, head: spec.v2plus?.head }); V2P.setEyes(spec.v2plus?.head !== 'base'); }
-    else { if (V2P.on) { V2P.setOutfit(null); V2P.setEyes(false); V2P.enable(false); } sel0(spec); } };
+      V2P.setOutfit(spec.v2plus?.outfit || (spec.v2plus?.torso ? 'compression' : null), { sleeve: spec.v2plus?.sleeve, torso: spec.v2plus?.torso, limbs: spec.v2plus?.limbs, hands: spec.v2plus?.hands, head: spec.v2plus?.head }); }
+    else { if (V2P.on) { V2P.setOutfit(null); V2P.enable(false); } sel0(spec); } };
   const pose0 = E.pose.bind(E);
   E.pose = function(spec, params, warm) { const r = pose0(spec, params, warm);
     if (V2P.on) { for (const s of ['left', 'right']) { const nm = V2P.pickHandPose(spec, s);

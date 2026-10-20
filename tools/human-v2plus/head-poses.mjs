@@ -63,10 +63,6 @@ const SETS = { m10: [
   ['h-squat', 0.0, null, [['head-front', [0.0, 0.02, 1], 'head', 0.25], ['head-side', [1, 0.02, 0.0], 'head', 0.25], ['head-34', [0.75, 0.08, 0.66], 'head', 0.25]]],
   ['h-squat', 0.0, 'tech-white', [['tw-34', [0.75, 0.08, 0.66], 'head', 0.3]]],
   ['h-squat', 0.0, 'neon-night', [['nn-34', [0.75, 0.08, 0.66], 'head', 0.3]]],
-],
-  // original v2 head eye-socket close-ups (OLDHEAD=1 --set eyes)
-  eyes: [
-  ['h-squat', 0.0, null, [['eye-front', [0.0, 0.05, 1], 'head', 0.17], ['eye-34', [0.6, 0.05, 0.8], 'head', 0.17], ['eye-side', [0.95, 0.05, 0.3], 'head', 0.17]]],
 ] };
 const JD = {}; const VIEWS = process.env.VIEWS?.split(',');
 for (const [id, t, skin, views] of SETS[SETS[SET] ? SET : 'm10']) { if (ONLY && !ONLY.includes(id)) continue;
@@ -85,7 +81,7 @@ for (const [id, t, skin, views] of SETS[SETS[SET] ? SET : 'm10']) { if (ONLY && 
         const box = new T.Box3().setFromCenterAndSize(new T.Vector3(...J[jn]), new T.Vector3(sz, sz, sz));
         __aim(box, dir, 0.9); v.renderer.setSize(SZ, SZ, false); v.renderer.render(v.scene, v.camera); return v.renderer.domElement.toDataURL('image/jpeg', 0.9); }, [spec, t, dir, jn, sz, SZ]);
       fs.writeFileSync(path.join(OUT, `${id}-t${t.toFixed(2)}-${vn}.jpg`), Buffer.from(img.split(',')[1], 'base64'));
-      log(id, t, vn, JSON.stringify(await p.evaluate(() => __v2p.outfitState)), JSON.stringify(await p.evaluate(() => __v2p.eyes ? { on: __v2p.eyes.on, skipped: __v2p.eyes.skipped, slivers: __v2p.eyes.plan?.slivers, added: __v2p.eyes.plan?.rec.length } : null))); }
+      log(id, t, vn, JSON.stringify(await p.evaluate(() => __v2p.outfitState))); }
   }
   const A0 = JD[id + t + 'old'], A1 = JD[id + t + 'head'];
   if (A0 && A1) { let mx = 0; for (const k in A0) for (let c = 0; c < 3; c++) mx = Math.max(mx, Math.abs(A0[k][c] - A1[k][c])); log(id, t, 'joint max diff mm (no head vs head)', (mx * 1000).toFixed(4)); } }
