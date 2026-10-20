@@ -9,8 +9,9 @@
 import os, numpy as np
 from meshops import *
 def sstep(a,b,x): u=np.clip((x-a)/(b-a),0,1); return u*u*(3-2*u)
-FACE=os.environ.get('HD_FACE','egg') if os.environ.get('HD_MANNEQUIN','1')!='0' else 'detail'
-if FACE!='soft': print('mannequin face (soft): off, HD_FACE =',FACE); raise SystemExit
+FACE=os.environ.get('HD_FACE','wrap') if os.environ.get('HD_MANNEQUIN','1')!='0' else 'detail'
+if FACE not in ('soft','wrap'): print('mannequin face (soft): off, HD_FACE =',FACE); raise SystemExit
+# HD_FACE=wrap (M10d) reuses only step 1 (mouth / nostril cavities closed, eye lid patches re-capped); head_w.py does the rest
 h=dict(np.load('head_fit.npz')); V=h['V'].astype(float); F=h['F']; n=len(V)
 f=lambda k,d: float(os.environ.get(k,d))
 T_LOW=f('HD_M_T','15000'); K_FACE=f('HD_M_KFACE','0.25'); K_EYE=f('HD_M_KEYE','0.0'); K_MOUTH=f('HD_M_KMOUTH','0.06')
@@ -54,6 +55,7 @@ if holes:
     for kk in range(int(os.environ.get('HD_M_CAPRIM','3'))): free=free|((Ac@free.astype(float))>0)
     V=bilaplace_fair(V,F,free); n=len(V)
 h['F']=F; h['LA']=LA
+if FACE=='wrap': h['V']=V; np.savez('head_fit.npz',**h); print('wrap: cavities closed, verts',len(V)); raise SystemExit
 x,y,z=V[:,0],V[:,1],V[:,2]; ax=np.abs(x)
 def ell(c,r):   # 1 inside the ellipsoid, smooth falloff to 0 at 1.6x radius
     d=np.sqrt((((V-np.array(c))/np.array(r))**2).sum(1)); return 1-sstep(1.0,1.6,d)

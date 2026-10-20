@@ -13,7 +13,7 @@
 #  bottom row (base cut exactly on the Y_C plane; grid bottom rows faded onto the real contour, FADE rows; no fairing needed).
 import os, numpy as np
 from meshops import *
-FACE=os.environ.get('HD_FACE','egg') if os.environ.get('HD_MANNEQUIN','1')!='0' else 'detail'
+FACE=os.environ.get('HD_FACE','wrap') if os.environ.get('HD_MANNEQUIN','1')!='0' else 'detail'
 if FACE!='egg': print('egg head: off, HD_FACE =',FACE); raise SystemExit
 f=lambda k,d: float(os.environ.get(k,d))
 Y_C=f('HD_E_YC','1.46'); Y_T=f('HD_E_YT','1.515'); K_U=f('HD_E_KU','0.03'); TILT=np.radians(f('HD_E_TILT','28'))
