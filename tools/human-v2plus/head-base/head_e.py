@@ -1,4 +1,4 @@
-# head stage E (M10c): faceless egg mannequin head — head_fit.npz -> head_fit.npz (in place; runs when HD_FACE=egg, the default)
+# head stage E (M10c): faceless egg mannequin head — head_fit.npz -> head_fit.npz (in place; runs when HD_FACE=egg or mannequin; mannequin is the default, M10e)
 #  The whole head above Y_C (just under the jaw) is replaced by an analytic surface; the base neck below Y_C (weld loop, collar band,
 #  trapezius) is kept untouched.
 #  Implicit: smooth union (polynomial smin, K_U) of
@@ -13,13 +13,14 @@
 #  bottom row (base cut exactly on the Y_C plane; grid bottom rows faded onto the real contour, FADE rows; no fairing needed).
 import os, numpy as np
 from meshops import *
-FACE=os.environ.get('HD_FACE','wrap') if os.environ.get('HD_MANNEQUIN','1')!='0' else 'detail'
-if FACE!='egg': print('egg head: off, HD_FACE =',FACE); raise SystemExit
+FACE=os.environ.get('HD_FACE','mannequin') if os.environ.get('HD_MANNEQUIN','1')!='0' else 'detail'
+if FACE not in ('egg','mannequin'): print('egg / mannequin head: off, HD_FACE =',FACE); raise SystemExit
+MANN=FACE=='mannequin'
 f=lambda k,d: float(os.environ.get(k,d))
 Y_C=f('HD_E_YC','1.46'); Y_T=f('HD_E_YT','1.515'); K_U=f('HD_E_KU','0.03'); TILT=np.radians(f('HD_E_TILT','28'))
 AX,AY,AZ=f('HD_E_AX','0.076'),f('HD_E_AY','0.124'),f('HD_E_AZ','0.096'); TAPER=f('HD_E_TAPER','0.16'); CZ=f('HD_E_CZ','0.03')
 NRX,NRZF,NRZB=f('HD_E_NRX','0.056'),f('HD_E_NRZF','0.056'),f('HD_E_NRZB','0.050')   # slim neck ellipse at Y_T (side, front, back)
-GAP_E=f('HD_E_GAP','0.003'); Y_P=f('HD_E_YP','1.53'); NECK_P=f('HD_E_NECKP','20'); NA=int(f('HD_E_NA','192')); NR=int(f('HD_E_NR','128')); assert NA%4==0
+GAP_E=f('HD_E_GAP','0.003'); Y_P=f('HD_E_YP','1.53'); NECK_P=f('HD_E_NECKP','20'); NA=int(f('HD_E_NA','256' if MANN else '192')); NR=int(f('HD_E_NR','160' if MANN else '128')); assert NA%4==0
 h=dict(np.load('head_fit.npz')); V0=h['V'].astype(float); F0=h['F']; LA0=np.array(h['LA'])
 TOP=f('HD_E_TOP',str(V0[:,1].max()))
 # ---- neck radial profile r_m(y, a) from the base neck (y < Y_C + 1 cm), mirrored in x
@@ -55,6 +56,37 @@ def d_egg(P,cy):
     dy=P[...,1]-cy; dz=P[...,2]-CZ; yp=ct*dy-st*dz; zp=st*dy+ct*dz; s=np.clip(1+TAPER*yp/AY,0.6,1.4)
     q=np.sqrt((P[...,0]/(AX*s))**2+(zp/(AZ*s))**2+(yp/AY)**2); return (q-1)*0.09
 def smin(a,b,k): hh=np.clip(0.5+0.5*(b-a)/k,0,1); return b*(1-hh)+a*hh-k*hh*(1-hh)
+if MANN:
+    # M10e display-mannequin head (hand re-creation of the user's "MANNEQUIN HEAD three view modeling sheet"; Kielwo "Base Mesh Faceless Male" secondary):
+    #  cranium : super-ellipsoid (exponent P_CR, a bit boxier than an ellipse) — skull, smooth forehead, occiput
+    #  face    : rotated (chin forward) super-ellipsoid, x semi-axis tapered toward the chin (cheek planes -> defined jaw line)
+    #  chin    : optional small ellipsoid (HD_K_CHIN=1; off by default — the face mass alone gives the broad, tucked-back chin)
+    #  nose    : additive ridge on the face front (Gaussian across x, smooth window in y): one soft, long, low ridge brow -> mid-face, no tip / nostrils
+    #  no eye sockets, mouth or ears: none of the primitives carries them. All terms C1+, exactly x-symmetric (functions of |x|).
+    #  y coordinates are given for the M10 crown (1.7275) and shifted with TOP.
+    g=lambda k,d: f('HD_K_'+k,d); OY=TOP-1.7275
+    CR_C=np.array([0,g('CRY','1.630')+OY,g('CRZ','0.020')]); CR_A=np.array([g('CRAX','0.080'),g('CRAY','0.0975'),g('CRAZ','0.101')]); P_CR=g('CRP','2.25')
+    FC_C=np.array([0,g('FCY','1.575')+OY,g('FCZ','0.045')]); FC_A=np.array([g('FCAX','0.072'),g('FCAY','0.085'),g('FCAZ','0.080')]); P_FC=g('FCP','2.4')
+    FC_R=np.radians(g('FCROT','10')); FC_T=g('FCTAP','0.28'); K_CF=g('KCF','0.03')
+    CH_C=np.array([0,g('CHY','1.508')+OY,g('CHZ','0.097')]); CH_A=np.array([g('CHAX','0.025'),g('CHAY','0.017'),g('CHAZ','0.021')]); K_CH=g('KCH','0.014')
+    NO_H=g('NOH','0.0045'); NO_W=g('NOW','0.011'); NO_Y0,NO_Y1=g('NOY0','1.552')+OY,g('NOY1','1.642')+OY; NO_YP=g('NOYP','1.590')+OY; CHIN=g('CHIN','0')
+    def sell(P,c,a,p):
+        q=(np.abs(P[...,0]-c[0])/a[0])**p+(np.abs(P[...,1]-c[1])/a[1])**p+(np.abs(P[...,2]-c[2])/a[2])**p
+        return (q**(1/p)-1)*a.min()
+    def d_mann(P,cy=None):
+        dc=sell(P,CR_C,CR_A,P_CR)
+        dy=P[...,1]-FC_C[1]; dz=P[...,2]-FC_C[2]; c,s_=np.cos(FC_R),np.sin(FC_R); yp=c*dy-s_*dz; zp=s_*dy+c*dz
+        ax=FC_A[0]*np.clip(1+FC_T*yp/FC_A[1],0.45,1.6)
+        q=(np.abs(P[...,0])/ax)**P_FC+np.abs(yp/FC_A[1])**P_FC+np.abs(zp/FC_A[2])**P_FC; df=(q**(1/P_FC)-1)*FC_A[2]*0.9
+        d=smin(dc,df,K_CF)
+        dch=(np.sqrt(((P[...,0]-CH_C[0])/CH_A[0])**2+((P[...,1]-CH_C[1])/CH_A[1])**2+((P[...,2]-CH_C[2])/CH_A[2])**2)-1)*CH_A.min()
+        if CHIN: d=smin(d,dch,K_CH)
+        # nose ridge: rises from the root (NO_Y1) to its low end (NO_YP), then fades fast to NO_Y0; front only (z window)
+        y=P[...,1]; up=np.clip((NO_Y1-y)/(NO_Y1-NO_YP),0,1); dn=np.clip((y-NO_Y0)/(NO_YP-NO_Y0),0,1)
+        wy=np.where(y>NO_YP,np.sin(up*np.pi/2)**2,dn*dn*(3-2*dn))*(up>0)*(dn>0)
+        wz=np.clip((P[...,2]-0.07)/0.03,0,1); wz=wz*wz*(3-2*wz)
+        return d-NO_H*wy*wz*np.exp(-(P[...,0]/NO_W)**2)
+    d_egg=d_mann
 def Ffun(P,cy):
     r=np.hypot(P[...,0],P[...,2]); a=ang(P[...,0],P[...,2]); dn=r-r_neck(P[...,1],a)+NECK_P*np.maximum(P[...,1]-Y_P,0)**2   # C1 fade-out inside the egg (a hard cap made a crease via smin)
     return smin(d_egg(P,cy),dn,K_U)
@@ -63,7 +95,8 @@ def egg_top(cy):
     zz=np.linspace(-0.12,0.16,561); yy=np.linspace(cy,cy+0.2,801); Z,Y=np.meshgrid(zz,yy); P=np.stack([0*Z,Y,Z],-1)
     ins=d_egg(P,cy)<0; return Y[ins].max()
 cy=1.61
-for it in range(3): cy+=TOP-egg_top(cy)
+if not MANN:
+    for it in range(3): cy+=TOP-egg_top(cy)
 # ---- meridians: the F = 0 contour in the half-plane of azimuth a (marching squares on an R_GRID grid over (r, y)), from the crown
 # (r = 0) down to Y_C (works for the non-star-shaped jaw / under-chin / trapezius parts)
 from skimage.measure import find_contours
@@ -86,7 +119,7 @@ for j in half:
 for j in range(NA):
     if j not in half: G[:,j]=G[:,mir(j)]*np.array([-1,1,1])
 G[0,:]=np.array([0,G[0,:,1].mean(),G[0,:,2].mean()])
-print('egg: cy',round(cy,4),'max profile y-reversals',multi)
+print(FACE+': cy',round(cy,4),'max profile y-reversals',multi)
 # grid mesh: pole vertex + NR rows x NA
 Vg=np.r_[G[0,:1],G[1:].reshape(-1,3)]; idx=lambda i,j: 0 if i==0 else 1+(i-1)*NA+(j%NA)
 Fg=[]
@@ -132,7 +165,13 @@ print('kept base neck verts',nk,'faces',len(Fk),'| top loop',len(top),'y range',
 FADE=int(f('HD_E_FADE','14')); al=np.arctan2(Vk[top,2],Vk[top,0]); rl=np.hypot(Vk[top,0],Vk[top,2]); o_=np.argsort(al)
 dr=np.interp(aj,al[o_],rl[o_],period=2*np.pi)-r_neck(np.full(NA,Y_C),(aj+np.pi)%(2*np.pi)-np.pi)
 print('contour vs analytic r at Y_C mm: p5/p50/p95',np.percentile(dr*1000,[5,50,95]).round(2),'maxabs',np.abs(dr*1000).max().round(2))
-for i in range(max(1,NR-FADE),NR+1):
+if MANN:   # exact symmetry above the seam band: the mirror-symmetric part of dr fades over FADE rows, the asymmetric part only over FADE_A rows
+    FADE_A=int(f('HD_E_FADEA','5')); drs=0.5*(dr+dr[[mir(j) for j in range(NA)]]); dra=dr-drs
+    for i in range(max(1,NR-FADE),NR+1):
+        w=((i-(NR-FADE))/FADE); w=w*w*(3-2*w); wa=np.clip((i-(NR-FADE_A))/FADE_A,0,1); wa=wa*wa*(3-2*wa); dd=w*drs+wa*dra
+        rows=np.array([idx(i,j) for j in range(NA)]); Vg[rows,0]+=dd*np.cos(aj); Vg[rows,2]+=dd*np.sin(aj)
+else:
+  for i in range(max(1,NR-FADE),NR+1):
     w=((i-(NR-FADE))/FADE); w=w*w*(3-2*w); rows=np.array([idx(i,j) for j in range(NA)]); Vg[rows,0]+=w*dr*np.cos(aj); Vg[rows,2]+=w*dr*np.sin(aj)
 bot=np.array([idx(NR,j) for j in range(NA)])
 PA=Vk[top]; PB=Vg[bot]
@@ -143,7 +182,8 @@ Nz=np.cross(V[Zg[:,1]]-V[Zg[:,0]],V[Zg[:,2]]-V[Zg[:,0]]); rad=V[Zg].mean(1); rad
 if np.einsum('ij,ij->i',Nz,rad).mean()<0: Zg=Zg[:,[0,2,1]]
 F=np.r_[F,Zg]
 # report: symmetry of the generated part, extents vs the old head, flips / sharp edges
-g=slice(nk,len(V)); Vgen=V[g]; tr=cKDTree(Vgen); dm,_=tr.query(Vgen*np.array([-1,1,1])); print('egg part mirror error max mm',(dm.max()*1000).round(4))
+g=slice(nk,len(V)); Vgen=V[g]; tr=cKDTree(Vgen); dm,_=tr.query(Vgen*np.array([-1,1,1])); print('egg part mirror error max mm',(dm.max()*1000).round(4),
+  '| above y 1.475 mm',(dm[Vgen[:,1]>1.475].max()*1000).round(4))
 Nf=np.cross(V[F[:,1]]-V[F[:,0]],V[F[:,2]]-V[F[:,0]]); Nu=Nf/np.maximum(np.linalg.norm(Nf,axis=1,keepdims=True),1e-15)
 E=np.r_[F[:,[0,1]],F[:,[1,2]],F[:,[2,0]]]; fid=np.tile(np.arange(len(F)),3); key=np.sort(E,1); o=np.lexsort((key[:,1],key[:,0])); ks=key[o]
 same=(ks[1:]==ks[:-1]).all(1); a_=fid[o][:-1][same]; b_=fid[o][1:][same]; dots=np.einsum('ij,ij->i',Nu[a_],Nu[b_])

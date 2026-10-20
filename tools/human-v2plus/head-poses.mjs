@@ -51,6 +51,12 @@ const SETS = { m10: [
   ['h-squat', 0.0, null, [['head-front', [0.0, 0.02, 1], 'head', 0.25], ['head-side', [1, 0.02, 0.0], 'head', 0.25], ['head-back', [0.0, 0.02, -1], 'head', 0.25], ['head-34', [0.75, 0.08, 0.66], 'head', 0.25]]],
   ['h-squat', 0.0, 'tech-white', [['tw-34', [0.75, 0.08, 0.66], 'head', 0.36]]],
   ['h-squat', 0.0, 'neon-night', [['nn-34', [0.75, 0.08, 0.66], 'head', 0.36]]],
+],
+  // M10e display-mannequin head: front / side / 3/4 (default skin) + tech-white + neon-night (--set m10e)
+  m10e: [
+  ['h-squat', 0.0, null, [['head-front', [0.0, 0.02, 1], 'head', 0.25], ['head-side', [1, 0.02, 0.0], 'head', 0.25], ['head-34', [0.75, 0.08, 0.66], 'head', 0.25]]],
+  ['h-squat', 0.0, 'tech-white', [['tw-34', [0.75, 0.08, 0.66], 'head', 0.3]]],
+  ['h-squat', 0.0, 'neon-night', [['nn-34', [0.75, 0.08, 0.66], 'head', 0.3]]],
 ] };
 const JD = {}; const VIEWS = process.env.VIEWS?.split(',');
 for (const [id, t, skin, views] of SETS[SETS[SET] ? SET : 'm10']) { if (ONLY && !ONLY.includes(id)) continue;

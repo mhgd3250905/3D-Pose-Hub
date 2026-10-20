@@ -1,4 +1,4 @@
-# head stage W (M10d): "fabric wrap" face — head_fit.npz -> head_fit.npz (in place; runs when HD_FACE=wrap, the default)
+# head stage W (M10d): "fabric wrap" face — head_fit.npz -> head_fit.npz (in place; runs when HD_FACE=wrap)
 #  The real (M10 detail) head as if tightly wrapped in smooth stretch fabric (a Spider-Man head without its texture): the big convex forms
 #  (skull, forehead, brow ridge, cheekbones, jaw, chin, nose bridge + tip) are kept exactly; small concavities are bridged.
 #  Input: head_a's detail head with head_m step 1 applied (mouth / nostril cavities cut + capped, eye lid patches re-capped).
@@ -17,7 +17,7 @@ import scipy.sparse as sp
 from scipy.sparse.linalg import factorized
 from scipy import ndimage as ndi
 from scipy.spatial import cKDTree
-FACE=os.environ.get('HD_FACE','wrap') if os.environ.get('HD_MANNEQUIN','1')!='0' else 'detail'
+FACE=os.environ.get('HD_FACE','mannequin') if os.environ.get('HD_MANNEQUIN','1')!='0' else 'detail'
 if FACE!='wrap': print('fabric wrap: off, HD_FACE =',FACE); raise SystemExit
 f=lambda k,d: float(os.environ.get(k,d))
 def sstep(a,b,x): u=np.clip((x-a)/(b-a),0,1); return u*u*(3-2*u)
