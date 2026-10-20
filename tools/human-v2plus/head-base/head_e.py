@@ -5,7 +5,8 @@
 #    egg  : tilted ovoid (long axis leaning back TILT deg, semi-axes AX / AY / AZ, horizontal taper 1 + TAPER * y'/AY: narrower toward
 #           the chin), scaled to an approximate distance; centre height solved so the crown matches the old top of head
 #    neck : r - r_neck(y, a) about the vertical neck axis; r_neck = the base neck's own radial profile (binned, x-mirrored, smoothed) up
-#           to Y_C, continued above Y_C by a cubic Hermite (value + slope at Y_C -> slim neck ellipse at Y_T, slope 0), capped inside the egg
+#           to Y_C, continued above Y_C by a cubic Hermite (value + slope at Y_C -> slim neck ellipse at Y_T, slope 0), faded out inside the
+#           egg by + NECK_P * max(y - Y_P, 0)^2 (C1, no crease)
 #  Mesh: per azimuth (NA, mirror-symmetric set: a_j = 2 pi j / NA, NA % 4 == 0) a meridian is ray-cast from an inner centre on the neck
 #  axis (bisection), cut exactly at Y_C, and resampled by arc length to NR rows (crown pole -> Y_C); quads split with mirrored diagonals,
 #  vertices of the x<0 half copied from the x>0 half (exact sagittal symmetry). Seam: kept base faces (all verts y < Y_C) zipped to the
@@ -18,7 +19,7 @@ f=lambda k,d: float(os.environ.get(k,d))
 Y_C=f('HD_E_YC','1.46'); Y_T=f('HD_E_YT','1.515'); K_U=f('HD_E_KU','0.03'); TILT=np.radians(f('HD_E_TILT','28'))
 AX,AY,AZ=f('HD_E_AX','0.076'),f('HD_E_AY','0.124'),f('HD_E_AZ','0.096'); TAPER=f('HD_E_TAPER','0.16'); CZ=f('HD_E_CZ','0.03')
 NRX,NRZF,NRZB=f('HD_E_NRX','0.056'),f('HD_E_NRZF','0.056'),f('HD_E_NRZB','0.050')   # slim neck ellipse at Y_T (side, front, back)
-GAP_E=f('HD_E_GAP','0.003'); NA=int(f('HD_E_NA','192')); NR=int(f('HD_E_NR','128')); assert NA%4==0
+GAP_E=f('HD_E_GAP','0.003'); Y_P=f('HD_E_YP','1.53'); NECK_P=f('HD_E_NECKP','20'); NA=int(f('HD_E_NA','192')); NR=int(f('HD_E_NR','128')); assert NA%4==0
 h=dict(np.load('head_fit.npz')); V0=h['V'].astype(float); F0=h['F']; LA0=np.array(h['LA'])
 TOP=f('HD_E_TOP',str(V0[:,1].max()))
 # ---- neck radial profile r_m(y, a) from the base neck (y < Y_C + 1 cm), mirrored in x
@@ -55,7 +56,7 @@ def d_egg(P,cy):
     q=np.sqrt((P[...,0]/(AX*s))**2+(zp/(AZ*s))**2+(yp/AY)**2); return (q-1)*0.09
 def smin(a,b,k): hh=np.clip(0.5+0.5*(b-a)/k,0,1); return b*(1-hh)+a*hh-k*hh*(1-hh)
 def Ffun(P,cy):
-    r=np.hypot(P[...,0],P[...,2]); a=ang(P[...,0],P[...,2]); dn=np.maximum(r-r_neck(P[...,1],a),P[...,1]-(cy-0.01))
+    r=np.hypot(P[...,0],P[...,2]); a=ang(P[...,0],P[...,2]); dn=r-r_neck(P[...,1],a)+NECK_P*np.maximum(P[...,1]-Y_P,0)**2   # C1 fade-out inside the egg (a hard cap made a crease via smin)
     return smin(d_egg(P,cy),dn,K_U)
 # crown height: solve cy so the egg's top matches TOP (top of the tilted egg, sampled on the sagittal plane)
 def egg_top(cy):

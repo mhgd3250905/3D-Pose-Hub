@@ -387,3 +387,21 @@ Image: `docs/reviews/human-v2plus-proto/head-base/m10b.jpg` (M10 vs M10b front, 
 `head-poses.mjs --set m10b`). Tag `v2plus-head-mannequin`.
 Remaining: in strong front light the nose underside still reads as a darker toon band (nostrils are closed, the low nose ridge keeps its
 underside); ears keep a faint inner fold in side view; a very faint mouth-plane shading remains (intended).
+
+### M10c faceless egg head (2026-10-20) — `head:'base'` head is now an analytic egg mannequin head (default)
+User picked a fully faceless store-mannequin head (concept `mannequin-head-concept.png`) and asked for it round, silky-smooth and
+symmetric (no faceted / knife-cut look). New stage `head_e.py`; `build.sh` switch `HD_FACE=egg` (default) | `soft` (M10b face, `head_m.py`)
+| `detail` (M10 face; `HD_MANNEQUIN=0` still = detail). Everything above y = 1.46 (just under the jaw) is generated, not smoothed:
+implicit smooth union (polynomial smin, k 3 cm) of a tilted ovoid (long axis 28° back, semi-axes 76 / 124 / 96 mm, 14–16 % taper toward the
+chin, crown height solved to the old top of head 1.7275) and the base neck's own radial profile (x-mirrored, Hermite-continued above
+1.46 to a slim 56 / 56 / 50 mm neck, C1 fade-out inside the egg). Mesh: 192 meridians (mirror-symmetric azimuth set) traced as the F = 0
+contour (marching squares, 0.4 mm grid) and resampled to 128 rows from a crown pole; x<0 half copied from x>0 with mirrored quad
+diagonals. The base neck is cut exactly on the y = 1.46 plane (crossing triangles split) and zipped; the bottom 14 grid rows fade onto the
+real contour (≤ 2.8 mm). No eyes, nose, mouth, ears or brow. Neck / weld / weights / collar rule unchanged (head_b), joints 0.0000 mm.
+Stats: 28 268 verts / 56 334 faces (1.1 MB, was 46 919 / 1.8 MB); head part exactly symmetric (mirror error 0.05 mm above y 1.49,
+≤ 1.2 mm only in the fade band at the neck); dihedral above the chin p99 4.8°, max 8.6° (nape fillet); 0 sharp (> 30°) edges in the
+generated head; 0 zero-area tris. Folded edges 15 (all under the collar at the weld, y 1.440–1.446; M10b 7), zipper flips 12 (was 11).
+Image: `docs/reviews/human-v2plus-proto/head-base/m10c.jpg` (front, 3/4, side, back 3/4 from above, tech-white, neon-night;
+`head-poses.mjs --set m10c`). Tag `v2plus-head-egg`.
+Remaining: one ~23° edge at the side of the neck in the fade band (y ≈ 1.474, trapezius flare transition); weld folds under the collar
+went 7 → 15 (hidden by the tee collar band).
