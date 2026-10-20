@@ -5,7 +5,7 @@
 // The base-mesh limbs (same source; models/training-human-v2plus-limbs-base.json) load only when the spec sets v2plus.limbs:'base'.
 // The base-mesh hands (same source; models/training-human-v2plus-hands-base.json) load only when the spec sets v2plus.hands:'base'.
 // Baked muscle regions (page/human-v2plus-regions.js + models/training-human-v2plus-regions.json) load only when the spec sets v2plus.regions:'baked'
-// or an outline skin (v2plus.skin: 'tech-white' | 'neon-night' | 'hologram' | 'plaster'; 'realistic' needs nothing).
+// or an outline skin (v2plus.skin: 'tech-white' | 'neon-night' | 'hologram' (+ '-b' variants) | 'plaster'; 'realistic' needs nothing).
 import fs from 'node:fs';import path from 'node:path';import {ROOT} from './config.mjs';
 export async function applyHumanV2plus(p,spec){
   await p.addScriptTag({content:fs.readFileSync(path.join(ROOT,'page/human-v2plus.js'),'utf8')});

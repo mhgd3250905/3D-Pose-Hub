@@ -166,7 +166,7 @@ const VB = '\n { int b4=gl_VertexID*4; vR0=texelFetch(uV2pR,ivec2(b4%1024,b4/102
 const FS = `
 uniform float uV2pRon; uniform float uV2pRm; uniform float uV2pRSel[96]; uniform float uV2pRBody[96]; uniform vec3 uV2pRGrey; uniform vec3 uV2pRShade; uniform vec3 uV2pRLine; uniform float uV2pRLw; uniform float uV2pRDbg;
 // skins (M9): line alpha, glow (halo px, strength), rim colour (w = on), unbaked-mesh paint (shoes), lit tint, hologram (on, alpha, rim alpha, scan)
-uniform float uV2pRLa; uniform vec2 uV2pRGlow; uniform vec4 uV2pRRim; uniform float uV2pRSk; uniform vec3 uV2pRTint; uniform vec4 uV2pRHolo;
+uniform float uV2pRLa; uniform vec2 uV2pRGlow; uniform vec4 uV2pRRim; uniform float uV2pRSk; uniform vec3 uV2pRTint; uniform vec4 uV2pRHolo; uniform vec3 uV2pRHi;
 varying vec4 vR0; varying vec4 vR1; varying vec4 vR2; varying vec4 vR3;
 float v2rAct=0.0; float v2rPaint=0.0; float v2rLk=1.0; float v2rLine=0.0; float v2rG=0.0; float v2rGp=1.0; int v2rId1=-1; int v2rId2=-1;
 void v2rEval(){ float f[8]; float d[8]; f[0]=vR0.x; f[1]=vR0.y; f[2]=vR0.z; f[3]=vR0.w; f[4]=vR1.x; f[5]=vR1.y; f[6]=vR1.z; f[7]=vR1.w;
@@ -181,7 +181,7 @@ void v2rEval(){ float f[8]; float d[8]; f[0]=vR0.x; f[1]=vR0.y; f[2]=vR0.z; f[3]
   // no midline split on head / hands / feet (L/R of one non-muscle part)
   if(v2rId1>=0&&v2rId1<96&&v2rId1/2==v2rId2/2&&uV2pRBody[v2rId1]>0.5){ v2rLine=0.0; v2rLk=0.0; } }
 float v2rSel(int i){ return (i<0||i>95)?0.0:uV2pRSel[i]; }
-float v2rMask(out float core){ float s1=v2rSel(v2rId1), s2=v2rSel(v2rId2); float k=smoothstep(0.0,1.0,v2rGp); core=s1*clamp(v2rG/0.03,0.0,1.0); return mix(0.5*(s1+s2),s1,k); }
+float v2rMask(out float core){ float s1=v2rSel(v2rId1), s2=v2rSel(v2rId2); float k=smoothstep(0.0,max(uV2pRHi.y,1.0),v2rGp); core=s1*clamp(v2rG/0.03,0.0,1.0); return mix(0.5*(s1+s2),s1,k); }
 `;
 function patch(o, tex) { const mat = o.material, ob = mat.onBeforeCompile;
   mat.onBeforeCompile = function(sh, r) { ob.call(this, sh, r); Object.assign(sh.uniforms, R.uni); sh.uniforms.uV2pR = { value: tex }; sh.uniforms.uV2pRm = { value: 1 };
@@ -194,14 +194,14 @@ function patch(o, tex) { const mat = o.material, ob = mat.onBeforeCompile;
       .replace('(uV2pOn>0.5?v2pMask(c2):hlMask(c2))', '(v2rAct>0.5?v2rMask(c2):(uV2pOn>0.5?v2pMask(c2):hlMask(c2)))')
       .replace('if(uV2pOut>0.5){', 'if(uV2pOut>0.5&&v2rPaint<0.5){')   // atlas look: no inside-of-sleeve shade override
       .replace('#include <opaque_fragment>', 'if(uV2pRDbg>0.5&&v2rAct>0.5) outgoingLight = uV2pRDbg>2.5 ? fract(vec3(float(v2rId1)*0.37,float(v2rId1)*0.61,float(v2rId1)*0.13)) : uV2pRDbg>1.5 ? vec3(fract(v2rG*100.0), fract(v2rGp*0.1), 0.0) : vec3(1.0-v2rLine);\n#include <opaque_fragment>')
-      .replace('lit=mix(lit,cyl,d*0.94);', 'lit=mix(lit,cyl,d*0.94); if(v2rPaint>0.5) lit*=uV2pRTint; if(v2rAct>0.5){ lit=mix(lit,uV2pRLine,v2rLine*uV2pRLa); if(uV2pRGlow.y>0.0) lit+=uV2pRLine*uV2pRGlow.y*v2rLk*exp(-max(v2rGp-uV2pRLw,0.0)/max(uV2pRGlow.x,0.01)); }')
+      .replace('lit=mix(lit,cyl,d*0.94);', 'lit=mix(lit,cyl,d*(v2rAct>0.5?uV2pRHi.x:0.94)); if(v2rPaint>0.5) lit*=uV2pRTint; if(v2rAct>0.5){ lit=mix(lit,uV2pRLine,v2rLine*uV2pRLa); if(uV2pRGlow.y>0.0) lit+=uV2pRLine*uV2pRGlow.y*v2rLk*exp(-max(v2rGp-uV2pRLw,0.0)/max(uV2pRGlow.x,0.01)); }')
       // hologram (skin): the canvas alpha is written directly (opaque material = no blending, depth test as usual, so only the front-most
       // surface shows: no transparency sorting); premultiplied colour for the transparent canvas
-      .replace('#include <dithering_fragment>', '#include <dithering_fragment>\n if(uV2pRHolo.x>0.5&&v2rPaint>0.5&&uGlow<0.5){ float sc=0.5+0.5*sin(vRest.y*251.3); float aS=clamp(fwidth(vRest.y*251.3)*0.5,0.0,1.0); sc=mix(sc,0.5,aS);\n   float ha=clamp(uV2pRHolo.y*(1.0-uV2pRHolo.w+uV2pRHolo.w*sc)+uV2pRHolo.z*smoothstep(0.15,0.95,fr)+v2rLine*uV2pRLa+0.6*d,0.0,1.0); gl_FragColor=vec4(gl_FragColor.rgb*ha,ha); }');
+      .replace('#include <dithering_fragment>', '#include <dithering_fragment>\n if(uV2pRHolo.x>0.5&&v2rPaint>0.5&&uGlow<0.5){ float sc=0.5+0.5*sin(vRest.y*uV2pRHi.z); float aS=clamp(fwidth(vRest.y*uV2pRHi.z)*0.5,0.0,1.0); sc=mix(sc,0.5,aS);\n   float ha=clamp(uV2pRHolo.y*(1.0-uV2pRHolo.w+uV2pRHolo.w*sc)+uV2pRHolo.z*smoothstep(0.15,0.95,fr)+v2rLine*uV2pRLa+0.6*d,0.0,1.0); gl_FragColor=vec4(gl_FragColor.rgb*ha,ha); }');
     sh.fragmentShader = FS + fs; };
   const k0 = mat.customProgramCacheKey; mat.customProgramCacheKey = () => k0.call(mat) + '|v2pr'; mat.needsUpdate = true; }
 R.uni = { uV2pRon: { value: 0 }, uV2pRSel: { value: new Array(96).fill(0) }, uV2pRBody: { value: new Array(96).fill(0) }, uV2pRGrey: { value: null }, uV2pRShade: { value: null }, uV2pRLine: { value: null }, uV2pRLw: { value: 1.0 }, uV2pRDbg: { value: 0 },
-  uV2pRLa: { value: 0.85 }, uV2pRGlow: { value: [0, 0] }, uV2pRRim: { value: [0, 0, 0, 0] }, uV2pRSk: { value: 0 }, uV2pRTint: { value: [1, 1, 1] }, uV2pRHolo: { value: [0, 0, 0, 0] } };
+  uV2pRLa: { value: 0.85 }, uV2pRGlow: { value: [0, 0] }, uV2pRRim: { value: [0, 0, 0, 0] }, uV2pRSk: { value: 0 }, uV2pRTint: { value: [1, 1, 1] }, uV2pRHolo: { value: [0, 0, 0, 0] }, uV2pRHi: { value: [0.94, 1, 251.3] } };
 function meshes() { const v = flareInspector.viewer, out = []; v.coach.traverse(o => { if (o.isSkinnedMesh && o.material && /^toon-drill1-v2p($|\|)/.test(o.material.customProgramCacheKey?.() || '')) out.push(o); }); return out; }
 // load(table): call after __v2p.load (and __v2p.loadTorso when used). Bakes lazily per outfit/torso state on first enable.
 V2P.loadRegions = function(table) { if (R.data) return { already: true }; const t = T();
@@ -236,13 +236,24 @@ const SHOE = /Shoe|Sneaker|Sole/i;
 // la = outline opacity, glow = [halo falloff px, strength] (emissive halo around the outline, in the shader: works in any render path),
 // rim = fresnel rim colour, tint = lit multiplier, holo = [on, body alpha, rim alpha, scan-line strength], hi = active-muscle highlight
 // (toon uHiC / uHiShade), bg = suggested background (centre / edge sRGB 0-255) for the compositor. 'realistic' = the textured compression look, no outlines.
+// M9b (2026-10-20): premium / restrained redo of 1-3. Colours as sRGB hex (L() -> linear for the shader), hairline lines (lw = half-width px,
+// ~1 px total, AA), low line opacity, faint or no glow; hi.a = highlight opacity, hi.fe = highlight soft edge (px, inward), scan = scan-line freq (1/m).
+// Each has an A preset (the plain name) and a B variant ('<name>-b') so the user can pick.
+const L = h => { const n = parseInt(h.slice(1), 16); return [n >> 16, (n >> 8) & 255, n & 255].map(c => { c /= 255; return c <= 0.04045 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4); }); };
+const B = (c, e) => ({ centre: [c >> 16, (c >> 8) & 255, c & 255], edge: [e >> 16, (e >> 8) & 255, e & 255] });
 const SKINS = V2P.SKINS = {
-  'tech-white': { lines: true, grey: [0.935, 0.945, 0.960], shade: [0.690, 0.725, 0.785], line: [0.0, 0.72, 1.0], lw: 1.1, la: 0.95, glow: [2.6, 0.32], rim: [0.80, 0.93, 1.0], tint: [1, 1, 1], sk: 1,
-    hi: { c: [1.0, 0.42, 0.16], shade: [0.66, 0.30, 0.22] }, bg: { centre: [206, 218, 232], edge: [128, 146, 170] } },
-  'neon-night': { lines: true, grey: [0.150, 0.158, 0.185], shade: [0.070, 0.074, 0.092], line: [0.78, 0.36, 1.0], lw: 1.0, la: 1.0, glow: [2.4, 0.34], rim: [0.10, 0.75, 1.0], tint: [1, 1, 1], sk: 1,
-    hi: { c: [1.0, 0.26, 0.62], shade: [0.85, 0.20, 0.25] }, bg: { centre: [26, 24, 40], edge: [6, 6, 12] } },
-  'hologram': { lines: true, grey: [0.22, 0.78, 1.0], shade: [0.08, 0.40, 0.86], line: [0.62, 0.96, 1.0], lw: 1.0, la: 1.0, glow: [2.8, 0.45], rim: [0.75, 1.0, 1.0], tint: [1.15, 1.15, 1.15], sk: 1,
-    holo: [1, 0.55, 0.45, 0.6], hi: { c: [1.0, 0.78, 0.28], shade: [0.90, 0.20, 0.20] }, bg: { centre: [12, 26, 44], edge: [2, 6, 14] } },
+  'tech-white': { lines: true, grey: L('#e9ecf0'), shade: L('#a3aebd'), line: L('#7f93a8'), lw: 0.5, la: 0.55, glow: [0, 0], rim: L('#f2f6fb'), tint: [1, 1, 1], sk: 1,
+    hi: { c: L('#e08a72'), shade: [0.74, 0.22, 0.10], a: 0.78, fe: 5 }, bg: B(0xeef1f4, 0xb9c1cb) },
+  'tech-white-b': { lines: true, grey: L('#e6ebf1'), shade: L('#9eabbd'), line: L('#8eaecb'), lw: 0.5, la: 0.65, glow: [1.0, 0.05], rim: L('#eef5fc'), tint: [1, 1, 1], sk: 1,
+    hi: { c: L('#6f96cf'), shade: [0.74, 0.22, 0.10], a: 0.72, fe: 5 }, bg: B(0xe8edf2, 0xa8b2c0) },
+  'neon-night': { lines: true, grey: L('#50545b'), shade: L('#1d1f23'), line: L('#a6d6e2'), lw: 0.5, la: 0.42, glow: [1.4, 0.07], rim: L('#7d8fa0'), tint: [1, 1, 1], sk: 1,
+    hi: { c: L('#d39a5c'), shade: [0.70, 0.22, 0.10], a: 0.72, fe: 5 }, bg: B(0x26282d, 0x08090b) },
+  'neon-night-b': { lines: true, grey: L('#4b4a49'), shade: L('#1c1b1b'), line: L('#d8c49e'), lw: 0.5, la: 0.45, glow: [1.4, 0.06], rim: L('#8d8578'), tint: [1, 1, 1], sk: 1,
+    hi: { c: L('#c8875a'), shade: [0.70, 0.22, 0.10], a: 0.72, fe: 5 }, bg: B(0x29272a, 0x09090a) },
+  'hologram': { lines: true, grey: L('#6aa3b4'), shade: L('#2a5566'), line: L('#dcedf5'), lw: 0.5, la: 0.55, glow: [1.4, 0.10], rim: L('#cfe8f0'), tint: [1.05, 1.05, 1.05], sk: 1,
+    holo: [1, 0.42, 0.35, 0.16], scan: 520, hi: { c: L('#e9d49c'), shade: [0.74, 0.22, 0.10], a: 0.58, fe: 5 }, bg: B(0x122030, 0x03070c) },
+  'hologram-b': { lines: true, grey: L('#7896bd'), shade: L('#2e4468'), line: L('#e6efff'), lw: 0.5, la: 0.5, glow: [1.4, 0.08], rim: L('#d6e2f6'), tint: [1.05, 1.05, 1.05], sk: 1,
+    holo: [1, 0.40, 0.32, 0.12], scan: 520, hi: { c: L('#c6eef2'), shade: [0.74, 0.22, 0.10], a: 0.58, fe: 5 }, bg: B(0x141a2e, 0x04050c) },
   'plaster': { lines: true, grey: [0.905, 0.885, 0.850], shade: [0.700, 0.675, 0.640], line: [0.56, 0.53, 0.50], lw: 0.75, la: 0.55, glow: [0, 0], rim: [0.93, 0.91, 0.87], tint: [1, 1, 1], sk: 1,
     hi: { c: [0.86, 0.36, 0.26], shade: [0.62, 0.30, 0.22] }, bg: { centre: [178, 170, 158], edge: [98, 92, 84] } },
   'realistic': { lines: false, bg: null },
@@ -254,6 +265,7 @@ function applySkin(name) { if (name === 'default') name = null; if (name && !SKI
   U.uV2pRGrey.value = K ? C(K.grey) : D.grey.clone(); U.uV2pRShade.value = K ? C(K.shade) : D.shade.clone(); U.uV2pRLine.value = K ? C(K.line) : D.line.clone(); U.uV2pRLw.value = K ? K.lw : D.lw;
   U.uV2pRLa.value = K ? K.la : 0.85; U.uV2pRGlow.value = K ? K.glow.slice() : [0, 0]; U.uV2pRRim.value = K ? [...K.rim, 1] : [0, 0, 0, 0]; U.uV2pRSk.value = K ? (K.sk || 0) : 0;
   U.uV2pRTint.value = K ? K.tint.slice() : [1, 1, 1]; U.uV2pRHolo.value = K?.holo ? K.holo.slice() : [0, 0, 0, 0];
+  U.uV2pRHi.value = [K?.hi?.a ?? 0.94, K?.hi?.fe ?? 1, K?.scan ?? 251.3];
   TU.uHiC.value = K ? C(K.hi.c) : D.hiC.clone(); TU.uHiShade.value = K ? K.hi.shade.slice() : D.hiS.slice(); R.skin = name; }
 // __v2p.setSkin(name | null): runtime override (a spec's v2plus.skin still wins for that spec); null / 'default' = the look as before
 V2P.setSkin = function(name) { if (name === 'default') name = null; if (name && !SKINS[name]) throw new Error('v2plus: unknown skin ' + name);

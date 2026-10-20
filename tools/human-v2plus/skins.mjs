@@ -24,7 +24,7 @@ await p.evaluate(() => { const v = flareInspector.viewer, T = window.__toonT;
   window.__aim = (box, dir, k) => { const c = box.getCenter(new T.Vector3()); const r = box.getSize(new T.Vector3()).length() / 2;
     v.camera.clearViewOffset(); v.camera.aspect = 1; v.camera.updateProjectionMatrix(); const dist = r / Math.sin(v.camera.fov * Math.PI / 360) * k;
     v.camera.position.copy(c).addScaledVector(new T.Vector3(...dir).normalize(), dist); v.controls.target.copy(c); v.camera.lookAt(c); v.camera.updateMatrixWorld(); }; });
-const SK = ['tech-white', 'neon-night', 'hologram', 'plaster', 'realistic'].filter(s => !ONLY || ONLY.includes(s));
+const SK = (ONLY || ['tech-white', 'neon-night', 'hologram', 'plaster', 'realistic']).filter(s => !ONLY || ONLY.includes(s));
 const ROW = { stand: ['h-squat', 0.0, [0.55, 0.08, 1], { groups: [] }], rdl: ['h-db-rdl', 1.2, [-0.75, 0.15, -1], { groups: ['glutes', 'hamstrings'], side: 'both' }] };
 const meta = { skins: {}, rows: ROWS };
 for (const rk of ROWS) { const [id, t, dir, hl] = ROW[rk]; const s0 = (await import(pathToFileURL(path.join(REPO, 'drill-anim/specs', id + '.js')).href)).default;

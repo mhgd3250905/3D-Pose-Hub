@@ -316,3 +316,13 @@ Game-style presets on the same mesh: only shader uniforms of the baked-regions p
 - Which skin applies: `spec.v2plus.skin`, else the `setSkin` override, else none. An outline skin turns the baked regions on, `realistic` turns them off. Works with torso / limbs / hands:'base' (the regions bake covers every piece).
 - Check: `tools/human-v2plus/run.sh tools/human-v2plus/skins.mjs <dir> [--size 360] [--only ...]` then `python3 tools/human-v2plus/skins_sheet.py <dir> <out.jpg>` → `docs/reviews/human-v2plus-proto/skins/compare.jpg` (top: h-squat t=0 standing 3/4 front; bottom: h-db-rdl t=1.2 with glutes + hamstrings highlighted, rear 3/4).
 - Known limits: the glow stays on the body surface (no bloom past the silhouette). Neon-night's head / hands read a little lighter than the torso because of the rim. The production compositor doesn't read `bg` yet.
+
+### M9b skins redo (2026-10-20) — premium / restrained 1–3, A/B variants
+Feedback: plaster + realistic good; 1–3 right idea but colours ugly and lines far too thick. Redo (plaster / realistic untouched):
+- Lines: hairline, `lw` 0.5 px half-width (screen-space border distance, AA → ~1 px at any framing; was 1.0–1.1 + fat glow), opacity 0.42–0.65, glow off or a faint 1–1.4 px halo at 0.05–0.10.
+- Highlight: new per-skin `hi.a` (opacity, 0.58–0.80) and `hi.fe` (soft inward edge, 5 px; no seam between two selected regions); hologram `scan` frequency 520/m (was 251), strength 0.12–0.16. Uniform `uV2pRHi` defaults [0.94, 1, 251.3] = old behaviour for no skin / plaster.
+- Colours are sRGB hex in the source (`L()` → linear). Presets (A = plain name, B = `-b`):
+  - `tech-white` body #e9ecf0 / shade #a3aebd, line #7f93a8 @0.55, highlight muted coral #e08a72 @0.78, bg #eef1f4→#b9c1cb. `tech-white-b` body #e6ebf1 / #9eabbd, line ice blue #8eaecb @0.65, soft blue #6f96cf @0.72.
+  - `neon-night` (dark premium) body #50545b / #1d1f23, line icy cyan #a6d6e2 @0.42, amber #d39a5c @0.72, bg #26282d→#08090b. `neon-night-b` warm graphite #4b4a49 / #1c1b1b, champagne line #d8c49e @0.45, copper-amber #c8875a @0.72.
+  - `hologram` teal #6aa3b4 / #2a5566, line #dcedf5 @0.55, pale gold #e9d49c @0.58, body alpha 0.42. `hologram-b` blue #7896bd / #2e4468, line #e6efff @0.5, white-cyan #c6eef2 @0.58.
+- Sheet: `docs/reviews/human-v2plus-proto/skins/redo.jpg` (6 cols 1A…3B; standing + RDL glute/ham; bottom strip = torso 1:1 crops of a 720 px render). `skins.mjs --only` now keeps the given order; `skins.json` may carry `labels`.

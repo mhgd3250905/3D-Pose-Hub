@@ -22,7 +22,7 @@ sz = tiles[0][0][1].size[0]; H = 26; W = len(tiles[0]) * sz
 sheet = Image.new('RGB', (W, len(tiles) * sz + H), (18, 18, 20)); d = ImageDraw.Draw(sheet)
 try: font = ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf', 16)
 except Exception: font = ImageFont.load_default()
-for j, (sk, _) in enumerate(tiles[0]): d.text((j * sz + 8, 4), sk, fill=(235, 235, 235), font=font)
+for j, (sk, _) in enumerate(tiles[0]): d.text((j * sz + 8, 4), M.get('labels', {}).get(sk, sk), fill=(235, 235, 235), font=font)
 for i, row in enumerate(tiles):
     for j, (sk, im) in enumerate(row): sheet.paste(im, (j * sz, H + i * sz))
 sheet.save(OUT, quality=88); print(OUT, sheet.size)
