@@ -7,7 +7,7 @@
 用法（在 Pose-Hub 仓库根目录）：
   python3 catalog/tools/build_catalog.py \
       --smartfit ../Sport-Helper --hiplab ../HipLab --flarelab ../3D-Body \
-      --version 0.1.0 [--generated-at 2026-10-20T01:00:00+08:00]
+      --version 0.3.0 [--generated-at 2026-10-20T01:00:00+08:00]
 
 各 App 读取的路径：
   SmartFit  assets/packs/<id>/pack.json（drill-pack@1）
@@ -101,6 +101,44 @@ def hiplab_dose(h):
     else:
         d["seconds"] = df["seconds"]
     return clean_dose(d)
+
+
+RHYTHM_KINDS = ("rep_updown", "rep_cycle", "rep_alternate", "rep_hold", "rep_breath", "hold")
+
+
+def hiplab_rhythm(h):
+    """HipLab action-kit training → 目录 rhythm。字段与 ugk_trainer Rhythm.fromActionKitJson 读取的一致：
+    kind / leadSeconds / phases(id, seconds, cue, cueAt) / holdSeconds / reps（缺省即不写）。"""
+    t = h["training"]
+    if t["kind"] not in RHYTHM_KINDS:
+        raise SystemExit(f"{h['id']}: 未知节奏 kind {t['kind']}")
+    df = t.get("defaults", {})
+    r = {"kind": t["kind"], "leadSeconds": float(t.get("leadSeconds", 1))}
+    phases = []
+    for p in (t.get("cycle") or {}).get("phases", []):
+        q = {"id": p["id"], "seconds": float(p["seconds"])}
+        if p.get("cue"):
+            q["cue"] = p["cue"]
+        if p.get("cueAt"):
+            q["cueAt"] = float(p["cueAt"])
+        phases.append(q)
+    if phases:
+        r["phases"] = phases
+    if df.get("holdSeconds") is not None:
+        r["holdSeconds"] = int(df["holdSeconds"])
+    if df.get("reps") is not None:
+        r["reps"] = int(df["reps"])
+    r["source"] = "hiplab"
+    return r
+
+
+def smartfit_rhythm(s):
+    """SmartFit drill-pack media.repSeconds → 目录 rhythm（同 ugk_trainer Rhythm.fromRepSeconds：
+    rep_updown、无前导、单相 go、无提示词）。无 repSeconds 的不写，走 SDK 按剂量缺省。"""
+    rs = s.get("media", {}).get("repSeconds")
+    if not rs or rs <= 0:
+        return None
+    return {"kind": "rep_updown", "leadSeconds": 0.0, "phases": [{"id": "go", "seconds": float(rs)}], "source": "repSeconds"}
 
 
 def dose_semantics(d):
@@ -223,6 +261,11 @@ def main():
             rng.update(ov["flarelab"][i]["doseRange"])
         e["doseRange"] = rng
         e["apps"] = apps
+
+        # 节奏（目录 0.3.0 起为全部 App 的唯一来源）：HipLab 动作包优先，其次 SmartFit repSeconds；都没有则不写
+        rh = hiplab_rhythm(h) if h else (smartfit_rhythm(s) if s else None)
+        if rh:
+            e["rhythm"] = rh
 
         # fixes
         fx = ov["fixes"].get(i, {})
@@ -373,7 +416,7 @@ def main():
         e["review"] = {"status": "doubt" if doubt else ("reviewed" if review else "auto"), "notes": review + doubt}
 
         order = ["id", "name", "purpose", "category", "muscles", "muscleGroups", "equipment", "position", "unilateral", "level",
-                 "scenes", "defaultDose", "doseRange", "cues", "primaryCue", "cautions", "contraindications", "alternative",
+                 "scenes", "defaultDose", "doseRange", "rhythm", "cues", "primaryCue", "cautions", "contraindications", "alternative",
                  "apps", "tags", "flarelab", "assets", "completeness", "review"]
         drills.append({k: e[k] for k in order if k in e})
 

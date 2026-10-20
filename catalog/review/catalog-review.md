@@ -1,4 +1,4 @@
-# 动作目录审阅表（catalog v0.2.0，生成于 2026-10-19T23:59:26+08:00）
+# 动作目录审阅表（catalog v0.3.0，生成于 2026-10-20T20:30:00+08:00）
 
 > 由 `python3 catalog/tools/report.py` 从 `catalog/catalog.json` 生成，不要手改。改数据请改 `catalog/review/overrides.json` 后重跑 build → validate → report。
 
