@@ -195,3 +195,44 @@ PYTHONPATH=/workspace/work/pylib python3 tools/human-v2plus/regions/anchors.py o
 2. 引线水平段会横穿身体（锚点在身体中间时，如腹直肌、斜方肌中下部），和解剖图一样可以接受；标签多于 ~6 个 / 侧时只是堆叠，不会换列。
 3. 缝匠肌在穿过股内侧肌上端处（大腿内侧中段）边界有些碎（三角形较大处几个零碎小块），正面看是完整的条带。
 4. 上面 M4 的第 2、4 条仍然成立；M4 的第 1、3 条已在 M5 解决。
+
+## 基础网格四肢（opt-in，2026-10-20 打磨第 1 步 / M6）
+
+> spec 写 `v2plus: { outfit: 'compression', torso: 'base', limbs: 'base' }` 才生效（必须同时有 `torso: 'base'`，只支持短袖；可再加 `regions: 'baked'`）。
+> 不写 `limbs` = 上面的基础网格躯干，一切不变（`training-human-v2plus-torso-base.json` 重新构建后逐字节相同，默认 anchors 不变）。
+
+| 项 | 内容 |
+|---|---|
+| 来源 | 和躯干同一个对象：Blender **Human Base Meshes v1.4.1** `GEO-body_male_realistic`（CC0），同一份 L2 细分 + multires 位移（`male_l2.npz`）。 |
+| 范围 | 手臂：躯干的手臂焊接环（肩下 0.17 m）→ 前臂上距腕关节 3.5 cm 的腕环；腿：躯干的腿环（y 0.631）→ 踝环 y 0.19（在 v2 紧身裤脚口 0.17 和鞋口 0.112 之上，所以脚口、鞋口仍是 v2 原样）。手、脚、头、脖子、鞋、骨架、求解器都不动。 |
+| 拟合（只有平滑变形） | 底模关节按切片估计（肩 = 躯干构建的估计值，腕 = 前臂最细切片，膝 / 肘按 v2 的上下段比例），每段（上臂 / 前臂 / 手，大腿 / 小腿 / 脚）相似变换到 v2 的关节上，关节处 ±3 cm 平滑混合；再用双拉普拉斯正则的低频位移场贴到 v2 手臂 / 腿皮肤（λ 8000→2500，只 3 轮，保留肌肉中频形状）。 |
+| 缝合 | 4 个上环直接焊到躯干焊的同一组 Coach_Body 环顶点（躯干缝顶点和四肢缝顶点运行时都取同一个 Coach_Body 顶点的实时位置 / 权重 / 法线，所以无缝无洞）；4 个下环焊到 v2 手 / 脚的环。切口停在环前 4 mm 再 zipper（直接贴到环上会产生零宽三角形，第一版腿环处有一条黑色锯齿线，就是这个原因），接缝 5 环双拉普拉斯平滑，两侧都有固定 ghost 环（Coach_Body 一侧 + 躯干网格一侧）。翻面三角形 0。 |
+| 权重 | 被替换的 v2 手臂 / 腿皮肤自己的权重做最近点重心插值（源距离 p50 0.5 mm / p99 4 mm），10 次轻平滑，缝顶点 = 被焊顶点的权重。腕环顶点都不在 v2plus 手部重写权重的顶点里（检查 = 0）。 |
+| 涂色 / 运行时 | 第 5 节 `loadLimbs` / `setLimbs`（和躯干共用 `buildPiece`）；色调权重：手臂皮肤、腿（waistY 以下）紧身裤色；隐藏 Coach_Body 两环之间的手臂 / 腿面（hideFaces 含躯干自己的，所以在 setTorso 之后应用，关时恢复到躯干模式的 index）。`lib/human-v2plus.mjs` 只在 spec 写了 `limbs` 时才读这份数据（0.95 MB）。 |
+| 肌群分区 | `regions: 'baked'` 时自动烘焙到新网格（bake key 带 `limbs`，7→8 个网格）；anchors 另存在 `anchorsByState["{…\"limbs\":\"base\"}|torso"]`（82/84，只缺已退役的 rhomboid；27 个落在四肢网格上），运行时按当前 bake key 选，`getRegionAnchor` 不 stale。L/R 镜像；hamstring-lat 左右落在不同网格是原来就有的（默认 anchors 一样）。 |
+| 验证 | 4 个关键帧（h-squat t=1.2、scapular-B t=1.9、h-db-rdl t=2.3、chest-A 俯卧撑底部 t=1.15）开 / 关四肢关节最大差 **0 mm**（`limbs-check.mjs`）；`verify.mjs`、`git diff --check` 通过。 |
+
+图：`docs/reviews/human-v2plus-proto/limbs-base/`
+- `sketch.jpg`：方向草图（离线 numpy 渲染，静止姿势，粗裁剪）：左 v2 四肢，右基础网格四肢。
+- `stand.jpg`：站姿正 / 背 / 手臂 / 腿特写，左当前（躯干 base + v2 四肢），右 `limbs: 'base'`。
+- `poses.jpg`：上面 4 个关键帧（全身 + 肘 / 膝 / 肩 / 髋特写），同一求解、同一机位。
+- `regions.jpg`：`limbs: 'base'` + `regions: 'baked'` 站姿正 / 背（无高亮 + 腹斜肌高亮示例）。
+
+已知粗糙处 / 下一步：
+1. 改善主要在腿（膝盖不再是圆球，股内侧肌 / 小腿腓肠肌轮廓、跟腱）和前臂形状；toon 着色下手臂差别较小。拟合较紧（残差 1.3 mm），再松一档（只 2 轮）位移 p50 只差 1.6 mm，没换。
+2. 手仍是 v2 的手：底模的手要重新做手指骨骼权重 + 5 个手型 / 握姿拟合，超出这一步的时间盒，没做。
+3. 只支持短袖（`sleeve: 'long'` + `limbs` 会报错）。
+4. 只看了这 4 个关键帧 + 站姿；其它动作（深屈膝、手臂过头负重等）没测。
+
+复现（不需要 Blender，需要先跑躯干构建拿到工作目录）：
+```bash
+/workspace/bin/heavy -- tools/human-v2plus/run.sh tools/human-v2plus/probe.mjs output/human-v2plus-work      # rest.json
+/workspace/bin/heavy -- tools/human-v2plus/torso-base/build.sh
+/workspace/bin/heavy -- tools/human-v2plus/limbs-base/build.sh       # -> drill-anim/models/training-human-v2plus-limbs-base.json（< 1 分钟）
+/workspace/bin/heavy -- tools/human-v2plus/run.sh tools/human-v2plus/limbs-poses.mjs output/human-v2plus-limbs --set stand   # 或 --set poses
+python3 tools/human-v2plus/limbs_sheet.py output/human-v2plus-limbs out.jpg h-squat-t0.00
+/workspace/bin/heavy -- tools/human-v2plus/run.sh tools/human-v2plus/limbs-check.mjs                     # 关节差 + anchors
+# 分区 anchors（改了四肢网格后重跑）：
+/workspace/bin/heavy -- tools/human-v2plus/run.sh tools/human-v2plus/regions.mjs output/rg-limbs --limbs --dump
+python3 tools/human-v2plus/regions/anchors.py output/rg-limbs/dump.json '{"outfit":"compression","sleeve":"short","torso":"base","limbs":"base"}|torso'
+```

@@ -229,12 +229,13 @@ R._dev = { S, charts, MID }; // offline tools (tools/human-v2plus/regions/offlin
 // anchor or the mesh is missing. stale = the bake state differs from the one the anchors were computed for (positions may be off).
 const _v = [0, 0, 0, 0].map(() => null);
 function meshByName(nm) { for (const o of (R.patched ? R.patched.keys() : [])) if (o.name === nm) return o; return null; }
-R.getRegionAnchor = function(id) { const A = R.data?.anchors?.list?.[id]; if (!A) return null; const o = meshByName(A.mesh); if (!o || o.geometry.attributes.position.count !== A.meshVerts) return null;
+const anchorSet = () => (R.key && R.data?.anchorsByState?.[R.key]) || R.data?.anchors;   // per bake state (limbs:'base' has its own set)
+R.getRegionAnchor = function(id) { const AS = anchorSet(), A = AS?.list?.[id]; if (!A) return null; const o = meshByName(A.mesh); if (!o || o.geometry.attributes.position.count !== A.meshVerts) return null;
   const t = T(); if (!_v[0]) for (let i = 0; i < 4; i++) _v[i] = new t.Vector3(); const [p, a, b, c] = _v; const n = new t.Vector3();
   const wp = (i, out) => { o.getVertexPosition(i, out); return out.applyMatrix4(o.matrixWorld); };
   for (const tri of A.ring) { wp(tri[0], a); wp(tri[1], b); wp(tri[2], c); n.add(b.sub(a).cross(c.sub(a))); }
   n.multiplyScalar(A.ringSign || 1).normalize(); wp(A.vertex, p); const r = R.data.regions[id];
-  return { id, key: r.key, side: r.side, position: [p.x, p.y, p.z], normal: [n.x, n.y, n.z], mesh: A.mesh, stale: !!(R.key && R.data.anchors.state && R.key !== R.data.anchors.state) }; };
+  return { id, key: r.key, side: r.side, position: [p.x, p.y, p.z], normal: [n.x, n.y, n.z], mesh: A.mesh, stale: !!(R.key && AS.state && R.key !== AS.state) }; };
 V2P.getRegionAnchor = R.getRegionAnchor;
 // debug overlay: R.showAnchors(true) draws a dot + short normal stick at the anchors of the highlighted regions (or of ids given),
 // refreshed right before every render (scene.onBeforeRender, after the scene's matrices are updated). No labels / arrows yet.

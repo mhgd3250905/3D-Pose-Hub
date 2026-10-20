@@ -70,5 +70,6 @@ p = sys.argv[1] if len(sys.argv) > 1 else 'drill-anim/models/training-human-v2pl
 if os.path.exists(p):  # keep the label anchors written by anchors.py (re-run anchors.py after changing shapes)
     old = json.load(open(p, encoding='utf-8'))
     if 'anchors' in old: out['anchors'] = old['anchors']
+    if 'anchorsByState' in old: out['anchorsByState'] = old['anchorsByState']
 with open(p, 'w', encoding='utf-8') as f: json.dump(out, f, ensure_ascii=False, indent=1); f.write('\n')
 print(p, len(regions))
