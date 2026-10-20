@@ -463,3 +463,11 @@ y 1.46–1.475, following the asymmetric base neck, as M10e); head part max dihe
 jaw edge meets the neck blend), 0 edges > 30°, 0 folded; whole piece folded 8 / zipper flips 11 (weld under the collar, unchanged from M10e).
 Image: `docs/reviews/human-v2plus-proto/head-base/m10f.jpg` (reference; front / side / 3/4, tech-white, neon-night; `head-poses.mjs --set m10f`).
 Tag `v2plus-head-ready`.
+
+### M11 original v2 head, eye-socket seams smoothed (2026-10-20)
+开哥 picked the earliest, unmodified v2 head (`Toon_Mannequin_Head_v5`; `head:'base'` stays opt-in and off) and asked only for the sharp seams
+inside both eye sockets to be smoothed, not filled. The closed-lid slit in each socket is bridged by 21–27 long sliver triangles fanned between
+the upper and lower lid rows; `V2P.setEyes` (human-v2plus.js, on whenever the v2plus profile is active without `head:'base'`) swaps them for an
+even 4-band grid between the two lid rows (84 new vertices, linear blends of lid vertices), halves the cavity darkening on the lid rows, and keeps
+every existing vertex where it was, so the socket depth is unchanged. head.js / srchead.json are untouched (v2 source hashes hold). Proof:
+`docs/reviews/human-v2plus-proto/head-base/v2-eyes-smooth.jpg` (bottom: before / after close-ups).
