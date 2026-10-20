@@ -237,11 +237,30 @@ python3 tools/human-v2plus/limbs_sheet.py output/human-v2plus-limbs out.jpg h-sq
 python3 tools/human-v2plus/regions/anchors.py output/rg-limbs/dump.json '{"outfit":"compression","sleeve":"short","torso":"base","limbs":"base"}|torso'
 ```
 
-## M7 hands-base (WIP, 2026-10-20) — direction sketch only
+## M7 hands-base (2026-10-20) — opt-in `v2plus.hands:'base'`
 
-Opt-in `hands:'base'` is **not** implemented yet; defaults and all existing options are untouched (no runtime change).
-`tools/human-v2plus/hands-base/` (hands_a.py retarget, sketch.py offline LBS on the v2plus finger rig, README.md with findings).
-Sketch `docs/reviews/human-v2plus-proto/hands-base/sketch.jpg` (v2 vs base, rest + grip-bar; `sketch-narrow-thenar.jpg` = the
-earlier narrow thumb falloff). Fingers: clearly more realistic (knuckles, tendons, palm volume) and the grip curl works. Blocking
-issue: thumb web / thenar folds when the base's adducted thumb is turned onto the v2 thumb. `sleeve:'long'` with `limbs:'base'`
-still throws (not attempted in this time-box).
+`v2plus: { outfit:'compression', torso:'base', limbs:'base', hands:'base' }` swaps the v2 hands for the hands of the same Blender Human
+Base Meshes v1.4.1 realistic male (CC0). Needs `limbs:'base'` (throws otherwise); defaults and every existing option are unchanged
+(`verify.mjs`: originalSpecHashesPreserved true). Build: `tools/human-v2plus/hands-base/build.sh` (numpy/scipy, < 30 s) ->
+`drill-anim/models/training-human-v2plus-hands-base.json` (22 890 verts, 45 710 faces, 1.06 MB).
+
+- Retarget (hands_a.py, left hand in hand-bone local coordinates): base hand from limbs stage A *before* its skin fit; fingertips =
+  geodesic local maxima; per-finger re-pose onto the v2 phalanges at the base/v2 hand scale 0.757 (palm scaled 1/0.757, faded to
+  identity at the wrist ring). Thumb: the base's adducted thumb turns ~60 deg out; thumb / palm split by geodesic distance from
+  the thumb tip, harmonic rotation (+ stretch) field over the thenar band and a Poisson solve of the rotated edges (no folds or
+  tears; linear blending folded the web). Finger roots get the same Poisson pass (base MCPs sit up to 3 cm from the v2 ones).
+- Right hand = exact mirror of the left in hand-local coordinates (same mirror as the finger rig). Weld (hands_b.py): cut at the
+  same Coach_Body wrist rings the limbs piece ends at, arc-length snap 4 mm short of the ring, zipper to the exact ring vertices,
+  ghost-ring fairing (the limbs piece's first ring across the seam): 0 folded / flipped zipper faces (max dihedral 23 deg),
+  limbs + hands closed at both rings.
+- Runtime: `V2P.loadHands` / `setHands`, piece `V2P_Base_Hands` bound to **Coach_Body's** skeleton (the grafted `v2p_*` finger bones;
+  `buildPiece` takes `data.skin`), so the named hand poses drive it like the v2 hand; always skin-painted; hides everything limbs
+  hides plus the Coach_Body hands beyond the wrist rings. Regions: the bake picks the piece up (no region lines on the hands);
+  label anchors reuse the limbs state's set (`anchorKey`), since no anchor sits on a hand.
+- Checks: `tools/human-v2plus/run.sh tools/human-v2plus/hands-poses.mjs <out>` (limbs vs hands, whole body + hand close-ups,
+  joint max diff 0.0000 mm at h-db-rdl 1.2 / scapular-B 1.9 / chest-A 1.15 / h-squat 1.2); `regions.mjs --limbs --hands`.
+- Images (`docs/reviews/human-v2plus-proto/hands-base/`): `sketch2.jpg` / `sketch2-closeup.jpg` (offline v2 vs base, thumb web),
+  `poses.jpg` (key frames), `regions.jpg` (regions bake with hands). `sketch.jpg` = the earlier folded thumb.
+- Remaining: the thenar sits a few mm below the palm plane at rest; palm-floor (chest-A) left hand not checked close up (camera
+  inside the body), right hand fine; a faint shading line can show at the wrist weld in some lights; `sleeve:'long'` with
+  `limbs:'base'` still throws.

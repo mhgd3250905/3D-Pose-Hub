@@ -1,10 +1,10 @@
-# hands-base (WIP, direction sketch only — not wired into the runtime)
+# hands-base — opt-in `v2plus.hands:'base'` (needs `limbs:'base'`)
 
 Goal: opt-in `hands:'base'` (needs `limbs:'base'`): the Blender Human Base Meshes v1.4.1 realistic-male hand (CC0) retargeted
 onto the existing v2plus finger rig (training-human-v2plus-hands.json joints), so the 5 named hand poses keep working.
 
-Run (offline, numpy/scipy, < 5 s, < 1 GB), in a scratch dir that has `limbs_pre.npz` (limbs stage A **before** its skin fit;
-make it by running limbs_a.py up to the `# ---------- displacement fit` marker) and a link to `limbs_fit.npz`:
+Build: `tools/human-v2plus/hands-base/build.sh [workdir]` (after limbs-base/build.sh; numpy/scipy, < 30 s; via /workspace/bin/heavy)
+-> drill-anim/models/training-human-v2plus-hands-base.json.  Offline looks only (in the work dir):
 
     PYTHONPATH=/workspace/work/pylib:tools/human-v2plus/torso-base:tools/human-v2plus/hands-base:tools/human-v2plus/limbs-base \
       python3 tools/human-v2plus/hands-base/hands_a.py            # -> hands_fit.npz
@@ -19,6 +19,7 @@ Findings:
 - Fingers retarget well (knuckles, tendons, nails; grip-bar curl looks right). Open: the thumb turns ~60 deg from the base's
   adducted thumb to the v2 abducted one, and linear blending folds the thumb web / thenar (visible in sketch.jpg). Next step:
   re-pose the base thumb with a rotation field (per-vertex slerp over the thenar) or fit the thumb web to the v2 hand's web.
-- Not done: wrist-ring weld (reuse limbs_b snap + zipper onto the same Coach_Body wrist ring vids), runtime piece bound to
-  Coach_Body's skeleton (the finger bones live only there, not on the tee skeleton buildPiece uses), right hand (= mirror),
-  prop interpenetration checks, regions re-bake.
+- Weld (hands_b.py): right = mirror; cut at the limbs' Coach_Body wrist rings, arc-length snap (angle interpolation folded the
+  zipper fans over the jagged cut), zipper, ghost-ring fairing against the limbs piece -> 0 folded / flipped zipper faces.
+- Runtime piece bound to Coach_Body's skeleton (finger bones), checks in tools/human-v2plus/hands-poses.mjs; see the M7 section of
+  docs/training-human-v2plus-proto.md for results and remaining issues.
