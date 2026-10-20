@@ -301,8 +301,12 @@ V2P.setOutfit = function(name, opts = {}) {
   if (V2P.outfit && (on !== !!V2P.outfitOn || (on && tag !== V2P.collarTag))) writeOutfit(on);
   V2P.collarTag = tag;
   const torso = on && opts.torso === 'base'; if (opts.torso && opts.torso !== 'base') throw new Error('v2plus: unknown torso ' + opts.torso);
-  if (torso && !V2P.torso) throw new Error('v2plus: base-mesh torso data not loaded'); if (V2P.torso) V2P.setTorso(torso);
-  V2P.outfitOn = on; const sleeve = on ? (opts.sleeve || 'short') : null; V2P.outfitState = on ? Object.assign({ outfit: name, sleeve }, torso ? { torso: 'base' } : {}) : null;
+  if (torso && !V2P.torso) throw new Error('v2plus: base-mesh torso data not loaded');
+  const limbs = torso && opts.limbs === 'base'; if (opts.limbs && opts.limbs !== 'base') throw new Error('v2plus: unknown limbs ' + opts.limbs);
+  if (opts.limbs && !torso) throw new Error("v2plus: limbs:'base' needs torso:'base'"); if (limbs && opts.sleeve === 'long') throw new Error("v2plus: limbs:'base' supports the short sleeve only");
+  if (limbs && !V2P.limbs) throw new Error('v2plus: base-mesh limbs data not loaded');
+  if (V2P.limbs && !limbs) V2P.setLimbs(false); if (V2P.torso) V2P.setTorso(torso); if (V2P.limbs && limbs) V2P.setLimbs(true);
+  V2P.outfitOn = on; const sleeve = on ? (opts.sleeve || 'short') : null; V2P.outfitState = on ? Object.assign({ outfit: name, sleeve }, torso ? { torso: 'base' } : {}, limbs ? { limbs: 'base' } : {}) : null;
   V2P.uni.uV2pSleeve.value = sleeve === 'short' ? 1 : 0; V2P.uni.uV2pOut.value = on ? 1 : 0;
   if (V2P.outfit) { V2P.uni.uV2pCuffL.value = V2P.outfit.data.cuffPlanes.left; V2P.uni.uV2pCuffR.value = V2P.outfit.data.cuffPlanes.right; }
   return V2P.outfitState;
@@ -320,9 +324,8 @@ V2P.setOutfit = function(name, opts = {}) {
 // Coach_Body arm faces above the weld ring (the v2 arm skin flares into the loose tee there), the sleeve trim and the shorts.
 // Off = all of those back exactly as they were; the torso mesh is not drawn.
 const unb64 = (s, C) => { const b = atob(s), u = new Uint8Array(b.length); for (let i = 0; i < b.length; i++) u[i] = b.charCodeAt(i); return new C(u.buffer); };
-V2P.loadTorso = function(data) {
-  if (V2P.torso) return { already: true }; if (!V2P.loaded) throw new Error('v2plus: load() before loadTorso()');
-  const t = T(), v = flareInspector.viewer, get = nm => { const o = v.coach.getObjectByName(nm); if (!o) throw new Error('v2plus torso: no mesh ' + nm); return o; };
+function buildPiece(data, meshName, torsoPaint) {
+  const t = T(), v = flareInspector.viewer, get = nm => { const o = v.coach.getObjectByName(nm); if (!o) throw new Error('v2plus ' + meshName + ': no mesh ' + nm); return o; };
   const tee = get('Mesh005'), n = data.n;
   // the profile always runs training-collar: read seam weights in that state
   const collar0 = window.__trainingCollarReport?.enabled === true; if (window.__setTrainingCollar && !collar0) window.__setTrainingCollar(true);
@@ -357,13 +360,13 @@ V2P.loadTorso = function(data) {
   const H = Math.ceil(n / 1024), tex = () => new Float32Array(1024 * H * 4), vt = tex(), vr = tex(), mm = tex(), rp = tex(), wy = data.paint.waistY;
   for (let i = 0; i < n; i++) { const x = world[i * 3], y = world[i * 3 + 1], z = world[i * 3 + 2]; let arm = 0;
     for (let k = 0; k < 4; k++) if (/UpperArm|Forearm|Hand|^v2p_/.test(names[si[i * 4 + k]])) arm += sw[i * 4 + k];
-    vt.set(y > wy ? [0, 1, 0, 0] : [0, 0, 1, 0], i * 4); vr.set([x, y, z, 1], i * 4); rp.set([x, y, z, arm], i * 4); }
+    vt.set(!torsoPaint ? (y > wy ? [1, 0, 0, 0] : [0, 0, 1, 0]) : y > wy ? [0, 1, 0, 0] : [0, 0, 1, 0], i * 4); vr.set([x, y, z, 1], i * 4); rp.set([x, y, z, arm], i * 4); }
   const dt = a => { const d = new t.DataTexture(a, 1024, H, t.RGBAFormat, t.FloatType); d.magFilter = d.minFilter = t.NearestFilter; d.needsUpdate = true; return d; };
   const TX = { uVT: dt(vt), uVR: dt(vr), uMMT: dt(mm), uV2pT: dt(rp) };
   const base = tee.material, mat = base.clone(), ob = base.onBeforeCompile;
-  mat.onBeforeCompile = function(sh, r) { ob.call(this, sh, r); for (const k in TX) sh.uniforms[k] = { value: TX[k] }; sh.uniforms.uV2pTorso = { value: 1 }; };
+  mat.onBeforeCompile = function(sh, r) { ob.call(this, sh, r); for (const k in TX) sh.uniforms[k] = { value: TX[k] }; sh.uniforms.uV2pTorso = { value: torsoPaint ? 1 : 0 }; };
   mat.customProgramCacheKey = base.customProgramCacheKey; mat.side = t.FrontSide;
-  const mesh = new t.SkinnedMesh(geo, mat); mesh.name = 'V2P_Base_Torso'; mesh.frustumCulled = false; mesh.castShadow = mesh.receiveShadow = false;
+  const mesh = new t.SkinnedMesh(geo, mat); mesh.name = meshName; mesh.frustumCulled = false; mesh.castShadow = mesh.receiveShadow = false;
   tee.parent.add(mesh); mesh.position.copy(tee.position); mesh.quaternion.copy(tee.quaternion); mesh.scale.copy(tee.scale); mesh.updateMatrixWorld(true);
   mesh.bind(tee.skeleton, tee.bindMatrix); mesh.visible = false;
   // what torso mode hides: filtered index buffers (tee below the collar band, Coach_Body arm faces above the weld ring), draw range 0 for trim + shorts
@@ -373,9 +376,27 @@ V2P.loadTorso = function(data) {
   for (const nm in data.hideFaces) { const o = get(nm), nf = o.geometry.index.count / 3, h = new Set(data.hideFaces[nm]), keep = []; for (let f = 0; f < nf; f++) if (!h.has(f)) keep.push(f);
     swaps.push({ g: o.geometry, idx0: o.geometry.index, idx1: filt(o, keep) }); }
   const hidden = data.hideMeshes.map(nm => { const g = get(nm).geometry; return { g, dr: { start: g.drawRange.start, count: g.drawRange.count } }; });
-  V2P.torso = { mesh, swaps, hidden, seamN, on: false };
-  return { torso: n, faces: I16.length / 3, seam: seamN, hidden: data.hideMeshes, keep: Object.fromEntries(Object.entries(data.keepFaces).map(([k, f]) => [k, f.length])), hide: Object.fromEntries(Object.entries(data.hideFaces).map(([k, f]) => [k, f.length])) };
+  return { mesh, swaps, hidden, seamN, on: false, report: { verts: n, faces: I16.length / 3, seam: seamN, hidden: data.hideMeshes, keep: Object.fromEntries(Object.entries(data.keepFaces).map(([k, f]) => [k, f.length])), hide: Object.fromEntries(Object.entries(data.hideFaces).map(([k, f]) => [k, f.length])) } };
+}
+V2P.loadTorso = function(data) {
+  if (V2P.torso) return { already: true }; if (!V2P.loaded) throw new Error('v2plus: load() before loadTorso()');
+  V2P.torso = buildPiece(data, 'V2P_Base_Torso', true); return Object.assign({ torso: V2P.torso.report.verts }, V2P.torso.report);
 };
+// ---------------- 5. base-mesh limbs (opt-in: spec.v2plus.limbs = 'base'; needs torso:'base' and the short sleeve) ----------------
+// drill-anim/models/training-human-v2plus-limbs-base.json (tools/human-v2plus/limbs-base/build.sh): the arms (from the torso's arm
+// weld ring to a wrist ring 3.5 cm up the forearm) and legs (from the torso's leg ring to an ankle ring at y 0.15, inside the shoe
+// collar zone) of the same Blender base-mesh body, re-posed per segment onto the v2 joints and fitted (stiff, low-frequency) to the
+// v2 arm / leg skin. Welded vertex-for-vertex to the same Coach_Body rings as the torso (top) and to the v2 hand / foot (bottom), so
+// skeleton, solver, hands, head and shoes are untouched. Painted by tone weight (uV2pTorso 0): arms skin, legs tights (below uV2pWaist), like the v2 skin they replace. Hidden in this mode: the
+// Coach_Body arm / leg segments between those rings (its hideFaces include the torso's own, so it is applied after the torso).
+V2P.loadLimbs = function(data) {
+  if (V2P.limbs) return { already: true }; if (!V2P.torso) throw new Error('v2plus: loadTorso() before loadLimbs()');
+  if (V2P.torso.on || V2P.outfitOn) throw new Error('v2plus: loadLimbs() with the profile off (reads the unmodified index buffers)');
+  V2P.limbs = buildPiece(data, 'V2P_Base_Limbs', false); return Object.assign({ limbs: V2P.limbs.report.verts }, V2P.limbs.report);
+};
+// applied after setTorso: remembers the index each swap replaced, so turning limbs off restores the torso-mode (or plain) buffers
+V2P.setLimbs = function(on) { const R = V2P.limbs; if (!R || R.on === on) return; R.on = on; R.mesh.visible = on;
+  for (const s of R.swaps) { if (on) { s.prev = s.g.index; s.g.setIndex(s.idx1); } else s.g.setIndex(s.prev || s.idx0); } };
 V2P.setTorso = function(on) { const R = V2P.torso; if (!R || R.on === on) return; R.on = on; R.mesh.visible = on;
   for (const s of R.swaps) s.g.setIndex(on ? s.idx1 : s.idx0);
   for (const h of R.hidden) h.g.setDrawRange(on ? 0 : h.dr.start, on ? 0 : h.dr.count); };
@@ -396,7 +417,7 @@ V2P.load = function(meta, outfit) {
   if (outfit) V2P.outfit = prepOutfit(outfit);
   const sel0 = E.selectModelProfile.bind(E);
   E.selectModelProfile = function(spec) { if (spec.modelProfile === 'training-human-v2plus') { sel0(Object.assign({}, spec, { modelProfile: 'training-human-v2' })); V2P.enable(true);
-      V2P.setOutfit(spec.v2plus?.outfit || (spec.v2plus?.torso ? 'compression' : null), { sleeve: spec.v2plus?.sleeve, torso: spec.v2plus?.torso }); }
+      V2P.setOutfit(spec.v2plus?.outfit || (spec.v2plus?.torso ? 'compression' : null), { sleeve: spec.v2plus?.sleeve, torso: spec.v2plus?.torso, limbs: spec.v2plus?.limbs }); }
     else { if (V2P.on) { V2P.setOutfit(null); V2P.enable(false); } sel0(spec); } };
   const pose0 = E.pose.bind(E);
   E.pose = function(spec, params, warm) { const r = pose0(spec, params, warm);
