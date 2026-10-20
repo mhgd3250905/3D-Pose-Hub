@@ -32,7 +32,7 @@ export default{
  modelProfile:'training-human-v2',alignClavicles:false,fps:15,
  timeline:{duration:DUR,tracks:P.tracks},pose:{base:P.base,deltas:P.deltas},
  highlight:{groups:['hip-abductors'],side:'right',pulseTrack:'ir',pulseBase:0.3},
- camera:{dir:[-0.25,0.2,1],fit:['head','leftToe','rightToe','pelvis','leftKnee','rightKnee','leftPalm','rightPalm'],pad:0.18,k:1,drift:0,at:2,fitTimeline:true},
+ camera:{dir:[-0.75,0.2,-0.65],fit:['head','leftToe','rightToe','pelvis','leftKnee','rightKnee','leftPalm','rightPalm'],pad:0.18,k:1,drift:0,at:2,fitTimeline:true},
  frame:{mode:'fit',width:780,height:820,cx:512,cy:520},stillAt:2,
  props:[{type:'chair',at:[0.40,0,0.183],yaw:0,height:0.45,width:0.44,depth:0.42,back:0.58}],
  keyFrames:[0,2,4,6.5],

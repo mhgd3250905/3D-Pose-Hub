@@ -1,6 +1,6 @@
 // Home bodyweight, not office. Single goal: controlled shoulder-girdle elevation with nearly straight elbows.
 // 1 easy set of 4-6 slow reps; prior painless pike support required; stop for wrist/shoulder discomfort.
-// No independent upper-trapezius highlight; no claim to show anatomical scapular upward rotation.
+// Upper trapezius highlighted via raw panel trapUpper; no claim to show anatomical scapular upward rotation.
 // Candidate: closed-chain shoulder elevation with straight elbows, not pike elbow flexion.
 // Fixed model uses shoulder-girdle translation, not anatomical scapular upward rotation.
 import { keys } from '../lib/home-anim.mjs';
@@ -27,9 +27,9 @@ export default {
       ],
       solve: { vars: ['px', 'py', 'h0'], reg: { px: 0.01, py: 0.01, h0: 0.001 }, iters: 80 },
     },
-    deltas: { down: { shoulders: {shift:[0,0.035,0]} } },
+    deltas: { down: { shoulders: {shift:[0,0.045,0]} } },
   },
-  highlight: { groups: [], side: 'both', pulseTrack: 'down', pulseBase: 0.3 },
+  highlight: { groups: ['trapUpper'], side: 'both', pulseTrack: 'down', pulseBase: 0.3 },
   camera: { dir: [-0.45, 0.2, 1], fit: ['head', 'leftPalm', 'rightPalm', 'leftToe', 'rightToe', 'pelvis', 'leftElbow', 'rightElbow'], pad: 0.12, k: 0.8, drift: 0, at: 2.2 },
   frame: { mode: 'fit', width: 800, height: 800, cx: 512, cy: 520 },
   stillAt: 0.2,
