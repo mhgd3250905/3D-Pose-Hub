@@ -285,3 +285,25 @@ Base Meshes v1.4.1 realistic male (CC0). Needs `limbs:'base'` (throws otherwise)
 - Check: `tools/human-v2plus/run.sh tools/human-v2plus/hands-poses.mjs <out> --set fix` (hands only, 6 close-ups incl. the h-db-rdl 1.2 grip; `HANDS_JSON=<file>`
   loads another hands build for an A/B). Image: `docs/reviews/human-v2plus-proto/hands-base/fix.jpg` (top: M8; bottom: wrist welds with
   the old seam normals). `verify.mjs` originalSpecHashesPreserved true. Tag `v2plus-hands-fix`.
+
+## M8 head-base sketch (2026-10-20) — direction only, not implemented
+
+`docs/reviews/human-v2plus-proto/head-base/sketch.jpg` (offline raster, `tools/human-v2plus/head-base/sketch.py`): top = the current
+head (`Toon_Mannequin_Head_v5`), bottom = the Blender Human Base Meshes v1.4.1 realistic male head (CC0, same `male_l2.npz` as the
+torso / limbs / hands), aligned by skull depth and ear position (base frame + (0, 0.043, 0.012 − 0.035)); front / 3-4 / profile.
+The base head is clearly better (jawline, cheekbones, brow, nose, lips, ears; same skull height 1.727 vs 1.729, width 0.183 vs 0.193,
+depth 0.220 vs 0.221), so `head:'base'` is worth doing — but it is a milestone of its own, not a polish step, for these reasons:
+
+- The current head is a separate, rigid mesh (100 % `head` bone) ending in a flat 230-vertex neck ring at y 1.479 (r ≈ 6.6 cm); it is
+  not welded to anything. The torso piece ends at the V-neck collar weld (y 1.33–1.45, tee collar band). A hole-free `head:'base'`
+  therefore needs the base **neck** too, from the torso piece's top loop up to the head.
+- Plan: cut the base head + neck from `male_l2.npz` above the torso piece's collar loop (same source mesh, so the neck continues the
+  torso's own surface almost natively), similarity-align (above), fit the lower neck to the torso loop with the hands-style arc-length
+  snap + zipper + ghost-ring fairing; the seam is piece-to-piece (torso piece vertices), so `buildPiece` needs a seam source that is
+  a v2plus piece (skinned positions / weights / normals of `V2P_Base_Torso` at reset) or the torso build must emit the neck itself.
+- Eye openings of the base mesh are holes (no eyeballs): cap each loop with a slightly convex harmonic dome (neutral closed-eye look),
+  or fill with a sphere segment. Mouth is closed in the base mesh (fine).
+- Weights: `head` above the jaw / occiput, `neck` → `torso` blend down the neck (transfer from the torso piece at the seam).
+  Hide `Toon_Mannequin_Head_v5` (hideMeshes) and keep the skin material (skinPaint).
+- Key frames to check: standing front / 3-4 / profile, scapular-B t=1.9 (head between the arms), h-db-rdl t=2.3; joints must stay 0.000 mm.
+Suggested as M9 with a draft-first image (one standing front + profile) before the full build.

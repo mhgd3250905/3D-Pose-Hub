@@ -40,9 +40,11 @@ const SETS = {
     ['h-db-rdl', 1.2, [['lhand-grip', [0.2, -0.4, 1], 'leftWrist', 0.26]]],
     ['chest-A', 1.15, [['lhand-out', [1, 0.35, 0.5], 'leftWrist', 0.28], ['lhand-front', [0.4, 0.5, 1], 'leftWrist', 0.28]]],
   ],
+  // M8 head sketch: the current head close up (front / 3-4 / profile)
+  head: [['h-squat', 0.0, [['head-front', [0, 0.05, 1], 'head', 0.3], ['head-34', [0.7, 0.05, 0.7], 'head', 0.3], ['head-profile', [1, 0.05, 0], 'head', 0.3]]]],
   regions: [['h-squat', 0.0, [['front', [0, 0.05, 1], null], ['back', [0, 0.05, -1], null], ['lhand', [0.8, 0.1, 0.6], 'leftWrist', 0.3]]]],
 };
-const VARS = REG || SET === 'fix' ? [['hands', 'base']] : [['limbs', null], ['hands', 'base']]; const JD = {};
+const VARS = REG || SET === 'fix' || SET === 'head' ? [['hands', 'base']] : [['limbs', null], ['hands', 'base']]; const JD = {};
 for (const [id, t, views] of SETS[SET]) { if (ONLY && !ONLY.includes(id)) continue;
   const s0 = (await import(pathToFileURL(path.join(REPO, 'drill-anim/specs', id + '.js')).href)).default;
   for (const [vname, limbs] of VARS) {
