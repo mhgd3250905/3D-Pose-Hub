@@ -103,6 +103,53 @@ if __name__=='__main__':
             a_,b_=J[j],J[j+1]; a2,b2=Jt[j],Jt[j+1]; R=rot_to(b_-a_,b2-a2); u=(b_-a_)/np.linalg.norm(b_-a_); st=np.linalg.norm(b2-a2)/np.linalg.norm(b_-a_)
             Y=Xs-a_; ax=Y@u; Y=Y+np.outer(ax*(st-1),u); Y=Y@R.T+a2
             out+=Wf[:,1+fi*3+j:2+fi*3+j]*Y
+    # --- thumb web / thenar: the thumb turns ~60 deg out of the base's adducted pose, and linear blending of palm and thumb
+    # transforms folds the web.  Instead: harmonic rotation (+ axial stretch) field over the thenar band, from identity on the
+    # palm to the thumb-1 transform on the thumb, then a Poisson solve of the rotated (scaled) edge vectors with both sides fixed.
+    # band by geodesic distance from the thumb tip (Euclidean thumb weights reach the index side of the palm and the web)
+    J=JBs['thumb']; dgT=dijkstra(G,indices=order['thumb'])
+    dM=dgT[np.argmin(np.linalg.norm(X-JB['thumb'][1],axis=1))]; lC=np.linalg.norm(JB['thumb'][1]-JB['thumb'][0])
+    fother=Wf[:,4:].sum(1)
+    Tset=dgT<dM*float(os.environ.get('H_TIN','0.85')); Pset=(~Tset)&((dgT>dM+lC*float(os.environ.get('H_POUT','1.3')))|(fother>0.3))
+    print('thumb tip->MCP geodesic mm',round(dM*1000,1),'MCP->CMC mm',round(lC*1000,1),'T',int(Tset.sum()),'P',int(Pset.sum()))
+    # weights: P has no thumb, T only thumb (chain split kept); band = harmonic t (thumb1) below
+    tw=Wf[:,1:4].copy(); Wf[Pset,0]+=tw[Pset].sum(1); Wf[Pset,1:4]=0
+    ts=tw[Tset].sum(1,keepdims=True); tw_=np.where(ts>1e-6,tw[Tset]/np.maximum(ts,1e-6),[[1,0,0]]); Wf[Tset,1:4]=tw_; Wf[Tset,0]=0; Wf[Tset,4:]=0
+    om=~(Tset|Pset); wt=np.where(Tset,1.0,0.0); Thi=0.5
+    # positions of the fixed sides with the cleaned weights
+    out=Wf[:,0:1]*Xs
+    for fi,f in enumerate(FN):
+        Jx=JBs[f]; Jt=Jv[f]
+        for j in range(3):
+            a_,b_=Jx[j],Jx[j+1]; a2,b2=Jt[j],Jt[j+1]; R=rot_to(b_-a_,b2-a2); u=(b_-a_)/np.linalg.norm(b_-a_); st=np.linalg.norm(b2-a2)/np.linalg.norm(b_-a_)
+            Y=Xs-a_; ax=Y@u; Y=Y+np.outer(ax*(st-1),u); Y=Y@R.T+a2
+            out+=Wf[:,1+fi*3+j:2+fi*3+j]*Y
+    J=JBs['thumb']; Jt=Jv['thumb']; R1=rot_to(J[1]-J[0],Jt[1]-Jt[0]); u1=(J[1]-J[0])/np.linalg.norm(J[1]-J[0])
+    st1=np.linalg.norm(Jt[1]-Jt[0])/np.linalg.norm(J[1]-J[0]); rv1=Rr.from_matrix(R1).as_rotvec()
+    E1=edges_of(F1); A1=adjacency(n,E1).tocsr(); deg1=np.asarray(A1.sum(1)).ravel()
+    Lu=(sp.diags(deg1)-A1).tocsr(); fi_=np.where(om)[0]; fx_=np.where(~om)[0]
+    bnd=np.zeros((n,4)); bnd[wt>=Thi,:3]=rv1; bnd[wt>=Thi,3]=st1-1
+    from scipy.sparse.linalg import spsolve
+    Lff=Lu[fi_][:,fi_].tocsc(); fld=bnd.copy()
+    rhs=-Lu[fi_][:,fx_]@bnd[fx_]
+    for c in range(4): fld[fi_,c]=spsolve(Lff,rhs[:,c])
+    Mv=Rr.from_rotvec(fld[:,:3]).as_matrix()@(np.eye(3)+fld[:,3,None,None]*np.outer(u1,u1))    # per-vertex linear map
+    eij=Xs[E1[:,1]]-Xs[E1[:,0]]; eij=0.5*(np.einsum('eab,eb->ea',Mv[E1[:,0]],eij)+np.einsum('eab,eb->ea',Mv[E1[:,1]],eij))
+    use=om[E1[:,0]]|om[E1[:,1]]; Ee=E1[use]; ee=eij[use]; m_=len(Ee)
+    G=sp.coo_matrix((np.r_[-np.ones(m_),np.ones(m_)],(np.r_[np.arange(m_),np.arange(m_)],np.r_[Ee[:,0],Ee[:,1]])),shape=(m_,n)).tocsr()
+    Gf=G[:,fi_]; Gx=G[:,fx_]; Q_=(Gf.T@Gf).tocsc(); new=out.copy()
+    for c in range(3): new[fi_,c]=spsolve(Q_,Gf.T@(ee[:,c]-Gx@out[fx_,c]))
+    # flips: face normal vs the rotation-field image of the base face normal
+    def fnorm(Y): f=np.cross(Y[F1[:,1]]-Y[F1[:,0]],Y[F1[:,2]]-Y[F1[:,0]]); return f/np.maximum(np.linalg.norm(f,axis=1,keepdims=True),1e-15)
+    ref=np.einsum('fab,fb->fa',Mv[F1[:,0]],fnorm(Xs))
+    tf_=(om|Tset)[F1].any(1)
+    for nm_,Y in (('lbs',out),('field',new)): cz=np.einsum('ij,ij->i',fnorm(Y),ref)[tf_]; print('thumb region faces',int(tf_.sum()),nm_,'flipped',int((cz<0).sum()),'cos<0.5',int((cz<0.5).sum()))
+    print('thenar band verts',int(om.sum()))
+    out=new
+    tb=np.clip(np.linalg.norm(fld[:,:3],axis=1)/np.linalg.norm(rv1),0,1); Wf[om]=0; Wf[om,0]=1-tb[om]; Wf[om,1]=tb[om]
+    # smooth the thumb chain split across the band / thumb border (else thumb-2 starts with a step at the band edge in grips)
+    sm=om|Tset
+    for it in range(int(os.environ.get('H_TSMOOTH','10'))): Wn=(A@Wf)/deg[:,None]; Wf[sm]=0.5*Wf[sm]+0.5*Wn[sm]
     print('max move mm',(np.linalg.norm(out-X,axis=1).max()*1000).round(1))
     for f in FN: print(f,'base joints',JBs[f].round(3).tolist(),'v2',Jv[f].round(3).tolist())
     np.savez('hands_fit.npz',X=out,Xb=X,F=F1,Wf=Wf,idx=idx,**{'J_'+f:JBs[f] for f in FN})
