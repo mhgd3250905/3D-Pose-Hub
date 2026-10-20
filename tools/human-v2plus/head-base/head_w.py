@@ -17,7 +17,7 @@ import scipy.sparse as sp
 from scipy.sparse.linalg import factorized
 from scipy import ndimage as ndi
 from scipy.spatial import cKDTree
-FACE=os.environ.get('HD_FACE','mannequin') if os.environ.get('HD_MANNEQUIN','1')!='0' else 'detail'
+FACE=os.environ.get('HD_FACE','ready') if os.environ.get('HD_MANNEQUIN','1')!='0' else 'detail'
 if FACE!='wrap': print('fabric wrap: off, HD_FACE =',FACE); raise SystemExit
 f=lambda k,d: float(os.environ.get(k,d))
 def sstep(a,b,x): u=np.clip((x-a)/(b-a),0,1); return u*u*(3-2*u)

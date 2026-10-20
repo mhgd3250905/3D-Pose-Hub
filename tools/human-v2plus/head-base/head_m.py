@@ -9,7 +9,7 @@
 import os, numpy as np
 from meshops import *
 def sstep(a,b,x): u=np.clip((x-a)/(b-a),0,1); return u*u*(3-2*u)
-FACE=os.environ.get('HD_FACE','mannequin') if os.environ.get('HD_MANNEQUIN','1')!='0' else 'detail'
+FACE=os.environ.get('HD_FACE','ready') if os.environ.get('HD_MANNEQUIN','1')!='0' else 'detail'
 if FACE not in ('soft','wrap'): print('mannequin face (soft): off, HD_FACE =',FACE); raise SystemExit
 # HD_FACE=wrap (M10d) reuses only step 1 (mouth / nostril cavities closed, eye lid patches re-capped); head_w.py does the rest
 h=dict(np.load('head_fit.npz')); V=h['V'].astype(float); F=h['F']; n=len(V)

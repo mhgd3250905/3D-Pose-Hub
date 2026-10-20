@@ -108,7 +108,7 @@ out={'version':1,'n':int(nV),'bones':BONES,
  'joints':{'u8':b64(order.astype(np.uint8))},'weights':{'u8':b64(q.astype(np.uint8))},
  'seam':{'first':int(n),'mesh':['Mesh001']*len(ring),'vid':[int(v) for v in ring],'ring':['neck']*len(ring),'ownNormals':True},
  'keepFaces':{},'hideFaces':{},'hideMeshes':['Toon_Mannequin_Head_v5','Mesh001'],'requires':'torso','skin':'Coach_Body',
- 'source':'Blender Human Base Meshes v1.4.1 (realistic male body, CC0, blender.org): neck'+({'mannequin':' + analytic faceless display-mannequin head (M10e)','wrap':' + head, fabric-wrap face (M10d)','egg':' + analytic faceless egg mannequin head (M10c)','soft':' + head, mannequin face (M10b)'}.get(os.environ.get('HD_FACE','mannequin') if os.environ.get('HD_MANNEQUIN','1')!='0' else 'detail',' + head (detail face)')),
+ 'source':'Blender Human Base Meshes v1.4.1 (realistic male body, CC0, blender.org): neck'+({'ready':' + head: "Free Mannequin Head" by SPLiNER (Printables 1257615, CC BY 4.0) (M10f)','mannequin':' + analytic faceless display-mannequin head (M10e)','wrap':' + head, fabric-wrap face (M10d)','egg':' + analytic faceless egg mannequin head (M10c)','soft':' + head, mannequin face (M10b)'}.get(os.environ.get('HD_FACE','ready') if os.environ.get('HD_MANNEQUIN','1')!='0' else 'detail',' + head (detail face)')),
  'paint':{'waistY':-1.0,'skin':True},'report':report}
 _json.dump(out,open(sys.argv[1],'w'),separators=(',',':'))
 np.savez('head_final.npz',V=V2,F=F2,N=N,W=Wd,nMC=n)

@@ -1,4 +1,7 @@
-# head stage E (M10c): faceless egg mannequin head — head_fit.npz -> head_fit.npz (in place; runs when HD_FACE=egg or mannequin; mannequin is the default, M10e)
+# head stage E (M10c): faceless egg mannequin head — head_fit.npz -> head_fit.npz (in place; runs when HD_FACE=ready, mannequin or egg; ready is the default, M10f)
+#  M10f HD_FACE=ready: the head surface is a ready-made model, "Free Mannequin Head" by SPLiNER (Printables 1257615, CC BY 4.0;
+#  assets/ATTRIBUTION.md), used as a point-cloud signed distance (k-nearest IDW of vertex tangent-plane distances, x-symmetrized) in
+#  place of the analytic egg; its neck stub is faded out below the chin (C1 quadratic shrink) and smooth-unioned with the base neck.
 #  The whole head above Y_C (just under the jaw) is replaced by an analytic surface; the base neck below Y_C (weld loop, collar band,
 #  trapezius) is kept untouched.
 #  Implicit: smooth union (polynomial smin, K_U) of
@@ -13,9 +16,9 @@
 #  bottom row (base cut exactly on the Y_C plane; grid bottom rows faded onto the real contour, FADE rows; no fairing needed).
 import os, numpy as np
 from meshops import *
-FACE=os.environ.get('HD_FACE','mannequin') if os.environ.get('HD_MANNEQUIN','1')!='0' else 'detail'
-if FACE not in ('egg','mannequin'): print('egg / mannequin head: off, HD_FACE =',FACE); raise SystemExit
-MANN=FACE=='mannequin'
+FACE=os.environ.get('HD_FACE','ready') if os.environ.get('HD_MANNEQUIN','1')!='0' else 'detail'
+if FACE not in ('egg','mannequin','ready'): print('egg / mannequin / ready head: off, HD_FACE =',FACE); raise SystemExit
+READY=FACE=='ready'; MANN=FACE in ('mannequin','ready')
 f=lambda k,d: float(os.environ.get(k,d))
 Y_C=f('HD_E_YC','1.46'); Y_T=f('HD_E_YT','1.515'); K_U=f('HD_E_KU','0.03'); TILT=np.radians(f('HD_E_TILT','28'))
 AX,AY,AZ=f('HD_E_AX','0.076'),f('HD_E_AY','0.124'),f('HD_E_AZ','0.096'); TAPER=f('HD_E_TAPER','0.16'); CZ=f('HD_E_CZ','0.03')
@@ -87,6 +90,37 @@ if MANN:
         wz=np.clip((P[...,2]-0.07)/0.03,0,1); wz=wz*wz*(3-2*wz)
         return d-NO_H*wy*wz*np.exp(-(P[...,0]/NO_W)**2)
     d_egg=d_mann
+if READY:
+    # M10f ready-made head: SPLiNER "Free Mannequin Head" (STL mm, up +z, face -y, sagittal plane x = R_CX) -> ours (x, y up, z front):
+    #  X = (x - R_CX) s, Y = TOP - (R_ZT - z) s (crown on TOP), Z = (R_NY - y) s (stub axis R_NY on our neck axis z = R_DZ)
+    from scipy.spatial import cKDTree as _KD
+    A=np.load(os.path.join(os.path.dirname(os.path.abspath(__file__)),'assets','spliner-head-pts.npz'))
+    Pm=A['P'].astype(float)*A['scale']+A['lo']; Nm=A['N'].astype(float)/127
+    R_S=f('HD_R_SCALE','0.0045'); R_CX=f('HD_R_CX','128.0'); R_NY=f('HD_R_NY','134.5'); R_ZT=float(Pm[:,2].max()); R_DZ=f('HD_R_DZ','0.0')
+    R_PITCH=np.radians(f('HD_R_PITCH','0'))          # + tips the face down (about x through the stub bottom)
+    R_YCUT=f('HD_R_YCUT','1.494'); R_P=f('HD_R_P','30'); R_K=int(f('HD_R_K','8'))
+    Pr=np.stack([(Pm[:,0]-R_CX)*R_S,TOP-(R_ZT-Pm[:,2])*R_S,(R_NY-Pm[:,1])*R_S+R_DZ],1); Nr=np.stack([Nm[:,0],Nm[:,2],-Nm[:,1]],1)
+    if R_PITCH:
+        yb=TOP-R_ZT*R_S; c_,s_=np.cos(R_PITCH),np.sin(R_PITCH); R=np.array([[1,0,0],[0,c_,-s_],[0,s_,c_]])
+        Pr=(Pr-[0,yb,0])@R.T+[0,yb,0]; Nr=Nr@R.T
+    keep=Pr[:,0]>=-1e-4; Pr=np.r_[Pr[keep],Pr[keep]*[-1,1,1]]; Nr=np.r_[Nr[keep],Nr[keep]*[-1,1,1]]   # exact sagittal symmetrize (x >= 0 half mirrored)
+    Nr/=np.linalg.norm(Nr,axis=1,keepdims=True); KD=_KD(Pr)
+    print('ready head: pts',len(Pr),'bbox',Pr.min(0).round(4),Pr.max(0).round(4))
+    def d_pts(Q):
+        dd,ii=KD.query(Q,R_K,workers=2); w=1/(dd*dd+1e-8); sd=np.einsum('nkc,nkc->nk',Q[:,None]-Pr[ii],Nr[ii]); return (w*sd).sum(1)/w.sum(1)
+    # sampled once on a regular volume (R_VOX, x >= 0 half; mirrored by |x|) and read back with cubic B-spline interpolation (smooth, fast)
+    from scipy.ndimage import map_coordinates, spline_filter
+    VX=f('HD_R_VOX','0.0015'); vlo=np.array([0,Pr[:,1].min(),Pr[:,2].min()])-0.012; vhi=Pr.max(0)+0.012
+    gx,gy,gz=[np.arange(vlo[c],vhi[c]+VX,VX) for c in range(3)]; GX,GY,GZ=np.meshgrid(gx,gy,gz,indexing='ij')
+    VOL=d_pts(np.stack([GX,GY,GZ],-1).reshape(-1,3)).reshape(GX.shape); VOLc=spline_filter(VOL,order=3)
+    print('ready head: SDF volume',VOL.shape,'voxel mm',VX*1000,flush=True)
+    def d_ready(P,cy=None):
+        sh=P.shape[:-1]; Q=P.reshape(-1,3); C=(np.stack([np.abs(Q[:,0]),Q[:,1],Q[:,2]],1)-vlo)/VX
+        ins=(C>=0).all(1)&(C[:,0]<len(gx)-1)&(C[:,1]<len(gy)-1)&(C[:,2]<len(gz)-1)
+        d=np.full(len(Q),0.05); d[ins]=map_coordinates(VOLc,C[ins].T,order=3,prefilter=False)
+        d=d+R_P*np.maximum(R_YCUT-Q[:,1],0)**2                                   # neck stub fade below the chin (C1)
+        return d.reshape(sh)
+    d_egg=d_ready
 def Ffun(P,cy):
     r=np.hypot(P[...,0],P[...,2]); a=ang(P[...,0],P[...,2]); dn=r-r_neck(P[...,1],a)+NECK_P*np.maximum(P[...,1]-Y_P,0)**2   # C1 fade-out inside the egg (a hard cap made a crease via smin)
     return smin(d_egg(P,cy),dn,K_U)
