@@ -21,10 +21,10 @@ FACE=os.environ.get('HD_FACE','wrap') if os.environ.get('HD_MANNEQUIN','1')!='0'
 if FACE!='wrap': print('fabric wrap: off, HD_FACE =',FACE); raise SystemExit
 f=lambda k,d: float(os.environ.get(k,d))
 def sstep(a,b,x): u=np.clip((x-a)/(b-a),0,1); return u*u*(3-2*u)
-R_CLOSE=f('HD_W_R','0.011'); VOX=f('HD_W_VOX','0.001'); T_LOW=f('HD_W_T','15000')
-K_EAR=f('HD_W_KEAR','0.2'); K_MOUTH=f('HD_W_KMOUTH','0.35'); K_NOSE_U=f('HD_W_KNOSEU','0.5')
+R_CLOSE=f('HD_W_R','0.016'); VOX=f('HD_W_VOX','0.001'); T_LOW=f('HD_W_T','15000')
+K_EAR=f('HD_W_KEAR','0.2'); K_MOUTH=f('HD_W_KMOUTH','0.35'); K_NOSE_U=f('HD_W_KNOSEU','0.3')
 Y0,Y1=f('HD_W_Y0','1.47'),f('HD_W_Y1','1.50')       # everything fades in over y 1.47 -> 1.50 (neck below untouched)
-TAU_FACE=int(f('HD_W_TAUF','12')); TAU_ALL=int(f('HD_W_TAUA','3'))
+TAU_FACE=int(f('HD_W_TAUF','20')); TAU_ALL=int(f('HD_W_TAUA','3'))
 h=dict(np.load('head_fit.npz')); V=h['V'].astype(float); F=h['F']; LA=np.array(h['LA'])
 # ---- 0. mouth re-topology: the closed-mouth patch (lips + head_m's cap, whose rings fold under the lips) is cut on an ellipsoid and
 # re-filled with clean concentric rings + bi-Laplacian fairing (CAP_RIM rings around it free), so later steps see an untangled membrane

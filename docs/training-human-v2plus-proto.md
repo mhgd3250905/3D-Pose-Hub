@@ -405,3 +405,22 @@ Image: `docs/reviews/human-v2plus-proto/head-base/m10c.jpg` (front, 3/4, side, b
 `head-poses.mjs --set m10c`). Tag `v2plus-head-egg`.
 Remaining: one ~23° edge at the side of the neck in the fade band (y ≈ 1.474, trapezius flare transition); weld folds under the collar
 went 7 → 15 (hidden by the tee collar band).
+
+### M10d fabric-wrap head (2026-10-20) — `head:'base'` head is now the real head wrapped in stretch fabric (default)
+User rejected the egg head (M10c) and asked, from first principles, for "a Spider-Man head without its texture": real head anatomy tightly
+wrapped in smooth stretch fabric (target `head-final-3view-target.jpg`). New stage `head_w.py`; `build.sh` switch `HD_FACE=wrap` (default)
+| `egg` | `soft` | `detail`. Starts from the M10 detail head (skull, brow, cheekbones, jaw, chin, nose kept); head_m runs only its cavity
+step (mouth / nostril linings cut + capped, eye lid patches re-capped). Then: mouth patch re-topologised (ellipsoid cut + 6 clean rings,
+bi-Laplacian faired) and faired again as one membrane (faint lip volume, no lip line / corners); ears = membrane over the ear + 35 % of the
+low-passed relief (low flat bumps, no folds / holes); nose underside low-passed (k 0.3); **morphological closing** with a 16 mm ball
+(1 mm voxel occupancy by z-ray parity, EDT dilate + erode, blurred SDF): vertices inside the closed volume are pushed onto it (eye
+sockets → shallow hollows, nasolabial / under-nose / mentolabial / ear junctions bridged), convex forms untouched; tangential relax +
+re-projection, then any remaining tangle (> 25° dihedral) re-faired and re-pushed; face Taubin 20 + global 3; **exact sagittal symmetrize**
+(normal-only midpoint with the mirrored surface, 4 iterations) above y 1.475. Neck below 1.47 untouched (max move 0.0 mm); weld /
+weights / collar rule unchanged (head_b); joints 0.0000 mm.
+Stats: 46 188 verts / 92 174 faces (1.79 MB); mirror error above y 1.50 p50 0.00 / p99 0.02 / max 0.37 mm; face (y > 1.50) dihedral p99 8.2°,
+max 21°, 0 edges > 30°, 0 folded; whole piece folded edges 7 (weld under the collar, as M10b), zipper flips 11.
+Image: `docs/reviews/human-v2plus-proto/head-base/m10d.jpg` (target three-view on top; front / side / back as the target, 3/4, tech-white,
+neon-night; `head-poses.mjs --set m10d`). Tag `v2plus-head-wrap`.
+Remaining: the toon ramp quantises the face into hard bands (brow shadow, nose-underside band, a diagonal light band across the skull) —
+the head shares the global toon material, so softening it is not an isolated change; the geometry itself is smooth (max 21°).
