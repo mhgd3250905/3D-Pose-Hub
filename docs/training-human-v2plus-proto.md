@@ -333,3 +333,6 @@ Feedback on M9b: better, still not pretty enough; user gave the colours. Hairlin
 - `neon-night` (A): matte skin-like dark body #3e3a38 / #161414, rim #4a4240 (low, warm), fluorescent blue line #39c6ff @0.95, halo [1.2 px, 0.13]; highlight light blue #9fdcff `hi.a` 0.45, `hi.fe` 7, shade [0.60, 0.38, 0.06]; bg #22252a→#07080a.
 - `neon-night-b` (B): same body, fluorescent green line #4dff9a @0.95, halo [1.2, 0.13]; highlight #b6ffd0 @0.45.
 - Sheet: `docs/reviews/human-v2plus-proto/skins/user-palette.jpg` (3 cols; standing h-squat t=0 + h-db-rdl t=1.2 glute/ham; bottom = torso close-up with pecs highlighted, white-gold + dark-blue, 400 px tiles unscaled). `skins.mjs` gained `--rows torso` (upper-body framing) and `--torso-only <skins>`; `skins_sheet.py` leaves missing tiles blank.
+
+### M9d skins tweak (2026-10-20)
+`tech-white` line one step darker #9a7a3a → #8a6a2e (lw 0.5, @0.90 unchanged); highlights more transparent: `tech-white` `hi.a` 0.55 → 0.45, `neon-night` / `neon-night-b` 0.45 → 0.38. Sheet: `docs/reviews/human-v2plus-proto/skins/user-palette-m9d.jpg` (RDL rear row ×3 + torso close-up tech-white / neon-night).

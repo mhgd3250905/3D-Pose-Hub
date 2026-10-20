@@ -245,12 +245,12 @@ const SKINS = V2P.SKINS = {
   // M9c (2026-10-20): the user's own palettes. tech-white = matte white body + dark-gold hairlines + soft translucent orange highlight;
   // neon-night = matte skin-like dark body + fluorescent blue (A) / green (B) hairlines with a small halo + light translucent highlight.
   // rim ~ the lit albedo (no sheen); fin is already 0 (matte) on painted meshes. tech-white-b is kept as an alias of tech-white.
-  'tech-white': { lines: true, grey: L('#eeece8'), shade: L('#b4b0aa'), line: L('#9a7a3a'), lw: 0.5, la: 0.9, glow: [0, 0], rim: L('#f2f0ec'), tint: [1, 1, 1], sk: 1,
-    hi: { c: L('#f08a3c'), shade: [0.62, 0.36, 0.06], a: 0.55, fe: 7 }, bg: B(0xf3f2ef, 0xcfccc6) },
+  'tech-white': { lines: true, grey: L('#eeece8'), shade: L('#b4b0aa'), line: L('#8a6a2e'), lw: 0.5, la: 0.9, glow: [0, 0], rim: L('#f2f0ec'), tint: [1, 1, 1], sk: 1,
+    hi: { c: L('#f08a3c'), shade: [0.62, 0.36, 0.06], a: 0.45, fe: 7 }, bg: B(0xf3f2ef, 0xcfccc6) },
   'neon-night': { lines: true, grey: L('#3e3a38'), shade: L('#161414'), line: L('#39c6ff'), lw: 0.5, la: 0.95, glow: [1.2, 0.13], rim: L('#4a4240'), tint: [1, 1, 1], sk: 1,
-    hi: { c: L('#9fdcff'), shade: [0.60, 0.38, 0.06], a: 0.45, fe: 7 }, bg: B(0x22252a, 0x07080a) },
+    hi: { c: L('#9fdcff'), shade: [0.60, 0.38, 0.06], a: 0.38, fe: 7 }, bg: B(0x22252a, 0x07080a) },
   'neon-night-b': { lines: true, grey: L('#3e3a38'), shade: L('#161414'), line: L('#4dff9a'), lw: 0.5, la: 0.95, glow: [1.2, 0.13], rim: L('#4a4240'), tint: [1, 1, 1], sk: 1,
-    hi: { c: L('#b6ffd0'), shade: [0.60, 0.38, 0.06], a: 0.45, fe: 7 }, bg: B(0x22262a, 0x07080a) },
+    hi: { c: L('#b6ffd0'), shade: [0.60, 0.38, 0.06], a: 0.38, fe: 7 }, bg: B(0x22262a, 0x07080a) },
   'hologram': { lines: true, grey: L('#6aa3b4'), shade: L('#2a5566'), line: L('#dcedf5'), lw: 0.5, la: 0.55, glow: [1.4, 0.10], rim: L('#cfe8f0'), tint: [1.05, 1.05, 1.05], sk: 1,
     holo: [1, 0.42, 0.35, 0.16], scan: 520, hi: { c: L('#e9d49c'), shade: [0.74, 0.22, 0.10], a: 0.58, fe: 5 }, bg: B(0x122030, 0x03070c) },
   'hologram-b': { lines: true, grey: L('#7896bd'), shade: L('#2e4468'), line: L('#e6efff'), lw: 0.5, la: 0.5, glow: [1.4, 0.08], rim: L('#d6e2f6'), tint: [1.05, 1.05, 1.05], sk: 1,
