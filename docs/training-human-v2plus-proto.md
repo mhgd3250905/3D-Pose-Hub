@@ -175,3 +175,23 @@ PYTHONPATH=/workspace/work/pylib python3 tools/human-v2plus/regions/grid_sheet.p
 2. 锚点只对 compression + base 躯干这个烘焙状态有效（`stale` 会标出来）；位置来自 CPU 蒙皮，不含着色器里的额外位移（若有），贴面误差几毫米级，调试图上看不出偏。
 3. 斜方肌中下部在肩胛冈上方向外伸到肩峰，背面看像 T 形；参考图里冈上部分不单独画，可以接受，但还可以再收。
 4. `regions` 只在 `torso: 'base'` 下试过；动作只看了 h-squat 和 scapular-B。
+
+M5（2026-10-20）：补完肌肉区 + 文字 / 箭头标注
+1. **缝匠肌**：改成一条可见的斜向条带，髂前上棘（大腿前上外侧）→ 膝内侧（折线 `SART`，大腿展开图）。细条在 argmin 里会输给它穿过的股四头肌大区内部，所以它的距离乘 `SART_K = 4`（连续，烘焙里没有跳变），和邻区相接处约 1.4 cm 宽；股直肌 / 股外侧肌的上端相应下移、内收肌上端外扩，条带内侧不再留股直肌碎片。左右镜像，有锚点。大圆肌、肱肌、腓骨肌加宽（顶点 ~280 / ~160 / ~75，锚点都在区内，深度 ≥ 2–3）。锚点重烘焙：**82/84**，只缺退役的 rhomboid。
+2. **斜方肌**：改成经典的风筝形——上部纤维（`trap-upper`）从颈到肩峰并盖住冈上区；中下部（`trap-mid`）在上部下方，外缘从肩胛冈内侧端（展开图 b ≈ 0.09）向内下收到约 T12 的脊柱上，不再沿肩胛冈伸到肩峰（M4 的"T 形"去掉）。冈下肌上缘相应下移到肩胛冈。左右镜像。
+3. **标注（默认关闭）**：`__v2p.setLabels(list, opts)`（= `__v2p.regions.setLabels`），`list` 项为 `{ id }` 或 `{ key: 'delt-front', side?: 'L'|'R' }`，可带 `text`；`null` / `[]` 关闭。只给基础 key 不给侧别时，每帧取锚点更朝向相机的那一侧，文字去掉"（左 / 右）"。`opts`：`lang`（`'zh'` 默认 / `'en'` / `'both'`）、`auto: true`（另外给所有高亮的基础区各加一个标签，最多 `maxAuto` = 8）、`fontPx`（默认画面高 / 40）、`color`。每帧（标注层自己的 onBeforeRender）：锚点（`getRegionAnchor`，当前姿势）画小圆点 → 沿投影法线的引线 → 水平折线到身体左 / 右侧的标签列（按锚点投影在身体中线哪一侧；列位置 = 关节投影外包 + 边距）；同侧标签按高度排序后推开（不重叠、不出画面）；锚点背向相机时淡出（法线·视线 0.05–0.35），完全背向就不画。实现：2D canvas → CanvasTexture → 全屏四边形（不做深度测试、renderOrder 最后），和场景同一次 WebGL 渲染，所以截图 / 逐帧导出都带标注；没有新依赖。`__v2p.regions.labelState.items` 给出每个标签的文字、侧别、透明度、锚点和文字框（像素），便于自查。
+4. **工具**：`regions-poses.mjs` 加 `--labels`（站姿正 / 背用固定的 5 个标签，动作帧 auto 标高亮区）、`--views`（只出指定视图）、`--lang`；无头 Chromium 没有中文字体，工具注册 `tools/human-v2plus/regions/label-font-zh.woff2`（14 KB 的 Noto Sans SC 子集，只含分区表里的中文名，SIL OFL），运行时字体列表里它排第一，其后是系统中文字体（PingFang / 微软雅黑 / Noto CJK）。
+
+图：`docs/reviews/human-v2plus-proto/regions/m5-fixes.jpg`（缝匠肌正面 / 内侧、斜方肌背面高亮 / 无高亮、大圆肌 + 肱肌、腓骨肌），`m5-labels.jpg`（站姿正面 5 个标签、站姿背面 5 个、scapular-B t=1.9 背面 auto、h-squat t=1.2 正 / 背 auto）。
+复现（只出关键帧）：
+```bash
+/workspace/bin/heavy -- tools/human-v2plus/run.sh tools/human-v2plus/regions.mjs output/m5c --size 560 --dump --extra "1-sartorius-front:0.08,0.62,0.05:0.55:0.15,0.05,1:sartorius;3-trapezius-back:0,1.22,-0.05:0.6:0,0.05,-1:trap-mid,trap-upper"
+PYTHONPATH=/workspace/work/pylib python3 tools/human-v2plus/regions/anchors.py output/m5c/dump.json
+/workspace/bin/heavy -- tools/human-v2plus/run.sh tools/human-v2plus/regions-poses.mjs output/m5l --size 560 --stand --labels --views stand-front,stand-back,front,back
+```
+
+还剩的粗糙处（M5 后）：
+1. 标注没有遮挡测试（只看法线朝向）：h-squat t=1.2 正面"股直肌"的锚点被手挡住，圆点画在手上。可以加关节胶囊的屏幕空间遮挡检查，或读深度。
+2. 引线水平段会横穿身体（锚点在身体中间时，如腹直肌、斜方肌中下部），和解剖图一样可以接受；标签多于 ~6 个 / 侧时只是堆叠，不会换列。
+3. 缝匠肌在穿过股内侧肌上端处（大腿内侧中段）边界有些碎（三角形较大处几个零碎小块），正面看是完整的条带。
+4. 上面 M4 的第 2、4 条仍然成立；M4 的第 1、3 条已在 M5 解决。
