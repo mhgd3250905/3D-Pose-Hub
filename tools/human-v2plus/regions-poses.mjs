@@ -32,6 +32,15 @@ const POSES = [ // id, t, highlight, [view name, dir, joint for close-up | null 
   ['h-squat', 1.2, ['quadriceps', 'glute-max'], [['front', [0.55, 0.15, 1], null], ['thigh', [0.8, 0.2, 0.7], 'leftKnee', 0.5], ['back', [0.4, 0.2, -1], null]]],
   ['scapular-B', 1.9, ['lats', 'scapular'], [['back', [0.25, 0.0, -1], null], ['lat', [0.7, -0.05, -0.8], 'leftShoulder', 0.5], ['front', [0.3, 0.0, 1], null]]],
 ];
+// --demo glute-ham: h-db-rdl (dumbbell Romanian deadlift) instead of the defaults, highlighting the spec's own groups
+// (hamstrings + glute-max): start, mid-hinge, bottom (hamstring stretch) from back-3/4 / side / back (the way up mirrors the
+// way down: t=3.2 is the same pose as t=1.2)
+const DEMO = { 'glute-ham': [
+  ['h-db-rdl', 0.2, null, [['back34', [0.75, 0.2, -1], null]]],
+  ['h-db-rdl', 1.2, null, [['back34', [0.75, 0.2, -1], null]]],
+  ['h-db-rdl', 2.3, null, [['side', [1, 0.15, -0.5], null], ['back', [0.2, 0.35, -1], null]]],
+] };
+if (opt('--demo', null)) POSES.splice(0, POSES.length, ...DEMO[opt('--demo', null)]);
 if (A.includes('--stand')) POSES.unshift(['h-squat', 0.0, ['chest'], [['stand-front', [0.35, 0.1, 1], null], ['stand-back', [0.35, 0.1, -1], null]]]);
 if (ANCH) await p.evaluate(() => __v2p.regions.showAnchors(true));
 const LBL = { 'stand-front': ['pec', 'rectus-upper', 'delt-front', 'rectus-femoris', 'sartorius'], 'stand-back': ['trap-upper', 'trap-mid', 'infraspinatus', 'lat', 'glute-max'] };
@@ -39,8 +48,9 @@ if (LABELS) { // headless Chromium here has no CJK font: register a 14 KB Noto S
   // V2PLabelCJK, which the runtime lists first before the system CJK fonts
   const ff = path.join(REPO, 'tools/human-v2plus/regions/label-font-zh.woff2');
   if (fs.existsSync(ff)) log('font', await p.evaluate(async b64 => { const f = new FontFace('V2PLabelCJK', Uint8Array.from(atob(b64), c => c.charCodeAt(0)).buffer); await f.load(); document.fonts.add(f); return f.status; }, fs.readFileSync(ff).toString('base64'))); }
-for (const [id, t, hl0, views] of POSES) { if (ONLY && !ONLY.includes(id)) continue; const hl = HLO || hl0;
+for (const [id, t, hl0, views] of POSES) { if (ONLY && !ONLY.includes(id)) continue; let hl = HLO || hl0;
   const s0 = (await import(pathToFileURL(path.join(REPO, 'drill-anim/specs', id + '.js')).href)).default;
+  hl = hl || s0.highlight?.groups || [];
   const spec = Object.assign({}, s0, { modelProfile: 'training-human-v2plus', v2plus: { outfit: 'compression', torso: 'base', regions: 'baked' } });
   await p.evaluate(([spec, th, SZ]) => { (__props.list || []).forEach(o => o.parent?.remove(o)); if (__props.list) __props.list.length = 0;
     __toonUni.uSinkK.value = spec.clothSink ?? 1; for (const pr of spec.props || []) __props.add(th, pr); __drill.setupCamera(spec, SZ); }, [spec, theme, SZ]);
