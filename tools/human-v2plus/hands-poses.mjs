@@ -37,6 +37,7 @@ const SETS = {
   // M8 fix check (hands only): thenar at rest, wrist weld close-ups, chest-A left hand from outside the body
   fix: [
     ['h-squat', 0.0, [['lhand-thenar', [0.5, -0.1, 1], 'leftWrist', 0.22], ['lhand-weld', [1, 0.1, -0.3], 'leftWrist', 0.13], ['rhand-weld', [-0.3, 0.2, 1], 'rightWrist', 0.13]]],
+    ['h-db-rdl', 1.2, [['lhand-grip', [0.2, -0.4, 1], 'leftWrist', 0.26]]],
     ['chest-A', 1.15, [['lhand-out', [1, 0.35, 0.5], 'leftWrist', 0.28], ['lhand-front', [0.4, 0.5, 1], 'leftWrist', 0.28]]],
   ],
   regions: [['h-squat', 0.0, [['front', [0, 0.05, 1], null], ['back', [0, 0.05, -1], null], ['lhand', [0.8, 0.1, 0.6], 'leftWrist', 0.3]]]],

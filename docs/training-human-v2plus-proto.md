@@ -282,6 +282,6 @@ Base Meshes v1.4.1 realistic male (CC0). Needs `limbs:'base'` (throws otherwise)
   The limbs piece gets the same normals for its wrist seams + 5 rings (`limbsNrm`, 927 verts, converted to bind space in `loadHands`,
   swapped in / out by `setHands`), so limbs-only mode keeps its weld to the v2 hand exactly as before. `H_WELDN=0` rebuilds the old way.
 - **chest-A t=1.15 left hand** (palm on the floor) checked with cameras outside the body: flat palm, fingers on the floor, no folds.
-- Check: `tools/human-v2plus/run.sh tools/human-v2plus/hands-poses.mjs <out> --set fix` (hands only, 5 close-ups; `HANDS_JSON=<file>`
+- Check: `tools/human-v2plus/run.sh tools/human-v2plus/hands-poses.mjs <out> --set fix` (hands only, 6 close-ups incl. the h-db-rdl 1.2 grip; `HANDS_JSON=<file>`
   loads another hands build for an A/B). Image: `docs/reviews/human-v2plus-proto/hands-base/fix.jpg` (top: M8; bottom: wrist welds with
   the old seam normals). `verify.mjs` originalSpecHashesPreserved true. Tag `v2plus-hands-fix`.
