@@ -71,12 +71,13 @@ V2P.setHandPose = function(side, name, k = 1) {
   V2P.cur[side] = name;
 };
 V2P.restHands = function() { for (const b of Object.values(V2P.bones || {})) b.quaternion.identity(); V2P.cur = { left: null, right: null }; };
+const GRIP_PROPS = V2P.GRIP_PROPS = new Set(['gripHand', 'grip', 'dHandle', 'landmine', 'kbBottomsUp']);
 V2P.pickHandPose = function(spec, side) {
   const o = spec.v2plus?.handPose?.[side]; if (o) return o;
   const D = window.__drill?.currentDescriptor; const H = D?.hands?.[side] || {}; const pl = H.plant || H; const w = H.w || 0;
   if (pl.mode === 'floor' && w < 0.5) return 'palm-floor';
-  if ((spec.props || []).some(p => (p.type === 'gripHand' || p.type === 'grip') && (p.side || 'right') === side)) return 'grip-bar';
-  if ((spec.props || []).some(p => /dHandle|landmine/.test(p.type) && (p.side || 'right') === side)) return 'grip-bar';
+  // every prop whose builder calls P.bakeGrip (props.js) holds a power grip in v2: gripHand, grip, dHandle, landmine, kbBottomsUp
+  if ((spec.props || []).some(p => GRIP_PROPS.has(p.type) && (p.side || 'right') === side)) return 'grip-bar';
   if ((spec.props || []).some(p => /band/i.test(p.type))) return 'band-grip';
   return 'relaxed';
 };
