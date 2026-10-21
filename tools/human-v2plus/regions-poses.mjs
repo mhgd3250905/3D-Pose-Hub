@@ -44,7 +44,7 @@ if (opt('--demo', null)) POSES.splice(0, POSES.length, ...DEMO[opt('--demo', nul
 if (A.includes('--stand')) POSES.unshift(['h-squat', 0.0, ['chest'], [['stand-front', [0.35, 0.1, 1], null], ['stand-back', [0.35, 0.1, -1], null]]]);
 if (ANCH) await p.evaluate(() => __v2p.regions.showAnchors(true));
 const LBL = { 'stand-front': ['pec', 'rectus-upper', 'delt-front', 'rectus-femoris', 'sartorius'], 'stand-back': ['trap-upper', 'trap-mid', 'infraspinatus', 'lat', 'glute-max'] };
-if (LABELS) { // headless Chromium here has no CJK font: register a 14 KB Noto Sans SC subset (only the table's Chinese names; SIL OFL) as
+if (LABELS) { // headless Chromium here has no CJK font: register a 14 KB Noto Sans SC subset (only the table's Chinese names; SIL OFL 1.1, see regions/FONT-LICENSE.md + regions/OFL.txt) as
   // V2PLabelCJK, which the runtime lists first before the system CJK fonts
   const ff = path.join(REPO, 'tools/human-v2plus/regions/label-font-zh.woff2');
   if (fs.existsSync(ff)) log('font', await p.evaluate(async b64 => { const f = new FontFace('V2PLabelCJK', Uint8Array.from(atob(b64), c => c.charCodeAt(0)).buffer); await f.load(); document.fonts.add(f); return f.status; }, fs.readFileSync(ff).toString('base64'))); }
