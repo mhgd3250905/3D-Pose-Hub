@@ -345,6 +345,7 @@
 
 | 候选 | 内容 | 为什么还没有 | 出处 |
 |---|---|---|---|
+| h-kneeling-instep-stretch-v2plus | 跪姿脚背支撑拉伸 | 086两次用尽：足背承托未成立，最终仅脚尖缘近地且双胫穿地15.43mm；FAILED待接手，不登记不第三次 | docs/086-v2plus-instep-stretch-FAILED-diagnostic-2026-10-21.md |
 | h-overhead-triceps-stretch-v2plus | 站姿过头肱三头肌拉伸（新版尝试） | 085两次用尽：左腕限位已消除但工作肘26–28度折叠过深、辅助手接触过冲未解决；FAILED交接，不注册不第三次，不恢复旧019 | docs/085-v2plus-triceps-stretch-FAILED-diagnostic-2026-10-21.md |
 | h-sleeper-stretch | 侧卧睡姿肩内旋拉伸 | 084两次用尽，头垫间隙8.24mm、替代垫与躯干重叠58.08mm及辅助手接触过冲；FAILED交接不注册不第三次 | docs/084-v2plus-sleeper-stretch-FAILED-diagnostic-2026-10-21.md |
 | h-db-floor-fly | 哑铃地板飞鸟 | 083两次用尽，后脑仍离垫29.46mm、真实手杆穿入约3.68mm；FAILED留接手，不登记不第三次 | docs/083-v2plus-floor-fly-FAILED-diagnostic-2026-10-21.md |
