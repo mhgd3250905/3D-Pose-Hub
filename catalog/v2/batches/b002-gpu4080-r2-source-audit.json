@@ -1,0 +1,46 @@
+{
+  "format": "pose-hub-v2-batch-contact-revision@1",
+  "batchId": "b002",
+  "originalBatch": {
+    "root": "repo",
+    "path": "catalog/v2/batches/b002-gpu4080-r1.json",
+    "sha256": "b3794237059515a6ef6c9cf9af5e6590c81f32ef95b8f589af96303966472d17",
+    "bytes": 17397
+  },
+  "revisedBatch": {
+    "root": "repo",
+    "path": "catalog/v2/batches/b002-gpu4080-r2.json",
+    "sha256": "600299b268d6f215f6e1b527e3a6c0c5f3d3365a206356f1bc77e1cafbff9160",
+    "bytes": 17744
+  },
+  "calibrationAudit": {
+    "root": "repo",
+    "path": "catalog/v2/batches/b002-contact-source-binding-audit.json",
+    "sha256": "4d153831385b5d0f2e283973cfb6b75eabde680f42b3b441da7ffea538142116",
+    "bytes": 2787
+  },
+  "measurementScopeAddendum": {
+    "root": "repo",
+    "path": "catalog/v2/batches/b002-contact-measurement-scope-addendum.json",
+    "sha256": "c6199fb0db9e367dccf0d7cadf8d5f7b770e6b9841df73b47515e393557c6349",
+    "bytes": 4560
+  },
+  "voiceScript": {
+    "root": "repo",
+    "path": "catalog/voice-v2/batches/b002-script.json",
+    "sha256": "81c6f26556212218793ef1502ec7eec84306284b6f7e1674a4d2ebdc2adff82b",
+    "bytes": 20648
+  },
+  "voiceManifest": {
+    "root": "repo",
+    "path": "catalog/voice-v2/batches/b002-manifest.json",
+    "sha256": "49ec936b6badcecb00076a1a4e39664b8ba4223094e7e6ec0a145401a45fac64",
+    "bytes": 231448
+  },
+  "equivalence": "All six phase/side/counting/peak/preview-time records are exactly retained. Two source paths change to measured calibration revisions; their original motion timelines/duration and unchanged primary cues are covered by the linked source-binding audit. Historical voice input batch is preserved, no manifest/script rewritten.",
+  "newSpecPaths": {
+    "hamstrings-A": "drill-anim/specs/hamstrings-A-r3.js",
+    "h-side-leg-raise": "drill-anim/specs/h-side-leg-raise-r5.js"
+  },
+  "approvedForFull": false
+}

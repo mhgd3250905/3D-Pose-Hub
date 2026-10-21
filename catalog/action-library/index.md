@@ -4,7 +4,9 @@ Generated from catalog/v2/actions. Completeness is computed across six layers; v
 
 | ID | Name | Release eligible | Missing |
 |---|---|---|---|
+| [abs-A](abs-A.md) | 空心体支撑 / Hollow Body Hold | False | 112 |
 | [adductors-A](adductors-A.md) | 哥萨克蹲 / Cossack Squat | False | 112 |
+| [deltoids-A](deltoids-A.md) | 直臂侧平板髋下沉 / Straight-arm side-plank hip dip | False | 112 |
 | [glute-max-A](glute-max-A.md) | 单腿臀桥 / Single-Leg Glute Bridge | False | 13 |
 | [h-9090-liftoff](h-9090-liftoff.md) | 90 90 后腿主动抬起 / Ninety-ninety rear-leg lift-off | False | 112 |
 | [h-banana](h-banana.md) | 仰卧香蕉式侧伸 / Supine Banana Stretch | False | 13 |
@@ -29,13 +31,18 @@ Generated from catalog/v2/actions. Completeness is computed across six layers; v
 | [n-seated-ir-drop](n-seated-ir-drop.md) | 坐姿后撑单膝内倒 / Seated knee drop-in | False | 112 |
 | [n-squat-shift](n-squat-shift.md) | 低位蹲姿左右移重心 / Deep squat side shift | False | 112 |
 | [n-thomas-test](n-thomas-test.md) | 仰卧单膝抱胸 / Supine single knee hug | False | 112 |
+| [n-windshield](n-windshield.md) | 仰卧雨刷式 / Supine Windshield Wipers | False | 112 |
 | [o-stand-sidebend](o-stand-sidebend.md) | 站姿举手侧屈 / Standing Overhead Side Bend | False | 13 |
+| [s-9090](s-9090.md) | 90/90 坐姿前倾拉伸 / Ninety-ninety seated forward-fold stretch | False | 112 |
+| [s-butterfly](s-butterfly.md) | 蝴蝶式 / Seated Butterfly Stretch | False | 112 |
+| [s-figure4](s-figure4.md) | 仰卧4字拉伸（脚踩地版） / Supine figure-four stretch with planted foot | False | 112 |
 | [s-frog](s-frog.md) | 青蛙式 / Frog Stretch | False | 13 |
+| [s-seated-fold](s-seated-fold.md) | 坐姿体前屈 / Seated Forward Fold | False | 112 |
+| [w-clamshell](w-clamshell.md) | 侧卧蚌式开合 / Side-Lying Clamshell | False | 112 |
 | [w-dead-bug](w-dead-bug.md) | 死虫式 / Dead Bug | False | 13 |
 
 ## Scheduled actions without v2 packages
 
-- `abs-A`: scheduled; v2 content/media not yet authored.
 - `abs-B`: scheduled; v2 content/media not yet authored.
 - `abs-C`: scheduled; v2 content/media not yet authored.
 - `adductors-B`: scheduled; v2 content/media not yet authored.
@@ -43,7 +50,6 @@ Generated from catalog/v2/actions. Completeness is computed across six layers; v
 - `chest-A`: scheduled; v2 content/media not yet authored.
 - `chest-B`: scheduled; v2 content/media not yet authored.
 - `chest-C`: scheduled; v2 content/media not yet authored.
-- `deltoids-A`: scheduled; v2 content/media not yet authored.
 - `deltoids-B`: scheduled; v2 content/media not yet authored.
 - `deltoids-C`: scheduled; v2 content/media not yet authored.
 - `erectors-A`: scheduled; v2 content/media not yet authored.
@@ -108,7 +114,6 @@ Generated from catalog/v2/actions. Completeness is computed across six layers; v
 - `n-slider-lateral`: scheduled; v2 content/media not yet authored.
 - `n-straddle-fold`: scheduled; v2 content/media not yet authored.
 - `n-wide-fold`: scheduled; v2 content/media not yet authored.
-- `n-windshield`: scheduled; v2 content/media not yet authored.
 - `o-seated-catcow`: scheduled; v2 content/media not yet authored.
 - `o-seated-fig4`: scheduled; v2 content/media not yet authored.
 - `o-seated-ham`: scheduled; v2 content/media not yet authored.
@@ -125,13 +130,9 @@ Generated from catalog/v2/actions. Completeness is computed across six layers; v
 - `rotator-cuff-A`: scheduled; v2 content/media not yet authored.
 - `rotator-cuff-B`: scheduled; v2 content/media not yet authored.
 - `rotator-cuff-C`: scheduled; v2 content/media not yet authored.
-- `s-9090`: scheduled; v2 content/media not yet authored.
-- `s-butterfly`: scheduled; v2 content/media not yet authored.
-- `s-figure4`: scheduled; v2 content/media not yet authored.
 - `s-kneel-hipflex`: scheduled; v2 content/media not yet authored.
 - `s-lizard`: scheduled; v2 content/media not yet authored.
 - `s-pigeon`: scheduled; v2 content/media not yet authored.
-- `s-seated-fold`: scheduled; v2 content/media not yet authored.
 - `scapular-A`: scheduled; v2 content/media not yet authored.
 - `scapular-B`: scheduled; v2 content/media not yet authored.
 - `scapular-C`: scheduled; v2 content/media not yet authored.
@@ -144,7 +145,6 @@ Generated from catalog/v2/actions. Completeness is computed across six layers; v
 - `triceps-C`: scheduled; v2 content/media not yet authored.
 - `w-bird-dog`: scheduled; v2 content/media not yet authored.
 - `w-chair-hip-thrust`: scheduled; v2 content/media not yet authored.
-- `w-clamshell`: scheduled; v2 content/media not yet authored.
 - `w-feet-on-chair-bridge`: scheduled; v2 content/media not yet authored.
 - `w-fire-hydrant`: scheduled; v2 content/media not yet authored.
 - `w-prone-swimmer`: scheduled; v2 content/media not yet authored.

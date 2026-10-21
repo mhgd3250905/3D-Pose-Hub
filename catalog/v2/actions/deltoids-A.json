@@ -1,0 +1,315 @@
+{
+  "format": "action-package@2",
+  "id": "deltoids-A",
+  "version": "2.0.0-draft.b004.1",
+  "status": "draft",
+  "definition": {
+    "idMappings": [],
+    "name": {
+      "zh": "直臂侧平板髋下沉",
+      "en": "Straight-arm side-plank hip dip"
+    },
+    "purpose": {
+      "zh": "右手承重侧撑中控制髋部下沉与抬回，练肩部和躯干稳定",
+      "en": "Control hip lowering and return in a right-hand-supported side plank to practise shoulder and trunk stability."
+    },
+    "tags": {
+      "category": "strength",
+      "activeMuscles": [
+        "deltoids",
+        "obliques"
+      ],
+      "synergistMuscles": [
+        "abs",
+        "forearms",
+        "hip-abductors"
+      ],
+      "equipment": [],
+      "position": "side_lying",
+      "scenes": [
+        "home",
+        "gym"
+      ],
+      "difficulty": 1,
+      "trainingType": "strength"
+    },
+    "unilateral": true,
+    "startingSide": "right",
+    "cues": [
+      {
+        "id": "cue1",
+        "text": {
+          "zh": "右手推地保持肩部稳定，髋部缓慢下沉再抬回",
+          "en": "Push through your right hand to keep the shoulder steady as your hips lower and rise slowly"
+        },
+        "primary": true
+      },
+      {
+        "id": "cue2",
+        "text": {
+          "zh": "右手与双脚保持原支点，左手轻扶髋部",
+          "en": "Keep the right hand and both feet at their supports, with the left hand resting lightly on the hip."
+        },
+        "primary": false
+      },
+      {
+        "id": "cue3",
+        "text": {
+          "zh": "承重肩远离耳朵，控制下沉幅度，不塌进肩膀",
+          "en": "Keep the supporting shoulder away from the ear and control the dip without collapsing into the shoulder."
+        },
+        "primary": false
+      },
+      {
+        "id": "cue4",
+        "text": {
+          "zh": "髋部慢慢抬回原位，保持呼吸，不猛扭身体",
+          "en": "Lift the hips slowly back to the starting height, keep breathing and avoid jerking the trunk."
+        },
+        "primary": false
+      }
+    ],
+    "commonErrors": [
+      {
+        "zh": "承重肩塌陷或耸肩，支撑手脚滑动",
+        "en": "Collapsing or shrugging the supporting shoulder, or letting the support hand or feet slide."
+      },
+      {
+        "zh": "甩髋、过度下沉或扭腰来抢回高度",
+        "en": "Throwing the hips, dipping too far or twisting the waist to regain height."
+      }
+    ],
+    "cautions": {
+      "items": [
+        {
+          "zh": "右肩、肘与手腕：保持稳定推地的承重位置，不通过塌肩或手腕疼痛继续。",
+          "en": "Right shoulder, elbow and wrist: maintain steady support without continuing through a collapsed shoulder or painful wrist."
+        },
+        {
+          "zh": "躯干与髋：下沉范围以稳定可控为准，持续自然呼吸。",
+          "en": "Trunk and hips: keep the dip stable and controlled while breathing naturally."
+        }
+      ],
+      "review": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidence": []
+      }
+    },
+    "contraindications": {
+      "items": [
+        {
+          "zh": "本动作引发疼痛时停止，不通过增加幅度或负重继续；先向医生或物理治疗师确认。",
+          "en": "Stop if this exercise causes pain; do not add range or load before seeking clinical advice."
+        },
+        {
+          "zh": "已有医嘱限制单手上肢承重、侧撑或髋部侧向控制时，先取得许可。",
+          "en": "Obtain clearance first if single-arm upper-limb loading, side planking or lateral hip control has been restricted."
+        }
+      ],
+      "review": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidence": []
+      }
+    },
+    "alternatives": [
+      "rotator-cuff-A"
+    ],
+    "regressions": [],
+    "progressions": [],
+    "defaultDose": {
+      "mode": "time",
+      "sets": 3,
+      "seconds": 25,
+      "restSeconds": 30
+    },
+    "doseRange": {
+      "sets": [
+        1,
+        4
+      ],
+      "seconds": [
+        15,
+        45
+      ],
+      "restSeconds": [
+        0,
+        60
+      ]
+    },
+    "rhythm": {
+      "kind": "rep_cycle",
+      "leadSeconds": 0,
+      "source": "b004-source-timeline",
+      "phases": [
+        {
+          "id": "topPrepare",
+          "seconds": 0.6
+        },
+        {
+          "id": "firstHipLower",
+          "seconds": 1.5
+        },
+        {
+          "id": "firstHipRise",
+          "seconds": 1.5
+        },
+        {
+          "id": "topPause",
+          "seconds": 0.8
+        },
+        {
+          "id": "secondHipLower",
+          "seconds": 1.5
+        },
+        {
+          "id": "secondHipRise",
+          "seconds": 1.5
+        },
+        {
+          "id": "reset",
+          "seconds": 0.6
+        }
+      ]
+    },
+    "countingSemantics": "The native8-second v7 source shows two right-support hip dips, with lowest hip points at2.1 and5.9 seconds and high returns at3.6 and7.4. Inter-dip spacing is not exactly4 seconds. Preserve3 sets x25 seconds and legacy range; a timed dynamic hip-dip interpretation versus the old generic side-plank hold wording needs editorial approval. Right is the supporting/working shoulder side, left hand rests on the hip. No in-clip side change or mirrored media is produced.",
+    "movementSides": "Right hand supports the body and both feet remain planted; the left hand rests on the hip. Complete the agreed side dose before any external side change.",
+    "apps": [
+      "flarelab"
+    ],
+    "editorialReview": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "evidence": []
+    },
+    "editorialNotes": [
+      "源是保留sideplank-v7/__pose6求解器的动态hip dip，不是单一25秒静止pose；拟名补充髋下沉，稳定ID不改，名称和处方仍待编辑审定。",
+      "右手承重、左手叉髋；不要把bakeHands left误认成左侧支撑，也不因新手掌厚度改右手free或移锁。",
+      "clothSink0、left bakeHands与solverArgs全部保留；v2plus模型如何旁路旧bake由冻结模型代码决定，不重写。",
+      "rotator-cuff-A仅是旧目录明确肩部稳定目标替代，其双侧plank抬手模式与本侧撑髋下沉不同，不冒充等价剂量或直接降阶。没有经验证的膝支撑侧平板独立ID。",
+      "顶峰下沉与回升起点同为2.1秒，三相位是可选引导句，不是可同时播放的音轨；重复点按真实4.4/5.9/7.4时间单列，不伪造4秒等周期。",
+      "本稿保留旧目录剂量数字和范围。rhythm描述真实8秒示范，不把短演示循环当作已完成持续时间处方；需要专业编辑确认播放/计数。",
+      "主要/协同肌群含姿势稳定或次要拉伸角色，未作肌电定量结论；动作关系是现有ID候选，不能自动消费旧模型媒体。",
+      "通用禁用筛查依据catalog/v2/definition-evidence.md及AAOS髋/脊柱康复资料；具体到各动作的应用是待审编辑推断，没有疾病特异绝对禁忌或临床适用性批准。"
+    ]
+  },
+  "source": {
+    "model": {
+      "id": "training-human-v2plus",
+      "version": "1.0.0-rc2",
+      "manifest": {
+        "root": "repo",
+        "path": "drill-anim/models/training-human-v2plus.json",
+        "sha256": "ec2bc815ded157dbc7673e283ed9b6bb1baa710a39ce3a02f88453e8d7fb0a1d",
+        "bytes": 6494,
+        "normalization": "lf"
+      }
+    },
+    "spec": {
+      "root": "repo",
+      "path": "drill-anim/specs/deltoids-A-r2.js",
+      "sha256": "9b8b2edb66775017ac25cf81911b340cb7b77c7feb5f30325b575c57ca120c82",
+      "bytes": 476,
+      "normalization": "lf"
+    },
+    "dependencies": [
+      {
+        "root": "repo",
+        "path": "drill-anim/specs/deltoids-A.js",
+        "sha256": "321c1d635a695a96cc155b6fd3f7253b842eec91baae0bdd6cf8d38594eb7ba7",
+        "bytes": 2117,
+        "normalization": "lf"
+      }
+    ],
+    "keyMoments": {
+      "start": 0,
+      "peak": 2.1,
+      "end": 8,
+      "switchPoint": {
+        "kind": "loop-boundary",
+        "seconds": 8,
+        "semantics": "Right hand supports the body and both feet remain planted; the left hand rests on the hip. Complete the agreed side dose before any external side change. The native8-second v7 source shows two right-support hip dips, with lowest hip points at2.1 and5.9 seconds and high returns at3.6 and7.4. Inter-dip spacing is not exactly4 seconds. Preserve3 sets x25 seconds and legacy range; a timed dynamic hip-dip interpretation versus the old generic side-plank hold wording needs editorial approval. Right is the supporting/working shoulder side, left hand rests on the hip. No in-clip side change or mirrored media is produced."
+      }
+    },
+    "highlightMuscles": [
+      "deltoids"
+    ],
+    "qa": {
+      "intersections": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidence": [],
+        "framesReviewed": []
+      },
+      "handsFeet": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidence": [],
+        "framesReviewed": []
+      },
+      "propFlicker": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidence": [],
+        "framesReviewed": []
+      },
+      "loopSeam": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidence": [],
+        "framesReviewed": []
+      }
+    },
+    "demonstratedSide": "right",
+    "oppositeSideMedia": "not-produced"
+  },
+  "masters": {
+    "requiredSkins": [
+      "realistic",
+      "tech-white",
+      "neon-night",
+      "neon-night-b",
+      "hologram"
+    ],
+    "skins": {},
+    "loopReview": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "evidence": []
+    }
+  },
+  "derivatives": {
+    "method": "composite-from-masters",
+    "mirrored": false,
+    "variants": [],
+    "transparentCovers": {}
+  },
+  "voice": {
+    "actionId": "deltoids-A",
+    "manifest": {
+      "root": "repo",
+      "path": "catalog/voice-v2/batches/b004-manifest.json",
+      "sha256": "22fb26dd3bfd5b5d8912d7989d7d5f253dd7c6806af02841714dc5e4f89668c8",
+      "bytes": 281067
+    }
+  },
+  "validation": {
+    "modelVersion": "1.0.0-rc2",
+    "mirrorGenerated": false,
+    "review": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "evidence": []
+    }
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "format": "pose-hub-v2-contact-source-binding@1",
+  "batchId": "b002",
+  "changes": [
+    {
+      "actionId": "hamstrings-A",
+      "oldSpec": {
+        "root": "repo",
+        "path": "drill-anim/specs/hamstrings-A-r2.js",
+        "sha256": "8750ac69ffd5683c36b3896a9f64c347a069ac3417b2287d590bccedf6aabe0a",
+        "bytes": 479,
+        "normalization": "lf"
+      },
+      "newSpec": {
+        "root": "repo",
+        "path": "drill-anim/specs/hamstrings-A-r3.js",
+        "sha256": "a6e600f9b892bc288efcc2fa3f74f62576021a5eb475e5e49926762a3945cd31",
+        "bytes": 973,
+        "normalization": "lf"
+      },
+      "dependencyCount": 2,
+      "keyMomentsUnchanged": true,
+      "definitionAndDoseUnchanged": true,
+      "voicePhaseBindingsUnchanged": true,
+      "formalQaStillPending": true
+    },
+    {
+      "actionId": "h-side-leg-raise",
+      "oldSpec": {
+        "root": "repo",
+        "path": "drill-anim/specs/h-side-leg-raise-r2.js",
+        "sha256": "d4c6685ced3b5a88700299238096375841b55cdd5f36e8073149b04b3b7cf49b",
+        "bytes": 487,
+        "normalization": "lf"
+      },
+      "newSpec": {
+        "root": "repo",
+        "path": "drill-anim/specs/h-side-leg-raise-r5.js",
+        "sha256": "beaad38fafb0e3e7668787b007ee1b0458de4ad870fe2fc8d9ca647216764326",
+        "bytes": 661,
+        "normalization": "lf"
+      },
+      "dependencyCount": 6,
+      "keyMomentsUnchanged": true,
+      "definitionAndDoseUnchanged": true,
+      "voicePhaseBindingsUnchanged": true,
+      "formalQaStillPending": true
+    }
+  ],
+  "voiceScript": {
+    "path": "E:/AII-3D/3D-Pose-Hub/catalog/voice-v2/batches/b002-script.json",
+    "sha256": "81c6f26556212218793ef1502ec7eec84306284b6f7e1674a4d2ebdc2adff82b",
+    "bytes": 20648
+  },
+  "voiceManifest": {
+    "path": "E:/AII-3D/3D-Pose-Hub/catalog/voice-v2/batches/b002-manifest.json",
+    "sha256": "49ec936b6badcecb00076a1a4e39664b8ba4223094e7e6ec0a145401a45fac64",
+    "bytes": 231448
+  },
+  "sourceBatchBindings": "Fixed voice script/manifest retain their original b002.json historical SHA. Actual model-side contact repairs do not change the lift/hinge timeline, counted reps, side semantics, dose, phase cue times or text. No voice history is silently rewritten.",
+  "sideDiagnostic": {
+    "path": "F:/PoseHub-v2-production/diagnostics/b002-side-leg-r5/conclusion.json",
+    "sha256": "7e5dbd685a6e47e7be05ab1542cc1feca65bedef00d867282254d9281f5cd391",
+    "bytes": 5260
+  },
+  "hamDiagnosticDirectory": "F:/PoseHub-v2-production/diagnostics/b002-hamstrings-r3-eval2",
+  "sourceQaStatus": "pending; diagnostics do not auto-approve all six layers or release",
+  "batchAndPlan": "Not modified here; parent owns the new complete batch revision."
+}

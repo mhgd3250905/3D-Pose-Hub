@@ -344,12 +344,19 @@ ID: `hamstrings-A`. State: draft. Release eligible: False.
     },
     "spec": {
       "root": "repo",
-      "path": "drill-anim/specs/hamstrings-A-r2.js",
-      "sha256": "8750ac69ffd5683c36b3896a9f64c347a069ac3417b2287d590bccedf6aabe0a",
-      "bytes": 479,
+      "path": "drill-anim/specs/hamstrings-A-r3.js",
+      "sha256": "a6e600f9b892bc288efcc2fa3f74f62576021a5eb475e5e49926762a3945cd31",
+      "bytes": 973,
       "normalization": "lf"
     },
     "dependencies": [
+      {
+        "root": "repo",
+        "path": "drill-anim/specs/hamstrings-A-r2.js",
+        "sha256": "8750ac69ffd5683c36b3896a9f64c347a069ac3417b2287d590bccedf6aabe0a",
+        "bytes": 479,
+        "normalization": "lf"
+      },
       {
         "root": "repo",
         "path": "drill-anim/specs/hamstrings-A.js",

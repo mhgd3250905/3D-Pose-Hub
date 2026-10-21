@@ -339,9 +339,9 @@ ID: `h-side-leg-raise`. State: draft. Release eligible: False.
     },
     "spec": {
       "root": "repo",
-      "path": "drill-anim/specs/h-side-leg-raise-r2.js",
-      "sha256": "d4c6685ced3b5a88700299238096375841b55cdd5f36e8073149b04b3b7cf49b",
-      "bytes": 487,
+      "path": "drill-anim/specs/h-side-leg-raise-r5.js",
+      "sha256": "beaad38fafb0e3e7668787b007ee1b0458de4ad870fe2fc8d9ca647216764326",
+      "bytes": 661,
       "normalization": "lf"
     },
     "dependencies": [
@@ -357,6 +357,27 @@ ID: `h-side-leg-raise`. State: draft. Release eligible: False.
         "path": "drill-anim/lib/ss-geo.mjs",
         "sha256": "45ca774079e3a85ecc4f924a3220d4baa721f0435e16f6e6e21ffa19e17e8603",
         "bytes": 3700,
+        "normalization": "lf"
+      },
+      {
+        "root": "repo",
+        "path": "drill-anim/specs/h-side-leg-raise-r2.js",
+        "sha256": "d4c6685ced3b5a88700299238096375841b55cdd5f36e8073149b04b3b7cf49b",
+        "bytes": 487,
+        "normalization": "lf"
+      },
+      {
+        "root": "repo",
+        "path": "drill-anim/specs/h-side-leg-raise-r3.js",
+        "sha256": "ca9636d3cdf26d62f15ca9bbe3e3603e694641bb9b802f78d3f7f1fa510e1d45",
+        "bytes": 1286,
+        "normalization": "lf"
+      },
+      {
+        "root": "repo",
+        "path": "drill-anim/specs/h-side-leg-raise-r4.js",
+        "sha256": "fa0cd6edb3323a9b545c975ea1dfb597c75887223940751f3d4035a68d9fa1f4",
+        "bytes": 615,
         "normalization": "lf"
       },
       {

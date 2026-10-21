@@ -131,11 +131,11 @@
         "hamstrings-A",
         "h-side-leg-raise"
       ],
-      "manifest": "catalog/v2/batches/b002-gpu4080-r1.json",
-      "state": "preview-complete-source-fixes-required",
+      "manifest": "catalog/v2/batches/b002-gpu4080-r2.json",
+      "state": "first-pass-media-ready-user-review-pending",
       "root": {
         "alias": "production",
-        "relativePath": "batches/b002-gpu4080-r1"
+        "relativePath": "batches/b002-gpu4080-r2-retry1"
       },
       "priorAttempts": [
         {
@@ -144,29 +144,51 @@
           "manifestSha256": "4bd43de7eef68da7141c283aa98718f791a8518af2f92fa71d57f52c98f969c0",
           "state": "pre-render-source-hash-rejected",
           "notes": "Original metadata and voice assets retained; source.sha256 was LF-normalized while frozen renderer requires raw bytes. No historical source file was changed."
+        },
+        {
+          "root": "batches/b002-gpu4080-r1",
+          "manifest": "catalog/v2/batches/b002-gpu4080-r1.json",
+          "manifestSha256": "b3794237059515a6ef6c9cf9af5e6590c81f32ef95b8f589af96303966472d17",
+          "state": "preview-failed-contact-reach-and-loop",
+          "actualObservations": "F:/PoseHub-v2-production/reviews/b002-gpu4080-r1-observations.json",
+          "notes": "Six action previews and all source/pixel evidence retained; no full production permitted."
+        },
+        {
+          "root": "batches/b002-gpu4080-r2",
+          "manifest": "catalog/v2/batches/b002-gpu4080-r2.json",
+          "manifestSha256": "600299b268d6f215f6e1b527e3a6c0c5f3d3365a206356f1bc77e1cafbff9160",
+          "state": "local-page-service-unavailable-two-complete-partial-preserved",
+          "failureReport": "qa/attempt-failure.json",
+          "notes": "Completed sumo and pelvis-circle verified with exact same recipe/runtime; partial squat preserved. Old foreground service session disappeared; exit cause cannot be recovered. Retry copies only complete reference-closed outputs, never partials."
         }
       ],
-      "manifestSha256": "b3794237059515a6ef6c9cf9af5e6590c81f32ef95b8f589af96303966472d17",
+      "manifestSha256": "600299b268d6f215f6e1b527e3a6c0c5f3d3365a206356f1bc77e1cafbff9160",
       "sourceReferenceState": "raw-sha-verified-preview-complete",
       "sourceRevisionAudit": {
         "root": "repo",
-        "path": "catalog/v2/batches/b002-gpu4080-r1-source-audit.json",
-        "sha256": "8c2e7371f9d4ead3e25efa98c2c54a6ea62b3b266e0bbb206c905534c2c43bb2",
-        "bytes": 5400
+        "path": "catalog/v2/batches/b002-gpu4080-r2-source-audit.json",
+        "sha256": "b1f4a83e6b2bc44e258280783fb1af4628584280235e2ae9ee1fd8a66e4e92d4",
+        "bytes": 1868
       },
       "productionIssues": [
         {
           "actionId": "hamstrings-A",
-          "status": "requires-source-revision",
+          "status": "source-corrected-new-preview-pending",
           "issue": "All preview times report wrist reach limits and right-ankle leg-length limits; retain warning and correct source before full production."
         },
         {
           "actionId": "h-side-leg-raise",
-          "status": "requires-source-revision",
+          "status": "source-corrected-new-preview-pending",
           "issue": "Visible sole -1.60049mm at rest and 0-to-240 maximum joint drift 6.70018mm; correct source contact and periodic solver initialization before full production."
+        },
+        {
+          "actionId": "h-side-leg-raise",
+          "status": "source-corrected-new-preview-pending",
+          "issue": "Actual old hand closeups show rest fingertips through abdomen; r5 removes failed legacy waist walker and calibrates measured palm patch. Limited Torso cross-section evidence does not claim exhaustive collisions."
         }
       ],
-      "previewQa": "qa/preview-pose-source-audit.json"
+      "previewQa": "qa/preview-pose-source-audit.json",
+      "serviceRecovery": "F:/PoseHub-v2-production/services/vite-8848-r1/service.json"
     },
     {
       "id": "b003",
@@ -182,7 +204,7 @@
         "n-thomas-test"
       ],
       "manifest": "catalog/v2/batches/b003-gpu4080-r1.json",
-      "state": "source-authored-preview-pending",
+      "state": "source-prepared-draft-first-render-queue",
       "root": {
         "alias": "production",
         "relativePath": "batches/b003-gpu4080-r1"
@@ -218,11 +240,18 @@
         "abs-A",
         "deltoids-A"
       ],
-      "manifest": null,
-      "state": "source-authoring-required",
+      "manifest": "catalog/v2/batches/b004.json",
+      "state": "source-prepared-draft-first-render-queue",
       "root": {
         "alias": "production",
         "relativePath": "batches/b004"
+      },
+      "manifestSha256": "50067948c010cc5ef9871c8c589c82146c0b53ad50375b2786e4eaa46065f7e8",
+      "voiceTechnical": {
+        "passed": 132,
+        "failed": 0,
+        "pending": 0,
+        "manifest": "catalog/voice-v2/batches/b004-manifest.json"
       }
     },
     {
@@ -535,7 +564,7 @@
         "flarelab"
       ],
       "batchId": "b004",
-      "state": "planned",
+      "state": "source-and-voice-authored-preview-pending",
       "legacySpec": {
         "path": "drill-anim/specs/abs-A.js",
         "exists": true,
@@ -562,7 +591,18 @@
       "selectionState": "preserve-explicit-catalog-binding",
       "specialHandling": [],
       "knownSourceIssues": [],
-      "releaseApproved": false
+      "releaseApproved": false,
+      "activeSpec": {
+        "root": "repo",
+        "path": "drill-anim/specs/abs-A-r2.js",
+        "sha256": "abe78a8e5971880e78309fb9e1ca19479c9c102e7827b868996a0de6edd4e3e6",
+        "bytes": 466,
+        "normalization": "lf"
+      },
+      "draftName": {
+        "zh": "空心体支撑",
+        "en": "Hollow Body Hold"
+      }
     },
     {
       "id": "abs-B",
@@ -652,7 +692,7 @@
         "flarelab"
       ],
       "batchId": "b002",
-      "state": "source-authored-preview-pending",
+      "state": "corrected-source-preview-running",
       "legacySpec": {
         "path": "drill-anim/specs/adductors-A.js",
         "exists": true,
@@ -679,7 +719,18 @@
       "selectionState": "preserve-explicit-catalog-binding",
       "specialHandling": [],
       "knownSourceIssues": [],
-      "releaseApproved": false
+      "releaseApproved": false,
+      "activeSpec": {
+        "root": "repo",
+        "path": "drill-anim/specs/adductors-A-r2.js",
+        "sha256": "ac96284719be49ed29d871125fea1a1374562cdaf6d585b61a43c726db11ecd5",
+        "bytes": 477,
+        "normalization": "lf"
+      },
+      "draftName": {
+        "zh": "哥萨克蹲",
+        "en": "Cossack Squat"
+      }
     },
     {
       "id": "adductors-B",
@@ -892,7 +943,7 @@
         "flarelab"
       ],
       "batchId": "b004",
-      "state": "planned",
+      "state": "source-and-voice-authored-preview-pending",
       "legacySpec": {
         "path": "drill-anim/specs/deltoids-A.js",
         "exists": true,
@@ -919,7 +970,18 @@
       "selectionState": "preserve-explicit-catalog-binding",
       "specialHandling": [],
       "knownSourceIssues": [],
-      "releaseApproved": false
+      "releaseApproved": false,
+      "activeSpec": {
+        "root": "repo",
+        "path": "drill-anim/specs/deltoids-A-r2.js",
+        "sha256": "9b8b2edb66775017ac25cf81911b340cb7b77c7feb5f30325b575c57ca120c82",
+        "bytes": 476,
+        "normalization": "lf"
+      },
+      "draftName": {
+        "zh": "直臂侧平板髋下沉",
+        "en": "Straight-arm side-plank hip dip"
+      }
     },
     {
       "id": "deltoids-B",
@@ -1475,7 +1537,7 @@
         "smartfit"
       ],
       "batchId": "b001",
-      "state": "full-masters-running",
+      "state": "technical-media-complete-editorial-listening-user-review-pending",
       "legacySpec": {
         "path": "drill-anim/specs/h-banana.js",
         "exists": true,
@@ -1502,7 +1564,18 @@
       "selectionState": "preserve-explicit-catalog-binding",
       "specialHandling": [],
       "knownSourceIssues": [],
-      "releaseApproved": false
+      "releaseApproved": false,
+      "activeSpec": {
+        "root": "repo",
+        "path": "drill-anim/specs/h-banana-r2.js",
+        "sha256": "af14c1aca135a08bc0547f40bc31e17acccbb6054be56b33b40ce177c15785a6",
+        "bytes": 468,
+        "normalization": "lf"
+      },
+      "draftName": {
+        "zh": "仰卧香蕉式侧伸",
+        "en": "Supine Banana Stretch"
+      }
     },
     {
       "id": "h-band-hip-ir",
@@ -2209,7 +2282,7 @@
         "smartfit"
       ],
       "batchId": "b001",
-      "state": "full-masters-running",
+      "state": "technical-media-complete-editorial-listening-user-review-pending",
       "legacySpec": {
         "path": "drill-anim/specs/h-crunch.js",
         "exists": true,
@@ -2236,7 +2309,18 @@
       "selectionState": "preserve-explicit-catalog-binding",
       "specialHandling": [],
       "knownSourceIssues": [],
-      "releaseApproved": false
+      "releaseApproved": false,
+      "activeSpec": {
+        "root": "repo",
+        "path": "drill-anim/specs/h-crunch-r2.js",
+        "sha256": "0b46489fdcc2fb8d91aa175d5c1f70ee96830d1df75bfb3ea7b40d8e2fef8813",
+        "bytes": 468,
+        "normalization": "lf"
+      },
+      "draftName": {
+        "zh": "卷腹",
+        "en": "Crunch"
+      }
     },
     {
       "id": "h-db-curl",
@@ -2599,7 +2683,7 @@
         "smartfit"
       ],
       "batchId": "b001",
-      "state": "full-masters-running",
+      "state": "technical-media-complete-editorial-listening-user-review-pending",
       "legacySpec": {
         "path": "drill-anim/specs/h-good-morning.js",
         "exists": true,
@@ -2630,7 +2714,18 @@
       "knownSourceIssues": [
         "双手交叉抱胸（手放脑后时手网格贴不到刚性头部后侧），手不做 touch 吸附，掌心离胸约 1–5 mm（docs/home-posterior-chain-2026-10-18.md）"
       ],
-      "releaseApproved": false
+      "releaseApproved": false,
+      "activeSpec": {
+        "root": "repo",
+        "path": "drill-anim/specs/h-good-morning-r2.js",
+        "sha256": "26cdd53e1f94e5215f226802abe7bbc8d5254bcc205172356deef87740230f0b",
+        "bytes": 480,
+        "normalization": "lf"
+      },
+      "draftName": {
+        "zh": "徒手早安式",
+        "en": "Bodyweight Good Morning"
+      }
     },
     {
       "id": "h-hip-gate",
@@ -2902,7 +2997,7 @@
         "smartfit"
       ],
       "batchId": "b001",
-      "state": "full-masters-running",
+      "state": "technical-media-complete-editorial-listening-user-review-pending",
       "legacySpec": {
         "path": "drill-anim/specs/h-russian-twist.js",
         "exists": true,
@@ -2929,7 +3024,18 @@
       "selectionState": "preserve-explicit-catalog-binding",
       "specialHandling": [],
       "knownSourceIssues": [],
-      "releaseApproved": false
+      "releaseApproved": false,
+      "activeSpec": {
+        "root": "repo",
+        "path": "drill-anim/specs/h-russian-twist-r2.js",
+        "sha256": "3d9f0c4421a05e5db4fb22f40548b9181aebac931569ba4d41ad83138a213d87",
+        "bytes": 482,
+        "normalization": "lf"
+      },
+      "draftName": {
+        "zh": "俄罗斯转体",
+        "en": "Russian Twist (Feet Down)"
+      }
     },
     {
       "id": "h-seated-reachback",
@@ -3019,7 +3125,7 @@
         "smartfit"
       ],
       "batchId": "b002",
-      "state": "source-authored-preview-pending",
+      "state": "corrected-source-preview-running",
       "legacySpec": {
         "path": "drill-anim/specs/h-side-leg-raise.js",
         "exists": true,
@@ -3046,7 +3152,18 @@
       "selectionState": "preserve-explicit-catalog-binding",
       "specialHandling": [],
       "knownSourceIssues": [],
-      "releaseApproved": false
+      "releaseApproved": false,
+      "activeSpec": {
+        "root": "repo",
+        "path": "drill-anim/specs/h-side-leg-raise-r5.js",
+        "sha256": "beaad38fafb0e3e7668787b007ee1b0458de4ad870fe2fc8d9ca647216764326",
+        "bytes": 661,
+        "normalization": "lf"
+      },
+      "draftName": {
+        "zh": "站姿侧抬腿",
+        "en": "Standing Side Leg Raise"
+      }
     },
     {
       "id": "h-squat",
@@ -3059,7 +3176,7 @@
         "smartfit"
       ],
       "batchId": "b001",
-      "state": "full-masters-running",
+      "state": "technical-media-complete-editorial-listening-user-review-pending",
       "legacySpec": {
         "path": "drill-anim/specs/h-squat.js",
         "exists": true,
@@ -3089,7 +3206,18 @@
       "selectionState": "preserve-explicit-catalog-binding",
       "specialHandling": [],
       "knownSourceIssues": [],
-      "releaseApproved": false
+      "releaseApproved": false,
+      "activeSpec": {
+        "root": "repo",
+        "path": "drill-anim/specs/h-squat-r2.js",
+        "sha256": "7900bbd851ef7cf52caaca787c478ecbc621cde6cb93573a03f25368ee31464a",
+        "bytes": 466,
+        "normalization": "lf"
+      },
+      "draftName": {
+        "zh": "徒手深蹲",
+        "en": "Bodyweight squat"
+      }
     },
     {
       "id": "h-step-jack",
@@ -3101,7 +3229,7 @@
         "smartfit"
       ],
       "batchId": "b001",
-      "state": "full-masters-running",
+      "state": "technical-media-complete-editorial-listening-user-review-pending",
       "legacySpec": {
         "path": "drill-anim/specs/h-step-jack.js",
         "exists": true,
@@ -3128,7 +3256,18 @@
       "selectionState": "preserve-explicit-catalog-binding",
       "specialHandling": [],
       "knownSourceIssues": [],
-      "releaseApproved": false
+      "releaseApproved": false,
+      "activeSpec": {
+        "root": "repo",
+        "path": "drill-anim/specs/h-step-jack-r3.js",
+        "sha256": "c263147df019ae3be570701007b6caea97102b795b541929084b878d8974e408",
+        "bytes": 1120,
+        "normalization": "lf"
+      },
+      "draftName": {
+        "zh": "低冲击开合跳",
+        "en": "Low-Impact Step Jack"
+      }
     },
     {
       "id": "h-sumo-pry",
@@ -3141,7 +3280,7 @@
         "smartfit"
       ],
       "batchId": "b002",
-      "state": "source-authored-preview-pending",
+      "state": "corrected-source-preview-running",
       "legacySpec": {
         "path": "drill-anim/specs/h-sumo-pry.js",
         "exists": true,
@@ -3171,7 +3310,18 @@
       "selectionState": "preserve-explicit-catalog-binding",
       "specialHandling": [],
       "knownSourceIssues": [],
-      "releaseApproved": false
+      "releaseApproved": false,
+      "activeSpec": {
+        "root": "repo",
+        "path": "drill-anim/specs/h-sumo-pry-r2.js",
+        "sha256": "a15d736c39f4eed8ed445e3b28760a48f58214e1d0978a03cb001cb193d80d82",
+        "bytes": 475,
+        "normalization": "lf"
+      },
+      "draftName": {
+        "zh": "相扑深蹲肘推膝停留",
+        "en": "Sumo squat elbow pry"
+      }
     },
     {
       "id": "h-superman",
@@ -3183,7 +3333,7 @@
         "smartfit"
       ],
       "batchId": "b001",
-      "state": "full-masters-running",
+      "state": "technical-media-complete-editorial-listening-user-review-pending",
       "legacySpec": {
         "path": "drill-anim/specs/h-superman.js",
         "exists": true,
@@ -3210,7 +3360,18 @@
       "selectionState": "preserve-explicit-catalog-binding",
       "specialHandling": [],
       "knownSourceIssues": [],
-      "releaseApproved": false
+      "releaseApproved": false,
+      "activeSpec": {
+        "root": "repo",
+        "path": "drill-anim/specs/h-superman-r2.js",
+        "sha256": "bb60b133cfad91c37ae749bfb4feea371350432d70b0550ec46ac4e13f76d8ad",
+        "bytes": 472,
+        "normalization": "lf"
+      },
+      "draftName": {
+        "zh": "俯卧超人式",
+        "en": "Prone Superman"
+      }
     },
     {
       "id": "h-supine-twist",
@@ -3474,7 +3635,7 @@
         "flarelab"
       ],
       "batchId": "b002",
-      "state": "source-authored-preview-pending",
+      "state": "corrected-source-preview-running",
       "legacySpec": {
         "path": "drill-anim/specs/hamstrings-A.js",
         "exists": true,
@@ -3501,7 +3662,18 @@
       "selectionState": "preserve-explicit-catalog-binding",
       "specialHandling": [],
       "knownSourceIssues": [],
-      "releaseApproved": false
+      "releaseApproved": false,
+      "activeSpec": {
+        "root": "repo",
+        "path": "drill-anim/specs/hamstrings-A-r3.js",
+        "sha256": "a6e600f9b892bc288efcc2fa3f74f62576021a5eb475e5e49926762a3945cd31",
+        "bytes": 973,
+        "normalization": "lf"
+      },
+      "draftName": {
+        "zh": "徒手单腿罗马尼亚硬拉",
+        "en": "Bodyweight Single-Leg RDL"
+      }
     },
     {
       "id": "hamstrings-B",
@@ -4092,7 +4264,7 @@
         "smartfit"
       ],
       "batchId": "b002",
-      "state": "source-authored-preview-pending",
+      "state": "corrected-source-preview-running",
       "legacySpec": {
         "path": "drill-anim/specs/n-pelvis-circle.js",
         "exists": true,
@@ -4122,7 +4294,18 @@
       "selectionState": "preserve-explicit-catalog-binding",
       "specialHandling": [],
       "knownSourceIssues": [],
-      "releaseApproved": false
+      "releaseApproved": false,
+      "activeSpec": {
+        "root": "repo",
+        "path": "drill-anim/specs/n-pelvis-circle-r2.js",
+        "sha256": "d32ed0a30bea725972adc33308e9222ef29cbdf6c68735c410856f5ef30e4020",
+        "bytes": 485,
+        "normalization": "lf"
+      },
+      "draftName": {
+        "zh": "站姿骨盆画圈",
+        "en": "Standing pelvic circles"
+      }
     },
     {
       "id": "n-prone-hip-ext",
@@ -4402,7 +4585,7 @@
         "smartfit"
       ],
       "batchId": "b002",
-      "state": "source-authored-preview-pending",
+      "state": "corrected-source-preview-running",
       "legacySpec": {
         "path": "drill-anim/specs/n-squat-shift.js",
         "exists": true,
@@ -4432,7 +4615,18 @@
       "selectionState": "preserve-explicit-catalog-binding",
       "specialHandling": [],
       "knownSourceIssues": [],
-      "releaseApproved": false
+      "releaseApproved": false,
+      "activeSpec": {
+        "root": "repo",
+        "path": "drill-anim/specs/n-squat-shift-r2.js",
+        "sha256": "5cffde80bea08369b2e658b75e8ea06ffd5059d50377a521ea46c293b6dbc5c9",
+        "bytes": 481,
+        "normalization": "lf"
+      },
+      "draftName": {
+        "zh": "低位蹲姿左右移重心",
+        "en": "Deep squat side shift"
+      }
     },
     {
       "id": "n-straddle-fold",
@@ -4574,7 +4768,7 @@
         "smartfit"
       ],
       "batchId": "b004",
-      "state": "planned",
+      "state": "source-and-voice-authored-preview-pending",
       "legacySpec": {
         "path": "drill-anim/specs/n-windshield.js",
         "exists": true,
@@ -4604,7 +4798,18 @@
       "selectionState": "preserve-explicit-catalog-binding",
       "specialHandling": [],
       "knownSourceIssues": [],
-      "releaseApproved": false
+      "releaseApproved": false,
+      "activeSpec": {
+        "root": "repo",
+        "path": "drill-anim/specs/n-windshield-r2.js",
+        "sha256": "f0172719960c9ab41957e5ad09fb054c01ad5bbbfa7e3ef044e76affdaf9376d",
+        "bytes": 480,
+        "normalization": "lf"
+      },
+      "draftName": {
+        "zh": "仰卧雨刷式",
+        "en": "Supine Windshield Wipers"
+      }
     },
     {
       "id": "o-seated-catcow",
@@ -4904,7 +5109,7 @@
         "smartfit"
       ],
       "batchId": "b001",
-      "state": "full-masters-running",
+      "state": "technical-media-complete-editorial-listening-user-review-pending",
       "legacySpec": {
         "path": "drill-anim/specs/o-stand-sidebend.js",
         "exists": true,
@@ -4930,7 +5135,18 @@
       "selectionState": "preserve-explicit-catalog-binding",
       "specialHandling": [],
       "knownSourceIssues": [],
-      "releaseApproved": false
+      "releaseApproved": false,
+      "activeSpec": {
+        "root": "repo",
+        "path": "drill-anim/specs/o-stand-sidebend-r2.js",
+        "sha256": "54b022776db379211df7a7dc2a53ee84b3d85e82571be74d7eaef7dd179571e2",
+        "bytes": 484,
+        "normalization": "lf"
+      },
+      "draftName": {
+        "zh": "站姿举手侧屈",
+        "en": "Standing Overhead Side Bend"
+      }
     },
     {
       "id": "obliques-A",
@@ -5294,7 +5510,7 @@
         "smartfit"
       ],
       "batchId": "b004",
-      "state": "planned",
+      "state": "source-and-voice-authored-preview-pending",
       "legacySpec": {
         "path": "drill-anim/specs/s-9090-r2.js",
         "exists": true,
@@ -5332,7 +5548,18 @@
       "knownSourceIssues": [
         "hark-4080-v1 文档称本 spec 偏前屈拉伸，真正左右换髋的 s-9090-switch 只在 revisions/hark-4080-v1（docs/drill-anim/hark-4080-v1.md）"
       ],
-      "releaseApproved": false
+      "releaseApproved": false,
+      "activeSpec": {
+        "root": "repo",
+        "path": "drill-anim/specs/s-9090-r4.js",
+        "sha256": "3420c53f00535d35bfe9a209a38a37038e2eb3122f8c69711dfdf6b87af82c14",
+        "bytes": 471,
+        "normalization": "lf"
+      },
+      "draftName": {
+        "zh": "90/90 坐姿前倾拉伸",
+        "en": "Ninety-ninety seated forward-fold stretch"
+      }
     },
     {
       "id": "s-butterfly",
@@ -5345,7 +5572,7 @@
         "smartfit"
       ],
       "batchId": "b004",
-      "state": "planned",
+      "state": "source-and-voice-authored-preview-pending",
       "legacySpec": {
         "path": "drill-anim/specs/s-butterfly.js",
         "exists": true,
@@ -5373,7 +5600,18 @@
       "selectionState": "preserve-explicit-catalog-binding",
       "specialHandling": [],
       "knownSourceIssues": [],
-      "releaseApproved": false
+      "releaseApproved": false,
+      "activeSpec": {
+        "root": "repo",
+        "path": "drill-anim/specs/s-butterfly-r2.js",
+        "sha256": "b654c107aeb5af5edeac580a2441915ee4f643cdc89f93ff5fc5a579367a0d87",
+        "bytes": 478,
+        "normalization": "lf"
+      },
+      "draftName": {
+        "zh": "蝴蝶式",
+        "en": "Seated Butterfly Stretch"
+      }
     },
     {
       "id": "s-figure4",
@@ -5386,7 +5624,7 @@
         "smartfit"
       ],
       "batchId": "b004",
-      "state": "planned",
+      "state": "source-and-voice-authored-preview-pending",
       "legacySpec": {
         "path": "drill-anim/specs/s-figure4.js",
         "exists": true,
@@ -5414,7 +5652,18 @@
       "selectionState": "preserve-explicit-catalog-binding",
       "specialHandling": [],
       "knownSourceIssues": [],
-      "releaseApproved": false
+      "releaseApproved": false,
+      "activeSpec": {
+        "root": "repo",
+        "path": "drill-anim/specs/s-figure4-r2.js",
+        "sha256": "bbde0f08f5fdbdab40bb833a0a898347c9a1b311a0d90ec6aa0dab6a609f4ba1",
+        "bytes": 474,
+        "normalization": "lf"
+      },
+      "draftName": {
+        "zh": "仰卧4字拉伸（脚踩地版）",
+        "en": "Supine figure-four stretch with planted foot"
+      }
     },
     {
       "id": "s-frog",
@@ -5592,7 +5841,7 @@
         "smartfit"
       ],
       "batchId": "b004",
-      "state": "planned",
+      "state": "source-and-voice-authored-preview-pending",
       "legacySpec": {
         "path": "drill-anim/specs/s-seated-fold-r3.js",
         "exists": true,
@@ -5633,7 +5882,18 @@
         "63 条历史腕部可达范围警告保留（media/releases/0.1.0.md）",
         "v2 原片 f154→155 手跳约 30 mm（docs/training-media-library-2026-10-13.md）"
       ],
-      "releaseApproved": false
+      "releaseApproved": false,
+      "activeSpec": {
+        "root": "repo",
+        "path": "drill-anim/specs/s-seated-fold-r4.js",
+        "sha256": "f14ee2f4f6bbfdedfcd7f34d136334e6738f2aa1a1af431a8ec96f277ff33853",
+        "bytes": 485,
+        "normalization": "lf"
+      },
+      "draftName": {
+        "zh": "坐姿体前屈",
+        "en": "Seated Forward Fold"
+      }
     },
     {
       "id": "scapular-A",
@@ -6123,7 +6383,7 @@
         "smartfit"
       ],
       "batchId": "b004",
-      "state": "planned",
+      "state": "source-and-voice-authored-preview-pending",
       "legacySpec": {
         "path": "drill-anim/specs/w-clamshell.js",
         "exists": true,
@@ -6156,7 +6416,18 @@
       "knownSourceIssues": [
         "10-13库：Original QA is a key/intermediate-frame probe only: frames_complete=false and pass=false; no full-film vali…"
       ],
-      "releaseApproved": false
+      "releaseApproved": false,
+      "activeSpec": {
+        "root": "repo",
+        "path": "drill-anim/specs/w-clamshell-r3.js",
+        "sha256": "79967e04b64526aeab2804d2c14a461ebf61e1dab2a99d04727667675de58961",
+        "bytes": 481,
+        "normalization": "lf"
+      },
+      "draftName": {
+        "zh": "侧卧蚌式开合",
+        "en": "Side-Lying Clamshell"
+      }
     },
     {
       "id": "w-dead-bug",
@@ -6781,10 +7052,88 @@
   ],
   "rules": [
     "No automatic adoption of a newer -rN source.",
-    "Preview and actual visual review precede complete production.",
+    "Phase one follows the user's explicit draft-first instruction: render the entire formal library before per-action visual approval; all new unreviewed outputs remain drafts.",
     "Non-eight-second sources require a new authored eight-second loop, not global time scaling.",
     "Each batch has its own immutable output root, source recipe and media binding.",
     "Retries retain failed output and use a new revision root.",
     "Editorial/content/listening/user release approvals are never inferred from production progress."
-  ]
+  ],
+  "visibleHandQaPolicy": {
+    "audit": {
+      "root": "production",
+      "path": "planning/visible-hand-contact-risk-index-20261021.json",
+      "sha256": "a476b957b5025d31dc42e43b27590ddb5cf14cc6cb2af163405e14c96620e242",
+      "bytes": 423075
+    },
+    "requirement": "Phase one records these risks without blocking first-pass rendering or doing per-action contact corrections. The user visually reviews the full-library drafts and identifies fixes. Before final acceptance, actual visible new-hand review remains pending; handClip=99 is unknown proxy coverage, never a pass or proof of clearance. The 26 direct-touch sources, especially 14 default-waist searches, stay flagged. Numeric checks are limited to their declared mesh/frame scope."
+  },
+  "productionStrategy": {
+    "mode": "draft-first-user-visual-review",
+    "userInstruction": "First render the entire library; the user will report visible problems, then revise those actions.",
+    "phaseOne": "Reuse 20 already-rendered actions, dispatch remaining native-eight-second sources on the current model, and compose all five skins and both themes. Definition authoring, voice completion and per-action visual corrections do not block the first pass.",
+    "blockingChecks": [
+      "render startup failure",
+      "missing, empty or corrupt output",
+      "source identity mismatch",
+      "wrong model or GPU runtime",
+      "resource limits"
+    ],
+    "deferred": [
+      "per-action visual approval",
+      "contact and pose refinement",
+      "nonblocking known visual issues",
+      "full-library editorial and listening review"
+    ],
+    "outputRoot": "drafts/first-pass-r1",
+    "reviewIndex": "review/index.html",
+    "draftReviewed": false,
+    "releaseEligible": false,
+    "finalGate": "Record user feedback, revise affected actions in new output revisions, then finish all six layers and obtain final merge/release approval.",
+    "sourceInventory": {
+      "root": "production",
+      "path": "planning/draft-first-source-inventory-r2.json",
+      "bytes": 2277819,
+      "sha256": "7ffc84c25b4a242a7644ebb14b4e6c577226f118a73df89728631641a3abea1f"
+    },
+    "nativeQueue": {
+      "root": "production",
+      "path": "planning/draft-native8-first-pass-r1-prioritized.json",
+      "bytes": 801564,
+      "sha256": "b489f8b7113a2ee91230f7c2bec538251719a7e7a41fe217bf0101c7b064275b"
+    },
+    "adaptationQueue": {
+      "root": "production",
+      "path": "planning/draft-native8-followup-queue-r1.json",
+      "bytes": 78854,
+      "sha256": "7426d87473781cdeb611d3de8803e81df18c98c2b6148f54944b81f4b9e62779"
+    },
+    "adaptationAudit": {
+      "root": "production",
+      "path": "planning/native8-static-audit-r1.json",
+      "bytes": 6096,
+      "sha256": "faaec9e71141c75cf3f431e732b7aacf02835cce3b8075ab1efb3d940b34cecc"
+    },
+    "renderReadySourceCounts": {
+      "formalActions": 142,
+      "reusedFullMasters": 20,
+      "nativeEightSecondNewRenders": 122,
+      "independentlyAdaptedNativeEightSecondSources": 12
+    },
+    "actualGpuProofRoot": "drafts/first-pass-r1/qa/runtime/full",
+    "approvalPolicy": "User review pending; no reviewed flag, source QA pass, release, merge or push is inferred."
+  },
+  "progressSnapshot": {
+    "recordedAt": "2026-10-21T16:32:52.244184+00:00",
+    "formalTarget": 142,
+    "authoredPackages": 36,
+    "unwrittenPackages": 106,
+    "technicalMediaComplete": 14,
+    "releaseEligible": 0,
+    "additionalFullMasters": 6,
+    "note": "14 actions have complete technical media (six pilot plus eight b001). Six more b002 actions have complete five-skin masters and are being composed; they are not yet counted as complete media. 36 authored packages are independent of first-pass render progress.",
+    "firstPassViewReady": 20,
+    "firstPassAvailableVideos": 200,
+    "draftFullMastersComplete": 3,
+    "registeredSpecFiles": 253
+  }
 }

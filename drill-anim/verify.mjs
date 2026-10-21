@@ -71,6 +71,10 @@ for (const [file, expected] of Object.entries({
   'specs/_9090-feet.mjs': '3e9d1a0bc673d7b1e35e37a3e45d1aac5b7e2c910152b61bdf443358ef88af12',
   'lib/foot-orient.mjs': 'eb7b0452b75ef7701a2baf359908272bd3139a04ef56eacfffc4084b732ce431',
 })) assert.equal(textHash(path.join(root, file)), expected, `HipLab media-fix helper changed: ${file}`);
+// First-pass native8 authoring uses explicit source slices/local phases; pin its new helper independently.
+assert.equal(textHash(path.join(root, 'specs/_draft-native8-r1.mjs')),
+  '41ee05e3d6dda7708f851e4cd5a204634f2aa03e47e4873bbeceb65fb2730851',
+  'Native8 draft helper changed (make a new helper revision)');
 // Highlight v2 soft-v1 (2026-10-18): opt-in runtime patch, its loader and the theme that enables it. Old themes never load it.
 for (const [file, expected] of Object.entries({
   'page/soft-highlight.js': '7782d797dcc76f9f4be2372a9768421041f1345b2335a76e3cd095791d69ee32',

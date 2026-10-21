@@ -1,0 +1,664 @@
+{
+  "format": "pose-hub-v2-production-batch@1",
+  "id": "b004",
+  "description": "Eight native-eight-second floor candidates. Descriptive names, dose semantics and all new-model physical/visual reviews remain pending. Existing motion and solver anchors are unchanged.",
+  "model": {
+    "id": "training-human-v2plus",
+    "version": "1.0.0-rc2"
+  },
+  "skins": [
+    "realistic",
+    "tech-white",
+    "neon-night",
+    "neon-night-b",
+    "hologram"
+  ],
+  "fps": 30,
+  "width": 1080,
+  "height": 1080,
+  "durationSeconds": 8,
+  "maxWorkers": 2,
+  "runtimeSha256": "0be6844bc8914fcd17d5fe1b4cd7f4fc72fc763b134fa34b2ecabf39000009df",
+  "reviewPolicy": "External actual visual review bound to source and preview manifest/index/PNG SHA is required before full production. No automatic review approval.",
+  "actions": [
+    {
+      "id": "n-windshield",
+      "spec": "drill-anim/specs/n-windshield-r2.js",
+      "source": {
+        "path": "drill-anim/specs/n-windshield.js",
+        "sha256": "37f3427d779809bd50d1aa1f824539ac35c9442c7c4d097b86f708933a156f52",
+        "bytes": 3744,
+        "normalization": "raw",
+        "lfSha256": "10d16b2ccd6c637b95b6f134236e6fa3c6bccc7943f9be72712cdc5b829f3b75",
+        "lfNormalization": "CRLF-to-LF only; original file is not rewritten."
+      },
+      "peakFrame": 66,
+      "previewFrames": [
+        0,
+        9,
+        30,
+        66,
+        81,
+        117,
+        129,
+        171,
+        186,
+        201,
+        237,
+        239,
+        240
+      ],
+      "phase": {
+        "review": "source-transcribed-editorial-pending",
+        "cycleSeconds": 8,
+        "cyclesPerClip": 1.0,
+        "events": [
+          {
+            "startSeconds": 0,
+            "endSeconds": 0.3,
+            "name": "prepare"
+          },
+          {
+            "startSeconds": 0.3,
+            "endSeconds": 1.7,
+            "name": "kneesRight"
+          },
+          {
+            "startSeconds": 1.7,
+            "endSeconds": 2.7,
+            "name": "rightPause"
+          },
+          {
+            "startSeconds": 2.7,
+            "endSeconds": 3.9,
+            "name": "returnFromRight"
+          },
+          {
+            "startSeconds": 3.9,
+            "endSeconds": 4.3,
+            "name": "centrePause"
+          },
+          {
+            "startSeconds": 4.3,
+            "endSeconds": 5.7,
+            "name": "kneesLeft"
+          },
+          {
+            "startSeconds": 5.7,
+            "endSeconds": 6.7,
+            "name": "leftPause"
+          },
+          {
+            "startSeconds": 6.7,
+            "endSeconds": 7.9,
+            "name": "returnFromLeft"
+          },
+          {
+            "startSeconds": 7.9,
+            "endSeconds": 8,
+            "name": "reset"
+          }
+        ],
+        "repeatOffsetsSeconds": [
+          0
+        ],
+        "countingSemantics": "The source defines one right-and-left pair per eight seconds: knees right, centre, left, centre. Both legs move together; this is not a single-leg unilateral action. Preserve default reps=8 and legacy range. Whether the app counts eight pairs or eight one-sided excursions is unresolved because the legacy four-second alternate rhythm differs from the source eight-second cycle; do not silently double or halve the dose."
+      },
+      "side": {
+        "mode": "bilateral-alternating-direction",
+        "firstWorkingSide": "both",
+        "switchTimesSeconds": [],
+        "note": "Both knees move right first then left after the centre crossing; movement direction is not a unilateral working-side assignment."
+      },
+      "risks": [
+        "Keep both existing floor-foot locks and the small pelvic roll; inspect actual planted shoe contact and relaxed palm/finger height on all skins.",
+        "Native source fps15 is sampled at30 without retiming; inspect between-source samples and the 0/240 seam, not only the two pause frames."
+      ]
+    },
+    {
+      "id": "s-9090",
+      "spec": "drill-anim/specs/s-9090-r4.js",
+      "source": {
+        "path": "drill-anim/specs/s-9090-r3.js",
+        "sha256": "954574081a39e5ab0b7eef1dd1566b8f8e44aadd5ef88a08e053828c66b9acc7",
+        "bytes": 579,
+        "normalization": "raw",
+        "lfSha256": "a787f597a5ba6071b2bb095e16016170f7563c689c73aa3875c32ea1938ef5ec",
+        "lfNormalization": "CRLF-to-LF only; original file is not rewritten."
+      },
+      "peakFrame": 114,
+      "previewFrames": [
+        0,
+        18,
+        30,
+        60,
+        90,
+        114,
+        150,
+        168,
+        210,
+        239,
+        240
+      ],
+      "phase": {
+        "review": "source-transcribed-editorial-pending",
+        "cycleSeconds": 8,
+        "cyclesPerClip": 1.0,
+        "events": [
+          {
+            "startSeconds": 0,
+            "endSeconds": 0.6,
+            "name": "prepare"
+          },
+          {
+            "startSeconds": 0.6,
+            "endSeconds": 2,
+            "name": "foldForward"
+          },
+          {
+            "startSeconds": 2,
+            "endSeconds": 3.8,
+            "name": "deepenFold"
+          },
+          {
+            "startSeconds": 3.8,
+            "endSeconds": 5.6,
+            "name": "easeFold"
+          },
+          {
+            "startSeconds": 5.6,
+            "endSeconds": 7,
+            "name": "returnUpright"
+          },
+          {
+            "startSeconds": 7,
+            "endSeconds": 8,
+            "name": "reset"
+          }
+        ],
+        "repeatOffsetsSeconds": [
+          0
+        ],
+        "countingSemantics": "One forward hinge and upright return is demonstrated per eight-second loop, always with the right leg in front. There is no in-clip side switch. Preserve default40 seconds and its range; the source is a dynamic fold-and-return demonstration, not a continuous40-second static hold. Per-side timed interpretation and the proposed descriptive name require editorial confirmation. An optional loop boundary after the completed side dose is not a command to switch every eight seconds."
+      },
+      "side": {
+        "mode": "unilateral",
+        "firstWorkingSide": "right-front-leg-buttock",
+        "switchTimesSeconds": [],
+        "externalSideChangeAfterSeconds": 8,
+        "note": "Right leg stays in front, left leg behind; the front right buttock is the intended stretch target. No knee flip or side switch exists in this source."
+      },
+      "risks": [
+        "New-model knee/ankle geometry must be checked with the frozen _9090-feet.mjs orientation; do not inherit historical hand-gap or foot-pin passes.",
+        "Inspect both hands/knees and front-glute occlusion under the selected r3 view. Identity is fixed forward fold; editorial naming/dose approval remains pending."
+      ]
+    },
+    {
+      "id": "s-butterfly",
+      "spec": "drill-anim/specs/s-butterfly-r2.js",
+      "source": {
+        "path": "drill-anim/specs/s-butterfly.js",
+        "sha256": "926f4991bf75194b8420e74c686421d95acb24e6d7de1b43b301171a6792cf4a",
+        "bytes": 4610,
+        "normalization": "raw",
+        "lfSha256": "67b29f53ee83bdc31f5e8b2f5526205b94d814ffbcf771e7cc7c4b9a7564b866",
+        "lfNormalization": "CRLF-to-LF only; original file is not rewritten."
+      },
+      "peakFrame": 114,
+      "previewFrames": [
+        0,
+        18,
+        30,
+        60,
+        90,
+        114,
+        150,
+        168,
+        210,
+        239,
+        240
+      ],
+      "phase": {
+        "review": "source-transcribed-editorial-pending",
+        "cycleSeconds": 8,
+        "cyclesPerClip": 1.0,
+        "events": [
+          {
+            "startSeconds": 0,
+            "endSeconds": 0.6,
+            "name": "prepare"
+          },
+          {
+            "startSeconds": 0.6,
+            "endSeconds": 2,
+            "name": "foldForward"
+          },
+          {
+            "startSeconds": 2,
+            "endSeconds": 3.8,
+            "name": "deepenFold"
+          },
+          {
+            "startSeconds": 3.8,
+            "endSeconds": 5.6,
+            "name": "easeFold"
+          },
+          {
+            "startSeconds": 5.6,
+            "endSeconds": 7,
+            "name": "returnUpright"
+          },
+          {
+            "startSeconds": 7,
+            "endSeconds": 8,
+            "name": "reset"
+          }
+        ],
+        "repeatOffsetsSeconds": [
+          0
+        ],
+        "countingSemantics": "The8-second source demonstrates one bilateral forward fold and return, not knee flapping or40 seconds held at maximum depth. Preserve default40 seconds and range; whether the timed dose means gentle repeated movement or a separately held position requires editorial confirmation. No side change is required."
+      },
+      "side": {
+        "mode": "bilateral",
+        "firstWorkingSide": "both",
+        "switchTimesSeconds": []
+      },
+      "risks": [
+        "Inspect hand-to-lower-shin contacts, both soles, knees and actual thigh/seat-to-mat clearance with the source lift/roll compensation unchanged.",
+        "Historical projected hipFlexMax150 is an old-rig metric setting, not a medical range recommendation or new-model acceptance."
+      ]
+    },
+    {
+      "id": "s-figure4",
+      "spec": "drill-anim/specs/s-figure4-r2.js",
+      "source": {
+        "path": "drill-anim/specs/s-figure4.js",
+        "sha256": "8d4233f66d23c17eeac7e28d15680ed1b3291548ec3e6e755c8b896e3c31e947",
+        "bytes": 3064,
+        "normalization": "raw",
+        "lfSha256": "cca7676b36347c5c44a56efa9847eef733182d4bfeea5954da55fee148278800",
+        "lfNormalization": "CRLF-to-LF only; original file is not rewritten."
+      },
+      "peakFrame": 114,
+      "previewFrames": [
+        0,
+        18,
+        30,
+        60,
+        90,
+        114,
+        150,
+        168,
+        210,
+        239,
+        240
+      ],
+      "phase": {
+        "review": "source-transcribed-editorial-pending",
+        "cycleSeconds": 8,
+        "cyclesPerClip": 1.0,
+        "events": [
+          {
+            "startSeconds": 0,
+            "endSeconds": 0.6,
+            "name": "prepare"
+          },
+          {
+            "startSeconds": 0.6,
+            "endSeconds": 2,
+            "name": "easeRightKneeOut"
+          },
+          {
+            "startSeconds": 2,
+            "endSeconds": 3.8,
+            "name": "deepenRightStretch"
+          },
+          {
+            "startSeconds": 3.8,
+            "endSeconds": 5.6,
+            "name": "easeRightStretch"
+          },
+          {
+            "startSeconds": 5.6,
+            "endSeconds": 7,
+            "name": "returnToStartRange"
+          },
+          {
+            "startSeconds": 7,
+            "endSeconds": 8,
+            "name": "reset"
+          }
+        ],
+        "repeatOffsetsSeconds": [
+          0
+        ],
+        "countingSemantics": "One gentle right-side deepen-and-ease demonstration occurs per8-second loop. The left foot remains floor-locked and both hands stay on the mat. Preserve default30 seconds and range, with proposed per-side interpretation editorial pending; this is not a30-second static hold, a pulled-thigh variation or a promise of zero knee torque. There is no in-clip side switch."
+      },
+      "side": {
+        "mode": "unilateral",
+        "firstWorkingSide": "right-crossed-leg-buttock",
+        "switchTimesSeconds": [],
+        "externalSideChangeAfterSeconds": 8,
+        "note": "Right ankle crosses the left thigh; right buttock is stretched. Left foot stays planted. Optional change only after the completed side dose; no mirror is produced."
+      },
+      "risks": [
+        "Inspect the moving right ankle against the left thigh and right-knee outward path on every skin; old source has no explicit right-foot contact solver.",
+        "Inspect both relaxed near-floor palms/fingers and planted left shoe; preserve the left floor pin, do not introduce a thigh-pull motion."
+      ]
+    },
+    {
+      "id": "s-seated-fold",
+      "spec": "drill-anim/specs/s-seated-fold-r4.js",
+      "source": {
+        "path": "drill-anim/specs/s-seated-fold-r3.js",
+        "sha256": "4796fbae4d9f4e922f1962a1f01ab845ca4cd13ef348c2c071de1ab7e07011a4",
+        "bytes": 1072,
+        "normalization": "raw",
+        "lfSha256": "13e38b9e0fb74935868633656b8cc98040f93cf13565132aa95f32c87cd75cc8",
+        "lfNormalization": "CRLF-to-LF only; original file is not rewritten."
+      },
+      "peakFrame": 114,
+      "previewFrames": [
+        0,
+        30,
+        31,
+        33,
+        60,
+        90,
+        114,
+        150,
+        193,
+        197,
+        199,
+        210,
+        239,
+        240
+      ],
+      "phase": {
+        "review": "source-transcribed-editorial-pending",
+        "cycleSeconds": 8,
+        "cyclesPerClip": 1.0,
+        "events": [
+          {
+            "startSeconds": 0,
+            "endSeconds": 0.6,
+            "name": "prepare"
+          },
+          {
+            "startSeconds": 0.6,
+            "endSeconds": 2,
+            "name": "foldForward"
+          },
+          {
+            "startSeconds": 2,
+            "endSeconds": 3.8,
+            "name": "deepenFold"
+          },
+          {
+            "startSeconds": 3.8,
+            "endSeconds": 5.6,
+            "name": "easeFold"
+          },
+          {
+            "startSeconds": 5.6,
+            "endSeconds": 7,
+            "name": "returnUpright"
+          },
+          {
+            "startSeconds": 7,
+            "endSeconds": 8,
+            "name": "reset"
+          }
+        ],
+        "repeatOffsetsSeconds": [
+          0
+        ],
+        "countingSemantics": "The source demonstrates one slow bilateral fold and return per8-second loop. Preserve default40 seconds and range; the source does not maintain a40-second maximum stretch. Dynamic repeated practice versus a separately held position requires editorial confirmation. Both legs are demonstrated together, with no side change."
+      },
+      "side": {
+        "mode": "bilateral",
+        "firstWorkingSide": "both",
+        "switchTimesSeconds": []
+      },
+      "risks": [
+        "Inspect source r3 hem-detour frames31,33,193,197,199 and full hand travel on new shorts/hand geometry; retain all raw warnings.",
+        "Inspect both knees, fixed heels, thigh/mat contact and old solver reach constraints; legacy acceptance exceptions cannot be reused as new-model passes."
+      ]
+    },
+    {
+      "id": "w-clamshell",
+      "spec": "drill-anim/specs/w-clamshell-r3.js",
+      "source": {
+        "path": "drill-anim/specs/w-clamshell-r2.js",
+        "sha256": "48e108d776a790d74c56399a64e5a1b665fe4753da76dc945a103db7389a31ac",
+        "bytes": 5092,
+        "normalization": "raw",
+        "lfSha256": "a8ca45becfd77e106896d03e1ee754880eb02cb14b4463078a342458fdadd739",
+        "lfNormalization": "CRLF-to-LF only; original file is not rewritten."
+      },
+      "peakFrame": 54,
+      "previewFrames": [
+        0,
+        9,
+        30,
+        54,
+        69,
+        105,
+        120,
+        159,
+        174,
+        210,
+        239,
+        240
+      ],
+      "phase": {
+        "review": "source-transcribed-editorial-pending",
+        "cycleSeconds": 4,
+        "cyclesPerClip": 2.0,
+        "events": [
+          {
+            "startSeconds": 0,
+            "endSeconds": 0.3,
+            "name": "prepare"
+          },
+          {
+            "startSeconds": 0.3,
+            "endSeconds": 1.3,
+            "name": "openRightKnee"
+          },
+          {
+            "startSeconds": 1.3,
+            "endSeconds": 2.3,
+            "name": "topHold"
+          },
+          {
+            "startSeconds": 2.3,
+            "endSeconds": 3.5,
+            "name": "closeRightKnee"
+          },
+          {
+            "startSeconds": 3.5,
+            "endSeconds": 4,
+            "name": "reset"
+          }
+        ],
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "countingSemantics": "One right-knee opening and closing counts as one rep. The8-second source contains two right-side reps, with left forearm/side support and no side switch. Preserve default15 and range; the proposed per-side15 interpretation requires editorial confirmation because the legacy dose has no explicit perSide field. Legacy rhythm.reps10 does not replace default15. Change externally only after the side dose, not every loop."
+      },
+      "side": {
+        "mode": "unilateral",
+        "firstWorkingSide": "right-upper-hip",
+        "switchTimesSeconds": [],
+        "externalSideChangeAfterSeconds": 8,
+        "note": "Left side and forearm support; right upper knee opens while the feet stay together. No in-clip side change."
+      },
+      "risks": [
+        "Retain the left floor-hand lock and forearm support; inspect actual left elbow/palm/finger floor contact and right-hand hip contact on the new model.",
+        "Old REST-based elbow target and hip-ankle knee arc are unchanged; inspect feet-together contact, knee arc and stacked pelvis through both repetitions."
+      ]
+    },
+    {
+      "id": "abs-A",
+      "spec": "drill-anim/specs/abs-A-r2.js",
+      "source": {
+        "path": "drill-anim/specs/abs-A.js",
+        "sha256": "e07f84d9d4839e4afe5b8c770475dbb20056d12a4a2622b309f010bef4673489",
+        "bytes": 4865,
+        "normalization": "raw",
+        "lfSha256": "dba607622b89b25d5ce7075f0c28eaeeaae6c5b636cab8da479247163492a868",
+        "lfNormalization": "CRLF-to-LF only; original file is not rewritten."
+      },
+      "peakFrame": 66,
+      "previewFrames": [
+        0,
+        9,
+        30,
+        39,
+        66,
+        93,
+        117,
+        120,
+        159,
+        186,
+        213,
+        237,
+        239,
+        240
+      ],
+      "phase": {
+        "review": "source-transcribed-editorial-pending",
+        "cycleSeconds": 4,
+        "cyclesPerClip": 2.0,
+        "events": [
+          {
+            "startSeconds": 0,
+            "endSeconds": 0.3,
+            "name": "prepare"
+          },
+          {
+            "startSeconds": 0.3,
+            "endSeconds": 1.3,
+            "name": "raiseToHollow"
+          },
+          {
+            "startSeconds": 1.3,
+            "endSeconds": 3.1,
+            "name": "briefHollowHold"
+          },
+          {
+            "startSeconds": 3.1,
+            "endSeconds": 3.9,
+            "name": "lowerFromHollow"
+          },
+          {
+            "startSeconds": 3.9,
+            "endSeconds": 4,
+            "name": "reset"
+          }
+        ],
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "countingSemantics": "The8-second source contains two entry/brief-hold/release demonstrations, each with only1.8 seconds at the high hollow position. Preserve the timed prescription of3 sets x20 seconds and the legacy range. Looping this source is not a continuous20-second hollow hold; sustained-hold playback or a timed dynamic interpretation needs editorial confirmation and must not be inferred from the clip."
+      },
+      "side": {
+        "mode": "bilateral",
+        "firstWorkingSide": "both",
+        "switchTimesSeconds": []
+      },
+      "risks": [
+        "Inspect actual waist/back support rather than equating a joint-height constraint with skin contact. Keep all solve variables/constraints unchanged.",
+        "Inspect both knees and elbows >=176, overhead hand/head/arm clearance, new shorts/hip compression and the two short-hold endpoints."
+      ]
+    },
+    {
+      "id": "deltoids-A",
+      "spec": "drill-anim/specs/deltoids-A-r2.js",
+      "source": {
+        "path": "drill-anim/specs/deltoids-A.js",
+        "sha256": "881aed6ac6038cdd3367543164722dbb9248f7be722c8bd6c0cb18ef7321a583",
+        "bytes": 2117,
+        "normalization": "raw",
+        "lfSha256": "321c1d635a695a96cc155b6fd3f7253b842eec91baae0bdd6cf8d38594eb7ba7",
+        "lfNormalization": "CRLF-to-LF only; original file is not rewritten."
+      },
+      "peakFrame": 63,
+      "previewFrames": [
+        0,
+        18,
+        39,
+        63,
+        90,
+        108,
+        132,
+        177,
+        210,
+        222,
+        239,
+        240
+      ],
+      "phase": {
+        "review": "source-transcribed-editorial-pending",
+        "cycleSeconds": 8,
+        "cyclesPerClip": 1.0,
+        "events": [
+          {
+            "startSeconds": 0,
+            "endSeconds": 0.6,
+            "name": "topPrepare"
+          },
+          {
+            "startSeconds": 0.6,
+            "endSeconds": 2.1,
+            "name": "firstHipLower"
+          },
+          {
+            "startSeconds": 2.1,
+            "endSeconds": 3.6,
+            "name": "firstHipRise"
+          },
+          {
+            "startSeconds": 3.6,
+            "endSeconds": 4.4,
+            "name": "topPause"
+          },
+          {
+            "startSeconds": 4.4,
+            "endSeconds": 5.9,
+            "name": "secondHipLower"
+          },
+          {
+            "startSeconds": 5.9,
+            "endSeconds": 7.4,
+            "name": "secondHipRise"
+          },
+          {
+            "startSeconds": 7.4,
+            "endSeconds": 8,
+            "name": "reset"
+          }
+        ],
+        "repeatOffsetsSeconds": [
+          0
+        ],
+        "countingSemantics": "The native8-second v7 source shows two right-support hip dips, with lowest hip points at2.1 and5.9 seconds and high returns at3.6 and7.4. Inter-dip spacing is not exactly4 seconds. Preserve3 sets x25 seconds and legacy range; a timed dynamic hip-dip interpretation versus the old generic side-plank hold wording needs editorial approval. Right is the supporting/working shoulder side, left hand rests on the hip. No in-clip side change or mirrored media is produced."
+      },
+      "side": {
+        "mode": "unilateral",
+        "firstWorkingSide": "right-supporting-arm",
+        "switchTimesSeconds": [],
+        "externalSideChangeAfterSeconds": 8,
+        "note": "Right hand supports the body and both feet remain planted; the left hand rests on the hip. Complete the agreed side dose before any external side change."
+      },
+      "risks": [
+        "Dedicated v7 solver uses dynamic right-hand/feet anchors and warm-started pose solving. Static descriptor inspection alone cannot approve reach, floor contact or loop continuity.",
+        "Inspect supporting right palm/fingers, all three floor pins, elbow/knees source thresholds172, left hand/hip contact and low-dip torso alignment on all skins; do not reuse historical pixel identity claims for the new model."
+      ]
+    }
+  ]
+}

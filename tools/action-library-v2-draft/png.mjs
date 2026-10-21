@@ -1,0 +1,11 @@
+import fs from 'node:fs';import zlib from 'node:zlib';
+const table=Array.from({length:256},(_,n)=>{for(let k=0;k<8;k++)n=n&1?0xedb88320^(n>>>1):n>>>1;return n>>>0;});
+export function crc32(buf){let n=0xffffffff;for(const v of buf)n=table[(n^v)&255]^(n>>>8);return (n^0xffffffff)>>>0;}
+export function validatePng(bytes,{width=1080,height=1080,checkAlpha=false}={}){
+ if(bytes.length<33||!bytes.subarray(0,8).equals(Buffer.from([137,80,78,71,13,10,26,10])))throw Error('Invalid PNG signature');
+ let at=8,header,ended=false;const data=[];while(at<bytes.length){if(at+12>bytes.length)throw Error('Truncated PNG chunk');const n=bytes.readUInt32BE(at),end=at+12+n;if(end>bytes.length)throw Error('Truncated PNG data');const name=bytes.toString('ascii',at+4,at+8),chunk=bytes.subarray(at+8,at+8+n);if(crc32(bytes.subarray(at+4,at+8+n))!==bytes.readUInt32BE(at+8+n))throw Error('PNG CRC mismatch');if(name==='IHDR'){if(header||n!==13)throw Error('Invalid IHDR');header={width:chunk.readUInt32BE(0),height:chunk.readUInt32BE(4),depth:chunk[8],color:chunk[9],interlace:chunk[12]};}if(name==='IDAT')data.push(chunk);if(name==='IEND'){ended=true;if(n||end!==bytes.length)throw Error('Invalid PNG end');}at=end;}
+ if(!ended||!header||!data.length||header.width!==width||header.height!==height||header.depth!==8||header.color!==6||header.interlace!==0)throw Error('Expected complete 8-bit RGBA PNG dimensions');
+ let nonzeroAlpha=null;
+ if(checkAlpha){const raw=zlib.inflateSync(Buffer.concat(data)),stride=width*4;if(raw.length!==(stride+1)*height)throw Error('Invalid decoded PNG size');let previous=Buffer.alloc(stride);nonzeroAlpha=0;for(let y=0;y<height;y++){const at=y*(stride+1),filter=raw[at];if(filter>4)throw Error('Invalid PNG row filter');const row=Buffer.alloc(stride);for(let x=0;x<stride;x++){const left=x>=4?row[x-4]:0,up=previous[x],ul=x>=4?previous[x-4]:0;let prediction=0;if(filter===1)prediction=left;if(filter===2)prediction=up;if(filter===3)prediction=(left+up)>>>1;if(filter===4){const p=left+up-ul,pa=Math.abs(p-left),pb=Math.abs(p-up),pc=Math.abs(p-ul);prediction=pa<=pb&&pa<=pc?left:pb<=pc?up:ul;}row[x]=(raw[at+1+x]+prediction)&255;if(x%4===3&&row[x])nonzeroAlpha++;}previous=row;}}
+ return {...header,nonzeroAlpha};
+}

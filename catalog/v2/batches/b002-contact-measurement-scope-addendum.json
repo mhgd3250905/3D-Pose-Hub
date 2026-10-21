@@ -1,0 +1,116 @@
+{
+  "format": "pose-hub-v2-contact-measurement-scope-addendum@1",
+  "actionId": "h-side-leg-raise",
+  "spec": "drill-anim/specs/h-side-leg-raise-r5.js",
+  "correctsInterpretationOf": [
+    {
+      "path": "F:/PoseHub-v2-production/diagnostics/b002-side-leg-r5/conclusion.json",
+      "sha256": "7e5dbd685a6e47e7be05ab1542cc1feca65bedef00d867282254d9281f5cd391",
+      "bytes": 5260
+    },
+    {
+      "path": "F:/PoseHub-v2-production/diagnostics/b002-side-leg-r5/conclusion.md",
+      "sha256": "c0350397eb6b87c855af25bda801f6eb4b13db0beb48e6897d644b333012966f",
+      "bytes": 2105
+    },
+    {
+      "path": "E:/AII-3D/3D-Pose-Hub/catalog/v2/batches/b002-contact-source-binding-audit.json",
+      "sha256": "4d153831385b5d0f2e283973cfb6b75eabde680f42b3b441da7ffea538142116",
+      "bytes": 2787
+    }
+  ],
+  "immutableEvidenceNotModified": true,
+  "frameCoverage": {
+    "footKneeSolverAndLoopMetrics": 241,
+    "handMeshContactMetrics": 10,
+    "handMeshContactFrames": [
+      0,
+      12,
+      30,
+      57,
+      84,
+      120,
+      150,
+      177,
+      239,
+      240
+    ]
+  },
+  "bodyMeshScope": {
+    "included": [
+      "V2P_Base_Torso"
+    ],
+    "excluded": [
+      "entire V2P_Base_Limbs mesh including arms AND legs",
+      "entire Coach_Body mesh",
+      "other clothing meshes",
+      "shoe meshes",
+      "props",
+      "all other meshes"
+    ],
+    "clarification": "The waist-specific hand test filters to the whole V2P_Base_Torso mesh only. It does not merely remove the forearm/wrist seam from an otherwise complete body collision test."
+  },
+  "handResultsWithinThatScope": {
+    "left": {
+      "visibleHandVertices": [
+        11445
+      ],
+      "unmeasuredHorizontalSectionVertices": [
+        1868
+      ],
+      "verticesWithMeasuredSections": [
+        9577
+      ],
+      "insideVerticesDetectedWithinMeasuredSections": [
+        0
+      ],
+      "palmPatchDefinition": "Hand mesh vertices within45mm of the palm joint;1218 vertices per hand. This is a selected vertex patch, not the full palm contact area.",
+      "palmPatchVertices": [
+        1218
+      ],
+      "minimumHorizontalXSectionGapMmRange": [
+        0.4999998377353265,
+        0.4999998377353543
+      ],
+      "palmJointNearestTorsoTriangleEuclideanDistanceMmRange": [
+        10.664195435323231,
+        10.664195435323288
+      ]
+    },
+    "right": {
+      "visibleHandVertices": [
+        11445
+      ],
+      "unmeasuredHorizontalSectionVertices": [
+        1866
+      ],
+      "verticesWithMeasuredSections": [
+        9579
+      ],
+      "insideVerticesDetectedWithinMeasuredSections": [
+        0
+      ],
+      "palmPatchDefinition": "Hand mesh vertices within45mm of the palm joint;1218 vertices per hand. This is a selected vertex patch, not the full palm contact area.",
+      "palmPatchVertices": [
+        1218
+      ],
+      "minimumHorizontalXSectionGapMmRange": [
+        0.49999973270607734,
+        0.49999973270611897
+      ],
+      "palmJointNearestTorsoTriangleEuclideanDistanceMmRange": [
+        11.689144544567498,
+        11.689144544567524
+      ]
+    }
+  },
+  "interpretation": [
+    "Zero insideVertices means no inside classification was found among measurable horizontal-ray sections at the ten sampled poses. It does not establish zero penetration for every visible hand vertex, every frame, or every body/clothing/prop mesh.",
+    "Left1868/right1866 vertices per sampled hand have unmeasured sections and cannot be counted as clearance passes.",
+    "The approximately0.5mm value is the minimum horizontalX-section gap across the selected45mm-radius palm vertex patch. It is neither a full-hand Euclidean minimum distance, a uniform clearance, nor a full contact-area measurement.",
+    "The separate palm-joint Euclidean nearest-triangle distances to V2P_Base_Torso are approximately left10.66mm/right11.69mm; these are joint-to-surface measurements, not palm-surface clearances.",
+    "Images support the visible correction of the prior finger/abdomen artifact in sampled canonical views. CPU-skinned torso-section metrics and those images do not replace complete multi-skin visual/source QA or prove collision freedom.",
+    "Old handClip99 remains NOT MEASURED and is not used as acceptance. Formal source QA, visual/editorial/medical/listening and release reviews remain pending."
+  ],
+  "allowedConclusion": "The actual diagnostics support proceeding to the independent five-skin preview of r5 after the observed artifact and shoe/seam issues were corrected. No broader contact or release acceptance is asserted."
+}
