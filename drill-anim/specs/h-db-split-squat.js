@@ -1,0 +1,43 @@
+// h-db-split-squat 双哑铃原地分腿蹲. Facing +Z, body left +X, head +Y.
+// Home equipment load variation, not a new movement pattern. Space and two light dumbbells required.
+// Both feet remain in the same split stance; front sole and rear forefoot grounded. Left leg demonstration, mirror for opposite side.
+// 8 seconds, two slow repetitions; no walking, chair elevation or seated support.
+import { build, keys, sg, r4, REST, armDir } from '../lib/home-anim.mjs';
+import { UA, FA, DEG } from '../lib/ss-geo.mjs';
+import { gripPose, gripAttach, G as GRIP } from '../lib/grip.mjs';
+const add = (a, b) => a.map((x, i) => x + b[i]), sub = (a, b) => a.map((x, i) => x - b[i]), mul = (a, k) => a.map(x => x * k);
+const dot = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2], nrm = a => mul(a, 1 / Math.hypot(...a));
+const cross = (a, b) => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
+const FIST = 0.092;   // target reach allowance for soft elbows; gripPose still determines the actual fist centre
+// fist round a handle at the end of forearm direction f from elbow E, thumb toward a (made perpendicular to f)
+const dbGrip = (side, E, f, a) => { f = nrm(f); a = nrm(sub(a, mul(f, dot(a, f)))); return gripPose(side, add(E, mul(f, FA + FIST)), a, mul(cross(f, a), -sg(side))); };
+// dumbbell through the baked fist (+22 mm along the grip axis centres it, as in forearms-B / deltoids-B)
+const DB = side => { const A = gripAttach(side); return { offset: r4(A.offset.map((x, i) => x + 0.022 * GRIP[side].a[i])), rot: A.rot }; };
+const hand = side => {
+ const E = add(REST.shoulder(side), mul(armDir(side, 2, 12), UA));
+ const g = dbGrip(side, E, armDir(side, 10, 8), [0,0,1]);
+ return {mode:'free', frame:'chest', relax:0, ...g, poleUp:r4(add(E,[sg(side)*0.06,0,-0.3]))};
+};
+const DUR=8;
+const p=keys([[0,0],[0.4,0],[2,1],[2.3,1],[3.7,0],[4.4,0],[6,1],[6.3,1],[7.7,0]],DUR);
+const P=build(DUR,{
+pelvis: t => r4([0,0.79-0.18*p(t),-0.16-0.015*p(t)]),
+ hips: {up:[0,1,0],front:[0,0,1],rot:[[[1,0,0],8]]},
+ chest:{waist:[[[1,0,0],0]]},
+ hands:{left:hand('left'),right:hand('right')},
+ feet:{left:{mode:'floor',at:[0.12,0.18],heading:0,pitch:0,pole:[0.12,0.5,1]},
+ right:{mode:'floor',at:[-0.12,-0.45],heading:0,pitch:38,pole:[-0.12,0.3,0.7]}},
+constraints:[],solve:{vars:[],reg:{}}},{work:p});
+export default {
+ id:'h-db-split-squat', name:'双哑铃原地分腿蹲', nameEn:'Dumbbell Split Squat',
+ modelProfile:'training-human-v2',alignClavicles:false,fps:15,
+ timeline:{duration:DUR,tracks:P.tracks},pose:{base:P.base,deltas:P.deltas},
+ highlight:{groups:['quadriceps','glute-max'],side:'left',pulseTrack:'work',pulseBase:0.3},
+ camera:{dir:[1,0.16,0.6],fit:['head','leftToe','rightToe','leftAnkle','rightAnkle','pelvis','leftKnee','rightKnee','leftPalm','rightPalm'],pad:0.15,k:0.9,drift:0,at:2,fitTimeline:true},
+ frame:{mode:'fit',width:760,height:760,cx:512,cy:540},stillAt:0.2,
+ shadow:{joints:['leftToe','rightToe','leftAnkle','rightAnkle','pelvis'],blobs:[{j:'leftToe',rx:38,ry:10,a:0.6},{j:'rightToe',rx:38,ry:10,a:0.6}],bands:[]},
+ props:[{type:'gripHand',side:'right'},{type:'gripHand',side:'left'},
+ {type:'dumbbell',length:0.30,plate:0.042,attach:'rightHand',...DB('right')},
+ {type:'dumbbell',length:0.30,plate:0.042,attach:'leftHand',...DB('left')}],
+ keyFrames:[0,1,2,3,4,5,6,7],qa:{pins:[{c:'footL',when:'always'},{c:'footR',when:'always'}],allowContact:[]},
+};
