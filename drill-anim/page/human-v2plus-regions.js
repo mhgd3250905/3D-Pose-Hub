@@ -185,6 +185,9 @@ float v2rMask(out float core){ float s1=v2rSel(v2rId1), s2=v2rSel(v2rId2); float
 `;
 function patch(o, tex) { const mat = o.material, ob = mat.onBeforeCompile;
   mat.onBeforeCompile = function(sh, r) { ob.call(this, sh, r); Object.assign(sh.uniforms, R.uni); sh.uniforms.uV2pR = { value: tex }; sh.uniforms.uV2pRm = { value: 1 };
+    // idempotent: training-collar captures the already-patched hook and swaps its own wrapper in on every v2 / v2plus enable, so setRegions
+    // re-wraps that chain; the inner patch already rewrote the shader, the outer one (patchHolder) only rebinds its uniforms (PR #12 review)
+    if (sh.vertexShader.startsWith(VS)) return;
     sh.vertexShader = VS + sh.vertexShader.replace('#include <begin_vertex>', '#include <begin_vertex>' + VB);
     let fs = sh.fragmentShader; const need = ['vec3 alb=vec3(0.0)', '#include <dithering_fragment>', 'alb*=1.0-cav; shc*=1.0-cav;', '(uV2pOn>0.5?v2pMask(c2):hlMask(c2))', 'lit=mix(lit,cyl,d*0.94);'];
     need.push('if(uV2pOut>0.5){');
@@ -212,7 +215,7 @@ V2P.loadRegions = function(table) { if (R.data) return { already: true }; const 
   // skins (M9): effective skin = spec.v2plus.skin, else the one set by __v2p.setSkin, else none (= the look as before); a skin with outlines
   // turns the baked regions on, 'realistic' turns them off, no skin = spec.v2plus.regions as before
   E.selectModelProfile = function(spec) { sel0.call(this, spec); const prof = spec.modelProfile === 'training-human-v2plus';
-    const sk = prof ? (spec.v2plus?.skin ?? V2P.skinOverride ?? null) : null; R.lastBaked = prof && spec.v2plus?.regions === 'baked'; applySkin(sk);
+    const sk = prof ? normSkin(spec.v2plus?.skin ?? V2P.skinOverride ?? null) : null; R.lastBaked = prof && spec.v2plus?.regions === 'baked'; applySkin(sk);
     V2P.setRegions(prof && (sk ? SKINS[sk].lines : R.lastBaked)); };
   const hl0 = window.__setHighlight; window.__setHighlight = h => { const n = hl0(h); if (R.on) R.setHighlight(h); return n; };
   return { meshes: R.patched.size, regions: table.count }; };
@@ -260,7 +263,10 @@ const SKINS = V2P.SKINS = {
   'realistic': { lines: false, bg: null },
 };
 SKINS['tech-white-b'] = SKINS['tech-white']; // M9c: B dropped, alias of A
-function applySkin(name) { if (name === 'default') name = null; if (name && !SKINS[name]) throw new Error('v2plus: unknown skin ' + name + ' (' + Object.keys(SKINS).join(', ') + ')');
+// one place that turns a skin name into a SKINS key or null ('default' / undefined / null = the look as before); unknown names throw
+function normSkin(name) { if (name == null || name === 'default') return null; if (!SKINS[name]) throw new Error('v2plus: unknown skin ' + name + ' (' + Object.keys(SKINS).join(', ') + ')'); return name; }
+V2P.normSkin = normSkin;
+function applySkin(name) { name = normSkin(name);
   if (R.skin === name) return; const t = T(), U = R.uni, K = name && SKINS[name].lines ? SKINS[name] : null, TU = window.__toonUni;
   if (!R.skin0) R.skin0 = { grey: U.uV2pRGrey.value.clone(), shade: U.uV2pRShade.value.clone(), line: U.uV2pRLine.value.clone(), lw: U.uV2pRLw.value, hiC: TU.uHiC.value.clone(), hiS: TU.uHiShade.value.slice() };
   const D = R.skin0, C = a => new t.Color(a[0], a[1], a[2]);
@@ -270,7 +276,7 @@ function applySkin(name) { if (name === 'default') name = null; if (name && !SKI
   U.uV2pRHi.value = [K?.hi?.a ?? 0.94, K?.hi?.fe ?? 1, K?.scan ?? 251.3];
   TU.uHiC.value = K ? C(K.hi.c) : D.hiC.clone(); TU.uHiShade.value = K ? K.hi.shade.slice() : D.hiS.slice(); R.skin = name; }
 // __v2p.setSkin(name | null): runtime override (a spec's v2plus.skin still wins for that spec); null / 'default' = the look as before
-V2P.setSkin = function(name) { if (name === 'default') name = null; if (name && !SKINS[name]) throw new Error('v2plus: unknown skin ' + name);
+V2P.setSkin = function(name) { name = normSkin(name);
   V2P.skinOverride = name; if (V2P.on) { applySkin(name); V2P.setRegions(name ? SKINS[name].lines : !!R.lastBaked); } return V2P.skinState(); };
 V2P.skinState = () => ({ skin: R.skin || 'default', regions: R.on, bg: R.skin ? SKINS[R.skin].bg : null });
 R._dev = { S, charts, MID }; // offline tools (tools/human-v2plus/regions/offline.mjs)
