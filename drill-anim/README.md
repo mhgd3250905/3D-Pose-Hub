@@ -2,6 +2,8 @@
 
 # drill-anim: looping 3D toon animations for the training drills
 
+高清母版制作入口见 [tools/hd](tools/hd/README.md)：2160² 原始帧 → 1080² / 30fps 绿幕与精确透明帧，支持 Pose-Hub 任意动作选集、绑定预览审核和两路队列。
+
 2026-10-15新增居家/肌群补充/开胯/开肩51份`h-*`候选，制作规格共138份（原87份保持）。来源、合并审核补修和验证边界见[居家动作记录](../docs/home-drill-integration-2026-10-15.md)，精确规格哈希见[data/home-pr-candidates.json](data/home-pr-candidates.json)。B风格以`--theme themes/glow-b.json`显式选择；默认theme保留已验收人体固定源。下方75/87项为历史阶段数量；App仍选原51视频，不据新增规格或PR作者QA声明全片/设备验收完成。
 
 2026-10-13当前选用素材库为`output/training-human-v2-library-footfix-20261013`，用户已认可瑞士球背伸鞋向修正版，其它93项沿用原媒体。该项使用[修订规格与原目标重放](revisions/erectors-B-footfix-20261013/README.md)及`render-footfix.mjs`，保留原met-cycle求解值/腕目标；单独spec不是完整复现配方。下述原94冻结批次与首次便携包保留历史身份，整体版本见[阶段台账](https://github.com/mhgd3250905/3D-Body/blob/66067a6/app/docs/version-ledger.md#2026-10-13-素材制作阶段收口)。
@@ -177,7 +179,7 @@ QA runs automatically after every full render. Each check and its pass condition
 | `limits` | knee and elbow bend direction, hip flexion and abduction ranges, waist bend | within joint limits (hip flexion < 135° unless the spec sets `qa.hipFlexMax`, only with a justification in the spec; hip abduction judged by `hip_abd_true_deg_range`: thigh vs the pelvis's sagittal plane; the frontal projection `hip_abd_deg_range` exceeds 90° when the thigh is near horizontal, e.g. a Cossack squat) |
 | `self_clip` | capsule-hull overlap between non-adjacent segments (spec-allowed pairs skipped) | < 8 mm |
 
-Also reported: `solver_warning_frames` (LM did not reach tolerance; check visually) and `frame_edge_touch_frames` (body touches the canvas edge). `pass` is the AND of the checks.
+Also reported: `solver_warning_frames` (frames with solver warnings, including non-convergence and limb targets outside the reachable range; inspect each warning message and the corresponding pose) and `frame_edge_touch_frames` (body touches the canvas edge). `pass` is the AND of the checks.
 
 QA is numeric only. Always look at the contact sheet and a few in-between frames as well: hand shape, mask readability and occlusion are not measured.
 

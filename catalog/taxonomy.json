@@ -1,0 +1,75 @@
+{
+  "categories": {
+    "strength": {"zh": "力量", "en": "Strength"},
+    "core": {"zh": "核心", "en": "Core"},
+    "cardio": {"zh": "有氧", "en": "Cardio"},
+    "mobility": {"zh": "灵活/活动度", "en": "Mobility"},
+    "stretch": {"zh": "拉伸", "en": "Stretch"}
+  },
+  "muscleGroups": {
+    "deltoids": {"zh": "三角肌"},
+    "rotator-cuff": {"zh": "肩袖肌群"},
+    "triceps": {"zh": "肱三头肌"},
+    "biceps": {"zh": "肱二头肌"},
+    "forearms": {"zh": "前臂 · 腕屈伸肌"},
+    "serratus": {"zh": "前锯肌"},
+    "scapular": {"zh": "斜方肌中下部 · 菱形肌"},
+    "chest": {"zh": "胸大肌"},
+    "lats": {"zh": "背阔肌"},
+    "abs": {"zh": "腹直肌（含深层腹横肌）"},
+    "obliques": {"zh": "腹斜肌"},
+    "erectors": {"zh": "竖脊肌"},
+    "hip-flexors": {"zh": "髋屈肌"},
+    "glute-max": {"zh": "臀大肌"},
+    "hip-abductors": {"zh": "臀中肌 · 髋外展"},
+    "adductors": {"zh": "内收肌群"},
+    "quadriceps": {"zh": "股四头肌"},
+    "hamstrings": {"zh": "腘绳肌"},
+    "calves": {"zh": "小腿三头肌"},
+    "tibialis": {"zh": "胫骨前肌"}
+  },
+  "equipment": {
+    "mat": {"zh": "瑜伽垫", "scenes": ["home", "gym"]},
+    "chair": {"zh": "椅子/凳子", "scenes": ["home", "office", "gym"]},
+    "wall": {"zh": "墙", "scenes": ["home", "office", "gym"]},
+    "block": {"zh": "瑜伽砖（可用厚书代替）", "scenes": ["home", "gym"]},
+    "band": {"zh": "弹力带", "scenes": ["gym"]},
+    "dumbbell": {"zh": "哑铃", "scenes": ["gym"]},
+    "slider": {"zh": "滑垫（可用毛巾代替）", "scenes": ["gym"]},
+    "kettlebell": {"zh": "壶铃", "scenes": ["gym"]},
+    "parallettes": {"zh": "平行杆（俯撑架）", "scenes": ["gym"]},
+    "pullup-bar": {"zh": "单杠", "scenes": ["gym"]},
+    "foam-roller": {"zh": "泡沫轴", "scenes": ["gym"]},
+    "swiss-ball": {"zh": "瑞士球", "scenes": ["gym"]},
+    "dip-bars": {"zh": "双杠", "scenes": ["gym"]},
+    "rings": {"zh": "吊环", "scenes": ["gym"]},
+    "cable": {"zh": "绳索器械", "scenes": ["gym"]},
+    "landmine": {"zh": "地雷杆", "scenes": ["gym"]},
+    "roman-chair": {"zh": "45° 罗马椅", "scenes": ["gym"]},
+    "ghd": {"zh": "GHD 臀腿训练器", "scenes": ["gym"]},
+    "reverse-hyper": {"zh": "反向背伸机", "scenes": ["gym"]},
+    "hip-abductor-machine": {"zh": "髋外展机", "scenes": ["gym"]},
+    "leg-extension-machine": {"zh": "腿屈伸机", "scenes": ["gym"]}
+  },
+  "positions": {
+    "standing": {"zh": "站姿", "floor": false},
+    "seated": {"zh": "坐姿", "floor": false},
+    "supine": {"zh": "仰卧", "floor": true},
+    "prone": {"zh": "俯卧/俯撑", "floor": true},
+    "quadruped": {"zh": "四足跪撑", "floor": true},
+    "kneeling": {"zh": "跪姿", "floor": true},
+    "side_lying": {"zh": "侧卧/侧撑", "floor": true},
+    "support": {"zh": "器械支撑（平行杆/双杠/吊环）", "floor": false},
+    "hanging": {"zh": "悬垂", "floor": false}
+  },
+  "scenes": {
+    "home": {"zh": "居家"},
+    "office": {"zh": "办公室"},
+    "gym": {"zh": "健身房"}
+  },
+  "cautions": ["膝", "腰", "肩", "手腕", "颈", "髋", "大腿内侧"],
+  "rules": {
+    "sceneMatch": "动作 scenes 含请求场所即可用；健身房请求额外接受 scenes 含 home 的动作（健身房有垫/凳/墙）。办公室请求不接受 floor=true 的体位。",
+    "equipmentByScene": "用户没说器械时：home 默认有 mat/chair/wall/block；office 默认有 chair/wall；gym 默认有全部器械。徒手 = equipment 为空。"
+  }
+}
