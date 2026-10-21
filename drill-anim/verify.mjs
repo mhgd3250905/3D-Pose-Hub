@@ -77,6 +77,25 @@ for (const [file, expected] of Object.entries({
   'lib/soft-highlight.mjs': 'dd15110cc2dfa1eefb75bed721a5f815317251c429692524a64108de044f6b80',
   'themes/glow-soft.json': '7f26f07e38a500c565b7dbdb51a4e0b7eedfdf42657feea569fcc026ce85d2db',
 })) assert.equal(textHash(path.join(root, file)), expected, `Soft highlight v1 source changed (make a soft-v2 instead): ${file}`);
+// training-human-v2plus prototype (2026-10-19): opt-in profile on top of the unchanged training-human-v2 sources.
+{ const v2p = JSON.parse(fs.readFileSync(path.join(root, 'models/training-human-v2plus.json'), 'utf8'));
+  assert.equal(v2p.id, 'training-human-v2plus'); assert.equal(v2p.defaultForNewDrills, false);
+  const hands = JSON.parse(fs.readFileSync(path.join(root, 'models/training-human-v2plus-hands.json'), 'utf8'));
+  assert.equal(hands.mesh, 'Coach_Body'); assert.equal(hands.bones.length, 15);
+  for (const side of ['left', 'right']) for (const w of hands.weights[side].w) assert.equal(w.reduce((a, b) => a + b, 0), 255, 'v2plus weights must sum to 255');
+  // opt-in compression outfit (spec.v2plus.outfit = 'compression'): garment displacements, hem weights, cuff planes
+  const outfit = JSON.parse(fs.readFileSync(path.join(root, 'models/training-human-v2plus-outfit.json'), 'utf8'));
+  assert.deepEqual(Object.keys(outfit.meshes).sort(), ['Coach_Training_Shorts', 'Mesh005', 'Mesh005_1']);
+  for (const m of Object.values(outfit.meshes)) { assert.equal(m.d.length, m.idx.length * 3); assert.equal(m.n.length, m.idx.length * 3); assert.ok(m.d.every(x => Math.abs(x) <= 2500), 'v2plus outfit: displacement > 25 mm'); }
+  for (const W of Object.values(outfit.weights)) for (const w of W.w) assert.equal(w.reduce((a, b) => a + b, 0), 255, 'v2plus outfit weights must sum to 255');
+  for (const side of ['left', 'right']) assert.equal(outfit.cuffPlanes[side].length, 4); }
+// training-human-v2plus 1.0.0-rc1 (PR #12 review, 2026-10-21): the manifest itself is pinned here, and it pins (LF-normalized SHA-256) the
+// loader lib/human-v2plus.mjs, both page scripts and all seven runtime model data files. Changing any of them, or the manifest, fails here.
+{ const file = 'models/training-human-v2plus.json';
+  assert.equal(textHash(path.join(root, file)), '8b7adff31e533932880a1e04c7e71017918993fbd51db58deb4d0fb4ba7b3b7c', `training-human-v2plus manifest changed (bump the version): ${file}`);
+  const v2p = JSON.parse(fs.readFileSync(path.join(root, file), 'utf8'));
+  assert.equal(Object.keys(v2p.sourceSha256).length, 10, 'training-human-v2plus must pin loader + 2 page scripts + 7 data files');
+  for (const [f, expected] of Object.entries(v2p.sourceSha256)) assert.equal(textHash(path.join(repo, f)), expected, `training-human-v2plus source changed: ${f}`); }
 const model = JSON.parse(fs.readFileSync(path.join(root, 'models/training-human-v2.json'), 'utf8'));
 assert.equal(model.id, 'training-human-v2');
 assert.equal(model.defaultForNewDrills, true);
