@@ -345,6 +345,7 @@
 
 | 候选 | 内容 | 为什么还没有 | 出处 |
 |---|---|---|---|
+| h-db-floor-fly | 哑铃地板飞鸟 | 083两次用尽，后脑仍离垫23.46mm、真实手杆穿入约3.68mm；FAILED留接手，不登记不第三次 | docs/083-v2plus-floor-fly-FAILED-diagnostic-2026-10-21.md |
 | h-db-overhead-triceps-extension | 单臂哑铃过头臂屈伸 | 082：两次实现后肘60.90→153.48度、肘点漂移1.40mm、无警告；杆仍有5个真实手顶点穿入超过2mm，最深2.15845mm，FAILED留接手不第三次 | docs/082-v2plus-overhead-triceps-FAILED-diagnostic-2026-10-21.md |
 | h-towel-isometric-curl | 毛巾脚锚等长弯举（带状道具示意） | 081：两次实现用尽；最终双肘100.43度无警告但手与6mm半径示意带末端仍2.759mm间隙，8mm内0接触顶点；FAILED交接不登记不第三次 | docs/081-v2plus-towel-isometric-curl-FAILED-diagnostic-2026-10-21.md |
 | h-short-side-plank | 屈膝短杠杆前臂侧平板（新版尝试） | 080：针对新limbs网格重评旧016；两次后膝50mm区域最低2.663mm，2mm内0点、3mm仅4点9.59×9.06mm，仍为边缘近接触；FAILED-diagnostic交接不登记不第三次 | docs/080-v2plus-short-side-plank-FAILED-diagnostic-2026-10-21.md |
