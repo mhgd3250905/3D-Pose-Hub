@@ -345,6 +345,7 @@
 
 | 候选 | 内容 | 为什么还没有 | 出处 |
 |---|---|---|---|
+| h-band-face-pull | 站姿弹力带面拉 | 079：v2plus两次实现用尽，最终姿态警报已消除但带中心线每侧每帧穿手部真实三角面2–6处；FAILED-diagnostic留接手团队，不登记不第三次 | docs/079-v2plus-band-face-pull-FAILED-diagnostic-2026-10-21.md |
 | h-kneeling-pushup | 跪姿俯卧撑 | 077：v2plus两次实现用尽；第二版髋线改善但真实膝区穿地9.26mm、全局10.39mm，FAILED-diagnostic留接手团队，不登记不第三次 | docs/077-v2plus-kneeling-pushup-FAILED-diagnostic-2026-10-21.md |
 | h-goblet-squat-r2 | 高脚杯深蹲新版托握 | 075：v2plus两次实现后掌部仍穿入哑铃轴14.29mm及上端头18.23mm；FAILED-diagnostic停止未登记，留接手团队处理，不作第三次 | docs/075-v2plus-goblet-FAILED-diagnostic-2026-10-21.md |
 | h-overhead-triceps-stretch | 站姿过头肱三头肌拉伸 | 019两轮修正后辅助左手对右上臂径向穿入指标仍−5.85mm；停止未登记，不计完成；需新接触参考再开 | docs/home-triceps-stretch-19-2026-10-18.md |
