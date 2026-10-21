@@ -10,7 +10,7 @@
 
 新建批次的人体默认读取 [current-production.json](../../models/current-production.json)：`training-human-v2plus` / `1.0.0-rc2`、`alignClavicles:false`，`outfit:'compression'`、`torso/limbs/hands:'base'`、`skin:'realistic'`，head 不启用，保留原 v2 头与原配色。白金/蓝/绿/全息只供显式选择；制作标准见 [v2plus](../../../docs/training-human-v2plus.md)。主题仍沿用批次配方（默认 `themes/glow-soft.json`），不能用主题或 skin 名替代人物配置。真实时间轴采样 **30fps**；PR2 原始 RGBA 为 **2160×2160**，恒定二维取景后为 **1080×1080 straight alpha**。覆盖包装显式保留槽位原 ID，即 `{...source,id:'<原 id>',fps:30,...}`，不会把 `-r2` 文件名误作发布 ID。
 
-当前新版工作仅在隔离分支本地整合，待用户最后同意合入 main；不能写成 PR 已在 GitHub 合并、检查已全部通过或全部动作已验收。普通旧 spec 的 profile 不变，HD 包装不回写原约 200 份规格、v2 的 13 个冻结源或旧媒体。
+新版人体与制作配置已随 PR #12 和集成修复于 2026-10-21 合入并推送 main，证据与尚未安排的全量重渲、App 接入见[台账](../../../docs/version-ledger.md)。生产默认原配色、动作肌群高亮、不显示肌群分区线。普通旧 spec 的 profile 不变，HD 包装不回写原约 200 份规格、v2 的 13 个冻结源或旧媒体。
 
 ## 单动作冒烟
 

@@ -14,7 +14,7 @@ Pose-Hub 是 FlareLab（托马斯训练助手）和 HipLab（开胯训练助手�
 drill-anim/          动作渲染工具（原 3D-Body tools/drill-anim）
   specs/<id>.js      动作规格与版本化修订；共用模块为 specs/_*.mjs
   page/ lib/         浏览器端求解/着色、Node/Python 渲染与合成、QA
-  models/            人物模型清单 training-human-v2.json（版本 2.0.1，13 个固定源文件的 sha256）
+  models/            current-production.json 生产配方；training-human-v2plus.json 新版身份；training-human-v2.json 保留旧 13 个固定源
   themes/ theme.json 外观（默认 v7；方案 B themes/glow-b.json = v0.1.0；柔和高亮 themes/glow-soft.json = HipLab 新成片）
   batches/ revisions/ qa-reports/ data/   历史批次、修订稿、QA 记录、App 选用清单
 runtime/             渲染时启动的 3D 场景（原 3D-Body 根目录的 index.html、src/、public/coach、public/anatomy 中渲染用到的部分）
@@ -56,6 +56,8 @@ python drill-anim/drill.py render h-9090-liftoff --theme themes/glow-b.json     
 
 `drill.py` 会在 `app_port` 上自动启动 Vite（根目录 `vite.config.js`，root=`runtime/`），渲染完自动关掉。整机最多两路渲染、每路 `--jobs 1`；已有同名成片默认拒绝覆盖（要覆盖需显式 `--overwrite`）。更多参数和 spec 格式见 [drill-anim/README.md](drill-anim/README.md)。
 
+2026-10-21 新版人体已随 [PR #12](https://github.com/mhgd3250905/3D-Pose-Hub/pull/12) 合入 main 并推送，采用 `training-human-v2plus` / `1.0.0-rc2`：原配色、动作肌群高亮、不显示肌群分区线，新版躯干/四肢/手与原 v2 头。新制作读取 [生产配置](drill-anim/models/current-production.json)，普通旧 spec 和历史批次仍按原配方；尚未批量重渲或更新 App。来源、检查与后续待办见 [版本对齐台账](docs/version-ledger.md)。
+
 ## 发布成片
 
 Git 只放代码、模型、规格与 SHA-256 清单。公开媒体一版一个 `pose-hub-media-v<版本>.zip`，主线维护方经用户授权上传谷歌云盘并开放链接；绿幕与透明母帧只留本地备份，不进 ZIP。当前不建 R2。
@@ -84,6 +86,6 @@ python tools/pose_hub_sync.py --lock pose-hub.lock.json --check
 
 ## AI 动作目录版本
 
-PR [#11](https://github.com/mhgd3250905/3D-Pose-Hub/pull/11) 已合入目录 **0.2.0 / formatVersion 1**，收录 142 个稳定动作 id：FlareLab 51、HipLab 46、SmartFit 93，各 App 有重叠。它与 200 个 spec 文件的开发总表、46 个动作的媒体发布包分别统计。
+当前目录为 **0.3.0 / formatVersion 1**：[PR #11](https://github.com/mhgd3250905/3D-Pose-Hub/pull/11) 的 0.2.0 修复后，[PR #13](https://github.com/mhgd3250905/3D-Pose-Hub/pull/13) 已合入 `rhythm` 字段。仍收录 142 个稳定动作 id：FlareLab 51、HipLab 46、SmartFit 93，各 App 有重叠。它与 200 个 spec 文件的开发总表、46 个动作的媒体发布包分别统计。
 
-目录 0.2.0 与媒体 ZIP 0.2.0 是独立版本。目录合入不等于消费端已升级：SmartFit 的 8 项剂量、7 项侧别同步与 SDK `holdSeconds` 支持仍待接入验收；本次没有新增目录发布 tag 或媒体 ZIP。具体提交、验证范围与待办见 [版本对齐台账](docs/version-ledger.md)。
+目录 0.3.0 与媒体 ZIP 0.2.0 是独立版本。目录合入不等于消费端已升级：SmartFit 的 8 项剂量、7 项侧别同步与 SDK `holdSeconds`、`rhythm` 执行语义仍待接入验收；本次没有新增目录发布 tag 或媒体 ZIP。具体提交、验证范围与待办见 [版本对齐台账](docs/version-ledger.md)。

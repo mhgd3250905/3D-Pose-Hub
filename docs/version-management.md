@@ -17,7 +17,9 @@
 
 ## 人体制作版本与生产默认
 
-2026-10-21 用户选择新版人体制作今后动作，默认配方由 `drill-anim/models/current-production.json` 管理：`training-human-v2plus` / `1.0.0-rc2`、`alignClavicles:false`，compression 训练服、base 躯干/四肢/手、原 v2 头（head off）、`skin:'realistic'`。白金、蓝、绿和全息仅为可选皮肤，详见 [v2plus 制作标准](training-human-v2plus.md)。当前仅在隔离分支本地整合，待用户最后同意 main，不能登记为 GitHub PR 已合并、App 已接入或全量动作已验收。
+2026-10-21 用户选择新版人体制作今后动作，默认配方由 `drill-anim/models/current-production.json` 管理：`training-human-v2plus` / `1.0.0-rc2`、`alignClavicles:false`，compression 训练服、base 躯干/四肢/手、原 v2 头（head off）、`skin:'realistic'`，保留动作肌群高亮，不显示肌群分区线。白金、蓝、绿和全息仅为可选皮肤，详见 [v2plus 制作标准](training-human-v2plus.md)。PR #12 和集成修复已合入并推送 main；具体 SHA 和证据见台账。App 接入与全量动作验收仍单独跟踪。
+
+模型固定清单及生产配方中的流程描述是该版本编制时的注记；当前合入、推送、动作验收与媒体发布状态集中维护在台账，不为改变这些状态改写已固定来源和模型身份。
 
 模型版本固定源码与数据，生产配置选择该版本的一组参数；两者均须随新批次记录。新建 HD 任务读取当前生产配置，已有批次 resume 使用其原 `source-manifest.json`，不能自动切新版。原约 200 份 spec、v2 的 13 个固定源、旧媒体、已发布 ZIP 与历史记录保持原样；重渲另建批次/修订与输出。检查证据记录实际场景和输入 SHA，不能由双场景试片推断全部动作已通过。
 

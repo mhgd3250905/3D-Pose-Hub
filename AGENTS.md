@@ -13,7 +13,7 @@
 
 - 动作规格（`drill-anim/specs/*.js`）、渲染工具（`drill-anim/`）、人物模型（`runtime/public/coach`、`runtime/public/anatomy`、`drill-anim/models/`）和模型制作工具（`tools/`）只在 Pose-Hub 修改。
 - FlareLab（3D-Body）和 HipLab 不再改动作规格、不再自己渲染交付用成片；它们只通过 `media/tools/sync.py` 取已发布版本。需要新动作或修动作，就在本仓库提 issue 或 PR。
-- 3D-Body 里仍保留 FlareLab 自己运行需要的 `src/`、`public/coach`、`public/anatomy` 副本。两边的人物模型文件改动必须同步，并在 `drill-anim/models/training-human-v2.json` 里升级模型版本（见第 4 条）。
+- 3D-Body 里仍保留 FlareLab 自己运行需要的 `src/`、`public/coach`、`public/anatomy` 副本。两边实际共用的人物模型文件改动必须同步；模型按其独立清单升级版本（旧基础源见 `training-human-v2.json`，新版扩展见 `training-human-v2plus.json`，均在 `drill-anim/models/`，见第 4 条）。
 
 ## 2. 贡献方一个动作一个分支一个 PR
 
@@ -35,6 +35,8 @@
 
 ## 4. 人物模型版本
 
+- 新制作默认以 [current-production.json](drill-anim/models/current-production.json) 为唯一配方入口；当前采用 `training-human-v2plus` / `1.0.0-rc2`，原配色、动作肌群高亮、不显示肌群分区线。制作标准见 [training-human-v2plus.md](docs/training-human-v2plus.md)，实际合入、验证与待办见 [版本对齐台账](docs/version-ledger.md)。
+- 新版扩展清单 `drill-anim/models/training-human-v2plus.json` 固定 loader、运行脚本、模型数据及生产入口；变更固定源需另建模型版本。已冻结清单的审批注记保留其编制时身份，当前 Git 合入状态以台账为准。
 - `drill-anim/models/training-human-v2.json` 固定了 13 个源文件的 sha256。改动其中任何一个（网格、头、材质、肩颈配置、渲染核心）都要建立新的模型版本和验证记录，不能静默改变 `training-human-v2`。
 - 模型清单里的路径是本仓库的路径（例如 `runtime/public/coach/flare-coach.glb`）；历史批次里记录的是 3D-Body 的旧路径，`drill-anim/lib/legacy-paths.mjs` 负责两者互转。
 

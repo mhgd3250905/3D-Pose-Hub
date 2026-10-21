@@ -13,9 +13,9 @@
 
 ## 2. 目录：哪些是现役，哪些别碰
 
-2026-10-21 人体制作决定：今后新动作及用户安排的新版本重渲采用 [v2plus 标准](training-human-v2plus.md)，唯一默认入口为 [current-production.json](../drill-anim/models/current-production.json)。目标版本 `1.0.0-rc2`，使用新版躯干/四肢/手、紧身服与原 v2 头，`skin:'realistic'` 保留原配色；白金/蓝/绿/全息显式可选。当前仅在隔离分支本地整合，待用户最后同意 main；不代表 PR 已在 GitHub 合并或全量动作已验收。
+2026-10-21 人体制作决定：今后新动作及用户安排的新版本重渲采用 [v2plus 标准](training-human-v2plus.md)，唯一默认入口为 [current-production.json](../drill-anim/models/current-production.json)。已合入 main 的版本为 `1.0.0-rc2`，使用新版躯干/四肢/手、紧身服与原 v2 头，`skin:'realistic'` 保留原配色与动作肌群高亮，不显示肌群分区线；白金/蓝/绿/全息显式可选。PR #12 和集成修复已推送，尚未全量重渲或接入 App，身份与证据见[台账](version-ledger.md)。
 
-AI 动作元数据另有 [统一目录](../catalog/README.md)：当前 **catalog 0.2.0 / formatVersion 1，142 个动作 id**。它与本页的 spec 总表、媒体 ZIP 0.2.0 分别管理；目录已合入不代表 SmartFit 或 SDK 已完成接入。版本规则和当前待办见 [版本管理](version-management.md)、[版本对齐台账](version-ledger.md)。
+AI 动作元数据另有 [统一目录](../catalog/README.md)：当前 **catalog 0.3.0 / formatVersion 1，142 个动作 id**，PR #13 的 `rhythm` 已合入。它与本页的 spec 总表、媒体 ZIP 0.2.0 分别管理；目录已合入不代表 SmartFit 或 SDK 已完成接入。版本规则和当前待办见 [版本管理](version-management.md)、[版本对齐台账](version-ledger.md)。
 
 | 路径 | 状态 | 说明 |
 |---|---|---|

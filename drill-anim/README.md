@@ -2,7 +2,7 @@
 
 # drill-anim: looping 3D toon animations for the training drills
 
-2026-10-21 新制作入口：用户已采用 [training-human-v2plus 标准](../docs/training-human-v2plus.md)，完整默认配方见 [models/current-production.json](models/current-production.json)。默认是更新后的躯干、四肢、手和 compression 训练服，原 v2 头、原配色（`skin:'realistic'`）；白金/蓝/绿/全息显式可选。当前仅在隔离分支本地整合 `1.0.0-rc2`，待用户最后同意 main；不代表 PR 已在 GitHub 合并或全量动作已验收。下方 dated 段落保留其历史阶段身份。
+2026-10-21 新制作入口：用户已采用 [training-human-v2plus 标准](../docs/training-human-v2plus.md)，完整默认配方见 [models/current-production.json](models/current-production.json)。默认是更新后的躯干、四肢、手和 compression 训练服，原 v2 头、原配色（`skin:'realistic'`）、动作肌群高亮，不显示肌群分区线；白金/蓝/绿/全息显式可选。`1.0.0-rc2` 已随 PR #12 和集成修复合入并推送 main，身份见[台账](../docs/version-ledger.md)；全量重渲与 App 接入仍待安排。下方 dated 段落保留其历史阶段身份。
 
 高清母版制作入口见 [tools/hd](tools/hd/README.md)：2160² 原始帧 → 1080² / 30fps 绿幕与精确透明帧，支持 Pose-Hub 任意动作选集、绑定预览审核和两路队列。
 

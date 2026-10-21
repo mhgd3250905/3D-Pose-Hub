@@ -1,6 +1,6 @@
 # Flare训练人物基准 training-human-v2
 
-> 2026-10-21 制作入口更新：用户已明确采用 [training-human-v2plus 新版标准](training-human-v2plus.md)，默认采用更新细节后的原始配色外观，生产配置见 [current-production.json](../drill-anim/models/current-production.json)。下文保留 2026-10-12/13 的 v2 验收、源版本和旧媒体事实；其中“后续统一采用 v2”的规则已被本次用户决定取代。普通旧 spec 和冻结批次继续按原配方复现。新版目前仅本地整合、待用户最后同意合入 main，并不表示 PR 已在 GitHub 合并或所有动作已用新版验收。
+> 2026-10-21 制作入口更新：用户已明确采用 [training-human-v2plus 新版标准](training-human-v2plus.md)，默认采用更新细节后的原配色、动作肌群高亮、不显示肌群分区线，生产配置见 [current-production.json](../drill-anim/models/current-production.json)。下文保留 2026-10-12/13 的 v2 验收、源版本和旧媒体事实；其中“后续统一采用 v2”的规则已被本次用户决定取代。普通旧 spec 和冻结批次继续按原配方复现。新版已随 PR #12 和集成修复合入并推送 main，详见[版本台账](version-ledger.md)；全量动作重渲和 App 接入尚未安排。
 
 用户于2026-10-12指定肩颈修复后的人体作为后续标杆，并于2026-10-13观看第三轮预览后明确验收肩颈优化。`training-human-v2` / `2.0.0`为已认可的统一训练人体标准：后续新动作、旧动作优化及安排重渲均采用此完整版本。此前演示成片和参数保留，按具体任务另行生成新版，不自动批量重渲。
 
