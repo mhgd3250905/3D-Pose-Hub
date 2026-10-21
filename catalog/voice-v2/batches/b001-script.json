@@ -1,0 +1,720 @@
+{
+  "schema": "pose-hub-voice-script@2",
+  "batchId": "b001",
+  "reviewStatus": "pending-user-review",
+  "languages": [
+    "zh",
+    "en"
+  ],
+  "voices": {
+    "zh": "zh-CN-XiaoxiaoNeural",
+    "en": "en-US-JennyNeural"
+  },
+  "rates": {
+    "zh": "+6%",
+    "en": "+4%"
+  },
+  "sourceStandard": "HipLab/tools/voice/build_voice.py v4.1 and docs/voice-audit-2026-10-18.md",
+  "actions": {
+    "h-squat": {
+      "name": {
+        "zh": "徒手深蹲",
+        "en": "Bodyweight squat"
+      },
+      "primaryCue": {
+        "zh": "脚跟踩稳，膝盖对准脚尖",
+        "en": "Heels down, knees track over the toes"
+      },
+      "phase.start": {
+        "zh": "慢慢下蹲",
+        "en": "Squat down slowly"
+      },
+      "phase.peak": {
+        "zh": "保持住",
+        "en": "Hold"
+      },
+      "phase.end": {
+        "zh": "站起",
+        "en": "Stand up"
+      }
+    },
+    "h-step-jack": {
+      "name": {
+        "zh": "低冲击开合跳",
+        "en": "Low-Impact Step Jack"
+      },
+      "primaryCue": {
+        "zh": "左右交替侧迈步，双臂上举，不跳起",
+        "en": "Step out to alternate sides and raise both arms without jumping"
+      },
+      "phase.start": {
+        "zh": "侧迈，手臂举起",
+        "en": "Step out and raise your arms"
+      },
+      "phase.peak": {
+        "zh": "站稳",
+        "en": "Stay steady"
+      },
+      "phase.end": {
+        "zh": "并步，手臂放下",
+        "en": "Step in and lower your arms"
+      }
+    },
+    "h-crunch": {
+      "name": {
+        "zh": "卷腹",
+        "en": "Crunch"
+      },
+      "primaryCue": {
+        "zh": "用腹部卷起上背，双手沿大腿向前伸",
+        "en": "Use your abs to curl your upper back up and reach your hands along your thighs"
+      },
+      "phase.start": {
+        "zh": "卷起上背",
+        "en": "Curl your upper back up"
+      },
+      "phase.peak": {
+        "zh": "收紧腹部",
+        "en": "Brace your abs"
+      },
+      "phase.end": {
+        "zh": "放下",
+        "en": "Lower"
+      }
+    },
+    "h-superman": {
+      "name": {
+        "zh": "俯卧超人式",
+        "en": "Prone Superman"
+      },
+      "primaryCue": {
+        "zh": "手脚轻轻抬起，颈部自然延长，不追求高度",
+        "en": "Lift your arms and legs gently, keep your neck long, and avoid forcing height"
+      },
+      "phase.start": {
+        "zh": "轻轻抬起",
+        "en": "Lift gently"
+      },
+      "phase.peak": {
+        "zh": "保持住",
+        "en": "Hold"
+      },
+      "phase.end": {
+        "zh": "放下",
+        "en": "Lower"
+      }
+    },
+    "h-good-morning": {
+      "name": {
+        "zh": "徒手早安式",
+        "en": "Bodyweight Good Morning"
+      },
+      "primaryCue": {
+        "zh": "微屈膝，臀部向后推，背部保持稳定",
+        "en": "Soften your knees, push your hips back, and keep your back steady"
+      },
+      "phase.start": {
+        "zh": "臀部后推",
+        "en": "Hips back"
+      },
+      "phase.peak": {
+        "zh": "背部保持稳定",
+        "en": "Keep your back steady"
+      },
+      "phase.end": {
+        "zh": "站起",
+        "en": "Stand up"
+      }
+    },
+    "h-russian-twist": {
+      "name": {
+        "zh": "俄罗斯转体",
+        "en": "Russian Twist (Feet Down)"
+      },
+      "primaryCue": {
+        "zh": "脚跟踩稳，缓慢转动胸廓，骨盆保持稳定",
+        "en": "Keep your heels down and turn your rib cage slowly while your pelvis stays steady"
+      },
+      "phase.start": {
+        "zh": "缓慢转体",
+        "en": "Turn slowly"
+      },
+      "phase.peak": {
+        "zh": "骨盆稳定",
+        "en": "Keep your pelvis steady"
+      },
+      "phase.end": {
+        "zh": "回到中间",
+        "en": "Return to centre"
+      }
+    },
+    "h-banana": {
+      "name": {
+        "zh": "仰卧香蕉式侧伸",
+        "en": "Supine Banana Stretch"
+      },
+      "primaryCue": {
+        "zh": "手脚移向同侧，肩和骨盆保持贴垫，拉长体侧",
+        "en": "Move your arms and legs to one side, keeping your shoulders and pelvis on the mat to lengthen your side"
+      },
+      "phase.start": {
+        "zh": "手脚同侧移动",
+        "en": "Move your arms and legs to one side"
+      },
+      "phase.peak": {
+        "zh": "保持呼吸",
+        "en": "Keep breathing"
+      },
+      "phase.end": {
+        "zh": "回到中间",
+        "en": "Return to centre"
+      }
+    },
+    "o-stand-sidebend": {
+      "name": {
+        "zh": "站姿举手侧屈",
+        "en": "Standing Overhead Side Bend"
+      },
+      "primaryCue": {
+        "zh": "右手举过头，身体慢慢向左侧弯，不前倾",
+        "en": "Reach your right arm overhead and bend slowly to the left without leaning forwards"
+      },
+      "phase.start": {
+        "zh": "慢慢向左侧弯",
+        "en": "Bend slowly to the left"
+      },
+      "phase.peak": {
+        "zh": "保持呼吸",
+        "en": "Keep breathing"
+      },
+      "phase.end": {
+        "zh": "回到直立",
+        "en": "Return upright"
+      }
+    }
+  },
+  "common": {
+    "n.0": {
+      "zh": "零",
+      "en": "zero"
+    },
+    "n.1": {
+      "zh": "一",
+      "en": "one"
+    },
+    "n.2": {
+      "zh": "二",
+      "en": "two"
+    },
+    "n.3": {
+      "zh": "三",
+      "en": "three"
+    },
+    "n.4": {
+      "zh": "四",
+      "en": "four"
+    },
+    "n.5": {
+      "zh": "五",
+      "en": "five"
+    },
+    "n.6": {
+      "zh": "六",
+      "en": "six"
+    },
+    "n.7": {
+      "zh": "七",
+      "en": "seven"
+    },
+    "n.8": {
+      "zh": "八",
+      "en": "eight"
+    },
+    "n.9": {
+      "zh": "九",
+      "en": "nine"
+    },
+    "n.10": {
+      "zh": "十",
+      "en": "ten"
+    },
+    "p.ready": {
+      "zh": "准备",
+      "en": "Get ready"
+    },
+    "p.go": {
+      "zh": "开始",
+      "en": "Go"
+    },
+    "p.last_rep": {
+      "zh": "最后一次",
+      "en": "Last one"
+    },
+    "p.release": {
+      "zh": "慢慢还原",
+      "en": "Slowly come out of it"
+    },
+    "p.again": {
+      "zh": "再来一组",
+      "en": "One more set"
+    },
+    "p.right_first": {
+      "zh": "先做右边",
+      "en": "Right side first"
+    },
+    "p.switch_left": {
+      "zh": "换左边",
+      "en": "Switch to the left side"
+    },
+    "p.switch_right": {
+      "zh": "换右边",
+      "en": "Switch to the right side"
+    },
+    "p.rest": {
+      "zh": "休息",
+      "en": "Rest for"
+    },
+    "p.nice": {
+      "zh": "很好",
+      "en": "Nice work"
+    },
+    "sec.5": {
+      "zh": "5 秒",
+      "en": "5 seconds"
+    },
+    "sec.10": {
+      "zh": "10 秒",
+      "en": "10 seconds"
+    },
+    "sec.15": {
+      "zh": "15 秒",
+      "en": "15 seconds"
+    },
+    "sec.30": {
+      "zh": "30 秒",
+      "en": "30 seconds"
+    },
+    "sec.60": {
+      "zh": "1 分钟",
+      "en": "1 minute"
+    }
+  },
+  "sharedVocabularySource": {
+    "root": "repo",
+    "path": "catalog/voice-v2/manifest.json",
+    "sha256": "ba775ace59603e534c3dc979fc8a8cc277836427efcd6b10f2e88e16f696336c",
+    "bytes": 195389
+  },
+  "sharedVocabularyPolicy": "Reuse the existing audited vocabulary bytes; no skin copies and no change to the pilot manifest.",
+  "phaseBindings": {
+    "h-squat": {
+      "sourceBatch": "catalog/v2/batches/b001.json",
+      "sourceBatchLfSha256": "f80827b6a5921c5e9c779a0b29e84d6d92fe654ee3b84238e88d3b04bbc78aa7",
+      "side": {
+        "mode": "bilateral",
+        "firstWorkingSide": "both",
+        "switchTimesSeconds": []
+      },
+      "keyMoments": {
+        "start": 0,
+        "peak": 2.1,
+        "end": 8
+      },
+      "countingSemantics": "One complete down-and-up counts as one rep; 8 seconds contains two bilateral reps.",
+      "review": "editorial-pending",
+      "phase.start": {
+        "event": "squatDown",
+        "cueAtSeconds": 0.4,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. This cue is guidance, not an audio track baked into the loop."
+      },
+      "phase.peak": {
+        "event": "bottomHold",
+        "cueAtSeconds": 2.1,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. This cue is guidance, not an audio track baked into the loop."
+      },
+      "phase.end": {
+        "event": "standUp",
+        "cueAtSeconds": 2.3,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. This cue is guidance, not an audio track baked into the loop."
+      }
+    },
+    "h-step-jack": {
+      "sourceBatch": "catalog/v2/batches/b001.json",
+      "sourceBatchLfSha256": "f80827b6a5921c5e9c779a0b29e84d6d92fe654ee3b84238e88d3b04bbc78aa7",
+      "side": {
+        "mode": "alternating",
+        "firstWorkingSide": "right-stepping-foot",
+        "switchTimesSeconds": [
+          4
+        ],
+        "note": "Both arms move together; the first stepping leg is right, then left."
+      },
+      "keyMoments": {
+        "start": 0,
+        "peak": 2.0,
+        "end": 8,
+        "switchPoint": {
+          "kind": "in-clip",
+          "seconds": 4,
+          "semantics": "Timed cardio. One step out-and-in counts as one step rep; 8 seconds shows right then left (two alternating steps). Keep the existing 40-second timed dose. All encoded side changes: 4 seconds."
+        }
+      },
+      "countingSemantics": "Timed cardio. One step out-and-in counts as one step rep; 8 seconds shows right then left (two alternating steps). Keep the existing 40-second timed dose.",
+      "review": "editorial-pending",
+      "phase.start": {
+        "event": "stepOutAndArmsUp",
+        "cueAtSeconds": 0.3,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. This cue is guidance, not an audio track baked into the loop."
+      },
+      "phase.peak": {
+        "event": "wideHold",
+        "cueAtSeconds": 2.0,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. This cue is guidance, not an audio track baked into the loop."
+      },
+      "phase.end": {
+        "event": "stepInAndArmsDown",
+        "cueAtSeconds": 2.2,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. This cue is guidance, not an audio track baked into the loop."
+      }
+    },
+    "h-crunch": {
+      "sourceBatch": "catalog/v2/batches/b001.json",
+      "sourceBatchLfSha256": "f80827b6a5921c5e9c779a0b29e84d6d92fe654ee3b84238e88d3b04bbc78aa7",
+      "side": {
+        "mode": "bilateral",
+        "firstWorkingSide": "both",
+        "switchTimesSeconds": []
+      },
+      "keyMoments": {
+        "start": 0,
+        "peak": 1.9,
+        "end": 8
+      },
+      "countingSemantics": "One curl and controlled lowering counts as one rep; 8 seconds contains two reps.",
+      "review": "editorial-pending",
+      "phase.start": {
+        "event": "curlUp",
+        "cueAtSeconds": 0.4,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. This cue is guidance, not an audio track baked into the loop."
+      },
+      "phase.peak": {
+        "event": "squeeze",
+        "cueAtSeconds": 1.9,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. This cue is guidance, not an audio track baked into the loop."
+      },
+      "phase.end": {
+        "event": "rollDown",
+        "cueAtSeconds": 2.2,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. This cue is guidance, not an audio track baked into the loop."
+      }
+    },
+    "h-superman": {
+      "sourceBatch": "catalog/v2/batches/b001.json",
+      "sourceBatchLfSha256": "f80827b6a5921c5e9c779a0b29e84d6d92fe654ee3b84238e88d3b04bbc78aa7",
+      "side": {
+        "mode": "bilateral",
+        "firstWorkingSide": "both",
+        "switchTimesSeconds": []
+      },
+      "keyMoments": {
+        "start": 0,
+        "peak": 2.2,
+        "end": 8
+      },
+      "countingSemantics": "One simultaneous arm/chest/leg lift and lowering counts as one rep; 8 seconds contains two reps.",
+      "review": "editorial-pending",
+      "phase.start": {
+        "event": "lift",
+        "cueAtSeconds": 0.2,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. This cue is guidance, not an audio track baked into the loop."
+      },
+      "phase.peak": {
+        "event": "hold",
+        "cueAtSeconds": 2.2,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. This cue is guidance, not an audio track baked into the loop."
+      },
+      "phase.end": {
+        "event": "lower",
+        "cueAtSeconds": 2.9,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. This cue is guidance, not an audio track baked into the loop."
+      }
+    },
+    "h-good-morning": {
+      "sourceBatch": "catalog/v2/batches/b001.json",
+      "sourceBatchLfSha256": "f80827b6a5921c5e9c779a0b29e84d6d92fe654ee3b84238e88d3b04bbc78aa7",
+      "side": {
+        "mode": "bilateral",
+        "firstWorkingSide": "both",
+        "switchTimesSeconds": []
+      },
+      "keyMoments": {
+        "start": 0,
+        "peak": 2.3,
+        "end": 8
+      },
+      "countingSemantics": "One hip hinge and return to standing counts as one rep; 8 seconds contains two reps.",
+      "review": "editorial-pending",
+      "phase.start": {
+        "event": "hingeDown",
+        "cueAtSeconds": 0.3,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. This cue is guidance, not an audio track baked into the loop."
+      },
+      "phase.peak": {
+        "event": "bottomPause",
+        "cueAtSeconds": 2.3,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. This cue is guidance, not an audio track baked into the loop."
+      },
+      "phase.end": {
+        "event": "standUp",
+        "cueAtSeconds": 2.5,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. This cue is guidance, not an audio track baked into the loop."
+      }
+    },
+    "h-russian-twist": {
+      "sourceBatch": "catalog/v2/batches/b001.json",
+      "sourceBatchLfSha256": "f80827b6a5921c5e9c779a0b29e84d6d92fe654ee3b84238e88d3b04bbc78aa7",
+      "side": {
+        "mode": "alternating",
+        "firstWorkingSide": "right-trunk-turn",
+        "switchTimesSeconds": [
+          2,
+          4,
+          6
+        ],
+        "note": "Source highlight remains both sides; direction alternates right/left/right/left."
+      },
+      "keyMoments": {
+        "start": 0,
+        "peak": 1.0,
+        "end": 8,
+        "switchPoint": {
+          "kind": "in-clip",
+          "seconds": 2,
+          "semantics": "One turn to a side and return to centre counts as one rep; 8 seconds contains four alternating reps (right/left/right/left), equivalent to two right-plus-left cycles. Proposed reading of the existing 16-rep dose: 16 total turns, eight per side; editorial confirmation remains pending. All encoded side changes: 2, 4, 6 seconds."
+        }
+      },
+      "countingSemantics": "One turn to a side and return to centre counts as one rep; 8 seconds contains four alternating reps (right/left/right/left), equivalent to two right-plus-left cycles. Proposed reading of the existing 16-rep dose: 16 total turns, eight per side; editorial confirmation remains pending.",
+      "review": "editorial-pending",
+      "phase.start": {
+        "event": "turnRight",
+        "cueAtSeconds": 0,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. This cue is guidance, not an audio track baked into the loop.",
+        "additionalCueAtSeconds": [
+          2
+        ],
+        "additionalEvent": "turnLeft"
+      },
+      "phase.peak": {
+        "event": "rightPause",
+        "cueAtSeconds": 1.0,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. This cue is guidance, not an audio track baked into the loop.",
+        "additionalCueAtSeconds": [
+          3
+        ],
+        "additionalEvent": "leftPause"
+      },
+      "phase.end": {
+        "event": "returnCentre",
+        "cueAtSeconds": 1.2,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. This cue is guidance, not an audio track baked into the loop.",
+        "additionalCueAtSeconds": [
+          3.2
+        ]
+      }
+    },
+    "h-banana": {
+      "sourceBatch": "catalog/v2/batches/b001.json",
+      "sourceBatchLfSha256": "f80827b6a5921c5e9c779a0b29e84d6d92fe654ee3b84238e88d3b04bbc78aa7",
+      "side": {
+        "mode": "alternating-stretch",
+        "firstWorkingSide": "left-stretched-side",
+        "switchTimesSeconds": [
+          4
+        ],
+        "note": "Body curves right first, lengthening left obliques/lats; then curves left to stretch right. Source highlight.side=both is retained."
+      },
+      "keyMoments": {
+        "start": 0,
+        "peak": 2.4,
+        "end": 8,
+        "switchPoint": {
+          "kind": "in-clip",
+          "seconds": 4,
+          "semantics": "Timed alternating stretch. The rightward body curve stretches the left side first; one 8-second cycle demonstrates both sides. Existing 30 seconds is total timed movement, not a 30-second static hold per side. No automatic dose change. All encoded side changes: 4 seconds."
+        }
+      },
+      "countingSemantics": "Timed alternating stretch. The rightward body curve stretches the left side first; one 8-second cycle demonstrates both sides. Existing 30 seconds is total timed movement, not a 30-second static hold per side. No automatic dose change.",
+      "review": "editorial-pending",
+      "phase.start": {
+        "event": "curveRightStretchLeft",
+        "cueAtSeconds": 0.3,
+        "repeatOffsetsSeconds": [
+          0
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. This cue is guidance, not an audio track baked into the loop.",
+        "additionalCueAtSeconds": [
+          4.3
+        ],
+        "additionalEvent": "curveLeftStretchRight"
+      },
+      "phase.peak": {
+        "event": "leftSideStretchHold",
+        "cueAtSeconds": 2.4,
+        "repeatOffsetsSeconds": [
+          0
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. This cue is guidance, not an audio track baked into the loop.",
+        "additionalCueAtSeconds": [
+          6.4
+        ],
+        "additionalEvent": "rightSideStretchHold"
+      },
+      "phase.end": {
+        "event": "returnCentre",
+        "cueAtSeconds": 3,
+        "repeatOffsetsSeconds": [
+          0
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. This cue is guidance, not an audio track baked into the loop.",
+        "additionalCueAtSeconds": [
+          7
+        ]
+      }
+    },
+    "o-stand-sidebend": {
+      "sourceBatch": "catalog/v2/batches/b001.json",
+      "sourceBatchLfSha256": "f80827b6a5921c5e9c779a0b29e84d6d92fe654ee3b84238e88d3b04bbc78aa7",
+      "side": {
+        "mode": "unilateral",
+        "firstWorkingSide": "right-stretched-side",
+        "switchTimesSeconds": [],
+        "externalSideChangeAfterSeconds": 8,
+        "note": "This media only bends left to stretch right. The event at 8 seconds is an optional external side-change cue, not a switch encoded in the clip and not a mirrored asset."
+      },
+      "keyMoments": {
+        "start": 0,
+        "peak": 3.8,
+        "end": 8,
+        "switchPoint": {
+          "kind": "loop-boundary",
+          "seconds": 8,
+          "semantics": "This media only bends left to stretch right. The event at 8 seconds is an optional external side-change cue, not a switch encoded in the clip and not a mirrored asset. Complete the prescribed per-side time before changing sides; the boundary is available, not mandatory every loop."
+        }
+      },
+      "countingSemantics": "Timed unilateral stretch of the right side while bending left. The 8-second source demonstrates one slow bend-and-return with an instantaneous peak, not an 8-second hold. Existing 30 seconds is per-side timed work; opposite-side media is not generated.",
+      "review": "editorial-pending",
+      "phase.start": {
+        "event": "bendLeftTo85Percent",
+        "cueAtSeconds": 0.6,
+        "repeatOffsetsSeconds": [
+          0
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. This cue is guidance, not an audio track baked into the loop."
+      },
+      "phase.peak": {
+        "event": "instantaneousPeak",
+        "cueAtSeconds": 3.8,
+        "repeatOffsetsSeconds": [
+          0
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. This cue is guidance, not an audio track baked into the loop.",
+        "note": "Instantaneous maximum at 3.8 seconds, no plateau. Keep-breathing wording is not a hold command."
+      },
+      "phase.end": {
+        "event": "returnUpright",
+        "cueAtSeconds": 5.6,
+        "repeatOffsetsSeconds": [
+          0
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. This cue is guidance, not an audio track baked into the loop."
+      }
+    }
+  },
+  "playback": {
+    "countdownKeys": [
+      "n.5",
+      "n.4",
+      "n.3",
+      "n.2",
+      "n.1"
+    ],
+    "restGrammar": [
+      "p.rest",
+      "sec.{seconds}"
+    ],
+    "phaseScheduling": "Start cues before their phase by measured clip duration; never overlap or truncate a previous line. Name and point play before the loop. Short phases may omit a cue.",
+    "manualListening": "pending"
+  }
+}

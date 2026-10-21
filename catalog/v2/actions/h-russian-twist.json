@@ -1,0 +1,322 @@
+{
+  "format": "action-package@2",
+  "id": "h-russian-twist",
+  "version": "2.0.0-draft.b001.1",
+  "status": "draft",
+  "definition": {
+    "idMappings": [],
+    "name": {
+      "zh": "俄罗斯转体",
+      "en": "Russian Twist (Feet Down)"
+    },
+    "purpose": {
+      "zh": "练腰两侧",
+      "en": "Train controlled alternating trunk rotation with the feet supported."
+    },
+    "tags": {
+      "category": "core",
+      "activeMuscles": [
+        "obliques"
+      ],
+      "synergistMuscles": [
+        "abs",
+        "hip-flexors"
+      ],
+      "equipment": [
+        "mat"
+      ],
+      "position": "seated",
+      "scenes": [
+        "home"
+      ],
+      "difficulty": 2,
+      "trainingType": "control"
+    },
+    "unilateral": true,
+    "startingSide": "right",
+    "cues": [
+      {
+        "id": "cue1",
+        "text": {
+          "zh": "脚跟踩稳，缓慢转动胸廓，骨盆保持稳定",
+          "en": "Keep your heels down and turn your rib cage slowly while your pelvis stays steady"
+        },
+        "primary": true
+      },
+      {
+        "id": "cue2",
+        "text": {
+          "zh": "坐姿轻微后倾，背部保持自然延长",
+          "en": "Sit with a slight backward lean and keep the spine long."
+        },
+        "primary": false
+      },
+      {
+        "id": "cue3",
+        "text": {
+          "zh": "向右转后先回中，再向左转，膝盖保持稳定",
+          "en": "Turn right and return to the centre before turning left, keeping the knees steady."
+        },
+        "primary": false
+      },
+      {
+        "id": "cue4",
+        "text": {
+          "zh": "双手随胸廓移动，不只甩动手臂",
+          "en": "Let the hands travel with the rib cage rather than swinging only the arms."
+        },
+        "primary": false
+      }
+    ],
+    "commonErrors": [
+      {
+        "zh": "脚离地、骨盆跟着摆动或腰背塌下",
+        "en": "Lifting the feet, rocking the pelvis or collapsing the back."
+      },
+      {
+        "zh": "快速甩臂代替可控躯干转动",
+        "en": "Throwing the arms instead of controlling trunk rotation."
+      }
+    ],
+    "cautions": {
+      "items": [
+        {
+          "zh": "腰背：在舒适的小幅度内转动，不追求扭到极限。",
+          "en": "Lower back: rotate through a comfortable controlled range without forcing an end position."
+        },
+        {
+          "zh": "髋与足跟：足跟持续承托，保持坐姿平衡，不用腿部甩动补偿。",
+          "en": "Hips and heels: keep the heels supported and stay balanced without swinging the legs."
+        }
+      ],
+      "review": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidence": []
+      }
+    },
+    "contraindications": {
+      "items": [
+        {
+          "zh": "本动作引发疼痛时停止，不通过增加幅度或负重继续；先向医生或物理治疗师确认。",
+          "en": "Stop if this exercise causes pain; do not add range or load before seeking clinical advice."
+        },
+        {
+          "zh": "已有医嘱限制坐姿后倾或脊柱旋转时，先取得许可。",
+          "en": "Obtain clearance first if backward-leaning sitting or spinal rotation has been restricted."
+        }
+      ],
+      "review": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidence": []
+      }
+    },
+    "alternatives": [
+      "h-band-pallof"
+    ],
+    "regressions": [],
+    "progressions": [],
+    "defaultDose": {
+      "mode": "reps",
+      "sets": 3,
+      "reps": 16,
+      "restSeconds": 30
+    },
+    "doseRange": {
+      "sets": [
+        1,
+        4
+      ],
+      "reps": [
+        8,
+        24
+      ],
+      "restSeconds": [
+        0,
+        60
+      ]
+    },
+    "rhythm": {
+      "kind": "rep_alternate",
+      "leadSeconds": 0,
+      "source": "b001-source-timeline",
+      "phases": [
+        {
+          "id": "turnRight",
+          "seconds": 0.8
+        },
+        {
+          "id": "rightPause",
+          "seconds": 0.4
+        },
+        {
+          "id": "returnCentre1",
+          "seconds": 0.8
+        },
+        {
+          "id": "turnLeft",
+          "seconds": 0.8
+        },
+        {
+          "id": "leftPause",
+          "seconds": 0.4
+        },
+        {
+          "id": "returnCentre2",
+          "seconds": 0.8
+        }
+      ]
+    },
+    "countingSemantics": "One turn to a side and return to centre counts as one rep; 8 seconds contains four alternating reps (right/left/right/left), equivalent to two right-plus-left cycles. Proposed reading of the existing 16-rep dose: 16 total turns, eight per side; editorial confirmation remains pending.",
+    "apps": [
+      "smartfit"
+    ],
+    "editorialReview": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "evidence": []
+    },
+    "editorialNotes": [
+      "root已裁决：默认16保持数字不变，按总16次单侧转动归中、每侧8次；8秒源为右/左/右/左4次，而非仅两次。编辑审核仍pending。",
+      "rhythm描述4秒左右完整pair-cycle，其中含2次计数；不要把每个4秒cycle只算1次或把旧repSeconds=3继续当真实节奏。",
+      "旧catalog明确替代h-band-pallof；它是抗旋转目标而非相同动态转体。独立降阶/负重进阶ID未有，减小后倾/转幅属于同ID调整。",
+      "相位来自catalog/v2/batches/b001.json真实秒区间；剂量数字与范围保持旧catalog，rhythm不附旧reps来覆盖默认剂量。",
+      "双语注意、通用禁用筛查、协同肌群与关系均已有具体草稿，pending表示未审而非缺数据；协同包含姿势稳定或次要拉伸角色，不作为肌电激活或额外高亮处方。",
+      "关系目标为本仓库真实ID候选，但未必已有同模型可发布v2包；不得自动回退弃用模型素材。空关系数组的缺口见逐动作说明。",
+      "医学通用筛查与证据边界沿用catalog/v2/definition-evidence.md所列AAOS/NHS一手资料；不编造疾病特异绝对禁忌。所有编辑与医学审核保持pending。"
+    ],
+    "movementSides": "Source highlight remains both sides; direction alternates right/left/right/left."
+  },
+  "source": {
+    "model": {
+      "id": "training-human-v2plus",
+      "version": "1.0.0-rc2",
+      "manifest": {
+        "root": "repo",
+        "path": "drill-anim/models/training-human-v2plus.json",
+        "sha256": "ec2bc815ded157dbc7673e283ed9b6bb1baa710a39ce3a02f88453e8d7fb0a1d",
+        "bytes": 6494,
+        "normalization": "lf"
+      }
+    },
+    "spec": {
+      "root": "repo",
+      "path": "drill-anim/specs/h-russian-twist-r2.js",
+      "sha256": "3d9f0c4421a05e5db4fb22f40548b9181aebac931569ba4d41ad83138a213d87",
+      "bytes": 482,
+      "normalization": "lf"
+    },
+    "dependencies": [
+      {
+        "root": "repo",
+        "path": "drill-anim/lib/home-anim.mjs",
+        "sha256": "1798c9e55c28b32391b7ef32aa358427b4743ee1959f86ec488a95fe88a05557",
+        "bytes": 3691,
+        "normalization": "lf"
+      },
+      {
+        "root": "repo",
+        "path": "drill-anim/lib/ss-geo.mjs",
+        "sha256": "45ca774079e3a85ecc4f924a3220d4baa721f0435e16f6e6e21ffa19e17e8603",
+        "bytes": 3700,
+        "normalization": "lf"
+      },
+      {
+        "root": "repo",
+        "path": "drill-anim/specs/h-russian-twist.js",
+        "sha256": "47a12e7d67ba245544346126a2e045f2c749dbe06f98fbe0caadb3f3def366d1",
+        "bytes": 3161,
+        "normalization": "lf"
+      }
+    ],
+    "keyMoments": {
+      "start": 0,
+      "peak": 1.0,
+      "end": 8,
+      "switchPoint": {
+        "kind": "in-clip",
+        "seconds": 2,
+        "semantics": "One turn to a side and return to centre counts as one rep; 8 seconds contains four alternating reps (right/left/right/left), equivalent to two right-plus-left cycles. Proposed reading of the existing 16-rep dose: 16 total turns, eight per side; editorial confirmation remains pending. All encoded side changes: 2, 4, 6 seconds."
+      }
+    },
+    "highlightMuscles": [
+      "obliques"
+    ],
+    "qa": {
+      "intersections": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidence": [],
+        "framesReviewed": []
+      },
+      "handsFeet": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidence": [],
+        "framesReviewed": []
+      },
+      "propFlicker": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidence": [],
+        "framesReviewed": []
+      },
+      "loopSeam": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidence": [],
+        "framesReviewed": []
+      }
+    },
+    "demonstratedSide": "both"
+  },
+  "masters": {
+    "requiredSkins": [
+      "realistic",
+      "tech-white",
+      "neon-night",
+      "neon-night-b",
+      "hologram"
+    ],
+    "skins": {},
+    "loopReview": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "evidence": []
+    }
+  },
+  "derivatives": {
+    "method": "composite-from-masters",
+    "mirrored": false,
+    "variants": [],
+    "transparentCovers": {}
+  },
+  "voice": {
+    "actionId": "h-russian-twist",
+    "manifest": {
+      "root": "repo",
+      "path": "catalog/voice-v2/batches/b001-manifest.json",
+      "sha256": "31d97faf1000eceafa65bf290e66a9265d82d86425ab8ce3ed4f67f03ee401c0",
+      "bytes": 270954
+    }
+  },
+  "validation": {
+    "modelVersion": "1.0.0-rc2",
+    "mirrorGenerated": false,
+    "review": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "evidence": []
+    }
+  }
+}

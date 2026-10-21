@@ -1,0 +1,572 @@
+{
+  "schema": "pose-hub-voice-script@2",
+  "batchId": "b002",
+  "reviewStatus": "pending-user-review",
+  "languages": [
+    "zh",
+    "en"
+  ],
+  "voices": {
+    "zh": "zh-CN-XiaoxiaoNeural",
+    "en": "en-US-JennyNeural"
+  },
+  "rates": {
+    "zh": "+6%",
+    "en": "+4%"
+  },
+  "sourceStandard": "HipLab/tools/voice/build_voice.py v4.1 and docs/voice-audit-2026-10-18.md",
+  "actions": {
+    "h-sumo-pry": {
+      "name": {
+        "zh": "相扑深蹲肘推膝停留",
+        "en": "Sumo squat elbow pry"
+      },
+      "primaryCue": {
+        "zh": "蹲低，手肘把膝盖轻轻向外推",
+        "en": "Sit low and gently press the knees out with your elbows"
+      },
+      "phase.start": {
+        "zh": "慢慢下蹲",
+        "en": "Squat down slowly"
+      },
+      "phase.peak": {
+        "zh": "轻轻向外推膝盖",
+        "en": "Gently press the knees out"
+      },
+      "phase.end": {
+        "zh": "慢慢起身",
+        "en": "Rise slowly"
+      }
+    },
+    "n-pelvis-circle": {
+      "name": {
+        "zh": "站姿骨盆画圈",
+        "en": "Standing pelvic circles"
+      },
+      "primaryCue": {
+        "zh": "双脚不动，骨盆慢慢画圈",
+        "en": "Feet still, draw slow circles with your pelvis"
+      },
+      "phase.start": {
+        "zh": "骨盆慢慢画圈",
+        "en": "Circle your pelvis slowly"
+      },
+      "phase.peak": {
+        "zh": "双脚保持不动",
+        "en": "Keep your feet still"
+      },
+      "phase.end": {
+        "zh": "慢慢回到中间",
+        "en": "Return slowly to centre"
+      }
+    },
+    "n-squat-shift": {
+      "name": {
+        "zh": "低位蹲姿左右移重心",
+        "en": "Deep squat side shift"
+      },
+      "primaryCue": {
+        "zh": "低蹲，重心慢慢左右移",
+        "en": "Stay low and shift your weight side to side"
+      },
+      "phase.start": {
+        "zh": "慢慢移向一侧",
+        "en": "Shift slowly to one side"
+      },
+      "phase.peak": {
+        "zh": "脚跟踩稳",
+        "en": "Keep your heels down"
+      },
+      "phase.end": {
+        "zh": "回到中间",
+        "en": "Return to centre"
+      }
+    },
+    "adductors-A": {
+      "name": {
+        "zh": "哥萨克蹲",
+        "en": "Cossack Squat"
+      },
+      "primaryCue": {
+        "zh": "宽站蹲向一侧，另一腿伸直，脚尖朝上",
+        "en": "Squat towards one side from a wide stance, keeping the other leg straight with its toes up"
+      },
+      "phase.start": {
+        "zh": "向一侧慢慢下蹲",
+        "en": "Squat slowly to one side"
+      },
+      "phase.peak": {
+        "zh": "脚跟踩稳",
+        "en": "Keep your heel planted"
+      },
+      "phase.end": {
+        "zh": "回到中间站起",
+        "en": "Stand back up to centre"
+      }
+    },
+    "hamstrings-A": {
+      "name": {
+        "zh": "徒手单腿罗马尼亚硬拉",
+        "en": "Bodyweight Single-Leg RDL"
+      },
+      "primaryCue": {
+        "zh": "支撑腿膝微屈，以髋为轴前倾，骨盆保持端平",
+        "en": "Soften the supporting knee, hinge forwards at the hip, and keep your pelvis level"
+      },
+      "phase.start": {
+        "zh": "以髋为轴前倾",
+        "en": "Hinge forwards at the hip"
+      },
+      "phase.peak": {
+        "zh": "骨盆保持端平",
+        "en": "Keep your pelvis level"
+      },
+      "phase.end": {
+        "zh": "慢慢回到站立",
+        "en": "Return slowly to standing"
+      }
+    },
+    "h-side-leg-raise": {
+      "name": {
+        "zh": "站姿侧抬腿",
+        "en": "Standing Side Leg Raise"
+      },
+      "primaryCue": {
+        "zh": "身体站直，右腿向侧面抬起再慢慢放下，脚尖朝前",
+        "en": "Stand tall, raise your right leg to the side, and lower it slowly with your toes facing forwards"
+      },
+      "phase.start": {
+        "zh": "右腿向侧面抬起",
+        "en": "Raise your right leg to the side"
+      },
+      "phase.peak": {
+        "zh": "身体保持直立",
+        "en": "Keep your body upright"
+      },
+      "phase.end": {
+        "zh": "慢慢放下",
+        "en": "Lower slowly"
+      }
+    }
+  },
+  "common": {
+    "n.0": {
+      "zh": "零",
+      "en": "zero"
+    },
+    "n.1": {
+      "zh": "一",
+      "en": "one"
+    },
+    "n.2": {
+      "zh": "二",
+      "en": "two"
+    },
+    "n.3": {
+      "zh": "三",
+      "en": "three"
+    },
+    "n.4": {
+      "zh": "四",
+      "en": "four"
+    },
+    "n.5": {
+      "zh": "五",
+      "en": "five"
+    },
+    "n.6": {
+      "zh": "六",
+      "en": "six"
+    },
+    "n.7": {
+      "zh": "七",
+      "en": "seven"
+    },
+    "n.8": {
+      "zh": "八",
+      "en": "eight"
+    },
+    "n.9": {
+      "zh": "九",
+      "en": "nine"
+    },
+    "n.10": {
+      "zh": "十",
+      "en": "ten"
+    },
+    "p.ready": {
+      "zh": "准备",
+      "en": "Get ready"
+    },
+    "p.go": {
+      "zh": "开始",
+      "en": "Go"
+    },
+    "p.last_rep": {
+      "zh": "最后一次",
+      "en": "Last one"
+    },
+    "p.release": {
+      "zh": "慢慢还原",
+      "en": "Slowly come out of it"
+    },
+    "p.again": {
+      "zh": "再来一组",
+      "en": "One more set"
+    },
+    "p.right_first": {
+      "zh": "先做右边",
+      "en": "Right side first"
+    },
+    "p.switch_left": {
+      "zh": "换左边",
+      "en": "Switch to the left side"
+    },
+    "p.switch_right": {
+      "zh": "换右边",
+      "en": "Switch to the right side"
+    },
+    "p.rest": {
+      "zh": "休息",
+      "en": "Rest for"
+    },
+    "p.nice": {
+      "zh": "很好",
+      "en": "Nice work"
+    },
+    "sec.5": {
+      "zh": "5 秒",
+      "en": "5 seconds"
+    },
+    "sec.10": {
+      "zh": "10 秒",
+      "en": "10 seconds"
+    },
+    "sec.15": {
+      "zh": "15 秒",
+      "en": "15 seconds"
+    },
+    "sec.30": {
+      "zh": "30 秒",
+      "en": "30 seconds"
+    },
+    "sec.60": {
+      "zh": "1 分钟",
+      "en": "1 minute"
+    }
+  },
+  "sharedVocabularySource": {
+    "root": "repo",
+    "path": "catalog/voice-v2/manifest.json",
+    "sha256": "ba775ace59603e534c3dc979fc8a8cc277836427efcd6b10f2e88e16f696336c",
+    "bytes": 195389
+  },
+  "sharedVocabularyPolicy": "Reuse the existing audited vocabulary bytes; no skin copies and no change to the pilot manifest.",
+  "phaseBindings": {
+    "h-sumo-pry": {
+      "sourceBatch": "catalog/v2/batches/b002.json",
+      "sourceBatchLfSha256": "4bd43de7eef68da7141c283aa98718f791a8518af2f92fa71d57f52c98f969c0",
+      "side": {
+        "mode": "bilateral",
+        "firstWorkingSide": "both",
+        "switchTimesSeconds": []
+      },
+      "keyMoments": {
+        "start": 0,
+        "peak": 2.6,
+        "end": 8
+      },
+      "countingSemantics": "One descent, gentle bottom pry and return to the half squat counts as one rep; 8 seconds contains two bilateral demonstration reps. Preserve the existing 3 reps with 10 seconds held per rep, but the actual source plateau is only 1.4 seconds per rep. The clip does not implement a 10-second hold; prescription/playback reconciliation requires editorial approval.",
+      "review": "editorial-pending",
+      "phase.start": {
+        "event": "squatDown",
+        "cueAtSeconds": 0.2,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. Guidance is not an audio track baked into the loop."
+      },
+      "phase.peak": {
+        "event": "bottomPry",
+        "cueAtSeconds": 2.6,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. Guidance is not an audio track baked into the loop."
+      },
+      "phase.end": {
+        "event": "riseToHalfSquat",
+        "cueAtSeconds": 3.2,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. Guidance is not an audio track baked into the loop."
+      }
+    },
+    "n-pelvis-circle": {
+      "sourceBatch": "catalog/v2/batches/b002.json",
+      "sourceBatchLfSha256": "4bd43de7eef68da7141c283aa98718f791a8518af2f92fa71d57f52c98f969c0",
+      "side": {
+        "mode": "bilateral",
+        "firstWorkingSide": "both",
+        "switchTimesSeconds": [],
+        "note": "Pelvis first travels forward then towards body left; direction reverses near 4 seconds. Both feet support the body throughout; no working-leg switch."
+      },
+      "keyMoments": {
+        "start": 0,
+        "peak": 1.1,
+        "end": 8
+      },
+      "countingSemantics": "Preserve the legacy rep_cycle interpretation: one complete circle in each direction is one 8-second rep cycle. Default reps=4 means four two-direction cycles (four circles per direction), not four single circles or four per-side leg reps. Direction reverses at 4 seconds; feet remain planted throughout. The 0–0.6 and 7.4–8 second amplitude ramps overlap the angular phases.",
+      "review": "editorial-pending",
+      "phase.start": {
+        "event": "circleTowardsLeft",
+        "cueAtSeconds": 0.2,
+        "repeatOffsetsSeconds": [
+          0
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. Guidance is not an audio track baked into the loop.",
+        "additionalCueAtSeconds": [
+          4.2
+        ],
+        "additionalEvent": "reverseCircle"
+      },
+      "phase.peak": {
+        "event": "circleTowardsLeft",
+        "cueAtSeconds": 1.1,
+        "repeatOffsetsSeconds": [
+          0
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. Guidance is not an audio track baked into the loop.",
+        "additionalCueAtSeconds": [
+          6.9
+        ],
+        "additionalEvent": "reverseCircle",
+        "note": "No unique maximum in cyclic motion; the 1.1-second key image is a representative source keyframe, not a static hold."
+      },
+      "phase.end": {
+        "event": "returnCentre",
+        "cueAtSeconds": 7.8,
+        "repeatOffsetsSeconds": [
+          0
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. Guidance is not an audio track baked into the loop."
+      }
+    },
+    "n-squat-shift": {
+      "sourceBatch": "catalog/v2/batches/b002.json",
+      "sourceBatchLfSha256": "4bd43de7eef68da7141c283aa98718f791a8518af2f92fa71d57f52c98f969c0",
+      "side": {
+        "mode": "bilateral",
+        "firstWorkingSide": "both",
+        "switchTimesSeconds": [
+          4
+        ],
+        "note": "Both feet stay planted; first load shift is towards the left foot, then towards the right at 4 seconds. This is a direction change within bilateral-supported movement, not a single-leg demonstration."
+      },
+      "keyMoments": {
+        "start": 0,
+        "peak": 2.2,
+        "end": 8
+      },
+      "countingSemantics": "One shift towards one side and return to centre counts as one rep. The 8-second clip shifts left then right, for two total alternating reps; default reps=8 means eight total shifts (four per direction), not eight per side. Both feet remain planted and legacy unilateral=false is retained for bilateral-supported weight-transfer control.",
+      "review": "editorial-pending",
+      "phase.start": {
+        "event": "shiftTowardsLoadedSide",
+        "cueAtSeconds": 0.3,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. Guidance is not an audio track baked into the loop."
+      },
+      "phase.peak": {
+        "event": "sidePause",
+        "cueAtSeconds": 2.2,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. Guidance is not an audio track baked into the loop."
+      },
+      "phase.end": {
+        "event": "returnCentre",
+        "cueAtSeconds": 2.8,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. Guidance is not an audio track baked into the loop."
+      }
+    },
+    "adductors-A": {
+      "sourceBatch": "catalog/v2/batches/b002.json",
+      "sourceBatchLfSha256": "4bd43de7eef68da7141c283aa98718f791a8518af2f92fa71d57f52c98f969c0",
+      "side": {
+        "mode": "alternating",
+        "firstWorkingSide": "right-loaded-leg",
+        "switchTimesSeconds": [
+          4
+        ],
+        "note": "First squat loads the right leg and straightens/raises toes of the left; after 4 seconds the left leg loads and right leg straightens. Highlight remains both."
+      },
+      "keyMoments": {
+        "start": 0,
+        "peak": 1.9666666666666666,
+        "end": 8,
+        "switchPoint": {
+          "kind": "in-clip",
+          "seconds": 4,
+          "semantics": "First squat loads the right leg and straightens/raises toes of the left; after 4 seconds the left leg loads and right leg straightens. Highlight remains both. One lateral squat and return led by one loaded leg counts as one rep. The 8-second clip demonstrates one right-loaded then one left-loaded rep. Preserve FlareLab prescription: default reps=5 is per side (five full loops give five reps on each side), not five total alternating reps. Switch loaded leg at 4 seconds."
+        }
+      },
+      "countingSemantics": "One lateral squat and return led by one loaded leg counts as one rep. The 8-second clip demonstrates one right-loaded then one left-loaded rep. Preserve FlareLab prescription: default reps=5 is per side (five full loops give five reps on each side), not five total alternating reps. Switch loaded leg at 4 seconds.",
+      "review": "editorial-pending",
+      "phase.start": {
+        "event": "squatOntoWorkingLeg",
+        "cueAtSeconds": 0.3,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. Guidance is not an audio track baked into the loop."
+      },
+      "phase.peak": {
+        "event": "bottomHold",
+        "cueAtSeconds": 1.9666666666666666,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. Guidance is not an audio track baked into the loop."
+      },
+      "phase.end": {
+        "event": "riseToCentre",
+        "cueAtSeconds": 2.3,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. Guidance is not an audio track baked into the loop."
+      }
+    },
+    "hamstrings-A": {
+      "sourceBatch": "catalog/v2/batches/b002.json",
+      "sourceBatchLfSha256": "4bd43de7eef68da7141c283aa98718f791a8518af2f92fa71d57f52c98f969c0",
+      "side": {
+        "mode": "unilateral",
+        "firstWorkingSide": "left-supporting-leg",
+        "switchTimesSeconds": [],
+        "externalSideChangeAfterSeconds": 8,
+        "note": "Only the left support/working leg is demonstrated; the right leg lifts behind. Eight seconds is an available loop-boundary cue after the prescribed per-side dose, not an encoded or mandatory every-loop switch."
+      },
+      "keyMoments": {
+        "start": 0,
+        "peak": 2.0,
+        "end": 8,
+        "switchPoint": {
+          "kind": "loop-boundary",
+          "seconds": 8,
+          "semantics": "Only the left support/working leg is demonstrated; the right leg lifts behind. Eight seconds is an available loop-boundary cue after the prescribed per-side dose, not an encoded or mandatory every-loop switch. One hinge and return on the supporting leg counts as one rep. Default reps=8 is per side, as explicitly prescribed in the legacy FlareLab record. The 8-second clip shows two left-support reps, with the right leg lifted behind, and no side change. Complete four loops for the default left-side dose before an optional external change; opposite-side media is not produced."
+        }
+      },
+      "countingSemantics": "One hinge and return on the supporting leg counts as one rep. Default reps=8 is per side, as explicitly prescribed in the legacy FlareLab record. The 8-second clip shows two left-support reps, with the right leg lifted behind, and no side change. Complete four loops for the default left-side dose before an optional external change; opposite-side media is not produced.",
+      "review": "editorial-pending",
+      "phase.start": {
+        "event": "hingeForward",
+        "cueAtSeconds": 0.3,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. Guidance is not an audio track baked into the loop."
+      },
+      "phase.peak": {
+        "event": "bottomHold",
+        "cueAtSeconds": 2.0,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. Guidance is not an audio track baked into the loop."
+      },
+      "phase.end": {
+        "event": "returnUpright",
+        "cueAtSeconds": 2.3,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. Guidance is not an audio track baked into the loop."
+      }
+    },
+    "h-side-leg-raise": {
+      "sourceBatch": "catalog/v2/batches/b002.json",
+      "sourceBatchLfSha256": "4bd43de7eef68da7141c283aa98718f791a8518af2f92fa71d57f52c98f969c0",
+      "side": {
+        "mode": "unilateral",
+        "firstWorkingSide": "right-raising-leg",
+        "switchTimesSeconds": [],
+        "externalSideChangeAfterSeconds": 8,
+        "note": "Right leg abducts while the left leg supports throughout. Eight seconds is an optional external boundary after the prescribed per-side dose, not a switch encoded in the clip."
+      },
+      "keyMoments": {
+        "start": 0,
+        "peak": 1.9,
+        "end": 8,
+        "switchPoint": {
+          "kind": "loop-boundary",
+          "seconds": 8,
+          "semantics": "Right leg abducts while the left leg supports throughout. Eight seconds is an optional external boundary after the prescribed per-side dose, not a switch encoded in the clip. One right-leg raise and controlled lowering counts as one rep. The 8-second clip contains two right-leg reps with left-foot support and no side change. Keep default reps=12; proposed interpretation is 12 per working side (six loops), but legacy metadata does not explicitly state per-side versus total and editorial confirmation is required. Do not switch sides automatically every loop or generate mirrored media."
+        }
+      },
+      "countingSemantics": "One right-leg raise and controlled lowering counts as one rep. The 8-second clip contains two right-leg reps with left-foot support and no side change. Keep default reps=12; proposed interpretation is 12 per working side (six loops), but legacy metadata does not explicitly state per-side versus total and editorial confirmation is required. Do not switch sides automatically every loop or generate mirrored media.",
+      "review": "editorial-pending",
+      "phase.start": {
+        "event": "raiseRightLeg",
+        "cueAtSeconds": 0.4,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. Guidance is not an audio track baked into the loop."
+      },
+      "phase.peak": {
+        "event": "topHold",
+        "cueAtSeconds": 1.9,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. Guidance is not an audio track baked into the loop."
+      },
+      "phase.end": {
+        "event": "lowerRightLeg",
+        "cueAtSeconds": 2.2,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. Guidance is not an audio track baked into the loop."
+      }
+    }
+  },
+  "playback": {
+    "countdownKeys": [
+      "n.5",
+      "n.4",
+      "n.3",
+      "n.2",
+      "n.1"
+    ],
+    "restGrammar": [
+      "p.rest",
+      "sec.{seconds}"
+    ],
+    "phaseScheduling": "Start cues before their phase by measured clip duration; never overlap or truncate a previous line. Name and point play before the loop. Short phases may omit a cue.",
+    "manualListening": "pending"
+  }
+}

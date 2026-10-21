@@ -1,0 +1,311 @@
+{
+  "format": "action-package@2",
+  "id": "h-crunch",
+  "version": "2.0.0-draft.b001.1",
+  "status": "draft",
+  "definition": {
+    "idMappings": [],
+    "name": {
+      "zh": "卷腹",
+      "en": "Crunch"
+    },
+    "purpose": {
+      "zh": "练腹部",
+      "en": "Train controlled trunk flexion with a small curl of the upper back."
+    },
+    "tags": {
+      "category": "core",
+      "activeMuscles": [
+        "abs"
+      ],
+      "synergistMuscles": [
+        "obliques"
+      ],
+      "equipment": [
+        "mat"
+      ],
+      "position": "supine",
+      "scenes": [
+        "home"
+      ],
+      "difficulty": 1,
+      "trainingType": "control"
+    },
+    "unilateral": false,
+    "startingSide": null,
+    "cues": [
+      {
+        "id": "cue1",
+        "text": {
+          "zh": "用腹部卷起上背，双手沿大腿向前伸",
+          "en": "Use your abs to curl your upper back up and reach your hands along your thighs"
+        },
+        "primary": true
+      },
+      {
+        "id": "cue2",
+        "text": {
+          "zh": "双脚踩稳，缓慢把肩胛区域卷离垫面",
+          "en": "Keep the feet planted and slowly curl the shoulder-blade area off the mat."
+        },
+        "primary": false
+      },
+      {
+        "id": "cue3",
+        "text": {
+          "zh": "颈部自然延长，不用抬头带动身体",
+          "en": "Keep the neck long rather than leading the movement with the head."
+        },
+        "primary": false
+      },
+      {
+        "id": "cue4",
+        "text": {
+          "zh": "缓慢放回，保持呼吸，不憋气猛起",
+          "en": "Lower slowly and keep breathing instead of jerking up or holding your breath."
+        },
+        "primary": false
+      }
+    ],
+    "commonErrors": [
+      {
+        "zh": "猛抬头、下巴紧压胸口或用惯性起身",
+        "en": "Throwing the head, pressing the chin hard into the chest or using momentum."
+      },
+      {
+        "zh": "把小幅卷腹做成完整坐起，腰背失去控制",
+        "en": "Turning the small crunch into a full sit-up and losing lower-back control."
+      }
+    ],
+    "cautions": {
+      "items": [
+        {
+          "zh": "颈：头颈跟随上背自然移动，不猛伸或猛缩。",
+          "en": "Neck: let the head follow the upper back naturally without forcing it forwards or backwards."
+        },
+        {
+          "zh": "腰背：维持小幅可控卷起，双脚与骨盆保持稳定。",
+          "en": "Lower back: keep the curl small and controlled while the feet and pelvis stay stable."
+        }
+      ],
+      "review": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidence": []
+      }
+    },
+    "contraindications": {
+      "items": [
+        {
+          "zh": "本动作引发疼痛时停止，不通过增加幅度或负重继续；先向医生或物理治疗师确认。",
+          "en": "Stop if this exercise causes pain; do not add range or load before seeking clinical advice."
+        },
+        {
+          "zh": "已有医嘱限制仰卧训练或脊柱屈曲时，先取得许可。",
+          "en": "Obtain clearance first if supine exercise or spinal flexion has been restricted."
+        }
+      ],
+      "review": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidence": []
+      }
+    },
+    "alternatives": [
+      "w-dead-bug"
+    ],
+    "regressions": [],
+    "progressions": [
+      "h-reverse-crunch"
+    ],
+    "defaultDose": {
+      "mode": "reps",
+      "sets": 3,
+      "reps": 15,
+      "restSeconds": 30
+    },
+    "doseRange": {
+      "sets": [
+        1,
+        4
+      ],
+      "reps": [
+        8,
+        22
+      ],
+      "restSeconds": [
+        0,
+        60
+      ]
+    },
+    "rhythm": {
+      "kind": "rep_updown",
+      "leadSeconds": 0,
+      "source": "b001-source-timeline",
+      "phases": [
+        {
+          "id": "prepare",
+          "seconds": 0.4
+        },
+        {
+          "id": "curlUp",
+          "seconds": 1.2
+        },
+        {
+          "id": "squeeze",
+          "seconds": 0.6
+        },
+        {
+          "id": "rollDown",
+          "seconds": 1.4
+        },
+        {
+          "id": "reset",
+          "seconds": 0.4
+        }
+      ]
+    },
+    "countingSemantics": "One curl and controlled lowering counts as one rep; 8 seconds contains two reps.",
+    "apps": [
+      "smartfit"
+    ],
+    "editorialReview": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "evidence": []
+    },
+    "editorialNotes": [
+      "源spec双臂沿大腿前伸，并未手扶耳侧；旧catalog首条扶耳cue与源不同，本稿已按真实轨迹更正。",
+      "旧h-reverse-crunch.alternative明确指向h-crunch，反向列进阶为教学候选；w-dead-bug是腹部控制目标替代而非等价屈曲动作。独立降阶ID未有，先用同ID更小幅度。",
+      "相位来自catalog/v2/batches/b001.json真实秒区间；剂量数字与范围保持旧catalog，rhythm不附旧reps来覆盖默认剂量。",
+      "双语注意、通用禁用筛查、协同肌群与关系均已有具体草稿，pending表示未审而非缺数据；协同包含姿势稳定或次要拉伸角色，不作为肌电激活或额外高亮处方。",
+      "关系目标为本仓库真实ID候选，但未必已有同模型可发布v2包；不得自动回退弃用模型素材。空关系数组的缺口见逐动作说明。",
+      "医学通用筛查与证据边界沿用catalog/v2/definition-evidence.md所列AAOS/NHS一手资料；不编造疾病特异绝对禁忌。所有编辑与医学审核保持pending。"
+    ]
+  },
+  "source": {
+    "model": {
+      "id": "training-human-v2plus",
+      "version": "1.0.0-rc2",
+      "manifest": {
+        "root": "repo",
+        "path": "drill-anim/models/training-human-v2plus.json",
+        "sha256": "ec2bc815ded157dbc7673e283ed9b6bb1baa710a39ce3a02f88453e8d7fb0a1d",
+        "bytes": 6494,
+        "normalization": "lf"
+      }
+    },
+    "spec": {
+      "root": "repo",
+      "path": "drill-anim/specs/h-crunch-r2.js",
+      "sha256": "0b46489fdcc2fb8d91aa175d5c1f70ee96830d1df75bfb3ea7b40d8e2fef8813",
+      "bytes": 468,
+      "normalization": "lf"
+    },
+    "dependencies": [
+      {
+        "root": "repo",
+        "path": "drill-anim/lib/home-anim.mjs",
+        "sha256": "1798c9e55c28b32391b7ef32aa358427b4743ee1959f86ec488a95fe88a05557",
+        "bytes": 3691,
+        "normalization": "lf"
+      },
+      {
+        "root": "repo",
+        "path": "drill-anim/lib/ss-geo.mjs",
+        "sha256": "45ca774079e3a85ecc4f924a3220d4baa721f0435e16f6e6e21ffa19e17e8603",
+        "bytes": 3700,
+        "normalization": "lf"
+      },
+      {
+        "root": "repo",
+        "path": "drill-anim/specs/h-crunch.js",
+        "sha256": "6e8b9f79d994da108335d4383ab189e7e3b27290f2466a2c021e5055c5b7fe8d",
+        "bytes": 2967,
+        "normalization": "lf"
+      }
+    ],
+    "keyMoments": {
+      "start": 0,
+      "peak": 1.9,
+      "end": 8
+    },
+    "highlightMuscles": [
+      "abs"
+    ],
+    "qa": {
+      "intersections": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidence": [],
+        "framesReviewed": []
+      },
+      "handsFeet": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidence": [],
+        "framesReviewed": []
+      },
+      "propFlicker": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidence": [],
+        "framesReviewed": []
+      },
+      "loopSeam": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidence": [],
+        "framesReviewed": []
+      }
+    }
+  },
+  "masters": {
+    "requiredSkins": [
+      "realistic",
+      "tech-white",
+      "neon-night",
+      "neon-night-b",
+      "hologram"
+    ],
+    "skins": {},
+    "loopReview": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "evidence": []
+    }
+  },
+  "derivatives": {
+    "method": "composite-from-masters",
+    "mirrored": false,
+    "variants": [],
+    "transparentCovers": {}
+  },
+  "voice": {
+    "actionId": "h-crunch",
+    "manifest": {
+      "root": "repo",
+      "path": "catalog/voice-v2/batches/b001-manifest.json",
+      "sha256": "31d97faf1000eceafa65bf290e66a9265d82d86425ab8ce3ed4f67f03ee401c0",
+      "bytes": 270954
+    }
+  },
+  "validation": {
+    "modelVersion": "1.0.0-rc2",
+    "mirrorGenerated": false,
+    "review": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "evidence": []
+    }
+  }
+}

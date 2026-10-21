@@ -37,3 +37,7 @@ composite/
 .env
 .env.*
 .dev.vars
+
+# Batch voice writer locks and atomic-write scratch files are local state.
+/catalog/voice-v2/batches/*.json.lock
+/catalog/voice-v2/batches/*.json.*.tmp

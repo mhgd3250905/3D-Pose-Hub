@@ -52,6 +52,8 @@ python -m unittest discover -s media/tests -v   # 素材脚本
 
 当前审片修订为 `F:/PoseHub-v2-pilot/neck-fix-r2/`。颈部漏色已修正，六动作五皮肤的完整透明母版、60 份视频及配套图片已重做并校验；catalog 已更新为 draft.2。r1 保留历史对照，技术结果与待审项见[试制记录](docs/action-package-v2-pilot-20261021.md)及[颈部修复记录](docs/neck-material-fix-20261021.md)。
 
+开哥随后已授权全库制作，现从 `codex/action-library-v2-production` 分支按[全库计划](docs/action-library-v2-production-plan-20261021.md)和[142 动作生产队列](catalog/v2/production-plan.json)推进。六动作 r2 复用，136 个正式动作分 20 批新增制作；其他候选、静图和停止项单列，输出按批次放在 `F:/PoseHub-v2-production/`。
+
 下面旧命令用于历史配方复现，不作为 v2 新生产入口：
 
 ```bash

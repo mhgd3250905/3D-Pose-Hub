@@ -1,5 +1,9 @@
 * text=auto
 
+# Existing v2 packages bind this compositor's original LF bytes.
+tools/action-package-v2/composite.py text eol=lf
+tools/action-library-v2/*.py text eol=lf
+
 # v2 pilot fingerprints pin raw source bytes; Windows checkouts must retain LF.
 drill-anim/tools/v2/*.js text eol=lf
 drill-anim/tools/v2/*.mjs text eol=lf
@@ -21,3 +25,45 @@ drill-anim/specs/h-catcow-quad-r2.js text eol=lf
 *.mp4 binary
 *.gif binary
 *.zip binary
+
+# v2 production b001 source recipes require identical LF bytes on every checkout.
+drill-anim/specs/h-squat-r2.js text eol=lf
+drill-anim/specs/h-step-jack-r2.js text eol=lf
+drill-anim/specs/h-crunch-r2.js text eol=lf
+drill-anim/specs/h-superman-r2.js text eol=lf
+drill-anim/specs/h-good-morning-r2.js text eol=lf
+drill-anim/specs/h-russian-twist-r2.js text eol=lf
+drill-anim/specs/h-banana-r2.js text eol=lf
+drill-anim/specs/o-stand-sidebend-r2.js text eol=lf
+catalog/v2/batches/b001.json text eol=lf
+tools/action-library-v2/run_batch.mjs text eol=lf
+tools/action-library-v2/run_batch.test.mjs text eol=lf
+tools/action-library-v2/README.md text eol=lf
+
+# v2 production b002 source recipes require identical LF bytes on every checkout.
+drill-anim/specs/h-sumo-pry-r2.js text eol=lf
+drill-anim/specs/n-pelvis-circle-r2.js text eol=lf
+drill-anim/specs/n-squat-shift-r2.js text eol=lf
+drill-anim/specs/adductors-A-r2.js text eol=lf
+drill-anim/specs/hamstrings-A-r2.js text eol=lf
+drill-anim/specs/h-side-leg-raise-r2.js text eol=lf
+catalog/v2/batches/b002.json text eol=lf
+
+drill-anim/specs/h-step-jack-r3.js text eol=lf
+
+catalog/v2/batches/b001-gpu4080-r2.json text eol=lf
+
+tools/action-library-v2/runtime-profile.mjs text eol=lf
+
+tools/action-library-v2/runtime-guard.mjs text eol=lf
+
+# v2 production b003 source recipes require identical LF bytes on every checkout.
+drill-anim/specs/hip-flexors-A-r2.js text eol=lf
+drill-anim/specs/h-9090-liftoff-r3.js text eol=lf
+drill-anim/specs/h-butterfly-active-r2.js text eol=lf
+drill-anim/specs/h-knee-hug-r3.js text eol=lf
+drill-anim/specs/h-reverse-clam-r2.js text eol=lf
+drill-anim/specs/h-supine-twist-r4.js text eol=lf
+drill-anim/specs/n-seated-ir-drop-r2.js text eol=lf
+drill-anim/specs/n-thomas-test-r2.js text eol=lf
+catalog/v2/batches/b003.json text eol=lf

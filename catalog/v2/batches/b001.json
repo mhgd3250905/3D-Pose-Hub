@@ -1,0 +1,581 @@
+{
+  "format": "pose-hub-v2-production-batch@1",
+  "id": "b001",
+  "description": "Eight native-eight-second, lower supporting-hand-contact migrations. Source/preview review is separate from editorial, voice and release approval.",
+  "model": {
+    "id": "training-human-v2plus",
+    "version": "1.0.0-rc2"
+  },
+  "skins": [
+    "realistic",
+    "tech-white",
+    "neon-night",
+    "neon-night-b",
+    "hologram"
+  ],
+  "fps": 30,
+  "width": 1080,
+  "height": 1080,
+  "durationSeconds": 8,
+  "maxWorkers": 2,
+  "reviewPolicy": "External actual visual review bound to source and preview manifest/index/PNG SHA is required before full production. No automatic review approval.",
+  "actions": [
+    {
+      "id": "h-squat",
+      "spec": "drill-anim/specs/h-squat-r2.js",
+      "source": {
+        "path": "drill-anim/specs/h-squat.js",
+        "sha256": "5ad0a08ecb3fe437269d825319baebe82fc43539da43596a1342512b03ec22b9"
+      },
+      "peakFrame": 63,
+      "previewFrames": [
+        0,
+        30,
+        63,
+        90,
+        120,
+        180,
+        210,
+        239,
+        240
+      ],
+      "phase": {
+        "review": "source-transcribed-editorial-pending",
+        "cycleSeconds": 4,
+        "cyclesPerClip": 2.0,
+        "events": [
+          {
+            "startSeconds": 0,
+            "endSeconds": 0.4,
+            "name": "prepare"
+          },
+          {
+            "startSeconds": 0.4,
+            "endSeconds": 1.9,
+            "name": "squatDown"
+          },
+          {
+            "startSeconds": 1.9,
+            "endSeconds": 2.3,
+            "name": "bottomHold"
+          },
+          {
+            "startSeconds": 2.3,
+            "endSeconds": 3.7,
+            "name": "standUp"
+          },
+          {
+            "startSeconds": 3.7,
+            "endSeconds": 4,
+            "name": "reset"
+          }
+        ],
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "countingSemantics": "One complete down-and-up counts as one rep; 8 seconds contains two bilateral reps."
+      },
+      "side": {
+        "mode": "bilateral",
+        "firstWorkingSide": "both",
+        "switchTimesSeconds": []
+      },
+      "risks": [
+        "Inspect knee/shin volume and heel contact at the deep squat; new free-hand silhouette must clear the thighs."
+      ]
+    },
+    {
+      "id": "h-step-jack",
+      "spec": "drill-anim/specs/h-step-jack-r2.js",
+      "source": {
+        "path": "drill-anim/specs/h-step-jack.js",
+        "sha256": "967679be26a199afbaddd41603deec131b93e5b67a5b225a8ed51d4d9ba91209"
+      },
+      "peakFrame": 60,
+      "previewFrames": [
+        0,
+        30,
+        60,
+        90,
+        120,
+        180,
+        210,
+        239,
+        240
+      ],
+      "phase": {
+        "review": "source-transcribed-editorial-pending",
+        "cycleSeconds": 4,
+        "cyclesPerClip": 2.0,
+        "events": [
+          {
+            "startSeconds": 0,
+            "endSeconds": 0.3,
+            "name": "prepare"
+          },
+          {
+            "startSeconds": 0.3,
+            "endSeconds": 1.7,
+            "name": "stepOutAndArmsUp"
+          },
+          {
+            "startSeconds": 1.7,
+            "endSeconds": 2.2,
+            "name": "wideHold"
+          },
+          {
+            "startSeconds": 2.2,
+            "endSeconds": 3.6,
+            "name": "stepInAndArmsDown"
+          },
+          {
+            "startSeconds": 3.6,
+            "endSeconds": 4,
+            "name": "reset"
+          }
+        ],
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "countingSemantics": "Timed cardio. One step out-and-in counts as one step rep; 8 seconds shows right then left (two alternating steps). Keep the existing 40-second timed dose."
+      },
+      "side": {
+        "mode": "alternating",
+        "firstWorkingSide": "right-stepping-foot",
+        "switchTimesSeconds": [
+          4
+        ],
+        "note": "Both arms move together; the first stepping leg is right, then left."
+      },
+      "risks": [
+        "Inspect each foot landing, planted toe stability and hand/head clearance at overhead peaks."
+      ]
+    },
+    {
+      "id": "h-crunch",
+      "spec": "drill-anim/specs/h-crunch-r2.js",
+      "source": {
+        "path": "drill-anim/specs/h-crunch.js",
+        "sha256": "03a05e6ba04fb9de7f283557d1e9a79b0a47fe0fbe556e58e49ab57aeb7e8781"
+      },
+      "peakFrame": 57,
+      "previewFrames": [
+        0,
+        30,
+        57,
+        90,
+        120,
+        180,
+        210,
+        239,
+        240
+      ],
+      "phase": {
+        "review": "source-transcribed-editorial-pending",
+        "cycleSeconds": 4,
+        "cyclesPerClip": 2.0,
+        "events": [
+          {
+            "startSeconds": 0,
+            "endSeconds": 0.4,
+            "name": "prepare"
+          },
+          {
+            "startSeconds": 0.4,
+            "endSeconds": 1.6,
+            "name": "curlUp"
+          },
+          {
+            "startSeconds": 1.6,
+            "endSeconds": 2.2,
+            "name": "squeeze"
+          },
+          {
+            "startSeconds": 2.2,
+            "endSeconds": 3.6,
+            "name": "rollDown"
+          },
+          {
+            "startSeconds": 3.6,
+            "endSeconds": 4,
+            "name": "reset"
+          }
+        ],
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "countingSemantics": "One curl and controlled lowering counts as one rep; 8 seconds contains two reps."
+      },
+      "side": {
+        "mode": "bilateral",
+        "firstWorkingSide": "both",
+        "switchTimesSeconds": []
+      },
+      "risks": [
+        "Inspect lower-back/head contact with the mat and palms passing over thighs; hands do not bear body weight."
+      ]
+    },
+    {
+      "id": "h-superman",
+      "spec": "drill-anim/specs/h-superman-r2.js",
+      "source": {
+        "path": "drill-anim/specs/h-superman.js",
+        "sha256": "f5b8452993f9c7d6785fd1197ddc72fce20d6250938faeaac7b8469df729fe56"
+      },
+      "peakFrame": 66,
+      "previewFrames": [
+        0,
+        30,
+        66,
+        90,
+        120,
+        180,
+        210,
+        239,
+        240
+      ],
+      "phase": {
+        "review": "source-transcribed-editorial-pending",
+        "cycleSeconds": 4,
+        "cyclesPerClip": 2.0,
+        "events": [
+          {
+            "startSeconds": 0,
+            "endSeconds": 0.2,
+            "name": "prepare"
+          },
+          {
+            "startSeconds": 0.2,
+            "endSeconds": 1.4,
+            "name": "lift"
+          },
+          {
+            "startSeconds": 1.4,
+            "endSeconds": 2.9,
+            "name": "hold"
+          },
+          {
+            "startSeconds": 2.9,
+            "endSeconds": 3.9,
+            "name": "lower"
+          },
+          {
+            "startSeconds": 3.9,
+            "endSeconds": 4,
+            "name": "reset"
+          }
+        ],
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "countingSemantics": "One simultaneous arm/chest/leg lift and lowering counts as one rep; 8 seconds contains two reps."
+      },
+      "side": {
+        "mode": "bilateral",
+        "firstWorkingSide": "both",
+        "switchTimesSeconds": []
+      },
+      "risks": [
+        "Inspect belly/pelvis/foot contact and near-floor fingers at the resting phase; no supporting hand lock is encoded."
+      ]
+    },
+    {
+      "id": "h-good-morning",
+      "spec": "drill-anim/specs/h-good-morning-r2.js",
+      "source": {
+        "path": "drill-anim/specs/h-good-morning.js",
+        "sha256": "6adba7a051bc57dd96b891c24d2dcf1af2f6f64064fe2bed37013cc9eb036cfd"
+      },
+      "peakFrame": 69,
+      "previewFrames": [
+        0,
+        30,
+        69,
+        90,
+        120,
+        180,
+        210,
+        239,
+        240
+      ],
+      "phase": {
+        "review": "source-transcribed-editorial-pending",
+        "cycleSeconds": 4,
+        "cyclesPerClip": 2.0,
+        "events": [
+          {
+            "startSeconds": 0,
+            "endSeconds": 0.3,
+            "name": "prepare"
+          },
+          {
+            "startSeconds": 0.3,
+            "endSeconds": 2.1,
+            "name": "hingeDown"
+          },
+          {
+            "startSeconds": 2.1,
+            "endSeconds": 2.5,
+            "name": "bottomPause"
+          },
+          {
+            "startSeconds": 2.5,
+            "endSeconds": 3.9,
+            "name": "standUp"
+          },
+          {
+            "startSeconds": 3.9,
+            "endSeconds": 4,
+            "name": "reset"
+          }
+        ],
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "countingSemantics": "One hip hinge and return to standing counts as one rep; 8 seconds contains two reps."
+      },
+      "side": {
+        "mode": "bilateral",
+        "firstWorkingSide": "both",
+        "switchTimesSeconds": []
+      },
+      "risks": [
+        "Crossed palms and forearms rest near the new torso mesh; inspect clearance and contact before any adjustment."
+      ]
+    },
+    {
+      "id": "h-russian-twist",
+      "spec": "drill-anim/specs/h-russian-twist-r2.js",
+      "source": {
+        "path": "drill-anim/specs/h-russian-twist.js",
+        "sha256": "27fd6def020f17e8faee4d327671a57d568aa80b29b9f1e09b842337adca2879"
+      },
+      "peakFrame": 30,
+      "previewFrames": [
+        0,
+        30,
+        90,
+        120,
+        150,
+        180,
+        210,
+        239,
+        240
+      ],
+      "phase": {
+        "review": "source-transcribed-editorial-pending",
+        "cycleSeconds": 4,
+        "cyclesPerClip": 2.0,
+        "events": [
+          {
+            "startSeconds": 0,
+            "endSeconds": 0.8,
+            "name": "turnRight"
+          },
+          {
+            "startSeconds": 0.8,
+            "endSeconds": 1.2,
+            "name": "rightPause"
+          },
+          {
+            "startSeconds": 1.2,
+            "endSeconds": 2,
+            "name": "returnCentre"
+          },
+          {
+            "startSeconds": 2,
+            "endSeconds": 2.8,
+            "name": "turnLeft"
+          },
+          {
+            "startSeconds": 2.8,
+            "endSeconds": 3.2,
+            "name": "leftPause"
+          },
+          {
+            "startSeconds": 3.2,
+            "endSeconds": 4,
+            "name": "returnCentre"
+          }
+        ],
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "countingSemantics": "One turn to a side and return to centre counts as one rep; 8 seconds contains four alternating reps (right/left/right/left), equivalent to two right-plus-left cycles. Proposed reading of the existing 16-rep dose: 16 total turns, eight per side; editorial confirmation remains pending."
+      },
+      "side": {
+        "mode": "alternating",
+        "firstWorkingSide": "right-trunk-turn",
+        "switchTimesSeconds": [
+          2,
+          4,
+          6
+        ],
+        "note": "Source highlight remains both sides; direction alternates right/left/right/left."
+      },
+      "risks": [
+        "Palms meet in front of the chest; inspect all new finger vertices for hand-hand overlap during both turn directions."
+      ]
+    },
+    {
+      "id": "h-banana",
+      "spec": "drill-anim/specs/h-banana-r2.js",
+      "source": {
+        "path": "drill-anim/specs/h-banana.js",
+        "sha256": "654e11661e55fec6c424dba1ce73c873fb70521beb6d57b303b169453533a25b"
+      },
+      "peakFrame": 72,
+      "previewFrames": [
+        0,
+        30,
+        72,
+        90,
+        120,
+        180,
+        192,
+        210,
+        239,
+        240
+      ],
+      "phase": {
+        "review": "source-transcribed-editorial-pending",
+        "cycleSeconds": 8,
+        "cyclesPerClip": 1.0,
+        "events": [
+          {
+            "startSeconds": 0,
+            "endSeconds": 0.3,
+            "name": "prepare"
+          },
+          {
+            "startSeconds": 0.3,
+            "endSeconds": 1.8,
+            "name": "curveRightStretchLeft"
+          },
+          {
+            "startSeconds": 1.8,
+            "endSeconds": 3,
+            "name": "leftSideStretchHold"
+          },
+          {
+            "startSeconds": 3,
+            "endSeconds": 4,
+            "name": "returnCentre"
+          },
+          {
+            "startSeconds": 4,
+            "endSeconds": 4.3,
+            "name": "prepare"
+          },
+          {
+            "startSeconds": 4.3,
+            "endSeconds": 5.8,
+            "name": "curveLeftStretchRight"
+          },
+          {
+            "startSeconds": 5.8,
+            "endSeconds": 7,
+            "name": "rightSideStretchHold"
+          },
+          {
+            "startSeconds": 7,
+            "endSeconds": 8,
+            "name": "returnCentre"
+          }
+        ],
+        "repeatOffsetsSeconds": [
+          0
+        ],
+        "countingSemantics": "Timed alternating stretch. The rightward body curve stretches the left side first; one 8-second cycle demonstrates both sides. Existing 30 seconds is total timed movement, not a 30-second static hold per side. No automatic dose change."
+      },
+      "side": {
+        "mode": "alternating-stretch",
+        "firstWorkingSide": "left-stretched-side",
+        "switchTimesSeconds": [
+          4
+        ],
+        "note": "Body curves right first, lengthening left obliques/lats; then curves left to stretch right. Source highlight.side=both is retained."
+      },
+      "risks": [
+        "Overhead arms lie near the mat; inspect all new finger vertices and shoulder/head contact, although hands are non-weight-bearing."
+      ]
+    },
+    {
+      "id": "o-stand-sidebend",
+      "spec": "drill-anim/specs/o-stand-sidebend-r2.js",
+      "source": {
+        "path": "drill-anim/specs/o-stand-sidebend.js",
+        "sha256": "f2fdaee1e7ed7f611d3807daa7bf7e2906248d4bae15859f53b5b758cef647cf"
+      },
+      "peakFrame": 114,
+      "previewFrames": [
+        0,
+        30,
+        90,
+        114,
+        120,
+        180,
+        210,
+        239,
+        240
+      ],
+      "phase": {
+        "review": "source-transcribed-editorial-pending",
+        "cycleSeconds": 8,
+        "cyclesPerClip": 1.0,
+        "events": [
+          {
+            "startSeconds": 0,
+            "endSeconds": 0.6,
+            "name": "prepare"
+          },
+          {
+            "startSeconds": 0.6,
+            "endSeconds": 2,
+            "name": "bendLeftTo85Percent"
+          },
+          {
+            "startSeconds": 2,
+            "endSeconds": 3.8,
+            "name": "deepenLeft"
+          },
+          {
+            "startSeconds": 3.8,
+            "endSeconds": 5.6,
+            "name": "releaseTo85Percent"
+          },
+          {
+            "startSeconds": 5.6,
+            "endSeconds": 7,
+            "name": "returnUpright"
+          },
+          {
+            "startSeconds": 7,
+            "endSeconds": 8,
+            "name": "reset"
+          }
+        ],
+        "repeatOffsetsSeconds": [
+          0
+        ],
+        "countingSemantics": "Timed unilateral stretch of the right side while bending left. The 8-second source demonstrates one slow bend-and-return with an instantaneous peak, not an 8-second hold. Existing 30 seconds is per-side timed work; opposite-side media is not generated."
+      },
+      "side": {
+        "mode": "unilateral",
+        "firstWorkingSide": "right-stretched-side",
+        "switchTimesSeconds": [],
+        "externalSideChangeAfterSeconds": 8,
+        "note": "This media only bends left to stretch right. The event at 8 seconds is an optional external side-change cue, not a switch encoded in the clip and not a mirrored asset."
+      },
+      "risks": [
+        "Legacy source has no modelProfile; explicitly migrating the collar/mesh requires a solver and silhouette check. Left hand lies near the thigh. The office chair is scenery and must stay in props."
+      ]
+    }
+  ]
+}

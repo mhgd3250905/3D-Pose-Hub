@@ -1,0 +1,707 @@
+{
+  "schema": "pose-hub-voice-script@2",
+  "batchId": "b003",
+  "reviewStatus": "pending-user-review",
+  "languages": [
+    "zh",
+    "en"
+  ],
+  "voices": {
+    "zh": "zh-CN-XiaoxiaoNeural",
+    "en": "en-US-JennyNeural"
+  },
+  "rates": {
+    "zh": "+6%",
+    "en": "+4%"
+  },
+  "sourceStandard": "HipLab/tools/voice/build_voice.py v4.1 and docs/voice-audit-2026-10-18.md",
+  "actions": {
+    "hip-flexors-A": {
+      "name": {
+        "zh": "坐姿直腿抬腿，压缩",
+        "en": "Seated straight-leg lift"
+      },
+      "primaryCue": {
+        "zh": "躯干前倾，双腿伸直抬离地面，再慢慢放下",
+        "en": "Lean forwards, lift both straight legs off the mat, then lower them slowly"
+      },
+      "phase.start": {
+        "zh": "双腿抬起",
+        "en": "Lift both legs"
+      },
+      "phase.peak": {
+        "zh": "保持住",
+        "en": "Hold"
+      },
+      "phase.end": {
+        "zh": "慢慢放下",
+        "en": "Lower slowly"
+      }
+    },
+    "h-9090-liftoff": {
+      "name": {
+        "zh": "90 90 后腿主动抬起",
+        "en": "Ninety-ninety rear-leg lift-off"
+      },
+      "primaryCue": {
+        "zh": "后腿膝盖保持贴垫，慢慢抬起左脚和小腿，再放下",
+        "en": "Keep the rear knee on the mat, slowly lift your left foot and shin, then lower them"
+      },
+      "phase.start": {
+        "zh": "后脚慢慢抬起",
+        "en": "Lift the rear foot slowly"
+      },
+      "phase.peak": {
+        "zh": "后膝保持贴垫",
+        "en": "Keep the rear knee on the mat"
+      },
+      "phase.end": {
+        "zh": "慢慢放下",
+        "en": "Lower slowly"
+      }
+    },
+    "h-butterfly-active": {
+      "name": {
+        "zh": "仰卧蝴蝶主动开合",
+        "en": "Active supine butterfly"
+      },
+      "primaryCue": {
+        "zh": "脚心相对，膝盖慢慢打开再收回",
+        "en": "Soles together, open the knees slowly and bring them back"
+      },
+      "phase.start": {
+        "zh": "膝盖慢慢打开",
+        "en": "Open your knees slowly"
+      },
+      "phase.peak": {
+        "zh": "保持呼吸",
+        "en": "Keep breathing"
+      },
+      "phase.end": {
+        "zh": "膝盖慢慢合回",
+        "en": "Close your knees slowly"
+      }
+    },
+    "h-knee-hug": {
+      "name": {
+        "zh": "仰卧抱膝",
+        "en": "Supine knee hug"
+      },
+      "primaryCue": {
+        "zh": "双手抱膝，慢慢呼吸",
+        "en": "Hug your knees and breathe slowly"
+      },
+      "phase.start": {
+        "zh": "呼气，膝盖稍靠近",
+        "en": "Exhale and bring your knees a little closer"
+      },
+      "phase.peak": {
+        "zh": "慢慢呼吸",
+        "en": "Breathe slowly"
+      },
+      "phase.end": {
+        "zh": "吸气，轻轻放松",
+        "en": "Inhale and ease gently"
+      }
+    },
+    "h-reverse-clam": {
+      "name": {
+        "zh": "侧卧反向蚌式",
+        "en": "Side-lying reverse clam"
+      },
+      "primaryCue": {
+        "zh": "膝盖并拢，小腿慢慢向上抬",
+        "en": "Knees together, lift the shin up slowly"
+      },
+      "phase.start": {
+        "zh": "上侧脚慢慢抬起",
+        "en": "Lift the upper foot slowly"
+      },
+      "phase.peak": {
+        "zh": "膝盖保持并拢",
+        "en": "Keep your knees together"
+      },
+      "phase.end": {
+        "zh": "慢慢放下",
+        "en": "Lower slowly"
+      }
+    },
+    "h-supine-twist": {
+      "name": {
+        "zh": "仰卧屈膝扭转",
+        "en": "Supine bent-knee twist"
+      },
+      "primaryCue": {
+        "zh": "双膝倒向一侧，肩膀贴地",
+        "en": "Drop both knees to one side, shoulders stay down"
+      },
+      "phase.start": {
+        "zh": "双膝慢慢倒向一侧",
+        "en": "Lower both knees slowly to one side"
+      },
+      "phase.peak": {
+        "zh": "慢慢呼吸",
+        "en": "Breathe slowly"
+      },
+      "phase.end": {
+        "zh": "回到中间",
+        "en": "Return to centre"
+      }
+    },
+    "n-seated-ir-drop": {
+      "name": {
+        "zh": "坐姿后撑单膝内倒",
+        "en": "Seated knee drop-in"
+      },
+      "primaryCue": {
+        "zh": "手在身后撑地，一侧膝盖向内倒",
+        "en": "Hands behind you, drop one knee inward"
+      },
+      "phase.start": {
+        "zh": "膝盖慢慢向内倒",
+        "en": "Let the knee move inward slowly"
+      },
+      "phase.peak": {
+        "zh": "双脚踩稳",
+        "en": "Keep your feet planted"
+      },
+      "phase.end": {
+        "zh": "膝盖回到中间",
+        "en": "Return the knee upright"
+      }
+    },
+    "n-thomas-test": {
+      "name": {
+        "zh": "仰卧单膝抱胸",
+        "en": "Supine single knee hug"
+      },
+      "primaryCue": {
+        "zh": "抱住一边膝盖，另一条腿放松伸直",
+        "en": "Hug one knee, let the other leg rest straight"
+      },
+      "phase.start": {
+        "zh": "呼气，轻轻抱近",
+        "en": "Exhale and draw in gently"
+      },
+      "phase.peak": {
+        "zh": "慢慢呼吸",
+        "en": "Breathe slowly"
+      },
+      "phase.end": {
+        "zh": "吸气，轻轻放松",
+        "en": "Inhale and ease gently"
+      }
+    }
+  },
+  "common": {
+    "n.0": {
+      "zh": "零",
+      "en": "zero"
+    },
+    "n.1": {
+      "zh": "一",
+      "en": "one"
+    },
+    "n.2": {
+      "zh": "二",
+      "en": "two"
+    },
+    "n.3": {
+      "zh": "三",
+      "en": "three"
+    },
+    "n.4": {
+      "zh": "四",
+      "en": "four"
+    },
+    "n.5": {
+      "zh": "五",
+      "en": "five"
+    },
+    "n.6": {
+      "zh": "六",
+      "en": "six"
+    },
+    "n.7": {
+      "zh": "七",
+      "en": "seven"
+    },
+    "n.8": {
+      "zh": "八",
+      "en": "eight"
+    },
+    "n.9": {
+      "zh": "九",
+      "en": "nine"
+    },
+    "n.10": {
+      "zh": "十",
+      "en": "ten"
+    },
+    "p.ready": {
+      "zh": "准备",
+      "en": "Get ready"
+    },
+    "p.go": {
+      "zh": "开始",
+      "en": "Go"
+    },
+    "p.last_rep": {
+      "zh": "最后一次",
+      "en": "Last one"
+    },
+    "p.release": {
+      "zh": "慢慢还原",
+      "en": "Slowly come out of it"
+    },
+    "p.again": {
+      "zh": "再来一组",
+      "en": "One more set"
+    },
+    "p.right_first": {
+      "zh": "先做右边",
+      "en": "Right side first"
+    },
+    "p.switch_left": {
+      "zh": "换左边",
+      "en": "Switch to the left side"
+    },
+    "p.switch_right": {
+      "zh": "换右边",
+      "en": "Switch to the right side"
+    },
+    "p.rest": {
+      "zh": "休息",
+      "en": "Rest for"
+    },
+    "p.nice": {
+      "zh": "很好",
+      "en": "Nice work"
+    },
+    "sec.5": {
+      "zh": "5 秒",
+      "en": "5 seconds"
+    },
+    "sec.10": {
+      "zh": "10 秒",
+      "en": "10 seconds"
+    },
+    "sec.15": {
+      "zh": "15 秒",
+      "en": "15 seconds"
+    },
+    "sec.30": {
+      "zh": "30 秒",
+      "en": "30 seconds"
+    },
+    "sec.60": {
+      "zh": "1 分钟",
+      "en": "1 minute"
+    }
+  },
+  "sharedVocabularySource": {
+    "root": "repo",
+    "path": "catalog/voice-v2/manifest.json",
+    "sha256": "ba775ace59603e534c3dc979fc8a8cc277836427efcd6b10f2e88e16f696336c",
+    "bytes": 195389
+  },
+  "sharedVocabularyPolicy": "Reuse the existing audited vocabulary bytes; no skin copies and no change to the pilot manifest.",
+  "phaseBindings": {
+    "hip-flexors-A": {
+      "sourceBatch": "catalog/v2/batches/b003.json",
+      "sourceBatchLfSha256": "b2feb4ad3c9dfcea417d04d743903a4f98eb6f8396621f0fcd9b64b936000635",
+      "side": {
+        "mode": "bilateral",
+        "firstWorkingSide": "both",
+        "switchTimesSeconds": []
+      },
+      "keyMoments": {
+        "start": 0,
+        "peak": 1.9,
+        "end": 8
+      },
+      "countingSemantics": "One simultaneous lift and lowering of both straight legs counts as one rep; the 8-second source contains two bilateral reps. Preserve default 8 reps per set, not eight per leg. The source holds 1.4 seconds at each peak, not a prescribed extra hold outside the demonstrated rhythm.",
+      "review": "editorial-pending",
+      "phase.start": {
+        "event": "liftBothLegs",
+        "cueAtSeconds": 0.4,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. Guidance is not an audio track baked into the loop."
+      },
+      "phase.peak": {
+        "event": "topHold",
+        "cueAtSeconds": 1.9,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. Guidance is not an audio track baked into the loop."
+      },
+      "phase.end": {
+        "event": "lowerBothLegs",
+        "cueAtSeconds": 2.6,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. Guidance is not an audio track baked into the loop."
+      }
+    },
+    "h-9090-liftoff": {
+      "sourceBatch": "catalog/v2/batches/b003.json",
+      "sourceBatchLfSha256": "b2feb4ad3c9dfcea417d04d743903a4f98eb6f8396621f0fcd9b64b936000635",
+      "side": {
+        "mode": "unilateral",
+        "firstWorkingSide": "left-rear-hip",
+        "switchTimesSeconds": [],
+        "externalSideChangeAfterSeconds": 8,
+        "note": "Left foot/shin lifts via rear-hip internal rotation while left knee stays supported; right leg remains in front. Optional boundary after completed per-side dose, not an in-clip or every-loop mandatory switch."
+      },
+      "keyMoments": {
+        "start": 0,
+        "peak": 2.0,
+        "end": 8,
+        "switchPoint": {
+          "kind": "loop-boundary",
+          "seconds": 8,
+          "semantics": "Left foot/shin lifts via rear-hip internal rotation while left knee stays supported; right leg remains in front. Optional boundary after completed per-side dose, not an in-clip or every-loop mandatory switch. One rear-foot/shin lift and controlled lowering counts as one rep. The left rear knee stays on the mat and the right leg is in front. The 8-second clip has two left-hip reps and no switch. Preserve default 8; proposed per-side interpretation (four loops before changing) requires editorial approval because legacy dose does not explicitly identify per-side versus total. Opposite-side media is not produced."
+        }
+      },
+      "countingSemantics": "One rear-foot/shin lift and controlled lowering counts as one rep. The left rear knee stays on the mat and the right leg is in front. The 8-second clip has two left-hip reps and no switch. Preserve default 8; proposed per-side interpretation (four loops before changing) requires editorial approval because legacy dose does not explicitly identify per-side versus total. Opposite-side media is not produced.",
+      "review": "editorial-pending",
+      "phase.start": {
+        "event": "liftRearFootAndShin",
+        "cueAtSeconds": 0.3,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. Guidance is not an audio track baked into the loop."
+      },
+      "phase.peak": {
+        "event": "topHold",
+        "cueAtSeconds": 2.0,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. Guidance is not an audio track baked into the loop."
+      },
+      "phase.end": {
+        "event": "lowerRearFootAndShin",
+        "cueAtSeconds": 2.5,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. Guidance is not an audio track baked into the loop."
+      }
+    },
+    "h-butterfly-active": {
+      "sourceBatch": "catalog/v2/batches/b003.json",
+      "sourceBatchLfSha256": "b2feb4ad3c9dfcea417d04d743903a4f98eb6f8396621f0fcd9b64b936000635",
+      "side": {
+        "mode": "bilateral",
+        "firstWorkingSide": "both",
+        "switchTimesSeconds": []
+      },
+      "keyMoments": {
+        "start": 0,
+        "peak": 2.3,
+        "end": 8
+      },
+      "countingSemantics": "One simultaneous opening and closing of both knees counts as one rep. The 8-second demonstration contains two bilateral reps; default 10 means ten opening-closing reps in total, not ten per knee or a static hold.",
+      "review": "editorial-pending",
+      "phase.start": {
+        "event": "openKnees",
+        "cueAtSeconds": 0.2,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. Guidance is not an audio track baked into the loop."
+      },
+      "phase.peak": {
+        "event": "openPause",
+        "cueAtSeconds": 2.3,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. Guidance is not an audio track baked into the loop."
+      },
+      "phase.end": {
+        "event": "closeKnees",
+        "cueAtSeconds": 2.6,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. Guidance is not an audio track baked into the loop."
+      }
+    },
+    "h-knee-hug": {
+      "sourceBatch": "catalog/v2/batches/b003.json",
+      "sourceBatchLfSha256": "b2feb4ad3c9dfcea417d04d743903a4f98eb6f8396621f0fcd9b64b936000635",
+      "side": {
+        "mode": "bilateral",
+        "firstWorkingSide": "both",
+        "switchTimesSeconds": []
+      },
+      "keyMoments": {
+        "start": 0,
+        "peak": 2.5,
+        "end": 8
+      },
+      "countingSemantics": "One gentle exhale-led hug and inhale-led easing counts as one breath rep. The 8-second source demonstrates two bilateral breath reps. Default reps=6 means six total breaths, not six per leg or a forced 6-second hold; breathing should remain comfortable.",
+      "review": "editorial-pending",
+      "phase.start": {
+        "event": "exhaleHugCloser",
+        "cueAtSeconds": 0.4,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. Guidance is not an audio track baked into the loop."
+      },
+      "phase.peak": {
+        "event": "gentlePause",
+        "cueAtSeconds": 2.5,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. Guidance is not an audio track baked into the loop."
+      },
+      "phase.end": {
+        "event": "inhaleEase",
+        "cueAtSeconds": 2.9,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. Guidance is not an audio track baked into the loop."
+      }
+    },
+    "h-reverse-clam": {
+      "sourceBatch": "catalog/v2/batches/b003.json",
+      "sourceBatchLfSha256": "b2feb4ad3c9dfcea417d04d743903a4f98eb6f8396621f0fcd9b64b936000635",
+      "side": {
+        "mode": "unilateral",
+        "firstWorkingSide": "right-upper-hip",
+        "switchTimesSeconds": [],
+        "externalSideChangeAfterSeconds": 8,
+        "note": "Lie on left forearm/side; right upper foot lifts via hip internal rotation with knees together. Available loop boundary after the side dose, not an in-clip or every-loop forced switch."
+      },
+      "keyMoments": {
+        "start": 0,
+        "peak": 1.8,
+        "end": 8,
+        "switchPoint": {
+          "kind": "loop-boundary",
+          "seconds": 8,
+          "semantics": "Lie on left forearm/side; right upper foot lifts via hip internal rotation with knees together. Available loop boundary after the side dose, not an in-clip or every-loop forced switch. One upper-right-foot/shin lift and controlled lowering counts as one rep with knees together. The 8-second clip contains two right-hip reps while lying on the left side and no side change. Preserve default 12; proposed 12 per working side (six loops) remains editorial pending. Change externally only after the side dose; no mirrored media is produced."
+        }
+      },
+      "countingSemantics": "One upper-right-foot/shin lift and controlled lowering counts as one rep with knees together. The 8-second clip contains two right-hip reps while lying on the left side and no side change. Preserve default 12; proposed 12 per working side (six loops) remains editorial pending. Change externally only after the side dose; no mirrored media is produced.",
+      "review": "editorial-pending",
+      "phase.start": {
+        "event": "liftUpperRightFoot",
+        "cueAtSeconds": 0.3,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. Guidance is not an audio track baked into the loop."
+      },
+      "phase.peak": {
+        "event": "topHold",
+        "cueAtSeconds": 1.8,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. Guidance is not an audio track baked into the loop."
+      },
+      "phase.end": {
+        "event": "lowerUpperRightFoot",
+        "cueAtSeconds": 2.3,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. Guidance is not an audio track baked into the loop."
+      }
+    },
+    "h-supine-twist": {
+      "sourceBatch": "catalog/v2/batches/b003.json",
+      "sourceBatchLfSha256": "b2feb4ad3c9dfcea417d04d743903a4f98eb6f8396621f0fcd9b64b936000635",
+      "side": {
+        "mode": "alternating",
+        "firstWorkingSide": "left-lengthened-body-side",
+        "switchTimesSeconds": [
+          4
+        ],
+        "note": "Both knees first drop right, then left at 4 seconds. Starting side denotes the initially lengthened left body side, not knee travel; source highlight remains both."
+      },
+      "keyMoments": {
+        "start": 0,
+        "peak": 2.3,
+        "end": 8,
+        "switchPoint": {
+          "kind": "in-clip",
+          "seconds": 4,
+          "semantics": "Both knees first drop right, then left at 4 seconds. Starting side denotes the initially lengthened left body side, not knee travel; source highlight remains both. The source demonstrates knees right then left, one 4-second side movement each, with only 1.2 seconds at each peak. Preserve the legacy 40-second-per-side hold prescription but do not claim this dynamic alternating loop implements a continuous 40-second hold. Editorial/playback reconciliation is pending. Starting side left identifies the initially lengthened body side; knee direction is right. No mirrored media."
+        }
+      },
+      "countingSemantics": "The source demonstrates knees right then left, one 4-second side movement each, with only 1.2 seconds at each peak. Preserve the legacy 40-second-per-side hold prescription but do not claim this dynamic alternating loop implements a continuous 40-second hold. Editorial/playback reconciliation is pending. Starting side left identifies the initially lengthened body side; knee direction is right. No mirrored media.",
+      "review": "editorial-pending",
+      "phase.start": {
+        "event": "dropKneesToSide",
+        "cueAtSeconds": 0.3,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. Guidance is not an audio track baked into the loop."
+      },
+      "phase.peak": {
+        "event": "sidePause",
+        "cueAtSeconds": 2.3,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. Guidance is not an audio track baked into the loop."
+      },
+      "phase.end": {
+        "event": "returnCentre",
+        "cueAtSeconds": 2.9,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. Guidance is not an audio track baked into the loop."
+      }
+    },
+    "n-seated-ir-drop": {
+      "sourceBatch": "catalog/v2/batches/b003.json",
+      "sourceBatchLfSha256": "b2feb4ad3c9dfcea417d04d743903a4f98eb6f8396621f0fcd9b64b936000635",
+      "side": {
+        "mode": "alternating",
+        "firstWorkingSide": "right-rotating-hip",
+        "switchTimesSeconds": [
+          4
+        ],
+        "note": "Right knee drops inward first with the right foot planted; the left knee follows after 4 seconds. Both hands remain supporting behind the hips."
+      },
+      "keyMoments": {
+        "start": 0,
+        "peak": 2.2,
+        "end": 8,
+        "switchPoint": {
+          "kind": "in-clip",
+          "seconds": 4,
+          "semantics": "Right knee drops inward first with the right foot planted; the left knee follows after 4 seconds. Both hands remain supporting behind the hips. The 8-second source shows one right-knee drop/return followed by one left-knee drop/return; each peak lasts only 1 second. Preserve the legacy 30-second-per-side static-hold prescription as an unresolved requirement. Alternating dynamic loops must not be represented as a continuous 30-second hold. Editorial and playback reconciliation remain pending."
+        }
+      },
+      "countingSemantics": "The 8-second source shows one right-knee drop/return followed by one left-knee drop/return; each peak lasts only 1 second. Preserve the legacy 30-second-per-side static-hold prescription as an unresolved requirement. Alternating dynamic loops must not be represented as a continuous 30-second hold. Editorial and playback reconciliation remain pending.",
+      "review": "editorial-pending",
+      "phase.start": {
+        "event": "dropWorkingKneeIn",
+        "cueAtSeconds": 0.3,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. Guidance is not an audio track baked into the loop."
+      },
+      "phase.peak": {
+        "event": "innerPause",
+        "cueAtSeconds": 2.2,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. Guidance is not an audio track baked into the loop."
+      },
+      "phase.end": {
+        "event": "returnKneeUpright",
+        "cueAtSeconds": 2.8,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. Guidance is not an audio track baked into the loop."
+      }
+    },
+    "n-thomas-test": {
+      "sourceBatch": "catalog/v2/batches/b003.json",
+      "sourceBatchLfSha256": "b2feb4ad3c9dfcea417d04d743903a4f98eb6f8396621f0fcd9b64b936000635",
+      "side": {
+        "mode": "unilateral",
+        "firstWorkingSide": "right-long-leg-lengthened-hip",
+        "switchTimesSeconds": [],
+        "externalSideChangeAfterSeconds": 8,
+        "note": "Left hand hugs left knee/shin; right leg stays long and right arm rests on the mat. StartingSide right denotes the lengthened front of the right hip. Optional boundary only after the side dose; no in-clip change or mirrored media."
+      },
+      "keyMoments": {
+        "start": 0,
+        "peak": 2.5,
+        "end": 8,
+        "switchPoint": {
+          "kind": "loop-boundary",
+          "seconds": 8,
+          "semantics": "Left hand hugs left knee/shin; right leg stays long and right arm rests on the mat. StartingSide right denotes the lengthened front of the right hip. Optional boundary only after the side dose; no in-clip change or mirrored media. The left knee is hugged while the right long leg/hip is the lengthened side. The 8-second source shows two gentle breath-led draw-and-ease cycles with no switch. Preserve default 30 seconds; proposed per-side timed breathing movement versus the legacy hold label needs editorial confirmation. It is not a 30-second fixed pose or a validated diagnostic test. Opposite-side media is not produced."
+        }
+      },
+      "countingSemantics": "The left knee is hugged while the right long leg/hip is the lengthened side. The 8-second source shows two gentle breath-led draw-and-ease cycles with no switch. Preserve default 30 seconds; proposed per-side timed breathing movement versus the legacy hold label needs editorial confirmation. It is not a 30-second fixed pose or a validated diagnostic test. Opposite-side media is not produced.",
+      "review": "editorial-pending",
+      "phase.start": {
+        "event": "exhaleDrawLeftKneeCloser",
+        "cueAtSeconds": 0.4,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. Guidance is not an audio track baked into the loop."
+      },
+      "phase.peak": {
+        "event": "gentlePause",
+        "cueAtSeconds": 2.5,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. Guidance is not an audio track baked into the loop."
+      },
+      "phase.end": {
+        "event": "inhaleEase",
+        "cueAtSeconds": 2.9,
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "scheduling": "Advance by measured clip duration or omit; never overlap/truncate. Guidance is not an audio track baked into the loop."
+      }
+    }
+  },
+  "playback": {
+    "countdownKeys": [
+      "n.5",
+      "n.4",
+      "n.3",
+      "n.2",
+      "n.1"
+    ],
+    "restGrammar": [
+      "p.rest",
+      "sec.{seconds}"
+    ],
+    "phaseScheduling": "Start cues before their phase by measured clip duration; never overlap or truncate a previous line. Name and point play before the loop. Short phases may omit a cue.",
+    "manualListening": "pending"
+  }
+}

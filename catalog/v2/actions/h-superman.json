@@ -1,0 +1,315 @@
+{
+  "format": "action-package@2",
+  "id": "h-superman",
+  "version": "2.0.0-draft.b001.1",
+  "status": "draft",
+  "definition": {
+    "idMappings": [],
+    "name": {
+      "zh": "俯卧超人式",
+      "en": "Prone Superman"
+    },
+    "purpose": {
+      "zh": "练下背和臀部",
+      "en": "Practice a gentle simultaneous lift of the arms, chest and legs to train the back and hips."
+    },
+    "tags": {
+      "category": "strength",
+      "activeMuscles": [
+        "erectors",
+        "glute-max"
+      ],
+      "synergistMuscles": [
+        "hamstrings",
+        "deltoids",
+        "scapular"
+      ],
+      "equipment": [
+        "mat"
+      ],
+      "position": "prone",
+      "scenes": [
+        "home"
+      ],
+      "difficulty": 1,
+      "trainingType": "strength"
+    },
+    "unilateral": false,
+    "startingSide": null,
+    "cues": [
+      {
+        "id": "cue1",
+        "text": {
+          "zh": "手脚轻轻抬起，颈部自然延长，不追求高度",
+          "en": "Lift your arms and legs gently, keep your neck long, and avoid forcing height"
+        },
+        "primary": true
+      },
+      {
+        "id": "cue2",
+        "text": {
+          "zh": "俯卧，手臂向前伸，骨盆和腹部保持承托",
+          "en": "Lie prone with the arms reaching forwards and the pelvis and abdomen supported."
+        },
+        "primary": false
+      },
+      {
+        "id": "cue3",
+        "text": {
+          "zh": "抬起时继续呼吸，保持小幅可控",
+          "en": "Keep breathing as you lift through a small controlled range."
+        },
+        "primary": false
+      },
+      {
+        "id": "cue4",
+        "text": {
+          "zh": "停留后缓慢放回，不甩动手脚",
+          "en": "Pause and lower slowly without swinging the arms or legs."
+        },
+        "primary": false
+      }
+    ],
+    "commonErrors": [
+      {
+        "zh": "猛抬下巴或通过过度拱腰追求高度",
+        "en": "Throwing the chin up or overextending the lower back to gain height."
+      },
+      {
+        "zh": "手脚甩动、憋气，下降失控",
+        "en": "Swinging the limbs, holding the breath or dropping without control."
+      }
+    ],
+    "cautions": {
+      "items": [
+        {
+          "zh": "腰背与颈：只做舒适的小幅抬起，视线保持朝向垫面。",
+          "en": "Lower back and neck: lift through a comfortable small range while looking towards the mat."
+        },
+        {
+          "zh": "肩与髋：手脚同步缓慢移动，不用扯拉或弹振增加幅度。",
+          "en": "Shoulders and hips: move the limbs slowly without pulling or bouncing into extra range."
+        }
+      ],
+      "review": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidence": []
+      }
+    },
+    "contraindications": {
+      "items": [
+        {
+          "zh": "本动作引发疼痛时停止，不通过增加幅度或负重继续；先向医生或物理治疗师确认。",
+          "en": "Stop if this exercise causes pain; do not add range or load before seeking clinical advice."
+        },
+        {
+          "zh": "已有医嘱限制俯卧、脊柱伸展或肩髋活动时，先取得许可。",
+          "en": "Obtain clearance first if prone exercise, spinal extension or shoulder or hip movement has been restricted."
+        }
+      ],
+      "review": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidence": []
+      }
+    },
+    "alternatives": [
+      "w-prone-swimmer"
+    ],
+    "regressions": [
+      "n-prone-hip-ext"
+    ],
+    "progressions": [],
+    "defaultDose": {
+      "mode": "reps",
+      "sets": 2,
+      "reps": 10,
+      "restSeconds": 30
+    },
+    "doseRange": {
+      "sets": [
+        1,
+        3
+      ],
+      "reps": [
+        5,
+        15
+      ],
+      "restSeconds": [
+        0,
+        60
+      ]
+    },
+    "rhythm": {
+      "kind": "rep_updown",
+      "leadSeconds": 0,
+      "source": "b001-source-timeline",
+      "phases": [
+        {
+          "id": "prepare",
+          "seconds": 0.2
+        },
+        {
+          "id": "lift",
+          "seconds": 1.2
+        },
+        {
+          "id": "hold",
+          "seconds": 1.5
+        },
+        {
+          "id": "lower",
+          "seconds": 1.0
+        },
+        {
+          "id": "reset",
+          "seconds": 0.1
+        }
+      ]
+    },
+    "countingSemantics": "One simultaneous arm/chest/leg lift and lowering counts as one rep; 8 seconds contains two reps.",
+    "apps": [
+      "smartfit"
+    ],
+    "editorialReview": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "evidence": []
+    },
+    "editorialNotes": [
+      "旧catalog明确替代w-prone-swimmer；它是不同的俯卧后链动作，须使用各自剂量。",
+      "n-prone-hip-ext减少同时抬胸/双臂要求，只能作臀部伸髋目标的降阶候选，不是超人式完整等价替换。独立同模式进阶ID未有。",
+      "相位来自catalog/v2/batches/b001.json真实秒区间；剂量数字与范围保持旧catalog，rhythm不附旧reps来覆盖默认剂量。",
+      "双语注意、通用禁用筛查、协同肌群与关系均已有具体草稿，pending表示未审而非缺数据；协同包含姿势稳定或次要拉伸角色，不作为肌电激活或额外高亮处方。",
+      "关系目标为本仓库真实ID候选，但未必已有同模型可发布v2包；不得自动回退弃用模型素材。空关系数组的缺口见逐动作说明。",
+      "医学通用筛查与证据边界沿用catalog/v2/definition-evidence.md所列AAOS/NHS一手资料；不编造疾病特异绝对禁忌。所有编辑与医学审核保持pending。"
+    ]
+  },
+  "source": {
+    "model": {
+      "id": "training-human-v2plus",
+      "version": "1.0.0-rc2",
+      "manifest": {
+        "root": "repo",
+        "path": "drill-anim/models/training-human-v2plus.json",
+        "sha256": "ec2bc815ded157dbc7673e283ed9b6bb1baa710a39ce3a02f88453e8d7fb0a1d",
+        "bytes": 6494,
+        "normalization": "lf"
+      }
+    },
+    "spec": {
+      "root": "repo",
+      "path": "drill-anim/specs/h-superman-r2.js",
+      "sha256": "bb60b133cfad91c37ae749bfb4feea371350432d70b0550ec46ac4e13f76d8ad",
+      "bytes": 472,
+      "normalization": "lf"
+    },
+    "dependencies": [
+      {
+        "root": "repo",
+        "path": "drill-anim/lib/home-anim.mjs",
+        "sha256": "1798c9e55c28b32391b7ef32aa358427b4743ee1959f86ec488a95fe88a05557",
+        "bytes": 3691,
+        "normalization": "lf"
+      },
+      {
+        "root": "repo",
+        "path": "drill-anim/lib/ss-geo.mjs",
+        "sha256": "45ca774079e3a85ecc4f924a3220d4baa721f0435e16f6e6e21ffa19e17e8603",
+        "bytes": 3700,
+        "normalization": "lf"
+      },
+      {
+        "root": "repo",
+        "path": "drill-anim/specs/h-superman.js",
+        "sha256": "ec3175cd21d081d368a884350d1ca3837c43cba6d1714f449efa697219e03bfc",
+        "bytes": 4638,
+        "normalization": "lf"
+      }
+    ],
+    "keyMoments": {
+      "start": 0,
+      "peak": 2.2,
+      "end": 8
+    },
+    "highlightMuscles": [
+      "erectors",
+      "glute-max"
+    ],
+    "qa": {
+      "intersections": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidence": [],
+        "framesReviewed": []
+      },
+      "handsFeet": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidence": [],
+        "framesReviewed": []
+      },
+      "propFlicker": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidence": [],
+        "framesReviewed": []
+      },
+      "loopSeam": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidence": [],
+        "framesReviewed": []
+      }
+    }
+  },
+  "masters": {
+    "requiredSkins": [
+      "realistic",
+      "tech-white",
+      "neon-night",
+      "neon-night-b",
+      "hologram"
+    ],
+    "skins": {},
+    "loopReview": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "evidence": []
+    }
+  },
+  "derivatives": {
+    "method": "composite-from-masters",
+    "mirrored": false,
+    "variants": [],
+    "transparentCovers": {}
+  },
+  "voice": {
+    "actionId": "h-superman",
+    "manifest": {
+      "root": "repo",
+      "path": "catalog/voice-v2/batches/b001-manifest.json",
+      "sha256": "31d97faf1000eceafa65bf290e66a9265d82d86425ab8ce3ed4f67f03ee401c0",
+      "bytes": 270954
+    }
+  },
+  "validation": {
+    "modelVersion": "1.0.0-rc2",
+    "mirrorGenerated": false,
+    "review": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "evidence": []
+    }
+  }
+}

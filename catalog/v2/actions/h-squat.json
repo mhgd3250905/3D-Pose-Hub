@@ -1,0 +1,316 @@
+{
+  "format": "action-package@2",
+  "id": "h-squat",
+  "version": "2.0.0-draft.b001.1",
+  "status": "draft",
+  "definition": {
+    "idMappings": [],
+    "name": {
+      "zh": "徒手深蹲",
+      "en": "Bodyweight squat"
+    },
+    "purpose": {
+      "zh": "练大腿前侧和臀部",
+      "en": "Practice controlled squatting to train the thighs and hips."
+    },
+    "tags": {
+      "category": "strength",
+      "activeMuscles": [
+        "quadriceps",
+        "glute-max"
+      ],
+      "synergistMuscles": [
+        "hamstrings",
+        "calves",
+        "abs"
+      ],
+      "equipment": [],
+      "position": "standing",
+      "scenes": [
+        "home",
+        "office"
+      ],
+      "difficulty": 1,
+      "trainingType": "strength"
+    },
+    "unilateral": false,
+    "startingSide": null,
+    "cues": [
+      {
+        "id": "cue1",
+        "text": {
+          "zh": "脚跟踩稳，膝盖对准脚尖",
+          "en": "Heels down, knees track over the toes"
+        },
+        "primary": true
+      },
+      {
+        "id": "cue2",
+        "text": {
+          "zh": "臀部向后下坐，双臂前伸帮助平衡",
+          "en": "Sit your hips back and down, reaching your arms forwards for balance."
+        },
+        "primary": false
+      },
+      {
+        "id": "cue3",
+        "text": {
+          "zh": "在自己能控制的幅度下蹲，再平稳站起",
+          "en": "Squat only as far as you can control, then stand up smoothly."
+        },
+        "primary": false
+      },
+      {
+        "id": "cue4",
+        "text": {
+          "zh": "保持呼吸，双脚持续稳定着地",
+          "en": "Keep breathing and keep both feet planted."
+        },
+        "primary": false
+      }
+    ],
+    "commonErrors": [
+      {
+        "zh": "膝盖失控内扣，脚跟明显离地",
+        "en": "Letting the knees collapse inwards or lifting the heels."
+      },
+      {
+        "zh": "为追求深度而突然塌腰或失去平衡",
+        "en": "Forcing depth by losing trunk control or balance."
+      }
+    ],
+    "cautions": {
+      "items": [
+        {
+          "zh": "膝与踝：膝盖沿脚尖方向移动，脚跟保持稳定承重。",
+          "en": "Knees and ankles: let the knees follow the toes while keeping the heels planted."
+        },
+        {
+          "zh": "腰背：保持躯干可控，深度以当前活动范围和平衡能力为限。",
+          "en": "Lower back: keep the trunk controlled and choose a depth that suits your current mobility and balance."
+        }
+      ],
+      "review": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidence": []
+      }
+    },
+    "contraindications": {
+      "items": [
+        {
+          "zh": "本动作引发疼痛时停止，不通过增加幅度或负重继续；先向医生或物理治疗师确认。",
+          "en": "Stop if this exercise causes pain; do not add range or load before seeking clinical advice."
+        },
+        {
+          "zh": "已有医嘱限制下肢负重或髋、膝、踝活动时，先取得许可。",
+          "en": "Obtain clearance first if lower-limb loading or hip, knee or ankle movement has been restricted."
+        }
+      ],
+      "review": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidence": []
+      }
+    },
+    "alternatives": [
+      "h-chair-step-up",
+      "w-wall-sit"
+    ],
+    "regressions": [],
+    "progressions": [
+      "h-bulgarian"
+    ],
+    "defaultDose": {
+      "mode": "reps",
+      "sets": 3,
+      "reps": 12,
+      "restSeconds": 30
+    },
+    "doseRange": {
+      "sets": [
+        1,
+        4
+      ],
+      "reps": [
+        6,
+        18
+      ],
+      "restSeconds": [
+        0,
+        60
+      ]
+    },
+    "rhythm": {
+      "kind": "rep_updown",
+      "leadSeconds": 0,
+      "source": "b001-source-timeline",
+      "phases": [
+        {
+          "id": "prepare",
+          "seconds": 0.4
+        },
+        {
+          "id": "squatDown",
+          "seconds": 1.5
+        },
+        {
+          "id": "bottomHold",
+          "seconds": 0.4
+        },
+        {
+          "id": "standUp",
+          "seconds": 1.4
+        },
+        {
+          "id": "reset",
+          "seconds": 0.3
+        }
+      ]
+    },
+    "countingSemantics": "One complete down-and-up counts as one rep; 8 seconds contains two bilateral reps.",
+    "apps": [
+      "hiplab",
+      "smartfit"
+    ],
+    "editorialReview": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "evidence": []
+    },
+    "editorialNotes": [
+      "名称与主要点沿用 HipLab 已有 h-squat 音频原句；不把旧 rhythm.reps=8 当作新的默认剂量，defaultDose.reps=12 保持。",
+      "替代是相同臀腿目标的不同体位/支撑形式；h-bulgarian为后脚抬高单腿主力蹲的进阶候选，不代表已接受统一难度顺序。降阶可先缩小同ID幅度，仓库无独立小幅深蹲ID。",
+      "相位来自catalog/v2/batches/b001.json真实秒区间；剂量数字与范围保持旧catalog，rhythm不附旧reps来覆盖默认剂量。",
+      "双语注意、通用禁用筛查、协同肌群与关系均已有具体草稿，pending表示未审而非缺数据；协同包含姿势稳定或次要拉伸角色，不作为肌电激活或额外高亮处方。",
+      "关系目标为本仓库真实ID候选，但未必已有同模型可发布v2包；不得自动回退弃用模型素材。空关系数组的缺口见逐动作说明。",
+      "医学通用筛查与证据边界沿用catalog/v2/definition-evidence.md所列AAOS/NHS一手资料；不编造疾病特异绝对禁忌。所有编辑与医学审核保持pending。"
+    ]
+  },
+  "source": {
+    "model": {
+      "id": "training-human-v2plus",
+      "version": "1.0.0-rc2",
+      "manifest": {
+        "root": "repo",
+        "path": "drill-anim/models/training-human-v2plus.json",
+        "sha256": "ec2bc815ded157dbc7673e283ed9b6bb1baa710a39ce3a02f88453e8d7fb0a1d",
+        "bytes": 6494,
+        "normalization": "lf"
+      }
+    },
+    "spec": {
+      "root": "repo",
+      "path": "drill-anim/specs/h-squat-r2.js",
+      "sha256": "7900bbd851ef7cf52caaca787c478ecbc621cde6cb93573a03f25368ee31464a",
+      "bytes": 466,
+      "normalization": "lf"
+    },
+    "dependencies": [
+      {
+        "root": "repo",
+        "path": "drill-anim/lib/home-anim.mjs",
+        "sha256": "1798c9e55c28b32391b7ef32aa358427b4743ee1959f86ec488a95fe88a05557",
+        "bytes": 3691,
+        "normalization": "lf"
+      },
+      {
+        "root": "repo",
+        "path": "drill-anim/lib/ss-geo.mjs",
+        "sha256": "45ca774079e3a85ecc4f924a3220d4baa721f0435e16f6e6e21ffa19e17e8603",
+        "bytes": 3700,
+        "normalization": "lf"
+      },
+      {
+        "root": "repo",
+        "path": "drill-anim/specs/h-squat.js",
+        "sha256": "349e5313795134d9554245b07c13ca94c6f9102a4d41c2ed8ae61cd782e1e58d",
+        "bytes": 2778,
+        "normalization": "lf"
+      }
+    ],
+    "keyMoments": {
+      "start": 0,
+      "peak": 2.1,
+      "end": 8
+    },
+    "highlightMuscles": [
+      "quadriceps",
+      "glute-max"
+    ],
+    "qa": {
+      "intersections": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidence": [],
+        "framesReviewed": []
+      },
+      "handsFeet": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidence": [],
+        "framesReviewed": []
+      },
+      "propFlicker": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidence": [],
+        "framesReviewed": []
+      },
+      "loopSeam": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidence": [],
+        "framesReviewed": []
+      }
+    }
+  },
+  "masters": {
+    "requiredSkins": [
+      "realistic",
+      "tech-white",
+      "neon-night",
+      "neon-night-b",
+      "hologram"
+    ],
+    "skins": {},
+    "loopReview": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "evidence": []
+    }
+  },
+  "derivatives": {
+    "method": "composite-from-masters",
+    "mirrored": false,
+    "variants": [],
+    "transparentCovers": {}
+  },
+  "voice": {
+    "actionId": "h-squat",
+    "manifest": {
+      "root": "repo",
+      "path": "catalog/voice-v2/batches/b001-manifest.json",
+      "sha256": "31d97faf1000eceafa65bf290e66a9265d82d86425ab8ce3ed4f67f03ee401c0",
+      "bytes": 270954
+    }
+  },
+  "validation": {
+    "modelVersion": "1.0.0-rc2",
+    "mirrorGenerated": false,
+    "review": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "evidence": []
+    }
+  }
+}

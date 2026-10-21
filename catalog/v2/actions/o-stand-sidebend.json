@@ -1,0 +1,310 @@
+{
+  "format": "action-package@2",
+  "id": "o-stand-sidebend",
+  "version": "2.0.0-draft.b001.1",
+  "status": "draft",
+  "definition": {
+    "idMappings": [],
+    "name": {
+      "zh": "站姿举手侧屈",
+      "en": "Standing Overhead Side Bend"
+    },
+    "purpose": {
+      "zh": "拉伸腰两侧",
+      "en": "Practice a controlled standing side bend to lengthen one side of the waist."
+    },
+    "tags": {
+      "category": "stretch",
+      "activeMuscles": [
+        "obliques"
+      ],
+      "synergistMuscles": [
+        "lats",
+        "abs"
+      ],
+      "equipment": [],
+      "position": "standing",
+      "scenes": [
+        "home",
+        "office"
+      ],
+      "difficulty": 1,
+      "trainingType": "stretch"
+    },
+    "unilateral": true,
+    "startingSide": "right",
+    "cues": [
+      {
+        "id": "cue1",
+        "text": {
+          "zh": "右手举过头，身体慢慢向左侧弯，不前倾",
+          "en": "Reach your right arm overhead and bend slowly to the left without leaning forwards"
+        },
+        "primary": true
+      },
+      {
+        "id": "cue2",
+        "text": {
+          "zh": "双脚稳定承重，骨盆保持在双脚上方",
+          "en": "Keep both feet planted with the pelvis centred over them."
+        },
+        "primary": false
+      },
+      {
+        "id": "cue3",
+        "text": {
+          "zh": "侧弯保持舒适范围，继续呼吸，不追求深度",
+          "en": "Bend only through a comfortable range and keep breathing rather than forcing depth."
+        },
+        "primary": false
+      },
+      {
+        "id": "cue4",
+        "text": {
+          "zh": "慢慢回到直立，完成当前侧剂量后再提示换侧",
+          "en": "Return slowly upright and finish the current side dose before cueing a side change."
+        },
+        "primary": false
+      }
+    ],
+    "commonErrors": [
+      {
+        "zh": "变成前屈或旋转，骨盆明显侧移",
+        "en": "Bending forwards or twisting while shifting the pelvis sideways."
+      },
+      {
+        "zh": "耸肩、憋气或用弹振强压侧弯",
+        "en": "Shrugging, holding the breath or bouncing into the side bend."
+      }
+    ],
+    "cautions": {
+      "items": [
+        {
+          "zh": "肩与颈：右臂过头以舒适为限，不耸肩挤压颈部。",
+          "en": "Shoulders and neck: keep the right arm overhead comfortably without shrugging into the neck."
+        },
+        {
+          "zh": "腰侧与平衡：双脚踩稳，只侧弯，不通过后仰或前倾增加幅度。",
+          "en": "Side of the waist and balance: keep the feet planted and avoid leaning forwards or backwards to increase the range."
+        }
+      ],
+      "review": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidence": []
+      }
+    },
+    "contraindications": {
+      "items": [
+        {
+          "zh": "本动作引发疼痛时停止，不通过增加幅度或负重继续；先向医生或物理治疗师确认。",
+          "en": "Stop if this exercise causes pain; do not add range or load before seeking clinical advice."
+        },
+        {
+          "zh": "已有医嘱限制站立平衡训练、过头伸臂或脊柱侧屈时，先取得许可。",
+          "en": "Obtain clearance first if standing balance work, overhead reaching or spinal side bending has been restricted."
+        }
+      ],
+      "review": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidence": []
+      }
+    },
+    "alternatives": [
+      "h-banana"
+    ],
+    "regressions": [
+      "h-banana"
+    ],
+    "progressions": [],
+    "defaultDose": {
+      "mode": "time",
+      "sets": 1,
+      "seconds": 30,
+      "restSeconds": 10
+    },
+    "doseRange": {
+      "sets": [
+        1,
+        2
+      ],
+      "seconds": [
+        15,
+        60
+      ],
+      "restSeconds": [
+        0,
+        60
+      ]
+    },
+    "rhythm": {
+      "kind": "rep_cycle",
+      "leadSeconds": 0,
+      "source": "b001-source-timeline",
+      "phases": [
+        {
+          "id": "prepare",
+          "seconds": 0.6
+        },
+        {
+          "id": "bendLeftTo85Percent",
+          "seconds": 1.4
+        },
+        {
+          "id": "deepenLeft",
+          "seconds": 1.8
+        },
+        {
+          "id": "releaseTo85Percent",
+          "seconds": 1.8
+        },
+        {
+          "id": "returnUpright",
+          "seconds": 1.4
+        },
+        {
+          "id": "reset",
+          "seconds": 1
+        }
+      ]
+    },
+    "countingSemantics": "Timed unilateral stretch of the right side while bending left. The 8-second source demonstrates one slow bend-and-return with an instantaneous peak, not an 8-second hold. Existing 30 seconds is per-side timed work; opposite-side media is not generated.",
+    "apps": [
+      "smartfit"
+    ],
+    "editorialReview": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "evidence": []
+    },
+    "editorialNotes": [
+      "root已裁决：本片仅右臂过头、身体向LEFT弯以拉RIGHT侧；startingSide=right指被拉伸侧。peak3.8秒没有停留段，不播成保持8秒。",
+      "默认30秒每侧保持，8秒仅是可用的外部换侧提示边界，不强制每loop切侧；本片不含另一侧且不生成镜像素材。",
+      "背景办公椅保留在props，但动作不依赖椅子承重，equipment沿旧目录为空。h-banana为去掉站立平衡要求的体侧拉伸替代/降阶候选，非完全等价处方；独立进阶ID未有。",
+      "相位来自catalog/v2/batches/b001.json真实秒区间；剂量数字与范围保持旧catalog，rhythm不附旧reps来覆盖默认剂量。",
+      "双语注意、通用禁用筛查、协同肌群与关系均已有具体草稿，pending表示未审而非缺数据；协同包含姿势稳定或次要拉伸角色，不作为肌电激活或额外高亮处方。",
+      "关系目标为本仓库真实ID候选，但未必已有同模型可发布v2包；不得自动回退弃用模型素材。空关系数组的缺口见逐动作说明。",
+      "医学通用筛查与证据边界沿用catalog/v2/definition-evidence.md所列AAOS/NHS一手资料；不编造疾病特异绝对禁忌。所有编辑与医学审核保持pending。"
+    ],
+    "movementSides": "This media only bends left to stretch right. The event at 8 seconds is an optional external side-change cue, not a switch encoded in the clip and not a mirrored asset."
+  },
+  "source": {
+    "model": {
+      "id": "training-human-v2plus",
+      "version": "1.0.0-rc2",
+      "manifest": {
+        "root": "repo",
+        "path": "drill-anim/models/training-human-v2plus.json",
+        "sha256": "ec2bc815ded157dbc7673e283ed9b6bb1baa710a39ce3a02f88453e8d7fb0a1d",
+        "bytes": 6494,
+        "normalization": "lf"
+      }
+    },
+    "spec": {
+      "root": "repo",
+      "path": "drill-anim/specs/o-stand-sidebend-r2.js",
+      "sha256": "54b022776db379211df7a7dc2a53ee84b3d85e82571be74d7eaef7dd179571e2",
+      "bytes": 484,
+      "normalization": "lf"
+    },
+    "dependencies": [
+      {
+        "root": "repo",
+        "path": "drill-anim/specs/o-stand-sidebend.js",
+        "sha256": "971b40526a08ecf039b675f9d3c156b45aad3e3bd332b203fbe866fb0861413e",
+        "bytes": 2457,
+        "normalization": "lf"
+      }
+    ],
+    "keyMoments": {
+      "start": 0,
+      "peak": 3.8,
+      "end": 8,
+      "switchPoint": {
+        "kind": "loop-boundary",
+        "seconds": 8,
+        "semantics": "This media only bends left to stretch right. The event at 8 seconds is an optional external side-change cue, not a switch encoded in the clip and not a mirrored asset. Complete the prescribed per-side time before changing sides; the boundary is available, not mandatory every loop."
+      }
+    },
+    "highlightMuscles": [
+      "obliques"
+    ],
+    "qa": {
+      "intersections": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidence": [],
+        "framesReviewed": []
+      },
+      "handsFeet": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidence": [],
+        "framesReviewed": []
+      },
+      "propFlicker": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidence": [],
+        "framesReviewed": []
+      },
+      "loopSeam": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidence": [],
+        "framesReviewed": []
+      }
+    },
+    "demonstratedSide": "right",
+    "oppositeSideMedia": "not-produced"
+  },
+  "masters": {
+    "requiredSkins": [
+      "realistic",
+      "tech-white",
+      "neon-night",
+      "neon-night-b",
+      "hologram"
+    ],
+    "skins": {},
+    "loopReview": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "evidence": []
+    }
+  },
+  "derivatives": {
+    "method": "composite-from-masters",
+    "mirrored": false,
+    "variants": [],
+    "transparentCovers": {}
+  },
+  "voice": {
+    "actionId": "o-stand-sidebend",
+    "manifest": {
+      "root": "repo",
+      "path": "catalog/voice-v2/batches/b001-manifest.json",
+      "sha256": "31d97faf1000eceafa65bf290e66a9265d82d86425ab8ce3ed4f67f03ee401c0",
+      "bytes": 270954
+    }
+  },
+  "validation": {
+    "modelVersion": "1.0.0-rc2",
+    "mirrorGenerated": false,
+    "review": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "evidence": []
+    }
+  }
+}

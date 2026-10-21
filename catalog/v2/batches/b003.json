@@ -1,0 +1,559 @@
+{
+  "format": "pose-hub-v2-production-batch@1",
+  "id": "b003",
+  "description": "Eight native-eight-second floor-action migrations. All source, physical and visual review remain pending; source timing and solver anchors are preserved.",
+  "model": {
+    "id": "training-human-v2plus",
+    "version": "1.0.0-rc2"
+  },
+  "skins": [
+    "realistic",
+    "tech-white",
+    "neon-night",
+    "neon-night-b",
+    "hologram"
+  ],
+  "fps": 30,
+  "width": 1080,
+  "height": 1080,
+  "durationSeconds": 8,
+  "maxWorkers": 2,
+  "reviewPolicy": "External actual visual review bound to source and preview manifest/index/PNG SHA is required before full production. No automatic review approval.",
+  "actions": [
+    {
+      "id": "hip-flexors-A",
+      "spec": "drill-anim/specs/hip-flexors-A-r2.js",
+      "source": {
+        "path": "drill-anim/specs/hip-flexors-A.js",
+        "sha256": "1aa89cba0c2962a1f89370d7b347e14074d0684474b76962bb17ab27efe345b5"
+      },
+      "peakFrame": 57,
+      "previewFrames": [
+        0,
+        12,
+        24,
+        57,
+        90,
+        120,
+        144,
+        177,
+        239,
+        240
+      ],
+      "phase": {
+        "review": "source-transcribed-editorial-pending",
+        "cycleSeconds": 4,
+        "cyclesPerClip": 2.0,
+        "events": [
+          {
+            "startSeconds": 0,
+            "endSeconds": 0.4,
+            "name": "prepare"
+          },
+          {
+            "startSeconds": 0.4,
+            "endSeconds": 1.2,
+            "name": "liftBothLegs"
+          },
+          {
+            "startSeconds": 1.2,
+            "endSeconds": 2.6,
+            "name": "topHold"
+          },
+          {
+            "startSeconds": 2.6,
+            "endSeconds": 3.4,
+            "name": "lowerBothLegs"
+          },
+          {
+            "startSeconds": 3.4,
+            "endSeconds": 4,
+            "name": "reset"
+          }
+        ],
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "countingSemantics": "One simultaneous lift and lowering of both straight legs counts as one rep; the 8-second source contains two bilateral reps. Preserve default 8 reps per set, not eight per leg. The source holds 1.4 seconds at each peak, not a prescribed extra hold outside the demonstrated rhythm."
+      },
+      "side": {
+        "mode": "bilateral",
+        "firstWorkingSide": "both",
+        "switchTimesSeconds": []
+      },
+      "risks": [
+        "Supporting floor hands retain original locks and reach177; inspect actual visible finger minY, palm pins and elbows >=176 without replacing floor with free hands.",
+        "Inspect both knees >=176, heel lift/readability, pelvis/mat and hand/shin clearance; original source corrected hands outside the shins.",
+        "Legacy quadRect highlight panel may require explicit new-pipeline support/occlusion verification; no automatic highlight acceptance."
+      ]
+    },
+    {
+      "id": "h-9090-liftoff",
+      "spec": "drill-anim/specs/h-9090-liftoff-r3.js",
+      "source": {
+        "path": "drill-anim/specs/h-9090-liftoff-r2.js",
+        "sha256": "970923cb389bef0c36da460477edf38b6c4e9b52926081dc6df357a9ff1cdacc"
+      },
+      "peakFrame": 60,
+      "previewFrames": [
+        0,
+        9,
+        30,
+        60,
+        90,
+        120,
+        150,
+        180,
+        239,
+        240
+      ],
+      "phase": {
+        "review": "source-transcribed-editorial-pending",
+        "cycleSeconds": 4,
+        "cyclesPerClip": 2.0,
+        "events": [
+          {
+            "startSeconds": 0,
+            "endSeconds": 0.3,
+            "name": "prepare"
+          },
+          {
+            "startSeconds": 0.3,
+            "endSeconds": 1.5,
+            "name": "liftRearFootAndShin"
+          },
+          {
+            "startSeconds": 1.5,
+            "endSeconds": 2.5,
+            "name": "topHold"
+          },
+          {
+            "startSeconds": 2.5,
+            "endSeconds": 3.7,
+            "name": "lowerRearFootAndShin"
+          },
+          {
+            "startSeconds": 3.7,
+            "endSeconds": 4,
+            "name": "reset"
+          }
+        ],
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "countingSemantics": "One rear-foot/shin lift and controlled lowering counts as one rep. The left rear knee stays on the mat and the right leg is in front. The 8-second clip has two left-hip reps and no switch. Preserve default 8; proposed per-side interpretation (four loops before changing) requires editorial approval because legacy dose does not explicitly identify per-side versus total. Opposite-side media is not produced."
+      },
+      "side": {
+        "mode": "unilateral",
+        "firstWorkingSide": "left-rear-hip",
+        "switchTimesSeconds": [],
+        "externalSideChangeAfterSeconds": 8,
+        "note": "Left foot/shin lifts via rear-hip internal rotation while left knee stays supported; right leg remains in front. Optional boundary after completed per-side dose, not an in-clip or every-loop mandatory switch."
+      },
+      "risks": [
+        "The selected r2 depends on _9090-feet.mjs and hard-coded old-rig REST/knee geometry; inspect new knee location, foot orientation and contact through lift. Do not silently revise the shared module.",
+        "Inspect hand/finger-to-knee contact and near-floor toe/shin clearance; keep the rear knee supported, not lifting as the old voice incorrectly instructed."
+      ]
+    },
+    {
+      "id": "h-butterfly-active",
+      "spec": "drill-anim/specs/h-butterfly-active-r2.js",
+      "source": {
+        "path": "drill-anim/specs/h-butterfly-active.js",
+        "sha256": "58be080dfcac5075cb466e7c990e4b1a171da4bc77fb652a6b8865131ff13bb5"
+      },
+      "peakFrame": 69,
+      "previewFrames": [
+        0,
+        6,
+        36,
+        69,
+        90,
+        120,
+        156,
+        189,
+        239,
+        240
+      ],
+      "phase": {
+        "review": "source-transcribed-editorial-pending",
+        "cycleSeconds": 4,
+        "cyclesPerClip": 2.0,
+        "events": [
+          {
+            "startSeconds": 0,
+            "endSeconds": 0.2,
+            "name": "prepare"
+          },
+          {
+            "startSeconds": 0.2,
+            "endSeconds": 2,
+            "name": "openKnees"
+          },
+          {
+            "startSeconds": 2,
+            "endSeconds": 2.6,
+            "name": "openPause"
+          },
+          {
+            "startSeconds": 2.6,
+            "endSeconds": 3.8,
+            "name": "closeKnees"
+          },
+          {
+            "startSeconds": 3.8,
+            "endSeconds": 4,
+            "name": "reset"
+          }
+        ],
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "countingSemantics": "One simultaneous opening and closing of both knees counts as one rep. The 8-second demonstration contains two bilateral reps; default 10 means ten opening-closing reps in total, not ten per knee or a static hold."
+      },
+      "side": {
+        "mode": "bilateral",
+        "firstWorkingSide": "both",
+        "switchTimesSeconds": []
+      },
+      "risks": [
+        "Inspect both relaxed palms/fingers near y27mm, head/shoulder/pelvis contact and soles together throughout; source pins=[] does not prove no sliding.",
+        "Inspect ankle/free-foot orientation and skin folds/groin occlusion at both open peaks on the new mesh."
+      ]
+    },
+    {
+      "id": "h-knee-hug",
+      "spec": "drill-anim/specs/h-knee-hug-r3.js",
+      "source": {
+        "path": "drill-anim/specs/h-knee-hug-r2.js",
+        "sha256": "73db57f4a968ef93b49cad8dfa07838791f5a2808ae6d1add6b36b3f12ae3e2a"
+      },
+      "peakFrame": 75,
+      "previewFrames": [
+        0,
+        12,
+        36,
+        75,
+        108,
+        120,
+        156,
+        195,
+        239,
+        240
+      ],
+      "phase": {
+        "review": "source-transcribed-editorial-pending",
+        "cycleSeconds": 4,
+        "cyclesPerClip": 2.0,
+        "events": [
+          {
+            "startSeconds": 0,
+            "endSeconds": 0.4,
+            "name": "easePrepare"
+          },
+          {
+            "startSeconds": 0.4,
+            "endSeconds": 2.2,
+            "name": "exhaleHugCloser"
+          },
+          {
+            "startSeconds": 2.2,
+            "endSeconds": 2.9,
+            "name": "gentlePause"
+          },
+          {
+            "startSeconds": 2.9,
+            "endSeconds": 4,
+            "name": "inhaleEase"
+          }
+        ],
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "countingSemantics": "One gentle exhale-led hug and inhale-led easing counts as one breath rep. The 8-second source demonstrates two bilateral breath reps. Default reps=6 means six total breaths, not six per leg or a forced 6-second hold; breathing should remain comfortable."
+      },
+      "side": {
+        "mode": "bilateral",
+        "firstWorkingSide": "both",
+        "switchTimesSeconds": []
+      },
+      "risks": [
+        "Inspect repaired hand-to-own-shin contact, fingers across the midline and actual maximum hip flexion on the new mesh; old r2 thresholds do not award new source QA.",
+        "Inspect head/shoulder support and deliberate pelvic curl; do not require the pelvis to remain pinned throughout."
+      ]
+    },
+    {
+      "id": "h-reverse-clam",
+      "spec": "drill-anim/specs/h-reverse-clam-r2.js",
+      "source": {
+        "path": "drill-anim/specs/h-reverse-clam.js",
+        "sha256": "d6dc4d1b87390a988f617381cb2bc8fe5d6cac45d353ba9fae84e550aef97db2"
+      },
+      "peakFrame": 54,
+      "previewFrames": [
+        0,
+        9,
+        27,
+        54,
+        87,
+        120,
+        147,
+        174,
+        239,
+        240
+      ],
+      "phase": {
+        "review": "source-transcribed-editorial-pending",
+        "cycleSeconds": 4,
+        "cyclesPerClip": 2.0,
+        "events": [
+          {
+            "startSeconds": 0,
+            "endSeconds": 0.3,
+            "name": "prepare"
+          },
+          {
+            "startSeconds": 0.3,
+            "endSeconds": 1.4,
+            "name": "liftUpperRightFoot"
+          },
+          {
+            "startSeconds": 1.4,
+            "endSeconds": 2.3,
+            "name": "topHold"
+          },
+          {
+            "startSeconds": 2.3,
+            "endSeconds": 3.5,
+            "name": "lowerUpperRightFoot"
+          },
+          {
+            "startSeconds": 3.5,
+            "endSeconds": 4,
+            "name": "reset"
+          }
+        ],
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "countingSemantics": "One upper-right-foot/shin lift and controlled lowering counts as one rep with knees together. The 8-second clip contains two right-hip reps while lying on the left side and no side change. Preserve default 12; proposed 12 per working side (six loops) remains editorial pending. Change externally only after the side dose; no mirrored media is produced."
+      },
+      "side": {
+        "mode": "unilateral",
+        "firstWorkingSide": "right-upper-hip",
+        "switchTimesSeconds": [],
+        "externalSideChangeAfterSeconds": 8,
+        "note": "Lie on left forearm/side; right upper foot lifts via hip internal rotation with knees together. Available loop boundary after the side dose, not an in-clip or every-loop forced switch."
+      },
+      "risks": [
+        "Inspect supporting left elbow/palm/finger floor contact and pin continuity, right hand/hip contact, both knees touching and ankle clearance.",
+        "Old computed elbow and shin arc use old REST lengths; new mesh must be measured, and left floor-hand lock must not be discarded during future contact calibration."
+      ]
+    },
+    {
+      "id": "h-supine-twist",
+      "spec": "drill-anim/specs/h-supine-twist-r4.js",
+      "source": {
+        "path": "drill-anim/specs/h-supine-twist-r3.js",
+        "sha256": "4e1efbf0db45e48c0c54a206542e170834217a5b9e4d16d1b8861f6dbbf183e4"
+      },
+      "peakFrame": 69,
+      "previewFrames": [
+        0,
+        9,
+        30,
+        69,
+        105,
+        120,
+        150,
+        189,
+        239,
+        240
+      ],
+      "phase": {
+        "review": "source-transcribed-editorial-pending",
+        "cycleSeconds": 4,
+        "cyclesPerClip": 2.0,
+        "events": [
+          {
+            "startSeconds": 0,
+            "endSeconds": 0.3,
+            "name": "prepare"
+          },
+          {
+            "startSeconds": 0.3,
+            "endSeconds": 1.7,
+            "name": "dropKneesToSide"
+          },
+          {
+            "startSeconds": 1.7,
+            "endSeconds": 2.9,
+            "name": "sidePause"
+          },
+          {
+            "startSeconds": 2.9,
+            "endSeconds": 4,
+            "name": "returnCentre"
+          }
+        ],
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "countingSemantics": "The source demonstrates knees right then left, one 4-second side movement each, with only 1.2 seconds at each peak. Preserve the legacy 40-second-per-side hold prescription but do not claim this dynamic alternating loop implements a continuous 40-second hold. Editorial/playback reconciliation is pending. Starting side left identifies the initially lengthened body side; knee direction is right. No mirrored media."
+      },
+      "side": {
+        "mode": "alternating",
+        "firstWorkingSide": "left-lengthened-body-side",
+        "switchTimesSeconds": [
+          4
+        ],
+        "note": "Both knees first drop right, then left at 4 seconds. Starting side denotes the initially lengthened left body side, not knee travel; source highlight remains both."
+      },
+      "risks": [
+        "Preserve selected feet-end r3 camera, reduced r2 roll and original QA; inspect actual torso rotation/skin folding and both shoulders at each side peak.",
+        "Relaxed palms follow the chest and may slide; they are non-weight-bearing and source deliberately has no hand pin. Inspect finger/mat surfaces and elbows >=168 rather than inventing a supporting lock.",
+        "Legacy per-side40s hold conflicts with alternating short plateaus; no automatic prescription conformance or release acceptance."
+      ]
+    },
+    {
+      "id": "n-seated-ir-drop",
+      "spec": "drill-anim/specs/n-seated-ir-drop-r2.js",
+      "source": {
+        "path": "drill-anim/specs/n-seated-ir-drop.js",
+        "sha256": "48e44c56e8c7de96f905d2f572c85368cab18ac313ba2413942c22726c49676a"
+      },
+      "peakFrame": 66,
+      "previewFrames": [
+        0,
+        9,
+        30,
+        66,
+        102,
+        120,
+        150,
+        186,
+        239,
+        240
+      ],
+      "phase": {
+        "review": "source-transcribed-editorial-pending",
+        "cycleSeconds": 4,
+        "cyclesPerClip": 2.0,
+        "events": [
+          {
+            "startSeconds": 0,
+            "endSeconds": 0.3,
+            "name": "prepare"
+          },
+          {
+            "startSeconds": 0.3,
+            "endSeconds": 1.8,
+            "name": "dropWorkingKneeIn"
+          },
+          {
+            "startSeconds": 1.8,
+            "endSeconds": 2.8,
+            "name": "innerPause"
+          },
+          {
+            "startSeconds": 2.8,
+            "endSeconds": 3.9,
+            "name": "returnKneeUpright"
+          },
+          {
+            "startSeconds": 3.9,
+            "endSeconds": 4,
+            "name": "reset"
+          }
+        ],
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "countingSemantics": "The 8-second source shows one right-knee drop/return followed by one left-knee drop/return; each peak lasts only 1 second. Preserve the legacy 30-second-per-side static-hold prescription as an unresolved requirement. Alternating dynamic loops must not be represented as a continuous 30-second hold. Editorial and playback reconciliation remain pending."
+      },
+      "side": {
+        "mode": "alternating",
+        "firstWorkingSide": "right-rotating-hip",
+        "switchTimesSeconds": [
+          4
+        ],
+        "note": "Right knee drops inward first with the right foot planted; the left knee follows after 4 seconds. Both hands remain supporting behind the hips."
+      },
+      "risks": [
+        "Inspect all four floor contact locks, visible finger minY, palm placement and elbows >=168 through both knee directions; h0 solver must remain active.",
+        "Inspect fixed foot/rotating knee geometry and pelvis balance; no pressure should be invented on the knee. Legacy per-side30s static hold remains unresolved by short alternating plateaus."
+      ]
+    },
+    {
+      "id": "n-thomas-test",
+      "spec": "drill-anim/specs/n-thomas-test-r2.js",
+      "source": {
+        "path": "drill-anim/specs/n-thomas-test.js",
+        "sha256": "62d3cfa853048dc695812c3042b2ddad2afa313aea938d02dc24ca40c824037f"
+      },
+      "peakFrame": 75,
+      "previewFrames": [
+        0,
+        12,
+        36,
+        75,
+        108,
+        120,
+        156,
+        195,
+        239,
+        240
+      ],
+      "phase": {
+        "review": "source-transcribed-editorial-pending",
+        "cycleSeconds": 4,
+        "cyclesPerClip": 2.0,
+        "events": [
+          {
+            "startSeconds": 0,
+            "endSeconds": 0.4,
+            "name": "easePrepare"
+          },
+          {
+            "startSeconds": 0.4,
+            "endSeconds": 2.2,
+            "name": "exhaleDrawLeftKneeCloser"
+          },
+          {
+            "startSeconds": 2.2,
+            "endSeconds": 2.9,
+            "name": "gentlePause"
+          },
+          {
+            "startSeconds": 2.9,
+            "endSeconds": 4,
+            "name": "inhaleEase"
+          }
+        ],
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "countingSemantics": "The left knee is hugged while the right long leg/hip is the lengthened side. The 8-second source shows two gentle breath-led draw-and-ease cycles with no switch. Preserve default 30 seconds; proposed per-side timed breathing movement versus the legacy hold label needs editorial confirmation. It is not a 30-second fixed pose or a validated diagnostic test. Opposite-side media is not produced."
+      },
+      "side": {
+        "mode": "unilateral",
+        "firstWorkingSide": "right-long-leg-lengthened-hip",
+        "switchTimesSeconds": [],
+        "externalSideChangeAfterSeconds": 8,
+        "note": "Left hand hugs left knee/shin; right leg stays long and right arm rests on the mat. StartingSide right denotes the lengthened front of the right hip. Optional boundary only after the side dose; no in-clip change or mirrored media."
+      },
+      "risks": [
+        "Inspect left hand/finger-to-shin contact, near-floor relaxed right hand/fingers, right long-leg knee >=168 and shoulder/head support.",
+        "Fixed TIGHT=0 is the demonstration path; do not introduce self-test still variants or diagnose hip-flexor shortening from this animation."
+      ]
+    }
+  ]
+}

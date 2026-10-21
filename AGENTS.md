@@ -37,6 +37,7 @@
 
 - 用户于 2026-10-21 确认全库重制采用新版人体：`training-human-v2` 已退出新生产，仅保留冻结历史复现。本轮先在分支完成动作包 v2 与六动作、五套皮肤试制，开哥看样同意后才合入 main 并推送；全库批量生产另等确认。
 - 用户于 2026-10-21 接受 r2 颈部修正后的六动作五皮肤样片并同意合入 main、按约定推送；记录见 [试制确认](docs/pilot-approval-20261021.md)。这不表示编辑、语音试听或素材发布门禁全部通过，全库批量生产仍另等确认。
+- 用户随后于 2026-10-21 明确要求制定全库计划并推进制作；此前“全库另等确认”的条件已满足。按 [全库计划](docs/action-library-v2-production-plan-20261021.md) 与 `catalog/v2/production-plan.json` 在分支滚动执行，142 正式 ID 为主体，其他动态候选/静图/停止项单列处理；新素材使用 `F:/PoseHub-v2-production/` 独立批次目录。制作授权不替代逐项内容审核或发布资格。
 - 本轮新增母版、临时帧、派生素材与语音按用户授权放在 `F:/PoseHub-v2-pilot/`，分 `masters/`、`derivatives/`、`voice/`、`previews/`、`qa/`、`manifests/`、`work/` 等目录。此项仅调整本轮新素材的存储位置，既有 E 盘原件和备份保留。
 
 - 新制作默认以 [current-production.json](drill-anim/models/current-production.json) 为唯一配方入口；当前采用 `training-human-v2plus` / `1.0.0-rc2`，原配色、动作肌群高亮、不显示肌群分区线。制作标准见 [training-human-v2plus.md](docs/training-human-v2plus.md)，实际合入、验证与待办见 [版本对齐台账](docs/version-ledger.md)。
