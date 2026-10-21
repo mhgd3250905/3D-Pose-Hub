@@ -1,11 +1,11 @@
 # 训练人物制作基准
 
-用户于2026-10-12指定肩颈修复后的人体作为标杆，并于2026-10-13验收第三轮效果。后续新动作、旧动作优化及安排重渲统一采用此版本。
+用户于 2026-10-21 明确采用更新细节后的 `training-human-v2plus` 制作今后动作；默认保留原配色的训练服外观，白金、蓝、绿、全息仅供显式选择。此决定取代本文件原先“新动作以及后续优化/重渲的旧动作必须使用 `modelProfile: 'training-human-v2'`”的要求。2026-10-12/13 的 v2 验收与旧素材仍作为历史保留。
 
-新动作以及后续优化/重渲的旧动作必须使用 `modelProfile: 'training-human-v2'`，配套 `alignClavicles: false`。模型身份及固定源见 `models/training-human-v2.json`，实现为 `page/training-collar.js`；沿用当前Flare训练人物、灰色人台头、原服装和原骨架，不从参考视频的宽松衣服推断人体轮廓。
+新动作及用户安排的新版本重渲，统一读取 [当前生产配置](models/current-production.json)，说明见 [v2plus 制作标准](../docs/training-human-v2plus.md)。本次配置为 `training-human-v2plus` / `1.0.0-rc2`、`alignClavicles:false`，`v2plus` 使用 `outfit:'compression'`、`torso:'base'`、`limbs:'base'`、`hands:'base'`、`skin:'realistic'`；`head:'base'` 不启用，保留原 v2 灰色人台头。普通新 spec 须显式写入这套配置；HD 新建任务由生产配置生成包装规格，不能只改 profile 而漏掉新版网格开关。
 
-人体配置与动作参数分开。肩颈修复不得改变动作支点、髋部、腿轨迹、节奏或镜头；生成新动作后核对正面、侧面和完整循环。
+人体配置与动作参数分开。更换人体不得擅改动作支点、髋部、腿轨迹、节奏或镜头；每项任务先检查预览、实际看图，再决定全片，并核对正面、侧面、完整循环和道具接触。试片只证明实际检查过的场景，不代表所有动作已验收。
 
-现有正式视频及用户已通过的旧预览继续保留。旧spec未指定profile时保留历史人物；以后按用户安排重渲时显式选择新profile，新增版本和输出，不覆盖历史媒体。不得把新的制作标准写成App已安装或旧动作已重渲。
+已有约 200 份原 spec、v2 的 13 个冻结源、旧媒体与历史批次不批量修改。普通旧 spec 按原 profile 渲染；未指定 profile 的仍沿用历史行为。已有 HD 批次续作绑定其原 `source-manifest.json` 和原配方，不能套用当前生产配置。需要新版人体时新建规格修订、批次目录和输出，保留原件。
 
-此版本的网格、头部、材质和肩颈配置构成一个完整人体版本。后续调整这些来源需建立新版本及验证记录，不能静默改变 `training-human-v2`。
+模型清单 [training-human-v2plus.json](models/training-human-v2plus.json) 与旧 [training-human-v2.json](models/training-human-v2.json) 分别固定各自身份。更改外观来源需建立新版本、登记固定源和验证记录，不能静默改旧模型。此次工作当前仅在隔离分支本地整合，待用户最后同意合入 main；不能写成 PR 已在 GitHub 合并、App 已接入或全量动作已验收。

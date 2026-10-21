@@ -4,7 +4,7 @@
 
 ## 1. 一分钟版
 
-- **Pose-Hub = 训练动作库。** 每个动作是一份 JS 规格（`drill-anim/specs/<id>.js`），由 `drill-anim/drill.py` 在无头 Chromium 里驱动一个固定的 3D 训练人物（`training-human-v2`）渲成无缝循环视频。Git 里只放规格、渲染工具、人物模型和成片的 SHA-256 清单；成片本体按版本打成 ZIP 放谷歌云盘。
+- **Pose-Hub = 训练动作库。** 每个动作是一份 JS 规格（`drill-anim/specs/<id>.js`），由 `drill-anim/drill.py` 在无头 Chromium 里驱动固定版本的 3D 训练人物（新制作采用 `training-human-v2plus`，旧规格保留原版本）渲成无缝循环视频。Git 里只放规格、渲染工具、人物模型和成片的 SHA-256 清单；成片本体按版本打成 ZIP 放谷歌云盘。
 - **谁在用：**
   - **HipLab（开胯训练助手）**：取已发布素材 **v0.2.0（published 2026-10-18，46 个动作，主题 soft-v1 `themes/glow-soft.json`，main `59fb7b9`）**；v0.1.0（glow-b）保留原样。另有 6 份 `a-*` 自测对比静图（App 里是 webp，不在 ZIP）。
   - **FlareLab（托马斯训练助手）**：App 里是 51 个肌群动作（`data/drills.json`，17 肌群 × A 徒手 / B 家用 / C 健身房）的旧媒体，**还没有通过 Pose-Hub 发布**，目前不接入。
@@ -12,6 +12,8 @@
 - **你的角色是贡献方。** 主线（main、审核、合并、tag、渲染全片、打包发布）在开哥 Windows 本机 `E:\AII-3D\3D-Pose-Hub`（RTX 4080）。你：从 `origin/main` 拉分支 → 改 → 低配验证 → 提 PR，PR 里写清楚要主线渲什么。**不要合并、打 tag、改 `media/manifest.json` 的已发布版本、上传云盘。** 推送分支和开 PR 本身也要用户同意（[AGENTS.md](../AGENTS.md) 第 5 条）：派你任务时说了可以推就推，没说就先问。
 
 ## 2. 目录：哪些是现役，哪些别碰
+
+2026-10-21 人体制作决定：今后新动作及用户安排的新版本重渲采用 [v2plus 标准](training-human-v2plus.md)，唯一默认入口为 [current-production.json](../drill-anim/models/current-production.json)。目标版本 `1.0.0-rc2`，使用新版躯干/四肢/手、紧身服与原 v2 头，`skin:'realistic'` 保留原配色；白金/蓝/绿/全息显式可选。当前仅在隔离分支本地整合，待用户最后同意 main；不代表 PR 已在 GitHub 合并或全量动作已验收。
 
 AI 动作元数据另有 [统一目录](../catalog/README.md)：当前 **catalog 0.2.0 / formatVersion 1，142 个动作 id**。它与本页的 spec 总表、媒体 ZIP 0.2.0 分别管理；目录已合入不代表 SmartFit 或 SDK 已完成接入。版本规则和当前待办见 [版本管理](version-management.md)、[版本对齐台账](version-ledger.md)。
 
@@ -22,7 +24,8 @@ AI 动作元数据另有 [统一目录](../catalog/README.md)：当前 **catalog
 | `drill-anim/data/home-pr-candidates.json` | 现役 | 新 spec 的 LF 规范化 SHA-256 登记处 |
 | `drill-anim/data/drills.json` | 现役（FlareLab 51 的名称、器械、处方、安全提示） | 改它会让 verify 的 51 数量断言失败，别动 |
 | `drill-anim/drill.py`、`lib/`、`page/`、`themes/` | 现役，**共享核心** | 能不改就不改；必须改就单独开 `engine/<简述>` 分支，并证明旧渲染像素不变 |
-| `drill-anim/theme.json`、`page/toon.js`、`page/engine.js`、`page/head.js`、`page/posedlib.js`、`page/training-collar.js`、`lib/boot.mjs`、`assets/srchead.json`、`assets/handdef.json`、`runtime/public/coach/*`、`runtime/src/spine-helpers.js`、`runtime/src/coach-motion.js` | **冻结**（人物模型固定源，`models/training-human-v2.json` 记了 13 个 sha256） | 改任何一个 = 新人物版本（training-human-v3），需要用户批准 |
+| `drill-anim/theme.json`、`page/toon.js`、`page/engine.js`、`page/head.js`、`page/posedlib.js`、`page/training-collar.js`、`lib/boot.mjs`、`assets/srchead.json`、`assets/handdef.json`、`runtime/public/coach/*`、`runtime/src/spine-helpers.js`、`runtime/src/coach-motion.js` | **冻结**（人物模型固定源，`models/training-human-v2.json` 记了 13 个 sha256） | 改固定源需建立新人物版本及验证；新版以独立 profile/data 扩展，不能静默改 v2 |
+| `drill-anim/models/current-production.json`、`models/training-human-v2plus.json` | 新制作入口与新版固定源 | HD 新任务固定当前配置；旧批次 resume 沿用原 manifest，旧 spec 不批量改写 |
 | `page/soft-highlight.js`、`lib/soft-highlight.mjs`、`themes/glow-soft.json` | **冻结**（soft-v1） | 想调外观就另起 soft-v2 新文件/新主题 |
 | `drill-anim/batches/`、`revisions/`、`qa-reports/`、`docs/drill-anim/` | **冻结历史记录** | 里面的 `E:/AII-3D/3D-Body/...`、`tools/drill-anim/...`、旧提交号都是当时的事实，保留原样 |
 | `docs/*-2026-10-*.md` | 历史记录（dated） | 当时的决定和数字；可以引用，不改写。新结论写新文件 |
@@ -100,7 +103,7 @@ node drill-anim/tools/catalog.mjs --check                    # 只检查是否�
 | `fps` | 不写 = 30。新 `h-*`/`n-*`/`a-*` 多为 15 |
 | `pose.base` / `pose.deltas` | 基础姿态 + 各参数=1 时的绝对姿态；手脚 `mode: 'floor'` 是固定在地上，`'free'` 是悬空/贴身体 |
 | `highlight` | `groups` 选目标肌群（17 个：deltoids、rotator-cuff、triceps、forearms、serratus、scapular、chest、lats、abs、obliques、erectors、hip-flexors、glute-max、hip-abductors、adductors、quadriceps、hamstrings，另有 biceps、calves、tibialis），`side` 单侧/双侧，`pulseAt`/`pulseTrack` 让发力时变亮。`panels` 是更细的肌肉面板（如 `gluteMed`、`oblique`），只在 groups 不够用时拼 |
-| `modelProfile: 'training-human-v2'` + `alignClavicles: false` | **新做/重做必须写**。不写 = 旧人物（81 份老 spec 是这样，作为历史保留） |
+| `modelProfile` / `alignClavicles` / `v2plus` | 新做或新版本重渲完整采用 `current-production.json` 配置，见 [v2plus 标准](training-human-v2plus.md)。旧规格保留原 profile，不写仍按历史行为 |
 | `props` | 道具；`mat` 最常见，其余在 `page/props.js`、`page/props-*.js`。可用类型见 catalog 的“场景/道具”列 |
 | `camera` / `frame` / `stillAt` | 机位方向、取景关节、留边；`stillAt` 是拟合构图用的那一刻 |
 | `qa` | 这份动作自己的 QA 规则：`pins`（哪个接触点必须不动）、`straight`（哪个肘/膝必须直）、`allowContact`（允许贴住的部位对）、`touch`、`hipFlexMax`（放宽髋屈上限必须在注释里写理由） |
@@ -108,7 +111,7 @@ node drill-anim/tools/catalog.mjs --check                    # 只检查是否�
 
 新 spec 多用 `lib/home-anim.mjs` 的 `build()` / `keys()` 帮助函数生成姿态，`lib/ss-geo.mjs` 给出休息姿态下的骨点。照着同类动作（同场景、同支撑方式）抄一份最快。
 
-**主题：** `theme.json` = 默认 v7（固定源，不改）；`themes/glow-b.json` = v0.1.0 发布用的方案 B；`themes/glow-soft.json` = soft-v1 柔和高亮，**v0.2.0 已用它发布，新成片一律用这个**。预览审核时用你打算交付的那个主题。
+**主题：** `theme.json` = 默认 v7（固定源，不改）；`themes/glow-b.json` = v0.1.0 发布用的方案 B；`themes/glow-soft.json` = soft-v1 柔和高亮，**v0.2.0 已用它发布**；主题与人体 skin 分开管理，新任务保留生产配方，勿将白金/蓝/绿/全息皮肤当默认。预览审核时用你打算交付的那个主题。
 
 ## 5. 在低配机上验证到什么程度
 
@@ -142,9 +145,9 @@ node drill-anim/tools/catalog.mjs --check                    # 只检查是否�
 
 1. **分支**：`git fetch origin && git checkout -b <分支> origin/main`。命名：`drill/<id>`（新动作或重做）、`fix/<id>-<要点>`（修复）、`engine/<简述>`（共享核心）、`docs/<简述>`（文档）。一批相关动作可以一个 PR，PR 里逐个列 id。
 2. **修订不覆盖原文件**：已有 `<id>.js` 不改，新建 `<id>-r2.js`；已有 r2 就 `-r3`。修订版的 `spec.id` 二选一，PR 里写明：
-   - **A（推荐）** `id: '<id>-r2'`，verify 直接通过；主线发布时在渲染端包装 `{...source, id: '<原 id>', fps: 30, modelProfile: 'training-human-v2', alignClavicles: false}` 绑定回原 App 槽位（v0.1.0 的 `s-frog-r2` 等就是这样）。
+   - **A（推荐）** `id: '<id>-r2'`，verify 直接通过；主线制作时保留原槽位 id 和 30fps，并完整应用 `current-production.json` 的人物字段；历史 v0.1.0 的 v2 包装仍以原批次清单复现。
    - **B** `id: '<原 id>'`，候选表条目加 `"renderId": "<原 id>"`（`h-knee-hug-r2`、`s-seated-fold-r3` 是这样）。
-3. **新动作 id 前缀**按类别：`h-` 居家、`n-` HipLab 开胯新增、`a-` 自测静图、`o-` 办公室、`w-` 久坐、`s-` 拉伸、`t-` 托马斯专项、`<肌群>-A/B/C` FlareLab。必须写 `modelProfile: 'training-human-v2'`、`alignClavicles: false`。
+3. **新动作 id 前缀**按类别：`h-` 居家、`n-` HipLab 开胯新增、`a-` 自测静图、`o-` 办公室、`w-` 久坐、`s-` 拉伸、`t-` 托马斯专项、`<肌群>-A/B/C` FlareLab。必须完整写入 [v2plus 标准](training-human-v2plus.md) 的 `modelProfile`、`alignClavicles` 与 `v2plus` 字段，不能只切 profile。
 4. **登记 SHA**：算 LF 规范化 sha256，写进 `drill-anim/data/home-pr-candidates.json` 的 `specs`：
    ```bash
    node -e "const fs=require('fs'),c=require('crypto');for(const f of process.argv.slice(1))console.log(c.createHash('sha256').update(fs.readFileSync(f,'utf8').replace(/\r\n/g,'\n')).digest('hex'),f)" drill-anim/specs/<id>-r2.js
@@ -192,7 +195,7 @@ node drill-anim/tools/catalog.mjs --check                    # 只检查是否�
 | 渲染工具全部参数、spec 字段、QA、主题格式 | [drill-anim/README.md](../drill-anim/README.md) |
 | 每个动作的状态、使用方、已知问题、待补全候选 | [drill-catalog.md](drill-catalog.md)（`node drill-anim/tools/catalog.mjs` 生成） |
 | 动作设计审核标准 | [review-rubric.md](review-rubric.md) |
-| 人物模型标准 | [training-human-v2.md](training-human-v2.md)、`drill-anim/models/training-human-v2.json` |
+| 人物模型标准 | [training-human-v2plus.md](training-human-v2plus.md)、[当前生产配置](../drill-anim/models/current-production.json)；[v2 历史基准](training-human-v2.md)保留 |
 | 柔和高亮 soft-v1、v0.2.0 重渲步骤 | [soft-highlight-2026-10-18.md](soft-highlight-2026-10-18.md) |
 | HipLab 第 1 阶段动作、替换与待办 | [hiplab-phase1-drills-2026-10-16.md](hiplab-phase1-drills-2026-10-16.md)、`drill-anim/revisions/hiplab-media-fix-20261017/README.md` |
 | 已发布版本、规格绑定 | [media/releases/0.2.0.md](../media/releases/0.2.0.md)、`0.2.0.sources.json`（旧版 [0.1.0](../media/releases/0.1.0.md)）、[media/README.md](../media/README.md) |

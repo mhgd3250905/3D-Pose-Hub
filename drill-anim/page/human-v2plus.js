@@ -206,11 +206,18 @@ function restTextures() {
     const tex = new t.DataTexture(buf, 1024, H, t.RGBAFormat, t.FloatType); tex.magFilter = tex.minFilter = t.NearestFilter; tex.needsUpdate = true; out[o.uuid] = tex; });
   return out;
 }
+const MATERIAL_PATCHES = new WeakMap();
+const V2P_VERTEX = 'uniform sampler2D uV2pT;varying vec4 vV2p;\n';
 function patchMaterials() {
-  const tex = V2P.restTex = restTextures(); let n = 0; const v = flareInspector.viewer;
-  v.coach.traverse(o => { if (!o.isSkinnedMesh || !o.material || o.material.customProgramCacheKey?.() !== 'toon-drill1') return; const mat = o.material, ob = mat.onBeforeCompile, tx = tex[o.uuid], isBody = o.name === 'Coach_Body';
-    mat.onBeforeCompile = (sh, r) => { ob(sh, r); Object.assign(sh.uniforms, V2P.uni); sh.uniforms.uV2pT = { value: tx }; sh.uniforms.uV2pTorso = { value: 0 }; sh.uniforms.uV2pLimb = { value: 0 };
-      sh.vertexShader = 'uniform sampler2D uV2pT;varying vec4 vV2p;\n' + sh.vertexShader.replace('#include <begin_vertex>', '#include <begin_vertex>\n vV2p=texelFetch(uV2pT,ivec2(gl_VertexID%1024,gl_VertexID/1024),0);');
+  // Rest data is prepared once. Collar toggles may restore either of two cached pre-v2plus hooks; patch those without resetting the pose.
+  const tex = V2P.restTex || (V2P.restTex = restTextures()); let n = 0; const v = flareInspector.viewer;
+  v.coach.traverse(o => { if (!o.isSkinnedMesh || !o.material) return; const mat = o.material, key = mat.customProgramCacheKey?.();
+    if (!/^toon-drill1(?:\|trainingNativeCollar1)?$/.test(key || '')) return;
+    const ob = mat.onBeforeCompile, tx = tex[o.uuid]; let hooks = MATERIAL_PATCHES.get(mat); if (!hooks) MATERIAL_PATCHES.set(mat, hooks = new WeakMap());
+    const cached = hooks.get(ob); if (cached) { mat.onBeforeCompile = cached.hook; mat.customProgramCacheKey = cached.key; mat.needsUpdate = true; n++; return; }
+    mat.onBeforeCompile = function(sh, r) { ob.call(this, sh, r); Object.assign(sh.uniforms, V2P.uni); sh.uniforms.uV2pT = { value: tx }; sh.uniforms.uV2pTorso = { value: 0 }; sh.uniforms.uV2pLimb = { value: 0 };
+      if (sh.vertexShader.includes(V2P_VERTEX)) return;
+      sh.vertexShader = V2P_VERTEX + sh.vertexShader.replace('#include <begin_vertex>', '#include <begin_vertex>\n vV2p=texelFetch(uV2pT,ivec2(gl_VertexID%1024,gl_VertexID/1024),0);');
       const fs = sh.fragmentShader; if (!/hlMask\(c2\)/.test(fs)) throw new Error('v2plus: toon fragment shader has no hlMask(c2) call');
       if (fs.indexOf('vec3 alb=vec3(0.0)') < 0) throw new Error('v2plus: toon fragment shader has no albedo block');
       if (fs.indexOf('float fr=pow(1.0-clamp(dot(Nn,V),0.0,1.0),2.6);') < 0) throw new Error('v2plus: toon fragment shader has no rim term');
@@ -237,7 +244,9 @@ function patchMaterials() {
         'if(uV2pLimb>0.5&&uV2pOut>0.5&&uV2pSleeve<0.5){ float g=smoothstep(0.0,0.05,vV2p.w); vec4 pl=vV2p.x>0.0?uV2pWristL:uV2pWristR; float fc=dot(vV2p.xyz,pl.xyz)-pl.w; float ac=max(fwidth(fc),1e-5)*0.9;\n' +
         '  W4=mix(W4,vec4(0.0,1.0,0.0,0.0),g); v2cuff=max(v2cuff,g*smoothstep(-0.008-ac,-0.008+ac,fc)); }\n vec3 alb=vec3(0.0)')
         .replace('alb*=1.0-cav; shc*=1.0-cav;', 'alb*=1.0-cav; shc*=1.0-cav; alb*=1.0-0.22*v2cuff; shc*=1.0-0.22*v2cuff;'); };
-    mat.customProgramCacheKey = () => 'toon-drill1-v2p'; mat.needsUpdate = true; n++; });
+    // The collar changes shader source, so its suffix must survive (a shared key would reuse the body's program for the neck).
+    mat.customProgramCacheKey = () => key.replace(/^toon-drill1/, 'toon-drill1-v2p');
+    hooks.set(ob, { hook: mat.onBeforeCompile, key: mat.customProgramCacheKey }); mat.needsUpdate = true; n++; });
   return n;
 }
 V2P.setHighlight = function(h) { const sel = new Array(24).fill(0); let n = 0, deep = 0;
@@ -478,6 +487,10 @@ V2P.enable = function(on) { if (!V2P.loaded) throw new Error('v2plus not loaded'
 V2P.load = function(meta, outfit) {
   if (V2P.loaded) return { already: true };
   const E = window.__drill; const rig = graftFingers(meta); const patched = patchMaterials(); V2P.pristine = snap();
+  // training-collar is frozen v2 code: keep its cached hooks intact and reattach the v2plus layer after it switches them.
+  // This also handles loading v2plus after a v2 frame has already prepared/enabled the native collar.
+  const collar0 = window.__setTrainingCollar; if (collar0) window.__setTrainingCollar = function(...args) {
+    const report = collar0.apply(this, args); patchMaterials(); return report; };
   if (outfit) V2P.outfit = prepOutfit(outfit);
   const sel0 = E.selectModelProfile.bind(E);
   E.selectModelProfile = function(spec) { if (spec.modelProfile === 'training-human-v2plus') { sel0(Object.assign({}, spec, { modelProfile: 'training-human-v2' })); V2P.enable(true);

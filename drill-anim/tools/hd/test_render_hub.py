@@ -64,8 +64,14 @@ class HubCpuTest(unittest.TestCase):
         self.model_asset.parent.mkdir(parents=True)
         self.model_asset.write_bytes(b'fixture model')
         (self.root/'models/training-human-v2.json').write_text(json.dumps({
+            'id':'training-human-v2','version':'2.0.1',
             'sourceSha256':{'runtime/public/model.bin':hashlib.sha256(self.model_asset.read_bytes()).hexdigest()}
         }), encoding='utf8')
+        # Existing fixture expectations explicitly opt into the legacy model;
+        # the production-default regression below supplies the real v2plus recipe.
+        self.production=self.root/'models/current-production.json'
+        self.production.write_text(json.dumps({'format':'pose-hub-production-model','formatVersion':1,
+            'modelProfile':'training-human-v2','modelVersion':'2.0.1','alignClavicles':False}),encoding='utf8')
         (self.tools/'producer.py').write_text('# fixture producer\n', encoding='utf8')
         (self.tools/'gpu_probe.mjs').write_text('// fixture probe\n', encoding='utf8')
         self.renderer = module_from_file('hub_renderer_test', HERE/'render_batch.py')
@@ -103,6 +109,92 @@ class HubCpuTest(unittest.TestCase):
         mapping=self.directory/'revisions.json'
         mapping.write_text(json.dumps({'unlisted-hub-move':p.relative_to(self.repo).as_posix()}),encoding='utf8')
         return p,mapping
+
+    def v2plus_production(self):
+        self.v2plus_options={'outfit':'compression','torso':'base','limbs':'base','hands':'base','skin':'realistic'}
+        sources=['lib/human-v2plus.mjs','page/human-v2plus.js','page/human-v2plus-regions.js']
+        sources+=['models/training-human-v2plus-'+name+'.json' for name in
+            ('hands','outfit','torso-base','limbs-base','hands-base','head-base','regions')]
+        self.v2plus_inputs=[]
+        hashes={}
+        for relative in sources:
+            path=self.root/relative;path.write_text('{}\n' if path.suffix=='.json' else '// new runtime\n',encoding='utf8')
+            self.v2plus_inputs.append(path);hashes[path.relative_to(self.repo).as_posix()]=self.renderer.sha(path)
+        model=self.root/'models/training-human-v2plus.json'
+        model.write_text(json.dumps({'id':'training-human-v2plus','version':'1.0.0-rc2','sourceSha256':hashes}),encoding='utf8')
+        self.production.write_text(json.dumps({'format':'pose-hub-production-model','formatVersion':1,
+            'modelProfile':'training-human-v2plus','modelVersion':'1.0.0-rc2','alignClavicles':False,
+            'v2plus':self.v2plus_options}),encoding='utf8')
+        return model
+
+    @unittest.skipUnless(shutil.which('node'),'Node is required for the real ESM import regression')
+    def test_current_production_default_imports_full_v2plus_options_without_changing_motion(self):
+        model=self.v2plus_production();source=self.root/'specs/short-move.js';source_bytes=source.read_bytes()
+        manifest,_,_,_=self.prepare(ids=['short-move'])
+        self.assertEqual(manifest['profile'],'training-human-v2plus')
+        self.assertEqual(manifest['model_version'],'1.0.0-rc2')
+        self.assertEqual(manifest['profile_options'],{'alignClavicles':False,'v2plus':self.v2plus_options})
+        self.assertEqual(manifest['production_config'],{'path':'drill-anim/models/current-production.json',
+            'sha256':self.renderer.sha(self.production)})
+        for path in [model,self.production,self.model_asset,*self.v2plus_inputs]:
+            self.assertEqual(manifest['render_inputs'][path.relative_to(self.repo).as_posix()],self.renderer.sha(path))
+        overlay=self.output/'specs/short-move.js'
+        environment=dict(os.environ);environment.pop('NODE_COMPILE_CACHE',None)
+        run=subprocess.run(['node','--input-type=module','-e',
+            'const a=await import(process.argv[1]),b=await import(process.argv[2]);console.log(JSON.stringify([a.default,b.default]));',
+            overlay.as_uri(),source.as_uri()],cwd=self.directory,env=environment,capture_output=True,text=True,
+            encoding='utf8',timeout=20,check=True)
+        value,original=json.loads(run.stdout)
+        self.assertEqual(value,{**original,'id':'short-move','fps':30,'size':1080,
+            'modelProfile':'training-human-v2plus','alignClavicles':False,'v2plus':self.v2plus_options})
+        self.assertEqual(source.read_bytes(),source_bytes)
+
+    def test_v2plus_semantically_equivalent_reordered_manifest_keeps_exact_bytes(self):
+        self.v2plus_production();manifest,_,_,_=self.prepare()
+        # Sorting the stored JSON reorders nested v2plus keys; this must not
+        # regenerate a byte-different overlay or rewrite the saved manifest.
+        path=self.output/'source-manifest.json'
+        path.write_text(' \n'+json.dumps(manifest,sort_keys=True,indent=1)+'\n',encoding='utf8',newline='\n')
+        before=self.snapshot();self.prepare(ids=['short-move'])
+        self.assertEqual(self.snapshot(),before)
+
+    def test_v2plus_model_data_manifest_and_production_changes_reject_without_mutation(self):
+        model=self.v2plus_production();self.prepare();before=self.snapshot()
+        for path in [model,self.production,*[p for p in self.v2plus_inputs if p.suffix=='.json']]:
+            with self.subTest(changed=path.name):
+                original=path.read_bytes();path.write_bytes(original+b' ')
+                try:
+                    with self.assertRaisesRegex(RuntimeError,'Batch source/recipe changed'):
+                        self.prepare(ids=['short-move'])
+                    self.assertEqual(self.snapshot(),before)
+                finally:path.write_bytes(original)
+
+    def test_legacy_manifest_without_profile_options_keeps_exact_overlay_bytes(self):
+        manifest,_,_,_=self.prepare()
+        for key in ('profile_options','model_version','production_config'):manifest.pop(key)
+        self.renderer.write_json(self.output/'source-manifest.json',manifest)
+        for sid in self.ids:
+            source=self.root/'specs'/(sid+'.js')
+            old=('// Pose-Hub HD: preserve source pose/camera/timing; explicit canonical ID.\n'
+                'import source from '+json.dumps(source.as_uri())+';\n'
+                'export default {...source,id:'+json.dumps(sid)+
+                ",fps:30,size:1080,modelProfile:'training-human-v2',alignClavicles:false};\n")
+            (self.output/'specs'/(sid+'.js')).write_text(old,encoding='utf8',newline='\n')
+        before=self.snapshot();resumed,_,_,_=self.prepare(ids=['short-move'])
+        self.assertEqual(resumed,manifest);self.assertEqual(self.snapshot(),before)
+        # A new production default and its inputs cannot rebind an old batch.
+        self.v2plus_production()
+        with self.assertRaisesRegex(RuntimeError,'original frozen checkout/tools'):
+            self.prepare(ids=['short-move'])
+        self.assertEqual(self.snapshot(),before)
+        self.assertNotIn('training-human-v2plus',(self.output/'specs/short-move.js').read_text(encoding='utf8'))
+
+    def test_invalid_new_production_version_is_rejected_before_creating_batch(self):
+        self.v2plus_production();config=json.loads(self.production.read_text(encoding='utf8'))
+        config['modelVersion']='not-the-manifest-version'
+        self.production.write_text(json.dumps(config),encoding='utf8')
+        with self.assertRaisesRegex(ValueError,'does not match its model manifest'):self.prepare()
+        self.assertFalse(self.output.exists())
 
     def test_any_registered_hub_ids_prepare_without_an_app_and_subset_keeps_registry(self):
         manifest,drills,_,_=self.prepare()

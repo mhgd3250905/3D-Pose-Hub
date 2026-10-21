@@ -1,5 +1,7 @@
 # Flare训练人物基准 training-human-v2
 
+> 2026-10-21 制作入口更新：用户已明确采用 [training-human-v2plus 新版标准](training-human-v2plus.md)，默认采用更新细节后的原始配色外观，生产配置见 [current-production.json](../drill-anim/models/current-production.json)。下文保留 2026-10-12/13 的 v2 验收、源版本和旧媒体事实；其中“后续统一采用 v2”的规则已被本次用户决定取代。普通旧 spec 和冻结批次继续按原配方复现。新版目前仅本地整合、待用户最后同意合入 main，并不表示 PR 已在 GitHub 合并或所有动作已用新版验收。
+
 用户于2026-10-12指定肩颈修复后的人体作为后续标杆，并于2026-10-13观看第三轮预览后明确验收肩颈优化。`training-human-v2` / `2.0.0`为已认可的统一训练人体标准：后续新动作、旧动作优化及安排重渲均采用此完整版本。此前演示成片和参数保留，按具体任务另行生成新版，不自动批量重渲。
 
 实现保存点为 `4ef555624b95e1b39d6221efefa7d6bd7f692ba3`，已从隔离分支快进保存到主目录master。版本整理、近期PR合并与推送身份见[版本台账](https://github.com/mhgd3250905/3D-Body/blob/66067a6/app/docs/version-ledger.md#2026-10-13-人体标准与托马斯版本整理)。当时人体验收只确认外观；随后用户明确安排的94项高清全片已制作完成，当前素材选版见[统一素材库](training-media-library-2026-10-13.md)。原手机视频已作为历史媒体保留。用户后来另行授权L44对位更新App的51项演示与封面，并加入领口修复训练人台的可选展示；当前App身份见[版本台账](https://github.com/mhgd3250905/3D-Body/blob/66067a6/app/docs/version-ledger.md#2026-10-13-l44-形象切换与媒体升级)。
