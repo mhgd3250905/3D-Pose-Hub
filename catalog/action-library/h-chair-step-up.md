@@ -1,0 +1,1480 @@
+# 椅子上步 / Chair Step-Up
+
+ID: `h-chair-step-up`. State: review. Release eligible: False.
+
+## Definition
+
+```json
+{
+  "idMappings": [],
+  "name": {
+    "zh": "椅子上步",
+    "en": "Chair Step-Up"
+  },
+  "purpose": {
+    "zh": "练大腿前侧和臀部",
+    "en": "Train the legs and hips with a controlled step-up."
+  },
+  "tags": {
+    "category": "strength",
+    "activeMuscles": [
+      "quadriceps",
+      "glute-max"
+    ],
+    "synergistMuscles": [
+      "hamstrings",
+      "calves",
+      "hip-abductors"
+    ],
+    "equipment": [
+      "chair"
+    ],
+    "position": "standing",
+    "scenes": [
+      "home"
+    ],
+    "difficulty": 2,
+    "trainingType": "strength"
+  },
+  "unilateral": true,
+  "startingSide": "right",
+  "cues": [
+    {
+      "id": "cue1",
+      "text": {
+        "zh": "整只脚踩稳椅面，用前腿发力站起",
+        "en": "Plant your whole foot on the seat and stand up using the front leg"
+      },
+      "primary": true
+    },
+    {
+      "id": "cue2",
+      "text": {
+        "zh": "膝盖保持与脚尖同向，站起后再缓慢下降",
+        "en": "Keep your knee aligned with your toes, then lower slowly."
+      },
+      "primary": false
+    },
+    {
+      "id": "cue3",
+      "text": {
+        "zh": "使用稳固、防滑、适合自己高度的支撑物",
+        "en": "Use a stable, non-slip support at a height you can control."
+      },
+      "primary": false
+    }
+  ],
+  "commonErrors": [
+    {
+      "zh": "后脚猛蹬地面或借惯性冲起",
+      "en": "Pushing hard with the trailing foot or using momentum."
+    },
+    {
+      "zh": "椅子晃动或脚掌只踩在边缘",
+      "en": "Using an unstable chair or placing only part of the foot on its edge."
+    }
+  ],
+  "cautions": {
+    "items": [
+      {
+        "zh": "膝：上、下步都保持膝盖与脚尖方向一致，避免失控内扣。",
+        "en": "Knee: keep the knee tracking with the toes during both ascent and descent."
+      },
+      {
+        "zh": "踝与平衡：整只脚踩稳支撑面，缓慢下步；只使用牢固、防滑且高度可控的台阶或凳面。",
+        "en": "Ankle and balance: plant the whole foot, step down slowly, and use a stable non-slip platform of a manageable height."
+      }
+    ],
+    "review": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "evidence": []
+    }
+  },
+  "contraindications": {
+    "items": [
+      {
+        "zh": "本动作引发疼痛时停止，不通过加深动作或加重继续；先向医生或物理治疗师确认。",
+        "en": "Stop if this exercise causes pain; do not push deeper or add load before seeking clinical advice."
+      },
+      {
+        "zh": "已有医嘱限制下肢负重，或髋、膝、踝的当前恢复方案未允许上台阶时，先取得许可。",
+        "en": "Obtain clearance first if lower-limb loading is restricted or the current hip, knee or ankle rehabilitation plan does not permit step-ups."
+      },
+      {
+        "zh": "没有稳固、防滑且高度适合的支撑台面时不执行上步，不使用会滑动或带轮的椅子。",
+        "en": "Do not step up without a stable non-slip platform of a suitable height; do not use a sliding or wheeled chair."
+      }
+    ],
+    "review": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "evidence": []
+    }
+  },
+  "alternatives": [
+    "h-squat"
+  ],
+  "regressions": [
+    "h-squat"
+  ],
+  "progressions": [
+    "h-bulgarian"
+  ],
+  "defaultDose": {
+    "mode": "reps",
+    "sets": 3,
+    "reps": 10,
+    "restSeconds": 30
+  },
+  "doseRange": {
+    "sets": [
+      1,
+      4
+    ],
+    "reps": [
+      5,
+      15
+    ],
+    "restSeconds": [
+      0,
+      60
+    ]
+  },
+  "rhythm": {
+    "kind": "rep_alternate",
+    "leadSeconds": 0,
+    "source": "source-timeline",
+    "phases": [
+      {
+        "id": "prepare",
+        "seconds": 0.2
+      },
+      {
+        "id": "leadFootUp",
+        "seconds": 0.75
+      },
+      {
+        "id": "driveUp",
+        "seconds": 1.1
+      },
+      {
+        "id": "standTall",
+        "seconds": 0.35
+      },
+      {
+        "id": "lowerBody",
+        "seconds": 0.8
+      },
+      {
+        "id": "resetWeight",
+        "seconds": 0.2
+      },
+      {
+        "id": "leadFootDown",
+        "seconds": 0.55
+      },
+      {
+        "id": "reset",
+        "seconds": 0.05
+      }
+    ]
+  },
+  "apps": [
+    "smartfit"
+  ],
+  "editorialReview": {
+    "status": "pending",
+    "reviewer": null,
+    "reviewedAt": null,
+    "evidence": []
+  },
+  "editorialNotes": [
+    "定义内容已补为具体双语草稿；cautions、contraindications、关系候选和协同标签有数据，review pending表示待审核，不表示这些字段缺数据。",
+    "禁用条件仅覆盖疼痛停止与既有临床限制等通用筛查，不是疾病特异的完整绝对禁忌清单；未据此宣称任何疾病或术后状态均禁止运动。",
+    "旧catalog已明确alternative=h-squat；双脚地面深蹲去掉登高和单腿上步要求，列为降阶候选。",
+    "h-bulgarian源spec/旧catalog可验证为后脚抬高的单腿主力蹲、level3，列为同臀腿力量目标的进阶草稿；它不是更高台阶版，须另审平衡、负重和器材条件。",
+    "协同肌群为编辑推断：hamstrings/calves参与下肢动作，hip-abductors参与骨盆稳定；标签不代表三者同等主力。",
+    "证据/推断边界见catalog/v2/definition-evidence.md（仓库原目录/源spec与权威一手资料；全部编辑审核仍pending）。",
+    "医学安全参考：AAOS Spine Conditioning Program https://www.orthoinfo.org/recovery/spine-conditioning-program/ ; Hip Conditioning Program https://www.orthoinfo.org/recovery/hip-conditioning-program/ ; NHS Strength exercises https://www.nhs.uk/live-well/exercise/strength-exercises/ ; retrieved 2026-10-21."
+  ],
+  "countingSemantics": "One complete ascent and descent led by one leg counts as one rep. Alternate the lead leg; 8 seconds contains two reps, right then left. Default reps=10 means 10 total reps, 5 led by each leg, not 10 per side."
+}
+```
+
+## Six-layer completeness
+
+### definition: incomplete
+
+- editorialReview: review has not passed
+- editorialReview: reviewer and reviewedAt required
+- editorialReview: review evidence required
+- cautions.review: review has not passed
+- cautions.review: reviewer and reviewedAt required
+- cautions.review: review evidence required
+- contraindications.review: review has not passed
+- contraindications.review: reviewer and reviewedAt required
+- contraindications.review: review evidence required
+
+### source: complete
+
+
+### masters: complete
+
+
+### derivatives: complete
+
+
+### voice: incomplete
+
+- voice content review and manual listening must pass
+
+### validation: incomplete
+
+- validation.review: review has not passed
+- validation.review: reviewer and reviewedAt required
+- validation.review: review evidence required
+
+## Source and production metadata
+
+```json
+{
+  "source": {
+    "model": {
+      "id": "training-human-v2plus",
+      "version": "1.0.0-rc2",
+      "manifest": {
+        "root": "repo",
+        "path": "drill-anim/models/training-human-v2plus.json",
+        "sha256": "ec2bc815ded157dbc7673e283ed9b6bb1baa710a39ce3a02f88453e8d7fb0a1d",
+        "bytes": 6494,
+        "normalization": "lf"
+      }
+    },
+    "spec": {
+      "root": "repo",
+      "path": "drill-anim/specs/h-chair-step-up-r2.js",
+      "sha256": "340af315a9f01479b0df8e6349162d83e51199f16bf01a946e16393df0ca1668",
+      "bytes": 368,
+      "normalization": "lf"
+    },
+    "keyMoments": {
+      "switchPoint": {
+        "kind": "in-clip",
+        "seconds": 4,
+        "semantics": "Right side first, then left at second 4. Each side repetition counts once; unilateral does not double the default dose."
+      },
+      "start": 0,
+      "peak": 2.2,
+      "end": 8
+    },
+    "highlightMuscles": [
+      "quadriceps",
+      "glute-max"
+    ],
+    "qa": {
+      "intersections": {
+        "status": "pass",
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-21T09:13:40.424285+00:00",
+        "evidence": [
+          {
+            "root": "media",
+            "path": "qa/reviews/h-chair-step-up-evidence.json",
+            "sha256": "6fe174dca0ff0d0a868772f2c5f24b03eef3125b5447e5f3c2d217d89973bf53",
+            "bytes": 5717
+          }
+        ],
+        "framesReviewed": [
+          0,
+          30,
+          60,
+          66,
+          90,
+          120,
+          150,
+          180,
+          210,
+          239,
+          240
+        ]
+      },
+      "handsFeet": {
+        "status": "pass",
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-21T09:13:40.424285+00:00",
+        "evidence": [
+          {
+            "root": "media",
+            "path": "qa/reviews/h-chair-step-up-evidence.json",
+            "sha256": "6fe174dca0ff0d0a868772f2c5f24b03eef3125b5447e5f3c2d217d89973bf53",
+            "bytes": 5717
+          }
+        ],
+        "framesReviewed": [
+          0,
+          30,
+          60,
+          66,
+          90,
+          120,
+          150,
+          180,
+          210,
+          239,
+          240
+        ]
+      },
+      "propFlicker": {
+        "status": "pass",
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-21T09:13:40.424285+00:00",
+        "evidence": [
+          {
+            "root": "media",
+            "path": "qa/reviews/h-chair-step-up-evidence.json",
+            "sha256": "6fe174dca0ff0d0a868772f2c5f24b03eef3125b5447e5f3c2d217d89973bf53",
+            "bytes": 5717
+          }
+        ],
+        "framesReviewed": [
+          0,
+          30,
+          60,
+          66,
+          90,
+          120,
+          150,
+          180,
+          210,
+          239,
+          240
+        ]
+      },
+      "loopSeam": {
+        "status": "pass",
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-21T09:13:40.424285+00:00",
+        "evidence": [
+          {
+            "root": "media",
+            "path": "qa/reviews/h-chair-step-up-evidence.json",
+            "sha256": "6fe174dca0ff0d0a868772f2c5f24b03eef3125b5447e5f3c2d217d89973bf53",
+            "bytes": 5717
+          }
+        ],
+        "framesReviewed": [
+          0,
+          30,
+          60,
+          66,
+          90,
+          120,
+          150,
+          180,
+          210,
+          239,
+          240
+        ]
+      }
+    },
+    "dependencies": [
+      {
+        "root": "repo",
+        "path": "drill-anim/lib/home-anim.mjs",
+        "sha256": "1798c9e55c28b32391b7ef32aa358427b4743ee1959f86ec488a95fe88a05557",
+        "bytes": 3691,
+        "normalization": "lf"
+      },
+      {
+        "root": "repo",
+        "path": "drill-anim/lib/ss-geo.mjs",
+        "sha256": "45ca774079e3a85ecc4f924a3220d4baa721f0435e16f6e6e21ffa19e17e8603",
+        "bytes": 3700,
+        "normalization": "lf"
+      },
+      {
+        "root": "repo",
+        "path": "drill-anim/specs/h-chair-step-up.js",
+        "sha256": "c81a7793828829c1ac59ee33753f62b3015b74214ed9ca8cdedfe26746e3712d",
+        "bytes": 5592,
+        "normalization": "lf"
+      }
+    ],
+    "demonstratedSide": "both"
+  },
+  "masters": {
+    "requiredSkins": [
+      "realistic",
+      "tech-white",
+      "neon-night",
+      "neon-night-b",
+      "hologram"
+    ],
+    "skins": {
+      "realistic": {
+        "geometrySha256": "aa0aa8dcfa8645375ac39890a58b8773e0e14ecc886fac6f2fda6e459d222152",
+        "occlusionSha256": "5a95a606b60ff421d1daa30ca6ec01d6a027dece8312c9d8dd4f51446d024168",
+        "measurement": {
+          "root": "media",
+          "path": "masters/realistic/h-chair-step-up/layer-manifest.json",
+          "sha256": "189b1537a6d1e8f28cd5fbdf1df89b957b60185c50fb55f261161b150d8ec9c7",
+          "bytes": 15492
+        },
+        "bodyProps": {
+          "sequence": {
+            "root": "media",
+            "path": "masters/realistic/h-chair-step-up/body/index.json",
+            "sha256": "283814780bf5e9b5b33a00bffe20e3302266c0a67ad5ee27f74a198167e82db6",
+            "bytes": 54809
+          },
+          "width": 1080,
+          "height": 1080,
+          "durationSeconds": 8,
+          "frameCount": 240,
+          "fps": 30,
+          "alpha": true
+        },
+        "highlightMask": {
+          "sequence": {
+            "root": "media",
+            "path": "masters/realistic/h-chair-step-up/highlight/index.json",
+            "sha256": "59d2450ee989796dfb9418e750bf4f8cc85bcdc4c7b716c0b7fb811dee9d32c8",
+            "bytes": 56009
+          },
+          "width": 1080,
+          "height": 1080,
+          "durationSeconds": 8,
+          "frameCount": 240,
+          "fps": 30,
+          "alpha": true,
+          "grayscale": true,
+          "occlusionAware": true
+        },
+        "shadow": {
+          "sequence": {
+            "root": "media",
+            "path": "masters/realistic/h-chair-step-up/shadow/index.json",
+            "sha256": "f676f5eb365805f108b80386ec44903ad40e2ef8a1656ec9fe2ff73c485d4839",
+            "bytes": 55289
+          },
+          "width": 1080,
+          "height": 1080,
+          "durationSeconds": 8,
+          "frameCount": 240,
+          "fps": 30,
+          "alpha": true
+        }
+      },
+      "tech-white": {
+        "geometrySha256": "aa0aa8dcfa8645375ac39890a58b8773e0e14ecc886fac6f2fda6e459d222152",
+        "occlusionSha256": "5a95a606b60ff421d1daa30ca6ec01d6a027dece8312c9d8dd4f51446d024168",
+        "measurement": {
+          "root": "media",
+          "path": "masters/tech-white/h-chair-step-up/layer-manifest.json",
+          "sha256": "74ef4821779d2389d5cc3e05926531149209c1ba929581ecf8ee6d55ca72853c",
+          "bytes": 15744
+        },
+        "bodyProps": {
+          "sequence": {
+            "root": "media",
+            "path": "masters/tech-white/h-chair-step-up/body/index.json",
+            "sha256": "da2b8507ee5fc35666950babd87a97dfe1e48aa9b883afccd69fbe224447feb6",
+            "bytes": 55049
+          },
+          "width": 1080,
+          "height": 1080,
+          "durationSeconds": 8,
+          "frameCount": 240,
+          "fps": 30,
+          "alpha": true
+        },
+        "highlightMask": {
+          "sharedFrom": "realistic"
+        },
+        "shadow": {
+          "sharedFrom": "realistic"
+        }
+      },
+      "neon-night": {
+        "geometrySha256": "aa0aa8dcfa8645375ac39890a58b8773e0e14ecc886fac6f2fda6e459d222152",
+        "occlusionSha256": "5a95a606b60ff421d1daa30ca6ec01d6a027dece8312c9d8dd4f51446d024168",
+        "measurement": {
+          "root": "media",
+          "path": "masters/neon-night/h-chair-step-up/layer-manifest.json",
+          "sha256": "f21018716434b795fad5874691e5eb9da89cb32c89ede05652750d9dbe411a1c",
+          "bytes": 15745
+        },
+        "bodyProps": {
+          "sequence": {
+            "root": "media",
+            "path": "masters/neon-night/h-chair-step-up/body/index.json",
+            "sha256": "8dba00c323e8dd547e58faea1cc446c41fc219f920a968d29b82d54f5382c120",
+            "bytes": 55289
+          },
+          "width": 1080,
+          "height": 1080,
+          "durationSeconds": 8,
+          "frameCount": 240,
+          "fps": 30,
+          "alpha": true
+        },
+        "highlightMask": {
+          "sharedFrom": "realistic"
+        },
+        "shadow": {
+          "sharedFrom": "realistic"
+        }
+      },
+      "neon-night-b": {
+        "geometrySha256": "aa0aa8dcfa8645375ac39890a58b8773e0e14ecc886fac6f2fda6e459d222152",
+        "occlusionSha256": "5a95a606b60ff421d1daa30ca6ec01d6a027dece8312c9d8dd4f51446d024168",
+        "measurement": {
+          "root": "media",
+          "path": "masters/neon-night-b/h-chair-step-up/layer-manifest.json",
+          "sha256": "e59d19c96df00597ca4da339d25469a82045bb6f6cdc3b11893177f7df9fe43d",
+          "bytes": 15753
+        },
+        "bodyProps": {
+          "sequence": {
+            "root": "media",
+            "path": "masters/neon-night-b/h-chair-step-up/body/index.json",
+            "sha256": "f181753648e08d8c72f43aeba1b0e148c89b5778a4b3e2f73814e5138034a8db",
+            "bytes": 55769
+          },
+          "width": 1080,
+          "height": 1080,
+          "durationSeconds": 8,
+          "frameCount": 240,
+          "fps": 30,
+          "alpha": true
+        },
+        "highlightMask": {
+          "sharedFrom": "realistic"
+        },
+        "shadow": {
+          "sharedFrom": "realistic"
+        }
+      },
+      "hologram": {
+        "geometrySha256": "aa0aa8dcfa8645375ac39890a58b8773e0e14ecc886fac6f2fda6e459d222152",
+        "occlusionSha256": "5a95a606b60ff421d1daa30ca6ec01d6a027dece8312c9d8dd4f51446d024168",
+        "measurement": {
+          "root": "media",
+          "path": "masters/hologram/h-chair-step-up/layer-manifest.json",
+          "sha256": "e01a943638a78fbcb4afe4c1a81eebe7c89b2b4f8058c4158ab5e7bc0fe1348e",
+          "bytes": 15737
+        },
+        "bodyProps": {
+          "sequence": {
+            "root": "media",
+            "path": "masters/hologram/h-chair-step-up/body/index.json",
+            "sha256": "6b9e0eb867373d6e0a85e52eece65998a7a8a9eb1fa73b015ffb8581638b1b08",
+            "bytes": 54809
+          },
+          "width": 1080,
+          "height": 1080,
+          "durationSeconds": 8,
+          "frameCount": 240,
+          "fps": 30,
+          "alpha": true
+        },
+        "highlightMask": {
+          "sharedFrom": "realistic"
+        },
+        "shadow": {
+          "sharedFrom": "realistic"
+        }
+      }
+    },
+    "loopReview": {
+      "status": "pass",
+      "reviewer": "Codex",
+      "reviewedAt": "2026-10-21T09:13:40.424285+00:00",
+      "evidence": [
+        {
+          "root": "media",
+          "path": "qa/reviews/h-chair-step-up-evidence.json",
+          "sha256": "6fe174dca0ff0d0a868772f2c5f24b03eef3125b5447e5f3c2d217d89973bf53",
+          "bytes": 5717
+        }
+      ]
+    }
+  },
+  "derivatives": {
+    "method": "composite-from-masters",
+    "mirrored": false,
+    "variants": [
+      {
+        "skin": "realistic",
+        "theme": "dark",
+        "highlight": {
+          "enabled": true,
+          "color": "#f08a3c",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/realistic/h-chair-step-up/dark/loop.720.mp4",
+          "sha256": "9041e64f2f3881897f47a9a2ed35bbf50b0d284a4089d077f50d82eae33baee7",
+          "bytes": 398223,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/realistic/h-chair-step-up/dark/cover.720.jpg",
+          "sha256": "177063dd528e153eadc8555d5070e5a0ccbf38780cc411572878503dd3a09869",
+          "bytes": 24414,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/realistic/h-chair-step-up/dark/thumbnail.240.jpg",
+          "sha256": "ae326820a5e9bdaec86f62fe32356b1820cff2c8cd20d8458d4193ab10dc1d00",
+          "bytes": 4865,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/realistic/h-chair-step-up/dark/start.720.png",
+              "sha256": "f388e3f830cb2241e456e39499acab6e48e1e43b47456e5200ff0347f423eb17",
+              "bytes": 53866,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/realistic/h-chair-step-up/dark/peak.720.png",
+              "sha256": "920e32717e410df0f8fa02b7b29f2f1191abddeba7336388ee1ca9236cd7efd6",
+              "bytes": 56083,
+              "width": 720,
+              "height": 720,
+              "frame": 66
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/realistic/h-chair-step-up/dark/end.720.png",
+              "sha256": "197ebb3fb58df4d8794ed63cd8f4a4c863a0e1c4c0150295b7efd622480d03b9",
+              "bytes": 53877,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "realistic",
+        "theme": "light",
+        "highlight": {
+          "enabled": true,
+          "color": "#f08a3c",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/realistic/h-chair-step-up/light/loop.720.mp4",
+          "sha256": "74dbff64acea12b38c567d5247e06b59c7d89e279a15e6605962fcdefa18f2ed",
+          "bytes": 453469,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/realistic/h-chair-step-up/light/cover.720.jpg",
+          "sha256": "cbd00784a1820b3b5e8dacfab1c91f875188c8145171907955fdecb43e6399c5",
+          "bytes": 31529,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/realistic/h-chair-step-up/light/thumbnail.240.jpg",
+          "sha256": "85c72377f6cdb4cd8eb576424d1cfae2395613ed36ef57ccb0a324fb1c846f77",
+          "bytes": 6952,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/realistic/h-chair-step-up/light/start.720.png",
+              "sha256": "cd7c36c9b466e20ae24a4f203239dc7713b48fe8ad3d1492f4c115b19b92148d",
+              "bytes": 64397,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/realistic/h-chair-step-up/light/peak.720.png",
+              "sha256": "c04eee8e25678b9347b585a9a67d5102cf0bc7040f1d62a096dca3694a507b51",
+              "bytes": 66953,
+              "width": 720,
+              "height": 720,
+              "frame": 66
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/realistic/h-chair-step-up/light/end.720.png",
+              "sha256": "bb0a3376a0f1842889cc0dc8f89097f3cb65b14e74202d751aada7630b0c9a4a",
+              "bytes": 64323,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "tech-white",
+        "theme": "dark",
+        "highlight": {
+          "enabled": true,
+          "color": "#f08a3c",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/tech-white/h-chair-step-up/dark/loop.720.mp4",
+          "sha256": "222e98bba9ef907c8ede9d61b056d8df375586cf506550937bda855d1ef5841a",
+          "bytes": 560253,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/tech-white/h-chair-step-up/dark/cover.720.jpg",
+          "sha256": "3ea86d763b1c6e2afb5ec2d9d25f33438d0b80209dfa603b12558f987103661a",
+          "bytes": 30182,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/tech-white/h-chair-step-up/dark/thumbnail.240.jpg",
+          "sha256": "2debd64ac0a7b3fe2bc30e802813385b5bcff429728aa9dc31b8f2f8e1cfcd53",
+          "bytes": 5947,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/tech-white/h-chair-step-up/dark/start.720.png",
+              "sha256": "4862e7d2377c0e8c973f56e7b0b5e5792ab97a913fc987e982104366f7c65d1b",
+              "bytes": 71335,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/tech-white/h-chair-step-up/dark/peak.720.png",
+              "sha256": "f0027ae1a3b2fc813fbdcdeea626904550ddc37e1044681d811026acc8ca0f70",
+              "bytes": 72429,
+              "width": 720,
+              "height": 720,
+              "frame": 66
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/tech-white/h-chair-step-up/dark/end.720.png",
+              "sha256": "e189d3ee0e2bb38c1e3dbc4ddc5a7a4e3c7bdecd14bb97014dcefc2e9a98ed31",
+              "bytes": 71254,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "tech-white",
+        "theme": "light",
+        "highlight": {
+          "enabled": true,
+          "color": "#f08a3c",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/tech-white/h-chair-step-up/light/loop.720.mp4",
+          "sha256": "9b0799c6c03370eff7cb491847eeea17ff2fc995d2edeb6e9936c80e5aacd076",
+          "bytes": 573231,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/tech-white/h-chair-step-up/light/cover.720.jpg",
+          "sha256": "2be480024665ac79fb01ac46da54721bea1e147366b118f908de50d043637049",
+          "bytes": 33271,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/tech-white/h-chair-step-up/light/thumbnail.240.jpg",
+          "sha256": "d0c966d9ec1f54e779431da5a6d12add5243c354a55b28a4c31952b3febfd16c",
+          "bytes": 6580,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/tech-white/h-chair-step-up/light/start.720.png",
+              "sha256": "b852618951706f6d3320007d5045ccb0e7cdd68a1b5df2ab02d42da10b44391e",
+              "bytes": 76381,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/tech-white/h-chair-step-up/light/peak.720.png",
+              "sha256": "0f86c46905dff9567a6941d1991cdd6eb0ee14368b92234ebced652fd2d4afa4",
+              "bytes": 78096,
+              "width": 720,
+              "height": 720,
+              "frame": 66
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/tech-white/h-chair-step-up/light/end.720.png",
+              "sha256": "70f48d5623a06d16d868aeecfbdfacb285d76c157e7aae3e7333e1882c00b873",
+              "bytes": 76262,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "neon-night",
+        "theme": "dark",
+        "highlight": {
+          "enabled": true,
+          "color": "#9fdcff",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/neon-night/h-chair-step-up/dark/loop.720.mp4",
+          "sha256": "f1bc0ed526fbb05ddd2c79fc157ae11354ace42a9becf64a1491f4263ac6ac64",
+          "bytes": 589380,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/neon-night/h-chair-step-up/dark/cover.720.jpg",
+          "sha256": "5f2253f33a455b14bc1680d2c9e76c031fe670d38c4fdf58528a19c9762ffc98",
+          "bytes": 30609,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/neon-night/h-chair-step-up/dark/thumbnail.240.jpg",
+          "sha256": "c1b5bf15ed5c526ee2bd5aaa6bb42d4887c9eb9ce05a8ce480d424f6d803a610",
+          "bytes": 5634,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night/h-chair-step-up/dark/start.720.png",
+              "sha256": "a8480a1566f464352b8fef8c4088c6dbb422c782b941c3b5b60690356b1059a8",
+              "bytes": 71030,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night/h-chair-step-up/dark/peak.720.png",
+              "sha256": "103abc04fc9eaa9b849663550d896311f081f30a0858b49b31d5a2326fcd42f6",
+              "bytes": 72660,
+              "width": 720,
+              "height": 720,
+              "frame": 66
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night/h-chair-step-up/dark/end.720.png",
+              "sha256": "f1d17cfe11b0e85327b03e27bddbe497cae4ef924e0f47a726036cf8bf9f1cbc",
+              "bytes": 70991,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "neon-night",
+        "theme": "light",
+        "highlight": {
+          "enabled": true,
+          "color": "#9fdcff",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/neon-night/h-chair-step-up/light/loop.720.mp4",
+          "sha256": "19d27c732fa32129c55d195dee734551a6fa581d9b94b8de8837296faa8573c1",
+          "bytes": 662697,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/neon-night/h-chair-step-up/light/cover.720.jpg",
+          "sha256": "0f98508c79c2d1461ec3d389cd73c7ae31831f63b03d61581291b48fce77ea9b",
+          "bytes": 38321,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/neon-night/h-chair-step-up/light/thumbnail.240.jpg",
+          "sha256": "2804ace69d5ec64d20c8b8351eff8a8846f24fb4d795913d35f02b06f99d0ff2",
+          "bytes": 7806,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night/h-chair-step-up/light/start.720.png",
+              "sha256": "45059d707b385401b5d2058e80e1fdb7c63db20dc052d5ecb8ae4c22066d6f31",
+              "bytes": 82926,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night/h-chair-step-up/light/peak.720.png",
+              "sha256": "75238b35fced7dd75240eac858931f7853e308f864e6e4ce8467cc41a27d3488",
+              "bytes": 84507,
+              "width": 720,
+              "height": 720,
+              "frame": 66
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night/h-chair-step-up/light/end.720.png",
+              "sha256": "7653677af5565f6b82c61f6b0e0b965cde27eee4c6757c5161913f8bdc642576",
+              "bytes": 82846,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "neon-night-b",
+        "theme": "dark",
+        "highlight": {
+          "enabled": true,
+          "color": "#b6ffd0",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/neon-night-b/h-chair-step-up/dark/loop.720.mp4",
+          "sha256": "4098fcf8542a33640be2fd5b81a6abac062faafb75f14623f1953a74d96f04a6",
+          "bytes": 609352,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/neon-night-b/h-chair-step-up/dark/cover.720.jpg",
+          "sha256": "4db6117e94edf3fe941a281a99ebc2f201d8f7ac9fb321d29145fdce6b741215",
+          "bytes": 30548,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/neon-night-b/h-chair-step-up/dark/thumbnail.240.jpg",
+          "sha256": "59ac8a6378e8c13ef3084e1caef19e08f7ce03c2de4a631c24e5d832a53c546b",
+          "bytes": 5666,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night-b/h-chair-step-up/dark/start.720.png",
+              "sha256": "6724b11d6d4e6cf6282abb2d0a669738c10a3ae32234a809cf631b4b64aaa7fe",
+              "bytes": 70813,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night-b/h-chair-step-up/dark/peak.720.png",
+              "sha256": "140843b8912005f83d98b2a41e0ee787880f4cd727ae37aeeb30969b9568f658",
+              "bytes": 72403,
+              "width": 720,
+              "height": 720,
+              "frame": 66
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night-b/h-chair-step-up/dark/end.720.png",
+              "sha256": "cdccabdc4dad68275dc4192470a1a9c1d771a4ac6a0b766069b98128b87f088e",
+              "bytes": 70727,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "neon-night-b",
+        "theme": "light",
+        "highlight": {
+          "enabled": true,
+          "color": "#b6ffd0",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/neon-night-b/h-chair-step-up/light/loop.720.mp4",
+          "sha256": "f59cc27b540b447936f53e63f9df3d497af5c3d9bc7bddc1fd955e7d8f2dfc9f",
+          "bytes": 669767,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/neon-night-b/h-chair-step-up/light/cover.720.jpg",
+          "sha256": "c61cd0e6fac234229c403da1027c4a9323a9391293104141a7c4fa0d4ac090eb",
+          "bytes": 37954,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/neon-night-b/h-chair-step-up/light/thumbnail.240.jpg",
+          "sha256": "2693721788d2ff069d94fee15cce672244dbb84756f61c849da8abbe2c523c0b",
+          "bytes": 7732,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night-b/h-chair-step-up/light/start.720.png",
+              "sha256": "fcba7c3ff3bf544527c26cf02d0b7f32d0ea3a640a6df9f2636285ee2ce6876c",
+              "bytes": 82734,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night-b/h-chair-step-up/light/peak.720.png",
+              "sha256": "3c226346c0f98fd43a3c3b16e1a37b0e323a9e65867948cc71c3dd7105fce3fa",
+              "bytes": 84443,
+              "width": 720,
+              "height": 720,
+              "frame": 66
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night-b/h-chair-step-up/light/end.720.png",
+              "sha256": "81f1b0699d1fd3bb14426f311d5cd7cd3fc074a08459a718ef8bcc20f8ef69ad",
+              "bytes": 82660,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "hologram",
+        "theme": "dark",
+        "highlight": {
+          "enabled": true,
+          "color": "#e9d49c",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/hologram/h-chair-step-up/dark/loop.720.mp4",
+          "sha256": "4f378c02aba10b6a4ef92cbb492b2d91cccff0f4fcbf7e3ad77861732903b51f",
+          "bytes": 689532,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/hologram/h-chair-step-up/dark/cover.720.jpg",
+          "sha256": "a91cd6eaaeeaf59e4a09a36a6b2b6023441ca6f118e976a04482a84a074c7e32",
+          "bytes": 29360,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/hologram/h-chair-step-up/dark/thumbnail.240.jpg",
+          "sha256": "16f204e79793c319803c50c0ccd6d3e2bb70a1dcb4bcfe62205503dc29b5ab99",
+          "bytes": 5302,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/hologram/h-chair-step-up/dark/start.720.png",
+              "sha256": "c7f50b0934581a2f78890bd41d55cc741f2aafe28dbfae69aa0e02f65598583a",
+              "bytes": 75683,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/hologram/h-chair-step-up/dark/peak.720.png",
+              "sha256": "2f9a905382e89d2745a16fa3b7acb9afd02a7a13f834530736b9edc7d482b6a9",
+              "bytes": 77310,
+              "width": 720,
+              "height": 720,
+              "frame": 66
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/hologram/h-chair-step-up/dark/end.720.png",
+              "sha256": "7ff262dfa906b70d309c732cfce39e0c88128341befec2f561f46ac366a4ebf2",
+              "bytes": 75485,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "hologram",
+        "theme": "light",
+        "highlight": {
+          "enabled": true,
+          "color": "#e9d49c",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/hologram/h-chair-step-up/light/loop.720.mp4",
+          "sha256": "561c7fb8901c117837e37a8e528ecc94fd8c868150e97344d0ef4e0951ea2ffa",
+          "bytes": 385910,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/hologram/h-chair-step-up/light/cover.720.jpg",
+          "sha256": "35856b424a06c6e8d3119d33275a45cf58e6698189a811c904dcea45d3e77d28",
+          "bytes": 29689,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/hologram/h-chair-step-up/light/thumbnail.240.jpg",
+          "sha256": "a9720e4db0e1e6e2c3baf8b7f28c0c58ec7f86b4ac048f15a09295714f27576c",
+          "bytes": 6311,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/hologram/h-chair-step-up/light/start.720.png",
+              "sha256": "1e7604d373dbf713229f322768519b36c2b6c60ef7e894699d604ff05946c34d",
+              "bytes": 74243,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/hologram/h-chair-step-up/light/peak.720.png",
+              "sha256": "50c459fc42801b3923d0b9b77d4fb81e7434a88bb974180d33ed2bc423656d91",
+              "bytes": 77226,
+              "width": 720,
+              "height": 720,
+              "frame": 66
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/hologram/h-chair-step-up/light/end.720.png",
+              "sha256": "ee7cf0365fe3240c6ac3a981eca55f360f4872659ab94e67e2d550d5aa8c59dd",
+              "bytes": 74276,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      }
+    ],
+    "transparentCovers": {
+      "realistic": {
+        "root": "media",
+        "path": "derivatives/realistic/h-chair-step-up/cover.transparent.1080.png",
+        "sha256": "94fc7631d9423bcf0b9bb98fb0fbf018cf9a07a89d6ebf320e5729f6cf86e62e",
+        "bytes": 111757,
+        "width": 1080,
+        "height": 1080,
+        "alpha": true
+      },
+      "tech-white": {
+        "root": "media",
+        "path": "derivatives/tech-white/h-chair-step-up/cover.transparent.1080.png",
+        "sha256": "bc0fedcb0ac6af2f7ca72770e8539b559d37d37251ff59e11e9f820748ef05b1",
+        "bytes": 142163,
+        "width": 1080,
+        "height": 1080,
+        "alpha": true
+      },
+      "neon-night": {
+        "root": "media",
+        "path": "derivatives/neon-night/h-chair-step-up/cover.transparent.1080.png",
+        "sha256": "ab19c261690bfb9a8af9fc5c27a825412b56bde8fc527b3fb8f02a15e4c74e8c",
+        "bytes": 155358,
+        "width": 1080,
+        "height": 1080,
+        "alpha": true
+      },
+      "neon-night-b": {
+        "root": "media",
+        "path": "derivatives/neon-night-b/h-chair-step-up/cover.transparent.1080.png",
+        "sha256": "ae5a657f29dc57a04b397693c3df4ed9314cf860d9d72f29a100486e44080b3e",
+        "bytes": 155152,
+        "width": 1080,
+        "height": 1080,
+        "alpha": true
+      },
+      "hologram": {
+        "root": "media",
+        "path": "derivatives/hologram/h-chair-step-up/cover.transparent.1080.png",
+        "sha256": "c5a94fd11b84bc040886a9693e6623f8dea67f3b224c15c6f48e20e4acc6c773",
+        "bytes": 186518,
+        "width": 1080,
+        "height": 1080,
+        "alpha": true
+      }
+    },
+    "provenance": {
+      "framing": {
+        "root": "media",
+        "path": "manifests/framing/h-chair-step-up.json",
+        "sha256": "a2296b918ee24571288ec49389d9396e55dbf2538c2cf9918fe94b5ab48b3441",
+        "bytes": 292
+      }
+    },
+    "framingId": "fixed-square-a2296b918ee24571",
+    "compositor": {
+      "root": "repo",
+      "path": "tools/action-package-v2/composite.py",
+      "sha256": "fedb15d24c7080926a857cacad3d3b10b15617735ab3d88053cb885af7c70507",
+      "bytes": 21548
+    }
+  },
+  "voice": {
+    "actionId": "h-chair-step-up",
+    "manifest": {
+      "root": "repo",
+      "path": "catalog/voice-v2/manifest.json",
+      "sha256": "ba775ace59603e534c3dc979fc8a8cc277836427efcd6b10f2e88e16f696336c",
+      "bytes": 195389
+    }
+  },
+  "validation": {
+    "modelVersion": "1.0.0-rc2",
+    "mirrorGenerated": false,
+    "review": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "evidence": []
+    },
+    "manifest": {
+      "root": "media",
+      "path": "manifests/h-chair-step-up.json",
+      "sha256": "01c27658d8e97b0d89e34d23f9cabb8729756f73719cb8287fc779ebe40c6424",
+      "bytes": 28348
+    }
+  }
+}
+```

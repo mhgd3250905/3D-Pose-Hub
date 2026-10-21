@@ -35,6 +35,9 @@
 
 ## 4. 人物模型版本
 
+- 用户于 2026-10-21 确认全库重制采用新版人体：`training-human-v2` 已退出新生产，仅保留冻结历史复现。本轮先在分支完成动作包 v2 与六动作、五套皮肤试制，开哥看样同意后才合入 main 并推送；全库批量生产另等确认。
+- 本轮新增母版、临时帧、派生素材与语音按用户授权放在 `F:/PoseHub-v2-pilot/`，分 `masters/`、`derivatives/`、`voice/`、`previews/`、`qa/`、`manifests/`、`work/` 等目录。此项仅调整本轮新素材的存储位置，既有 E 盘原件和备份保留。
+
 - 新制作默认以 [current-production.json](drill-anim/models/current-production.json) 为唯一配方入口；当前采用 `training-human-v2plus` / `1.0.0-rc2`，原配色、动作肌群高亮、不显示肌群分区线。制作标准见 [training-human-v2plus.md](docs/training-human-v2plus.md)，实际合入、验证与待办见 [版本对齐台账](docs/version-ledger.md)。
 - 新版扩展清单 `drill-anim/models/training-human-v2plus.json` 固定 loader、运行脚本、模型数据及生产入口；变更固定源需另建模型版本。已冻结清单的审批注记保留其编制时身份，当前 Git 合入状态以台账为准。
 - `drill-anim/models/training-human-v2.json` 固定了 13 个源文件的 sha256。改动其中任何一个（网格、头、材质、肩颈配置、渲染核心）都要建立新的模型版本和验证记录，不能静默改变 `training-human-v2`。

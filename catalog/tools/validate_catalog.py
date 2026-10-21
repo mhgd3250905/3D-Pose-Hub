@@ -211,6 +211,11 @@ def external(cat, roots):
 
 
 def main():
+    if '--v2' in sys.argv:
+        import subprocess
+        args = [x for x in sys.argv[1:] if x != '--v2']
+        sys.exit(subprocess.call([sys.executable, os.path.join(HERE, 'action_package_v2.py'), 'validate', *args]))
+    print('Historical v1 validation only. New production uses --v2 --release; legacy completeness never approves v2 release.', file=sys.stderr)
     ap = argparse.ArgumentParser()
     ap.add_argument("--catalog", default=os.path.join(CAT, "catalog.json"))
     ap.add_argument("--schema", default=os.path.join(CAT, "catalog.schema.json"))

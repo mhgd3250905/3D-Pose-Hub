@@ -2,7 +2,7 @@
 
 > **第一次来？先读 [docs/START-HERE.md](docs/START-HERE.md)**（半小时上手、低配机验证、贡献流程）；动作总表见 [docs/drill-catalog.md](docs/drill-catalog.md)，审核标准见 [docs/review-rubric.md](docs/review-rubric.md)。
 
-AI 选动作与剂量元数据以 [catalog/catalog.json](catalog/catalog.json) 为事实源，字段与生成规则见 [catalog/README.md](catalog/README.md)。版本规则见 [版本管理](docs/version-management.md)，当前版本、PR 合入与接入待办见 [版本对齐台账](docs/version-ledger.md)。
+新生产以 [动作包 v2](catalog/v2/README.md) 为合同，按稳定动作 ID 管理定义、动作源、分层母版、派生、双语语音和校验六层；AI 的 [action-library](catalog/action-library/index.md) 从 catalog 自动生成。现有 App 尚在使用的 [catalog/catalog.json](catalog/catalog.json) 为 0.3.0 历史兼容目录，其完整度不等于 v2 发布资格。版本规则见 [版本管理](docs/version-management.md)，当前版本、PR 合入与接入待办见 [版本对齐台账](docs/version-ledger.md)。
 
 Pose-Hub 是 FlareLab（托马斯训练助手）和 HipLab（开胯训练助手）共用的**动作库**：动作渲染工具 drill-anim、训练人物模型及其制作工具、每个动作的规格（spec）、以及成片素材清单都在这里。各 App 不再自己改动作，只按固定版本从这里取成片。
 
@@ -48,6 +48,10 @@ python -m unittest discover -s media/tests -v   # 素材脚本
 
 ## 渲染
 
+`training-human-v2` 已退出新生产，只保留冻结历史复现。新人体先做六个代表动作、原配色/白金/蓝色/绿色/全息五套试制；分层渲染见 [tools/v2](drill-anim/tools/v2/README.md)，脚本派生和本地审片见 [action-package-v2](tools/action-package-v2/README.md)。新产物按用户授权统一放在 F 盘；开哥看样同意后才合入、推送，全库铺开另等确认。
+
+下面旧命令用于历史配方复现，不作为 v2 新生产入口：
+
 ```bash
 python drill-anim/drill.py render deltoids-A --frames 0,63,120 --jobs 1        # 先预览几帧
 python drill-anim/drill.py render h-9090-liftoff --jobs 1                       # 全片：mp4 + gif + 拼图 + QA
@@ -86,6 +90,6 @@ python tools/pose_hub_sync.py --lock pose-hub.lock.json --check
 
 ## AI 动作目录版本
 
-当前目录为 **0.3.0 / formatVersion 1**：[PR #11](https://github.com/mhgd3250905/3D-Pose-Hub/pull/11) 的 0.2.0 修复后，[PR #13](https://github.com/mhgd3250905/3D-Pose-Hub/pull/13) 已合入 `rhythm` 字段。仍收录 142 个稳定动作 id：FlareLab 51、HipLab 46、SmartFit 93，各 App 有重叠。它与 200 个 spec 文件的开发总表、46 个动作的媒体发布包分别统计。
+历史兼容目录为 **0.3.0 / formatVersion 1**：[PR #11](https://github.com/mhgd3250905/3D-Pose-Hub/pull/11) 的 0.2.0 修复后，[PR #13](https://github.com/mhgd3250905/3D-Pose-Hub/pull/13) 已合入 `rhythm` 字段。仍收录 142 个稳定动作 id：FlareLab 51、HipLab 46、SmartFit 93，各 App 有重叠。本轮六个新版修订加入后，spec 开发总表为 206 文件（33 修订），与 173 个基础动作 ID、46 个动作的历史媒体发布包分别统计；六个试点仍须按 v2 六层逐项验收。
 
 目录 0.3.0 与媒体 ZIP 0.2.0 是独立版本。目录合入不等于消费端已升级：SmartFit 的 8 项剂量、7 项侧别同步与 SDK `holdSeconds`、`rhythm` 执行语义仍待接入验收；本次没有新增目录发布 tag 或媒体 ZIP。具体提交、验证范围与待办见 [版本对齐台账](docs/version-ledger.md)。

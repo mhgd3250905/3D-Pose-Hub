@@ -1,0 +1,86 @@
+{
+  "schema": "pose-hub-voice-script@2",
+  "reviewStatus": "pending-user-review",
+  "languages": ["zh", "en"],
+  "voices": {"zh": "zh-CN-XiaoxiaoNeural", "en": "en-US-JennyNeural"},
+  "rates": {"zh": "+6%", "en": "+4%"},
+  "sourceStandard": "HipLab/tools/voice/build_voice.py v4.1 and docs/voice-audit-2026-10-18.md",
+  "actions": {
+    "w-dead-bug": {
+      "name": {"zh": "死虫式", "en": "Dead Bug"},
+      "primaryCue": {"zh": "下背紧贴地面，对侧手脚慢慢伸远", "en": "Keep your lower back on the floor and slowly extend the opposite arm and leg"},
+      "phase.start": {"zh": "慢慢伸远", "en": "Extend slowly"},
+      "phase.peak": {"zh": "保持住", "en": "Hold"},
+      "phase.end": {"zh": "慢慢收回", "en": "Return slowly"}
+    },
+    "h-chair-step-up": {
+      "name": {"zh": "椅子上步", "en": "Chair Step-Up"},
+      "primaryCue": {"zh": "整只脚踩稳椅面，用前腿发力站起", "en": "Plant your whole foot on the seat and stand up using the front leg"},
+      "phase.start": {"zh": "踩稳，上步", "en": "Plant your foot and step up"},
+      "phase.peak": {"zh": "站稳", "en": "Stand tall"},
+      "phase.end": {"zh": "慢慢下台", "en": "Step down slowly"}
+    },
+    "h-db-curl": {
+      "name": {"zh": "哑铃交替弯举", "en": "Alternating Dumbbell Curl"},
+      "primaryCue": {"zh": "大臂贴住身体，只动小臂", "en": "Keep your upper arms by your sides and move only your forearms"},
+      "phase.start": {"zh": "弯举", "en": "Curl up"},
+      "phase.peak": {"zh": "保持住", "en": "Hold"},
+      "phase.end": {"zh": "放下", "en": "Lower"}
+    },
+    "glute-max-A": {
+      "name": {"zh": "单腿臀桥", "en": "Single-leg glute bridge"},
+      "primaryCue": {"zh": "一条腿抬起，用臀部把身体推高", "en": "One leg up, drive your hips up with your glutes"},
+      "phase.start": {"zh": "臀部抬起", "en": "Hips up"},
+      "phase.peak": {"zh": "保持住", "en": "Hold"},
+      "phase.end": {"zh": "放下", "en": "Lower"}
+    },
+    "s-frog": {
+      "name": {"zh": "青蛙式", "en": "Frog stretch"},
+      "primaryCue": {"zh": "膝盖向两侧打开，脚尖朝外，臀部慢慢往后坐", "en": "Knees wide, toes out, sit your hips back slowly"},
+      "phase.start": {"zh": "髋向后坐", "en": "Sit your hips back"},
+      "phase.peak": {"zh": "保持住", "en": "Hold"},
+      "phase.end": {"zh": "慢慢还原", "en": "Slowly come out of it"}
+    },
+    "h-catcow-quad": {
+      "name": {"zh": "四足猫牛式", "en": "Quadruped Cat-Cow"},
+      "primaryCue": {"zh": "收腹拱背，缓慢抬胸，手脚保持稳定", "en": "Round your back, then gently lift your chest, keeping your hands and knees still"},
+      "phase.start": {"zh": "呼气，拱背", "en": "Breathe out and round your back"},
+      "phase.peak": {"zh": "吸气，抬胸", "en": "Breathe in and lift your chest"},
+      "phase.end": {"zh": "回到中立位", "en": "Return to neutral"}
+    }
+  },
+  "common": {
+    "n.0": {"zh": "零", "en": "zero"},
+    "n.1": {"zh": "一", "en": "one"},
+    "n.2": {"zh": "二", "en": "two"},
+    "n.3": {"zh": "三", "en": "three"},
+    "n.4": {"zh": "四", "en": "four"},
+    "n.5": {"zh": "五", "en": "five"},
+    "n.6": {"zh": "六", "en": "six"},
+    "n.7": {"zh": "七", "en": "seven"},
+    "n.8": {"zh": "八", "en": "eight"},
+    "n.9": {"zh": "九", "en": "nine"},
+    "n.10": {"zh": "十", "en": "ten"},
+    "p.ready": {"zh": "准备", "en": "Get ready"},
+    "p.go": {"zh": "开始", "en": "Go"},
+    "p.last_rep": {"zh": "最后一次", "en": "Last one"},
+    "p.release": {"zh": "慢慢还原", "en": "Slowly come out of it"},
+    "p.again": {"zh": "再来一组", "en": "One more set"},
+    "p.right_first": {"zh": "先做右边", "en": "Right side first"},
+    "p.switch_left": {"zh": "换左边", "en": "Switch to the left side"},
+    "p.switch_right": {"zh": "换右边", "en": "Switch to the right side"},
+    "p.rest": {"zh": "休息", "en": "Rest for"},
+    "p.nice": {"zh": "很好", "en": "Nice work"},
+    "sec.5": {"zh": "5 秒", "en": "5 seconds"},
+    "sec.10": {"zh": "10 秒", "en": "10 seconds"},
+    "sec.15": {"zh": "15 秒", "en": "15 seconds"},
+    "sec.30": {"zh": "30 秒", "en": "30 seconds"},
+    "sec.60": {"zh": "1 分钟", "en": "1 minute"}
+  },
+  "playback": {
+    "countdownKeys": ["n.5", "n.4", "n.3", "n.2", "n.1"],
+    "restGrammar": ["p.rest", "sec.{seconds}"],
+    "phaseScheduling": "Start cues before their phase by measured clip duration; never overlap or truncate a previous line. Name and point play before the loop. Short phases may omit a cue.",
+    "manualListening": "pending"
+  }
+}
