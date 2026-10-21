@@ -73,7 +73,7 @@ if __name__=='__main__':
         if f=='thumb': JB[f][0]=Jv[f][0]*s
     # --- weights on the base hand: hand + 15 finger bones
     n=len(X); Wf=np.zeros((n,16)); Wf[:,0]=1
-    D=np.full((n,5),9.0); TT=np.zeros((n,5)); 
+    D=np.full((n,5),9.0); TT=np.zeros((n,5));
     for fi,f in enumerate(FN):
         J=JB[f]; best=np.full(n,9.0)
         for j in range(3):
