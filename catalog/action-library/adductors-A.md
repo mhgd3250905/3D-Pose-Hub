@@ -1,0 +1,448 @@
+# 哥萨克蹲 / Cossack Squat
+
+ID: `adductors-A`. State: draft. Release eligible: False.
+
+## Definition
+
+```json
+{
+  "idMappings": [],
+  "name": {
+    "zh": "哥萨克蹲",
+    "en": "Cossack Squat"
+  },
+  "purpose": {
+    "zh": "哥萨克蹲，练内收肌与侧向深蹲",
+    "en": "Train a controlled lateral squat and inner-thigh mobility with alternating loaded legs."
+  },
+  "tags": {
+    "category": "strength",
+    "activeMuscles": [
+      "adductors",
+      "glute-max",
+      "quadriceps"
+    ],
+    "synergistMuscles": [
+      "hamstrings",
+      "abs"
+    ],
+    "equipment": [],
+    "position": "standing",
+    "scenes": [
+      "home",
+      "gym"
+    ],
+    "difficulty": 2,
+    "trainingType": "strength"
+  },
+  "unilateral": true,
+  "startingSide": "right",
+  "cues": [
+    {
+      "id": "cue1",
+      "text": {
+        "zh": "宽站蹲向一侧，另一腿伸直，脚尖朝上",
+        "en": "Squat towards one side from a wide stance, keeping the other leg straight with its toes up"
+      },
+      "primary": true
+    },
+    {
+      "id": "cue2",
+      "text": {
+        "zh": "先向右腿承重下蹲，承重脚跟踩稳",
+        "en": "Squat onto the right leg first and keep the loaded heel planted."
+      },
+      "primary": false
+    },
+    {
+      "id": "cue3",
+      "text": {
+        "zh": "胸口保持抬起，膝盖沿承重脚脚尖方向移动",
+        "en": "Keep the chest lifted and let the loaded knee follow its toes."
+      },
+      "primary": false
+    },
+    {
+      "id": "cue4",
+      "text": {
+        "zh": "缓慢回到中间站高，再换左侧，不弹振硬压",
+        "en": "Return slowly to the tall centre position before changing to the left, without bouncing."
+      },
+      "primary": false
+    }
+  ],
+  "commonErrors": [
+    {
+      "zh": "承重膝盖内扣、脚跟离地或突然滑向一侧",
+      "en": "Letting the loaded knee collapse inwards, lifting its heel or sliding suddenly sideways."
+    },
+    {
+      "zh": "非承重腿弯曲、脚尖未抬起，或塌腰追求更深幅度",
+      "en": "Bending the unloaded leg, failing to raise its toes or rounding the back to force more depth."
+    }
+  ],
+  "cautions": {
+    "items": [
+      {
+        "zh": "膝与踝：承重侧脚跟保持着地；伸直侧脚尖抬起，以脚跟为支点。",
+        "en": "Knees and ankles: keep the loaded heel planted and let the straight-leg foot pivot on its heel with the toes up."
+      },
+      {
+        "zh": "髋与大腿内侧：选能控制的侧蹲深度，避免向底部猛压。",
+        "en": "Hips and inner thighs: choose a lateral squat depth you can control without forcing the bottom position."
+      }
+    ],
+    "review": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "evidence": []
+    }
+  },
+  "contraindications": {
+    "items": [
+      {
+        "zh": "本动作引发疼痛时停止，不通过增加幅度或负重继续；先向医生或物理治疗师确认。",
+        "en": "Stop if this exercise causes pain; do not add range or load before seeking clinical advice."
+      },
+      {
+        "zh": "已有医嘱限制单侧深蹲、侧向负重或髋膝踝活动时，先取得许可。",
+        "en": "Obtain clearance first if single-sided deep squatting, sideways loading or hip, knee or ankle movement has been restricted."
+      }
+    ],
+    "review": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "evidence": []
+    }
+  },
+  "alternatives": [
+    "n-squat-shift"
+  ],
+  "regressions": [
+    "n-squat-shift"
+  ],
+  "progressions": [],
+  "defaultDose": {
+    "mode": "reps",
+    "sets": 3,
+    "reps": 5,
+    "restSeconds": 45
+  },
+  "doseRange": {
+    "sets": [
+      1,
+      4
+    ],
+    "reps": [
+      4,
+      8
+    ],
+    "restSeconds": [
+      0,
+      90
+    ]
+  },
+  "rhythm": {
+    "kind": "rep_alternate",
+    "leadSeconds": 0,
+    "source": "b002-source-timeline",
+    "phases": [
+      {
+        "id": "prepare",
+        "seconds": 0.3
+      },
+      {
+        "id": "squatOntoWorkingLeg",
+        "seconds": 1.3
+      },
+      {
+        "id": "bottomHold",
+        "seconds": 0.7
+      },
+      {
+        "id": "riseToCentre",
+        "seconds": 1.3
+      },
+      {
+        "id": "reset",
+        "seconds": 0.4
+      }
+    ]
+  },
+  "countingSemantics": "One lateral squat and return led by one loaded leg counts as one rep. The 8-second clip demonstrates one right-loaded then one left-loaded rep. Preserve FlareLab prescription: default reps=5 is per side (five full loops give five reps on each side), not five total alternating reps. Switch loaded leg at 4 seconds.",
+  "movementSides": "First squat loads the right leg and straightens/raises toes of the left; after 4 seconds the left leg loads and right leg straightens. Highlight remains both.",
+  "apps": [
+    "flarelab"
+  ],
+  "editorialReview": {
+    "status": "pending",
+    "reviewer": null,
+    "reviewedAt": null,
+    "evidence": []
+  },
+  "editorialNotes": [
+    "旧FlareLab明确3组×每侧5–6次，沿catalog默认每侧5次，不擅改为总5次。8秒片右/左各1次，默认每组需5个完整循环。",
+    "原spec没有modelProfile；r2明确新模型。保留伸直腿reach=177.5、滚脚heel pivot和原求解器；不在迁移时静默校正接触。",
+    "原stillAt=0为直立，batch peak改用1.9667秒右侧底部；原source stillAt/keyFrames保留。n-squat-shift是旧目录明确替代，也为减少伸膝抬趾/深侧蹲要求的降阶候选；独立负重进阶ID未核定。",
+    "相位来自catalog/v2/batches/b002.json真实源时间；剂量数字与范围保持旧catalog。rhythm只描述动画，不使用旧reps或holdSeconds来覆盖处方。",
+    "具体双语注意、通用禁用筛查、协同肌群与关系均为待审草稿；协同包含稳定/次要拉伸角色，不是额外高亮或肌电激活结论。",
+    "关系均为本仓库真实ID候选，不等于已有同模型可发布v2包；不得自动回退弃用模型素材。空关系缺口见逐动作说明。",
+    "通用医学筛查证据边界沿用catalog/v2/definition-evidence.md的AAOS/NHS一手资料；不编造疾病特异绝对禁忌，编辑/医学审核均保持pending。"
+  ]
+}
+```
+
+## Six-layer completeness
+
+### definition: incomplete
+
+- editorialReview: review has not passed
+- editorialReview: reviewer and reviewedAt required
+- editorialReview: review evidence required
+- cautions.review: review has not passed
+- cautions.review: reviewer and reviewedAt required
+- cautions.review: review evidence required
+- contraindications.review: review has not passed
+- contraindications.review: reviewer and reviewedAt required
+- contraindications.review: review evidence required
+
+### source: incomplete
+
+- qa.intersections: review has not passed
+- qa.intersections: reviewer and reviewedAt required
+- qa.intersections: review evidence required
+- qa.intersections: actual frames reviewed required
+- qa.handsFeet: review has not passed
+- qa.handsFeet: reviewer and reviewedAt required
+- qa.handsFeet: review evidence required
+- qa.handsFeet: actual frames reviewed required
+- qa.propFlicker: review has not passed
+- qa.propFlicker: reviewer and reviewedAt required
+- qa.propFlicker: review evidence required
+- qa.propFlicker: actual frames reviewed required
+- qa.loopSeam: review has not passed
+- qa.loopSeam: reviewer and reviewedAt required
+- qa.loopSeam: review evidence required
+- qa.loopSeam: actual frames reviewed required
+
+### masters: incomplete
+
+- all registered skins required, no extra skins
+- realistic.geometrySha256: measured SHA required
+- realistic.occlusionSha256: measured SHA required
+- realistic.measurement: reference missing
+- realistic.bodyProps: requires 1080 square / 240 frames / 30fps / 8s
+- realistic.bodyProps: alpha required
+- realistic.bodyProps.sequence: reference missing
+- realistic.highlightMask: requires 1080 square / 240 frames / 30fps / 8s
+- realistic.highlightMask: alpha required
+- realistic.highlightMask: grayscale and occlusionAware required
+- realistic.highlightMask.sequence: reference missing
+- realistic.shadow: requires 1080 square / 240 frames / 30fps / 8s
+- realistic.shadow: alpha required
+- realistic.shadow.sequence: reference missing
+- tech-white.geometrySha256: measured SHA required
+- tech-white.occlusionSha256: measured SHA required
+- tech-white.measurement: reference missing
+- tech-white.bodyProps: requires 1080 square / 240 frames / 30fps / 8s
+- tech-white.bodyProps: alpha required
+- tech-white.bodyProps.sequence: reference missing
+- tech-white.highlightMask: requires 1080 square / 240 frames / 30fps / 8s
+- tech-white.highlightMask: alpha required
+- tech-white.highlightMask: grayscale and occlusionAware required
+- tech-white.highlightMask.sequence: reference missing
+- tech-white.shadow: requires 1080 square / 240 frames / 30fps / 8s
+- tech-white.shadow: alpha required
+- tech-white.shadow.sequence: reference missing
+- neon-night.geometrySha256: measured SHA required
+- neon-night.occlusionSha256: measured SHA required
+- neon-night.measurement: reference missing
+- neon-night.bodyProps: requires 1080 square / 240 frames / 30fps / 8s
+- neon-night.bodyProps: alpha required
+- neon-night.bodyProps.sequence: reference missing
+- neon-night.highlightMask: requires 1080 square / 240 frames / 30fps / 8s
+- neon-night.highlightMask: alpha required
+- neon-night.highlightMask: grayscale and occlusionAware required
+- neon-night.highlightMask.sequence: reference missing
+- neon-night.shadow: requires 1080 square / 240 frames / 30fps / 8s
+- neon-night.shadow: alpha required
+- neon-night.shadow.sequence: reference missing
+- neon-night-b.geometrySha256: measured SHA required
+- neon-night-b.occlusionSha256: measured SHA required
+- neon-night-b.measurement: reference missing
+- neon-night-b.bodyProps: requires 1080 square / 240 frames / 30fps / 8s
+- neon-night-b.bodyProps: alpha required
+- neon-night-b.bodyProps.sequence: reference missing
+- neon-night-b.highlightMask: requires 1080 square / 240 frames / 30fps / 8s
+- neon-night-b.highlightMask: alpha required
+- neon-night-b.highlightMask: grayscale and occlusionAware required
+- neon-night-b.highlightMask.sequence: reference missing
+- neon-night-b.shadow: requires 1080 square / 240 frames / 30fps / 8s
+- neon-night-b.shadow: alpha required
+- neon-night-b.shadow.sequence: reference missing
+- hologram.geometrySha256: measured SHA required
+- hologram.occlusionSha256: measured SHA required
+- hologram.measurement: reference missing
+- hologram.bodyProps: requires 1080 square / 240 frames / 30fps / 8s
+- hologram.bodyProps: alpha required
+- hologram.bodyProps.sequence: reference missing
+- hologram.highlightMask: requires 1080 square / 240 frames / 30fps / 8s
+- hologram.highlightMask: alpha required
+- hologram.highlightMask: grayscale and occlusionAware required
+- hologram.highlightMask.sequence: reference missing
+- hologram.shadow: requires 1080 square / 240 frames / 30fps / 8s
+- hologram.shadow: alpha required
+- hologram.shadow.sequence: reference missing
+- masters.loopReview: review has not passed
+- masters.loopReview: reviewer and reviewedAt required
+- masters.loopReview: review evidence required
+
+### derivatives: incomplete
+
+- derivatives.compositor: reference missing
+- one framingId required for thumbnails/keyframes
+- each skin x light/dark required exactly once; highlight remains a compositor parameter
+- realistic.transparentCover: reference missing
+- realistic: transparent cover alpha required
+- tech-white.transparentCover: reference missing
+- tech-white: transparent cover alpha required
+- neon-night.transparentCover: reference missing
+- neon-night: transparent cover alpha required
+- neon-night-b.transparentCover: reference missing
+- neon-night-b: transparent cover alpha required
+- hologram.transparentCover: reference missing
+- hologram: transparent cover alpha required
+
+### voice: incomplete
+
+- voice content review and manual listening must pass
+
+### validation: incomplete
+
+- validation.manifest: reference missing
+- validation.review: review has not passed
+- validation.review: reviewer and reviewedAt required
+- validation.review: review evidence required
+
+## Source and production metadata
+
+```json
+{
+  "source": {
+    "model": {
+      "id": "training-human-v2plus",
+      "version": "1.0.0-rc2",
+      "manifest": {
+        "root": "repo",
+        "path": "drill-anim/models/training-human-v2plus.json",
+        "sha256": "ec2bc815ded157dbc7673e283ed9b6bb1baa710a39ce3a02f88453e8d7fb0a1d",
+        "bytes": 6494,
+        "normalization": "lf"
+      }
+    },
+    "spec": {
+      "root": "repo",
+      "path": "drill-anim/specs/adductors-A-r2.js",
+      "sha256": "ac96284719be49ed29d871125fea1a1374562cdaf6d585b61a43c726db11ecd5",
+      "bytes": 477,
+      "normalization": "lf"
+    },
+    "dependencies": [
+      {
+        "root": "repo",
+        "path": "drill-anim/specs/adductors-A.js",
+        "sha256": "9478258360d5a617a4fbd8b561ef49abbac0182f2bba0dc8e276cb0c15359924",
+        "bytes": 6527,
+        "normalization": "lf"
+      }
+    ],
+    "keyMoments": {
+      "start": 0,
+      "peak": 1.9666666666666666,
+      "end": 8,
+      "switchPoint": {
+        "kind": "in-clip",
+        "seconds": 4,
+        "semantics": "First squat loads the right leg and straightens/raises toes of the left; after 4 seconds the left leg loads and right leg straightens. Highlight remains both. One lateral squat and return led by one loaded leg counts as one rep. The 8-second clip demonstrates one right-loaded then one left-loaded rep. Preserve FlareLab prescription: default reps=5 is per side (five full loops give five reps on each side), not five total alternating reps. Switch loaded leg at 4 seconds."
+      }
+    },
+    "highlightMuscles": [
+      "adductors"
+    ],
+    "qa": {
+      "intersections": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidence": [],
+        "framesReviewed": []
+      },
+      "handsFeet": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidence": [],
+        "framesReviewed": []
+      },
+      "propFlicker": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidence": [],
+        "framesReviewed": []
+      },
+      "loopSeam": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidence": [],
+        "framesReviewed": []
+      }
+    },
+    "demonstratedSide": "both"
+  },
+  "masters": {
+    "requiredSkins": [
+      "realistic",
+      "tech-white",
+      "neon-night",
+      "neon-night-b",
+      "hologram"
+    ],
+    "skins": {},
+    "loopReview": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "evidence": []
+    }
+  },
+  "derivatives": {
+    "method": "composite-from-masters",
+    "mirrored": false,
+    "variants": [],
+    "transparentCovers": {}
+  },
+  "voice": {
+    "actionId": "adductors-A",
+    "manifest": {
+      "root": "repo",
+      "path": "catalog/voice-v2/batches/b002-manifest.json",
+      "sha256": "49ec936b6badcecb00076a1a4e39664b8ba4223094e7e6ec0a145401a45fac64",
+      "bytes": 231448
+    }
+  },
+  "validation": {
+    "modelVersion": "1.0.0-rc2",
+    "mirrorGenerated": false,
+    "review": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "evidence": []
+    }
+  }
+}
+```

@@ -2,9 +2,11 @@
 
 `action-package@2` 以稳定动作 ID 为唯一单位，取代新生产中的 `drill-pack@1`、`action-kit@1`、`flarelab-drill-media@1`。旧包、旧 catalog 和已发布 ZIP 保留，历史 `completeness.complete` 不参与 v2 判定。`training-human-v2` 只供历史复现；新动作源固定 `training-human-v2plus` 的版本、模型清单 SHA 和 spec SHA。
 
-当前审片修订是 `F:/PoseHub-v2-pilot/neck-fix-r2/`。颈部漏色已修正，六动作五皮肤完整母版与派生已重做，action JSON 均升级为 draft.2 并接入新媒体和 QA SHA；AI 详情已重建。r1 保留历史，本规范未因材质补丁改变。技术结果及待审项见[试制状态](../../docs/action-package-v2-pilot-20261021.md)与[颈部修复](../../docs/neck-material-fix-20261021.md)。
+六动作已确认试制位于 `F:/PoseHub-v2-pilot/neck-fix-r2/`。颈部漏色已修正，六动作五皮肤完整母版与派生已重做，action JSON 均升级为 draft.2 并接入新媒体和 QA SHA；AI 详情已重建。r1 保留历史，本规范未因材质补丁改变。技术结果及待审项见[试制状态](../../docs/action-package-v2-pilot-20261021.md)与[颈部修复](../../docs/neck-material-fix-20261021.md)。
 
-`actions/*.json` 是可编辑源，`pilot.json` 是本轮六个代表动作及类别，`skins.json` 是本轮生产皮肤的唯一名单。五套为原配色 `realistic`、白金 `tech-white`、蓝色 `neon-night`、绿色 `neon-night-b`、全息 `hologram`。`tech-white-b` 是白金别名，`default` 在生产层映射原配色；历史实验 `plaster`、`hologram-b` 不进本轮生产矩阵。
+开哥已授权全库推进；正式目录 142 个稳定 ID，复用六个试制动作，新增制作 136 个，分 20 批执行，见[全库计划](../../docs/action-library-v2-production-plan-20261021.md)与 `production-plan.json`。新母版和临时数据统一放在 `F:/PoseHub-v2-production/`，每批独立媒体根。当前已建立 28 个动作包，其余 114 个仍为计划项，不记为完成。
+
+`actions/*.json` 是可编辑源，`pilot.json` 保留六个代表动作及类别，`skins.json` 是生产皮肤的唯一名单。五套为原配色 `realistic`、白金 `tech-white`、蓝色 `neon-night`、绿色 `neon-night-b`、全息 `hologram`。`tech-white-b` 是白金别名，`default` 在生产层映射原配色；历史实验 `plaster`、`hologram-b` 不进本轮生产矩阵。
 
 目录中的 JSON Schema 是**允许缺项的草稿编辑合同**，用于结构/类型检查；完整度和发布资格必须由六层 gate 计算，schema 校验通过本身不表示可发布。任一层缺项或审核 pending/fail 都使动作不可发布。`status` 是生命周期标签，不能覆盖实际缺项。
 
@@ -16,7 +18,7 @@
 | 动作源 | `source` | 新版 spec 和模型清单版本/SHA、模型固定运行源码逐一校验、起始/顶峰/结束秒数、单侧换边语义、高亮肌群、穿模/手脚/道具闪烁/循环接缝四项 QA 通过，记录实际看过的帧 |
 | 母版 | `masters` | 每皮肤人物+道具透明层；高亮灰度且处理遮挡；阴影透明层；1080²、30fps、8 秒、240 帧，循环 QA 通过 |
 | 派生 | `derivatives` | 从母版脚本合成；每皮肤×浅深色一份 720² H.264 循环视频、封面、统一取景缩略图和 start/peak/end 三关键帧；每皮肤透明封面；高亮开关/颜色/亮度作为合成参数；不生成镜像 |
-| 语音 | `voice` | 引用 `catalog/voice-v2/manifest.json`，每动作中英文 name/primaryCue/phase.start/peak/end，双语共享词表，HipLab 声线/响度标准，技术审核和内容审稿/人工试听都通过 |
+| 语音 | `voice` | 引用试制 `catalog/voice-v2/manifest.json` 或独立 `catalog/voice-v2/batches/<批次>-manifest.json`，每动作中英文 name/primaryCue/phase.start/peak/end，双语共享词表，HipLab 声线/响度标准，技术审核和内容审稿/人工试听都通过 |
 | 校验 | `validation` | 所有文件 SHA/字节数、媒体 manifest 的皮肤/尺寸/时长/模型版本，媒体引用覆盖一致，最终审核通过，无镜像 |
 
 `editorialReview`、注意部位和禁忌的 review 必须包含 `status: pass`、`reviewer`、`reviewedAt` 和至少一条真实 `evidence` 文件引用。`items: []` 只能表示经审核没有列出的条目；未专业审核的空禁忌不能冒充通过。替代/降阶/进阶允许显式空数组，但必须经过同一编辑审核。迁移文案当前是编辑草稿，须审核后才可发布。
@@ -70,26 +72,20 @@ media-root/
 
 ## 命令与生成物
 
-下列命令统一绑定已接合的 r2 媒体。源、母版和派生技术层各 6/6 通过；样片已获开哥确认并授权合入 main，见[试制确认](../../docs/pilot-approval-20261021.md)。编辑、试听及发布前综合审核仍待完成，六层发布门禁保持 0/6。
+全库报告按 `production-plan.json` 为每个动作绑定所属批次的媒体根，不能用单一试制根校验全部动作。索引和详情由 catalog 自动生成，禁止手改生成物。报告会保留未写草稿、技术缺项、编辑/试听待审和失败；本地制作通过不等于发布通过。
 
 ```powershell
-# 草稿检查和六层缺项报告；未完成草稿不会使此命令失败
-python catalog/tools/action_package_v2.py report --check-files --media-root media=F:/PoseHub-v2-pilot/neck-fix-r2 --output catalog/v2/completeness.json
-
-# 从源 catalog 自动生成 AI 索引、详情 md；禁止手改生成物
-python catalog/tools/action_package_v2.py generate --check-files --media-root media=F:/PoseHub-v2-pilot/neck-fix-r2
-
-# 发布前必须退出码 0；任一层缺项则退出 1
-python catalog/tools/action_package_v2.py validate --release --media-root media=F:/PoseHub-v2-pilot/neck-fix-r2
-
-# 仅在全部动作通过后才写出候选发布目录，不覆盖失败的旧输出
-python catalog/tools/action_package_v2.py release --media-root media=F:/PoseHub-v2-pilot/neck-fix-r2 --output output/action-library-v2.json
+python -B -X utf8 tools/action-library-v2/report_library.py --production-root F:/PoseHub-v2-production --pilot-root F:/PoseHub-v2-pilot/neck-fix-r2 --check-files --generate --output catalog/v2/library-completeness.json
 
 python -m unittest discover -s catalog/tools -p test_action_package_v2.py
 ```
+
+`catalog/v2/completeness.json` 保留此前六动作试制快照；全库当前结果使用 `library-completeness.json`。已有六动作源、母版和派生技术层各 6/6，通过样片确认并合入 main，见[试制确认](../../docs/pilot-approval-20261021.md)。编辑、试听与最终发布审查仍待完成。
+
+旧 `action_package_v2.py report/generate/validate/release --media-root media=...` 适用于同一媒体根的动作集合；混合多个批次时必须先按批次隔离输入。`validate --release` 的全部六层必须通过；`release` 只产生候选目录，既不发布 ZIP，也不上传。当前全库报告不是发布器。
 
 `validate_catalog.py --v2` 和 `report.py --v2` 是显式迁移入口；不带 `--v2` 的旧脚本保留历史兼容并打印提示，不可用其退出码作为新版生产发布依据。文件核验/发布依赖 Python、`jsonschema`、Pillow、ffprobe 和 Node，缺失必要工具会拒绝通过。
 
 回归测试的合同正例使用合成元数据并明确 mock 媒体探测，不充当制作成功或人工 QA 的证据；真实 PNG/MP4 损坏、错误尺寸与非灰度遮罩另有实际解码反向测试。测试通过不能把任何动作的 pending review 改为 pass。
 
-`catalog/action-library/index.md`、每动作详情和 `v2/completeness.json` 都可从源重建。历史 142 个动作尚未自动迁移为合格 v2；本轮只做六个试点，已按用户同意合入 main，全库铺开仍另等确认。本工具只产生可审阅候选文件，不执行发布或上传。
+`catalog/action-library/index.md`、每动作详情与 `v2/library-completeness.json` 均可从源重建。142 个正式 ID 按队列逐一制作，未建立草稿、缺媒体或审核未通过的动作都不能列为合格 v2。本工具只产生可审阅候选文件，不执行发布或上传。

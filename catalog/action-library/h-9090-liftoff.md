@@ -1,0 +1,478 @@
+# 90 90 后腿主动抬起 / Ninety-ninety rear-leg lift-off
+
+ID: `h-9090-liftoff`. State: draft. Release eligible: False.
+
+## Definition
+
+```json
+{
+  "idMappings": [],
+  "name": {
+    "zh": "90 90 后腿主动抬起",
+    "en": "Ninety-ninety rear-leg lift-off"
+  },
+  "purpose": {
+    "zh": "90/90 坐姿后腿主动抬起，练髋内旋主动控制",
+    "en": "Practise active internal rotation of the rear hip in a supported ninety-ninety sitting position."
+  },
+  "tags": {
+    "category": "mobility",
+    "activeMuscles": [
+      "hip-abductors",
+      "glute-max"
+    ],
+    "synergistMuscles": [
+      "abs"
+    ],
+    "equipment": [
+      "mat"
+    ],
+    "position": "seated",
+    "scenes": [
+      "home"
+    ],
+    "difficulty": 3,
+    "trainingType": "control"
+  },
+  "unilateral": true,
+  "startingSide": "left",
+  "cues": [
+    {
+      "id": "cue1",
+      "text": {
+        "zh": "后腿膝盖保持贴垫，慢慢抬起左脚和小腿，再放下",
+        "en": "Keep the rear knee on the mat, slowly lift your left foot and shin, then lower them"
+      },
+      "primary": true
+    },
+    {
+      "id": "cue2",
+      "text": {
+        "zh": "右腿在前、左腿在后摆成90/90，躯干保持稳定",
+        "en": "Set the right leg in front and left leg behind in ninety-ninety sitting, keeping the trunk steady."
+      },
+      "primary": false
+    },
+    {
+      "id": "cue3",
+      "text": {
+        "zh": "从左髋主动转动，不用手把脚拉高或抬起膝盖",
+        "en": "Move actively from the left hip without pulling the foot up by hand or lifting the knee."
+      },
+      "primary": false
+    },
+    {
+      "id": "cue4",
+      "text": {
+        "zh": "小幅抬起后缓慢回落，骨盆不翻转",
+        "en": "Use a small controlled lift and lowering without rolling the pelvis."
+      },
+      "primary": false
+    }
+  ],
+  "commonErrors": [
+    {
+      "zh": "把后腿膝盖抬起，变成开髋或整体侧倒",
+      "en": "Lifting the rear knee into an outward hip opening or leaning the whole body sideways."
+    },
+    {
+      "zh": "用手扯脚、身体甩动，或向疼痛的内旋终点硬压",
+      "en": "Pulling the foot with the hand, swinging the trunk or forcing a painful internal-rotation end point."
+    }
+  ],
+  "cautions": {
+    "items": [
+      {
+        "zh": "膝与踝：后膝保持承托，只转动到无痛可控的小幅度，不扭压关节。",
+        "en": "Knees and ankles: keep the rear knee supported and use a small comfortable controlled range without forcing joint rotation."
+      },
+      {
+        "zh": "髋与骨盆：躯干和骨盆稳定，不靠抬膝或侧倒增加高度。",
+        "en": "Hips and pelvis: keep the trunk and pelvis steady rather than lifting the knee or leaning sideways to gain height."
+      }
+    ],
+    "review": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "evidence": []
+    }
+  },
+  "contraindications": {
+    "items": [
+      {
+        "zh": "本动作引发疼痛时停止，不通过增加幅度或负重继续；先向医生或物理治疗师确认。",
+        "en": "Stop if this exercise causes pain; do not add range or load before seeking clinical advice."
+      },
+      {
+        "zh": "已有医嘱限制屈膝坐姿、髋内旋或膝踝旋转时，先取得许可。",
+        "en": "Obtain clearance first if bent-knee sitting, hip internal rotation or knee or ankle rotation has been restricted."
+      }
+    ],
+    "review": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "evidence": []
+    }
+  },
+  "alternatives": [
+    "h-reverse-clam"
+  ],
+  "regressions": [
+    "h-reverse-clam"
+  ],
+  "progressions": [],
+  "defaultDose": {
+    "mode": "reps",
+    "sets": 2,
+    "reps": 8,
+    "restSeconds": 10
+  },
+  "doseRange": {
+    "sets": [
+      1,
+      3
+    ],
+    "reps": [
+      4,
+      12
+    ],
+    "restSeconds": [
+      0,
+      60
+    ]
+  },
+  "rhythm": {
+    "kind": "rep_updown",
+    "leadSeconds": 0,
+    "source": "b003-source-timeline",
+    "phases": [
+      {
+        "id": "prepare",
+        "seconds": 0.3
+      },
+      {
+        "id": "liftRearFootAndShin",
+        "seconds": 1.2
+      },
+      {
+        "id": "topHold",
+        "seconds": 1.0
+      },
+      {
+        "id": "lowerRearFootAndShin",
+        "seconds": 1.2
+      },
+      {
+        "id": "reset",
+        "seconds": 0.3
+      }
+    ]
+  },
+  "countingSemantics": "One rear-foot/shin lift and controlled lowering counts as one rep. The left rear knee stays on the mat and the right leg is in front. The 8-second clip has two left-hip reps and no switch. Preserve default 8; proposed per-side interpretation (four loops before changing) requires editorial approval because legacy dose does not explicitly identify per-side versus total. Opposite-side media is not produced.",
+  "movementSides": "Left foot/shin lifts via rear-hip internal rotation while left knee stays supported; right leg remains in front. Optional boundary after completed per-side dose, not an in-clip or every-loop mandatory switch.",
+  "apps": [
+    "hiplab",
+    "smartfit"
+  ],
+  "editorialReview": {
+    "status": "pending",
+    "reviewer": null,
+    "reviewedAt": null,
+    "evidence": []
+  },
+  "editorialNotes": [
+    "显式继承目录已选r2及_9090-feet.mjs脚随小腿修订，另建r3新模型；不回退原版，也不改共用足姿模块。",
+    "旧catalog/HipLab主点写后膝抬离地与源相反；新稿明确左后膝固定、后足/小腿抬起。",
+    "默认8保持数字，本稿提出每侧8次（左后腿4loops）供编辑审定；旧rhythm.reps=6不得覆盖默认8。h-reverse-clam是旧明确替代和减少90/90坐姿要求的髋内旋目标降阶候选，不是同体位等价。独立同模式进阶未核定。",
+    "相位来自catalog/v2/batches/b003.json真实源时间；剂量数字与范围保持旧catalog。rhythm只描述动画，不使用旧reps或holdSeconds来覆盖处方。",
+    "具体双语注意、通用禁用筛查、协同肌群与关系均为待审草稿；协同包含稳定/次要拉伸角色，不是额外高亮或肌电激活结论。",
+    "关系均为本仓库真实ID候选，不等于已有同模型可发布v2包；不得自动回退弃用模型素材。空关系缺口见逐动作说明。",
+    "通用医学筛查证据边界沿用catalog/v2/definition-evidence.md的AAOS/NHS一手资料；不编造疾病特异绝对禁忌，编辑/医学审核均保持pending。"
+  ]
+}
+```
+
+## Six-layer completeness
+
+### definition: incomplete
+
+- editorialReview: review has not passed
+- editorialReview: reviewer and reviewedAt required
+- editorialReview: review evidence required
+- cautions.review: review has not passed
+- cautions.review: reviewer and reviewedAt required
+- cautions.review: review evidence required
+- contraindications.review: review has not passed
+- contraindications.review: reviewer and reviewedAt required
+- contraindications.review: review evidence required
+
+### source: incomplete
+
+- qa.intersections: review has not passed
+- qa.intersections: reviewer and reviewedAt required
+- qa.intersections: review evidence required
+- qa.intersections: actual frames reviewed required
+- qa.handsFeet: review has not passed
+- qa.handsFeet: reviewer and reviewedAt required
+- qa.handsFeet: review evidence required
+- qa.handsFeet: actual frames reviewed required
+- qa.propFlicker: review has not passed
+- qa.propFlicker: reviewer and reviewedAt required
+- qa.propFlicker: review evidence required
+- qa.propFlicker: actual frames reviewed required
+- qa.loopSeam: review has not passed
+- qa.loopSeam: reviewer and reviewedAt required
+- qa.loopSeam: review evidence required
+- qa.loopSeam: actual frames reviewed required
+
+### masters: incomplete
+
+- all registered skins required, no extra skins
+- realistic.geometrySha256: measured SHA required
+- realistic.occlusionSha256: measured SHA required
+- realistic.measurement: reference missing
+- realistic.bodyProps: requires 1080 square / 240 frames / 30fps / 8s
+- realistic.bodyProps: alpha required
+- realistic.bodyProps.sequence: reference missing
+- realistic.highlightMask: requires 1080 square / 240 frames / 30fps / 8s
+- realistic.highlightMask: alpha required
+- realistic.highlightMask: grayscale and occlusionAware required
+- realistic.highlightMask.sequence: reference missing
+- realistic.shadow: requires 1080 square / 240 frames / 30fps / 8s
+- realistic.shadow: alpha required
+- realistic.shadow.sequence: reference missing
+- tech-white.geometrySha256: measured SHA required
+- tech-white.occlusionSha256: measured SHA required
+- tech-white.measurement: reference missing
+- tech-white.bodyProps: requires 1080 square / 240 frames / 30fps / 8s
+- tech-white.bodyProps: alpha required
+- tech-white.bodyProps.sequence: reference missing
+- tech-white.highlightMask: requires 1080 square / 240 frames / 30fps / 8s
+- tech-white.highlightMask: alpha required
+- tech-white.highlightMask: grayscale and occlusionAware required
+- tech-white.highlightMask.sequence: reference missing
+- tech-white.shadow: requires 1080 square / 240 frames / 30fps / 8s
+- tech-white.shadow: alpha required
+- tech-white.shadow.sequence: reference missing
+- neon-night.geometrySha256: measured SHA required
+- neon-night.occlusionSha256: measured SHA required
+- neon-night.measurement: reference missing
+- neon-night.bodyProps: requires 1080 square / 240 frames / 30fps / 8s
+- neon-night.bodyProps: alpha required
+- neon-night.bodyProps.sequence: reference missing
+- neon-night.highlightMask: requires 1080 square / 240 frames / 30fps / 8s
+- neon-night.highlightMask: alpha required
+- neon-night.highlightMask: grayscale and occlusionAware required
+- neon-night.highlightMask.sequence: reference missing
+- neon-night.shadow: requires 1080 square / 240 frames / 30fps / 8s
+- neon-night.shadow: alpha required
+- neon-night.shadow.sequence: reference missing
+- neon-night-b.geometrySha256: measured SHA required
+- neon-night-b.occlusionSha256: measured SHA required
+- neon-night-b.measurement: reference missing
+- neon-night-b.bodyProps: requires 1080 square / 240 frames / 30fps / 8s
+- neon-night-b.bodyProps: alpha required
+- neon-night-b.bodyProps.sequence: reference missing
+- neon-night-b.highlightMask: requires 1080 square / 240 frames / 30fps / 8s
+- neon-night-b.highlightMask: alpha required
+- neon-night-b.highlightMask: grayscale and occlusionAware required
+- neon-night-b.highlightMask.sequence: reference missing
+- neon-night-b.shadow: requires 1080 square / 240 frames / 30fps / 8s
+- neon-night-b.shadow: alpha required
+- neon-night-b.shadow.sequence: reference missing
+- hologram.geometrySha256: measured SHA required
+- hologram.occlusionSha256: measured SHA required
+- hologram.measurement: reference missing
+- hologram.bodyProps: requires 1080 square / 240 frames / 30fps / 8s
+- hologram.bodyProps: alpha required
+- hologram.bodyProps.sequence: reference missing
+- hologram.highlightMask: requires 1080 square / 240 frames / 30fps / 8s
+- hologram.highlightMask: alpha required
+- hologram.highlightMask: grayscale and occlusionAware required
+- hologram.highlightMask.sequence: reference missing
+- hologram.shadow: requires 1080 square / 240 frames / 30fps / 8s
+- hologram.shadow: alpha required
+- hologram.shadow.sequence: reference missing
+- masters.loopReview: review has not passed
+- masters.loopReview: reviewer and reviewedAt required
+- masters.loopReview: review evidence required
+
+### derivatives: incomplete
+
+- derivatives.compositor: reference missing
+- one framingId required for thumbnails/keyframes
+- each skin x light/dark required exactly once; highlight remains a compositor parameter
+- realistic.transparentCover: reference missing
+- realistic: transparent cover alpha required
+- tech-white.transparentCover: reference missing
+- tech-white: transparent cover alpha required
+- neon-night.transparentCover: reference missing
+- neon-night: transparent cover alpha required
+- neon-night-b.transparentCover: reference missing
+- neon-night-b: transparent cover alpha required
+- hologram.transparentCover: reference missing
+- hologram: transparent cover alpha required
+
+### voice: incomplete
+
+- voice content review and manual listening must pass
+
+### validation: incomplete
+
+- validation.manifest: reference missing
+- validation.review: review has not passed
+- validation.review: reviewer and reviewedAt required
+- validation.review: review evidence required
+
+## Source and production metadata
+
+```json
+{
+  "source": {
+    "model": {
+      "id": "training-human-v2plus",
+      "version": "1.0.0-rc2",
+      "manifest": {
+        "root": "repo",
+        "path": "drill-anim/models/training-human-v2plus.json",
+        "sha256": "ec2bc815ded157dbc7673e283ed9b6bb1baa710a39ce3a02f88453e8d7fb0a1d",
+        "bytes": 6494,
+        "normalization": "lf"
+      }
+    },
+    "spec": {
+      "root": "repo",
+      "path": "drill-anim/specs/h-9090-liftoff-r3.js",
+      "sha256": "cfacfdec71f18f459627d9f719fadfc15da30471f692e7b7b2e8a0559401a786",
+      "bytes": 488,
+      "normalization": "lf"
+    },
+    "dependencies": [
+      {
+        "root": "repo",
+        "path": "drill-anim/lib/foot-orient.mjs",
+        "sha256": "eb7b0452b75ef7701a2baf359908272bd3139a04ef56eacfffc4084b732ce431",
+        "bytes": 2808,
+        "normalization": "lf"
+      },
+      {
+        "root": "repo",
+        "path": "drill-anim/lib/home-anim.mjs",
+        "sha256": "1798c9e55c28b32391b7ef32aa358427b4743ee1959f86ec488a95fe88a05557",
+        "bytes": 3691,
+        "normalization": "lf"
+      },
+      {
+        "root": "repo",
+        "path": "drill-anim/lib/ss-geo.mjs",
+        "sha256": "45ca774079e3a85ecc4f924a3220d4baa721f0435e16f6e6e21ffa19e17e8603",
+        "bytes": 3700,
+        "normalization": "lf"
+      },
+      {
+        "root": "repo",
+        "path": "drill-anim/specs/_9090-feet.mjs",
+        "sha256": "3e9d1a0bc673d7b1e35e37a3e45d1aac5b7e2c910152b61bdf443358ef88af12",
+        "bytes": 1566,
+        "normalization": "lf"
+      },
+      {
+        "root": "repo",
+        "path": "drill-anim/specs/h-9090-liftoff-r2.js",
+        "sha256": "970923cb389bef0c36da460477edf38b6c4e9b52926081dc6df357a9ff1cdacc",
+        "bytes": 4660,
+        "normalization": "lf"
+      }
+    ],
+    "keyMoments": {
+      "start": 0,
+      "peak": 2.0,
+      "end": 8,
+      "switchPoint": {
+        "kind": "loop-boundary",
+        "seconds": 8,
+        "semantics": "Left foot/shin lifts via rear-hip internal rotation while left knee stays supported; right leg remains in front. Optional boundary after completed per-side dose, not an in-clip or every-loop mandatory switch. One rear-foot/shin lift and controlled lowering counts as one rep. The left rear knee stays on the mat and the right leg is in front. The 8-second clip has two left-hip reps and no switch. Preserve default 8; proposed per-side interpretation (four loops before changing) requires editorial approval because legacy dose does not explicitly identify per-side versus total. Opposite-side media is not produced."
+      }
+    },
+    "highlightMuscles": [
+      "hip-abductors",
+      "glute-max"
+    ],
+    "qa": {
+      "intersections": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidence": [],
+        "framesReviewed": []
+      },
+      "handsFeet": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidence": [],
+        "framesReviewed": []
+      },
+      "propFlicker": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidence": [],
+        "framesReviewed": []
+      },
+      "loopSeam": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidence": [],
+        "framesReviewed": []
+      }
+    },
+    "demonstratedSide": "left",
+    "oppositeSideMedia": "not-produced"
+  },
+  "masters": {
+    "requiredSkins": [
+      "realistic",
+      "tech-white",
+      "neon-night",
+      "neon-night-b",
+      "hologram"
+    ],
+    "skins": {},
+    "loopReview": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "evidence": []
+    }
+  },
+  "derivatives": {
+    "method": "composite-from-masters",
+    "mirrored": false,
+    "variants": [],
+    "transparentCovers": {}
+  },
+  "voice": {
+    "actionId": "h-9090-liftoff",
+    "manifest": {
+      "root": "repo",
+      "path": "catalog/voice-v2/batches/b003-manifest.json",
+      "sha256": "47fde228ff512eb917eed28dc55c4a923310e628f285e71592043cad3d119978",
+      "bytes": 276261
+    }
+  },
+  "validation": {
+    "modelVersion": "1.0.0-rc2",
+    "mirrorGenerated": false,
+    "review": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "evidence": []
+    }
+  }
+}
+```

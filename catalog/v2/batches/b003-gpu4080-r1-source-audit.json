@@ -1,0 +1,151 @@
+{
+  "format": "pose-hub-v2-batch-source-ref-revision@1",
+  "batchId": "b003",
+  "revision": "gpu4080-r1",
+  "originalBatch": {
+    "root": "repo",
+    "path": "catalog/v2/batches/b003.json",
+    "sha256": "b2feb4ad3c9dfcea417d04d743903a4f98eb6f8396621f0fcd9b64b936000635",
+    "bytes": 18993
+  },
+  "revisedBatch": {
+    "root": "repo",
+    "path": "catalog/v2/batches/b003-gpu4080-r1.json",
+    "sha256": "993f1ebea14fb576f792433a2c57503a2f9964448999aabc42fa36e21d06b7ed",
+    "bytes": 22313
+  },
+  "runtime": {
+    "sha256": "0be6844bc8914fcd17d5fe1b4cd7f4fc72fc763b134fa34b2ecabf39000009df",
+    "profileId": "gpu4080-d3d11-chromium130-r1"
+  },
+  "reason": "The original batch recorded LF-normalized hashes in source.sha256. The frozen renderer compares raw source bytes; current historical CRLF files therefore failed pre-render integrity checks. This new immutable metadata revision records raw and LF digests separately without changing source bytes.",
+  "sources": [
+    {
+      "actionId": "hip-flexors-A",
+      "sourcePath": "drill-anim/specs/hip-flexors-A.js",
+      "sourceRawSha256": "a7120d4ac0a70c6f0bb7a6b3238c634ac02a77ec0e9f3375759366bebebe394d",
+      "sourceLfSha256": "1aa89cba0c2962a1f89370d7b347e14074d0684474b76962bb17ab27efe345b5",
+      "sourceBytes": 3515,
+      "crlfSequences": 44,
+      "oldBatchSourceSha256": "1aa89cba0c2962a1f89370d7b347e14074d0684474b76962bb17ab27efe345b5",
+      "oldHashMatchedLf": true,
+      "packageSourceAndDependencyRefsVerified": true
+    },
+    {
+      "actionId": "h-9090-liftoff",
+      "sourcePath": "drill-anim/specs/h-9090-liftoff-r2.js",
+      "sourceRawSha256": "ef758cb6f163bb6938b5f7d7ea71baefad9a00a1b5b90d762b964fb19d7ba559",
+      "sourceLfSha256": "970923cb389bef0c36da460477edf38b6c4e9b52926081dc6df357a9ff1cdacc",
+      "sourceBytes": 4660,
+      "crlfSequences": 60,
+      "oldBatchSourceSha256": "970923cb389bef0c36da460477edf38b6c4e9b52926081dc6df357a9ff1cdacc",
+      "oldHashMatchedLf": true,
+      "packageSourceAndDependencyRefsVerified": true
+    },
+    {
+      "actionId": "h-butterfly-active",
+      "sourcePath": "drill-anim/specs/h-butterfly-active.js",
+      "sourceRawSha256": "66635c064c0e8efc433cd30ce6a8cf32fa60238e6561b4a4ea9c23f70f9635f9",
+      "sourceLfSha256": "58be080dfcac5075cb466e7c990e4b1a171da4bc77fb652a6b8865131ff13bb5",
+      "sourceBytes": 4318,
+      "crlfSequences": 55,
+      "oldBatchSourceSha256": "58be080dfcac5075cb466e7c990e4b1a171da4bc77fb652a6b8865131ff13bb5",
+      "oldHashMatchedLf": true,
+      "packageSourceAndDependencyRefsVerified": true
+    },
+    {
+      "actionId": "h-knee-hug",
+      "sourcePath": "drill-anim/specs/h-knee-hug-r2.js",
+      "sourceRawSha256": "0061ab4e0539a41576416ae90c514d8f8db53966bd3db456baa270552857ee44",
+      "sourceLfSha256": "73db57f4a968ef93b49cad8dfa07838791f5a2808ae6d1add6b36b3f12ae3e2a",
+      "sourceBytes": 3181,
+      "crlfSequences": 54,
+      "oldBatchSourceSha256": "73db57f4a968ef93b49cad8dfa07838791f5a2808ae6d1add6b36b3f12ae3e2a",
+      "oldHashMatchedLf": true,
+      "packageSourceAndDependencyRefsVerified": true
+    },
+    {
+      "actionId": "h-reverse-clam",
+      "sourcePath": "drill-anim/specs/h-reverse-clam.js",
+      "sourceRawSha256": "39fab9c7d15191cec343fda4f2f7e4aa6b5a074fd3b1e98b6e422a02d5148465",
+      "sourceLfSha256": "d6dc4d1b87390a988f617381cb2bc8fe5d6cac45d353ba9fae84e550aef97db2",
+      "sourceBytes": 4480,
+      "crlfSequences": 62,
+      "oldBatchSourceSha256": "d6dc4d1b87390a988f617381cb2bc8fe5d6cac45d353ba9fae84e550aef97db2",
+      "oldHashMatchedLf": true,
+      "packageSourceAndDependencyRefsVerified": true
+    },
+    {
+      "actionId": "h-supine-twist",
+      "sourcePath": "drill-anim/specs/h-supine-twist-r3.js",
+      "sourceRawSha256": "722cf849c9cb64c92fb30267074dad86417190588f63bdf25d4ce3c04068db09",
+      "sourceLfSha256": "4e1efbf0db45e48c0c54a206542e170834217a5b9e4d16d1b8861f6dbbf183e4",
+      "sourceBytes": 540,
+      "crlfSequences": 7,
+      "oldBatchSourceSha256": "4e1efbf0db45e48c0c54a206542e170834217a5b9e4d16d1b8861f6dbbf183e4",
+      "oldHashMatchedLf": true,
+      "packageSourceAndDependencyRefsVerified": true
+    },
+    {
+      "actionId": "n-seated-ir-drop",
+      "sourcePath": "drill-anim/specs/n-seated-ir-drop.js",
+      "sourceRawSha256": "b374bd50dd4c0a040707d4c134564f2147dccb9babf5a406e268cefe7e4ecc90",
+      "sourceLfSha256": "48e44c56e8c7de96f905d2f572c85368cab18ac313ba2413942c22726c49676a",
+      "sourceBytes": 3831,
+      "crlfSequences": 49,
+      "oldBatchSourceSha256": "48e44c56e8c7de96f905d2f572c85368cab18ac313ba2413942c22726c49676a",
+      "oldHashMatchedLf": true,
+      "packageSourceAndDependencyRefsVerified": true
+    },
+    {
+      "actionId": "n-thomas-test",
+      "sourcePath": "drill-anim/specs/n-thomas-test.js",
+      "sourceRawSha256": "2c464b8bc4374fc661dfaff510f70a3cc2880c24594afeac5ec55dd97b7d17fd",
+      "sourceLfSha256": "62d3cfa853048dc695812c3042b2ddad2afa313aea938d02dc24ca40c824037f",
+      "sourceBytes": 5573,
+      "crlfSequences": 67,
+      "oldBatchSourceSha256": "62d3cfa853048dc695812c3042b2ddad2afa313aea938d02dc24ca40c824037f",
+      "oldHashMatchedLf": true,
+      "packageSourceAndDependencyRefsVerified": true
+    }
+  ],
+  "voiceEquivalence": {
+    "script": {
+      "root": "repo",
+      "path": "catalog/voice-v2/batches/b003-script.json",
+      "sha256": "6711b9438fe700073a1c8b49b77bd73a27523eec36b28300c910909d147eea9a",
+      "bytes": 26230
+    },
+    "manifestAtAudit": {
+      "root": "repo",
+      "path": "catalog/voice-v2/batches/b003-manifest.json",
+      "sha256": "47fde228ff512eb917eed28dc55c4a923310e628f285e71592043cad3d119978",
+      "bytes": 276261
+    },
+    "historicalBatchBindingRetained": true,
+    "specMotionUnchanged": true,
+    "phaseEventsUnchanged": true,
+    "sideAndCountingUnchanged": true,
+    "peakAndPreviewFramesUnchanged": true,
+    "nameAndPrimaryCueMatchCurrentPackages": true,
+    "phaseCueEventsAndTimesStillMatch": true,
+    "scriptAndManifestPhaseBindingsMatch": true,
+    "contentReview": "pending-user-review",
+    "manualListening": "pending",
+    "technicalSummaryAtAudit": {
+      "passed": 131,
+      "pending": 0,
+      "failed": 1,
+      "total": 132
+    }
+  },
+  "reviews": {
+    "sourceQa": "pending",
+    "visualReview": "pending",
+    "editorial": "pending",
+    "medical": "pending",
+    "voiceListening": "pending",
+    "release": "pending"
+  },
+  "rendererDryRun": "pending; delegated to render_v2 before any GPU preview"
+}

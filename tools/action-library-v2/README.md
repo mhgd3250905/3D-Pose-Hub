@@ -66,3 +66,23 @@ CPU checks, without GPU:
 ```powershell
 node --test tools/action-library-v2/run_batch.test.mjs
 ```
+
+
+Full production QA uses complete integrity, layer-pixel, sequence-anomaly and
+measured-geometry reports, plus actual viewing of the full temporal sheets and
+all skin/theme/highlight mosaic cells. The reviewer writes a separate
+`pose-hub-v2-full-actual-review@1` attestation; `bind_qa.py` validates its exact
+source, GPU proofs, sampled frames and report references before creating new
+QA evidence. It does not create visual approval or grant editorial, listening,
+merge or publishing approval. Existing evidence targets are never overwritten.
+
+```powershell
+python -B -X utf8 tools/action-library-v2/bind_qa.py --batch catalog/v2/batches/b001-gpu4080-r2.json --root F:/PoseHub-v2-production/batches/b001-gpu4080-r2 --actual-review F:/PoseHub-v2-production/reviews/b001-full-actual-review.json
+python -B -X utf8 tools/action-library-v2/integrate_batch.py --batch catalog/v2/batches/b001-gpu4080-r2.json --root F:/PoseHub-v2-production/batches/b001-gpu4080-r2 --voice-manifest catalog/voice-v2/batches/b001-manifest.json
+python -B -X utf8 tools/action-library-v2/report_library.py --production-root F:/PoseHub-v2-production --pilot-root F:/PoseHub-v2-pilot/neck-fix-r2 --check-files --generate --output catalog/v2/library-completeness.json
+```
+
+The library report resolves each action's own batch media root from
+`production-plan.json`. Missing packages remain scheduled IDs rather than
+fabricated successful packages. Keep source authorship, technical media
+completion and six-layer release eligibility separate.

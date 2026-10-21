@@ -1,0 +1,1466 @@
+# 俄罗斯转体 / Russian Twist (Feet Down)
+
+ID: `h-russian-twist`. State: review. Release eligible: False.
+
+## Definition
+
+```json
+{
+  "idMappings": [],
+  "name": {
+    "zh": "俄罗斯转体",
+    "en": "Russian Twist (Feet Down)"
+  },
+  "purpose": {
+    "zh": "练腰两侧",
+    "en": "Train controlled alternating trunk rotation with the feet supported."
+  },
+  "tags": {
+    "category": "core",
+    "activeMuscles": [
+      "obliques"
+    ],
+    "synergistMuscles": [
+      "abs",
+      "hip-flexors"
+    ],
+    "equipment": [
+      "mat"
+    ],
+    "position": "seated",
+    "scenes": [
+      "home"
+    ],
+    "difficulty": 2,
+    "trainingType": "control"
+  },
+  "unilateral": true,
+  "startingSide": "right",
+  "cues": [
+    {
+      "id": "cue1",
+      "text": {
+        "zh": "脚跟踩稳，缓慢转动胸廓，骨盆保持稳定",
+        "en": "Keep your heels down and turn your rib cage slowly while your pelvis stays steady"
+      },
+      "primary": true
+    },
+    {
+      "id": "cue2",
+      "text": {
+        "zh": "坐姿轻微后倾，背部保持自然延长",
+        "en": "Sit with a slight backward lean and keep the spine long."
+      },
+      "primary": false
+    },
+    {
+      "id": "cue3",
+      "text": {
+        "zh": "向右转后先回中，再向左转，膝盖保持稳定",
+        "en": "Turn right and return to the centre before turning left, keeping the knees steady."
+      },
+      "primary": false
+    },
+    {
+      "id": "cue4",
+      "text": {
+        "zh": "双手随胸廓移动，不只甩动手臂",
+        "en": "Let the hands travel with the rib cage rather than swinging only the arms."
+      },
+      "primary": false
+    }
+  ],
+  "commonErrors": [
+    {
+      "zh": "脚离地、骨盆跟着摆动或腰背塌下",
+      "en": "Lifting the feet, rocking the pelvis or collapsing the back."
+    },
+    {
+      "zh": "快速甩臂代替可控躯干转动",
+      "en": "Throwing the arms instead of controlling trunk rotation."
+    }
+  ],
+  "cautions": {
+    "items": [
+      {
+        "zh": "腰背：在舒适的小幅度内转动，不追求扭到极限。",
+        "en": "Lower back: rotate through a comfortable controlled range without forcing an end position."
+      },
+      {
+        "zh": "髋与足跟：足跟持续承托，保持坐姿平衡，不用腿部甩动补偿。",
+        "en": "Hips and heels: keep the heels supported and stay balanced without swinging the legs."
+      }
+    ],
+    "review": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "evidence": []
+    }
+  },
+  "contraindications": {
+    "items": [
+      {
+        "zh": "本动作引发疼痛时停止，不通过增加幅度或负重继续；先向医生或物理治疗师确认。",
+        "en": "Stop if this exercise causes pain; do not add range or load before seeking clinical advice."
+      },
+      {
+        "zh": "已有医嘱限制坐姿后倾或脊柱旋转时，先取得许可。",
+        "en": "Obtain clearance first if backward-leaning sitting or spinal rotation has been restricted."
+      }
+    ],
+    "review": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "evidence": []
+    }
+  },
+  "alternatives": [
+    "h-band-pallof"
+  ],
+  "regressions": [],
+  "progressions": [],
+  "defaultDose": {
+    "mode": "reps",
+    "sets": 3,
+    "reps": 16,
+    "restSeconds": 30
+  },
+  "doseRange": {
+    "sets": [
+      1,
+      4
+    ],
+    "reps": [
+      8,
+      24
+    ],
+    "restSeconds": [
+      0,
+      60
+    ]
+  },
+  "rhythm": {
+    "kind": "rep_alternate",
+    "leadSeconds": 0,
+    "source": "b001-source-timeline",
+    "phases": [
+      {
+        "id": "turnRight",
+        "seconds": 0.8
+      },
+      {
+        "id": "rightPause",
+        "seconds": 0.4
+      },
+      {
+        "id": "returnCentre1",
+        "seconds": 0.8
+      },
+      {
+        "id": "turnLeft",
+        "seconds": 0.8
+      },
+      {
+        "id": "leftPause",
+        "seconds": 0.4
+      },
+      {
+        "id": "returnCentre2",
+        "seconds": 0.8
+      }
+    ]
+  },
+  "countingSemantics": "One turn to a side and return to centre counts as one rep; 8 seconds contains four alternating reps (right/left/right/left), equivalent to two right-plus-left cycles. Proposed reading of the existing 16-rep dose: 16 total turns, eight per side; editorial confirmation remains pending.",
+  "apps": [
+    "smartfit"
+  ],
+  "editorialReview": {
+    "status": "pending",
+    "reviewer": null,
+    "reviewedAt": null,
+    "evidence": []
+  },
+  "editorialNotes": [
+    "root已裁决：默认16保持数字不变，按总16次单侧转动归中、每侧8次；8秒源为右/左/右/左4次，而非仅两次。编辑审核仍pending。",
+    "rhythm描述4秒左右完整pair-cycle，其中含2次计数；不要把每个4秒cycle只算1次或把旧repSeconds=3继续当真实节奏。",
+    "旧catalog明确替代h-band-pallof；它是抗旋转目标而非相同动态转体。独立降阶/负重进阶ID未有，减小后倾/转幅属于同ID调整。",
+    "相位来自catalog/v2/batches/b001.json真实秒区间；剂量数字与范围保持旧catalog，rhythm不附旧reps来覆盖默认剂量。",
+    "双语注意、通用禁用筛查、协同肌群与关系均已有具体草稿，pending表示未审而非缺数据；协同包含姿势稳定或次要拉伸角色，不作为肌电激活或额外高亮处方。",
+    "关系目标为本仓库真实ID候选，但未必已有同模型可发布v2包；不得自动回退弃用模型素材。空关系数组的缺口见逐动作说明。",
+    "医学通用筛查与证据边界沿用catalog/v2/definition-evidence.md所列AAOS/NHS一手资料；不编造疾病特异绝对禁忌。所有编辑与医学审核保持pending。"
+  ],
+  "movementSides": "Source highlight remains both sides; direction alternates right/left/right/left."
+}
+```
+
+## Six-layer completeness
+
+### definition: incomplete
+
+- editorialReview: review has not passed
+- editorialReview: reviewer and reviewedAt required
+- editorialReview: review evidence required
+- cautions.review: review has not passed
+- cautions.review: reviewer and reviewedAt required
+- cautions.review: review evidence required
+- contraindications.review: review has not passed
+- contraindications.review: reviewer and reviewedAt required
+- contraindications.review: review evidence required
+
+### source: complete
+
+
+### masters: complete
+
+
+### derivatives: complete
+
+
+### voice: incomplete
+
+- voice content review and manual listening must pass
+
+### validation: incomplete
+
+- validation.review: review has not passed
+- validation.review: reviewer and reviewedAt required
+- validation.review: review evidence required
+
+## Source and production metadata
+
+```json
+{
+  "source": {
+    "model": {
+      "id": "training-human-v2plus",
+      "version": "1.0.0-rc2",
+      "manifest": {
+        "root": "repo",
+        "path": "drill-anim/models/training-human-v2plus.json",
+        "sha256": "ec2bc815ded157dbc7673e283ed9b6bb1baa710a39ce3a02f88453e8d7fb0a1d",
+        "bytes": 6494,
+        "normalization": "lf"
+      }
+    },
+    "spec": {
+      "root": "repo",
+      "path": "drill-anim/specs/h-russian-twist-r2.js",
+      "sha256": "3d9f0c4421a05e5db4fb22f40548b9181aebac931569ba4d41ad83138a213d87",
+      "bytes": 482,
+      "normalization": "lf"
+    },
+    "dependencies": [
+      {
+        "root": "repo",
+        "path": "drill-anim/lib/home-anim.mjs",
+        "sha256": "1798c9e55c28b32391b7ef32aa358427b4743ee1959f86ec488a95fe88a05557",
+        "bytes": 3691,
+        "normalization": "lf"
+      },
+      {
+        "root": "repo",
+        "path": "drill-anim/lib/ss-geo.mjs",
+        "sha256": "45ca774079e3a85ecc4f924a3220d4baa721f0435e16f6e6e21ffa19e17e8603",
+        "bytes": 3700,
+        "normalization": "lf"
+      },
+      {
+        "root": "repo",
+        "path": "drill-anim/specs/h-russian-twist.js",
+        "sha256": "47a12e7d67ba245544346126a2e045f2c749dbe06f98fbe0caadb3f3def366d1",
+        "bytes": 3161,
+        "normalization": "lf"
+      }
+    ],
+    "keyMoments": {
+      "start": 0,
+      "peak": 1.0,
+      "end": 8,
+      "switchPoint": {
+        "kind": "in-clip",
+        "seconds": 2,
+        "semantics": "One turn to a side and return to centre counts as one rep; 8 seconds contains four alternating reps (right/left/right/left), equivalent to two right-plus-left cycles. Proposed reading of the existing 16-rep dose: 16 total turns, eight per side; editorial confirmation remains pending. All encoded side changes: 2, 4, 6 seconds."
+      }
+    },
+    "highlightMuscles": [
+      "obliques"
+    ],
+    "qa": {
+      "intersections": {
+        "status": "pass",
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-21T22:29:22.610332+08:00",
+        "evidence": [
+          {
+            "root": "media",
+            "path": "qa/reviews/h-russian-twist-evidence.json",
+            "sha256": "b0399cf0fed5530cb29c7367b40b559223a03fe185571a53e57f9787dda52d7f",
+            "bytes": 7881
+          }
+        ],
+        "framesReviewed": [
+          0,
+          30,
+          60,
+          90,
+          120,
+          150,
+          180,
+          210,
+          239,
+          240
+        ]
+      },
+      "handsFeet": {
+        "status": "pass",
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-21T22:29:22.610332+08:00",
+        "evidence": [
+          {
+            "root": "media",
+            "path": "qa/reviews/h-russian-twist-evidence.json",
+            "sha256": "b0399cf0fed5530cb29c7367b40b559223a03fe185571a53e57f9787dda52d7f",
+            "bytes": 7881
+          }
+        ],
+        "framesReviewed": [
+          0,
+          30,
+          60,
+          90,
+          120,
+          150,
+          180,
+          210,
+          239,
+          240
+        ]
+      },
+      "propFlicker": {
+        "status": "pass",
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-21T22:29:22.610332+08:00",
+        "evidence": [
+          {
+            "root": "media",
+            "path": "qa/reviews/h-russian-twist-evidence.json",
+            "sha256": "b0399cf0fed5530cb29c7367b40b559223a03fe185571a53e57f9787dda52d7f",
+            "bytes": 7881
+          }
+        ],
+        "framesReviewed": [
+          0,
+          30,
+          60,
+          90,
+          120,
+          150,
+          180,
+          210,
+          239,
+          240
+        ]
+      },
+      "loopSeam": {
+        "status": "pass",
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-21T22:29:22.610332+08:00",
+        "evidence": [
+          {
+            "root": "media",
+            "path": "qa/reviews/h-russian-twist-evidence.json",
+            "sha256": "b0399cf0fed5530cb29c7367b40b559223a03fe185571a53e57f9787dda52d7f",
+            "bytes": 7881
+          }
+        ],
+        "framesReviewed": [
+          0,
+          30,
+          60,
+          90,
+          120,
+          150,
+          180,
+          210,
+          239,
+          240
+        ]
+      }
+    },
+    "demonstratedSide": "both"
+  },
+  "masters": {
+    "requiredSkins": [
+      "realistic",
+      "tech-white",
+      "neon-night",
+      "neon-night-b",
+      "hologram"
+    ],
+    "skins": {
+      "realistic": {
+        "geometrySha256": "aa0aa8dcfa8645375ac39890a58b8773e0e14ecc886fac6f2fda6e459d222152",
+        "occlusionSha256": "3d805df7e9b054883c4c77e99c6daa9d18eb9d727c7fc629acff93865f8fdb9f",
+        "measurement": {
+          "root": "media",
+          "path": "masters/realistic/h-russian-twist/layer-manifest.json",
+          "sha256": "80c1646fd8adbf0e25a5d6ef8423c794ec96ce14a236151b1387e515e0c5fe93",
+          "bytes": 13162
+        },
+        "bodyProps": {
+          "sequence": {
+            "root": "media",
+            "path": "masters/realistic/h-russian-twist/body/index.json",
+            "sha256": "5b6a4c0a3ba1cf36489cea8b07d07ab384dfd636d44359247001ae73588fd191",
+            "bytes": 54809
+          },
+          "width": 1080,
+          "height": 1080,
+          "durationSeconds": 8,
+          "frameCount": 240,
+          "fps": 30,
+          "alpha": true
+        },
+        "highlightMask": {
+          "sequence": {
+            "root": "media",
+            "path": "masters/realistic/h-russian-twist/highlight/index.json",
+            "sha256": "045634e9eb0c8c4670901f46fee4a87d1ed84d81b843a526e12e533a05b2e767",
+            "bytes": 56009
+          },
+          "width": 1080,
+          "height": 1080,
+          "durationSeconds": 8,
+          "frameCount": 240,
+          "fps": 30,
+          "alpha": true,
+          "grayscale": true,
+          "occlusionAware": true
+        },
+        "shadow": {
+          "sequence": {
+            "root": "media",
+            "path": "masters/realistic/h-russian-twist/shadow/index.json",
+            "sha256": "cd6dccf28eb67fe01378b3c377861b4a40e5aae3c3d342a41f2e6b16fc6e63fe",
+            "bytes": 55289
+          },
+          "width": 1080,
+          "height": 1080,
+          "durationSeconds": 8,
+          "frameCount": 240,
+          "fps": 30,
+          "alpha": true
+        }
+      },
+      "tech-white": {
+        "geometrySha256": "aa0aa8dcfa8645375ac39890a58b8773e0e14ecc886fac6f2fda6e459d222152",
+        "occlusionSha256": "3d805df7e9b054883c4c77e99c6daa9d18eb9d727c7fc629acff93865f8fdb9f",
+        "measurement": {
+          "root": "media",
+          "path": "masters/tech-white/h-russian-twist/layer-manifest.json",
+          "sha256": "53a51822e0835e40ea32d3b94d44e67d53b61f1a6126414f25d32da944b03d18",
+          "bytes": 13414
+        },
+        "bodyProps": {
+          "sequence": {
+            "root": "media",
+            "path": "masters/tech-white/h-russian-twist/body/index.json",
+            "sha256": "983f24a99d9aab91f39cdb4375c1bf244a1b8274c1efede1dae8e7e89789ed7e",
+            "bytes": 55049
+          },
+          "width": 1080,
+          "height": 1080,
+          "durationSeconds": 8,
+          "frameCount": 240,
+          "fps": 30,
+          "alpha": true
+        },
+        "highlightMask": {
+          "sharedFrom": "realistic"
+        },
+        "shadow": {
+          "sharedFrom": "realistic"
+        }
+      },
+      "neon-night": {
+        "geometrySha256": "aa0aa8dcfa8645375ac39890a58b8773e0e14ecc886fac6f2fda6e459d222152",
+        "occlusionSha256": "3d805df7e9b054883c4c77e99c6daa9d18eb9d727c7fc629acff93865f8fdb9f",
+        "measurement": {
+          "root": "media",
+          "path": "masters/neon-night/h-russian-twist/layer-manifest.json",
+          "sha256": "d9fc765b8d69f661f9874cca749b6ed038df10f7a09ac066e86d3442644ab462",
+          "bytes": 13415
+        },
+        "bodyProps": {
+          "sequence": {
+            "root": "media",
+            "path": "masters/neon-night/h-russian-twist/body/index.json",
+            "sha256": "5ebf21e0a10108b5402808f7a1219277f335bae45259d6d41dce4eb05530c141",
+            "bytes": 55289
+          },
+          "width": 1080,
+          "height": 1080,
+          "durationSeconds": 8,
+          "frameCount": 240,
+          "fps": 30,
+          "alpha": true
+        },
+        "highlightMask": {
+          "sharedFrom": "realistic"
+        },
+        "shadow": {
+          "sharedFrom": "realistic"
+        }
+      },
+      "neon-night-b": {
+        "geometrySha256": "aa0aa8dcfa8645375ac39890a58b8773e0e14ecc886fac6f2fda6e459d222152",
+        "occlusionSha256": "3d805df7e9b054883c4c77e99c6daa9d18eb9d727c7fc629acff93865f8fdb9f",
+        "measurement": {
+          "root": "media",
+          "path": "masters/neon-night-b/h-russian-twist/layer-manifest.json",
+          "sha256": "498eb0841ab9ff8edb585fde7d912574c301a0ac209ea13898d24989d249458c",
+          "bytes": 13423
+        },
+        "bodyProps": {
+          "sequence": {
+            "root": "media",
+            "path": "masters/neon-night-b/h-russian-twist/body/index.json",
+            "sha256": "6cd6395492886365c06bc1458bf2b70910fc9a4c6c37c00a98b15e4a006cf515",
+            "bytes": 55769
+          },
+          "width": 1080,
+          "height": 1080,
+          "durationSeconds": 8,
+          "frameCount": 240,
+          "fps": 30,
+          "alpha": true
+        },
+        "highlightMask": {
+          "sharedFrom": "realistic"
+        },
+        "shadow": {
+          "sharedFrom": "realistic"
+        }
+      },
+      "hologram": {
+        "geometrySha256": "aa0aa8dcfa8645375ac39890a58b8773e0e14ecc886fac6f2fda6e459d222152",
+        "occlusionSha256": "3d805df7e9b054883c4c77e99c6daa9d18eb9d727c7fc629acff93865f8fdb9f",
+        "measurement": {
+          "root": "media",
+          "path": "masters/hologram/h-russian-twist/layer-manifest.json",
+          "sha256": "0a33ea1fe5a8c95c069e3640b426274a702973191cacc3edd5256dde20826bd3",
+          "bytes": 13407
+        },
+        "bodyProps": {
+          "sequence": {
+            "root": "media",
+            "path": "masters/hologram/h-russian-twist/body/index.json",
+            "sha256": "446ecb179812e478e3ddb14dd89930addb5f38325986fd002997c81332e6a316",
+            "bytes": 54809
+          },
+          "width": 1080,
+          "height": 1080,
+          "durationSeconds": 8,
+          "frameCount": 240,
+          "fps": 30,
+          "alpha": true
+        },
+        "highlightMask": {
+          "sharedFrom": "realistic"
+        },
+        "shadow": {
+          "sharedFrom": "realistic"
+        }
+      }
+    },
+    "loopReview": {
+      "status": "pass",
+      "reviewer": "Codex",
+      "reviewedAt": "2026-10-21T22:29:22.610332+08:00",
+      "evidence": [
+        {
+          "root": "media",
+          "path": "qa/reviews/h-russian-twist-evidence.json",
+          "sha256": "b0399cf0fed5530cb29c7367b40b559223a03fe185571a53e57f9787dda52d7f",
+          "bytes": 7881
+        }
+      ]
+    }
+  },
+  "derivatives": {
+    "method": "composite-from-masters",
+    "mirrored": false,
+    "variants": [
+      {
+        "skin": "realistic",
+        "theme": "dark",
+        "highlight": {
+          "enabled": true,
+          "color": "#f08a3c",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/realistic/h-russian-twist/dark/loop.720.mp4",
+          "sha256": "1837ad9baa8770c5bf621c7c8192538fa731c00c8e642fffb9d901278908007f",
+          "bytes": 576560,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/realistic/h-russian-twist/dark/cover.720.jpg",
+          "sha256": "55403900a00338d2db47cd63c732a21989172b605234a7307075587d13947b53",
+          "bytes": 32261,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/realistic/h-russian-twist/dark/thumbnail.240.jpg",
+          "sha256": "2146acf4be154597778f525dd3bbdb22e786b17c5abdf7cbc3890ce65309a029",
+          "bytes": 6593,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/realistic/h-russian-twist/dark/start.720.png",
+              "sha256": "bce10c0fe59be68a22e3ee5b70f2db11fc7d3c1a670688c200df1217e17ec7c2",
+              "bytes": 85693,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/realistic/h-russian-twist/dark/peak.720.png",
+              "sha256": "492fbe1ab3dad0f2048ce469188065f28580fa32c00f397bc777f045f333459f",
+              "bytes": 88302,
+              "width": 720,
+              "height": 720,
+              "frame": 30
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/realistic/h-russian-twist/dark/end.720.png",
+              "sha256": "0fc0df2737732d170596f2354a23eabe283759ca89404564442144aec3fcca0d",
+              "bytes": 85284,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "realistic",
+        "theme": "light",
+        "highlight": {
+          "enabled": true,
+          "color": "#f08a3c",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/realistic/h-russian-twist/light/loop.720.mp4",
+          "sha256": "0f8dcbdd7ee7fcb5ec1b32ab6621322ae1d90ebd570422612be93ab40c612828",
+          "bytes": 590123,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/realistic/h-russian-twist/light/cover.720.jpg",
+          "sha256": "251dbd11891e73a10a55728b633f4a0c9cd4079b0c30a2422aafd77b3701350a",
+          "bytes": 37731,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/realistic/h-russian-twist/light/thumbnail.240.jpg",
+          "sha256": "5d52711146b888d3a1d3e8b629079e5591bbd03e6ff1220dd7e970b95350569d",
+          "bytes": 8551,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/realistic/h-russian-twist/light/start.720.png",
+              "sha256": "b565e29b4ee3d253c35e547b7f94a79457b876426bb565a4175d412dcee8dc29",
+              "bytes": 93844,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/realistic/h-russian-twist/light/peak.720.png",
+              "sha256": "9a150e3367a2b37a8ce5ab4c7a0ad02f0eefe5c121885007b4397b2afdcf0181",
+              "bytes": 96145,
+              "width": 720,
+              "height": 720,
+              "frame": 30
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/realistic/h-russian-twist/light/end.720.png",
+              "sha256": "2813c9f20ebbd237cdb466aed707d22cdaa11bb62de8404cc2dba457816760ad",
+              "bytes": 93629,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "tech-white",
+        "theme": "dark",
+        "highlight": {
+          "enabled": true,
+          "color": "#f08a3c",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/tech-white/h-russian-twist/dark/loop.720.mp4",
+          "sha256": "5dc1f248c7f6719eb53fe34145d048164c4f9e084af246057a81ce15855486bb",
+          "bytes": 731637,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/tech-white/h-russian-twist/dark/cover.720.jpg",
+          "sha256": "0a6dff8ed039d914fa35322749c0fa3f85880fab4aecf79e60844f99996f1b32",
+          "bytes": 41664,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/tech-white/h-russian-twist/dark/thumbnail.240.jpg",
+          "sha256": "3a408be90efdbcb5fa3f47d357d4f15632a7b1e8a143a484d69022650f41258e",
+          "bytes": 8483,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/tech-white/h-russian-twist/dark/start.720.png",
+              "sha256": "cda0e43f36c73db089b01a8eaddd8d2a498446d50cda39d868eeeb02d68cf862",
+              "bytes": 115785,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/tech-white/h-russian-twist/dark/peak.720.png",
+              "sha256": "9fa97da17cb877f0b670b32fc29dd6baf35e97ba1fe0c50f2d542ee8ee2abdad",
+              "bytes": 117196,
+              "width": 720,
+              "height": 720,
+              "frame": 30
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/tech-white/h-russian-twist/dark/end.720.png",
+              "sha256": "2f4f2bf3b8ac74b960196dfc43cdfdea0c7ec4900cb3bb0be650ec06309f00ad",
+              "bytes": 115701,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "tech-white",
+        "theme": "light",
+        "highlight": {
+          "enabled": true,
+          "color": "#f08a3c",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/tech-white/h-russian-twist/light/loop.720.mp4",
+          "sha256": "76e660f1194091b856a6e3893f08dd7caad047b635666ec57914d12aa7ccbaba",
+          "bytes": 733843,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/tech-white/h-russian-twist/light/cover.720.jpg",
+          "sha256": "19a8984950b5f9a6791af50a4e2512fadc445925d47dc066fefb98691ade1e7f",
+          "bytes": 41812,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/tech-white/h-russian-twist/light/thumbnail.240.jpg",
+          "sha256": "361b557ef73fd7e0825471890ead24bad9ba7682c97eb9a865b35934f459804d",
+          "bytes": 8451,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/tech-white/h-russian-twist/light/start.720.png",
+              "sha256": "53183ba0b65c7480b0870b37f92f1becca23dd11e133575132c98d14fde39f4a",
+              "bytes": 116876,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/tech-white/h-russian-twist/light/peak.720.png",
+              "sha256": "0cd857fdefb73db121176df5daec8eec31cc76b7514968f4911f420f2e8b2934",
+              "bytes": 116813,
+              "width": 720,
+              "height": 720,
+              "frame": 30
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/tech-white/h-russian-twist/light/end.720.png",
+              "sha256": "7d27fa664c687e33d09c9f3a96cc7b1888797a0714a65c40549796ab802a83bb",
+              "bytes": 116826,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "neon-night",
+        "theme": "dark",
+        "highlight": {
+          "enabled": true,
+          "color": "#9fdcff",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/neon-night/h-russian-twist/dark/loop.720.mp4",
+          "sha256": "444d2adcfcdb21f05dc789f22270a6515e1245d166d6b642546ef1fc36bf0961",
+          "bytes": 718634,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/neon-night/h-russian-twist/dark/cover.720.jpg",
+          "sha256": "42309180796af47c793979b26b9f014f81e7f8fe97e057418f918626e36cd3b8",
+          "bytes": 40494,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/neon-night/h-russian-twist/dark/thumbnail.240.jpg",
+          "sha256": "53f0388d6abcdaf6afc7f86e6a29bcd40611306b89af106a0d883d13d1c5722e",
+          "bytes": 7756,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night/h-russian-twist/dark/start.720.png",
+              "sha256": "a3c03e770ae6bc44cfd9b19faf6ce844aca724da00142708687eaa1c30856545",
+              "bytes": 115547,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night/h-russian-twist/dark/peak.720.png",
+              "sha256": "5485da8cef1f22f5e9125fc439a41170126be9c6a528efb0979d3668a011000f",
+              "bytes": 114356,
+              "width": 720,
+              "height": 720,
+              "frame": 30
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night/h-russian-twist/dark/end.720.png",
+              "sha256": "db6f5681c0a073407e8d904f49c33b8b23db6ec6fbf8a53575fedba045c9f048",
+              "bytes": 115521,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "neon-night",
+        "theme": "light",
+        "highlight": {
+          "enabled": true,
+          "color": "#9fdcff",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/neon-night/h-russian-twist/light/loop.720.mp4",
+          "sha256": "55f644b3bb99664deedce029a3135c4385315e3061141091ecf8139fdd26eb02",
+          "bytes": 789013,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/neon-night/h-russian-twist/light/cover.720.jpg",
+          "sha256": "7b5bcae74e996b579ce0d7fdd6e9a184f22ed834247f175c2a6c2218f8fe690f",
+          "bytes": 47956,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/neon-night/h-russian-twist/light/thumbnail.240.jpg",
+          "sha256": "a03a8be3b1ec4e78f3fade8a631d9a429a5c3ed3128877e821c365e0998674b7",
+          "bytes": 10120,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night/h-russian-twist/light/start.720.png",
+              "sha256": "059e617ed8ba36ad8e611b8fdd4bfa264d7cd7bfd371c28f80e9a0fe953ee860",
+              "bytes": 125399,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night/h-russian-twist/light/peak.720.png",
+              "sha256": "2a4c730c06356fe86db1116998008373aea7fe46e77bd61e36d4a25988a93cf0",
+              "bytes": 125163,
+              "width": 720,
+              "height": 720,
+              "frame": 30
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night/h-russian-twist/light/end.720.png",
+              "sha256": "bc900c2267780c4b6743309b8eec8796862949e38d71925916424936ed8ebbde",
+              "bytes": 125271,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "neon-night-b",
+        "theme": "dark",
+        "highlight": {
+          "enabled": true,
+          "color": "#b6ffd0",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/neon-night-b/h-russian-twist/dark/loop.720.mp4",
+          "sha256": "df38cab528b3d42e1ab7c1e4ecc472ec456a6966eda52c97887b766fb198c753",
+          "bytes": 745537,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/neon-night-b/h-russian-twist/dark/cover.720.jpg",
+          "sha256": "c9d5f5130141d77e68b6d4aaeff1eb22d3d1df87c048fb31b70f712180b537cc",
+          "bytes": 40392,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/neon-night-b/h-russian-twist/dark/thumbnail.240.jpg",
+          "sha256": "66e6239fed41b3bfa0171d6641111238b186fb55ae2dfac7f9370033d8644012",
+          "bytes": 7785,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night-b/h-russian-twist/dark/start.720.png",
+              "sha256": "6ac1ce3ba71a30b2458e6bbf7bed412e313578b0397a8e420a1879af55c2902d",
+              "bytes": 114774,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night-b/h-russian-twist/dark/peak.720.png",
+              "sha256": "80b0b4a00d686304fc0f6f5911bc328dee08049920d4af61b8a009f2b449bb0b",
+              "bytes": 113496,
+              "width": 720,
+              "height": 720,
+              "frame": 30
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night-b/h-russian-twist/dark/end.720.png",
+              "sha256": "1ab75f5322d9888dca8ca6e8e2ad5d7af4dc36bc0e39ded1bf2dbb9c02c572ea",
+              "bytes": 114593,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "neon-night-b",
+        "theme": "light",
+        "highlight": {
+          "enabled": true,
+          "color": "#b6ffd0",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/neon-night-b/h-russian-twist/light/loop.720.mp4",
+          "sha256": "447195ae06f17f9dcd0e0346f15b9da7550431cc645d0005e1627d3c2d5f2779",
+          "bytes": 800472,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/neon-night-b/h-russian-twist/light/cover.720.jpg",
+          "sha256": "39a7fe1b712263ca9f4537485d5489e0ed78b1b28dd1ca3bdf2a3822bcc5c8a9",
+          "bytes": 47600,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/neon-night-b/h-russian-twist/light/thumbnail.240.jpg",
+          "sha256": "849f81a5597db025e6f769f110ade2931974f95c1d6eaa129b75b5ba5a02286d",
+          "bytes": 10045,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night-b/h-russian-twist/light/start.720.png",
+              "sha256": "bfc360a9402f29bb84a6f649681e56b0be7e5546892c81d05b1a5c2234b77668",
+              "bytes": 125165,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night-b/h-russian-twist/light/peak.720.png",
+              "sha256": "46994c6a3dbc49d092fbb04f84dd16662d38700e02e020bb08220ce5a9ebf83a",
+              "bytes": 124819,
+              "width": 720,
+              "height": 720,
+              "frame": 30
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night-b/h-russian-twist/light/end.720.png",
+              "sha256": "7030ef64ad85db5c5145cb911b7fe0d6d048aa52c7a533dc302af3cce3e81e95",
+              "bytes": 124985,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "hologram",
+        "theme": "dark",
+        "highlight": {
+          "enabled": true,
+          "color": "#e9d49c",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/hologram/h-russian-twist/dark/loop.720.mp4",
+          "sha256": "74ff99e46078277794c48ec5a5bad1a41494347746f441654ba417d099578ec0",
+          "bytes": 877609,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/hologram/h-russian-twist/dark/cover.720.jpg",
+          "sha256": "b1d5423edcf5a3832906834f9330a0caf950e3c1f2b13c2aed33cbcfe9b1c3c5",
+          "bytes": 39619,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/hologram/h-russian-twist/dark/thumbnail.240.jpg",
+          "sha256": "d87cacea3daa499f51d166c74f38ccbb168a4094f9930c6748728a7b096c964e",
+          "bytes": 7437,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/hologram/h-russian-twist/dark/start.720.png",
+              "sha256": "4b5c33184ffee833f036c56c4d71591654a918e286798e82f2ad8908a2f95702",
+              "bytes": 122826,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/hologram/h-russian-twist/dark/peak.720.png",
+              "sha256": "2befce0acd1654bfda8fa12abd087ff661f25e5b8f746ace80d6a76eab752bb7",
+              "bytes": 122634,
+              "width": 720,
+              "height": 720,
+              "frame": 30
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/hologram/h-russian-twist/dark/end.720.png",
+              "sha256": "9256a8990733c85930042d236e5200c1df2a94ccc4632d34efc88eda2c02aea7",
+              "bytes": 122739,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "hologram",
+        "theme": "light",
+        "highlight": {
+          "enabled": true,
+          "color": "#e9d49c",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/hologram/h-russian-twist/light/loop.720.mp4",
+          "sha256": "68a0ee27f5fb1c14632799bcb81f170997d522c1abddc55ec80e1414959f58d3",
+          "bytes": 511919,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/hologram/h-russian-twist/light/cover.720.jpg",
+          "sha256": "bedf77631a90f175cfb8d130d31263ea196cc706a7c8427f567a2fa30eaee97f",
+          "bytes": 35927,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/hologram/h-russian-twist/light/thumbnail.240.jpg",
+          "sha256": "a210e6db905f95b9cb158305bcfd3e4f614cd7cc40ff9d094e0daa5c840a3aee",
+          "bytes": 8092,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/hologram/h-russian-twist/light/start.720.png",
+              "sha256": "3ce8d658f79d95d9738d065dde7251eb78c5536e5da77a99d618afd7852ac93d",
+              "bytes": 113364,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/hologram/h-russian-twist/light/peak.720.png",
+              "sha256": "55e8d11a2f4099fc29580b51717f3db215945150a76d35dff2fcc55658a8afb7",
+              "bytes": 114144,
+              "width": 720,
+              "height": 720,
+              "frame": 30
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/hologram/h-russian-twist/light/end.720.png",
+              "sha256": "796afeca802427e0002e00a00e568b1932a964825fa4e7160a79a5445806fd99",
+              "bytes": 113101,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      }
+    ],
+    "transparentCovers": {
+      "realistic": {
+        "root": "media",
+        "path": "derivatives/realistic/h-russian-twist/cover.transparent.1080.png",
+        "sha256": "1a212b72fc0c946391e8953bb4e79b83b37066b7295c3cda73ab161fa04252ee",
+        "bytes": 205861,
+        "width": 1080,
+        "height": 1080,
+        "alpha": true
+      },
+      "tech-white": {
+        "root": "media",
+        "path": "derivatives/tech-white/h-russian-twist/cover.transparent.1080.png",
+        "sha256": "dd7b63e66daa2e22f0116a0080e04152cd0c2763d8595dfdfacbc42cfef6aba6",
+        "bytes": 255111,
+        "width": 1080,
+        "height": 1080,
+        "alpha": true
+      },
+      "neon-night": {
+        "root": "media",
+        "path": "derivatives/neon-night/h-russian-twist/cover.transparent.1080.png",
+        "sha256": "812cccf8752f4f36c045b1f400ffdad673581d537cb574aa96b85cbd6474c1b2",
+        "bytes": 269312,
+        "width": 1080,
+        "height": 1080,
+        "alpha": true
+      },
+      "neon-night-b": {
+        "root": "media",
+        "path": "derivatives/neon-night-b/h-russian-twist/cover.transparent.1080.png",
+        "sha256": "c048a3b213d620ed03dee98f471faff7a4d3bd63d3396824e5c7a2a87ffccf52",
+        "bytes": 269182,
+        "width": 1080,
+        "height": 1080,
+        "alpha": true
+      },
+      "hologram": {
+        "root": "media",
+        "path": "derivatives/hologram/h-russian-twist/cover.transparent.1080.png",
+        "sha256": "e3463f3692cbadeb3cbd4fd729ac2edd4e002cec3378b4a649ef431723de48d8",
+        "bytes": 329126,
+        "width": 1080,
+        "height": 1080,
+        "alpha": true
+      }
+    },
+    "compositor": {
+      "root": "repo",
+      "path": "tools/action-library-v2/media.py",
+      "sha256": "17b92fc84cee47091e90cceae19fd1f4cf518f81db04767466d8745b784a76fb",
+      "bytes": 7731
+    },
+    "provenance": {
+      "framing": {
+        "root": "media",
+        "path": "manifests/framing/h-russian-twist.json",
+        "sha256": "9832baae923b5990f903ff913cf528c8b7120d647240ae2a7dfe17e99690b54c",
+        "bytes": 293
+      }
+    },
+    "framingId": "fixed-square-9832baae923b5990"
+  },
+  "voice": {
+    "actionId": "h-russian-twist",
+    "manifest": {
+      "root": "repo",
+      "path": "catalog/voice-v2/batches/b001-manifest.json",
+      "sha256": "31d97faf1000eceafa65bf290e66a9265d82d86425ab8ce3ed4f67f03ee401c0",
+      "bytes": 270954
+    }
+  },
+  "validation": {
+    "modelVersion": "1.0.0-rc2",
+    "mirrorGenerated": false,
+    "review": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "evidence": []
+    },
+    "manifest": {
+      "root": "media",
+      "path": "manifests/h-russian-twist.json",
+      "sha256": "7d1a0453b1abd10b55132dd81d60aea7f2aa71f54f00b2b9a267646c9ac3369a",
+      "bytes": 28374
+    }
+  }
+}
+```

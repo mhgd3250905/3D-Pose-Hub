@@ -1,0 +1,476 @@
+{
+  "format": "pose-hub-v2-production-batch@1",
+  "id": "b002",
+  "description": "Six native-eight-second standing-action migrations. All source, physical and visual review remain pending; source timing and solver anchors are preserved. Independent GPU4080 metadata revision: raw source-file SHA for renderer checks; recorded LF SHA retained; original motion and files unchanged.",
+  "model": {
+    "id": "training-human-v2plus",
+    "version": "1.0.0-rc2"
+  },
+  "skins": [
+    "realistic",
+    "tech-white",
+    "neon-night",
+    "neon-night-b",
+    "hologram"
+  ],
+  "fps": 30,
+  "width": 1080,
+  "height": 1080,
+  "durationSeconds": 8,
+  "maxWorkers": 2,
+  "reviewPolicy": "External actual visual review bound to source and preview manifest/index/PNG SHA is required before full production. No automatic review approval.",
+  "actions": [
+    {
+      "id": "h-sumo-pry",
+      "spec": "drill-anim/specs/h-sumo-pry-r2.js",
+      "source": {
+        "path": "drill-anim/specs/h-sumo-pry.js",
+        "sha256": "decf7880f891fceaf8d3a989f5e1bca35694b23c20bf0a37e895c902044b15ff",
+        "bytes": 3421,
+        "normalization": "raw",
+        "lfSha256": "2822e6600f341862bc8491d7e58b35876bddc53c0635a727d69ec270baadac7a",
+        "lfNormalization": "CRLF-to-LF only; the historical source file is not rewritten."
+      },
+      "peakFrame": 78,
+      "previewFrames": [
+        0,
+        6,
+        36,
+        54,
+        78,
+        96,
+        120,
+        198,
+        239,
+        240
+      ],
+      "phase": {
+        "review": "source-transcribed-editorial-pending",
+        "cycleSeconds": 4,
+        "cyclesPerClip": 2.0,
+        "events": [
+          {
+            "startSeconds": 0,
+            "endSeconds": 0.2,
+            "name": "prepare"
+          },
+          {
+            "startSeconds": 0.2,
+            "endSeconds": 1.8,
+            "name": "squatDown"
+          },
+          {
+            "startSeconds": 1.8,
+            "endSeconds": 3.2,
+            "name": "bottomPry"
+          },
+          {
+            "startSeconds": 3.2,
+            "endSeconds": 4,
+            "name": "riseToHalfSquat"
+          }
+        ],
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "countingSemantics": "One descent, gentle bottom pry and return to the half squat counts as one rep; 8 seconds contains two bilateral demonstration reps. Preserve the existing 3 reps with 10 seconds held per rep, but the actual source plateau is only 1.4 seconds per rep. The clip does not implement a 10-second hold; prescription/playback reconciliation requires editorial approval."
+      },
+      "side": {
+        "mode": "bilateral",
+        "firstWorkingSide": "both",
+        "switchTimesSeconds": []
+      },
+      "risks": [
+        "Inspect prayer-hand/finger contact, elbow/knee/thigh overlap, heel contact and groin/torso volume at both deep peaks.",
+        "Legacy default holdSeconds=10 differs from the actual 1.4-second plateau. Do not silently retime the source or represent the demo as a 10-second hold."
+      ]
+    },
+    {
+      "id": "n-pelvis-circle",
+      "spec": "drill-anim/specs/n-pelvis-circle-r2.js",
+      "source": {
+        "path": "drill-anim/specs/n-pelvis-circle.js",
+        "sha256": "802510f5fae4a4e940102207f161e9c25ffec257b8c65f708477bca84f293c9d",
+        "bytes": 3861,
+        "normalization": "raw",
+        "lfSha256": "5e1e140167ac622a79c2874e5957b1bb1f12799d26e4950857b36c32e4690381",
+        "lfNormalization": "CRLF-to-LF only; the historical source file is not rewritten."
+      },
+      "peakFrame": 33,
+      "previewFrames": [
+        0,
+        6,
+        33,
+        60,
+        114,
+        126,
+        180,
+        234,
+        239,
+        240
+      ],
+      "phase": {
+        "review": "source-transcribed-editorial-pending",
+        "cycleSeconds": 8,
+        "cyclesPerClip": 1.0,
+        "events": [
+          {
+            "startSeconds": 0,
+            "endSeconds": 0.2,
+            "name": "easePelvisForward"
+          },
+          {
+            "startSeconds": 0.2,
+            "endSeconds": 3.8,
+            "name": "circleTowardsLeft"
+          },
+          {
+            "startSeconds": 3.8,
+            "endSeconds": 4.2,
+            "name": "frontPause"
+          },
+          {
+            "startSeconds": 4.2,
+            "endSeconds": 7.8,
+            "name": "reverseCircle"
+          },
+          {
+            "startSeconds": 7.8,
+            "endSeconds": 8,
+            "name": "returnCentre"
+          }
+        ],
+        "repeatOffsetsSeconds": [
+          0
+        ],
+        "countingSemantics": "Preserve the legacy rep_cycle interpretation: one complete circle in each direction is one 8-second rep cycle. Default reps=4 means four two-direction cycles (four circles per direction), not four single circles or four per-side leg reps. Direction reverses at 4 seconds; feet remain planted throughout. The 0–0.6 and 7.4–8 second amplitude ramps overlap the angular phases."
+      },
+      "side": {
+        "mode": "bilateral",
+        "firstWorkingSide": "both",
+        "switchTimesSeconds": [],
+        "note": "Pelvis first travels forward then towards body left; direction reverses near 4 seconds. Both feet support the body throughout; no working-leg switch."
+      },
+      "risks": [
+        "Inspect palms and fingers on both hip surfaces through the complete circle and reverse circle; the existing touch solver is retained.",
+        "Inspect planted feet and knee stability with pelvic translation/tilt; the amplitude ramp overlaps the angular phase, so early frames are not a static hold."
+      ]
+    },
+    {
+      "id": "n-squat-shift",
+      "spec": "drill-anim/specs/n-squat-shift-r2.js",
+      "source": {
+        "path": "drill-anim/specs/n-squat-shift.js",
+        "sha256": "59ae56bf23d13ed09f85d0b99743f982fe552adebc3193039c5986b24a8fd6ba",
+        "bytes": 3274,
+        "normalization": "raw",
+        "lfSha256": "273960ac6a819c7b0438f4647efa7606926b3e1e23a5b6d67b26ec59c25e2191",
+        "lfNormalization": "CRLF-to-LF only; the historical source file is not rewritten."
+      },
+      "peakFrame": 66,
+      "previewFrames": [
+        0,
+        9,
+        33,
+        66,
+        84,
+        120,
+        153,
+        186,
+        239,
+        240
+      ],
+      "phase": {
+        "review": "source-transcribed-editorial-pending",
+        "cycleSeconds": 4,
+        "cyclesPerClip": 2.0,
+        "events": [
+          {
+            "startSeconds": 0,
+            "endSeconds": 0.3,
+            "name": "prepare"
+          },
+          {
+            "startSeconds": 0.3,
+            "endSeconds": 1.8,
+            "name": "shiftTowardsLoadedSide"
+          },
+          {
+            "startSeconds": 1.8,
+            "endSeconds": 2.8,
+            "name": "sidePause"
+          },
+          {
+            "startSeconds": 2.8,
+            "endSeconds": 4,
+            "name": "returnCentre"
+          }
+        ],
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "countingSemantics": "One shift towards one side and return to centre counts as one rep. The 8-second clip shifts left then right, for two total alternating reps; default reps=8 means eight total shifts (four per direction), not eight per side. Both feet remain planted and legacy unilateral=false is retained for bilateral-supported weight-transfer control."
+      },
+      "side": {
+        "mode": "bilateral",
+        "firstWorkingSide": "both",
+        "switchTimesSeconds": [
+          4
+        ],
+        "note": "Both feet stay planted; first load shift is towards the left foot, then towards the right at 4 seconds. This is a direction change within bilateral-supported movement, not a single-leg demonstration."
+      },
+      "risks": [
+        "Inspect prayer-hand/finger contact and deep torso/thigh/knee overlap at both lateral peaks; both heels must remain planted.",
+        "The source remains low throughout; do not label the return-to-centre phase as standing up."
+      ]
+    },
+    {
+      "id": "adductors-A",
+      "spec": "drill-anim/specs/adductors-A-r2.js",
+      "source": {
+        "path": "drill-anim/specs/adductors-A.js",
+        "sha256": "1d909ece33152ec5ac30f775d97987c09a2e434de163ebc5e3b9115eb14f25ea",
+        "bytes": 6527,
+        "normalization": "raw",
+        "lfSha256": "9478258360d5a617a4fbd8b561ef49abbac0182f2bba0dc8e276cb0c15359924",
+        "lfNormalization": "CRLF-to-LF only; the historical source file is not rewritten."
+      },
+      "peakFrame": 59,
+      "previewFrames": [
+        0,
+        9,
+        30,
+        59,
+        90,
+        120,
+        150,
+        179,
+        239,
+        240
+      ],
+      "phase": {
+        "review": "source-transcribed-editorial-pending",
+        "cycleSeconds": 4,
+        "cyclesPerClip": 2.0,
+        "events": [
+          {
+            "startSeconds": 0,
+            "endSeconds": 0.3,
+            "name": "prepare"
+          },
+          {
+            "startSeconds": 0.3,
+            "endSeconds": 1.6,
+            "name": "squatOntoWorkingLeg"
+          },
+          {
+            "startSeconds": 1.6,
+            "endSeconds": 2.3,
+            "name": "bottomHold"
+          },
+          {
+            "startSeconds": 2.3,
+            "endSeconds": 3.6,
+            "name": "riseToCentre"
+          },
+          {
+            "startSeconds": 3.6,
+            "endSeconds": 4,
+            "name": "reset"
+          }
+        ],
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "countingSemantics": "One lateral squat and return led by one loaded leg counts as one rep. The 8-second clip demonstrates one right-loaded then one left-loaded rep. Preserve FlareLab prescription: default reps=5 is per side (five full loops give five reps on each side), not five total alternating reps. Switch loaded leg at 4 seconds."
+      },
+      "side": {
+        "mode": "alternating",
+        "firstWorkingSide": "right-loaded-leg",
+        "switchTimesSeconds": [
+          4
+        ],
+        "note": "First squat loads the right leg and straightens/raises toes of the left; after 4 seconds the left leg loads and right leg straightens. Highlight remains both."
+      },
+      "risks": [
+        "Inspect both loaded-leg peaks, straight-leg knee reach >=176 degrees and arms/elbows >=174 degrees on the new mesh.",
+        "Heel-roll contact is deliberate: the straight leg toes rise and only its heel stays grounded; do not require a whole-foot pin on that side.",
+        "The source stillAt=0 is neutral; use the explicit batch semantic peak. Inspect solver continuity and frame 239-to-0 seam."
+      ]
+    },
+    {
+      "id": "hamstrings-A",
+      "spec": "drill-anim/specs/hamstrings-A-r2.js",
+      "source": {
+        "path": "drill-anim/specs/hamstrings-A.js",
+        "sha256": "90593c4a2b7b037d532e2112a69ed9c542070a9bc8942eeed6d3b740f502ba25",
+        "bytes": 4449,
+        "normalization": "raw",
+        "lfSha256": "2f4805986cf1d425fcac9f929a149f836d6fa6f6e70a603c1fb9455dbf0649a6",
+        "lfNormalization": "CRLF-to-LF only; the historical source file is not rewritten."
+      },
+      "peakFrame": 60,
+      "previewFrames": [
+        0,
+        9,
+        30,
+        60,
+        90,
+        120,
+        150,
+        180,
+        239,
+        240
+      ],
+      "phase": {
+        "review": "source-transcribed-editorial-pending",
+        "cycleSeconds": 4,
+        "cyclesPerClip": 2.0,
+        "events": [
+          {
+            "startSeconds": 0,
+            "endSeconds": 0.3,
+            "name": "prepare"
+          },
+          {
+            "startSeconds": 0.3,
+            "endSeconds": 1.7,
+            "name": "hingeForward"
+          },
+          {
+            "startSeconds": 1.7,
+            "endSeconds": 2.3,
+            "name": "bottomHold"
+          },
+          {
+            "startSeconds": 2.3,
+            "endSeconds": 3.7,
+            "name": "returnUpright"
+          },
+          {
+            "startSeconds": 3.7,
+            "endSeconds": 4,
+            "name": "reset"
+          }
+        ],
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "countingSemantics": "One hinge and return on the supporting leg counts as one rep. Default reps=8 is per side, as explicitly prescribed in the legacy FlareLab record. The 8-second clip shows two left-support reps, with the right leg lifted behind, and no side change. Complete four loops for the default left-side dose before an optional external change; opposite-side media is not produced."
+      },
+      "side": {
+        "mode": "unilateral",
+        "firstWorkingSide": "left-supporting-leg",
+        "switchTimesSeconds": [],
+        "externalSideChangeAfterSeconds": 8,
+        "note": "Only the left support/working leg is demonstrated; the right leg lifts behind. Eight seconds is an available loop-boundary cue after the prescribed per-side dose, not an encoded or mandatory every-loop switch."
+      },
+      "risks": [
+        "Inspect planted left-foot contact and support knee >=160 degrees, lifted right knee >=176 degrees near hinge>0.6, pelvis balance and actual finger clearance.",
+        "New-model arm length may affect the authored near-straight hanging-arm path; do not alter the source solver silently. Highlight remains both sides despite left-support-only motion."
+      ]
+    },
+    {
+      "id": "h-side-leg-raise",
+      "spec": "drill-anim/specs/h-side-leg-raise-r2.js",
+      "source": {
+        "path": "drill-anim/specs/h-side-leg-raise.js",
+        "sha256": "5aa0f71dc24248e5f038c99299f27b06175db72a57a83e9cad8d8d34611f31ef",
+        "bytes": 3293,
+        "normalization": "raw",
+        "lfSha256": "e412ec1c05994fee8e25a1b8d7c852fc9677fa997ad5511b50b92888259a0341",
+        "lfNormalization": "CRLF-to-LF only; the historical source file is not rewritten."
+      },
+      "peakFrame": 57,
+      "previewFrames": [
+        0,
+        12,
+        30,
+        57,
+        84,
+        120,
+        150,
+        177,
+        239,
+        240
+      ],
+      "phase": {
+        "review": "source-transcribed-editorial-pending",
+        "cycleSeconds": 4,
+        "cyclesPerClip": 2.0,
+        "events": [
+          {
+            "startSeconds": 0,
+            "endSeconds": 0.4,
+            "name": "prepare"
+          },
+          {
+            "startSeconds": 0.4,
+            "endSeconds": 1.6,
+            "name": "raiseRightLeg"
+          },
+          {
+            "startSeconds": 1.6,
+            "endSeconds": 2.2,
+            "name": "topHold"
+          },
+          {
+            "startSeconds": 2.2,
+            "endSeconds": 3.6,
+            "name": "lowerRightLeg"
+          },
+          {
+            "startSeconds": 3.6,
+            "endSeconds": 4,
+            "name": "reset"
+          }
+        ],
+        "repeatOffsetsSeconds": [
+          0,
+          4
+        ],
+        "countingSemantics": "One right-leg raise and controlled lowering counts as one rep. The 8-second clip contains two right-leg reps with left-foot support and no side change. Keep default reps=12; proposed interpretation is 12 per working side (six loops), but legacy metadata does not explicitly state per-side versus total and editorial confirmation is required. Do not switch sides automatically every loop or generate mirrored media."
+      },
+      "side": {
+        "mode": "unilateral",
+        "firstWorkingSide": "right-raising-leg",
+        "switchTimesSeconds": [],
+        "externalSideChangeAfterSeconds": 8,
+        "note": "Right leg abducts while the left leg supports throughout. Eight seconds is an optional external boundary after the prescribed per-side dose, not a switch encoded in the clip."
+      },
+      "risks": [
+        "Inspect visible hand/finger contact on both hips, support foot stability, both knees >=172 degrees and pelvis balance through both raises.",
+        "Confirm right-leg-only highlight and suspended moving-foot rest; do not demand a moving-foot floor pin. Default 12-rep per-side interpretation remains editorial pending."
+      ]
+    }
+  ],
+  "runtimeSha256": "0be6844bc8914fcd17d5fe1b4cd7f4fc72fc763b134fa34b2ecabf39000009df",
+  "runtimeProfileId": "gpu4080-d3d11-chromium130-r1",
+  "revision": "gpu4080-r1",
+  "supersedesBatch": {
+    "root": "repo",
+    "path": "catalog/v2/batches/b002.json",
+    "sha256": "4bd43de7eef68da7141c283aa98718f791a8518af2f92fa71d57f52c98f969c0",
+    "bytes": 14546
+  },
+  "sourceHashContract": "actions[].source.sha256 hashes exact source-file bytes for the frozen renderer; lfSha256 hashes CRLF-to-LF bytes for candidate/source provenance only. No source files are normalized or changed.",
+  "historicalVoiceBinding": {
+    "script": {
+      "root": "repo",
+      "path": "catalog/voice-v2/batches/b002-script.json",
+      "sha256": "81c6f26556212218793ef1502ec7eec84306284b6f7e1674a4d2ebdc2adff82b",
+      "bytes": 20648
+    },
+    "sourceBatch": {
+      "root": "repo",
+      "path": "catalog/v2/batches/b002.json",
+      "sha256": "4bd43de7eef68da7141c283aa98718f791a8518af2f92fa71d57f52c98f969c0",
+      "bytes": 14546
+    },
+    "handling": "Fixed script and voice manifest continue to bind the original batch. Source/spec, phase, side, timing, cue text and preview frames are unchanged; a separate source-ref revision audit records exact equivalence, without silently rewriting voice history."
+  }
+}

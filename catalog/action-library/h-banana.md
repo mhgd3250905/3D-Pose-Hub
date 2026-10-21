@@ -1,0 +1,1479 @@
+# 仰卧香蕉式侧伸 / Supine Banana Stretch
+
+ID: `h-banana`. State: review. Release eligible: False.
+
+## Definition
+
+```json
+{
+  "idMappings": [],
+  "name": {
+    "zh": "仰卧香蕉式侧伸",
+    "en": "Supine Banana Stretch"
+  },
+  "purpose": {
+    "zh": "拉伸腰两侧和背部",
+    "en": "Practice alternating supine side stretches for the waist and back."
+  },
+  "tags": {
+    "category": "stretch",
+    "activeMuscles": [
+      "obliques",
+      "lats"
+    ],
+    "synergistMuscles": [
+      "erectors"
+    ],
+    "equipment": [
+      "mat"
+    ],
+    "position": "supine",
+    "scenes": [
+      "home"
+    ],
+    "difficulty": 1,
+    "trainingType": "stretch"
+  },
+  "unilateral": true,
+  "startingSide": "left",
+  "cues": [
+    {
+      "id": "cue1",
+      "text": {
+        "zh": "手脚移向同侧，肩和骨盆保持贴垫，拉长体侧",
+        "en": "Move your arms and legs to one side, keeping your shoulders and pelvis on the mat to lengthen your side"
+      },
+      "primary": true
+    },
+    {
+      "id": "cue2",
+      "text": {
+        "zh": "先让手脚向右移动，感受左侧身体伸长",
+        "en": "First move the arms and legs right to lengthen the left side."
+      },
+      "primary": false
+    },
+    {
+      "id": "cue3",
+      "text": {
+        "zh": "缓慢回到中间后再向另一侧移动",
+        "en": "Return slowly through the centre before moving to the other side."
+      },
+      "primary": false
+    },
+    {
+      "id": "cue4",
+      "text": {
+        "zh": "保持呼吸，不用翻身或强拉手臂增加幅度",
+        "en": "Keep breathing without rolling over or pulling hard on the arms."
+      },
+      "primary": false
+    }
+  ],
+  "commonErrors": [
+    {
+      "zh": "骨盆或肩部翻离垫面，变成侧卧扭转",
+      "en": "Rolling the pelvis or shoulder off the mat into a side-lying twist."
+    },
+    {
+      "zh": "手脚向相反方向扯开，或强行追求更大侧弯",
+      "en": "Pulling the arms and legs in opposite directions or forcing a larger side bend."
+    }
+  ],
+  "cautions": {
+    "items": [
+      {
+        "zh": "肩与颈：过头伸臂以舒适为限，不猛拉肩部或夹紧颈部。",
+        "en": "Shoulders and neck: keep the overhead reach comfortable without pulling the shoulders or compressing the neck."
+      },
+      {
+        "zh": "腰侧与髋：保留肩、骨盆的承托，缓慢移动，不弹震。",
+        "en": "Side of the waist and hips: keep the shoulders and pelvis supported and move slowly without bouncing."
+      }
+    ],
+    "review": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "evidence": []
+    }
+  },
+  "contraindications": {
+    "items": [
+      {
+        "zh": "本动作引发疼痛时停止，不通过增加幅度或负重继续；先向医生或物理治疗师确认。",
+        "en": "Stop if this exercise causes pain; do not add range or load before seeking clinical advice."
+      },
+      {
+        "zh": "已有医嘱限制仰卧、过头伸臂或躯干侧屈时，先取得许可。",
+        "en": "Obtain clearance first if supine exercise, overhead reaching or trunk side bending has been restricted."
+      }
+    ],
+    "review": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "evidence": []
+    }
+  },
+  "alternatives": [
+    "o-stand-sidebend"
+  ],
+  "regressions": [],
+  "progressions": [],
+  "defaultDose": {
+    "mode": "time",
+    "sets": 1,
+    "seconds": 30,
+    "restSeconds": 10
+  },
+  "doseRange": {
+    "sets": [
+      1,
+      2
+    ],
+    "seconds": [
+      15,
+      60
+    ],
+    "restSeconds": [
+      0,
+      60
+    ]
+  },
+  "rhythm": {
+    "kind": "rep_alternate",
+    "leadSeconds": 0,
+    "source": "b001-source-timeline",
+    "phases": [
+      {
+        "id": "prepare1",
+        "seconds": 0.3
+      },
+      {
+        "id": "curveRightStretchLeft",
+        "seconds": 1.5
+      },
+      {
+        "id": "leftSideStretchHold",
+        "seconds": 1.2
+      },
+      {
+        "id": "returnCentre1",
+        "seconds": 1
+      },
+      {
+        "id": "prepare2",
+        "seconds": 0.3
+      },
+      {
+        "id": "curveLeftStretchRight",
+        "seconds": 1.5
+      },
+      {
+        "id": "rightSideStretchHold",
+        "seconds": 1.2
+      },
+      {
+        "id": "returnCentre2",
+        "seconds": 1
+      }
+    ]
+  },
+  "countingSemantics": "Timed alternating stretch. The rightward body curve stretches the left side first; one 8-second cycle demonstrates both sides. Existing 30 seconds is total timed movement, not a 30-second static hold per side. No automatic dose change.",
+  "apps": [
+    "smartfit"
+  ],
+  "editorialReview": {
+    "status": "pending",
+    "reviewer": null,
+    "reviewedAt": null,
+    "evidence": []
+  },
+  "editorialNotes": [
+    "root已裁决：先身体向右弯，拉长LEFT侧；4秒后向左弯拉RIGHT侧。startingSide按被拉伸侧left记录，不按身体移动方向。",
+    "旧30秒保持全动作总计时，不变成每侧30秒静态hold；一个8秒源cycle示范两侧。source.highlight.side=both保留，不伪称只亮当前受拉伸侧。",
+    "o-stand-sidebend是同体侧拉伸目标的站姿替代，器械/体位/侧别时长不同；独立同模式降阶/进阶ID未有。",
+    "相位来自catalog/v2/batches/b001.json真实秒区间；剂量数字与范围保持旧catalog，rhythm不附旧reps来覆盖默认剂量。",
+    "双语注意、通用禁用筛查、协同肌群与关系均已有具体草稿，pending表示未审而非缺数据；协同包含姿势稳定或次要拉伸角色，不作为肌电激活或额外高亮处方。",
+    "关系目标为本仓库真实ID候选，但未必已有同模型可发布v2包；不得自动回退弃用模型素材。空关系数组的缺口见逐动作说明。",
+    "医学通用筛查与证据边界沿用catalog/v2/definition-evidence.md所列AAOS/NHS一手资料；不编造疾病特异绝对禁忌。所有编辑与医学审核保持pending。"
+  ],
+  "movementSides": "Body curves right first, lengthening left obliques/lats; then curves left to stretch right. Source highlight.side=both is retained."
+}
+```
+
+## Six-layer completeness
+
+### definition: incomplete
+
+- editorialReview: review has not passed
+- editorialReview: reviewer and reviewedAt required
+- editorialReview: review evidence required
+- cautions.review: review has not passed
+- cautions.review: reviewer and reviewedAt required
+- cautions.review: review evidence required
+- contraindications.review: review has not passed
+- contraindications.review: reviewer and reviewedAt required
+- contraindications.review: review evidence required
+
+### source: complete
+
+
+### masters: complete
+
+
+### derivatives: complete
+
+
+### voice: incomplete
+
+- voice content review and manual listening must pass
+
+### validation: incomplete
+
+- validation.review: review has not passed
+- validation.review: reviewer and reviewedAt required
+- validation.review: review evidence required
+
+## Source and production metadata
+
+```json
+{
+  "source": {
+    "model": {
+      "id": "training-human-v2plus",
+      "version": "1.0.0-rc2",
+      "manifest": {
+        "root": "repo",
+        "path": "drill-anim/models/training-human-v2plus.json",
+        "sha256": "ec2bc815ded157dbc7673e283ed9b6bb1baa710a39ce3a02f88453e8d7fb0a1d",
+        "bytes": 6494,
+        "normalization": "lf"
+      }
+    },
+    "spec": {
+      "root": "repo",
+      "path": "drill-anim/specs/h-banana-r2.js",
+      "sha256": "af14c1aca135a08bc0547f40bc31e17acccbb6054be56b33b40ce177c15785a6",
+      "bytes": 468,
+      "normalization": "lf"
+    },
+    "dependencies": [
+      {
+        "root": "repo",
+        "path": "drill-anim/lib/home-anim.mjs",
+        "sha256": "1798c9e55c28b32391b7ef32aa358427b4743ee1959f86ec488a95fe88a05557",
+        "bytes": 3691,
+        "normalization": "lf"
+      },
+      {
+        "root": "repo",
+        "path": "drill-anim/lib/ss-geo.mjs",
+        "sha256": "45ca774079e3a85ecc4f924a3220d4baa721f0435e16f6e6e21ffa19e17e8603",
+        "bytes": 3700,
+        "normalization": "lf"
+      },
+      {
+        "root": "repo",
+        "path": "drill-anim/specs/h-banana.js",
+        "sha256": "0dc10bdcd7ab19ea8cebe7fe156e0081531246968eba54bd1900a97296b086ed",
+        "bytes": 3431,
+        "normalization": "lf"
+      }
+    ],
+    "keyMoments": {
+      "start": 0,
+      "peak": 2.4,
+      "end": 8,
+      "switchPoint": {
+        "kind": "in-clip",
+        "seconds": 4,
+        "semantics": "Timed alternating stretch. The rightward body curve stretches the left side first; one 8-second cycle demonstrates both sides. Existing 30 seconds is total timed movement, not a 30-second static hold per side. No automatic dose change. All encoded side changes: 4 seconds."
+      }
+    },
+    "highlightMuscles": [
+      "obliques",
+      "lats"
+    ],
+    "qa": {
+      "intersections": {
+        "status": "pass",
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-21T22:29:22.610332+08:00",
+        "evidence": [
+          {
+            "root": "media",
+            "path": "qa/reviews/h-banana-evidence.json",
+            "sha256": "a51ca53bdc8a2b0970cf27994556a4e98c5bab4c6571f8f0cd2b252f4610066e",
+            "bytes": 7859
+          }
+        ],
+        "framesReviewed": [
+          0,
+          30,
+          60,
+          72,
+          90,
+          120,
+          150,
+          180,
+          210,
+          239,
+          240
+        ]
+      },
+      "handsFeet": {
+        "status": "pass",
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-21T22:29:22.610332+08:00",
+        "evidence": [
+          {
+            "root": "media",
+            "path": "qa/reviews/h-banana-evidence.json",
+            "sha256": "a51ca53bdc8a2b0970cf27994556a4e98c5bab4c6571f8f0cd2b252f4610066e",
+            "bytes": 7859
+          }
+        ],
+        "framesReviewed": [
+          0,
+          30,
+          60,
+          72,
+          90,
+          120,
+          150,
+          180,
+          210,
+          239,
+          240
+        ]
+      },
+      "propFlicker": {
+        "status": "pass",
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-21T22:29:22.610332+08:00",
+        "evidence": [
+          {
+            "root": "media",
+            "path": "qa/reviews/h-banana-evidence.json",
+            "sha256": "a51ca53bdc8a2b0970cf27994556a4e98c5bab4c6571f8f0cd2b252f4610066e",
+            "bytes": 7859
+          }
+        ],
+        "framesReviewed": [
+          0,
+          30,
+          60,
+          72,
+          90,
+          120,
+          150,
+          180,
+          210,
+          239,
+          240
+        ]
+      },
+      "loopSeam": {
+        "status": "pass",
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-21T22:29:22.610332+08:00",
+        "evidence": [
+          {
+            "root": "media",
+            "path": "qa/reviews/h-banana-evidence.json",
+            "sha256": "a51ca53bdc8a2b0970cf27994556a4e98c5bab4c6571f8f0cd2b252f4610066e",
+            "bytes": 7859
+          }
+        ],
+        "framesReviewed": [
+          0,
+          30,
+          60,
+          72,
+          90,
+          120,
+          150,
+          180,
+          210,
+          239,
+          240
+        ]
+      }
+    },
+    "demonstratedSide": "both"
+  },
+  "masters": {
+    "requiredSkins": [
+      "realistic",
+      "tech-white",
+      "neon-night",
+      "neon-night-b",
+      "hologram"
+    ],
+    "skins": {
+      "realistic": {
+        "geometrySha256": "aa0aa8dcfa8645375ac39890a58b8773e0e14ecc886fac6f2fda6e459d222152",
+        "occlusionSha256": "b8539120d4c74487154257a71d88cfd4f44fcc78694ce792551a26cbfb29b3ac",
+        "measurement": {
+          "root": "media",
+          "path": "masters/realistic/h-banana/layer-manifest.json",
+          "sha256": "adbd8be97ec564a43106e9132c804840952b98132e7cc683fb6bee3cb0b3cfc1",
+          "bytes": 13094
+        },
+        "bodyProps": {
+          "sequence": {
+            "root": "media",
+            "path": "masters/realistic/h-banana/body/index.json",
+            "sha256": "34e9f96c122850d7ceb6b10415ae7821ea2ae6a5335dc7dc11f0c693f22a2c5a",
+            "bytes": 53129
+          },
+          "width": 1080,
+          "height": 1080,
+          "durationSeconds": 8,
+          "frameCount": 240,
+          "fps": 30,
+          "alpha": true
+        },
+        "highlightMask": {
+          "sequence": {
+            "root": "media",
+            "path": "masters/realistic/h-banana/highlight/index.json",
+            "sha256": "67f9e58f413dd655db093324495f3b175ec76bf0a04d626ba7a9673fd2477fb5",
+            "bytes": 54329
+          },
+          "width": 1080,
+          "height": 1080,
+          "durationSeconds": 8,
+          "frameCount": 240,
+          "fps": 30,
+          "alpha": true,
+          "grayscale": true,
+          "occlusionAware": true
+        },
+        "shadow": {
+          "sequence": {
+            "root": "media",
+            "path": "masters/realistic/h-banana/shadow/index.json",
+            "sha256": "6e7ad90aa4373a366ba7b4dcebe96d30023303acf662f1dc38de9da5034995a0",
+            "bytes": 53609
+          },
+          "width": 1080,
+          "height": 1080,
+          "durationSeconds": 8,
+          "frameCount": 240,
+          "fps": 30,
+          "alpha": true
+        }
+      },
+      "tech-white": {
+        "geometrySha256": "aa0aa8dcfa8645375ac39890a58b8773e0e14ecc886fac6f2fda6e459d222152",
+        "occlusionSha256": "b8539120d4c74487154257a71d88cfd4f44fcc78694ce792551a26cbfb29b3ac",
+        "measurement": {
+          "root": "media",
+          "path": "masters/tech-white/h-banana/layer-manifest.json",
+          "sha256": "2325f2dec052a99072e715610e456854f092166c4c1308b93ed6ace12beb94f4",
+          "bytes": 13347
+        },
+        "bodyProps": {
+          "sequence": {
+            "root": "media",
+            "path": "masters/tech-white/h-banana/body/index.json",
+            "sha256": "cef48da4c563f6b875a84c50c934b8b431fee7eba2ce6d7ca1866912b85326f1",
+            "bytes": 53609
+          },
+          "width": 1080,
+          "height": 1080,
+          "durationSeconds": 8,
+          "frameCount": 240,
+          "fps": 30,
+          "alpha": true
+        },
+        "highlightMask": {
+          "sharedFrom": "realistic"
+        },
+        "shadow": {
+          "sharedFrom": "realistic"
+        }
+      },
+      "neon-night": {
+        "geometrySha256": "aa0aa8dcfa8645375ac39890a58b8773e0e14ecc886fac6f2fda6e459d222152",
+        "occlusionSha256": "b8539120d4c74487154257a71d88cfd4f44fcc78694ce792551a26cbfb29b3ac",
+        "measurement": {
+          "root": "media",
+          "path": "masters/neon-night/h-banana/layer-manifest.json",
+          "sha256": "476f16d16691d2f39447631b11e216fbffba32ddd91234b1abd20950be877cc4",
+          "bytes": 13347
+        },
+        "bodyProps": {
+          "sequence": {
+            "root": "media",
+            "path": "masters/neon-night/h-banana/body/index.json",
+            "sha256": "bd9652d474c1da61270fe8da03a32124d547661636aaadb658f85013d320e7da",
+            "bytes": 53609
+          },
+          "width": 1080,
+          "height": 1080,
+          "durationSeconds": 8,
+          "frameCount": 240,
+          "fps": 30,
+          "alpha": true
+        },
+        "highlightMask": {
+          "sharedFrom": "realistic"
+        },
+        "shadow": {
+          "sharedFrom": "realistic"
+        }
+      },
+      "neon-night-b": {
+        "geometrySha256": "aa0aa8dcfa8645375ac39890a58b8773e0e14ecc886fac6f2fda6e459d222152",
+        "occlusionSha256": "b8539120d4c74487154257a71d88cfd4f44fcc78694ce792551a26cbfb29b3ac",
+        "measurement": {
+          "root": "media",
+          "path": "masters/neon-night-b/h-banana/layer-manifest.json",
+          "sha256": "08974d4ef916d9430aaf66016c5acf956d8ba51a4a8918bb5fc1af0e854c7a1c",
+          "bytes": 13355
+        },
+        "bodyProps": {
+          "sequence": {
+            "root": "media",
+            "path": "masters/neon-night-b/h-banana/body/index.json",
+            "sha256": "d4837e4f2c676c20bb15bfd6a48c3e03e00ea7fe30a4d6342bc74e697e46ff97",
+            "bytes": 54089
+          },
+          "width": 1080,
+          "height": 1080,
+          "durationSeconds": 8,
+          "frameCount": 240,
+          "fps": 30,
+          "alpha": true
+        },
+        "highlightMask": {
+          "sharedFrom": "realistic"
+        },
+        "shadow": {
+          "sharedFrom": "realistic"
+        }
+      },
+      "hologram": {
+        "geometrySha256": "aa0aa8dcfa8645375ac39890a58b8773e0e14ecc886fac6f2fda6e459d222152",
+        "occlusionSha256": "b8539120d4c74487154257a71d88cfd4f44fcc78694ce792551a26cbfb29b3ac",
+        "measurement": {
+          "root": "media",
+          "path": "masters/hologram/h-banana/layer-manifest.json",
+          "sha256": "c48f39002831a0aa605b7bbde4b25ec697290a7d72b53eeb25493ab58bed5705",
+          "bytes": 13339
+        },
+        "bodyProps": {
+          "sequence": {
+            "root": "media",
+            "path": "masters/hologram/h-banana/body/index.json",
+            "sha256": "5f4575a9b57dfec03952a81adb594c8bbdf2302748f0486408b119d68fea7d2a",
+            "bytes": 53129
+          },
+          "width": 1080,
+          "height": 1080,
+          "durationSeconds": 8,
+          "frameCount": 240,
+          "fps": 30,
+          "alpha": true
+        },
+        "highlightMask": {
+          "sharedFrom": "realistic"
+        },
+        "shadow": {
+          "sharedFrom": "realistic"
+        }
+      }
+    },
+    "loopReview": {
+      "status": "pass",
+      "reviewer": "Codex",
+      "reviewedAt": "2026-10-21T22:29:22.610332+08:00",
+      "evidence": [
+        {
+          "root": "media",
+          "path": "qa/reviews/h-banana-evidence.json",
+          "sha256": "a51ca53bdc8a2b0970cf27994556a4e98c5bab4c6571f8f0cd2b252f4610066e",
+          "bytes": 7859
+        }
+      ]
+    }
+  },
+  "derivatives": {
+    "method": "composite-from-masters",
+    "mirrored": false,
+    "variants": [
+      {
+        "skin": "realistic",
+        "theme": "dark",
+        "highlight": {
+          "enabled": true,
+          "color": "#f08a3c",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/realistic/h-banana/dark/loop.720.mp4",
+          "sha256": "9212dd4bb6109217adcd99d38b02344e3b35512cbf7e594e8352b02e3a2ffa84",
+          "bytes": 557642,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/realistic/h-banana/dark/cover.720.jpg",
+          "sha256": "661eefb723a30eb88f7a7bc603bbad50ebb80f667d005c547becb777613a72fb",
+          "bytes": 31574,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/realistic/h-banana/dark/thumbnail.240.jpg",
+          "sha256": "3aef73071af426b6b99fb6801fb7bb866d0bdbb6e85a805951cf63f2e95cccb1",
+          "bytes": 6495,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/realistic/h-banana/dark/start.720.png",
+              "sha256": "ffdbefcdf7683e0058c0f2877c74739d3ba21f67038ec7e7e7eb8ef328e596e0",
+              "bytes": 73554,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/realistic/h-banana/dark/peak.720.png",
+              "sha256": "f199cff99008acd7e8c22cff801df775aab96035c68ba3c72a635b9aa2840ebf",
+              "bytes": 76455,
+              "width": 720,
+              "height": 720,
+              "frame": 72
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/realistic/h-banana/dark/end.720.png",
+              "sha256": "bcf1d405e7a6baac8d46d061b7099b56874996abf455f46396c7673657b3eced",
+              "bytes": 73721,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "realistic",
+        "theme": "light",
+        "highlight": {
+          "enabled": true,
+          "color": "#f08a3c",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/realistic/h-banana/light/loop.720.mp4",
+          "sha256": "61804d1ca89be2a58f7767b9ac231c1b332685c5797f0cb36d599adba8fa750a",
+          "bytes": 605646,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/realistic/h-banana/light/cover.720.jpg",
+          "sha256": "9aec63859230828fa31cd3bd9cb763d06587b3ce61107062be3adecc67f46f5c",
+          "bytes": 36069,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/realistic/h-banana/light/thumbnail.240.jpg",
+          "sha256": "55c54854f7d2aa4793c8d1a16297c355b1ba7b956cdb4097ee4f47cdd8ab2a2c",
+          "bytes": 7955,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/realistic/h-banana/light/start.720.png",
+              "sha256": "d02d73359ff1ef295f832d5b9975baf30d2cfb99f12e772150be187a684e8b39",
+              "bytes": 80059,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/realistic/h-banana/light/peak.720.png",
+              "sha256": "718df08b3f03f28c451214a9cacddd06955d7739f592ea960dcf53998bce1011",
+              "bytes": 81929,
+              "width": 720,
+              "height": 720,
+              "frame": 72
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/realistic/h-banana/light/end.720.png",
+              "sha256": "bbb8be56598c6e78d3d085a33c830fd37dbc207bc14fed489683c5bfd56af615",
+              "bytes": 80177,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "tech-white",
+        "theme": "dark",
+        "highlight": {
+          "enabled": true,
+          "color": "#f08a3c",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/tech-white/h-banana/dark/loop.720.mp4",
+          "sha256": "9d569fa3fc75ef42a3acb286b08abd47c3294893a503384b7d921756b71a3bc1",
+          "bytes": 708057,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/tech-white/h-banana/dark/cover.720.jpg",
+          "sha256": "b2b850205d8f4f9bc860970dd682dbfa53ad1cb6849ce2ec0e4533bb23ec55cc",
+          "bytes": 42785,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/tech-white/h-banana/dark/thumbnail.240.jpg",
+          "sha256": "deca86b0135de108b92b94589145443f6efe0cf08d286b9447cbd39224da7918",
+          "bytes": 8527,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/tech-white/h-banana/dark/start.720.png",
+              "sha256": "8626c7493c6cf3285eacf9e2aea817fd49d8e71db0498e102c9e47720b6c449b",
+              "bytes": 104721,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/tech-white/h-banana/dark/peak.720.png",
+              "sha256": "1746c04a55023d534bd41f562b8a9742404a505f9b0fd2a6eb7e146cd8ff8cb2",
+              "bytes": 109475,
+              "width": 720,
+              "height": 720,
+              "frame": 72
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/tech-white/h-banana/dark/end.720.png",
+              "sha256": "997cadff21cdc3ddd0e44828922b1ec1bd8ac41431759c13fc5f31df42d63402",
+              "bytes": 104923,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "tech-white",
+        "theme": "light",
+        "highlight": {
+          "enabled": true,
+          "color": "#f08a3c",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/tech-white/h-banana/light/loop.720.mp4",
+          "sha256": "99daa6782ebd110a22f45bd6f05f6b0a299d2ef4e50a8895e5bc369a7ea1fb7e",
+          "bytes": 754158,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/tech-white/h-banana/light/cover.720.jpg",
+          "sha256": "065e2bdde20aff8b6d30d74a26df374a447ca6d8782f45bae1e04913845a752a",
+          "bytes": 46349,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/tech-white/h-banana/light/thumbnail.240.jpg",
+          "sha256": "1143fad96216a378360545dc096cf1e5a575da7d0d9f6110c77d7b5bec29dfe2",
+          "bytes": 9623,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/tech-white/h-banana/light/start.720.png",
+              "sha256": "39f4e12f40a9bd1571a433d65c1baf7f6c96ab227ef2ee56eb416f3546c70aa0",
+              "bytes": 110824,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/tech-white/h-banana/light/peak.720.png",
+              "sha256": "d9d6aff78e83c5e66a02c5fabd5ef263c5a3a54c066c5b20bcd2167b69b8be9c",
+              "bytes": 113464,
+              "width": 720,
+              "height": 720,
+              "frame": 72
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/tech-white/h-banana/light/end.720.png",
+              "sha256": "f4c79897887d17fe1b8a093c8f640f7151d3549354e18e92d9e1a1e4930f0080",
+              "bytes": 110980,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "neon-night",
+        "theme": "dark",
+        "highlight": {
+          "enabled": true,
+          "color": "#9fdcff",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/neon-night/h-banana/dark/loop.720.mp4",
+          "sha256": "fed6869dd693945ac40b21eda7717877735b4e44a0319517ed4e00ecf488a34f",
+          "bytes": 727512,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/neon-night/h-banana/dark/cover.720.jpg",
+          "sha256": "464b61f683f3099025552b85ce437b657f6a630ce1f35b505bda06f38ad3004c",
+          "bytes": 42384,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/neon-night/h-banana/dark/thumbnail.240.jpg",
+          "sha256": "90dcef5307410e0387c6d97bea8fba2d1fd74b42dd71f75c740da858094de448",
+          "bytes": 7613,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night/h-banana/dark/start.720.png",
+              "sha256": "453b3cca0ee0a61d39b6656f337760712a4a1a95dcb9649f3125ecb69b592936",
+              "bytes": 102763,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night/h-banana/dark/peak.720.png",
+              "sha256": "cd9c94b3c974d5c751127eb0c75d6351f5727e52110a3b7821bd8e53bee345c6",
+              "bytes": 107796,
+              "width": 720,
+              "height": 720,
+              "frame": 72
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night/h-banana/dark/end.720.png",
+              "sha256": "0e8fac661dc2f47941b22a2083e4da67c18cd286cebba1386f0db3c479e5f9bc",
+              "bytes": 102864,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "neon-night",
+        "theme": "light",
+        "highlight": {
+          "enabled": true,
+          "color": "#9fdcff",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/neon-night/h-banana/light/loop.720.mp4",
+          "sha256": "519df2a2725f1d18ff89b31eb7449dd320f42f4df34c1e42022157cd7ef4a3cd",
+          "bytes": 789012,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/neon-night/h-banana/light/cover.720.jpg",
+          "sha256": "9f594aecb33b24510883f2d8ad62ab85fd99010883959df8365479f845f32421",
+          "bytes": 47508,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/neon-night/h-banana/light/thumbnail.240.jpg",
+          "sha256": "eccee2bd40b2f32e24a030cc79266ba6cb0840e1e0a6e71700d424e14b74bd29",
+          "bytes": 9293,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night/h-banana/light/start.720.png",
+              "sha256": "a379ef7b48b2edd3b0386b5e5fce5fabd92f200d66700d6471f76107bd0ef686",
+              "bytes": 109796,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night/h-banana/light/peak.720.png",
+              "sha256": "74b0da32c0d056c9f7441e8b6f83a79d738d7f1c2aea8f7ec4fb65b0b456b0fc",
+              "bytes": 114285,
+              "width": 720,
+              "height": 720,
+              "frame": 72
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night/h-banana/light/end.720.png",
+              "sha256": "4e0c504db7ee5d5c6d47d871caf74d9aaab1fd3aed338473cde80f2f8aaf6082",
+              "bytes": 109815,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "neon-night-b",
+        "theme": "dark",
+        "highlight": {
+          "enabled": true,
+          "color": "#b6ffd0",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/neon-night-b/h-banana/dark/loop.720.mp4",
+          "sha256": "4837b80d00f03a693e34f39050546031116910ecd0fc100c7586324baf06d4ba",
+          "bytes": 751265,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/neon-night-b/h-banana/dark/cover.720.jpg",
+          "sha256": "14635e38279b00a88802d5171e92366f648b86710127e4050b06fcb1fbce9532",
+          "bytes": 42617,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/neon-night-b/h-banana/dark/thumbnail.240.jpg",
+          "sha256": "f0945a9e3a61c593d92202954a744fbc805fe015c20addcfbb30df324b3bad27",
+          "bytes": 7727,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night-b/h-banana/dark/start.720.png",
+              "sha256": "ebbd5757e534c4877ff489170485be96a51c0345d97f0187bc9af2d516bd24c0",
+              "bytes": 102371,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night-b/h-banana/dark/peak.720.png",
+              "sha256": "bfda1ad9b5f24233d9f01ccd4c6c9747010f9ee678c4d154e33b35387ed35075",
+              "bytes": 107301,
+              "width": 720,
+              "height": 720,
+              "frame": 72
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night-b/h-banana/dark/end.720.png",
+              "sha256": "d9e98ffa6df6c42b00097625f0b3844c4354ef21da2dca6659eab5393855b752",
+              "bytes": 102389,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "neon-night-b",
+        "theme": "light",
+        "highlight": {
+          "enabled": true,
+          "color": "#b6ffd0",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/neon-night-b/h-banana/light/loop.720.mp4",
+          "sha256": "abaf09a0fb937dfcd8c3fdd21bc637c1b9d7d5d4865e15b340b9b2ce74b93949",
+          "bytes": 809679,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/neon-night-b/h-banana/light/cover.720.jpg",
+          "sha256": "faffd5a2b665eb763902cdb485d0471a6dbaa6501d214faf8f5e209b09926cc5",
+          "bytes": 47749,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/neon-night-b/h-banana/light/thumbnail.240.jpg",
+          "sha256": "8af2b9eff533f6df4c0ef8b434f913db9eb07336c205a81b42692cf4f72ff2f2",
+          "bytes": 9375,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night-b/h-banana/light/start.720.png",
+              "sha256": "d9b873b7e025a015d94222dcabfc621dd42ef6972a2e8cb23031c102048044a8",
+              "bytes": 109244,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night-b/h-banana/light/peak.720.png",
+              "sha256": "4a0bdc78256015d1a1e59b905901affb1fd146137996867d5eae3b09d8acb27f",
+              "bytes": 113785,
+              "width": 720,
+              "height": 720,
+              "frame": 72
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night-b/h-banana/light/end.720.png",
+              "sha256": "68548c9a67ff0b4ef06aaeeadf96263a4d290e01e504cab8c894427d294a96fc",
+              "bytes": 109374,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "hologram",
+        "theme": "dark",
+        "highlight": {
+          "enabled": true,
+          "color": "#e9d49c",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/hologram/h-banana/dark/loop.720.mp4",
+          "sha256": "bfaa96409691316e7a94987e851109d9fe0295278e3116b2175c0f3f6fd33346",
+          "bytes": 885799,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/hologram/h-banana/dark/cover.720.jpg",
+          "sha256": "4f7836005d054721f4bd8d76e92aa35da7ecd4bc45b688780e83624dc354a7d5",
+          "bytes": 40757,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/hologram/h-banana/dark/thumbnail.240.jpg",
+          "sha256": "d8a52bf2046e1078f9a2bd2d402ce3c695ae56314bfb96da65b778f61f83005d",
+          "bytes": 7241,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/hologram/h-banana/dark/start.720.png",
+              "sha256": "0064d0dd64e03daeb2b97f516f2f01ecbc9dbaf92926dc843c4b8d9f0da73b40",
+              "bytes": 112486,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/hologram/h-banana/dark/peak.720.png",
+              "sha256": "0fafb8e0f92f9855d816120e2d9df3163fe76dc3e0cdda021642439fc898f97a",
+              "bytes": 116936,
+              "width": 720,
+              "height": 720,
+              "frame": 72
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/hologram/h-banana/dark/end.720.png",
+              "sha256": "72b8054d61109e60d3883c09c42ea774229ad5ef0f9ea73a87c152b74c70b310",
+              "bytes": 112829,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "hologram",
+        "theme": "light",
+        "highlight": {
+          "enabled": true,
+          "color": "#e9d49c",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/hologram/h-banana/light/loop.720.mp4",
+          "sha256": "3c81537ab233903ef3a1cd760197285f67dd00d493b3d5f88e98a9a6d6e6fe44",
+          "bytes": 534738,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/hologram/h-banana/light/cover.720.jpg",
+          "sha256": "607413e55274350bc6f8d66ab688be9dbf38d39137686f4f0376e72094a183f8",
+          "bytes": 38090,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/hologram/h-banana/light/thumbnail.240.jpg",
+          "sha256": "78976bfb5188ad901d97230adaf3d7bbdbf74561eab5552cdcb8aec0c33c5b9f",
+          "bytes": 8975,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/hologram/h-banana/light/start.720.png",
+              "sha256": "5d24cde4b65c1a6b1ce841cec9caa100df02ac2c92b79233feb8be427b4b3a4f",
+              "bytes": 106783,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/hologram/h-banana/light/peak.720.png",
+              "sha256": "e72a687a6c8a151ee4879a3b71e16e8e0ff9e37d028c31cd6e2cb19859d9b732",
+              "bytes": 108681,
+              "width": 720,
+              "height": 720,
+              "frame": 72
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/hologram/h-banana/light/end.720.png",
+              "sha256": "770b4b6d5e985c6800e3260dac9c67aeb6d7c40aaeda65cbdecb9c45f1436734",
+              "bytes": 107048,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      }
+    ],
+    "transparentCovers": {
+      "realistic": {
+        "root": "media",
+        "path": "derivatives/realistic/h-banana/cover.transparent.1080.png",
+        "sha256": "3b582295df64831f012ba8123cb73f26c37fb13c848332283e1566f24ed33ff4",
+        "bytes": 159651,
+        "width": 1080,
+        "height": 1080,
+        "alpha": true
+      },
+      "tech-white": {
+        "root": "media",
+        "path": "derivatives/tech-white/h-banana/cover.transparent.1080.png",
+        "sha256": "9fc5db90e2d8db575a1a2aa9f96ead1d03c359b3859dbf6d346d0cf88540a05d",
+        "bytes": 225217,
+        "width": 1080,
+        "height": 1080,
+        "alpha": true
+      },
+      "neon-night": {
+        "root": "media",
+        "path": "derivatives/neon-night/h-banana/cover.transparent.1080.png",
+        "sha256": "f8fdc64a9b3add065782b5e158c7bdc89d30f7d318121df33eada9126d4241d6",
+        "bytes": 236026,
+        "width": 1080,
+        "height": 1080,
+        "alpha": true
+      },
+      "neon-night-b": {
+        "root": "media",
+        "path": "derivatives/neon-night-b/h-banana/cover.transparent.1080.png",
+        "sha256": "4a6753b2294daac8e461e1bfa642f9a05113065e77e5b3f7cd8c1de9a907d45a",
+        "bytes": 235479,
+        "width": 1080,
+        "height": 1080,
+        "alpha": true
+      },
+      "hologram": {
+        "root": "media",
+        "path": "derivatives/hologram/h-banana/cover.transparent.1080.png",
+        "sha256": "2a6e4574e0f90b836e9d0b06f7bf09c1c4743e43c01f2422b9748dcfb07296f6",
+        "bytes": 299689,
+        "width": 1080,
+        "height": 1080,
+        "alpha": true
+      }
+    },
+    "compositor": {
+      "root": "repo",
+      "path": "tools/action-library-v2/media.py",
+      "sha256": "17b92fc84cee47091e90cceae19fd1f4cf518f81db04767466d8745b784a76fb",
+      "bytes": 7731
+    },
+    "provenance": {
+      "framing": {
+        "root": "media",
+        "path": "manifests/framing/h-banana.json",
+        "sha256": "c595a04c045046c2fb32fcd759fc3d4382e6d1c5ef7d982222f61f5f5a6c9841",
+        "bytes": 293
+      }
+    },
+    "framingId": "fixed-square-c595a04c045046c2"
+  },
+  "voice": {
+    "actionId": "h-banana",
+    "manifest": {
+      "root": "repo",
+      "path": "catalog/voice-v2/batches/b001-manifest.json",
+      "sha256": "31d97faf1000eceafa65bf290e66a9265d82d86425ab8ce3ed4f67f03ee401c0",
+      "bytes": 270954
+    }
+  },
+  "validation": {
+    "modelVersion": "1.0.0-rc2",
+    "mirrorGenerated": false,
+    "review": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "evidence": []
+    },
+    "manifest": {
+      "root": "media",
+      "path": "manifests/h-banana.json",
+      "sha256": "d613304128b76a33a71023d8d891b21f06ffbf4ca9a332a994201bbcbf49785c",
+      "bytes": 27861
+    }
+  }
+}
+```

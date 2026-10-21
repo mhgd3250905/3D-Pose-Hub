@@ -1,0 +1,1461 @@
+# 徒手早安式 / Bodyweight Good Morning
+
+ID: `h-good-morning`. State: review. Release eligible: False.
+
+## Definition
+
+```json
+{
+  "idMappings": [],
+  "name": {
+    "zh": "徒手早安式",
+    "en": "Bodyweight Good Morning"
+  },
+  "purpose": {
+    "zh": "练大腿后侧和下背",
+    "en": "Practice a bodyweight hip hinge to train the hamstrings and trunk control."
+  },
+  "tags": {
+    "category": "strength",
+    "activeMuscles": [
+      "hamstrings",
+      "erectors"
+    ],
+    "synergistMuscles": [
+      "glute-max",
+      "abs"
+    ],
+    "equipment": [],
+    "position": "standing",
+    "scenes": [
+      "home",
+      "office"
+    ],
+    "difficulty": 1,
+    "trainingType": "strength"
+  },
+  "unilateral": false,
+  "startingSide": null,
+  "cues": [
+    {
+      "id": "cue1",
+      "text": {
+        "zh": "微屈膝，臀部向后推，背部保持稳定",
+        "en": "Soften your knees, push your hips back, and keep your back steady"
+      },
+      "primary": true
+    },
+    {
+      "id": "cue2",
+      "text": {
+        "zh": "双手交叉放在胸前，脚掌稳定承重",
+        "en": "Cross the hands over the chest and keep the feet planted."
+      },
+      "primary": false
+    },
+    {
+      "id": "cue3",
+      "text": {
+        "zh": "躯干随髋部折叠前倾，不把动作做成深蹲",
+        "en": "Let the torso hinge at the hips rather than turning the movement into a squat."
+      },
+      "primary": false
+    },
+    {
+      "id": "cue4",
+      "text": {
+        "zh": "到可控范围后，用臀腿平稳回到站立",
+        "en": "At a controllable range, use the hips and legs to return smoothly to standing."
+      },
+      "primary": false
+    }
+  ],
+  "commonErrors": [
+    {
+      "zh": "弯腰塌背代替髋部折叠",
+      "en": "Rounding or collapsing the back instead of hinging at the hips."
+    },
+    {
+      "zh": "锁死膝盖、突然下落或后仰顶起",
+      "en": "Locking the knees, dropping suddenly or leaning back to finish."
+    }
+  ],
+  "cautions": {
+    "items": [
+      {
+        "zh": "腰背：保持可控的躯干形态，不强行追求与地面平行。",
+        "en": "Lower back: keep the trunk controlled without forcing it parallel to the floor."
+      },
+      {
+        "zh": "大腿后侧与膝：膝盖微屈，后侧拉紧感不应变成疼痛。",
+        "en": "Hamstrings and knees: keep the knees soft and do not turn a hamstring stretch sensation into pain."
+      }
+    ],
+    "review": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "evidence": []
+    }
+  },
+  "contraindications": {
+    "items": [
+      {
+        "zh": "本动作引发疼痛时停止，不通过增加幅度或负重继续；先向医生或物理治疗师确认。",
+        "en": "Stop if this exercise causes pain; do not add range or load before seeking clinical advice."
+      },
+      {
+        "zh": "已有医嘱限制髋部折叠、躯干前倾或下肢负重时，先取得许可。",
+        "en": "Obtain clearance first if hip hinging, forward trunk bending or lower-limb loading has been restricted."
+      }
+    ],
+    "review": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "evidence": []
+    }
+  },
+  "alternatives": [
+    "h-db-rdl"
+  ],
+  "regressions": [],
+  "progressions": [
+    "h-db-rdl"
+  ],
+  "defaultDose": {
+    "mode": "reps",
+    "sets": 3,
+    "reps": 12,
+    "restSeconds": 30
+  },
+  "doseRange": {
+    "sets": [
+      1,
+      4
+    ],
+    "reps": [
+      6,
+      18
+    ],
+    "restSeconds": [
+      0,
+      60
+    ]
+  },
+  "rhythm": {
+    "kind": "rep_updown",
+    "leadSeconds": 0,
+    "source": "b001-source-timeline",
+    "phases": [
+      {
+        "id": "prepare",
+        "seconds": 0.3
+      },
+      {
+        "id": "hingeDown",
+        "seconds": 1.8
+      },
+      {
+        "id": "bottomPause",
+        "seconds": 0.4
+      },
+      {
+        "id": "standUp",
+        "seconds": 1.4
+      },
+      {
+        "id": "reset",
+        "seconds": 0.1
+      }
+    ]
+  },
+  "countingSemantics": "One hip hinge and return to standing counts as one rep; 8 seconds contains two reps.",
+  "apps": [
+    "smartfit"
+  ],
+  "editorialReview": {
+    "status": "pending",
+    "reviewer": null,
+    "reviewedAt": null,
+    "evidence": []
+  },
+  "editorialNotes": [
+    "源是双臂交叉胸前的髋铰链，保留原轨迹；不添加负重，也不把旧rhythm单相go4秒当作完整相位说明。",
+    "h-db-rdl源可验证相同髋铰链且增加哑铃，作为负重替代/进阶候选，需另审握持和个体负荷。独立短幅徒手降阶ID未有。",
+    "相位来自catalog/v2/batches/b001.json真实秒区间；剂量数字与范围保持旧catalog，rhythm不附旧reps来覆盖默认剂量。",
+    "双语注意、通用禁用筛查、协同肌群与关系均已有具体草稿，pending表示未审而非缺数据；协同包含姿势稳定或次要拉伸角色，不作为肌电激活或额外高亮处方。",
+    "关系目标为本仓库真实ID候选，但未必已有同模型可发布v2包；不得自动回退弃用模型素材。空关系数组的缺口见逐动作说明。",
+    "医学通用筛查与证据边界沿用catalog/v2/definition-evidence.md所列AAOS/NHS一手资料；不编造疾病特异绝对禁忌。所有编辑与医学审核保持pending。"
+  ]
+}
+```
+
+## Six-layer completeness
+
+### definition: incomplete
+
+- editorialReview: review has not passed
+- editorialReview: reviewer and reviewedAt required
+- editorialReview: review evidence required
+- cautions.review: review has not passed
+- cautions.review: reviewer and reviewedAt required
+- cautions.review: review evidence required
+- contraindications.review: review has not passed
+- contraindications.review: reviewer and reviewedAt required
+- contraindications.review: review evidence required
+
+### source: complete
+
+
+### masters: complete
+
+
+### derivatives: complete
+
+
+### voice: incomplete
+
+- voice content review and manual listening must pass
+
+### validation: incomplete
+
+- validation.review: review has not passed
+- validation.review: reviewer and reviewedAt required
+- validation.review: review evidence required
+
+## Source and production metadata
+
+```json
+{
+  "source": {
+    "model": {
+      "id": "training-human-v2plus",
+      "version": "1.0.0-rc2",
+      "manifest": {
+        "root": "repo",
+        "path": "drill-anim/models/training-human-v2plus.json",
+        "sha256": "ec2bc815ded157dbc7673e283ed9b6bb1baa710a39ce3a02f88453e8d7fb0a1d",
+        "bytes": 6494,
+        "normalization": "lf"
+      }
+    },
+    "spec": {
+      "root": "repo",
+      "path": "drill-anim/specs/h-good-morning-r2.js",
+      "sha256": "26cdd53e1f94e5215f226802abe7bbc8d5254bcc205172356deef87740230f0b",
+      "bytes": 480,
+      "normalization": "lf"
+    },
+    "dependencies": [
+      {
+        "root": "repo",
+        "path": "drill-anim/lib/home-anim.mjs",
+        "sha256": "1798c9e55c28b32391b7ef32aa358427b4743ee1959f86ec488a95fe88a05557",
+        "bytes": 3691,
+        "normalization": "lf"
+      },
+      {
+        "root": "repo",
+        "path": "drill-anim/lib/ss-geo.mjs",
+        "sha256": "45ca774079e3a85ecc4f924a3220d4baa721f0435e16f6e6e21ffa19e17e8603",
+        "bytes": 3700,
+        "normalization": "lf"
+      },
+      {
+        "root": "repo",
+        "path": "drill-anim/specs/h-good-morning.js",
+        "sha256": "0ad243f0cee339a6ca0fdd9a8fe9d8d36f869eb35e78641e43aa67c6cfbe16bf",
+        "bytes": 3395,
+        "normalization": "lf"
+      }
+    ],
+    "keyMoments": {
+      "start": 0,
+      "peak": 2.3,
+      "end": 8
+    },
+    "highlightMuscles": [
+      "hamstrings",
+      "erectors"
+    ],
+    "qa": {
+      "intersections": {
+        "status": "pass",
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-21T22:29:22.610332+08:00",
+        "evidence": [
+          {
+            "root": "media",
+            "path": "qa/reviews/h-good-morning-evidence.json",
+            "sha256": "19f8b7973e511fa83893f2cec31dc5a182f22ceb2d36c77ea46b5a18f001b9a5",
+            "bytes": 7919
+          }
+        ],
+        "framesReviewed": [
+          0,
+          30,
+          60,
+          69,
+          90,
+          120,
+          150,
+          180,
+          210,
+          239,
+          240
+        ]
+      },
+      "handsFeet": {
+        "status": "pass",
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-21T22:29:22.610332+08:00",
+        "evidence": [
+          {
+            "root": "media",
+            "path": "qa/reviews/h-good-morning-evidence.json",
+            "sha256": "19f8b7973e511fa83893f2cec31dc5a182f22ceb2d36c77ea46b5a18f001b9a5",
+            "bytes": 7919
+          }
+        ],
+        "framesReviewed": [
+          0,
+          30,
+          60,
+          69,
+          90,
+          120,
+          150,
+          180,
+          210,
+          239,
+          240
+        ]
+      },
+      "propFlicker": {
+        "status": "pass",
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-21T22:29:22.610332+08:00",
+        "evidence": [
+          {
+            "root": "media",
+            "path": "qa/reviews/h-good-morning-evidence.json",
+            "sha256": "19f8b7973e511fa83893f2cec31dc5a182f22ceb2d36c77ea46b5a18f001b9a5",
+            "bytes": 7919
+          }
+        ],
+        "framesReviewed": [
+          0,
+          30,
+          60,
+          69,
+          90,
+          120,
+          150,
+          180,
+          210,
+          239,
+          240
+        ]
+      },
+      "loopSeam": {
+        "status": "pass",
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-21T22:29:22.610332+08:00",
+        "evidence": [
+          {
+            "root": "media",
+            "path": "qa/reviews/h-good-morning-evidence.json",
+            "sha256": "19f8b7973e511fa83893f2cec31dc5a182f22ceb2d36c77ea46b5a18f001b9a5",
+            "bytes": 7919
+          }
+        ],
+        "framesReviewed": [
+          0,
+          30,
+          60,
+          69,
+          90,
+          120,
+          150,
+          180,
+          210,
+          239,
+          240
+        ]
+      }
+    }
+  },
+  "masters": {
+    "requiredSkins": [
+      "realistic",
+      "tech-white",
+      "neon-night",
+      "neon-night-b",
+      "hologram"
+    ],
+    "skins": {
+      "realistic": {
+        "geometrySha256": "aa0aa8dcfa8645375ac39890a58b8773e0e14ecc886fac6f2fda6e459d222152",
+        "occlusionSha256": "791eec6464b4a380385f0578163233dd8915be89106a016f382b12df5d061aeb",
+        "measurement": {
+          "root": "media",
+          "path": "masters/realistic/h-good-morning/layer-manifest.json",
+          "sha256": "17a122a96d5fd857b384838f5c8d4d17a51c63a4a0033898ebd76d0463123151",
+          "bytes": 12394
+        },
+        "bodyProps": {
+          "sequence": {
+            "root": "media",
+            "path": "masters/realistic/h-good-morning/body/index.json",
+            "sha256": "9b0b650999c2c7153c095b153a59333c1980a5e436f795a257fc4fa3656f7920",
+            "bytes": 54569
+          },
+          "width": 1080,
+          "height": 1080,
+          "durationSeconds": 8,
+          "frameCount": 240,
+          "fps": 30,
+          "alpha": true
+        },
+        "highlightMask": {
+          "sequence": {
+            "root": "media",
+            "path": "masters/realistic/h-good-morning/highlight/index.json",
+            "sha256": "0b61c788a4e20810775d1b525cc16ff57c44878901e9b628cb614f7aea7e2087",
+            "bytes": 55769
+          },
+          "width": 1080,
+          "height": 1080,
+          "durationSeconds": 8,
+          "frameCount": 240,
+          "fps": 30,
+          "alpha": true,
+          "grayscale": true,
+          "occlusionAware": true
+        },
+        "shadow": {
+          "sequence": {
+            "root": "media",
+            "path": "masters/realistic/h-good-morning/shadow/index.json",
+            "sha256": "ad3b4fb639e995c4225079f6327a8acf9eb22037862dd4509ca679a0dae70f6b",
+            "bytes": 55049
+          },
+          "width": 1080,
+          "height": 1080,
+          "durationSeconds": 8,
+          "frameCount": 240,
+          "fps": 30,
+          "alpha": true
+        }
+      },
+      "tech-white": {
+        "geometrySha256": "aa0aa8dcfa8645375ac39890a58b8773e0e14ecc886fac6f2fda6e459d222152",
+        "occlusionSha256": "791eec6464b4a380385f0578163233dd8915be89106a016f382b12df5d061aeb",
+        "measurement": {
+          "root": "media",
+          "path": "masters/tech-white/h-good-morning/layer-manifest.json",
+          "sha256": "27d96553229dce644e419a589d01bebc9262f0830edd96d824d95c43ab7d4bfe",
+          "bytes": 12647
+        },
+        "bodyProps": {
+          "sequence": {
+            "root": "media",
+            "path": "masters/tech-white/h-good-morning/body/index.json",
+            "sha256": "ade3f976fe96f9d7eb2fd8376854d68cf7972bf9c8266b780acd37447cf725fc",
+            "bytes": 54968
+          },
+          "width": 1080,
+          "height": 1080,
+          "durationSeconds": 8,
+          "frameCount": 240,
+          "fps": 30,
+          "alpha": true
+        },
+        "highlightMask": {
+          "sharedFrom": "realistic"
+        },
+        "shadow": {
+          "sharedFrom": "realistic"
+        }
+      },
+      "neon-night": {
+        "geometrySha256": "aa0aa8dcfa8645375ac39890a58b8773e0e14ecc886fac6f2fda6e459d222152",
+        "occlusionSha256": "791eec6464b4a380385f0578163233dd8915be89106a016f382b12df5d061aeb",
+        "measurement": {
+          "root": "media",
+          "path": "masters/neon-night/h-good-morning/layer-manifest.json",
+          "sha256": "f860f1b1c74c92169cf2bea49c6e254b2b98c9bcc105691e92c7fc8e0c7a7508",
+          "bytes": 12647
+        },
+        "bodyProps": {
+          "sequence": {
+            "root": "media",
+            "path": "masters/neon-night/h-good-morning/body/index.json",
+            "sha256": "6945eb301e3745998fb8e10a1f6457bc2923cc1ed1c36764a06fad32f59fe07e",
+            "bytes": 55049
+          },
+          "width": 1080,
+          "height": 1080,
+          "durationSeconds": 8,
+          "frameCount": 240,
+          "fps": 30,
+          "alpha": true
+        },
+        "highlightMask": {
+          "sharedFrom": "realistic"
+        },
+        "shadow": {
+          "sharedFrom": "realistic"
+        }
+      },
+      "neon-night-b": {
+        "geometrySha256": "aa0aa8dcfa8645375ac39890a58b8773e0e14ecc886fac6f2fda6e459d222152",
+        "occlusionSha256": "791eec6464b4a380385f0578163233dd8915be89106a016f382b12df5d061aeb",
+        "measurement": {
+          "root": "media",
+          "path": "masters/neon-night-b/h-good-morning/layer-manifest.json",
+          "sha256": "08cb14eb0675dbcfa3ad6b9cf76f028790bb735ae239b52be52ccca7afd834be",
+          "bytes": 12655
+        },
+        "bodyProps": {
+          "sequence": {
+            "root": "media",
+            "path": "masters/neon-night-b/h-good-morning/body/index.json",
+            "sha256": "8a4399dc5ad4ea10e157678d8b1134ad2633f02cff5b285c82460dabcd6fa2ea",
+            "bytes": 55529
+          },
+          "width": 1080,
+          "height": 1080,
+          "durationSeconds": 8,
+          "frameCount": 240,
+          "fps": 30,
+          "alpha": true
+        },
+        "highlightMask": {
+          "sharedFrom": "realistic"
+        },
+        "shadow": {
+          "sharedFrom": "realistic"
+        }
+      },
+      "hologram": {
+        "geometrySha256": "aa0aa8dcfa8645375ac39890a58b8773e0e14ecc886fac6f2fda6e459d222152",
+        "occlusionSha256": "791eec6464b4a380385f0578163233dd8915be89106a016f382b12df5d061aeb",
+        "measurement": {
+          "root": "media",
+          "path": "masters/hologram/h-good-morning/layer-manifest.json",
+          "sha256": "ef2646e9d560fc7a03a20782f697d90090b61fffb1dedfaa0c0c7168018d843b",
+          "bytes": 12639
+        },
+        "bodyProps": {
+          "sequence": {
+            "root": "media",
+            "path": "masters/hologram/h-good-morning/body/index.json",
+            "sha256": "5ca67877a88132fde68f27f60e33a4acefd46c003be7c655854b1040eb18a59d",
+            "bytes": 54569
+          },
+          "width": 1080,
+          "height": 1080,
+          "durationSeconds": 8,
+          "frameCount": 240,
+          "fps": 30,
+          "alpha": true
+        },
+        "highlightMask": {
+          "sharedFrom": "realistic"
+        },
+        "shadow": {
+          "sharedFrom": "realistic"
+        }
+      }
+    },
+    "loopReview": {
+      "status": "pass",
+      "reviewer": "Codex",
+      "reviewedAt": "2026-10-21T22:29:22.610332+08:00",
+      "evidence": [
+        {
+          "root": "media",
+          "path": "qa/reviews/h-good-morning-evidence.json",
+          "sha256": "19f8b7973e511fa83893f2cec31dc5a182f22ceb2d36c77ea46b5a18f001b9a5",
+          "bytes": 7919
+        }
+      ]
+    }
+  },
+  "derivatives": {
+    "method": "composite-from-masters",
+    "mirrored": false,
+    "variants": [
+      {
+        "skin": "realistic",
+        "theme": "dark",
+        "highlight": {
+          "enabled": true,
+          "color": "#f08a3c",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/realistic/h-good-morning/dark/loop.720.mp4",
+          "sha256": "f9f524ca930077fa37638aa155a40a6071ffd3a328052a5ce780e07934ea0b23",
+          "bytes": 438377,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/realistic/h-good-morning/dark/cover.720.jpg",
+          "sha256": "967c467a9c8cd0fbe848f23aa56919d0e1aea2c5d391b19a9725927009303fca",
+          "bytes": 24578,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/realistic/h-good-morning/dark/thumbnail.240.jpg",
+          "sha256": "5976413bb83bea0384b138381e3457b75404817994909986f321d5ce3793794c",
+          "bytes": 4803,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/realistic/h-good-morning/dark/start.720.png",
+              "sha256": "6e2b352bd8294c2b2da60b2f2db610980ce9029d78508587d23f558f9e69030c",
+              "bytes": 58814,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/realistic/h-good-morning/dark/peak.720.png",
+              "sha256": "7fa35e3ef5a782424119c2b8a2b9ab81225d6d5facd8bd32a0b4a884edaafba1",
+              "bytes": 56307,
+              "width": 720,
+              "height": 720,
+              "frame": 69
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/realistic/h-good-morning/dark/end.720.png",
+              "sha256": "cc74c7b52c1185651617f74916a3fe07d7c927f0c94facbda14d2fee49a69824",
+              "bytes": 58759,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "realistic",
+        "theme": "light",
+        "highlight": {
+          "enabled": true,
+          "color": "#f08a3c",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/realistic/h-good-morning/light/loop.720.mp4",
+          "sha256": "a35496d14449fa289fff6e4a7c5fabbfb2da0a4232fadf5ba826090a98697aec",
+          "bytes": 406891,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/realistic/h-good-morning/light/cover.720.jpg",
+          "sha256": "5330431457cfc1a8c889c6c0a77e2690cf459e03ff4b0e630023cde8dd82b459",
+          "bytes": 29064,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/realistic/h-good-morning/light/thumbnail.240.jpg",
+          "sha256": "23f182df6a6fe2d3ca5a59bb17a9a3173d8a0f08aa47aafba0defc3359942ebb",
+          "bytes": 6344,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/realistic/h-good-morning/light/start.720.png",
+              "sha256": "34c529c13b32387d4287975568dcddfaedc45206fcf089cc1156e8b5798dfc07",
+              "bytes": 65692,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/realistic/h-good-morning/light/peak.720.png",
+              "sha256": "cc8c8a8e60758ac48135f01eb75a3d4ffe539cabd63a8863ab967a1b8a5454e3",
+              "bytes": 63844,
+              "width": 720,
+              "height": 720,
+              "frame": 69
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/realistic/h-good-morning/light/end.720.png",
+              "sha256": "0e1ca78fee470c27aaf0353c4ff5cb8ad2a0a15deaac68bcfd13131c92bc615e",
+              "bytes": 65776,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "tech-white",
+        "theme": "dark",
+        "highlight": {
+          "enabled": true,
+          "color": "#f08a3c",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/tech-white/h-good-morning/dark/loop.720.mp4",
+          "sha256": "37d543d1b909698f1c1e1919d1d8d450731a1b131de75e4fa5d0d238357cc943",
+          "bytes": 573092,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/tech-white/h-good-morning/dark/cover.720.jpg",
+          "sha256": "f8b3cb6c94cc3f4ab8bb20cbf532e58d3514e30f387d82cdbdf93a888a9d02d2",
+          "bytes": 31074,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/tech-white/h-good-morning/dark/thumbnail.240.jpg",
+          "sha256": "9960e5deb16f188592ff16a65a18c5f4a14d0461e25bf891797e600bfa9cbcd6",
+          "bytes": 6053,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/tech-white/h-good-morning/dark/start.720.png",
+              "sha256": "f643cea58111c1988bc0b278747228675087fb318c29d37905a56d50c1937ea0",
+              "bytes": 79709,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/tech-white/h-good-morning/dark/peak.720.png",
+              "sha256": "74ab1f470e86aa8647c1a09e7b15c1413835eacb9c27e91a73a0574e17901dc2",
+              "bytes": 76539,
+              "width": 720,
+              "height": 720,
+              "frame": 69
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/tech-white/h-good-morning/dark/end.720.png",
+              "sha256": "9de19b18a2dbd7973b242181d4ad285fb294102885b5c5faf4ae67f316fe20b4",
+              "bytes": 79671,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "tech-white",
+        "theme": "light",
+        "highlight": {
+          "enabled": true,
+          "color": "#f08a3c",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/tech-white/h-good-morning/light/loop.720.mp4",
+          "sha256": "4ca9b9b2f69c8a2d4951ad1dfc27ef194cdc265d3b755c4dc18f08291c12c156",
+          "bytes": 503623,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/tech-white/h-good-morning/light/cover.720.jpg",
+          "sha256": "d0b4a64724f37c9696c86d729a7efd4708fa3fda224edebe732dd940d03ce543",
+          "bytes": 29884,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/tech-white/h-good-morning/light/thumbnail.240.jpg",
+          "sha256": "df7018f93083fe5c1ea82d40ae8cd96b192139e1c415c432711091708fc45c3f",
+          "bytes": 5460,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/tech-white/h-good-morning/light/start.720.png",
+              "sha256": "5f54034e65e551203e768f0fcc67d87f3e5a18e5ada599d24e38a743e15f5714",
+              "bytes": 79262,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/tech-white/h-good-morning/light/peak.720.png",
+              "sha256": "41196669b28302542f11736d5e6a07c8a29cd061f2322103952fd9f544125ea5",
+              "bytes": 76374,
+              "width": 720,
+              "height": 720,
+              "frame": 69
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/tech-white/h-good-morning/light/end.720.png",
+              "sha256": "3b9e4efef6bc23a7286d12d5320768835d89d4fe3989ddeedd615b59585b68c9",
+              "bytes": 79351,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "neon-night",
+        "theme": "dark",
+        "highlight": {
+          "enabled": true,
+          "color": "#9fdcff",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/neon-night/h-good-morning/dark/loop.720.mp4",
+          "sha256": "403526403ada2fd12306e7867f4f4d3e659a5b82f5bd9cd58c98c153219b819f",
+          "bytes": 601222,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/neon-night/h-good-morning/dark/cover.720.jpg",
+          "sha256": "e18c41549f5a167a9c17cfc328b5d2242add58820eb920dcaf2f38234ae8efa9",
+          "bytes": 31640,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/neon-night/h-good-morning/dark/thumbnail.240.jpg",
+          "sha256": "61863ed4af73cb03c4791154fdb529ee2cb169189dc8a04382d2a33def0b7825",
+          "bytes": 5572,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night/h-good-morning/dark/start.720.png",
+              "sha256": "a5b90b6eee5f1be98b0841bb2a64e3b79e7d555e803bb30923dc54d68160e9bf",
+              "bytes": 80236,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night/h-good-morning/dark/peak.720.png",
+              "sha256": "8e9ab774da1687f6c336c679bf20ca9c461317b874ce9a81a38b9be245f9a744",
+              "bytes": 76730,
+              "width": 720,
+              "height": 720,
+              "frame": 69
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night/h-good-morning/dark/end.720.png",
+              "sha256": "ce12b083a0960c25dfcec71562129ddc0578a7f4591830af4bfebb98a652cc33",
+              "bytes": 80320,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "neon-night",
+        "theme": "light",
+        "highlight": {
+          "enabled": true,
+          "color": "#9fdcff",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/neon-night/h-good-morning/light/loop.720.mp4",
+          "sha256": "c18e859ef6f320fd88b07f466e917ed0afd3236731e32c548112fcd5e56d36e8",
+          "bytes": 610543,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/neon-night/h-good-morning/light/cover.720.jpg",
+          "sha256": "3c455a23a3f4d3d31cee5b1612f9a513e5ae65f742f0804d17b99f30c88eda49",
+          "bytes": 37555,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/neon-night/h-good-morning/light/thumbnail.240.jpg",
+          "sha256": "e14df0a955b11ec0e0e6f768a60a94e18a40436b82cd228ad65e542609ca9028",
+          "bytes": 7351,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night/h-good-morning/light/start.720.png",
+              "sha256": "d49e3bb48e95e6914eebcd28d01f3e1eb04491fbf3fa1c23fcf9e7a03e73a507",
+              "bytes": 89366,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night/h-good-morning/light/peak.720.png",
+              "sha256": "b51973cdf05b505d0e3c5a603b2cc370a68877f59f6e7b7f5568df36e467e972",
+              "bytes": 86338,
+              "width": 720,
+              "height": 720,
+              "frame": 69
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night/h-good-morning/light/end.720.png",
+              "sha256": "fc91113d0d603bc3acc503f4dd896276e7a1fa3639ea3c1706127fd5893fc52a",
+              "bytes": 89629,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "neon-night-b",
+        "theme": "dark",
+        "highlight": {
+          "enabled": true,
+          "color": "#b6ffd0",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/neon-night-b/h-good-morning/dark/loop.720.mp4",
+          "sha256": "7e3b2e4a766ed7491af5f9143fd94b021665c4b240c20ee4ca4f9ac02ea48298",
+          "bytes": 617861,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/neon-night-b/h-good-morning/dark/cover.720.jpg",
+          "sha256": "461b15ae5b657a819356a386a752ae517908e4a2bb3d96d066656c1e9554318d",
+          "bytes": 31629,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/neon-night-b/h-good-morning/dark/thumbnail.240.jpg",
+          "sha256": "704bd7b302ee165a80dd4aea51b0147d6487768dae766c72cbc5b8249ed32d19",
+          "bytes": 5597,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night-b/h-good-morning/dark/start.720.png",
+              "sha256": "31f53c518a7dd9859565439072cffa0a1565f69e1a550b8037d2a70092682348",
+              "bytes": 79933,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night-b/h-good-morning/dark/peak.720.png",
+              "sha256": "15aaf03a7e623ad17e8cbbcb9af996a610a580df04824e038ae0149eb4629b3a",
+              "bytes": 76426,
+              "width": 720,
+              "height": 720,
+              "frame": 69
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night-b/h-good-morning/dark/end.720.png",
+              "sha256": "bb7db427bc979a99c6e1810da1b8b4dda8bf909afe9043eadb6d07764e7fbacc",
+              "bytes": 79747,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "neon-night-b",
+        "theme": "light",
+        "highlight": {
+          "enabled": true,
+          "color": "#b6ffd0",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/neon-night-b/h-good-morning/light/loop.720.mp4",
+          "sha256": "9b007bf59bf3053bcd883fef7a0aa21aa690a44955524ed8994ef9f7e97bd5a6",
+          "bytes": 625572,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/neon-night-b/h-good-morning/light/cover.720.jpg",
+          "sha256": "fa85ef27b4bdbc23b5117983f635a3df11b2f7f03080962d1eb73d9d8c202597",
+          "bytes": 37229,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/neon-night-b/h-good-morning/light/thumbnail.240.jpg",
+          "sha256": "ffc03133c439e20414e31f6beb4bc53d7c059315057332bc546eb77c87337426",
+          "bytes": 7244,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night-b/h-good-morning/light/start.720.png",
+              "sha256": "69e2803c3536e8e1f144093f1b23113c78b82a91f5438a10e11b71b0c0eddb74",
+              "bytes": 89191,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night-b/h-good-morning/light/peak.720.png",
+              "sha256": "7bca3483490b7b1bebca17a597e14b7ef4d0ec5cf76ef8f0f120cb1086d0ef19",
+              "bytes": 86102,
+              "width": 720,
+              "height": 720,
+              "frame": 69
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night-b/h-good-morning/light/end.720.png",
+              "sha256": "85e93dd07924e6ceec49222a51ea26f0ebba2a18a9633642b3bda35069c36205",
+              "bytes": 89157,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "hologram",
+        "theme": "dark",
+        "highlight": {
+          "enabled": true,
+          "color": "#e9d49c",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/hologram/h-good-morning/dark/loop.720.mp4",
+          "sha256": "f32e90f581330e649f653e491cb2010952c8e8a592c43f98d8cbbfb611acac3c",
+          "bytes": 702691,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/hologram/h-good-morning/dark/cover.720.jpg",
+          "sha256": "f34b9cad75d2bf7f557b068a10c5cbc75ccfad453baeb76018863c2f87cd067a",
+          "bytes": 30589,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/hologram/h-good-morning/dark/thumbnail.240.jpg",
+          "sha256": "f4d0447c115c182af4fad4e9e6f1d681db7fb12a3b0c6cc0c7ed618f3a2ab801",
+          "bytes": 5370,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/hologram/h-good-morning/dark/start.720.png",
+              "sha256": "40e7d066b750e5b068da4de9a3266b7ebdee3107721b24b64ab48574d03f6f1b",
+              "bytes": 93258,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/hologram/h-good-morning/dark/peak.720.png",
+              "sha256": "0d61a2a7c0309c1b6af4372c7d4d913f7cec4a90b4d5cbf8b734d5c08f18c538",
+              "bytes": 88801,
+              "width": 720,
+              "height": 720,
+              "frame": 69
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/hologram/h-good-morning/dark/end.720.png",
+              "sha256": "4d1d9e42cc4d0eff3a52efedacddb0db0982387fc4cab4c8e1abb57847460081",
+              "bytes": 93126,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "hologram",
+        "theme": "light",
+        "highlight": {
+          "enabled": true,
+          "color": "#e9d49c",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/hologram/h-good-morning/light/loop.720.mp4",
+          "sha256": "ea1dae78c61e9aa6c5dcde6d692341652fe26535746525ef40bdc3d91ba41e5e",
+          "bytes": 338571,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/hologram/h-good-morning/light/cover.720.jpg",
+          "sha256": "273927e38a59bc29f3d5a94b1cc74510d0d617dbfae8dfb4654a4b3538b8acf8",
+          "bytes": 26018,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/hologram/h-good-morning/light/thumbnail.240.jpg",
+          "sha256": "f7cb054915edc72670150ae38dafad6a4c2541b31cf1f24170ab5761c702f816",
+          "bytes": 5157,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/hologram/h-good-morning/light/start.720.png",
+              "sha256": "72e79eae39d76db76526c24fcacc60acffd785697fc3802e05aeed97ab184be0",
+              "bytes": 86443,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/hologram/h-good-morning/light/peak.720.png",
+              "sha256": "24ae4067a907ab4d3a9c99b490f0ffdb348cb3f47b7f8f99750b7d8116779837",
+              "bytes": 82600,
+              "width": 720,
+              "height": 720,
+              "frame": 69
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/hologram/h-good-morning/light/end.720.png",
+              "sha256": "b1c7c9d64c674717eec7bd3b0824d639863532317eb679b090e600fb27cdb99c",
+              "bytes": 86662,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      }
+    ],
+    "transparentCovers": {
+      "realistic": {
+        "root": "media",
+        "path": "derivatives/realistic/h-good-morning/cover.transparent.1080.png",
+        "sha256": "c0f386cba97af423da92a83a0f7ec69b752db9a4ce6fde625a76c13281c17b4e",
+        "bytes": 117340,
+        "width": 1080,
+        "height": 1080,
+        "alpha": true
+      },
+      "tech-white": {
+        "root": "media",
+        "path": "derivatives/tech-white/h-good-morning/cover.transparent.1080.png",
+        "sha256": "a5932bf812c3c22686ea6963ab0163e97cb2ac5b530fd822ac627cb2b7314bfe",
+        "bytes": 149673,
+        "width": 1080,
+        "height": 1080,
+        "alpha": true
+      },
+      "neon-night": {
+        "root": "media",
+        "path": "derivatives/neon-night/h-good-morning/cover.transparent.1080.png",
+        "sha256": "ec24f55cebea9b95c120d68d4b4a4debe889cb98b5efc92b21a3aee5b408e531",
+        "bytes": 169238,
+        "width": 1080,
+        "height": 1080,
+        "alpha": true
+      },
+      "neon-night-b": {
+        "root": "media",
+        "path": "derivatives/neon-night-b/h-good-morning/cover.transparent.1080.png",
+        "sha256": "7b85db4fd36934208159a75841bccdfa69b160a6139212682d170772b5a726c0",
+        "bytes": 168970,
+        "width": 1080,
+        "height": 1080,
+        "alpha": true
+      },
+      "hologram": {
+        "root": "media",
+        "path": "derivatives/hologram/h-good-morning/cover.transparent.1080.png",
+        "sha256": "2602cb3e1d97ef6baf1a37d4f79585b8246b129b5faf8c7c44c29e0d0575a1b1",
+        "bytes": 238163,
+        "width": 1080,
+        "height": 1080,
+        "alpha": true
+      }
+    },
+    "compositor": {
+      "root": "repo",
+      "path": "tools/action-library-v2/media.py",
+      "sha256": "17b92fc84cee47091e90cceae19fd1f4cf518f81db04767466d8745b784a76fb",
+      "bytes": 7731
+    },
+    "provenance": {
+      "framing": {
+        "root": "media",
+        "path": "manifests/framing/h-good-morning.json",
+        "sha256": "b047dff96441ff6bcebfc52f7ab3dbd351ff737727ac29d11f4f2387f04b2027",
+        "bytes": 291
+      }
+    },
+    "framingId": "fixed-square-b047dff96441ff6b"
+  },
+  "voice": {
+    "actionId": "h-good-morning",
+    "manifest": {
+      "root": "repo",
+      "path": "catalog/voice-v2/batches/b001-manifest.json",
+      "sha256": "31d97faf1000eceafa65bf290e66a9265d82d86425ab8ce3ed4f67f03ee401c0",
+      "bytes": 270954
+    }
+  },
+  "validation": {
+    "modelVersion": "1.0.0-rc2",
+    "mirrorGenerated": false,
+    "review": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "evidence": []
+    },
+    "manifest": {
+      "root": "media",
+      "path": "manifests/h-good-morning.json",
+      "sha256": "831178909873d5ba27b0a1df05352237ec2466394790e857f62b57408f880532",
+      "bytes": 28275
+    }
+  }
+}
+```

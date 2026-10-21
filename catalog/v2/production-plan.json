@@ -82,7 +82,7 @@
         "o-stand-sidebend"
       ],
       "manifest": "catalog/v2/batches/b001-gpu4080-r2.json",
-      "state": "full-masters-running",
+      "state": "technical-media-complete-editorial-listening-user-review-pending",
       "root": {
         "alias": "production",
         "relativePath": "batches/b001-gpu4080-r2"
@@ -95,7 +95,30 @@
           "notes": "Preserved first 40 previews and actual review observations; 2.02mm shoe penetration requires independent r3."
         }
       ],
-      "actualPreviewReview": "F:/PoseHub-v2-production/reviews/b001-gpu4080-r2-actual-review.json"
+      "actualPreviewReview": "F:/PoseHub-v2-production/reviews/b001-gpu4080-r2-actual-review.json",
+      "technicalCounts": {
+        "actions": 8,
+        "skins": 5,
+        "masterProductionPng": 13440,
+        "independentEndpointPng": 56,
+        "videos": 80,
+        "derivedFiles": 600,
+        "mosaicCells": 160,
+        "temporalSheets": 8,
+        "batchVoiceTechnicalPassed": 132,
+        "releaseEligible": 0
+      },
+      "actualFullReview": "F:/PoseHub-v2-production/reviews/b001-full-actual-review.json",
+      "technicalVerification": [
+        "qa/full-integrity-qa.json",
+        "qa/masters-layer-pixels.json",
+        "qa/full-sequences.json",
+        "qa/measured-production.json",
+        "qa/stepjack-full-contact-audit.json",
+        "qa/cpu-production-summary-r1.json",
+        "qa/gallery-browser-review.json",
+        "manifests/import-summary.json"
+      ]
     },
     {
       "id": "b002",
@@ -108,12 +131,42 @@
         "hamstrings-A",
         "h-side-leg-raise"
       ],
-      "manifest": "catalog/v2/batches/b002.json",
-      "state": "source-authored-preview-pending",
+      "manifest": "catalog/v2/batches/b002-gpu4080-r1.json",
+      "state": "preview-complete-source-fixes-required",
       "root": {
         "alias": "production",
-        "relativePath": "batches/b002"
-      }
+        "relativePath": "batches/b002-gpu4080-r1"
+      },
+      "priorAttempts": [
+        {
+          "root": "batches/b002",
+          "manifest": "catalog/v2/batches/b002.json",
+          "manifestSha256": "4bd43de7eef68da7141c283aa98718f791a8518af2f92fa71d57f52c98f969c0",
+          "state": "pre-render-source-hash-rejected",
+          "notes": "Original metadata and voice assets retained; source.sha256 was LF-normalized while frozen renderer requires raw bytes. No historical source file was changed."
+        }
+      ],
+      "manifestSha256": "b3794237059515a6ef6c9cf9af5e6590c81f32ef95b8f589af96303966472d17",
+      "sourceReferenceState": "raw-sha-verified-preview-complete",
+      "sourceRevisionAudit": {
+        "root": "repo",
+        "path": "catalog/v2/batches/b002-gpu4080-r1-source-audit.json",
+        "sha256": "8c2e7371f9d4ead3e25efa98c2c54a6ea62b3b266e0bbb206c905534c2c43bb2",
+        "bytes": 5400
+      },
+      "productionIssues": [
+        {
+          "actionId": "hamstrings-A",
+          "status": "requires-source-revision",
+          "issue": "All preview times report wrist reach limits and right-ankle leg-length limits; retain warning and correct source before full production."
+        },
+        {
+          "actionId": "h-side-leg-raise",
+          "status": "requires-source-revision",
+          "issue": "Visible sole -1.60049mm at rest and 0-to-240 maximum joint drift 6.70018mm; correct source contact and periodic solver initialization before full production."
+        }
+      ],
+      "previewQa": "qa/preview-pose-source-audit.json"
     },
     {
       "id": "b003",
@@ -128,11 +181,28 @@
         "n-seated-ir-drop",
         "n-thomas-test"
       ],
-      "manifest": "catalog/v2/batches/b003.json",
+      "manifest": "catalog/v2/batches/b003-gpu4080-r1.json",
       "state": "source-authored-preview-pending",
       "root": {
         "alias": "production",
-        "relativePath": "batches/b003"
+        "relativePath": "batches/b003-gpu4080-r1"
+      },
+      "priorAttempts": [
+        {
+          "root": "batches/b003",
+          "manifest": "catalog/v2/batches/b003.json",
+          "manifestSha256": "b2feb4ad3c9dfcea417d04d743903a4f98eb6f8396621f0fcd9b64b936000635",
+          "state": "superseded-before-preview-raw-source-hash-contract",
+          "notes": "Original metadata and voice assets retained; source.sha256 was LF-normalized while frozen renderer requires raw bytes. No historical source file was changed."
+        }
+      ],
+      "manifestSha256": "993f1ebea14fb576f792433a2c57503a2f9964448999aabc42fa36e21d06b7ed",
+      "sourceReferenceState": "raw-sha-corrected-dry-run-pending",
+      "sourceRevisionAudit": {
+        "root": "repo",
+        "path": "catalog/v2/batches/b003-gpu4080-r1-source-audit.json",
+        "sha256": "31d133adc982987d191b294c40f2e9a7e2d496f8c8faeec15f84b8b997bf5d50",
+        "bytes": 6479
       }
     },
     {

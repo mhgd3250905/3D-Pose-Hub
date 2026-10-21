@@ -1,0 +1,1463 @@
+# 俯卧超人式 / Prone Superman
+
+ID: `h-superman`. State: review. Release eligible: False.
+
+## Definition
+
+```json
+{
+  "idMappings": [],
+  "name": {
+    "zh": "俯卧超人式",
+    "en": "Prone Superman"
+  },
+  "purpose": {
+    "zh": "练下背和臀部",
+    "en": "Practice a gentle simultaneous lift of the arms, chest and legs to train the back and hips."
+  },
+  "tags": {
+    "category": "strength",
+    "activeMuscles": [
+      "erectors",
+      "glute-max"
+    ],
+    "synergistMuscles": [
+      "hamstrings",
+      "deltoids",
+      "scapular"
+    ],
+    "equipment": [
+      "mat"
+    ],
+    "position": "prone",
+    "scenes": [
+      "home"
+    ],
+    "difficulty": 1,
+    "trainingType": "strength"
+  },
+  "unilateral": false,
+  "startingSide": null,
+  "cues": [
+    {
+      "id": "cue1",
+      "text": {
+        "zh": "手脚轻轻抬起，颈部自然延长，不追求高度",
+        "en": "Lift your arms and legs gently, keep your neck long, and avoid forcing height"
+      },
+      "primary": true
+    },
+    {
+      "id": "cue2",
+      "text": {
+        "zh": "俯卧，手臂向前伸，骨盆和腹部保持承托",
+        "en": "Lie prone with the arms reaching forwards and the pelvis and abdomen supported."
+      },
+      "primary": false
+    },
+    {
+      "id": "cue3",
+      "text": {
+        "zh": "抬起时继续呼吸，保持小幅可控",
+        "en": "Keep breathing as you lift through a small controlled range."
+      },
+      "primary": false
+    },
+    {
+      "id": "cue4",
+      "text": {
+        "zh": "停留后缓慢放回，不甩动手脚",
+        "en": "Pause and lower slowly without swinging the arms or legs."
+      },
+      "primary": false
+    }
+  ],
+  "commonErrors": [
+    {
+      "zh": "猛抬下巴或通过过度拱腰追求高度",
+      "en": "Throwing the chin up or overextending the lower back to gain height."
+    },
+    {
+      "zh": "手脚甩动、憋气，下降失控",
+      "en": "Swinging the limbs, holding the breath or dropping without control."
+    }
+  ],
+  "cautions": {
+    "items": [
+      {
+        "zh": "腰背与颈：只做舒适的小幅抬起，视线保持朝向垫面。",
+        "en": "Lower back and neck: lift through a comfortable small range while looking towards the mat."
+      },
+      {
+        "zh": "肩与髋：手脚同步缓慢移动，不用扯拉或弹振增加幅度。",
+        "en": "Shoulders and hips: move the limbs slowly without pulling or bouncing into extra range."
+      }
+    ],
+    "review": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "evidence": []
+    }
+  },
+  "contraindications": {
+    "items": [
+      {
+        "zh": "本动作引发疼痛时停止，不通过增加幅度或负重继续；先向医生或物理治疗师确认。",
+        "en": "Stop if this exercise causes pain; do not add range or load before seeking clinical advice."
+      },
+      {
+        "zh": "已有医嘱限制俯卧、脊柱伸展或肩髋活动时，先取得许可。",
+        "en": "Obtain clearance first if prone exercise, spinal extension or shoulder or hip movement has been restricted."
+      }
+    ],
+    "review": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "evidence": []
+    }
+  },
+  "alternatives": [
+    "w-prone-swimmer"
+  ],
+  "regressions": [
+    "n-prone-hip-ext"
+  ],
+  "progressions": [],
+  "defaultDose": {
+    "mode": "reps",
+    "sets": 2,
+    "reps": 10,
+    "restSeconds": 30
+  },
+  "doseRange": {
+    "sets": [
+      1,
+      3
+    ],
+    "reps": [
+      5,
+      15
+    ],
+    "restSeconds": [
+      0,
+      60
+    ]
+  },
+  "rhythm": {
+    "kind": "rep_updown",
+    "leadSeconds": 0,
+    "source": "b001-source-timeline",
+    "phases": [
+      {
+        "id": "prepare",
+        "seconds": 0.2
+      },
+      {
+        "id": "lift",
+        "seconds": 1.2
+      },
+      {
+        "id": "hold",
+        "seconds": 1.5
+      },
+      {
+        "id": "lower",
+        "seconds": 1.0
+      },
+      {
+        "id": "reset",
+        "seconds": 0.1
+      }
+    ]
+  },
+  "countingSemantics": "One simultaneous arm/chest/leg lift and lowering counts as one rep; 8 seconds contains two reps.",
+  "apps": [
+    "smartfit"
+  ],
+  "editorialReview": {
+    "status": "pending",
+    "reviewer": null,
+    "reviewedAt": null,
+    "evidence": []
+  },
+  "editorialNotes": [
+    "旧catalog明确替代w-prone-swimmer；它是不同的俯卧后链动作，须使用各自剂量。",
+    "n-prone-hip-ext减少同时抬胸/双臂要求，只能作臀部伸髋目标的降阶候选，不是超人式完整等价替换。独立同模式进阶ID未有。",
+    "相位来自catalog/v2/batches/b001.json真实秒区间；剂量数字与范围保持旧catalog，rhythm不附旧reps来覆盖默认剂量。",
+    "双语注意、通用禁用筛查、协同肌群与关系均已有具体草稿，pending表示未审而非缺数据；协同包含姿势稳定或次要拉伸角色，不作为肌电激活或额外高亮处方。",
+    "关系目标为本仓库真实ID候选，但未必已有同模型可发布v2包；不得自动回退弃用模型素材。空关系数组的缺口见逐动作说明。",
+    "医学通用筛查与证据边界沿用catalog/v2/definition-evidence.md所列AAOS/NHS一手资料；不编造疾病特异绝对禁忌。所有编辑与医学审核保持pending。"
+  ]
+}
+```
+
+## Six-layer completeness
+
+### definition: incomplete
+
+- editorialReview: review has not passed
+- editorialReview: reviewer and reviewedAt required
+- editorialReview: review evidence required
+- cautions.review: review has not passed
+- cautions.review: reviewer and reviewedAt required
+- cautions.review: review evidence required
+- contraindications.review: review has not passed
+- contraindications.review: reviewer and reviewedAt required
+- contraindications.review: review evidence required
+
+### source: complete
+
+
+### masters: complete
+
+
+### derivatives: complete
+
+
+### voice: incomplete
+
+- voice content review and manual listening must pass
+
+### validation: incomplete
+
+- validation.review: review has not passed
+- validation.review: reviewer and reviewedAt required
+- validation.review: review evidence required
+
+## Source and production metadata
+
+```json
+{
+  "source": {
+    "model": {
+      "id": "training-human-v2plus",
+      "version": "1.0.0-rc2",
+      "manifest": {
+        "root": "repo",
+        "path": "drill-anim/models/training-human-v2plus.json",
+        "sha256": "ec2bc815ded157dbc7673e283ed9b6bb1baa710a39ce3a02f88453e8d7fb0a1d",
+        "bytes": 6494,
+        "normalization": "lf"
+      }
+    },
+    "spec": {
+      "root": "repo",
+      "path": "drill-anim/specs/h-superman-r2.js",
+      "sha256": "bb60b133cfad91c37ae749bfb4feea371350432d70b0550ec46ac4e13f76d8ad",
+      "bytes": 472,
+      "normalization": "lf"
+    },
+    "dependencies": [
+      {
+        "root": "repo",
+        "path": "drill-anim/lib/home-anim.mjs",
+        "sha256": "1798c9e55c28b32391b7ef32aa358427b4743ee1959f86ec488a95fe88a05557",
+        "bytes": 3691,
+        "normalization": "lf"
+      },
+      {
+        "root": "repo",
+        "path": "drill-anim/lib/ss-geo.mjs",
+        "sha256": "45ca774079e3a85ecc4f924a3220d4baa721f0435e16f6e6e21ffa19e17e8603",
+        "bytes": 3700,
+        "normalization": "lf"
+      },
+      {
+        "root": "repo",
+        "path": "drill-anim/specs/h-superman.js",
+        "sha256": "ec3175cd21d081d368a884350d1ca3837c43cba6d1714f449efa697219e03bfc",
+        "bytes": 4638,
+        "normalization": "lf"
+      }
+    ],
+    "keyMoments": {
+      "start": 0,
+      "peak": 2.2,
+      "end": 8
+    },
+    "highlightMuscles": [
+      "erectors",
+      "glute-max"
+    ],
+    "qa": {
+      "intersections": {
+        "status": "pass",
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-21T22:29:22.610332+08:00",
+        "evidence": [
+          {
+            "root": "media",
+            "path": "qa/reviews/h-superman-evidence.json",
+            "sha256": "6a63becb6418217522ef8cbbe6c0898be22a8b804250b4a84adde86e1dc3fdfc",
+            "bytes": 7879
+          }
+        ],
+        "framesReviewed": [
+          0,
+          30,
+          60,
+          66,
+          90,
+          120,
+          150,
+          180,
+          210,
+          239,
+          240
+        ]
+      },
+      "handsFeet": {
+        "status": "pass",
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-21T22:29:22.610332+08:00",
+        "evidence": [
+          {
+            "root": "media",
+            "path": "qa/reviews/h-superman-evidence.json",
+            "sha256": "6a63becb6418217522ef8cbbe6c0898be22a8b804250b4a84adde86e1dc3fdfc",
+            "bytes": 7879
+          }
+        ],
+        "framesReviewed": [
+          0,
+          30,
+          60,
+          66,
+          90,
+          120,
+          150,
+          180,
+          210,
+          239,
+          240
+        ]
+      },
+      "propFlicker": {
+        "status": "pass",
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-21T22:29:22.610332+08:00",
+        "evidence": [
+          {
+            "root": "media",
+            "path": "qa/reviews/h-superman-evidence.json",
+            "sha256": "6a63becb6418217522ef8cbbe6c0898be22a8b804250b4a84adde86e1dc3fdfc",
+            "bytes": 7879
+          }
+        ],
+        "framesReviewed": [
+          0,
+          30,
+          60,
+          66,
+          90,
+          120,
+          150,
+          180,
+          210,
+          239,
+          240
+        ]
+      },
+      "loopSeam": {
+        "status": "pass",
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-21T22:29:22.610332+08:00",
+        "evidence": [
+          {
+            "root": "media",
+            "path": "qa/reviews/h-superman-evidence.json",
+            "sha256": "6a63becb6418217522ef8cbbe6c0898be22a8b804250b4a84adde86e1dc3fdfc",
+            "bytes": 7879
+          }
+        ],
+        "framesReviewed": [
+          0,
+          30,
+          60,
+          66,
+          90,
+          120,
+          150,
+          180,
+          210,
+          239,
+          240
+        ]
+      }
+    }
+  },
+  "masters": {
+    "requiredSkins": [
+      "realistic",
+      "tech-white",
+      "neon-night",
+      "neon-night-b",
+      "hologram"
+    ],
+    "skins": {
+      "realistic": {
+        "geometrySha256": "aa0aa8dcfa8645375ac39890a58b8773e0e14ecc886fac6f2fda6e459d222152",
+        "occlusionSha256": "31c39f5ee11c44669b0c8b0a42c27c17bdffce56c125089d571026de20fc3322",
+        "measurement": {
+          "root": "media",
+          "path": "masters/realistic/h-superman/layer-manifest.json",
+          "sha256": "8e2b5509fd9caa93b49cf7d592352a7beab80b969e3552f7f8058da8b99a69d4",
+          "bytes": 13358
+        },
+        "bodyProps": {
+          "sequence": {
+            "root": "media",
+            "path": "masters/realistic/h-superman/body/index.json",
+            "sha256": "c4cede7e64b9bbc8c1dc133f4fcec3bc8c2e84ecc9d358ee4595476c529e2468",
+            "bytes": 53609
+          },
+          "width": 1080,
+          "height": 1080,
+          "durationSeconds": 8,
+          "frameCount": 240,
+          "fps": 30,
+          "alpha": true
+        },
+        "highlightMask": {
+          "sequence": {
+            "root": "media",
+            "path": "masters/realistic/h-superman/highlight/index.json",
+            "sha256": "7f4c373f5410eec45ddda495811719325d08fd17a1b521988ef5a9009dbd03c9",
+            "bytes": 54809
+          },
+          "width": 1080,
+          "height": 1080,
+          "durationSeconds": 8,
+          "frameCount": 240,
+          "fps": 30,
+          "alpha": true,
+          "grayscale": true,
+          "occlusionAware": true
+        },
+        "shadow": {
+          "sequence": {
+            "root": "media",
+            "path": "masters/realistic/h-superman/shadow/index.json",
+            "sha256": "b7e669ba32c9f2ce3a2fb6b746ac10fb280772b3b7b0d8aa2987912c07df245f",
+            "bytes": 54089
+          },
+          "width": 1080,
+          "height": 1080,
+          "durationSeconds": 8,
+          "frameCount": 240,
+          "fps": 30,
+          "alpha": true
+        }
+      },
+      "tech-white": {
+        "geometrySha256": "aa0aa8dcfa8645375ac39890a58b8773e0e14ecc886fac6f2fda6e459d222152",
+        "occlusionSha256": "31c39f5ee11c44669b0c8b0a42c27c17bdffce56c125089d571026de20fc3322",
+        "measurement": {
+          "root": "media",
+          "path": "masters/tech-white/h-superman/layer-manifest.json",
+          "sha256": "4a8744336d0c2c164f513ed1f21fc203071ff4f98495a8d01221e904ffb05220",
+          "bytes": 13610
+        },
+        "bodyProps": {
+          "sequence": {
+            "root": "media",
+            "path": "masters/tech-white/h-superman/body/index.json",
+            "sha256": "8ad95b0871a1cc31cef9e7ae67b7acf99e5213feda04500b0178d1a1288207ab",
+            "bytes": 53849
+          },
+          "width": 1080,
+          "height": 1080,
+          "durationSeconds": 8,
+          "frameCount": 240,
+          "fps": 30,
+          "alpha": true
+        },
+        "highlightMask": {
+          "sharedFrom": "realistic"
+        },
+        "shadow": {
+          "sharedFrom": "realistic"
+        }
+      },
+      "neon-night": {
+        "geometrySha256": "aa0aa8dcfa8645375ac39890a58b8773e0e14ecc886fac6f2fda6e459d222152",
+        "occlusionSha256": "31c39f5ee11c44669b0c8b0a42c27c17bdffce56c125089d571026de20fc3322",
+        "measurement": {
+          "root": "media",
+          "path": "masters/neon-night/h-superman/layer-manifest.json",
+          "sha256": "5dae83363d7ae5ef20631ad0cb978d3ff705d27a5a8d6b64e0e6d90084ccb847",
+          "bytes": 13610
+        },
+        "bodyProps": {
+          "sequence": {
+            "root": "media",
+            "path": "masters/neon-night/h-superman/body/index.json",
+            "sha256": "04969ed9e5ab1b87864e00af97de7add16f978d354bc10056c7dc32c0b032525",
+            "bytes": 53849
+          },
+          "width": 1080,
+          "height": 1080,
+          "durationSeconds": 8,
+          "frameCount": 240,
+          "fps": 30,
+          "alpha": true
+        },
+        "highlightMask": {
+          "sharedFrom": "realistic"
+        },
+        "shadow": {
+          "sharedFrom": "realistic"
+        }
+      },
+      "neon-night-b": {
+        "geometrySha256": "aa0aa8dcfa8645375ac39890a58b8773e0e14ecc886fac6f2fda6e459d222152",
+        "occlusionSha256": "31c39f5ee11c44669b0c8b0a42c27c17bdffce56c125089d571026de20fc3322",
+        "measurement": {
+          "root": "media",
+          "path": "masters/neon-night-b/h-superman/layer-manifest.json",
+          "sha256": "e453d2b07c12346430af6db7c3fafc93656377723a5bbfba16f8e9ad6d1537aa",
+          "bytes": 13618
+        },
+        "bodyProps": {
+          "sequence": {
+            "root": "media",
+            "path": "masters/neon-night-b/h-superman/body/index.json",
+            "sha256": "174ff04224cd66e050e22368f7d9f4c6c7c61788f1d6f0973d14381153bfbec1",
+            "bytes": 54329
+          },
+          "width": 1080,
+          "height": 1080,
+          "durationSeconds": 8,
+          "frameCount": 240,
+          "fps": 30,
+          "alpha": true
+        },
+        "highlightMask": {
+          "sharedFrom": "realistic"
+        },
+        "shadow": {
+          "sharedFrom": "realistic"
+        }
+      },
+      "hologram": {
+        "geometrySha256": "aa0aa8dcfa8645375ac39890a58b8773e0e14ecc886fac6f2fda6e459d222152",
+        "occlusionSha256": "31c39f5ee11c44669b0c8b0a42c27c17bdffce56c125089d571026de20fc3322",
+        "measurement": {
+          "root": "media",
+          "path": "masters/hologram/h-superman/layer-manifest.json",
+          "sha256": "d27b198b01feac2b878499e5d367d2d9a6696dfc1e6a4b25824ce4453b63791f",
+          "bytes": 13602
+        },
+        "bodyProps": {
+          "sequence": {
+            "root": "media",
+            "path": "masters/hologram/h-superman/body/index.json",
+            "sha256": "1a954a88ba10a292695d27813a30c054ab5b18d2c30468710f3bbcf1d1fe6aee",
+            "bytes": 53369
+          },
+          "width": 1080,
+          "height": 1080,
+          "durationSeconds": 8,
+          "frameCount": 240,
+          "fps": 30,
+          "alpha": true
+        },
+        "highlightMask": {
+          "sharedFrom": "realistic"
+        },
+        "shadow": {
+          "sharedFrom": "realistic"
+        }
+      }
+    },
+    "loopReview": {
+      "status": "pass",
+      "reviewer": "Codex",
+      "reviewedAt": "2026-10-21T22:29:22.610332+08:00",
+      "evidence": [
+        {
+          "root": "media",
+          "path": "qa/reviews/h-superman-evidence.json",
+          "sha256": "6a63becb6418217522ef8cbbe6c0898be22a8b804250b4a84adde86e1dc3fdfc",
+          "bytes": 7879
+        }
+      ]
+    }
+  },
+  "derivatives": {
+    "method": "composite-from-masters",
+    "mirrored": false,
+    "variants": [
+      {
+        "skin": "realistic",
+        "theme": "dark",
+        "highlight": {
+          "enabled": true,
+          "color": "#f08a3c",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/realistic/h-superman/dark/loop.720.mp4",
+          "sha256": "e111fade06c3a935ff2ee4dfc91ba23db1edc24c4cf48e7ab284f55d83f2ec02",
+          "bytes": 398811,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/realistic/h-superman/dark/cover.720.jpg",
+          "sha256": "b7ca3db81609cf5eef0d30761222115b3e3a46f79b19eaf40621e8ff0e31bcd0",
+          "bytes": 26330,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/realistic/h-superman/dark/thumbnail.240.jpg",
+          "sha256": "3f09b85010c66dc8cc1d592c34066e0a1dc999a4901301742b5c5c3793c8e491",
+          "bytes": 5321,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/realistic/h-superman/dark/start.720.png",
+              "sha256": "b6c822df58bcf3608a11dba7bd247c94edcda87b9bcadb1cd89b9807cdf0d2dd",
+              "bytes": 58203,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/realistic/h-superman/dark/peak.720.png",
+              "sha256": "f3cc144406a9e77a10ea31fd36d3ac57250b6f07b49420b793095c34c98f8760",
+              "bytes": 66904,
+              "width": 720,
+              "height": 720,
+              "frame": 66
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/realistic/h-superman/dark/end.720.png",
+              "sha256": "3041343a53eb5c0380a92a8d5f78885985b23b5b3c91575d9cfe7a10880191f1",
+              "bytes": 58125,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "realistic",
+        "theme": "light",
+        "highlight": {
+          "enabled": true,
+          "color": "#f08a3c",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/realistic/h-superman/light/loop.720.mp4",
+          "sha256": "0efef9ab4f6ef660a3e8bdc60c9e3e9f49c77b4120ba766096560ca32c0c2bd0",
+          "bytes": 452732,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/realistic/h-superman/light/cover.720.jpg",
+          "sha256": "5681fa813b2d2c06ea3668e28975f8acc38fe9682b03509abe373150926e7bb1",
+          "bytes": 33706,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/realistic/h-superman/light/thumbnail.240.jpg",
+          "sha256": "291a430bc1f94157c9acc1a9afab9ab3234704a4f045f24a694ebe423bfd6dbd",
+          "bytes": 7681,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/realistic/h-superman/light/start.720.png",
+              "sha256": "34c592f3eb473236300e6273638f93437e19500767be0b11ccb900940d517e44",
+              "bytes": 67832,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/realistic/h-superman/light/peak.720.png",
+              "sha256": "8a14271efe4c0066fd9d6514ee858f35ebf9e4e6f76e893f332d0f10159f7fe1",
+              "bytes": 81204,
+              "width": 720,
+              "height": 720,
+              "frame": 66
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/realistic/h-superman/light/end.720.png",
+              "sha256": "80d92699e15d4fdcc5dee3939cfc67d171f32df7d3105fb5f554acbd23713a31",
+              "bytes": 67924,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "tech-white",
+        "theme": "dark",
+        "highlight": {
+          "enabled": true,
+          "color": "#f08a3c",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/tech-white/h-superman/dark/loop.720.mp4",
+          "sha256": "628e2f932fcc2c3288e16de9240ef56f9c3ecfd55f16d445d2a913feb347eca9",
+          "bytes": 508048,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/tech-white/h-superman/dark/cover.720.jpg",
+          "sha256": "faffc350038e6523505e35e7640f39b53f1034fcf6d62849be01680a5d57c72b",
+          "bytes": 33500,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/tech-white/h-superman/dark/thumbnail.240.jpg",
+          "sha256": "cfae1f5bcc9374396dad12fdb375db15590064cc2e87c6da744ac2998b961e14",
+          "bytes": 6746,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/tech-white/h-superman/dark/start.720.png",
+              "sha256": "2711e0976b1cbf68790b48db504d1ba0d53bb402e715ebb24c4dbd2f43e6b8d4",
+              "bytes": 77717,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/tech-white/h-superman/dark/peak.720.png",
+              "sha256": "82408f324ff4527b92660f180ac3b1069afa6d0ac3537c0aac4512b852cca9be",
+              "bytes": 87387,
+              "width": 720,
+              "height": 720,
+              "frame": 66
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/tech-white/h-superman/dark/end.720.png",
+              "sha256": "92ab4330b88acb678c0eb21a5f00ac198d3df064eba0b34a06eba39faa78b79d",
+              "bytes": 77878,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "tech-white",
+        "theme": "light",
+        "highlight": {
+          "enabled": true,
+          "color": "#f08a3c",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/tech-white/h-superman/light/loop.720.mp4",
+          "sha256": "36d2eb9fe61e725bf316a625d88e90c7d05659a5257d815409f350a05c91820c",
+          "bytes": 537023,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/tech-white/h-superman/light/cover.720.jpg",
+          "sha256": "77a3e990e508187dbcfd9deeb65de665593c91e1d20aefee563ad0134d2c39bf",
+          "bytes": 36170,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/tech-white/h-superman/light/thumbnail.240.jpg",
+          "sha256": "f07cfb4b9b0eb18562bd0bad8f4d4f07f479545ec0dd2bd0d049ba269fc417ef",
+          "bytes": 7399,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/tech-white/h-superman/light/start.720.png",
+              "sha256": "1a33a5a3bf34ff00ae9b0c2040ea4c1de5cdda5bbb0b72a8a3f8181127945109",
+              "bytes": 82001,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/tech-white/h-superman/light/peak.720.png",
+              "sha256": "e62e94ea7184288e0e68a384dd11cf9a4796ce851c79f2e64e1672cd131947ca",
+              "bytes": 94978,
+              "width": 720,
+              "height": 720,
+              "frame": 66
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/tech-white/h-superman/light/end.720.png",
+              "sha256": "c81c836e73f14c67e50680a80c3e6dec226bffb5a35fd2aa83c7b8aa4d5b2c48",
+              "bytes": 82079,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "neon-night",
+        "theme": "dark",
+        "highlight": {
+          "enabled": true,
+          "color": "#9fdcff",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/neon-night/h-superman/dark/loop.720.mp4",
+          "sha256": "40ae9ac130a41fb2bc682acbc6d0f98a1b3b010bddd0b1f911ffa6451eebec14",
+          "bytes": 520897,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/neon-night/h-superman/dark/cover.720.jpg",
+          "sha256": "16f91a6e7c26ebb97b134e09d32bb91145a37ae24715016fac605a9ae16a669b",
+          "bytes": 34506,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/neon-night/h-superman/dark/thumbnail.240.jpg",
+          "sha256": "37afc4682520feeef0a005fa3328cf5c6fdf373891881177780a79a25ee12b8c",
+          "bytes": 6597,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night/h-superman/dark/start.720.png",
+              "sha256": "ec16fdedd0f88b745801597f66b0e4d54abe4da92823aee2ad7f5ad73c46a931",
+              "bytes": 79644,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night/h-superman/dark/peak.720.png",
+              "sha256": "83bf120306265c9340bbed0446f708c8d193e160a913f3556ddb0f12d68e3514",
+              "bytes": 89423,
+              "width": 720,
+              "height": 720,
+              "frame": 66
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night/h-superman/dark/end.720.png",
+              "sha256": "139a87d4b85c27c47feddf632cf3cb6b24a025f28e64b13b083bf3af90bdb668",
+              "bytes": 79730,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "neon-night",
+        "theme": "light",
+        "highlight": {
+          "enabled": true,
+          "color": "#9fdcff",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/neon-night/h-superman/light/loop.720.mp4",
+          "sha256": "0b1f362cc4d4101dc55aeab34d9e6111674feb5df54e887749d8d1a185341a2d",
+          "bytes": 610641,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/neon-night/h-superman/light/cover.720.jpg",
+          "sha256": "10ae43c3edd718a005fc70f2d386bc68a873ee2e467fcecbf4064a6c24a0b40d",
+          "bytes": 42871,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/neon-night/h-superman/light/thumbnail.240.jpg",
+          "sha256": "7c1df2b422f867b7195b5180134b2542ad8b84ded1f6fda4c4d38adf64adee7a",
+          "bytes": 9107,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night/h-superman/light/start.720.png",
+              "sha256": "a644649d707df9609ccbb5315368a9689b24dcc073a1967b504de20281f8c4e2",
+              "bytes": 89264,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night/h-superman/light/peak.720.png",
+              "sha256": "796191b4bd6f6aca581b4f022195e708a9f489a0c823b964cf4ad6b2b0e54cea",
+              "bytes": 106290,
+              "width": 720,
+              "height": 720,
+              "frame": 66
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night/h-superman/light/end.720.png",
+              "sha256": "173d99aa61b4723d45dfdf5055b781553bf4032ee46f79f53876383a24196fb7",
+              "bytes": 89439,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "neon-night-b",
+        "theme": "dark",
+        "highlight": {
+          "enabled": true,
+          "color": "#b6ffd0",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/neon-night-b/h-superman/dark/loop.720.mp4",
+          "sha256": "9b7ed8cf685ecb8d471fde94693b6545a74fe2707f2994f42260e683effb4bfc",
+          "bytes": 539604,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/neon-night-b/h-superman/dark/cover.720.jpg",
+          "sha256": "8d51db0c51573ed59adcd83a73e9917ad4ccce2781115e0139c6b48a555768c4",
+          "bytes": 34371,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/neon-night-b/h-superman/dark/thumbnail.240.jpg",
+          "sha256": "c53b469cca998e046bad8cf060d66dec0e2bbe3834b1674d2fc9718d17707211",
+          "bytes": 6635,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night-b/h-superman/dark/start.720.png",
+              "sha256": "54a9950730e2ae7d49413b6e9f25c0d2aac1db6318f6416790432224b33088cd",
+              "bytes": 79325,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night-b/h-superman/dark/peak.720.png",
+              "sha256": "c0c1ca29ff6f18271f55e3182a46643589b2b24b84c03f6aa84b8ee67fb7e379",
+              "bytes": 89022,
+              "width": 720,
+              "height": 720,
+              "frame": 66
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night-b/h-superman/dark/end.720.png",
+              "sha256": "20136e4f462d5d812047c293c9a76aa31edf23085f4ecdd637cfcdb3ad6e1b1e",
+              "bytes": 79301,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "neon-night-b",
+        "theme": "light",
+        "highlight": {
+          "enabled": true,
+          "color": "#b6ffd0",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/neon-night-b/h-superman/light/loop.720.mp4",
+          "sha256": "3d3e22a65cb72cef35949bfe9825b12a9f46707c5777d9b19f74ee6372019dc0",
+          "bytes": 620760,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/neon-night-b/h-superman/light/cover.720.jpg",
+          "sha256": "78cf98226b48bde9bdb5a9a8b1f20ea60400d6f587fedec15827101670d5e874",
+          "bytes": 42500,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/neon-night-b/h-superman/light/thumbnail.240.jpg",
+          "sha256": "8ccad5032b7c8b9943d93ea3737e2af4078121baecf00322160769a879bc6c36",
+          "bytes": 9017,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night-b/h-superman/light/start.720.png",
+              "sha256": "49de8c699caff49abd86acc4cbc73b3cb74e78bb1d0c56a661f936e03f6279ee",
+              "bytes": 88993,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night-b/h-superman/light/peak.720.png",
+              "sha256": "78a495ab6e80e25e2928193489cdf3b474d46358002af63fd924f0b61916fb2e",
+              "bytes": 105858,
+              "width": 720,
+              "height": 720,
+              "frame": 66
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night-b/h-superman/light/end.720.png",
+              "sha256": "2a5a226aa9a423f3baf4314f2f25b052c2406b62d0fbd410955feccbc13b66b7",
+              "bytes": 89049,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "hologram",
+        "theme": "dark",
+        "highlight": {
+          "enabled": true,
+          "color": "#e9d49c",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/hologram/h-superman/dark/loop.720.mp4",
+          "sha256": "839c3da8190dac798630e3fa524792c82937f5679a11c70af4cbde301e7a3441",
+          "bytes": 636112,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/hologram/h-superman/dark/cover.720.jpg",
+          "sha256": "e2d195dc6c059f97d36ce7c8b11a5d457d7af46279b1cf7374dd7365f2fe4997",
+          "bytes": 32638,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/hologram/h-superman/dark/thumbnail.240.jpg",
+          "sha256": "514d53aeb2239987950da25f1fea1071ad5c789e1f87096cc8636e2e7f7e3235",
+          "bytes": 6184,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/hologram/h-superman/dark/start.720.png",
+              "sha256": "32675909ee93f586398e980b22a4f6be95368b2d2a71ccfcda699879813ef5c1",
+              "bytes": 81938,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/hologram/h-superman/dark/peak.720.png",
+              "sha256": "a836d0335f1764f8cc0833339dda10ad21e1ca83374edb3195decc326cab090f",
+              "bytes": 92062,
+              "width": 720,
+              "height": 720,
+              "frame": 66
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/hologram/h-superman/dark/end.720.png",
+              "sha256": "68218872dda24be3a6b03ed70f2a523995bb020aa844913ad9ab5279b138ac90",
+              "bytes": 81932,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "hologram",
+        "theme": "light",
+        "highlight": {
+          "enabled": true,
+          "color": "#e9d49c",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/hologram/h-superman/light/loop.720.mp4",
+          "sha256": "de9383f33bf3db2bdf4ef24af0127edf6bc83635ed27e4c745bef61ee16e0dfb",
+          "bytes": 390651,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/hologram/h-superman/light/cover.720.jpg",
+          "sha256": "26c7862383789793a4f2266200d6d6d12ceb370f660a4cc19a9a2564ebc9e5ab",
+          "bytes": 30984,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/hologram/h-superman/light/thumbnail.240.jpg",
+          "sha256": "127f7f5f5134c6ff21308fa67f1259ff7c432638596b33491e0d2732a287b044",
+          "bytes": 6898,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/hologram/h-superman/light/start.720.png",
+              "sha256": "5882eb1d6ffcfbd1b1dca5196a6fa59b5df7f5c99383e22465631a5fa3ef1c21",
+              "bytes": 76095,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/hologram/h-superman/light/peak.720.png",
+              "sha256": "2b292f7e2037c8ce902afdcaf9e843ab9a312a4c3a85e8bc6c99305e7038b1ea",
+              "bytes": 89365,
+              "width": 720,
+              "height": 720,
+              "frame": 66
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/hologram/h-superman/light/end.720.png",
+              "sha256": "81fbeb05d74b58092c47d98132970bb3b2d9ce41ae48368fb6675b4dec454527",
+              "bytes": 76295,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      }
+    ],
+    "transparentCovers": {
+      "realistic": {
+        "root": "media",
+        "path": "derivatives/realistic/h-superman/cover.transparent.1080.png",
+        "sha256": "6ecd9d251164b3f3defa931d29cbb9a25e65cf60e13fcafb30b07712fe612be4",
+        "bytes": 146433,
+        "width": 1080,
+        "height": 1080,
+        "alpha": true
+      },
+      "tech-white": {
+        "root": "media",
+        "path": "derivatives/tech-white/h-superman/cover.transparent.1080.png",
+        "sha256": "cb0b74f1652c67681f45f02d4958d5a1a7a1a6546212dba541f46d4f4e13ac46",
+        "bytes": 183646,
+        "width": 1080,
+        "height": 1080,
+        "alpha": true
+      },
+      "neon-night": {
+        "root": "media",
+        "path": "derivatives/neon-night/h-superman/cover.transparent.1080.png",
+        "sha256": "95c0997453858aeb8f96a69fdd67981b053a0e918c2f347edcf341d2047f8d69",
+        "bytes": 200512,
+        "width": 1080,
+        "height": 1080,
+        "alpha": true
+      },
+      "neon-night-b": {
+        "root": "media",
+        "path": "derivatives/neon-night-b/h-superman/cover.transparent.1080.png",
+        "sha256": "9a55ce34b014b1eaa506b53e08eb75b0c72ddd1382c897c3d66679693319bb72",
+        "bytes": 200562,
+        "width": 1080,
+        "height": 1080,
+        "alpha": true
+      },
+      "hologram": {
+        "root": "media",
+        "path": "derivatives/hologram/h-superman/cover.transparent.1080.png",
+        "sha256": "bfb38ab53de95e897bb23308b603f49e870b4cbf62a57d46933488f2d7de8e1f",
+        "bytes": 229530,
+        "width": 1080,
+        "height": 1080,
+        "alpha": true
+      }
+    },
+    "compositor": {
+      "root": "repo",
+      "path": "tools/action-library-v2/media.py",
+      "sha256": "17b92fc84cee47091e90cceae19fd1f4cf518f81db04767466d8745b784a76fb",
+      "bytes": 7731
+    },
+    "provenance": {
+      "framing": {
+        "root": "media",
+        "path": "manifests/framing/h-superman.json",
+        "sha256": "9e66430dd76f628e529d9c6828ad629316afbc08234a63f33a76809d323fc09d",
+        "bytes": 293
+      }
+    },
+    "framingId": "fixed-square-9e66430dd76f628e"
+  },
+  "voice": {
+    "actionId": "h-superman",
+    "manifest": {
+      "root": "repo",
+      "path": "catalog/voice-v2/batches/b001-manifest.json",
+      "sha256": "31d97faf1000eceafa65bf290e66a9265d82d86425ab8ce3ed4f67f03ee401c0",
+      "bytes": 270954
+    }
+  },
+  "validation": {
+    "modelVersion": "1.0.0-rc2",
+    "mirrorGenerated": false,
+    "review": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "evidence": []
+    },
+    "manifest": {
+      "root": "media",
+      "path": "manifests/h-superman.json",
+      "sha256": "9f97eba540c2dbc3294e5ed70d56338b576a59f5edff0750fce958ff505e9df2",
+      "bytes": 27985
+    }
+  }
+}
+```
