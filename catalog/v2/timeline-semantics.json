@@ -1,0 +1,38 @@
+{
+  "format": "action-package-timeline-semantics@2",
+  "review": "editorial-draft-pending-user-review",
+  "note": "Phase timing transcribes the unchanged source tracks. Voice phase.start/peak/end are sampled guidance lines, not the complete movement rhythm. Audio may need lead-in or suppression when longer than a motion phase; never warp the animation to fit speech.",
+  "actions": {
+    "w-dead-bug": {
+      "kind": "rep_alternate",
+      "phases": [["prepare", 0.3], ["extend", 1.2], ["hold", 0.7], ["return", 1.3], ["reset", 0.5]],
+      "countingSemantics": "One controlled extension and return of one opposite arm/leg pair counts as one rep. Alternate pairs; the 8-second clip contains two reps, one per pair. Default reps=10 means 10 total alternating reps, 5 per pair, not 10 per side.",
+      "movementSides": "alternating-cross-body: first pair right arm + left leg, then left arm + right leg at second 4; reset at second 8"
+    },
+    "h-chair-step-up": {
+      "kind": "rep_alternate",
+      "phases": [["prepare", 0.2], ["leadFootUp", 0.75], ["driveUp", 1.1], ["standTall", 0.35], ["lowerBody", 0.8], ["resetWeight", 0.2], ["leadFootDown", 0.55], ["reset", 0.05]],
+      "countingSemantics": "One complete ascent and descent led by one leg counts as one rep. Alternate the lead leg; 8 seconds contains two reps, right then left. Default reps=10 means 10 total reps, 5 led by each leg, not 10 per side."
+    },
+    "h-db-curl": {
+      "kind": "rep_alternate",
+      "phases": [["prepare", 0.3], ["curlUp", 1.3], ["squeeze", 0.4], ["lower", 1.6], ["reset", 0.4]],
+      "countingSemantics": "One arm curl and controlled lowering counts as one rep. Alternate arms; 8 seconds contains two reps, right then left. Default reps=12 means 12 total alternating reps, 6 per arm, not 12 per side."
+    },
+    "glute-max-A": {
+      "kind": "rep_updown",
+      "phases": [["prepare", 0.3], ["lift", 1], ["squeeze", 1.6], ["lower", 1], ["reset", 0.1]],
+      "countingSemantics": "One lift and return on the support leg counts as one rep. Default reps=10 is per side; complete all 10 on the left support leg, then cue a side change. The 8-second clip contains two left-support reps and no side change; repeat five loops before switching for the default dose. Opposite-side media is not produced."
+    },
+    "s-frog": {
+      "kind": "rep_cycle",
+      "phases": [["prepare", 0.6], ["rockBack", 3.2], ["return", 3.2], ["reset", 1]],
+      "countingSemantics": "Timed mobility/stretching: do not count the 8-second demonstration as an 8-second static hold. One loop shows one slow backward rock and return; default seconds=40 spans five demonstration loops. No sustained peak hold is encoded."
+    },
+    "h-catcow-quad": {
+      "kind": "rep_cycle",
+      "phases": [["roundBack", 1], ["catHold", 0.6], ["toCow", 1.2], ["cowHold", 0.6], ["returnNeutral", 0.6]],
+      "countingSemantics": "One cat-to-cow-and-neutral cycle lasts 4 seconds; the 8-second loop contains two cycles. Default seconds=40 is timed movement, 10 cycles at the demonstration cadence, not 40 repetitions."
+    }
+  }
+}

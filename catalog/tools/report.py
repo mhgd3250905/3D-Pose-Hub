@@ -8,10 +8,17 @@
 import csv
 import json
 import os
+import subprocess
+import sys
 from collections import Counter
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 CAT = os.path.dirname(HERE)
+
+if '--v2' in sys.argv:
+    args = [x for x in sys.argv[1:] if x != '--v2']
+    sys.exit(subprocess.call([sys.executable, os.path.join(HERE, 'action_package_v2.py'), 'report', *args]))
+print('Historical v1 report only. Use --v2 for six-layer production completeness.', file=sys.stderr)
 
 c = json.load(open(os.path.join(CAT, "catalog.json"), encoding="utf-8"))
 tax = c["taxonomy"]

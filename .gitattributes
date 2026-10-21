@@ -1,5 +1,15 @@
 * text=auto
 
+# v2 pilot fingerprints pin raw source bytes; Windows checkouts must retain LF.
+drill-anim/tools/v2/*.js text eol=lf
+drill-anim/tools/v2/*.mjs text eol=lf
+drill-anim/specs/w-dead-bug-r2.js text eol=lf
+drill-anim/specs/h-chair-step-up-r2.js text eol=lf
+drill-anim/specs/h-db-curl-r2.js text eol=lf
+drill-anim/specs/glute-max-A-r2.js text eol=lf
+drill-anim/specs/s-frog-r3.js text eol=lf
+drill-anim/specs/h-catcow-quad-r2.js text eol=lf
+
 # Same rules as 3D-Body: keep exported poses and asset manifests byte-for-byte across platforms.
 *.json -text
 *.glb binary

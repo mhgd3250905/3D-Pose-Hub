@@ -1,0 +1,1414 @@
+{
+  "format": "action-package@2",
+  "id": "glute-max-A",
+  "version": "2.0.0-draft.2",
+  "status": "review",
+  "definition": {
+    "idMappings": [],
+    "name": {
+      "zh": "单腿臀桥",
+      "en": "Single-Leg Glute Bridge"
+    },
+    "purpose": {
+      "zh": "单腿臀桥，练臀大肌伸髋（每侧）",
+      "en": "Practice a single-leg hip bridge with a level pelvis."
+    },
+    "tags": {
+      "category": "strength",
+      "activeMuscles": [
+        "glute-max"
+      ],
+      "synergistMuscles": [
+        "hamstrings",
+        "abs",
+        "obliques",
+        "hip-abductors"
+      ],
+      "equipment": [
+        "mat"
+      ],
+      "position": "supine",
+      "scenes": [
+        "home"
+      ],
+      "difficulty": 2,
+      "trainingType": "strength"
+    },
+    "unilateral": true,
+    "startingSide": "left",
+    "cues": [
+      {
+        "id": "cue1",
+        "text": {
+          "zh": "一条腿抬起，用臀部把身体推高",
+          "en": "One leg up, drive your hips up with your glutes"
+        },
+        "primary": true
+      },
+      {
+        "id": "cue2",
+        "text": {
+          "zh": "左脚稳定支撑，保持骨盆朝向一致",
+          "en": "Keep the left foot planted and the pelvis level."
+        },
+        "primary": false
+      },
+      {
+        "id": "cue3",
+        "text": {
+          "zh": "缓慢放回起始位，不用腰部猛顶",
+          "en": "Lower slowly to the starting position without thrusting through the lower back."
+        },
+        "primary": false
+      }
+    ],
+    "commonErrors": [
+      {
+        "zh": "抬起时骨盆明显倾斜或旋转",
+        "en": "Tilting or rotating the pelvis as you lift."
+      },
+      {
+        "zh": "借腰部过度后仰代替臀部发力",
+        "en": "Overarching the lower back instead of driving through the hip."
+      }
+    ],
+    "cautions": {
+      "items": [
+        {
+          "zh": "腰背：抬髋来自臀部，避免用过度拱腰换取高度。",
+          "en": "Lower back: lift through the hips rather than forcing extra height by arching the lower back."
+        },
+        {
+          "zh": "骨盆与支撑脚：保持骨盆平稳、左脚稳定支撑，下降时继续控制。",
+          "en": "Pelvis and support foot: keep the pelvis level and the left foot planted while lowering under control."
+        },
+        {
+          "zh": "颈肩：头和肩胛区域舒适承托，不把体重压在颈部。",
+          "en": "Neck and shoulders: keep the head and shoulder-blade area comfortably supported rather than loading the neck."
+        }
+      ],
+      "review": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidence": []
+      }
+    },
+    "contraindications": {
+      "items": [
+        {
+          "zh": "本动作引发疼痛时停止，不通过加深动作或加重继续；先向医生或物理治疗师确认。",
+          "en": "Stop if this exercise causes pain; do not push deeper or add load before seeking clinical advice."
+        },
+        {
+          "zh": "已有医嘱限制髋伸展、单腿支撑负荷或仰卧训练时，先取得许可。",
+          "en": "Obtain clearance first if hip extension, single-leg loading or supine exercise has been restricted."
+        }
+      ],
+      "review": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidence": []
+      }
+    },
+    "alternatives": [
+      "w-feet-on-chair-bridge",
+      "n-prone-hip-ext"
+    ],
+    "regressions": [
+      "w-feet-on-chair-bridge"
+    ],
+    "progressions": [],
+    "defaultDose": {
+      "mode": "reps",
+      "sets": 3,
+      "reps": 10,
+      "restSeconds": 30
+    },
+    "doseRange": {
+      "sets": [
+        1,
+        4
+      ],
+      "reps": [
+        5,
+        15
+      ],
+      "restSeconds": [
+        0,
+        60
+      ]
+    },
+    "rhythm": {
+      "kind": "rep_updown",
+      "leadSeconds": 0,
+      "source": "source-timeline",
+      "phases": [
+        {
+          "id": "prepare",
+          "seconds": 0.3
+        },
+        {
+          "id": "lift",
+          "seconds": 1
+        },
+        {
+          "id": "squeeze",
+          "seconds": 1.6
+        },
+        {
+          "id": "lower",
+          "seconds": 1
+        },
+        {
+          "id": "reset",
+          "seconds": 0.1
+        }
+      ]
+    },
+    "apps": [
+      "flarelab",
+      "hiplab",
+      "smartfit"
+    ],
+    "editorialReview": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "evidence": []
+    },
+    "editorialNotes": [
+      "定义内容已补为具体双语草稿；cautions、contraindications、关系候选和协同标签有数据，review pending表示待审核，不表示这些字段缺数据。",
+      "禁用条件仅覆盖疼痛停止与既有临床限制等通用筛查，不是疾病特异的完整绝对禁忌清单；未据此宣称任何疾病或术后状态均禁止运动。",
+      "旧catalog明确alternative=w-feet-on-chair-bridge。其源spec是双脚椅面支撑的臀桥，去掉持续单侧支撑，列降阶候选；它会增加椅具并偏腘绳肌，不代表对每个人都更轻松。",
+      "n-prone-hip-ext是旧catalog内level1的俯卧屈膝髋伸展，可作臀部伸髋目标替代；体位不同，不能照搬单腿臀桥剂量。",
+      "独立进阶ID仍缺：当前没有经过比对确认的更高负荷单腿臀桥专用ID；不把不同模式的下肢动作强行列作臀桥进阶。",
+      "协同标签依据本仓库臀桥家族及AAOS髋桥肌群说明，再对单腿骨盆控制作编辑推断；不是要求竖脊肌代偿拱腰。",
+      "证据/推断边界见catalog/v2/definition-evidence.md（仓库原目录/源spec与权威一手资料；全部编辑审核仍pending）。",
+      "医学安全参考：AAOS Spine Conditioning Program https://www.orthoinfo.org/recovery/spine-conditioning-program/ ; Hip Conditioning Program https://www.orthoinfo.org/recovery/hip-conditioning-program/ ; NHS Strength exercises https://www.nhs.uk/live-well/exercise/strength-exercises/ ; retrieved 2026-10-21."
+    ],
+    "countingSemantics": "One lift and return on the support leg counts as one rep. Default reps=10 is per side; complete all 10 on the left support leg, then cue a side change. The 8-second clip contains two left-support reps and no side change; repeat five loops before switching for the default dose. Opposite-side media is not produced."
+  },
+  "source": {
+    "model": {
+      "id": "training-human-v2plus",
+      "version": "1.0.0-rc2",
+      "manifest": {
+        "root": "repo",
+        "path": "drill-anim/models/training-human-v2plus.json",
+        "sha256": "ec2bc815ded157dbc7673e283ed9b6bb1baa710a39ce3a02f88453e8d7fb0a1d",
+        "bytes": 6494,
+        "normalization": "lf"
+      }
+    },
+    "spec": {
+      "root": "repo",
+      "path": "drill-anim/specs/glute-max-A-r2.js",
+      "sha256": "dad370c9ebb7670343744e8a84502fd8f6d06d39783af51885baae5b30e1af82",
+      "bytes": 1239,
+      "normalization": "lf"
+    },
+    "keyMoments": {
+      "switchPoint": {
+        "kind": "loop-boundary",
+        "seconds": 8,
+        "semantics": "The clip demonstrates only the left support side. Second 8 is an available loop boundary, not a mandatory side change. For the default 10 reps per side, complete five loops before cueing the opposite side. No within-clip switch and no mirrored media are produced."
+      },
+      "start": 0,
+      "peak": 2.1,
+      "end": 8
+    },
+    "highlightMuscles": [
+      "glute-max"
+    ],
+    "qa": {
+      "intersections": {
+        "status": "pass",
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-21T11:18:05.625879+00:00",
+        "evidence": [
+          {
+            "root": "media",
+            "path": "qa/reviews/glute-max-A-evidence.json",
+            "sha256": "fd7f8bdb8902794308116cd6a7f53d7fdd095cdad8aa5f36990b361f0c6ae851",
+            "bytes": 6134
+          }
+        ],
+        "framesReviewed": [
+          0,
+          30,
+          60,
+          63,
+          90,
+          120,
+          150,
+          180,
+          210,
+          239,
+          240
+        ]
+      },
+      "handsFeet": {
+        "status": "pass",
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-21T11:18:05.625879+00:00",
+        "evidence": [
+          {
+            "root": "media",
+            "path": "qa/reviews/glute-max-A-evidence.json",
+            "sha256": "fd7f8bdb8902794308116cd6a7f53d7fdd095cdad8aa5f36990b361f0c6ae851",
+            "bytes": 6134
+          }
+        ],
+        "framesReviewed": [
+          0,
+          30,
+          60,
+          63,
+          90,
+          120,
+          150,
+          180,
+          210,
+          239,
+          240
+        ]
+      },
+      "propFlicker": {
+        "status": "pass",
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-21T11:18:05.625879+00:00",
+        "evidence": [
+          {
+            "root": "media",
+            "path": "qa/reviews/glute-max-A-evidence.json",
+            "sha256": "fd7f8bdb8902794308116cd6a7f53d7fdd095cdad8aa5f36990b361f0c6ae851",
+            "bytes": 6134
+          }
+        ],
+        "framesReviewed": [
+          0,
+          30,
+          60,
+          63,
+          90,
+          120,
+          150,
+          180,
+          210,
+          239,
+          240
+        ]
+      },
+      "loopSeam": {
+        "status": "pass",
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-21T11:18:05.625879+00:00",
+        "evidence": [
+          {
+            "root": "media",
+            "path": "qa/reviews/glute-max-A-evidence.json",
+            "sha256": "fd7f8bdb8902794308116cd6a7f53d7fdd095cdad8aa5f36990b361f0c6ae851",
+            "bytes": 6134
+          }
+        ],
+        "framesReviewed": [
+          0,
+          30,
+          60,
+          63,
+          90,
+          120,
+          150,
+          180,
+          210,
+          239,
+          240
+        ]
+      }
+    },
+    "demonstratedSide": "left",
+    "oppositeSideMedia": "not-produced",
+    "dependencies": [
+      {
+        "root": "repo",
+        "path": "drill-anim/specs/glute-max-A.js",
+        "sha256": "2d5844dc5caa3cfdd6ff1368133a4f798c4571da8b2908a387eb30d65f6d0c8c",
+        "bytes": 3606,
+        "normalization": "lf"
+      }
+    ]
+  },
+  "masters": {
+    "requiredSkins": [
+      "realistic",
+      "tech-white",
+      "neon-night",
+      "neon-night-b",
+      "hologram"
+    ],
+    "skins": {
+      "realistic": {
+        "geometrySha256": "aa0aa8dcfa8645375ac39890a58b8773e0e14ecc886fac6f2fda6e459d222152",
+        "occlusionSha256": "51b9dfe18d66d834b27c71249c4a708503aa0c18413cce727c2a7bc7ac1c58ad",
+        "measurement": {
+          "root": "media",
+          "path": "masters/realistic/glute-max-A/layer-manifest.json",
+          "sha256": "f7bad7eadab1820a9486c7d168765c647502b79ffb685dc0b3f79d3056bf6f95",
+          "bytes": 13127
+        },
+        "bodyProps": {
+          "sequence": {
+            "root": "media",
+            "path": "masters/realistic/glute-max-A/body/index.json",
+            "sha256": "7cd0572de38a03e4b622ceff5f6633119836597982f1cf674696640ffffc8e27",
+            "bytes": 53849
+          },
+          "width": 1080,
+          "height": 1080,
+          "durationSeconds": 8,
+          "frameCount": 240,
+          "fps": 30,
+          "alpha": true
+        },
+        "highlightMask": {
+          "sequence": {
+            "root": "media",
+            "path": "masters/realistic/glute-max-A/highlight/index.json",
+            "sha256": "e6193dc8275004f9a992120845a1c5536b8674774f2366fa970250a79de3b5ad",
+            "bytes": 55049
+          },
+          "width": 1080,
+          "height": 1080,
+          "durationSeconds": 8,
+          "frameCount": 240,
+          "fps": 30,
+          "alpha": true,
+          "grayscale": true,
+          "occlusionAware": true
+        },
+        "shadow": {
+          "sequence": {
+            "root": "media",
+            "path": "masters/realistic/glute-max-A/shadow/index.json",
+            "sha256": "dfe2c197f5c2536f3c71565faf60c16c0566b2cd3d8f301c5c40ad2e599920a1",
+            "bytes": 54329
+          },
+          "width": 1080,
+          "height": 1080,
+          "durationSeconds": 8,
+          "frameCount": 240,
+          "fps": 30,
+          "alpha": true
+        }
+      },
+      "tech-white": {
+        "geometrySha256": "aa0aa8dcfa8645375ac39890a58b8773e0e14ecc886fac6f2fda6e459d222152",
+        "occlusionSha256": "51b9dfe18d66d834b27c71249c4a708503aa0c18413cce727c2a7bc7ac1c58ad",
+        "measurement": {
+          "root": "media",
+          "path": "masters/tech-white/glute-max-A/layer-manifest.json",
+          "sha256": "7a775108162e6c9ef040dc00f4e1ff8c30d9b9e1c8707e4d0482a101ace7400a",
+          "bytes": 13379
+        },
+        "bodyProps": {
+          "sequence": {
+            "root": "media",
+            "path": "masters/tech-white/glute-max-A/body/index.json",
+            "sha256": "b921d19d0400f7c5084596b4a7a87bf75964f866fba34b4b24c89024a064e0e9",
+            "bytes": 54089
+          },
+          "width": 1080,
+          "height": 1080,
+          "durationSeconds": 8,
+          "frameCount": 240,
+          "fps": 30,
+          "alpha": true
+        },
+        "highlightMask": {
+          "sharedFrom": "realistic"
+        },
+        "shadow": {
+          "sharedFrom": "realistic"
+        }
+      },
+      "neon-night": {
+        "geometrySha256": "aa0aa8dcfa8645375ac39890a58b8773e0e14ecc886fac6f2fda6e459d222152",
+        "occlusionSha256": "51b9dfe18d66d834b27c71249c4a708503aa0c18413cce727c2a7bc7ac1c58ad",
+        "measurement": {
+          "root": "media",
+          "path": "masters/neon-night/glute-max-A/layer-manifest.json",
+          "sha256": "54c043d143b9f2925ca5199c4fd8ce3d6dfe5064c9ccd39465aa19861a196a9f",
+          "bytes": 13379
+        },
+        "bodyProps": {
+          "sequence": {
+            "root": "media",
+            "path": "masters/neon-night/glute-max-A/body/index.json",
+            "sha256": "655ec39b2dbed2ea48c76289aa5599d153b7a3dbd717dea78f792ac09ec99dbd",
+            "bytes": 54249
+          },
+          "width": 1080,
+          "height": 1080,
+          "durationSeconds": 8,
+          "frameCount": 240,
+          "fps": 30,
+          "alpha": true
+        },
+        "highlightMask": {
+          "sharedFrom": "realistic"
+        },
+        "shadow": {
+          "sharedFrom": "realistic"
+        }
+      },
+      "neon-night-b": {
+        "geometrySha256": "aa0aa8dcfa8645375ac39890a58b8773e0e14ecc886fac6f2fda6e459d222152",
+        "occlusionSha256": "51b9dfe18d66d834b27c71249c4a708503aa0c18413cce727c2a7bc7ac1c58ad",
+        "measurement": {
+          "root": "media",
+          "path": "masters/neon-night-b/glute-max-A/layer-manifest.json",
+          "sha256": "9b215e9d770981198b8b2d47f47e0de5f472a97c0f9f963024178eddfb96d758",
+          "bytes": 13387
+        },
+        "bodyProps": {
+          "sequence": {
+            "root": "media",
+            "path": "masters/neon-night-b/glute-max-A/body/index.json",
+            "sha256": "6866d9865e9ade635e68861569aa74b58e862bf92a94da82e88f52bd198082ce",
+            "bytes": 54728
+          },
+          "width": 1080,
+          "height": 1080,
+          "durationSeconds": 8,
+          "frameCount": 240,
+          "fps": 30,
+          "alpha": true
+        },
+        "highlightMask": {
+          "sharedFrom": "realistic"
+        },
+        "shadow": {
+          "sharedFrom": "realistic"
+        }
+      },
+      "hologram": {
+        "geometrySha256": "aa0aa8dcfa8645375ac39890a58b8773e0e14ecc886fac6f2fda6e459d222152",
+        "occlusionSha256": "51b9dfe18d66d834b27c71249c4a708503aa0c18413cce727c2a7bc7ac1c58ad",
+        "measurement": {
+          "root": "media",
+          "path": "masters/hologram/glute-max-A/layer-manifest.json",
+          "sha256": "5abdffac7fc86cd5fc3c3cab7b92d511f5c8bc0258e8a0a416f794a1d921cbfb",
+          "bytes": 13372
+        },
+        "bodyProps": {
+          "sequence": {
+            "root": "media",
+            "path": "masters/hologram/glute-max-A/body/index.json",
+            "sha256": "a1c94fea5488a9738b4785ae51846d476162d19f9d3754a670f12228bc26e098",
+            "bytes": 53849
+          },
+          "width": 1080,
+          "height": 1080,
+          "durationSeconds": 8,
+          "frameCount": 240,
+          "fps": 30,
+          "alpha": true
+        },
+        "highlightMask": {
+          "sharedFrom": "realistic"
+        },
+        "shadow": {
+          "sharedFrom": "realistic"
+        }
+      }
+    },
+    "loopReview": {
+      "status": "pass",
+      "reviewer": "Codex",
+      "reviewedAt": "2026-10-21T11:18:05.625879+00:00",
+      "evidence": [
+        {
+          "root": "media",
+          "path": "qa/reviews/glute-max-A-evidence.json",
+          "sha256": "fd7f8bdb8902794308116cd6a7f53d7fdd095cdad8aa5f36990b361f0c6ae851",
+          "bytes": 6134
+        }
+      ]
+    }
+  },
+  "derivatives": {
+    "method": "composite-from-masters",
+    "mirrored": false,
+    "variants": [
+      {
+        "skin": "realistic",
+        "theme": "dark",
+        "highlight": {
+          "enabled": true,
+          "color": "#f08a3c",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/realistic/glute-max-A/dark/loop.720.mp4",
+          "sha256": "f388f0fb06182fb8bc767f0562cdd53c5e033b10b2accb98a5a5365c66f78a29",
+          "bytes": 289452,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/realistic/glute-max-A/dark/cover.720.jpg",
+          "sha256": "26a212e5c49a2b9c57643ebd2fd8a5108d6db3545191d2656d5ae10a93542b46",
+          "bytes": 26614,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/realistic/glute-max-A/dark/thumbnail.240.jpg",
+          "sha256": "19c7c1acab72c27c1aa333028144e10828df2839630e938b96939d32f6d4e15e",
+          "bytes": 5407,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/realistic/glute-max-A/dark/start.720.png",
+              "sha256": "22a547781d316a779a532e236ce598babdb8e135a085eea85f02454858e93ea4",
+              "bytes": 50655,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/realistic/glute-max-A/dark/peak.720.png",
+              "sha256": "b0de686dc08e3bee56ae854a4a8fb1ef4105ccbae272c6e482e86253aa300d16",
+              "bytes": 60831,
+              "width": 720,
+              "height": 720,
+              "frame": 63
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/realistic/glute-max-A/dark/end.720.png",
+              "sha256": "944152e6a4c8b21fdcec4fb83b72f040ab74c528bf247a8eb5fca258d02ac5c3",
+              "bytes": 50380,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "realistic",
+        "theme": "light",
+        "highlight": {
+          "enabled": true,
+          "color": "#f08a3c",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/realistic/glute-max-A/light/loop.720.mp4",
+          "sha256": "1359df93f7e517c514716d8e4bbe10f63feece742ceb0be5989761e87e3449ad",
+          "bytes": 290477,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/realistic/glute-max-A/light/cover.720.jpg",
+          "sha256": "6c0d30fac75c67deaf67242e478943b77927b9cb5c01c7b62b1dd54a673221c8",
+          "bytes": 31129,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/realistic/glute-max-A/light/thumbnail.240.jpg",
+          "sha256": "ce0e3e13c5fa9a95bcd354ebab2b1e89c65a714b463cfac53b4b7874f79006bd",
+          "bytes": 7079,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/realistic/glute-max-A/light/start.720.png",
+              "sha256": "389f354e8585422a6bad15987adda78796bb87400a4fb1f10bd5dd6be5b126f7",
+              "bytes": 54705,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/realistic/glute-max-A/light/peak.720.png",
+              "sha256": "97373a6362111c9faa9caa922d6ef827546cd8776c79ca6e80d06589346350e3",
+              "bytes": 65676,
+              "width": 720,
+              "height": 720,
+              "frame": 63
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/realistic/glute-max-A/light/end.720.png",
+              "sha256": "3cb308ac353034c9d063639a4c66de21085b5c3c8fedae7a0132cbd524ce26a5",
+              "bytes": 54262,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "tech-white",
+        "theme": "dark",
+        "highlight": {
+          "enabled": true,
+          "color": "#f08a3c",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/tech-white/glute-max-A/dark/loop.720.mp4",
+          "sha256": "9d3b7c15ebfe75b46aa160c9c523c2fa46af1b28c9b70f1e47f34c786a830dd1",
+          "bytes": 406876,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/tech-white/glute-max-A/dark/cover.720.jpg",
+          "sha256": "451c2035b06b6a826e384235b3ec426f3fa488ee3decaf5f6ff724e0f9f30da8",
+          "bytes": 36275,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/tech-white/glute-max-A/dark/thumbnail.240.jpg",
+          "sha256": "727e900162bf3f0c8b13ce44773283671f1e46b839636accdceafadac15c9b77",
+          "bytes": 7281,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/tech-white/glute-max-A/dark/start.720.png",
+              "sha256": "25984e24d2fb9e6d9dec89136ac130bf8bc4f74cec1793a93b83cf70e54c1d41",
+              "bytes": 76410,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/tech-white/glute-max-A/dark/peak.720.png",
+              "sha256": "dc3839707ff42a69a119267249c697eff3da7b791cc236c3db3d6b4ed364fa69",
+              "bytes": 85862,
+              "width": 720,
+              "height": 720,
+              "frame": 63
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/tech-white/glute-max-A/dark/end.720.png",
+              "sha256": "b9dfdde747636b637d559698661210a1cd93b83ef4b10e07ea5558965c339303",
+              "bytes": 76307,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "tech-white",
+        "theme": "light",
+        "highlight": {
+          "enabled": true,
+          "color": "#f08a3c",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/tech-white/glute-max-A/light/loop.720.mp4",
+          "sha256": "d236b576b7169224269a1844bc6a48c09161eeca500653a0cc277f3bbc27b14c",
+          "bytes": 386957,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/tech-white/glute-max-A/light/cover.720.jpg",
+          "sha256": "ea709c58d42e1188f8f0340e048bd0de088dce53053e8ca923a554a842223f0f",
+          "bytes": 33986,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/tech-white/glute-max-A/light/thumbnail.240.jpg",
+          "sha256": "727118800aee9126c9efaa04189ad07449c47069d47441d263500d579a607c23",
+          "bytes": 6493,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/tech-white/glute-max-A/light/start.720.png",
+              "sha256": "abbfff6cef5e7848f600804c9ee7a7a97cb83d595949a7e7e3b4d1cb19078eeb",
+              "bytes": 74349,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/tech-white/glute-max-A/light/peak.720.png",
+              "sha256": "7c5de3bb47d6628368f8f93cd31be3145cb7fffcbeb6aa3ca026a853aaacc4a4",
+              "bytes": 82076,
+              "width": 720,
+              "height": 720,
+              "frame": 63
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/tech-white/glute-max-A/light/end.720.png",
+              "sha256": "160fcf3ff66d8b0a12d1ca8de827573234277ed5d802f5d57f8a25d3edd05922",
+              "bytes": 74132,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "neon-night",
+        "theme": "dark",
+        "highlight": {
+          "enabled": true,
+          "color": "#9fdcff",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/neon-night/glute-max-A/dark/loop.720.mp4",
+          "sha256": "163a54949b06721d2c156c56911287bda7976334f1d6df8dc780b1a3a927b5cf",
+          "bytes": 406498,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/neon-night/glute-max-A/dark/cover.720.jpg",
+          "sha256": "e6360957ad4c3bc0accfca1ed7ec0fb9cecfc16a1bdf46c9777c85ec0859f252",
+          "bytes": 35622,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/neon-night/glute-max-A/dark/thumbnail.240.jpg",
+          "sha256": "040f5c6e5eb0c96b17d7cb1c32e68b85ccff1cd9710afe3561c06211d806c2aa",
+          "bytes": 6508,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night/glute-max-A/dark/start.720.png",
+              "sha256": "2ffd1ee3b762227528cb08cee22a51fbecbd62811988248728313a444582e094",
+              "bytes": 77532,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night/glute-max-A/dark/peak.720.png",
+              "sha256": "f4183b6254ec17b27f7a52e7ff36f80003303adb8634df8097bc1238fa8bd95c",
+              "bytes": 84544,
+              "width": 720,
+              "height": 720,
+              "frame": 63
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night/glute-max-A/dark/end.720.png",
+              "sha256": "dd1b848e738a1c19725adfabc2041fbf82a49b6d17d7fba31ba91dd100c52601",
+              "bytes": 77298,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "neon-night",
+        "theme": "light",
+        "highlight": {
+          "enabled": true,
+          "color": "#9fdcff",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/neon-night/glute-max-A/light/loop.720.mp4",
+          "sha256": "5ad0e1e6cfb099ee095effae6a5f56d65f4d714edf72d79f94be0051202abcac",
+          "bytes": 430474,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/neon-night/glute-max-A/light/cover.720.jpg",
+          "sha256": "85a4a6b78646675103e8e8e05c2c28c5e74143109ed0dc37b483f356d9bab3f9",
+          "bytes": 40959,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/neon-night/glute-max-A/light/thumbnail.240.jpg",
+          "sha256": "cdf2db7c7850ae0770fd02f7eacd0e69eec55343edbfd9917b91c2df97738c54",
+          "bytes": 8318,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night/glute-max-A/light/start.720.png",
+              "sha256": "e4c7ff5647d3c114372b0ebaddb138c011c8686f8d13564f34687588ccedbca2",
+              "bytes": 81861,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night/glute-max-A/light/peak.720.png",
+              "sha256": "1b8b9bd605ad219a5caff112a72441b5cf881561e3391fd5c795dd9008206f65",
+              "bytes": 91448,
+              "width": 720,
+              "height": 720,
+              "frame": 63
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night/glute-max-A/light/end.720.png",
+              "sha256": "d64cbc2ed31c43d1d2842c0fc1ae401d90973fc468e015c3d22c64984a7e7053",
+              "bytes": 81727,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "neon-night-b",
+        "theme": "dark",
+        "highlight": {
+          "enabled": true,
+          "color": "#b6ffd0",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/neon-night-b/glute-max-A/dark/loop.720.mp4",
+          "sha256": "4ba412ff3e22fac0d7518498d2c5dfd9fad75439dc7ceabf5973be3a83ce2cb9",
+          "bytes": 423037,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/neon-night-b/glute-max-A/dark/cover.720.jpg",
+          "sha256": "767c592bf5a66c1ae0144249b562fb3faa0dc95e29e5a5b04921b4513f4c0c0c",
+          "bytes": 35570,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/neon-night-b/glute-max-A/dark/thumbnail.240.jpg",
+          "sha256": "c46ef5dccaa7152459a439b477f8fe27d4a3ecd51bb18e2739d00e36bd241300",
+          "bytes": 6601,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night-b/glute-max-A/dark/start.720.png",
+              "sha256": "85c953556f0795eaf45f6a73a8901194675778909e4efdf29e3a8adfbb568415",
+              "bytes": 76982,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night-b/glute-max-A/dark/peak.720.png",
+              "sha256": "cf9288b71f145d8a80ce799943ef001ef8e8fa54152969fc28787eced4a29115",
+              "bytes": 84026,
+              "width": 720,
+              "height": 720,
+              "frame": 63
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night-b/glute-max-A/dark/end.720.png",
+              "sha256": "780d724894e65743d99cf405a2f21c33e57bfc536a74026c837ae86081954376",
+              "bytes": 77023,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "neon-night-b",
+        "theme": "light",
+        "highlight": {
+          "enabled": true,
+          "color": "#b6ffd0",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/neon-night-b/glute-max-A/light/loop.720.mp4",
+          "sha256": "ddc4c2ff861bd58f2f949d05de1eadd9359922feaff919e6b45b2cec3db7e2fd",
+          "bytes": 442431,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/neon-night-b/glute-max-A/light/cover.720.jpg",
+          "sha256": "dd334c84e8389be658b6110695f003878de8eca082765040877abc465768d260",
+          "bytes": 40610,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/neon-night-b/glute-max-A/light/thumbnail.240.jpg",
+          "sha256": "daaa4cf05a9de5cc2073c5bfc7ef3a6c000b4d522f2fabffa1903eaa12949394",
+          "bytes": 8225,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night-b/glute-max-A/light/start.720.png",
+              "sha256": "026a910f9e698eac2b1967b8a7bf4693d5fad1ab033fb3f924f4a9b7bd26e530",
+              "bytes": 81171,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night-b/glute-max-A/light/peak.720.png",
+              "sha256": "f36f0aa94a2a3905aba39a556e3c09a0b8d4f37805153437c875f0178c6646f4",
+              "bytes": 91183,
+              "width": 720,
+              "height": 720,
+              "frame": 63
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night-b/glute-max-A/light/end.720.png",
+              "sha256": "352a1440818acf68d05c8a4c0d315b7bba02f95b007f6e0ad586b86bfd1ede64",
+              "bytes": 81111,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "hologram",
+        "theme": "dark",
+        "highlight": {
+          "enabled": true,
+          "color": "#e9d49c",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/hologram/glute-max-A/dark/loop.720.mp4",
+          "sha256": "7a6f8b37e40faa510b6430c562ead68aefafc00942296ab2a6712b460391bcbf",
+          "bytes": 487781,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/hologram/glute-max-A/dark/cover.720.jpg",
+          "sha256": "755956e03f7b6724eede5d94cc7cf0a8e2240bff8f4f46e11b212147fc5472f0",
+          "bytes": 34402,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/hologram/glute-max-A/dark/thumbnail.240.jpg",
+          "sha256": "cccdd6a06adbe75aa48025a2b6ac6f724bc1a4e72621bab2e3337b6044f1196b",
+          "bytes": 6193,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/hologram/glute-max-A/dark/start.720.png",
+              "sha256": "a2e50a1930845422a12cc207736eb58c90b3aaf71ac5e24acffb27b007f7ed2e",
+              "bytes": 85372,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/hologram/glute-max-A/dark/peak.720.png",
+              "sha256": "64753b175f2e47f4e0962bab7a41fb964f5a154a3afafdee8279afef7b843008",
+              "bytes": 91533,
+              "width": 720,
+              "height": 720,
+              "frame": 63
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/hologram/glute-max-A/dark/end.720.png",
+              "sha256": "279fe19e8c84c8221bbbf3ea0e376aed03806628c5a520a635de1cee6f69fd70",
+              "bytes": 85284,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "hologram",
+        "theme": "light",
+        "highlight": {
+          "enabled": true,
+          "color": "#e9d49c",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/hologram/glute-max-A/light/loop.720.mp4",
+          "sha256": "e1db25012c67a830cae51c115a05ecc9867dd862cc5b98bec97da25cb1af5ebe",
+          "bytes": 245685,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/hologram/glute-max-A/light/cover.720.jpg",
+          "sha256": "6c67257e0af899c01f4f95f03a5b5be348f03a729941954e5c4b57d5fea7a4f1",
+          "bytes": 29388,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/hologram/glute-max-A/light/thumbnail.240.jpg",
+          "sha256": "8e4d2dd582bc25f0173d1f12128c240a532a69b82a8cb8927cf0557567bfa035",
+          "bytes": 6271,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/hologram/glute-max-A/light/start.720.png",
+              "sha256": "f19fcf36f3a33912a0d59e46d4100e6800402ec2244bf4a8b25b5c0edc6d147f",
+              "bytes": 74371,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/hologram/glute-max-A/light/peak.720.png",
+              "sha256": "55115b95c2a0782198435ee5fe47fae97aa56a5b58c0d11096f6782fdcebec35",
+              "bytes": 81420,
+              "width": 720,
+              "height": 720,
+              "frame": 63
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/hologram/glute-max-A/light/end.720.png",
+              "sha256": "fa5a04fdad5ee33503b0abbd2bf12e41d3045df159b7a37d6bffaf59f06186ab",
+              "bytes": 74272,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      }
+    ],
+    "transparentCovers": {
+      "realistic": {
+        "root": "media",
+        "path": "derivatives/realistic/glute-max-A/cover.transparent.1080.png",
+        "sha256": "2ee3d3ce699cc677b57de527bc216d17237cef935d8b031753f93d279014d2f2",
+        "bytes": 133066,
+        "width": 1080,
+        "height": 1080,
+        "alpha": true
+      },
+      "tech-white": {
+        "root": "media",
+        "path": "derivatives/tech-white/glute-max-A/cover.transparent.1080.png",
+        "sha256": "8c52b39c58c51e76c875c9df1b7f78d2b930fad56b75ad129eb3962a371d5df2",
+        "bytes": 175996,
+        "width": 1080,
+        "height": 1080,
+        "alpha": true
+      },
+      "neon-night": {
+        "root": "media",
+        "path": "derivatives/neon-night/glute-max-A/cover.transparent.1080.png",
+        "sha256": "92ad6875e96d83479da44599da0d1f3f583033d5a021a6b202818328912806f3",
+        "bytes": 194233,
+        "width": 1080,
+        "height": 1080,
+        "alpha": true
+      },
+      "neon-night-b": {
+        "root": "media",
+        "path": "derivatives/neon-night-b/glute-max-A/cover.transparent.1080.png",
+        "sha256": "8e701b1cb7593cfed31d9b0aa78ca1db9dd7e717ea4db25550c27bf055a1f8d4",
+        "bytes": 194591,
+        "width": 1080,
+        "height": 1080,
+        "alpha": true
+      },
+      "hologram": {
+        "root": "media",
+        "path": "derivatives/hologram/glute-max-A/cover.transparent.1080.png",
+        "sha256": "4166c1e242a866e49fab6e7f01c8db27cfcaf793c92b736a34f2490b1b075de8",
+        "bytes": 233772,
+        "width": 1080,
+        "height": 1080,
+        "alpha": true
+      }
+    },
+    "provenance": {
+      "framing": {
+        "root": "media",
+        "path": "manifests/framing/glute-max-A.json",
+        "sha256": "290102b64c04767b4e26ee62f4d89602a109440cc4cad20a8168be896151851b",
+        "bytes": 293
+      }
+    },
+    "framingId": "fixed-square-290102b64c04767b",
+    "compositor": {
+      "root": "repo",
+      "path": "tools/action-package-v2/composite.py",
+      "sha256": "fedb15d24c7080926a857cacad3d3b10b15617735ab3d88053cb885af7c70507",
+      "bytes": 21548
+    }
+  },
+  "voice": {
+    "actionId": "glute-max-A",
+    "manifest": {
+      "root": "repo",
+      "path": "catalog/voice-v2/manifest.json",
+      "sha256": "ba775ace59603e534c3dc979fc8a8cc277836427efcd6b10f2e88e16f696336c",
+      "bytes": 195389
+    }
+  },
+  "validation": {
+    "modelVersion": "1.0.0-rc2",
+    "mirrorGenerated": false,
+    "review": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "evidence": []
+    },
+    "manifest": {
+      "root": "media",
+      "path": "manifests/glute-max-A.json",
+      "sha256": "e1ab33c8d1a0f261b1b574575e673553faaa24cbf317e5832f4bb88ab5885b6f",
+      "bytes": 28056
+    }
+  }
+}

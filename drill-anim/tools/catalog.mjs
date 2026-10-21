@@ -276,12 +276,12 @@ L.push(`| 原版已被在用的修订版取代（保留不删） | ${superseded.
 L.push(`| 有 spec 但没有被任何 App/发布版本使用 | ${unused.length} |`);
 L.push(`| SHA 未登记 / 哈希不符 | ${rows.filter(r => /✗|⚠/.test(r.registered)).length} |`, '');
 for (const c of CATS) L.push(`- ${c.title}：${rows.filter(r => r.cat === c.key).length}`);
-L.push('', '列说明：时长 = `timeline.duration` 秒；帧 = 时长 × spec 的 fps（未写 fps 按 30）。发布时 HipLab 统一包装成 30 fps，所以**发布片的帧号 ≠ spec 原生帧号**。profile 空 = 旧人物（未设 `modelProfile`），新做/重做必须写 `training-human-v2`。SHA 列：基线 59 = 由 git 提交 `1adcab8` 固定；PR #n = 在 `data/home-pr-candidates.json` 或 `verify.mjs` 登记。', '');
+L.push('', '列说明：时长 = `timeline.duration` 秒；帧 = 时长 × spec 的 fps（未写 fps 按 30）。发布时 HipLab 统一包装成 30 fps，所以**发布片的帧号 ≠ spec 原生帧号**。profile 空 = 历史旧人物（未设 `modelProfile`）；`v2` 已退出新生产，仅供历史复现。新做/重做读取 `models/current-production.json`，显式绑定 `training-human-v2plus` 完整配方；本轮动作包 v2 先做六动作、五皮肤试点。SHA 列：基线 59 = 由 git 提交 `1adcab8` 固定；PR #n = 在 `data/home-pr-candidates.json` 或 `verify.mjs` 登记。', '');
 for (const c of CATS) {
   const rs = rows.filter(r => r.cat === c.key); if (!rs.length) continue;
   L.push(`## ${c.title}`, '');
   L.push('| id | 中文名 | 目标高亮 | 场景/道具 | 时长/帧 | profile | 修订自 | 使用方 | SHA | 已知问题 |', '|---|---|---|---|---|---|---|---|---|---|');
-  for (const r of rs) L.push(`| \`${r.id}\` | ${esc(r.flareName && r.flareName !== r.name ? `${r.name}（App：${r.flareName}）` : r.name)} | ${esc(r.target)}${r.side && r.side !== 'both' ? `（${r.side}）` : ''} | ${esc(r.scene)} | ${r.duration}s/${r.frames}f@${r.fps} | ${r.modelProfile ? 'v2' : '旧'} | ${r.revisionOf ? `\`${r.revisionOf}\`` : ''} | ${esc(r.usedBy.join('；') || '—')} | ${esc(r.registered)} | ${esc(r.issues.join('；'))} |`);
+  for (const r of rs) L.push(`| \`${r.id}\` | ${esc(r.flareName && r.flareName !== r.name ? `${r.name}（App：${r.flareName}）` : r.name)} | ${esc(r.target)}${r.side && r.side !== 'both' ? `（${r.side}）` : ''} | ${esc(r.scene)} | ${r.duration}s/${r.frames}f@${r.fps} | ${r.modelProfile === 'training-human-v2plus' ? 'v2plus' : r.modelProfile === 'training-human-v2' ? 'v2（历史）' : r.modelProfile || '旧'} | ${r.revisionOf ? `\`${r.revisionOf}\`` : ''} | ${esc(r.usedBy.join('；') || '—')} | ${esc(r.registered)} | ${esc(r.issues.join('；'))} |`);
   L.push('');
 }
 L.push('## 已有 spec 但未被任何 App / 发布版本使用', '');

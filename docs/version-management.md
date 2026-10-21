@@ -9,11 +9,19 @@
 | AI 动作目录 | [catalog.json](../catalog/catalog.json)、[Schema](../catalog/catalog.schema.json) | `version` 与 `formatVersion` | 稳定动作 id、剂量、侧别、注意部位、素材位置；生成规则见 [catalog/README.md](../catalog/README.md) |
 | 人工裁定 | [overrides.json](../catalog/review/overrides.json)、[taxonomy.json](../catalog/taxonomy.json) | 随目录内容版本及 Git 提交 | 更正先入裁定数据，再重建目录与审阅表 |
 | 动作规格 | `drill-anim/specs/`，源哈希由 `drill-anim/verify.mjs` 与候选表固定 | `<id>-r2.js`、`-r3.js` 等修订文件及 LF SHA-256 | 原版不覆盖；[spec 总表](drill-catalog.md)含历史修订，文件数不等于稳定动作数 |
-| 人物模型 | [training-human-v2.json](../drill-anim/models/training-human-v2.json) | profile id、模型 `version`、13 个固定源 SHA-256 | 改固定源必须建新模型版本，不能沿用旧身份 |
+| 人物模型 | [当前生产配置](../drill-anim/models/current-production.json)、[v2plus 清单](../drill-anim/models/training-human-v2plus.json)；[v2 冻结清单](../drill-anim/models/training-human-v2.json)保留 | 生产配方、profile id、模型 `version`、各固定源 SHA-256 | 改固定源须建新模型版本；配方只影响新任务，旧批次按其原 manifest 续作 |
 | App 媒体 ZIP | [media/manifest.json](../media/manifest.json)、`media/releases/<版本>.md` | 独立媒体版本、ZIP SHA-256 | `published` 条目及 ZIP 固定，内容变化另发版本 |
 | 制作素材云端归档 | [同步规则](material-cloud-sync.md) | 动作 id、变体与内容指纹 | 不是 App 发布版本；上传校验与制作 QA 分开记录，后续同步由用户请求触发 |
 
 `catalog 0.2.0` 和 `media 0.2.0` 不是同一次发布。App 自身版本、SDK 版本和 lock 的媒体版本也不能互相替代。当前汇总见台账，不在不同入口各维护一份版本数字。
+
+## 人体制作版本与生产默认
+
+2026-10-21 用户选择新版人体制作今后动作，默认配方由 `drill-anim/models/current-production.json` 管理：`training-human-v2plus` / `1.0.0-rc2`、`alignClavicles:false`，compression 训练服、base 躯干/四肢/手、原 v2 头（head off）、`skin:'realistic'`，保留动作肌群高亮，不显示肌群分区线。白金、蓝、绿和全息仅为可选皮肤，详见 [v2plus 制作标准](training-human-v2plus.md)。PR #12 和集成修复已合入并推送 main；具体 SHA 和证据见台账。App 接入与全量动作验收仍单独跟踪。
+
+模型固定清单及生产配方中的流程描述是该版本编制时的注记；当前合入、推送、动作验收与媒体发布状态集中维护在台账，不为改变这些状态改写已固定来源和模型身份。
+
+模型版本固定源码与数据，生产配置选择该版本的一组参数；两者均须随新批次记录。新建 HD 任务读取当前生产配置，已有批次 resume 使用其原 `source-manifest.json`，不能自动切新版。原约 200 份 spec、v2 的 13 个固定源、旧媒体、已发布 ZIP 与历史记录保持原样；重渲另建批次/修订与输出。检查证据记录实际场景和输入 SHA，不能由双场景试片推断全部动作已通过。
 
 ## 目录版本与固定来源
 

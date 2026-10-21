@@ -32,6 +32,14 @@ class PrepareManifestTest(unittest.TestCase):
         self.spec.parent.mkdir(parents=True)
         self.spec.write_text("export default {id:'test-drill'};\n", encoding="utf-8")
         (self.root / "config.json").write_text("{}\n", encoding="utf-8")
+        # This historical recipe fixture deliberately selects v2 instead of
+        # depending on the repository's current v2plus production default.
+        models=self.root/'models';models.mkdir()
+        (models/'training-human-v2.json').write_text(json.dumps({
+            'id':'training-human-v2','version':'2.0.1','sourceSha256':{}}),encoding='utf-8')
+        (models/'current-production.json').write_text(json.dumps({
+            'format':'pose-hub-production-model','formatVersion':1,
+            'modelProfile':'training-human-v2','modelVersion':'2.0.1','alignClavicles':False}),encoding='utf-8')
         (self.root / 'themes').mkdir()
         (self.root / 'themes/glow-soft.json').write_text('{}\n',encoding='utf-8')
         assets = self.app / "assets/hip"

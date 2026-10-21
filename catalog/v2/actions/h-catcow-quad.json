@@ -1,0 +1,1419 @@
+{
+  "format": "action-package@2",
+  "id": "h-catcow-quad",
+  "version": "2.0.0-draft.2",
+  "status": "review",
+  "definition": {
+    "idMappings": [],
+    "name": {
+      "zh": "四足猫牛式",
+      "en": "Quadruped Cat-Cow"
+    },
+    "purpose": {
+      "zh": "活动下背和腹部",
+      "en": "Practice gentle spinal movement from a stable quadruped position."
+    },
+    "tags": {
+      "category": "mobility",
+      "activeMuscles": [
+        "erectors",
+        "abs"
+      ],
+      "synergistMuscles": [
+        "deltoids",
+        "forearms"
+      ],
+      "equipment": [
+        "mat"
+      ],
+      "position": "quadruped",
+      "scenes": [
+        "home"
+      ],
+      "difficulty": 1,
+      "trainingType": "control"
+    },
+    "unilateral": false,
+    "startingSide": null,
+    "cues": [
+      {
+        "id": "cue1",
+        "text": {
+          "zh": "收腹拱背，缓慢抬胸，手脚保持稳定",
+          "en": "Round your back, then gently lift your chest, keeping your hands and knees still"
+        },
+        "primary": true
+      },
+      {
+        "id": "cue2",
+        "text": {
+          "zh": "手掌与膝盖保持稳定支撑，慢慢活动脊柱",
+          "en": "Keep your palms and knees stable as you gently move your spine."
+        },
+        "primary": false
+      },
+      {
+        "id": "cue3",
+        "text": {
+          "zh": "头颈跟随躯干自然活动，保持呼吸",
+          "en": "Let your head and neck follow the torso naturally and keep breathing."
+        },
+        "primary": false
+      }
+    ],
+    "commonErrors": [
+      {
+        "zh": "动作过快或用力甩头",
+        "en": "Moving too quickly or throwing the head."
+      },
+      {
+        "zh": "手脚不断移动，支撑位置失稳",
+        "en": "Shifting the hands and knees and losing a stable base."
+      }
+    ],
+    "cautions": {
+      "items": [
+        {
+          "zh": "手腕与肩：手掌稳固承托，肩部不过度耸起，手腕不适时改用已审核的坐姿替代。",
+          "en": "Wrists and shoulders: keep the palms supported without shrugging; use a reviewed seated alternative if wrist loading is uncomfortable."
+        },
+        {
+          "zh": "膝：使用舒适垫面，膝盖支撑位置保持稳定。",
+          "en": "Knees: use comfortable padding and keep the knee support positions stable."
+        },
+        {
+          "zh": "腰背与颈：缓慢在舒适范围内活动，头颈自然跟随躯干，不猛抬头或强行塌腰。",
+          "en": "Back and neck: move slowly within a comfortable range, letting the head follow the trunk without throwing it back or forcing the lower back."
+        }
+      ],
+      "review": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidence": []
+      }
+    },
+    "contraindications": {
+      "items": [
+        {
+          "zh": "本动作引发疼痛时停止，不通过加深动作或加重继续；先向医生或物理治疗师确认。",
+          "en": "Stop if this exercise causes pain; do not push deeper or add load before seeking clinical advice."
+        },
+        {
+          "zh": "已有医嘱限制脊柱屈伸或手腕、膝部承重时，先取得许可再做四足版本。",
+          "en": "Obtain clearance first if spinal flexion/extension or wrist or knee loading has been restricted."
+        }
+      ],
+      "review": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidence": []
+      }
+    },
+    "alternatives": [
+      "o-seated-catcow"
+    ],
+    "regressions": [
+      "o-seated-catcow"
+    ],
+    "progressions": [
+      "w-bird-dog"
+    ],
+    "defaultDose": {
+      "mode": "time",
+      "sets": 1,
+      "seconds": 40,
+      "restSeconds": 10
+    },
+    "doseRange": {
+      "sets": [
+        1,
+        2
+      ],
+      "seconds": [
+        20,
+        80
+      ],
+      "restSeconds": [
+        0,
+        60
+      ]
+    },
+    "rhythm": {
+      "kind": "rep_cycle",
+      "leadSeconds": 0,
+      "source": "source-timeline",
+      "phases": [
+        {
+          "id": "roundBack",
+          "seconds": 1
+        },
+        {
+          "id": "catHold",
+          "seconds": 0.6
+        },
+        {
+          "id": "toCow",
+          "seconds": 1.2
+        },
+        {
+          "id": "cowHold",
+          "seconds": 0.6
+        },
+        {
+          "id": "returnNeutral",
+          "seconds": 0.6
+        }
+      ]
+    },
+    "apps": [
+      "smartfit"
+    ],
+    "editorialReview": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "evidence": []
+    },
+    "editorialNotes": [
+      "定义内容已补为具体双语草稿；cautions、contraindications、关系候选和协同标签有数据，review pending表示待审核，不表示这些字段缺数据。",
+      "禁用条件仅覆盖疼痛停止与既有临床限制等通用筛查，不是疾病特异的完整绝对禁忌清单；未据此宣称任何疾病或术后状态均禁止运动。",
+      "o-seated-catcow源spec是相同猫牛屈伸模式、手放膝上的坐姿版本，可作去掉四足手腕膝承重的替代/降阶；需要稳定椅具，节奏不能照搬四足版本。",
+      "w-bird-dog是进一步的四足对侧肢体离地稳定训练，列为脊柱控制目标的进阶草稿，不是让猫牛式做更大屈伸；须先能在中立位稳定支撑并另审手腕/膝适应性。",
+      "deltoids/forearms表示手撑承重与腕部稳定的协同，不应成为猫牛式主动举肩或腕屈伸的指令。",
+      "证据/推断边界见catalog/v2/definition-evidence.md（仓库原目录/源spec与权威一手资料；全部编辑审核仍pending）。",
+      "医学安全参考：AAOS Spine Conditioning Program https://www.orthoinfo.org/recovery/spine-conditioning-program/ ; Hip Conditioning Program https://www.orthoinfo.org/recovery/hip-conditioning-program/ ; NHS Strength exercises https://www.nhs.uk/live-well/exercise/strength-exercises/ ; retrieved 2026-10-21."
+    ],
+    "countingSemantics": "One cat-to-cow-and-neutral cycle lasts 4 seconds; the 8-second loop contains two cycles. Default seconds=40 is timed movement, 10 cycles at the demonstration cadence, not 40 repetitions."
+  },
+  "source": {
+    "model": {
+      "id": "training-human-v2plus",
+      "version": "1.0.0-rc2",
+      "manifest": {
+        "root": "repo",
+        "path": "drill-anim/models/training-human-v2plus.json",
+        "sha256": "ec2bc815ded157dbc7673e283ed9b6bb1baa710a39ce3a02f88453e8d7fb0a1d",
+        "bytes": 6494,
+        "normalization": "lf"
+      }
+    },
+    "spec": {
+      "root": "repo",
+      "path": "drill-anim/specs/h-catcow-quad-r2.js",
+      "sha256": "3af9063433dcde4c2b742b573c86010aa23e0f8d3810d2194fe0eb5916830130",
+      "bytes": 1430,
+      "normalization": "lf"
+    },
+    "keyMoments": {
+      "start": 0,
+      "peak": 1.3,
+      "end": 8
+    },
+    "highlightMuscles": [
+      "erectors",
+      "abs"
+    ],
+    "qa": {
+      "intersections": {
+        "status": "pass",
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-21T11:18:05.625879+00:00",
+        "evidence": [
+          {
+            "root": "media",
+            "path": "qa/reviews/h-catcow-quad-evidence.json",
+            "sha256": "8ea8ea54f69e56d27afe6f2abab359fb1f585d6061f8813efe8c7bac95585175",
+            "bytes": 6030
+          }
+        ],
+        "framesReviewed": [
+          0,
+          30,
+          39,
+          60,
+          90,
+          120,
+          150,
+          180,
+          210,
+          239,
+          240
+        ]
+      },
+      "handsFeet": {
+        "status": "pass",
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-21T11:18:05.625879+00:00",
+        "evidence": [
+          {
+            "root": "media",
+            "path": "qa/reviews/h-catcow-quad-evidence.json",
+            "sha256": "8ea8ea54f69e56d27afe6f2abab359fb1f585d6061f8813efe8c7bac95585175",
+            "bytes": 6030
+          }
+        ],
+        "framesReviewed": [
+          0,
+          30,
+          39,
+          60,
+          90,
+          120,
+          150,
+          180,
+          210,
+          239,
+          240
+        ]
+      },
+      "propFlicker": {
+        "status": "pass",
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-21T11:18:05.625879+00:00",
+        "evidence": [
+          {
+            "root": "media",
+            "path": "qa/reviews/h-catcow-quad-evidence.json",
+            "sha256": "8ea8ea54f69e56d27afe6f2abab359fb1f585d6061f8813efe8c7bac95585175",
+            "bytes": 6030
+          }
+        ],
+        "framesReviewed": [
+          0,
+          30,
+          39,
+          60,
+          90,
+          120,
+          150,
+          180,
+          210,
+          239,
+          240
+        ]
+      },
+      "loopSeam": {
+        "status": "pass",
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-21T11:18:05.625879+00:00",
+        "evidence": [
+          {
+            "root": "media",
+            "path": "qa/reviews/h-catcow-quad-evidence.json",
+            "sha256": "8ea8ea54f69e56d27afe6f2abab359fb1f585d6061f8813efe8c7bac95585175",
+            "bytes": 6030
+          }
+        ],
+        "framesReviewed": [
+          0,
+          30,
+          39,
+          60,
+          90,
+          120,
+          150,
+          180,
+          210,
+          239,
+          240
+        ]
+      }
+    },
+    "dependencies": [
+      {
+        "root": "repo",
+        "path": "drill-anim/lib/home-anim.mjs",
+        "sha256": "1798c9e55c28b32391b7ef32aa358427b4743ee1959f86ec488a95fe88a05557",
+        "bytes": 3691,
+        "normalization": "lf"
+      },
+      {
+        "root": "repo",
+        "path": "drill-anim/lib/ss-geo.mjs",
+        "sha256": "45ca774079e3a85ecc4f924a3220d4baa721f0435e16f6e6e21ffa19e17e8603",
+        "bytes": 3700,
+        "normalization": "lf"
+      },
+      {
+        "root": "repo",
+        "path": "drill-anim/specs/h-catcow-quad.js",
+        "sha256": "d0d3144351d327f09e60fc811e6648533497b1370cb6e1f58d503d51ff8f7bfb",
+        "bytes": 3737,
+        "normalization": "lf"
+      }
+    ]
+  },
+  "masters": {
+    "requiredSkins": [
+      "realistic",
+      "tech-white",
+      "neon-night",
+      "neon-night-b",
+      "hologram"
+    ],
+    "skins": {
+      "realistic": {
+        "geometrySha256": "aa0aa8dcfa8645375ac39890a58b8773e0e14ecc886fac6f2fda6e459d222152",
+        "occlusionSha256": "a8cbe4e539c86a0e039c3f92c4033206a055feebac3bb0902f1a0bb9ca07b942",
+        "measurement": {
+          "root": "media",
+          "path": "masters/realistic/h-catcow-quad/layer-manifest.json",
+          "sha256": "ab2f2e7ffe93997187f73389596231c400f7f5cee7bb30df27444fce085612b0",
+          "bytes": 13146
+        },
+        "bodyProps": {
+          "sequence": {
+            "root": "media",
+            "path": "masters/realistic/h-catcow-quad/body/index.json",
+            "sha256": "711fa7e0fb5ade725c2f28290d5b9da39ea1d5d4b412ca6879a3906eb6d653ed",
+            "bytes": 54329
+          },
+          "width": 1080,
+          "height": 1080,
+          "durationSeconds": 8,
+          "frameCount": 240,
+          "fps": 30,
+          "alpha": true
+        },
+        "highlightMask": {
+          "sequence": {
+            "root": "media",
+            "path": "masters/realistic/h-catcow-quad/highlight/index.json",
+            "sha256": "fed6b25fe1f8ca5684a105528de5db0e5f53603c253dd05c75febccd32b861fb",
+            "bytes": 55529
+          },
+          "width": 1080,
+          "height": 1080,
+          "durationSeconds": 8,
+          "frameCount": 240,
+          "fps": 30,
+          "alpha": true,
+          "grayscale": true,
+          "occlusionAware": true
+        },
+        "shadow": {
+          "sequence": {
+            "root": "media",
+            "path": "masters/realistic/h-catcow-quad/shadow/index.json",
+            "sha256": "33dcf8dd166dfe4bf221c925ff0b5ab431dd1cea440981a8ea168d281ddafb55",
+            "bytes": 54809
+          },
+          "width": 1080,
+          "height": 1080,
+          "durationSeconds": 8,
+          "frameCount": 240,
+          "fps": 30,
+          "alpha": true
+        }
+      },
+      "tech-white": {
+        "geometrySha256": "aa0aa8dcfa8645375ac39890a58b8773e0e14ecc886fac6f2fda6e459d222152",
+        "occlusionSha256": "a8cbe4e539c86a0e039c3f92c4033206a055feebac3bb0902f1a0bb9ca07b942",
+        "measurement": {
+          "root": "media",
+          "path": "masters/tech-white/h-catcow-quad/layer-manifest.json",
+          "sha256": "8e2378669cef6229f33bd78cd9d4d19c49d7efbbfa3a63c9d3e38b0d8086a669",
+          "bytes": 13398
+        },
+        "bodyProps": {
+          "sequence": {
+            "root": "media",
+            "path": "masters/tech-white/h-catcow-quad/body/index.json",
+            "sha256": "06ce525e7f03873a1b7fce75e51c95930cfaf6b2c7f4c6ff9c48a41ae06d4b22",
+            "bytes": 54569
+          },
+          "width": 1080,
+          "height": 1080,
+          "durationSeconds": 8,
+          "frameCount": 240,
+          "fps": 30,
+          "alpha": true
+        },
+        "highlightMask": {
+          "sharedFrom": "realistic"
+        },
+        "shadow": {
+          "sharedFrom": "realistic"
+        }
+      },
+      "neon-night": {
+        "geometrySha256": "aa0aa8dcfa8645375ac39890a58b8773e0e14ecc886fac6f2fda6e459d222152",
+        "occlusionSha256": "a8cbe4e539c86a0e039c3f92c4033206a055feebac3bb0902f1a0bb9ca07b942",
+        "measurement": {
+          "root": "media",
+          "path": "masters/neon-night/h-catcow-quad/layer-manifest.json",
+          "sha256": "e496c7cee72e62c44050d5cc71ba63175a155f4cc285a4fb461bcc2c059c25bd",
+          "bytes": 13399
+        },
+        "bodyProps": {
+          "sequence": {
+            "root": "media",
+            "path": "masters/neon-night/h-catcow-quad/body/index.json",
+            "sha256": "b3e8a973ab274df0b6c4ea03704d66ca41dd24dbbaa980f6a040762d02b4d4a2",
+            "bytes": 54809
+          },
+          "width": 1080,
+          "height": 1080,
+          "durationSeconds": 8,
+          "frameCount": 240,
+          "fps": 30,
+          "alpha": true
+        },
+        "highlightMask": {
+          "sharedFrom": "realistic"
+        },
+        "shadow": {
+          "sharedFrom": "realistic"
+        }
+      },
+      "neon-night-b": {
+        "geometrySha256": "aa0aa8dcfa8645375ac39890a58b8773e0e14ecc886fac6f2fda6e459d222152",
+        "occlusionSha256": "a8cbe4e539c86a0e039c3f92c4033206a055feebac3bb0902f1a0bb9ca07b942",
+        "measurement": {
+          "root": "media",
+          "path": "masters/neon-night-b/h-catcow-quad/layer-manifest.json",
+          "sha256": "1fd2194c6b4260366f30f9dcbb932e17bd4e8891514f1a216f763b385dab39eb",
+          "bytes": 13407
+        },
+        "bodyProps": {
+          "sequence": {
+            "root": "media",
+            "path": "masters/neon-night-b/h-catcow-quad/body/index.json",
+            "sha256": "3b57e3bfeb7f72b19b96907134e8117b55c5cb95858fb69da230d6775fca63ca",
+            "bytes": 55289
+          },
+          "width": 1080,
+          "height": 1080,
+          "durationSeconds": 8,
+          "frameCount": 240,
+          "fps": 30,
+          "alpha": true
+        },
+        "highlightMask": {
+          "sharedFrom": "realistic"
+        },
+        "shadow": {
+          "sharedFrom": "realistic"
+        }
+      },
+      "hologram": {
+        "geometrySha256": "aa0aa8dcfa8645375ac39890a58b8773e0e14ecc886fac6f2fda6e459d222152",
+        "occlusionSha256": "a8cbe4e539c86a0e039c3f92c4033206a055feebac3bb0902f1a0bb9ca07b942",
+        "measurement": {
+          "root": "media",
+          "path": "masters/hologram/h-catcow-quad/layer-manifest.json",
+          "sha256": "dd435fda386f7389ba4badd43804fe59878751c056de96555de000f6425da7a6",
+          "bytes": 13391
+        },
+        "bodyProps": {
+          "sequence": {
+            "root": "media",
+            "path": "masters/hologram/h-catcow-quad/body/index.json",
+            "sha256": "4c1847d30e5cce251e9a76cba366919eb5e8cd97f89b034cbcdd4e3152270e1f",
+            "bytes": 54329
+          },
+          "width": 1080,
+          "height": 1080,
+          "durationSeconds": 8,
+          "frameCount": 240,
+          "fps": 30,
+          "alpha": true
+        },
+        "highlightMask": {
+          "sharedFrom": "realistic"
+        },
+        "shadow": {
+          "sharedFrom": "realistic"
+        }
+      }
+    },
+    "loopReview": {
+      "status": "pass",
+      "reviewer": "Codex",
+      "reviewedAt": "2026-10-21T11:18:05.625879+00:00",
+      "evidence": [
+        {
+          "root": "media",
+          "path": "qa/reviews/h-catcow-quad-evidence.json",
+          "sha256": "8ea8ea54f69e56d27afe6f2abab359fb1f585d6061f8813efe8c7bac95585175",
+          "bytes": 6030
+        }
+      ]
+    }
+  },
+  "derivatives": {
+    "method": "composite-from-masters",
+    "mirrored": false,
+    "variants": [
+      {
+        "skin": "realistic",
+        "theme": "dark",
+        "highlight": {
+          "enabled": true,
+          "color": "#f08a3c",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/realistic/h-catcow-quad/dark/loop.720.mp4",
+          "sha256": "9c3ea27425e1707b3e30939a51f57d57e346eef6ad3988aaed770ea570a63063",
+          "bytes": 304852,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/realistic/h-catcow-quad/dark/cover.720.jpg",
+          "sha256": "a4b29260c5a038d3d82d6f20030d63db4c74402569fa8464ed9687b08edc7f5d",
+          "bytes": 25224,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/realistic/h-catcow-quad/dark/thumbnail.240.jpg",
+          "sha256": "1dc7e75e53147a87ac1e7370e4c692dc02deeb6ada67f7f45ef3476fa0e58cd1",
+          "bytes": 5047,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/realistic/h-catcow-quad/dark/start.720.png",
+              "sha256": "7ded4cdd083ef7e48e0fa3cdb8a1574667e05c08da866de01810241b01db1ee3",
+              "bytes": 58834,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/realistic/h-catcow-quad/dark/peak.720.png",
+              "sha256": "31d173db51b9f5cb5db1b84f09dda0c6622125c5ddbc0e32e9a6d50a9a1cfd4e",
+              "bytes": 57998,
+              "width": 720,
+              "height": 720,
+              "frame": 39
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/realistic/h-catcow-quad/dark/end.720.png",
+              "sha256": "6ef641c4bd6c43c8a601d5852cd73d21e2f90b9239fac1c09936dbe46ed34787",
+              "bytes": 58895,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "realistic",
+        "theme": "light",
+        "highlight": {
+          "enabled": true,
+          "color": "#f08a3c",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/realistic/h-catcow-quad/light/loop.720.mp4",
+          "sha256": "cb8d32251d3e703e221c56b71b874de37ce4de68349355324728afbb497339fa",
+          "bytes": 306594,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/realistic/h-catcow-quad/light/cover.720.jpg",
+          "sha256": "d93d6256e6402ff43dbe4d4140deac5d06cfe6ff3389c96371adf67695d9444e",
+          "bytes": 29257,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/realistic/h-catcow-quad/light/thumbnail.240.jpg",
+          "sha256": "a8b36f69429a250901246e937de233d1dcefa7022a65f318dd7bb7ee1118a931",
+          "bytes": 6544,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/realistic/h-catcow-quad/light/start.720.png",
+              "sha256": "b5f126308739f8cc3ad8b0c5ebcd933d66a15fd0bf118baa11c7db494cabde4c",
+              "bytes": 64655,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/realistic/h-catcow-quad/light/peak.720.png",
+              "sha256": "a6838fe38187cd681e787d4b895408a78379d48d36bd3d28142ee779cf04dd4b",
+              "bytes": 63761,
+              "width": 720,
+              "height": 720,
+              "frame": 39
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/realistic/h-catcow-quad/light/end.720.png",
+              "sha256": "203e5f0e06d3e255059b39cc11c62ba52f1c72080837279ba2fe558e2ec3e131",
+              "bytes": 64572,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "tech-white",
+        "theme": "dark",
+        "highlight": {
+          "enabled": true,
+          "color": "#f08a3c",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/tech-white/h-catcow-quad/dark/loop.720.mp4",
+          "sha256": "7ecc6bfe6d51db55891cb4f3accffaa74b21abb29346cd06c8c80eceb4161c6e",
+          "bytes": 393999,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/tech-white/h-catcow-quad/dark/cover.720.jpg",
+          "sha256": "8fe05a28dc2a23958cb773fbf31fda4673c9d2732501b3f483dfe8a7a0089f34",
+          "bytes": 32312,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/tech-white/h-catcow-quad/dark/thumbnail.240.jpg",
+          "sha256": "1befcade28484c7fcb8528659846ab6f6a88f5ad5eebefa67d5e0df629f453c7",
+          "bytes": 6580,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/tech-white/h-catcow-quad/dark/start.720.png",
+              "sha256": "738920174002457eca9aa043938dd4458b7cc3a5c9196973f7a343412f214464",
+              "bytes": 78886,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/tech-white/h-catcow-quad/dark/peak.720.png",
+              "sha256": "5fec39ac225b26d65bdf833bb803040a0e0ff3b887175921c8691388f1648dc2",
+              "bytes": 78272,
+              "width": 720,
+              "height": 720,
+              "frame": 39
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/tech-white/h-catcow-quad/dark/end.720.png",
+              "sha256": "97b22ea70c15bab05ed543047cde53c135f858b566fd716b454e0dbf7dcbf852",
+              "bytes": 79047,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "tech-white",
+        "theme": "light",
+        "highlight": {
+          "enabled": true,
+          "color": "#f08a3c",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/tech-white/h-catcow-quad/light/loop.720.mp4",
+          "sha256": "df0e8271c791a5ae19c2b4aa39480e19b7ec0b02056cbbc01523979f371eb917",
+          "bytes": 381569,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/tech-white/h-catcow-quad/light/cover.720.jpg",
+          "sha256": "84fdb9f37919ebcea4b4c69792f302b33d9e836524b7913f98ea5ddb7e2795b6",
+          "bytes": 32498,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/tech-white/h-catcow-quad/light/thumbnail.240.jpg",
+          "sha256": "be830e1c17ad2f1fe2dfc7415be065e08a29c1af9841eb1f18d3fdb6b5071c3e",
+          "bytes": 6668,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/tech-white/h-catcow-quad/light/start.720.png",
+              "sha256": "f7479cc66ed0b993dff8d330755b03672a14c45cb2a0e84b0de5da7675312afb",
+              "bytes": 79591,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/tech-white/h-catcow-quad/light/peak.720.png",
+              "sha256": "b749ecb6e30a3f9e6acb673a6324910f0714ba1c8ead8420dd5aafaff8ec778d",
+              "bytes": 78710,
+              "width": 720,
+              "height": 720,
+              "frame": 39
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/tech-white/h-catcow-quad/light/end.720.png",
+              "sha256": "f35b5b6beff180ebe5654913280b71b35e7b77d206c41cf4c7d68317af24f2b5",
+              "bytes": 79624,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "neon-night",
+        "theme": "dark",
+        "highlight": {
+          "enabled": true,
+          "color": "#9fdcff",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/neon-night/h-catcow-quad/dark/loop.720.mp4",
+          "sha256": "b8e573cd704b83fcf47370b0789b0271bcb12764ee821b3cc2220883ad9deb63",
+          "bytes": 399019,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/neon-night/h-catcow-quad/dark/cover.720.jpg",
+          "sha256": "f475b20272487a2202388389f51a74be12361d6ffc6bb8dd1bedd936f24eb24d",
+          "bytes": 32653,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/neon-night/h-catcow-quad/dark/thumbnail.240.jpg",
+          "sha256": "8d4c7d2bdc367f9ccc14f7233fba4b413748c6663419b006c9f04d4242aafae7",
+          "bytes": 6070,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night/h-catcow-quad/dark/start.720.png",
+              "sha256": "7dcd06e2d5703874dfc74fea7ac0445d81ee438807647a62a543866993a63a9b",
+              "bytes": 79980,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night/h-catcow-quad/dark/peak.720.png",
+              "sha256": "2ca1eb96ecec3c0a1f389521a79220b7002a8a6a25a0c860a46a70bab6a091b7",
+              "bytes": 78916,
+              "width": 720,
+              "height": 720,
+              "frame": 39
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night/h-catcow-quad/dark/end.720.png",
+              "sha256": "f03eb7b356228bb37751bbc8a9abef7044c53680d1e5018a6cf8f683e1ceb59e",
+              "bytes": 80132,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "neon-night",
+        "theme": "light",
+        "highlight": {
+          "enabled": true,
+          "color": "#9fdcff",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/neon-night/h-catcow-quad/light/loop.720.mp4",
+          "sha256": "2217ef5dbb869bf26c00674334009a01cd11812632dce3d8377df733a465c6fc",
+          "bytes": 430305,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/neon-night/h-catcow-quad/light/cover.720.jpg",
+          "sha256": "bf7f91658f3860e6f543333969d3b3553be3203e4c1f5853ebb4da2daf73a35f",
+          "bytes": 37656,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/neon-night/h-catcow-quad/light/thumbnail.240.jpg",
+          "sha256": "7121aaa2cf554465d31f6a9146671319709c821f8d7a8b827c050177b05fffdb",
+          "bytes": 7726,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night/h-catcow-quad/light/start.720.png",
+              "sha256": "7520ff18c02a233d43f62aaddd865d46d333bdd2f814e2826bcbd5a8187c36b6",
+              "bytes": 86350,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night/h-catcow-quad/light/peak.720.png",
+              "sha256": "3c7cd26941fb936a3ef6cf20986e395a351dd60af2e593a7bebe62400e6228f9",
+              "bytes": 85041,
+              "width": 720,
+              "height": 720,
+              "frame": 39
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night/h-catcow-quad/light/end.720.png",
+              "sha256": "c12d4402453fbbd929ed47c12a88174ed6a4f293e06d9ba746c92c1339137764",
+              "bytes": 86343,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "neon-night-b",
+        "theme": "dark",
+        "highlight": {
+          "enabled": true,
+          "color": "#b6ffd0",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/neon-night-b/h-catcow-quad/dark/loop.720.mp4",
+          "sha256": "0ad9b7219c0f420fd0150d3beec6e3e88d7a70cb4e06e8967ae63de554dd4e55",
+          "bytes": 411771,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/neon-night-b/h-catcow-quad/dark/cover.720.jpg",
+          "sha256": "6508a365dd6f239e15f962ad344fdf3d3dcb7be3b2c8269b06c08f170b628cd4",
+          "bytes": 32712,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/neon-night-b/h-catcow-quad/dark/thumbnail.240.jpg",
+          "sha256": "beea61bc63d5d8480f38ad080838882b019fa070e02fabf2722918c0f7ade395",
+          "bytes": 6135,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night-b/h-catcow-quad/dark/start.720.png",
+              "sha256": "090bd20defda0ca1b948b3d2ca2ab89bfbebf18438a7f5f788fccfd05c5188d8",
+              "bytes": 79445,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night-b/h-catcow-quad/dark/peak.720.png",
+              "sha256": "9096109629c821640ab9fe94f4dda37049cf0e93c46ee9c86b92691959109982",
+              "bytes": 78388,
+              "width": 720,
+              "height": 720,
+              "frame": 39
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night-b/h-catcow-quad/dark/end.720.png",
+              "sha256": "5bd6930170debaa13064b9d223f119acf26dd6d4f6f27f40f6709bf5f084de65",
+              "bytes": 79541,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "neon-night-b",
+        "theme": "light",
+        "highlight": {
+          "enabled": true,
+          "color": "#b6ffd0",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/neon-night-b/h-catcow-quad/light/loop.720.mp4",
+          "sha256": "fffb8a902a9576316f0d2e94b60864dafb359aecd14cca7ab95a125a3c2e5f5a",
+          "bytes": 440133,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/neon-night-b/h-catcow-quad/light/cover.720.jpg",
+          "sha256": "0cc33e7d7f31a4614ea732566e9a0bc1451158f5c68c29806ef059a475d3ee40",
+          "bytes": 37507,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/neon-night-b/h-catcow-quad/light/thumbnail.240.jpg",
+          "sha256": "8ee149dbd92765aa60fe43b0ac0d2a16338823ae8016a33eae2cb65a3fb67d29",
+          "bytes": 7670,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night-b/h-catcow-quad/light/start.720.png",
+              "sha256": "74ebbeaf9b3abc1a28924bfd58c82f9631ec2e519f458b75b98d9846b6318d2f",
+              "bytes": 85890,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night-b/h-catcow-quad/light/peak.720.png",
+              "sha256": "c523f1dd1594cf25b92da47f46da5550f24e8c3c565e843560d25e9bcc85a8f4",
+              "bytes": 84642,
+              "width": 720,
+              "height": 720,
+              "frame": 39
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/neon-night-b/h-catcow-quad/light/end.720.png",
+              "sha256": "e434258af841fc9dc30725852b0fcc0e7665e177c276dae00bd3194b10eac155",
+              "bytes": 85886,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "hologram",
+        "theme": "dark",
+        "highlight": {
+          "enabled": true,
+          "color": "#e9d49c",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/hologram/h-catcow-quad/dark/loop.720.mp4",
+          "sha256": "e573df75a3fe6355b6cd79eff0d8c97977cccc7cff77e696a2b775bde292a36d",
+          "bytes": 490523,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/hologram/h-catcow-quad/dark/cover.720.jpg",
+          "sha256": "e0cdbbc3bd86a0a972065de50a2d930aa4d29e0c3cf8b14d3b164d59fd0a7a4f",
+          "bytes": 31542,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/hologram/h-catcow-quad/dark/thumbnail.240.jpg",
+          "sha256": "3ff4db368348f77d1c743a1574f8ed2efcfeda39651b1e0c1dbbb7adb6d75803",
+          "bytes": 5730,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/hologram/h-catcow-quad/dark/start.720.png",
+              "sha256": "ce9bc5278c19a41f9a5197a60b01b0cc9adc630ff505eee95e1871bebad03772",
+              "bytes": 88144,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/hologram/h-catcow-quad/dark/peak.720.png",
+              "sha256": "29acce38ecfe21f27d8746a052bd51156023d38078543cb242d6590aa4cc036d",
+              "bytes": 87315,
+              "width": 720,
+              "height": 720,
+              "frame": 39
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/hologram/h-catcow-quad/dark/end.720.png",
+              "sha256": "a1264ee539354857bb5a4c7e60581581f7c7dad3a3d86fd34d8dfe92de01020a",
+              "bytes": 88173,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      },
+      {
+        "skin": "hologram",
+        "theme": "light",
+        "highlight": {
+          "enabled": true,
+          "color": "#e9d49c",
+          "brightness": 0.45
+        },
+        "modelVersion": "1.0.0-rc2",
+        "mirrored": false,
+        "video": {
+          "root": "media",
+          "path": "derivatives/hologram/h-catcow-quad/light/loop.720.mp4",
+          "sha256": "4d42bfdb7263e8b00e5f1299a03d4532892e8d468d87814a474f0b2eaff2dc4a",
+          "bytes": 272501,
+          "width": 720,
+          "height": 720,
+          "durationSeconds": 8,
+          "frames": 240,
+          "fps": 30,
+          "codec": "h264",
+          "pixelFormat": "yuv420p"
+        },
+        "cover": {
+          "root": "media",
+          "path": "derivatives/hologram/h-catcow-quad/light/cover.720.jpg",
+          "sha256": "fbd1a043f66aca41299be5d409face835c50f32ed5e7c2439a3fa4ecbd06e4ae",
+          "bytes": 28594,
+          "width": 720,
+          "height": 720
+        },
+        "thumbnail": {
+          "root": "media",
+          "path": "derivatives/hologram/h-catcow-quad/light/thumbnail.240.jpg",
+          "sha256": "8dd566097585e182c714f113d884b2233801d8098bdad3fa382ea4a05d5975af",
+          "bytes": 6265,
+          "width": 240,
+          "height": 240
+        },
+        "keyframes": [
+          {
+            "phase": "start",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/hologram/h-catcow-quad/light/start.720.png",
+              "sha256": "0edef8f123a79ff72e8edfb631a6f22e5be646bfff699b9122606c42f0538dad",
+              "bytes": 83605,
+              "width": 720,
+              "height": 720,
+              "frame": 0
+            }
+          },
+          {
+            "phase": "peak",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/hologram/h-catcow-quad/light/peak.720.png",
+              "sha256": "32054faa25c4ea582bbce9ef90fec70f0d7682f2d595d26c2d9d4801458f81c9",
+              "bytes": 82076,
+              "width": 720,
+              "height": 720,
+              "frame": 39
+            }
+          },
+          {
+            "phase": "end",
+            "asset": {
+              "root": "media",
+              "path": "derivatives/hologram/h-catcow-quad/light/end.720.png",
+              "sha256": "e65102ff64f27dc081e455db9fece1e2a0e332741544619d52e7c424d8565647",
+              "bytes": 83610,
+              "width": 720,
+              "height": 720,
+              "frame": 239
+            }
+          }
+        ]
+      }
+    ],
+    "transparentCovers": {
+      "realistic": {
+        "root": "media",
+        "path": "derivatives/realistic/h-catcow-quad/cover.transparent.1080.png",
+        "sha256": "4573208421a34a25c73e190aae3cf5f43589dc1fd9a687cfafdc45af27a76a32",
+        "bytes": 122677,
+        "width": 1080,
+        "height": 1080,
+        "alpha": true
+      },
+      "tech-white": {
+        "root": "media",
+        "path": "derivatives/tech-white/h-catcow-quad/cover.transparent.1080.png",
+        "sha256": "8418791e5c84c3f39d8a7d4fb773f164926147ba1ee8f900f5006e708eb03dcf",
+        "bytes": 157818,
+        "width": 1080,
+        "height": 1080,
+        "alpha": true
+      },
+      "neon-night": {
+        "root": "media",
+        "path": "derivatives/neon-night/h-catcow-quad/cover.transparent.1080.png",
+        "sha256": "a8438e0933d1ed7c75b0c6f71d2ccb4cb5f2dcb654faca1815d118607101b421",
+        "bytes": 174209,
+        "width": 1080,
+        "height": 1080,
+        "alpha": true
+      },
+      "neon-night-b": {
+        "root": "media",
+        "path": "derivatives/neon-night-b/h-catcow-quad/cover.transparent.1080.png",
+        "sha256": "e3b7ad80251c716e99cbbffa92444e1d883b364a62c1b3eb37042332bddca356",
+        "bytes": 173706,
+        "width": 1080,
+        "height": 1080,
+        "alpha": true
+      },
+      "hologram": {
+        "root": "media",
+        "path": "derivatives/hologram/h-catcow-quad/cover.transparent.1080.png",
+        "sha256": "c3e2a3a00bd6b7a8c11a39c6022c99923eb2ecac024bd1e434f32031ef7ffcae",
+        "bytes": 231842,
+        "width": 1080,
+        "height": 1080,
+        "alpha": true
+      }
+    },
+    "provenance": {
+      "framing": {
+        "root": "media",
+        "path": "manifests/framing/h-catcow-quad.json",
+        "sha256": "9e7b4a57e37cb15565400f99938785bbf5651331273851713a659bcf278cab0a",
+        "bytes": 292
+      }
+    },
+    "framingId": "fixed-square-9e7b4a57e37cb155",
+    "compositor": {
+      "root": "repo",
+      "path": "tools/action-package-v2/composite.py",
+      "sha256": "fedb15d24c7080926a857cacad3d3b10b15617735ab3d88053cb885af7c70507",
+      "bytes": 21548
+    }
+  },
+  "voice": {
+    "actionId": "h-catcow-quad",
+    "manifest": {
+      "root": "repo",
+      "path": "catalog/voice-v2/manifest.json",
+      "sha256": "ba775ace59603e534c3dc979fc8a8cc277836427efcd6b10f2e88e16f696336c",
+      "bytes": 195389
+    }
+  },
+  "validation": {
+    "modelVersion": "1.0.0-rc2",
+    "mirrorGenerated": false,
+    "review": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "evidence": []
+    },
+    "manifest": {
+      "root": "media",
+      "path": "manifests/h-catcow-quad.json",
+      "sha256": "280f2f4448c73ef863014d511cfabfc68101ccf3fe4cd85de942aeb1d2805746",
+      "bytes": 28202
+    }
+  }
+}

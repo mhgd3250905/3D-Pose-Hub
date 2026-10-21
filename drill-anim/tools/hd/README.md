@@ -8,7 +8,9 @@
 
 在仓库根运行命令。依赖：根目录 `npm ci`、已有 Playwright/Chromium、ffmpeg/ffprobe，以及 Python 的 numpy、scipy、Pillow。机器路径沿用被忽略的 `drill-anim/config.json`；配置方法见 [START-HERE](../../../docs/START-HERE.md)。本工具不写机器配置。Windows 上启动的辅助进程隐藏窗口。
 
-制作默认：`training-human-v2`、`alignClavicles:false`、主题 `themes/glow-soft.json`，真实时间轴采样 **30fps**；PR2 原始 RGBA 为 **2160×2160**，恒定二维取景后为 **1080×1080 straight alpha**。覆盖包装显式保留槽位原 ID，即 `{...source,id:'<原 id>',fps:30,...}`，不会把 `-r2` 文件名误作发布 ID。
+新建批次的人体默认读取 [current-production.json](../../models/current-production.json)：`training-human-v2plus` / `1.0.0-rc2`、`alignClavicles:false`，`outfit:'compression'`、`torso/limbs/hands:'base'`、`skin:'realistic'`，head 不启用，保留原 v2 头与原配色。白金/蓝/绿/全息只供显式选择；制作标准见 [v2plus](../../../docs/training-human-v2plus.md)。主题仍沿用批次配方（默认 `themes/glow-soft.json`），不能用主题或 skin 名替代人物配置。真实时间轴采样 **30fps**；PR2 原始 RGBA 为 **2160×2160**，恒定二维取景后为 **1080×1080 straight alpha**。覆盖包装显式保留槽位原 ID，即 `{...source,id:'<原 id>',fps:30,...}`，不会把 `-r2` 文件名误作发布 ID。
+
+新版人体与制作配置已随 PR #12 和集成修复于 2026-10-21 合入并推送 main，证据与尚未安排的全量重渲、App 接入见[台账](../../../docs/version-ledger.md)。生产默认原配色、动作肌群高亮、不显示肌群分区线。普通旧 spec 的 profile 不变，HD 包装不回写原约 200 份规格、v2 的 13 个冻结源或旧媒体。
 
 ## 单动作冒烟
 
@@ -86,7 +88,7 @@ py drill-anim/tools/hd/export_app_delivery.py --primary output/hd-banana-v1 --se
 
 ## 不可变批次与检查
 
-`source-manifest.json` 固定规格、原 ID、主题、渲染输入、人物源、工具和配方 SHA。相同语义的旧清单保持原字节；来源/主题/工具/配方变更必须使用新目录。恢复完成项时重新核对当前输入输出及视频解码；部分产物不覆盖、不删除。版本发布仍走仓库既有清单和 ZIP 流程，本目录不上传、不改已发布版本。
+`source-manifest.json` 固定规格、原 ID、主题、渲染输入、人物源、工具和配方 SHA。`profile`、`profile_options`、`model_version`、`production_config` 记录新批次实际选择的模型、选项及生产配置 SHA，`render_inputs` 继续固定 v2 基础源并纳入新版清单的所有运行源与数据；已有批次 resume 沿用原清单和原人物配方，不读取新默认覆盖旧配方。若当前工具与旧清单不兼容，保留旧目录，使用其冻结工具/环境续作或另建新版本批次。相同语义的旧清单保持原字节；来源/主题/工具/配方变更必须使用新目录。恢复完成项时重新核对当前输入输出及视频解码；部分产物不覆盖、不删除。版本发布仍走仓库既有清单和 ZIP 流程，本目录不上传、不改已发布版本。
 
 ```powershell
 node drill-anim/verify.mjs

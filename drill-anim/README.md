@@ -2,6 +2,8 @@
 
 # drill-anim: looping 3D toon animations for the training drills
 
+2026-10-21 新制作入口：用户已采用 [training-human-v2plus 标准](../docs/training-human-v2plus.md)，完整默认配方见 [models/current-production.json](models/current-production.json)。默认是更新后的躯干、四肢、手和 compression 训练服，原 v2 头、原配色（`skin:'realistic'`）、动作肌群高亮，不显示肌群分区线；白金/蓝/绿/全息显式可选。`1.0.0-rc2` 已随 PR #12 和集成修复合入并推送 main，身份见[台账](../docs/version-ledger.md)；全量重渲与 App 接入仍待安排。下方 dated 段落保留其历史阶段身份。
+
 高清母版制作入口见 [tools/hd](tools/hd/README.md)：2160² 原始帧 → 1080² / 30fps 绿幕与精确透明帧，支持 Pose-Hub 任意动作选集、绑定预览审核和两路队列。
 
 2026-10-15新增居家/肌群补充/开胯/开肩51份`h-*`候选，制作规格共138份（原87份保持）。来源、合并审核补修和验证边界见[居家动作记录](../docs/home-drill-integration-2026-10-15.md)，精确规格哈希见[data/home-pr-candidates.json](data/home-pr-candidates.json)。B风格以`--theme themes/glow-b.json`显式选择；默认theme保留已验收人体固定源。下方75/87项为历史阶段数量；App仍选原51视频，不据新增规格或PR作者QA声明全片/设备验收完成。
@@ -10,7 +12,7 @@
 
 2026-10-13用户明确安排的94项演示已全部另存成片，共23,454帧/781.8秒，母版1080²、手机版720²、封面540²。冻结来源见[batches/training-human-v2-20261013](batches/training-human-v2-20261013/README.md)，制作流程83ready/11review，最终独立审计56ready/38review、failed/pending均0；所选188视频完整解码。原QA与警告保留，不替换旧成片或App51视频。执行用 `batch-rerender.mjs`，独立解码/关节审计用 `batch-library-audit.mjs`，便携目录用 `package-library.mjs`另建；生产 `audit-final/`、2项恒定构图派生、便携使用与边界见[统一素材库](../docs/training-media-library-2026-10-13.md)。入口补丁2.0.1不改变已验收2.0.0外观，既有普通CLI继续保留。
 
-2026-10-13用户已验收肩颈优化；后续新动作、旧动作优化及安排重渲统一使用 [training-human-v2 人体基准](../docs/training-human-v2.md)：在spec中设置 `modelProfile: 'training-human-v2'`、`alignClavicles: false`。当前肩颈修复保留App训练人物的成熟网格、头、服装与骨架；人体身份、配置与源码哈希固定在 [模型清单](models/training-human-v2.json)。已交付的旧视频保留，按用户后续安排才使用新人体另出重渲版本。
+2026-10-13用户已验收肩颈优化；当时后续制作统一使用（今后新任务已由上方 2026-10-21 v2plus 决定取代） [training-human-v2 人体基准](../docs/training-human-v2.md)：在spec中设置 `modelProfile: 'training-human-v2'`、`alignClavicles: false`。当前肩颈修复保留App训练人物的成熟网格、头、服装与骨架；人体身份、配置与源码哈希固定在 [模型清单](models/training-human-v2.json)。已交付的旧视频保留，按用户后续安排才使用新人体另出重渲版本。
 
 2026-10-12：本工具已按用户明确授权整合到 `master`，以 L43 为App底座。当前默认制作源共75项：原59项参数、办公室8项 `o-*`、久坐强化8项 `w-*`；原59项内容仍强制核对来源，16项新增源按审核后SHA-256固定。App仍选用51项正式视频，制作源增加不会自动替换App媒体。原始纳入与备份见 [早期工具整合记录](../docs/drill-anim-integration-2026-10-12.md)，后续PR和验证范围见 [主线整合审核](../docs/integration-pr-audit-2026-10-12.md)。历史 `HANDOFF.md` / `COLLAB.md` 描述原三人制作分工，不覆盖用户本次明确整合授权。
 
@@ -113,8 +115,9 @@ export default {
   solver: 'sideplank-v7',                   // optional: use the frozen v7 solver instead (deltoids-A only)
   highlight: { groups: ['triceps'], side: 'both'|'left'|'right', lobes?, panels?, inset?,
                pulseAt: [t...], pulseWidth: s, pulseBase: 0.25 } | { ..., pulseTrack: 'down' },
-  modelProfile: 'training-human-v2',         // required for new drills: fixed Flare training-human benchmark
-  alignClavicles: false,                    // use the benchmark's original clavicle orientation
+  modelProfile: 'training-human-v2plus',     // new work: copy models/current-production.json completely
+  alignClavicles: false,
+  v2plus: { outfit: 'compression', torso: 'base', limbs: 'base', hands: 'base', skin: 'realistic' }, // head off = original v2 head
   camera: { dir: [x, y, z], fit: [joint names], pad: m, k: 1.0, at: t (pose used for fitting), fov?,
             drift: deg (yaw sway), driftPeriod: s (default = loop; must divide the loop), driftPhase: rad,
             frontSweepDegrees: 180, frontSweepPeriod: s }, // optional front-only side-to-side yaw, centred on dir +Z

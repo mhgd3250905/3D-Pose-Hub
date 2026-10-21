@@ -1,5 +1,21 @@
 # 统一动作目录（catalog）
 
+**新生产入口已改为 [`action-package@2`](v2/README.md)**，按动作稳定 ID 管理六层数据；schema 在 [`action-package-v2.schema.json`](action-package-v2.schema.json)，试点源包在 `v2/actions/`，AI 索引和详情由工具生成到 `action-library/`。旧 `training-human-v2` 已弃用，不得用于新生产。
+
+**当前审片修订为 r2：`F:/PoseHub-v2-pilot/neck-fix-r2/`。** 颈部漏色已修正，六动作五皮肤完整母版与派生已重做并逐项校验；六包 draft.2、媒体 SHA、QA 证据及 AI 详情已重新接合。r1 保留历史。结果见[六动作试制记录](../docs/action-package-v2-pilot-20261021.md)与[颈部漏色记录](../docs/neck-material-fix-20261021.md)。
+
+以下命令绑定 r2 实际媒体；动作源、母版和派生技术层各 6/6 通过。开哥已确认样片并授权合入，内容已进入 main，见[试制确认](../docs/pilot-approval-20261021.md)。编辑、语音内容与人工试听、发布前综合审核仍待完成，发布门禁为 0/6；未发布新素材版本。
+
+下文 `catalog.json`、`catalog.schema.json`、旧 completeness 与三个 App 的 v1 包格式仅用于历史迁移/兼容复现，保持已发布记录不变。旧目录“全齐”不等于 v2 发布合格，英文语音、所有生产皮肤和六层逐项审核都必须通过。新生产检查运行：
+
+```powershell
+python catalog/tools/validate_catalog.py --v2 --release --media-root media=F:/PoseHub-v2-pilot/neck-fix-r2
+python catalog/tools/report.py --v2 --check-files --media-root media=F:/PoseHub-v2-pilot/neck-fix-r2 --output catalog/v2/completeness.json
+python catalog/tools/action_package_v2.py generate --check-files --media-root media=F:/PoseHub-v2-pilot/neck-fix-r2
+```
+
+当前六个试点均为待审核草稿，缺项照实阻断；只有带 `--release` 的完整 gate 通过的动作才可进入新发布包。v1 生成工具保留原有路径和行为；不运行 v1 build/report 来覆盖冻结材料。
+
 三个 App（托马斯 FlareLab、开胯 HipLab、智能健身 SmartFit）和共用 SDK `ugk_coach` 的动作数据源。Pose-Hub 只放数据；SDK、AI 提示词、App profile 在 SDK 仓库（mhgd3250905/ugk-3d-pose-sdk）。
 
 当前目录版本与合入记录见 [版本对齐台账](../docs/version-ledger.md)，版本号、固定提交和消费端接入规则见 [版本管理](../docs/version-management.md)。目录版本独立于 `media/` 的成片 ZIP 版本；`docs/drill-catalog.md` 是包含历史修订的 spec 开发总表。

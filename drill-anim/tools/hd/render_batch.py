@@ -76,15 +76,56 @@ def input_hashes():
         paths.update(p for p in (ROOT/folder).rglob('*') if p.is_file() and '__pycache__' not in p.parts)
     paths.update(p for p in (ROOT/'specs').rglob('*') if p.is_file() and p.suffix in ('.js','.mjs'))
     paths.update(p for p in (REPO/'runtime/src').rglob('*') if p.is_file() and p.suffix in ('.js','.mjs','.json'))
-    model=ROOT/'models/training-human-v2.json'
-    if model.is_file():
-        paths.add(model);paths.update(REPO/p for p in read(model)['sourceSha256'])
+    # Freeze both the legacy base and every optional v2plus runtime/data source.
+    paths.add(ROOT/'models/current-production.json')
+    for name in ('training-human-v2','training-human-v2plus'):
+        model=ROOT/'models'/(name+'.json')
+        if model.is_file():
+            paths.add(model);paths.update(REPO/p for p in read(model)['sourceSha256'])
     return {p.relative_to(REPO).as_posix():sha(p) for p in sorted(paths) if p.is_file()}
 def tool_hashes():
     return {p.name:sha(p) for p in sorted(HERE.iterdir()) if p.suffix in ('.py','.mjs') and not p.name.startswith('test_')}
 
+def production_recipe():
+    path=ROOT/'models/current-production.json';config=read(path)
+    if config.get('format')!='pose-hub-production-model' or config.get('formatVersion')!=1:
+        raise ValueError('Unsupported current-production model format')
+    profile=config.get('modelProfile')
+    if profile not in ('training-human-v2','training-human-v2plus'):
+        raise ValueError('Unsupported production model profile')
+    if type(config.get('alignClavicles')) is not bool or not isinstance(config.get('modelVersion'),str):
+        raise ValueError('Production model needs modelVersion and boolean alignClavicles')
+    model=read(ROOT/'models'/(profile+'.json'))
+    if model.get('id')!=profile or model.get('version')!=config['modelVersion']:
+        raise ValueError('Production model version does not match its model manifest')
+    options={'alignClavicles':config['alignClavicles']}
+    if profile=='training-human-v2plus':
+        if not isinstance(config.get('v2plus'),dict):raise ValueError('Production v2plus model needs its options')
+        options['v2plus']=config['v2plus']
+    return {'profile':profile,'profile_options':options,'model_version':config['modelVersion'],
+        'production_config':{'path':path.relative_to(REPO).as_posix(),'sha256':sha(path)}}
+
+def overlay_content(source,sid,recipe):
+    prefix=('// Pose-Hub HD: preserve source pose/camera/timing; explicit canonical ID.\n'
+        'import source from '+json.dumps(source.as_uri())+';\n'
+        'export default {...source,id:'+json.dumps(sid)+',fps:30,size:1080,')
+    if 'profile_options' not in recipe:
+        # Historical manifests retain the exact pre-v2plus overlay byte format.
+        if recipe['profile']!='training-human-v2':raise ValueError('Historical batch lacks its model options')
+        return prefix+"modelProfile:'training-human-v2',alignClavicles:false};\n"
+    options=recipe['profile_options']
+    if not isinstance(options,dict) or set(options)-{'alignClavicles','v2plus'}:
+        raise ValueError('Unsupported frozen profile options')
+    fields={'modelProfile':recipe['profile'],**{k:options[k] for k in ('alignClavicles','v2plus') if k in options}}
+    return prefix+','.join(k+':'+json.dumps(v,separators=(',',':'),sort_keys=True) for k,v in fields.items())+'};\n'
+
 def prepare(a):
     output=protected_output(a.output)
+    path=output/'source-manifest.json';previous=read(path) if path.is_file() else None
+    # Resume keeps the frozen recipe, while current input/tool hashes must still
+    # match. A changed production default never silently rewrites old overlays.
+    recipe=({k:previous[k] for k in ('profile','profile_options','model_version','production_config') if k in previous}
+        if previous is not None else production_recipe())
     drills,overrides=load_selection(a.app,output,a.ids,a.spec_overrides)
     theme=(ROOT/a.theme).resolve()
     if not theme.is_relative_to(REPO.resolve()) or not theme.is_file():raise ValueError('Theme must exist inside Pose-Hub')
@@ -92,9 +133,7 @@ def prepare(a):
     entries=[];overlays={}
     for sid,d in drills.items():
         original=ROOT/'specs'/(sid+'.js');source=overrides.get(sid,original);target=output/'specs'/(sid+'.js')
-        overlays[target]=('// Pose-Hub HD: preserve source pose/camera/timing; explicit canonical ID.\n'
-            'import source from '+json.dumps(source.as_uri())+';\n'
-            'export default {...source,id:'+json.dumps(sid)+",fps:30,size:1080,modelProfile:'training-human-v2',alignClavicles:false};\n")
+        overlays[target]=overlay_content(source,sid,recipe)
         entry={'id':sid,'source':str(source.relative_to(REPO)),
             'source_sha256':hashlib.sha256(source.read_bytes().replace(b'\r\n',b'\n')).hexdigest(),
             'overlay':str(target),'original_app_status':d.get('media',{}).get('status')}
@@ -102,13 +141,12 @@ def prepare(a):
             entry.update(revision=True,base_source=str(original.relative_to(REPO)),
                 base_source_sha256=hashlib.sha256(original.read_bytes().replace(b'\r\n',b'\n')).hexdigest())
         entries.append(entry)
-    path=output/'source-manifest.json';previous=read(path) if path.is_file() else None
-    manifest={'source_commit':previous['source_commit'] if previous else commit,'profile':'training-human-v2',
+    manifest={'source_commit':previous['source_commit'] if previous else commit,**recipe,
         'fps':30,'output_size':1080,'pixel_ratio':a.pr,'pose_camera_timing_unchanged':not bool(overrides),
         'drills':entries,'theme':theme.relative_to(REPO).as_posix(),'theme_sha256':sha(theme),
         'render_inputs':input_hashes(),'tools':tool_hashes(),'format':a.format}
     if previous is not None and previous!=manifest:
-        raise RuntimeError('Batch source/recipe changed; preserve this batch and use a new output directory')
+        raise RuntimeError('Batch source/recipe changed; preserve this batch and resume from its original frozen checkout/tools, or use a new output directory')
     for target,content in overlays.items():
         if target.exists() and target.read_text(encoding='utf-8')!=content:raise RuntimeError('Existing overlay changed; preserve this batch')
     output.mkdir(parents=True,exist_ok=True)

@@ -28,3 +28,7 @@
 - 许可：[CC0](https://creativecommons.org/publicdomain/zero/1.0/)，可修改、转换和用于 Web 项目，无强制署名；保留本来源记录便于追溯。
 
 两个 ZIP 均成功完整解包。未购买模型、订阅、插件，未调用任何收费生成服务。
+
+## 使用记录
+
+- 2026-10-19：`GEO-body_male_realistic` 的躯干用于 opt-in `training-human-v2plus` 基础网格躯干（`v2plus.torso: 'base'`），构建脚本 `tools/human-v2plus/torso-base/build.sh` 从上面的实际下载地址取包并校验 SHA-256，说明见 `docs/training-human-v2plus-proto.md`。
