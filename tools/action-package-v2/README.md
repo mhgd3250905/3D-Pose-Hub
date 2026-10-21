@@ -45,4 +45,4 @@ python tools/action-package-v2/qa_sequences.py --root F:/PoseHub-v2-pilot/neck-f
 
 `manifests/derivatives.json` 保存派生引用与实际合成参数，`manifests/framing/` 保存固定取景配方。`import_pilot.py` 将完成母版和派生引用接入 `catalog/v2/actions/` 并生成逐动作媒体 manifest，保持 `review` 状态；未实际审阅的字段继续 pending。动作名、要点和相位语音独立维护，不把独立语音误称已给循环视频配音。
 
-所有制作产物放在用户批准的 F 盘，Git 仅记录工具、规格、定义、清单及 QA 文档。历史素材不清理、冻结 ZIP 不覆盖；本轮没有全库生产、App 修改或云端同步。合入和推送等待开哥看样同意。
+所有制作产物放在用户批准的 F 盘，Git 仅记录工具、规格、定义、清单及 QA 文档。历史素材不清理、冻结 ZIP 不覆盖；本轮没有全库生产、App 修改或云端同步。开哥已接受 r2 样片并授权合入、推送，内容已进入 main；见[试制确认](../../docs/pilot-approval-20261021.md)。

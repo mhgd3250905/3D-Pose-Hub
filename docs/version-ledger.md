@@ -4,16 +4,16 @@
 
 ## 当前版本与计数
 
-2026-10-21 新增 `codex/action-package-v2-pilot` 试制分支：动作包 `action-package@2`、六层门禁、六个代表动作与五套正式皮肤的新版人体制作管线。该分支未合入、未推送、未发布；本页下表的 main/已发布版本计数仍是历史基线，不能拿旧 `complete` 代替 v2 门禁。试制结果与实际待办见[六动作试制记录](action-package-v2-pilot-20261021.md)。全库生产、合入 main 和推送均等待开哥看样同意。
+2026-10-21，开哥接受 `codex/action-package-v2-pilot` 的 r2 样片并同意合入、推送，本地 main 已快进至 `5b2becb572f06a310be0cb5bdea61f47834dc5c7`。内容为动作包 `action-package@2`、六层门禁、六个代表动作与五套皮肤制作管线；样片确认及合入范围见[试制确认](pilot-approval-20261021.md)。下表旧 AI/App 发布版本未因本次合入升级，不能拿旧 `complete` 代替 v2 门禁。全库生产仍另等确认。
 
-本轮当前修订为 **r2**，目录 `F:/PoseHub-v2-pilot/neck-fix-r2/`。颈部漏色已修正，六动作五皮肤完整母版、60 份视频及图片已重做，catalog draft.2 与 AI 详情已重新绑定真实 SHA/QA。完整性、像素、姿态、连续序列与冻结源检查均通过；r1 保留历史。固定人体仍为 `training-human-v2plus / 1.0.0-rc2`，修正位于渲染适配器。证据及仍待审的内容见[颈部修复记录](neck-material-fix-20261021.md)与试制记录；未合入、推送或铺开全库。
+本轮当前修订为 **r2**，目录 `F:/PoseHub-v2-pilot/neck-fix-r2/`。颈部漏色已修正，六动作五皮肤完整母版、60 份视频及图片已重做，catalog draft.2 与 AI 详情已重新绑定真实 SHA/QA。完整性、像素、姿态、连续序列与冻结源检查均通过；r1 保留历史。固定人体仍为 `training-human-v2plus / 1.0.0-rc2`，修正位于渲染适配器。内容已合入 main；发布前编辑、语音内容/试听等审核仍待完成，未发布新素材版本、未全库铺开。证据见[颈部修复记录](neck-material-fix-20261021.md)与试制记录。
 
 | 对象 | 版本或数量 | 状态 | 依据 |
 | --- | --- | --- | --- |
 | AI 动作目录 | 0.3.0 / formatVersion 1，142 个稳定动作 id | PR #11、#13 已合入；本阶段未新建目录 tag | [catalog.json](../catalog/catalog.json)、[PR #13](https://github.com/mhgd3250905/3D-Pose-Hub/pull/13) |
 | 各 App 目录覆盖 | FlareLab 51、HipLab 46、SmartFit 93 | 有重叠，不能相加作为动作总数；不代表本次已升级 App | `catalog.drills[].apps` |
 | 目录配套完整度 | 46 个 complete；96 个未进入 Pose-Hub 媒体发布、49 个缺中文语音、96 个缺英文语音 | 按当前生成物记录，缺项未在本次补齐 | [MISSING.md](../catalog/MISSING.md) |
-| spec 开发总表 | 200 个规格文件，含 27 个修订文件 | 包含原版、修订及未被 App 使用的规格 | [drill-catalog.md](drill-catalog.md) |
+| spec 开发总表 | 206 个规格文件，含本轮 6 个新修订 spec | 包含原版、修订及未被 App 使用的规格 | [drill-catalog.md](drill-catalog.md) |
 | 新制作人体 | training-human-v2plus 1.0.0-rc2 | 已合入 main；完整配方见下文，未全量重渲 | [生产配置](../drill-anim/models/current-production.json)、[新版清单](../drill-anim/models/training-human-v2plus.json) |
 | 历史基础人体 | training-human-v2 2.0.1 | 旧规格/批次继续复现；13 个固定源未改，仅默认选择标记调整 | [旧版清单](../drill-anim/models/training-human-v2.json) |
 | App 媒体 | media 0.2.0，46 个 HipLab 动作、92 个公开文件 | published，soft-v1；0.1.0 保留 | [媒体清单](../media/manifest.json)、[0.2.0 发布记录](../media/releases/0.2.0.md) |

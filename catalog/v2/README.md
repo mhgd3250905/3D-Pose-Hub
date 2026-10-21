@@ -70,7 +70,7 @@ media-root/
 
 ## 命令与生成物
 
-下列命令统一绑定已接合的 r2 媒体。源、母版和派生技术层各 6/6 通过；六层发布门禁仍为 0/6，未授予编辑、试听或用户审批。
+下列命令统一绑定已接合的 r2 媒体。源、母版和派生技术层各 6/6 通过；样片已获开哥确认并授权合入 main，见[试制确认](../../docs/pilot-approval-20261021.md)。编辑、试听及发布前综合审核仍待完成，六层发布门禁保持 0/6。
 
 ```powershell
 # 草稿检查和六层缺项报告；未完成草稿不会使此命令失败
@@ -92,4 +92,4 @@ python -m unittest discover -s catalog/tools -p test_action_package_v2.py
 
 回归测试的合同正例使用合成元数据并明确 mock 媒体探测，不充当制作成功或人工 QA 的证据；真实 PNG/MP4 损坏、错误尺寸与非灰度遮罩另有实际解码反向测试。测试通过不能把任何动作的 pending review 改为 pass。
 
-`catalog/action-library/index.md`、每动作详情和 `v2/completeness.json` 都可从源重建。历史 142 个动作尚未自动迁移为合格 v2；本轮只做六个试点，全库铺开须用户看样确认。合入 main 和推送仍等用户批准；本工具只产生可审阅候选文件，不执行发布或上传。
+`catalog/action-library/index.md`、每动作详情和 `v2/completeness.json` 都可从源重建。历史 142 个动作尚未自动迁移为合格 v2；本轮只做六个试点，已按用户同意合入 main，全库铺开仍另等确认。本工具只产生可审阅候选文件，不执行发布或上传。
