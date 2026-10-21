@@ -167,6 +167,7 @@ const KNOWN = {
 };
 // Planned in docs but no spec under specs/: the pool of "待补全" candidates.
 const PLANNED = [
+  {"id": "h-sleeper-stretch", "name": "侧卧睡姿肩内旋拉伸", "why": "084两次用尽，头垫间隙8.24mm、替代垫与躯干重叠58.08mm及辅助手接触过冲；FAILED交接不注册不第三次", "src": "docs/084-v2plus-sleeper-stretch-FAILED-diagnostic-2026-10-21.md"},
   {"id": "h-db-floor-fly", "name": "哑铃地板飞鸟", "why": "083两次用尽，后脑仍离垫29.46mm、真实手杆穿入约3.68mm；FAILED留接手，不登记不第三次", "src": "docs/083-v2plus-floor-fly-FAILED-diagnostic-2026-10-21.md"},
   {id:"h-db-overhead-triceps-extension",name:"单臂哑铃过头臂屈伸",why:"082：两次实现后肘60.90→153.48度、肘点漂移1.40mm、无警告；杆仍有5个真实手顶点穿入超过2mm，最深2.15845mm，FAILED留接手不第三次",src:"docs/082-v2plus-overhead-triceps-FAILED-diagnostic-2026-10-21.md"},
   {id:"h-towel-isometric-curl",name:"毛巾脚锚等长弯举（带状道具示意）",why:"081：两次实现用尽；最终双肘100.43度无警告但手与6mm半径示意带末端仍2.759mm间隙，8mm内0接触顶点；FAILED交接不登记不第三次",src:"docs/081-v2plus-towel-isometric-curl-FAILED-diagnostic-2026-10-21.md"},
