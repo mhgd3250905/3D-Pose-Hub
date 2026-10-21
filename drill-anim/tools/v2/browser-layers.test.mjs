@@ -28,6 +28,24 @@ test('props remain black depth occluders in mask pass',()=>{
   assert.equal(m.depthWrite,undefined); // Adapter leaves Three's enabled default intact.
 });
 
+test('stale collar hook remains distinguishable from the regions hook for native repair',()=>{
+  const regionsHook=function(sh){sh.fragmentShader='uniform float uV2pRon;\n'+sh.fragmentShader;};
+  const nativeCollarHook=function(){};
+  // Training-collar restores a cached pre-regions hook. The regions loader must
+  // still see this identity mismatch after the layer adapter wraps that hook.
+  const material={onBeforeCompile:nativeCollarHook,__v2prHook:regionsHook,
+    customProgramCacheKey(){return 'toon-drill1-v2p|trainingNativeCollar1';}};
+  const context={window:{},__toonT:{},flareInspector:{viewer:{scene:{traverse:f=>f({isMesh:true,material})}}},WeakMap,Map};
+  vm.runInNewContext(fs.readFileSync(new URL('./browser-layers.js',import.meta.url),'utf8'),context);
+  context.window.__v2Layers.patch();
+  const sh={uniforms:{},fragmentShader:'void main(){ float d=0.0; vec3 lit=vec3(0.0); vec3 cyl=vec3(1.0); lit=mix(lit,cyl,d*0.94); }'};
+  material.onBeforeCompile(sh,{});
+  assert.match(sh.fragmentShader,/uV2LayerPass/);
+  assert.doesNotMatch(sh.fragmentShader,/uV2pRon/);
+  assert.equal(material.__v2prHook,regionsHook,'Wrapping a stale collar hook must not mark it as region-patched');
+  assert.notEqual(material.onBeforeCompile,material.__v2prHook,'Native setRegions must detect the mismatch and reattach its shader');
+});
+
 test('custom shadow depth retains the active vertex program and shared deformation uniforms',()=>{
   const breath={value:.001},sink={value:1};let compiled;
   const material={colorWrite:true,depthWrite:true,onBeforeCompile(sh){sh.uniforms.uBreath=breath;sh.uniforms.uSinkK=sink;

@@ -50,6 +50,8 @@ python -m unittest discover -s media/tests -v   # 素材脚本
 
 `training-human-v2` 已退出新生产，只保留冻结历史复现。新人体先做六个代表动作、原配色/白金/蓝色/绿色/全息五套试制；分层渲染见 [tools/v2](drill-anim/tools/v2/README.md)，脚本派生和本地审片见 [action-package-v2](tools/action-package-v2/README.md)。新产物按用户授权统一放在 F 盘；开哥看样同意后才合入、推送，全库铺开另等确认。
 
+当前审片修订为 `F:/PoseHub-v2-pilot/neck-fix-r2/`。颈部漏色已修正，六动作五皮肤的完整透明母版、60 份视频及配套图片已重做并校验；catalog 已更新为 draft.2。r1 保留历史对照，技术结果与待审项见[试制记录](docs/action-package-v2-pilot-20261021.md)及[颈部修复记录](docs/neck-material-fix-20261021.md)。
+
 下面旧命令用于历史配方复现，不作为 v2 新生产入口：
 
 ```bash

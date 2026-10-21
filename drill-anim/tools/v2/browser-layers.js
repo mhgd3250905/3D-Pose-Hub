@@ -28,7 +28,7 @@
         m.onBeforeCompile = hook;
         // The region loader recognizes its outer hook by identity; retain that contract
         // to prevent a new region wrapper/program cache key on every material switch.
-        if(m.__v2prHook)m.__v2prHook=hook;
+        if(m.__v2prHook===prev)m.__v2prHook=hook;
         m.customProgramCacheKey = () => key.call(m) + '|v2-separate-layers';
         patches.set(m, hook); m.needsUpdate = true;
       }

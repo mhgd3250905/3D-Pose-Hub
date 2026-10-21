@@ -6,6 +6,8 @@
 
 2026-10-21 新增 `codex/action-package-v2-pilot` 试制分支：动作包 `action-package@2`、六层门禁、六个代表动作与五套正式皮肤的新版人体制作管线。该分支未合入、未推送、未发布；本页下表的 main/已发布版本计数仍是历史基线，不能拿旧 `complete` 代替 v2 门禁。试制结果与实际待办见[六动作试制记录](action-package-v2-pilot-20261021.md)。全库生产、合入 main 和推送均等待开哥看样同意。
 
+本轮当前修订为 **r2**，目录 `F:/PoseHub-v2-pilot/neck-fix-r2/`。颈部漏色已修正，六动作五皮肤完整母版、60 份视频及图片已重做，catalog draft.2 与 AI 详情已重新绑定真实 SHA/QA。完整性、像素、姿态、连续序列与冻结源检查均通过；r1 保留历史。固定人体仍为 `training-human-v2plus / 1.0.0-rc2`，修正位于渲染适配器。证据及仍待审的内容见[颈部修复记录](neck-material-fix-20261021.md)与试制记录；未合入、推送或铺开全库。
+
 | 对象 | 版本或数量 | 状态 | 依据 |
 | --- | --- | --- | --- |
 | AI 动作目录 | 0.3.0 / formatVersion 1，142 个稳定动作 id | PR #11、#13 已合入；本阶段未新建目录 tag | [catalog.json](../catalog/catalog.json)、[PR #13](https://github.com/mhgd3250905/3D-Pose-Hub/pull/13) |

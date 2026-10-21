@@ -254,13 +254,13 @@ ID: `h-db-curl`. State: review. Release eligible: False.
       "intersections": {
         "status": "pass",
         "reviewer": "Codex",
-        "reviewedAt": "2026-10-21T09:13:40.424285+00:00",
+        "reviewedAt": "2026-10-21T11:18:05.625879+00:00",
         "evidence": [
           {
             "root": "media",
             "path": "qa/reviews/h-db-curl-evidence.json",
-            "sha256": "6231dfadc18caf0f36d08946fa595eb2a299fe9e024c119d4c32da6c720353f6",
-            "bytes": 5495
+            "sha256": "d72184b361e49c0fa551d96fd20ae8ac50eb1a0dee43626e2775b639781e9145",
+            "bytes": 5970
           }
         ],
         "framesReviewed": [
@@ -279,13 +279,13 @@ ID: `h-db-curl`. State: review. Release eligible: False.
       "handsFeet": {
         "status": "pass",
         "reviewer": "Codex",
-        "reviewedAt": "2026-10-21T09:13:40.424285+00:00",
+        "reviewedAt": "2026-10-21T11:18:05.625879+00:00",
         "evidence": [
           {
             "root": "media",
             "path": "qa/reviews/h-db-curl-evidence.json",
-            "sha256": "6231dfadc18caf0f36d08946fa595eb2a299fe9e024c119d4c32da6c720353f6",
-            "bytes": 5495
+            "sha256": "d72184b361e49c0fa551d96fd20ae8ac50eb1a0dee43626e2775b639781e9145",
+            "bytes": 5970
           }
         ],
         "framesReviewed": [
@@ -304,13 +304,13 @@ ID: `h-db-curl`. State: review. Release eligible: False.
       "propFlicker": {
         "status": "pass",
         "reviewer": "Codex",
-        "reviewedAt": "2026-10-21T09:13:40.424285+00:00",
+        "reviewedAt": "2026-10-21T11:18:05.625879+00:00",
         "evidence": [
           {
             "root": "media",
             "path": "qa/reviews/h-db-curl-evidence.json",
-            "sha256": "6231dfadc18caf0f36d08946fa595eb2a299fe9e024c119d4c32da6c720353f6",
-            "bytes": 5495
+            "sha256": "d72184b361e49c0fa551d96fd20ae8ac50eb1a0dee43626e2775b639781e9145",
+            "bytes": 5970
           }
         ],
         "framesReviewed": [
@@ -329,13 +329,13 @@ ID: `h-db-curl`. State: review. Release eligible: False.
       "loopSeam": {
         "status": "pass",
         "reviewer": "Codex",
-        "reviewedAt": "2026-10-21T09:13:40.424285+00:00",
+        "reviewedAt": "2026-10-21T11:18:05.625879+00:00",
         "evidence": [
           {
             "root": "media",
             "path": "qa/reviews/h-db-curl-evidence.json",
-            "sha256": "6231dfadc18caf0f36d08946fa595eb2a299fe9e024c119d4c32da6c720353f6",
-            "bytes": 5495
+            "sha256": "d72184b361e49c0fa551d96fd20ae8ac50eb1a0dee43626e2775b639781e9145",
+            "bytes": 5970
           }
         ],
         "framesReviewed": [
@@ -399,14 +399,14 @@ ID: `h-db-curl`. State: review. Release eligible: False.
         "measurement": {
           "root": "media",
           "path": "masters/realistic/h-db-curl/layer-manifest.json",
-          "sha256": "528b4c27c094c294e9bb3b456f73c9d0f4c66c7394a8ee7ecae7e9489f537cf5",
-          "bytes": 14678
+          "sha256": "1375b08ac6d213bf3e4eee1a11fc8d7ae3866e5b11eb5c096c80a302694159db",
+          "bytes": 14689
         },
         "bodyProps": {
           "sequence": {
             "root": "media",
             "path": "masters/realistic/h-db-curl/body/index.json",
-            "sha256": "fec00fa658cf646459bba3696c8a0bf04712c9e7ece3338d7d8e7b845e0bb2c9",
+            "sha256": "bdb2130b05bba6aa52bfa37b6a36ec47eab55eace44dd7135f5e34c1a67068ed",
             "bytes": 53609
           },
           "width": 1080,
@@ -420,7 +420,7 @@ ID: `h-db-curl`. State: review. Release eligible: False.
           "sequence": {
             "root": "media",
             "path": "masters/realistic/h-db-curl/highlight/index.json",
-            "sha256": "5ca32c3e71309f94dee1c3b6eabb13c03f3105a4392863dc212277c962c30cbf",
+            "sha256": "5fc3e236d434f658f935b5f2edea0cfa06bbba9690ec66df237e7a5217146fc9",
             "bytes": 54569
           },
           "width": 1080,
@@ -453,14 +453,14 @@ ID: `h-db-curl`. State: review. Release eligible: False.
         "measurement": {
           "root": "media",
           "path": "masters/tech-white/h-db-curl/layer-manifest.json",
-          "sha256": "eb353ed2944548ded346581ac7d7e0ad9e9550dbc1484c66a1a8dc4c4e12d196",
-          "bytes": 14930
+          "sha256": "85a2ab9b24ce609651ed9a762ab8f01bd2a9840aa05d0596029a92942dffd7ce",
+          "bytes": 14941
         },
         "bodyProps": {
           "sequence": {
             "root": "media",
             "path": "masters/tech-white/h-db-curl/body/index.json",
-            "sha256": "dea110096ba4408c643cbebea8b746d819e77e3ca9785f419db7322d375943d1",
+            "sha256": "9b5accef5596f6e8df3bf9488d2f576b35ec98c62c94e966f45201184a420245",
             "bytes": 53849
           },
           "width": 1080,
@@ -483,14 +483,14 @@ ID: `h-db-curl`. State: review. Release eligible: False.
         "measurement": {
           "root": "media",
           "path": "masters/neon-night/h-db-curl/layer-manifest.json",
-          "sha256": "6ffc6f5d5b767e2a607ecc27306a34d0432bb5ebb62edc35d04b2d8dfb2a5c82",
-          "bytes": 14930
+          "sha256": "478dd203dbefc888cda37fd546f3eeac26dd5a7389eeceb7326adc9a7ea0adbd",
+          "bytes": 14941
         },
         "bodyProps": {
           "sequence": {
             "root": "media",
             "path": "masters/neon-night/h-db-curl/body/index.json",
-            "sha256": "539b8b6c6c7848352950e401adce0bed9e8220397e34a8124a7a091c326af771",
+            "sha256": "a94b07298ff952b457602c1d575354e2c90bde9484847a5381ab488d0e6c24f1",
             "bytes": 53849
           },
           "width": 1080,
@@ -513,14 +513,14 @@ ID: `h-db-curl`. State: review. Release eligible: False.
         "measurement": {
           "root": "media",
           "path": "masters/neon-night-b/h-db-curl/layer-manifest.json",
-          "sha256": "e9f18df1964e9b4b6a73f91bc5b363c8af1a90e5d210d6bfa58e514fc7ff735c",
-          "bytes": 14938
+          "sha256": "cd9775a03732327dc0a0323eadbdf2d2dc6a8b14bba9f54695394abdc3c7548d",
+          "bytes": 14949
         },
         "bodyProps": {
           "sequence": {
             "root": "media",
             "path": "masters/neon-night-b/h-db-curl/body/index.json",
-            "sha256": "6902927caafad2ad22dea6015dc3935b32e9254662aa7ac6c19de1eb2a9c1e10",
+            "sha256": "60d8c212c631249d48dba1c617209693ff91707c90d36ce80dd69ad48ff33275",
             "bytes": 54329
           },
           "width": 1080,
@@ -543,14 +543,14 @@ ID: `h-db-curl`. State: review. Release eligible: False.
         "measurement": {
           "root": "media",
           "path": "masters/hologram/h-db-curl/layer-manifest.json",
-          "sha256": "7ceb262e02cd5b3f261c5d342f97c40748c6923a76b6d387fbcdbe6adf331c8c",
-          "bytes": 14922
+          "sha256": "77e22b85e56cd9b19e76dfc81f59e92ac023428f61545b12989de79112245da7",
+          "bytes": 14933
         },
         "bodyProps": {
           "sequence": {
             "root": "media",
             "path": "masters/hologram/h-db-curl/body/index.json",
-            "sha256": "e2fbef82b562caf6ecf8d5496f0a35fc9eaf01cb26333c7c8d5d308b64a65b28",
+            "sha256": "4b70454df7b5b77f4fc36bd5dfd27d3f5b94285e1dad44ee7cb6fa28efc7538a",
             "bytes": 53369
           },
           "width": 1080,
@@ -571,13 +571,13 @@ ID: `h-db-curl`. State: review. Release eligible: False.
     "loopReview": {
       "status": "pass",
       "reviewer": "Codex",
-      "reviewedAt": "2026-10-21T09:13:40.424285+00:00",
+      "reviewedAt": "2026-10-21T11:18:05.625879+00:00",
       "evidence": [
         {
           "root": "media",
           "path": "qa/reviews/h-db-curl-evidence.json",
-          "sha256": "6231dfadc18caf0f36d08946fa595eb2a299fe9e024c119d4c32da6c720353f6",
-          "bytes": 5495
+          "sha256": "d72184b361e49c0fa551d96fd20ae8ac50eb1a0dee43626e2775b639781e9145",
+          "bytes": 5970
         }
       ]
     }
@@ -599,8 +599,8 @@ ID: `h-db-curl`. State: review. Release eligible: False.
         "video": {
           "root": "media",
           "path": "derivatives/realistic/h-db-curl/dark/loop.720.mp4",
-          "sha256": "4f1546cb920a2e7c424931d97ed87b4cc999ea31cf647bcf038398e148ae95e8",
-          "bytes": 328281,
+          "sha256": "f155d1eeca896ce488a58cbe36f3920ef509d1751d3b4ba12a8cdcdd3f0b7c85",
+          "bytes": 327785,
           "width": 720,
           "height": 720,
           "durationSeconds": 8,
@@ -612,16 +612,16 @@ ID: `h-db-curl`. State: review. Release eligible: False.
         "cover": {
           "root": "media",
           "path": "derivatives/realistic/h-db-curl/dark/cover.720.jpg",
-          "sha256": "ae5213f8c513105760f42a53947d469d32e0ad95c5e88c46b7e562b579e25522",
-          "bytes": 28641,
+          "sha256": "82e1fc27bd4da14cda5c89f36ef8af1a2a6b16d01c526fa7d3f053d8874312bd",
+          "bytes": 28654,
           "width": 720,
           "height": 720
         },
         "thumbnail": {
           "root": "media",
           "path": "derivatives/realistic/h-db-curl/dark/thumbnail.240.jpg",
-          "sha256": "df80053dd04c91567f02fce83fffe6fd06eb08e9da327904b2c116251c5891d3",
-          "bytes": 5743,
+          "sha256": "eaf8f014f67b6af7bdc250d65d8927c7a86ba3dec36b75de0183618c82916a28",
+          "bytes": 5748,
           "width": 240,
           "height": 240
         },
@@ -631,8 +631,8 @@ ID: `h-db-curl`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/realistic/h-db-curl/dark/start.720.png",
-              "sha256": "9e41ca8d986699909d84de9c5b424e32b51f9d6878f57a008e10300745e2c76d",
-              "bytes": 71455,
+              "sha256": "91b98226c023af6896ffce163cf426112a01529bc1e1c1b801d2fcf67e7c6121",
+              "bytes": 71485,
               "width": 720,
               "height": 720,
               "frame": 0
@@ -643,8 +643,8 @@ ID: `h-db-curl`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/realistic/h-db-curl/dark/peak.720.png",
-              "sha256": "4ae813affb31c70a2be66140ed9beafb8540795d7684ab249a327ebe6c06deee",
-              "bytes": 72346,
+              "sha256": "9611377fea69b490b93d0adc6552eace4813250e4d7af1dabe6d13c9ae1004a1",
+              "bytes": 72414,
               "width": 720,
               "height": 720,
               "frame": 60
@@ -655,8 +655,8 @@ ID: `h-db-curl`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/realistic/h-db-curl/dark/end.720.png",
-              "sha256": "2f006c3e362ab018df310f7081ae00d179e5218c0dfb3c658334bc10885e16dc",
-              "bytes": 71693,
+              "sha256": "5fc25963ed3e7a045a652185eb9e1033503ffd2fac61a54be82efdb0a31b2c78",
+              "bytes": 71627,
               "width": 720,
               "height": 720,
               "frame": 239
@@ -677,8 +677,8 @@ ID: `h-db-curl`. State: review. Release eligible: False.
         "video": {
           "root": "media",
           "path": "derivatives/realistic/h-db-curl/light/loop.720.mp4",
-          "sha256": "0310f8f38f13cf132b03db478d238ab099a44076e88e9d6e4076ea977a1f699a",
-          "bytes": 322245,
+          "sha256": "988c0bcdc018243f4e826ecd69649d3579047be1d204397d789eba5242519e72",
+          "bytes": 323094,
           "width": 720,
           "height": 720,
           "durationSeconds": 8,
@@ -690,16 +690,16 @@ ID: `h-db-curl`. State: review. Release eligible: False.
         "cover": {
           "root": "media",
           "path": "derivatives/realistic/h-db-curl/light/cover.720.jpg",
-          "sha256": "f02dadb174de58bb2a9313b81e06ad46c6526bc9f82785fe18707de20ccc891d",
-          "bytes": 34086,
+          "sha256": "37ac7bc4a8700a265831368757e536cc4cdad0b06819fe5510a02c057fff7fdd",
+          "bytes": 34088,
           "width": 720,
           "height": 720
         },
         "thumbnail": {
           "root": "media",
           "path": "derivatives/realistic/h-db-curl/light/thumbnail.240.jpg",
-          "sha256": "619f89306fc89512d057df20ed90504f4115f30ea1354e68868e70086defdb43",
-          "bytes": 7768,
+          "sha256": "c84a33c0f18cc2e9247b1fddd214daaaf28d83d4e42842e4b1948a6983aa71d9",
+          "bytes": 7770,
           "width": 240,
           "height": 240
         },
@@ -709,8 +709,8 @@ ID: `h-db-curl`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/realistic/h-db-curl/light/start.720.png",
-              "sha256": "73992ea00c89e4d0d41c5697967de7270e3440f1d2e61793ab88d5b7a5bd73b2",
-              "bytes": 79084,
+              "sha256": "3f7321b9bb34b0ed19b74d777b6fcad24c9af4d2d934ce2ceae2bdd9b62ce727",
+              "bytes": 79140,
               "width": 720,
               "height": 720,
               "frame": 0
@@ -721,8 +721,8 @@ ID: `h-db-curl`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/realistic/h-db-curl/light/peak.720.png",
-              "sha256": "2019b07634bf620c59e2d15b4b0a2310dd7c49dd8dbaaae58d7206bcd6582eb5",
-              "bytes": 79929,
+              "sha256": "c83b83f9ba1c4b4885a927a27485bfed4b53fcea1075d8f2454c8dc9377335ad",
+              "bytes": 79993,
               "width": 720,
               "height": 720,
               "frame": 60
@@ -733,8 +733,8 @@ ID: `h-db-curl`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/realistic/h-db-curl/light/end.720.png",
-              "sha256": "7364a39b81fdd4a4c4124ae6f5c84f733130dd9599d1ac4112c4d749a0933205",
-              "bytes": 79393,
+              "sha256": "b2f4801d739f4007afbc12bbd7b7310e51e3bf36df4b142dbd57bfb61a77798e",
+              "bytes": 79309,
               "width": 720,
               "height": 720,
               "frame": 239
@@ -755,8 +755,8 @@ ID: `h-db-curl`. State: review. Release eligible: False.
         "video": {
           "root": "media",
           "path": "derivatives/tech-white/h-db-curl/dark/loop.720.mp4",
-          "sha256": "b6c67330bfa30ff021f7313637290325375b7610a1a12caa85ff599c7bb26f5b",
-          "bytes": 430908,
+          "sha256": "fdca80ec57a0f24e3e2b2620e09098e5a59ace0f9b0977558505d79cada20a52",
+          "bytes": 440464,
           "width": 720,
           "height": 720,
           "durationSeconds": 8,
@@ -768,16 +768,16 @@ ID: `h-db-curl`. State: review. Release eligible: False.
         "cover": {
           "root": "media",
           "path": "derivatives/tech-white/h-db-curl/dark/cover.720.jpg",
-          "sha256": "4ea356434382e147fb9b01bba082be0b4acdcc8b6a7253c8a871530371343011",
-          "bytes": 40202,
+          "sha256": "58863d57a2cedaa91a219b0d691168e09afd034a21125148862b0db44593b07f",
+          "bytes": 40416,
           "width": 720,
           "height": 720
         },
         "thumbnail": {
           "root": "media",
           "path": "derivatives/tech-white/h-db-curl/dark/thumbnail.240.jpg",
-          "sha256": "f30f5fcb4c5417205fd16b8a697cd139382b5489d255f858b30e2249f8dc2d1a",
-          "bytes": 7878,
+          "sha256": "bb4d62a00be6c1db93b85eca8a3101a66c3b9d00140ffc27c675498b49614ccc",
+          "bytes": 7844,
           "width": 240,
           "height": 240
         },
@@ -787,8 +787,8 @@ ID: `h-db-curl`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/tech-white/h-db-curl/dark/start.720.png",
-              "sha256": "6d121b606f68ba55d79213be27f8bbe0257c44d1339cc7f0adc2f9501217a10b",
-              "bytes": 102726,
+              "sha256": "3c3e5049723570b9cba2d22c5507f5d73549659e6503f7aad74b583e9f311cf0",
+              "bytes": 103997,
               "width": 720,
               "height": 720,
               "frame": 0
@@ -799,8 +799,8 @@ ID: `h-db-curl`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/tech-white/h-db-curl/dark/peak.720.png",
-              "sha256": "987893e55c195eb982f26fbd6a26644033c6ded488290b03648b2f133186aefd",
-              "bytes": 102726,
+              "sha256": "035c0c5a6d8336a4d3969ffa3785d69462d1398b404e03ced86ba6dfc16c3fa8",
+              "bytes": 104059,
               "width": 720,
               "height": 720,
               "frame": 60
@@ -811,8 +811,8 @@ ID: `h-db-curl`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/tech-white/h-db-curl/dark/end.720.png",
-              "sha256": "3472437cfc40d819df6398146e69a66dda05af6268f7decbcadcc24b278217a3",
-              "bytes": 102950,
+              "sha256": "63149bcbd1ffad96a860b1c8fe2206c4a8ba59cd0a5ec5323c8592f4768d41b0",
+              "bytes": 104095,
               "width": 720,
               "height": 720,
               "frame": 239
@@ -833,8 +833,8 @@ ID: `h-db-curl`. State: review. Release eligible: False.
         "video": {
           "root": "media",
           "path": "derivatives/tech-white/h-db-curl/light/loop.720.mp4",
-          "sha256": "d0e124a198f60182a3eaf924a79295d43b66070deb0ec9beeba7e3b9dd7f129f",
-          "bytes": 390639,
+          "sha256": "30347e772eff621bbf2213bb6f5b60acac0a99bc73835d79727ac0ae68522f8a",
+          "bytes": 396726,
           "width": 720,
           "height": 720,
           "durationSeconds": 8,
@@ -846,16 +846,16 @@ ID: `h-db-curl`. State: review. Release eligible: False.
         "cover": {
           "root": "media",
           "path": "derivatives/tech-white/h-db-curl/light/cover.720.jpg",
-          "sha256": "b9ec00fe6b91d418e74b311c0a9eebfa43bf03448215303711695fe91f2c028c",
-          "bytes": 38092,
+          "sha256": "285b8862854304ff9e5ea705e35ff0ebbe465fa96f604feede570b423e8fb4ba",
+          "bytes": 38145,
           "width": 720,
           "height": 720
         },
         "thumbnail": {
           "root": "media",
           "path": "derivatives/tech-white/h-db-curl/light/thumbnail.240.jpg",
-          "sha256": "b0ff05cfce5ebc2ade8d8878076a62b2d7588e85522be566394bb2f1a11e96b8",
-          "bytes": 7067,
+          "sha256": "1db3a47d0561e9b148ef34b5e692e63a6473af4689768f4562099c9e5fa53814",
+          "bytes": 6942,
           "width": 240,
           "height": 240
         },
@@ -865,8 +865,8 @@ ID: `h-db-curl`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/tech-white/h-db-curl/light/start.720.png",
-              "sha256": "f3135729f391d52d812303810791b9cf6a87ff88d2b71c07a7de0f8be295e4f6",
-              "bytes": 102231,
+              "sha256": "3b80f75c3d061b4aff98b37f0ba2c0e73fad0c2633d12f15909299595ae8abeb",
+              "bytes": 103243,
               "width": 720,
               "height": 720,
               "frame": 0
@@ -877,8 +877,8 @@ ID: `h-db-curl`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/tech-white/h-db-curl/light/peak.720.png",
-              "sha256": "68046882bad95718d3b853874537ca00b31dc3e73d6ea12cbd3a73623d8d143a",
-              "bytes": 101925,
+              "sha256": "2419d3d311d30d1aff3fb9daca69fe95065b4b78592f7a216e29ac24c2603e96",
+              "bytes": 103081,
               "width": 720,
               "height": 720,
               "frame": 60
@@ -889,8 +889,8 @@ ID: `h-db-curl`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/tech-white/h-db-curl/light/end.720.png",
-              "sha256": "474457e9abd0680e158ace83295b887d1902da6c8d6a6fa6caf7ce2b539da9ec",
-              "bytes": 102354,
+              "sha256": "2f7a1682195369ece5e7316e158c7dd28eb6b6452aaec3739da7e9667cf930b8",
+              "bytes": 103275,
               "width": 720,
               "height": 720,
               "frame": 239
@@ -911,8 +911,8 @@ ID: `h-db-curl`. State: review. Release eligible: False.
         "video": {
           "root": "media",
           "path": "derivatives/neon-night/h-db-curl/dark/loop.720.mp4",
-          "sha256": "f8caf7f3bf127019ab8faef9d19108e9efb8e2e4f4b88849d46b45905a720379",
-          "bytes": 403303,
+          "sha256": "44ff3ec301a9b737b47487ef36ead7b7633f2af37af5c331ace5cfa49bbfe2d1",
+          "bytes": 412774,
           "width": 720,
           "height": 720,
           "durationSeconds": 8,
@@ -924,16 +924,16 @@ ID: `h-db-curl`. State: review. Release eligible: False.
         "cover": {
           "root": "media",
           "path": "derivatives/neon-night/h-db-curl/dark/cover.720.jpg",
-          "sha256": "c5de8c182076e9f1ca92ba5e3aa12779e1b964af2015791285fefdc6de89c478",
-          "bytes": 40612,
+          "sha256": "b19391feb9877709570db90cd5d0baa8dfc258990c9a857160fa8a0b25c1a1bf",
+          "bytes": 41126,
           "width": 720,
           "height": 720
         },
         "thumbnail": {
           "root": "media",
           "path": "derivatives/neon-night/h-db-curl/dark/thumbnail.240.jpg",
-          "sha256": "5a0619157d210490e997d120d9aa171c94929f9f98d8c373eabf5cbf5ed1b875",
-          "bytes": 7284,
+          "sha256": "56564fec5d66dcf550c9dd2f2325009fb45fe0768c1ad614840fd1bfb295c929",
+          "bytes": 7308,
           "width": 240,
           "height": 240
         },
@@ -943,8 +943,8 @@ ID: `h-db-curl`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/neon-night/h-db-curl/dark/start.720.png",
-              "sha256": "bab58a290110c7498f0f264379b62cd8e2b72d726c8cff810b2966564032634d",
-              "bytes": 102230,
+              "sha256": "54d79185f385e54eeecdf5ac527dc8203eaa7385a275fc7bdacde7939679f3c5",
+              "bytes": 103695,
               "width": 720,
               "height": 720,
               "frame": 0
@@ -955,8 +955,8 @@ ID: `h-db-curl`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/neon-night/h-db-curl/dark/peak.720.png",
-              "sha256": "3644d5f0ca788fcd1dd2d0bfcb740de7cf5e7d59a2ef401b9f5ec4819a2d986c",
-              "bytes": 102660,
+              "sha256": "51f3ea0334897cded8dcb05ac26c6af4aabeacded1648ada6682791737d2afeb",
+              "bytes": 104122,
               "width": 720,
               "height": 720,
               "frame": 60
@@ -967,8 +967,8 @@ ID: `h-db-curl`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/neon-night/h-db-curl/dark/end.720.png",
-              "sha256": "a8b34f76b7dd19e371fe7a486e257268a2e6de5c6b98d1eb83687832d6f61410",
-              "bytes": 102401,
+              "sha256": "b47bb3be99141136449f7cf13566968e5726454598f3431a5d35a91e5803ef74",
+              "bytes": 103899,
               "width": 720,
               "height": 720,
               "frame": 239
@@ -989,8 +989,8 @@ ID: `h-db-curl`. State: review. Release eligible: False.
         "video": {
           "root": "media",
           "path": "derivatives/neon-night/h-db-curl/light/loop.720.mp4",
-          "sha256": "461dad343dc7fcebff59f45f8e4c138239d587c0ad5b84d5f1bf8892b782a9cf",
-          "bytes": 427704,
+          "sha256": "a60dd3d74e0522951a92c073508a9006df7d173f8a690b933d4b2d709997241b",
+          "bytes": 437351,
           "width": 720,
           "height": 720,
           "durationSeconds": 8,
@@ -1002,16 +1002,16 @@ ID: `h-db-curl`. State: review. Release eligible: False.
         "cover": {
           "root": "media",
           "path": "derivatives/neon-night/h-db-curl/light/cover.720.jpg",
-          "sha256": "e91daadc33e8defd161392572fa05170f33e429b6a094ac946dda409882e164a",
-          "bytes": 47119,
+          "sha256": "b8478ae1304991dc560a4be5be54720c48e273642b0f59fe50cdd585cb7b02f6",
+          "bytes": 47728,
           "width": 720,
           "height": 720
         },
         "thumbnail": {
           "root": "media",
           "path": "derivatives/neon-night/h-db-curl/light/thumbnail.240.jpg",
-          "sha256": "d9327e635d3db33e02d763a8c4a35d4bbad016079e40f043d6c82dbb296ce29e",
-          "bytes": 9361,
+          "sha256": "2dab4f7dc500bf24940c947edc0fe32dc61b3d4f1e18cf3ec351101a6261252d",
+          "bytes": 9417,
           "width": 240,
           "height": 240
         },
@@ -1021,8 +1021,8 @@ ID: `h-db-curl`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/neon-night/h-db-curl/light/start.720.png",
-              "sha256": "c8a699e4b41111546b4f07b4852c5c0cffbb6ca9991c73ce3623cf756ebeabca",
-              "bytes": 112310,
+              "sha256": "001ac48474f70d6e0ff9a8f6ff82ef16985702984193ee4c719bd4911d23efaf",
+              "bytes": 113896,
               "width": 720,
               "height": 720,
               "frame": 0
@@ -1033,8 +1033,8 @@ ID: `h-db-curl`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/neon-night/h-db-curl/light/peak.720.png",
-              "sha256": "704120585c2a64875ccf793938b4f22583e076d27a9855efa3877ca1601373de",
-              "bytes": 112274,
+              "sha256": "1c473d61c4e1fe3326aa7d13f674d8245b167e946d2cdd09c8324efaea6be22b",
+              "bytes": 113859,
               "width": 720,
               "height": 720,
               "frame": 60
@@ -1045,8 +1045,8 @@ ID: `h-db-curl`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/neon-night/h-db-curl/light/end.720.png",
-              "sha256": "439d5f914176c7785952c4a73154273cdd1fcaab55939a7be294d88ecc6627e2",
-              "bytes": 112266,
+              "sha256": "de4b9f5cf88bb8fdbf0cbd9b369b87b805d46fbc5b04c959aaf5433a3a7126f7",
+              "bytes": 113846,
               "width": 720,
               "height": 720,
               "frame": 239
@@ -1067,8 +1067,8 @@ ID: `h-db-curl`. State: review. Release eligible: False.
         "video": {
           "root": "media",
           "path": "derivatives/neon-night-b/h-db-curl/dark/loop.720.mp4",
-          "sha256": "68984842e547209bce8375bebf58ed0e7c879bfc4809f818f7bb75b6b9e252ed",
-          "bytes": 413860,
+          "sha256": "7cf19b831ddd7cf60c867cf9317240f039fb136b23c652631b5d47a9c750ae21",
+          "bytes": 425595,
           "width": 720,
           "height": 720,
           "durationSeconds": 8,
@@ -1080,16 +1080,16 @@ ID: `h-db-curl`. State: review. Release eligible: False.
         "cover": {
           "root": "media",
           "path": "derivatives/neon-night-b/h-db-curl/dark/cover.720.jpg",
-          "sha256": "2f6c9ddd671a680a200a074accdafee7b0a1a66a4be37f0930fd27519546b522",
-          "bytes": 40728,
+          "sha256": "77e1fe12e459b1c0e35ac8a73d9605bc8919e51b72cb359663481bbdb0dcb996",
+          "bytes": 41213,
           "width": 720,
           "height": 720
         },
         "thumbnail": {
           "root": "media",
           "path": "derivatives/neon-night-b/h-db-curl/dark/thumbnail.240.jpg",
-          "sha256": "e23dc917f079118f2980ea506e61b4afeb579cbe8f013a4b4d0c02971c284587",
-          "bytes": 7376,
+          "sha256": "357ed9eb97b9ab1f599f559e533e02ecb54825641fe63d77f3542a46c858a21d",
+          "bytes": 7404,
           "width": 240,
           "height": 240
         },
@@ -1099,8 +1099,8 @@ ID: `h-db-curl`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/neon-night-b/h-db-curl/dark/start.720.png",
-              "sha256": "7995fbcc0ecb7ad6453e5814a69619e9f3b4f5b13ebe2360df9e6a5f63993893",
-              "bytes": 101605,
+              "sha256": "f64332cd18a6a89aa0dd8a1a9139c1637a2d05ba7423c36a94f57c8e83169187",
+              "bytes": 103110,
               "width": 720,
               "height": 720,
               "frame": 0
@@ -1111,8 +1111,8 @@ ID: `h-db-curl`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/neon-night-b/h-db-curl/dark/peak.720.png",
-              "sha256": "81f63f2a5e3684fd5d509b07399174452273872b1adc78443cbcf2c73123409a",
-              "bytes": 102094,
+              "sha256": "8e10e97eac30c7eca7ed57584d12413dd570d64a51a4f137e711e6ca818fa48f",
+              "bytes": 103577,
               "width": 720,
               "height": 720,
               "frame": 60
@@ -1123,8 +1123,8 @@ ID: `h-db-curl`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/neon-night-b/h-db-curl/dark/end.720.png",
-              "sha256": "1b9339081f5a3f02bed908fd39dd8f0503585f6d0a3fd4ca57c9478bf704655c",
-              "bytes": 101753,
+              "sha256": "6b98fcda34947fa23556701658679ebd7da6117730078fce2959929ef9b7332b",
+              "bytes": 103158,
               "width": 720,
               "height": 720,
               "frame": 239
@@ -1145,8 +1145,8 @@ ID: `h-db-curl`. State: review. Release eligible: False.
         "video": {
           "root": "media",
           "path": "derivatives/neon-night-b/h-db-curl/light/loop.720.mp4",
-          "sha256": "97f96bcf5d216e9951a831798e1f7adc1ea67036c22c4adc0fbbca3add38ec28",
-          "bytes": 436108,
+          "sha256": "bd0f1ae936825d9e567bbd033abaabb3731b82d08fe10328d5dc76cc5f8c3978",
+          "bytes": 446440,
           "width": 720,
           "height": 720,
           "durationSeconds": 8,
@@ -1158,16 +1158,16 @@ ID: `h-db-curl`. State: review. Release eligible: False.
         "cover": {
           "root": "media",
           "path": "derivatives/neon-night-b/h-db-curl/light/cover.720.jpg",
-          "sha256": "7bc70a787d86ce97e9362bfd27c2decfc0c752083fac0792d536863ad9fe466d",
-          "bytes": 46755,
+          "sha256": "d9be9c673418a91542ee6b9780a32816995e6172fb8636d3a194cdeb1fe50e64",
+          "bytes": 47374,
           "width": 720,
           "height": 720
         },
         "thumbnail": {
           "root": "media",
           "path": "derivatives/neon-night-b/h-db-curl/light/thumbnail.240.jpg",
-          "sha256": "76218722eaf844473147efcb6f278c9568f78f2a93ede5ed3acadc0dc0a5516c",
-          "bytes": 9258,
+          "sha256": "c1141bce9f2b9a07e4fb56711504ff6ad727bf273a281b2b6e0375743a3b4429",
+          "bytes": 9287,
           "width": 240,
           "height": 240
         },
@@ -1177,8 +1177,8 @@ ID: `h-db-curl`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/neon-night-b/h-db-curl/light/start.720.png",
-              "sha256": "b59454a8a055f682f790a4b607f1ce9ebf5a64649881c755a85392390f5aff48",
-              "bytes": 111698,
+              "sha256": "9debf8b32e4c4453ece5bd81b9d488d504b70e39110820ee81e14e2be89a3d78",
+              "bytes": 113342,
               "width": 720,
               "height": 720,
               "frame": 0
@@ -1189,8 +1189,8 @@ ID: `h-db-curl`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/neon-night-b/h-db-curl/light/peak.720.png",
-              "sha256": "3343a29b538a76d92fa7e294ea68e2f53050b359ce7209468d62842002de0c04",
-              "bytes": 111828,
+              "sha256": "eb021e8e9706b99b9b00c0b2cdd32cb0ba731276b676d4ea329184b3b570abd9",
+              "bytes": 113423,
               "width": 720,
               "height": 720,
               "frame": 60
@@ -1201,8 +1201,8 @@ ID: `h-db-curl`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/neon-night-b/h-db-curl/light/end.720.png",
-              "sha256": "e7a95697e0bcf2158f7a62f15fa3346dcbd9b7360e87d9054bb09e007f87c891",
-              "bytes": 111795,
+              "sha256": "259fa41a50a98f865ef059c5649ccf47ae612bbf96ee581c6d3fe738944d1b86",
+              "bytes": 113302,
               "width": 720,
               "height": 720,
               "frame": 239
@@ -1223,8 +1223,8 @@ ID: `h-db-curl`. State: review. Release eligible: False.
         "video": {
           "root": "media",
           "path": "derivatives/hologram/h-db-curl/dark/loop.720.mp4",
-          "sha256": "4e15cf29e4012df1224f52d1501bde68b86a1f8fda4a7a247fe4460f26387a90",
-          "bytes": 484080,
+          "sha256": "860e785992dbd0164a01c5fdc9d8f1a364f1627187ed0d54ffd181c9bf2482cf",
+          "bytes": 494799,
           "width": 720,
           "height": 720,
           "durationSeconds": 8,
@@ -1236,16 +1236,16 @@ ID: `h-db-curl`. State: review. Release eligible: False.
         "cover": {
           "root": "media",
           "path": "derivatives/hologram/h-db-curl/dark/cover.720.jpg",
-          "sha256": "600e595e37ac8355920655bff6ece0921287a190e10ebd6b6709912f636b1532",
-          "bytes": 38871,
+          "sha256": "83afd8e1ddf307cc0f86f5d8e7f77d062b9a992399927a1825c2aea84d095fbf",
+          "bytes": 39232,
           "width": 720,
           "height": 720
         },
         "thumbnail": {
           "root": "media",
           "path": "derivatives/hologram/h-db-curl/dark/thumbnail.240.jpg",
-          "sha256": "95e6388033cd86eeae26b54ba1dc2dc1b7f05c1236c11eb7fdfc6cbf3c8b80d1",
-          "bytes": 6813,
+          "sha256": "0293ab7a9e7b763b463a050bb1e1797232f664a0c57acd2796e48b957a196f48",
+          "bytes": 6803,
           "width": 240,
           "height": 240
         },
@@ -1255,8 +1255,8 @@ ID: `h-db-curl`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/hologram/h-db-curl/dark/start.720.png",
-              "sha256": "b79ff1ed33863d640e8ba45a8576f2c66ca4f4c4076c61e6f903dd65be87262e",
-              "bytes": 117108,
+              "sha256": "5ac425d7eb458fbeaf44409d357a5bf046d97ededa85edc6938fdd476bb92362",
+              "bytes": 119072,
               "width": 720,
               "height": 720,
               "frame": 0
@@ -1267,8 +1267,8 @@ ID: `h-db-curl`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/hologram/h-db-curl/dark/peak.720.png",
-              "sha256": "2bb02aeac2a710d56532fe1f4930268ddd4c74ba203500cee41fc857bd90dbf5",
-              "bytes": 117226,
+              "sha256": "41df38cc1c3db5dfc33a4d7f0748c2e018c2150faf1aa97dc9590782e5c84568",
+              "bytes": 119241,
               "width": 720,
               "height": 720,
               "frame": 60
@@ -1279,8 +1279,8 @@ ID: `h-db-curl`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/hologram/h-db-curl/dark/end.720.png",
-              "sha256": "8c613254547600488f4766539081553643bdd011dcb9b8315404d21d56d1a9d1",
-              "bytes": 117102,
+              "sha256": "5cf0a3571a7b921cb1588f451258975e7a793c37a0a0e8dd4ed12628cdfb5439",
+              "bytes": 119059,
               "width": 720,
               "height": 720,
               "frame": 239
@@ -1301,8 +1301,8 @@ ID: `h-db-curl`. State: review. Release eligible: False.
         "video": {
           "root": "media",
           "path": "derivatives/hologram/h-db-curl/light/loop.720.mp4",
-          "sha256": "a4a3291034f0e2081e4d2d40f9dcc7eb0779cc11ee1fbb10a63c46597c55c810",
-          "bytes": 302786,
+          "sha256": "fafcc59305371af07fe25eb8fe7524ede9fdcdb4818f5b12383ad582789e349b",
+          "bytes": 300999,
           "width": 720,
           "height": 720,
           "durationSeconds": 8,
@@ -1314,16 +1314,16 @@ ID: `h-db-curl`. State: review. Release eligible: False.
         "cover": {
           "root": "media",
           "path": "derivatives/hologram/h-db-curl/light/cover.720.jpg",
-          "sha256": "0b4dc6b8fa6215304ff5497d20508136685a2fe14d9328903d5044f102b75a77",
-          "bytes": 33049,
+          "sha256": "073d4a1e7557de9b9166e5a89174dc654f03858c4c38be7495202492555f0143",
+          "bytes": 32681,
           "width": 720,
           "height": 720
         },
         "thumbnail": {
           "root": "media",
           "path": "derivatives/hologram/h-db-curl/light/thumbnail.240.jpg",
-          "sha256": "aaa41c2751fcfa589082542f54cf3323b97e2c05b781bf9abe381fbc0b3be4a9",
-          "bytes": 6660,
+          "sha256": "5781bc338460ae3638d14fa2699498bee29984cb366848fc91cd4e076f97be2a",
+          "bytes": 6538,
           "width": 240,
           "height": 240
         },
@@ -1333,8 +1333,8 @@ ID: `h-db-curl`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/hologram/h-db-curl/light/start.720.png",
-              "sha256": "eb1647379b0ca60772f7c9bc745fd2bf7b8a83896359c083a87909453de0c749",
-              "bytes": 108416,
+              "sha256": "a03229426fa9d66ee020d8e47d933d5b2b2fe6c6059ccd425e84c74401095fe5",
+              "bytes": 109003,
               "width": 720,
               "height": 720,
               "frame": 0
@@ -1345,8 +1345,8 @@ ID: `h-db-curl`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/hologram/h-db-curl/light/peak.720.png",
-              "sha256": "6626e3e76601846979c600ee3e2fa3a6c1dbffb6bfc0f28ca2840f225b600811",
-              "bytes": 108099,
+              "sha256": "8da65500c5b6cfb2c7518ecfc227ba2f4caacf505a3816914595be803d47652c",
+              "bytes": 108809,
               "width": 720,
               "height": 720,
               "frame": 60
@@ -1357,8 +1357,8 @@ ID: `h-db-curl`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/hologram/h-db-curl/light/end.720.png",
-              "sha256": "bb9ee554b339aee96b0ad12f49fba161d442e1040a649ad4a21343eb40419758",
-              "bytes": 108674,
+              "sha256": "449ea70d9bf1481e00069e83332444fcf3da06760e37055e9844b755609d43b5",
+              "bytes": 109322,
               "width": 720,
               "height": 720,
               "frame": 239
@@ -1371,8 +1371,8 @@ ID: `h-db-curl`. State: review. Release eligible: False.
       "realistic": {
         "root": "media",
         "path": "derivatives/realistic/h-db-curl/cover.transparent.1080.png",
-        "sha256": "ab6a9999a89efdea20d627c22a5fef7027f23ca0fce83a6900f560affba53379",
-        "bytes": 151225,
+        "sha256": "738453e634e4fd9ad2c30ef4c2eae4026fcaa5e23b3ca459a2d6ae97679b28cd",
+        "bytes": 151330,
         "width": 1080,
         "height": 1080,
         "alpha": true
@@ -1380,8 +1380,8 @@ ID: `h-db-curl`. State: review. Release eligible: False.
       "tech-white": {
         "root": "media",
         "path": "derivatives/tech-white/h-db-curl/cover.transparent.1080.png",
-        "sha256": "1d9d5e2a27735ed8d7fbfd6c52d6093acaa4daf9fae781bc2d4348cce433e431",
-        "bytes": 206091,
+        "sha256": "88e34252f3764541ce872561649992a6081853d44b0187dcaf3cb5ae02a33cfe",
+        "bytes": 208411,
         "width": 1080,
         "height": 1080,
         "alpha": true
@@ -1389,8 +1389,8 @@ ID: `h-db-curl`. State: review. Release eligible: False.
       "neon-night": {
         "root": "media",
         "path": "derivatives/neon-night/h-db-curl/cover.transparent.1080.png",
-        "sha256": "298980a73260c06375adf73b235d385f0f625fa1ebf0570de918523c9da2f9e6",
-        "bytes": 226720,
+        "sha256": "3eac8de01af7cf076fee9d3c7aed059b8dba9a673b2b7af58627825aa757e8dc",
+        "bytes": 230664,
         "width": 1080,
         "height": 1080,
         "alpha": true
@@ -1398,8 +1398,8 @@ ID: `h-db-curl`. State: review. Release eligible: False.
       "neon-night-b": {
         "root": "media",
         "path": "derivatives/neon-night-b/h-db-curl/cover.transparent.1080.png",
-        "sha256": "cce2c973eedd4110547b2475652423ea63540d9ae20e6298ce48f7797d0d7b70",
-        "bytes": 226066,
+        "sha256": "ea95047d8d54d41ef32567220038bc1f8c0ed2f8f21f2d34b6dfdd31c53bd598",
+        "bytes": 230115,
         "width": 1080,
         "height": 1080,
         "alpha": true
@@ -1407,8 +1407,8 @@ ID: `h-db-curl`. State: review. Release eligible: False.
       "hologram": {
         "root": "media",
         "path": "derivatives/hologram/h-db-curl/cover.transparent.1080.png",
-        "sha256": "23b10e37f2a0eba8665c2e26f31552eb1d53cdfadb7468dae68c64609e8c79eb",
-        "bytes": 312058,
+        "sha256": "b884a7bd04055c3952a23c0de5d71c71b8b52e7a6034698c76d6e48cf7e4431d",
+        "bytes": 318168,
         "width": 1080,
         "height": 1080,
         "alpha": true
@@ -1451,7 +1451,7 @@ ID: `h-db-curl`. State: review. Release eligible: False.
     "manifest": {
       "root": "media",
       "path": "manifests/h-db-curl.json",
-      "sha256": "327589442dd56b2f4f3d1b98249ef9c2230a0c9756cd87976796f8c730d30124",
+      "sha256": "e3e8e16571c62ae1658f2f57f05e3fb6003e534c09ffa20b773a14ec3be7464d",
       "bytes": 27934
     }
   }

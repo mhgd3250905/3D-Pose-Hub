@@ -255,13 +255,13 @@ ID: `s-frog`. State: review. Release eligible: False.
       "intersections": {
         "status": "pass",
         "reviewer": "Codex",
-        "reviewedAt": "2026-10-21T09:13:40.424285+00:00",
+        "reviewedAt": "2026-10-21T11:18:05.625879+00:00",
         "evidence": [
           {
             "root": "media",
             "path": "qa/reviews/s-frog-evidence.json",
-            "sha256": "d3b3c103fb6231275e4cfe773a28ec607fa05a54c52a928f9886c93a578bfedb",
-            "bytes": 5545
+            "sha256": "45c6025c4c8821e2a9402f839226487ffa9ef2d752d58993a020edd27f1f59d8",
+            "bytes": 6013
           }
         ],
         "framesReviewed": [
@@ -281,13 +281,13 @@ ID: `s-frog`. State: review. Release eligible: False.
       "handsFeet": {
         "status": "pass",
         "reviewer": "Codex",
-        "reviewedAt": "2026-10-21T09:13:40.424285+00:00",
+        "reviewedAt": "2026-10-21T11:18:05.625879+00:00",
         "evidence": [
           {
             "root": "media",
             "path": "qa/reviews/s-frog-evidence.json",
-            "sha256": "d3b3c103fb6231275e4cfe773a28ec607fa05a54c52a928f9886c93a578bfedb",
-            "bytes": 5545
+            "sha256": "45c6025c4c8821e2a9402f839226487ffa9ef2d752d58993a020edd27f1f59d8",
+            "bytes": 6013
           }
         ],
         "framesReviewed": [
@@ -307,13 +307,13 @@ ID: `s-frog`. State: review. Release eligible: False.
       "propFlicker": {
         "status": "pass",
         "reviewer": "Codex",
-        "reviewedAt": "2026-10-21T09:13:40.424285+00:00",
+        "reviewedAt": "2026-10-21T11:18:05.625879+00:00",
         "evidence": [
           {
             "root": "media",
             "path": "qa/reviews/s-frog-evidence.json",
-            "sha256": "d3b3c103fb6231275e4cfe773a28ec607fa05a54c52a928f9886c93a578bfedb",
-            "bytes": 5545
+            "sha256": "45c6025c4c8821e2a9402f839226487ffa9ef2d752d58993a020edd27f1f59d8",
+            "bytes": 6013
           }
         ],
         "framesReviewed": [
@@ -333,13 +333,13 @@ ID: `s-frog`. State: review. Release eligible: False.
       "loopSeam": {
         "status": "pass",
         "reviewer": "Codex",
-        "reviewedAt": "2026-10-21T09:13:40.424285+00:00",
+        "reviewedAt": "2026-10-21T11:18:05.625879+00:00",
         "evidence": [
           {
             "root": "media",
             "path": "qa/reviews/s-frog-evidence.json",
-            "sha256": "d3b3c103fb6231275e4cfe773a28ec607fa05a54c52a928f9886c93a578bfedb",
-            "bytes": 5545
+            "sha256": "45c6025c4c8821e2a9402f839226487ffa9ef2d752d58993a020edd27f1f59d8",
+            "bytes": 6013
           }
         ],
         "framesReviewed": [
@@ -396,14 +396,14 @@ ID: `s-frog`. State: review. Release eligible: False.
         "measurement": {
           "root": "media",
           "path": "masters/realistic/s-frog/layer-manifest.json",
-          "sha256": "3b092d4e7e953393f0a029df00bdb03d87c1e3c35db14600741996777c8683cb",
+          "sha256": "40d003892de58f69ede391999ef2b7b81bc6b688de94496238e04ddaf39213da",
           "bytes": 13082
         },
         "bodyProps": {
           "sequence": {
             "root": "media",
             "path": "masters/realistic/s-frog/body/index.json",
-            "sha256": "5fe215e997d92aab2a6ce640d95c3bdec3624c68b62ff957342289f4a12a303a",
+            "sha256": "59a93e6c283b6ee79920542c681bcbcc4599db4e5fd4bd96b9e15c0f75144241",
             "bytes": 52649
           },
           "width": 1080,
@@ -417,7 +417,7 @@ ID: `s-frog`. State: review. Release eligible: False.
           "sequence": {
             "root": "media",
             "path": "masters/realistic/s-frog/highlight/index.json",
-            "sha256": "64e203fdab582e18e2bab812b078c6535102ee062466fdf1df48e67d708142b4",
+            "sha256": "93cef5a3e5657e5c6aeee6b4c2e7bd338119a694d8bc0cddf97602cf75f2b317",
             "bytes": 53849
           },
           "width": 1080,
@@ -450,14 +450,14 @@ ID: `s-frog`. State: review. Release eligible: False.
         "measurement": {
           "root": "media",
           "path": "masters/tech-white/s-frog/layer-manifest.json",
-          "sha256": "99a59cf757214fca3d99af9d97636ef0dceb226269ff1a61ea5ff3ad32f32d26",
+          "sha256": "d55e1539ad0084f8623e0036957db6d6932f7f16c778493b4d8f8bda377bb8b8",
           "bytes": 13334
         },
         "bodyProps": {
           "sequence": {
             "root": "media",
             "path": "masters/tech-white/s-frog/body/index.json",
-            "sha256": "aa3137e25c3b423eff66f73181ba5916518e21ebfc0af4ccf5d2ef9ffcbadd23",
+            "sha256": "1207d0b7e79543212f338930f26b940caf82a099ba7f10feffa7cd7094be40e3",
             "bytes": 52889
           },
           "width": 1080,
@@ -480,14 +480,14 @@ ID: `s-frog`. State: review. Release eligible: False.
         "measurement": {
           "root": "media",
           "path": "masters/neon-night/s-frog/layer-manifest.json",
-          "sha256": "3a653f6fc1f374eea30aa59351df27b52baa4194357022ffad51ed34a2ad3d40",
+          "sha256": "4f54e466937b0f69f4498aa7a1ecf280f4c9111b7ff80676280f2be7e37468c7",
           "bytes": 13334
         },
         "bodyProps": {
           "sequence": {
             "root": "media",
             "path": "masters/neon-night/s-frog/body/index.json",
-            "sha256": "d44acd8251fdb593cfdd5126474eb84c6abc3fc1efe51026db5b0c0ebf868bc9",
+            "sha256": "975b16248876b56bcdbf74383addb36bbeb0473252e8f2f7779c436fb57eb2fd",
             "bytes": 52889
           },
           "width": 1080,
@@ -510,14 +510,14 @@ ID: `s-frog`. State: review. Release eligible: False.
         "measurement": {
           "root": "media",
           "path": "masters/neon-night-b/s-frog/layer-manifest.json",
-          "sha256": "1ba5bb147bf4757c9cf56c5b2c606b4afacfe4609f8536accfe9ff3c04efd0e8",
+          "sha256": "24305e447cf2cefc44a683707d4eac9b5c6c179fb7256926632431050d93f7e4",
           "bytes": 13342
         },
         "bodyProps": {
           "sequence": {
             "root": "media",
             "path": "masters/neon-night-b/s-frog/body/index.json",
-            "sha256": "b20960d933b96dfb3e8c3f8ca97045322ef186b1f94c7f79a8d668c11299b69a",
+            "sha256": "ecd7c966cd8a689a69e9280d01c98787f29c3a8885950feda4224d73b15b7895",
             "bytes": 53369
           },
           "width": 1080,
@@ -540,14 +540,14 @@ ID: `s-frog`. State: review. Release eligible: False.
         "measurement": {
           "root": "media",
           "path": "masters/hologram/s-frog/layer-manifest.json",
-          "sha256": "c51854360c9866691c8faace1715740b3c1f18de13037e2e15bff48d45537dfe",
+          "sha256": "27f3fe014cf4055cce3ff9b710131d4f83bb748bda7aa83bbd543040764eaff0",
           "bytes": 13326
         },
         "bodyProps": {
           "sequence": {
             "root": "media",
             "path": "masters/hologram/s-frog/body/index.json",
-            "sha256": "4fd38ab06d0b5b284b1ac73f0f28e9bd7cfa34b1af94a0fa390324d03a20a1f1",
+            "sha256": "c9a982489e5aa9e60407a0bcb3698c14e669755c1ba9371a0b508f79c45a1197",
             "bytes": 52409
           },
           "width": 1080,
@@ -568,13 +568,13 @@ ID: `s-frog`. State: review. Release eligible: False.
     "loopReview": {
       "status": "pass",
       "reviewer": "Codex",
-      "reviewedAt": "2026-10-21T09:13:40.424285+00:00",
+      "reviewedAt": "2026-10-21T11:18:05.625879+00:00",
       "evidence": [
         {
           "root": "media",
           "path": "qa/reviews/s-frog-evidence.json",
-          "sha256": "d3b3c103fb6231275e4cfe773a28ec607fa05a54c52a928f9886c93a578bfedb",
-          "bytes": 5545
+          "sha256": "45c6025c4c8821e2a9402f839226487ffa9ef2d752d58993a020edd27f1f59d8",
+          "bytes": 6013
         }
       ]
     }
@@ -596,8 +596,8 @@ ID: `s-frog`. State: review. Release eligible: False.
         "video": {
           "root": "media",
           "path": "derivatives/realistic/s-frog/dark/loop.720.mp4",
-          "sha256": "e7e1c0e40c5a0e23af51cb93561296f0676c3fb95e4981f7e1d5bacb7bffc637",
-          "bytes": 337969,
+          "sha256": "51bdb6d63fffcc4e5fca98c0815e07db11554c1b93c303021359342b54f8f4f8",
+          "bytes": 338314,
           "width": 720,
           "height": 720,
           "durationSeconds": 8,
@@ -609,16 +609,16 @@ ID: `s-frog`. State: review. Release eligible: False.
         "cover": {
           "root": "media",
           "path": "derivatives/realistic/s-frog/dark/cover.720.jpg",
-          "sha256": "0c8232335ea763dca0f0e66e329ee4b9e5cd210d79b0759d86c91cf26d6e9a22",
-          "bytes": 24372,
+          "sha256": "d28638d7882fb6f2051ef9859a58297546e1f1fc286fb79cee0fad69ef7a4276",
+          "bytes": 24391,
           "width": 720,
           "height": 720
         },
         "thumbnail": {
           "root": "media",
           "path": "derivatives/realistic/s-frog/dark/thumbnail.240.jpg",
-          "sha256": "635c1b1b09fb7a6c6ab66d91ebf10414c6e2bb49197fc4a161b44901f53880b6",
-          "bytes": 5094,
+          "sha256": "170eaadd11f22d83b3339f4a211b23ebc24b57bb57e508d436cb7479168ef542",
+          "bytes": 5103,
           "width": 240,
           "height": 240
         },
@@ -628,8 +628,8 @@ ID: `s-frog`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/realistic/s-frog/dark/start.720.png",
-              "sha256": "334394b2d833d64a15c409194457a5c2793ad114746ebb7d51d7105180daa784",
-              "bytes": 64925,
+              "sha256": "b5af04187ba160ff77cf291937bb10acae14ae27e2b0707379ff1726474ae8e7",
+              "bytes": 64878,
               "width": 720,
               "height": 720,
               "frame": 0
@@ -640,8 +640,8 @@ ID: `s-frog`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/realistic/s-frog/dark/peak.720.png",
-              "sha256": "ef0571d36a7816ad7231d93e6fb7168d9c84225a2da6e4946f3b096a867d2001",
-              "bytes": 63681,
+              "sha256": "b452b2d65f1362d6013b3456aa6feb4ad3aea235ac0eba66866dffca0a504868",
+              "bytes": 63778,
               "width": 720,
               "height": 720,
               "frame": 114
@@ -674,8 +674,8 @@ ID: `s-frog`. State: review. Release eligible: False.
         "video": {
           "root": "media",
           "path": "derivatives/realistic/s-frog/light/loop.720.mp4",
-          "sha256": "24c0134822d4b5b92ae75de3d3c9788be5afb37e6dca6acc232bb19fb74f30be",
-          "bytes": 337190,
+          "sha256": "69b1308326bb9e8571780bf04d96855bdd4d49a4b7e141a94a61be7673066928",
+          "bytes": 337413,
           "width": 720,
           "height": 720,
           "durationSeconds": 8,
@@ -687,16 +687,16 @@ ID: `s-frog`. State: review. Release eligible: False.
         "cover": {
           "root": "media",
           "path": "derivatives/realistic/s-frog/light/cover.720.jpg",
-          "sha256": "5998e915ce5c2edf930bff1ad3a1ad842b2b38c28fb204512e94d0c29b9531f5",
-          "bytes": 28327,
+          "sha256": "91efb2c503d83d73644e6df47adb339f73ed9b1453ca27b39beebcefddc1e4dd",
+          "bytes": 28357,
           "width": 720,
           "height": 720
         },
         "thumbnail": {
           "root": "media",
           "path": "derivatives/realistic/s-frog/light/thumbnail.240.jpg",
-          "sha256": "b70baa28f2fd47b76a63675f42a8e547e949843e952d17f6c591b9b9c26f7d7f",
-          "bytes": 6529,
+          "sha256": "a9cc99524837d65f9df4295cfa4cf20fb07c7297c722fb49985140b2a0738ee2",
+          "bytes": 6521,
           "width": 240,
           "height": 240
         },
@@ -706,8 +706,8 @@ ID: `s-frog`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/realistic/s-frog/light/start.720.png",
-              "sha256": "1c943b601e907b02e23d0523543b99d957180e7cfc99e01f22bd842c46770e4f",
-              "bytes": 71214,
+              "sha256": "aa4aeeaa7e684926afce850f83cea14abd43ba28da76684a9887658328d065d4",
+              "bytes": 71164,
               "width": 720,
               "height": 720,
               "frame": 0
@@ -718,8 +718,8 @@ ID: `s-frog`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/realistic/s-frog/light/peak.720.png",
-              "sha256": "6643d09283dbb0a19cc6283e70c0fb6d84e653dd046e3d4049803c5fa1678023",
-              "bytes": 69889,
+              "sha256": "0dbaf0c88f6bb9aecd47e685f5a06819cc0adfa2865aa5133859b202c5fc8869",
+              "bytes": 69996,
               "width": 720,
               "height": 720,
               "frame": 114
@@ -752,8 +752,8 @@ ID: `s-frog`. State: review. Release eligible: False.
         "video": {
           "root": "media",
           "path": "derivatives/tech-white/s-frog/dark/loop.720.mp4",
-          "sha256": "3955f16d3fe9afc0653c8089491e0f347b49eaa6aa75c93929f544cbf39f9a9b",
-          "bytes": 378883,
+          "sha256": "861671bfe6be22d0ba5d926f40faa4f6e0d5cd7a4bcba806e907ce902377a699",
+          "bytes": 377436,
           "width": 720,
           "height": 720,
           "durationSeconds": 8,
@@ -765,16 +765,16 @@ ID: `s-frog`. State: review. Release eligible: False.
         "cover": {
           "root": "media",
           "path": "derivatives/tech-white/s-frog/dark/cover.720.jpg",
-          "sha256": "6d6c1c391d3b69c8abd482157fac0f9eef45936f8733cbaa493d4d8e59cc940e",
-          "bytes": 31559,
+          "sha256": "91da5400a084105f6ce16de4b2f1ec9be566fe084c50a0c76bd3d5dface320e0",
+          "bytes": 31520,
           "width": 720,
           "height": 720
         },
         "thumbnail": {
           "root": "media",
           "path": "derivatives/tech-white/s-frog/dark/thumbnail.240.jpg",
-          "sha256": "86a72ce43b756fe8df91a06fb4b4cfdcb221e57ec3e8a30a7239aa84fccb57fb",
-          "bytes": 6729,
+          "sha256": "35142e2261b301a081ee009885c4d74a635e52bdd430cda2fdb983a344d7af37",
+          "bytes": 6709,
           "width": 240,
           "height": 240
         },
@@ -784,8 +784,8 @@ ID: `s-frog`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/tech-white/s-frog/dark/start.720.png",
-              "sha256": "e50859e8f4a0ffc7134456e506ae972aa3e56725d6842c746fc609769dde4c25",
-              "bytes": 86487,
+              "sha256": "21a6201fcb4c5be10bb00688517cbe6d8b3ae8333e06e55225a1d781ebc36585",
+              "bytes": 86401,
               "width": 720,
               "height": 720,
               "frame": 0
@@ -796,8 +796,8 @@ ID: `s-frog`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/tech-white/s-frog/dark/peak.720.png",
-              "sha256": "b83a3f81a67e997fba51aace937616d6cb9f858fad474f70cfdc33e0c25665cd",
-              "bytes": 84848,
+              "sha256": "ead38606c253fde56533a2da74fe4d6522dac0169b6c80147a51ca87abc33ef1",
+              "bytes": 84737,
               "width": 720,
               "height": 720,
               "frame": 114
@@ -808,8 +808,8 @@ ID: `s-frog`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/tech-white/s-frog/dark/end.720.png",
-              "sha256": "8f181d91db732c9e6d7bbe66195bc38e0568946e58414a131156f618a861458c",
-              "bytes": 86527,
+              "sha256": "39046dfa483980015c283b1ca35f66b303b9f5b5f5986d62a2d49ec057abb158",
+              "bytes": 86445,
               "width": 720,
               "height": 720,
               "frame": 239
@@ -830,8 +830,8 @@ ID: `s-frog`. State: review. Release eligible: False.
         "video": {
           "root": "media",
           "path": "derivatives/tech-white/s-frog/light/loop.720.mp4",
-          "sha256": "cf14d223db6f8af4431a496166f7d6241803fcc8eab0a516500d7f1531d7151c",
-          "bytes": 383488,
+          "sha256": "179caf2a4b1486a08ef370257d8a060973766c395feed25e4b07531a0c34ca50",
+          "bytes": 381810,
           "width": 720,
           "height": 720,
           "durationSeconds": 8,
@@ -843,16 +843,16 @@ ID: `s-frog`. State: review. Release eligible: False.
         "cover": {
           "root": "media",
           "path": "derivatives/tech-white/s-frog/light/cover.720.jpg",
-          "sha256": "a1eddf25ccdd383ab9b3d484daaea2248ea8cd0efaf559a7629640ee406ee567",
-          "bytes": 33218,
+          "sha256": "22f7db4eb2c841b4e69e3f8bb5351775ca1520b5e8e14eb3a745f5a477526c84",
+          "bytes": 33136,
           "width": 720,
           "height": 720
         },
         "thumbnail": {
           "root": "media",
           "path": "derivatives/tech-white/s-frog/light/thumbnail.240.jpg",
-          "sha256": "44cf2ccd602bfa249a42cac801fd054bcdcbcf142c2a6040522cdeed8f4b3e91",
-          "bytes": 7203,
+          "sha256": "ebbcfe5acafc6439e3566b6cbd4e5704236e80b6749c4776dc1df87c6ca175c0",
+          "bytes": 7190,
           "width": 240,
           "height": 240
         },
@@ -862,8 +862,8 @@ ID: `s-frog`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/tech-white/s-frog/light/start.720.png",
-              "sha256": "fcefa76292ac67e4ba4cddc99c95e43b1ebc8a6c86efb18c5980586e5c85500e",
-              "bytes": 88577,
+              "sha256": "069a1bab150555801702fe57228192748f27870d8d6d616d9976e17fcd64aa89",
+              "bytes": 88417,
               "width": 720,
               "height": 720,
               "frame": 0
@@ -874,8 +874,8 @@ ID: `s-frog`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/tech-white/s-frog/light/peak.720.png",
-              "sha256": "dbca69efcb777d785a5547fc5ecdc49b0f8efedc9ae6448ce7cce81428c4e2e2",
-              "bytes": 87157,
+              "sha256": "c6fe67ba59f19666a5b0a11eb1132edd4b45ff563fa8dc148b57c0e3daadb6af",
+              "bytes": 87019,
               "width": 720,
               "height": 720,
               "frame": 114
@@ -886,8 +886,8 @@ ID: `s-frog`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/tech-white/s-frog/light/end.720.png",
-              "sha256": "e59bbd6e071d355cb52b6950ef3e21b1f1e918f5cb6669f89b6bdcc246f3fefc",
-              "bytes": 88630,
+              "sha256": "1086c8280910f219612193a42500e4035983c6f1c3ddf2bf82df23649d1f7697",
+              "bytes": 88461,
               "width": 720,
               "height": 720,
               "frame": 239
@@ -908,8 +908,8 @@ ID: `s-frog`. State: review. Release eligible: False.
         "video": {
           "root": "media",
           "path": "derivatives/neon-night/s-frog/dark/loop.720.mp4",
-          "sha256": "8cd0a4ca1b46e8f422b0dd590998f2d0a0421a83274b1e39755ad0268c746ffc",
-          "bytes": 376445,
+          "sha256": "90863a832c65e371921724e30593a16afba69d2064f636d4bacf653dc6a2cf5d",
+          "bytes": 376729,
           "width": 720,
           "height": 720,
           "durationSeconds": 8,
@@ -921,16 +921,16 @@ ID: `s-frog`. State: review. Release eligible: False.
         "cover": {
           "root": "media",
           "path": "derivatives/neon-night/s-frog/dark/cover.720.jpg",
-          "sha256": "9025360cbd5e896518d78d6e3128632928eb1cb80af21815aac72b3e95624c07",
-          "bytes": 31182,
+          "sha256": "803b52f54128948dd89d3eceb67fb764d57af20a3ecb15542d2615adede0a138",
+          "bytes": 31173,
           "width": 720,
           "height": 720
         },
         "thumbnail": {
           "root": "media",
           "path": "derivatives/neon-night/s-frog/dark/thumbnail.240.jpg",
-          "sha256": "b224f46ed437a5a84d519645b7c4187150198430e6f3722951559dd6ddb2773e",
-          "bytes": 6185,
+          "sha256": "4eaf0e2360358448f1a90bdc74eed2c8cf83444631f4f712b11cd1de2c66929a",
+          "bytes": 6205,
           "width": 240,
           "height": 240
         },
@@ -940,8 +940,8 @@ ID: `s-frog`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/neon-night/s-frog/dark/start.720.png",
-              "sha256": "520a0686f347952c7846be7f97fe80dad2171889debd445e2349a355935374f1",
-              "bytes": 85702,
+              "sha256": "28b4daefcb51d05e501dc474fc4cd76d110b1b6e43cc56c09a8bc4dc741292f4",
+              "bytes": 85644,
               "width": 720,
               "height": 720,
               "frame": 0
@@ -952,8 +952,8 @@ ID: `s-frog`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/neon-night/s-frog/dark/peak.720.png",
-              "sha256": "67d6cece59478602f0a007b0783baabb16a45a31af526d995e12ff58b2c69668",
-              "bytes": 83395,
+              "sha256": "37e0c34b951351bc4161017c23903a8de30fab2d9c2a4ba6d390c81c7f679534",
+              "bytes": 83339,
               "width": 720,
               "height": 720,
               "frame": 114
@@ -964,8 +964,8 @@ ID: `s-frog`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/neon-night/s-frog/dark/end.720.png",
-              "sha256": "09358cebc05de5cdb249ee06376a582e8d9e1dd6e239a1acd4a1dd2e9787d765",
-              "bytes": 85627,
+              "sha256": "60b46b4f2a54b37b5d9401af1959620589099e103a8fc61ee8846224712214be",
+              "bytes": 85562,
               "width": 720,
               "height": 720,
               "frame": 239
@@ -986,8 +986,8 @@ ID: `s-frog`. State: review. Release eligible: False.
         "video": {
           "root": "media",
           "path": "derivatives/neon-night/s-frog/light/loop.720.mp4",
-          "sha256": "823c661b8974d4abb6d05b476df834a3eb5ef39782c57f661251adbe65eb2c43",
-          "bytes": 409735,
+          "sha256": "f5c8e0c0495b878d2f1e601a7b6a8e42fe57ed70669afe1461c441a49759205b",
+          "bytes": 411616,
           "width": 720,
           "height": 720,
           "durationSeconds": 8,
@@ -999,16 +999,16 @@ ID: `s-frog`. State: review. Release eligible: False.
         "cover": {
           "root": "media",
           "path": "derivatives/neon-night/s-frog/light/cover.720.jpg",
-          "sha256": "520b15faa4c1e895f66633403682cec68f58896516510de0ef2ab24741edff25",
-          "bytes": 35709,
+          "sha256": "412db3726be214ad7c197004e3fc11ce914f7fba795cb2aa590b3c17f1b87ed8",
+          "bytes": 35743,
           "width": 720,
           "height": 720
         },
         "thumbnail": {
           "root": "media",
           "path": "derivatives/neon-night/s-frog/light/thumbnail.240.jpg",
-          "sha256": "7f60026dd349146406fde7be545766fba0f1526dfb110d9a46fa54f84a23e2af",
-          "bytes": 7783,
+          "sha256": "ff3eea4f0199e89f395486985b9274c7a55df45bf6c02057ae845762c08e5f2c",
+          "bytes": 7804,
           "width": 240,
           "height": 240
         },
@@ -1018,8 +1018,8 @@ ID: `s-frog`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/neon-night/s-frog/light/start.720.png",
-              "sha256": "3d955aeac5e6f46254bfee4e904071cc2660ec5e0702d30171aa196517420d05",
-              "bytes": 92946,
+              "sha256": "4988222f1437cc8fb8436244f853acc1b5085476bffac615953ae0792fb5bab9",
+              "bytes": 92935,
               "width": 720,
               "height": 720,
               "frame": 0
@@ -1030,8 +1030,8 @@ ID: `s-frog`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/neon-night/s-frog/light/peak.720.png",
-              "sha256": "5c7eea82185e46b8300b971ffc4d7d84bf1b8bd5b45cd14321a5ef849bd11965",
-              "bytes": 90731,
+              "sha256": "137ac99c8ac45304919152ae2fb91bfe1b7509dce68abde261d4ad064b5b12f9",
+              "bytes": 90681,
               "width": 720,
               "height": 720,
               "frame": 114
@@ -1042,8 +1042,8 @@ ID: `s-frog`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/neon-night/s-frog/light/end.720.png",
-              "sha256": "2aa83b3dda228b0eb73dbb71e2581cf6b7162f87571bcde2641fc92556f1be3c",
-              "bytes": 93092,
+              "sha256": "6e7f77d7d029d24386134034b9b98f3d026bdb2ee660d66a9fbc35c3b3a4ac75",
+              "bytes": 93045,
               "width": 720,
               "height": 720,
               "frame": 239
@@ -1064,8 +1064,8 @@ ID: `s-frog`. State: review. Release eligible: False.
         "video": {
           "root": "media",
           "path": "derivatives/neon-night-b/s-frog/dark/loop.720.mp4",
-          "sha256": "a36d4014c126c11951f2fd95ebee01fd01c4713350a225ddef864e969e66a142",
-          "bytes": 388348,
+          "sha256": "dd377687ad8b92a5acceb7f17865db06c10c84b0c12234a72917275bf1a6dfdc",
+          "bytes": 386610,
           "width": 720,
           "height": 720,
           "durationSeconds": 8,
@@ -1077,16 +1077,16 @@ ID: `s-frog`. State: review. Release eligible: False.
         "cover": {
           "root": "media",
           "path": "derivatives/neon-night-b/s-frog/dark/cover.720.jpg",
-          "sha256": "11d00233916f9b3fdb3ba9ef68c6f7d5aa0d435ee5fc07e7eeafe23d8cb543a1",
-          "bytes": 31103,
+          "sha256": "5cb375e2a4e46792904531dc4871135bda87e41a12ba7a054185cfb25b0e3c6c",
+          "bytes": 31086,
           "width": 720,
           "height": 720
         },
         "thumbnail": {
           "root": "media",
           "path": "derivatives/neon-night-b/s-frog/dark/thumbnail.240.jpg",
-          "sha256": "c66e678c78d8756abdada5f103b45c51428f9877d85c36d4b7f576ecc20db523",
-          "bytes": 6233,
+          "sha256": "aaf5a9d8e38a8ed7beb129a48fd1087bd18cc6fb614fe7a048edfdbce44a5f6d",
+          "bytes": 6246,
           "width": 240,
           "height": 240
         },
@@ -1096,8 +1096,8 @@ ID: `s-frog`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/neon-night-b/s-frog/dark/start.720.png",
-              "sha256": "8e8c921dc8ab6a96a5c43f914d27bce5ea44252fe2333ed60cd2898f957a36ea",
-              "bytes": 85340,
+              "sha256": "1ddfae3d4ccc4f777ec167162ba94beca79e61aa022bb102f447a72efc168d4f",
+              "bytes": 85276,
               "width": 720,
               "height": 720,
               "frame": 0
@@ -1108,8 +1108,8 @@ ID: `s-frog`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/neon-night-b/s-frog/dark/peak.720.png",
-              "sha256": "56e7bc7fb86f690ddc41378b355c2bc1b070c9955f39c9cf6065e14d95a3f0af",
-              "bytes": 83023,
+              "sha256": "7e110ec19cd9808b0ab59f9d04cefbe703f6eb4b4a4226940433f83be2f50726",
+              "bytes": 82954,
               "width": 720,
               "height": 720,
               "frame": 114
@@ -1120,8 +1120,8 @@ ID: `s-frog`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/neon-night-b/s-frog/dark/end.720.png",
-              "sha256": "d4e5577fcb4211e05c47f0286abe13020135a208220383a00f2d4db9e42f8fcb",
-              "bytes": 85212,
+              "sha256": "a6e0105e20fc39420ca075d2d9a3888f4399df4776e5ef246693e4df69a43b0c",
+              "bytes": 85189,
               "width": 720,
               "height": 720,
               "frame": 239
@@ -1142,8 +1142,8 @@ ID: `s-frog`. State: review. Release eligible: False.
         "video": {
           "root": "media",
           "path": "derivatives/neon-night-b/s-frog/light/loop.720.mp4",
-          "sha256": "c5ad2377676dcb9315b8555b3ae2e2705dc100050814f8f7d602f3b462c4c5f0",
-          "bytes": 418051,
+          "sha256": "98f55f01965384a053ddefbe76885de9cfb013af02e1d963a18a49fae9950934",
+          "bytes": 422982,
           "width": 720,
           "height": 720,
           "durationSeconds": 8,
@@ -1155,16 +1155,16 @@ ID: `s-frog`. State: review. Release eligible: False.
         "cover": {
           "root": "media",
           "path": "derivatives/neon-night-b/s-frog/light/cover.720.jpg",
-          "sha256": "2274c112d39c6f619653a101b13577c78c4323ad187a5a990ae1b0254cf196e3",
-          "bytes": 35525,
+          "sha256": "29cad6887aaa14f54cf7f918946fd1879ae43e34cd20d9d6f06274d9ea9c7239",
+          "bytes": 35556,
           "width": 720,
           "height": 720
         },
         "thumbnail": {
           "root": "media",
           "path": "derivatives/neon-night-b/s-frog/light/thumbnail.240.jpg",
-          "sha256": "6d39e43c9f0c5717a1742f193563c327acbe27e2558a8a15cc07b6b4ffdb39c0",
-          "bytes": 7812,
+          "sha256": "5cccff4c1841be91e6793a07bc26f753b9598a654efdf6f1257b5be0c58e7b9d",
+          "bytes": 7822,
           "width": 240,
           "height": 240
         },
@@ -1174,8 +1174,8 @@ ID: `s-frog`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/neon-night-b/s-frog/light/start.720.png",
-              "sha256": "4d18637b17fe99ee70fea1e5bc1fe5eb14dd2ea6ce51a079b74d41ea6a47fe51",
-              "bytes": 92772,
+              "sha256": "8ef2668496df1870caa813d43be254ffcbf5fc00a585f213c158695fe38c4811",
+              "bytes": 92749,
               "width": 720,
               "height": 720,
               "frame": 0
@@ -1186,8 +1186,8 @@ ID: `s-frog`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/neon-night-b/s-frog/light/peak.720.png",
-              "sha256": "ad3aba11c3a7263ecceb2327068e34e84a3b0896e94cd8927c6cb280fd42f82e",
-              "bytes": 90517,
+              "sha256": "2eaa5ea59805dd2e884ad312e7ae81139d2ebe347cf1b8defc7552c09cd9b17c",
+              "bytes": 90464,
               "width": 720,
               "height": 720,
               "frame": 114
@@ -1198,8 +1198,8 @@ ID: `s-frog`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/neon-night-b/s-frog/light/end.720.png",
-              "sha256": "0494de2191e6b810b4d1ad8c5cdc436fb80ad0ddd93c13855b66846c50cdc3e1",
-              "bytes": 92723,
+              "sha256": "c225d86c8e06fb64ad6375a7c911fd723dd497499ac45f175e58532f81e2a0a3",
+              "bytes": 92693,
               "width": 720,
               "height": 720,
               "frame": 239
@@ -1220,8 +1220,8 @@ ID: `s-frog`. State: review. Release eligible: False.
         "video": {
           "root": "media",
           "path": "derivatives/hologram/s-frog/dark/loop.720.mp4",
-          "sha256": "f5652dfe1bcf1abd4948a3947501f2220e10cebc5cde8876a23f0e88f5b8e0a5",
-          "bytes": 461693,
+          "sha256": "628792ce594f8bc3f758c849c70d35c9b4457bad74818640cb83054c548a6ff0",
+          "bytes": 462449,
           "width": 720,
           "height": 720,
           "durationSeconds": 8,
@@ -1233,16 +1233,16 @@ ID: `s-frog`. State: review. Release eligible: False.
         "cover": {
           "root": "media",
           "path": "derivatives/hologram/s-frog/dark/cover.720.jpg",
-          "sha256": "9902bc359d563efbb15c48714ae57522b9a4f5e53fc799099a1bf58cbfe14b60",
-          "bytes": 30153,
+          "sha256": "fa31c2bafd9a4404c48d7605e15f797007d469d37ad572b16f1d8978bcfa81f4",
+          "bytes": 30115,
           "width": 720,
           "height": 720
         },
         "thumbnail": {
           "root": "media",
           "path": "derivatives/hologram/s-frog/dark/thumbnail.240.jpg",
-          "sha256": "1147a40487ab5f401f752417137edba167ae190cd00da2a908800414083f3d24",
-          "bytes": 5991,
+          "sha256": "903b00fe8e09c71d0a83cea2648f17f80b2d90b82812ad3f64e9f8b012e8bc7f",
+          "bytes": 5992,
           "width": 240,
           "height": 240
         },
@@ -1252,8 +1252,8 @@ ID: `s-frog`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/hologram/s-frog/dark/start.720.png",
-              "sha256": "4ad3b85e822f1aaf77e8a781f51dc36d1c8631ea7ef27f9e305fbf669f2b3112",
-              "bytes": 90172,
+              "sha256": "8d732d8bfcf4f7cb2f707a10760ebb96ca9646aa9c484d4dc3fa3e3602390eba",
+              "bytes": 90236,
               "width": 720,
               "height": 720,
               "frame": 0
@@ -1264,8 +1264,8 @@ ID: `s-frog`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/hologram/s-frog/dark/peak.720.png",
-              "sha256": "5b7fd4bbbf098c013307a671f8695216bca07f4e3e39a72ff44e87614931d626",
-              "bytes": 87901,
+              "sha256": "2c8669277e0efdc64d7cf865a993c5c0493b3bd1aed6a98cad794018b6e3df70",
+              "bytes": 87917,
               "width": 720,
               "height": 720,
               "frame": 114
@@ -1276,8 +1276,8 @@ ID: `s-frog`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/hologram/s-frog/dark/end.720.png",
-              "sha256": "926fec6736ec7d39b69c26a982abb62b97a48de9744b097188d5a9586f2e25af",
-              "bytes": 90176,
+              "sha256": "128b297ae880d7b1bcd4f2f6fcf9e7e1d55ca0296ef2d0b2714c2bbad9f23a91",
+              "bytes": 90231,
               "width": 720,
               "height": 720,
               "frame": 239
@@ -1298,8 +1298,8 @@ ID: `s-frog`. State: review. Release eligible: False.
         "video": {
           "root": "media",
           "path": "derivatives/hologram/s-frog/light/loop.720.mp4",
-          "sha256": "0200c7cf4089495f5c24c2083ee7144cb5c2e6fab85b7b3919178e1bbd138e84",
-          "bytes": 275159,
+          "sha256": "d0b18580549093c3126d83e18bc1fe3a96ab45c6e787d03634f0be2334346f4c",
+          "bytes": 271839,
           "width": 720,
           "height": 720,
           "durationSeconds": 8,
@@ -1311,16 +1311,16 @@ ID: `s-frog`. State: review. Release eligible: False.
         "cover": {
           "root": "media",
           "path": "derivatives/hologram/s-frog/light/cover.720.jpg",
-          "sha256": "b3230c7a2b93e228df9ab416bb18bb1ecbe446d2f00983f9811c77d2b6f79c29",
-          "bytes": 28645,
+          "sha256": "c1ee315b68d75e2e209d228ac8ec9b697a04d6eb640cf3217ad28c69436c861a",
+          "bytes": 28486,
           "width": 720,
           "height": 720
         },
         "thumbnail": {
           "root": "media",
           "path": "derivatives/hologram/s-frog/light/thumbnail.240.jpg",
-          "sha256": "096c25b02b37e62a3fbfec550187dd4923d9f24e61e314e926c3055b60ff6136",
-          "bytes": 6824,
+          "sha256": "10873ef1f2a6b6533845a93cbb2bc232603016a0ca46db1aa50cf9b7e99991a9",
+          "bytes": 6776,
           "width": 240,
           "height": 240
         },
@@ -1330,8 +1330,8 @@ ID: `s-frog`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/hologram/s-frog/light/start.720.png",
-              "sha256": "2413750dfec3a301b81b8aea01561a6cc84514c2615565c057cca256507eeb51",
-              "bytes": 83284,
+              "sha256": "4012c00667df15a81322985d570ef5665b1098d6f14942f6df6e488c22bca572",
+              "bytes": 83282,
               "width": 720,
               "height": 720,
               "frame": 0
@@ -1342,8 +1342,8 @@ ID: `s-frog`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/hologram/s-frog/light/peak.720.png",
-              "sha256": "6d1aa497967a8876c5a39b1198d07213cad247bc53db61ee281a8e205deb0044",
-              "bytes": 82798,
+              "sha256": "8a1be539f680925789302ed98e74aee79bfc1ba62d2e60c6cdb7a9cc8f3f59b3",
+              "bytes": 82717,
               "width": 720,
               "height": 720,
               "frame": 114
@@ -1354,8 +1354,8 @@ ID: `s-frog`. State: review. Release eligible: False.
             "asset": {
               "root": "media",
               "path": "derivatives/hologram/s-frog/light/end.720.png",
-              "sha256": "79ecef1512de572259b07936e6bcfbbbf6627cd6e4db22e775dca4f79d23c350",
-              "bytes": 83260,
+              "sha256": "0b557e956fb010d9fbaff950949879d06938668b02cc7230b51c026b49c6970b",
+              "bytes": 83245,
               "width": 720,
               "height": 720,
               "frame": 239
@@ -1368,8 +1368,8 @@ ID: `s-frog`. State: review. Release eligible: False.
       "realistic": {
         "root": "media",
         "path": "derivatives/realistic/s-frog/cover.transparent.1080.png",
-        "sha256": "d2bf8abbc33e6db36c8f24519f3f58885e5de07df585a9c6fb6385cf6d7214a9",
-        "bytes": 147796,
+        "sha256": "eb92931675627f4ae2cbc1ee2c828fef6daf0b41a96d9e1a7708b63967a3472c",
+        "bytes": 148013,
         "width": 1080,
         "height": 1080,
         "alpha": true
@@ -1377,8 +1377,8 @@ ID: `s-frog`. State: review. Release eligible: False.
       "tech-white": {
         "root": "media",
         "path": "derivatives/tech-white/s-frog/cover.transparent.1080.png",
-        "sha256": "94ad0132e7a15873fe340661ac53dd2651f63e5efd25663e5df20b739c45f01d",
-        "bytes": 187782,
+        "sha256": "daf1072d3add91baa3f4acaeb25fcb83a797034c7e38ef43d9cf9ac241156029",
+        "bytes": 187289,
         "width": 1080,
         "height": 1080,
         "alpha": true
@@ -1386,8 +1386,8 @@ ID: `s-frog`. State: review. Release eligible: False.
       "neon-night": {
         "root": "media",
         "path": "derivatives/neon-night/s-frog/cover.transparent.1080.png",
-        "sha256": "c0dd8736ade5977258f90b337b31eef9ecc3c186081a0294f70c1ba29c15fa29",
-        "bytes": 194361,
+        "sha256": "f0bcfb3bf0f4ed16c1df92b7a50eb94d739b5102ca380339e1384014056f6c6a",
+        "bytes": 194139,
         "width": 1080,
         "height": 1080,
         "alpha": true
@@ -1395,8 +1395,8 @@ ID: `s-frog`. State: review. Release eligible: False.
       "neon-night-b": {
         "root": "media",
         "path": "derivatives/neon-night-b/s-frog/cover.transparent.1080.png",
-        "sha256": "ea307443fbc7559f8dd2359fae28e3f9585e3b7cd7a9999ca9982c3c5b7aab29",
-        "bytes": 194906,
+        "sha256": "606be2d8a4b160c04f6100bebf9205c4f30a3d351b1d21f2927736c94077c981",
+        "bytes": 194566,
         "width": 1080,
         "height": 1080,
         "alpha": true
@@ -1404,8 +1404,8 @@ ID: `s-frog`. State: review. Release eligible: False.
       "hologram": {
         "root": "media",
         "path": "derivatives/hologram/s-frog/cover.transparent.1080.png",
-        "sha256": "f2e2462ad5b19158675063687db0ee4e4504f65f350830329626f6ebac344124",
-        "bytes": 230424,
+        "sha256": "6704f89d7e99bc5f415507d257a22d2337aaaf9e71cc9fd60ec1ed04ba5081c8",
+        "bytes": 230347,
         "width": 1080,
         "height": 1080,
         "alpha": true
@@ -1448,7 +1448,7 @@ ID: `s-frog`. State: review. Release eligible: False.
     "manifest": {
       "root": "media",
       "path": "manifests/s-frog.json",
-      "sha256": "0610c95bda6b0e60e3f2d3bac7e7aa1560c327af99f940043e8cca3aa4fea1df",
+      "sha256": "5e8e10adb949cdaac14abb646b979d3d7f0c323effe90ec7919c64a12014551d",
       "bytes": 27701
     }
   }

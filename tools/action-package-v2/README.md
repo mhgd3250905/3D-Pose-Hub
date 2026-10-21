@@ -2,6 +2,8 @@
 
 生产规范和六层发布门禁见 [catalog/v2](../../catalog/v2/README.md)。浏览器分层渲染见 [render tools](../../drill-anim/tools/v2/README.md)，语音见 [voice v2](../../catalog/voice-v2/README.md)。旧 `training-human-v2` 仅用于历史复现，新生产使用固定新版人体清单。
 
+当前审片修订为 `F:/PoseHub-v2-pilot/neck-fix-r2/`。颈部漏色修正后的六动作五皮肤完整母版与派生已重做，catalog draft.2 和 AI 详情已重新接合；r1 父目录保留历史。以下命令使用 r2 根目录，已有输出不可直接覆盖或重复生产。结果与待审项见[六动作记录](../../docs/action-package-v2-pilot-20261021.md)及[颈部修复](../../docs/neck-material-fix-20261021.md)。
+
 本工具不进行 3D 渲染。`composite.py` 从人物加道具 RGBA、高亮灰度遮罩、透明阴影三层生成派生。各皮肤独立保留人物层；共享层从权威 layer manifest 的 sequence 引用解析，不按文件名猜来源。缺帧、错误尺寸或已有目标会拒绝执行，保留部分输出供诊断，不清理或覆盖。
 
 母版没有背景底色。地垫、椅子和哑铃等属于动作道具，保留在人物道具层；投影独立透明。深浅底只在派生合成时加入，透明封面不烘焙背景或地面投影。
@@ -10,33 +12,33 @@
 
 ```powershell
 # 先看实际样帧：从 qa/preview/ 的权威帧清单取图
-python tools/action-package-v2/composite.py --root F:/PoseHub-v2-pilot --preview
+python tools/action-package-v2/composite.py --root F:/PoseHub-v2-pilot/neck-fix-r2 --preview
 
 # 母版完成后合成；按 action/skin 子集追加时保留已有清单
-python tools/action-package-v2/composite.py --root F:/PoseHub-v2-pilot
+python tools/action-package-v2/composite.py --root F:/PoseHub-v2-pilot/neck-fix-r2
 
 # 有足够 CPU 时，最多两个不同动作的 worker；仍仅一路 3D 渲染
 # worker 使用 --skip-mosaic，跨进程锁合并 derivatives.json
-python tools/action-package-v2/composite.py --root F:/PoseHub-v2-pilot --ids w-dead-bug --skip-mosaic
+python tools/action-package-v2/composite.py --root F:/PoseHub-v2-pilot/neck-fix-r2 --ids w-dead-bug --skip-mosaic
 # 所有派生完成后只生成完整拼图，避免再次写已有视频
-python tools/action-package-v2/composite.py --root F:/PoseHub-v2-pilot --mosaic-only
+python tools/action-package-v2/composite.py --root F:/PoseHub-v2-pilot/neck-fix-r2 --mosaic-only
 
 # 输出已经存在会先拒绝，另建批次修订后才更改配方
 # 高亮可用 --highlight-off / --highlight-color '#f08a3c' / --highlight-brightness 0.45
 # 同一母版尝试另一合成参数，独立保存且不覆盖默认派生
-python tools/action-package-v2/composite.py --root F:/PoseHub-v2-pilot --derivative-set blue-highlight --highlight-color '#9fdcff'
+python tools/action-package-v2/composite.py --root F:/PoseHub-v2-pilot/neck-fix-r2 --derivative-set blue-highlight --highlight-color '#9fdcff'
 
 # 只接合真实完成产物，不自动批准 QA、编辑或试听
-python tools/action-package-v2/import_pilot.py --root F:/PoseHub-v2-pilot
-python catalog/tools/action_package_v2.py generate --check-files --media-root media=F:/PoseHub-v2-pilot
+python tools/action-package-v2/import_pilot.py --root F:/PoseHub-v2-pilot/neck-fix-r2
+python catalog/tools/action_package_v2.py generate --check-files --media-root media=F:/PoseHub-v2-pilot/neck-fix-r2
 
 # 本地审片页面；不上传、不发布
-python tools/action-package-v2/create_gallery.py --root F:/PoseHub-v2-pilot
+python tools/action-package-v2/create_gallery.py --root F:/PoseHub-v2-pilot/neck-fix-r2
 
 # 生成跨时间采样审阅图与完整生产几何/接缝测量汇总，不自动授予 QA 通过
-python tools/action-package-v2/review_frames.py --root F:/PoseHub-v2-pilot
-python tools/action-package-v2/audit_metrics.py --root F:/PoseHub-v2-pilot
-python tools/action-package-v2/qa_sequences.py --root F:/PoseHub-v2-pilot
+python tools/action-package-v2/review_frames.py --root F:/PoseHub-v2-pilot/neck-fix-r2
+python tools/action-package-v2/audit_metrics.py --root F:/PoseHub-v2-pilot/neck-fix-r2
+python tools/action-package-v2/qa_sequences.py --root F:/PoseHub-v2-pilot/neck-fix-r2
 ```
 
 `masters/` 为 1080² / 30fps / 8 秒、0–239 帧；240 仅是循环闭合 QA 端点，不重复进入视频。派生为 720² H.264 yuv420p、无音轨；封面 720、缩略图 240、关键帧 720、透明封面 1080。每个皮肤 × 深浅色默认一套高亮开视频，另产同一顶峰关键帧的高亮关对照。需要另一套视频合成参数时使用新的输出修订。

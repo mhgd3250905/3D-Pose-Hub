@@ -2,6 +2,8 @@
 
 `action-package@2` 以稳定动作 ID 为唯一单位，取代新生产中的 `drill-pack@1`、`action-kit@1`、`flarelab-drill-media@1`。旧包、旧 catalog 和已发布 ZIP 保留，历史 `completeness.complete` 不参与 v2 判定。`training-human-v2` 只供历史复现；新动作源固定 `training-human-v2plus` 的版本、模型清单 SHA 和 spec SHA。
 
+当前审片修订是 `F:/PoseHub-v2-pilot/neck-fix-r2/`。颈部漏色已修正，六动作五皮肤完整母版与派生已重做，action JSON 均升级为 draft.2 并接入新媒体和 QA SHA；AI 详情已重建。r1 保留历史，本规范未因材质补丁改变。技术结果及待审项见[试制状态](../../docs/action-package-v2-pilot-20261021.md)与[颈部修复](../../docs/neck-material-fix-20261021.md)。
+
 `actions/*.json` 是可编辑源，`pilot.json` 是本轮六个代表动作及类别，`skins.json` 是本轮生产皮肤的唯一名单。五套为原配色 `realistic`、白金 `tech-white`、蓝色 `neon-night`、绿色 `neon-night-b`、全息 `hologram`。`tech-white-b` 是白金别名，`default` 在生产层映射原配色；历史实验 `plaster`、`hologram-b` 不进本轮生产矩阵。
 
 目录中的 JSON Schema 是**允许缺项的草稿编辑合同**，用于结构/类型检查；完整度和发布资格必须由六层 gate 计算，schema 校验通过本身不表示可发布。任一层缺项或审核 pending/fail 都使动作不可发布。`status` 是生命周期标签，不能覆盖实际缺项。
@@ -34,7 +36,7 @@ media-root/
   qa/...
 ```
 
-机器绝对路径仅通过 CLI `--media-root media=F:/PoseHub-v2-pilot` 传入，不进入可发布包。统一引用：
+机器绝对路径仅通过 CLI `--media-root media=F:/PoseHub-v2-pilot/neck-fix-r2` 传入，不进入可发布包。统一引用：
 
 ```json
 {"root":"media","path":"masters/realistic/w-dead-bug/body/index.json","sha256":"<64 lowercase hex>","bytes":1234}
@@ -68,18 +70,20 @@ media-root/
 
 ## 命令与生成物
 
+下列命令统一绑定已接合的 r2 媒体。源、母版和派生技术层各 6/6 通过；六层发布门禁仍为 0/6，未授予编辑、试听或用户审批。
+
 ```powershell
 # 草稿检查和六层缺项报告；未完成草稿不会使此命令失败
-python catalog/tools/action_package_v2.py report --check-files --media-root media=F:/PoseHub-v2-pilot --output catalog/v2/completeness.json
+python catalog/tools/action_package_v2.py report --check-files --media-root media=F:/PoseHub-v2-pilot/neck-fix-r2 --output catalog/v2/completeness.json
 
 # 从源 catalog 自动生成 AI 索引、详情 md；禁止手改生成物
-python catalog/tools/action_package_v2.py generate --check-files --media-root media=F:/PoseHub-v2-pilot
+python catalog/tools/action_package_v2.py generate --check-files --media-root media=F:/PoseHub-v2-pilot/neck-fix-r2
 
 # 发布前必须退出码 0；任一层缺项则退出 1
-python catalog/tools/action_package_v2.py validate --release --media-root media=F:/PoseHub-v2-pilot
+python catalog/tools/action_package_v2.py validate --release --media-root media=F:/PoseHub-v2-pilot/neck-fix-r2
 
 # 仅在全部动作通过后才写出候选发布目录，不覆盖失败的旧输出
-python catalog/tools/action_package_v2.py release --media-root media=F:/PoseHub-v2-pilot --output output/action-library-v2.json
+python catalog/tools/action_package_v2.py release --media-root media=F:/PoseHub-v2-pilot/neck-fix-r2 --output output/action-library-v2.json
 
 python -m unittest discover -s catalog/tools -p test_action_package_v2.py
 ```
