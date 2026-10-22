@@ -106,6 +106,7 @@ const D = {
   hse: 'docs/home-small-equipment-2026-10-18.md', hpc: 'docs/home-posterior-chain-2026-10-18.md',
 };
 const KNOWN = {
+  "h-chair-single-leg-hip-thrust-rr2": ["114：原087肩靠椅单腿臀推，第二轮第1次；原髋轨迹与左脚支撑、真实背部座面分布，11稀疏帧待GPU。docs/114-repair-r2-chair-single-leg-hip-thrust-2026-10-22.md"],
   "h-band-face-pull-rr1": ["112：原079站姿弹力带面拉，第1次修复；自然腕、实际指缘绕带和原墙锚四端口，11稀疏帧待GPU。docs/112-repair-r1-band-face-pull-2026-10-22.md"],
   "h-towel-isometric-curl-rr1": ["111：原081毛巾脚锚等长弯举，第1次修复；非弹性卷束毛巾示意，实际握持及脚压分布，8秒等长3稀疏帧待GPU。docs/111-repair-r1-towel-isometric-2026-10-22.md"],
   "h-bent-knee-calf-raise-rr1": ["110：原069屈膝承重提踵，第1次修复；明确18→8度可控幅度、真实抬跟27mm、无扶手，12稀疏帧待GPU。docs/110-repair-r1-bent-knee-calf-2026-10-22.md"],
