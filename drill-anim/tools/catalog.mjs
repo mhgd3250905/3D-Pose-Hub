@@ -106,6 +106,7 @@ const D = {
   hse: 'docs/home-small-equipment-2026-10-18.md', hpc: 'docs/home-posterior-chain-2026-10-18.md',
 };
 const KNOWN = {
+  'h-kneeling-pushup-rr1': ['099：077第一修复轮第1次，双膝真实面支撑修复；保留原手足支点和肘屈伸目标，稀疏动作QA待GPU，历史失败不覆盖。docs/099-repair-r1-kneeling-pushup-2026-10-22.md'],
   'h-supine-heel-slide-rr1': ['097：093第一修复轮第1次，头背臀接触修复；保留原足跟滑轨迹，稀疏动作QA待GPU，历史失败不覆盖。docs/097-repair-r1-supine-heel-slide-2026-10-22.md'],
   'h-overhead-triceps-stretch-rr1': ['096：085第一修复轮第2次，肘角与真实掌面接触修复；站姿轻柔过头肱三头拉伸，稀疏QA待GPU。历史085失败不覆盖。docs/096-repair-r1-overhead-triceps-stretch-2026-10-22.md'],
   'h-band-straight-leg-raise': ['band-straight-leg-raise-34：居家后置弹力带长杠杆髋屈，膝基本固定；区别屈膝高抬膝与健身房绳索，低分保留待GPU（docs/band-straight-leg-raise-34-2026-10-19.md）'],
