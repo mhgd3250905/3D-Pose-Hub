@@ -13,7 +13,9 @@
 
 ## 2. 目录：哪些是现役，哪些别碰
 
-2026-10-21 人体制作决定：今后新动作及用户安排的新版本重渲采用 [v2plus 标准](training-human-v2plus.md)，唯一默认入口为 [current-production.json](../drill-anim/models/current-production.json)。已合入 main 的版本为 `1.0.0-rc2`，使用新版躯干/四肢/手、紧身服与原 v2 头，`skin:'realistic'` 保留原配色与动作肌群高亮，不显示肌群分区线；白金/蓝/绿/全息显式可选。PR #12 和集成修复已推送，尚未全量重渲或接入 App，身份与证据见[台账](version-ledger.md)。
+2026-10-21 人体制作决定：今后新动作及用户安排的新版本重渲采用 [v2plus 标准](training-human-v2plus.md)，唯一默认入口为 [current-production.json](../drill-anim/models/current-production.json)。已合入 main 的版本为 `1.0.0-rc2`，使用新版躯干/四肢/手、紧身服与原 v2 头，`skin:'realistic'` 保留原配色与动作肌群高亮，不显示肌群分区线；白金/蓝/绿/全息显式可选。PR #12 和集成修复已推送；新版全库制作现已完成，人工审片与 App 接入仍待完成，身份与证据见[台账](version-ledger.md)。
+
+当前制作保存为 [library-v2-20261022-r1](production-snapshots/library-v2-20261022-r1.md)，固定源码 `960b486f2e2d64f431ab24299a94dfe925e0562b`：原正式目录 142 动作加 PR #14 新增 47 动作，共 189 动作、五皮肤 × 深浅背景的 1890 个视频。快照为 `draft-unreviewed`，`reviewed:false`、`releaseEligible:false`；用户暂无时间审片，制作完成与文件检查不表示动作已验收或可发布。本阶段保存、提交和推送的范围为 production 分支，不包含合入 main、打 tag、发布 ZIP 或升级其他 App。
 
 AI 动作元数据另有 [统一目录](../catalog/README.md)：当前 **catalog 0.3.0 / formatVersion 1，142 个动作 id**，PR #13 的 `rhythm` 已合入。它与本页的 spec 总表、媒体 ZIP 0.2.0 分别管理；目录已合入不代表 SmartFit 或 SDK 已完成接入。版本规则和当前待办见 [版本管理](version-management.md)、[版本对齐台账](version-ledger.md)。
 
@@ -44,10 +46,10 @@ git clone https://github.com/mhgd3250905/3D-Pose-Hub.git && cd 3D-Pose-Hub    # 
 npm ci                                                       # three / lucide / vite，8 s
 
 # 2) 不需要浏览器的三项检查（任何机器都该先过）
-node drill-anim/verify.mjs                                   # 规格/模型源哈希契约，期望 "ok": true、specs 169（随新增增加）
+node drill-anim/verify.mjs                                   # 规格/模型源哈希契约，期望 "ok": true；数量以当前源码为准
 cp drill-anim/config.example.json drill-anim/config.json     # 先复制，否则下一条报 FileNotFoundError
 python3 drill-anim/test_portability.py                       # 7 项
-python3 -m unittest discover -s media/tests                  # 28 项，只用标准库
+python3 -m unittest discover -s media/tests                  # 素材脚本测试，只用标准库
 
 # 3) 渲染依赖（只有出预览帧才需要）
 npm i --no-save playwright@1.48.2                            # 不写进 package.json；1.48.x = chromium-1140，与历史渲染一致
@@ -192,6 +194,7 @@ node drill-anim/tools/catalog.mjs --check                    # 只检查是否�
 | 协作规则、谁能做什么 | [AGENTS.md](../AGENTS.md) |
 | AI 目录、媒体和模型的版本规则 | [version-management.md](version-management.md) |
 | 当前版本、合入记录、消费端接入待办 | [version-ledger.md](version-ledger.md) |
+| 189 动作制作快照、固定来源与待审范围 | [library-v2-20261022-r1](production-snapshots/library-v2-20261022-r1.md) |
 | 渲染工具全部参数、spec 字段、QA、主题格式 | [drill-anim/README.md](../drill-anim/README.md) |
 | 每个动作的状态、使用方、已知问题、待补全候选 | [drill-catalog.md](drill-catalog.md)（`node drill-anim/tools/catalog.mjs` 生成） |
 | 动作设计审核标准 | [review-rubric.md](review-rubric.md) |

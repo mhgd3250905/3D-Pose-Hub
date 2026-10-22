@@ -2,6 +2,8 @@
 
 App 只取 `published` 的固定版本，按 lock 选动作，并逐文件核对大小与 SHA-256。当前分发方式是谷歌云盘公开 ZIP：一版一个包，开发机和 Mac 手动下载、解压后从本地同步。App 不修改动作规格或渲染素材。
 
+当前新版制作快照为 [library-v2-20261022-r1](production-snapshots/library-v2-20261022-r1.md)，固定源码 `960b486f2e2d64f431ab24299a94dfe925e0562b`。原正式目录 142 动作与 PR #14 新增 47 动作已完成共 1890 个视频（189 动作 × 五皮肤 × 深浅背景）；快照状态为 `draft-unreviewed`，`reviewed:false`、`releaseEligible:false`，等待用户统一审片。可据[机器快照](../catalog/v2/production-snapshots/library-v2-20261022-r1.json)准备接入，但该制作快照尚不能作为 App 的 published lock 来源。正式 catalog 仍为 0.3.0 / 142 动作，App 媒体仍为 0.2.0 / 46 动作、92 个公开文件；本次没有发布新 ZIP 或升级其他 App。
+
 ## App 中保存的文件
 
 将本仓库的 `media/tools/sync.py` 复制为 App 的 `tools/pose_hub_sync.py`，将同一发布提交的 `media/manifest.json` 复制为 `tools/pose-hub-manifest.json`。脚本只依赖 Python 3.9+ 标准库；这两份文件与 lock 一起提交，离线构建也能校验。
@@ -78,6 +80,6 @@ HipLab 采用 `hip-{id_lower}.mp4` / `hip-{id_lower}{ext}`；同步后仍由自�
 
 本页的 lock 与 ZIP 流程针对 `media/manifest.json`。AI 选动作和剂量数据另取 [catalog/catalog.json](../catalog/catalog.json)，按固定提交或经过发布的独立目录 tag 锁定，不能把 `poseHub.version` 的媒体版本号当作目录版本号。
 
-当前 catalog 0.2.0 已随 PR #11 合入，但没有独立目录发布 tag；可审计内容提交为 `884074701d8ec93e6d25d410786336532cc664de`，main 合入提交为 `4bb02f96768c5e704b2db65c806fbbaf6eda36fb`。接入前核对 `formatVersion`、单侧 `perSide`、剂量单位以及 `holdSeconds` 的停留执行、展示与时长计算。SmartFit 的 8 项剂量、7 项侧别同步及 SDK `holdSeconds` 支持仍待验收，目录合入不能替代 App / SDK 的执行验证。
+当前 catalog 0.3.0 已随 PR #13 合入，包含 PR #11 的 0.2.0 修复及新增 `rhythm`，但没有独立目录发布 tag；0.3.0 的可审计内容提交为 `d96d3c3aae9228d434113b9ee0d12c4ded609aa9`，main 合入提交为 `8b872223b3fc95de61e7e3e23387ac549e19db71`。接入前核对 `formatVersion`、单侧 `perSide`、剂量单位、`holdSeconds` 的停留执行/展示/时长计算，以及 `rhythm` 的阶段时长与提示。SmartFit 的 8 项剂量、7 项侧别同步和 SDK 的 `holdSeconds`、`rhythm` 支持仍待接入验收，目录合入不能替代 App / SDK 的执行验证。
 
 具体字段见 [目录说明](../catalog/README.md)，各项接入状态见 [版本对齐台账](version-ledger.md)。

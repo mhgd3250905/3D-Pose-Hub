@@ -6,23 +6,23 @@
 
 | 项 | 数 |
 |---|---:|
-| spec 文件（specs/*.js，不含 _*.mjs 共用模块） | 253 |
-| 其中修订版（-r2/-r3） | 33 |
+| spec 文件（specs/*.js，不含 _*.mjs 共用模块） | 300 |
+| 其中修订版（-r2/-r3） | 80 |
 | FlareLab App 51（data/drills.json） | 51 |
 | HipLab 已发布素材绑定的 spec 文件（v0.1.0（published）46 个动作 id、v0.2.0（published）46 个动作 id） | 47 |
 | HipLab 自测静图在用 spec | 6 |
 | 原版已被在用的修订版取代（保留不删） | 9 |
-| 有 spec 但没有被任何 App/发布版本使用 | 142 |
+| 有 spec 但没有被任何 App/发布版本使用 | 189 |
 | SHA 未登记 / 哈希不符 | 0 |
 
 - g-* 健身房补充（cable-hip-12；非普通办公）：2
-- FlareLab 肌群动作（17 肌群 × A 徒手 / B 家用 / C 健身房）：60
-- s-* 拉伸（原 8 项 + 修订）：13
-- t-* 托马斯专项（Flare，PR #106）：14
-- o-* 办公室（PR #97–104 + office-hip-leg-02 + office-adductor-back-03 + office-knee-march-04 + office-calf-squat-05 + office-support-06）：26
-- w-* 久坐强化（PR #105）：11
-- h-* 居家/肌群补充/开胯/开肩/小器械力量/徒手后链/办公下肢候选（PR #111–115 + r2 + Pose-Hub PR #5、#6 + office-lower-body-01）：103
-- n-* HipLab 开胯 MVP 新增（PR #119）：15
+- FlareLab 肌群动作（17 肌群 × A 徒手 / B 家用 / C 健身房）：76
+- s-* 拉伸（原 8 项 + 修订）：17
+- t-* 托马斯专项（Flare，PR #106）：15
+- o-* 办公室（PR #97–104 + office-hip-leg-02 + office-adductor-back-03 + office-knee-march-04 + office-calf-squat-05 + office-support-06）：27
+- w-* 久坐强化（PR #105）：12
+- h-* 居家/肌群补充/开胯/开肩/小器械力量/徒手后链/办公下肢候选（PR #111–115 + r2 + Pose-Hub PR #5、#6 + office-lower-body-01）：121
+- n-* HipLab 开胯 MVP 新增（PR #119）：21
 - a-* HipLab 自测对比静图（PR #119 + r2）：9
 
 列说明：时长 = `timeline.duration` 秒；帧 = 时长 × spec 的 fps（未写 fps 按 30）。发布时 HipLab 统一包装成 30 fps，所以**发布片的帧号 ≠ spec 原生帧号**。profile 空 = 历史旧人物（未设 `modelProfile`）；`v2` 已退出新生产，仅供历史复现。新做/重做读取 `models/current-production.json`，显式绑定 `training-human-v2plus` 完整配方；本轮动作包 v2 先做六动作、五皮肤试点。SHA 列：基线 59 = 由 git 提交 `1adcab8` 固定；PR #n = 在 `data/home-pr-candidates.json` 或 `verify.mjs` 登记。
@@ -38,23 +38,30 @@
 
 | id | 中文名 | 目标高亮 | 场景/道具 | 时长/帧 | profile | 修订自 | 使用方 | SHA | 已知问题 |
 |---|---|---|---|---|---|---|---|---|---|
+| `abs-A-r2` | 空心体支撑 | 腹直肌（含深层腹横肌） | 垫 | 8s/240f@30 | v2plus | `abs-A` | — | 已登记（2026-10-21 action-package@2 production b004） |  |
 | `abs-A` | 空心体支撑 | 腹直肌（含深层腹横肌） | 垫 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `abs-B` | 平行杆团身 L 撑 | 腹直肌（含深层腹横肌） | 平行杆 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `abs-C-r2` | 双杠直臂支撑举腿 | 腹直肌（含深层腹横肌） | 双杠 | 8s/240f@30 | v2（历史） | `abs-C` | — | 已登记（2026-10-19 camera/target-visibility review） |  |
 | `abs-C` | 双杠直臂支撑举腿 | 腹直肌（含深层腹横肌） | 双杠 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
+| `adductors-A-r2` | 哥萨克蹲 | 内收肌群 | — | 8s/240f@30 | v2plus | `adductors-A` | — | 已登记（2026-10-21 action-package@2 production b002） |  |
 | `adductors-A` | 哥萨克蹲 | 内收肌群 | — | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `adductors-B` | 屈膝哥本哈根侧撑 | 内收肌群（right） | 垫、凳 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） | 10-13库：Approved support-hold version; the failed dynamic draft is not selected.；10-13库：Selected final movie remains support/hold version; dynamic draft not adopted. |
 | `adductors-C` | 绳索站姿髋内收 | 内收肌群（left） | 绳索、脚踝扣 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `chest-A-r2` | 俯卧撑转侧撑 | 胸大肌 | 垫 | 12s/360f@30 | v2（历史） | `chest-A` | — | 已登记（2026-10-19 camera/target-visibility review） |  |
+| `chest-A-r3` | 俯卧撑转侧撑 | 胸大肌 | 垫 | 8s/240f@30 | v2plus | `chest-A` | — | 已登记（2026-10-22 draft-first native8 authoring r1） |  |
 | `chest-A` | 俯卧撑转侧撑 | 胸大肌 | 垫 | 12s/360f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
+| `chest-B-r2` | 平行杆深幅俯卧撑 | 胸大肌 | 平行杆 | 8s/240f@30 | v2plus | `chest-B` | — | 已登记（2026-10-22 draft-first native8 authoring r1） |  |
 | `chest-B` | 平行杆深幅俯卧撑 | 胸大肌 | 平行杆 | 7s/210f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `chest-C` | 绳索单臂站姿推胸 | 胸大肌（right） | 绳索、单柄 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
+| `deltoids-A-r2` | 直臂侧平板支撑 | 三角肌 | — | 8s/240f@30 | v2plus | `deltoids-A` | — | 已登记（2026-10-21 action-package@2 production b004） |  |
 | `deltoids-A` | 直臂侧平板支撑 | 三角肌 | — | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
+| `deltoids-B-r2` | 哑铃土耳其起立 | 三角肌 | 垫、哑铃 | 8s/240f@30 | v2plus | `deltoids-B` | — | 已登记（2026-10-22 draft-first native8 authoring r1） |  |
 | `deltoids-B` | 哑铃土耳其起立 | 三角肌 | 垫、哑铃 | 12s/360f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） | 只到高桥的半程土耳其起立；支撑肘与垫约 10.31 mm 间隙（docs/drill-anim/hark-4080-v1.md）；10-13库：Half Turkish get-up to high bridge, not a full standing get-up.；10-13库：Source support-elbow skin to mat gap remains about 10.31 mm.；10-13库：Historical supporting elbow skin-to-mat gap about 10.31 mm; half get-up ends at high bridge. |
 | `deltoids-C` | 地雷杆半跪单臂推举 | 三角肌（right） | 地雷杆 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `erectors-A` | 反向平板（后撑抬髋） | 竖脊肌 | 垫 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `erectors-B` | 瑞士球背伸 | 竖脊肌 | 瑞士球、墙 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） | 用户认可的鞋向修正在 revisions/erectors-B-footfix-20261013，本 spec 单独不是完整配方（docs/erectors-B-footfix-2026-10-13.md） |
 | `erectors-C` | 45° 罗马椅背伸 | 竖脊肌 | 罗马椅 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
+| `forearms-A-r2` | 跪姿多方向腕部摇摆 | 前臂 · 腕屈伸肌 | 垫 | 8s/240f@30 | v2plus | `forearms-A` | — | 已登记（2026-10-22 draft-first native8 authoring r1） |  |
 | `forearms-A` | 跪姿多方向腕部摇摆 | 前臂 · 腕屈伸肌 | 垫 | 16s/480f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `forearms-B` | 哑铃腕屈 + 腕伸 | 前臂 · 腕屈伸肌（right） | 凳、哑铃 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `forearms-C` | 壶铃倒握行走 | 前臂 · 腕屈伸肌（right） | 壶铃 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
@@ -62,14 +69,18 @@
 | `glute-max-A` | 单腿臀桥 | 臀大肌 | 垫 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布）；HipLab v0.1.0；HipLab v0.2.0 | 基线 59（git） | glow-B 下几乎看不到高亮，v0.2.0 已用 soft-v1 发布并改善（docs/soft-highlight-2026-10-18.md） |
 | `glute-max-B` | 弹力带四足直腿后踢 | 臀大肌（right） | 垫、弹力带 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `glute-max-C` | 反向背伸机 | 臀大肌 | 反向背伸机 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
+| `hamstrings-A-r2` | 徒手单腿罗马尼亚硬拉 | 腘绳肌 | — | 8s/240f@30 | v2plus | `hamstrings-A` | — | 已登记（2026-10-21 action-package@2 production b002） |  |
+| `hamstrings-A-r3` | 徒手单腿罗马尼亚硬拉 | 腘绳肌 | — | 8s/240f@30 | v2plus | `hamstrings-A` | — | 已登记（2026-10-21 b002 contact and seam diagnostic revisions） |  |
 | `hamstrings-A` | 徒手单腿罗马尼亚硬拉 | 腘绳肌 | — | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `hamstrings-B` | 滑盘腿弯举 | 腘绳肌 | 垫、滑垫 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `hamstrings-C` | GHD 北欧离心 | 腘绳肌 | GHD | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
+| `hip-abductors-A-r2` | 侧平板抬腿 | 臀中肌 · 髋外展（right） | 垫 | 8s/240f@30 | v2plus | `hip-abductors-A` | — | 已登记（2026-10-22 draft-first native8 authoring r1） |  |
 | `hip-abductors-A` | 侧平板抬腿 | 臀中肌 · 髋外展（right） | 垫 | 6s/180f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `hip-abductors-B-r2` | 仰卧弹力带 V 字开腿 | 臀中肌 · 髋外展 | 垫、弹力带 | 8s/240f@30 | v2（历史） | `hip-abductors-B` | — | 已登记（2026-10-19 camera/target-visibility review） |  |
 | `hip-abductors-B` | 仰卧弹力带 V 字开腿 | 臀中肌 · 髋外展 | 垫、弹力带 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） | hark-4080-v1 修订 240 帧求解警告保留（docs/drill-anim/hark-4080-v1.md）；10-13库：Source engine pass is true with 240 solver-warning frames retained.；10-13库：Historical original engine pass=true but solver_warning_frames=240; do not hide or turn into zero. |
 | `hip-abductors-C-r2` | 器械髋外展 | 臀中肌 · 髋外展 | 髋外展机 | 8s/240f@30 | v2（历史） | `hip-abductors-C` | — | 已登记（2026-10-19 camera/target-visibility review） |  |
 | `hip-abductors-C` | 器械髋外展 | 臀中肌 · 髋外展 | 髋外展机 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
+| `hip-flexors-A-r2` | 坐姿直腿抬腿（压缩） | 髋屈肌 | 垫 | 8s/240f@30 | v2plus | `hip-flexors-A` | — | 已登记（2026-10-21 action-package@2 production b003） |  |
 | `hip-flexors-A` | 坐姿直腿抬腿（压缩） | 髋屈肌 | 垫 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布）；HipLab v0.1.0；HipLab v0.2.0 | 基线 59（git） | glow-B 下几乎看不到高亮，v0.2.0 已用 soft-v1 发布并改善（docs/soft-highlight-2026-10-18.md） |
 | `hip-flexors-B` | 弹力带站姿高抬膝 | 髋屈肌（right） | 墙、弹力带 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `hip-flexors-C` | 绳索站姿直腿前抬 | 髋屈肌（right） | 绳索、脚踝扣 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
@@ -82,6 +93,7 @@
 | `obliques-C` | 绳索高位伐木 | 腹斜肌 | 绳索、单柄 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `quadriceps-A` | 跪姿反向北欧 | 股四头肌 | 垫 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `quadriceps-B` | 弹力带终末伸膝 | 股四头肌（right） | 弹力带 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
+| `quadriceps-C-r2` | 器械腿屈伸（顶端锁直） | 股四头肌 | 腿屈伸机 | 8s/240f@30 | v2plus | `quadriceps-C` | — | 已登记（2026-10-22 draft-first native8 authoring r1） |  |
 | `quadriceps-C` | 器械腿屈伸（顶端锁直） | 股四头肌 | 腿屈伸机 | 10s/300f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `rotator-cuff-A-r2` | 俯撑交替触肩 | 肩袖肌群 | 垫 | 8s/240f@30 | v2（历史） | `rotator-cuff-A` | — | 已登记（2026-10-19 camera/target-visibility review） |  |
 | `rotator-cuff-A` | 俯撑交替触肩 | 肩袖肌群 | 垫 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
@@ -89,13 +101,17 @@
 | `rotator-cuff-B` | 弹力带肘贴体侧外旋 | 肩袖肌群（right） | 弹力带、锚点、单柄、泡沫轴 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `rotator-cuff-C-r2` | 绳索 90/90 外旋 | 肩袖肌群（right） | 绳索、单柄 | 8s/240f@30 | v2（历史） | `rotator-cuff-C` | — | 已登记（2026-10-19 camera/target-visibility review） |  |
 | `rotator-cuff-C` | 绳索 90/90 外旋 | 肩袖肌群（right） | 绳索、单柄 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
+| `scapular-A-r2` | 俯卧 Y-T-W 举 | 斜方肌中下部 · 菱形肌 | 垫 | 8s/240f@30 | v2plus | `scapular-A` | — | 已登记（2026-10-22 draft-first native8 authoring r1） |  |
 | `scapular-A` | 俯卧 Y-T-W 举 | 斜方肌中下部 · 菱形肌 | 垫 | 12s/360f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `scapular-B` | 单杠肩胛引体 | 斜方肌中下部 · 菱形肌 | 单杠 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `scapular-C` | 吊环直臂支撑 | 斜方肌中下部 · 菱形肌 | 吊环 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
+| `serratus-A-r2` | 俯撑肩胛前伸 | 前锯肌 | 垫 | 8s/240f@30 | v2plus | `serratus-A` | — | 已登记（2026-10-22 draft-first native8 authoring r1） |  |
 | `serratus-A` | 俯撑肩胛前伸 | 前锯肌 | 垫 | 6s/180f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `serratus-B` | 泡沫轴墙面上滑 | 前锯肌 | 墙、泡沫轴 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `serratus-C` | 吊环俯卧撑加前伸 | 前锯肌 | 吊环 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
+| `triceps-A-r2` | 窄距俯卧撑（锁肘停顿） | 肱三头肌 | 垫 | 8s/240f@30 | v2plus | `triceps-A` | — | 已登记（2026-10-22 draft-first native8 authoring r1） |  |
 | `triceps-A` | 窄距俯卧撑（锁肘停顿） | 肱三头肌 | 垫 | 7.2s/216f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
+| `triceps-B-r2` | 平行杆直臂支撑 | 肱三头肌 | 平行杆 | 8s/240f@30 | v2plus | `triceps-B` | — | 已登记（2026-10-22 draft-first native8 authoring r1） |  |
 | `triceps-B` | 平行杆直臂支撑 | 肱三头肌 | 平行杆 | 7s/210f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `triceps-C` | 双杠臂屈伸 | 肱三头肌 | 双杠 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 
@@ -105,8 +121,11 @@
 |---|---|---|---|---|---|---|---|---|---|
 | `s-9090-r2` | 90/90坐姿换髋 | 臀大肌 | 垫 | 8s/240f@30 | v2（历史） | `s-9090` | HipLab v0.1.0 作 s-9090；HipLab v0.2.0 作 s-9090 | PR #121 |  |
 | `s-9090-r3` | 90/90坐姿换髋 | 臀大肌 | 垫 | 8s/240f@30 | v2（历史） | `s-9090` | — | 已登记（2026-10-19 camera/target-visibility review） |  |
+| `s-9090-r4` | 90/90坐姿换髋 | 臀大肌 | 垫 | 8s/240f@30 | v2plus | `s-9090` | — | 已登记（2026-10-21 action-package@2 production b004） |  |
 | `s-9090` | 90/90坐姿换髋 | 臀大肌 | 垫 | 8s/240f@30 | 旧 |  | 原版；v0.1.0 绑定 s-9090-r2；原版；v0.2.0 绑定 s-9090-r2 | 基线 59（git） | hark-4080-v1 文档称本 spec 偏前屈拉伸，真正左右换髋的 s-9090-switch 只在 revisions/hark-4080-v1（docs/drill-anim/hark-4080-v1.md） |
+| `s-butterfly-r2` | 蝴蝶式 | 内收肌群 | 垫 | 8s/240f@30 | v2plus | `s-butterfly` | — | 已登记（2026-10-21 action-package@2 production b004） |  |
 | `s-butterfly` | 蝴蝶式 | 内收肌群 | 垫 | 8s/240f@30 | 旧 |  | HipLab v0.1.0；HipLab v0.2.0 | 基线 59（git） |  |
+| `s-figure4-r2` | 仰卧4字梨状肌拉伸 | 臀大肌（right） | 垫 | 8s/240f@30 | v2plus | `s-figure4` | — | 已登记（2026-10-21 action-package@2 production b004） |  |
 | `s-figure4` | 仰卧4字梨状肌拉伸 | 臀大肌（right） | 垫 | 8s/240f@30 | 旧 |  | HipLab v0.1.0；HipLab v0.2.0 | 基线 59（git） |  |
 | `s-frog-r2` | 青蛙式 | 内收肌群 | 垫 | 8s/240f@30 | v2（历史） | `s-frog` | HipLab v0.1.0 作 s-frog；HipLab v0.2.0 作 s-frog | PR #121 |  |
 | `s-frog-r3` | 青蛙式 | 内收肌群 | 垫 | 8s/240f@30 | v2plus | `s-frog` | — | 已登记（2026-10-21 action-package@2 six-action pilot） |  |
@@ -115,6 +134,7 @@
 | `s-lizard` | 蜥蜴式低弓步 | 髋屈肌（left） | 垫 | 8s/240f@30 | 旧 |  | HipLab v0.1.0；HipLab v0.2.0 | 基线 59（git） |  |
 | `s-pigeon` | 鸽子式 | 臀大肌（right） | 垫 | 8s/240f@30 | 旧 |  | HipLab v0.1.0；HipLab v0.2.0 | 基线 59（git） |  |
 | `s-seated-fold-r3` | 坐姿体前屈 | 腘绳肌 | 垫 | 8s/240f@30 | v2（历史） | `s-seated-fold` | HipLab v0.1.0 作 s-seated-fold；HipLab v0.2.0 作 s-seated-fold | 已登记（2026-10-17 HipLab accepted media） | 63 条历史腕部可达范围警告保留（media/releases/0.1.0.md） |
+| `s-seated-fold-r4` | 坐姿体前屈 | 腘绳肌 | 垫 | 8s/240f@30 | v2plus | `s-seated-fold` | — | 已登记（2026-10-21 action-package@2 production b004） |  |
 | `s-seated-fold` | 坐姿体前屈 | 腘绳肌 | 垫 | 8s/240f@30 | 旧 |  | 原版；v0.1.0 绑定 s-seated-fold-r3；原版；v0.2.0 绑定 s-seated-fold-r3 | 基线 59（git） | v2 原片 f154→155 手跳约 30 mm（docs/training-media-library-2026-10-13.md）；10-13库：Selected original v2 has f154→155 hand jump about 30.3 mm; failed stabilization draft was not adopted. |
 
 ## t-* 托马斯专项（Flare，PR #106）
@@ -130,6 +150,7 @@
 | `t-lsit-wide-r2` | 宽腿L撑 | 髋屈肌+腹直肌（含深层腹横肌） | 垫 | 8s/240f@30 | v2（历史） | `t-lsit-wide` | — | 已登记（2026-10-19 camera/target-visibility review） |  |
 | `t-lsit-wide` | 宽腿L撑 | 髋屈肌+腹直肌（含深层腹横肌） | 垫 | 8s/240f@30 | v2（历史） |  | — | PR #106（verify.mjs） |  |
 | `t-seated-straddle-ext` | 坐姿分腿屈伸 | 腹直肌（含深层腹横肌） | 垫 | 8s/240f@30 | 旧 |  | — | PR #106（verify.mjs） |  |
+| `t-seated-straddle-lift-1leg-r2` | 坐姿分腿单腿抬起 | 髋屈肌 | 垫 | 8s/240f@30 | v2plus | `t-seated-straddle-lift-1leg` | — | 已登记（2026-10-22 draft-first native8 authoring r1） |  |
 | `t-seated-straddle-lift-1leg` | 坐姿分腿单腿抬起 | 髋屈肌 | 垫 | 10s/300f@30 | v2（历史） |  | HipLab v0.1.0；HipLab v0.2.0 | PR #106（verify.mjs） |  |
 | `t-seated-straddle-lifts` | 坐姿分腿双腿抬起 | 髋屈肌 | 垫 | 8s/240f@30 | 旧 |  | — | PR #106（verify.mjs） | 10-13库：历史预览求解警告 24 帧（已视觉认可） |
 | `t-straddle-hold` | 分腿支撑 | 髋屈肌+腹直肌（含深层腹横肌） | 垫 | 8s/240f@30 | 旧 |  | — | PR #106（verify.mjs） | 10-13库：历史预览求解警告 40 帧（已视觉认可） |
@@ -153,6 +174,7 @@
 | `o-stand-ham` | 扶椅站姿单腿腘绳肌拉伸 | 腘绳肌（right） | 椅 | 8s/120f@15 | v2（历史） |  | — | 已登记（office-hip-leg-02） |  |
 | `o-stand-lunge` | 扶椅站姿弓步屈髋拉伸 | 髋屈肌（left） | 办公椅 | 8s/240f@30 | 旧 |  | HipLab v0.1.0；HipLab v0.2.0 | PR #100（verify.mjs） |  |
 | `o-stand-quad` | 扶椅站姿股四头肌拉伸 | 股四头肌（right） | 办公椅 | 8s/240f@30 | 旧 |  | — | PR #101（verify.mjs） |  |
+| `o-stand-sidebend-r2` | 站姿举手侧屈 | 腹斜肌（right） | 办公椅 | 8s/240f@30 | v2plus | `o-stand-sidebend` | — | 已登记（2026-10-21 action-package@2 production b001） |  |
 | `o-stand-sidebend` | 站姿举手侧屈 | 腹斜肌（right） | 办公椅 | 8s/240f@30 | 旧 |  | — | PR #103（verify.mjs） |  |
 | `o-supported-ankle-eversion` | 扶椅悬空足外翻控制 | （right） | 椅 | 8s/120f@15 | v2（历史） |  | — | 已登记（home-pr-candidates） | supported-ankle-eversion-25：扶椅悬空足外翻12°再回中立；腓骨长短肌低负荷控制，固定模型无独立高亮故不误标胫前肌；低分保留待GPU（docs/supported-ankle-eversion-25-2026-10-19.md） |
 | `o-supported-ankle-inversion` | 扶椅悬空足内翻控制 | 胫骨前肌（right） | 椅 | 8s/120f@15 | v2（历史） |  | — | 已登记（home-pr-candidates） | supported-ankle-inversion-24：扶椅悬空足内翻12°后回中立；真实足骨/鞋网格转动而胫骨不转，非踝泵屈伸；低分保留待GPU（docs/supported-ankle-inversion-24-2026-10-18.md） |
@@ -174,6 +196,7 @@
 | `w-bird-dog` | 鸟狗式 | 竖脊肌 | 垫 | 8s/240f@30 | 旧 |  | — | PR #105（verify.mjs） |  |
 | `w-chair-hip-thrust` | 椅子臀推 | 臀大肌 | 椅 | 8s/240f@30 | 旧 |  | — | PR #105（verify.mjs） | 10-13库：Original QA is a key/intermediate-frame probe only: frames_complete=false and pass=false; no full-film vali… |
 | `w-clamshell-r2` | 侧卧蚌式开合 | 臀中肌 · 髋外展（right） | 垫 | 8s/240f@30 | v2（历史） | `w-clamshell` | — | 已登记（2026-10-19 camera/target-visibility review） |  |
+| `w-clamshell-r3` | 侧卧蚌式开合 | 臀中肌 · 髋外展（right） | 垫 | 8s/240f@30 | v2plus | `w-clamshell` | — | 已登记（2026-10-21 action-package@2 production b004） |  |
 | `w-clamshell` | 侧卧蚌式开合 | 臀中肌 · 髋外展（right） | 垫 | 8s/240f@30 | 旧 |  | HipLab v0.1.0；HipLab v0.2.0 | PR #105（verify.mjs） | 10-13库：Original QA is a key/intermediate-frame probe only: frames_complete=false and pass=false; no full-film vali… |
 | `w-dead-bug-r2` | 死虫式 | 腹直肌（含深层腹横肌） | 垫 | 8s/240f@30 | v2plus | `w-dead-bug` | — | 已登记（2026-10-21 action-package@2 six-action pilot） |  |
 | `w-dead-bug` | 死虫式 | 腹直肌（含深层腹横肌） | 垫 | 8s/240f@30 | 旧 |  | — | PR #105（verify.mjs） | 10-13库：Original QA is a key/intermediate-frame probe only: frames_complete=false and pass=false; no full-film vali… |
@@ -188,8 +211,10 @@
 | id | 中文名 | 目标高亮 | 场景/道具 | 时长/帧 | profile | 修订自 | 使用方 | SHA | 已知问题 |
 |---|---|---|---|---|---|---|---|---|---|
 | `h-9090-liftoff-r2` | 90/90后腿主动抬起 | 臀中肌 · 髋外展+臀大肌（left） | 垫 | 8s/120f@15 | v2（历史） | `h-9090-liftoff` | HipLab v0.1.0 作 h-9090-liftoff；HipLab v0.2.0 作 h-9090-liftoff | PR #121 |  |
+| `h-9090-liftoff-r3` | 90/90后腿主动抬起 | 臀中肌 · 髋外展+臀大肌（left） | 垫 | 8s/240f@30 | v2plus | `h-9090-liftoff` | — | 已登记（2026-10-21 action-package@2 production b003） |  |
 | `h-9090-liftoff` | 90/90后腿主动抬起 | 臀中肌 · 髋外展+臀大肌（left） | 垫 | 8s/120f@15 | v2（历史） |  | 原版；v0.1.0 绑定 h-9090-liftoff-r2；原版；v0.2.0 绑定 h-9090-liftoff-r2 | PR #113 |  |
 | `h-adductor-rock` | 四足单腿侧伸后摇 | 内收肌群（right） | 垫 | 8s/120f@15 | v2（历史） |  | HipLab v0.1.0；HipLab v0.2.0 | PR #113 |  |
+| `h-banana-r2` | 仰卧香蕉式侧伸 | 腹斜肌+背阔肌 | 垫 | 8s/240f@30 | v2plus | `h-banana` | — | 已登记（2026-10-21 action-package@2 production b001） |  |
 | `h-banana` | 仰卧香蕉式侧伸 | 腹斜肌+背阔肌 | 垫 | 8s/120f@15 | v2（历史） |  | — | PR #111 |  |
 | `h-band-chest-fly` | 站姿单臂弹力带夹胸 | 胸大肌（right） | 弹力带、锚点、单柄 | 8s/120f@15 | v2（历史） |  | — | 已登记（home-pr-candidates） | band-chest-fly-28：轻屈肘固定的单臂弹力带水平内收；独立握持/带路/足底接触检查，低分保留待GPU，需稳固胸高锚点；docs/band-chest-fly-28-2026-10-19.md |
 | `h-band-hip-extension` | 扶椅弹力带髋后伸 | 臀大肌（right） | 椅、弹力带、锚点、脚踝扣 | 8s/120f@15 | v2（历史） |  | — | 已登记（home-pr-candidates） |  |
@@ -210,6 +235,7 @@
 | `h-bridge-march` | 臀桥交替踏步 | 臀大肌+腘绳肌 | 垫 | 8s/120f@15 | v2（历史） |  | — | PR #6 | 第 0 帧即保持中的臀桥（只教踏步，不教起桥）；右掌比左掌靠脚 5 mm，让右肘 ≥170°（qa 肘向判据按站姿 +Z）（docs/home-posterior-chain-2026-10-18.md） |
 | `h-bridge-overhead` | 臀桥过头伸臂 | 背阔肌+臀大肌 | 垫 | 8s/120f@15 | v2（历史） |  | — | PR #115 |  |
 | `h-bulgarian` | 椅子保加利亚分腿蹲 | 股四头肌+臀大肌（left） | 椅 | 8s/120f@15 | v2（历史） |  | — | PR #111 |  |
+| `h-butterfly-active-r2` | 仰卧蝴蝶主动开合 | 内收肌群 | 垫 | 8s/240f@30 | v2plus | `h-butterfly-active` | — | 已登记（2026-10-21 action-package@2 production b003） |  |
 | `h-butterfly-active` | 仰卧蝴蝶主动开合 | 内收肌群 | 垫 | 8s/120f@15 | v2（历史） |  | HipLab v0.1.0；HipLab v0.2.0 | PR #113 |  |
 | `h-calf-raise` | 扶墙提踵 | 小腿三头肌 | 墙 | 8s/120f@15 | v2（历史） |  | — | PR #112 |  |
 | `h-catcow-quad-r2` | 四足猫牛式 | 竖脊肌+腹直肌（含深层腹横肌） | 垫 | 8s/240f@30 | v2plus | `h-catcow-quad` | — | 已登记（2026-10-21 action-package@2 six-action pilot） |  |
@@ -224,6 +250,7 @@
 | `h-cobra` | 眼镜蛇式 | 腹直肌（含深层腹横肌） | 垫 | 8s/120f@15 | v2（历史） |  | — | PR #111 |  |
 | `h-couch-stretch` | 沙发拉伸 | 髋屈肌+股四头肌（left） | 垫、椅 | 8s/120f@15 | v2（历史） |  | HipLab v0.1.0；HipLab v0.2.0 | PR #113 |  |
 | `h-crossbody` | 交叉臂肩后侧拉伸 | 面板 deltRear/infraspinatus（right） | — | 8s/120f@15 | v2（历史） |  | — | PR #112 |  |
+| `h-crunch-r2` | 卷腹 | 腹直肌（含深层腹横肌） | 垫 | 8s/240f@30 | v2plus | `h-crunch` | — | 已登记（2026-10-21 action-package@2 production b001） |  |
 | `h-crunch` | 卷腹 | 腹直肌（含深层腹横肌） | 垫 | 8s/120f@15 | v2（历史） |  | — | PR #111 |  |
 | `h-db-calf-raise` | 双哑铃站姿提踵 | 小腿三头肌 | 哑铃 | 8s/120f@15 | v2（历史） |  | — | 已登记（dumbbell-leg-14） | dumbbell-leg-14：双脚双哑铃站姿提踵；实际鞋底前端支点，负荷变式非新运动模式；低分抽查保留待GPU（docs/dumbbell-leg-14-2026-10-18.md） |
 | `h-db-curl-r2` | 哑铃交替弯举 | 肱二头肌 | 哑铃 | 8s/240f@30 | v2plus | `h-db-curl` | — | 已登记（2026-10-21 action-package@2 six-action pilot） |  |
@@ -243,6 +270,7 @@
 | `h-dd-shoulder` | 下犬式压肩 | 背阔肌+胸大肌 | 垫 | 8s/120f@15 | v2（历史） |  | — | PR #115 |  |
 | `h-donkey-kick` | 四足屈膝后踢 | 臀大肌（right） | 垫 | 8s/120f@15 | v2（历史） |  | — | 已登记（home-pr-candidates） | floor-glute-07：非办公地面；右膝约90°矢状面后踢，短垫承托双掌/左膝；低分抽查通过待GPU（docs/floor-glute-07-2026-10-18.md） |
 | `h-forearm-plank` | 前臂平板支撑 | 腹直肌（含深层腹横肌）+腹斜肌 | 垫 | 8s/120f@15 | v2（历史） |  | — | PR #111 |  |
+| `h-good-morning-r2` | 徒手早安式 | 腘绳肌+竖脊肌 | — | 8s/240f@30 | v2plus | `h-good-morning` | — | 已登记（2026-10-21 action-package@2 production b001） |  |
 | `h-good-morning` | 徒手早安式 | 腘绳肌+竖脊肌 | — | 8s/120f@15 | v2（历史） |  | — | PR #6 | 双手交叉抱胸（手放脑后时手网格贴不到刚性头部后侧），手不做 touch 吸附，掌心离胸约 1–5 mm（docs/home-posterior-chain-2026-10-18.md） |
 | `h-hip-gate` | 扶椅站姿开髋门 | 髋屈肌+臀中肌 · 髋外展（right） | 椅 | 8s/120f@15 | v2（历史） |  | HipLab v0.1.0；HipLab v0.2.0 | PR #113 |  |
 | `h-incline-pushup-r2` | 扶凳上斜俯卧撑 | 胸大肌+肱三头肌 | 椅 | 8s/120f@15 | v2（历史） | `h-incline-pushup` | — | 已登记（2026-10-19 camera/target-visibility review） |  |
@@ -250,6 +278,7 @@
 | `h-inner-thigh` | 侧卧内收抬腿 | 内收肌群（left） | 垫 | 8s/120f@15 | v2（历史） |  | — | PR #111 |  |
 | `h-kb-swing` | 单臂壶铃摆荡 | 臀大肌+腘绳肌 | 壶铃 | 8s/120f@15 | v2（历史） |  | — | PR #5 | 单臂版：双手握同一提手时两只拳头重叠，改单臂（docs/home-small-equipment-2026-10-18.md） |
 | `h-knee-hug-r2` | 仰卧抱膝 | 竖脊肌+臀大肌 | 垫 | 8s/240f@30 | v2（历史） | `h-knee-hug` | HipLab v0.1.0 作 h-knee-hug；HipLab v0.2.0 作 h-knee-hug | 已登记（2026-10-17 HipLab accepted media） |  |
+| `h-knee-hug-r3` | 仰卧抱膝 | 竖脊肌+臀大肌 | 垫 | 8s/240f@30 | v2plus | `h-knee-hug` | — | 已登记（2026-10-21 action-package@2 production b003） |  |
 | `h-knee-hug` | 仰卧抱膝 | 竖脊肌+臀大肌 | 垫 | 8s/120f@15 | v2（历史） |  | 原版；v0.1.0 绑定 h-knee-hug-r2；原版；v0.2.0 绑定 h-knee-hug-r2 | PR #111 |  |
 | `h-mountain-climber` | 慢速登山跑 | 腹直肌（含深层腹横肌）+髋屈肌 | 垫 | 8s/120f@15 | v2（历史） |  | — | PR #111 |  |
 | `h-open-book` | 侧卧开书式 | 胸大肌+腹斜肌（right） | 垫 | 8s/120f@15 | v2（历史） |  | — | PR #115 |  |
@@ -258,25 +287,37 @@
 | `h-plank-side-step` | 直臂俯撑交替侧点地 | 腹直肌（含深层腹横肌）+腹斜肌+臀中肌 · 髋外展 | 垫 | 8s/120f@15 | v2（历史） |  | — | 已登记（home-pr-candidates） | plank-side-step-54：固定双掌的交替侧点地，骨盆朝地；120时点接触与稀疏QA；刚性鞋尖窄接触，待GPU（docs/plank-side-step-54-2026-10-20.md） |
 | `h-quad-cars-r2` | 四足髋关节画圈 | 面板 glutes/gluteMed/oblique（right） | 垫 | 8s/120f@15 | v2（历史） | `h-quad-cars` | HipLab v0.1.0 作 h-quad-cars | PR #121 | v0.1.0 高亮仅部分修复（拼面板 glutes+gluteMed+oblique）；soft-v1 下腰侧多一团，v0.2.0 已改用原规格和 soft-v1 发布（docs/soft-highlight-2026-10-18.md）；flickscan 163 坏帧，位于鞋底纹（drill-anim/revisions/hiplab-media-fix-20261017/README.md） |
 | `h-quad-cars` | 四足髋关节画圈 | 臀大肌+臀中肌 · 髋外展（right） | 垫 | 8s/120f@15 | v2（历史） |  | HipLab v0.2.0；原版；v0.1.0 绑定 h-quad-cars-r2 | PR #113 | v0.1.0 绑定 r2；v0.2.0 已用原规格和 soft-v1 发布（docs/soft-highlight-2026-10-18.md）；flickscan 小腿/鞋底纹 169 坏帧，既有问题（drill-anim/revisions/hiplab-media-fix-20261017/README.md） |
+| `h-reverse-clam-r2` | 侧卧反向蚌式 | 臀中肌 · 髋外展+臀大肌（right） | 垫 | 8s/240f@30 | v2plus | `h-reverse-clam` | — | 已登记（2026-10-21 action-package@2 production b003） |  |
 | `h-reverse-clam` | 侧卧反向蚌式 | 臀中肌 · 髋外展+臀大肌（right） | 垫 | 8s/120f@15 | v2（历史） |  | HipLab v0.1.0；HipLab v0.2.0 | PR #113 |  |
 | `h-reverse-crunch` | 反向卷腹 | 腹直肌（含深层腹横肌） | 垫 | 8s/120f@15 | v2（历史） |  | — | PR #111 |  |
 | `h-reverse-lunge` | 后撤步弓步蹲 | 股四头肌+臀大肌 | 垫 | 8s/120f@15 | v2（历史） |  | — | PR #111 |  |
+| `h-russian-twist-r2` | 俄罗斯转体 | 腹斜肌 | 垫 | 8s/240f@30 | v2plus | `h-russian-twist` | — | 已登记（2026-10-21 action-package@2 production b001） |  |
 | `h-russian-twist` | 俄罗斯转体 | 腹斜肌 | 垫 | 8s/120f@15 | v2（历史） |  | — | PR #111 |  |
 | `h-seated-reachback` | 坐姿后撑滑臀 | 胸大肌+三角肌 | 垫 | 8s/120f@15 | v2（历史） |  | — | PR #115 |  |
 | `h-side-er` | 侧卧肩外旋 | 肩袖肌群（right） | 垫 | 8s/120f@15 | v2（历史） |  | — | PR #112 |  |
+| `h-side-leg-raise-r2` | 站姿侧抬腿 | 臀中肌 · 髋外展（right） | — | 8s/240f@30 | v2plus | `h-side-leg-raise` | — | 已登记（2026-10-21 action-package@2 production b002） |  |
+| `h-side-leg-raise-r3` | 站姿侧抬腿 | 臀中肌 · 髋外展（right） | — | 8s/240f@30 | v2plus | `h-side-leg-raise` | — | 已登记（2026-10-21 b002 contact and seam diagnostic revisions） |  |
+| `h-side-leg-raise-r4` | 站姿侧抬腿 | 臀中肌 · 髋外展（right） | — | 8s/240f@30 | v2plus | `h-side-leg-raise` | — | 已登记（2026-10-21 b002 contact and seam diagnostic revisions） |  |
+| `h-side-leg-raise-r5` | 站姿侧抬腿 | 臀中肌 · 髋外展（right） | — | 8s/240f@30 | v2plus | `h-side-leg-raise` | — | 已登记（2026-10-21 b002 contact and seam diagnostic revisions） |  |
 | `h-side-leg-raise` | 站姿侧抬腿 | 臀中肌 · 髋外展（right） | — | 8s/120f@15 | v2（历史） |  | — | PR #111 |  |
 | `h-slider-body-saw` | 双脚滑盘长杠杆回收 | 腹直肌（含深层腹横肌） | 垫、滑垫 | 8s/120f@15 | v2（历史） |  | — | 已登记（home-pr-candidates） |  |
+| `h-squat-r2` | 徒手深蹲 | 股四头肌+臀大肌 | — | 8s/240f@30 | v2plus | `h-squat` | — | 已登记（2026-10-21 action-package@2 production b001） |  |
 | `h-squat` | 徒手深蹲 | 股四头肌+臀大肌 | — | 8s/240f@30 | v2（历史） |  | HipLab v0.1.0；HipLab v0.2.0 | PR #111 |  |
 | `h-standing-forearm-rotation` | 站姿屈肘前臂旋转 | 前臂 · 腕屈伸肌（right） | — | 8s/120f@15 | v2（历史） |  | — | 已登记（home-pr-candidates） | forearm-rotation-23：屈肘约90°，前臂真实骨与网格轴向旋前/旋后±60°；非腕屈伸或肩外旋；办公低负荷控制，低分保留待GPU（docs/forearm-rotation-23-2026-10-18.md） |
 | `h-standing-wrist-deviation` | 站姿屈肘腕侧偏控制 | 前臂 · 腕屈伸肌（right） | — | 8s/120f@15 | v2（历史） |  | — | 已登记（home-pr-candidates） | wrist-deviation-31：固定前臂掌面内腕侧偏；区别屈伸和旋前旋后，实际手骨皮肤轨迹与足底分布检查，低分保留待GPU；docs/wrist-deviation-31-2026-10-19.md |
 | `h-standing-wrist-extensor-stretch` | 站姿主动腕伸肌拉伸 | 前臂 · 腕屈伸肌（right） | — | 8s/120f@15 | v2（历史） |  | — | 已登记（home-wrist-extensor-20） | home-wrist-extensor-20：站姿无承重主动腕屈，拉伸腕伸肌；办公单向基础式，区别018腕伸与跪姿多向摇摆；低分保留待GPU（docs/home-wrist-extensor-20-2026-10-18.md） |
+| `h-step-jack-r2` | 低冲击开合跳 | 三角肌+臀中肌 · 髋外展 | — | 8s/240f@30 | v2plus | `h-step-jack` | — | 已登记（2026-10-21 action-package@2 production b001） |  |
+| `h-step-jack-r3` | 低冲击开合跳 | 三角肌+臀中肌 · 髋外展 | — | 8s/240f@30 | v2plus | `h-step-jack` | — | 已登记（production b001 GPU4080 r2 shoe sole calibration） |  |
 | `h-step-jack` | 低冲击开合跳 | 三角肌+臀中肌 · 髋外展 | — | 8s/120f@15 | v2（历史） |  | — | PR #111 |  |
 | `h-suitcase-hold` | 单手哑铃静态提握抗侧屈 | 腹斜肌 | 哑铃 | 8s/120f@15 | v2（历史） |  | — | 已登记（home-pr-candidates） | rockback-hold-09：单手静态提握抗侧屈；居家小器械，有哑铃/安全空间才适合办公；低分抽查通过待GPU（docs/rockback-hold-09-2026-10-18.md） |
 | `h-suitcase-march` | 单手哑铃交替踏步抗侧屈 | 腹斜肌+臀中肌 · 髋外展 | 哑铃 | 8s/120f@15 | v2（历史） |  | — | 已登记（home-pr-candidates） |  |
+| `h-sumo-pry-r2` | 相扑深蹲肘推膝停留 | 内收肌群+臀大肌 | 垫 | 8s/240f@30 | v2plus | `h-sumo-pry` | — | 已登记（2026-10-21 action-package@2 production b002） |  |
 | `h-sumo-pry` | 相扑深蹲肘推膝停留 | 内收肌群+臀大肌 | 垫 | 8s/120f@15 | v2（历史） |  | HipLab v0.1.0；HipLab v0.2.0 | PR #113 |  |
+| `h-superman-r2` | 俯卧超人式 | 竖脊肌+臀大肌 | 垫 | 8s/240f@30 | v2plus | `h-superman` | — | 已登记（2026-10-21 action-package@2 production b001） |  |
 | `h-superman` | 俯卧超人式 | 竖脊肌+臀大肌 | 垫 | 8s/120f@15 | v2（历史） |  | — | PR #6 |  |
 | `h-supine-twist-r2` | 仰卧屈膝扭转 | 腹斜肌+竖脊肌 | 垫 | 8s/240f@30 | v2（历史） | `h-supine-twist` | HipLab v0.1.0 作 h-supine-twist；HipLab v0.2.0 作 h-supine-twist | 已登记（2026-10-17 HipLab accepted media） |  |
 | `h-supine-twist-r3` | 仰卧屈膝扭转 | 腹斜肌+竖脊肌 | 垫 | 8s/240f@30 | v2（历史） | `h-supine-twist` | — | 已登记（2026-10-19 camera/target-visibility review） |  |
+| `h-supine-twist-r4` | 仰卧屈膝扭转 | 腹斜肌+竖脊肌 | 垫 | 8s/240f@30 | v2plus | `h-supine-twist` | — | 已登记（2026-10-21 action-package@2 production b003） |  |
 | `h-supine-twist` | 仰卧屈膝扭转 | 腹斜肌+竖脊肌 | 垫 | 8s/120f@15 | v2（历史） |  | 原版；v0.1.0 绑定 h-supine-twist-r2；原版；v0.2.0 绑定 h-supine-twist-r2 | PR #111 |  |
 | `h-supported-single-leg-calf` | 扶墙单腿提踵 | 小腿三头肌（left） | 墙 | 8s/120f@15 | v2（历史） |  | — | 已登记（supported-calf-15） | supported-calf-15：扶墙单腿提踵；左足承重、右足离地；条件办公需稳墙与基础能力；低分抽查保留待GPU（docs/supported-calf-15-2026-10-18.md） |
 | `h-tabletop` | 桌面式后撑抬髋 | 胸大肌+三角肌 | 垫 | 8s/120f@15 | v2（历史） |  | — | PR #115 |  |
@@ -297,18 +338,24 @@
 |---|---|---|---|---|---|---|---|---|---|
 | `n-chair-wiper` | 坐椅雨刷（膝内倒） | 臀中肌 · 髋外展+臀大肌 | 椅 | 8s/120f@15 | v2（历史） |  | HipLab v0.1.0；HipLab v0.2.0 | PR #119 |  |
 | `n-half-split` | 半跪半劈叉（扶砖） | 腘绳肌（right） | 垫 | 8s/120f@15 | v2（历史） |  | HipLab v0.1.0；HipLab v0.2.0 | PR #119 |  |
+| `n-leg-circles-r2` | 仰卧直腿画圈 | 髋屈肌+臀中肌 · 髋外展（right） | 垫 | 8s/240f@30 | v2plus | `n-leg-circles` | — | 已登记（2026-10-22 draft-first native8 authoring r1） |  |
 | `n-leg-circles` | 仰卧直腿画圈 | 髋屈肌+臀中肌 · 髋外展（right） | 垫 | 12s/180f@15 | v2（历史） |  | HipLab v0.1.0；HipLab v0.2.0 | PR #119 | 求解器提示 29 帧，指标全过（docs/hiplab-phase1-drills-2026-10-16.md） |
+| `n-pelvis-circle-r2` | 站姿骨盆画圈 | 髋屈肌+臀大肌+臀中肌 · 髋外展 | — | 8s/240f@30 | v2plus | `n-pelvis-circle` | — | 已登记（2026-10-21 action-package@2 production b002） |  |
 | `n-pelvis-circle` | 站姿骨盆画圈 | 髋屈肌+臀大肌+臀中肌 · 髋外展 | — | 8s/120f@15 | v2（历史） |  | HipLab v0.1.0；HipLab v0.2.0 | PR #119 |  |
 | `n-prone-hip-ext` | 俯卧屈膝抬腿 | 臀大肌（right） | 垫 | 8s/120f@15 | v2（历史） |  | HipLab v0.1.0；HipLab v0.2.0 | PR #119 |  |
 | `n-prone-ir` | 俯卧小腿外摆（髋内旋） | 臀中肌 · 髋外展+臀大肌 | 垫 | 8s/120f@15 | v2（历史） |  | HipLab v0.1.0；HipLab v0.2.0 | PR #119 |  |
+| `n-seated-ir-drop-r2` | 坐姿后撑单膝内倒 | 臀大肌+臀中肌 · 髋外展 | 垫 | 8s/240f@30 | v2plus | `n-seated-ir-drop` | — | 已登记（2026-10-21 action-package@2 production b003） |  |
 | `n-seated-ir-drop` | 坐姿后撑单膝内倒 | 臀大肌+臀中肌 · 髋外展 | 垫 | 8s/120f@15 | v2（历史） |  | HipLab v0.1.0；HipLab v0.2.0 | PR #119 | 替代未完成的 n-9090-ir-lean（docs/hiplab-phase1-drills-2026-10-16.md） |
 | `n-seated-knee-lift` | 坐姿抬膝悬停 | 髋屈肌 | 椅 | 8s/120f@15 | v2（历史） |  | HipLab v0.1.0；HipLab v0.2.0 | PR #119 |  |
 | `n-seated-squeeze` | 坐姿夹砖（膝内夹） | 内收肌群 | 椅、垫 | 8s/120f@15 | v2（历史） |  | HipLab v0.1.0；HipLab v0.2.0 | PR #119 | 原计划“夹拳+外推”改为夹砖，外推半部分未做（docs/hiplab-phase1-drills-2026-10-16.md）；2 vCPU/SwiftShader 预览 >75 s 不出第一帧，原因未查（docs/onboarding-audit-2026-10-18.md） |
 | `n-slider-lateral` | 滑垫侧向滑 | 内收肌群（right） | 滑垫 | 8s/120f@15 | v2（历史） |  | HipLab v0.1.0；HipLab v0.2.0 | PR #119 |  |
+| `n-squat-shift-r2` | 低位蹲姿左右移重心 | 内收肌群+臀大肌 | 垫 | 8s/240f@30 | v2plus | `n-squat-shift` | — | 已登记（2026-10-21 action-package@2 production b002） |  |
 | `n-squat-shift` | 低位蹲姿左右移重心 | 内收肌群+臀大肌 | 垫 | 8s/120f@15 | v2（历史） |  | HipLab v0.1.0；HipLab v0.2.0 | PR #119 |  |
 | `n-straddle-fold` | 坐姿分腿体前屈 | 内收肌群+腘绳肌 | 垫 | 8s/120f@15 | v2（历史） |  | HipLab v0.1.0；HipLab v0.2.0 | PR #119 |  |
+| `n-thomas-test-r2` | 仰卧单膝抱胸（托马斯测试） | 髋屈肌（right） | 垫 | 8s/240f@30 | v2plus | `n-thomas-test` | — | 已登记（2026-10-21 action-package@2 production b003） |  |
 | `n-thomas-test` | 仰卧单膝抱胸（托马斯测试） | 髋屈肌（right） | 垫 | 8s/120f@15 | v2（历史） |  | HipLab v0.1.0；HipLab v0.2.0 | PR #119 |  |
 | `n-wide-fold` | 站姿宽距体前屈（扶椅） | 内收肌群+腘绳肌 | 椅 | 8s/120f@15 | v2（历史） |  | HipLab v0.1.0；HipLab v0.2.0 | PR #119 |  |
+| `n-windshield-r2` | 仰卧雨刷式 | 臀大肌+臀中肌 · 髋外展 | 垫 | 8s/240f@30 | v2plus | `n-windshield` | — | 已登记（2026-10-21 action-package@2 production b004） |  |
 | `n-windshield` | 仰卧雨刷式 | 臀大肌+臀中肌 · 髋外展 | 垫 | 8s/120f@15 | v2（历史） |  | HipLab v0.1.0；HipLab v0.2.0 | PR #119 |  |
 
 ## a-* HipLab 自测对比静图（PR #119 + r2）
@@ -330,12 +377,13 @@
 这些是“可直接拿来出新版本”的存量；动作审核优化优先从这里挑。
 
 - **g**（2）：`g-cable-hip-abduction` `g-cable-hip-extension`
-- **flare**（9）：`abs-C-r2` `chest-A-r2` `glute-max-A-r2` `hip-abductors-B-r2` `hip-abductors-C-r2` `obliques-A-r2` `rotator-cuff-A-r2` `rotator-cuff-B-r2` `rotator-cuff-C-r2`
-- **s**（2）：`s-9090-r3` `s-frog-r3`
-- **t**（13）：`t-flare-side-hold` `t-half-straddle` `t-lsit-open-close-r2` `t-lsit-open-close` `t-lsit-tuck` `t-lsit-vsit-circles` `t-lsit-wide-r2` `t-lsit-wide` `t-seated-straddle-ext` `t-seated-straddle-lifts` `t-straddle-hold` `t-tuck-planche` `t-vsit`
-- **o**（22）：`o-chair-knee-extension` `o-seated-calf-raise` `o-seated-catcow` `o-seated-hip-er` `o-seated-sidebend` `o-seated-twist` `o-stand-crossreach-r2` `o-stand-ham` `o-stand-quad` `o-stand-sidebend` `o-supported-ankle-eversion` `o-supported-ankle-inversion` `o-supported-ankle-pump` `o-supported-hip-airplane` `o-supported-hip-hitch` `o-supported-hip-ir` `o-supported-knee-curl` `o-supported-march` `o-supported-mini-squat` `o-supported-single-leg-rdl` `o-supported-star-reach` `o-wall-hip-hinge-stretch`
-- **w**（9）：`w-bird-dog` `w-chair-hip-thrust` `w-clamshell-r2` `w-dead-bug-r2` `w-dead-bug` `w-fire-hydrant` `w-prone-swimmer-r2` `w-prone-swimmer` `w-wall-sit`
-- **h**（85）：`h-banana` `h-band-chest-fly` `h-band-hip-extension` `h-band-pallof` `h-band-pull-apart-r2` `h-band-pull-apart` `h-band-row` `h-band-shoulder-ir` `h-band-standing-abduction` `h-band-standing-adduction` `h-band-stepout` `h-band-straight-leg-raise` `h-band-triceps-pressdown` `h-bear-plank` `h-biceps-self` `h-bridge-march` `h-bridge-overhead` `h-bulgarian` `h-calf-raise` `h-catcow-quad-r2` `h-catcow-quad` `h-chair-dip` `h-chair-kickback` `h-chair-lat` `h-chair-sit-to-stand` `h-chair-step-up-r2` `h-chair-step-up` `h-chair-tspine` `h-cobra` `h-crossbody` `h-crunch` `h-db-calf-raise` `h-db-curl-r2` `h-db-curl` `h-db-floor-press` `h-db-front-raise` `h-db-hammer-curl` `h-db-kickback` `h-db-lateral` `h-db-press` `h-db-rdl` `h-db-reverse-fly` `h-db-row` `h-db-shrug` `h-db-split-squat` `h-db-supported-calf-raise` `h-dd-shoulder` `h-donkey-kick` `h-forearm-plank` `h-good-morning` `h-incline-pushup-r2` `h-incline-pushup` `h-inner-thigh` `h-kb-swing` `h-mountain-climber` `h-open-book` `h-pike-pushup` `h-pike-scapular-elevation` `h-plank-side-step` `h-reverse-crunch` `h-reverse-lunge` `h-russian-twist` `h-seated-reachback` `h-side-er` `h-side-leg-raise` `h-slider-body-saw` `h-standing-forearm-rotation` `h-standing-wrist-deviation` `h-standing-wrist-extensor-stretch` `h-step-jack` `h-suitcase-hold` `h-suitcase-march` `h-superman` `h-supine-twist-r3` `h-supported-single-leg-calf` `h-tabletop` `h-tib-raise` `h-towel-behind` `h-towel-pass` `h-towel-pulldown` `h-wall-angel` `h-wall-calf-bent-knee` `h-wall-calf` `h-wall-pec` `h-wall-wrist-flexor-stretch`
+- **flare**（25）：`abs-A-r2` `abs-C-r2` `adductors-A-r2` `chest-A-r2` `chest-A-r3` `chest-B-r2` `deltoids-A-r2` `deltoids-B-r2` `forearms-A-r2` `glute-max-A-r2` `hamstrings-A-r2` `hamstrings-A-r3` `hip-abductors-A-r2` `hip-abductors-B-r2` `hip-abductors-C-r2` `hip-flexors-A-r2` `obliques-A-r2` `quadriceps-C-r2` `rotator-cuff-A-r2` `rotator-cuff-B-r2` `rotator-cuff-C-r2` `scapular-A-r2` `serratus-A-r2` `triceps-A-r2` `triceps-B-r2`
+- **s**（6）：`s-9090-r3` `s-9090-r4` `s-butterfly-r2` `s-figure4-r2` `s-frog-r3` `s-seated-fold-r4`
+- **t**（14）：`t-flare-side-hold` `t-half-straddle` `t-lsit-open-close-r2` `t-lsit-open-close` `t-lsit-tuck` `t-lsit-vsit-circles` `t-lsit-wide-r2` `t-lsit-wide` `t-seated-straddle-ext` `t-seated-straddle-lift-1leg-r2` `t-seated-straddle-lifts` `t-straddle-hold` `t-tuck-planche` `t-vsit`
+- **o**（23）：`o-chair-knee-extension` `o-seated-calf-raise` `o-seated-catcow` `o-seated-hip-er` `o-seated-sidebend` `o-seated-twist` `o-stand-crossreach-r2` `o-stand-ham` `o-stand-quad` `o-stand-sidebend-r2` `o-stand-sidebend` `o-supported-ankle-eversion` `o-supported-ankle-inversion` `o-supported-ankle-pump` `o-supported-hip-airplane` `o-supported-hip-hitch` `o-supported-hip-ir` `o-supported-knee-curl` `o-supported-march` `o-supported-mini-squat` `o-supported-single-leg-rdl` `o-supported-star-reach` `o-wall-hip-hinge-stretch`
+- **w**（10）：`w-bird-dog` `w-chair-hip-thrust` `w-clamshell-r2` `w-clamshell-r3` `w-dead-bug-r2` `w-dead-bug` `w-fire-hydrant` `w-prone-swimmer-r2` `w-prone-swimmer` `w-wall-sit`
+- **h**（103）：`h-9090-liftoff-r3` `h-banana-r2` `h-banana` `h-band-chest-fly` `h-band-hip-extension` `h-band-pallof` `h-band-pull-apart-r2` `h-band-pull-apart` `h-band-row` `h-band-shoulder-ir` `h-band-standing-abduction` `h-band-standing-adduction` `h-band-stepout` `h-band-straight-leg-raise` `h-band-triceps-pressdown` `h-bear-plank` `h-biceps-self` `h-bridge-march` `h-bridge-overhead` `h-bulgarian` `h-butterfly-active-r2` `h-calf-raise` `h-catcow-quad-r2` `h-catcow-quad` `h-chair-dip` `h-chair-kickback` `h-chair-lat` `h-chair-sit-to-stand` `h-chair-step-up-r2` `h-chair-step-up` `h-chair-tspine` `h-cobra` `h-crossbody` `h-crunch-r2` `h-crunch` `h-db-calf-raise` `h-db-curl-r2` `h-db-curl` `h-db-floor-press` `h-db-front-raise` `h-db-hammer-curl` `h-db-kickback` `h-db-lateral` `h-db-press` `h-db-rdl` `h-db-reverse-fly` `h-db-row` `h-db-shrug` `h-db-split-squat` `h-db-supported-calf-raise` `h-dd-shoulder` `h-donkey-kick` `h-forearm-plank` `h-good-morning-r2` `h-good-morning` `h-incline-pushup-r2` `h-incline-pushup` `h-inner-thigh` `h-kb-swing` `h-knee-hug-r3` `h-mountain-climber` `h-open-book` `h-pike-pushup` `h-pike-scapular-elevation` `h-plank-side-step` `h-reverse-clam-r2` `h-reverse-crunch` `h-reverse-lunge` `h-russian-twist-r2` `h-russian-twist` `h-seated-reachback` `h-side-er` `h-side-leg-raise-r2` `h-side-leg-raise-r3` `h-side-leg-raise-r4` `h-side-leg-raise-r5` `h-side-leg-raise` `h-slider-body-saw` `h-squat-r2` `h-standing-forearm-rotation` `h-standing-wrist-deviation` `h-standing-wrist-extensor-stretch` `h-step-jack-r2` `h-step-jack-r3` `h-step-jack` `h-suitcase-hold` `h-suitcase-march` `h-sumo-pry-r2` `h-superman-r2` `h-superman` `h-supine-twist-r3` `h-supine-twist-r4` `h-supported-single-leg-calf` `h-tabletop` `h-tib-raise` `h-towel-behind` `h-towel-pass` `h-towel-pulldown` `h-wall-angel` `h-wall-calf-bent-knee` `h-wall-calf` `h-wall-pec` `h-wall-wrist-flexor-stretch`
+- **n**（6）：`n-leg-circles-r2` `n-pelvis-circle-r2` `n-seated-ir-drop-r2` `n-squat-shift-r2` `n-thomas-test-r2` `n-windshield-r2`
 
 原版已被在用修订取代（9）：`a-9090`→`a-9090-r2` `a-deep-squat`→`a-deep-squat-r2` `a-thomas`→`a-thomas-r2` `h-9090-liftoff`→`h-9090-liftoff-r2` `h-knee-hug`→`h-knee-hug-r2` `h-supine-twist`→`h-supine-twist-r2` `s-9090`→`s-9090-r2` `s-frog`→`s-frog-r2` `s-seated-fold`→`s-seated-fold-r3`
 

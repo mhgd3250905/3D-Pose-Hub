@@ -11,9 +11,10 @@
 | 动作规格 | `drill-anim/specs/`，源哈希由 `drill-anim/verify.mjs` 与候选表固定 | `<id>-r2.js`、`-r3.js` 等修订文件及 LF SHA-256 | 原版不覆盖；[spec 总表](drill-catalog.md)含历史修订，文件数不等于稳定动作数 |
 | 人物模型 | [当前生产配置](../drill-anim/models/current-production.json)、[v2plus 清单](../drill-anim/models/training-human-v2plus.json)；[v2 冻结清单](../drill-anim/models/training-human-v2.json)保留 | 生产配方、profile id、模型 `version`、各固定源 SHA-256 | 改固定源须建新模型版本；配方只影响新任务，旧批次按其原 manifest 续作 |
 | App 媒体 ZIP | [media/manifest.json](../media/manifest.json)、`media/releases/<版本>.md` | 独立媒体版本、ZIP SHA-256 | `published` 条目及 ZIP 固定，内容变化另发版本 |
+| 制作快照 | `catalog/v2/production-snapshots/<快照ID>.json`、`docs/production-snapshots/<快照ID>.md` | 独立快照 ID、渲染源完整 SHA、保存该快照的 Git 提交、各素材清单 SHA/字节数 | 只增不改；制作完成与人工审核、六层资格、公开媒体发布分开；不能写入 App 的 published 媒体 lock |
 | 制作素材云端归档 | [同步规则](material-cloud-sync.md) | 动作 id、变体与内容指纹 | 不是 App 发布版本；上传校验与制作 QA 分开记录，后续同步由用户请求触发 |
 
-`catalog 0.2.0` 和 `media 0.2.0` 不是同一次发布。App 自身版本、SDK 版本和 lock 的媒体版本也不能互相替代。当前汇总见台账，不在不同入口各维护一份版本数字。
+catalog、media、制作快照是独立版本对象。App 自身版本、SDK 版本和 lock 的媒体版本也不能互相替代。当前汇总见台账；`library-v2-20261022-r1` 固定189动作第一版制作结果，仍待人工审核，未改变 catalog 0.3.0 或 published media 0.2.0。
 
 ## 人体制作版本与生产默认
 
@@ -34,7 +35,7 @@
 - 合入提交：经审核、用户同意后进入 main 的完整 SHA。
 - 发布引用：实际建立的目录 tag 或固定提交；未建立 tag 时明确记为“未打 tag”，不能把合入写成已发布或已接入。
 
-目录发布 tag 如另行安排，应使用与媒体、模型可区分的名称，并把确切 tag、内容 SHA 和消费端兼容性登记到台账；本次收束只提交文档，不创建 tag 或发布包。
+目录发布 tag 如另行安排，应使用与媒体、模型可区分的名称，并把确切 tag、内容 SHA 和消费端兼容性登记到台账；本次保存仅涉及说明文档、制作快照元数据与生成总表，不创建 tag 或发布包。
 
 ## 更新与验收
 

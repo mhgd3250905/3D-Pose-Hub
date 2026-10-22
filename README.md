@@ -2,7 +2,9 @@
 
 > **第一次来？先读 [docs/START-HERE.md](docs/START-HERE.md)**（半小时上手、低配机验证、贡献流程）；动作总表见 [docs/drill-catalog.md](docs/drill-catalog.md)，审核标准见 [docs/review-rubric.md](docs/review-rubric.md)。
 
-新生产以 [动作包 v2](catalog/v2/README.md) 为合同，按稳定动作 ID 管理定义、动作源、分层母版、派生、双语语音和校验六层；AI 的 [action-library](catalog/action-library/index.md) 从 catalog 自动生成。现有 App 尚在使用的 [catalog/catalog.json](catalog/catalog.json) 为 0.3.0 历史兼容目录，其完整度不等于 v2 发布资格。版本规则见 [版本管理](docs/version-management.md)，当前版本、PR 合入与接入待办见 [版本对齐台账](docs/version-ledger.md)。
+新生产以 [动作包 v2](catalog/v2/README.md) 为合同，按稳定动作 ID 管理定义、动作源、分层母版、派生、双语语音和校验六层；AI 的 [action-library](catalog/action-library/index.md) 从 catalog 自动生成。当前保留供现有 App 接入的 [catalog/catalog.json](catalog/catalog.json) 为 0.3.0 历史兼容目录，其完整度不等于 v2 发布资格，消费端实际升级仍须验收。版本规则见 [版本管理](docs/version-management.md)，当前版本、PR 合入与接入待办见 [版本对齐台账](docs/version-ledger.md)。
+
+当前制作快照为 [library-v2-20261022-r1](docs/production-snapshots/library-v2-20261022-r1.md)：原正式目录142动作与 PR #14 新增47动作，共189动作、1890视频及配图已完成，等待用户统一审片。固定来源、素材清单哈希和问题记录见[快照清单](catalog/v2/production-snapshots/library-v2-20261022-r1.json)。这是制作保存版本，`reviewed:false`、`releaseEligible:false`；App 公开素材仍固定 media 0.2.0。
 
 Pose-Hub 是 FlareLab（托马斯训练助手）和 HipLab（开胯训练助手）共用的**动作库**：动作渲染工具 drill-anim、训练人物模型及其制作工具、每个动作的规格（spec）、以及成片素材清单都在这里。各 App 不再自己改动作，只按固定版本从这里取成片。
 
@@ -48,11 +50,11 @@ python -m unittest discover -s media/tests -v   # 素材脚本
 
 ## 渲染
 
-`training-human-v2` 已退出新生产，只保留冻结历史复现。新人体已完成六个代表动作、原配色/白金/蓝色/绿色/全息五套试制；分层渲染见 [tools/v2](drill-anim/tools/v2/README.md)，脚本派生和本地审片见 [action-package-v2](tools/action-package-v2/README.md)。新产物按用户授权统一放在 F 盘；开哥已确认 r2 样片并同意合入 main、推送，见[试制确认](docs/pilot-approval-20261021.md)。全库铺开另等确认。
+`training-human-v2` 已退出新生产，只保留冻结历史复现。新人体以原配色/白金/蓝色/绿色/全息五套皮肤完成189动作第一版制作；分层渲染见 [tools/v2](drill-anim/tools/v2/README.md)，脚本派生和本地审片见 [action-package-v2](tools/action-package-v2/README.md)。新产物按用户授权放在 F 盘；六动作 r2 的既有[试制确认](docs/pilot-approval-20261021.md)保留其范围，全库第一版仍待人工审片。
 
-当前审片修订为 `F:/PoseHub-v2-pilot/neck-fix-r2/`。颈部漏色已修正，六动作五皮肤的完整透明母版、60 份视频及配套图片已重做并校验；catalog 已更新为 draft.2。r1 保留历史对照，技术结果与待审项见[试制记录](docs/action-package-v2-pilot-20261021.md)及[颈部修复记录](docs/neck-material-fix-20261021.md)。
+六动作试制修订保留在 `F:/PoseHub-v2-pilot/neck-fix-r2/`。颈部漏色修正后的母版、60份视频及图片已复用进全库看样，catalog 试制包仍为 draft.2。r1 保留历史对照，试制记录与待审项见[试制记录](docs/action-package-v2-pilot-20261021.md)及[颈部修复记录](docs/neck-material-fix-20261021.md)。统一看样入口为 `http://127.0.0.1:8877/review/index.html`，仅本机可用。
 
-开哥随后已授权全库制作，现从 `codex/action-library-v2-production` 分支按[全库计划](docs/action-library-v2-production-plan-20261021.md)和[142 动作生产队列](catalog/v2/production-plan.json)推进。六动作 r2 复用，136 个正式动作分 20 批新增制作；其他候选、静图和停止项单列，输出按批次放在 `F:/PoseHub-v2-production/`。
+全库制作已按[全库计划](docs/action-library-v2-production-plan-20261021.md)和[生产队列](catalog/v2/production-plan.json)完成第一版：142正式动作中20个复用、122个新制；PR #14 另增47动作，五皮肤×深浅色共1890视频。新输出在 `F:/PoseHub-v2-production/` 的独立批次根，源内容固定为 `960b486f2e2d64f431ab24299a94dfe925e0562b`。当前保存并推送生产分支，完整定义、语音、人工审片与发布门禁继续待办。
 
 下面旧命令用于历史配方复现，不作为 v2 新生产入口：
 
@@ -64,7 +66,7 @@ python drill-anim/drill.py render h-9090-liftoff --theme themes/glow-b.json     
 
 `drill.py` 会在 `app_port` 上自动启动 Vite（根目录 `vite.config.js`，root=`runtime/`），渲染完自动关掉。整机最多两路渲染、每路 `--jobs 1`；已有同名成片默认拒绝覆盖（要覆盖需显式 `--overwrite`）。更多参数和 spec 格式见 [drill-anim/README.md](drill-anim/README.md)。
 
-2026-10-21 新版人体已随 [PR #12](https://github.com/mhgd3250905/3D-Pose-Hub/pull/12) 合入 main 并推送，采用 `training-human-v2plus` / `1.0.0-rc2`：原配色、动作肌群高亮、不显示肌群分区线，新版躯干/四肢/手与原 v2 头。新制作读取 [生产配置](drill-anim/models/current-production.json)，普通旧 spec 和历史批次仍按原配方；尚未批量重渲或更新 App。来源、检查与后续待办见 [版本对齐台账](docs/version-ledger.md)。
+2026-10-21 新版人体已随 [PR #12](https://github.com/mhgd3250905/3D-Pose-Hub/pull/12) 合入 main 并推送，采用 `training-human-v2plus` / `1.0.0-rc2`：原配色、动作肌群高亮、不显示肌群分区线，新版躯干/四肢/手与原 v2 头。新制作读取 [生产配置](drill-anim/models/current-production.json)，普通旧 spec 和历史批次仍按原配方；本轮批量第一版已完成，App 尚未据此升级。来源、检查与后续待办见 [版本对齐台账](docs/version-ledger.md)。
 
 ## 发布成片
 
@@ -94,6 +96,6 @@ python tools/pose_hub_sync.py --lock pose-hub.lock.json --check
 
 ## AI 动作目录版本
 
-历史兼容目录为 **0.3.0 / formatVersion 1**：[PR #11](https://github.com/mhgd3250905/3D-Pose-Hub/pull/11) 的 0.2.0 修复后，[PR #13](https://github.com/mhgd3250905/3D-Pose-Hub/pull/13) 已合入 `rhythm` 字段。仍收录 142 个稳定动作 id：FlareLab 51、HipLab 46、SmartFit 93，各 App 有重叠。本轮六个新版修订加入后，spec 开发总表为 206 文件（33 修订），与 173 个基础动作 ID、46 个动作的历史媒体发布包分别统计；六个试点仍须按 v2 六层逐项验收。
+历史兼容目录为 **0.3.0 / formatVersion 1**：[PR #11](https://github.com/mhgd3250905/3D-Pose-Hub/pull/11) 的 0.2.0 修复后，[PR #13](https://github.com/mhgd3250905/3D-Pose-Hub/pull/13) 已合入 `rhythm` 字段。仍收录142个稳定动作 id：FlareLab 51、HipLab 46、SmartFit 93，各 App 有重叠。当前生产分支有300份 spec，包含原版与修订；189动作制作快照另计，PR #14 的47动作尚未加入旧目录。规格文件数、已写36个 v2 动作包和46动作历史媒体发布包分别统计，不能互当验收数量。
 
 目录 0.3.0 与媒体 ZIP 0.2.0 是独立版本。目录合入不等于消费端已升级：SmartFit 的 8 项剂量、7 项侧别同步与 SDK `holdSeconds`、`rhythm` 执行语义仍待接入验收；本次没有新增目录发布 tag 或媒体 ZIP。具体提交、验证范围与待办见 [版本对齐台账](docs/version-ledger.md)。

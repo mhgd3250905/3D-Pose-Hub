@@ -1,28 +1,33 @@
 # Pose-Hub 版本对齐台账
 
-更新日期：2026-10-21。当前 AI 目录 **0.3.0 已合入 main**，App 媒体仍为 **0.2.0 已发布**；新制作人体采用 **training-human-v2plus 1.0.0-rc2**，原配色、动作肌群高亮、不显示肌群分区线。六动作试制及确认已合入并推送，main 基线为 `3fcb420fd083fd84847d65d9b0ec01d9be997581`。全库重制已获授权并在分支推进；App 接入仍待后续验收。规则与事实源映射见[版本管理](version-management.md)。
+更新日期：2026-10-22。当前制作快照为 **[library-v2-20261022-r1](production-snapshots/library-v2-20261022-r1.md)**：189动作、1890视频及配图已完成，用户暂缓统一审片，状态为 `draft-unreviewed`，`reviewed:false`、`releaseEligible:false`。AI目录仍为 **0.3.0 / 142 ID**，App公开媒体仍为 **0.2.0 published / 46动作**，人体仍为 **training-human-v2plus 1.0.0-rc2**。各版本对象按[版本管理](version-management.md)分别管理。
 
 ## 当前版本与计数
 
-全库分支首批新增 8 动作、五皮肤 80 个视频及分层母版已完成技术核验，源/母版/派生当前合计 14/142；已写动作包 28，正式目录另 114 个尚未写 v2。六层发布资格 0/142，编辑、试听、最终审查与新批次合入未获替代批准。见[首批结果](action-library-v2-b001-20261021.md)。
+| 对象 | 版本或数量 | 状态与固定来源 |
+| --- | --- | --- |
+| 制作快照 | [library-v2-20261022-r1](../catalog/v2/production-snapshots/library-v2-20261022-r1.json)，189动作 / 1890视频 | 原142正式动作全部完成，另含 PR #14 的47动作；五皮肤×深浅。仅制作保存，待人工审核 |
+| 正式目录第一版 | 142动作 / 1420视频 | 20动作复用，122动作新制（含12个独立原生8秒编排）；新草稿不冒充视觉通过 |
+| PR #14 新动作 | 47动作 / 470视频 | 源 `c9bf4a2edb57ee57e17bb62b542133e1d7190eba`；已合入 main `41b1922459e36cd4ff2947828135b755465d0613`，新版人体第一版已完成 |
+| 当前源内容 | `960b486f2e2d64f431ab24299a94dfe925e0562b` | `codex/action-library-v2-production`；本轮保存并 push 此生产分支，未将全库制作分支合入 main |
+| spec 开发总表 | 300份 spec | main 合入 PR #14 后为253份；生产分支另含独立修订/包装源。文件数不等于动作数，见[生成总表](drill-catalog.md) |
+| v2 定义包与六层资格 | 已写36包；正式142中106个未写，新增47个未写；发布资格0 | [library-completeness.json](../catalog/v2/library-completeness.json)保留36包/142目标、14项技术媒体层检查的原报告；不拿它代表189动作渲染进度 |
+| AI 动作目录 | 0.3.0 / formatVersion 1，142稳定ID | PR #11、#13已合入；新增47尚未加入旧目录；没有新目录tag |
+| 各 App 目录覆盖 | FlareLab 51、HipLab 46、SmartFit 93 | 有重叠，不相加；本次没有访问或修改消费端仓库，接入仍待验收 |
+| 历史目录配套完整度 | 46个complete，96个未进入旧媒体发布；49个缺中文、96个缺英文语音 | 旧目录口径，保留[MISSING.md](../catalog/MISSING.md)；不把制作快照当旧目录或语音缺项已关闭 |
+| 新制作人体 | training-human-v2plus 1.0.0-rc2 | [生产配置](../drill-anim/models/current-production.json)和[固定清单](../drill-anim/models/training-human-v2plus.json)未改；本轮批量草稿完成，人工验收待做 |
+| 历史基础人体 | training-human-v2 2.0.1 | 旧规格与历史批次复现；冻结源未改 |
+| App媒体 | media 0.2.0，46个HipLab动作、92公开文件 | [清单](../media/manifest.json)维持published；[0.2.0](../media/releases/0.2.0.md)与0.1.0冻结。新快照未发布ZIP或云盘链接 |
 
-开哥随后于 2026-10-21 授权全库计划和制作，当前执行分支为 `codex/action-library-v2-production`。基线正式目录 142 个 ID，复用六动作 r2，136 个新增动作已排 20 批；目录外 24 个动态候选、6 个静图家族和 1 个停止项另列。计划与真实推进状态见[全库计划](action-library-v2-production-plan-20261021.md)及[生产队列](../catalog/v2/production-plan.json)。下面六动作“全库另等确认”的历史条件已由这次指令满足，不代表新批次已制作、合入或发布。
+六动作 r2 的既有[试制确认](pilot-approval-20261021.md)只覆盖原记录范围，不替其余动作授予审核。用户本次授权文档保存、commit和分支push，未以“没时间核对”代替看样通过。App应继续固定已发布版本；新快照用于保存和适配准备，不能写入 `poseHub.version` 当作published媒体。
 
-2026-10-21，开哥接受 `codex/action-package-v2-pilot` 的 r2 样片并同意合入、推送，本地 main 先快进至 `5b2becb572f06a310be0cb5bdea61f47834dc5c7`，再以 `3fcb420` 登记确认和检出字节保护。内容为动作包 `action-package@2`、六层门禁、六个代表动作与五套皮肤制作管线；样片确认及合入范围见[试制确认](pilot-approval-20261021.md)。下表旧 AI/App 发布版本未因本次合入升级，不能拿旧 `complete` 代替 v2 门禁。试制时的全库待确认条件已由上文后续授权满足。
+## 本轮保存与下一步
 
-已完成试制修订为 **r2**，目录 `F:/PoseHub-v2-pilot/neck-fix-r2/`。颈部漏色已修正，六动作五皮肤完整母版、60 份视频及图片已重做，catalog draft.2 与 AI 详情已重新绑定真实 SHA/QA。完整性、像素、姿态、连续序列与冻结源检查均通过；r1 保留历史。固定人体仍为 `training-human-v2plus / 1.0.0-rc2`，修正位于渲染适配器。试制内容已合入 main；发布前编辑、语音内容/试听等审核仍待完成，未发布新素材版本。全库新增批次使用独立的 F 盘 production 目录。证据见[颈部修复记录](neck-material-fix-20261021.md)与试制记录。
+[版本说明](production-snapshots/library-v2-20261022-r1.md)与[机器快照](../catalog/v2/production-snapshots/library-v2-20261022-r1.json)固定五组来源、全部189个动作ID、源清单/派生清单SHA、矩阵和待审问题。快照 SHA-256：`ab7588e59920a4ed220890d4dcb278a0898174a835571b41d9a1f642a862bf34`。渲染输入 `sourceCommit` 与包含快照的交付Git提交分别管理；交付提交由该文件Git历史及本次closeout回执确定，避免写入自身SHA。
 
-| 对象 | 版本或数量 | 状态 | 依据 |
-| --- | --- | --- | --- |
-| AI 动作目录 | 0.3.0 / formatVersion 1，142 个稳定动作 id | PR #11、#13 已合入；本阶段未新建目录 tag | [catalog.json](../catalog/catalog.json)、[PR #13](https://github.com/mhgd3250905/3D-Pose-Hub/pull/13) |
-| 各 App 目录覆盖 | FlareLab 51、HipLab 46、SmartFit 93 | 有重叠，不能相加作为动作总数；不代表本次已升级 App | `catalog.drills[].apps` |
-| 目录配套完整度 | 46 个 complete；96 个未进入 Pose-Hub 媒体发布、49 个缺中文语音、96 个缺英文语音 | 按当前生成物记录，缺项未在本次补齐 | [MISSING.md](../catalog/MISSING.md) |
-| spec 开发总表 | 206 个规格文件，含本轮 6 个新修订 spec | 包含原版、修订及未被 App 使用的规格 | [drill-catalog.md](drill-catalog.md) |
-| 新制作人体 | training-human-v2plus 1.0.0-rc2 | 已合入 main；完整配方见下文，未全量重渲 | [生产配置](../drill-anim/models/current-production.json)、[新版清单](../drill-anim/models/training-human-v2plus.json) |
-| 历史基础人体 | training-human-v2 2.0.1 | 旧规格/批次继续复现；13 个固定源未改，仅默认选择标记调整 | [旧版清单](../drill-anim/models/training-human-v2.json) |
-| App 媒体 | media 0.2.0，46 个 HipLab 动作、92 个公开文件 | published，soft-v1；0.1.0 保留 | [媒体清单](../media/manifest.json)、[0.2.0 发布记录](../media/releases/0.2.0.md) |
+统一看样为 `http://127.0.0.1:8877/review/index.html`（本机）；两个渲染队列、CPU合成监督器和有限索引刷新均已自然完成。后续按“动作ID＋秒数＋问题”另建修订，保留当前母版与快照；不因本次收束自动重新渲染、定时同步、发tag或发布素材。
 
-`complete` 不要求英文语音，也不代表全部 142 个动作均已打包发布、消费端已兼容或已通过医学禁忌审核。制作归档的绿幕和透明帧数量另按[素材库同步记录](material-cloud-sync.md)统计，不混入上表。
+明确待办：`h-db-shrug` 与 `h-pike-scapular-elevation` 的旧 `trapUpper` 名称在v2plus下无高亮；可见手脚/道具接触及循环观感仍待审；12个独立8秒编排仍待内容确认；`h-supine-twist/zh/phase.start` 保留既有语音技术失败。编辑、禁忌、完整语音/试听和六层最终发布审查继续待办。固定发布版本与消费端接入事项见下列历史和接入台账，不因本次保存而关闭。
 
 ## AI 目录变更记录
 

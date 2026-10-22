@@ -36,7 +36,7 @@
 
 ## 存储约定
 
-公开成片、封面和静图使用 `storage: "archive"`，进入对应版本 ZIP。绿幕母版和透明帧使用 `storage: "local"`，不进 App 公开版本 ZIP、不进 Git；另按动作打包到云盘制作素材库。`local` 是 App 发布 ZIP 的分发边界，不禁止获授权的云端归档和链接共享。用户要求原件与本地备份保留在 E 盘。
+公开成片、封面和静图使用 `storage: "archive"`，进入对应版本 ZIP。绿幕母版和透明帧使用 `storage: "local"`，不进 App 公开版本 ZIP、不进 Git；另按动作打包到云盘制作素材库。`local` 是 App 发布 ZIP 的分发边界，不禁止获授权的云端归档和链接共享。既有原件与本地备份保留在 E 盘；本轮 v2 新制作产物按用户授权放在 F 盘，位置见下方制作快照。
 
 先检查已有素材的规格、模型、主题和 SHA，再补缺项。只换背景或缩小尺寸时，复用相同外观的 exact-alpha 母帧进行后期合成和编码；已有透明母帧时优先使用它，避免从绿幕 MP4 再次抠像。新高亮着色、人物材质或姿态变化需要新的主渲染母帧，同一份新母帧供不同背景和尺寸派生，不为每个变体重复跑 3D。旧 glow-B/v7 的主体颜色已经烘焙旧高亮，不能将换底或简单模糊称为 soft-v1。
 
@@ -52,6 +52,8 @@ h-9090-liftoff/h-9090-liftoff.dark.poster.540.jpg
 以上是 v0.2.0 的 1080 视频与 540 封面命名；v0.1.0 的封面仍为 1080。没有额外版本目录前缀。ZIP 只含媒体，不含清单或 ZIP 校验文件，避免在清单记录 ZIP 哈希时形成循环依赖。清单由 Git 分发，App 保存同一发布版本的清单副本。
 
 ## 本地制作库存
+
+新版制作当前保存为独立快照 [library-v2-20261022-r1](../docs/production-snapshots/library-v2-20261022-r1.md)，源码固定于 `960b486f2e2d64f431ab24299a94dfe925e0562b`，[机器快照](../catalog/v2/production-snapshots/library-v2-20261022-r1.json)记录制作范围。原正式目录 142 动作及 PR #14 新增 47 动作共 189 动作、1890 个视频已完成，采用五皮肤 × 深浅背景，产物位于 `F:/PoseHub-v2-pilot/neck-fix-r2/` 与 `F:/PoseHub-v2-production/`。当前为 `draft-unreviewed`，`reviewed:false`、`releaseEligible:false`；数量和文件核验不替代逐项人工审片。本次只保存制作快照，没有新 ZIP、tag、云端素材发布或 App 升级；公开媒体继续使用已 published 的 0.2.0（46 动作、92 个公开文件）。
 
 已验收但尚未发布为 App 素材 ZIP 的制作母版，另存于本机 `E:/AII-3D/pose-hub-media/inventory/`。库存登记见 [PR #5 / #6 高清母版](inventory/pr5-pr6-hd-2026-10-18.json)，审核、实看帧号和备份说明见 [主线验收记录](../docs/pr5-pr6-main-review-2026-10-18.md)。本地 `index.html` 提供绿幕播放、透明帧和证据入口。
 

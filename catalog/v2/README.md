@@ -4,7 +4,7 @@
 
 六动作已确认试制位于 `F:/PoseHub-v2-pilot/neck-fix-r2/`。颈部漏色已修正，六动作五皮肤完整母版与派生已重做，action JSON 均升级为 draft.2 并接入新媒体和 QA SHA；AI 详情已重建。r1 保留历史，本规范未因材质补丁改变。技术结果及待审项见[试制状态](../../docs/action-package-v2-pilot-20261021.md)与[颈部修复](../../docs/neck-material-fix-20261021.md)。
 
-开哥已授权全库推进；正式目录 142 个稳定 ID，复用六个试制动作，新增制作 136 个，分 20 批执行，见[全库计划](../../docs/action-library-v2-production-plan-20261021.md)与 `production-plan.json`。新母版和临时数据统一放在 `F:/PoseHub-v2-production/`，每批独立媒体根。当前已建立 28 个动作包，其余 114 个仍为计划项，不记为完成。
+全库第一版已完成，见[制作快照 library-v2-20261022-r1](../../docs/production-snapshots/library-v2-20261022-r1.md)及[机器清单](production-snapshots/library-v2-20261022-r1.json)。原正式目录142动作中20个复用、122个新制，PR #14 另增47动作，共189动作、1890视频及配图。新母版和临时数据仍在 F 盘独立媒体根。当前已建立36个 v2 动作包；正式目录另106个、PR #14 新增47个尚无完整定义包。制作完成不改变六层审核或发布资格，全部第一版保持待审。
 
 `actions/*.json` 是可编辑源，`pilot.json` 保留六个代表动作及类别，`skins.json` 是生产皮肤的唯一名单。五套为原配色 `realistic`、白金 `tech-white`、蓝色 `neon-night`、绿色 `neon-night-b`、全息 `hologram`。`tech-white-b` 是白金别名，`default` 在生产层映射原配色；历史实验 `plaster`、`hologram-b` 不进本轮生产矩阵。
 
@@ -80,7 +80,7 @@ python -B -X utf8 tools/action-library-v2/report_library.py --production-root F:
 python -m unittest discover -s catalog/tools -p test_action_package_v2.py
 ```
 
-`catalog/v2/completeness.json` 保留此前六动作试制快照；全库当前结果使用 `library-completeness.json`。已有六动作源、母版和派生技术层各 6/6，通过样片确认并合入 main，见[试制确认](../../docs/pilot-approval-20261021.md)。编辑、试听与最终发布审查仍待完成。
+`catalog/v2/completeness.json` 保留此前六动作试制快照；`library-completeness.json` 保留36个已写包、原142目标、14个技术媒体层通过和发布资格0的六层报告，不代表189动作第一版渲染进度。当前制作覆盖以 production snapshot 为准；未经用户、编辑和试听审核，不把报告补写成通过。六动作原样片确认仍按[试制确认](../../docs/pilot-approval-20261021.md)限定范围。
 
 旧 `action_package_v2.py report/generate/validate/release --media-root media=...` 适用于同一媒体根的动作集合；混合多个批次时必须先按批次隔离输入。`validate --release` 的全部六层必须通过；`release` 只产生候选目录，既不发布 ZIP，也不上传。当前全库报告不是发布器。
 
@@ -88,4 +88,4 @@ python -m unittest discover -s catalog/tools -p test_action_package_v2.py
 
 回归测试的合同正例使用合成元数据并明确 mock 媒体探测，不充当制作成功或人工 QA 的证据；真实 PNG/MP4 损坏、错误尺寸与非灰度遮罩另有实际解码反向测试。测试通过不能把任何动作的 pending review 改为 pass。
 
-`catalog/action-library/index.md`、每动作详情与 `v2/library-completeness.json` 均可从源重建。142 个正式 ID 按队列逐一制作，未建立草稿、缺媒体或审核未通过的动作都不能列为合格 v2。本工具只产生可审阅候选文件，不执行发布或上传。
+`catalog/action-library/index.md`、每动作详情与 `v2/library-completeness.json` 均可从动作包源重建。原142正式 ID 和新增47动作虽已具备第一版媒体，未建立完整定义或审核未通过的动作仍不能列为合格 v2。本工具只产生可审阅候选文件，不执行发布或上传。

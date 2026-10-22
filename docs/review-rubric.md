@@ -2,7 +2,9 @@
 
 给审核和优化 `drill-anim/specs/*.js` 的人/agent 用。每一项都写了**低配机上怎么查**：看 spec 哪个字段、metrics 哪个值（[START-HERE §5](START-HERE.md#5-在低配机上验证到什么程度) 有字段说明）、渲哪几帧。数值 QA 全过 ≠ 动作合格；反过来，数值不过的项必须解释或修好。
 
-**每个动作的最低预览帧集**（`--pr 0.5 --jobs 1`，用交付主题）：`keyFrames` 对应的帧；每次重复的起点、发力顶点、回程中点；循环首帧 0 和最后一帧（`round(duration×fps)−1`）；`stillAt` 的 `still.png`。单侧动作再加一帧另一侧机位或镜像核对。帧号 = 秒 × spec 的 `fps`。
+当前 [library-v2-20261022-r1 制作快照](production-snapshots/library-v2-20261022-r1.md)已完成 189 动作、1890 个视频，整体仍为 `draft-unreviewed`，`reviewed:false`、`releaseEligible:false`，等待用户统一审片。制作完成、文件数量或哈希检查均不能替代本页的动作内容审核；未实际检查的动作和帧须保持待审。
+
+**每个动作的最低预览帧集**（`--pr 0.5 --jobs 1`，用交付主题）：`keyFrames` 对应的帧；每次重复的起点、发力顶点、回程中点；循环首帧 0 和最后一帧（`round(duration×fps)−1`）；`stillAt` 的 `still.png`。单侧动作再加另一侧实际机位核对，并记录示范侧和消费端换侧策略；v2 不生成镜像媒体。帧号 = 秒 × spec 的 `fps`。
 
 结论分三档写进 PR：**通过** / **小改（列具体参数）** / **重做（说清楚原因和替代方案）**。
 
@@ -13,7 +15,7 @@
 | 面向普通用户/初中级，**保守幅度**：末端停在“有拉伸感”的位置，不演示极限柔韧或炫技 | 看顶点帧的关节角：`limits.hip_flex_deg_range`、`hip_abd_true_deg_range`、`waist_bend_deg_max`；拉伸类髋屈接近 135° 上限、或 `qa.hipFlexMax` 被放宽的，要在 spec 注释里有理由 |
 | 节奏慢、可控：拉伸停留、力量动作匀速，无弹振 | 读 `timeline.tracks`：上/停/下/歇时长；拉伸停留 ≥ 2 s，发力段不短于约 1 s；不要出现 0.2 s 内大幅度往返 |
 | 不演示已知高风险姿势：膝内扣负重、腰椎在负重下大幅屈曲、颈部受压、膝超伸锁死负重 | 看起/顶帧；膝的朝向看 `limits.knee_flex_backward`，膝内扣看正面帧膝与脚尖的方向 |
-| 重复次数/循环与 App 处方相符（如 FlareLab 的 `data/drills.json` 的 `prescription`、`safety`） | 读 `timeline.duration` 和重复次数；循环里“每侧”动作要么两侧都有，要么单侧并在 PR 说明 App 如何处理另一侧（HipLab 播放端镜像） |
+| 重复次数/循环与 App 处方相符（如 FlareLab 的 `data/drills.json` 的 `prescription`、`safety`） | 读 `timeline.duration` 和重复次数；循环里“每侧”动作要么两侧都有，要么单侧并在 PR 说明实际示范侧、提示边界和另一侧处理。历史 App 镜像行为须另行核实，不能当作 v2 已支持或已验收的换侧策略 |
 | 道具承重可信：椅子不滑、球不滚、手撑在稳定面上 | 道具 `props` 的位置与接触帧；`pins` 对撑在道具上的手同样适用 |
 
 ## 2. 目标肌群与高亮（解剖正确）
@@ -55,7 +57,7 @@
 
 | 要求 | 怎么查 |
 |---|---|
-| 人体：`modelProfile: 'training-human-v2'`、`alignClavicles: false` | 读 spec；catalog 的 profile 列为“旧”的动作重做时必须补上 |
+| 新制作人体：完整采用 [current-production.json](../drill-anim/models/current-production.json) 的 `training-human-v2plus / 1.0.0-rc2` 配方、`alignClavicles:false`；原配色保留动作肌群高亮、不显示肌群分区线 | 核对实际 spec 或批次包装规格、模型版本及来源 SHA，并按 [v2plus 标准](training-human-v2plus.md)检查完整字段；旧 `training-human-v2` 仅供历史复现，新版本重做另建修订或批次 |
 | 主题：HipLab 新成片用 `themes/glow-soft.json`；同一版本内所有动作同一主题 | PR 渲染请求块写明 |
 | 帧率：交付统一 30 fps；spec 原生 15 fps 的由主线包装 | PR 写明 spec 原生 fps |
 | 道具/场景与同类动作一致（同一把办公椅、同一张垫） | 对照同前缀动作的 `props` |
