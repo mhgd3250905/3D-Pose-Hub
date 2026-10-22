@@ -106,6 +106,7 @@ const D = {
   hse: 'docs/home-small-equipment-2026-10-18.md', hpc: 'docs/home-posterior-chain-2026-10-18.md',
 };
 const KNOWN = {
+  "o-chair-knee-extension-rr1": ["108：旧011依赖目标坐椅徒手伸膝，第1次修复，原90–162度伸膝与固定膝；脚踝路径改为立方曲线并明示，12稀疏帧待GPU。docs/108-repair-r1-chair-knee-extension-2026-10-22.md"],
   'o-seated-calf-raise-rr1': ['107：旧011依赖暂停目标坐椅提踵，本轮第1次；22度跖屈双周期、屈膝坐稳，10稀疏帧待GPU。docs/107-repair-r1-seated-calf-raise-2026-10-22.md'],
   'h-quadruped-rockback-rr1': ['106：旧009第一修复轮第1次，四足中立背后坐；原髋76.1–103度、膝pin≤5mm与肘≥170度；12稀疏帧待GPU。docs/106-repair-r1-quadruped-rockback-2026-10-22.md'],
   'o-seated-sidebend-rr1': ['105：旧011第一修复轮第1次，坐椅单臂侧伸；双侧近端后表面支持、完整四腿靠背椅；7稀疏帧待GPU。docs/105-repair-r1-seated-sidebend-2026-10-22.md'],
