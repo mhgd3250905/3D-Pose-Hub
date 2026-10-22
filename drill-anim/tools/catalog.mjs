@@ -106,6 +106,7 @@ const D = {
   hse: 'docs/home-small-equipment-2026-10-18.md', hpc: 'docs/home-posterior-chain-2026-10-18.md',
 };
 const KNOWN = {
+  'h-overhead-triceps-stretch-rr1': ['096：085第一修复轮第2次，肘角与真实掌面接触修复；站姿轻柔过头肱三头拉伸，稀疏QA待GPU。历史085失败不覆盖。docs/096-repair-r1-overhead-triceps-stretch-2026-10-22.md'],
   'h-band-straight-leg-raise': ['band-straight-leg-raise-34：居家后置弹力带长杠杆髋屈，膝基本固定；区别屈膝高抬膝与健身房绳索，低分保留待GPU（docs/band-straight-leg-raise-34-2026-10-19.md）'],
   'h-band-chest-fly': ['band-chest-fly-28：轻屈肘固定的单臂弹力带水平内收；独立握持/带路/足底接触检查，低分保留待GPU，需稳固胸高锚点', 'docs/band-chest-fly-28-2026-10-19.md'],
   'h-db-shrug': ['dumbbell-shrug-29：双哑铃肩带上提35mm；上斜方肌目标无独立高亮，实际足底/握持/肩部网格检查，低分保留待GPU', 'docs/dumbbell-shrug-29-2026-10-19.md'],
