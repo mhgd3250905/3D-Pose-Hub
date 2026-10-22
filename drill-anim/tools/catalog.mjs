@@ -106,6 +106,7 @@ const D = {
   hse: 'docs/home-small-equipment-2026-10-18.md', hpc: 'docs/home-posterior-chain-2026-10-18.md',
 };
 const KNOWN = {
+  'h-db-floor-fly-rr1': ['102：083第一修复轮第2次，固定软肘地板飞鸟；头背臀支撑、双掌握轴、自然肘部地面止点；14稀疏帧待GPU，原失败保留。docs/102-repair-r1-floor-fly-2026-10-22.md'],
   'h-goblet-squat-rr1': ['101：075第一修复轮第1次，双掌真实承托哑铃上头，18cm头直径明示；原深蹲轨迹不变，11稀疏帧待GPU。docs/101-repair-r1-goblet-squat-2026-10-22.md'],
   'h-short-side-plank-rr1': ['100：080第一修复轮第1次，真实下侧膝面、前臂及掌支撑；屈膝短杠杆静态侧平板，3稀疏帧待GPU，历史失败不覆盖。docs/100-repair-r1-short-side-plank-2026-10-22.md'],
   'h-kneeling-pushup-rr1': ['099：077第一修复轮第1次，双膝真实面支撑修复；保留原手足支点和肘屈伸目标，稀疏动作QA待GPU，历史失败不覆盖。docs/099-repair-r1-kneeling-pushup-2026-10-22.md'],
