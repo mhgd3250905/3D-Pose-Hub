@@ -106,6 +106,7 @@ const D = {
   hse: 'docs/home-small-equipment-2026-10-18.md', hpc: 'docs/home-posterior-chain-2026-10-18.md',
 };
 const KNOWN = {
+  'o-seated-sidebend-rr1': ['105：旧011第一修复轮第1次，坐椅单臂侧伸；双侧近端后表面支持、完整四腿靠背椅；7稀疏帧待GPU。docs/105-repair-r1-seated-sidebend-2026-10-22.md'],
   'h-sleeper-stretch-rr1': ['104：旧084第一修复轮第2次，侧卧睡姿肩内旋；原8–33度、右掌辅助、明确厚垫支持；12稀疏帧待GPU。docs/104-repair-r1-sleeper-stretch-2026-10-22.md'],
   'h-quadruped-open-rr1': ['103：旧055第一修复轮第1次，四足跪姿单臂开胸；固定左掌/双膝胫骨、骨盆稳定、原30度开胸；11稀疏帧待GPU。docs/103-repair-r1-quadruped-open-2026-10-22.md'],
   'h-db-floor-fly-rr1': ['102：083第一修复轮第2次，固定软肘地板飞鸟；头背臀支撑、双掌握轴、自然肘部地面止点；14稀疏帧待GPU，原失败保留。docs/102-repair-r1-floor-fly-2026-10-22.md'],
