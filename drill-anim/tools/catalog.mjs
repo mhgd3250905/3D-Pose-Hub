@@ -127,6 +127,7 @@ const KNOWN = {
   'o-supported-ankle-pump': ['supported-ankle-pump-21：扶椅轻触平衡、固定髋膝的悬空踝屈伸；低负荷主动活动控制，区别于承重提踵/靠墙勾脚；低分保留待GPU（docs/supported-ankle-pump-21-2026-10-18.md）'],
   'h-standing-wrist-extensor-stretch': ['home-wrist-extensor-20：站姿无承重主动腕屈，拉伸腕伸肌；办公单向基础式，区别018腕伸与跪姿多向摇摆；低分保留待GPU（docs/home-wrist-extensor-20-2026-10-18.md）'],
   'h-supported-single-leg-calf': ['supported-calf-15：扶墙单腿提踵；左足承重、右足离地；条件办公需稳墙与基础能力；低分抽查保留待GPU（docs/supported-calf-15-2026-10-18.md）'],
+  'h-db-overhead-triceps-extension-rr1': ['094：082第一修复轮第1次，保持原目标和轨迹；握位轴修正，稀疏QA待GPU。历史082失败不覆盖。docs/094-repair-r1-overhead-triceps-2026-10-22.md'],
   'h-lateral-step-lunge': ['078：短步侧跨落地后转移负重再蹬回，非直腿侧弓/内收肌长位拉伸；两次实现后保留稀疏QA待GPU（docs/078-v2plus-lateral-step-lunge-2026-10-21.md）'],
   'h-db-supported-calf-raise': ['supported-calf-15：单手哑铃扶墙双脚提踵；补原计划单手扶墙意图，014双哑铃版保留；条件办公需墙与器械净空；低分抽查保留待GPU（docs/supported-calf-15-2026-10-18.md）'],
   'h-band-standing-abduction': ['band-hip-sides-13：扶椅弹力带站姿外展；独立可靠固定低位锚点，胫骨踝扣，约5–24°外展；低分抽查通过待GPU，非普通办公（docs/band-hip-sides-13-2026-10-18.md）'],
