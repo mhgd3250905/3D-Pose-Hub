@@ -106,6 +106,7 @@ const D = {
   hse: 'docs/home-small-equipment-2026-10-18.md', hpc: 'docs/home-posterior-chain-2026-10-18.md',
 };
 const KNOWN = {
+  "h-floor-nordic-hand-reset-rr3": ["118：原089第三轮2次，完整离心及45度真实髋铰链，膝掌heel分布支撑；10帧专项复核通过、原标准QA false保留，待GPU。docs/118-repair-r3-floor-nordic-2026-10-22.md"],
   "h-supine-bilateral-leg-raise-rr3": ["117：原088第三轮第1次，腰背双臀分布支撑及有限头折垫；9帧专项复核通过、原标准QA false保留，待GPU。docs/117-repair-r3-supine-leg-raise-2026-10-22.md"],
   "h-bilateral-upper-back-hug-rr3": ["116：原090第三轮第1次，现有上下臂轴旋补偿；双掌接触、真实腕肘桥和427混合网格检查通过，稀疏待GPU。docs/116-repair-r3-upper-back-hug-2026-10-22.md"],
   "h-chair-single-leg-hip-thrust-rr2": ["114：原087肩靠椅单腿臀推，第二轮第1次；原髋轨迹与左脚支撑、真实背部座面分布，11稀疏帧待GPU。docs/114-repair-r2-chair-single-leg-hip-thrust-2026-10-22.md"],
