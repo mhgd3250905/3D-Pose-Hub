@@ -1,0 +1,65 @@
+{
+  "parameters": {
+    "input": "drill-anim\\models\\hands-native-r1\\hands-base.json",
+    "rig": "drill-anim\\models\\hands-native-r1\\hands-rig.json",
+    "rest": "F:\\PoseHub-v2-pilot\\pr15-hand-root-20261023\\rest\\rest.json",
+    "out": "F:\\PoseHub-v2-pilot\\pr15-wrist-refine-20261023\\variant-slim14-end035-cubic",
+    "shape_reduction": 0.14,
+    "shape_peak": -0.005,
+    "weight_end": 0.035,
+    "weight_curve": "cubic",
+    "protect_x": 0.035
+  },
+  "sourceSha256": "9aebcadf14f536852baf7b50fbc13ac5ac0fc66c506c199a9f2819a944173417",
+  "sides": {
+    "left": {
+      "editedVertices": 1808,
+      "seamVertices": 33,
+      "maxShapeMoveMm": 6.075493097302486,
+      "maxForearmWeightChange": 0.9236355883455322
+    },
+    "right": {
+      "editedVertices": 1808,
+      "seamVertices": 33,
+      "maxShapeMoveMm": 6.075533668326926,
+      "maxForearmWeightChange": 0.9227404968989786
+    }
+  },
+  "handFrames": {
+    "left": {
+      "parent": "Coach_Rig",
+      "p": [
+        0.25253847625351894,
+        0.8915833520601255,
+        0.029504960005614943
+      ],
+      "q": [
+        -0.12598516702574056,
+        0.1739240492304456,
+        -0.7013041978722027,
+        0.6797430285303471
+      ]
+    },
+    "right": {
+      "parent": "Coach_Rig",
+      "p": [
+        -0.2525384675686138,
+        0.8915833009597454,
+        0.029504947412278482
+      ],
+      "q": [
+        -0.12598516702574056,
+        -0.1739240492304456,
+        0.7013041978722027,
+        0.6797430285303471
+      ]
+    }
+  },
+  "protectionRule": "Mirror right hand-local x; preserve every vertex with local x >= protect_x, and preserve all seam position/weight bytes.",
+  "protectedVertices": 19212,
+  "seamPositionWeightsUnchanged": true,
+  "protectedPositionWeightsNormalsUnchanged": true,
+  "rigUnchanged": true,
+  "minTriangleAreaMm2": 0.16786406609282561,
+  "status": "candidate; requires rest and actual-pose surface collision validation"
+}

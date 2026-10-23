@@ -1119,6 +1119,88 @@
       "review": "Hark review of rr1 (batch100). Pose, supports, timing unchanged; camera only, dir [0.8,0.2,1] to [0.18,0.12,1] so the body line is not foreshortened. Sparse keyframes t=0/4/8 checked; full GPU pending.",
       "baselineCommit": "efda6baa3c9f220b254e03a9891a89995280546a",
       "sourceBatch": "Hark review 2026-10-23 of h-short-side-plank-rr1"
+    },
+    "h-bent-knee-calf-raise-rr3.js": {
+      "sourceCommit": null,
+      "sha256": "46523e3a0afd0374b731abc1039d48361cb064f82fb1ccf3d0614cb42e9716b0",
+      "review": "PR #15 local repair: remove unsupported touch from both hips-frame free hands only; all motion, support, camera and timing parameters preserved. Repair preview has not been accepted by the user; full action review and release are not approved.",
+      "baselineCommit": "aed8c0f9f634ccf8d2dd2a506e3d6e739ccfd98d",
+      "sourceBatch": "PR #15 local hand-touch correction 2026-10-23 of h-bent-knee-calf-raise-rr2"
+    },
+    "h-chair-single-leg-hip-thrust-rr4.js": {
+      "sourceCommit": null,
+      "sha256": "a3c3aa30d9726725a24a776206656fc9dff4e66c2c75322695621519a617bcb4",
+      "review": "PR #15 local repair: remove unsupported touch from both hips-frame free hands only; all motion, support, camera and timing parameters preserved. Repair preview has not been accepted by the user; full action review and release are not approved.",
+      "baselineCommit": "aed8c0f9f634ccf8d2dd2a506e3d6e739ccfd98d",
+      "sourceBatch": "PR #15 local hand-touch correction 2026-10-23 of h-chair-single-leg-hip-thrust-rr3"
+    },
+    "h-bent-knee-calf-raise-rr4.js": {
+      "sourceCommit": null,
+      "sha256": "acb21a2c21e5c43a6b82bfac8e9f2ac51205f2c0934bc4d5005ca4d07da4d23a",
+      "review": "PR #15 local hand refinement after user reported distorted fingers: palms outward, fingers down, implicit relax 0.2 without explicit handPose or legacy touch; original motion, support and timing preserved. Hip-thrust camera fov 14 only. Prior candidate not accepted; this repair preview has not been accepted by the user and release is not approved.",
+      "baselineCommit": "aed8c0f9f634ccf8d2dd2a506e3d6e739ccfd98d",
+      "sourceBatch": "PR #15 local hand refinement 2026-10-23 of h-bent-knee-calf-raise-rr3"
+    },
+    "h-chair-single-leg-hip-thrust-rr5.js": {
+      "sourceCommit": null,
+      "sha256": "9462288165c5d25eafd907560f1cac1d792e18645a8f41e69bc9177dacfdc496",
+      "review": "PR #15 local hand refinement after user reported distorted fingers: palms outward, fingers down, implicit relax 0.2 without explicit handPose or legacy touch; original motion, support and timing preserved. Hip-thrust camera fov 14 only. Prior candidate not accepted; this repair preview has not been accepted by the user and release is not approved.",
+      "baselineCommit": "aed8c0f9f634ccf8d2dd2a506e3d6e739ccfd98d",
+      "sourceBatch": "PR #15 local hand refinement 2026-10-23 of h-chair-single-leg-hip-thrust-rr4"
+    },
+    "h-bent-knee-calf-raise-rr5.js": {
+      "sourceCommit": null,
+      "sha256": "3d2736224f5dbb75ba5dc40431470a1752cb7fd8df76483f90a06f53131e62a0",
+      "review": "PR #15 native hand candidate after rejected finger-root distortion. Explicit versioned hands-native-r1 mesh and matching rig; all prior motion, support, timing, hand targets and camera retained. Identity and relaxed-0.2 offline LBS self-intersection witnesses are zero on both hands; this is not visual acceptance. User review is pending and release is not approved.",
+      "baselineCommit": "aed8c0f9f634ccf8d2dd2a506e3d6e739ccfd98d",
+      "sourceBatch": "PR #15 native hand candidate 2026-10-23 of h-bent-knee-calf-raise-rr4",
+      "reviewed": false,
+      "releaseEligible": false
+    },
+    "h-chair-single-leg-hip-thrust-rr6.js": {
+      "sourceCommit": null,
+      "sha256": "1daeb7ada0b5c7bee3369449f7a4d65a7466e5f1d893bfcf71e04f4049367228",
+      "review": "PR #15 native hand candidate after rejected finger-root distortion. Explicit versioned hands-native-r1 mesh and matching rig; all prior motion, support, timing, hand targets and camera retained. Identity and relaxed-0.2 offline LBS self-intersection witnesses are zero on both hands; this is not visual acceptance. User review is pending and release is not approved.",
+      "baselineCommit": "aed8c0f9f634ccf8d2dd2a506e3d6e739ccfd98d",
+      "sourceBatch": "PR #15 native hand candidate 2026-10-23 of h-chair-single-leg-hip-thrust-rr5",
+      "reviewed": false,
+      "releaseEligible": false
+    },
+    "h-bent-knee-calf-raise-rr6.js": {
+      "sourceCommit": null,
+      "sha256": "6f28965aa2b24b92d166380154786fc3c54a6c340bec1fadcddda5ac56422f8f",
+      "review": "PR #15 native wrist-r2 candidate. Only the explicit native-hand model version changes; motion, hand targets, support, timing and camera remain identical to the prior candidate. Geometry validation and user visual acceptance are pending; release is not approved.",
+      "baselineCommit": "aed8c0f9f634ccf8d2dd2a506e3d6e739ccfd98d",
+      "sourceBatch": "PR #15 native wrist refinement 2026-10-23 of h-bent-knee-calf-raise-rr5",
+      "reviewed": false,
+      "releaseEligible": false
+    },
+    "h-chair-single-leg-hip-thrust-rr7.js": {
+      "sourceCommit": null,
+      "sha256": "02b46a4e9fceffd2533fc7e8fb447db8b993df52eec21a4e33496ca7fdf09cd6",
+      "review": "PR #15 native wrist-r2 candidate. Only the explicit native-hand model version changes; motion, hand targets, support, timing and camera remain identical to the prior candidate. Geometry validation and user visual acceptance are pending; release is not approved.",
+      "baselineCommit": "aed8c0f9f634ccf8d2dd2a506e3d6e739ccfd98d",
+      "sourceBatch": "PR #15 native wrist refinement 2026-10-23 of h-chair-single-leg-hip-thrust-rr6",
+      "reviewed": false,
+      "releaseEligible": false
+    },
+    "h-bent-knee-calf-raise-rr7.js": {
+      "sourceCommit": null,
+      "sha256": "c56882ac92db5318d01ab547612e7fe5e16bb8793c3b303dda6ad0c12711894c",
+      "review": "PR #15 native whole-hand fit r3 candidate after user identified oversized wrist/palm proportions. Source hand and matching finger joints use uniform source scale 1.0; frozen forearm seam owners are retained. Free-hand finger direction is adjusted symmetrically to [-sign*0.12,-0.95,0.34] to reduce wrist compression. Palm targets, normal, elbow pole, body motion, support, timing and camera are unchanged. User visual acceptance is pending; release is not approved.",
+      "baselineCommit": "aed8c0f9f634ccf8d2dd2a506e3d6e739ccfd98d",
+      "sourceBatch": "PR #15 native hand proportion fit 2026-10-23 of h-bent-knee-calf-raise-rr6",
+      "reviewed": false,
+      "releaseEligible": false
+    },
+    "h-chair-single-leg-hip-thrust-rr8.js": {
+      "sourceCommit": null,
+      "sha256": "b929aad6f24cfb85648040381360656fd262b4ee6c2a4c74b83d6ea33f58fd38",
+      "review": "PR #15 native whole-hand fit r3 candidate after user identified oversized wrist/palm proportions. Source hand and matching finger joints use uniform source scale 1.0; frozen forearm seam owners are retained. Free-hand finger direction is adjusted symmetrically to [-sign*0.12,-0.95,0.34] to reduce wrist compression. Palm targets, normal, elbow pole, body motion, support, timing and camera are unchanged. User visual acceptance is pending; release is not approved.",
+      "baselineCommit": "aed8c0f9f634ccf8d2dd2a506e3d6e739ccfd98d",
+      "sourceBatch": "PR #15 native hand proportion fit 2026-10-23 of h-chair-single-leg-hip-thrust-rr7",
+      "reviewed": false,
+      "releaseEligible": false
     }
   }
 }
