@@ -1201,6 +1201,93 @@
       "sourceBatch": "PR #15 native hand proportion fit 2026-10-23 of h-chair-single-leg-hip-thrust-rr7",
       "reviewed": false,
       "releaseEligible": false
+    },
+    "h-db-overhead-triceps-extension-rr2.js": {
+      "sourceCommit": null,
+      "sha256": "bb186155730a9551a435e810992b6c576661448e7f06119aa62f83d7252a41b5",
+      "review": "PR15 local repair: fixed elbow and coplanar 70-165 degree extension; wrist and palm rotate together. Original prop geometry, local grip, feet, trunk, timing and camera preserved. 241 actual poses and 12 sparse convex prop vertex checks passed; user visual acceptance and full surface certification remain separate.",
+      "baselineCommit": "aed8c0f9f634ccf8d2dd2a506e3d6e739ccfd98d",
+      "sourceBatch": "PR15 remaining action repair 2026-10-24 of DOT094",
+      "reviewed": false,
+      "releaseEligible": false,
+      "terminalTracks": [
+        "extension",
+        "k0",
+        "k1",
+        "k2",
+        "k3",
+        "k4",
+        "k5",
+        "k6",
+        "k7",
+        "k8"
+      ]
+    },
+    "h-fixed-bar-vertical-pull-rr7.js": {
+      "sourceCommit": null,
+      "sha256": "7fe5a262204328b00ea16ccfa005d9734868b0b4028ec177050816803b7a699c",
+      "review": "Native-r3 mesh and rig with fitted five-distal-region grip on unchanged 32mm fixed rod. Ten actual surface poses have zero hand self/forearm/rod strict triangle intersections and near contact on all distal fingers. 241 actual joint poses have no warnings and close the loop. User review remains pending.",
+      "baselineCommit": "aed8c0f9f634ccf8d2dd2a506e3d6e739ccfd98d",
+      "sourceBatch": "PR15 remaining action repair 2026-10-24",
+      "reviewed": false,
+      "releaseEligible": false
+    },
+    "h-kneeling-instep-stretch-rr6.js": {
+      "sourceCommit": null,
+      "sha256": "4ba94c0ef9667850cc493a2c28b4e5aa6421ea1235c4d5906a4972a581b17411",
+      "review": "Independent combination of immutable native-r3 hands and barefoot-r5.2 foot bridge. Eight actual old/new poses preserve all foot CPU positions/normals/indices and joints exactly; four actual hand/wrist poses have zero strict triangle crossings. User review remains pending.",
+      "baselineCommit": "aed8c0f9f634ccf8d2dd2a506e3d6e739ccfd98d",
+      "sourceBatch": "PR15 remaining action repair 2026-10-24",
+      "reviewed": false,
+      "releaseEligible": false
+    },
+    "h-db-overhead-triceps-extension-rr3.js": {
+      "sourceCommit": null,
+      "sha256": "e72dff77279fa18d0f9d869aad29a6feddf104a24e2046020686445ceba5f5c4",
+      "review": "Preserved failed native-hand experiment: original wrist orientation caused actual hand/wrist self intersections. Retained for provenance only; not a successful motion candidate or release.",
+      "baselineCommit": "aed8c0f9f634ccf8d2dd2a506e3d6e739ccfd98d",
+      "sourceBatch": "PR15 remaining action repair 2026-10-24",
+      "reviewed": false,
+      "releaseEligible": false,
+      "terminalTracks": [
+        "extension",
+        "k0",
+        "k1",
+        "k2",
+        "k3",
+        "k4",
+        "k5",
+        "k6",
+        "k7",
+        "k8"
+      ]
+    },
+    "h-db-overhead-triceps-extension-rr4.js": {
+      "sourceCommit": null,
+      "sha256": "d7ed39269b0e5d79fd4e3166ebfb7118e3f66f8203d7cb095862c3a4300f474d",
+      "review": "Neutral wrist orientations derived from actual forearm/rest relation; fixed elbow arc, wrist positions, body and support retained. 241 poses and ten actual hand/wrist/rod/plate surface checks passed; first native attempt is preserved. User review remains pending.",
+      "baselineCommit": "aed8c0f9f634ccf8d2dd2a506e3d6e739ccfd98d",
+      "sourceBatch": "PR15 remaining action repair 2026-10-24",
+      "reviewed": false,
+      "releaseEligible": false,
+      "terminalTracks": [
+        "extension",
+        "k0",
+        "k1",
+        "k2",
+        "k3",
+        "k4",
+        "k5",
+        "k6",
+        "k7",
+        "k8",
+        "lf0",
+        "lf1",
+        "lf2",
+        "ln0",
+        "ln1",
+        "ln2"
+      ]
     }
   }
 }
