@@ -1,24 +1,103 @@
 # Pose-Hub 版本对齐台账
 
-更新日期：2026-10-21。当前 AI 目录 **0.3.0 已合入 main**，App 媒体仍为 **0.2.0 已发布**；新制作人体采用 **training-human-v2plus 1.0.0-rc2**，原配色、动作肌群高亮、不显示肌群分区线。PR #12 和本地集成修复已合入并推送 main，代码内容提交为 `315367ec2f072f0dc13d6a8e2a530cd453b9f17d`。全量动作重渲和 App 接入尚未安排。规则与事实源映射见[版本管理](version-management.md)。
+更新日期：2026-10-24。本轮对齐本地 `codex/pr15-contact-repair` 分支，已保存七项修订审阅片，代码内容提交为 `dac56cff21e338c7eeddd4e796a046e04ac575be`。native-r3 手部外观在原确认范围内通过；动作审核、main 合入和公开媒体发布仍分开跟踪。穿针式交付低位小范围候选，原高位起点未恢复。
+
+既有 AI 目录仍为 **0.3.0 / 142 ID**，公开 App 媒体仍为 **0.2.0 published**，全局生产配方保持 **training-human-v2plus 1.0.0-rc2**。全库第一版 189 动作、1890 视频已在生产分支保存为独立待审快照，本 PR15 修复分支未合入该生产分支。各分支统计不相加；本轮只推进下述独立模型和动作修订的版本登记。规则见[版本管理](version-management.md)。
 
 ## 当前版本与计数
 
-2026-10-21，开哥接受 `codex/action-package-v2-pilot` 的 r2 样片并同意合入、推送，本地 main 已快进至 `5b2becb572f06a310be0cb5bdea61f47834dc5c7`。内容为动作包 `action-package@2`、六层门禁、六个代表动作与五套皮肤制作管线；样片确认及合入范围见[试制确认](pilot-approval-20261021.md)。下表旧 AI/App 发布版本未因本次合入升级，不能拿旧 `complete` 代替 v2 门禁。全库生产仍另等确认。
+2026-10-21 的六动作试制（历史）：开哥接受 `codex/action-package-v2-pilot` 的 r2 样片并同意合入、推送，当时本地 main 快进至 `5b2becb572f06a310be0cb5bdea61f47834dc5c7`。内容为动作包 `action-package@2`、六层门禁、六个代表动作与五套皮肤制作管线；确认范围见[试制确认](pilot-approval-20261021.md)。下表旧 AI/App 发布版本未因此升级，旧 `complete` 不替代 v2 门禁；后续全库制作已获授权，不再等待这项制作确认。
 
-本轮当前修订为 **r2**，目录 `F:/PoseHub-v2-pilot/neck-fix-r2/`。颈部漏色已修正，六动作五皮肤完整母版、60 份视频及图片已重做，catalog draft.2 与 AI 详情已重新绑定真实 SHA/QA。完整性、像素、姿态、连续序列与冻结源检查均通过；r1 保留历史。固定人体仍为 `training-human-v2plus / 1.0.0-rc2`，修正位于渲染适配器。内容已合入 main；发布前编辑、语音内容/试听等审核仍待完成，未发布新素材版本、未全库铺开。证据见[颈部修复记录](neck-material-fix-20261021.md)与试制记录。
+该六动作试制修订为 **r2**，目录 `F:/PoseHub-v2-pilot/neck-fix-r2/`。颈部漏色修正后的六动作五皮肤母版、60 份视频和 draft.2 接合记录保留；当时的完整性、像素、姿态、连续序列与冻结源检查通过，r1 保留历史。基础人体仍为 `training-human-v2plus / 1.0.0-rc2`，材质修正在渲染适配器。内容已合入 main，但当时的样片确认不覆盖后来全库或本轮 PR15 的动作审核。证据见[颈部修复记录](neck-material-fix-20261021.md)与试制记录。
 
 | 对象 | 版本或数量 | 状态 | 依据 |
 | --- | --- | --- | --- |
 | AI 动作目录 | 0.3.0 / formatVersion 1，142 个稳定动作 id | PR #11、#13 已合入；本阶段未新建目录 tag | [catalog.json](../catalog/catalog.json)、[PR #13](https://github.com/mhgd3250905/3D-Pose-Hub/pull/13) |
 | 各 App 目录覆盖 | FlareLab 51、HipLab 46、SmartFit 93 | 有重叠，不能相加作为动作总数；不代表本次已升级 App | `catalog.drills[].apps` |
 | 目录配套完整度 | 46 个 complete；96 个未进入 Pose-Hub 媒体发布、49 个缺中文语音、96 个缺英文语音 | 按当前生成物记录，缺项未在本次补齐 | [MISSING.md](../catalog/MISSING.md) |
-| spec 开发总表 | 206 个规格文件，含本轮 6 个新修订 spec | 包含原版、修订及未被 App 使用的规格 | [drill-catalog.md](drill-catalog.md) |
-| 新制作人体 | training-human-v2plus 1.0.0-rc2 | 已合入 main；完整配方见下文，未全量重渲 | [生产配置](../drill-anim/models/current-production.json)、[新版清单](../drill-anim/models/training-human-v2plus.json) |
+| spec 开发总表 | 本 PR15 修复分支 297 个规格文件；本阶段新增 16 个修订文件 | 含旧版、失败尝试和待审候选；不等于稳定 ID 或已发布动作数 | [drill-catalog.md](drill-catalog.md)、候选登记表 |
+| 新制作基础人体 | training-human-v2plus 1.0.0-rc2 | 已合入 main 的全局配方；本轮独立模型不替换它 | [生产配置](../drill-anim/models/current-production.json)、[新版清单](../drill-anim/models/training-human-v2plus.json) |
+| PR15 独立模型及动作修订 | hands-native r3、native-grip r1、instep-native r1、overhead-native r2、threadneedle-native r1 | 实际版本及动作 scope 见下表；七项均有本机审阅片，待用户动作审核 | [七项交付](pr15-local-repair-delivery-20261024.md)、各固定模型清单 |
+| 全库第一版制作保存 | library-v2-20261022-r1，189 动作、1890 视频 | 生产分支的 draft-unreviewed 快照；不是本轮重渲或公开发布 | 下文固定来源与分支说明 |
 | 历史基础人体 | training-human-v2 2.0.1 | 旧规格/批次继续复现；13 个固定源未改，仅默认选择标记调整 | [旧版清单](../drill-anim/models/training-human-v2.json) |
 | App 媒体 | media 0.2.0，46 个 HipLab 动作、92 个公开文件 | published，soft-v1；0.1.0 保留 | [媒体清单](../media/manifest.json)、[0.2.0 发布记录](../media/releases/0.2.0.md) |
 
 `complete` 不要求英文语音，也不代表全部 142 个动作均已打包发布、消费端已兼容或已通过医学禁忌审核。制作归档的绿幕和透明帧数量另按[素材库同步记录](material-cloud-sync.md)统计，不混入上表。
+
+## 2026-10-24 PR #15 本地修订与阶段收束
+
+### 版本、范围与保存状态
+
+| 独立模型 profile | 当前修订 | 限定动作 / 状态 | 固定来源 |
+| --- | --- | --- | --- |
+| training-human-v2plus-hands-native | 1.0.0-r3 | 提踵 rr7、单腿臀推 rr8；仅手部外观已获确认 | [manifest](../drill-anim/models/hands-native-r3/manifest.json)、[原确认范围](hand-r3-approval-20261023.md) |
+| training-human-v2plus-native-grip | 1.0.0-r1 | 固定杆引体 rr7；动作待审 | [manifest](../drill-anim/models/grip-native-r1/manifest.json) |
+| training-human-v2plus-instep-native | 1.0.0-r1 | 跪姿脚背拉伸 rr6；动作待审 | [manifest](../drill-anim/models/instep-native-r1/manifest.json) |
+| training-human-v2plus-overhead-native | 1.0.0-r2 | 过头臂屈伸 rr4；r1 的腕扭曲失败尝试保留，动作待审 | [manifest](../drill-anim/models/overhead-native-r2/manifest.json) |
+| training-human-v2plus-threadneedle-native | 1.0.0-r1 | 低位穿针 rr1，小范围候选；原高位起点未恢复 | [manifest](../drill-anim/models/threadneedle-native-r1/manifest.json)、[几何边界](pr15-threadneedle-native-repair-20261024.md) |
+
+墙面掌根抬起 rr5 继续使用既有 contact-wrist 专用模型；七项的精确 spec ID、视频字节数和复现入口见[交付记录](pr15-local-repair-delivery-20261024.md)。本机入口为 `F:/PoseHub-v2-pilot/pr15-final-review-20261024/index.html`；前序交付已核对七个视频、封面、源报告哈希，视频合计 1,471,937 字节。本次 closeout 不读取媒体产物或重跑渲染，不把既有产物当作新增 HEAD 的构建证明。
+
+原生手 r1/r2 和 overhead r1 均作为历史保留；固定清单内 `reviewed:false` / `releaseEligible:false` 不因手部确认而改写。最新确认仅由原确认记录补充，全部动作仍等待用户审核。独立模型、原配色深底审阅视频和生产默认、五皮肤分层母版、App 媒体版本分别管理；本轮不递增 catalog 0.3.0 或已 published 的 media 0.2.0。
+
+另一个已授权工作副本的生产分支 `codex/action-library-v2-production` 在 `36e1bb678047a3d5613a553a05be37dac8d9046b` 保存 `docs/production-snapshots/library-v2-20261022-r1.md`。本次只读核对该版本化记录：142 正式 ID 加 PR #14 的 47 个，1890 视频及配图第一版完成，整体 draft-unreviewed。它在其自身源 HEAD 上记录 300 份规格；本 PR15 分支为 297，未合并、不能相加或互相覆盖。该快照文件不在本修复分支，既有生产状态不能误写成“全库尚未安排”，也不能当作本轮七项已审核或已发布。
+
+### Preflight 与改动归属
+
+收束 scope 为本轮 PR15 修复的独立模型/规格版本登记、项目入口、制作与审核状态、当前台账和本地保存；不包含全库重渲、动作批准、App 接入、main 合入、push、tag、公开媒体或云盘整理。
+
+| 身份 | 实际核对结果 |
+| --- | --- |
+| baseline | `aed8c0f9f634ccf8d2dd2a506e3d6e739ccfd98d`，阶段已记录的 PR15 审核起点；`git rev-parse --verify <SHA>^{commit}` 及 `git rev-parse c7cd299^` 核实，且为候选 HEAD 祖先 |
+| Preflight HEAD | `dac56cff21e338c7eeddd4e796a046e04ac575be`，`refs/heads/codex/pr15-contact-repair` |
+| stage delta | baseline 至该 HEAD 共 4 个本会话提交、114 路径：111 新增、3 修改；根属性 1、docs 9、drill-anim 82、tools 22。新增 16 份规格、48 个独立模型文件、测试与复现工具；原动作不覆盖 |
+| 提交链 | `c7cd299eb4e3df4831a851f74ca7d81627f92877` → `d212cd26e1610567f4ee20d8b6df95f485196fa8` → `fe4568f289912ba863fb996b9b4aaf3dce5d99fe` → 上述 HEAD |
+| 完整修复工作区状态 | `git status --porcelain=v1 --untracked-files=all`：tracked/staged/unstaged/deleted/renamed/untracked 均 0；阶段改动全部由本会话提交，归属明确 |
+| 主目录既有改动 | `.gitignore` 1 个 tracked 未暂存修改；7 个 untracked：`media/app-builtin-v0.3.0.json`、`media/app-release-metadata-pr14.json`、`media/app-release.md`、`media/tests/test_app_index.py`、`media/tests/test_app_release.py`、`media/tools/build_app_index.py`、`media/tools/build_app_release.py`。与阶段前记录相同，归属先前已授权 App 发布配套工作；仅核对路径与类别，未读取内容，不纳入本次提交 |
+
+canonical discovery 从根 AGENTS/README、最近适用的 drill-anim/AGENTS 及主目录实际 AGENTS 出发，一跳读取；主目录与修复工作副本属于同一已授权项目。当前事实与冻结历史分开：
+
+| 实际检查路径 | 判定与对应主题 | 本次结论 |
+| --- | --- | --- |
+| `AGENTS.md`、`README.md`、`drill-anim/AGENTS.md` | current：权限、工作边界、当前入口 | 对齐独立修订及既有全库制作授权；不触碰主目录已有改动 |
+| `docs/version-management.md`、`docs/version-ledger.md` | current：版本对象、当前版本与状态汇总 | 补齐独立模型实际版本、分支和审核边界；更新旧日期/规格数 |
+| `drill-anim/models/current-production.json`、`training-human-v2plus.json`、`docs/training-human-v2plus.md` | current：生产配方、固定模型身份、制作标准 | rc2 及全部固定源不变；独立模型按显式 scope 使用 |
+| 本轮 `hands-native-r1/r2/r3`、`grip-native-r1`、`instep-native-r1`、`overhead-native-r1/r2`、`threadneedle-native-r1` 的 `manifest.json`，`drill-anim/data/home-pr-candidates.json`，`docs/drill-catalog.md` | current 的固定登记与生成视图；失败版仍属历史候选，不能选作通过版本 | 实际版本、16 新规格 LF SHA、总数 297 与验证吻合；`.gitattributes` 的固定字节保护有回归证据 |
+| `docs/review-rubric.md`、`catalog/v2/README.md`、`tools/action-package-v2/README.md` | current：审核规则、六层合同、本地审片入口 | 旧人体统一性行更新；六动作试制命令保留其原 scope，七项审阅不冒充六层接合或发布 |
+| `catalog/catalog.json`、`media/manifest.json` | current：目录及公开发布事实 | 0.3.0 / 142，0.1.0 与 0.2.0 published；本轮不修改 |
+| `drill-anim/models/training-human-v2.json`；`docs/hand-r3-approval-20261023.md`、`docs/pr15-local-repair-delivery-20261024.md`；生产分支上述制作快照 | archive/history：旧模型、限定确认及交付、冻结生产保存记录；旧 13 源仍是复现契约 | 原身份及证据范围保留；不冒充当前动作全面审核或新媒体发布 |
+
+### 验证及 source state
+
+2026-10-24 01:48:06–01:48:35（上海时间），本机在完整干净 HEAD `dac56cff21e338c7eeddd4e796a046e04ac575be` 重跑以下检查，前后 HEAD 与完整状态均核对一致：
+
+| 命令 | 结果 |
+| --- | --- |
+| `node --test` 加下列 11 个明确路径 | 48 项通过 |
+| `node drill-anim/verify.mjs`，`NODE_OPTIONS=--max-old-space-size=256` | 297 规格、旧 13 源与 v2plus 固定源契约通过；原哈希保持 |
+| `python -B drill-anim/test_portability.py` | 7 项通过 |
+| `node drill-anim/tools/catalog.mjs --check` | 生成的完整规格总表一致 |
+| `node --input-type=module -e "import {verifyThreadneedle} from './drill-anim/models/threadneedle-native-r1/loader.mjs'; const m=verifyThreadneedle(); console.log('threadneedle manifest verified',m.version);"` | threadneedle 1.0.0-r1 固定来源通过 |
+
+Node 测试的完整文件参数为：
+
+```text
+drill-anim/tests/contact-manifest.test.mjs
+drill-anim/tools/tests/hand-touch-revisions.test.mjs
+drill-anim/tests/native-hands.test.mjs
+drill-anim/tests/native-wrist.test.mjs
+drill-anim/tests/native-hand-fit.test.mjs
+drill-anim/tests/native-grip.test.mjs
+drill-anim/tests/instep-native.test.mjs
+drill-anim/tests/overhead-triceps.test.mjs
+drill-anim/tests/overhead-native.test.mjs
+drill-anim/tests/overhead-neutral.test.mjs
+drill-anim/tools/tests/special-profiles-review.test.mjs
+```
+
+本次 alignment 只修改 8 份明确的 Markdown：根 AGENTS/README、版本规则/台账、v2plus 标准、审核标准、v2 合同说明、action-package-v2 工具说明。代码、规格、模型、生产配置、冻结记录与媒体清单相对上述 SHA 无变化，因此代码验证继续适用。在该 HEAD 加这 8 份文档的 source state 上，94 个本地 Markdown 链接、实际模型版本/scope/审核字段、297 规格计数、catalog 一致性及 `git diff --check` 均通过；完整状态中 8 项修改归属本 Agent，暂存/删除/重命名/untracked 为 0。提交后再核对完整状态；最终收束 SHA 由 Git 历史与 Cockpit 回执给出，不在文档内循环引用自身提交。
+
+确定 findings 已按上述来源对齐：旧日期/206 规格、缺少独立模型版本汇总、六动作试制被误称当前全库进度，以及审核统一性仍要求旧人体。尚待用户确认的动作、穿针式原高位起点、五皮肤分层接合与公开发布均如实保留，不作为文档 finding 自动关闭。本地 commit 与平台可选检查点分别确认；本轮没有执行 push、merge、tag、媒体发布或清理。
 
 ## AI 目录变更记录
 
@@ -99,6 +178,8 @@ ZIP 的完整 SHA-256、下载链接及选版见媒体清单和对应冻结发�
 文档提交后，上述代码证据仅在相对交付提交的差异仍为本次说明文档时复用。文档自身须核对本地链接、版本/计数/来源提交与完整 Git 状态。消费端 App、SDK、语音播放与医学审核不包含在这些通过结论内。
 
 ## 2026-10-21 人体建模合入与阶段收束
+
+以下保留 2026-10-21 当时的收束与待办记录；当前 PR15 修订及后续生产保存状态见上文 2026-10-24 记录。
 
 ### 授权、来源与 Git 身份
 

@@ -55,7 +55,7 @@
 
 | 要求 | 怎么查 |
 |---|---|
-| 人体：`modelProfile: 'training-human-v2'`、`alignClavicles: false` | 读 spec；catalog 的 profile 列为“旧”的动作重做时必须补上 |
+| 人体：新生产读取 `current-production.json` 的 `training-human-v2plus / 1.0.0-rc2` 与完整配方；独立修订显式绑定其 profile / version / 专用 loader | 读 spec、对应模型清单和固定源；旧 `training-human-v2` 仅历史复现。独立候选的适用动作与用户确认范围见版本台账，不自动替代默认 |
 | 主题：HipLab 新成片用 `themes/glow-soft.json`；同一版本内所有动作同一主题 | PR 渲染请求块写明 |
 | 帧率：交付统一 30 fps；spec 原生 15 fps 的由主线包装 | PR 写明 spec 原生 fps |
 | 道具/场景与同类动作一致（同一把办公椅、同一张垫） | 对照同前缀动作的 `props` |

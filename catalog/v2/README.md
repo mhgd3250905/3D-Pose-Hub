@@ -2,7 +2,9 @@
 
 `action-package@2` 以稳定动作 ID 为唯一单位，取代新生产中的 `drill-pack@1`、`action-kit@1`、`flarelab-drill-media@1`。旧包、旧 catalog 和已发布 ZIP 保留，历史 `completeness.complete` 不参与 v2 判定。`training-human-v2` 只供历史复现；新动作源固定 `training-human-v2plus` 的版本、模型清单 SHA 和 spec SHA。
 
-当前审片修订是 `F:/PoseHub-v2-pilot/neck-fix-r2/`。颈部漏色已修正，六动作五皮肤完整母版与派生已重做，action JSON 均升级为 draft.2 并接入新媒体和 QA SHA；AI 详情已重建。r1 保留历史，本规范未因材质补丁改变。技术结果及待审项见[试制状态](../../docs/action-package-v2-pilot-20261021.md)与[颈部修复](../../docs/neck-material-fix-20261021.md)。
+下列六动作试点命令绑定 `F:/PoseHub-v2-pilot/neck-fix-r2/`。颈部漏色修正后的六动作五皮肤母版与派生、draft.2 action JSON 和 AI 详情仍按原批次保留；r1 保留历史，本规范未因材质补丁改变。技术结果及待审项见[试制状态](../../docs/action-package-v2-pilot-20261021.md)与[颈部修复](../../docs/neck-material-fix-20261021.md)。
+
+全库制作第一版后来已在生产分支保存；PR15 七项修订审阅片及独立模型又另行保存在修复分支，见[版本台账](../../docs/version-ledger.md)和[七项交付](../../docs/pr15-local-repair-delivery-20261024.md)。本轮没有将这七项接入本目录六层包，也没有用单套审阅视频替代五皮肤母版或审核门禁。
 
 `actions/*.json` 是可编辑源，`pilot.json` 是本轮六个代表动作及类别，`skins.json` 是本轮生产皮肤的唯一名单。五套为原配色 `realistic`、白金 `tech-white`、蓝色 `neon-night`、绿色 `neon-night-b`、全息 `hologram`。`tech-white-b` 是白金别名，`default` 在生产层映射原配色；历史实验 `plaster`、`hologram-b` 不进本轮生产矩阵。
 
@@ -92,4 +94,4 @@ python -m unittest discover -s catalog/tools -p test_action_package_v2.py
 
 回归测试的合同正例使用合成元数据并明确 mock 媒体探测，不充当制作成功或人工 QA 的证据；真实 PNG/MP4 损坏、错误尺寸与非灰度遮罩另有实际解码反向测试。测试通过不能把任何动作的 pending review 改为 pass。
 
-`catalog/action-library/index.md`、每动作详情和 `v2/completeness.json` 都可从源重建。历史 142 个动作尚未自动迁移为合格 v2；本轮只做六个试点，已按用户同意合入 main，全库铺开仍另等确认。本工具只产生可审阅候选文件，不执行发布或上传。
+`catalog/action-library/index.md`、每动作详情和 `v2/completeness.json` 都可从源重建。历史 142 个动作尚未自动迁移为合格 v2；上述示例对应已获用户确认并合入 main 的六个试点。全库第一版制作保存与逐动作内容审核分别记录，不因媒体齐备或 PR15 局部修复自动取得发布资格。本工具只产生可审阅候选文件，不执行发布或上传。

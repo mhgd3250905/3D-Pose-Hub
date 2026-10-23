@@ -1,10 +1,12 @@
 # training-human-v2plus 制作标准
 
-2026-10-21 后续决定：用户确认旧 `training-human-v2` 退出新生产，并安排先制定 [动作包 v2 合同](../catalog/v2/README.md)、试制六个代表动作。生产皮肤固定为原配色、白金、蓝色、绿色、全息五套；`plaster`、`hologram-b` 为历史实验外观，`tech-white-b` 是白金别名，不纳入本轮矩阵。全库铺开及本分支合入/推送分别等待用户看样确认。
+2026-10-21 试制决定：用户确认旧 `training-human-v2` 退出新生产，先制定 [动作包 v2 合同](../catalog/v2/README.md)、试制六个代表动作。生产皮肤固定为原配色、白金、蓝色、绿色、全息五套；`plaster`、`hologram-b` 为历史实验外观，`tech-white-b` 是白金别名。六动作 r2 随后获确认并合入 main；全库制作后来也已获授权，189 动作第一版在生产分支独立保存，整体审核仍待完成，见[当前版本台账](version-ledger.md)。
 
 用户于 2026-10-21 明确采用更新细节后的新版人体制作今后动作。默认是原配色、动作肌群高亮、不显示肌群分区线，白金、蓝、绿、全息是可选外观。本次选择替代旧 [v2 制作标准](training-human-v2.md) 对未来任务的要求，旧模型与验收记录保留。
 
-PR #12 与集成修复已于 2026-10-21 经用户同意合入并推送 main，内容提交为 `315367ec2f072f0dc13d6a8e2a530cd453b9f17d`。生产配置采用 `training-human-v2plus` / `1.0.0-rc2`，实际合入身份、验证范围及尚未安排的全量重渲、App 接入见[版本对齐台账](version-ledger.md)。
+PR #12 与集成修复已于 2026-10-21 经用户同意合入并推送 main，内容提交为 `315367ec2f072f0dc13d6a8e2a530cd453b9f17d`。基础生产配置采用 `training-human-v2plus` / `1.0.0-rc2`，实际合入身份、全库制作保存、验证范围及待审/App 接入事项见[版本对齐台账](version-ledger.md)。
+
+2026-10-24 的 PR15 修复另建限定动作的 native-hands、native-grip、overhead-native、instep-native 与 threadneedle-native 清单，不静默改变该基础配置。当前使用版本、专用预览入口和待审核边界见台账与[七项交付记录](pr15-local-repair-delivery-20261024.md)。穿针式是低位小范围候选，不代表原高位起点已恢复。
 
 `current-production.json` 的 `adoption` 和模型清单的 `status` 保留该固定版本在内容提交编制时的“待批准”注记；这两个描述字段不控制渲染或审批。当前 Git 状态以台账为准。保留固定配置、模型源和哈希，避免仅为流程状态改写已验收模型身份。
 

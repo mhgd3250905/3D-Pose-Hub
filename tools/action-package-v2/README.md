@@ -2,7 +2,9 @@
 
 生产规范和六层发布门禁见 [catalog/v2](../../catalog/v2/README.md)。浏览器分层渲染见 [render tools](../../drill-anim/tools/v2/README.md)，语音见 [voice v2](../../catalog/voice-v2/README.md)。旧 `training-human-v2` 仅用于历史复现，新生产使用固定新版人体清单。
 
-当前审片修订为 `F:/PoseHub-v2-pilot/neck-fix-r2/`。颈部漏色修正后的六动作五皮肤完整母版与派生已重做，catalog draft.2 和 AI 详情已重新接合；r1 父目录保留历史。以下命令使用 r2 根目录，已有输出不可直接覆盖或重复生产。结果与待审项见[六动作记录](../../docs/action-package-v2-pilot-20261021.md)及[颈部修复](../../docs/neck-material-fix-20261021.md)。
+以下六动作试制命令使用 `F:/PoseHub-v2-pilot/neck-fix-r2/`。颈部漏色修正后的六动作五皮肤母版与派生、catalog draft.2 和 AI 详情按原批次保留；r1 父目录保留历史，已有输出不可覆盖或重复生产。结果与待审项见[六动作记录](../../docs/action-package-v2-pilot-20261021.md)及[颈部修复](../../docs/neck-material-fix-20261021.md)。
+
+PR15 本机审阅另用 `build_review_bundle.py`，从已完成的专用 `review.json` 核验循环、字节数和 SHA 后复制视频与封面，生成离线页面。七项入口与明确的生成命令见[交付记录](../../docs/pr15-local-repair-delivery-20261024.md)；它不生产或接入 v2 分层母版，不替代六层 gate。各独立模型的当前版本与审批范围见[台账](../../docs/version-ledger.md)。
 
 本工具不进行 3D 渲染。`composite.py` 从人物加道具 RGBA、高亮灰度遮罩、透明阴影三层生成派生。各皮肤独立保留人物层；共享层从权威 layer manifest 的 sequence 引用解析，不按文件名猜来源。缺帧、错误尺寸或已有目标会拒绝执行，保留部分输出供诊断，不清理或覆盖。
 
@@ -45,4 +47,4 @@ python tools/action-package-v2/qa_sequences.py --root F:/PoseHub-v2-pilot/neck-f
 
 `manifests/derivatives.json` 保存派生引用与实际合成参数，`manifests/framing/` 保存固定取景配方。`import_pilot.py` 将完成母版和派生引用接入 `catalog/v2/actions/` 并生成逐动作媒体 manifest，保持 `review` 状态；未实际审阅的字段继续 pending。动作名、要点和相位语音独立维护，不把独立语音误称已给循环视频配音。
 
-所有制作产物放在用户批准的 F 盘，Git 仅记录工具、规格、定义、清单及 QA 文档。历史素材不清理、冻结 ZIP 不覆盖；本轮没有全库生产、App 修改或云端同步。开哥已接受 r2 样片并授权合入、推送，内容已进入 main；见[试制确认](../../docs/pilot-approval-20261021.md)。
+所有制作产物放在用户批准的 F 盘，Git 仅记录工具、规格、定义、清单及 QA 文档。历史素材不清理、冻结 ZIP 不覆盖。六动作 r2 样片已获确认并进入 main；后续全库制作快照与 PR15 修复分属独立分支，状态见台账。本次文档收束不重新生产、修改 App 或同步云端。
