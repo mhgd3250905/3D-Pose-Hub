@@ -6,22 +6,22 @@
 
 | 项 | 数 |
 |---|---:|
-| spec 文件（specs/*.js，不含 _*.mjs 共用模块） | 277 |
+| spec 文件（specs/*.js，不含 _*.mjs 共用模块） | 281 |
 | 其中修订版（-r2/-r3） | 33 |
 | FlareLab App 51（data/drills.json） | 51 |
 | HipLab 已发布素材绑定的 spec 文件（v0.1.0（published）46 个动作 id、v0.2.0（published）46 个动作 id） | 47 |
 | HipLab 自测静图在用 spec | 6 |
 | 原版已被在用的修订版取代（保留不删） | 9 |
-| 有 spec 但没有被任何 App/发布版本使用 | 166 |
+| 有 spec 但没有被任何 App/发布版本使用 | 170 |
 | SHA 未登记 / 哈希不符 | 0 |
 
 - g-* 健身房补充（cable-hip-12；非普通办公）：2
 - FlareLab 肌群动作（17 肌群 × A 徒手 / B 家用 / C 健身房）：60
 - s-* 拉伸（原 8 项 + 修订）：13
 - t-* 托马斯专项（Flare，PR #106）：14
-- o-* 办公室（PR #97–104 + office-hip-leg-02 + office-adductor-back-03 + office-knee-march-04 + office-calf-squat-05 + office-support-06）：29
+- o-* 办公室（PR #97–104 + office-hip-leg-02 + office-adductor-back-03 + office-knee-march-04 + office-calf-squat-05 + office-support-06）：30
 - w-* 久坐强化（PR #105）：11
-- h-* 居家/肌群补充/开胯/开肩/小器械力量/徒手后链/办公下肢候选（PR #111–115 + r2 + Pose-Hub PR #5、#6 + office-lower-body-01）：124
+- h-* 居家/肌群补充/开胯/开肩/小器械力量/徒手后链/办公下肢候选（PR #111–115 + r2 + Pose-Hub PR #5、#6 + office-lower-body-01）：127
 - n-* HipLab 开胯 MVP 新增（PR #119）：15
 - a-* HipLab 自测对比静图（PR #119 + r2）：9
 
@@ -149,6 +149,7 @@
 | `o-seated-ham` | 坐姿腘绳肌前伸 | 腘绳肌（right） | 办公椅 | 8s/240f@30 | 旧 |  | HipLab v0.1.0；HipLab v0.2.0 | PR #99（verify.mjs） |  |
 | `o-seated-hip-er` | 坐椅无阻力髋外旋控制 | 臀大肌（right） | 椅 | 8s/120f@15 | v2（历史） |  | — | 已登记（home-pr-candidates） |  |
 | `o-seated-sidebend-rr1` | 坐椅单臂侧伸 | 腹斜肌（right） | 椅 | 8s/120f@15 | v2plus |  | — | 已登记（105 repair-round-1 seated sidebend 2026-10-22） | 105：旧011第一修复轮第1次，坐椅单臂侧伸；双侧近端后表面支持、完整四腿靠背椅；7稀疏帧待GPU。docs/105-repair-r1-seated-sidebend-2026-10-22.md |
+| `o-seated-sidebend-rr2` | 坐椅单臂侧伸 | 腹斜肌（right） | 椅 | 8s/120f@15 | v2plus |  | — | 已登记（Hark review 2026-10-23 of o-seated-sidebend-rr1） |  |
 | `o-seated-sidebend` | 坐椅单臂侧伸 | 腹斜肌（right） | 椅 | 8s/120f@15 | v2（历史） |  | — | 已登记（office-hip-leg-02） |  |
 | `o-seated-twist` | 坐姿扶椅扭转 | 腹斜肌+竖脊肌 | 办公椅 | 8s/240f@30 | 旧 |  | — | PR #98（verify.mjs） |  |
 | `o-stand-crossreach-r2` | 扶椅站姿交叉侧伸 | 臀中肌 · 髋外展（right） | 办公椅 | 8s/240f@30 | v2（历史） | `o-stand-crossreach` | — | 已登记（2026-10-19 camera/target-visibility review） |  |
@@ -211,6 +212,7 @@
 | `h-band-triceps-pressdown` | 站姿单臂弹力带下压 | 肱三头肌（right） | 弹力带、锚点、单柄 | 8s/120f@15 | v2（历史） |  | — | 已登记（home-pr-candidates） | band-triceps-pressdown-27：单臂高位弹力带伸肘；实际握柄/D环/足底分布独立检查；低分保留待GPU，需稳固锚点；docs/band-triceps-pressdown-27-2026-10-19.md |
 | `h-bear-plank` | 熊式支撑 | 腹直肌（含深层腹横肌）+股四头肌 | 垫 | 8s/120f@15 | v2（历史） |  | — | PR #111 |  |
 | `h-bent-knee-calf-raise-rr1` | 屈膝承重提踵 | 小腿三头肌 | — | 8s/120f@15 | v2plus |  | — | 已登记（110 repair-round-1 bent-knee bodyweight calf raise 2026-10-22） | 110：原069屈膝承重提踵，第1次修复；明确18→8度可控幅度、真实抬跟27mm、无扶手，12稀疏帧待GPU。docs/110-repair-r1-bent-knee-calf-2026-10-22.md |
+| `h-bent-knee-calf-raise-rr2` | 屈膝承重提踵 | 小腿三头肌 | — | 8s/120f@15 | v2plus |  | — | 已登记（Hark review 2026-10-23 of h-bent-knee-calf-raise-rr1） |  |
 | `h-biceps-self` | 双手对抗弯举 | 肱二头肌（right） | — | 8s/120f@15 | v2（历史） |  | — | PR #112 |  |
 | `h-bilateral-upper-back-hug-rr3` | 双臂前抱上背拉伸 | 斜方肌中下部 · 菱形肌 | — | 8s/240f@30 | v2plus |  | — | 已登记（116 repair-round-3 upper-back hug 2026-10-22） | 116：原090第三轮第1次，现有上下臂轴旋补偿；双掌接触、真实腕肘桥和427混合网格检查通过，稀疏待GPU。docs/116-repair-r3-upper-back-hug-2026-10-22.md |
 | `h-bridge-march` | 臀桥交替踏步 | 臀大肌+腘绳肌 | 垫 | 8s/120f@15 | v2（历史） |  | — | PR #6 | 第 0 帧即保持中的臀桥（只教踏步，不教起桥）；右掌比左掌靠脚 5 mm，让右肘 ≥170°（qa 肘向判据按站姿 +Z）（docs/home-posterior-chain-2026-10-18.md） |
@@ -224,6 +226,7 @@
 | `h-chair-kickback` | 扶椅站姿后踢腿 | 臀大肌（right） | 椅 | 8s/120f@15 | v2（历史） |  | — | PR #111 |  |
 | `h-chair-lat` | 扶椅背阔肌拉伸 | 背阔肌 | 椅 | 8s/120f@15 | v2（历史） |  | — | PR #112 |  |
 | `h-chair-single-leg-hip-thrust-rr2` | 肩靠椅单腿臀推 | 臀大肌+腘绳肌+腹斜肌（left） | 椅 | 8s/240f@30 | v2plus |  | — | 已登记（114 repair-round-2 chair single-leg hip thrust 2026-10-22） | 114：原087肩靠椅单腿臀推，第二轮第1次；原髋轨迹与左脚支撑、真实背部座面分布，11稀疏帧待GPU。docs/114-repair-r2-chair-single-leg-hip-thrust-2026-10-22.md |
+| `h-chair-single-leg-hip-thrust-rr3` | 肩靠椅单腿臀推 | 臀大肌+腘绳肌+腹斜肌（left） | 椅 | 8s/240f@30 | v2plus |  | — | 已登记（Hark review 2026-10-23 of h-chair-single-leg-hip-thrust-rr2） |  |
 | `h-chair-sit-to-stand` | 普通椅双脚坐站 | 股四头肌+臀大肌 | 椅 | 8s/120f@15 | v2（历史） |  | — | 已登记（office-lower-body-01） |  |
 | `h-chair-step-up-r2` | 椅子上步 | 股四头肌+臀大肌 | 椅 | 8s/240f@30 | v2plus | `h-chair-step-up` | — | 已登记（2026-10-21 action-package@2 six-action pilot） |  |
 | `h-chair-step-up` | 椅子上步 | 股四头肌+臀大肌 | 椅 | 8s/120f@15 | v2（历史） |  | — | PR #6 | 用无靠背椅（back: 0）；构图按站上椅面的最高姿态放置（stillAt 2.2），所以 still.png 不是起始站姿（docs/home-posterior-chain-2026-10-18.md） |
@@ -282,6 +285,7 @@
 | `h-russian-twist` | 俄罗斯转体 | 腹斜肌 | 垫 | 8s/120f@15 | v2（历史） |  | — | PR #111 |  |
 | `h-seated-reachback` | 坐姿后撑滑臀 | 胸大肌+三角肌 | 垫 | 8s/120f@15 | v2（历史） |  | — | PR #115 |  |
 | `h-short-side-plank-rr1` | 屈膝短杠杆侧平板 | 腹斜肌（left） | 垫 | 8s/240f@30 | v2plus |  | — | 已登记（100 repair-round-1 short side plank 2026-10-22） | 100：080第一修复轮第1次，真实下侧膝面、前臂及掌支撑；屈膝短杠杆静态侧平板，3稀疏帧待GPU，历史失败不覆盖。docs/100-repair-r1-short-side-plank-2026-10-22.md |
+| `h-short-side-plank-rr2` | 屈膝短杠杆侧平板 | 腹斜肌（left） | 垫 | 8s/240f@30 | v2plus |  | — | 已登记（Hark review 2026-10-23 of h-short-side-plank-rr1） |  |
 | `h-side-er` | 侧卧肩外旋 | 肩袖肌群（right） | 垫 | 8s/120f@15 | v2（历史） |  | — | PR #112 |  |
 | `h-side-leg-raise` | 站姿侧抬腿 | 臀中肌 · 髋外展（right） | — | 8s/120f@15 | v2（历史） |  | — | PR #111 |  |
 | `h-sleeper-stretch-rr1` | 侧卧睡姿肩内旋拉伸 | infraspinatus+deltRear（left） | 垫 | 8s/240f@30 | v2plus |  | — | 已登记（104 repair-round-1 sleeper stretch 2026-10-22） | 104：旧084第一修复轮第2次，侧卧睡姿肩内旋；原8–33度、右掌辅助、明确厚垫支持；12稀疏帧待GPU。docs/104-repair-r1-sleeper-stretch-2026-10-22.md |
@@ -357,9 +361,9 @@
 - **flare**（9）：`abs-C-r2` `chest-A-r2` `glute-max-A-r2` `hip-abductors-B-r2` `hip-abductors-C-r2` `obliques-A-r2` `rotator-cuff-A-r2` `rotator-cuff-B-r2` `rotator-cuff-C-r2`
 - **s**（2）：`s-9090-r3` `s-frog-r3`
 - **t**（13）：`t-flare-side-hold` `t-half-straddle` `t-lsit-open-close-r2` `t-lsit-open-close` `t-lsit-tuck` `t-lsit-vsit-circles` `t-lsit-wide-r2` `t-lsit-wide` `t-seated-straddle-ext` `t-seated-straddle-lifts` `t-straddle-hold` `t-tuck-planche` `t-vsit`
-- **o**（25）：`o-chair-knee-extension-rr1` `o-chair-knee-extension` `o-seated-calf-raise-rr1` `o-seated-calf-raise` `o-seated-catcow` `o-seated-hip-er` `o-seated-sidebend-rr1` `o-seated-sidebend` `o-seated-twist` `o-stand-crossreach-r2` `o-stand-ham` `o-stand-quad` `o-stand-sidebend` `o-supported-ankle-eversion` `o-supported-ankle-inversion` `o-supported-ankle-pump` `o-supported-hip-airplane` `o-supported-hip-hitch` `o-supported-hip-ir` `o-supported-knee-curl` `o-supported-march` `o-supported-mini-squat` `o-supported-single-leg-rdl` `o-supported-star-reach` `o-wall-hip-hinge-stretch`
+- **o**（26）：`o-chair-knee-extension-rr1` `o-chair-knee-extension` `o-seated-calf-raise-rr1` `o-seated-calf-raise` `o-seated-catcow` `o-seated-hip-er` `o-seated-sidebend-rr1` `o-seated-sidebend-rr2` `o-seated-sidebend` `o-seated-twist` `o-stand-crossreach-r2` `o-stand-ham` `o-stand-quad` `o-stand-sidebend` `o-supported-ankle-eversion` `o-supported-ankle-inversion` `o-supported-ankle-pump` `o-supported-hip-airplane` `o-supported-hip-hitch` `o-supported-hip-ir` `o-supported-knee-curl` `o-supported-march` `o-supported-mini-squat` `o-supported-single-leg-rdl` `o-supported-star-reach` `o-wall-hip-hinge-stretch`
 - **w**（9）：`w-bird-dog` `w-chair-hip-thrust` `w-clamshell-r2` `w-dead-bug-r2` `w-dead-bug` `w-fire-hydrant` `w-prone-swimmer-r2` `w-prone-swimmer` `w-wall-sit`
-- **h**（106）：`h-banana` `h-band-chest-fly` `h-band-face-pull-rr1` `h-band-hip-extension` `h-band-pallof` `h-band-pull-apart-r2` `h-band-pull-apart` `h-band-row` `h-band-shoulder-ir` `h-band-standing-abduction` `h-band-standing-adduction` `h-band-stepout` `h-band-straight-leg-raise` `h-band-triceps-pressdown` `h-bear-plank` `h-bent-knee-calf-raise-rr1` `h-biceps-self` `h-bilateral-upper-back-hug-rr3` `h-bridge-march` `h-bridge-overhead` `h-bulgarian` `h-calf-raise` `h-catcow-quad-r2` `h-catcow-quad` `h-chair-dip` `h-chair-kickback` `h-chair-lat` `h-chair-single-leg-hip-thrust-rr2` `h-chair-sit-to-stand` `h-chair-step-up-r2` `h-chair-step-up` `h-chair-tspine` `h-cobra` `h-crossbody` `h-crunch` `h-db-calf-raise` `h-db-curl-r2` `h-db-curl` `h-db-floor-fly-rr1` `h-db-floor-press` `h-db-front-raise` `h-db-hammer-curl` `h-db-kickback` `h-db-lateral` `h-db-overhead-triceps-extension-rr1` `h-db-press` `h-db-rdl` `h-db-reverse-fly` `h-db-row` `h-db-shrug` `h-db-split-squat` `h-db-supported-calf-raise` `h-dd-shoulder` `h-donkey-kick` `h-floor-nordic-hand-reset-rr3` `h-forearm-plank` `h-forward-lunge` `h-goblet-squat-rr1` `h-good-morning` `h-incline-pushup-r2` `h-incline-pushup` `h-inner-thigh` `h-kb-swing` `h-kneeling-instep-stretch-rr5` `h-kneeling-pushup-rr1` `h-lateral-step-lunge` `h-mountain-climber` `h-open-book` `h-overhead-triceps-stretch-rr1` `h-pike-pushup` `h-pike-scapular-elevation` `h-plank-side-step` `h-quadruped-open-rr1` `h-quadruped-rockback-rr1` `h-reverse-crunch` `h-reverse-lunge` `h-russian-twist` `h-seated-reachback` `h-short-side-plank-rr1` `h-side-er` `h-side-leg-raise` `h-sleeper-stretch-rr1` `h-slider-body-saw` `h-standing-forearm-rotation` `h-standing-wrist-deviation` `h-standing-wrist-extensor-stretch` `h-step-jack` `h-suitcase-hold` `h-suitcase-march` `h-superman` `h-supine-bilateral-leg-raise-rr3` `h-supine-heel-slide-rr1` `h-supine-twist-r3` `h-supported-single-leg-calf` `h-tabletop` `h-tib-raise` `h-towel-behind` `h-towel-isometric-curl-rr1` `h-towel-pass` `h-towel-pulldown` `h-wall-angel` `h-wall-calf-bent-knee` `h-wall-calf` `h-wall-palm-lift-rr5` `h-wall-pec` `h-wall-wrist-flexor-stretch`
+- **h**（109）：`h-banana` `h-band-chest-fly` `h-band-face-pull-rr1` `h-band-hip-extension` `h-band-pallof` `h-band-pull-apart-r2` `h-band-pull-apart` `h-band-row` `h-band-shoulder-ir` `h-band-standing-abduction` `h-band-standing-adduction` `h-band-stepout` `h-band-straight-leg-raise` `h-band-triceps-pressdown` `h-bear-plank` `h-bent-knee-calf-raise-rr1` `h-bent-knee-calf-raise-rr2` `h-biceps-self` `h-bilateral-upper-back-hug-rr3` `h-bridge-march` `h-bridge-overhead` `h-bulgarian` `h-calf-raise` `h-catcow-quad-r2` `h-catcow-quad` `h-chair-dip` `h-chair-kickback` `h-chair-lat` `h-chair-single-leg-hip-thrust-rr2` `h-chair-single-leg-hip-thrust-rr3` `h-chair-sit-to-stand` `h-chair-step-up-r2` `h-chair-step-up` `h-chair-tspine` `h-cobra` `h-crossbody` `h-crunch` `h-db-calf-raise` `h-db-curl-r2` `h-db-curl` `h-db-floor-fly-rr1` `h-db-floor-press` `h-db-front-raise` `h-db-hammer-curl` `h-db-kickback` `h-db-lateral` `h-db-overhead-triceps-extension-rr1` `h-db-press` `h-db-rdl` `h-db-reverse-fly` `h-db-row` `h-db-shrug` `h-db-split-squat` `h-db-supported-calf-raise` `h-dd-shoulder` `h-donkey-kick` `h-floor-nordic-hand-reset-rr3` `h-forearm-plank` `h-forward-lunge` `h-goblet-squat-rr1` `h-good-morning` `h-incline-pushup-r2` `h-incline-pushup` `h-inner-thigh` `h-kb-swing` `h-kneeling-instep-stretch-rr5` `h-kneeling-pushup-rr1` `h-lateral-step-lunge` `h-mountain-climber` `h-open-book` `h-overhead-triceps-stretch-rr1` `h-pike-pushup` `h-pike-scapular-elevation` `h-plank-side-step` `h-quadruped-open-rr1` `h-quadruped-rockback-rr1` `h-reverse-crunch` `h-reverse-lunge` `h-russian-twist` `h-seated-reachback` `h-short-side-plank-rr1` `h-short-side-plank-rr2` `h-side-er` `h-side-leg-raise` `h-sleeper-stretch-rr1` `h-slider-body-saw` `h-standing-forearm-rotation` `h-standing-wrist-deviation` `h-standing-wrist-extensor-stretch` `h-step-jack` `h-suitcase-hold` `h-suitcase-march` `h-superman` `h-supine-bilateral-leg-raise-rr3` `h-supine-heel-slide-rr1` `h-supine-twist-r3` `h-supported-single-leg-calf` `h-tabletop` `h-tib-raise` `h-towel-behind` `h-towel-isometric-curl-rr1` `h-towel-pass` `h-towel-pulldown` `h-wall-angel` `h-wall-calf-bent-knee` `h-wall-calf` `h-wall-palm-lift-rr5` `h-wall-pec` `h-wall-wrist-flexor-stretch`
 
 原版已被在用修订取代（9）：`a-9090`→`a-9090-r2` `a-deep-squat`→`a-deep-squat-r2` `a-thomas`→`a-thomas-r2` `h-9090-liftoff`→`h-9090-liftoff-r2` `h-knee-hug`→`h-knee-hug-r2` `h-supine-twist`→`h-supine-twist-r2` `s-9090`→`s-9090-r2` `s-frog`→`s-frog-r2` `s-seated-fold`→`s-seated-fold-r3`
 
