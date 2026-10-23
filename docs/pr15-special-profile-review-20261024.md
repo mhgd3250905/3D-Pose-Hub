@@ -52,3 +52,11 @@ r3 在 camera fit 前设置规格 FOV，修正原引擎先按默认 FOV 计算�
 `review-special-profiles-r3.mjs` 接入 073 的 `h-fixed-bar-vertical-pull-rr7` / `native-grip/r1` 以及 094 的 `h-db-overhead-triceps-extension-rr3` / `overhead-native/r1`，均按精确动作 ID、profile、版本选择专用 loader。r3 不再接受旧 086 rr5 或旧 094 rr2。仍然需要同版本工具生成并经查看的预览。
 
 臀推规格使用 14 度 FOV。原冻结 `setupCamera` 的顺序是先按旧 FOV 拟合，再设置新 FOV，因此 r2 预览发现明显横向裁切。`hip-preview` 保留为失败构图证据；r3 在调用原相机拟合前先设定规格 FOV，使拟合与实际渲染镜头一致，再加 8% 审核余量。冻结 engine、规格、身体轨迹均未改。
+
+## 091 独立显示网格与七项交付
+
+`review-threadneedle-r1.mjs` 仅接受 `h-kneeling-thread-needle-rr1` / `training-human-v2plus-threadneedle-native` / `1.0.0-r1`。它直接调用该 profile 的 CPU 轨迹，按实际显示网格的 25 个姿态拟合镜头，并逐帧检查有限坐标和裁切。隐藏骨架的 solver / handClip 指标不适用于此模型，报告明确写 `solverDiagnosticsApplicable:false`，不把空警告数组当作表面几何证明；表面证据见[091 修复记录](pr15-threadneedle-native-repair-20261024.md)。
+
+先查看 `091-preview` 的 10 帧联系表，再生成 `091-full`：视频 190664 字节，720×720、30 fps、8 秒、240 帧 H.264。完整 241 姿态首尾关节点误差 0 mm，PNG 相同，非有限和裁切帧均 0。实际查看完整周期的联系表与保持位全身图。预览、完整报告分别保留工具、规格、模型清单和文件哈希，不覆盖早先几何尝试。
+
+这是**低位小范围修订**，左腕行程约 92 mm；原有高位起点未恢复。最终七项离线审阅目录为 `F:/PoseHub-v2-pilot/pr15-final-review-20261024/`，以该目录的 `index.html` 和 `review-manifest.json` 为入口。先前六项目录原样保留；本次交付不改变 App 发布目录、生产默认或待用户审核状态。完整交付清单见[本地交付记录](pr15-local-repair-delivery-20261024.md)。
