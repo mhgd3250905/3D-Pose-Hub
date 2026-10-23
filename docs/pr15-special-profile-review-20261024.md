@@ -30,6 +30,23 @@ node drill-anim/tools/review-special-profiles-r1.mjs full drill-anim/specs/h-wal
 - 086 旧 rr5：`086-full/review.mp4`，240 帧、8 秒、256,623 字节；241 姿态 solver/diagnostic 警告均 0，首尾关节点误差约 1.5e-11 mm，PNG 相同。实际查看 10 帧联系表发现头顶贴边/局部切边及旧版自由手指形，不能作为最终交付。保留该尝试，新的 rr6 组合和 r2 构图另取证，不覆盖旧文件。
 - 提踵 rr7 / native-r3：`calf-full/review.mp4`，240 帧、8 秒、321,298 字节；241 姿态 solver/diagnostic 警告均 0，首尾关节点误差 0 mm，PNG 相同。已实际查看完整周期的 10 帧联系表；沿用已接受的手部比例和姿态。
 
+## r3/r4 与最终六项审阅片
+
+r3 在 camera fit 前设置规格 FOV，修正原引擎先按默认 FOV 计算距离、最后切到 FOV 14 导致臀推裁切的问题；原引擎固定源不改。`hip-preview` 的错误构图和被中断的 `hip-full` 保留，以 `hip-preview-r3` / `hip-full-r2` 为完成记录。r4 另接入中立腕朝向的过头臂屈伸 rr4 / overhead-native-r2，拒绝第一次腕扭曲的 rr3。已绑定的旧工具和预览保持各自版本，不混用哈希。
+
+| 动作 | 完整输出目录 | MP4 字节数 |
+| --- | --- | ---: |
+| 墙面掌根抬起 rr5 | `067-full` | 201203 |
+| 屈膝提踵 rr7 | `calf-full` | 321298 |
+| 肩靠椅单腿臀推 rr8 | `hip-full-r2` | 286933 |
+| 固定杆垂直拉力 rr7 | `073-full` | 193538 |
+| 过头臂屈伸 rr4 | `094-native-full` | 60932 |
+| 跪姿脚背拉伸 rr6 | `086-native-full` | 217369 |
+
+表中目录均位于 `F:/PoseHub-v2-pilot/pr15-special-review-20261024/`，每项均为 720×720、30 fps、8 秒、240 帧 H.264，另保留第 240 端点和 241 姿态诊断。六项首尾 PNG 相同、关节点误差小于 1e-4 mm、solver/diagnostic 警告均 0。实际查看了周期联系表及相关近景；这并非声称逐像素或逐帧三角面已穷尽检查，专项表面证据见各动作修复文档。
+
+`tools/action-package-v2/build_review_bundle.py` 根据完整报告核对字节数、SHA-256、循环和运行诊断，再复制视频与封面到新目录，并生成离线 `index.html` / `review-manifest.json`。已有输出拒绝覆盖。当前六项本机入口为 `F:/PoseHub-v2-pilot/pr15-review-ready-6-20261024/index.html`。全部保留待用户动作审核和未发布状态。
+
 ## r3 固定镜头与新握持
 
 `review-special-profiles-r3.mjs` 接入 073 的 `h-fixed-bar-vertical-pull-rr7` / `native-grip/r1` 以及 094 的 `h-db-overhead-triceps-extension-rr3` / `overhead-native/r1`，均按精确动作 ID、profile、版本选择专用 loader。r3 不再接受旧 086 rr5 或旧 094 rr2。仍然需要同版本工具生成并经查看的预览。
