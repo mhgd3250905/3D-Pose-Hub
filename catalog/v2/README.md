@@ -4,7 +4,7 @@
 
 下列六动作试点命令绑定 `F:/PoseHub-v2-pilot/neck-fix-r2/`。颈部漏色修正后的六动作五皮肤母版与派生、draft.2 action JSON 和 AI 详情仍按原批次保留；r1 保留历史，本规范未因材质补丁改变。技术结果及待审项见[试制状态](../../docs/action-package-v2-pilot-20261021.md)与[颈部修复](../../docs/neck-material-fix-20261021.md)。
 
-全库制作第一版后来已在生产分支保存；PR15 七项修订审阅片及独立模型又另行保存在修复分支，见[版本台账](../../docs/version-ledger.md)和[七项交付](../../docs/pr15-local-repair-delivery-20261024.md)。本轮没有将这七项接入本目录六层包，也没有用单套审阅视频替代五皮肤母版或审核门禁。
+全库制作第一版后来已在生产分支保存；PR15 新手部、七项专用修订源码及工具则已由修复分支合入 main，审阅视频仍只在本机，见[版本台账](../../docs/version-ledger.md)和[合入前七项交付](../../docs/pr15-local-repair-delivery-20261024.md)。Git 合入没有将这七项接入本目录六层包，也不以单套审阅视频替代五皮肤母版或审核门禁。
 
 `actions/*.json` 是可编辑源，`pilot.json` 是本轮六个代表动作及类别，`skins.json` 是本轮生产皮肤的唯一名单。五套为原配色 `realistic`、白金 `tech-white`、蓝色 `neon-night`、绿色 `neon-night-b`、全息 `hologram`。`tech-white-b` 是白金别名，`default` 在生产层映射原配色；历史实验 `plaster`、`hologram-b` 不进本轮生产矩阵。
 

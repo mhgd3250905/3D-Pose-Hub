@@ -1,8 +1,8 @@
 # Pose-Hub 版本对齐台账
 
-更新日期：2026-10-24。本轮对齐本地 `codex/pr15-contact-repair` 分支，已保存七项修订审阅片，代码内容提交为 `dac56cff21e338c7eeddd4e796a046e04ac575be`。native-r3 手部外观在原确认范围内通过；动作审核、main 合入和公开媒体发布仍分开跟踪。穿针式交付低位小范围候选，原高位起点未恢复。
+更新日期：2026-10-24。用户已明确授权将 `codex/pr15-contact-repair` 合入 main、对齐文档并提交推送；main 已从 `41b1922459e36cd4ff2947828135b755465d0613` 快进接入 `335a033569e223487ab2fd37ba036801fdbb6a3d`。新手部、七项专用修订和复现工具已进入 main；本次在该代码树上补齐合入后文档。native-r3 手部外观仅在原确认范围内通过，Git 合入与动作审核、公开媒体发布分别管理。穿针式仍为低位小范围候选，原高位起点未恢复。
 
-既有 AI 目录仍为 **0.3.0 / 142 ID**，公开 App 媒体仍为 **0.2.0 published**，全局生产配方保持 **training-human-v2plus 1.0.0-rc2**。全库第一版 189 动作、1890 视频已在生产分支保存为独立待审快照，本 PR15 修复分支未合入该生产分支。各分支统计不相加；本轮只推进下述独立模型和动作修订的版本登记。规则见[版本管理](version-management.md)。
+既有 AI 目录仍为 **0.3.0 / 142 ID**，公开 App 媒体仍为 **0.2.0 published**，全局生产配方保持 **training-human-v2plus 1.0.0-rc2**。全库第一版 189 动作、1890 视频的独立待审快照仍在生产分支，未随本次 PR15 合入 main。各分支统计不相加；本轮只集成下述独立模型与动作修订，不改全局默认、媒体发布版本或 App。规则见[版本管理](version-management.md)。
 
 ## 当前版本与计数
 
@@ -15,16 +15,38 @@
 | AI 动作目录 | 0.3.0 / formatVersion 1，142 个稳定动作 id | PR #11、#13 已合入；本阶段未新建目录 tag | [catalog.json](../catalog/catalog.json)、[PR #13](https://github.com/mhgd3250905/3D-Pose-Hub/pull/13) |
 | 各 App 目录覆盖 | FlareLab 51、HipLab 46、SmartFit 93 | 有重叠，不能相加作为动作总数；不代表本次已升级 App | `catalog.drills[].apps` |
 | 目录配套完整度 | 46 个 complete；96 个未进入 Pose-Hub 媒体发布、49 个缺中文语音、96 个缺英文语音 | 按当前生成物记录，缺项未在本次补齐 | [MISSING.md](../catalog/MISSING.md) |
-| spec 开发总表 | 本 PR15 修复分支 297 个规格文件；本阶段新增 16 个修订文件 | 含旧版、失败尝试和待审候选；不等于稳定 ID 或已发布动作数 | [drill-catalog.md](drill-catalog.md)、候选登记表 |
+| spec 开发总表 | PR15 合入后 main 为 297 文件，较合入前 253 新增 44；其中本轮自主修复新增 16 | 含旧版、失败尝试和待审候选；不等于稳定 ID 或已发布动作数 | [drill-catalog.md](drill-catalog.md)、候选登记表 |
 | 新制作基础人体 | training-human-v2plus 1.0.0-rc2 | 已合入 main 的全局配方；本轮独立模型不替换它 | [生产配置](../drill-anim/models/current-production.json)、[新版清单](../drill-anim/models/training-human-v2plus.json) |
-| PR15 独立模型及动作修订 | hands-native r3、native-grip r1、instep-native r1、overhead-native r2、threadneedle-native r1 | 实际版本及动作 scope 见下表；七项均有本机审阅片，待用户动作审核 | [七项交付](pr15-local-repair-delivery-20261024.md)、各固定模型清单 |
+| PR15 独立模型及动作修订 | hands-native r3、native-grip r1、instep-native r1、overhead-native r2、threadneedle-native r1 | 源码与工具已合入 main；七项本机审阅片及待用户动作审核状态保留，scope 见下表 | [合入前七项交付](pr15-local-repair-delivery-20261024.md)、各固定模型清单 |
 | 全库第一版制作保存 | library-v2-20261022-r1，189 动作、1890 视频 | 生产分支的 draft-unreviewed 快照；不是本轮重渲或公开发布 | 下文固定来源与分支说明 |
 | 历史基础人体 | training-human-v2 2.0.1 | 旧规格/批次继续复现；13 个固定源未改，仅默认选择标记调整 | [旧版清单](../drill-anim/models/training-human-v2.json) |
 | App 媒体 | media 0.2.0，46 个 HipLab 动作、92 个公开文件 | published，soft-v1；0.1.0 保留 | [媒体清单](../media/manifest.json)、[0.2.0 发布记录](../media/releases/0.2.0.md) |
 
 `complete` 不要求英文语音，也不代表全部 142 个动作均已打包发布、消费端已兼容或已通过医学禁忌审核。制作归档的绿幕和透明帧数量另按[素材库同步记录](material-cloud-sync.md)统计，不混入上表。
 
+## 2026-10-24 用户授权合入 main
+
+用户在确认新手部尚未进入 main 后，明确要求“提交合并，合并之后把文档对齐，保存提交 push”。这项授权补充了下节此前仅限本地保存的 scope。
+
+| 身份 / 检查 | 实际结果 |
+| --- | --- |
+| 合入前 main | `41b1922459e36cd4ff2947828135b755465d0613`；本地 main 与 `git fetch --no-tags origin main` 回读一致 |
+| 修复分支交付 | `codex/pr15-contact-repair` / `335a033569e223487ab2fd37ba036801fdbb6a3d`，包含手部确认保存、其余动作修订、审阅工具和前序文档收束 |
+| 本地合入方式 | 在原干净修复工作副本切换至 main，`git merge --ff-only codex/pr15-contact-repair` 成功；main 为上述交付 SHA，`git diff --exit-code codex/pr15-contact-repair HEAD` 无差异 |
+| 相对旧 main 的有限 delta | 62 个提交、253 路径（241 新增、12 修改）；根入口/属性 3、catalog 1、docs 79、drill-anim 147、tools 23。规格由 253 到 297，共新增 44；没有覆盖原规格 |
+| 固定来源与默认 | `runtime/`、`drill-anim/lib/`、`drill-anim/page/`、两份基础模型清单、`current-production.json`、npm 依赖及 `media/manifest.json` 相对旧 main 均无路径差异；专用模型按显式动作 ID / version / loader 使用 |
+| 审核边界 | 分支中的失败尝试与稀疏 QA 记录一并保留，不能视为已通过；Git 合入授权不把全部动作或七项审阅片标为已审核/可发布，也不恢复穿针式原高位起点 |
+| 主目录与其他成果 | `E:/AII-3D/3D-Pose-Hub` 保持生产分支 `36e1bb6`，原有 `.gitignore` 及 7 个 App 配套 untracked 文件保留。未合入生产快照分支，未修改/提交本地媒体或已有 release 目录 |
+
+合入后的 main 文档统一引用实际交付和审核范围；合入前的手部确认、七项交付、本地 closeout 及失败记录保留当时身份。下节与 dated 文档中的“未合入/未推送”描述属于原检查点，不覆盖本节新增的用户授权及 main 状态。
+
+2026-10-24 02:20:23–02:20:56（上海时间），本机在 main `335a033569e223487ab2fd37ba036801fdbb6a3d` 加本次 7 份说明文档的工作树重跑：`node --test`（与下节相同的 11 个明确路径）48 项、`node drill-anim/verify.mjs` 297 规格与固定源、`python -B drill-anim/test_portability.py` 7 项、`node drill-anim/tools/catalog.mjs --check`、`verifyThreadneedle()` 均通过。前后 HEAD 相同；完整状态仅这 7 项归属本 Agent 的 Markdown 修改，代码/规格/模型/配置没有未提交差异。合入后的 93 个本地文档链接、实际模型版本/scope、待审/默认字段及 `git diff --check` 另核对通过；独立只读复核未发现阻塞集成或状态表述问题。最终文档提交相对该源仍仅 7 份 Markdown，这些代码验证继续适用。
+
+本次交付从 main 普通推送到 `origin/main`，最终引用为**实际包含本节的完整 Git 提交**；推送后用 `git ls-remote origin refs/heads/main` 回读并核对同一 SHA。代码输入固定为 `335a033`，后续只对齐说明文档；完整交付提交与远端回执另由 Git 历史和 Cockpit 检查点记录，避免文档引用自身提交哈希。本次不创建 tag、媒体发布或云盘上传。
+
 ## 2026-10-24 PR #15 本地修订与阶段收束
+
+本节保留 main 合入前的本地 closeout 记录；后续 main 授权与交付见上节，不改写本节原证据状态。
 
 ### 版本、范围与保存状态
 

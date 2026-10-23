@@ -6,7 +6,7 @@
 
 PR #12 与集成修复已于 2026-10-21 经用户同意合入并推送 main，内容提交为 `315367ec2f072f0dc13d6a8e2a530cd453b9f17d`。基础生产配置采用 `training-human-v2plus` / `1.0.0-rc2`，实际合入身份、全库制作保存、验证范围及待审/App 接入事项见[版本对齐台账](version-ledger.md)。
 
-2026-10-24 的 PR15 修复另建限定动作的 native-hands、native-grip、overhead-native、instep-native 与 threadneedle-native 清单，不静默改变该基础配置。当前使用版本、专用预览入口和待审核边界见台账与[七项交付记录](pr15-local-repair-delivery-20261024.md)。穿针式是低位小范围候选，不代表原高位起点已恢复。
+2026-10-24 的 PR15 修复另建限定动作的 native-hands、native-grip、overhead-native、instep-native 与 threadneedle-native 清单，已按用户授权合入 main，基础配置和旧固定源保留。当前使用版本、专用预览入口和待审核边界见台账；[七项交付记录](pr15-local-repair-delivery-20261024.md)保留合入前来源与复现命令。穿针式是低位小范围候选，不代表原高位起点已恢复。
 
 `current-production.json` 的 `adoption` 和模型清单的 `status` 保留该固定版本在内容提交编制时的“待批准”注记；这两个描述字段不控制渲染或审批。当前 Git 状态以台账为准。保留固定配置、模型源和哈希，避免仅为流程状态改写已验收模型身份。
 
