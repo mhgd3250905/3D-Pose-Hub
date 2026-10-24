@@ -2,6 +2,8 @@
 
 `hands-native-r3/loader.mjs` 和 `grip-native-r1/loader.mjs` 在固定 SHA 清单里，按动作 ID 白名单只放行已审的 rr7/rr8/单杠 rr7。本入口不改它们，复用其校验函数和同一份固定数据，**任何 ID** 只要显式选择受支持的 profile + 版本即可加载。
 
+profile 必须是下述两个精确字符串之一，且对应版本必须完全匹配；缺失、错误版本和其它 profile 都报错。旧 073 grip-r6（`training-human-v2plus-grip` / `gripProfile.version:'1.0.0-r6.1'`）不受支持，不会自动转换成 native-grip。
+
 ## spec 写法
 
 自由手（不接触）：

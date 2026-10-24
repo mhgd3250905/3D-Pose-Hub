@@ -15,8 +15,9 @@ export const SUPPORTED={[HANDS_PROFILE]:{key:'nativeHands',version:HANDS_VERSION
 // Presets with reviewed evidence on these models; anything else loads with a warning.
 const VALIDATED={[HANDS_PROFILE]:['free-hand (no contact)'],[GRIP_PROFILE]:['grip-bar (fixed pull-up bar, 32 mm rod)']};
 export function checkSpec(spec){
- const s=SUPPORTED[spec.modelProfile];
- if(!s)throw Error(`native-open-r1: modelProfile must be one of ${Object.keys(SUPPORTED).join(', ')}`);
+ const profile=spec?.modelProfile;
+ if(typeof profile!=='string'||!Object.hasOwn(SUPPORTED,profile))throw Error(`native-open-r1: modelProfile must be one of ${Object.keys(SUPPORTED).join(', ')}`);
+ const s=SUPPORTED[profile];
  if(spec[s.key]?.version!==s.version)throw Error(`native-open-r1: ${spec.modelProfile} requires ${s.key}.version='${s.version}'`);
  return s;
 }
