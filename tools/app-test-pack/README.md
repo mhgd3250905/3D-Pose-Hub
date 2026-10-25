@@ -102,6 +102,11 @@ This machine uses one CPU worker and one GPU lane with a shared exclusive
 `heavy.lock`: only one of them runs heavy work at a time, after at least 4 GiB
 of Windows commit headroom is available. x264 uses two threads; BLAS uses one.
 GPU work has priority. Do not increase concurrency to bypass a memory wait.
+CPU workers are created only when an action can start, then fully shut down
+after the action finishes, releasing NumPy/Pillow allocations before handing
+the heavy-work slot to GPU. No export worker is retained during a resource wait.
+Close the sample HTTP review server after viewing; it is not needed by either
+production queue. The capture browser already closes in a `finally` block.
 Stop and diagnose a lost GPU/browser context before
 trying again. Failed partial attempts are preserved in separate source/work
 directories; do not overwrite a delivered media path with different bytes.

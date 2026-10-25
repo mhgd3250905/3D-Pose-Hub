@@ -2,6 +2,7 @@
 import copy
 import hashlib
 import json
+import os
 from pathlib import Path
 import sys
 import tempfile
@@ -140,6 +141,17 @@ class SemanticsTests(unittest.TestCase):
                 second, _ = assembler.delivered_semantics()
             self.assertEqual(first, second)
             self.assertTrue((output / 'catalog/catalog.json').exists())
+
+    def test_completed_export_worker_process_exits_before_next_job(self):
+        with queue.ActionProcessPool(1) as pool:
+            self.assertIsNone(pool.executor)
+            child_pid = pool.submit(os.getpid).result(timeout=15)
+            self.assertTrue(queue.pid_alive(child_pid))
+            pool.release_idle()
+            self.assertIsNone(pool.executor)
+            self.assertFalse(queue.pid_alive(child_pid))
+            next_pid = pool.submit(os.getpid).result(timeout=15)
+        self.assertFalse(queue.pid_alive(next_pid))
 
 
 if __name__ == '__main__':

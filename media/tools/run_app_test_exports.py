@@ -287,6 +287,35 @@ def worker(task):
                 return {'ok': False, 'id': aid, 'error': str(error), 'attempt': str(output), 'log': str(log)}
 
 
+class ActionProcessPool:
+    """Create workers on demand and release their NumPy/Pillow heaps after work."""
+    def __init__(self, workers):
+        self.workers, self.executor, self.futures = workers, None, set()
+
+    def __enter__(self):
+        return self
+
+    def submit(self, function, *args):
+        if self.executor is None:
+            self.executor = ProcessPoolExecutor(max_workers=self.workers)
+        future = self.executor.submit(function, *args)
+        self.futures.add(future)
+        return future
+
+    def release_idle(self):
+        require(all(future.done() for future in self.futures), 'Cannot release an active export worker')
+        self.close()
+
+    def close(self):
+        if self.executor is not None:
+            self.executor.shutdown(wait=True)
+            self.executor = None
+        self.futures.clear()
+
+    def __exit__(self, *_):
+        self.close()
+
+
 def expanded_roots(plan, bindings):
     roots = {key: Path(value).resolve() for key, value in bindings.items()}
     for alias, descriptor in plan['bindings'].items():
@@ -651,7 +680,7 @@ def run(args):
             return assembler
         seen_watch, attempted = {}, set()
         idle_since = None
-        with ProcessPoolExecutor(max_workers=args.workers) as pool:
+        with ActionProcessPool(args.workers) as pool:
             active = {}
             previous_heavy_wait = None
             while True:
@@ -735,6 +764,8 @@ def run(args):
                     except Exception as error:
                         assembler.fail(aid, error, attempt, log)
                     finally:
+                        if not active:
+                            pool.release_idle()
                         heavy.release()
         assembler.save()
         return assembler
