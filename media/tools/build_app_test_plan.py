@@ -17,6 +17,7 @@ import sys
 from prepare_smartfit_alpha import (PlanError, check_file, fingerprint, indexed,
                                     only, read_json, reference, relative_file,
                                     require, sha256)
+from app_test_semantics import enrich
 
 
 FULL = (
@@ -279,6 +280,7 @@ def build(args):
             entry['equipment'] = ['nonelastic-towel']
             entry['equipmentZh'] = '非弹性毛巾（卷束示意，不是弹力带）'
     add_execution_rhythm(catalog, repo)
+    catalog = enrich(catalog, repo)
     catalog['actions'].sort(key=lambda row: row['id'])
     require([r['id'] for r in catalog['actions']] == eligible, 'Final catalog lost or duplicated a family')
     require(not OVERLAPS & {a['id'] for a in plan['actions']}, 'Old overlapping videos must not ship as latest')

@@ -1,0 +1,4676 @@
+{
+  "format": "pose-hub-test-semantics@1",
+  "batchId": "latest-r1",
+  "reviewed": false,
+  "releaseEligible": false,
+  "actions": [
+    {
+      "id": "h-wall-palm-lift",
+      "revision": "h-wall-palm-lift-rr5",
+      "category": "mobility",
+      "purpose": "描述四指远端接墙、掌根抬离回触的诊断候选，不作为通用腕部康复处方。",
+      "muscles": [
+        "前臂 · 腕屈伸肌"
+      ],
+      "position": "standing",
+      "unilateral": true,
+      "level": null,
+      "scenes": [
+        "home",
+        "office",
+        "gym"
+      ],
+      "equipment": [
+        "wall"
+      ],
+      "defaultDose": {
+        "mode": "reps",
+        "sets": null,
+        "reps": null,
+        "restSeconds": null
+      },
+      "doseRange": {},
+      "cues": {
+        "zh": [
+          "右手四个非拇指指端接触区持续朝墙，掌根缓慢离墙后回触。",
+          "双脚不移，左手自由放置；不要把整掌钉在墙上。"
+        ]
+      },
+      "primaryCue": 0,
+      "commonErrors": [
+        {
+          "zh": "抬掌根时指端也离墙，或把掌中心固定当成本动作目标。"
+        }
+      ],
+      "cautions": [],
+      "cautionNotes": {
+        "zh": [
+          "本条是指端接触与掌根抬起的诊断候选，尚无转为通用训练或腕部康复处方的依据。"
+        ]
+      },
+      "contraindications": [],
+      "countingSemantics": "仅描述诊断往返：掌根抬离后回到原处记一次，指端接触持续保留；没有已批准的训练次数或诊断转训练规则。",
+      "demonstratedSide": "right",
+      "evidence": [
+        {
+          "path": "drill-anim/specs/h-wall-palm-lift-rr5.js",
+          "sha256": "a1e0a63ea56416f5d05bebef0bc0ddef16effe28797efa9c485eb943138af3e0",
+          "fields": [
+            "revision",
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "精确修订及其导入链的姿态、支点、工作侧、高亮和动作边界用于编写spec-derived未审稿；高亮不证明肌肉疗效，动画循环不提供数值训练剂量。"
+        },
+        {
+          "path": "docs/pr15-contact-repair-20261023.md",
+          "sha256": "24507fa13587c527bc36bf146fb77def8943bcf836e66dd7f4ee4747ce0be9b3",
+          "fields": [
+            "purpose",
+            "muscles",
+            "equipment",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide",
+            "cautionNotes.zh"
+          ],
+          "note": "同一动作修订的目标、支持条件和示意限制；仅支持测试用语义草稿，不转移稀疏QA或模型审核为动作审核。"
+        },
+        {
+          "path": "catalog/taxonomy.json",
+          "sha256": "3da41109246bbd7a05328bd88b4cf9ddc6152f6139f7158dfb63d8d6e3ab8065",
+          "fields": [
+            "category",
+            "position",
+            "scenes",
+            "equipment",
+            "muscles"
+          ],
+          "note": "规范分类、体位、器材及已登记肌群名称；场景按已确认器材与体位选择。gripHand、bandPost及单杠支架wall不是独立训练器材；未登记的非弹性毛巾保留unknown。"
+        }
+      ],
+      "unknownFields": [
+        {
+          "field": "level",
+          "reason": "未找到该精确修订已确认的难度分级；不按负重、幅度或候选清单默认值推定等级。"
+        },
+        {
+          "field": "defaultDose.sets",
+          "reason": "该精确动作源未明确训练组数；母片循环次数不是训练组数。"
+        },
+        {
+          "field": "defaultDose.reps",
+          "reason": "未找到该精确动作的训练重复次数；不按母片循环数、动画轨道或相关动作剂量换算。"
+        },
+        {
+          "field": "defaultDose.restSeconds",
+          "reason": "未找到明确训练组间休息；母片准备、回程和停顿不等于训练休息。"
+        },
+        {
+          "field": "doseRange",
+          "reason": "源未提供已确认的训练剂量范围；不从动画时长、幅度或相近动作推导。"
+        },
+        {
+          "field": "cautions",
+          "reason": "没有该精确动作已确认的身体部位筛选标签；来源中的动作边界写入cautionNotes.zh，不把一般约束推定为部位标签。空数组不表示无需注意。"
+        },
+        {
+          "field": "contraindications",
+          "reason": "没有该动作已确认的结构化禁忌清单。空数组不表示没有禁忌，也不由一般动作提示推断疾病适用性。"
+        }
+      ],
+      "reviewed": false,
+      "releaseEligible": false
+    },
+    {
+      "id": "h-bent-knee-calf-raise",
+      "revision": "h-bent-knee-calf-raise-rr7",
+      "category": "strength",
+      "purpose": "练习保持屈膝的双脚抬跟与受控回落。",
+      "muscles": [
+        "小腿三头肌"
+      ],
+      "position": "standing",
+      "unilateral": false,
+      "level": null,
+      "scenes": [
+        "home",
+        "gym"
+      ],
+      "equipment": [],
+      "defaultDose": {
+        "mode": "reps",
+        "sets": null,
+        "reps": null,
+        "restSeconds": null
+      },
+      "doseRange": {},
+      "cues": {
+        "zh": [
+          "双膝保持弯曲，前脚部留地，双脚跟同步抬起再受控回落。",
+          "双手在髋旁放松，不借扶手或伸膝把身体蹬高。"
+        ]
+      },
+      "primaryCue": 0,
+      "commonErrors": [
+        {
+          "zh": "提踵时伸直膝盖、弹跳或用手扶物借力。"
+        }
+      ],
+      "cautions": [],
+      "cautionNotes": {
+        "zh": []
+      },
+      "contraindications": [],
+      "countingSemantics": "双侧同步完成一次抬跟并回落计一次；母片循环数不等于每组训练次数。",
+      "demonstratedSide": "both",
+      "evidence": [
+        {
+          "path": "drill-anim/specs/h-bent-knee-calf-raise-rr7.js",
+          "sha256": "f76a24f017b6b8c721e118c9ec211e94936889564e140649e758490b3178d433",
+          "fields": [
+            "revision",
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "精确修订及其导入链的姿态、支点、工作侧、高亮和动作边界用于编写spec-derived未审稿；高亮不证明肌肉疗效，动画循环不提供数值训练剂量。"
+        },
+        {
+          "path": "drill-anim/specs/h-bent-knee-calf-raise-rr6.js",
+          "sha256": "24d2200c36ae9e24ac5cd67d90adf5997c32930f307b8d5c398ef6ef6bd9ac17",
+          "fields": [
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "当前修订明确导入的保留源；按后续修订覆盖关系核对支持与轨迹，不继承旧版身份、审批或训练剂量。"
+        },
+        {
+          "path": "drill-anim/specs/h-bent-knee-calf-raise-rr5.js",
+          "sha256": "0c47e408e98d41490c3dc051893b7c314affd1a1bb0d1e26f2cc69050f39b0e2",
+          "fields": [
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "当前修订明确导入的保留源；按后续修订覆盖关系核对支持与轨迹，不继承旧版身份、审批或训练剂量。"
+        },
+        {
+          "path": "drill-anim/specs/h-bent-knee-calf-raise-rr4.js",
+          "sha256": "728254f43c3bba5a1c8800c327afdef619273078f476c14e84d3f5643ee35555",
+          "fields": [
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "当前修订明确导入的保留源；按后续修订覆盖关系核对支持与轨迹，不继承旧版身份、审批或训练剂量。"
+        },
+        {
+          "path": "drill-anim/specs/h-bent-knee-calf-raise-rr3.js",
+          "sha256": "92bbf85c8242027babfa43ee4d934c7681f026b87c2c612afe178808fe990bae",
+          "fields": [
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "当前修订明确导入的保留源；按后续修订覆盖关系核对支持与轨迹，不继承旧版身份、审批或训练剂量。"
+        },
+        {
+          "path": "drill-anim/specs/h-bent-knee-calf-raise-rr2.js",
+          "sha256": "36380acdc0b695d490ca1c56c0e3e5ba176c56b4bc2e7065257bb0849d2d3567",
+          "fields": [
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "当前修订明确导入的保留源；按后续修订覆盖关系核对支持与轨迹，不继承旧版身份、审批或训练剂量。"
+        },
+        {
+          "path": "drill-anim/specs/h-bent-knee-calf-raise-rr1.js",
+          "sha256": "7ce2b792c43cdbd72034f6ae565d613c5ba0c2ea66de078c29aa56a0b74b3943",
+          "fields": [
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "当前修订明确导入的保留源；按后续修订覆盖关系核对支持与轨迹，不继承旧版身份、审批或训练剂量。"
+        },
+        {
+          "path": "docs/110-repair-r1-bent-knee-calf-2026-10-22.md",
+          "sha256": "e0025c9c14e8ad7f4a5c659b03b9aac827472bd7ead76210ef232f8919f3117d",
+          "fields": [
+            "purpose",
+            "muscles",
+            "equipment",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide",
+            "cautionNotes.zh"
+          ],
+          "note": "同一动作修订的目标、支持条件和示意限制；仅支持测试用语义草稿，不转移稀疏QA或模型审核为动作审核。"
+        },
+        {
+          "path": "catalog/taxonomy.json",
+          "sha256": "3da41109246bbd7a05328bd88b4cf9ddc6152f6139f7158dfb63d8d6e3ab8065",
+          "fields": [
+            "category",
+            "position",
+            "scenes",
+            "equipment",
+            "muscles"
+          ],
+          "note": "规范分类、体位、器材及已登记肌群名称；场景按已确认器材与体位选择。gripHand、bandPost及单杠支架wall不是独立训练器材；未登记的非弹性毛巾保留unknown。"
+        }
+      ],
+      "unknownFields": [
+        {
+          "field": "level",
+          "reason": "未找到该精确修订已确认的难度分级；不按负重、幅度或候选清单默认值推定等级。"
+        },
+        {
+          "field": "defaultDose.sets",
+          "reason": "该精确动作源未明确训练组数；母片循环次数不是训练组数。"
+        },
+        {
+          "field": "defaultDose.reps",
+          "reason": "未找到该精确动作的训练重复次数；不按母片循环数、动画轨道或相关动作剂量换算。"
+        },
+        {
+          "field": "defaultDose.restSeconds",
+          "reason": "未找到明确训练组间休息；母片准备、回程和停顿不等于训练休息。"
+        },
+        {
+          "field": "doseRange",
+          "reason": "源未提供已确认的训练剂量范围；不从动画时长、幅度或相近动作推导。"
+        },
+        {
+          "field": "cautions",
+          "reason": "没有该精确动作已确认的身体部位筛选标签；来源中的动作边界写入cautionNotes.zh，不把一般约束推定为部位标签。空数组不表示无需注意。"
+        },
+        {
+          "field": "contraindications",
+          "reason": "没有该动作已确认的结构化禁忌清单。空数组不表示没有禁忌，也不由一般动作提示推断疾病适用性。"
+        },
+        {
+          "field": "cautionNotes.zh",
+          "reason": "未提炼出独立于动作要领和常见错误的明确注意事项；空数组不表示无需注意。"
+        }
+      ],
+      "reviewed": false,
+      "releaseEligible": false
+    },
+    {
+      "id": "h-chair-single-leg-hip-thrust",
+      "revision": "h-chair-single-leg-hip-thrust-rr8",
+      "category": "strength",
+      "purpose": "在上背靠椅、左足支撑条件下练习单腿髋伸展与骨盆控制。",
+      "muscles": [
+        "臀大肌",
+        "腘绳肌",
+        "腹斜肌"
+      ],
+      "position": "supine",
+      "unilateral": true,
+      "level": null,
+      "scenes": [
+        "home",
+        "gym"
+      ],
+      "equipment": [
+        "chair"
+      ],
+      "defaultDose": {
+        "mode": "reps",
+        "sets": null,
+        "reps": null,
+        "restSeconds": null
+      },
+      "doseRange": {},
+      "cues": {
+        "zh": [
+          "上背保留椅座前缘支撑，左脚固定着地，右腿屈髋屈膝悬空。",
+          "抬髋后受控下降，骨盆保持水平，双手不承担外部支撑。"
+        ]
+      },
+      "primaryCue": 0,
+      "commonErrors": [
+        {
+          "zh": "右脚落地变成双腿臀推，或用手推椅、扭转骨盆。"
+        }
+      ],
+      "cautions": [],
+      "cautionNotes": {
+        "zh": [
+          "椅面背部支撑是动作示意，已有几何接触记录不能代替现实家具承重与稳定性确认。"
+        ]
+      },
+      "contraindications": [],
+      "countingSemantics": "左脚支撑的一次抬髋—下降计一次；另一支撑侧另计，不继承双腿臀推的循环数或处方。",
+      "demonstratedSide": "left",
+      "evidence": [
+        {
+          "path": "drill-anim/specs/h-chair-single-leg-hip-thrust-rr8.js",
+          "sha256": "02e1f7ce159bb5994dce7a8ddb490403e9a304f0d42aaeb389f518760b451d54",
+          "fields": [
+            "revision",
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "精确修订及其导入链的姿态、支点、工作侧、高亮和动作边界用于编写spec-derived未审稿；高亮不证明肌肉疗效，动画循环不提供数值训练剂量。"
+        },
+        {
+          "path": "drill-anim/specs/h-chair-single-leg-hip-thrust-rr7.js",
+          "sha256": "2493b119f4cb58a6e69786dea73bf66b875a47bb108fc434accf4cf7c894b413",
+          "fields": [
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "当前修订明确导入的保留源；按后续修订覆盖关系核对支持与轨迹，不继承旧版身份、审批或训练剂量。"
+        },
+        {
+          "path": "drill-anim/specs/h-chair-single-leg-hip-thrust-rr6.js",
+          "sha256": "b6bd670fe3092eec041c3590cd9867e63fe7bdc1fba56158c39a50a1e94bebf5",
+          "fields": [
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "当前修订明确导入的保留源；按后续修订覆盖关系核对支持与轨迹，不继承旧版身份、审批或训练剂量。"
+        },
+        {
+          "path": "drill-anim/specs/h-chair-single-leg-hip-thrust-rr5.js",
+          "sha256": "65b2d5777c602574c3a16f013ae99a9b5d5da04b27043eaaa091897f8ade240f",
+          "fields": [
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "当前修订明确导入的保留源；按后续修订覆盖关系核对支持与轨迹，不继承旧版身份、审批或训练剂量。"
+        },
+        {
+          "path": "drill-anim/specs/h-chair-single-leg-hip-thrust-rr4.js",
+          "sha256": "df94885f9530db62e37494fe52c7b5ff19576e1b0c6f7f8ffd76be240bb026d2",
+          "fields": [
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "当前修订明确导入的保留源；按后续修订覆盖关系核对支持与轨迹，不继承旧版身份、审批或训练剂量。"
+        },
+        {
+          "path": "drill-anim/specs/h-chair-single-leg-hip-thrust-rr3.js",
+          "sha256": "8e4d890d1be8897065d56e5e668c697e5fe89c31d3c999af25c5f68ce81eb292",
+          "fields": [
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "当前修订明确导入的保留源；按后续修订覆盖关系核对支持与轨迹，不继承旧版身份、审批或训练剂量。"
+        },
+        {
+          "path": "drill-anim/specs/h-chair-single-leg-hip-thrust-rr2.js",
+          "sha256": "5a0170a02ad21ae86ca3d5e4963ea64a4f4c93efc2baced300c21a7753c3e891",
+          "fields": [
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "当前修订明确导入的保留源；按后续修订覆盖关系核对支持与轨迹，不继承旧版身份、审批或训练剂量。"
+        },
+        {
+          "path": "drill-anim/specs/w-chair-hip-thrust.js",
+          "sha256": "2a420b9b16e2d72ee1f7b0a8bfd85794b8a53f566edbe34314e344f39923d0a7",
+          "fields": [
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "当前修订明确导入的保留源；按后续修订覆盖关系核对支持与轨迹，不继承旧版身份、审批或训练剂量。"
+        },
+        {
+          "path": "docs/114-repair-r2-chair-single-leg-hip-thrust-2026-10-22.md",
+          "sha256": "913259f90133f2ef33fae654bbc1286f399e13c10a46eab90e6eda56c32003a0",
+          "fields": [
+            "purpose",
+            "muscles",
+            "equipment",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide",
+            "cautionNotes.zh"
+          ],
+          "note": "同一动作修订的目标、支持条件和示意限制；仅支持测试用语义草稿，不转移稀疏QA或模型审核为动作审核。"
+        },
+        {
+          "path": "catalog/taxonomy.json",
+          "sha256": "3da41109246bbd7a05328bd88b4cf9ddc6152f6139f7158dfb63d8d6e3ab8065",
+          "fields": [
+            "category",
+            "position",
+            "scenes",
+            "equipment",
+            "muscles"
+          ],
+          "note": "规范分类、体位、器材及已登记肌群名称；场景按已确认器材与体位选择。gripHand、bandPost及单杠支架wall不是独立训练器材；未登记的非弹性毛巾保留unknown。"
+        }
+      ],
+      "unknownFields": [
+        {
+          "field": "level",
+          "reason": "未找到该精确修订已确认的难度分级；不按负重、幅度或候选清单默认值推定等级。"
+        },
+        {
+          "field": "defaultDose.sets",
+          "reason": "该精确动作源未明确训练组数；母片循环次数不是训练组数。"
+        },
+        {
+          "field": "defaultDose.reps",
+          "reason": "未找到该精确动作的训练重复次数；不按母片循环数、动画轨道或相关动作剂量换算。"
+        },
+        {
+          "field": "defaultDose.restSeconds",
+          "reason": "未找到明确训练组间休息；母片准备、回程和停顿不等于训练休息。"
+        },
+        {
+          "field": "doseRange",
+          "reason": "源未提供已确认的训练剂量范围；不从动画时长、幅度或相近动作推导。"
+        },
+        {
+          "field": "cautions",
+          "reason": "没有该精确动作已确认的身体部位筛选标签；来源中的动作边界写入cautionNotes.zh，不把一般约束推定为部位标签。空数组不表示无需注意。"
+        },
+        {
+          "field": "contraindications",
+          "reason": "没有该动作已确认的结构化禁忌清单。空数组不表示没有禁忌，也不由一般动作提示推断疾病适用性。"
+        }
+      ],
+      "reviewed": false,
+      "releaseEligible": false
+    },
+    {
+      "id": "h-fixed-bar-vertical-pull",
+      "revision": "h-fixed-bar-vertical-pull-rr7",
+      "category": "strength",
+      "purpose": "在固定双手握点下练习身体竖直上移接近握点再回落的舒适范围引体。",
+      "muscles": [
+        "背阔肌",
+        "肱二头肌"
+      ],
+      "position": "hanging",
+      "unilateral": false,
+      "level": null,
+      "scenes": [
+        "gym"
+      ],
+      "equipment": [
+        "pullup-bar"
+      ],
+      "defaultDose": {
+        "mode": "reps",
+        "sets": null,
+        "reps": null,
+        "restSeconds": null
+      },
+      "doseRange": {},
+      "cues": {
+        "zh": [
+          "握点固定，屈肘使身体主要向上移动，再受控回落。",
+          "双脚离地，不借摆腿蹬地，也不追求下巴过杆。"
+        ]
+      },
+      "primaryCue": 0,
+      "commonErrors": [
+        {
+          "zh": "改成直臂肩带起伏、胸前划船或蹬地上拉。"
+        }
+      ],
+      "cautions": [],
+      "cautionNotes": {
+        "zh": [
+          "本版采用固定握点下的舒适范围上拉，不要求下巴过杆；几何握持证据不代表负荷安全认证。"
+        ]
+      },
+      "contraindications": [],
+      "countingSemantics": "一次身体上拉并回到原悬挂高度计一次；本修订不要求下巴过杆，也不是静态悬垂计时。",
+      "demonstratedSide": "both",
+      "evidence": [
+        {
+          "path": "drill-anim/specs/h-fixed-bar-vertical-pull-rr7.js",
+          "sha256": "d34b25c74741b44b16b165b63a8c82ed919e92a782cea807a8201cc24c21b96f",
+          "fields": [
+            "revision",
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "精确修订及其导入链的姿态、支点、工作侧、高亮和动作边界用于编写spec-derived未审稿；高亮不证明肌肉疗效，动画循环不提供数值训练剂量。"
+        },
+        {
+          "path": "docs/diagnostics/122/attempt-2.mjs",
+          "sha256": "b91eff00fcd066933bf012e57b97f07f5ab454de1388636267b207210c5d06fd",
+          "fields": [
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "当前修订明确导入的保留源；按后续修订覆盖关系核对支持与轨迹，不继承旧版身份、审批或训练剂量。"
+        },
+        {
+          "path": "docs/pr15-fixed-bar-repair-20261024.md",
+          "sha256": "aabe47678391c47a5d4ca65fd866aef2b27616019de19a6546b227beefeff966",
+          "fields": [
+            "purpose",
+            "muscles",
+            "equipment",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide",
+            "cautionNotes.zh"
+          ],
+          "note": "同一动作修订的目标、支持条件和示意限制；仅支持测试用语义草稿，不转移稀疏QA或模型审核为动作审核。"
+        },
+        {
+          "path": "catalog/taxonomy.json",
+          "sha256": "3da41109246bbd7a05328bd88b4cf9ddc6152f6139f7158dfb63d8d6e3ab8065",
+          "fields": [
+            "category",
+            "position",
+            "scenes",
+            "equipment",
+            "muscles"
+          ],
+          "note": "规范分类、体位、器材及已登记肌群名称；场景按已确认器材与体位选择。gripHand、bandPost及单杠支架wall不是独立训练器材；未登记的非弹性毛巾保留unknown。"
+        }
+      ],
+      "unknownFields": [
+        {
+          "field": "level",
+          "reason": "未找到该精确修订已确认的难度分级；不按负重、幅度或候选清单默认值推定等级。"
+        },
+        {
+          "field": "defaultDose.sets",
+          "reason": "该精确动作源未明确训练组数；母片循环次数不是训练组数。"
+        },
+        {
+          "field": "defaultDose.reps",
+          "reason": "未找到该精确动作的训练重复次数；不按母片循环数、动画轨道或相关动作剂量换算。"
+        },
+        {
+          "field": "defaultDose.restSeconds",
+          "reason": "未找到明确训练组间休息；母片准备、回程和停顿不等于训练休息。"
+        },
+        {
+          "field": "doseRange",
+          "reason": "源未提供已确认的训练剂量范围；不从动画时长、幅度或相近动作推导。"
+        },
+        {
+          "field": "cautions",
+          "reason": "没有该精确动作已确认的身体部位筛选标签；来源中的动作边界写入cautionNotes.zh，不把一般约束推定为部位标签。空数组不表示无需注意。"
+        },
+        {
+          "field": "contraindications",
+          "reason": "没有该动作已确认的结构化禁忌清单。空数组不表示没有禁忌，也不由一般动作提示推断疾病适用性。"
+        }
+      ],
+      "reviewed": false,
+      "releaseEligible": false
+    },
+    {
+      "id": "h-db-overhead-triceps-extension",
+      "revision": "h-db-overhead-triceps-extension-rr4",
+      "category": "strength",
+      "purpose": "在过头位固定右上臂与肘位置，练习哑铃屈伸肘。",
+      "muscles": [
+        "肱三头肌"
+      ],
+      "position": "standing",
+      "unilateral": true,
+      "level": null,
+      "scenes": [
+        "gym"
+      ],
+      "equipment": [
+        "dumbbell"
+      ],
+      "defaultDose": {
+        "mode": "reps",
+        "sets": null,
+        "reps": null,
+        "restSeconds": null
+      },
+      "doseRange": {},
+      "cues": {
+        "zh": [
+          "右上臂与肘保留原过头位置，前臂在同一弯曲平面内伸肘再屈肘。",
+          "手腕随前臂协调，不用后仰或甩动把哑铃举起。"
+        ]
+      },
+      "primaryCue": 0,
+      "commonErrors": [
+        {
+          "zh": "肘大幅游移变成肩推，或用腰部后仰代替伸肘。"
+        }
+      ],
+      "cautions": [],
+      "cautionNotes": {
+        "zh": []
+      },
+      "contraindications": [],
+      "countingSemantics": "右臂一次受控伸肘并回到屈肘位计一次；另一侧另行安排，不以视频时长推算次数。",
+      "demonstratedSide": "right",
+      "evidence": [
+        {
+          "path": "drill-anim/specs/h-db-overhead-triceps-extension-rr4.js",
+          "sha256": "fd8b2139eb67f97daacfad2ebab1aa726795827001564e40709ff7d8b4558f76",
+          "fields": [
+            "revision",
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "精确修订及其导入链的姿态、支点、工作侧、高亮和动作边界用于编写spec-derived未审稿；高亮不证明肌肉疗效，动画循环不提供数值训练剂量。"
+        },
+        {
+          "path": "drill-anim/specs/h-db-overhead-triceps-extension-rr3.js",
+          "sha256": "dcfae3035bc8d7401f617c15783359f9d187a8e0845f1ae85915cdd2ad9d7dec",
+          "fields": [
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "当前修订明确导入的保留源；按后续修订覆盖关系核对支持与轨迹，不继承旧版身份、审批或训练剂量。"
+        },
+        {
+          "path": "drill-anim/specs/h-db-overhead-triceps-extension-rr2.js",
+          "sha256": "d90cf93a2912b23f8d061edd35fa6789ebe0e2381e423c7e172a0c83605998ca",
+          "fields": [
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "当前修订明确导入的保留源；按后续修订覆盖关系核对支持与轨迹，不继承旧版身份、审批或训练剂量。"
+        },
+        {
+          "path": "drill-anim/specs/h-db-overhead-triceps-extension-rr1.js",
+          "sha256": "943a1397220632b63cf987ca2ebd982ea515669ddd949fcadbabb585cb77d71c",
+          "fields": [
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "当前修订明确导入的保留源；按后续修订覆盖关系核对支持与轨迹，不继承旧版身份、审批或训练剂量。"
+        },
+        {
+          "path": "docs/pr15-overhead-triceps-repair-20261023.md",
+          "sha256": "e46dc73e3f25041d7dcf83d95ca60f1e38ffbfa8f81f0068564620b2826d4c8a",
+          "fields": [
+            "purpose",
+            "muscles",
+            "equipment",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide",
+            "cautionNotes.zh"
+          ],
+          "note": "同一动作修订的目标、支持条件和示意限制；仅支持测试用语义草稿，不转移稀疏QA或模型审核为动作审核。"
+        },
+        {
+          "path": "catalog/taxonomy.json",
+          "sha256": "3da41109246bbd7a05328bd88b4cf9ddc6152f6139f7158dfb63d8d6e3ab8065",
+          "fields": [
+            "category",
+            "position",
+            "scenes",
+            "equipment",
+            "muscles"
+          ],
+          "note": "规范分类、体位、器材及已登记肌群名称；场景按已确认器材与体位选择。gripHand、bandPost及单杠支架wall不是独立训练器材；未登记的非弹性毛巾保留unknown。"
+        }
+      ],
+      "unknownFields": [
+        {
+          "field": "level",
+          "reason": "未找到该精确修订已确认的难度分级；不按负重、幅度或候选清单默认值推定等级。"
+        },
+        {
+          "field": "defaultDose.sets",
+          "reason": "该精确动作源未明确训练组数；母片循环次数不是训练组数。"
+        },
+        {
+          "field": "defaultDose.reps",
+          "reason": "未找到该精确动作的训练重复次数；不按母片循环数、动画轨道或相关动作剂量换算。"
+        },
+        {
+          "field": "defaultDose.restSeconds",
+          "reason": "未找到明确训练组间休息；母片准备、回程和停顿不等于训练休息。"
+        },
+        {
+          "field": "doseRange",
+          "reason": "源未提供已确认的训练剂量范围；不从动画时长、幅度或相近动作推导。"
+        },
+        {
+          "field": "cautions",
+          "reason": "没有该精确动作已确认的身体部位筛选标签；来源中的动作边界写入cautionNotes.zh，不把一般约束推定为部位标签。空数组不表示无需注意。"
+        },
+        {
+          "field": "contraindications",
+          "reason": "没有该动作已确认的结构化禁忌清单。空数组不表示没有禁忌，也不由一般动作提示推断疾病适用性。"
+        },
+        {
+          "field": "cautionNotes.zh",
+          "reason": "未提炼出独立于动作要领和常见错误的明确注意事项；空数组不表示无需注意。"
+        }
+      ],
+      "reviewed": false,
+      "releaseEligible": false
+    },
+    {
+      "id": "h-kneeling-instep-stretch",
+      "revision": "h-kneeling-instep-stretch-rr6",
+      "category": "stretch",
+      "purpose": "描述膝部与双侧足背支持下的小幅后移脚背拉伸。",
+      "muscles": [
+        "胫骨前肌"
+      ],
+      "position": "kneeling",
+      "unilateral": false,
+      "level": null,
+      "scenes": [
+        "home",
+        "gym"
+      ],
+      "equipment": [
+        "mat"
+      ],
+      "defaultDose": {
+        "mode": "time",
+        "sets": null,
+        "seconds": null,
+        "restSeconds": null
+      },
+      "doseRange": {},
+      "cues": {
+        "zh": [
+          "双膝保留原有限膝垫支持，双侧足背维持原支撑姿态。",
+          "躯干直立，轻微后移，不改成脚趾承托或强行坐压脚跟。"
+        ]
+      },
+      "primaryCue": 0,
+      "commonErrors": [
+        {
+          "zh": "足背改为脚趾撑地，或用大幅后坐替代温和后移。"
+        }
+      ],
+      "cautions": [],
+      "cautionNotes": {
+        "zh": []
+      },
+      "contraindications": [],
+      "countingSemantics": "进入双足背支撑的拉伸位后连续计时；进出姿势不算重复，8秒母片不是推荐保持秒数。",
+      "demonstratedSide": "both",
+      "evidence": [
+        {
+          "path": "drill-anim/specs/h-kneeling-instep-stretch-rr6.js",
+          "sha256": "6f36d16c42a9df471b858f75580a36aa63428a0b11a8252482036500de9ee9f5",
+          "fields": [
+            "revision",
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "精确修订及其导入链的姿态、支点、工作侧、高亮和动作边界用于编写spec-derived未审稿；高亮不证明肌肉疗效，动画循环不提供数值训练剂量。"
+        },
+        {
+          "path": "drill-anim/specs/h-kneeling-instep-stretch-rr5.js",
+          "sha256": "efd523837d07ed6238ac36895f67725aacd101b343e8e75fd657556d9a690d3b",
+          "fields": [
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "当前修订明确导入的保留源；按后续修订覆盖关系核对支持与轨迹，不继承旧版身份、审批或训练剂量。"
+        },
+        {
+          "path": "docs/pr15-instep-native-repair-20261023.md",
+          "sha256": "255c4a4c4d87a260737f3543e09b34a125fdc26725cd68e0ec7c9d0de765e58f",
+          "fields": [
+            "purpose",
+            "muscles",
+            "equipment",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide",
+            "cautionNotes.zh"
+          ],
+          "note": "同一动作修订的目标、支持条件和示意限制；仅支持测试用语义草稿，不转移稀疏QA或模型审核为动作审核。"
+        },
+        {
+          "path": "catalog/taxonomy.json",
+          "sha256": "3da41109246bbd7a05328bd88b4cf9ddc6152f6139f7158dfb63d8d6e3ab8065",
+          "fields": [
+            "category",
+            "position",
+            "scenes",
+            "equipment",
+            "muscles"
+          ],
+          "note": "规范分类、体位、器材及已登记肌群名称；场景按已确认器材与体位选择。gripHand、bandPost及单杠支架wall不是独立训练器材；未登记的非弹性毛巾保留unknown。"
+        }
+      ],
+      "unknownFields": [
+        {
+          "field": "level",
+          "reason": "未找到该精确修订已确认的难度分级；不按负重、幅度或候选清单默认值推定等级。"
+        },
+        {
+          "field": "defaultDose.sets",
+          "reason": "该精确动作源未明确训练组数；母片循环次数不是训练组数。"
+        },
+        {
+          "field": "defaultDose.seconds",
+          "reason": "未找到该精确动作的训练保持秒数。8秒或10秒母片及保持段不是处方。"
+        },
+        {
+          "field": "defaultDose.restSeconds",
+          "reason": "未找到明确训练组间休息；母片准备、回程和停顿不等于训练休息。"
+        },
+        {
+          "field": "doseRange",
+          "reason": "源未提供已确认的训练剂量范围；不从动画时长、幅度或相近动作推导。"
+        },
+        {
+          "field": "cautions",
+          "reason": "没有该精确动作已确认的身体部位筛选标签；来源中的动作边界写入cautionNotes.zh，不把一般约束推定为部位标签。空数组不表示无需注意。"
+        },
+        {
+          "field": "contraindications",
+          "reason": "没有该动作已确认的结构化禁忌清单。空数组不表示没有禁忌，也不由一般动作提示推断疾病适用性。"
+        },
+        {
+          "field": "cautionNotes.zh",
+          "reason": "未提炼出独立于动作要领和常见错误的明确注意事项；空数组不表示无需注意。"
+        }
+      ],
+      "reviewed": false,
+      "releaseEligible": false
+    },
+    {
+      "id": "h-kneeling-thread-needle",
+      "revision": "h-kneeling-thread-needle-rr1",
+      "category": "mobility",
+      "purpose": "描述低位起点下左臂小范围下穿的肩胸旋转候选，不泛化为全幅穿针式。",
+      "muscles": [
+        "斜方肌中下部 · 菱形肌",
+        "三角肌",
+        "背阔肌"
+      ],
+      "position": "quadruped",
+      "unilateral": true,
+      "level": null,
+      "scenes": [
+        "home",
+        "gym"
+      ],
+      "equipment": [],
+      "defaultDose": {
+        "mode": "reps",
+        "sets": null,
+        "reps": null,
+        "restSeconds": null
+      },
+      "doseRange": {},
+      "cues": {
+        "zh": [
+          "从当前低位起点开始，双膝和右掌维持支撑，左臂小范围穿过右支撑臂下方。",
+          "到原肩部接触保持位后回程，不加上高举绕头的早段。"
+        ]
+      },
+      "primaryCue": 0,
+      "commonErrors": [
+        {
+          "zh": "当作已恢复高位四点支撑起始的全幅穿针，或抬开支撑点扩大行程。"
+        }
+      ],
+      "cautions": [],
+      "cautionNotes": {
+        "zh": [
+          "仅覆盖低位起点的小范围下穿；没有恢复高位四点支撑到完整穿针的早段。"
+        ]
+      },
+      "contraindications": [],
+      "countingSemantics": "一次低位下穿—保持—返回原低位起点计一个往返；未包含高位准备段，训练次数与中间保持时长均待明确。",
+      "demonstratedSide": "left",
+      "evidence": [
+        {
+          "path": "drill-anim/specs/h-kneeling-thread-needle-rr1.js",
+          "sha256": "8063a80ec28b6b80417d21155240f8632d9d7c317324d24295fc85f2a39a99d1",
+          "fields": [
+            "revision",
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "精确修订及其导入链的姿态、支点、工作侧、高亮和动作边界用于编写spec-derived未审稿；高亮不证明肌肉疗效，动画循环不提供数值训练剂量。"
+        },
+        {
+          "path": "docs/pr15-threadneedle-native-repair-20261024.md",
+          "sha256": "388cdf05c75e5db2cdf4a4ba52e410df8166f44c47ba24b26fbc7a4c417e63fa",
+          "fields": [
+            "purpose",
+            "muscles",
+            "equipment",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide",
+            "cautionNotes.zh"
+          ],
+          "note": "同一动作修订的目标、支持条件和示意限制；仅支持测试用语义草稿，不转移稀疏QA或模型审核为动作审核。"
+        },
+        {
+          "path": "catalog/taxonomy.json",
+          "sha256": "3da41109246bbd7a05328bd88b4cf9ddc6152f6139f7158dfb63d8d6e3ab8065",
+          "fields": [
+            "category",
+            "position",
+            "scenes",
+            "equipment",
+            "muscles"
+          ],
+          "note": "规范分类、体位、器材及已登记肌群名称；场景按已确认器材与体位选择。gripHand、bandPost及单杠支架wall不是独立训练器材；未登记的非弹性毛巾保留unknown。"
+        }
+      ],
+      "unknownFields": [
+        {
+          "field": "level",
+          "reason": "未找到该精确修订已确认的难度分级；不按负重、幅度或候选清单默认值推定等级。"
+        },
+        {
+          "field": "defaultDose.sets",
+          "reason": "该精确动作源未明确训练组数；母片循环次数不是训练组数。"
+        },
+        {
+          "field": "defaultDose.reps",
+          "reason": "未找到该精确动作的训练重复次数；不按母片循环数、动画轨道或相关动作剂量换算。"
+        },
+        {
+          "field": "defaultDose.restSeconds",
+          "reason": "未找到明确训练组间休息；母片准备、回程和停顿不等于训练休息。"
+        },
+        {
+          "field": "doseRange",
+          "reason": "源未提供已确认的训练剂量范围；不从动画时长、幅度或相近动作推导。"
+        },
+        {
+          "field": "cautions",
+          "reason": "没有该精确动作已确认的身体部位筛选标签；来源中的动作边界写入cautionNotes.zh，不把一般约束推定为部位标签。空数组不表示无需注意。"
+        },
+        {
+          "field": "contraindications",
+          "reason": "没有该动作已确认的结构化禁忌清单。空数组不表示没有禁忌，也不由一般动作提示推断疾病适用性。"
+        }
+      ],
+      "reviewed": false,
+      "releaseEligible": false
+    },
+    {
+      "id": "h-forward-lunge",
+      "revision": "h-forward-lunge",
+      "category": "strength",
+      "purpose": "练习前迈落地、屈膝承重、卸载并蹬回的步进控制。",
+      "muscles": [
+        "股四头肌",
+        "臀大肌"
+      ],
+      "position": "standing",
+      "unilateral": true,
+      "level": null,
+      "scenes": [
+        "home",
+        "gym"
+      ],
+      "equipment": [],
+      "defaultDose": {
+        "mode": "reps",
+        "sets": null,
+        "reps": null,
+        "restSeconds": null
+      },
+      "doseRange": {},
+      "cues": {
+        "zh": [
+          "迈出脚先离地前移并落稳，再降低身体。",
+          "卸载后抬脚回到原站位，左右侧分别完成。"
+        ]
+      },
+      "primaryCue": 0,
+      "commonErrors": [
+        {
+          "zh": "未落稳就下蹲，或把后撤弓步、原地分腿蹲当作本动作。"
+        }
+      ],
+      "cautions": [],
+      "cautionNotes": {
+        "zh": []
+      },
+      "contraindications": [],
+      "countingSemantics": "单侧迈出—下蹲—蹬回计一次；母片右侧、左侧各一次，两侧分别计数，不合成一次。",
+      "demonstratedSide": "both",
+      "evidence": [
+        {
+          "path": "drill-anim/specs/h-forward-lunge.js",
+          "sha256": "7807966cda4819b725064df8f6e7680f45997c51e62a4fa97a09ae9017be88cb",
+          "fields": [
+            "revision",
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "精确修订及其导入链的姿态、支点、工作侧、高亮和动作边界用于编写spec-derived未审稿；高亮不证明肌肉疗效，动画循环不提供数值训练剂量。"
+        },
+        {
+          "path": "docs/076-v2plus-forward-lunge-2026-10-21.md",
+          "sha256": "36ac42a7011c834dcdd40635b49d5d11915a00ba89aa92589ace6b848351c84b",
+          "fields": [
+            "purpose",
+            "muscles",
+            "equipment",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide",
+            "cautionNotes.zh"
+          ],
+          "note": "同一动作修订的目标、支持条件和示意限制；仅支持测试用语义草稿，不转移稀疏QA或模型审核为动作审核。"
+        },
+        {
+          "path": "catalog/taxonomy.json",
+          "sha256": "3da41109246bbd7a05328bd88b4cf9ddc6152f6139f7158dfb63d8d6e3ab8065",
+          "fields": [
+            "category",
+            "position",
+            "scenes",
+            "equipment",
+            "muscles"
+          ],
+          "note": "规范分类、体位、器材及已登记肌群名称；场景按已确认器材与体位选择。gripHand、bandPost及单杠支架wall不是独立训练器材；未登记的非弹性毛巾保留unknown。"
+        }
+      ],
+      "unknownFields": [
+        {
+          "field": "level",
+          "reason": "未找到该精确修订已确认的难度分级；不按负重、幅度或候选清单默认值推定等级。"
+        },
+        {
+          "field": "defaultDose.sets",
+          "reason": "该精确动作源未明确训练组数；母片循环次数不是训练组数。"
+        },
+        {
+          "field": "defaultDose.reps",
+          "reason": "未找到该精确动作的训练重复次数；不按母片循环数、动画轨道或相关动作剂量换算。"
+        },
+        {
+          "field": "defaultDose.restSeconds",
+          "reason": "未找到明确训练组间休息；母片准备、回程和停顿不等于训练休息。"
+        },
+        {
+          "field": "doseRange",
+          "reason": "源未提供已确认的训练剂量范围；不从动画时长、幅度或相近动作推导。"
+        },
+        {
+          "field": "cautions",
+          "reason": "没有该精确动作已确认的身体部位筛选标签；来源中的动作边界写入cautionNotes.zh，不把一般约束推定为部位标签。空数组不表示无需注意。"
+        },
+        {
+          "field": "contraindications",
+          "reason": "没有该动作已确认的结构化禁忌清单。空数组不表示没有禁忌，也不由一般动作提示推断疾病适用性。"
+        },
+        {
+          "field": "cautionNotes.zh",
+          "reason": "未提炼出独立于动作要领和常见错误的明确注意事项；空数组不表示无需注意。"
+        }
+      ],
+      "reviewed": false,
+      "releaseEligible": false
+    },
+    {
+      "id": "h-lateral-step-lunge",
+      "revision": "h-lateral-step-lunge",
+      "category": "strength",
+      "purpose": "练习短步侧跨、落地后向迈出腿转移负重再收回。",
+      "muscles": [
+        "股四头肌",
+        "臀大肌",
+        "内收肌群"
+      ],
+      "position": "standing",
+      "unilateral": true,
+      "level": null,
+      "scenes": [
+        "home",
+        "gym"
+      ],
+      "equipment": [],
+      "defaultDose": {
+        "mode": "reps",
+        "sets": null,
+        "reps": null,
+        "restSeconds": null
+      },
+      "doseRange": {},
+      "cues": {
+        "zh": [
+          "侧脚抬起横移并落地后，再向该侧屈膝承重。",
+          "卸载后抬脚收回，不强求非工作腿伸直或更深幅度。"
+        ]
+      },
+      "primaryCue": 0,
+      "commonErrors": [
+        {
+          "zh": "侧脚贴地滑动，或强行改成深幅直腿侧弓拉伸。"
+        }
+      ],
+      "cautions": [],
+      "cautionNotes": {
+        "zh": [
+          "这是短步侧向承重动作，不是非工作腿伸直的内收肌长位拉伸。"
+        ]
+      },
+      "contraindications": [],
+      "countingSemantics": "单侧侧跨—承重下移—收回计一次；左右分别计数，三段位移不拆成三次。",
+      "demonstratedSide": "both",
+      "evidence": [
+        {
+          "path": "drill-anim/specs/h-lateral-step-lunge.js",
+          "sha256": "933b2314dad33a29e97bb24f6fdd49dc6f8e380e0f34af96dcd70ccd786db851",
+          "fields": [
+            "revision",
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "精确修订及其导入链的姿态、支点、工作侧、高亮和动作边界用于编写spec-derived未审稿；高亮不证明肌肉疗效，动画循环不提供数值训练剂量。"
+        },
+        {
+          "path": "docs/078-v2plus-lateral-step-lunge-2026-10-21.md",
+          "sha256": "b499409f38644384fb72c95f00573dd52f9149e21322c0ea72349263225c11ee",
+          "fields": [
+            "purpose",
+            "muscles",
+            "equipment",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide",
+            "cautionNotes.zh"
+          ],
+          "note": "同一动作修订的目标、支持条件和示意限制；仅支持测试用语义草稿，不转移稀疏QA或模型审核为动作审核。"
+        },
+        {
+          "path": "catalog/taxonomy.json",
+          "sha256": "3da41109246bbd7a05328bd88b4cf9ddc6152f6139f7158dfb63d8d6e3ab8065",
+          "fields": [
+            "category",
+            "position",
+            "scenes",
+            "equipment",
+            "muscles"
+          ],
+          "note": "规范分类、体位、器材及已登记肌群名称；场景按已确认器材与体位选择。gripHand、bandPost及单杠支架wall不是独立训练器材；未登记的非弹性毛巾保留unknown。"
+        }
+      ],
+      "unknownFields": [
+        {
+          "field": "level",
+          "reason": "未找到该精确修订已确认的难度分级；不按负重、幅度或候选清单默认值推定等级。"
+        },
+        {
+          "field": "defaultDose.sets",
+          "reason": "该精确动作源未明确训练组数；母片循环次数不是训练组数。"
+        },
+        {
+          "field": "defaultDose.reps",
+          "reason": "未找到该精确动作的训练重复次数；不按母片循环数、动画轨道或相关动作剂量换算。"
+        },
+        {
+          "field": "defaultDose.restSeconds",
+          "reason": "未找到明确训练组间休息；母片准备、回程和停顿不等于训练休息。"
+        },
+        {
+          "field": "doseRange",
+          "reason": "源未提供已确认的训练剂量范围；不从动画时长、幅度或相近动作推导。"
+        },
+        {
+          "field": "cautions",
+          "reason": "没有该精确动作已确认的身体部位筛选标签；来源中的动作边界写入cautionNotes.zh，不把一般约束推定为部位标签。空数组不表示无需注意。"
+        },
+        {
+          "field": "contraindications",
+          "reason": "没有该动作已确认的结构化禁忌清单。空数组不表示没有禁忌，也不由一般动作提示推断疾病适用性。"
+        }
+      ],
+      "reviewed": false,
+      "releaseEligible": false
+    },
+    {
+      "id": "h-overhead-triceps-stretch",
+      "revision": "h-overhead-triceps-stretch-rr1",
+      "category": "stretch",
+      "purpose": "在站姿过头位轻柔保持右侧肱三头肌拉伸，由左掌辅助右上臂。",
+      "muscles": [
+        "肱三头肌"
+      ],
+      "position": "standing",
+      "unilateral": true,
+      "level": null,
+      "scenes": [
+        "home",
+        "gym"
+      ],
+      "equipment": [],
+      "defaultDose": {
+        "mode": "time",
+        "sets": null,
+        "seconds": null,
+        "restSeconds": null
+      },
+      "doseRange": {},
+      "cues": {
+        "zh": [
+          "右臂过头屈肘，左掌轻辅助右上臂，不强迫更大幅度。",
+          "双脚留地、躯干稳定，不压头或后仰来增加拉伸。"
+        ]
+      },
+      "primaryCue": 0,
+      "commonErrors": [
+        {
+          "zh": "辅助变成用力下压头颈、拉拽手腕，或改成负重伸肘。"
+        }
+      ],
+      "cautions": [],
+      "cautionNotes": {
+        "zh": []
+      },
+      "contraindications": [],
+      "countingSemantics": "右侧进入原拉伸位后连续计时，换侧另计；进出与高亮变化不计屈伸重复，8秒不作训练剂量。",
+      "demonstratedSide": "right",
+      "evidence": [
+        {
+          "path": "drill-anim/specs/h-overhead-triceps-stretch-rr1.js",
+          "sha256": "7aba2bf243c38df5458c593ca05309da68d134d810e01bf837ae0849923239c5",
+          "fields": [
+            "revision",
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "精确修订及其导入链的姿态、支点、工作侧、高亮和动作边界用于编写spec-derived未审稿；高亮不证明肌肉疗效，动画循环不提供数值训练剂量。"
+        },
+        {
+          "path": "docs/096-repair-r1-overhead-triceps-stretch-2026-10-22.md",
+          "sha256": "ef2b56e1383ea0b581f69abc3fb80a5362c36165fa4bde8b2c34a3e41ac9792d",
+          "fields": [
+            "purpose",
+            "muscles",
+            "equipment",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide",
+            "cautionNotes.zh"
+          ],
+          "note": "同一动作修订的目标、支持条件和示意限制；仅支持测试用语义草稿，不转移稀疏QA或模型审核为动作审核。"
+        },
+        {
+          "path": "catalog/taxonomy.json",
+          "sha256": "3da41109246bbd7a05328bd88b4cf9ddc6152f6139f7158dfb63d8d6e3ab8065",
+          "fields": [
+            "category",
+            "position",
+            "scenes",
+            "equipment",
+            "muscles"
+          ],
+          "note": "规范分类、体位、器材及已登记肌群名称；场景按已确认器材与体位选择。gripHand、bandPost及单杠支架wall不是独立训练器材；未登记的非弹性毛巾保留unknown。"
+        }
+      ],
+      "unknownFields": [
+        {
+          "field": "level",
+          "reason": "未找到该精确修订已确认的难度分级；不按负重、幅度或候选清单默认值推定等级。"
+        },
+        {
+          "field": "defaultDose.sets",
+          "reason": "该精确动作源未明确训练组数；母片循环次数不是训练组数。"
+        },
+        {
+          "field": "defaultDose.seconds",
+          "reason": "未找到该精确动作的训练保持秒数。8秒或10秒母片及保持段不是处方。"
+        },
+        {
+          "field": "defaultDose.restSeconds",
+          "reason": "未找到明确训练组间休息；母片准备、回程和停顿不等于训练休息。"
+        },
+        {
+          "field": "doseRange",
+          "reason": "源未提供已确认的训练剂量范围；不从动画时长、幅度或相近动作推导。"
+        },
+        {
+          "field": "cautions",
+          "reason": "没有该精确动作已确认的身体部位筛选标签；来源中的动作边界写入cautionNotes.zh，不把一般约束推定为部位标签。空数组不表示无需注意。"
+        },
+        {
+          "field": "contraindications",
+          "reason": "没有该动作已确认的结构化禁忌清单。空数组不表示没有禁忌，也不由一般动作提示推断疾病适用性。"
+        },
+        {
+          "field": "cautionNotes.zh",
+          "reason": "未提炼出独立于动作要领和常见错误的明确注意事项；空数组不表示无需注意。"
+        }
+      ],
+      "reviewed": false,
+      "releaseEligible": false
+    },
+    {
+      "id": "h-supine-heel-slide",
+      "revision": "h-supine-heel-slide-rr1",
+      "category": "mobility",
+      "purpose": "在头背与臀部保留支持的仰卧位练习左足跟贴面往返滑动；伸膝端主要由左臀承托。",
+      "muscles": [
+        "股四头肌",
+        "腘绳肌"
+      ],
+      "position": "supine",
+      "unilateral": true,
+      "level": null,
+      "scenes": [
+        "home",
+        "gym"
+      ],
+      "equipment": [
+        "mat"
+      ],
+      "defaultDose": {
+        "mode": "reps",
+        "sets": null,
+        "reps": null,
+        "restSeconds": null
+      },
+      "doseRange": {},
+      "cues": {
+        "zh": [
+          "右脚保持原位，左足跟沿垫面滑出再收回。",
+          "头、上背与臀部保留支持，不要求全程双臀同时贴垫；不抬髋做桥式，也不强压腰背。"
+        ]
+      },
+      "primaryCue": 0,
+      "commonErrors": [
+        {
+          "zh": "足跟离地变成举腿，或抬起骨盆、摆腰代替滑动。"
+        }
+      ],
+      "cautions": [],
+      "cautionNotes": {
+        "zh": [
+          "伸膝端主要由左臀承托，右臀并非全程接触；不应把双臀全程贴垫作为本版已验证条件。"
+        ]
+      },
+      "contraindications": [],
+      "countingSemantics": "左足跟滑出并收回计一次，另一侧另行安排；不按视频循环数填写每组次数。",
+      "demonstratedSide": "left",
+      "evidence": [
+        {
+          "path": "drill-anim/specs/h-supine-heel-slide-rr1.js",
+          "sha256": "506994b63d9a6d054ca931812d8d5163c49d96b9a5c9d6e16b2ac0dc460181c4",
+          "fields": [
+            "revision",
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "精确修订及其导入链的姿态、支点、工作侧、高亮和动作边界用于编写spec-derived未审稿；高亮不证明肌肉疗效，动画循环不提供数值训练剂量。"
+        },
+        {
+          "path": "docs/097-repair-r1-supine-heel-slide-2026-10-22.md",
+          "sha256": "191899ae931dddc8e5c3c5d3d7b0ef42bebe6dd2f502974fe73bf8fa8036a808",
+          "fields": [
+            "purpose",
+            "muscles",
+            "equipment",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide",
+            "cautionNotes.zh"
+          ],
+          "note": "同一动作修订的目标、支持条件和示意限制；仅支持测试用语义草稿，不转移稀疏QA或模型审核为动作审核。"
+        },
+        {
+          "path": "catalog/taxonomy.json",
+          "sha256": "3da41109246bbd7a05328bd88b4cf9ddc6152f6139f7158dfb63d8d6e3ab8065",
+          "fields": [
+            "category",
+            "position",
+            "scenes",
+            "equipment",
+            "muscles"
+          ],
+          "note": "规范分类、体位、器材及已登记肌群名称；场景按已确认器材与体位选择。gripHand、bandPost及单杠支架wall不是独立训练器材；未登记的非弹性毛巾保留unknown。"
+        }
+      ],
+      "unknownFields": [
+        {
+          "field": "level",
+          "reason": "未找到该精确修订已确认的难度分级；不按负重、幅度或候选清单默认值推定等级。"
+        },
+        {
+          "field": "defaultDose.sets",
+          "reason": "该精确动作源未明确训练组数；母片循环次数不是训练组数。"
+        },
+        {
+          "field": "defaultDose.reps",
+          "reason": "未找到该精确动作的训练重复次数；不按母片循环数、动画轨道或相关动作剂量换算。"
+        },
+        {
+          "field": "defaultDose.restSeconds",
+          "reason": "未找到明确训练组间休息；母片准备、回程和停顿不等于训练休息。"
+        },
+        {
+          "field": "doseRange",
+          "reason": "源未提供已确认的训练剂量范围；不从动画时长、幅度或相近动作推导。"
+        },
+        {
+          "field": "cautions",
+          "reason": "没有该精确动作已确认的身体部位筛选标签；来源中的动作边界写入cautionNotes.zh，不把一般约束推定为部位标签。空数组不表示无需注意。"
+        },
+        {
+          "field": "contraindications",
+          "reason": "没有该动作已确认的结构化禁忌清单。空数组不表示没有禁忌，也不由一般动作提示推断疾病适用性。"
+        }
+      ],
+      "reviewed": false,
+      "releaseEligible": false
+    },
+    {
+      "id": "h-kneeling-pushup",
+      "revision": "h-kneeling-pushup-rr1",
+      "category": "strength",
+      "purpose": "以双掌和双膝形成短杠杆支持，练习跪姿水平推起与下降。",
+      "muscles": [
+        "胸大肌",
+        "肱三头肌",
+        "腹直肌（含深层腹横肌）"
+      ],
+      "position": "prone",
+      "unilateral": false,
+      "level": null,
+      "scenes": [
+        "home",
+        "gym"
+      ],
+      "equipment": [],
+      "defaultDose": {
+        "mode": "reps",
+        "sets": null,
+        "reps": null,
+        "restSeconds": null
+      },
+      "doseRange": {},
+      "cues": {
+        "zh": [
+          "双掌、双膝与原脚位稳定，肩髋膝作为连续身体段下降和推起。",
+          "屈肘降低身体后推回，不让髋先向后折起。"
+        ]
+      },
+      "primaryCue": 0,
+      "commonErrors": [
+        {
+          "zh": "明显折髋、塌腰，或膝滑移、单掌离地。"
+        }
+      ],
+      "cautions": [],
+      "cautionNotes": {
+        "zh": []
+      },
+      "contraindications": [],
+      "countingSemantics": "从上位下降并推回原上位计一次；双侧同步，不按左右手分别计数。",
+      "demonstratedSide": "both",
+      "evidence": [
+        {
+          "path": "drill-anim/specs/h-kneeling-pushup-rr1.js",
+          "sha256": "0888e90865a379b8f16eaa8637634bb5ac4324ae1a96a6b1dcac4cdb872ff1d4",
+          "fields": [
+            "revision",
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "精确修订及其导入链的姿态、支点、工作侧、高亮和动作边界用于编写spec-derived未审稿；高亮不证明肌肉疗效，动画循环不提供数值训练剂量。"
+        },
+        {
+          "path": "docs/099-repair-r1-kneeling-pushup-2026-10-22.md",
+          "sha256": "ee7a69a99733eaffe7976f05ecd560bffff7a3d2e406d70b41ebd9b5fedb7508",
+          "fields": [
+            "purpose",
+            "muscles",
+            "equipment",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide",
+            "cautionNotes.zh"
+          ],
+          "note": "同一动作修订的目标、支持条件和示意限制；仅支持测试用语义草稿，不转移稀疏QA或模型审核为动作审核。"
+        },
+        {
+          "path": "catalog/taxonomy.json",
+          "sha256": "3da41109246bbd7a05328bd88b4cf9ddc6152f6139f7158dfb63d8d6e3ab8065",
+          "fields": [
+            "category",
+            "position",
+            "scenes",
+            "equipment",
+            "muscles"
+          ],
+          "note": "规范分类、体位、器材及已登记肌群名称；场景按已确认器材与体位选择。gripHand、bandPost及单杠支架wall不是独立训练器材；未登记的非弹性毛巾保留unknown。"
+        }
+      ],
+      "unknownFields": [
+        {
+          "field": "level",
+          "reason": "未找到该精确修订已确认的难度分级；不按负重、幅度或候选清单默认值推定等级。"
+        },
+        {
+          "field": "defaultDose.sets",
+          "reason": "该精确动作源未明确训练组数；母片循环次数不是训练组数。"
+        },
+        {
+          "field": "defaultDose.reps",
+          "reason": "未找到该精确动作的训练重复次数；不按母片循环数、动画轨道或相关动作剂量换算。"
+        },
+        {
+          "field": "defaultDose.restSeconds",
+          "reason": "未找到明确训练组间休息；母片准备、回程和停顿不等于训练休息。"
+        },
+        {
+          "field": "doseRange",
+          "reason": "源未提供已确认的训练剂量范围；不从动画时长、幅度或相近动作推导。"
+        },
+        {
+          "field": "cautions",
+          "reason": "没有该精确动作已确认的身体部位筛选标签；来源中的动作边界写入cautionNotes.zh，不把一般约束推定为部位标签。空数组不表示无需注意。"
+        },
+        {
+          "field": "contraindications",
+          "reason": "没有该动作已确认的结构化禁忌清单。空数组不表示没有禁忌，也不由一般动作提示推断疾病适用性。"
+        },
+        {
+          "field": "cautionNotes.zh",
+          "reason": "未提炼出独立于动作要领和常见错误的明确注意事项；空数组不表示无需注意。"
+        }
+      ],
+      "reviewed": false,
+      "releaseEligible": false
+    },
+    {
+      "id": "h-short-side-plank",
+      "revision": "h-short-side-plank-rr2",
+      "category": "core",
+      "purpose": "维持下侧前臂、膝与侧胫支撑的屈膝短杠杆抗侧屈姿势。",
+      "muscles": [
+        "腹斜肌"
+      ],
+      "position": "side_lying",
+      "unilateral": true,
+      "level": null,
+      "scenes": [
+        "home",
+        "gym"
+      ],
+      "equipment": [
+        "mat"
+      ],
+      "defaultDose": {
+        "mode": "time",
+        "sets": null,
+        "seconds": null,
+        "restSeconds": null
+      },
+      "doseRange": {},
+      "cues": {
+        "zh": [
+          "左前臂、下侧膝和侧胫保留支持，肩到膝的身体线保持稳定。",
+          "上侧手自由放置，不抬上腿，也不改成直臂直腿侧撑。"
+        ]
+      },
+      "primaryCue": 0,
+      "commonErrors": [
+        {
+          "zh": "下侧膝悬空、骨盆下坠，或改成上侧腿抬起的另一动作。"
+        }
+      ],
+      "cautions": [],
+      "cautionNotes": {
+        "zh": []
+      },
+      "contraindications": [],
+      "countingSemantics": "左侧支撑姿势连续保持计时，进入退出不算重复；换右侧另计，静态8秒不是处方时长。",
+      "demonstratedSide": "left",
+      "evidence": [
+        {
+          "path": "drill-anim/specs/h-short-side-plank-rr2.js",
+          "sha256": "1983b696c979abdfb799da4f488633db55923e07a3f739f380d584a80280dfee",
+          "fields": [
+            "revision",
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "精确修订及其导入链的姿态、支点、工作侧、高亮和动作边界用于编写spec-derived未审稿；高亮不证明肌肉疗效，动画循环不提供数值训练剂量。"
+        },
+        {
+          "path": "drill-anim/specs/h-short-side-plank-rr1.js",
+          "sha256": "7f4827802f245109adbd027ae30929dc0a3709ec5ede52370b229b14d594003e",
+          "fields": [
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "当前修订明确导入的保留源；按后续修订覆盖关系核对支持与轨迹，不继承旧版身份、审批或训练剂量。"
+        },
+        {
+          "path": "docs/100-repair-r1-short-side-plank-2026-10-22.md",
+          "sha256": "7b7d0da4174282e455f73d47bf949527e6ec0a134d7c42dbf8bc83c64fc37b22",
+          "fields": [
+            "purpose",
+            "muscles",
+            "equipment",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide",
+            "cautionNotes.zh"
+          ],
+          "note": "同一动作修订的目标、支持条件和示意限制；仅支持测试用语义草稿，不转移稀疏QA或模型审核为动作审核。"
+        },
+        {
+          "path": "catalog/taxonomy.json",
+          "sha256": "3da41109246bbd7a05328bd88b4cf9ddc6152f6139f7158dfb63d8d6e3ab8065",
+          "fields": [
+            "category",
+            "position",
+            "scenes",
+            "equipment",
+            "muscles"
+          ],
+          "note": "规范分类、体位、器材及已登记肌群名称；场景按已确认器材与体位选择。gripHand、bandPost及单杠支架wall不是独立训练器材；未登记的非弹性毛巾保留unknown。"
+        }
+      ],
+      "unknownFields": [
+        {
+          "field": "level",
+          "reason": "未找到该精确修订已确认的难度分级；不按负重、幅度或候选清单默认值推定等级。"
+        },
+        {
+          "field": "defaultDose.sets",
+          "reason": "该精确动作源未明确训练组数；母片循环次数不是训练组数。"
+        },
+        {
+          "field": "defaultDose.seconds",
+          "reason": "未找到该精确动作的训练保持秒数。8秒或10秒母片及保持段不是处方。"
+        },
+        {
+          "field": "defaultDose.restSeconds",
+          "reason": "未找到明确训练组间休息；母片准备、回程和停顿不等于训练休息。"
+        },
+        {
+          "field": "doseRange",
+          "reason": "源未提供已确认的训练剂量范围；不从动画时长、幅度或相近动作推导。"
+        },
+        {
+          "field": "cautions",
+          "reason": "没有该精确动作已确认的身体部位筛选标签；来源中的动作边界写入cautionNotes.zh，不把一般约束推定为部位标签。空数组不表示无需注意。"
+        },
+        {
+          "field": "contraindications",
+          "reason": "没有该动作已确认的结构化禁忌清单。空数组不表示没有禁忌，也不由一般动作提示推断疾病适用性。"
+        },
+        {
+          "field": "cautionNotes.zh",
+          "reason": "未提炼出独立于动作要领和常见错误的明确注意事项；空数组不表示无需注意。"
+        }
+      ],
+      "reviewed": false,
+      "releaseEligible": false
+    },
+    {
+      "id": "h-goblet-squat",
+      "revision": "h-goblet-squat-rr1",
+      "category": "strength",
+      "purpose": "在双掌承托竖直哑铃上端头的条件下练习负重深蹲。",
+      "muscles": [
+        "股四头肌",
+        "臀大肌"
+      ],
+      "position": "standing",
+      "unilateral": false,
+      "level": null,
+      "scenes": [
+        "gym"
+      ],
+      "equipment": [
+        "dumbbell"
+      ],
+      "defaultDose": {
+        "mode": "reps",
+        "sets": null,
+        "reps": null,
+        "restSeconds": null
+      },
+      "doseRange": {},
+      "cues": {
+        "zh": [
+          "双掌在哑铃上端头下方承托，手腕保持协调。",
+          "双足维持原位置，下蹲后受控站回，哑铃不远离躯干。"
+        ]
+      },
+      "primaryCue": 0,
+      "commonErrors": [
+        {
+          "zh": "只用指尖捏住哑铃顶面、掌部失去托握，或移动脚位。"
+        }
+      ],
+      "cautions": [],
+      "cautionNotes": {
+        "zh": []
+      },
+      "contraindications": [],
+      "countingSemantics": "从站立下蹲并站回计一次；双腿同步，不按手数或哑铃个数计次。",
+      "demonstratedSide": "both",
+      "evidence": [
+        {
+          "path": "drill-anim/specs/h-goblet-squat-rr1.js",
+          "sha256": "8f549385fed2b834e9c0db580e4234c10074266a39543d2fd225fa3092efd9d6",
+          "fields": [
+            "revision",
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "精确修订及其导入链的姿态、支点、工作侧、高亮和动作边界用于编写spec-derived未审稿；高亮不证明肌肉疗效，动画循环不提供数值训练剂量。"
+        },
+        {
+          "path": "docs/101-repair-r1-goblet-squat-2026-10-22.md",
+          "sha256": "fdbc89da48505ea364b1643dc0f52f354e2881c7459034b75c08e111d24387ef",
+          "fields": [
+            "purpose",
+            "muscles",
+            "equipment",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide",
+            "cautionNotes.zh"
+          ],
+          "note": "同一动作修订的目标、支持条件和示意限制；仅支持测试用语义草稿，不转移稀疏QA或模型审核为动作审核。"
+        },
+        {
+          "path": "catalog/taxonomy.json",
+          "sha256": "3da41109246bbd7a05328bd88b4cf9ddc6152f6139f7158dfb63d8d6e3ab8065",
+          "fields": [
+            "category",
+            "position",
+            "scenes",
+            "equipment",
+            "muscles"
+          ],
+          "note": "规范分类、体位、器材及已登记肌群名称；场景按已确认器材与体位选择。gripHand、bandPost及单杠支架wall不是独立训练器材；未登记的非弹性毛巾保留unknown。"
+        }
+      ],
+      "unknownFields": [
+        {
+          "field": "level",
+          "reason": "未找到该精确修订已确认的难度分级；不按负重、幅度或候选清单默认值推定等级。"
+        },
+        {
+          "field": "defaultDose.sets",
+          "reason": "该精确动作源未明确训练组数；母片循环次数不是训练组数。"
+        },
+        {
+          "field": "defaultDose.reps",
+          "reason": "未找到该精确动作的训练重复次数；不按母片循环数、动画轨道或相关动作剂量换算。"
+        },
+        {
+          "field": "defaultDose.restSeconds",
+          "reason": "未找到明确训练组间休息；母片准备、回程和停顿不等于训练休息。"
+        },
+        {
+          "field": "doseRange",
+          "reason": "源未提供已确认的训练剂量范围；不从动画时长、幅度或相近动作推导。"
+        },
+        {
+          "field": "cautions",
+          "reason": "没有该精确动作已确认的身体部位筛选标签；来源中的动作边界写入cautionNotes.zh，不把一般约束推定为部位标签。空数组不表示无需注意。"
+        },
+        {
+          "field": "contraindications",
+          "reason": "没有该动作已确认的结构化禁忌清单。空数组不表示没有禁忌，也不由一般动作提示推断疾病适用性。"
+        },
+        {
+          "field": "cautionNotes.zh",
+          "reason": "未提炼出独立于动作要领和常见错误的明确注意事项；空数组不表示无需注意。"
+        }
+      ],
+      "reviewed": false,
+      "releaseEligible": false
+    },
+    {
+      "id": "h-db-floor-fly",
+      "revision": "h-db-floor-fly-rr1",
+      "category": "strength",
+      "purpose": "在仰卧支持和固定软肘下练习哑铃地板飞鸟的肩水平内收。",
+      "muscles": [
+        "胸大肌"
+      ],
+      "position": "supine",
+      "unilateral": false,
+      "level": null,
+      "scenes": [
+        "gym"
+      ],
+      "equipment": [
+        "mat",
+        "dumbbell"
+      ],
+      "defaultDose": {
+        "mode": "reps",
+        "sets": null,
+        "reps": null,
+        "restSeconds": null
+      },
+      "doseRange": {},
+      "cues": {
+        "zh": [
+          "头、上背和臀部保留支持，双臂维持软肘。",
+          "持铃向两侧展开至原地面限位，再沿肩部弧线合回。"
+        ]
+      },
+      "primaryCue": 0,
+      "commonErrors": [
+        {
+          "zh": "大幅屈伸肘变成地板卧推，或抬起头背、让哑铃撞地。"
+        }
+      ],
+      "cautions": [],
+      "cautionNotes": {
+        "zh": []
+      },
+      "contraindications": [],
+      "countingSemantics": "双臂受控展开并合回计一次；双侧同步，不分左右重复计数。",
+      "demonstratedSide": "both",
+      "evidence": [
+        {
+          "path": "drill-anim/specs/h-db-floor-fly-rr1.js",
+          "sha256": "7a35f50d1564267545c301f1d8c678a9c85f559a5591a56c027941a181754d09",
+          "fields": [
+            "revision",
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "精确修订及其导入链的姿态、支点、工作侧、高亮和动作边界用于编写spec-derived未审稿；高亮不证明肌肉疗效，动画循环不提供数值训练剂量。"
+        },
+        {
+          "path": "docs/102-repair-r1-floor-fly-2026-10-22.md",
+          "sha256": "cb6ca784d9bebc23554213799948d606ede73effd213d5f283edc6d254b779f1",
+          "fields": [
+            "purpose",
+            "muscles",
+            "equipment",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide",
+            "cautionNotes.zh"
+          ],
+          "note": "同一动作修订的目标、支持条件和示意限制；仅支持测试用语义草稿，不转移稀疏QA或模型审核为动作审核。"
+        },
+        {
+          "path": "catalog/taxonomy.json",
+          "sha256": "3da41109246bbd7a05328bd88b4cf9ddc6152f6139f7158dfb63d8d6e3ab8065",
+          "fields": [
+            "category",
+            "position",
+            "scenes",
+            "equipment",
+            "muscles"
+          ],
+          "note": "规范分类、体位、器材及已登记肌群名称；场景按已确认器材与体位选择。gripHand、bandPost及单杠支架wall不是独立训练器材；未登记的非弹性毛巾保留unknown。"
+        }
+      ],
+      "unknownFields": [
+        {
+          "field": "level",
+          "reason": "未找到该精确修订已确认的难度分级；不按负重、幅度或候选清单默认值推定等级。"
+        },
+        {
+          "field": "defaultDose.sets",
+          "reason": "该精确动作源未明确训练组数；母片循环次数不是训练组数。"
+        },
+        {
+          "field": "defaultDose.reps",
+          "reason": "未找到该精确动作的训练重复次数；不按母片循环数、动画轨道或相关动作剂量换算。"
+        },
+        {
+          "field": "defaultDose.restSeconds",
+          "reason": "未找到明确训练组间休息；母片准备、回程和停顿不等于训练休息。"
+        },
+        {
+          "field": "doseRange",
+          "reason": "源未提供已确认的训练剂量范围；不从动画时长、幅度或相近动作推导。"
+        },
+        {
+          "field": "cautions",
+          "reason": "没有该精确动作已确认的身体部位筛选标签；来源中的动作边界写入cautionNotes.zh，不把一般约束推定为部位标签。空数组不表示无需注意。"
+        },
+        {
+          "field": "contraindications",
+          "reason": "没有该动作已确认的结构化禁忌清单。空数组不表示没有禁忌，也不由一般动作提示推断疾病适用性。"
+        },
+        {
+          "field": "cautionNotes.zh",
+          "reason": "未提炼出独立于动作要领和常见错误的明确注意事项；空数组不表示无需注意。"
+        }
+      ],
+      "reviewed": false,
+      "releaseEligible": false
+    },
+    {
+      "id": "h-quadruped-open",
+      "revision": "h-quadruped-open-rr1",
+      "category": "mobility",
+      "purpose": "在左掌与双膝支持下练习右臂随胸廓旋转开胸再返回。",
+      "muscles": [
+        "腹斜肌",
+        "竖脊肌",
+        "前锯肌"
+      ],
+      "position": "quadruped",
+      "unilateral": true,
+      "level": null,
+      "scenes": [
+        "home",
+        "gym"
+      ],
+      "equipment": [
+        "mat"
+      ],
+      "defaultDose": {
+        "mode": "reps",
+        "sets": null,
+        "reps": null,
+        "restSeconds": null
+      },
+      "doseRange": {},
+      "cues": {
+        "zh": [
+          "左掌和双膝保留支持，右手离地随胸廓旋转打开。",
+          "骨盆和下肢支持留在原处，再将右手返回起始位置。"
+        ]
+      },
+      "primaryCue": 0,
+      "commonErrors": [
+        {
+          "zh": "左肘明显屈曲、支持手移位，或带动骨盆双膝一起翻转。"
+        }
+      ],
+      "cautions": [],
+      "cautionNotes": {
+        "zh": []
+      },
+      "contraindications": [],
+      "countingSemantics": "右侧开胸并返回原支撑起点计一次；另一侧另计，保持位停留不算重复。",
+      "demonstratedSide": "right",
+      "evidence": [
+        {
+          "path": "drill-anim/specs/h-quadruped-open-rr1.js",
+          "sha256": "5b768b8cad0e15fd3f8cf5d21a1c69ab88a4bd60293c5b180cf1fa22b184c8aa",
+          "fields": [
+            "revision",
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "精确修订及其导入链的姿态、支点、工作侧、高亮和动作边界用于编写spec-derived未审稿；高亮不证明肌肉疗效，动画循环不提供数值训练剂量。"
+        },
+        {
+          "path": "docs/103-repair-r1-quadruped-open-2026-10-22.md",
+          "sha256": "06a808c4c0a3d62a9a52551ed3c8720a22b66d22456645ec5a5a72560d2b0fb4",
+          "fields": [
+            "purpose",
+            "muscles",
+            "equipment",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide",
+            "cautionNotes.zh"
+          ],
+          "note": "同一动作修订的目标、支持条件和示意限制；仅支持测试用语义草稿，不转移稀疏QA或模型审核为动作审核。"
+        },
+        {
+          "path": "catalog/taxonomy.json",
+          "sha256": "3da41109246bbd7a05328bd88b4cf9ddc6152f6139f7158dfb63d8d6e3ab8065",
+          "fields": [
+            "category",
+            "position",
+            "scenes",
+            "equipment",
+            "muscles"
+          ],
+          "note": "规范分类、体位、器材及已登记肌群名称；场景按已确认器材与体位选择。gripHand、bandPost及单杠支架wall不是独立训练器材；未登记的非弹性毛巾保留unknown。"
+        }
+      ],
+      "unknownFields": [
+        {
+          "field": "level",
+          "reason": "未找到该精确修订已确认的难度分级；不按负重、幅度或候选清单默认值推定等级。"
+        },
+        {
+          "field": "defaultDose.sets",
+          "reason": "该精确动作源未明确训练组数；母片循环次数不是训练组数。"
+        },
+        {
+          "field": "defaultDose.reps",
+          "reason": "未找到该精确动作的训练重复次数；不按母片循环数、动画轨道或相关动作剂量换算。"
+        },
+        {
+          "field": "defaultDose.restSeconds",
+          "reason": "未找到明确训练组间休息；母片准备、回程和停顿不等于训练休息。"
+        },
+        {
+          "field": "doseRange",
+          "reason": "源未提供已确认的训练剂量范围；不从动画时长、幅度或相近动作推导。"
+        },
+        {
+          "field": "cautions",
+          "reason": "没有该精确动作已确认的身体部位筛选标签；来源中的动作边界写入cautionNotes.zh，不把一般约束推定为部位标签。空数组不表示无需注意。"
+        },
+        {
+          "field": "contraindications",
+          "reason": "没有该动作已确认的结构化禁忌清单。空数组不表示没有禁忌，也不由一般动作提示推断疾病适用性。"
+        },
+        {
+          "field": "cautionNotes.zh",
+          "reason": "未提炼出独立于动作要领和常见错误的明确注意事项；空数组不表示无需注意。"
+        }
+      ],
+      "reviewed": false,
+      "releaseEligible": false
+    },
+    {
+      "id": "h-sleeper-stretch",
+      "revision": "h-sleeper-stretch-rr1",
+      "category": "stretch",
+      "purpose": "在左侧卧及上臂受支持条件下，由右掌轻辅助左肩内旋拉伸。",
+      "muscles": [
+        "冈下肌",
+        "三角肌后束"
+      ],
+      "position": "side_lying",
+      "unilateral": true,
+      "level": null,
+      "scenes": [
+        "home",
+        "gym"
+      ],
+      "equipment": [
+        "mat"
+      ],
+      "defaultDose": {
+        "mode": "time",
+        "sets": null,
+        "seconds": null,
+        "restSeconds": null
+      },
+      "doseRange": {},
+      "cues": {
+        "zh": [
+          "左上臂和头部沿原支垫获得支持，左肘保留原屈曲位置。",
+          "右掌轻辅助左前臂进入当前小范围内旋，不用大力下压。"
+        ]
+      },
+      "primaryCue": 0,
+      "commonErrors": [
+        {
+          "zh": "用力下压前臂追求幅度，或抬起上臂、肘而失去原支持。"
+        }
+      ],
+      "cautions": [],
+      "cautionNotes": {
+        "zh": [
+          "辅助掌保持轻柔，保留头部与上臂支持；支垫为示意，不能据此宣称医学恢复效果。"
+        ]
+      },
+      "contraindications": [],
+      "countingSemantics": "左肩进入辅助拉伸位后连续计时；回程、画面循环与内部twist变化不按重复计数，保持秒数待定。",
+      "demonstratedSide": "left",
+      "evidence": [
+        {
+          "path": "drill-anim/specs/h-sleeper-stretch-rr1.js",
+          "sha256": "80471aba84347b917b6f8ec230d50dcf6de475d8fd6b702ff214e814682e5dfe",
+          "fields": [
+            "revision",
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "精确修订及其导入链的姿态、支点、工作侧、高亮和动作边界用于编写spec-derived未审稿；高亮不证明肌肉疗效，动画循环不提供数值训练剂量。"
+        },
+        {
+          "path": "docs/104-repair-r1-sleeper-stretch-2026-10-22.md",
+          "sha256": "cf7c0a2389159ca7d5e6ebec2f862c0033d1332ffb5e5de5b742ad8f21b8f4ac",
+          "fields": [
+            "purpose",
+            "muscles",
+            "equipment",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide",
+            "cautionNotes.zh"
+          ],
+          "note": "同一动作修订的目标、支持条件和示意限制；仅支持测试用语义草稿，不转移稀疏QA或模型审核为动作审核。"
+        },
+        {
+          "path": "catalog/taxonomy.json",
+          "sha256": "3da41109246bbd7a05328bd88b4cf9ddc6152f6139f7158dfb63d8d6e3ab8065",
+          "fields": [
+            "category",
+            "position",
+            "scenes",
+            "equipment",
+            "muscles"
+          ],
+          "note": "规范分类、体位、器材及已登记肌群名称；场景按已确认器材与体位选择。gripHand、bandPost及单杠支架wall不是独立训练器材；未登记的非弹性毛巾保留unknown。"
+        }
+      ],
+      "unknownFields": [
+        {
+          "field": "level",
+          "reason": "未找到该精确修订已确认的难度分级；不按负重、幅度或候选清单默认值推定等级。"
+        },
+        {
+          "field": "defaultDose.sets",
+          "reason": "该精确动作源未明确训练组数；母片循环次数不是训练组数。"
+        },
+        {
+          "field": "defaultDose.seconds",
+          "reason": "未找到该精确动作的训练保持秒数。8秒或10秒母片及保持段不是处方。"
+        },
+        {
+          "field": "defaultDose.restSeconds",
+          "reason": "未找到明确训练组间休息；母片准备、回程和停顿不等于训练休息。"
+        },
+        {
+          "field": "doseRange",
+          "reason": "源未提供已确认的训练剂量范围；不从动画时长、幅度或相近动作推导。"
+        },
+        {
+          "field": "cautions",
+          "reason": "没有该精确动作已确认的身体部位筛选标签；来源中的动作边界写入cautionNotes.zh，不把一般约束推定为部位标签。空数组不表示无需注意。"
+        },
+        {
+          "field": "contraindications",
+          "reason": "没有该动作已确认的结构化禁忌清单。空数组不表示没有禁忌，也不由一般动作提示推断疾病适用性。"
+        }
+      ],
+      "reviewed": false,
+      "releaseEligible": false
+    },
+    {
+      "id": "o-seated-sidebend",
+      "revision": "o-seated-sidebend-rr2",
+      "category": "stretch",
+      "purpose": "在骨盆稳定坐椅的条件下练习右臂上举的右侧躯干侧伸。",
+      "muscles": [
+        "腹斜肌"
+      ],
+      "position": "seated",
+      "unilateral": true,
+      "level": null,
+      "scenes": [
+        "home",
+        "office",
+        "gym"
+      ],
+      "equipment": [
+        "chair"
+      ],
+      "defaultDose": {
+        "mode": "time",
+        "sets": null,
+        "seconds": null,
+        "restSeconds": null
+      },
+      "doseRange": {},
+      "cues": {
+        "zh": [
+          "双脚固定、骨盆留在椅面，右臂上举随胸廓向左侧伸。",
+          "不要抬起臀部或移脚来扩大侧弯。"
+        ]
+      },
+      "primaryCue": 0,
+      "commonErrors": [
+        {
+          "zh": "抬起一侧臀部或移动双脚，或把演示幅度当作必须达到的极限。"
+        }
+      ],
+      "cautions": [],
+      "cautionNotes": {
+        "zh": []
+      },
+      "contraindications": [],
+      "countingSemantics": "右侧躯干进入侧伸位后连续计时，另一侧另计；向左弯伸展右侧，不把弯曲方向误作训练侧。",
+      "demonstratedSide": "right",
+      "evidence": [
+        {
+          "path": "drill-anim/specs/o-seated-sidebend-rr2.js",
+          "sha256": "0cffc9f026c3e4b3c1c8349caee48a4d04dd681fa0a1901ca6c367e0a34aacc4",
+          "fields": [
+            "revision",
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "精确修订及其导入链的姿态、支点、工作侧、高亮和动作边界用于编写spec-derived未审稿；高亮不证明肌肉疗效，动画循环不提供数值训练剂量。"
+        },
+        {
+          "path": "drill-anim/specs/o-seated-sidebend-rr1.js",
+          "sha256": "949f250962a630dc0db2e48933ba9b72dd8058bca6457a2dd806d293d9924787",
+          "fields": [
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "当前修订明确导入的保留源；按后续修订覆盖关系核对支持与轨迹，不继承旧版身份、审批或训练剂量。"
+        },
+        {
+          "path": "docs/105-repair-r1-seated-sidebend-2026-10-22.md",
+          "sha256": "1a27e6d0ab7d41e0aa5276764f129857827f39fa2a09e41fdee9704fc65bfb4b",
+          "fields": [
+            "purpose",
+            "muscles",
+            "equipment",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide",
+            "cautionNotes.zh"
+          ],
+          "note": "同一动作修订的目标、支持条件和示意限制；仅支持测试用语义草稿，不转移稀疏QA或模型审核为动作审核。"
+        },
+        {
+          "path": "catalog/taxonomy.json",
+          "sha256": "3da41109246bbd7a05328bd88b4cf9ddc6152f6139f7158dfb63d8d6e3ab8065",
+          "fields": [
+            "category",
+            "position",
+            "scenes",
+            "equipment",
+            "muscles"
+          ],
+          "note": "规范分类、体位、器材及已登记肌群名称；场景按已确认器材与体位选择。gripHand、bandPost及单杠支架wall不是独立训练器材；未登记的非弹性毛巾保留unknown。"
+        }
+      ],
+      "unknownFields": [
+        {
+          "field": "level",
+          "reason": "未找到该精确修订已确认的难度分级；不按负重、幅度或候选清单默认值推定等级。"
+        },
+        {
+          "field": "defaultDose.sets",
+          "reason": "该精确动作源未明确训练组数；母片循环次数不是训练组数。"
+        },
+        {
+          "field": "defaultDose.seconds",
+          "reason": "未找到该精确动作的训练保持秒数。8秒或10秒母片及保持段不是处方。"
+        },
+        {
+          "field": "defaultDose.restSeconds",
+          "reason": "未找到明确训练组间休息；母片准备、回程和停顿不等于训练休息。"
+        },
+        {
+          "field": "doseRange",
+          "reason": "源未提供已确认的训练剂量范围；不从动画时长、幅度或相近动作推导。"
+        },
+        {
+          "field": "cautions",
+          "reason": "没有该精确动作已确认的身体部位筛选标签；来源中的动作边界写入cautionNotes.zh，不把一般约束推定为部位标签。空数组不表示无需注意。"
+        },
+        {
+          "field": "contraindications",
+          "reason": "没有该动作已确认的结构化禁忌清单。空数组不表示没有禁忌，也不由一般动作提示推断疾病适用性。"
+        },
+        {
+          "field": "cautionNotes.zh",
+          "reason": "未提炼出独立于动作要领和常见错误的明确注意事项；空数组不表示无需注意。"
+        }
+      ],
+      "reviewed": false,
+      "releaseEligible": false
+    },
+    {
+      "id": "h-quadruped-rockback",
+      "revision": "h-quadruped-rockback-rr1",
+      "category": "mobility",
+      "purpose": "在固定双掌双膝支持下练习中立背的髋后坐与返回。",
+      "muscles": [
+        "臀大肌"
+      ],
+      "position": "quadruped",
+      "unilateral": false,
+      "level": null,
+      "scenes": [
+        "home",
+        "gym"
+      ],
+      "equipment": [
+        "mat"
+      ],
+      "defaultDose": {
+        "mode": "reps",
+        "sets": null,
+        "reps": null,
+        "restSeconds": null
+      },
+      "doseRange": {},
+      "cues": {
+        "zh": [
+          "双掌双膝保持原位，手肘接近伸直。",
+          "背部保持中立，让髋后移再回到原四足位置。"
+        ]
+      },
+      "primaryCue": 0,
+      "commonErrors": [
+        {
+          "zh": "改成明显弓背塌腰，或滑掌滑膝、屈肘以扩大后坐。"
+        }
+      ],
+      "cautions": [],
+      "cautionNotes": {
+        "zh": []
+      },
+      "contraindications": [],
+      "countingSemantics": "髋后坐并返回原四足位置计一次；不是猫牛背部屈伸，不按左右膝分别计数。",
+      "demonstratedSide": "both",
+      "evidence": [
+        {
+          "path": "drill-anim/specs/h-quadruped-rockback-rr1.js",
+          "sha256": "98ef918dbcd961abb9483bcecad1c4dc8d5f3b803a22363ef4c405c0f1fd9687",
+          "fields": [
+            "revision",
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "精确修订及其导入链的姿态、支点、工作侧、高亮和动作边界用于编写spec-derived未审稿；高亮不证明肌肉疗效，动画循环不提供数值训练剂量。"
+        },
+        {
+          "path": "docs/106-repair-r1-quadruped-rockback-2026-10-22.md",
+          "sha256": "1e349faf84bf018a907a5f04dfc0b31934c83182ba2623ebe0c428188eeb9424",
+          "fields": [
+            "purpose",
+            "muscles",
+            "equipment",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide",
+            "cautionNotes.zh"
+          ],
+          "note": "同一动作修订的目标、支持条件和示意限制；仅支持测试用语义草稿，不转移稀疏QA或模型审核为动作审核。"
+        },
+        {
+          "path": "catalog/taxonomy.json",
+          "sha256": "3da41109246bbd7a05328bd88b4cf9ddc6152f6139f7158dfb63d8d6e3ab8065",
+          "fields": [
+            "category",
+            "position",
+            "scenes",
+            "equipment",
+            "muscles"
+          ],
+          "note": "规范分类、体位、器材及已登记肌群名称；场景按已确认器材与体位选择。gripHand、bandPost及单杠支架wall不是独立训练器材；未登记的非弹性毛巾保留unknown。"
+        }
+      ],
+      "unknownFields": [
+        {
+          "field": "level",
+          "reason": "未找到该精确修订已确认的难度分级；不按负重、幅度或候选清单默认值推定等级。"
+        },
+        {
+          "field": "defaultDose.sets",
+          "reason": "该精确动作源未明确训练组数；母片循环次数不是训练组数。"
+        },
+        {
+          "field": "defaultDose.reps",
+          "reason": "未找到该精确动作的训练重复次数；不按母片循环数、动画轨道或相关动作剂量换算。"
+        },
+        {
+          "field": "defaultDose.restSeconds",
+          "reason": "未找到明确训练组间休息；母片准备、回程和停顿不等于训练休息。"
+        },
+        {
+          "field": "doseRange",
+          "reason": "源未提供已确认的训练剂量范围；不从动画时长、幅度或相近动作推导。"
+        },
+        {
+          "field": "cautions",
+          "reason": "没有该精确动作已确认的身体部位筛选标签；来源中的动作边界写入cautionNotes.zh，不把一般约束推定为部位标签。空数组不表示无需注意。"
+        },
+        {
+          "field": "contraindications",
+          "reason": "没有该动作已确认的结构化禁忌清单。空数组不表示没有禁忌，也不由一般动作提示推断疾病适用性。"
+        },
+        {
+          "field": "cautionNotes.zh",
+          "reason": "未提炼出独立于动作要领和常见错误的明确注意事项；空数组不表示无需注意。"
+        }
+      ],
+      "reviewed": false,
+      "releaseEligible": false
+    },
+    {
+      "id": "o-seated-calf-raise",
+      "revision": "o-seated-calf-raise-rr1",
+      "category": "strength",
+      "purpose": "在椅面持续承托骨盆的坐姿下练习双脚抬跟与回落。",
+      "muscles": [
+        "小腿三头肌"
+      ],
+      "position": "seated",
+      "unilateral": false,
+      "level": null,
+      "scenes": [
+        "home",
+        "office",
+        "gym"
+      ],
+      "equipment": [
+        "chair"
+      ],
+      "defaultDose": {
+        "mode": "reps",
+        "sets": null,
+        "reps": null,
+        "restSeconds": null
+      },
+      "doseRange": {},
+      "cues": {
+        "zh": [
+          "骨盆维持椅面支持，双膝保持坐姿弯曲。",
+          "前脚部留地，双脚跟同步抬起再落回，不起身。"
+        ]
+      },
+      "primaryCue": 0,
+      "commonErrors": [
+        {
+          "zh": "臀部抬离椅面，或整脚离地变成伸膝抬腿。"
+        }
+      ],
+      "cautions": [],
+      "cautionNotes": {
+        "zh": []
+      },
+      "contraindications": [],
+      "countingSemantics": "双脚同步抬跟并回落计一次；母片两个周期不等于每组训练次数。",
+      "demonstratedSide": "both",
+      "evidence": [
+        {
+          "path": "drill-anim/specs/o-seated-calf-raise-rr1.js",
+          "sha256": "386d3b0f9c91c65425e0fce545a991fa4dd8fa388df31f27fd1b0117bdc0fef4",
+          "fields": [
+            "revision",
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "精确修订及其导入链的姿态、支点、工作侧、高亮和动作边界用于编写spec-derived未审稿；高亮不证明肌肉疗效，动画循环不提供数值训练剂量。"
+        },
+        {
+          "path": "docs/107-repair-r1-seated-calf-raise-2026-10-22.md",
+          "sha256": "f4f7e038cd700bdb8265c74b15b7a3ae9c908940fa75de4d0715295e3653521e",
+          "fields": [
+            "purpose",
+            "muscles",
+            "equipment",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide",
+            "cautionNotes.zh"
+          ],
+          "note": "同一动作修订的目标、支持条件和示意限制；仅支持测试用语义草稿，不转移稀疏QA或模型审核为动作审核。"
+        },
+        {
+          "path": "catalog/taxonomy.json",
+          "sha256": "3da41109246bbd7a05328bd88b4cf9ddc6152f6139f7158dfb63d8d6e3ab8065",
+          "fields": [
+            "category",
+            "position",
+            "scenes",
+            "equipment",
+            "muscles"
+          ],
+          "note": "规范分类、体位、器材及已登记肌群名称；场景按已确认器材与体位选择。gripHand、bandPost及单杠支架wall不是独立训练器材；未登记的非弹性毛巾保留unknown。"
+        }
+      ],
+      "unknownFields": [
+        {
+          "field": "level",
+          "reason": "未找到该精确修订已确认的难度分级；不按负重、幅度或候选清单默认值推定等级。"
+        },
+        {
+          "field": "defaultDose.sets",
+          "reason": "该精确动作源未明确训练组数；母片循环次数不是训练组数。"
+        },
+        {
+          "field": "defaultDose.reps",
+          "reason": "未找到该精确动作的训练重复次数；不按母片循环数、动画轨道或相关动作剂量换算。"
+        },
+        {
+          "field": "defaultDose.restSeconds",
+          "reason": "未找到明确训练组间休息；母片准备、回程和停顿不等于训练休息。"
+        },
+        {
+          "field": "doseRange",
+          "reason": "源未提供已确认的训练剂量范围；不从动画时长、幅度或相近动作推导。"
+        },
+        {
+          "field": "cautions",
+          "reason": "没有该精确动作已确认的身体部位筛选标签；来源中的动作边界写入cautionNotes.zh，不把一般约束推定为部位标签。空数组不表示无需注意。"
+        },
+        {
+          "field": "contraindications",
+          "reason": "没有该动作已确认的结构化禁忌清单。空数组不表示没有禁忌，也不由一般动作提示推断疾病适用性。"
+        },
+        {
+          "field": "cautionNotes.zh",
+          "reason": "未提炼出独立于动作要领和常见错误的明确注意事项；空数组不表示无需注意。"
+        }
+      ],
+      "reviewed": false,
+      "releaseEligible": false
+    },
+    {
+      "id": "o-chair-knee-extension",
+      "revision": "o-chair-knee-extension-rr1",
+      "category": "strength",
+      "purpose": "在固定右大腿与椅面支持下练习右膝伸展及回收。",
+      "muscles": [
+        "股四头肌"
+      ],
+      "position": "seated",
+      "unilateral": true,
+      "level": null,
+      "scenes": [
+        "home",
+        "office",
+        "gym"
+      ],
+      "equipment": [
+        "chair"
+      ],
+      "defaultDose": {
+        "mode": "reps",
+        "sets": null,
+        "reps": null,
+        "restSeconds": null
+      },
+      "doseRange": {},
+      "cues": {
+        "zh": [
+          "左脚保持着地，骨盆留在椅面，右大腿不随小腿摆动。",
+          "右膝伸展开后受控收回，不借躯干后仰甩腿。"
+        ]
+      },
+      "primaryCue": 0,
+      "commonErrors": [
+        {
+          "zh": "抬髋、抬大腿或后仰代替膝伸展，或移动左脚。"
+        }
+      ],
+      "cautions": [],
+      "cautionNotes": {
+        "zh": []
+      },
+      "contraindications": [],
+      "countingSemantics": "右膝伸展并回到原屈膝位计一次；另一腿另计，踝姿变化不拆成额外一次。",
+      "demonstratedSide": "right",
+      "evidence": [
+        {
+          "path": "drill-anim/specs/o-chair-knee-extension-rr1.js",
+          "sha256": "86eb8a91a2b1fe1f68af164008e70b9f63e70f0437110da1cdf892a7e74bd019",
+          "fields": [
+            "revision",
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "精确修订及其导入链的姿态、支点、工作侧、高亮和动作边界用于编写spec-derived未审稿；高亮不证明肌肉疗效，动画循环不提供数值训练剂量。"
+        },
+        {
+          "path": "docs/108-repair-r1-chair-knee-extension-2026-10-22.md",
+          "sha256": "560f2460ae8890613be327e35f2442c58fb05f81cabc4f65a460d1773ad505d6",
+          "fields": [
+            "purpose",
+            "muscles",
+            "equipment",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide",
+            "cautionNotes.zh"
+          ],
+          "note": "同一动作修订的目标、支持条件和示意限制；仅支持测试用语义草稿，不转移稀疏QA或模型审核为动作审核。"
+        },
+        {
+          "path": "catalog/taxonomy.json",
+          "sha256": "3da41109246bbd7a05328bd88b4cf9ddc6152f6139f7158dfb63d8d6e3ab8065",
+          "fields": [
+            "category",
+            "position",
+            "scenes",
+            "equipment",
+            "muscles"
+          ],
+          "note": "规范分类、体位、器材及已登记肌群名称；场景按已确认器材与体位选择。gripHand、bandPost及单杠支架wall不是独立训练器材；未登记的非弹性毛巾保留unknown。"
+        }
+      ],
+      "unknownFields": [
+        {
+          "field": "level",
+          "reason": "未找到该精确修订已确认的难度分级；不按负重、幅度或候选清单默认值推定等级。"
+        },
+        {
+          "field": "defaultDose.sets",
+          "reason": "该精确动作源未明确训练组数；母片循环次数不是训练组数。"
+        },
+        {
+          "field": "defaultDose.reps",
+          "reason": "未找到该精确动作的训练重复次数；不按母片循环数、动画轨道或相关动作剂量换算。"
+        },
+        {
+          "field": "defaultDose.restSeconds",
+          "reason": "未找到明确训练组间休息；母片准备、回程和停顿不等于训练休息。"
+        },
+        {
+          "field": "doseRange",
+          "reason": "源未提供已确认的训练剂量范围；不从动画时长、幅度或相近动作推导。"
+        },
+        {
+          "field": "cautions",
+          "reason": "没有该精确动作已确认的身体部位筛选标签；来源中的动作边界写入cautionNotes.zh，不把一般约束推定为部位标签。空数组不表示无需注意。"
+        },
+        {
+          "field": "contraindications",
+          "reason": "没有该动作已确认的结构化禁忌清单。空数组不表示没有禁忌，也不由一般动作提示推断疾病适用性。"
+        },
+        {
+          "field": "cautionNotes.zh",
+          "reason": "未提炼出独立于动作要领和常见错误的明确注意事项；空数组不表示无需注意。"
+        }
+      ],
+      "reviewed": false,
+      "releaseEligible": false
+    },
+    {
+      "id": "h-towel-isometric-curl",
+      "revision": "h-towel-isometric-curl-rr1",
+      "category": "strength",
+      "purpose": "在双脚固定非弹性卷束毛巾中段时进行双臂等长拉持。",
+      "muscles": [
+        "肱二头肌"
+      ],
+      "position": "standing",
+      "unilateral": false,
+      "level": null,
+      "scenes": [],
+      "equipment": [
+        "nonelastic-towel"
+      ],
+      "defaultDose": {
+        "mode": "time",
+        "sets": null,
+        "seconds": null,
+        "restSeconds": null
+      },
+      "doseRange": {},
+      "cues": {
+        "zh": [
+          "双脚压住非弹性毛巾中段，双手持两端向上拉，肘角不变。",
+          "身体留在原站姿，不后仰，不把毛巾当弹力带反复弯举。"
+        ]
+      },
+      "primaryCue": 0,
+      "commonErrors": [
+        {
+          "zh": "反复屈伸肘、松开脚部固定或后仰借力。"
+        }
+      ],
+      "cautions": [],
+      "cautionNotes": {
+        "zh": [
+          "器材为非弹性卷束毛巾；渲染中的管段只是示意，不是弹力带，也没有现实防滑、抗滚或任意拉力承载保证。"
+        ]
+      },
+      "contraindications": [],
+      "countingSemantics": "固定姿势下连续等长保持计时，不计算弯举次数；8秒静态母片不等于推荐保持时长。",
+      "demonstratedSide": "both",
+      "evidence": [
+        {
+          "path": "drill-anim/specs/h-towel-isometric-curl-rr1.js",
+          "sha256": "e60784d7061229b5f295b0b78881e7bf4c45ee00714ae471f31333cc510c82ad",
+          "fields": [
+            "revision",
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "精确修订及其导入链的姿态、支点、工作侧、高亮和动作边界用于编写spec-derived未审稿；高亮不证明肌肉疗效，动画循环不提供数值训练剂量。"
+        },
+        {
+          "path": "docs/111-repair-r1-towel-isometric-2026-10-22.md",
+          "sha256": "488882680b47e4c36d6e9fc9b5c04a671b62229121cd7b0a141a458b1997c861",
+          "fields": [
+            "purpose",
+            "muscles",
+            "equipment",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide",
+            "cautionNotes.zh"
+          ],
+          "note": "同一动作修订的目标、支持条件和示意限制；仅支持测试用语义草稿，不转移稀疏QA或模型审核为动作审核。"
+        },
+        {
+          "path": "catalog/taxonomy.json",
+          "sha256": "3da41109246bbd7a05328bd88b4cf9ddc6152f6139f7158dfb63d8d6e3ab8065",
+          "fields": [
+            "category",
+            "position",
+            "scenes",
+            "equipment",
+            "muscles"
+          ],
+          "note": "规范分类、体位、器材及已登记肌群名称；场景按已确认器材与体位选择。gripHand、bandPost及单杠支架wall不是独立训练器材；未登记的非弹性毛巾保留unknown。"
+        }
+      ],
+      "unknownFields": [
+        {
+          "field": "level",
+          "reason": "未找到该精确修订已确认的难度分级；不按负重、幅度或候选清单默认值推定等级。"
+        },
+        {
+          "field": "defaultDose.sets",
+          "reason": "该精确动作源未明确训练组数；母片循环次数不是训练组数。"
+        },
+        {
+          "field": "defaultDose.seconds",
+          "reason": "未找到该精确动作的训练保持秒数。8秒或10秒母片及保持段不是处方。"
+        },
+        {
+          "field": "defaultDose.restSeconds",
+          "reason": "未找到明确训练组间休息；母片准备、回程和停顿不等于训练休息。"
+        },
+        {
+          "field": "doseRange",
+          "reason": "源未提供已确认的训练剂量范围；不从动画时长、幅度或相近动作推导。"
+        },
+        {
+          "field": "cautions",
+          "reason": "没有该精确动作已确认的身体部位筛选标签；来源中的动作边界写入cautionNotes.zh，不把一般约束推定为部位标签。空数组不表示无需注意。"
+        },
+        {
+          "field": "contraindications",
+          "reason": "没有该动作已确认的结构化禁忌清单。空数组不表示没有禁忌，也不由一般动作提示推断疾病适用性。"
+        },
+        {
+          "field": "scenes",
+          "reason": "非弹性卷束毛巾尚无taxonomy场景归属；不冒用弹力带的健身房规则。"
+        },
+        {
+          "field": "equipment",
+          "reason": "nonelastic-towel按实际非弹性毛巾含义保留；taxonomy尚无该器材，不映射为band或滑垫。"
+        }
+      ],
+      "reviewed": false,
+      "releaseEligible": false
+    },
+    {
+      "id": "h-band-face-pull",
+      "revision": "h-band-face-pull-rr1",
+      "category": "strength",
+      "purpose": "在躯干与双脚稳定的站姿下练习双侧高肘面拉并伴随末端外旋。",
+      "muscles": [
+        "斜方肌中下部 · 菱形肌",
+        "三角肌",
+        "肩袖肌群"
+      ],
+      "position": "standing",
+      "unilateral": false,
+      "level": null,
+      "scenes": [
+        "gym"
+      ],
+      "equipment": [
+        "band"
+      ],
+      "defaultDose": {
+        "mode": "reps",
+        "sets": null,
+        "reps": null,
+        "restSeconds": null
+      },
+      "doseRange": {},
+      "cues": {
+        "zh": [
+          "双脚固定、躯干保持原位，双侧高肘向面部后拉。",
+          "手腕随前臂协调，回程受控，不后仰借力。"
+        ]
+      },
+      "primaryCue": 0,
+      "commonErrors": [
+        {
+          "zh": "低肘后拉变成普通划船，或甩腕、后仰替代原高肘轨迹。"
+        }
+      ],
+      "cautions": [],
+      "cautionNotes": {
+        "zh": [
+          "固定端为墙锚示意；不能据此确认任意墙体与锚件的安装、材料弹性或承重安全。"
+        ]
+      },
+      "contraindications": [],
+      "countingSemantics": "双侧后拉并受控返回伸臂位计一次；两手同步，不按带子段数或固定端数量计次。",
+      "demonstratedSide": "both",
+      "evidence": [
+        {
+          "path": "drill-anim/specs/h-band-face-pull-rr1.js",
+          "sha256": "46f4b83652b33eef23a06ef3b0444d30fb594860cafa2c725d59aaa0a176839f",
+          "fields": [
+            "revision",
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "精确修订及其导入链的姿态、支点、工作侧、高亮和动作边界用于编写spec-derived未审稿；高亮不证明肌肉疗效，动画循环不提供数值训练剂量。"
+        },
+        {
+          "path": "docs/112-repair-r1-band-face-pull-2026-10-22.md",
+          "sha256": "f1fdfbd1a32a3a715715f59f73d1b22b01b83a4bccdf07b375ef39b136138377",
+          "fields": [
+            "purpose",
+            "muscles",
+            "equipment",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide",
+            "cautionNotes.zh"
+          ],
+          "note": "同一动作修订的目标、支持条件和示意限制；仅支持测试用语义草稿，不转移稀疏QA或模型审核为动作审核。"
+        },
+        {
+          "path": "catalog/taxonomy.json",
+          "sha256": "3da41109246bbd7a05328bd88b4cf9ddc6152f6139f7158dfb63d8d6e3ab8065",
+          "fields": [
+            "category",
+            "position",
+            "scenes",
+            "equipment",
+            "muscles"
+          ],
+          "note": "规范分类、体位、器材及已登记肌群名称；场景按已确认器材与体位选择。gripHand、bandPost及单杠支架wall不是独立训练器材；未登记的非弹性毛巾保留unknown。"
+        }
+      ],
+      "unknownFields": [
+        {
+          "field": "level",
+          "reason": "未找到该精确修订已确认的难度分级；不按负重、幅度或候选清单默认值推定等级。"
+        },
+        {
+          "field": "defaultDose.sets",
+          "reason": "该精确动作源未明确训练组数；母片循环次数不是训练组数。"
+        },
+        {
+          "field": "defaultDose.reps",
+          "reason": "未找到该精确动作的训练重复次数；不按母片循环数、动画轨道或相关动作剂量换算。"
+        },
+        {
+          "field": "defaultDose.restSeconds",
+          "reason": "未找到明确训练组间休息；母片准备、回程和停顿不等于训练休息。"
+        },
+        {
+          "field": "doseRange",
+          "reason": "源未提供已确认的训练剂量范围；不从动画时长、幅度或相近动作推导。"
+        },
+        {
+          "field": "cautions",
+          "reason": "没有该精确动作已确认的身体部位筛选标签；来源中的动作边界写入cautionNotes.zh，不把一般约束推定为部位标签。空数组不表示无需注意。"
+        },
+        {
+          "field": "contraindications",
+          "reason": "没有该动作已确认的结构化禁忌清单。空数组不表示没有禁忌，也不由一般动作提示推断疾病适用性。"
+        }
+      ],
+      "reviewed": false,
+      "releaseEligible": false
+    },
+    {
+      "id": "h-bilateral-upper-back-hug",
+      "revision": "h-bilateral-upper-back-hug-rr3",
+      "category": "stretch",
+      "purpose": "通过双臂前抱及肩带温和前移保持上背拉伸姿势。",
+      "muscles": [
+        "斜方肌中下部 · 菱形肌"
+      ],
+      "position": "standing",
+      "unilateral": false,
+      "level": null,
+      "scenes": [
+        "home",
+        "office",
+        "gym"
+      ],
+      "equipment": [],
+      "defaultDose": {
+        "mode": "time",
+        "sets": null,
+        "seconds": null,
+        "restSeconds": null
+      },
+      "doseRange": {},
+      "cues": {
+        "zh": [
+          "双臂按原位置前抱、保留双掌接触，肩带温和前移。",
+          "胸部仅轻微随动，双脚骨盆稳定，不增加独立颈部动作。"
+        ]
+      },
+      "primaryCue": 0,
+      "commonErrors": [
+        {
+          "zh": "靠大幅弯腰低头代替肩带前移，或变成反复划船甩臂。"
+        }
+      ],
+      "cautions": [],
+      "cautionNotes": {
+        "zh": []
+      },
+      "contraindications": [],
+      "countingSemantics": "进入前抱上背拉伸位后连续计时；释放回程不按力量重复计数，动画保持段不是处方。",
+      "demonstratedSide": "both",
+      "evidence": [
+        {
+          "path": "drill-anim/specs/h-bilateral-upper-back-hug-rr3.js",
+          "sha256": "1b9d3c060f49650f1719ddfda314b9227c586f62f8388e623aebf49d0f65bf70",
+          "fields": [
+            "revision",
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "精确修订及其导入链的姿态、支点、工作侧、高亮和动作边界用于编写spec-derived未审稿；高亮不证明肌肉疗效，动画循环不提供数值训练剂量。"
+        },
+        {
+          "path": "docs/116-repair-r3-upper-back-hug-2026-10-22.md",
+          "sha256": "c5c97f3211afecb9880b3cfa3a7b8952e65d14d3e6ec2d5af396815b946ac3ee",
+          "fields": [
+            "purpose",
+            "muscles",
+            "equipment",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide",
+            "cautionNotes.zh"
+          ],
+          "note": "同一动作修订的目标、支持条件和示意限制；仅支持测试用语义草稿，不转移稀疏QA或模型审核为动作审核。"
+        },
+        {
+          "path": "catalog/taxonomy.json",
+          "sha256": "3da41109246bbd7a05328bd88b4cf9ddc6152f6139f7158dfb63d8d6e3ab8065",
+          "fields": [
+            "category",
+            "position",
+            "scenes",
+            "equipment",
+            "muscles"
+          ],
+          "note": "规范分类、体位、器材及已登记肌群名称；场景按已确认器材与体位选择。gripHand、bandPost及单杠支架wall不是独立训练器材；未登记的非弹性毛巾保留unknown。"
+        }
+      ],
+      "unknownFields": [
+        {
+          "field": "level",
+          "reason": "未找到该精确修订已确认的难度分级；不按负重、幅度或候选清单默认值推定等级。"
+        },
+        {
+          "field": "defaultDose.sets",
+          "reason": "该精确动作源未明确训练组数；母片循环次数不是训练组数。"
+        },
+        {
+          "field": "defaultDose.seconds",
+          "reason": "未找到该精确动作的训练保持秒数。8秒或10秒母片及保持段不是处方。"
+        },
+        {
+          "field": "defaultDose.restSeconds",
+          "reason": "未找到明确训练组间休息；母片准备、回程和停顿不等于训练休息。"
+        },
+        {
+          "field": "doseRange",
+          "reason": "源未提供已确认的训练剂量范围；不从动画时长、幅度或相近动作推导。"
+        },
+        {
+          "field": "cautions",
+          "reason": "没有该精确动作已确认的身体部位筛选标签；来源中的动作边界写入cautionNotes.zh，不把一般约束推定为部位标签。空数组不表示无需注意。"
+        },
+        {
+          "field": "contraindications",
+          "reason": "没有该动作已确认的结构化禁忌清单。空数组不表示没有禁忌，也不由一般动作提示推断疾病适用性。"
+        },
+        {
+          "field": "cautionNotes.zh",
+          "reason": "未提炼出独立于动作要领和常见错误的明确注意事项；空数组不表示无需注意。"
+        }
+      ],
+      "reviewed": false,
+      "releaseEligible": false
+    },
+    {
+      "id": "h-supine-bilateral-leg-raise",
+      "revision": "h-supine-bilateral-leg-raise-rr3",
+      "category": "core",
+      "purpose": "在头背骨盆保留支持的仰卧位练习双腿近伸直抬起与下降的躯干控制。",
+      "muscles": [
+        "腹直肌（含深层腹横肌）",
+        "髋屈肌"
+      ],
+      "position": "supine",
+      "unilateral": false,
+      "level": null,
+      "scenes": [
+        "home",
+        "gym"
+      ],
+      "equipment": [
+        "mat"
+      ],
+      "defaultDose": {
+        "mode": "reps",
+        "sets": null,
+        "reps": null,
+        "restSeconds": null
+      },
+      "doseRange": {},
+      "cues": {
+        "zh": [
+          "头部依原有限折垫获得支持，上背与骨盆留在垫面。",
+          "双腿近伸直同步抬起再受控下降，不抬臀做反向卷腹。"
+        ]
+      },
+      "primaryCue": 0,
+      "commonErrors": [
+        {
+          "zh": "抬起骨盆、改变头背支持，或大幅屈膝代替原腿部轨迹。"
+        }
+      ],
+      "cautions": [],
+      "cautionNotes": {
+        "zh": []
+      },
+      "contraindications": [],
+      "countingSemantics": "双腿同步抬起并回到原较低位计一次，不拆成左右两次，也不声称孤立训练下腹。",
+      "demonstratedSide": "both",
+      "evidence": [
+        {
+          "path": "drill-anim/specs/h-supine-bilateral-leg-raise-rr3.js",
+          "sha256": "1a7caf48008b57562aaa8bc403304a6007e92697bf758f7460195ab579d84fd9",
+          "fields": [
+            "revision",
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "精确修订及其导入链的姿态、支点、工作侧、高亮和动作边界用于编写spec-derived未审稿；高亮不证明肌肉疗效，动画循环不提供数值训练剂量。"
+        },
+        {
+          "path": "drill-anim/specs/glute-max-A-r2.js",
+          "sha256": "dad370c9ebb7670343744e8a84502fd8f6d06d39783af51885baae5b30e1af82",
+          "fields": [
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "当前修订明确导入的保留源；按后续修订覆盖关系核对支持与轨迹，不继承旧版身份、审批或训练剂量。"
+        },
+        {
+          "path": "drill-anim/specs/glute-max-A.js",
+          "sha256": "61304fd651f3c08bff1cbf0010205a536b96fb0f5f0f43ebdb5287540dae1dbd",
+          "fields": [
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "当前修订明确导入的保留源；按后续修订覆盖关系核对支持与轨迹，不继承旧版身份、审批或训练剂量。"
+        },
+        {
+          "path": "docs/117-repair-r3-supine-leg-raise-2026-10-22.md",
+          "sha256": "88730b7f902ba957842f03d0b05f3e194d48fb5b769268e47590a2331f3d36a8",
+          "fields": [
+            "purpose",
+            "muscles",
+            "equipment",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide",
+            "cautionNotes.zh"
+          ],
+          "note": "同一动作修订的目标、支持条件和示意限制；仅支持测试用语义草稿，不转移稀疏QA或模型审核为动作审核。"
+        },
+        {
+          "path": "catalog/taxonomy.json",
+          "sha256": "3da41109246bbd7a05328bd88b4cf9ddc6152f6139f7158dfb63d8d6e3ab8065",
+          "fields": [
+            "category",
+            "position",
+            "scenes",
+            "equipment",
+            "muscles"
+          ],
+          "note": "规范分类、体位、器材及已登记肌群名称；场景按已确认器材与体位选择。gripHand、bandPost及单杠支架wall不是独立训练器材；未登记的非弹性毛巾保留unknown。"
+        }
+      ],
+      "unknownFields": [
+        {
+          "field": "level",
+          "reason": "未找到该精确修订已确认的难度分级；不按负重、幅度或候选清单默认值推定等级。"
+        },
+        {
+          "field": "defaultDose.sets",
+          "reason": "该精确动作源未明确训练组数；母片循环次数不是训练组数。"
+        },
+        {
+          "field": "defaultDose.reps",
+          "reason": "未找到该精确动作的训练重复次数；不按母片循环数、动画轨道或相关动作剂量换算。"
+        },
+        {
+          "field": "defaultDose.restSeconds",
+          "reason": "未找到明确训练组间休息；母片准备、回程和停顿不等于训练休息。"
+        },
+        {
+          "field": "doseRange",
+          "reason": "源未提供已确认的训练剂量范围；不从动画时长、幅度或相近动作推导。"
+        },
+        {
+          "field": "cautions",
+          "reason": "没有该精确动作已确认的身体部位筛选标签；来源中的动作边界写入cautionNotes.zh，不把一般约束推定为部位标签。空数组不表示无需注意。"
+        },
+        {
+          "field": "contraindications",
+          "reason": "没有该动作已确认的结构化禁忌清单。空数组不表示没有禁忌，也不由一般动作提示推断疾病适用性。"
+        },
+        {
+          "field": "cautionNotes.zh",
+          "reason": "未提炼出独立于动作要领和常见错误的明确注意事项；空数组不表示无需注意。"
+        }
+      ],
+      "reviewed": false,
+      "releaseEligible": false
+    },
+    {
+      "id": "h-floor-nordic-hand-reset",
+      "revision": "h-floor-nordic-hand-reset-rr3",
+      "category": "strength",
+      "purpose": "描述固定足跟与膝支持下的北欧前倾离心，以及手撑配合髋铰链复位。",
+      "muscles": [
+        "腘绳肌"
+      ],
+      "position": "kneeling",
+      "unilateral": false,
+      "level": null,
+      "scenes": [
+        "home",
+        "gym"
+      ],
+      "equipment": [
+        "mat",
+        "chair"
+      ],
+      "defaultDose": {
+        "mode": "reps",
+        "sets": null,
+        "reps": null,
+        "restSeconds": null
+      },
+      "doseRange": {},
+      "cues": {
+        "zh": [
+          "双膝与足跟保持原支持关系，受控前倾，不用腰折代替前倾。",
+          "手掌触地后配合原髋铰链复位；椅子仅为足跟支撑边缘模型示意。"
+        ]
+      },
+      "primaryCue": 0,
+      "commonErrors": [
+        {
+          "zh": "删去手撑复位却声称无辅助北欧回拉，或把椅模型当成已验证的现实承重装置。"
+        }
+      ],
+      "cautions": [],
+      "cautionNotes": {
+        "zh": [
+          "需要明确且稳定的足跟固定条件；椅子仅示意家具边缘，不能据此在不稳家具下练习。复位包含手撑辅助与髋铰链。"
+        ]
+      },
+      "contraindications": [],
+      "countingSemantics": "受控前倾离心加手撑辅助返回跪姿计一个周期；手撑和髋铰链不另算两次，也不是8秒等长保持处方。",
+      "demonstratedSide": "both",
+      "evidence": [
+        {
+          "path": "drill-anim/specs/h-floor-nordic-hand-reset-rr3.js",
+          "sha256": "fb8bef00bf45c882017ebe1032de8612d67de3b3a6f14649a64a193cb218332e",
+          "fields": [
+            "revision",
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "精确修订及其导入链的姿态、支点、工作侧、高亮和动作边界用于编写spec-derived未审稿；高亮不证明肌肉疗效，动画循环不提供数值训练剂量。"
+        },
+        {
+          "path": "docs/118-repair-r3-floor-nordic-2026-10-22.md",
+          "sha256": "ef86933af0493f19cf9600fbee623b90cbaabcae982008d0be2eea81fb2dec76",
+          "fields": [
+            "purpose",
+            "muscles",
+            "equipment",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide",
+            "cautionNotes.zh"
+          ],
+          "note": "同一动作修订的目标、支持条件和示意限制；仅支持测试用语义草稿，不转移稀疏QA或模型审核为动作审核。"
+        },
+        {
+          "path": "catalog/taxonomy.json",
+          "sha256": "3da41109246bbd7a05328bd88b4cf9ddc6152f6139f7158dfb63d8d6e3ab8065",
+          "fields": [
+            "category",
+            "position",
+            "scenes",
+            "equipment",
+            "muscles"
+          ],
+          "note": "规范分类、体位、器材及已登记肌群名称；场景按已确认器材与体位选择。gripHand、bandPost及单杠支架wall不是独立训练器材；未登记的非弹性毛巾保留unknown。"
+        }
+      ],
+      "unknownFields": [
+        {
+          "field": "level",
+          "reason": "未找到该精确修订已确认的难度分级；不按负重、幅度或候选清单默认值推定等级。"
+        },
+        {
+          "field": "defaultDose.sets",
+          "reason": "该精确动作源未明确训练组数；母片循环次数不是训练组数。"
+        },
+        {
+          "field": "defaultDose.reps",
+          "reason": "未找到该精确动作的训练重复次数；不按母片循环数、动画轨道或相关动作剂量换算。"
+        },
+        {
+          "field": "defaultDose.restSeconds",
+          "reason": "未找到明确训练组间休息；母片准备、回程和停顿不等于训练休息。"
+        },
+        {
+          "field": "doseRange",
+          "reason": "源未提供已确认的训练剂量范围；不从动画时长、幅度或相近动作推导。"
+        },
+        {
+          "field": "cautions",
+          "reason": "没有该精确动作已确认的身体部位筛选标签；来源中的动作边界写入cautionNotes.zh，不把一般约束推定为部位标签。空数组不表示无需注意。"
+        },
+        {
+          "field": "contraindications",
+          "reason": "没有该动作已确认的结构化禁忌清单。空数组不表示没有禁忌，也不由一般动作提示推断疾病适用性。"
+        }
+      ],
+      "reviewed": false,
+      "releaseEligible": false
+    },
+    {
+      "id": "h-unsupported-star-reach-native",
+      "revision": "h-unsupported-star-reach-native",
+      "category": "mobility",
+      "purpose": "练习左腿主要支持时右前脚掌三方向轻点、回收的无扶控制。",
+      "muscles": [
+        "臀大肌",
+        "臀中肌 · 髋外展",
+        "股四头肌"
+      ],
+      "position": "standing",
+      "unilateral": true,
+      "level": null,
+      "scenes": [
+        "home",
+        "gym"
+      ],
+      "equipment": [],
+      "defaultDose": {
+        "mode": "reps",
+        "sets": null,
+        "reps": null,
+        "restSeconds": null
+      },
+      "doseRange": {},
+      "cues": {
+        "zh": [
+          "左脚维持主要支持，右前脚掌三向轻点后回收，不转为双脚承重。",
+          "双手自由放置不扶椅，轻点时右脚跟保持抬起。"
+        ]
+      },
+      "primaryCue": 0,
+      "commonErrors": [
+        {
+          "zh": "向触点脚转移负重、扶椅，或整脚落地改成迈步弓步。"
+        }
+      ],
+      "cautions": [],
+      "cautionNotes": {
+        "zh": [
+          "触点脚仅轻点，不转移主要支持；本版无扶手，且没有测量实际负重分配。"
+        ]
+      },
+      "contraindications": [],
+      "countingSemantics": "按支撑腿计侧：左腿支持、右脚轻点；每方向触点并收回记一次，三个方向分开记录，不自动当成一个训练组。",
+      "demonstratedSide": "left",
+      "evidence": [
+        {
+          "path": "drill-anim/specs/h-unsupported-star-reach-native.js",
+          "sha256": "275fb4d1c7601045bdefb5f831eb6d4277eefe5c6a3a8193614f2fba0c785982",
+          "fields": [
+            "revision",
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "精确修订及其导入链的姿态、支点、工作侧、高亮和动作边界用于编写spec-derived未审稿；高亮不证明肌肉疗效，动画循环不提供数值训练剂量。"
+        },
+        {
+          "path": "tools/app-test-pack/dot-v4-selection.json",
+          "sha256": "ad824324af671ac43b3bf0ada94524f8f2082ba4b8f895ab24ab5c406febc913",
+          "fields": [
+            "purpose",
+            "muscles",
+            "equipment",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide",
+            "cautionNotes.zh"
+          ],
+          "note": "同一动作修订的目标、支持条件和示意限制；仅支持测试用语义草稿，不转移稀疏QA或模型审核为动作审核。"
+        },
+        {
+          "path": "catalog/taxonomy.json",
+          "sha256": "3da41109246bbd7a05328bd88b4cf9ddc6152f6139f7158dfb63d8d6e3ab8065",
+          "fields": [
+            "category",
+            "position",
+            "scenes",
+            "equipment",
+            "muscles"
+          ],
+          "note": "规范分类、体位、器材及已登记肌群名称；场景按已确认器材与体位选择。gripHand、bandPost及单杠支架wall不是独立训练器材；未登记的非弹性毛巾保留unknown。"
+        }
+      ],
+      "unknownFields": [
+        {
+          "field": "level",
+          "reason": "未找到该精确修订已确认的难度分级；不按负重、幅度或候选清单默认值推定等级。"
+        },
+        {
+          "field": "defaultDose.sets",
+          "reason": "该精确动作源未明确训练组数；母片循环次数不是训练组数。"
+        },
+        {
+          "field": "defaultDose.reps",
+          "reason": "未找到该精确动作的训练重复次数；不按母片循环数、动画轨道或相关动作剂量换算。"
+        },
+        {
+          "field": "defaultDose.restSeconds",
+          "reason": "未找到明确训练组间休息；母片准备、回程和停顿不等于训练休息。"
+        },
+        {
+          "field": "doseRange",
+          "reason": "源未提供已确认的训练剂量范围；不从动画时长、幅度或相近动作推导。"
+        },
+        {
+          "field": "cautions",
+          "reason": "没有该精确动作已确认的身体部位筛选标签；来源中的动作边界写入cautionNotes.zh，不把一般约束推定为部位标签。空数组不表示无需注意。"
+        },
+        {
+          "field": "contraindications",
+          "reason": "没有该动作已确认的结构化禁忌清单。空数组不表示没有禁忌，也不由一般动作提示推断疾病适用性。"
+        }
+      ],
+      "reviewed": false,
+      "releaseEligible": false
+    },
+    {
+      "id": "h-doorframe-forearms-pec-native-r3",
+      "revision": "h-doorframe-forearms-pec-native-r3",
+      "category": "stretch",
+      "purpose": "在特定斜面门框的双前臂分布接触下轻移胸部形成胸肌拉伸。",
+      "muscles": [
+        "胸大肌"
+      ],
+      "position": "standing",
+      "unilateral": false,
+      "level": null,
+      "scenes": [
+        "home",
+        "office",
+        "gym"
+      ],
+      "equipment": [
+        "wall"
+      ],
+      "defaultDose": {
+        "mode": "time",
+        "sets": null,
+        "seconds": null,
+        "restSeconds": null
+      },
+      "doseRange": {},
+      "cues": {
+        "zh": [
+          "双前臂近中远区保留门框立柱接触，前后脚固定。",
+          "胸部轻柔向开口前移后保持，不强求前臂每处都贴平。"
+        ]
+      },
+      "primaryCue": 0,
+      "commonErrors": [
+        {
+          "zh": "移脚或抬开一侧前臂追求幅度，或把特定斜面门柱当作任意直角门框的通用支撑。"
+        }
+      ],
+      "cautions": [],
+      "cautionNotes": {
+        "zh": [
+          "本版采用特定斜面门柱的前臂接触示意，不保证任意直角门框均适用，也不构成承重认证。"
+        ]
+      },
+      "contraindications": [],
+      "countingSemantics": "进入双前臂门框拉伸位后连续计时；前移回程不作力量次数，保持秒数不由8秒母片推定。",
+      "demonstratedSide": "both",
+      "evidence": [
+        {
+          "path": "drill-anim/specs/h-doorframe-forearms-pec-native-r3.js",
+          "sha256": "f9508b5847ccc3649077b80271d4d8c52b16d6d45a0c80c883238e541cdeceac",
+          "fields": [
+            "revision",
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "精确修订及其导入链的姿态、支点、工作侧、高亮和动作边界用于编写spec-derived未审稿；高亮不证明肌肉疗效，动画循环不提供数值训练剂量。"
+        },
+        {
+          "path": "tools/app-test-pack/dot-v4-selection.json",
+          "sha256": "ad824324af671ac43b3bf0ada94524f8f2082ba4b8f895ab24ab5c406febc913",
+          "fields": [
+            "purpose",
+            "muscles",
+            "equipment",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide",
+            "cautionNotes.zh"
+          ],
+          "note": "同一动作修订的目标、支持条件和示意限制；仅支持测试用语义草稿，不转移稀疏QA或模型审核为动作审核。"
+        },
+        {
+          "path": "catalog/taxonomy.json",
+          "sha256": "3da41109246bbd7a05328bd88b4cf9ddc6152f6139f7158dfb63d8d6e3ab8065",
+          "fields": [
+            "category",
+            "position",
+            "scenes",
+            "equipment",
+            "muscles"
+          ],
+          "note": "规范分类、体位、器材及已登记肌群名称；场景按已确认器材与体位选择。gripHand、bandPost及单杠支架wall不是独立训练器材；未登记的非弹性毛巾保留unknown。"
+        }
+      ],
+      "unknownFields": [
+        {
+          "field": "level",
+          "reason": "未找到该精确修订已确认的难度分级；不按负重、幅度或候选清单默认值推定等级。"
+        },
+        {
+          "field": "defaultDose.sets",
+          "reason": "该精确动作源未明确训练组数；母片循环次数不是训练组数。"
+        },
+        {
+          "field": "defaultDose.seconds",
+          "reason": "未找到该精确动作的训练保持秒数。8秒或10秒母片及保持段不是处方。"
+        },
+        {
+          "field": "defaultDose.restSeconds",
+          "reason": "未找到明确训练组间休息；母片准备、回程和停顿不等于训练休息。"
+        },
+        {
+          "field": "doseRange",
+          "reason": "源未提供已确认的训练剂量范围；不从动画时长、幅度或相近动作推导。"
+        },
+        {
+          "field": "cautions",
+          "reason": "没有该精确动作已确认的身体部位筛选标签；来源中的动作边界写入cautionNotes.zh，不把一般约束推定为部位标签。空数组不表示无需注意。"
+        },
+        {
+          "field": "contraindications",
+          "reason": "没有该动作已确认的结构化禁忌清单。空数组不表示没有禁忌，也不由一般动作提示推断疾病适用性。"
+        }
+      ],
+      "reviewed": false,
+      "releaseEligible": false
+    },
+    {
+      "id": "h-close-stance-forward-fold-native",
+      "revision": "h-close-stance-forward-fold-native",
+      "category": "stretch",
+      "purpose": "在窄站距、双膝微屈、双臂自由下垂条件下形成髋前折拉伸姿势。",
+      "muscles": [
+        "腘绳肌"
+      ],
+      "position": "standing",
+      "unilateral": false,
+      "level": null,
+      "scenes": [
+        "home",
+        "gym"
+      ],
+      "equipment": [],
+      "defaultDose": {
+        "mode": "time",
+        "sets": null,
+        "seconds": null,
+        "restSeconds": null
+      },
+      "doseRange": {},
+      "cues": {
+        "zh": [
+          "双脚保持窄站距，双膝微屈，从髋部前折。",
+          "双臂自然下垂，不扶椅、不强迫手触地，也不另加腰部弓折。"
+        ]
+      },
+      "primaryCue": 0,
+      "commonErrors": [
+        {
+          "zh": "为了触地锁膝弓腰，或变成宽站距扶椅前屈。"
+        }
+      ],
+      "cautions": [],
+      "cautionNotes": {
+        "zh": [
+          "保持窄站距、微屈膝与双臂自由下垂，不强迫手触地或额外弓腰。"
+        ]
+      },
+      "contraindications": [],
+      "countingSemantics": "进入本版窄站距前折姿势后连续计时；往返动画描述进出，不把8秒循环换成保持秒数。",
+      "demonstratedSide": "both",
+      "evidence": [
+        {
+          "path": "drill-anim/specs/h-close-stance-forward-fold-native.js",
+          "sha256": "5c3678e303440469109de416c00aa3fdaf283f464402f2455fe330e709bcb5ec",
+          "fields": [
+            "revision",
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "精确修订及其导入链的姿态、支点、工作侧、高亮和动作边界用于编写spec-derived未审稿；高亮不证明肌肉疗效，动画循环不提供数值训练剂量。"
+        },
+        {
+          "path": "tools/app-test-pack/dot-v4-selection.json",
+          "sha256": "ad824324af671ac43b3bf0ada94524f8f2082ba4b8f895ab24ab5c406febc913",
+          "fields": [
+            "purpose",
+            "muscles",
+            "equipment",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide",
+            "cautionNotes.zh"
+          ],
+          "note": "同一动作修订的目标、支持条件和示意限制；仅支持测试用语义草稿，不转移稀疏QA或模型审核为动作审核。"
+        },
+        {
+          "path": "catalog/taxonomy.json",
+          "sha256": "3da41109246bbd7a05328bd88b4cf9ddc6152f6139f7158dfb63d8d6e3ab8065",
+          "fields": [
+            "category",
+            "position",
+            "scenes",
+            "equipment",
+            "muscles"
+          ],
+          "note": "规范分类、体位、器材及已登记肌群名称；场景按已确认器材与体位选择。gripHand、bandPost及单杠支架wall不是独立训练器材；未登记的非弹性毛巾保留unknown。"
+        }
+      ],
+      "unknownFields": [
+        {
+          "field": "level",
+          "reason": "未找到该精确修订已确认的难度分级；不按负重、幅度或候选清单默认值推定等级。"
+        },
+        {
+          "field": "defaultDose.sets",
+          "reason": "该精确动作源未明确训练组数；母片循环次数不是训练组数。"
+        },
+        {
+          "field": "defaultDose.seconds",
+          "reason": "未找到该精确动作的训练保持秒数。8秒或10秒母片及保持段不是处方。"
+        },
+        {
+          "field": "defaultDose.restSeconds",
+          "reason": "未找到明确训练组间休息；母片准备、回程和停顿不等于训练休息。"
+        },
+        {
+          "field": "doseRange",
+          "reason": "源未提供已确认的训练剂量范围；不从动画时长、幅度或相近动作推导。"
+        },
+        {
+          "field": "cautions",
+          "reason": "没有该精确动作已确认的身体部位筛选标签；来源中的动作边界写入cautionNotes.zh，不把一般约束推定为部位标签。空数组不表示无需注意。"
+        },
+        {
+          "field": "contraindications",
+          "reason": "没有该动作已确认的结构化禁忌清单。空数组不表示没有禁忌，也不由一般动作提示推断疾病适用性。"
+        }
+      ],
+      "reviewed": false,
+      "releaseEligible": false
+    },
+    {
+      "id": "h-knee-wall-dorsiflexion-native",
+      "revision": "h-knee-wall-dorsiflexion-native",
+      "category": "mobility",
+      "purpose": "在前脚全足与脚跟固定接地时练习前膝向墙移动及返回。",
+      "muscles": [
+        "小腿三头肌"
+      ],
+      "position": "standing",
+      "unilateral": true,
+      "level": null,
+      "scenes": [
+        "home",
+        "office",
+        "gym"
+      ],
+      "equipment": [
+        "wall"
+      ],
+      "defaultDose": {
+        "mode": "reps",
+        "sets": null,
+        "reps": null,
+        "restSeconds": null
+      },
+      "doseRange": {},
+      "cues": {
+        "zh": [
+          "左前脚位置不变、脚跟留地，左膝向前接近原墙面后回程。",
+          "双脚保留支持，不靠手推墙或后脚蹬动增加行程。"
+        ]
+      },
+      "primaryCue": 0,
+      "commonErrors": [
+        {
+          "zh": "前脚跟抬起、前脚滑向墙，或改成后腿直膝小腿拉伸。"
+        }
+      ],
+      "cautions": [],
+      "cautionNotes": {
+        "zh": [
+          "保持前脚全足支持与脚跟留地；这是已有背屈机制的墙接触变体，不继承其他动作剂量。"
+        ]
+      },
+      "contraindications": [],
+      "countingSemantics": "以前腿计侧：左膝向墙前移并返回计一次；另一侧另计，不复制相关背屈动作的处方。",
+      "demonstratedSide": "left",
+      "evidence": [
+        {
+          "path": "drill-anim/specs/h-knee-wall-dorsiflexion-native.js",
+          "sha256": "c3926f24707ba0db8dff07f5a30b8fca7a2ff2982b18ab4ae0221d7865cd0e62",
+          "fields": [
+            "revision",
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "精确修订及其导入链的姿态、支点、工作侧、高亮和动作边界用于编写spec-derived未审稿；高亮不证明肌肉疗效，动画循环不提供数值训练剂量。"
+        },
+        {
+          "path": "tools/app-test-pack/dot-v4-selection.json",
+          "sha256": "ad824324af671ac43b3bf0ada94524f8f2082ba4b8f895ab24ab5c406febc913",
+          "fields": [
+            "purpose",
+            "muscles",
+            "equipment",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide",
+            "cautionNotes.zh"
+          ],
+          "note": "同一动作修订的目标、支持条件和示意限制；仅支持测试用语义草稿，不转移稀疏QA或模型审核为动作审核。"
+        },
+        {
+          "path": "catalog/taxonomy.json",
+          "sha256": "3da41109246bbd7a05328bd88b4cf9ddc6152f6139f7158dfb63d8d6e3ab8065",
+          "fields": [
+            "category",
+            "position",
+            "scenes",
+            "equipment",
+            "muscles"
+          ],
+          "note": "规范分类、体位、器材及已登记肌群名称；场景按已确认器材与体位选择。gripHand、bandPost及单杠支架wall不是独立训练器材；未登记的非弹性毛巾保留unknown。"
+        }
+      ],
+      "unknownFields": [
+        {
+          "field": "level",
+          "reason": "未找到该精确修订已确认的难度分级；不按负重、幅度或候选清单默认值推定等级。"
+        },
+        {
+          "field": "defaultDose.sets",
+          "reason": "该精确动作源未明确训练组数；母片循环次数不是训练组数。"
+        },
+        {
+          "field": "defaultDose.reps",
+          "reason": "未找到该精确动作的训练重复次数；不按母片循环数、动画轨道或相关动作剂量换算。"
+        },
+        {
+          "field": "defaultDose.restSeconds",
+          "reason": "未找到明确训练组间休息；母片准备、回程和停顿不等于训练休息。"
+        },
+        {
+          "field": "doseRange",
+          "reason": "源未提供已确认的训练剂量范围；不从动画时长、幅度或相近动作推导。"
+        },
+        {
+          "field": "cautions",
+          "reason": "没有该精确动作已确认的身体部位筛选标签；来源中的动作边界写入cautionNotes.zh，不把一般约束推定为部位标签。空数组不表示无需注意。"
+        },
+        {
+          "field": "contraindications",
+          "reason": "没有该动作已确认的结构化禁忌清单。空数组不表示没有禁忌，也不由一般动作提示推断疾病适用性。"
+        }
+      ],
+      "reviewed": false,
+      "releaseEligible": false
+    },
+    {
+      "id": "h-chair-progressive-front-split-native",
+      "revision": "h-chair-progressive-front-split-native",
+      "category": "stretch",
+      "purpose": "在单手轻扶椅边、右腿在前与左膝后滑条件下渐进打开前后跨度。",
+      "muscles": [
+        "腘绳肌",
+        "髋屈肌"
+      ],
+      "position": "kneeling",
+      "unilateral": true,
+      "level": null,
+      "scenes": [
+        "home",
+        "gym"
+      ],
+      "equipment": [
+        "mat",
+        "chair"
+      ],
+      "defaultDose": {
+        "mode": "time",
+        "sets": null,
+        "seconds": null,
+        "restSeconds": null
+      },
+      "doseRange": {},
+      "cues": {
+        "zh": [
+          "左手轻扶椅边，右前腿逐渐近伸直，左后膝沿垫面后滑。",
+          "控制躯干，不强迫到全劈叉，也不把后膝锁在起点。"
+        ]
+      },
+      "primaryCue": 0,
+      "commonErrors": [
+        {
+          "zh": "固定后膝变成原地半劈叉屈髋，或强压骨盆追求贴地。"
+        }
+      ],
+      "cautions": [],
+      "cautionNotes": {
+        "zh": [
+          "扶椅仅作轻支持，后膝有意后滑；不强迫全劈叉，画面不证明家具真实承重。"
+        ]
+      },
+      "contraindications": [],
+      "countingSemantics": "按前腿计侧：本片右腿在前，进入渐进打开位后连续计时；交换前后腿为另一侧，进出和后膝位移不按步数计数。",
+      "demonstratedSide": "right",
+      "evidence": [
+        {
+          "path": "drill-anim/specs/h-chair-progressive-front-split-native.js",
+          "sha256": "8cc7586f6453c42b0b469e48f45380bc7bd3bc1efee805232c66e4470127e0b2",
+          "fields": [
+            "revision",
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "精确修订及其导入链的姿态、支点、工作侧、高亮和动作边界用于编写spec-derived未审稿；高亮不证明肌肉疗效，动画循环不提供数值训练剂量。"
+        },
+        {
+          "path": "tools/app-test-pack/dot-v4-selection.json",
+          "sha256": "ad824324af671ac43b3bf0ada94524f8f2082ba4b8f895ab24ab5c406febc913",
+          "fields": [
+            "purpose",
+            "muscles",
+            "equipment",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide",
+            "cautionNotes.zh"
+          ],
+          "note": "同一动作修订的目标、支持条件和示意限制；仅支持测试用语义草稿，不转移稀疏QA或模型审核为动作审核。"
+        },
+        {
+          "path": "catalog/taxonomy.json",
+          "sha256": "3da41109246bbd7a05328bd88b4cf9ddc6152f6139f7158dfb63d8d6e3ab8065",
+          "fields": [
+            "category",
+            "position",
+            "scenes",
+            "equipment",
+            "muscles"
+          ],
+          "note": "规范分类、体位、器材及已登记肌群名称；场景按已确认器材与体位选择。gripHand、bandPost及单杠支架wall不是独立训练器材；未登记的非弹性毛巾保留unknown。"
+        }
+      ],
+      "unknownFields": [
+        {
+          "field": "level",
+          "reason": "未找到该精确修订已确认的难度分级；不按负重、幅度或候选清单默认值推定等级。"
+        },
+        {
+          "field": "defaultDose.sets",
+          "reason": "该精确动作源未明确训练组数；母片循环次数不是训练组数。"
+        },
+        {
+          "field": "defaultDose.seconds",
+          "reason": "未找到该精确动作的训练保持秒数。8秒或10秒母片及保持段不是处方。"
+        },
+        {
+          "field": "defaultDose.restSeconds",
+          "reason": "未找到明确训练组间休息；母片准备、回程和停顿不等于训练休息。"
+        },
+        {
+          "field": "doseRange",
+          "reason": "源未提供已确认的训练剂量范围；不从动画时长、幅度或相近动作推导。"
+        },
+        {
+          "field": "cautions",
+          "reason": "没有该精确动作已确认的身体部位筛选标签；来源中的动作边界写入cautionNotes.zh，不把一般约束推定为部位标签。空数组不表示无需注意。"
+        },
+        {
+          "field": "contraindications",
+          "reason": "没有该动作已确认的结构化禁忌清单。空数组不表示没有禁忌，也不由一般动作提示推断疾病适用性。"
+        }
+      ],
+      "reviewed": false,
+      "releaseEligible": false
+    },
+    {
+      "id": "h-straight-arm-hang-native",
+      "revision": "h-straight-arm-hang-native",
+      "category": "strength",
+      "purpose": "在固定杆上维持双肘近伸直、双脚离地的静态悬垂。",
+      "muscles": [
+        "背阔肌",
+        "前臂 · 腕屈伸肌"
+      ],
+      "position": "hanging",
+      "unilateral": false,
+      "level": null,
+      "scenes": [
+        "gym"
+      ],
+      "equipment": [
+        "pullup-bar"
+      ],
+      "defaultDose": {
+        "mode": "time",
+        "sets": null,
+        "seconds": null,
+        "restSeconds": null
+      },
+      "doseRange": {},
+      "cues": {
+        "zh": [
+          "双手固定握杆，双肘保持近伸直。",
+          "屈膝让双脚离地并静止，不屈肘上拉、不摆腿。"
+        ]
+      },
+      "primaryCue": 0,
+      "commonErrors": [
+        {
+          "zh": "屈肘变成引体循环，或脚落地、摆腿仍按静态保持计时。"
+        }
+      ],
+      "cautions": [],
+      "cautionNotes": {
+        "zh": [
+          "维持静态直臂悬垂，不把固定杆上拉循环或8秒视频长度当作保持处方。"
+        ]
+      },
+      "contraindications": [],
+      "countingSemantics": "双脚离地、双肘近伸直后的连续悬垂时间计入保持；不计重复次数，8秒视频不是训练剂量。",
+      "demonstratedSide": "both",
+      "evidence": [
+        {
+          "path": "drill-anim/specs/h-straight-arm-hang-native.js",
+          "sha256": "ec25922f2b717f5987d29512f4ed8cb3b50e40cd28a9cccfbe873689e7a4a7e7",
+          "fields": [
+            "revision",
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "精确修订及其导入链的姿态、支点、工作侧、高亮和动作边界用于编写spec-derived未审稿；高亮不证明肌肉疗效，动画循环不提供数值训练剂量。"
+        },
+        {
+          "path": "drill-anim/specs/h-fixed-bar-vertical-pull-rr7.js",
+          "sha256": "d34b25c74741b44b16b165b63a8c82ed919e92a782cea807a8201cc24c21b96f",
+          "fields": [
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "当前修订明确导入的保留源；按后续修订覆盖关系核对支持与轨迹，不继承旧版身份、审批或训练剂量。"
+        },
+        {
+          "path": "docs/diagnostics/122/attempt-2.mjs",
+          "sha256": "b91eff00fcd066933bf012e57b97f07f5ab454de1388636267b207210c5d06fd",
+          "fields": [
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "当前修订明确导入的保留源；按后续修订覆盖关系核对支持与轨迹，不继承旧版身份、审批或训练剂量。"
+        },
+        {
+          "path": "tools/app-test-pack/dot-v4-selection.json",
+          "sha256": "ad824324af671ac43b3bf0ada94524f8f2082ba4b8f895ab24ab5c406febc913",
+          "fields": [
+            "purpose",
+            "muscles",
+            "equipment",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide",
+            "cautionNotes.zh"
+          ],
+          "note": "同一动作修订的目标、支持条件和示意限制；仅支持测试用语义草稿，不转移稀疏QA或模型审核为动作审核。"
+        },
+        {
+          "path": "catalog/taxonomy.json",
+          "sha256": "3da41109246bbd7a05328bd88b4cf9ddc6152f6139f7158dfb63d8d6e3ab8065",
+          "fields": [
+            "category",
+            "position",
+            "scenes",
+            "equipment",
+            "muscles"
+          ],
+          "note": "规范分类、体位、器材及已登记肌群名称；场景按已确认器材与体位选择。gripHand、bandPost及单杠支架wall不是独立训练器材；未登记的非弹性毛巾保留unknown。"
+        }
+      ],
+      "unknownFields": [
+        {
+          "field": "level",
+          "reason": "未找到该精确修订已确认的难度分级；不按负重、幅度或候选清单默认值推定等级。"
+        },
+        {
+          "field": "defaultDose.sets",
+          "reason": "该精确动作源未明确训练组数；母片循环次数不是训练组数。"
+        },
+        {
+          "field": "defaultDose.seconds",
+          "reason": "未找到该精确动作的训练保持秒数。8秒或10秒母片及保持段不是处方。"
+        },
+        {
+          "field": "defaultDose.restSeconds",
+          "reason": "未找到明确训练组间休息；母片准备、回程和停顿不等于训练休息。"
+        },
+        {
+          "field": "doseRange",
+          "reason": "源未提供已确认的训练剂量范围；不从动画时长、幅度或相近动作推导。"
+        },
+        {
+          "field": "cautions",
+          "reason": "没有该精确动作已确认的身体部位筛选标签；来源中的动作边界写入cautionNotes.zh，不把一般约束推定为部位标签。空数组不表示无需注意。"
+        },
+        {
+          "field": "contraindications",
+          "reason": "没有该动作已确认的结构化禁忌清单。空数组不表示没有禁忌，也不由一般动作提示推断疾病适用性。"
+        }
+      ],
+      "reviewed": false,
+      "releaseEligible": false
+    },
+    {
+      "id": "h-bilateral-farmer-hold-native",
+      "revision": "h-bilateral-farmer-hold-native",
+      "category": "strength",
+      "purpose": "练习双手各持哑铃的站立握持与躯干静态控制，不包含行走。",
+      "muscles": [
+        "前臂 · 腕屈伸肌",
+        "斜方肌上部"
+      ],
+      "position": "standing",
+      "unilateral": false,
+      "level": null,
+      "scenes": [
+        "gym"
+      ],
+      "equipment": [
+        "dumbbell"
+      ],
+      "defaultDose": {
+        "mode": "time",
+        "sets": null,
+        "seconds": null,
+        "restSeconds": null
+      },
+      "doseRange": {},
+      "cues": {
+        "zh": [
+          "双脚固定，双手各持哑铃，手臂保留原轻微屈肘。",
+          "维持原腕前臂与躯干姿态，不走动、反复弯举或甩铃。"
+        ]
+      },
+      "primaryCue": 0,
+      "commonErrors": [
+        {
+          "zh": "按农夫行走步数计静态站立，或靠侧摆、弯举甩铃改变原目标。"
+        }
+      ],
+      "cautions": [],
+      "cautionNotes": {
+        "zh": [
+          "仅双侧持铃站立保持，不包含行走，也不继承单侧提箱的抗侧屈处方。"
+        ]
+      },
+      "contraindications": [],
+      "countingSemantics": "双侧持铃站稳后的连续时间计入保持；不按步数、铃数或视频帧数计次，不继承单侧提箱处方。",
+      "demonstratedSide": "both",
+      "evidence": [
+        {
+          "path": "drill-anim/specs/h-bilateral-farmer-hold-native.js",
+          "sha256": "23edaff77f278333d4a73dcbd0855781b76ee03f237b05a81d5505ff51048114",
+          "fields": [
+            "revision",
+            "category",
+            "purpose",
+            "muscles",
+            "position",
+            "unilateral",
+            "equipment",
+            "defaultDose.mode",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide"
+          ],
+          "note": "精确修订及其导入链的姿态、支点、工作侧、高亮和动作边界用于编写spec-derived未审稿；高亮不证明肌肉疗效，动画循环不提供数值训练剂量。"
+        },
+        {
+          "path": "tools/app-test-pack/dot-v4-selection.json",
+          "sha256": "ad824324af671ac43b3bf0ada94524f8f2082ba4b8f895ab24ab5c406febc913",
+          "fields": [
+            "purpose",
+            "muscles",
+            "equipment",
+            "cues.zh",
+            "commonErrors",
+            "countingSemantics",
+            "demonstratedSide",
+            "cautionNotes.zh"
+          ],
+          "note": "同一动作修订的目标、支持条件和示意限制；仅支持测试用语义草稿，不转移稀疏QA或模型审核为动作审核。"
+        },
+        {
+          "path": "catalog/taxonomy.json",
+          "sha256": "3da41109246bbd7a05328bd88b4cf9ddc6152f6139f7158dfb63d8d6e3ab8065",
+          "fields": [
+            "category",
+            "position",
+            "scenes",
+            "equipment",
+            "muscles"
+          ],
+          "note": "规范分类、体位、器材及已登记肌群名称；场景按已确认器材与体位选择。gripHand、bandPost及单杠支架wall不是独立训练器材；未登记的非弹性毛巾保留unknown。"
+        }
+      ],
+      "unknownFields": [
+        {
+          "field": "level",
+          "reason": "未找到该精确修订已确认的难度分级；不按负重、幅度或候选清单默认值推定等级。"
+        },
+        {
+          "field": "defaultDose.sets",
+          "reason": "该精确动作源未明确训练组数；母片循环次数不是训练组数。"
+        },
+        {
+          "field": "defaultDose.seconds",
+          "reason": "未找到该精确动作的训练保持秒数。8秒或10秒母片及保持段不是处方。"
+        },
+        {
+          "field": "defaultDose.restSeconds",
+          "reason": "未找到明确训练组间休息；母片准备、回程和停顿不等于训练休息。"
+        },
+        {
+          "field": "doseRange",
+          "reason": "源未提供已确认的训练剂量范围；不从动画时长、幅度或相近动作推导。"
+        },
+        {
+          "field": "cautions",
+          "reason": "没有该精确动作已确认的身体部位筛选标签；来源中的动作边界写入cautionNotes.zh，不把一般约束推定为部位标签。空数组不表示无需注意。"
+        },
+        {
+          "field": "contraindications",
+          "reason": "没有该动作已确认的结构化禁忌清单。空数组不表示没有禁忌，也不由一般动作提示推断疾病适用性。"
+        }
+      ],
+      "reviewed": false,
+      "releaseEligible": false
+    }
+  ]
+}

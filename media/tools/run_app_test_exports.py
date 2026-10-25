@@ -21,6 +21,8 @@ import time
 import traceback
 import uuid
 
+from app_test_semantics import validate_semantics_refresh
+
 
 FORMAT = 'pose-hub-stacked-alpha-delivery@1'
 ROLES = ('video', 'cover', 'thumbnail')
@@ -331,6 +333,7 @@ class Assembler:
         self.catalog_path = Path(catalog_path)
         self.catalog = read_json(catalog_path)
         self.catalog_sha = digest(catalog_path)
+        self.semantic_refresh_error = None
         self.rows = {row['id']: row for row in self.catalog['actions']}
         require(len(self.rows) == len(self.catalog['actions']), 'Duplicate catalog ID')
         require(all(ID.fullmatch(a) for a in self.rows), 'Unsafe catalog ID')
@@ -413,7 +416,49 @@ class Assembler:
         self.save()
         print(f'[failed {aid} {error}]', flush=True)
 
+    def refresh_catalog(self):
+        """Reload definition-only edits without restarting or re-encoding media."""
+        raw = self.catalog_path.read_bytes()
+        checksum = hashlib.sha256(raw).hexdigest()
+        if checksum == self.catalog_sha:
+            return
+        try:
+            catalog = json.loads(raw)
+            validate_semantics_refresh(self.catalog, catalog)
+        except (ValueError, KeyError, TypeError) as error:
+            message = str(error)
+            if self.semantic_refresh_error != message:
+                print('[semantic-refresh-rejected ' + message + ']', flush=True)
+            self.semantic_refresh_error = message
+            return
+        self.catalog, self.catalog_sha = catalog, checksum
+        self.rows = {row['id']: row for row in catalog['actions']}
+        self.semantic_refresh_error = None
+        print('[semantic-refresh ' + checksum + ']', flush=True)
+
+    def delivered_semantics(self):
+        summary = json.loads(json.dumps(self.catalog.get('trainingSemantics')))
+        if summary is None:
+            return None, {}
+        repo = Path(__file__).resolve().parents[2]
+        delivered = {}
+        for ref in summary['sourceFiles']:
+            destination = ('catalog/catalog.json' if ref['path'] == 'catalog/catalog.json' else
+                           f'catalog/semantic-sources/{ref["sha256"]}/{Path(ref["path"]).name}')
+            if safe(self.output, destination).exists():
+                verify(self.output, {**ref, 'path': destination})
+            else:
+                immutable_copy(verify(repo, ref), self.output, destination, ref)
+            delivered[ref['path']] = {**ref, 'sourcePath': ref['path'], 'path': destination}
+        summary['sourceFiles'] = [delivered[ref['path']] for ref in summary['sourceFiles']]
+        for batch in summary['batches']:
+            batch['source'] = delivered[batch['source']['path']]
+        if self.semantic_refresh_error:
+            summary['refreshError'] = self.semantic_refresh_error
+        return summary, delivered
+
     def save(self):
+        self.refresh_catalog()
         # Exclusion controls dispatch, not deletion of already completed deliveries.
         ready = [self.ready[aid] for aid in sorted(self.ready)]
         ready_ids = {r['id'] for r in ready}
@@ -453,6 +498,10 @@ class Assembler:
                                  'alphaChannelAfterRgbDecode': 'red', 'matrix': 'bt709', 'range': 'limited'},
                     'actions': ready, 'sizes': sizes, 'failures': self.failures}
         catalog = json.loads(json.dumps(self.catalog))
+        semantics, semantic_sources = self.delivered_semantics()
+        if semantics is not None:
+            manifest['trainingSemantics'] = semantics
+            catalog['trainingSemantics'] = semantics
         for row in catalog['actions']:
             aid = row['id']
             if aid in ready_ids:
@@ -462,12 +511,29 @@ class Assembler:
                 row.pop('files', None)
             row['availableForApp'] = aid in ready_ids and aid in self.verified_ready
             row['reviewed'] = False; row['releaseEligible'] = False
+            row['availableForTraining'] = row['availableForApp'] and row.get('trainingDefinitionComplete') is True
+            for ref in row.get('trainingSemantics', {}).get('evidence', []):
+                if ref['path'] in semantic_sources:
+                    delivered = semantic_sources[ref['path']]
+                    ref.update({'path': delivered['path'], 'sourcePath': delivered['sourcePath'], 'root': 'pack'})
+                else:
+                    ref['root'] = 'repository'
         catalog.update({'readyCount': len(ready), 'pendingCount': len(pending),
                         'totalCount': len(self.rows), 'pendingIds': pending})
         progress = {key: manifest[key] for key in ('id', 'status', 'updatedAt', 'readyCount', 'totalCount',
                                                    'pendingCount', 'pendingIds', 'excluded', 'states', 'failures', 'sizes', 'queueState')}
-        atomic_json(self.output, 'manifest.json', manifest)
+        # Pin a complete catalog snapshot before advancing the mutable indexes.
+        # Consumers can read manifest.catalog to avoid mixing two live batches.
+        catalog_bytes = (json.dumps(catalog, ensure_ascii=False, indent=2, allow_nan=False) + '\n').encode('utf-8')
+        catalog_sha = hashlib.sha256(catalog_bytes).hexdigest()
+        snapshot = f'catalog/snapshots/{catalog_sha}.json'
+        snapshot_path = safe(self.output, snapshot)
+        if not snapshot_path.exists():
+            atomic_json(self.output, snapshot, catalog)
+        verify(self.output, {'path': snapshot, 'bytes': len(catalog_bytes), 'sha256': catalog_sha})
+        manifest['catalog'] = {'path': snapshot, 'bytes': len(catalog_bytes), 'sha256': catalog_sha}
         atomic_json(self.output, 'catalog.json', catalog)
+        atomic_json(self.output, 'manifest.json', manifest)
         atomic_json(self.output, 'progress.json', progress)
 
 

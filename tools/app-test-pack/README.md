@@ -98,9 +98,11 @@ runtime. No browser is used for encoding existing RGBA layers.
 - `media/tools/review_stacked_alpha.py`: generate an offline, locally served
   video/WebP transparency review page from a completed manifest.
 
-Encoding has at most two CPU workers, two x264 threads each. Run one CPU worker
-while the single GPU lane is active, and never exceed two concurrent 3D render
-processes, each jobs=1. Stop and diagnose a lost GPU/browser context before
+This machine uses one CPU worker and one GPU lane with a shared exclusive
+`heavy.lock`: only one of them runs heavy work at a time, after at least 4 GiB
+of Windows commit headroom is available. x264 uses two threads; BLAS uses one.
+GPU work has priority. Do not increase concurrency to bypass a memory wait.
+Stop and diagnose a lost GPU/browser context before
 trying again. Failed partial attempts are preserved in separate source/work
 directories; do not overwrite a delivered media path with different bytes.
 
@@ -111,6 +113,51 @@ has no ready plan while some selected sources are still missing, it records
 state when reporting progress, never just the presence of a directory.
 
 ## Verification and design references
+
+### Training definitions in the test package
+
+`catalog.json.actions[]` carries the same training fields as the existing
+`catalog/catalog.json` definitions: `category`, `level`, `position`,
+`defaultDose`, `doseRange`, `cues.zh`, `unilateral`, `scenes`, `purpose`, and
+`muscles`. The new drafts also describe `commonErrors`, `countingSemantics`
+and demonstrated side. These definitions are test drafts; historical review
+flags never approve new media or new definitions.
+
+The exact 142-action inherited source is copied into the delivered package at
+`catalog/catalog.json`, with the previously declared bytes/SHA unchanged.
+The 77 additional IDs are authored in two evidence-linked source batches,
+`catalog/test/semantics-pr14-r1.json` and `semantics-latest-r1.json`. Numeric
+doses require an explicit source. A documented range does not silently become
+a default, and a video's eight-second loop is never a training prescription.
+Static holds use `mode: "time"`; unknown seconds, sets, rest, or difficulty
+stay null. Missing clinical/safety knowledge is not inferred from geometry.
+
+Run the lightweight metadata update on this source branch:
+
+```powershell
+python -B media/tools/app_test_semantics.py --repo . --catalog catalog/test/app-test-pack-r1.json
+```
+
+The active queue reloads only validated semantic changes. Changed revision,
+source, duration, scope or approval is rejected, while existing output media
+remain intact. Only the queue parent publishes the delivered catalog/manifest;
+do not patch those live files from a second writer.
+
+`trainingSemantics.updatedActionIds` and `batches[].updatedActionIds` list each
+enriched batch. This means fields were added, not that every unknown was
+resolved. `definitionCompleteIds`, per-action `missingRequiredFields`, and
+`unresolvedById` make the distinction explicit. All 219 entries remain in
+the catalog. `availableForApp` indicates playable media;
+`trainingDefinitionComplete` indicates the required training fields exist;
+`availableForTraining` requires both. Neither is a human review or public
+release approval. Consumers must preserve nulls instead of applying invented
+fallback doses. Existing App definitions may differ from the inherited Hub
+source, so its source hash/revision must accompany any consumer-side migration.
+
+For a coherent live read, first load `manifest.json`, then the immutable
+catalog snapshot referenced by `manifest.catalog` and verify bytes/SHA.
+The root `catalog.json` remains the latest convenient view. Semantic batch
+sources are copied by checksum; repository-only evidence is marked explicitly.
 
 Every output records dimensions, bytes and SHA-256. Full decoded streams are
 checked against same-frame source RGBA, including semi-transparent edges and
