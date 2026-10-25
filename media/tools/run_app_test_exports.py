@@ -474,7 +474,14 @@ class Assembler:
                                                'changedAt': now()})
                     self.repair_plan_history.setdefault(aid, []).append(plan_supersession)
                 if already_repaired:
-                    require(row['queueSourceKey'] == new[aid]['key'], 'Repaired source changed for ready action: ' + aid)
+                    old_tool = row.get('exporterSha256')
+                    require(old_tool == self.exporter_sha or old_tool in self.allowed_legacy,
+                            'Ready repair exporter is not explicitly allowed: ' + aid)
+                    # A new encoder implementation does not invalidate already verified
+                    # media from the exact same pinned plan and historical tool.
+                    expected_key = source_key(new[aid]['action'], new[aid]['skin'], old_tool)
+                    require(row['queueSourceKey'] == expected_key,
+                            'Repaired source changed for ready action: ' + aid)
             else:
                 require(not already_repaired, 'Ready repair lost its pinned source plan: ' + aid)
                 self.entries.pop(aid, None)
@@ -1215,6 +1222,27 @@ def self_test():
                                     new_tool, [], repair_path, bindings)
                 self.assertEqual(resumed.ready['a']['mediaRevision'], 'a-alpha-r2')
                 self.assertEqual(resumed.repair_plan_history, repaired.repair_plan_history)
+                # The identical pinned repair survives a tool-only update only
+                # through an explicit historical-exporter pin.
+                authority['allowedLegacyExporterSha256'].append(new_tool)
+                repair_path.write_text(json.dumps(authority), encoding='utf-8')
+                newest_tool = '2' * 64
+                upgraded = Assembler(output, work, catalog, collect_entries([old_plan], bindings, newest_tool),
+                                     newest_tool, [], repair_path, bindings)
+                self.assertEqual(upgraded.ready['a']['exporterSha256'], new_tool)
+                stored = read_json(output / 'manifest.json')
+                invalid = json.loads(json.dumps(stored)); invalid['actions'][0]['queueSourceKey'] = 'f' * 64
+                atomic_json(output, 'manifest.json', invalid)
+                with self.assertRaisesRegex(ValueError, 'Repaired source changed'):
+                    Assembler(output, work, catalog, collect_entries([old_plan], bindings, newest_tool),
+                              newest_tool, [], repair_path, bindings)
+                atomic_json(output, 'manifest.json', stored)
+                authority['allowedLegacyExporterSha256'].remove(new_tool)
+                repair_path.write_text(json.dumps(authority), encoding='utf-8')
+                with self.assertRaisesRegex(ValueError, 'exporter is not explicitly allowed'):
+                    Assembler(output, work, catalog, collect_entries([old_plan], bindings, newest_tool),
+                              newest_tool, [], repair_path, bindings)
+                authority['allowedLegacyExporterSha256'].append(new_tool)
                 # Even an exact supersession proof cannot overwrite a ready media revision.
                 authority['actions'][0]['plan'] = {'path': str(new_plan), 'bytes': new_plan.stat().st_size,
                                                    'sha256': digest(new_plan)}

@@ -92,6 +92,15 @@ band with alpha at most 3/255. Lossless WebP cover and thumbnail must retain
 at least 4% transparent margin after filtering. These checks concern export
 framing and transparency, not whether the exercise is performed correctly.
 
+Encoding also streams the exact pre-pack RGBA and visible-shadow mask into a
+single temporary file in that attempt's QA directory. The decoder reads that
+reference one frame at a time instead of recomposing every source layer again.
+Write/read SHA, exact length, identity and frame order must agree. Full H.264
+decoding, alpha/composite/boundary checks and the final source-hash readback
+remain mandatory. No full timeline is held in RAM. Only the two owned reference
+cache files are removed after the completed export passes; failures preserve
+them with their attempt. Original RGBA masters and delivered media are retained.
+
 ## Tools and continuation
 
 Python dependencies: Pillow, NumPy, SciPy; external tools: FFmpeg/libx264 and

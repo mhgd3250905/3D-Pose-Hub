@@ -11,6 +11,7 @@ from fractions import Fraction
 import hashlib
 import json
 import math
+import os
 from pathlib import Path
 import re
 import subprocess
@@ -314,6 +315,113 @@ def read_exact(stream, size):
     return b''.join(chunks)
 
 
+class ReferenceCache:
+    """Single-attempt streaming reference; a second composition is unnecessary."""
+    def __init__(self, directory, context, size=SIZE):
+        self.directory = Path(directory).resolve()
+        self.raw_path = self.directory / '.reference-cache.rgba-shadow.raw'
+        self.metadata_path = self.directory / '.reference-cache.json'
+        self.size, self.frames = size, context['action']['frames']
+        self.identity = json.loads(json.dumps({'action': context['action'],
+            'exportFraming': context.get('exportFraming', context['framing']),
+            'sourceSha256': context['layer']['sourceSha256'], 'size': [size, size],
+            'layout': 'per-frame-straight-rgba-u8-then-shadow-mask-u8'}))
+        self.writer = None
+        self.frames_written = self.bytes_written = 0
+        self.write_hash = hashlib.sha256()
+        self.read_verified = False
+        self.verified_stat = None
+
+    def open(self):
+        if self.writer is not None or self.frames_written or self.metadata_path.exists():
+            raise ValueError('Reference cache cannot be reused across attempts')
+        self.writer = self.raw_path.open('xb')
+
+    def append(self, frame, rgba, shadow_only):
+        if (self.writer is None or frame != self.frames_written or frame >= self.frames
+                or rgba.mode != 'RGBA' or rgba.size != (self.size, self.size)
+                or shadow_only.shape != (self.size, self.size) or shadow_only.dtype != np.bool_):
+            raise ValueError('Reference cache frame identity/shape/order mismatch')
+        for data in (rgba.tobytes(), shadow_only.astype(np.uint8).tobytes()):
+            if self.writer.write(data) != len(data):
+                raise ValueError('Reference cache write was short')
+            self.write_hash.update(data)
+            self.bytes_written += len(data)
+        self.frames_written += 1
+
+    def close(self):
+        if self.writer is not None:
+            self.writer.close()
+            self.writer = None
+
+    def finish(self):
+        if self.writer is None or self.frames_written != self.frames:
+            raise ValueError('Reference cache is incomplete')
+        self.writer.flush(); os.fsync(self.writer.fileno()); self.close()
+        expected = self.frames * self.size * self.size * 5
+        if self.bytes_written != expected or self.raw_path.stat().st_size != expected:
+            raise ValueError('Reference cache written size mismatch')
+        write_json(self.metadata_path, {'format': 'pose-hub-alpha-reference-cache@1', 'complete': True,
+            'identity': self.identity, 'frames': self.frames,
+            'raw': {'path': self.raw_path.name, 'bytes': expected, 'sha256': self.write_hash.hexdigest()}})
+
+    @staticmethod
+    def stat_identity(path):
+        value = path.stat()
+        return value.st_size, value.st_mtime_ns, value.st_ino
+
+    def iter_frames(self):
+        metadata = read_json(self.metadata_path)
+        expected = self.frames * self.size * self.size * 5
+        ref = metadata.get('raw', {})
+        if (metadata.get('format') != 'pose-hub-alpha-reference-cache@1' or metadata.get('complete') is not True
+                or metadata.get('identity') != self.identity or metadata.get('frames') != self.frames
+                or ref.get('path') != self.raw_path.name or ref.get('bytes') != expected
+                or ref.get('sha256') != self.write_hash.hexdigest()):
+            raise ValueError('Reference cache identity/hash metadata mismatch')
+        initial_stat = self.stat_identity(self.raw_path)
+        if initial_stat[0] != expected:
+            raise ValueError('Reference cache size mismatch (short or extra bytes)')
+        incoming_hash = hashlib.sha256()
+        plane = self.size * self.size
+        with self.raw_path.open('rb') as stream:
+            for frame in range(self.frames):
+                colour = read_exact(stream, plane * 4)
+                mask = read_exact(stream, plane)
+                incoming_hash.update(colour); incoming_hash.update(mask)
+                mask_values = np.frombuffer(mask, dtype=np.uint8).reshape(self.size, self.size)
+                if mask_values.max() > 1:
+                    raise ValueError('Reference cache shadow mask changed')
+                rgba = Image.frombytes('RGBA', (self.size, self.size), colour)
+                try:
+                    yield frame, rgba, mask_values.astype(bool)
+                finally:
+                    rgba.close()
+            if stream.read(1):
+                raise ValueError('Reference cache contains extra bytes')
+        if self.stat_identity(self.raw_path) != initial_stat or incoming_hash.hexdigest() != ref['sha256']:
+            raise ValueError('Reference cache readback hash/identity mismatch')
+        self.verified_stat, self.read_verified = initial_stat, True
+
+    def evidence(self):
+        if not self.read_verified:
+            raise ValueError('Reference cache was not fully read and verified')
+        return {'format': 'pose-hub-alpha-reference-cache@1', 'bytes': self.bytes_written,
+                'sha256': self.write_hash.hexdigest(), 'frames': self.frames, 'readVerified': True,
+                'reference': 'exact pre-pack RGBA and visible-shadow mask generated during this encode'}
+
+    def remove_after_success(self):
+        # Only these two exact names created by this instance may be removed.
+        # Never recurse or clean the attempt directory, sources or delivered media.
+        self.evidence()
+        if (self.raw_path.resolve().parent != self.directory or self.metadata_path.resolve().parent != self.directory
+                or self.stat_identity(self.raw_path) != self.verified_stat
+                or read_json(self.metadata_path).get('identity') != self.identity):
+            raise ValueError('Reference cache changed before owned cleanup')
+        self.raw_path.unlink()
+        self.metadata_path.unlink()
+
+
 def decode_check(context, video, output):
     action = context['action']
     command = ['ffmpeg', '-v', 'error', '-nostdin', '-threads', '2', '-i', str(video),
@@ -325,8 +433,11 @@ def decode_check(context, video, output):
     rgb_sum = {name: 0. for name in BACKGROUNDS}
     edge_rgb_sum = {name: 0. for name in BACKGROUNDS}
     samples = []
+    references = None
     try:
-        for frame, reference, shadow_only in iter_rgba(context):
+        cache = context.get('_referenceCache')
+        references = cache.iter_frames() if cache is not None else iter_rgba(context)
+        for frame, reference, shadow_only in references:
             decoded = np.frombuffer(read_exact(process.stdout, SIZE * SIZE * 2 * 3), np.uint8).reshape(SIZE * 2, SIZE, 3)
             colour, alpha = decoded[:SIZE], decoded[SIZE:, :, 0]
             boundary_alpha_max = max(boundary_alpha_max, int(max(
@@ -357,6 +468,8 @@ def decode_check(context, video, output):
         if process.wait():
             raise RuntimeError(error)
     finally:
+        if references is not None and hasattr(references, 'close'):
+            references.close()
         if process.poll() is None:
             process.kill(); process.wait()
     report = {'framesDecoded': action['frames'], 'alphaMae': alpha_sum / alpha_count,
@@ -375,6 +488,8 @@ def decode_check(context, video, output):
                         and report['visibleShadowAlphaMae'] <= 8 and shadow_count > 0
                         and max(report['compositeRgbMae'].values()) <= 3
                         and max(report['semiTransparentCompositeRgbMae'].values()) <= 10)
+    if cache is not None:
+        report['referenceCache'] = cache.evidence()
     write_json(output / 'decode-check.json', report)
     if not report['passed']:
         raise ValueError('Decoded alpha/composition QA failed; preserve this output and use a new revision')
@@ -391,10 +506,14 @@ def export_action(context, output, crf, bleed):
         raise ValueError('Source RGBA touches its canvas edge; complete transparent layers are required. '
                          'Preserved framing-check.json identifies every affected frame; do not shrink a clipped source.')
     video = media / (aid + '.rgb-alpha.mp4')
-    process = subprocess.Popen(encoder_command(video, action, crf), stdin=subprocess.PIPE, stderr=subprocess.PIPE)
     cover = thumbnail = None
+    cache = ReferenceCache(qa, context)
+    context['_referenceCache'] = cache
+    process = subprocess.Popen(encoder_command(video, action, crf), stdin=subprocess.PIPE, stderr=subprocess.PIPE)
     try:
-        for frame, rgba, _ in iter_rgba(context):
+        cache.open()
+        for frame, rgba, shadow_only in iter_rgba(context):
+            cache.append(frame, rgba, shadow_only)
             process.stdin.write(pack_frame(rgba, bleed).tobytes())
             if frame in (0, action['coverFrame'], action['frames'] - 1):
                 rgba.save(qa / f'reference-{frame:04d}.png')
@@ -410,7 +529,9 @@ def export_action(context, output, crf, bleed):
         error = process.stderr.read().decode('utf-8', errors='replace')
         if process.wait():
             raise RuntimeError(error)
+        cache.finish()
     finally:
+        cache.close()
         if process.poll() is None:
             process.kill(); process.wait()
     stream = probe(video); check_timing(stream, action, packed=True)
@@ -475,6 +596,14 @@ def run(plan_path, bindings, output, ids=None, crf=18, bleed=8):
                            'note': 'Delivery media only; QA PNGs, reports and HTML are listed separately, not App payload.'}
         result['complete'] = True
         write_json(output / 'manifest.json', result)
+        for context in contexts:
+            cache = context.get('_referenceCache')
+            if cache is not None:
+                try:
+                    cache.remove_after_success()
+                except (OSError, ValueError) as error:
+                    # A valid completed export remains valid; preserve unknown files.
+                    print('Reference cache cleanup deferred: ' + str(error), file=sys.stderr)
         print(json.dumps({'output': str(output), 'actions': len(result['actions']), 'sizes': result['sizes']}, ensure_ascii=False))
     except Exception as error:
         result['error'] = str(error)
