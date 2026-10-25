@@ -1,0 +1,638 @@
+{
+  "format": "pose-hub-app-test-pack-dot-v4-selection@1",
+  "source": {
+    "driveFileId": "1AjtQfo2Ck12lZ-7RYFlTLDIi7j-PxXIM",
+    "driveUrl": "https://drive.google.com/file/d/1AjtQfo2Ck12lZ-7RYFlTLDIi7j-PxXIM/view",
+    "bundlePath": "F:/PoseHub-v2-production/app-test-pack-r1-source/dot-v4-input/dot-v4-input.bundle",
+    "bundleBytes": 88937,
+    "bundleSha256": "a1321d4214d8a7b27ed1d33169680717303c3705dd80d241dde2f109bbc61ae5",
+    "head": "89c9c4f420b227068cea6997cee55e13e1541c7f",
+    "requiredBase": "1fdd117d8e29bb0efcc8c57cb23dc1d9dc7422dd",
+    "bundleVerification": "git bundle verify passed against the exact required base; inspection in independent no-checkout repository",
+    "sourceAcquisition": "Google Drive connector metadata and raw streamed file download; fresh file_uri.download_url materialized locally"
+  },
+  "count": 7,
+  "status": "selected-pending-preview-and-full-4080",
+  "reviewed": false,
+  "releaseEligible": false,
+  "actions": [
+    {
+      "id": "h-unsupported-star-reach-native",
+      "stableId": "h-unsupported-star-reach-native",
+      "family": "h-unsupported-star-reach",
+      "spec": "drill-anim/specs/h-unsupported-star-reach-native.js",
+      "nameZh": "无扶单腿三向点地",
+      "nameEn": "Unsupported Three-Direction Toe Reach",
+      "branch": "codex/app-test-pack-r1",
+      "commit": "89c9c4f420b227068cea6997cee55e13e1541c7f",
+      "specSha256": "275fb4d1c7601045bdefb5f831eb6d4277eefe5c6a3a8193614f2fba0c785982",
+      "sourceOrdinal": 2,
+      "status": "pending-full-4080",
+      "reviewed": false,
+      "releaseEligible": false,
+      "metadata": {
+        "sourceFps": 15,
+        "durationSeconds": 8,
+        "sourceFrames": 120,
+        "kind": "dynamic",
+        "modelProfile": "training-human-v2plus-hands-native",
+        "modelVersion": "1.0.0-r3",
+        "modelEntry": "drill-anim/models/native-open-r1/loader.mjs",
+        "attemptsUsed": 2,
+        "attemptLimit": 3,
+        "sourceQaStatus": "sparse-action-checks-passed-pending-full-gpu",
+        "fullGpuComplete": false,
+        "relatedExistingMechanism": "o-supported-star-reach",
+        "scopeNote": "Explicit unsupported progression; three light toe contacts, not measured loading."
+      },
+      "evidence": {
+        "path": "docs/v4-plan/002-unsupported-star-reach.md",
+        "sha256": "1dd172e928ef6e34ad084b62d74ae3082ebcd67d910a835319ec00231df57033",
+        "sourceCommit": "89c9c4f420b227068cea6997cee55e13e1541c7f",
+        "upstreamCandidateStatus": "sparse candidate; attempt 2 of 3; pending complete GPU validation"
+      },
+      "dependencies": [
+        "drill-anim/lib/home-anim.mjs"
+      ]
+    },
+    {
+      "id": "h-doorframe-forearms-pec-native-r3",
+      "stableId": "h-doorframe-forearms-pec-native-r3",
+      "family": "h-doorframe-forearms-pec",
+      "spec": "drill-anim/specs/h-doorframe-forearms-pec-native-r3.js",
+      "nameZh": "门框双前臂胸肌拉伸",
+      "nameEn": "Doorframe Bilateral Forearm Chest Stretch",
+      "branch": "codex/app-test-pack-r1",
+      "commit": "89c9c4f420b227068cea6997cee55e13e1541c7f",
+      "specSha256": "f9508b5847ccc3649077b80271d4d8c52b16d6d45a0c80c883238e541cdeceac",
+      "sourceOrdinal": 4,
+      "status": "pending-full-4080",
+      "reviewed": false,
+      "releaseEligible": false,
+      "metadata": {
+        "sourceFps": 15,
+        "durationSeconds": 8,
+        "sourceFrames": 120,
+        "kind": "dynamic",
+        "modelProfile": "training-human-v2plus-hands-native",
+        "modelVersion": "1.0.0-r3",
+        "modelEntry": "drill-anim/models/native-open-r1/loader.mjs",
+        "attemptsUsed": 3,
+        "attemptLimit": 3,
+        "sourceQaStatus": "sparse-action-checks-passed-pending-full-gpu",
+        "fullGpuComplete": false,
+        "relatedExistingMechanism": null,
+        "scopeNote": "Specific oblique doorframe illustration; proximal/middle/distal distributed contact, not uniformly flush or load certified."
+      },
+      "evidence": {
+        "path": "docs/v4-plan/004-r3.md",
+        "sha256": "eaffcf7c0ce538ce65ce53faf4390b0df2fe1db791b6e455e80690afb7d8454d",
+        "sourceCommit": "89c9c4f420b227068cea6997cee55e13e1541c7f",
+        "upstreamCandidateStatus": "SPARSE-QA-OK-PENDING-GPU; actual attempt3/3; distributed proximal/middle/distal forearm contact; gaps disclosed"
+      },
+      "dependencies": [
+        "drill-anim/lib/home-anim.mjs"
+      ]
+    },
+    {
+      "id": "h-close-stance-forward-fold-native",
+      "stableId": "h-close-stance-forward-fold-native",
+      "family": "h-close-stance-forward-fold",
+      "spec": "drill-anim/specs/h-close-stance-forward-fold-native.js",
+      "nameZh": "并脚微屈膝无扶体前屈",
+      "nameEn": "Unsupported Close-Stance Forward Fold",
+      "branch": "codex/app-test-pack-r1",
+      "commit": "89c9c4f420b227068cea6997cee55e13e1541c7f",
+      "specSha256": "5c3678e303440469109de416c00aa3fdaf283f464402f2455fe330e709bcb5ec",
+      "sourceOrdinal": 5,
+      "status": "pending-full-4080",
+      "reviewed": false,
+      "releaseEligible": false,
+      "metadata": {
+        "sourceFps": 15,
+        "durationSeconds": 8,
+        "sourceFrames": 120,
+        "kind": "dynamic",
+        "modelProfile": "training-human-v2plus-hands-native",
+        "modelVersion": "1.0.0-r3",
+        "modelEntry": "drill-anim/models/native-open-r1/loader.mjs",
+        "attemptsUsed": 1,
+        "attemptLimit": 3,
+        "sourceQaStatus": "sparse-action-checks-passed-pending-full-gpu",
+        "fullGpuComplete": false,
+        "relatedExistingMechanism": "n-wide-fold",
+        "scopeNote": "Close stance, soft knees and free hands; pelvis projection is not a measured center of mass."
+      },
+      "evidence": {
+        "path": "docs/v4-plan/005-close-stance-forward-fold.md",
+        "sha256": "a727633f7b0b3569485dd8288d16c1a70455d0d6f9ff013f381c92943ab27ad4",
+        "sourceCommit": "89c9c4f420b227068cea6997cee55e13e1541c7f",
+        "upstreamCandidateStatus": "sparse candidate; attempt1 of3; pending complete GPU validation"
+      },
+      "dependencies": [
+        "drill-anim/lib/home-anim.mjs"
+      ]
+    },
+    {
+      "id": "h-knee-wall-dorsiflexion-native",
+      "stableId": "h-knee-wall-dorsiflexion-native",
+      "family": "h-knee-wall-dorsiflexion",
+      "spec": "drill-anim/specs/h-knee-wall-dorsiflexion-native.js",
+      "nameZh": "膝碰墙背屈（前脚跟不离地）",
+      "nameEn": "Knee-to-Wall Dorsiflexion",
+      "branch": "codex/app-test-pack-r1",
+      "commit": "89c9c4f420b227068cea6997cee55e13e1541c7f",
+      "specSha256": "c3926f24707ba0db8dff07f5a30b8fca7a2ff2982b18ab4ae0221d7865cd0e62",
+      "sourceOrdinal": 7,
+      "status": "pending-full-4080",
+      "reviewed": false,
+      "releaseEligible": false,
+      "metadata": {
+        "sourceFps": 30,
+        "durationSeconds": 8,
+        "sourceFrames": 240,
+        "kind": "dynamic",
+        "modelProfile": "training-human-v2plus-hands-native",
+        "modelVersion": "1.0.0-r3",
+        "modelEntry": "drill-anim/models/native-open-r1/loader.mjs",
+        "attemptsUsed": 1,
+        "attemptLimit": 3,
+        "sourceQaStatus": "sparse-action-checks-passed-pending-full-gpu",
+        "fullGpuComplete": false,
+        "relatedExistingMechanism": "h-wall-calf-bent-knee",
+        "scopeNote": "Contact-goal variant, not a new ankle mechanism; original 2mm prop tolerance, 0.003717mm local penetration disclosed."
+      },
+      "evidence": {
+        "path": "docs/v4-plan/007-knee-wall-dorsiflexion.md",
+        "sha256": "5e05a9b1f93071dae7d4b1c5a9eee5fa3e499630ad5296c5a8f1a18a14f270ea",
+        "sourceCommit": "89c9c4f420b227068cea6997cee55e13e1541c7f",
+        "upstreamCandidateStatus": "Sparse geometry checked; pending complete GPU acceptance"
+      },
+      "dependencies": [
+        "drill-anim/lib/home-anim.mjs"
+      ]
+    },
+    {
+      "id": "h-chair-progressive-front-split-native",
+      "stableId": "h-chair-progressive-front-split-native",
+      "family": "h-chair-progressive-front-split",
+      "spec": "drill-anim/specs/h-chair-progressive-front-split-native.js",
+      "nameZh": "扶椅前后劈叉渐进",
+      "nameEn": "Chair Supported Progressive Front Split",
+      "branch": "codex/app-test-pack-r1",
+      "commit": "89c9c4f420b227068cea6997cee55e13e1541c7f",
+      "specSha256": "8cc7586f6453c42b0b469e48f45380bc7bd3bc1efee805232c66e4470127e0b2",
+      "sourceOrdinal": 11,
+      "status": "pending-full-4080",
+      "reviewed": false,
+      "releaseEligible": false,
+      "metadata": {
+        "sourceFps": 30,
+        "durationSeconds": 8,
+        "sourceFrames": 240,
+        "kind": "dynamic",
+        "modelProfile": "training-human-v2plus-hands-native",
+        "modelVersion": "1.0.0-r3",
+        "modelEntry": "drill-anim/models/native-open-r1/loader.mjs",
+        "attemptsUsed": 3,
+        "attemptLimit": 3,
+        "sourceQaStatus": "sparse-action-checks-passed-pending-full-gpu",
+        "fullGpuComplete": false,
+        "relatedExistingMechanism": "n-half-split",
+        "scopeNote": "Light palm-edge chair support; posterior knee intentionally slides; not forced full split or furniture load certification."
+      },
+      "evidence": {
+        "path": "docs/v4-plan/011.md",
+        "sha256": "e10153a96f62cce6955594b7a9a6488ead9cd6974dda8c25aff3a55e9dd55447",
+        "sourceCommit": "89c9c4f420b227068cea6997cee55e13e1541c7f",
+        "upstreamCandidateStatus": "SPARSE-QA-OK-pending-GPU"
+      },
+      "dependencies": [
+        "drill-anim/lib/home-anim.mjs"
+      ]
+    },
+    {
+      "id": "h-straight-arm-hang-native",
+      "stableId": "h-straight-arm-hang-native",
+      "family": "h-straight-arm-hang",
+      "spec": "drill-anim/specs/h-straight-arm-hang-native.js",
+      "nameZh": "单杠直臂悬垂保持",
+      "nameEn": "Fixed-Bar Straight-Arm Hang Hold",
+      "branch": "codex/app-test-pack-r1",
+      "commit": "89c9c4f420b227068cea6997cee55e13e1541c7f",
+      "specSha256": "ec25922f2b717f5987d29512f4ed8cb3b50e40cd28a9cccfbe873689e7a4a7e7",
+      "sourceOrdinal": 18,
+      "status": "pending-full-4080",
+      "reviewed": false,
+      "releaseEligible": false,
+      "metadata": {
+        "sourceFps": 30,
+        "durationSeconds": 8,
+        "sourceFrames": 240,
+        "kind": "static",
+        "modelProfile": "training-human-v2plus-native-grip",
+        "modelVersion": "1.0.0-r1",
+        "modelEntry": "drill-anim/models/native-open-r1/loader.mjs",
+        "attemptsUsed": 1,
+        "attemptLimit": 3,
+        "sourceQaStatus": "sparse-action-checks-passed-pending-full-gpu",
+        "fullGpuComplete": false,
+        "relatedExistingMechanism": "h-fixed-bar-vertical-pull-rr7",
+        "scopeNote": "Eight-second straight-arm passive hang hold, not a pull-up cycle or a new mechanism."
+      },
+      "evidence": {
+        "path": "docs/v4-plan/018.md",
+        "sha256": "02509c1200bda02ef032b4bf59d25556e23b378e3404211a8229d87031fb7147",
+        "sourceCommit": "89c9c4f420b227068cea6997cee55e13e1541c7f",
+        "upstreamCandidateStatus": "SPARSE-QA-OK-PENDING-GPU actual1/3"
+      },
+      "dependencies": [
+        "drill-anim/specs/h-fixed-bar-vertical-pull-rr7.js"
+      ]
+    },
+    {
+      "id": "h-bilateral-farmer-hold-native",
+      "stableId": "h-bilateral-farmer-hold-native",
+      "family": "h-bilateral-farmer-hold",
+      "spec": "drill-anim/specs/h-bilateral-farmer-hold-native.js",
+      "nameZh": "双哑铃农夫站立保持",
+      "nameEn": "Bilateral Dumbbell Farmer Standing Hold",
+      "branch": "codex/app-test-pack-r1",
+      "commit": "89c9c4f420b227068cea6997cee55e13e1541c7f",
+      "specSha256": "23edaff77f278333d4a73dcbd0855781b76ee03f237b05a81d5505ff51048114",
+      "sourceOrdinal": 19,
+      "status": "pending-full-4080",
+      "reviewed": false,
+      "releaseEligible": false,
+      "metadata": {
+        "sourceFps": 30,
+        "durationSeconds": 8,
+        "sourceFrames": 240,
+        "kind": "static",
+        "modelProfile": "training-human-v2plus-native-grip",
+        "modelVersion": "1.0.0-r1",
+        "modelEntry": "drill-anim/models/native-open-r1/loader.mjs",
+        "attemptsUsed": 1,
+        "attemptLimit": 3,
+        "sourceQaStatus": "sparse-action-checks-passed-pending-full-gpu",
+        "fullGpuComplete": false,
+        "relatedExistingMechanism": null,
+        "scopeNote": "Eight-second bilateral standing hold; no walking and no unilateral suitcase anti-sidebend claim."
+      },
+      "evidence": {
+        "path": "docs/v4-plan/019.md",
+        "sha256": "34586aa378c546a01af9fc408862df2a0e52bb3158aa46e95e6f24c33a0a54f6",
+        "sourceCommit": "89c9c4f420b227068cea6997cee55e13e1541c7f",
+        "upstreamCandidateStatus": "SPARSE-QA-OK-PENDING-GPU actual1/3"
+      },
+      "dependencies": [
+        "drill-anim/models/grip-native-r1/pose.mjs"
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "path": "docs/diagnostics/122/attempt-2.mjs",
+      "sha256": "b78e4f6b8e9846a6255c9e6247393439bdf6e11746f00fe7edb07edb10282387",
+      "normalization": "UTF-8 text, CRLF normalized to LF",
+      "sourceCommit": "1fdd117d8e29bb0efcc8c57cb23dc1d9dc7422dd",
+      "disposition": "already-present-unchanged",
+      "role": "existing-base-import"
+    },
+    {
+      "path": "drill-anim/lib/boot.mjs",
+      "sha256": "02de778a84181af1b6323263c0ff68e6b9a1b7ce5fcd6edeb6989f75b7440881",
+      "normalization": "UTF-8 text, CRLF normalized to LF",
+      "sourceCommit": "1fdd117d8e29bb0efcc8c57cb23dc1d9dc7422dd",
+      "disposition": "already-present-unchanged",
+      "role": "existing-base-import"
+    },
+    {
+      "path": "drill-anim/lib/config.mjs",
+      "sha256": "dc300899493594856a2e6261caafeec0dee8b3c4596b4bf6556d6a9257844488",
+      "normalization": "UTF-8 text, CRLF normalized to LF",
+      "sourceCommit": "1fdd117d8e29bb0efcc8c57cb23dc1d9dc7422dd",
+      "disposition": "already-present-unchanged",
+      "role": "existing-base-import"
+    },
+    {
+      "path": "drill-anim/lib/grip.mjs",
+      "sha256": "084a94b206cae21926fc94ee060048bcdc37adfabeb7295e688af81f56ce8be9",
+      "normalization": "UTF-8 text, CRLF normalized to LF",
+      "sourceCommit": "1fdd117d8e29bb0efcc8c57cb23dc1d9dc7422dd",
+      "disposition": "already-present-unchanged",
+      "role": "existing-base-import"
+    },
+    {
+      "path": "drill-anim/lib/home-anim.mjs",
+      "sha256": "1798c9e55c28b32391b7ef32aa358427b4743ee1959f86ec488a95fe88a05557",
+      "normalization": "UTF-8 text, CRLF normalized to LF",
+      "sourceCommit": "1fdd117d8e29bb0efcc8c57cb23dc1d9dc7422dd",
+      "disposition": "already-present-unchanged",
+      "role": "existing-base-import"
+    },
+    {
+      "path": "drill-anim/lib/human-v2plus.mjs",
+      "sha256": "2241ff70e3584cd6a24bb5a3a9540b74c26f386537cd0025bdd607c464d39fc7",
+      "normalization": "UTF-8 text, CRLF normalized to LF",
+      "sourceCommit": "1fdd117d8e29bb0efcc8c57cb23dc1d9dc7422dd",
+      "disposition": "already-present-unchanged",
+      "role": "existing-base-frozen-model-source"
+    },
+    {
+      "path": "drill-anim/lib/model-profile.mjs",
+      "sha256": "5347f02335fe3a78853ae13c4c67e0e13573925a06064a96472c89a3f5b0632c",
+      "normalization": "UTF-8 text, CRLF normalized to LF",
+      "sourceCommit": "1fdd117d8e29bb0efcc8c57cb23dc1d9dc7422dd",
+      "disposition": "already-present-unchanged",
+      "role": "existing-base-frozen-model-source"
+    },
+    {
+      "path": "drill-anim/lib/render.mjs",
+      "sha256": "846bda03b9bb71a75ef6d8df5f990dfb249b701de2191d237ee3d2f30ca3b0f9",
+      "normalization": "UTF-8 text, CRLF normalized to LF",
+      "sourceCommit": "1fdd117d8e29bb0efcc8c57cb23dc1d9dc7422dd",
+      "disposition": "already-present-unchanged",
+      "role": "existing-base-frozen-model-source"
+    },
+    {
+      "path": "drill-anim/lib/soft-highlight.mjs",
+      "sha256": "dd15110cc2dfa1eefb75bed721a5f815317251c429692524a64108de044f6b80",
+      "normalization": "UTF-8 text, CRLF normalized to LF",
+      "sourceCommit": "1fdd117d8e29bb0efcc8c57cb23dc1d9dc7422dd",
+      "disposition": "already-present-unchanged",
+      "role": "existing-base-import"
+    },
+    {
+      "path": "drill-anim/lib/ss-geo.mjs",
+      "sha256": "45ca774079e3a85ecc4f924a3220d4baa721f0435e16f6e6e21ffa19e17e8603",
+      "normalization": "UTF-8 text, CRLF normalized to LF",
+      "sourceCommit": "1fdd117d8e29bb0efcc8c57cb23dc1d9dc7422dd",
+      "disposition": "already-present-unchanged",
+      "role": "existing-base-import"
+    },
+    {
+      "path": "drill-anim/models/current-production.json",
+      "sha256": "31b63d22ff6edda6b3e007056fa5e4b667710a03f5433b4a0d095e29e9bdfc54",
+      "normalization": "UTF-8 text, CRLF normalized to LF",
+      "sourceCommit": "1fdd117d8e29bb0efcc8c57cb23dc1d9dc7422dd",
+      "disposition": "already-present-unchanged",
+      "role": "existing-base-frozen-model-source"
+    },
+    {
+      "path": "drill-anim/models/grip-native-r1/README.md",
+      "sha256": "077eb78cae6b13cd71dd0d96c92d546e7b2b7838edf1952f0471674948aa6325",
+      "normalization": "UTF-8 text, CRLF normalized to LF",
+      "sourceCommit": "1fdd117d8e29bb0efcc8c57cb23dc1d9dc7422dd",
+      "disposition": "already-present-unchanged",
+      "role": "existing-base-frozen-model-source"
+    },
+    {
+      "path": "drill-anim/models/grip-native-r1/fit.json",
+      "sha256": "4d02f6f81fb67667844d7b8ab7cc818a5f7ea74ec7f4bcb7ac8490776240d82f",
+      "normalization": "UTF-8 text, CRLF normalized to LF",
+      "sourceCommit": "1fdd117d8e29bb0efcc8c57cb23dc1d9dc7422dd",
+      "disposition": "already-present-unchanged",
+      "role": "existing-base-import"
+    },
+    {
+      "path": "drill-anim/models/grip-native-r1/loader.mjs",
+      "sha256": "9d621e60d7adb12a0cf69e98d6de3ad4c503a8b4898cbbda87b07933e3268f75",
+      "normalization": "UTF-8 text, CRLF normalized to LF",
+      "sourceCommit": "1fdd117d8e29bb0efcc8c57cb23dc1d9dc7422dd",
+      "disposition": "already-present-unchanged",
+      "role": "existing-base-import"
+    },
+    {
+      "path": "drill-anim/models/grip-native-r1/manifest.json",
+      "sha256": "5178030e4ef324695115673597e359e73fedf45b69279e40c35f7c60cb74af0c",
+      "normalization": "UTF-8 text, CRLF normalized to LF",
+      "sourceCommit": "1fdd117d8e29bb0efcc8c57cb23dc1d9dc7422dd",
+      "disposition": "already-present-unchanged",
+      "role": "existing-base-model-contract"
+    },
+    {
+      "path": "drill-anim/models/grip-native-r1/pose.mjs",
+      "sha256": "789f9cffddc6f646ed0e35820d5ce696fb1800713cb379b08009d2e8d89e60dd",
+      "normalization": "UTF-8 text, CRLF normalized to LF",
+      "sourceCommit": "1fdd117d8e29bb0efcc8c57cb23dc1d9dc7422dd",
+      "disposition": "already-present-unchanged",
+      "role": "existing-base-frozen-model-source"
+    },
+    {
+      "path": "drill-anim/models/hands-native-r3/README.md",
+      "sha256": "191c6d0237137f20af1e9e6759ba7ae1239b254e5d0f88820e61eef28e5851eb",
+      "normalization": "UTF-8 text, CRLF normalized to LF",
+      "sourceCommit": "1fdd117d8e29bb0efcc8c57cb23dc1d9dc7422dd",
+      "disposition": "already-present-unchanged",
+      "role": "existing-base-frozen-model-source"
+    },
+    {
+      "path": "drill-anim/models/hands-native-r3/build-report.json",
+      "sha256": "a9ab63c83691d830fa09eff7e8f35fc7039ffe1a21f5eb587767a2ac27f289ca",
+      "normalization": "UTF-8 text, CRLF normalized to LF",
+      "sourceCommit": "1fdd117d8e29bb0efcc8c57cb23dc1d9dc7422dd",
+      "disposition": "already-present-unchanged",
+      "role": "existing-base-frozen-model-source"
+    },
+    {
+      "path": "drill-anim/models/hands-native-r3/hands-base.json",
+      "sha256": "6d6f6f3f3864e6c684d4a545cc482ebbc4aa3b083fc54dc6144b109155a3770d",
+      "normalization": "UTF-8 text, CRLF normalized to LF",
+      "sourceCommit": "1fdd117d8e29bb0efcc8c57cb23dc1d9dc7422dd",
+      "disposition": "already-present-unchanged",
+      "role": "existing-base-frozen-model-source"
+    },
+    {
+      "path": "drill-anim/models/hands-native-r3/hands-rig.json",
+      "sha256": "3211c65680ee4ae95acbe40db195dbbc95a20a1e873b74b131d78714eb3864c1",
+      "normalization": "UTF-8 text, CRLF normalized to LF",
+      "sourceCommit": "1fdd117d8e29bb0efcc8c57cb23dc1d9dc7422dd",
+      "disposition": "already-present-unchanged",
+      "role": "existing-base-frozen-model-source"
+    },
+    {
+      "path": "drill-anim/models/hands-native-r3/loader.mjs",
+      "sha256": "88c5ac9ef8d49c8160a3c0e5bb8ed1868c549fe38db0d6e45df762918d2aab0d",
+      "normalization": "UTF-8 text, CRLF normalized to LF",
+      "sourceCommit": "1fdd117d8e29bb0efcc8c57cb23dc1d9dc7422dd",
+      "disposition": "already-present-unchanged",
+      "role": "existing-base-import"
+    },
+    {
+      "path": "drill-anim/models/hands-native-r3/manifest.json",
+      "sha256": "565e8db4dfc3530fa2edb88456c227ed9e14f9b8d36dfe048d2816490f64dccf",
+      "normalization": "UTF-8 text, CRLF normalized to LF",
+      "sourceCommit": "1fdd117d8e29bb0efcc8c57cb23dc1d9dc7422dd",
+      "disposition": "already-present-unchanged",
+      "role": "existing-base-model-contract"
+    },
+    {
+      "path": "drill-anim/models/hands-native-r3/preview.mjs",
+      "sha256": "9bb3a20bc97c877eb493b9a06e0f85b31f2a31ecdc3f5c9c536afb3ca55a0822",
+      "normalization": "UTF-8 text, CRLF normalized to LF",
+      "sourceCommit": "1fdd117d8e29bb0efcc8c57cb23dc1d9dc7422dd",
+      "disposition": "already-present-unchanged",
+      "role": "existing-base-frozen-model-source"
+    },
+    {
+      "path": "drill-anim/models/native-open-r1/loader.mjs",
+      "sha256": "c320cebd1771c05b45d5fd824ecfd64f8ad4f815c4f715f6c3b23250859e66f3",
+      "normalization": "UTF-8 text, CRLF normalized to LF",
+      "sourceCommit": "1fdd117d8e29bb0efcc8c57cb23dc1d9dc7422dd",
+      "disposition": "already-present-unchanged",
+      "role": "existing-base-model-contract"
+    },
+    {
+      "path": "drill-anim/models/training-human-v2.json",
+      "sha256": "bc0238e148bfbdc024888ce379d4330c6891cd095db8d42575cb82a7d940d5d7",
+      "normalization": "UTF-8 text, CRLF normalized to LF",
+      "sourceCommit": "1fdd117d8e29bb0efcc8c57cb23dc1d9dc7422dd",
+      "disposition": "already-present-unchanged",
+      "role": "existing-base-frozen-model-source"
+    },
+    {
+      "path": "drill-anim/models/training-human-v2plus-hands-base.json",
+      "sha256": "3354b13d5cfabb839ce86b504f9215d666128ea6d1d5a3fe44518cc9bf6a0f9d",
+      "normalization": "UTF-8 text, CRLF normalized to LF",
+      "sourceCommit": "1fdd117d8e29bb0efcc8c57cb23dc1d9dc7422dd",
+      "disposition": "already-present-unchanged",
+      "role": "existing-base-frozen-model-source"
+    },
+    {
+      "path": "drill-anim/models/training-human-v2plus-hands.json",
+      "sha256": "7768779947fcbc1098db391515b3a05dd636b0f386306f43f1294ba6b5c12b2d",
+      "normalization": "UTF-8 text, CRLF normalized to LF",
+      "sourceCommit": "1fdd117d8e29bb0efcc8c57cb23dc1d9dc7422dd",
+      "disposition": "already-present-unchanged",
+      "role": "existing-base-frozen-model-source"
+    },
+    {
+      "path": "drill-anim/models/training-human-v2plus-head-base.json",
+      "sha256": "ca1f69d35b45aea20c4e90ec3264acc29493174fd8cf9a8263bcb302df9dad2f",
+      "normalization": "UTF-8 text, CRLF normalized to LF",
+      "sourceCommit": "1fdd117d8e29bb0efcc8c57cb23dc1d9dc7422dd",
+      "disposition": "already-present-unchanged",
+      "role": "existing-base-frozen-model-source"
+    },
+    {
+      "path": "drill-anim/models/training-human-v2plus-limbs-base.json",
+      "sha256": "27faf4a8c1b1f8c9f680dbada944b645bd1e53aa3583347cf83f7bec8d186afc",
+      "normalization": "UTF-8 text, CRLF normalized to LF",
+      "sourceCommit": "1fdd117d8e29bb0efcc8c57cb23dc1d9dc7422dd",
+      "disposition": "already-present-unchanged",
+      "role": "existing-base-frozen-model-source"
+    },
+    {
+      "path": "drill-anim/models/training-human-v2plus-outfit.json",
+      "sha256": "7324b8a721be34ceb1d9baeb3a8cb46c155dbaf1621ec2230a2b9a4cfcc92a27",
+      "normalization": "UTF-8 text, CRLF normalized to LF",
+      "sourceCommit": "1fdd117d8e29bb0efcc8c57cb23dc1d9dc7422dd",
+      "disposition": "already-present-unchanged",
+      "role": "existing-base-frozen-model-source"
+    },
+    {
+      "path": "drill-anim/models/training-human-v2plus-regions.json",
+      "sha256": "70c74aa5e8986e2575077a49ebcae405ebf68d5eb0bb00b04eb0cc9cc6c1e822",
+      "normalization": "UTF-8 text, CRLF normalized to LF",
+      "sourceCommit": "1fdd117d8e29bb0efcc8c57cb23dc1d9dc7422dd",
+      "disposition": "already-present-unchanged",
+      "role": "existing-base-frozen-model-source"
+    },
+    {
+      "path": "drill-anim/models/training-human-v2plus-torso-base.json",
+      "sha256": "b0dbbb5a7176e805f88345fa7169a2acc51d4f7ee2390fdbd350cc1655906cfc",
+      "normalization": "UTF-8 text, CRLF normalized to LF",
+      "sourceCommit": "1fdd117d8e29bb0efcc8c57cb23dc1d9dc7422dd",
+      "disposition": "already-present-unchanged",
+      "role": "existing-base-frozen-model-source"
+    },
+    {
+      "path": "drill-anim/models/training-human-v2plus.json",
+      "sha256": "ec2bc815ded157dbc7673e283ed9b6bb1baa710a39ce3a02f88453e8d7fb0a1d",
+      "normalization": "UTF-8 text, CRLF normalized to LF",
+      "sourceCommit": "1fdd117d8e29bb0efcc8c57cb23dc1d9dc7422dd",
+      "disposition": "already-present-unchanged",
+      "role": "existing-base-model-contract"
+    },
+    {
+      "path": "drill-anim/page/human-v2plus-regions.js",
+      "sha256": "730047f0bc5d62eb7aae57d6dfcbbfaef6b73201dd770e4a56e29143614e99ac",
+      "normalization": "UTF-8 text, CRLF normalized to LF",
+      "sourceCommit": "1fdd117d8e29bb0efcc8c57cb23dc1d9dc7422dd",
+      "disposition": "already-present-unchanged",
+      "role": "existing-base-frozen-model-source"
+    },
+    {
+      "path": "drill-anim/page/human-v2plus.js",
+      "sha256": "aad5f829462f9f4dfeca562596ab5d56b6502c1933aacab2d1398f2c153d70fc",
+      "normalization": "UTF-8 text, CRLF normalized to LF",
+      "sourceCommit": "1fdd117d8e29bb0efcc8c57cb23dc1d9dc7422dd",
+      "disposition": "already-present-unchanged",
+      "role": "existing-base-frozen-model-source"
+    },
+    {
+      "path": "drill-anim/specs/h-fixed-bar-vertical-pull-rr7.js",
+      "sha256": "7fe5a262204328b00ea16ccfa005d9734868b0b4028ec177050816803b7a699c",
+      "normalization": "UTF-8 text, CRLF normalized to LF",
+      "sourceCommit": "1fdd117d8e29bb0efcc8c57cb23dc1d9dc7422dd",
+      "disposition": "already-present-unchanged",
+      "role": "existing-base-import"
+    },
+    {
+      "path": "tools/human-v2plus/grip-native/fit.py",
+      "sha256": "02ca393299b21170cb3a394e541e7c1ca5e7ed6ab8dceef68ed9f51a82393eb5",
+      "normalization": "UTF-8 text, CRLF normalized to LF",
+      "sourceCommit": "1fdd117d8e29bb0efcc8c57cb23dc1d9dc7422dd",
+      "disposition": "already-present-unchanged",
+      "role": "existing-base-frozen-model-source"
+    },
+    {
+      "path": "tools/human-v2plus/grip-native/review.mjs",
+      "sha256": "2fdb3901f84a380508dd9d0fac65b1307513b9f57c26b23ff5f5abb27d44645a",
+      "normalization": "UTF-8 text, CRLF normalized to LF",
+      "sourceCommit": "1fdd117d8e29bb0efcc8c57cb23dc1d9dc7422dd",
+      "disposition": "already-present-unchanged",
+      "role": "existing-base-frozen-model-source"
+    },
+    {
+      "path": "tools/human-v2plus/hands-native/check.py",
+      "sha256": "2e947099807fd5a637497508bd68ce891698b57a05f943f1aa492605f1d0a25c",
+      "normalization": "UTF-8 text, CRLF normalized to LF",
+      "sourceCommit": "1fdd117d8e29bb0efcc8c57cb23dc1d9dc7422dd",
+      "disposition": "already-present-unchanged",
+      "role": "existing-base-frozen-model-source"
+    },
+    {
+      "path": "tools/human-v2plus/hands-native/check_wrist.py",
+      "sha256": "8d109ee3157ddd041693612b59c35b5825ace5879be16407b4769ccfef37514c",
+      "normalization": "UTF-8 text, CRLF normalized to LF",
+      "sourceCommit": "1fdd117d8e29bb0efcc8c57cb23dc1d9dc7422dd",
+      "disposition": "already-present-unchanged",
+      "role": "existing-base-frozen-model-source"
+    },
+    {
+      "path": "tools/human-v2plus/hands-native/fit_hand.py",
+      "sha256": "ed45fda79f1569b07f84ac3e250c4d84a72b7d3ec3873adf8a0ae68c11ab57d4",
+      "normalization": "UTF-8 text, CRLF normalized to LF",
+      "sourceCommit": "1fdd117d8e29bb0efcc8c57cb23dc1d9dc7422dd",
+      "disposition": "already-present-unchanged",
+      "role": "existing-base-frozen-model-source"
+    },
+    {
+      "path": "tools/human-v2plus/torso-base/meshops.py",
+      "sha256": "c0677f800d7544c46813dd09e4af9d54cbba97507793db865be0acdc3763e018",
+      "normalization": "UTF-8 text, CRLF normalized to LF",
+      "sourceCommit": "1fdd117d8e29bb0efcc8c57cb23dc1d9dc7422dd",
+      "disposition": "already-present-unchanged",
+      "role": "existing-base-frozen-model-source"
+    }
+  ],
+  "exclusions": {
+    "commits": [
+      "791402e",
+      "77ec6cb"
+    ],
+    "reason": "Failed neck revisions are excluded; only the seven selected specs were copied, with no model, engine, helper or existing spec overwrite."
+  }
+}

@@ -1,0 +1,887 @@
+#!/usr/bin/env python3
+"""Resume CPU exports and assemble an explicitly unreviewed App test package.
+
+Only this parent writes the package's atomic JSON indexes. Workers call the
+existing exporter in fresh immutable attempt directories. No renderer is used.
+"""
+from __future__ import annotations
+
+import argparse
+from concurrent.futures import ProcessPoolExecutor, wait, FIRST_COMPLETED
+from contextlib import redirect_stderr, redirect_stdout
+from datetime import datetime, timezone
+import hashlib
+import json
+import os
+from pathlib import Path
+import re
+import shutil
+import sys
+import time
+import traceback
+import uuid
+
+
+FORMAT = 'pose-hub-stacked-alpha-delivery@1'
+ROLES = ('video', 'cover', 'thumbnail')
+ID = re.compile(r'[A-Za-z0-9][A-Za-z0-9_-]*')
+THREAD_ENV = ('OPENBLAS_NUM_THREADS', 'OMP_NUM_THREADS', 'MKL_NUM_THREADS')
+
+
+def limit_worker_threads():
+    # Process-local environment only; set before importing NumPy/SciPy or spawning.
+    for key in THREAD_ENV:
+        os.environ[key] = '1'
+
+
+def require(condition, message):
+    if not condition:
+        raise ValueError(message)
+
+
+def now():
+    return datetime.now(timezone.utc).isoformat()
+
+
+def pid_alive(pid):
+    """True/False/None; Windows never uses os.kill(pid, 0)."""
+    if type(pid) is not int or pid <= 0:
+        return None
+    if os.name == 'nt':
+        import ctypes
+        kernel = ctypes.WinDLL('kernel32', use_last_error=True)
+        kernel.OpenProcess.argtypes = [ctypes.c_uint32, ctypes.c_int, ctypes.c_uint32]
+        kernel.OpenProcess.restype = ctypes.c_void_p
+        kernel.GetExitCodeProcess.argtypes = [ctypes.c_void_p, ctypes.POINTER(ctypes.c_uint32)]
+        kernel.GetExitCodeProcess.restype = ctypes.c_int
+        kernel.CloseHandle.argtypes = [ctypes.c_void_p]
+        handle = kernel.OpenProcess(0x1000, False, pid)
+        if not handle:
+            error = ctypes.get_last_error()
+            return False if error == 87 else True if error == 5 else None
+        try:
+            code = ctypes.c_uint32()
+            if not kernel.GetExitCodeProcess(handle, ctypes.byref(code)):
+                return None
+            return code.value == 259
+        finally:
+            kernel.CloseHandle(handle)
+    try:
+        os.kill(pid, 0)
+        return True
+    except ProcessLookupError:
+        return False
+    except PermissionError:
+        return True
+    except OSError:
+        return None
+
+
+def available_commit_bytes():
+    """Available Windows commit, not physical RAM; non-Windows needs no guard."""
+    if os.name != 'nt':
+        return None
+    import ctypes
+
+    class MemoryStatus(ctypes.Structure):
+        _fields_ = [('dwLength', ctypes.c_uint32), ('dwMemoryLoad', ctypes.c_uint32)] + [
+            (name, ctypes.c_uint64) for name in ('ullTotalPhys', 'ullAvailPhys', 'ullTotalPageFile',
+             'ullAvailPageFile', 'ullTotalVirtual', 'ullAvailVirtual', 'ullAvailExtendedVirtual')]
+    state = MemoryStatus()
+    state.dwLength = ctypes.sizeof(state)
+    kernel = ctypes.WinDLL('kernel32', use_last_error=True)
+    kernel.GlobalMemoryStatusEx.argtypes = [ctypes.POINTER(MemoryStatus)]
+    kernel.GlobalMemoryStatusEx.restype = ctypes.c_int
+    if not kernel.GlobalMemoryStatusEx(ctypes.byref(state)):
+        raise OSError(ctypes.get_last_error(), 'GlobalMemoryStatusEx failed; heavy task not started')
+    return state.ullAvailPageFile
+
+
+class HeavySlot:
+    """Shared CPU/GPU wx lock. Only this instance's exact owner token is removed."""
+    def __init__(self, path, min_commit_bytes=4 * 1024 ** 3):
+        self.path = Path(path).resolve() if path else None
+        self.minimum = min_commit_bytes
+        self.owner = None
+
+    def try_acquire(self, aid):
+        require(self.owner is None, 'CPU already holds a heavy slot')
+        if self.path:
+            if self.path.exists():
+                try:
+                    existing = read_json(self.path)
+                except FileNotFoundError:
+                    existing = None  # The active owner released between stat and read.
+                except (OSError, ValueError) as error:
+                    raise ValueError(f'Unknown heavy lock preserved at {self.path}: {error}; ask root to inspect') from error
+                if existing is not None:
+                    require(pid_alive(existing.get('pid')) is True,
+                            f'Stale/unknown heavy lock preserved at {self.path}; owner={canonical(existing)}; ask root to inspect')
+                    return 'awaiting-heavy-slot', existing
+            request = self.path.parent / 'gpu-wants-slot.json'
+            if request.exists():
+                try:
+                    requester = read_json(request)
+                except (OSError, ValueError) as error:
+                    raise ValueError(f'Unknown GPU priority marker preserved at {request}: {error}') from error
+                require(pid_alive(requester.get('pid')) is True,
+                        f'Stale/unknown GPU priority marker preserved at {request}; owner={canonical(requester)}; ask root to inspect')
+                return 'awaiting-gpu-priority', requester
+        available = available_commit_bytes()
+        if available is not None and available < self.minimum:
+            return 'awaiting-commit-memory', {'availableCommitBytes': available, 'minimumCommitBytes': self.minimum}
+        if self.path:
+            self.path.parent.mkdir(parents=True, exist_ok=True)
+            owner = {'pid': os.getpid(), 'role': 'cpu', 'action': aid,
+                     'token': uuid.uuid4().hex, 'createdAt': now()}
+            try:
+                stream = self.path.open('x', encoding='utf-8')
+            except FileExistsError:
+                try:
+                    existing = read_json(self.path)
+                except (OSError, ValueError) as error:
+                    raise ValueError(f'Unknown heavy lock preserved at {self.path}: {error}; ask root to inspect') from error
+                require(pid_alive(existing.get('pid')) is True,
+                        f'Stale/unknown heavy lock preserved at {self.path}; owner={canonical(existing)}; ask root to inspect')
+                return 'awaiting-heavy-slot', existing
+            with stream:
+                json.dump(owner, stream); stream.flush(); os.fsync(stream.fileno())
+            self.owner = owner
+            # The lock may have been free while the system's remaining commit fell.
+            available = available_commit_bytes()
+            if available is not None and available < self.minimum:
+                self.release()
+                return 'awaiting-commit-memory', {'availableCommitBytes': available, 'minimumCommitBytes': self.minimum}
+        return None, None
+
+    def release(self):
+        if self.owner is None:
+            return
+        require(self.path.exists(), 'Owned heavy lock disappeared; stop and inspect exclusivity')
+        existing = read_json(self.path)
+        require(existing == self.owner,
+                f'Heavy lock owner changed; preserving {self.path}; owner={canonical(existing)}')
+        self.path.unlink()
+        self.owner = None
+
+
+def read_json(path):
+    def unique(pairs):
+        result = {}
+        for key, value in pairs:
+            require(key not in result, 'Duplicate JSON key: ' + key)
+            result[key] = value
+        return result
+    return json.loads(Path(path).read_text(encoding='utf-8-sig'), object_pairs_hook=unique)
+
+
+def digest(path):
+    with Path(path).open('rb') as stream:
+        return hashlib.file_digest(stream, 'sha256').hexdigest()
+
+
+def canonical(value):
+    return json.dumps(value, sort_keys=True, separators=(',', ':'), ensure_ascii=False, allow_nan=False)
+
+
+def hash_value(value):
+    return hashlib.sha256(canonical(value).encode('utf-8')).hexdigest()
+
+
+def safe(root, name):
+    require(isinstance(name, str) and name and ':' not in name and '\\' not in name
+            and all(p not in ('', '.', '..') for p in name.split('/')), 'Unsafe relative path: ' + repr(name))
+    root = Path(root).resolve()
+    path = (root / name).resolve()
+    require(path.is_relative_to(root), 'Path escapes root')
+    return path
+
+
+def verify(root, ref):
+    path = safe(root, ref['path'])
+    require(type(ref.get('bytes')) is int and ref['bytes'] > 0 and path.is_file()
+            and path.stat().st_size == ref['bytes'] and digest(path) == ref['sha256'],
+            'File is missing, empty or has another identity: ' + str(path))
+    return path
+
+
+def atomic_json(output, name, value):
+    target = safe(output, name)
+    target.parent.mkdir(parents=True, exist_ok=True)
+    staging = safe(output, '.staging')
+    staging.mkdir(exist_ok=True)
+    temporary = staging / (uuid.uuid4().hex + '.json')
+    try:
+        with temporary.open('x', encoding='utf-8', newline='\n') as stream:
+            json.dump(value, stream, ensure_ascii=False, indent=2, allow_nan=False)
+            stream.write('\n'); stream.flush(); os.fsync(stream.fileno())
+        os.replace(temporary, target)
+    finally:
+        temporary.unlink(missing_ok=True)
+
+
+def immutable_copy(source, output, name, ref=None):
+    """Publish a fully copied file exclusively; a different existing hash is fatal."""
+    source, output = Path(source), Path(output)
+    expected = ref or {'bytes': source.stat().st_size, 'sha256': digest(source)}
+    require(expected['bytes'] > 0 and source.stat().st_size == expected['bytes']
+            and digest(source) == expected['sha256'], 'Copy source identity changed')
+    target = safe(output, name)
+    if target.exists():
+        verify(output, {'path': name, **{k: expected[k] for k in ('bytes', 'sha256')}})
+        return
+    target.parent.mkdir(parents=True, exist_ok=True)
+    staging = safe(output, '.staging'); staging.mkdir(exist_ok=True)
+    temporary = staging / (uuid.uuid4().hex + '.copy')
+    try:
+        with source.open('rb') as incoming, temporary.open('xb') as outgoing:
+            shutil.copyfileobj(incoming, outgoing, length=1024 * 1024)
+            outgoing.flush(); os.fsync(outgoing.fileno())
+        require(temporary.stat().st_size == expected['bytes'] and digest(temporary) == expected['sha256'],
+                'Copy verification failed')
+        try:
+            # Same-filesystem hard-link publication is atomic and never replaces an existing target.
+            os.link(temporary, target)
+        except FileExistsError:
+            verify(output, {'path': name, **{k: expected[k] for k in ('bytes', 'sha256')}})
+    finally:
+        temporary.unlink(missing_ok=True)
+
+
+def source_key(action, skin, exporter_sha, crf=12, bleed=8):
+    # A different enclosing plan alone does not invalidate identical media inputs.
+    selected = {key: action[key] for key in ('id', 'fps', 'frames', 'durationSeconds', 'coverFrame',
+                                            'coverSize', 'thumbnailSize', 'highlight')}
+    selected.update({key: action[key]['sha256'] for key in ('layerManifest', 'framing')})
+    selected['baselineVideos'] = {t: ref['sha256'] for t, ref in sorted(action['baselineVideos'].items())}
+    return hash_value({'action': selected, 'skin': skin, 'exporterSha256': exporter_sha,
+                       'crf': crf, 'bleed': bleed})
+
+
+def next_attempt(work_root, aid):
+    for number in range(1, 100000):
+        name = f'{aid}-r1' if number == 1 else f'{aid}-attempt-r{number}'
+        directory = safe(work_root, name)
+        log = safe(work_root, 'logs/' + name + '.log')
+        if not directory.exists() and not log.exists():
+            return directory, log
+    raise ValueError('Too many preserved attempts: ' + aid)
+
+
+def worker(task):
+    """Each process has its own stdout/log and invokes the existing CPU exporter."""
+    plan, bindings, output, aid, log = task
+    limit_worker_threads()
+    Path(log).parent.mkdir(parents=True, exist_ok=True)
+    with Path(log).open('x', encoding='utf-8', buffering=1) as stream:
+        with redirect_stdout(stream), redirect_stderr(stream):
+            try:
+                import export_stacked_alpha as exporter
+                exporter.run(Path(plan), bindings, Path(output), ids=[aid], crf=12)
+                return {'ok': True, 'id': aid, 'manifest': str(Path(output) / 'manifest.json'),
+                        'attempt': str(output), 'log': str(log)}
+            except Exception as error:
+                traceback.print_exc()
+                return {'ok': False, 'id': aid, 'error': str(error), 'attempt': str(output), 'log': str(log)}
+
+
+def expanded_roots(plan, bindings):
+    roots = {key: Path(value).resolve() for key, value in bindings.items()}
+    for alias, descriptor in plan['bindings'].items():
+        require(descriptor['parentBinding'] in roots, 'Missing parent binding: ' + descriptor['parentBinding'])
+        roots[alias] = safe(roots[descriptor['parentBinding']], descriptor['relativeRoot'])
+    return roots
+
+
+def validate_export(manifest_path, entry, expected_exporter):
+    manifest = read_json(manifest_path)
+    require(manifest.get('format') == FORMAT and manifest.get('complete') is True
+            and manifest.get('exporterSha256') == expected_exporter, 'Incomplete or different-tool export')
+    require(manifest.get('skin') == entry['skin'], 'Different source skin')
+    encoding = manifest.get('encoding', {})
+    require(encoding.get('crf') == 12 and encoding.get('rgbBleedPixels') == 8
+            and encoding.get('layout') == 'top-rgb-bottom-alpha', 'Different export encoding')
+    action = entry['action']
+    matches = [row for row in manifest['actions'] if row['id'] == action['id']]
+    require(len(matches) == 1, 'Missing or duplicate action in completed export')
+    row = matches[0]
+    require(row.get('reviewed') is False and row.get('releaseEligible') is False,
+            'Export unexpectedly claims approval')
+    for key in ('fps', 'frames', 'durationSeconds', 'coverFrame', 'highlight'):
+        require(row[key] == action[key], 'Export source recipe changed: ' + key)
+    require(row['sourceLayers']['sha256'] == action['layerManifest']['sha256'], 'Export belongs to another layer source')
+    layer = read_json(verify(entry['roots'][action['layerManifest']['root']], action['layerManifest']))
+    require(row['sourceSha256'] == layer['sourceSha256'], 'Export render fingerprint changed')
+    framing = read_json(verify(entry['roots'][action['framing']['root']], action['framing']))
+    require(row['framing'] == framing, 'Export framing changed')
+    require(set(row['sourceVideos']) == set(action['baselineVideos']), 'Export baseline set changed')
+    for theme in action['baselineVideos']:
+        require(row['sourceVideos'][theme]['sha256'] == action['baselineVideos'][theme]['sha256'],
+                'Export baseline changed: ' + theme)
+    for role in ROLES:
+        verify(Path(manifest_path).parent, row['files'][role])
+    report = read_json(verify(Path(manifest_path).parent, row['qa']['report']))
+    require(report.get('passed') is True and report == row['qa']['metrics'], 'Missing or failed actual decode QA')
+    return manifest, row
+
+
+class Assembler:
+    def __init__(self, output, work_root, catalog_path, entries, exporter_sha, excludes):
+        self.output, self.work_root = Path(output), Path(work_root)
+        self.catalog_path = Path(catalog_path)
+        self.catalog = read_json(catalog_path)
+        self.catalog_sha = digest(catalog_path)
+        self.rows = {row['id']: row for row in self.catalog['actions']}
+        require(len(self.rows) == len(self.catalog['actions']), 'Duplicate catalog ID')
+        require(all(ID.fullmatch(a) for a in self.rows), 'Unsafe catalog ID')
+        require(all(r.get('reviewed') is False and r.get('releaseEligible') is False for r in self.rows.values()),
+                'Test catalog must remain unreviewed')
+        self.entries, self.exporter_sha, self.excludes = entries, exporter_sha, set(excludes)
+        require(self.excludes <= self.rows.keys(), 'Excluded IDs outside catalog')
+        require(entries.keys() <= self.rows.keys(), 'Plan IDs outside catalog')
+        self.ready, self.verified_ready, self.states, self.failures = {}, set(), {}, []
+        self.queue_state, self.awaiting_source = 'running', False
+        existing = self.output / 'manifest.json'
+        if existing.exists():
+            old = read_json(existing)
+            require(old.get('format') == FORMAT and old.get('status') == 'test-unreviewed', 'Unexpected existing output manifest')
+            self.states = old.get('states', {})
+            self.failures = old.get('failures', [])
+            for row in old['actions']:
+                aid = row['id']
+                require(aid in self.rows, 'Existing deliverable is outside the current catalog: ' + aid)
+                require(row.get('catalogRevision') == self.rows[aid]['revision'], 'Catalog revision changed for ready action: ' + aid)
+                require(row.get('exporterSha256') == exporter_sha, 'Ready action was made by a different exporter: ' + aid)
+                require(row.get('reviewed') is False and row.get('releaseEligible') is False,
+                        'Stored test action unexpectedly claims approval')
+                for role in ROLES:
+                    verify(self.output, row['files'][role])
+                report = read_json(verify(self.output, row['qa']['report']))
+                require(report.get('passed') is True and report == row['qa']['metrics'], 'Stored decode QA failed')
+                if aid in entries:
+                    require(row['queueSourceKey'] == entries[aid]['key'], 'Source changed for ready action: ' + aid)
+                self.ready[aid] = row
+                self.verified_ready.add(aid)
+
+    def ingest(self, manifest_path, aid):
+        require(aid in self.entries, 'Cannot ingest an action without its current source plan: ' + aid)
+        entry = self.entries[aid]
+        manifest, row = validate_export(manifest_path, entry, self.exporter_sha)
+        root = Path(manifest_path).parent
+        imported = json.loads(json.dumps(row))
+        # Preflight all existing targets before any publication.
+        copies = []
+        for role in ROLES:
+            ref = row['files'][role]
+            source = verify(root, ref)
+            destination = f'media/{aid}/{Path(ref["path"]).name}'
+            if safe(self.output, destination).exists():
+                verify(self.output, {**ref, 'path': destination})
+            copies.append((source, destination, ref))
+            imported['files'][role]['path'] = destination
+        qa = row['qa']['report']
+        copies.append((verify(root, qa), f'qa/{aid}/decode-check.json', qa))
+        for source, destination, ref in copies:
+            immutable_copy(source, self.output, destination, ref)
+        imported['qa']['report']['path'] = f'qa/{aid}/decode-check.json'
+        plan_name = f'plans/{entry["planSha"]}.json'
+        immutable_copy(entry['path'], self.output, plan_name)
+        imported.update({'queueSourceKey': entry['key'], 'exporterSha256': self.exporter_sha,
+                         'sourcePlanSha256': entry['planSha'], 'sourcePlan': plan_name,
+                         'sourceExportManifestSha256': digest(manifest_path),
+                         'catalogRevision': self.rows[aid]['revision'],
+                         'reviewed': False, 'releaseEligible': False})
+        self.ready[aid] = imported
+        self.verified_ready.add(aid)
+        self.states[aid] = {'state': 'ready-test-unreviewed', 'sourceKey': entry['key'], 'updatedAt': now()}
+        self.save()
+        print(f'[ready {len(self.ready)}/{len(self.rows)} {aid}]', flush=True)
+
+    def fail(self, aid, error, attempt=None, log=None):
+        event = {'id': aid, 'error': str(error), 'at': now()}
+        if attempt:
+            event['attempt'] = Path(attempt).relative_to(self.work_root).as_posix()
+        if log:
+            event['log'] = Path(log).relative_to(self.work_root).as_posix()
+        record_name = f'failures/{aid}/{uuid.uuid4().hex}.json'
+        atomic_json(self.output, record_name, event)
+        record_path = safe(self.output, record_name)
+        event['record'] = {'path': record_name, 'bytes': record_path.stat().st_size,
+                           'sha256': digest(record_path)}
+        self.failures.append(event)
+        self.states[aid] = {'state': 'failed-preserved', 'lastFailure': event}
+        self.save()
+        print(f'[failed {aid} {error}]', flush=True)
+
+    def save(self):
+        # Exclusion controls dispatch, not deletion of already completed deliveries.
+        ready = [self.ready[aid] for aid in sorted(self.ready)]
+        ready_ids = {r['id'] for r in ready}
+        pending = sorted(self.rows.keys() - ready_ids)
+        for row in ready:
+            row['availableForApp'] = row['id'] in self.verified_ready
+        states = {}
+        for aid, row in self.rows.items():
+            states[aid] = ({'state': 'ready-test-unreviewed'} if aid in ready_ids else
+                           {'state': 'excluded-by-request'} if aid in self.excludes else
+                           self.states.get(aid, {'state': 'queued' if aid in self.entries else row['state']}))
+        packed = sum(a['files']['video']['bytes'] for a in ready)
+        stills = sum(a['files'][r]['bytes'] for a in ready for r in ('cover', 'thumbnail'))
+        comparable = [a for a in ready if {'dark', 'light'} <= a['sourceVideos'].keys()]
+        comparable_packed = sum(a['files']['video']['bytes'] for a in comparable)
+        dark = sum(a['sourceVideos']['dark']['bytes'] for a in comparable)
+        light = sum(a['sourceVideos']['light']['bytes'] for a in comparable)
+        sizes = {'packedMp4Bytes': packed, 'alphaWebpBytes': stills, 'deliveryMediaBytes': packed + stills,
+                 'originalDarkMp4Bytes': dark, 'originalLightMp4Bytes': light,
+                 'originalBothThemesMp4Bytes': dark + light,
+                 'baselineComparableActionCount': len(comparable), 'baselineComparablePackedBytes': comparable_packed,
+                 'packedVsOneDarkRatio': comparable_packed / dark if dark else None,
+                 'packedVsBothThemesRatio': comparable_packed / (dark + light) if dark + light else None,
+                 'comparisonScope': 'Only ready actions with both original baseline themes; fresh captures excluded from ratios.'}
+        manifest = {'format': FORMAT, 'id': self.catalog['id'], 'status': 'test-unreviewed',
+                    'complete': len(ready) == len(self.rows), 'reviewed': False, 'releaseEligible': False,
+                    'updatedAt': now(), 'sourceCatalogSha256': self.catalog_sha,
+                    'exporterSha256': self.exporter_sha, 'readyCount': len(ready), 'totalCount': len(self.rows),
+                    'pendingCount': len(pending),
+                    'queueState': self.queue_state,
+                    'pendingIds': pending, 'excluded': sorted(self.excludes - ready_ids),
+                    'queueExcludedIds': sorted(self.excludes), 'states': states,
+                    'skin': 'realistic',
+                    'workerThreadEnvironment': {key: '1' for key in THREAD_ENV},
+                    'encoding': {'layout': 'top-rgb-bottom-alpha', 'width': 720, 'height': 1440,
+                                 'crf': 12, 'rgbBleedPixels': 8, 'rgbAlphaMode': 'straight',
+                                 'alphaChannelAfterRgbDecode': 'red', 'matrix': 'bt709', 'range': 'limited'},
+                    'actions': ready, 'sizes': sizes, 'failures': self.failures}
+        catalog = json.loads(json.dumps(self.catalog))
+        for row in catalog['actions']:
+            aid = row['id']
+            if aid in ready_ids:
+                row.update({'files': self.ready[aid]['files'], 'qa': self.ready[aid]['qa'],
+                            'state': 'ready-test-unreviewed'})
+            else:
+                row.pop('files', None)
+            row['availableForApp'] = aid in ready_ids and aid in self.verified_ready
+            row['reviewed'] = False; row['releaseEligible'] = False
+        catalog.update({'readyCount': len(ready), 'pendingCount': len(pending),
+                        'totalCount': len(self.rows), 'pendingIds': pending})
+        progress = {key: manifest[key] for key in ('id', 'status', 'updatedAt', 'readyCount', 'totalCount',
+                                                   'pendingCount', 'pendingIds', 'excluded', 'states', 'failures', 'sizes', 'queueState')}
+        atomic_json(self.output, 'manifest.json', manifest)
+        atomic_json(self.output, 'catalog.json', catalog)
+        atomic_json(self.output, 'progress.json', progress)
+
+
+def collect_entries(paths, bindings, exporter_sha):
+    entries = {}
+    for path in paths:
+        path = Path(path).resolve(strict=True)
+        plan = read_json(path)
+        require(plan.get('format') == 'pose-hub-stacked-alpha-plan@1', 'Unsupported plan')
+        require(plan.get('skin') == 'realistic', 'Test pack preserves the realistic skin')
+        eligible = plan['consumer']['eligibleActionIds']
+        require(len(eligible) == len(set(eligible)), 'Duplicate plan eligible IDs')
+        roots = expanded_roots(plan, bindings)
+        plan_sha = digest(path)
+        seen = set()
+        for action in plan['actions']:
+            aid = action['id']
+            require(ID.fullmatch(aid) and aid in eligible and aid not in seen, 'Invalid or duplicate plan action')
+            seen.add(aid)
+            key = source_key(action, plan['skin'], exporter_sha)
+            require(aid not in entries or entries[aid]['key'] == key, 'Conflicting sources in plans: ' + aid)
+            entries[aid] = {'action': action, 'key': key, 'path': path, 'planSha': plan_sha,
+                            'roots': roots, 'skin': plan['skin']}
+    return entries
+
+
+def refresh_watch(directory, entries, bindings, exporter_sha, seen, allowed):
+    """Discover complete plan documents; never silently replace an existing ID."""
+    added = []
+    if directory is None or not Path(directory).exists():
+        return added
+    require(Path(directory).is_dir(), 'Watch-plan path is not a directory')
+    for path in sorted(Path(directory).glob('*.json')):
+        try:
+            identity = digest(path)
+            if seen.get(str(path)) == identity:
+                continue
+            document = read_json(path)
+        except (OSError, ValueError):
+            # A producer may still be finishing a file. No task is created from it.
+            continue
+        if document.get('format') != 'pose-hub-stacked-alpha-plan@1':
+            seen[str(path)] = identity
+            continue
+        candidate = collect_entries([path], bindings, exporter_sha)
+        require(candidate.keys() <= allowed, 'Watched plan contains IDs outside the test catalog')
+        for aid, entry in candidate.items():
+            require(aid not in entries or entries[aid]['key'] == entry['key'],
+                    'Conflicting source in watched plan: ' + aid)
+        for aid, entry in candidate.items():
+            if aid not in entries:
+                entries[aid] = entry
+                added.append(aid)
+        seen[str(path)] = identity
+    return added
+
+
+def check_source_overlap(entry, output, work):
+    source = entry['roots'][entry['action']['sourceRoot']]
+    require(not output.is_relative_to(source) and not work.is_relative_to(source)
+            and not source.is_relative_to(output) and not source.is_relative_to(work),
+            'Output/work root overlaps an immutable source media batch')
+
+
+def run(args):
+    limit_worker_threads()
+    output, work = args.output.resolve(), args.work_root.resolve()
+    require(not args.heavy_lock or args.workers == 1, '--heavy-lock requires --workers 1')
+    heavy = HeavySlot(args.heavy_lock, int(args.min_commit_gib * 1024 ** 3))
+    require(output != work and not output.is_relative_to(work) and not work.is_relative_to(output),
+            'Work attempts and final package must be separate roots')
+    bindings = {}
+    for text in args.bind:
+        key, separator, value = text.partition('=')
+        require(separator and key not in bindings and key in ('release', 'pilot', 'production'), 'Invalid/duplicate root binding')
+        bindings[key] = str(Path(value).resolve(strict=True))
+    require({'release', 'pilot', 'production'} <= bindings.keys(), 'Supply release, pilot and production bindings')
+    exporter = Path(__file__).with_name('export_stacked_alpha.py')
+    exporter_sha = digest(exporter)
+    entries = collect_entries(args.plan, bindings, exporter_sha)
+    for entry in entries.values():
+        check_source_overlap(entry, output, work)
+    for parent in bindings.values():
+        require(output != Path(parent) and work != Path(parent), 'Never use a source binding root as output')
+    output.mkdir(parents=True, exist_ok=True); work.mkdir(parents=True, exist_ok=True)
+    lock = output / '.queue.lock'
+    token = {'pid': os.getpid(), 'token': uuid.uuid4().hex, 'startedAt': now()}
+    with lock.open('x', encoding='utf-8') as stream:
+        json.dump(token, stream)
+    try:
+        assembler = Assembler(output, work, args.catalog, entries, exporter_sha, args.exclude_ids)
+        for manifest_path in args.ingest:
+            prior = read_json(manifest_path)
+            require(prior.get('complete') is True, 'Cannot ingest a partial export')
+            for row in prior['actions']:
+                # Exclusion prevents duplicate encoding; completed supplied samples still ingest.
+                assembler.ingest(Path(manifest_path), row['id'])
+        todo = []
+        for aid, entry in entries.items():
+            if aid in assembler.ready or aid in assembler.excludes:
+                continue
+            reused = False
+            candidates = sorted(work.glob(f'{aid}-*/manifest.json'), reverse=True)
+            for candidate in candidates:
+                try:
+                    validate_export(candidate, entry, exporter_sha)
+                except (OSError, ValueError, KeyError, TypeError):
+                    continue
+                assembler.ingest(candidate, aid); reused = True; break
+            if not reused:
+                todo.append(aid)
+        assembler.save()
+        # --ingest-only permits assembly while another task controls CPU load.
+        if args.ingest_only:
+            return assembler
+        seen_watch, attempted = {}, set()
+        idle_since = None
+        with ProcessPoolExecutor(max_workers=args.workers) as pool:
+            active = {}
+            previous_heavy_wait = None
+            while True:
+                blocked_heavy = None
+                discovered = refresh_watch(args.watch_plan_dir, entries, bindings, exporter_sha,
+                                           seen_watch, assembler.rows.keys())
+                for aid in discovered:
+                    check_source_overlap(entries[aid], output, work)
+                    if aid not in assembler.ready and aid not in assembler.excludes and aid not in attempted and aid not in todo:
+                        reused = False
+                        for candidate in sorted(work.glob(f'{aid}-*/manifest.json'), reverse=True):
+                            try:
+                                validate_export(candidate, entries[aid], exporter_sha)
+                            except (OSError, ValueError, KeyError, TypeError):
+                                continue
+                            assembler.ingest(candidate, aid); reused = True; break
+                        if not reused:
+                            todo.append(aid)
+                if discovered:
+                    print('[new-source ' + ','.join(discovered) + ']', flush=True)
+                    assembler.queue_state = 'running'
+                    assembler.save()
+                    idle_since = None
+                while todo and len(active) < args.workers:
+                    aid = todo[0]
+                    state, owner = heavy.try_acquire(aid)
+                    if state:
+                        blocked_heavy = (state, owner)
+                        assembler.queue_state = state
+                        assembler.save()
+                        detail = canonical({'state': state, 'owner': owner})
+                        if detail != previous_heavy_wait:
+                            print('[heavy-wait ' + detail + ']', flush=True)
+                            previous_heavy_wait = detail
+                        break
+                    previous_heavy_wait = None
+                    todo.pop(0)
+                    attempted.add(aid)
+                    attempt, log = next_attempt(work, aid)
+                    assembler.queue_state = 'running'
+                    assembler.states[aid] = {'state': 'encoding', 'attempt': attempt.name, 'updatedAt': now()}
+                    assembler.save()
+                    task = (str(entries[aid]['path']), bindings, str(attempt), aid, str(log))
+                    try:
+                        active[pool.submit(worker, task)] = (aid, attempt, log)
+                    except BaseException:
+                        heavy.release()
+                        raise
+                if not active:
+                    if blocked_heavy:
+                        idle_since = None
+                        time.sleep(15)
+                        continue
+                    if not args.watch_plan_dir or len(assembler.ready) == len(assembler.rows):
+                        assembler.queue_state = 'complete' if len(assembler.ready) == len(assembler.rows) else 'idle-pending-inputs'
+                        break
+                    if idle_since is None:
+                        idle_since = time.monotonic()
+                        assembler.queue_state = 'awaiting-source'
+                        assembler.save()
+                        print(f'[awaiting-source ready {len(assembler.ready)}/{len(assembler.rows)}]', flush=True)
+                    remaining = args.idle_timeout - (time.monotonic() - idle_since)
+                    if remaining <= 0:
+                        assembler.awaiting_source = True
+                        assembler.queue_state = 'awaiting-source'
+                        assembler.save()
+                        print(f'[awaiting-source timeout {args.idle_timeout}s; package incomplete]', flush=True)
+                        break
+                    time.sleep(min(args.poll_seconds, remaining))
+                    continue
+                idle_since = None
+                done, _ = wait(active, return_when=FIRST_COMPLETED)
+                for future in done:
+                    aid, attempt, log = active.pop(future)
+                    try:
+                        result = future.result()
+                        if not result['ok']:
+                            assembler.fail(aid, result['error'], result['attempt'], result['log'])
+                        else:
+                            assembler.ingest(Path(result['manifest']), aid)
+                    except Exception as error:
+                        assembler.fail(aid, error, attempt, log)
+                    finally:
+                        heavy.release()
+        assembler.save()
+        return assembler
+    finally:
+        try:
+            heavy.release()
+        finally:
+            if lock.exists() and read_json(lock) == token:
+                lock.unlink()
+
+
+def self_test():
+    import tempfile
+    import unittest
+    from unittest.mock import patch
+
+    class QueueTest(unittest.TestCase):
+        def test_changed_plan_same_inputs_has_same_key(self):
+            a = {'id': 'sample', 'fps': 30, 'frames': 240, 'durationSeconds': 8, 'coverFrame': 66,
+                 'coverSize': [720, 720], 'thumbnailSize': [240, 240], 'highlight': {'enabled': True},
+                 'layerManifest': {'sha256': 'a'}, 'framing': {'sha256': 'b'},
+                 'derivativeManifest': {'sha256': 'c'}, 'baselineVideos': {'dark': {'sha256': 'd'}, 'light': {'sha256': 'e'}}}
+            key = source_key(a, 'realistic', 'tool')
+            a['irrelevantEnclosingPlan'] = 'new'
+            self.assertEqual(source_key(a, 'realistic', 'tool'), key)
+            a['derivativeManifest']['sha256'] = 'same-variant-in-extended-manifest'
+            self.assertEqual(source_key(a, 'realistic', 'tool'), key)
+            a['layerManifest']['sha256'] = 'new-source'
+            self.assertNotEqual(source_key(a, 'realistic', 'tool'), key)
+            self.assertNotEqual(source_key(a, 'realistic', 'new-tool'), key)
+
+        def test_partial_attempt_and_empty_output_are_not_success(self):
+            with tempfile.TemporaryDirectory() as temp:
+                root = Path(temp); (root / 'sample-r1').mkdir()
+                self.assertEqual(next_attempt(root, 'sample')[0].name, 'sample-attempt-r2')
+                empty = root / 'empty'; empty.touch()
+                with self.assertRaises(ValueError):
+                    verify(root, {'path': 'empty', 'bytes': 0, 'sha256': digest(empty)})
+
+        def test_copy_is_immutable_and_atomic_json_is_readable(self):
+            with tempfile.TemporaryDirectory() as temp:
+                root = Path(temp); output = root / 'output'; output.mkdir()
+                source = root / 'source'; source.write_bytes(b'first')
+                immutable_copy(source, output, 'media/sample/video.mp4')
+                immutable_copy(source, output, 'media/sample/video.mp4')
+                source.write_bytes(b'second')
+                with self.assertRaises(ValueError):
+                    immutable_copy(source, output, 'media/sample/video.mp4')
+                self.assertEqual((output / 'media/sample/video.mp4').read_bytes(), b'first')
+                atomic_json(output, 'progress.json', {'ready': 1})
+                atomic_json(output, 'progress.json', {'ready': 2})
+                self.assertEqual(read_json(output / 'progress.json')['ready'], 2)
+                self.assertEqual(list((output / '.staging').iterdir()), [])
+
+        def test_path_escape(self):
+            with self.assertRaises(ValueError):
+                safe(Path.cwd(), '../source')
+
+        def test_worker_thread_limits_override_process_defaults(self):
+            with patch.dict(os.environ, {key: '32' for key in THREAD_ENV}):
+                limit_worker_threads()
+                self.assertEqual({key: os.environ[key] for key in THREAD_ENV},
+                                 {key: '1' for key in THREAD_ENV})
+
+        def test_heavy_slot_exclusion_and_own_finally_release(self):
+            with tempfile.TemporaryDirectory() as temp, patch(__name__ + '.available_commit_bytes', return_value=None):
+                path = Path(temp) / 'heavy.lock'
+                first, second = HeavySlot(path), HeavySlot(path)
+                self.assertEqual(first.try_acquire('a'), (None, None))
+                owner = read_json(path)
+                self.assertEqual((owner['pid'], owner['role'], owner['action']), (os.getpid(), 'cpu', 'a'))
+                with patch(__name__ + '.pid_alive', return_value=True):
+                    state, blocked_owner = second.try_acquire('b')
+                self.assertEqual(state, 'awaiting-heavy-slot')
+                self.assertEqual(blocked_owner, owner)
+                second.release()
+                self.assertEqual(read_json(path), owner)
+                try:
+                    raise RuntimeError('simulated interrupted CPU job')
+                except RuntimeError:
+                    pass
+                finally:
+                    first.release()
+                self.assertFalse(path.exists())
+                self.assertEqual(second.try_acquire('b'), (None, None))
+                second.release()
+
+        def test_gpu_priority_and_low_commit_wait_instead_of_failure(self):
+            with tempfile.TemporaryDirectory() as temp:
+                path = Path(temp) / 'heavy.lock'; request = path.parent / 'gpu-wants-slot.json'
+                request.write_text(json.dumps({'pid': os.getpid(), 'role': 'gpu'}), encoding='utf-8')
+                gate = HeavySlot(path)
+                with patch(__name__ + '.pid_alive', return_value=True):
+                    self.assertEqual(gate.try_acquire('a')[0], 'awaiting-gpu-priority')
+                self.assertFalse(path.exists())
+                request.unlink()
+                with patch(__name__ + '.available_commit_bytes', return_value=3 * 1024 ** 3):
+                    state, available = gate.try_acquire('a')
+                self.assertEqual(state, 'awaiting-commit-memory')
+                self.assertEqual(available['minimumCommitBytes'], 4 * 1024 ** 3)
+                self.assertFalse(path.exists())
+
+        def test_stale_heavy_lock_is_reported_and_preserved(self):
+            with tempfile.TemporaryDirectory() as temp:
+                path = Path(temp) / 'heavy.lock'
+                path.write_text('{"pid":999999999,"role":"gpu","action":"old"}', encoding='utf-8')
+                before = digest(path)
+                with patch(__name__ + '.available_commit_bytes', return_value=None), patch(__name__ + '.pid_alive', return_value=False):
+                    with self.assertRaisesRegex(ValueError, 'Stale/unknown heavy lock preserved'):
+                        HeavySlot(path).try_acquire('a')
+                self.assertEqual(digest(path), before)
+
+        def test_append_resume_keeps_ready_and_pending_has_no_files(self):
+            with tempfile.TemporaryDirectory() as temp:
+                root = Path(temp); output = root / 'output'; output.mkdir()
+                work = root / 'work'; work.mkdir()
+                catalog_path = root / 'source-catalog.json'
+                def write_catalog(ids):
+                    catalog_path.write_text(json.dumps({'id': 'test', 'actions': [
+                        {'id': aid, 'revision': aid + '-r1', 'state': 'pending-full',
+                         'reviewed': False, 'releaseEligible': False} for aid in ids]}), encoding='utf-8')
+                write_catalog(['a', 'b'])
+                first = Assembler(output, work, catalog_path, {}, 'tool', [])
+                refs = {}
+                for role in ROLES:
+                    name = f'media/a/{role}.bin'
+                    path = safe(output, name); path.parent.mkdir(parents=True, exist_ok=True)
+                    path.write_bytes(role.encode())
+                    refs[role] = {'path': name, 'bytes': path.stat().st_size, 'sha256': digest(path)}
+                qa_path = safe(output, 'qa/a/decode-check.json'); qa_path.parent.mkdir(parents=True)
+                qa_path.write_text('{"passed": true}', encoding='utf-8')
+                first.ready['a'] = {'id': 'a', 'files': refs, 'qa': {'report': {
+                    'path': 'qa/a/decode-check.json', 'bytes': qa_path.stat().st_size, 'sha256': digest(qa_path)},
+                    'metrics': {'passed': True}}, 'catalogRevision': 'a-r1', 'exporterSha256': 'tool',
+                    'queueSourceKey': 'same-inputs', 'reviewed': False, 'releaseEligible': False,
+                    'sourceVideos': {'dark': {'bytes': 10}, 'light': {'bytes': 12}}}
+                first.verified_ready.add('a')
+                first.save()
+                write_catalog(['a', 'b', 'c'])
+                resumed = Assembler(output, work, catalog_path, {'a': {'key': 'same-inputs'}}, 'tool', ['a'])
+                resumed.save()
+                manifest = read_json(output / 'manifest.json')
+                self.assertEqual(manifest['readyCount'], 1)
+                self.assertEqual(manifest['pendingIds'], ['b', 'c'])
+                self.assertEqual(manifest['sizes']['originalBothThemesMp4Bytes'], 22)
+                pending = [r for r in read_json(output / 'catalog.json')['actions'] if r['id'] != 'a']
+                self.assertTrue(all('files' not in r for r in pending))
+                self.assertTrue(all(r['availableForApp'] is False for r in pending))
+                ready_row = read_json(output / 'catalog.json')['actions'][0]
+                self.assertIs(ready_row['availableForApp'], True)
+                watching = root / 'plans'; watching.mkdir()
+                (watching / 'not-an-export-plan.json').write_text('{"format":"catalog@1"}', encoding='utf-8')
+                b = {'id': 'b', 'fps': 30, 'frames': 240, 'durationSeconds': 8, 'coverFrame': 66,
+                     'coverSize': [720, 720], 'thumbnailSize': [240, 240], 'highlight': {'enabled': True},
+                     'layerManifest': {'sha256': 'a'}, 'framing': {'sha256': 'b'},
+                     'derivativeManifest': {'sha256': 'c'}, 'baselineVideos': {}, 'sourceRoot': 'capture-b'}
+                new_plan = {'format': 'pose-hub-stacked-alpha-plan@1', 'skin': 'realistic',
+                            'consumer': {'eligibleActionIds': ['a', 'b', 'c']},
+                            'bindings': {'capture-b': {'parentBinding': 'production', 'relativeRoot': 'capture-b'}},
+                            'actions': [b]}
+                watched = watching / 'b.json'; watched.write_text(json.dumps(new_plan), encoding='utf-8')
+                seen = {}
+                self.assertEqual(refresh_watch(watching, resumed.entries, {'production': root}, 'tool', seen,
+                                               resumed.rows.keys()), ['b'])
+                self.assertEqual(set(resumed.ready), {'a'})
+                self.assertEqual(refresh_watch(watching, resumed.entries, {'production': root}, 'tool', seen,
+                                               resumed.rows.keys()), [])
+                new_plan['actions'][0]['layerManifest']['sha256'] = 'different-source'
+                watched.write_text(json.dumps(new_plan), encoding='utf-8')
+                with self.assertRaisesRegex(ValueError, 'Conflicting source in watched plan'):
+                    refresh_watch(watching, resumed.entries, {'production': root}, 'tool', seen, resumed.rows.keys())
+                resumed.fail('b', 'actual encoder failure')
+                failed = read_json(output / 'manifest.json')
+                self.assertEqual(failed['readyCount'], 1)
+                self.assertEqual(failed['states']['b']['state'], 'failed-preserved')
+                verify(output, failed['failures'][0]['record'])
+
+    suite = unittest.defaultTestLoader.loadTestsFromTestCase(QueueTest)
+    return 0 if unittest.TextTestRunner(verbosity=2).run(suite).wasSuccessful() else 1
+
+
+def main():
+    if sys.argv[1:] == ['--self-test']:
+        return self_test()
+    p = argparse.ArgumentParser(description=__doc__)
+    p.add_argument('--plan', action='append', type=Path, required=True)
+    p.add_argument('--catalog', type=Path, required=True)
+    p.add_argument('--output', type=Path, required=True)
+    p.add_argument('--work-root', type=Path, required=True)
+    p.add_argument('--bind', action='append', default=[])
+    p.add_argument('--workers', type=int, choices=(1, 2), default=1)
+    p.add_argument('--exclude-ids', nargs='*', default=[])
+    p.add_argument('--ingest', action='append', type=Path, default=[])
+    p.add_argument('--ingest-only', action='store_true')
+    p.add_argument('--watch-plan-dir', type=Path)
+    p.add_argument('--poll-seconds', type=float, default=15)
+    p.add_argument('--idle-timeout', type=float, default=600)
+    p.add_argument('--heavy-lock', type=Path)
+    p.add_argument('--min-commit-gib', type=float, default=4)
+    args = p.parse_args()
+    if not 0 < args.poll_seconds <= 60 or args.idle_timeout <= 0:
+        p.error('--poll-seconds must be within (0,60], and --idle-timeout must be positive')
+    if args.min_commit_gib < 4 or (args.heavy_lock and args.workers != 1):
+        p.error('Commit guard must be >=4 GiB; --heavy-lock requires --workers 1')
+    try:
+        assembler = run(args)
+    except (ValueError, OSError, KeyError, TypeError) as error:
+        print(f'ERROR: {error}', file=sys.stderr)
+        return 1
+    # Pending inputs without a ready plan are honest outstanding work, not failures.
+    failed = [a for a in assembler.entries if assembler.states.get(a, {}).get('state') == 'failed-preserved']
+    return 1 if failed else 2 if assembler.awaiting_source else 0
+
+
+if __name__ == '__main__':
+    sys.exit(main())
