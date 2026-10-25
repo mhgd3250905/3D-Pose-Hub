@@ -275,6 +275,24 @@ the action's review flags. Size comparison separately reports one existing
 solid-background theme and both themes; new actions without an older solid
 movie are not assigned a fabricated baseline.
 
+The capture entry accepts `--technical-diagnostics-only` for this test pack.
+It omits post-pose vertex/contact diagnostic scans while preserving the original
+motion and contact solvers, warm starts, cache initialization and matrix/skeleton
+updates. Frozen engine, model and layer files are never rewritten; whole-source
+hashes and exact reversible in-memory edits are required. The CPU-authored
+Threadneedle profile uses the original path. Preview and full must share the
+same diagnostic mode and source/tool identity; complete an existing matching
+pair before changing the capture entry, or keep a rejected preview as history
+and start a new preview revision.
+
+The [4080 comparison receipt](qa/capture-diagnostics-r1.json) records identical
+RGBA and PNG bytes for all 13 preview frames and all 241 full frames, in each
+of the body/highlight/shadow layers, with identical warm x, joints and camera.
+The measured full capture changed from 156.404 to 84.090 seconds; preview startup
+did not improve. These timings describe this sample only. Complete-cycle source
+framing, actual light/dark preview inspection and full MP4 decode QA still run;
+omitted pose diagnostics do not constitute action review.
+
 The layout follows the established RGB-plus-alpha video approach described by
 [Tencent VAP](https://github.com/Tencent/vap) and
 [YYEVA-Web](https://github.com/yylive/YYEVA-Web), without copying their players,

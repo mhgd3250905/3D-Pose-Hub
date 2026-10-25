@@ -4,6 +4,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import {fileURLToPath, pathToFileURL} from 'node:url';
 import {sourceFingerprint} from '../../drill-anim/tools/v2/source-fingerprint.mjs';
+import {buildTechnicalCaptureSources,installTechnicalFrame} from './capture-diagnostics.mjs';
 
 export const VERSION = 'app-test-pack-rgba/1.0.0-r1';
 const SELF = fileURLToPath(import.meta.url);
@@ -55,7 +56,7 @@ export function capturePlan(spec, {fps=30, frames} = {}) {
 }
 
 export function checkPreview(previous, identity) {
- for (const key of ['tool','toolSha256','sourceSha256','specId','actionId','profile','fps','durationSeconds','frameCount','size','cameraDistanceScale','runtimeSha256']) {
+ for (const key of ['tool','toolSha256','sourceSha256','specId','actionId','profile','fps','durationSeconds','frameCount','size','cameraDistanceScale','captureDiagnosticsMode','runtimeSha256']) {
   if (JSON.stringify(previous[key]) !== JSON.stringify(identity[key])) throw Error('Preview provenance mismatch: '+key);
  }
  if (previous.mode !== 'preview' || !previous.complete || previous.error) throw Error('A completed matching transparent preview is required');
@@ -81,7 +82,7 @@ function fingerprint(specPath, profile) {
   }
  }
  if(profile.folder)visit(path.join(REPO,'drill-anim/models',profile.folder,'loader.mjs'));
- files.add(SELF);files.add(path.join(REPO,'drill-anim/themes/glow-soft.json'));
+ files.add(SELF);files.add(fileURLToPath(new URL('./capture-diagnostics.mjs',import.meta.url)));files.add(path.join(REPO,'drill-anim/themes/glow-soft.json'));
  const sources=[...files].sort().map(file=>{const raw=fs.readFileSync(file);return {path:path.relative(REPO,file).replaceAll('\\','/'),sha256:hash(raw),bytes:raw.length};});
  return {format:'pose-hub-render-source-manifest@2',sha256:hash(JSON.stringify(sources)),sources};
 }
@@ -158,12 +159,14 @@ export async function run(options) {
  const source=(await import(pathToFileURL(file))).default,profile=selectProfile(source,entry),plan=capturePlan(source,{fps,frames:options.frames});
  const actionId=options.stableId||source.id;if(!safeId(actionId))throw Error('Invalid stable action ID');
  if(profile.mode==='cpu-threadneedle'&&(plan.frameCount!==240||fps!==30||cameraDistanceScale!==1))throw Error('CPU profile requires its native 240@30 fixed review camera');
+ if(options.technicalDiagnosticsOnly&&profile.mode==='cpu-threadneedle')throw Error('Technical diagnostics candidate does not support the CPU-authored special frame');
+ if(options.technicalDiagnosticsOnly!==undefined&&typeof options.technicalDiagnosticsOnly!=='boolean')throw Error('Technical diagnostics option must be boolean');
  const runtimeBinding=runtimeEnvironment(path.resolve(runtimeFile));verifyBase();
  const production=read(path.join(REPO,'drill-anim/models/current-production.json'));
  // Explicit production appearance override only for ordinary actions. Motion,
  // camera, props, timeline, tracks and source ID are never rewritten.
  const spec=profile.folder?source:{...source,modelProfile:'training-human-v2plus',alignClavicles:false,v2plus:{...production.v2plus,...source.v2plus,skin:'realistic'}};
- const frozen=fingerprint(file,profile),identity={tool:VERSION,toolSha256:hash(fs.readFileSync(SELF)),sourceSha256:frozen.sha256,specId:source.id,actionId,profile,fps,durationSeconds:plan.durationSeconds,frameCount:plan.frameCount,size:1080,cameraDistanceScale,runtimeSha256:runtimeBinding.sha256};
+ const frozen=fingerprint(file,profile),identity={tool:VERSION,toolSha256:hash(fs.readFileSync(SELF)),sourceSha256:frozen.sha256,specId:source.id,actionId,profile,fps,durationSeconds:plan.durationSeconds,frameCount:plan.frameCount,size:1080,cameraDistanceScale,captureDiagnosticsMode:options.technicalDiagnosticsOnly?'technical-diagnostics-only':'original',runtimeSha256:runtimeBinding.sha256};
  let previous;
  if(mode==='full') {
   if(!preview||!previewReviewed||!reviewNote.trim())throw Error('Full capture needs --preview, --preview-reviewed and an actual-viewing --review-note');
@@ -193,7 +196,9 @@ export async function run(options) {
   },[spec,theme,cameraDistanceScale,profile.mode==='cpu-threadneedle']);
   if(profile.mode==='cpu-threadneedle')report.camera=await installCpuCapture(p,spec);
   else report.camera=await p.evaluate(()=>{const v=flareInspector.viewer;return {policy:'source camera recipe; UI insets removed; FOV set before fit',position:__drill.cam0.pos.toArray(),target:__drill.cam0.tgt.toArray(),fov:v.camera.fov};});
-  await p.addScriptTag({content:fs.readFileSync(path.join(REPO,'drill-anim/tools/v2/browser-layers.js'),'utf8')});
+  let layerScript=fs.readFileSync(path.join(REPO,'drill-anim/tools/v2/browser-layers.js'),'utf8');
+  if(options.technicalDiagnosticsOnly){const built=buildTechnicalCaptureSources(fs.readFileSync(path.join(REPO,'drill-anim/page/engine.js'),'utf8'),layerScript);report.captureDiagnostics=await installTechnicalFrame(p,built);layerScript=built.layersSource;}
+  await p.addScriptTag({content:layerScript});
   for(let i=0;i<3;i++){await p.evaluate(s=>__v2Layers.capture(s,0,0,null,[]),spec);await p.waitForTimeout(100);}
   let warm=null;
   for(const f of frames) {
@@ -214,7 +219,7 @@ export async function run(options) {
   if(!report.shadowAudit.length||report.shadowAudit.some(x=>x.vertexEquivalent!==true))throw Error('No verified source-vertex shadow casters');
   verifyBase();if(fingerprint(file,profile).sha256!==frozen.sha256)throw Error('Capture sources changed during execution');
   for(const layer of LAYERS){const dest=path.join(base,layer,'index.json');write(dest,{format:'pose-hub-frame-sequence@2',width:1080,height:1080,fps,durationSeconds:plan.durationSeconds,frameCount:records[layer].length,alpha:true,alphaMode:'straight',frames:records[layer]});report.sequences[layer]=ref(dest);report.files.push(ref(dest));}
-  const manifest={format:'pose-hub-layer-render@2',actionId,specId:source.id,skin:'realistic',complete:mode==='full',sourceSha256:frozen.sha256,spec:{path:path.relative(REPO,file).replaceAll('\\','/'),sha256:hash(fs.readFileSync(file,'utf8').replaceAll('\r\n','\n'))},model:{id:profile.profile,version:profile.version},width:1080,height:1080,fps,durationSeconds:plan.durationSeconds,frameCount:mode==='full'?plan.frameCount:frames.length,alphaMode:'straight',sequences:report.sequences,qaEndpoint:endpoints,camera:report.camera,sourceCamera:source.camera,cameraDistanceScale,status:'draft-unreviewed',reviewed:false,releaseEligible:false,qaStatus:'pending-user-review',highlight:{encoding:'depth-tested grayscale RGB coverage; foreground alpha',bodyHighlightBaked:false},shadow:{method:'source-vertex-equivalent directional-light-shadow-map',audit:report.shadowAudit},runtime:report.runtime,runtimeSha256:runtimeBinding.sha256};
+  const manifest={format:'pose-hub-layer-render@2',actionId,specId:source.id,skin:'realistic',complete:mode==='full',sourceSha256:frozen.sha256,spec:{path:path.relative(REPO,file).replaceAll('\\','/'),sha256:hash(fs.readFileSync(file,'utf8').replaceAll('\r\n','\n'))},model:{id:profile.profile,version:profile.version},width:1080,height:1080,fps,durationSeconds:plan.durationSeconds,frameCount:mode==='full'?plan.frameCount:frames.length,alphaMode:'straight',sequences:report.sequences,qaEndpoint:endpoints,camera:report.camera,sourceCamera:source.camera,cameraDistanceScale,captureDiagnostics:report.captureDiagnostics||{mode:'original'},status:'draft-unreviewed',reviewed:false,releaseEligible:false,qaStatus:'pending-user-review',highlight:{encoding:'depth-tested grayscale RGB coverage; foreground alpha',bodyHighlightBaked:false},shadow:{method:'source-vertex-equivalent directional-light-shadow-map',audit:report.shadowAudit},runtime:report.runtime,runtimeSha256:runtimeBinding.sha256};
   write(path.join(base,'layer-manifest.json'),manifest);report.files.push(ref(path.join(base,'layer-manifest.json')));
   write(path.join(base,'metrics.json'),report.metrics);report.files.push(ref(path.join(base,'metrics.json')));
   if(options.framingFile){const recipe=read(options.framingFile);if(!Array.isArray(recipe.crop)||recipe.crop.length!==4||recipe.crop.some(x=>!Number.isFinite(x)))throw Error('Invalid fixed framing');const f=path.join(root,'framing.json');write(f,recipe);report.framing=ref(f);}
@@ -225,7 +230,7 @@ export async function run(options) {
 
 export function parseArgs(args) {
  const [mode,...rest]=args,options={mode};const keys={'--spec':'specFile','--out':'out','--runtime':'runtimeFile','--stable-id':'stableId','--preview':'preview','--review-note':'reviewNote','--entry':'entry','--fps':'fps','--frames':'frames','--camera-distance-scale':'cameraDistanceScale','--framing':'framingFile','--catalog':'catalogFile','--source-root':'sourceRoot'};
- for(let i=0;i<rest.length;i++){const key=rest[i];if(key==='--preview-reviewed'){options.previewReviewed=true;continue;}if(!Object.hasOwn(keys,key)||rest[i+1]===undefined||rest[i+1].startsWith('--'))throw Error('Unknown/incomplete argument '+key);const value=rest[++i];options[keys[key]]=key==='--frames'?value.split(',').map(Number):['--fps','--camera-distance-scale'].includes(key)?Number(value):value;}
+ for(let i=0;i<rest.length;i++){const key=rest[i];if(key==='--preview-reviewed'){options.previewReviewed=true;continue;}if(key==='--technical-diagnostics-only'){options.technicalDiagnosticsOnly=true;continue;}if(!Object.hasOwn(keys,key)||rest[i+1]===undefined||rest[i+1].startsWith('--'))throw Error('Unknown/incomplete argument '+key);const value=rest[++i];options[keys[key]]=key==='--frames'?value.split(',').map(Number):['--fps','--camera-distance-scale'].includes(key)?Number(value):value;}
  return options;
 }
 

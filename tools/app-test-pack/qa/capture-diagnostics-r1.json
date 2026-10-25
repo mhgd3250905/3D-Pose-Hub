@@ -1,0 +1,102 @@
+{
+  "format": "pose-hub-technical-capture-equivalence@1",
+  "status": "test-unreviewed",
+  "reviewed": false,
+  "releaseEligible": false,
+  "scope": "Skip post-pose diagnostic mesh scans only; retain original motion/contact solvers, warm starts, cache initialization, matrix/skeleton updates and all transparent-media QA.",
+  "gpu": "RTX 4080 Laptop GPU",
+  "baselineActionId": "scapular-B",
+  "adapterSha256": "6e23c0063f223c830eb4006f94f6201323be179f64e93880e399c497c811e369",
+  "checks": {
+    "preview": {
+      "comparisonReport": {
+        "root": "app-test-pack-r1-source",
+        "path": "work/perf-stage/capture-diagnostics-r1/scapular-B-preview-rgba-comparison.json",
+        "bytes": 1648,
+        "sha256": "31e01822622f0402bfd6ced9d0b6f3d878f0803d31c38d20de312fd4be6e8dc5"
+      },
+      "baselineCapture": {
+        "root": "app-test-pack-r1-source",
+        "path": "framing-repairs/scapular-B/preview-r1/capture.json",
+        "bytes": 117771,
+        "sha256": "2a74347b56b5660f1600a1979e07e6c234a9028c5ee5fd7c641e1015e9ab1039"
+      },
+      "candidateCapture": {
+        "root": "app-test-pack-r1-source",
+        "path": "work/perf-stage/capture-diagnostics-r1/gpu-ab-scapular-B-technical-r1/capture.json",
+        "bytes": 75022,
+        "sha256": "a13177e17a1efb0d53921a6514c7d2b6037411a0db22451d8f51b516aa7d62d4"
+      },
+      "layers": {
+        "body": {
+          "framesCompared": 13,
+          "decodedBytesCompared": 60652800,
+          "pngByteIdenticalFrames": 13
+        },
+        "highlight": {
+          "framesCompared": 13,
+          "decodedBytesCompared": 60652800,
+          "pngByteIdenticalFrames": 13
+        },
+        "shadow": {
+          "framesCompared": 13,
+          "decodedBytesCompared": 60652800,
+          "pngByteIdenticalFrames": 13
+        }
+      },
+      "stateFramesCompared": 13,
+      "passed": true,
+      "baselineSeconds": 95.399,
+      "candidateSeconds": 98.98,
+      "timingScope": "One measured capture on this machine; preview startup and future actions can differ."
+    },
+    "full": {
+      "comparisonReport": {
+        "root": "app-test-pack-r1-source",
+        "path": "work/perf-stage/capture-diagnostics-r1/scapular-B-full-rgba-comparison.json",
+        "bytes": 1667,
+        "sha256": "5e471453c00b0b7b9c05e0387c80d4be30d05692a13180fe4fc5d89bc14ce5d4"
+      },
+      "baselineCapture": {
+        "root": "app-test-pack-r1-source",
+        "path": "framing-repairs/scapular-B/full-r1/capture.json",
+        "bytes": 2007292,
+        "sha256": "4c60e889afb446b2ac7bce9f0efc0e2ff115e89b746eecd98d6b4b6b94c76dc1"
+      },
+      "candidateCapture": {
+        "root": "app-test-pack-r1-source",
+        "path": "work/perf-stage/capture-diagnostics-r1/gpu-ab-scapular-B-technical-full-r1/capture.json",
+        "bytes": 1193722,
+        "sha256": "e6635242f29ab47373eae1830787a16f62e39bdd766e47a60bd29aedaaed0c6b"
+      },
+      "layers": {
+        "body": {
+          "framesCompared": 241,
+          "decodedBytesCompared": 1124409600,
+          "pngByteIdenticalFrames": 241
+        },
+        "highlight": {
+          "framesCompared": 241,
+          "decodedBytesCompared": 1124409600,
+          "pngByteIdenticalFrames": 241
+        },
+        "shadow": {
+          "framesCompared": 241,
+          "decodedBytesCompared": 1124409600,
+          "pngByteIdenticalFrames": 241
+        }
+      },
+      "stateFramesCompared": 241,
+      "passed": true,
+      "baselineSeconds": 156.404,
+      "candidateSeconds": 84.09,
+      "timingScope": "One measured capture on this machine; preview startup and future actions can differ."
+    }
+  },
+  "fullSourceMarginAudit": {
+    "root": "app-test-pack-r1-source",
+    "path": "work/perf-stage/capture-diagnostics-r1/gpu-ab-scapular-B-technical-full-r1/complete-shadow-margin-audit.json",
+    "bytes": 128472,
+    "sha256": "3418249031ca6f3e2d184b0eb5d82264f8c115e8e6fed0b5e8fd62c5ff7a64a7"
+  }
+}
