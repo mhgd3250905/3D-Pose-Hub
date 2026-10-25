@@ -215,7 +215,16 @@ When complete corrected layers exist, atomically add a pinned plan reference:
 `"plan":{"path":"<absolute or manifest-relative plan>","bytes":123,"sha256":"..."}`.
 Each plan must contain exactly its authorized action. The parent hot-loads it
 and prioritizes that repair. An already pinned plan or repair identity cannot
-be silently changed; a changed byte count or SHA is rejected. Ordinary watched
+be silently changed; a changed byte count or SHA is rejected. If a queued or
+failed repair's full-cycle check later finds that its original layers were
+already clipped, a new complete capture can explicitly supersede that plan:
+set `supersedesPlanSha256` to the previous authority's exact `plan.sha256` and
+replace `plan` with the new checksum-pinned reference. This is allowed only
+while that action is not ready; its expected old version, source revision,
+catalog revision, media revision and reason must remain identical. Missing or
+incorrect proof is rejected, and ready media cannot use this shortcut. Both
+immutable plans remain under `plans/`, with previous/replacement references
+and the proof recorded in manifest `repairPlanHistory`. Ordinary watched
 plans cannot replace an authorized repair. New media and decode QA are copied
 to `media/<id>/<mediaRevision>/` and `qa/<id>/<mediaRevision>/`; old paths retain
 their exact bytes. Delivered catalog `revision` identifies the new media

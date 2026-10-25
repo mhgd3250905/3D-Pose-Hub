@@ -377,7 +377,7 @@ class Assembler:
         self.repair_path = Path(repair_manifest) if repair_manifest else None
         self.repairs, self.allowed_legacy, _ = read_repairs(self.repair_path)
         self.repair_sha = digest(self.repair_path) if self.repair_path else None
-        self.repair_history, self.repair_authorizations = {}, {}
+        self.repair_history, self.repair_authorizations, self.repair_plan_history = {}, {}, {}
         require(self.excludes <= self.rows.keys(), 'Excluded IDs outside catalog')
         require(entries.keys() <= self.rows.keys(), 'Plan IDs outside catalog')
         self.ready, self.verified_ready, self.states, self.failures = {}, set(), {}, []
@@ -390,6 +390,7 @@ class Assembler:
             self.failures = old.get('failures', [])
             self.repair_history = old.get('repairHistory', {})
             self.repair_authorizations = old.get('repairAuthorizations', {})
+            self.repair_plan_history = old.get('repairPlanHistory', {})
             for row in old['actions']:
                 aid = row['id']
                 require(aid in self.rows, 'Existing deliverable is outside the current catalog: ' + aid)
@@ -421,12 +422,21 @@ class Assembler:
             require(repair['sourceRevision'] == self.rows[aid]['revision'], 'Repair source spec revision changed: ' + aid)
             public = {k: v for k, v in repair.items() if not k.startswith('_')}
             previous_auth = self.repair_authorizations.get(aid)
-            if previous_auth:
-                identity = lambda r: {k: v for k, v in r.items() if k != 'plan'}
-                require(identity(previous_auth) == identity(public), 'Repair authority changed during continuation: ' + aid)
-                require(previous_auth.get('plan') is None or previous_auth.get('plan') == public.get('plan'),
-                        'Pinned repair plan changed: ' + aid)
             row = self.ready.get(aid)
+            plan_supersession = None
+            if previous_auth:
+                identity = lambda r: {k: v for k, v in r.items() if k not in ('plan', 'supersedesPlanSha256')}
+                require(identity(previous_auth) == identity(public), 'Repair authority changed during continuation: ' + aid)
+                previous_plan = previous_auth.get('plan')
+                if previous_plan is not None and previous_plan != public.get('plan'):
+                    require(row is None, 'Ready repair cannot replace its pinned plan: ' + aid)
+                    require(public.get('plan') is not None and repair.get('_planPath') is not None
+                            and public.get('supersedesPlanSha256') == previous_plan['sha256'],
+                            'Pinned repair plan changed without exact supersedesPlanSha256: ' + aid)
+                    previous_ref = {**previous_plan, 'path': f'plans/{previous_plan["sha256"]}.json'}
+                    verify(self.output, previous_ref)
+                    plan_supersession = {'supersedesPlanSha256': previous_plan['sha256'],
+                                         'previousPlan': previous_ref, 'mediaRevision': repair['mediaRevision']}
             already_repaired = row is not None and row.get('mediaRevision') == repair['mediaRevision']
             if row is not None and not already_repaired:
                 require(row['catalogRevision'] == repair['expected']['catalogRevision']
@@ -459,6 +469,10 @@ class Assembler:
                 new = collect_entries([safe(self.output, plan_name)], self.bindings, self.exporter_sha)
                 require(set(new) == {aid}, 'Each repair plan must contain exactly its authorized action: ' + aid)
                 self.entries[aid] = new[aid]
+                if plan_supersession is not None:
+                    plan_supersession.update({'replacementPlan': {**repair['plan'], 'path': plan_name},
+                                               'changedAt': now()})
+                    self.repair_plan_history.setdefault(aid, []).append(plan_supersession)
                 if already_repaired:
                     require(row['queueSourceKey'] == new[aid]['key'], 'Repaired source changed for ready action: ' + aid)
             else:
@@ -623,7 +637,8 @@ class Assembler:
                                  'alphaChannelAfterRgbDecode': 'red', 'matrix': 'bt709', 'range': 'limited'},
                     'actions': ready, 'sizes': sizes, 'failures': self.failures,
                     'allowedLegacyExporterSha256': sorted(self.allowed_legacy),
-                    'repairAuthorizations': self.repair_authorizations, 'repairHistory': self.repair_history}
+                    'repairAuthorizations': self.repair_authorizations, 'repairHistory': self.repair_history,
+                    'repairPlanHistory': self.repair_plan_history}
         catalog = json.loads(json.dumps(self.catalog))
         semantics, semantic_sources = self.delivered_semantics()
         if semantics is not None:
@@ -714,6 +729,10 @@ def read_repairs(path):
         require(isinstance(expected.get('catalogRevision'), str)
                 and re.fullmatch(r'[0-9a-f]{64}', expected.get('queueSourceKey', '')), 'Repair must pin previous revision/source key')
         require(row['catalogRevision'] != expected['catalogRevision'], 'Repair must advance catalog revision')
+        require('supersedesPlanSha256' not in row
+                or (isinstance(row['supersedesPlanSha256'], str)
+                    and re.fullmatch(r'[0-9a-f]{64}', row['supersedesPlanSha256'])),
+                'Repair supersession requires an exact previous plan SHA-256')
         row = json.loads(json.dumps(row))
         if row.get('plan') is not None:
             ref = row['plan']
@@ -1162,6 +1181,26 @@ def self_test():
                                                    'sha256': digest(new_plan)}
                 repair_path.write_text(json.dumps(authority), encoding='utf-8')
                 self.assertEqual(repaired.refresh_repairs(), ['a'])
+                pinned_sha = digest(new_plan)
+                plan['actions'][0]['layerManifest']['sha256'] = 'replacement-full-capture'
+                replacement = root / 'replacement-plan.json'
+                replacement.write_text(json.dumps(plan), encoding='utf-8')
+                authority['actions'][0]['plan'] = {'path': str(replacement), 'bytes': replacement.stat().st_size,
+                                                   'sha256': digest(replacement)}
+                repair_path.write_text(json.dumps(authority), encoding='utf-8')
+                with self.assertRaisesRegex(ValueError, 'without exact supersedesPlanSha256'):
+                    repaired.refresh_repairs()
+                authority['actions'][0]['supersedesPlanSha256'] = 'e' * 64
+                repair_path.write_text(json.dumps(authority), encoding='utf-8')
+                with self.assertRaisesRegex(ValueError, 'without exact supersedesPlanSha256'):
+                    repaired.refresh_repairs()
+                authority['actions'][0]['supersedesPlanSha256'] = pinned_sha
+                repair_path.write_text(json.dumps(authority), encoding='utf-8')
+                self.assertEqual(repaired.refresh_repairs(), ['a'])
+                audit = read_json(output / 'manifest.json')['repairPlanHistory']['a']
+                self.assertEqual(len(audit), 1)
+                self.assertEqual(audit[0]['supersedesPlanSha256'], pinned_sha)
+                verify(output, audit[0]['previousPlan']); verify(output, audit[0]['replacementPlan'])
                 incoming = delivered_row('incoming/a', b'new-')
                 manifest_path = root / 'completed.json'; manifest_path.write_text('{}', encoding='utf-8')
                 # isolate publication mechanics from codec validation; no renderer/encoder is launched.
@@ -1175,6 +1214,14 @@ def self_test():
                 resumed = Assembler(output, work, catalog, collect_entries([old_plan], bindings, new_tool),
                                     new_tool, [], repair_path, bindings)
                 self.assertEqual(resumed.ready['a']['mediaRevision'], 'a-alpha-r2')
+                self.assertEqual(resumed.repair_plan_history, repaired.repair_plan_history)
+                # Even an exact supersession proof cannot overwrite a ready media revision.
+                authority['actions'][0]['plan'] = {'path': str(new_plan), 'bytes': new_plan.stat().st_size,
+                                                   'sha256': digest(new_plan)}
+                authority['actions'][0]['supersedesPlanSha256'] = digest(replacement)
+                repair_path.write_text(json.dumps(authority), encoding='utf-8')
+                with self.assertRaisesRegex(ValueError, 'Ready repair cannot replace'):
+                    resumed.refresh_repairs()
                 authority['actions'][0]['plan']['sha256'] = 'f' * 64
                 repair_path.write_text(json.dumps(authority), encoding='utf-8')
                 with self.assertRaisesRegex(ValueError, 'Repair plan identity mismatch'):
