@@ -3074,7 +3074,10 @@
       "position": "standing",
       "unilateral": false,
       "level": null,
-      "scenes": [],
+      "scenes": [
+        "home",
+        "gym"
+      ],
       "equipment": [
         "nonelastic-towel"
       ],
@@ -3152,6 +3155,14 @@
             "muscles"
           ],
           "note": "规范分类、体位、器材及已登记肌群名称；场景按已确认器材与体位选择。gripHand、bandPost及单杠支架wall不是独立训练器材；未登记的非弹性毛巾保留unknown。"
+        },
+        {
+          "path": "drill-anim/specs/h-towel-isometric-curl-rr1.js",
+          "sha256": "e60784d7061229b5f295b0b78881e7bf4c45ee00714ae471f31333cc510c82ad",
+          "fields": [
+            "scenes"
+          ],
+          "note": "场景标签的spec-derived未审编辑判断：原地站姿、双脚固定自持非弹性毛巾，无外部锚点或固定训练机，按布置归入home/gym；不把器材尚未登记taxonomy误当成无法描述场景，也不据此作防滑、抗滚或承载安全认证。"
         }
       ],
       "unknownFields": [
@@ -3182,10 +3193,6 @@
         {
           "field": "contraindications",
           "reason": "没有该动作已确认的结构化禁忌清单。空数组不表示没有禁忌，也不由一般动作提示推断疾病适用性。"
-        },
-        {
-          "field": "scenes",
-          "reason": "非弹性卷束毛巾尚无taxonomy场景归属；不冒用弹力带的健身房规则。"
         },
         {
           "field": "equipment",
@@ -4671,6 +4678,15 @@
       ],
       "reviewed": false,
       "releaseEligible": false
+    }
+  ],
+  "amendments": [
+    {
+      "id": "h-towel-isometric-curl",
+      "fields": [
+        "scenes"
+      ],
+      "reason": "依据实际布置补home/gym；剂量、难度和未登记器材状态保留。"
     }
   ]
 }
