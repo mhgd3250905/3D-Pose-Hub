@@ -276,6 +276,22 @@ solid-background theme and both themes; new actions without an older solid
 movie are not assigned a fabricated baseline.
 
 The capture entry accepts `--technical-diagnostics-only` for this test pack.
+The GPU admission helper also offers an explicit `bounded-postprocess` class
+for the qualified `contact-sheet`, `prepare-metadata` and `full-margin-audit`
+stages. The coordinator checks exact script hashes and fixed capture input
+limits; changed or unknown inputs keep the heavy path. These small stages still
+claim the same GPU role and atomic admission guard, with at least 4 GiB available
+commit before and after claiming, including when a CPU export is active. CPU
+admission still treats that role as a peer. Actual preview/full capture and the
+older floating-point source audit retain the original 4 GiB solo / 8 GiB commit
+plus 6 GiB physical overlap thresholds.
+
+[Measured memory evidence](qa/bounded-postprocess-memory-r1.json) records about
+147 MB for a 13-frame contact sheet, 23 MB for the capture validator core and
+28 MB for the sequential full-margin audit. These observations qualify the
+current bounded implementations, rather than arbitrary image tools or a
+promised runtime gain. Complete source checks and video decode QA remain intact.
+
 Its distance multiplier allows 1 through 8 so tall suspended equipment and its
 long ground shadow can fit within a complete source canvas. Choose a distance
 from the actual preview for each action; the CPU-authored profile keeps its

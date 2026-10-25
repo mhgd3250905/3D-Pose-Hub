@@ -1,0 +1,107 @@
+{
+  "format": "pose-hub-bounded-postprocess-evidence@1",
+  "resourceClass": "bounded-postprocess",
+  "minimumCommitBytesBeforeAndAfter": 4294967296,
+  "role": "gpu",
+  "sharesAdmissionAndRoleLock": true,
+  "stages": {
+    "contact-sheet": {
+      "observation": {
+        "path": "work/perf-stage/light-postprocess-r1/contact-sheet-memory-observation.json",
+        "bytes": 671,
+        "sha256": "7f67d533572740ebc647a86f4326ca879a3e78ead4f9b8ecba354feb5d6b4b9c",
+        "root": "app-test-pack-r1-source"
+      },
+      "durationSecondsObserved": 2.4533805000246502,
+      "peakPrivateOrCommitBytesObserved": 147034112,
+      "measuredInput": {
+        "size": 1080,
+        "framesIncludingEndpoint": 13
+      },
+      "qualification": "measured complete preview",
+      "requiredScript": {
+        "path": "work/contact_sheet.py",
+        "bytes": 2544,
+        "sha256": "935f5ead53fa51fa916de33f4b5ad8bb7bec61c6b67dec6ee12b29fc7db4ad20",
+        "root": "app-test-pack-r1-source"
+      },
+      "allowedInput": "completed preview, size1080, at most13 frames; larger or other input remains heavy"
+    },
+    "prepare-metadata": {
+      "observation": {
+        "path": "work/perf-stage/light-postprocess-r1/prepare-metadata-memory-observation.json",
+        "bytes": 697,
+        "sha256": "b30d6be3b10bcd397e07e343a52297e755c541b8d6c4074bc298b4dab5817f9e",
+        "root": "app-test-pack-r1-source"
+      },
+      "durationSecondsObserved": 0.9705262999923434,
+      "peakPrivateOrCommitBytesObserved": 22925312,
+      "measuredInput": {
+        "size": 1080,
+        "framesIncludingEndpoint": 241
+      },
+      "qualification": "measured core and statically bounded small JSON tail",
+      "requiredScripts": [
+        {
+          "path": "work/prepare_capture_lf_adapter.py",
+          "bytes": 2614,
+          "sha256": "51dbb9c9c3f17b3e88cd1701f03ca1a7e3c657dbe6f86f3c6cf1bac88bba2905",
+          "root": "app-test-pack-r1-source"
+        },
+        {
+          "path": "media/tools/prepare_captured_alpha.py",
+          "bytes": 15022,
+          "sha256": "3642d3d5ca5130123dd0e7fce75424a4e9e8b0bdd081e7647eb330f477155adf",
+          "root": "repository"
+        },
+        {
+          "path": "media/tools/prepare_smartfit_alpha.py",
+          "bytes": 14174,
+          "sha256": "85b10adc66e46a8d4c8d2a50ead99e4f251c9438bc313adce90241567ee9b3ce",
+          "root": "repository"
+        }
+      ],
+      "measuredReferenceCount": 723,
+      "allowedInput": "current task-generated completed full capture, size1080, 240/300@30 encoded frames plus loop endpoint; canonical validator enforces contract; no pixel decoding"
+    },
+    "full-margin-audit": {
+      "observation": {
+        "path": "work/perf-stage/light-postprocess-r1/full-margin-memory-observation.json",
+        "bytes": 657,
+        "sha256": "be02dca5ab01f899c2eb70e49bf3c5f4127749a276ed3847db73e8de760aa13e",
+        "root": "app-test-pack-r1-source"
+      },
+      "durationSecondsObserved": 3.3803729000210296,
+      "peakPrivateOrCommitBytesObserved": 28413952,
+      "measuredInput": {
+        "size": 1080,
+        "framesIncludingEndpoint": 241
+      },
+      "qualification": "measured sequential closed-PIL full-frame audit",
+      "requiredScript": {
+        "path": "work/audit_capture_margins.py",
+        "bytes": 1585,
+        "sha256": "298a8659f6a4efa9638a518f84bfe04d152068e8a23ea9cfdf20e9924c323db1",
+        "root": "app-test-pack-r1-source"
+      },
+      "measuredPngCount": 482,
+      "allowedInput": "same current full capture contract, two1080 layers, one PIL image at a time closed; max602 frame records only linear small JSON overhead"
+    }
+  },
+  "alwaysHeavy": [
+    "preview",
+    "full",
+    "audit_plan_source_framing.py",
+    "source-audit",
+    "unknown stage or changed/unqualified script/input"
+  ],
+  "measurementLimit": "Observations and current fixed-input implementation qualification, not universal upper bounds or promised speedups.",
+  "status": "test-unreviewed",
+  "reviewed": false,
+  "releaseEligible": false,
+  "admissionModule": {
+    "path": "tools/app-test-pack/gpu-resource-admission.mjs",
+    "rawSha256": "5e341655d8d9ae00ec001a3cf15414d3ad9ad9f9785f1d05a9fdc518bb38311c",
+    "lfSha256": "5e341655d8d9ae00ec001a3cf15414d3ad9ad9f9785f1d05a9fdc518bb38311c"
+  }
+}
