@@ -12,6 +12,7 @@ from contextlib import redirect_stderr, redirect_stdout
 from datetime import datetime, timezone
 import hashlib
 import json
+import math
 import os
 from pathlib import Path
 import re
@@ -79,8 +80,8 @@ def pid_alive(pid):
         return None
 
 
-def available_commit_bytes():
-    """Available Windows commit, not physical RAM; non-Windows needs no guard."""
+def available_memory_bytes():
+    """Return one atomic Windows commit/physical snapshot for resource admission."""
     if os.name != 'nt':
         return None
     import ctypes
@@ -96,18 +97,129 @@ def available_commit_bytes():
     kernel.GlobalMemoryStatusEx.restype = ctypes.c_int
     if not kernel.GlobalMemoryStatusEx(ctypes.byref(state)):
         raise OSError(ctypes.get_last_error(), 'GlobalMemoryStatusEx failed; heavy task not started')
-    return state.ullAvailPageFile
+    return {'availableCommitBytes': state.ullAvailPageFile, 'availablePhysicalBytes': state.ullAvailPhys}
+
+
+def available_commit_bytes():
+    """Legacy single-lane guard retains its original optional-platform behavior."""
+    memory = available_memory_bytes()
+    return None if memory is None else memory['availableCommitBytes']
 
 
 class HeavySlot:
-    """Shared CPU/GPU wx lock. Only this instance's exact owner token is removed."""
-    def __init__(self, path, min_commit_bytes=4 * 1024 ** 3):
+    """Legacy shared slot, or opt-in atomic admission for one CPU plus one GPU."""
+    def __init__(self, path, min_commit_bytes=4 * 1024 ** 3, peer_path=None, admission_path=None,
+                 parallel_min_commit_bytes=8 * 1024 ** 3, parallel_min_physical_bytes=6 * 1024 ** 3):
         self.path = Path(path).resolve() if path else None
         self.minimum = min_commit_bytes
         self.owner = None
+        require(bool(peer_path) == bool(admission_path), 'Supply both peer-heavy and admission locks, or neither')
+        self.peer = Path(peer_path).resolve() if peer_path else None
+        self.admission = Path(admission_path).resolve() if admission_path else None
+        self.parallel_minimum = parallel_min_commit_bytes
+        self.parallel_physical = parallel_min_physical_bytes
+        if self.peer:
+            require(self.path is not None and len({self.path, self.peer, self.admission}) == 3,
+                    'Own, peer and admission lock paths must be distinct')
+            require(self.minimum >= 4 * 1024 ** 3 and self.parallel_minimum >= 8 * 1024 ** 3
+                    and self.parallel_physical >= 6 * 1024 ** 3, 'Resource admission thresholds cannot be lowered')
+
+    @staticmethod
+    def inspect_lock(path, role):
+        try:
+            owner = read_json(path)
+        except FileNotFoundError:
+            return {'state': 'missing'}
+        except (OSError, ValueError) as error:
+            return {'state': 'invalid', 'error': str(error)}
+        if (not isinstance(owner, dict) or owner.get('role') != role
+                or type(owner.get('pid')) is not int or owner['pid'] <= 0
+                or not isinstance(owner.get('action'), str) or not owner['action']):
+            return {'state': 'invalid', 'owner': owner}
+        alive = pid_alive(owner['pid'])
+        return {'state': 'alive' if alive is True else 'dead' if alive is False else 'unknown', 'owner': owner}
+
+    def release_admission(self, owner):
+        try:
+            current = read_json(self.admission)
+        except (OSError, ValueError):
+            return False
+        if (not isinstance(current, dict) or current.get('pid') != owner['pid']
+                or current.get('token') != owner['token'] or current.get('role') != 'admission'):
+            return False
+        self.admission.unlink()
+        return True
+
+    @staticmethod
+    def sufficient_memory(memory, minimum):
+        return (isinstance(memory, dict)
+                and type(memory.get('availableCommitBytes')) is int
+                and type(memory.get('availablePhysicalBytes')) is int
+                and memory['availableCommitBytes'] >= minimum['availableCommitBytes']
+                and memory['availablePhysicalBytes'] >= minimum['availablePhysicalBytes'])
+
+    def try_overlap(self, aid):
+        self.admission.parent.mkdir(parents=True, exist_ok=True)
+        guard = {'pid': os.getpid(), 'role': 'admission', 'token': uuid.uuid4().hex,
+                 'action': aid, 'createdAt': now()}
+        try:
+            stream = self.admission.open('x', encoding='utf-8')
+        except FileExistsError:
+            existing = self.inspect_lock(self.admission, 'admission')
+            state = ('awaiting-resource-admission' if existing['state'] == 'alive'
+                     else 'awaiting-admission-lock-inspection')
+            return state, {'lock': str(self.admission), **existing}
+        with stream:
+            json.dump(guard, stream); stream.flush(); os.fsync(stream.fileno())
+        try:
+            own = self.inspect_lock(self.path, 'cpu')
+            if own['state'] != 'missing':
+                state = 'awaiting-cpu-role-slot' if own['state'] == 'alive' else 'awaiting-cpu-lock-inspection'
+                return state, {'lock': str(self.path), **own}
+            peer = self.inspect_lock(self.peer, 'gpu')
+            if peer['state'] not in ('missing', 'alive'):
+                return 'awaiting-gpu-lock-inspection', {'lock': str(self.peer), **peer}
+            parallel = peer['state'] == 'alive'
+            # A GPU already working is the peer to overlap; its next-stage marker
+            # must not prevent an otherwise safe CPU admission.
+            if not parallel:
+                request = self.peer.parent / 'gpu-wants-slot.json'
+                requester = self.inspect_lock(request, 'gpu')
+                if requester['state'] != 'missing':
+                    state = 'awaiting-gpu-priority' if requester['state'] == 'alive' else 'awaiting-gpu-request-inspection'
+                    return state, {'lock': str(request), **requester}
+            minimum = {'availableCommitBytes': self.parallel_minimum if parallel else self.minimum,
+                       'availablePhysicalBytes': self.parallel_physical if parallel else 0}
+            memory = available_memory_bytes()
+            detail = {'peer': peer.get('owner'), 'minimum': minimum, 'memory': memory}
+            if not self.sufficient_memory(memory, minimum):
+                return 'available-memory-below-admission-threshold', detail
+            self.path.parent.mkdir(parents=True, exist_ok=True)
+            owner = {'pid': os.getpid(), 'role': 'cpu', 'action': aid,
+                     'token': uuid.uuid4().hex, 'createdAt': now()}
+            try:
+                own_stream = self.path.open('x', encoding='utf-8')
+            except FileExistsError:
+                return 'awaiting-cpu-role-slot', {'lock': str(self.path), **self.inspect_lock(self.path, 'cpu')}
+            with own_stream:
+                json.dump(owner, own_stream); own_stream.flush(); os.fsync(own_stream.fileno())
+            self.owner = owner
+            after = available_memory_bytes()
+            if not self.sufficient_memory(after, minimum):
+                self.release()
+                return 'available-memory-dropped-during-admission', {**detail, 'memory': after}
+            return None, None
+        except BaseException:
+            if self.owner is not None:
+                self.release()
+            raise
+        finally:
+            self.release_admission(guard)
 
     def try_acquire(self, aid):
         require(self.owner is None, 'CPU already holds a heavy slot')
+        if self.peer:
+            return self.try_overlap(aid)
         if self.path:
             if self.path.exists():
                 try:
@@ -802,7 +914,10 @@ def run(args):
     limit_worker_threads()
     output, work = args.output.resolve(), args.work_root.resolve()
     require(not args.heavy_lock or args.workers == 1, '--heavy-lock requires --workers 1')
-    heavy = HeavySlot(args.heavy_lock, int(args.min_commit_gib * 1024 ** 3))
+    heavy = HeavySlot(args.heavy_lock, int(args.min_commit_gib * 1024 ** 3),
+                      args.peer_heavy_lock, args.admission_lock,
+                      int(args.parallel_min_commit_gib * 1024 ** 3),
+                      int(args.parallel_min_physical_gib * 1024 ** 3))
     require(output != work and not output.is_relative_to(work) and not work.is_relative_to(output),
             'Work attempts and final package must be separate roots')
     bindings = {}
@@ -1292,14 +1407,23 @@ def main():
     p.add_argument('--idle-timeout', type=float, default=600)
     p.add_argument('--heavy-lock', type=Path)
     p.add_argument('--min-commit-gib', type=float, default=4)
+    p.add_argument('--peer-heavy-lock', type=Path)
+    p.add_argument('--admission-lock', type=Path)
+    p.add_argument('--parallel-min-commit-gib', type=float, default=8)
+    p.add_argument('--parallel-min-physical-gib', type=float, default=6)
     p.add_argument('--repair-manifest', type=Path)
     p.add_argument('--stop-after-current-file', type=Path,
                    help='When this file exists, finish the active export, release workers/locks, then exit without dispatching another.')
     args = p.parse_args()
     if not 0 < args.poll_seconds <= 60 or args.idle_timeout <= 0:
         p.error('--poll-seconds must be within (0,60], and --idle-timeout must be positive')
-    if args.min_commit_gib < 4 or (args.heavy_lock and args.workers != 1):
+    if not math.isfinite(args.min_commit_gib) or args.min_commit_gib < 4 or (args.heavy_lock and args.workers != 1):
         p.error('Commit guard must be >=4 GiB; --heavy-lock requires --workers 1')
+    if bool(args.peer_heavy_lock) != bool(args.admission_lock) or (args.peer_heavy_lock and not args.heavy_lock):
+        p.error('Resource overlap requires --heavy-lock, --peer-heavy-lock and --admission-lock together')
+    if (not math.isfinite(args.parallel_min_commit_gib) or not math.isfinite(args.parallel_min_physical_gib)
+            or args.parallel_min_commit_gib < 8 or args.parallel_min_physical_gib < 6):
+        p.error('Parallel admission requires at least 8 GiB commit and 6 GiB physical RAM')
     try:
         assembler = run(args)
     except (ValueError, OSError, KeyError, TypeError) as error:

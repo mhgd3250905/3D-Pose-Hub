@@ -129,13 +129,22 @@ runtime. No browser is used for encoding existing RGBA layers.
 - `media/tools/review_stacked_alpha.py`: generate an offline, locally served
   video/WebP transparency review page from a completed manifest.
 
-This machine uses one CPU worker and one GPU lane with a shared exclusive
-`heavy.lock`: only one of them runs heavy work at a time, after at least 4 GiB
-of Windows commit headroom is available. x264 uses two threads; BLAS uses one.
-GPU work has priority. Do not increase concurrency to bypass a memory wait.
+The user dedicated this machine to production on 2026-10-25 and authorized
+greater resource use while protecting memory. Run at most one CPU worker and
+one GPU capture concurrently. CPU owns `work/cpu-heavy.lock`, GPU owns
+`work/heavy.lock`; both serialize admission through the short-lived
+`work/resource-admission.lock` with PID and token ownership checks. A solo task
+needs at least 4 GiB available Windows commit. Joining an active peer requires
+at least 8 GiB commit and 6 GiB physical memory, checked before and after the
+role claim. Low memory naturally admits one lane at a time. Unknown or stale
+locks remain for inspection. x264 uses two threads; BLAS uses one.
+CPU flags are `--heavy-lock <work/cpu-heavy.lock>` plus
+`--peer-heavy-lock <work/heavy.lock> --admission-lock <work/resource-admission.lock>`;
+the parallel thresholds default to 8/6 GiB and cannot be lowered. Omitting
+the peer/admission options retains the earlier exclusive single-lane mode.
 CPU workers are created only when an action can start, then fully shut down
-after the action finishes, releasing NumPy/Pillow allocations before handing
-the heavy-work slot to GPU. No export worker is retained during a resource wait.
+after the action finishes, releasing NumPy/Pillow allocations and their role
+slot. No export worker is retained during a resource wait.
 Close the sample HTTP review server after viewing; it is not needed by either
 production queue. The capture browser already closes in a `finally` block.
 Stop and diagnose a lost GPU/browser context before
