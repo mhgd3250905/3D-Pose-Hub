@@ -353,11 +353,14 @@ def validate_export(manifest_path, entry, expected_exporter):
         verify(Path(manifest_path).parent, row['files'][role])
     report = read_json(verify(Path(manifest_path).parent, row['qa']['report']))
     require(report.get('passed') is True and report == row['qa']['metrics'], 'Missing or failed actual decode QA')
+    require(isinstance(row.get('exportFraming'), dict) and report.get('framingPassed') is True,
+            'New exports require complete-source and full-cycle framing QA')
     return manifest, row
 
 
 class Assembler:
-    def __init__(self, output, work_root, catalog_path, entries, exporter_sha, excludes):
+    def __init__(self, output, work_root, catalog_path, entries, exporter_sha, excludes,
+                 repair_manifest=None, bindings=None):
         self.output, self.work_root = Path(output), Path(work_root)
         self.catalog_path = Path(catalog_path)
         self.catalog = read_json(catalog_path)
@@ -369,6 +372,12 @@ class Assembler:
         require(all(r.get('reviewed') is False and r.get('releaseEligible') is False for r in self.rows.values()),
                 'Test catalog must remain unreviewed')
         self.entries, self.exporter_sha, self.excludes = entries, exporter_sha, set(excludes)
+        self.base_entries = dict(entries)
+        self.bindings = bindings or {}
+        self.repair_path = Path(repair_manifest) if repair_manifest else None
+        self.repairs, self.allowed_legacy, _ = read_repairs(self.repair_path)
+        self.repair_sha = digest(self.repair_path) if self.repair_path else None
+        self.repair_history, self.repair_authorizations = {}, {}
         require(self.excludes <= self.rows.keys(), 'Excluded IDs outside catalog')
         require(entries.keys() <= self.rows.keys(), 'Plan IDs outside catalog')
         self.ready, self.verified_ready, self.states, self.failures = {}, set(), {}, []
@@ -379,21 +388,101 @@ class Assembler:
             require(old.get('format') == FORMAT and old.get('status') == 'test-unreviewed', 'Unexpected existing output manifest')
             self.states = old.get('states', {})
             self.failures = old.get('failures', [])
+            self.repair_history = old.get('repairHistory', {})
+            self.repair_authorizations = old.get('repairAuthorizations', {})
             for row in old['actions']:
                 aid = row['id']
                 require(aid in self.rows, 'Existing deliverable is outside the current catalog: ' + aid)
-                require(row.get('catalogRevision') == self.rows[aid]['revision'], 'Catalog revision changed for ready action: ' + aid)
-                require(row.get('exporterSha256') == exporter_sha, 'Ready action was made by a different exporter: ' + aid)
+                repair = self.repairs.get(aid)
+                expected_revision = (repair['catalogRevision'] if repair and row.get('mediaRevision') == repair['mediaRevision']
+                                     else self.rows[aid]['revision'])
+                require(row.get('catalogRevision') == expected_revision, 'Catalog revision changed for ready action: ' + aid)
+                require(row.get('exporterSha256') == exporter_sha or row.get('exporterSha256') in self.allowed_legacy,
+                        'Ready action exporter is not explicitly allowed: ' + aid)
                 require(row.get('reviewed') is False and row.get('releaseEligible') is False,
                         'Stored test action unexpectedly claims approval')
                 for role in ROLES:
                     verify(self.output, row['files'][role])
                 report = read_json(verify(self.output, row['qa']['report']))
                 require(report.get('passed') is True and report == row['qa']['metrics'], 'Stored decode QA failed')
-                if aid in entries:
-                    require(row['queueSourceKey'] == entries[aid]['key'], 'Source changed for ready action: ' + aid)
+                if aid in entries and not repair:
+                    entry = entries[aid]
+                    expected_key = (entry['key'] if row.get('exporterSha256') == exporter_sha else
+                                    source_key(entry['action'], entry['skin'], row['exporterSha256']))
+                    require(row['queueSourceKey'] == expected_key, 'Source changed for ready action: ' + aid)
                 self.ready[aid] = row
                 self.verified_ready.add(aid)
+        self.apply_repairs()
+
+    def apply_repairs(self):
+        """Withdraw only explicitly identified old media, and pin new source plans."""
+        for aid, repair in self.repairs.items():
+            require(aid in self.rows, 'Repair is outside catalog: ' + aid)
+            require(repair['sourceRevision'] == self.rows[aid]['revision'], 'Repair source spec revision changed: ' + aid)
+            public = {k: v for k, v in repair.items() if not k.startswith('_')}
+            previous_auth = self.repair_authorizations.get(aid)
+            if previous_auth:
+                identity = lambda r: {k: v for k, v in r.items() if k != 'plan'}
+                require(identity(previous_auth) == identity(public), 'Repair authority changed during continuation: ' + aid)
+                require(previous_auth.get('plan') is None or previous_auth.get('plan') == public.get('plan'),
+                        'Pinned repair plan changed: ' + aid)
+            row = self.ready.get(aid)
+            already_repaired = row is not None and row.get('mediaRevision') == repair['mediaRevision']
+            if row is not None and not already_repaired:
+                require(row['catalogRevision'] == repair['expected']['catalogRevision']
+                        and row['queueSourceKey'] == repair['expected']['queueSourceKey'],
+                        'Repair does not identify the currently delivered version: ' + aid)
+                snapshot = json.loads(json.dumps(row))
+                snapshot['availableForApp'] = False
+                snapshot['supersededReason'] = repair['reason']
+                name = f'history/{aid}/{hash_value(snapshot)}.json'
+                if not safe(self.output, name).exists():
+                    atomic_json(self.output, name, snapshot)
+                ref = {'path': name, 'bytes': safe(self.output, name).stat().st_size,
+                       'sha256': digest(safe(self.output, name)), 'catalogRevision': row['catalogRevision'],
+                       'mediaRevision': row.get('mediaRevision'), 'queueSourceKey': row['queueSourceKey']}
+                history = self.repair_history.setdefault(aid, [])
+                if ref not in history:
+                    history.append(ref)
+                self.ready.pop(aid)
+                self.verified_ready.discard(aid)
+            elif row is None and aid not in self.repair_history and aid not in self.repair_authorizations:
+                base = self.base_entries.get(aid, self.entries.get(aid))
+                require(base is not None, 'Pending repair must identify an existing source plan: ' + aid)
+                possible = {source_key(base['action'], base['skin'], tool) for tool in self.allowed_legacy | {self.exporter_sha}}
+                require(repair['expected']['catalogRevision'] == self.rows[aid]['revision']
+                        and repair['expected']['queueSourceKey'] in possible, 'Pending repair source identity changed: ' + aid)
+            if repair.get('_planPath'):
+                # Keep a stable input even if the producer later edits its convenience plan path.
+                plan_name = f'plans/{repair["plan"]["sha256"]}.json'
+                immutable_copy(repair['_planPath'], self.output, plan_name, repair['plan'])
+                new = collect_entries([safe(self.output, plan_name)], self.bindings, self.exporter_sha)
+                require(set(new) == {aid}, 'Each repair plan must contain exactly its authorized action: ' + aid)
+                self.entries[aid] = new[aid]
+                if already_repaired:
+                    require(row['queueSourceKey'] == new[aid]['key'], 'Repaired source changed for ready action: ' + aid)
+            else:
+                require(not already_repaired, 'Ready repair lost its pinned source plan: ' + aid)
+                self.entries.pop(aid, None)
+            self.repair_authorizations[aid] = public
+            if not already_repaired:
+                self.states[aid] = {'state': 'queued-framing-repair' if repair.get('_planPath') else 'pending-framing-source',
+                                    'mediaRevision': repair['mediaRevision'], 'reason': repair['reason'], 'updatedAt': now()}
+        # Initial samples were excluded only to avoid duplicate work; an explicit repair supersedes that dispatch guard.
+        self.excludes.difference_update(self.repairs)
+
+    def refresh_repairs(self):
+        if not self.repair_path or digest(self.repair_path) == self.repair_sha:
+            return []
+        repairs, allowed, _ = read_repairs(self.repair_path)
+        require(self.repairs.keys() <= repairs.keys(), 'Repair authority cannot be removed during continuation')
+        require(self.allowed_legacy <= allowed, 'Legacy exporter pins cannot be removed during continuation')
+        before = {aid: entry['key'] for aid, entry in self.entries.items()}
+        self.repairs, self.allowed_legacy = repairs, allowed
+        self.apply_repairs()
+        self.repair_sha = digest(self.repair_path)
+        self.save()
+        return [aid for aid, entry in self.entries.items() if before.get(aid) != entry['key']]
 
     def ingest(self, manifest_path, aid):
         require(aid in self.entries, 'Cannot ingest an action without its current source plan: ' + aid)
@@ -403,26 +492,33 @@ class Assembler:
         imported = json.loads(json.dumps(row))
         # Preflight all existing targets before any publication.
         copies = []
+        repair = self.repairs.get(aid)
+        version = repair['mediaRevision'] if repair else None
+        media_prefix = f'media/{aid}/{version}' if version else f'media/{aid}'
+        qa_prefix = f'qa/{aid}/{version}' if version else f'qa/{aid}'
         for role in ROLES:
             ref = row['files'][role]
             source = verify(root, ref)
-            destination = f'media/{aid}/{Path(ref["path"]).name}'
+            destination = f'{media_prefix}/{Path(ref["path"]).name}'
             if safe(self.output, destination).exists():
                 verify(self.output, {**ref, 'path': destination})
             copies.append((source, destination, ref))
             imported['files'][role]['path'] = destination
         qa = row['qa']['report']
-        copies.append((verify(root, qa), f'qa/{aid}/decode-check.json', qa))
+        copies.append((verify(root, qa), f'{qa_prefix}/decode-check.json', qa))
         for source, destination, ref in copies:
             immutable_copy(source, self.output, destination, ref)
-        imported['qa']['report']['path'] = f'qa/{aid}/decode-check.json'
+        imported['qa']['report']['path'] = f'{qa_prefix}/decode-check.json'
         plan_name = f'plans/{entry["planSha"]}.json'
         immutable_copy(entry['path'], self.output, plan_name)
         imported.update({'queueSourceKey': entry['key'], 'exporterSha256': self.exporter_sha,
                          'sourcePlanSha256': entry['planSha'], 'sourcePlan': plan_name,
                          'sourceExportManifestSha256': digest(manifest_path),
-                         'catalogRevision': self.rows[aid]['revision'],
+                         'catalogRevision': repair['catalogRevision'] if repair else self.rows[aid]['revision'],
                          'reviewed': False, 'releaseEligible': False})
+        if repair:
+            imported.update({'sourceRevision': repair['sourceRevision'], 'mediaRevision': version,
+                             'repairReason': repair['reason']})
         self.ready[aid] = imported
         self.verified_ready.add(aid)
         self.states[aid] = {'state': 'ready-test-unreviewed', 'sourceKey': entry['key'], 'updatedAt': now()}
@@ -525,7 +621,9 @@ class Assembler:
                     'encoding': {'layout': 'top-rgb-bottom-alpha', 'width': 720, 'height': 1440,
                                  'crf': 12, 'rgbBleedPixels': 8, 'rgbAlphaMode': 'straight',
                                  'alphaChannelAfterRgbDecode': 'red', 'matrix': 'bt709', 'range': 'limited'},
-                    'actions': ready, 'sizes': sizes, 'failures': self.failures}
+                    'actions': ready, 'sizes': sizes, 'failures': self.failures,
+                    'allowedLegacyExporterSha256': sorted(self.allowed_legacy),
+                    'repairAuthorizations': self.repair_authorizations, 'repairHistory': self.repair_history}
         catalog = json.loads(json.dumps(self.catalog))
         semantics, semantic_sources = self.delivered_semantics()
         if semantics is not None:
@@ -533,11 +631,17 @@ class Assembler:
             catalog['trainingSemantics'] = semantics
         for row in catalog['actions']:
             aid = row['id']
+            if aid in self.repairs:
+                repair = self.repairs[aid]
+                row.update({'revision': repair['catalogRevision'], 'sourceRevision': repair['sourceRevision'],
+                            'mediaRevision': repair['mediaRevision'], 'repairReason': repair['reason']})
             if aid in ready_ids:
                 row.update({'files': self.ready[aid]['files'], 'qa': self.ready[aid]['qa'],
                             'state': 'ready-test-unreviewed'})
             else:
                 row.pop('files', None)
+                row.pop('qa', None)
+                row['state'] = states[aid]['state']
             row['availableForApp'] = aid in ready_ids and aid in self.verified_ready
             row['reviewed'] = False; row['releaseEligible'] = False
             row['availableForTraining'] = row['availableForApp'] and row.get('trainingDefinitionComplete') is True
@@ -589,7 +693,46 @@ def collect_entries(paths, bindings, exporter_sha):
     return entries
 
 
-def refresh_watch(directory, entries, bindings, exporter_sha, seen, allowed):
+def read_repairs(path):
+    """Explicit, checksum-pinned replacement authority, separate from source specs."""
+    if path is None:
+        return {}, set(), None
+    path = Path(path).resolve(strict=True)
+    document = read_json(path)
+    require(document.get('format') == 'pose-hub-app-test-repairs@1', 'Unsupported repair manifest')
+    legacy = document.get('allowedLegacyExporterSha256', [])
+    require(isinstance(legacy, list) and all(isinstance(v, str) and re.fullmatch(r'[0-9a-f]{64}', v) for v in legacy),
+            'Legacy exporters require explicit SHA-256 pins')
+    repairs = {}
+    for row in document['actions']:
+        aid = row['id']
+        require(ID.fullmatch(aid) and aid not in repairs, 'Invalid/duplicate repair action')
+        require(all(isinstance(row.get(k), str) and row[k] for k in
+                    ('mediaRevision', 'catalogRevision', 'sourceRevision', 'reason')), 'Incomplete repair identity')
+        require(ID.fullmatch(row['mediaRevision']) and ID.fullmatch(row['catalogRevision']), 'Unsafe repair revision')
+        expected = row['expected']
+        require(isinstance(expected.get('catalogRevision'), str)
+                and re.fullmatch(r'[0-9a-f]{64}', expected.get('queueSourceKey', '')), 'Repair must pin previous revision/source key')
+        require(row['catalogRevision'] != expected['catalogRevision'], 'Repair must advance catalog revision')
+        row = json.loads(json.dumps(row))
+        if row.get('plan') is not None:
+            ref = row['plan']
+            candidate = Path(ref['path'])
+            if not candidate.is_absolute():
+                candidate = path.parent / candidate
+            require(candidate.is_file() and type(ref.get('bytes')) is int and ref['bytes'] > 0
+                    and candidate.stat().st_size == ref['bytes'] and digest(candidate) == ref['sha256'],
+                    'Repair plan identity mismatch: ' + aid)
+            row['_planPath'] = candidate.resolve()
+        repairs[aid] = row
+    return repairs, set(legacy), path
+
+
+def stop_requested(path):
+    return path is not None and Path(path).exists()
+
+
+def refresh_watch(directory, entries, bindings, exporter_sha, seen, allowed, repairs=None):
     """Discover complete plan documents; never silently replace an existing ID."""
     added = []
     if directory is None or not Path(directory).exists():
@@ -609,6 +752,8 @@ def refresh_watch(directory, entries, bindings, exporter_sha, seen, allowed):
             continue
         candidate = collect_entries([path], bindings, exporter_sha)
         require(candidate.keys() <= allowed, 'Watched plan contains IDs outside the test catalog')
+        # Replacements come only from their checksum-pinned repair authority, never the ordinary source watcher.
+        candidate = {aid: entry for aid, entry in candidate.items() if aid not in (repairs or {})}
         for aid, entry in candidate.items():
             require(aid not in entries or entries[aid]['key'] == entry['key'],
                     'Conflicting source in watched plan: ' + aid)
@@ -653,7 +798,8 @@ def run(args):
     with lock.open('x', encoding='utf-8') as stream:
         json.dump(token, stream)
     try:
-        assembler = Assembler(output, work, args.catalog, entries, exporter_sha, args.exclude_ids)
+        assembler = Assembler(output, work, args.catalog, entries, exporter_sha, args.exclude_ids,
+                              args.repair_manifest, bindings)
         for manifest_path in args.ingest:
             prior = read_json(manifest_path)
             require(prior.get('complete') is True, 'Cannot ingest a partial export')
@@ -685,8 +831,19 @@ def run(args):
             previous_heavy_wait = None
             while True:
                 blocked_heavy = None
+                if stop_requested(args.stop_after_current_file) and not active:
+                    assembler.queue_state = 'stopped-after-current'
+                    assembler.save()
+                    break
+                repaired = assembler.refresh_repairs() if not active else []
+                # A newly withdrawn source must never remain queued under its earlier identity.
+                todo = [aid for aid in todo if aid in entries and aid not in assembler.ready]
+                for aid in repaired:
+                    if aid not in assembler.ready and aid not in todo:
+                        attempted.discard(aid)
+                        todo.insert(0, aid)
                 discovered = refresh_watch(args.watch_plan_dir, entries, bindings, exporter_sha,
-                                           seen_watch, assembler.rows.keys())
+                                           seen_watch, assembler.rows.keys(), assembler.repairs)
                 for aid in discovered:
                     check_source_overlap(entries[aid], output, work)
                     if aid not in assembler.ready and aid not in assembler.excludes and aid not in attempted and aid not in todo:
@@ -704,7 +861,7 @@ def run(args):
                     assembler.queue_state = 'running'
                     assembler.save()
                     idle_since = None
-                while todo and len(active) < args.workers:
+                while todo and len(active) < args.workers and not stop_requested(args.stop_after_current_file):
                     aid = todo[0]
                     state, owner = heavy.try_acquire(aid)
                     if state:
@@ -943,6 +1100,101 @@ def self_test():
                 self.assertEqual(failed['states']['b']['state'], 'failed-preserved')
                 verify(output, failed['failures'][0]['record'])
 
+        def test_explicit_repair_withdraws_versions_and_resumes_without_overwrite(self):
+            with tempfile.TemporaryDirectory() as temp:
+                root = Path(temp); output = root / 'output'; output.mkdir()
+                work = root / 'work'; work.mkdir()
+                catalog = root / 'catalog.json'
+                catalog.write_text(json.dumps({'id': 'test', 'actions': [
+                    {'id': 'a', 'revision': 'a-r1', 'state': 'pending-full',
+                     'reviewed': False, 'releaseEligible': False}]}), encoding='utf-8')
+                old_tool, new_tool = '0' * 64, '1' * 64
+                action = {'id': 'a', 'fps': 30, 'frames': 240, 'durationSeconds': 8, 'coverFrame': 0,
+                          'coverSize': [720, 720], 'thumbnailSize': [240, 240], 'highlight': {'enabled': True},
+                          'layerManifest': {'sha256': 'old-source'}, 'framing': {'sha256': 'old-crop'},
+                          'baselineVideos': {}, 'sourceRoot': 'source'}
+                plan = {'format': 'pose-hub-stacked-alpha-plan@1', 'skin': 'realistic',
+                        'consumer': {'eligibleActionIds': ['a']},
+                        'bindings': {'source': {'parentBinding': 'production', 'relativeRoot': 'source'}},
+                        'actions': [action]}
+                old_plan = root / 'old-plan.json'; old_plan.write_text(json.dumps(plan), encoding='utf-8')
+                bindings = {'production': root}
+                first = Assembler(output, work, catalog, collect_entries([old_plan], bindings, old_tool), old_tool, [])
+
+                def delivered_row(folder, content):
+                    refs = {}
+                    for role in ROLES:
+                        name = f'{folder}/{role}.bin'; path = safe(output, name)
+                        path.parent.mkdir(parents=True, exist_ok=True); path.write_bytes(content + role.encode())
+                        refs[role] = {'path': name, 'bytes': path.stat().st_size, 'sha256': digest(path)}
+                    qa = safe(output, folder + '/decode-check.json'); qa.write_text('{"passed":true}', encoding='utf-8')
+                    return {'id': 'a', 'files': refs, 'qa': {'report': {
+                        'path': qa.relative_to(output).as_posix(), 'bytes': qa.stat().st_size, 'sha256': digest(qa)},
+                        'metrics': {'passed': True}}, 'catalogRevision': 'a-r1', 'exporterSha256': old_tool,
+                        'queueSourceKey': first.entries['a']['key'], 'reviewed': False, 'releaseEligible': False,
+                        'sourceVideos': {}}
+
+                original = delivered_row('media/a', b'old-')
+                first.ready['a'] = original; first.verified_ready.add('a'); first.save()
+                repair_path = root / 'repairs.json'
+                authority = {'format': 'pose-hub-app-test-repairs@1', 'allowedLegacyExporterSha256': [old_tool],
+                             'actions': [{'id': 'a', 'expected': {'catalogRevision': 'a-r1',
+                                 'queueSourceKey': original['queueSourceKey']}, 'sourceRevision': 'a-r1',
+                                 'catalogRevision': 'a-r1-alpha-r2', 'mediaRevision': 'a-alpha-r2',
+                                 'reason': 'complete ground shadow', 'plan': None}]}
+                repair_path.write_text(json.dumps(authority), encoding='utf-8')
+                repaired = Assembler(output, work, catalog, collect_entries([old_plan], bindings, new_tool),
+                                     new_tool, ['a'], repair_path, bindings)
+                repaired.save()
+                self.assertFalse(repaired.ready)
+                self.assertNotIn('a', repaired.entries)
+                self.assertNotIn('a', repaired.excludes)
+                pending = read_json(output / 'catalog.json')['actions'][0]
+                self.assertEqual(pending['revision'], 'a-r1-alpha-r2')
+                self.assertFalse(pending['availableForApp']); self.assertNotIn('files', pending)
+                self.assertTrue(repaired.repair_history['a'])
+                verify(output, repaired.repair_history['a'][0])
+                self.assertEqual(safe(output, original['files']['video']['path']).read_bytes(), b'old-video')
+                # The authority can later add exactly one pinned plan and the parent discovers it.
+                plan['actions'][0]['layerManifest']['sha256'] = 'complete-new-source'
+                new_plan = root / 'new-plan.json'; new_plan.write_text(json.dumps(plan), encoding='utf-8')
+                authority['actions'][0]['plan'] = {'path': str(new_plan), 'bytes': new_plan.stat().st_size,
+                                                   'sha256': digest(new_plan)}
+                repair_path.write_text(json.dumps(authority), encoding='utf-8')
+                self.assertEqual(repaired.refresh_repairs(), ['a'])
+                incoming = delivered_row('incoming/a', b'new-')
+                manifest_path = root / 'completed.json'; manifest_path.write_text('{}', encoding='utf-8')
+                # isolate publication mechanics from codec validation; no renderer/encoder is launched.
+                with patch(__name__ + '.validate_export', return_value=({}, incoming)):
+                    # incoming references are relative to this fixture output root.
+                    repaired.ingest(output / 'manifest.json', 'a')
+                newest = read_json(output / 'manifest.json')['actions'][0]
+                self.assertIn('/a-alpha-r2/', newest['files']['video']['path'])
+                self.assertEqual(newest['catalogRevision'], 'a-r1-alpha-r2')
+                self.assertEqual(safe(output, original['files']['video']['path']).read_bytes(), b'old-video')
+                resumed = Assembler(output, work, catalog, collect_entries([old_plan], bindings, new_tool),
+                                    new_tool, [], repair_path, bindings)
+                self.assertEqual(resumed.ready['a']['mediaRevision'], 'a-alpha-r2')
+                authority['actions'][0]['plan']['sha256'] = 'f' * 64
+                repair_path.write_text(json.dumps(authority), encoding='utf-8')
+                with self.assertRaisesRegex(ValueError, 'Repair plan identity mismatch'):
+                    resumed.refresh_repairs()
+
+        def test_unapproved_exporter_and_revision_changes_are_rejected(self):
+            with tempfile.TemporaryDirectory() as temp:
+                root = Path(temp); output = root / 'output'; output.mkdir()
+                catalog = root / 'catalog.json'
+                catalog.write_text(json.dumps({'id': 'test', 'actions': [{'id': 'a', 'revision': 'a-r1',
+                    'reviewed': False, 'releaseEligible': False}]}), encoding='utf-8')
+                atomic_json(output, 'manifest.json', {'format': FORMAT, 'status': 'test-unreviewed', 'actions': [
+                    {'id': 'a', 'catalogRevision': 'a-r1', 'exporterSha256': 'unapproved'}]})
+                with self.assertRaisesRegex(ValueError, 'exporter is not explicitly allowed'):
+                    Assembler(output, root / 'work', catalog, {}, 'current', [])
+                row = read_json(output / 'manifest.json'); row['actions'][0]['catalogRevision'] = 'changed'
+                atomic_json(output, 'manifest.json', row)
+                with self.assertRaisesRegex(ValueError, 'Catalog revision changed'):
+                    Assembler(output, root / 'work', catalog, {}, 'current', [])
+
     suite = unittest.defaultTestLoader.loadTestsFromTestCase(QueueTest)
     return 0 if unittest.TextTestRunner(verbosity=2).run(suite).wasSuccessful() else 1
 
@@ -965,6 +1217,9 @@ def main():
     p.add_argument('--idle-timeout', type=float, default=600)
     p.add_argument('--heavy-lock', type=Path)
     p.add_argument('--min-commit-gib', type=float, default=4)
+    p.add_argument('--repair-manifest', type=Path)
+    p.add_argument('--stop-after-current-file', type=Path,
+                   help='When this file exists, finish the active export, release workers/locks, then exit without dispatching another.')
     args = p.parse_args()
     if not 0 < args.poll_seconds <= 60 or args.idle_timeout <= 0:
         p.error('--poll-seconds must be within (0,60], and --idle-timeout must be positive')

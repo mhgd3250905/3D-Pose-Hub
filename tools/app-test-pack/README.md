@@ -72,10 +72,25 @@ Nearest-edge extension affects only zero-alpha RGB; shadow alpha is never
 thresholded or expanded. Covers are lossless alpha WebP at 720 square and
 thumbnails at 240 square, from the bound cover frame.
 
-Existing masters are only read and encoded. Newly selected sparse revisions use
+Existing masters are read and encoded when their complete shadow fits the source.
+The 2026-10-25 SmartFit clipping report authorizes fresh transparent captures
+for sources whose body, equipment, mat or shadow is already cut at the source edge.
+Padding a clipped image cannot recover missing pixels. No action-content review
+is part of this production pass. Only GPT-6.1 Sol or lower is authorized; never Astra.
+Newly selected sparse revisions use
 the isolated 4080 capture entry; preserve their actual timeline duration (the
 two lunges are ten seconds), with source fps recorded separately from capture
 fps. Frozen model, engine and historical sources stay unchanged.
+
+The transparent export now computes one square from every frame's body/props
+and shadow alpha, with 5% transparent margin. It preserves the old bound
+`framing` as provenance and records the applied `exportFraming` separately.
+Any nonzero source alpha reaching the source boundary is held for technical
+repair, with all affected frames recorded in the preserved attempt's
+`framing-check.json`. The full decoded video must also keep a 12-pixel outer
+band with alpha at most 3/255. Lossless WebP cover and thumbnail must retain
+at least 4% transparent margin after filtering. These checks concern export
+framing and transparency, not whether the exercise is performed correctly.
 
 ## Tools and continuation
 
@@ -163,6 +178,60 @@ For a coherent live read, first load `manifest.json`, then the immutable
 catalog snapshot referenced by `manifest.catalog` and verify bytes/SHA.
 The root `catalog.json` remains the latest convenient view. Semantic batch
 sources are copied by checksum; repository-only evidence is marked explicitly.
+
+### Explicit framing repairs
+
+Keep original bytes and source-spec revisions. A defective export is withdrawn
+only by an explicit `--repair-manifest <file>` with format
+`pose-hub-app-test-repairs@1`. For example:
+
+```json
+{
+  "format": "pose-hub-app-test-repairs@1",
+  "allowedLegacyExporterSha256": ["<64-character previous exporter SHA-256>"],
+  "actions": [{
+    "id": "h-squat",
+    "expected": {
+      "catalogRevision": "h-squat-r2",
+      "queueSourceKey": "<64-character delivered source key>"
+    },
+    "sourceRevision": "h-squat-r2",
+    "catalogRevision": "h-squat-r2-alpha-r2",
+    "mediaRevision": "h-squat-alpha-r2",
+    "reason": "Restore the complete ground shadow with transparent margins",
+    "plan": null
+  }]
+}
+```
+
+The sole queue parent verifies the previous identity, saves an immutable
+`history/<id>/...json` reference, and removes that version from live ready
+deliveries. Its catalog entry stays present with no files or QA and
+`availableForApp:false`. `plan:null` means complete source layers are still
+needed; the old source is not encoded again. The repair also supersedes the
+initial three-sample dispatch exclusion for that action.
+
+When complete corrected layers exist, atomically add a pinned plan reference:
+`"plan":{"path":"<absolute or manifest-relative plan>","bytes":123,"sha256":"..."}`.
+Each plan must contain exactly its authorized action. The parent hot-loads it
+and prioritizes that repair. An already pinned plan or repair identity cannot
+be silently changed; a changed byte count or SHA is rejected. Ordinary watched
+plans cannot replace an authorized repair. New media and decode QA are copied
+to `media/<id>/<mediaRevision>/` and `qa/<id>/<mediaRevision>/`; old paths retain
+their exact bytes. Delivered catalog `revision` identifies the new media
+revision, while `sourceRevision` preserves the actual unchanged action spec.
+The manifest retains both repair authority and history references.
+
+After an exporter update, earlier valid exports are accepted only when their
+per-action exporter SHA appears in `allowedLegacyExporterSha256`, and their
+source key still matches the bound recipe using that exact historical tool
+SHA. A different tool alone never licenses a changed source or spec revision.
+
+Use `--stop-after-current-file <control-path>` for a controlled queue stop.
+Creating that file lets the current export finish and publish, then releases
+its worker and locks without starting another action. Remove it before a
+deliberate restart. Never stop a running capture or encoder merely to update
+the queue code.
 
 Every output records dimensions, bytes and SHA-256. Full decoded streams are
 checked against same-frame source RGBA, including semi-transparent edges and

@@ -259,6 +259,35 @@ class PixelContractTest(unittest.TestCase):
         np.testing.assert_array_equal(packed[0, 0], [200, 80, 40])
 
 
+class FramingContractTest(TemporaryCase):
+    def context(self, shadow_boxes):
+        sequences = {'body': [], 'shadow': []}
+        for frame, box in enumerate(shadow_boxes):
+            for name, bounds in (('body', (400, 200, 600, 800)), ('shadow', box)):
+                path = self.root / f'{name}-{frame}.png'
+                with Image.new('RGBA', (1080, 1080)) as image:
+                    image.paste((30, 30, 30, 128 if name == 'shadow' else 255), bounds)
+                    image.save(path)
+                sequences[name].append({'frame': frame, 'path': path.name})
+        return {'root': self.root, 'sequences': sequences, 'action': {'frames': len(shadow_boxes)}}
+
+    def test_whole_cycle_shadow_changes_fixed_crop_and_gets_margin(self):
+        context = self.context([(500, 750, 850, 900), (500, 750, 1050, 1030)])
+        recipe, report = exporter.inspect_framing(context)
+        self.assertTrue(report['framingPassed'])
+        self.assertEqual(recipe['sourceBounds'], [400, 200, 1050, 1030])
+        left, top, right, bottom = recipe['crop']
+        self.assertEqual(right - left, bottom - top)
+        for gap in (400 - left, 200 - top, right - 1050, bottom - 1030):
+            self.assertGreaterEqual(gap / (right - left), .049)
+
+    def test_padding_cannot_certify_shadow_cut_at_source_edge(self):
+        recipe, report = exporter.inspect_framing(self.context([(500, 750, 1080, 1080)]))
+        self.assertFalse(report['framingPassed'])
+        self.assertFalse(report['sourceShadowComplete'])
+        self.assertEqual(report['sourceEdgeFrames']['shadow'][0]['frame'], 0)
+
+
 @unittest.skipUnless(shutil.which("ffmpeg") and shutil.which("ffprobe"), "FFmpeg/ffprobe unavailable")
 class RealCodecTest(TemporaryCase):
     def test_two_frame_720_stacked_roundtrip_and_encoder_no_clobber(self):

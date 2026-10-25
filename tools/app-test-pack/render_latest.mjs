@@ -152,7 +152,7 @@ export async function installCpuCapture(p, spec) {
 export async function run(options) {
  const {mode,specFile,out,runtimeFile,preview,previewReviewed=false,reviewNote='',entry='auto',fps=30,cameraDistanceScale=1}=options;
  if(!['preview','full'].includes(mode)||!specFile||!out||!runtimeFile)throw Error('mode/spec/out/runtime are required');
- if(!Number.isFinite(cameraDistanceScale)||cameraDistanceScale<1||cameraDistanceScale>2)throw Error('Camera distance scale must be 1..2');
+ if(!Number.isFinite(cameraDistanceScale)||cameraDistanceScale<1||cameraDistanceScale>4)throw Error('Camera distance scale must be 1..4 for complete shadow framing');
  const root=path.resolve(out),file=path.resolve(specFile);
  if(fs.existsSync(root))throw Error('Output exists; choose a new revision directory');
  const source=(await import(pathToFileURL(file))).default,profile=selectProfile(source,entry),plan=capturePlan(source,{fps,frames:options.frames});

@@ -211,6 +211,40 @@ def compose_rgba(body, mask, shadow, highlight):
     return Image.alpha_composite(shadow, foreground)
 
 
+def inspect_framing(context, margin=.05):
+    """Fit the whole cycle including real shadow; padding cannot repair cut sources."""
+    bounds = None
+    clipped = {'body': [], 'shadow': []}
+    for name in ('body', 'shadow'):
+        for ref in context['sequences'][name]:
+            with Image.open(safe_path(context['root'], ref['path'])) as image:
+                with image.getchannel('A') as alpha:
+                    box = alpha.getbbox()
+                    if box is None:
+                        continue
+                    bounds = box if bounds is None else (
+                        min(bounds[0], box[0]), min(bounds[1], box[1]),
+                        max(bounds[2], box[2]), max(bounds[3], box[3]))
+                    if box[0] == 0 or box[1] == 0 or box[2] == image.width or box[3] == image.height:
+                        clipped[name].append({'frame': ref['frame'], 'bounds': list(box)})
+    if bounds is None:
+        raise ValueError('Empty transparent source cycle')
+    side = math.ceil(max(bounds[2] - bounds[0], bounds[3] - bounds[1]) / (1 - 2 * margin))
+    left = math.floor((bounds[0] + bounds[2] - side) / 2)
+    top = math.floor((bounds[1] + bounds[3] - side) / 2)
+    # Negative/outside-source crop coordinates add transparent pixels, never synthesize shadow.
+    recipe = {'format': 'pose-hub-export-framing@2', 'preview': False,
+              'sourceSize': [1080, 1080], 'targetSize': [1080, 1080],
+              'crop': [left, top, left + side, top + side],
+              'sourceBounds': list(bounds), 'marginFraction': margin,
+              'policy': 'union-all-cycle-body-props-and-complete-shadow; fixed-square; 5%-transparent-margin'}
+    return recipe, {'sourceFramesChecked': context['action']['frames'],
+                    'sourceEdgeFrames': clipped,
+                    'sourceShadowComplete': not clipped['shadow'],
+                    'sourceBodyComplete': not clipped['body'],
+                    'framingPassed': not clipped['shadow'] and not clipped['body']}
+
+
 def iter_rgba(context):
     action, root = context['action'], context['root']
     for frame in range(action['frames']):
@@ -221,7 +255,7 @@ def iter_rgba(context):
             with Image.open(source) as image:
                 if image.mode != 'RGBA' or image.size != (1080, 1080):
                     raise ValueError('Source layer must remain 1080-square straight RGBA')
-                images.append(image.crop(tuple(context['framing']['crop'])).resize((1080, 1080), Image.Resampling.LANCZOS))
+                images.append(image.crop(tuple(context.get('exportFraming', context['framing'])['crop'])).resize((1080, 1080), Image.Resampling.LANCZOS))
         result = compose_rgba(*images, action['highlight'])
         # Pillow RGBa explicitly filters associated colour, then restores straight RGB.
         small = result.convert('RGBa').resize((SIZE, SIZE), Image.Resampling.LANCZOS).convert('RGBA')
@@ -287,7 +321,7 @@ def decode_check(context, video, output):
                '-f', 'rawvideo', '-pix_fmt', 'rgb24', 'pipe:1']
     process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     alpha_sum = edge_sum = shadow_sum = 0.
-    alpha_count = edge_count = shadow_count = leak_max = 0
+    alpha_count = edge_count = shadow_count = leak_max = boundary_alpha_max = 0
     rgb_sum = {name: 0. for name in BACKGROUNDS}
     edge_rgb_sum = {name: 0. for name in BACKGROUNDS}
     samples = []
@@ -295,6 +329,8 @@ def decode_check(context, video, output):
         for frame, reference, shadow_only in iter_rgba(context):
             decoded = np.frombuffer(read_exact(process.stdout, SIZE * SIZE * 2 * 3), np.uint8).reshape(SIZE * 2, SIZE, 3)
             colour, alpha = decoded[:SIZE], decoded[SIZE:, :, 0]
+            boundary_alpha_max = max(boundary_alpha_max, int(max(
+                alpha[:12].max(), alpha[-12:].max(), alpha[:, :12].max(), alpha[:, -12:].max())))
             original = np.asarray(reference)
             expected = original[..., 3]
             delta = np.abs(alpha.astype(np.int16) - expected.astype(np.int16))
@@ -330,9 +366,12 @@ def decode_check(context, video, output):
               'compositeRgbMae': {k: v / (alpha_count * 3) for k, v in rgb_sum.items()},
               'semiTransparentCompositeRgbMae': {k: v / max(edge_count * 3, 1) for k, v in edge_rgb_sum.items()},
               'sampleFrames': samples,
+              'framingPassed': context['framingCheck']['framingPassed'] and boundary_alpha_max <= 3,
+              'framing': context['framingCheck'], 'decodedBoundaryBandPixels': 12,
+              'decodedBoundaryAlphaMax': boundary_alpha_max,
               'decodeProtocol': 'Decode tagged BT.709 limited-range video to full-range RGB; bottom red is straight alpha.'}
     # Measurable encoding regressions, not certification of the underlying action.
-    report['passed'] = bool(report['alphaMae'] <= 2 and report['semiTransparentAlphaMae'] <= 8
+    report['passed'] = bool(report['framingPassed'] and report['alphaMae'] <= 2 and report['semiTransparentAlphaMae'] <= 8
                         and report['visibleShadowAlphaMae'] <= 8 and shadow_count > 0
                         and max(report['compositeRgbMae'].values()) <= 3
                         and max(report['semiTransparentCompositeRgbMae'].values()) <= 10)
@@ -346,6 +385,11 @@ def export_action(context, output, crf, bleed):
     action = context['action']; aid = action['id']
     media = output / aid; qa = output / 'qa' / aid
     media.mkdir(); qa.mkdir(parents=True)
+    context['exportFraming'], context['framingCheck'] = inspect_framing(context)
+    write_json(qa / 'framing-check.json', {**context['framingCheck'], 'exportFraming': context['exportFraming']})
+    if not context['framingCheck']['framingPassed']:
+        raise ValueError('Source RGBA touches its canvas edge; complete transparent layers are required. '
+                         'Preserved framing-check.json identifies every affected frame; do not shrink a clipped source.')
     video = media / (aid + '.rgb-alpha.mp4')
     process = subprocess.Popen(encoder_command(video, action, crf), stdin=subprocess.PIPE, stderr=subprocess.PIPE)
     cover = thumbnail = None
@@ -374,11 +418,15 @@ def export_action(context, output, crf, bleed):
         with Image.open(image_path) as image:
             if image.mode != 'RGBA' or image.size != size or image.getchannel('A').getextrema() != (0, 255):
                 raise ValueError('Alpha WebP lost dimensions or transparency')
+            box = image.getchannel('A').getbbox()
+            if min(box[0], box[1], size[0] - box[2], size[1] - box[3]) < math.floor(size[0] * .04):
+                raise ValueError('Alpha WebP must retain transparent margin around the complete body and shadow')
     metrics = decode_check(context, video, qa)
     return {'id': aid, 'nameZh': action['nameZh'], 'fps': action['fps'], 'frames': action['frames'],
             'durationSeconds': action['durationSeconds'], 'coverFrame': action['coverFrame'],
             'sourceVideos': action['baselineVideos'], 'sourceLayers': action['layerManifest'],
             'sourceSha256': context['layer']['sourceSha256'], 'framing': context['framing'],
+            'exportFraming': context['exportFraming'],
             'highlight': action['highlight'], 'reviewed': False, 'releaseEligible': False,
             'files': {'video': file_ref(output, video, width=720, height=1440, codec='h264', pixelFormat='yuv420p'),
                       'cover': file_ref(output, cover, width=720, height=720, alpha=True),
