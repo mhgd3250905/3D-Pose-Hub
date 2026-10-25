@@ -294,8 +294,12 @@ promised runtime gain. Complete source checks and video decode QA remain intact.
 
 Its distance multiplier allows 1 through 8 so tall suspended equipment and its
 long ground shadow can fit within a complete source canvas. Choose a distance
-from the actual preview for each action; the CPU-authored profile keeps its
-original fixed camera. A wider limit does not approve any preview or full file.
+from the actual preview for each action. The CPU-authored profile keeps its
+native mesh-fit target, direction, FOV and original frame path; its explicit
+multiplier changes only the distance to include the complete ground shadow.
+Scale 1 retains the original camera. A rejected preview must be followed by a
+fresh preview with the new tool identity and distance before full capture.
+A wider limit does not approve any preview or full file.
 It omits post-pose vertex/contact diagnostic scans while preserving the original
 motion and contact solvers, warm starts, cache initialization and matrix/skeleton
 updates. Frozen engine, model and layer files are never rewritten; whole-source

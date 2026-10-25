@@ -31,7 +31,7 @@ test('preview includes source key phases and rejects duplicate or incomplete seq
 test('full capture gate binds runtime, original spec, output ID and matching transparent preview',()=>{
  const identity={tool:'t',toolSha256:'a',sourceSha256:'b',specId:'s',actionId:'stable',profile:{profile:'p'},fps:30,durationSeconds:8,frameCount:240,size:1080,cameraDistanceScale:1,runtimeSha256:'gpu'};
  const report={...identity,mode:'preview',complete:true,frames:[0,60,239,240],sequences:{body:{},highlight:{},shadow:{}}};checkPreview(report,identity);
- for(const patch of [{runtimeSha256:'other'},{sourceSha256:'other'},{specId:'old'},{actionId:'other'}])assert.throws(()=>checkPreview({...report,...patch},identity),/provenance/);
+ for(const patch of [{runtimeSha256:'other'},{sourceSha256:'other'},{specId:'old'},{actionId:'other'},{cameraDistanceScale:1.5},{toolSha256:'new-camera-adapter'}])assert.throws(()=>checkPreview({...report,...patch},identity),/provenance/);
  assert.throws(()=>checkPreview({...report,sequences:{body:{},highlight:{}}},identity),/shadow/);
 });
 test('CLI rejects unknown arguments and preserves the actual-viewing flag',()=>{

@@ -116,9 +116,11 @@ function runtimeEnvironment(file) {
 
 // The CPU profile replaces displayed surfaces with ordinary world-position Meshes.
 // Its frozen trajectory and shader materials stay intact. Only this process's
-// capture adapter substitutes pose diagnostics and supplies the approved mesh-fit camera.
-export async function installCpuCapture(p, spec) {
- return p.evaluate(s=>{
+// capture adapter substitutes pose diagnostics and supplies the native mesh-fit
+// camera, with an explicit distance-only framing margin for complete shadows.
+export async function installCpuCapture(p, spec, cameraDistanceScale=1) {
+ if(!Number.isFinite(cameraDistanceScale)||cameraDistanceScale<1||cameraDistanceScale>MAX_CAMERA_DISTANCE_SCALE)throw Error(`Camera distance scale must be 1..${MAX_CAMERA_DISTANCE_SCALE} for complete shadow framing`);
+ return p.evaluate(([s,scale])=>{
   const T=__toonT,v=flareInspector.viewer,E=__drill;
   if(!window.__threadneedle?.source.length)throw Error('Actual CPU Threadneedle surface is missing');
   if((s.camera.drift??0)!==0||s.camera.orbitDegrees||s.camera.frontSweepDegrees)throw Error('CPU capture requires its fixed source camera');
@@ -127,7 +129,7 @@ export async function installCpuCapture(p, spec) {
   for(let f=0;f<=240;f+=10){__threadneedle.draw(f/30);for(const piece of __threadneedle.source){const a=piece.mesh.geometry.attributes.position;for(let i=0;i<a.count;i++)bounds.expandByPoint(point.fromBufferAttribute(a,i));}}
   const center=bounds.getCenter(new T.Vector3()),tan=Math.tan((s.camera.fov||35)*Math.PI/360);let distance=0;
   for(let f=0;f<=240;f+=10){__threadneedle.draw(f/30);for(const piece of __threadneedle.source){const a=piece.mesh.geometry.attributes.position;for(let i=0;i<a.count;i++){point.fromBufferAttribute(a,i).sub(center);const z=point.dot(direction);distance=Math.max(distance,Math.abs(point.dot(right))/tan+z,Math.abs(point.dot(up))/tan+z);}}}
-  distance*=1.12;const camera=new T.PerspectiveCamera(s.camera.fov||35,1,.01,100);camera.position.copy(center).addScaledVector(direction,distance);camera.lookAt(center);camera.updateMatrixWorld();v.camera=camera;
+  distance*=1.12;const meshFitDistance=distance;distance*=scale;const camera=new T.PerspectiveCamera(s.camera.fov||35,1,.01,100);camera.position.copy(center).addScaledVector(direction,distance);camera.lookAt(center);camera.updateMatrixWorld();v.camera=camera;
   const select=E.selectModelProfile.bind(E);
   E.selectModelProfile=function(source){
    if(source.modelProfile!==s.modelProfile)throw Error('CPU capture refuses a different profile');
@@ -147,8 +149,8 @@ export async function installCpuCapture(p, spec) {
    return {M:{J:row.joints,params:{q:row.q},x:[],minY,solverDiagnosticsApplicable:false,cpuDisplayedSurface:{method:'actual CPU-authored displayed meshes',minY,meshes,nonFinite,clipped},frame:f}};
   };
   __threadneedle.draw(0);
-  return {policy:'unchanged threadneedle-review/1.0.0-r1 mesh-fit camera',center:center.toArray(),direction:direction.toArray(),distance,fov:camera.fov,margin:1.12};
- },spec);
+  return {policy:scale===1?'unchanged threadneedle-review/1.0.0-r1 mesh-fit camera':'threadneedle native mesh-fit camera; explicit distance-only shadow framing',center:center.toArray(),direction:direction.toArray(),distance,fov:camera.fov,margin:1.12,...(scale===1?{}:{meshFitDistance,cameraDistanceScale:scale})};
+ },[spec,cameraDistanceScale]);
 }
 
 export async function run(options) {
@@ -159,7 +161,7 @@ export async function run(options) {
  if(fs.existsSync(root))throw Error('Output exists; choose a new revision directory');
  const source=(await import(pathToFileURL(file))).default,profile=selectProfile(source,entry),plan=capturePlan(source,{fps,frames:options.frames});
  const actionId=options.stableId||source.id;if(!safeId(actionId))throw Error('Invalid stable action ID');
- if(profile.mode==='cpu-threadneedle'&&(plan.frameCount!==240||fps!==30||cameraDistanceScale!==1))throw Error('CPU profile requires its native 240@30 fixed review camera');
+ if(profile.mode==='cpu-threadneedle'&&(plan.frameCount!==240||fps!==30))throw Error('CPU profile requires its native 240@30 capture timing');
  if(options.technicalDiagnosticsOnly&&profile.mode==='cpu-threadneedle')throw Error('Technical diagnostics candidate does not support the CPU-authored special frame');
  if(options.technicalDiagnosticsOnly!==undefined&&typeof options.technicalDiagnosticsOnly!=='boolean')throw Error('Technical diagnostics option must be boolean');
  const runtimeBinding=runtimeEnvironment(path.resolve(runtimeFile));verifyBase();
@@ -195,7 +197,7 @@ export async function run(options) {
    __setHighlight(s.highlight);__toonUni.uSinkK.value=s.clothSink??1;for(const prop of s.props||[])__props.add(t,prop);
    if(!cpu){if(s.camera.fov){v.camera.fov=s.camera.fov;v.camera.updateProjectionMatrix();}__drill.setupCamera(s,1080);const c=__drill.cam0;c.pos.copy(c.tgt.clone().add(c.pos.clone().sub(c.tgt).multiplyScalar(scale)));}
   },[spec,theme,cameraDistanceScale,profile.mode==='cpu-threadneedle']);
-  if(profile.mode==='cpu-threadneedle')report.camera=await installCpuCapture(p,spec);
+  if(profile.mode==='cpu-threadneedle')report.camera=await installCpuCapture(p,spec,cameraDistanceScale);
   else report.camera=await p.evaluate(()=>{const v=flareInspector.viewer;return {policy:'source camera recipe; UI insets removed; FOV set before fit',position:__drill.cam0.pos.toArray(),target:__drill.cam0.tgt.toArray(),fov:v.camera.fov};});
   let layerScript=fs.readFileSync(path.join(REPO,'drill-anim/tools/v2/browser-layers.js'),'utf8');
   if(options.technicalDiagnosticsOnly){const built=buildTechnicalCaptureSources(fs.readFileSync(path.join(REPO,'drill-anim/page/engine.js'),'utf8'),layerScript);report.captureDiagnostics=await installTechnicalFrame(p,built);layerScript=built.layersSource;}
