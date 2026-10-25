@@ -7,6 +7,7 @@ import {sourceFingerprint} from '../../drill-anim/tools/v2/source-fingerprint.mj
 import {buildTechnicalCaptureSources,installTechnicalFrame} from './capture-diagnostics.mjs';
 
 export const VERSION = 'app-test-pack-rgba/1.0.0-r1';
+export const MAX_CAMERA_DISTANCE_SCALE = 8;
 const SELF = fileURLToPath(import.meta.url);
 const REPO = path.resolve(path.dirname(SELF), '../..');
 const LAYERS = ['body', 'highlight', 'shadow'];
@@ -153,7 +154,7 @@ export async function installCpuCapture(p, spec) {
 export async function run(options) {
  const {mode,specFile,out,runtimeFile,preview,previewReviewed=false,reviewNote='',entry='auto',fps=30,cameraDistanceScale=1}=options;
  if(!['preview','full'].includes(mode)||!specFile||!out||!runtimeFile)throw Error('mode/spec/out/runtime are required');
- if(!Number.isFinite(cameraDistanceScale)||cameraDistanceScale<1||cameraDistanceScale>4)throw Error('Camera distance scale must be 1..4 for complete shadow framing');
+ if(!Number.isFinite(cameraDistanceScale)||cameraDistanceScale<1||cameraDistanceScale>MAX_CAMERA_DISTANCE_SCALE)throw Error(`Camera distance scale must be 1..${MAX_CAMERA_DISTANCE_SCALE} for complete shadow framing`);
  const root=path.resolve(out),file=path.resolve(specFile);
  if(fs.existsSync(root))throw Error('Output exists; choose a new revision directory');
  const source=(await import(pathToFileURL(file))).default,profile=selectProfile(source,entry),plan=capturePlan(source,{fps,frames:options.frames});

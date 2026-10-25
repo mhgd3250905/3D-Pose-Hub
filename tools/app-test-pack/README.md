@@ -276,6 +276,10 @@ solid-background theme and both themes; new actions without an older solid
 movie are not assigned a fabricated baseline.
 
 The capture entry accepts `--technical-diagnostics-only` for this test pack.
+Its distance multiplier allows 1 through 8 so tall suspended equipment and its
+long ground shadow can fit within a complete source canvas. Choose a distance
+from the actual preview for each action; the CPU-authored profile keeps its
+original fixed camera. A wider limit does not approve any preview or full file.
 It omits post-pose vertex/contact diagnostic scans while preserving the original
 motion and contact solvers, warm starts, cache initialization and matrix/skeleton
 updates. Frozen engine, model and layer files are never rewritten; whole-source
