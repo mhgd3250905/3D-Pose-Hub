@@ -40,6 +40,25 @@ def digest(value):
     return hashlib.sha256(value).hexdigest()
 
 
+def verify_spec_reference(raw_source, source_ref):
+    """Accept exact raw or CRLF-to-LF-equivalent bytes, never a changed spec."""
+    # Preserve the original UTF-8 requirement; no BOM removal, whitespace folding,
+    # lone-CR conversion, or source rewrite is permitted by this compatibility.
+    raw_source.decode("utf-8")
+    lf_source = raw_source.replace(b"\r\n", b"\n")
+    raw_sha, lf_sha = digest(raw_source), digest(lf_source)
+    expected = source_ref.get("sha256")
+    require(isinstance(expected, str) and HEX.fullmatch(expected) is not None
+            and expected in (raw_sha, lf_sha), "Original spec raw or LF SHA differs from the catalog")
+    matched_source = raw_source if expected == raw_sha else lf_source
+    if "bytes" in source_ref:
+        require(type(source_ref["bytes"]) is int and len(matched_source) == source_ref["bytes"],
+                "Original spec matched-form byte length differs from the catalog")
+    if "lfSha256" in source_ref:
+        require(source_ref["lfSha256"] == lf_sha, "Original spec LF SHA differs from the catalog")
+    return raw_sha, lf_sha
+
+
 def same_ref(left, right):
     return all(left.get(key) == right.get(key) for key in ("path", "bytes", "sha256"))
 
@@ -110,15 +129,7 @@ def verify_capture(catalog_path, capture_root, repo=REPO):
     source_ref = row["source"]["spec"]
     source_path = relative_file(repo, source_ref["path"])
     raw_source = source_path.read_bytes()
-    raw_sha = digest(raw_source)
-    require(HEX.fullmatch(source_ref.get("sha256", "")) is not None
-            and raw_sha == source_ref["sha256"], "Original spec raw SHA differs from the catalog")
-    if "bytes" in source_ref:
-        require(type(source_ref["bytes"]) is int and len(raw_source) == source_ref["bytes"],
-                "Original spec byte length differs from the catalog")
-    lf_sha = digest(raw_source.decode("utf-8").replace("\r\n", "\n").encode("utf-8"))
-    if "lfSha256" in source_ref:
-        require(source_ref["lfSha256"] == lf_sha, "Original spec LF SHA differs from the catalog")
+    raw_sha, lf_sha = verify_spec_reference(raw_source, source_ref)
 
     count, fps, duration, peak = (report.get(key) for key in
                                   ("frameCount", "fps", "durationSeconds", "peakFrame"))

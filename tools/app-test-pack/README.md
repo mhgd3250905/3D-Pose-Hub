@@ -106,6 +106,13 @@ runtime. No browser is used for encoding existing RGBA layers.
   real 4080 proof, actual preview before full capture, and source hashes.
 - `media/tools/prepare_captured_alpha.py`: verify a completed new capture and
   prepare its export plan; never accept sparse/failed/changed source frames.
+  The selected spec must match the catalog's exact raw SHA or its exact
+  CRLF-to-LF equivalent. If the catalog pins a byte length, it must match that
+  same hash representation. Plans retain both the actual `specRawSha256` and
+  `specLfSha256`; optional LF pins, full capture/layer hashes, RTX 4080 proof,
+  timing and every frame reference remain mandatory as before. No other
+  whitespace, BOM or content normalization is accepted, and sources are not
+  rewritten.
 - `media/tools/export_stacked_alpha.py`: read verified RGBA, encode, decode the
   actual H.264 and compare alpha and composites against the original RGBA.
 - `media/tools/run_app_test_exports.py`: recoverable CPU queue, immutable media,
