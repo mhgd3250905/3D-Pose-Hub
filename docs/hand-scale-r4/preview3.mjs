@@ -5,7 +5,8 @@ const {boot}=await imp('lib/boot.mjs');const {loadTheme}=await imp('lib/config.m
 const [mode,specF,out,frames='0,63']=process.argv.slice(2);fs.mkdirSync(out,{recursive:true});
 const base=(await import(pathToFileURL(specF).href)).default;const spec=structuredClone(base);
 const V2={outfit:'compression',torso:'base',limbs:'base',hands:'base',skin:'realistic'};
-if(mode==='old'){spec.modelProfile='training-human-v2plus';spec.v2plus=V2;delete spec.nativeHands;}else{spec.modelProfile='training-human-v2plus-hands-native';spec.nativeHands={version:mode==='r4'?'1.0.0-r4':'1.0.0-r3'};}
+if(process.env.SHARE)spec.nativeHands={...(spec.nativeHands||{})};
+if(mode==='old'){spec.modelProfile='training-human-v2plus';spec.v2plus=V2;delete spec.nativeHands;}else{spec.modelProfile='training-human-v2plus-hands-native';spec.nativeHands={version:{r4:'1.0.0-r4',r5:'1.0.0-r5'}[mode]||'1.0.0-r3',...(process.env.SHARE?{twistShare:+process.env.SHARE}:{})};}
 const theme=loadTheme(),{b,p}=await boot({size:720,pr:1,theme});
 try{
  if(mode==='old')await applyHumanV2plus(p,spec);else await applyNativeOpen(p,spec);
@@ -18,5 +19,5 @@ try{
    const cam=new T.OrthographicCamera(-.16,.16,.16,-.16,.001,3);cam.up.set(side==='left'?1:-1,0,0).applyQuaternion(q);cam.position.copy(c).addScaledVector(dir,.6);cam.lookAt(c);cam.updateMatrixWorld();
    v.renderer.render(v.scene,cam);return v.renderer.domElement.toDataURL('image/png');},side);
    fs.writeFileSync(path.join(out,`${mode}-${side}-${f}.png`),Buffer.from(url.split(',')[1],'base64'));}}
- console.log('ok',mode);
+ console.log('ok',mode,JSON.stringify(await p.evaluate(()=>window.__wristTwistStats||null)));
 }finally{await b.close();}
