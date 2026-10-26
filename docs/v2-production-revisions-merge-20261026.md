@@ -7,11 +7,11 @@
 - main 状态：47 份在 main 上**均不存在**（无同名同内容=已合入，也无同名不同内容=冲突）；PR #15 在 main 新增的 44 份 `*-rr*` 等规格与这 47 份的基础动作无重叠。
 - 冻结规则：47 份都是新文件，未覆盖任何已登记 spec；它们 `import` 的原版/上一修订在 main 上全部存在且与生产分支逐字节一致（链内依赖 `h-side-leg-raise-r2→r3→r4→r5`、`h-step-jack-r2→r3`、`hamstrings-A-r2→r3` 同批带上）。
 - 模型：全部使用 main 已有的 `training-human-v2plus` 配方（`hands:'base'`），不依赖 native-open / native-grip 等专用模型，不改 `lib/`、`page/`、`runtime/`。
-- **干净可合 35 份** → `drill/v2-production-revisions`（PR A）。
-- **需审 12 份 + 1 个新共用模块** → `drill/v2-production-native8`（PR B，单独审）：技术上无冲突、可通过 verify，但属于 native8 第一版“8 秒循环”改编，改了时长、演示次数和停留时间，部分停留缩到 1 s 以下，需要按 review-rubric §1（拉伸停留 ≥2 s、节奏）和 App 处方逐个确认；另需在 `verify.mjs` 登记新共用模块 `specs/_draft-native8-r1.mjs` 的哈希。
+- **干净可合 35 份** → `drill/v2-production-revisions`（PR #18）。
+- **需审 12 份 + 1 个新共用模块** → `drill/v2-production-native8`（PR #19，draft，单独审）：技术上无冲突、可通过 verify，但属于 native8 第一版“8 秒循环”改编，改了时长、演示次数和停留时间，部分停留缩到 1 s 以下，需要按 review-rubric §1（拉伸停留 ≥2 s、节奏）和 App 处方逐个确认；另需在 `verify.mjs` 登记新共用模块 `specs/_draft-native8-r1.mjs` 的哈希。
 - 硬冲突（main 已有同名不同内容、或改了已登记文件）：**0**。
 
-SHA 登记：每份的 LF 规范化 sha256 与生产分支 `home-pr-candidates.json` 原登记值逐一核对一致；`sourceCommit` 填生产分支上该文件最后所在提交（`0e4e8b822f386f267f1b655d2f79a0ffd8ca839a` b001–b003，`97d97a0ceecb2826c38e140b24be6afa0a3eef31` b004/native8/诊断修订）；`pr` 开 PR 后补。`review` 字段沿用生产分支原文（均为“视觉/接触/源审核待定，非发布认可”）。
+SHA 登记：每份的 LF 规范化 sha256 与生产分支 `home-pr-candidates.json` 原登记值逐一核对一致；`sourceCommit` 填生产分支上该文件最后所在提交（`0e4e8b822f386f267f1b655d2f79a0ffd8ca839a` b001–b003，`97d97a0ceecb2826c38e140b24be6afa0a3eef31` b004/native8/诊断修订）；`pr` 已回填（#18 / #19）。`review` 字段沿用生产分支原文（均为“视觉/接触/源审核待定，非发布认可”）。
 
 不在本次范围（生产分支上另有，未搬）：`catalog/v2/**`、`catalog/voice-v2/**`、`catalog/action-library/*`、生产快照文档、`tools/action-library-v2*/`、`drill-anim/tools/v2-draft/`，以及生产分支对 AGENTS/README/START-HERE 等文档的改动。
 
