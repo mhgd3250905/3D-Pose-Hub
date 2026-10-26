@@ -32,3 +32,7 @@ node drill-anim/models/native-open-r1/preview.mjs drill-anim/specs/<id>.js <新�
 - 未验证（允许加载，但会打印警告）：手掌撑地、握哑铃、双手互握/合掌等其它接触。这类动作必须看双手近景，检查不陷、不悬空、不互穿，并先交样片。
 
 2026-10-24 用新 ID 临时 spec 实测两条路径都能出帧。正式成片仍由主线 4080 出。
+
+## 2026-10-27 追加：hands-native r4（等比缩小 + 腕部收窄）
+
+`training-human-v2plus-hands-native` 现在接受两个精确版本：`nativeHands.version` 写 `'1.0.0-r3'`（不变）或 `'1.0.0-r4'`。其他值仍报错。r4 加载 `hands-native-r4/` 的网格和骨骼，并校验 r4 manifest 的固定 SHA。native-grip 只接受 `'1.0.0-r1'`，仍用 r3 尺寸的手。说明见 `hands-native-r4/README.md` 和 `docs/hand-scale-r4/`。
