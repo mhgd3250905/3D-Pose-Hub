@@ -1,12 +1,12 @@
 // Close-up compare (old v2plus base hand / native r3 / native r4) for one spec; few frames, CPU swiftshader.
 import fs from 'node:fs';import path from 'node:path';import {pathToFileURL} from 'node:url';
-const R='./drill-anim/';const imp=f=>import(pathToFileURL(R+f).href);
+const R='/workspace/ph/drill-anim/';const imp=f=>import(pathToFileURL(R+f).href);
 const {boot}=await imp('lib/boot.mjs');const {loadTheme}=await imp('lib/config.mjs');const {applyNativeOpen}=await imp('models/native-open-r1/loader.mjs');const {applyHumanV2plus}=await imp('lib/human-v2plus.mjs');
 const [mode,specF,out,frames='0,63']=process.argv.slice(2);fs.mkdirSync(out,{recursive:true});
 const base=(await import(pathToFileURL(specF).href)).default;const spec=structuredClone(base);
 const V2={outfit:'compression',torso:'base',limbs:'base',hands:'base',skin:'realistic'};
 if(process.env.SHARE)spec.nativeHands={...(spec.nativeHands||{})};
-if(mode==='old'){spec.modelProfile='training-human-v2plus';spec.v2plus=V2;delete spec.nativeHands;}else{spec.modelProfile='training-human-v2plus-hands-native';spec.nativeHands={version:{r4:'1.0.0-r4',r5:'1.0.0-r5'}[mode]||'1.0.0-r3',...(process.env.SHARE?{twistShare:+process.env.SHARE}:{})};}
+if(mode==='old'){spec.modelProfile='training-human-v2plus';spec.v2plus=V2;delete spec.nativeHands;}else{spec.modelProfile='training-human-v2plus-hands-native';spec.nativeHands={version:{r4:'1.0.0-r4',r5:'1.0.0-r5',r6a:'1.0.0-r6a',r6b:'1.0.0-r6b'}[mode]||'1.0.0-r3',...(process.env.SHARE?{twistShare:+process.env.SHARE}:{})};}
 const theme=loadTheme(),{b,p}=await boot({size:720,pr:1,theme});
 try{
  if(mode==='old')await applyHumanV2plus(p,spec);else await applyNativeOpen(p,spec);

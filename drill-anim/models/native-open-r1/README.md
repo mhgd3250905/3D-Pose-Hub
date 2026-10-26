@@ -40,3 +40,7 @@ node drill-anim/models/native-open-r1/preview.mjs drill-anim/specs/<id>.js <新�
 ## 2026-10-27 追加：hands-native r5（0.85 + 掌厚 0.8 + 腕部扭转分摊）
 
 新增 `nativeHands.version:'1.0.0-r5'`，可选 `nativeHands.twistShare`（0–1，默认 0.5）。r5 会额外注入 `hands-native-r5/wrist-twist.js`：只在渲染前把手相对前臂轴的扭转按比例分给前臂骨，渲染完立即还原，求解出的姿态和 QA 不变。r3、r4 的加载方式不变。
+
+## r6a / r6b candidates
+
+`1.0.0-r6a` (0.82 length, width 0.85, palm thickness 0.7) and `1.0.0-r6b` (uniform 0.76, palm thickness 0.8) map to `hands-native-r6a` / `hands-native-r6b`; both get the r5 wrist-twist runtime (`nativeHands.twistShare`, default 0.5).
