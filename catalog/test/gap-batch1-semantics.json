@@ -1,0 +1,692 @@
+{
+ "format": "posehub-gap-batch-semantics@1",
+ "batch": "gap-batch1-20261026",
+ "status": "proposal-unreviewed",
+ "reviewed": false,
+ "releaseEligible": false,
+ "fieldTemplate": "对齐 posehub-app-test-pack-r1-v2 catalog.json 的 complete 条目（purpose、category、muscles、muscleGroups、position、unilateral、level、scenes、equipment、defaultDose、doseRange、cues.zh、primaryCue、cautions、cautionNotes、commonErrors、countingSemantics、demonstratedSide）",
+ "catalogSource": {
+  "path": "packages/ugk_trainer/assets/pose_hub/app-test-pack-r1/catalog.json (ugk-3d-pose-sdk)",
+  "sha256": "a1655e5c64055c14af35850b5468390d9d11161e53a87a0cbe7780ec7ed25dc0",
+  "id": "app-test-pack-r1"
+ },
+ "rules": [
+  "节奏/计次口径与各 spec timeline 一致（countingSemantics 里的秒数取自 spec keys）。",
+  "剂量数值只借 219 中 trainingDefinitionComplete=true 的同类动作，逐条写明来源；推不出的字段列在 pendingFields，值为 null。",
+  "muscleGroups 只用 catalog/taxonomy.json 现有 ID。"
+ ],
+ "actions": [
+  {
+   "id": "h-band-biceps-curl",
+   "nameZh": "站姿踩带弹力带弯举",
+   "spec": {
+    "path": "drill-anim/specs/h-band-biceps-curl.js",
+    "sha256": "89abe3d2060f76dd99ba3d8184ff4ce7e248a91bd53d7d5cec804c1648563be8"
+   },
+   "purpose": "双脚踩住弹力带，上臂固定在体侧，掌心朝上双侧同步弯举，练上臂前侧。",
+   "category": "strength",
+   "muscles": [
+    "肱二头肌"
+   ],
+   "muscleGroups": [
+    "biceps"
+   ],
+   "position": "standing",
+   "unilateral": false,
+   "level": 1,
+   "scenes": [
+    "home"
+   ],
+   "equipment": [
+    "band"
+   ],
+   "cues": {
+    "zh": [
+     "双脚踩住弹力带中段，掌心朝前握住两端。",
+     "上臂贴住身体，只动小臂，双手同步弯起后慢慢放下。"
+    ]
+   },
+   "primaryCue": 1,
+   "cautions": [],
+   "cautionNotes": {
+    "zh": [
+     "用轻阻力弹力带并踩稳中段，防止脱脚回弹。"
+    ]
+   },
+   "commonErrors": [
+    {
+     "zh": "身体后仰或甩动借力，肘部向前跑。"
+    }
+   ],
+   "countingSemantics": "双手同步弯举并下放到起点计1次；视频8秒内演示2次（每次起始0.3 s、上1.3 s、顶停0.4 s、下1.6 s、歇0.4 s），片内重复不是整组剂量。",
+   "demonstratedSide": "both",
+   "defaultDose": {
+    "mode": "reps",
+    "sets": 3,
+    "reps": 12,
+    "restSeconds": 30
+   },
+   "doseRange": {
+    "sets": [
+     1,
+     4
+    ],
+    "reps": [
+     6,
+     18
+    ],
+    "restSeconds": [
+     0,
+     60
+    ]
+   },
+   "semanticsSource": {
+    "fromSpec": "spec 头注释（动作、双侧同步、掌心朝上全程、不后仰不甩）与 timeline（2次/8 s）",
+    "doseBorrowedFrom": {
+     "id": "h-db-curl",
+     "catalog": "posehub-app-test-pack-r1-v2 catalog.json",
+     "fields": [
+      "defaultDose",
+      "doseRange"
+     ]
+    }
+   },
+   "pendingFields": [],
+   "notes": [
+    "level 借自 h-db-curl（同为站姿负重屈肘）。",
+    "scenes 按 219 中 h-band-row 等居家弹力带动作取 home；taxonomy 的 band 场景只写 gym，二者在 219 已不一致，未改 taxonomy。"
+   ],
+   "definitionComplete": true
+  },
+  {
+   "id": "h-db-reverse-curl",
+   "nameZh": "站姿双哑铃反握弯举",
+   "spec": {
+    "path": "drill-anim/specs/h-db-reverse-curl.js",
+    "sha256": "5cd9d403282741640f8c9b30e15eacd6b358e3382d90037a05edf80d48aae4e9"
+   },
+   "purpose": "双手反握（掌心朝下）持轻哑铃，上臂固定做双侧同步屈肘，偏重肱桡肌与肱肌。",
+   "category": "strength",
+   "muscles": [
+    "肱桡肌",
+    "肱肌",
+    "肱二头肌"
+   ],
+   "muscleGroups": [
+    "biceps",
+    "forearms"
+   ],
+   "position": "standing",
+   "unilateral": false,
+   "level": 1,
+   "scenes": [
+    "home"
+   ],
+   "equipment": [
+    "dumbbell"
+   ],
+   "cues": {
+    "zh": [
+     "掌心朝下握哑铃，拇指朝内，手腕保持平直。",
+     "上臂贴住身体，双肘同步弯到胸口高度后慢慢放下。"
+    ]
+   },
+   "primaryCue": 0,
+   "cautions": [
+    "手腕"
+   ],
+   "cautionNotes": {
+    "zh": [
+     "反握比正握吃力，用更轻的哑铃；底部保留微屈，哑铃不撞大腿。"
+    ]
+   },
+   "commonErrors": [
+    {
+     "zh": "手腕下垂或上翘，或用躯干摆动把哑铃甩起。"
+    }
+   ],
+   "countingSemantics": "双肘同步弯举并下放到起点计1次；视频8秒内演示2次（每次起始0.3 s、上1.3 s、顶停0.4 s、下1.6 s、歇0.4 s），不把左右手计作两次。",
+   "demonstratedSide": "both",
+   "defaultDose": {
+    "mode": "reps",
+    "sets": 1,
+    "reps": 6,
+    "restSeconds": 30
+   },
+   "doseRange": {
+    "sets": [
+     1,
+     1
+    ],
+    "reps": [
+     6,
+     6
+    ],
+    "restSeconds": [
+     30,
+     30
+    ]
+   },
+   "semanticsSource": {
+    "fromSpec": "spec 头注释（反握、拇指朝内、底部微屈避开大腿）与 timeline",
+    "doseBorrowedFrom": {
+     "id": "h-db-hammer-curl",
+     "catalog": "posehub-app-test-pack-r1-v2 catalog.json",
+     "fields": [
+      "defaultDose",
+      "doseRange"
+     ]
+    }
+   },
+   "pendingFields": [],
+   "notes": [
+    "level、剂量借自 h-db-hammer-curl（同为双侧同步、握法变体的哑铃屈肘）。",
+    "muscles 与 h-db-hammer-curl 的中文肌肉写法一致；模型无独立肱桡肌分区，故 muscleGroups 加 forearms（与 spec 高亮一致）。",
+    "cautions“手腕”是按反握负荷写的判断，请审核。"
+   ],
+   "definitionComplete": true
+  },
+  {
+   "id": "h-db-zottman-curl",
+   "nameZh": "站姿双哑铃佐特曼弯举",
+   "spec": {
+    "path": "drill-anim/specs/h-db-zottman-curl.js",
+    "sha256": "5ae1057b3bb3a34a2c3a38de0ca046ccfc384def09b3178c1ef7c0c02de9624b"
+   },
+   "purpose": "掌心朝上弯起、顶端翻成掌心朝下再慢放，同时练上臂前侧和前臂。",
+   "category": "strength",
+   "muscles": [
+    "肱二头肌",
+    "肱肌",
+    "肱桡肌",
+    "前臂伸肌群"
+   ],
+   "muscleGroups": [
+    "biceps",
+    "forearms"
+   ],
+   "position": "standing",
+   "unilateral": false,
+   "level": 1,
+   "scenes": [
+    "home"
+   ],
+   "equipment": [
+    "dumbbell"
+   ],
+   "cues": {
+    "zh": [
+     "掌心朝上弯起，到顶端把掌心翻向下。",
+     "掌心朝下慢慢放下，到底再翻回掌心朝上。"
+    ]
+   },
+   "primaryCue": 1,
+   "cautions": [
+    "手腕"
+   ],
+   "cautionNotes": {
+    "zh": [
+     "下放段是反握，用轻哑铃；翻腕只在顶端和底端进行。"
+    ]
+   },
+   "commonErrors": [
+    {
+     "zh": "下放途中才翻腕，或甩动躯干借力。"
+    }
+   ],
+   "countingSemantics": "正握弯起、顶端翻腕、反握下放、底端翻回计1次；视频8秒内演示2次（每次起始0.3 s、上1.3 s、顶端翻腕0.5 s、下1.5 s、底端翻回0.4 s）。",
+   "demonstratedSide": "both",
+   "defaultDose": {
+    "mode": "reps",
+    "sets": 1,
+    "reps": 6,
+    "restSeconds": 30
+   },
+   "doseRange": {
+    "sets": [
+     1,
+     1
+    ],
+    "reps": [
+     6,
+     6
+    ],
+    "restSeconds": [
+     30,
+     30
+    ]
+   },
+   "semanticsSource": {
+    "fromSpec": "spec 头注释（掌心朝上上、顶端旋前、反握下放、底端旋后）与 timeline",
+    "doseBorrowedFrom": {
+     "id": "h-db-hammer-curl",
+     "catalog": "posehub-app-test-pack-r1-v2 catalog.json",
+     "fields": [
+      "defaultDose",
+      "doseRange"
+     ]
+    }
+   },
+   "pendingFields": [],
+   "notes": [
+    "level、剂量借自 h-db-hammer-curl。",
+    "cautions“手腕”为判断，请审核。"
+   ],
+   "definitionComplete": true
+  },
+  {
+   "id": "h-db-overhead-shrug",
+   "nameZh": "双哑铃过头耸肩",
+   "spec": {
+    "path": "drill-anim/specs/h-db-overhead-shrug.js",
+    "sha256": "9c853973e85e0fdda4e94c0a81610d779e60bce3d2d1deeeac241c8967e97557"
+   },
+   "purpose": "双臂持轻哑铃伸直举过头，肘不屈伸，只做肩带上提和缓慢回落。",
+   "category": "strength",
+   "muscles": [
+    "上斜方肌",
+    "斜方肌中下部（协同上回旋）"
+   ],
+   "muscleGroups": [],
+   "position": "standing",
+   "unilateral": false,
+   "level": null,
+   "scenes": [
+    "home"
+   ],
+   "equipment": [
+    "dumbbell"
+   ],
+   "cues": {
+    "zh": [
+     "双臂伸直举过头，肘不屈伸，头颈不动。",
+     "肩膀向耳朵方向上提，停一下再慢慢放下。"
+    ]
+   },
+   "primaryCue": 1,
+   "cautions": [
+    "肩"
+   ],
+   "cautionNotes": {
+    "zh": [
+     "过头位置用很轻的哑铃；肩部不适或无法舒适举过头者不做。"
+    ]
+   },
+   "commonErrors": [
+    {
+     "zh": "屈肘推举代替耸肩，或伸颈、塌腰后仰。"
+    }
+   ],
+   "countingSemantics": "双肩同步上提并回落计1次；视频8秒内演示2次（每次静止0.4 s、上提1.6 s、顶停0.3 s、回落1.4 s、歇0.3 s），顶点停留不另计。",
+   "demonstratedSide": "both",
+   "defaultDose": null,
+   "doseRange": null,
+   "semanticsSource": {
+    "fromSpec": "spec 头注释（过头位、只做肩带上提、头颈不动）与 timeline",
+    "doseBorrowedFrom": null
+   },
+   "pendingFields": [
+    "muscleGroups",
+    "level",
+    "defaultDose",
+    "doseRange"
+   ],
+   "notes": [
+    "muscleGroups 留空：taxonomy 没有上斜方 ID（PR #17 提议新增 upper-traps，未批准）；scapular 只代表斜方肌中下部·菱形肌，不能代替。spec 高亮用 v2plus 的 traps 组（上斜方+中下斜方）。",
+    "剂量/难度待补：219 里同类的 h-db-shrug（1×6、6–8 次、休 30 s，level 1）因 muscleGroups 缺词表被标 trainingDefinitionComplete=false，不属于“已完成”条目，按规则不直接借用；建议开哥确认后可沿用该值。"
+   ],
+   "definitionComplete": false
+  },
+  {
+   "id": "h-supine-cactus-chest",
+   "nameZh": "仰卧仙人掌开胸",
+   "spec": {
+    "path": "drill-anim/specs/h-supine-cactus-chest.js",
+    "sha256": "6f0926672d2c96172ae3b006d142571f06258925411ac345210c4ac71755bea0"
+   },
+   "purpose": "仰卧屈膝，双臂屈肘贴垫从低位滑到仙人掌位，被动舒适地拉伸胸部和肩前侧。",
+   "category": "stretch",
+   "muscles": [
+    "胸大肌",
+    "三角肌前束"
+   ],
+   "muscleGroups": [
+    "chest",
+    "deltoids"
+   ],
+   "position": "supine",
+   "unilateral": false,
+   "level": 1,
+   "scenes": [
+    "home",
+    "gym"
+   ],
+   "equipment": [
+    "mat"
+   ],
+   "cues": {
+    "zh": [
+     "仰卧屈膝，双臂屈肘约90度，手背和上臂贴垫。",
+     "双臂沿垫面慢慢滑到与肩同高，胸口打开，停在舒适拉伸处。"
+    ]
+   },
+   "primaryCue": 1,
+   "cautions": [
+    "肩"
+   ],
+   "cautionNotes": {
+    "zh": [
+     "只停在轻度拉伸位；肩前侧刺痛或手麻时把手臂滑低一些。"
+    ]
+   },
+   "commonErrors": [
+    {
+     "zh": "腰部拱起离垫，或手肘离垫硬压到底。"
+    }
+   ],
+   "countingSemantics": "双臂滑到仙人掌位后开始计时保持；视频8秒内为一次进出（低位0.5 s、上滑1.5 s、保持4.0 s、下滑1.5 s、歇0.5 s），片内保持不是处方时长。",
+   "demonstratedSide": "both",
+   "defaultDose": {
+    "mode": "time",
+    "sets": 1,
+    "seconds": 30,
+    "restSeconds": 10
+   },
+   "doseRange": {
+    "sets": [
+     1,
+     1
+    ],
+    "seconds": [
+     30,
+     30
+    ],
+    "restSeconds": [
+     10,
+     10
+    ]
+   },
+   "semanticsSource": {
+    "fromSpec": "spec 头注释（仰卧屈膝、W→仙人掌、被动末端）与 timeline",
+    "doseBorrowedFrom": {
+     "id": "h-doorframe-forearms-pec-native-r3",
+     "catalog": "posehub-app-test-pack-r1-v2 catalog.json",
+     "fields": [
+      "defaultDose",
+      "doseRange"
+     ]
+    }
+   },
+   "pendingFields": [],
+   "notes": [
+    "剂量、level 借自 h-doorframe-forearms-pec-native-r3（同为双侧静态胸肌拉伸）。",
+    "scenes 按 mat 的 taxonomy 场景（home、gym）。"
+   ],
+   "definitionComplete": true
+  },
+  {
+   "id": "h-standing-arm-extension-stretch",
+   "nameZh": "站姿双臂后伸开肩",
+   "spec": {
+    "path": "drill-anim/specs/h-standing-arm-extension-stretch.js",
+    "sha256": "058c8e1b98679fdc96c09bb028dd18edc3e4cb448f9edf3744852c8f2f6d460f"
+   },
+   "purpose": "站姿直臂向后上抬并轻收肩胛，徒手拉伸肩前侧和胸部，手不交扣、不借道具。",
+   "category": "stretch",
+   "muscles": [
+    "三角肌前束",
+    "胸大肌"
+   ],
+   "muscleGroups": [
+    "deltoids",
+    "chest"
+   ],
+   "position": "standing",
+   "unilateral": false,
+   "level": 1,
+   "scenes": [
+    "home",
+    "office",
+    "gym"
+   ],
+   "equipment": [],
+   "cues": {
+    "zh": [
+     "双臂伸直，掌心朝内，向后上方抬起。",
+     "肩胛轻轻后收下沉，身体不前倾、不塌腰。"
+    ]
+   },
+   "primaryCue": 1,
+   "cautions": [
+    "肩"
+   ],
+   "cautionNotes": {
+    "zh": [
+     "幅度到肩前侧有轻度拉伸感即可，不甩臂、不强行加高。"
+    ]
+   },
+   "commonErrors": [
+    {
+     "zh": "上身前倾或腰部后弓来换取手臂高度。"
+    }
+   ],
+   "countingSemantics": "双臂抬到后伸位后开始计时保持；视频8秒内为一次进出（静止0.5 s、后抬1.5 s、保持3.5 s、放下1.5 s、歇1.0 s）。",
+   "demonstratedSide": "both",
+   "defaultDose": {
+    "mode": "time",
+    "sets": 1,
+    "seconds": 30,
+    "restSeconds": 10
+   },
+   "doseRange": {
+    "sets": [
+     1,
+     2
+    ],
+    "seconds": [
+     15,
+     60
+    ],
+    "restSeconds": [
+     0,
+     60
+    ]
+   },
+   "semanticsSource": {
+    "fromSpec": "spec 头注释（直臂后伸约40度、肩胛后收、不交扣、头颈不动）与 timeline",
+    "doseBorrowedFrom": {
+     "id": "h-seated-reachback",
+     "catalog": "posehub-app-test-pack-r1-v2 catalog.json",
+     "fields": [
+      "defaultDose",
+      "doseRange"
+     ]
+    }
+   },
+   "pendingFields": [],
+   "notes": [
+    "剂量、level 借自 h-seated-reachback（同为胸/肩前侧静态拉伸）。",
+    "scenes：徒手站姿，参照 h-overhead-triceps-stretch 取 home/office/gym。"
+   ],
+   "definitionComplete": true
+  },
+  {
+   "id": "h-half-kneeling-quad-stretch",
+   "nameZh": "半跪姿手拉脚股四头肌拉伸",
+   "spec": {
+    "path": "drill-anim/specs/h-half-kneeling-quad-stretch.js",
+    "sha256": "73da97dba25307ba58627b73032fe1cacca28d175fd96509d03672c1a5c96380"
+   },
+   "purpose": "半跪位用同侧手拉住后脚，骨盆后倾，拉伸后腿大腿前侧与髋前侧。",
+   "category": "stretch",
+   "muscles": [
+    "股四头肌",
+    "髋屈肌"
+   ],
+   "muscleGroups": [
+    "quadriceps",
+    "hip-flexors"
+   ],
+   "position": "kneeling",
+   "unilateral": true,
+   "level": null,
+   "scenes": [
+    "home",
+    "gym"
+   ],
+   "equipment": [
+    "mat"
+   ],
+   "cues": {
+    "zh": [
+     "后膝跪垫，同侧手抓住后脚背或脚踝。",
+     "收紧臀部、骨盆微后倾，感觉大腿前侧拉长，不塌腰。"
+    ]
+   },
+   "primaryCue": 1,
+   "cautions": [
+    "膝",
+    "腰"
+   ],
+   "cautionNotes": {
+    "zh": [
+     "跪地膝下垫厚垫；膝前侧疼痛时减小屈膝或改扶椅站姿版。"
+    ]
+   },
+   "commonErrors": [
+    {
+     "zh": "靠腰椎前弓或身体前冲换取拉伸感。"
+    }
+   ],
+   "countingSemantics": "进入一侧拉伸位后计时；默认每侧分别完成，示范为左腿在后（左手抓左脚）。视频8秒内为一次进出（静止0.6 s、进入1.6 s、到末端1.6 s、回到85%1.8 s、放松1.6 s）。",
+   "demonstratedSide": "left",
+   "defaultDose": {
+    "mode": "time",
+    "sets": 1,
+    "seconds": 30,
+    "restSeconds": 10
+   },
+   "doseRange": {
+    "sets": [
+     1,
+     2
+    ],
+    "seconds": [
+     15,
+     60
+    ],
+    "restSeconds": [
+     0,
+     60
+    ]
+   },
+   "semanticsSource": {
+    "fromSpec": "spec 头注释（左膝跪地、左手抓脚、骨盆后倾、保守幅度）与 timeline",
+    "doseBorrowedFrom": {
+     "id": "h-couch-stretch",
+     "catalog": "posehub-app-test-pack-r1-v2 catalog.json",
+     "fields": [
+      "defaultDose",
+      "doseRange"
+     ]
+    }
+   },
+   "pendingFields": [
+    "level"
+   ],
+   "notes": [
+    "剂量借自 h-couch-stretch（同为半跪位股四/髋屈肌拉伸）。",
+    "level 待补：最接近的 219 动作 h-couch-stretch 为 3、o-stand-quad 为 1，本动作介于两者之间，推不出，需开哥定。",
+    "cautions 与 h-couch-stretch 相同（膝、腰）。"
+   ],
+   "definitionComplete": false
+  },
+  {
+   "id": "h-chair-elbow-triceps-stretch",
+   "nameZh": "扶椅背屈肘肱三头肌拉伸",
+   "spec": {
+    "path": "drill-anim/specs/h-chair-elbow-triceps-stretch.js",
+    "sha256": "7c1b99e403c74e8c57abfdef3c07a7187c25080e227643c7a31730707a728974"
+   },
+   "purpose": "站姿髋铰链，双肘屈曲搭在低椅背上，胸口下沉加大肩屈，拉伸上臂后侧与腋下。",
+   "category": "stretch",
+   "muscles": [
+    "肱三头肌（长头）",
+    "背阔肌"
+   ],
+   "muscleGroups": [
+    "triceps",
+    "lats"
+   ],
+   "position": "standing",
+   "unilateral": false,
+   "level": 1,
+   "scenes": [
+    "home",
+    "office"
+   ],
+   "equipment": [
+    "chair"
+   ],
+   "cues": {
+    "zh": [
+     "屈髋俯身，双肘弯曲搭在椅背上，双手放在头后上方。",
+     "臀部后推、胸口慢慢下沉，感觉上臂后侧和腋下拉长。"
+    ]
+   },
+   "primaryCue": 1,
+   "cautions": [
+    "肩"
+   ],
+   "cautionNotes": {
+    "zh": [
+     "椅子要稳且椅背不高于髋；手不压头颈，肩部不适即退出。"
+    ]
+   },
+   "commonErrors": [
+    {
+     "zh": "塌腰或耸肩硬压，或用手推头颈加大幅度。"
+    }
+   ],
+   "countingSemantics": "双肘搭稳、胸口下沉到舒适拉伸位后开始计时；视频8秒内为一次进出（静止0.4 s、下沉2.2 s、保持2.4 s、回升到15%2.0 s、回起点1.0 s）。",
+   "demonstratedSide": "both",
+   "defaultDose": {
+    "mode": "time",
+    "sets": 1,
+    "seconds": 30,
+    "restSeconds": 10
+   },
+   "doseRange": {
+    "sets": [
+     1,
+     2
+    ],
+    "seconds": [
+     15,
+     60
+    ],
+    "restSeconds": [
+     0,
+     60
+    ]
+   },
+   "semanticsSource": {
+    "fromSpec": "spec 头注释（髋铰链、双肘搭椅背、肩屈+14度下沉、头不动）与 timeline",
+    "doseBorrowedFrom": {
+     "id": "h-overhead-triceps-stretch",
+     "catalog": "posehub-app-test-pack-r1-v2 catalog.json",
+     "fields": [
+      "defaultDose",
+      "doseRange"
+     ]
+    }
+   },
+   "pendingFields": [],
+   "notes": [
+    "剂量、level 借自 h-overhead-triceps-stretch（同为肱三头肌静态拉伸；与 h-chair-lat 数值相同）。",
+    "scenes 参照 h-chair-lat（home、office）。椅背高度 0.78 m 是渲染道具参数，实际需较低椅背或稳凳，cautionNotes 已写。"
+   ],
+   "definitionComplete": true
+  }
+ ]
+}

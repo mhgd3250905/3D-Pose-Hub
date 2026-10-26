@@ -189,6 +189,16 @@ const KNOWN = {
 };
 // Planned in docs but no spec under specs/: the pool of "待补全" candidates.
 const PLANNED = [
+  {id:"h-seated-chin-tuck",name:"坐姿收下巴",why:"缺口第二批：颈深屈肌；等引擎 PR engine/palm-floor-and-neck（颈部主动运动）合入，taxonomy 需新增颈部 ID",src:"docs/gap-action-plan-20261026.md"},
+  {id:"h-seated-upper-trap-stretch",name:"坐姿侧颈拉伸（上斜方）",why:"缺口第二批：颈侧屈约35度；等引擎颈部修复合入，需上斜方 ID（PR #17 提议 upper-traps）",src:"docs/gap-action-plan-20261026.md"},
+  {id:"h-seated-levator-stretch",name:"坐姿肩胛提肌拉伸",why:"缺口第二批：转头+低头；等引擎颈部修复合入，需新肌群 ID",src:"docs/gap-action-plan-20261026.md"},
+  {id:"h-prone-neck-extension",name:"俯卧颈部后伸",why:"缺口第二批：颈伸肌；等引擎颈部与手掌贴地修复合入",src:"docs/gap-action-plan-20261026.md"},
+  {id:"h-seated-neck-isometric",name:"坐姿手掌抗阻颈部等长",why:"缺口第二批：颈前/侧等长；手掌贴头接触，等引擎颈部版本一起验",src:"docs/gap-action-plan-20261026.md"},
+  {id:"h-prone-pec-stretch",name:"俯卧单臂外展胸肌拉伸",why:"缺口第二批：胸大肌；对侧手推地翻身，等引擎手掌撑地修复合入",src:"docs/gap-action-plan-20261026.md"},
+  {id:"h-side-lying-quad-stretch",name:"侧卧股四头肌拉伸",why:"缺口第二批：股四头肌；下侧前臂/手撑地，等引擎手掌撑地修复合入",src:"docs/gap-action-plan-20261026.md"},
+  {id:"h-prone-quad-stretch",name:"俯卧单侧股四头肌拉伸",why:"缺口第二批：股四头肌；额头垫手背，等引擎手掌撑地修复合入",src:"docs/gap-action-plan-20261026.md"},
+  {id:"h-wall-biceps-stretch",name:"扶墙肱二头肌拉伸",why:"缺口第二批：肱二头肌/三角肌前束；手掌平贴墙面，等引擎手掌接触修复",src:"docs/gap-action-plan-20261026.md"},
+  {id:"h-db-concentration-curl",name:"坐椅单臂集中弯举",why:"缺口第二批：肱二头肌；不依赖引擎，肘抵大腿内侧接触几何待设计（第一批未做完）",src:"docs/gap-action-plan-20261026.md"},
   {"id": "h-kneeling-instep-stretch-v2plus", "name": "跪姿脚背支撑拉伸", "why": "086两次用尽：足背承托未成立，最终仅脚尖缘近地且双胫穿地15.43mm；FAILED待接手，不登记不第三次", "src": "docs/086-v2plus-instep-stretch-FAILED-diagnostic-2026-10-21.md"},
   {"id": "h-overhead-triceps-stretch-v2plus", "name": "站姿过头肱三头肌拉伸（新版尝试）", "why": "085两次用尽：左腕限位已消除但工作肘26–28度折叠过深、辅助手接触过冲未解决；FAILED交接，不注册不第三次，不恢复旧019", "src": "docs/085-v2plus-triceps-stretch-FAILED-diagnostic-2026-10-21.md"},
   {"id": "h-sleeper-stretch", "name": "侧卧睡姿肩内旋拉伸", "why": "084两次用尽，头垫间隙8.24mm、替代垫与躯干重叠58.08mm及辅助手接触过冲；FAILED交接不注册不第三次", "src": "docs/084-v2plus-sleeper-stretch-FAILED-diagnostic-2026-10-21.md"},
