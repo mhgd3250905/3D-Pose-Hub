@@ -46,19 +46,19 @@
 | `adductors-B` | 屈膝哥本哈根侧撑 | 内收肌群（right） | 垫、凳 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） | 10-13库：Approved support-hold version; the failed dynamic draft is not selected.；10-13库：Selected final movie remains support/hold version; dynamic draft not adopted. |
 | `adductors-C` | 绳索站姿髋内收 | 内收肌群（left） | 绳索、脚踝扣 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `chest-A-r2` | 俯卧撑转侧撑 | 胸大肌 | 垫 | 12s/360f@30 | v2（历史） | `chest-A` | — | 已登记（2026-10-19 camera/target-visibility review） |  |
-| `chest-A-r3` | 俯卧撑转侧撑 | 胸大肌 | 垫 | 8s/240f@30 | v2plus | `chest-A` | — | 已登记（2026-10-22 draft-first native8 authoring r1） |  |
+| `chest-A-r3` | 俯卧撑转侧撑 | 胸大肌 | 垫 | 8s/240f@30 | v2plus | `chest-A` | — | PR #19 |  |
 | `chest-A` | 俯卧撑转侧撑 | 胸大肌 | 垫 | 12s/360f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
-| `chest-B-r2` | 平行杆深幅俯卧撑 | 胸大肌 | 平行杆 | 8s/240f@30 | v2plus | `chest-B` | — | 已登记（2026-10-22 draft-first native8 authoring r1） |  |
+| `chest-B-r2` | 平行杆深幅俯卧撑 | 胸大肌 | 平行杆 | 8s/240f@30 | v2plus | `chest-B` | — | PR #19 |  |
 | `chest-B` | 平行杆深幅俯卧撑 | 胸大肌 | 平行杆 | 7s/210f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `chest-C` | 绳索单臂站姿推胸 | 胸大肌（right） | 绳索、单柄 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `deltoids-A` | 直臂侧平板支撑 | 三角肌 | — | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
-| `deltoids-B-r2` | 哑铃土耳其起立 | 三角肌 | 垫、哑铃 | 8s/240f@30 | v2plus | `deltoids-B` | — | 已登记（2026-10-22 draft-first native8 authoring r1） |  |
+| `deltoids-B-r2` | 哑铃土耳其起立 | 三角肌 | 垫、哑铃 | 8s/240f@30 | v2plus | `deltoids-B` | — | PR #19 |  |
 | `deltoids-B` | 哑铃土耳其起立 | 三角肌 | 垫、哑铃 | 12s/360f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） | 只到高桥的半程土耳其起立；支撑肘与垫约 10.31 mm 间隙（docs/drill-anim/hark-4080-v1.md）；10-13库：Half Turkish get-up to high bridge, not a full standing get-up.；10-13库：Source support-elbow skin to mat gap remains about 10.31 mm.；10-13库：Historical supporting elbow skin-to-mat gap about 10.31 mm; half get-up ends at high bridge. |
 | `deltoids-C` | 地雷杆半跪单臂推举 | 三角肌（right） | 地雷杆 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `erectors-A` | 反向平板（后撑抬髋） | 竖脊肌 | 垫 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `erectors-B` | 瑞士球背伸 | 竖脊肌 | 瑞士球、墙 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） | 用户认可的鞋向修正在 revisions/erectors-B-footfix-20261013，本 spec 单独不是完整配方（docs/erectors-B-footfix-2026-10-13.md） |
 | `erectors-C` | 45° 罗马椅背伸 | 竖脊肌 | 罗马椅 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
-| `forearms-A-r2` | 跪姿多方向腕部摇摆 | 前臂 · 腕屈伸肌 | 垫 | 8s/240f@30 | v2plus | `forearms-A` | — | 已登记（2026-10-22 draft-first native8 authoring r1） |  |
+| `forearms-A-r2` | 跪姿多方向腕部摇摆 | 前臂 · 腕屈伸肌 | 垫 | 8s/240f@30 | v2plus | `forearms-A` | — | PR #19 |  |
 | `forearms-A` | 跪姿多方向腕部摇摆 | 前臂 · 腕屈伸肌 | 垫 | 16s/480f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `forearms-B` | 哑铃腕屈 + 腕伸 | 前臂 · 腕屈伸肌（right） | 凳、哑铃 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `forearms-C` | 壶铃倒握行走 | 前臂 · 腕屈伸肌（right） | 壶铃 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
@@ -69,7 +69,7 @@
 | `hamstrings-A` | 徒手单腿罗马尼亚硬拉 | 腘绳肌 | — | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `hamstrings-B` | 滑盘腿弯举 | 腘绳肌 | 垫、滑垫 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `hamstrings-C` | GHD 北欧离心 | 腘绳肌 | GHD | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
-| `hip-abductors-A-r2` | 侧平板抬腿 | 臀中肌 · 髋外展（right） | 垫 | 8s/240f@30 | v2plus | `hip-abductors-A` | — | 已登记（2026-10-22 draft-first native8 authoring r1） |  |
+| `hip-abductors-A-r2` | 侧平板抬腿 | 臀中肌 · 髋外展（right） | 垫 | 8s/240f@30 | v2plus | `hip-abductors-A` | — | PR #19 |  |
 | `hip-abductors-A` | 侧平板抬腿 | 臀中肌 · 髋外展（right） | 垫 | 6s/180f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `hip-abductors-B-r2` | 仰卧弹力带 V 字开腿 | 臀中肌 · 髋外展 | 垫、弹力带 | 8s/240f@30 | v2（历史） | `hip-abductors-B` | — | 已登记（2026-10-19 camera/target-visibility review） |  |
 | `hip-abductors-B` | 仰卧弹力带 V 字开腿 | 臀中肌 · 髋外展 | 垫、弹力带 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） | hark-4080-v1 修订 240 帧求解警告保留（docs/drill-anim/hark-4080-v1.md）；10-13库：Source engine pass is true with 240 solver-warning frames retained.；10-13库：Historical original engine pass=true but solver_warning_frames=240; do not hide or turn into zero. |
@@ -87,7 +87,7 @@
 | `obliques-C` | 绳索高位伐木 | 腹斜肌 | 绳索、单柄 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `quadriceps-A` | 跪姿反向北欧 | 股四头肌 | 垫 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `quadriceps-B` | 弹力带终末伸膝 | 股四头肌（right） | 弹力带 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
-| `quadriceps-C-r2` | 器械腿屈伸（顶端锁直） | 股四头肌 | 腿屈伸机 | 8s/240f@30 | v2plus | `quadriceps-C` | — | 已登记（2026-10-22 draft-first native8 authoring r1） |  |
+| `quadriceps-C-r2` | 器械腿屈伸（顶端锁直） | 股四头肌 | 腿屈伸机 | 8s/240f@30 | v2plus | `quadriceps-C` | — | PR #19 |  |
 | `quadriceps-C` | 器械腿屈伸（顶端锁直） | 股四头肌 | 腿屈伸机 | 10s/300f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `rotator-cuff-A-r2` | 俯撑交替触肩 | 肩袖肌群 | 垫 | 8s/240f@30 | v2（历史） | `rotator-cuff-A` | — | 已登记（2026-10-19 camera/target-visibility review） |  |
 | `rotator-cuff-A` | 俯撑交替触肩 | 肩袖肌群 | 垫 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
@@ -95,17 +95,17 @@
 | `rotator-cuff-B` | 弹力带肘贴体侧外旋 | 肩袖肌群（right） | 弹力带、锚点、单柄、泡沫轴 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `rotator-cuff-C-r2` | 绳索 90/90 外旋 | 肩袖肌群（right） | 绳索、单柄 | 8s/240f@30 | v2（历史） | `rotator-cuff-C` | — | 已登记（2026-10-19 camera/target-visibility review） |  |
 | `rotator-cuff-C` | 绳索 90/90 外旋 | 肩袖肌群（right） | 绳索、单柄 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
-| `scapular-A-r2` | 俯卧 Y-T-W 举 | 斜方肌中下部 · 菱形肌 | 垫 | 8s/240f@30 | v2plus | `scapular-A` | — | 已登记（2026-10-22 draft-first native8 authoring r1） |  |
+| `scapular-A-r2` | 俯卧 Y-T-W 举 | 斜方肌中下部 · 菱形肌 | 垫 | 8s/240f@30 | v2plus | `scapular-A` | — | PR #19 |  |
 | `scapular-A` | 俯卧 Y-T-W 举 | 斜方肌中下部 · 菱形肌 | 垫 | 12s/360f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `scapular-B` | 单杠肩胛引体 | 斜方肌中下部 · 菱形肌 | 单杠 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `scapular-C` | 吊环直臂支撑 | 斜方肌中下部 · 菱形肌 | 吊环 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
-| `serratus-A-r2` | 俯撑肩胛前伸 | 前锯肌 | 垫 | 8s/240f@30 | v2plus | `serratus-A` | — | 已登记（2026-10-22 draft-first native8 authoring r1） |  |
+| `serratus-A-r2` | 俯撑肩胛前伸 | 前锯肌 | 垫 | 8s/240f@30 | v2plus | `serratus-A` | — | PR #19 |  |
 | `serratus-A` | 俯撑肩胛前伸 | 前锯肌 | 垫 | 6s/180f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `serratus-B` | 泡沫轴墙面上滑 | 前锯肌 | 墙、泡沫轴 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `serratus-C` | 吊环俯卧撑加前伸 | 前锯肌 | 吊环 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
-| `triceps-A-r2` | 窄距俯卧撑（锁肘停顿） | 肱三头肌 | 垫 | 8s/240f@30 | v2plus | `triceps-A` | — | 已登记（2026-10-22 draft-first native8 authoring r1） |  |
+| `triceps-A-r2` | 窄距俯卧撑（锁肘停顿） | 肱三头肌 | 垫 | 8s/240f@30 | v2plus | `triceps-A` | — | PR #19 |  |
 | `triceps-A` | 窄距俯卧撑（锁肘停顿） | 肱三头肌 | 垫 | 7.2s/216f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
-| `triceps-B-r2` | 平行杆直臂支撑 | 肱三头肌 | 平行杆 | 8s/240f@30 | v2plus | `triceps-B` | — | 已登记（2026-10-22 draft-first native8 authoring r1） |  |
+| `triceps-B-r2` | 平行杆直臂支撑 | 肱三头肌 | 平行杆 | 8s/240f@30 | v2plus | `triceps-B` | — | PR #19 |  |
 | `triceps-B` | 平行杆直臂支撑 | 肱三头肌 | 平行杆 | 7s/210f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `triceps-C` | 双杠臂屈伸 | 肱三头肌 | 双杠 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 
@@ -140,7 +140,7 @@
 | `t-lsit-wide-r2` | 宽腿L撑 | 髋屈肌+腹直肌（含深层腹横肌） | 垫 | 8s/240f@30 | v2（历史） | `t-lsit-wide` | — | 已登记（2026-10-19 camera/target-visibility review） |  |
 | `t-lsit-wide` | 宽腿L撑 | 髋屈肌+腹直肌（含深层腹横肌） | 垫 | 8s/240f@30 | v2（历史） |  | — | PR #106（verify.mjs） |  |
 | `t-seated-straddle-ext` | 坐姿分腿屈伸 | 腹直肌（含深层腹横肌） | 垫 | 8s/240f@30 | 旧 |  | — | PR #106（verify.mjs） |  |
-| `t-seated-straddle-lift-1leg-r2` | 坐姿分腿单腿抬起 | 髋屈肌 | 垫 | 8s/240f@30 | v2plus | `t-seated-straddle-lift-1leg` | — | 已登记（2026-10-22 draft-first native8 authoring r1） |  |
+| `t-seated-straddle-lift-1leg-r2` | 坐姿分腿单腿抬起 | 髋屈肌 | 垫 | 8s/240f@30 | v2plus | `t-seated-straddle-lift-1leg` | — | PR #19 |  |
 | `t-seated-straddle-lift-1leg` | 坐姿分腿单腿抬起 | 髋屈肌 | 垫 | 10s/300f@30 | v2（历史） |  | HipLab v0.1.0；HipLab v0.2.0 | PR #106（verify.mjs） |  |
 | `t-seated-straddle-lifts` | 坐姿分腿双腿抬起 | 髋屈肌 | 垫 | 8s/240f@30 | 旧 |  | — | PR #106（verify.mjs） | 10-13库：历史预览求解警告 24 帧（已视觉认可） |
 | `t-straddle-hold` | 分腿支撑 | 髋屈肌+腹直肌（含深层腹横肌） | 垫 | 8s/240f@30 | 旧 |  | — | PR #106（verify.mjs） | 10-13库：历史预览求解警告 40 帧（已视觉认可） |
@@ -352,7 +352,7 @@
 |---|---|---|---|---|---|---|---|---|---|
 | `n-chair-wiper` | 坐椅雨刷（膝内倒） | 臀中肌 · 髋外展+臀大肌 | 椅 | 8s/120f@15 | v2（历史） |  | HipLab v0.1.0；HipLab v0.2.0 | PR #119 |  |
 | `n-half-split` | 半跪半劈叉（扶砖） | 腘绳肌（right） | 垫 | 8s/120f@15 | v2（历史） |  | HipLab v0.1.0；HipLab v0.2.0 | PR #119 |  |
-| `n-leg-circles-r2` | 仰卧直腿画圈 | 髋屈肌+臀中肌 · 髋外展（right） | 垫 | 8s/240f@30 | v2plus | `n-leg-circles` | — | 已登记（2026-10-22 draft-first native8 authoring r1） |  |
+| `n-leg-circles-r2` | 仰卧直腿画圈 | 髋屈肌+臀中肌 · 髋外展（right） | 垫 | 8s/240f@30 | v2plus | `n-leg-circles` | — | PR #19 |  |
 | `n-leg-circles` | 仰卧直腿画圈 | 髋屈肌+臀中肌 · 髋外展（right） | 垫 | 12s/180f@15 | v2（历史） |  | HipLab v0.1.0；HipLab v0.2.0 | PR #119 | 求解器提示 29 帧，指标全过（docs/hiplab-phase1-drills-2026-10-16.md） |
 | `n-pelvis-circle` | 站姿骨盆画圈 | 髋屈肌+臀大肌+臀中肌 · 髋外展 | — | 8s/120f@15 | v2（历史） |  | HipLab v0.1.0；HipLab v0.2.0 | PR #119 |  |
 | `n-prone-hip-ext` | 俯卧屈膝抬腿 | 臀大肌（right） | 垫 | 8s/120f@15 | v2（历史） |  | HipLab v0.1.0；HipLab v0.2.0 | PR #119 |  |
