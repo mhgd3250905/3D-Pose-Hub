@@ -7,8 +7,8 @@
 //     on THAT plane: same finger heading semantics, wrist height from the visible native vertices.
 //  2. neck: optional spec.neck = {flex, side, rot} (degrees; number = constant, string = timeline track name,
 //     {track, scale, offset}). flex>0 chin toward chest, side>0 ear toward the body's left (+X rest), rot>0 face
-//     turns toward the body's left. Split over the rig's neck (C7 pivot) and head (C1 pivot) bones. Absent field =
-//     no bone is touched.
+//     turns toward the body's left. Applied at the neck (C7) pivot with the head bone following rigidly (see SPLIT).
+//     Absent field = no bone is touched.
 (function(){
 window.__installNativeOpenR2=function(spec,opts){
  const T=__toonT,v=flareInspector.viewer,m=v.motion,E=__drill,V=a=>new T.Vector3(...a);
