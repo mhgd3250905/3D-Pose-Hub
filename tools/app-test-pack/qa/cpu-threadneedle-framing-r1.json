@@ -1,0 +1,90 @@
+{
+  "format": "pose-hub-cpu-distance-framing-evidence@1",
+  "status": "test-unreviewed",
+  "reviewed": false,
+  "releaseEligible": false,
+  "actionId": "h-kneeling-thread-needle",
+  "specId": "h-kneeling-thread-needle-rr1",
+  "scope": "Complete transparent media framing only; no motion, posture or contact correctness approval.",
+  "captureToolSha256": "c1f481fc1eb453b1e457bb2d7540731cbe9480577af629e4192f2978fe3c0013",
+  "camera": {
+    "oldDistance": 3.1361121192946353,
+    "newDistance": 5.645001814730343,
+    "distanceScale": 1.8,
+    "nativeCenterDirectionFovUnchanged": true,
+    "scale1Compatibility": "Covered by cpu-capture-camera.test.mjs real Three perspective camera execution."
+  },
+  "unchangedSourceEvidence": {
+    "onlyChangedFingerprintPath": "tools/app-test-pack/render_latest.mjs",
+    "allOtherPinnedSourcesEqual": true,
+    "comparedNativePreviewFrames": [
+      0,
+      30,
+      60,
+      90,
+      120,
+      150,
+      180,
+      210,
+      239,
+      240
+    ],
+    "equalFields": [
+      "frame",
+      "time",
+      "J",
+      "params",
+      "x",
+      "minY",
+      "solverDiagnosticsApplicable",
+      "cpuDisplayedSurface"
+    ],
+    "mode": "original",
+    "frameCount": 240,
+    "fps": 30
+  },
+  "actualViewingNote": "Actually viewed all 10 preview-r2 light/dark body+highlight+shadow frames f0,30,60,90,120,150,180,210,239,240. Entire person and complete cast shadow are inside the canvas with clear transparent margins; body and shadow edge pixels zero, minimum shadow margin187px. Fresh canonical c1f481fc1eb453b1e457bb2d7540731cbe9480577af629e4192f2978fe3c0013, original CPU adapter mode and cameraDistanceScale1.8 preserve native direction/center/FOV and240@30. Approve matching full technical capture only; no action/pose/contact correctness review. reviewed:false/releaseEligible:false.",
+  "fullSourceMargin": {
+    "framesPerLayerIncludingEndpoint": 241,
+    "requiredPixels": 3,
+    "minimumPixels": 187,
+    "passed": true
+  },
+  "deliveredVideo": {
+    "framesDecoded": 240,
+    "boundaryBandPixels": 12,
+    "boundaryAlphaMax": 0,
+    "framingPassed": true
+  },
+  "evidence": {
+    "priorPreview": {
+      "root": "app-test-pack-r1-source",
+      "path": "framing-repairs/h-kneeling-thread-needle/preview-r1/capture.json",
+      "bytes": 82856,
+      "sha256": "c546e5a002d21f0925b244329f46c0475cbf9bc72c6b7853820bf43ab03ead7f"
+    },
+    "approvedPreview": {
+      "root": "app-test-pack-r1-source",
+      "path": "framing-repairs/h-kneeling-thread-needle/preview-r2/capture.json",
+      "bytes": 82948,
+      "sha256": "53d9c0e5b7ee4a898b0d3477deeb37a181db938fbce5db3ab50111313f1d5eda"
+    },
+    "fullCapture": {
+      "root": "app-test-pack-r1-source",
+      "path": "framing-repairs/h-kneeling-thread-needle/full-r2/capture.json",
+      "bytes": 1718090,
+      "sha256": "5a0cba1beb4b8c4471701dadb62cd8aaf4cbaf5be1e2bf8e5e37078b3ad8b077"
+    },
+    "fullMarginAudit": {
+      "root": "app-test-pack-r1-source",
+      "path": "framing-repairs/h-kneeling-thread-needle/full-r2/complete-shadow-margin-audit.json",
+      "bytes": 135225,
+      "sha256": "d2d392f1ffa0700001c9540590bc3053a8c9ca98d5d8db041c8ce0b3870a15aa"
+    },
+    "videoQa": {
+      "path": "qa/h-kneeling-thread-needle/decode-check.json",
+      "bytes": 1705,
+      "sha256": "0afaaa5e4489752bad157618ec73596754587a7ad1b0e593a0be5c65fa6cdc49"
+    }
+  }
+}

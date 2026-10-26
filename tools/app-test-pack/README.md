@@ -267,6 +267,11 @@ its worker and locks without starting another action. Remove it before a
 deliberate restart. Never stop a running capture or encoder merely to update
 the queue code.
 
+For a watched queue waiting on long GPU recaptures, pass `--idle-timeout 86400`
+instead of the default 600-second idle limit. An idle timeout preserves ready
+files and leaves the incomplete package resumable; it is not a media QA failure.
+The longer wait changes neither memory admission nor worker concurrency.
+
 Every output records dimensions, bytes and SHA-256. Full decoded streams are
 checked against same-frame source RGBA, including semi-transparent edges and
 visible ground shadow; white, dark and cyan composites are compared. These
@@ -300,8 +305,14 @@ multiplier changes only the distance to include the complete ground shadow.
 Scale 1 retains the original camera. A rejected preview must be followed by a
 fresh preview with the new tool identity and distance before full capture.
 A wider limit does not approve any preview or full file.
-It omits post-pose vertex/contact diagnostic scans while preserving the original
-motion and contact solvers, warm starts, cache initialization and matrix/skeleton
+The [CPU framing receipt](qa/cpu-threadneedle-framing-r1.json) pins the rejected
+and corrected previews, confirms unchanged source dependencies and actual native
+joint/parameter data in all ten matching preview frames, and records the
+corrected 241-frame source boundary audit and 240-frame video decode. This is
+technical framing evidence, not motion or contact approval.
+The opt-in diagnostic mode omits post-pose vertex/contact diagnostic scans while
+preserving the original motion and contact solvers, warm starts, cache
+initialization and matrix/skeleton
 updates. Frozen engine, model and layer files are never rewritten; whole-source
 hashes and exact reversible in-memory edits are required. The CPU-authored
 Threadneedle profile uses the original path. Preview and full must share the
