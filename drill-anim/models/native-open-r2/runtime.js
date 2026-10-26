@@ -105,7 +105,10 @@ window.__installNativeOpenR2=function(spec,opts){
  if(spec.neck){
   const restQ={},restP={},names=['neck','head'];
   for(const n of names){const b=v.coach.getObjectByName(n);if(!b)throw Error('native-open-r2: bone '+n+' missing');restQ[n]=b.getWorldQuaternion(new T.Quaternion());restP[n]=b.getWorldPosition(new T.Vector3());}
-  const SPLIT={flex:[0.6,0.4],side:[0.6,0.4],rot:[0.4,0.6]};
+  // share of each channel taken at the neck (C7) pivot; the head (C1) pivot takes the rest relative to the neck.
+  // The v2 head mesh carries a rigid neck stub skinned 100% to the head bone, so any head-vs-neck angle opens a
+  // visible seam on the neck; the whole channel therefore pivots at C7 and the collar skin weights bend the neck.
+  const SPLIT={flex:[1,0],side:[1,0],rot:[1,0]};
   const val=(c,params)=>{if(c==null)return 0;if(typeof c==='number')return c;if(typeof c==='string')return +(params[c]??0);return (+(params[c.track]??0))*(c.scale??1)+(c.offset??0);};
   const rotQ=(flex,side,rot)=>{const D=Math.PI/180;return new T.Quaternion().setFromAxisAngle(V([0,1,0]),rot*D).multiply(new T.Quaternion().setFromAxisAngle(V([1,0,0]),flex*D)).multiply(new T.Quaternion().setFromAxisAngle(V([0,0,1]),-side*D));};
   const setWorld=(b,wq,wp)=>{const par=b.parent;par.updateMatrixWorld(true);const pq=par.getWorldQuaternion(new T.Quaternion());b.quaternion.copy(pq.invert().multiply(wq));b.position.copy(par.worldToLocal(wp.clone()));b.updateMatrixWorld(true);};
