@@ -470,6 +470,55 @@ def validate_export(manifest_path, entry, expected_exporter):
     return manifest, row
 
 
+def thumbnail_margin(path):
+    """Inspect a tiny still only; never decode or re-encode its associated video."""
+    from PIL import Image
+    with Image.open(path) as image:
+        require(image.format == 'WEBP' and image.mode == 'RGBA' and image.size == (240, 240),
+                'Thumbnail repair must be a 240x240 RGBA WebP')
+        with image.getchannel('A') as alpha:
+            bounds = alpha.getbbox()
+        require(bounds is not None, 'Thumbnail repair has empty alpha')
+        margins = [bounds[0], bounds[1], 240 - bounds[2], 240 - bounds[3]]
+        required = math.ceil(240 * .04)
+        require(min(margins) >= required, 'Thumbnail repair requires exact 4% alpha margins (10 pixels)')
+        return {'alphaBounds': list(bounds), 'marginsPixels': margins, 'requiredPixels': required,
+                'rule': 'any nonzero alpha; ceil(dimension * 0.04)', 'passed': True}
+
+
+def thumbnail_framing_row(output, row, history):
+    """Prove thumbnail-only deltas before using their original framing identity."""
+    seen = set()
+    while row.get('thumbnailDerivation') is not None:
+        proof = row['thumbnailDerivation']
+        aid = row['id']
+        require(isinstance(proof, dict) and proof.get('format') == 'pose-hub-thumbnail-derivation@1'
+                and proof in history.get(aid, []), 'Missing thumbnail repair history: ' + aid)
+        previous_ref = proof['previousRow']
+        require(previous_ref['path'].startswith('history/' + aid + '/')
+                and previous_ref['sha256'] not in seen, 'Invalid thumbnail repair ancestry: ' + aid)
+        seen.add(previous_ref['sha256'])
+        previous = read_json(verify(output, previous_ref))
+        require(previous.get('id') == aid and previous['files']['thumbnail'] == proof['previousThumbnail']
+                and proof['thumbnail'] == row['files']['thumbnail']
+                and isinstance(proof.get('mediaRevision'), str) and ID.fullmatch(proof['mediaRevision'])
+                and proof['mediaRevision'] == row.get('mediaRevision')
+                and proof['mediaRevision'] != previous.get('mediaRevision')
+                and proof['thumbnail']['path'] == f'media/{aid}/{proof["mediaRevision"]}/{aid}.thumbnail.alpha.webp',
+                'Thumbnail repair identity changed: ' + aid)
+        expected = json.loads(json.dumps(previous))
+        expected['files']['thumbnail'] = proof['thumbnail']
+        expected['mediaRevision'] = proof['mediaRevision']
+        expected['thumbnailDerivation'] = proof
+        require(expected == row, 'Thumbnail-only repair changed another field: ' + aid)
+        verify(output, proof['previousThumbnail'])
+        current = verify(output, proof['thumbnail'])
+        require(thumbnail_margin(current) == proof.get('alphaMarginQa'),
+                'Thumbnail repair margin evidence changed: ' + aid)
+        row = previous
+    return row
+
+
 class Assembler:
     def __init__(self, output, work_root, catalog_path, entries, exporter_sha, excludes,
                  repair_manifest=None, bindings=None):
@@ -490,6 +539,7 @@ class Assembler:
         self.repairs, self.allowed_legacy, _ = read_repairs(self.repair_path)
         self.repair_sha = digest(self.repair_path) if self.repair_path else None
         self.repair_history, self.repair_authorizations, self.repair_plan_history = {}, {}, {}
+        self.still_repair_history = {}
         require(self.excludes <= self.rows.keys(), 'Excluded IDs outside catalog')
         require(entries.keys() <= self.rows.keys(), 'Plan IDs outside catalog')
         self.ready, self.verified_ready, self.states, self.failures = {}, set(), {}, []
@@ -503,11 +553,13 @@ class Assembler:
             self.repair_history = old.get('repairHistory', {})
             self.repair_authorizations = old.get('repairAuthorizations', {})
             self.repair_plan_history = old.get('repairPlanHistory', {})
+            self.still_repair_history = old.get('stillRepairHistory', {})
             for row in old['actions']:
                 aid = row['id']
                 require(aid in self.rows, 'Existing deliverable is outside the current catalog: ' + aid)
                 repair = self.repairs.get(aid)
-                expected_revision = (repair['catalogRevision'] if repair and row.get('mediaRevision') == repair['mediaRevision']
+                framing_row = thumbnail_framing_row(self.output, row, self.still_repair_history)
+                expected_revision = (repair['catalogRevision'] if repair and framing_row.get('mediaRevision') == repair['mediaRevision']
                                      else self.rows[aid]['revision'])
                 require(row.get('catalogRevision') == expected_revision, 'Catalog revision changed for ready action: ' + aid)
                 require(row.get('exporterSha256') == exporter_sha or row.get('exporterSha256') in self.allowed_legacy,
@@ -549,7 +601,8 @@ class Assembler:
                     verify(self.output, previous_ref)
                     plan_supersession = {'supersedesPlanSha256': previous_plan['sha256'],
                                          'previousPlan': previous_ref, 'mediaRevision': repair['mediaRevision']}
-            already_repaired = row is not None and row.get('mediaRevision') == repair['mediaRevision']
+            framing_row = thumbnail_framing_row(self.output, row, self.still_repair_history) if row else None
+            already_repaired = framing_row is not None and framing_row.get('mediaRevision') == repair['mediaRevision']
             if row is not None and not already_repaired:
                 require(row['catalogRevision'] == repair['expected']['catalogRevision']
                         and row['queueSourceKey'] == repair['expected']['queueSourceKey'],
@@ -658,6 +711,79 @@ class Assembler:
         self.save()
         print(f'[ready {len(self.ready)}/{len(self.rows)} {aid}]', flush=True)
 
+    def ingest_thumbnail_repairs(self, items, staging_root):
+        """Publish an explicit still-only batch under the caller's queue lease.
+
+        All items preflight before publication. Immutable orphan copies after an
+        interrupted publication may be reused; live rows advance in one save.
+        """
+        lease_path = self.output / '.queue.lock'
+        lease = read_json(lease_path)
+        require(lease.get('pid') == os.getpid() and isinstance(lease.get('token'), str)
+                and lease['token'], 'Thumbnail ingest requires this process queue lease')
+        require(isinstance(items, list) and items, 'Supply an explicit nonempty thumbnail repair batch')
+        root, prepared, ids = Path(staging_root).resolve(strict=True), [], set()
+        for item in items:
+            aid = item['id']
+            require(aid in self.ready and aid in self.verified_ready and aid not in ids,
+                    'Thumbnail repair requires a unique verified ready ID: ' + str(aid))
+            ids.add(aid)
+            old = json.loads(json.dumps(self.ready[aid]))
+            require(old.get('availableForApp') is True, 'Thumbnail repair action is not App-ready: ' + aid)
+            require(item.get('expectedThumbnailSha256') == old['files']['thumbnail']['sha256'],
+                    'Thumbnail repair does not identify the current thumbnail: ' + aid)
+            version = item.get('mediaRevision')
+            require(isinstance(version, str) and ID.fullmatch(version)
+                    and version != old.get('mediaRevision')
+                    and all(p.get('mediaRevision') != version for p in self.still_repair_history.get(aid, [])),
+                    'Thumbnail repair must use a new media revision: ' + aid)
+            recipe = item.get('recipe')
+            require(isinstance(recipe, dict) and recipe, 'Thumbnail repair needs an explicit recipe: ' + aid)
+            recipe = json.loads(canonical(recipe))
+            incoming = item['thumbnail']
+            require((incoming.get('width'), incoming.get('height')) == (240, 240)
+                    and incoming.get('alpha') is True
+                    and incoming.get('sha256') != old['files']['thumbnail']['sha256'],
+                    'Thumbnail repair reference did not change: ' + aid)
+            source = verify(root, incoming)
+            margin = thumbnail_margin(source)
+            verify(self.output, old['files']['thumbnail'])
+            destination = f'media/{aid}/{version}/{aid}.thumbnail.alpha.webp'
+            replacement = {**incoming, 'path': destination}
+            if safe(self.output, destination).exists():
+                verify(self.output, replacement)
+            history_name = f'history/{aid}/thumbnail-{hash_value(old)}.json'
+            history_path = safe(self.output, history_name)
+            if history_path.exists():
+                require(read_json(history_path) == old, 'Immutable thumbnail history differs: ' + aid)
+            prepared.append((aid, old, source, replacement, version, recipe, margin, history_name))
+        require(read_json(lease_path) == lease, 'Queue lease changed before thumbnail publication')
+        updates, proofs = {}, {}
+        for aid, old, source, replacement, version, recipe, margin, history_name in prepared:
+            immutable_copy(source, self.output, replacement['path'], replacement)
+            history_path = safe(self.output, history_name)
+            if not history_path.exists():
+                atomic_json(self.output, history_name, old)
+            previous_ref = {'path': history_name, 'bytes': history_path.stat().st_size,
+                            'sha256': digest(history_path)}
+            require(read_json(verify(self.output, previous_ref)) == old, 'Thumbnail history changed: ' + aid)
+            proof = {'format': 'pose-hub-thumbnail-derivation@1', 'at': now(),
+                     'previousRow': previous_ref, 'previousThumbnail': old['files']['thumbnail'],
+                     'thumbnail': replacement, 'mediaRevision': version,
+                     'recipe': recipe, 'alphaMarginQa': margin}
+            updated = json.loads(json.dumps(old))
+            updated['files']['thumbnail'] = replacement
+            updated.update({'mediaRevision': proof['mediaRevision'], 'thumbnailDerivation': proof})
+            updates[aid], proofs[aid] = updated, proof
+        require(read_json(lease_path) == lease, 'Queue lease changed before thumbnail index update')
+        for aid, updated in updates.items():
+            self.ready[aid] = updated
+            self.still_repair_history.setdefault(aid, []).append(proofs[aid])
+        if len(self.ready) == len(self.rows):
+            self.queue_state = 'complete'
+        self.save()
+        return {aid: self.ready[aid]['files']['thumbnail'] for aid in updates}
+
     def fail(self, aid, error, attempt=None, log=None):
         event = {'id': aid, 'error': str(error), 'at': now()}
         if attempt:
@@ -757,7 +883,7 @@ class Assembler:
                     'actions': ready, 'sizes': sizes, 'failures': self.failures,
                     'allowedLegacyExporterSha256': sorted(self.allowed_legacy),
                     'repairAuthorizations': self.repair_authorizations, 'repairHistory': self.repair_history,
-                    'repairPlanHistory': self.repair_plan_history}
+                    'repairPlanHistory': self.repair_plan_history, 'stillRepairHistory': self.still_repair_history}
         catalog = json.loads(json.dumps(self.catalog))
         semantics, semantic_sources = self.delivered_semantics()
         if semantics is not None:
@@ -771,7 +897,12 @@ class Assembler:
                             'mediaRevision': repair['mediaRevision'], 'repairReason': repair['reason']})
             if aid in ready_ids:
                 row.update({'files': self.ready[aid]['files'], 'qa': self.ready[aid]['qa'],
-                            'state': 'ready-test-unreviewed'})
+                            'state': 'ready-test-unreviewed', 'revision': self.ready[aid]['catalogRevision']})
+                for field in ('sourceRevision', 'mediaRevision', 'thumbnailDerivation'):
+                    if field in self.ready[aid]:
+                        row[field] = self.ready[aid][field]
+                    else:
+                        row.pop(field, None)
             else:
                 row.pop('files', None)
                 row.pop('qa', None)

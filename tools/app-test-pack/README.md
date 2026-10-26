@@ -272,6 +272,22 @@ instead of the default 600-second idle limit. An idle timeout preserves ready
 files and leaves the incomplete package resumable; it is not a media QA failure.
 The longer wait changes neither memory admission nor worker concurrency.
 
+Still margins use `ceil(size * 0.04)`: at least 29 pixels at 720 and 10 pixels
+at 240, measured against any nonzero alpha. Lanczos can extend a thumbnail's
+alpha support; the encoder adds a transparent inset only when its ordinary
+resize falls short. It uses the complete cover and never repairs a clipped
+source by shrinking it.
+
+`media/tools/repair_test_thumbnail_margins.py` provides separate `stage` and
+`apply` operations for already delivered thumbnails. Apply requires the exact
+previous manifest and the sole `.queue.lock` lease. It creates new immutable
+thumbnail paths and actual `mediaRevision` values, with full previous rows in
+`stillRepairHistory` and `thumbnailDerivation`. Existing video, cover, decode QA,
+source revision, catalog revision and source-plan identity remain unchanged.
+The queue validates this lineage on resume; previous framing authorities stay
+fixed. The final delivery mapping pins the current catalog snapshot and these
+new thumbnail references. Historical media and earlier audit attempts remain.
+
 Every output records dimensions, bytes and SHA-256. Full decoded streams are
 checked against same-frame source RGBA, including semi-transparent edges and
 visible ground shadow; white, dark and cyan composites are compared. These

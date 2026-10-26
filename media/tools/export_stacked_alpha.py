@@ -27,6 +27,28 @@ FORMAT = 'pose-hub-stacked-alpha-delivery@1'
 BACKGROUNDS = {'white': (255, 255, 255), 'dark': (16, 16, 19), 'cyan': (48, 190, 210)}
 
 
+def alpha_margin_pixels(image):
+    box = image.getchannel('A').getbbox()
+    if box is None:
+        raise ValueError('Transparent media must contain a visible subject')
+    return min(box[0], box[1], image.width - box[2], image.height - box[3])
+
+
+def alpha_thumbnail(image):
+    """Keep the complete cover; reserve integer pixels for a true 4% margin."""
+    resized = image.convert('RGBa').resize((240, 240), Image.Resampling.LANCZOS).convert('RGBA')
+    if alpha_margin_pixels(resized) >= math.ceil(240 * .04):
+        return resized
+    # The cover is already complete. Additional transparent canvas, rather than
+    # cropping source pixels, covers Lanczos' small nonzero-alpha support.
+    smaller = image.convert('RGBa').resize((232, 232), Image.Resampling.LANCZOS).convert('RGBA')
+    result = Image.new('RGBA', (240, 240), (0, 0, 0, 0))
+    result.paste(smaller, (4, 4))
+    if alpha_margin_pixels(result) < math.ceil(240 * .04):
+        raise ValueError('Complete cover cannot supply the required thumbnail margin')
+    return result
+
+
 def read_json(path):
     def unique(pairs):
         value = {}
@@ -521,7 +543,7 @@ def export_action(context, output, crf, bleed):
                 cover = media / (aid + '.cover.alpha.webp')
                 thumbnail = media / (aid + '.thumbnail.alpha.webp')
                 rgba.save(cover, format='WEBP', lossless=True, exact=True, method=4)
-                rgba.convert('RGBa').resize((240, 240), Image.Resampling.LANCZOS).convert('RGBA').save(
+                alpha_thumbnail(rgba).save(
                     thumbnail, format='WEBP', lossless=True, exact=True, method=4)
             if frame % 60 == 0:
                 print(f'{aid}: encoded {frame}/{action["frames"]}', flush=True)
@@ -540,7 +562,7 @@ def export_action(context, output, crf, bleed):
             if image.mode != 'RGBA' or image.size != size or image.getchannel('A').getextrema() != (0, 255):
                 raise ValueError('Alpha WebP lost dimensions or transparency')
             box = image.getchannel('A').getbbox()
-            if min(box[0], box[1], size[0] - box[2], size[1] - box[3]) < math.floor(size[0] * .04):
+            if min(box[0], box[1], size[0] - box[2], size[1] - box[3]) < math.ceil(size[0] * .04):
                 raise ValueError('Alpha WebP must retain transparent margin around the complete body and shadow')
     metrics = decode_check(context, video, qa)
     return {'id': aid, 'nameZh': action['nameZh'], 'fps': action['fps'], 'frames': action['frames'],
