@@ -48,3 +48,7 @@ node drill-anim/models/native-open-r1/preview.mjs drill-anim/specs/<id>.js <æ–°è
 ## r7 candidate
 
 `1.0.0-r7` maps to `hands-native-r7`: r6a dimensions, 28 mm root cross-section blend, slightly curled free-hand pose and the r5 wrist-twist runtime.
+
+## r8 candidate
+
+`1.0.0-r8` maps to `hands-native-r8` (anthropometric per-axis size, r7 root blend and free-hand pose, r5 wrist-twist runtime).
