@@ -1,15 +1,15 @@
 # Pose-Hub 版本对齐台账
 
-## 2026-10-28 身体 v3 r7 独立集成检查点
+## 2026-10-28 身体 v3 r7 独立合入
 
-开哥已在本机网页看样接受 `training-human-v3-completed / 1.0.0-r7`，并要求合并、标记和记录。看样源码为 `d448b0b22a4f41285ba52b9cfd43d7bfad7750af`，r7 manifest 的 LF 规范化 SHA-256 为 `676a19e7b4185848ce2570c66a996ba4f967305a03feafe45e4c69b36c7a7fb6`。用户明确选择先独立集成身体 v3 与必要依赖；原 PR #24 的祖先包含 237 个未审动作 spec，旧候选留在原 PR，不因身体看样通过。具体确认、采样范围和限制见 [r7 独立验收记录](body-v3/review-approval-20261028-r2.md)。
+开哥已在本机网页看样接受 `training-human-v3-completed / 1.0.0-r7`，并要求合并、标记和记录。看样源码为 `d448b0b22a4f41285ba52b9cfd43d7bfad7750af`，r7 manifest 的 LF 规范化 SHA-256 为 `676a19e7b4185848ce2570c66a996ba4f967305a03feafe45e4c69b36c7a7fb6`。用户明确选择先独立集成身体 v3 与必要依赖；原 PR #24 的祖先包含 237 个未审动作 spec，旧候选留在原 PR，不因身体看样通过。实际提交、标记与验证见 [r7 合入记录](body-v3/integration-20261028-r1.md)，原看样范围见 [r2 确认](body-v3/review-approval-20261028-r2.md)。
 
 | 对象 | 本检查点的状态 |
 | --- | --- |
-| 身体 v3 r7 | 在从 main `1fdd117d8e29bb0efcc8c57cb23dc1d9dc7422dd` 建立的 `codex/body-v3-only-r7-20261028` 上准备独立集成；此处不预称已经合并 |
-| 计划标记 | `body-v3-r7-accepted-20261028`；编写时尚未创建，实际合入和标记以 Git 回执为准 |
+| 身体 v3 r7 | 独立集成 `5be7c414c75c4fb5c027ee58d353e16aa8de5b48`，main 合并 `b9a3567dd625c570b88d792fd45ec6f69ab9cd50`；随后仅补合入文档与台账 |
+| 验收标记 | 注释 tag `body-v3-r7-accepted-20261028` 指向上述独立集成提交；模型 manifest 保持原 SHA |
 | 动作与生产 | 全动作 v3 迁移和重定向未完成；可选整身 GLB 未烘焙；全局生产默认仍为 `training-human-v2plus / 1.0.0-rc2`，媒体、catalog 和 SDK 版本不因此升级 |
-| 原 PR 与冻结记录 | 原 PR #24 保留、不直接合并；PR #17–#22 及其分支不操作。冻结 manifest 的 pending/unreviewed 原文和 SHA 保留，后续确认由验收记录补充 |
+| 原 PR 与冻结记录 | 原 PR #24 保留 open/draft，身体部分由本次独立合入取代；PR #17–#22 及其分支不执行写操作。冻结 manifest 的 pending/unreviewed 原文和 SHA 保留，后续确认由验收记录补充 |
 
 下文保留各历史阶段的原始状态和日期；本检查点不改写历史合入记录。
 
