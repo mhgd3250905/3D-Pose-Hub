@@ -1,0 +1,26 @@
+{
+  "version": "1.0.0-r4",
+  "status": "experimental-candidate",
+  "sha256": {
+    "drill-anim/models/head-neck-toon-r4/asset.json": "d5c838b34a47607e9865a6624f29ca51deae34ecb457f69951db0e54df86ff55",
+    "drill-anim/models/head-neck-toon-r4/loader.mjs": "10c027ff3ea686c0da85fa529a587c06106e2ce58bb6f296d0913274758b9d7e",
+    "drill-anim/models/head-neck-toon-r4/verify.mjs": "7ab3aed914ef9372c361b31d1bbe873536e55c6e866493fb854edec01e330496",
+    "tools/body-v3/head-neck-topological-r1/capture-toon-asset-r2.mjs": "8d56f432a0d101044dde79cd83d966079626a415fd023c2113f40192fd0cebb5",
+    "tools/body-v3/head-neck-topological-r1/verify-toon-actions-r5.mjs": "45df400bb9f348da0957968c3806bf9206cafa839b8cca71214fb7e3b3dc3986",
+    "drill-anim/models/head-neck-weld-r2/manifest.json": "1e51576d3586ccc53d4ad96d57a749008fb85c131da58ddc2ed0d891a26ba7a8"
+  },
+  "dynamicUniformGroups": [
+    "toon",
+    "muscle",
+    "v2p"
+  ],
+  "validation": "Real squat and bear-plank action poses, two materials, independent captured shader and textures, visible theme and neck highlight changes; see external test report.",
+  "restrictions": [
+    "not release eligible",
+    "requires v3 live uniform groups and host animation"
+  ],
+  "hashPolicy": "utf8-crlf-to-lf-text; binary-raw",
+  "verifyDependencies": [
+    "drill-anim/models/head-neck-weld-r2/verify.mjs"
+  ]
+}

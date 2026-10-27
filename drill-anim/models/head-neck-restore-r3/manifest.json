@@ -1,0 +1,30 @@
+{
+  "version": "1.0.0-r3",
+  "status": "experimental-candidate",
+  "sha256": {
+    "drill-anim/models/head-neck-restore-r3/loader.mjs": "919ea2ea481f8d638be0cdf8c22f31e5d01228cfc9284cc5f9da0b24d13b5474",
+    "drill-anim/models/head-neck-restore-r3/verify.mjs": "7ab3aed914ef9372c361b31d1bbe873536e55c6e866493fb854edec01e330496",
+    "tools/body-v3/head-neck-topological-r1/verify-restored-glb-r2.mjs": "6351108d895087571d584b785dc1dd58c17d7dced249315de3c9dc24681865a0",
+    "tools/body-v3/head-neck-topological-r1/inspect-glb-seam-r2.mjs": "9dab008a9933a1984ce90839dd289025f3779364deac3a6e4fcc73debba82f28"
+  },
+  "validatedSampleGlbSha256": "f266403009fa59968defb0e6d119dc4b546edcbf27a06d71df7ecf6902a10f71",
+  "validation": {
+    "sharedSeamEdges": 162,
+    "materialGroups": 2,
+    "runtimeSkeletonBones": 52,
+    "localJointTests": [
+      "rest",
+      "neckFlexLocal",
+      "neckExtensionLocal",
+      "neckRotationLocal"
+    ],
+    "syntheticVertexTextureRemap": "exact",
+    "glbToneMaterial": "standard PBR; original toon shader not serialized"
+  },
+  "restrictions": [
+    "not release eligible",
+    "validate final GLB, visual rendering, source materials, full-body animation and device behavior separately"
+  ],
+  "hashPolicy": "utf8-crlf-to-lf-text; binary-raw",
+  "verifyDependencies": []
+}
