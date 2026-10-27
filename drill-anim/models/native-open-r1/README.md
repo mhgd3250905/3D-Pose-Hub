@@ -44,3 +44,7 @@ node drill-anim/models/native-open-r1/preview.mjs drill-anim/specs/<id>.js <æ–°è
 ## r6a / r6b candidates
 
 `1.0.0-r6a` (0.82 length, width 0.85, palm thickness 0.7) and `1.0.0-r6b` (uniform 0.76, palm thickness 0.8) map to `hands-native-r6a` / `hands-native-r6b`; both get the r5 wrist-twist runtime (`nativeHands.twistShare`, default 0.5).
+
+## r7 candidate
+
+`1.0.0-r7` maps to `hands-native-r7`: r6a dimensions, 28 mm root cross-section blend, slightly curled free-hand pose and the r5 wrist-twist runtime.

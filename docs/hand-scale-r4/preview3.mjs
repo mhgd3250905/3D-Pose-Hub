@@ -6,11 +6,11 @@ const [mode,specF,out,frames='0,63']=process.argv.slice(2);fs.mkdirSync(out,{rec
 const base=(await import(pathToFileURL(specF).href)).default;const spec=structuredClone(base);
 const V2={outfit:'compression',torso:'base',limbs:'base',hands:'base',skin:'realistic'};
 if(process.env.SHARE)spec.nativeHands={...(spec.nativeHands||{})};
-if(mode==='old'){spec.modelProfile='training-human-v2plus';spec.v2plus=V2;delete spec.nativeHands;}else{spec.modelProfile='training-human-v2plus-hands-native';spec.nativeHands={version:{r4:'1.0.0-r4',r5:'1.0.0-r5',r6a:'1.0.0-r6a',r6b:'1.0.0-r6b'}[mode]||'1.0.0-r3',...(process.env.SHARE?{twistShare:+process.env.SHARE}:{})};}
-const theme=loadTheme(),{b,p}=await boot({size:720,pr:1,theme});
+if(mode==='old'){spec.modelProfile='training-human-v2plus';spec.v2plus=V2;delete spec.nativeHands;}else{spec.modelProfile='training-human-v2plus-hands-native';spec.nativeHands={version:{r4:'1.0.0-r4',r5:'1.0.0-r5',r6a:'1.0.0-r6a',r6b:'1.0.0-r6b',r7:'1.0.0-r7'}[mode]||'1.0.0-r3',...(process.env.SHARE?{twistShare:+process.env.SHARE}:{})};}
+const SZ=+process.env.SIZE||720;const theme=loadTheme(),{b,p}=await boot({size:SZ,pr:1,theme});
 try{
  if(mode==='old')await applyHumanV2plus(p,spec);else await applyNativeOpen(p,spec);
- await p.evaluate(([s,t])=>{__setHighlight(s.highlight);__drill.setupCamera(s,720);},[spec,theme]);
+ await p.evaluate(([s,t])=>{__setHighlight(s[0].highlight);__drill.setupCamera(s[0],s[1]);},[[spec,SZ],theme]);
  await p.addScriptTag({content:fs.readFileSync(R+'tools/v2/browser-layers.js','utf8')});
  for(const f of frames.split(',').map(Number)){
   const r=await p.evaluate(([s,f])=>__v2Layers.capture(s,f/30,f,null,['body']),[spec,f]);fs.writeFileSync(path.join(out,`${mode}-full-${f}.png`),Buffer.from(r.body.split(',')[1],'base64'));
