@@ -28,16 +28,16 @@ export function warpBase(d,{handScale=1}={}){
 // plane n.x=w crossing segment a->b: move it with the warped crossing point
 function movePlane(pl,a,b,kind){const n=pl.slice(0,3),w=pl[3],da=n[0]*a[0]+n[1]*a[1]+n[2]*a[2]-w,db=n[0]*b[0]+n[1]*b[1]+n[2]*b[2]-w,t=da/(da-db);
  const x=[0,1,2].map(k=>a[k]+(b[k]-a[k])*Math.min(1,Math.max(0,t))),x2=W.mapPoint(x,kind,J,N);return [n[0],n[1],n[2],n[0]*x2[0]+n[1]*x2[1]+n[2]*x2[2]];}
-export async function applyV3(p,spec,{handScale=1}={}){
- verifyHandsNativeR8();
- const rig=json('hands-native-r8/hands-rig.json');if(handScale!==1)for(const f of Object.values(rig.fingers))f.joints=f.joints.map(j=>j.map(x=>x*handScale));
+export async function applyV3(p,spec,{handScale=1,handDir='hands-native-r8'}={}){
+ verifyHandsNativeR8();if(handDir!=='hands-native-r8')(await import('../'+handDir+'/loader.mjs')).verify();
+ const rig=json(handDir+'/hands-rig.json');if(handScale!==1)for(const f of Object.values(rig.fingers))f.joints=f.joints.map(j=>j.map(x=>x*handScale));
  const outfit=json('training-human-v2plus-outfit.json');
  for(const s of['left','right'])if(outfit.cuffPlanes?.[s])outfit.cuffPlanes[s]=movePlane(outfit.cuffPlanes[s],J[s+'Shoulder'],J[s+'Elbow'],W.boneKind(s+'UpperArm'));
  await p.addScriptTag({content:fs.readFileSync(path.join(here,'human-v3.js'),'utf8')});
  await p.evaluate(([r,o])=>__v2p.load(r,o),[rig,outfit]);
- for(const [fn,file]of [['loadTorso','training-human-v2plus-torso-base.json'],['loadLimbs','training-human-v2plus-limbs-base.json'],['loadHands','hands-native-r8/hands-base.json']])
+ for(const [fn,file]of [['loadTorso','training-human-v2plus-torso-base.json'],['loadLimbs','training-human-v2plus-limbs-base.json'],['loadHands',handDir+'/hands-base.json']])
   await p.evaluate(([fn,d])=>__v2p[fn](d),[fn,warpBase(json(file),fn==='loadHands'?{handScale}:{})]);
  await p.evaluate(()=>{const e=__drill,original=e.selectModelProfile.bind(e);e.selectModelProfile=s=>original({...s,modelProfile:'training-human-v2plus'});});
  const share=spec.nativeHands?.twistShare??0.5;await p.evaluate(x=>{window.__wristTwistShare=x;},share);await p.addScriptTag({content:fs.readFileSync(TWIST,'utf8')});
- return {profile:PROFILE,version:VERSION,hands:'1.0.0-r8',handScale};
+ return {profile:PROFILE,version:VERSION,hands:handDir,handScale};
 }
