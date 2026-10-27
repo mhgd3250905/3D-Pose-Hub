@@ -28,7 +28,7 @@ export function warpBase(d,{handScale=1}={}){
 // plane n.x=w crossing segment a->b: move it with the warped crossing point
 function movePlane(pl,a,b,kind){const n=pl.slice(0,3),w=pl[3],da=n[0]*a[0]+n[1]*a[1]+n[2]*a[2]-w,db=n[0]*b[0]+n[1]*b[1]+n[2]*b[2]-w,t=da/(da-db);
  const x=[0,1,2].map(k=>a[k]+(b[k]-a[k])*Math.min(1,Math.max(0,t))),x2=W.mapPoint(x,kind,J,N);return [n[0],n[1],n[2],n[0]*x2[0]+n[1]*x2[1]+n[2]*x2[2]];}
-export async function applyV3(p,spec,{handScale=1,handDir='hands-native-r8'}={}){
+export async function applyV3(p,spec,{handScale=1.18,handDir='hands-native-c1r2'}={}){
  verifyHandsNativeR8();if(handDir!=='hands-native-r8')(await import('../'+handDir+'/loader.mjs')).verify();
  const rig=json(handDir+'/hands-rig.json');if(handScale!==1)for(const f of Object.values(rig.fingers))f.joints=f.joints.map(j=>j.map(x=>x*handScale));
  const outfit=json('training-human-v2plus-outfit.json');
