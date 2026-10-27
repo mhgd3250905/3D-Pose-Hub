@@ -1,0 +1,47 @@
+{
+  "version": "1.0.0-r4",
+  "status": "experimental-candidate",
+  "hashPolicy": "utf8-crlf-to-lf-text; binary-raw",
+  "sha256": {
+    "drill-anim/models/training-human-v3-completed-r4/loader.mjs": "9e01a1f3f17de5324e9f72d0b1598ae719b1f551378154ad362ad2dcc10397f8",
+    "drill-anim/models/training-human-v3-completed-r4/verify.mjs": "4247aadfd5d53902903a3c0075c84464bed56c094c2555c6a3e5f93ad1bdd9c5",
+    "drill-anim/models/training-human-v3-completed-r4/README.md": "0e89402739f57c28a5235d571910101fb3adcda2b96562e86be10db863444b04",
+    "drill-anim/models/completed-profile-normal-sync-r4/loader.mjs": "9b68d5658345a9d64868f3f96fcee84a0b03ab1485710c57da4aaa0c9d66d160",
+    "drill-anim/models/collar-weld-r26/loader.mjs": "b1ddb96756a91734439332cdbdc2ea281a0cc93208f7e25050fc28724e4572ef",
+    "drill-anim/models/collar-weld-r26/candidate.json": "60e98314943b3a421faca1c5d28668343c86c0e403e3e660bfe2484479acbdbb",
+    "drill-anim/models/collar-weld-r26/ring-aliases.json": "11f71d2dea5531ea07d0fff65ea33daaeb084b92967ad7ee442a5ff81e85ef9c",
+    "drill-anim/models/collar-weld-r26/weights.json": "a02562eceda6dc024a782836b138282991a6ae0f6ad4cdcc395f40800ade2a7f",
+    "drill-anim/models/collar-garment-refine-r7/loader.mjs": "6e0881dd60979d4ff45b5290b6dffcdc4e27485e5a0ffbf442edd28c967509f6",
+    "drill-anim/models/collar-garment-refine-r7/refinement.json": "f75dfc46f6eded0a9dde42c276bbd111d8969e1c5fb6e86ac18b3c0398687922",
+    "drill-anim/models/collar-garment-refine-r7/source-index.json": "f18b54748145edf89a11ea8b633486c878b043c09efea2c2e8658715d3585bca",
+    "drill-anim/models/collar-garment-refine-r7/refined-index.json": "b2b2a77e7bd60a3a51edf11988cd5bd548d00ab3e53c8ce23990c592aa91a679",
+    "tools/body-v3/completed-v3-r1/check-r4.mjs": "5124496344a7efa95c683e0f4414658f0881c252f4431ef3f8f1e9b2f2227cd7",
+    "tools/body-v3/completed-v3-r1/test-profile-normal-sync-r4.mjs": "1486e23174b38bb5c195d346fab0cf81404f70433dabf0d3a090bf4f1b864ad6",
+    "tools/body-v3/completed-v3-r1/test-garment-refine-r7.mjs": "0ad1cd2ef06f0473a02c469c24372013f6188360e901838e9aa51d6cf5c58830",
+    "tools/body-v3/completed-v3-r1/test-p3-torso-normals-r2.mjs": "ac46efc37847b62067099f3ab9a1ab48200b992d06631d70d6505a6fcab2913c",
+    "tools/body-v3/completed-v3-r1/verify-visual-r4.mjs": "e832801b809ba9e3c69a8358e49c275542c0405cd3f73b0629ca1dcda02d46bb",
+    "tools/body-v3/completed-v3-r1/build-collar-r26-r1.py": "7f2148c2dfe35edeb6428ab698b69ade696934a85efe7e366b915c9a1cde0784",
+    "tools/body-v3/completed-v3-r1/probe-shoulder-smooth-r2.py": "a9595bc1068367919e7d11f4259a920ba38fe78c885b3eef076ebf8f6a6c9144",
+    "tools/body-v3/completed-v3-r1/build-shoulder-interior-r4.py": "f7cbbea526f64c51fcedcc834804fded205cb5a076600d3389125ba048a95c56",
+    "drill-anim/models/training-human-v3-collar-r1/manifest.json": "fd115218c9ec393bf926e15c8c3765c7c49ef4b7584ccc6835480983bacf2a94",
+    "drill-anim/models/training-human-v3-normals-r1/manifest.json": "3b090d2d1f4aa8d4ec1d1fb9aeb8f742901f464395681c6f094fbc5af5d0a0e4",
+    "drill-anim/models/training-human-v3-normals-r3/manifest.json": "add389683daa35d2529993ff932268a48495e6116f17b0ba52757a0e2162d159",
+    "drill-anim/models/training-human-v3-wrist-r1/manifest.json": "9075f34a060ab57b051fc2b32946722ac1f392efcf4499a9bdb5aa4ca63705aa"
+  },
+  "components": [
+    "P2 head/neck",
+    "P3 collar with local integration adjustment",
+    "L1 wrist gradient",
+    "L2 base and piece normals"
+  ],
+  "excluded": [
+    "P1 ankle",
+    "P4 hip/knee",
+    "P5 shoulder corrective"
+  ],
+  "restrictions": [
+    "combined visual and full runtime verification pending",
+    "not release eligible",
+    "geometry-layer detach is partial; normal and wrist hooks persist for page lifetime"
+  ]
+}
