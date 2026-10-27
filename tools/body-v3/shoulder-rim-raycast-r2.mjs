@@ -1,0 +1,13 @@
+// Reconstruct the original v3 rest geometry in memory from tracked assets;
+// no research GLB is needed. Raycast is CPU/front-face only, not GPU depth.
+import fs from 'node:fs';import crypto from 'node:crypto';import * as T from 'three';import {GLTFLoader}from'three/addons/loaders/GLTFLoader.js';
+import {warpModelV3} from '../../runtime/src/body-warp-v3.js';import {createCoachMotion} from '../../runtime/src/coach-motion.js';
+const [pixels,out]=process.argv.slice(2);if(!pixels||!out||fs.existsSync(out))throw Error('expected pixel JSON and new output');
+const read=x=>fs.readFileSync(new URL('../../'+x,import.meta.url));const glb=read('runtime/public/coach/flare-coach.glb'),oldRig=JSON.parse(read('runtime/public/coach/coach-rig.json')),rig=JSON.parse(read('runtime/public/coach-v3/coach-rig-v3.json'));
+const scene=(await new GLTFLoader().parseAsync(glb.buffer.slice(glb.byteOffset,glb.byteOffset+glb.byteLength),'')).scene;warpModelV3(T,scene,oldRig,rig);const motion=createCoachMotion({model:scene,rigData:rig});motion.reset();scene.updateMatrixWorld(true);
+const center=scene.getObjectByName('leftUpperArm').getWorldPosition(new T.Vector3()),cam=new T.OrthographicCamera(-.11,.11,.11,-.11,.01,20);cam.position.copy(center).add(new T.Vector3(.55,.1,.75));cam.lookAt(center);cam.updateProjectionMatrix();cam.updateMatrixWorld(true);
+const meshes=['Coach_Body','Mesh005','Mesh005_1','Coach_Training_Shorts'].map(n=>scene.getObjectByName(n)).filter(Boolean);for(const m of meshes){m.skeleton.update();for(const material of Array.isArray(m.material)?m.material:[m.material])material.side=T.FrontSide;}
+function hit(x,y){const ray=new T.Raycaster();ray.setFromCamera(new T.Vector2((x+.5)/320-1,1-(y+.5)/320),cam);return ray.intersectObjects(meshes,false).slice(0,2).map(h=>({mesh:h.object.name,face:h.faceIndex,distance:h.distance}));}
+const input=JSON.parse(fs.readFileSync(pixels,'utf8')),results=input.pixels.map(([x,y])=>({x,y,left:hit(x-3,y),rim:hit(x,y),right:hit(x+3,y)}));
+const count=pred=>results.filter(pred).length,summary={points:results.length,frontmostMesh005:count(r=>r.rim[0]?.mesh==='Mesh005'),twoMesh005Intersections:count(r=>r.rim.length>=2&&r.rim[0].mesh==='Mesh005'&&r.rim[1].mesh==='Mesh005'),twoIntersectionsOver1mm:count(r=>r.rim.length>=2&&(r.rim[1].distance-r.rim[0].distance)>.001),note:'in-memory base-GLB front-face raycast, before browser weld and shader displacement; not GPU depth'};
+const report={sourceGlbSha256:crypto.createHash('sha256').update(glb).digest('hex'),pixelInputSha256:crypto.createHash('sha256').update(fs.readFileSync(pixels)).digest('hex'),cameraCenter:center.toArray(),summary,results};fs.writeFileSync(out,JSON.stringify(report,null,2),{flag:'wx'});console.log(JSON.stringify(summary));
