@@ -1,0 +1,41 @@
+{
+  "version": "1.0.0-r1",
+  "status": "experimental-candidate",
+  "hashPolicy": "utf8-crlf-to-lf-text; binary-raw",
+  "sha256": {
+    "drill-anim/models/training-human-v3-collar-r1/loader.mjs": "5160bb55ded1272915a90efb071bbd90f92bdcdf11b09df4a4cbdbac79e7fa72",
+    "drill-anim/models/training-human-v3-collar-r1/verify.mjs": "1578a00faf4328508c4fdd8e119de82bdab32189eff4a5d8942922631c532328",
+    "drill-anim/models/training-human-v3-collar-r1/README.md": "1c6d533ba29b1d2cd684fac231cfa6ea1db891d2c560c569ed304a55d66c88a0",
+    "drill-anim/models/collar-weld-r25/loader.mjs": "cf171a93bd3da01a8f522db405e6fd4689928d5b30cb00158dd029f104f0bd5c",
+    "drill-anim/models/collar-weld-r25/candidate.json": "7c5619045d88a4786b52304415934dd8dd76e8b055aaf26dbcf7b3d331dfd8b3",
+    "drill-anim/models/collar-weld-r25/weights.json": "a02562eceda6dc024a782836b138282991a6ae0f6ad4cdcc395f40800ade2a7f",
+    "drill-anim/models/collar-weld-r25/ring-aliases.json": "11f71d2dea5531ea07d0fff65ea33daaeb084b92967ad7ee442a5ff81e85ef9c",
+    "drill-anim/models/collar-garment-refine-r5/loader.mjs": "fe8793aed2bba38f3b25b18f8a219fcd7f8d8e2c201b06519cb4988ec30e0b27",
+    "drill-anim/models/collar-garment-refine-r5/refinement.json": "56012d71cda9ebc2d2846031438acb46dcccc4d5b14679c60fdb1a8bdc29c5f3",
+    "drill-anim/models/collar-garment-refine-r5/source-index.json": "f18b54748145edf89a11ea8b633486c878b043c09efea2c2e8658715d3585bca",
+    "drill-anim/models/collar-garment-refine-r5/refined-index.json": "b2b2a77e7bd60a3a51edf11988cd5bd548d00ab3e53c8ce23990c592aa91a679",
+    "tools/body-v3/collar-v3-r1/build.mjs": "4ba8a5a638d6d31ca54cce18df2d066533ef57842021a973739d9d6a368fb9b2",
+    "tools/body-v3/collar-weld-r1/verify-v3-collar-integration-r1.mjs": "0ba5408750d98c41b9d7c72c60d8e470d32354462bf484d5ca99073d2ee44489",
+    "drill-anim/models/training-human-v3-head-neck-r2/manifest.json": "d680a81c6c68d422e495546d31dce5ad848fd2b0e3e84e1f8e6cf7ec0b20f225",
+    "drill-anim/models/head-neck-weld-r2/manifest.json": "1e51576d3586ccc53d4ad96d57a749008fb85c131da58ddc2ed0d891a26ba7a8"
+  },
+  "verifyDependencies": [
+    "drill-anim/models/training-human-v3-head-neck-r2/verify.mjs",
+    "drill-anim/models/head-neck-weld-r2/verify.mjs"
+  ],
+  "validation": {
+    "sharedHeadEdges": 162,
+    "sharedNeckEdges": 200,
+    "sharedTorsoEdges": 96,
+    "bones": 52,
+    "materials": 3,
+    "garmentNewVertices": 7,
+    "garmentMaxRestOffsetMm": 0.2,
+    "garmentSourceVerticesUnchanged": true,
+    "limitations": "Validated at selected poses only; no complete baked GLB or broad device testing."
+  },
+  "restrictions": [
+    "experimental; final combined model requires separate integration validation",
+    "initial torso profile must be base"
+  ]
+}

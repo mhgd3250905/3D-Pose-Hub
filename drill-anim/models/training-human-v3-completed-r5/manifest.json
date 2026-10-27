@@ -1,0 +1,33 @@
+{
+  "version": "1.0.0-r5",
+  "status": "experimental-candidate",
+  "hashPolicy": "utf8-crlf-to-lf-text; binary-raw",
+  "sha256": {
+    "drill-anim/models/training-human-v3-completed-r5/loader.mjs": "3d74c2e35d128e42bba42eeb9ac2f5815fbd94a0bd3cdf14180ca4ef97ef79fd",
+    "drill-anim/models/training-human-v3-completed-r5/verify.mjs": "984976e4a0b113a8209b69a1f774c2c9159de9f042ee794ca185dd14e860335b",
+    "drill-anim/models/training-human-v3-completed-r5/README.md": "7d4ad429ec46f5bde2756e048b7788f53d0c77d2a7b4a606b787c515dd54404e",
+    "tools/body-v3/completed-v3-r1/check-r5.mjs": "94502885f16a39da30da095ec5425ff63d30bbb5df19048598e24ed3694ab485",
+    "tools/body-v3/completed-v3-r1/verify-visual-r5.mjs": "62f4538b634f59eb86a38609ee4d55f90e672e006cdcc913b15904cae0888b9c",
+    "tools/body-v3/completed-v3-r1/verify-ankle-states-r1.mjs": "38ed9abd9afbbd9439b7f96cf5425132b5631d88fe53288d89218c45655bc5b2",
+    "drill-anim/models/training-human-v3-completed-r4/manifest.json": "cf764350a60a7d048d8f95dda40fee79770215873d905aea48cd6db832214eeb",
+    "drill-anim/models/body-v3-ankle-integrated-r4/manifest-r4.json": "58b495981751fcabd6c74aaf8c1c770088dcf14e1069d76eece6801aa573ec50",
+    "drill-anim/models/body-v3-ankle-r17/manifest.json": "f7005b4cfe300264d3d4ff552e0617330d22a6d5ae4bc1a11ce24846f24f7d31"
+  },
+  "components": [
+    "P1 ankle adapter",
+    "P2 head/neck",
+    "P3 collar with local integration adjustment",
+    "L1 wrist gradient",
+    "L2 base and piece normals"
+  ],
+  "excluded": [
+    "P4 hip/knee",
+    "P5 shoulder corrective"
+  ],
+  "restrictions": [
+    "combined P1/P2/P3/L1/L2 visual and runtime verification pending",
+    "not release eligible",
+    "geometry-layer detach is partial; ankle and normal/wrist changes persist for page lifetime",
+    "discard page after partial ankle installation failure"
+  ]
+}

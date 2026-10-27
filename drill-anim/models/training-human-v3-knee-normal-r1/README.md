@@ -1,0 +1,9 @@
+# Knee normal layer 1.0.0-r1
+
+The knee layer initializes shoulder-completed-r3 once, retains the existing skeleton, mesh positions, skin weights and geometric intersections, and corrects only posed knee normals. The agreed goal retains natural knee contact and the rim while removing visible fragmented shading; this is not a zero-collision repair. Hip remains separate.
+
+Call boot(options), then applyV3(page,spec,options) on a fresh page. installOnInitialized(page) also requires the active full P5 baseline at effective rest and checks its 22 palette matrices; reset first. Reapplying on a used page is rejected. The verify() entry recursively verifies the frozen base and this manifest with LF-normalized text SHA-256.
+
+window.__kneeNormalCandidateR2 exposes registerBeforeRenderExtension(name, update) and unregisterBeforeRenderExtension(name, update). The single slot rejects another registration; unregister requires the original name and function identity. The update(scene,camera) callback runs after scene/coach world updates and knee computation, before the original renderer, including limbs-off/hidden. An extension owns and synchronizes its own skeleton, morph influences, textures and material hooks. Never wrap renderer.render a second time. Unregister/detach the extension first; knee detachment refuses an occupied slot. detachGeometryLayers then removes knee, P5, and supported base layers in order. Ankle/normal/wrist hooks remain for page lifetime; use a new page for complete teardown.
+
+The correction gates by relative knee flexion (30–70 degrees), uses 100 mm full-radius and 100–140 mm smooth fade, leaves seam mask zero and preserves original shader objectNormal for breath/sink position. Input changes or unsupported sink values fail closed. P4 requires separate hip assessment and combined visual validation.

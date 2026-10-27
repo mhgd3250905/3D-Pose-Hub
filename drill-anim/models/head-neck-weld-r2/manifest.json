@@ -1,0 +1,50 @@
+{
+  "version": "1.0.0-r2",
+  "status": "experimental-candidate",
+  "sourceCommit": "25224263b762bda956dd59115873d4319b2fe104",
+  "restCaptureSha256": "22bdcae1e61031088e01b5207bba7db1d91d35f5689b9667ba8162062612a791",
+  "sha256": {
+    "runtime/public/coach/flare-coach.glb": "c14683e4ffa8ebbb3e6712af8e04ee3276059398cec03b1192d5b67c179b858f",
+    "runtime/public/coach-v3/coach-rig-v3.json": "577e2044311ba7ade8217aeac5a83beed60a10b0d687de2942b68027410c8249",
+    "runtime/src/viewer-v3.js": "0231333883d6641ad14c7881a7ff3addcc2019240b02d2f77ce7f03bae3cca68",
+    "runtime/src/body-warp-v3.js": "1eca40a60a6573b684b8d80ab7bc836baf4a158c9e3a2599d58e39e8b819ad21",
+    "drill-anim/assets/srchead.json": "859706381d1f0d1db549f34452a9b5fec5f6d1bd37488ce7809423ef504bc6ee",
+    "drill-anim/page/head.js": "eee745f1ad26453f1d5d212006853b2223a153719221b4c1db14246306cb6e9a",
+    "drill-anim/page/toon.js": "8a6537f11be68285f3840b9083b976f5b76f2fc3e41c603cabe655340d52d958",
+    "drill-anim/page/training-collar.js": "3cc2971f81a7ae86fb7c86ab18bb1926db7656e8db6caf4ac782e475532fabd5",
+    "drill-anim/models/training-human-v3/boot-v3.mjs": "fd1a76e793093400db906dca1670db9336b89e437af99ce9ac83c9718f6529c0",
+    "drill-anim/models/training-human-v3/loader.mjs": "9f87f107fe7fb9cfb50ac34427c62f72f1b0c31f409d57cafe57dfe7b6170afa",
+    "drill-anim/models/training-human-v3/human-v3.js": "73d75cd16b166338e1241cdc02545856d4517016085e8f926bdfb6eb8472aa08",
+    "drill-anim/models/training-human-v2plus-torso-base.json": "b0dbbb5a7176e805f88345fa7169a2acc51d4f7ee2390fdbd350cc1655906cfc",
+    "drill-anim/models/training-human-v2plus-limbs-base.json": "27faf4a8c1b1f8c9f680dbada944b645bd1e53aa3583347cf83f7bec8d186afc",
+    "drill-anim/models/training-human-v2plus-outfit.json": "7324b8a721be34ceb1d9baeb3a8cb46c155dbaf1621ec2230a2b9a4cfcc92a27",
+    "drill-anim/models/hands-native-c1r2/hands-base.json": "24dd1396a0ec8710f4fcc5236751f14cc9058266e5e2d94d283a976b0a5b245e",
+    "drill-anim/models/hands-native-c1r2/hands-rig.json": "a1b488058c5c5a927ba6d86caa9870b919a6091db8a1106ff498ff4a4c92ae26",
+    "tools/body-v3/neck-weld-r1/apply_candidate-r4.mjs": "8a1b3d01cc78221e65052dc716b54adeec60f2e6201adbc9b2042ca3a1c2ec7f",
+    "tools/body-v3/head-neck-topological-r1/apply_candidate.mjs": "d723d43cdaf694b94d7119e8ec6665b0d20ef3ff470faffb185b0a9ff5c60ba4",
+    "tools/body-v3/neck-weld-r1/capture_rest.mjs": "f495ebad57f2b812376b62d7bf1571b383520bfafbdc69e9faf7df354034fad1",
+    "tools/body-v3/neck-weld-r1/build_candidate.py": "88ddb7b32c53e80ab34b6bd726d0af4a146666f05ffee64aa044b25127e39421",
+    "tools/body-v3/head-neck-topological-r1/build_topology.py": "fb9b0c76347e98ba271f8c6993921b716221ea481d8492d3a02284067795fcae",
+    "drill-anim/models/head-neck-weld-r2/loader.mjs": "3830b6e6c74269b5006c4717d49debefeffe0884c2a477ed67a1478136b99d82",
+    "drill-anim/models/head-neck-weld-r2/paired-topology.json": "68bd700c81c12b52e5b31cc237cc5e0fbb4e9553ecc0cdea2835e7bce5fee497",
+    "drill-anim/models/head-neck-weld-r2/topological-weld.json": "0b90f6ae5c9211d919aa334ff0ddf0d8cb71334b088e666c5b076679b41f46c3",
+    "drill-anim/models/head-neck-weld-r2/verify.mjs": "f5b6c864b5313f92b4bab0a01c3586a3cd790ff44522508c8f22b4d802dc297f"
+  },
+  "validation": {
+    "runtimeSharedEdges": 162,
+    "runtimePoseCases": [
+      "neckflex",
+      "neckext",
+      "neckrot"
+    ],
+    "runtimePixelComparison": "equal to paired-seam candidate in six side/back frames",
+    "blenderSceneWeld": "162 seam edges shared after ID-targeted weld",
+    "glbRoundTrip": "Blender material primitives split the seam on reimport; output is not release-ready",
+    "material": "runtime shader is not serialized to GLB"
+  },
+  "restrictions": [
+    "not release eligible",
+    "GLB shared topology and material/pose equivalence remain unresolved"
+  ],
+  "hashPolicy": "utf8-crlf-to-lf-text; binary-raw"
+}

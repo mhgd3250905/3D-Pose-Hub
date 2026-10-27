@@ -1,0 +1,374 @@
+{
+  "profile": "training-human-v3-completed",
+  "version": "1.0.0-r7",
+  "baseline": {
+    "profile": "training-human-v3-shoulder-completed",
+    "version": "1.0.0-r3"
+  },
+  "manifestSha256LF": "676a19e7b4185848ce2570c66a996ba4f967305a03feafe45e4c69b36c7a7fb6",
+  "acceptance": {
+    "scope": "recorded external views; original geometric contact retained; not all-actions/device/release acceptance",
+    "userDecision": "保留膝窝自然接触，继续修复可见碎带并复测",
+    "p4ChangesGeometryPositionOrWeights": false
+  },
+  "sampling": {
+    "spec": "a-deep-squat-r3",
+    "seconds": [
+      1,
+      3,
+      5
+    ],
+    "externalViews": 18,
+    "posesAreThreeStills": true
+  },
+  "canonicalPoses": {
+    "1": {
+      "left-hip": {
+        "sha256": "a22ba384c9df13512e7603c6bd7418fc8c5b80080d6348e17af5db787bf99366",
+        "identicalToCandidate": true
+      },
+      "right-hip": {
+        "sha256": "5126e87a99a94027e3635e0772fbc90dbef7248c004abf280095a9ec5c40677c",
+        "identicalToCandidate": true
+      },
+      "leftShin-front": {
+        "sha256": "83c4ad716fdbbca8fcd1849c468ec4cd2e9dcf2ecbdf5225ee35cb7b9d2a677f",
+        "identicalToCandidate": true
+      },
+      "leftShin-outside": {
+        "sha256": "e469019d7d9d95684c1d72e83bf15c88bb914137a998dd55aec19e3cc5d2ea80",
+        "identicalToCandidate": true
+      },
+      "rightShin-front": {
+        "sha256": "a87fe46d4153f7fc68e70fa1501a97b129288ff2dfcbcad7958b37153ec6e47d",
+        "identicalToCandidate": true
+      },
+      "rightShin-outside": {
+        "sha256": "329f4814d80c4f0f28cd1b3425ca436c347b0b1ecb89f14187d801821fc5d8c9",
+        "identicalToCandidate": true
+      }
+    },
+    "3": {
+      "left-hip": {
+        "sha256": "d7e5dea8f8dbeea7fa07961a0adbca93f81b64360dcc21263a2d70a079f89105",
+        "identicalToCandidate": true
+      },
+      "right-hip": {
+        "sha256": "34309204fc16bdeeaf3ce37f0208f9a38bd9c83f125bee5338e9d4e8e809dc40",
+        "identicalToCandidate": true
+      },
+      "leftShin-front": {
+        "sha256": "1d87b01a2b24447fc90024e754f57da16d58350f0a0eab4bec8167a86d939177",
+        "identicalToCandidate": true
+      },
+      "leftShin-outside": {
+        "sha256": "abd6665256ed7f60bf0744dae372bc106f6d459113cfb113be4730b5659d92c2",
+        "identicalToCandidate": true
+      },
+      "rightShin-front": {
+        "sha256": "6a92576033727c4a351d6b4df3b63b738a0a70f5f51059083f1013072f1e0fb7",
+        "identicalToCandidate": true
+      },
+      "rightShin-outside": {
+        "sha256": "41a06725184fd60bdc97f3e113cb0908860484b5cb43f42a700020dfdfc55d50",
+        "identicalToCandidate": true
+      }
+    },
+    "5": {
+      "left-hip": {
+        "sha256": "feacec112cccc24a888f8d416611ccdccce64936b9675ea32fbc1cd1a7f3f13c",
+        "identicalToCandidate": true
+      },
+      "right-hip": {
+        "sha256": "a7f6fd0786ecf678170cc5290270146d97df195c3d77ba811c2036d3ac4eb30c",
+        "identicalToCandidate": true
+      },
+      "leftShin-front": {
+        "sha256": "d2c90828c4d9cea54d349c02735c42ae719f451259632c1c6a41d904552cb661",
+        "identicalToCandidate": true
+      },
+      "leftShin-outside": {
+        "sha256": "bc310c2dc9e6eb4151ce3024275b681f598dad1c51e05093edc60c77b5fdb60a",
+        "identicalToCandidate": true
+      },
+      "rightShin-front": {
+        "sha256": "bcef0398c1522e541fc2dd88045ef1aa3e36728803f6ada12a1b3b4bbd646061",
+        "identicalToCandidate": true
+      },
+      "rightShin-outside": {
+        "sha256": "72178dd2ac9dfda438be612ad3ea8a42ea28cd466fe3b8a146d9d9245ad9b27d",
+        "identicalToCandidate": true
+      }
+    }
+  },
+  "canonicalControls": {
+    "uRim": 1,
+    "uGlow": 0,
+    "uSelN": 1,
+    "uSel": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "uMapGate": 1,
+    "boneCount": 52,
+    "fingerCount": 30,
+    "sameBoneRefs": true,
+    "sameLimb": true,
+    "sameTorso": true,
+    "sameP5": true,
+    "originalAttrs": true
+  },
+  "coldFirst": {
+    "hipUpdated": 856,
+    "hipSkipped": null
+  },
+  "highlightPositiveControl": {
+    "uSelNOff": 0,
+    "rim": 1,
+    "gpuPixelsChanged": true,
+    "restoredExactly": true
+  },
+  "partialDetachTrace": [
+    {
+      "phase": "hip",
+      "restored": true,
+      "kneeStillActive": true,
+      "p5StillActive": true
+    },
+    {
+      "phase": "knee",
+      "kneeGone": true,
+      "p5StillActive": true,
+      "rendererRestored": true
+    },
+    {
+      "phase": "p5",
+      "p5Gone": true,
+      "kneeGone": true
+    }
+  ],
+  "hipPositiveControls": {
+    "breath": {
+      "state": {
+        "cacheHit": false,
+        "maxShaderOffsetMm": 0.012374000316823586,
+        "fieldOn": 1,
+        "sinkK": 1,
+        "breath": 0.08,
+        "neededSinkNonzero": 0,
+        "attributeSharesData": true,
+        "attributeActiveEntries": 856,
+        "gates": {
+          "left": {
+            "degrees": 130.54261519838187,
+            "amount": 1
+          },
+          "right": {
+            "degrees": 130.5426151955785,
+            "amount": 1
+          }
+        },
+        "updated": 856,
+        "empty": 0,
+        "maxAppliedDegrees": 29.999999999999996,
+        "p95AppliedDegrees": 29.999999999999996,
+        "p5Amounts": [
+          0,
+          0
+        ]
+      },
+      "gpuPositionChanged": true,
+      "normalOffOnMasksIdentical": true
+    },
+    "sink": {
+      "state": {
+        "cacheHit": false,
+        "maxShaderOffsetMm": 6.000000052154066,
+        "fieldOn": 1,
+        "sinkK": 1,
+        "breath": 0,
+        "neededSinkNonzero": 856,
+        "attributeSharesData": true,
+        "attributeActiveEntries": 856,
+        "gates": {
+          "left": {
+            "degrees": 130.54261519838187,
+            "amount": 1
+          },
+          "right": {
+            "degrees": 130.5426151955785,
+            "amount": 1
+          }
+        },
+        "updated": 856,
+        "empty": 0,
+        "maxAppliedDegrees": 29.999999999999996,
+        "p95AppliedDegrees": 29.999999999999996,
+        "p5Amounts": [
+          0,
+          0
+        ]
+      },
+      "gpuPositionChanged": true,
+      "normalOffOnMasksIdentical": true
+    },
+    "recovered": {
+      "cacheHit": false,
+      "maxShaderOffsetMm": 0,
+      "fieldOn": 1,
+      "sinkK": 1,
+      "breath": 0,
+      "neededSinkNonzero": 0,
+      "attributeSharesData": true,
+      "attributeActiveEntries": 856,
+      "gates": {
+        "left": {
+          "degrees": 130.54261519838187,
+          "amount": 1
+        },
+        "right": {
+          "degrees": 130.5426151955785,
+          "amount": 1
+        }
+      },
+      "updated": 856,
+      "empty": 0,
+      "maxAppliedDegrees": 29.999999999999996,
+      "p95AppliedDegrees": 29.999999999999996,
+      "p5Amounts": [
+        0,
+        0
+      ]
+    },
+    "p5Proof": {
+      "p5Amounts": [
+        1,
+        1
+      ],
+      "sameHipNormals": true
+    }
+  },
+  "kneeChecks": {
+    "twelveImagesIdentical": true,
+    "continuousPoseChecks": 5,
+    "breathChangesPixels": true,
+    "normalTogglePreservesBreathPositionId": true,
+    "unsupportedKneeSinkDisables": true,
+    "sinkRestored": {
+      "stats": {
+        "calls": 59,
+        "recomputes": 19,
+        "cacheHits": 36,
+        "skipped": 4,
+        "validations": 4
+      },
+      "gate": {
+        "left": {
+          "degrees": 147.0435087783814,
+          "amount": 1
+        },
+        "right": {
+          "degrees": 147.04350878272345,
+          "amount": 1
+        }
+      },
+      "result": {
+        "active": 4870,
+        "breath": 0
+      },
+      "topology": {
+        "vertices": 22985,
+        "targets": 4870,
+        "needed": 5169,
+        "faces": 10039,
+        "boundary": 2170
+      },
+      "textureValid": true,
+      "warnings": [
+        "unsupported live uVR/uMMT/uFieldOn; candidate disabled"
+      ],
+      "enabled": 1,
+      "userEnabled": true,
+      "extensions": []
+    }
+  },
+  "freshPreview": {
+    "finalEntryPreviewFrames": 18,
+    "r7AllIdentical": true,
+    "p5AllIdentical": true
+  },
+  "retainedGeometricMetrics": [
+    {
+      "time": 1,
+      "radiusP5": [
+        0.3622,
+        0.3518
+      ],
+      "expandedFclPairs": [
+        221,
+        220
+      ]
+    },
+    {
+      "time": 3,
+      "radiusP5": [
+        0.1876,
+        0.1889
+      ],
+      "expandedFclPairs": [
+        211,
+        218
+      ]
+    },
+    {
+      "time": 5,
+      "radiusP5": [
+        0.6699,
+        0.6686
+      ],
+      "expandedFclPairs": [
+        90,
+        89
+      ]
+    }
+  ],
+  "archivedReports": {
+    "completed-r7-canonical-live-r1/report.json": "30720d3bb7de6bcebaaa5ae9ef48c50eba5200b72bc9527fffe660d0d1ab7ccc",
+    "completed-r7-candidate-live-r1/report.json": "2e0e0d6a88fbef95334dfc8f0568ff3b2d0914a1e78a3c8f9bedf242a1f25c85",
+    "hip-normal-local-live-r5/report.json": "bc1be3d205d0c73411244d57a097b8e9d51ebcc26d0ebd874248aa2304fb9e23",
+    "knee-normal-candidate-live-r2/report.json": "e80d23d80f46904fa4ab2f32aed43cee24ba9a4aeea9f470d82e661430c55280"
+  },
+  "archivedReportHashPolicy": "raw bytes; report archives are external QA inputs, not runtime dependencies"
+}
