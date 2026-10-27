@@ -1,0 +1,46 @@
+{
+  "id": "body-v3-ankle-r17-experimental",
+  "version": "0.0.0-r17",
+  "status": "experimental; not accepted or release eligible",
+  "base": "body-v3-ankle-r16-experimental",
+  "scope": "clone and double-side only Coach_Sneakers and Coach_Shoe_Details materials",
+  "binarySources": [
+    "runtime/public/coach/flare-coach.glb"
+  ],
+  "sourceSha256": {
+    "drill-anim/models/body-v3-ankle-r17/loader.mjs": "2255d44f25b9bfc507b19e64b84187fd5a14a45d88d4151e05babef09b3250eb",
+    "drill-anim/models/body-v3-ankle-r16/loader.mjs": "c264af2683e97e420463ea3b03577d51f63a3a089f6c1d18c732c32747dcb8f3",
+    "drill-anim/models/body-v3-ankle-r13/loader.mjs": "f03466273128651ed3db5b10d770da1ecf9de480703a539189692b793bd1f6d8",
+    "drill-anim/models/body-v3-ankle-r8/loader.mjs": "bbce0c974cd206d404897c43d88fca777309aba4d087193515a2e6ccb4322f0b",
+    "drill-anim/models/body-v3-ankle-r8/ankle-r8.mjs": "9f7ea7b842db1bfe984cdd5e44c3b2d613bc72741e279cd8732fbae703090f73",
+    "drill-anim/models/body-v3-ankle-r7/ankle-r7-shape.mjs": "ea157b0a85f77a9c69f684d4ac335b72fdde15bdc81b3c7b99c3d86573a0e036",
+    "drill-anim/models/body-v3-ankle-r6/ankle-r6-shape.mjs": "cf8df34d71ca780f9c69ebb2c5e7d37eafa272fc4b3c6b38fac59c271091a558",
+    "drill-anim/models/body-v3-ankle-r6/ankle-r6-fit.mjs": "d0c88dcb2d776c5ccf0f4d8ac1a992796e3b22f4a3d86221c47476a636773213",
+    "drill-anim/models/training-human-v3/boot-v3.mjs": "fd1a76e793093400db906dca1670db9336b89e437af99ce9ac83c9718f6529c0",
+    "drill-anim/models/training-human-v3/human-v3.js": "73d75cd16b166338e1241cdc02545856d4517016085e8f926bdfb6eb8472aa08",
+    "drill-anim/models/training-human-v2plus.json": "ec2bc815ded157dbc7673e283ed9b6bb1baa710a39ce3a02f88453e8d7fb0a1d",
+    "drill-anim/models/training-human-v2plus-outfit.json": "7324b8a721be34ceb1d9baeb3a8cb46c155dbaf1621ec2230a2b9a4cfcc92a27",
+    "drill-anim/models/training-human-v2plus-torso-base.json": "b0dbbb5a7176e805f88345fa7169a2acc51d4f7ee2390fdbd350cc1655906cfc",
+    "drill-anim/models/training-human-v2plus-limbs-base.json": "27faf4a8c1b1f8c9f680dbada944b645bd1e53aa3583347cf83f7bec8d186afc",
+    "drill-anim/models/hands-native-r8/loader.mjs": "ebc3408b1514b059084fe8188a7fde15568070cf48fc1f60e82d9d7346c5f42d",
+    "drill-anim/models/hands-native-c1r2/loader.mjs": "3a0d779221a5400b1ff4329a98d8afdf70fd8b54bcdb6016beeaec861e9d126a",
+    "drill-anim/models/hands-native-c1r2/manifest.json": "a265d8e5d11e84443a4c79f228deb689a3f4385e710304bda178c7023f384ec5",
+    "drill-anim/models/hands-native-c1r2/hands-base.json": "24dd1396a0ec8710f4fcc5236751f14cc9058266e5e2d94d283a976b0a5b245e",
+    "drill-anim/models/hands-native-c1r2/hands-rig.json": "a1b488058c5c5a927ba6d86caa9870b919a6091db8a1106ff498ff4a4c92ae26",
+    "drill-anim/models/hands-native-r5/wrist-twist.js": "7e268abaad73239d069674d3f40f8f9bbef5624ccf14933b81818461cf6e18ee",
+    "drill-anim/page/toon.js": "8a6537f11be68285f3840b9083b976f5b76f2fc3e41c603cabe655340d52d958",
+    "drill-anim/lib/config.mjs": "dc300899493594856a2e6261caafeec0dee8b3c4596b4bf6556d6a9257844488",
+    "tools/body-v3/reset-joints-v2.json": "aa2ca22c03fbcf2da665732b3e65e66c5200ad99154bb80f2c1209735a551a47",
+    "runtime/src/viewer-v3.js": "0231333883d6641ad14c7881a7ff3addcc2019240b02d2f77ce7f03bae3cca68",
+    "runtime/src/body-warp-v3.js": "1eca40a60a6573b684b8d80ab7bc836baf4a158c9e3a2599d58e39e8b819ad21",
+    "runtime/public/coach/coach-rig.json": "e8b2a422a307f62a408ecf4a9a1168f6ca3a6ce6453cd73a665716ce32cf5dc7",
+    "runtime/public/coach-v3/coach-rig-v3.json": "577e2044311ba7ade8217aeac5a83beed60a10b0d687de2942b68027410c8249",
+    "runtime/public/coach/flare-coach.glb": "c14683e4ffa8ebbb3e6712af8e04ee3276059398cec03b1192d5b67c179b858f"
+  },
+  "limitations": [
+    "non-frozen r8 ancestor and alternate loader inputs not covered beyond listed sources",
+    "existing v2plus and native-hands verifiers still apply",
+    "toe/inner-shoe effects and other actions require review",
+    "does not establish shoe/skin penetration for all poses"
+  ]
+}
