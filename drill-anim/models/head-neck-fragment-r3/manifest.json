@@ -1,0 +1,49 @@
+{
+  "version": "1.0.0-r3",
+  "status": "experimental-candidate",
+  "sha256": {
+    "drill-anim/models/head-neck-fragment-r3/head-neck.glb": "abec7b3d8061d7a9a7770f7c796306458fa37f2bd1f43790b5cfb89094bb2e6c",
+    "drill-anim/models/head-neck-fragment-r3/loader.mjs": "f1d3971ce0586f7c30e09c3f4aa2c37d1a8d188f231663b115f1f7b875f02e28",
+    "drill-anim/models/head-neck-fragment-r3/verify.mjs": "7ab3aed914ef9372c361b31d1bbe873536e55c6e866493fb854edec01e330496",
+    "drill-anim/models/head-neck-restore-r3/manifest.json": "d1be56e95cbcd8b7c6e3ba4d1c2e7b6264703c9b42929c6df0bbfc685397ba6c",
+    "drill-anim/models/head-neck-toon-r4/manifest.json": "80db7fd592ccb520ccb8146e32fcf81bd74fad9484d985b5f09d605a68837516",
+    "drill-anim/models/head-neck-weld-r2/manifest.json": "1e51576d3586ccc53d4ad96d57a749008fb85c131da58ddc2ed0d891a26ba7a8",
+    "tools/body-v3/head-neck-topological-r1/extract-fragment-r1.py": "8a0e57f80cac081a7965e08825f090007166fb123dd49d04e9db4a647a7dfe72",
+    "tools/body-v3/head-neck-topological-r1/verify-fragment-actions-r3.mjs": "6874009de6fbf29fbda1cfacc0373a3bae868c432c31350a849be9105b3ff297",
+    "tools/body-v3/head-neck-topological-r1/verify-fragment-extremes-r2.mjs": "e0f6ca4e3643227490097d3dae3d15c780fe3bf4cbe5af82fc09c08798183062"
+  },
+  "sourceGlbSha256": "f266403009fa59968defb0e6d119dc4b546edcbf27a06d71df7ecf6902a10f71",
+  "runtimeRequirements": [
+    "existing v3 scene and 52-bone skeleton",
+    "live toon, muscle and v2p uniform groups",
+    "host motion solver"
+  ],
+  "validation": {
+    "sourceMeshCount": 1,
+    "sourcePrimitiveCount": 2,
+    "restoredSeamEdges": 162,
+    "restoredMaterialCount": 2,
+    "targetSkeletonBoneCount": 52,
+    "boneObjectsReused": true,
+    "skeletonStateUnchangedAtAttach": true,
+    "realActionSamples": [
+      "a-deep-squat-r3 frame 15",
+      "a-deep-squat-r3 frame 75",
+      "h-bear-plank frame 24"
+    ],
+    "maxVertexDifferenceMm": 0.000268,
+    "neckHighlightChangedSidePixels": 225,
+    "skinThemeChangedSidePixels": 65625,
+    "comparedImagePixels": 230400
+  },
+  "restrictions": [
+    "not release eligible",
+    "GLB primitive seams split on disk and are restored by ID in loader",
+    "requires full model and device validation separately"
+  ],
+  "hashPolicy": "utf8-crlf-to-lf-text; binary-raw",
+  "verifyDependencies": [
+    "drill-anim/models/head-neck-restore-r3/verify.mjs",
+    "drill-anim/models/head-neck-toon-r4/verify.mjs"
+  ]
+}

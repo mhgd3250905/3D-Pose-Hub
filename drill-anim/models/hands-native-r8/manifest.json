@@ -1,0 +1,67 @@
+{
+  "id": "training-human-v2plus-hands-native",
+  "version": "1.0.0-r8",
+  "base": "training-human-v2plus/1.0.0-rc2",
+  "derivedFrom": "training-human-v2plus-hands-native/1.0.0-r3 (r6a dims)",
+  "scale": 0.978,
+  "wristRadial": {
+    "factor": 0.87,
+    "handLocalMm": [
+      0,
+      12,
+      28,
+      45
+    ]
+  },
+  "palmThickness": {
+    "factor": 0.6,
+    "r3HandLocalMm": [
+      20,
+      35,
+      95,
+      115
+    ]
+  },
+  "wristTwistShare": {
+    "default": 0.5,
+    "runtime": "../hands-native-r5/wrist-twist.js"
+  },
+  "reviewed": false,
+  "releaseEligible": false,
+  "defaultForNewDrills": false,
+  "scope": "native-open-r1 explicit selection only",
+  "sourceSha256": {
+    "drill-anim/models/hands-native-r8/hands-base.json": "dcdb78040eb46b17dbdbd5887001d8b322a10549504ee0d1f79ac92840039df2",
+    "drill-anim/models/hands-native-r8/hands-rig.json": "d07d79b644f5c0d1eb447950155d8bee040c9773495a5ca4b5f26bf6cae95176",
+    "drill-anim/models/hands-native-r8/loader.mjs": "ebc3408b1514b059084fe8188a7fde15568070cf48fc1f60e82d9d7346c5f42d",
+    "drill-anim/models/hands-native-r8/README.md": "252d61971f8ccaee9898ffc1451e947f26122b31cfc176ecc41bb0e51df98d88",
+    "drill-anim/models/hands-native-r5/wrist-twist.js": "7e268abaad73239d069674d3f40f8f9bbef5624ccf14933b81818461cf6e18ee",
+    "drill-anim/models/hands-native-r3/hands-base.json": "6d6f6f3f3864e6c684d4a545cc482ebbc4aa3b083fc54dc6144b109155a3770d",
+    "drill-anim/models/hands-native-r3/hands-rig.json": "3211c65680ee4ae95acbe40db195dbbc95a20a1e873b74b131d78714eb3864c1",
+    "drill-anim/models/training-human-v2plus.json": "ec2bc815ded157dbc7673e283ed9b6bb1baa710a39ce3a02f88453e8d7fb0a1d",
+    "drill-anim/models/training-human-v2.json": "bc0238e148bfbdc024888ce379d4330c6891cd095db8d42575cb82a7d940d5d7"
+  },
+  "textHashNormalization": "UTF-8 text, CRLF normalized to LF, SHA-256",
+  "license": "Blender Human Base Meshes v1.4.1, CC0 1.0",
+  "limitations": "Proportion/twist candidate; contacts not refitted; native-grip r1 fit is r3-sized.",
+  "width": {
+    "factor": 0.81,
+    "from": "r3 hand-local 20-35 mm ramp"
+  },
+  "rootBlend": {
+    "mm": [
+      0,
+      28
+    ],
+    "from": "forearm end ring"
+  },
+  "freeHandPose": {
+    "open/relaxed": "r3 relaxed x2.2"
+  },
+  "anthropometricTargetsMm": {
+    "length": 158,
+    "palmWidth": 70,
+    "palmThickness": 27.6,
+    "basis": "arm-scaled stature 1.46 m"
+  }
+}

@@ -1,0 +1,21 @@
+// Offline attribute/texture/switch test; not a real renderer or motion test.
+import fs from 'node:fs';import * as T from 'three';
+import {applyGarmentRefinement,detachGarmentRefinement} from '../../../drill-anim/models/collar-garment-refine-r7/loader.mjs';
+if(process.argv.length!==3)throw Error('captured runtime rest JSON required');
+const g=JSON.parse(fs.readFileSync(process.argv[2],'utf8')).Mesh005,asset=JSON.parse(fs.readFileSync('drill-anim/models/collar-garment-refine-r7/refinement.json','utf8')),geo=new T.BufferGeometry();
+for(const [name,key,size,Type]of [['position','localPosition',3,Float32Array],['normal','localNormal',3,Float32Array],['skinIndex','skinIndex',4,Uint16Array],['skinWeight','skinWeight',4,Float32Array]])geo.setAttribute(name,new T.BufferAttribute(new Type(g[key]),size));
+const interleaved=new Float32Array(g.vertexCount*8);for(let i=0;i<g.vertexCount;i++)for(let k=0;k<4;k++){interleaved[i*8+k]=g.skinIndex[i*4+k];interleaved[i*8+4+k]=g.skinWeight[i*4+k];}const ib=new T.InterleavedBuffer(interleaved,8);geo.setAttribute('skinIndex',new T.InterleavedBufferAttribute(ib,4,0));geo.setAttribute('skinWeight',new T.InterleavedBufferAttribute(ib,4,4));geo.setIndex(new T.BufferAttribute(new Uint32Array(g.idx),1));
+const n=g.vertexCount,w=1024,h=Math.ceil(n/w),src=new Float32Array(w*h*4);for(let i=0;i<n;i++)for(let k=0;k<4;k++)src[i*4+k]=i+k*.1;
+const tex=new T.DataTexture(src,w,h,T.RGBAFormat,T.FloatType),mat=new T.MeshToonMaterial();mat.onBeforeCompile=shader=>{for(const name of ['uVT','uVR','uMMT','uV2pT'])shader.uniforms[name]={value:tex};};
+const mesh=new T.SkinnedMesh(geo,mat);mesh.name='Mesh005';mesh.bind(new T.Skeleton(g.boneNames.map(name=>{const b=new T.Bone();b.name=name;return b;})));const coach=new T.Group();coach.add(mesh);const engine={selectModelProfile(spec){window.__v2p.torso.on=spec.enabled;}};
+globalThis.window={__toonT:T,__v2p:{torso:{on:true}},__collarShared:{mesh:{name:'V3_Head_Neck_Torso_Shared_R26'}},__drill:engine};globalThis.flareInspector={viewer:{coach}};const page={evaluate:async(fn,arg)=>fn(arg)};
+const before=Array.from(geo.attributes.position.array),result=await applyGarmentRefinement(page),q=window.__collarGarmentRefinement,moves=asset.sourceMoves,byId=new Map(moves.ids.map((id,k)=>[id,k]));let posError=0,otherError=0;
+for(let i=0;i<n;i++)for(let k=0;k<3;k++){const expected=before[i*3+k]+(byId.has(i)?moves.localDeltas[byId.get(i)*3+k]:0);posError=Math.max(posError,Math.abs(q.geo.attributes.position.getComponent(i,k)-expected));otherError=Math.max(otherError,Math.abs(geo.attributes.position.getComponent(i,k)-before[i*3+k]));}
+if(posError>1e-6||otherError!==0||result.movedVertices!==moves.ids.length)throw Error('source position mismatch');
+const shader={uniforms:{}};q.material.onBeforeCompile(shader,{});const data=shader.uniforms.uV2pT.value.image.data;let textureError=0;
+for(const [row,id]of moves.ids.entries())for(let k=0;k<3;k++)textureError=Math.max(textureError,Math.abs(data[id*4+k]-(src[id*4+k]+moves.worldDeltas[row*3+k])));
+const sample=moves.ids[0],old=data[sample*4];src[sample*4]+=2;tex.needsUpdate=true;q.refreshTextures();if(Math.abs(data[sample*4]-old-2)>.001)throw Error('changed source texture was not synchronized');
+for(const [row,a]of asset.additions.entries())for(let k=0;k<4;k++)textureError=Math.max(textureError,Math.abs(data[(n+row)*4+k]-a.triangle.reduce((s,id,i)=>s+a.barycentric[i]*data[id*4+k],0)));
+if(textureError>.002)throw Error('texture interpolation mismatch '+textureError);
+engine.selectModelProfile({enabled:false});if(mesh.geometry!==geo||mesh.material!==mat)throw Error('disabled profile mismatch');engine.selectModelProfile({enabled:true});if(mesh.geometry!==q.geo||mesh.material!==q.material)throw Error('enabled profile mismatch');if(!await detachGarmentRefinement(page)||mesh.geometry!==geo||mesh.material!==mat)throw Error('detach failed');
+console.log(JSON.stringify({movedVertices:result.movedVertices,addedVertices:result.newVertices,maxPositionError:posError,sourcePositionError:otherError,maxTextureError:textureError,textureRefreshPass:true,profileSwitchesPass:true,detachPass:true,limitations:'Synthetic geometry only; no real GPU, animation or appearance test.'}));
