@@ -1,0 +1,22 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import {pathToFileURL} from 'node:url';
+import {pinnedRuntime,verifyRuntimeSelection,saveJson} from '../armfix-r2/hand-qa-runtime.mjs';
+const[url,out,runtimeFile]=process.argv.slice(2);
+if(!url||!out||!runtimeFile||fs.existsSync(out))throw Error('URL and NEW output plus runtime required');
+fs.mkdirSync(out,{recursive:true});const r=pinnedRuntime(runtimeFile);await verifyRuntimeSelection(r);
+const {chromium}=await import(pathToFileURL(r.playwrightModule.path).href),b=await chromium.launch({executablePath:r.browserExecutable.path,args:r.chromiumArgs});
+const report={url,errors:[],checks:[]};
+try{const p=await b.newPage({viewport:{width:1200,height:920}});p.on('pageerror',e=>report.errors.push(String(e)));await p.goto(url);await p.locator('#busy').waitFor({state:'hidden'});
+ report.gpu=await p.evaluate(()=>{const gl=document.querySelector('canvas').getContext('webgl2'),e=gl.getExtension('WEBGL_debug_renderer_info');return gl.getParameter(e.UNMASKED_RENDERER_WEBGL);});if(report.gpu!==r.actualWebGLRenderer)throw Error('GPU mismatch');
+ report.checks.push({neutralLeft:await p.locator('#facts').innerText(),primaryOptions:await p.locator('#pose option').count(),images:await p.locator('#gallery img').count(),overview:await p.locator('#overview img').count()});
+ await p.screenshot({path:path.join(out,'left-neutral.png')});
+ await p.selectOption('#side','right');await p.locator('#busy').waitFor({state:'hidden'});
+ await p.check('#seams');await p.check('#regions');await p.click('[data-view="back"]');await p.screenshot({path:path.join(out,'right-neutral-seams.png')});
+ await p.uncheck('#seams');await p.uncheck('#regions');
+ const target=await p.locator('#pose option').evaluateAll(es=>es.find(e=>e.textContent==='flex-60-twist-60')?.value);if(!target)throw Error('Missing combined60 sample');await p.selectOption('#pose',target);await p.locator('#busy').waitFor({state:'hidden'});
+ report.checks.push({combinedRight:await p.locator('#facts').innerText()});await p.click('[data-view="oblique"]');await p.screenshot({path:path.join(out,'right-combined60.png')});
+ await p.selectOption('#filter','stress');await p.locator('#busy').waitFor({state:'hidden'});report.checks.push({stressOptions:await p.locator('#pose option').count()});
+ await p.selectOption('#filter','primary');await p.locator('#busy').waitFor({state:'hidden'});await p.check('#wire');await p.uncheck('#db');await p.uncheck('#wire');await p.check('#db');
+ report.checks.push({controlsWorked:true});saveJson(path.join(out,'smoke.json'),report);if(report.errors.length)throw Error(report.errors.join('\n'));console.log(JSON.stringify({output:out,gpu:report.gpu,errors:report.errors.length,checks:report.checks.length}));
+}finally{await b.close();}

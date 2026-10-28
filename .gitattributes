@@ -48,3 +48,13 @@ drill-anim/models/grip-r6/preview.mjs text eol=lf
 *.mp4 binary
 *.gif binary
 *.zip binary
+
+# Accepted wrist snapshots and portable manifests pin exact file bytes.
+drill-anim/models/webxr-dumbbell-wrist-r1/** -text whitespace=cr-at-eol
+tools/body-v3/webxr-wrist-join-r1/* -text whitespace=cr-at-eol
+# Frozen JSON sources retain their original CRLF bytes under the global -text rule.
+drill-anim/models/hands-native-c1r2-symmetric-r1/*.json whitespace=cr-at-eol
+drill-anim/models/training-human-v3-armfix-r?/*.json whitespace=cr-at-eol
+runtime/public/coach-v3-armfix-r1/*.json whitespace=cr-at-eol
+# This frozen, hash-verified dependency already has one trailing space; retain its pin.
+drill-anim/models/training-human-v3-armfix-r2/collar.mjs whitespace=-blank-at-eol

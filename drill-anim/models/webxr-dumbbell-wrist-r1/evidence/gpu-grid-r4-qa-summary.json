@@ -1,0 +1,4250 @@
+{
+  "format": "pose-hub-webxr-wrist-qa-summary@1",
+  "derivedFrom": {
+    "file": "F:\\PoseHub-v2-production\\action-completion-v3-20261028-r1\\qa\\hand-presets-r1\\webxr-wrist-join-r1\\gpu-grid-r4-independent-qa.json",
+    "sha256": "9c1d9ff9af686483fbde6e2d482216e7ac444618120577cf92c347b6e8e0656d",
+    "bytes": 507412
+  },
+  "manifestSha256": "4c291f08991cf5957913dc688872f9ce591940e6d6b68fd789a2df4f000c59a1",
+  "thresholds": {
+    "seamMm": 0.1,
+    "angleErrorDeg": 1,
+    "areaCollapseRatio": 0.1,
+    "edgeCollapseRatio": 0.1,
+    "rigidResidualMm": 0.001,
+    "repeatDriftMm": 0.001,
+    "seamNormalAngleDeg": 0.05
+  },
+  "summary": {
+    "primaryThrough60": {
+      "samples": 17,
+      "failures": [],
+      "allMeasuredChecksPassed": true
+    },
+    "stress75": {
+      "samples": 6,
+      "failures": [
+        {
+          "row": "flex-75-twist-0",
+          "side": "left",
+          "check": "noSevereAreaCollapse"
+        },
+        {
+          "row": "flex-75-twist-0",
+          "side": "right",
+          "check": "noNonadjacentIntersection"
+        },
+        {
+          "row": "flex-75-twist-0",
+          "side": "right",
+          "check": "noSevereAreaCollapse"
+        },
+        {
+          "row": "flex-75-twist-0",
+          "side": "right",
+          "check": "noSevereEdgeCollapse"
+        },
+        {
+          "row": "flex-75-twist--60",
+          "side": "left",
+          "check": "noNonadjacentIntersection"
+        },
+        {
+          "row": "flex-75-twist--60",
+          "side": "left",
+          "check": "noSevereAreaCollapse"
+        },
+        {
+          "row": "flex-75-twist--60",
+          "side": "right",
+          "check": "noNonadjacentIntersection"
+        },
+        {
+          "row": "flex-75-twist--60",
+          "side": "right",
+          "check": "noSevereAreaCollapse"
+        },
+        {
+          "row": "flex--75-twist-60",
+          "side": "left",
+          "check": "noSevereAreaCollapse"
+        },
+        {
+          "row": "flex-75-twist-60",
+          "side": "right",
+          "check": "noNonadjacentIntersection"
+        },
+        {
+          "row": "flex-75-twist-60",
+          "side": "right",
+          "check": "noSevereAreaCollapse"
+        }
+      ],
+      "allMeasuredChecksPassed": false
+    },
+    "repeatMeasurements": 4,
+    "nonAccumulationMeasured": true,
+    "referenceFailures": [],
+    "coverage": {
+      "primaryFlexCommands": [
+        -60.0,
+        -30.0,
+        0.0,
+        30.0,
+        60.0
+      ],
+      "primaryTwistCommands": [
+        -60.0,
+        0.0,
+        60.0
+      ],
+      "both30And60FlexSignsPresent": true,
+      "bothTwistSignsPresent": true
+    },
+    "primaryAcceptanceEvidenceComplete": true,
+    "allPrimarySeamNormalsMeasured": true
+  },
+  "limits": [
+    "All combined ROI triangles are checked; geometry outside exported ROI is not covered.",
+    "Proper crossings and positive-area coplanar overlaps exclude source/seam-adjacent triangles. Mere touching is not counted as penetration.",
+    "Area/edge ratios use actual rendered neutral; same-twist neutral is an additional diagnostic.",
+    "75degree poses are stress cases, never folded into60degree acceptance.",
+    "Visual acceptance and whole-action/whole-body collisions remain separate."
+  ],
+  "rows": [
+    {
+      "name": "flex-0-twist-0",
+      "command": {
+        "flexDeg": 0.0,
+        "twistDeg": 0.0
+      },
+      "classification": "primaryThrough60",
+      "capturedAt": "scene.onAfterRender",
+      "restoration": {
+        "status": "passed",
+        "runtimeAssertions": {
+          "positionsNormalsExact": true,
+          "boneTransformsExact": true,
+          "cacheExact": true
+        },
+        "hashEquality": true,
+        "evidence": "before/after hashes + runtime assertions"
+      },
+      "sides": {
+        "left": {
+          "checks": {
+            "actualRenderCapture": true,
+            "seamsWithin0_1mm": true,
+            "measuredFlexWithin1Degree": true,
+            "measuredTwistWithin1Degree": true,
+            "noNonadjacentIntersection": true,
+            "noSevereAreaCollapse": true,
+            "noSevereEdgeCollapse": true,
+            "rigidHandWithin0_001mm": true,
+            "rigidDbRelationshipWithin0_001mm": true,
+            "repeatWithoutAccumulation": null,
+            "fullOrientationWithin1Degree": true,
+            "seamNormalsWithin0_05Degree": true
+          },
+          "measuredAngles": {
+            "flexDeg": 6.756554626153482e-16,
+            "twistDeg": 0.0,
+            "totalSwingDeg": 8.537736462515939e-07,
+            "outOfFlexPlaneDeg": -3.2068256353419472e-15,
+            "relativeDeltaQuaternion": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "maxPoseScaleDeviation": 2.220446049250313e-16,
+            "method": "Independent neutral-relative forearm-to-hand matrix; signed longitudinal swing and axial quaternion twist. Command values are not used.",
+            "fullTargetOrientationErrorDeg": 0.0
+          },
+          "maximumSeamGapMm": 3.1858377480726804e-05,
+          "seamNormals": {
+            "status": "measured",
+            "seams": {
+              "body": {
+                "pairs": 154,
+                "maximumAngleDeg": 3.1945284701301985e-06,
+                "rmsAngleDeg": 8.397993205554369e-07,
+                "worstPair": [
+                  719,
+                  1294
+                ],
+                "within0_05Degree": true
+              },
+              "hand": {
+                "pairs": 44,
+                "maximumAngleDeg": 1.9090959104164224e-06,
+                "rmsAngleDeg": 8.341440419460097e-07,
+                "worstPair": [
+                  3300,
+                  2052
+                ],
+                "within0_05Degree": true
+              }
+            },
+            "method": "Normalize actual render-time world normals independently; acos of corresponding seam-pair dot products."
+          },
+          "qualityVsActualNeutral": {
+            "minimumAreaRatio": 1.0,
+            "maximumAreaRatio": 1.0,
+            "areaRatioP01": 1.0,
+            "minimumEdgeRatio": 1.0,
+            "maximumEdgeRatio": 1.0,
+            "edgeRatioP01": 1.0,
+            "collapsedEdgeCount": 0
+          },
+          "intersectionCounts": {
+            "properCount": 0,
+            "coplanarCount": 0
+          },
+          "rigidHandAndDb": {
+            "handVertices": 1266,
+            "maxHandRigidResidualMm": 1.249000902703301e-13,
+            "dbVertices": 180,
+            "maxDbRelativeResidualMm": 1.2719202621569003e-13,
+            "method": "Fit one proper rigid transform to protected hand cloud; use same transform to predict all DB points. No fit to DB points."
+          },
+          "repeat": null
+        },
+        "right": {
+          "checks": {
+            "actualRenderCapture": true,
+            "seamsWithin0_1mm": true,
+            "measuredFlexWithin1Degree": true,
+            "measuredTwistWithin1Degree": true,
+            "noNonadjacentIntersection": true,
+            "noSevereAreaCollapse": true,
+            "noSevereEdgeCollapse": true,
+            "rigidHandWithin0_001mm": true,
+            "rigidDbRelationshipWithin0_001mm": true,
+            "repeatWithoutAccumulation": null,
+            "fullOrientationWithin1Degree": true,
+            "seamNormalsWithin0_05Degree": true
+          },
+          "measuredAngles": {
+            "flexDeg": -1.3818922416193856e-14,
+            "twistDeg": 0.0,
+            "totalSwingDeg": 0.0,
+            "outOfFlexPlaneDeg": 8.883468830300533e-15,
+            "relativeDeltaQuaternion": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "maxPoseScaleDeviation": 3.3306690738754696e-16,
+            "method": "Independent neutral-relative forearm-to-hand matrix; signed longitudinal swing and axial quaternion twist. Command values are not used.",
+            "fullTargetOrientationErrorDeg": 0.0
+          },
+          "maximumSeamGapMm": 3.2374280574281126e-05,
+          "seamNormals": {
+            "status": "measured",
+            "seams": {
+              "body": {
+                "pairs": 152,
+                "maximumAngleDeg": 3.078324659199975e-06,
+                "rmsAngleDeg": 9.108440018698871e-07,
+                "worstPair": [
+                  1160,
+                  1172
+                ],
+                "within0_05Degree": true
+              },
+              "hand": {
+                "pairs": 44,
+                "maximumAngleDeg": 2.699869328381916e-06,
+                "rmsAngleDeg": 8.63421112316348e-07,
+                "worstPair": [
+                  3320,
+                  2054
+                ],
+                "within0_05Degree": true
+              }
+            },
+            "method": "Normalize actual render-time world normals independently; acos of corresponding seam-pair dot products."
+          },
+          "qualityVsActualNeutral": {
+            "minimumAreaRatio": 1.0,
+            "maximumAreaRatio": 1.0,
+            "areaRatioP01": 1.0,
+            "minimumEdgeRatio": 1.0,
+            "maximumEdgeRatio": 1.0,
+            "edgeRatioP01": 1.0,
+            "collapsedEdgeCount": 0
+          },
+          "intersectionCounts": {
+            "properCount": 0,
+            "coplanarCount": 0
+          },
+          "rigidHandAndDb": {
+            "handVertices": 1266,
+            "maxHandRigidResidualMm": 1.2449285054823656e-13,
+            "dbVertices": 180,
+            "maxDbRelativeResidualMm": 1.594436429147036e-13,
+            "method": "Fit one proper rigid transform to protected hand cloud; use same transform to predict all DB points. No fit to DB points."
+          },
+          "repeat": null
+        }
+      }
+    },
+    {
+      "name": "flex--30-twist-0",
+      "command": {
+        "flexDeg": -30.0,
+        "twistDeg": 0.0
+      },
+      "classification": "primaryThrough60",
+      "capturedAt": "scene.onAfterRender",
+      "restoration": {
+        "status": "passed",
+        "runtimeAssertions": {
+          "positionsNormalsExact": true,
+          "boneTransformsExact": true,
+          "cacheExact": true
+        },
+        "hashEquality": true,
+        "evidence": "before/after hashes + runtime assertions"
+      },
+      "sides": {
+        "left": {
+          "checks": {
+            "actualRenderCapture": true,
+            "seamsWithin0_1mm": true,
+            "measuredFlexWithin1Degree": true,
+            "measuredTwistWithin1Degree": true,
+            "noNonadjacentIntersection": true,
+            "noSevereAreaCollapse": true,
+            "noSevereEdgeCollapse": true,
+            "rigidHandWithin0_001mm": true,
+            "rigidDbRelationshipWithin0_001mm": true,
+            "repeatWithoutAccumulation": null,
+            "fullOrientationWithin1Degree": true,
+            "seamNormalsWithin0_05Degree": true
+          },
+          "measuredAngles": {
+            "flexDeg": -30.015985278549664,
+            "twistDeg": -0.00023574354338506964,
+            "totalSwingDeg": 30.01598619822327,
+            "outOfFlexPlaneDeg": 0.007802840946558767,
+            "relativeDeltaQuaternion": [
+              -1.9870770997700894e-06,
+              6.996458364649986e-05,
+              0.25895378548072334,
+              0.9658897101047367
+            ],
+            "maxPoseScaleDeviation": 4.440892098500626e-16,
+            "method": "Independent neutral-relative forearm-to-hand matrix; signed longitudinal swing and axial quaternion twist. Command values are not used.",
+            "fullTargetOrientationErrorDeg": 0.017884486294070544
+          },
+          "maximumSeamGapMm": 3.2161514613197886e-05,
+          "seamNormals": {
+            "status": "measured",
+            "seams": {
+              "body": {
+                "pairs": 154,
+                "maximumAngleDeg": 3.1945284701301985e-06,
+                "rmsAngleDeg": 7.783722951430292e-07,
+                "worstPair": [
+                  1155,
+                  1243
+                ],
+                "within0_05Degree": true
+              },
+              "hand": {
+                "pairs": 44,
+                "maximumAngleDeg": 2.091309789151873e-06,
+                "rmsAngleDeg": 7.72267320139134e-07,
+                "worstPair": [
+                  3301,
+                  2053
+                ],
+                "within0_05Degree": true
+              }
+            },
+            "method": "Normalize actual render-time world normals independently; acos of corresponding seam-pair dot products."
+          },
+          "qualityVsActualNeutral": {
+            "minimumAreaRatio": 0.6969051448642978,
+            "maximumAreaRatio": 1.293492481171224,
+            "areaRatioP01": 0.7384501365728812,
+            "minimumEdgeRatio": 0.7104484283756023,
+            "maximumEdgeRatio": 1.2892007879462914,
+            "edgeRatioP01": 0.7874553078919879,
+            "collapsedEdgeCount": 0
+          },
+          "intersectionCounts": {
+            "properCount": 0,
+            "coplanarCount": 0
+          },
+          "rigidHandAndDb": {
+            "handVertices": 1266,
+            "maxHandRigidResidualMm": 5.797195660796456e-13,
+            "dbVertices": 180,
+            "maxDbRelativeResidualMm": 5.768888059150692e-13,
+            "method": "Fit one proper rigid transform to protected hand cloud; use same transform to predict all DB points. No fit to DB points."
+          },
+          "repeat": null
+        },
+        "right": {
+          "checks": {
+            "actualRenderCapture": true,
+            "seamsWithin0_1mm": true,
+            "measuredFlexWithin1Degree": true,
+            "measuredTwistWithin1Degree": true,
+            "noNonadjacentIntersection": true,
+            "noSevereAreaCollapse": true,
+            "noSevereEdgeCollapse": true,
+            "rigidHandWithin0_001mm": true,
+            "rigidDbRelationshipWithin0_001mm": true,
+            "repeatWithoutAccumulation": null,
+            "fullOrientationWithin1Degree": true,
+            "seamNormalsWithin0_05Degree": true
+          },
+          "measuredAngles": {
+            "flexDeg": -30.015748220977812,
+            "twistDeg": 0.00020600026326178522,
+            "totalSwingDeg": 30.015749102941978,
+            "outOfFlexPlaneDeg": -0.007641160227353732,
+            "relativeDeltaQuaternion": [
+              -1.7363726143108022e-06,
+              -6.857100546573124e-05,
+              -0.2589517873820003,
+              0.965890245890634
+            ],
+            "maxPoseScaleDeviation": 5.551115123125783e-16,
+            "method": "Independent neutral-relative forearm-to-hand matrix; signed longitudinal swing and axial quaternion twist. Command values are not used.",
+            "fullTargetOrientationErrorDeg": 0.0176007096510981
+          },
+          "maximumSeamGapMm": 3.171687922477856e-05,
+          "seamNormals": {
+            "status": "measured",
+            "seams": {
+              "body": {
+                "pairs": 152,
+                "maximumAngleDeg": 3.1945284701301985e-06,
+                "rmsAngleDeg": 9.16093866681653e-07,
+                "worstPair": [
+                  1154,
+                  1318
+                ],
+                "within0_05Degree": true
+              },
+              "hand": {
+                "pairs": 44,
+                "maximumAngleDeg": 2.561320938754782e-06,
+                "rmsAngleDeg": 1.0052667644716621e-06,
+                "worstPair": [
+                  3319,
+                  2065
+                ],
+                "within0_05Degree": true
+              }
+            },
+            "method": "Normalize actual render-time world normals independently; acos of corresponding seam-pair dot products."
+          },
+          "qualityVsActualNeutral": {
+            "minimumAreaRatio": 0.6944368661283791,
+            "maximumAreaRatio": 1.303628494568813,
+            "areaRatioP01": 0.7395770555888045,
+            "minimumEdgeRatio": 0.7064645991852295,
+            "maximumEdgeRatio": 1.3026997579872412,
+            "edgeRatioP01": 0.7743851456214556,
+            "collapsedEdgeCount": 0
+          },
+          "intersectionCounts": {
+            "properCount": 0,
+            "coplanarCount": 0
+          },
+          "rigidHandAndDb": {
+            "handVertices": 1266,
+            "maxHandRigidResidualMm": 9.155133597044475e-13,
+            "dbVertices": 180,
+            "maxDbRelativeResidualMm": 9.053594779595602e-13,
+            "method": "Fit one proper rigid transform to protected hand cloud; use same transform to predict all DB points. No fit to DB points."
+          },
+          "repeat": null
+        }
+      }
+    },
+    {
+      "name": "flex-30-twist-0",
+      "command": {
+        "flexDeg": 30.0,
+        "twistDeg": 0.0
+      },
+      "classification": "primaryThrough60",
+      "capturedAt": "scene.onAfterRender",
+      "restoration": {
+        "status": "passed",
+        "runtimeAssertions": {
+          "positionsNormalsExact": true,
+          "boneTransformsExact": true,
+          "cacheExact": true
+        },
+        "hashEquality": true,
+        "evidence": "before/after hashes + runtime assertions"
+      },
+      "sides": {
+        "left": {
+          "checks": {
+            "actualRenderCapture": true,
+            "seamsWithin0_1mm": true,
+            "measuredFlexWithin1Degree": true,
+            "measuredTwistWithin1Degree": true,
+            "noNonadjacentIntersection": true,
+            "noSevereAreaCollapse": true,
+            "noSevereEdgeCollapse": true,
+            "rigidHandWithin0_001mm": true,
+            "rigidDbRelationshipWithin0_001mm": true,
+            "repeatWithoutAccumulation": null,
+            "fullOrientationWithin1Degree": true,
+            "seamNormalsWithin0_05Degree": true
+          },
+          "measuredAngles": {
+            "flexDeg": 30.015803132841807,
+            "twistDeg": 0.00013140857046778365,
+            "totalSwingDeg": 30.015803876250686,
+            "outOfFlexPlaneDeg": 0.007015331059605844,
+            "relativeDeltaQuaternion": [
+              1.1076403990447785e-06,
+              6.308531895254395e-05,
+              -0.25895225045976156,
+              0.9658901221157823
+            ],
+            "maxPoseScaleDeviation": 2.220446049250313e-16,
+            "method": "Independent neutral-relative forearm-to-hand matrix; signed longitudinal swing and axial quaternion twist. Command values are not used.",
+            "fullTargetOrientationErrorDeg": 0.017378458649165512
+          },
+          "maximumSeamGapMm": 3.003943612339633e-05,
+          "seamNormals": {
+            "status": "measured",
+            "seams": {
+              "body": {
+                "pairs": 154,
+                "maximumAngleDeg": 3.4150945850063763e-06,
+                "rmsAngleDeg": 9.607263236251839e-07,
+                "worstPair": [
+                  720,
+                  1295
+                ],
+                "within0_05Degree": true
+              },
+              "hand": {
+                "pairs": 44,
+                "maximumAngleDeg": 2.9575586669421963e-06,
+                "rmsAngleDeg": 1.1866588151561973e-06,
+                "worstPair": [
+                  3334,
+                  2064
+                ],
+                "within0_05Degree": true
+              }
+            },
+            "method": "Normalize actual render-time world normals independently; acos of corresponding seam-pair dot products."
+          },
+          "qualityVsActualNeutral": {
+            "minimumAreaRatio": 0.6680409872907247,
+            "maximumAreaRatio": 1.2595710461538339,
+            "areaRatioP01": 0.6790340440832753,
+            "minimumEdgeRatio": 0.6730274438005942,
+            "maximumEdgeRatio": 1.2509572540886995,
+            "edgeRatioP01": 0.7177429253203585,
+            "collapsedEdgeCount": 0
+          },
+          "intersectionCounts": {
+            "properCount": 0,
+            "coplanarCount": 0
+          },
+          "rigidHandAndDb": {
+            "handVertices": 1266,
+            "maxHandRigidResidualMm": 5.688200336284365e-13,
+            "dbVertices": 180,
+            "maxDbRelativeResidualMm": 5.558049685633556e-13,
+            "method": "Fit one proper rigid transform to protected hand cloud; use same transform to predict all DB points. No fit to DB points."
+          },
+          "repeat": null
+        },
+        "right": {
+          "checks": {
+            "actualRenderCapture": true,
+            "seamsWithin0_1mm": true,
+            "measuredFlexWithin1Degree": true,
+            "measuredTwistWithin1Degree": true,
+            "noNonadjacentIntersection": true,
+            "noSevereAreaCollapse": true,
+            "noSevereEdgeCollapse": true,
+            "rigidHandWithin0_001mm": true,
+            "rigidDbRelationshipWithin0_001mm": true,
+            "repeatWithoutAccumulation": null,
+            "fullOrientationWithin1Degree": true,
+            "seamNormalsWithin0_05Degree": true
+          },
+          "measuredAngles": {
+            "flexDeg": 30.01628689374472,
+            "twistDeg": -0.00019586917829883532,
+            "totalSwingDeg": 30.016287670840537,
+            "outOfFlexPlaneDeg": -0.007172586790951602,
+            "relativeDeltaQuaternion": [
+              1.6509757962967487e-06,
+              -6.436049592082459e-05,
+              0.2589563280393942,
+              0.9658890288347594
+            ],
+            "maxPoseScaleDeviation": 3.3306690738754696e-16,
+            "method": "Independent neutral-relative forearm-to-hand matrix; signed longitudinal swing and axial quaternion twist. Command values are not used.",
+            "fullTargetOrientationErrorDeg": 0.017879829540685385
+          },
+          "maximumSeamGapMm": 3.0417863752521588e-05,
+          "seamNormals": {
+            "status": "measured",
+            "seams": {
+              "body": {
+                "pairs": 152,
+                "maximumAngleDeg": 2.699869328381916e-06,
+                "rmsAngleDeg": 8.016288714668527e-07,
+                "worstPair": [
+                  482,
+                  1234
+                ],
+                "within0_05Degree": true
+              },
+              "hand": {
+                "pairs": 44,
+                "maximumAngleDeg": 2.2588727439225506e-06,
+                "rmsAngleDeg": 1.021613637375226e-06,
+                "worstPair": [
+                  3332,
+                  2057
+                ],
+                "within0_05Degree": true
+              }
+            },
+            "method": "Normalize actual render-time world normals independently; acos of corresponding seam-pair dot products."
+          },
+          "qualityVsActualNeutral": {
+            "minimumAreaRatio": 0.6557774757931288,
+            "maximumAreaRatio": 1.2606437762888125,
+            "areaRatioP01": 0.6719867408839469,
+            "minimumEdgeRatio": 0.6574501485676092,
+            "maximumEdgeRatio": 1.2527024729968266,
+            "edgeRatioP01": 0.7094170023877523,
+            "collapsedEdgeCount": 0
+          },
+          "intersectionCounts": {
+            "properCount": 0,
+            "coplanarCount": 0
+          },
+          "rigidHandAndDb": {
+            "handVertices": 1266,
+            "maxHandRigidResidualMm": 7.657030908387952e-13,
+            "dbVertices": 180,
+            "maxDbRelativeResidualMm": 7.473417450352271e-13,
+            "method": "Fit one proper rigid transform to protected hand cloud; use same transform to predict all DB points. No fit to DB points."
+          },
+          "repeat": null
+        }
+      }
+    },
+    {
+      "name": "flex--60-twist-0",
+      "command": {
+        "flexDeg": -60.0,
+        "twistDeg": 0.0
+      },
+      "classification": "primaryThrough60",
+      "capturedAt": "scene.onAfterRender",
+      "restoration": {
+        "status": "passed",
+        "runtimeAssertions": {
+          "positionsNormalsExact": true,
+          "boneTransformsExact": true,
+          "cacheExact": true
+        },
+        "hashEquality": true,
+        "evidence": "before/after hashes + runtime assertions"
+      },
+      "sides": {
+        "left": {
+          "checks": {
+            "actualRenderCapture": true,
+            "seamsWithin0_1mm": true,
+            "measuredFlexWithin1Degree": true,
+            "measuredTwistWithin1Degree": true,
+            "noNonadjacentIntersection": true,
+            "noSevereAreaCollapse": true,
+            "noSevereEdgeCollapse": true,
+            "rigidHandWithin0_001mm": true,
+            "rigidDbRelationshipWithin0_001mm": true,
+            "repeatWithoutAccumulation": null,
+            "fullOrientationWithin1Degree": true,
+            "seamNormalsWithin0_05Degree": true
+          },
+          "measuredAngles": {
+            "flexDeg": -59.99999122365125,
+            "twistDeg": -1.4268400008177196e-05,
+            "totalSwingDeg": 59.999991223651286,
+            "outOfFlexPlaneDeg": 2.3365689955809956e-06,
+            "relativeDeltaQuaternion": [
+              -1.0783340006845046e-07,
+              -3.8712813902010435e-08,
+              0.4999999336727648,
+              0.8660254420784748
+            ],
+            "maxPoseScaleDeviation": 2.220446049250313e-16,
+            "method": "Independent neutral-relative forearm-to-hand matrix; signed longitudinal swing and axial quaternion twist. Command values are not used.",
+            "fullTargetOrientationErrorDeg": 1.579222168893423e-05
+          },
+          "maximumSeamGapMm": 3.2007366039977504e-05,
+          "seamNormals": {
+            "status": "measured",
+            "seams": {
+              "body": {
+                "pairs": 154,
+                "maximumAngleDeg": 3.818191820832846e-06,
+                "rmsAngleDeg": 8.702466818711714e-07,
+                "worstPair": [
+                  560,
+                  1215
+                ],
+                "within0_05Degree": true
+              },
+              "hand": {
+                "pairs": 44,
+                "maximumAngleDeg": 2.091309789151873e-06,
+                "rmsAngleDeg": 8.823996676752067e-07,
+                "worstPair": [
+                  3293,
+                  2045
+                ],
+                "within0_05Degree": true
+              }
+            },
+            "method": "Normalize actual render-time world normals independently; acos of corresponding seam-pair dot products."
+          },
+          "qualityVsActualNeutral": {
+            "minimumAreaRatio": 0.3577091418834324,
+            "maximumAreaRatio": 1.5427487518186571,
+            "areaRatioP01": 0.43940698465641004,
+            "minimumEdgeRatio": 0.39943103257506,
+            "maximumEdgeRatio": 1.5352145828647847,
+            "edgeRatioP01": 0.5385907695438261,
+            "collapsedEdgeCount": 0
+          },
+          "intersectionCounts": {
+            "properCount": 0,
+            "coplanarCount": 0
+          },
+          "rigidHandAndDb": {
+            "handVertices": 1266,
+            "maxHandRigidResidualMm": 1.0258539222822104e-12,
+            "dbVertices": 180,
+            "maxDbRelativeResidualMm": 1.036871372546067e-12,
+            "method": "Fit one proper rigid transform to protected hand cloud; use same transform to predict all DB points. No fit to DB points."
+          },
+          "repeat": null
+        },
+        "right": {
+          "checks": {
+            "actualRenderCapture": true,
+            "seamsWithin0_1mm": true,
+            "measuredFlexWithin1Degree": true,
+            "measuredTwistWithin1Degree": true,
+            "noNonadjacentIntersection": true,
+            "noSevereAreaCollapse": true,
+            "noSevereEdgeCollapse": true,
+            "rigidHandWithin0_001mm": true,
+            "rigidDbRelationshipWithin0_001mm": true,
+            "repeatWithoutAccumulation": null,
+            "fullOrientationWithin1Degree": true,
+            "seamNormalsWithin0_05Degree": true
+          },
+          "measuredAngles": {
+            "flexDeg": -60.0000023735758,
+            "twistDeg": 1.647618483957558e-05,
+            "totalSwingDeg": 60.000002373575896,
+            "outOfFlexPlaneDeg": -4.153372834077611e-06,
+            "relativeDeltaQuaternion": [
+              -1.2451872179130448e-07,
+              3.003878150126954e-08,
+              -0.5000000179382926,
+              0.8660253934277509
+            ],
+            "maxPoseScaleDeviation": 3.3306690738754696e-16,
+            "method": "Independent neutral-relative forearm-to-hand matrix; signed longitudinal swing and axial quaternion twist. Command values are not used.",
+            "fullTargetOrientationErrorDeg": 1.48687940818945e-05
+          },
+          "maximumSeamGapMm": 3.197859080106699e-05,
+          "seamNormals": {
+            "status": "measured",
+            "seams": {
+              "body": {
+                "pairs": 152,
+                "maximumAngleDeg": 3.91248236030638e-06,
+                "rmsAngleDeg": 8.677023574401652e-07,
+                "worstPair": [
+                  559,
+                  1199
+                ],
+                "within0_05Degree": true
+              },
+              "hand": {
+                "pairs": 44,
+                "maximumAngleDeg": 2.091309789151873e-06,
+                "rmsAngleDeg": 1.0296897601855118e-06,
+                "worstPair": [
+                  3320,
+                  2054
+                ],
+                "within0_05Degree": true
+              }
+            },
+            "method": "Normalize actual render-time world normals independently; acos of corresponding seam-pair dot products."
+          },
+          "qualityVsActualNeutral": {
+            "minimumAreaRatio": 0.3476269759293927,
+            "maximumAreaRatio": 1.5616826655632403,
+            "areaRatioP01": 0.44517446726111365,
+            "minimumEdgeRatio": 0.38544422127170047,
+            "maximumEdgeRatio": 1.5603333963835408,
+            "edgeRatioP01": 0.5291476467065129,
+            "collapsedEdgeCount": 0
+          },
+          "intersectionCounts": {
+            "properCount": 0,
+            "coplanarCount": 0
+          },
+          "rigidHandAndDb": {
+            "handVertices": 1266,
+            "maxHandRigidResidualMm": 5.981250071950525e-13,
+            "dbVertices": 180,
+            "maxDbRelativeResidualMm": 5.282681600680761e-13,
+            "method": "Fit one proper rigid transform to protected hand cloud; use same transform to predict all DB points. No fit to DB points."
+          },
+          "repeat": null
+        }
+      }
+    },
+    {
+      "name": "flex-60-twist-0",
+      "command": {
+        "flexDeg": 60.0,
+        "twistDeg": 0.0
+      },
+      "classification": "primaryThrough60",
+      "capturedAt": "scene.onAfterRender",
+      "restoration": {
+        "status": "passed",
+        "runtimeAssertions": {
+          "positionsNormalsExact": true,
+          "boneTransformsExact": true,
+          "cacheExact": true
+        },
+        "hashEquality": true,
+        "evidence": "before/after hashes + runtime assertions"
+      },
+      "sides": {
+        "left": {
+          "checks": {
+            "actualRenderCapture": true,
+            "seamsWithin0_1mm": true,
+            "measuredFlexWithin1Degree": true,
+            "measuredTwistWithin1Degree": true,
+            "noNonadjacentIntersection": true,
+            "noSevereAreaCollapse": true,
+            "noSevereEdgeCollapse": true,
+            "rigidHandWithin0_001mm": true,
+            "rigidDbRelationshipWithin0_001mm": true,
+            "repeatWithoutAccumulation": null,
+            "fullOrientationWithin1Degree": true,
+            "seamNormalsWithin0_05Degree": true
+          },
+          "measuredAngles": {
+            "flexDeg": 59.99999813912827,
+            "twistDeg": 7.900260129645176e-06,
+            "totalSwingDeg": 59.999998139128685,
+            "outOfFlexPlaneDeg": 9.131504915553977e-06,
+            "relativeDeltaQuaternion": [
+              5.970619545641558e-08,
+              5.7543711302574694e-08,
+              -0.4999999859364666,
+              0.8660254119040193
+            ],
+            "maxPoseScaleDeviation": 2.220446049250313e-16,
+            "method": "Independent neutral-relative forearm-to-hand matrix; signed longitudinal swing and axial quaternion twist. Command values are not used.",
+            "fullTargetOrientationErrorDeg": 9.682694520885601e-06
+          },
+          "maximumSeamGapMm": 3.145434234785747e-05,
+          "seamNormals": {
+            "status": "measured",
+            "seams": {
+              "body": {
+                "pairs": 154,
+                "maximumAngleDeg": 3.1945284701301985e-06,
+                "rmsAngleDeg": 7.116628140398235e-07,
+                "worstPair": [
+                  567,
+                  1209
+                ],
+                "within0_05Degree": true
+              },
+              "hand": {
+                "pairs": 44,
+                "maximumAngleDeg": 2.4148365394514667e-06,
+                "rmsAngleDeg": 9.458304396837308e-07,
+                "worstPair": [
+                  3308,
+                  2036
+                ],
+                "within0_05Degree": true
+              }
+            },
+            "method": "Normalize actual render-time world normals independently; acos of corresponding seam-pair dot products."
+          },
+          "qualityVsActualNeutral": {
+            "minimumAreaRatio": 0.30037772192482,
+            "maximumAreaRatio": 1.4725303465675308,
+            "areaRatioP01": 0.3214421081680461,
+            "minimumEdgeRatio": 0.30797354000549104,
+            "maximumEdgeRatio": 1.457962397163693,
+            "edgeRatioP01": 0.4256725493778631,
+            "collapsedEdgeCount": 0
+          },
+          "intersectionCounts": {
+            "properCount": 0,
+            "coplanarCount": 0
+          },
+          "rigidHandAndDb": {
+            "handVertices": 1266,
+            "maxHandRigidResidualMm": 1.4697356992414397e-12,
+            "dbVertices": 180,
+            "maxDbRelativeResidualMm": 1.4614733855168401e-12,
+            "method": "Fit one proper rigid transform to protected hand cloud; use same transform to predict all DB points. No fit to DB points."
+          },
+          "repeat": null
+        },
+        "right": {
+          "checks": {
+            "actualRenderCapture": true,
+            "seamsWithin0_1mm": true,
+            "measuredFlexWithin1Degree": true,
+            "measuredTwistWithin1Degree": true,
+            "noNonadjacentIntersection": true,
+            "noSevereAreaCollapse": true,
+            "noSevereEdgeCollapse": true,
+            "rigidHandWithin0_001mm": true,
+            "rigidDbRelationshipWithin0_001mm": true,
+            "repeatWithoutAccumulation": null,
+            "fullOrientationWithin1Degree": true,
+            "seamNormalsWithin0_05Degree": true
+          },
+          "measuredAngles": {
+            "flexDeg": 59.99999300780084,
+            "twistDeg": -7.669228750728507e-06,
+            "totalSwingDeg": 59.99999300780113,
+            "outOfFlexPlaneDeg": -7.361832458149899e-06,
+            "relativeDeltaQuaternion": [
+              5.796017807675532e-08,
+              -4.0719383485838725e-08,
+              0.4999999471564728,
+              0.8660254342936583
+            ],
+            "maxPoseScaleDeviation": 3.3306690738754696e-16,
+            "method": "Independent neutral-relative forearm-to-hand matrix; signed longitudinal swing and axial quaternion twist. Command values are not used.",
+            "fullTargetOrientationErrorDeg": 1.0713361686170824e-05
+          },
+          "maximumSeamGapMm": 3.094049151237838e-05,
+          "seamNormals": {
+            "status": "measured",
+            "seams": {
+              "body": {
+                "pairs": 152,
+                "maximumAngleDeg": 2.699869328381916e-06,
+                "rmsAngleDeg": 7.554303550617917e-07,
+                "worstPair": [
+                  725,
+                  1270
+                ],
+                "within0_05Degree": true
+              },
+              "hand": {
+                "pairs": 44,
+                "maximumAngleDeg": 2.561320938754782e-06,
+                "rmsAngleDeg": 7.505089322820643e-07,
+                "worstPair": [
+                  3327,
+                  2046
+                ],
+                "within0_05Degree": true
+              }
+            },
+            "method": "Normalize actual render-time world normals independently; acos of corresponding seam-pair dot products."
+          },
+          "qualityVsActualNeutral": {
+            "minimumAreaRatio": 0.2868748652501219,
+            "maximumAreaRatio": 1.473925821632468,
+            "areaRatioP01": 0.3120467453918884,
+            "minimumEdgeRatio": 0.29129630637944165,
+            "maximumEdgeRatio": 1.4601771978956612,
+            "edgeRatioP01": 0.4109736574292422,
+            "collapsedEdgeCount": 0
+          },
+          "intersectionCounts": {
+            "properCount": 0,
+            "coplanarCount": 0
+          },
+          "rigidHandAndDb": {
+            "handVertices": 1266,
+            "maxHandRigidResidualMm": 7.490229835339863e-13,
+            "dbVertices": 180,
+            "maxDbRelativeResidualMm": 8.025154038416283e-13,
+            "method": "Fit one proper rigid transform to protected hand cloud; use same transform to predict all DB points. No fit to DB points."
+          },
+          "repeat": null
+        }
+      }
+    },
+    {
+      "name": "flex--75-twist-0",
+      "command": {
+        "flexDeg": -75.0,
+        "twistDeg": 0.0
+      },
+      "classification": "stress75",
+      "capturedAt": "scene.onAfterRender",
+      "restoration": {
+        "status": "passed",
+        "runtimeAssertions": {
+          "positionsNormalsExact": true,
+          "boneTransformsExact": true,
+          "cacheExact": true
+        },
+        "hashEquality": true,
+        "evidence": "before/after hashes + runtime assertions"
+      },
+      "sides": {
+        "left": {
+          "checks": {
+            "actualRenderCapture": true,
+            "seamsWithin0_1mm": true,
+            "measuredFlexWithin1Degree": true,
+            "measuredTwistWithin1Degree": true,
+            "noNonadjacentIntersection": true,
+            "noSevereAreaCollapse": true,
+            "noSevereEdgeCollapse": true,
+            "rigidHandWithin0_001mm": true,
+            "rigidDbRelationshipWithin0_001mm": true,
+            "repeatWithoutAccumulation": null,
+            "fullOrientationWithin1Degree": true,
+            "seamNormalsWithin0_05Degree": true
+          },
+          "measuredAngles": {
+            "flexDeg": -74.99997048660185,
+            "twistDeg": -3.275490573173556e-05,
+            "totalSwingDeg": 74.99997048660194,
+            "outOfFlexPlaneDeg": 6.025726387712713e-06,
+            "relativeDeltaQuaternion": [
+              -2.2677254089562968e-07,
+              -1.0772744718706449e-07,
+              0.6087612246781701,
+              0.7933534970794994
+            ],
+            "maxPoseScaleDeviation": 4.440892098500626e-16,
+            "method": "Independent neutral-relative forearm-to-hand matrix; signed longitudinal swing and axial quaternion twist. Command values are not used.",
+            "fullTargetOrientationErrorDeg": 4.121546670413264e-05
+          },
+          "maximumSeamGapMm": 3.2706198630989364e-05,
+          "seamNormals": {
+            "status": "measured",
+            "seams": {
+              "body": {
+                "pairs": 154,
+                "maximumAngleDeg": 2.9575586669421963e-06,
+                "rmsAngleDeg": 7.377875203962653e-07,
+                "worstPair": [
+                  13,
+                  1171
+                ],
+                "within0_05Degree": true
+              },
+              "hand": {
+                "pairs": 44,
+                "maximumAngleDeg": 1.7075472925031877e-06,
+                "rmsAngleDeg": 4.984964116198496e-07,
+                "worstPair": [
+                  3308,
+                  2036
+                ],
+                "within0_05Degree": true
+              }
+            },
+            "method": "Normalize actual render-time world normals independently; acos of corresponding seam-pair dot products."
+          },
+          "qualityVsActualNeutral": {
+            "minimumAreaRatio": 0.1796815985724696,
+            "maximumAreaRatio": 1.6530809892798222,
+            "areaRatioP01": 0.28838679902243336,
+            "minimumEdgeRatio": 0.2676730901473413,
+            "maximumEdgeRatio": 1.6438435469586095,
+            "edgeRatioP01": 0.4225335625409939,
+            "collapsedEdgeCount": 0
+          },
+          "intersectionCounts": {
+            "properCount": 0,
+            "coplanarCount": 0
+          },
+          "rigidHandAndDb": {
+            "handVertices": 1266,
+            "maxHandRigidResidualMm": 1.790964003809645e-12,
+            "dbVertices": 180,
+            "maxDbRelativeResidualMm": 1.788041346258923e-12,
+            "method": "Fit one proper rigid transform to protected hand cloud; use same transform to predict all DB points. No fit to DB points."
+          },
+          "repeat": null
+        },
+        "right": {
+          "checks": {
+            "actualRenderCapture": true,
+            "seamsWithin0_1mm": true,
+            "measuredFlexWithin1Degree": true,
+            "measuredTwistWithin1Degree": true,
+            "noNonadjacentIntersection": true,
+            "noSevereAreaCollapse": true,
+            "noSevereEdgeCollapse": true,
+            "rigidHandWithin0_001mm": true,
+            "rigidDbRelationshipWithin0_001mm": true,
+            "repeatWithoutAccumulation": null,
+            "fullOrientationWithin1Degree": true,
+            "seamNormalsWithin0_05Degree": true
+          },
+          "measuredAngles": {
+            "flexDeg": -74.99999462091378,
+            "twistDeg": 3.854584147688911e-05,
+            "totalSwingDeg": 74.99999462091401,
+            "outOfFlexPlaneDeg": -9.889350130042143e-06,
+            "relativeDeltaQuaternion": [
+              -2.6686497194456045e-07,
+              9.599282536214086e-08,
+              -0.6087613917676113,
+              0.7933533688672914
+            ],
+            "maxPoseScaleDeviation": 4.440892098500626e-16,
+            "method": "Independent neutral-relative forearm-to-hand matrix; signed longitudinal swing and axial quaternion twist. Command values are not used.",
+            "fullTargetOrientationErrorDeg": 3.294084341981738e-05
+          },
+          "maximumSeamGapMm": 3.042490246787102e-05,
+          "seamNormals": {
+            "status": "measured",
+            "seams": {
+              "body": {
+                "pairs": 152,
+                "maximumAngleDeg": 3.818191820832846e-06,
+                "rmsAngleDeg": 8.31002245313559e-07,
+                "worstPair": [
+                  557,
+                  1196
+                ],
+                "within0_05Degree": true
+              },
+              "hand": {
+                "pairs": 44,
+                "maximumAngleDeg": 3.6222548091772e-06,
+                "rmsAngleDeg": 1.1512281497551307e-06,
+                "worstPair": [
+                  3320,
+                  2054
+                ],
+                "within0_05Degree": true
+              }
+            },
+            "method": "Normalize actual render-time world normals independently; acos of corresponding seam-pair dot products."
+          },
+          "qualityVsActualNeutral": {
+            "minimumAreaRatio": 0.167252598051584,
+            "maximumAreaRatio": 1.6722482471910936,
+            "areaRatioP01": 0.29823614683226757,
+            "minimumEdgeRatio": 0.23833394057077945,
+            "maximumEdgeRatio": 1.6708737514916738,
+            "edgeRatioP01": 0.42567595284053844,
+            "collapsedEdgeCount": 0
+          },
+          "intersectionCounts": {
+            "properCount": 0,
+            "coplanarCount": 0
+          },
+          "rigidHandAndDb": {
+            "handVertices": 1266,
+            "maxHandRigidResidualMm": 8.481999574322109e-13,
+            "dbVertices": 180,
+            "maxDbRelativeResidualMm": 8.275631022611515e-13,
+            "method": "Fit one proper rigid transform to protected hand cloud; use same transform to predict all DB points. No fit to DB points."
+          },
+          "repeat": null
+        }
+      }
+    },
+    {
+      "name": "flex-75-twist-0",
+      "command": {
+        "flexDeg": 75.0,
+        "twistDeg": 0.0
+      },
+      "classification": "stress75",
+      "capturedAt": "scene.onAfterRender",
+      "restoration": {
+        "status": "passed",
+        "runtimeAssertions": {
+          "positionsNormalsExact": true,
+          "boneTransformsExact": true,
+          "cacheExact": true
+        },
+        "hashEquality": true,
+        "evidence": "before/after hashes + runtime assertions"
+      },
+      "sides": {
+        "left": {
+          "checks": {
+            "actualRenderCapture": true,
+            "seamsWithin0_1mm": true,
+            "measuredFlexWithin1Degree": true,
+            "measuredTwistWithin1Degree": true,
+            "noNonadjacentIntersection": true,
+            "noSevereAreaCollapse": false,
+            "noSevereEdgeCollapse": true,
+            "rigidHandWithin0_001mm": true,
+            "rigidDbRelationshipWithin0_001mm": true,
+            "repeatWithoutAccumulation": null,
+            "fullOrientationWithin1Degree": true,
+            "seamNormalsWithin0_05Degree": true
+          },
+          "measuredAngles": {
+            "flexDeg": 74.99999262211063,
+            "twistDeg": 1.1671826570136545e-05,
+            "totalSwingDeg": 74.99999262211101,
+            "outOfFlexPlaneDeg": 1.2781925023805551e-05,
+            "relativeDeltaQuaternion": [
+              8.080772383901947e-08,
+              7.859135468159336e-08,
+              -0.6087613779292725,
+              0.7933533794858637
+            ],
+            "maxPoseScaleDeviation": 2.220446049250313e-16,
+            "method": "Independent neutral-relative forearm-to-hand matrix; signed longitudinal swing and axial quaternion twist. Command values are not used.",
+            "fullTargetOrientationErrorDeg": 1.4875652019223544e-05
+          },
+          "maximumSeamGapMm": 3.159322558611068e-05,
+          "seamNormals": {
+            "status": "measured",
+            "seams": {
+              "body": {
+                "pairs": 154,
+                "maximumAngleDeg": 3.078324659199975e-06,
+                "rmsAngleDeg": 8.313019756191805e-07,
+                "worstPair": [
+                  1151,
+                  1239
+                ],
+                "within0_05Degree": true
+              },
+              "hand": {
+                "pairs": 44,
+                "maximumAngleDeg": 2.2588727439225506e-06,
+                "rmsAngleDeg": 9.969928232396992e-07,
+                "worstPair": [
+                  3327,
+                  2032
+                ],
+                "within0_05Degree": true
+              }
+            },
+            "method": "Normalize actual render-time world normals independently; acos of corresponding seam-pair dot products."
+          },
+          "qualityVsActualNeutral": {
+            "minimumAreaRatio": 0.09500143812086576,
+            "maximumAreaRatio": 1.560280004600719,
+            "areaRatioP01": 0.18264582284996406,
+            "minimumEdgeRatio": 0.14366880816181377,
+            "maximumEdgeRatio": 1.54347618700967,
+            "edgeRatioP01": 0.29497000280992386,
+            "collapsedEdgeCount": 0
+          },
+          "intersectionCounts": {
+            "properCount": 0,
+            "coplanarCount": 0
+          },
+          "rigidHandAndDb": {
+            "handVertices": 1266,
+            "maxHandRigidResidualMm": 7.602444187960931e-13,
+            "dbVertices": 180,
+            "maxDbRelativeResidualMm": 7.364386412590296e-13,
+            "method": "Fit one proper rigid transform to protected hand cloud; use same transform to predict all DB points. No fit to DB points."
+          },
+          "repeat": null
+        },
+        "right": {
+          "checks": {
+            "actualRenderCapture": true,
+            "seamsWithin0_1mm": true,
+            "measuredFlexWithin1Degree": true,
+            "measuredTwistWithin1Degree": true,
+            "noNonadjacentIntersection": false,
+            "noSevereAreaCollapse": false,
+            "noSevereEdgeCollapse": false,
+            "rigidHandWithin0_001mm": true,
+            "rigidDbRelationshipWithin0_001mm": true,
+            "repeatWithoutAccumulation": null,
+            "fullOrientationWithin1Degree": true,
+            "seamNormalsWithin0_05Degree": true
+          },
+          "measuredAngles": {
+            "flexDeg": 74.999977169607,
+            "twistDeg": -9.829264570271334e-06,
+            "totalSwingDeg": 74.99997716960718,
+            "outOfFlexPlaneDeg": -8.407440219112668e-06,
+            "relativeDeltaQuaternion": [
+              6.805109506819371e-08,
+              -4.026185941173748e-08,
+              0.6087612709467299,
+              0.7933534615764375
+            ],
+            "maxPoseScaleDeviation": 4.440892098500626e-16,
+            "method": "Independent neutral-relative forearm-to-hand matrix; signed longitudinal swing and axial quaternion twist. Command values are not used.",
+            "fullTargetOrientationErrorDeg": 2.4562631066396015e-05
+          },
+          "maximumSeamGapMm": 3.0044025215411298e-05,
+          "seamNormals": {
+            "status": "measured",
+            "seams": {
+              "body": {
+                "pairs": 152,
+                "maximumAngleDeg": 3.1945284701301985e-06,
+                "rmsAngleDeg": 9.029119727294925e-07,
+                "worstPair": [
+                  572,
+                  1204
+                ],
+                "within0_05Degree": true
+              },
+              "hand": {
+                "pairs": 44,
+                "maximumAngleDeg": 3.1945284701301985e-06,
+                "rmsAngleDeg": 9.88649640384099e-07,
+                "worstPair": [
+                  3306,
+                  2042
+                ],
+                "within0_05Degree": true
+              }
+            },
+            "method": "Normalize actual render-time world normals independently; acos of corresponding seam-pair dot products."
+          },
+          "qualityVsActualNeutral": {
+            "minimumAreaRatio": 0.0805988887288765,
+            "maximumAreaRatio": 1.5616490571201993,
+            "areaRatioP01": 0.16881587728262587,
+            "minimumEdgeRatio": 0.09818940538802265,
+            "maximumEdgeRatio": 1.5455971889825353,
+            "edgeRatioP01": 0.28571458616190254,
+            "collapsedEdgeCount": 2
+          },
+          "intersectionCounts": {
+            "properCount": 28,
+            "coplanarCount": 0
+          },
+          "rigidHandAndDb": {
+            "handVertices": 1266,
+            "maxHandRigidResidualMm": 1.9101503290687933e-12,
+            "dbVertices": 180,
+            "maxDbRelativeResidualMm": 1.8981648347705847e-12,
+            "method": "Fit one proper rigid transform to protected hand cloud; use same transform to predict all DB points. No fit to DB points."
+          },
+          "repeat": null
+        }
+      }
+    },
+    {
+      "name": "flex-0-twist--60",
+      "command": {
+        "flexDeg": 0.0,
+        "twistDeg": -60.0
+      },
+      "classification": "primaryThrough60",
+      "capturedAt": "scene.onAfterRender",
+      "restoration": {
+        "status": "passed",
+        "runtimeAssertions": {
+          "positionsNormalsExact": true,
+          "boneTransformsExact": true,
+          "cacheExact": true
+        },
+        "hashEquality": true,
+        "evidence": "before/after hashes + runtime assertions"
+      },
+      "sides": {
+        "left": {
+          "checks": {
+            "actualRenderCapture": true,
+            "seamsWithin0_1mm": true,
+            "measuredFlexWithin1Degree": true,
+            "measuredTwistWithin1Degree": true,
+            "noNonadjacentIntersection": true,
+            "noSevereAreaCollapse": true,
+            "noSevereEdgeCollapse": true,
+            "rigidHandWithin0_001mm": true,
+            "rigidDbRelationshipWithin0_001mm": true,
+            "repeatWithoutAccumulation": null,
+            "fullOrientationWithin1Degree": true,
+            "seamNormalsWithin0_05Degree": true
+          },
+          "measuredAngles": {
+            "flexDeg": 0.0010983676994185537,
+            "twistDeg": -59.996742166397354,
+            "totalSwingDeg": 0.0012103646993900806,
+            "outOfFlexPlaneDeg": 0.0005084994587655634,
+            "relativeDeltaQuaternion": [
+              -0.4999753787012259,
+              8.635343581434916e-06,
+              -6.0824090333216265e-06,
+              0.866039618366851
+            ],
+            "maxPoseScaleDeviation": 6.661338147750939e-16,
+            "method": "Independent neutral-relative forearm-to-hand matrix; signed longitudinal swing and axial quaternion twist. Command values are not used.",
+            "fullTargetOrientationErrorDeg": 0.0034754083335219285
+          },
+          "maximumSeamGapMm": 3.175584827283392e-05,
+          "seamNormals": {
+            "status": "measured",
+            "seams": {
+              "body": {
+                "pairs": 154,
+                "maximumAngleDeg": 2.561320938754782e-06,
+                "rmsAngleDeg": 8.198351922707747e-07,
+                "worstPair": [
+                  483,
+                  1181
+                ],
+                "within0_05Degree": true
+              },
+              "hand": {
+                "pairs": 44,
+                "maximumAngleDeg": 2.091309789151873e-06,
+                "rmsAngleDeg": 1.061379910715446e-06,
+                "worstPair": [
+                  3311,
+                  2034
+                ],
+                "within0_05Degree": true
+              }
+            },
+            "method": "Normalize actual render-time world normals independently; acos of corresponding seam-pair dot products."
+          },
+          "qualityVsActualNeutral": {
+            "minimumAreaRatio": 0.9203671659923484,
+            "maximumAreaRatio": 1.2257609321388736,
+            "areaRatioP01": 0.9854705031059741,
+            "minimumEdgeRatio": 0.7916172798538879,
+            "maximumEdgeRatio": 1.6845211324707583,
+            "edgeRatioP01": 0.8749633564573094,
+            "collapsedEdgeCount": 0
+          },
+          "intersectionCounts": {
+            "properCount": 0,
+            "coplanarCount": 0
+          },
+          "rigidHandAndDb": {
+            "handVertices": 1266,
+            "maxHandRigidResidualMm": 2.697043716174462e-12,
+            "dbVertices": 180,
+            "maxDbRelativeResidualMm": 2.6896069348722497e-12,
+            "method": "Fit one proper rigid transform to protected hand cloud; use same transform to predict all DB points. No fit to DB points."
+          },
+          "repeat": null
+        },
+        "right": {
+          "checks": {
+            "actualRenderCapture": true,
+            "seamsWithin0_1mm": true,
+            "measuredFlexWithin1Degree": true,
+            "measuredTwistWithin1Degree": true,
+            "noNonadjacentIntersection": true,
+            "noSevereAreaCollapse": true,
+            "noSevereEdgeCollapse": true,
+            "rigidHandWithin0_001mm": true,
+            "rigidDbRelationshipWithin0_001mm": true,
+            "repeatWithoutAccumulation": null,
+            "fullOrientationWithin1Degree": true,
+            "seamNormalsWithin0_05Degree": true
+          },
+          "measuredAngles": {
+            "flexDeg": -0.0016829000661963075,
+            "twistDeg": -59.994309203792625,
+            "totalSwingDeg": 0.0018435825964633113,
+            "outOfFlexPlaneDeg": -0.0007527569618018028,
+            "relativeDeltaQuaternion": [
+              0.49995699114148495,
+              -1.3031527006056493e-05,
+              -9.434638105494186e-06,
+              0.8660502333871402
+            ],
+            "maxPoseScaleDeviation": 4.440892098500626e-16,
+            "method": "Independent neutral-relative forearm-to-hand matrix; signed longitudinal swing and axial quaternion twist. Command values are not used.",
+            "fullTargetOrientationErrorDeg": 0.005981969336864946
+          },
+          "maximumSeamGapMm": 3.252436270760057e-05,
+          "seamNormals": {
+            "status": "measured",
+            "seams": {
+              "body": {
+                "pairs": 152,
+                "maximumAngleDeg": 2.9575586669421963e-06,
+                "rmsAngleDeg": 8.814109842636966e-07,
+                "worstPair": [
+                  1164,
+                  1176
+                ],
+                "within0_05Degree": true
+              },
+              "hand": {
+                "pairs": 44,
+                "maximumAngleDeg": 2.4148365394514667e-06,
+                "rmsAngleDeg": 9.191819657460356e-07,
+                "worstPair": [
+                  3310,
+                  2045
+                ],
+                "within0_05Degree": true
+              }
+            },
+            "method": "Normalize actual render-time world normals independently; acos of corresponding seam-pair dot products."
+          },
+          "qualityVsActualNeutral": {
+            "minimumAreaRatio": 0.9221309970435243,
+            "maximumAreaRatio": 1.211029118094673,
+            "areaRatioP01": 0.9705253363646351,
+            "minimumEdgeRatio": 0.8370243081428623,
+            "maximumEdgeRatio": 1.6101825012642539,
+            "edgeRatioP01": 0.9211965714990618,
+            "collapsedEdgeCount": 0
+          },
+          "intersectionCounts": {
+            "properCount": 0,
+            "coplanarCount": 0
+          },
+          "rigidHandAndDb": {
+            "handVertices": 1266,
+            "maxHandRigidResidualMm": 9.239939092585306e-13,
+            "dbVertices": 180,
+            "maxDbRelativeResidualMm": 9.235313275325532e-13,
+            "method": "Fit one proper rigid transform to protected hand cloud; use same transform to predict all DB points. No fit to DB points."
+          },
+          "repeat": null
+        }
+      }
+    },
+    {
+      "name": "flex--30-twist--60",
+      "command": {
+        "flexDeg": -30.0,
+        "twistDeg": -60.0
+      },
+      "classification": "primaryThrough60",
+      "capturedAt": "scene.onAfterRender",
+      "restoration": {
+        "status": "passed",
+        "runtimeAssertions": {
+          "positionsNormalsExact": true,
+          "boneTransformsExact": true,
+          "cacheExact": true
+        },
+        "hashEquality": true,
+        "evidence": "before/after hashes + runtime assertions"
+      },
+      "sides": {
+        "left": {
+          "checks": {
+            "actualRenderCapture": true,
+            "seamsWithin0_1mm": true,
+            "measuredFlexWithin1Degree": true,
+            "measuredTwistWithin1Degree": true,
+            "noNonadjacentIntersection": true,
+            "noSevereAreaCollapse": true,
+            "noSevereEdgeCollapse": true,
+            "rigidHandWithin0_001mm": true,
+            "rigidDbRelationshipWithin0_001mm": true,
+            "repeatWithoutAccumulation": null,
+            "fullOrientationWithin1Degree": true,
+            "seamNormalsWithin0_05Degree": true
+          },
+          "measuredAngles": {
+            "flexDeg": -30.00000558458231,
+            "twistDeg": -60.0000006162625,
+            "totalSwingDeg": 30.000005584582464,
+            "outOfFlexPlaneDeg": 2.9501043838928895e-06,
+            "relativeDeltaQuaternion": [
+              -0.4829629113365074,
+              -0.1294095242118218,
+              0.22414392143975362,
+              0.8365162902168995
+            ],
+            "maxPoseScaleDeviation": 2.220446049250313e-16,
+            "method": "Independent neutral-relative forearm-to-hand matrix; signed longitudinal swing and axial quaternion twist. Command values are not used.",
+            "fullTargetOrientationErrorDeg": 6.318308861016604e-06
+          },
+          "maximumSeamGapMm": 3.1174557560347904e-05,
+          "seamNormals": {
+            "status": "measured",
+            "seams": {
+              "body": {
+                "pairs": 154,
+                "maximumAngleDeg": 2.4148365394514667e-06,
+                "rmsAngleDeg": 8.509971392361247e-07,
+                "worstPair": [
+                  616,
+                  1222
+                ],
+                "within0_05Degree": true
+              },
+              "hand": {
+                "pairs": 44,
+                "maximumAngleDeg": 2.4148365394514667e-06,
+                "rmsAngleDeg": 1.0768753275983455e-06,
+                "worstPair": [
+                  3299,
+                  2050
+                ],
+                "within0_05Degree": true
+              }
+            },
+            "method": "Normalize actual render-time world normals independently; acos of corresponding seam-pair dot products."
+          },
+          "qualityVsActualNeutral": {
+            "minimumAreaRatio": 0.6734116206487054,
+            "maximumAreaRatio": 1.5338523261696673,
+            "areaRatioP01": 0.7346807555459983,
+            "minimumEdgeRatio": 0.5777395688876461,
+            "maximumEdgeRatio": 1.8980838170906387,
+            "edgeRatioP01": 0.7227543425172304,
+            "collapsedEdgeCount": 0
+          },
+          "intersectionCounts": {
+            "properCount": 0,
+            "coplanarCount": 0
+          },
+          "rigidHandAndDb": {
+            "handVertices": 1266,
+            "maxHandRigidResidualMm": 3.693291056919641e-13,
+            "dbVertices": 180,
+            "maxDbRelativeResidualMm": 3.7341307954279785e-13,
+            "method": "Fit one proper rigid transform to protected hand cloud; use same transform to predict all DB points. No fit to DB points."
+          },
+          "repeat": null
+        },
+        "right": {
+          "checks": {
+            "actualRenderCapture": true,
+            "seamsWithin0_1mm": true,
+            "measuredFlexWithin1Degree": true,
+            "measuredTwistWithin1Degree": true,
+            "noNonadjacentIntersection": true,
+            "noSevereAreaCollapse": true,
+            "noSevereEdgeCollapse": true,
+            "rigidHandWithin0_001mm": true,
+            "rigidDbRelationshipWithin0_001mm": true,
+            "repeatWithoutAccumulation": null,
+            "fullOrientationWithin1Degree": true,
+            "seamNormalsWithin0_05Degree": true
+          },
+          "measuredAngles": {
+            "flexDeg": -30.000188254562712,
+            "twistDeg": -59.999951499312516,
+            "totalSwingDeg": 30.000188254580575,
+            "outOfFlexPlaneDeg": -3.436143528345479e-05,
+            "relativeDeltaQuaternion": [
+              0.48296234649186315,
+              -0.12941048995577425,
+              -0.22414514185029785,
+              0.8365161399192427
+            ],
+            "maxPoseScaleDeviation": 5.551115123125783e-16,
+            "method": "Independent neutral-relative forearm-to-hand matrix; signed longitudinal swing and axial quaternion twist. Command values are not used.",
+            "fullTargetOrientationErrorDeg": 0.00019535729533261956
+          },
+          "maximumSeamGapMm": 3.1320089173157924e-05,
+          "seamNormals": {
+            "status": "measured",
+            "seams": {
+              "body": {
+                "pairs": 152,
+                "maximumAngleDeg": 3.1945284701301985e-06,
+                "rmsAngleDeg": 8.895347595371333e-07,
+                "worstPair": [
+                  426,
+                  1286
+                ],
+                "within0_05Degree": true
+              },
+              "hand": {
+                "pairs": 44,
+                "maximumAngleDeg": 2.4148365394514667e-06,
+                "rmsAngleDeg": 9.631865743209022e-07,
+                "worstPair": [
+                  3327,
+                  2046
+                ],
+                "within0_05Degree": true
+              }
+            },
+            "method": "Normalize actual render-time world normals independently; acos of corresponding seam-pair dot products."
+          },
+          "qualityVsActualNeutral": {
+            "minimumAreaRatio": 0.6413103909510693,
+            "maximumAreaRatio": 1.4563501670636083,
+            "areaRatioP01": 0.6809862791902913,
+            "minimumEdgeRatio": 0.580601897629694,
+            "maximumEdgeRatio": 1.6563577087121317,
+            "edgeRatioP01": 0.7893289947439236,
+            "collapsedEdgeCount": 0
+          },
+          "intersectionCounts": {
+            "properCount": 0,
+            "coplanarCount": 0
+          },
+          "rigidHandAndDb": {
+            "handVertices": 1266,
+            "maxHandRigidResidualMm": 5.793145344902269e-13,
+            "dbVertices": 180,
+            "maxDbRelativeResidualMm": 5.014401173638843e-13,
+            "method": "Fit one proper rigid transform to protected hand cloud; use same transform to predict all DB points. No fit to DB points."
+          },
+          "repeat": null
+        }
+      }
+    },
+    {
+      "name": "flex-30-twist--60",
+      "command": {
+        "flexDeg": 30.0,
+        "twistDeg": -60.0
+      },
+      "classification": "primaryThrough60",
+      "capturedAt": "scene.onAfterRender",
+      "restoration": {
+        "status": "passed",
+        "runtimeAssertions": {
+          "positionsNormalsExact": true,
+          "boneTransformsExact": true,
+          "cacheExact": true
+        },
+        "hashEquality": true,
+        "evidence": "before/after hashes + runtime assertions"
+      },
+      "sides": {
+        "left": {
+          "checks": {
+            "actualRenderCapture": true,
+            "seamsWithin0_1mm": true,
+            "measuredFlexWithin1Degree": true,
+            "measuredTwistWithin1Degree": true,
+            "noNonadjacentIntersection": true,
+            "noSevereAreaCollapse": true,
+            "noSevereEdgeCollapse": true,
+            "rigidHandWithin0_001mm": true,
+            "rigidDbRelationshipWithin0_001mm": true,
+            "repeatWithoutAccumulation": null,
+            "fullOrientationWithin1Degree": true,
+            "seamNormalsWithin0_05Degree": true
+          },
+          "measuredAngles": {
+            "flexDeg": 30.000293798833564,
+            "twistDeg": -59.99991673138658,
+            "totalSwingDeg": 30.000293798865368,
+            "outOfFlexPlaneDeg": 4.5871880870274524e-05,
+            "relativeDeltaQuaternion": [
+              -0.48296197349354075,
+              0.12941095683845122,
+              -0.22414589959000994,
+              0.836516080004662
+            ],
+            "maxPoseScaleDeviation": 4.440892098500626e-16,
+            "method": "Independent neutral-relative forearm-to-hand matrix; signed longitudinal swing and axial quaternion twist. Command values are not used.",
+            "fullTargetOrientationErrorDeg": 0.0003057118858270007
+          },
+          "maximumSeamGapMm": 3.273568107446977e-05,
+          "seamNormals": {
+            "status": "measured",
+            "seams": {
+              "body": {
+                "pairs": 154,
+                "maximumAngleDeg": 2.091309789151873e-06,
+                "rmsAngleDeg": 7.66113697608607e-07,
+                "worstPair": [
+                  250,
+                  1205
+                ],
+                "within0_05Degree": true
+              },
+              "hand": {
+                "pairs": 44,
+                "maximumAngleDeg": 2.699869328381916e-06,
+                "rmsAngleDeg": 1.029689760185512e-06,
+                "worstPair": [
+                  3297,
+                  2049
+                ],
+                "within0_05Degree": true
+              }
+            },
+            "method": "Normalize actual render-time world normals independently; acos of corresponding seam-pair dot products."
+          },
+          "qualityVsActualNeutral": {
+            "minimumAreaRatio": 0.5207826944979402,
+            "maximumAreaRatio": 1.3079098248822238,
+            "areaRatioP01": 0.6578811583824432,
+            "minimumEdgeRatio": 0.5254145681401547,
+            "maximumEdgeRatio": 1.5408202991041087,
+            "edgeRatioP01": 0.7492321127756301,
+            "collapsedEdgeCount": 0
+          },
+          "intersectionCounts": {
+            "properCount": 0,
+            "coplanarCount": 0
+          },
+          "rigidHandAndDb": {
+            "handVertices": 1266,
+            "maxHandRigidResidualMm": 7.952832160537328e-13,
+            "dbVertices": 180,
+            "maxDbRelativeResidualMm": 7.701859664206227e-13,
+            "method": "Fit one proper rigid transform to protected hand cloud; use same transform to predict all DB points. No fit to DB points."
+          },
+          "repeat": null
+        },
+        "right": {
+          "checks": {
+            "actualRenderCapture": true,
+            "seamsWithin0_1mm": true,
+            "measuredFlexWithin1Degree": true,
+            "measuredTwistWithin1Degree": true,
+            "noNonadjacentIntersection": true,
+            "noSevereAreaCollapse": true,
+            "noSevereEdgeCollapse": true,
+            "rigidHandWithin0_001mm": true,
+            "rigidDbRelationshipWithin0_001mm": true,
+            "repeatWithoutAccumulation": null,
+            "fullOrientationWithin1Degree": true,
+            "seamNormalsWithin0_05Degree": true
+          },
+          "measuredAngles": {
+            "flexDeg": 30.000017490181033,
+            "twistDeg": -60.00000080171952,
+            "totalSwingDeg": 30.0000174901824,
+            "outOfFlexPlaneDeg": -9.52496584326681e-06,
+            "relativeDeltaQuaternion": [
+              0.4829628992452086,
+              0.12940952331011227,
+              0.22414403784122366,
+              0.836516266147613
+            ],
+            "maxPoseScaleDeviation": 4.440892098500626e-16,
+            "method": "Independent neutral-relative forearm-to-hand matrix; signed longitudinal swing and axial quaternion twist. Command values are not used.",
+            "fullTargetOrientationErrorDeg": 1.9992388906350227e-05
+          },
+          "maximumSeamGapMm": 3.201197094724514e-05,
+          "seamNormals": {
+            "status": "measured",
+            "seams": {
+              "body": {
+                "pairs": 152,
+                "maximumAngleDeg": 3.078324659199975e-06,
+                "rmsAngleDeg": 8.565775081383106e-07,
+                "worstPair": [
+                  331,
+                  1248
+                ],
+                "within0_05Degree": true
+              },
+              "hand": {
+                "pairs": 44,
+                "maximumAngleDeg": 2.4148365394514667e-06,
+                "rmsAngleDeg": 9.969928232396992e-07,
+                "worstPair": [
+                  3308,
+                  2041
+                ],
+                "within0_05Degree": true
+              }
+            },
+            "method": "Normalize actual render-time world normals independently; acos of corresponding seam-pair dot products."
+          },
+          "qualityVsActualNeutral": {
+            "minimumAreaRatio": 0.5922544609211824,
+            "maximumAreaRatio": 1.3423136210001616,
+            "areaRatioP01": 0.6871770763569652,
+            "minimumEdgeRatio": 0.5826105274475611,
+            "maximumEdgeRatio": 1.6653268053227135,
+            "edgeRatioP01": 0.7362431639467256,
+            "collapsedEdgeCount": 0
+          },
+          "intersectionCounts": {
+            "properCount": 0,
+            "coplanarCount": 0
+          },
+          "rigidHandAndDb": {
+            "handVertices": 1266,
+            "maxHandRigidResidualMm": 6.383122408330207e-13,
+            "dbVertices": 180,
+            "maxDbRelativeResidualMm": 6.693155773823164e-13,
+            "method": "Fit one proper rigid transform to protected hand cloud; use same transform to predict all DB points. No fit to DB points."
+          },
+          "repeat": null
+        }
+      }
+    },
+    {
+      "name": "flex--60-twist--60",
+      "command": {
+        "flexDeg": -60.0,
+        "twistDeg": -60.0
+      },
+      "classification": "primaryThrough60",
+      "capturedAt": "scene.onAfterRender",
+      "restoration": {
+        "status": "passed",
+        "runtimeAssertions": {
+          "positionsNormalsExact": true,
+          "boneTransformsExact": true,
+          "cacheExact": true
+        },
+        "hashEquality": true,
+        "evidence": "before/after hashes + runtime assertions"
+      },
+      "sides": {
+        "left": {
+          "checks": {
+            "actualRenderCapture": true,
+            "seamsWithin0_1mm": true,
+            "measuredFlexWithin1Degree": true,
+            "measuredTwistWithin1Degree": true,
+            "noNonadjacentIntersection": true,
+            "noSevereAreaCollapse": true,
+            "noSevereEdgeCollapse": true,
+            "rigidHandWithin0_001mm": true,
+            "rigidDbRelationshipWithin0_001mm": true,
+            "repeatWithoutAccumulation": null,
+            "fullOrientationWithin1Degree": true,
+            "seamNormalsWithin0_05Degree": true
+          },
+          "measuredAngles": {
+            "flexDeg": -60.00044405392867,
+            "twistDeg": -60.000017302389736,
+            "totalSwingDeg": 60.000444054138825,
+            "outOfFlexPlaneDeg": 0.000204234694972706,
+            "relativeDeltaQuaternion": [
+              -0.4330118463567384,
+              -0.2499999610590431,
+              0.43301659946930793,
+              0.7499982566441353
+            ],
+            "maxPoseScaleDeviation": 4.440892098500626e-16,
+            "method": "Independent neutral-relative forearm-to-hand matrix; signed longitudinal swing and axial quaternion twist. Command values are not used.",
+            "fullTargetOrientationErrorDeg": 0.0004990176788674795
+          },
+          "maximumSeamGapMm": 3.238114570940247e-05,
+          "seamNormals": {
+            "status": "measured",
+            "seams": {
+              "body": {
+                "pairs": 154,
+                "maximumAngleDeg": 2.091309789151873e-06,
+                "rmsAngleDeg": 7.904408023558257e-07,
+                "worstPair": [
+                  484,
+                  1180
+                ],
+                "within0_05Degree": true
+              },
+              "hand": {
+                "pairs": 44,
+                "maximumAngleDeg": 2.4148365394514667e-06,
+                "rmsAngleDeg": 1.0377030309249149e-06,
+                "worstPair": [
+                  3307,
+                  2031
+                ],
+                "within0_05Degree": true
+              }
+            },
+            "method": "Normalize actual render-time world normals independently; acos of corresponding seam-pair dot products."
+          },
+          "qualityVsActualNeutral": {
+            "minimumAreaRatio": 0.3599722424745342,
+            "maximumAreaRatio": 1.8355411102729542,
+            "areaRatioP01": 0.4202279445478389,
+            "minimumEdgeRatio": 0.310807161461535,
+            "maximumEdgeRatio": 2.1258510855211354,
+            "edgeRatioP01": 0.501270219255147,
+            "collapsedEdgeCount": 0
+          },
+          "intersectionCounts": {
+            "properCount": 0,
+            "coplanarCount": 0
+          },
+          "rigidHandAndDb": {
+            "handVertices": 1266,
+            "maxHandRigidResidualMm": 7.892362715077418e-13,
+            "dbVertices": 180,
+            "maxDbRelativeResidualMm": 7.596108288712161e-13,
+            "method": "Fit one proper rigid transform to protected hand cloud; use same transform to predict all DB points. No fit to DB points."
+          },
+          "repeat": null
+        },
+        "right": {
+          "checks": {
+            "actualRenderCapture": true,
+            "seamsWithin0_1mm": true,
+            "measuredFlexWithin1Degree": true,
+            "measuredTwistWithin1Degree": true,
+            "noNonadjacentIntersection": true,
+            "noSevereAreaCollapse": true,
+            "noSevereEdgeCollapse": true,
+            "rigidHandWithin0_001mm": true,
+            "rigidDbRelationshipWithin0_001mm": true,
+            "repeatWithoutAccumulation": null,
+            "fullOrientationWithin1Degree": true,
+            "seamNormalsWithin0_05Degree": true
+          },
+          "measuredAngles": {
+            "flexDeg": -60.004762635712154,
+            "twistDeg": -59.99872955126324,
+            "totalSwingDeg": 60.00476263697014,
+            "outOfFlexPlaneDeg": -0.0004997310625517396,
+            "relativeDeltaQuaternion": [
+              0.4329939961615905,
+              -0.2500175566208777,
+              -0.433044126921569,
+              0.7499868030892802
+            ],
+            "maxPoseScaleDeviation": 3.3306690738754696e-16,
+            "method": "Independent neutral-relative forearm-to-hand matrix; signed longitudinal swing and axial quaternion twist. Command values are not used.",
+            "fullTargetOrientationErrorDeg": 0.004888414955305929
+          },
+          "maximumSeamGapMm": 3.181777732043905e-05,
+          "seamNormals": {
+            "status": "measured",
+            "seams": {
+              "body": {
+                "pairs": 152,
+                "maximumAngleDeg": 3.6222548091772e-06,
+                "rmsAngleDeg": 8.949096408320657e-07,
+                "worstPair": [
+                  422,
+                  1282
+                ],
+                "within0_05Degree": true
+              },
+              "hand": {
+                "pairs": 44,
+                "maximumAngleDeg": 1.7075472925031877e-06,
+                "rmsAngleDeg": 6.810757582501505e-07,
+                "worstPair": [
+                  3307,
+                  2043
+                ],
+                "within0_05Degree": true
+              }
+            },
+            "method": "Normalize actual render-time world normals independently; acos of corresponding seam-pair dot products."
+          },
+          "qualityVsActualNeutral": {
+            "minimumAreaRatio": 0.2883589374533895,
+            "maximumAreaRatio": 1.6785002333103078,
+            "areaRatioP01": 0.3386924442503559,
+            "minimumEdgeRatio": 0.31823286232240644,
+            "maximumEdgeRatio": 1.8467053664301867,
+            "edgeRatioP01": 0.5748698997740511,
+            "collapsedEdgeCount": 0
+          },
+          "intersectionCounts": {
+            "properCount": 0,
+            "coplanarCount": 0
+          },
+          "rigidHandAndDb": {
+            "handVertices": 1266,
+            "maxHandRigidResidualMm": 1.0244214106980607e-12,
+            "dbVertices": 180,
+            "maxDbRelativeResidualMm": 9.836601059614785e-13,
+            "method": "Fit one proper rigid transform to protected hand cloud; use same transform to predict all DB points. No fit to DB points."
+          },
+          "repeat": null
+        }
+      }
+    },
+    {
+      "name": "flex-60-twist--60",
+      "command": {
+        "flexDeg": 60.0,
+        "twistDeg": -60.0
+      },
+      "classification": "primaryThrough60",
+      "capturedAt": "scene.onAfterRender",
+      "restoration": {
+        "status": "passed",
+        "runtimeAssertions": {
+          "positionsNormalsExact": true,
+          "boneTransformsExact": true,
+          "cacheExact": true
+        },
+        "hashEquality": true,
+        "evidence": "before/after hashes + runtime assertions"
+      },
+      "sides": {
+        "left": {
+          "checks": {
+            "actualRenderCapture": true,
+            "seamsWithin0_1mm": true,
+            "measuredFlexWithin1Degree": true,
+            "measuredTwistWithin1Degree": true,
+            "noNonadjacentIntersection": true,
+            "noSevereAreaCollapse": true,
+            "noSevereEdgeCollapse": true,
+            "rigidHandWithin0_001mm": true,
+            "rigidDbRelationshipWithin0_001mm": true,
+            "repeatWithoutAccumulation": null,
+            "fullOrientationWithin1Degree": true,
+            "seamNormalsWithin0_05Degree": true
+          },
+          "measuredAngles": {
+            "flexDeg": 60.0006590433142,
+            "twistDeg": -59.999783263487956,
+            "totalSwingDeg": 60.00065904344362,
+            "outOfFlexPlaneDeg": 0.00016027154304561547,
+            "relativeDeltaQuaternion": [
+              -0.43300984554208893,
+              0.2500030699919209,
+              -0.43301668066049415,
+              0.7499983286168035
+            ],
+            "maxPoseScaleDeviation": 4.440892098500626e-16,
+            "method": "Independent neutral-relative forearm-to-hand matrix; signed longitudinal swing and axial quaternion twist. Command values are not used.",
+            "fullTargetOrientationErrorDeg": 0.0006895299403806404
+          },
+          "maximumSeamGapMm": 3.217531749542878e-05,
+          "seamNormals": {
+            "status": "measured",
+            "seams": {
+              "body": {
+                "pairs": 154,
+                "maximumAngleDeg": 2.561320938754782e-06,
+                "rmsAngleDeg": 7.964064779497144e-07,
+                "worstPair": [
+                  474,
+                  1177
+                ],
+                "within0_05Degree": true
+              },
+              "hand": {
+                "pairs": 44,
+                "maximumAngleDeg": 2.561320938754782e-06,
+                "rmsAngleDeg": 9.886496403840992e-07,
+                "worstPair": [
+                  3321,
+                  2056
+                ],
+                "within0_05Degree": true
+              }
+            },
+            "method": "Normalize actual render-time world normals independently; acos of corresponding seam-pair dot products."
+          },
+          "qualityVsActualNeutral": {
+            "minimumAreaRatio": 0.12632215525405507,
+            "maximumAreaRatio": 1.520249928270539,
+            "areaRatioP01": 0.2882313057726533,
+            "minimumEdgeRatio": 0.2881083331450132,
+            "maximumEdgeRatio": 1.5992896356856376,
+            "edgeRatioP01": 0.5487229153562145,
+            "collapsedEdgeCount": 0
+          },
+          "intersectionCounts": {
+            "properCount": 0,
+            "coplanarCount": 0
+          },
+          "rigidHandAndDb": {
+            "handVertices": 1266,
+            "maxHandRigidResidualMm": 5.978733960281816e-13,
+            "dbVertices": 180,
+            "maxDbRelativeResidualMm": 6.131407058289218e-13,
+            "method": "Fit one proper rigid transform to protected hand cloud; use same transform to predict all DB points. No fit to DB points."
+          },
+          "repeat": null
+        },
+        "right": {
+          "checks": {
+            "actualRenderCapture": true,
+            "seamsWithin0_1mm": true,
+            "measuredFlexWithin1Degree": true,
+            "measuredTwistWithin1Degree": true,
+            "noNonadjacentIntersection": true,
+            "noSevereAreaCollapse": true,
+            "noSevereEdgeCollapse": true,
+            "rigidHandWithin0_001mm": true,
+            "rigidDbRelationshipWithin0_001mm": true,
+            "repeatWithoutAccumulation": null,
+            "fullOrientationWithin1Degree": true,
+            "seamNormalsWithin0_05Degree": true
+          },
+          "measuredAngles": {
+            "flexDeg": 60.0003450831127,
+            "twistDeg": -59.99998238846865,
+            "totalSwingDeg": 60.00034508320066,
+            "outOfFlexPlaneDeg": -0.0001321298589521142,
+            "relativeDeltaQuaternion": [
+              0.43301183376849245,
+              0.2500000843781201,
+              0.43301566459060364,
+              0.749998762563338
+            ],
+            "maxPoseScaleDeviation": 3.3306690738754696e-16,
+            "method": "Independent neutral-relative forearm-to-hand matrix; signed longitudinal swing and axial quaternion twist. Command values are not used.",
+            "fullTargetOrientationErrorDeg": 0.00038125749460947303
+          },
+          "maximumSeamGapMm": 3.109087702616498e-05,
+          "seamNormals": {
+            "status": "measured",
+            "seams": {
+              "body": {
+                "pairs": 152,
+                "maximumAngleDeg": 2.831646840510158e-06,
+                "rmsAngleDeg": 8.046144641900961e-07,
+                "worstPair": [
+                  424,
+                  1280
+                ],
+                "within0_05Degree": true
+              },
+              "hand": {
+                "pairs": 44,
+                "maximumAngleDeg": 2.699869328381916e-06,
+                "rmsAngleDeg": 1.0691556916699206e-06,
+                "worstPair": [
+                  3291,
+                  2035
+                ],
+                "within0_05Degree": true
+              }
+            },
+            "method": "Normalize actual render-time world normals independently; acos of corresponding seam-pair dot products."
+          },
+          "qualityVsActualNeutral": {
+            "minimumAreaRatio": 0.268465972876688,
+            "maximumAreaRatio": 1.579457027400332,
+            "areaRatioP01": 0.3517412352199346,
+            "minimumEdgeRatio": 0.29609947236158946,
+            "maximumEdgeRatio": 1.8209371102534744,
+            "edgeRatioP01": 0.499385122407761,
+            "collapsedEdgeCount": 0
+          },
+          "intersectionCounts": {
+            "properCount": 0,
+            "coplanarCount": 0
+          },
+          "rigidHandAndDb": {
+            "handVertices": 1266,
+            "maxHandRigidResidualMm": 9.393491582383862e-13,
+            "dbVertices": 180,
+            "maxDbRelativeResidualMm": 9.388813213319551e-13,
+            "method": "Fit one proper rigid transform to protected hand cloud; use same transform to predict all DB points. No fit to DB points."
+          },
+          "repeat": null
+        }
+      }
+    },
+    {
+      "name": "flex--75-twist--60",
+      "command": {
+        "flexDeg": -75.0,
+        "twistDeg": -60.0
+      },
+      "classification": "stress75",
+      "capturedAt": "scene.onAfterRender",
+      "restoration": {
+        "status": "passed",
+        "runtimeAssertions": {
+          "positionsNormalsExact": true,
+          "boneTransformsExact": true,
+          "cacheExact": true
+        },
+        "hashEquality": true,
+        "evidence": "before/after hashes + runtime assertions"
+      },
+      "sides": {
+        "left": {
+          "checks": {
+            "actualRenderCapture": true,
+            "seamsWithin0_1mm": true,
+            "measuredFlexWithin1Degree": true,
+            "measuredTwistWithin1Degree": true,
+            "noNonadjacentIntersection": true,
+            "noSevereAreaCollapse": true,
+            "noSevereEdgeCollapse": true,
+            "rigidHandWithin0_001mm": true,
+            "rigidDbRelationshipWithin0_001mm": true,
+            "repeatWithoutAccumulation": null,
+            "fullOrientationWithin1Degree": true,
+            "seamNormalsWithin0_05Degree": true
+          },
+          "measuredAngles": {
+            "flexDeg": -75.00091013060842,
+            "twistDeg": -60.000013088168586,
+            "totalSwingDeg": 75.00091013097487,
+            "outOfFlexPlaneDeg": 0.0003958845621220824,
+            "relativeDeltaQuaternion": [
+              -0.3966743310955503,
+              -0.3043801540379655,
+              0.5272104618210316,
+              0.687059914289996
+            ],
+            "maxPoseScaleDeviation": 4.440892098500626e-16,
+            "method": "Independent neutral-relative forearm-to-hand matrix; signed longitudinal swing and axial quaternion twist. Command values are not used.",
+            "fullTargetOrientationErrorDeg": 0.0010341958254224857
+          },
+          "maximumSeamGapMm": 3.205600038779708e-05,
+          "seamNormals": {
+            "status": "measured",
+            "seams": {
+              "body": {
+                "pairs": 154,
+                "maximumAngleDeg": 2.561320938754782e-06,
+                "rmsAngleDeg": 8.729619667279081e-07,
+                "worstPair": [
+                  484,
+                  1180
+                ],
+                "within0_05Degree": true
+              },
+              "hand": {
+                "pairs": 44,
+                "maximumAngleDeg": 2.2588727439225506e-06,
+                "rmsAngleDeg": 9.969928232396992e-07,
+                "worstPair": [
+                  3296,
+                  2048
+                ],
+                "within0_05Degree": true
+              }
+            },
+            "method": "Normalize actual render-time world normals independently; acos of corresponding seam-pair dot products."
+          },
+          "qualityVsActualNeutral": {
+            "minimumAreaRatio": 0.20971646412975462,
+            "maximumAreaRatio": 1.979662365031852,
+            "areaRatioP01": 0.2753738409532615,
+            "minimumEdgeRatio": 0.18529924351601262,
+            "maximumEdgeRatio": 2.2335757749656113,
+            "edgeRatioP01": 0.42398219794608405,
+            "collapsedEdgeCount": 0
+          },
+          "intersectionCounts": {
+            "properCount": 0,
+            "coplanarCount": 0
+          },
+          "rigidHandAndDb": {
+            "handVertices": 1266,
+            "maxHandRigidResidualMm": 6.45615511131825e-13,
+            "dbVertices": 180,
+            "maxDbRelativeResidualMm": 6.112531465858672e-13,
+            "method": "Fit one proper rigid transform to protected hand cloud; use same transform to predict all DB points. No fit to DB points."
+          },
+          "repeat": null
+        },
+        "right": {
+          "checks": {
+            "actualRenderCapture": true,
+            "seamsWithin0_1mm": true,
+            "measuredFlexWithin1Degree": true,
+            "measuredTwistWithin1Degree": true,
+            "noNonadjacentIntersection": true,
+            "noSevereAreaCollapse": true,
+            "noSevereEdgeCollapse": true,
+            "rigidHandWithin0_001mm": true,
+            "rigidDbRelationshipWithin0_001mm": true,
+            "repeatWithoutAccumulation": null,
+            "fullOrientationWithin1Degree": true,
+            "seamNormalsWithin0_05Degree": true
+          },
+          "measuredAngles": {
+            "flexDeg": -74.99515711751282,
+            "twistDeg": -60.004597696449565,
+            "totalSwingDeg": 74.99515719243334,
+            "outOfFlexPlaneDeg": 0.00565948719021959,
+            "relativeDeltaQuaternion": [
+              0.3967171006529609,
+              -0.3043311903999714,
+              -0.5271927380160548,
+              0.6870705099059194
+            ],
+            "maxPoseScaleDeviation": 4.440892098500626e-16,
+            "method": "Independent neutral-relative forearm-to-hand matrix; signed longitudinal swing and axial quaternion twist. Command values are not used.",
+            "fullTargetOrientationErrorDeg": 0.007453080745050291
+          },
+          "maximumSeamGapMm": 3.071500009104218e-05,
+          "seamNormals": {
+            "status": "measured",
+            "seams": {
+              "body": {
+                "pairs": 152,
+                "maximumAngleDeg": 2.831646840510158e-06,
+                "rmsAngleDeg": 7.865309310483228e-07,
+                "worstPair": [
+                  1164,
+                  1176
+                ],
+                "within0_05Degree": true
+              },
+              "hand": {
+                "pairs": 44,
+                "maximumAngleDeg": 2.091309789151873e-06,
+                "rmsAngleDeg": 8.440159126899706e-07,
+                "worstPair": [
+                  3298,
+                  2027
+                ],
+                "within0_05Degree": true
+              }
+            },
+            "method": "Normalize actual render-time world normals independently; acos of corresponding seam-pair dot products."
+          },
+          "qualityVsActualNeutral": {
+            "minimumAreaRatio": 0.11373206222058332,
+            "maximumAreaRatio": 1.7761518573111652,
+            "areaRatioP01": 0.19233827218188224,
+            "minimumEdgeRatio": 0.13576539553409964,
+            "maximumEdgeRatio": 1.9314608523996737,
+            "edgeRatioP01": 0.5111906656771324,
+            "collapsedEdgeCount": 0
+          },
+          "intersectionCounts": {
+            "properCount": 0,
+            "coplanarCount": 0
+          },
+          "rigidHandAndDb": {
+            "handVertices": 1266,
+            "maxHandRigidResidualMm": 5.770557056164968e-13,
+            "dbVertices": 180,
+            "maxDbRelativeResidualMm": 5.721958498152797e-13,
+            "method": "Fit one proper rigid transform to protected hand cloud; use same transform to predict all DB points. No fit to DB points."
+          },
+          "repeat": null
+        }
+      }
+    },
+    {
+      "name": "flex-75-twist--60",
+      "command": {
+        "flexDeg": 75.0,
+        "twistDeg": -60.0
+      },
+      "classification": "stress75",
+      "capturedAt": "scene.onAfterRender",
+      "restoration": {
+        "status": "passed",
+        "runtimeAssertions": {
+          "positionsNormalsExact": true,
+          "boneTransformsExact": true,
+          "cacheExact": true
+        },
+        "hashEquality": true,
+        "evidence": "before/after hashes + runtime assertions"
+      },
+      "sides": {
+        "left": {
+          "checks": {
+            "actualRenderCapture": true,
+            "seamsWithin0_1mm": true,
+            "measuredFlexWithin1Degree": true,
+            "measuredTwistWithin1Degree": true,
+            "noNonadjacentIntersection": false,
+            "noSevereAreaCollapse": false,
+            "noSevereEdgeCollapse": true,
+            "rigidHandWithin0_001mm": true,
+            "rigidDbRelationshipWithin0_001mm": true,
+            "repeatWithoutAccumulation": null,
+            "fullOrientationWithin1Degree": true,
+            "seamNormalsWithin0_05Degree": true
+          },
+          "measuredAngles": {
+            "flexDeg": 74.99994714735317,
+            "twistDeg": -60.00003711787174,
+            "totalSwingDeg": 74.99994714735821,
+            "outOfFlexPlaneDeg": -4.644952652418181e-05,
+            "relativeDeltaQuaternion": [
+              -0.3966770330840915,
+              0.3043802598363199,
+              -0.5272027023454695,
+              0.687064261539786
+            ],
+            "maxPoseScaleDeviation": 2.220446049250313e-16,
+            "method": "Independent neutral-relative forearm-to-hand matrix; signed longitudinal swing and axial quaternion twist. Command values are not used.",
+            "fullTargetOrientationErrorDeg": 7.037854147302828e-05
+          },
+          "maximumSeamGapMm": 3.054830691400315e-05,
+          "seamNormals": {
+            "status": "measured",
+            "seams": {
+              "body": {
+                "pairs": 154,
+                "maximumAngleDeg": 2.2588727439225506e-06,
+                "rmsAngleDeg": 7.345727446664461e-07,
+                "worstPair": [
+                  473,
+                  1174
+                ],
+                "within0_05Degree": true
+              },
+              "hand": {
+                "pairs": 44,
+                "maximumAngleDeg": 2.091309789151873e-06,
+                "rmsAngleDeg": 8.241539325600338e-07,
+                "worstPair": [
+                  3310,
+                  2038
+                ],
+                "within0_05Degree": true
+              }
+            },
+            "method": "Normalize actual render-time world normals independently; acos of corresponding seam-pair dot products."
+          },
+          "qualityVsActualNeutral": {
+            "minimumAreaRatio": 0.04292058937985697,
+            "maximumAreaRatio": 1.6179555538213641,
+            "areaRatioP01": 0.15491462216878712,
+            "minimumEdgeRatio": 0.16631407232461684,
+            "maximumEdgeRatio": 1.6758364141215234,
+            "edgeRatioP01": 0.4690898883958641,
+            "collapsedEdgeCount": 0
+          },
+          "intersectionCounts": {
+            "properCount": 56,
+            "coplanarCount": 0
+          },
+          "rigidHandAndDb": {
+            "handVertices": 1266,
+            "maxHandRigidResidualMm": 8.532300504426547e-13,
+            "dbVertices": 180,
+            "maxDbRelativeResidualMm": 9.245408901544946e-13,
+            "method": "Fit one proper rigid transform to protected hand cloud; use same transform to predict all DB points. No fit to DB points."
+          },
+          "repeat": null
+        },
+        "right": {
+          "checks": {
+            "actualRenderCapture": true,
+            "seamsWithin0_1mm": true,
+            "measuredFlexWithin1Degree": true,
+            "measuredTwistWithin1Degree": true,
+            "noNonadjacentIntersection": false,
+            "noSevereAreaCollapse": false,
+            "noSevereEdgeCollapse": true,
+            "rigidHandWithin0_001mm": true,
+            "rigidDbRelationshipWithin0_001mm": true,
+            "repeatWithoutAccumulation": null,
+            "fullOrientationWithin1Degree": true,
+            "seamNormalsWithin0_05Degree": true
+          },
+          "measuredAngles": {
+            "flexDeg": 75.00013023382247,
+            "twistDeg": -59.99999358476845,
+            "totalSwingDeg": 75.00013023382786,
+            "outOfFlexPlaneDeg": -4.7947075986869364e-05,
+            "relativeDeltaQuaternion": [
+              0.3966762857511026,
+              0.3043806790691352,
+              0.5272039239588222,
+              0.6870635699078669
+            ],
+            "maxPoseScaleDeviation": 5.551115123125783e-16,
+            "method": "Independent neutral-relative forearm-to-hand matrix; signed longitudinal swing and axial quaternion twist. Command values are not used.",
+            "fullTargetOrientationErrorDeg": 0.0001453497823028293
+          },
+          "maximumSeamGapMm": 3.0102810060842695e-05,
+          "seamNormals": {
+            "status": "measured",
+            "seams": {
+              "body": {
+                "pairs": 152,
+                "maximumAngleDeg": 2.699869328381916e-06,
+                "rmsAngleDeg": 8.424648867311676e-07,
+                "worstPair": [
+                  672,
+                  1289
+                ],
+                "within0_05Degree": true
+              },
+              "hand": {
+                "pairs": 44,
+                "maximumAngleDeg": 2.699869328381916e-06,
+                "rmsAngleDeg": 1.1866588151561973e-06,
+                "worstPair": [
+                  3292,
+                  2034
+                ],
+                "within0_05Degree": true
+              }
+            },
+            "method": "Normalize actual render-time world normals independently; acos of corresponding seam-pair dot products."
+          },
+          "qualityVsActualNeutral": {
+            "minimumAreaRatio": 0.09310638960016458,
+            "maximumAreaRatio": 1.6902116204852555,
+            "areaRatioP01": 0.21329774570809693,
+            "minimumEdgeRatio": 0.1513720285914865,
+            "maximumEdgeRatio": 1.8970585052937683,
+            "edgeRatioP01": 0.4169834302245314,
+            "collapsedEdgeCount": 0
+          },
+          "intersectionCounts": {
+            "properCount": 30,
+            "coplanarCount": 0
+          },
+          "rigidHandAndDb": {
+            "handVertices": 1266,
+            "maxHandRigidResidualMm": 5.209256464834128e-13,
+            "dbVertices": 180,
+            "maxDbRelativeResidualMm": 5.013320832966251e-13,
+            "method": "Fit one proper rigid transform to protected hand cloud; use same transform to predict all DB points. No fit to DB points."
+          },
+          "repeat": null
+        }
+      }
+    },
+    {
+      "name": "flex-0-twist-60",
+      "command": {
+        "flexDeg": 0.0,
+        "twistDeg": 60.0
+      },
+      "classification": "primaryThrough60",
+      "capturedAt": "scene.onAfterRender",
+      "restoration": {
+        "status": "passed",
+        "runtimeAssertions": {
+          "positionsNormalsExact": true,
+          "boneTransformsExact": true,
+          "cacheExact": true
+        },
+        "hashEquality": true,
+        "evidence": "before/after hashes + runtime assertions"
+      },
+      "sides": {
+        "left": {
+          "checks": {
+            "actualRenderCapture": true,
+            "seamsWithin0_1mm": true,
+            "measuredFlexWithin1Degree": true,
+            "measuredTwistWithin1Degree": true,
+            "noNonadjacentIntersection": true,
+            "noSevereAreaCollapse": true,
+            "noSevereEdgeCollapse": true,
+            "rigidHandWithin0_001mm": true,
+            "rigidDbRelationshipWithin0_001mm": true,
+            "repeatWithoutAccumulation": null,
+            "fullOrientationWithin1Degree": true,
+            "seamNormalsWithin0_05Degree": true
+          },
+          "measuredAngles": {
+            "flexDeg": -0.0016477564650026156,
+            "twistDeg": 59.99429613484065,
+            "totalSwingDeg": 0.0017847371786593074,
+            "outOfFlexPlaneDeg": 0.0006857004715560994,
+            "relativeDeltaQuaternion": [
+              0.4999568923741447,
+              1.237140245204341e-05,
+              9.46159819601748e-06,
+              0.8660502904133308
+            ],
+            "maxPoseScaleDeviation": 4.440892098500626e-16,
+            "method": "Independent neutral-relative forearm-to-hand matrix; signed longitudinal swing and axial quaternion twist. Command values are not used.",
+            "fullTargetOrientationErrorDeg": 0.005976567933004229
+          },
+          "maximumSeamGapMm": 3.0261600609172996e-05,
+          "seamNormals": {
+            "status": "measured",
+            "seams": {
+              "body": {
+                "pairs": 154,
+                "maximumAngleDeg": 2.831646840510158e-06,
+                "rmsAngleDeg": 8.454167699405547e-07,
+                "worstPair": [
+                  3,
+                  1321
+                ],
+                "within0_05Degree": true
+              },
+              "hand": {
+                "pairs": 44,
+                "maximumAngleDeg": 3.6222548091772e-06,
+                "rmsAngleDeg": 1.158400980208701e-06,
+                "worstPair": [
+                  3313,
+                  2055
+                ],
+                "within0_05Degree": true
+              }
+            },
+            "method": "Normalize actual render-time world normals independently; acos of corresponding seam-pair dot products."
+          },
+          "qualityVsActualNeutral": {
+            "minimumAreaRatio": 0.913285954170599,
+            "maximumAreaRatio": 1.2309107606650795,
+            "areaRatioP01": 0.969451698643427,
+            "minimumEdgeRatio": 0.8925652035520926,
+            "maximumEdgeRatio": 1.7334621465220341,
+            "edgeRatioP01": 0.9999902999821911,
+            "collapsedEdgeCount": 0
+          },
+          "intersectionCounts": {
+            "properCount": 0,
+            "coplanarCount": 0
+          },
+          "rigidHandAndDb": {
+            "handVertices": 1266,
+            "maxHandRigidResidualMm": 1.5702304490275142e-12,
+            "dbVertices": 180,
+            "maxDbRelativeResidualMm": 1.469997754284842e-12,
+            "method": "Fit one proper rigid transform to protected hand cloud; use same transform to predict all DB points. No fit to DB points."
+          },
+          "repeat": null
+        },
+        "right": {
+          "checks": {
+            "actualRenderCapture": true,
+            "seamsWithin0_1mm": true,
+            "measuredFlexWithin1Degree": true,
+            "measuredTwistWithin1Degree": true,
+            "noNonadjacentIntersection": true,
+            "noSevereAreaCollapse": true,
+            "noSevereEdgeCollapse": true,
+            "rigidHandWithin0_001mm": true,
+            "rigidDbRelationshipWithin0_001mm": true,
+            "repeatWithoutAccumulation": null,
+            "fullOrientationWithin1Degree": true,
+            "seamNormalsWithin0_05Degree": true
+          },
+          "measuredAngles": {
+            "flexDeg": 0.001117444126882556,
+            "twistDeg": 59.99672368996312,
+            "totalSwingDeg": 0.0012371032829607187,
+            "outOfFlexPlaneDeg": -0.0005307964410310705,
+            "relativeDeltaQuaternion": [
+              -0.4999752390620789,
+              -8.887087262038713e-06,
+              6.12929873472457e-06,
+              0.8660396989793646
+            ],
+            "maxPoseScaleDeviation": 3.3306690738754696e-16,
+            "method": "Independent neutral-relative forearm-to-hand matrix; signed longitudinal swing and axial quaternion twist. Command values are not used.",
+            "fullTargetOrientationErrorDeg": 0.0035020899040037337
+          },
+          "maximumSeamGapMm": 3.0204301254437148e-05,
+          "seamNormals": {
+            "status": "measured",
+            "seams": {
+              "body": {
+                "pairs": 152,
+                "maximumAngleDeg": 2.699869328381916e-06,
+                "rmsAngleDeg": 7.711374478147609e-07,
+                "worstPair": [
+                  957,
+                  1272
+                ],
+                "within0_05Degree": true
+              },
+              "hand": {
+                "pairs": 44,
+                "maximumAngleDeg": 2.9575586669421963e-06,
+                "rmsAngleDeg": 9.545479552082112e-07,
+                "worstPair": [
+                  3310,
+                  2045
+                ],
+                "within0_05Degree": true
+              }
+            },
+            "method": "Normalize actual render-time world normals independently; acos of corresponding seam-pair dot products."
+          },
+          "qualityVsActualNeutral": {
+            "minimumAreaRatio": 0.906526091066071,
+            "maximumAreaRatio": 1.243853980809937,
+            "areaRatioP01": 0.9763441084689377,
+            "minimumEdgeRatio": 0.9047333124259327,
+            "maximumEdgeRatio": 1.7845678885089378,
+            "edgeRatioP01": 0.9999714426859749,
+            "collapsedEdgeCount": 0
+          },
+          "intersectionCounts": {
+            "properCount": 0,
+            "coplanarCount": 0
+          },
+          "rigidHandAndDb": {
+            "handVertices": 1266,
+            "maxHandRigidResidualMm": 1.0168735354711062e-12,
+            "dbVertices": 180,
+            "maxDbRelativeResidualMm": 1.1129951213863743e-12,
+            "method": "Fit one proper rigid transform to protected hand cloud; use same transform to predict all DB points. No fit to DB points."
+          },
+          "repeat": null
+        }
+      }
+    },
+    {
+      "name": "flex--30-twist-60",
+      "command": {
+        "flexDeg": -30.0,
+        "twistDeg": 60.0
+      },
+      "classification": "primaryThrough60",
+      "capturedAt": "scene.onAfterRender",
+      "restoration": {
+        "status": "passed",
+        "runtimeAssertions": {
+          "positionsNormalsExact": true,
+          "boneTransformsExact": true,
+          "cacheExact": true
+        },
+        "hashEquality": true,
+        "evidence": "before/after hashes + runtime assertions"
+      },
+      "sides": {
+        "left": {
+          "checks": {
+            "actualRenderCapture": true,
+            "seamsWithin0_1mm": true,
+            "measuredFlexWithin1Degree": true,
+            "measuredTwistWithin1Degree": true,
+            "noNonadjacentIntersection": true,
+            "noSevereAreaCollapse": true,
+            "noSevereEdgeCollapse": true,
+            "rigidHandWithin0_001mm": true,
+            "rigidDbRelationshipWithin0_001mm": true,
+            "repeatWithoutAccumulation": null,
+            "fullOrientationWithin1Degree": true,
+            "seamNormalsWithin0_05Degree": true
+          },
+          "measuredAngles": {
+            "flexDeg": -30.000170386361233,
+            "twistDeg": 59.999952351672675,
+            "totalSwingDeg": 30.000170386379935,
+            "outOfFlexPlaneDeg": 3.514754397236177e-05,
+            "relativeDeltaQuaternion": [
+              0.48296237289293664,
+              0.12941042246553622,
+              0.22414500689914826,
+              0.8365161712776963
+            ],
+            "maxPoseScaleDeviation": 2.220446049250313e-16,
+            "method": "Independent neutral-relative forearm-to-hand matrix; signed longitudinal swing and axial quaternion twist. Command values are not used.",
+            "fullTargetOrientationErrorDeg": 0.00017812478276962645
+          },
+          "maximumSeamGapMm": 3.161261501301809e-05,
+          "seamNormals": {
+            "status": "measured",
+            "seams": {
+              "body": {
+                "pairs": 154,
+                "maximumAngleDeg": 3.1945284701301985e-06,
+                "rmsAngleDeg": 8.39799320555437e-07,
+                "worstPair": [
+                  244,
+                  1207
+                ],
+                "within0_05Degree": true
+              },
+              "hand": {
+                "pairs": 44,
+                "maximumAngleDeg": 3.1945284701301985e-06,
+                "rmsAngleDeg": 1.0845400174036463e-06,
+                "worstPair": [
+                  3313,
+                  2055
+                ],
+                "within0_05Degree": true
+              }
+            },
+            "method": "Normalize actual render-time world normals independently; acos of corresponding seam-pair dot products."
+          },
+          "qualityVsActualNeutral": {
+            "minimumAreaRatio": 0.6384220947988319,
+            "maximumAreaRatio": 1.4721878379230835,
+            "areaRatioP01": 0.6789038303065928,
+            "minimumEdgeRatio": 0.6323115755914527,
+            "maximumEdgeRatio": 1.7096774254434643,
+            "edgeRatioP01": 0.9490210659915664,
+            "collapsedEdgeCount": 0
+          },
+          "intersectionCounts": {
+            "properCount": 0,
+            "coplanarCount": 0
+          },
+          "rigidHandAndDb": {
+            "handVertices": 1266,
+            "maxHandRigidResidualMm": 6.137686022615879e-13,
+            "dbVertices": 180,
+            "maxDbRelativeResidualMm": 4.988770360153297e-13,
+            "method": "Fit one proper rigid transform to protected hand cloud; use same transform to predict all DB points. No fit to DB points."
+          },
+          "repeat": null
+        },
+        "right": {
+          "checks": {
+            "actualRenderCapture": true,
+            "seamsWithin0_1mm": true,
+            "measuredFlexWithin1Degree": true,
+            "measuredTwistWithin1Degree": true,
+            "noNonadjacentIntersection": true,
+            "noSevereAreaCollapse": true,
+            "noSevereEdgeCollapse": true,
+            "rigidHandWithin0_001mm": true,
+            "rigidDbRelationshipWithin0_001mm": true,
+            "repeatWithoutAccumulation": null,
+            "fullOrientationWithin1Degree": true,
+            "seamNormalsWithin0_05Degree": true
+          },
+          "measuredAngles": {
+            "flexDeg": -30.000001813040928,
+            "twistDeg": 60.000000031802614,
+            "totalSwingDeg": 30.00000181304093,
+            "outOfFlexPlaneDeg": -1.252439281322129e-06,
+            "relativeDeltaQuaternion": [
+              -0.48296291132920516,
+              0.12940952045558715,
+              -0.22414388689883874,
+              0.8365163000574191
+            ],
+            "maxPoseScaleDeviation": 3.3306690738754696e-16,
+            "method": "Independent neutral-relative forearm-to-hand matrix; signed longitudinal swing and axial quaternion twist. Command values are not used.",
+            "fullTargetOrientationErrorDeg": 2.2244119285809586e-06
+          },
+          "maximumSeamGapMm": 3.131997372405936e-05,
+          "seamNormals": {
+            "status": "measured",
+            "seams": {
+              "body": {
+                "pairs": 152,
+                "maximumAngleDeg": 2.561320938754782e-06,
+                "rmsAngleDeg": 9.265043584519853e-07,
+                "worstPair": [
+                  623,
+                  1189
+                ],
+                "within0_05Degree": true
+              },
+              "hand": {
+                "pairs": 44,
+                "maximumAngleDeg": 2.091309789151873e-06,
+                "rmsAngleDeg": 9.969928232396992e-07,
+                "worstPair": [
+                  3292,
+                  2034
+                ],
+                "within0_05Degree": true
+              }
+            },
+            "method": "Normalize actual render-time world normals independently; acos of corresponding seam-pair dot products."
+          },
+          "qualityVsActualNeutral": {
+            "minimumAreaRatio": 0.6684699162374661,
+            "maximumAreaRatio": 1.5679768598767132,
+            "areaRatioP01": 0.7267042290949661,
+            "minimumEdgeRatio": 0.6667468961802667,
+            "maximumEdgeRatio": 1.9821729102606598,
+            "edgeRatioP01": 0.8266818282678758,
+            "collapsedEdgeCount": 0
+          },
+          "intersectionCounts": {
+            "properCount": 0,
+            "coplanarCount": 0
+          },
+          "rigidHandAndDb": {
+            "handVertices": 1266,
+            "maxHandRigidResidualMm": 4.839349969133126e-13,
+            "dbVertices": 180,
+            "maxDbRelativeResidualMm": 5.23691153334427e-13,
+            "method": "Fit one proper rigid transform to protected hand cloud; use same transform to predict all DB points. No fit to DB points."
+          },
+          "repeat": null
+        }
+      }
+    },
+    {
+      "name": "flex-30-twist-60",
+      "command": {
+        "flexDeg": 30.0,
+        "twistDeg": 60.0
+      },
+      "classification": "primaryThrough60",
+      "capturedAt": "scene.onAfterRender",
+      "restoration": {
+        "status": "passed",
+        "runtimeAssertions": {
+          "positionsNormalsExact": true,
+          "boneTransformsExact": true,
+          "cacheExact": true
+        },
+        "hashEquality": true,
+        "evidence": "before/after hashes + runtime assertions"
+      },
+      "sides": {
+        "left": {
+          "checks": {
+            "actualRenderCapture": true,
+            "seamsWithin0_1mm": true,
+            "measuredFlexWithin1Degree": true,
+            "measuredTwistWithin1Degree": true,
+            "noNonadjacentIntersection": true,
+            "noSevereAreaCollapse": true,
+            "noSevereEdgeCollapse": true,
+            "rigidHandWithin0_001mm": true,
+            "rigidDbRelationshipWithin0_001mm": true,
+            "repeatWithoutAccumulation": null,
+            "fullOrientationWithin1Degree": true,
+            "seamNormalsWithin0_05Degree": true
+          },
+          "measuredAngles": {
+            "flexDeg": 30.00001034708358,
+            "twistDeg": 59.99999999296017,
+            "totalSwingDeg": 30.00001034708432,
+            "outOfFlexPlaneDeg": 7.079934487026295e-06,
+            "relativeDeltaQuaternion": [
+              0.482962901408064,
+              -0.1294095107526932,
+              -0.22414397556527985,
+              0.836516283528327
+            ],
+            "maxPoseScaleDeviation": 4.440892098500626e-16,
+            "method": "Independent neutral-relative forearm-to-hand matrix; signed longitudinal swing and axial quaternion twist. Command values are not used.",
+            "fullTargetOrientationErrorDeg": 1.2681215153732244e-05
+          },
+          "maximumSeamGapMm": 3.2359543201880794e-05,
+          "seamNormals": {
+            "status": "measured",
+            "seams": {
+              "body": {
+                "pairs": 154,
+                "maximumAngleDeg": 2.2588727439225506e-06,
+                "rmsAngleDeg": 7.441754103326828e-07,
+                "worstPair": [
+                  719,
+                  1294
+                ],
+                "within0_05Degree": true
+              },
+              "hand": {
+                "pairs": 44,
+                "maximumAngleDeg": 2.699869328381916e-06,
+                "rmsAngleDeg": 1.061379910715446e-06,
+                "worstPair": [
+                  3298,
+                  2051
+                ],
+                "within0_05Degree": true
+              }
+            },
+            "method": "Normalize actual render-time world normals independently; acos of corresponding seam-pair dot products."
+          },
+          "qualityVsActualNeutral": {
+            "minimumAreaRatio": 0.5627413319561297,
+            "maximumAreaRatio": 1.354492206017641,
+            "areaRatioP01": 0.6844652960826235,
+            "minimumEdgeRatio": 0.630395135913565,
+            "maximumEdgeRatio": 1.806783628920277,
+            "edgeRatioP01": 0.8824321066127685,
+            "collapsedEdgeCount": 0
+          },
+          "intersectionCounts": {
+            "properCount": 0,
+            "coplanarCount": 0
+          },
+          "rigidHandAndDb": {
+            "handVertices": 1266,
+            "maxHandRigidResidualMm": 1.4516889106820107e-12,
+            "dbVertices": 180,
+            "maxDbRelativeResidualMm": 1.4483684074416933e-12,
+            "method": "Fit one proper rigid transform to protected hand cloud; use same transform to predict all DB points. No fit to DB points."
+          },
+          "repeat": null
+        },
+        "right": {
+          "checks": {
+            "actualRenderCapture": true,
+            "seamsWithin0_1mm": true,
+            "measuredFlexWithin1Degree": true,
+            "measuredTwistWithin1Degree": true,
+            "noNonadjacentIntersection": true,
+            "noSevereAreaCollapse": true,
+            "noSevereEdgeCollapse": true,
+            "rigidHandWithin0_001mm": true,
+            "rigidDbRelationshipWithin0_001mm": true,
+            "repeatWithoutAccumulation": null,
+            "fullOrientationWithin1Degree": true,
+            "seamNormalsWithin0_05Degree": true
+          },
+          "measuredAngles": {
+            "flexDeg": 30.000259699860546,
+            "twistDeg": 59.999921298821306,
+            "totalSwingDeg": 30.000259699872284,
+            "outOfFlexPlaneDeg": -2.78785518870859e-05,
+            "relativeDeltaQuaternion": [
+              -0.48296204534439574,
+              -0.12941068127599117,
+              0.22414572679034553,
+              0.8365161274536609
+            ],
+            "maxPoseScaleDeviation": 3.3306690738754696e-16,
+            "method": "Independent neutral-relative forearm-to-hand matrix; signed longitudinal swing and axial quaternion twist. Command values are not used.",
+            "fullTargetOrientationErrorDeg": 0.00027073068970517416
+          },
+          "maximumSeamGapMm": 3.2841120681351745e-05,
+          "seamNormals": {
+            "status": "measured",
+            "seams": {
+              "body": {
+                "pairs": 152,
+                "maximumAngleDeg": 2.091309789151873e-06,
+                "rmsAngleDeg": 7.773314224008022e-07,
+                "worstPair": [
+                  561,
+                  1198
+                ],
+                "within0_05Degree": true
+              },
+              "hand": {
+                "pairs": 44,
+                "maximumAngleDeg": 2.2588727439225506e-06,
+                "rmsAngleDeg": 9.631865743209022e-07,
+                "worstPair": [
+                  3325,
+                  2047
+                ],
+                "within0_05Degree": true
+              }
+            },
+            "method": "Normalize actual render-time world normals independently; acos of corresponding seam-pair dot products."
+          },
+          "qualityVsActualNeutral": {
+            "minimumAreaRatio": 0.5025066677564214,
+            "maximumAreaRatio": 1.3196577997168522,
+            "areaRatioP01": 0.6466129904342269,
+            "minimumEdgeRatio": 0.5366953438041053,
+            "maximumEdgeRatio": 1.6570442142105066,
+            "edgeRatioP01": 0.8938477660643036,
+            "collapsedEdgeCount": 0
+          },
+          "intersectionCounts": {
+            "properCount": 0,
+            "coplanarCount": 0
+          },
+          "rigidHandAndDb": {
+            "handVertices": 1266,
+            "maxHandRigidResidualMm": 2.0053763529260504e-12,
+            "dbVertices": 180,
+            "maxDbRelativeResidualMm": 2.0070563200070753e-12,
+            "method": "Fit one proper rigid transform to protected hand cloud; use same transform to predict all DB points. No fit to DB points."
+          },
+          "repeat": null
+        }
+      }
+    },
+    {
+      "name": "flex--60-twist-60",
+      "command": {
+        "flexDeg": -60.0,
+        "twistDeg": 60.0
+      },
+      "classification": "primaryThrough60",
+      "capturedAt": "scene.onAfterRender",
+      "restoration": {
+        "status": "passed",
+        "runtimeAssertions": {
+          "positionsNormalsExact": true,
+          "boneTransformsExact": true,
+          "cacheExact": true
+        },
+        "hashEquality": true,
+        "evidence": "before/after hashes + runtime assertions"
+      },
+      "sides": {
+        "left": {
+          "checks": {
+            "actualRenderCapture": true,
+            "seamsWithin0_1mm": true,
+            "measuredFlexWithin1Degree": true,
+            "measuredTwistWithin1Degree": true,
+            "noNonadjacentIntersection": true,
+            "noSevereAreaCollapse": true,
+            "noSevereEdgeCollapse": true,
+            "rigidHandWithin0_001mm": true,
+            "rigidDbRelationshipWithin0_001mm": true,
+            "repeatWithoutAccumulation": null,
+            "fullOrientationWithin1Degree": true,
+            "seamNormalsWithin0_05Degree": true
+          },
+          "measuredAngles": {
+            "flexDeg": -60.00454671641793,
+            "twistDeg": 59.99874689582765,
+            "totalSwingDeg": 60.00454671785266,
+            "outOfFlexPlaneDeg": 0.0005336803829199182,
+            "relativeDeltaQuaternion": [
+              0.43299458076615494,
+              0.2500171025627318,
+              0.4330425048668817,
+              0.7499875535179866
+            ],
+            "maxPoseScaleDeviation": 4.440892098500626e-16,
+            "method": "Independent neutral-relative forearm-to-hand matrix; signed longitudinal swing and axial quaternion twist. Command values are not used.",
+            "fullTargetOrientationErrorDeg": 0.004674443893199671
+          },
+          "maximumSeamGapMm": 3.240262299371812e-05,
+          "seamNormals": {
+            "status": "measured",
+            "seams": {
+              "body": {
+                "pairs": 154,
+                "maximumAngleDeg": 3.306651113363206e-06,
+                "rmsAngleDeg": 8.917374903373598e-07,
+                "worstPair": [
+                  417,
+                  1280
+                ],
+                "within0_05Degree": true
+              },
+              "hand": {
+                "pairs": 44,
+                "maximumAngleDeg": 2.4148365394514667e-06,
+                "rmsAngleDeg": 9.101257649319068e-07,
+                "worstPair": [
+                  3313,
+                  2055
+                ],
+                "within0_05Degree": true
+              }
+            },
+            "method": "Normalize actual render-time world normals independently; acos of corresponding seam-pair dot products."
+          },
+          "qualityVsActualNeutral": {
+            "minimumAreaRatio": 0.274372534087348,
+            "maximumAreaRatio": 1.7084285261891226,
+            "areaRatioP01": 0.3451001156922537,
+            "minimumEdgeRatio": 0.3195515751580772,
+            "maximumEdgeRatio": 1.8834278677972045,
+            "edgeRatioP01": 0.7938017187063181,
+            "collapsedEdgeCount": 0
+          },
+          "intersectionCounts": {
+            "properCount": 0,
+            "coplanarCount": 0
+          },
+          "rigidHandAndDb": {
+            "handVertices": 1266,
+            "maxHandRigidResidualMm": 9.201559388501705e-13,
+            "dbVertices": 180,
+            "maxDbRelativeResidualMm": 8.4779540883713e-13,
+            "method": "Fit one proper rigid transform to protected hand cloud; use same transform to predict all DB points. No fit to DB points."
+          },
+          "repeat": null
+        },
+        "right": {
+          "checks": {
+            "actualRenderCapture": true,
+            "seamsWithin0_1mm": true,
+            "measuredFlexWithin1Degree": true,
+            "measuredTwistWithin1Degree": true,
+            "noNonadjacentIntersection": true,
+            "noSevereAreaCollapse": true,
+            "noSevereEdgeCollapse": true,
+            "rigidHandWithin0_001mm": true,
+            "rigidDbRelationshipWithin0_001mm": true,
+            "repeatWithoutAccumulation": null,
+            "fullOrientationWithin1Degree": true,
+            "seamNormalsWithin0_05Degree": true
+          },
+          "measuredAngles": {
+            "flexDeg": -60.00037231686462,
+            "twistDeg": 60.00000243036689,
+            "totalSwingDeg": 60.000372317017415,
+            "outOfFlexPlaneDeg": -0.0001741514171723926,
+            "relativeDeltaQuaternion": [
+              -0.43301190552689106,
+              0.24999989631272898,
+              -0.4330160108284403,
+              0.7499985839198762
+            ],
+            "maxPoseScaleDeviation": 4.440892098500626e-16,
+            "method": "Independent neutral-relative forearm-to-hand matrix; signed longitudinal swing and axial quaternion twist. Command values are not used.",
+            "fullTargetOrientationErrorDeg": 0.0004225817676958463
+          },
+          "maximumSeamGapMm": 3.2879415543921824e-05,
+          "seamNormals": {
+            "status": "measured",
+            "seams": {
+              "body": {
+                "pairs": 152,
+                "maximumAngleDeg": 2.4148365394514667e-06,
+                "rmsAngleDeg": 7.711374478147608e-07,
+                "worstPair": [
+                  325,
+                  1252
+                ],
+                "within0_05Degree": true
+              },
+              "hand": {
+                "pairs": 44,
+                "maximumAngleDeg": 2.2588727439225506e-06,
+                "rmsAngleDeg": 1.029689760185512e-06,
+                "worstPair": [
+                  3294,
+                  2032
+                ],
+                "within0_05Degree": true
+              }
+            },
+            "method": "Normalize actual render-time world normals independently; acos of corresponding seam-pair dot products."
+          },
+          "qualityVsActualNeutral": {
+            "minimumAreaRatio": 0.33545037371374986,
+            "maximumAreaRatio": 1.8842680004254893,
+            "areaRatioP01": 0.40789351007299146,
+            "minimumEdgeRatio": 0.3696000106857609,
+            "maximumEdgeRatio": 2.1812246772292663,
+            "edgeRatioP01": 0.6039618445147739,
+            "collapsedEdgeCount": 0
+          },
+          "intersectionCounts": {
+            "properCount": 0,
+            "coplanarCount": 0
+          },
+          "rigidHandAndDb": {
+            "handVertices": 1266,
+            "maxHandRigidResidualMm": 2.0233510033565475e-12,
+            "dbVertices": 180,
+            "maxDbRelativeResidualMm": 1.9281636768296204e-12,
+            "method": "Fit one proper rigid transform to protected hand cloud; use same transform to predict all DB points. No fit to DB points."
+          },
+          "repeat": null
+        }
+      }
+    },
+    {
+      "name": "flex-60-twist-60",
+      "command": {
+        "flexDeg": 60.0,
+        "twistDeg": 60.0
+      },
+      "classification": "primaryThrough60",
+      "capturedAt": "scene.onAfterRender",
+      "restoration": {
+        "status": "passed",
+        "runtimeAssertions": {
+          "positionsNormalsExact": true,
+          "boneTransformsExact": true,
+          "cacheExact": true
+        },
+        "hashEquality": true,
+        "evidence": "before/after hashes + runtime assertions"
+      },
+      "sides": {
+        "left": {
+          "checks": {
+            "actualRenderCapture": true,
+            "seamsWithin0_1mm": true,
+            "measuredFlexWithin1Degree": true,
+            "measuredTwistWithin1Degree": true,
+            "noNonadjacentIntersection": true,
+            "noSevereAreaCollapse": true,
+            "noSevereEdgeCollapse": true,
+            "rigidHandWithin0_001mm": true,
+            "rigidDbRelationshipWithin0_001mm": true,
+            "repeatWithoutAccumulation": null,
+            "fullOrientationWithin1Degree": true,
+            "seamNormalsWithin0_05Degree": true
+          },
+          "measuredAngles": {
+            "flexDeg": 60.000276610836565,
+            "twistDeg": 59.99997176429167,
+            "totalSwingDeg": 60.00027661091395,
+            "outOfFlexPlaneDeg": 0.00012394060370983073,
+            "relativeDeltaQuaternion": [
+              0.43301191361752384,
+              -0.2499998569580503,
+              -0.43301519835926916,
+              0.7499990614501642
+            ],
+            "maxPoseScaleDeviation": 4.440892098500626e-16,
+            "method": "Independent neutral-relative forearm-to-hand matrix; signed longitudinal swing and axial quaternion twist. Command values are not used.",
+            "fullTargetOrientationErrorDeg": 0.0003191135547372186
+          },
+          "maximumSeamGapMm": 3.259391641191114e-05,
+          "seamNormals": {
+            "status": "measured",
+            "seams": {
+              "body": {
+                "pairs": 154,
+                "maximumAngleDeg": 2.561320938754782e-06,
+                "rmsAngleDeg": 8.22716871427426e-07,
+                "worstPair": [
+                  235,
+                  1203
+                ],
+                "within0_05Degree": true
+              },
+              "hand": {
+                "pairs": 44,
+                "maximumAngleDeg": 2.9575586669421963e-06,
+                "rmsAngleDeg": 1.2806604693773908e-06,
+                "worstPair": [
+                  3328,
+                  2069
+                ],
+                "within0_05Degree": true
+              }
+            },
+            "method": "Normalize actual render-time world normals independently; acos of corresponding seam-pair dot products."
+          },
+          "qualityVsActualNeutral": {
+            "minimumAreaRatio": 0.26603060773160775,
+            "maximumAreaRatio": 1.583127961998337,
+            "areaRatioP01": 0.349590490325026,
+            "minimumEdgeRatio": 0.30343013177677625,
+            "maximumEdgeRatio": 1.9109860526828664,
+            "edgeRatioP01": 0.7290494464602898,
+            "collapsedEdgeCount": 0
+          },
+          "intersectionCounts": {
+            "properCount": 0,
+            "coplanarCount": 0
+          },
+          "rigidHandAndDb": {
+            "handVertices": 1266,
+            "maxHandRigidResidualMm": 1.4879680991431123e-12,
+            "dbVertices": 180,
+            "maxDbRelativeResidualMm": 1.504716382203053e-12,
+            "method": "Fit one proper rigid transform to protected hand cloud; use same transform to predict all DB points. No fit to DB points."
+          },
+          "repeat": null
+        },
+        "right": {
+          "checks": {
+            "actualRenderCapture": true,
+            "seamsWithin0_1mm": true,
+            "measuredFlexWithin1Degree": true,
+            "measuredTwistWithin1Degree": true,
+            "noNonadjacentIntersection": true,
+            "noSevereAreaCollapse": true,
+            "noSevereEdgeCollapse": true,
+            "rigidHandWithin0_001mm": true,
+            "rigidDbRelationshipWithin0_001mm": true,
+            "repeatWithoutAccumulation": null,
+            "fullOrientationWithin1Degree": true,
+            "seamNormalsWithin0_05Degree": true
+          },
+          "measuredAngles": {
+            "flexDeg": 60.000573811006724,
+            "twistDeg": 59.99980430107769,
+            "totalSwingDeg": 60.00057381107374,
+            "outOfFlexPlaneDeg": -0.00011530851260791726,
+            "relativeDeltaQuaternion": [
+              -0.4330101691818457,
+              -0.25000243504070535,
+              0.433016303459725,
+              0.7499985711965741
+            ],
+            "maxPoseScaleDeviation": 3.3306690738754696e-16,
+            "method": "Independent neutral-relative forearm-to-hand matrix; signed longitudinal swing and axial quaternion twist. Command values are not used.",
+            "fullTargetOrientationErrorDeg": 0.0005993567177659746
+          },
+          "maximumSeamGapMm": 3.073586513925927e-05,
+          "seamNormals": {
+            "status": "measured",
+            "seams": {
+              "body": {
+                "pairs": 152,
+                "maximumAngleDeg": 2.4148365394514667e-06,
+                "rmsAngleDeg": 8.338826776776647e-07,
+                "worstPair": [
+                  1149,
+                  1313
+                ],
+                "within0_05Degree": true
+              },
+              "hand": {
+                "pairs": 44,
+                "maximumAngleDeg": 2.2588727439225506e-06,
+                "rmsAngleDeg": 9.80235447875535e-07,
+                "worstPair": [
+                  3309,
+                  2044
+                ],
+                "within0_05Degree": true
+              }
+            },
+            "method": "Normalize actual render-time world normals independently; acos of corresponding seam-pair dot products."
+          },
+          "qualityVsActualNeutral": {
+            "minimumAreaRatio": 0.12760775422691273,
+            "maximumAreaRatio": 1.534810910364425,
+            "areaRatioP01": 0.26983287190356714,
+            "minimumEdgeRatio": 0.293422238209477,
+            "maximumEdgeRatio": 1.7240405465135988,
+            "edgeRatioP01": 0.7536089390176229,
+            "collapsedEdgeCount": 0
+          },
+          "intersectionCounts": {
+            "properCount": 0,
+            "coplanarCount": 0
+          },
+          "rigidHandAndDb": {
+            "handVertices": 1266,
+            "maxHandRigidResidualMm": 1.665797065633485e-12,
+            "dbVertices": 180,
+            "maxDbRelativeResidualMm": 1.6848800366871186e-12,
+            "method": "Fit one proper rigid transform to protected hand cloud; use same transform to predict all DB points. No fit to DB points."
+          },
+          "repeat": null
+        }
+      }
+    },
+    {
+      "name": "flex--75-twist-60",
+      "command": {
+        "flexDeg": -75.0,
+        "twistDeg": 60.0
+      },
+      "classification": "stress75",
+      "capturedAt": "scene.onAfterRender",
+      "restoration": {
+        "status": "passed",
+        "runtimeAssertions": {
+          "positionsNormalsExact": true,
+          "boneTransformsExact": true,
+          "cacheExact": true
+        },
+        "hashEquality": true,
+        "evidence": "before/after hashes + runtime assertions"
+      },
+      "sides": {
+        "left": {
+          "checks": {
+            "actualRenderCapture": true,
+            "seamsWithin0_1mm": true,
+            "measuredFlexWithin1Degree": true,
+            "measuredTwistWithin1Degree": true,
+            "noNonadjacentIntersection": true,
+            "noSevereAreaCollapse": false,
+            "noSevereEdgeCollapse": true,
+            "rigidHandWithin0_001mm": true,
+            "rigidDbRelationshipWithin0_001mm": true,
+            "repeatWithoutAccumulation": null,
+            "fullOrientationWithin1Degree": true,
+            "seamNormalsWithin0_05Degree": true
+          },
+          "measuredAngles": {
+            "flexDeg": -74.9957285143664,
+            "twistDeg": 60.004545679328885,
+            "totalSwingDeg": 74.99572858662079,
+            "outOfFlexPlaneDeg": -0.005557985762925623,
+            "relativeDeltaQuaternion": [
+              0.39671527099166504,
+              0.304333895960475,
+              0.5271957440865856,
+              0.6870680613654806
+            ],
+            "maxPoseScaleDeviation": 4.440892098500626e-16,
+            "method": "Independent neutral-relative forearm-to-hand matrix; signed longitudinal swing and axial quaternion twist. Command values are not used.",
+            "fullTargetOrientationErrorDeg": 0.00701539458355802
+          },
+          "maximumSeamGapMm": 3.25614731046317e-05,
+          "seamNormals": {
+            "status": "measured",
+            "seams": {
+              "body": {
+                "pairs": 154,
+                "maximumAngleDeg": 3.52019892386405e-06,
+                "rmsAngleDeg": 7.783722951430292e-07,
+                "worstPair": [
+                  244,
+                  1207
+                ],
+                "within0_05Degree": true
+              },
+              "hand": {
+                "pairs": 44,
+                "maximumAngleDeg": 2.2588727439225506e-06,
+                "rmsAngleDeg": 7.829197863860239e-07,
+                "worstPair": [
+                  3302,
+                  2054
+                ],
+                "within0_05Degree": true
+              }
+            },
+            "method": "Normalize actual render-time world normals independently; acos of corresponding seam-pair dot products."
+          },
+          "qualityVsActualNeutral": {
+            "minimumAreaRatio": 0.0709299426135414,
+            "maximumAreaRatio": 1.812090792844413,
+            "areaRatioP01": 0.20188019027365803,
+            "minimumEdgeRatio": 0.29732929952216935,
+            "maximumEdgeRatio": 1.9610820558013187,
+            "edgeRatioP01": 0.7493351628130644,
+            "collapsedEdgeCount": 0
+          },
+          "intersectionCounts": {
+            "properCount": 0,
+            "coplanarCount": 0
+          },
+          "rigidHandAndDb": {
+            "handVertices": 1266,
+            "maxHandRigidResidualMm": 8.102774327609086e-13,
+            "dbVertices": 180,
+            "maxDbRelativeResidualMm": 7.29615702744112e-13,
+            "method": "Fit one proper rigid transform to protected hand cloud; use same transform to predict all DB points. No fit to DB points."
+          },
+          "repeat": null
+        },
+        "right": {
+          "checks": {
+            "actualRenderCapture": true,
+            "seamsWithin0_1mm": true,
+            "measuredFlexWithin1Degree": true,
+            "measuredTwistWithin1Degree": true,
+            "noNonadjacentIntersection": true,
+            "noSevereAreaCollapse": true,
+            "noSevereEdgeCollapse": true,
+            "rigidHandWithin0_001mm": true,
+            "rigidDbRelationshipWithin0_001mm": true,
+            "repeatWithoutAccumulation": null,
+            "fullOrientationWithin1Degree": true,
+            "seamNormalsWithin0_05Degree": true
+          },
+          "measuredAngles": {
+            "flexDeg": -75.00079898227996,
+            "twistDeg": 59.999987559923824,
+            "totalSwingDeg": 75.00079898255082,
+            "outOfFlexPlaneDeg": -0.0003403595331371974,
+            "relativeDeltaQuaternion": [
+              -0.39667447327290184,
+              0.30438018077276374,
+              -0.5272095578345332,
+              0.6870605140264732
+            ],
+            "maxPoseScaleDeviation": 4.440892098500626e-16,
+            "method": "Independent neutral-relative forearm-to-hand matrix; signed longitudinal swing and axial quaternion twist. Command values are not used.",
+            "fullTargetOrientationErrorDeg": 0.0009105377106902253
+          },
+          "maximumSeamGapMm": 3.082213815905211e-05,
+          "seamNormals": {
+            "status": "measured",
+            "seams": {
+              "body": {
+                "pairs": 152,
+                "maximumAngleDeg": 2.2588727439225506e-06,
+                "rmsAngleDeg": 8.62157876654751e-07,
+                "worstPair": [
+                  332,
+                  1251
+                ],
+                "within0_05Degree": true
+              },
+              "hand": {
+                "pairs": 44,
+                "maximumAngleDeg": 2.4148365394514667e-06,
+                "rmsAngleDeg": 1.1072157801573616e-06,
+                "worstPair": [
+                  3292,
+                  2034
+                ],
+                "within0_05Degree": true
+              }
+            },
+            "method": "Normalize actual render-time world normals independently; acos of corresponding seam-pair dot products."
+          },
+          "qualityVsActualNeutral": {
+            "minimumAreaRatio": 0.1948855890244485,
+            "maximumAreaRatio": 2.029382004838974,
+            "areaRatioP01": 0.2737725985430932,
+            "minimumEdgeRatio": 0.20959005296523397,
+            "maximumEdgeRatio": 2.274848892854388,
+            "edgeRatioP01": 0.5137923240899176,
+            "collapsedEdgeCount": 0
+          },
+          "intersectionCounts": {
+            "properCount": 0,
+            "coplanarCount": 0
+          },
+          "rigidHandAndDb": {
+            "handVertices": 1266,
+            "maxHandRigidResidualMm": 8.219075161208684e-13,
+            "dbVertices": 180,
+            "maxDbRelativeResidualMm": 8.15843973306311e-13,
+            "method": "Fit one proper rigid transform to protected hand cloud; use same transform to predict all DB points. No fit to DB points."
+          },
+          "repeat": null
+        }
+      }
+    },
+    {
+      "name": "flex-75-twist-60",
+      "command": {
+        "flexDeg": 75.0,
+        "twistDeg": 60.0
+      },
+      "classification": "stress75",
+      "capturedAt": "scene.onAfterRender",
+      "restoration": {
+        "status": "passed",
+        "runtimeAssertions": {
+          "positionsNormalsExact": true,
+          "boneTransformsExact": true,
+          "cacheExact": true
+        },
+        "hashEquality": true,
+        "evidence": "before/after hashes + runtime assertions"
+      },
+      "sides": {
+        "left": {
+          "checks": {
+            "actualRenderCapture": true,
+            "seamsWithin0_1mm": true,
+            "measuredFlexWithin1Degree": true,
+            "measuredTwistWithin1Degree": true,
+            "noNonadjacentIntersection": true,
+            "noSevereAreaCollapse": true,
+            "noSevereEdgeCollapse": true,
+            "rigidHandWithin0_001mm": true,
+            "rigidDbRelationshipWithin0_001mm": true,
+            "repeatWithoutAccumulation": null,
+            "fullOrientationWithin1Degree": true,
+            "seamNormalsWithin0_05Degree": true
+          },
+          "measuredAngles": {
+            "flexDeg": 75.00008970196565,
+            "twistDeg": 59.99998683077126,
+            "totalSwingDeg": 75.000089701971,
+            "outOfFlexPlaneDeg": 4.786455214096398e-05,
+            "relativeDeltaQuaternion": [
+              0.39667635291750736,
+              -0.304380508474865,
+              -0.5272036984256439,
+              0.6870637797635463
+            ],
+            "maxPoseScaleDeviation": 4.440892098500626e-16,
+            "method": "Independent neutral-relative forearm-to-hand matrix; signed longitudinal swing and axial quaternion twist. Command values are not used.",
+            "fullTargetOrientationErrorDeg": 0.00011325709664901609
+          },
+          "maximumSeamGapMm": 3.297995106374787e-05,
+          "seamNormals": {
+            "status": "measured",
+            "seams": {
+              "body": {
+                "pairs": 154,
+                "maximumAngleDeg": 2.699869328381916e-06,
+                "rmsAngleDeg": 7.691966625702467e-07,
+                "worstPair": [
+                  247,
+                  1206
+                ],
+                "within0_05Degree": true
+              },
+              "hand": {
+                "pairs": 44,
+                "maximumAngleDeg": 2.4148365394514667e-06,
+                "rmsAngleDeg": 9.717484011367821e-07,
+                "worstPair": [
+                  3310,
+                  2038
+                ],
+                "within0_05Degree": true
+              }
+            },
+            "method": "Normalize actual render-time world normals independently; acos of corresponding seam-pair dot products."
+          },
+          "qualityVsActualNeutral": {
+            "minimumAreaRatio": 0.10506594739990868,
+            "maximumAreaRatio": 1.69366984614707,
+            "areaRatioP01": 0.21171835390159793,
+            "minimumEdgeRatio": 0.19741958949775545,
+            "maximumEdgeRatio": 1.9624901300062725,
+            "edgeRatioP01": 0.6563216087705201,
+            "collapsedEdgeCount": 0
+          },
+          "intersectionCounts": {
+            "properCount": 0,
+            "coplanarCount": 0
+          },
+          "rigidHandAndDb": {
+            "handVertices": 1266,
+            "maxHandRigidResidualMm": 8.254951014832334e-13,
+            "dbVertices": 180,
+            "maxDbRelativeResidualMm": 7.902117666922909e-13,
+            "method": "Fit one proper rigid transform to protected hand cloud; use same transform to predict all DB points. No fit to DB points."
+          },
+          "repeat": null
+        },
+        "right": {
+          "checks": {
+            "actualRenderCapture": true,
+            "seamsWithin0_1mm": true,
+            "measuredFlexWithin1Degree": true,
+            "measuredTwistWithin1Degree": true,
+            "noNonadjacentIntersection": false,
+            "noSevereAreaCollapse": false,
+            "noSevereEdgeCollapse": true,
+            "rigidHandWithin0_001mm": true,
+            "rigidDbRelationshipWithin0_001mm": true,
+            "repeatWithoutAccumulation": null,
+            "fullOrientationWithin1Degree": true,
+            "seamNormalsWithin0_05Degree": true
+          },
+          "measuredAngles": {
+            "flexDeg": 75.00000183794673,
+            "twistDeg": 60.00002648937675,
+            "totalSwingDeg": 75.00000183794944,
+            "outOfFlexPlaneDeg": 3.3925369684834135e-05,
+            "relativeDeltaQuaternion": [
+              -0.3966768240877003,
+              -0.30438051956305856,
+              0.5272029896082499,
+              0.6870640467164193
+            ],
+            "maxPoseScaleDeviation": 3.3306690738754696e-16,
+            "method": "Independent neutral-relative forearm-to-hand matrix; signed longitudinal swing and axial quaternion twist. Command values are not used.",
+            "fullTargetOrientationErrorDeg": 3.397820011026007e-05
+          },
+          "maximumSeamGapMm": 3.057061762000572e-05,
+          "seamNormals": {
+            "status": "measured",
+            "seams": {
+              "body": {
+                "pairs": 152,
+                "maximumAngleDeg": 2.4148365394514667e-06,
+                "rmsAngleDeg": 8.677023574401652e-07,
+                "worstPair": [
+                  955,
+                  1274
+                ],
+                "within0_05Degree": true
+              },
+              "hand": {
+                "pairs": 44,
+                "maximumAngleDeg": 1.9090959104164224e-06,
+                "rmsAngleDeg": 7.829197863860239e-07,
+                "worstPair": [
+                  3307,
+                  2043
+                ],
+                "within0_05Degree": true
+              }
+            },
+            "method": "Normalize actual render-time world normals independently; acos of corresponding seam-pair dot products."
+          },
+          "qualityVsActualNeutral": {
+            "minimumAreaRatio": 0.01792783541061529,
+            "maximumAreaRatio": 1.628188301208552,
+            "areaRatioP01": 0.13626039024430586,
+            "minimumEdgeRatio": 0.18408471998686293,
+            "maximumEdgeRatio": 1.7893830951905079,
+            "edgeRatioP01": 0.7000536641639319,
+            "collapsedEdgeCount": 0
+          },
+          "intersectionCounts": {
+            "properCount": 97,
+            "coplanarCount": 0
+          },
+          "rigidHandAndDb": {
+            "handVertices": 1266,
+            "maxHandRigidResidualMm": 8.400361489980555e-13,
+            "dbVertices": 180,
+            "maxDbRelativeResidualMm": 8.400361489980555e-13,
+            "method": "Fit one proper rigid transform to protected hand cloud; use same transform to predict all DB points. No fit to DB points."
+          },
+          "repeat": null
+        }
+      }
+    },
+    {
+      "name": "flex-0-twist-0-repeat",
+      "command": {
+        "flexDeg": 0.0,
+        "twistDeg": 0.0
+      },
+      "classification": "primaryThrough60",
+      "capturedAt": "scene.onAfterRender",
+      "restoration": {
+        "status": "passed",
+        "runtimeAssertions": {
+          "positionsNormalsExact": true,
+          "boneTransformsExact": true,
+          "cacheExact": true
+        },
+        "hashEquality": true,
+        "evidence": "before/after hashes + runtime assertions"
+      },
+      "sides": {
+        "left": {
+          "checks": {
+            "actualRenderCapture": true,
+            "seamsWithin0_1mm": true,
+            "measuredFlexWithin1Degree": true,
+            "measuredTwistWithin1Degree": true,
+            "noNonadjacentIntersection": true,
+            "noSevereAreaCollapse": true,
+            "noSevereEdgeCollapse": true,
+            "rigidHandWithin0_001mm": true,
+            "rigidDbRelationshipWithin0_001mm": true,
+            "repeatWithoutAccumulation": true,
+            "fullOrientationWithin1Degree": true,
+            "seamNormalsWithin0_05Degree": true
+          },
+          "measuredAngles": {
+            "flexDeg": 6.756554626153482e-16,
+            "twistDeg": 0.0,
+            "totalSwingDeg": 8.537736462515939e-07,
+            "outOfFlexPlaneDeg": -3.2068256353419472e-15,
+            "relativeDeltaQuaternion": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "maxPoseScaleDeviation": 2.220446049250313e-16,
+            "method": "Independent neutral-relative forearm-to-hand matrix; signed longitudinal swing and axial quaternion twist. Command values are not used.",
+            "fullTargetOrientationErrorDeg": 0.0
+          },
+          "maximumSeamGapMm": 3.1858377480726804e-05,
+          "seamNormals": {
+            "status": "measured",
+            "seams": {
+              "body": {
+                "pairs": 154,
+                "maximumAngleDeg": 3.1945284701301985e-06,
+                "rmsAngleDeg": 8.397993205554369e-07,
+                "worstPair": [
+                  719,
+                  1294
+                ],
+                "within0_05Degree": true
+              },
+              "hand": {
+                "pairs": 44,
+                "maximumAngleDeg": 1.9090959104164224e-06,
+                "rmsAngleDeg": 8.341440419460097e-07,
+                "worstPair": [
+                  3300,
+                  2052
+                ],
+                "within0_05Degree": true
+              }
+            },
+            "method": "Normalize actual render-time world normals independently; acos of corresponding seam-pair dot products."
+          },
+          "qualityVsActualNeutral": {
+            "minimumAreaRatio": 1.0,
+            "maximumAreaRatio": 1.0,
+            "areaRatioP01": 1.0,
+            "minimumEdgeRatio": 1.0,
+            "maximumEdgeRatio": 1.0,
+            "edgeRatioP01": 1.0,
+            "collapsedEdgeCount": 0
+          },
+          "intersectionCounts": {
+            "properCount": 0,
+            "coplanarCount": 0
+          },
+          "rigidHandAndDb": {
+            "handVertices": 1266,
+            "maxHandRigidResidualMm": 1.249000902703301e-13,
+            "dbVertices": 180,
+            "maxDbRelativeResidualMm": 1.2719202621569003e-13,
+            "method": "Fit one proper rigid transform to protected hand cloud; use same transform to predict all DB points. No fit to DB points."
+          },
+          "repeat": {
+            "of": "flex-0-twist-0",
+            "combinedMaxDriftMm": 0.0,
+            "dbMaxDriftMm": 0.0
+          }
+        },
+        "right": {
+          "checks": {
+            "actualRenderCapture": true,
+            "seamsWithin0_1mm": true,
+            "measuredFlexWithin1Degree": true,
+            "measuredTwistWithin1Degree": true,
+            "noNonadjacentIntersection": true,
+            "noSevereAreaCollapse": true,
+            "noSevereEdgeCollapse": true,
+            "rigidHandWithin0_001mm": true,
+            "rigidDbRelationshipWithin0_001mm": true,
+            "repeatWithoutAccumulation": true,
+            "fullOrientationWithin1Degree": true,
+            "seamNormalsWithin0_05Degree": true
+          },
+          "measuredAngles": {
+            "flexDeg": -1.3818922416193856e-14,
+            "twistDeg": 0.0,
+            "totalSwingDeg": 0.0,
+            "outOfFlexPlaneDeg": 8.883468830300533e-15,
+            "relativeDeltaQuaternion": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "maxPoseScaleDeviation": 3.3306690738754696e-16,
+            "method": "Independent neutral-relative forearm-to-hand matrix; signed longitudinal swing and axial quaternion twist. Command values are not used.",
+            "fullTargetOrientationErrorDeg": 0.0
+          },
+          "maximumSeamGapMm": 3.2374280574281126e-05,
+          "seamNormals": {
+            "status": "measured",
+            "seams": {
+              "body": {
+                "pairs": 152,
+                "maximumAngleDeg": 3.078324659199975e-06,
+                "rmsAngleDeg": 9.108440018698871e-07,
+                "worstPair": [
+                  1160,
+                  1172
+                ],
+                "within0_05Degree": true
+              },
+              "hand": {
+                "pairs": 44,
+                "maximumAngleDeg": 2.699869328381916e-06,
+                "rmsAngleDeg": 8.63421112316348e-07,
+                "worstPair": [
+                  3320,
+                  2054
+                ],
+                "within0_05Degree": true
+              }
+            },
+            "method": "Normalize actual render-time world normals independently; acos of corresponding seam-pair dot products."
+          },
+          "qualityVsActualNeutral": {
+            "minimumAreaRatio": 1.0,
+            "maximumAreaRatio": 1.0,
+            "areaRatioP01": 1.0,
+            "minimumEdgeRatio": 1.0,
+            "maximumEdgeRatio": 1.0,
+            "edgeRatioP01": 1.0,
+            "collapsedEdgeCount": 0
+          },
+          "intersectionCounts": {
+            "properCount": 0,
+            "coplanarCount": 0
+          },
+          "rigidHandAndDb": {
+            "handVertices": 1266,
+            "maxHandRigidResidualMm": 1.2449285054823656e-13,
+            "dbVertices": 180,
+            "maxDbRelativeResidualMm": 1.594436429147036e-13,
+            "method": "Fit one proper rigid transform to protected hand cloud; use same transform to predict all DB points. No fit to DB points."
+          },
+          "repeat": {
+            "of": "flex-0-twist-0",
+            "combinedMaxDriftMm": 0.0,
+            "dbMaxDriftMm": 0.0
+          }
+        }
+      }
+    },
+    {
+      "name": "flex-60-twist-60-repeat",
+      "command": {
+        "flexDeg": 60.0,
+        "twistDeg": 60.0
+      },
+      "classification": "primaryThrough60",
+      "capturedAt": "scene.onAfterRender",
+      "restoration": {
+        "status": "passed",
+        "runtimeAssertions": {
+          "positionsNormalsExact": true,
+          "boneTransformsExact": true,
+          "cacheExact": true
+        },
+        "hashEquality": true,
+        "evidence": "before/after hashes + runtime assertions"
+      },
+      "sides": {
+        "left": {
+          "checks": {
+            "actualRenderCapture": true,
+            "seamsWithin0_1mm": true,
+            "measuredFlexWithin1Degree": true,
+            "measuredTwistWithin1Degree": true,
+            "noNonadjacentIntersection": true,
+            "noSevereAreaCollapse": true,
+            "noSevereEdgeCollapse": true,
+            "rigidHandWithin0_001mm": true,
+            "rigidDbRelationshipWithin0_001mm": true,
+            "repeatWithoutAccumulation": true,
+            "fullOrientationWithin1Degree": true,
+            "seamNormalsWithin0_05Degree": true
+          },
+          "measuredAngles": {
+            "flexDeg": 60.000276610836565,
+            "twistDeg": 59.99997176429167,
+            "totalSwingDeg": 60.00027661091395,
+            "outOfFlexPlaneDeg": 0.00012394060370983073,
+            "relativeDeltaQuaternion": [
+              0.43301191361752384,
+              -0.2499998569580503,
+              -0.43301519835926916,
+              0.7499990614501642
+            ],
+            "maxPoseScaleDeviation": 4.440892098500626e-16,
+            "method": "Independent neutral-relative forearm-to-hand matrix; signed longitudinal swing and axial quaternion twist. Command values are not used.",
+            "fullTargetOrientationErrorDeg": 0.0003191135547372186
+          },
+          "maximumSeamGapMm": 3.259391641191114e-05,
+          "seamNormals": {
+            "status": "measured",
+            "seams": {
+              "body": {
+                "pairs": 154,
+                "maximumAngleDeg": 2.561320938754782e-06,
+                "rmsAngleDeg": 8.22716871427426e-07,
+                "worstPair": [
+                  235,
+                  1203
+                ],
+                "within0_05Degree": true
+              },
+              "hand": {
+                "pairs": 44,
+                "maximumAngleDeg": 2.9575586669421963e-06,
+                "rmsAngleDeg": 1.2806604693773908e-06,
+                "worstPair": [
+                  3328,
+                  2069
+                ],
+                "within0_05Degree": true
+              }
+            },
+            "method": "Normalize actual render-time world normals independently; acos of corresponding seam-pair dot products."
+          },
+          "qualityVsActualNeutral": {
+            "minimumAreaRatio": 0.26603060773160775,
+            "maximumAreaRatio": 1.583127961998337,
+            "areaRatioP01": 0.349590490325026,
+            "minimumEdgeRatio": 0.30343013177677625,
+            "maximumEdgeRatio": 1.9109860526828664,
+            "edgeRatioP01": 0.7290494464602898,
+            "collapsedEdgeCount": 0
+          },
+          "intersectionCounts": {
+            "properCount": 0,
+            "coplanarCount": 0
+          },
+          "rigidHandAndDb": {
+            "handVertices": 1266,
+            "maxHandRigidResidualMm": 1.4879680991431123e-12,
+            "dbVertices": 180,
+            "maxDbRelativeResidualMm": 1.504716382203053e-12,
+            "method": "Fit one proper rigid transform to protected hand cloud; use same transform to predict all DB points. No fit to DB points."
+          },
+          "repeat": {
+            "of": "flex-60-twist-60",
+            "combinedMaxDriftMm": 0.0,
+            "dbMaxDriftMm": 0.0
+          }
+        },
+        "right": {
+          "checks": {
+            "actualRenderCapture": true,
+            "seamsWithin0_1mm": true,
+            "measuredFlexWithin1Degree": true,
+            "measuredTwistWithin1Degree": true,
+            "noNonadjacentIntersection": true,
+            "noSevereAreaCollapse": true,
+            "noSevereEdgeCollapse": true,
+            "rigidHandWithin0_001mm": true,
+            "rigidDbRelationshipWithin0_001mm": true,
+            "repeatWithoutAccumulation": true,
+            "fullOrientationWithin1Degree": true,
+            "seamNormalsWithin0_05Degree": true
+          },
+          "measuredAngles": {
+            "flexDeg": 60.000573811006724,
+            "twistDeg": 59.99980430107769,
+            "totalSwingDeg": 60.00057381107374,
+            "outOfFlexPlaneDeg": -0.00011530851260791726,
+            "relativeDeltaQuaternion": [
+              -0.4330101691818457,
+              -0.25000243504070535,
+              0.433016303459725,
+              0.7499985711965741
+            ],
+            "maxPoseScaleDeviation": 3.3306690738754696e-16,
+            "method": "Independent neutral-relative forearm-to-hand matrix; signed longitudinal swing and axial quaternion twist. Command values are not used.",
+            "fullTargetOrientationErrorDeg": 0.0005993567177659746
+          },
+          "maximumSeamGapMm": 3.073586513925927e-05,
+          "seamNormals": {
+            "status": "measured",
+            "seams": {
+              "body": {
+                "pairs": 152,
+                "maximumAngleDeg": 2.4148365394514667e-06,
+                "rmsAngleDeg": 8.338826776776647e-07,
+                "worstPair": [
+                  1149,
+                  1313
+                ],
+                "within0_05Degree": true
+              },
+              "hand": {
+                "pairs": 44,
+                "maximumAngleDeg": 2.2588727439225506e-06,
+                "rmsAngleDeg": 9.80235447875535e-07,
+                "worstPair": [
+                  3309,
+                  2044
+                ],
+                "within0_05Degree": true
+              }
+            },
+            "method": "Normalize actual render-time world normals independently; acos of corresponding seam-pair dot products."
+          },
+          "qualityVsActualNeutral": {
+            "minimumAreaRatio": 0.12760775422691273,
+            "maximumAreaRatio": 1.534810910364425,
+            "areaRatioP01": 0.26983287190356714,
+            "minimumEdgeRatio": 0.293422238209477,
+            "maximumEdgeRatio": 1.7240405465135988,
+            "edgeRatioP01": 0.7536089390176229,
+            "collapsedEdgeCount": 0
+          },
+          "intersectionCounts": {
+            "properCount": 0,
+            "coplanarCount": 0
+          },
+          "rigidHandAndDb": {
+            "handVertices": 1266,
+            "maxHandRigidResidualMm": 1.665797065633485e-12,
+            "dbVertices": 180,
+            "maxDbRelativeResidualMm": 1.6848800366871186e-12,
+            "method": "Fit one proper rigid transform to protected hand cloud; use same transform to predict all DB points. No fit to DB points."
+          },
+          "repeat": {
+            "of": "flex-60-twist-60",
+            "combinedMaxDriftMm": 0.0,
+            "dbMaxDriftMm": 0.0
+          }
+        }
+      }
+    }
+  ],
+  "note": "Exact selected values from independent captured-r4 QA; omitted raw captures, triangle IDs and previews remain in source archive. No new GPU run."
+}

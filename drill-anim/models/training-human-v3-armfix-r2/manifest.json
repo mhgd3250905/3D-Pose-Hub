@@ -1,0 +1,54 @@
+{
+  "profile": "training-human-v3-armfix",
+  "version": "0.1.0-r2",
+  "hashPolicy": "utf8-crlf-to-lf-text; binary-raw",
+  "stage": "P1-P3-L2",
+  "status": "candidate-unreviewed",
+  "sha256": {
+    "drill-anim/models/hands-native-c1r2-symmetric-r1/hands-base.json": "e2b8fc5d1df538d407c0cb15f06af9bc698f51ea0d69fbef245e94fdfb8ad836",
+    "drill-anim/models/hands-native-c1r2-symmetric-r1/hands-rig.json": "a1b488058c5c5a927ba6d86caa9870b919a6091db8a1106ff498ff4a4c92ae26",
+    "drill-anim/models/hands-native-c1r2-symmetric-r1/loader.mjs": "2e4c835b0115157a06033cb9e56c6c2748559352158752c1ab052be74077cdce",
+    "drill-anim/models/hands-native-c1r2-symmetric-r1/manifest.json": "deb96d517e32c9d3dd9a696634417bdcaf20d7120178368ec90dd2401a03b625",
+    "drill-anim/models/training-human-v3-armfix-r1/manifest.json": "1ee1cb33dd0e1b9d3458ca9ff3727788a48d3cd8b895dd5fe0bb2ff409c9e50b",
+    "drill-anim/models/training-human-v3-armfix-r2/README.md": "7f5d6dac565d031a9596506638cdd7ce472ea05db4aca29e2042c2e4c26bae94",
+    "drill-anim/models/training-human-v3-armfix-r2/armfix.test.mjs": "c365a67be68d0b91c323b93b335463c4ade2fb9108c6a4a88e89bdac46ee19dd",
+    "drill-anim/models/training-human-v3-armfix-r2/base.mjs": "24f64a958edbd57fcef9d038dfd465b8da2e80df63696f31f9f774807f06d82d",
+    "drill-anim/models/training-human-v3-armfix-r2/collar.mjs": "63212a061b61b22db464e4b20a69167c5cae5b2d98d426a9f6b5fe800cc4580e",
+    "drill-anim/models/training-human-v3-armfix-r2/export-appearance.mjs": "86aabc694b1b5bcfccdac985e5ff1acf8983304b82713e3b25fb7ef99deadfbd",
+    "drill-anim/models/training-human-v3-armfix-r2/loader.mjs": "06c54501df0481c2d7f9badaea445c77c6e053778fdacdee65460dd365813c17",
+    "drill-anim/models/training-human-v3-armfix-r2/normal-sync.mjs": "a4fa2e3eca88bcb39f829bbfe7f218f9164bbb42dad1feb82559cc9922f3249f",
+    "drill-anim/models/training-human-v3-armfix-r2/proportion-base.mjs": "8f5e52a1ff9eef0c8cb8b5c4b5f59b12bd1289bcbe016323bd220335a019fb2c",
+    "drill-anim/models/training-human-v3-armfix-r2/recipe.mjs": "a255c59dd5cb8c39f020d7449d5fbd442daac65c301c6778597208d5a80cd693",
+    "drill-anim/models/training-human-v3-armfix-r2/transport.mjs": "3000d7c9062fe6bf608f35e5a522a08bfaf638ff2c432fa6cb191f0e28577965",
+    "drill-anim/models/training-human-v3-armfix-r2/verify.mjs": "b923edbfcd475439c9c61a31dc2ec5095cd33251a885dd50b2ab147ccf9985a5",
+    "drill-anim/models/training-human-v3-completed-r7/manifest.json": "676a19e7b4185848ce2570c66a996ba4f967305a03feafe45e4c69b36c7a7fb6",
+    "tools/body-v3/arm-normals-r1.js": "8c8673cc74eb6eae1a4e4c74757e7550801c896787e1cb3ceaaae08167e9fbf7",
+    "tools/body-v3/armfix-r2/model-pin.mjs": "7119ea2ee1e5a4218ff14486d6cb7afb29568310e43edccb2710bb7d9ffe4360",
+    "tools/body-v3/piece-normals-r1.js": "94469048a5b6ae83bbe62a901084ef3ee66df04e21e14bd22c78d20bc6d23e66"
+  },
+  "recipe": {
+    "upperArmScale": 1,
+    "forearmScale": 1,
+    "handScale": 1,
+    "handDir": "hands-native-c1r2-symmetric-r1",
+    "lowerBodyAndTorso": "unchanged-from-original-v3-rig"
+  },
+  "reviewed": false,
+  "releaseEligible": false,
+  "retained": [
+    "P1 ankle",
+    "P2 head-neck",
+    "P3 shared collar and garment",
+    "L1 wrist gradient",
+    "L2 derived normals"
+  ],
+  "notMigrated": [
+    "P4 hip/knee live normals",
+    "P5 shoulder corrective",
+    "r5 contact/neck calibration"
+  ],
+  "validation": {
+    "cpuCommand": "node --test drill-anim/models/training-human-v3-armfix-r2/armfix.test.mjs",
+    "scope": "CPU source/recipe/guard/geometry checks only; no visual acceptance inferred. GPU evidence held by parent task."
+  }
+}
