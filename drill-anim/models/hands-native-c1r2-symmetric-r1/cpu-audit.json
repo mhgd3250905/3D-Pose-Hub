@@ -1,0 +1,70 @@
+{
+  "format": "pose-hub-symmetric-hand-cpu-audit@1",
+  "vertices": 13398,
+  "faces": 26726,
+  "bones": 52,
+  "seamVertices": 66,
+  "unchanged": {
+    "bones": true,
+    "index": true,
+    "joints": true,
+    "weights": true,
+    "seam": true,
+    "keepFaces": true,
+    "hideFaces": true,
+    "hideMeshes": true,
+    "requires": true
+  },
+  "rigByteIdentical": true,
+  "leftPositionMaxChangeMm": 0.0,
+  "seamPositionMaxChangeMm": 0.0,
+  "dimensions": {
+    "left": {
+      "tipFromHandOriginMm": 159.00486153369005,
+      "oldTipFromHandOriginMm": 159.00486153369005,
+      "widthMm": 114.40863284370064,
+      "depthMm": 69.58735700067315
+    },
+    "right": {
+      "tipFromHandOriginMm": 159.00469649097346,
+      "oldTipFromHandOriginMm": 186.53963328080917,
+      "widthMm": 114.40863284370064,
+      "depthMm": 69.44634330488746
+    }
+  },
+  "tipDifferenceMm": 0.00016504271658845937,
+  "fullMirrorNearestMm": {
+    "max": 3.344352600913085,
+    "p95": 1.263568191344542,
+    "rms": 0.45460175272037945
+  },
+  "palmAndFingersMirrorNearestMm": {
+    "max": 0.002567247489218783,
+    "p95": 0.002567247489209693,
+    "rms": 0.0025672474891554513
+  },
+  "weights": {
+    "allSums255": true,
+    "validBoneIndices": true,
+    "unchangedEncodedWeights": true,
+    "unchangedEncodedJoints": true
+  },
+  "topology": {
+    "boundaryEdges": 66,
+    "nonManifoldEdges": 0,
+    "zeroAreaTriangles": 0,
+    "minimumTriangleAreaMm2": 0.05024751120930046
+  },
+  "normals": {
+    "finite": true,
+    "lengthMin": 0.9940613544022081,
+    "lengthMax": 1.0060884774352845,
+    "sharedSeamNormalsExact": true
+  },
+  "passed": true,
+  "limitations": [
+    "CPU/rest geometry only; renderer loading, posed grip, support/contact, collision, full motion and user visual acceptance are separate gates.",
+    "Wrist topology remains the original asymmetric 53-face zipper per side; its rest shape is close but not perfectly mirror-identical.",
+    "Historical frame reconstructed from rounded rig; distal affine fit residual is recorded in build-provenance.json."
+  ]
+}

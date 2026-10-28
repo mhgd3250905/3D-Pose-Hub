@@ -1,0 +1,52 @@
+{
+  "format": "pose-hub-user-appearance-acceptance@1",
+  "date": "2026-10-28",
+  "timezone": "Asia/Shanghai",
+  "baseline": "webxr-fixed-dumbbell-wrist-r4",
+  "bodyProfile": "training-human-v3-armfix-r2",
+  "userStatement": "可以看起来还不错 我验收通过了",
+  "reviewUrl": "http://127.0.0.1:63274/",
+  "userGripAppearanceAccepted": true,
+  "userWristAppearanceAccepted": true,
+  "scope": "Fixed dumbbell grip and wrist attachment appearance; retained baseline for subsequent action integration",
+  "candidateReceipt": {
+    "file": "F:\\PoseHub-v2-production\\action-completion-v3-20261028-r1\\qa\\hand-presets-r1\\webxr-wrist-join-r1\\candidate-r4-receipt.json",
+    "sha256": "ad7717532c264d6bdeeca365ff1cab9327b78748b2dd87674c9a474854da9d2f"
+  },
+  "runtimeSources": [
+    {
+      "file": "E:\\AII-3D\\3D-Pose-Hub-worktrees\\action-inventory-20261028\\tools\\body-v3\\webxr-wrist-join-r1\\capture.mjs",
+      "sha256": "3d17971cafa026a9a3050b741a4032bbdae1d0c9ac0f029a937a5885c411279b"
+    },
+    {
+      "file": "E:\\AII-3D\\3D-Pose-Hub-worktrees\\action-inventory-20261028\\tools\\body-v3\\webxr-wrist-join-r1\\loader.mjs",
+      "sha256": "fd6eee0e923a3b7858da77ef483b0de1d9a37a8400653f60f55fa61bbe41a31e"
+    },
+    {
+      "file": "E:\\AII-3D\\3D-Pose-Hub-worktrees\\action-inventory-20261028\\tools\\body-v3\\webxr-wrist-join-r1\\runtime.js",
+      "sha256": "731a3db458d639ed1f7597b956896874170ebb1d1f1b7599540686aaceba34df"
+    }
+  ],
+  "validatedSamples": {
+    "primaryFlexCommands": [
+      -60.0,
+      -30.0,
+      0.0,
+      30.0,
+      60.0
+    ],
+    "primaryTwistCommands": [
+      -60.0,
+      0.0,
+      60.0
+    ],
+    "both30And60FlexSignsPresent": true,
+    "bothTwistSignsPresent": true
+  },
+  "knownLimitations": [
+    "75-degree stress samples include failures.",
+    "All-action contact and whole-body collision checks remain separate."
+  ],
+  "productionRecipeChanged": false,
+  "releaseEligible": false
+}

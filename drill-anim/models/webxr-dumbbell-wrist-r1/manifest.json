@@ -1,0 +1,217 @@
+{
+  "format": "pose-hub-fixed-dumbbell-wrist-module@1",
+  "id": "webxr-dumbbell-wrist-r1",
+  "baseline": "webxr-fixed-dumbbell-wrist-r4",
+  "bodyProfile": "training-human-v3-armfix-r2",
+  "units": "metres",
+  "handleDiameterMm": 32,
+  "sourceRecipe": {
+    "file": "F:\\PoseHub-v2-production\\action-completion-v3-20261028-r1\\qa\\hand-presets-r1\\webxr-wrist-join-r1\\static-build-r1\\recipe.json",
+    "sha256": "5055d918b104ed4ad7001e0d66e9ce3f6f4577905f00501d73c6398d16392fd3",
+    "bytes": 2203734
+  },
+  "sourceFiles": [
+    {
+      "file": "sources/mesh-reference.json",
+      "originalFile": "F:\\PoseHub-v2-production\\action-completion-v3-20261028-r1\\qa\\hand-presets-r1\\wrist-candidate-share0-r2\\mesh-reference.json",
+      "sha256": "5a1b4c24c812879fb88eef2ef96cb74d3ae2067770bc17c28622104b81ba4c79",
+      "byteIdentical": true
+    },
+    {
+      "file": "sources/flex-0-twist-0.json",
+      "originalFile": "F:\\PoseHub-v2-production\\action-completion-v3-20261028-r1\\qa\\hand-presets-r1\\wrist-candidate-share0-r2\\flex-0-twist-0.json",
+      "sha256": "80dd8e1a42e979c6fbfa21d0261db733125e37026a54128a080956a36f94c6b5",
+      "byteIdentical": true
+    },
+    {
+      "file": "sources/left-grasp.json",
+      "originalFile": "F:\\PoseHub-v2-production\\action-completion-v3-20261028-r1\\qa\\hand-presets-r1\\webxr-grasp-r1\\reference-power-grip-r1\\contact-corrective-symmetric-r1\\left-grasp.json",
+      "sha256": "dfb8782d5ff8f44443155cef3b0d6424b1debdebdeb5b38ca6d5f6a52b1ae628",
+      "byteIdentical": true
+    },
+    {
+      "file": "sources/right-grasp.json",
+      "originalFile": "F:\\PoseHub-v2-production\\action-completion-v3-20261028-r1\\qa\\hand-presets-r1\\webxr-grasp-r1\\reference-power-grip-r1\\contact-corrective-symmetric-r1\\right-grasp.json",
+      "sha256": "6986f79cc7ec38b4cab36a16ffee6e16fcbbea06e5b7a55ec705daa5120795e2",
+      "byteIdentical": true
+    }
+  ],
+  "sourceTemplateManifest": {
+    "file": "F:\\PoseHub-v2-production\\action-completion-v3-20261028-r1\\qa\\hand-presets-r1\\webxr-grasp-r1\\reference-power-grip-r1\\template-package\\manifest.json",
+    "sha256": "99cf02c7bd1ac98c40f75f835319e92eeebb618ea04cab6daeabdaf23d9937cb"
+  },
+  "runtime": {
+    "file": "tools/body-v3/webxr-wrist-join-r1/runtime.js",
+    "sha256": "731a3db458d639ed1f7597b956896874170ebb1d1f1b7599540686aaceba34df",
+    "changed": false
+  },
+  "equivalence": {
+    "fourSourceJsonsByteIdentical": true,
+    "fourTemplateGlbsByteIdentical": true,
+    "geometryRecipeFieldsExact": [
+      "meshes",
+      "bridge",
+      "neutralFrames",
+      "sourcePins",
+      "design",
+      "checks"
+    ],
+    "onlyRecipeChanges": [
+      "sources.*.file",
+      "templateDir",
+      "packageManifest"
+    ],
+    "propGeometry": "Positions, normals, indices, node transform chains and materials decoded from exact accepted GLBs; no primitive replacement."
+  },
+  "acceptedScope": {
+    "fixedGripAppearance": true,
+    "wristAttachmentAppearance": true,
+    "primaryThrough60Samples": 17,
+    "primarySideResults": 34,
+    "primaryMeasuredChecksPassed": true,
+    "stress75AllPassed": false,
+    "stress75Failures": [
+      {
+        "row": "flex-75-twist-0",
+        "side": "left",
+        "check": "noSevereAreaCollapse"
+      },
+      {
+        "row": "flex-75-twist-0",
+        "side": "right",
+        "check": "noNonadjacentIntersection"
+      },
+      {
+        "row": "flex-75-twist-0",
+        "side": "right",
+        "check": "noSevereAreaCollapse"
+      },
+      {
+        "row": "flex-75-twist-0",
+        "side": "right",
+        "check": "noSevereEdgeCollapse"
+      },
+      {
+        "row": "flex-75-twist--60",
+        "side": "left",
+        "check": "noNonadjacentIntersection"
+      },
+      {
+        "row": "flex-75-twist--60",
+        "side": "left",
+        "check": "noSevereAreaCollapse"
+      },
+      {
+        "row": "flex-75-twist--60",
+        "side": "right",
+        "check": "noNonadjacentIntersection"
+      },
+      {
+        "row": "flex-75-twist--60",
+        "side": "right",
+        "check": "noSevereAreaCollapse"
+      },
+      {
+        "row": "flex--75-twist-60",
+        "side": "left",
+        "check": "noSevereAreaCollapse"
+      },
+      {
+        "row": "flex-75-twist-60",
+        "side": "right",
+        "check": "noNonadjacentIntersection"
+      },
+      {
+        "row": "flex-75-twist-60",
+        "side": "right",
+        "check": "noSevereAreaCollapse"
+      }
+    ],
+    "wholeBodyRig": "candidate",
+    "wholeActionContact": "pending",
+    "productionRecipeChanged": false,
+    "releaseEligible": false
+  },
+  "files": [
+    {
+      "file": "evidence/gpu-grid-r4-qa-summary.json",
+      "sha256": "8644d32fcbdd7a41ff7113976e8fa54ce32d8a6501c70313f1653174f3444c8e",
+      "bytes": 165533
+    },
+    {
+      "file": "evidence/user-acceptance-r4-20261028.json",
+      "sha256": "3a8e2edaea4735b3af13cf458493630ef3c145c0328f3249e32f672f093178c4",
+      "bytes": 1999
+    },
+    {
+      "file": "LICENSE-source.md",
+      "sha256": "0ef0c87e8ffdd0681f332dc3b39f284dee2166d1f853fabc3853884fe81a6f30",
+      "bytes": 1094
+    },
+    {
+      "file": "README.md",
+      "sha256": "70381e00611cda8e5d3022503f38ca50b7e6c9935e56d7624b869d8cb59661c7",
+      "bytes": 2477
+    },
+    {
+      "file": "recipe.json",
+      "sha256": "6e914594f46734c77ee9bf219e82bdcceb5a19d627e5595959c06cadb9989a2b",
+      "bytes": 2203305
+    },
+    {
+      "file": "sources/flex-0-twist-0.json",
+      "sha256": "80dd8e1a42e979c6fbfa21d0261db733125e37026a54128a080956a36f94c6b5",
+      "bytes": 2738579
+    },
+    {
+      "file": "sources/left-grasp.json",
+      "sha256": "dfb8782d5ff8f44443155cef3b0d6424b1debdebdeb5b38ca6d5f6a52b1ae628",
+      "bytes": 404856
+    },
+    {
+      "file": "sources/mesh-reference.json",
+      "sha256": "5a1b4c24c812879fb88eef2ef96cb74d3ae2067770bc17c28622104b81ba4c79",
+      "bytes": 5807510
+    },
+    {
+      "file": "sources/right-grasp.json",
+      "sha256": "6986f79cc7ec38b4cab36a16ffee6e16fcbbea06e5b7a55ec705daa5120795e2",
+      "bytes": 406142
+    },
+    {
+      "file": "template-package/left-hand-only.glb",
+      "sha256": "c2c170a4accd8d8812126e47342f2649656350941f9999099859524dc010d227",
+      "bytes": 47784
+    },
+    {
+      "file": "template-package/left-hand-with-dumbbell.glb",
+      "sha256": "05d2fed422e1f402cf847b6bbac1639c0c4f5541514eb305034f71f5231c5714",
+      "bytes": 58184
+    },
+    {
+      "file": "template-package/LICENSE-source.md",
+      "sha256": "0ef0c87e8ffdd0681f332dc3b39f284dee2166d1f853fabc3853884fe81a6f30",
+      "bytes": 1094
+    },
+    {
+      "file": "template-package/manifest.json",
+      "sha256": "5053954bd015dc1bb2ecd8106aae2421cbdc49504a3e084a4d7ff3e59d76d04e",
+      "bytes": 1912
+    },
+    {
+      "file": "template-package/right-hand-only.glb",
+      "sha256": "d3a71575f28610774ddae43317a34e006fc45bf0716b81fddee16d80866b4896",
+      "bytes": 47788
+    },
+    {
+      "file": "template-package/right-hand-with-dumbbell.glb",
+      "sha256": "e84361b8b981929c730a2f76a105233838c2d1e862c3d0eddf8e62f3bdbcac54",
+      "bytes": 58180
+    },
+    {
+      "file": "template-package/template.mjs",
+      "sha256": "226c947d4525ea7d161d764ff32722be5195e15204789defcb398c6cc6d572c7",
+      "bytes": 1397
+    }
+  ]
+}

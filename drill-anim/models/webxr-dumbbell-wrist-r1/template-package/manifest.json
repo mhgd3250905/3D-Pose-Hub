@@ -1,0 +1,67 @@
+{
+  "format": "pose-hub-fixed-dumbbell-template@1",
+  "id": "webxr-dumbbell32-fixed",
+  "version": "0.1.0-r1",
+  "units": "metres",
+  "anchor": "wrist_anchor",
+  "forward": [
+    0,
+    1,
+    0
+  ],
+  "palmar": [
+    0,
+    0,
+    1
+  ],
+  "fixedAssembly": true,
+  "liveFitting": false,
+  "source": "WebXR generic-hand assets1.0.20 left, MIT; fixed pose plus declared local corrective; right exact reflection",
+  "userAcceptance": {
+    "currentGripAppearance": true,
+    "old25mmFallbackPreserved": true,
+    "bodyWristIntegration": false
+  },
+  "dumbbell": {
+    "handleDiameterMm": 32,
+    "handleLengthMm": 165,
+    "plateCircumradiusMm": 42,
+    "plateThicknessMm": 60,
+    "plateAxialCentreMm": 111
+  },
+  "reviewed": false,
+  "releaseEligible": false,
+  "files": [
+    {
+      "file": "left-hand-only.glb",
+      "bytes": 47784,
+      "sha256": "c2c170a4accd8d8812126e47342f2649656350941f9999099859524dc010d227"
+    },
+    {
+      "file": "left-hand-with-dumbbell.glb",
+      "bytes": 58184,
+      "sha256": "05d2fed422e1f402cf847b6bbac1639c0c4f5541514eb305034f71f5231c5714"
+    },
+    {
+      "file": "LICENSE-source.md",
+      "bytes": 1094,
+      "sha256": "0ef0c87e8ffdd0681f332dc3b39f284dee2166d1f853fabc3853884fe81a6f30"
+    },
+    {
+      "file": "right-hand-only.glb",
+      "bytes": 47788,
+      "sha256": "d3a71575f28610774ddae43317a34e006fc45bf0716b81fddee16d80866b4896"
+    },
+    {
+      "file": "right-hand-with-dumbbell.glb",
+      "bytes": 58180,
+      "sha256": "e84361b8b981929c730a2f76a105233838c2d1e862c3d0eddf8e62f3bdbcac54"
+    },
+    {
+      "file": "template.mjs",
+      "bytes": 1397,
+      "sha256": "226c947d4525ea7d161d764ff32722be5195e15204789defcb398c6cc6d572c7"
+    }
+  ],
+  "archiveNote": "Subset archive: selected files retain original bytes; original manifest records prior template-only acceptance."
+}
