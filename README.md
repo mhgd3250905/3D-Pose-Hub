@@ -8,6 +8,12 @@ Pose-Hub 是 FlareLab（托马斯训练助手）和 HipLab（开胯训练助手�
 
 2026-10-17 从 [3D-Body](https://github.com/mhgd3250905/3D-Body) `master@66067a6` 迁来，保留了相关文件的 Git 历史。迁移细节、路径对照和验证结果见 [MIGRATION.md](MIGRATION.md)；协作规则见 [AGENTS.md](AGENTS.md)。
 
+## 身体 v3 阶段快照
+
+2026-10-28，身体 `training-human-v3-completed / 1.0.0-r7` 已获用户网页看样确认并独立合入；其上的可选接触／颈通道扩展为 `training-human-v3-contact / 0.1.0-r5`，已完成所列局部复测和源码采纳。专用入口、分项证据和复现命令集中在 [身体 v3 总览](docs/body-v3/README.md)。
+
+[版本快照 r1](docs/body-v3/snapshot-20261028-r1.md)固定源码、模型 SHA、验证与剩余项；[设计与优化思路](docs/body-v3/design-and-optimization-20261028-r1.md)解释分层设计、几何／权重／材质／法线修法、指标修订和 PR 取舍。全局生产配方仍由 `current-production.json` 选择 v2plus rc2，动作迁移和公开素材发布继续独立验收。
+
 ## 目录
 
 ```
@@ -50,7 +56,7 @@ python -m unittest discover -s media/tests -v   # 素材脚本
 
 `training-human-v2` 已退出新生产，只保留冻结历史复现。2026-10-21 的六动作、五皮肤 r2 试制已获确认并合入 main；分层渲染见 [tools/v2](drill-anim/tools/v2/README.md)，脚本派生和本地审片见 [action-package-v2](tools/action-package-v2/README.md)。全库后续已获制作授权，189 动作第一版另在生产分支保存为 `library-v2-20261022-r1`，整体仍待审核；制作与发布分开，见[当前台账](docs/version-ledger.md)。新产物保留在授权的 F 盘。
 
-PR #15 的新手部与七项专用修订源码已按用户授权合入 main，内容提交为 `335a033569e223487ab2fd37ba036801fdbb6a3d`；合入后文档保存及推送身份见[台账](docs/version-ledger.md)。本机审阅入口仍为 `F:/PoseHub-v2-pilot/pr15-final-review-20261024/index.html`，复现命令见[合入前交付记录](docs/pr15-local-repair-delivery-20261024.md)。手部采用已确认的 native-r3；独立握持、过头臂屈伸、脚背拉伸和低位穿针各固定自身版本。穿针式仅为低位小范围候选，原高位起点未恢复；所有动作保留待用户审核状态。该入口不是新版 App 发布包。
+2026-10-24，PR #15 的新手部与七项专用修订源码已按用户授权合入 main，内容提交为 `335a033569e223487ab2fd37ba036801fdbb6a3d`；合入后文档保存及推送身份见[台账](docs/version-ledger.md)。该次本机审阅入口为 `F:/PoseHub-v2-pilot/pr15-final-review-20261024/index.html`，复现命令见[合入前交付记录](docs/pr15-local-repair-delivery-20261024.md)。该次手部采用已确认的 native-r3；独立握持、过头臂屈伸、脚背拉伸和低位穿针各固定自身版本。穿针式仅为低位小范围候选，原高位起点未恢复；所有动作保留待用户审核状态。该入口不是新版 App 发布包。
 
 六动作试制的 `F:/PoseHub-v2-pilot/neck-fix-r2/`、60 份视频和 catalog draft.2 仍按原批次保留，见[试制记录](docs/action-package-v2-pilot-20261021.md)及[颈部修复记录](docs/neck-material-fix-20261021.md)。不以 PR15 的独立模型自动替换旧批次。
 
@@ -94,6 +100,6 @@ python tools/pose_hub_sync.py --lock pose-hub.lock.json --check
 
 ## AI 动作目录版本
 
-历史兼容目录为 **0.3.0 / formatVersion 1**：[PR #11](https://github.com/mhgd3250905/3D-Pose-Hub/pull/11) 的 0.2.0 修复后，[PR #13](https://github.com/mhgd3250905/3D-Pose-Hub/pull/13) 已合入 `rhythm` 字段。仍收录 142 个稳定动作 id：FlareLab 51、HipLab 46、SmartFit 93，各 App 有重叠。PR15 合入后的 main spec 开发总表为 **297 文件**，包含历史、候选和多个修订；不等于稳定动作数或发布数。生产分支快照的统计另按其固定提交记录，分支数量不相加；新动作仍须按 v2 六层逐项验收。
+历史兼容目录为 **0.3.0 / formatVersion 1**：[PR #11](https://github.com/mhgd3250905/3D-Pose-Hub/pull/11) 的 0.2.0 修复后，[PR #13](https://github.com/mhgd3250905/3D-Pose-Hub/pull/13) 已合入 `rhythm` 字段。仍收录 142 个稳定动作 id：FlareLab 51、HipLab 46、SmartFit 93，各 App 有重叠。2026-10-28，选择性采纳四项时序后，main spec 开发总表为 **301 文件**，包含历史、候选和多个修订；不等于稳定动作数或发布数。生产分支快照的统计另按其固定提交记录，分支数量不相加；新动作仍须按 v2 六层逐项验收。
 
 目录 0.3.0 与媒体 ZIP 0.2.0 是独立版本。目录合入不等于消费端已升级：SmartFit 的 8 项剂量、7 项侧别同步与 SDK `holdSeconds`、`rhythm` 执行语义仍待接入验收；本次没有新增目录发布 tag 或媒体 ZIP。具体提交、验证范围与待办见 [版本对齐台账](docs/version-ledger.md)。
