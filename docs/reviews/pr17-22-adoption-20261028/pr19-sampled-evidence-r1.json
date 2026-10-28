@@ -1,0 +1,166 @@
+{
+  "date": "2026-10-28",
+  "timezone": "Asia/Shanghai",
+  "pr": 19,
+  "sourceHead": "6ff2120d7f6be0d34b38c1453f188303356f9d70",
+  "modelProfile": "training-human-v3-completed",
+  "modelVersion": "1.0.0-r7",
+  "scope": "Selected retiming source adoption only; no complete r7 action or media release approval",
+  "motionSelection": [
+    "chest-B-r2",
+    "serratus-A-r2",
+    "triceps-A-r2",
+    "quadriceps-C-r2"
+  ],
+  "cpuOracle": {
+    "oracle": "frozen page engine sampler",
+    "cases": [
+      {
+        "id": "chest-B-r2",
+        "sourceId": "chest-B",
+        "frames": 240,
+        "maxTrackError": 2.59068990760003e-06,
+        "worstTrack": "prot",
+        "worstFrame": 220,
+        "posePropsQaUnchanged": true
+      },
+      {
+        "id": "serratus-A-r2",
+        "sourceId": "serratus-A",
+        "frames": 240,
+        "maxTrackError": 1.2058806845294257e-06,
+        "worstTrack": "scap",
+        "worstFrame": 206,
+        "posePropsQaUnchanged": true
+      },
+      {
+        "id": "triceps-A-r2",
+        "sourceId": "triceps-A",
+        "frames": 240,
+        "maxTrackError": 5.478943253534041e-07,
+        "worstTrack": "down",
+        "worstFrame": 79,
+        "posePropsQaUnchanged": true
+      },
+      {
+        "id": "quadriceps-C-r2",
+        "sourceId": "quadriceps-C",
+        "frames": 240,
+        "maxTrackError": 4.323913526116385e-07,
+        "worstTrack": "ext",
+        "worstFrame": 31,
+        "posePropsQaUnchanged": true
+      }
+    ]
+  },
+  "previewCases": [
+    {
+      "id": "chest-B-r2",
+      "sourceId": "chest-B",
+      "frames": [
+        0,
+        18,
+        60,
+        63,
+        83,
+        99,
+        120,
+        138,
+        180,
+        183,
+        203,
+        219,
+        239
+      ],
+      "maxBonePositionDeltaMm": 0.0001639008459254066,
+      "maxBoneAngleDeltaDeg": 3.5939712936636e-05,
+      "sourceWarningFrames": 9,
+      "candidateWarningFrames": 9,
+      "warningListsUnchanged": true,
+      "preview": "img/pr19-chest-B-r2-r1.jpg",
+      "previewSha256": "58041ae89e05a7275e82c029645e4b9a5036a4f2558a8efe4f68cfc784485247"
+    },
+    {
+      "id": "serratus-A-r2",
+      "sourceId": "serratus-A",
+      "frames": [
+        0,
+        9,
+        39,
+        69,
+        74,
+        84,
+        90,
+        120,
+        129,
+        159,
+        189,
+        194,
+        204,
+        210,
+        239
+      ],
+      "maxBonePositionDeltaMm": 3.146078273608729e-10,
+      "maxBoneAngleDeltaDeg": 2.9575586669421963e-06,
+      "sourceWarningFrames": 6,
+      "candidateWarningFrames": 6,
+      "warningListsUnchanged": true,
+      "preview": "img/pr19-serratus-A-r2-r1.jpg",
+      "previewSha256": "5399ef5c9e7b5f315865d50a27f719705fdf4cad713f56b8b50d136b664e4291"
+    },
+    {
+      "id": "triceps-A-r2",
+      "sourceId": "triceps-A",
+      "frames": [
+        0,
+        21,
+        60,
+        63,
+        80,
+        95,
+        99,
+        120,
+        141,
+        180,
+        183,
+        200,
+        215,
+        219,
+        239
+      ],
+      "maxBonePositionDeltaMm": 0.0001621241025072788,
+      "maxBoneAngleDeltaDeg": 4.719754618290178e-05,
+      "sourceWarningFrames": 0,
+      "candidateWarningFrames": 0,
+      "warningListsUnchanged": true,
+      "preview": "img/pr19-triceps-A-r2-r1.jpg",
+      "previewSha256": "f82d378c07a1a32f13f73d14d81e1d7b3567450f000232dc847e9037e20017a0"
+    },
+    {
+      "id": "quadriceps-C-r2",
+      "sourceId": "quadriceps-C",
+      "frames": [
+        0,
+        12,
+        48,
+        78,
+        108,
+        129,
+        150,
+        239
+      ],
+      "maxBonePositionDeltaMm": 6.684427777288335e-13,
+      "maxBoneAngleDeltaDeg": 1.7075472925031877e-06,
+      "sourceWarningFrames": 0,
+      "candidateWarningFrames": 0,
+      "warningListsUnchanged": true,
+      "preview": "img/pr19-quadriceps-C-r2-r1.jpg",
+      "previewSha256": "8cb50e7bdd9b79bbebcfa7b2ecef1fe197b9c0b41acd66c83b0b16eb9299d2ec"
+    }
+  ],
+  "pageErrors": [],
+  "rawReportSha256": "8174fb6fbf238e78cd13136c151b4facceb72ef45f84d0a0fc09394233aeb6e0",
+  "rawImageStorage": "External codex-output; raw PNGs are not committed",
+  "fullActionReviewed": false,
+  "releaseEligible": false
+}

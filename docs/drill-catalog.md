@@ -6,17 +6,17 @@
 
 | 项 | 数 |
 |---|---:|
-| spec 文件（specs/*.js，不含 _*.mjs 共用模块） | 297 |
-| 其中修订版（-r2/-r3） | 33 |
+| spec 文件（specs/*.js，不含 _*.mjs 共用模块） | 301 |
+| 其中修订版（-r2/-r3） | 37 |
 | FlareLab App 51（data/drills.json） | 51 |
 | HipLab 已发布素材绑定的 spec 文件（v0.1.0（published）46 个动作 id、v0.2.0（published）46 个动作 id） | 47 |
 | HipLab 自测静图在用 spec | 6 |
 | 原版已被在用的修订版取代（保留不删） | 9 |
-| 有 spec 但没有被任何 App/发布版本使用 | 186 |
+| 有 spec 但没有被任何 App/发布版本使用 | 190 |
 | SHA 未登记 / 哈希不符 | 0 |
 
 - g-* 健身房补充（cable-hip-12；非普通办公）：2
-- FlareLab 肌群动作（17 肌群 × A 徒手 / B 家用 / C 健身房）：60
+- FlareLab 肌群动作（17 肌群 × A 徒手 / B 家用 / C 健身房）：64
 - s-* 拉伸（原 8 项 + 修订）：13
 - t-* 托马斯专项（Flare，PR #106）：14
 - o-* 办公室（PR #97–104 + office-hip-leg-02 + office-adductor-back-03 + office-knee-march-04 + office-calf-squat-05 + office-support-06）：30
@@ -47,6 +47,7 @@
 | `adductors-C` | 绳索站姿髋内收 | 内收肌群（left） | 绳索、脚踝扣 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `chest-A-r2` | 俯卧撑转侧撑 | 胸大肌 | 垫 | 12s/360f@30 | v2（历史） | `chest-A` | — | 已登记（2026-10-19 camera/target-visibility review） |  |
 | `chest-A` | 俯卧撑转侧撑 | 胸大肌 | 垫 | 12s/360f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
+| `chest-B-r2` | 平行杆深幅俯卧撑 | 胸大肌 | 平行杆 | 8s/240f@30 | v2plus | `chest-B` | — | PR #19 |  |
 | `chest-B` | 平行杆深幅俯卧撑 | 胸大肌 | 平行杆 | 7s/210f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `chest-C` | 绳索单臂站姿推胸 | 胸大肌（right） | 绳索、单柄 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `deltoids-A` | 直臂侧平板支撑 | 三角肌 | — | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
@@ -82,6 +83,7 @@
 | `obliques-C` | 绳索高位伐木 | 腹斜肌 | 绳索、单柄 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `quadriceps-A` | 跪姿反向北欧 | 股四头肌 | 垫 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `quadriceps-B` | 弹力带终末伸膝 | 股四头肌（right） | 弹力带 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
+| `quadriceps-C-r2` | 器械腿屈伸（顶端锁直） | 股四头肌 | 腿屈伸机 | 8s/240f@30 | v2plus | `quadriceps-C` | — | PR #19 |  |
 | `quadriceps-C` | 器械腿屈伸（顶端锁直） | 股四头肌 | 腿屈伸机 | 10s/300f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `rotator-cuff-A-r2` | 俯撑交替触肩 | 肩袖肌群 | 垫 | 8s/240f@30 | v2（历史） | `rotator-cuff-A` | — | 已登记（2026-10-19 camera/target-visibility review） |  |
 | `rotator-cuff-A` | 俯撑交替触肩 | 肩袖肌群 | 垫 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
@@ -92,9 +94,11 @@
 | `scapular-A` | 俯卧 Y-T-W 举 | 斜方肌中下部 · 菱形肌 | 垫 | 12s/360f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `scapular-B` | 单杠肩胛引体 | 斜方肌中下部 · 菱形肌 | 单杠 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `scapular-C` | 吊环直臂支撑 | 斜方肌中下部 · 菱形肌 | 吊环 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
+| `serratus-A-r2` | 俯撑肩胛前伸 | 前锯肌 | 垫 | 8s/240f@30 | v2plus | `serratus-A` | — | PR #19 |  |
 | `serratus-A` | 俯撑肩胛前伸 | 前锯肌 | 垫 | 6s/180f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `serratus-B` | 泡沫轴墙面上滑 | 前锯肌 | 墙、泡沫轴 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `serratus-C` | 吊环俯卧撑加前伸 | 前锯肌 | 吊环 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
+| `triceps-A-r2` | 窄距俯卧撑（锁肘停顿） | 肱三头肌 | 垫 | 8s/240f@30 | v2plus | `triceps-A` | — | PR #19 |  |
 | `triceps-A` | 窄距俯卧撑（锁肘停顿） | 肱三头肌 | 垫 | 7.2s/216f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `triceps-B` | 平行杆直臂支撑 | 肱三头肌 | 平行杆 | 7s/210f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
 | `triceps-C` | 双杠臂屈伸 | 肱三头肌 | 双杠 | 8s/240f@30 | 旧 |  | FlareLab App 51（旧 App 媒体，未经 Pose-Hub 发布） | 基线 59（git） |  |
@@ -374,7 +378,7 @@
 这些是“可直接拿来出新版本”的存量；动作审核优化优先从这里挑。
 
 - **g**（2）：`g-cable-hip-abduction` `g-cable-hip-extension`
-- **flare**（9）：`abs-C-r2` `chest-A-r2` `glute-max-A-r2` `hip-abductors-B-r2` `hip-abductors-C-r2` `obliques-A-r2` `rotator-cuff-A-r2` `rotator-cuff-B-r2` `rotator-cuff-C-r2`
+- **flare**（13）：`abs-C-r2` `chest-A-r2` `chest-B-r2` `glute-max-A-r2` `hip-abductors-B-r2` `hip-abductors-C-r2` `obliques-A-r2` `quadriceps-C-r2` `rotator-cuff-A-r2` `rotator-cuff-B-r2` `rotator-cuff-C-r2` `serratus-A-r2` `triceps-A-r2`
 - **s**（2）：`s-9090-r3` `s-frog-r3`
 - **t**（13）：`t-flare-side-hold` `t-half-straddle` `t-lsit-open-close-r2` `t-lsit-open-close` `t-lsit-tuck` `t-lsit-vsit-circles` `t-lsit-wide-r2` `t-lsit-wide` `t-seated-straddle-ext` `t-seated-straddle-lifts` `t-straddle-hold` `t-tuck-planche` `t-vsit`
 - **o**（26）：`o-chair-knee-extension-rr1` `o-chair-knee-extension` `o-seated-calf-raise-rr1` `o-seated-calf-raise` `o-seated-catcow` `o-seated-hip-er` `o-seated-sidebend-rr1` `o-seated-sidebend-rr2` `o-seated-sidebend` `o-seated-twist` `o-stand-crossreach-r2` `o-stand-ham` `o-stand-quad` `o-stand-sidebend` `o-supported-ankle-eversion` `o-supported-ankle-inversion` `o-supported-ankle-pump` `o-supported-hip-airplane` `o-supported-hip-hitch` `o-supported-hip-ir` `o-supported-knee-curl` `o-supported-march` `o-supported-mini-squat` `o-supported-single-leg-rdl` `o-supported-star-reach` `o-wall-hip-hinge-stretch`
