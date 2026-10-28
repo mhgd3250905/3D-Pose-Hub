@@ -79,3 +79,29 @@ WebXR手源许可为 MIT，Copyright (c) 2019 Amazon，随派生手JSON及GLB保
 后续握哑铃动作可显式接入本模块，并逐动作检查手腕方向、前臂姿势、器材与身体接触。
 其他器材粗细和其他手型需要独立模板或变体；75°范围需要另行优化验证。
 Git提交和远端合入状态记于[版本台账](../version-ledger.md)新增检查点，历史验收文件不回写为全库发布。
+
+## 2026-10-28 main合入回执
+
+来源为 `codex/action-inventory-20261028` 的独立交付提交 `325c4c9`。
+在干净的main工作树 `E:/AII-3D/3D-Pose-Hub-worktrees/pr15-audit-20261023`，
+从 `56a479df170ec53d124ebc12fae7e77b7928a64a` 执行 `cherry-pick -x`，
+形成 `94534211bac2ebed995df94ba4cabe66397b4fab`，共68个路径。
+已确认无关动作盘点提交 `7662842` 不在main祖先中，原目录和来源工作树的其余WIP保留。
+随后仅补本文、身体文档索引和版本台账，随main正常推送；包含本节的提交即文档收尾提交。
+
+main上的验证记录保存在：
+
+`F:/PoseHub-v2-production/action-completion-v3-20261028-r1/qa/hand-presets-r1/webxr-wrist-join-r1/main-merge-validation/`
+
+| 验证 | main复验结果 |
+| --- | --- |
+| `node drill-anim/verify.mjs` | 通过；301规格及冻结源检查正常 |
+| `python -B drill-anim/test_portability.py` | 7/7通过 |
+| `node drill-anim/tools/catalog.mjs --check` | catalog up to date |
+| armfix-r1/r2 `armfix.test.mjs` | 15/15通过 |
+| 腕部 `cpu-test.mjs` | 153断言通过；属于CPU数学／生命周期覆盖 |
+| 腕部 `test_portable.mjs` | 17文件换目录加载通过，禁止外部读取仍可工作，源／哑铃／运行时篡改被拒绝 |
+| 腕部 `test_build.py` | 左右端点误差均小于2.5e-16m，每侧1222个受保护手顶点精确保持，静态腕带无自交／共面重叠 |
+
+提交前已另用旧外部配方做深度比较，几何、索引、模板与变换一致。
+main复验沿用同一份资源及验收运行时；本次未重新渲染GPU帧，GPU结论来自上文固定的r4采样证据。

@@ -6,6 +6,7 @@
 
 | 需要了解什么 | 入口 |
 | --- | --- |
+| 已接受的固定握哑铃、腕部接入和main合入范围 | [手部／腕部成果交付](webxr-hand-wrist-delivery-20261028.md) |
 | 保存了哪一版、源码 SHA、验证覆盖、剩余项 | [2026-10-28 r1 版本快照](snapshot-20261028-r1.md) |
 | 为什么这样设计、问题如何定位、哪些方案被保留或放弃 | [设计与优化思路 r1](design-and-optimization-20261028-r1.md) |
 | 用户实际接受了什么 | [r7 网页确认范围](review-approval-20261028-r2.md) |
@@ -18,6 +19,7 @@
 | --- | --- | --- |
 | 身体 r7 | [loader](../../drill-anim/models/training-human-v3-completed-r7/loader.mjs)、[manifest](../../drill-anim/models/training-human-v3-completed-r7/manifest.json) | 七项身体修复的已记录采样和用户网页看样；验收 tag `body-v3-r7-accepted-20261028` |
 | 接触／颈通道 r5 | [loader](../../drill-anim/models/training-human-v3-contact-r5/loader.mjs)、[manifest](../../drill-anim/models/training-human-v3-contact-r5/manifest.json) | r7 底座上的可选扩展；三个双手撑地时刻、四种颈姿及五个侧抬腿时刻的局部复核，完整动作仍逐项审核 |
+| 固定握哑铃／腕部 r4 | [固定资源](../../drill-anim/models/webxr-dumbbell-wrist-r1/README.md)、[腕部loader](../../tools/body-v3/webxr-wrist-join-r1/loader.mjs) | 本次在armfix-r2初始化基础上验收的独立接入；主采样范围及75°压力失败见成果记录，尚未切换全部动作 |
 
 `boot` 后在新页面调用一次 `applyV3`；r5 自己加载 r7，调用方直接选择最终入口。r7 的部分脚踝、法线、手腕钩子与页面同寿命，完全重新初始化需要新页面。安装和卸载规则详见各入口及[接触扩展复测](../reviews/pr17-22-adoption-20261028/pr21-adoption-r1.md)。
 
