@@ -1,0 +1,51 @@
+{
+  "id": "training-human-v2plus-hands-native",
+  "version": "1.0.0-r6b",
+  "base": "training-human-v2plus/1.0.0-rc2",
+  "derivedFrom": "training-human-v2plus-hands-native/1.0.0-r3",
+  "scale": 0.76,
+  "wristRadial": {
+    "factor": 0.87,
+    "handLocalMm": [
+      0,
+      12,
+      28,
+      45
+    ]
+  },
+  "palmThickness": {
+    "factor": 0.8,
+    "r3HandLocalMm": [
+      20,
+      35,
+      95,
+      115
+    ]
+  },
+  "wristTwistShare": {
+    "default": 0.5,
+    "runtime": "../hands-native-r5/wrist-twist.js"
+  },
+  "reviewed": false,
+  "releaseEligible": false,
+  "defaultForNewDrills": false,
+  "scope": "native-open-r1 explicit selection only",
+  "sourceSha256": {
+    "drill-anim/models/hands-native-r6b/hands-base.json": "80075803c65b27aee1639ca20ee086c9d104b806ee7664f42783134c46a88be4",
+    "drill-anim/models/hands-native-r6b/hands-rig.json": "3c9030b9b754ff685472ef7dbe9dbcafd02fc19ef46dd1e182b35b7801b3de50",
+    "drill-anim/models/hands-native-r6b/loader.mjs": "27ae6badbd6e3e621a42775115e0dcc920388e448cc7dd25f4bc4eccc891eb54",
+    "drill-anim/models/hands-native-r6b/README.md": "9f1be953b389e125e7e3383f61445a6e297712540894e86ac80bc40a371fb21d",
+    "drill-anim/models/hands-native-r5/wrist-twist.js": "7e268abaad73239d069674d3f40f8f9bbef5624ccf14933b81818461cf6e18ee",
+    "drill-anim/models/hands-native-r3/hands-base.json": "6d6f6f3f3864e6c684d4a545cc482ebbc4aa3b083fc54dc6144b109155a3770d",
+    "drill-anim/models/hands-native-r3/hands-rig.json": "3211c65680ee4ae95acbe40db195dbbc95a20a1e873b74b131d78714eb3864c1",
+    "drill-anim/models/training-human-v2plus.json": "ec2bc815ded157dbc7673e283ed9b6bb1baa710a39ce3a02f88453e8d7fb0a1d",
+    "drill-anim/models/training-human-v2.json": "bc0238e148bfbdc024888ce379d4330c6891cd095db8d42575cb82a7d940d5d7"
+  },
+  "textHashNormalization": "UTF-8 text, CRLF normalized to LF, SHA-256",
+  "license": "Blender Human Base Meshes v1.4.1, CC0 1.0",
+  "limitations": "Proportion/twist candidate; contacts not refitted; native-grip r1 fit is r3-sized.",
+  "width": {
+    "factor": 1.0,
+    "from": "r3 hand-local 20-35 mm ramp"
+  }
+}

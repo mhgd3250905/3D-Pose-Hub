@@ -1,0 +1,31 @@
+{
+  "id": "training-human-v3-wrist-head-neck",
+  "version": "1.0.0-r2",
+  "status": "experimental-candidate",
+  "hashPolicy": "utf8-crlf-to-lf-text; binary-raw",
+  "reviewed": false,
+  "releaseEligible": false,
+  "sha256": {
+    "drill-anim/models/training-human-v3-wrist-head-neck-r2/loader.mjs": "a7bb35b0dd51678d296a4a0bd04d9a156d54c0988e5c86e5ffa5dc4bda63b627",
+    "drill-anim/models/training-human-v3-wrist-head-neck-r2/check.mjs": "13d875acab2385139644c95077c98cbdde26a51513c52a2af7ea32f1da054804",
+    "drill-anim/models/training-human-v3-wrist-head-neck-r2/README.md": "f7599ee328ff42cec3defb8924d31c4f52307cf3126cf8662db6115063f09f2f",
+    "drill-anim/models/training-human-v3-head-neck-r2/manifest.json": "d680a81c6c68d422e495546d31dce5ad848fd2b0e3e84e1f8e6cf7ec0b20f225",
+    "drill-anim/models/training-human-v3-wrist-r1/manifest.json": "9075f34a060ab57b051fc2b32946722ac1f392efcf4499a9bdb5aa4ca63705aa",
+    "tools/body-v3/wrist-gradient-r2.js": "a6a3567cd08874a014823a6eeaea53802f75ba139539ff8d35828ef73ba0a5ef",
+    "tools/body-v3/head-neck-topological-r1/verify-wrist-head-neck-r3.mjs": "0ba54754f9d3fd106a92fe3ac56851734033060d568d5ed022d22e9af8b05b72",
+    "tools/body-v3/head-neck-topological-r1/compare-wrist-head-neck-r1.py": "1f2bd2c5129b1f8ab3f9c627732395b73edde523ac32eab5f17f528911d9278c"
+  },
+  "dependencies": [
+    "training-human-v3-head-neck-r2",
+    "training-human-v3-wrist-r1"
+  ],
+  "priorEvidence": "composition r1 browser test; see combined-results-r1.md; r2 requires its own browser retest",
+  "restrictions": [
+    "setup resets motion",
+    "alternative v2plus head unsupported",
+    "requires hands-native-c1r2",
+    "head-neck detach leaves wrist hook installed",
+    "new page required to reapply",
+    "combined r2 runtime and visual verification pending"
+  ]
+}
