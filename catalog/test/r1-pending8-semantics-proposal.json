@@ -1,0 +1,319 @@
+{
+ "format": "pose-hub-semantics-backfill-proposal@1",
+ "base": {
+  "pack": "posehub-app-test-pack-r1-v2",
+  "catalogSha256": "a1655e5c64055c14af35850b5468390d9d11161e53a87a0cbe7780ec7ed25dc0",
+  "pendingIds": [
+   "h-bilateral-farmer-hold-native",
+   "h-db-shrug",
+   "h-floor-nordic-hand-reset",
+   "h-kneeling-thread-needle",
+   "h-pike-scapular-elevation",
+   "h-towel-isometric-curl",
+   "h-wall-palm-lift",
+   "o-supported-ankle-eversion"
+  ]
+ },
+ "status": "proposal-unreviewed",
+ "replacesPublishedCatalog": false,
+ "summary": {
+  "A-taxonomy": 5,
+  "B-derived+analog": 1,
+  "C-keep-pending": 2,
+  "completeIfApproved": "211 → 217（A 全批 + B 批准）；C 两项维持待补"
+ },
+ "taxonomyProposal": {
+  "muscleGroups": [
+   {
+    "id": "upper-traps",
+    "zh": "斜方肌上部",
+    "engineHighlight": "trapUpper",
+    "why": "渲染引擎已有 trapUpper 高亮面板（h-db-shrug / h-pike-scapular-elevation / h-bilateral-farmer-hold-native 的 spec 都用它），但 taxonomy 只有 scapular（中下斜方肌+菱形肌），上斜方肌无处可归。",
+    "unblocks": [
+     "h-db-shrug",
+     "h-pike-scapular-elevation",
+     "h-bilateral-farmer-hold-native"
+    ]
+   },
+   {
+    "id": "peroneals",
+    "zh": "腓骨肌",
+    "engineHighlight": null,
+    "why": "o-supported-ankle-eversion 的 spec 注释写明目标是腓骨长/短肌；v2 人体没有对应高亮面板（highlight.groups 为空）。不能用 calves 冒充。",
+    "unblocks": [
+     "o-supported-ankle-eversion"
+    ]
+   }
+  ],
+  "equipment": [
+   {
+    "id": "ankle-anchor",
+    "zh": "足踝固定（同伴按住或稳固家具下沿）",
+    "why": "北欧离心的真实前提是双踝被可靠固定；spec 中的椅子只是“家具边缘示意”（rr3 文件头原话），不能把普通椅子当成充分器械。",
+    "unblocks": [
+     "h-floor-nordic-hand-reset"
+    ]
+   },
+   {
+    "id": "towel",
+    "zh": "毛巾（非弹性，卷成束）",
+    "why": "h-towel-isometric-curl 实际物品；现有 band/slider 都不对。注意：开哥 2026-10-24 表示新动作不要毛巾这类不常见小器材，是否为存量动作开此 ID 请定。",
+    "unblocks": [
+     "h-towel-isometric-curl（仅解决器械一项）"
+    ]
+   }
+  ]
+ },
+ "items": [
+  {
+   "id": "h-db-shrug",
+   "nameZh": "双哑铃站姿耸肩",
+   "spec": {
+    "path": "drill-anim/specs/h-db-shrug.js",
+    "sha256": "ea58af51c41517e7697331c4b71e1496248c8f46023aed77cdf0ef6f3c5c5023",
+    "commit": "960b486f2e2d64f431ab24299a94dfe925e0562b"
+   },
+   "r1Missing": [
+    "muscleGroups"
+   ],
+   "tier": "A-taxonomy",
+   "proposed": {
+    "muscleGroups": [
+     "upper-traps"
+    ],
+    "muscleGroupsZh": "斜方肌上部"
+   },
+   "stillPending": [],
+   "basis": "唯一缺项是肌群 ID。spec highlight.groups=['trapUpper']，文件头写明 upper trapezius、不是 scapular 中下部。其余字段 r1 已齐且与 spec 头注释（1 轻松组 6–8 次慢重复）一致。",
+   "evidence": [
+    "spec highlight.groups=['trapUpper']",
+    "spec 第 3 行注释：Upper trapezius highlighted via the raw muscle-map panel trapUpper (not the scapular mid/lower panel)"
+   ]
+  },
+  {
+   "id": "h-pike-scapular-elevation",
+   "nameZh": "派克位直臂肩带提压",
+   "spec": {
+    "path": "drill-anim/specs/h-pike-scapular-elevation.js",
+    "sha256": "5a080fe04f32f02067342e76f791383ef0af5605b21a4a873e704bb20d617506",
+    "commit": "960b486f2e2d64f431ab24299a94dfe925e0562b"
+   },
+   "r1Missing": [
+    "muscleGroups"
+   ],
+   "tier": "A-taxonomy",
+   "proposed": {
+    "muscleGroups": [
+     "upper-traps"
+    ],
+    "muscleGroupsZh": "斜方肌上部"
+   },
+   "stillPending": [],
+   "basis": "唯一缺项是肌群 ID。spec highlight.groups=['trapUpper']，注释写明不声称肩胛上回旋。剂量 1×4（4–6）与 spec 注释一致。",
+   "evidence": [
+    "spec highlight.groups=['trapUpper']",
+    "spec 注释：1 easy set of 4-6 slow reps"
+   ]
+  },
+  {
+   "id": "h-bilateral-farmer-hold-native",
+   "nameZh": "双哑铃农夫站立保持",
+   "spec": {
+    "path": "drill-anim/specs/h-bilateral-farmer-hold-native.js",
+    "sha256": "23edaff77f278333d4a73dcbd0855781b76ee03f237b05a81d5505ff51048114",
+    "commit": "89c9c4f420b227068cea6997cee55e13e1541c7f"
+   },
+   "r1Missing": [
+    "muscleGroups"
+   ],
+   "tier": "A-taxonomy",
+   "proposed": {
+    "muscleGroups": [
+     "forearms",
+     "upper-traps"
+    ],
+    "muscleGroupsZh": "前臂 · 腕屈伸肌 · 斜方肌上部"
+   },
+   "stillPending": [],
+   "basis": "唯一缺项是肌群 ID。spec（仅在 codex/app-test-pack-r1 分支，112be51）highlight.groups=['forearms','trapUpper']；r1 已有 forearms，只补上斜方肌。",
+   "evidence": [
+    "spec highlight.groups=['forearms','trapUpper']（origin/codex/app-test-pack-r1:drill-anim/specs/h-bilateral-farmer-hold-native.js）"
+   ]
+  },
+  {
+   "id": "o-supported-ankle-eversion",
+   "nameZh": "扶椅悬空足外翻控制",
+   "spec": {
+    "path": "drill-anim/specs/o-supported-ankle-eversion.js",
+    "sha256": "a67bc5710dcf006b1977b1cb40ada5d071629b2e75a2ebfdebde004cff80e28d",
+    "commit": "960b486f2e2d64f431ab24299a94dfe925e0562b"
+   },
+   "r1Missing": [
+    "muscleGroups"
+   ],
+   "tier": "A-taxonomy",
+   "proposed": {
+    "muscleGroups": [
+     "peroneals"
+    ],
+    "muscleGroupsZh": "腓骨肌"
+   },
+   "stillPending": [],
+   "basis": "唯一缺项是肌群 ID。spec 注释写明 Peroneal muscles are the intended target；人体无腓骨肌高亮，所以 highlight 为空，这只影响画面，不影响训练语义。",
+   "evidence": [
+    "spec 第 4 行注释：Peroneal muscles are the intended target; no exact peroneal highlight exists in v2"
+   ]
+  },
+  {
+   "id": "h-floor-nordic-hand-reset",
+   "nameZh": "地面北欧离心及手撑复位",
+   "spec": {
+    "path": "drill-anim/specs/h-floor-nordic-hand-reset-rr3.js",
+    "sha256": "fb8bef00bf45c882017ebe1032de8612d67de3b3a6f14649a64a193cb218332e",
+    "commit": "1fdd117d8e29bb0efcc8c57cb23dc1d9dc7422dd"
+   },
+   "r1Missing": [
+    "equipment"
+   ],
+   "tier": "A-taxonomy",
+   "proposed": {
+    "equipment": [
+     "mat",
+     "ankle-anchor"
+    ],
+    "equipmentZh": "瑜伽垫 · 足踝固定（同伴按住或稳固家具下沿）"
+   },
+   "stillPending": [],
+   "basis": "唯一缺项是器械。spec props=mat+chair，但 rr3 文件头写明椅子是“furniture-edge surrogate, not a safety/load certification”。按 r1 意见不把椅子当充分器械，改为显式的足踝固定条件。若不想开新器械 ID，备选：equipment=['mat']，并把“必须有可靠足踝固定”保留在 cautionNotes（r1 已有），但这样 AI 无法按器械筛掉没有固定条件的用户——不推荐。",
+   "evidence": [
+    "spec props: mat, chair",
+    "rr3 文件头：Chair is a clearly labelled furniture-edge surrogate, not a safety/load certification."
+   ]
+  },
+  {
+   "id": "h-kneeling-thread-needle",
+   "nameZh": "跪姿低位穿针（小范围修订）",
+   "spec": {
+    "path": "drill-anim/specs/h-kneeling-thread-needle-rr1.js",
+    "sha256": "8063a80ec28b6b80417d21155240f8632d9d7c317324d24295fc85f2a39a99d1",
+    "commit": "1fdd117d8e29bb0efcc8c57cb23dc1d9dc7422dd"
+   },
+   "r1Missing": [
+    "defaultDose.mode",
+    "defaultDose.reps",
+    "defaultDose.restSeconds",
+    "defaultDose.sets",
+    "doseRange",
+    "doseRange.reps",
+    "doseRange.restSeconds",
+    "doseRange.sets",
+    "level",
+    "purpose"
+   ],
+   "tier": "B-derived+analog",
+   "proposed": {
+    "purpose": "四点跪姿下一侧手臂在舒适小范围内向对侧下穿并短暂停留，活动上背旋转、拉伸肩后侧。",
+    "level": 1,
+    "defaultDose": {
+     "mode": "reps",
+     "sets": 1,
+     "reps": 5,
+     "restSeconds": 15
+    },
+    "doseRange": {
+     "sets": [
+      1,
+      2
+     ],
+     "reps": [
+      2,
+      8
+     ],
+     "restSeconds": [
+      0,
+      60
+     ]
+    },
+    "countingSemantics": "手臂下穿、在底部停留约 2 秒、回到低位起点计 1 次；示范左侧，换侧同量另计。"
+   },
+   "stillPending": [],
+   "basis": "可从动画推出：threadneedle-native-r1/trajectory.json 的进度 q 在 0–1 s 静止、1–3 s 下穿、3–5 s 底部停留（q=1.0）、5–7 s 回程、7–8 s 静止，一个循环正好 1 次“下穿-停留-回位”，所以计次（reps）而不是计时；单侧（demonstratedSide=left）。low-range 小幅度、双膝+右掌三点支撑，难度定 1。具体数值无法从动画得出，借用同体位、同结构（四足单臂伸展-停留-回位、单侧、mobility）的 h-quadruped-open（四足跪姿单臂开胸）已完成定义：1 组 5 次、休息 15 秒、范围 1–2 组 / 2–8 次 / 0–60 秒。借用剂量需开哥确认。",
+   "evidence": [
+    "models/threadneedle-native-r1/trajectory.json q 曲线（241 帧）",
+    "catalog h-quadruped-open defaultDose/doseRange（app-test-pack-r1-semantics-r1）"
+   ]
+  },
+  {
+   "id": "h-towel-isometric-curl",
+   "nameZh": "毛巾脚锚等长弯举（卷束毛巾示意）",
+   "spec": {
+    "path": "drill-anim/specs/h-towel-isometric-curl-rr1.js",
+    "sha256": "e60784d7061229b5f295b0b78881e7bf4c45ee00714ae471f31333cc510c82ad",
+    "commit": "1fdd117d8e29bb0efcc8c57cb23dc1d9dc7422dd"
+   },
+   "r1Missing": [
+    "defaultDose.restSeconds",
+    "defaultDose.seconds",
+    "defaultDose.sets",
+    "doseRange",
+    "doseRange.restSeconds",
+    "doseRange.seconds",
+    "doseRange.sets",
+    "equipment",
+    "level"
+   ],
+   "tier": "C-keep-pending",
+   "proposed": {
+    "equipment": [
+     "towel"
+    ],
+    "equipmentZh": "毛巾（非弹性，卷成束）"
+   },
+   "stillPending": [
+    "level",
+    "defaultDose.sets",
+    "defaultDose.seconds",
+    "defaultDose.restSeconds",
+    "doseRange"
+   ],
+   "basis": "器械可补（需新开 towel ID）。剂量和难度推不出来：spec 是 8 秒静止母片（tracks.hold 恒为 1），文件头写明 friction/anti-roll not certified；142 里没有肘屈等长、脚踩毛巾自拉的样本，拉力全靠用户自己用多大力，无法定强度。勉强借用的最近样本是 h-straight-arm-hang-native（3×15 s，休息 45 s），但那是体重负荷悬垂，机理不同，不建议借。建议：维持待补；或者开哥直接定一个起步处方（例如 3 组 × 10–15 秒、休息 30 秒）后写入。另外开哥说过不要毛巾类小器材，也可以考虑把它从 AI 目录永久排除。",
+   "evidence": [
+    "spec tracks.hold 恒为 1（静态）",
+    "spec 文件头：friction/antiroll not certified"
+   ]
+  },
+  {
+   "id": "h-wall-palm-lift",
+   "nameZh": "墙面指端接触掌根抬起诊断",
+   "spec": {
+    "path": "drill-anim/specs/h-wall-palm-lift-rr5.js",
+    "sha256": "a1e0a63ea56416f5d05bebef0bc0ddef16effe28797efa9c485eb943138af3e0",
+    "commit": "1fdd117d8e29bb0efcc8c57cb23dc1d9dc7422dd"
+   },
+   "r1Missing": [
+    "defaultDose.reps",
+    "defaultDose.restSeconds",
+    "defaultDose.sets",
+    "doseRange",
+    "doseRange.reps",
+    "doseRange.restSeconds",
+    "doseRange.sets",
+    "level"
+   ],
+   "tier": "C-keep-pending",
+   "proposed": {},
+   "stillPending": [
+    "level",
+    "defaultDose.sets",
+    "defaultDose.reps",
+    "defaultDose.restSeconds",
+    "doseRange"
+   ],
+   "basis": "动作本身是“接触诊断候选”（spec 名称 Wall Palm-Heel Lift Diagnostic，rr5 文件头：original067 objective and four-region 4mm criterion），用来验证手指贴墙/掌根抬起的建模接触，不是训练动作，spec 和动画里没有任何训练目的或处方依据。动画可推出的只有：一次掌根离墙-回触约 7.3 秒（keys 0→2.2 s 抬起，2.2–5.2 s 停留，5.2–7.3 s 回触），单侧右手。建议：维持待补并从 AI 目录永久排除；如果开哥想把它转成训练动作（腕伸肌离心/手指承重），应另出一份训练向 spec，再按 h-standing-wrist-deviation（2×10，休息 15 秒）这类腕部 mobility 样本定剂量。",
+   "evidence": [
+    "spec name/nameEn 含 Diagnostic",
+    "spec keys [[0,0],[0.5,0],[2.2,1],[5.2,1],[7.3,0]]"
+   ]
+  }
+ ]
+}
