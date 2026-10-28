@@ -21,14 +21,14 @@
 合入用的可移植入口为
 `drill-anim/models/webxr-dumbbell-wrist-r1/recipe.json`，资源、MIT许可、用户验收和
 精简QA记录均随仓库保存。`verify()` / `install(page)` 默认使用这份配方；
-传入 `recipePath` 时，其中相对来源及 `templateDir` 按配方所在目录解析。
+传入 `recipePath` 时，配方内的相对来源及 `recipe.templateDir` 按配方所在目录解析。
 `node tools/body-v3/webxr-wrist-join-r1/test_portable.mjs` 验证换目录及完整性，
 `build.py --output <新目录>` 默认使用仓库sources；不会覆盖已验收配方。
 以下F盘路径保留原始制作和实际GPU证据位置，不是默认运行依赖。
 
-本机工作目录：`E:/AII-3D/3D-Pose-Hub-worktrees/action-inventory-20261028`。
+原制作工作目录（历史位置）：`E:/AII-3D/3D-Pose-Hub-worktrees/action-inventory-20261028`。
 
-现成模板包：
+原外部模板包（历史位置，默认使用仓库内模板）：
 
 `F:/PoseHub-v2-production/action-completion-v3-20261028-r1/qa/hand-presets-r1/webxr-grasp-r1/reference-power-grip-r1/template-package/`
 
@@ -40,7 +40,7 @@
 握柄为 **32×165 mm**，六角片外接半径 42 mm、厚 60 mm，中心沿柄轴位于
 ±111 mm；不另叠加同一手的 action dumbbell。旧 25 mm 保存版不变。
 
-现有接入 recipe：
+原外部接入 recipe（历史输入，保留复现）：
 
 `F:/PoseHub-v2-production/action-completion-v3-20261028-r1/qa/hand-presets-r1/webxr-wrist-join-r1/static-build-r1/recipe.json`
 
@@ -52,17 +52,19 @@ recipe 固定左右最终手 JSON、neutral/reference JSON 的路径与 SHA，�
 
 ## 可复用入口与坐标
 
-`loader.mjs` 导出 `verify({recipePath, templateDir?})`、
-`await install(page, {recipePath, templateDir?, enabled?, showDumbbells?})` 和
-`await detach(page)`；后两个开关默认 true。`templateDir` 省略时从手源包的
-相邻 `template-package` 解析。按 `capture.mjs` 的实际顺序：先调用
+`loader.mjs` 导出 `verify(options?)`、`await install(page, options?)` 和
+`await detach(page)`。`recipePath` 可省略，默认使用仓库内固定配方；`enabled`
+和 `showDumbbells` 默认 true。模板目录按以下优先级解析：显式
+`options.templateDir`（相对当前工作目录）、配方的 `recipe.templateDir`（相对
+配方目录）、旧手源包相邻的 `template-package` 回退。按 `capture.mjs` 的实际顺序：先调用
 `training-human-v3-armfix-r2/loader.mjs` 的 `boot()` 和 `applyV3(page,spec)`，
 再 install；使用新页面，不与旧拓扑 wrist corrective 同时启用。
 
 ```js
 import {install, detach} from './loader.mjs';
-// page 已由 armfix-r2.boot / applyV3 初始化；路径指向上述固定包。
-await install(page, {recipePath, templateDir, showDumbbells: true});
+// page 已由 armfix-r2.boot / applyV3 初始化；默认加载仓库内固定包。
+await install(page);
+// 兼容显式旧配方：await install(page, {recipePath, templateDir});
 // ...沿用人体动作入口，手与哑铃保持固定关系。
 await detach(page);
 ```
@@ -116,10 +118,12 @@ python -B tools/body-v3/webxr-wrist-join-r1/check.py $wristNewCapture --output "
 
 ## Runtime implementation details
 
-`loader.mjs` exports `verify(options)`, `install(page, options)`, and `detach(page)`.
-Pass `recipePath` for the separately authored, pinned clip/loft recipe. Optional
-`templateDir` identifies the accepted standalone hand/dumbbell GLBs; otherwise it
-is resolved beside the hand source package. `enabled` and `showDumbbells` default
+`loader.mjs` exports `verify(options?)`, `install(page, options?)`, and `detach(page)`.
+The default `recipePath` points to the pinned repository package; an explicit
+path preserves support for an earlier authored recipe. Template resolution uses
+explicit `options.templateDir` first (relative to the current working directory),
+then `recipe.templateDir` (relative to the recipe), then the legacy adjacent
+hand-source package fallback. `enabled` and `showDumbbells` default
 to true. Install after `training-human-v3-armfix-r2.applyV3`, on a fresh page
 without the old-topology wrist corrective. Use no separate action dumbbell when
 showing the fixed template's prop.

@@ -14,6 +14,8 @@ Pose-Hub 是 FlareLab（托马斯训练助手）和 HipLab（开胯训练助手�
 
 [版本快照 r1](docs/body-v3/snapshot-20261028-r1.md)固定源码、模型 SHA、验证与剩余项；[设计与优化思路](docs/body-v3/design-and-optimization-20261028-r1.md)解释分层设计、几何／权重／材质／法线修法、指标修订和 PR 取舍。全局生产配方仍由 `current-production.json` 选择 v2plus rc2，动作迁移和公开素材发布继续独立验收。
 
+同日，固定32mm握柄的左右手／哑铃模板和腕部 r4 接入外观获用户确认，源码与必要依赖已合入并推送main。当前接入依赖为armfix-r2；默认加载仓库内资源。使用入口、有限采样范围、75°压力失败、Git交付和阶段收束证据见[手部／腕部成果记录](docs/body-v3/webxr-hand-wrist-delivery-20261028.md)。后续逐动作接入及另外三套手型继续单独推进。
+
 ## 目录
 
 ```

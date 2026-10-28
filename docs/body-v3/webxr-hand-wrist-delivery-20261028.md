@@ -105,3 +105,95 @@ main上的验证记录保存在：
 
 提交前已另用旧外部配方做深度比较，几何、索引、模板与变换一致。
 main复验沿用同一份资源及验收运行时；本次未重新渲染GPU帧，GPU结论来自上文固定的r4采样证据。
+
+## 2026-10-28 阶段收束
+
+用户显式调用 `cockpit-closeout` 并要求“台账整理+文档更新，保存push提交”。
+收束scope为本阶段已接受的固定握哑铃、腕部r4、必要依赖的交付事实、用法和验证绑定；
+不改模型、运行时、动作spec、生产配方、媒体或App/SDK，不触发新渲染、tag或素材发布。
+
+### Preflight基线、范围与归属
+
+baseline为上一轮实际main合入起点 `56a479df170ec53d124ebc12fae7e77b7928a64a`，
+使用完整SHA的 `git rev-parse --verify <SHA>^{commit}` 核对存在，再以 `git merge-base --is-ancestor` 确认是HEAD祖先。
+收束前HEAD为 `dbba3a7c69dc872ba53d04311d2b74ed6d993886`，分支main；
+同日只读回读 `git ls-remote origin refs/heads/main` 得到相同SHA，确认上一轮交付已推送。
+远端为 `https://github.com/mhgd3250905/3D-Pose-Hub.git`。
+
+`git log <baseline>..HEAD` 仅含源码提交 `9453421` 和文档提交 `dbba3a7`；
+`git diff --name-status <baseline>..HEAD` 为67新增、3修改，共70路径，均属于上一轮明确选择的交付。
+其中 `.gitattributes` 1、docs 4、模型43、runtime 2、tools 20。
+源码提交的68路径与整个阶段70路径不是同一统计范围。
+
+在实际main工作树 `E:/AII-3D/3D-Pose-Hub-worktrees/pr15-audit-20261023`，
+两次完整 `git status --porcelain=v1 --untracked-files=all` 均为空：暂存、未暂存、删除、重命名、未跟踪均0。
+原项目目录 `E:/AII-3D/3D-Pose-Hub` 仍是阶段前记录的生产工作树；仅核对路径/状态，未读取以下WIP内容：
+
+| 状态 | 路径 | 归属与处理 |
+| --- | --- | --- |
+| 未暂存修改1项 | `.gitignore` | 阶段前已记录的既有改动，保留且排除 |
+| 未跟踪3项 | `media/app-builtin-v0.3.0.json`、`media/app-release-metadata-pr14.json`、`media/app-release.md` | 阶段前已记录的媒体WIP，保留且排除 |
+| 未跟踪2项 | `media/tests/test_app_index.py`、`media/tests/test_app_release.py` | 同上 |
+| 未跟踪2项 | `media/tools/build_app_index.py`、`media/tools/build_app_release.py` | 同上 |
+
+原项目没有暂存、删除或重命名项。来源开发工作树本次不操作，上一轮留下的动作和实验WIP不纳入此次文档收束。
+
+### Canonical来源核对
+
+先读取根 `AGENTS.md`、本阶段路径唯一适用的子级 `drill-anim/AGENTS.md`，再读取根 `README.md`。
+仅沿这些入口的明确声明一跳检查以下来源；阶段工具文档和loader另外作为本次delta的行为证据读取。
+
+| 实际检查路径 | 类别与current/archive判定 | 核对结果 |
+| --- | --- | --- |
+| `docs/version-ledger.md` | current版本/Git/验收汇总；其中日期段落保留历史 | 手部合入、有限验收、生产和发布边界与实际一致；补记明确的远端交付SHA及本次收束 |
+| `docs/body-v3/README.md` | current独立模型入口 | 身体r7、接触r5与armfix-r2上的腕部接入分别列出；补齐阶段收束入口 |
+| `docs/version-management.md` | current版本与记录规则 | 模型身份、源码合入、外观验收和媒体发布分别管理，无需修正 |
+| `docs/training-human-v2plus.md` | current生产标准；旧批次说明属history | v2plus仍为默认；冻结状态注记不随Git合入改写，无需修正 |
+| `drill-anim/models/current-production.json` | current唯一默认配方 | 仍为training-human-v2plus / 1.0.0-rc2；与baseline字节对象一致 |
+| `drill-anim/models/training-human-v2plus.json` | current默认模型的冻结身份 | 13项sourceSha256及生产配置引用保持不变；旧审批注记属于编制时状态 |
+| `drill-anim/models/training-human-v2.json` | archive/history冻结模型 | `defaultForNewDrills:false`，仅供历史复现；不作为当前生产选择 |
+
+阶段主题映射：代码行为和接入方式对应身体入口及版本台账；模型/配方对应current-production与v2plus清单；
+源码交付和验收/发布状态对应版本台账及版本管理规则。`catalog/catalog.json`、`media/manifest.json` 与baseline的Git blob一致，
+本次仅核对未变更，不据此新增发布或消费端验收结论。
+
+### 验证证据与source state
+
+下列命令于2026-10-28上一轮main合入验证实际执行，来源为同会话工具返回，
+对应完整源码SHA `94534211bac2ebed995df94ba4cabe66397b4fab`：
+
+```sh
+node drill-anim/verify.mjs
+python -B drill-anim/test_portability.py
+node drill-anim/tools/catalog.mjs --check
+node --test drill-anim/models/training-human-v3-armfix-r1/armfix.test.mjs drill-anim/models/training-human-v3-armfix-r2/armfix.test.mjs
+node tools/body-v3/webxr-wrist-join-r1/cpu-test.mjs drill-anim/models/webxr-dumbbell-wrist-r1/recipe.json
+node tools/body-v3/webxr-wrist-join-r1/test_portable.mjs
+python -B tools/body-v3/webxr-wrist-join-r1/test_build.py --recipe drill-anim/models/webxr-dumbbell-wrist-r1/recipe.json
+```
+
+结果依次为verify通过（301规格）、7/7、catalog一致、15/15、153断言通过、可移植/篡改检测通过、静态几何检查通过。
+`git diff 94534211bac2ebed995df94ba4cabe66397b4fab dbba3a7c69dc872ba53d04311d2b74ed6d993886` 仅3份Markdown增加44行，
+没有代码、数据或配置变化，故这些检查仍适用。此次文档收束也仅改5份Markdown，不重复全量测试或GPU采样。
+
+本次在干净的收束前HEAD上另做只读源码核对：资源包17文件/11,955,308字节；manifest内16项文件的字节数与SHA全部匹配，
+runtime SHA仍为 `731a3db458d639ed1f7597b956896874170ebb1d1f1b7599540686aaceba34df`，
+recipe SHA仍为 `6e914594f46734c77ee9bf219e82bdcceb5a19d627e5595959c06cadb9989a2b`。
+runtime也与已测试源码提交的Git blob完全一致。GPU外观结论保持上文的原r4有限采样强度。
+
+2026-10-28 22:53（UTC+8）在 `dbba3a7` 加本次5份Markdown的工作树上完成定向验证：
+新增3个文档链接（含阶段锚点）存在、16项资源pin和两项SHA匹配、变更范围恰为5份Markdown；
+以 `node --input-type=module` 导入 `./tools/body-v3/webxr-wrist-join-r1/loader.mjs` 并调用 `verify()` 成功，
+默认recipe为仓库包，每侧读取3个真实哑铃primitive。验证来源为本次命令输出，覆盖新文档描述的默认用法；
+`git diff --check` 同时通过。一次临时核对命令因Windows默认GBK解码中文diff中断，显式改用UTF-8后上述核对通过，未改项目源码。
+
+### 确定修正与下一阶段
+
+工具README旧段落把 `recipePath` 写成必填，并把手源相邻目录描述为唯一模板推导方式。
+本次依照loader修正中英文用法与示例：默认仓库recipe；显式options.templateDir优先（相对当前工作目录），
+其次recipe.templateDir（相对recipe目录），最后保留旧手源相邻目录回退。
+根README补成果入口，身体索引、本文和台账补齐交付/验证绑定。冻结资源包README、manifest和runtime均不改。
+
+下一阶段按具体动作显式接入固定模板，检查腕方向、前臂姿态、器材接触及重复哑铃；
+支撑、放松、扶靠是待做模板，75°压力范围另行优化。全局默认切换、全库迁移和媒体/App/SDK升级仍需各自验证。
+本节所在Git提交是文档收束保存点；本次普通push及远端最终SHA由Git回读和同会话交付回执确认，不在文档中自引用未知提交SHA。
