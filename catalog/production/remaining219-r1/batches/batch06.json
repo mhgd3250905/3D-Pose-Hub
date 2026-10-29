@@ -1,0 +1,390 @@
+{
+  "format": "pose-hub-remaining219-remote-index@1",
+  "batch": "batch06",
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "environment": {
+    "host": "Hark sandbox aarch64, 2 cores, 7.9 GiB, no GPU",
+    "browser": "Playwright 1.48.2 chromium-1140",
+    "renderer": "software (ANGLE SwiftShader)",
+    "serial": true
+  },
+  "checks": {
+    "keyframes": "tools/action-completion-v3-r2/remote-keyframes-r1.mjs, 256/320px, 3-6 frames",
+    "rotation": "tools/action-completion-v3-r2/remote-rotation-r1.mjs, 15Hz sequential solve, axial twist of forearm|upperArm, hand|forearm, foot|shin (range>120, step>25, net>150 deg flagged)"
+  },
+  "sampledOnly": true,
+  "fullCycleValidated": false,
+  "userAccepted": false,
+  "releaseEligible": false,
+  "items": [
+    {
+      "stableId": "glute-max-B",
+      "status": "remote-keyframe-reviewed",
+      "spec": "drill-anim/specs/glute-max-B.js",
+      "specSha256Lf": "e59bd9a64f886c90aadd7358a2fa39594c67b58e511c844d1ddf94d08e4df4cb",
+      "recipe": "catalog/production/remaining219-r1/recipes/glute-max-B.json",
+      "recipeSha256Lf": "f9794447a85219f4e6e4e9d5778d4dd8a7c7bf4b88c926ac7fedf86e2a5b75ca",
+      "keyframes": {
+        "attempt": "glute-max-B-a01",
+        "times": [
+          0,
+          2,
+          4,
+          6
+        ],
+        "size": 256,
+        "recipeSha256": "f9794447a85219f4e6e4e9d5778d4dd8a7c7bf4b88c926ac7fedf86e2a5b75ca",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "a46cef69de9f02971fc8db15acc6f70ff3158da196ea9ecffa732ef0d8f546ee",
+          "keyframe-01.png": "419608f3b80db13ea1925df71099afa2fe94829847d115a9431dbfde20d0e156",
+          "keyframe-02.png": "a46cef69de9f02971fc8db15acc6f70ff3158da196ea9ecffa732ef0d8f546ee",
+          "keyframe-03.png": "419608f3b80db13ea1925df71099afa2fe94829847d115a9431dbfde20d0e156"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "3719b161363a1fb909ef1e983399ce959ac137cd0a067a8332b1991cfe0b600c",
+        "samples": 121,
+        "flagged": [],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 0.0,
+            "maxStepDeg": 0.0,
+            "netDeg": 0
+          }
+        },
+        "note": "rotation screen ran on an earlier recipe revision that differs only in camera; twist is camera independent"
+      },
+      "notes": "quadruped banded straight-leg kickback; band anchored under hands (fixed-grasp), hands planted on mat.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect",
+        "band anchor under palms: contact check"
+      ]
+    },
+    {
+      "stableId": "glute-max-C",
+      "status": "remote-keyframe-reviewed",
+      "spec": "drill-anim/specs/glute-max-C.js",
+      "specSha256Lf": "14c48e71091a7830ed03d7bc799096105657a6d0a26e4f9fd812a1f09d0971ec",
+      "recipe": "catalog/production/remaining219-r1/recipes/glute-max-C.json",
+      "recipeSha256Lf": "a1fcb6a0d1f2306ff8b8f48a970390b01799e28db4999acdbc1dfd2f21a0f353",
+      "keyframes": {
+        "attempt": "glute-max-C-a01",
+        "times": [
+          0,
+          2,
+          4,
+          6
+        ],
+        "size": 256,
+        "recipeSha256": "a1fcb6a0d1f2306ff8b8f48a970390b01799e28db4999acdbc1dfd2f21a0f353",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "3dceb4281c35296772638cd481308b69a90443b642c5083f82c42ef127a1e070",
+          "keyframe-01.png": "423c99007e7b2d5eb1b7e8e0e6fa01876b6843dcd3d3d6fd42fbf9c1bfb211ce",
+          "keyframe-02.png": "3dceb4281c35296772638cd481308b69a90443b642c5083f82c42ef127a1e070",
+          "keyframe-03.png": "423c99007e7b2d5eb1b7e8e0e6fa01876b6843dcd3d3d6fd42fbf9c1bfb211ce"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "f7e7e2aa3fbdc96784a13cb8f9663b26711d2a2783a311b69c971fac444b3b15",
+        "samples": 121,
+        "flagged": [],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          }
+        },
+        "note": "rotation screen ran on an earlier recipe revision that differs only in camera; twist is camera independent"
+      },
+      "notes": "reverse hyper machine, legs swing from hang to horizontal; hands on handles.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect"
+      ]
+    },
+    {
+      "stableId": "h-9090-liftoff",
+      "status": "remote-keyframe-reviewed",
+      "spec": "drill-anim/specs/h-9090-liftoff-r3.js",
+      "specSha256Lf": "cfacfdec71f18f459627d9f719fadfc15da30471f692e7b7b2e8a0559401a786",
+      "recipe": "catalog/production/remaining219-r1/recipes/h-9090-liftoff.json",
+      "recipeSha256Lf": "233b5cbc08a11fb67db129f5df13504a3dac9ef4face202712944addcb346cb0",
+      "keyframes": {
+        "attempt": "h-9090-liftoff-a01",
+        "times": [
+          0,
+          2,
+          4,
+          6
+        ],
+        "size": 256,
+        "recipeSha256": "233b5cbc08a11fb67db129f5df13504a3dac9ef4face202712944addcb346cb0",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "3d5bca1d545d3353dadd907446abe45f53c4544668e8f82a9522d66d3726afdc",
+          "keyframe-01.png": "0e7ba4e00fb5150f8dd202d1b18b5d72377a566784873a4dc8b95d4c6639a5ec",
+          "keyframe-02.png": "3d5bca1d545d3353dadd907446abe45f53c4544668e8f82a9522d66d3726afdc",
+          "keyframe-03.png": "0e7ba4e00fb5150f8dd202d1b18b5d72377a566784873a4dc8b95d4c6639a5ec"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "3695936da2cec7e2f114b5996682b2f7702dd6bbe9fabc0d52a8756befde832b",
+        "samples": 121,
+        "flagged": [],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 0.8,
+            "maxStepDeg": 0.3,
+            "netDeg": -0.3
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 25.1,
+            "maxStepDeg": 2.2,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 0.0,
+            "maxStepDeg": 0.0,
+            "netDeg": -0.0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          }
+        },
+        "note": "rotation screen ran on an earlier recipe revision that differs only in camera; twist is camera independent"
+      },
+      "notes": "90/90 seated, rear leg active lift-off; fixed camera.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect"
+      ]
+    },
+    {
+      "stableId": "h-adductor-rock",
+      "status": "remote-keyframe-reviewed",
+      "spec": "drill-anim/specs/h-adductor-rock.js",
+      "specSha256Lf": "d8d0601eb573cac10093a6d8fe6faec47040fbe22ab269801666b62f3f12eddd",
+      "recipe": "catalog/production/remaining219-r1/recipes/h-adductor-rock.json",
+      "recipeSha256Lf": "22314a24d3d793998a66fee581ba562dc02a9a0611a915bf54c38d480a794444",
+      "keyframes": {
+        "attempt": "h-adductor-rock-a01",
+        "times": [
+          0,
+          2,
+          4,
+          6
+        ],
+        "size": 256,
+        "recipeSha256": "22314a24d3d793998a66fee581ba562dc02a9a0611a915bf54c38d480a794444",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "aab7e7b18e0fd89c26bcc45afdb8d001bcc040c38283d74b90f7cdd3dd0925d3",
+          "keyframe-01.png": "11f38a97da8825a2e957017638a47450848e9d7c79a84cb29bbb29a3590076ee",
+          "keyframe-02.png": "aab7e7b18e0fd89c26bcc45afdb8d001bcc040c38283d74b90f7cdd3dd0925d3",
+          "keyframe-03.png": "11f38a97da8825a2e957017638a47450848e9d7c79a84cb29bbb29a3590076ee"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "a76c80dac7983d4c829d022fd918810ce462012df31fcb33ff1f3307c2647624",
+        "samples": 121,
+        "flagged": [],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 3.1,
+            "maxStepDeg": 2.1,
+            "netDeg": 0
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 3.4,
+            "maxStepDeg": 2.4,
+            "netDeg": 0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          }
+        },
+        "note": "rotation screen ran on an earlier recipe revision that differs only in camera; twist is camera independent"
+      },
+      "notes": "quadruped one-leg-out adductor rock back.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect"
+      ]
+    },
+    {
+      "stableId": "h-banana",
+      "status": "remote-keyframe-reviewed",
+      "spec": "drill-anim/specs/h-banana-r2.js",
+      "specSha256Lf": "af14c1aca135a08bc0547f40bc31e17acccbb6054be56b33b40ce177c15785a6",
+      "recipe": "catalog/production/remaining219-r1/recipes/h-banana.json",
+      "recipeSha256Lf": "9e31344b779a6b8dcbebfc86c313baac1540768350e9708b517f781e4a00901b",
+      "keyframes": {
+        "attempt": "h-banana-a01",
+        "times": [
+          0,
+          2,
+          4,
+          6
+        ],
+        "size": 256,
+        "recipeSha256": "9e31344b779a6b8dcbebfc86c313baac1540768350e9708b517f781e4a00901b",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "371f9d4de5add31dda2c829fb7d7aae9e091bb759d0cfba4f0a3802c3e733f4a",
+          "keyframe-01.png": "a407f8f9448b54601836107ebfc4730d94aa05376317488b14dcdb33db1292b3",
+          "keyframe-02.png": "371f9d4de5add31dda2c829fb7d7aae9e091bb759d0cfba4f0a3802c3e733f4a",
+          "keyframe-03.png": "a07e5dc11b1d4c0afbe9dd7a1f3bf4ee9a45f815eee84ee047f3bad0534d2c40"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "570f02e71c129a2916a547041c7d4b8effa5aa9b7d531e5036fdaabd4fc37ee1",
+        "samples": 121,
+        "flagged": [],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 38.0,
+            "maxStepDeg": 2.0,
+            "netDeg": 0
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 38.0,
+            "maxStepDeg": 2.0,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 34.0,
+            "maxStepDeg": 1.8,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 38.0,
+            "maxStepDeg": 2.0,
+            "netDeg": 0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 38.0,
+            "maxStepDeg": 2.0,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 34.0,
+            "maxStepDeg": 1.8,
+            "netDeg": 0
+          }
+        },
+        "note": "rotation screen ran on an earlier recipe revision that differs only in camera; twist is camera independent"
+      },
+      "notes": "supine banana side bend, overhead fixed camera.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect"
+      ]
+    }
+  ]
+}
