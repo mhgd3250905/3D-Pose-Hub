@@ -27,6 +27,11 @@ export function adaptRecipe(source,recipe){
   for(const side of ['left','right'])fail(HAND_MODES.includes(hands?.[side]),'Explicit supported hand mode required: '+side);
   const spec=structuredClone(source);
   if(recipe.output.exerciseMat===false)spec.props=(spec.props??[]).filter(prop=>prop.type!=='mat'||prop.required===true);
+  if(recipe.output.exerciseMat===true&&recipe.output.matProp!==undefined&&!(spec.props??[]).some(prop=>prop.type==='mat')){
+    const m=recipe.output.matProp;
+    fail(m?.type==='mat'&&Array.isArray(m.at)&&m.at.length===3&&m.at.every(Number.isFinite)&&Array.isArray(m.size)&&m.size.length===3&&m.size.every(x=>Number.isFinite(x)&&x>0&&x<4)&&Number.isFinite(m.yaw??0),'Recipe matProp must be a bounded mat prop');
+    spec.props=[...(spec.props??[]),{type:'mat',at:[...m.at],size:[...m.size],yaw:m.yaw??0}];
+  }
   spec.runtimeModel={...MODEL};spec.modelProfile='training-human-v2plus-hands-native';
   spec.nativeHands=source.nativeHands?.twistShare===undefined?{}:{twistShare:source.nativeHands.twistShare};
   spec.v2plus={...spec.v2plus,torso:'base',limbs:'base',hands:'base'};
