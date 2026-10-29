@@ -1,0 +1,390 @@
+{
+  "format": "pose-hub-remaining219-remote-index@1",
+  "batch": "batch33",
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "environment": {
+    "host": "Hark sandbox aarch64, 2 cores, 7.9 GiB, no GPU",
+    "browser": "Playwright 1.48.2 chromium-1140",
+    "renderer": "software (ANGLE SwiftShader)",
+    "serial": true
+  },
+  "checks": {
+    "keyframes": "tools/action-completion-v3-r2/remote-keyframes-r1.mjs, 256/320px, 3-6 frames",
+    "rotation": "tools/action-completion-v3-r2/remote-rotation-r1.mjs, 15Hz sequential solve, axial twist of forearm|upperArm, hand|forearm, foot|shin (range>120, step>25, net>150 deg flagged)"
+  },
+  "sampledOnly": true,
+  "fullCycleValidated": false,
+  "userAccepted": false,
+  "releaseEligible": false,
+  "items": [
+    {
+      "stableId": "n-windshield",
+      "status": "remote-keyframe-reviewed",
+      "spec": "drill-anim/specs/n-windshield-r2.js",
+      "specSha256Lf": "f0172719960c9ab41957e5ad09fb054c01ad5bbbfa7e3ef044e76affdaf9376d",
+      "recipe": "catalog/production/remaining219-r1/recipes/n-windshield.json",
+      "recipeSha256Lf": "4997a2eb430151943268c773037304df71a1203fc5217067ff0401776aa51578",
+      "keyframes": {
+        "attempt": "n-windshield-a01",
+        "times": [
+          0.15,
+          2.2,
+          4.1,
+          6.2
+        ],
+        "size": 256,
+        "recipeSha256": "4997a2eb430151943268c773037304df71a1203fc5217067ff0401776aa51578",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "c593073659d04675695224267e0dd85afcf96f23c69049e3770ce99a9a95cfac",
+          "keyframe-01.png": "d19d55e53add74f45604db3335d64661ce0964ec2a292e2d2f9c52467e221746",
+          "keyframe-02.png": "801efbda6d8b3cf46c658b6cde703e137da82bacef541715a381f6dd17b350e5",
+          "keyframe-03.png": "6a5dbcb96c651145348160acc5932a9624e001d425c58a1910fcadae9b2e8d46"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "91bef7a297515fa0585c1fbdc9fd44eda8ec9b4ca084a2b4aae1720c7bfa77a0",
+        "samples": 121,
+        "flagged": [],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 2.1,
+            "maxStepDeg": 0.1,
+            "netDeg": 0
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 2.1,
+            "maxStepDeg": 0.1,
+            "netDeg": 0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          }
+        },
+        "note": "rotation screen ran on an earlier recipe revision that differs only in camera; twist is camera independent"
+      },
+      "notes": "supine windshield wipers, knees drop side to side; camera from the feet end, feet large in foreground.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect",
+        "camera: foreshortened from feet end"
+      ]
+    },
+    {
+      "stableId": "o-chair-knee-extension",
+      "status": "remote-keyframe-reviewed",
+      "spec": "drill-anim/specs/o-chair-knee-extension-rr1.js",
+      "specSha256Lf": "1a4b9aa124ea71d7fa51a49c38d40f9c918c2e483c1075cf882ba0cab109eebc",
+      "recipe": "catalog/production/remaining219-r1/recipes/o-chair-knee-extension.json",
+      "recipeSha256Lf": "65d8cb9fff774e492290234329935dc778e56978e19c698f4b45c3f1f2419b02",
+      "keyframes": {
+        "attempt": "o-chair-knee-extension-a01",
+        "times": [
+          1,
+          3,
+          5,
+          7
+        ],
+        "size": 256,
+        "recipeSha256": "65d8cb9fff774e492290234329935dc778e56978e19c698f4b45c3f1f2419b02",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "35e97d1fcce00a2404fd09dc023dfd719fd657d88c0815c5d831d7c4fc272105",
+          "keyframe-01.png": "bf89b9dced28ae628683926081ab86c8f1d492b1b65b1bbf50efc1c6829a8796",
+          "keyframe-02.png": "144a538a046d2b6b322ceb67d7378bad9776122d34637b80b442bb22d17775f7",
+          "keyframe-03.png": "94323d25b3636af435b9ec95db0e64549e8350149112fa08f880542fdbb99bf7"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "54d177df476c1d8314ba8efef8a714cf8ea33797a568df6cc9ad60fa57d0e647",
+        "samples": 121,
+        "flagged": [],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          }
+        },
+        "note": "rotation screen ran on an earlier recipe revision that differs only in camera; twist is camera independent"
+      },
+      "notes": "seated chair knee extension, side-oblique view.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect"
+      ]
+    },
+    {
+      "stableId": "o-seated-calf-raise",
+      "status": "remote-keyframe-reviewed",
+      "spec": "drill-anim/specs/o-seated-calf-raise-rr1.js",
+      "specSha256Lf": "b0c1ce8692c16201cc3997b1d8906867170b41221efaf96016ef895c89e083a1",
+      "recipe": "catalog/production/remaining219-r1/recipes/o-seated-calf-raise.json",
+      "recipeSha256Lf": "330311e3fc92e803ba1361f9b61930ba27603c09eb2c39d2cde0d5c611d9767e",
+      "keyframes": {
+        "attempt": "o-seated-calf-raise-a01",
+        "times": [
+          1,
+          3,
+          5,
+          7
+        ],
+        "size": 256,
+        "recipeSha256": "330311e3fc92e803ba1361f9b61930ba27603c09eb2c39d2cde0d5c611d9767e",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "2e213dfacf8a466db6653b50e27b37759f2eaa94fcb27cea484af1bfe23df42f",
+          "keyframe-01.png": "d59dac4e2fc21d774cccec7da2a7f19ca9867c687b3e399a6d8e13b119e96844",
+          "keyframe-02.png": "2e213dfacf8a466db6653b50e27b37759f2eaa94fcb27cea484af1bfe23df42f",
+          "keyframe-03.png": "d59dac4e2fc21d774cccec7da2a7f19ca9867c687b3e399a6d8e13b119e96844"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "a4ca57332a0beb7b15a6fc7ee7bf33ac9d709f60957a5966776ba1f73c7ade04",
+        "samples": 121,
+        "flagged": [],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          }
+        },
+        "note": "rotation screen ran on an earlier recipe revision that differs only in camera; twist is camera independent"
+      },
+      "notes": "seated chair calf raise; heel lift small at 256px.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect"
+      ]
+    },
+    {
+      "stableId": "o-seated-catcow",
+      "status": "remote-keyframe-reviewed",
+      "spec": "drill-anim/specs/o-seated-catcow.js",
+      "specSha256Lf": "732e8a213f1a4c851b48b9a157b537e79d5ec016f7fe3ee7ae15b7e293ade42a",
+      "recipe": "catalog/production/remaining219-r1/recipes/o-seated-catcow.json",
+      "recipeSha256Lf": "8240ea7537f48aea1eee90527fad1e7f6a62a4c2619aec778536fe0fd431f4c5",
+      "keyframes": {
+        "attempt": "o-seated-catcow-a01",
+        "times": [
+          1,
+          3,
+          5,
+          7
+        ],
+        "size": 256,
+        "recipeSha256": "8240ea7537f48aea1eee90527fad1e7f6a62a4c2619aec778536fe0fd431f4c5",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "4321e64cfa890f3ca4716f43859a1f4f65ee6c1f6f0b9a9762cedad09dccacce",
+          "keyframe-01.png": "04ae57796d397b45f7f4aa1ff70ef8384e77367d7fe7558424ada899ec34ebbd",
+          "keyframe-02.png": "20c72cb72519dc3ba9658246fedb8711514634f76c8a7245be7309cc465b37e3",
+          "keyframe-03.png": "e5be0bd632b151335434e79314eb0d5f4aa624f14443484d6150da5743be05f1"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "f06680131193fd242214003a22bf44bcec629f696c4b529cb84b1e49d8b46bfe",
+        "samples": 121,
+        "flagged": [],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 7.3,
+            "maxStepDeg": 0.9,
+            "netDeg": 0
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 7.3,
+            "maxStepDeg": 0.9,
+            "netDeg": 0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          }
+        },
+        "note": "rotation screen ran on an earlier recipe revision that differs only in camera; twist is camera independent"
+      },
+      "notes": "seated office-chair cat-cow, spine flexion/extension visible.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect"
+      ]
+    },
+    {
+      "stableId": "o-seated-fig4",
+      "status": "remote-keyframe-reviewed",
+      "spec": "drill-anim/specs/o-seated-fig4.js",
+      "specSha256Lf": "66a147a7da04a444f705bcd3e2fd23788a1349c533847bba9f1a36ae32a0ac48",
+      "recipe": "catalog/production/remaining219-r1/recipes/o-seated-fig4.json",
+      "recipeSha256Lf": "1509276440e10c61cd300124295c30c8f552d81a07fb7d58c6d345349597e595",
+      "keyframes": {
+        "attempt": "o-seated-fig4-a01",
+        "times": [
+          1,
+          3,
+          5,
+          7
+        ],
+        "size": 256,
+        "recipeSha256": "1509276440e10c61cd300124295c30c8f552d81a07fb7d58c6d345349597e595",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "9744caf38a76e7e3759c3bb7b8fdf7633f7cdaafc22218d6dda335953d1df1db",
+          "keyframe-01.png": "f21593661a324bc62b0cce16fb90efeb44856e6ad93ca4fff3495abbbb68bc75",
+          "keyframe-02.png": "47f9fc4ace71f832f96ae8ea0970cf98dd2add45b14d344678107869a2a720ef",
+          "keyframe-03.png": "4729d7b0700014107f16323cc290b01e9b6f90dc04adadc135362422d9966e23"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "a89067d7ed8d6a69eff252fbc10e9af2e215160c6695454c9a4453eb73f9e117",
+        "samples": 121,
+        "flagged": [],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 49.0,
+            "maxStepDeg": 3.2,
+            "netDeg": 0
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 11.7,
+            "maxStepDeg": 0.8,
+            "netDeg": 0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          }
+        },
+        "note": "rotation screen ran on an earlier recipe revision that differs only in camera; twist is camera independent"
+      },
+      "notes": "seated figure-4 forward lean on office chair.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect"
+      ]
+    }
+  ]
+}
