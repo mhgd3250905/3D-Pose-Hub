@@ -1,0 +1,86 @@
+{
+  "format": "pose-hub-action-recipe@1",
+  "id": "scapular-C",
+  "nameZh": "吊环直臂支撑",
+  "spec": "drill-anim/specs/scapular-C.js",
+  "specSha256Lf": "647a87591ea5ed8f2b1141537892e81ae20837ea7ee82510587e4bca2bbc0d60",
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "hands": {
+    "left": "native",
+    "right": "native"
+  },
+  "camera": {
+    "dir": [
+      0.6,
+      0.22,
+      -1
+    ],
+    "fit": [
+      "head",
+      "leftPalm",
+      "leftShoulder",
+      "leftToe",
+      "pelvis",
+      "rightPalm",
+      "rightShoulder",
+      "rightToe"
+    ],
+    "pad": 0.25,
+    "k": 1,
+    "at": 0,
+    "drift": 0,
+    "fitTimeline": true,
+    "orbitDegrees": 0,
+    "frontSweepDegrees": 0
+  },
+  "cameraScale": 1.15,
+  "output": {
+    "groundShadow": false,
+    "cameraMotion": false,
+    "wholeCycleContentRect": true,
+    "fps": 30,
+    "exerciseMat": true
+  },
+  "appearance": {
+    "highlight": {
+      "color": "#F05A36",
+      "shade": [
+        0.5,
+        0.42,
+        0.08
+      ],
+      "intensity": [
+        0.75,
+        1
+      ]
+    },
+    "purpose": "Visual cue for target muscle effort, not a physiological measurement",
+    "status": "parameterized-selection-deferred-by-user"
+  },
+  "jointCorrections": [
+    {
+      "profile": "upper-arm-contour-r3",
+      "version": "0.1.0-r3"
+    },
+    {
+      "profile": "ankle-join-r5",
+      "version": "0.1.0-r5"
+    }
+  ],
+  "adaptation": {
+    "status": "remote-keyframe-pending",
+    "method": "Fixed queue source reused unchanged on armfix-r2.",
+    "cameraChanges": "drift->0 (static)"
+  },
+  "source": {
+    "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
+    "selectedSpec": "drill-anim/specs/scapular-C.js"
+  },
+  "sampledOnly": true,
+  "fullCycleValidated": false,
+  "userAccepted": false,
+  "releaseEligible": false
+}
