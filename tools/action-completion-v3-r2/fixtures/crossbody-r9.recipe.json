@@ -1,0 +1,285 @@
+{
+  "format": "pose-hub-action-recipe@1",
+  "id": "h-crossbody",
+  "nameZh": "交叉臂肩后侧拉伸",
+  "spec": "drill-anim/specs/h-crossbody-r9.js",
+  "specSha256Lf": "ecd910a14caf3f30dc36f137b8d2a922ea46cbf4a8345a24889f7f3bb55c7592",
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "hands": {
+    "left": "assist",
+    "right": "relaxed"
+  },
+  "camera": {
+    "dir": [
+      -0.6,
+      0.25,
+      1
+    ],
+    "fit": [
+      "head",
+      "leftToe",
+      "rightToe",
+      "pelvis",
+      "rightPalm",
+      "rightElbow",
+      "leftElbow",
+      "rightShoulder",
+      "shoulderCenter",
+      "leftPalm",
+      "leftKnee",
+      "rightKnee"
+    ],
+    "pad": 0.14,
+    "k": 0.85,
+    "drift": 0,
+    "at": 3.8,
+    "fitTimeline": true,
+    "orbitDegrees": 0,
+    "frontSweepDegrees": 0
+  },
+  "cameraScale": 1.15,
+  "output": {
+    "groundShadow": false,
+    "cameraMotion": false,
+    "wholeCycleContentRect": true,
+    "fps": 30,
+    "exerciseMat": false
+  },
+  "adaptation": {
+    "status": "candidate-retargeted-awaiting-preview",
+    "priority": 2,
+    "sourceRuntimeModel": {
+      "profile": "training-human-v3-contact",
+      "version": "0.1.0-r5"
+    },
+    "method": "per-action contact-aware retargeting; no global pose scale",
+    "requiredChanges": [
+      "Source standing pelvis y=0.893 must be recalibrated for new leg lengths.",
+      "Preserve right arm motion in shoulder rest coordinates; remap body-surface assisting palm target separately from arm reach."
+    ],
+    "handAsset": "hands-native-c1r2-symmetric-r1",
+    "handAcceptance": "This action has not been visually inspected with the selected body/hand setup.",
+    "implemented": "Corrected standing pelvis for current leg proportions while preserving existing shoulder-relative or world-space arm targets. GPU attempt01: shoulder protraction descriptor did not move actual shoulder, so target became unreachable. r5 removes that unfulfilled offset and shortens wrist reach to478mm.",
+    "rotationPolicy": "Full forearm axial sharing avoids half-angle +/-pi branch flips; actual-render rotation and visible deformation checks remain required."
+  },
+  "source": {
+    "inventory": "catalog/production/remaining-actions-v3-20261028-r1.json",
+    "preparationReview": "tools/action-completion-v3/home-review.json",
+    "originalSpec": "drill-anim/specs/h-crossbody.js",
+    "dependencies": [
+      {
+        "path": "drill-anim/lib/home-anim.mjs",
+        "sha256Lf": "1798c9e55c28b32391b7ef32aa358427b4743ee1959f86ec488a95fe88a05557"
+      },
+      {
+        "path": "drill-anim/lib/ss-geo.mjs",
+        "sha256Lf": "45ca774079e3a85ecc4f924a3220d4baa721f0435e16f6e6e21ffa19e17e8603"
+      },
+      {
+        "path": "drill-anim/specs/h-crossbody-r3.js",
+        "sha256Lf": "6d3fa39666bb8847b8d4f665e145ca2c44b3144e061f95f0659d56004505025a"
+      },
+      {
+        "path": "drill-anim/specs/h-crossbody.js",
+        "sha256Lf": "f85038ce2b357f36f9cc281202f3c12522aba7bd31220a01b7750bd1f5c3868c"
+      },
+      {
+        "path": "drill-anim/specs/h-crossbody-r4.js",
+        "sha256Lf": "f483103c95ac1421069c46ba5fb5c6cc03c94141d65e46eb893102a14ea86f2e"
+      },
+      {
+        "path": "drill-anim/specs/_home-armfix-r1.mjs",
+        "sha256Lf": "669e216877327032b2a568946082015035fa3bc7c3c42e8c9fbd46e0ead7f05c"
+      },
+      {
+        "path": "drill-anim/specs/h-crossbody-r5.js",
+        "sha256Lf": "26b9e8337d45d4a2ef14c874d94c11fb057eb42e302319950304f1ae81e354fd"
+      },
+      {
+        "path": "drill-anim/specs/h-crossbody-r6.js",
+        "sha256Lf": "bacf0ba8558a2084fb84ec8598597a3815ffd1cb2fc35d4407a37e37c667550f"
+      }
+    ],
+    "priorRecipeSpec": "h-crossbody-r3.js"
+  },
+  "reviewPlan": {
+    "status": "source-ready-awaiting-preview",
+    "durationSeconds": 8,
+    "previewTimesSeconds": [
+      0,
+      0.2,
+      1.4,
+      2,
+      3.8,
+      4,
+      6,
+      7.8,
+      8
+    ],
+    "coverTimeSeconds": 3.8,
+    "primaryView": "Preserve the source frontal three-quarter view; a posterior highlight-driven view was previously withdrawn.",
+    "additionalViews": [
+      "opposite",
+      "side"
+    ],
+    "checks": [
+      "Left assisting hand contacts the right upper arm, not the elbow joint or chest interior.",
+      "Right shoulder and cross-body arm line stay visible.",
+      "Verify intended posterior deltoid/infraspinatus highlight because source groups is empty and panels is explicit.",
+      "Inspect actual wrist and ankle quaternion paths at every frame, not only endpoint directions: shortest consecutive rotation, total turn, hand/sole facing, left/right consistency and loop seam."
+    ],
+    "fullCycleRequired": true,
+    "contentBounds": "union of visible body and necessary props over all output frames; one rectangle for the whole clip",
+    "groundShadow": false,
+    "groundProps": "Keep necessary support mat/wall/cushion as explicit props; exclude shadow/stage helpers.",
+    "rotationEvidence": {
+      "status": "descriptor-only-not-joint-acceptance",
+      "sampleRate": 30,
+      "samples": 241,
+      "channels": {
+        "hands.left.finger": {
+          "frame": "chest",
+          "maxStepDegrees": 0.4627389297666268,
+          "endpointDegrees": 8.537736462515939e-07,
+          "zeroVectorFrames": [],
+          "stepsOver30Degrees": []
+        },
+        "hands.left.normal": {
+          "frame": "chest",
+          "maxStepDegrees": 0.3819858450153818,
+          "endpointDegrees": 0,
+          "zeroVectorFrames": [],
+          "stepsOver30Degrees": []
+        },
+        "feet.left.heading": {
+          "minDegrees": 6,
+          "maxDegrees": 6,
+          "maxRawStepDegrees": 0,
+          "endpointRawDifference": 0,
+          "rawStepsOver90Degrees": []
+        },
+        "feet.left.pitch": {
+          "minDegrees": 0,
+          "maxDegrees": 0,
+          "maxRawStepDegrees": 0,
+          "endpointRawDifference": 0,
+          "rawStepsOver90Degrees": []
+        },
+        "hands.right.finger": {
+          "frame": "chest",
+          "maxStepDegrees": 0.4627389297666268,
+          "endpointDegrees": 8.537736462515939e-07,
+          "zeroVectorFrames": [],
+          "stepsOver30Degrees": []
+        },
+        "hands.right.normal": {
+          "frame": "chest",
+          "maxStepDegrees": 0,
+          "endpointDegrees": 0,
+          "zeroVectorFrames": [],
+          "stepsOver30Degrees": []
+        },
+        "feet.right.heading": {
+          "minDegrees": -6,
+          "maxDegrees": -6,
+          "maxRawStepDegrees": 0,
+          "endpointRawDifference": 0,
+          "rawStepsOver90Degrees": []
+        },
+        "feet.right.pitch": {
+          "minDegrees": 0,
+          "maxDegrees": 0,
+          "maxRawStepDegrees": 0,
+          "endpointRawDifference": 0,
+          "rawStepsOver90Degrees": []
+        }
+      },
+      "initialRotationLists": [
+        {
+          "path": "pose.hips.rot",
+          "value": [
+            [
+              [
+                1,
+                0,
+                0
+              ],
+              1
+            ]
+          ]
+        },
+        {
+          "path": "pose.chest.waist",
+          "value": [
+            [
+              [
+                1,
+                0,
+                0
+              ],
+              0
+            ]
+          ]
+        }
+      ],
+      "limits": [
+        "This checks authored descriptor vectors and raw foot angles. It does not measure actual wrist/ankle bone quaternions, IK pole branch changes or skinned twists.",
+        "Large raw Euler angles or identical endpoint orientations alone do not establish a defect. Root GPU capture must inspect actual continuous rotations."
+      ]
+    },
+    "phase": "low-resolution-template-preview",
+    "fullResolutionProduction": "deferred-until-per-action-user-acceptance",
+    "previewGroup": "later-group"
+  },
+  "risks": [
+    "Assisting hand/upper-arm contact is pending.",
+    "Source highlight uses panels deltRear/infraspinatus with empty groups; verify the intended regions on the new body.",
+    "Current body retains v3 legs/trunk; changing the runtime label alone does not retarget old absolute coordinates.",
+    "Support, relaxed, assist and non-dumbbell native grips require their own rendered checks; fixed dumbbell acceptance does not apply."
+  ],
+  "reviewed": false,
+  "releaseEligible": false,
+  "appearance": {
+    "highlight": {
+      "color": "#F05A36",
+      "shade": [
+        0.5,
+        0.42,
+        0.08
+      ],
+      "intensity": [
+        0.75,
+        1
+      ]
+    },
+    "purpose": "Visual cue for target muscle effort, not a physiological measurement",
+    "status": "parameterized-selection-deferred-by-user"
+  },
+  "supersedesRecipe": "catalog/production/remaining32-r2/groups/home/h-crossbody.json",
+  "templateReview": {
+    "status": "pending-current-corrections-review",
+    "scope": "New body corrective combination must be replayed; historical motion/camera approval remains bound to its original evidence."
+  },
+  "finalization": {
+    "stage": "awaiting-corrected-preview",
+    "baselineVersion": "remaining32-template-optimizations-20261029-r1",
+    "knownIssuesResolved": false,
+    "userReviewed": false
+  },
+  "jointCorrections": [
+    {
+      "profile": "upper-arm-contour-r3",
+      "version": "0.1.0-r3"
+    },
+    {
+      "profile": "ankle-join-r5",
+      "version": "0.1.0-r5"
+    }
+  ],
+  "diagnostics": {
+    "measureFootSurface": true
+  }
+}

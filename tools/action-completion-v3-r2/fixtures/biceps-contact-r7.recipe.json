@@ -1,0 +1,285 @@
+{
+  "format": "pose-hub-action-recipe@1",
+  "id": "h-biceps-self",
+  "nameZh": "双手对抗弯举",
+  "spec": "drill-anim/specs/h-biceps-self-r7.js",
+  "specSha256Lf": "d234c498507fc833bf9cdf221a307eeded3b79e5e1ef5065ae2a66a73ae1714f",
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "hands": {
+    "left": "assist",
+    "right": "relaxed"
+  },
+  "camera": {
+    "dir": [
+      0,
+      0.15,
+      1
+    ],
+    "fit": [
+      "head",
+      "leftToe",
+      "rightToe",
+      "pelvis",
+      "rightPalm",
+      "rightElbow",
+      "leftElbow",
+      "shoulderCenter",
+      "leftPalm",
+      "leftKnee",
+      "rightKnee"
+    ],
+    "pad": 0.14,
+    "k": 0.9,
+    "drift": 0,
+    "at": 2.5,
+    "fitTimeline": true,
+    "orbitDegrees": 0,
+    "frontSweepDegrees": 0
+  },
+  "cameraScale": 1.15,
+  "output": {
+    "groundShadow": false,
+    "cameraMotion": false,
+    "wholeCycleContentRect": true,
+    "fps": 30,
+    "exerciseMat": false
+  },
+  "adaptation": {
+    "status": "candidate-retargeted-awaiting-preview",
+    "priority": 2,
+    "sourceRuntimeModel": {
+      "profile": "training-human-v3-contact",
+      "version": "0.1.0-r5"
+    },
+    "method": "per-action contact-aware retargeting; no global pose scale",
+    "requiredChanges": [
+      "Source standing pelvis y=0.888 is 75.5 mm below new reset pelvis; establish intended relaxed-knee stand before checking arms.",
+      "Right shoulder/elbow/wrist rest pivots are unchanged by armfix; preserve authored curl angles but recompute assisting palm target on the actual forearm surface."
+    ],
+    "handAsset": "hands-native-c1r2-symmetric-r1",
+    "handAcceptance": "This action has not been visually inspected with the selected body/hand setup.",
+    "implemented": "Corrected standing pelvis for current leg proportions while preserving existing shoulder-relative or world-space arm targets. GPU attempt01: assisting hand reach was clamped in59/241frames; r5 moves contact toward elbow by45mm, preserving forearm surface normal. Primary camera now frontal to expose bothhands. Candidate r6: phase-dependent palm normal offset calibrated from actual baseline surface gaps. Must pass palm plus finger clearance probe before promotion. r7 action-owned thumb extension; no shared preset modification.",
+    "rotationPolicy": "Full forearm axial sharing avoids half-angle +/-pi branch flips; actual-render rotation and visible deformation checks remain required."
+  },
+  "source": {
+    "inventory": "catalog/production/remaining-actions-v3-20261028-r1.json",
+    "preparationReview": "tools/action-completion-v3/home-review.json",
+    "originalSpec": "drill-anim/specs/h-biceps-self.js",
+    "dependencies": [
+      {
+        "path": "drill-anim/lib/home-anim.mjs",
+        "sha256Lf": "1798c9e55c28b32391b7ef32aa358427b4743ee1959f86ec488a95fe88a05557"
+      },
+      {
+        "path": "drill-anim/lib/ss-geo.mjs",
+        "sha256Lf": "45ca774079e3a85ecc4f924a3220d4baa721f0435e16f6e6e21ffa19e17e8603"
+      },
+      {
+        "path": "drill-anim/specs/h-biceps-self-r3.js",
+        "sha256Lf": "3880b4844cd8a0c68390b2aae7b3ec9b53cd26c8349fe21a571583f6b5a7470c"
+      },
+      {
+        "path": "drill-anim/specs/h-biceps-self.js",
+        "sha256Lf": "d291c1857c8a86fc79c36a55b49febb75515b050e43a98e4cd97126b25111f9a"
+      },
+      {
+        "path": "drill-anim/specs/h-biceps-self-r4.js",
+        "sha256Lf": "7ad2317010e37900ca6647e3d458182a06425e1b94699a3a6ed143a6a8af6acd"
+      },
+      {
+        "path": "drill-anim/specs/_home-armfix-r1.mjs",
+        "sha256Lf": "669e216877327032b2a568946082015035fa3bc7c3c42e8c9fbd46e0ead7f05c"
+      },
+      {
+        "path": "drill-anim/specs/h-biceps-self-r5.js",
+        "sha256Lf": "f0c51b44ec5ed24b6892b4297c0ed489712919ff52a341a0fdc75ce39b7e5d54"
+      },
+      {
+        "path": "drill-anim/specs/h-biceps-self-r6.js",
+        "sha256Lf": "ef387cb52d382ae9b6d947778d55ca0a456e32973b12a4c147af5f6499ece418"
+      }
+    ],
+    "priorRecipeSpec": "h-biceps-self-r3.js"
+  },
+  "reviewPlan": {
+    "status": "source-ready-awaiting-preview",
+    "durationSeconds": 8,
+    "previewTimesSeconds": [
+      0,
+      0.2,
+      1,
+      2,
+      2.5,
+      3.5,
+      4,
+      4.3,
+      6,
+      7.8,
+      8
+    ],
+    "coverTimeSeconds": 2.5,
+    "primaryView": "Working-right-side three-quarter view exposes elbow flexion and the assisting hand.",
+    "additionalViews": [
+      "opposite",
+      "side"
+    ],
+    "checks": [
+      "Left palm follows and presses the right forearm without entering it.",
+      "Right elbow stays beside the trunk through both curls.",
+      "Three-quarter side view exposes the hand-to-forearm contact and elbow bend.",
+      "Inspect actual wrist and ankle quaternion paths at every frame, not only endpoint directions: shortest consecutive rotation, total turn, hand/sole facing, left/right consistency and loop seam."
+    ],
+    "fullCycleRequired": true,
+    "contentBounds": "union of visible body and necessary props over all output frames; one rectangle for the whole clip",
+    "groundShadow": false,
+    "groundProps": "Keep necessary support mat/wall/cushion as explicit props; exclude shadow/stage helpers.",
+    "rotationEvidence": {
+      "status": "descriptor-only-not-joint-acceptance",
+      "sampleRate": 30,
+      "samples": 241,
+      "channels": {
+        "hands.left.finger": {
+          "frame": "chest",
+          "maxStepDegrees": 0,
+          "endpointDegrees": 0,
+          "zeroVectorFrames": [],
+          "stepsOver30Degrees": []
+        },
+        "hands.left.normal": {
+          "frame": "chest",
+          "maxStepDegrees": 0.8537582633499075,
+          "endpointDegrees": 8.537736462515939e-07,
+          "zeroVectorFrames": [],
+          "stepsOver30Degrees": []
+        },
+        "feet.left.heading": {
+          "minDegrees": 6,
+          "maxDegrees": 6,
+          "maxRawStepDegrees": 0,
+          "endpointRawDifference": 0,
+          "rawStepsOver90Degrees": []
+        },
+        "feet.left.pitch": {
+          "minDegrees": 0,
+          "maxDegrees": 0,
+          "maxRawStepDegrees": 0,
+          "endpointRawDifference": 0,
+          "rawStepsOver90Degrees": []
+        },
+        "hands.right.finger": {
+          "frame": "chest",
+          "maxStepDegrees": 0.8537582633499075,
+          "endpointDegrees": 8.537736462515939e-07,
+          "zeroVectorFrames": [],
+          "stepsOver30Degrees": []
+        },
+        "hands.right.normal": {
+          "frame": "chest",
+          "maxStepDegrees": 0.8537582633499075,
+          "endpointDegrees": 8.537736462515939e-07,
+          "zeroVectorFrames": [],
+          "stepsOver30Degrees": []
+        },
+        "feet.right.heading": {
+          "minDegrees": -6,
+          "maxDegrees": -6,
+          "maxRawStepDegrees": 0,
+          "endpointRawDifference": 0,
+          "rawStepsOver90Degrees": []
+        },
+        "feet.right.pitch": {
+          "minDegrees": 0,
+          "maxDegrees": 0,
+          "maxRawStepDegrees": 0,
+          "endpointRawDifference": 0,
+          "rawStepsOver90Degrees": []
+        }
+      },
+      "initialRotationLists": [
+        {
+          "path": "pose.hips.rot",
+          "value": [
+            [
+              [
+                1,
+                0,
+                0
+              ],
+              1
+            ]
+          ]
+        },
+        {
+          "path": "pose.chest.waist",
+          "value": [
+            [
+              [
+                1,
+                0,
+                0
+              ],
+              0
+            ]
+          ]
+        }
+      ],
+      "limits": [
+        "This checks authored descriptor vectors and raw foot angles. It does not measure actual wrist/ankle bone quaternions, IK pole branch changes or skinned twists.",
+        "Large raw Euler angles or identical endpoint orientations alone do not establish a defect. Root GPU capture must inspect actual continuous rotations."
+      ]
+    },
+    "phase": "low-resolution-template-preview",
+    "fullResolutionProduction": "deferred-until-per-action-user-acceptance",
+    "previewGroup": "later-group"
+  },
+  "risks": [
+    "Assisting left palm/right forearm contact has not been recalibrated for the new hand surface.",
+    "Current body retains v3 legs/trunk; changing the runtime label alone does not retarget old absolute coordinates.",
+    "Support, relaxed, assist and non-dumbbell native grips require their own rendered checks; fixed dumbbell acceptance does not apply."
+  ],
+  "reviewed": false,
+  "releaseEligible": false,
+  "appearance": {
+    "highlight": {
+      "color": "#F05A36",
+      "shade": [
+        0.5,
+        0.42,
+        0.08
+      ],
+      "intensity": [
+        0.75,
+        1
+      ]
+    },
+    "purpose": "Visual cue for target muscle effort, not a physiological measurement",
+    "status": "parameterized-selection-deferred-by-user"
+  },
+  "supersedesRecipe": "catalog/production/remaining32-r2/groups/home/h-biceps-self.json",
+  "templateReview": {
+    "status": "pending-current-corrections-review",
+    "scope": "New body corrective combination must be replayed; historical motion/camera approval remains bound to its original evidence."
+  },
+  "finalization": {
+    "stage": "awaiting-corrected-preview",
+    "baselineVersion": "remaining32-template-optimizations-20261029-r1",
+    "knownIssuesResolved": false,
+    "userReviewed": false
+  },
+  "jointCorrections": [
+    {
+      "profile": "upper-arm-contour-r3",
+      "version": "0.1.0-r3"
+    },
+    {
+      "profile": "ankle-join-r5",
+      "version": "0.1.0-r5"
+    }
+  ],
+  "diagnostics": {
+    "measureFootSurface": true
+  }
+}

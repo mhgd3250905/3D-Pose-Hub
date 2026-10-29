@@ -1,0 +1,320 @@
+{
+  "format": "pose-hub-action-recipe@1",
+  "id": "h-towel-pulldown",
+  "nameZh": "站姿毛巾下拉",
+  "spec": "drill-anim/specs/h-towel-pulldown-r7.js",
+  "specSha256Lf": "db4d21ae09e5875f693c7a6121a846a7e7efe830fd5cb61eb13ac4b74c83defb",
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "hands": {
+    "left": "fixed-grasp",
+    "right": "fixed-grasp"
+  },
+  "camera": {
+    "dir": [
+      0.25,
+      0.2,
+      -1
+    ],
+    "fit": [
+      "head",
+      "leftToe",
+      "rightToe",
+      "pelvis",
+      "leftPalm",
+      "rightPalm",
+      "leftElbow",
+      "rightElbow",
+      "shoulderCenter",
+      "leftKnee",
+      "rightKnee"
+    ],
+    "pad": 0.14,
+    "k": 0.85,
+    "drift": 0,
+    "at": 2.1,
+    "fitTimeline": true,
+    "orbitDegrees": 0,
+    "frontSweepDegrees": 0
+  },
+  "cameraScale": 1.3,
+  "output": {
+    "groundShadow": false,
+    "cameraMotion": false,
+    "wholeCycleContentRect": true,
+    "fps": 30,
+    "exerciseMat": false
+  },
+  "adaptation": {
+    "status": "candidate-retargeted-awaiting-preview",
+    "priority": 3,
+    "sourceRuntimeModel": {
+      "profile": "training-human-v3-contact",
+      "version": "0.1.0-r5"
+    },
+    "method": "per-action contact-aware retargeting; no global pose scale",
+    "requiredChanges": [
+      "Standing pelvis y=0.888 and world hand arcs must be adapted to current torso/leg proportions.",
+      "Keep existing self-resisted motion semantics and timing; do not add claims about external load.",
+      "Native grip and towel diameter/endpoints require specific fitting; do not replace with dumbbells."
+    ],
+    "handAsset": "hands-native-c1r2-symmetric-r1",
+    "handAcceptance": "This action has not been visually inspected with the selected body/hand setup.",
+    "implemented": "Corrected standing pelvis for current leg proportions while preserving existing shoulder-relative or world-space arm targets.",
+    "rotationPolicy": "Full forearm axial sharing avoids half-angle +/-pi branch flips; actual-render rotation and visible deformation checks remain required.",
+    "visualCorrection": "Use analytic current-length elbow and forearm direction, fixed WebXR distal/palmar basis from successful band-curl-r5, and correct fixed template shaft centers. Keep wrist paths and motion phases; reject installed wrist stress until rerender confirms.",
+    "notes": [
+      "Fixed grasp shaft axis now follows the actual hand-to-hand towel line; previous grip statements remain historical. New hand orientation requires wrist bridge and cloth contact preview."
+    ]
+  },
+  "source": {
+    "inventory": "catalog/production/remaining-actions-v3-20261028-r1.json",
+    "preparationReview": "tools/action-completion-v3/home-review.json",
+    "originalSpec": "drill-anim/specs/h-towel-pulldown.js",
+    "dependencies": [
+      {
+        "path": "drill-anim/lib/grip.mjs",
+        "sha256Lf": "084a94b206cae21926fc94ee060048bcdc37adfabeb7295e688af81f56ce8be9"
+      },
+      {
+        "path": "drill-anim/lib/home-anim.mjs",
+        "sha256Lf": "1798c9e55c28b32391b7ef32aa358427b4743ee1959f86ec488a95fe88a05557"
+      },
+      {
+        "path": "drill-anim/lib/ss-geo.mjs",
+        "sha256Lf": "45ca774079e3a85ecc4f924a3220d4baa721f0435e16f6e6e21ffa19e17e8603"
+      },
+      {
+        "path": "drill-anim/specs/h-towel-pulldown-r3.js",
+        "sha256Lf": "6ad2e2953c00ae0e7621465269bbd780819a293914705aa5e9c5540f794dfdb1"
+      },
+      {
+        "path": "drill-anim/specs/h-towel-pulldown.js",
+        "sha256Lf": "d1dd3bc85dc14cb71ec08080828e97e20494c4f073b0247c2235921751e8cf86"
+      },
+      {
+        "path": "drill-anim/specs/h-towel-pulldown-r4.js",
+        "sha256Lf": "bc0ef65d2b6c467c962e81bbd8118d0ab88316440bd8c999407c8f4b363c0fbb"
+      },
+      {
+        "path": "drill-anim/specs/_home-armfix-r1.mjs",
+        "sha256Lf": "669e216877327032b2a568946082015035fa3bc7c3c42e8c9fbd46e0ead7f05c"
+      },
+      {
+        "path": "drill-anim/specs/h-towel-pulldown-r5.js",
+        "sha256Lf": "0769d458384fbc0040d6f9b5e615ec4fa6ae19852d0eccc7d9c01271d2fa81d0"
+      },
+      {
+        "path": "drill-anim/specs/h-towel-pulldown-r6.js",
+        "sha256Lf": "e43a5e4470da946fe82013e98c4a7fac2feaa050c54b718642609ad02cd4d28c"
+      }
+    ],
+    "priorRecipeSpec": "h-towel-pulldown-r3.js",
+    "files": [
+      {
+        "path": "drill-anim/specs/h-towel-pulldown-r6.js",
+        "sha256Lf": "e43a5e4470da946fe82013e98c4a7fac2feaa050c54b718642609ad02cd4d28c"
+      },
+      {
+        "path": "drill-anim/specs/_fixed-towel-axis-r1.mjs",
+        "sha256Lf": "3b9972a8bd3800d0a02583559d444c32959b1118de1749bccaf9147ebea716e3"
+      },
+      {
+        "path": "drill-anim/specs/h-towel-pulldown-r7.js",
+        "sha256Lf": "db4d21ae09e5875f693c7a6121a846a7e7efe830fd5cb61eb13ac4b74c83defb"
+      }
+    ],
+    "fixedTowelAxisRevision": {
+      "revisionOf": "h-towel-pulldown-r6",
+      "helper": "drill-anim/specs/_fixed-towel-axis-r1.mjs",
+      "cpuEvidence": "F:/PoseHub-v2-production/template-finalization-20261029/planning/towel-axis-r1-cpu.json",
+      "scope": "Only hand finger/normal coordinate tracks and explicit grip-center offsets; wrist/elbow targets, body, timing, camera, props radius, QA unchanged.",
+      "status": "CPU-axis-contact-candidate-awaiting-GPU-and-user"
+    }
+  },
+  "reviewPlan": {
+    "status": "source-ready-awaiting-preview",
+    "durationSeconds": 8,
+    "previewTimesSeconds": [
+      0,
+      0.2,
+      1.1,
+      2.1,
+      3,
+      4,
+      5.1,
+      6.1,
+      7.8,
+      8
+    ],
+    "coverTimeSeconds": 2.1,
+    "primaryView": "Use a side-front view so the towel and elbow path are visible rather than hidden behind the head.",
+    "additionalViews": [
+      "opposite",
+      "side"
+    ],
+    "checks": [
+      "Towel stays in front of head where intended and both endpoints stay held.",
+      "Elbow path and shoulder depression are visible, without crossing face or neck.",
+      "Side-front fixed view exposes towel/head clearance.",
+      "Inspect actual wrist and ankle quaternion paths at every frame, not only endpoint directions: shortest consecutive rotation, total turn, hand/sole facing, left/right consistency and loop seam."
+    ],
+    "fullCycleRequired": true,
+    "contentBounds": "union of visible body and necessary props over all output frames; one rectangle for the whole clip",
+    "groundShadow": false,
+    "groundProps": "Keep necessary support mat/wall/cushion as explicit props; exclude shadow/stage helpers.",
+    "rotationEvidence": {
+      "status": "descriptor-only-not-joint-acceptance",
+      "sampleRate": 30,
+      "samples": 241,
+      "channels": {
+        "hands.left.finger": {
+          "frame": "world",
+          "maxStepDegrees": 1.1268591507743917,
+          "endpointDegrees": 0,
+          "zeroVectorFrames": [],
+          "stepsOver30Degrees": []
+        },
+        "hands.left.normal": {
+          "frame": "world",
+          "maxStepDegrees": 1.1652974228765252,
+          "endpointDegrees": 1.2074182697257333e-06,
+          "zeroVectorFrames": [],
+          "stepsOver30Degrees": []
+        },
+        "feet.left.heading": {
+          "minDegrees": 6,
+          "maxDegrees": 6,
+          "maxRawStepDegrees": 0,
+          "endpointRawDifference": 0,
+          "rawStepsOver90Degrees": []
+        },
+        "feet.left.pitch": {
+          "minDegrees": 0,
+          "maxDegrees": 0,
+          "maxRawStepDegrees": 0,
+          "endpointRawDifference": 0,
+          "rawStepsOver90Degrees": []
+        },
+        "hands.right.finger": {
+          "frame": "world",
+          "maxStepDegrees": 1.1268591507743917,
+          "endpointDegrees": 0,
+          "zeroVectorFrames": [],
+          "stepsOver30Degrees": []
+        },
+        "hands.right.normal": {
+          "frame": "world",
+          "maxStepDegrees": 1.1652974228765252,
+          "endpointDegrees": 1.2074182697257333e-06,
+          "zeroVectorFrames": [],
+          "stepsOver30Degrees": []
+        },
+        "feet.right.heading": {
+          "minDegrees": -6,
+          "maxDegrees": -6,
+          "maxRawStepDegrees": 0,
+          "endpointRawDifference": 0,
+          "rawStepsOver90Degrees": []
+        },
+        "feet.right.pitch": {
+          "minDegrees": 0,
+          "maxDegrees": 0,
+          "maxRawStepDegrees": 0,
+          "endpointRawDifference": 0,
+          "rawStepsOver90Degrees": []
+        }
+      },
+      "initialRotationLists": [
+        {
+          "path": "pose.hips.rot",
+          "value": [
+            [
+              [
+                1,
+                0,
+                0
+              ],
+              1
+            ]
+          ]
+        },
+        {
+          "path": "pose.chest.waist",
+          "value": [
+            [
+              [
+                1,
+                0,
+                0
+              ],
+              0
+            ]
+          ]
+        }
+      ],
+      "limits": [
+        "This checks authored descriptor vectors and raw foot angles. It does not measure actual wrist/ankle bone quaternions, IK pole branch changes or skinned twists.",
+        "Large raw Euler angles or identical endpoint orientations alone do not establish a defect. Root GPU capture must inspect actual continuous rotations."
+      ]
+    },
+    "phase": "low-resolution-template-preview",
+    "fullResolutionProduction": "deferred-until-per-action-user-acceptance",
+    "previewGroup": "later-group"
+  },
+  "risks": [
+    "Self-resisted towel pulldown has unquantified load and overlaps other lat-pulldown mechanisms.",
+    "Source band-as-towel geometry, native grip and head/prop clearance remain pending.",
+    "Current body retains v3 legs/trunk; changing the runtime label alone does not retarget old absolute coordinates.",
+    "Support, relaxed, assist and non-dumbbell native grips require their own rendered checks; fixed dumbbell acceptance does not apply."
+  ],
+  "reviewed": false,
+  "releaseEligible": false,
+  "appearance": {
+    "highlight": {
+      "color": "#F05A36",
+      "shade": [
+        0.5,
+        0.42,
+        0.08
+      ],
+      "intensity": [
+        0.75,
+        1
+      ]
+    },
+    "purpose": "Visual cue for target muscle effort, not a physiological measurement",
+    "status": "parameterized-selection-deferred-by-user"
+  },
+  "supersedesRecipe": "catalog/production/remaining32-r2/groups/home/h-towel-pulldown.json",
+  "templateReview": {
+    "status": "pending-current-corrections-review",
+    "scope": "New body corrective combination must be replayed; historical motion/camera approval remains bound to its original evidence."
+  },
+  "finalization": {
+    "stage": "awaiting-towel-grip-axis-keyframe-preview",
+    "baselineVersion": "remaining32-template-optimizations-20261029-r1",
+    "knownIssuesResolved": false,
+    "userReviewed": false
+  },
+  "diagnostics": {
+    "measureFootSurface": true
+  },
+  "fixedCorrectionStack": {
+    "profile": "fixed-wrist-corrections-r1",
+    "version": "0.1.0-r1"
+  },
+  "jointCorrections": [
+    {
+      "profile": "upper-arm-contour-r3",
+      "version": "0.1.0-r3"
+    },
+    {
+      "profile": "ankle-join-r5",
+      "version": "0.1.0-r5"
+    }
+  ],
+  "specId": "h-towel-pulldown-r7"
+}

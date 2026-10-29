@@ -1,5 +1,11 @@
 # Pose-Hub 版本对齐台账
 
+## 2026-10-29 第一批32动作模板候选冻结
+
+版本 `remaining32-template-finalization-20261029-r1` 已完成32/32本轮候选复核，固定动作源、最新手型及关节组件、镜头、接触调整和高亮参数。32个完整低清循环共7772个30Hz实际采样；473份来源哈希、61项原始伸直约束、441份规格验证及7项portability均通过。毛巾过头转肩已改为两端正握；按用户明确放宽的肩部标准，放大袖口近景材质层纹保留并注明。
+
+[版本说明](production-snapshots/remaining32-template-finalization-20261029-r1.md)与[机器快照](../catalog/production/versions/remaining32-template-finalization-20261029-r1.json)绑定当前配方和证据。低清验收页为 `http://127.0.0.1:8845/`。当前32项均保持用户待验收、不可发布；正式高清制作延后。本地Git及原字节源码包回执位于 `F:/PoseHub-v2-production/version-snapshots/remaining32-template-finalization-20261029-r1/delivery-receipt.json`。原r2确认、旧失败试版及下列历史检查点保留，未据此升级main或公开媒体。
+
 ## 2026-10-29 32动作与关节优化本地版本检查点
 
 版本 `remaining32-template-optimizations-20261029-r1` 汇总人体/手型、实际腕踝旋转、脚踝r5、肘部DQS r1、大臂r3、固定镜头及高亮参数。32份配方中2份动作模板已确认、30份为候选；熊式大臂另作局部确认。当前采用路径、证据哈希和保留问题见[版本快照](production-snapshots/remaining32-template-optimizations-20261029-r1.md)，机器索引位于 `catalog/production/versions/`。本地Git提交与源码包的精确回执在 `F:/PoseHub-v2-production/version-snapshots/remaining32-template-optimizations-20261029-r1/delivery-receipt.json`；未推进主线合并、远端推送或素材发布。

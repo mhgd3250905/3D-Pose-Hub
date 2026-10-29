@@ -68,6 +68,22 @@ for (const [file, expected] of Object.entries({
   '_thomas-armfix-r1.mjs': '468a68bea0a4d99e4088eb25ce045b64e0b5d6530882f84022a5ddb7e8936b77',
   '_thomas-pr106-armfix-r1.mjs': 'a722cc2ac8347fc8a879cc5c730bdca3452f52e6f71fb808d4b380dfa974e1a7',
   '_home-armfix-r1.mjs': '669e216877327032b2a568946082015035fa3bc7c3c42e8c9fbd46e0ead7f05c',
+  '_fixed-towel-axis-r1.mjs': '3b9972a8bd3800d0a02583559d444c32959b1118de1749bccaf9147ebea716e3',
+  // Calibrated Thomas reachability candidates and retained, non-selected CPU trials.
+  '_t-lsit-open-close-r6-reach-data.mjs': '2317b56dd72bb1d2a1bda1b7ddb39688d4c8ea2a4c6c919cb126a1ffb9740292',
+  '_t-lsit-wide-r6-reach-data.mjs': '414f5c7d9f93e417dde59e92ac1f5c1b6440c1e00793c1fad374ba6a8010264c',
+  '_t-seated-straddle-ext-r6-reach-data.mjs': '0e756c64d15b6b438887d090757007a4d7d774ebd37cde672a51a31a179d65e1',
+  '_t-tuck-planche-r6-reach-data.mjs': 'eec959136feb5bf3496ccd0e6597eeda789732f04b2f824d6e34782fdb2c387c',
+  '_t-lsit-tuck-r5-reach-data.mjs': '4309690b81fd3a99d8186bba5d5f5c9d49d0bf9510984b8c8549aea5d4abc2fc',
+  '_thomas-reachable-r1.mjs': 'c446e23f9269609908c5eb38ef37e012e37d501f9a27689602a14cc498269f51',
+  '_t-seated-straddle-lifts-r6-reach-data.mjs': '791f1820e6148d5eeb8e370edc887c15e6078880b4690a50e5939ac838630f13',
+  '_t-seated-straddle-lifts-r5-reach-data.mjs': 'a2afc522710ae20074cbbe1d4463331f222ddc3ca8e221ecdb15aff152fac1bf',
+  '_t-straddle-hold-r6-reach-data.mjs': 'f3d1f51d4d3be1509b84eea61bbe6e61aa9609426c33d92d4b4bc8ce96f808d5',
+  '_t-straddle-hold-r5-reach-data.mjs': '7e810983475bdc5f6821c2b695c56ffd977ab946d00bc3b7f0600d0fcd786764',
+  '_t-lsit-vsit-circles-r6-reach-data.mjs': '15fe7753f120fd3463b3294c47649c6eab8b4b613350906e11dd3cd4819188be',
+  '_t-lsit-vsit-circles-r5-reach-data.mjs': 'e11b6a88f96789cf7df06d40eec601b21dec37911527adb614071276d3758647',
+  '_t-vsit-r7-reach-data.mjs': '68f3b9f2245e5650d4cda1e79fbcb056bf2435edff9f967fcde9d90a674444af',
+  '_t-vsit-r6-reach-data.mjs': 'ff2e38c176ac71bbffe89c42d84ed42697c59ffac9acd1d9c57dceb31044593f',
 })) assert.equal(textHash(path.join(root, 'specs', file)), expected, `Thomas helper changed: ${file}`);
 // Shared helpers of the HipLab media-fix r2 revisions (PR #121); their importers are hashed above.
 for (const [file, expected] of Object.entries({

@@ -1,0 +1,299 @@
+{
+  "format": "pose-hub-action-recipe@1",
+  "id": "h-towel-pass",
+  "nameZh": "毛巾过头转肩",
+  "spec": "drill-anim/specs/h-towel-pass-r10.js",
+  "specSha256Lf": "39c461b7ee4ee3d6eb1d5a2fa2e344b25428a5ce515bb7854d99a5f4b02ffbb1",
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "hands": {
+    "left": "fixed-grasp",
+    "right": "fixed-grasp"
+  },
+  "camera": {
+    "dir": [
+      0.65,
+      0.25,
+      1
+    ],
+    "fit": [
+      "head",
+      "leftToe",
+      "rightToe",
+      "pelvis",
+      "leftPalm",
+      "rightPalm",
+      "leftElbow",
+      "rightElbow",
+      "shoulderCenter",
+      "leftKnee",
+      "rightKnee"
+    ],
+    "pad": 0.14,
+    "k": 0.85,
+    "drift": 0,
+    "at": 3.8,
+    "fitTimeline": true,
+    "orbitDegrees": 0,
+    "frontSweepDegrees": 0
+  },
+  "cameraScale": 1.3,
+  "output": {
+    "groundShadow": false,
+    "cameraMotion": false,
+    "wholeCycleContentRect": true,
+    "fps": 30,
+    "exerciseMat": false
+  },
+  "adaptation": {
+    "status": "candidate-real-fixed-palm-overhand-awaiting-key-GPU",
+    "priority": 3,
+    "sourceRuntimeModel": {
+      "profile": "training-human-v3-contact",
+      "version": "0.1.0-r5"
+    },
+    "method": "per-action contact-aware retargeting; no global pose scale",
+    "requiredChanges": [
+      "Retain shoulder sweep intent but rebuild world hand targets about current shoulder positions and actual towel grip width.",
+      "Source shoulder flexion 34 to 212 degrees and historical head crossing demand full-sweep inspection; a camera change does not fix the motion.",
+      "Source native grip plus band endpoints require towel-specific fit."
+    ],
+    "handAsset": "hands-native-c1r2-symmetric-r1",
+    "handAcceptance": "This action has not been visually inspected with the selected body/hand setup.",
+    "implemented": "Corrected standing pelvis for current leg proportions while preserving existing shoulder-relative or world-space arm targets. Explicit wrist reach capped at 482 mm, below measured 484.827 mm arm length.",
+    "rotationPolicy": "Full forearm axial sharing avoids half-angle +/-pi branch flips; actual-render rotation and visible deformation checks remain required.",
+    "visualCorrection": "Use analytic current-length elbow and forearm direction, fixed WebXR distal/palmar basis from successful band-curl-r5, and correct fixed template shaft centers. Keep wrist paths and motion phases; reject installed wrist stress until rerender confirms."
+  },
+  "source": {
+    "inventory": "catalog/production/remaining-actions-v3-20261028-r1.json",
+    "preparationReview": "tools/action-completion-v3/home-review.json",
+    "originalSpec": "drill-anim/specs/h-towel-pass.js",
+    "dependencies": [
+      {
+        "path": "drill-anim/lib/grip.mjs",
+        "sha256Lf": "084a94b206cae21926fc94ee060048bcdc37adfabeb7295e688af81f56ce8be9"
+      },
+      {
+        "path": "drill-anim/lib/home-anim.mjs",
+        "sha256Lf": "1798c9e55c28b32391b7ef32aa358427b4743ee1959f86ec488a95fe88a05557"
+      },
+      {
+        "path": "drill-anim/lib/ss-geo.mjs",
+        "sha256Lf": "45ca774079e3a85ecc4f924a3220d4baa721f0435e16f6e6e21ffa19e17e8603"
+      },
+      {
+        "path": "drill-anim/specs/h-towel-pass-r3.js",
+        "sha256Lf": "3ca2ba5eb83c2cf5e939ae260c9ae8891a69f0e8a95bb1a64ef2ff548f487711"
+      },
+      {
+        "path": "drill-anim/specs/h-towel-pass.js",
+        "sha256Lf": "952c3711f3f1d1b229712d068825c671ab4d8b5b2f0a2cb45ae8b0b95893e754"
+      },
+      {
+        "path": "drill-anim/specs/h-towel-pass-r4.js",
+        "sha256Lf": "236e0927e964e152fba0f0af1339cd934df66de7cd3c1d37e74a04d4dc9a418a"
+      },
+      {
+        "path": "drill-anim/specs/_home-armfix-r1.mjs",
+        "sha256Lf": "669e216877327032b2a568946082015035fa3bc7c3c42e8c9fbd46e0ead7f05c"
+      },
+      {
+        "path": "drill-anim/specs/h-towel-pass-r5.js",
+        "sha256Lf": "08bdabe2b3d26a6a05230efd7e61f9eb36c1286e42da80261eb6547a096e0b79"
+      },
+      {
+        "path": "drill-anim/specs/h-towel-pass-r6.js",
+        "sha256Lf": "5900fce7826cc267a4078626898076fccf017709a585f661b79ffd3d58848997"
+      }
+    ],
+    "priorRecipeSpec": "h-towel-pass-r3.js"
+  },
+  "reviewPlan": {
+    "status": "source-ready-awaiting-preview",
+    "durationSeconds": 8,
+    "previewTimesSeconds": [
+      0,
+      0.2,
+      1,
+      2,
+      2.5,
+      3,
+      3.8,
+      4,
+      5,
+      6,
+      7,
+      7.8,
+      8
+    ],
+    "coverTimeSeconds": 3.8,
+    "primaryView": "More frontal three-quarter view makes bilateral hand height and elbow symmetry easier to compare.",
+    "additionalViews": [
+      "opposite",
+      "side"
+    ],
+    "checks": [
+      "Towel clears the head through overhead transition and clears the back.",
+      "Both elbows remain extended and the two arms move symmetrically.",
+      "Fixed three-quarter view makes front-to-back path, head clearance and hand height readable.",
+      "Inspect actual wrist and ankle quaternion paths at every frame, not only endpoint directions: shortest consecutive rotation, total turn, hand/sole facing, left/right consistency and loop seam."
+    ],
+    "fullCycleRequired": true,
+    "contentBounds": "union of visible body and necessary props over all output frames; one rectangle for the whole clip",
+    "groundShadow": false,
+    "groundProps": "Keep necessary support mat/wall/cushion as explicit props; exclude shadow/stage helpers.",
+    "rotationEvidence": {
+      "status": "descriptor-only-not-joint-acceptance",
+      "sampleRate": 30,
+      "samples": 241,
+      "channels": {
+        "hands.left.finger": {
+          "frame": "world",
+          "maxStepDegrees": 2.9744954136577193,
+          "endpointDegrees": 1.2074182697257333e-06,
+          "zeroVectorFrames": [],
+          "stepsOver30Degrees": []
+        },
+        "hands.left.normal": {
+          "frame": "world",
+          "maxStepDegrees": 3.0744241173308313,
+          "endpointDegrees": 0,
+          "zeroVectorFrames": [],
+          "stepsOver30Degrees": []
+        },
+        "feet.left.heading": {
+          "minDegrees": 6,
+          "maxDegrees": 6,
+          "maxRawStepDegrees": 0,
+          "endpointRawDifference": 0,
+          "rawStepsOver90Degrees": []
+        },
+        "feet.left.pitch": {
+          "minDegrees": 0,
+          "maxDegrees": 0,
+          "maxRawStepDegrees": 0,
+          "endpointRawDifference": 0,
+          "rawStepsOver90Degrees": []
+        },
+        "hands.right.finger": {
+          "frame": "world",
+          "maxStepDegrees": 2.9744954136577193,
+          "endpointDegrees": 1.2074182697257333e-06,
+          "zeroVectorFrames": [],
+          "stepsOver30Degrees": []
+        },
+        "hands.right.normal": {
+          "frame": "world",
+          "maxStepDegrees": 3.0744241173308313,
+          "endpointDegrees": 0,
+          "zeroVectorFrames": [],
+          "stepsOver30Degrees": []
+        },
+        "feet.right.heading": {
+          "minDegrees": -6,
+          "maxDegrees": -6,
+          "maxRawStepDegrees": 0,
+          "endpointRawDifference": 0,
+          "rawStepsOver90Degrees": []
+        },
+        "feet.right.pitch": {
+          "minDegrees": 0,
+          "maxDegrees": 0,
+          "maxRawStepDegrees": 0,
+          "endpointRawDifference": 0,
+          "rawStepsOver90Degrees": []
+        }
+      },
+      "initialRotationLists": [
+        {
+          "path": "pose.hips.rot",
+          "value": [
+            [
+              [
+                1,
+                0,
+                0
+              ],
+              0
+            ]
+          ]
+        },
+        {
+          "path": "pose.chest.waist",
+          "value": [
+            [
+              [
+                1,
+                0,
+                0
+              ],
+              0
+            ]
+          ]
+        }
+      ],
+      "limits": [
+        "This checks authored descriptor vectors and raw foot angles. It does not measure actual wrist/ankle bone quaternions, IK pole branch changes or skinned twists.",
+        "Large raw Euler angles or identical endpoint orientations alone do not establish a defect. Root GPU capture must inspect actual continuous rotations."
+      ]
+    },
+    "phase": "low-resolution-template-preview",
+    "fullResolutionProduction": "deferred-until-per-action-user-acceptance",
+    "previewGroup": "later-group"
+  },
+  "risks": [
+    "Historical towel/bar crossing the head and asymmetric elbows remain open until actual GPU frames prove otherwise.",
+    "Changing body/camera alone does not fix source band-as-towel appearance or head clearance.",
+    "Current body retains v3 legs/trunk; changing the runtime label alone does not retarget old absolute coordinates.",
+    "Support, relaxed, assist and non-dumbbell native grips require their own rendered checks; fixed dumbbell acceptance does not apply."
+  ],
+  "reviewed": false,
+  "releaseEligible": false,
+  "appearance": {
+    "highlight": {
+      "color": "#F05A36",
+      "shade": [
+        0.5,
+        0.42,
+        0.08
+      ],
+      "intensity": [
+        0.75,
+        1
+      ]
+    },
+    "purpose": "Visual cue for target muscle effort, not a physiological measurement",
+    "status": "parameterized-selection-deferred-by-user"
+  },
+  "supersedesRecipe": "catalog/production/remaining32-r2/groups/home/h-towel-pass.json",
+  "templateReview": {
+    "status": "needs-user-corrected-overhand-review",
+    "scope": "New body corrective combination must be replayed; historical motion/camera approval remains bound to its original evidence."
+  },
+  "finalization": {
+    "stage": "awaiting-overhand-r8-preview",
+    "baselineVersion": "remaining32-template-optimizations-20261029-r1",
+    "knownIssuesResolved": false,
+    "userReviewed": false
+  },
+  "diagnostics": {
+    "measureFootSurface": true
+  },
+  "fixedCorrectionStack": {
+    "profile": "fixed-wrist-corrections-r1",
+    "version": "0.1.0-r1"
+  },
+  "jointCorrections": [
+    {
+      "profile": "upper-arm-contour-r3",
+      "version": "0.1.0-r3"
+    },
+    {
+      "profile": "ankle-join-r5",
+      "version": "0.1.0-r5"
+    }
+  ],
+  "specId": "h-towel-pass-r10"
+}
