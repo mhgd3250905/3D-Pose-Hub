@@ -1,5 +1,10 @@
 # Pose-Hub 版本对齐台账
 
+## 2026-10-29 GitHub弱云服务器接手补齐
+
+用户澄清下一agent通过GitHub在弱云服务器工作，只能浏览器串行低分辨率关键帧。新增[远端入口](remaining219-remote-agent-20261029-r1.md)，以该任务约束替代原交接的本机盘符、R8/4080和完整循环要求。独立GitHub克隆发现d550cd历史对象不可读，已提供固定源码包（308源+历史catalog，802205字节）与Python标准库preflight；50缺项恢复及冲突拒绝已验证。新关键帧工具支持256/320px、3–6张、明确采样限制；3项CPU测试、32配方安装分支及核显熊式4帧冒烟通过。Linux软件后端和固定握持浏览器仍待远端验证，不授予全周期或用户验收。旧R8/冻结配方/本机源保持不变，媒体未进Git。
+
+
 ## 2026-10-29 剩余219动作模板交接
 
 人体/关节与32模板merge提交 `114e90dacadf18b5f1c1976791b6116fe0150647` 已push，并以 `git ls-remote origin refs/heads/main` 回读确认。随后在main建立[执行手册](remaining219-template-handoff-20261029-r1.md)及[固定来源队列](../catalog/production/remaining219-source-queue-20261029-r1.json)：251动态减首批32恰为219，固定catalog/blob/LF SHA核对通过；308个相对模块依赖路径中缺50文件（45入口+5依赖），当前同路径冲突0。只生成交接和选源工具，未恢复旧源、启动219制作或自动继承用户验收。未来agent从最新main独立分支逐项推进。
