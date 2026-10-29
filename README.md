@@ -8,6 +8,10 @@ Pose-Hub 是 FlareLab（托马斯训练助手）和 HipLab（开胯训练助手�
 
 2026-10-17 从 [3D-Body](https://github.com/mhgd3250905/3D-Body) `master@66067a6` 迁来，保留了相关文件的 Git 历史。迁移细节、路径对照和验证结果见 [MIGRATION.md](MIGRATION.md)；协作规则见 [AGENTS.md](AGENTS.md)。
 
+## 远端agent接手本轮219动作
+
+通过GitHub克隆、弱云服务器串行关键帧检查，请先读[远端任务入口](docs/remaining219-remote-agent-20261029-r1.md)。它提供固定源码恢复包、256/320px低清关键帧工具及回传标准；无需本机盘符或RTX4080。完整循环与最终验收仍由主线补齐。
+
 ## 动作素材库盘点
 
 2026-10-28 的[动作收纳清单](docs/action-inventory-20261028-r1.md)将原219透明测试包、24个旧动态候选、8个PR23新草稿、6个自测静图和1个用户停止项分开登记；共258个源码家族，其中251个属于动态／保持动作候选范围。候选数不代表已审核或可生产数量。逐项来源、精确修订和待处理状态见[机器清单](catalog/inventory/actions-20261028-r1.json)。
