@@ -14,9 +14,9 @@
   },
   "camera": {
     "dir": [
-      0.18,
-      0.12,
-      1
+      0.1,
+      1,
+      0.55
     ],
     "fit": [
       "head",
@@ -75,7 +75,7 @@
   "adaptation": {
     "status": "remote-keyframe-pending",
     "method": "Fixed queue source reused unchanged on armfix-r2; camera made static (drift 0) with original direction/fit.",
-    "cameraChanges": "k 0.45->0.85: source k framed only the torso on this square remote render; match bear-plank-class framing."
+    "cameraChanges": "k 0.45->0.85 (source framed only the torso on a square render); dir [0.18,0.12,1]->[0.1,1,0.55] (a03 tried [0.1,0.5,1], still hid the shins): the low square-on view looked straight down the floor forearm and hid the tucked shins, so the forearm plank read as a straight-arm palm plank. Pose unchanged: elbow y 0.023 m and palm on floor, knees 68 deg."
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
