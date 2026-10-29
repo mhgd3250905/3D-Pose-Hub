@@ -1,0 +1,320 @@
+{
+  "format": "pose-hub-remaining219-remote-index@1",
+  "batch": "batch42",
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "environment": {
+    "host": "Hark sandbox aarch64, 2 cores, 7.9 GiB, no GPU",
+    "browser": "Playwright 1.48.2 chromium-1140",
+    "renderer": "software (ANGLE SwiftShader)",
+    "serial": true
+  },
+  "checks": {
+    "keyframes": "tools/action-completion-v3-r2/remote-keyframes-r1.mjs, 256/320px, 3-6 frames",
+    "rotation": "tools/action-completion-v3-r2/remote-rotation-r1.mjs, 15Hz sequential solve, axial twist of forearm|upperArm, hand|forearm, foot|shin (range>120, step>25, net>150 deg flagged)"
+  },
+  "sampledOnly": true,
+  "fullCycleValidated": false,
+  "userAccepted": false,
+  "releaseEligible": false,
+  "items": [
+    {
+      "stableId": "scapular-C",
+      "status": "pending-review",
+      "spec": "drill-anim/specs/scapular-C.js",
+      "specSha256Lf": "647a87591ea5ed8f2b1141537892e81ae20837ea7ee82510587e4bca2bbc0d60",
+      "recipe": "catalog/production/remaining219-r1/recipes/scapular-C.json",
+      "recipeSha256Lf": "5b8182dc3ce2bd09225fd9673fc318b4af7a6e2de60bb315acf4a47a1040715f",
+      "keyframes": {
+        "attempt": "scapular-C-a01",
+        "times": [
+          1,
+          3,
+          5,
+          7
+        ],
+        "size": 256,
+        "recipeSha256": "5b8182dc3ce2bd09225fd9673fc318b4af7a6e2de60bb315acf4a47a1040715f",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "3dcb832565ac7bfc218538a0d433c0f4503c9ce865da69476fd97f0baffce435",
+          "keyframe-01.png": "cce9e1f2382240bf8c5aa6e85bf775c489db6069b12bbde8c279005095e11d69",
+          "keyframe-02.png": "3dcb832565ac7bfc218538a0d433c0f4503c9ce865da69476fd97f0baffce435",
+          "keyframe-03.png": "cce9e1f2382240bf8c5aa6e85bf775c489db6069b12bbde8c279005095e11d69"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "23f25e7a501053b44ac450f11b6fb15e5e5a262127a83b40fe6b179e6aba3984",
+        "samples": 121,
+        "flagged": [],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 15.6,
+            "maxStepDeg": 4.2,
+            "netDeg": 0.0
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 15.6,
+            "maxStepDeg": 4.2,
+            "netDeg": -0.0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          }
+        },
+        "note": "rotation screen ran on an earlier recipe revision that differs only in camera; twist is camera independent"
+      },
+      "notes": "ring straight-arm support; figure appears standing with feet on the floor and rings at hip height rather than supported above the rings; rings top clipped.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect",
+        "feet on floor vs true ring support: possible pose/prop height error",
+        "camera: ring straps clipped at top"
+      ]
+    },
+    {
+      "stableId": "serratus-A",
+      "status": "remote-keyframe-reviewed",
+      "spec": "drill-anim/specs/serratus-A-r2.js",
+      "specSha256Lf": "12a31027e9b3fae3d4551b32271fc8aa9acdeea8df2c1754ac61a537b51443eb",
+      "recipe": "catalog/production/remaining219-r1/recipes/serratus-A.json",
+      "recipeSha256Lf": "dd867d67b4eeb0da862a1c2f2a009dcc4cf74e3dba2b1c839ffa3899a6ccfab6",
+      "keyframes": {
+        "attempt": "serratus-A-a01",
+        "times": [
+          1,
+          3,
+          5,
+          7
+        ],
+        "size": 256,
+        "recipeSha256": "dd867d67b4eeb0da862a1c2f2a009dcc4cf74e3dba2b1c839ffa3899a6ccfab6",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "d09d965bd1ef36d1e8ec9c5d626c75c6a78aacb60fef0d28f62bc6acfe0d3278",
+          "keyframe-01.png": "9bca1a2932a48bd92f69239cdc6c362c13cfbd0a30503d42b22f726d285a0239",
+          "keyframe-02.png": "d09d965bd1ef36d1e8ec9c5d626c75c6a78aacb60fef0d28f62bc6acfe0d3278",
+          "keyframe-03.png": "9bca1a2932a48bd92f69239cdc6c362c13cfbd0a30503d42b22f726d285a0239"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "c33ae6aa1e2255b2dd4301cf88b7356b4771f207c1263fa6e86f4990c29a040c",
+        "samples": 121,
+        "flagged": [],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 21.3,
+            "maxStepDeg": 8.8,
+            "netDeg": 0.0
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 21.3,
+            "maxStepDeg": 8.8,
+            "netDeg": -0.0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          }
+        },
+        "note": "rotation screen ran on an earlier recipe revision that differs only in camera; twist is camera independent"
+      },
+      "notes": "high-plank scapular protraction on mat; protraction subtle.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect"
+      ]
+    },
+    {
+      "stableId": "serratus-B",
+      "status": "pending-review",
+      "spec": "drill-anim/specs/serratus-B.js",
+      "specSha256Lf": "73b017dc0a64c148e231afa47424371a2a2f4c962f0aae6bac81fed02f7a6a9c",
+      "recipe": "catalog/production/remaining219-r1/recipes/serratus-B.json",
+      "recipeSha256Lf": "ee4333ebac4102b131c02c5eb8dab065e8c5cecd9544635fd523fea772ee353d",
+      "keyframes": {
+        "attempt": "serratus-B-a01",
+        "times": [
+          1,
+          3,
+          5,
+          7
+        ],
+        "size": 256,
+        "recipeSha256": "ee4333ebac4102b131c02c5eb8dab065e8c5cecd9544635fd523fea772ee353d",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "89aaa24d54f2ea3f6787e994b57be02710dc26638d8760b1adf2d60d42b87c01",
+          "keyframe-01.png": "b7275548254d602a4854de7a2a9dd39054361994eef88df2e8c5522ee40e4cbb",
+          "keyframe-02.png": "89aaa24d54f2ea3f6787e994b57be02710dc26638d8760b1adf2d60d42b87c01",
+          "keyframe-03.png": "b7275548254d602a4854de7a2a9dd39054361994eef88df2e8c5522ee40e4cbb"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "b4e589c097e5b3a637ba8995b10a6b72429c1ddf3787694c170f65ce3570f4bb",
+        "samples": 121,
+        "flagged": [],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 32.0,
+            "maxStepDeg": 3.7,
+            "netDeg": 0.0
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 32.0,
+            "maxStepDeg": 3.7,
+            "netDeg": 0.0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          }
+        },
+        "note": "rotation screen ran on an earlier recipe revision that differs only in camera; twist is camera independent"
+      },
+      "notes": "wall slide with foam roller; roller between forearms and wall not visible, forearms appear to touch the wall directly.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect",
+        "foamRoller prop missing/hidden"
+      ]
+    },
+    {
+      "stableId": "serratus-C",
+      "status": "remote-keyframe-reviewed",
+      "spec": "drill-anim/specs/serratus-C.js",
+      "specSha256Lf": "28cad511441e9bdba7edbbcd032e63c022dcd0d6cb49bce0862f001983cb42df",
+      "recipe": "catalog/production/remaining219-r1/recipes/serratus-C.json",
+      "recipeSha256Lf": "c0a9fab518bb70f008b171b0f5711310bb4c64b9e42e17230b5aca1960d3c2be",
+      "keyframes": {
+        "attempt": "serratus-C-a01",
+        "times": [
+          1,
+          3,
+          5,
+          7
+        ],
+        "size": 256,
+        "recipeSha256": "c0a9fab518bb70f008b171b0f5711310bb4c64b9e42e17230b5aca1960d3c2be",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "f79f24f859aa92ce4ee35d4fcbf9364106c15fd0edea9f751b1eeaa6253c42e7",
+          "keyframe-01.png": "6872d86694901addd57fbd9a1ebeae597f334499892137abb2726e0bf0a1406d",
+          "keyframe-02.png": "f79f24f859aa92ce4ee35d4fcbf9364106c15fd0edea9f751b1eeaa6253c42e7",
+          "keyframe-03.png": "6872d86694901addd57fbd9a1ebeae597f334499892137abb2726e0bf0a1406d"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "3806fb2b9c620ad8936542a357ebf7c33c579d610dd69934ff83dc0dc4fcf685",
+        "samples": 121,
+        "flagged": [],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 43.8,
+            "maxStepDeg": 5.0,
+            "netDeg": -0.0
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 43.8,
+            "maxStepDeg": 5.0,
+            "netDeg": 0.0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          }
+        },
+        "note": "rotation screen ran on an earlier recipe revision that differs only in camera; twist is camera independent"
+      },
+      "notes": "ring push-up plus protraction, feet on floor; ring straps clipped at top.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect",
+        "camera: ring straps clipped"
+      ]
+    }
+  ]
+}
