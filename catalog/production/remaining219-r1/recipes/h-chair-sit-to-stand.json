@@ -1,0 +1,86 @@
+{
+  "format": "pose-hub-action-recipe@1",
+  "id": "h-chair-sit-to-stand",
+  "nameZh": "普通椅双脚坐站",
+  "spec": "drill-anim/specs/h-chair-sit-to-stand.js",
+  "specSha256Lf": "32298d1f62af5fa3de00b2c0d737c83a716e568a96b6cb644ac45d13872a3fe7",
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "hands": {
+    "left": "native",
+    "right": "native"
+  },
+  "camera": {
+    "dir": [
+      -1,
+      0.22,
+      0.55
+    ],
+    "fit": [
+      "head",
+      "leftToe",
+      "rightToe",
+      "pelvis",
+      "leftKnee",
+      "rightKnee",
+      "leftPalm",
+      "rightPalm"
+    ],
+    "pad": 0.3,
+    "k": 0.9,
+    "at": 3.3,
+    "drift": 0,
+    "fitTimeline": true,
+    "orbitDegrees": 0,
+    "frontSweepDegrees": 0
+  },
+  "cameraScale": 1.15,
+  "output": {
+    "groundShadow": false,
+    "cameraMotion": false,
+    "wholeCycleContentRect": true,
+    "fps": 30,
+    "exerciseMat": false
+  },
+  "appearance": {
+    "highlight": {
+      "color": "#F05A36",
+      "shade": [
+        0.5,
+        0.42,
+        0.08
+      ],
+      "intensity": [
+        0.75,
+        1
+      ]
+    },
+    "purpose": "Visual cue for target muscle effort, not a physiological measurement",
+    "status": "parameterized-selection-deferred-by-user"
+  },
+  "jointCorrections": [
+    {
+      "profile": "upper-arm-contour-r3",
+      "version": "0.1.0-r3"
+    },
+    {
+      "profile": "ankle-join-r5",
+      "version": "0.1.0-r5"
+    }
+  ],
+  "adaptation": {
+    "status": "remote-keyframe-pending",
+    "method": "Fixed queue source reused unchanged on armfix-r2.",
+    "cameraChanges": "drift->0 (static)"
+  },
+  "source": {
+    "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
+    "selectedSpec": "drill-anim/specs/h-chair-sit-to-stand.js"
+  },
+  "sampledOnly": true,
+  "fullCycleValidated": false,
+  "userAccepted": false,
+  "releaseEligible": false
+}
