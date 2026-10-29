@@ -65,6 +65,9 @@ for (const [file, expected] of Object.entries({
   '_thomas.mjs': '5154ceb449ecaee9aaa8c370f8712bf9778229ac5bf2b77c2d8626dc2b2c6d9a',
   '_thomas-pr106.mjs': 'bb034087440df871aab2854180fcc9680d0b63119feedafeb2312c50e14e36fd',
   '_thomas-mirror.mjs': '478fa7a901007c40c9ed64d6dc0908e622cf60cef4d5f8018229385bc73c847d',
+  '_thomas-armfix-r1.mjs': '468a68bea0a4d99e4088eb25ce045b64e0b5d6530882f84022a5ddb7e8936b77',
+  '_thomas-pr106-armfix-r1.mjs': 'a722cc2ac8347fc8a879cc5c730bdca3452f52e6f71fb808d4b380dfa974e1a7',
+  '_home-armfix-r1.mjs': '669e216877327032b2a568946082015035fa3bc7c3c42e8c9fbd46e0ead7f05c',
 })) assert.equal(textHash(path.join(root, 'specs', file)), expected, `Thomas helper changed: ${file}`);
 // Shared helpers of the HipLab media-fix r2 revisions (PR #121); their importers are hashed above.
 for (const [file, expected] of Object.entries({

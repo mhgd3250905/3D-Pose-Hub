@@ -1,0 +1,266 @@
+{
+  "format": "pose-hub-action-recipe@1",
+  "id": "h-kb-swing",
+  "nameZh": "单臂壶铃摆荡",
+  "spec": "drill-anim/specs/h-kb-swing-r5.js",
+  "specSha256Lf": "5dd45d8211dbabdd91d2288862dcc93dd3eab5837127bf5d9f7c06dca4aa22f5",
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "hands": {
+    "left": "relaxed",
+    "right": "native"
+  },
+  "camera": {
+    "dir": [
+      -1,
+      0.2,
+      0.4
+    ],
+    "fit": [
+      "head",
+      "leftToe",
+      "rightToe",
+      "pelvis",
+      "leftKnee",
+      "rightKnee",
+      "rightPalm",
+      "leftPalm",
+      "shoulderCenter",
+      "leftElbow",
+      "rightElbow"
+    ],
+    "pad": 0.18,
+    "k": 0.9,
+    "drift": 0,
+    "at": 1.4,
+    "fitTimeline": true,
+    "orbitDegrees": 0,
+    "frontSweepDegrees": 0
+  },
+  "cameraScale": 1.15,
+  "output": {
+    "groundShadow": false,
+    "cameraMotion": false,
+    "wholeCycleContentRect": true,
+    "fps": 30,
+    "exerciseMat": false
+  },
+  "adaptation": {
+    "status": "candidate-retargeted-awaiting-preview",
+    "priority": 3,
+    "sourceRuntimeModel": {
+      "profile": "training-human-v3-contact",
+      "version": "0.1.0-r5"
+    },
+    "method": "per-action contact-aware retargeting; no global pose scale",
+    "requiredChanges": [
+      "Do not substitute the accepted dumbbell template for a kettlebell; source native grip and handle offset need a specific fit.",
+      "Rebuild pelvis/feet trajectory around current legs while preserving hinge and swing phases.",
+      "Retain single-right-arm identity and inspect neutral wrist; do not invent a bilateral variant."
+    ],
+    "handAsset": "hands-native-c1r2-symmetric-r1",
+    "handAcceptance": "This action has not been visually inspected with the selected body/hand setup.",
+    "implemented": "Current leg proportions use corrected top height and moderated hike height; original one-hand kettlebell grip geometry retained pending visual inspection.",
+    "rotationPolicy": "Full forearm axial sharing avoids half-angle +/-pi branch flips; actual-render rotation and visible deformation checks remain required.",
+    "visualCorrection": "Use latest fixed native grasp-32mm on right hand and explicit straight 32mm kettlebell adapter; preserve left relaxed pose. Pending rendered grip review."
+  },
+  "source": {
+    "inventory": "catalog/production/remaining-actions-v3-20261028-r1.json",
+    "preparationReview": "tools/action-completion-v3/home-review.json",
+    "originalSpec": "drill-anim/specs/h-kb-swing.js",
+    "dependencies": [
+      {
+        "path": "drill-anim/lib/grip.mjs",
+        "sha256Lf": "084a94b206cae21926fc94ee060048bcdc37adfabeb7295e688af81f56ce8be9"
+      },
+      {
+        "path": "drill-anim/lib/home-anim.mjs",
+        "sha256Lf": "1798c9e55c28b32391b7ef32aa358427b4743ee1959f86ec488a95fe88a05557"
+      },
+      {
+        "path": "drill-anim/lib/ss-geo.mjs",
+        "sha256Lf": "45ca774079e3a85ecc4f924a3220d4baa721f0435e16f6e6e21ffa19e17e8603"
+      },
+      {
+        "path": "drill-anim/specs/h-kb-swing-r3.js",
+        "sha256Lf": "d0c684908586b7fd6ac22c05324bfe8f0a7007d39107beb7ef373e2f3e747b23"
+      },
+      {
+        "path": "drill-anim/specs/h-kb-swing.js",
+        "sha256Lf": "20e90fbb4ba5c04b35c91dc9d656cbf183bb9059fcd83c2478f30607ad151dde"
+      },
+      {
+        "path": "drill-anim/specs/h-kb-swing-r4.js",
+        "sha256Lf": "8f6f787329930ce7ecc7d976c76da45a78aed38c0b73b96c867a9759be3e3e11"
+      },
+      {
+        "path": "drill-anim/specs/_home-armfix-r1.mjs",
+        "sha256Lf": "669e216877327032b2a568946082015035fa3bc7c3c42e8c9fbd46e0ead7f05c"
+      },
+      {
+        "path": "drill-anim/specs/h-kb-swing-r5.js",
+        "sha256Lf": "5dd45d8211dbabdd91d2288862dcc93dd3eab5837127bf5d9f7c06dca4aa22f5"
+      }
+    ],
+    "priorRecipeSpec": "h-kb-swing-r3.js"
+  },
+  "reviewPlan": {
+    "status": "source-ready-awaiting-preview",
+    "durationSeconds": 8,
+    "previewTimesSeconds": [
+      0,
+      0.1,
+      0.4,
+      0.8,
+      1.4,
+      2,
+      3,
+      4,
+      4.8,
+      5.4,
+      6,
+      7.8,
+      8
+    ],
+    "coverTimeSeconds": 1.4,
+    "primaryView": "Preserve the source working-right-side view to show hip hinge and full kettlebell arc.",
+    "additionalViews": [
+      "opposite",
+      "side"
+    ],
+    "checks": [
+      "Right hand fits the kettlebell handle throughout backswing and chest-height finish.",
+      "Bell and forearm clear thighs/torso through the full cycle.",
+      "Fixed side-front view shows hip hinge and one-arm pendulum path.",
+      "Inspect actual wrist and ankle quaternion paths at every frame, not only endpoint directions: shortest consecutive rotation, total turn, hand/sole facing, left/right consistency and loop seam."
+    ],
+    "fullCycleRequired": true,
+    "contentBounds": "union of visible body and necessary props over all output frames; one rectangle for the whole clip",
+    "groundShadow": false,
+    "groundProps": "Keep necessary support mat/wall/cushion as explicit props; exclude shadow/stage helpers.",
+    "rotationEvidence": {
+      "status": "descriptor-only-not-joint-acceptance",
+      "sampleRate": 30,
+      "samples": 241,
+      "channels": {
+        "hands.left.finger": {
+          "frame": "chest",
+          "maxStepDegrees": 2.461921190466822,
+          "endpointDegrees": 0,
+          "zeroVectorFrames": [],
+          "stepsOver30Degrees": []
+        },
+        "hands.left.normal": {
+          "frame": "chest",
+          "maxStepDegrees": 0,
+          "endpointDegrees": 0,
+          "zeroVectorFrames": [],
+          "stepsOver30Degrees": []
+        },
+        "feet.left.heading": {
+          "minDegrees": 10,
+          "maxDegrees": 10,
+          "maxRawStepDegrees": 0,
+          "endpointRawDifference": 0,
+          "rawStepsOver90Degrees": []
+        },
+        "feet.left.pitch": {
+          "minDegrees": 0,
+          "maxDegrees": 0,
+          "maxRawStepDegrees": 0,
+          "endpointRawDifference": 0,
+          "rawStepsOver90Degrees": []
+        },
+        "hands.right.finger": {
+          "frame": "chest",
+          "maxStepDegrees": 2.6214737473191394,
+          "endpointDegrees": 0,
+          "zeroVectorFrames": [],
+          "stepsOver30Degrees": []
+        },
+        "hands.right.normal": {
+          "frame": "chest",
+          "maxStepDegrees": 3.0544300016961126,
+          "endpointDegrees": 1.2074182697257333e-06,
+          "zeroVectorFrames": [],
+          "stepsOver30Degrees": []
+        },
+        "feet.right.heading": {
+          "minDegrees": -10,
+          "maxDegrees": -10,
+          "maxRawStepDegrees": 0,
+          "endpointRawDifference": 0,
+          "rawStepsOver90Degrees": []
+        },
+        "feet.right.pitch": {
+          "minDegrees": 0,
+          "maxDegrees": 0,
+          "maxRawStepDegrees": 0,
+          "endpointRawDifference": 0,
+          "rawStepsOver90Degrees": []
+        }
+      },
+      "initialRotationLists": [
+        {
+          "path": "pose.hips.rot",
+          "value": [
+            [
+              [
+                1,
+                0,
+                0
+              ],
+              62
+            ]
+          ]
+        },
+        {
+          "path": "pose.chest.waist",
+          "value": [
+            [
+              [
+                1,
+                0,
+                0
+              ],
+              0
+            ]
+          ]
+        }
+      ],
+      "limits": [
+        "This checks authored descriptor vectors and raw foot angles. It does not measure actual wrist/ankle bone quaternions, IK pole branch changes or skinned twists.",
+        "Large raw Euler angles or identical endpoint orientations alone do not establish a defect. Root GPU capture must inspect actual continuous rotations."
+      ]
+    },
+    "phase": "low-resolution-template-preview",
+    "fullResolutionProduction": "deferred-until-per-action-user-acceptance",
+    "previewGroup": "later-group"
+  },
+  "risks": [
+    "Original gripHand and kettlebell attachment were calibrated to the old hand; native grip, bell/leg clearance and handle contact remain pending.",
+    "Original single-arm motion is preserved; no mirror or two-hand variant is generated.",
+    "Current body retains v3 legs/trunk; changing the runtime label alone does not retarget old absolute coordinates.",
+    "Support, relaxed, assist and non-dumbbell native grips require their own rendered checks; fixed dumbbell acceptance does not apply."
+  ],
+  "reviewed": false,
+  "releaseEligible": false,
+  "appearance": {
+    "highlight": {
+      "color": "#F05A36",
+      "shade": [
+        0.5,
+        0.42,
+        0.08
+      ],
+      "intensity": [
+        0.75,
+        1
+      ]
+    },
+    "purpose": "Visual cue for target muscle effort, not a physiological measurement",
+    "status": "parameterized-selection-deferred-by-user"
+  }
+}

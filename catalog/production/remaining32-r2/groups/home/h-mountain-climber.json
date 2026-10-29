@@ -1,0 +1,242 @@
+{
+  "format": "pose-hub-action-recipe@1",
+  "id": "h-mountain-climber",
+  "nameZh": "慢速登山跑",
+  "spec": "drill-anim/specs/h-mountain-climber-r6.js",
+  "specSha256Lf": "ae36457a8d057191d9570117d52d03fc6af7a8aa7cff8ceab8634f16cd81b702",
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "hands": {
+    "left": "support",
+    "right": "support"
+  },
+  "camera": {
+    "dir": [
+      -0.18,
+      0.25,
+      1
+    ],
+    "fit": [
+      "head",
+      "leftPalm",
+      "rightPalm",
+      "leftToe",
+      "rightToe",
+      "pelvis",
+      "leftKnee",
+      "rightKnee",
+      "shoulderCenter",
+      "leftElbow",
+      "rightElbow"
+    ],
+    "pad": 0.14,
+    "k": 0.65,
+    "drift": 0,
+    "at": 1.9,
+    "fitTimeline": true,
+    "orbitDegrees": 0,
+    "frontSweepDegrees": 0
+  },
+  "cameraScale": 1.8,
+  "output": {
+    "groundShadow": false,
+    "cameraMotion": false,
+    "wholeCycleContentRect": true,
+    "fps": 30,
+    "exerciseMat": false
+  },
+  "adaptation": {
+    "status": "candidate-retargeted-awaiting-preview",
+    "priority": 2,
+    "sourceRuntimeModel": {
+      "profile": "training-human-v3-contact",
+      "version": "0.1.0-r5"
+    },
+    "method": "per-action contact-aware retargeting; no global pose scale",
+    "requiredChanges": [
+      "Keep authored support mode and phase weighting; use current reach lengths for arms and legs.",
+      "Old pelvis seed and explicit joint height constraints require recalibration with current torso/legs.",
+      "Check foot lifting and plantar contact on both transitions, not only symmetric endpoints."
+    ],
+    "handAsset": "hands-native-c1r2-symmetric-r1",
+    "handAcceptance": "This action has not been visually inspected with the selected body/hand setup.",
+    "implemented": "Extended plank foot span by 60 mm for current legs, retained alternating drive and physical palm/toe anchors. GPU attempt03: primary frame cropped head/toes; camera distance increased. r5 leaves knee reach margin at174deg and reduces conflicting straight-line soft weight; originalQA preserved.",
+    "rotationPolicy": "Full forearm axial sharing avoids half-angle +/-pi branch flips; actual-render rotation and visible deformation checks remain required.",
+    "visualCorrection": "Constrain only planted leg at172 degrees with reach weight20; release moving leg reach immediately to avoid fighting its knee drive. Remove legAlign conflict. Increase cameraScale1.8."
+  },
+  "source": {
+    "inventory": "catalog/production/remaining-actions-v3-20261028-r1.json",
+    "preparationReview": "tools/action-completion-v3/home-review.json",
+    "originalSpec": "drill-anim/specs/h-mountain-climber.js",
+    "dependencies": [
+      {
+        "path": "drill-anim/lib/home-anim.mjs",
+        "sha256Lf": "1798c9e55c28b32391b7ef32aa358427b4743ee1959f86ec488a95fe88a05557"
+      },
+      {
+        "path": "drill-anim/lib/ss-geo.mjs",
+        "sha256Lf": "45ca774079e3a85ecc4f924a3220d4baa721f0435e16f6e6e21ffa19e17e8603"
+      },
+      {
+        "path": "drill-anim/specs/h-mountain-climber-r3.js",
+        "sha256Lf": "e5559c828b71db3cb9a80432d586e96fb0a1df703c0dfc2b674cd53aaaa87659"
+      },
+      {
+        "path": "drill-anim/specs/h-mountain-climber.js",
+        "sha256Lf": "dca08d3c817624ce616586bc376e43d89dc583233c4ef8970bea4a5cff2f1a0d"
+      },
+      {
+        "path": "drill-anim/specs/h-mountain-climber-r4.js",
+        "sha256Lf": "253771fddf7da8fb5417aca62ffcf4baf93875d3dcbae9b87f36d697f3066638"
+      },
+      {
+        "path": "drill-anim/specs/_home-armfix-r1.mjs",
+        "sha256Lf": "669e216877327032b2a568946082015035fa3bc7c3c42e8c9fbd46e0ead7f05c"
+      },
+      {
+        "path": "drill-anim/specs/h-mountain-climber-r5.js",
+        "sha256Lf": "02cd09f867a50d43cca4a3d82cc6b7cf973be258f37c3e7dd7b50b616c56d431"
+      },
+      {
+        "path": "drill-anim/specs/h-mountain-climber-r6.js",
+        "sha256Lf": "ae36457a8d057191d9570117d52d03fc6af7a8aa7cff8ceab8634f16cd81b702"
+      }
+    ],
+    "priorRecipeSpec": "h-mountain-climber-r3.js"
+  },
+  "reviewPlan": {
+    "status": "source-ready-awaiting-preview",
+    "durationSeconds": 8,
+    "previewTimesSeconds": [
+      0,
+      0.2,
+      0.5,
+      1,
+      1.5,
+      1.9,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7.8,
+      8
+    ],
+    "coverTimeSeconds": 0.2,
+    "primaryView": "Near-lateral view exposes the incoming knee and support leg without a head-end perspective.",
+    "additionalViews": [
+      "opposite",
+      "side"
+    ],
+    "checks": [
+      "Both palms remain planted while feet alternate.",
+      "Driving knee clears the trunk and opposite leg.",
+      "Side view shows hips, shoulder line, foot lift and left/right switch without camera movement.",
+      "Inspect actual wrist and ankle quaternion paths at every frame, not only endpoint directions: shortest consecutive rotation, total turn, hand/sole facing, left/right consistency and loop seam."
+    ],
+    "fullCycleRequired": true,
+    "contentBounds": "union of visible body and necessary props over all output frames; one rectangle for the whole clip",
+    "groundShadow": false,
+    "groundProps": "Keep necessary support mat/wall/cushion as explicit props; exclude shadow/stage helpers.",
+    "rotationEvidence": {
+      "status": "descriptor-only-not-joint-acceptance",
+      "sampleRate": 30,
+      "samples": 241,
+      "channels": {
+        "hands.left.finger": {
+          "frame": "floor",
+          "maxStepDegrees": 0,
+          "endpointDegrees": 0,
+          "zeroVectorFrames": [],
+          "stepsOver30Degrees": []
+        },
+        "feet.left.heading": {
+          "minDegrees": -90,
+          "maxDegrees": -90,
+          "maxRawStepDegrees": 0,
+          "endpointRawDifference": 0,
+          "rawStepsOver90Degrees": []
+        },
+        "feet.left.pitch": {
+          "minDegrees": 24,
+          "maxDegrees": 64,
+          "maxRawStepDegrees": 1.607606786427155,
+          "endpointRawDifference": 0,
+          "rawStepsOver90Degrees": []
+        },
+        "hands.right.finger": {
+          "frame": "floor",
+          "maxStepDegrees": 0,
+          "endpointDegrees": 0,
+          "zeroVectorFrames": [],
+          "stepsOver30Degrees": []
+        },
+        "feet.right.heading": {
+          "minDegrees": -90,
+          "maxDegrees": -90,
+          "maxRawStepDegrees": 0,
+          "endpointRawDifference": 0,
+          "rawStepsOver90Degrees": []
+        },
+        "feet.right.pitch": {
+          "minDegrees": 24,
+          "maxDegrees": 64,
+          "maxRawStepDegrees": 1.607606786427155,
+          "endpointRawDifference": 0,
+          "rawStepsOver90Degrees": []
+        }
+      },
+      "initialRotationLists": [
+        {
+          "path": "pose.hips.rot",
+          "value": [
+            [
+              [
+                0,
+                0,
+                1
+              ],
+              -17
+            ]
+          ]
+        }
+      ],
+      "limits": [
+        "This checks authored descriptor vectors and raw foot angles. It does not measure actual wrist/ankle bone quaternions, IK pole branch changes or skinned twists.",
+        "Large raw Euler angles or identical endpoint orientations alone do not establish a defect. Root GPU capture must inspect actual continuous rotations."
+      ]
+    },
+    "phase": "low-resolution-template-preview",
+    "fullResolutionProduction": "deferred-until-per-action-user-acceptance",
+    "previewGroup": "later-group"
+  },
+  "risks": [
+    "Historical cardio-versus-slow-core classification remains open; no rename or dose claim is made.",
+    "Hip solver, foot lift and side-switch support require GPU checks.",
+    "Current body retains v3 legs/trunk; changing the runtime label alone does not retarget old absolute coordinates.",
+    "Support, relaxed, assist and non-dumbbell native grips require their own rendered checks; fixed dumbbell acceptance does not apply."
+  ],
+  "reviewed": false,
+  "releaseEligible": false,
+  "appearance": {
+    "highlight": {
+      "color": "#F05A36",
+      "shade": [
+        0.5,
+        0.42,
+        0.08
+      ],
+      "intensity": [
+        0.75,
+        1
+      ]
+    },
+    "purpose": "Visual cue for target muscle effort, not a physiological measurement",
+    "status": "parameterized-selection-deferred-by-user"
+  },
+  "diagnostics": {
+    "measureFootSurface": true
+  }
+}

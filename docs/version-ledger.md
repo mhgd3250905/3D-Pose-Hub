@@ -1,5 +1,16 @@
 # Pose-Hub 版本对齐台账
 
+## 2026-10-29 32动作与关节优化本地版本检查点
+
+版本 `remaining32-template-optimizations-20261029-r1` 汇总人体/手型、实际腕踝旋转、脚踝r5、肘部DQS r1、大臂r3、固定镜头及高亮参数。32份配方中2份动作模板已确认、30份为候选；熊式大臂另作局部确认。当前采用路径、证据哈希和保留问题见[版本快照](production-snapshots/remaining32-template-optimizations-20261029-r1.md)，机器索引位于 `catalog/production/versions/`。本地Git提交与源码包的精确回执在 `F:/PoseHub-v2-production/version-snapshots/remaining32-template-optimizations-20261029-r1/delivery-receipt.json`；未推进主线合并、远端推送或素材发布。
+
+
+## 2026-10-29 大臂连续轮廓 r3 局部验收收尾
+
+用户确认当前 `upper-arm-contour-r3 / 0.1.0-r3` 的大臂外观可收尾，绑定熊式 `attempt11`。袖口下方轻微表面波纹保留，不再扩展修整。本轮确认限定于已展示的大臂修订，不自动批准其他动作、全身模型或正式成片。此前候选报告与冻结版本保留；全局生产默认及媒体发布版本不变。
+
+[收尾说明](bear-upper-arm-continuity-20261029.md)及 `catalog/production/remaining32-r2/bear-upper-arm-continuity-approval-20261029.json` 固定范围、残留说明和配方/组件/媒体哈希。验收页同步局部通过状态；本次为本地保存，未提交、推送或发布。
+
 ## 2026-10-28 动作素材库盘点与来源收纳
 
 在 `main@56a479df170ec53d124ebc12fae7e77b7928a64a` 上另建 `codex/action-inventory-20261028`，按用户要求盘点原219包之外的旧源码和未集成新动作，保存[逐项清单](action-inventory-20261028-r1.md)与[机器索引](../catalog/inventory/actions-20261028-r1.json)。本节记录本地盘点成果，不表示待审动作已合入 main、选入新包或获内容批准。

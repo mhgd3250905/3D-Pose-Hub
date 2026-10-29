@@ -1,0 +1,13 @@
+# Upper-arm contour r3 candidate
+
+Complete replacement for r1/r2; never stack revisions. The r1 common-ring restraint remains unchanged. The r2 localized bell is replaced with a continuous measured-envelope field across approximately 60–155 mm from the shoulder, without extending to the 163.87 mm shared ring.
+
+Calibration uses the mean left/right **positive A-side** contour of actual-render r1 sections from `upper-arm-dimensions-r1/dimensions.json`, not a presumed circular arm. The reference connects the first reliable 83.947 mm section (with a modest 1 mm proximal allowance) to the measured 148.143 mm shoulder-side peak. Positive deficits form a broad 98–128 mm compensation region. PCHIP interpolation gives a C1 field without oscillation or another isolated ball. Boundary derivatives are zero. The field is shared by both sides and fixed in neutral bone geometry; it is not recomputed per action or frame.
+
+Direction is the neutral projection toward the opposite shoulder, transported through existing skinning. A smooth directional mask leaves the opposite side unchanged. UpperArm weights <=0.85 are protected and a smooth 0.85–0.95 ramp protects the shoulder transition. Maximum additional displacement defaults to 6 mm and is configurable only in 0–6 mm. This is a geometric response to the user's image; no physiological muscle segmentation or claim of anatomical correctness is made.
+
+Real neutral CPU evidence: `F:/PoseHub-v2-production/elbow-review-20261029/upper-arm-contour-cpu-r3.json`. Added continuity affects 409 left / 407 right vertices, maximum 5.77097 / 5.77071 mm. Total displacement from original remains <=5.86715 mm. All 56 shared-ring positions are identical to r1; minimum original/candidate face-normal dot is 0.86538, with no collapsed or reversed face. The existing old-bulge restraint remains beyond the new fill region.
+
+Six tests cover bilateral bounded geometry, protected low-weight/out-of-region vertices, source-seam rejection, rigid-transform equivariance, zero-fill equivalence to r1, shared-ring invariance, PCHIP continuity/bounds and the broad plateau. CPU evidence does not substitute for a matched-camera GPU preview. `window.__upperArmContourR3.measure()` checks 56 world-space seam pairs and throws above 0.01 mm. `detach()` restores buffers. Module and two seam-source JSON files are pinned in `drill-anim/models/upper-arm-contour-r3/manifest.json`; no common pipeline or previous revision is changed here.
+
+Launch through the existing diagnostic with `--adapter tools/action-completion-v3-r2/upper-arm-contour-r3.mjs` on a fresh page whose recipe omits r1/r2. Status: unreviewed, user pending, not release eligible.

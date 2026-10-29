@@ -1,0 +1,975 @@
+{
+  "format": "pose-hub-v3-gap-review@1",
+  "createdOn": "2026-10-28",
+  "scope": "PR23 eight new stable action families; separate preserved original sources and r2 runtime candidates. CPU/static only.",
+  "runtimeModel": {
+    "profile": "training-human-v3-contact",
+    "version": "0.1.0-r5",
+    "baseProfile": "training-human-v3-completed",
+    "baseVersion": "1.0.0-r7",
+    "handDir": "hands-native-c1r2",
+    "handScale": 1.18
+  },
+  "deliveryIntent": {
+    "groundShadow": false,
+    "contentRectangle": "one fixed full-cycle union of actual visible body and necessary props; exported per action",
+    "note": "Ground-shadow removal is an exporter/render-pass policy. Original shadow metadata remains unchanged in sources and wrappers."
+  },
+  "approval": {
+    "reviewed": false,
+    "releaseEligible": false,
+    "motionAndCameraAcceptance": "pending actual r7 previews and full-loop checks",
+    "trainingSemantics": "Keep PR23 proposal status and nulls; this pass adds no dose/taxonomy approval."
+  },
+  "cameraSchemaEvidence": {
+    "path": "drill-anim/page/engine.js",
+    "functions": [
+      "E.setupCamera",
+      "E.frame"
+    ],
+    "fixedFields": {
+      "drift": 0,
+      "orbitDegrees": 0,
+      "frontSweepDegrees": 0,
+      "fitTimeline": true
+    },
+    "fitTimelineScope": "60 timeline samples plus keyFrames and camera.at, applied once to establish cam0; no per-frame auto-fit"
+  },
+  "verification": {
+    "performed": [
+      "Exact pinned Git source-byte comparison for all 8 originals.",
+      "Imported all 8 source and revision modules without launching a browser.",
+      "Verified source timeline/pose/props/QA/highlight/frame/keyFrames references and fps/size are preserved.",
+      "Verified numeric track samples finite, fixed-camera fields and required static model descriptors."
+    ],
+    "notPerformed": [
+      "Direct r5 loader checkSpec could not import because the new worktree has no ignored drill-anim/config.json; no machine configuration was created.",
+      "No GPU rendering, image review, mesh-contact/reach measurement, media generation or release validation."
+    ],
+    "registration": "Parent thread owns home-pr-candidates, verify and generated catalog registration."
+  },
+  "actions": [
+    {
+      "id": "h-band-biceps-curl",
+      "view": "Front three-quarter; both elbows, palms and band foot anchors visible.",
+      "nameZh": "站姿踩带弹力带弯举",
+      "source": {
+        "ref": "origin/drill/gap-batch1-20261026",
+        "commit": "c98d36a59059364964dba0520b078104f77e49fa",
+        "pullRequest": 23,
+        "path": "drill-anim/specs/h-band-biceps-curl.js",
+        "rawBytes": 4545,
+        "rawSha256": "89abe3d2060f76dd99ba3d8184ff4ce7e248a91bd53d7d5cec804c1648563be8",
+        "lfSha256": "89abe3d2060f76dd99ba3d8184ff4ce7e248a91bd53d7d5cec804c1648563be8"
+      },
+      "revision": {
+        "id": "h-band-biceps-curl-r2",
+        "path": "drill-anim/specs/h-band-biceps-curl-r2.js",
+        "rawBytes": 1046,
+        "rawSha256": "aa544ea19af48caaf68f94bc67721727ef9f21e3d699ab27e24eba588b453b3e",
+        "lfSha256": "aa544ea19af48caaf68f94bc67721727ef9f21e3d699ab27e24eba588b453b3e",
+        "reviewed": false,
+        "releaseEligible": false
+      },
+      "status": "prepared-pending-gpu",
+      "changes": [
+        "Preserve original spec bytes in a separate source file.",
+        "Create a separate r2 wrapper for the explicit r7/r5 runtime; keep original motion/timeline/props/QA/highlight/frame objects.",
+        "Set nativeHands 1.0.0-r3 descriptor and base torso/limbs/hands/realistic; runtime adapter must actually install contact-r5 over r7 with c1r2 at handScale 1.18.",
+        "Use fixed camera with drift/orbit/front-sweep disabled and whole-timeline joint fitting; include bilateral knees/ankles/elbows/palms in fit seeds."
+      ],
+      "camera": {
+        "source": {
+          "dir": [
+            0.75,
+            0.15,
+            1
+          ],
+          "fit": [
+            "head",
+            "leftToe",
+            "rightToe",
+            "pelvis",
+            "leftPalm",
+            "rightPalm",
+            "leftElbow",
+            "rightElbow"
+          ],
+          "pad": 0.14,
+          "k": 0.85,
+          "drift": 0,
+          "at": 2,
+          "fitTimeline": true
+        },
+        "candidate": {
+          "dir": [
+            0.75,
+            0.15,
+            1
+          ],
+          "fit": [
+            "head",
+            "leftToe",
+            "rightToe",
+            "pelvis",
+            "leftPalm",
+            "rightPalm",
+            "leftElbow",
+            "rightElbow",
+            "leftAnkle",
+            "rightAnkle",
+            "leftKnee",
+            "rightKnee"
+          ],
+          "pad": 0.14,
+          "k": 0.85,
+          "drift": 0,
+          "at": 2,
+          "fitTimeline": true,
+          "orbitDegrees": 0,
+          "frontSweepDegrees": 0
+        },
+        "automaticCameraMotion": false,
+        "actualVisualReview": "pending",
+        "note": "Engine fitTimeline samples joint bounds; it does not prove full visible mesh/equipment bounds. Pixel content-rectangle verification belongs to the render/export stage."
+      },
+      "preserved": {
+        "timelineReference": true,
+        "poseReference": true,
+        "propsReference": true,
+        "qaReference": true,
+        "highlightReference": true,
+        "frameReference": true,
+        "keyFramesReference": true,
+        "fps": 30,
+        "durationSeconds": 8
+      },
+      "cpuChecks": {
+        "sourceRawBytesEqualPinnedGitObject": "pass",
+        "sourceAndRevisionModuleImports": "pass",
+        "sourceMotionTimingPropsAndQaUnchanged": "pass",
+        "finiteNumericTimelineSamples": "pass",
+        "fixedCameraFields": "pass",
+        "staticRuntimeDescriptor": "pass",
+        "actualLoaderCheckSpec": "pending-missing-ignored-config",
+        "gpuFramesRendered": 0
+      },
+      "historicalIssueEvidence": [],
+      "pendingGpuChecks": [
+        "Inspect actual c1r2 grip against band attachment; legacy grip offsets are retained as unverified inputs.",
+        "Verify no body/band clipping across both curl cycles and fixed whole-cycle content bounds."
+      ]
+    },
+    {
+      "id": "h-db-reverse-curl",
+      "view": "Front three-quarter; overhand grip and bilateral curl visible.",
+      "nameZh": "站姿双哑铃反握弯举",
+      "source": {
+        "ref": "origin/drill/gap-batch1-20261026",
+        "commit": "c98d36a59059364964dba0520b078104f77e49fa",
+        "pullRequest": 23,
+        "path": "drill-anim/specs/h-db-reverse-curl.js",
+        "rawBytes": 4600,
+        "rawSha256": "5cd9d403282741640f8c9b30e15eacd6b358e3382d90037a05edf80d48aae4e9",
+        "lfSha256": "5cd9d403282741640f8c9b30e15eacd6b358e3382d90037a05edf80d48aae4e9"
+      },
+      "revision": {
+        "id": "h-db-reverse-curl-r2",
+        "path": "drill-anim/specs/h-db-reverse-curl-r2.js",
+        "rawBytes": 1043,
+        "rawSha256": "4a79ebe28973c5c45b0dd7c7dca185f64d52ced4ee069bd1d52c8cc2661f4ef8",
+        "lfSha256": "4a79ebe28973c5c45b0dd7c7dca185f64d52ced4ee069bd1d52c8cc2661f4ef8",
+        "reviewed": false,
+        "releaseEligible": false
+      },
+      "status": "prepared-pending-gpu",
+      "changes": [
+        "Preserve original spec bytes in a separate source file.",
+        "Create a separate r2 wrapper for the explicit r7/r5 runtime; keep original motion/timeline/props/QA/highlight/frame objects.",
+        "Set nativeHands 1.0.0-r3 descriptor and base torso/limbs/hands/realistic; runtime adapter must actually install contact-r5 over r7 with c1r2 at handScale 1.18.",
+        "Use fixed camera with drift/orbit/front-sweep disabled and whole-timeline joint fitting; include bilateral knees/ankles/elbows/palms in fit seeds."
+      ],
+      "camera": {
+        "source": {
+          "dir": [
+            0.75,
+            0.15,
+            1
+          ],
+          "fit": [
+            "head",
+            "leftToe",
+            "rightToe",
+            "pelvis",
+            "leftPalm",
+            "rightPalm",
+            "leftElbow",
+            "rightElbow"
+          ],
+          "pad": 0.14,
+          "k": 0.85,
+          "drift": 0,
+          "at": 2,
+          "fitTimeline": true
+        },
+        "candidate": {
+          "dir": [
+            0.75,
+            0.15,
+            1
+          ],
+          "fit": [
+            "head",
+            "leftToe",
+            "rightToe",
+            "pelvis",
+            "leftPalm",
+            "rightPalm",
+            "leftElbow",
+            "rightElbow",
+            "leftAnkle",
+            "rightAnkle",
+            "leftKnee",
+            "rightKnee"
+          ],
+          "pad": 0.14,
+          "k": 0.85,
+          "drift": 0,
+          "at": 2,
+          "fitTimeline": true,
+          "orbitDegrees": 0,
+          "frontSweepDegrees": 0
+        },
+        "automaticCameraMotion": false,
+        "actualVisualReview": "pending",
+        "note": "Engine fitTimeline samples joint bounds; it does not prove full visible mesh/equipment bounds. Pixel content-rectangle verification belongs to the render/export stage."
+      },
+      "preserved": {
+        "timelineReference": true,
+        "poseReference": true,
+        "propsReference": true,
+        "qaReference": true,
+        "highlightReference": true,
+        "frameReference": true,
+        "keyFramesReference": true,
+        "fps": 30,
+        "durationSeconds": 8
+      },
+      "cpuChecks": {
+        "sourceRawBytesEqualPinnedGitObject": "pass",
+        "sourceAndRevisionModuleImports": "pass",
+        "sourceMotionTimingPropsAndQaUnchanged": "pass",
+        "finiteNumericTimelineSamples": "pass",
+        "fixedCameraFields": "pass",
+        "staticRuntimeDescriptor": "pass",
+        "actualLoaderCheckSpec": "pending-missing-ignored-config",
+        "gpuFramesRendered": 0
+      },
+      "historicalIssueEvidence": [],
+      "pendingGpuChecks": [
+        "Inspect c1r2 overhand grip, wrist orientation and dumbbell clearance at thighs across the full loop.",
+        "Confirm no model-dependent elbow/reach warnings or equipment clipping."
+      ]
+    },
+    {
+      "id": "h-db-zottman-curl",
+      "view": "Front three-quarter; wrist turnover at top and bottom visible.",
+      "nameZh": "站姿双哑铃佐特曼弯举",
+      "source": {
+        "ref": "origin/drill/gap-batch1-20261026",
+        "commit": "c98d36a59059364964dba0520b078104f77e49fa",
+        "pullRequest": 23,
+        "path": "drill-anim/specs/h-db-zottman-curl.js",
+        "rawBytes": 5055,
+        "rawSha256": "5ae1057b3bb3a34a2c3a38de0ca046ccfc384def09b3178c1ef7c0c02de9624b",
+        "lfSha256": "5ae1057b3bb3a34a2c3a38de0ca046ccfc384def09b3178c1ef7c0c02de9624b"
+      },
+      "revision": {
+        "id": "h-db-zottman-curl-r2",
+        "path": "drill-anim/specs/h-db-zottman-curl-r2.js",
+        "rawBytes": 1043,
+        "rawSha256": "3b276a52792ca61415ff0c850f33101da7a95ea7762a0f50b1947c22ed593c8e",
+        "lfSha256": "3b276a52792ca61415ff0c850f33101da7a95ea7762a0f50b1947c22ed593c8e",
+        "reviewed": false,
+        "releaseEligible": false
+      },
+      "status": "prepared-pending-gpu",
+      "changes": [
+        "Preserve original spec bytes in a separate source file.",
+        "Create a separate r2 wrapper for the explicit r7/r5 runtime; keep original motion/timeline/props/QA/highlight/frame objects.",
+        "Set nativeHands 1.0.0-r3 descriptor and base torso/limbs/hands/realistic; runtime adapter must actually install contact-r5 over r7 with c1r2 at handScale 1.18.",
+        "Use fixed camera with drift/orbit/front-sweep disabled and whole-timeline joint fitting; include bilateral knees/ankles/elbows/palms in fit seeds."
+      ],
+      "camera": {
+        "source": {
+          "dir": [
+            0.75,
+            0.15,
+            1
+          ],
+          "fit": [
+            "head",
+            "leftToe",
+            "rightToe",
+            "pelvis",
+            "leftPalm",
+            "rightPalm",
+            "leftElbow",
+            "rightElbow"
+          ],
+          "pad": 0.14,
+          "k": 0.85,
+          "drift": 0,
+          "at": 2,
+          "fitTimeline": true
+        },
+        "candidate": {
+          "dir": [
+            0.75,
+            0.15,
+            1
+          ],
+          "fit": [
+            "head",
+            "leftToe",
+            "rightToe",
+            "pelvis",
+            "leftPalm",
+            "rightPalm",
+            "leftElbow",
+            "rightElbow",
+            "leftAnkle",
+            "rightAnkle",
+            "leftKnee",
+            "rightKnee"
+          ],
+          "pad": 0.14,
+          "k": 0.85,
+          "drift": 0,
+          "at": 2,
+          "fitTimeline": true,
+          "orbitDegrees": 0,
+          "frontSweepDegrees": 0
+        },
+        "automaticCameraMotion": false,
+        "actualVisualReview": "pending",
+        "note": "Engine fitTimeline samples joint bounds; it does not prove full visible mesh/equipment bounds. Pixel content-rectangle verification belongs to the render/export stage."
+      },
+      "preserved": {
+        "timelineReference": true,
+        "poseReference": true,
+        "propsReference": true,
+        "qaReference": true,
+        "highlightReference": true,
+        "frameReference": true,
+        "keyFramesReference": true,
+        "fps": 30,
+        "durationSeconds": 8
+      },
+      "cpuChecks": {
+        "sourceRawBytesEqualPinnedGitObject": "pass",
+        "sourceAndRevisionModuleImports": "pass",
+        "sourceMotionTimingPropsAndQaUnchanged": "pass",
+        "finiteNumericTimelineSamples": "pass",
+        "fixedCameraFields": "pass",
+        "staticRuntimeDescriptor": "pass",
+        "actualLoaderCheckSpec": "pending-missing-ignored-config",
+        "gpuFramesRendered": 0
+      },
+      "historicalIssueEvidence": [],
+      "pendingGpuChecks": [
+        "Inspect actual supination/pronation and native-hand dumbbell attachment at top and bottom transitions.",
+        "Verify timing and wrap continuity without simplifying the original wrist-turn tracks."
+      ]
+    },
+    {
+      "id": "h-db-overhead-shrug",
+      "view": "Rear three-quarter; shoulder-girdle lift and both overhead dumbbells visible.",
+      "nameZh": "双哑铃过头耸肩",
+      "source": {
+        "ref": "origin/drill/gap-batch1-20261026",
+        "commit": "c98d36a59059364964dba0520b078104f77e49fa",
+        "pullRequest": 23,
+        "path": "drill-anim/specs/h-db-overhead-shrug.js",
+        "rawBytes": 5331,
+        "rawSha256": "9c853973e85e0fdda4e94c0a81610d779e60bce3d2d1deeeac241c8967e97557",
+        "lfSha256": "9c853973e85e0fdda4e94c0a81610d779e60bce3d2d1deeeac241c8967e97557"
+      },
+      "revision": {
+        "id": "h-db-overhead-shrug-r2",
+        "path": "drill-anim/specs/h-db-overhead-shrug-r2.js",
+        "rawBytes": 1049,
+        "rawSha256": "3cda342440154dc8f8d33818a0ffed064629add9bc61d3bbf21e9c8db1f49138",
+        "lfSha256": "3cda342440154dc8f8d33818a0ffed064629add9bc61d3bbf21e9c8db1f49138",
+        "reviewed": false,
+        "releaseEligible": false
+      },
+      "status": "prepared-pending-gpu",
+      "changes": [
+        "Preserve original spec bytes in a separate source file.",
+        "Create a separate r2 wrapper for the explicit r7/r5 runtime; keep original motion/timeline/props/QA/highlight/frame objects.",
+        "Set nativeHands 1.0.0-r3 descriptor and base torso/limbs/hands/realistic; runtime adapter must actually install contact-r5 over r7 with c1r2 at handScale 1.18.",
+        "Use fixed camera with drift/orbit/front-sweep disabled and whole-timeline joint fitting; include bilateral knees/ankles/elbows/palms in fit seeds."
+      ],
+      "camera": {
+        "source": {
+          "dir": [
+            0.55,
+            0.12,
+            -1
+          ],
+          "fit": [
+            "head",
+            "leftToe",
+            "rightToe",
+            "pelvis",
+            "leftPalm",
+            "rightPalm",
+            "leftElbow",
+            "rightElbow"
+          ],
+          "pad": 0.14,
+          "k": 0.85,
+          "drift": 0,
+          "at": 2,
+          "fitTimeline": true
+        },
+        "candidate": {
+          "dir": [
+            0.55,
+            0.12,
+            -1
+          ],
+          "fit": [
+            "head",
+            "leftToe",
+            "rightToe",
+            "pelvis",
+            "leftPalm",
+            "rightPalm",
+            "leftElbow",
+            "rightElbow",
+            "leftAnkle",
+            "rightAnkle",
+            "leftKnee",
+            "rightKnee"
+          ],
+          "pad": 0.14,
+          "k": 0.85,
+          "drift": 0,
+          "at": 2,
+          "fitTimeline": true,
+          "orbitDegrees": 0,
+          "frontSweepDegrees": 0
+        },
+        "automaticCameraMotion": false,
+        "actualVisualReview": "pending",
+        "note": "Engine fitTimeline samples joint bounds; it does not prove full visible mesh/equipment bounds. Pixel content-rectangle verification belongs to the render/export stage."
+      },
+      "preserved": {
+        "timelineReference": true,
+        "poseReference": true,
+        "propsReference": true,
+        "qaReference": true,
+        "highlightReference": true,
+        "frameReference": true,
+        "keyFramesReference": true,
+        "fps": 30,
+        "durationSeconds": 8
+      },
+      "cpuChecks": {
+        "sourceRawBytesEqualPinnedGitObject": "pass",
+        "sourceAndRevisionModuleImports": "pass",
+        "sourceMotionTimingPropsAndQaUnchanged": "pass",
+        "finiteNumericTimelineSamples": "pass",
+        "fixedCameraFields": "pass",
+        "staticRuntimeDescriptor": "pass",
+        "actualLoaderCheckSpec": "pending-missing-ignored-config",
+        "gpuFramesRendered": 0
+      },
+      "historicalIssueEvidence": [
+        {
+          "description": "PR23 v2 preview reported reach limitations and elbows around 146 degrees against original straight-elbow QA >=168 degrees.",
+          "source": "https://github.com/mhgd3250905/3D-Pose-Hub/pull/23",
+          "model": "historical v2plus preview; not reproduced on r7 by this CPU-only pass"
+        },
+        {
+          "description": "Training taxonomy upper-traps, difficulty and dose remain unresolved in the source semantic proposal.",
+          "source": "https://github.com/mhgd3250905/3D-Pose-Hub/pull/23",
+          "model": "historical v2plus preview; not reproduced on r7 by this CPU-only pass"
+        }
+      ],
+      "pendingGpuChecks": [
+        "Measure actual r7 elbow straightness, overhead reach and shoulder movement; retain original QA thresholds.",
+        "Inspect c1r2 dumbbell grip, head clearance and full equipment bounds at maximum shoulder lift.",
+        "Keep upper-trapezius mapping and clinical/training dose pending; no inferred replacement values."
+      ]
+    },
+    {
+      "id": "h-supine-cactus-chest",
+      "view": "Elevated front-oblique; both cactus arms and back-of-hand/mat contact visible.",
+      "nameZh": "仰卧仙人掌开胸",
+      "source": {
+        "ref": "origin/drill/gap-batch1-20261026",
+        "commit": "c98d36a59059364964dba0520b078104f77e49fa",
+        "pullRequest": 23,
+        "path": "drill-anim/specs/h-supine-cactus-chest.js",
+        "rawBytes": 4444,
+        "rawSha256": "6f0926672d2c96172ae3b006d142571f06258925411ac345210c4ac71755bea0",
+        "lfSha256": "6f0926672d2c96172ae3b006d142571f06258925411ac345210c4ac71755bea0"
+      },
+      "revision": {
+        "id": "h-supine-cactus-chest-r2",
+        "path": "drill-anim/specs/h-supine-cactus-chest-r2.js",
+        "rawBytes": 1055,
+        "rawSha256": "008e8d58bbc21c9cfddc44291244eb83030b3d86b3e70a94f3f322878a0e9e37",
+        "lfSha256": "008e8d58bbc21c9cfddc44291244eb83030b3d86b3e70a94f3f322878a0e9e37",
+        "reviewed": false,
+        "releaseEligible": false
+      },
+      "status": "prepared-pending-gpu",
+      "changes": [
+        "Preserve original spec bytes in a separate source file.",
+        "Create a separate r2 wrapper for the explicit r7/r5 runtime; keep original motion/timeline/props/QA/highlight/frame objects.",
+        "Set nativeHands 1.0.0-r3 descriptor and base torso/limbs/hands/realistic; runtime adapter must actually install contact-r5 over r7 with c1r2 at handScale 1.18.",
+        "Use fixed camera with drift/orbit/front-sweep disabled and whole-timeline joint fitting; include bilateral knees/ankles/elbows/palms in fit seeds."
+      ],
+      "camera": {
+        "source": {
+          "dir": [
+            0.3,
+            0.75,
+            1
+          ],
+          "fit": [
+            "head",
+            "leftPalm",
+            "rightPalm",
+            "leftElbow",
+            "rightElbow",
+            "leftToe",
+            "rightToe",
+            "pelvis",
+            "leftKnee",
+            "rightKnee"
+          ],
+          "pad": 0.12,
+          "k": 0.8,
+          "drift": 0,
+          "at": 3,
+          "fitTimeline": true
+        },
+        "candidate": {
+          "dir": [
+            0.3,
+            0.75,
+            1
+          ],
+          "fit": [
+            "head",
+            "leftPalm",
+            "rightPalm",
+            "leftElbow",
+            "rightElbow",
+            "leftToe",
+            "rightToe",
+            "pelvis",
+            "leftKnee",
+            "rightKnee",
+            "leftAnkle",
+            "rightAnkle"
+          ],
+          "pad": 0.12,
+          "k": 0.8,
+          "drift": 0,
+          "at": 3,
+          "fitTimeline": true,
+          "orbitDegrees": 0,
+          "frontSweepDegrees": 0
+        },
+        "automaticCameraMotion": false,
+        "actualVisualReview": "pending",
+        "note": "Engine fitTimeline samples joint bounds; it does not prove full visible mesh/equipment bounds. Pixel content-rectangle verification belongs to the render/export stage."
+      },
+      "preserved": {
+        "timelineReference": true,
+        "poseReference": true,
+        "propsReference": true,
+        "qaReference": true,
+        "highlightReference": true,
+        "frameReference": true,
+        "keyFramesReference": true,
+        "fps": 30,
+        "durationSeconds": 8
+      },
+      "cpuChecks": {
+        "sourceRawBytesEqualPinnedGitObject": "pass",
+        "sourceAndRevisionModuleImports": "pass",
+        "sourceMotionTimingPropsAndQaUnchanged": "pass",
+        "finiteNumericTimelineSamples": "pass",
+        "fixedCameraFields": "pass",
+        "staticRuntimeDescriptor": "pass",
+        "actualLoaderCheckSpec": "pending-missing-ignored-config",
+        "gpuFramesRendered": 0
+      },
+      "historicalIssueEvidence": [],
+      "pendingGpuChecks": [
+        "Inspect back-of-hand/forearm clearance against the actual mat and body in r7.",
+        "Verify shoulder opening is legible and both arms stay inside fixed content bounds."
+      ]
+    },
+    {
+      "id": "h-standing-arm-extension-stretch",
+      "view": "Side-oblique; posterior arm excursion and trunk alignment visible.",
+      "nameZh": "站姿双臂后伸开肩",
+      "source": {
+        "ref": "origin/drill/gap-batch1-20261026",
+        "commit": "c98d36a59059364964dba0520b078104f77e49fa",
+        "pullRequest": 23,
+        "path": "drill-anim/specs/h-standing-arm-extension-stretch.js",
+        "rawBytes": 3646,
+        "rawSha256": "058c8e1b98679fdc96c09bb028dd18edc3e4cb448f9edf3744852c8f2f6d460f",
+        "lfSha256": "058c8e1b98679fdc96c09bb028dd18edc3e4cb448f9edf3744852c8f2f6d460f"
+      },
+      "revision": {
+        "id": "h-standing-arm-extension-stretch-r2",
+        "path": "drill-anim/specs/h-standing-arm-extension-stretch-r2.js",
+        "rawBytes": 1088,
+        "rawSha256": "db1c5adc5e4a2ad6236ce7caae1ff47b1768555e75050afbdd0ddd5e6436c792",
+        "lfSha256": "db1c5adc5e4a2ad6236ce7caae1ff47b1768555e75050afbdd0ddd5e6436c792",
+        "reviewed": false,
+        "releaseEligible": false
+      },
+      "status": "prepared-pending-gpu",
+      "changes": [
+        "Preserve original spec bytes in a separate source file.",
+        "Create a separate r2 wrapper for the explicit r7/r5 runtime; keep original motion/timeline/props/QA/highlight/frame objects.",
+        "Set nativeHands 1.0.0-r3 descriptor and base torso/limbs/hands/realistic; runtime adapter must actually install contact-r5 over r7 with c1r2 at handScale 1.18.",
+        "Use fixed camera with drift/orbit/front-sweep disabled and whole-timeline joint fitting; include bilateral knees/ankles/elbows/palms in fit seeds."
+      ],
+      "camera": {
+        "source": {
+          "dir": [
+            -1,
+            0.12,
+            0.45
+          ],
+          "fit": [
+            "head",
+            "leftToe",
+            "rightToe",
+            "pelvis",
+            "leftPalm",
+            "rightPalm",
+            "leftElbow",
+            "rightElbow"
+          ],
+          "pad": 0.15,
+          "k": 0.85,
+          "drift": 0,
+          "at": 3.5,
+          "fitTimeline": true
+        },
+        "candidate": {
+          "dir": [
+            -1,
+            0.12,
+            0.45
+          ],
+          "fit": [
+            "head",
+            "leftToe",
+            "rightToe",
+            "pelvis",
+            "leftPalm",
+            "rightPalm",
+            "leftElbow",
+            "rightElbow",
+            "leftAnkle",
+            "rightAnkle",
+            "leftKnee",
+            "rightKnee"
+          ],
+          "pad": 0.15,
+          "k": 0.85,
+          "drift": 0,
+          "at": 3.5,
+          "fitTimeline": true,
+          "orbitDegrees": 0,
+          "frontSweepDegrees": 0
+        },
+        "automaticCameraMotion": false,
+        "actualVisualReview": "pending",
+        "note": "Engine fitTimeline samples joint bounds; it does not prove full visible mesh/equipment bounds. Pixel content-rectangle verification belongs to the render/export stage."
+      },
+      "preserved": {
+        "timelineReference": true,
+        "poseReference": true,
+        "propsReference": true,
+        "qaReference": true,
+        "highlightReference": true,
+        "frameReference": true,
+        "keyFramesReference": true,
+        "fps": 30,
+        "durationSeconds": 8
+      },
+      "cpuChecks": {
+        "sourceRawBytesEqualPinnedGitObject": "pass",
+        "sourceAndRevisionModuleImports": "pass",
+        "sourceMotionTimingPropsAndQaUnchanged": "pass",
+        "finiteNumericTimelineSamples": "pass",
+        "fixedCameraFields": "pass",
+        "staticRuntimeDescriptor": "pass",
+        "actualLoaderCheckSpec": "pending-missing-ignored-config",
+        "gpuFramesRendered": 0
+      },
+      "historicalIssueEvidence": [
+        {
+          "description": "PR23 v2 preview reported reach limitations and elbows around 160 degrees against original straight-elbow QA >=165 degrees.",
+          "source": "https://github.com/mhgd3250905/3D-Pose-Hub/pull/23",
+          "model": "historical v2plus preview; not reproduced on r7 by this CPU-only pass"
+        }
+      ],
+      "pendingGpuChecks": [
+        "Reproduce and measure r7 elbow straightness/reach before changing arm targets; do not weaken QA or shorten movement to hide failure.",
+        "Check no unintended trunk lean, pelvis shift or hand/body intersection throughout the hold and release."
+      ]
+    },
+    {
+      "id": "h-half-kneeling-quad-stretch",
+      "view": "Left-side/front-oblique; rear hand-to-foot contact and kneeling support visible.",
+      "nameZh": "半跪姿手拉脚股四头肌拉伸",
+      "source": {
+        "ref": "origin/drill/gap-batch1-20261026",
+        "commit": "c98d36a59059364964dba0520b078104f77e49fa",
+        "pullRequest": 23,
+        "path": "drill-anim/specs/h-half-kneeling-quad-stretch.js",
+        "rawBytes": 4200,
+        "rawSha256": "73da97dba25307ba58627b73032fe1cacca28d175fd96509d03672c1a5c96380",
+        "lfSha256": "73da97dba25307ba58627b73032fe1cacca28d175fd96509d03672c1a5c96380"
+      },
+      "revision": {
+        "id": "h-half-kneeling-quad-stretch-r2",
+        "path": "drill-anim/specs/h-half-kneeling-quad-stretch-r2.js",
+        "rawBytes": 1076,
+        "rawSha256": "d2c678cb3a2fad2c8d5a97bd7b1700694fa3c957af7c5dafd5cf365ff60e537a",
+        "lfSha256": "d2c678cb3a2fad2c8d5a97bd7b1700694fa3c957af7c5dafd5cf365ff60e537a",
+        "reviewed": false,
+        "releaseEligible": false
+      },
+      "status": "prepared-pending-gpu",
+      "changes": [
+        "Preserve original spec bytes in a separate source file.",
+        "Create a separate r2 wrapper for the explicit r7/r5 runtime; keep original motion/timeline/props/QA/highlight/frame objects.",
+        "Set nativeHands 1.0.0-r3 descriptor and base torso/limbs/hands/realistic; runtime adapter must actually install contact-r5 over r7 with c1r2 at handScale 1.18.",
+        "Use fixed camera with drift/orbit/front-sweep disabled and whole-timeline joint fitting; include bilateral knees/ankles/elbows/palms in fit seeds."
+      ],
+      "camera": {
+        "source": {
+          "dir": [
+            1,
+            0.22,
+            0.55
+          ],
+          "fit": [
+            "head",
+            "leftToe",
+            "rightToe",
+            "pelvis",
+            "leftKnee",
+            "rightKnee",
+            "leftPalm"
+          ],
+          "pad": 0.16,
+          "k": 1,
+          "drift": 0,
+          "at": 3.8,
+          "fitTimeline": true
+        },
+        "candidate": {
+          "dir": [
+            1,
+            0.22,
+            0.55
+          ],
+          "fit": [
+            "head",
+            "leftToe",
+            "rightToe",
+            "pelvis",
+            "leftKnee",
+            "rightKnee",
+            "leftPalm",
+            "leftAnkle",
+            "rightAnkle",
+            "rightPalm",
+            "leftElbow",
+            "rightElbow"
+          ],
+          "pad": 0.16,
+          "k": 1,
+          "drift": 0,
+          "at": 3.8,
+          "fitTimeline": true,
+          "orbitDegrees": 0,
+          "frontSweepDegrees": 0
+        },
+        "automaticCameraMotion": false,
+        "actualVisualReview": "pending",
+        "note": "Engine fitTimeline samples joint bounds; it does not prove full visible mesh/equipment bounds. Pixel content-rectangle verification belongs to the render/export stage."
+      },
+      "preserved": {
+        "timelineReference": true,
+        "poseReference": true,
+        "propsReference": true,
+        "qaReference": true,
+        "highlightReference": true,
+        "frameReference": true,
+        "keyFramesReference": true,
+        "fps": 30,
+        "durationSeconds": 8
+      },
+      "cpuChecks": {
+        "sourceRawBytesEqualPinnedGitObject": "pass",
+        "sourceAndRevisionModuleImports": "pass",
+        "sourceMotionTimingPropsAndQaUnchanged": "pass",
+        "finiteNumericTimelineSamples": "pass",
+        "fixedCameraFields": "pass",
+        "staticRuntimeDescriptor": "pass",
+        "actualLoaderCheckSpec": "pending-missing-ignored-config",
+        "gpuFramesRendered": 0
+      },
+      "historicalIssueEvidence": [
+        {
+          "description": "PR23 v2 preview reported left hand entering the rear foot by approximately 3-4 mm, kneeling knee height differing approximately 12 mm across sampled frames, and fragmented front-thigh highlight.",
+          "source": "https://github.com/mhgd3250905/3D-Pose-Hub/pull/23",
+          "model": "historical v2plus preview; not reproduced on r7 by this CPU-only pass"
+        }
+      ],
+      "pendingGpuChecks": [
+        "Measure real c1r2 hand/foot surfaces before fitting grip; no unsupported millimetre offset was applied.",
+        "Check left kneeling knee world-height/contact and right planted foot across cold/warm full-loop poses.",
+        "Check original right-hand-on-hip touch and left-thigh highlight against actual r7 geometry."
+      ]
+    },
+    {
+      "id": "h-chair-elbow-triceps-stretch",
+      "view": "Rear-side three-quarter candidate [1,0.30,-0.55]; preserve chair support visibility while exposing posterior upper arms.",
+      "nameZh": "扶椅背屈肘肱三头肌拉伸",
+      "source": {
+        "ref": "origin/drill/gap-batch1-20261026",
+        "commit": "c98d36a59059364964dba0520b078104f77e49fa",
+        "pullRequest": 23,
+        "path": "drill-anim/specs/h-chair-elbow-triceps-stretch.js",
+        "rawBytes": 5405,
+        "rawSha256": "7c1b99e403c74e8c57abfdef3c07a7187c25080e227643c7a31730707a728974",
+        "lfSha256": "7c1b99e403c74e8c57abfdef3c07a7187c25080e227643c7a31730707a728974"
+      },
+      "revision": {
+        "id": "h-chair-elbow-triceps-stretch-r2",
+        "path": "drill-anim/specs/h-chair-elbow-triceps-stretch-r2.js",
+        "rawBytes": 1169,
+        "rawSha256": "3ff46414e835c53e5557fe2f57acf087923409f3de3d2e4b857427b3a8cae74d",
+        "lfSha256": "3ff46414e835c53e5557fe2f57acf087923409f3de3d2e4b857427b3a8cae74d",
+        "reviewed": false,
+        "releaseEligible": false
+      },
+      "status": "prepared-pending-gpu",
+      "changes": [
+        "Preserve original spec bytes in a separate source file.",
+        "Create a separate r2 wrapper for the explicit r7/r5 runtime; keep original motion/timeline/props/QA/highlight/frame objects.",
+        "Set nativeHands 1.0.0-r3 descriptor and base torso/limbs/hands/realistic; runtime adapter must actually install contact-r5 over r7 with c1r2 at handScale 1.18.",
+        "Use fixed camera with drift/orbit/front-sweep disabled and whole-timeline joint fitting; include bilateral knees/ankles/elbows/palms in fit seeds.",
+        "Change the old side/front-oblique direction [1,0.35,0.2] to a rear-side candidate to expose triceps. This remains a preview hypothesis, not a validated correction."
+      ],
+      "camera": {
+        "source": {
+          "dir": [
+            1,
+            0.35,
+            0.2
+          ],
+          "fit": [
+            "head",
+            "leftToe",
+            "rightToe",
+            "pelvis",
+            "leftKnee",
+            "leftPalm",
+            "rightPalm",
+            "leftElbow"
+          ],
+          "pad": 0.14,
+          "k": 0.95,
+          "drift": 0,
+          "at": 3.6,
+          "fitTimeline": true
+        },
+        "candidate": {
+          "dir": [
+            1,
+            0.3,
+            -0.55
+          ],
+          "fit": [
+            "head",
+            "leftToe",
+            "rightToe",
+            "pelvis",
+            "leftKnee",
+            "leftPalm",
+            "rightPalm",
+            "leftElbow",
+            "leftAnkle",
+            "rightAnkle",
+            "rightKnee",
+            "rightElbow"
+          ],
+          "pad": 0.14,
+          "k": 0.95,
+          "drift": 0,
+          "at": 3.6,
+          "fitTimeline": true,
+          "orbitDegrees": 0,
+          "frontSweepDegrees": 0
+        },
+        "automaticCameraMotion": false,
+        "actualVisualReview": "pending",
+        "note": "Engine fitTimeline samples joint bounds; it does not prove full visible mesh/equipment bounds. Pixel content-rectangle verification belongs to the render/export stage."
+      },
+      "preserved": {
+        "timelineReference": true,
+        "poseReference": true,
+        "propsReference": true,
+        "qaReference": true,
+        "highlightReference": true,
+        "frameReference": true,
+        "keyFramesReference": true,
+        "fps": 30,
+        "durationSeconds": 8
+      },
+      "cpuChecks": {
+        "sourceRawBytesEqualPinnedGitObject": "pass",
+        "sourceAndRevisionModuleImports": "pass",
+        "sourceMotionTimingPropsAndQaUnchanged": "pass",
+        "finiteNumericTimelineSamples": "pass",
+        "fixedCameraFields": "pass",
+        "staticRuntimeDescriptor": "pass",
+        "actualLoaderCheckSpec": "pending-missing-ignored-config",
+        "gpuFramesRendered": 0
+      },
+      "historicalIssueEvidence": [
+        {
+          "description": "PR23 v2 preview could not read triceps highlight from the old camera; head/chair backrest clearance was not probed.",
+          "source": "https://github.com/mhgd3250905/3D-Pose-Hub/pull/23",
+          "model": "historical v2plus preview; not reproduced on r7 by this CPU-only pass"
+        }
+      ],
+      "pendingGpuChecks": [
+        "Compare old/new camera with the same r7 pose, preserving visible elbows/backrest and legible triceps; adjust only after actual preview.",
+        "Measure both elbows against chair rail, head/chair and hand/head clearances with actual geometry.",
+        "Check fixed elbow support through hinge/sink motion, retaining original jointPins and motion tracks."
+      ]
+    }
+  ]
+}

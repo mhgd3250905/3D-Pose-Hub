@@ -1,0 +1,257 @@
+{
+  "format": "pose-hub-action-recipe@1",
+  "id": "h-wall-pec",
+  "nameZh": "靠墙单臂胸肌拉伸",
+  "spec": "drill-anim/specs/h-wall-pec-r5.js",
+  "specSha256Lf": "29314eb3a07503223a6dfd9b102d3f2381a790d22b56b003c28a4844cc0464b2",
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "hands": {
+    "left": "relaxed",
+    "right": "assist"
+  },
+  "camera": {
+    "dir": [
+      0.75,
+      0.35,
+      -0.8
+    ],
+    "fit": [
+      "head",
+      "leftToe",
+      "rightToe",
+      "pelvis",
+      "rightPalm",
+      "rightElbow",
+      "leftPalm",
+      "shoulderCenter",
+      "leftElbow",
+      "leftKnee",
+      "rightKnee"
+    ],
+    "pad": 0.14,
+    "k": 0.95,
+    "drift": 0,
+    "at": 3.8,
+    "fitTimeline": true,
+    "orbitDegrees": 0,
+    "frontSweepDegrees": 0
+  },
+  "cameraScale": 1.15,
+  "output": {
+    "groundShadow": false,
+    "cameraMotion": false,
+    "wholeCycleContentRect": true,
+    "fps": 30,
+    "exerciseMat": false
+  },
+  "adaptation": {
+    "status": "candidate-retargeted-awaiting-preview",
+    "priority": 2,
+    "sourceRuntimeModel": {
+      "profile": "training-human-v3-contact",
+      "version": "0.1.0-r5"
+    },
+    "method": "per-action contact-aware retargeting; no global pose scale",
+    "requiredChanges": [
+      "Preserve physical wall plane and use current palm surface to choose wrist target; source wrist [-0.268,1.33,-0.395] is an old-world target.",
+      "Recalibrate standing pelvis y=0.887 for current legs and check shoulder-to-wall reach.",
+      "Keep relaxed left arm and right-side action identity."
+    ],
+    "handAsset": "hands-native-c1r2-symmetric-r1",
+    "handAcceptance": "This action has not been visually inspected with the selected body/hand setup.",
+    "implemented": "Corrected standing pelvis for current leg proportions while preserving existing shoulder-relative or world-space arm targets. GPU attempt01: wall occluded working arm and exceeded frame. r5 uses a1.55m representative wall section and the clear side diagnostic angle for primary camera, preserving hand contact position.",
+    "rotationPolicy": "Full forearm axial sharing avoids half-angle +/-pi branch flips; actual-render rotation and visible deformation checks remain required."
+  },
+  "source": {
+    "inventory": "catalog/production/remaining-actions-v3-20261028-r1.json",
+    "preparationReview": "tools/action-completion-v3/home-review.json",
+    "originalSpec": "drill-anim/specs/h-wall-pec.js",
+    "dependencies": [
+      {
+        "path": "drill-anim/lib/home-anim.mjs",
+        "sha256Lf": "1798c9e55c28b32391b7ef32aa358427b4743ee1959f86ec488a95fe88a05557"
+      },
+      {
+        "path": "drill-anim/lib/ss-geo.mjs",
+        "sha256Lf": "45ca774079e3a85ecc4f924a3220d4baa721f0435e16f6e6e21ffa19e17e8603"
+      },
+      {
+        "path": "drill-anim/specs/h-wall-pec-r3.js",
+        "sha256Lf": "d3d012fdba363e660f06c0b8d9b7037c6bd0587bfbfb61244c4feba5d4b41d79"
+      },
+      {
+        "path": "drill-anim/specs/h-wall-pec.js",
+        "sha256Lf": "f625d15dfaa87c0d52cfd9a3308fb8a27e3f2b5a4e266a1fc57cdbb0b5854c62"
+      },
+      {
+        "path": "drill-anim/specs/h-wall-pec-r4.js",
+        "sha256Lf": "4b8bed0549361fa62a62e59291aaa4b9c49031186a8509857a0ed74318b741dd"
+      },
+      {
+        "path": "drill-anim/specs/_home-armfix-r1.mjs",
+        "sha256Lf": "669e216877327032b2a568946082015035fa3bc7c3c42e8c9fbd46e0ead7f05c"
+      },
+      {
+        "path": "drill-anim/specs/h-wall-pec-r5.js",
+        "sha256Lf": "29314eb3a07503223a6dfd9b102d3f2381a790d22b56b003c28a4844cc0464b2"
+      }
+    ],
+    "priorRecipeSpec": "h-wall-pec-r3.js"
+  },
+  "reviewPlan": {
+    "status": "source-ready-awaiting-preview",
+    "durationSeconds": 8,
+    "previewTimesSeconds": [
+      0,
+      0.2,
+      1.5,
+      2.5,
+      3.8,
+      4,
+      6,
+      7.8,
+      8
+    ],
+    "coverTimeSeconds": 3.8,
+    "primaryView": "Use the clear side diagnostic direction from attempt04 so body, working arm and wall contact are all visible.",
+    "additionalViews": [
+      "opposite",
+      "side"
+    ],
+    "checks": [
+      "Right palm and intended forearm/arm relation to wall remain visible through torso turn.",
+      "Right elbow position is anatomically plausible and no arm segment enters the wall.",
+      "Open-side camera prevents the wall from hiding the working arm.",
+      "Inspect actual wrist and ankle quaternion paths at every frame, not only endpoint directions: shortest consecutive rotation, total turn, hand/sole facing, left/right consistency and loop seam."
+    ],
+    "fullCycleRequired": true,
+    "contentBounds": "union of visible body and necessary props over all output frames; one rectangle for the whole clip",
+    "groundShadow": false,
+    "groundProps": "Keep necessary support mat/wall/cushion as explicit props; exclude shadow/stage helpers.",
+    "rotationEvidence": {
+      "status": "descriptor-only-not-joint-acceptance",
+      "sampleRate": 30,
+      "samples": 241,
+      "channels": {
+        "hands.left.finger": {
+          "frame": "chest",
+          "maxStepDegrees": 1.2074182697257333e-06,
+          "endpointDegrees": 1.2074182697257333e-06,
+          "zeroVectorFrames": [],
+          "stepsOver30Degrees": []
+        },
+        "hands.left.normal": {
+          "frame": "chest",
+          "maxStepDegrees": 0,
+          "endpointDegrees": 0,
+          "zeroVectorFrames": [],
+          "stepsOver30Degrees": []
+        },
+        "feet.left.heading": {
+          "minDegrees": 8,
+          "maxDegrees": 8,
+          "maxRawStepDegrees": 0,
+          "endpointRawDifference": 0,
+          "rawStepsOver90Degrees": []
+        },
+        "feet.left.pitch": {
+          "minDegrees": 0,
+          "maxDegrees": 0,
+          "maxRawStepDegrees": 0,
+          "endpointRawDifference": 0,
+          "rawStepsOver90Degrees": []
+        },
+        "hands.right.finger": {
+          "frame": "world",
+          "maxStepDegrees": 0,
+          "endpointDegrees": 0,
+          "zeroVectorFrames": [],
+          "stepsOver30Degrees": []
+        },
+        "hands.right.normal": {
+          "frame": "world",
+          "maxStepDegrees": 0,
+          "endpointDegrees": 0,
+          "zeroVectorFrames": [],
+          "stepsOver30Degrees": []
+        },
+        "feet.right.heading": {
+          "minDegrees": 2,
+          "maxDegrees": 2,
+          "maxRawStepDegrees": 0,
+          "endpointRawDifference": 0,
+          "rawStepsOver90Degrees": []
+        },
+        "feet.right.pitch": {
+          "minDegrees": 0,
+          "maxDegrees": 0,
+          "maxRawStepDegrees": 0,
+          "endpointRawDifference": 0,
+          "rawStepsOver90Degrees": []
+        }
+      },
+      "initialRotationLists": [
+        {
+          "path": "pose.hips.rot",
+          "value": [
+            [
+              [
+                0,
+                1,
+                0
+              ],
+              2.45
+            ]
+          ]
+        },
+        {
+          "path": "pose.chest.waist",
+          "value": [
+            [
+              [
+                0,
+                1,
+                0
+              ],
+              4.55
+            ]
+          ]
+        }
+      ],
+      "limits": [
+        "This checks authored descriptor vectors and raw foot angles. It does not measure actual wrist/ankle bone quaternions, IK pole branch changes or skinned twists.",
+        "Large raw Euler angles or identical endpoint orientations alone do not establish a defect. Root GPU capture must inspect actual continuous rotations."
+      ]
+    },
+    "phase": "low-resolution-template-preview",
+    "fullResolutionProduction": "deferred-until-per-action-user-acceptance",
+    "previewGroup": "later-group"
+  },
+  "risks": [
+    "Historical right-elbow warning and native palm-to-wall contact need GPU review.",
+    "Single-straight-arm support overlaps the delivered bilateral forearm/doorframe family; preserve the distinction and scope question.",
+    "Current body retains v3 legs/trunk; changing the runtime label alone does not retarget old absolute coordinates.",
+    "Support, relaxed, assist and non-dumbbell native grips require their own rendered checks; fixed dumbbell acceptance does not apply."
+  ],
+  "reviewed": false,
+  "releaseEligible": false,
+  "appearance": {
+    "highlight": {
+      "color": "#F05A36",
+      "shade": [
+        0.5,
+        0.42,
+        0.08
+      ],
+      "intensity": [
+        0.75,
+        1
+      ]
+    },
+    "purpose": "Visual cue for target muscle effort, not a physiological measurement",
+    "status": "parameterized-selection-deferred-by-user"
+  }
+}

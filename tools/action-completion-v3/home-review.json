@@ -1,0 +1,2128 @@
+{
+  "format": "pose-hub-home-v3-candidate-review@1",
+  "date": "2026-10-28",
+  "timezone": "Asia/Shanghai",
+  "scope": "14 legacy h-* source families; CPU preparation only, no IK/GPU/visual acceptance",
+  "sourceInventory": "catalog/inventory/actions-20261028-r1.json",
+  "revisionPolicy": "All known git log --all spec paths checked. Each family already has r2 in other history; r3 is fresh and does not overwrite it.",
+  "runtimeModel": {
+    "profile": "training-human-v3-contact",
+    "version": "0.1.0-r5"
+  },
+  "cameraContract": {
+    "source": "drill-anim/page/engine.js:E.setupCamera/E.frame",
+    "fixed": true,
+    "fitTimeline": true,
+    "drift": 0,
+    "orbitDegrees": 0,
+    "frontSweepDegrees": 0
+  },
+  "counts": {
+    "candidates": 14,
+    "cpuReady": 14,
+    "gpuReviewed": 0,
+    "releaseEligible": 0
+  },
+  "limits": [
+    "No browser, GPU frame, IK solve, visible geometry, hardware timing or content acceptance was performed.",
+    "Source pose, timeline, props, highlight, shadow, frame and QA descriptors are unchanged.",
+    "The total renderer must call contact-r5.applyV3 on a fresh page; the old v2plus renderer must not silently consume this as a v2 body.",
+    "Historical duplicate/scope suggestions remain proposals, not newly approved classifications or safety claims.",
+    "After the parent configured the ignored local runtime files, the actual contact-r5.checkSpec accepted all 14 descriptors. This is a CPU input check, not geometry or contact acceptance.",
+    "CPU E.sample/E.blend checked 0..duration at 30 Hz, with exact source descriptor equality and endpoint differences recorded. Solver warm state, skinned geometry and rendered loop acceptance remain untested."
+  ],
+  "actions": [
+    {
+      "family": "h-bear-plank",
+      "nameZh": "熊式支撑",
+      "sourceSpec": "drill-anim/specs/h-bear-plank.js",
+      "candidateSpec": "drill-anim/specs/h-bear-plank-r3.js",
+      "sourceSha256Lf": "713a8c6d47bea999062f39a723c5adc8b22d88ecc76e40e6bd7a0dec0979ae79",
+      "candidateSha256Lf": "f8a4deaa6ecd3d6b8351120d1fa5615fe3b12fbfa3ba0b847cbf5bcf5fd43a95",
+      "revision": "h-bear-plank-r3",
+      "status": "cpu-ready-pending-gpu",
+      "sourceNativeFps": 15,
+      "plannedCaptureFps": 30,
+      "durationSeconds": 8,
+      "plannedVideoFrames": 240,
+      "runtimeModel": {
+        "profile": "training-human-v3-contact",
+        "version": "0.1.0-r5"
+      },
+      "sourcePreservation": [
+        {
+          "field": "timeline",
+          "unchanged": true
+        },
+        {
+          "field": "pose",
+          "unchanged": true
+        },
+        {
+          "field": "props",
+          "unchanged": true
+        },
+        {
+          "field": "qa",
+          "unchanged": true
+        },
+        {
+          "field": "highlight",
+          "unchanged": true
+        },
+        {
+          "field": "frame",
+          "unchanged": true
+        },
+        {
+          "field": "shadow",
+          "unchanged": true
+        },
+        {
+          "field": "keyFrames",
+          "unchanged": true
+        },
+        {
+          "field": "stillAt",
+          "unchanged": true
+        }
+      ],
+      "camera": {
+        "source": {
+          "dir": [
+            -0.15,
+            0.22,
+            1
+          ],
+          "fit": [
+            "head",
+            "leftPalm",
+            "rightPalm",
+            "leftToe",
+            "rightToe",
+            "pelvis",
+            "leftKnee",
+            "rightKnee",
+            "shoulderCenter"
+          ],
+          "pad": 0.14,
+          "k": 0.8,
+          "drift": 3,
+          "at": 2
+        },
+        "candidate": {
+          "dir": [
+            -0.15,
+            0.3,
+            1
+          ],
+          "fit": [
+            "head",
+            "leftPalm",
+            "rightPalm",
+            "leftToe",
+            "rightToe",
+            "pelvis",
+            "leftKnee",
+            "rightKnee",
+            "shoulderCenter",
+            "leftElbow",
+            "rightElbow"
+          ],
+          "pad": 0.14,
+          "k": 0.8,
+          "drift": 0,
+          "at": 2,
+          "fitTimeline": true,
+          "orbitDegrees": 0,
+          "frontSweepDegrees": 0
+        },
+        "reason": "Lateral elevated view separates hovering knees from fixed palms and toes.",
+        "status": "configured-not-visually-accepted"
+      },
+      "historicalScopeReview": {
+        "nameZh": "熊式支撑",
+        "source": "`drill-anim/specs/h-bear-plank.js`（PR #111）",
+        "historicalFinding": "漏收（无氧·核心）",
+        "related219": "最近：`obliques-A`、`h-forearm-plank`",
+        "evidence": "spec：四足位双膝离垫约 3 cm 静撑，高亮 abs+quadriceps；`obliques-A` 是熊爬穿腿（转体），`h-forearm-plank` 是前臂平板，体位/动作都不同。042/050 审计把它列为“抗伸展”已有机制，219 未收",
+        "oldMediaState": "spec v2，15fps 8s；旧片 review_required",
+        "historicalRecommendation": "**建议补收**（静态、低成本，补 219 抗伸展入门档）",
+        "status": "proposal-only-not-new-approval",
+        "sourceDocument": "docs/old-library-audit-20261026.md"
+      },
+      "openFindings": [
+        "Hover height, knee angle and new native palm support require visible-surface GPU review."
+      ],
+      "cpuChecks": {
+        "import": true,
+        "explicitNativeContactProfileContract": true,
+        "finiteDescriptor": true,
+        "numbersChecked": 2044,
+        "orderedFiniteTracks": true,
+        "trackCount": 4,
+        "trackKeyCount": 960,
+        "staticCamera": true,
+        "nativeContactCheckSpec": true,
+        "engineKernel": "drill-anim/page/engine.js:E.sample/E.blend (pure prefix, no E.init or E.applyAt)",
+        "sampledDescriptorTimes": 241,
+        "sampledFiniteNumbers": 16147,
+        "maxDescriptorDifferenceFromSource": 0,
+        "descriptorEndpointMaxAbsDifference": 0
+      },
+      "technicalQa": {
+        "visibleSurfaceContact": "not-run",
+        "intersections": "not-run",
+        "loopPlayback": "not-run",
+        "props": "not-run",
+        "cameraActualFrames": "not-run",
+        "fullCycleFraming": "not-run"
+      },
+      "reviewed": false,
+      "releaseEligible": false
+    },
+    {
+      "family": "h-biceps-self",
+      "nameZh": "双手对抗弯举",
+      "sourceSpec": "drill-anim/specs/h-biceps-self.js",
+      "candidateSpec": "drill-anim/specs/h-biceps-self-r3.js",
+      "sourceSha256Lf": "d291c1857c8a86fc79c36a55b49febb75515b050e43a98e4cd97126b25111f9a",
+      "candidateSha256Lf": "3880b4844cd8a0c68390b2aae7b3ec9b53cd26c8349fe21a571583f6b5a7470c",
+      "revision": "h-biceps-self-r3",
+      "status": "cpu-ready-pending-gpu",
+      "sourceNativeFps": 15,
+      "plannedCaptureFps": 30,
+      "durationSeconds": 8,
+      "plannedVideoFrames": 240,
+      "runtimeModel": {
+        "profile": "training-human-v3-contact",
+        "version": "0.1.0-r5"
+      },
+      "sourcePreservation": [
+        {
+          "field": "timeline",
+          "unchanged": true
+        },
+        {
+          "field": "pose",
+          "unchanged": true
+        },
+        {
+          "field": "props",
+          "unchanged": true
+        },
+        {
+          "field": "qa",
+          "unchanged": true
+        },
+        {
+          "field": "highlight",
+          "unchanged": true
+        },
+        {
+          "field": "frame",
+          "unchanged": true
+        },
+        {
+          "field": "shadow",
+          "unchanged": true
+        },
+        {
+          "field": "keyFrames",
+          "unchanged": true
+        },
+        {
+          "field": "stillAt",
+          "unchanged": true
+        }
+      ],
+      "camera": {
+        "source": {
+          "dir": [
+            -0.45,
+            0.12,
+            1
+          ],
+          "fit": [
+            "head",
+            "leftToe",
+            "rightToe",
+            "pelvis",
+            "rightPalm",
+            "rightElbow",
+            "leftElbow"
+          ],
+          "pad": 0.14,
+          "k": 0.9,
+          "drift": 3,
+          "at": 2.5
+        },
+        "candidate": {
+          "dir": [
+            -1,
+            0.18,
+            0.55
+          ],
+          "fit": [
+            "head",
+            "leftToe",
+            "rightToe",
+            "pelvis",
+            "rightPalm",
+            "rightElbow",
+            "leftElbow",
+            "shoulderCenter",
+            "leftPalm",
+            "leftKnee",
+            "rightKnee"
+          ],
+          "pad": 0.14,
+          "k": 0.9,
+          "drift": 0,
+          "at": 2.5,
+          "fitTimeline": true,
+          "orbitDegrees": 0,
+          "frontSweepDegrees": 0
+        },
+        "reason": "Working-right-side three-quarter view exposes elbow flexion and the assisting hand.",
+        "status": "configured-not-visually-accepted"
+      },
+      "historicalScopeReview": {
+        "nameZh": "双手对抗弯举",
+        "source": "`specs/h-biceps-self.js`（PR #112）",
+        "historicalFinding": "漏收（无氧·力量）",
+        "related219": "最近：`h-towel-isometric-curl`、`h-db-curl`",
+        "evidence": "spec：左手压右前臂做动态自抗阻弯举（约 70→122°）；081 文档明确它与毛巾等长弯举、哑铃弯举机制不同",
+        "oldMediaState": "spec v2；旧片 review_required",
+        "historicalRecommendation": "**待开哥确认**：是 219 唯一无器械动态弯举，但手压前臂属双手接触，v2plus 手部接触多次失败（077/081 诊断）",
+        "status": "proposal-only-not-new-approval",
+        "sourceDocument": "docs/old-library-audit-20261026.md"
+      },
+      "openFindings": [
+        "Assisting left palm/right forearm contact has not been recalibrated for the new hand surface."
+      ],
+      "cpuChecks": {
+        "import": true,
+        "explicitNativeContactProfileContract": true,
+        "finiteDescriptor": true,
+        "numbersChecked": 7776,
+        "orderedFiniteTracks": true,
+        "trackCount": 16,
+        "trackKeyCount": 3840,
+        "staticCamera": true,
+        "nativeContactCheckSpec": true,
+        "engineKernel": "drill-anim/page/engine.js:E.sample/E.blend (pure prefix, no E.init or E.applyAt)",
+        "sampledDescriptorTimes": 241,
+        "sampledFiniteNumbers": 13255,
+        "maxDescriptorDifferenceFromSource": 0,
+        "descriptorEndpointMaxAbsDifference": 0
+      },
+      "technicalQa": {
+        "visibleSurfaceContact": "not-run",
+        "intersections": "not-run",
+        "loopPlayback": "not-run",
+        "props": "not-run",
+        "cameraActualFrames": "not-run",
+        "fullCycleFraming": "not-run"
+      },
+      "reviewed": false,
+      "releaseEligible": false
+    },
+    {
+      "family": "h-bridge-overhead",
+      "nameZh": "臀桥过头伸臂",
+      "sourceSpec": "drill-anim/specs/h-bridge-overhead.js",
+      "candidateSpec": "drill-anim/specs/h-bridge-overhead-r3.js",
+      "sourceSha256Lf": "5e6f4edfe25525c0aaf46509409285527d0ea0784abfd97c5ffc25af3ea15269",
+      "candidateSha256Lf": "9941e217ad4004498e7c8a813de65f8657cf91a53d3bca88a42ae6b0f3c46b27",
+      "revision": "h-bridge-overhead-r3",
+      "status": "cpu-ready-pending-gpu",
+      "sourceNativeFps": 15,
+      "plannedCaptureFps": 30,
+      "durationSeconds": 8,
+      "plannedVideoFrames": 240,
+      "runtimeModel": {
+        "profile": "training-human-v3-contact",
+        "version": "0.1.0-r5"
+      },
+      "sourcePreservation": [
+        {
+          "field": "timeline",
+          "unchanged": true
+        },
+        {
+          "field": "pose",
+          "unchanged": true
+        },
+        {
+          "field": "props",
+          "unchanged": true
+        },
+        {
+          "field": "qa",
+          "unchanged": true
+        },
+        {
+          "field": "highlight",
+          "unchanged": true
+        },
+        {
+          "field": "frame",
+          "unchanged": true
+        },
+        {
+          "field": "shadow",
+          "unchanged": true
+        },
+        {
+          "field": "keyFrames",
+          "unchanged": true
+        },
+        {
+          "field": "stillAt",
+          "unchanged": true
+        }
+      ],
+      "camera": {
+        "source": {
+          "dir": [
+            0.3,
+            0.42,
+            1
+          ],
+          "fit": [
+            "head",
+            "leftPalm",
+            "rightPalm",
+            "leftToe",
+            "rightToe",
+            "pelvis",
+            "leftKnee",
+            "rightKnee",
+            "leftElbow"
+          ],
+          "pad": 0.12,
+          "k": 0.75,
+          "drift": 4,
+          "at": 2,
+          "fitTimeline": true
+        },
+        "candidate": {
+          "dir": [
+            0.15,
+            0.28,
+            1
+          ],
+          "fit": [
+            "head",
+            "leftPalm",
+            "rightPalm",
+            "leftToe",
+            "rightToe",
+            "pelvis",
+            "leftKnee",
+            "rightKnee",
+            "leftElbow",
+            "shoulderCenter",
+            "rightElbow"
+          ],
+          "pad": 0.14,
+          "k": 0.75,
+          "drift": 0,
+          "at": 2,
+          "fitTimeline": true,
+          "orbitDegrees": 0,
+          "frontSweepDegrees": 0
+        },
+        "reason": "Lateral view shows pelvic rise and overhead arms without a knee-end perspective.",
+        "status": "configured-not-visually-accepted"
+      },
+      "historicalScopeReview": {
+        "nameZh": "臀桥过头伸臂",
+        "source": "`specs/h-bridge-overhead.js`（PR #115）",
+        "historicalFinding": "漏收（拉伸+力量混合）",
+        "related219": "最近：`glute-max-A`、`h-bridge-march`、`w-feet-on-chair-bridge`",
+        "evidence": "spec：双臂过头贴垫+双腿臀桥，肩屈与髋伸同时；臀桥主体 219 已有 3 个，肩屈拉伸 `h-dd-shoulder`/`h-chair-lat` 已覆盖",
+        "oldMediaState": "spec v2；旧片 review_required",
+        "historicalRecommendation": "**不收**（两个机制都已覆盖，组合版收益低）",
+        "status": "proposal-only-not-new-approval",
+        "sourceDocument": "docs/old-library-audit-20261026.md"
+      },
+      "openFindings": [
+        "Head, shoulder, overhead-hand and foot support require GPU checks.",
+        "Combined bridge/shoulder-flexion mechanism overlaps separate delivered actions; retain the scope question."
+      ],
+      "cpuChecks": {
+        "import": true,
+        "explicitNativeContactProfileContract": true,
+        "finiteDescriptor": true,
+        "numbersChecked": 2984,
+        "orderedFiniteTracks": true,
+        "trackCount": 6,
+        "trackKeyCount": 1440,
+        "staticCamera": true,
+        "nativeContactCheckSpec": true,
+        "engineKernel": "drill-anim/page/engine.js:E.sample/E.blend (pure prefix, no E.init or E.applyAt)",
+        "sampledDescriptorTimes": 241,
+        "sampledFiniteNumbers": 12291,
+        "maxDescriptorDifferenceFromSource": 0,
+        "descriptorEndpointMaxAbsDifference": 0
+      },
+      "technicalQa": {
+        "visibleSurfaceContact": "not-run",
+        "intersections": "not-run",
+        "loopPlayback": "not-run",
+        "props": "not-run",
+        "cameraActualFrames": "not-run",
+        "fullCycleFraming": "not-run"
+      },
+      "reviewed": false,
+      "releaseEligible": false
+    },
+    {
+      "family": "h-crossbody",
+      "nameZh": "交叉臂肩后侧拉伸",
+      "sourceSpec": "drill-anim/specs/h-crossbody.js",
+      "candidateSpec": "drill-anim/specs/h-crossbody-r3.js",
+      "sourceSha256Lf": "f85038ce2b357f36f9cc281202f3c12522aba7bd31220a01b7750bd1f5c3868c",
+      "candidateSha256Lf": "6d3fa39666bb8847b8d4f665e145ca2c44b3144e061f95f0659d56004505025a",
+      "revision": "h-crossbody-r3",
+      "status": "cpu-ready-pending-gpu",
+      "sourceNativeFps": 15,
+      "plannedCaptureFps": 30,
+      "durationSeconds": 8,
+      "plannedVideoFrames": 240,
+      "runtimeModel": {
+        "profile": "training-human-v3-contact",
+        "version": "0.1.0-r5"
+      },
+      "sourcePreservation": [
+        {
+          "field": "timeline",
+          "unchanged": true
+        },
+        {
+          "field": "pose",
+          "unchanged": true
+        },
+        {
+          "field": "props",
+          "unchanged": true
+        },
+        {
+          "field": "qa",
+          "unchanged": true
+        },
+        {
+          "field": "highlight",
+          "unchanged": true
+        },
+        {
+          "field": "frame",
+          "unchanged": true
+        },
+        {
+          "field": "shadow",
+          "unchanged": true
+        },
+        {
+          "field": "keyFrames",
+          "unchanged": true
+        },
+        {
+          "field": "stillAt",
+          "unchanged": true
+        }
+      ],
+      "camera": {
+        "source": {
+          "dir": [
+            -0.6,
+            0.25,
+            1
+          ],
+          "fit": [
+            "head",
+            "leftToe",
+            "rightToe",
+            "pelvis",
+            "rightPalm",
+            "rightElbow",
+            "leftElbow",
+            "rightShoulder"
+          ],
+          "pad": 0.14,
+          "k": 0.85,
+          "drift": 3,
+          "at": 3.8
+        },
+        "candidate": {
+          "dir": [
+            -0.6,
+            0.25,
+            1
+          ],
+          "fit": [
+            "head",
+            "leftToe",
+            "rightToe",
+            "pelvis",
+            "rightPalm",
+            "rightElbow",
+            "leftElbow",
+            "rightShoulder",
+            "shoulderCenter",
+            "leftPalm",
+            "leftKnee",
+            "rightKnee"
+          ],
+          "pad": 0.14,
+          "k": 0.85,
+          "drift": 0,
+          "at": 3.8,
+          "fitTimeline": true,
+          "orbitDegrees": 0,
+          "frontSweepDegrees": 0
+        },
+        "reason": "Preserve the source frontal three-quarter view; a posterior highlight-driven view was previously withdrawn.",
+        "status": "configured-not-visually-accepted"
+      },
+      "historicalScopeReview": {
+        "nameZh": "交叉臂肩后侧拉伸",
+        "source": "`specs/h-crossbody.js`（PR #112）",
+        "historicalFinding": "漏收（拉伸）",
+        "related219": "无等价；相关 `h-sleeper-stretch`",
+        "evidence": "spec：右臂水平内收横过胸前，左手压上臂，高亮 panels deltRear/infraspinatus；219 的 `h-sleeper-stretch` 是肩内旋，没有水平内收肩后侧拉伸（085 文档列为“水平内收”机制）",
+        "oldMediaState": "spec v2；旧片 review_required；高亮用 panels，补收需映射到 deltoids/rotator-cuff",
+        "historicalRecommendation": "**建议补收**",
+        "status": "proposal-only-not-new-approval",
+        "sourceDocument": "docs/old-library-audit-20261026.md"
+      },
+      "openFindings": [
+        "Assisting hand/upper-arm contact is pending.",
+        "Source highlight uses panels deltRear/infraspinatus with empty groups; verify the intended regions on the new body."
+      ],
+      "cpuChecks": {
+        "import": true,
+        "explicitNativeContactProfileContract": true,
+        "finiteDescriptor": true,
+        "numbersChecked": 9223,
+        "orderedFiniteTracks": true,
+        "trackCount": 19,
+        "trackKeyCount": 4560,
+        "staticCamera": true,
+        "nativeContactCheckSpec": true,
+        "engineKernel": "drill-anim/page/engine.js:E.sample/E.blend (pure prefix, no E.init or E.applyAt)",
+        "sampledDescriptorTimes": 241,
+        "sampledFiniteNumbers": 13978,
+        "maxDescriptorDifferenceFromSource": 0,
+        "descriptorEndpointMaxAbsDifference": 0
+      },
+      "technicalQa": {
+        "visibleSurfaceContact": "not-run",
+        "intersections": "not-run",
+        "loopPlayback": "not-run",
+        "props": "not-run",
+        "cameraActualFrames": "not-run",
+        "fullCycleFraming": "not-run"
+      },
+      "reviewed": false,
+      "releaseEligible": false
+    },
+    {
+      "family": "h-inner-thigh",
+      "nameZh": "侧卧内收抬腿",
+      "sourceSpec": "drill-anim/specs/h-inner-thigh.js",
+      "candidateSpec": "drill-anim/specs/h-inner-thigh-r3.js",
+      "sourceSha256Lf": "a4f1337cd73ad34adfb5ee487583141849048606530bea95171ef3a6317395e8",
+      "candidateSha256Lf": "c4baf49e514e6cb9385c1348654ace0aae585e427b1d9e4931359a37ef133ef0",
+      "revision": "h-inner-thigh-r3",
+      "status": "cpu-ready-pending-gpu",
+      "sourceNativeFps": 15,
+      "plannedCaptureFps": 30,
+      "durationSeconds": 8,
+      "plannedVideoFrames": 240,
+      "runtimeModel": {
+        "profile": "training-human-v3-contact",
+        "version": "0.1.0-r5"
+      },
+      "sourcePreservation": [
+        {
+          "field": "timeline",
+          "unchanged": true
+        },
+        {
+          "field": "pose",
+          "unchanged": true
+        },
+        {
+          "field": "props",
+          "unchanged": true
+        },
+        {
+          "field": "qa",
+          "unchanged": true
+        },
+        {
+          "field": "highlight",
+          "unchanged": true
+        },
+        {
+          "field": "frame",
+          "unchanged": true
+        },
+        {
+          "field": "shadow",
+          "unchanged": true
+        },
+        {
+          "field": "keyFrames",
+          "unchanged": true
+        },
+        {
+          "field": "stillAt",
+          "unchanged": true
+        }
+      ],
+      "camera": {
+        "source": {
+          "dir": [
+            -0.2,
+            0.5,
+            1
+          ],
+          "fit": [
+            "head",
+            "leftPalm",
+            "leftElbow",
+            "leftToe",
+            "rightToe",
+            "pelvis",
+            "rightKnee",
+            "leftKnee",
+            "rightElbow"
+          ],
+          "pad": 0.14,
+          "k": 0.75,
+          "drift": 3,
+          "at": 1.8
+        },
+        "candidate": {
+          "dir": [
+            -0.2,
+            0.36,
+            1
+          ],
+          "fit": [
+            "head",
+            "leftPalm",
+            "leftElbow",
+            "leftToe",
+            "rightToe",
+            "pelvis",
+            "rightKnee",
+            "leftKnee",
+            "rightElbow",
+            "shoulderCenter",
+            "rightPalm"
+          ],
+          "pad": 0.14,
+          "k": 0.75,
+          "drift": 0,
+          "at": 1.8,
+          "fitTimeline": true,
+          "orbitDegrees": 0,
+          "frontSweepDegrees": 0
+        },
+        "reason": "A somewhat lower lateral view separates the working lower leg from the bent support leg.",
+        "status": "configured-not-visually-accepted"
+      },
+      "historicalScopeReview": {
+        "nameZh": "侧卧内收抬腿",
+        "source": "`specs/h-inner-thigh.js`（PR #111）",
+        "historicalFinding": "漏收（无氧·力量）",
+        "related219": "最近：`adductors-B`、`n-seated-squeeze`、`h-band-standing-adduction`",
+        "evidence": "spec：左侧卧，下侧直腿内收抬起约 17°；219 内收力量要么是哥本哈根（难度高），要么要砖/弹力带，缺徒手入门档。050 审计列为内收已有机制",
+        "oldMediaState": "spec v2；旧片 review_required",
+        "historicalRecommendation": "**建议补收**",
+        "status": "proposal-only-not-new-approval",
+        "sourceDocument": "docs/old-library-audit-20261026.md"
+      },
+      "openFindings": [
+        "The original hip-touch bisection is retained and is not a native surface-contact proof.",
+        "Support forearm/foot, head alignment and lower-leg clearance require GPU review."
+      ],
+      "cpuChecks": {
+        "import": true,
+        "explicitNativeContactProfileContract": true,
+        "finiteDescriptor": true,
+        "numbersChecked": 2508,
+        "orderedFiniteTracks": true,
+        "trackCount": 5,
+        "trackKeyCount": 1200,
+        "staticCamera": true,
+        "nativeContactCheckSpec": true,
+        "engineKernel": "drill-anim/page/engine.js:E.sample/E.blend (pure prefix, no E.init or E.applyAt)",
+        "sampledDescriptorTimes": 241,
+        "sampledFiniteNumbers": 13496,
+        "maxDescriptorDifferenceFromSource": 0,
+        "descriptorEndpointMaxAbsDifference": 0
+      },
+      "technicalQa": {
+        "visibleSurfaceContact": "not-run",
+        "intersections": "not-run",
+        "loopPlayback": "not-run",
+        "props": "not-run",
+        "cameraActualFrames": "not-run",
+        "fullCycleFraming": "not-run"
+      },
+      "reviewed": false,
+      "releaseEligible": false
+    },
+    {
+      "family": "h-kb-swing",
+      "nameZh": "单臂壶铃摆荡",
+      "sourceSpec": "drill-anim/specs/h-kb-swing.js",
+      "candidateSpec": "drill-anim/specs/h-kb-swing-r3.js",
+      "sourceSha256Lf": "20e90fbb4ba5c04b35c91dc9d656cbf183bb9059fcd83c2478f30607ad151dde",
+      "candidateSha256Lf": "d0c684908586b7fd6ac22c05324bfe8f0a7007d39107beb7ef373e2f3e747b23",
+      "revision": "h-kb-swing-r3",
+      "status": "cpu-ready-pending-gpu",
+      "sourceNativeFps": 15,
+      "plannedCaptureFps": 30,
+      "durationSeconds": 8,
+      "plannedVideoFrames": 240,
+      "runtimeModel": {
+        "profile": "training-human-v3-contact",
+        "version": "0.1.0-r5"
+      },
+      "sourcePreservation": [
+        {
+          "field": "timeline",
+          "unchanged": true
+        },
+        {
+          "field": "pose",
+          "unchanged": true
+        },
+        {
+          "field": "props",
+          "unchanged": true
+        },
+        {
+          "field": "qa",
+          "unchanged": true
+        },
+        {
+          "field": "highlight",
+          "unchanged": true
+        },
+        {
+          "field": "frame",
+          "unchanged": true
+        },
+        {
+          "field": "shadow",
+          "unchanged": true
+        },
+        {
+          "field": "keyFrames",
+          "unchanged": true
+        },
+        {
+          "field": "stillAt",
+          "unchanged": true
+        }
+      ],
+      "camera": {
+        "source": {
+          "dir": [
+            -1,
+            0.2,
+            0.4
+          ],
+          "fit": [
+            "head",
+            "leftToe",
+            "rightToe",
+            "pelvis",
+            "leftKnee",
+            "rightKnee",
+            "rightPalm",
+            "leftPalm"
+          ],
+          "pad": 0.18,
+          "k": 0.9,
+          "drift": 3,
+          "at": 1.4,
+          "fitTimeline": true
+        },
+        "candidate": {
+          "dir": [
+            -1,
+            0.2,
+            0.4
+          ],
+          "fit": [
+            "head",
+            "leftToe",
+            "rightToe",
+            "pelvis",
+            "leftKnee",
+            "rightKnee",
+            "rightPalm",
+            "leftPalm",
+            "shoulderCenter",
+            "leftElbow",
+            "rightElbow"
+          ],
+          "pad": 0.18,
+          "k": 0.9,
+          "drift": 0,
+          "at": 1.4,
+          "fitTimeline": true,
+          "orbitDegrees": 0,
+          "frontSweepDegrees": 0
+        },
+        "reason": "Preserve the source working-right-side view to show hip hinge and full kettlebell arc.",
+        "status": "configured-not-visually-accepted"
+      },
+      "historicalScopeReview": {
+        "nameZh": "单臂壶铃摆荡",
+        "source": "`specs/h-kb-swing.js`（Pose-Hub PR #5）、`docs/home-small-equipment-2026-10-18.md`",
+        "historicalFinding": "漏收（无氧·力量/爆发）",
+        "related219": "最近：`h-db-rdl`、`h-good-morning`",
+        "evidence": "spec：弹震式髋铰链，3 次/8s，壶铃挂右手；219 只有慢速铰链，无弹震摆荡。已从双手改单臂解决拳头重叠",
+        "oldMediaState": "spec v2；旧片 **ready**；HD 清单 `media/inventory/pr5-pr6-hd-2026-10-18.json` 有记录",
+        "historicalRecommendation": "**建议补收**",
+        "status": "proposal-only-not-new-approval",
+        "sourceDocument": "docs/old-library-audit-20261026.md"
+      },
+      "openFindings": [
+        "Original gripHand and kettlebell attachment were calibrated to the old hand; native grip, bell/leg clearance and handle contact remain pending.",
+        "Original single-arm motion is preserved; no mirror or two-hand variant is generated."
+      ],
+      "cpuChecks": {
+        "import": true,
+        "explicitNativeContactProfileContract": true,
+        "finiteDescriptor": true,
+        "numbersChecked": 11153,
+        "orderedFiniteTracks": true,
+        "trackCount": 23,
+        "trackKeyCount": 5520,
+        "staticCamera": true,
+        "nativeContactCheckSpec": true,
+        "engineKernel": "drill-anim/page/engine.js:E.sample/E.blend (pure prefix, no E.init or E.applyAt)",
+        "sampledDescriptorTimes": 241,
+        "sampledFiniteNumbers": 13496,
+        "maxDescriptorDifferenceFromSource": 0,
+        "descriptorEndpointMaxAbsDifference": 0
+      },
+      "technicalQa": {
+        "visibleSurfaceContact": "not-run",
+        "intersections": "not-run",
+        "loopPlayback": "not-run",
+        "props": "not-run",
+        "cameraActualFrames": "not-run",
+        "fullCycleFraming": "not-run"
+      },
+      "reviewed": false,
+      "releaseEligible": false
+    },
+    {
+      "family": "h-mountain-climber",
+      "nameZh": "慢速登山跑",
+      "sourceSpec": "drill-anim/specs/h-mountain-climber.js",
+      "candidateSpec": "drill-anim/specs/h-mountain-climber-r3.js",
+      "sourceSha256Lf": "dca08d3c817624ce616586bc376e43d89dc583233c4ef8970bea4a5cff2f1a0d",
+      "candidateSha256Lf": "e5559c828b71db3cb9a80432d586e96fb0a1df703c0dfc2b674cd53aaaa87659",
+      "revision": "h-mountain-climber-r3",
+      "status": "cpu-ready-pending-gpu",
+      "sourceNativeFps": 15,
+      "plannedCaptureFps": 30,
+      "durationSeconds": 8,
+      "plannedVideoFrames": 240,
+      "runtimeModel": {
+        "profile": "training-human-v3-contact",
+        "version": "0.1.0-r5"
+      },
+      "sourcePreservation": [
+        {
+          "field": "timeline",
+          "unchanged": true
+        },
+        {
+          "field": "pose",
+          "unchanged": true
+        },
+        {
+          "field": "props",
+          "unchanged": true
+        },
+        {
+          "field": "qa",
+          "unchanged": true
+        },
+        {
+          "field": "highlight",
+          "unchanged": true
+        },
+        {
+          "field": "frame",
+          "unchanged": true
+        },
+        {
+          "field": "shadow",
+          "unchanged": true
+        },
+        {
+          "field": "keyFrames",
+          "unchanged": true
+        },
+        {
+          "field": "stillAt",
+          "unchanged": true
+        }
+      ],
+      "camera": {
+        "source": {
+          "dir": [
+            -0.5,
+            0.3,
+            1
+          ],
+          "fit": [
+            "head",
+            "leftPalm",
+            "rightPalm",
+            "leftToe",
+            "rightToe",
+            "pelvis",
+            "leftKnee",
+            "rightKnee"
+          ],
+          "pad": 0.12,
+          "k": 0.65,
+          "drift": 3,
+          "at": 1.9
+        },
+        "candidate": {
+          "dir": [
+            -0.18,
+            0.25,
+            1
+          ],
+          "fit": [
+            "head",
+            "leftPalm",
+            "rightPalm",
+            "leftToe",
+            "rightToe",
+            "pelvis",
+            "leftKnee",
+            "rightKnee",
+            "shoulderCenter",
+            "leftElbow",
+            "rightElbow"
+          ],
+          "pad": 0.14,
+          "k": 0.65,
+          "drift": 0,
+          "at": 1.9,
+          "fitTimeline": true,
+          "orbitDegrees": 0,
+          "frontSweepDegrees": 0
+        },
+        "reason": "Near-lateral view exposes the incoming knee and support leg without a head-end perspective.",
+        "status": "configured-not-visually-accepted"
+      },
+      "historicalScopeReview": {
+        "nameZh": "慢速登山跑",
+        "source": "`specs/h-mountain-climber.js`（PR #111）",
+        "historicalFinding": "范围外（有氧倾向）",
+        "related219": "最近：`h-plank-side-step`、`rotator-cuff-A`",
+        "evidence": "名称“登山跑”在训练语义上是有氧；本 spec 实际是慢速版（每侧 4s，含 0.6s 收膝停顿），高亮 abs+hip-flexors，偏核心抗伸展",
+        "oldMediaState": "spec v2；旧片 review_required",
+        "historicalRecommendation": "**不收**（按范围标为有氧）；若开哥认可“慢速核心版”可改名后补收——**待开哥确认**",
+        "status": "proposal-only-not-new-approval",
+        "sourceDocument": "docs/old-library-audit-20261026.md"
+      },
+      "openFindings": [
+        "Historical cardio-versus-slow-core classification remains open; no rename or dose claim is made.",
+        "Hip solver, foot lift and side-switch support require GPU checks."
+      ],
+      "cpuChecks": {
+        "import": true,
+        "explicitNativeContactProfileContract": true,
+        "finiteDescriptor": true,
+        "numbersChecked": 8290,
+        "orderedFiniteTracks": true,
+        "trackCount": 17,
+        "trackKeyCount": 4080,
+        "staticCamera": true,
+        "nativeContactCheckSpec": true,
+        "engineKernel": "drill-anim/page/engine.js:E.sample/E.blend (pure prefix, no E.init or E.applyAt)",
+        "sampledDescriptorTimes": 241,
+        "sampledFiniteNumbers": 15906,
+        "maxDescriptorDifferenceFromSource": 0,
+        "descriptorEndpointMaxAbsDifference": 0
+      },
+      "technicalQa": {
+        "visibleSurfaceContact": "not-run",
+        "intersections": "not-run",
+        "loopPlayback": "not-run",
+        "props": "not-run",
+        "cameraActualFrames": "not-run",
+        "fullCycleFraming": "not-run"
+      },
+      "reviewed": false,
+      "releaseEligible": false
+    },
+    {
+      "family": "h-open-book",
+      "nameZh": "侧卧开书式",
+      "sourceSpec": "drill-anim/specs/h-open-book.js",
+      "candidateSpec": "drill-anim/specs/h-open-book-r3.js",
+      "sourceSha256Lf": "ac1d44bde6425f51a26b003cb07244ec41baec83af299a5d55f1dbdd49a192cd",
+      "candidateSha256Lf": "947ffd50ec73df5da3a7bbbed2a9dd94d604046c421b49f82ea8bd668442abb9",
+      "revision": "h-open-book-r3",
+      "status": "cpu-ready-pending-gpu",
+      "sourceNativeFps": 15,
+      "plannedCaptureFps": 30,
+      "durationSeconds": 8,
+      "plannedVideoFrames": 240,
+      "runtimeModel": {
+        "profile": "training-human-v3-contact",
+        "version": "0.1.0-r5"
+      },
+      "sourcePreservation": [
+        {
+          "field": "timeline",
+          "unchanged": true
+        },
+        {
+          "field": "pose",
+          "unchanged": true
+        },
+        {
+          "field": "props",
+          "unchanged": true
+        },
+        {
+          "field": "qa",
+          "unchanged": true
+        },
+        {
+          "field": "highlight",
+          "unchanged": true
+        },
+        {
+          "field": "frame",
+          "unchanged": true
+        },
+        {
+          "field": "shadow",
+          "unchanged": true
+        },
+        {
+          "field": "keyFrames",
+          "unchanged": true
+        },
+        {
+          "field": "stillAt",
+          "unchanged": true
+        }
+      ],
+      "camera": {
+        "source": {
+          "dir": [
+            0.3,
+            1,
+            0.9
+          ],
+          "fit": [
+            "head",
+            "leftPalm",
+            "rightPalm",
+            "leftToe",
+            "rightToe",
+            "pelvis",
+            "rightKnee",
+            "leftKnee",
+            "rightElbow"
+          ],
+          "pad": 0.13,
+          "k": 0.75,
+          "drift": 3,
+          "at": 4,
+          "fitTimeline": true
+        },
+        "candidate": {
+          "dir": [
+            0.15,
+            0.65,
+            1
+          ],
+          "fit": [
+            "head",
+            "leftPalm",
+            "rightPalm",
+            "leftToe",
+            "rightToe",
+            "pelvis",
+            "rightKnee",
+            "leftKnee",
+            "rightElbow",
+            "shoulderCenter",
+            "leftElbow"
+          ],
+          "pad": 0.14,
+          "k": 0.75,
+          "drift": 0,
+          "at": 4,
+          "fitTimeline": true,
+          "orbitDegrees": 0,
+          "frontSweepDegrees": 0
+        },
+        "reason": "Lower the near-overhead source direction to show opening arm and fixed knee stack together.",
+        "status": "configured-not-visually-accepted"
+      },
+      "historicalScopeReview": {
+        "nameZh": "侧卧开书式",
+        "source": "`specs/h-open-book.js`（PR #115）",
+        "historicalFinding": "漏收（拉伸/灵活）",
+        "related219": "最近：`h-quadruped-open`、`h-kneeling-thread-needle`、`h-supine-twist`、`o-seated-twist`",
+        "evidence": "spec：侧卧屈髋屈膝，上臂大弧线打开胸椎旋转；055 文档写明 `h-quadruped-open` 是另一独立目标（掌撑闭链），085 文档对 h-open-book 结论是“只归类，不制作变体”",
+        "oldMediaState": "spec v2；旧片 review_required",
+        "historicalRecommendation": "**不收**（胸椎旋转 219 已有 4 个体位）",
+        "status": "proposal-only-not-new-approval",
+        "sourceDocument": "docs/old-library-audit-20261026.md"
+      },
+      "openFindings": [
+        "Head cushion, stacked-leg contact and top-arm sweep need GPU surface inspection.",
+        "Other thoracic-rotation positions cover related mechanisms; retain this side-lying variant without calling it a newly invented mechanism."
+      ],
+      "cpuChecks": {
+        "import": true,
+        "explicitNativeContactProfileContract": true,
+        "finiteDescriptor": true,
+        "numbersChecked": 9741,
+        "orderedFiniteTracks": true,
+        "trackCount": 20,
+        "trackKeyCount": 4800,
+        "staticCamera": true,
+        "nativeContactCheckSpec": true,
+        "engineKernel": "drill-anim/page/engine.js:E.sample/E.blend (pure prefix, no E.init or E.applyAt)",
+        "sampledDescriptorTimes": 241,
+        "sampledFiniteNumbers": 17834,
+        "maxDescriptorDifferenceFromSource": 0,
+        "descriptorEndpointMaxAbsDifference": 0
+      },
+      "technicalQa": {
+        "visibleSurfaceContact": "not-run",
+        "intersections": "not-run",
+        "loopPlayback": "not-run",
+        "props": "not-run",
+        "cameraActualFrames": "not-run",
+        "fullCycleFraming": "not-run"
+      },
+      "reviewed": false,
+      "releaseEligible": false
+    },
+    {
+      "family": "h-pike-pushup",
+      "nameZh": "派克俯卧撑",
+      "sourceSpec": "drill-anim/specs/h-pike-pushup.js",
+      "candidateSpec": "drill-anim/specs/h-pike-pushup-r3.js",
+      "sourceSha256Lf": "306834eae2b0c7b146f18e0b6013c50e4b0c851fcd50fbfb1c80334b01ffd900",
+      "candidateSha256Lf": "795f38c77c9bb7b5a98058accf344b8f0390e8180d87da6a4e7065d0dc694574",
+      "revision": "h-pike-pushup-r3",
+      "status": "cpu-ready-pending-gpu",
+      "sourceNativeFps": 15,
+      "plannedCaptureFps": 30,
+      "durationSeconds": 8,
+      "plannedVideoFrames": 240,
+      "runtimeModel": {
+        "profile": "training-human-v3-contact",
+        "version": "0.1.0-r5"
+      },
+      "sourcePreservation": [
+        {
+          "field": "timeline",
+          "unchanged": true
+        },
+        {
+          "field": "pose",
+          "unchanged": true
+        },
+        {
+          "field": "props",
+          "unchanged": true
+        },
+        {
+          "field": "qa",
+          "unchanged": true
+        },
+        {
+          "field": "highlight",
+          "unchanged": true
+        },
+        {
+          "field": "frame",
+          "unchanged": true
+        },
+        {
+          "field": "shadow",
+          "unchanged": true
+        },
+        {
+          "field": "keyFrames",
+          "unchanged": true
+        },
+        {
+          "field": "stillAt",
+          "unchanged": true
+        }
+      ],
+      "camera": {
+        "source": {
+          "dir": [
+            -0.45,
+            0.2,
+            1
+          ],
+          "fit": [
+            "head",
+            "leftPalm",
+            "rightPalm",
+            "leftToe",
+            "rightToe",
+            "pelvis",
+            "leftElbow",
+            "rightElbow"
+          ],
+          "pad": 0.12,
+          "k": 0.8,
+          "drift": 3,
+          "at": 2.2
+        },
+        "candidate": {
+          "dir": [
+            -0.12,
+            0.25,
+            1
+          ],
+          "fit": [
+            "head",
+            "leftPalm",
+            "rightPalm",
+            "leftToe",
+            "rightToe",
+            "pelvis",
+            "leftElbow",
+            "rightElbow",
+            "shoulderCenter",
+            "leftKnee",
+            "rightKnee"
+          ],
+          "pad": 0.14,
+          "k": 0.8,
+          "drift": 0,
+          "at": 2.2,
+          "fitTimeline": true,
+          "orbitDegrees": 0,
+          "frontSweepDegrees": 0
+        },
+        "reason": "Near-lateral view reduces the source head-end perspective and exposes elbow flexion beneath the high hips.",
+        "status": "configured-not-visually-accepted"
+      },
+      "historicalScopeReview": {
+        "nameZh": "派克俯卧撑",
+        "source": "`specs/h-pike-pushup.js`（PR #111）",
+        "historicalFinding": "漏收（无氧·力量）",
+        "related219": "最近：`h-pike-scapular-elevation`、`h-db-press`",
+        "evidence": "spec：倒 V 位屈肘，头向垫下行再推起；041/042 文档明确 041 只做肩带提压、派克俯卧撑靠肘屈伸，二者不同。219 无徒手垂直推",
+        "oldMediaState": "spec v2；旧片 review_required",
+        "historicalRecommendation": "**建议补收**",
+        "status": "proposal-only-not-new-approval",
+        "sourceDocument": "docs/old-library-audit-20261026.md"
+      },
+      "openFindings": [
+        "Native palm support, head clearance, bilateral elbow targets and toe contact remain pending GPU review."
+      ],
+      "cpuChecks": {
+        "import": true,
+        "explicitNativeContactProfileContract": true,
+        "finiteDescriptor": true,
+        "numbersChecked": 583,
+        "orderedFiniteTracks": true,
+        "trackCount": 1,
+        "trackKeyCount": 240,
+        "staticCamera": true,
+        "nativeContactCheckSpec": true,
+        "engineKernel": "drill-anim/page/engine.js:E.sample/E.blend (pure prefix, no E.init or E.applyAt)",
+        "sampledDescriptorTimes": 241,
+        "sampledFiniteNumbers": 12532,
+        "maxDescriptorDifferenceFromSource": 0,
+        "descriptorEndpointMaxAbsDifference": 0
+      },
+      "technicalQa": {
+        "visibleSurfaceContact": "not-run",
+        "intersections": "not-run",
+        "loopPlayback": "not-run",
+        "props": "not-run",
+        "cameraActualFrames": "not-run",
+        "fullCycleFraming": "not-run"
+      },
+      "reviewed": false,
+      "releaseEligible": false
+    },
+    {
+      "family": "h-reverse-lunge",
+      "nameZh": "后撤步弓步蹲",
+      "sourceSpec": "drill-anim/specs/h-reverse-lunge.js",
+      "candidateSpec": "drill-anim/specs/h-reverse-lunge-r3.js",
+      "sourceSha256Lf": "8787e4e38d2262b07e39c7db0f84816087e2a1a24daf630235d09e47fc39cd11",
+      "candidateSha256Lf": "02d339b86b11cecef1547aa014826764c1bbfb1d3879f2e44ba0101d15e1a9f2",
+      "revision": "h-reverse-lunge-r3",
+      "status": "cpu-ready-pending-gpu",
+      "sourceNativeFps": 15,
+      "plannedCaptureFps": 30,
+      "durationSeconds": 8,
+      "plannedVideoFrames": 240,
+      "runtimeModel": {
+        "profile": "training-human-v3-contact",
+        "version": "0.1.0-r5"
+      },
+      "sourcePreservation": [
+        {
+          "field": "timeline",
+          "unchanged": true
+        },
+        {
+          "field": "pose",
+          "unchanged": true
+        },
+        {
+          "field": "props",
+          "unchanged": true
+        },
+        {
+          "field": "qa",
+          "unchanged": true
+        },
+        {
+          "field": "highlight",
+          "unchanged": true
+        },
+        {
+          "field": "frame",
+          "unchanged": true
+        },
+        {
+          "field": "shadow",
+          "unchanged": true
+        },
+        {
+          "field": "keyFrames",
+          "unchanged": true
+        },
+        {
+          "field": "stillAt",
+          "unchanged": true
+        }
+      ],
+      "camera": {
+        "source": {
+          "dir": [
+            1,
+            0.15,
+            0.35
+          ],
+          "fit": [
+            "head",
+            "leftToe",
+            "rightToe",
+            "pelvis",
+            "leftKnee",
+            "rightKnee",
+            "leftElbow",
+            "rightElbow"
+          ],
+          "pad": 0.14,
+          "k": 1,
+          "drift": 3,
+          "at": 2.1
+        },
+        "candidate": {
+          "dir": [
+            1,
+            0.2,
+            0.35
+          ],
+          "fit": [
+            "head",
+            "leftToe",
+            "rightToe",
+            "pelvis",
+            "leftKnee",
+            "rightKnee",
+            "leftElbow",
+            "rightElbow",
+            "shoulderCenter",
+            "leftPalm",
+            "rightPalm"
+          ],
+          "pad": 0.14,
+          "k": 1,
+          "drift": 0,
+          "at": 2.1,
+          "fitTimeline": true,
+          "orbitDegrees": 0,
+          "frontSweepDegrees": 0
+        },
+        "reason": "Keep the source side-three-quarter direction to show step-back distance and knee bend on both sides.",
+        "status": "configured-not-visually-accepted"
+      },
+      "historicalScopeReview": {
+        "nameZh": "后撤步弓步蹲",
+        "source": "`specs/h-reverse-lunge.js`（PR #111）",
+        "historicalFinding": "漏收（无氧·力量）",
+        "related219": "最近：`h-forward-lunge`、`h-db-split-squat`、`h-bulgarian`",
+        "evidence": "spec：一脚后撤约 65 cm 再下蹲，左右各一次；076 文档明确前跨步不是后撤步倒放，二者不同机制",
+        "oldMediaState": "spec v2；旧片 review_required",
+        "historicalRecommendation": "**建议补收**（后撤步对膝更友好，常用基础动作）",
+        "status": "proposal-only-not-new-approval",
+        "sourceDocument": "docs/old-library-audit-20261026.md"
+      },
+      "openFindings": [
+        "Original hip-touch bisection remains unchanged and is not accepted as true native palm contact.",
+        "Both four-second sides, toe compensation, knee hover and return need GPU review."
+      ],
+      "cpuChecks": {
+        "import": true,
+        "explicitNativeContactProfileContract": true,
+        "finiteDescriptor": true,
+        "numbersChecked": 7312,
+        "orderedFiniteTracks": true,
+        "trackCount": 15,
+        "trackKeyCount": 3600,
+        "staticCamera": true,
+        "nativeContactCheckSpec": true,
+        "engineKernel": "drill-anim/page/engine.js:E.sample/E.blend (pure prefix, no E.init or E.applyAt)",
+        "sampledDescriptorTimes": 241,
+        "sampledFiniteNumbers": 15183,
+        "maxDescriptorDifferenceFromSource": 0,
+        "descriptorEndpointMaxAbsDifference": 0
+      },
+      "technicalQa": {
+        "visibleSurfaceContact": "not-run",
+        "intersections": "not-run",
+        "loopPlayback": "not-run",
+        "props": "not-run",
+        "cameraActualFrames": "not-run",
+        "fullCycleFraming": "not-run"
+      },
+      "reviewed": false,
+      "releaseEligible": false
+    },
+    {
+      "family": "h-towel-behind",
+      "nameZh": "背后握毛巾抬臂",
+      "sourceSpec": "drill-anim/specs/h-towel-behind.js",
+      "candidateSpec": "drill-anim/specs/h-towel-behind-r3.js",
+      "sourceSha256Lf": "7ce9c451fa5421ffe7b2978b9e3fe535803d1bc52290d75321fdac76df36419c",
+      "candidateSha256Lf": "a6b1d2f9e3c285268390efd793e284fa58138ae9b4e502158b68f8d2fb7693c9",
+      "revision": "h-towel-behind-r3",
+      "status": "cpu-ready-pending-gpu",
+      "sourceNativeFps": 15,
+      "plannedCaptureFps": 30,
+      "durationSeconds": 8,
+      "plannedVideoFrames": 240,
+      "runtimeModel": {
+        "profile": "training-human-v3-contact",
+        "version": "0.1.0-r5"
+      },
+      "sourcePreservation": [
+        {
+          "field": "timeline",
+          "unchanged": true
+        },
+        {
+          "field": "pose",
+          "unchanged": true
+        },
+        {
+          "field": "props",
+          "unchanged": true
+        },
+        {
+          "field": "qa",
+          "unchanged": true
+        },
+        {
+          "field": "highlight",
+          "unchanged": true
+        },
+        {
+          "field": "frame",
+          "unchanged": true
+        },
+        {
+          "field": "shadow",
+          "unchanged": true
+        },
+        {
+          "field": "keyFrames",
+          "unchanged": true
+        },
+        {
+          "field": "stillAt",
+          "unchanged": true
+        }
+      ],
+      "camera": {
+        "source": {
+          "dir": [
+            1,
+            0.25,
+            -0.25
+          ],
+          "fit": [
+            "head",
+            "leftToe",
+            "rightToe",
+            "pelvis",
+            "leftPalm",
+            "rightPalm",
+            "leftElbow",
+            "rightElbow"
+          ],
+          "pad": 0.12,
+          "k": 0.85,
+          "drift": 3,
+          "at": 2.2,
+          "fitTimeline": true
+        },
+        "candidate": {
+          "dir": [
+            1,
+            0.25,
+            -0.25
+          ],
+          "fit": [
+            "head",
+            "leftToe",
+            "rightToe",
+            "pelvis",
+            "leftPalm",
+            "rightPalm",
+            "leftElbow",
+            "rightElbow",
+            "shoulderCenter",
+            "leftKnee",
+            "rightKnee"
+          ],
+          "pad": 0.14,
+          "k": 0.85,
+          "drift": 0,
+          "at": 2.2,
+          "fitTimeline": true,
+          "orbitDegrees": 0,
+          "frontSweepDegrees": 0
+        },
+        "reason": "Preserve the side-rear direction so hands lifting away from the trunk stay visible.",
+        "status": "configured-not-visually-accepted"
+      },
+      "historicalScopeReview": {
+        "nameZh": "背后握毛巾抬臂",
+        "source": "`specs/h-towel-behind.js`（PR #115）",
+        "historicalFinding": "漏收（拉伸）",
+        "related219": "最近：`h-seated-reachback`",
+        "evidence": "spec：背后双手握毛巾直臂上抬做肩伸拉伸；042/050 审计把它和 `h-seated-reachback` 并列为“后撑及肩伸”机制，219 只收了后者",
+        "oldMediaState": "spec v2；旧片 review_required；道具登记为弹力带（实为毛巾）",
+        "historicalRecommendation": "**待开哥确认**（肩伸 219 已有坐姿版，站姿版要不要再收）",
+        "status": "proposal-only-not-new-approval",
+        "sourceDocument": "docs/old-library-audit-20261026.md"
+      },
+      "openFindings": [
+        "The source band geometry is a taut-towel schematic, not cloth simulation or a new towel model.",
+        "Native grip, forearm/trunk clearance and hand-to-prop endpoints require GPU review.",
+        "Standing shoulder-extension scope overlaps seated reach-back; retain the question."
+      ],
+      "cpuChecks": {
+        "import": true,
+        "explicitNativeContactProfileContract": true,
+        "finiteDescriptor": true,
+        "numbersChecked": 13561,
+        "orderedFiniteTracks": true,
+        "trackCount": 28,
+        "trackKeyCount": 6720,
+        "staticCamera": true,
+        "nativeContactCheckSpec": true,
+        "engineKernel": "drill-anim/page/engine.js:E.sample/E.blend (pure prefix, no E.init or E.applyAt)",
+        "sampledDescriptorTimes": 241,
+        "sampledFiniteNumbers": 13978,
+        "maxDescriptorDifferenceFromSource": 0,
+        "descriptorEndpointMaxAbsDifference": 0
+      },
+      "technicalQa": {
+        "visibleSurfaceContact": "not-run",
+        "intersections": "not-run",
+        "loopPlayback": "not-run",
+        "props": "not-run",
+        "cameraActualFrames": "not-run",
+        "fullCycleFraming": "not-run"
+      },
+      "reviewed": false,
+      "releaseEligible": false
+    },
+    {
+      "family": "h-towel-pass",
+      "nameZh": "毛巾过头转肩",
+      "sourceSpec": "drill-anim/specs/h-towel-pass.js",
+      "candidateSpec": "drill-anim/specs/h-towel-pass-r3.js",
+      "sourceSha256Lf": "952c3711f3f1d1b229712d068825c671ab4d8b5b2f0a2cb45ae8b0b95893e754",
+      "candidateSha256Lf": "3ca2ba5eb83c2cf5e939ae260c9ae8891a69f0e8a95bb1a64ef2ff548f487711",
+      "revision": "h-towel-pass-r3",
+      "status": "cpu-ready-pending-gpu",
+      "sourceNativeFps": 15,
+      "plannedCaptureFps": 30,
+      "durationSeconds": 8,
+      "plannedVideoFrames": 240,
+      "runtimeModel": {
+        "profile": "training-human-v3-contact",
+        "version": "0.1.0-r5"
+      },
+      "sourcePreservation": [
+        {
+          "field": "timeline",
+          "unchanged": true
+        },
+        {
+          "field": "pose",
+          "unchanged": true
+        },
+        {
+          "field": "props",
+          "unchanged": true
+        },
+        {
+          "field": "qa",
+          "unchanged": true
+        },
+        {
+          "field": "highlight",
+          "unchanged": true
+        },
+        {
+          "field": "frame",
+          "unchanged": true
+        },
+        {
+          "field": "shadow",
+          "unchanged": true
+        },
+        {
+          "field": "keyFrames",
+          "unchanged": true
+        },
+        {
+          "field": "stillAt",
+          "unchanged": true
+        }
+      ],
+      "camera": {
+        "source": {
+          "dir": [
+            1,
+            0.3,
+            0.75
+          ],
+          "fit": [
+            "head",
+            "leftToe",
+            "rightToe",
+            "pelvis",
+            "leftPalm",
+            "rightPalm",
+            "leftElbow",
+            "rightElbow"
+          ],
+          "pad": 0.12,
+          "k": 0.85,
+          "drift": 3,
+          "at": 3.8,
+          "fitTimeline": true
+        },
+        "candidate": {
+          "dir": [
+            0.65,
+            0.25,
+            1
+          ],
+          "fit": [
+            "head",
+            "leftToe",
+            "rightToe",
+            "pelvis",
+            "leftPalm",
+            "rightPalm",
+            "leftElbow",
+            "rightElbow",
+            "shoulderCenter",
+            "leftKnee",
+            "rightKnee"
+          ],
+          "pad": 0.14,
+          "k": 0.85,
+          "drift": 0,
+          "at": 3.8,
+          "fitTimeline": true,
+          "orbitDegrees": 0,
+          "frontSweepDegrees": 0
+        },
+        "reason": "More frontal three-quarter view makes bilateral hand height and elbow symmetry easier to compare.",
+        "status": "configured-not-visually-accepted"
+      },
+      "historicalScopeReview": {
+        "nameZh": "毛巾过头转肩",
+        "source": "`specs/h-towel-pass.js`（PR #115）",
+        "historicalFinding": "漏收（拉伸/灵活）",
+        "related219": "无等价；相关 `h-wall-angel`",
+        "evidence": "spec：直臂握毛巾从体前过头到身后，肩屈 34→212°；219 无转肩",
+        "oldMediaState": "spec v2；旧片 review_required；`docs/reviews/2026-10-19-visual-audit.md` 记录“棍子穿头、两臂不对称”",
+        "historicalRecommendation": "**建议补收**（需按新模型重做，不复用旧片）",
+        "status": "proposal-only-not-new-approval",
+        "sourceDocument": "docs/old-library-audit-20261026.md"
+      },
+      "openFindings": [
+        "Historical towel/bar crossing the head and asymmetric elbows remain open until actual GPU frames prove otherwise.",
+        "Changing body/camera alone does not fix source band-as-towel appearance or head clearance."
+      ],
+      "cpuChecks": {
+        "import": true,
+        "explicitNativeContactProfileContract": true,
+        "finiteDescriptor": true,
+        "numbersChecked": 12115,
+        "orderedFiniteTracks": true,
+        "trackCount": 25,
+        "trackKeyCount": 6000,
+        "staticCamera": true,
+        "nativeContactCheckSpec": true,
+        "engineKernel": "drill-anim/page/engine.js:E.sample/E.blend (pure prefix, no E.init or E.applyAt)",
+        "sampledDescriptorTimes": 241,
+        "sampledFiniteNumbers": 13255,
+        "maxDescriptorDifferenceFromSource": 0,
+        "descriptorEndpointMaxAbsDifference": 0
+      },
+      "technicalQa": {
+        "visibleSurfaceContact": "not-run",
+        "intersections": "not-run",
+        "loopPlayback": "not-run",
+        "props": "not-run",
+        "cameraActualFrames": "not-run",
+        "fullCycleFraming": "not-run"
+      },
+      "reviewed": false,
+      "releaseEligible": false
+    },
+    {
+      "family": "h-towel-pulldown",
+      "nameZh": "站姿毛巾下拉",
+      "sourceSpec": "drill-anim/specs/h-towel-pulldown.js",
+      "candidateSpec": "drill-anim/specs/h-towel-pulldown-r3.js",
+      "sourceSha256Lf": "d1dd3bc85dc14cb71ec08080828e97e20494c4f073b0247c2235921751e8cf86",
+      "candidateSha256Lf": "6ad2e2953c00ae0e7621465269bbd780819a293914705aa5e9c5540f794dfdb1",
+      "revision": "h-towel-pulldown-r3",
+      "status": "cpu-ready-pending-gpu",
+      "sourceNativeFps": 15,
+      "plannedCaptureFps": 30,
+      "durationSeconds": 8,
+      "plannedVideoFrames": 240,
+      "runtimeModel": {
+        "profile": "training-human-v3-contact",
+        "version": "0.1.0-r5"
+      },
+      "sourcePreservation": [
+        {
+          "field": "timeline",
+          "unchanged": true
+        },
+        {
+          "field": "pose",
+          "unchanged": true
+        },
+        {
+          "field": "props",
+          "unchanged": true
+        },
+        {
+          "field": "qa",
+          "unchanged": true
+        },
+        {
+          "field": "highlight",
+          "unchanged": true
+        },
+        {
+          "field": "frame",
+          "unchanged": true
+        },
+        {
+          "field": "shadow",
+          "unchanged": true
+        },
+        {
+          "field": "keyFrames",
+          "unchanged": true
+        },
+        {
+          "field": "stillAt",
+          "unchanged": true
+        }
+      ],
+      "camera": {
+        "source": {
+          "dir": [
+            0.75,
+            0.2,
+            -0.85
+          ],
+          "fit": [
+            "head",
+            "leftToe",
+            "rightToe",
+            "pelvis",
+            "leftPalm",
+            "rightPalm",
+            "leftElbow",
+            "rightElbow"
+          ],
+          "pad": 0.14,
+          "k": 0.85,
+          "drift": 3,
+          "at": 2.1
+        },
+        "candidate": {
+          "dir": [
+            1,
+            0.2,
+            0.15
+          ],
+          "fit": [
+            "head",
+            "leftToe",
+            "rightToe",
+            "pelvis",
+            "leftPalm",
+            "rightPalm",
+            "leftElbow",
+            "rightElbow",
+            "shoulderCenter",
+            "leftKnee",
+            "rightKnee"
+          ],
+          "pad": 0.14,
+          "k": 0.85,
+          "drift": 0,
+          "at": 2.1,
+          "fitTimeline": true,
+          "orbitDegrees": 0,
+          "frontSweepDegrees": 0
+        },
+        "reason": "Use a side-front view so the towel and elbow path are visible rather than hidden behind the head.",
+        "status": "configured-not-visually-accepted"
+      },
+      "historicalScopeReview": {
+        "nameZh": "站姿毛巾下拉",
+        "source": "`specs/h-towel-pulldown.js`（PR #112）",
+        "historicalFinding": "漏收（无氧·力量）",
+        "related219": "最近：`lats-B`、`h-band-row`、`h-fixed-bar-vertical-pull`",
+        "evidence": "spec：双手外拉毛巾做下拉，自对抗、负荷不可量化；背阔肌 219 已有弹力带/单杠 3 个",
+        "oldMediaState": "spec v2；旧片 review_required",
+        "historicalRecommendation": "**不收**（已有带负荷的同肌群动作）",
+        "status": "proposal-only-not-new-approval",
+        "sourceDocument": "docs/old-library-audit-20261026.md"
+      },
+      "openFindings": [
+        "Self-resisted towel pulldown has unquantified load and overlaps other lat-pulldown mechanisms.",
+        "Source band-as-towel geometry, native grip and head/prop clearance remain pending."
+      ],
+      "cpuChecks": {
+        "import": true,
+        "explicitNativeContactProfileContract": true,
+        "finiteDescriptor": true,
+        "numbersChecked": 9227,
+        "orderedFiniteTracks": true,
+        "trackCount": 19,
+        "trackKeyCount": 4560,
+        "staticCamera": true,
+        "nativeContactCheckSpec": true,
+        "engineKernel": "drill-anim/page/engine.js:E.sample/E.blend (pure prefix, no E.init or E.applyAt)",
+        "sampledDescriptorTimes": 241,
+        "sampledFiniteNumbers": 13255,
+        "maxDescriptorDifferenceFromSource": 0,
+        "descriptorEndpointMaxAbsDifference": 0
+      },
+      "technicalQa": {
+        "visibleSurfaceContact": "not-run",
+        "intersections": "not-run",
+        "loopPlayback": "not-run",
+        "props": "not-run",
+        "cameraActualFrames": "not-run",
+        "fullCycleFraming": "not-run"
+      },
+      "reviewed": false,
+      "releaseEligible": false
+    },
+    {
+      "family": "h-wall-pec",
+      "nameZh": "靠墙单臂胸肌拉伸",
+      "sourceSpec": "drill-anim/specs/h-wall-pec.js",
+      "candidateSpec": "drill-anim/specs/h-wall-pec-r3.js",
+      "sourceSha256Lf": "f625d15dfaa87c0d52cfd9a3308fb8a27e3f2b5a4e266a1fc57cdbb0b5854c62",
+      "candidateSha256Lf": "d3d012fdba363e660f06c0b8d9b7037c6bd0587bfbfb61244c4feba5d4b41d79",
+      "revision": "h-wall-pec-r3",
+      "status": "cpu-ready-pending-gpu",
+      "sourceNativeFps": 15,
+      "plannedCaptureFps": 30,
+      "durationSeconds": 8,
+      "plannedVideoFrames": 240,
+      "runtimeModel": {
+        "profile": "training-human-v3-contact",
+        "version": "0.1.0-r5"
+      },
+      "sourcePreservation": [
+        {
+          "field": "timeline",
+          "unchanged": true
+        },
+        {
+          "field": "pose",
+          "unchanged": true
+        },
+        {
+          "field": "props",
+          "unchanged": true
+        },
+        {
+          "field": "qa",
+          "unchanged": true
+        },
+        {
+          "field": "highlight",
+          "unchanged": true
+        },
+        {
+          "field": "frame",
+          "unchanged": true
+        },
+        {
+          "field": "shadow",
+          "unchanged": true
+        },
+        {
+          "field": "keyFrames",
+          "unchanged": true
+        },
+        {
+          "field": "stillAt",
+          "unchanged": true
+        }
+      ],
+      "camera": {
+        "source": {
+          "dir": [
+            -0.75,
+            0.35,
+            0.8
+          ],
+          "fit": [
+            "head",
+            "leftToe",
+            "rightToe",
+            "pelvis",
+            "rightPalm",
+            "rightElbow",
+            "leftPalm"
+          ],
+          "pad": 0.14,
+          "k": 0.95,
+          "drift": 3,
+          "at": 3.8
+        },
+        "candidate": {
+          "dir": [
+            0.8,
+            0.25,
+            1
+          ],
+          "fit": [
+            "head",
+            "leftToe",
+            "rightToe",
+            "pelvis",
+            "rightPalm",
+            "rightElbow",
+            "leftPalm",
+            "shoulderCenter",
+            "leftElbow",
+            "leftKnee",
+            "rightKnee"
+          ],
+          "pad": 0.14,
+          "k": 0.95,
+          "drift": 0,
+          "at": 3.8,
+          "fitTimeline": true,
+          "orbitDegrees": 0,
+          "frontSweepDegrees": 0
+        },
+        "reason": "View from the open positive-X side; the negative-X source wall can occlude the arm from the old camera.",
+        "status": "configured-not-visually-accepted"
+      },
+      "historicalScopeReview": {
+        "nameZh": "靠墙单臂胸肌拉伸",
+        "source": "`specs/h-wall-pec.js`（PR #112）",
+        "historicalFinding": "重复",
+        "related219": "`h-doorframe-forearms-pec-native`（219 id `h-doorframe-forearms-pec-native-r3`）",
+        "evidence": "同为站姿、手/前臂抵墙（门框）、转体做胸大肌静态拉伸；差异只是单直臂 vs 双前臂支点",
+        "oldMediaState": "spec v2；旧片 review_required；PR #112 作者 QA 右肘报警",
+        "historicalRecommendation": "**不收**",
+        "status": "proposal-only-not-new-approval",
+        "sourceDocument": "docs/old-library-audit-20261026.md"
+      },
+      "openFindings": [
+        "Historical right-elbow warning and native palm-to-wall contact need GPU review.",
+        "Single-straight-arm support overlaps the delivered bilateral forearm/doorframe family; preserve the distinction and scope question."
+      ],
+      "cpuChecks": {
+        "import": true,
+        "explicitNativeContactProfileContract": true,
+        "finiteDescriptor": true,
+        "numbersChecked": 1530,
+        "orderedFiniteTracks": true,
+        "trackCount": 3,
+        "trackKeyCount": 720,
+        "staticCamera": true,
+        "nativeContactCheckSpec": true,
+        "engineKernel": "drill-anim/page/engine.js:E.sample/E.blend (pure prefix, no E.init or E.applyAt)",
+        "sampledDescriptorTimes": 241,
+        "sampledFiniteNumbers": 13255,
+        "maxDescriptorDifferenceFromSource": 0,
+        "descriptorEndpointMaxAbsDifference": 0
+      },
+      "technicalQa": {
+        "visibleSurfaceContact": "not-run",
+        "intersections": "not-run",
+        "loopPlayback": "not-run",
+        "props": "not-run",
+        "cameraActualFrames": "not-run",
+        "fullCycleFraming": "not-run"
+      },
+      "reviewed": false,
+      "releaseEligible": false
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "format": "pose-hub-action-recipe@1",
+  "id": "h-supine-cactus-chest",
+  "nameZh": "仰卧仙人掌开胸",
+  "spec": "drill-anim/specs/h-supine-cactus-chest-r3.js",
+  "specSha256Lf": "4ab119ada537445f80b0c206638a4dacb088713464c2bb6eee8251d67559d4ac",
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "hands": {
+    "left": "relaxed",
+    "right": "relaxed"
+  },
+  "camera": {
+    "dir": [
+      0.3,
+      0.75,
+      1
+    ],
+    "fit": [
+      "head",
+      "leftPalm",
+      "rightPalm",
+      "leftElbow",
+      "rightElbow",
+      "leftToe",
+      "rightToe",
+      "pelvis",
+      "leftKnee",
+      "rightKnee",
+      "leftAnkle",
+      "rightAnkle"
+    ],
+    "pad": 0.12,
+    "k": 0.8,
+    "drift": 0,
+    "at": 3,
+    "fitTimeline": true,
+    "orbitDegrees": 0,
+    "frontSweepDegrees": 0
+  },
+  "cameraScale": 1.25,
+  "output": {
+    "groundShadow": false,
+    "cameraMotion": false,
+    "wholeCycleContentRect": true,
+    "fps": 30,
+    "exerciseMat": false
+  },
+  "adaptation": {
+    "status": "candidate-retargeted-pending-visual",
+    "notes": [
+      "Rotated rest-pelvis delta preserves supine upper-body world position; floor feet remain fixed.",
+      "Measured arm lengths and actual elbow plane retain palms-up cactus progression.",
+      "Extra camera margin includes mat; back/head/forearm clearance remains a preview check."
+    ]
+  },
+  "reviewPlan": {
+    "previewSize": 480,
+    "previewFps": 12,
+    "requiresUserApproval": true,
+    "checks": [
+      "Full loop and clear teaching angle",
+      "Body and necessary props remain in view; fixed framing",
+      "Actual wrist and ankle rotation path including both sides and loop seam",
+      "Contact, penetration, floating, neutral posture",
+      "No ground shadow; one content rectangle for complete loop"
+    ]
+  },
+  "reviewed": false,
+  "releaseEligible": false,
+  "appearance": {
+    "highlight": {
+      "color": "#F05A36",
+      "shade": [
+        0.5,
+        0.42,
+        0.08
+      ],
+      "intensity": [
+        0.75,
+        1
+      ]
+    },
+    "purpose": "Visual cue for target muscle effort, not a physiological measurement",
+    "status": "parameterized-selection-deferred-by-user"
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "format": "pose-hub-action-recipe@1",
+  "id": "h-half-kneeling-quad-stretch",
+  "nameZh": "半跪姿手拉脚股四头肌拉伸",
+  "spec": "drill-anim/specs/h-half-kneeling-quad-stretch-r4.js",
+  "specSha256Lf": "7fc0823bee7d2737328dfb4944817cb62fa6b647d5d35cdf69caf88d27eca248",
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "hands": {
+    "left": "assist",
+    "right": "assist"
+  },
+  "camera": {
+    "dir": [
+      1,
+      0.22,
+      0.55
+    ],
+    "fit": [
+      "head",
+      "leftToe",
+      "rightToe",
+      "pelvis",
+      "leftKnee",
+      "rightKnee",
+      "leftPalm",
+      "leftAnkle",
+      "rightAnkle",
+      "rightPalm",
+      "leftElbow",
+      "rightElbow"
+    ],
+    "pad": 0.16,
+    "k": 1,
+    "drift": 0,
+    "at": 3.8,
+    "fitTimeline": true,
+    "orbitDegrees": 0,
+    "frontSweepDegrees": 0
+  },
+  "cameraScale": 1.05,
+  "output": {
+    "groundShadow": false,
+    "cameraMotion": false,
+    "wholeCycleContentRect": true,
+    "fps": 30,
+    "exerciseMat": false
+  },
+  "adaptation": {
+    "status": "candidate-retargeted-pending-visual",
+    "notes": [
+      "Raised pelvis seed for longer thigh while preserving knee anchor and py/pz solve.",
+      "Rear ankle lifted for current shin length, hand target follows the rear ankle change.",
+      "Fixed assist hand candidates; exact ankle grasp and supporting knee contact remain visual review points.",
+      "Deterministic pelvis and rear ankle geometry replace warm py/pz solve, avoiding loop branch drift while holding the rear knee."
+    ]
+  },
+  "reviewPlan": {
+    "previewSize": 480,
+    "previewFps": 12,
+    "requiresUserApproval": true,
+    "checks": [
+      "Full loop and clear teaching angle",
+      "Body and necessary props remain in view; fixed framing",
+      "Actual wrist and ankle rotation path including both sides and loop seam",
+      "Contact, penetration, floating, neutral posture",
+      "No ground shadow; one content rectangle for complete loop"
+    ]
+  },
+  "reviewed": false,
+  "releaseEligible": false,
+  "appearance": {
+    "highlight": {
+      "color": "#F05A36",
+      "shade": [
+        0.5,
+        0.42,
+        0.08
+      ],
+      "intensity": [
+        0.75,
+        1
+      ]
+    },
+    "purpose": "Visual cue for target muscle effort, not a physiological measurement",
+    "status": "parameterized-selection-deferred-by-user"
+  }
+}

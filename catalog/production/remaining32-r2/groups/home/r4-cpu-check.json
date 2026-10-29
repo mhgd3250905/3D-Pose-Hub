@@ -1,0 +1,503 @@
+[
+  {
+    "id": "h-bear-plank",
+    "spec": "h-bear-plank-r4",
+    "samples": 241,
+    "finite": true,
+    "zeroDirections": 0,
+    "loopDescriptorEqual": true,
+    "sourceQA": {
+      "pins": [
+        {
+          "c": "handR",
+          "when": "always"
+        },
+        {
+          "c": "handL",
+          "when": "always"
+        },
+        {
+          "c": "footL",
+          "when": "always"
+        },
+        {
+          "c": "footR",
+          "when": "always"
+        }
+      ],
+      "jointPins": [
+        {
+          "j": "leftKnee",
+          "axes": "xz"
+        },
+        {
+          "j": "rightKnee",
+          "axes": "xz"
+        }
+      ],
+      "straight": [
+        {
+          "j": "elbow.right",
+          "min": 170
+        },
+        {
+          "j": "elbow.left",
+          "min": 170
+        }
+      ],
+      "allowContact": [
+        "thighL|shinL",
+        "thighR|shinR"
+      ]
+    },
+    "note": "Descriptor CPU check only. Actual skeleton, contact and mesh QA remain required."
+  },
+  {
+    "id": "h-biceps-self",
+    "spec": "h-biceps-self-r4",
+    "samples": 241,
+    "finite": true,
+    "zeroDirections": 0,
+    "loopDescriptorEqual": true,
+    "sourceQA": {
+      "pins": [
+        {
+          "c": "footL",
+          "when": "always"
+        },
+        {
+          "c": "footR",
+          "when": "always"
+        }
+      ],
+      "straight": [],
+      "allowContact": [
+        "handL|forearmR",
+        "handL|handR",
+        "forearmL|torso",
+        "upperArmR|torso",
+        "forearmL|forearmR",
+        "upperArmL|torso",
+        "handL|torso",
+        "forearmR|torso"
+      ]
+    },
+    "note": "Descriptor CPU check only. Actual skeleton, contact and mesh QA remain required."
+  },
+  {
+    "id": "h-bridge-overhead",
+    "spec": "h-bridge-overhead-r4",
+    "samples": 241,
+    "finite": true,
+    "zeroDirections": 0,
+    "loopDescriptorEqual": true,
+    "sourceQA": {
+      "pins": [
+        {
+          "c": "footL",
+          "when": "always"
+        },
+        {
+          "c": "footR",
+          "when": "always"
+        }
+      ],
+      "allowContact": [
+        "thighL|shinL",
+        "thighR|shinR",
+        "upperArmL|head",
+        "upperArmR|head"
+      ]
+    },
+    "note": "Descriptor CPU check only. Actual skeleton, contact and mesh QA remain required."
+  },
+  {
+    "id": "h-crossbody",
+    "spec": "h-crossbody-r4",
+    "samples": 241,
+    "finite": true,
+    "zeroDirections": 0,
+    "loopDescriptorEqual": true,
+    "sourceQA": {
+      "pins": [
+        {
+          "c": "footL",
+          "when": "always"
+        },
+        {
+          "c": "footR",
+          "when": "always"
+        }
+      ],
+      "straight": [
+        {
+          "j": "elbow.right",
+          "min": 168
+        }
+      ],
+      "allowContact": [
+        "handL|upperArmR",
+        "forearmL|upperArmR",
+        "upperArmR|torso",
+        "forearmR|torso",
+        "handL|forearmR",
+        "forearmL|torso",
+        "upperArmL|torso",
+        "handL|torso",
+        "forearmL|forearmR",
+        "handR|torso",
+        "handR|upperArmL"
+      ]
+    },
+    "note": "Descriptor CPU check only. Actual skeleton, contact and mesh QA remain required."
+  },
+  {
+    "id": "h-inner-thigh",
+    "spec": "h-inner-thigh-r4",
+    "samples": 241,
+    "finite": true,
+    "zeroDirections": 0,
+    "loopDescriptorEqual": true,
+    "sourceQA": {
+      "pins": [
+        {
+          "c": "handL",
+          "when": "always"
+        },
+        {
+          "c": "footR",
+          "when": "always"
+        }
+      ],
+      "touch": [
+        {
+          "side": "right",
+          "when": "always"
+        }
+      ],
+      "straight": [
+        {
+          "j": "knee.left",
+          "min": 170
+        }
+      ],
+      "allowContact": [
+        "handR|torso",
+        "forearmR|torso",
+        "handR|thighR",
+        "thighL|thighR",
+        "shinL|shinR",
+        "footL|footR",
+        "upperArmL|torso",
+        "forearmL|torso",
+        "thighR|torso"
+      ]
+    },
+    "note": "Descriptor CPU check only. Actual skeleton, contact and mesh QA remain required."
+  },
+  {
+    "id": "h-kb-swing",
+    "spec": "h-kb-swing-r4",
+    "samples": 241,
+    "finite": true,
+    "zeroDirections": 0,
+    "loopDescriptorEqual": true,
+    "sourceQA": {
+      "pins": [
+        {
+          "c": "footL",
+          "when": "always"
+        },
+        {
+          "c": "footR",
+          "when": "always"
+        }
+      ],
+      "straight": [
+        {
+          "j": "elbow.right",
+          "min": 165
+        }
+      ],
+      "allowContact": []
+    },
+    "note": "Descriptor CPU check only. Actual skeleton, contact and mesh QA remain required."
+  },
+  {
+    "id": "h-mountain-climber",
+    "spec": "h-mountain-climber-r4",
+    "samples": 241,
+    "finite": true,
+    "zeroDirections": 0,
+    "loopDescriptorEqual": true,
+    "sourceQA": {
+      "pins": [
+        {
+          "c": "handR",
+          "when": "always"
+        },
+        {
+          "c": "handL",
+          "when": "always"
+        },
+        {
+          "c": "footR",
+          "when": "params.uR<0.001"
+        },
+        {
+          "c": "footL",
+          "when": "params.uL<0.001"
+        }
+      ],
+      "straight": [
+        {
+          "j": "elbow.right",
+          "min": 172
+        },
+        {
+          "j": "elbow.left",
+          "min": 172
+        },
+        {
+          "j": "knee.right",
+          "min": 170,
+          "when": "params.uR<0.001"
+        },
+        {
+          "j": "knee.left",
+          "min": 170,
+          "when": "params.uL<0.001"
+        }
+      ],
+      "allowContact": [
+        "thighR|torso",
+        "thighL|torso"
+      ]
+    },
+    "note": "Descriptor CPU check only. Actual skeleton, contact and mesh QA remain required."
+  },
+  {
+    "id": "h-open-book",
+    "spec": "h-open-book-r4",
+    "samples": 241,
+    "finite": true,
+    "zeroDirections": 0,
+    "loopDescriptorEqual": true,
+    "sourceQA": {
+      "pins": [],
+      "allowContact": [
+        "thighL|thighR",
+        "shinL|shinR",
+        "footL|footR",
+        "kneeL|kneeR",
+        "handR|forearmL",
+        "handR|handL",
+        "forearmR|forearmL"
+      ]
+    },
+    "note": "Descriptor CPU check only. Actual skeleton, contact and mesh QA remain required."
+  },
+  {
+    "id": "h-pike-pushup",
+    "spec": "h-pike-pushup-r4",
+    "samples": 241,
+    "finite": true,
+    "zeroDirections": 0,
+    "loopDescriptorEqual": true,
+    "sourceQA": {
+      "pins": [
+        {
+          "c": "handR",
+          "when": "always"
+        },
+        {
+          "c": "handL",
+          "when": "always"
+        },
+        {
+          "c": "footR",
+          "when": "always"
+        },
+        {
+          "c": "footL",
+          "when": "always"
+        }
+      ],
+      "straight": [
+        {
+          "j": "elbow.right",
+          "min": 170,
+          "when": "params.down<0.001"
+        },
+        {
+          "j": "elbow.left",
+          "min": 170,
+          "when": "params.down<0.001"
+        },
+        {
+          "j": "knee.right",
+          "min": 170
+        },
+        {
+          "j": "knee.left",
+          "min": 170
+        }
+      ],
+      "allowContact": []
+    },
+    "note": "Descriptor CPU check only. Actual skeleton, contact and mesh QA remain required."
+  },
+  {
+    "id": "h-reverse-lunge",
+    "spec": "h-reverse-lunge-r4",
+    "samples": 241,
+    "finite": true,
+    "zeroDirections": 0,
+    "loopDescriptorEqual": true,
+    "sourceQA": {
+      "pins": [
+        {
+          "c": "footL",
+          "when": "params.uL<0.001"
+        },
+        {
+          "c": "footR",
+          "when": "params.uR<0.001"
+        }
+      ],
+      "touch": [
+        {
+          "side": "right",
+          "when": "always"
+        },
+        {
+          "side": "left",
+          "when": "always"
+        }
+      ],
+      "allowContact": [
+        "handR|torso",
+        "forearmR|torso",
+        "handL|torso",
+        "forearmL|torso",
+        "thighL|shinL",
+        "thighR|shinR"
+      ]
+    },
+    "note": "Descriptor CPU check only. Actual skeleton, contact and mesh QA remain required."
+  },
+  {
+    "id": "h-towel-behind",
+    "spec": "h-towel-behind-r4",
+    "samples": 241,
+    "finite": true,
+    "zeroDirections": 0,
+    "loopDescriptorEqual": true,
+    "sourceQA": {
+      "pins": [
+        {
+          "c": "footL",
+          "when": "always"
+        },
+        {
+          "c": "footR",
+          "when": "always"
+        }
+      ],
+      "straight": [
+        {
+          "j": "elbow.left",
+          "min": 166
+        },
+        {
+          "j": "elbow.right",
+          "min": 166
+        }
+      ],
+      "allowContact": []
+    },
+    "note": "Descriptor CPU check only. Actual skeleton, contact and mesh QA remain required."
+  },
+  {
+    "id": "h-towel-pass",
+    "spec": "h-towel-pass-r4",
+    "samples": 241,
+    "finite": true,
+    "zeroDirections": 0,
+    "loopDescriptorEqual": true,
+    "sourceQA": {
+      "pins": [
+        {
+          "c": "footL",
+          "when": "always"
+        },
+        {
+          "c": "footR",
+          "when": "always"
+        }
+      ],
+      "straight": [
+        {
+          "j": "elbow.left",
+          "min": 166
+        },
+        {
+          "j": "elbow.right",
+          "min": 166
+        }
+      ],
+      "allowContact": []
+    },
+    "note": "Descriptor CPU check only. Actual skeleton, contact and mesh QA remain required."
+  },
+  {
+    "id": "h-towel-pulldown",
+    "spec": "h-towel-pulldown-r4",
+    "samples": 241,
+    "finite": true,
+    "zeroDirections": 0,
+    "loopDescriptorEqual": true,
+    "sourceQA": {
+      "pins": [
+        {
+          "c": "footL",
+          "when": "always"
+        },
+        {
+          "c": "footR",
+          "when": "always"
+        }
+      ],
+      "straight": [],
+      "allowContact": []
+    },
+    "note": "Descriptor CPU check only. Actual skeleton, contact and mesh QA remain required."
+  },
+  {
+    "id": "h-wall-pec",
+    "spec": "h-wall-pec-r4",
+    "samples": 241,
+    "finite": true,
+    "zeroDirections": 0,
+    "loopDescriptorEqual": true,
+    "sourceQA": {
+      "pins": [
+        {
+          "c": "handR",
+          "when": "always"
+        },
+        {
+          "c": "footL",
+          "when": "always"
+        },
+        {
+          "c": "footR",
+          "when": "always"
+        }
+      ],
+      "straight": [],
+      "allowContact": []
+    },
+    "note": "Descriptor CPU check only. Actual skeleton, contact and mesh QA remain required."
+  }
+]
