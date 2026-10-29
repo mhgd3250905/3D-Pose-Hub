@@ -11,3 +11,5 @@
 输出为 `F:/PoseHub-v2-production/template-finalization-20261029/captures/<动作ID>/attempt04/`，其中 `visual-review.json`、`elbow-integration-audit.json` 及部分动作的独立审计保存实际证据。当前问题清单另存为 `qa/known-issues-r2.json`，旧r1的清单、配方、预览及版本快照保留原字节。r1中毛巾肩部按用户放宽标准保留的材质层纹仍按原范围记录。
 
 验收入口：`http://127.0.0.1:8845/?revision=elbow-r2`。本版保持 `userReviewed:false` / `releaseEligible:false`，正式高清制作仍留到最后。仅作本地版本保存；精确提交和源码增量包回执位于 `F:/PoseHub-v2-production/version-snapshots/remaining32-template-finalization-20261029-r2/delivery-receipt.json`。
+
+随后按用户要求对其余28项快速扫查，核对72项现有图片引用，未发现需要再补肘部修正的明显收细。没有追加GPU渲染或修改配方；[扫查索引](../../catalog/production/reviews/remaining32-elbow-sweep-20261029-r1.json)保留分组回执与图片证据位置。这是关键视图筛查，不自动授予逐项用户验收。
