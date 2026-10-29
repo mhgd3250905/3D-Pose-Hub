@@ -1,0 +1,88 @@
+{
+  "format": "pose-hub-action-recipe@1",
+  "id": "h-bilateral-farmer-hold-native",
+  "nameZh": "双哑铃农夫站立保持",
+  "spec": "drill-anim/specs/h-bilateral-farmer-hold-native.js",
+  "specSha256Lf": "23edaff77f278333d4a73dcbd0855781b76ee03f237b05a81d5505ff51048114",
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "hands": {
+    "left": "dumbbell-grasp",
+    "right": "dumbbell-grasp"
+  },
+  "camera": {
+    "dir": [
+      0.35,
+      0.18,
+      1
+    ],
+    "fit": [
+      "head",
+      "leftToe",
+      "rightToe",
+      "leftPalm",
+      "rightPalm",
+      "pelvis"
+    ],
+    "pad": 0.18,
+    "k": 0.9,
+    "at": 0,
+    "drift": 0,
+    "fitTimeline": true,
+    "orbitDegrees": 0,
+    "frontSweepDegrees": 0
+  },
+  "cameraScale": 1.15,
+  "output": {
+    "groundShadow": false,
+    "cameraMotion": false,
+    "wholeCycleContentRect": true,
+    "fps": 30,
+    "exerciseMat": false
+  },
+  "appearance": {
+    "highlight": {
+      "color": "#F05A36",
+      "shade": [
+        0.5,
+        0.42,
+        0.08
+      ],
+      "intensity": [
+        0.75,
+        1
+      ]
+    },
+    "purpose": "Visual cue for target muscle effort, not a physiological measurement",
+    "status": "parameterized-selection-deferred-by-user"
+  },
+  "jointCorrections": [
+    {
+      "profile": "upper-arm-contour-r3",
+      "version": "0.1.0-r3"
+    },
+    {
+      "profile": "ankle-join-r5",
+      "version": "0.1.0-r5"
+    }
+  ],
+  "adaptation": {
+    "status": "remote-keyframe-pending",
+    "method": "Fixed queue source reused unchanged on armfix-r2.",
+    "cameraChanges": "drift->0 (static); k 0.85->0.9"
+  },
+  "source": {
+    "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
+    "selectedSpec": "drill-anim/specs/h-bilateral-farmer-hold-native.js"
+  },
+  "sampledOnly": true,
+  "fullCycleValidated": false,
+  "userAccepted": false,
+  "releaseEligible": false,
+  "fixedCorrectionStack": {
+    "profile": "fixed-wrist-corrections-r1",
+    "version": "0.1.0-r1"
+  }
+}
