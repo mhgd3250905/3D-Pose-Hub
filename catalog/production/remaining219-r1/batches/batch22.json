@@ -1,0 +1,395 @@
+{
+  "format": "pose-hub-remaining219-remote-index@1",
+  "batch": "batch22",
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "environment": {
+    "host": "Hark sandbox aarch64, 2 cores, 7.9 GiB, no GPU",
+    "browser": "Playwright 1.48.2 chromium-1140",
+    "renderer": "software (ANGLE SwiftShader)",
+    "serial": true
+  },
+  "checks": {
+    "keyframes": "tools/action-completion-v3-r2/remote-keyframes-r1.mjs, 256/320px, 3-6 frames",
+    "rotation": "tools/action-completion-v3-r2/remote-rotation-r1.mjs, 15Hz sequential solve, axial twist of forearm|upperArm, hand|forearm, foot|shin (range>120, step>25, net>150 deg flagged)"
+  },
+  "sampledOnly": true,
+  "fullCycleValidated": false,
+  "userAccepted": false,
+  "releaseEligible": false,
+  "items": [
+    {
+      "stableId": "h-russian-twist",
+      "status": "remote-keyframe-reviewed",
+      "spec": "drill-anim/specs/h-russian-twist-r2.js",
+      "specSha256Lf": "3d9f0c4421a05e5db4fb22f40548b9181aebac931569ba4d41ad83138a213d87",
+      "recipe": "catalog/production/remaining219-r1/recipes/h-russian-twist.json",
+      "recipeSha256Lf": "e80b6381d5d7a8aafb74ed9eb4e51424a60406a5172adea57d89f7bdae94f3c2",
+      "keyframes": {
+        "attempt": "h-russian-twist-a01",
+        "times": [
+          1,
+          3,
+          5,
+          7
+        ],
+        "size": 256,
+        "recipeSha256": "e80b6381d5d7a8aafb74ed9eb4e51424a60406a5172adea57d89f7bdae94f3c2",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "f2796961b9d2ff8a05f43d080b35a880d20f090ac8698662514910a79afa9982",
+          "keyframe-01.png": "d98ec9021f99b4cf71ebe52b8f47004ba5e73b2f17f0c5367e406cc1c19165e7",
+          "keyframe-02.png": "f2796961b9d2ff8a05f43d080b35a880d20f090ac8698662514910a79afa9982",
+          "keyframe-03.png": "d98ec9021f99b4cf71ebe52b8f47004ba5e73b2f17f0c5367e406cc1c19165e7"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "dea2ac6b47b9b746a8a371c8a721a4260b7da3dc01ad75768e85752f36dc8ee3",
+        "samples": 121,
+        "flagged": [],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 65.7,
+            "maxStepDeg": 4.3,
+            "netDeg": 0
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 63.9,
+            "maxStepDeg": 4.6,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 65.7,
+            "maxStepDeg": 4.3,
+            "netDeg": 0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 63.9,
+            "maxStepDeg": 4.6,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          }
+        },
+        "note": "rotation screen ran on an earlier recipe revision that differs only in camera; twist is camera independent"
+      },
+      "notes": "seated Russian twist on mat, hands clasped; rotation visible.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect"
+      ]
+    },
+    {
+      "stableId": "h-seated-reachback",
+      "status": "remote-keyframe-reviewed",
+      "spec": "drill-anim/specs/h-seated-reachback.js",
+      "specSha256Lf": "d6b1b9a4aa56b8203e034593af23aa9972b06df600fcc54adc50597420edcc54",
+      "recipe": "catalog/production/remaining219-r1/recipes/h-seated-reachback.json",
+      "recipeSha256Lf": "22f11a55868d45ec72a9216cbe8fa94da1f897eca78e6a8d8ecdcb88235cf3a0",
+      "keyframes": {
+        "attempt": "h-seated-reachback-a01",
+        "times": [
+          1,
+          3,
+          5,
+          7
+        ],
+        "size": 256,
+        "recipeSha256": "22f11a55868d45ec72a9216cbe8fa94da1f897eca78e6a8d8ecdcb88235cf3a0",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "7765fd807c6ced68c0895a454025053443034bc3b6c4fee53bcd59fdc140b959",
+          "keyframe-01.png": "8b21241870b70b6117c330203cb55f666be55ecf7be5c197223dd820ba18c839",
+          "keyframe-02.png": "cb064ff1a92a5b557299e832ad611d890f9f0046cc0bc28a0d730e9a094deac1",
+          "keyframe-03.png": "aee9cac885697418a7597a9c72e2e87526a804ba280893dc5a67e82efd40c84e"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "b3305772011841060d02af6f539a151e2deeb3901e47bd13172333df5250fb2f",
+        "samples": 121,
+        "flagged": [],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 25.8,
+            "maxStepDeg": 1.2,
+            "netDeg": -0.0
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 25.8,
+            "maxStepDeg": 1.2,
+            "netDeg": 0.0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          }
+        },
+        "note": "rotation screen ran on an earlier recipe revision that differs only in camera; twist is camera independent"
+      },
+      "notes": "seated rear-support hip slide; motion small at 256px.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect"
+      ]
+    },
+    {
+      "stableId": "h-side-er",
+      "status": "remote-keyframe-reviewed",
+      "spec": "drill-anim/specs/h-side-er.js",
+      "specSha256Lf": "16dd87c0bd5d214ee229719c031b9adf669025675d883ec661afc197b3c516e9",
+      "recipe": "catalog/production/remaining219-r1/recipes/h-side-er.json",
+      "recipeSha256Lf": "8836ec2e15760b9bcea0f6aadbacd34f99cdee55c0634682a395876e48c1259d",
+      "keyframes": {
+        "attempt": "h-side-er-a01",
+        "times": [
+          0.15,
+          1.8,
+          4,
+          5.8
+        ],
+        "size": 256,
+        "recipeSha256": "8836ec2e15760b9bcea0f6aadbacd34f99cdee55c0634682a395876e48c1259d",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "551da50e050c7dbaf803538a17b55f4da59c5a7d42a86f100728384cf8f4a825",
+          "keyframe-01.png": "825ed6ff6451d573b82b87536e95408c4e9e42bb5e69f4b438a5b353682674c5",
+          "keyframe-02.png": "eb48c5a75c5d4acbd20ddadd1e51ea066932ecf3e25dd2abc83d59411ff3514f",
+          "keyframe-03.png": "825ed6ff6451d573b82b87536e95408c4e9e42bb5e69f4b438a5b353682674c5"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "84c1e8b7c99e63c5152eb9c9a137ad3435c83f17c099f5cc3712005ec0a713fb",
+        "samples": 121,
+        "flagged": [],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 77.7,
+            "maxStepDeg": 6.7,
+            "netDeg": 0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 29.1,
+            "maxStepDeg": 2.4,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          }
+        },
+        "note": "rotation screen ran on an earlier recipe revision that differs only in camera; twist is camera independent"
+      },
+      "notes": "side-lying shoulder external rotation; figure small in frame.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect",
+        "camera: figure small"
+      ]
+    },
+    {
+      "stableId": "h-side-leg-raise",
+      "status": "remote-keyframe-reviewed",
+      "spec": "drill-anim/specs/h-side-leg-raise-r5.js",
+      "specSha256Lf": "beaad38fafb0e3e7668787b007ee1b0458de4ad870fe2fc8d9ca647216764326",
+      "recipe": "catalog/production/remaining219-r1/recipes/h-side-leg-raise.json",
+      "recipeSha256Lf": "3978f600e4ca95e5ee9b1481781cd8ac4004a0392f91fc76ed8082426a4a84ac",
+      "keyframes": {
+        "attempt": "h-side-leg-raise-a03",
+        "times": [
+          0.2,
+          1.9,
+          4,
+          5.9
+        ],
+        "size": 256,
+        "recipeSha256": "3978f600e4ca95e5ee9b1481781cd8ac4004a0392f91fc76ed8082426a4a84ac",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "d8116e7f0f7f82b486825b6e725cb65b3d17c744876052dbb213e817578e8385",
+          "keyframe-01.png": "4628747d48d6a412dc2b977a97b693c1b22ab49591305e62cbce4aacf245e69e",
+          "keyframe-02.png": "072b9cb5cfcdef5ddd0c1876f726b3c834d43e9ae2390a3d54cb4579c0e08a4b",
+          "keyframe-03.png": "4628747d48d6a412dc2b977a97b693c1b22ab49591305e62cbce4aacf245e69e"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [
+        "h-side-leg-raise-a01 (oblique camera, mid-rep times: abduction invisible)",
+        "h-side-leg-raise-a02"
+      ],
+      "rotation": {
+        "recipeSha256": "a2765b64426bd6e2891e723c3701eae58a7626aa8a4a08f2157c8ead9fa8b0ad",
+        "samples": 121,
+        "flagged": [],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          }
+        },
+        "note": "rotation screen ran on an earlier recipe revision that differs only in camera; twist is camera independent"
+      },
+      "notes": "fixed camera changed from oblique to front view so the 32 deg abduction reads clearly; keyframes at bottom/top.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect"
+      ]
+    },
+    {
+      "stableId": "h-sleeper-stretch",
+      "status": "pending-review",
+      "spec": "drill-anim/specs/h-sleeper-stretch-rr1.js",
+      "specSha256Lf": "437c0484af4a888d94bb59f13e9c156c8487b67edcf78cf50df8967ad81674dd",
+      "recipe": "catalog/production/remaining219-r1/recipes/h-sleeper-stretch.json",
+      "recipeSha256Lf": "964f3b343b9b2fc8ddf64ce689b57719e2d150c06c99673f95c9cfb243e3e670",
+      "keyframes": {
+        "attempt": "h-sleeper-stretch-a01",
+        "times": [
+          1,
+          3,
+          5,
+          7
+        ],
+        "size": 256,
+        "recipeSha256": "964f3b343b9b2fc8ddf64ce689b57719e2d150c06c99673f95c9cfb243e3e670",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "10eff3b11bce827260412a7e3e5481afc7e8ac06c330911f47ce7c7950c756a9",
+          "keyframe-01.png": "5acd12e653a07022de8b6e51b848fb1be18f33ad4bea4ae297002a51e79cdef9",
+          "keyframe-02.png": "703394df68a5b446bdcf096cd087c7a0a45f3019e5dbc20fe03b433579cb2469",
+          "keyframe-03.png": "c1d1a8a992b6ff7f199664452062c3a8c8cca40b5d09e09ecf19926c08ed0f53"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "f479b1b28c1b717cc419ea5a6617767fdc9b16b883a266d89deca080ec1c6f96",
+        "samples": 121,
+        "flagged": [],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 29.5,
+            "maxStepDeg": 5.8,
+            "netDeg": 0
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 24.0,
+            "maxStepDeg": 1.7,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 41.1,
+            "maxStepDeg": 3.0,
+            "netDeg": 0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 0.7,
+            "maxStepDeg": 0.0,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          }
+        },
+        "note": "rotation screen ran on an earlier recipe revision that differs only in camera; twist is camera independent"
+      },
+      "notes": "side-lying sleeper stretch; body lies on a thick mat edge and the forearm press near the face is hard to read.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect",
+        "mat thickness/edge under torso",
+        "forearm IR press visibility; maybe a front camera"
+      ]
+    }
+  ]
+}
