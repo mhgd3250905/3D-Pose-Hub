@@ -1,0 +1,100 @@
+{
+  "format": "pose-hub-action-recipe@1",
+  "id": "rotator-cuff-A",
+  "nameZh": "俯撑交替触肩",
+  "spec": "drill-anim/specs/rotator-cuff-A-r2.js",
+  "specSha256Lf": "29bf03a7176ceaca15262705c009b1f9c4f665d2919e5336c39a8afcd0537953",
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "hands": {
+    "left": "support",
+    "right": "support"
+  },
+  "camera": {
+    "dir": [
+      -0.69,
+      0.42,
+      0.58
+    ],
+    "fit": [
+      "head",
+      "leftPalm",
+      "rightPalm",
+      "leftToe",
+      "rightToe",
+      "pelvis",
+      "leftShoulder",
+      "rightShoulder"
+    ],
+    "pad": 0.16,
+    "k": 1,
+    "drift": 0,
+    "fitTimeline": true,
+    "orbitDegrees": 0,
+    "frontSweepDegrees": 0
+  },
+  "cameraScale": 1.15,
+  "output": {
+    "groundShadow": false,
+    "cameraMotion": false,
+    "wholeCycleContentRect": true,
+    "fps": 30,
+    "exerciseMat": true,
+    "matProp": {
+      "type": "mat",
+      "at": [
+        -0.447,
+        0,
+        0
+      ],
+      "size": [
+        1.746,
+        0.837,
+        0.006
+      ],
+      "yaw": 0,
+      "source": "remote-rotation-r1 auto footprint"
+    }
+  },
+  "appearance": {
+    "highlight": {
+      "color": "#F05A36",
+      "shade": [
+        0.5,
+        0.42,
+        0.08
+      ],
+      "intensity": [
+        0.75,
+        1
+      ]
+    },
+    "purpose": "Visual cue for target muscle effort, not a physiological measurement",
+    "status": "parameterized-selection-deferred-by-user"
+  },
+  "jointCorrections": [
+    {
+      "profile": "upper-arm-contour-r3",
+      "version": "0.1.0-r3"
+    },
+    {
+      "profile": "ankle-join-r5",
+      "version": "0.1.0-r5"
+    }
+  ],
+  "adaptation": {
+    "status": "remote-keyframe-pending",
+    "method": "Fixed queue source reused unchanged on armfix-r2.",
+    "cameraChanges": "drift->0 (static)"
+  },
+  "source": {
+    "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
+    "selectedSpec": "drill-anim/specs/rotator-cuff-A-r2.js"
+  },
+  "sampledOnly": true,
+  "fullCycleValidated": false,
+  "userAccepted": false,
+  "releaseEligible": false
+}
