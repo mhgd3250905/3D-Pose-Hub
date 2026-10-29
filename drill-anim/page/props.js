@@ -55,8 +55,8 @@ const B = {
   rings(th, s) { const t = T(); const g = new t.Group(); const H = s.height || 2.4, gap = s.gap || 0.5, low = s.ringY || 1.0;
     for (const sg of [-1, 1]) { const ring = new t.Mesh(new t.TorusGeometry(0.09, 0.014, 10, 32), toonMat(th)); ring.position.set(sg * gap / 2, low, 0); g.add(ring);
       const strap = new t.Mesh(new t.BoxGeometry(0.035, H - low - 0.09, 0.004), toonMat(th, { base: th.edge })); strap.position.set(sg * gap / 2, (H + low + 0.09) / 2, 0); g.add(strap); } return g; },
-  dipBars(th, s) { const t = T(); const g = new t.Group(); const L = s.length || 0.9, H = s.height || 1.2, gap = s.gap || 0.55;
-    for (const sg of [-1, 1]) { const bar = new t.Mesh(new t.CylinderGeometry(0.022, 0.022, L, 16), toonMat(th)); bar.rotation.x = Math.PI / 2; bar.position.set(sg * gap / 2, H, 0); g.add(bar);
+  dipBars(th, s) { const t = T(); const g = new t.Group(); const L = s.length || 0.9, H = s.height || 1.2, gap = s.gap || 0.55, br = s.r || 0.022;
+    for (const sg of [-1, 1]) { const bar = new t.Mesh(new t.CylinderGeometry(br, br, L, 16), toonMat(th)); bar.rotation.x = Math.PI / 2; bar.position.set(sg * gap / 2, H, 0); g.add(bar);
       for (const e of [-1, 1]) { const post = new t.Mesh(new t.CylinderGeometry(0.025, 0.025, H, 12), toonMat(th)); post.position.set(sg * gap / 2, H / 2, e * L * 0.45); g.add(post); } } return g; },
   foamRoller(th, s) { const t = T(); const m = new t.Mesh(new t.CylinderGeometry(s.r || 0.075, s.r || 0.075, s.length || 0.9, 32), toonMat(th)); m.rotation.z = Math.PI / 2; const g = new t.Group(); g.add(m); return g; },
   // flat bench (B-tier): padded top (s.length 1.1, s.width 0.29, top surface at s.height 0.44), two splayed steel feet; long axis X at yaw 0

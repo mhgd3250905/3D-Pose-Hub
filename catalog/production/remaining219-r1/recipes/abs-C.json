@@ -9,8 +9,8 @@
     "version": "0.1.0-r2"
   },
   "hands": {
-    "left": "native",
-    "right": "native"
+    "left": "bar-grasp",
+    "right": "bar-grasp"
   },
   "camera": {
     "dir": [
@@ -82,5 +82,49 @@
   "sampledOnly": true,
   "fullCycleValidated": false,
   "userAccepted": false,
-  "releaseEligible": false
+  "releaseEligible": false,
+  "fixedCorrectionStack": {
+    "profile": "fixed-wrist-corrections-r1",
+    "version": "0.1.0-r1"
+  },
+  "fixedBarGrip": {
+    "profile": "fixed-bar-grip-r1",
+    "bars": {
+      "left": {
+        "bar": [
+          0.25,
+          1.15,
+          0
+        ],
+        "axis": [
+          0,
+          0,
+          1
+        ],
+        "palm": [
+          1,
+          0,
+          0
+        ]
+      },
+      "right": {
+        "bar": [
+          -0.25,
+          1.15,
+          0
+        ],
+        "axis": [
+          0,
+          0,
+          1
+        ],
+        "palm": [
+          -1,
+          0,
+          0
+        ]
+      }
+    },
+    "note": "Source abs-C hands use the triceps-C GF/GN wrist offsets, not lib/grip.mjs; bar centre/axis from the spec constants BX=0.25, BH=1.15, bars along Z."
+  }
 }

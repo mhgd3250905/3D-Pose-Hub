@@ -6,7 +6,9 @@ import {fileURLToPath,pathToFileURL} from 'node:url';
 
 export const REPO=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../..');
 export const MODEL=Object.freeze({profile:'training-human-v3-armfix',version:'0.1.0-r2'});
-export const HAND_MODES=Object.freeze(['native','support','relaxed','assist','dumbbell-grasp','fixed-grasp']);
+export const HAND_MODES=Object.freeze(['native','support','relaxed','assist','dumbbell-grasp','fixed-grasp','bar-grasp']);
+import {adapt as adaptFixedBarGrip,SHAFT_RADIUS_M} from './fixed-bar-grip-r1.mjs';
+const BAR_PROPS=['parallettes','dipBars','pullupBar'];
 const fail=(ok,message)=>{if(!ok)throw Error(message);};
 export const sha=bytes=>crypto.createHash('sha256').update(bytes).digest('hex');
 export const readJson=file=>JSON.parse(fs.readFileSync(file,'utf8').replace(/^\uFEFF/,''));
@@ -52,9 +54,21 @@ export function adaptRecipe(source,recipe){
   spec.v2plus.handPose={...spec.v2plus.handPose};
   const modeToPose={support:'palm-floor',relaxed:'relaxed',assist:'open'};
   for(const side of ['left','right'])if(modeToPose[hands[side]])spec.v2plus.handPose[side]=modeToPose[hands[side]];
-  const grasp=['left','right'].filter(side=>['dumbbell-grasp','fixed-grasp'].includes(hands[side]));
+  let barGripReport=null;
+  if(hands.left==='bar-grasp'||hands.right==='bar-grasp'){
+    fail(hands.left==='bar-grasp'&&hands.right==='bar-grasp','bar-grasp must be used on both hands');
+    const props=spec.props??[];
+    fail(props.some(p=>BAR_PROPS.includes(p.type)),'bar-grasp needs a fixed bar prop: '+BAR_PROPS.join('/'));
+    fail(props.every(p=>!['dumbbell','kettlebell','kbBottomsUp','landmine','band','grip','dHandle'].includes(p.type)),'bar-grasp cannot hold another implement');
+    // Grip sections of the bars are made the frozen fist's 32 mm so the closed fingers sit on the bar surface.
+    spec.props=props.filter(p=>p.type!=='gripHand').map(p=>BAR_PROPS.includes(p.type)?{...p,r:SHAFT_RADIUS_M}:p);
+    barGripReport=adaptFixedBarGrip(spec,recipe.fixedBarGrip?.bars??{});
+    spec.v2plus.handPose={left:'open',right:'open'};
+  }
+  const grasp=['left','right'].filter(side=>['dumbbell-grasp','fixed-grasp','bar-grasp'].includes(hands[side]));
   const bandGrasp=hands.left==='fixed-grasp'&&hands.right==='fixed-grasp';
-  if(grasp.length){
+  const barGrasp=hands.left==='bar-grasp';
+  if(grasp.length&&!barGrasp){
     fail(grasp.length===2,'Accepted wrist installer requires both hands; one-hand grasp needs a separate adapter');
     fail(hands.left===hands.right,'Fixed grip mode must match on both hands');
     const props=spec.props??[],dumbbells=props.filter(p=>p.type==='dumbbell');
@@ -69,7 +83,7 @@ export function adaptRecipe(source,recipe){
     spec.v2plus.handPose={left:'open',right:'open'};
   }
   return {spec,handSetup:{modes:{...hands},adapter:grasp.length?'webxr-dumbbell-wrist-r1':'symmetric-native',
-    poses:spec.v2plus.handPose,removedSourceDumbbells:grasp.length&&!bandGrasp?2:0,showDumbbells:!bandGrasp,
+    poses:spec.v2plus.handPose,removedSourceDumbbells:grasp.length&&!bandGrasp&&!barGrasp?2:0,showDumbbells:!bandGrasp&&!barGrasp,barGrip:barGripReport,
     status:grasp.length?'fixed-template-accepted-action-validation-pending':'native-candidate-action-validation-pending',
     notes:grasp.length?['Fixed hand and dumbbell are one rigid combination; no duplicate action dumbbells.']:['support uses native palm-floor; assist uses native open; relaxed uses native relaxed.','These are explicit native poses, not acceptance of four completed new fixed hand assets.']}};
 }
