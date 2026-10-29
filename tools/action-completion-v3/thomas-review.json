@@ -1,0 +1,881 @@
+{
+  "format": "pose-hub-thomas-completion-cpu-review@1",
+  "observedDate": "2026-10-28",
+  "sourceCommit": "56a479df170ec53d124ebc12fae7e77b7928a64a",
+  "scope": "10 legacy t-* candidates only; t-half-straddle remains stopped and excluded",
+  "schemaEvidence": {
+    "camera": "drill-anim/page/engine.js:412-433",
+    "fitPolicy": "setup fits 60 timeline samples plus keyFrames once; drift/orbit/frontSweep are explicitly zero",
+    "runtime": "training-human-v3-contact/0.1.0-r5 checkSpec passed; fresh page boot/applyV3 required before generic engine rendering",
+    "tmode": "No tmode/tMode switch found in current drill-anim/runtime/tools code. These selected main specs use generic descriptor/LM paths, not a Thomas-only solverArg mode."
+  },
+  "rendered": false,
+  "visualReviewPerformed": false,
+  "contactApproved": false,
+  "releaseEligible": false,
+  "cases": [
+    {
+      "family": "t-flare-side-hold",
+      "id": "t-flare-side-hold-r3",
+      "spec": "drill-anim/specs/t-flare-side-hold-r3.js",
+      "sourceSpec": "drill-anim/specs/t-flare-side-hold.js",
+      "sourceSha256Lf": "760349503c03b402fdaceb28888856915053163b6d1070843a5e5288da5d52e2",
+      "sha256Lf": "96385392d6a7cc9f90753fbaab5dbcc49837a9a628bded39ce6b7035c0b4d02f",
+      "durationSeconds": 8,
+      "fps": 30,
+      "frameCount": 240,
+      "descriptorSamples": 241,
+      "trackCount": 55,
+      "varyingTrackCount": 17,
+      "reachTargetsDegrees": {
+        "rightArm": [
+          178,
+          178
+        ],
+        "leftArm": [
+          178,
+          178
+        ],
+        "rightLeg": [
+          178,
+          178
+        ]
+      },
+      "handModes": {
+        "right": {
+          "mode": "floor",
+          "frame": null,
+          "plant": null,
+          "at": [
+            -0.5,
+            0.02
+          ]
+        },
+        "left": {
+          "mode": "free",
+          "frame": "chest",
+          "plant": null,
+          "at": null
+        }
+      },
+      "props": [
+        "mat"
+      ],
+      "camera": {
+        "fitTimeline": true,
+        "dir": [
+          0.2,
+          0.2,
+          1
+        ],
+        "fit": [
+          "head",
+          "leftWrist",
+          "rightPalm",
+          "leftToe",
+          "rightToe",
+          "pelvis",
+          "leftKnee",
+          "rightKnee"
+        ],
+        "pad": 0.18,
+        "k": 1,
+        "drift": 0,
+        "at": 2,
+        "orbitDegrees": 0,
+        "frontSweepDegrees": 0
+      },
+      "sourcePosePreserved": true,
+      "sourceTimelinePreserved": true,
+      "sourceQaPropsPreserved": true,
+      "loaderInputChecksPassed": true,
+      "cpuFiniteTrackAndDescriptorPassed": true,
+      "samplerEndpointTracksEqual": true,
+      "newModelCompatibility": "GPU pending",
+      "palmSoleAndBodyContact": "not evaluated",
+      "visualAcceptance": false,
+      "releaseEligible": false,
+      "reviewNote": "Right-side support and left-side mirror remain separate demonstrations; both require native palm/sole close-up review.",
+      "namedMirrorExport": {
+        "name": "leftSide",
+        "id": "t-flare-side-hold-r3-left",
+        "support": "left palm and left foot; separate demonstration",
+        "profileInputPassed": true,
+        "visualContactReview": "pending",
+        "cpuDescriptorSamples": 241,
+        "cpuFiniteTrackAndDescriptorPassed": true
+      }
+    },
+    {
+      "family": "t-lsit-open-close",
+      "id": "t-lsit-open-close-r4",
+      "spec": "drill-anim/specs/t-lsit-open-close-r4.js",
+      "sourceSpec": "drill-anim/specs/t-lsit-open-close-r2.js",
+      "sourceSha256Lf": "6ff22c1d13788b0e885ec1d85e052c7f969bea8c3bc9912f7ca92a94a63d9edd",
+      "sha256Lf": "10ea739282a568b877a35dff985647d2dd1190bb2d28a7d6616eec3f9f7f34f2",
+      "durationSeconds": 8,
+      "fps": 30,
+      "frameCount": 240,
+      "descriptorSamples": 241,
+      "trackCount": 55,
+      "varyingTrackCount": 18,
+      "reachTargetsDegrees": {
+        "rightArm": [
+          177.5,
+          177.5
+        ],
+        "leftArm": [
+          177.5,
+          177.5
+        ]
+      },
+      "handModes": {
+        "right": {
+          "mode": "floor",
+          "frame": null,
+          "plant": null,
+          "at": [
+            -0.205,
+            -0.1
+          ]
+        },
+        "left": {
+          "mode": "floor",
+          "frame": null,
+          "plant": null,
+          "at": [
+            0.205,
+            -0.1
+          ]
+        }
+      },
+      "props": [
+        "mat"
+      ],
+      "camera": {
+        "dir": [
+          0,
+          0.42,
+          0.91
+        ],
+        "fit": [
+          "head",
+          "leftPalm",
+          "rightPalm",
+          "leftToe",
+          "rightToe",
+          "pelvis",
+          "leftKnee",
+          "rightKnee"
+        ],
+        "pad": 0.18,
+        "k": 1,
+        "drift": 0,
+        "at": 2.85,
+        "fitTimeline": true,
+        "orbitDegrees": 0,
+        "frontSweepDegrees": 0
+      },
+      "sourcePosePreserved": true,
+      "sourceTimelinePreserved": true,
+      "sourceQaPropsPreserved": true,
+      "loaderInputChecksPassed": true,
+      "cpuFiniteTrackAndDescriptorPassed": true,
+      "samplerEndpointTracksEqual": true,
+      "newModelCompatibility": "GPU pending",
+      "palmSoleAndBodyContact": "not evaluated",
+      "visualAcceptance": false,
+      "releaseEligible": false,
+      "reviewNote": "Preserve the centred elevated front view selected in main r2; floor palm reach and knee/hand clearance remain unreviewed."
+    },
+    {
+      "family": "t-lsit-tuck",
+      "id": "t-lsit-tuck-r3",
+      "spec": "drill-anim/specs/t-lsit-tuck-r3.js",
+      "sourceSpec": "drill-anim/specs/t-lsit-tuck.js",
+      "sourceSha256Lf": "2973832f55d1143f5bc8fbe135e99547deaeb5fb85d16674a323e26f3c365f22",
+      "sha256Lf": "a4b97be097aa5d3897415719450f09f01ab683000f43901943e9c26440b5f019",
+      "durationSeconds": 8,
+      "fps": 30,
+      "frameCount": 240,
+      "descriptorSamples": 241,
+      "trackCount": 108,
+      "varyingTrackCount": 36,
+      "reachTargetsDegrees": {
+        "rightArm": [
+          178,
+          178
+        ],
+        "leftArm": [
+          178,
+          178
+        ]
+      },
+      "handModes": {
+        "right": {
+          "mode": "floor",
+          "frame": null,
+          "plant": null,
+          "at": [
+            -0.26,
+            -0.045
+          ]
+        },
+        "left": {
+          "mode": "floor",
+          "frame": null,
+          "plant": null,
+          "at": [
+            0.26,
+            -0.045
+          ]
+        }
+      },
+      "props": [
+        "mat"
+      ],
+      "camera": {
+        "fitTimeline": true,
+        "dir": [
+          0.9,
+          0.22,
+          0.6
+        ],
+        "fit": [
+          "head",
+          "leftPalm",
+          "rightPalm",
+          "leftToe",
+          "rightToe",
+          "pelvis",
+          "leftKnee",
+          "rightKnee"
+        ],
+        "pad": 0.18,
+        "k": 1,
+        "drift": 0,
+        "at": 2.8,
+        "orbitDegrees": 0,
+        "frontSweepDegrees": 0
+      },
+      "sourcePosePreserved": true,
+      "sourceTimelinePreserved": true,
+      "sourceQaPropsPreserved": true,
+      "loaderInputChecksPassed": true,
+      "cpuFiniteTrackAndDescriptorPassed": true,
+      "samplerEndpointTracksEqual": true,
+      "newModelCompatibility": "GPU pending",
+      "palmSoleAndBodyContact": "not evaluated",
+      "visualAcceptance": false,
+      "releaseEligible": false,
+      "reviewNote": "Keep the authored L-sit/tuck path; overlap with abs-B remains a catalog-selection question, not a reason to delete this candidate."
+    },
+    {
+      "family": "t-lsit-vsit-circles",
+      "id": "t-lsit-vsit-circles-r3",
+      "spec": "drill-anim/specs/t-lsit-vsit-circles-r3.js",
+      "sourceSpec": "drill-anim/specs/t-lsit-vsit-circles.js",
+      "sourceSha256Lf": "a799d4804a429f9cf4aa48feb4107afe7b827224a309f44f1c6fa67cec617348",
+      "sha256Lf": "4598dc8ac7e0b636c1fbddf9daef265f9178a86aa41a6665adbf7e4dcdf01797",
+      "durationSeconds": 10,
+      "fps": 30,
+      "frameCount": 300,
+      "descriptorSamples": 301,
+      "trackCount": 108,
+      "varyingTrackCount": 34,
+      "reachTargetsDegrees": {
+        "rightArm": [
+          178,
+          178
+        ],
+        "leftArm": [
+          178,
+          178
+        ]
+      },
+      "handModes": {
+        "right": {
+          "mode": "floor",
+          "frame": null,
+          "plant": null,
+          "at": [
+            -0.26,
+            -0.11
+          ]
+        },
+        "left": {
+          "mode": "floor",
+          "frame": null,
+          "plant": null,
+          "at": [
+            0.26,
+            -0.11
+          ]
+        }
+      },
+      "props": [
+        "mat"
+      ],
+      "camera": {
+        "fitTimeline": true,
+        "dir": [
+          0.35,
+          0.25,
+          1
+        ],
+        "fit": [
+          "head",
+          "leftPalm",
+          "rightPalm",
+          "leftToe",
+          "rightToe",
+          "pelvis",
+          "leftKnee",
+          "rightKnee"
+        ],
+        "pad": 0.18,
+        "k": 1,
+        "drift": 0,
+        "driftPeriod": 10,
+        "at": 3,
+        "orbitDegrees": 0,
+        "frontSweepDegrees": 0
+      },
+      "sourcePosePreserved": true,
+      "sourceTimelinePreserved": true,
+      "sourceQaPropsPreserved": true,
+      "loaderInputChecksPassed": true,
+      "cpuFiniteTrackAndDescriptorPassed": true,
+      "samplerEndpointTracksEqual": true,
+      "newModelCompatibility": "GPU pending",
+      "palmSoleAndBodyContact": "not evaluated",
+      "visualAcceptance": false,
+      "releaseEligible": false,
+      "reviewNote": "Keep the ten-second two-direction cycle; deep pike reach, both palms and complete raised-leg bounds need new-model GPU review."
+    },
+    {
+      "family": "t-lsit-wide",
+      "id": "t-lsit-wide-r4",
+      "spec": "drill-anim/specs/t-lsit-wide-r4.js",
+      "sourceSpec": "drill-anim/specs/t-lsit-wide-r2.js",
+      "sourceSha256Lf": "0abaed3126cb55b3ba002d74b5e20ca99d60fbc90a49806e2fa58d9ede6992c5",
+      "sha256Lf": "dd0b0b8a33db20d707c3a5f7b0509f7574c23affcb2b322d1409475d259aab43",
+      "durationSeconds": 8,
+      "fps": 30,
+      "frameCount": 240,
+      "descriptorSamples": 241,
+      "trackCount": 55,
+      "varyingTrackCount": 18,
+      "reachTargetsDegrees": {
+        "rightArm": [
+          177.5,
+          177.5
+        ],
+        "leftArm": [
+          177.5,
+          177.5
+        ]
+      },
+      "handModes": {
+        "right": {
+          "mode": "floor",
+          "frame": null,
+          "plant": null,
+          "at": [
+            -0.205,
+            -0.1
+          ]
+        },
+        "left": {
+          "mode": "floor",
+          "frame": null,
+          "plant": null,
+          "at": [
+            0.205,
+            -0.1
+          ]
+        }
+      },
+      "props": [
+        "mat"
+      ],
+      "camera": {
+        "dir": [
+          0.97,
+          0.17,
+          0.17
+        ],
+        "fit": [
+          "head",
+          "leftPalm",
+          "rightPalm",
+          "leftToe",
+          "rightToe",
+          "pelvis",
+          "leftKnee",
+          "rightKnee"
+        ],
+        "pad": 0.18,
+        "k": 1,
+        "drift": 0,
+        "at": 3.5,
+        "fitTimeline": true,
+        "orbitDegrees": 0,
+        "frontSweepDegrees": 0
+      },
+      "sourcePosePreserved": true,
+      "sourceTimelinePreserved": true,
+      "sourceQaPropsPreserved": true,
+      "loaderInputChecksPassed": true,
+      "cpuFiniteTrackAndDescriptorPassed": true,
+      "samplerEndpointTracksEqual": true,
+      "newModelCompatibility": "GPU pending",
+      "palmSoleAndBodyContact": "not evaluated",
+      "visualAcceptance": false,
+      "releaseEligible": false,
+      "reviewNote": "Retain the main r2 side view that reveals hands pressing and leg elevation; compare width readability after GPU preview."
+    },
+    {
+      "family": "t-seated-straddle-ext",
+      "id": "t-seated-straddle-ext-r3",
+      "spec": "drill-anim/specs/t-seated-straddle-ext-r3.js",
+      "sourceSpec": "drill-anim/specs/t-seated-straddle-ext.js",
+      "sourceSha256Lf": "b3cc83958d1a9a8abc71877a7b920d34ef1ad831055e8f0aba332f19d9a7fbf9",
+      "sha256Lf": "84969ffba4cc24aab0dd807de6db4f8a4f0a3135eac89487891c78742d37f7b6",
+      "durationSeconds": 8,
+      "fps": 30,
+      "frameCount": 240,
+      "descriptorSamples": 241,
+      "trackCount": 104,
+      "varyingTrackCount": 31,
+      "reachTargetsDegrees": {
+        "rightArm": [
+          177.5,
+          177.5
+        ],
+        "leftArm": [
+          177.5,
+          177.5
+        ]
+      },
+      "handModes": {
+        "right": {
+          "mode": "floor",
+          "frame": null,
+          "plant": null,
+          "at": [
+            -0.15,
+            0.32
+          ]
+        },
+        "left": {
+          "mode": "floor",
+          "frame": null,
+          "plant": null,
+          "at": [
+            0.15,
+            0.32
+          ]
+        }
+      },
+      "props": [
+        "mat"
+      ],
+      "camera": {
+        "fitTimeline": true,
+        "dir": [
+          0.15,
+          0.25,
+          1
+        ],
+        "fit": [
+          "head",
+          "leftPalm",
+          "rightPalm",
+          "leftToe",
+          "rightToe",
+          "pelvis",
+          "leftKnee",
+          "rightKnee"
+        ],
+        "pad": 0.18,
+        "k": 1,
+        "drift": 0,
+        "driftPeriod": 8,
+        "at": 1.1,
+        "orbitDegrees": 0,
+        "frontSweepDegrees": 0
+      },
+      "sourcePosePreserved": true,
+      "sourceTimelinePreserved": true,
+      "sourceQaPropsPreserved": true,
+      "loaderInputChecksPassed": true,
+      "cpuFiniteTrackAndDescriptorPassed": true,
+      "samplerEndpointTracksEqual": true,
+      "newModelCompatibility": "GPU pending",
+      "palmSoleAndBodyContact": "not evaluated",
+      "visualAcceptance": false,
+      "releaseEligible": false,
+      "reviewNote": "Keep the fixed authored root depth and thigh/knee twists; actual new-model hand/leg clearance is not implied by finite descriptors."
+    },
+    {
+      "family": "t-seated-straddle-lifts",
+      "id": "t-seated-straddle-lifts-r3",
+      "spec": "drill-anim/specs/t-seated-straddle-lifts-r3.js",
+      "sourceSpec": "drill-anim/specs/t-seated-straddle-lifts.js",
+      "sourceSha256Lf": "e5424a98d9965ec2b2b3f63cde4bf83ffca5aeb7884d8fede247ef1fd3fd4c41",
+      "sha256Lf": "01e4d85c6f95ac7aefb8fbac63bc230eaebfa22b1a6f5a302b9c2ac7360e7967",
+      "durationSeconds": 8,
+      "fps": 30,
+      "frameCount": 240,
+      "descriptorSamples": 241,
+      "trackCount": 55,
+      "varyingTrackCount": 27,
+      "reachTargetsDegrees": {
+        "leftArm": [
+          178,
+          178
+        ],
+        "rightArm": [
+          178,
+          178
+        ]
+      },
+      "handModes": {
+        "right": {
+          "mode": "floor",
+          "frame": null,
+          "plant": null,
+          "at": [
+            -0.075,
+            0.24
+          ]
+        },
+        "left": {
+          "mode": "floor",
+          "frame": null,
+          "plant": null,
+          "at": [
+            0.075,
+            0.24
+          ]
+        }
+      },
+      "props": [
+        "mat"
+      ],
+      "camera": {
+        "dir": [
+          0.3,
+          0.2,
+          1
+        ],
+        "fit": [
+          "head",
+          "leftPalm",
+          "rightPalm",
+          "leftToe",
+          "rightToe",
+          "pelvis",
+          "leftKnee",
+          "rightKnee"
+        ],
+        "pad": 0.18,
+        "k": 1,
+        "drift": 0,
+        "driftPeriod": 8,
+        "at": 0.9,
+        "fitTimeline": true,
+        "orbitDegrees": 0,
+        "frontSweepDegrees": 0
+      },
+      "sourcePosePreserved": false,
+      "sourceTimelinePreserved": true,
+      "sourceQaPropsPreserved": true,
+      "loaderInputChecksPassed": true,
+      "cpuFiniteTrackAndDescriptorPassed": true,
+      "samplerEndpointTracksEqual": true,
+      "newModelCompatibility": "GPU pending",
+      "palmSoleAndBodyContact": "not evaluated",
+      "visualAcceptance": false,
+      "releaseEligible": false,
+      "reviewNote": "Keep the four two-second lifts and seated support; arm reach targets170->178 repair their mismatch with unchanged QA>=176. Prior 24-frame warnings and actual reach remain pending GPU review.",
+      "intentionalRepair": {
+        "sourceRequestedArmDegrees": 170,
+        "candidateRequestedArmDegrees": 178,
+        "unchangedQaMinimumDegrees": 176,
+        "legHipTimelineAndQaPropsPreserved": true,
+        "actualReachStraightnessAndContact": "pending GPU review"
+      }
+    },
+    {
+      "family": "t-straddle-hold",
+      "id": "t-straddle-hold-r3",
+      "spec": "drill-anim/specs/t-straddle-hold-r3.js",
+      "sourceSpec": "drill-anim/specs/t-straddle-hold.js",
+      "sourceSha256Lf": "2af9da74124b17c1f4a852d7cd87e8e9aa4e6fc2793f8afebe6bb0ea54b84d05",
+      "sha256Lf": "318da0ef89d8390ba7e598986a1ff3a15605ee7a55f0a8a16989e753b1a83804",
+      "durationSeconds": 8,
+      "fps": 30,
+      "frameCount": 240,
+      "descriptorSamples": 241,
+      "trackCount": 48,
+      "varyingTrackCount": 28,
+      "reachTargetsDegrees": {
+        "rightArm": [
+          177.5,
+          177.5
+        ],
+        "leftArm": [
+          177.5,
+          177.5
+        ]
+      },
+      "handModes": {
+        "right": {
+          "mode": "floor",
+          "frame": null,
+          "plant": null,
+          "at": [
+            -0.075,
+            0.21
+          ]
+        },
+        "left": {
+          "mode": "floor",
+          "frame": null,
+          "plant": null,
+          "at": [
+            0.075,
+            0.21
+          ]
+        }
+      },
+      "props": [
+        "mat"
+      ],
+      "camera": {
+        "dir": [
+          0.3,
+          0.2,
+          1
+        ],
+        "fit": [
+          "head",
+          "leftPalm",
+          "rightPalm",
+          "leftToe",
+          "rightToe",
+          "pelvis",
+          "leftKnee",
+          "rightKnee"
+        ],
+        "pad": 0.18,
+        "k": 1,
+        "drift": 0,
+        "at": 3.5,
+        "fitTimeline": true,
+        "orbitDegrees": 0,
+        "frontSweepDegrees": 0
+      },
+      "sourcePosePreserved": true,
+      "sourceTimelinePreserved": true,
+      "sourceQaPropsPreserved": true,
+      "loaderInputChecksPassed": true,
+      "cpuFiniteTrackAndDescriptorPassed": true,
+      "samplerEndpointTracksEqual": true,
+      "newModelCompatibility": "GPU pending",
+      "palmSoleAndBodyContact": "not evaluated",
+      "visualAcceptance": false,
+      "releaseEligible": false,
+      "reviewNote": "Keep the authored lift/hold/sit-down timeline; overlap with t-lsit-wide and prior 40-frame warnings remain open."
+    },
+    {
+      "family": "t-tuck-planche",
+      "id": "t-tuck-planche-r3",
+      "spec": "drill-anim/specs/t-tuck-planche-r3.js",
+      "sourceSpec": "drill-anim/specs/t-tuck-planche.js",
+      "sourceSha256Lf": "cf3a12bcc38413a0c9bd93d37533564280175f0e4bec9fc2c39b8e47ecf6c497",
+      "sha256Lf": "15d7daf3337354102161f391e8f944b9a7db1373c7f5174128d4c31812ad9c1e",
+      "durationSeconds": 8,
+      "fps": 30,
+      "frameCount": 240,
+      "descriptorSamples": 241,
+      "trackCount": 1,
+      "varyingTrackCount": 0,
+      "reachTargetsDegrees": {
+        "rightArm": [
+          178,
+          178
+        ],
+        "leftArm": [
+          178,
+          178
+        ]
+      },
+      "handModes": {
+        "right": {
+          "mode": "floor",
+          "frame": null,
+          "plant": null,
+          "at": [
+            -0.2,
+            0
+          ]
+        },
+        "left": {
+          "mode": "floor",
+          "frame": null,
+          "plant": null,
+          "at": [
+            0.2,
+            0
+          ]
+        }
+      },
+      "props": [
+        "mat"
+      ],
+      "camera": {
+        "dir": [
+          1,
+          0.18,
+          0.15
+        ],
+        "fit": [
+          "head",
+          "leftPalm",
+          "rightPalm",
+          "leftToe",
+          "rightToe",
+          "pelvis",
+          "leftKnee",
+          "rightKnee"
+        ],
+        "pad": 0.28,
+        "k": 1,
+        "drift": 0,
+        "at": 4,
+        "frontSweepDegrees": 0,
+        "frontSweepPeriod": 24,
+        "fitTimeline": true,
+        "orbitDegrees": 0
+      },
+      "sourcePosePreserved": false,
+      "sourceTimelinePreserved": false,
+      "sourceQaPropsPreserved": true,
+      "loaderInputChecksPassed": true,
+      "cpuFiniteTrackAndDescriptorPassed": true,
+      "samplerEndpointTracksEqual": true,
+      "newModelCompatibility": "GPU pending",
+      "palmSoleAndBodyContact": "not evaluated",
+      "visualAcceptance": false,
+      "releaseEligible": false,
+      "reviewNote": "Eight-second static tuck-planche hold candidate derived from the exported historic final pose; 178-degree arm targets retain QA >=176. Reach and visual identity still require GPU review.",
+      "intentionalRepair": {
+        "sourceWasStatic24SecondPose": true,
+        "sourceOrbit": "frontSweepDegrees=180",
+        "candidate": "static 8-second hold, inherited pose except both arm reach targets170->178; QA>=176 unchanged",
+        "reachNotProven": "Descriptor targets are finite; actual LM reach/straightness and tuck-planche visual identity still pending GPU."
+      }
+    },
+    {
+      "family": "t-vsit",
+      "id": "t-vsit-r3",
+      "spec": "drill-anim/specs/t-vsit-r3.js",
+      "sourceSpec": "drill-anim/specs/t-vsit.js",
+      "sourceSha256Lf": "4f51eff6ec4876713da3f10c62269b6026e0fc38d0138f64a7fc24552294e540",
+      "sha256Lf": "5e3c497daf6334efde45436ee716ffcce1510c62d505ab826d8c174c9ccc4789",
+      "durationSeconds": 8,
+      "fps": 30,
+      "frameCount": 240,
+      "descriptorSamples": 241,
+      "trackCount": 104,
+      "varyingTrackCount": 0,
+      "reachTargetsDegrees": {
+        "rightArm": [
+          178,
+          178
+        ],
+        "leftArm": [
+          178,
+          178
+        ]
+      },
+      "handModes": {
+        "right": {
+          "mode": "floor",
+          "frame": null,
+          "plant": null,
+          "at": [
+            -0.235,
+            -0.025
+          ]
+        },
+        "left": {
+          "mode": "floor",
+          "frame": null,
+          "plant": null,
+          "at": [
+            0.235,
+            -0.025
+          ]
+        }
+      },
+      "props": [
+        "mat"
+      ],
+      "camera": {
+        "fitTimeline": true,
+        "dir": [
+          1,
+          0.2,
+          0.35
+        ],
+        "fit": [
+          "head",
+          "leftPalm",
+          "rightPalm",
+          "leftToe",
+          "rightToe",
+          "pelvis",
+          "leftKnee",
+          "rightKnee"
+        ],
+        "pad": 0.18,
+        "k": 1,
+        "drift": 0,
+        "at": 4,
+        "orbitDegrees": 0,
+        "frontSweepDegrees": 0
+      },
+      "sourcePosePreserved": true,
+      "sourceTimelinePreserved": true,
+      "sourceQaPropsPreserved": true,
+      "loaderInputChecksPassed": true,
+      "cpuFiniteTrackAndDescriptorPassed": true,
+      "samplerEndpointTracksEqual": true,
+      "newModelCompatibility": "GPU pending",
+      "palmSoleAndBodyContact": "not evaluated",
+      "visualAcceptance": false,
+      "releaseEligible": false,
+      "reviewNote": "Keep deep hip compression rather than inventing whole-body lean; thigh/torso and hand/leg clearances require new-model review."
+    }
+  ],
+  "summary": {
+    "actions": 10,
+    "totalDescriptorSamples": 2470,
+    "qaThresholdsRelaxed": false,
+    "sourceFilesOverwritten": false,
+    "GpuExecutionStarted": false,
+    "registryOwner": "parent",
+    "sourceFilesMatchPinnedMain": true,
+    "syntaxCheckedSpecs": 10,
+    "namedMirrorDescriptorSamples": 241,
+    "totalIncludingNamedMirrorDescriptorSamples": 2711,
+    "explicitPoseTargetRepairs": [
+      "t-seated-straddle-lifts-r3: both arm targets170->178, QA>=176 retained",
+      "t-tuck-planche-r3: 8-second static hold, both arm targets170->178, QA>=176 retained"
+    ]
+  }
+}

@@ -1,0 +1,267 @@
+{
+  "format": "pose-hub-action-recipe@1",
+  "id": "h-bridge-overhead",
+  "nameZh": "臀桥过头伸臂",
+  "spec": "drill-anim/specs/h-bridge-overhead-r5.js",
+  "specSha256Lf": "3b565ae3bd5247c3c2daf1a9528e748fdfada2d557d8482e1748215622667aaf",
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "hands": {
+    "left": "relaxed",
+    "right": "relaxed"
+  },
+  "camera": {
+    "dir": [
+      0.15,
+      0.28,
+      1
+    ],
+    "fit": [
+      "head",
+      "leftPalm",
+      "rightPalm",
+      "leftToe",
+      "rightToe",
+      "pelvis",
+      "leftKnee",
+      "rightKnee",
+      "leftElbow",
+      "shoulderCenter",
+      "rightElbow"
+    ],
+    "pad": 0.14,
+    "k": 0.75,
+    "drift": 0,
+    "at": 2,
+    "fitTimeline": true,
+    "orbitDegrees": 0,
+    "frontSweepDegrees": 0
+  },
+  "cameraScale": 1.4,
+  "output": {
+    "groundShadow": false,
+    "cameraMotion": false,
+    "wholeCycleContentRect": true,
+    "fps": 30,
+    "exerciseMat": false
+  },
+  "adaptation": {
+    "status": "candidate-retargeted-awaiting-preview",
+    "priority": 2,
+    "sourceRuntimeModel": {
+      "profile": "training-human-v3-contact",
+      "version": "0.1.0-r5"
+    },
+    "method": "per-action contact-aware retargeting; no global pose scale",
+    "requiredChanges": [
+      "World wrists at x=-0.952/y=0.034 and floor feet are support anchors; do not blindly translate every target.",
+      "Reconstruct pelvis lift around current shoulder/foot geometry with longer legs and shorter trunk; preserve bridge timing and direction."
+    ],
+    "handAsset": "hands-native-c1r2-symmetric-r1",
+    "handAcceptance": "This action has not been visually inspected with the selected body/hand setup.",
+    "implemented": "Rebuilt bridge pelvis trajectory from current pelvis-waist and waist-shoulder lengths while retaining shoulder/hand ground anchors.",
+    "rotationPolicy": "Full forearm axial sharing avoids half-angle +/-pi branch flips; actual-render rotation and visible deformation checks remain required.",
+    "visualCorrection": "Shorten unreachable wrist targets to current arm lengths; retain historical source and QA."
+  },
+  "source": {
+    "inventory": "catalog/production/remaining-actions-v3-20261028-r1.json",
+    "preparationReview": "tools/action-completion-v3/home-review.json",
+    "originalSpec": "drill-anim/specs/h-bridge-overhead.js",
+    "dependencies": [
+      {
+        "path": "drill-anim/lib/home-anim.mjs",
+        "sha256Lf": "1798c9e55c28b32391b7ef32aa358427b4743ee1959f86ec488a95fe88a05557"
+      },
+      {
+        "path": "drill-anim/lib/ss-geo.mjs",
+        "sha256Lf": "45ca774079e3a85ecc4f924a3220d4baa721f0435e16f6e6e21ffa19e17e8603"
+      },
+      {
+        "path": "drill-anim/specs/h-bridge-overhead-r3.js",
+        "sha256Lf": "9941e217ad4004498e7c8a813de65f8657cf91a53d3bca88a42ae6b0f3c46b27"
+      },
+      {
+        "path": "drill-anim/specs/h-bridge-overhead.js",
+        "sha256Lf": "5e6f4edfe25525c0aaf46509409285527d0ea0784abfd97c5ffc25af3ea15269"
+      },
+      {
+        "path": "drill-anim/specs/h-bridge-overhead-r4.js",
+        "sha256Lf": "222ae0085b6eeaabbc9bc82772fe996d7a38ae39754bfbc961a38fd5866b9acd"
+      },
+      {
+        "path": "drill-anim/specs/_home-armfix-r1.mjs",
+        "sha256Lf": "669e216877327032b2a568946082015035fa3bc7c3c42e8c9fbd46e0ead7f05c"
+      },
+      {
+        "path": "drill-anim/specs/h-bridge-overhead-r5.js",
+        "sha256Lf": "3b565ae3bd5247c3c2daf1a9528e748fdfada2d557d8482e1748215622667aaf"
+      }
+    ],
+    "priorRecipeSpec": "h-bridge-overhead-r3.js"
+  },
+  "reviewPlan": {
+    "status": "source-ready-awaiting-preview",
+    "durationSeconds": 8,
+    "previewTimesSeconds": [
+      0,
+      0.1,
+      0.8,
+      2,
+      3,
+      4,
+      4.8,
+      6,
+      7.8,
+      8
+    ],
+    "coverTimeSeconds": 2,
+    "primaryView": "Lateral view shows pelvic rise and overhead arms without a knee-end perspective.",
+    "additionalViews": [
+      "opposite",
+      "side"
+    ],
+    "checks": [
+      "Feet, shoulders and head keep appropriate support while pelvis rises.",
+      "Overhead hands remain visible and do not penetrate the floor.",
+      "Side view exposes hip extension and shoulder flexion without hiding contact.",
+      "Inspect actual wrist and ankle quaternion paths at every frame, not only endpoint directions: shortest consecutive rotation, total turn, hand/sole facing, left/right consistency and loop seam."
+    ],
+    "fullCycleRequired": true,
+    "contentBounds": "union of visible body and necessary props over all output frames; one rectangle for the whole clip",
+    "groundShadow": false,
+    "groundProps": "Keep necessary support mat/wall/cushion as explicit props; exclude shadow/stage helpers.",
+    "rotationEvidence": {
+      "status": "descriptor-only-not-joint-acceptance",
+      "sampleRate": 30,
+      "samples": 241,
+      "channels": {
+        "hands.left.finger": {
+          "frame": "world",
+          "maxStepDegrees": 0,
+          "endpointDegrees": 0,
+          "zeroVectorFrames": [],
+          "stepsOver30Degrees": []
+        },
+        "hands.left.normal": {
+          "frame": "world",
+          "maxStepDegrees": 0,
+          "endpointDegrees": 0,
+          "zeroVectorFrames": [],
+          "stepsOver30Degrees": []
+        },
+        "feet.left.heading": {
+          "minDegrees": 90,
+          "maxDegrees": 90,
+          "maxRawStepDegrees": 0,
+          "endpointRawDifference": 0,
+          "rawStepsOver90Degrees": []
+        },
+        "feet.left.pitch": {
+          "minDegrees": 0,
+          "maxDegrees": 0,
+          "maxRawStepDegrees": 0,
+          "endpointRawDifference": 0,
+          "rawStepsOver90Degrees": []
+        },
+        "hands.right.finger": {
+          "frame": "world",
+          "maxStepDegrees": 0,
+          "endpointDegrees": 0,
+          "zeroVectorFrames": [],
+          "stepsOver30Degrees": []
+        },
+        "hands.right.normal": {
+          "frame": "world",
+          "maxStepDegrees": 0,
+          "endpointDegrees": 0,
+          "zeroVectorFrames": [],
+          "stepsOver30Degrees": []
+        },
+        "feet.right.heading": {
+          "minDegrees": 90,
+          "maxDegrees": 90,
+          "maxRawStepDegrees": 0,
+          "endpointRawDifference": 0,
+          "rawStepsOver90Degrees": []
+        },
+        "feet.right.pitch": {
+          "minDegrees": 0,
+          "maxDegrees": 0,
+          "maxRawStepDegrees": 0,
+          "endpointRawDifference": 0,
+          "rawStepsOver90Degrees": []
+        }
+      },
+      "initialRotationLists": [
+        {
+          "path": "pose.hips.rot",
+          "value": [
+            [
+              [
+                0,
+                0,
+                1
+              ],
+              -0.81158
+            ]
+          ]
+        },
+        {
+          "path": "pose.chest.waist",
+          "value": [
+            [
+              [
+                0,
+                0,
+                1
+              ],
+              0.81158
+            ]
+          ]
+        }
+      ],
+      "limits": [
+        "This checks authored descriptor vectors and raw foot angles. It does not measure actual wrist/ankle bone quaternions, IK pole branch changes or skinned twists.",
+        "Large raw Euler angles or identical endpoint orientations alone do not establish a defect. Root GPU capture must inspect actual continuous rotations."
+      ]
+    },
+    "phase": "low-resolution-template-preview",
+    "fullResolutionProduction": "deferred-until-per-action-user-acceptance",
+    "previewGroup": "later-group"
+  },
+  "risks": [
+    "Head, shoulder, overhead-hand and foot support require GPU checks.",
+    "Combined bridge/shoulder-flexion mechanism overlaps separate delivered actions; retain the scope question.",
+    "Current body retains v3 legs/trunk; changing the runtime label alone does not retarget old absolute coordinates.",
+    "Support, relaxed, assist and non-dumbbell native grips require their own rendered checks; fixed dumbbell acceptance does not apply."
+  ],
+  "reviewed": false,
+  "releaseEligible": false,
+  "appearance": {
+    "highlight": {
+      "color": "#F05A36",
+      "shade": [
+        0.5,
+        0.42,
+        0.08
+      ],
+      "intensity": [
+        0.75,
+        1
+      ]
+    },
+    "purpose": "Visual cue for target muscle effort, not a physiological measurement",
+    "status": "parameterized-selection-deferred-by-user"
+  },
+  "jointCorrections": [
+    {
+      "profile": "ankle-join-r5",
+      "version": "0.1.0-r5"
+    }
+  ],
+  "diagnostics": {
+    "measureFootSurface": true
+  }
+}

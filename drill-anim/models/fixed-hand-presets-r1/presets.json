@@ -1,0 +1,1238 @@
+{
+  "format": "pose-hub-fixed-hand-presets@1",
+  "version": "0.1.0-r1",
+  "handSource": "hands-native-c1r2-symmetric-r1",
+  "sourcePins": [
+    {
+      "path": "drill-anim/models/hands-native-c1r2-symmetric-r1/hands-base.json",
+      "bytes": 695094,
+      "sha256": "2851efc49bf2bfdbc97e25192dd9da2aa4432927142ba9151df59d83996f0344"
+    },
+    {
+      "path": "drill-anim/models/hands-native-c1r2-symmetric-r1/hands-rig.json",
+      "bytes": 601320,
+      "sha256": "a1b488058c5c5a927ba6d86caa9870b919a6091db8a1106ff498ff4a4c92ae26"
+    },
+    {
+      "path": "drill-anim/models/hands-native-c1r2-symmetric-r1/manifest.json",
+      "bytes": 1936,
+      "sha256": "5280fc7f7baddf15bfb6aaa7606b92c7a850eb93c52cf7d038b3360828ce88c2"
+    }
+  ],
+  "handScale": 1,
+  "names": [
+    "grasp-32mm",
+    "support",
+    "relaxed",
+    "assist"
+  ],
+  "grasp": {
+    "format": "pose-hub-fixed-grasp@1",
+    "sourceId": "hands-native-c1r2-symmetric-r1",
+    "sourcePins": [
+      {
+        "path": "drill-anim/models/hands-native-c1r2-symmetric-r1/hands-base.json",
+        "bytes": 695094,
+        "sha256": "2851efc49bf2bfdbc97e25192dd9da2aa4432927142ba9151df59d83996f0344"
+      },
+      {
+        "path": "drill-anim/models/hands-native-c1r2-symmetric-r1/hands-rig.json",
+        "bytes": 601320,
+        "sha256": "a1b488058c5c5a927ba6d86caa9870b919a6091db8a1106ff498ff4a4c92ae26"
+      },
+      {
+        "path": "drill-anim/models/hands-native-c1r2-symmetric-r1/manifest.json",
+        "bytes": 1936,
+        "sha256": "5280fc7f7baddf15bfb6aaa7606b92c7a850eb93c52cf7d038b3360828ce88c2"
+      }
+    ],
+    "handScale": 1,
+    "radius": 0.016,
+    "targets": {
+      "thumb1": [
+        -0.21750151775117496,
+        -0.308121421149946,
+        0.23726895720791985,
+        0.8952417112433597
+      ],
+      "thumb2": [
+        0.09078984047643032,
+        0,
+        -0.13792884896306623,
+        0.9862721923941625
+      ],
+      "thumb3": [
+        0.03691464508927874,
+        0,
+        -0.05608110423286993,
+        0.9977435636103871
+      ],
+      "index1": [
+        -0.03584020164465634,
+        0,
+        -0.27567027316210474,
+        0.9605838747557659
+      ],
+      "index2": [
+        -0.08571729070643057,
+        0,
+        -0.6593073660142305,
+        0.7469714473748825
+      ],
+      "index3": [
+        -0.05113736027163051,
+        0,
+        -0.3933306574175252,
+        0.9179738364027304
+      ],
+      "middle1": [
+        -0.03295015299100819,
+        0,
+        -0.31333860145182235,
+        0.9490696540602724
+      ],
+      "middle2": [
+        -0.05037026547539724,
+        0,
+        -0.47899469672037687,
+        0.8763714491411118
+      ],
+      "middle3": [
+        -0.04465448763448652,
+        0,
+        -0.42464065971881804,
+        0.9042600769953678
+      ],
+      "ring1": [
+        -0.15852416251809875,
+        0,
+        -0.3887341502588277,
+        0.9076099659658231
+      ],
+      "ring2": [
+        -0.20963774557175152,
+        0,
+        -0.5140752651994427,
+        0.8317323111083976
+      ],
+      "ring3": [
+        -0.20336406993033326,
+        0,
+        -0.49869091034320545,
+        0.8425855630156712
+      ],
+      "pinky1": [
+        -0.07307696530118107,
+        0,
+        -0.22005450397402812,
+        0.9727465098488477
+      ],
+      "pinky2": [
+        -0.1795978874488299,
+        0,
+        -0.5408178059180688,
+        0.8217424776813497
+      ],
+      "pinky3": [
+        -0.2156962760684127,
+        0,
+        -0.6495198157676159,
+        0.7291084455795458
+      ]
+    },
+    "center": [
+      0.0769774574025722,
+      -0.023653730297674272,
+      0.026809497446246666
+    ],
+    "axis": [
+      -0.006486568672311178,
+      0.322879312839824,
+      0.9464179170783604
+    ],
+    "axialOffsetM": 0.03125955,
+    "finiteHandle": {
+      "lengthM": 0.165,
+      "plateInnerHalfGapM": 0.081,
+      "measuredOriginalBoundsM": [
+        -0.09940552,
+        0.03688523
+      ]
+    },
+    "derivedFrom": {
+      "file": "tools/body-v3/armfix-r2/grip-fit-32mm.json",
+      "sha256": "11b6a6d8ae2b834f3aa917d6c877699946bdb51e26084337c0bf1cb0c7ad6659"
+    },
+    "reviewed": false,
+    "releaseEligible": false
+  },
+  "support": {
+    "format": "pose-hub-fixed-support@1",
+    "sourceId": "hands-native-c1r2-symmetric-r1",
+    "handScale": 1,
+    "coordinateFrame": "motion-rest-delta",
+    "bindRotations": {
+      "left": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "right": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    "sourcePins": [
+      {
+        "path": "drill-anim/models/hands-native-c1r2-symmetric-r1/hands-base.json",
+        "bytes": 695094,
+        "sha256": "2851efc49bf2bfdbc97e25192dd9da2aa4432927142ba9151df59d83996f0344"
+      },
+      {
+        "path": "drill-anim/models/hands-native-c1r2-symmetric-r1/hands-rig.json",
+        "bytes": 601320,
+        "sha256": "a1b488058c5c5a927ba6d86caa9870b919a6091db8a1106ff498ff4a4c92ae26"
+      },
+      {
+        "path": "drill-anim/models/hands-native-c1r2-symmetric-r1/manifest.json",
+        "bytes": 1936,
+        "sha256": "5280fc7f7baddf15bfb6aaa7606b92c7a850eb93c52cf7d038b3360828ce88c2"
+      }
+    ],
+    "mesh": {
+      "fingerprint": "a2149bc3",
+      "vertices": 13398,
+      "indices": 80178,
+      "bones": [
+        "pelvis",
+        "torso",
+        "neck",
+        "head",
+        "leftScapula",
+        "leftUpperArm",
+        "leftForearm",
+        "leftHand",
+        "leftThigh",
+        "leftPatella",
+        "leftShin",
+        "leftFoot",
+        "rightScapula",
+        "rightUpperArm",
+        "rightForearm",
+        "rightHand",
+        "rightThigh",
+        "rightPatella",
+        "rightShin",
+        "rightFoot",
+        "spineLower",
+        "spineUpper",
+        "v2p_L_thumb1",
+        "v2p_L_thumb2",
+        "v2p_L_thumb3",
+        "v2p_L_index1",
+        "v2p_L_index2",
+        "v2p_L_index3",
+        "v2p_L_middle1",
+        "v2p_L_middle2",
+        "v2p_L_middle3",
+        "v2p_L_ring1",
+        "v2p_L_ring2",
+        "v2p_L_ring3",
+        "v2p_L_pinky1",
+        "v2p_L_pinky2",
+        "v2p_L_pinky3",
+        "v2p_R_thumb1",
+        "v2p_R_thumb2",
+        "v2p_R_thumb3",
+        "v2p_R_index1",
+        "v2p_R_index2",
+        "v2p_R_index3",
+        "v2p_R_middle1",
+        "v2p_R_middle2",
+        "v2p_R_middle3",
+        "v2p_R_ring1",
+        "v2p_R_ring2",
+        "v2p_R_ring3",
+        "v2p_R_pinky1",
+        "v2p_R_pinky2",
+        "v2p_R_pinky3"
+      ]
+    },
+    "sides": {
+      "left": {
+        "pose": {
+          "thumb1": [
+            -0.06700570038302209,
+            0,
+            0.10179574145406299,
+            0.992546151641322
+          ],
+          "thumb2": [
+            -0.05269751683985977,
+            0,
+            0.08005860350443741,
+            0.9953961983671789
+          ],
+          "thumb3": [
+            0.05269751683985977,
+            0,
+            -0.08005860350443741,
+            0.9953961983671789
+          ],
+          "index1": [
+            -0.004499455184652532,
+            0,
+            -0.03460823273628949,
+            0.9993908270190958
+          ],
+          "index2": [
+            0.027904710242660908,
+            0,
+            0.2146332537794369,
+            0.9762960071199334
+          ],
+          "index3": [
+            -0.017803763357348838,
+            0,
+            -0.13694030956339745,
+            0.9904192938483157
+          ],
+          "middle1": [
+            0.0018252012640808113,
+            0,
+            0.01735670276284447,
+            0.9998476951563913
+          ],
+          "middle2": [
+            0.017260949080745193,
+            0,
+            0.1641425351247309,
+            0.9862856015372314
+          ],
+          "middle3": [
+            -0.01115864362896141,
+            0,
+            -0.10611282411199131,
+            0.9942914830326867
+          ],
+          "ring1": [
+            0.019762335880640157,
+            0,
+            0.04846134951076057,
+            0.9986295347545738
+          ],
+          "ring2": [
+            0.05092042964716831,
+            0,
+            0.12486746269639776,
+            0.9908658973868822
+          ],
+          "ring3": [
+            -0.04969573573747687,
+            0,
+            -0.1218642590285865,
+            0.9913018895477423
+          ],
+          "pinky1": [
+            0.10260669905391058,
+            0,
+            0.30897651772569906,
+            0.9455185755993168
+          ],
+          "pinky2": [
+            -0.09739040293188975,
+            0,
+            -0.2932688395129807,
+            0.9510565162951535
+          ],
+          "pinky3": [
+            -0.07223524540852967,
+            0,
+            -0.21751985775960078,
+            0.9733792584604485
+          ]
+        },
+        "longitudinal": [
+          0.9825708139025982,
+          0.17325871583718908,
+          -0.0673499298680719
+        ],
+        "palmarNormal": [
+          0.15761612035748238,
+          -0.9686011355276566,
+          -0.1922732400985386
+        ],
+        "wristHeightM": 0.02799060380588472,
+        "fitDegrees": {
+          "thumb": {
+            "deg": [
+              -14,
+              -11,
+              0
+            ],
+            "minClearMm": 0.4,
+            "padP15Mm": 2.5,
+            "distalP10ModelMm": 1.9
+          },
+          "index": {
+            "deg": [
+              4,
+              -27,
+              7
+            ],
+            "minClearMm": 0.3,
+            "padP15Mm": 4.2,
+            "distalP10ModelMm": 3
+          },
+          "middle": {
+            "deg": [
+              -2,
+              -19,
+              4
+            ],
+            "minClearMm": 0.4,
+            "padP15Mm": 3.5,
+            "distalP10ModelMm": 2.6
+          },
+          "ring": {
+            "deg": [
+              -6,
+              -16,
+              4
+            ],
+            "minClearMm": 0.3,
+            "padP15Mm": 3.6,
+            "distalP10ModelMm": 2.6
+          },
+          "pinky": {
+            "deg": [
+              -38,
+              32,
+              16
+            ],
+            "minClearMm": 0.3,
+            "padP15Mm": 5.8,
+            "distalP10ModelMm": 3.2
+          }
+        },
+        "weightedRefinement": {
+          "thumb": {
+            "method": "bounded actual weighted LBS",
+            "targetDistalMinMm": 0.35,
+            "boundDegrees": 12,
+            "deltaDegrees": [
+              0,
+              0,
+              11
+            ],
+            "before": {
+              "deg": [
+                -14,
+                -11,
+                0
+              ],
+              "score": 3.126997684127943,
+              "minClearMm": 0.15541543130396032,
+              "distalMinClearMm": 1.2556612542330807,
+              "distalP10Mm": 2.733426142858004
+            },
+            "after": {
+              "deg": [
+                -14,
+                -11,
+                11
+              ],
+              "score": 0.2733643944249551,
+              "minClearMm": 0.15541543130396032,
+              "distalMinClearMm": 0.3545464183517012,
+              "distalP10Mm": 1.511500929132343
+            }
+          },
+          "index": {
+            "method": "bounded actual weighted LBS",
+            "targetDistalMinMm": 0.35,
+            "boundDegrees": 12,
+            "deltaDegrees": [
+              0,
+              2,
+              8.875
+            ],
+            "before": {
+              "deg": [
+                4,
+                -27,
+                7
+              ],
+              "score": 4.698949857968057,
+              "minClearMm": 0.9396422795365927,
+              "distalMinClearMm": 1.7129151696589109,
+              "distalP10Mm": 4.068028993275495
+            },
+            "after": {
+              "deg": [
+                4,
+                -25,
+                15.875
+              ],
+              "score": 0.40330498826373745,
+              "minClearMm": 0.3530998050188111,
+              "distalMinClearMm": 0.3530998050188111,
+              "distalP10Mm": 2.409203821382027
+            }
+          },
+          "middle": {
+            "method": "bounded actual weighted LBS",
+            "targetDistalMinMm": 0.35,
+            "boundDegrees": 12,
+            "deltaDegrees": [
+              0,
+              0,
+              8.25
+            ],
+            "before": {
+              "deg": [
+                -2,
+                -19,
+                4
+              ],
+              "score": 3.6143095367838547,
+              "minClearMm": 0.7680120504804898,
+              "distalMinClearMm": 1.3782355534732935,
+              "distalP10Mm": 3.5306858424264953
+            },
+            "after": {
+              "deg": [
+                -2,
+                -19,
+                12.25
+              ],
+              "score": 0.40408016033909205,
+              "minClearMm": 0.3490186934513688,
+              "distalMinClearMm": 0.3490186934513688,
+              "distalP10Mm": 2.509241604621324
+            }
+          },
+          "ring": {
+            "method": "bounded actual weighted LBS",
+            "targetDistalMinMm": 0.35,
+            "boundDegrees": 12,
+            "deltaDegrees": [
+              0,
+              0.5,
+              11.125
+            ],
+            "before": {
+              "deg": [
+                -6,
+                -16,
+                4
+              ],
+              "score": 25.666650164117364,
+              "minClearMm": 0,
+              "distalMinClearMm": 1.230535097000201,
+              "distalP10Mm": 3.500299154111753
+            },
+            "after": {
+              "deg": [
+                -6,
+                -15.5,
+                15.125
+              ],
+              "score": 22.85297386545667,
+              "minClearMm": 0,
+              "distalMinClearMm": 0.3479971486273804,
+              "distalP10Mm": 2.080602075592058
+            }
+          },
+          "pinky": {
+            "method": "bounded actual weighted LBS",
+            "targetDistalMinMm": 0.35,
+            "boundDegrees": 12,
+            "deltaDegrees": [
+              0,
+              4,
+              10.5
+            ],
+            "before": {
+              "deg": [
+                -38,
+                32,
+                16
+              ],
+              "score": 29.129491447011233,
+              "minClearMm": 0,
+              "distalMinClearMm": 2.349183806778409,
+              "distalP10Mm": 4.21293351117337
+            },
+            "after": {
+              "deg": [
+                -38,
+                36,
+                26.5
+              ],
+              "score": 22.835430030520765,
+              "minClearMm": 0,
+              "distalMinClearMm": 0.3525706886629947,
+              "distalP10Mm": 1.8947864302118615
+            }
+          }
+        },
+        "contact": {
+          "all": {
+            "vertices": 6407,
+            "minClearMm": 0,
+            "p10ClearMm": 2.949331744391069,
+            "p50ClearMm": 9.947584641089978,
+            "maxClearMm": 48.9365069052622
+          },
+          "palm": {
+            "vertices": 392,
+            "minClearMm": 0,
+            "p10ClearMm": 2.4178340212040252,
+            "p50ClearMm": 8.864382183949894,
+            "maxClearMm": 27.71444013079313
+          },
+          "heelThumb": {
+            "vertices": 62,
+            "minClearMm": 0.7794767572688183,
+            "p10ClearMm": 1.887416118967044,
+            "p50ClearMm": 5.303894706423961,
+            "maxClearMm": 27.00766495357755
+          },
+          "heelPinky": {
+            "vertices": 83,
+            "minClearMm": 0.15541543130396032,
+            "p10ClearMm": 1.9363304590964587,
+            "p50ClearMm": 4.53095321384631,
+            "maxClearMm": 27.65903353827495
+          },
+          "distal": {
+            "thumb": {
+              "vertices": 250,
+              "minClearMm": 0.3545464183517012,
+              "p10ClearMm": 1.511500929132343,
+              "p50ClearMm": 7.924624667312374,
+              "maxClearMm": 15.358302310029236
+            },
+            "index": {
+              "vertices": 285,
+              "minClearMm": 0.3530998050188111,
+              "p10ClearMm": 2.409203821382027,
+              "p50ClearMm": 6.401613332722285,
+              "maxClearMm": 13.824739079497101
+            },
+            "middle": {
+              "vertices": 381,
+              "minClearMm": 0.3490186934513688,
+              "p10ClearMm": 2.509241604621324,
+              "p50ClearMm": 8.15928725420864,
+              "maxClearMm": 13.843090220973604
+            },
+            "ring": {
+              "vertices": 322,
+              "minClearMm": 0.3479971486273804,
+              "p10ClearMm": 2.080602075592058,
+              "p50ClearMm": 6.5726134041121025,
+              "maxClearMm": 12.651753311843494
+            },
+            "pinky": {
+              "vertices": 323,
+              "minClearMm": 0.3525706886629947,
+              "p10ClearMm": 1.8947864302118615,
+              "p50ClearMm": 5.3780894423797045,
+              "maxClearMm": 12.999032207058594
+            }
+          }
+        }
+      },
+      "right": {
+        "pose": {
+          "thumb1": [
+            -0.07176537333887133,
+            0,
+            0.10902668501334098,
+            0.9914448613738104
+          ],
+          "thumb2": [
+            -0.04791961146286662,
+            0,
+            0.07279996106553815,
+            0.9961946980917455
+          ],
+          "thumb3": [
+            0.043735938277706256,
+            0,
+            -0.06644408221567256,
+            0.9968311550315256
+          ],
+          "index1": [
+            -0.0022500702889297302,
+            0,
+            -0.017306752270342656,
+            0.9998476951563913
+          ],
+          "index2": [
+            0.02515222979728803,
+            0,
+            0.1934621386229901,
+            0.9807852804032304
+          ],
+          "index3": [
+            -0.012496998520454774,
+            0,
+            -0.09612253385169871,
+            0.9952910546739123
+          ],
+          "middle1": [
+            0.0027376281496195123,
+            0,
+            0.026033401906540642,
+            0.9996573249755573
+          ],
+          "middle2": [
+            0.017260949080745193,
+            0,
+            0.1641425351247309,
+            0.9862856015372314
+          ],
+          "middle3": [
+            -0.0122922536320559,
+            0,
+            -0.11689285821557667,
+            0.9930684569549263
+          ],
+          "ring1": [
+            0.0230522537452068,
+            0,
+            0.05652891098018413,
+            0.9981347984218669
+          ],
+          "ring2": [
+            0.04765340303090495,
+            0,
+            0.11685603531919202,
+            0.992004949679715
+          ],
+          "ring3": [
+            -0.04765340303090495,
+            0,
+            -0.11685603531919202,
+            0.992004949679715
+          ],
+          "pinky1": [
+            0.1052032254341322,
+            0,
+            0.3167953608084716,
+            0.9426414910921784
+          ],
+          "pinky2": [
+            -0.10260669905391058,
+            0,
+            -0.30897651772569906,
+            0.9455185755993168
+          ],
+          "pinky3": [
+            -0.06552585686735181,
+            0,
+            -0.19731607451117322,
+            0.9781476007338057
+          ]
+        },
+        "longitudinal": [
+          -0.9809124370782526,
+          0.18229491917933502,
+          -0.06767091861798888
+        ],
+        "palmarNormal": [
+          -0.16723980981647824,
+          -0.96846270734668,
+          -0.18469117599735788
+        ],
+        "wristHeightM": 0.028446361967827082,
+        "fitDegrees": {
+          "thumb": {
+            "deg": [
+              -15,
+              -10,
+              -1
+            ],
+            "minClearMm": 0.3,
+            "padP15Mm": 2.4,
+            "distalP10ModelMm": 1.9
+          },
+          "index": {
+            "deg": [
+              2,
+              -23,
+              0
+            ],
+            "minClearMm": 0.3,
+            "padP15Mm": 4,
+            "distalP10ModelMm": 3
+          },
+          "middle": {
+            "deg": [
+              -3,
+              -19,
+              4
+            ],
+            "minClearMm": 0.3,
+            "padP15Mm": 3.5,
+            "distalP10ModelMm": 2.8
+          },
+          "ring": {
+            "deg": [
+              -7,
+              -15,
+              3
+            ],
+            "minClearMm": 0.3,
+            "padP15Mm": 3.7,
+            "distalP10ModelMm": 2.7
+          },
+          "pinky": {
+            "deg": [
+              -39,
+              32,
+              16
+            ],
+            "minClearMm": 0.3,
+            "padP15Mm": 6.2,
+            "distalP10ModelMm": 3.7
+          }
+        },
+        "weightedRefinement": {
+          "thumb": {
+            "method": "bounded actual weighted LBS",
+            "targetDistalMinMm": 0.35,
+            "boundDegrees": 12,
+            "deltaDegrees": [
+              0,
+              0,
+              10.125
+            ],
+            "before": {
+              "deg": [
+                -15,
+                -10,
+                -1
+              ],
+              "score": 2.7577852528630977,
+              "minClearMm": 0.41590264197987475,
+              "distalMinClearMm": 1.1363699299016365,
+              "distalP10Mm": 2.6578364210545873
+            },
+            "after": {
+              "deg": [
+                -15,
+                -10,
+                9.125
+              ],
+              "score": 0.2639345010172973,
+              "minClearMm": 0.34962290636008503,
+              "distalMinClearMm": 0.34962290636008503,
+              "distalP10Mm": 1.5495214673170166
+            }
+          },
+          "index": {
+            "method": "bounded actual weighted LBS",
+            "targetDistalMinMm": 0.35,
+            "boundDegrees": 12,
+            "deltaDegrees": [
+              0,
+              0.5,
+              11.125
+            ],
+            "before": {
+              "deg": [
+                2,
+                -23,
+                0
+              ],
+              "score": 2.882317556718262,
+              "minClearMm": 0.9341252067717292,
+              "distalMinClearMm": 1.1204225074534642,
+              "distalP10Mm": 3.8070002290524623
+            },
+            "after": {
+              "deg": [
+                2,
+                -22.5,
+                11.125
+              ],
+              "score": 0.43303122081116796,
+              "minClearMm": 0.3492755956579462,
+              "distalMinClearMm": 0.3492755956579462,
+              "distalP10Mm": 2.6398867185667108
+            }
+          },
+          "middle": {
+            "method": "bounded actual weighted LBS",
+            "targetDistalMinMm": 0.35,
+            "boundDegrees": 12,
+            "deltaDegrees": [
+              0,
+              0,
+              9.5
+            ],
+            "before": {
+              "deg": [
+                -3,
+                -19,
+                4
+              ],
+              "score": 4.123362367803032,
+              "minClearMm": 0.746682125668887,
+              "distalMinClearMm": 1.5364694179860576,
+              "distalP10Mm": 3.759694092299062
+            },
+            "after": {
+              "deg": [
+                -3,
+                -19,
+                13.5
+              ],
+              "score": 0.42795407722348994,
+              "minClearMm": 0.3489477986259801,
+              "distalMinClearMm": 0.3489477986259801,
+              "distalP10Mm": 2.6419831540095347
+            }
+          },
+          "ring": {
+            "method": "bounded actual weighted LBS",
+            "targetDistalMinMm": 0.35,
+            "boundDegrees": 12,
+            "deltaDegrees": [
+              0,
+              0.5,
+              11.5
+            ],
+            "before": {
+              "deg": [
+                -7,
+                -15,
+                3
+              ],
+              "score": 25.739107530730738,
+              "minClearMm": 0,
+              "distalMinClearMm": 1.2499065866541301,
+              "distalP10Mm": 3.5959184717889796
+            },
+            "after": {
+              "deg": [
+                -7,
+                -14.5,
+                14.5
+              ],
+              "score": 22.865356319378208,
+              "minClearMm": 0,
+              "distalMinClearMm": 0.3463603761728329,
+              "distalP10Mm": 2.122916319311382
+            }
+          },
+          "pinky": {
+            "method": "bounded actual weighted LBS",
+            "targetDistalMinMm": 0.35,
+            "boundDegrees": 12,
+            "deltaDegrees": [
+              0,
+              6,
+              8
+            ],
+            "before": {
+              "deg": [
+                -39,
+                32,
+                16
+              ],
+              "score": 30.57553333705956,
+              "minClearMm": 0,
+              "distalMinClearMm": 2.807118355254424,
+              "distalP10Mm": 4.694521808641931
+            },
+            "after": {
+              "deg": [
+                -39,
+                38,
+                24
+              ],
+              "score": 22.844615448691687,
+              "minClearMm": 0,
+              "distalMinClearMm": 0.34635522334518565,
+              "distalP10Mm": 1.9445407915149557
+            }
+          }
+        },
+        "contact": {
+          "all": {
+            "vertices": 6408,
+            "minClearMm": 0,
+            "p10ClearMm": 2.9535027014358577,
+            "p50ClearMm": 9.953105249798082,
+            "maxClearMm": 48.490640575962
+          },
+          "palm": {
+            "vertices": 400,
+            "minClearMm": 0,
+            "p10ClearMm": 2.405456343570842,
+            "p50ClearMm": 8.802503307855185,
+            "maxClearMm": 28.31034984377541
+          },
+          "heelThumb": {
+            "vertices": 63,
+            "minClearMm": 0.731461095435048,
+            "p10ClearMm": 1.6848993682067568,
+            "p50ClearMm": 4.716958040072508,
+            "maxClearMm": 28.28838694374399
+          },
+          "heelPinky": {
+            "vertices": 85,
+            "minClearMm": 0.41590264197987475,
+            "p10ClearMm": 1.1456082775188232,
+            "p50ClearMm": 5.541011804716552,
+            "maxClearMm": 28.439801908968047
+          },
+          "distal": {
+            "thumb": {
+              "vertices": 250,
+              "minClearMm": 0.34962290636008503,
+              "p10ClearMm": 1.5495214673170166,
+              "p50ClearMm": 8.041608117607892,
+              "maxClearMm": 15.263157655097459
+            },
+            "index": {
+              "vertices": 285,
+              "minClearMm": 0.3492755956579462,
+              "p10ClearMm": 2.6398867185667108,
+              "p50ClearMm": 6.640695404003714,
+              "maxClearMm": 13.652379676151401
+            },
+            "middle": {
+              "vertices": 381,
+              "minClearMm": 0.3489477986259801,
+              "p10ClearMm": 2.6419831540095347,
+              "p50ClearMm": 8.147344083942833,
+              "maxClearMm": 13.936209662793608
+            },
+            "ring": {
+              "vertices": 322,
+              "minClearMm": 0.3463603761728329,
+              "p10ClearMm": 2.122916319311382,
+              "p50ClearMm": 6.6157493889897365,
+              "maxClearMm": 12.673628349644535
+            },
+            "pinky": {
+              "vertices": 323,
+              "minClearMm": 0.34635522334518565,
+              "p10ClearMm": 1.9445407915149557,
+              "p50ClearMm": 5.40538891902342,
+              "maxClearMm": 12.961889548591955
+            }
+          }
+        }
+      }
+    },
+    "scope": "One-time offline support calibration on the supplied actual scale-1 mesh; fixed pose and support offsets only.",
+    "limitations": [
+      "Clearances are CPU-skinned model measurements, not shader displacement or visible-camera acceptance.",
+      "Flat-plane support only. Wrist and arm placement remain the action authors responsibility.",
+      "Palm/heel/distal group statistics must be reviewed with preview images before acceptance."
+    ]
+  },
+  "rest": {
+    "relaxed": {
+      "thumb1": [
+        0.01679055953782968,
+        0,
+        -0.02550838880590285,
+        0.9995335908367129
+      ],
+      "thumb2": [
+        0.023982631882869674,
+        0,
+        -0.036434658254167786,
+        0.9990482215818578
+      ],
+      "thumb3": [
+        0.011994170229148336,
+        0,
+        -0.01822166539000567,
+        0.9997620270799091
+      ],
+      "index1": [
+        -0.007870748683487241,
+        0,
+        -0.060539041076815604,
+        0.9981347984218669
+      ],
+      "index2": [
+        -0.011236647964326956,
+        0,
+        -0.08642835898258024,
+        0.9961946980917455
+      ],
+      "index3": [
+        -0.0056236764760640105,
+        0,
+        -0.04325534899893652,
+        0.9990482215818578
+      ],
+      "middle1": [
+        -0.0063845563034373,
+        0,
+        -0.06071376796203001,
+        0.9981347984218669
+      ],
+      "middle2": [
+        -0.009114890396724465,
+        0,
+        -0.08667780723433001,
+        0.9961946980917455
+      ],
+      "middle3": [
+        -0.0045617870087853556,
+        0,
+        -0.04338019194763563,
+        0.9990482215818578
+      ],
+      "ring1": [
+        -0.0230522537452068,
+        0,
+        -0.05652891098018412,
+        0.9981347984218669
+      ],
+      "ring2": [
+        -0.032910472756253695,
+        0,
+        -0.08070331019763596,
+        0.9961946980917455
+      ],
+      "ring3": [
+        -0.01647091303768321,
+        0,
+        -0.04039009752194603,
+        0.9990482215818578
+      ],
+      "pinky1": [
+        -0.01924017763401406,
+        0,
+        -0.05793737777937975,
+        0.9981347984218669
+      ],
+      "pinky2": [
+        -0.027468175079469696,
+        0,
+        -0.08271410310037562,
+        0.9961946980917455
+      ],
+      "pinky3": [
+        -0.013747171801165692,
+        0,
+        -0.04139645179959834,
+        0.9990482215818578
+      ]
+    },
+    "assist": {
+      "thumb1": [
+        0.010075338295576936,
+        0,
+        -0.015306556402455611,
+        0.9998320843468308
+      ],
+      "thumb2": [
+        0.01439250188973382,
+        0,
+        -0.021865235239234705,
+        0.9996573249755573
+      ],
+      "thumb3": [
+        0.007196867517966726,
+        0,
+        -0.010933554323740996,
+        0.999914327574007
+      ],
+      "index1": [
+        -0.0015750899853268637,
+        0,
+        -0.012115040278371058,
+        0.999925369660452
+      ],
+      "index2": [
+        -0.00225007028892973,
+        0,
+        -0.017306752270342656,
+        0.9998476951563913
+      ],
+      "index3": [
+        -0.0011250779839870639,
+        0,
+        -0.008653705641765732,
+        0.9999619230641713
+      ],
+      "middle1": [
+        -0.0019164513540613477,
+        0,
+        -0.018224443060883652,
+        0.9998320843468308
+      ],
+      "middle2": [
+        -0.0027376281496195127,
+        0,
+        -0.026033401906540642,
+        0.9996573249755573
+      ],
+      "middle3": [
+        -0.0013689313544799123,
+        0,
+        -0.013017816221167117,
+        0.999914327574007
+      ],
+      "ring1": [
+        -0.011531505272328907,
+        0,
+        -0.02827764444257625,
+        0.9995335908367129
+      ],
+      "ring2": [
+        -0.016470913037683214,
+        0,
+        -0.040390097521946035,
+        0.9990482215818578
+      ],
+      "ring3": [
+        -0.008237416800971738,
+        0,
+        -0.020199855779638308,
+        0.9997620270799091
+      ],
+      "pinky1": [
+        -0.013472397672132869,
+        0,
+        -0.04056903259273869,
+        0.9990859062640475
+      ],
+      "pinky2": [
+        -0.01924017763401406,
+        0,
+        -0.05793737777937975,
+        0.998134798421867
+      ],
+      "pinky3": [
+        -0.009624577808289585,
+        0,
+        -0.028982206456353396,
+        0.999533590836713
+      ]
+    }
+  },
+  "reviewed": false,
+  "releaseEligible": false,
+  "limits": [
+    "Fixed 32mm grasp; different handle sizes need authored variants.",
+    "Wrist direction and contact location remain explicit action parameters.",
+    "Local technical candidate; no user visual or library-wide acceptance implied."
+  ]
+}

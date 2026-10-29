@@ -1,0 +1,267 @@
+{
+  "format": "pose-hub-action-recipe@1",
+  "id": "h-reverse-lunge",
+  "nameZh": "后撤步弓步蹲",
+  "spec": "drill-anim/specs/h-reverse-lunge-r5.js",
+  "specSha256Lf": "e582e827cb4959ac6f28a918db306e4c55346a2f98b6996c75c262d63e1ab741",
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "hands": {
+    "left": "assist",
+    "right": "assist"
+  },
+  "camera": {
+    "dir": [
+      1,
+      0.2,
+      0.35
+    ],
+    "fit": [
+      "head",
+      "leftToe",
+      "rightToe",
+      "pelvis",
+      "leftKnee",
+      "rightKnee",
+      "leftElbow",
+      "rightElbow",
+      "shoulderCenter",
+      "leftPalm",
+      "rightPalm"
+    ],
+    "pad": 0.14,
+    "k": 1,
+    "drift": 0,
+    "at": 2.1,
+    "fitTimeline": true,
+    "orbitDegrees": 0,
+    "frontSweepDegrees": 0
+  },
+  "cameraScale": 1.15,
+  "output": {
+    "groundShadow": false,
+    "cameraMotion": false,
+    "wholeCycleContentRect": true,
+    "fps": 30,
+    "exerciseMat": false
+  },
+  "adaptation": {
+    "status": "candidate-retargeted-awaiting-preview",
+    "priority": 1,
+    "sourceRuntimeModel": {
+      "profile": "training-human-v3-contact",
+      "version": "0.1.0-r5"
+    },
+    "method": "per-action contact-aware retargeting; no global pose scale",
+    "requiredChanges": [
+      "Source pelvis y=0.884 at neutral is 79.5 mm below current reset; begin by lifting neutral pelvis by the measured v2-to-armfix reset delta +0.063970 m, preserving the old 15.555 mm intentional flexion offset.",
+      "This neutral correction alone does not preserve bottom-knee clearance; solve pelvis depth/backward shift per phase from current two-bone lengths and actual ankle targets.",
+      "Preserve toe landing through actual current shoe toe-to-ankle offset; source toeDz hardcodes 0.16 m forward/0.075 m below.",
+      "Hands palmAt are hips-frame surface targets: remap by trunk geometry, not by arm-length scaling."
+    ],
+    "handAsset": "hands-native-c1r2-symmetric-r1",
+    "handAcceptance": "This action has not been visually inspected with the selected body/hand setup.",
+    "implemented": "Raised neutral pelvis to current standing baseline; retained low-pose root height by increasing depth travel. Hip hand targets follow current rest pelvis; bottom clearance needs GPU check.",
+    "rotationPolicy": "Full forearm axial sharing avoids half-angle +/-pi branch flips; actual-render rotation and visible deformation checks remain required.",
+    "visualCorrection": "Add up to12mm pelvis softening only during stepping transition to avoid four ankle reach clamp frames; endpoints and depth unchanged."
+  },
+  "source": {
+    "inventory": "catalog/production/remaining-actions-v3-20261028-r1.json",
+    "preparationReview": "tools/action-completion-v3/home-review.json",
+    "originalSpec": "drill-anim/specs/h-reverse-lunge.js",
+    "dependencies": [
+      {
+        "path": "drill-anim/lib/home-anim.mjs",
+        "sha256Lf": "1798c9e55c28b32391b7ef32aa358427b4743ee1959f86ec488a95fe88a05557"
+      },
+      {
+        "path": "drill-anim/lib/ss-geo.mjs",
+        "sha256Lf": "45ca774079e3a85ecc4f924a3220d4baa721f0435e16f6e6e21ffa19e17e8603"
+      },
+      {
+        "path": "drill-anim/specs/h-reverse-lunge-r3.js",
+        "sha256Lf": "02d339b86b11cecef1547aa014826764c1bbfb1d3879f2e44ba0101d15e1a9f2"
+      },
+      {
+        "path": "drill-anim/specs/h-reverse-lunge.js",
+        "sha256Lf": "8787e4e38d2262b07e39c7db0f84816087e2a1a24daf630235d09e47fc39cd11"
+      },
+      {
+        "path": "drill-anim/specs/h-reverse-lunge-r4.js",
+        "sha256Lf": "4a657f8578ee8a85db02a4ac9a161563eee545c23bf50be6e42bfe003e7c966a"
+      },
+      {
+        "path": "drill-anim/specs/_home-armfix-r1.mjs",
+        "sha256Lf": "669e216877327032b2a568946082015035fa3bc7c3c42e8c9fbd46e0ead7f05c"
+      },
+      {
+        "path": "drill-anim/specs/h-reverse-lunge-r5.js",
+        "sha256Lf": "e582e827cb4959ac6f28a918db306e4c55346a2f98b6996c75c262d63e1ab741"
+      }
+    ],
+    "priorRecipeSpec": "h-reverse-lunge-r3.js"
+  },
+  "reviewPlan": {
+    "status": "source-ready-awaiting-preview",
+    "durationSeconds": 8,
+    "previewTimesSeconds": [
+      0,
+      0.15,
+      0.45,
+      1.05,
+      1.9,
+      2.3,
+      3,
+      3.6,
+      3.85,
+      4,
+      4.45,
+      5.05,
+      5.9,
+      6.3,
+      7.6,
+      7.85,
+      8
+    ],
+    "coverTimeSeconds": 0.1,
+    "primaryView": "Keep the source side-three-quarter direction to show step-back distance and knee bend on both sides.",
+    "additionalViews": [
+      "opposite",
+      "side"
+    ],
+    "checks": [
+      "Each foot steps back once; front heel stays planted and back toe remains fixed after landing.",
+      "Back knee hovers at the bottom and both legs return to an intentional upright stance.",
+      "Hands stay on hips; side-front view separates knees and shows step length.",
+      "Inspect actual wrist and ankle quaternion paths at every frame, not only endpoint directions: shortest consecutive rotation, total turn, hand/sole facing, left/right consistency and loop seam."
+    ],
+    "fullCycleRequired": true,
+    "contentBounds": "union of visible body and necessary props over all output frames; one rectangle for the whole clip",
+    "groundShadow": false,
+    "groundProps": "Keep necessary support mat/wall/cushion as explicit props; exclude shadow/stage helpers.",
+    "rotationEvidence": {
+      "status": "descriptor-only-not-joint-acceptance",
+      "sampleRate": 30,
+      "samples": 241,
+      "channels": {
+        "hands.left.finger": {
+          "frame": "hips",
+          "maxStepDegrees": 0,
+          "endpointDegrees": 0,
+          "zeroVectorFrames": [],
+          "stepsOver30Degrees": []
+        },
+        "hands.left.normal": {
+          "frame": "hips",
+          "maxStepDegrees": 0,
+          "endpointDegrees": 0,
+          "zeroVectorFrames": [],
+          "stepsOver30Degrees": []
+        },
+        "feet.left.heading": {
+          "minDegrees": 3,
+          "maxDegrees": 3,
+          "maxRawStepDegrees": 0,
+          "endpointRawDifference": 0,
+          "rawStepsOver90Degrees": []
+        },
+        "feet.left.pitch": {
+          "minDegrees": 0,
+          "maxDegrees": 60,
+          "maxRawStepDegrees": 8.429990538922205,
+          "endpointRawDifference": 0,
+          "rawStepsOver90Degrees": []
+        },
+        "hands.right.finger": {
+          "frame": "hips",
+          "maxStepDegrees": 0,
+          "endpointDegrees": 0,
+          "zeroVectorFrames": [],
+          "stepsOver30Degrees": []
+        },
+        "hands.right.normal": {
+          "frame": "hips",
+          "maxStepDegrees": 0,
+          "endpointDegrees": 0,
+          "zeroVectorFrames": [],
+          "stepsOver30Degrees": []
+        },
+        "feet.right.heading": {
+          "minDegrees": -3,
+          "maxDegrees": -3,
+          "maxRawStepDegrees": 0,
+          "endpointRawDifference": 0,
+          "rawStepsOver90Degrees": []
+        },
+        "feet.right.pitch": {
+          "minDegrees": 0,
+          "maxDegrees": 60,
+          "maxRawStepDegrees": 8.429990538922205,
+          "endpointRawDifference": 0,
+          "rawStepsOver90Degrees": []
+        }
+      },
+      "initialRotationLists": [
+        {
+          "path": "pose.hips.rot",
+          "value": [
+            [
+              [
+                1,
+                0,
+                0
+              ],
+              2
+            ]
+          ]
+        },
+        {
+          "path": "pose.chest.waist",
+          "value": [
+            [
+              [
+                1,
+                0,
+                0
+              ],
+              0
+            ]
+          ]
+        }
+      ],
+      "limits": [
+        "This checks authored descriptor vectors and raw foot angles. It does not measure actual wrist/ankle bone quaternions, IK pole branch changes or skinned twists.",
+        "Large raw Euler angles or identical endpoint orientations alone do not establish a defect. Root GPU capture must inspect actual continuous rotations."
+      ]
+    },
+    "phase": "low-resolution-template-preview",
+    "fullResolutionProduction": "deferred-until-per-action-user-acceptance",
+    "previewGroup": "first-group-standing-leg"
+  },
+  "risks": [
+    "Original hip-touch bisection remains unchanged and is not accepted as true native palm contact.",
+    "Both four-second sides, toe compensation, knee hover and return need GPU review.",
+    "Current body retains v3 legs/trunk; changing the runtime label alone does not retarget old absolute coordinates.",
+    "Support, relaxed, assist and non-dumbbell native grips require their own rendered checks; fixed dumbbell acceptance does not apply."
+  ],
+  "reviewed": false,
+  "releaseEligible": false,
+  "appearance": {
+    "highlight": {
+      "color": "#F05A36",
+      "shade": [
+        0.5,
+        0.42,
+        0.08
+      ],
+      "intensity": [
+        0.75,
+        1
+      ]
+    },
+    "purpose": "Visual cue for target muscle effort, not a physiological measurement",
+    "status": "parameterized-selection-deferred-by-user"
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "format": "pose-hub-action-recipe@1",
+  "id": "h-db-overhead-shrug",
+  "nameZh": "双哑铃过头耸肩",
+  "spec": "drill-anim/specs/h-db-overhead-shrug-r4.js",
+  "specSha256Lf": "eee1b1ae7bbae6d44c8702c239ec5c733705b72a9e1b6565dcda309418e3bcbc",
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "hands": {
+    "left": "dumbbell-grasp",
+    "right": "dumbbell-grasp"
+  },
+  "camera": {
+    "dir": [
+      0.55,
+      0.12,
+      -1
+    ],
+    "fit": [
+      "head",
+      "leftToe",
+      "rightToe",
+      "pelvis",
+      "leftPalm",
+      "rightPalm",
+      "leftElbow",
+      "rightElbow",
+      "leftAnkle",
+      "rightAnkle",
+      "leftKnee",
+      "rightKnee"
+    ],
+    "pad": 0.14,
+    "k": 0.85,
+    "drift": 0,
+    "at": 2,
+    "fitTimeline": true,
+    "orbitDegrees": 0,
+    "frontSweepDegrees": 0
+  },
+  "cameraScale": 1.18,
+  "output": {
+    "groundShadow": false,
+    "cameraMotion": false,
+    "wholeCycleContentRect": true,
+    "fps": 30,
+    "exerciseMat": false
+  },
+  "adaptation": {
+    "status": "candidate-retargeted-pending-visual",
+    "notes": [
+      "Rebuilt fixed-grip wrist targets at measured forearm endpoint; palm forward and anatomical axial frame.",
+      "Standing pelvis corrected to new rest height; intended 4 cm shoulder elevation and near-straight elbows retained.",
+      "Full axial sharing prevents half-share branch jumps; actual rendering still needs checking.",
+      "Integrated shoulder solve applies scapular lift before arm reach clamping; expanded frame contains dumbbell tips at peak lift."
+    ]
+  },
+  "reviewPlan": {
+    "previewSize": 480,
+    "previewFps": 12,
+    "requiresUserApproval": true,
+    "checks": [
+      "Full loop and clear teaching angle",
+      "Body and necessary props remain in view; fixed framing",
+      "Actual wrist and ankle rotation path including both sides and loop seam",
+      "Contact, penetration, floating, neutral posture",
+      "No ground shadow; one content rectangle for complete loop"
+    ]
+  },
+  "reviewed": false,
+  "releaseEligible": false,
+  "appearance": {
+    "highlight": {
+      "color": "#F05A36",
+      "shade": [
+        0.5,
+        0.42,
+        0.08
+      ],
+      "intensity": [
+        0.75,
+        1
+      ]
+    },
+    "purpose": "Visual cue for target muscle effort, not a physiological measurement",
+    "status": "parameterized-selection-deferred-by-user"
+  },
+  "supersedesRecipe": "catalog/production/remaining32-r2/groups/gap/h-db-overhead-shrug.json",
+  "templateReview": {
+    "status": "pending-current-corrections-review",
+    "scope": "New body corrective combination must be replayed; historical motion/camera approval remains bound to its original evidence."
+  },
+  "finalization": {
+    "stage": "awaiting-composed-preview",
+    "baselineVersion": "remaining32-template-optimizations-20261029-r1",
+    "knownIssuesResolved": false,
+    "userReviewed": false
+  },
+  "diagnostics": {
+    "measureFootSurface": true
+  },
+  "fixedCorrectionStack": {
+    "profile": "fixed-wrist-corrections-r1",
+    "version": "0.1.0-r1"
+  },
+  "jointCorrections": [
+    {
+      "profile": "upper-arm-contour-r3",
+      "version": "0.1.0-r3"
+    },
+    {
+      "profile": "ankle-join-r5",
+      "version": "0.1.0-r5"
+    }
+  ]
+}

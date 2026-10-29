@@ -1,0 +1,149 @@
+{
+  "format": "pose-hub-action-recipe@1",
+  "id": "h-half-kneeling-quad-stretch",
+  "nameZh": "半跪姿手拉脚股四头肌拉伸",
+  "spec": "drill-anim/specs/h-half-kneeling-quad-stretch-r6.js",
+  "specSha256Lf": "2c2529ac49986a5446e9aac9d64a856286645343cfc37b5b6663c18ee9f93314",
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "hands": {
+    "left": "assist",
+    "right": "assist"
+  },
+  "camera": {
+    "dir": [
+      1,
+      0.22,
+      0.55
+    ],
+    "fit": [
+      "head",
+      "leftToe",
+      "rightToe",
+      "pelvis",
+      "leftKnee",
+      "rightKnee",
+      "leftPalm",
+      "leftAnkle",
+      "rightAnkle",
+      "rightPalm",
+      "leftElbow",
+      "rightElbow"
+    ],
+    "pad": 0.16,
+    "k": 1,
+    "drift": 0,
+    "at": 3.8,
+    "fitTimeline": true,
+    "orbitDegrees": 0,
+    "frontSweepDegrees": 0
+  },
+  "cameraScale": 1.05,
+  "output": {
+    "groundShadow": false,
+    "cameraMotion": false,
+    "wholeCycleContentRect": true,
+    "fps": 30,
+    "exerciseMat": false
+  },
+  "adaptation": {
+    "status": "candidate-keyframe-passed-awaiting-full-preview",
+    "notes": [
+      "Raised pelvis seed for longer thigh while preserving knee anchor and py/pz solve.",
+      "Rear ankle lifted for current shin length, hand target follows the rear ankle change.",
+      "Fixed assist hand candidates; exact ankle grasp and supporting knee contact remain visual review points.",
+      "Deterministic pelvis and rear ankle geometry replace warm py/pz solve, avoiding loop branch drift while holding the rear knee.",
+      "r6: actual knee surface to floor; foot-local native heel grip with action-specific finger pose; fixed forward elbow pole keeps CPU cycle wrist long-axis angle below45 degrees. Original hand assets, body/leg timing and camera remain unchanged."
+    ]
+  },
+  "reviewPlan": {
+    "previewSize": 480,
+    "previewFps": 12,
+    "requiresUserApproval": true,
+    "checks": [
+      "Full loop and clear teaching angle",
+      "Body and necessary props remain in view; fixed framing",
+      "Actual wrist and ankle rotation path including both sides and loop seam",
+      "Contact, penetration, floating, neutral posture",
+      "No ground shadow; one content rectangle for complete loop"
+    ]
+  },
+  "reviewed": false,
+  "releaseEligible": false,
+  "appearance": {
+    "highlight": {
+      "color": "#F05A36",
+      "shade": [
+        0.5,
+        0.42,
+        0.08
+      ],
+      "intensity": [
+        0.75,
+        1
+      ]
+    },
+    "purpose": "Visual cue for target muscle effort, not a physiological measurement",
+    "status": "parameterized-selection-deferred-by-user"
+  },
+  "supersedesRecipe": "catalog/production/remaining32-r2/groups/gap/h-half-kneeling-quad-stretch.json",
+  "templateReview": {
+    "status": "pending-current-corrections-review",
+    "scope": "New body corrective combination must be replayed; historical motion/camera approval remains bound to its original evidence."
+  },
+  "finalization": {
+    "stage": "r6-keyframes-passed-awaiting-full-preview",
+    "baselineVersion": "remaining32-template-optimizations-20261029-r1",
+    "knownIssuesResolved": false,
+    "userReviewed": false,
+    "evidence": [
+      "F:\\PoseHub-v2-production\\template-finalization-20261029\\probes\\half-kneeling-grip-r6-key\\visual-review.json"
+    ]
+  },
+  "jointCorrections": [
+    {
+      "profile": "upper-arm-contour-r3",
+      "version": "0.1.0-r3"
+    },
+    {
+      "profile": "ankle-join-r5",
+      "version": "0.1.0-r5"
+    }
+  ],
+  "diagnostics": {
+    "measureFootSurface": true
+  },
+  "specId": "h-half-kneeling-quad-stretch-r6",
+  "source": {
+    "previousSpecs": [
+      {
+        "spec": "drill-anim/specs/h-half-kneeling-quad-stretch-r4.js",
+        "sha256Lf": "7fc0823bee7d2737328dfb4944817cb62fa6b647d5d35cdf69caf88d27eca248",
+        "status": "superseded-rejected-knee-float-and-open-grip"
+      },
+      {
+        "spec": "drill-anim/specs/h-half-kneeling-quad-stretch-r5.js",
+        "sha256Lf": "cf074ffa7ec705c5bae1a9ef14097f35b8622a3b2e7f88e10e5235ea90430b08",
+        "status": "knee-calibration-trial-not-selected"
+      }
+    ],
+    "files": [
+      {
+        "path": "drill-anim/specs/h-half-kneeling-quad-stretch-r6.js",
+        "sha256Lf": "2c2529ac49986a5446e9aac9d64a856286645343cfc37b5b6663c18ee9f93314"
+      }
+    ],
+    "dependencies": [
+      {
+        "path": "tools/action-completion-v3-r2/native-action-hand-pose-r1.mjs",
+        "sha256Lf": "de9cf5a648776736b2875cae64acb0c42c925de39ad02c2041bfa82bc69fc017"
+      },
+      {
+        "path": "drill-anim/models/native-action-hand-pose-r1/manifest.json",
+        "sha256Lf": "41a22e7d4b277aec85b14ad90ccaa88d55de0e82516887ff9d6d4d0697a8df00"
+      }
+    ]
+  }
+}

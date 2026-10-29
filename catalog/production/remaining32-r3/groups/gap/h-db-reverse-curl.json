@@ -1,0 +1,147 @@
+{
+  "format": "pose-hub-action-recipe@1",
+  "id": "h-db-reverse-curl",
+  "nameZh": "站姿双哑铃反握弯举",
+  "spec": "drill-anim/specs/h-db-reverse-curl-r5.js",
+  "specSha256Lf": "83de1e7b5026707912e42af2c79775b1390455feea308236545371b779a7ba57",
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "hands": {
+    "left": "dumbbell-grasp",
+    "right": "dumbbell-grasp"
+  },
+  "camera": {
+    "dir": [
+      0.55,
+      0.12,
+      1
+    ],
+    "fit": [
+      "head",
+      "leftToe",
+      "rightToe",
+      "pelvis",
+      "leftPalm",
+      "rightPalm",
+      "leftElbow",
+      "rightElbow",
+      "leftAnkle",
+      "rightAnkle",
+      "leftKnee",
+      "rightKnee"
+    ],
+    "pad": 0.13,
+    "k": 0.9,
+    "drift": 0,
+    "at": 2,
+    "fitTimeline": true,
+    "orbitDegrees": 0,
+    "frontSweepDegrees": 0
+  },
+  "cameraScale": 1.05,
+  "output": {
+    "groundShadow": false,
+    "cameraMotion": false,
+    "wholeCycleContentRect": true,
+    "fps": 30
+  },
+  "adaptation": {
+    "status": "user-accepted-for-reviewed-template",
+    "notes": [
+      "Actual wrist origin follows elbow plus measured forearm length.",
+      "Fixed template longitudinal and palmar axes mapped through the engine reference palm frame.",
+      "Standing pelvis corrected by actual v2 to armfix rest delta.",
+      "Elbow pole equals the intended elbow point to avoid unintended wrist bend.",
+      "Effort highlight follows explicit lift/return phases."
+    ]
+  },
+  "reviewPlan": {
+    "previewSize": 480,
+    "previewFps": 12,
+    "requiresUserApproval": true,
+    "checks": [
+      "Full loop and clear teaching angle",
+      "Body and necessary props remain in view; fixed framing",
+      "Actual wrist and ankle rotation path including both sides and loop seam",
+      "Contact, penetration, floating, neutral posture",
+      "No ground shadow; one content rectangle for complete loop"
+    ]
+  },
+  "reviewed": false,
+  "releaseEligible": false,
+  "appearance": {
+    "highlight": {
+      "color": "#F05A36",
+      "shade": [
+        0.5,
+        0.42,
+        0.08
+      ],
+      "intensity": [
+        0.75,
+        1
+      ]
+    },
+    "purpose": "Visual cue for target muscle effort, not a physiological measurement",
+    "status": "parameterized-selection-deferred-by-user",
+    "presets": "catalog/production/remaining32-r2/highlight-presets.json"
+  },
+  "reviewedScopeNote": "Motion/camera/hand template accepted; overall appearance and final production approval are still pending.",
+  "supersedesRecipe": "catalog/production/remaining32-r2/groups/gap/h-db-reverse-curl.json",
+  "priorTemplateApproval": {
+    "status": "accepted",
+    "date": "2026-10-29",
+    "reviewer": "user",
+    "scope": [
+      "motion",
+      "camera",
+      "framing",
+      "hand-setup",
+      "wrist-ankle-continuity"
+    ],
+    "appearanceSelection": "deferred-by-user",
+    "evidence": {
+      "capturePath": "F:\\PoseHub-v2-production\\remaining32-template-r2-20261028\\review-batch01\\h-db-reverse-curl\\attempt04-warm\\capture.json",
+      "captureSha256": "31a9b142138d33c8e9365ce3e742e09870193781e6aed874467b0e10b0bbccf8",
+      "previewRecipeSha256": "26914b85c493a341cbb69ce271e73ab14ccedc547b5ba56e6a2438cba0f0f0c2",
+      "specSha256Lf": "83de1e7b5026707912e42af2c79775b1390455feea308236545371b779a7ba57"
+    },
+    "userStatements": [
+      "这个颜色和材质留作一个参数吧 我以后选好了再换",
+      "其他没什么问题"
+    ],
+    "limits": [
+      "Acceptance applies to the reviewed model and motion recipe. A replacement model needs compatibility and preview checks.",
+      "Final high-resolution production and release remain deferred."
+    ]
+  },
+  "templateReview": {
+    "status": "pending-current-corrections-review",
+    "scope": "New body corrective combination must be replayed; historical motion/camera approval remains bound to its original evidence."
+  },
+  "finalization": {
+    "stage": "awaiting-composed-preview",
+    "baselineVersion": "remaining32-template-optimizations-20261029-r1",
+    "knownIssuesResolved": false,
+    "userReviewed": false
+  },
+  "diagnostics": {
+    "measureFootSurface": true
+  },
+  "fixedCorrectionStack": {
+    "profile": "fixed-wrist-corrections-r1",
+    "version": "0.1.0-r1"
+  },
+  "jointCorrections": [
+    {
+      "profile": "upper-arm-contour-r3",
+      "version": "0.1.0-r3"
+    },
+    {
+      "profile": "ankle-join-r5",
+      "version": "0.1.0-r5"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "format": "pose-hub-highlight-presets@1",
+  "selectionStatus": "deferred-by-user",
+  "selectedPreset": null,
+  "previewFallback": "orange-red-solid",
+  "parameterLocation": "recipe.appearance.highlight",
+  "presets": {
+    "orange-red-solid": {
+      "label": "橙红色实色高亮",
+      "highlight": {
+        "color": "#F05A36",
+        "shade": [
+          0.5,
+          0.42,
+          0.08
+        ],
+        "intensity": [
+          0.75,
+          1
+        ]
+      }
+    },
+    "orange-red-translucent-glow": {
+      "label": "橙红色半透明柔光",
+      "highlight": {
+        "color": "#F05A36",
+        "shade": [
+          0.5,
+          0.42,
+          0.08
+        ],
+        "intensity": [
+          0.75,
+          1
+        ],
+        "material": {
+          "type": "translucent-glow-r1",
+          "opacity": 0.48,
+          "emission": 0.17,
+          "fresnel": 0.25
+        }
+      }
+    }
+  },
+  "usage": "Copy the chosen preset highlight object into recipe.appearance.highlight before rendering. Color, shade, intensity and material opacity/emission/fresnel remain editable. No geometry or motion change is required."
+}

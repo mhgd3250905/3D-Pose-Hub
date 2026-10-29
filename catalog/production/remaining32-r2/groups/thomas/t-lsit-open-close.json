@@ -1,0 +1,241 @@
+{
+  "format": "pose-hub-action-recipe@1",
+  "id": "t-lsit-open-close",
+  "nameZh": "L撑开合",
+  "spec": "drill-anim/specs/t-lsit-open-close-r5.js",
+  "specId": "t-lsit-open-close-r5",
+  "specSha256Lf": "5a6350e154deb2283c89ee35ff94d7ae7103937ed4e786fd0ba09dfeec14e574",
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "hands": {
+    "left": "support",
+    "right": "support"
+  },
+  "camera": {
+    "dir": [
+      0,
+      0.42,
+      0.91
+    ],
+    "fit": [
+      "head",
+      "leftPalm",
+      "rightPalm",
+      "leftToe",
+      "rightToe",
+      "pelvis",
+      "leftKnee",
+      "rightKnee",
+      "leftElbow",
+      "rightElbow",
+      "leftWrist",
+      "rightWrist",
+      "leftAnkle",
+      "rightAnkle"
+    ],
+    "pad": 0.18,
+    "k": 1,
+    "drift": 0,
+    "at": 2.85,
+    "fitTimeline": true,
+    "orbitDegrees": 0,
+    "frontSweepDegrees": 0
+  },
+  "cameraScale": 1.15,
+  "output": {
+    "groundShadow": false,
+    "cameraMotion": false,
+    "wholeCycleContentRect": true,
+    "fps": 30,
+    "exerciseMat": false
+  },
+  "adaptation": {
+    "status": "retargeted-awaiting-gpu-review",
+    "runtimeInputConversion": "Remove old nativeHands.version descriptor; retain only supported twistShare; explicitly select current model and per-side hand pose.",
+    "sourcePoseRetargeted": true,
+    "cameraAccepted": false,
+    "supportAccepted": false,
+    "knownSemanticBlocker": false,
+    "method": [
+      "Retain the action semantics, timing and intended fixed support points.",
+      "Evaluate the actual short-arm rig with the fixed symmetric hand source; calibrate floor orientation and wrist height from the matching saved support preset.",
+      "Compare actual body contact/limb reach at key poses; if source absolute targets do not fit, author a separate spec revision using new bind pivots/segment lengths.",
+      "Do not scale every coordinate, relax QA thresholds, or silently use a changed model/pose."
+    ],
+    "specificRisk": "Source shoulder plane -0.07939535194610137 m is derived from old Snow bind-pose trunk offsets, with 60 mm shoulder depression. Recalculate the shoulder-plane target from the new bind pivots before treating compatibility as solved.",
+    "implemented": [
+      "Current armfix hip pivots and thigh/shin lengths in new body-aware helper",
+      "Original floor anchors retained; arm reach solver reconciles current body",
+      "Full forearm axial share avoids half-share wrap discontinuity",
+      "Fixed camera and latest explicit support/relaxed hand recipes",
+      "Shorter torso offsets used to recompute original shoulder-plane direction"
+    ]
+  },
+  "source": {
+    "inventory": "catalog/production/remaining-actions-v3-20261028-r1.json",
+    "priorReview": "tools/action-completion-v3/thomas-review.json",
+    "priorReviewScope": "historical source preparation, not current model or visual approval",
+    "originalSpec": "drill-anim/specs/t-lsit-open-close-r2.js",
+    "originalSourceCommit": "56a479df170ec53d124ebc12fae7e77b7928a64a",
+    "files": [
+      {
+        "path": "drill-anim/specs/_thomas-pr106-armfix-r1.mjs",
+        "sha256Lf": "a722cc2ac8347fc8a879cc5c730bdca3452f52e6f71fb808d4b380dfa974e1a7"
+      },
+      {
+        "path": "drill-anim/specs/t-lsit-open-close-r5.js",
+        "sha256Lf": "5a6350e154deb2283c89ee35ff94d7ae7103937ed4e786fd0ba09dfeec14e574"
+      }
+    ]
+  },
+  "reviewPlan": {
+    "intent": "Continuous L support, two symmetrical straight-leg opening and closing cycles in 8 seconds.",
+    "previewOnly": true,
+    "userApprovalRequiredPerAction": true,
+    "productionDeferred": true,
+    "previewTimesSeconds": [
+      0,
+      1.5,
+      2.1,
+      2.85,
+      3.6,
+      4.4,
+      5.1,
+      5.85,
+      6.6,
+      7.5,
+      8
+    ],
+    "cameraReason": "Centred elevated front view preserves symmetrical leg opening and separates both hands from the hips.",
+    "diagnosticViews": [
+      "main fixed camera",
+      "opposite-side view",
+      "side view",
+      "both wrist and ankle close-ups"
+    ],
+    "points": [
+      "Hands stay at x +/-0.205 m and z -0.1 m with outward fingers.",
+      "Show continuous pelvis/heel lift: the action must not read as sitting on the floor.",
+      "At closed and wide positions check both knees, feet and hand/thigh clearance.",
+      "Preserve the authored shoulder depression and source elbow QA."
+    ],
+    "continuousOrientation": [
+      "Inspect actual local/world hand and foot quaternions across the entire sampled path and across the loop seam.",
+      "Use quaternion sign continuity and incremental shortest-arc angles; equal start/end directions do not exclude a 180/360-degree twist inside the cycle.",
+      "Compare palm/sole normals and finger/toe directions against forearm/shin direction on both sides.",
+      "Flag abrupt Euler/axis-angle branch changes for actual skeleton and image review; do not declare a defect from Euler magnitude alone.",
+      "Inspect visible wrist and ankle deformation through intermediate frames; quaternion continuity alone does not certify a natural shape."
+    ],
+    "sourceOrientationAudit": {
+      "kind": "source-descriptor-only",
+      "fps": 30,
+      "samples": 241,
+      "actualSkeletonEvaluated": false,
+      "actualMeshEvaluated": false,
+      "channels": {
+        "leftFoot": {
+          "maxComposedAdjacentDegrees": 1.3178264665640644,
+          "atFrame": 64,
+          "cumulativeShortestArcDegrees": 100.89075307602077,
+          "endpointDifferenceDegrees": 0,
+          "rawAngleChannels": []
+        },
+        "leftHand": {
+          "modes": [
+            "floor"
+          ],
+          "fingerChanged": false,
+          "normalChanged": false,
+          "note": "Floor wrist pose is supplied by the active hand adapter; source finger/normal checks cannot certify its wrist rotation."
+        },
+        "rightFoot": {
+          "maxComposedAdjacentDegrees": 1.3178264665640644,
+          "atFrame": 64,
+          "cumulativeShortestArcDegrees": 100.89075307602077,
+          "endpointDifferenceDegrees": 0,
+          "rawAngleChannels": []
+        },
+        "rightHand": {
+          "modes": [
+            "floor"
+          ],
+          "fingerChanged": false,
+          "normalChanged": false,
+          "note": "Floor wrist pose is supplied by the active hand adapter; source finger/normal checks cannot certify its wrist rotation."
+        }
+      },
+      "limits": [
+        "Composed source foot rotations are inspected before IK and model transforms. Actual wrist and ankle quaternions and visible deformation still need rendering.",
+        "A large Euler value or cumulative path is only a review lead, not a defect verdict."
+      ]
+    },
+    "qaUnchanged": {
+      "pins": [
+        {
+          "c": "handR",
+          "when": "always"
+        },
+        {
+          "c": "handL",
+          "when": "always"
+        }
+      ],
+      "straight": [
+        {
+          "j": "elbow.right",
+          "min": 176
+        },
+        {
+          "j": "elbow.left",
+          "min": 176
+        },
+        {
+          "j": "knee.right",
+          "min": 176
+        },
+        {
+          "j": "knee.left",
+          "min": 176
+        }
+      ],
+      "allowContact": [
+        "forearmR|thighR",
+        "forearmL|thighL",
+        "handR|thighR",
+        "handL|thighL",
+        "upperarmR|thighR",
+        "upperarmL|thighL",
+        "thighL|thighR",
+        "shinL|shinR",
+        "footL|footR"
+      ]
+    },
+    "propPolicy": "The existing thin support mat remains an explicit prop. Its visible extent belongs to the fixed whole-cycle content rectangle; no separate ground-shadow layer."
+  },
+  "risks": [
+    "Source shoulder plane -0.07939535194610137 m is derived from old Snow bind-pose trunk offsets, with 60 mm shoulder depression. Recalculate the shoulder-plane target from the new bind pivots before treating compatibility as solved.",
+    "armfix-r2 does not migrate old r5 contact calibration or P4/P5 appearance corrections automatically.",
+    "The saved support shape is an unreviewed legacy-mesh candidate; accepted dumbbell/wrist-r4 geometry is not a support-hand approval.",
+    "No new preview or full-cycle visual approval was performed while preparing this recipe."
+  ],
+  "reviewed": false,
+  "releaseEligible": false,
+  "appearance": {
+    "highlight": {
+      "color": "#F05A36",
+      "shade": [
+        0.5,
+        0.42,
+        0.08
+      ],
+      "intensity": [
+        0.75,
+        1
+      ]
+    },
+    "purpose": "Visual cue for target muscle effort, not a physiological measurement",
+    "status": "parameterized-selection-deferred-by-user"
+  }
+}

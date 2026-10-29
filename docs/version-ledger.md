@@ -1,5 +1,45 @@
 # Pose-Hub 版本对齐台账
 
+## 2026-10-29 人体关节优化与32模板合入main
+
+用户授权将 `codex/action-inventory-20261028@95fe7fa` 集成到main并push，保留旧试版与独立工作区WIP。当前32配方为remaining32-r4、候选快照finalization-r2；Git集成不替代逐项视觉验收。441规格、7项可移植性、37项组件/配方测试及473份原始来源哈希通过；目录表同步到441规格。完整来源、换行保真与误忽略几何配置修复、验证边界见[main集成记录](production-snapshots/remaining32-main-integration-20261029-r1.md)。
+
+## 2026-10-29 四项直臂支撑肘部修正
+
+`remaining32-template-finalization-20261029-r2` 针对用户反馈的坐姿分腿屈伸、坐姿分腿双腿抬起、分腿支撑、V撑补接已有 `elbow-dqs-r1`，改善肘部突然收细。四项各241个实际样本确认组件生效，骨架/支撑点差0毫米、镜头不变；其余28项配方原字节保留。32项当前候选、473份来源及61项伸直约束复核通过，仍待用户验收。详见[修订记录](production-snapshots/remaining32-template-finalization-20261029-r2.md)；旧r1快照及其证据保留。
+
+## 2026-10-29 第一批32动作模板候选冻结
+
+版本 `remaining32-template-finalization-20261029-r1` 已完成32/32本轮候选复核，固定动作源、最新手型及关节组件、镜头、接触调整和高亮参数。32个完整低清循环共7772个30Hz实际采样；473份来源哈希、61项原始伸直约束、441份规格验证及7项portability均通过。毛巾过头转肩已改为两端正握；按用户明确放宽的肩部标准，放大袖口近景材质层纹保留并注明。
+
+[版本说明](production-snapshots/remaining32-template-finalization-20261029-r1.md)与[机器快照](../catalog/production/versions/remaining32-template-finalization-20261029-r1.json)绑定当前配方和证据。低清验收页为 `http://127.0.0.1:8845/`。当前32项均保持用户待验收、不可发布；正式高清制作延后。本地Git及原字节源码包回执位于 `F:/PoseHub-v2-production/version-snapshots/remaining32-template-finalization-20261029-r1/delivery-receipt.json`。原r2确认、旧失败试版及下列历史检查点保留，未据此升级main或公开媒体。
+
+## 2026-10-29 32动作与关节优化本地版本检查点
+
+版本 `remaining32-template-optimizations-20261029-r1` 汇总人体/手型、实际腕踝旋转、脚踝r5、肘部DQS r1、大臂r3、固定镜头及高亮参数。32份配方中2份动作模板已确认、30份为候选；熊式大臂另作局部确认。当前采用路径、证据哈希和保留问题见[版本快照](production-snapshots/remaining32-template-optimizations-20261029-r1.md)，机器索引位于 `catalog/production/versions/`。本地Git提交与源码包的精确回执在 `F:/PoseHub-v2-production/version-snapshots/remaining32-template-optimizations-20261029-r1/delivery-receipt.json`；未推进主线合并、远端推送或素材发布。
+
+
+## 2026-10-29 大臂连续轮廓 r3 局部验收收尾
+
+用户确认当前 `upper-arm-contour-r3 / 0.1.0-r3` 的大臂外观可收尾，绑定熊式 `attempt11`。袖口下方轻微表面波纹保留，不再扩展修整。本轮确认限定于已展示的大臂修订，不自动批准其他动作、全身模型或正式成片。此前候选报告与冻结版本保留；全局生产默认及媒体发布版本不变。
+
+[收尾说明](bear-upper-arm-continuity-20261029.md)及 `catalog/production/remaining32-r2/bear-upper-arm-continuity-approval-20261029.json` 固定范围、残留说明和配方/组件/媒体哈希。验收页同步局部通过状态；本次为本地保存，未提交、推送或发布。
+
+## 2026-10-28 动作素材库盘点与来源收纳
+
+在 `main@56a479df170ec53d124ebc12fae7e77b7928a64a` 上另建 `codex/action-inventory-20261028`，按用户要求盘点原219包之外的旧源码和未集成新动作，保存[逐项清单](action-inventory-20261028-r1.md)与[机器索引](../catalog/inventory/actions-20261028-r1.json)。本节记录本地盘点成果，不表示待审动作已合入 main、选入新包或获内容批准。
+
+| 范围 | 本次核对结果 |
+| --- | --- |
+| 原透明测试包 | 219个已交付ID，保持原测试／待审身份 |
+| 219以外的main旧家族 | 24个动态候选、6个自测静图、1个用户停止项；不是31个可直接生产的新动作 |
+| 未集成新动作 | PR23的8个全新spec，open/draft，只有关键帧预览，完整QA待做 |
+| 总盘点口径 | 258个源码家族；排除静图和停止项后251个动态／保持候选ID，不代表机制去重或最终收录数量 |
+| 主线与原包来源关系 | main301份spec归并243家族，与219交集212；7个原包家族尚未进main。174个原包精确源在main同SHA，45个选中spec路径不在main，其中38个仍有同家族其他版本 |
+| 历史与提议 | 旧批次／修订包8条和仅规划未写spec的10项另列；PR19时序修订、237旧模型包装不增加新动作数 |
+
+所有现有源码、媒体、停止状态和未提交改动保留。新人体兼容性、固定镜头、无地面投影、全周期内容矩形及App下载优化已登记为后续生产要求；本次没有执行渲染、逐项镜头验收、媒体／SDK发布或改全局生产默认。旧阶段“241动作”保留其历史语境，本次精确统计由上述清单说明。
+
 ## 2026-10-28 固定抓握／腕部阶段收束
 
 用户显式调用 `cockpit-closeout` 并授权“保存push提交”。收束前main与远端均为 `dbba3a7c69dc872ba53d04311d2b74ed6d993886`，已通过 `git ls-remote origin refs/heads/main` 回读确认；源码合入为 `94534211bac2ebed995df94ba4cabe66397b4fab`。本次只整理5份Markdown，不改变已接受模型或运行时。

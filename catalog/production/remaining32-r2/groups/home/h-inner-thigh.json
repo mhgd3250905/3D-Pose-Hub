@@ -1,0 +1,256 @@
+{
+  "format": "pose-hub-action-recipe@1",
+  "id": "h-inner-thigh",
+  "nameZh": "侧卧内收抬腿",
+  "spec": "drill-anim/specs/h-inner-thigh-r5.js",
+  "specSha256Lf": "fb8826e11abff766b64000eb8ef5a887a8eaf5145d58c33a173500152aa33c02",
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "hands": {
+    "left": "relaxed",
+    "right": "relaxed"
+  },
+  "camera": {
+    "dir": [
+      -0.2,
+      0.36,
+      1
+    ],
+    "fit": [
+      "head",
+      "leftPalm",
+      "leftElbow",
+      "leftToe",
+      "rightToe",
+      "pelvis",
+      "rightKnee",
+      "leftKnee",
+      "rightElbow",
+      "shoulderCenter",
+      "rightPalm"
+    ],
+    "pad": 0.14,
+    "k": 0.75,
+    "drift": 0,
+    "at": 1.8,
+    "fitTimeline": true,
+    "orbitDegrees": 0,
+    "frontSweepDegrees": 0
+  },
+  "cameraScale": 1.15,
+  "output": {
+    "groundShadow": false,
+    "cameraMotion": false,
+    "wholeCycleContentRect": true,
+    "fps": 30,
+    "exerciseMat": false
+  },
+  "adaptation": {
+    "status": "candidate-retargeted-awaiting-preview",
+    "priority": 3,
+    "sourceRuntimeModel": {
+      "profile": "training-human-v3-contact",
+      "version": "0.1.0-r5"
+    },
+    "method": "per-action contact-aware retargeting; no global pose scale",
+    "requiredChanges": [
+      "Source bottom leg is generated from old TH/SH and REST hip; reconstruct hip/knee/ankle chain at original joint directions with current segment lengths.",
+      "Recalculate left support elbow/hand from current waist/shoulder transform; source EL was derived from old WR/REST.",
+      "Hip touch bisection must target the current visible surface rather than count solver success as contact."
+    ],
+    "handAsset": "hands-native-c1r2-symmetric-r1",
+    "handAcceptance": "This action has not been visually inspected with the selected body/hand setup.",
+    "implemented": "Recomputed free bottom leg with current lengths and upper-body support geometry from current waist; right hand surface target follows hip rest offset.",
+    "rotationPolicy": "Full forearm axial sharing avoids half-angle +/-pi branch flips; actual-render rotation and visible deformation checks remain required.",
+    "userHandFeedback": "2026-10-29: retain movement and framing, relax and flatten both hands; align authored distal directions with actual forearms rather than forcing the right hand across its forearm.",
+    "handRefinementStatus": "new-r5-source-awaiting-visual-review"
+  },
+  "source": {
+    "inventory": "catalog/production/remaining-actions-v3-20261028-r1.json",
+    "preparationReview": "tools/action-completion-v3/home-review.json",
+    "originalSpec": "drill-anim/specs/h-inner-thigh.js",
+    "dependencies": [
+      {
+        "path": "drill-anim/lib/home-anim.mjs",
+        "sha256Lf": "1798c9e55c28b32391b7ef32aa358427b4743ee1959f86ec488a95fe88a05557"
+      },
+      {
+        "path": "drill-anim/lib/ss-geo.mjs",
+        "sha256Lf": "45ca774079e3a85ecc4f924a3220d4baa721f0435e16f6e6e21ffa19e17e8603"
+      },
+      {
+        "path": "drill-anim/specs/h-inner-thigh-r3.js",
+        "sha256Lf": "c4baf49e514e6cb9385c1348654ace0aae585e427b1d9e4931359a37ef133ef0"
+      },
+      {
+        "path": "drill-anim/specs/h-inner-thigh.js",
+        "sha256Lf": "a4f1337cd73ad34adfb5ee487583141849048606530bea95171ef3a6317395e8"
+      },
+      {
+        "path": "drill-anim/specs/h-inner-thigh-r4.js",
+        "sha256Lf": "eb043f12bffb73768a2483216b34e1bc159f64e10e8621bfa5024078869b6f37"
+      },
+      {
+        "path": "drill-anim/specs/_home-armfix-r1.mjs",
+        "sha256Lf": "669e216877327032b2a568946082015035fa3bc7c3c42e8c9fbd46e0ead7f05c"
+      },
+      {
+        "path": "drill-anim/specs/h-inner-thigh-r5.js",
+        "sha256Lf": "fb8826e11abff766b64000eb8ef5a887a8eaf5145d58c33a173500152aa33c02"
+      }
+    ],
+    "priorRecipeSpec": "h-inner-thigh-r3.js"
+  },
+  "reviewPlan": {
+    "status": "source-ready-awaiting-preview",
+    "durationSeconds": 8,
+    "previewTimesSeconds": [
+      0,
+      0.2,
+      0.3,
+      0.9,
+      1.4,
+      1.8,
+      2.2,
+      3.5,
+      4.3,
+      5.4,
+      6.2,
+      7.5,
+      8
+    ],
+    "coverTimeSeconds": 1.8,
+    "primaryView": "A somewhat lower lateral view separates the working lower leg from the bent support leg.",
+    "additionalViews": [
+      "opposite",
+      "side"
+    ],
+    "checks": [
+      "Left forearm/elbow support, right foot support and right hand-to-hip contact are visible.",
+      "Bottom left leg lifts with a nearly straight knee and returns without floor penetration.",
+      "Side view separates lower leg from upper planted leg and shows hip stacking.",
+      "Inspect actual wrist and ankle quaternion paths at every frame, not only endpoint directions: shortest consecutive rotation, total turn, hand/sole facing, left/right consistency and loop seam.",
+      "Review both relaxed hand shapes and palmar floor/body clearance in close-up; r5 changes hand descriptors only."
+    ],
+    "fullCycleRequired": true,
+    "contentBounds": "union of visible body and necessary props over all output frames; one rectangle for the whole clip",
+    "groundShadow": false,
+    "groundProps": "Keep necessary support mat/wall/cushion as explicit props; exclude shadow/stage helpers.",
+    "rotationEvidence": {
+      "status": "descriptor-only-not-joint-acceptance",
+      "sampleRate": 30,
+      "samples": 241,
+      "channels": {
+        "hands.left.finger": {
+          "frame": "floor",
+          "maxStepDegrees": 0,
+          "endpointDegrees": 0,
+          "zeroVectorFrames": [],
+          "stepsOver30Degrees": []
+        },
+        "hands.right.finger": {
+          "frame": "hips",
+          "maxStepDegrees": 0,
+          "endpointDegrees": 0,
+          "zeroVectorFrames": [],
+          "stepsOver30Degrees": []
+        },
+        "hands.right.normal": {
+          "frame": "hips",
+          "maxStepDegrees": 0,
+          "endpointDegrees": 0,
+          "zeroVectorFrames": [],
+          "stepsOver30Degrees": []
+        },
+        "feet.right.heading": {
+          "minDegrees": -90,
+          "maxDegrees": -90,
+          "maxRawStepDegrees": 0,
+          "endpointRawDifference": 0,
+          "rawStepsOver90Degrees": []
+        },
+        "feet.right.pitch": {
+          "minDegrees": 0,
+          "maxDegrees": 0,
+          "maxRawStepDegrees": 0,
+          "endpointRawDifference": 0,
+          "rawStepsOver90Degrees": []
+        }
+      },
+      "initialRotationLists": [
+        {
+          "path": "pose.hips.rot",
+          "value": [
+            [
+              [
+                0,
+                0,
+                1
+              ],
+              0
+            ]
+          ]
+        },
+        {
+          "path": "pose.chest.waist",
+          "value": [
+            [
+              [
+                0,
+                0,
+                1
+              ],
+              36
+            ]
+          ]
+        },
+        {
+          "path": "pose.feet.left.rot",
+          "value": [
+            [
+              [
+                0,
+                0,
+                1
+              ],
+              -1.5
+            ]
+          ]
+        }
+      ],
+      "limits": [
+        "This checks authored descriptor vectors and raw foot angles. It does not measure actual wrist/ankle bone quaternions, IK pole branch changes or skinned twists.",
+        "Large raw Euler angles or identical endpoint orientations alone do not establish a defect. Root GPU capture must inspect actual continuous rotations."
+      ]
+    },
+    "phase": "low-resolution-template-preview",
+    "fullResolutionProduction": "deferred-until-per-action-user-acceptance",
+    "previewGroup": "later-group"
+  },
+  "risks": [
+    "The original hip-touch bisection is retained and is not a native surface-contact proof.",
+    "Support forearm/foot, head alignment and lower-leg clearance require GPU review.",
+    "Current body retains v3 legs/trunk; changing the runtime label alone does not retarget old absolute coordinates.",
+    "Support, relaxed, assist and non-dumbbell native grips require their own rendered checks; fixed dumbbell acceptance does not apply."
+  ],
+  "reviewed": false,
+  "releaseEligible": false,
+  "appearance": {
+    "highlight": {
+      "color": "#F05A36",
+      "shade": [
+        0.5,
+        0.42,
+        0.08
+      ],
+      "intensity": [
+        0.75,
+        1
+      ]
+    },
+    "purpose": "Visual cue for target muscle effort, not a physiological measurement",
+    "status": "parameterized-selection-deferred-by-user"
+  }
+}

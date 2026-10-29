@@ -1,0 +1,270 @@
+{
+  "format": "pose-hub-action-recipe@1",
+  "id": "t-lsit-vsit-circles",
+  "nameZh": "L 撑到 V 撑画圈",
+  "spec": "drill-anim/specs/t-lsit-vsit-circles-r4.js",
+  "specId": "t-lsit-vsit-circles-r4",
+  "specSha256Lf": "eb9741d0a6a0e120e0c237ba104643005204f77e97827d71c45e60a0433a9bbc",
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "hands": {
+    "left": "support",
+    "right": "support"
+  },
+  "camera": {
+    "fitTimeline": true,
+    "dir": [
+      0.35,
+      0.25,
+      1
+    ],
+    "fit": [
+      "head",
+      "leftPalm",
+      "rightPalm",
+      "leftToe",
+      "rightToe",
+      "pelvis",
+      "leftKnee",
+      "rightKnee",
+      "leftElbow",
+      "rightElbow",
+      "leftWrist",
+      "rightWrist",
+      "leftAnkle",
+      "rightAnkle"
+    ],
+    "pad": 0.18,
+    "k": 1,
+    "drift": 0,
+    "driftPeriod": 10,
+    "at": 3,
+    "orbitDegrees": 0,
+    "frontSweepDegrees": 0
+  },
+  "cameraScale": 1.15,
+  "output": {
+    "groundShadow": false,
+    "cameraMotion": false,
+    "wholeCycleContentRect": true,
+    "fps": 30,
+    "exerciseMat": false
+  },
+  "adaptation": {
+    "status": "retargeted-awaiting-gpu-review",
+    "runtimeInputConversion": "Remove old nativeHands.version descriptor; retain only supported twistShare; explicitly select current model and per-side hand pose.",
+    "sourcePoseRetargeted": true,
+    "cameraAccepted": false,
+    "supportAccepted": false,
+    "knownSemanticBlocker": false,
+    "method": [
+      "Retain the action semantics, timing and intended fixed support points.",
+      "Evaluate the actual short-arm rig with the fixed symmetric hand source; calibrate floor orientation and wrist height from the matching saved support preset.",
+      "Compare actual body contact/limb reach at key poses; if source absolute targets do not fit, author a separate spec revision using new bind pivots/segment lengths.",
+      "Do not scale every coordinate, relax QA thresholds, or silently use a changed model/pose."
+    ],
+    "specificRisk": "Deep hip compression plus old hip-frame ankle targets and knee-plane derived foot rotations need full path checking. Opposite circle direction at 5 seconds must not introduce an orientation branch jump.",
+    "implemented": [
+      "Current armfix hip pivots and thigh/shin lengths in new body-aware helper",
+      "Original floor anchors retained; arm reach solver reconciles current body",
+      "Full forearm axial share avoids half-share wrap discontinuity",
+      "Fixed camera and latest explicit support/relaxed hand recipes"
+    ]
+  },
+  "source": {
+    "inventory": "catalog/production/remaining-actions-v3-20261028-r1.json",
+    "priorReview": "tools/action-completion-v3/thomas-review.json",
+    "priorReviewScope": "historical source preparation, not current model or visual approval",
+    "originalSpec": "drill-anim/specs/t-lsit-vsit-circles.js",
+    "originalSourceCommit": "56a479df170ec53d124ebc12fae7e77b7928a64a",
+    "files": [
+      {
+        "path": "drill-anim/specs/_thomas-armfix-r1.mjs",
+        "sha256Lf": "468a68bea0a4d99e4088eb25ce045b64e0b5d6530882f84022a5ddb7e8936b77"
+      },
+      {
+        "path": "drill-anim/specs/t-lsit-vsit-circles-r4.js",
+        "sha256Lf": "eb9741d0a6a0e120e0c237ba104643005204f77e97827d71c45e60a0433a9bbc"
+      }
+    ]
+  },
+  "reviewPlan": {
+    "intent": "A ten-second continuous support sequence demonstrates one leg circle in each direction between L and V positions.",
+    "previewOnly": true,
+    "userApprovalRequiredPerAction": true,
+    "productionDeferred": true,
+    "previewTimesSeconds": [
+      0,
+      1.2,
+      2.15,
+      3.1,
+      4.05,
+      4.9,
+      5,
+      5.95,
+      6.9,
+      7.85,
+      8.8,
+      9.5,
+      10
+    ],
+    "cameraReason": "Moderately elevated three-quarter front view reveals both the opening width and raised-leg height.",
+    "diagnosticViews": [
+      "main fixed camera",
+      "opposite-side view",
+      "side view",
+      "both wrist and ankle close-ups"
+    ],
+    "points": [
+      "Include widest straddle, highest V, direction reversal and return-to-L in the fixed crop.",
+      "Feet rotate with the shin without extra full turns; check throughout both circle directions.",
+      "Hands remain fixed while hip compression changes; no backward whole-body substitution.",
+      "Both knees keep their source straightness requirement."
+    ],
+    "continuousOrientation": [
+      "Inspect actual local/world hand and foot quaternions across the entire sampled path and across the loop seam.",
+      "Use quaternion sign continuity and incremental shortest-arc angles; equal start/end directions do not exclude a 180/360-degree twist inside the cycle.",
+      "Compare palm/sole normals and finger/toe directions against forearm/shin direction on both sides.",
+      "Flag abrupt Euler/axis-angle branch changes for actual skeleton and image review; do not declare a defect from Euler magnitude alone.",
+      "Inspect visible wrist and ankle deformation through intermediate frames; quaternion continuity alone does not certify a natural shape."
+    ],
+    "sourceOrientationAudit": {
+      "kind": "source-descriptor-only",
+      "fps": 30,
+      "samples": 301,
+      "actualSkeletonEvaluated": false,
+      "actualMeshEvaluated": false,
+      "channels": {
+        "leftFoot": {
+          "maxComposedAdjacentDegrees": 6.2719436076529025,
+          "atFrame": 79,
+          "cumulativeShortestArcDegrees": 460.9410476186627,
+          "endpointDifferenceDegrees": 0,
+          "rawAngleChannels": [
+            {
+              "channel": "thighTwist",
+              "min": 0,
+              "max": 0,
+              "maxRawAdjacentDegrees": 0,
+              "frame": 0
+            },
+            {
+              "channel": "kneeTwist",
+              "min": 0,
+              "max": 0,
+              "maxRawAdjacentDegrees": 0,
+              "frame": 0
+            }
+          ]
+        },
+        "leftHand": {
+          "modes": [
+            "floor"
+          ],
+          "fingerChanged": false,
+          "normalChanged": false,
+          "note": "Floor wrist pose is supplied by the active hand adapter; source finger/normal checks cannot certify its wrist rotation."
+        },
+        "rightFoot": {
+          "maxComposedAdjacentDegrees": 6.2719436076529025,
+          "atFrame": 79,
+          "cumulativeShortestArcDegrees": 460.9410476202893,
+          "endpointDifferenceDegrees": 0,
+          "rawAngleChannels": [
+            {
+              "channel": "thighTwist",
+              "min": 0,
+              "max": 0,
+              "maxRawAdjacentDegrees": 0,
+              "frame": 0
+            },
+            {
+              "channel": "kneeTwist",
+              "min": 0,
+              "max": 0,
+              "maxRawAdjacentDegrees": 0,
+              "frame": 0
+            }
+          ]
+        },
+        "rightHand": {
+          "modes": [
+            "floor"
+          ],
+          "fingerChanged": false,
+          "normalChanged": false,
+          "note": "Floor wrist pose is supplied by the active hand adapter; source finger/normal checks cannot certify its wrist rotation."
+        }
+      },
+      "limits": [
+        "Composed source foot rotations are inspected before IK and model transforms. Actual wrist and ankle quaternions and visible deformation still need rendering.",
+        "A large Euler value or cumulative path is only a review lead, not a defect verdict."
+      ]
+    },
+    "qaUnchanged": {
+      "pins": [
+        {
+          "c": "handR",
+          "when": "always"
+        },
+        {
+          "c": "handL",
+          "when": "always"
+        }
+      ],
+      "straight": [
+        {
+          "j": "elbow.right",
+          "min": 176,
+          "when": "params.up>0.999"
+        },
+        {
+          "j": "elbow.left",
+          "min": 176,
+          "when": "params.up>0.999"
+        },
+        {
+          "j": "knee.right",
+          "min": 176
+        },
+        {
+          "j": "knee.left",
+          "min": 176
+        }
+      ],
+      "allowContact": [
+        "thighL|thighR",
+        "shinL|shinR",
+        "footL|footR"
+      ],
+      "hipFlexMax": 165
+    },
+    "propPolicy": "The existing thin support mat remains an explicit prop. Its visible extent belongs to the fixed whole-cycle content rectangle; no separate ground-shadow layer."
+  },
+  "risks": [
+    "Deep hip compression plus old hip-frame ankle targets and knee-plane derived foot rotations need full path checking. Opposite circle direction at 5 seconds must not introduce an orientation branch jump.",
+    "armfix-r2 does not migrate old r5 contact calibration or P4/P5 appearance corrections automatically.",
+    "The saved support shape is an unreviewed legacy-mesh candidate; accepted dumbbell/wrist-r4 geometry is not a support-hand approval.",
+    "No new preview or full-cycle visual approval was performed while preparing this recipe."
+  ],
+  "reviewed": false,
+  "releaseEligible": false,
+  "appearance": {
+    "highlight": {
+      "color": "#F05A36",
+      "shade": [
+        0.5,
+        0.42,
+        0.08
+      ],
+      "intensity": [
+        0.75,
+        1
+      ]
+    },
+    "purpose": "Visual cue for target muscle effort, not a physiological measurement",
+    "status": "parameterized-selection-deferred-by-user"
+  }
+}

@@ -1,0 +1,240 @@
+{
+  "format": "pose-hub-action-recipe@1",
+  "id": "t-tuck-planche",
+  "nameZh": "团身俄挺",
+  "spec": "drill-anim/specs/t-tuck-planche-r5.js",
+  "specId": "t-tuck-planche-r5",
+  "specSha256Lf": "407d1c2d1a72ccc4e7b460700c91db97e4b10a8fb412ebca90f13e4ba12209f6",
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "hands": {
+    "left": "support",
+    "right": "support"
+  },
+  "camera": {
+    "dir": [
+      1,
+      0.18,
+      0.15
+    ],
+    "fit": [
+      "head",
+      "leftPalm",
+      "rightPalm",
+      "leftToe",
+      "rightToe",
+      "pelvis",
+      "leftKnee",
+      "rightKnee",
+      "leftElbow",
+      "rightElbow",
+      "leftWrist",
+      "rightWrist",
+      "leftAnkle",
+      "rightAnkle"
+    ],
+    "pad": 0.28,
+    "k": 1,
+    "drift": 0,
+    "at": 4,
+    "frontSweepDegrees": 0,
+    "frontSweepPeriod": 24,
+    "fitTimeline": true,
+    "orbitDegrees": 0
+  },
+  "cameraScale": 1.15,
+  "output": {
+    "groundShadow": false,
+    "cameraMotion": false,
+    "wholeCycleContentRect": true,
+    "fps": 30,
+    "exerciseMat": false
+  },
+  "adaptation": {
+    "status": "retargeted-awaiting-gpu-review",
+    "runtimeInputConversion": "Remove old nativeHands.version descriptor; retain only supported twistShare; explicitly select current model and per-side hand pose.",
+    "sourcePoseRetargeted": true,
+    "cameraAccepted": false,
+    "supportAccepted": false,
+    "knownSemanticBlocker": false,
+    "method": [
+      "Retain the action semantics, timing and intended fixed support points.",
+      "Evaluate the actual short-arm rig with the fixed symmetric hand source; calibrate floor orientation and wrist height from the matching saved support preset.",
+      "Compare actual body contact/limb reach at key poses; if source absolute targets do not fit, author a separate spec revision using new bind pivots/segment lengths.",
+      "Do not scale every coordinate, relax QA thresholds, or silently use a changed model/pose."
+    ],
+    "specificRisk": "Known semantic blocker: t-tuck-planche-r3 reuses t-tuck-planche.js final static export, with timeline.up=0 and foot-pin conditions params.up<0.001. A true airborne hold must be authored and visually reviewed as a separate revision.",
+    "implemented": [
+      "Current armfix hip pivots and thigh/shin lengths in new body-aware helper",
+      "Original floor anchors retained; arm reach solver reconciles current body",
+      "Full forearm axial share avoids half-share wrap discontinuity",
+      "Fixed camera and latest explicit support/relaxed hand recipes",
+      "True static airborne raised-phase hold; up=1; feet are free and must visibly clear ground",
+      "After attempt01, raise tucked ankle target 60 mm and reduce plantar flexion10 degrees to make shoe clearance unambiguous"
+    ]
+  },
+  "source": {
+    "inventory": "catalog/production/remaining-actions-v3-20261028-r1.json",
+    "priorReview": "tools/action-completion-v3/thomas-review.json",
+    "priorReviewScope": "historical source preparation, not current model or visual approval",
+    "originalSpec": "drill-anim/specs/t-tuck-planche.js",
+    "originalSourceCommit": "56a479df170ec53d124ebc12fae7e77b7928a64a",
+    "files": [
+      {
+        "path": "drill-anim/specs/_thomas-armfix-r1.mjs",
+        "sha256Lf": "468a68bea0a4d99e4088eb25ce045b64e0b5d6530882f84022a5ddb7e8936b77"
+      },
+      {
+        "path": "drill-anim/specs/t-tuck-planche-r5.js",
+        "sha256Lf": "407d1c2d1a72ccc4e7b460700c91db97e4b10a8fb412ebca90f13e4ba12209f6"
+      }
+    ]
+  },
+  "reviewPlan": {
+    "intent": "Intended product: a genuine static tuck-planche hold with knees tucked and feet off the floor.",
+    "previewOnly": true,
+    "userApprovalRequiredPerAction": true,
+    "productionDeferred": true,
+    "previewTimesSeconds": [
+      0,
+      2,
+      4,
+      6,
+      8
+    ],
+    "cameraReason": "Side-biased view makes forward shoulder lean, straight arms, tucked knees and foot clearance directly visible.",
+    "diagnosticViews": [
+      "main fixed camera",
+      "opposite-side view",
+      "side view",
+      "both wrist and ankle close-ups"
+    ],
+    "points": [
+      "Current source is not yet the intended hold: up is constant zero and the base is the old final/landing frame.",
+      "Do not approve or produce a hold while inherited foot-pin conditions remain active.",
+      "Create a new revision when this group starts; keep both palm pins and original elbow threshold.",
+      "Check shoulder position relative to wrist, chest/knee clearance and both ankle directions."
+    ],
+    "continuousOrientation": [
+      "Inspect actual local/world hand and foot quaternions across the entire sampled path and across the loop seam.",
+      "Use quaternion sign continuity and incremental shortest-arc angles; equal start/end directions do not exclude a 180/360-degree twist inside the cycle.",
+      "Compare palm/sole normals and finger/toe directions against forearm/shin direction on both sides.",
+      "Flag abrupt Euler/axis-angle branch changes for actual skeleton and image review; do not declare a defect from Euler magnitude alone.",
+      "Inspect visible wrist and ankle deformation through intermediate frames; quaternion continuity alone does not certify a natural shape."
+    ],
+    "sourceOrientationAudit": {
+      "kind": "source-descriptor-only",
+      "fps": 30,
+      "samples": 241,
+      "actualSkeletonEvaluated": false,
+      "actualMeshEvaluated": false,
+      "channels": {
+        "leftFoot": {
+          "maxComposedAdjacentDegrees": 3.4150945850063755e-06,
+          "atFrame": 1,
+          "cumulativeShortestArcDegrees": 0.0008196227004015308,
+          "endpointDifferenceDegrees": 3.4150945850063755e-06,
+          "rawAngleChannels": []
+        },
+        "leftHand": {
+          "modes": [
+            "floor"
+          ],
+          "fingerChanged": false,
+          "normalChanged": false,
+          "note": "Floor wrist pose is supplied by the active hand adapter; source finger/normal checks cannot certify its wrist rotation."
+        },
+        "rightFoot": {
+          "maxComposedAdjacentDegrees": 3.4150945850063755e-06,
+          "atFrame": 1,
+          "cumulativeShortestArcDegrees": 0.0008196227004015308,
+          "endpointDifferenceDegrees": 3.4150945850063755e-06,
+          "rawAngleChannels": []
+        },
+        "rightHand": {
+          "modes": [
+            "floor"
+          ],
+          "fingerChanged": false,
+          "normalChanged": false,
+          "note": "Floor wrist pose is supplied by the active hand adapter; source finger/normal checks cannot certify its wrist rotation."
+        }
+      },
+      "limits": [
+        "Composed source foot rotations are inspected before IK and model transforms. Actual wrist and ankle quaternions and visible deformation still need rendering.",
+        "A large Euler value or cumulative path is only a review lead, not a defect verdict."
+      ]
+    },
+    "qaUnchanged": {
+      "pins": [
+        {
+          "c": "handR",
+          "when": "always"
+        },
+        {
+          "c": "handL",
+          "when": "always"
+        },
+        {
+          "c": "footR",
+          "when": "params.up<0.001"
+        },
+        {
+          "c": "footL",
+          "when": "params.up<0.001"
+        }
+      ],
+      "straight": [
+        {
+          "j": "elbow.right",
+          "min": 176
+        },
+        {
+          "j": "elbow.left",
+          "min": 176
+        }
+      ],
+      "allowContact": [
+        "forearmR|thighR",
+        "forearmL|thighL",
+        "handR|thighR",
+        "handL|thighL",
+        "upperarmR|thighR",
+        "upperarmL|thighL",
+        "thighL|thighR",
+        "shinL|shinR",
+        "footL|footR",
+        "torso|thighL",
+        "torso|thighR"
+      ],
+      "hipFlexMax": 150
+    },
+    "propPolicy": "The existing thin support mat remains an explicit prop. Its visible extent belongs to the fixed whole-cycle content rectangle; no separate ground-shadow layer."
+  },
+  "risks": [
+    "Known semantic blocker: t-tuck-planche-r3 reuses t-tuck-planche.js final static export, with timeline.up=0 and foot-pin conditions params.up<0.001. A true airborne hold must be authored and visually reviewed as a separate revision.",
+    "armfix-r2 does not migrate old r5 contact calibration or P4/P5 appearance corrections automatically.",
+    "The saved support shape is an unreviewed legacy-mesh candidate; accepted dumbbell/wrist-r4 geometry is not a support-hand approval.",
+    "No new preview or full-cycle visual approval was performed while preparing this recipe."
+  ],
+  "reviewed": false,
+  "releaseEligible": false,
+  "appearance": {
+    "highlight": {
+      "color": "#F05A36",
+      "shade": [
+        0.5,
+        0.42,
+        0.08
+      ],
+      "intensity": [
+        0.75,
+        1
+      ]
+    },
+    "purpose": "Visual cue for target muscle effort, not a physiological measurement",
+    "status": "parameterized-selection-deferred-by-user"
+  }
+}
