@@ -1,0 +1,364 @@
+{
+  "format": "pose-hub-remaining219-remote-index@1",
+  "batch": "batch43",
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "environment": {
+    "host": "Hark sandbox aarch64, 2 cores, 7.9 GiB, no GPU",
+    "browser": "Playwright 1.48.2 chromium-1140",
+    "renderer": "software (ANGLE SwiftShader)",
+    "serial": true
+  },
+  "checks": {
+    "keyframes": "tools/action-completion-v3-r2/remote-keyframes-r1.mjs, 256/320px, 3-6 frames",
+    "rotation": "tools/action-completion-v3-r2/remote-rotation-r1.mjs, 15Hz sequential solve, axial twist of forearm|upperArm, hand|forearm, foot|shin (range>120, step>25, net>150 deg flagged)"
+  },
+  "sampledOnly": true,
+  "fullCycleValidated": false,
+  "userAccepted": false,
+  "releaseEligible": false,
+  "items": [
+    {
+      "stableId": "t-seated-straddle-lift-1leg",
+      "status": "pending-review",
+      "spec": "drill-anim/specs/t-seated-straddle-lift-1leg-r2.js",
+      "specSha256Lf": "01ca98b0f3b8e1c5adcd46e0fb2aff17a36527cbfdb3f90203cbd6dbdf06887e",
+      "recipe": "catalog/production/remaining219-r1/recipes/t-seated-straddle-lift-1leg.json",
+      "recipeSha256Lf": "00a1b2acd0c964975c14b81ef701461797ae2056a48d60c6783f7473d29d6430",
+      "keyframes": {
+        "attempt": "t-seated-straddle-lift-1leg-a01",
+        "times": [
+          1,
+          3,
+          5,
+          7
+        ],
+        "size": 256,
+        "recipeSha256": "00a1b2acd0c964975c14b81ef701461797ae2056a48d60c6783f7473d29d6430",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "edb43969b4ae62ab33f0bab051c05f988f6d6532b630e1c8ac9192ff2a8732e0",
+          "keyframe-01.png": "8aa7a6cf37e41ba08bac3faff263e299dab0540f190ffad883a945314796ad7e",
+          "keyframe-02.png": "c24f2dd9373a2703c32428dac99684743703ab7d106c9621a4dbf35014460c39",
+          "keyframe-03.png": "e7b07bae522560b889f663f49bdda890fd8ec305d2c60231fc28c52dfdaca296"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "c6a5bc4c492190ce48e96287a972174861249067003fb3404db1fe5c7d49147f",
+        "samples": 121,
+        "flagged": [
+          {
+            "channel": "left.forearm|upperArm",
+            "flags": [
+              "twist-step"
+            ],
+            "rangeDeg": 119.4,
+            "maxStepDeg": 28.1,
+            "netDeg": 0,
+            "worstAt": 2.4
+          },
+          {
+            "channel": "left.hand|forearm",
+            "flags": [
+              "twist-range",
+              "twist-step"
+            ],
+            "rangeDeg": 180.8,
+            "maxStepDeg": 177.2,
+            "netDeg": 0,
+            "worstAt": 3.4
+          },
+          {
+            "channel": "right.forearm|upperArm",
+            "flags": [
+              "twist-step"
+            ],
+            "rangeDeg": 119.4,
+            "maxStepDeg": 28.1,
+            "netDeg": 0,
+            "worstAt": 3.8667
+          },
+          {
+            "channel": "right.hand|forearm",
+            "flags": [
+              "twist-range",
+              "twist-step"
+            ],
+            "rangeDeg": 180.8,
+            "maxStepDeg": 177.2,
+            "netDeg": 0,
+            "worstAt": 7.4
+          }
+        ],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 119.4,
+            "maxStepDeg": 28.1,
+            "netDeg": 0
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 180.8,
+            "maxStepDeg": 177.2,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0.0,
+            "maxStepDeg": 0.0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 119.4,
+            "maxStepDeg": 28.1,
+            "netDeg": 0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 180.8,
+            "maxStepDeg": 177.2,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 0.0,
+            "maxStepDeg": 0.0,
+            "netDeg": 0
+          }
+        },
+        "note": "rotation screen ran on an earlier recipe revision that differs only in camera; twist is camera independent"
+      },
+      "notes": "seated straddle single-leg lift; hands float in the air instead of pressing the floor and the leg lift is not visible; hand flags range+step.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect",
+        "hand placement: should press floor beside hips",
+        "leg lift not visible",
+        "hand|forearm twist flags"
+      ]
+    },
+    {
+      "stableId": "triceps-A",
+      "status": "remote-keyframe-reviewed",
+      "spec": "drill-anim/specs/triceps-A-r2.js",
+      "specSha256Lf": "8f3dd2a00932d0ddda7f063b47829bec0f7d9f0ba1169398339e66d7cd399461",
+      "recipe": "catalog/production/remaining219-r1/recipes/triceps-A.json",
+      "recipeSha256Lf": "a2687a6c4f12c13ef78599cfd027022daf13bb9ff7631641fe9454b882175c01",
+      "keyframes": {
+        "attempt": "triceps-A-a01",
+        "times": [
+          1,
+          3,
+          5,
+          7
+        ],
+        "size": 256,
+        "recipeSha256": "a2687a6c4f12c13ef78599cfd027022daf13bb9ff7631641fe9454b882175c01",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "5c7e602506ec7b48fb1f6490b2ea9a49cf89f2bcc2b1611cf2de4c0dfaf3b66e",
+          "keyframe-01.png": "22853b7d5712d88c99bd997dddf17eb24b6095e1cc99ecfafa0f6d6849ae7402",
+          "keyframe-02.png": "5c7e602506ec7b48fb1f6490b2ea9a49cf89f2bcc2b1611cf2de4c0dfaf3b66e",
+          "keyframe-03.png": "22853b7d5712d88c99bd997dddf17eb24b6095e1cc99ecfafa0f6d6849ae7402"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "a66a1bfe2d93e38f34f85fd18afa7b4bbc926e1ce7e1132ab415e0b412dea0af",
+        "samples": 121,
+        "flagged": [],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 40.6,
+            "maxStepDeg": 5.2,
+            "netDeg": 0.0
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 40.6,
+            "maxStepDeg": 5.2,
+            "netDeg": -0.0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          }
+        },
+        "note": "rotation screen ran on an earlier recipe revision that differs only in camera; twist is camera independent"
+      },
+      "notes": "close-grip push-up with lockout pause; sampled frames sit near the top, descent depth not shown.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect",
+        "bottom position not sampled"
+      ]
+    },
+    {
+      "stableId": "triceps-B",
+      "status": "remote-keyframe-reviewed",
+      "spec": "drill-anim/specs/triceps-B-r2.js",
+      "specSha256Lf": "7d0c739e4a6231f492747da9d01562a0d4a9f99f851cd3a5f048d2befd83d8d1",
+      "recipe": "catalog/production/remaining219-r1/recipes/triceps-B.json",
+      "recipeSha256Lf": "bd7485adb4a5b5c154a5cb666a82060bfb00bb5df2b6d7a32cc787b16f5e378f",
+      "keyframes": {
+        "attempt": "triceps-B-a01",
+        "times": [
+          1,
+          3,
+          5,
+          7
+        ],
+        "size": 256,
+        "recipeSha256": "bd7485adb4a5b5c154a5cb666a82060bfb00bb5df2b6d7a32cc787b16f5e378f",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "db175237fdc55c8d5f5c0adeddc56d2d281d9ac3eb0d73b4972a08840cdd11d4",
+          "keyframe-01.png": "04f1d14342d15b2d8cbc6ee99be79d67e24df9b0e82ad38d7501f237b922074a",
+          "keyframe-02.png": "7f9ce218d5dcb5c9b780aaa70959fe7e8e0dd4d1c4241c128da9572c97dcd94d",
+          "keyframe-03.png": "cae9b295e5b6f4df5e6af1cfc57ab20a904c76ca5d045e3a99378c95ba8a0ff3"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "9927999b9f8f58aa0415f644010f4cd0322ae5f7175a3f1f629bb203540d2017",
+        "samples": 121,
+        "flagged": [],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 7.3,
+            "maxStepDeg": 6.4,
+            "netDeg": -0.0
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 7.3,
+            "maxStepDeg": 6.4,
+            "netDeg": 0.0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          }
+        },
+        "note": "rotation screen ran on an earlier recipe revision that differs only in camera; twist is camera independent"
+      },
+      "notes": "parallette straight-arm support with tucked knees; fixed bar grasp (fixed-bar-grip-r1).",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect"
+      ]
+    },
+    {
+      "stableId": "triceps-C",
+      "status": "remote-keyframe-reviewed",
+      "spec": "drill-anim/specs/triceps-C.js",
+      "specSha256Lf": "044f0caab99294418458b3e63048cd9061ed1f46e67863f4573c11c98bb3bcfb",
+      "recipe": "catalog/production/remaining219-r1/recipes/triceps-C.json",
+      "recipeSha256Lf": "1d5b049669ffe2780aa35f93d72c71bddc4935faef78b09c5e59e8be73b92747",
+      "keyframes": {
+        "attempt": "triceps-C-a01",
+        "times": [
+          1,
+          3,
+          5,
+          7
+        ],
+        "size": 256,
+        "recipeSha256": "1d5b049669ffe2780aa35f93d72c71bddc4935faef78b09c5e59e8be73b92747",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "567e21f8d9c9fea6c604f826fb72103e355950c97125f9c3891ef0bb1edc6be9",
+          "keyframe-01.png": "6370b688495cf35614c75cc89077ee8ed9ee8dae963cd731c1d3e48d9891a82c",
+          "keyframe-02.png": "567e21f8d9c9fea6c604f826fb72103e355950c97125f9c3891ef0bb1edc6be9",
+          "keyframe-03.png": "6370b688495cf35614c75cc89077ee8ed9ee8dae963cd731c1d3e48d9891a82c"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "a92d731b23a9722e88014eb74774e6a32a2f9e61dfc0c5fa7ceb38b1cc5564e8",
+        "samples": 121,
+        "flagged": [],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 65.4,
+            "maxStepDeg": 5.7,
+            "netDeg": -0.0
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 65.4,
+            "maxStepDeg": 5.7,
+            "netDeg": 0.0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          }
+        },
+        "note": "rotation screen ran on an earlier recipe revision that differs only in camera; twist is camera independent"
+      },
+      "notes": "parallel bar dip; switched to fixed bar grasp; dip depth and lockout visible.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect",
+        "bar-grasp fist on dip bars: close-up"
+      ]
+    }
+  ]
+}
