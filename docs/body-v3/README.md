@@ -2,10 +2,13 @@
 
 当前已获用户网页看样确认的身体为 `training-human-v3-completed / 1.0.0-r7`。其上的可选接触扩展为 `training-human-v3-contact / 0.1.0-r5`，已完成所列局部复测和源码采纳。两者通过专用 loader 显式初始化；全局新生产配方仍由 [current-production.json](../../drill-anim/models/current-production.json) 选择 `training-human-v2plus / 1.0.0-rc2`。当前 Git／版本汇总以 [版本台账](../version-ledger.md) 为准。
 
+2026-10-29首批32模板显式采用 `training-human-v3-armfix / 0.1.0-r2`、当前左右对称native手或固定握持，并接入脚踝 `ankle-join-r5`、大臂 `upper-arm-contour-r3` 和按需肘部 `elbow-dqs-r1`。这些成果已合入main；当前32为候选复核完成、用户验收待定，不扩大旧r7或局部大臂确认的范围。配方以 [remaining32-r4](../../catalog/production/remaining32-r4/README.md) 为入口，阶段版本、验证和后续见[收束汇总](../closeout-template-optimizations-20261029-r1.md)。
+
 ## 建议阅读顺序
 
 | 需要了解什么 | 入口 |
 | --- | --- |
+| 当前腕踝肘、大臂及32模板成果；剩余219远端接力 | [本轮阶段收束](../closeout-template-optimizations-20261029-r1.md)、[弱云服务器任务](../remaining219-remote-agent-20261029-r1.md) |
 | 已接受的固定握哑铃、腕部接入、main交付与阶段收束 | [手部／腕部成果交付](webxr-hand-wrist-delivery-20261028.md) |
 | 保存了哪一版、源码 SHA、验证覆盖、剩余项 | [2026-10-28 r1 版本快照](snapshot-20261028-r1.md) |
 | 为什么这样设计、问题如何定位、哪些方案被保留或放弃 | [设计与优化思路 r1](design-and-optimization-20261028-r1.md) |
@@ -52,4 +55,4 @@ node tools/body-v3/completed-v3-r1/preview-isolated-r7-r1.mjs <new-output-direct
 node tools/body-v3/contact-r1/verify-live-r7.mjs <new-output-directory>
 ```
 
-普通 `current` 渲染继续读取全局生产配方。后续将动作切换到 r7 时应另存动作修订并逐项审核接触、可达范围、左右语义、时序和镜头；整身 GLB 烘焙、241 动作迁移及媒体／SDK 升级继续列为后续工作。
+普通 `current` 渲染继续读取全局生产配方。本轮模板迁移显式选择armfix-r2，应另存动作修订并逐项审核接触、可达范围、左右语义、时序和镜头；当前范围以稳定ID清单为准：首批32候选、剩余219，旧“241动作”不是当前任务计数。远端只做串行关键帧初检，本机补完整循环和用户验收；整身GLB烘焙、正式高清及媒体／SDK升级另行安排。

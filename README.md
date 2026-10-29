@@ -28,7 +28,7 @@ Pose-Hub 是 FlareLab（托马斯训练助手）和 HipLab（开胯训练助手�
 
 [版本快照 r1](docs/body-v3/snapshot-20261028-r1.md)固定源码、模型 SHA、验证与剩余项；[设计与优化思路](docs/body-v3/design-and-optimization-20261028-r1.md)解释分层设计、几何／权重／材质／法线修法、指标修订和 PR 取舍。全局生产配方仍由 `current-production.json` 选择 v2plus rc2，动作迁移和公开素材发布继续独立验收。
 
-同日，固定32mm握柄的左右手／哑铃模板和腕部 r4 接入外观获用户确认，源码与必要依赖已合入并推送main。当前接入依赖为armfix-r2；默认加载仓库内资源。使用入口、有限采样范围、75°压力失败、Git交付和阶段收束证据见[手部／腕部成果记录](docs/body-v3/webxr-hand-wrist-delivery-20261028.md)。后续逐动作接入及另外三套手型继续单独推进。
+同日，固定32mm握柄的左右手／哑铃模板和腕部 r4 接入外观获用户确认，源码与必要依赖已合入并推送main。当前接入依赖为armfix-r2；默认加载仓库内资源。使用入口、有限采样范围、75°压力失败、Git交付和阶段收束证据见[手部／腕部成果记录](docs/body-v3/webxr-hand-wrist-delivery-20261028.md)。首批32候选现已分别接入25项native和7项固定握持路径，包含按动作选择的支撑、放松和辅助手型；剩余219逐项适配与用户验收继续单独推进。当前汇总见[本轮阶段收束](docs/closeout-template-optimizations-20261029-r1.md)。
 
 ## 目录
 
@@ -116,6 +116,6 @@ python tools/pose_hub_sync.py --lock pose-hub.lock.json --check
 
 ## AI 动作目录版本
 
-历史兼容目录为 **0.3.0 / formatVersion 1**：[PR #11](https://github.com/mhgd3250905/3D-Pose-Hub/pull/11) 的 0.2.0 修复后，[PR #13](https://github.com/mhgd3250905/3D-Pose-Hub/pull/13) 已合入 `rhythm` 字段。仍收录 142 个稳定动作 id：FlareLab 51、HipLab 46、SmartFit 93，各 App 有重叠。2026-10-28，选择性采纳四项时序后，main spec 开发总表为 **301 文件**，包含历史、候选和多个修订；不等于稳定动作数或发布数。生产分支快照的统计另按其固定提交记录，分支数量不相加；新动作仍须按 v2 六层逐项验收。
+历史兼容目录为 **0.3.0 / formatVersion 1**：[PR #11](https://github.com/mhgd3250905/3D-Pose-Hub/pull/11) 的 0.2.0 修复后，[PR #13](https://github.com/mhgd3250905/3D-Pose-Hub/pull/13) 已合入 `rhythm` 字段。仍收录 142 个稳定动作 id：FlareLab 51、HipLab 46、SmartFit 93，各 App 有重叠。2026-10-28选择性采纳四项时序后的301份spec为当时统计；2026-10-29本轮合入后，[main开发总表](docs/drill-catalog.md)为 **441文件**，包含历史、候选和多个修订，不等于稳定动作数或发布数。当前模板任务范围为251个动态稳定ID，分首批32候选与剩余219。生产分支快照的统计另按其固定提交记录，分支数量不相加；新动作仍须按 v2 六层逐项验收。
 
 目录 0.3.0 与媒体 ZIP 0.2.0 是独立版本。目录合入不等于消费端已升级：SmartFit 的 8 项剂量、7 项侧别同步与 SDK `holdSeconds`、`rhythm` 执行语义仍待接入验收；本次没有新增目录发布 tag 或媒体 ZIP。具体提交、验证范围与待办见 [版本对齐台账](docs/version-ledger.md)。
