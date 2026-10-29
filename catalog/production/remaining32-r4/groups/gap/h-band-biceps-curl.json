@@ -1,0 +1,163 @@
+{
+  "format": "pose-hub-action-recipe@1",
+  "id": "h-band-biceps-curl",
+  "nameZh": "站姿踩带弹力带弯举（带握柄）",
+  "spec": "drill-anim/specs/h-band-biceps-curl-r6.js",
+  "specSha256Lf": "ec0555689f1b33963c8c0a36fda8abe679e71c61164239a2495e80f8e0811985",
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "hands": {
+    "left": "fixed-grasp",
+    "right": "fixed-grasp"
+  },
+  "camera": {
+    "dir": [
+      0.75,
+      0.15,
+      1
+    ],
+    "fit": [
+      "head",
+      "leftToe",
+      "rightToe",
+      "pelvis",
+      "leftPalm",
+      "rightPalm",
+      "leftElbow",
+      "rightElbow",
+      "leftAnkle",
+      "rightAnkle",
+      "leftKnee",
+      "rightKnee"
+    ],
+    "pad": 0.14,
+    "k": 0.85,
+    "drift": 0,
+    "at": 2,
+    "fitTimeline": true,
+    "orbitDegrees": 0,
+    "frontSweepDegrees": 0
+  },
+  "cameraScale": 1.15,
+  "output": {
+    "groundShadow": false,
+    "cameraMotion": false,
+    "wholeCycleContentRect": true,
+    "fps": 30,
+    "exerciseMat": false
+  },
+  "adaptation": {
+    "status": "handled-band-candidate-cpu-validated-awaiting-gpu",
+    "notes": [
+      "Standing pelvis corrected to armfix rest height; explicit wrist endpoint and authored elbow pole replace legacy grip offset.",
+      "Uses native band-grip with original band attachment offsets; removed legacy baked gripHand props.",
+      "Band-to-palm contact is a specific preview review point.",
+      "Fixed native grasp-32mm keeps fingers closed around band endpoints; anchors use that grasp preset center.",
+      "Fixed accepted WebXR hand with dumbbells hidden. Band anchors derived from pinned shaft geometry canonical center [0,.07612368052316226,.042491777623657606] via each neutralFrames map.",
+      "r6 supersedes the historical direct-band grip statements above: exact frozen 32 mm shafts plus new external U frames; actual-render band attachment and clearance checks run inside the fixed-wrist gate. GPU and user review pending."
+    ]
+  },
+  "reviewPlan": {
+    "previewSize": 480,
+    "previewFps": 12,
+    "requiresUserApproval": true,
+    "checks": [
+      "Full loop and clear teaching angle",
+      "Body and necessary props remain in view; fixed framing",
+      "Actual wrist and ankle rotation path including both sides and loop seam",
+      "Contact, penetration, floating, neutral posture",
+      "No ground shadow; one content rectangle for complete loop"
+    ]
+  },
+  "reviewed": false,
+  "releaseEligible": false,
+  "appearance": {
+    "highlight": {
+      "color": "#F05A36",
+      "shade": [
+        0.5,
+        0.42,
+        0.08
+      ],
+      "intensity": [
+        0.75,
+        1
+      ]
+    },
+    "purpose": "Visual cue for target muscle effort, not a physiological measurement",
+    "status": "parameterized-selection-deferred-by-user"
+  },
+  "supersedesRecipe": "catalog/production/remaining32-r2/groups/gap/h-band-biceps-curl.json",
+  "templateReview": {
+    "status": "pending-current-corrections-review",
+    "scope": "New body corrective combination must be replayed; historical motion/camera approval remains bound to its original evidence."
+  },
+  "finalization": {
+    "stage": "awaiting-handled-band-keyframe-preview",
+    "baselineVersion": "remaining32-template-optimizations-20261029-r1",
+    "knownIssuesResolved": false,
+    "userReviewed": false
+  },
+  "diagnostics": {
+    "measureFootSurface": true
+  },
+  "fixedCorrectionStack": {
+    "profile": "fixed-wrist-corrections-r1",
+    "version": "0.1.0-r1"
+  },
+  "jointCorrections": [
+    {
+      "profile": "upper-arm-contour-r3",
+      "version": "0.1.0-r3"
+    },
+    {
+      "profile": "ankle-join-r5",
+      "version": "0.1.0-r5"
+    }
+  ],
+  "specId": "h-band-biceps-curl-r6",
+  "source": {
+    "originalSpec": "drill-anim/specs/h-band-biceps-curl-r5.js",
+    "originalSpecSha256Lf": "00f1ead014eefdb9f1e50a1cfcc6a01001d260165470dc50c0617677e0431720",
+    "files": [
+      {
+        "path": "drill-anim/specs/h-band-biceps-curl-r5.js",
+        "sha256Lf": "00f1ead014eefdb9f1e50a1cfcc6a01001d260165470dc50c0617677e0431720"
+      },
+      {
+        "path": "drill-anim/specs/h-band-biceps-curl-r6.js",
+        "sha256Lf": "ec0555689f1b33963c8c0a36fda8abe679e71c61164239a2495e80f8e0811985"
+      },
+      {
+        "path": "tools/action-completion-v3-r2/fixed-band-handles-r1.mjs",
+        "sha256Lf": "08675782e204c5302d38920bd9b7e8b44117b483eac073bc2b05f89b02263087"
+      },
+      {
+        "path": "drill-anim/models/fixed-band-handles-r1/config.json",
+        "sha256Lf": "8fe8f508db74029dabaec1ed6fdf0f0853e52b4f14318d9646d272f4ad6e6eb4"
+      },
+      {
+        "path": "drill-anim/models/fixed-band-handles-r1/manifest.json",
+        "sha256Lf": "5f20d9504f5deb3b130b32c3b4dfbdc22123ee18690f60ea510fbe8405f47d6f"
+      }
+    ],
+    "candidateReason": "A direct 16 mm band did not fit the frozen 32 mm grasp. This revision explicitly adds matching handles and external band attachment points; frozen hand and wrist assets remain unchanged."
+  },
+  "actionCorrective": {
+    "id": "fixed-band-handles-r1",
+    "version": "0.1.0-r1",
+    "required": true
+  },
+  "dependencies": [
+    {
+      "profile": "fixed-band-handles-r1",
+      "version": "0.1.0-r1",
+      "module": "tools/action-completion-v3-r2/fixed-band-handles-r1.mjs",
+      "moduleSha256Lf": "08675782e204c5302d38920bd9b7e8b44117b483eac073bc2b05f89b02263087",
+      "manifest": "drill-anim/models/fixed-band-handles-r1/manifest.json",
+      "manifestSha256Lf": "5f20d9504f5deb3b130b32c3b4dfbdc22123ee18690f60ea510fbe8405f47d6f"
+    }
+  ]
+}

@@ -1,0 +1,297 @@
+{
+  "format": "pose-hub-action-recipe@1",
+  "id": "t-seated-straddle-lifts",
+  "nameZh": "坐姿分腿双腿抬起",
+  "spec": "drill-anim/specs/t-seated-straddle-lifts-r6.js",
+  "specId": "t-seated-straddle-lifts-r6",
+  "specSha256Lf": "70e3a1922f53e722dab544738a4092406717cd875168848067954ca4e62e1be0",
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "hands": {
+    "left": "support",
+    "right": "support"
+  },
+  "camera": {
+    "dir": [
+      0.3,
+      0.2,
+      1
+    ],
+    "fit": [
+      "head",
+      "leftPalm",
+      "rightPalm",
+      "leftToe",
+      "rightToe",
+      "pelvis",
+      "leftKnee",
+      "rightKnee",
+      "leftElbow",
+      "rightElbow",
+      "leftWrist",
+      "rightWrist",
+      "leftAnkle",
+      "rightAnkle"
+    ],
+    "pad": 0.18,
+    "k": 1,
+    "drift": 0,
+    "driftPeriod": 8,
+    "at": 0.9,
+    "fitTimeline": true,
+    "orbitDegrees": 0,
+    "frontSweepDegrees": 0
+  },
+  "cameraScale": 1.15,
+  "output": {
+    "groundShadow": false,
+    "cameraMotion": false,
+    "wholeCycleContentRect": true,
+    "fps": 30,
+    "exerciseMat": false
+  },
+  "adaptation": {
+    "status": "retargeted-awaiting-gpu-review",
+    "runtimeInputConversion": "Remove old nativeHands.version descriptor; retain only supported twistShare; explicitly select current model and per-side hand pose.",
+    "sourcePoseRetargeted": true,
+    "cameraAccepted": false,
+    "supportAccepted": false,
+    "knownSemanticBlocker": false,
+    "method": [
+      "Retain the action semantics, timing and intended fixed support points.",
+      "Evaluate the actual short-arm rig with the fixed symmetric hand source; calibrate floor orientation and wrist height from the matching saved support preset.",
+      "Compare actual body contact/limb reach at key poses; if source absolute targets do not fit, author a separate spec revision using new bind pivots/segment lengths.",
+      "Do not scale every coordinate, relax QA thresholds, or silently use a changed model/pose."
+    ],
+    "specificRisk": "Source combines fixed pelvis-height target 0.134 m with palm reach and old leg lengths. It may become overconstrained on the new body; recompute seated pelvis clearance from the actual surface and preserve hip-down semantics.",
+    "implemented": [
+      "Current armfix hip pivots and thigh/shin lengths in new body-aware helper",
+      "Original floor anchors retained; arm reach solver reconciles current body",
+      "Full forearm axial share avoids half-share wrap discontinuity",
+      "Fixed camera and latest explicit support/relaxed hand recipes"
+    ]
+  },
+  "source": {
+    "inventory": "catalog/production/remaining-actions-v3-20261028-r1.json",
+    "priorReview": "tools/action-completion-v3/thomas-review.json",
+    "priorReviewScope": "historical source preparation, not current model or visual approval",
+    "originalSpec": "drill-anim/specs/t-seated-straddle-lifts.js",
+    "originalSourceCommit": "56a479df170ec53d124ebc12fae7e77b7928a64a",
+    "files": [
+      {
+        "path": "drill-anim/specs/_thomas-pr106-armfix-r1.mjs",
+        "sha256Lf": "a722cc2ac8347fc8a879cc5c730bdca3452f52e6f71fb808d4b380dfa974e1a7"
+      },
+      {
+        "path": "drill-anim/specs/t-seated-straddle-lifts-r4.js",
+        "sha256Lf": "bff8ed2c8048011dd53d74aa0f4409c0e287b5e279271450b42761ba261f3909"
+      },
+      {
+        "path": "drill-anim/specs/_thomas-reachable-r1.mjs",
+        "sha256Lf": "c446e23f9269609908c5eb38ef37e012e37d501f9a27689602a14cc498269f51"
+      },
+      {
+        "path": "drill-anim/specs/_t-seated-straddle-lifts-r6-reach-data.mjs",
+        "sha256Lf": "791f1820e6148d5eeb8e370edc887c15e6078880b4690a50e5939ac838630f13"
+      },
+      {
+        "path": "drill-anim/specs/t-seated-straddle-lifts-r6.js",
+        "sha256Lf": "70e3a1922f53e722dab544738a4092406717cd875168848067954ca4e62e1be0"
+      }
+    ]
+  },
+  "reviewPlan": {
+    "intent": "Four straight-leg lifts in eight seconds while the hips stay seated and the palms support between the thighs.",
+    "previewOnly": true,
+    "userApprovalRequiredPerAction": true,
+    "productionDeferred": true,
+    "previewTimesSeconds": [
+      0,
+      0.1,
+      0.5,
+      0.9,
+      1.4,
+      1.8,
+      2.5,
+      2.9,
+      4.5,
+      4.9,
+      6.5,
+      6.9,
+      8
+    ],
+    "cameraReason": "Low elevated front three-quarter view keeps the heel-to-floor gap and seated hip support readable.",
+    "diagnosticViews": [
+      "main fixed camera",
+      "opposite-side view",
+      "side view",
+      "both wrist and ankle close-ups"
+    ],
+    "points": [
+      "Hips remain seated: do not let the reach solver lift the whole pelvis to meet the hands.",
+      "Feet touch at rest and lift together during the up phase.",
+      "Both hands stay planted and fingers remain naturally spread.",
+      "Existing arm target repair to 178 degrees does not prove the actual elbow angle or floor contact."
+    ],
+    "continuousOrientation": [
+      "Inspect actual local/world hand and foot quaternions across the entire sampled path and across the loop seam.",
+      "Use quaternion sign continuity and incremental shortest-arc angles; equal start/end directions do not exclude a 180/360-degree twist inside the cycle.",
+      "Compare palm/sole normals and finger/toe directions against forearm/shin direction on both sides.",
+      "Flag abrupt Euler/axis-angle branch changes for actual skeleton and image review; do not declare a defect from Euler magnitude alone.",
+      "Inspect visible wrist and ankle deformation through intermediate frames; quaternion continuity alone does not certify a natural shape."
+    ],
+    "sourceOrientationAudit": {
+      "kind": "source-descriptor-only",
+      "fps": 30,
+      "samples": 241,
+      "actualSkeletonEvaluated": false,
+      "actualMeshEvaluated": false,
+      "channels": {
+        "leftFoot": {
+          "maxComposedAdjacentDegrees": 1.7223147481881347,
+          "atFrame": 73,
+          "cumulativeShortestArcDegrees": 158.3348670766821,
+          "endpointDifferenceDegrees": 2.4148365394514667e-06,
+          "rawAngleChannels": []
+        },
+        "leftHand": {
+          "modes": [
+            "floor"
+          ],
+          "fingerChanged": false,
+          "normalChanged": false,
+          "note": "Floor wrist pose is supplied by the active hand adapter; source finger/normal checks cannot certify its wrist rotation."
+        },
+        "rightFoot": {
+          "maxComposedAdjacentDegrees": 1.7223147481881347,
+          "atFrame": 73,
+          "cumulativeShortestArcDegrees": 158.3348670766821,
+          "endpointDifferenceDegrees": 2.4148365394514667e-06,
+          "rawAngleChannels": []
+        },
+        "rightHand": {
+          "modes": [
+            "floor"
+          ],
+          "fingerChanged": false,
+          "normalChanged": false,
+          "note": "Floor wrist pose is supplied by the active hand adapter; source finger/normal checks cannot certify its wrist rotation."
+        }
+      },
+      "limits": [
+        "Composed source foot rotations are inspected before IK and model transforms. Actual wrist and ankle quaternions and visible deformation still need rendering.",
+        "A large Euler value or cumulative path is only a review lead, not a defect verdict."
+      ]
+    },
+    "qaUnchanged": {
+      "pins": [
+        {
+          "c": "handR",
+          "when": "always"
+        },
+        {
+          "c": "handL",
+          "when": "always"
+        },
+        {
+          "c": "footR",
+          "when": "params.lift<0.001"
+        },
+        {
+          "c": "footL",
+          "when": "params.lift<0.001"
+        }
+      ],
+      "straight": [
+        {
+          "j": "elbow.right",
+          "min": 176
+        },
+        {
+          "j": "elbow.left",
+          "min": 176
+        },
+        {
+          "j": "knee.right",
+          "min": 176
+        },
+        {
+          "j": "knee.left",
+          "min": 176
+        }
+      ],
+      "allowContact": [
+        "forearmR|thighR",
+        "forearmL|thighL",
+        "handR|thighR",
+        "handL|thighL",
+        "upperarmR|thighR",
+        "upperarmL|thighL",
+        "thighL|thighR",
+        "shinL|shinR",
+        "footL|footR"
+      ]
+    },
+    "propPolicy": "The existing thin support mat remains an explicit prop. Its visible extent belongs to the fixed whole-cycle content rectangle; no separate ground-shadow layer."
+  },
+  "risks": [
+    "Source combines fixed pelvis-height target 0.134 m with palm reach and old leg lengths. It may become overconstrained on the new body; recompute seated pelvis clearance from the actual surface and preserve hip-down semantics.",
+    "armfix-r2 does not migrate old r5 contact calibration or P4/P5 appearance corrections automatically.",
+    "The saved support shape is an unreviewed legacy-mesh candidate; accepted dumbbell/wrist-r4 geometry is not a support-hand approval.",
+    "No new preview or full-cycle visual approval was performed while preparing this recipe."
+  ],
+  "reviewed": false,
+  "releaseEligible": false,
+  "appearance": {
+    "highlight": {
+      "color": "#F05A36",
+      "shade": [
+        0.5,
+        0.42,
+        0.08
+      ],
+      "intensity": [
+        0.75,
+        1
+      ]
+    },
+    "purpose": "Visual cue for target muscle effort, not a physiological measurement",
+    "status": "parameterized-selection-deferred-by-user"
+  },
+  "supersedesRecipe": "catalog/production/remaining32-r2/groups/thomas/t-seated-straddle-lifts.json",
+  "templateReview": {
+    "status": "pending-current-corrections-review",
+    "scope": "New body corrective combination must be replayed; historical motion/camera approval remains bound to its original evidence."
+  },
+  "finalization": {
+    "stage": "awaiting-corrected-preview",
+    "baselineVersion": "remaining32-template-optimizations-20261029-r1",
+    "knownIssuesResolved": false,
+    "userReviewed": false
+  },
+  "jointCorrections": [
+    {
+      "profile": "upper-arm-contour-r3",
+      "version": "0.1.0-r3"
+    },
+    {
+      "profile": "elbow-dqs-r1",
+      "version": "0.1.0-r1"
+    },
+    {
+      "profile": "ankle-join-r5",
+      "version": "0.1.0-r5"
+    }
+  ],
+  "diagnostics": {
+    "measureFootSurface": true
+  },
+  "elbowVolumeRevision": {
+    "reason": "User feedback: straight support elbow pinches. Reuse existing volume-preserving correction without changing pose, hands, camera or model.",
+    "priorRecipe": "catalog/production/remaining32-r3/groups/thomas/t-seated-straddle-lifts.json",
+    "priorRecipeSha256": "aac0b91fe67ec37eb733c12dd8bd390991458b69a4be47a972d3056bc0d1ad19",
+    "status": "awaiting-matched-preview"
+  }
+}

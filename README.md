@@ -14,7 +14,7 @@ Pose-Hub 是 FlareLab（托马斯训练助手）和 HipLab（开胯训练助手�
 
 ## 身体 v3 阶段快照
 
-第一批32动作已保存[模板候选版本 remaining32-template-finalization-20261029-r1](docs/production-snapshots/remaining32-template-finalization-20261029-r1.md)，固定当前人体/手型组件、镜头、接触修正和外观参数。32份低清循环已完成候选复核，等待用户逐项验收；正式高清制作留到最后，公开媒体版本不变。配方及复用命令见 [remaining32-r3](catalog/production/remaining32-r3/README.md)。
+第一批32动作已保存[模板候选版本 remaining32-template-finalization-20261029-r2](docs/production-snapshots/remaining32-template-finalization-20261029-r2.md)，固定当前人体/手型组件、镜头、接触修正和外观参数。32份低清循环已完成候选复核，等待用户逐项验收；正式高清制作留到最后，公开媒体版本不变。配方及复用命令见 [remaining32-r4](catalog/production/remaining32-r4/README.md)。
 
 2026-10-28，身体 `training-human-v3-completed / 1.0.0-r7` 已获用户网页看样确认并独立合入；其上的可选接触／颈通道扩展为 `training-human-v3-contact / 0.1.0-r5`，已完成所列局部复测和源码采纳。专用入口、分项证据和复现命令集中在 [身体 v3 总览](docs/body-v3/README.md)。
 
