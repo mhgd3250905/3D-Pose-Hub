@@ -2,21 +2,21 @@
   "format": "pose-hub-action-recipe@1",
   "id": "deltoids-A",
   "nameZh": "直臂侧平板支撑",
-  "spec": "drill-anim/specs/deltoids-A-r2.js",
-  "specSha256Lf": "9b8b2edb66775017ac25cf81911b340cb7b77c7feb5f30325b575c57ca120c82",
+  "spec": "drill-anim/specs/deltoids-A-r3.js",
+  "specSha256Lf": "cb8d9190180f3e607570ec6c3edf4510fc7c1746179119573c126b941ffc0042",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
   },
   "hands": {
-    "left": "native",
-    "right": "native"
+    "left": "relaxed",
+    "right": "support"
   },
   "camera": {
     "dir": [
       0.25,
       0.32,
-      1
+      -1
     ],
     "fit": [
       "head",
@@ -30,7 +30,7 @@
       "leftElbow"
     ],
     "pad": 0.1,
-    "k": 1,
+    "k": 0.95,
     "drift": 0,
     "fitTimeline": true,
     "orbitDegrees": 0,
@@ -46,17 +46,17 @@
     "matProp": {
       "type": "mat",
       "at": [
-        0.219,
+        -0.55,
         0,
-        -0.017
+        0.05
       ],
       "size": [
-        1.4,
-        0.833,
+        1.9,
+        0.8,
         0.006
       ],
-      "yaw": 83.5,
-      "source": "remote-rotation-r1 auto footprint"
+      "yaw": 0,
+      "source": "hand-set from deltoids-A-r3 support/feet footprint"
     }
   },
   "appearance": {
@@ -87,7 +87,7 @@
   ],
   "adaptation": {
     "status": "remote-keyframe-pending",
-    "method": "Fixed queue source reused unchanged on armfix-r2.",
+    "method": "Hark port off legacy sideplank-v7 solver (deltoids-A-r3, from chest-A side-plank hold + v7 hip dip/hand-on-hip).",
     "cameraChanges": "drift->0 (static)"
   },
   "source": {
