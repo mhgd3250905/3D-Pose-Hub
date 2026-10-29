@@ -14,6 +14,8 @@ Pose-Hub 是 FlareLab（托马斯训练助手）和 HipLab（开胯训练助手�
 
 ## 身体 v3 阶段快照
 
+剩余219动作的逐项检阅、关节修复、固定镜头和可复用模板制作，按[执行交接手册](docs/remaining219-template-handoff-20261029-r1.md)与[精确源队列](catalog/production/remaining219-source-queue-20261029-r1.json)推进；不要重新按文件名选择最高修订。
+
 本轮人体关节优化与32动作模板已按用户授权集成main；来源、验证和后续边界见[main集成记录](docs/production-snapshots/remaining32-main-integration-20261029-r1.md)。
 
 第一批32动作已保存[模板候选版本 remaining32-template-finalization-20261029-r2](docs/production-snapshots/remaining32-template-finalization-20261029-r2.md)，固定当前人体/手型组件、镜头、接触修正和外观参数。32份低清循环已完成候选复核，等待用户逐项验收；正式高清制作留到最后，公开媒体版本不变。配方及复用命令见 [remaining32-r4](catalog/production/remaining32-r4/README.md)。

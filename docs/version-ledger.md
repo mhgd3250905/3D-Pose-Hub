@@ -1,5 +1,9 @@
 # Pose-Hub 版本对齐台账
 
+## 2026-10-29 剩余219动作模板交接
+
+人体/关节与32模板merge提交 `114e90dacadf18b5f1c1976791b6116fe0150647` 已push，并以 `git ls-remote origin refs/heads/main` 回读确认。随后在main建立[执行手册](remaining219-template-handoff-20261029-r1.md)及[固定来源队列](../catalog/production/remaining219-source-queue-20261029-r1.json)：251动态减首批32恰为219，固定catalog/blob/LF SHA核对通过；308个相对模块依赖路径中缺50文件（45入口+5依赖），当前同路径冲突0。只生成交接和选源工具，未恢复旧源、启动219制作或自动继承用户验收。未来agent从最新main独立分支逐项推进。
+
 ## 2026-10-29 人体关节优化与32模板合入main
 
 用户授权将 `codex/action-inventory-20261028@95fe7fa` 集成到main并push，保留旧试版与独立工作区WIP。当前32配方为remaining32-r4、候选快照finalization-r2；Git集成不替代逐项视觉验收。441规格、7项可移植性、37项组件/配方测试及473份原始来源哈希通过；目录表同步到441规格。完整来源、换行保真与误忽略几何配置修复、验证边界见[main集成记录](production-snapshots/remaining32-main-integration-20261029-r1.md)。
