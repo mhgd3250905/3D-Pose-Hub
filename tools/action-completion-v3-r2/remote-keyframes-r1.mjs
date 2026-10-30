@@ -104,6 +104,12 @@ export async function run(options){
         const wrist=await import('../body-v3/webxr-wrist-join-r1/loader.mjs');
         report.wristSetup=await wrist.install(page,{showDumbbells:prepared.handSetup.showDumbbells});
       }
+      // Single-arm dumbbell actions: the accepted installer mounts a fist + dumbbell on both hands; hide the idle side's dumbbell only.
+      const hide=prepared.recipe.fixedDumbbellsHidden??[];
+      fail(Array.isArray(hide)&&hide.length<=1&&hide.every(s=>s==='left'||s==='right')&&(!hide.length||prepared.handSetup.showDumbbells),'Bad fixedDumbbellsHidden');
+      if(hide.length)report.hiddenFixedDumbbells=await page.evaluate(sides=>{const v=flareInspector.viewer,out={};
+        for(const side of sides){const g=v.scene.getObjectByName('WebXR_Fixed_Hand_'+side);if(!g)throw Error('no fixed hand group '+side);let k=0;
+          g.traverse(o=>{if(o.isMesh&&!o.name.startsWith('WebXR_Clipped_Hand_')&&!/band/i.test(o.name)){o.visible=false;k++;}});out[side]=k;}return out;},hide);
       if(source.props?.some(p=>p.fixedKettlebellGrasp==='webxr-dumbbell-fist')){
         const kettlebell=await import('./kettlebell-grip.mjs');
         report.kettlebellGripSetup=await kettlebell.installKettlebellGrip(page,{pose:'webxr-dumbbell-fist',models:[...new Set(source.props.filter(p=>p.fixedKettlebellGrasp!==undefined&&p.model).map(p=>p.model))]});

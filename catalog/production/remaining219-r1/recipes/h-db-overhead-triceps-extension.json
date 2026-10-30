@@ -2,15 +2,15 @@
   "format": "pose-hub-action-recipe@1",
   "id": "h-db-overhead-triceps-extension",
   "nameZh": "单臂哑铃过头臂屈伸",
-  "spec": "drill-anim/specs/h-db-overhead-triceps-extension-rr4.js",
-  "specSha256Lf": "d7ed39269b0e5d79fd4e3166ebfb7118e3f66f8203d7cb095862c3a4300f474d",
+  "spec": "drill-anim/specs/h-db-overhead-triceps-extension-r5.js",
+  "specSha256Lf": "8caa021b2572e2f4bf46c8cf9b7848a63486b3e9036959040ac7759658ad241f",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
   },
   "hands": {
-    "left": "native",
-    "right": "native"
+    "left": "dumbbell-grasp",
+    "right": "dumbbell-grasp"
   },
   "camera": {
     "dir": [
@@ -82,5 +82,12 @@
   "sampledOnly": true,
   "fullCycleValidated": false,
   "userAccepted": false,
-  "releaseEligible": false
+  "releaseEligible": false,
+  "fixedCorrectionStack": {
+    "profile": "fixed-wrist-corrections-r1",
+    "version": "0.1.0-r1"
+  },
+  "fixedDumbbellsHidden": [
+    "left"
+  ]
 }
