@@ -139,6 +139,13 @@ export async function run(options){
     }
     if(!prepared.recipe.fixedCorrectionStack)report.jointCorrections=await installCorrections(page,prepared.recipe);
     else report.jointCorrections=prepared.recipe.jointCorrections;
+    // nativeWristCorrective (2026-10-30, user-approved): install the native-hand wrist seam repair hand-wrist-corrective-r1
+    // (adapted from the user's accepted 3D-Wrist repair) on top of the r3/r5 stack. Native-hand recipes only.
+    if(prepared.recipe.nativeWristCorrective!==undefined){
+      fail(prepared.recipe.nativeWristCorrective===true&&!prepared.recipe.fixedCorrectionStack,'Bad nativeWristCorrective');
+      const wc=await import('../../drill-anim/models/hand-wrist-corrective-r1/loader.mjs');
+      report.nativeWristCorrective=await wc.install(page,{enabled:true});
+    }
     if(corrective){
       const module=await import(new URL(corrective.file,import.meta.url));
       report.actionCorrectiveSetup={id:corrective.id,...await module.install(page,source.actionCorrective)};
