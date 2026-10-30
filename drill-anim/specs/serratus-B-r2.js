@@ -11,4 +11,8 @@ spec.keyFrames = [0.1, 1.5, 2.6, 4.1];
 // bottom position (palms facing, forearm rotated ~80 deg vs the upper arm). twistShare 1.0 spreads the hand roll over the
 // whole forearm and the wrist stays continuous (A/B 0 / 0.5 / 1.0 checked at 0.1 s).
 spec.nativeHands = { twistShare: 1 };
+// r2d (user accepted 2026-10-30 16:53): a small dent remained on the ulnar wrist edge in the bottom frame (forearm ~80 deg
+// rotated vs the upper arm). Turning both palms ~25 deg forward ([-sg,0,0] -> [-sg,0,0.45]) lowers that rotation and the
+// wrist line is flat; wrist targets, roller contact and timing unchanged (A/B -25 / 0 / +25 deg checked).
+for (const sd of ['left', 'right']) { const sg = sd === 'left' ? 1 : -1; spec.pose.base.hands[sd].normal = [-sg, 0, 0.45]; }
 export default spec;
