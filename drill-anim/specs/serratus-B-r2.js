@@ -7,4 +7,8 @@ const spec = structuredClone(prior);
 spec.id = 'serratus-B-r2';
 spec.props = spec.props.map(p => p.type === 'foamRoller' ? {...p, colour: '#8fa3bd'} : p);
 spec.keyFrames = [0.1, 1.5, 2.6, 4.1];
+// r2c (user review 2026-10-30): with the default native twistShare 0.5 the forearm skin pinched just above the wrist in the
+// bottom position (palms facing, forearm rotated ~80 deg vs the upper arm). twistShare 1.0 spreads the hand roll over the
+// whole forearm and the wrist stays continuous (A/B 0 / 0.5 / 1.0 checked at 0.1 s).
+spec.nativeHands = { twistShare: 1 };
 export default spec;
