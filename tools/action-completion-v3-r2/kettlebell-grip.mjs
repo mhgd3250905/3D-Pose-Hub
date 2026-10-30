@@ -25,6 +25,22 @@ export function installKettlebellGripInPage(meshes = {}, {pose = 'grasp-32mm'} =
   const nrm = a => { const l = Math.hypot(...a); return a.map(x => x / l); };
   const fit = frozen ? {radius:.016, finiteHandle:{lengthM:.165}, center:FROZEN.left.c, axis:nrm(FROZEN.left.a), sourceId:'webxr-dumbbell-wrist-r1'} : window.__fixedGrasp.fit;
   // Axial span of the closed fist around the shaft, measured on the actual frozen hand mesh in hand-bone space.
+  // Skin-like prop finish (user, 2026-10-30): soft wrap-lit shading like the body skin (wide, feathered terminator,
+  // slightly cooler shade, gentle broad sheen and a soft rim), in a chosen colour. Props stay out of the glow pass.
+  const skinMat = hex => {
+    const base = new T.Color(hex), shade = base.clone().multiplyScalar(.6).lerp(new T.Color('#3f5f86'), .25), rim = base.clone().lerp(new T.Color('#ffffff'), .55);
+    const m = new T.MeshToonMaterial({}); m.toneMapped = false;
+    m.onBeforeCompile = sh => { sh.uniforms.uGlow = window.__glowU; sh.uniforms.kB = {value:base}; sh.uniforms.kS = {value:shade}; sh.uniforms.kR = {value:rim};
+      sh.fragmentShader = 'uniform float uGlow;uniform vec3 kB;uniform vec3 kS;uniform vec3 kR;\n' + sh.fragmentShader.replace('#include <opaque_fragment>', `
+        vec3 Nn=normalize(normal);vec3 Vv=normalize(vViewPosition);vec3 Ld=normalize(vec3(-0.45,0.75,0.55));float nl=dot(Nn,Ld);
+        float w=smoothstep(-0.35,0.75,nl);vec3 lit=mix(kS,kB,w);
+        vec3 Hh=normalize(Ld+Vv);lit+=vec3(0.10)*pow(max(dot(Nn,Hh),0.0),12.0);
+        float fr=pow(1.0-clamp(dot(Nn,Vv),0.0,1.0),2.2);lit=mix(lit,kR,smoothstep(0.45,1.0,fr)*0.35);
+        if(uGlow>0.5) discard;
+        outgoingLight = lit;
+        #include <opaque_fragment>`); };
+    m.customProgramCacheKey = () => 'kb-skin1'; return m;
+  };
   const frozenBounds = (side, center, axis, rad = .045, q = .01) => {
     const bone = v.coach.getObjectByName(side + 'Hand'); let mesh = null;
     v.scene.traverse(o => { if (!mesh && o.isMesh && /^WebXR_(Fixed|Clipped)_Hand_/.test(o.name) && o.name.includes(side)) mesh = o; });
@@ -124,7 +140,7 @@ export function installKettlebellGripInPage(meshes = {}, {pose = 'grasp-32mm'} =
   };
   const addGoblet = (theme, s) => {
     if (!v.coach.getObjectByName('leftHand') || !v.coach.getObjectByName('rightHand')) throw Error('Kettlebell hand bone missing');
-    const mat = P.mat(theme.props, {base:s.colour || theme.props.base}), o = new T.Group(), R = .016, HW = .075, k = 1.2;
+    const mat = s.finish === 'skin' ? skinMat(s.colour || '#a8cfec') : P.mat(theme.props, {base:s.colour || theme.props.base}), o = new T.Group(), R = .016, HW = .075, k = 1.2;
     // Shortest horn that still clears the fist: only the hand surface wrapping the horn (within 34 mm of its axis), 4 mm each side.
     const [lo, hi] = frozenBounds('left', FROZEN.left.c, nrm(FROZEN.left.a), .034, .02), yl = lo - .004, yh = hi + .004;
     const tube = (name, pts) => { const m = new T.Mesh(new T.TubeGeometry(new T.CatmullRomCurve3(pts.map(p => new T.Vector3(...p))), 24, R, 16, false), mat); m.name = name; o.add(m); };

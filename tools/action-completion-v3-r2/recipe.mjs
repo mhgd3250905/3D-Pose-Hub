@@ -83,7 +83,8 @@ export function adaptRecipe(source,recipe){
       if(recipe.fixedKettlebell){
         const k=recipe.fixedKettlebell;
         fail((['leftHand','rightHand'].includes(k.attach)&&k.model==='straight-grip-kettlebell-r1')||(k.attach==='bothHands'&&k.model==='goblet-horns-kettlebell-r1'),'Unsupported fixedKettlebell');
-        spec.props.push({type:'kettlebell',attach:k.attach,fixedKettlebellGrasp:'webxr-dumbbell-fist',model:k.model});
+        fail(k.finish===undefined||k.finish==='skin','Unsupported fixedKettlebell finish');fail(k.colour===undefined||/^#[0-9a-f]{6}$/i.test(k.colour),'Bad fixedKettlebell colour');
+        spec.props.push({type:'kettlebell',attach:k.attach,fixedKettlebellGrasp:'webxr-dumbbell-fist',model:k.model,...(k.colour?{colour:k.colour}:{}),...(k.finish?{finish:k.finish}:{})});
       }
     }
     spec.v2plus.handPose={left:'open',right:'open'};
