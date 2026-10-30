@@ -25,7 +25,7 @@ export function installKettlebellGripInPage(meshes = {}, {pose = 'grasp-32mm'} =
   const nrm = a => { const l = Math.hypot(...a); return a.map(x => x / l); };
   const fit = frozen ? {radius:.016, finiteHandle:{lengthM:.165}, center:FROZEN.left.c, axis:nrm(FROZEN.left.a), sourceId:'webxr-dumbbell-wrist-r1'} : window.__fixedGrasp.fit;
   // Axial span of the closed fist around the shaft, measured on the actual frozen hand mesh in hand-bone space.
-  const frozenBounds = (side, center, axis) => {
+  const frozenBounds = (side, center, axis, rad = .045, q = .01) => {
     const bone = v.coach.getObjectByName(side + 'Hand'); let mesh = null;
     v.scene.traverse(o => { if (!mesh && o.isMesh && /^WebXR_(Fixed|Clipped)_Hand_/.test(o.name) && o.name.includes(side)) mesh = o; });
     if (!mesh || !bone) return [-.0825, .0825];
@@ -34,10 +34,10 @@ export function installKettlebellGripInPage(meshes = {}, {pose = 'grasp-32mm'} =
     const C = new T.Vector3(...center), X = new T.Vector3(...axis), t = [];
     for (let i = 0; i < pos.count; i++) {
       p.fromBufferAttribute(pos, i).applyMatrix4(mesh.matrixWorld).applyMatrix4(inv).sub(C);
-      const along = p.dot(X); if (p.addScaledVector(X, -along).length() < .045) t.push(along);
+      const along = p.dot(X); if (p.addScaledVector(X, -along).length() < rad) t.push(along);
     }
     if (t.length < 20) return [-.0825, .0825];
-    t.sort((a, b) => a - b); return [t[Math.floor(t.length * .01)], t[Math.ceil(t.length * .99) - 1]];
+    t.sort((a, b) => a - b); return [t[Math.floor(t.length * q)], t[Math.ceil(t.length * (1 - q)) - 1]];
   };
   if (fit.radius !== .016 || fit.finiteHandle?.lengthM !== .165 ||
       [fit.center, fit.axis].some(a => !Array.isArray(a) || a.length !== 3 || a.some(x => !Number.isFinite(x))) ||
@@ -125,17 +125,19 @@ export function installKettlebellGripInPage(meshes = {}, {pose = 'grasp-32mm'} =
   const addGoblet = (theme, s) => {
     if (!v.coach.getObjectByName('leftHand') || !v.coach.getObjectByName('rightHand')) throw Error('Kettlebell hand bone missing');
     const mat = P.mat(theme.props, {base:s.colour || theme.props.base}), o = new T.Group(), R = .016, HW = .075, k = 1.2;
-    const [lo, hi] = frozenBounds('left', FROZEN.left.c, nrm(FROZEN.left.a)), yl = lo - .012, yh = hi + .012;
+    // Shortest horn that still clears the fist: only the hand surface wrapping the horn (within 34 mm of its axis), 4 mm each side.
+    const [lo, hi] = frozenBounds('left', FROZEN.left.c, nrm(FROZEN.left.a), .034, .02), yl = lo - .004, yh = hi + .004;
     const tube = (name, pts) => { const m = new T.Mesh(new T.TubeGeometry(new T.CatmullRomCurve3(pts.map(p => new T.Vector3(...p))), 24, R, 16, false), mat); m.name = name; o.add(m); };
     for (const sx of [-1, 1]) {
       const h = new T.Mesh(new T.CylinderGeometry(R, R, yh - yl, 20), mat); h.name = 'fixed-kettlebell-horn-grip'; h.position.set(sx * HW, (yl + yh) / 2, 0); o.add(h);
-      tube('fixed-kettlebell-horn-top', [[sx * HW, yh, 0], [sx * HW, yh + .018, 0], [sx * (HW - .018), yh + .036, 0], [sx * (HW - .04), yh + .04, 0], [0, yh + .04, 0]]);
-      tube('fixed-kettlebell-horn-root', [[sx * HW, yl, 0], [sx * HW, yl - .015, 0], [sx * (HW - .012), yl - .035, 0], [sx * (HW - .03), yl - .055, 0]]);
+      tube('fixed-kettlebell-horn-top', [[sx * HW, yh, 0], [sx * HW, yh + .01, 0], [sx * (HW - .014), yh + .026, 0], [sx * (HW - .034), yh + .03, 0], [0, yh + .03, 0]]);
+      tube('fixed-kettlebell-horn-root', [[sx * HW, yl, 0], [sx * HW, yl - .01, 0], [sx * (HW - .01), yl - .026, 0], [sx * (HW - .026), yl - .042, 0]]);
     }
     const prof = [[0,.044],[.01,.053],[.02,.0625],[.03,.0695],[.045,.073],[.06,.0752],[.08,.074],[.095,.070],[.11,.062],[.122,.048],[.132,.03],[.138,0]];
-    const top = yl - .04, hgt = .138 * k, pts = prof.map(([y, r]) => new T.Vector2(Math.max(r * k, 1e-4), top - hgt + y * k)); pts.unshift(new T.Vector2(1e-4, top - hgt));
+    const top = yl - .03, hgt = .138 * k, pts = prof.map(([y, r]) => new T.Vector2(Math.max(r * k, 1e-4), top - hgt + y * k)); pts.unshift(new T.Vector2(1e-4, top - hgt));
     const bell = new T.Mesh(new T.LatheGeometry(pts, 40), mat); bell.name = 'fixed-kettlebell-bell'; o.add(bell);
     o.name = 'prop_kettlebell'; o.userData.spec = s;
+    window.__completionKettlebellGoblet = {hornGripM:[yl, yh], fistAxialBoundsM:[lo, hi]};
     o.userData.completionKettlebellGrip = {goblet:true, hornHalfWidthM:HW, hornGripM:[yl, yh], fistAxialBoundsM:[lo, hi], bellWidthM:.0752 * 2 * k};
     o.traverse(c => { c.frustumCulled = false; });
     v.scene.add(o); P.list.push(o); P.place(o); return o;
