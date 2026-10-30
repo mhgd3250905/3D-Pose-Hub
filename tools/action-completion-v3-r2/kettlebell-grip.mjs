@@ -55,17 +55,17 @@ export function installKettlebellGripInPage(meshes = {}) {
       o.add(m);
     };
     if (s.model === 'straight-grip-kettlebell-r1') {
-      // Grip section is an exact straight 32 mm cylinder (what grasp-32mm closes on), 120 mm long on the fitted axis.
+      // Grip section is an exact straight 32 mm cylinder (what grasp-32mm closes on), 165 mm long on the fitted axis (the fist's full fitted handle length, so ring and little fingers clear the corners).
       // Corners and legs are a constant 32 mm tube into a lathed bell whose profile is taken from the CC0 TheBaseMesh
-      // kettlebell-01 (x1.2: 180 mm bell, ~12 kg class). Bell top 50 mm below the bar surface leaves room for the fingers.
-      const R = .016, A = .06, top = -(R + .05), k = 1.2;
+      // kettlebell-01 (x1.3: 195 mm bell, ~16 kg class). Bell top 50 mm below the bar surface leaves room for the fingers.
+      const R = .016, A = .0825, top = -(R + .05), k = 1.3;
       const prof = [[0,.044],[.01,.053],[.02,.0625],[.03,.0695],[.045,.073],[.06,.0752],[.08,.074],[.095,.070],[.11,.062],[.122,.048],[.132,.03],[.138,0]];
       const h = .138 * k, pts = prof.map(([y, r]) => new T.Vector2(Math.max(r * k, 1e-4), top - h + y * k));
       pts.unshift(new T.Vector2(1e-4, top - h));
       const bell = new T.Mesh(new T.LatheGeometry(pts, 40), mat); bell.name = 'fixed-kettlebell-bell'; o.add(bell);
       tube('fixed-kettlebell-handle', [-A, 0, 0], [A, 0, 0], R);
       for (const sx of [-1, 1]) {
-        const c = new T.CatmullRomCurve3([[A, 0], [A + .016, -.006], [.084, -.03], [.08, -.06], [.066, -.1]].map(([x, y]) => new T.Vector3(sx * x, y, 0)));
+        const c = new T.CatmullRomCurve3([[A, 0], [A + .016, -.008], [A + .024, -.035], [.095, -.07], [.07, -.115]].map(([x, y]) => new T.Vector3(sx * x, y, 0)));
         const leg = new T.Mesh(new T.TubeGeometry(c, 24, R, 16, false), mat); leg.name = 'fixed-kettlebell-horn'; o.add(leg);
         const cap = new T.Mesh(new T.SphereGeometry(R, 16, 12), mat); cap.position.set(sx * A, 0, 0); o.add(cap);
       }
