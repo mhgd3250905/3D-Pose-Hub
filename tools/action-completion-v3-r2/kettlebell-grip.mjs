@@ -2,7 +2,7 @@
 // Install after the native grasp-32mm preset, before adding source props.
 // Optional CC0 mesh models (s.model), passed into the page as plain arrays.
 export const KETTLEBELL_MODELS = {'thebasemesh-kettlebell-01': 'drill-anim/assets/props/kettlebell-thebasemesh-01.json'};
-export async function installKettlebellGrip(page, {models = []} = {}) {
+export async function installKettlebellGrip(page, {models = [], pose = 'grasp-32mm'} = {}) {
   const fs = await import('node:fs'), path = await import('node:path'), url = await import('node:url');
   const root = path.resolve(path.dirname(url.fileURLToPath(import.meta.url)), '../..');
   const meshes = Object.fromEntries(models.filter(id => id !== 'straight-grip-kettlebell-r1').map(id => {
@@ -10,15 +10,35 @@ export async function installKettlebellGrip(page, {models = []} = {}) {
     const d = JSON.parse(fs.readFileSync(path.join(root, KETTLEBELL_MODELS[id]), 'utf8'));
     return [id, {positions: d.positions, indices: d.indices, source: d.source, license: d.license}];
   }));
-  return page.evaluate(installKettlebellGripInPage, meshes);
+  return page.evaluate(`(${installKettlebellGripInPage.toString()})(${JSON.stringify(meshes)}, ${JSON.stringify({pose})})`);
 }
 
-export function installKettlebellGripInPage(meshes = {}) {
+export function installKettlebellGripInPage(meshes = {}, {pose = 'grasp-32mm'} = {}) {
   const P = window.__props, T = window.__toonT, v = flareInspector.viewer;
-  const installed = window.__fixedGrasp, pose = 'grasp-32mm';
-  if (!P || !T || installed?.pose !== pose || window.__completionKettlebellGrip)
-    throw Error('Kettlebell grip requires a fresh installed native grasp-32mm preset');
-  const fit = installed.fit;
+  // 'webxr-dumbbell-fist': the frozen, user-accepted webxr-dumbbell-wrist-r1 fist (its dumbbell hidden). Shaft centre/axis
+  // in hand-bone local space are the same constants fixed-bar-grip-r1 uses (G in fixed-bar-grip-r1.mjs).
+  const FROZEN = {left:{c:[0.076111,-0.043131,0.000018], a:[0.330218,0.01962,0.943701]}, right:{c:[-0.076111,-0.043131,0.000018], a:[-0.330218,0.01962,0.943701]}};
+  const frozen = pose === 'webxr-dumbbell-fist';
+  if (!['grasp-32mm', 'webxr-dumbbell-fist'].includes(pose) || !P || !T || window.__completionKettlebellGrip ||
+      (frozen ? !window.__webxrWristJoin : window.__fixedGrasp?.pose !== pose))
+    throw Error('Kettlebell grip requires a fresh installed ' + (frozen ? 'webxr dumbbell wrist fist' : 'native grasp-32mm preset'));
+  const nrm = a => { const l = Math.hypot(...a); return a.map(x => x / l); };
+  const fit = frozen ? {radius:.016, finiteHandle:{lengthM:.165}, center:FROZEN.left.c, axis:nrm(FROZEN.left.a), sourceId:'webxr-dumbbell-wrist-r1'} : window.__fixedGrasp.fit;
+  // Axial span of the closed fist around the shaft, measured on the actual frozen hand mesh in hand-bone space.
+  const frozenBounds = (side, center, axis) => {
+    const bone = v.coach.getObjectByName(side + 'Hand'); let mesh = null;
+    v.scene.traverse(o => { if (!mesh && o.isMesh && /^WebXR_(Fixed|Clipped)_Hand_/.test(o.name) && o.name.includes(side)) mesh = o; });
+    if (!mesh || !bone) return [-.0825, .0825];
+    v.scene.updateMatrixWorld(true);
+    const inv = bone.matrixWorld.clone().invert(), pos = mesh.geometry.attributes.position, p = new T.Vector3();
+    const C = new T.Vector3(...center), X = new T.Vector3(...axis), t = [];
+    for (let i = 0; i < pos.count; i++) {
+      p.fromBufferAttribute(pos, i).applyMatrix4(mesh.matrixWorld).applyMatrix4(inv).sub(C);
+      const along = p.dot(X); if (p.addScaledVector(X, -along).length() < .045) t.push(along);
+    }
+    if (t.length < 20) return [-.0825, .0825];
+    t.sort((a, b) => a - b); return [t[Math.floor(t.length * .01)], t[Math.ceil(t.length * .99) - 1]];
+  };
   if (fit.radius !== .016 || fit.finiteHandle?.lengthM !== .165 ||
       [fit.center, fit.axis].some(a => !Array.isArray(a) || a.length !== 3 || a.some(x => !Number.isFinite(x))) ||
       Math.abs(Math.hypot(...fit.axis) - 1) > 1e-6)
@@ -38,7 +58,10 @@ export function installKettlebellGripInPage(meshes = {}) {
     if (!v.coach.getObjectByName(s.attach)) throw Error('Kettlebell hand bone missing');
     const right = s.attach === 'rightHand', sign = right ? -1 : 1;
     const mirror = a => a.map((x, i) => i === 0 ? sign * x : x);
-    const axis = new T.Vector3(...mirror(fit.axis)).normalize();
+    const side = right ? 'right' : 'left';
+    const center = frozen ? FROZEN[side].c : mirror(fit.center);
+    const axis = new T.Vector3(...(frozen ? FROZEN[side].a : mirror(fit.axis))).normalize();
+    const bounds = frozen ? frozenBounds(side, center, axis.toArray()) : (fit.finiteHandle?.measuredOriginalBoundsM ?? [-.0825, .0825]);
     // Anatomical distal direction, projected off the fitted grip axis. No world-up
     // branch can flip the bell during the swing or rotate the handle inside the fist.
     const distal = new T.Vector3(sign * .98253144, .05483374, .17783482);
@@ -60,7 +83,7 @@ export function installKettlebellGripInPage(meshes = {}) {
       // kettlebell-01 (x1.3: 195 mm bell, ~16 kg class). Bell top 50 mm below the bar surface leaves room for the fingers.
       // The fitted fist is asymmetric on its axis (measuredOriginalBoundsM, e.g. -99..+37 mm): centre the bar on the hand's own
       // span plus a 12 mm clearance each side, so neither the index nor the little-finger side reaches a corner.
-      const [lo, hi] = fit.finiteHandle?.measuredOriginalBoundsM ?? [-.0825, .0825], mid = (lo + hi) / 2, n0 = o.children.length;
+      const [lo, hi] = bounds, mid = (lo + hi) / 2, n0 = o.children.length;
       const R = .016, A = Math.max(.0825, (hi - lo) / 2 + .012), top = -(R + .05), k = 1.3;
       const prof = [[0,.044],[.01,.053],[.02,.0625],[.03,.0695],[.045,.073],[.06,.0752],[.08,.074],[.095,.070],[.11,.062],[.122,.048],[.132,.03],[.138,0]];
       const h = .138 * k, pts = prof.map(([y, r]) => new T.Vector2(Math.max(r * k, 1e-4), top - h + y * k));
@@ -86,7 +109,7 @@ export function installKettlebellGripInPage(meshes = {}) {
       bell.name = 'fixed-kettlebell-bell'; bell.position.y = -drop; o.add(bell);
     }
     o.name = 'prop_kettlebell'; o.userData.spec = s;
-    o.userData.completionKettlebellGrip = {center:mirror(fit.center), localRotation,
+    o.userData.completionKettlebellGrip = {center, localRotation, fistAxialBoundsM:bounds,
       handleLengthM:.165, handleRadiusM:.016, bellRadiusM:radius, bellDropM:drop};
     o.traverse(c => { c.frustumCulled = false; });
     v.scene.add(o); P.list.push(o); P.place(o); return o;

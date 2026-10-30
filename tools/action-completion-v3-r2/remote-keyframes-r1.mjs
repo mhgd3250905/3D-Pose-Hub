@@ -104,6 +104,10 @@ export async function run(options){
         const wrist=await import('../body-v3/webxr-wrist-join-r1/loader.mjs');
         report.wristSetup=await wrist.install(page,{showDumbbells:prepared.handSetup.showDumbbells});
       }
+      if(source.props?.some(p=>p.fixedKettlebellGrasp==='webxr-dumbbell-fist')){
+        const kettlebell=await import('./kettlebell-grip.mjs');
+        report.kettlebellGripSetup=await kettlebell.installKettlebellGrip(page,{pose:'webxr-dumbbell-fist',models:[...new Set(source.props.filter(p=>p.fixedKettlebellGrasp!==undefined&&p.model).map(p=>p.model))]});
+      }
     }else{
       const presets=await import('../../drill-anim/models/fixed-hand-presets-r1/loader.mjs');
       await presets.verify();const data=presets.data();

@@ -79,11 +79,17 @@ export function adaptRecipe(source,recipe){
       fail(dumbbells.length===2&&['left','right'].every(side=>dumbbells.filter(p=>p.attach===side+'Hand').length===1),'Both hands must each have exactly one source dumbbell');
       fail(props.every(p=>!['kettlebell','kbBottomsUp','landmine','band','grip','dHandle'].includes(p.type)),'Dumbbell template cannot substitute another held implement');
       spec.props=props.filter(p=>p.type!=='dumbbell'&&p.type!=='gripHand');
+      // Optional: the frozen dumbbell fist holds a kettlebell instead (dumbbells hidden, straight grip on the fist's shaft axis).
+      if(recipe.fixedKettlebell){
+        const k=recipe.fixedKettlebell;
+        fail(['leftHand','rightHand'].includes(k.attach)&&k.model==='straight-grip-kettlebell-r1','Unsupported fixedKettlebell');
+        spec.props.push({type:'kettlebell',attach:k.attach,fixedKettlebellGrasp:'webxr-dumbbell-fist',model:k.model});
+      }
     }
     spec.v2plus.handPose={left:'open',right:'open'};
   }
   return {spec,handSetup:{modes:{...hands},adapter:grasp.length?'webxr-dumbbell-wrist-r1':'symmetric-native',
-    poses:spec.v2plus.handPose,removedSourceDumbbells:grasp.length&&!bandGrasp&&!barGrasp?2:0,showDumbbells:!bandGrasp&&!barGrasp,barGrip:barGripReport,
+    poses:spec.v2plus.handPose,removedSourceDumbbells:grasp.length&&!bandGrasp&&!barGrasp?2:0,showDumbbells:!bandGrasp&&!barGrasp&&!recipe.fixedKettlebell,barGrip:barGripReport,
     status:grasp.length?'fixed-template-accepted-action-validation-pending':'native-candidate-action-validation-pending',
     notes:grasp.length?['Fixed hand and dumbbell are one rigid combination; no duplicate action dumbbells.']:['support uses native palm-floor; assist uses native open; relaxed uses native relaxed.','These are explicit native poses, not acceptance of four completed new fixed hand assets.']}};
 }

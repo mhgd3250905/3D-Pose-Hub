@@ -2,15 +2,15 @@
   "format": "pose-hub-action-recipe@1",
   "id": "forearms-C",
   "nameZh": "壶铃倒握行走",
-  "spec": "drill-anim/specs/forearms-C-r2.js",
-  "specSha256Lf": "080d326dda97cac63772abb85d6d974b48fed5647132836aff4348b579186d76",
+  "spec": "drill-anim/specs/forearms-C-r3.js",
+  "specSha256Lf": "4049bea4dee8942b23457ba77e062c400703089eef33ba38fcb243c31c5d8ef8",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
   },
   "hands": {
-    "left": "native",
-    "right": "native"
+    "left": "dumbbell-grasp",
+    "right": "dumbbell-grasp"
   },
   "camera": {
     "dir": [
@@ -82,5 +82,13 @@
   "sampledOnly": true,
   "fullCycleValidated": false,
   "userAccepted": false,
-  "releaseEligible": false
+  "releaseEligible": false,
+  "fixedCorrectionStack": {
+    "profile": "fixed-wrist-corrections-r1",
+    "version": "0.1.0-r1"
+  },
+  "fixedKettlebell": {
+    "attach": "rightHand",
+    "model": "straight-grip-kettlebell-r1"
+  }
 }
