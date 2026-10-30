@@ -2,6 +2,7 @@
 // webxr-dumbbell-wrist-r1 fist, never by the native grasp-32mm bake. A dHandle tagged fixedDHandleGrasp:'webxr-dumbbell-fist'
 // is built on that fist's 32 mm shaft axis (same constants as kettlebell-grip / fixed-bar-grip): P.bakeGrip is bypassed, so the
 // hand mesh is never re-posed; the grip cylinder is 32 mm, its length = the fist's measured wrap span + 6 mm each side, centred on it.
+// A source 'shift' is dropped: the grip is centred on the measured fist span instead.
 // The loop / band apex logic of the stock dHandle placement is unchanged (it reads G.c, G.a, G.pal).
 export async function installFrozenDHandle(page){return page.evaluate(`(${inPage.toString()})()`);}
 function inPage(){
@@ -23,8 +24,8 @@ function inPage(){
   const add0=P.add,bake0=P.bakeGrip;
   P.add=function(theme,s){
     if(s.fixedDHandleGrasp===undefined)return add0.call(this,theme,s);
-    if(s.fixedDHandleGrasp!=='webxr-dumbbell-fist'||s.type!=='dHandle'||!['left','right'].includes(s.side||'right')||s.shift!==undefined)throw Error('Unsupported frozen dHandle');
+    if(s.fixedDHandleGrasp!=='webxr-dumbbell-fist'||s.type!=='dHandle'||!['left','right'].includes(s.side||'right'))throw Error('Unsupported frozen dHandle');
     const g=G(s.side||'right');P.bakeGrip=()=>g;
-    try{return add0.call(this,theme,{...s,len:g.len});}finally{P.bakeGrip=bake0;}};
+    try{return add0.call(this,theme,{...s,len:g.len,shift:undefined});}finally{P.bakeGrip=bake0;}};
   return window.__frozenDHandle={adapter:'frozen-dhandle-r1',source:'webxr-dumbbell-wrist-r1',diameterM:.032,sides:out,reviewed:false,releaseEligible:false};
 }

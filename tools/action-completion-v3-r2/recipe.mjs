@@ -75,7 +75,7 @@ export function adaptRecipe(source,recipe){
     if(bandGrasp){
       // fixedDHandle: band D-handles held by the frozen fist (frozen-dhandle.mjs); every dHandle is tagged, never native-baked.
       const dh=recipe.fixedDHandle===true;fail(recipe.fixedDHandle===undefined||dh,'Bad fixedDHandle');
-      fail(props.some(p=>p.type==='band')&&props.every(p=>!['dumbbell','kettlebell','kbBottomsUp','landmine','grip',...(dh?[]:['dHandle'])].includes(p.type))&&(!dh||props.some(p=>p.type==='dHandle')),'Fixed grip without dumbbells currently supports explicit band actions only');
+      fail(props.some(p=>p.type==='band'||(dh&&p.type==='cable'))&&props.every(p=>!['dumbbell','kettlebell','kbBottomsUp','landmine','grip',...(dh?[]:['dHandle'])].includes(p.type))&&(!dh||props.some(p=>p.type==='dHandle')),'Fixed grip without dumbbells currently supports explicit band actions only');
       spec.props=props.filter(p=>p.type!=='gripHand').map(p=>p.type==='dHandle'?{...p,fixedDHandleGrasp:'webxr-dumbbell-fist'}:p);
     }else{
       fail(dumbbells.length===2&&['left','right'].every(side=>dumbbells.filter(p=>p.attach===side+'Hand').length===1),'Both hands must each have exactly one source dumbbell');
