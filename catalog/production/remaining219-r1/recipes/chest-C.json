@@ -2,15 +2,15 @@
   "format": "pose-hub-action-recipe@1",
   "id": "chest-C",
   "nameZh": "绳索单臂站姿推胸",
-  "spec": "drill-anim/specs/chest-C.js",
-  "specSha256Lf": "db4c1abef9e3da9610c4bede161a473455716afe70650d998e172da5489250c1",
+  "spec": "drill-anim/specs/chest-C-r2.js",
+  "specSha256Lf": "2fd0aa4723597d291280a4da314c041f61251b0506da26713db7f7cff599bb2d",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
   },
   "hands": {
-    "left": "native",
-    "right": "native"
+    "left": "fixed-grasp",
+    "right": "fixed-grasp"
   },
   "camera": {
     "dir": [
@@ -76,10 +76,15 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/chest-C.js"
+    "selectedSpec": "drill-anim/specs/chest-C-r2.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
   "userAccepted": false,
-  "releaseEligible": false
+  "releaseEligible": false,
+  "fixedDHandle": true,
+  "fixedCorrectionStack": {
+    "profile": "fixed-wrist-corrections-r1",
+    "version": "0.1.0-r1"
+  }
 }
