@@ -1,10 +1,19 @@
 // Opt-in preview prop; frozen model and historical kettlebell geometry stay intact.
 // Install after the native grasp-32mm preset, before adding source props.
-export async function installKettlebellGrip(page) {
-  return page.evaluate(installKettlebellGripInPage);
+// Optional CC0 mesh models (s.model), passed into the page as plain arrays.
+export const KETTLEBELL_MODELS = {'thebasemesh-kettlebell-01': 'drill-anim/assets/props/kettlebell-thebasemesh-01.json'};
+export async function installKettlebellGrip(page, {models = []} = {}) {
+  const fs = await import('node:fs'), path = await import('node:path'), url = await import('node:url');
+  const root = path.resolve(path.dirname(url.fileURLToPath(import.meta.url)), '../..');
+  const meshes = Object.fromEntries(models.map(id => {
+    if (!KETTLEBELL_MODELS[id]) throw Error('Unknown kettlebell model: ' + id);
+    const d = JSON.parse(fs.readFileSync(path.join(root, KETTLEBELL_MODELS[id]), 'utf8'));
+    return [id, {positions: d.positions, indices: d.indices, source: d.source, license: d.license}];
+  }));
+  return page.evaluate(installKettlebellGripInPage, meshes);
 }
 
-export function installKettlebellGripInPage() {
+export function installKettlebellGripInPage(meshes = {}) {
   const P = window.__props, T = window.__toonT, v = flareInspector.viewer;
   const installed = window.__fixedGrasp, pose = 'grasp-32mm';
   if (!P || !T || installed?.pose !== pose || window.__completionKettlebellGrip)
@@ -19,6 +28,7 @@ export function installKettlebellGripInPage() {
     if (s.fixedKettlebellGrasp !== pose || s.type !== 'kettlebell' ||
         !['leftHand', 'rightHand'].includes(s.attach) ||
         ['offset', 'rot', 'follow', 'at', 'yaw', 'flat', 'fixedGrasp'].some(k => s[k] !== undefined) ||
+        (s.model !== undefined && !meshes[s.model]) ||
         !Number.isFinite(s.r ?? .095) || (s.r ?? .095) < .06 || (s.r ?? .095) > .12)
       throw Error('Unsupported explicit kettlebell grasp prop');
   };
@@ -44,11 +54,18 @@ export function installKettlebellGripInPage() {
       m.quaternion.setFromUnitVectors(new T.Vector3(0, 1, 0), B.sub(A).normalize());
       o.add(m);
     };
-    tube('fixed-kettlebell-handle', [-half, 0, 0], [half, 0, 0], .016);
-    for (const sign of [-1, 1])
-      tube('fixed-kettlebell-connector', [sign * half, 0, 0], [sign * radius * .62, -drop + radius * .65, 0], .014);
-    const bell = new T.Mesh(new T.SphereGeometry(radius, 24, 16), mat);
-    bell.name = 'fixed-kettlebell-bell'; bell.position.y = -drop; o.add(bell);
+    if (s.model) {
+      // CC0 mesh: handle-bar centre at the origin, handle along +X, bell toward -Y, handle diameter 32 mm.
+      const d = meshes[s.model], g = new T.BufferGeometry();
+      g.setAttribute('position', new T.Float32BufferAttribute(d.positions, 3)); g.setIndex(d.indices); g.computeVertexNormals();
+      const m = new T.Mesh(g, mat); m.name = 'fixed-kettlebell-model'; o.add(m);
+    } else {
+      tube('fixed-kettlebell-handle', [-half, 0, 0], [half, 0, 0], .016);
+      for (const sign of [-1, 1])
+        tube('fixed-kettlebell-connector', [sign * half, 0, 0], [sign * radius * .62, -drop + radius * .65, 0], .014);
+      const bell = new T.Mesh(new T.SphereGeometry(radius, 24, 16), mat);
+      bell.name = 'fixed-kettlebell-bell'; bell.position.y = -drop; o.add(bell);
+    }
     o.name = 'prop_kettlebell'; o.userData.spec = s;
     o.userData.completionKettlebellGrip = {center:mirror(fit.center), localRotation,
       handleLengthM:.165, handleRadiusM:.016, bellRadiusM:radius, bellDropM:drop};

@@ -113,7 +113,7 @@ export async function run(options){
       }
       if(source.props?.some(p=>p.fixedKettlebellGrasp!==undefined)){
         const kettlebell=await import('./kettlebell-grip.mjs');
-        report.kettlebellGripSetup=await kettlebell.installKettlebellGrip(page);
+        report.kettlebellGripSetup=await kettlebell.installKettlebellGrip(page,{models:[...new Set(source.props.filter(p=>p.fixedKettlebellGrasp!==undefined&&p.model).map(p=>p.model))]});
       }
       const supportNeeded=Object.values(prepared.handSetup.modes).includes('support');
       if(supportNeeded){const support=await import('../body-v3/armfix-r2/support-install.mjs');report.supportSetup=await support.installSupport(page,data.support,{sourceId:data.handSource});}
