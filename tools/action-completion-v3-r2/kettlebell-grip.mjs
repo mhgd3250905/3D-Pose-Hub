@@ -5,7 +5,7 @@ export const KETTLEBELL_MODELS = {'thebasemesh-kettlebell-01': 'drill-anim/asset
 export async function installKettlebellGrip(page, {models = []} = {}) {
   const fs = await import('node:fs'), path = await import('node:path'), url = await import('node:url');
   const root = path.resolve(path.dirname(url.fileURLToPath(import.meta.url)), '../..');
-  const meshes = Object.fromEntries(models.map(id => {
+  const meshes = Object.fromEntries(models.filter(id => id !== 'straight-grip-kettlebell-r1').map(id => {
     if (!KETTLEBELL_MODELS[id]) throw Error('Unknown kettlebell model: ' + id);
     const d = JSON.parse(fs.readFileSync(path.join(root, KETTLEBELL_MODELS[id]), 'utf8'));
     return [id, {positions: d.positions, indices: d.indices, source: d.source, license: d.license}];
@@ -28,7 +28,7 @@ export function installKettlebellGripInPage(meshes = {}) {
     if (s.fixedKettlebellGrasp !== pose || s.type !== 'kettlebell' ||
         !['leftHand', 'rightHand'].includes(s.attach) ||
         ['offset', 'rot', 'follow', 'at', 'yaw', 'flat', 'fixedGrasp'].some(k => s[k] !== undefined) ||
-        (s.model !== undefined && !meshes[s.model]) ||
+        (s.model !== undefined && s.model !== 'straight-grip-kettlebell-r1' && !meshes[s.model]) ||
         !Number.isFinite(s.r ?? .095) || (s.r ?? .095) < .06 || (s.r ?? .095) > .12)
       throw Error('Unsupported explicit kettlebell grasp prop');
   };
@@ -54,7 +54,22 @@ export function installKettlebellGripInPage(meshes = {}) {
       m.quaternion.setFromUnitVectors(new T.Vector3(0, 1, 0), B.sub(A).normalize());
       o.add(m);
     };
-    if (s.model) {
+    if (s.model === 'straight-grip-kettlebell-r1') {
+      // Grip section is an exact straight 32 mm cylinder (what grasp-32mm closes on), 120 mm long on the fitted axis.
+      // Corners and legs are a constant 32 mm tube into a lathed bell whose profile is taken from the CC0 TheBaseMesh
+      // kettlebell-01 (x1.2: 180 mm bell, ~12 kg class). Bell top 50 mm below the bar surface leaves room for the fingers.
+      const R = .016, A = .06, top = -(R + .05), k = 1.2;
+      const prof = [[0,.044],[.01,.053],[.02,.0625],[.03,.0695],[.045,.073],[.06,.0752],[.08,.074],[.095,.070],[.11,.062],[.122,.048],[.132,.03],[.138,0]];
+      const h = .138 * k, pts = prof.map(([y, r]) => new T.Vector2(Math.max(r * k, 1e-4), top - h + y * k));
+      pts.unshift(new T.Vector2(1e-4, top - h));
+      const bell = new T.Mesh(new T.LatheGeometry(pts, 40), mat); bell.name = 'fixed-kettlebell-bell'; o.add(bell);
+      tube('fixed-kettlebell-handle', [-A, 0, 0], [A, 0, 0], R);
+      for (const sx of [-1, 1]) {
+        const c = new T.CatmullRomCurve3([[A, 0], [A + .016, -.006], [.084, -.03], [.08, -.06], [.066, -.1]].map(([x, y]) => new T.Vector3(sx * x, y, 0)));
+        const leg = new T.Mesh(new T.TubeGeometry(c, 24, R, 16, false), mat); leg.name = 'fixed-kettlebell-horn'; o.add(leg);
+        const cap = new T.Mesh(new T.SphereGeometry(R, 16, 12), mat); cap.position.set(sx * A, 0, 0); o.add(cap);
+      }
+    } else if (s.model) {
       // CC0 mesh: handle-bar centre at the origin, handle along +X, bell toward -Y, handle diameter 32 mm.
       const d = meshes[s.model], g = new T.BufferGeometry();
       g.setAttribute('position', new T.Float32BufferAttribute(d.positions, 3)); g.setIndex(d.indices); g.computeVertexNormals();
