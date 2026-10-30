@@ -82,7 +82,7 @@ export function adaptRecipe(source,recipe){
       // Optional: the frozen dumbbell fist holds a kettlebell instead (dumbbells hidden, straight grip on the fist's shaft axis).
       if(recipe.fixedKettlebell){
         const k=recipe.fixedKettlebell;
-        fail(['leftHand','rightHand'].includes(k.attach)&&k.model==='straight-grip-kettlebell-r1','Unsupported fixedKettlebell');
+        fail((['leftHand','rightHand'].includes(k.attach)&&k.model==='straight-grip-kettlebell-r1')||(k.attach==='bothHands'&&k.model==='goblet-horns-kettlebell-r1'),'Unsupported fixedKettlebell');
         spec.props.push({type:'kettlebell',attach:k.attach,fixedKettlebellGrasp:'webxr-dumbbell-fist',model:k.model});
       }
     }

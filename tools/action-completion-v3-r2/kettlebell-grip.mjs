@@ -5,7 +5,7 @@ export const KETTLEBELL_MODELS = {'thebasemesh-kettlebell-01': 'drill-anim/asset
 export async function installKettlebellGrip(page, {models = [], pose = 'grasp-32mm'} = {}) {
   const fs = await import('node:fs'), path = await import('node:path'), url = await import('node:url');
   const root = path.resolve(path.dirname(url.fileURLToPath(import.meta.url)), '../..');
-  const meshes = Object.fromEntries(models.filter(id => id !== 'straight-grip-kettlebell-r1').map(id => {
+  const meshes = Object.fromEntries(models.filter(id => !['straight-grip-kettlebell-r1', 'goblet-horns-kettlebell-r1'].includes(id)).map(id => {
     if (!KETTLEBELL_MODELS[id]) throw Error('Unknown kettlebell model: ' + id);
     const d = JSON.parse(fs.readFileSync(path.join(root, KETTLEBELL_MODELS[id]), 'utf8'));
     return [id, {positions: d.positions, indices: d.indices, source: d.source, license: d.license}];
@@ -46,15 +46,17 @@ export function installKettlebellGripInPage(meshes = {}, {pose = 'grasp-32mm'} =
   const priorAdd = P.add, priorPlace = P.place;
   const validate = s => {
     if (s.fixedKettlebellGrasp !== pose || s.type !== 'kettlebell' ||
-        !['leftHand', 'rightHand'].includes(s.attach) ||
+        !(['leftHand', 'rightHand'].includes(s.attach) || (s.attach === 'bothHands' && frozen && s.model === 'goblet-horns-kettlebell-r1')) ||
         ['offset', 'rot', 'follow', 'at', 'yaw', 'flat', 'fixedGrasp'].some(k => s[k] !== undefined) ||
-        (s.model !== undefined && s.model !== 'straight-grip-kettlebell-r1' && !meshes[s.model]) ||
+        (s.model !== undefined && !['straight-grip-kettlebell-r1', 'goblet-horns-kettlebell-r1'].includes(s.model) && !meshes[s.model]) ||
+        (s.model === 'goblet-horns-kettlebell-r1') !== (s.attach === 'bothHands') ||
         !Number.isFinite(s.r ?? .095) || (s.r ?? .095) < .06 || (s.r ?? .095) > .12)
       throw Error('Unsupported explicit kettlebell grasp prop');
   };
   P.add = function(theme, s) {
     if (s.fixedKettlebellGrasp === undefined) return priorAdd.call(this, theme, s);
     validate(s);
+    if (s.attach === 'bothHands') return addGoblet(theme, s);
     if (!v.coach.getObjectByName(s.attach)) throw Error('Kettlebell hand bone missing');
     const right = s.attach === 'rightHand', sign = right ? -1 : 1;
     const mirror = a => a.map((x, i) => i === 0 ? sign * x : x);
@@ -114,9 +116,39 @@ export function installKettlebellGripInPage(meshes = {}, {pose = 'grasp-32mm'} =
     o.traverse(c => { c.frustumCulled = false; });
     v.scene.add(o); P.list.push(o); P.place(o); return o;
   };
+  // Goblet hold: both frozen fists each close on one straight vertical 32 mm horn. The bell frame is rebuilt every frame from
+  // the two fists' world shaft centres (x: right->left) and their mean shaft axis (y, thumbs), so both stay on their horns.
+  const fistWorld = side => {
+    const b = v.coach.getObjectByName(side + 'Hand'); b.updateWorldMatrix(true, false);
+    return {c:new T.Vector3(...FROZEN[side].c).applyMatrix4(b.matrixWorld), a:new T.Vector3(...FROZEN[side].a).transformDirection(b.matrixWorld)};
+  };
+  const addGoblet = (theme, s) => {
+    if (!v.coach.getObjectByName('leftHand') || !v.coach.getObjectByName('rightHand')) throw Error('Kettlebell hand bone missing');
+    const mat = P.mat(theme.props, {base:s.colour || theme.props.base}), o = new T.Group(), R = .016, HW = .075, k = 1.2;
+    const [lo, hi] = frozenBounds('left', FROZEN.left.c, nrm(FROZEN.left.a)), yl = lo - .012, yh = hi + .012;
+    const tube = (name, pts) => { const m = new T.Mesh(new T.TubeGeometry(new T.CatmullRomCurve3(pts.map(p => new T.Vector3(...p))), 24, R, 16, false), mat); m.name = name; o.add(m); };
+    for (const sx of [-1, 1]) {
+      const h = new T.Mesh(new T.CylinderGeometry(R, R, yh - yl, 20), mat); h.name = 'fixed-kettlebell-horn-grip'; h.position.set(sx * HW, (yl + yh) / 2, 0); o.add(h);
+      tube('fixed-kettlebell-horn-top', [[sx * HW, yh, 0], [sx * HW, yh + .018, 0], [sx * (HW - .018), yh + .036, 0], [sx * (HW - .04), yh + .04, 0], [0, yh + .04, 0]]);
+      tube('fixed-kettlebell-horn-root', [[sx * HW, yl, 0], [sx * HW, yl - .015, 0], [sx * (HW - .012), yl - .035, 0], [sx * (HW - .03), yl - .055, 0]]);
+    }
+    const prof = [[0,.044],[.01,.053],[.02,.0625],[.03,.0695],[.045,.073],[.06,.0752],[.08,.074],[.095,.070],[.11,.062],[.122,.048],[.132,.03],[.138,0]];
+    const top = yl - .04, hgt = .138 * k, pts = prof.map(([y, r]) => new T.Vector2(Math.max(r * k, 1e-4), top - hgt + y * k)); pts.unshift(new T.Vector2(1e-4, top - hgt));
+    const bell = new T.Mesh(new T.LatheGeometry(pts, 40), mat); bell.name = 'fixed-kettlebell-bell'; o.add(bell);
+    o.name = 'prop_kettlebell'; o.userData.spec = s;
+    o.userData.completionKettlebellGrip = {goblet:true, hornHalfWidthM:HW, hornGripM:[yl, yh], fistAxialBoundsM:[lo, hi], bellWidthM:.0752 * 2 * k};
+    o.traverse(c => { c.frustumCulled = false; });
+    v.scene.add(o); P.list.push(o); P.place(o); return o;
+  };
   P.place = function(o) {
     const grip = o.userData.completionKettlebellGrip;
     if (!grip) return priorPlace.call(this, o);
+    if (grip.goblet) {
+      const L = fistWorld('left'), Rr = fistWorld('right'), x = L.c.clone().sub(Rr.c).normalize();
+      const y = L.a.clone().add(Rr.a); y.addScaledVector(x, -y.dot(x)).normalize(); const z = x.clone().cross(y);
+      o.position.copy(L.c).lerp(Rr.c, .5); o.quaternion.setFromRotationMatrix(new T.Matrix4().makeBasis(x, y, z));
+      grip.lastFistGapM = L.c.distanceTo(Rr.c); o.updateMatrixWorld(true); return;
+    }
     const b = v.coach.getObjectByName(o.userData.spec.attach);
     b.updateWorldMatrix(true, false);
     const q = b.getWorldQuaternion(new T.Quaternion());

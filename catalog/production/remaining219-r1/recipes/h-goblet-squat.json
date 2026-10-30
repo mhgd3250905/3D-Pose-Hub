@@ -1,16 +1,16 @@
 {
   "format": "pose-hub-action-recipe@1",
   "id": "h-goblet-squat",
-  "nameZh": "哑铃高脚杯深蹲",
-  "spec": "drill-anim/specs/h-goblet-squat-rr1.js",
-  "specSha256Lf": "2aaa5bf949d380b0286e337e6cc53baedb52e48c254dadec532812d0523c3c59",
+  "nameZh": "壶铃高脚杯深蹲",
+  "spec": "drill-anim/specs/h-goblet-squat-r3.js",
+  "specSha256Lf": "3a71184656095decbe903ec23309351a050fb1874979d0fe8dbab9a6dda19b1e",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
   },
   "hands": {
-    "left": "native",
-    "right": "native"
+    "left": "dumbbell-grasp",
+    "right": "dumbbell-grasp"
   },
   "camera": {
     "dir": [
@@ -82,5 +82,13 @@
   "sampledOnly": true,
   "fullCycleValidated": false,
   "userAccepted": false,
-  "releaseEligible": false
+  "releaseEligible": false,
+  "fixedCorrectionStack": {
+    "profile": "fixed-wrist-corrections-r1",
+    "version": "0.1.0-r1"
+  },
+  "fixedKettlebell": {
+    "attach": "bothHands",
+    "model": "goblet-horns-kettlebell-r1"
+  }
 }
