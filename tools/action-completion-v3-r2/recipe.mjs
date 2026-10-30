@@ -73,8 +73,10 @@ export function adaptRecipe(source,recipe){
     fail(hands.left===hands.right,'Fixed grip mode must match on both hands');
     const props=spec.props??[],dumbbells=props.filter(p=>p.type==='dumbbell');
     if(bandGrasp){
-      fail(props.some(p=>p.type==='band')&&props.every(p=>!['dumbbell','kettlebell','kbBottomsUp','landmine','grip','dHandle'].includes(p.type)),'Fixed grip without dumbbells currently supports explicit band actions only');
-      spec.props=props.filter(p=>p.type!=='gripHand');
+      // fixedDHandle: band D-handles held by the frozen fist (frozen-dhandle.mjs); every dHandle is tagged, never native-baked.
+      const dh=recipe.fixedDHandle===true;fail(recipe.fixedDHandle===undefined||dh,'Bad fixedDHandle');
+      fail(props.some(p=>p.type==='band')&&props.every(p=>!['dumbbell','kettlebell','kbBottomsUp','landmine','grip',...(dh?[]:['dHandle'])].includes(p.type))&&(!dh||props.some(p=>p.type==='dHandle')),'Fixed grip without dumbbells currently supports explicit band actions only');
+      spec.props=props.filter(p=>p.type!=='gripHand').map(p=>p.type==='dHandle'?{...p,fixedDHandleGrasp:'webxr-dumbbell-fist'}:p);
     }else{
       fail(dumbbells.length===2&&['left','right'].every(side=>dumbbells.filter(p=>p.attach===side+'Hand').length===1),'Both hands must each have exactly one source dumbbell');
       fail(props.every(p=>!['kettlebell','kbBottomsUp','landmine','band','grip','dHandle'].includes(p.type)),'Dumbbell template cannot substitute another held implement');

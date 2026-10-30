@@ -110,6 +110,9 @@ export async function run(options){
       if(hide.length)report.hiddenFixedDumbbells=await page.evaluate(sides=>{const v=flareInspector.viewer,out={};
         for(const side of sides){const g=v.scene.getObjectByName('WebXR_Fixed_Hand_'+side);if(!g)throw Error('no fixed hand group '+side);let k=0;
           g.traverse(o=>{if(o.isMesh&&!o.name.startsWith('WebXR_Clipped_Hand_')&&!/band/i.test(o.name)){o.visible=false;k++;}});out[side]=k;}return out;},hide);
+      if(source.props?.some(p=>p.fixedDHandleGrasp!==undefined)){
+        const dh=await import('./frozen-dhandle.mjs');report.frozenDHandleSetup=await dh.installFrozenDHandle(page);
+      }
       if(source.props?.some(p=>p.fixedKettlebellGrasp==='webxr-dumbbell-fist')){
         const kettlebell=await import('./kettlebell-grip.mjs');
         report.kettlebellGripSetup=await kettlebell.installKettlebellGrip(page,{pose:'webxr-dumbbell-fist',models:[...new Set(source.props.filter(p=>p.fixedKettlebellGrasp!==undefined&&p.model).map(p=>p.model))]});
