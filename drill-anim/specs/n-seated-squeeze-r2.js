@@ -4,5 +4,5 @@
 import prior from './n-seated-squeeze.js';
 const spec = structuredClone(prior);
 spec.id = 'n-seated-squeeze-r2';
-spec.props = spec.props.map(p => p.type === 'mat' ? {...p, at: [0, 0.545, 0.40], size: [0.18, 0.14, 0.10], required: true, role: 'yoga-block'} : p);
+spec.props = spec.props.map(p => p.type === 'mat' ? {...p, at: [0, 0.545, 0.40], size: [0.18, 0.14, 0.10], required: true, role: 'yoga-block', colour: '#f2b8c6', edgeColour: '#e8a3b4'} : p);
 export default spec;

@@ -24,8 +24,8 @@ P.mat = toonMat;
 const B = {
   // yoga mat: rounded slab, top face at at.y (default 0 = the floor plane the body rests on); edge band slightly lighter
   mat(th, s) { const t = T(); const [L, W, H] = s.size || [1.83, 0.61, 0.006]; const g = new t.Group();
-    const top = new t.Mesh(new t.BoxGeometry(L, H, W, 1, 1, 1), toonMat(th, { rimK: 0.0 })); top.position.y = -H / 2; g.add(top);
-    const edge = new t.Mesh(new t.BoxGeometry(L + 0.004, H * 0.6, W + 0.004), toonMat(th, { base: th.edge || th.base, rimK: 0.15 })); edge.position.y = -H * 0.55; g.add(edge);
+    const top = new t.Mesh(new t.BoxGeometry(L, H, W, 1, 1, 1), toonMat(th, s.colour ? { base: s.colour, rimK: 0.0 } : { rimK: 0.0 })); top.position.y = -H / 2; g.add(top);
+    const edge = new t.Mesh(new t.BoxGeometry(L + 0.004, H * 0.6, W + 0.004), toonMat(th, { base: s.edgeColour || s.colour || th.edge || th.base, rimK: 0.15 })); edge.position.y = -H * 0.55; g.add(edge);
     return g; },
   // ---- stubs below: geometry only
   dumbbell(th, s) { const t = T(); const g = new t.Group(); const len = s.length || 0.30, r = s.plate || 0.055;
