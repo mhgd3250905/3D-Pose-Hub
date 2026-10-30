@@ -58,17 +58,21 @@ export function installKettlebellGripInPage(meshes = {}) {
       // Grip section is an exact straight 32 mm cylinder (what grasp-32mm closes on), 165 mm long on the fitted axis (the fist's full fitted handle length, so ring and little fingers clear the corners).
       // Corners and legs are a constant 32 mm tube into a lathed bell whose profile is taken from the CC0 TheBaseMesh
       // kettlebell-01 (x1.3: 195 mm bell, ~16 kg class). Bell top 50 mm below the bar surface leaves room for the fingers.
-      const R = .016, A = .0825, top = -(R + .05), k = 1.3;
+      // The fitted fist is asymmetric on its axis (measuredOriginalBoundsM, e.g. -99..+37 mm): centre the bar on the hand's own
+      // span plus a 12 mm clearance each side, so neither the index nor the little-finger side reaches a corner.
+      const [lo, hi] = fit.finiteHandle?.measuredOriginalBoundsM ?? [-.0825, .0825], mid = (lo + hi) / 2, n0 = o.children.length;
+      const R = .016, A = Math.max(.0825, (hi - lo) / 2 + .012), top = -(R + .05), k = 1.3;
       const prof = [[0,.044],[.01,.053],[.02,.0625],[.03,.0695],[.045,.073],[.06,.0752],[.08,.074],[.095,.070],[.11,.062],[.122,.048],[.132,.03],[.138,0]];
       const h = .138 * k, pts = prof.map(([y, r]) => new T.Vector2(Math.max(r * k, 1e-4), top - h + y * k));
       pts.unshift(new T.Vector2(1e-4, top - h));
       const bell = new T.Mesh(new T.LatheGeometry(pts, 40), mat); bell.name = 'fixed-kettlebell-bell'; o.add(bell);
       tube('fixed-kettlebell-handle', [-A, 0, 0], [A, 0, 0], R);
       for (const sx of [-1, 1]) {
-        const c = new T.CatmullRomCurve3([[A, 0], [A + .016, -.008], [A + .024, -.035], [.095, -.07], [.07, -.115]].map(([x, y]) => new T.Vector3(sx * x, y, 0)));
+        const c = new T.CatmullRomCurve3([[A, 0], [A + .016, -.008], [A + .024, -.035], [A + .0125, -.07], [A - .0125, -.115]].map(([x, y]) => new T.Vector3(sx * x, y, 0)));
         const leg = new T.Mesh(new T.TubeGeometry(c, 24, R, 16, false), mat); leg.name = 'fixed-kettlebell-horn'; o.add(leg);
         const cap = new T.Mesh(new T.SphereGeometry(R, 16, 12), mat); cap.position.set(sx * A, 0, 0); o.add(cap);
       }
+      for (const c of o.children.slice(n0)) c.position.x += mid;
     } else if (s.model) {
       // CC0 mesh: handle-bar centre at the origin, handle along +X, bell toward -Y, handle diameter 32 mm.
       const d = meshes[s.model], g = new T.BufferGeometry();
