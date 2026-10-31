@@ -2,15 +2,15 @@
   "format": "pose-hub-action-recipe@1",
   "id": "h-band-pallof",
   "nameZh": "弹力带抗旋转推",
-  "spec": "drill-anim/specs/h-band-pallof.js",
-  "specSha256Lf": "624fb25e9088e6461d88bfbf8599407ff816e6598bc45b02439c34f4d6da5492",
+  "spec": "drill-anim/specs/h-band-pallof-r2.js",
+  "specSha256Lf": "10dfe4602a0d1c583e07f9853e0c3b4a0e5b8d528785fbffbfd74bdf6cad0000",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
   },
   "hands": {
-    "left": "native",
-    "right": "native"
+    "left": "fixed-grasp",
+    "right": "fixed-grasp"
   },
   "camera": {
     "dir": [
@@ -82,5 +82,10 @@
   "sampledOnly": true,
   "fullCycleValidated": false,
   "userAccepted": false,
-  "releaseEligible": false
+  "releaseEligible": false,
+  "fixedDHandle": true,
+  "fixedCorrectionStack": {
+    "profile": "fixed-wrist-corrections-r1",
+    "version": "0.1.0-r1"
+  }
 }
