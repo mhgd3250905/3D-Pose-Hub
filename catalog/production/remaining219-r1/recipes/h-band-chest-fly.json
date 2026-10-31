@@ -2,15 +2,15 @@
   "format": "pose-hub-action-recipe@1",
   "id": "h-band-chest-fly",
   "nameZh": "站姿单臂弹力带夹胸",
-  "spec": "drill-anim/specs/h-band-chest-fly.js",
-  "specSha256Lf": "c887d16fcad6ada58f22bb0a6ec9facf3f48d23654d94da4ab43e8f36a61a4cd",
+  "spec": "drill-anim/specs/h-band-chest-fly-r2.js",
+  "specSha256Lf": "1030a2116df96f4f8a9ef26552b3e2c335c167e865a8568d70463ab146b041d2",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
   },
   "hands": {
-    "left": "native",
-    "right": "native"
+    "left": "fixed-grasp",
+    "right": "fixed-grasp"
   },
   "camera": {
     "dir": [
@@ -76,10 +76,15 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/h-band-chest-fly.js"
+    "selectedSpec": "drill-anim/specs/h-band-chest-fly-r2.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
   "userAccepted": false,
-  "releaseEligible": false
+  "releaseEligible": false,
+  "fixedDHandle": true,
+  "fixedCorrectionStack": {
+    "profile": "fixed-wrist-corrections-r1",
+    "version": "0.1.0-r1"
+  }
 }
