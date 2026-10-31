@@ -241,11 +241,11 @@
     },
     {
       "stableId": "h-plank-side-step",
-      "status": "pending-review",
-      "spec": "drill-anim/specs/h-plank-side-step.js",
-      "specSha256Lf": "e09c086643d9b5ee4bc6b357b06f0cf78648fe8e4cd5273a8bc57ccab764e179",
+      "status": "remote-keyframe-reviewed",
+      "spec": "drill-anim/specs/h-plank-side-step-r2.js",
+      "specSha256Lf": "bf4549c9d614e10c513254b5edbe72fb96e746824456b28d070b460c0e512b61",
       "recipe": "catalog/production/remaining219-r1/recipes/h-plank-side-step.json",
-      "recipeSha256Lf": "580f50f5ff6762f4f894a747b3a206766356089ca0faa4fa2002e690ecbf8207",
+      "recipeSha256Lf": "6323c3da225231230e1e3d750618fd3c0d3110d458cce741946669c605c1446e",
       "keyframes": {
         "attempt": "h-plank-side-step-a01",
         "times": [
@@ -309,14 +309,20 @@
         "contact surfaces",
         "whole-cycle content rect",
         "mat placement: extend under feet or remove"
-      ]
+      ],
+      "reviewNote": "reviewed with the user 2026-10-30..11-01 (one action at a time, sampled keyframes only); see PR #25 summary"
     }
   ],
   "blocked": [
     {
       "stableId": "h-kneeling-thread-needle",
-      "status": "blocked-legacy",
-      "reason": "spec has no pose.base (legacy solver format); remote rotation/keyframe runners fail with 'Cannot read properties of undefined (reading base)'. Needs migration to standard pose spec like deltoids-A-r3."
+      "status": "remote-keyframe-reviewed",
+      "reason": "spec has no pose.base (legacy solver format); remote rotation/keyframe runners fail with 'Cannot read properties of undefined (reading base)'. Needs migration to standard pose spec like deltoids-A-r3.",
+      "recipe": "catalog/production/remaining219-r1/recipes/h-kneeling-thread-needle.json",
+      "spec": "drill-anim/specs/h-kneeling-thread-needle-r2.js",
+      "specSha256Lf": "6673964bd1568e9e92d16e405036eb206034ea8704610ccfa0a6d3878bde2e51",
+      "recipeSha256Lf": "b7bf3e36645c22fcc58f1a6da6ab0833cf07d554cdbd3af0fb8642d7247d2b92",
+      "reviewNote": "reviewed with the user 2026-10-30..11-01 (one action at a time, sampled keyframes only); see PR #25 summary"
     }
   ]
 }
