@@ -2,15 +2,15 @@
   "format": "pose-hub-action-recipe@1",
   "id": "obliques-B",
   "nameZh": "弹力带抗旋转推",
-  "spec": "drill-anim/specs/obliques-B.js",
-  "specSha256Lf": "b6c695dad3ab8aa15d1e4f727a923be34455c99c7ebfac70f4cdfa12007f75a0",
+  "spec": "drill-anim/specs/obliques-B-r2.js",
+  "specSha256Lf": "ca3bcc761415f6ac035e16e20c53c19a8f51b827433c22cc7330bfe186170ef9",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
   },
   "hands": {
-    "left": "native",
-    "right": "native"
+    "left": "fixed-grasp",
+    "right": "fixed-grasp"
   },
   "camera": {
     "dir": [
@@ -77,10 +77,15 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/obliques-B.js"
+    "selectedSpec": "drill-anim/specs/obliques-B-r2.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
   "userAccepted": false,
-  "releaseEligible": false
+  "releaseEligible": false,
+  "fixedDHandle": true,
+  "fixedCorrectionStack": {
+    "profile": "fixed-wrist-corrections-r1",
+    "version": "0.1.0-r1"
+  }
 }
