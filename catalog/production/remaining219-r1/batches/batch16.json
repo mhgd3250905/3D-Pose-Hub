@@ -1,0 +1,391 @@
+{
+  "format": "pose-hub-remaining219-remote-index@1",
+  "batch": "batch16",
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "environment": {
+    "host": "Hark sandbox aarch64, 2 cores, 7.9 GiB, no GPU",
+    "browser": "Playwright 1.48.2 chromium-1140",
+    "renderer": "software (ANGLE SwiftShader)",
+    "serial": true
+  },
+  "checks": {
+    "keyframes": "tools/action-completion-v3-r2/remote-keyframes-r1.mjs, 256/320px, 3-6 frames",
+    "rotation": "tools/action-completion-v3-r2/remote-rotation-r1.mjs, 15Hz sequential solve, axial twist of forearm|upperArm, hand|forearm, foot|shin (range>120, step>25, net>150 deg flagged)"
+  },
+  "sampledOnly": true,
+  "fullCycleValidated": false,
+  "userAccepted": false,
+  "releaseEligible": false,
+  "items": [
+    {
+      "stableId": "h-db-reverse-fly",
+      "status": "remote-keyframe-reviewed",
+      "spec": "drill-anim/specs/h-db-reverse-fly.js",
+      "specSha256Lf": "cacb386ac8af558d6f2fe37d5c6ff5ca93d03f22be5d6bc1a1e83a8fd66fb8d4",
+      "recipe": "catalog/production/remaining219-r1/recipes/h-db-reverse-fly.json",
+      "recipeSha256Lf": "5bb2805c970a5a781fae95d4f8b2cd7ef8994126d486c6786ae24bf4a44218a8",
+      "keyframes": {
+        "attempt": "h-db-reverse-fly-a01",
+        "times": [
+          0.15,
+          1.95,
+          4.1,
+          5.95
+        ],
+        "size": 256,
+        "recipeSha256": "5bb2805c970a5a781fae95d4f8b2cd7ef8994126d486c6786ae24bf4a44218a8",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "fe488458a4a1a0d9eefe6f01c6ee0744a9e8446a4c9c88d551c97255b5edc37d",
+          "keyframe-01.png": "e247f7e3a63437ed1ebb07cfe0ed57390a7b87a549a31cec2d3a3d36871ac49f",
+          "keyframe-02.png": "fe488458a4a1a0d9eefe6f01c6ee0744a9e8446a4c9c88d551c97255b5edc37d",
+          "keyframe-03.png": "e247f7e3a63437ed1ebb07cfe0ed57390a7b87a549a31cec2d3a3d36871ac49f"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "5bb2805c970a5a781fae95d4f8b2cd7ef8994126d486c6786ae24bf4a44218a8",
+        "samples": 121,
+        "flagged": [],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 44.5,
+            "maxStepDeg": 3.3,
+            "netDeg": 0
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 7.4,
+            "maxStepDeg": 0.5,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 44.5,
+            "maxStepDeg": 3.3,
+            "netDeg": 0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 7.4,
+            "maxStepDeg": 0.5,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          }
+        }
+      },
+      "notes": "bent-over dumbbell reverse fly, keyframes at hold extremes.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect"
+      ]
+    },
+    {
+      "stableId": "h-db-row",
+      "status": "remote-keyframe-reviewed",
+      "spec": "drill-anim/specs/h-db-row.js",
+      "specSha256Lf": "7a372104484f3c13753231a25ddff1c34a1586c3dfd6af108ff734093910716a",
+      "recipe": "catalog/production/remaining219-r1/recipes/h-db-row.json",
+      "recipeSha256Lf": "0235ed6ce33f9ceeab27170d1b71f7107ce9d727af1b0645d55e841867f80569",
+      "keyframes": {
+        "attempt": "h-db-row-a01",
+        "times": [
+          0.15,
+          1.85,
+          4.1,
+          5.85
+        ],
+        "size": 256,
+        "recipeSha256": "0235ed6ce33f9ceeab27170d1b71f7107ce9d727af1b0645d55e841867f80569",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "c1cbf721c1faab007e48efaea0ba630fa9a589737864fc5678b4ab7fa2f99fc4",
+          "keyframe-01.png": "cc2cbe5563f6e42e2466c6f8955fc8690f8eb3eb358092b38249e1ba47231cdb",
+          "keyframe-02.png": "c1cbf721c1faab007e48efaea0ba630fa9a589737864fc5678b4ab7fa2f99fc4",
+          "keyframe-03.png": "cc2cbe5563f6e42e2466c6f8955fc8690f8eb3eb358092b38249e1ba47231cdb"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "20040d188bd655cac021690480cd4867bfca80a7f0c4e4a10408f556469587c6",
+        "samples": 121,
+        "flagged": [],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 10.2,
+            "maxStepDeg": 0.8,
+            "netDeg": 0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 6.9,
+            "maxStepDeg": 0.5,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          }
+        },
+        "note": "rotation screen ran on an earlier recipe revision that differs only in camera; twist is camera independent"
+      },
+      "notes": "chair-supported single-arm dumbbell row; native hands on chair and dumbbell.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect",
+        "native-hand dumbbell grip and chair-seat palm contact"
+      ]
+    },
+    {
+      "stableId": "h-db-shrug",
+      "status": "remote-keyframe-reviewed",
+      "spec": "drill-anim/specs/h-db-shrug.js",
+      "specSha256Lf": "ea58af51c41517e7697331c4b71e1496248c8f46023aed77cdf0ef6f3c5c5023",
+      "recipe": "catalog/production/remaining219-r1/recipes/h-db-shrug.json",
+      "recipeSha256Lf": "673cdb8cbc88f57da012c8ee6096d5354569edacace369cb34f1fc2299756e73",
+      "keyframes": {
+        "attempt": "h-db-shrug-a01",
+        "times": [
+          0.2,
+          2.15,
+          4.05,
+          6.15
+        ],
+        "size": 256,
+        "recipeSha256": "673cdb8cbc88f57da012c8ee6096d5354569edacace369cb34f1fc2299756e73",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "fa655762a8813e8135fa09de89205d06b1ff9b4f76d4702ec570d3c03c510c9a",
+          "keyframe-01.png": "7e1091d1e2121df39ce0b267baf6a4e793c09b6c56d947eb1fbc3f6d674737c5",
+          "keyframe-02.png": "0ee46353a2568d6d445114b88eed36ba7b744b84861cbda853e6d7cc7de8bfdb",
+          "keyframe-03.png": "7e1091d1e2121df39ce0b267baf6a4e793c09b6c56d947eb1fbc3f6d674737c5"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "1dedeb1a0281e1a0d3a86a20ba67465c5b05cc0f02179e0672ae4091dcc72fdc",
+        "samples": 121,
+        "flagged": [],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 15.3,
+            "maxStepDeg": 1.1,
+            "netDeg": 0
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 15.3,
+            "maxStepDeg": 1.1,
+            "netDeg": 0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          }
+        },
+        "note": "rotation screen ran on an earlier recipe revision that differs only in camera; twist is camera independent"
+      },
+      "notes": "standing dumbbell shrug; elevation small at 256px.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect"
+      ]
+    },
+    {
+      "stableId": "h-db-split-squat",
+      "status": "remote-keyframe-reviewed",
+      "spec": "drill-anim/specs/h-db-split-squat.js",
+      "specSha256Lf": "90980baedf6fb733b0b047d7b74498dfd2476fbfc0ee701addb55b8a15e3bd3a",
+      "recipe": "catalog/production/remaining219-r1/recipes/h-db-split-squat.json",
+      "recipeSha256Lf": "4992aed5f91697f66cf0f311e2e8537610d277744dde179d7036e302dad684f9",
+      "keyframes": {
+        "attempt": "h-db-split-squat-a01",
+        "times": [
+          0.2,
+          2.15,
+          4.05,
+          6.15
+        ],
+        "size": 256,
+        "recipeSha256": "4992aed5f91697f66cf0f311e2e8537610d277744dde179d7036e302dad684f9",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "df08ef1f2968bc75e60fc606c83f63134aac3097377049192673fd8dadf6ba7b",
+          "keyframe-01.png": "63e1154f9dd7b301e4cce11240e904f2d88cb542eafe7e3fadb0653a7a3bde64",
+          "keyframe-02.png": "6b59458c50b69130b028d4a11a0f5c46c794109806cd41f0a7398dd82e0b665c",
+          "keyframe-03.png": "63e1154f9dd7b301e4cce11240e904f2d88cb542eafe7e3fadb0653a7a3bde64"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "e8852cc3285df1cb48ad2938c639aa25f3d6447a20cb2a401df0146bfcfe7f33",
+        "samples": 121,
+        "flagged": [],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 0.0,
+            "maxStepDeg": 0.0,
+            "netDeg": 0
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 0.0,
+            "maxStepDeg": 0.0,
+            "netDeg": 0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          }
+        },
+        "note": "rotation screen ran on an earlier recipe revision that differs only in camera; twist is camera independent"
+      },
+      "notes": "stationary split squat holding two dumbbells.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect"
+      ]
+    },
+    {
+      "stableId": "h-db-supported-calf-raise",
+      "status": "remote-keyframe-reviewed",
+      "spec": "drill-anim/specs/h-db-supported-calf-raise.js",
+      "specSha256Lf": "dd41e4a14a77883e6957b9937e0a42b9e08c996252db1af553679694b52ff155",
+      "recipe": "catalog/production/remaining219-r1/recipes/h-db-supported-calf-raise.json",
+      "recipeSha256Lf": "55ebf2a784380c7f9fb7994e67eeceead69a79fe1aa267f58012d5fa2946bedf",
+      "keyframes": {
+        "attempt": "h-db-supported-calf-raise-a01",
+        "times": [
+          0.2,
+          2.15,
+          4.05,
+          6.15
+        ],
+        "size": 256,
+        "recipeSha256": "55ebf2a784380c7f9fb7994e67eeceead69a79fe1aa267f58012d5fa2946bedf",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "1e4f7df47a1426e7eef21b959809d8d7499b24232fe4aebe275b9e1c3baf1a5b",
+          "keyframe-01.png": "e36fae43f4ec4785ba3077491221c7907831470269aa1dd790798c173ea7db94",
+          "keyframe-02.png": "0e2c65bbe57d8a223d1505f1da7ee9d4b0f20c9428f1f292bb499a5f265c6c34",
+          "keyframe-03.png": "e36fae43f4ec4785ba3077491221c7907831470269aa1dd790798c173ea7db94"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "da881d07eb5a1790f1507f5fd884304285c8e8ee8db7fdddce5138d451808e9a",
+        "samples": 121,
+        "flagged": [],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 5.6,
+            "maxStepDeg": 0.4,
+            "netDeg": 0
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 0.0,
+            "maxStepDeg": 0.0,
+            "netDeg": 0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          }
+        },
+        "note": "rotation screen ran on an earlier recipe revision that differs only in camera; twist is camera independent"
+      },
+      "notes": "wall-supported calf raise holding one dumbbell; wall dominates the right half and the figure sits at the edge.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect",
+        "camera: wall dominates frame, consider a side view along the wall",
+        "native-hand dumbbell grip"
+      ]
+    }
+  ]
+}

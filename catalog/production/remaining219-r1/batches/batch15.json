@@ -1,0 +1,392 @@
+{
+  "format": "pose-hub-remaining219-remote-index@1",
+  "batch": "batch15",
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "environment": {
+    "host": "Hark sandbox aarch64, 2 cores, 7.9 GiB, no GPU",
+    "browser": "Playwright 1.48.2 chromium-1140",
+    "renderer": "software (ANGLE SwiftShader)",
+    "serial": true
+  },
+  "checks": {
+    "keyframes": "tools/action-completion-v3-r2/remote-keyframes-r1.mjs, 256/320px, 3-6 frames",
+    "rotation": "tools/action-completion-v3-r2/remote-rotation-r1.mjs, 15Hz sequential solve, axial twist of forearm|upperArm, hand|forearm, foot|shin (range>120, step>25, net>150 deg flagged)"
+  },
+  "sampledOnly": true,
+  "fullCycleValidated": false,
+  "userAccepted": false,
+  "releaseEligible": false,
+  "items": [
+    {
+      "stableId": "h-db-kickback",
+      "status": "remote-keyframe-reviewed",
+      "spec": "drill-anim/specs/h-db-kickback.js",
+      "specSha256Lf": "1e5b1211ba92dfde599dbe743c6001a1932ab04eb0fe357939711bc1a993281b",
+      "recipe": "catalog/production/remaining219-r1/recipes/h-db-kickback.json",
+      "recipeSha256Lf": "89bdc36ba56ba785fbd37958444c5844465a17bd75eaf3983a6b03ca751cb13c",
+      "keyframes": {
+        "attempt": "h-db-kickback-a01",
+        "times": [
+          0.2,
+          2.2,
+          4.2,
+          6.2
+        ],
+        "size": 256,
+        "recipeSha256": "89bdc36ba56ba785fbd37958444c5844465a17bd75eaf3983a6b03ca751cb13c",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "85c48546a074f2681c328f7319390c07db198c7123cf17228753d4381ce11540",
+          "keyframe-01.png": "d46647b6d89f2f8fb75fdc7428c031422b72ec64dd4a909ebab1579286f137c6",
+          "keyframe-02.png": "647f59791f5fc4fde19e2e4801f68d89016c5f6f54508466bf22dbcb9964338b",
+          "keyframe-03.png": "de4ba1ab3f4d2d94227d9f05190852c857a902a689f1227a5680ad2973f0ee02"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "22e9d6743326e80a005a4c410287e88a8e812addb377c6107ff92736ffd4064f",
+        "samples": 121,
+        "flagged": [],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 102.6,
+            "maxStepDeg": 8.2,
+            "netDeg": 0
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 73.5,
+            "maxStepDeg": 5.2,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 102.6,
+            "maxStepDeg": 8.2,
+            "netDeg": 0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 73.5,
+            "maxStepDeg": 5.2,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          }
+        },
+        "note": "rotation screen ran on an earlier recipe revision that differs only in camera; twist is camera independent"
+      },
+      "notes": "bent-over bilateral dumbbell kickback; top frame shows elbow extension behind the hip.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect"
+      ]
+    },
+    {
+      "stableId": "h-db-lateral",
+      "status": "remote-keyframe-reviewed",
+      "spec": "drill-anim/specs/h-db-lateral.js",
+      "specSha256Lf": "06356fe5bc651f5d21a3954521f669d379ec257c03ea737fa953605c3f5a123b",
+      "recipe": "catalog/production/remaining219-r1/recipes/h-db-lateral.json",
+      "recipeSha256Lf": "ee4df7b72664f7ededd9e3fe0ca8089eb724f334c7d0cc13d18e525d54339bcd",
+      "keyframes": {
+        "attempt": "h-db-lateral-a01",
+        "times": [
+          0.2,
+          2.2,
+          4.2,
+          6.2
+        ],
+        "size": 256,
+        "recipeSha256": "ee4df7b72664f7ededd9e3fe0ca8089eb724f334c7d0cc13d18e525d54339bcd",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "78ec5f19990eb64d82fa5eaa8adabe8377ec00839fe31517500b691238956d47",
+          "keyframe-01.png": "1edfb250c1766d0dc0b73d3503cae55b3439be61166ce23e4e15bbca50a546fc",
+          "keyframe-02.png": "78ec5f19990eb64d82fa5eaa8adabe8377ec00839fe31517500b691238956d47",
+          "keyframe-03.png": "1edfb250c1766d0dc0b73d3503cae55b3439be61166ce23e4e15bbca50a546fc"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "1eb34877848003d01aa3c7004627154b5071da9c74c20e59f37faa9fe37e0fe5",
+        "samples": 121,
+        "flagged": [],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 16.9,
+            "maxStepDeg": 1.5,
+            "netDeg": 0
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 23.5,
+            "maxStepDeg": 1.9,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 16.9,
+            "maxStepDeg": 1.5,
+            "netDeg": 0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 23.5,
+            "maxStepDeg": 1.9,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          }
+        },
+        "note": "rotation screen ran on an earlier recipe revision that differs only in camera; twist is camera independent"
+      },
+      "notes": "front-view dumbbell lateral raise to shoulder height.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect"
+      ]
+    },
+    {
+      "stableId": "h-db-overhead-triceps-extension",
+      "status": "pending-review",
+      "spec": "drill-anim/specs/h-db-overhead-triceps-extension-rr4.js",
+      "specSha256Lf": "d7ed39269b0e5d79fd4e3166ebfb7118e3f66f8203d7cb095862c3a4300f474d",
+      "recipe": "catalog/production/remaining219-r1/recipes/h-db-overhead-triceps-extension.json",
+      "recipeSha256Lf": "7133a0a2a343f6ce1a25fb83a6ba89dcf4e1e214d9ae48647917af5ec0efd2e2",
+      "keyframes": {
+        "attempt": "h-db-overhead-triceps-extension-a01",
+        "times": [
+          0.2,
+          2.2,
+          4.2,
+          6.2
+        ],
+        "size": 256,
+        "recipeSha256": "7133a0a2a343f6ce1a25fb83a6ba89dcf4e1e214d9ae48647917af5ec0efd2e2",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "8111a21fb5928844e002954f47687832362e7da0f0a3c77c1576016547787f69",
+          "keyframe-01.png": "6ecfb8d77bd9c350ea3c42f7a76ef8d6242c3923d46aff763a9cf4a983020477",
+          "keyframe-02.png": "9f05c2ef06311ff0bed19fbbb143bd83b7868e4b6a97dcf446a4d407dd036da6",
+          "keyframe-03.png": "bd76a1ff47089985d6b301869b37b726a6e35508e7ffae224580de96e8627a36"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "6fb841e461675deb8da83a9f21afc2a85b783e7d19093749150058b46101d586",
+        "samples": 121,
+        "flagged": [],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 95.5,
+            "maxStepDeg": 20.6,
+            "netDeg": 0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 113.6,
+            "maxStepDeg": 9.6,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          }
+        },
+        "note": "rotation screen ran on an earlier recipe revision that differs only in camera; twist is camera independent"
+      },
+      "notes": "single-arm overhead triceps extension with native-hand dumbbell (legacy dark dumbbell); at the bottom the upper arm reads closer to horizontal than vertical-behind-head at 256px, and figure is small.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect",
+        "bottom position: elbow should point up with forearm behind head; close-up check",
+        "native-hand dumbbell grip, user decision",
+        "camera: figure small"
+      ]
+    },
+    {
+      "stableId": "h-db-press",
+      "status": "remote-keyframe-reviewed",
+      "spec": "drill-anim/specs/h-db-press.js",
+      "specSha256Lf": "e1965316339fa515cf329c0e898c5fb354f27aaae8e1a6b9f71c613f9a28b4b3",
+      "recipe": "catalog/production/remaining219-r1/recipes/h-db-press.json",
+      "recipeSha256Lf": "e7f8deea597acdaae72dca5d825018e02a9a2bbc652f517032db20de70e63123",
+      "keyframes": {
+        "attempt": "h-db-press-a01",
+        "times": [
+          0.2,
+          2.2,
+          4.2,
+          6.2
+        ],
+        "size": 256,
+        "recipeSha256": "e7f8deea597acdaae72dca5d825018e02a9a2bbc652f517032db20de70e63123",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "07809dd028bb8b5c00ee32dfa1c60b050ad0d22461d2e87e1ad953bc37831802",
+          "keyframe-01.png": "5513f73ae9d92a51a01c6e875f3135b05fd54d3851a57c53001e1bcb29e46b6f",
+          "keyframe-02.png": "07809dd028bb8b5c00ee32dfa1c60b050ad0d22461d2e87e1ad953bc37831802",
+          "keyframe-03.png": "5513f73ae9d92a51a01c6e875f3135b05fd54d3851a57c53001e1bcb29e46b6f"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "b66510cdecc8dc0caa2c8cb03409794185ade9a9ebc924907c6e3e6cc6305182",
+        "samples": 121,
+        "flagged": [],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 8.2,
+            "maxStepDeg": 0.7,
+            "netDeg": 0
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 10.1,
+            "maxStepDeg": 0.8,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 8.2,
+            "maxStepDeg": 0.7,
+            "netDeg": 0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 10.1,
+            "maxStepDeg": 0.8,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          }
+        },
+        "note": "rotation screen ran on an earlier recipe revision that differs only in camera; twist is camera independent"
+      },
+      "notes": "standing dumbbell shoulder press, front view.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect"
+      ]
+    },
+    {
+      "stableId": "h-db-rdl",
+      "status": "remote-keyframe-reviewed",
+      "spec": "drill-anim/specs/h-db-rdl.js",
+      "specSha256Lf": "fc5d7f2556cae7229ceb126c264897690f473d7365e2ddeb4e034aabd2f2b185",
+      "recipe": "catalog/production/remaining219-r1/recipes/h-db-rdl.json",
+      "recipeSha256Lf": "02f471a263c45c99cbad77ef3bb3a0efa8d9ca83912eaf039f34eeea524ed534",
+      "keyframes": {
+        "attempt": "h-db-rdl-a01",
+        "times": [
+          0.2,
+          2.2,
+          4.2,
+          6.2
+        ],
+        "size": 256,
+        "recipeSha256": "02f471a263c45c99cbad77ef3bb3a0efa8d9ca83912eaf039f34eeea524ed534",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "97da10299f6f4ea030b410841251e5a02d3c54fa4fdbd16f8102e0d1b084cef0",
+          "keyframe-01.png": "914b618311a9e27746a43c22499f526175a9033b72743c26b6d09cbfc08b9ddf",
+          "keyframe-02.png": "97da10299f6f4ea030b410841251e5a02d3c54fa4fdbd16f8102e0d1b084cef0",
+          "keyframe-03.png": "914b618311a9e27746a43c22499f526175a9033b72743c26b6d09cbfc08b9ddf"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "408cb91f31dffbebe78ce3442847b0fbe4bd907fe2fcdd0d93bcf35e73c4549a",
+        "samples": 121,
+        "flagged": [],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 43.4,
+            "maxStepDeg": 3.6,
+            "netDeg": 0
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 0.0,
+            "maxStepDeg": 0.0,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 43.4,
+            "maxStepDeg": 3.6,
+            "netDeg": 0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 0.0,
+            "maxStepDeg": 0.0,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          }
+        },
+        "note": "rotation screen ran on an earlier recipe revision that differs only in camera; twist is camera independent"
+      },
+      "notes": "dumbbell Romanian deadlift, side view, hinge visible.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "format": "pose-hub-action-recipe@1",
+  "id": "h-short-side-plank",
+  "nameZh": "屈膝短杠杆侧平板",
+  "spec": "drill-anim/specs/h-short-side-plank-rr2.js",
+  "specSha256Lf": "5f379d73d2415a63078b12591df1df4514cb537dc604f4e6fc76f0b16e44b8b5",
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "hands": {
+    "left": "support",
+    "right": "relaxed"
+  },
+  "camera": {
+    "dir": [
+      0.1,
+      1,
+      0.55
+    ],
+    "fit": [
+      "head",
+      "leftPalm",
+      "rightPalm",
+      "leftElbow",
+      "rightElbow",
+      "leftToe",
+      "rightToe",
+      "leftKnee",
+      "rightKnee",
+      "pelvis"
+    ],
+    "pad": 0.15,
+    "k": 0.85,
+    "at": 0,
+    "drift": 0,
+    "fitTimeline": true,
+    "orbitDegrees": 0,
+    "frontSweepDegrees": 0
+  },
+  "cameraScale": 1.15,
+  "output": {
+    "groundShadow": false,
+    "cameraMotion": false,
+    "wholeCycleContentRect": true,
+    "fps": 30,
+    "exerciseMat": true
+  },
+  "appearance": {
+    "highlight": {
+      "color": "#F05A36",
+      "shade": [
+        0.5,
+        0.42,
+        0.08
+      ],
+      "intensity": [
+        0.75,
+        1
+      ]
+    },
+    "purpose": "Visual cue for target muscle effort, not a physiological measurement",
+    "status": "parameterized-selection-deferred-by-user"
+  },
+  "jointCorrections": [
+    {
+      "profile": "upper-arm-contour-r3",
+      "version": "0.1.0-r3"
+    },
+    {
+      "profile": "ankle-join-r5",
+      "version": "0.1.0-r5"
+    }
+  ],
+  "adaptation": {
+    "status": "remote-keyframe-pending",
+    "method": "Fixed queue source reused unchanged on armfix-r2; camera made static (drift 0) with original direction/fit.",
+    "cameraChanges": "k 0.45->0.85 (source framed only the torso on a square render); dir [0.18,0.12,1]->[0.1,1,0.55] (a03 tried [0.1,0.5,1], still hid the shins): the low square-on view looked straight down the floor forearm and hid the tucked shins, so the forearm plank read as a straight-arm palm plank. Pose unchanged: elbow y 0.023 m and palm on floor, knees 68 deg."
+  },
+  "source": {
+    "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
+    "selectedSpec": "drill-anim/specs/h-short-side-plank-rr2.js"
+  },
+  "sampledOnly": true,
+  "fullCycleValidated": false,
+  "userAccepted": false,
+  "releaseEligible": false
+}

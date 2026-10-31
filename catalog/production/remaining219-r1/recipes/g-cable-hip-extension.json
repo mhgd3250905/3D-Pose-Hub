@@ -1,0 +1,84 @@
+{
+  "format": "pose-hub-action-recipe@1",
+  "id": "g-cable-hip-extension",
+  "nameZh": "低位绳索髋后伸",
+  "spec": "drill-anim/specs/g-cable-hip-extension.js",
+  "specSha256Lf": "50f798463361eaf50e3b89e3ce19998695b356dc9b72ff3749ec5a9d7f539dc7",
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "hands": {
+    "left": "native",
+    "right": "native"
+  },
+  "camera": {
+    "dir": [
+      -1,
+      0.15,
+      -0.5
+    ],
+    "fit": [
+      "head",
+      "leftToe",
+      "rightToe",
+      "pelvis",
+      "leftPalm",
+      "rightPalm"
+    ],
+    "pad": 0.42,
+    "k": 0.8,
+    "at": 2,
+    "drift": 0,
+    "fitTimeline": true,
+    "orbitDegrees": 0,
+    "frontSweepDegrees": 0
+  },
+  "cameraScale": 1.15,
+  "output": {
+    "groundShadow": false,
+    "cameraMotion": false,
+    "wholeCycleContentRect": true,
+    "fps": 30,
+    "exerciseMat": false
+  },
+  "appearance": {
+    "highlight": {
+      "color": "#F05A36",
+      "shade": [
+        0.5,
+        0.42,
+        0.08
+      ],
+      "intensity": [
+        0.75,
+        1
+      ]
+    },
+    "purpose": "Visual cue for target muscle effort, not a physiological measurement",
+    "status": "parameterized-selection-deferred-by-user"
+  },
+  "jointCorrections": [
+    {
+      "profile": "upper-arm-contour-r3",
+      "version": "0.1.0-r3"
+    },
+    {
+      "profile": "ankle-join-r5",
+      "version": "0.1.0-r5"
+    }
+  ],
+  "adaptation": {
+    "status": "remote-keyframe-pending",
+    "method": "Fixed queue source reused unchanged on armfix-r2.",
+    "cameraChanges": "drift->0 (static)"
+  },
+  "source": {
+    "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
+    "selectedSpec": "drill-anim/specs/g-cable-hip-extension.js"
+  },
+  "sampledOnly": true,
+  "fullCycleValidated": false,
+  "userAccepted": false,
+  "releaseEligible": false
+}

@@ -1,0 +1,532 @@
+{
+  "format": "pose-hub-remaining219-remote-index@1",
+  "batch": "batch03",
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "environment": {
+    "host": "Hark sandbox aarch64, 2 cores, 7.9 GiB, no GPU",
+    "browser": "Playwright 1.48.2 chromium-1140",
+    "renderer": "software (ANGLE SwiftShader)",
+    "serial": true
+  },
+  "checks": {
+    "keyframes": "tools/action-completion-v3-r2/remote-keyframes-r1.mjs, 256/320px, 3-6 frames",
+    "rotation": "tools/action-completion-v3-r2/remote-rotation-r1.mjs, 15Hz sequential solve, axial twist of forearm|upperArm, hand|forearm, foot|shin (range>120, step>25, net>150 deg flagged)"
+  },
+  "sampledOnly": true,
+  "fullCycleValidated": false,
+  "userAccepted": false,
+  "releaseEligible": false,
+  "items": [
+    {
+      "stableId": "chest-A",
+      "status": "remote-keyframe-reviewed",
+      "spec": "drill-anim/specs/chest-A-r3.js",
+      "specSha256Lf": "70b4d6627af44e1b054697c9c4cdc34cb0fd76b565198d71f52b2462fe5ce955",
+      "recipe": "catalog/production/remaining219-r1/recipes/chest-A.json",
+      "recipeSha256Lf": "00ff0b7a65f125918396b9d1562c7da138fbb710782bf7d5dbf83f0186464a6e",
+      "keyframes": {
+        "attempt": "chest-A-a02",
+        "times": [
+          1,
+          2.5,
+          3,
+          7
+        ],
+        "size": 320,
+        "recipeSha256": "00ff0b7a65f125918396b9d1562c7da138fbb710782bf7d5dbf83f0186464a6e",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "d40f1d259ceab18423eeb5237c8ccde85b0a4d4a1c880ad45fb018187549c7b1",
+          "keyframe-01.png": "1fb999659af485c27e59a013642fd5deacac418bbcf76ce10008923b8d9862e1",
+          "keyframe-02.png": "c0c21b15e22902f7d8b58823f7a6c618211c493391a0ffd32b46b604cc0cce3d",
+          "keyframe-03.png": "54ec2cd841953f57f3bb4eac43d0f1e3df97270606294378fcf1ea3015a5fe47"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [
+        "chest-A-a01 (times missed the side-plank phases; r3 remaps to 8 s, side plank at t=3/7)"
+      ],
+      "rotation": {
+        "recipeSha256": "00ff0b7a65f125918396b9d1562c7da138fbb710782bf7d5dbf83f0186464a6e",
+        "samples": 121,
+        "flagged": [
+          {
+            "channel": "left.forearm|upperArm",
+            "flags": [
+              "twist-range"
+            ],
+            "rangeDeg": 195.3,
+            "maxStepDeg": 16.7,
+            "netDeg": 0,
+            "worstAt": 7.8
+          },
+          {
+            "channel": "left.foot|shin",
+            "flags": [
+              "twist-range"
+            ],
+            "rangeDeg": 180,
+            "maxStepDeg": 10.3,
+            "netDeg": 0,
+            "worstAt": 3.4
+          },
+          {
+            "channel": "right.forearm|upperArm",
+            "flags": [
+              "twist-range"
+            ],
+            "rangeDeg": 195.3,
+            "maxStepDeg": 16.7,
+            "netDeg": 0,
+            "worstAt": 3.8
+          },
+          {
+            "channel": "right.foot|shin",
+            "flags": [
+              "twist-range"
+            ],
+            "rangeDeg": 180,
+            "maxStepDeg": 10.3,
+            "netDeg": 0,
+            "worstAt": 3.4
+          }
+        ],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 195.3,
+            "maxStepDeg": 16.7,
+            "netDeg": -0.0
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 87.8,
+            "maxStepDeg": 11.5,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 180,
+            "maxStepDeg": 10.3,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 195.3,
+            "maxStepDeg": 16.7,
+            "netDeg": 0.0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 87.8,
+            "maxStepDeg": 11.5,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 180,
+            "maxStepDeg": 10.3,
+            "netDeg": 0
+          }
+        }
+      },
+      "notes": "Push-up at t=1, right-arm side plank t=2.5-3, left-arm side plank t=7; support palms flat. Forearm|upperArm axial range 195 deg, max step 16.7, net 0 (same sweep pattern as w-dead-bug, no wrap). Source mat kept.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect",
+        "forearm skin twist during the arm sweep"
+      ]
+    },
+    {
+      "stableId": "chest-B",
+      "status": "remote-keyframe-reviewed",
+      "spec": "drill-anim/specs/chest-B-r2.js",
+      "specSha256Lf": "ddb46b69f51060dc201f336221c672103bbc2546909296a41ee895cf97917c31",
+      "recipe": "catalog/production/remaining219-r1/recipes/chest-B.json",
+      "recipeSha256Lf": "cfd1167667123175443fbca2457de23e0e8295a9938e5bd08fec37401c3c27ae",
+      "keyframes": {
+        "attempt": "chest-B-a01",
+        "times": [
+          0,
+          2,
+          4,
+          6
+        ],
+        "size": 256,
+        "recipeSha256": "cfd1167667123175443fbca2457de23e0e8295a9938e5bd08fec37401c3c27ae",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "1c1cebf3fcfb065cb115b8a59439dcaefd0e23e174d06e757a34fc1d654526c8",
+          "keyframe-01.png": "3a0f0cdc763db9573b98361fdf640859d869ca55b10c03d6311591a121cbf173",
+          "keyframe-02.png": "1c1cebf3fcfb065cb115b8a59439dcaefd0e23e174d06e757a34fc1d654526c8",
+          "keyframe-03.png": "3a0f0cdc763db9573b98361fdf640859d869ca55b10c03d6311591a121cbf173"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "cfd1167667123175443fbca2457de23e0e8295a9938e5bd08fec37401c3c27ae",
+        "samples": 121,
+        "flagged": [],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 52.1,
+            "maxStepDeg": 6.3,
+            "netDeg": 0.0
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 52.1,
+            "maxStepDeg": 6.3,
+            "netDeg": -0.0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          }
+        }
+      },
+      "notes": "bar-grasp (fixed-bar-grip-r1) on parallettes, bars recovered from source gripPose; deep push-up depth reads at t=2/6. No twist flags.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect",
+        "320px hand close-up on parallette"
+      ]
+    },
+    {
+      "stableId": "chest-C",
+      "status": "remote-keyframe-reviewed",
+      "spec": "drill-anim/specs/chest-C.js",
+      "specSha256Lf": "db4c1abef9e3da9610c4bede161a473455716afe70650d998e172da5489250c1",
+      "recipe": "catalog/production/remaining219-r1/recipes/chest-C.json",
+      "recipeSha256Lf": "10df29a5bc857a733ed6d985896238491921fce7fb253f5cc797d5dd5fcc474d",
+      "keyframes": {
+        "attempt": "chest-C-a01",
+        "times": [
+          0,
+          2,
+          4,
+          6
+        ],
+        "size": 256,
+        "recipeSha256": "10df29a5bc857a733ed6d985896238491921fce7fb253f5cc797d5dd5fcc474d",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "92251f495c3684cb3b2cb254f3bb0eee235794088fe5437737e2b578e9c9df1c",
+          "keyframe-01.png": "b30e83630e5db8689065faff26af381c4f022ea0fa25c29b5aead1c8869be7b2",
+          "keyframe-02.png": "92251f495c3684cb3b2cb254f3bb0eee235794088fe5437737e2b578e9c9df1c",
+          "keyframe-03.png": "b30e83630e5db8689065faff26af381c4f022ea0fa25c29b5aead1c8869be7b2"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "10df29a5bc857a733ed6d985896238491921fce7fb253f5cc797d5dd5fcc474d",
+        "samples": 121,
+        "flagged": [],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 8.8,
+            "maxStepDeg": 1.6,
+            "netDeg": 0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 1.7,
+            "maxStepDeg": 0.2,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          }
+        }
+      },
+      "notes": "Split stance single-arm cable press; D-handle in native hand. Cable stack partly outside the frame on the left (fit is body-only). No twist flags.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect",
+        "D-handle fixed grasp adapter (11 dHandle actions)"
+      ]
+    },
+    {
+      "stableId": "deltoids-A",
+      "status": "blocked-legacy-solver",
+      "spec": "drill-anim/specs/deltoids-A-r2.js",
+      "specSha256Lf": "9b8b2edb66775017ac25cf81911b340cb7b77c7feb5f30325b575c57ca120c82",
+      "recipe": "catalog/production/remaining219-r1/recipes/deltoids-A.json",
+      "recipeSha256Lf": "631c43269622493d3df1615ada1317f4d51c8ab2d66aff84c450af76f202e20b",
+      "keyframes": {
+        "attempt": "deltoids-A-a01",
+        "times": [
+          0,
+          1.6,
+          4,
+          6
+        ],
+        "size": 256,
+        "recipeSha256": "631c43269622493d3df1615ada1317f4d51c8ab2d66aff84c450af76f202e20b",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "e9055cc5deabb4138df2a9ca3ab2351d4092347162f79a4d83d3e4a77026201b",
+          "keyframe-01.png": "a56cd209f4caaa75b4a146ad89b540cd3bb100d7e4d4026b1e5d14d78483f0a7",
+          "keyframe-02.png": "5bb534f10f86f97012cc04b421c2d9c791976059b442e24d4914587ae4f1db13",
+          "keyframe-03.png": "742e674343f0ff70b74fd0bafbcdc855c55b81b56542b49d76a5c25344bc9268"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "c2e8ebb3e52cb828df27cb8944fdd54c0736e9e65a475c5a0358564f2073c489",
+        "samples": 121,
+        "flagged": [
+          {
+            "channel": "left.forearm|upperArm",
+            "flags": [
+              "twist-step"
+            ],
+            "rangeDeg": 37.4,
+            "maxStepDeg": 31.5,
+            "netDeg": 0.2,
+            "worstAt": 1.6
+          }
+        ],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 37.4,
+            "maxStepDeg": 31.5,
+            "netDeg": 0.2
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 2.1,
+            "maxStepDeg": 0.2,
+            "netDeg": 0.0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 20.9,
+            "maxStepDeg": 9.9,
+            "netDeg": -0.0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          }
+        },
+        "note": "rotation screen ran on an earlier recipe revision that differs only in camera; twist is camera independent"
+      },
+      "notes": "Source deltoids-A uses solver 'sideplank-v7' (page/anim-sideplank.js), which the armfix-r2 remote runner does not drive: the render shows a crouched, wrong pose. Needs a port to the standard pose spec (e.g. from h-short-side-plank-rr2 with straight knees) before review.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect",
+        "port off sideplank-v7"
+      ]
+    },
+    {
+      "stableId": "deltoids-B",
+      "status": "remote-keyframe-reviewed",
+      "spec": "drill-anim/specs/deltoids-B-r2.js",
+      "specSha256Lf": "c70703f37053da56f56701ad9b5a81b42ac64194f1cec66cf08154435513358e",
+      "recipe": "catalog/production/remaining219-r1/recipes/deltoids-B.json",
+      "recipeSha256Lf": "22e81ca6dbb970ebfe5a39a33c2536da45f07c02d4b296c36adf4aef862b23b3",
+      "keyframes": {
+        "attempt": "deltoids-B-a01",
+        "times": [
+          0,
+          2,
+          4,
+          6,
+          7.1
+        ],
+        "size": 256,
+        "recipeSha256": "22e81ca6dbb970ebfe5a39a33c2536da45f07c02d4b296c36adf4aef862b23b3",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "c8acc0d3c1e9825c58645570de38e53e796a64d1614e0a9db1ad65de3084495a",
+          "keyframe-01.png": "74bc8ff9ef813619a07ce6c30cbf009451e01d7af0d39b482a0fe2f7b944893a",
+          "keyframe-02.png": "1253f24535afb9032eb2724f89ba3ff227be251345e8bba5b33432a6fe85abd6",
+          "keyframe-03.png": "71b1a7d6a23c28ddb72ca6f13505525f1b9a843a357bcc5c6e918db1a13308a6",
+          "keyframe-04.png": "abc663e3deba55177bc94c0c505a20e1d4aa74670c61dcbeea39f7faec8f157a"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "22e81ca6dbb970ebfe5a39a33c2536da45f07c02d4b296c36adf4aef862b23b3",
+        "samples": 121,
+        "flagged": [
+          {
+            "channel": "left.forearm|upperArm",
+            "flags": [
+              "twist-range"
+            ],
+            "rangeDeg": 161.6,
+            "maxStepDeg": 15.1,
+            "netDeg": -100.7,
+            "worstAt": 7.1333
+          }
+        ],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 161.6,
+            "maxStepDeg": 15.1,
+            "netDeg": -100.7
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 68.4,
+            "maxStepDeg": 12.2,
+            "netDeg": -66.7
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          }
+        }
+      },
+      "notes": "Half Turkish get-up to high bridge; dumbbell held overhead by the right hand (native + source gripHand), left palm on floor. Left forearm|upperArm range 162 deg, net -101 over the cycle (no step > 15).",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect",
+        "one-hand dumbbell fixed grasp",
+        "left elbow twist review"
+      ]
+    },
+    {
+      "stableId": "deltoids-C",
+      "status": "remote-keyframe-reviewed",
+      "spec": "drill-anim/specs/deltoids-C.js",
+      "specSha256Lf": "bc34a8bb3fa12798b7ac940d65d23d5a6849c46387226ae23c29efc99b111b42",
+      "recipe": "catalog/production/remaining219-r1/recipes/deltoids-C.json",
+      "recipeSha256Lf": "57817bbc44955881241e1914d0884e346877b680cd88ae67841dc1201d303dfc",
+      "keyframes": {
+        "attempt": "deltoids-C-a01",
+        "times": [
+          0,
+          2,
+          4,
+          6
+        ],
+        "size": 256,
+        "recipeSha256": "57817bbc44955881241e1914d0884e346877b680cd88ae67841dc1201d303dfc",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "0f09a4e384728e6069546d3c8eff7f78ef45d31be2b12972d4e307906d6f487f",
+          "keyframe-01.png": "0c4bad8f246cc809ea0870fbeb463e696964fb31d0731ad8d223a8aa6e725d48",
+          "keyframe-02.png": "0f09a4e384728e6069546d3c8eff7f78ef45d31be2b12972d4e307906d6f487f",
+          "keyframe-03.png": "0c4bad8f246cc809ea0870fbeb463e696964fb31d0731ad8d223a8aa6e725d48"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "5bd5209c44110ed52a46721076a15381842c7fa14b0707110a1785dfe9e2768f",
+        "samples": 121,
+        "flagged": [],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 0.4,
+            "maxStepDeg": 0.4,
+            "netDeg": 0.4
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 57.5,
+            "maxStepDeg": 10.3,
+            "netDeg": 0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 38.9,
+            "maxStepDeg": 3.5,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          }
+        },
+        "note": "rotation screen ran on an earlier recipe revision that differs only in camera; twist is camera independent"
+      },
+      "notes": "Half-kneeling single-arm landmine press; auto mat added under knee/feet. No twist flags.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect",
+        "landmine sleeve hand contact"
+      ]
+    }
+  ]
+}

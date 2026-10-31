@@ -1,0 +1,101 @@
+{
+  "format": "pose-hub-action-recipe@1",
+  "id": "s-pigeon",
+  "nameZh": "鸽子式（直立扶砖版）",
+  "spec": "drill-anim/specs/s-pigeon.js",
+  "specSha256Lf": "0aab3fdce6ae6995dec95f1a71e2a3f33c8783931136fd71e99fde33c7bd3b2c",
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "hands": {
+    "left": "native",
+    "right": "native"
+  },
+  "camera": {
+    "dir": [
+      -0.85,
+      0.32,
+      -0.45
+    ],
+    "fit": [
+      "head",
+      "leftToe",
+      "rightToe",
+      "pelvis",
+      "leftKnee",
+      "rightKnee",
+      "leftPalm",
+      "rightPalm"
+    ],
+    "pad": 0.14,
+    "k": 1,
+    "at": 0,
+    "drift": 0,
+    "fitTimeline": true,
+    "orbitDegrees": 0,
+    "frontSweepDegrees": 0
+  },
+  "cameraScale": 1.15,
+  "output": {
+    "groundShadow": false,
+    "cameraMotion": false,
+    "wholeCycleContentRect": true,
+    "fps": 30,
+    "exerciseMat": true,
+    "matProp": {
+      "type": "mat",
+      "at": [
+        -0.073,
+        0,
+        -0.214
+      ],
+      "size": [
+        1.4,
+        1.182,
+        0.006
+      ],
+      "yaw": 17.9,
+      "source": "remote-rotation-r1 auto footprint"
+    }
+  },
+  "appearance": {
+    "highlight": {
+      "color": "#F05A36",
+      "shade": [
+        0.5,
+        0.42,
+        0.08
+      ],
+      "intensity": [
+        0.75,
+        1
+      ]
+    },
+    "purpose": "Visual cue for target muscle effort, not a physiological measurement",
+    "status": "parameterized-selection-deferred-by-user"
+  },
+  "jointCorrections": [
+    {
+      "profile": "upper-arm-contour-r3",
+      "version": "0.1.0-r3"
+    },
+    {
+      "profile": "ankle-join-r5",
+      "version": "0.1.0-r5"
+    }
+  ],
+  "adaptation": {
+    "status": "remote-keyframe-pending",
+    "method": "Fixed queue source reused unchanged on armfix-r2.",
+    "cameraChanges": "drift->0 (static)"
+  },
+  "source": {
+    "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
+    "selectedSpec": "drill-anim/specs/s-pigeon.js"
+  },
+  "sampledOnly": true,
+  "fullCycleValidated": false,
+  "userAccepted": false,
+  "releaseEligible": false
+}

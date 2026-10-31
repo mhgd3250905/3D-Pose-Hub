@@ -1,0 +1,128 @@
+{
+  "format": "pose-hub-action-recipe@1",
+  "id": "serratus-C",
+  "nameZh": "吊环俯卧撑加前伸",
+  "spec": "drill-anim/specs/serratus-C-r2.js",
+  "specSha256Lf": "264f9418cfc53f320bf9d16ae41f01c7c3bab63ae162a45a4cfe528bb3b5417b",
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "hands": {
+    "left": "bar-grasp",
+    "right": "bar-grasp"
+  },
+  "camera": {
+    "dir": [
+      1.1,
+      0.35,
+      1
+    ],
+    "fit": [
+      "head",
+      "leftPalm",
+      "leftShoulder",
+      "leftToe",
+      "pelvis",
+      "rightPalm",
+      "rightShoulder",
+      "rightToe"
+    ],
+    "pad": 0.25,
+    "k": 0.9,
+    "at": 0,
+    "drift": 0,
+    "fitTimeline": true,
+    "orbitDegrees": 0,
+    "frontSweepDegrees": 0
+  },
+  "cameraScale": 1.15,
+  "output": {
+    "groundShadow": false,
+    "cameraMotion": false,
+    "wholeCycleContentRect": true,
+    "fps": 30,
+    "exerciseMat": false
+  },
+  "appearance": {
+    "highlight": {
+      "color": "#F05A36",
+      "shade": [
+        0.5,
+        0.42,
+        0.08
+      ],
+      "intensity": [
+        0.75,
+        1
+      ]
+    },
+    "purpose": "Visual cue for target muscle effort, not a physiological measurement",
+    "status": "parameterized-selection-deferred-by-user"
+  },
+  "jointCorrections": [
+    {
+      "profile": "upper-arm-contour-r3",
+      "version": "0.1.0-r3"
+    },
+    {
+      "profile": "ankle-join-r5",
+      "version": "0.1.0-r5"
+    }
+  ],
+  "adaptation": {
+    "status": "remote-keyframe-pending",
+    "method": "Fixed queue source reused unchanged on armfix-r2.",
+    "cameraChanges": "drift->0 (static); k 0.6->0.9"
+  },
+  "source": {
+    "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
+    "selectedSpec": "drill-anim/specs/serratus-C-r2.js"
+  },
+  "sampledOnly": true,
+  "fullCycleValidated": false,
+  "userAccepted": false,
+  "releaseEligible": false,
+  "fixedBarGrip": {
+    "bars": {
+      "left": {
+        "bar": [
+          0,
+          0.17,
+          0.22
+        ],
+        "axis": [
+          -1,
+          0,
+          0
+        ],
+        "palm": [
+          0,
+          0,
+          1
+        ]
+      },
+      "right": {
+        "bar": [
+          0,
+          0.17,
+          -0.22
+        ],
+        "axis": [
+          -1,
+          0,
+          0
+        ],
+        "palm": [
+          0,
+          0,
+          -1
+        ]
+      }
+    }
+  },
+  "fixedCorrectionStack": {
+    "profile": "fixed-wrist-corrections-r1",
+    "version": "0.1.0-r1"
+  }
+}

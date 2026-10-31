@@ -104,6 +104,19 @@ export async function run(options){
         const wrist=await import('../body-v3/webxr-wrist-join-r1/loader.mjs');
         report.wristSetup=await wrist.install(page,{showDumbbells:prepared.handSetup.showDumbbells});
       }
+      // Single-arm dumbbell actions: the accepted installer mounts a fist + dumbbell on both hands; hide the idle side's dumbbell only.
+      const hide=prepared.recipe.fixedDumbbellsHidden??[];
+      fail(Array.isArray(hide)&&hide.length<=1&&hide.every(s=>s==='left'||s==='right')&&(!hide.length||prepared.handSetup.showDumbbells),'Bad fixedDumbbellsHidden');
+      if(hide.length)report.hiddenFixedDumbbells=await page.evaluate(sides=>{const v=flareInspector.viewer,out={};
+        for(const side of sides){const g=v.scene.getObjectByName('WebXR_Fixed_Hand_'+side);if(!g)throw Error('no fixed hand group '+side);let k=0;
+          g.traverse(o=>{if(o.isMesh&&!o.name.startsWith('WebXR_Clipped_Hand_')&&!/band/i.test(o.name)){o.visible=false;k++;}});out[side]=k;}return out;},hide);
+      if(source.props?.some(p=>p.fixedDHandleGrasp!==undefined)){
+        const dh=await import('./frozen-dhandle.mjs');report.frozenDHandleSetup=await dh.installFrozenDHandle(page);
+      }
+      if(source.props?.some(p=>p.fixedKettlebellGrasp==='webxr-dumbbell-fist')){
+        const kettlebell=await import('./kettlebell-grip.mjs');
+        report.kettlebellGripSetup=await kettlebell.installKettlebellGrip(page,{pose:'webxr-dumbbell-fist',models:[...new Set(source.props.filter(p=>p.fixedKettlebellGrasp!==undefined&&p.model).map(p=>p.model))]});
+      }
     }else{
       const presets=await import('../../drill-anim/models/fixed-hand-presets-r1/loader.mjs');
       await presets.verify();const data=presets.data();
@@ -113,7 +126,7 @@ export async function run(options){
       }
       if(source.props?.some(p=>p.fixedKettlebellGrasp!==undefined)){
         const kettlebell=await import('./kettlebell-grip.mjs');
-        report.kettlebellGripSetup=await kettlebell.installKettlebellGrip(page);
+        report.kettlebellGripSetup=await kettlebell.installKettlebellGrip(page,{models:[...new Set(source.props.filter(p=>p.fixedKettlebellGrasp!==undefined&&p.model).map(p=>p.model))]});
       }
       const supportNeeded=Object.values(prepared.handSetup.modes).includes('support');
       if(supportNeeded){const support=await import('../body-v3/armfix-r2/support-install.mjs');report.supportSetup=await support.installSupport(page,data.support,{sourceId:data.handSource});}
@@ -126,6 +139,13 @@ export async function run(options){
     }
     if(!prepared.recipe.fixedCorrectionStack)report.jointCorrections=await installCorrections(page,prepared.recipe);
     else report.jointCorrections=prepared.recipe.jointCorrections;
+    // nativeWristCorrective (2026-10-30, user-approved): install the native-hand wrist seam repair hand-wrist-corrective-r1
+    // (adapted from the user's accepted 3D-Wrist repair) on top of the r3/r5 stack. Native-hand recipes only.
+    if(prepared.recipe.nativeWristCorrective!==undefined){
+      fail(prepared.recipe.nativeWristCorrective===true&&!prepared.recipe.fixedCorrectionStack,'Bad nativeWristCorrective');
+      const wc=await import('../../drill-anim/models/hand-wrist-corrective-r1/loader.mjs');
+      report.nativeWristCorrective=await wc.install(page,{enabled:true});
+    }
     if(corrective){
       const module=await import(new URL(corrective.file,import.meta.url));
       report.actionCorrectiveSetup={id:corrective.id,...await module.install(page,source.actionCorrective)};

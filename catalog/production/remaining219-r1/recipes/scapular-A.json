@@ -1,0 +1,101 @@
+{
+  "format": "pose-hub-action-recipe@1",
+  "id": "scapular-A",
+  "nameZh": "俯卧 Y-T-W 举",
+  "spec": "drill-anim/specs/scapular-A-r2.js",
+  "specSha256Lf": "b98f86ef8f01dd5439088fe6217b637861dc71c65c1eab8e760bf6fba6223ede",
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "hands": {
+    "left": "native",
+    "right": "native"
+  },
+  "camera": {
+    "dir": [
+      -0.35,
+      0.42,
+      -1
+    ],
+    "fit": [
+      "head",
+      "leftPalm",
+      "rightPalm",
+      "leftToe",
+      "rightToe",
+      "pelvis",
+      "leftElbow",
+      "rightElbow"
+    ],
+    "pad": 0.12,
+    "k": 0.9,
+    "at": 0.883333,
+    "drift": 0,
+    "fitTimeline": true,
+    "orbitDegrees": 0,
+    "frontSweepDegrees": 0
+  },
+  "cameraScale": 1.15,
+  "output": {
+    "groundShadow": false,
+    "cameraMotion": false,
+    "wholeCycleContentRect": true,
+    "fps": 30,
+    "exerciseMat": true,
+    "matProp": {
+      "type": "mat",
+      "at": [
+        -0.435,
+        0,
+        0
+      ],
+      "size": [
+        1.915,
+        2.063,
+        0.006
+      ],
+      "yaw": 90,
+      "source": "remote-rotation-r1 auto footprint"
+    }
+  },
+  "appearance": {
+    "highlight": {
+      "color": "#F05A36",
+      "shade": [
+        0.5,
+        0.42,
+        0.08
+      ],
+      "intensity": [
+        0.75,
+        1
+      ]
+    },
+    "purpose": "Visual cue for target muscle effort, not a physiological measurement",
+    "status": "parameterized-selection-deferred-by-user"
+  },
+  "jointCorrections": [
+    {
+      "profile": "upper-arm-contour-r3",
+      "version": "0.1.0-r3"
+    },
+    {
+      "profile": "ankle-join-r5",
+      "version": "0.1.0-r5"
+    }
+  ],
+  "adaptation": {
+    "status": "remote-keyframe-pending",
+    "method": "Fixed queue source reused unchanged on armfix-r2.",
+    "cameraChanges": "drift->0 (static); k 0.85->0.9"
+  },
+  "source": {
+    "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
+    "selectedSpec": "drill-anim/specs/scapular-A-r2.js"
+  },
+  "sampledOnly": true,
+  "fullCycleValidated": false,
+  "userAccepted": false,
+  "releaseEligible": false
+}

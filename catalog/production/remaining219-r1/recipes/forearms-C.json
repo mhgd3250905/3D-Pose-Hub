@@ -1,0 +1,94 @@
+{
+  "format": "pose-hub-action-recipe@1",
+  "id": "forearms-C",
+  "nameZh": "壶铃倒握行走",
+  "spec": "drill-anim/specs/forearms-C-r3.js",
+  "specSha256Lf": "4049bea4dee8942b23457ba77e062c400703089eef33ba38fcb243c31c5d8ef8",
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "hands": {
+    "left": "dumbbell-grasp",
+    "right": "dumbbell-grasp"
+  },
+  "camera": {
+    "dir": [
+      0.75,
+      0.12,
+      0.65
+    ],
+    "fit": [
+      "head",
+      "leftToe",
+      "rightToe",
+      "pelvis",
+      "rightPalm",
+      "leftAnkle",
+      "rightAnkle"
+    ],
+    "pad": 0.22,
+    "k": 1,
+    "at": 0,
+    "drift": 0,
+    "fitTimeline": true,
+    "orbitDegrees": 0,
+    "frontSweepDegrees": 0
+  },
+  "cameraScale": 1.15,
+  "output": {
+    "groundShadow": false,
+    "cameraMotion": false,
+    "wholeCycleContentRect": true,
+    "fps": 30,
+    "exerciseMat": false
+  },
+  "appearance": {
+    "highlight": {
+      "color": "#F05A36",
+      "shade": [
+        0.5,
+        0.42,
+        0.08
+      ],
+      "intensity": [
+        0.75,
+        1
+      ]
+    },
+    "purpose": "Visual cue for target muscle effort, not a physiological measurement",
+    "status": "parameterized-selection-deferred-by-user"
+  },
+  "jointCorrections": [
+    {
+      "profile": "upper-arm-contour-r3",
+      "version": "0.1.0-r3"
+    },
+    {
+      "profile": "ankle-join-r5",
+      "version": "0.1.0-r5"
+    }
+  ],
+  "adaptation": {
+    "status": "remote-keyframe-pending",
+    "method": "Fixed queue source reused unchanged on armfix-r2.",
+    "cameraChanges": "drift->0 (static)",
+    "grip": "native grasp-32mm closed fist on straight-grip-kettlebell-r1 (straight 32 mm grip cylinder, bell profile from CC0 TheBaseMesh kettlebell-01); replaces baked gripHand + kbBottomsUp placeholder"
+  },
+  "source": {
+    "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
+    "selectedSpec": "drill-anim/specs/forearms-C.js"
+  },
+  "sampledOnly": true,
+  "fullCycleValidated": false,
+  "userAccepted": false,
+  "releaseEligible": false,
+  "fixedCorrectionStack": {
+    "profile": "fixed-wrist-corrections-r1",
+    "version": "0.1.0-r1"
+  },
+  "fixedKettlebell": {
+    "attach": "rightHand",
+    "model": "straight-grip-kettlebell-r1"
+  }
+}

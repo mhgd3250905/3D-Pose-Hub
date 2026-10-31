@@ -1,0 +1,322 @@
+{
+  "format": "pose-hub-remaining219-remote-index@1",
+  "batch": "batch20",
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "environment": {
+    "host": "Hark sandbox aarch64, 2 cores, 7.9 GiB, no GPU",
+    "browser": "Playwright 1.48.2 chromium-1140",
+    "renderer": "software (ANGLE SwiftShader)",
+    "serial": true
+  },
+  "checks": {
+    "keyframes": "tools/action-completion-v3-r2/remote-keyframes-r1.mjs, 256/320px, 3-6 frames",
+    "rotation": "tools/action-completion-v3-r2/remote-rotation-r1.mjs, 15Hz sequential solve, axial twist of forearm|upperArm, hand|forearm, foot|shin (range>120, step>25, net>150 deg flagged)"
+  },
+  "sampledOnly": true,
+  "fullCycleValidated": false,
+  "userAccepted": false,
+  "releaseEligible": false,
+  "items": [
+    {
+      "stableId": "h-lateral-step-lunge",
+      "status": "remote-keyframe-reviewed",
+      "spec": "drill-anim/specs/h-lateral-step-lunge.js",
+      "specSha256Lf": "f7702a2c6795a76a24030759528c179f8de3e671128475dd806259f8602ab086",
+      "recipe": "catalog/production/remaining219-r1/recipes/h-lateral-step-lunge.json",
+      "recipeSha256Lf": "60c1b97120c6b2dd2f2bcf89906ca74858f884e702acc9c48de2e41635f9aa6c",
+      "keyframes": {
+        "attempt": "h-lateral-step-lunge-a01",
+        "times": [
+          0.35,
+          2.58,
+          4.75
+        ],
+        "size": 256,
+        "recipeSha256": "60c1b97120c6b2dd2f2bcf89906ca74858f884e702acc9c48de2e41635f9aa6c",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "0abf35295e48baa87682aefa6eea62594dfa40f6e9fec3e1c9466d4cc851a4f3",
+          "keyframe-01.png": "597917664c0b2ba6d78b4f5d26a51721c35fa50a59bfc7d4e0affe3625c0d168",
+          "keyframe-02.png": "2a684da1ac7eacd03046bfd89c6a79a15145b38465d5825f05b4df0cce8c9f4d"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "61c0b7c59cf71b2afbb527ae4edf802554522de385215b86b86fcbedf5c1286d",
+        "samples": 151,
+        "flagged": [],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 9.9,
+            "maxStepDeg": 1.5,
+            "netDeg": 0
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 0.5,
+            "maxStepDeg": 0.1,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 9.9,
+            "maxStepDeg": 1.5,
+            "netDeg": 0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 0.5,
+            "maxStepDeg": 0.1,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          }
+        },
+        "note": "rotation screen ran on an earlier recipe revision that differs only in camera; twist is camera independent"
+      },
+      "notes": "lateral step lunge, front view.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect"
+      ]
+    },
+    {
+      "stableId": "h-overhead-triceps-stretch",
+      "status": "remote-keyframe-reviewed",
+      "spec": "drill-anim/specs/h-overhead-triceps-stretch-rr1.js",
+      "specSha256Lf": "8ea84befa329f1e993aafd0698b1698072ba68e7c0da33491f5ea1ceb41d607f",
+      "recipe": "catalog/production/remaining219-r1/recipes/h-overhead-triceps-stretch.json",
+      "recipeSha256Lf": "1666614686d828af465e6321a5761343a50a10cb4e9e55bf217a14a5b04758da",
+      "keyframes": {
+        "attempt": "h-overhead-triceps-stretch-a01",
+        "times": [
+          1,
+          3,
+          5,
+          7
+        ],
+        "size": 256,
+        "recipeSha256": "1666614686d828af465e6321a5761343a50a10cb4e9e55bf217a14a5b04758da",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "0437d9015fb651948a9811f28ebeb39cc54f247fecd2aaf07c2b04e3cab95d04",
+          "keyframe-01.png": "257345f46322cb444e4fb89f752d0f8e89d6698fd35d98db95256dc09000a943",
+          "keyframe-02.png": "01cd3ed33487ea61643d30837d3d6d1737acc97b40fee49dbd130621170aac60",
+          "keyframe-03.png": "9f437633d83e0bd157d70b5274904f22a996e345aac2696deffb75f779baf508"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "959ec205d695682fbc487ca53c65be8da0b53d696f33e917a6afaaf8c113593d",
+        "samples": 121,
+        "flagged": [],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 4.5,
+            "maxStepDeg": 0.3,
+            "netDeg": 0
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 1.3,
+            "maxStepDeg": 0.1,
+            "netDeg": 0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          }
+        },
+        "note": "rotation screen ran on an earlier recipe revision that differs only in camera; twist is camera independent"
+      },
+      "notes": "standing overhead triceps stretch; static hold.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect",
+        "helping hand on elbow: contact check"
+      ]
+    },
+    {
+      "stableId": "h-pike-scapular-elevation",
+      "status": "remote-keyframe-reviewed",
+      "spec": "drill-anim/specs/h-pike-scapular-elevation.js",
+      "specSha256Lf": "5a080fe04f32f02067342e76f791383ef0af5605b21a4a873e704bb20d617506",
+      "recipe": "catalog/production/remaining219-r1/recipes/h-pike-scapular-elevation.json",
+      "recipeSha256Lf": "2b7d8ed87533ba4171faedd8c423b480152b03765e1fb78e24321debb684f529",
+      "keyframes": {
+        "attempt": "h-pike-scapular-elevation-a01",
+        "times": [
+          0.3,
+          2.25,
+          4.1,
+          6.25
+        ],
+        "size": 256,
+        "recipeSha256": "2b7d8ed87533ba4171faedd8c423b480152b03765e1fb78e24321debb684f529",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "65734fb8c119a1fabf917c1dd80f025dc512a7582d367bb26bb24f13136b1e28",
+          "keyframe-01.png": "450a357fa51f34efc4d577410adaf8ad3994ea44245daaec4ae2c2c326aa566f",
+          "keyframe-02.png": "066f282247068c40f0c08aabed0ba6c4acde85ffec9cac82e2cf0738d6692662",
+          "keyframe-03.png": "450a357fa51f34efc4d577410adaf8ad3994ea44245daaec4ae2c2c326aa566f"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "0e282f24860b9705208360d79b08bb8f45d4de3e00f32857da4b440511a3b239",
+        "samples": 121,
+        "flagged": [],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 3.9,
+            "maxStepDeg": 0.3,
+            "netDeg": -0.0
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 3.9,
+            "maxStepDeg": 0.3,
+            "netDeg": 0.0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          }
+        },
+        "note": "rotation screen ran on an earlier recipe revision that differs only in camera; twist is camera independent"
+      },
+      "notes": "pike straight-arm scapular elevation/depression; motion subtle at 256px.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect",
+        "scapular amplitude barely visible"
+      ]
+    },
+    {
+      "stableId": "h-plank-side-step",
+      "status": "pending-review",
+      "spec": "drill-anim/specs/h-plank-side-step.js",
+      "specSha256Lf": "e09c086643d9b5ee4bc6b357b06f0cf78648fe8e4cd5273a8bc57ccab764e179",
+      "recipe": "catalog/production/remaining219-r1/recipes/h-plank-side-step.json",
+      "recipeSha256Lf": "580f50f5ff6762f4f894a747b3a206766356089ca0faa4fa2002e690ecbf8207",
+      "keyframes": {
+        "attempt": "h-plank-side-step-a01",
+        "times": [
+          0.2,
+          1.65,
+          3.5
+        ],
+        "size": 256,
+        "recipeSha256": "580f50f5ff6762f4f894a747b3a206766356089ca0faa4fa2002e690ecbf8207",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "67a0207313f894c1f5b5809b0cfa18505f7e01c9556c3e51d36079c0b5b468e4",
+          "keyframe-01.png": "a05e84bf57559843c43c1f912361868a62beddb26cc35aee30f0adfe0fe3dd03",
+          "keyframe-02.png": "7e059811239928d10463afcaea2ad4412e44d1c440c794ab91f11bfc86116cc0"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "88fd7ec8869ffa65e929970df249ab233579e0771be5f87e4961a4b70f51549d",
+        "samples": 121,
+        "flagged": [],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 0.0,
+            "maxStepDeg": 0.0,
+            "netDeg": 0.0
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 0.0,
+            "maxStepDeg": 0.0,
+            "netDeg": -0.0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          }
+        },
+        "note": "rotation screen ran on an earlier recipe revision that differs only in camera; twist is camera independent"
+      },
+      "notes": "straight-arm plank alternating lateral toe taps; injected mat only covers the hands, feet tap off the mat.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect",
+        "mat placement: extend under feet or remove"
+      ]
+    }
+  ],
+  "blocked": [
+    {
+      "stableId": "h-kneeling-thread-needle",
+      "status": "blocked-legacy",
+      "reason": "spec has no pose.base (legacy solver format); remote rotation/keyframe runners fail with 'Cannot read properties of undefined (reading base)'. Needs migration to standard pose spec like deltoids-A-r3."
+    }
+  ]
+}

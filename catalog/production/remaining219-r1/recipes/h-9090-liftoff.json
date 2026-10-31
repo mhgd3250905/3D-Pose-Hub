@@ -1,0 +1,100 @@
+{
+  "format": "pose-hub-action-recipe@1",
+  "id": "h-9090-liftoff",
+  "nameZh": "90/90 后腿主动抬起",
+  "spec": "drill-anim/specs/h-9090-liftoff-r3.js",
+  "specSha256Lf": "cfacfdec71f18f459627d9f719fadfc15da30471f692e7b7b2e8a0559401a786",
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "hands": {
+    "left": "native",
+    "right": "native"
+  },
+  "camera": {
+    "dir": [
+      1,
+      0.6,
+      0.05
+    ],
+    "fit": [
+      "head",
+      "leftKnee",
+      "rightKnee",
+      "pelvis",
+      "leftToe",
+      "rightToe",
+      "leftAnkle"
+    ],
+    "pad": 0.18,
+    "k": 1,
+    "at": 2,
+    "drift": 0,
+    "fitTimeline": true,
+    "orbitDegrees": 0,
+    "frontSweepDegrees": 0
+  },
+  "cameraScale": 1.15,
+  "output": {
+    "groundShadow": false,
+    "cameraMotion": false,
+    "wholeCycleContentRect": true,
+    "fps": 30,
+    "exerciseMat": true,
+    "matProp": {
+      "type": "mat",
+      "at": [
+        0.235,
+        0,
+        0.125
+      ],
+      "size": [
+        1.4,
+        0.791,
+        0.006
+      ],
+      "yaw": 36.7,
+      "source": "remote-rotation-r1 auto footprint"
+    }
+  },
+  "appearance": {
+    "highlight": {
+      "color": "#F05A36",
+      "shade": [
+        0.5,
+        0.42,
+        0.08
+      ],
+      "intensity": [
+        0.75,
+        1
+      ]
+    },
+    "purpose": "Visual cue for target muscle effort, not a physiological measurement",
+    "status": "parameterized-selection-deferred-by-user"
+  },
+  "jointCorrections": [
+    {
+      "profile": "upper-arm-contour-r3",
+      "version": "0.1.0-r3"
+    },
+    {
+      "profile": "ankle-join-r5",
+      "version": "0.1.0-r5"
+    }
+  ],
+  "adaptation": {
+    "status": "remote-keyframe-pending",
+    "method": "Fixed queue source reused unchanged on armfix-r2.",
+    "cameraChanges": "drift->0 (static)"
+  },
+  "source": {
+    "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
+    "selectedSpec": "drill-anim/specs/h-9090-liftoff-r3.js"
+  },
+  "sampledOnly": true,
+  "fullCycleValidated": false,
+  "userAccepted": false,
+  "releaseEligible": false
+}

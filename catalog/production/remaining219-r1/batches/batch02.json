@@ -1,0 +1,271 @@
+{
+  "format": "pose-hub-remaining219-batch@1",
+  "batch": "batch02",
+  "sampledOnly": true,
+  "fullCycleValidated": false,
+  "userAccepted": false,
+  "releaseEligible": false,
+  "matFix": {
+    "note": "Recipes now set output.exerciseMat:true (template had false, which stripped spec mats). Batch01 w-dead-bug/h-short-side-plank re-shot with mat as *-m01.",
+    "rerenders": {
+      "w-dead-bug": {
+        "attempt": "w-dead-bug-m01",
+        "pngSha256": [
+          "ae08e60e92c3a3d886b6c2bf399b9e97a863990448d3dace18a4d6760d875136",
+          "4cae5e37dff6c4c373c7b11ea9665c93370808b01a73e1b1c0a14b45ae773618",
+          "2a529db87f7d39e53ab7f8e4e3697400ca8d8d9cc37c838206721db8922c79ac",
+          "c38ec9fcbed30e641d969aecdd9eda821f6160aeedde601ff2b6f524e1ed3378"
+        ],
+        "capture": [
+          0,
+          1.5,
+          4.6,
+          5.5
+        ]
+      },
+      "h-short-side-plank": {
+        "attempt": "h-short-side-plank-m01",
+        "pngSha256": [
+          "61a013793869c10bea47ff0a0ef4d6c4ae69ab7d8a51d41bf977ce10b3128437",
+          "7421f7b9b3288dc93a6af460677827a2ec8ee982d6ef917e0e2af2045c8ffce7",
+          "cd4157b4f7b0825a558ea057376f63d6adb1e86bb7cbd79507547a3d8364bcaf"
+        ],
+        "capture": [
+          0.4,
+          2,
+          3.6
+        ]
+      }
+    }
+  },
+  "actions": [
+    {
+      "id": "abs-A",
+      "recipe": "catalog/production/remaining219-r1/recipes/abs-A.json",
+      "status": "remote-keyframe-reviewed",
+      "note": "mat on; mild hollow",
+      "rotation15Hz": {
+        "flagged": [],
+        "mat": {
+          "floorBased": true,
+          "specHasMat": true
+        }
+      },
+      "keyframes256": {
+        "attempt": "abs-A-m01",
+        "pngSha256": [
+          "751d2e7dd2b073eca56a83afe9436ea74aab79c6ae1a7e61ff9b77ab0b877754",
+          "031eba3734d25430b67761aea9b32028ba59618feb0578998835e2534031922b",
+          "56ffb43d28ec4d7e5f726afa9a8e3514d29c91c6601cb201f52ad0f55d8484f0",
+          "c72afbe174094cc09eabc5fa2841026a08c291b62a8705ca648a3a09e5857846"
+        ],
+        "capture": [
+          0,
+          0.8,
+          1.3,
+          5
+        ]
+      }
+    },
+    {
+      "id": "abs-B",
+      "recipe": "catalog/production/remaining219-r1/recipes/abs-B.json",
+      "status": "remote-keyframe-reviewed-bar-grip-changed",
+      "note": "320px close-up: hands on handles beside hips, straight arms, pelvis between handles, tuck/extend reads correctly; earlier stool impression was the small 256px view. Feet stay low in tuck, check clearance locally.",
+      "rotation15Hz": {
+        "flagged": [],
+        "mat": {
+          "floorBased": true,
+          "specHasMat": false
+        }
+      },
+      "keyframes256": {
+        "attempt": "abs-B-a01",
+        "pngSha256": [
+          "29e0abd1673126c7d7b3fa7393bc6b0b53c7ebe476ed34ff4c391ae43be96481",
+          "2111b2cc4b0e21827638bf8dd76941905b725ab4ee270857a79a390c6dd65858",
+          "871a825dc3caa07155afaae268e35015e443db52a77c39783da8dc1a7d65ee8e",
+          "047a59d9076b5c8d50e14a7b544378324280d720bd9b0fdd291a62b8e0abb080"
+        ],
+        "capture": [
+          0,
+          3.6,
+          4.4,
+          6
+        ]
+      },
+      "closeup320": {
+        "attempt": "abs-B-c01",
+        "pngSha256": [
+          "730952dcaf71ca5cc0b7ead6a42ef7c8566615aba96d0e5f4fa7a6ff33f24bec",
+          "8cf473f6fe1dc377728f603d52bc0d5fbf0be7ee3e8ac0ad13bc64aeaf024c64",
+          "f69aa0d6e5accdab4011c7ec52c760588a42473bfab4597f3e5636159d0f2cd4"
+        ]
+      },
+      "barGrip": {
+        "tool": "tools/action-completion-v3-r2/fixed-bar-grip-r1.mjs",
+        "hands": "bar-grasp",
+        "note": "User 2026-10-29: hands hovered over bars; frozen dumbbell fist (32 mm shaft) now closed on the bar, bar grip radius 16 mm, dumbbell hidden. Contact not certified.",
+        "full320": {
+          "attempt": "abs-B-g01",
+          "pngSha256": [
+            "e09ce793b5ba7252d9773b8815e38c1b9d6cf0d17c1ab1e51a2251261a60c122",
+            "e3ce878865076d1b3a0950e60f4b64af19ee2ac641cf1e687d9474acc3807f10",
+            "8c93c7ae3d38f135849ab8784f4a517cc58e0f1a9c3f8a6beaf182ae91999cf4"
+          ]
+        },
+        "handCloseup320": {
+          "attempt": "abs-B-hand01",
+          "pngSha256": [
+            "d61155d9a2820fc691b47b974dacd4794a48f0a361de74a07aef3edc75fdbf1c",
+            "ee59921e201b1e28a3e1dc5bda1bed04cddc21e6cefbc0c58d568da59141893a",
+            "84ce1e4d1852656f1b2eeecf6175cd6dbdad656f516413161c878770e7ee4c52"
+          ]
+        }
+      }
+    },
+    {
+      "id": "abs-C",
+      "recipe": "catalog/production/remaining219-r1/recipes/abs-C.json",
+      "status": "remote-keyframe-reviewed-bar-grip-changed",
+      "note": "320px close-up: straight-arm support with shoulders above bars, hips between bars, knees rise to hip height; earlier suspicion was a false alarm.",
+      "rotation15Hz": {
+        "flagged": [],
+        "mat": {
+          "floorBased": false,
+          "specHasMat": false
+        }
+      },
+      "keyframes256": {
+        "attempt": "abs-C-a01",
+        "pngSha256": [
+          "b144e66ef9f6bbde809c5f030018a2873ef298818f6d976049d9d1a31455d156",
+          "756576ebbcaf055c9a66bac31f200e94b248c33689dd2005a850ec03bae2860c",
+          "0a5ded965f68281b78c7a24b5e732d86ad32d5f9396e853920541a6cccd4e6f7",
+          "756576ebbcaf055c9a66bac31f200e94b248c33689dd2005a850ec03bae2860c"
+        ],
+        "capture": [
+          0,
+          1,
+          2.6,
+          5
+        ]
+      },
+      "closeup320": {
+        "attempt": "abs-C-c01",
+        "pngSha256": [
+          "971b5ecf6de5d49781968e430529c71913af4e06be693837360918b6a2f93f55",
+          "1ddb57e2f486589be02f782ea27e86ced70a81c1c5eea9021d28c54da13788d5",
+          "6492da363744824e2f62dd6604494374cc0249c78914702a0421f1deb79b7e4a"
+        ]
+      },
+      "barGrip": {
+        "tool": "tools/action-completion-v3-r2/fixed-bar-grip-r1.mjs",
+        "hands": "bar-grasp",
+        "note": "User 2026-10-29: hands hovered over bars; frozen dumbbell fist (32 mm shaft) now closed on the bar, bar grip radius 16 mm, dumbbell hidden. Contact not certified.",
+        "full320": {
+          "attempt": "abs-C-g01",
+          "pngSha256": [
+            "eaeff1c0463f3c0af4ed8b36a37325bfdf686c05ba065ff5686a1f1417ec139e",
+            "82fc7f3ccc52cb821884d75f7b75f3172ef98b7861b5873a4740f6e9193de1b0",
+            "bf213e355ce4289844d36e1e4319393aa90926d3189aa8b727444016819170a8"
+          ]
+        },
+        "handCloseup320": {
+          "attempt": "abs-C-hand01",
+          "pngSha256": [
+            "729f9523b2cacb7daa925f00592fcd494681d2bf37033b3dca934340f075fb3b",
+            "5a5c9bd1e7e478550e132f3c02784f906f3b9a16e062c4dc8d401040082f56be",
+            "6541a8f9c10c2127106f94a12394de813ec5af26580c90c3b09ff843a2164df4"
+          ]
+        }
+      }
+    },
+    {
+      "id": "adductors-A",
+      "recipe": "catalog/production/remaining219-r1/recipes/adductors-A.json",
+      "status": "remote-keyframe-reviewed",
+      "note": "static camera, deep side lunge frames readable",
+      "rotation15Hz": {
+        "flagged": [],
+        "mat": {
+          "floorBased": true,
+          "specHasMat": false
+        }
+      },
+      "keyframes256": {
+        "attempt": "adductors-A-a01",
+        "pngSha256": [
+          "c1c64f17d3f7737425f7addcc7b95a049d8bece878f3dc2fb27717f5c6df6320",
+          "dac5a25a73c2e0629acaf537b0d9c68964b4271ba951d9db8c4ef9ea8c24ab65",
+          "6c1cb8bc32c02c760df74a54558a4f960761a03646e612d63c4c5327e9e1c7b7",
+          "22f0b2c7fd50b0333c18ff381d41eff480de8cd37cd01d8c8d1878c6faaf1b59",
+          "c4c13ea4cd50356f6ad10fc4074430329979b93ca165b83219513d51e563c53d"
+        ],
+        "capture": [
+          0,
+          0.73,
+          1.6,
+          4.73,
+          5.6
+        ]
+      }
+    },
+    {
+      "id": "adductors-B",
+      "recipe": "catalog/production/remaining219-r1/recipes/adductors-B.json",
+      "status": "remote-keyframe-reviewed",
+      "note": "mat on; bench + forearm support readable",
+      "rotation15Hz": {
+        "flagged": [],
+        "mat": {
+          "floorBased": true,
+          "specHasMat": true
+        }
+      },
+      "keyframes256": {
+        "attempt": "adductors-B-m01",
+        "pngSha256": [
+          "464396b6136591ad54cbd40a97fcd34a67b73369cc0bdd8485bf15a9247095b1",
+          "a1b7e4f7294ce742cd2fd42a1e4bcb0238a9fe2dceb7c626628f9fc97d56265d",
+          "d0854fcb2e77fa39a178e143fa21425ec67373c4ad6724c24b4933074247f58e",
+          "85c47dd041cecb033e3edd2972aa97b264a7ae34e715adde01588f2a4e76bb56"
+        ],
+        "capture": [
+          0.2,
+          1.3,
+          2.4,
+          5
+        ]
+      }
+    },
+    {
+      "id": "adductors-C",
+      "recipe": "catalog/production/remaining219-r1/recipes/adductors-C.json",
+      "status": "remote-keyframe-reviewed",
+      "note": "cable/ankle strap readable",
+      "rotation15Hz": {
+        "flagged": [],
+        "mat": {
+          "floorBased": true,
+          "specHasMat": false
+        }
+      },
+      "keyframes256": {
+        "attempt": "adductors-C-a01",
+        "pngSha256": [
+          "63c3a109852c422375ddcb621a7833f377b2cc25b572d7e41b1a3c39a4849572",
+          "ba90684ee03da7cb686ac6b3310c643d64901f31174ac0aef5f54c1263243d86",
+          "04ee98f1997c91786e0a71b085bd4632aa7c8239c12e3d258ff6235608e70a10",
+          "a4ffc708d14e02e68b24cfc160815fbfb2d8570e8de263bbddfb0c2828751f05"
+        ],
+        "capture": [
+          0,
+          0.9,
+          1.6,
+          3
+        ]
+      }
+    }
+  ]
+}
