@@ -1,1 +1,108 @@
-{"format":"pose-hub-package-skin@1","id":"hologram","label":"Hologram","status":"draft-needs-user-look-approval","look":{"mode":"luma-ramp","dark":"#2a2416","light":"#e9d49c","ramp":[0.1,0.95],"mix":0.92,"rim":{"color":"#fff1c4","strength":0.6,"power":1.8}},"highlightColor":"#e9d49c"}
+{
+ "format": "pose-hub-package-skin@1",
+ "id": "hologram",
+ "label": "Hologram",
+ "status": "ported-from-v2-needs-user-look-approval",
+ "look": {
+  "mode": "v2-port",
+  "v2Skin": "hologram"
+ },
+ "highlightColor": "#e9d49c",
+ "background": {
+  "centre": [
+   18,
+   32,
+   48
+  ],
+  "edge": [
+   3,
+   7,
+   12
+  ]
+ },
+ "port": {
+  "version": "v2skin-port-r1",
+  "v2Source": "drill-anim/page/human-v2plus-regions.js",
+  "v2SourceSha256": "730047f0bc5d62eb7aae57d6dfcbbfaef6b73201dd770e4a56e29143614e99ac",
+  "regionTable": "drill-anim/models/training-human-v2plus-regions.json",
+  "regionTableSha256": "70c74aa5e8986e2575077a49ebcae405ebf68d5eb0bb00b04eb0cc9cc6c1e822",
+  "bakedRegionAttributes": "re-baked at load from the current mesh rest pose (per-vertex region distances, 8 channels); no stored geometry attribute",
+  "adaptations": [
+   "meshes(): v3 torso / head-neck keys, multi-material meshes (every matching slot)",
+   "patch(): every matched material slot",
+   "patchHolder(): every matched material slot (head)",
+   "patchHolder(): every matched material slot (tail)",
+   "setRegions(): re-wrap check on every matched slot",
+   "meshInfo: first matched slot uuid",
+   "highlight colour: the skin hi.c with the recipe pulse curve"
+  ]
+ },
+ "v2Params": {
+  "lines": true,
+  "grey": [
+   0.14412847085805777,
+   0.3662525955988395,
+   0.45641102318040466
+  ],
+  "shade": [
+   0.02315336617811041,
+   0.09084171118340767,
+   0.13286832155381798
+  ],
+  "line": [
+   0.7156935005064807,
+   0.846873231509858,
+   0.9130986517934192
+  ],
+  "lw": 0.5,
+  "la": 0.55,
+  "glow": [
+   1.4,
+   0.1
+  ],
+  "rim": [
+   0.6239603916750761,
+   0.8069522576692516,
+   0.8713671191987973
+  ],
+  "tint": [
+   1.05,
+   1.05,
+   1.05
+  ],
+  "sk": 1,
+  "holo": [
+   1,
+   0.42,
+   0.35,
+   0.16
+  ],
+  "scan": 520,
+  "hi": {
+   "c": [
+    0.8148465722161012,
+    0.6583748172794486,
+    0.33245153634617935
+   ],
+   "shade": [
+    0.74,
+    0.22,
+    0.1
+   ],
+   "a": 0.58,
+   "fe": 5
+  },
+  "bg": {
+   "centre": [
+    18,
+    32,
+    48
+   ],
+   "edge": [
+    3,
+    7,
+    12
+   ]
+  }
+ }
+}

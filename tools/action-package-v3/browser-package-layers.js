@@ -2,7 +2,7 @@
  * pass 0 body            : highlight forced off (d=0), skin applied, straight alpha
  * pass 1 mask            : highlighted coverage d as grayscale; everything else black (keeps depth)
  * pass 2 body-highlight  : the recipe's own highlight look (incl. translucent-glow material), skin applied
- * Skins are material-only: a luminance ramp + rim on the body materials. They never touch
+ * Skins are material-only: a luminance ramp + rim on the body materials, or (mode v2-port) the original V2 skin shader. They never touch
  * geometry, pose, camera or props, so one pose solve serves every skin.
  */
 (() => {
@@ -48,7 +48,15 @@
     });
     return {...state};
   }
+  // ported V2 skins (v2-skins/port.mjs): the original V2 region shader + SKINS, switched per skin on the same staged pose
+  function setV2(name){const V=window.__v2p;if(!V?.setSkin){if(name)throw Error('V2 skins not installed');return;}
+    if((V.skinOverride??null)===(name??null)&&V.regions.skin===(name??undefined))return applyHi(name);
+    V.regions.skin=undefined;V.setSkin(name);applyHi(name);}
+  function applyHi(name){const H=window.__pkgHi;if(!H)return;const K=name&&window.__v2p.SKINS[name]?.hi;
+    __toonUni.uHiC.value=(K?new T.Color(K.c[0],K.c[1],K.c[2]):new T.Color(H.color)).multiplyScalar(H.k);__toonUni.uHiShade.value=(K?K.shade:H.shade).slice();}
   function setSkin(s){
+    if(s?.mode==='v2-port'){U.uPkgSkin.value=0;setV2(s.v2Skin);return;}
+    if(window.__v2p?.skinOverride)setV2(null);
     if(!s||s.mode==='native'){U.uPkgSkin.value=0;return;}
     if(s.mode!=='luma-ramp')throw Error('Unsupported skin mode '+s.mode);
     U.uPkgSkin.value=1;U.uPkgDark.value.set(s.dark);U.uPkgLight.value.set(s.light);U.uPkgRim.value.set(s.rim?.color??'#000000');

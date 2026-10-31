@@ -1,1 +1,101 @@
-{"format":"pose-hub-package-skin@1","id":"neon-night","label":"Blue","status":"draft-needs-user-look-approval","look":{"mode":"luma-ramp","dark":"#060b1a","light":"#1d3b6e","ramp":[0.0,0.9],"rim":{"color":"#5fc8ff","strength":0.9,"power":2.2}},"highlightColor":"#9fdcff"}
+{
+ "format": "pose-hub-package-skin@1",
+ "id": "neon-night",
+ "label": "Blue",
+ "status": "ported-from-v2-needs-user-look-approval",
+ "look": {
+  "mode": "v2-port",
+  "v2Skin": "neon-night"
+ },
+ "highlightColor": "#9fdcff",
+ "background": {
+  "centre": [
+   34,
+   37,
+   42
+  ],
+  "edge": [
+   7,
+   8,
+   10
+  ]
+ },
+ "port": {
+  "version": "v2skin-port-r1",
+  "v2Source": "drill-anim/page/human-v2plus-regions.js",
+  "v2SourceSha256": "730047f0bc5d62eb7aae57d6dfcbbfaef6b73201dd770e4a56e29143614e99ac",
+  "regionTable": "drill-anim/models/training-human-v2plus-regions.json",
+  "regionTableSha256": "70c74aa5e8986e2575077a49ebcae405ebf68d5eb0bb00b04eb0cc9cc6c1e822",
+  "bakedRegionAttributes": "re-baked at load from the current mesh rest pose (per-vertex region distances, 8 channels); no stored geometry attribute",
+  "adaptations": [
+   "meshes(): v3 torso / head-neck keys, multi-material meshes (every matching slot)",
+   "patch(): every matched material slot",
+   "patchHolder(): every matched material slot (head)",
+   "patchHolder(): every matched material slot (tail)",
+   "setRegions(): re-wrap check on every matched slot",
+   "meshInfo: first matched slot uuid",
+   "highlight colour: the skin hi.c with the recipe pulse curve"
+  ]
+ },
+ "v2Params": {
+  "lines": true,
+  "grey": [
+   0.048171824226889426,
+   0.042311410620809675,
+   0.03954623527673283
+  ],
+  "shade": [
+   0.008023192985384994,
+   0.006995410187265387,
+   0.006995410187265387
+  ],
+  "line": [
+   0.04091519690685319,
+   0.5647115057049292,
+   1
+  ],
+  "lw": 0.5,
+  "la": 0.95,
+  "glow": [
+   1.2,
+   0.13
+  ],
+  "rim": [
+   0.06847816984440017,
+   0.05448027644244237,
+   0.05126945837404324
+  ],
+  "tint": [
+   1,
+   1,
+   1
+  ],
+  "sk": 1,
+  "hi": {
+   "c": [
+    0.3467040563550296,
+    0.7156935005064807,
+    1
+   ],
+   "shade": [
+    0.6,
+    0.38,
+    0.06
+   ],
+   "a": 0.38,
+   "fe": 7
+  },
+  "bg": {
+   "centre": [
+    34,
+    37,
+    42
+   ],
+   "edge": [
+    7,
+    8,
+    10
+   ]
+  }
+ }
+}

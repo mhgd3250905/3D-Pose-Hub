@@ -123,7 +123,7 @@ export async function stageAt(page,source,t,warm){
     const v=flareInspector.viewer,E=__drill,T=__toonT;
     const solved=E.applyAt(s,t,w);__toonUni.uBreath.value=(s.breath??.0018)*Math.sin(2*Math.PI*t/(s.timeline.duration/2));
     __toonUni.uPulse.value=E.pulseAt(s.highlight,s.timeline,t);__glowU.value=0;
-    const h=s.renderAppearance?.highlight;if(h){const pulse=Math.min(1,Math.max(0,__toonUni.uPulse.value));__toonUni.uHiC.value=new T.Color(h.color).multiplyScalar(h.intensity[0]+(h.intensity[1]-h.intensity[0])*pulse);__toonUni.uHiShade.value=h.shade.slice();}
+    const h=s.renderAppearance?.highlight;if(h){const pu=Math.min(1,Math.max(0,__toonUni.uPulse.value));window.__pkgHi={color:h.color,shade:h.shade,k:h.intensity[0]+(h.intensity[1]-h.intensity[0])*pu};}const K=window.__v2p?.skinOverride&&__v2p.SKINS?.[__v2p.skinOverride]?.hi;if(h){const pulse=Math.min(1,Math.max(0,__toonUni.uPulse.value)),c=K?new T.Color(K.c[0],K.c[1],K.c[2]):new T.Color(h.color);/* ported V2 skin: its own highlight colour / shade, the recipe's pulse curve */__toonUni.uHiC.value=c.multiplyScalar(h.intensity[0]+(h.intensity[1]-h.intensity[0])*pulse);__toonUni.uHiShade.value=(K?K.shade:h.shade).slice();}
     __props.update();v.coach.updateMatrixWorld(true);v.camera.position.copy(E.cam0.pos);v.camera.lookAt(E.cam0.tgt);v.camera.updateMatrixWorld();
     const joints=v.motion.getMetrics().joints;if(!Object.values(joints).every(p=>!Array.isArray(p)||p.every(Number.isFinite)))throw Error('Non-finite joints');
     if(v.renderer.getContext().isContextLost())throw Error('WebGL context lost');

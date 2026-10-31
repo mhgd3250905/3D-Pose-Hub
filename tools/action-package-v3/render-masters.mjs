@@ -58,7 +58,7 @@ export async function run(opts){
     authoringModel:key(prepared.recipe.model),productionModel:key(adapter),profile:{id:profile.id,sha256:profile.sha256},
     sourceSha256:loaded.pinned.sha256,rendererSha256:{
       'render-masters.mjs':sha(fs.readFileSync(SELF)),'recipe-scene.mjs':sha(fs.readFileSync(path.join(HERE,'recipe-scene.mjs'))),
-      'browser-package-layers.js':sha(fs.readFileSync(path.join(HERE,'browser-package-layers.js')))},
+      'browser-package-layers.js':sha(fs.readFileSync(path.join(HERE,'browser-package-layers.js'))),'v2-skins/port.mjs':sha(fs.readFileSync(path.join(HERE,'v2-skins/port.mjs')))},
     size,fps,durationSeconds:source.timeline.duration,loopFrames:plan.loopFrames,complete:plan.complete,qaEndpointFrame:plan.endpoint,
     skins:skins.map(s=>({id:s.id,sha256:s.sha256,status:s.status})),layers,alphaMode:'straight',camera:'fixed (recipe camera, fitTimeline)',
     pageErrors:[],frames:[],
@@ -69,6 +69,16 @@ export async function run(opts){
     fs.copyFileSync(prepared.recipeFile,path.join(out,'recipe.snapshot.json'));
     fs.writeFileSync(path.join(out,'source-manifest.json'),JSON.stringify(loaded.pinned,null,2)+'\n');
     const theme=loadTheme(),scene=await openScene(loaded,{size,theme,report});browser=scene.browser;const page=scene.page;
+    const v2=skins.filter(s=>s.look?.mode==='v2-port');
+    if(v2.length){// original V2 skins, ported: install before the layer patch, bake the regions once (rest pose; the frames re-stage)
+      const port=await import('./v2-skins/port.mjs'),src=port.portedSource(),tab=port.regionTable();
+      for(const s of v2){fail(s.port?.v2SourceSha256===src.sourceSha256,'V2 skin source changed since '+s.id+' was ported');fail(s.port?.regionTableSha256===tab.sha256,'V2 region table changed for '+s.id);}
+      report.v2SkinPort={version:port.PORT_VERSION,v2Source:port.V2_SOURCE,v2SourceSha256:src.sourceSha256,portedSha256:src.portedSha256,regionTableSha256:tab.sha256,patches:src.patches,
+        bake:await port.installV2Skins(page)};
+      report.v2SkinPort.firstBake=await port.setV2Skin(page,v2[0].look.v2Skin);await port.setV2Skin(page,null);
+      const live=await port.v2SkinParams(page);
+      for(const s of v2)fail(JSON.stringify(live[s.look.v2Skin])===JSON.stringify(s.v2Params),'V2 SKINS params differ from the snapshot in '+s.id);
+    }
     await page.addScriptTag({content:fs.readFileSync(path.join(HERE,'browser-package-layers.js'),'utf8')});
     report.layerPatch=await page.evaluate(()=>__pkgLayers.patch());
     fail(report.layerPatch.patched>0,'No materials patched');

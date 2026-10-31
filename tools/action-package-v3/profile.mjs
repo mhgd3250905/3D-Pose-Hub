@@ -21,7 +21,8 @@ export function loadProfile(name='default'){
 export function validateSkin(s){
   fail(s.format==='pose-hub-package-skin@1'&&/^[a-z0-9-]+$/.test(s.id??''),'Bad skin');
   fail(HEX.test(s.highlightColor??''),'Skin highlightColor must be #RRGGBB');
-  const l=s.look;fail(l&&['native','luma-ramp'].includes(l.mode),'Skin look.mode must be native or luma-ramp');
+  const l=s.look;fail(l&&['native','luma-ramp','v2-port'].includes(l.mode),'Skin look.mode must be native, luma-ramp or v2-port');
+  if(l.mode==='v2-port'){fail(/^[a-z0-9-]+$/.test(l.v2Skin??''),'v2-port needs look.v2Skin');fail(s.v2Params&&s.port&&/^[0-9a-f]{64}$/.test(s.port.v2SourceSha256??'')&&/^[0-9a-f]{64}$/.test(s.port.regionTableSha256??''),'v2-port needs v2Params and port hashes');}
   if(l.mode==='luma-ramp'){
     fail(HEX.test(l.dark)&&HEX.test(l.light),'luma-ramp needs dark/light colours');
     if(l.ramp)fail(l.ramp.length===2&&l.ramp[0]<l.ramp[1]&&l.ramp.every(x=>x>=0&&x<=1),'Bad ramp');
