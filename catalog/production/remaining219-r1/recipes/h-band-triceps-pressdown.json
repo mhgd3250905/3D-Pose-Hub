@@ -2,15 +2,15 @@
   "format": "pose-hub-action-recipe@1",
   "id": "h-band-triceps-pressdown",
   "nameZh": "站姿单臂弹力带下压",
-  "spec": "drill-anim/specs/h-band-triceps-pressdown.js",
-  "specSha256Lf": "48b24a353ce482601fbc487f4a3858e880d5a3939a94dd6702d5ff7ea959c0e0",
+  "spec": "drill-anim/specs/h-band-triceps-pressdown-r2.js",
+  "specSha256Lf": "335c0548ea66c45a53be4681976eee9010d56a4a5061754b89bd7bcf3120dd6c",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
   },
   "hands": {
-    "left": "native",
-    "right": "native"
+    "left": "fixed-grasp",
+    "right": "fixed-grasp"
   },
   "camera": {
     "dir": [
@@ -76,10 +76,15 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/h-band-triceps-pressdown.js"
+    "selectedSpec": "drill-anim/specs/h-band-triceps-pressdown-r2.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
   "userAccepted": false,
-  "releaseEligible": false
+  "releaseEligible": false,
+  "fixedDHandle": true,
+  "fixedCorrectionStack": {
+    "profile": "fixed-wrist-corrections-r1",
+    "version": "0.1.0-r1"
+  }
 }

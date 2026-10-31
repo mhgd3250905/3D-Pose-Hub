@@ -314,7 +314,10 @@ P.place = function(o) { const t = T(), v = flareInspector.viewer, s = o.userData
     const a = G.a.clone().applyQuaternion(bq).normalize(), c = G.c.clone().applyQuaternion(bq).add(bp).addScaledVector(a, s.shift || 0); o.position.copy(c);   /* shift: slide the handle along its axis to centre it in the fist */ o.quaternion.setFromUnitVectors(new t.Vector3(0, 1, 0), a);
     o.updateMatrixWorld(true);
     // swivel: loop apex toward the cable (pulley), but never closer than `lean` to the palmar side
-    const tgt = P.anchors[s.toward] ? P.anchors[s.toward].clone() : c.clone().add(new t.Vector3(0, 0, -1));
+    // toward:'@fingers' = loop on the knuckle face of the fist (fingers pass through the D, so the loop rides with the hand): aim along
+    // the hand bone (wrist -> finger roots), i.e. the front of the closed fist, instead of swivelling to a world anchor
+    const fb = s.toward === '@fingers' ? bone.children.find(ch => ch.isBone && /Middle|Index/.test(ch.name)) || bone.children.find(ch => ch.isBone) : null;
+    const tgt = fb ? c.clone().add(fb.getWorldPosition(new t.Vector3()).sub(bp)) : P.anchors[s.toward] ? P.anchors[s.toward].clone() : c.clone().add(new t.Vector3(0, 0, -1));
     const want = tgt.sub(c); want.addScaledVector(a, -want.dot(a)); want.normalize();
     const dors = G.pal.clone().applyQuaternion(bq).negate(); dors.addScaledVector(a, -dors.dot(a)).normalize();
     const dir = dors.clone().multiplyScalar(s.lean ?? 0.6).add(want.multiplyScalar(1 - (s.lean ?? 0.6))).normalize();
