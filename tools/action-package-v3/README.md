@@ -26,7 +26,7 @@ produce.py = 批量串行执行上面两步 + index.json，可中断续跑
 ```bash
 npm run dev -- --host 127.0.0.1 --port 8830 --strictPort   # 另一个终端
 # 先打通 2–3 个代表动作
-python tools/action-package-v3/produce.py --root F:/PoseHub-v3 --ids h-squat,h-db-curl-r?,h-kneeling-thread-needle-r2
+python tools/action-package-v3/produce.py --root F:/PoseHub-v3 --ids h-squat,chest-C,h-kneeling-thread-needle
 # 全部 249 个（中断后同一命令续跑）
 python tools/action-package-v3/produce.py --root F:/PoseHub-v3
 python tools/action-package-v3/produce.py --root F:/PoseHub-v3 --dry-run   # 只看进度
