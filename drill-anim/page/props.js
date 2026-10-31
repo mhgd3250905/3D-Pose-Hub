@@ -263,6 +263,8 @@ Object.assign(B, {
       for (const o of ms) { const N = o.geometry.attributes.position.count; for (let i = 0; i < N; i++) { o.getVertexPosition(i, p); p.applyMatrix4(o.matrixWorld);
         if (Math.abs(p.clone().sub(c0).dot(ax)) < 0.075 && Math.abs(p.z - c0.z) < 0.09 && sg * p.x > 0 && sg * (p.x - c0.x) > out) out = sg * (p.x - c0.x);
         if (p.y < 0.13 && sg * p.x > 0) { if (p.y < soleY) soleY = p.y; fx0 = Math.min(fx0, p.x); fx1 = Math.max(fx1, p.x); fz0 = Math.min(fz0, p.z); fz1 = Math.max(fz1, p.z); } } }
+      // padOut (optional): the knee's lateral half-width from c0, overriding the mesh scan (the v3 armfix body scans ~8 cm too wide here)
+      if (s.padOut != null) out = s.padOut;
       const gp = s.gap ?? 0.003, padC = c0.clone().add(new t.Vector3(sg * (out + gp + 0.025), 0, 0));
       const pg = new t.Group(); box([0.05, 0.16, 0.14], [0, 0, 0], pad, 0, pg); g.add(pg);
       const fg = new t.Group(); box([fx1 - fx0 + 0.03, 0.02, fz1 - fz0 + 0.04], [0, -0.01, 0], frame, 0, fg); g.add(fg);
@@ -343,6 +345,14 @@ P.place = function(o) { const t = T(), v = flareInspector.viewer, s = o.userData
     const end = U.rg.position.clone(); end.x = ax; setTube(t, U.arm, hubP, end); o.updateMatrixWorld(true); return; }
   if (s.type === 'hipAbductor') { for (const [side, S] of Object.entries(o.userData.sides)) { const th = v.coach.getObjectByName(side + 'Thigh'), ft = v.coach.getObjectByName(side + 'Foot'); th.updateMatrixWorld(true); ft.updateMatrixWorld(true);
       S.pg.position.copy(th.localToWorld(S.po.clone())); S.pg.quaternion.copy(th.getWorldQuaternion(new t.Quaternion())).multiply(S.pq);
+      // padFollow 'knee' (opt-in): place the pad from the hip -> knee line instead of the thigh bone's frame, so thigh twist from the
+      // ankle yaw cannot swing it over or under the knee: centre = knee + padUp along the thigh + (padOut + gap + half pad) sideways,
+      // sideways = horizontal, perpendicular to the thigh; the pad's long side runs along the thigh.
+      if (s.padFollow === 'knee') { const sh = v.coach.getObjectByName(side + 'Shin'), Hp = th.getWorldPosition(new t.Vector3()), K = sh.getWorldPosition(new t.Vector3());
+        const a = Hp.clone().sub(K).normalize(), lat = new t.Vector3().crossVectors(new t.Vector3(0, 1, 0), a).normalize(); if (lat.x * S.sg < 0) lat.negate();
+        const up = new t.Vector3().crossVectors(a, lat).normalize(); if (up.y < 0) up.negate(); const fw = new t.Vector3().crossVectors(lat, up).normalize();
+        S.pg.position.copy(K).addScaledVector(a, s.padUp ?? 0.09).addScaledVector(lat, (s.padOut ?? 0.06) + (s.gap ?? 0.003) + 0.025);
+        S.pg.quaternion.setFromRotationMatrix(new t.Matrix4().makeBasis(lat, up, fw)); }
       S.fg.position.copy(ft.localToWorld(S.fo.clone())); S.fg.quaternion.copy(ft.getWorldQuaternion(new t.Quaternion())).multiply(S.fq);
       const py = s.pivotY ?? s.seatY - 0.13, hip = th.getWorldPosition(new t.Vector3()), piv = new t.Vector3(S.sg * 0.05, py, hip.z);
       const under = new t.Vector3(S.pg.position.x + S.sg * 0.01, py, S.pg.position.z), low = new t.Vector3(under.x, S.fg.position.y - 0.01, under.z);
