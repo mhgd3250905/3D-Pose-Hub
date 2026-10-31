@@ -1,0 +1,95 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "w-wall-sit",
+ "reviewStatus": "draft-ai-needs-user-review",
+ "sources": [
+  "drill-anim/specs/w-wall-sit.js"
+ ],
+ "name": {
+  "zh": "靠墙静蹲",
+  "en": "Wall Sit"
+ },
+ "purpose": {
+  "zh": "静态练大腿和臀部耐力",
+  "en": "Build thigh and glute endurance with a static hold."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "背贴墙，大腿与地面平行，膝在脚踝上方",
+    "en": "Back on the wall, thighs level, knees over your ankles"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "双脚与髋同宽，手臂向前伸直",
+    "en": "Feet hip-width apart, arms reaching forward."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "保持均匀呼吸，不要憋气",
+    "en": "Breathe steadily and do not hold your breath."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "膝盖超过脚尖太多",
+   "en": "Letting the knees drift far past the toes."
+  },
+  {
+   "zh": "背部离开墙面",
+   "en": "Letting the back come off the wall."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "膝盖疼痛时蹲得高一些，仍痛就停止",
+   "en": "Sit higher if your knees hurt, and stop if the pain continues."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "quadriceps",
+   "glutes"
+  ],
+  "synergistMuscles": [
+   "core",
+   "adductors"
+  ],
+  "equipment": [
+   "wall"
+  ],
+  "position": "other",
+  "difficulty": 1
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "hold",
+  "sets": 3,
+  "seconds": 30,
+  "restSeconds": 45
+ },
+ "phases": {
+  "start": {
+   "zh": "坐下去",
+   "en": "Sit down"
+  },
+  "peak": {
+   "zh": "保持呼吸",
+   "en": "Breathe and hold"
+  },
+  "end": {
+   "zh": "慢慢站起",
+   "en": "Stand up"
+  }
+ }
+}

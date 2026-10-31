@@ -1,0 +1,93 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "h-biceps-self",
+ "reviewStatus": "draft-ai-needs-user-review",
+ "sources": [
+  "drill-anim/specs/h-biceps-self-r8.js"
+ ],
+ "name": {
+  "zh": "双手对抗弯举",
+  "en": "Self-Resisted Biceps Curl"
+ },
+ "purpose": {
+  "zh": "不用器械，用另一只手给阻力练二头肌",
+  "en": "Train your biceps with no equipment, using your other hand for resistance."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "另一只手压住前臂，慢慢对抗着弯举",
+    "en": "Press down on your forearm with the other hand and curl slowly against it"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "手肘贴住身体，掌心朝上",
+    "en": "Keep your elbow at your side, palm up."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "下放时二头肌继续对抗，不要放松",
+    "en": "Keep resisting with your biceps as you lower."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "身体后仰",
+   "en": "Leaning back."
+  },
+  {
+   "zh": "手肘离开身体",
+   "en": "Letting the elbow leave your side."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "肘部疼痛时减小用力，仍痛就停止",
+   "en": "Push more gently if your elbow hurts, and stop if the pain continues."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "biceps"
+  ],
+  "synergistMuscles": [
+   "triceps",
+   "chest"
+  ],
+  "equipment": [],
+  "position": "standing",
+  "difficulty": 1
+ },
+ "unilateral": true,
+ "startingSide": "right",
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 3,
+  "reps": 6,
+  "restSeconds": 30
+ },
+ "phases": {
+  "start": {
+   "zh": "对抗弯举",
+   "en": "Curl against"
+  },
+  "peak": {
+   "zh": "顶端",
+   "en": "Top"
+  },
+  "end": {
+   "zh": "对抗放下",
+   "en": "Resist down"
+  }
+ }
+}

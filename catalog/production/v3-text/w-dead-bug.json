@@ -1,0 +1,100 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "w-dead-bug",
+ "reviewStatus": "draft-ai-needs-user-review",
+ "sources": [
+  "catalog/v2/actions/w-dead-bug.json",
+  "catalog/voice-v2/script.json",
+  "drill-anim/specs/w-dead-bug-r2.js"
+ ],
+ "name": {
+  "zh": "死虫式",
+  "en": "Dead Bug"
+ },
+ "purpose": {
+  "zh": "练腹部",
+  "en": "Practice trunk control while moving opposite limbs."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "下背紧贴地面，对侧手脚慢慢伸远",
+    "en": "Keep your lower back on the floor and slowly extend the opposite arm and leg"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "回程缓慢，回到起始位再换另一组手脚",
+    "en": "Return slowly to the starting position before alternating limbs."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "保持呼吸，动作幅度以腰背稳定为限",
+    "en": "Keep breathing and limit your reach to the range you can control."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "伸手伸腿时腰背明显拱起",
+   "en": "Arching the lower back as the limbs extend."
+  },
+  {
+   "zh": "用甩动代替缓慢控制",
+   "en": "Swinging the limbs instead of controlling the movement."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "腰背：伸远手脚时保持躯干可控；一旦腰背明显拱起，缩小活动幅度。",
+   "en": "Lower back: shorten the limb reach if you cannot keep your trunk controlled."
+  },
+  {
+   "zh": "髋前侧：伸腿范围以舒适、可控为限，不用憋气维持姿势。",
+   "en": "Front of the hip: keep the leg range comfortable and controlled, and keep breathing."
+  }
+ ],
+ "tags": {
+  "category": "stability",
+  "activeMuscles": [
+   "core"
+  ],
+  "synergistMuscles": [
+   "obliques",
+   "hip-flexors"
+  ],
+  "equipment": [
+   "mat"
+  ],
+  "position": "supine",
+  "difficulty": 1
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 3,
+  "reps": 10,
+  "restSeconds": 30
+ },
+ "phases": {
+  "start": {
+   "zh": "慢慢伸远",
+   "en": "Extend slowly"
+  },
+  "peak": {
+   "zh": "保持住",
+   "en": "Hold"
+  },
+  "end": {
+   "zh": "慢慢收回",
+   "en": "Return slowly"
+  }
+ }
+}

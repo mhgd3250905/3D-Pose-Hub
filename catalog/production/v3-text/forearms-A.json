@@ -1,0 +1,95 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "forearms-A",
+ "reviewStatus": "draft-ai-needs-user-review",
+ "sources": [
+  "drill-anim/data/drills.json",
+  "drill-anim/specs/forearms-A-r2.js",
+  "drill-anim/specs/forearms-A.js"
+ ],
+ "name": {
+  "zh": "跪姿多方向腕部摇摆",
+  "en": "Quadruped Wrist Rocks"
+ },
+ "purpose": {
+  "zh": "活动手腕，为支撑类动作做准备",
+  "en": "Mobilize your wrists to prepare for weight-bearing work."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "身体前后移动重心，力度由轻到重",
+    "en": "Rock your weight forward and back, starting light and building up"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "手指依次朝前、朝侧、朝后，最后手背着地",
+    "en": "Turn your fingers forward, sideways, back, then rest on the backs of your hands."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "手臂伸直，膝盖跪稳",
+    "en": "Keep your arms straight and your knees steady."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "一上来就压全部体重",
+   "en": "Putting full weight on the wrists right away."
+  },
+  {
+   "zh": "只做手指朝前一个方向",
+   "en": "Only doing the fingers-forward position."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "手腕刺痛或发麻就停止",
+   "en": "Stop if your wrists feel sharp pain or numbness."
+  }
+ ],
+ "tags": {
+  "category": "mobility",
+  "activeMuscles": [
+   "forearms"
+  ],
+  "synergistMuscles": [
+   "deltoids"
+  ],
+  "equipment": [
+   "mat"
+  ],
+  "position": "quadruped",
+  "difficulty": 1
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "time",
+  "sets": 2,
+  "seconds": 60,
+  "restSeconds": 20
+ },
+ "phases": {
+  "start": {
+   "zh": "重心前移",
+   "en": "Rock forward"
+  },
+  "peak": {
+   "zh": "停一下",
+   "en": "Pause"
+  },
+  "end": {
+   "zh": "重心后移",
+   "en": "Rock back"
+  }
+ }
+}

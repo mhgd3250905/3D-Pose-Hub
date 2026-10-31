@@ -1,0 +1,88 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "quadriceps-C",
+ "reviewStatus": "draft-ai-needs-user-review",
+ "sources": [
+  "drill-anim/data/drills.json",
+  "drill-anim/specs/quadriceps-C-r2.js"
+ ],
+ "name": {
+  "zh": "器械腿屈伸（顶端锁直）",
+  "en": "Machine Leg Extension (Lockout)"
+ },
+ "purpose": {
+  "zh": "在完全伸直位加强大腿前侧",
+  "en": "Strengthen the front of your thighs at full knee extension."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "踢到完全伸直，顶端停2秒再慢放",
+    "en": "Extend until fully straight, hold for two seconds, then lower slowly"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "膝关节对齐器械转轴",
+    "en": "Line your knees up with the machine pivot."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "背靠垫子，双手扶把手",
+    "en": "Sit back against the pad and hold the handles."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "重量太重，用甩踢代替控制",
+   "en": "Using too much weight and kicking instead of controlling."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "重量从轻开始；膝前痛时缩小幅度",
+   "en": "Start light, and reduce the range if the front of your knee hurts."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "quadriceps"
+  ],
+  "synergistMuscles": [],
+  "equipment": [
+   "leg-extension-machine"
+  ],
+  "position": "seated",
+  "difficulty": 1
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 3,
+  "reps": 10,
+  "restSeconds": 60
+ },
+ "phases": {
+  "start": {
+   "zh": "伸直",
+   "en": "Extend"
+  },
+  "peak": {
+   "zh": "停两秒",
+   "en": "Hold two"
+  },
+  "end": {
+   "zh": "慢放",
+   "en": "Lower slowly"
+  }
+ }
+}

@@ -1,0 +1,94 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "triceps-A",
+ "reviewStatus": "draft-ai-needs-user-review",
+ "sources": [
+  "drill-anim/data/drills.json",
+  "drill-anim/specs/triceps-A-r2.js"
+ ],
+ "name": {
+  "zh": "窄距俯卧撑（锁肘停顿）",
+  "en": "Close-Grip Push-Up with Lockout"
+ },
+ "purpose": {
+  "zh": "练顶端锁肘的力量",
+  "en": "Build strength to lock your elbows at the top."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "肘贴身体向后弯，顶端锁直停1秒",
+    "en": "Bend with your elbows tucked back, then lock out and hold for one second"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "双手与肩同宽或略窄",
+    "en": "Place your hands shoulder-width or a little narrower."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "身体一条直线，把地面推远",
+    "en": "Keep your body in one line and push the floor away."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "肘向外翻",
+   "en": "Flaring the elbows out."
+  },
+  {
+   "zh": "顶端没伸直就开始下一次",
+   "en": "Starting the next rep before locking out."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "先做2–3分钟手腕热身；腕部刺痛或麻木立即停止",
+   "en": "Warm up your wrists for 2–3 minutes first; stop right away if they feel sharp pain or numbness."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "triceps",
+   "chest"
+  ],
+  "synergistMuscles": [
+   "deltoids",
+   "core"
+  ],
+  "equipment": [],
+  "position": "plank",
+  "difficulty": 1
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 3,
+  "reps": 8,
+  "restSeconds": 60
+ },
+ "phases": {
+  "start": {
+   "zh": "下放",
+   "en": "Lower"
+  },
+  "peak": {
+   "zh": "推起锁肘",
+   "en": "Press and lock"
+  },
+  "end": {
+   "zh": "停一秒",
+   "en": "Hold one"
+  }
+ }
+}

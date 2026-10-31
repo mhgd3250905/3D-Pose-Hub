@@ -1,0 +1,89 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "quadriceps-B",
+ "reviewStatus": "draft-ai-needs-user-review",
+ "sources": [
+  "drill-anim/data/drills.json",
+  "drill-anim/specs/quadriceps-B.js"
+ ],
+ "name": {
+  "zh": "弹力带终末伸膝",
+  "en": "Banded Terminal Knee Extension"
+ },
+ "purpose": {
+  "zh": "专练最后锁直膝盖的力量",
+  "en": "Train the last bit of knee straightening."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "用力把膝锁直，大腿前侧绷紧",
+    "en": "Straighten your knee fully and tighten the front of your thigh"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "弹力带套在膝后，微屈膝开始",
+    "en": "Loop the band behind your knee and start with a slight bend."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "锁直停2秒，脚跟不离地",
+    "en": "Hold straight for two seconds without lifting your heel."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "只是挺髋，膝没有完全伸直",
+   "en": "Pushing the hips forward without fully straightening the knee."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "膝盖疼痛时减轻阻力，仍痛就停止",
+   "en": "Use a lighter band if your knee hurts, and stop if the pain continues."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "quadriceps"
+  ],
+  "synergistMuscles": [],
+  "equipment": [
+   "resistance-band"
+  ],
+  "position": "standing",
+  "difficulty": 1
+ },
+ "unilateral": true,
+ "startingSide": "right",
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 3,
+  "reps": 15,
+  "restSeconds": 45
+ },
+ "phases": {
+  "start": {
+   "zh": "锁直膝盖",
+   "en": "Lock it out"
+  },
+  "peak": {
+   "zh": "停两秒",
+   "en": "Hold two"
+  },
+  "end": {
+   "zh": "慢慢放松",
+   "en": "Ease back"
+  }
+ }
+}

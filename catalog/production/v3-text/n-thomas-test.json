@@ -1,0 +1,94 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "n-thomas-test",
+ "reviewStatus": "draft-ai-needs-user-review",
+ "sources": [
+  "drill-anim/specs/n-thomas-test-r3.js"
+ ],
+ "name": {
+  "zh": "仰卧单膝抱胸（托马斯测试）",
+  "en": "Supine Single Knee-to-Chest (Thomas Test)"
+ },
+ "purpose": {
+  "zh": "检查髋前侧是否紧张，同时放松髋前侧",
+  "en": "Check for tight hip flexors while gently stretching the front of the hip."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "一侧膝盖抱向胸口，另一条腿放松贴地",
+    "en": "Hug one knee to your chest and let the other leg rest long on the floor"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "呼气时轻轻拉近膝盖，吸气时放松",
+    "en": "Draw the knee in gently as you exhale and ease off as you inhale."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "观察伸直的大腿是否离开地面",
+    "en": "Notice whether the straight thigh lifts off the floor."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "伸直的腿主动用力压地或抬起",
+   "en": "Pressing the straight leg down or lifting it on purpose."
+  },
+  {
+   "zh": "抱膝太用力，腰部离地",
+   "en": "Pulling the knee in too hard so the lower back lifts."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "膝或髋疼痛时减小抱膝幅度，仍痛就停止",
+   "en": "Hug the knee less if your knees or hips hurt, and stop if the pain continues."
+  }
+ ],
+ "tags": {
+  "category": "assessment",
+  "activeMuscles": [
+   "hip-flexors"
+  ],
+  "synergistMuscles": [
+   "glutes"
+  ],
+  "equipment": [
+   "mat"
+  ],
+  "position": "supine",
+  "difficulty": 1
+ },
+ "unilateral": true,
+ "startingSide": "right",
+ "defaultDose": {
+  "mode": "hold",
+  "sets": 2,
+  "seconds": 30,
+  "restSeconds": 15
+ },
+ "phases": {
+  "start": {
+   "zh": "抱膝",
+   "en": "Hug the knee"
+  },
+  "peak": {
+   "zh": "保持呼吸",
+   "en": "Breathe and hold"
+  },
+  "end": {
+   "zh": "慢慢放开",
+   "en": "Release"
+  }
+ }
+}

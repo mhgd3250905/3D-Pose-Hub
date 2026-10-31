@@ -1,0 +1,99 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "chest-A",
+ "reviewStatus": "draft-ai-needs-user-review",
+ "sources": [
+  "drill-anim/data/drills.json",
+  "drill-anim/specs/chest-A-r3.js",
+  "drill-anim/specs/chest-A-r2.js"
+ ],
+ "name": {
+  "zh": "俯卧撑转侧撑",
+  "en": "Push-Up to Side Plank Rotation"
+ },
+ "purpose": {
+  "zh": "练胸部和肩部，提升转体时的核心控制",
+  "en": "Build the chest and shoulders and control your core while rotating."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "推起后整体转向侧面，支撑手不动",
+    "en": "Push up, then turn your whole body to the side on a fixed hand"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "转动时胸和骨盆一起走，不先扭腰",
+    "en": "Turn your chest and hips together without twisting at the waist."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "上方手臂伸向天花板，停一下再转回",
+    "en": "Reach your top arm to the ceiling, pause, then turn back."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "转身太快",
+   "en": "Turning too fast."
+  },
+  {
+   "zh": "支撑肩塌下去",
+   "en": "Letting the supporting shoulder sink."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "先做手腕热身；手腕刺痛或发麻就停止",
+   "en": "Warm up your wrists first, and stop if they feel sharp pain or numbness."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "chest",
+   "obliques"
+  ],
+  "synergistMuscles": [
+   "triceps",
+   "deltoids",
+   "core"
+  ],
+  "equipment": [
+   "mat"
+  ],
+  "position": "plank",
+  "difficulty": 2
+ },
+ "unilateral": true,
+ "startingSide": "right",
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 3,
+  "reps": 6,
+  "restSeconds": 60
+ },
+ "phases": {
+  "start": {
+   "zh": "推起转身",
+   "en": "Push and turn"
+  },
+  "peak": {
+   "zh": "手臂向上",
+   "en": "Reach up"
+  },
+  "end": {
+   "zh": "转回平板",
+   "en": "Turn back"
+  }
+ }
+}

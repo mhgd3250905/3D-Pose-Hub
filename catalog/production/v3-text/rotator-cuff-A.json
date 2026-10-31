@@ -1,0 +1,91 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "rotator-cuff-A",
+ "reviewStatus": "draft-ai-needs-user-review",
+ "sources": [
+  "drill-anim/data/drills.json",
+  "drill-anim/specs/rotator-cuff-A-r2.js"
+ ],
+ "name": {
+  "zh": "俯撑交替触肩",
+  "en": "Plank Shoulder Taps"
+ },
+ "purpose": {
+  "zh": "单手接住体重，练肩部稳定",
+  "en": "Build shoulder stability as one hand takes your weight."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "承重手推地，触肩时骨盆不晃",
+    "en": "Push the floor with the support hand and keep your hips still as you tap"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "高位平板，双脚略分开",
+    "en": "Hold a high plank with your feet a little apart."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "承重手肘锁直，肩不往下塌",
+    "en": "Keep the support arm straight and do not let the shoulder sink."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "触得太快，身体左右摇晃",
+   "en": "Tapping too fast so the body rocks side to side."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "先做2–3分钟手腕热身；腕部刺痛或麻木立即停止",
+   "en": "Warm up your wrists for 2–3 minutes first; stop right away if they feel sharp pain or numbness."
+  }
+ ],
+ "tags": {
+  "category": "stability",
+  "activeMuscles": [
+   "rotator-cuff",
+   "core"
+  ],
+  "synergistMuscles": [
+   "deltoids",
+   "chest",
+   "triceps"
+  ],
+  "equipment": [],
+  "position": "plank",
+  "difficulty": 1
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 3,
+  "reps": 8,
+  "restSeconds": 45
+ },
+ "phases": {
+  "start": {
+   "zh": "抬手触肩",
+   "en": "Tap"
+  },
+  "peak": {
+   "zh": "稳住",
+   "en": "Hold steady"
+  },
+  "end": {
+   "zh": "放回",
+   "en": "Hand down"
+  }
+ }
+}

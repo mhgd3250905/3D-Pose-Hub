@@ -1,0 +1,94 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "forearms-B",
+ "reviewStatus": "draft-ai-needs-user-review",
+ "sources": [
+  "drill-anim/data/drills.json",
+  "drill-anim/specs/forearms-B.js"
+ ],
+ "name": {
+  "zh": "哑铃腕屈 + 腕伸",
+  "en": "Seated Dumbbell Wrist Curl + Extension"
+ },
+ "purpose": {
+  "zh": "练前臂屈伸肌，增强握力和手腕力量",
+  "en": "Build the forearm muscles for stronger grip and wrists."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "前臂平放在大腿上，只动手腕",
+    "en": "Rest your forearm on your thigh and move only your wrist"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "手腕向上卷起，再慢慢放下过中立位",
+    "en": "Curl your wrist up, then lower slowly past neutral."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "上1秒、下3秒，全幅度慢放",
+    "en": "Lift for one second and lower for three, through the full range."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "甩动借力",
+   "en": "Swinging the weight."
+  },
+  {
+   "zh": "用前臂抬起代替手腕屈伸",
+   "en": "Lifting the forearm instead of bending the wrist."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "用轻重量，手腕不适时减小幅度",
+   "en": "Use a light weight and reduce the range if your wrist feels uncomfortable."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "forearms"
+  ],
+  "synergistMuscles": [],
+  "equipment": [
+   "dumbbell",
+   "bench"
+  ],
+  "position": "seated",
+  "difficulty": 1
+ },
+ "unilateral": true,
+ "startingSide": "right",
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 3,
+  "reps": 15,
+  "restSeconds": 45
+ },
+ "phases": {
+  "start": {
+   "zh": "卷起手腕",
+   "en": "Curl up"
+  },
+  "peak": {
+   "zh": "停一下",
+   "en": "Pause"
+  },
+  "end": {
+   "zh": "慢慢放下",
+   "en": "Lower slowly"
+  }
+ }
+}

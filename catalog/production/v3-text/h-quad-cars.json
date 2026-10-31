@@ -1,0 +1,101 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "h-quad-cars",
+ "reviewStatus": "draft-ai-needs-user-review",
+ "sources": [
+  "drill-anim/specs/h-quad-cars-r2.js",
+  "drill-anim/specs/h-quad-cars.js"
+ ],
+ "name": {
+  "zh": "四足髋关节画圈",
+  "en": "Quadruped Hip CARs"
+ },
+ "purpose": {
+  "zh": "在全范围内主动控制髋关节",
+  "en": "Move the hip through its full range under control."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "膝盖抬起，画出髋能做到的最大圆",
+    "en": "Lift your knee and draw the biggest circle your hip allows"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "骨盆和脊柱保持不动",
+    "en": "Keep your pelvis and spine still."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "向前、向外、向后，再反方向画回",
+    "en": "Go forward, out, and back, then reverse the circle."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "骨盆跟着转动",
+   "en": "Rotating the pelvis with the leg."
+  },
+  {
+   "zh": "画得太快",
+   "en": "Circling too fast."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "髋不适时缩小圆圈，仍痛就停止",
+   "en": "Make the circle smaller if your hip feels uncomfortable, and stop if it still hurts."
+  },
+  {
+   "zh": "先做手腕热身；手腕刺痛或发麻就停止",
+   "en": "Warm up your wrists first, and stop if they feel sharp pain or numbness."
+  }
+ ],
+ "tags": {
+  "category": "mobility",
+  "activeMuscles": [
+   "glutes",
+   "abductors",
+   "hip-flexors"
+  ],
+  "synergistMuscles": [
+   "core"
+  ],
+  "equipment": [
+   "mat"
+  ],
+  "position": "quadruped",
+  "difficulty": 2
+ },
+ "unilateral": true,
+ "startingSide": "right",
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 2,
+  "reps": 3,
+  "restSeconds": 20
+ },
+ "phases": {
+  "start": {
+   "zh": "抬膝画圈",
+   "en": "Lift and circle"
+  },
+  "peak": {
+   "zh": "向外打开",
+   "en": "Open out"
+  },
+  "end": {
+   "zh": "反向回来",
+   "en": "Reverse back"
+  }
+ }
+}

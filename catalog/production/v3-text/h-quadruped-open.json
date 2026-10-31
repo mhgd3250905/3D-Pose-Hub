@@ -1,0 +1,100 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "h-quadruped-open",
+ "reviewStatus": "draft-ai-needs-user-review",
+ "sources": [
+  "drill-anim/specs/h-quadruped-open-rr1.js"
+ ],
+ "name": {
+  "zh": "四足跪姿单臂开胸",
+  "en": "Quadruped Trunk Rotation with Arm Opening"
+ },
+ "purpose": {
+  "zh": "活动上背旋转，打开胸部",
+  "en": "Mobilize upper-back rotation and open the chest."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "一手撑地，另一臂向天花板打开",
+    "en": "Keep one hand down and open your other arm toward the ceiling"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "眼睛跟着手，胸口转开",
+    "en": "Follow your hand with your eyes and turn your chest open."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "臀部不动，再慢慢收回",
+    "en": "Keep your hips still, then bring the arm back slowly."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "臀部向一侧移开",
+   "en": "Shifting the hips to one side."
+  },
+  {
+   "zh": "用腰扭代替上背转",
+   "en": "Twisting from the lower back instead of the upper back."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "只拉到舒适的程度，出现疼痛就放松",
+   "en": "Stretch only to a comfortable point, and ease off if anything hurts."
+  },
+  {
+   "zh": "先做手腕热身；手腕刺痛或发麻就停止",
+   "en": "Warm up your wrists first, and stop if they feel sharp pain or numbness."
+  }
+ ],
+ "tags": {
+  "category": "mobility",
+  "activeMuscles": [
+   "upper-back",
+   "chest"
+  ],
+  "synergistMuscles": [
+   "obliques",
+   "deltoids"
+  ],
+  "equipment": [
+   "mat"
+  ],
+  "position": "quadruped",
+  "difficulty": 1
+ },
+ "unilateral": true,
+ "startingSide": "right",
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 2,
+  "reps": 6,
+  "restSeconds": 20
+ },
+ "phases": {
+  "start": {
+   "zh": "手臂打开",
+   "en": "Open your arm"
+  },
+  "peak": {
+   "zh": "保持呼吸",
+   "en": "Breathe and hold"
+  },
+  "end": {
+   "zh": "慢慢收回",
+   "en": "Bring it back"
+  }
+ }
+}

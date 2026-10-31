@@ -1,0 +1,93 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "hip-flexors-C",
+ "reviewStatus": "draft-ai-needs-user-review",
+ "sources": [
+  "drill-anim/data/drills.json",
+  "drill-anim/specs/hip-flexors-C.js"
+ ],
+ "name": {
+  "zh": "绳索站姿直腿前抬",
+  "en": "Standing Cable Straight-Leg Raise"
+ },
+ "purpose": {
+  "zh": "用直腿长杠杆强化屈髋力量",
+  "en": "Strengthen the hip flexors with a long straight-leg lever."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "膝盖伸直，把腿抬到能控制的最高点",
+    "en": "Keep your knee straight and raise the leg as high as you can control"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "脚踝扣连低位绳索，身体站直",
+    "en": "Attach the ankle strap to a low cable and stand tall."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "顶端稍停，再慢慢放下",
+    "en": "Pause briefly at the top, then lower slowly."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "用后仰或摆动把腿甩上去",
+   "en": "Leaning back or swinging the leg up."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "全程保持腰椎中立，腰部发紧或疼痛时减小幅度",
+   "en": "Keep your lower back neutral, and reduce the range if it feels tight or painful."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "hip-flexors",
+   "quadriceps"
+  ],
+  "synergistMuscles": [
+   "core"
+  ],
+  "equipment": [
+   "cable-machine",
+   "ankle-strap"
+  ],
+  "position": "standing",
+  "difficulty": 2
+ },
+ "unilateral": true,
+ "startingSide": "right",
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 3,
+  "reps": 8,
+  "restSeconds": 60
+ },
+ "phases": {
+  "start": {
+   "zh": "直腿抬起",
+   "en": "Raise"
+  },
+  "peak": {
+   "zh": "停住",
+   "en": "Hold"
+  },
+  "end": {
+   "zh": "慢放",
+   "en": "Lower slowly"
+  }
+ }
+}

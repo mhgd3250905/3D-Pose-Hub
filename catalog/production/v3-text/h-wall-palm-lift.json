@@ -1,0 +1,92 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "h-wall-palm-lift",
+ "reviewStatus": "draft-ai-needs-user-review",
+ "sources": [
+  "drill-anim/specs/h-wall-palm-lift-rr5.js"
+ ],
+ "name": {
+  "zh": "墙面指端接触掌根抬起诊断",
+  "en": "Wall Palm-Heel Lift Diagnostic"
+ },
+ "purpose": {
+  "zh": "检查手指撑墙时掌根抬起的控制",
+  "en": "Check how well you control lifting the palm heel with fingertips on the wall."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "指尖贴墙不动，慢慢抬起掌根",
+    "en": "Keep your fingertips on the wall and slowly lift the heel of your palm"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "面向墙站稳，手臂放松，不耸肩",
+    "en": "Stand facing the wall, arm relaxed, shoulders down."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "抬到能控制的高度停住，再慢慢放回",
+    "en": "Pause at the height you can control, then lower slowly."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "指尖在墙上滑动或离开墙面",
+   "en": "Letting the fingertips slide or leave the wall."
+  },
+  {
+   "zh": "用身体前倾代替手腕发力",
+   "en": "Leaning the body in instead of moving the wrist."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "手腕或手指疼痛时减小幅度，仍痛就停止",
+   "en": "Reduce the range if your wrist or fingers hurt, and stop if the pain continues."
+  }
+ ],
+ "tags": {
+  "category": "assessment",
+  "activeMuscles": [
+   "forearms"
+  ],
+  "synergistMuscles": [],
+  "equipment": [
+   "wall"
+  ],
+  "position": "standing",
+  "difficulty": 1
+ },
+ "unilateral": true,
+ "startingSide": "right",
+ "defaultDose": {
+  "mode": "hold",
+  "sets": 1,
+  "seconds": 3,
+  "restSeconds": 15
+ },
+ "phases": {
+  "start": {
+   "zh": "抬起掌根",
+   "en": "Lift the palm"
+  },
+  "peak": {
+   "zh": "停住",
+   "en": "Hold"
+  },
+  "end": {
+   "zh": "慢慢放回",
+   "en": "Lower slowly"
+  }
+ }
+}

@@ -1,0 +1,104 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "s-frog",
+ "reviewStatus": "draft-ai-needs-user-review",
+ "sources": [
+  "catalog/v2/actions/s-frog.json",
+  "catalog/voice-v2/script.json",
+  "drill-anim/specs/s-frog-r3.js"
+ ],
+ "name": {
+  "zh": "青蛙式",
+  "en": "Frog Stretch"
+ },
+ "purpose": {
+  "zh": "拉伸大腿内侧",
+  "en": "Explore a comfortable inner-thigh stretch in a wide-knee position."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "膝盖向两侧打开，脚尖朝外，臀部慢慢往后坐",
+    "en": "Knees wide, toes out, sit your hips back slowly"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "缓慢移动，停在自己能控制的幅度",
+    "en": "Move slowly and stop within a range you can control."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "保持呼吸，回程也要平稳",
+    "en": "Keep breathing and return smoothly."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "强压髋部追求过大的幅度",
+   "en": "Forcing the hips into an excessive range."
+  },
+  {
+   "zh": "出现不适仍弹震或继续加深",
+   "en": "Bouncing or pushing deeper despite discomfort."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "膝：使用舒适垫面，膝部承托不适时不要继续加宽。",
+   "en": "Knees: use comfortable padding and do not widen the stance through knee discomfort."
+  },
+  {
+   "zh": "大腿内侧与髋：缓慢后坐，只保留可控拉伸感，不弹震、不让他人强压。",
+   "en": "Inner thighs and hips: rock back slowly within a controlled stretch without bouncing or being pushed."
+  },
+  {
+   "zh": "腰背：保持躯干可控，不为更深后坐强行塌腰或憋气。",
+   "en": "Lower back: keep the trunk controlled instead of forcing a deeper rock through the lower back or breath-holding."
+  }
+ ],
+ "tags": {
+  "category": "stretch",
+  "activeMuscles": [
+   "adductors"
+  ],
+  "synergistMuscles": [
+   "core",
+   "lower-back"
+  ],
+  "equipment": [
+   "mat"
+  ],
+  "position": "quadruped",
+  "difficulty": 3
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "hold",
+  "sets": 1,
+  "seconds": 40,
+  "restSeconds": 10
+ },
+ "phases": {
+  "start": {
+   "zh": "髋向后坐",
+   "en": "Sit your hips back"
+  },
+  "peak": {
+   "zh": "保持住",
+   "en": "Hold"
+  },
+  "end": {
+   "zh": "慢慢还原",
+   "en": "Slowly come out of it"
+  }
+ }
+}

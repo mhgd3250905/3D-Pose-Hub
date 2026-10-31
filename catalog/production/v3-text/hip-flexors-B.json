@@ -1,0 +1,97 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "hip-flexors-B",
+ "reviewStatus": "draft-ai-needs-user-review",
+ "sources": [
+  "drill-anim/data/drills.json",
+  "drill-anim/specs/hip-flexors-B.js"
+ ],
+ "name": {
+  "zh": "弹力带站姿高抬膝",
+  "en": "Standing Banded High Knee"
+ },
+ "purpose": {
+  "zh": "在高位屈髋时加阻力，练抬腿力量",
+  "en": "Add resistance in deep hip flexion to build knee-drive strength."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "站直扶墙，膝盖抬过髋的高度",
+    "en": "Stand tall with a hand on the wall and drive your knee above hip height"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "顶端停2秒，骨盆不后倾、不弯腰",
+    "en": "Hold for two seconds at the top without tucking the pelvis or bending over."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "慢慢把脚放回原位",
+    "en": "Lower the foot back to its spot slowly."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "身体后仰或耸肩",
+   "en": "Leaning back or shrugging."
+  },
+  {
+   "zh": "膝盖没抬到髋的高度就停",
+   "en": "Stopping before the knee reaches hip height."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "髋部前侧疼痛时减小抬膝高度，仍痛就停止",
+   "en": "Lift lower if the front of your hip hurts, and stop if the pain continues."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "hip-flexors"
+  ],
+  "synergistMuscles": [
+   "core",
+   "quadriceps"
+  ],
+  "equipment": [
+   "resistance-band",
+   "wall"
+  ],
+  "position": "standing",
+  "difficulty": 1
+ },
+ "unilateral": true,
+ "startingSide": "right",
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 3,
+  "reps": 10,
+  "restSeconds": 45
+ },
+ "phases": {
+  "start": {
+   "zh": "抬膝",
+   "en": "Drive up"
+  },
+  "peak": {
+   "zh": "停两秒",
+   "en": "Hold two"
+  },
+  "end": {
+   "zh": "慢慢放下",
+   "en": "Lower slowly"
+  }
+ }
+}

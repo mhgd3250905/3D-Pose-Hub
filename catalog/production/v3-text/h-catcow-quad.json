@@ -1,0 +1,105 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "h-catcow-quad",
+ "reviewStatus": "draft-ai-needs-user-review",
+ "sources": [
+  "catalog/v2/actions/h-catcow-quad.json",
+  "catalog/voice-v2/script.json",
+  "drill-anim/specs/h-catcow-quad-r2.js"
+ ],
+ "name": {
+  "zh": "四足猫牛式",
+  "en": "Quadruped Cat-Cow"
+ },
+ "purpose": {
+  "zh": "活动下背和腹部",
+  "en": "Practice gentle spinal movement from a stable quadruped position."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "收腹拱背，缓慢抬胸，手脚保持稳定",
+    "en": "Round your back, then gently lift your chest, keeping your hands and knees still"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "手掌与膝盖保持稳定支撑，慢慢活动脊柱",
+    "en": "Keep your palms and knees stable as you gently move your spine."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "头颈跟随躯干自然活动，保持呼吸",
+    "en": "Let your head and neck follow the torso naturally and keep breathing."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "动作过快或用力甩头",
+   "en": "Moving too quickly or throwing the head."
+  },
+  {
+   "zh": "手脚不断移动，支撑位置失稳",
+   "en": "Shifting the hands and knees and losing a stable base."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "手腕与肩：手掌稳固承托，肩部不过度耸起，手腕不适时改用已审核的坐姿替代。",
+   "en": "Wrists and shoulders: keep the palms supported without shrugging; use a reviewed seated alternative if wrist loading is uncomfortable."
+  },
+  {
+   "zh": "膝：使用舒适垫面，膝盖支撑位置保持稳定。",
+   "en": "Knees: use comfortable padding and keep the knee support positions stable."
+  },
+  {
+   "zh": "腰背与颈：缓慢在舒适范围内活动，头颈自然跟随躯干，不猛抬头或强行塌腰。",
+   "en": "Back and neck: move slowly within a comfortable range, letting the head follow the trunk without throwing it back or forcing the lower back."
+  }
+ ],
+ "tags": {
+  "category": "mobility",
+  "activeMuscles": [
+   "lower-back",
+   "core"
+  ],
+  "synergistMuscles": [
+   "deltoids",
+   "forearms"
+  ],
+  "equipment": [
+   "mat"
+  ],
+  "position": "quadruped",
+  "difficulty": 1
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "time",
+  "sets": 1,
+  "seconds": 40,
+  "restSeconds": 10
+ },
+ "phases": {
+  "start": {
+   "zh": "呼气，拱背",
+   "en": "Exhale, round your back"
+  },
+  "peak": {
+   "zh": "吸气，抬胸",
+   "en": "Inhale, lift your chest"
+  },
+  "end": {
+   "zh": "回到中立位",
+   "en": "Return to neutral"
+  }
+ }
+}

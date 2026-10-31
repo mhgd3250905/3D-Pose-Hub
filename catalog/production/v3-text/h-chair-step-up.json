@@ -1,0 +1,103 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "h-chair-step-up",
+ "reviewStatus": "draft-ai-needs-user-review",
+ "sources": [
+  "catalog/v2/actions/h-chair-step-up.json",
+  "catalog/voice-v2/script.json",
+  "drill-anim/specs/h-chair-step-up-r2.js"
+ ],
+ "name": {
+  "zh": "椅子上步",
+  "en": "Chair Step-Up"
+ },
+ "purpose": {
+  "zh": "练大腿前侧和臀部",
+  "en": "Train the legs and hips with a controlled step-up."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "整只脚踩稳椅面，用前腿发力站起",
+    "en": "Plant your whole foot on the seat and stand up using the front leg"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "膝盖保持与脚尖同向，站起后再缓慢下降",
+    "en": "Keep your knee aligned with your toes, then lower slowly."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "使用稳固、防滑、适合自己高度的支撑物",
+    "en": "Use a stable, non-slip support at a height you can control."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "后脚猛蹬地面或借惯性冲起",
+   "en": "Pushing hard with the trailing foot or using momentum."
+  },
+  {
+   "zh": "椅子晃动或脚掌只踩在边缘",
+   "en": "Using an unstable chair or placing only part of the foot on its edge."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "膝：上、下步都保持膝盖与脚尖方向一致，避免失控内扣。",
+   "en": "Knee: keep the knee tracking with the toes during both ascent and descent."
+  },
+  {
+   "zh": "踝与平衡：整只脚踩稳支撑面，缓慢下步；只使用牢固、防滑且高度可控的台阶或凳面。",
+   "en": "Ankle and balance: plant the whole foot, step down slowly, and use a stable non-slip platform of a manageable height."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "quadriceps",
+   "glutes"
+  ],
+  "synergistMuscles": [
+   "hamstrings",
+   "calves",
+   "abductors"
+  ],
+  "equipment": [
+   "chair"
+  ],
+  "position": "standing",
+  "difficulty": 2
+ },
+ "unilateral": true,
+ "startingSide": "right",
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 3,
+  "reps": 10,
+  "restSeconds": 30
+ },
+ "phases": {
+  "start": {
+   "zh": "踩稳，上步",
+   "en": "Plant and step up"
+  },
+  "peak": {
+   "zh": "站稳",
+   "en": "Stand tall"
+  },
+  "end": {
+   "zh": "慢慢下台",
+   "en": "Step down slowly"
+  }
+ }
+}

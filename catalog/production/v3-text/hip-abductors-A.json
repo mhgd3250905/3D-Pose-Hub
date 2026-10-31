@@ -1,0 +1,98 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "hip-abductors-A",
+ "reviewStatus": "draft-ai-needs-user-review",
+ "sources": [
+  "drill-anim/data/drills.json",
+  "drill-anim/specs/hip-abductors-A-r2.js"
+ ],
+ "name": {
+  "zh": "侧平板抬腿",
+  "en": "Side Plank Hip Abduction"
+ },
+ "purpose": {
+  "zh": "在侧撑中练臀中肌主动开腿",
+  "en": "Train the side glutes to lift the leg while holding a side plank."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "前臂侧撑，髋抬起成一条直线",
+    "en": "Prop on your forearm and lift your hips into one straight line"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "上方腿伸直抬起，脚尖朝前不外转",
+    "en": "Lift the straight top leg with the toes pointing forward."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "手肘在肩正下方，慢抬慢放",
+    "en": "Keep your elbow under your shoulder and lift and lower slowly."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "髋下沉",
+   "en": "Letting the hips sag."
+  },
+  {
+   "zh": "上方腿向前摆",
+   "en": "Swinging the top leg forward."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "肩部疼痛时改为屈膝侧撑或减少次数，仍痛就停止",
+   "en": "If your shoulder hurts, bend your knees or do fewer reps, and stop if the pain continues."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "abductors",
+   "glutes"
+  ],
+  "synergistMuscles": [
+   "obliques",
+   "core",
+   "deltoids"
+  ],
+  "equipment": [
+   "mat"
+  ],
+  "position": "side-lying",
+  "difficulty": 2
+ },
+ "unilateral": true,
+ "startingSide": "right",
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 3,
+  "reps": 8,
+  "restSeconds": 45
+ },
+ "phases": {
+  "start": {
+   "zh": "抬腿",
+   "en": "Lift"
+  },
+  "peak": {
+   "zh": "停住",
+   "en": "Hold"
+  },
+  "end": {
+   "zh": "慢放",
+   "en": "Lower"
+  }
+ }
+}

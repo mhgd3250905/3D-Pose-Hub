@@ -1,0 +1,100 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "chest-C",
+ "reviewStatus": "draft-ai-needs-user-review",
+ "sources": [
+  "drill-anim/data/drills.json",
+  "drill-anim/specs/chest-C-r2.js",
+  "drill-anim/specs/chest-C.js"
+ ],
+ "name": {
+  "zh": "绳索单臂站姿推胸",
+  "en": "Single-Arm Standing Cable Press"
+ },
+ "purpose": {
+  "zh": "练胸部，同时练核心抗旋转",
+  "en": "Build the chest while your core resists rotation."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "弓步站稳，单臂向前推到伸直",
+    "en": "Stand in a split stance and press one arm straight forward"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "推的时候躯干不跟着转，髋和肩保持朝前",
+    "en": "Keep your hips and shoulders square as you press."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "回收时放慢，控制绳索",
+    "en": "Return slowly and control the cable."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "用转身代替推",
+   "en": "Twisting the body instead of pressing."
+  },
+  {
+   "zh": "耸肩",
+   "en": "Shrugging the shoulder."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "肩前侧夹痛时缩小幅度或换简单版本",
+   "en": "If the front of your shoulder pinches, reduce the range or switch to an easier version."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "chest"
+  ],
+  "synergistMuscles": [
+   "triceps",
+   "deltoids",
+   "core",
+   "obliques"
+  ],
+  "equipment": [
+   "cable-machine",
+   "d-handle"
+  ],
+  "position": "standing",
+  "difficulty": 2
+ },
+ "unilateral": true,
+ "startingSide": "right",
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 3,
+  "reps": 10,
+  "restSeconds": 45
+ },
+ "phases": {
+  "start": {
+   "zh": "向前推",
+   "en": "Press forward"
+  },
+  "peak": {
+   "zh": "停一下",
+   "en": "Squeeze"
+  },
+  "end": {
+   "zh": "慢慢收回",
+   "en": "Return slowly"
+  }
+ }
+}

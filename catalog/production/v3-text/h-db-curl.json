@@ -1,0 +1,100 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "h-db-curl",
+ "reviewStatus": "draft-ai-needs-user-review",
+ "sources": [
+  "catalog/v2/actions/h-db-curl.json",
+  "catalog/voice-v2/script.json",
+  "drill-anim/specs/h-db-curl-r2.js"
+ ],
+ "name": {
+  "zh": "哑铃交替弯举",
+  "en": "Alternating Dumbbell Curl"
+ },
+ "purpose": {
+  "zh": "练手臂前侧",
+  "en": "Train elbow flexion with alternating dumbbell curls."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "大臂贴住身体，只动小臂",
+    "en": "Keep your upper arms by your sides and move only your forearms"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "左右交替弯举，下降时继续控制重量",
+    "en": "Alternate arms and keep control of the weight as you lower it."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "身体保持稳定，手腕与前臂保持自然对齐",
+    "en": "Keep your body steady and your wrists naturally aligned with your forearms."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "身体前后摆动带起哑铃",
+   "en": "Rocking the body to lift the dumbbells."
+  },
+  {
+   "zh": "弯举时肘部大幅前移",
+   "en": "Moving the elbows far forward during the curl."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "肘：保持大臂靠近身体，控制屈伸，不用身体摆动带起哑铃。",
+   "en": "Elbow: keep the upper arms by the body and control the movement without swinging the torso."
+  },
+  {
+   "zh": "手腕：握稳可控制的重量，手腕自然对齐前臂，下降时保持控制。",
+   "en": "Wrist: use a controllable load, keep the wrist aligned with the forearm, and lower under control."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "biceps"
+  ],
+  "synergistMuscles": [
+   "forearms"
+  ],
+  "equipment": [
+   "dumbbell"
+  ],
+  "position": "standing",
+  "difficulty": 1
+ },
+ "unilateral": true,
+ "startingSide": "right",
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 3,
+  "reps": 12,
+  "restSeconds": 30
+ },
+ "phases": {
+  "start": {
+   "zh": "弯举",
+   "en": "Curl up"
+  },
+  "peak": {
+   "zh": "保持住",
+   "en": "Hold"
+  },
+  "end": {
+   "zh": "放下",
+   "en": "Lower"
+  }
+ }
+}
