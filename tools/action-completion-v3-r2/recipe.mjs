@@ -8,7 +8,7 @@ export const REPO=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../
 export const MODEL=Object.freeze({profile:'training-human-v3-armfix',version:'0.1.0-r2'});
 export const HAND_MODES=Object.freeze(['native','support','relaxed','assist','dumbbell-grasp','fixed-grasp','bar-grasp']);
 import {adapt as adaptFixedBarGrip,SHAFT_RADIUS_M} from './fixed-bar-grip-r1.mjs';
-const BAR_PROPS=['parallettes','dipBars','pullupBar'];
+const BAR_PROPS=['parallettes','dipBars','pullupBar','rings'];
 const fail=(ok,message)=>{if(!ok)throw Error(message);};
 export const sha=bytes=>crypto.createHash('sha256').update(bytes).digest('hex');
 export const readJson=file=>JSON.parse(fs.readFileSync(file,'utf8').replace(/^\uFEFF/,''));

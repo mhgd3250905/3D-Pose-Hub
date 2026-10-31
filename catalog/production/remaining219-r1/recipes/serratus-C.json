@@ -2,15 +2,15 @@
   "format": "pose-hub-action-recipe@1",
   "id": "serratus-C",
   "nameZh": "吊环俯卧撑加前伸",
-  "spec": "drill-anim/specs/serratus-C.js",
-  "specSha256Lf": "28cad511441e9bdba7edbbcd032e63c022dcd0d6cb49bce0862f001983cb42df",
+  "spec": "drill-anim/specs/serratus-C-r2.js",
+  "specSha256Lf": "264f9418cfc53f320bf9d16ae41f01c7c3bab63ae162a45a4cfe528bb3b5417b",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
   },
   "hands": {
-    "left": "native",
-    "right": "native"
+    "left": "bar-grasp",
+    "right": "bar-grasp"
   },
   "camera": {
     "dir": [
@@ -77,10 +77,52 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/serratus-C.js"
+    "selectedSpec": "drill-anim/specs/serratus-C-r2.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
   "userAccepted": false,
-  "releaseEligible": false
+  "releaseEligible": false,
+  "fixedBarGrip": {
+    "bars": {
+      "left": {
+        "bar": [
+          0,
+          0.17,
+          0.22
+        ],
+        "axis": [
+          -1,
+          0,
+          0
+        ],
+        "palm": [
+          0,
+          0,
+          1
+        ]
+      },
+      "right": {
+        "bar": [
+          0,
+          0.17,
+          -0.22
+        ],
+        "axis": [
+          -1,
+          0,
+          0
+        ],
+        "palm": [
+          0,
+          0,
+          -1
+        ]
+      }
+    }
+  },
+  "fixedCorrectionStack": {
+    "profile": "fixed-wrist-corrections-r1",
+    "version": "0.1.0-r1"
+  }
 }
