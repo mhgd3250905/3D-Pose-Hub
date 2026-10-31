@@ -119,7 +119,6 @@ const KNOWN = {
   'o-seated-calf-raise-rr1': ['107：旧011依赖暂停目标坐椅提踵，本轮第1次；22度跖屈双周期、屈膝坐稳，10稀疏帧待GPU。docs/107-repair-r1-seated-calf-raise-2026-10-22.md'],
   'h-quadruped-rockback-rr1': ['106：旧009第一修复轮第1次，四足中立背后坐；原髋76.1–103度、膝pin≤5mm与肘≥170度；12稀疏帧待GPU。docs/106-repair-r1-quadruped-rockback-2026-10-22.md'],
   'o-seated-sidebend-rr1': ['105：旧011第一修复轮第1次，坐椅单臂侧伸；双侧近端后表面支持、完整四腿靠背椅；7稀疏帧待GPU。docs/105-repair-r1-seated-sidebend-2026-10-22.md'],
-  'h-sleeper-stretch-rr1': ['104：旧084第一修复轮第2次，侧卧睡姿肩内旋；原8–33度、右掌辅助、明确厚垫支持；12稀疏帧待GPU。docs/104-repair-r1-sleeper-stretch-2026-10-22.md'],
   'h-quadruped-open-rr1': ['103：旧055第一修复轮第1次，四足跪姿单臂开胸；固定左掌/双膝胫骨、骨盆稳定、原30度开胸；11稀疏帧待GPU。docs/103-repair-r1-quadruped-open-2026-10-22.md'],
   'h-db-floor-fly-rr1': ['102：083第一修复轮第2次，固定软肘地板飞鸟；头背臀支撑、双掌握轴、自然肘部地面止点；14稀疏帧待GPU，原失败保留。docs/102-repair-r1-floor-fly-2026-10-22.md'],
   'h-goblet-squat-rr1': ['101：075第一修复轮第1次，双掌真实承托哑铃上头，18cm头直径明示；原深蹲轨迹不变，11稀疏帧待GPU。docs/101-repair-r1-goblet-squat-2026-10-22.md'],
@@ -191,7 +190,6 @@ const KNOWN = {
 const PLANNED = [
   {"id": "h-kneeling-instep-stretch-v2plus", "name": "跪姿脚背支撑拉伸", "why": "086两次用尽：足背承托未成立，最终仅脚尖缘近地且双胫穿地15.43mm；FAILED待接手，不登记不第三次", "src": "docs/086-v2plus-instep-stretch-FAILED-diagnostic-2026-10-21.md"},
   {"id": "h-overhead-triceps-stretch-v2plus", "name": "站姿过头肱三头肌拉伸（新版尝试）", "why": "085两次用尽：左腕限位已消除但工作肘26–28度折叠过深、辅助手接触过冲未解决；FAILED交接，不注册不第三次，不恢复旧019", "src": "docs/085-v2plus-triceps-stretch-FAILED-diagnostic-2026-10-21.md"},
-  {"id": "h-sleeper-stretch", "name": "侧卧睡姿肩内旋拉伸", "why": "084两次用尽，头垫间隙8.24mm、替代垫与躯干重叠58.08mm及辅助手接触过冲；FAILED交接不注册不第三次", "src": "docs/084-v2plus-sleeper-stretch-FAILED-diagnostic-2026-10-21.md"},
   {"id": "h-db-floor-fly", "name": "哑铃地板飞鸟", "why": "083两次用尽，后脑仍离垫29.46mm、真实手杆穿入约3.68mm；FAILED留接手，不登记不第三次", "src": "docs/083-v2plus-floor-fly-FAILED-diagnostic-2026-10-21.md"},
   {id:"h-db-overhead-triceps-extension",name:"单臂哑铃过头臂屈伸",why:"082：两次实现后肘60.90→153.48度、肘点漂移1.40mm、无警告；杆仍有5个真实手顶点穿入超过2mm，最深2.15845mm，FAILED留接手不第三次",src:"docs/082-v2plus-overhead-triceps-FAILED-diagnostic-2026-10-21.md"},
   {id:"h-towel-isometric-curl",name:"毛巾脚锚等长弯举（带状道具示意）",why:"081：两次实现用尽；最终双肘100.43度无警告但手与6mm半径示意带末端仍2.759mm间隙，8mm内0接触顶点；FAILED交接不登记不第三次",src:"docs/081-v2plus-towel-isometric-curl-FAILED-diagnostic-2026-10-21.md"},
