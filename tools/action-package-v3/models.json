@@ -1,0 +1,16 @@
+{
+  "format": "pose-hub-package-models@1",
+  "_doc": "Models scripted production may render on. A new model = new entry: its loader must export verify/checkSpec/boot/applyV3 like training-human-v3-armfix-r2/loader.mjs and return {profile,version} from applyV3. List the authoring models whose recipes it can render in compatibleWith, and only the recipe components it really supports (prefix:* = every variant). A skin-only change needs no new model; add a file under skins/ instead.",
+  "tolerance": {"absoluteMetres": 0.002, "relative": 0.01},
+  "models": [
+    {
+      "profile": "training-human-v3-armfix",
+      "version": "0.1.0-r2",
+      "loader": "drill-anim/models/training-human-v3-armfix-r2/loader.mjs",
+      "rigSignature": "tools/action-package-v3/rig/training-human-v3-armfix-0.1.0-r2.json",
+      "compatibleWith": [],
+      "components": ["correction:*", "fixed-stack:*", "native-wrist-corrective:*", "hand:*"],
+      "status": "authoring model of all 249 current recipes"
+    }
+  ]
+}
