@@ -2,15 +2,15 @@
   "format": "pose-hub-action-recipe@1",
   "id": "obliques-C",
   "nameZh": "绳索高位伐木",
-  "spec": "drill-anim/specs/obliques-C.js",
-  "specSha256Lf": "738934860c4afae6cbdcb8ee1641d7c928eb6d972f376d54015c14ca311a0d17",
+  "spec": "drill-anim/specs/obliques-C-r2.js",
+  "specSha256Lf": "30b6ed5413398f4354ef2a09fdbad3ddbea07f840c74e6fdd46b3e3d693b0fc4",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
   },
   "hands": {
-    "left": "native",
-    "right": "native"
+    "left": "fixed-grasp",
+    "right": "fixed-grasp"
   },
   "camera": {
     "dir": [
@@ -77,10 +77,15 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/obliques-C.js"
+    "selectedSpec": "drill-anim/specs/obliques-C-r2.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
   "userAccepted": false,
-  "releaseEligible": false
+  "releaseEligible": false,
+  "fixedDHandle": true,
+  "fixedCorrectionStack": {
+    "profile": "fixed-wrist-corrections-r1",
+    "version": "0.1.0-r1"
+  }
 }
