@@ -1,0 +1,28 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "h-squat",
+ "reviewStatus": "draft-ai-needs-user-review",
+ "sources": ["drill-anim/specs/h-squat.js"],
+ "name": {"zh": "徒手深蹲", "en": "Bodyweight Squat"},
+ "purpose": {"zh": "练大腿前侧和臀部，提升下蹲能力", "en": "Build the thighs and glutes and improve your squat."},
+ "cues": [
+  {"id": "cue1", "primary": true, "text": {"zh": "臀部向后坐，膝盖对准脚尖", "en": "Sit your hips back and keep your knees over your toes"}},
+  {"id": "cue2", "primary": false, "text": {"zh": "脚跟始终踩地，胸口保持抬起", "en": "Keep your heels down and your chest up."}},
+  {"id": "cue3", "primary": false, "text": {"zh": "下蹲到大腿约与地面平行，再用脚掌推地站起", "en": "Lower until your thighs are about parallel, then push through your feet to stand."}}
+ ],
+ "commonErrors": [
+  {"zh": "膝盖向内扣", "en": "Letting the knees cave inward."},
+  {"zh": "脚跟离地、重心压到脚尖", "en": "Lifting the heels and shifting the weight onto the toes."}
+ ],
+ "cautions": [
+  {"zh": "膝或髋疼痛时减小下蹲深度，仍痛就停止", "en": "Squat less deep if your knees or hips hurt, and stop if the pain continues."}
+ ],
+ "tags": {"category": "strength", "activeMuscles": ["quadriceps", "glutes"], "synergistMuscles": ["adductors", "hamstrings", "core"], "equipment": [], "position": "standing", "difficulty": 1},
+ "unilateral": false,
+ "defaultDose": {"mode": "reps", "sets": 3, "reps": 12, "restSeconds": 45},
+ "phases": {
+  "start": {"zh": "向后坐", "en": "Sit back"},
+  "peak": {"zh": "稳住", "en": "Hold steady"},
+  "end": {"zh": "推地站起", "en": "Push up"}
+ }
+}
