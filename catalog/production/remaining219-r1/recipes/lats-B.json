@@ -2,15 +2,15 @@
   "format": "pose-hub-action-recipe@1",
   "id": "lats-B",
   "nameZh": "弹力带直臂下拉",
-  "spec": "drill-anim/specs/lats-B.js",
-  "specSha256Lf": "cb063513bfcc082a47253653086b401ad3852dd2052b075b98ef166be2ec9e8a",
+  "spec": "drill-anim/specs/lats-B-r2.js",
+  "specSha256Lf": "e61ae8c72faa49e70c9b0831f1a5c50ee0e37c47eae20da28ce2aa422cc5d545",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
   },
   "hands": {
-    "left": "native",
-    "right": "native"
+    "left": "fixed-grasp",
+    "right": "fixed-grasp"
   },
   "camera": {
     "dir": [
@@ -75,10 +75,15 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/lats-B.js"
+    "selectedSpec": "drill-anim/specs/lats-B-r2.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
   "userAccepted": false,
-  "releaseEligible": false
+  "releaseEligible": false,
+  "fixedDHandle": true,
+  "fixedCorrectionStack": {
+    "profile": "fixed-wrist-corrections-r1",
+    "version": "0.1.0-r1"
+  }
 }
