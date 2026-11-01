@@ -1,68 +1,64 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-catcow-quad",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "catalog/v2/actions/h-catcow-quad.json",
   "catalog/voice-v2/script.json",
   "drill-anim/specs/h-catcow-quad-r2.js"
  ],
  "name": {
-  "zh": "四足猫牛式",
-  "en": "Quadruped Cat-Cow"
+  "zh": "跪撑猫牛式",
+  "en": "Cat-Cow on Hands and Knees"
  },
  "purpose": {
-  "zh": "活动下背和腹部",
-  "en": "Practice gentle spinal movement from a stable quadruped position."
+  "zh": "让背部更灵活，放松腰背",
+  "en": "Loosen up your back and ease a stiff lower back."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "收腹拱背，缓慢抬胸，手脚保持稳定",
-    "en": "Round your back, then gently lift your chest, keeping your hands and knees still"
+    "zh": "先拱背低头，再抬胸塌腰",
+    "en": "Round your back, then lift your chest and let your belly sink"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "手掌与膝盖保持稳定支撑，慢慢活动脊柱",
-    "en": "Keep your palms and knees stable as you gently move your spine."
+    "zh": "双手在肩膀正下方，膝盖在髋正下方，手和膝盖不动。",
+    "en": "Keep your hands under your shoulders and knees under your hips, and keep them still."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "头颈跟随躯干自然活动，保持呼吸",
-    "en": "Let your head and neck follow the torso naturally and keep breathing."
+    "zh": "头跟着身体自然动，别甩头。",
+    "en": "Let your head follow your body without throwing it."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "动作过快或用力甩头",
-   "en": "Moving too quickly or throwing the head."
+   "zh": "动作太快或用力甩头",
+   "en": "Moving too fast or throwing the head."
   },
   {
-   "zh": "手脚不断移动，支撑位置失稳",
-   "en": "Shifting the hands and knees and losing a stable base."
+   "zh": "手和膝盖跟着挪动",
+   "en": "Letting the hands and knees shift around."
   }
  ],
  "cautions": [
   {
-   "zh": "手腕与肩：手掌稳固承托，肩部不过度耸起，手腕不适时改用已审核的坐姿替代。",
-   "en": "Wrists and shoulders: keep the palms supported without shrugging; use a reviewed seated alternative if wrist loading is uncomfortable."
+   "zh": "手腕不舒服时改成握拳撑地或换坐姿版本",
+   "en": "If your wrists feel uncomfortable, make fists or switch to a seated version."
   },
   {
-   "zh": "膝：使用舒适垫面，膝盖支撑位置保持稳定。",
-   "en": "Knees: use comfortable padding and keep the knee support positions stable."
-  },
-  {
-   "zh": "腰背与颈：缓慢在舒适范围内活动，头颈自然跟随躯干，不猛抬头或强行塌腰。",
-   "en": "Back and neck: move slowly within a comfortable range, letting the head follow the trunk without throwing it back or forcing the lower back."
+   "zh": "腰或脖子发紧时幅度小一点，慢慢做",
+   "en": "If your back or neck feels tight, move smaller and slower."
   }
  ],
  "tags": {
@@ -83,23 +79,62 @@
  },
  "unilateral": false,
  "defaultDose": {
-  "mode": "time",
-  "sets": 1,
-  "seconds": 40,
-  "restSeconds": 10
+  "mode": "reps",
+  "sets": 2,
+  "reps": 8,
+  "restSeconds": 20
  },
  "phases": {
   "start": {
-   "zh": "呼气，拱背",
-   "en": "Exhale, round your back"
+   "zh": "拱背",
+   "en": "Round up"
   },
   "peak": {
-   "zh": "吸气，抬胸",
-   "en": "Inhale, lift your chest"
+   "zh": "停一下",
+   "en": "Pause"
   },
   "end": {
-   "zh": "回到中立位",
-   "en": "Return to neutral"
+   "zh": "抬胸塌腰",
+   "en": "Lift your chest"
+  }
+ },
+ "training": {
+  "kind": "rep_updown",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.0,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 0.6,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 1.2,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.2
+   }
+  ],
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画是 8 秒 2 个完整「拱背-停-抬胸塌腰-停-回中」循环，剂量从 40 秒计时改成 2 组×8 次",
+    "批表 cat 轨把拱背和塌腰各算一次（4 次/8 s），我按 spec 关键帧手算：拱背 1.0、停 0.6、到塌腰 1.2、停+回中 1.2（共 4 s）",
+    "名字「四足」改「跪撑」；英文 purpose 与中文对齐；去掉「中立位」和「呼气/吸气」长口令；cautions 改短句"
+   ],
+   "flags": [
+    "相位为手算（非批表），kind 用 rep_updown（顶点 0.6 s），也可考虑 rep_cycle，请确认",
+    "原为 40 秒计时，改成按次数，请确认"
+   ]
   }
  }
 }

@@ -1,58 +1,58 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-couch-stretch",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/h-couch-stretch.js"
  ],
  "name": {
-  "zh": "沙发拉伸（后脚搭矮凳）",
+  "zh": "后脚搭凳沙发拉伸",
   "en": "Couch Stretch on a Stool"
  },
  "purpose": {
   "zh": "拉伸后腿的髋前侧和大腿前侧",
-  "en": "Stretch the front of the back-leg hip and thigh."
+  "en": "Stretch the front of the back leg's hip and thigh."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "上身挺直，骨盆后卷向前送",
-    "en": "Sit tall, tuck your pelvis, and shift it gently forward"
+    "zh": "上身挺直，收紧臀部把髋往前送",
+    "en": "Sit tall, squeeze your glutes and ease your hips forward"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "后脚脚背搭在矮凳上，前脚踩稳",
-    "en": "Rest the top of your back foot on the stool and plant the front foot."
+    "zh": "后脚脚背搭在矮凳上，前脚踩稳，双手叉腰。",
+    "en": "Rest the top of your back foot on the stool, plant the front foot, hands on hips."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "髋前侧有拉伸感就停住呼吸",
+    "zh": "髋前侧有拉伸感就停住呼吸。",
     "en": "Stop and breathe once you feel the stretch in the front of the hip."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "腰往后仰代替骨盆后卷",
-   "en": "Arching the lower back instead of tucking the pelvis."
+   "zh": "腰往后仰，没收紧臀部",
+   "en": "Arching the lower back instead of squeezing the glutes."
   }
  ],
  "cautions": [
   {
-   "zh": "只拉到舒适的程度，出现疼痛就放松",
+   "zh": "只拉到舒服的程度，疼就放松",
    "en": "Stretch only to a comfortable point, and ease off if anything hurts."
   },
   {
-   "zh": "后膝下垫软垫；膝盖不适就减小幅度",
-   "en": "Pad under your back knee, and reduce the range if the knee feels uncomfortable."
+   "zh": "后膝下面垫软垫，膝盖不舒服就幅度小一点",
+   "en": "Pad under your back knee, and move less if the knee feels uncomfortable."
   }
  ],
  "tags": {
@@ -74,15 +74,15 @@
  "unilateral": true,
  "startingSide": "left",
  "defaultDose": {
-  "mode": "hold",
+  "mode": "reps",
   "sets": 2,
-  "seconds": 30,
+  "reps": 4,
   "restSeconds": 20
  },
  "phases": {
   "start": {
-   "zh": "挺直骨盆后卷",
-   "en": "Tall and tuck"
+   "zh": "挺直往前送",
+   "en": "Tall and forward"
   },
   "peak": {
    "zh": "保持呼吸",
@@ -91,6 +91,46 @@
   "end": {
    "zh": "慢慢放松",
    "en": "Ease off"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 2.0,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 2.2,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 2.0,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.8
+   }
+  ],
+  "perSide": "each-side-separately",
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画每 8 秒一次「微前倾→挺直送髋-停-回来」，剂量从 30 秒保持改为每侧 2 组×4 次（rep_hold）",
+    "「骨盆后卷」改说法「收紧臀部把髋往前送」；名字去掉括号",
+    "补 cue「双手叉腰」（动画可见）"
+   ],
+   "flags": [
+    "原剂量是 30 秒静止保持，但动画每 8 秒做一次「下沉-停住-回来」，按规则改成按次数（rep_hold）；如果想要静止计时，需要动画改成一直停住，请定",
+    "动画是左膝跪地（startingSide left），文案不写方位"
+   ]
   }
  }
 }

@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-db-overhead-shrug",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/h-db-overhead-shrug-r4.js"
  ],
@@ -10,15 +10,15 @@
   "en": "Standing Dumbbell Overhead Shrug"
  },
  "purpose": {
-  "zh": "在手臂过头时练斜方肌上提",
-  "en": "Train the upper traps with the arms overhead."
+  "zh": "手臂举过头时练肩膀上方的肌肉",
+  "en": "Build the muscles on top of your shoulders with your arms overhead."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "手臂伸直举过头，肩膀向耳朵耸起",
+    "zh": "手臂伸直举过头，肩膀往耳朵耸",
     "en": "Hold your arms straight overhead and shrug your shoulders toward your ears"
    }
   },
@@ -26,15 +26,15 @@
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "站直，肋骨下沉，头颈不动",
-    "en": "Stand tall with your ribs down and head still."
+    "zh": "站直，肋骨往下收，头不动。",
+    "en": "Stand tall with your ribs down and your head still."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "顶端稍停，再慢慢放下",
+    "zh": "顶上停一下，再慢慢放下。",
     "en": "Pause at the top, then lower slowly."
    }
   }
@@ -45,13 +45,13 @@
    "en": "Bending the elbows into a press."
   },
   {
-   "zh": "探头或歪头",
+   "zh": "往前探头或歪头",
    "en": "Poking the chin or tilting the head."
   }
  ],
  "cautions": [
   {
-   "zh": "用轻哑铃；肩部或颈部疼痛时停止",
+   "zh": "用轻哑铃，肩膀或脖子疼就停",
    "en": "Use light dumbbells, and stop if your shoulders or neck hurt."
   }
  ],
@@ -65,7 +65,7 @@
    "core"
   ],
   "equipment": [
-   "dumbbells"
+   "dumbbell"
   ],
   "position": "standing",
   "difficulty": 2
@@ -87,8 +87,44 @@
    "en": "Hold"
   },
   "end": {
-   "zh": "慢慢放下",
+   "zh": "慢放下",
    "en": "Lower slowly"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.0,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 0.9,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.8,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.3
+   }
+  ],
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "purpose 去掉「斜方肌上提」改口语",
+    "器材 dumbbells 统一为 dumbbell",
+    "加 training rep_hold"
+   ],
+   "flags": []
   }
  }
 }

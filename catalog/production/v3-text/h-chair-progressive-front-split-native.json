@@ -1,17 +1,17 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-chair-progressive-front-split-native",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/h-chair-progressive-front-split-native.js"
  ],
  "name": {
-  "zh": "扶椅前后劈叉渐进",
+  "zh": "扶椅渐进前后劈叉",
   "en": "Chair-Supported Progressive Front Split"
  },
  "purpose": {
-  "zh": "渐进拉伸腿后侧和髋前侧",
-  "en": "Progressively stretch the hamstrings and front of the hip."
+  "zh": "一点点拉开大腿后侧和髋前侧",
+  "en": "Gradually stretch the backs of your thighs and the front of your hips."
  },
  "cues": [
   {
@@ -26,7 +26,7 @@
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "只滑到能控制的幅度，髋保持朝前",
+    "zh": "只滑到能控制的地方，髋部朝前。",
     "en": "Slide only as far as you can control, hips facing forward."
    }
   },
@@ -34,8 +34,8 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "保持呼吸，再慢慢收回",
-    "en": "Keep breathing, then slowly bring your legs back."
+    "zh": "停住呼吸，再慢慢收回。",
+    "en": "Stay and breathe, then slowly slide back."
    }
   }
  ],
@@ -45,17 +45,17 @@
    "en": "Sliding too far too fast."
   },
   {
-   "zh": "髋部转向一侧",
+   "zh": "髋部转向一边",
    "en": "Letting the hips twist to one side."
   }
  ],
  "cautions": [
   {
-   "zh": "只拉到舒适的程度，出现疼痛就放松",
+   "zh": "只拉到舒服的程度，疼就放松",
    "en": "Stretch only to a comfortable point, and ease off if anything hurts."
   },
   {
-   "zh": "使用稳固、不带轮子的椅子",
+   "zh": "用结实、不带轮子的椅子",
    "en": "Use a sturdy chair without wheels."
   }
  ],
@@ -79,9 +79,9 @@
  "unilateral": true,
  "startingSide": "right",
  "defaultDose": {
-  "mode": "hold",
+  "mode": "reps",
   "sets": 2,
-  "seconds": 30,
+  "reps": 4,
   "restSeconds": 20
  },
  "phases": {
@@ -95,7 +95,46 @@
   },
   "end": {
    "zh": "慢慢收回",
-   "en": "Bring back slowly"
+   "en": "Slide back"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.3,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 3.0,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 1.4,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 2.3
+   }
+  ],
+  "perSide": "each-side-separately",
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画每 8 秒一次滑开-停 2 s-收回，剂量从 30 秒保持改为每侧 2 组×4 次（rep_hold）",
+    "名字语序改为「扶椅渐进前后劈叉」，purpose 去掉「渐进」书面腔"
+   ],
+   "flags": [
+    "原剂量是 30 秒静止保持，但动画每 8 秒做一次「下沉-停住-回来」，按规则改成按次数（rep_hold）；如果想要静止计时，需要动画改成一直停住，请定",
+    "startingSide 保留 right（动画左膝在后滑），请确认哪侧算「先做的一侧」"
+   ]
   }
  }
 }

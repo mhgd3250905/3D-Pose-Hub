@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-db-lateral",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/h-db-lateral.js"
  ],
@@ -10,7 +10,7 @@
   "en": "Dumbbell Lateral Raise"
  },
  "purpose": {
-  "zh": "练肩部中侧",
+  "zh": "练肩膀两侧",
   "en": "Build the sides of your shoulders."
  },
  "cues": [
@@ -18,15 +18,15 @@
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "肘微屈固定，双臂向两侧抬到肩高",
-    "en": "Keep a soft, fixed elbow and raise your arms out to shoulder height"
+    "zh": "手肘微弯别动，双臂往两边抬到肩高",
+    "en": "Keep your elbows softly bent and raise your arms out to shoulder height"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "肩膀下沉，不要耸肩",
+    "zh": "肩膀往下放，别耸肩。",
     "en": "Keep your shoulders down without shrugging."
    }
   },
@@ -34,7 +34,7 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "慢慢放下，身体不晃",
+    "zh": "慢慢放下，身体别晃。",
     "en": "Lower slowly without swinging your body."
    }
   }
@@ -45,18 +45,18 @@
    "en": "Shrugging the shoulders."
   },
   {
-   "zh": "身体摆动甩起哑铃",
+   "zh": "身体晃动把哑铃甩起来",
    "en": "Swinging the body to lift the weights."
   }
  ],
  "cautions": [
   {
-   "zh": "从轻重量开始，出现疼痛就停止",
+   "zh": "从轻重量开始，疼就停",
    "en": "Start with a light weight, and stop if you feel pain."
   },
   {
-   "zh": "肩前侧夹痛时缩小幅度或换简单版本",
-   "en": "If the front of your shoulder pinches, reduce the range or switch to an easier version."
+   "zh": "肩膀前面夹着疼时抬低一点",
+   "en": "If the front of your shoulder pinches, raise your arms lower."
   }
  ],
  "tags": {
@@ -82,7 +82,7 @@
  },
  "phases": {
   "start": {
-   "zh": "向两侧抬",
+   "zh": "侧抬",
    "en": "Raise out"
   },
   "peak": {
@@ -90,8 +90,44 @@
    "en": "Pause"
   },
   "end": {
-   "zh": "慢慢放下",
+   "zh": "慢放下",
    "en": "Lower slowly"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.8,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 1.1,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 1.0,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.1
+   }
+  ],
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "purpose「中侧」改「两侧」；口令按 0.8 s 缩短（侧抬/慢放下）",
+    "caution 改具体「抬低一点」",
+    "加 training rep_hold"
+   ],
+   "flags": []
   }
  }
 }

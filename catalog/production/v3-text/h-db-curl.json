@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-db-curl",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "catalog/v2/actions/h-db-curl.json",
   "catalog/voice-v2/script.json",
@@ -13,7 +13,7 @@
  },
  "purpose": {
   "zh": "练手臂前侧",
-  "en": "Train elbow flexion with alternating dumbbell curls."
+  "en": "Build the fronts of your upper arms."
  },
  "cues": [
   {
@@ -28,37 +28,33 @@
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "左右交替弯举，下降时继续控制重量",
-    "en": "Alternate arms and keep control of the weight as you lower it."
+    "zh": "左右轮流弯，往上时掌心慢慢转向上。",
+    "en": "Alternate arms, turning your palm up as you curl."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "身体保持稳定，手腕与前臂保持自然对齐",
-    "en": "Keep your body steady and your wrists naturally aligned with your forearms."
+    "zh": "放下时慢一点，身体别晃。",
+    "en": "Lower slowly and keep your body still."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "身体前后摆动带起哑铃",
-   "en": "Rocking the body to lift the dumbbells."
+   "zh": "身体前后晃把哑铃甩起来",
+   "en": "Rocking the body to swing the weight up."
   },
   {
-   "zh": "弯举时肘部大幅前移",
-   "en": "Moving the elbows far forward during the curl."
+   "zh": "弯举时手肘往前跑",
+   "en": "Letting the elbow drift forward."
   }
  ],
  "cautions": [
   {
-   "zh": "肘：保持大臂靠近身体，控制屈伸，不用身体摆动带起哑铃。",
-   "en": "Elbow: keep the upper arms by the body and control the movement without swinging the torso."
-  },
-  {
-   "zh": "手腕：握稳可控制的重量，手腕自然对齐前臂，下降时保持控制。",
-   "en": "Wrist: use a controllable load, keep the wrist aligned with the forearm, and lower under control."
+   "zh": "用能控制的重量，手肘或手腕疼就停",
+   "en": "Use a weight you can control, and stop if your elbow or wrist hurts."
   }
  ],
  "tags": {
@@ -80,21 +76,61 @@
  "defaultDose": {
   "mode": "reps",
   "sets": 3,
-  "reps": 12,
+  "reps": 10,
   "restSeconds": 30
  },
  "phases": {
   "start": {
-   "zh": "弯举",
+   "zh": "弯起",
    "en": "Curl up"
   },
   "peak": {
-   "zh": "保持住",
-   "en": "Hold"
+   "zh": "停一下",
+   "en": "Squeeze"
   },
   "end": {
-   "zh": "放下",
-   "en": "Lower"
+   "zh": "慢放下",
+   "en": "Lower slowly"
+  }
+ },
+ "training": {
+  "kind": "rep_alternate",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.8,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 1.0,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 1.0,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.2
+   }
+  ],
+  "perSide": "alternate",
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "英文 purpose 的 elbow flexion 改口语并与中文对齐",
+    "补「往上时掌心转向上」（动画有前臂外转）",
+    "cautions 去掉「肘：/手腕：」格式合成一句",
+    "training rep_alternate（右 0–4 s、左 4–8 s），每侧 10 次"
+   ],
+   "flags": [
+    "剂量从 12 次改为每侧 10 次（轮流做，总 20 下），请确认"
+   ]
   }
  }
 }

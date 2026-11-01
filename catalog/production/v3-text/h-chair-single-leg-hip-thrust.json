@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-chair-single-leg-hip-thrust",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/h-chair-single-leg-hip-thrust-rr8.js",
   "drill-anim/specs/h-chair-single-leg-hip-thrust-rr7.js",
@@ -17,52 +17,52 @@
   "en": "Chair-Supported Single-Leg Hip Thrust"
  },
  "purpose": {
-  "zh": "练臀部和腿后侧，提升单腿伸髋力量",
-  "en": "Build the glutes and hamstrings for single-leg hip strength."
+  "zh": "练臀部和大腿后侧，让单腿更有力",
+  "en": "Build your glutes and the backs of your thighs for stronger single-leg power."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "上背靠椅面，支撑脚推地把髋抬平",
-    "en": "Rest your upper back on the seat and drive through one foot to lift your hips"
+    "zh": "一只脚踩地发力，把臀部抬到身体放平",
+    "en": "Drive through one foot to lift your hips until your body is level"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "另一条腿收起，骨盆保持水平",
-    "en": "Keep the other knee tucked and your pelvis level."
+    "zh": "上背靠在椅面边上，另一条腿收起。",
+    "en": "Rest your upper back on the seat edge and keep the other knee tucked."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "顶端夹臀，再慢慢放下",
-    "en": "Squeeze your glutes at the top, then lower slowly."
+    "zh": "骨盆别往一边掉，顶上夹紧臀部。",
+    "en": "Keep your hips level and squeeze your glutes at the top."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "骨盆向一侧掉",
-   "en": "Letting the pelvis drop to one side."
+   "zh": "骨盆往一边掉",
+   "en": "Letting the hips drop to one side."
   },
   {
-   "zh": "用腰拱起代替伸髋",
-   "en": "Arching the lower back instead of extending the hip."
+   "zh": "靠腰拱起把臀部顶高",
+   "en": "Arching the lower back to push the hips higher."
   }
  ],
  "cautions": [
   {
-   "zh": "腰部不适时减小幅度，仍痛就停止",
-   "en": "Reduce the range if your lower back feels uncomfortable, and stop if it still hurts."
+   "zh": "腰不舒服时抬低一点，还疼就停",
+   "en": "If your lower back feels uncomfortable, lift lower, and stop if it still hurts."
   },
   {
-   "zh": "使用稳固、不带轮子的椅子",
+   "zh": "用结实、不带轮子的椅子",
    "en": "Use a sturdy chair without wheels."
   }
  ],
@@ -92,16 +92,55 @@
  },
  "phases": {
   "start": {
-   "zh": "抬起髋部",
+   "zh": "抬起臀部",
    "en": "Hips up"
   },
   "peak": {
-   "zh": "夹臀",
+   "zh": "夹紧臀部",
    "en": "Squeeze"
   },
   "end": {
    "zh": "慢慢放下",
    "en": "Lower slowly"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.4,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 2.4,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 1.8,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 2.4
+   }
+  ],
+  "perSide": "each-side-separately",
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "purpose/常见错误去掉「伸髋」",
+    "主口令只说「一只脚踩地抬臀」，靠椅放到 cue2",
+    "training rep_hold（8 s 一次，顶点 2 s），每侧分开做"
+   ],
+   "flags": [
+    "动画是左脚支撑（startingSide left），文案不写方位"
+   ]
   }
  }
 }
