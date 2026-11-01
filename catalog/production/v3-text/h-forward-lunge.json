@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-forward-lunge",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/h-forward-lunge.js"
  ],
@@ -11,14 +11,14 @@
  },
  "purpose": {
   "zh": "练大腿和臀部，提升单腿控制",
-  "en": "Build the thighs and glutes and single-leg control."
+  "en": "Build your thighs and glutes and single-leg control."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "向前跨一步，身体垂直下沉",
+    "zh": "向前跨一步，身体直直往下沉",
     "en": "Step forward and lower straight down"
    }
   },
@@ -26,33 +26,33 @@
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "前膝对准脚尖，前脚跟踩实",
-    "en": "Keep your front knee over your toes and your heel down."
+    "zh": "前膝对着脚尖，前脚跟踩实。",
+    "en": "Keep your front knee over your toes and your front heel down."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "用前脚推地退回站立",
-    "en": "Push off your front foot to step back to standing."
+    "zh": "前脚推地退回站立，换另一条腿。",
+    "en": "Push off your front foot to step back, then switch legs."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "前膝向内扣",
+   "zh": "前膝往里扣",
    "en": "Letting the front knee cave in."
   },
   {
-   "zh": "上身过度前倾",
+   "zh": "上身前倾太多",
    "en": "Leaning the trunk too far forward."
   }
  ],
  "cautions": [
   {
-   "zh": "膝盖不适时减小下蹲深度，仍痛就停止",
-   "en": "Squat less deep if your knees feel uncomfortable, and stop if the pain continues."
+   "zh": "膝盖不舒服时蹲浅一点，仍痛就停止",
+   "en": "If your knees feel uncomfortable, go less deep, and stop if it still hurts."
   }
  ],
  "tags": {
@@ -80,16 +80,52 @@
  },
  "phases": {
   "start": {
-   "zh": "向前跨步",
-   "en": "Step forward"
+   "zh": "跨步下蹲",
+   "en": "Step and lower"
   },
   "peak": {
    "zh": "稳住",
-   "en": "Hold steady"
+   "en": "Hold"
   },
   "end": {
    "zh": "推地退回",
    "en": "Push back"
+  }
+ },
+ "training": {
+  "kind": "rep_alternate",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.5,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 0.7,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 1.3,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.5
+   }
+  ],
+  "perSide": "alternate",
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画 10 秒左右腿轮流（先右），一下 5 s：节奏按 spec 手算（跨步+下蹲 1.5 s、底部 0.7 s、推回+收脚 1.3 s、站立 1.5 s；派生只读下蹲轨道漏了跨步），training=rep_alternate、perSide alternate",
+    "起始口令改「跨步下蹲」覆盖跨步和下沉；cue3 补「换另一条腿」"
+   ],
+   "flags": []
   }
  }
 }

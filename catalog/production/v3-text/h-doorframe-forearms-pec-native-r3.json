@@ -1,41 +1,41 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-doorframe-forearms-pec-native-r3",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/h-doorframe-forearms-pec-native-r3.js"
  ],
  "name": {
-  "zh": "门框双前臂胸肌拉伸",
+  "zh": "门框双前臂胸部拉伸",
   "en": "Doorframe Forearm Chest Stretch"
  },
  "purpose": {
-  "zh": "拉伸胸部和肩前侧",
-  "en": "Stretch the chest and the front of the shoulders."
+  "zh": "拉伸胸口和肩膀前侧",
+  "en": "Stretch your chest and the fronts of your shoulders."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "双前臂贴住门框，身体慢慢向前穿过门口",
-    "en": "Rest both forearms on the doorframe and lean gently forward through it"
+    "zh": "双前臂贴住门框，身体慢慢往前穿过门口",
+    "en": "Rest both forearms on the frame and lean gently through the doorway"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "前后脚站稳，脚不移动",
-    "en": "Stand in a split stance with your feet fixed."
+    "zh": "前后脚站稳，脚不动。",
+    "en": "Stand with one foot ahead and keep your feet still."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "胸前有拉伸感就停，保持呼吸",
-    "en": "Stop when you feel the stretch across your chest, and breathe."
+    "zh": "胸口有拉伸感就停，保持呼吸。",
+    "en": "Stop when your chest stretches, and keep breathing."
    }
   }
  ],
@@ -45,17 +45,17 @@
    "en": "Shrugging the shoulders."
   },
   {
-   "zh": "腰往前挺代替胸打开",
+   "zh": "腰往前挺代替打开胸口",
    "en": "Pushing the lower back forward instead of opening the chest."
   }
  ],
  "cautions": [
   {
-   "zh": "只拉到舒适的程度，出现疼痛就放松",
-   "en": "Stretch only to a comfortable point, and ease off if anything hurts."
+   "zh": "出现疼痛时放松，只拉到舒服的程度",
+   "en": "If anything hurts, ease off and stretch only to a comfortable point."
   },
   {
-   "zh": "肩前侧夹痛时缩小幅度或换简单版本",
+   "zh": "肩前侧夹着疼时，缩小幅度或换简单版本",
    "en": "If the front of your shoulder pinches, reduce the range or switch to an easier version."
   }
  ],
@@ -75,10 +75,10 @@
  },
  "unilateral": false,
  "defaultDose": {
-  "mode": "hold",
+  "mode": "reps",
   "sets": 2,
-  "seconds": 30,
-  "restSeconds": 10
+  "reps": 6,
+  "restSeconds": 20
  },
  "phases": {
   "start": {
@@ -91,7 +91,44 @@
   },
   "end": {
    "zh": "慢慢回来",
-   "en": "Come back slowly"
+   "en": "Come back"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.2,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 3.4,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 1.3,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 2.1
+   }
+  ],
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画是 8 秒 1 次「前倾-停 3.4 s-回来」在重复，剂量从 30 秒保持改为 2 组×6 次（rep_hold），dose mode hold→reps",
+    "名字「胸肌」改「胸部」；cautions 改「X 时 Y」"
+   ],
+   "flags": [
+    "原为 30 秒静态拉伸，现按动画改为计次（每次只停约 3.4 s）；若要长时间静态保持需改动画或改回计时，请定"
+   ]
   }
  }
 }

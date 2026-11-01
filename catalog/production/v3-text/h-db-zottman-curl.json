@@ -1,32 +1,32 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-db-zottman-curl",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/h-db-zottman-curl-r5.js"
  ],
  "name": {
-  "zh": "站姿双哑铃佐特曼弯举",
+  "zh": "站姿哑铃翻掌弯举",
   "en": "Standing Dumbbell Zottman Curl"
  },
  "purpose": {
-  "zh": "同时练肱二头肌和前臂",
-  "en": "Train your biceps and forearms together."
+  "zh": "同时练上臂前侧和前臂",
+  "en": "Train the fronts of your upper arms and your forearms together."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "掌心朝上举起，顶端翻掌，反握放下",
-    "en": "Curl up palms up, turn your palms down at the top, and lower overhand"
+    "zh": "掌心朝上举起，顶端翻成掌心朝下再放",
+    "en": "Curl up palms up, turn them down at the top, then lower"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "手肘贴住身体，手腕平直",
+    "zh": "手肘贴住身体，手腕平直。",
     "en": "Keep your elbows at your sides and wrists straight."
    }
   },
@@ -34,25 +34,25 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "底部再把掌心翻回朝上",
-    "en": "Turn your palms back up at the bottom."
+    "zh": "放到底再把掌心翻回朝上。",
+    "en": "At the bottom, turn your palms back up."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "下放太快",
+   "zh": "放得太快",
    "en": "Lowering too fast."
   },
   {
-   "zh": "身体摆动借力",
+   "zh": "身体前后晃借力",
    "en": "Swinging the body."
   }
  ],
  "cautions": [
   {
-   "zh": "用轻哑铃；手腕或肘部疼痛时停止",
-   "en": "Use light dumbbells, and stop if your wrists or elbows hurt."
+   "zh": "手腕或手肘疼时停止，先用轻哑铃",
+   "en": "Stop if your wrists or elbows hurt, and start with light dumbbells."
   }
  ],
  "tags": {
@@ -63,7 +63,7 @@
   ],
   "synergistMuscles": [],
   "equipment": [
-   "dumbbells"
+   "dumbbell"
   ],
   "position": "standing",
   "difficulty": 2
@@ -77,16 +77,54 @@
  },
  "phases": {
   "start": {
-   "zh": "掌心朝上举",
+   "zh": "举起",
    "en": "Curl up"
   },
   "peak": {
-   "zh": "翻掌",
-   "en": "Turn over"
+   "zh": "翻掌朝下",
+   "en": "Turn palms down"
   },
   "end": {
    "zh": "慢慢放下",
    "en": "Lower slowly"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.0,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 2.1,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 1.5,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 3.4
+   }
+  ],
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "节奏按弯举轨道（curl）算：1.0 s 举起、顶端 2.1 s 翻掌、1.5 s 放下、底部 3.4 s 翻回（派生用的 effort 轨道不准）",
+    "中文名「佐特曼」改「翻掌弯举」更好懂；起始口令缩为「举起」",
+    "equipment dumbbells→dumbbell；cautions 短句"
+   ],
+   "flags": [
+    "动画 8 秒只做 1 次，节奏很慢（底部停 3.4 s）；是否保持请定"
+   ]
   }
  }
 }

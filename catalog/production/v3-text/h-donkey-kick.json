@@ -1,62 +1,62 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-donkey-kick",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/h-donkey-kick.js"
  ],
  "name": {
-  "zh": "四足屈膝后踢",
+  "zh": "跪撑屈膝后踢腿",
   "en": "Bent-Knee Donkey Kick"
  },
  "purpose": {
-  "zh": "练臀部，提升伸髋力量",
-  "en": "Build the glutes and strengthen hip extension."
+  "zh": "练臀部，让腿往后抬更有力",
+  "en": "Build your glutes for stronger backward leg lifts."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "膝盖保持约90度，脚底向天花板推",
-    "en": "Keep your knee at about 90 degrees and push your sole toward the ceiling"
+    "zh": "膝盖弯成直角，脚底往天花板推",
+    "en": "Keep your knee bent at a right angle and push your sole up"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "双手和支撑膝稳住，躯干不动",
-    "en": "Keep your hands and supporting knee steady and your trunk still."
+    "zh": "双手和支撑的膝盖稳住，身体不动。",
+    "en": "Keep your hands and supporting knee steady and your body still."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "腰不塌，慢慢放回",
+    "zh": "腰不往下塌，慢慢放回。",
     "en": "Keep your lower back from sagging and lower slowly."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "腰往下塌借力",
+   "zh": "塌腰借力抬得更高",
    "en": "Sagging the lower back to lift higher."
   },
   {
-   "zh": "骨盆向一侧转开",
-   "en": "Rotating the pelvis open."
+   "zh": "骨盆往一边转开",
+   "en": "Letting the hips twist open."
   }
  ],
  "cautions": [
   {
-   "zh": "腰部不适时减小幅度，仍痛就停止",
-   "en": "Reduce the range if your lower back feels uncomfortable, and stop if it still hurts."
+   "zh": "腰不舒服时减小幅度，仍痛就停止",
+   "en": "If your lower back feels uncomfortable, reduce the range, and stop if it still hurts."
   },
   {
-   "zh": "先做手腕热身；手腕刺痛或发麻就停止",
-   "en": "Warm up your wrists first, and stop if they feel sharp pain or numbness."
+   "zh": "手腕刺痛或发麻时停止，开始前先活动手腕",
+   "en": "Stop if your wrists feel sharp pain or numbness, and warm them up first."
   }
  ],
  "tags": {
@@ -84,16 +84,52 @@
  },
  "phases": {
   "start": {
-   "zh": "向上踢",
-   "en": "Kick up"
+   "zh": "上踢",
+   "en": "Kick"
   },
   "peak": {
    "zh": "夹臀",
    "en": "Squeeze"
   },
   "end": {
-   "zh": "慢慢放回",
-   "en": "Lower slowly"
+   "zh": "放回",
+   "en": "Lower"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.6,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 1.5,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.7,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.2
+   }
+  ],
+  "perSide": "each-side-separately",
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "purpose 去掉「伸髋」；名字「四足」改「跪撑」",
+    "起止口令按 0.6/0.7 s 缩成 2 字/1 词；主口令「90度」改「直角」"
+   ],
+   "flags": []
   }
  }
 }

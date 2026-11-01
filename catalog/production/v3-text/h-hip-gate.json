@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-hip-gate",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/h-hip-gate-r2.js"
  ],
@@ -10,49 +10,49 @@
   "en": "Chair-Supported Hip Gate Opener"
  },
  "purpose": {
-  "zh": "活动髋部，提升髋外旋和外展能力",
-  "en": "Mobilize the hip through external rotation and abduction."
+  "zh": "活动髋部，让腿往外打开和转动更灵活",
+  "en": "Loosen your hips so your leg opens out and turns more freely."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "膝盖抬到髋高，向外侧打开再放下",
-    "en": "Lift your knee to hip height, swing it out to the side, then lower"
+    "zh": "膝盖抬到髋的高度，往外画一圈再放下",
+    "en": "Lift your knee to hip height, circle it out, then lower"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "一手扶椅背，骨盆和躯干保持朝前",
-    "en": "Hold the chair back and keep your pelvis and trunk facing forward."
+    "zh": "一手扶椅背，骨盆和上身朝前不转。",
+    "en": "Hold the chair back and keep your hips and chest facing forward."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "再沿反方向做一次关门",
-    "en": "Then reverse the circle to close the gate."
+    "zh": "下一次沿反方向画回来。",
+    "en": "On the next one, circle back the other way."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "身体跟着转动或侧倒",
+   "zh": "身体跟着转或往一边倒",
    "en": "Turning or leaning the body with the leg."
   }
  ],
  "cautions": [
   {
-   "zh": "髋不适时减小幅度，仍痛就停止",
-   "en": "Reduce the range if your hip feels uncomfortable, and stop if it still hurts."
+   "zh": "髋不舒服时减小幅度，仍痛就停止",
+   "en": "If your hip feels uncomfortable, make the circle smaller, and stop if it still hurts."
   },
   {
-   "zh": "使用稳固、不带轮子的椅子",
-   "en": "Use a sturdy chair without wheels."
+   "zh": "椅子会滑动时换一把稳固、不带轮子的",
+   "en": "If the chair can slide, use a sturdy one without wheels."
   }
  ],
  "tags": {
@@ -82,15 +82,54 @@
  "phases": {
   "start": {
    "zh": "抬膝",
-   "en": "Lift your knee"
+   "en": "Knee up"
   },
   "peak": {
-   "zh": "向外打开",
-   "en": "Open out"
+   "zh": "画圈",
+   "en": "Circle around"
   },
   "end": {
    "zh": "放下",
-   "en": "Lower down"
+   "en": "Lower"
+  }
+ },
+ "training": {
+  "kind": "rep_cycle",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.9,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 1.5,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.8,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 0.8
+   }
+  ],
+  "perSide": "each-side-separately",
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画 8 秒「向外开门 1 次 + 反向关门 1 次」，按画圈循环计 rep_cycle（一下 4 s）",
+    "purpose 去掉「外旋/外展」；peak 口令「向外打开」改「画圈」以同时适用开门和关门",
+    "cue3 改成「下一次沿反方向」"
+   ],
+   "flags": [
+    "开门和关门是两个方向，现在每个方向各算 1 次；是否应一开一关合计 1 次请定"
+   ]
   }
  }
 }

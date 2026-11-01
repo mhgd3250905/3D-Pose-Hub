@@ -1,40 +1,40 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-incline-pushup",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/h-incline-pushup-r2.js"
  ],
  "name": {
   "zh": "扶凳上斜俯卧撑",
-  "en": "Incline Push-Up (Stool)"
+  "en": "Incline Push-Up on a Stool"
  },
  "purpose": {
-  "zh": "练胸部和手臂，适合入门的俯卧撑",
-  "en": "Build the chest and arms with a beginner-friendly push-up."
+  "zh": "练胸口和手臂，适合入门的俯卧撑",
+  "en": "Build your chest and arms with a beginner-friendly push-up."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "身体一条直线，胸口向凳沿下放",
-    "en": "Keep your body in one line and lower your chest toward the edge"
+    "zh": "身体一条直线，胸口往凳边放下",
+    "en": "Keep your body in one line and lower your chest to the edge"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "肘向后约45°，不要向外张",
-    "en": "Angle your elbows back about 45 degrees, not flared out."
+    "zh": "手肘斜向后，不要往两边张。",
+    "en": "Angle your elbows back, not out to the sides."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "推回到手臂伸直",
+    "zh": "推回到手臂伸直。",
     "en": "Press back up to straight arms."
    }
   }
@@ -45,18 +45,18 @@
    "en": "Letting the hips sag."
   },
   {
-   "zh": "肘向两侧张开",
+   "zh": "手肘往两边张",
    "en": "Flaring the elbows."
   }
  ],
  "cautions": [
   {
-   "zh": "先做手腕热身；手腕刺痛或发麻就停止",
-   "en": "Warm up your wrists first, and stop if they feel sharp pain or numbness."
+   "zh": "手腕刺痛或发麻时停止，开始前先活动手腕",
+   "en": "Stop if your wrists feel sharp pain or numbness, and warm them up first."
   },
   {
-   "zh": "使用不会滑动的稳固凳子",
-   "en": "Use a sturdy stool that will not slide."
+   "zh": "凳子会滑动时不要做，换稳固的",
+   "en": "If the stool can slide, switch to a sturdy one."
   }
  ],
  "tags": {
@@ -93,7 +93,42 @@
   },
   "end": {
    "zh": "推起",
-   "en": "Push up"
+   "en": "Push"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.0,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 0.9,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.7,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.4
+   }
+  ],
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "英文名去掉括号；cue2 去掉「45°」数字改口语",
+    "cautions 改「X 时 Y」"
+   ],
+   "flags": []
   }
  }
 }

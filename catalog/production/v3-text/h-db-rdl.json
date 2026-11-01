@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-db-rdl",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/h-db-rdl.js"
  ],
@@ -10,23 +10,23 @@
   "en": "Dumbbell Romanian Deadlift"
  },
  "purpose": {
-  "zh": "练腿后侧和臀部，学会以髋为轴发力",
-  "en": "Build the hamstrings and glutes and learn the hip hinge."
+  "zh": "练大腿后侧和臀部，学会从髋部弯腰而不弓背",
+  "en": "Build your hamstrings and glutes and learn to bend from the hips without rounding."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "臀部向后推，背部平直，哑铃贴腿下放",
-    "en": "Push your hips back with a flat back and lower the weights close to your legs"
+    "zh": "臀部往后推，背保持平直，哑铃贴腿下放",
+    "en": "Push your hips back with a flat back and slide the weights down your legs"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "膝盖微屈但不下蹲",
+    "zh": "膝盖微弯，但不要往下蹲。",
     "en": "Keep your knees soft without squatting."
    }
   },
@@ -34,8 +34,8 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "腿后侧有拉伸感就停，再把髋向前推站直",
-    "en": "Stop when your hamstrings stretch, then drive your hips forward to stand."
+    "zh": "哑铃到膝盖下方、大腿后侧有拉伸感就停，再站直。",
+    "en": "Stop just below the knees when the backs of your thighs stretch, then stand tall."
    }
   }
  ],
@@ -55,8 +55,8 @@
    "en": "Start with a light weight, and stop if you feel pain."
   },
   {
-   "zh": "腰部不适时减小幅度，仍痛就停止",
-   "en": "Reduce the range if your lower back feels uncomfortable, and stop if it still hurts."
+   "zh": "腰不舒服时减小幅度，仍痛就停止",
+   "en": "If your lower back feels uncomfortable, reduce the range, and stop if it still hurts."
   }
  ],
  "tags": {
@@ -84,7 +84,7 @@
  },
  "phases": {
   "start": {
-   "zh": "臀向后推",
+   "zh": "臀往后推",
    "en": "Hips back"
   },
   "peak": {
@@ -92,8 +92,43 @@
    "en": "Pause"
   },
   "end": {
-   "zh": "推髋站直",
-   "en": "Drive up tall"
+   "zh": "站直",
+   "en": "Stand tall"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.0,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 1.1,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.8,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.1
+   }
+  ],
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "purpose 去掉「以髋为轴」改口语；cue3 按动画补「哑铃到膝盖下方」",
+    "结束口令按 0.8 s 缩为「站直 / Stand tall」"
+   ],
+   "flags": []
   }
  }
 }

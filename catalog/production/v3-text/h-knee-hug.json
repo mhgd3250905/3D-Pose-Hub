@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-knee-hug",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/h-knee-hug-r3.js",
   "drill-anim/specs/h-knee-hug-r2.js",
@@ -9,7 +9,7 @@
  ],
  "name": {
   "zh": "仰卧抱膝",
-  "en": "Supine Knees-to-Chest"
+  "en": "Lying Knees-to-Chest"
  },
  "purpose": {
   "zh": "放松下背和臀部",
@@ -21,23 +21,23 @@
    "primary": true,
    "text": {
     "zh": "呼气时把膝盖轻轻拉向胸口",
-    "en": "As you breathe out, gently pull your knees toward your chest"
+    "en": "As you breathe out, gently pull your knees to your chest"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "双手抱住小腿上方，头肩放松贴地",
-    "en": "Hold just below your knees and keep your head and shoulders relaxed."
+    "zh": "双手抱住膝盖下方，头和肩放松贴地。",
+    "en": "Hold just below your knees and keep your head and shoulders relaxed on the mat."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "吸气时稍微放松，让膝盖回离",
-    "en": "As you breathe in, ease your grip and let your knees float out."
+    "zh": "吸气时手松一点，让膝盖回离。",
+    "en": "As you breathe in, loosen your grip and let your knees drift out."
    }
   }
  ],
@@ -53,8 +53,8 @@
  ],
  "cautions": [
   {
-   "zh": "只拉到舒适的程度，出现疼痛就放松",
-   "en": "Stretch only to a comfortable point, and ease off if anything hurts."
+   "zh": "出现疼痛时放松，只拉到舒服的程度",
+   "en": "If anything hurts, ease off and stretch only to a comfortable point."
   }
  ],
  "tags": {
@@ -72,23 +72,60 @@
  },
  "unilateral": false,
  "defaultDose": {
-  "mode": "time",
-  "sets": 1,
-  "seconds": 40,
-  "restSeconds": 10
+  "mode": "reps",
+  "sets": 2,
+  "reps": 8,
+  "restSeconds": 15
  },
  "phases": {
   "start": {
    "zh": "呼气抱紧",
-   "en": "Exhale, hug in"
+   "en": "Hug in"
   },
   "peak": {
    "zh": "保持",
    "en": "Hold"
   },
   "end": {
-   "zh": "吸气放松",
-   "en": "Inhale, ease out"
+   "zh": "放松",
+   "en": "Release"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.0,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 1.3,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.7,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.0
+   }
+  ],
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画是 8 秒 2 次「呼气抱紧-停 1.3 s-吸气放松」在重复，剂量从 40 秒计时改为 2 组×8 次（rep_hold），dose mode time→reps",
+    "英文名 Supine 改 Lying；结束口令按 0.7 s 缩为「放松」"
+   ],
+   "flags": [
+    "原为 40 秒放松计时，现按动画（跟呼吸一抱一松）改为计次；若更想按时间放松请定"
+   ]
   }
  }
 }
