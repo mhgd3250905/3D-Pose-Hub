@@ -1,40 +1,40 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-bear-plank",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/h-bear-plank-r4.js"
  ],
  "name": {
   "zh": "熊式支撑",
-  "en": "Bear Plank Hold"
+  "en": "Bear Plank"
  },
  "purpose": {
-  "zh": "练核心稳定和肩部支撑",
-  "en": "Build core stability and shoulder support."
+  "zh": "练核心稳定和肩膀的支撑力",
+  "en": "Build a steady core and shoulder support."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "收紧腹部，双膝离地几厘米",
-    "en": "Brace your abs and float your knees a few centimetres off the floor"
+    "zh": "收紧肚子，膝盖离地一点点",
+    "en": "Tighten your belly and lift your knees just off the floor"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "四足跪撑，手在肩下，膝在髋下，脚尖踩地",
-    "en": "On hands and knees, hands under shoulders, knees under hips, toes tucked."
+    "zh": "手在肩膀下，膝盖在臀部下，脚尖踩地。",
+    "en": "Hands under shoulders, knees under hips, toes tucked."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "背部平直，髋不抬高，再轻轻放下",
+    "zh": "背放平，臀部别翘高，再轻轻放下膝盖。",
     "en": "Keep your back flat and hips level, then set your knees down softly."
    }
   }
@@ -42,17 +42,21 @@
  "commonErrors": [
   {
    "zh": "臀部翘高",
-   "en": "Piking the hips up."
+   "en": "Pushing your hips up high."
   },
   {
    "zh": "塌腰",
-   "en": "Sagging the lower back."
+   "en": "Letting your lower back sag."
   }
  ],
  "cautions": [
   {
-   "zh": "先做2–3分钟手腕热身；腕部刺痛或麻木立即停止",
-   "en": "Warm up your wrists for 2–3 minutes first; stop right away if they feel sharp pain or numbness."
+   "zh": "先活动一下手腕再做",
+   "en": "Warm up your wrists first."
+  },
+  {
+   "zh": "手腕刺痛或发麻时停下",
+   "en": "Stop if your wrists feel sharp pain or go numb."
   }
  ],
  "tags": {
@@ -72,23 +76,60 @@
  },
  "unilateral": false,
  "defaultDose": {
-  "mode": "hold",
+  "mode": "reps",
   "sets": 3,
-  "seconds": 20,
+  "reps": 8,
   "restSeconds": 30
  },
  "phases": {
   "start": {
-   "zh": "膝盖离地",
-   "en": "Knees up"
+   "zh": "离地",
+   "en": "Lift"
   },
   "peak": {
    "zh": "保持住",
    "en": "Hold"
   },
   "end": {
-   "zh": "轻轻放下",
-   "en": "Set down"
+   "zh": "放下",
+   "en": "Down"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.5,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 2.5,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.4,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 0.6
+   }
+  ],
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画是 2 次/8 s「膝盖离地-悬停约 2.5 s-放下」，剂量由 20 s 保持改为 3 组×8 次（rep_hold）",
+    "英文名去掉「Hold」；口令按 0.4–0.5 s 相位缩短"
+   ],
+   "flags": [
+    "原为计时保持的支撑动作，现按动画改为计次；若要回到长时间悬停计时需改动画，请定"
+   ]
   }
  }
 }

@@ -1,62 +1,62 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-band-hip-ir",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/h-band-hip-ir.js"
  ],
  "name": {
-  "zh": "坐椅弹力带髋内旋",
-  "en": "Seated Banded Hip Internal Rotation"
+  "zh": "坐姿弹力带脚向外摆",
+  "en": "Seated Band Foot Swing-Out"
  },
  "purpose": {
-  "zh": "练髋内旋的力量和控制",
-  "en": "Build strength and control in hip internal rotation."
+  "zh": "练髋部往里转的力量和控制",
+  "en": "Build strength and control for turning your thigh inward."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "膝盖不动，小腿和脚向外侧摆开",
-    "en": "Keep your knee still and swing your shin and foot out to the side"
+    "zh": "膝盖不动，脚往外侧摆开",
+    "en": "Keep your knee still and swing your foot out"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "坐直，大腿贴椅面，双手放在大腿上",
-    "en": "Sit tall with your thigh on the seat and hands on your thighs."
+    "zh": "坐直，大腿贴住椅面，双手放在大腿上。",
+    "en": "Sit tall with your thigh on the seat and your hands on your thighs."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "外侧停一下，再慢慢收回",
-    "en": "Pause at the end, then return slowly."
+    "zh": "外面停一下，再慢慢收回。",
+    "en": "Pause out there, then bring it back slowly."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "膝盖跟着向内或向外移动",
+   "zh": "膝盖跟着往里或往外跑",
    "en": "Letting the knee drift in or out."
   },
   {
-   "zh": "身体侧倒借力",
-   "en": "Leaning the body to help."
+   "zh": "身体往一侧倒来帮忙",
+   "en": "Leaning your body to help."
   }
  ],
  "cautions": [
   {
-   "zh": "用轻阻力弹力带，检查固定点牢固；出现疼痛就停止",
-   "en": "Use a light band and check the anchor is secure; stop if you feel pain."
+   "zh": "固定点不牢时先别开始",
+   "en": "Do not start until the anchor is secure."
   },
   {
-   "zh": "髋或膝不适时减小幅度",
-   "en": "Reduce the range if your hip or knee feels uncomfortable."
+   "zh": "髋或膝不舒服时摆小一点",
+   "en": "If your hip or knee feels uncomfortable, swing a smaller distance."
   }
  ],
  "tags": {
@@ -85,7 +85,7 @@
  },
  "phases": {
   "start": {
-   "zh": "向外摆",
+   "zh": "往外摆",
    "en": "Swing out"
   },
   "peak": {
@@ -93,8 +93,46 @@
    "en": "Pause"
   },
   "end": {
-   "zh": "慢慢收回",
-   "en": "Return slowly"
+   "zh": "收回",
+   "en": "Return"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.7,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 1.3,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.8,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.2
+   }
+  ],
+  "perSide": "each-side-separately",
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "名字去掉「髋内旋 / Internal Rotation」术语，按动画说成「脚向外摆」",
+    "口令按相位缩短（收回约 0.8 s）"
+   ],
+   "flags": [
+    "改了动作名；tags.activeMuscles 写的是 abductors+glutes，动画实为大腿向内转（臀中/小肌），是否调整请定"
+   ]
   }
  }
 }

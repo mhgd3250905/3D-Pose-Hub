@@ -1,55 +1,59 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-banana",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/h-banana-r2.js",
   "drill-anim/specs/h-banana.js"
  ],
  "name": {
-  "zh": "仰卧香蕉式侧伸",
-  "en": "Supine Banana Stretch"
+  "zh": "仰卧香蕉式侧弯",
+  "en": "Lying Banana Side Stretch"
  },
  "purpose": {
-  "zh": "拉伸身体侧面，放松侧腹和背阔肌",
-  "en": "Stretch the side of your body, easing the obliques and lats."
+  "zh": "拉伸身体两侧的腰和背",
+  "en": "Stretch the sides of your waist and back."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "双脚和双手移向同侧，身体弯成香蕉形",
-    "en": "Move your feet and hands to the same side so your body curves"
+    "zh": "手脚一起移向一侧，身体弯成香蕉形",
+    "en": "Move your hands and feet to one side so your body curves"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "双肩和骨盆始终贴在垫上",
-    "en": "Keep both shoulders and your pelvis on the mat."
+    "zh": "双肩和臀部一直贴着垫子。",
+    "en": "Keep both shoulders and your hips on the mat."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "保持呼吸，回到中间再换另一侧",
-    "en": "Breathe in the stretch, return through the center, then switch sides."
+    "zh": "回到中间，再弯向另一侧。",
+    "en": "Come back to the middle, then curve to the other side."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "肩或骨盆离开垫子",
-   "en": "Letting a shoulder or the pelvis lift off the mat."
+   "zh": "肩或臀部离开垫子",
+   "en": "Letting a shoulder or your hips lift off the mat."
+  },
+  {
+   "zh": "憋气",
+   "en": "Holding your breath."
   }
  ],
  "cautions": [
   {
-   "zh": "只拉到舒适的程度，出现疼痛就回到中间",
-   "en": "Stretch only to a comfortable point, and return to center if anything hurts."
+   "zh": "身体侧面拉得发疼时就回到中间",
+   "en": "If your side starts to hurt, come back to the middle."
   }
  ],
  "tags": {
@@ -70,23 +74,61 @@
  "unilateral": true,
  "startingSide": "right",
  "defaultDose": {
-  "mode": "hold",
+  "mode": "reps",
   "sets": 2,
-  "seconds": 30,
-  "restSeconds": 10
+  "reps": 6,
+  "restSeconds": 20
  },
  "phases": {
   "start": {
-   "zh": "移向一侧",
-   "en": "Curve to one side"
+   "zh": "弯过去",
+   "en": "Curve over"
   },
   "peak": {
-   "zh": "保持呼吸",
-   "en": "Breathe and hold"
+   "zh": "保持住",
+   "en": "Hold"
   },
   "end": {
-   "zh": "回到中间",
-   "en": "Return to center"
+   "zh": "回中",
+   "en": "Return"
+  }
+ },
+ "training": {
+  "kind": "rep_alternate",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.9,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 1.7,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.6,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 0.8
+   }
+  ],
+  "perSide": "alternate",
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画是左右轮流各弯一次（先右）、每侧停约 1.7 s，剂量由 30 s 保持改为 2 组×每侧 6 次，rep_alternate",
+    "名字和口令改口语：「侧伸」→「侧弯」，删「侧腹/背阔肌」学名；结束口令缩成「回中」以念得完"
+   ],
+   "flags": [
+    "作为拉伸每侧只停约 1.7 s 偏短；如要长时间静态保持需改动画或改回计时，请定"
+   ]
   }
  }
 }

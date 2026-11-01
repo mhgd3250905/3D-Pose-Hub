@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-bridge-overhead",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/h-bridge-overhead-r5.js"
  ],
@@ -10,15 +10,15 @@
   "en": "Glute Bridge with Overhead Reach"
  },
  "purpose": {
-  "zh": "同时练伸髋和肩部上举，为桥做准备",
-  "en": "Combine hip extension and overhead reach as prep for a full bridge."
+  "zh": "同时练臀部和手臂上举，为完整的桥做准备",
+  "en": "Work your glutes and overhead reach together, as prep for a full bridge."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "手臂贴地伸过头，夹臀把髋顶起",
+    "zh": "手臂贴地伸过头，夹臀把髋抬起",
     "en": "Keep your arms long overhead on the floor and squeeze your glutes to lift"
    }
   },
@@ -26,7 +26,7 @@
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "仰卧屈膝，双脚与髋同宽",
+    "zh": "仰卧屈膝，双脚与髋同宽。",
     "en": "Lie on your back, knees bent, feet hip-width apart."
    }
   },
@@ -34,25 +34,25 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "肋骨下沉，顶端停住再慢慢放下",
+    "zh": "肋骨往下收，停住再慢慢放下。",
     "en": "Keep your ribs down, hold at the top, then lower slowly."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "腰部过度拱起",
-   "en": "Over-arching the lower back."
+   "zh": "腰拱得太厉害",
+   "en": "Arching your lower back too much."
   },
   {
    "zh": "手臂离开地面",
-   "en": "Letting the arms lift off the floor."
+   "en": "Letting your arms lift off the floor."
   }
  ],
  "cautions": [
   {
-   "zh": "肩部或腰部疼痛时减小幅度，仍痛就停止",
-   "en": "Reduce the range if your shoulders or lower back hurt, and stop if the pain continues."
+   "zh": "肩或腰疼时髋抬低一点",
+   "en": "If your shoulders or lower back hurt, lift your hips less."
   }
  ],
  "tags": {
@@ -81,7 +81,7 @@
  },
  "phases": {
   "start": {
-   "zh": "夹臀顶髋",
+   "zh": "抬髋",
    "en": "Lift"
   },
   "peak": {
@@ -89,8 +89,43 @@
    "en": "Hold"
   },
   "end": {
-   "zh": "慢慢放下",
-   "en": "Lower slowly"
+   "zh": "放下",
+   "en": "Lower"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.7,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 1.9,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.7,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 0.7
+   }
+  ],
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "目的去掉「伸髋」术语",
+    "口令按 0.7 s 相位缩短（「夹臀顶髋」→「抬髋」，「慢慢放下」→「放下」）"
+   ],
+   "flags": []
   }
  }
 }

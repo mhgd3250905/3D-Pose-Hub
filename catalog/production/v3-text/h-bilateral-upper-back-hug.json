@@ -1,24 +1,24 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-bilateral-upper-back-hug",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/h-bilateral-upper-back-hug-rr3.js"
  ],
  "name": {
-  "zh": "双臂前抱上背拉伸",
-  "en": "Bilateral Upper Back Hug Stretch"
+  "zh": "双臂环抱上背拉伸",
+  "en": "Upper Back Hug Stretch"
  },
  "purpose": {
-  "zh": "拉伸上背和肩胛之间",
-  "en": "Stretch the upper back between the shoulder blades."
+  "zh": "拉伸上背和两块肩胛骨之间",
+  "en": "Stretch your upper back between your shoulder blades."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "双臂向前环抱，上背向后拱起",
+    "zh": "双臂往前环抱，上背往后拱",
     "en": "Wrap your arms forward and round your upper back"
    }
   },
@@ -26,7 +26,7 @@
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "肩胛向两侧分开，低头放松颈部",
+    "zh": "肩胛骨往两边分开，低头放松脖子。",
     "en": "Spread your shoulder blades apart and relax your neck."
    }
   },
@@ -34,15 +34,15 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "保持呼吸，再慢慢松开",
-    "en": "Keep breathing, then release slowly."
+    "zh": "保持呼吸，每次呼气再抱紧一点。",
+    "en": "Keep breathing and hug a little tighter each time you breathe out."
    }
   }
  ],
  "commonErrors": [
   {
    "zh": "耸肩",
-   "en": "Shrugging the shoulders."
+   "en": "Shrugging your shoulders."
   },
   {
    "zh": "憋气",
@@ -51,8 +51,8 @@
  ],
  "cautions": [
   {
-   "zh": "只拉到舒适的程度，出现疼痛就松开",
-   "en": "Stretch only to a comfortable point, and release if anything hurts."
+   "zh": "拉到舒服的程度就好，疼就松开",
+   "en": "Stretch only to a comfortable point, and let go if it hurts."
   }
  ],
  "tags": {
@@ -69,15 +69,15 @@
  },
  "unilateral": false,
  "defaultDose": {
-  "mode": "hold",
+  "mode": "time",
   "sets": 2,
   "seconds": 30,
   "restSeconds": 10
  },
  "phases": {
   "start": {
-   "zh": "向前环抱",
-   "en": "Hug forward"
+   "zh": "抱住拱背",
+   "en": "Hug and round"
   },
   "peak": {
    "zh": "保持呼吸",
@@ -86,6 +86,23 @@
   "end": {
    "zh": "慢慢松开",
    "en": "Release slowly"
+  }
+ },
+ "training": {
+  "kind": "hold",
+  "leadSeconds": 1,
+  "source": "timer"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "保持计时 30 s，training=hold；dose mode hold→time",
+    "提示改为「每次呼气再抱紧一点」，对应动画里的小幅加深-放松",
+    "英文名去掉 Bilateral"
+   ],
+   "flags": [
+    "动画每 8 s 有一次约 2 s 加深、3 s 停、2 s 放松的小起伏（手臂一直抱着），按静止拉伸计时；如需按次数计请定"
+   ]
   }
  }
 }

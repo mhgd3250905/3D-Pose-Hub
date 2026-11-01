@@ -1,33 +1,33 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-band-shoulder-ir",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/h-band-shoulder-ir-r2.js",
   "drill-anim/specs/h-band-shoulder-ir.js"
  ],
  "name": {
-  "zh": "弹力带站姿肩内旋",
-  "en": "Standing Banded Shoulder Internal Rotation"
+  "zh": "弹力带站姿手臂内转",
+  "en": "Standing Band Shoulder Turn-In"
  },
  "purpose": {
-  "zh": "练肩袖，提升肩内旋控制",
-  "en": "Build the rotator cuff and control shoulder internal rotation."
+  "zh": "练肩膀深层的小肌肉，让肩更稳",
+  "en": "Build the small deep shoulder muscles for a steadier shoulder."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "肘贴身体约90度，前臂向腹部内收",
-    "en": "Keep your elbow at your side at 90 degrees and rotate your forearm in"
+    "zh": "手肘贴身弯成直角，小臂往肚子转",
+    "en": "Keep your elbow bent at your side and turn your forearm in to your belly"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "侧对固定点站直，膝盖微屈",
+    "zh": "侧对固定点站直，膝盖微弯。",
     "en": "Stand tall side-on to the anchor with soft knees."
    }
   },
@@ -35,25 +35,29 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "慢慢放回，只在无痛范围内做",
-    "en": "Return slowly and stay in a pain-free range."
+    "zh": "停住几秒，再慢慢转回去。",
+    "en": "Hold for a few seconds, then turn back slowly."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "肘离开身体",
-   "en": "Letting the elbow drift away from your side."
+   "zh": "手肘离开身体",
+   "en": "Letting your elbow drift away from your side."
   },
   {
-   "zh": "躯干转动代替肩转动",
-   "en": "Turning the trunk instead of the shoulder."
+   "zh": "用转身代替转手臂",
+   "en": "Turning your body instead of your arm."
   }
  ],
  "cautions": [
   {
-   "zh": "用轻阻力弹力带，检查固定点牢固；出现疼痛就停止",
-   "en": "Use a light band and check the anchor is secure; stop if you feel pain."
+   "zh": "固定点不牢时先别开始",
+   "en": "Do not start until the anchor is secure."
+  },
+  {
+   "zh": "肩膀疼时减小幅度或停下",
+   "en": "If your shoulder hurts, make the move smaller or stop."
   }
  ],
  "tags": {
@@ -76,21 +80,60 @@
  "defaultDose": {
   "mode": "reps",
   "sets": 3,
-  "reps": 12,
+  "reps": 8,
   "restSeconds": 30
  },
  "phases": {
   "start": {
-   "zh": "向内转",
-   "en": "Rotate in"
+   "zh": "往里转",
+   "en": "Turn in"
   },
   "peak": {
-   "zh": "停一下",
-   "en": "Pause"
+   "zh": "保持住",
+   "en": "Hold"
   },
   "end": {
-   "zh": "慢慢放回",
-   "en": "Return slowly"
+   "zh": "转回",
+   "en": "Turn back"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.9,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 4.6,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.9,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.6
+   }
+  ],
+  "perSide": "each-side-separately",
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "名字去掉「肩内旋 / Internal Rotation」术语",
+    "动画 1 下/8 s、停约 4.6 s，每侧 12 次改 8 次",
+    "「肩袖」改成「肩膀深层的小肌肉」"
+   ],
+   "flags": [
+    "每下停约 4.6 s 偏慢；改了动作名，请确认"
+   ]
   }
  }
 }

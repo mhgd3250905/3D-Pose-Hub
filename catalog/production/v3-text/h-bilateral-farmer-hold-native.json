@@ -1,32 +1,32 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-bilateral-farmer-hold-native",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/h-bilateral-farmer-hold-native-r2.js"
  ],
  "name": {
-  "zh": "双哑铃农夫站立保持",
-  "en": "Dumbbell Farmer Standing Hold"
+  "zh": "双哑铃农夫站姿保持",
+  "en": "Dumbbell Farmer Hold"
  },
  "purpose": {
-  "zh": "练握力和躯干稳定",
-  "en": "Build grip strength and trunk stability."
+  "zh": "练握力和身体的稳定",
+  "en": "Build grip strength and a steady body."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "双手握紧哑铃垂在体侧，站直不歪",
-    "en": "Hold the dumbbells at your sides and stand tall without leaning"
+    "zh": "双手握紧哑铃垂在身侧，站直",
+    "en": "Hold the dumbbells at your sides and stand tall"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "肩向下沉，胸口打开",
+    "zh": "肩膀往下沉，胸口打开。",
     "en": "Draw your shoulders down and keep your chest open."
    }
   },
@@ -34,7 +34,7 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "保持均匀呼吸，膝盖微微放松",
+    "zh": "均匀呼吸，膝盖别绷死。",
     "en": "Breathe evenly and keep your knees slightly soft."
    }
   }
@@ -42,17 +42,17 @@
  "commonErrors": [
   {
    "zh": "耸肩",
-   "en": "Shrugging the shoulders."
+   "en": "Shrugging your shoulders."
   },
   {
-   "zh": "身体向一侧歪",
+   "zh": "身体往一侧歪",
    "en": "Leaning to one side."
   }
  ],
  "cautions": [
   {
-   "zh": "选能稳定握住的重量，手或腰不适就放下",
-   "en": "Choose a weight you can hold steadily, and put it down if your hands or back feel uncomfortable."
+   "zh": "手或腰不舒服时就放下哑铃",
+   "en": "Put the dumbbells down if your hands or back feel uncomfortable."
   }
  ],
  "tags": {
@@ -73,7 +73,7 @@
  },
  "unilateral": false,
  "defaultDose": {
-  "mode": "hold",
+  "mode": "time",
   "sets": 3,
   "seconds": 30,
   "restSeconds": 45
@@ -81,7 +81,7 @@
  "phases": {
   "start": {
    "zh": "握紧站直",
-   "en": "Grip and stand tall"
+   "en": "Grip and stand"
   },
   "peak": {
    "zh": "保持住",
@@ -90,6 +90,20 @@
   "end": {
    "zh": "慢慢放下",
    "en": "Set them down"
+  }
+ },
+ "training": {
+  "kind": "hold",
+  "leadSeconds": 1,
+  "source": "timer"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画静止站立（无动作轨道），保持计时 30 s，training=hold；dose mode hold→time",
+    "英文名缩短（去 Standing），主口令去掉「不歪」第二指令"
+   ],
+   "flags": []
   }
  }
 }
