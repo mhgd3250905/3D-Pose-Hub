@@ -52,6 +52,30 @@ def collect(patterns):
 
 
 VENV = {**os.environ, 'PYTHONPATH': '/workspace/work/pylib' + os.pathsep + os.environ.get('PYTHONPATH', '')}
+_PW_LIBS = '/workspace/work/pw148/libs'  # Hark sandbox: Chromium's missing system libs (no-op elsewhere)
+if os.path.isdir(_PW_LIBS) and _PW_LIBS not in os.environ.get('LD_LIBRARY_PATH', ''):
+    VENV['LD_LIBRARY_PATH'] = _PW_LIBS + (os.pathsep + os.environ['LD_LIBRARY_PATH'] if os.environ.get('LD_LIBRARY_PATH') else '')
+for _k in ('NO_PROXY', 'no_proxy'):
+    VENV[_k] = ','.join(x for x in ['127.0.0.1', 'localhost', os.environ.get(_k, '')] if x)
+
+
+def ensure_dev_server(port=8830):
+    """Start the vite dev server for the run if nothing answers on the port; returns the process to stop (or None)."""
+    import socket, subprocess, time
+    def up():
+        with socket.socket() as s:
+            s.settimeout(1)
+            return s.connect_ex(('127.0.0.1', port)) == 0
+    if up():
+        return None
+    proc = subprocess.Popen([str(REPO / 'node_modules/.bin/vite'), '--host', '127.0.0.1', '--port', str(port), '--strictPort'],
+                            cwd=REPO, env=VENV, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    for _ in range(60):
+        if up():
+            return proc
+        time.sleep(1)
+    proc.kill()
+    raise SystemExit(f'dev server did not start on port {port}')
 
 
 HEAVY = [False]
@@ -104,6 +128,15 @@ def main(argv=None):
     root.mkdir(parents=True, exist_ok=True)
     print(json.dumps({'event': 'plan', 'actions': len(items), 'root': str(root)}), flush=True)
     results = []
+    server = None if args.dry_run else ensure_dev_server()
+    try:
+        return _run(args, root, items, log, results)
+    finally:
+        if server:
+            server.terminate()
+
+
+def _run(args, root, items, log, results):
     for aid, recipe in items:
         pkg = root / 'packages' / aid / 'package.json'
         masters = root / 'masters' / aid / 'layer-manifest.json'
