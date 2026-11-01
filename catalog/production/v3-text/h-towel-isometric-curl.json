@@ -1,40 +1,40 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-towel-isometric-curl",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/h-towel-isometric-curl-rr1.js"
  ],
  "name": {
-  "zh": "毛巾脚锚等长弯举",
-  "en": "Foot-Anchored Towel Isometric Curl"
+  "zh": "脚踩毛巾静力弯举",
+  "en": "Foot-Anchored Towel Curl Hold"
  },
  "purpose": {
   "zh": "不用器械练手臂前侧",
-  "en": "Build the front of the upper arms without equipment."
+  "en": "Build the fronts of your upper arms without equipment."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "脚踩住毛巾，双手握住向上拉并保持",
-    "en": "Anchor the towel under your foot, grip it, and pull up and hold"
+    "zh": "脚踩住毛巾，双手握住往上拉并停住",
+    "en": "Step on the towel, grip it, and pull up and hold"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "大臂贴身，肘约90度",
-    "en": "Keep your upper arms by your sides with elbows at about 90 degrees."
+    "zh": "大臂贴身，手肘弯成直角。",
+    "en": "Keep your upper arms by your sides with elbows at a right angle."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "保持呼吸，不憋气",
+    "zh": "保持呼吸，不要憋气。",
     "en": "Keep breathing and do not hold your breath."
    }
   }
@@ -51,8 +51,8 @@
  ],
  "cautions": [
   {
-   "zh": "逐渐用力，肘或手腕疼痛就停止",
-   "en": "Build the effort gradually, and stop if your elbows or wrists hurt."
+   "zh": "手肘或手腕疼时停止，力量慢慢加上去",
+   "en": "Stop if your elbows or wrists hurt, and build the effort gradually."
   }
  ],
  "tags": {
@@ -71,7 +71,7 @@
  },
  "unilateral": false,
  "defaultDose": {
-  "mode": "hold",
+  "mode": "time",
   "sets": 3,
   "seconds": 15,
   "restSeconds": 30
@@ -87,7 +87,24 @@
   },
   "end": {
    "zh": "慢慢放松",
-   "en": "Release slowly"
+   "en": "Release"
+  }
+ },
+ "training": {
+  "kind": "hold",
+  "leadSeconds": 1,
+  "source": "timer"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画全程静止用力 → kind hold（App 计时）；dose mode hold→time",
+    "名字「等长」是术语，改「静力 / Curl Hold」；cue「90度」改「直角」",
+    "caution 改「X 时 Y」"
+   ],
+   "flags": [
+    "改名请确认"
+   ]
   }
  }
 }

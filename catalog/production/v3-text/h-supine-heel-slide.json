@@ -1,24 +1,24 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-supine-heel-slide",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/h-supine-heel-slide-rr1.js"
  ],
  "name": {
-  "zh": "仰卧足跟滑",
-  "en": "Supine Heel Slide"
+  "zh": "仰卧脚跟滑",
+  "en": "Lying Heel Slide"
  },
  "purpose": {
-  "zh": "活动髋膝，练核心稳定",
-  "en": "Mobilize the hip and knee while keeping your core steady."
+  "zh": "活动髋和膝盖，同时练肚子稳住",
+  "en": "Loosen your hip and knee while keeping your trunk steady."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "脚跟贴地慢慢滑远，再滑回",
+    "zh": "脚跟贴着地面慢慢滑远，再滑回来",
     "en": "Slide your heel slowly away along the floor, then back"
    }
   },
@@ -26,23 +26,27 @@
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "下背贴地，骨盆保持不动",
-    "en": "Keep your lower back down and your pelvis still."
+    "zh": "腰贴住垫子，骨盆不动。",
+    "en": "Keep your lower back down and your hips still."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "动作慢而均匀",
-    "en": "Move slowly and smoothly."
+    "zh": "另一只脚踩稳地面。",
+    "en": "Keep your other foot planted."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "腰拱起",
+   "zh": "腰拱起来",
    "en": "Arching the lower back."
+  },
+  {
+   "zh": "骨盆跟着歪",
+   "en": "Letting the hips tip."
   }
  ],
  "cautions": [
@@ -86,6 +90,45 @@
   "end": {
    "zh": "滑回",
    "en": "Slide back"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.9,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 1.7,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 1.2,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 4.2
+   }
+  ],
+  "perSide": "each-side-separately",
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "英文名 Supine 改 Lying；「足跟」改「脚跟」",
+    "cue3 换成动画里能看到的「另一只脚踩稳」（原「动作慢而均匀」重复）"
+   ],
+   "flags": [
+    "动画高亮是大腿前后侧，tags 主练写的是 core；是否改主练肌群请定",
+    "动画 8 秒只做 1 次（之后静止约 4 s），节奏偏慢"
+   ]
   }
  }
 }

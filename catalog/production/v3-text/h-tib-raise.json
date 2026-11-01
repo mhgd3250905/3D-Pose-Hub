@@ -1,17 +1,17 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-tib-raise",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/h-tib-raise.js"
  ],
  "name": {
   "zh": "靠墙勾脚尖",
-  "en": "Wall Tibialis Raise"
+  "en": "Wall Toe Raise"
  },
  "purpose": {
-  "zh": "练小腿前侧",
-  "en": "Build the front of your shins."
+  "zh": "练小腿前侧，走路跑步时脚尖更有力",
+  "en": "Build the fronts of your shins for stronger walking and running."
  },
  "cues": [
   {
@@ -26,7 +26,7 @@
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "背和臀靠墙，腿伸直",
+    "zh": "背和屁股靠墙，腿伸直。",
     "en": "Lean your back and hips on the wall with your legs straight."
    }
   },
@@ -34,7 +34,7 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "停一下，慢慢放下不拍地",
+    "zh": "停一下，慢慢放下不拍地。",
     "en": "Pause, then lower slowly without slapping the floor."
    }
   }
@@ -43,6 +43,10 @@
   {
    "zh": "脚尖拍地",
    "en": "Slapping the feet down."
+  },
+  {
+   "zh": "屁股离开墙",
+   "en": "Letting the hips come off the wall."
   }
  ],
  "cautions": [
@@ -72,7 +76,7 @@
  },
  "phases": {
   "start": {
-   "zh": "勾起脚尖",
+   "zh": "勾脚",
    "en": "Toes up"
   },
   "peak": {
@@ -81,7 +85,45 @@
   },
   "end": {
    "zh": "慢慢放下",
-   "en": "Lower slowly"
+   "en": "Lower"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.6,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 1.2,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.9,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.3
+   }
+  ],
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "起始口令按 0.6 s 缩为「勾脚」",
+    "英文名 Tibialis 是学名，改 Wall Toe Raise",
+    "purpose 补一句用处"
+   ],
+   "flags": [
+    "英文改名请确认"
+   ]
   }
  }
 }

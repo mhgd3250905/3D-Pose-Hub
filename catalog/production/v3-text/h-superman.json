@@ -1,59 +1,59 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-superman",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/h-superman-r2.js",
   "drill-anim/specs/h-superman.js"
  ],
  "name": {
   "zh": "俯卧超人式",
-  "en": "Prone Superman"
+  "en": "Superman"
  },
  "purpose": {
-  "zh": "练背部和臀部",
-  "en": "Build your back and glutes."
+  "zh": "练背部和臀部，让身体后面更有力",
+  "en": "Build your back and glutes for a stronger back side."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "手臂、胸口和双腿同时抬离地面",
-    "en": "Lift your arms, chest, and legs off the mat together"
+    "zh": "手臂、胸口和双腿一起抬离垫子",
+    "en": "Lift your arms, chest and legs off the mat together"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "骨盆和腹部贴地，眼睛看垫子",
-    "en": "Keep your pelvis and belly down and your eyes on the mat."
+    "zh": "肚子贴着垫子，眼睛看垫子。",
+    "en": "Keep your belly on the mat and your eyes down."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "保持后慢慢放下",
-    "en": "Hold, then lower slowly."
+    "zh": "顶端停一下，再慢慢放下。",
+    "en": "Pause at the top, then lower slowly."
    }
   }
  ],
  "commonErrors": [
   {
    "zh": "抬头看前方",
-   "en": "Lifting the head to look forward."
+   "en": "Lifting your head to look forward."
   },
   {
-   "zh": "抬得过高腰部挤压",
-   "en": "Lifting too high and crunching the lower back."
+   "zh": "抬太高，腰被挤得发紧",
+   "en": "Lifting too high and squeezing the lower back."
   }
  ],
  "cautions": [
   {
-   "zh": "腰部不适时减小幅度，仍痛就停止",
-   "en": "Reduce the range if your lower back feels uncomfortable, and stop if it still hurts."
+   "zh": "腰不舒服时减小幅度，仍痛就停止",
+   "en": "If your lower back feels uncomfortable, reduce the range, and stop if it still hurts."
   }
  ],
  "tags": {
@@ -82,16 +82,54 @@
  },
  "phases": {
   "start": {
-   "zh": "同时抬起",
-   "en": "Lift up"
+   "zh": "抬起",
+   "en": "Lift"
   },
   "peak": {
    "zh": "保持住",
    "en": "Hold"
   },
   "end": {
-   "zh": "慢慢放下",
-   "en": "Lower slowly"
+   "zh": "放下",
+   "en": "Lower"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.7,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 2.0,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.6,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 0.7
+   }
+  ],
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "英文名去掉 Prone，改 Superman",
+    "起止口令按 0.7/0.6 s 缩为「抬起 / 放下」；常见错误改口语",
+    "caution 改「X 时 Y」"
+   ],
+   "flags": [
+    "英文改名请确认"
+   ]
   }
  }
 }

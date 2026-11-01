@@ -1,16 +1,16 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-unsupported-star-reach-native",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/h-unsupported-star-reach-native.js"
  ],
  "name": {
-  "zh": "无扶单腿三向点地",
-  "en": "Unsupported Three-Direction Toe Reach"
+  "zh": "单腿站三方向点地",
+  "en": "Single-Leg Three-Way Toe Tap"
  },
  "purpose": {
-  "zh": "练单腿平衡和髋部控制",
+  "zh": "练单腿平衡和臀部控制",
   "en": "Build single-leg balance and hip control."
  },
  "cues": [
@@ -18,23 +18,23 @@
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "单腿站稳，另一只脚轻点三个方向",
-    "en": "Balance on one leg and lightly tap the other foot in three directions"
+    "zh": "单腿站稳，另一只脚轻点前、侧、后",
+    "en": "Balance on one leg and lightly tap front, side and back"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "点地不转移重心，骨盆保持水平",
-    "en": "Tap without shifting your weight and keep your pelvis level."
+    "zh": "点地时不把重量压过去，骨盆别歪。",
+    "en": "Tap without shifting your weight and keep your hips level."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "支撑膝盖微屈，对准脚尖",
+    "zh": "支撑腿膝盖微弯，对着脚尖。",
     "en": "Keep your standing knee soft and over your toes."
    }
   }
@@ -45,14 +45,14 @@
    "en": "Putting weight on the tapping foot."
   },
   {
-   "zh": "支撑膝向内扣",
+   "zh": "支撑膝往里扣",
    "en": "Letting the standing knee cave in."
   }
  ],
  "cautions": [
   {
-   "zh": "周围留出空间，需要时扶稳",
-   "en": "Clear space around you and hold on to something if needed."
+   "zh": "站不稳时扶住墙或椅背",
+   "en": "If you feel unsteady, hold a wall or chair back."
   }
  ],
  "tags": {
@@ -80,16 +80,56 @@
  },
  "phases": {
   "start": {
-   "zh": "向外点地",
-   "en": "Reach and tap"
+   "zh": "点地",
+   "en": "Tap"
   },
   "peak": {
    "zh": "稳住",
-   "en": "Hold steady"
+   "en": "Hold"
   },
   "end": {
    "zh": "收回",
-   "en": "Bring it back"
+   "en": "Back"
+  }
+ },
+ "training": {
+  "kind": "rep_updown",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.5,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 0.7,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.5,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.0
+   }
+  ],
+  "perSide": "each-side-separately",
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "名字「无扶」不好懂，改「单腿站三方向点地」；英文同步",
+    "动画 8 秒依次点前、侧、后 3 下，每点 1 下算 1 次（顶点 0.7 s → rep_updown）",
+    "口令按 0.5 s 缩成 2 字/1 词；caution 改「X 时 Y」"
+   ],
+   "flags": [
+    "改名请确认",
+    "动画里点地的是右脚、支撑是左腿；startingSide 按支撑腿记 left，请确认记法"
+   ]
   }
  }
 }

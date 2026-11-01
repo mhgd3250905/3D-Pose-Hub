@@ -1,32 +1,32 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-supine-cactus-chest",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/h-supine-cactus-chest-r4.js"
  ],
  "name": {
   "zh": "仰卧仙人掌开胸",
-  "en": "Supine Cactus-Arm Chest Stretch"
+  "en": "Lying Cactus-Arm Chest Stretch"
  },
  "purpose": {
-  "zh": "轻柔打开胸部和肩前侧",
-  "en": "Gently open your chest and the front of your shoulders."
+  "zh": "轻轻打开胸口和肩膀前侧",
+  "en": "Gently open your chest and the fronts of your shoulders."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "手肘和手背贴地，双臂沿地面滑向头侧",
-    "en": "Keep your elbows and backs of your hands down and slide your arms toward your head"
+    "zh": "手肘和手背贴地，双臂沿地面往头的方向滑",
+    "en": "Keep elbows and hands on the floor and slide your arms toward your head"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "仰卧屈膝，双脚踩地，腰部放松",
+    "zh": "仰躺屈膝，双脚踩地，腰放松。",
     "en": "Lie on your back, knees bent, feet flat, lower back relaxed."
    }
   },
@@ -34,7 +34,7 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "轻微拉伸感就停住，再慢慢滑回",
+    "zh": "有轻微拉伸感就停住，再慢慢滑回。",
     "en": "Stop at a mild stretch, then slide back down slowly."
    }
   }
@@ -45,14 +45,14 @@
    "en": "Lifting the arms off the floor and forcing it."
   },
   {
-   "zh": "腰部拱起",
+   "zh": "腰拱起来",
    "en": "Arching the lower back."
   }
  ],
  "cautions": [
   {
-   "zh": "肩部疼痛时减小幅度，仍痛就停止",
-   "en": "Reduce the range if your shoulders hurt, and stop if the pain continues."
+   "zh": "肩膀疼时减小幅度，仍痛就停止",
+   "en": "If your shoulders hurt, reduce the range, and stop if it still hurts."
   }
  ],
  "tags": {
@@ -72,9 +72,9 @@
  },
  "unilateral": false,
  "defaultDose": {
-  "mode": "hold",
+  "mode": "reps",
   "sets": 2,
-  "seconds": 30,
+  "reps": 5,
   "restSeconds": 15
  },
  "phases": {
@@ -84,11 +84,49 @@
   },
   "peak": {
    "zh": "保持呼吸",
-   "en": "Breathe and hold"
+   "en": "Breathe"
   },
   "end": {
    "zh": "慢慢滑回",
    "en": "Slide back"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.9,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 4.6,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.9,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.6
+   }
+  ],
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画 8 秒 1 次「上滑-停约 4.6 s-滑回」在重复，剂量从 30 秒保持改为 2 组×5 次（rep_hold）",
+    "英文名 Supine 改 Lying；顶点口令英文缩为 Breathe",
+    "主口令缩短；caution 改「X 时 Y」"
+   ],
+   "flags": [
+    "拉伸按次数"
+   ]
   }
  }
 }

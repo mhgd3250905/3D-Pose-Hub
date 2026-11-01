@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-tabletop",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/h-tabletop.js"
  ],
@@ -10,23 +10,23 @@
   "en": "Reverse Tabletop Bridge"
  },
  "purpose": {
-  "zh": "练臀部和肩部，打开胸口",
-  "en": "Build the glutes and shoulders and open the chest."
+  "zh": "练臀部和肩膀，打开胸口",
+  "en": "Build your glutes and shoulders and open your chest."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "手和脚跟推地，把髋抬到肩、髋、膝一平",
-    "en": "Push through your hands and heels and lift your hips level with shoulders and knees"
+    "zh": "手和脚跟推地，把屁股抬到和肩膀、膝盖一样高",
+    "en": "Push through hands and heels and lift your hips level with your knees"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "手指朝脚，手臂伸直",
+    "zh": "手指朝向脚，手臂伸直。",
     "en": "Point your fingers toward your feet and keep your arms straight."
    }
   },
@@ -34,14 +34,14 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "胸口打开，肩胛向中间收",
+    "zh": "胸口打开，肩胛骨往中间收。",
     "en": "Open your chest and draw your shoulder blades together."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "髋没有抬平",
+   "zh": "屁股没有抬平",
    "en": "Not lifting the hips high enough."
   },
   {
@@ -51,11 +51,11 @@
  ],
  "cautions": [
   {
-   "zh": "先做手腕热身；手腕刺痛或发麻就停止",
-   "en": "Warm up your wrists first, and stop if they feel sharp pain or numbness."
+   "zh": "手腕刺痛或发麻时停止，开始前先活动手腕",
+   "en": "Stop if your wrists feel sharp pain or numbness, and warm them up first."
   },
   {
-   "zh": "肩前侧夹痛时缩小幅度或换简单版本",
+   "zh": "肩前侧夹着疼时，缩小幅度或换简单版本",
    "en": "If the front of your shoulder pinches, reduce the range or switch to an easier version."
   }
  ],
@@ -85,16 +85,52 @@
  },
  "phases": {
   "start": {
-   "zh": "抬起髋部",
-   "en": "Lift your hips"
+   "zh": "抬起",
+   "en": "Hips up"
   },
   "peak": {
    "zh": "保持住",
    "en": "Hold"
   },
   "end": {
-   "zh": "慢慢放下",
-   "en": "Lower slowly"
+   "zh": "放下",
+   "en": "Lower"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.7,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 1.7,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.7,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 0.9
+   }
+  ],
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "主口令「髋」改「屁股」口语",
+    "口令按相位缩短（0.7 s 起落 → 抬起 / 放下）",
+    "手腕 caution 改「X 时 Y」"
+   ],
+   "flags": []
   }
  }
 }

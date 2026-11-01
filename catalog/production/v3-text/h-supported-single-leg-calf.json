@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-supported-single-leg-calf",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/h-supported-single-leg-calf.js"
  ],
@@ -11,14 +11,14 @@
  },
  "purpose": {
   "zh": "练单腿小腿力量",
-  "en": "Build single-leg calf strength."
+  "en": "Build calf strength one leg at a time."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "单脚站立，脚跟抬起到前脚掌",
+    "zh": "单脚站，脚跟抬起踮到前脚掌",
     "en": "Stand on one foot and rise onto the ball of your foot"
    }
   },
@@ -26,33 +26,33 @@
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "手扶墙保持平衡，骨盆水平",
-    "en": "Hold the wall for balance and keep your pelvis level."
+    "zh": "手扶墙保持平衡，骨盆别歪。",
+    "en": "Hold the wall for balance and keep your hips level."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "顶端停一下，再慢慢放下",
+    "zh": "顶端停一下，再慢慢放下。",
     "en": "Pause at the top, then lower slowly."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "脚踝向外翻",
+   "zh": "脚踝往外翻",
    "en": "Rolling the ankle outward."
   },
   {
-   "zh": "骨盆向一侧掉",
-   "en": "Letting the pelvis drop."
+   "zh": "骨盆往一边掉",
+   "en": "Letting one hip drop."
   }
  ],
  "cautions": [
   {
-   "zh": "脚踝或跟腱不适时减小幅度，仍痛就停止",
-   "en": "Reduce the range if your ankle or Achilles feels uncomfortable, and stop if it still hurts."
+   "zh": "脚踝或脚后跟不舒服时减小幅度，仍痛就停止",
+   "en": "If your ankle or heel cord feels uncomfortable, reduce the range, and stop if it still hurts."
   }
  ],
  "tags": {
@@ -79,7 +79,7 @@
  },
  "phases": {
   "start": {
-   "zh": "抬起脚跟",
+   "zh": "踮起脚",
    "en": "Heel up"
   },
   "peak": {
@@ -87,8 +87,44 @@
    "en": "Pause"
   },
   "end": {
-   "zh": "慢慢放下",
-   "en": "Lower slowly"
+   "zh": "放下",
+   "en": "Lower"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.0,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 0.9,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.8,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.3
+   }
+  ],
+  "perSide": "each-side-separately",
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "「骨盆水平」改口语「骨盆别歪」；「跟腱」改「脚后跟」",
+    "口令按相位缩短（0.8 s 放下 → 放下 / Lower）"
+   ],
+   "flags": []
   }
  }
 }

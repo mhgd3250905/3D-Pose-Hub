@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-supine-twist",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/h-supine-twist-r4.js",
   "drill-anim/specs/h-supine-twist-r3.js",
@@ -10,18 +10,18 @@
  ],
  "name": {
   "zh": "仰卧屈膝扭转",
-  "en": "Supine Knee-Drop Twist"
+  "en": "Lying Knee-Drop Twist"
  },
  "purpose": {
-  "zh": "放松下背，拉伸身体侧面",
-  "en": "Relax the lower back and stretch the sides of your trunk."
+  "zh": "放松腰部，拉伸身体两侧",
+  "en": "Relax your lower back and stretch the sides of your trunk."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "双膝慢慢倒向一侧，双肩贴地",
+    "zh": "双膝慢慢倒向一边，两肩贴住垫子",
     "en": "Lower both knees slowly to one side, keeping both shoulders down"
    }
   },
@@ -29,7 +29,7 @@
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "双臂成T字放在垫上",
+    "zh": "双臂成 T 字放在垫子上。",
     "en": "Rest your arms out in a T on the mat."
    }
   },
@@ -37,8 +37,8 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "保持呼吸，回到中间再换另一侧",
-    "en": "Breathe, return through the center, then switch sides."
+    "zh": "停一下呼吸，回到中间再倒向另一边。",
+    "en": "Breathe, come back to the middle, then go to the other side."
    }
   }
  ],
@@ -54,8 +54,8 @@
  ],
  "cautions": [
   {
-   "zh": "只拉到舒适的程度，出现疼痛就放松",
-   "en": "Stretch only to a comfortable point, and ease off if anything hurts."
+   "zh": "出现疼痛时放松，只拉到舒服的程度",
+   "en": "If anything hurts, ease off and stretch only to a comfortable point."
   }
  ],
  "tags": {
@@ -76,23 +76,61 @@
  "unilateral": true,
  "startingSide": "right",
  "defaultDose": {
-  "mode": "hold",
+  "mode": "reps",
   "sets": 2,
-  "seconds": 20,
-  "restSeconds": 10
+  "reps": 6,
+  "restSeconds": 15
  },
  "phases": {
   "start": {
-   "zh": "膝倒向一侧",
-   "en": "Knees to one side"
+   "zh": "倒下",
+   "en": "Knees down"
   },
   "peak": {
    "zh": "保持呼吸",
-   "en": "Breathe and hold"
+   "en": "Breathe"
   },
   "end": {
-   "zh": "回到中间",
-   "en": "Back to center"
+   "zh": "回中间",
+   "en": "Back up"
+  }
+ },
+ "training": {
+  "kind": "rep_alternate",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.8,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 1.7,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.7,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 0.8
+   }
+  ],
+  "perSide": "alternate",
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画 8 秒先倒向右、再倒向左轮流重复，剂量从 20 秒保持改为 2 组×每侧 6 次（rep_alternate）",
+    "英文名 Supine 改 Lying；口令按相位缩短（倒下 / Knees down，回中间 / Back up）"
+   ],
+   "flags": [
+    "拉伸按次数"
+   ]
   }
  }
 }

@@ -1,25 +1,25 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-straight-arm-hang-native",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/h-straight-arm-hang-native.js",
   "drill-anim/specs/h-fixed-bar-vertical-pull-rr7.js"
  ],
  "name": {
-  "zh": "单杠直臂悬垂保持",
+  "zh": "单杠直臂悬垂",
   "en": "Straight-Arm Bar Hang"
  },
  "purpose": {
-  "zh": "练握力，放松拉伸背阔肌",
-  "en": "Build grip strength and lengthen the lats."
+  "zh": "练握力，放松拉长背部两侧",
+  "en": "Build grip strength and lengthen the sides of your back."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "双手握杠，手臂伸直，身体自然下垂",
+    "zh": "双手握杠，手臂伸直，身体自然挂着",
     "en": "Grip the bar with straight arms and let your body hang"
    }
   },
@@ -27,7 +27,7 @@
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "身体保持安静，不要晃动",
+    "zh": "身体保持不动，不要晃。",
     "en": "Keep your body still without swinging."
    }
   },
@@ -35,7 +35,7 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "握不住前先踩稳再松手",
+    "zh": "快握不住前先踩稳再松手。",
     "en": "Step down safely before your grip gives out."
    }
   }
@@ -52,12 +52,12 @@
  ],
  "cautions": [
   {
-   "zh": "肩前侧夹痛时缩小幅度或换简单版本",
-   "en": "If the front of your shoulder pinches, reduce the range or switch to an easier version."
+   "zh": "肩膀疼时缩短时间，或脚踩地分担体重",
+   "en": "If your shoulders hurt, hang for less time or keep your feet on the floor to take some weight."
   },
   {
-   "zh": "确认单杠安装牢固，下方有落脚处",
-   "en": "Make sure the bar is secure and you have somewhere to step down."
+   "zh": "单杠不牢或下方没有落脚处时不要做",
+   "en": "Do not hang if the bar is not secure or there is nowhere to step down."
   }
  ],
  "tags": {
@@ -77,14 +77,14 @@
  },
  "unilateral": false,
  "defaultDose": {
-  "mode": "hold",
+  "mode": "time",
   "sets": 3,
   "seconds": 20,
   "restSeconds": 60
  },
  "phases": {
   "start": {
-   "zh": "握杠悬垂",
+   "zh": "握杠挂住",
    "en": "Grip and hang"
   },
   "peak": {
@@ -94,6 +94,21 @@
   "end": {
    "zh": "踩稳松手",
    "en": "Step down"
+  }
+ },
+ "training": {
+  "kind": "hold",
+  "leadSeconds": 1,
+  "source": "timer"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画全程静止悬挂 → kind hold（App 计时）；dose mode hold→time",
+    "名字去掉重复的「保持」；purpose 去掉「背阔肌」学名",
+    "cautions 改成适用悬垂的「X 时 Y」（原「缩小幅度」不适用）"
+   ],
+   "flags": []
   }
  }
 }

@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-wall-angel",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/h-wall-angel.js"
  ],
@@ -10,15 +10,15 @@
   "en": "Wall Angel"
  },
  "purpose": {
-  "zh": "练肩部上举和外旋控制，打开胸椎和肩",
-  "en": "Train overhead shoulder control and open up the upper back and shoulders."
+  "zh": "练手臂举过头时肩膀的控制，打开上背和肩膀",
+  "en": "Train shoulder control overhead and open up your upper back and shoulders."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "前臂贴墙，双臂从W滑到Y",
+    "zh": "前臂贴着墙，双臂从 W 滑到 Y",
     "en": "Keep your forearms near the wall and slide from a W up to a Y"
    }
   },
@@ -26,7 +26,7 @@
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "后脑、背部和臀部贴墙，肋骨下沉",
+    "zh": "后脑、后背和屁股贴墙，肋骨往下收。",
     "en": "Keep your head, back and hips on the wall, with your ribs down."
    }
   },
@@ -34,25 +34,25 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "滑到手肘接近伸直，再慢慢滑回W",
-    "en": "Slide up until your elbows are almost straight, then slowly back down to the W."
+    "zh": "滑到手肘快伸直，再慢慢滑回 W。",
+    "en": "Slide up until your elbows are almost straight, then slowly back to the W."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "腰部离墙拱起、肋骨外翻",
-   "en": "Arching the lower back off the wall and flaring the ribs."
+   "zh": "腰离开墙拱起来",
+   "en": "Arching the lower back off the wall."
   },
   {
-   "zh": "手臂离开墙面往前掉",
+   "zh": "手臂离开墙往前掉",
    "en": "Letting the arms drift forward off the wall."
   }
  ],
  "cautions": [
   {
-   "zh": "肩部疼痛时减小上滑幅度，仍痛就停止",
-   "en": "Slide up less if your shoulders hurt, and stop if the pain continues."
+   "zh": "肩膀疼时少往上滑，仍痛就停止",
+   "en": "If your shoulders hurt, slide up less, and stop if it still hurts."
   }
  ],
  "tags": {
@@ -90,6 +90,43 @@
   "end": {
    "zh": "滑回来",
    "en": "Slide down"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.9,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 1.1,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.9,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.1
+   }
+  ],
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "purpose 去掉「外旋」「胸椎」术语",
+    "常见错误拆成一句一个错误；caution 改「X 时 Y」"
+   ],
+   "flags": [
+    "派生顶点 1.1 s 判为 rep_hold，但 spec 注释写顶点只停 0.5 s；若按实际应为 rep_updown，请确认"
+   ]
   }
  }
 }

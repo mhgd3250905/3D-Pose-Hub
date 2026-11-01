@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-wall-calf",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/h-wall-calf.js"
  ],
@@ -10,23 +10,23 @@
   "en": "Wall Calf Stretch"
  },
  "purpose": {
-  "zh": "拉伸小腿后侧，改善踝关节活动度",
-  "en": "Stretch the back of the calf and improve ankle mobility."
+  "zh": "拉伸小腿后面，让脚踝更灵活",
+  "en": "Stretch the back of your calf and loosen your ankle."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "后腿伸直，脚跟压地，髋部向墙靠",
-    "en": "Keep the back leg straight, heel down, and lean your hips to the wall"
+    "zh": "后腿伸直，脚跟压地，屁股往墙靠",
+    "en": "Keep the back leg straight and heel down as you lean your hips to the wall"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "后脚尖正对墙面，从脚跟到头成一条直线",
+    "zh": "后脚尖正对墙，从脚跟到头一条直线。",
     "en": "Point your back toes at the wall and keep one line from heel to head."
    }
   },
@@ -34,8 +34,8 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "拉伸感出现就停住，慢慢呼吸再稍微退回",
-    "en": "Hold once you feel the stretch, breathe slowly, then ease back a little."
+    "zh": "有拉伸感就停住，慢慢呼吸。",
+    "en": "Hold once you feel the stretch and breathe slowly."
    }
   }
  ],
@@ -45,14 +45,14 @@
    "en": "Lifting the back heel or bending the back knee."
   },
   {
-   "zh": "塌腰、只把髋部往前推",
+   "zh": "塌腰、只把屁股往前推",
    "en": "Sagging the lower back and only pushing the hips forward."
   }
  ],
  "cautions": [
   {
-   "zh": "疼痛时减小前倾幅度，仍痛就停止",
-   "en": "Lean less if it hurts, and stop if the pain continues."
+   "zh": "疼痛时少往前靠，仍痛就停止",
+   "en": "If it hurts, lean in less, and stop if it still hurts."
   }
  ],
  "tags": {
@@ -72,23 +72,62 @@
  "unilateral": true,
  "startingSide": "right",
  "defaultDose": {
-  "mode": "hold",
+  "mode": "reps",
   "sets": 2,
-  "seconds": 30,
+  "reps": 5,
   "restSeconds": 15
  },
  "phases": {
   "start": {
-   "zh": "向墙前倾",
+   "zh": "向墙靠",
    "en": "Lean in"
   },
   "peak": {
    "zh": "保持呼吸",
-   "en": "Breathe and hold"
+   "en": "Breathe"
   },
   "end": {
    "zh": "慢慢退回",
    "en": "Ease back"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.0,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 4.2,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 1.0,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.8
+   }
+  ],
+  "perSide": "each-side-separately",
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画 8 秒 1 次「前靠-停约 4 s-退回」在重复，剂量从 30 秒保持改为 2 组×5 次/侧（rep_hold）",
+    "purpose 去掉「踝关节活动度」术语；「髋部」改「屁股」",
+    "顶点口令英文缩为 Breathe"
+   ],
+   "flags": [
+    "拉伸按次数"
+   ]
   }
  }
 }
