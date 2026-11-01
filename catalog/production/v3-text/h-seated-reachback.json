@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-seated-reachback",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/h-seated-reachback.js"
  ],
@@ -10,15 +10,15 @@
   "en": "Seated Reach-Back Shoulder Stretch"
  },
  "purpose": {
-  "zh": "拉伸胸部和肩前侧",
-  "en": "Stretch the chest and the front of the shoulders."
+  "zh": "拉伸胸口和肩膀前面",
+  "en": "Stretch your chest and the fronts of your shoulders."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "双手撑在身后不动，臀部慢慢向前滑",
+    "zh": "双手撑在身后不动，屁股慢慢往前滑",
     "en": "Keep your hands planted behind you and slowly slide your hips forward"
    }
   },
@@ -26,16 +26,16 @@
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "手指朝后，胸口保持抬起",
-    "en": "Point your fingers back and keep your chest up."
+    "zh": "手指朝后，手臂伸直，胸口抬起。",
+    "en": "Point your fingers back, keep your arms straight and your chest up."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "保持呼吸，再慢慢滑回",
-    "en": "Keep breathing, then slide back slowly."
+    "zh": "停住时正常呼吸，再慢慢滑回。",
+    "en": "Breathe normally while you hold, then slide back slowly."
    }
   }
  ],
@@ -45,18 +45,18 @@
    "en": "Shrugging the shoulders."
   },
   {
-   "zh": "弯肘",
+   "zh": "弯手肘",
    "en": "Bending the elbows."
   }
  ],
  "cautions": [
   {
-   "zh": "只拉到舒适的程度，出现疼痛就放松",
-   "en": "Stretch only to a comfortable point, and ease off if anything hurts."
+   "zh": "出现疼痛时放松，只拉到舒服的程度",
+   "en": "If anything hurts, ease off and stretch only to a comfortable point."
   },
   {
-   "zh": "先做手腕热身；手腕刺痛或发麻就停止",
-   "en": "Warm up your wrists first, and stop if they feel sharp pain or numbness."
+   "zh": "手腕刺痛或发麻时停止，开始前先活动手腕",
+   "en": "Stop if your wrists feel sharp pain or numbness, and warm them up first."
   }
  ],
  "tags": {
@@ -83,16 +83,52 @@
  },
  "phases": {
   "start": {
-   "zh": "向前滑",
+   "zh": "往前滑",
    "en": "Slide forward"
   },
   "peak": {
-   "zh": "保持呼吸",
-   "en": "Breathe and hold"
+   "zh": "停住呼吸",
+   "en": "Hold and breathe"
   },
   "end": {
    "zh": "慢慢滑回",
    "en": "Slide back"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.6,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 3.2,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 1.4,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.8
+   }
+  ],
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "cue2 补动画可见的「手臂伸直」",
+    "cautions 改短句",
+    "顶点停 ~3 s → rep_hold"
+   ],
+   "flags": []
   }
  }
 }

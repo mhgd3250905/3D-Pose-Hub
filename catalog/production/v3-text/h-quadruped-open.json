@@ -1,24 +1,24 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-quadruped-open",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/h-quadruped-open-rr1.js"
  ],
  "name": {
-  "zh": "四足跪姿单臂开胸",
-  "en": "Quadruped Trunk Rotation with Arm Opening"
+  "zh": "跪撑单臂开胸",
+  "en": "Hands-and-Knees Arm Opener"
  },
  "purpose": {
-  "zh": "活动上背旋转，打开胸部",
-  "en": "Mobilize upper-back rotation and open the chest."
+  "zh": "让上背转动更灵活，打开胸口",
+  "en": "Loosen up your upper back and open your chest."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "一手撑地，另一臂向天花板打开",
+    "zh": "一只手撑地，另一只手臂朝天花板打开",
     "en": "Keep one hand down and open your other arm toward the ceiling"
    }
   },
@@ -26,7 +26,7 @@
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "眼睛跟着手，胸口转开",
+    "zh": "眼睛跟着手，胸口转开。",
     "en": "Follow your hand with your eyes and turn your chest open."
    }
   },
@@ -34,29 +34,29 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "臀部不动，再慢慢收回",
-    "en": "Keep your hips still, then bring the arm back slowly."
+    "zh": "屁股不动。",
+    "en": "Keep your hips still."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "臀部向一侧移开",
+   "zh": "屁股往一边歪",
    "en": "Shifting the hips to one side."
   },
   {
-   "zh": "用腰扭代替上背转",
-   "en": "Twisting from the lower back instead of the upper back."
+   "zh": "只扭腰不转上背",
+   "en": "Twisting the lower back instead of the upper back."
   }
  ],
  "cautions": [
   {
-   "zh": "只拉到舒适的程度，出现疼痛就放松",
-   "en": "Stretch only to a comfortable point, and ease off if anything hurts."
+   "zh": "出现疼痛时放松，只拉到舒服的程度",
+   "en": "If anything hurts, ease off and stretch only to a comfortable point."
   },
   {
-   "zh": "先做手腕热身；手腕刺痛或发麻就停止",
-   "en": "Warm up your wrists first, and stop if they feel sharp pain or numbness."
+   "zh": "手腕刺痛或发麻时停止，开始前先活动手腕",
+   "en": "Stop if your wrists feel sharp pain or numbness, and warm them up first."
   }
  ],
  "tags": {
@@ -89,12 +89,51 @@
    "en": "Open your arm"
   },
   "peak": {
-   "zh": "保持呼吸",
-   "en": "Breathe and hold"
+   "zh": "停住呼吸",
+   "en": "Hold and breathe"
   },
   "end": {
    "zh": "慢慢收回",
    "en": "Bring it back"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.2,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 1.8,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 1.2,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 3.8
+   }
+  ],
+  "perSide": "each-side-separately",
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "名字「四足跪姿」改「跪撑」，英文名去掉 Quadruped/Trunk Rotation 改 Hands-and-Knees Arm Opener",
+    "cue3 删掉与口令重复的「慢慢收回」",
+    "顶点停 ~1.8 s → rep_hold，每侧分开做"
+   ],
+   "flags": [
+    "改名请确认"
+   ]
   }
  }
 }

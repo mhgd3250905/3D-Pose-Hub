@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-mountain-climber",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/h-mountain-climber-r8.js"
  ],
@@ -10,49 +10,49 @@
   "en": "Slow Mountain Climber"
  },
  "purpose": {
-  "zh": "慢速控制，练核心和肩部稳定",
-  "en": "Build core and shoulder stability with slow control."
+  "zh": "慢慢做，练核心和肩膀的稳定",
+  "en": "Build core and shoulder stability by moving slowly."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "膝盖慢慢收向胸口，髋保持水平",
-    "en": "Drive your knee slowly toward your chest and keep your hips level"
+    "zh": "膝盖慢慢收向胸口，屁股别翘高",
+    "en": "Slowly bring your knee toward your chest without lifting your hips"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "高位平板，手在肩下，身体一条直线",
-    "en": "Hold a high plank, hands under shoulders, body in one line."
+    "zh": "手在肩膀正下方，身体一条直线。",
+    "en": "Keep your hands under your shoulders and your body in one line."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "收紧腹部停一下，再换另一侧",
-    "en": "Brace your abs and pause, then switch sides."
+    "zh": "两条腿轮流收，每次停一下再踩回。",
+    "en": "Switch legs each time, pausing before you step back."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "臀部翘高",
-   "en": "Piking the hips up."
+   "zh": "屁股翘高",
+   "en": "Lifting the hips high."
   },
   {
-   "zh": "动作变快失去控制",
+   "zh": "越做越快，失去控制",
    "en": "Speeding up and losing control."
   }
  ],
  "cautions": [
   {
-   "zh": "先做2–3分钟手腕热身；腕部刺痛或麻木立即停止",
-   "en": "Warm up your wrists for 2–3 minutes first; stop right away if they feel sharp pain or numbness."
+   "zh": "手腕刺痛或发麻时停止，开始前先活动手腕",
+   "en": "Stop if your wrists feel sharp pain or numbness, and warm them up first."
   }
  ],
  "tags": {
@@ -72,7 +72,8 @@
   "position": "plank",
   "difficulty": 1
  },
- "unilateral": false,
+ "unilateral": true,
+ "startingSide": "right",
  "defaultDose": {
   "mode": "reps",
   "sets": 3,
@@ -91,6 +92,45 @@
   "end": {
    "zh": "踩回",
    "en": "Step back"
+  }
+ },
+ "training": {
+  "kind": "rep_alternate",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.8,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 1.1,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.8,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.3
+   }
+  ],
+  "perSide": "alternate",
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画右腿、左腿轮流各收一次（4 s 一下），unilateral 改 true、startingSide right，training=rep_alternate（每侧 8 次）",
+    "主口令去掉「髋保持水平」改「屁股别翘高」；cue3 改为「两腿轮流」",
+    "cautions 改短句"
+   ],
+   "flags": [
+    "unilateral 由 false 改为 true（左右轮流），请确认"
+   ]
   }
  }
 }

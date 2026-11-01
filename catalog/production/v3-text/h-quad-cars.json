@@ -1,49 +1,49 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-quad-cars",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/h-quad-cars-r2.js",
   "drill-anim/specs/h-quad-cars.js"
  ],
  "name": {
-  "zh": "四足髋关节画圈",
-  "en": "Quadruped Hip CARs"
+  "zh": "跪撑髋部画圈",
+  "en": "Hands-and-Knees Hip Circles"
  },
  "purpose": {
-  "zh": "在全范围内主动控制髋关节",
-  "en": "Move the hip through its full range under control."
+  "zh": "让髋部在最大范围内慢慢转动，更灵活",
+  "en": "Move your hip slowly through its biggest range to keep it mobile."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "膝盖抬起，画出髋能做到的最大圆",
-    "en": "Lift your knee and draw the biggest circle your hip allows"
+    "zh": "膝盖抬起，画一个你能做到的最大的圈",
+    "en": "Lift your knee and draw the biggest circle you can"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "骨盆和脊柱保持不动",
-    "en": "Keep your pelvis and spine still."
+    "zh": "屁股和背不动，只有腿在转。",
+    "en": "Keep your hips and back still; only the leg moves."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "向前、向外、向后，再反方向画回",
-    "en": "Go forward, out, and back, then reverse the circle."
+    "zh": "往前、往外、往后画一圈，下一圈反方向。",
+    "en": "Circle forward, out and back, then go the other way next time."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "骨盆跟着转动",
-   "en": "Rotating the pelvis with the leg."
+   "zh": "屁股跟着转",
+   "en": "Turning the hips with the leg."
   },
   {
    "zh": "画得太快",
@@ -52,12 +52,12 @@
  ],
  "cautions": [
   {
-   "zh": "髋不适时缩小圆圈，仍痛就停止",
-   "en": "Make the circle smaller if your hip feels uncomfortable, and stop if it still hurts."
+   "zh": "髋部不舒服时幅度小一点，还疼就停",
+   "en": "If your hip feels uncomfortable, move less far, and stop if it still hurts."
   },
   {
-   "zh": "先做手腕热身；手腕刺痛或发麻就停止",
-   "en": "Warm up your wrists first, and stop if they feel sharp pain or numbness."
+   "zh": "手腕刺痛或发麻时停止，开始前先活动手腕",
+   "en": "Stop if your wrists feel sharp pain or numbness, and warm them up first."
   }
  ],
  "tags": {
@@ -81,7 +81,7 @@
  "defaultDose": {
   "mode": "reps",
   "sets": 2,
-  "reps": 3,
+  "reps": 6,
   "restSeconds": 20
  },
  "phases": {
@@ -90,12 +90,47 @@
    "en": "Lift and circle"
   },
   "peak": {
-   "zh": "向外打开",
+   "zh": "往外打开",
    "en": "Open out"
   },
   "end": {
-   "zh": "反向回来",
-   "en": "Reverse back"
+   "zh": "画回原位",
+   "en": "Circle home"
+  }
+ },
+ "training": {
+  "kind": "rep_cycle",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.7,
+    "cue": "phase.start"
+   },
+   {
+    "id": "back",
+    "seconds": 1.7,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 0.6
+   }
+  ],
+  "perSide": "each-side-separately",
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "名字「四足」「CARs」难懂，改「跪撑髋部画圈 / Hands-and-Knees Hip Circles」",
+    "动画 8 s 内一圈正向（0.5–3.9 s）+ 一圈反向（4.3–7.7 s）；派生 lift 轨只看抬膝高度（go1.7/back0.5 不对），按 spec 注释手算：一圈 = 1 次，前半圈 1.7、后半圈 1.7、停 0.6 → rep_cycle",
+    "剂量 3 次改为每侧 6 圈（正反各 3）"
+   ],
+   "flags": [
+    "改名请确认",
+    "相位为手算（非批表）；一圈算 1 次、正反交替，请确认"
+   ]
   }
  }
 }

@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-side-leg-raise",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/h-side-leg-raise-r5.js",
   "drill-anim/specs/h-side-leg-raise-r4.js",
@@ -14,49 +14,49 @@
   "en": "Standing Side Leg Raise"
  },
  "purpose": {
-  "zh": "练臀部外侧，提升单腿站立稳定",
-  "en": "Build the outer glutes and single-leg stability."
+  "zh": "练臀部外侧，单腿站得更稳",
+  "en": "Build your outer hips and steadier single-leg balance."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "腿伸直向侧抬，脚尖朝前",
-    "en": "Lift your straight leg out to the side with toes forward"
+    "zh": "腿伸直往旁边抬，脚尖朝前",
+    "en": "Lift your straight leg out to the side with your toes forward"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "双手扶髋，躯干不向另一侧倒",
-    "en": "Hands on hips, keep your trunk from leaning away."
+    "zh": "双手扶腰，上身别往另一边倒。",
+    "en": "Keep your hands on your hips and do not lean the other way."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "停一下，再慢慢放下",
-    "en": "Pause, then lower slowly."
+    "zh": "顶上停一下，再慢慢放下。",
+    "en": "Pause at the top, then lower slowly."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "脚尖外转",
+   "zh": "脚尖往外转",
    "en": "Turning the toes out."
   },
   {
-   "zh": "上身侧倒",
-   "en": "Leaning the trunk to the side."
+   "zh": "上身往旁边倒",
+   "en": "Leaning the body to the side."
   }
  ],
  "cautions": [
   {
-   "zh": "出现疼痛时减小幅度，仍痛就停止",
-   "en": "If you feel pain, reduce the range, and stop if it continues."
+   "zh": "髋部不舒服时幅度小一点，还疼就停",
+   "en": "If your hip feels uncomfortable, move less far, and stop if it still hurts."
   }
  ],
  "tags": {
@@ -82,7 +82,7 @@
  },
  "phases": {
   "start": {
-   "zh": "向侧抬",
+   "zh": "侧抬",
    "en": "Lift out"
   },
   "peak": {
@@ -90,8 +90,47 @@
    "en": "Pause"
   },
   "end": {
-   "zh": "慢慢放下",
+   "zh": "慢放下",
    "en": "Lower slowly"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.7,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 1.1,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.8,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.4
+   }
+  ],
+  "perSide": "each-side-separately",
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "口令按 0.7/0.8 s 缩短（侧抬/慢放下）",
+    "cautions 改短句",
+    "两下都是同一条腿 → 每侧分开做"
+   ],
+   "flags": [
+    "派生把顶点算成 ≥0.8 s 判为 rep_hold，但 spec 轨道真正的静止只有约 0.7 s（注释/关键帧），若按实际应为 rep_updown，请确认"
+   ]
   }
  }
 }

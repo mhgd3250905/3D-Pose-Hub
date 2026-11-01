@@ -1,58 +1,58 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-standing-arm-extension-stretch",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/h-standing-arm-extension-stretch-r5.js"
  ],
  "name": {
-  "zh": "站姿双臂后伸开肩",
-  "en": "Standing Straight-Arm Shoulder Extension Stretch"
+  "zh": "站姿双臂后抬开肩",
+  "en": "Standing Arms-Back Shoulder Stretch"
  },
  "purpose": {
-  "zh": "拉伸肩前侧和胸部",
-  "en": "Stretch the front of your shoulders and chest."
+  "zh": "拉伸肩膀前面和胸口",
+  "en": "Stretch the fronts of your shoulders and your chest."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "手臂伸直向后抬起，肩胛轻轻后收",
-    "en": "Lift your straight arms back and gently draw your shoulder blades back"
+    "zh": "手臂伸直，慢慢往后抬",
+    "en": "Keep your arms straight and slowly lift them back"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "站直，膝盖微屈，肋骨下沉",
-    "en": "Stand tall, knees soft, ribs down."
+    "zh": "站直，膝盖微弯，肩胛骨轻轻往后往下收。",
+    "en": "Stand tall with soft knees and gently draw your shoulder blades back and down."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "上身不前倾，轻微拉伸感就停住",
-    "en": "Do not lean forward; hold at a mild stretch."
+    "zh": "上身别往前倾，有轻微拉伸感就停住。",
+    "en": "Do not lean forward; stop at a mild stretch."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "身体前倾",
+   "zh": "身体往前倾",
    "en": "Leaning forward."
   },
   {
-   "zh": "腰往前拱",
+   "zh": "腰往前挺",
    "en": "Arching the lower back."
   }
  ],
  "cautions": [
   {
-   "zh": "肩部疼痛时减小幅度，仍痛就停止",
-   "en": "Reduce the range if your shoulders hurt, and stop if the pain continues."
+   "zh": "肩膀前面夹着疼时，幅度小一点或换简单版本",
+   "en": "If the front of your shoulder pinches, move less far or switch to an easier version."
   }
  ],
  "tags": {
@@ -70,23 +70,62 @@
  },
  "unilateral": false,
  "defaultDose": {
-  "mode": "hold",
+  "mode": "reps",
   "sets": 2,
-  "seconds": 20,
+  "reps": 5,
   "restSeconds": 15
  },
  "phases": {
   "start": {
-   "zh": "向后抬",
+   "zh": "往后抬",
    "en": "Lift back"
   },
   "peak": {
-   "zh": "保持呼吸",
-   "en": "Breathe and hold"
+   "zh": "停住呼吸",
+   "en": "Hold and breathe"
   },
   "end": {
    "zh": "慢慢放下",
    "en": "Lower slowly"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.9,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 4.1,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.9,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 2.1
+   }
+  ],
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画每 8 秒一次「后抬-停约 3.6 s-放下」，剂量从 20 秒保持改为 2 组×5 次（rep_hold）",
+    "英文名去掉 Extension 术语改 Arms-Back；中文「后伸」改「后抬」",
+    "主口令只留一件事，肩胛骨要点移到 cue2"
+   ],
+   "flags": [
+    "原剂量是静止计时，但动画每 8 秒做一次「进入-停住-回来」在重复，按规则改成按次数（rep_hold）；如果想要静止计时，需要动画改成一直停住，请定",
+    "改名请确认"
+   ]
   }
  }
 }

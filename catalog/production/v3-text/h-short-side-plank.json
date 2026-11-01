@@ -1,33 +1,33 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-short-side-plank",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/h-short-side-plank-rr2.js",
   "drill-anim/specs/h-short-side-plank-rr1.js"
  ],
  "name": {
-  "zh": "屈膝短杠杆侧平板",
-  "en": "Bent-Knee Short Side Plank"
+  "zh": "屈膝侧平板",
+  "en": "Bent-Knee Side Plank"
  },
  "purpose": {
-  "zh": "练侧腹和髋部，适合入门的侧撑",
-  "en": "Build the obliques and hips with a beginner side plank."
+  "zh": "练侧腹和臀部外侧，适合入门的侧撑",
+  "en": "Build the sides of your waist and outer hips with a beginner side plank."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "前臂和膝盖支撑，髋抬起成一条直线",
-    "en": "Support on your forearm and knee and lift your hips into a straight line"
+    "zh": "前臂和膝盖撑地，屁股抬起成一条直线",
+    "en": "Prop on your forearm and knee and lift your hips into a straight line"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "肘在肩正下方，推地远离",
+    "zh": "手肘在肩膀正下方，用力推地。",
     "en": "Keep your elbow under your shoulder and push the floor away."
    }
   },
@@ -35,25 +35,25 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "保持呼吸，髋不下沉",
-    "en": "Keep breathing and do not let your hips sag."
+    "zh": "正常呼吸，屁股别往下掉。",
+    "en": "Breathe normally and do not let your hips drop."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "髋下沉",
-   "en": "Letting the hips sag."
+   "zh": "屁股往下掉",
+   "en": "Letting the hips drop."
   },
   {
-   "zh": "肩往耳朵方向塌",
+   "zh": "肩膀往耳朵方向塌",
    "en": "Letting the shoulder sink toward the ear."
   }
  ],
  "cautions": [
   {
-   "zh": "肩前侧夹痛时缩小幅度或换简单版本",
-   "en": "If the front of your shoulder pinches, reduce the range or switch to an easier version."
+   "zh": "肩膀前面夹着疼时，幅度小一点或换简单版本",
+   "en": "If the front of your shoulder pinches, move less far or switch to an easier version."
   }
  ],
  "tags": {
@@ -75,14 +75,14 @@
  "unilateral": true,
  "startingSide": "left",
  "defaultDose": {
-  "mode": "hold",
+  "mode": "time",
   "sets": 3,
   "seconds": 20,
   "restSeconds": 30
  },
  "phases": {
   "start": {
-   "zh": "抬起髋部",
+   "zh": "抬起屁股",
    "en": "Lift your hips"
   },
   "peak": {
@@ -92,6 +92,24 @@
   "end": {
    "zh": "慢慢放下",
    "en": "Lower slowly"
+  }
+ },
+ "training": {
+  "kind": "hold",
+  "leadSeconds": 1,
+  "perSide": "each-side-separately",
+  "source": "timer"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画全程静止保持 → kind hold（App 计时），剂量 mode hold 改 time、每侧 20 秒",
+    "名字「短杠杆」是术语，改「屈膝侧平板 / Bent-Knee Side Plank」",
+    "「髋」改「屁股」口语"
+   ],
+   "flags": [
+    "改名请确认"
+   ]
   }
  }
 }

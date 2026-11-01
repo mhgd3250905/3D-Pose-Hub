@@ -1,41 +1,41 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-overhead-triceps-stretch",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/h-overhead-triceps-stretch-rr1.js"
  ],
  "name": {
-  "zh": "站姿过头肱三头肌拉伸",
+  "zh": "站姿过头手臂后侧拉伸",
   "en": "Standing Overhead Triceps Stretch"
  },
  "purpose": {
-  "zh": "拉伸手臂后侧和肩部",
-  "en": "Stretch the back of the upper arm and the shoulder."
+  "zh": "拉伸上臂后侧和肩膀",
+  "en": "Stretch the back of your upper arm and your shoulder."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "一臂举过头弯肘，另一手轻推肘部",
-    "en": "Raise one arm overhead with the elbow bent and gently press the elbow with the other hand"
+    "zh": "一只手举过头弯肘，另一只手轻推手肘",
+    "en": "Bend one arm overhead and gently push the elbow with your other hand"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "身体站直，头保持中立",
-    "en": "Stand tall and keep your head neutral."
+    "zh": "身体站直，头别往前探。",
+    "en": "Stand tall and keep your head back over your shoulders."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "保持呼吸，再慢慢放下",
-    "en": "Keep breathing, then lower slowly."
+    "zh": "停住时正常呼吸，再慢慢放下。",
+    "en": "Breathe normally while you hold, then lower slowly."
    }
   }
  ],
@@ -45,14 +45,14 @@
    "en": "Arching the lower back."
   },
   {
-   "zh": "用力硬推肘部",
+   "zh": "用力硬推手肘",
    "en": "Forcing the elbow hard."
   }
  ],
  "cautions": [
   {
-   "zh": "只拉到舒适的程度，出现疼痛就放松",
-   "en": "Stretch only to a comfortable point, and ease off if anything hurts."
+   "zh": "出现疼痛时放松，只拉到舒服的程度",
+   "en": "If anything hurts, ease off and stretch only to a comfortable point."
   }
  ],
  "tags": {
@@ -71,10 +71,10 @@
  "unilateral": true,
  "startingSide": "right",
  "defaultDose": {
-  "mode": "hold",
+  "mode": "reps",
   "sets": 2,
-  "seconds": 30,
-  "restSeconds": 10
+  "reps": 5,
+  "restSeconds": 15
  },
  "phases": {
   "start": {
@@ -82,12 +82,52 @@
    "en": "Raise and bend"
   },
   "peak": {
-   "zh": "保持呼吸",
-   "en": "Breathe and hold"
+   "zh": "停住呼吸",
+   "en": "Hold and breathe"
   },
   "end": {
    "zh": "慢慢放下",
    "en": "Lower slowly"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.9,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 2.7,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 1.2,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 3.2
+   }
+  ],
+  "perSide": "each-side-separately",
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画每 8 秒一次「举臂-停约 2 s-放下」，剂量从 30 秒保持改为 2 组×每侧 5 次（rep_hold）",
+    "名字去掉「肱三头肌」学名",
+    "cue2「头保持中立」改口语"
+   ],
+   "flags": [
+    "原剂量是静止计时，但动画每 8 秒做一次「进入-停住-回来」在重复，按规则改成按次数（rep_hold）；如果想要静止计时，需要动画改成一直停住，请定",
+    "改名请确认（仅中文）"
+   ]
   }
  }
 }

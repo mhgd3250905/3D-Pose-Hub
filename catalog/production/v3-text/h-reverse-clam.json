@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-reverse-clam",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/h-reverse-clam-r2.js",
   "drill-anim/specs/h-reverse-clam.js"
@@ -11,31 +11,31 @@
   "en": "Side-Lying Reverse Clamshell"
  },
  "purpose": {
-  "zh": "练髋内旋的主动控制",
-  "en": "Build active control of hip internal rotation."
+  "zh": "练臀部，让大腿向内转更有控制",
+  "en": "Build your glutes and control as your thigh turns inward."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "双膝并拢，上方脚向上抬离下方脚",
-    "en": "Keep your knees together and lift your top foot away from the bottom foot"
+    "zh": "双膝并拢，上面的脚往上抬离下面的脚",
+    "en": "Keep your knees together and lift your top foot away from the bottom one"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "骨盆不向后翻",
-    "en": "Keep your pelvis from rolling back."
+    "zh": "屁股别往后翻。",
+    "en": "Keep your hips from rolling back."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "顶端停一下，再慢慢放下",
+    "zh": "顶上停一下，再慢慢放下。",
     "en": "Pause at the top, then lower slowly."
    }
   }
@@ -46,14 +46,14 @@
    "en": "Letting the knees come apart."
   },
   {
-   "zh": "骨盆翻动",
-   "en": "Rolling the pelvis."
+   "zh": "屁股前后翻",
+   "en": "Rolling the hips."
   }
  ],
  "cautions": [
   {
-   "zh": "髋不适时减小幅度，仍痛就停止",
-   "en": "Reduce the range if your hip feels uncomfortable, and stop if it still hurts."
+   "zh": "髋部不舒服时幅度小一点，还疼就停",
+   "en": "If your hip feels uncomfortable, move less far, and stop if it still hurts."
   }
  ],
  "tags": {
@@ -81,16 +81,53 @@
  },
  "phases": {
   "start": {
-   "zh": "抬起脚",
-   "en": "Lift your foot"
+   "zh": "抬脚",
+   "en": "Lift"
   },
   "peak": {
    "zh": "停一下",
    "en": "Pause"
   },
   "end": {
-   "zh": "慢慢放下",
+   "zh": "慢放下",
    "en": "Lower slowly"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.7,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 1.4,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.7,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.2
+   }
+  ],
+  "perSide": "each-side-separately",
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "purpose 去掉「髋内旋」术语改口语",
+    "口令按 0.7 s 缩短（抬脚/慢放下）",
+    "顶点停 ~1 s → rep_hold，每侧分开做"
+   ],
+   "flags": []
   }
  }
 }

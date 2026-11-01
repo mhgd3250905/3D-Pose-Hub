@@ -1,41 +1,41 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-pike-scapular-elevation",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/h-pike-scapular-elevation.js"
  ],
  "name": {
-  "zh": "派克位直臂肩带提压",
-  "en": "Straight-Arm Pike Shoulder Elevation"
+  "zh": "派克位直臂耸肩",
+  "en": "Pike Straight-Arm Shrug"
  },
  "purpose": {
-  "zh": "练肩带控制，为倒立类动作做准备",
-  "en": "Build shoulder-girdle control to prepare for overhead support work."
+  "zh": "练肩膀上方的控制，为倒立类动作做准备",
+  "en": "Build control on top of your shoulders to prepare for upside-down support moves."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "派克位手臂伸直，肩膀推向耳朵再放下",
-    "en": "In a pike with straight arms, push your shoulders toward your ears, then lower"
+    "zh": "手臂伸直，把肩膀推向耳朵再放下",
+    "en": "Keep your arms straight and push your shoulders toward your ears, then lower"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "肘保持接近伸直，不弯臂",
-    "en": "Keep your elbows nearly straight without bending."
+    "zh": "身体成倒 V 字，手肘一直不弯。",
+    "en": "Hold an upside-down V and keep your elbows straight the whole time."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "动作慢而可控",
-    "en": "Move slowly and with control."
+    "zh": "动作慢、幅度小。",
+    "en": "Move slowly with a small range."
    }
   }
  ],
@@ -47,8 +47,8 @@
  ],
  "cautions": [
   {
-   "zh": "先确保派克支撑无痛；手腕或肩不适就停止",
-   "en": "Make sure a pike hold is pain-free first, and stop if your wrists or shoulders feel uncomfortable."
+   "zh": "先确认倒 V 支撑不疼；手腕或肩膀不舒服时停",
+   "en": "Make sure an upside-down V hold is pain-free first, and stop if your wrists or shoulders feel uncomfortable."
   },
   {
    "zh": "先做 1 组轻松的 4–6 次",
@@ -80,16 +80,55 @@
  },
  "phases": {
   "start": {
-   "zh": "推地耸肩",
-   "en": "Push up tall"
+   "zh": "耸肩",
+   "en": "Shrug up"
   },
   "peak": {
    "zh": "停一下",
    "en": "Pause"
   },
   "end": {
-   "zh": "慢慢放下",
-   "en": "Lower slowly"
+   "zh": "放下",
+   "en": "Lower"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.9,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 0.9,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.7,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.5
+   }
+  ],
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "名字「肩带提压」是术语，改「派克位直臂耸肩 / Pike Straight-Arm Shrug」",
+    "主口令去掉「派克位」重复；口令按 0.9/0.7 s 缩短",
+    "purpose「肩带」改口语"
+   ],
+   "flags": [
+    "改名请确认",
+    "派生把顶点算成 ≥0.8 s 判为 rep_hold，但 spec 轨道真正的静止只有约 0.4 s（注释/关键帧），若按实际应为 rep_updown，请确认"
+   ]
   }
  }
 }

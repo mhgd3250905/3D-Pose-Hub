@@ -1,59 +1,59 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-russian-twist",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/h-russian-twist-r2.js",
   "drill-anim/specs/h-russian-twist.js"
  ],
  "name": {
   "zh": "俄罗斯转体",
-  "en": "Russian Twist (Feet Down)"
+  "en": "Russian Twist with Feet Down"
  },
  "purpose": {
-  "zh": "练侧腹和核心的旋转控制",
-  "en": "Build the obliques and rotational core control."
+  "zh": "练侧腹，让身体转动更有控制",
+  "en": "Build the sides of your waist and control as you twist."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "上身后倾背挺直，胸廓慢慢转向一侧",
-    "en": "Lean back with a long spine and slowly turn your ribs to one side"
+    "zh": "上身后仰背挺直，胸口慢慢转向一边",
+    "en": "Lean back with a long back and slowly turn your chest to one side"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "膝盖和骨盆保持朝前，脚跟着地",
-    "en": "Keep your knees and pelvis facing forward and your heels down."
+    "zh": "膝盖和屁股朝前不动，脚跟踩地。",
+    "en": "Keep your knees and hips facing forward and your heels down."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "回到中间，再转向另一侧",
-    "en": "Return through the center, then turn to the other side."
+    "zh": "回到中间，再转向另一边。",
+    "en": "Come back to the middle, then turn to the other side."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "只甩手臂不转胸",
+   "zh": "只甩手臂，胸口不转",
    "en": "Swinging the arms without turning the chest."
   },
   {
-   "zh": "弓背塌腰",
+   "zh": "弓背驼背",
    "en": "Slouching or rounding the back."
   }
  ],
  "cautions": [
   {
-   "zh": "腰部不适时减小幅度，仍痛就停止",
-   "en": "Reduce the range if your lower back feels uncomfortable, and stop if it still hurts."
+   "zh": "腰不舒服时幅度小一点，还疼就停",
+   "en": "If your lower back feels uncomfortable, move less far, and stop if it still hurts."
   }
  ],
  "tags": {
@@ -81,16 +81,53 @@
  },
  "phases": {
   "start": {
-   "zh": "转向一侧",
-   "en": "Turn to one side"
+   "zh": "转身",
+   "en": "Turn"
   },
   "peak": {
-   "zh": "停一下",
-   "en": "Pause"
+   "zh": "停",
+   "en": "Hold"
   },
   "end": {
-   "zh": "回到中间",
-   "en": "Back to center"
+   "zh": "回正",
+   "en": "Center"
+  }
+ },
+ "training": {
+  "kind": "rep_alternate",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.5,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 0.7,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.5,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 0.3
+   }
+  ],
+  "perSide": "alternate",
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画右转、左转轮流（2 s 一下）→ training=rep_alternate、perSide alternate（每侧 10 次）",
+    "口令按 0.5/0.7 s 相位缩到 1–2 字（转身/停/回正）",
+    "主口令「胸廓」改「胸口」；英文名去掉括号"
+   ],
+   "flags": []
   }
  }
 }
