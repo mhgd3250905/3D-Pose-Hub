@@ -36,8 +36,16 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "停在自己能控制的幅度，回来也要慢。",
-    "en": "Stop where you can stay in control, and come back slowly."
+    "zh": "保持不动，慢慢呼吸，每次呼气再放松一点。",
+    "en": "Stay still, breathe slowly, and relax a little deeper each time you breathe out."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "别来回颠，有拉伸感就够，别拉到疼。",
+    "en": "Do not bounce; a clear stretch is enough, never pain."
    }
   }
  ],
@@ -47,8 +55,8 @@
    "en": "Forcing your hips to go further."
   },
   {
-   "zh": "不舒服还往下颠",
-   "en": "Bouncing deeper when it feels uncomfortable."
+   "zh": "憋气或来回颠",
+   "en": "Holding your breath or bouncing."
   }
  ],
  "cautions": [
@@ -78,51 +86,29 @@
  },
  "unilateral": false,
  "defaultDose": {
-  "mode": "reps",
-  "sets": 1,
-  "reps": 5,
-  "restSeconds": 10
+  "mode": "time",
+  "sets": 2,
+  "seconds": 45,
+  "restSeconds": 15
  },
  "phases": {
   "start": {
    "zh": "臀部后坐",
-   "en": "Sit back"
+   "en": "Sit hips back"
   },
   "peak": {
-   "zh": "停住呼吸",
-   "en": "Hold and breathe"
+   "zh": "保持，慢慢呼气",
+   "en": "Hold and breathe out"
   },
   "end": {
-   "zh": "慢慢回来",
-   "en": "Come back"
+   "zh": "呼气再放松",
+   "en": "Relax a bit deeper"
   }
  },
  "training": {
-  "kind": "rep_hold",
+  "kind": "hold",
   "leadSeconds": 1,
-  "phases": [
-   {
-    "id": "go",
-    "seconds": 1.4,
-    "cue": "phase.start"
-   },
-   {
-    "id": "hold",
-    "seconds": 3.6,
-    "cue": "phase.peak"
-   },
-   {
-    "id": "back",
-    "seconds": 1.4,
-    "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 1.6
-   }
-  ],
-  "stretchLoop": true,
-  "source": "spec-timeline manual r2"
+  "source": "user-decision static-hold r2"
  },
  "review": {
   "r2": {
@@ -130,11 +116,11 @@
     "purpose 中英对齐（EN 原为长句）",
     "3 条「部位：…」长句注意改成 2 条短句，error 去掉「弹震」",
     "剂量 40 s 保持 → 1 组×5 次（rep_hold，stretchLoop）",
-    "口令缩短：Sit your hips back → Sit back"
+    "口令缩短：Sit your hips back → Sit back",
+    "按用户决定改为静态保持计时，动画只作示意",
+    "剂量 → 2 组×45 秒，休息 15 秒；口令/要点改为进入-保持-呼气放松，去掉来回/计数描述"
    ],
-   "flags": [
-    "拉伸按次数：原剂量是静止计时，但动画每 8 秒做一次「进入-停住约 3.6 s-回来」，按规则改成按次数（rep_hold，training.stretchLoop=true）；想改回计时需动画改成一直停住，请定"
-   ]
+   "flags": []
   }
  }
 }

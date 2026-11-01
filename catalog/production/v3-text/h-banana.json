@@ -35,8 +35,16 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "回到中间，再弯向另一侧。",
-    "en": "Come back to the middle, then curve to the other side."
+    "zh": "停住不动，慢慢呼吸。",
+    "en": "Stay still and breathe slowly."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "每次呼气再放松一点，别来回颠。",
+    "en": "Each time you breathe out, relax a little deeper. No bouncing."
    }
   }
  ],
@@ -48,12 +56,16 @@
   {
    "zh": "憋气",
    "en": "Holding your breath."
+  },
+  {
+   "zh": "来回颠着往下压",
+   "en": "Bouncing to go deeper."
   }
  ],
  "cautions": [
   {
-   "zh": "身体侧面拉得发疼时就回到中间",
-   "en": "If your side starts to hurt, come back to the middle."
+   "zh": "身体侧面拉得发疼时就弯少一点",
+   "en": "If your side starts to hurt, curve a little less."
   }
  ],
  "tags": {
@@ -74,61 +86,40 @@
  "unilateral": true,
  "startingSide": "right",
  "defaultDose": {
-  "mode": "reps",
+  "mode": "time",
   "sets": 2,
-  "reps": 6,
-  "restSeconds": 20
+  "seconds": 30,
+  "restSeconds": 15
  },
  "phases": {
   "start": {
-   "zh": "弯过去",
+   "zh": "慢慢弯过去",
    "en": "Curve over"
   },
   "peak": {
-   "zh": "保持住",
-   "en": "Hold"
+   "zh": "保持，慢慢呼气",
+   "en": "Hold and breathe out"
   },
   "end": {
-   "zh": "回中",
-   "en": "Return"
+   "zh": "呼气再放松",
+   "en": "Relax a bit deeper"
   }
  },
  "training": {
-  "kind": "rep_alternate",
+  "kind": "hold",
   "leadSeconds": 1,
-  "phases": [
-   {
-    "id": "go",
-    "seconds": 0.9,
-    "cue": "phase.start"
-   },
-   {
-    "id": "hold",
-    "seconds": 1.7,
-    "cue": "phase.peak"
-   },
-   {
-    "id": "back",
-    "seconds": 0.6,
-    "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 0.8
-   }
-  ],
-  "perSide": "alternate",
-  "source": "spec-pulse-track r2",
-  "stretchLoop": true
+  "perSide": "each-side-separately",
+  "source": "user-decision static-hold r2"
  },
  "review": {
   "r2": {
    "changes": [
     "动画是左右轮流各弯一次（先右）、每侧停约 1.7 s，剂量由 30 s 保持改为 2 组×每侧 6 次，rep_alternate",
-    "名字和口令改口语：「侧伸」→「侧弯」，删「侧腹/背阔肌」学名；结束口令缩成「回中」以念得完"
+    "名字和口令改口语：「侧伸」→「侧弯」，删「侧腹/背阔肌」学名；结束口令缩成「回中」以念得完",
+    "按用户决定改为静态保持计时，动画只作示意：30 秒×2 组/每侧，休息 15 秒；口令和要点改成进入—保持—呼气放松"
    ],
    "flags": [
-    "作为拉伸每侧只停约 1.7 s 偏短；如要长时间静态保持需改动画或改回计时，请定"
+    "真实做法每侧静止保持；动画左右轮流只作示意，先做右侧"
    ]
   }
  }

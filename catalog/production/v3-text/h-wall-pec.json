@@ -19,34 +19,46 @@
    "primary": true,
    "text": {
     "zh": "手掌贴墙不动，身体慢慢转离墙面",
-    "en": "Keep your palm on the wall and slowly turn your body away"
+    "en": "Keep your palm on the wall and slowly turn away from it"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "手臂向后贴墙，和肩同高，手肘微弯。",
-    "en": "Reach your arm back along the wall at shoulder height, elbow soft."
+    "zh": "手臂向后贴墙，和肩同高，肩膀往下沉。",
+    "en": "Arm back along the wall at shoulder height, shoulder down."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "肩膀往下沉，别耸肩，停住时慢慢呼吸。",
-    "en": "Keep your shoulder down and breathe slowly while you hold."
+    "zh": "停住不动，慢慢呼吸。",
+    "en": "Stay still and breathe slowly."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "每次呼气再放松一点，别来回颠。",
+    "en": "Each time you breathe out, relax a little deeper. No bouncing."
    }
   }
  ],
  "commonErrors": [
   {
    "zh": "耸肩",
-   "en": "Shrugging."
+   "en": "Shrugging your shoulder."
   },
   {
-   "zh": "转得太猛",
-   "en": "Turning too far too fast."
+   "zh": "憋气",
+   "en": "Holding your breath."
+  },
+  {
+   "zh": "来回颠着往下压",
+   "en": "Bouncing to go deeper."
   }
  ],
  "cautions": [
@@ -73,52 +85,30 @@
  "unilateral": true,
  "startingSide": "right",
  "defaultDose": {
-  "mode": "reps",
+  "mode": "time",
   "sets": 2,
-  "reps": 6,
+  "seconds": 30,
   "restSeconds": 15
  },
  "phases": {
   "start": {
-   "zh": "身体转开",
+   "zh": "慢慢转开",
    "en": "Turn away"
   },
   "peak": {
-   "zh": "停住呼吸",
-   "en": "Hold and breathe"
+   "zh": "保持，慢慢呼气",
+   "en": "Hold and breathe out"
   },
   "end": {
-   "zh": "慢慢转回",
-   "en": "Turn back"
+   "zh": "呼气再放松",
+   "en": "Relax a bit deeper"
   }
  },
  "training": {
-  "kind": "rep_hold",
+  "kind": "hold",
   "leadSeconds": 1,
-  "phases": [
-   {
-    "id": "go",
-    "seconds": 1.3,
-    "cue": "phase.start"
-   },
-   {
-    "id": "hold",
-    "seconds": 3.5,
-    "cue": "phase.peak"
-   },
-   {
-    "id": "back",
-    "seconds": 1.2,
-    "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 2.0
-   }
-  ],
   "perSide": "each-side-separately",
-  "stretchLoop": true,
-  "source": "spec-pulse-track r2"
+  "source": "user-decision static-hold r2"
  },
  "review": {
   "r2": {
@@ -126,11 +116,10 @@
     "动画每 8 秒一次「转开-停约 2.6 s-转回」，剂量从 30 秒保持改为每侧 2 组×6 次（rep_hold）",
     "purpose「二头肌」改口语「上臂前侧」",
     "cue3「肋骨不外翻」改「别耸肩、慢慢呼吸」",
-    "口令「保持呼吸」→「停住呼吸」"
+    "口令「保持呼吸」→「停住呼吸」",
+    "按用户决定改为静态保持计时，动画只作示意：30 秒×2 组/每侧，休息 15 秒；口令和要点改成进入—保持—呼气放松"
    ],
-   "flags": [
-    "拉伸按次数：原剂量是静止计时，但动画每 8 秒做一次「进入-停住-回来」，按规则改成按次数（rep_hold，training.stretchLoop=true）；想改回计时需动画改成一直停住，请定"
-   ]
+   "flags": []
   }
  }
 }

@@ -20,35 +20,47 @@
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "呼气时把膝盖轻轻拉向胸口",
-    "en": "As you breathe out, gently pull your knees to your chest"
+    "zh": "双手抱住膝盖，轻轻拉向胸口",
+    "en": "Hug your knees and gently pull them toward your chest"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "双手抱住膝盖下方，头和肩放松贴地。",
-    "en": "Hold just below your knees and keep your head and shoulders relaxed on the mat."
+    "zh": "头和肩放松贴地。",
+    "en": "Keep your head and shoulders relaxed on the floor."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "吸气时手松一点，让膝盖回离。",
-    "en": "As you breathe in, loosen your grip and let your knees drift out."
+    "zh": "停住不动，慢慢呼吸。",
+    "en": "Stay still and breathe slowly."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "每次呼气再放松一点，别来回颠。",
+    "en": "Each time you breathe out, relax a little deeper. No bouncing."
    }
   }
  ],
  "commonErrors": [
   {
    "zh": "用力猛拉",
-   "en": "Yanking the knees in hard."
+   "en": "Yanking your knees in."
   },
   {
-   "zh": "头和肩抬离地面",
-   "en": "Lifting the head and shoulders off the mat."
+   "zh": "憋气",
+   "en": "Holding your breath."
+  },
+  {
+   "zh": "来回颠着往下压",
+   "en": "Bouncing to go deeper."
   }
  ],
  "cautions": [
@@ -72,60 +84,39 @@
  },
  "unilateral": false,
  "defaultDose": {
-  "mode": "reps",
+  "mode": "time",
   "sets": 2,
-  "reps": 8,
+  "seconds": 30,
   "restSeconds": 15
  },
  "phases": {
   "start": {
-   "zh": "呼气抱紧",
-   "en": "Hug in"
+   "zh": "抱膝贴胸",
+   "en": "Hug them in"
   },
   "peak": {
-   "zh": "保持",
-   "en": "Hold"
+   "zh": "保持，慢慢呼气",
+   "en": "Hold and breathe out"
   },
   "end": {
-   "zh": "放松",
-   "en": "Release"
+   "zh": "呼气再放松",
+   "en": "Relax a bit deeper"
   }
  },
  "training": {
-  "kind": "rep_hold",
+  "kind": "hold",
   "leadSeconds": 1,
-  "phases": [
-   {
-    "id": "go",
-    "seconds": 1.0,
-    "cue": "phase.start"
-   },
-   {
-    "id": "hold",
-    "seconds": 1.3,
-    "cue": "phase.peak"
-   },
-   {
-    "id": "back",
-    "seconds": 0.7,
-    "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 1.0
-   }
-  ],
-  "source": "spec-pulse-track r2",
-  "stretchLoop": true
+  "source": "user-decision static-hold r2"
  },
  "review": {
   "r2": {
    "changes": [
     "动画是 8 秒 2 次「呼气抱紧-停 1.3 s-吸气放松」在重复，剂量从 40 秒计时改为 2 组×8 次（rep_hold），dose mode time→reps",
-    "英文名 Supine 改 Lying；结束口令按 0.7 s 缩为「放松」"
+    "英文名 Supine 改 Lying；结束口令按 0.7 s 缩为「放松」",
+    "按用户决定改为静态保持计时，动画只作示意：30 秒×2 组，休息 15 秒；口令和要点改成进入—保持—呼气放松"
    ],
    "flags": [
-    "原为 40 秒放松计时，现按动画（跟呼吸一抱一松）改为计次；若更想按时间放松请定"
+    "真实做法是抱住静止放松；动画一抱一松只作示意"
    ]
   }
  }

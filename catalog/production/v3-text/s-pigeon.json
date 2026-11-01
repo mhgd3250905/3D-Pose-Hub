@@ -18,24 +18,32 @@
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "上身挺直，呼气时微微往前倾",
-    "en": "Stay tall and lean forward slightly as you breathe out"
+    "zh": "前腿小腿横在身前，后腿往后伸直",
+    "en": "Bring your front shin across and stretch the back leg behind you"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "前腿小腿横在身前，后腿往后伸直，双手扶砖。",
-    "en": "Front shin across your body, back leg straight behind you, hands on the blocks."
+    "zh": "双手扶砖，骨盆尽量摆正，别硬往下压。",
+    "en": "Hands on the blocks, hips as square as you can, do not force them down."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "骨盆尽量摆正，别硬往下压。",
-    "en": "Keep your hips as square as you can and do not force them down."
+    "zh": "保持不动，慢慢呼吸，每次呼气再放松一点。",
+    "en": "Stay still, breathe slowly, and relax a little deeper each time you breathe out."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "别来回颠，有拉伸感就够，别拉到疼。",
+    "en": "Do not bounce; a clear stretch is enough, never pain."
    }
   }
  ],
@@ -47,6 +55,10 @@
   {
    "zh": "硬压前腿膝盖",
    "en": "Forcing the front knee down."
+  },
+  {
+   "zh": "憋气或来回颠",
+   "en": "Holding your breath or bouncing."
   }
  ],
  "cautions": [
@@ -74,63 +86,41 @@
  "unilateral": true,
  "startingSide": "right",
  "defaultDose": {
-  "mode": "reps",
+  "mode": "time",
   "sets": 2,
-  "reps": 4,
+  "seconds": 45,
   "restSeconds": 15
  },
  "phases": {
   "start": {
-   "zh": "微微前倾",
-   "en": "Lean in"
+   "zh": "慢慢沉下",
+   "en": "Settle in"
   },
   "peak": {
-   "zh": "停住呼吸",
-   "en": "Hold and breathe"
+   "zh": "保持，慢慢呼气",
+   "en": "Hold and breathe out"
   },
   "end": {
-   "zh": "慢慢坐直",
-   "en": "Sit up"
+   "zh": "呼气微微前倾",
+   "en": "Breathe out, lean in"
   }
  },
  "training": {
-  "kind": "rep_hold",
+  "kind": "hold",
   "leadSeconds": 1,
-  "phases": [
-   {
-    "id": "go",
-    "seconds": 1.4,
-    "cue": "phase.start"
-   },
-   {
-    "id": "hold",
-    "seconds": 3.6,
-    "cue": "phase.peak"
-   },
-   {
-    "id": "back",
-    "seconds": 1.4,
-    "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 1.6
-   }
-  ],
   "perSide": "each-side-separately",
-  "stretchLoop": true,
-  "source": "spec-timeline manual r2"
+  "source": "user-decision static-hold r2"
  },
  "review": {
   "r2": {
    "changes": [
     "剂量 → 每侧 2 组×4 次（rep_hold，stretchLoop）",
     "EN 名 Pigeon Pose → Pigeon Stretch（与其余拉伸统一）",
-    "primary 缩短为一个指令（扶砖移到 cue2）"
+    "primary 缩短为一个指令（扶砖移到 cue2）",
+    "按用户决定改为静态保持计时，动画只作示意",
+    "剂量 → 每侧 2 组×45 秒，休息 15 秒；口令/要点改为进入-保持-呼气放松，去掉来回/计数描述"
    ],
-   "flags": [
-    "拉伸按次数：原剂量是静止计时，但动画每 8 秒做一次「进入-停住约 3.6 s-回来」，按规则改成按次数（rep_hold，training.stretchLoop=true）；想改回计时需动画改成一直停住，请定"
-   ]
+   "flags": []
   }
  }
 }

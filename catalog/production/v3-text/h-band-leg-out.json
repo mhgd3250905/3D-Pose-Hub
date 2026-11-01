@@ -19,34 +19,46 @@
    "primary": true,
    "text": {
     "zh": "膝盖伸直，腿慢慢往外侧落",
-    "en": "Keep your knee straight and slowly lower the leg out to the side"
+    "en": "Keep your knee straight and slowly lower the leg out"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "弹力带套住脚掌，用手拉着帮腿承重。",
-    "en": "Loop the band around your foot and hold it to take the leg’s weight."
+    "zh": "用手拉住弹力带，让带子托住腿的重量。",
+    "en": "Hold the band so it takes the weight of your leg."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "另一条腿贴着垫子，骨盆别歪。",
-    "en": "Keep the other leg long on the mat and your hips level."
+    "zh": "停住不动，慢慢呼吸。",
+    "en": "Stay still and breathe slowly."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "每次呼气再放松一点，别来回颠。",
+    "en": "Each time you breathe out, relax a little deeper. No bouncing."
    }
   }
  ],
  "commonErrors": [
   {
    "zh": "骨盆跟着翻向一侧",
-   "en": "Letting your hips roll to the side."
+   "en": "Letting your hips roll to one side."
   },
   {
-   "zh": "膝盖弯了",
-   "en": "Bending the knee."
+   "zh": "憋气",
+   "en": "Holding your breath."
+  },
+  {
+   "zh": "来回颠着往下压",
+   "en": "Bouncing to go deeper."
   }
  ],
  "cautions": [
@@ -74,58 +86,37 @@
  "unilateral": true,
  "startingSide": "right",
  "defaultDose": {
-  "mode": "reps",
+  "mode": "time",
   "sets": 2,
-  "reps": 6,
-  "restSeconds": 20
+  "seconds": 30,
+  "restSeconds": 15
  },
  "phases": {
   "start": {
-   "zh": "往外落",
-   "en": "Lower out"
+   "zh": "慢慢往外落",
+   "en": "Lower it out"
   },
   "peak": {
-   "zh": "保持呼吸",
-   "en": "Breathe and hold"
+   "zh": "保持，慢慢呼气",
+   "en": "Hold and breathe out"
   },
   "end": {
-   "zh": "拉回上来",
-   "en": "Bring it up"
+   "zh": "呼气再放松",
+   "en": "Relax a bit deeper"
   }
  },
  "training": {
-  "kind": "rep_hold",
+  "kind": "hold",
   "leadSeconds": 1,
-  "phases": [
-   {
-    "id": "go",
-    "seconds": 1.6,
-    "cue": "phase.start"
-   },
-   {
-    "id": "hold",
-    "seconds": 3.4,
-    "cue": "phase.peak"
-   },
-   {
-    "id": "back",
-    "seconds": 1.3,
-    "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 1.7
-   }
-  ],
   "perSide": "each-side-separately",
-  "source": "spec-pulse-track r2",
-  "stretchLoop": true
+  "source": "user-decision static-hold r2"
  },
  "review": {
   "r2": {
    "changes": [
     "名字/英文名改口语（Supine→Lying，Lower-Out→Drop-Out）",
-    "训练节奏 1 下/8 s、外侧停约 3.4 s，剂量保持每侧 6 次"
+    "训练节奏 1 下/8 s、外侧停约 3.4 s，剂量保持每侧 6 次",
+    "按用户决定改为静态保持计时，动画只作示意：30 秒×2 组/每侧，休息 15 秒；口令和要点改成进入—保持—呼气放松"
    ],
    "flags": []
   }

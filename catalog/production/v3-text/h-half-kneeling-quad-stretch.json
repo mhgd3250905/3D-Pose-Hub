@@ -27,26 +27,38 @@
    "primary": false,
    "text": {
     "zh": "后膝跪在垫上，前脚踩地，另一只手扶髋。",
-    "en": "Kneel on a mat with your front foot down and your other hand on your hip."
+    "en": "Back knee on the mat, front foot down, other hand on your hip."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "有轻微拉伸感就停，腰不往前拱。",
-    "en": "Stop at a mild stretch and do not arch your back."
+    "zh": "停住不动，慢慢呼吸。",
+    "en": "Stay still and breathe slowly."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "每次呼气再放松一点，别来回颠。",
+    "en": "Each time you breathe out, relax a little deeper. No bouncing."
    }
   }
  ],
  "commonErrors": [
   {
    "zh": "腰往前拱",
-   "en": "Arching the lower back."
+   "en": "Arching your lower back."
   },
   {
-   "zh": "用力硬拉脚踝",
-   "en": "Yanking on the ankle."
+   "zh": "憋气",
+   "en": "Holding your breath."
+  },
+  {
+   "zh": "来回颠着往下压",
+   "en": "Bouncing to go deeper."
   }
  ],
  "cautions": [
@@ -71,63 +83,40 @@
  "unilateral": true,
  "startingSide": "left",
  "defaultDose": {
-  "mode": "reps",
+  "mode": "time",
   "sets": 2,
-  "reps": 6,
-  "restSeconds": 20
+  "seconds": 30,
+  "restSeconds": 15
  },
  "phases": {
   "start": {
-   "zh": "拉脚送髋",
-   "en": "Pull and lean"
+   "zh": "慢慢拉近",
+   "en": "Pull it in"
   },
   "peak": {
-   "zh": "保持呼吸",
-   "en": "Breathe and hold"
+   "zh": "保持，慢慢呼气",
+   "en": "Hold and breathe out"
   },
   "end": {
-   "zh": "慢慢放开",
-   "en": "Release"
+   "zh": "呼气再放松",
+   "en": "Relax a bit deeper"
   }
  },
  "training": {
-  "kind": "rep_hold",
+  "kind": "hold",
   "leadSeconds": 1,
-  "phases": [
-   {
-    "id": "go",
-    "seconds": 1.9,
-    "cue": "phase.start"
-   },
-   {
-    "id": "hold",
-    "seconds": 2.1,
-    "cue": "phase.peak"
-   },
-   {
-    "id": "back",
-    "seconds": 2.0,
-    "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 2.0
-   }
-  ],
   "perSide": "each-side-separately",
-  "source": "spec-pulse-track r2",
-  "stretchLoop": true
+  "source": "user-decision static-hold r2"
  },
  "review": {
   "r2": {
    "changes": [
     "动画是 8 秒 1 次「拉近-停约 2 s-放开」在重复，剂量从 30 秒保持改为每侧 2 组×6 次（rep_hold），dose mode hold→reps",
     "主口令「骨盆后卷」改成动画看得到的「手拉脚、髋往前送」；名字去掉「股四头肌」学名",
-    "caution 改「X 时 Y」"
+    "caution 改「X 时 Y」",
+    "按用户决定改为静态保持计时，动画只作示意：30 秒×2 组/每侧，休息 15 秒；口令和要点改成进入—保持—呼气放松"
    ],
-   "flags": [
-    "原为 30 秒静态拉伸，现按动画改为计次（每次只停约 2 s）；若要长时间静态保持需改动画或改回计时，请定"
-   ]
+   "flags": []
   }
  }
 }

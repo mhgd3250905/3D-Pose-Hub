@@ -19,7 +19,7 @@
    "primary": true,
    "text": {
     "zh": "上身挺直，收紧臀部把髋往前送",
-    "en": "Sit tall, squeeze your glutes and ease your hips forward"
+    "en": "Stay tall, squeeze your glutes, and ease your hips forward"
    }
   },
   {
@@ -27,22 +27,38 @@
    "primary": false,
    "text": {
     "zh": "后脚脚背搭在矮凳上，前脚踩稳，双手叉腰。",
-    "en": "Rest the top of your back foot on the stool, plant the front foot, hands on hips."
+    "en": "Rest the top of your back foot on the stool, front foot planted, hands on hips."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "髋前侧有拉伸感就停住呼吸。",
-    "en": "Stop and breathe once you feel the stretch in the front of the hip."
+    "zh": "停住不动，慢慢呼吸。",
+    "en": "Stay still and breathe slowly."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "每次呼气再放松一点，别来回颠。",
+    "en": "Each time you breathe out, relax a little deeper. No bouncing."
    }
   }
  ],
  "commonErrors": [
   {
    "zh": "腰往后仰，没收紧臀部",
-   "en": "Arching the lower back instead of squeezing the glutes."
+   "en": "Arching your lower back instead of squeezing your glutes."
+  },
+  {
+   "zh": "憋气",
+   "en": "Holding your breath."
+  },
+  {
+   "zh": "来回颠着往下压",
+   "en": "Bouncing to go deeper."
   }
  ],
  "cautions": [
@@ -74,63 +90,42 @@
  "unilateral": true,
  "startingSide": "left",
  "defaultDose": {
-  "mode": "reps",
+  "mode": "time",
   "sets": 2,
-  "reps": 4,
-  "restSeconds": 20
+  "seconds": 45,
+  "restSeconds": 15
  },
  "phases": {
   "start": {
-   "zh": "挺直往前送",
-   "en": "Tall and forward"
+   "zh": "髋往前送",
+   "en": "Hips forward"
   },
   "peak": {
-   "zh": "保持呼吸",
-   "en": "Breathe and hold"
+   "zh": "保持，慢慢呼气",
+   "en": "Hold and breathe out"
   },
   "end": {
-   "zh": "慢慢放松",
-   "en": "Ease off"
+   "zh": "呼气再放松",
+   "en": "Relax a bit deeper"
   }
  },
  "training": {
-  "kind": "rep_hold",
+  "kind": "hold",
   "leadSeconds": 1,
-  "phases": [
-   {
-    "id": "go",
-    "seconds": 2.0,
-    "cue": "phase.start"
-   },
-   {
-    "id": "hold",
-    "seconds": 2.2,
-    "cue": "phase.peak"
-   },
-   {
-    "id": "back",
-    "seconds": 2.0,
-    "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 1.8
-   }
-  ],
   "perSide": "each-side-separately",
-  "source": "spec-pulse-track r2",
-  "stretchLoop": true
+  "source": "user-decision static-hold r2"
  },
  "review": {
   "r2": {
    "changes": [
     "动画每 8 秒一次「微前倾→挺直送髋-停-回来」，剂量从 30 秒保持改为每侧 2 组×4 次（rep_hold）",
     "「骨盆后卷」改说法「收紧臀部把髋往前送」；名字去掉括号",
-    "补 cue「双手叉腰」（动画可见）"
+    "补 cue「双手叉腰」（动画可见）",
+    "按用户决定改为静态保持计时，动画只作示意：45 秒×2 组/每侧，休息 15 秒；口令和要点改成进入—保持—呼气放松"
    ],
    "flags": [
-    "原剂量是 30 秒静止保持，但动画每 8 秒做一次「下沉-停住-回来」，按规则改成按次数（rep_hold）；如果想要静止计时，需要动画改成一直停住，请定",
-    "动画是左膝跪地（startingSide left），文案不写方位"
+    "动画是左膝跪地（startingSide left），文案不写方位",
+    "大髋部拉伸取 45 秒/侧"
    ]
   }
  }

@@ -34,8 +34,16 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "呼气时再往前一点，腰别往前拱。",
-    "en": "Ease a little further as you breathe out, without arching your back."
+    "zh": "保持不动，慢慢呼吸，每次呼气再放松一点。",
+    "en": "Stay still, breathe slowly, and relax a little deeper each time you breathe out."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "别来回颠，有拉伸感就够，别拉到疼。",
+    "en": "Do not bounce; a clear stretch is enough, never pain."
    }
   }
  ],
@@ -43,6 +51,10 @@
   {
    "zh": "靠拱腰往前，而不是收臀",
    "en": "Arching your lower back instead of squeezing your glute."
+  },
+  {
+   "zh": "憋气或来回颠",
+   "en": "Holding your breath or bouncing."
   }
  ],
  "cautions": [
@@ -73,9 +85,9 @@
  "unilateral": true,
  "startingSide": "left",
  "defaultDose": {
-  "mode": "reps",
+  "mode": "time",
   "sets": 2,
-  "reps": 4,
+  "seconds": 30,
   "restSeconds": 15
  },
  "phases": {
@@ -84,51 +96,30 @@
    "en": "Squeeze forward"
   },
   "peak": {
-   "zh": "停住呼吸",
-   "en": "Hold and breathe"
+   "zh": "保持，慢慢呼气",
+   "en": "Hold and breathe out"
   },
   "end": {
-   "zh": "慢慢回来",
-   "en": "Come back"
+   "zh": "呼气再放松",
+   "en": "Relax a bit deeper"
   }
  },
  "training": {
-  "kind": "rep_hold",
+  "kind": "hold",
   "leadSeconds": 1,
-  "phases": [
-   {
-    "id": "go",
-    "seconds": 1.4,
-    "cue": "phase.start"
-   },
-   {
-    "id": "hold",
-    "seconds": 3.6,
-    "cue": "phase.peak"
-   },
-   {
-    "id": "back",
-    "seconds": 1.4,
-    "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 1.6
-   }
-  ],
   "perSide": "each-side-separately",
-  "stretchLoop": true,
-  "source": "spec-timeline manual r2"
+  "source": "user-decision static-hold r2"
  },
  "review": {
   "r2": {
    "changes": [
     "改名：「髋屈肌」是术语 → 半跪髋前侧拉伸 / Half-Kneeling Hip Stretch",
     "primary「骨盆后卷」改「夹紧臀部往前推」，口令同步",
-    "剂量 → 每侧 2 组×4 次（rep_hold，stretchLoop）"
+    "剂量 → 每侧 2 组×4 次（rep_hold，stretchLoop）",
+    "按用户决定改为静态保持计时，动画只作示意",
+    "剂量 → 每侧 2 组×30 秒，休息 15 秒；口令/要点改为进入-保持-呼气放松，去掉来回/计数描述"
    ],
    "flags": [
-    "拉伸按次数：原剂量是静止计时，但动画每 8 秒做一次「进入-停住约 3.6 s-回来」，按规则改成按次数（rep_hold，training.stretchLoop=true）；想改回计时需动画改成一直停住，请定",
     "改名：半跪髋屈肌拉伸 → 半跪髋前侧拉伸"
    ]
   }

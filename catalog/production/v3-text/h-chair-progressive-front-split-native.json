@@ -19,7 +19,7 @@
    "primary": true,
    "text": {
     "zh": "一手轻扶椅子，前后腿慢慢滑开",
-    "en": "Lightly hold the chair and slowly slide your legs apart"
+    "en": "Hold the chair lightly and slowly slide your legs apart"
    }
   },
   {
@@ -34,8 +34,16 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "停住呼吸，再慢慢收回。",
-    "en": "Stay and breathe, then slowly slide back."
+    "zh": "停住不动，慢慢呼吸。",
+    "en": "Stay still and breathe slowly."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "每次呼气再放松一点，别来回颠。",
+    "en": "Each time you breathe out, relax a little deeper. No bouncing."
    }
   }
  ],
@@ -45,8 +53,12 @@
    "en": "Sliding too far too fast."
   },
   {
-   "zh": "髋部转向一边",
-   "en": "Letting the hips twist to one side."
+   "zh": "憋气",
+   "en": "Holding your breath."
+  },
+  {
+   "zh": "来回颠着往下压",
+   "en": "Bouncing to go deeper."
   }
  ],
  "cautions": [
@@ -79,10 +91,10 @@
  "unilateral": true,
  "startingSide": "right",
  "defaultDose": {
-  "mode": "reps",
+  "mode": "time",
   "sets": 2,
-  "reps": 4,
-  "restSeconds": 20
+  "seconds": 45,
+  "restSeconds": 15
  },
  "phases": {
   "start": {
@@ -90,51 +102,30 @@
    "en": "Slide apart"
   },
   "peak": {
-   "zh": "保持呼吸",
-   "en": "Breathe and hold"
+   "zh": "保持，慢慢呼气",
+   "en": "Hold and breathe out"
   },
   "end": {
-   "zh": "慢慢收回",
-   "en": "Slide back"
+   "zh": "呼气再放松",
+   "en": "Relax a bit deeper"
   }
  },
  "training": {
-  "kind": "rep_hold",
+  "kind": "hold",
   "leadSeconds": 1,
-  "phases": [
-   {
-    "id": "go",
-    "seconds": 1.3,
-    "cue": "phase.start"
-   },
-   {
-    "id": "hold",
-    "seconds": 3.0,
-    "cue": "phase.peak"
-   },
-   {
-    "id": "back",
-    "seconds": 1.4,
-    "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 2.3
-   }
-  ],
   "perSide": "each-side-separately",
-  "source": "spec-pulse-track r2",
-  "stretchLoop": true
+  "source": "user-decision static-hold r2"
  },
  "review": {
   "r2": {
    "changes": [
     "动画每 8 秒一次滑开-停 2 s-收回，剂量从 30 秒保持改为每侧 2 组×4 次（rep_hold）",
-    "名字语序改为「扶椅渐进前后劈叉」，purpose 去掉「渐进」书面腔"
+    "名字语序改为「扶椅渐进前后劈叉」，purpose 去掉「渐进」书面腔",
+    "按用户决定改为静态保持计时，动画只作示意：45 秒×2 组/每侧，休息 15 秒；口令和要点改成进入—保持—呼气放松"
    ],
    "flags": [
-    "原剂量是 30 秒静止保持，但动画每 8 秒做一次「下沉-停住-回来」，按规则改成按次数（rep_hold）；如果想要静止计时，需要动画改成一直停住，请定",
-    "startingSide 保留 right（动画左膝在后滑），请确认哪侧算「先做的一侧」"
+    "startingSide 保留 right（动画左膝在后滑），请确认哪侧算「先做的一侧」",
+    "大髋部拉伸取 45 秒/侧；结束时扶稳椅子慢慢收腿"
    ]
   }
  }

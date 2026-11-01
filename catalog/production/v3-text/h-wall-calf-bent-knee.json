@@ -19,7 +19,7 @@
    "primary": true,
    "text": {
     "zh": "后脚跟踩实，两膝微弯往前往下沉",
-    "en": "Keep your back heel down and bend both knees to sink forward"
+    "en": "Keep your back heel down and bend both knees forward and down"
    }
   },
   {
@@ -27,26 +27,38 @@
    "primary": false,
    "text": {
     "zh": "小步前后站，双手扶墙。",
-    "en": "Take a short split stance with your hands on the wall."
+    "en": "Short split stance, hands on the wall."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "小腿下段有拉伸感就停住，慢慢呼吸。",
-    "en": "Stop where the lower calf stretches and breathe slowly."
+    "zh": "停住不动，慢慢呼吸。",
+    "en": "Stay still and breathe slowly."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "每次呼气再放松一点，别来回颠。",
+    "en": "Each time you breathe out, relax a little deeper. No bouncing."
    }
   }
  ],
  "commonErrors": [
   {
    "zh": "后脚跟抬起",
-   "en": "Letting the back heel lift."
+   "en": "Lifting your back heel."
   },
   {
-   "zh": "上下颠着往下压",
-   "en": "Bouncing into the stretch."
+   "zh": "憋气",
+   "en": "Holding your breath."
+  },
+  {
+   "zh": "来回颠着往下压",
+   "en": "Bouncing to go deeper."
   }
  ],
  "cautions": [
@@ -74,63 +86,40 @@
  "unilateral": true,
  "startingSide": "right",
  "defaultDose": {
-  "mode": "reps",
+  "mode": "time",
   "sets": 2,
-  "reps": 5,
+  "seconds": 30,
   "restSeconds": 15
  },
  "phases": {
   "start": {
-   "zh": "屈膝下沉",
-   "en": "Sink"
+   "zh": "慢慢沉下去",
+   "en": "Sink down"
   },
   "peak": {
-   "zh": "保持呼吸",
-   "en": "Breathe"
+   "zh": "保持，慢慢呼气",
+   "en": "Hold and breathe out"
   },
   "end": {
-   "zh": "慢慢放松",
-   "en": "Ease out"
+   "zh": "呼气再沉一点",
+   "en": "Sink a bit deeper"
   }
  },
  "training": {
-  "kind": "rep_hold",
+  "kind": "hold",
   "leadSeconds": 1,
-  "phases": [
-   {
-    "id": "go",
-    "seconds": 1.0,
-    "cue": "phase.start"
-   },
-   {
-    "id": "hold",
-    "seconds": 4.2,
-    "cue": "phase.peak"
-   },
-   {
-    "id": "back",
-    "seconds": 1.0,
-    "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 1.8
-   }
-  ],
   "perSide": "each-side-separately",
-  "source": "spec-pulse-track r2",
-  "stretchLoop": true
+  "source": "user-decision static-hold r2"
  },
  "review": {
   "r2": {
    "changes": [
     "动画 8 秒 1 次「下沉-停约 4 s-放松」在重复，剂量从 30 秒保持改为 2 组×5 次/侧（rep_hold）",
     "「弹震」改「上下颠」；长 caution 拆成两条「X 时 Y」",
-    "口令英文缩短（Sink / Breathe）"
+    "口令英文缩短（Sink / Breathe）",
+    "按用户决定改为静态保持计时，动画只作示意：30 秒×2 组/每侧，休息 15 秒；口令和要点改成进入—保持—呼气放松"
    ],
-   "flags": [
-    "拉伸按次数"
-   ]
+   "flags": []
   }
  }
 }

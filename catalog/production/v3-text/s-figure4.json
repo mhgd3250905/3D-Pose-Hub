@@ -26,16 +26,24 @@
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "仰躺，头和肩膀放松贴地。",
-    "en": "Lie on your back with your head and shoulders relaxed on the floor."
+    "zh": "仰躺，踩地的脚往臀部挪一点，头和肩膀放松。",
+    "en": "Lie on your back, walk the planted foot closer, and relax your head and shoulders."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "踩地的脚往臀部挪一点，拉伸更深。",
-    "en": "Walk the planted foot a little closer to deepen the stretch."
+    "zh": "保持不动，慢慢呼吸，每次呼气再放松一点。",
+    "en": "Stay still, breathe slowly, and relax a little deeper each time you breathe out."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "别来回颠，有拉伸感就够，别拉到疼。",
+    "en": "Do not bounce; a clear stretch is enough, never pain."
    }
   }
  ],
@@ -47,6 +55,10 @@
   {
    "zh": "用力压膝盖",
    "en": "Pushing the knee down hard."
+  },
+  {
+   "zh": "憋气或来回颠",
+   "en": "Holding your breath or bouncing."
   }
  ],
  "cautions": [
@@ -72,62 +84,41 @@
  "unilateral": true,
  "startingSide": "right",
  "defaultDose": {
-  "mode": "reps",
+  "mode": "time",
   "sets": 2,
-  "reps": 4,
+  "seconds": 30,
   "restSeconds": 15
  },
  "phases": {
   "start": {
    "zh": "脚往回挪",
-   "en": "Walk in"
+   "en": "Walk your foot in"
   },
   "peak": {
-   "zh": "停住呼吸",
-   "en": "Hold and breathe"
+   "zh": "保持，慢慢呼气",
+   "en": "Hold and breathe out"
   },
   "end": {
-   "zh": "慢慢放松",
-   "en": "Ease out"
+   "zh": "呼气再放松",
+   "en": "Relax a bit deeper"
   }
  },
  "training": {
-  "kind": "rep_hold",
+  "kind": "hold",
   "leadSeconds": 1,
-  "phases": [
-   {
-    "id": "go",
-    "seconds": 1.4,
-    "cue": "phase.start"
-   },
-   {
-    "id": "hold",
-    "seconds": 3.6,
-    "cue": "phase.peak"
-   },
-   {
-    "id": "back",
-    "seconds": 1.4,
-    "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 1.6
-   }
-  ],
   "perSide": "each-side-separately",
-  "stretchLoop": true,
-  "source": "spec-timeline manual r2"
+  "source": "user-decision static-hold r2"
  },
  "review": {
   "r2": {
    "changes": [
     "改名：「梨状肌」是术语 → 仰卧4字臀部拉伸 / Lying Figure-4 Stretch",
     "primary「对侧大腿」→「另一条腿的大腿」",
-    "剂量 → 每侧 2 组×4 次（rep_hold，stretchLoop）"
+    "剂量 → 每侧 2 组×4 次（rep_hold，stretchLoop）",
+    "按用户决定改为静态保持计时，动画只作示意",
+    "剂量 → 每侧 2 组×30 秒，休息 15 秒；口令/要点改为进入-保持-呼气放松，去掉来回/计数描述"
    ],
    "flags": [
-    "拉伸按次数：原剂量是静止计时，但动画每 8 秒做一次「进入-停住约 3.6 s-回来」，按规则改成按次数（rep_hold，training.stretchLoop=true）；想改回计时需动画改成一直停住，请定",
     "改名：仰卧4字梨状肌拉伸 → 仰卧4字臀部拉伸"
    ]
   }

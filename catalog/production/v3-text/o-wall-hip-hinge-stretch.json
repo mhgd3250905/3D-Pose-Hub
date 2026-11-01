@@ -34,8 +34,16 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "腰别塌，也别硬往下压。",
-    "en": "Do not sag your lower back or force it."
+    "zh": "保持不动，慢慢呼吸，每次呼气再放松一点。",
+    "en": "Stay still, breathe slowly, and relax a little deeper each time you breathe out."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "别来回颠，有拉伸感就够，别拉到疼。",
+    "en": "Do not bounce; a clear stretch is enough, never pain."
    }
   }
  ],
@@ -47,6 +55,10 @@
   {
    "zh": "耸肩",
    "en": "Shrugging your shoulders."
+  },
+  {
+   "zh": "憋气或来回颠",
+   "en": "Holding your breath or bouncing."
   }
  ],
  "cautions": [
@@ -72,9 +84,9 @@
  },
  "unilateral": false,
  "defaultDose": {
-  "mode": "reps",
+  "mode": "time",
   "sets": 2,
-  "reps": 4,
+  "seconds": 30,
   "restSeconds": 15
  },
  "phases": {
@@ -83,50 +95,29 @@
    "en": "Hips back"
   },
   "peak": {
-   "zh": "停住呼吸",
-   "en": "Hold and breathe"
+   "zh": "保持，慢慢呼气",
+   "en": "Hold and breathe out"
   },
   "end": {
-   "zh": "慢慢站起",
-   "en": "Rise slowly"
+   "zh": "胸口再沉点",
+   "en": "Let your chest sink"
   }
  },
  "training": {
-  "kind": "rep_hold",
+  "kind": "hold",
   "leadSeconds": 1,
-  "phases": [
-   {
-    "id": "go",
-    "seconds": 1.7,
-    "cue": "phase.start"
-   },
-   {
-    "id": "hold",
-    "seconds": 3.0,
-    "cue": "phase.peak"
-   },
-   {
-    "id": "back",
-    "seconds": 2.1,
-    "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 1.2
-   }
-  ],
-  "stretchLoop": true,
-  "source": "spec-timeline manual r2"
+  "source": "user-decision static-hold r2"
  },
  "review": {
   "r2": {
    "changes": [
     "改名：「髋后移躯干延展」书面拗口 → 扶墙俯身拉背 / Wall-Supported Back Stretch",
     "动画每 8 s 一次「后移-停 3 s-站起」，剂量 30 s 保持 → 2 组×4 次（rep_hold）",
-    "purpose「背阔肌」改口语，cue「腰部保持中立」改「腰别塌」"
+    "purpose「背阔肌」改口语，cue「腰部保持中立」改「腰别塌」",
+    "按用户决定改为静态保持计时，动画只作示意",
+    "剂量 → 2 组×30 秒，休息 15 秒；口令/要点改为进入-保持-呼气放松，去掉来回/计数描述"
    ],
    "flags": [
-    "拉伸按次数：原剂量是静止计时，但动画每 8 秒做一次「进入-停住约 3.6 s-回来」，按规则改成按次数（rep_hold，training.stretchLoop=true）；想改回计时需动画改成一直停住，请定",
     "改名：扶墙髋后移躯干延展 → 扶墙俯身拉背"
    ]
   }
