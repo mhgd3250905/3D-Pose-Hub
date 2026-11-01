@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "n-slider-lateral",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/n-slider-lateral.js"
  ],
@@ -10,15 +10,15 @@
   "en": "Standing Lateral Slider"
  },
  "purpose": {
-  "zh": "练侧向开腿末端的主动控制",
-  "en": "Build active control at the end of the side-split range."
+  "zh": "腿往侧面滑到最远时练大腿内侧的控制，帮助横叉",
+  "en": "Train inner-thigh control as your leg slides far out to the side, helping your side splits."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "腿伸直向侧滑出，再用大腿内侧拉回",
+    "zh": "腿伸直往侧面滑出，再用大腿内侧拉回",
     "en": "Slide the straight leg out to the side, then pull it back with your inner thigh"
    }
   },
@@ -26,15 +26,15 @@
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "一脚踩滑垫，另一侧膝盖弯曲、臀部后坐",
-    "en": "One foot on the slider, bend the other knee and sit your hips back."
+    "zh": "一只脚踩滑垫，另一侧膝盖弯、臀部往后坐。",
+    "en": "Put one foot on the slider, bend the other knee and sit your hips back."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "滑到能控制的距离停住，不要硬撑",
+    "zh": "滑到能控制的距离停住，不要硬撑。",
     "en": "Stop at a distance you can control; do not force it."
    }
   }
@@ -45,14 +45,14 @@
    "en": "Sliding too far and losing control."
   },
   {
-   "zh": "支撑腿膝盖内扣",
+   "zh": "支撑腿膝盖往里扣",
    "en": "Letting the standing knee cave in."
   }
  ],
  "cautions": [
   {
-   "zh": "大腿内侧或膝盖疼痛时减小幅度，仍痛就停止",
-   "en": "Reduce the range if your inner thigh or knee hurts, and stop if the pain continues."
+   "zh": "大腿内侧或膝盖疼时滑近一点，还疼就停",
+   "en": "If your inner thigh or knee hurts, slide less far, and stop if it still hurts."
   }
  ],
  "tags": {
@@ -80,7 +80,7 @@
  },
  "phases": {
   "start": {
-   "zh": "向侧滑出",
+   "zh": "滑出去",
    "en": "Slide out"
   },
   "peak": {
@@ -89,7 +89,45 @@
   },
   "end": {
    "zh": "拉回来",
-   "en": "Pull back in"
+   "en": "Pull back"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.9,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 1.2,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.8,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.1
+   }
+  ],
+  "perSide": "each-side-separately",
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "purpose「侧向开腿末端的主动控制」改口语",
+    "口令「向侧滑出」→「滑出去」，「Pull back in」→「Pull back」"
+   ],
+   "flags": [
+    "派生顶点 ≥0.8 s 判为 rep_hold，但 spec 注释里真正的停顿只有约 0.6 s，若按实际应为 rep_updown，请确认"
+   ]
   }
  }
 }

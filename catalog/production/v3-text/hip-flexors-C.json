@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "hip-flexors-C",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/data/drills.json",
   "drill-anim/specs/hip-flexors-C.js"
@@ -11,8 +11,8 @@
   "en": "Standing Cable Straight-Leg Raise"
  },
  "purpose": {
-  "zh": "用直腿长杠杆强化屈髋力量",
-  "en": "Strengthen the hip flexors with a long straight-leg lever."
+  "zh": "直腿往前抬，练大腿前面根部的力量",
+  "en": "Raise a straight leg forward to strengthen the top of your thigh."
  },
  "cues": [
   {
@@ -27,7 +27,7 @@
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "脚踝扣连低位绳索，身体站直",
+    "zh": "脚踝绑上低位绳索，身体站直。",
     "en": "Attach the ankle strap to a low cable and stand tall."
    }
   },
@@ -35,21 +35,21 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "顶端稍停，再慢慢放下",
+    "zh": "顶端稍停，再慢慢放下。",
     "en": "Pause briefly at the top, then lower slowly."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "用后仰或摆动把腿甩上去",
+   "zh": "身体后仰或甩腿把腿抬上去",
    "en": "Leaning back or swinging the leg up."
   }
  ],
  "cautions": [
   {
-   "zh": "全程保持腰椎中立，腰部发紧或疼痛时减小幅度",
-   "en": "Keep your lower back neutral, and reduce the range if it feels tight or painful."
+   "zh": "腰发紧或疼时抬低一点，还疼就停",
+   "en": "If your lower back feels tight or hurts, raise the leg lower, and stop if it still hurts."
   }
  ],
  "tags": {
@@ -78,7 +78,7 @@
  },
  "phases": {
   "start": {
-   "zh": "直腿抬起",
+   "zh": "抬腿",
    "en": "Raise"
   },
   "peak": {
@@ -86,8 +86,45 @@
    "en": "Hold"
   },
   "end": {
-   "zh": "慢放",
-   "en": "Lower slowly"
+   "zh": "放下",
+   "en": "Lower"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.7,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 1.3,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.7,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.3
+   }
+  ],
+  "perSide": "each-side-separately",
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "purpose 去掉「屈髋」「长杠杆」",
+    "caution 去掉「腰椎中立」改短句",
+    "口令「直腿抬起」(0.7 s 念不完) → 「抬腿」"
+   ],
+   "flags": []
   }
  }
 }

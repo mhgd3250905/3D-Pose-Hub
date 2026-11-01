@@ -1,25 +1,25 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "lats-A",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/data/drills.json",
   "drill-anim/specs/lats-A-wb.js"
  ],
  "name": {
   "zh": "坐姿撑地抬臀",
-  "en": "Floor Support Lift (Seated Dip Shrug)"
+  "en": "Seated Floor Hip Lift"
  },
  "purpose": {
-  "zh": "练背阔肌下压肩带，把身体撑离地面",
-  "en": "Train the lats to press the shoulders down and lift your body."
+  "zh": "手臂撑地、肩膀往下压把身体撑起，练背部两侧",
+  "en": "Press your shoulders down through straight arms to lift your body and work the sides of your back."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "手臂伸直，用肩下压把臀部抬起",
+    "zh": "手臂伸直，肩膀往下压把臀部撑起",
     "en": "Keep your arms straight and press your shoulders down to lift your hips"
    }
   },
@@ -27,33 +27,33 @@
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "长坐，双手撑在髋两侧",
-    "en": "Sit with legs long and hands on the floor beside your hips."
+    "zh": "坐在地上腿伸直，双手撑在臀部两侧。",
+    "en": "Sit with your legs long and your hands on the floor beside your hips."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "顶端停2秒，肩远离耳朵",
+    "zh": "顶端停2秒，肩膀远离耳朵。",
     "en": "Hold for two seconds at the top, shoulders away from your ears."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "弯肘撑起",
+   "zh": "弯手肘撑起",
    "en": "Bending the elbows to push up."
   },
   {
    "zh": "耸肩",
-   "en": "Shrugging the shoulders."
+   "en": "Shrugging."
   }
  ],
  "cautions": [
   {
-   "zh": "先做2–3分钟手腕热身；腕部刺痛或麻木立即停止",
-   "en": "Warm up your wrists for 2–3 minutes first; stop right away if they feel sharp pain or numbness."
+   "zh": "先活动一下手腕，手腕刺痛或发麻时停下",
+   "en": "Warm up your wrists first, and stop if they feel sharp pain or numbness."
   }
  ],
  "tags": {
@@ -78,7 +78,7 @@
  },
  "phases": {
   "start": {
-   "zh": "肩下压",
+   "zh": "往下压",
    "en": "Press down"
   },
   "peak": {
@@ -86,8 +86,47 @@
    "en": "Hold"
   },
   "end": {
-   "zh": "慢慢放下",
-   "en": "Lower slowly"
+   "zh": "放下",
+   "en": "Lower"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.7,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 1.8,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.7,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 0.8
+   }
+  ],
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "英文名去掉括号别名，改 Seated Floor Hip Lift",
+    "purpose「背阔肌下压肩带」改口语",
+    "口令「肩下压」→「往下压」，「慢慢放下」(0.7 s) → 「放下」",
+    "caution 改短句"
+   ],
+   "flags": [
+    "英文改名请确认"
+   ]
   }
  }
 }

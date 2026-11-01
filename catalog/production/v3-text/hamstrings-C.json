@@ -1,25 +1,25 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "hamstrings-C",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/data/drills.json",
   "drill-anim/specs/hamstrings-C.js"
  ],
  "name": {
-  "zh": "GHD 北欧离心",
-  "en": "GHD Nordic Eccentric"
+  "zh": "GHD 北欧腿弯举",
+  "en": "GHD Nordic Hamstring Curl"
  },
  "purpose": {
-  "zh": "用离心加强腘绳肌，提升后侧力量和抗拉伤能力",
-  "en": "Strengthen the hamstrings eccentrically for back-of-leg strength and resilience."
+  "zh": "身体慢慢往前倒再拉回来，练大腿后侧力量，减少拉伤",
+  "en": "Lower your body slowly and pull back up to strengthen the backs of your thighs and help prevent strains."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "膝到头一条直线，尽量慢地向前下放",
+    "zh": "膝到头一条直线，尽量慢地往前倒",
     "en": "Keep a line from knees to head and lower forward as slowly as you can"
    }
   },
@@ -27,7 +27,7 @@
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "脚跟扣紧，双手护在胸前",
+    "zh": "脚跟勾紧，双手护在胸前。",
     "en": "Hook your heels in and keep your hands up in front of your chest."
    }
   },
@@ -35,14 +35,14 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "腘绳肌发力，控制着把身体拉回直立",
-    "en": "Use your hamstrings to pull yourself back upright with control."
+    "zh": "用大腿后侧发力，把身体拉回直立。",
+    "en": "Use the backs of your thighs to pull yourself back upright."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "屈髋撅臀",
+   "zh": "屁股往后撅，身体折起来",
    "en": "Bending at the hips and sticking the butt out."
   },
   {
@@ -52,8 +52,8 @@
  ],
  "cautions": [
   {
-   "zh": "初学者只做小幅离心；腘绳肌拉伤史者先咨询专业人士",
-   "en": "Beginners should lower only a little; if you have had a hamstring strain, check with a professional first."
+   "zh": "初学者只往前倒一点，大腿后侧拉伤过的先问专业人士",
+   "en": "Beginners should lower only a little; if you have strained a hamstring before, check with a professional first."
   }
  ],
  "tags": {
@@ -81,16 +81,54 @@
  },
  "phases": {
   "start": {
-   "zh": "慢慢下放",
+   "zh": "慢慢往前倒",
    "en": "Lower slowly"
   },
   "peak": {
-   "zh": "控制住",
-   "en": "Control it"
+   "zh": "稳住",
+   "en": "Hold"
   },
   "end": {
-   "zh": "拉回直立",
+   "zh": "拉回来",
    "en": "Pull back up"
+  }
+ },
+ "training": {
+  "kind": "rep_updown",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 4.0,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 0.5,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 1.8,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.7
+   }
+  ],
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "名字「离心 / Eccentric」是术语，改「GHD 北欧腿弯举 / GHD Nordic Hamstring Curl」",
+    "派生把缓慢下放压成 2.4 s、底部算成 1.7 s；按 spec 时间轴手算：下放 4.0 / 底部 0.5 / 拉回 1.8 / 顶部 1.7 s（rep_updown）",
+    "purpose、cue3、错误、caution 去掉「离心/腘绳肌/屈髋」"
+   ],
+   "flags": [
+    "改名请确认"
+   ]
   }
  }
 }

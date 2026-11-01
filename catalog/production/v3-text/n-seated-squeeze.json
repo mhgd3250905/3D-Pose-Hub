@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "n-seated-squeeze",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/n-seated-squeeze-r2.js"
  ],
@@ -18,15 +18,15 @@
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "双膝夹住瑜伽砖，用力夹5秒",
-    "en": "Squeeze the yoga block between your knees for five seconds"
+    "zh": "双膝夹住瑜伽砖，用力夹紧",
+    "en": "Squeeze the yoga block hard between your knees"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "坐直，双脚与髋同宽，手放在大腿上",
+    "zh": "坐直，双脚与髋同宽，手放在大腿上。",
     "en": "Sit tall, feet hip-width apart, hands on your thighs."
    }
   },
@@ -34,21 +34,21 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "放松一下再夹，保持正常呼吸",
-    "en": "Ease off, squeeze again, and keep breathing normally."
+    "zh": "放松一下再夹，正常呼吸别憋气。",
+    "en": "Ease off, squeeze again, and keep breathing."
    }
   }
  ],
  "commonErrors": [
   {
    "zh": "憋气用力",
-   "en": "Holding your breath while squeezing."
+   "en": "Holding your breath."
   }
  ],
  "cautions": [
   {
-   "zh": "大腿内侧或膝盖疼痛时减轻力度，仍痛就停止",
-   "en": "Squeeze more gently if your inner thighs or knees hurt, and stop if the pain continues."
+   "zh": "大腿内侧或膝盖疼时夹轻一点，还疼就停",
+   "en": "If your inner thighs or knees hurt, squeeze lighter, and stop if it still hurts."
   }
  ],
  "tags": {
@@ -68,7 +68,7 @@
  "defaultDose": {
   "mode": "reps",
   "sets": 2,
-  "reps": 8,
+  "reps": 10,
   "restSeconds": 30
  },
  "phases": {
@@ -77,12 +77,50 @@
    "en": "Squeeze"
   },
   "peak": {
-   "zh": "保持",
-   "en": "Hold it"
+   "zh": "夹住",
+   "en": "Hold"
   },
   "end": {
    "zh": "放松",
    "en": "Relax"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.4,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 2.6,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.4,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 0.6
+   }
+  ],
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "主口令「用力夹 5 秒」与动画（每次夹约 2.4 s）不符，改「用力夹紧」",
+    "剂量改 2 组×10 次（rep_hold）",
+    "口令「保持」→「夹住」"
+   ],
+   "flags": [
+    "spec 注释写「夹 5 秒」，动画实际每次约 2.4 s；想要 5 秒需改动画或改成计时，请定"
+   ]
   }
  }
 }

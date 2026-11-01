@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-wall-straddle",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/h-wall-straddle.js"
  ],
@@ -10,7 +10,7 @@
   "en": "Legs-Up-the-Wall Straddle"
  },
  "purpose": {
-  "zh": "借重力放松打开大腿内侧",
+  "zh": "借重力慢慢打开大腿内侧",
   "en": "Let gravity gently open your inner thighs."
  },
  "cues": [
@@ -18,7 +18,7 @@
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "双腿贴墙，慢慢向两侧滑开成V字",
+    "zh": "双腿贴墙，慢慢向两边滑开成V字",
     "en": "Keep your legs on the wall and slowly slide them apart into a V"
    }
   },
@@ -26,7 +26,7 @@
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "仰卧，臀部靠近墙，脚跟搭在墙上",
+    "zh": "仰卧，臀部靠近墙，脚跟搭在墙上。",
     "en": "Lie on your back with your hips close to the wall and heels resting on it."
    }
   },
@@ -34,8 +34,8 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "停两个呼吸，再慢慢把腿滑回并拢",
-    "en": "Stay for two breaths, then slide your legs back together slowly."
+    "zh": "停一个呼吸，再慢慢把腿滑回并拢。",
+    "en": "Stay for one breath, then slide your legs back together slowly."
    }
   }
  ],
@@ -45,14 +45,14 @@
    "en": "Pushing the legs down to go wider."
   },
   {
-   "zh": "腰部离开地面",
+   "zh": "腰离开地面",
    "en": "Lifting the lower back off the floor."
   }
  ],
  "cautions": [
   {
-   "zh": "大腿内侧或髋部疼痛时减小分腿幅度，仍痛就停止",
-   "en": "Open less if your inner thighs or hips hurt, and stop if the pain continues."
+   "zh": "大腿内侧或髋部疼时分得小一点，还疼就停",
+   "en": "If your inner thighs or hips hurt, open less, and stop if it still hurts."
   }
  ],
  "tags": {
@@ -72,9 +72,9 @@
  },
  "unilateral": false,
  "defaultDose": {
-  "mode": "hold",
+  "mode": "reps",
   "sets": 2,
-  "seconds": 30,
+  "reps": 6,
   "restSeconds": 15
  },
  "phases": {
@@ -83,12 +83,51 @@
    "en": "Slide apart"
   },
   "peak": {
-   "zh": "保持呼吸",
-   "en": "Breathe and hold"
+   "zh": "停住呼吸",
+   "en": "Hold and breathe"
   },
   "end": {
    "zh": "慢慢并拢",
-   "en": "Bring together"
+   "en": "Slide together"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.8,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 3.4,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 1.2,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.6
+   }
+  ],
+  "stretchLoop": true,
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画每 8 秒一次「分开-停约 2.4 s-并拢」，剂量从 30 秒保持改为 2 组×6 次（rep_hold）",
+    "cue3「停两个呼吸」与动画（一次呼吸）不符，改「停一个呼吸」",
+    "口令「保持呼吸」→「停住呼吸」，英文「Bring together」→「Slide together」"
+   ],
+   "flags": [
+    "拉伸按次数：原剂量是静止计时，但动画每 8 秒做一次「进入-停住-回来」，按规则改成按次数（rep_hold，training.stretchLoop=true）；想改回计时需动画改成一直停住，请定"
+   ]
   }
  }
 }

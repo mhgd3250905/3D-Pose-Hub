@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "hip-flexors-B",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/data/drills.json",
   "drill-anim/specs/hip-flexors-B.js"
@@ -11,8 +11,8 @@
   "en": "Standing Banded High Knee"
  },
  "purpose": {
-  "zh": "在高位屈髋时加阻力，练抬腿力量",
-  "en": "Add resistance in deep hip flexion to build knee-drive strength."
+  "zh": "给抬膝加上弹力带阻力，练把大腿抬高的力量",
+  "en": "Add band resistance to your knee lift to build the strength to raise your thigh high."
  },
  "cues": [
   {
@@ -27,16 +27,16 @@
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "顶端停2秒，骨盆不后倾、不弯腰",
-    "en": "Hold for two seconds at the top without tucking the pelvis or bending over."
+    "zh": "顶端停2秒，身体别往后仰、别弯腰。",
+    "en": "Hold for two seconds at the top without leaning back or bending over."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "慢慢把脚放回原位",
-    "en": "Lower the foot back to its spot slowly."
+    "zh": "把脚放回原来的位置。",
+    "en": "Put the foot back on its spot."
    }
   }
  ],
@@ -46,14 +46,14 @@
    "en": "Leaning back or shrugging."
   },
   {
-   "zh": "膝盖没抬到髋的高度就停",
+   "zh": "膝盖没抬到髋的高度",
    "en": "Stopping before the knee reaches hip height."
   }
  ],
  "cautions": [
   {
-   "zh": "髋部前侧疼痛时减小抬膝高度，仍痛就停止",
-   "en": "Lift lower if the front of your hip hurts, and stop if the pain continues."
+   "zh": "髋部前面疼时膝盖抬低一点，还疼就停",
+   "en": "If the front of your hip hurts, lift the knee lower, and stop if it still hurts."
   }
  ],
  "tags": {
@@ -83,15 +83,52 @@
  "phases": {
   "start": {
    "zh": "抬膝",
-   "en": "Drive up"
+   "en": "Knee up"
   },
   "peak": {
    "zh": "停两秒",
-   "en": "Hold two"
+   "en": "Hold"
   },
   "end": {
-   "zh": "慢慢放下",
-   "en": "Lower slowly"
+   "zh": "放下",
+   "en": "Lower"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.8,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 2.2,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.6,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 0.4
+   }
+  ],
+  "perSide": "each-side-separately",
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "purpose 去掉「屈髋」",
+    "cue2「骨盆不后倾」改「身体别往后仰」",
+    "放下只有约 0.6 s：口令「慢慢放下」→「放下」，cue3 去掉「慢慢」"
+   ],
+   "flags": []
   }
  }
 }

@@ -1,25 +1,25 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "hip-abductors-C",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/data/drills.json",
   "drill-anim/specs/hip-abductors-C-r3.js"
  ],
  "name": {
-  "zh": "器械髋外展",
-  "en": "Seated Machine Hip Abduction"
+  "zh": "坐姿器械开腿",
+  "en": "Seated Machine Leg Opener"
  },
  "purpose": {
-  "zh": "稳定地给臀中肌加负荷，提升开腿力量和耐力",
-  "en": "Load the side glutes steadily to build leg-opening strength and endurance."
+  "zh": "用器械稳定加重量，练臀部侧面开腿的力量和耐力",
+  "en": "Use the machine to load the sides of your hips for leg-opening strength and endurance."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "坐稳靠背，膝外侧推开垫子",
+    "zh": "靠稳椅背，膝盖外侧把垫子推开",
     "en": "Sit back against the pad and push the pads out with your outer knees"
    }
   },
@@ -27,33 +27,33 @@
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "顶端停1秒，再慢回3秒",
-    "en": "Pause for one second at the top, then return over three seconds."
+    "zh": "推到最开停1秒，再慢慢收回。",
+    "en": "Pause for one second at the widest point, then return slowly."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "双手扶住把手，身体不前后晃",
+    "zh": "双手扶住把手，身体不前后晃。",
     "en": "Hold the handles and keep your body from rocking."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "身体前后晃动借力",
+   "zh": "身体前后晃借力",
    "en": "Rocking the body to help."
   },
   {
-   "zh": "回程失控，让重量砸回",
+   "zh": "收回时让重量砸回去",
    "en": "Letting the weight slam back on the return."
   }
  ],
  "cautions": [
   {
-   "zh": "髋部疼痛时减轻重量或减小幅度，仍痛就停止",
-   "en": "Use less weight or less range if your hips hurt, and stop if the pain continues."
+   "zh": "髋部疼时减轻重量或推小一点，还疼就停",
+   "en": "If your hips hurt, use less weight or move less far, and stop if it still hurts."
   }
  ],
  "tags": {
@@ -86,8 +86,46 @@
    "en": "Hold"
   },
   "end": {
-   "zh": "慢慢收回",
-   "en": "Return slowly"
+   "zh": "收回",
+   "en": "Return"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.7,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 1.3,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.7,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.3
+   }
+  ],
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "名字含「髋外展 / Hip Abduction」，改「坐姿器械开腿 / Seated Machine Leg Opener」",
+    "cue2「慢回 3 秒」与动画（约 1.2 s 收回）不符，改「慢慢收回」",
+    "purpose「臀中肌」改「臀部侧面」"
+   ],
+   "flags": [
+    "改名请确认（健身房常叫「髋外展机」，口语名是否可接受）"
+   ]
   }
  }
 }

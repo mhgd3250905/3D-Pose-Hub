@@ -1,16 +1,16 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-wall-wrist-flexor-stretch",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/h-wall-wrist-flexor-stretch.js"
  ],
  "name": {
-  "zh": "站姿扶墙腕屈肌拉伸",
-  "en": "Standing Wall Wrist Flexor Stretch"
+  "zh": "站姿扶墙前臂拉伸",
+  "en": "Standing Wall Forearm Stretch"
  },
  "purpose": {
-  "zh": "轻柔拉伸手腕和前臂内侧",
+  "zh": "轻轻拉伸手腕和前臂内侧",
   "en": "Gently stretch your wrist and the inside of your forearm."
  },
  "cues": [
@@ -18,15 +18,15 @@
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "手掌平贴墙面、手指朝上，身体慢慢后移",
-    "en": "Place your palm flat on the wall, fingers up, and slowly ease your body back"
+    "zh": "手掌贴墙、手指朝上，身体慢慢往后靠",
+    "en": "Put your palm on the wall, fingers up, and slowly lean back"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "双脚站稳，手肘伸直但不锁死",
+    "zh": "双脚站稳，手肘伸直但不锁死。",
     "en": "Keep your feet planted and your elbow straight but not locked."
    }
   },
@@ -34,7 +34,7 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "只要轻微拉伸感，不用力压墙",
+    "zh": "只要轻微拉伸感，不用力压墙。",
     "en": "Aim for a gentle stretch only; do not press hard into the wall."
    }
   }
@@ -51,7 +51,7 @@
  ],
  "cautions": [
   {
-   "zh": "手腕疼痛或手指发麻时停止",
+   "zh": "手腕疼或手指发麻时停下",
    "en": "Stop if your wrist hurts or your fingers tingle."
   }
  ],
@@ -70,23 +70,64 @@
  "unilateral": true,
  "startingSide": "right",
  "defaultDose": {
-  "mode": "hold",
+  "mode": "reps",
   "sets": 2,
-  "seconds": 20,
+  "reps": 6,
   "restSeconds": 10
  },
  "phases": {
   "start": {
-   "zh": "身体后移",
-   "en": "Ease back"
+   "zh": "往后靠",
+   "en": "Lean back"
   },
   "peak": {
-   "zh": "保持呼吸",
-   "en": "Breathe and hold"
+   "zh": "停住呼吸",
+   "en": "Hold and breathe"
   },
   "end": {
-   "zh": "慢慢放松",
-   "en": "Release"
+   "zh": "慢慢回来",
+   "en": "Come back"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 3.8,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 1.3,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.9
+   }
+  ],
+  "perSide": "each-side-separately",
+  "stretchLoop": true,
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "名字含「腕屈肌」，改「站姿扶墙前臂拉伸 / Standing Wall Forearm Stretch」",
+    "动画每 8 秒一次「后靠-停约 3 s-回来」，剂量从 20 秒保持改为每侧 2 组×6 次（rep_hold）",
+    "口令「身体后移」(1 s 内念不完) → 「往后靠」"
+   ],
+   "flags": [
+    "改名请确认",
+    "拉伸按次数：原剂量是静止计时，但动画每 8 秒做一次「进入-停住-回来」，按规则改成按次数（rep_hold，training.stretchLoop=true）；想改回计时需动画改成一直停住，请定"
+   ]
   }
  }
 }

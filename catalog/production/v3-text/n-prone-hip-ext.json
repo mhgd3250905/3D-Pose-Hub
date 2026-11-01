@@ -1,17 +1,17 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "n-prone-hip-ext",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/n-prone-hip-ext.js"
  ],
  "name": {
   "zh": "俯卧屈膝抬腿",
-  "en": "Prone Bent-Knee Hip Extension"
+  "en": "Prone Bent-Knee Leg Lift"
  },
  "purpose": {
-  "zh": "练髋部末端伸展，适合久坐和劈叉后腿",
-  "en": "Train end-range hip extension for sitters and the back leg of the splits."
+  "zh": "练臀部把大腿往后抬，适合久坐的人和劈叉的后腿",
+  "en": "Train your glutes to lift the thigh back, good for desk sitters and the back leg of the splits."
  },
  "cues": [
   {
@@ -26,7 +26,7 @@
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "俯卧，一侧膝盖弯曲90度，脚底朝天",
+    "zh": "俯卧，一侧膝盖弯成90度，脚底朝天。",
     "en": "Lie face down with one knee bent to 90 degrees, sole to the ceiling."
    }
   },
@@ -34,8 +34,8 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "只抬起几厘米，停2秒再慢慢放下",
-    "en": "Lift just a few centimetres, hold for two seconds, then lower slowly."
+    "zh": "只抬起几厘米，停2秒再放下。",
+    "en": "Lift just a few centimetres, hold for two seconds, then lower."
    }
   }
  ],
@@ -45,14 +45,14 @@
    "en": "Arching the lower back instead of using the glute."
   },
   {
-   "zh": "骨盆一侧翘起",
+   "zh": "骨盆一侧翘起来",
    "en": "Letting one side of the pelvis lift."
   }
  ],
  "cautions": [
   {
-   "zh": "腰部疼痛时减小抬腿高度，仍痛就停止",
-   "en": "Lift lower if your lower back hurts, and stop if the pain continues."
+   "zh": "腰疼时抬低一点，还疼就停",
+   "en": "If your lower back hurts, lift lower, and stop if it still hurts."
   }
  ],
  "tags": {
@@ -80,16 +80,55 @@
  },
  "phases": {
   "start": {
-   "zh": "夹臀抬腿",
-   "en": "Squeeze and lift"
+   "zh": "抬腿",
+   "en": "Lift"
   },
   "peak": {
-   "zh": "停两秒",
-   "en": "Hold two"
+   "zh": "停住",
+   "en": "Hold"
   },
   "end": {
-   "zh": "慢慢放下",
-   "en": "Lower slowly"
+   "zh": "放下",
+   "en": "Lower"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.6,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 2.4,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.5,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 0.5
+   }
+  ],
+  "perSide": "each-side-separately",
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "英文名 Hip Extension 是术语，改 Prone Bent-Knee Leg Lift",
+    "purpose「髋部末端伸展」改口语",
+    "口令按相位缩短（抬 0.6 s / 放 0.5 s）：抬腿 / 停住 / 放下"
+   ],
+   "flags": [
+    "英文改名请确认"
+   ]
   }
  }
 }

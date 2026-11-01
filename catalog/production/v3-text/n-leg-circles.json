@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "n-leg-circles",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/n-leg-circles-r2.js"
  ],
@@ -10,8 +10,8 @@
   "en": "Supine Straight-Leg Circles"
  },
  "purpose": {
-  "zh": "练髋部在各个方向的主动控制",
-  "en": "Build active hip control in every direction."
+  "zh": "练髋部往各个方向的控制",
+  "en": "Build control of your hip in every direction."
  },
  "cues": [
   {
@@ -26,7 +26,7 @@
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "仰卧，手臂放在身体两侧，掌心贴地",
+    "zh": "仰卧，手臂放在身体两侧，掌心贴地。",
     "en": "Lie on your back with your arms by your sides, palms down."
    }
   },
@@ -34,15 +34,15 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "画完圈后腿向对侧交叉，骨盆要转前就停",
-    "en": "After the circles, cross the leg over and stop before your pelvis rolls."
+    "zh": "画完一圈，腿往另一侧交叉，骨盆要转就停。",
+    "en": "After one circle, cross the leg over and stop before your pelvis rolls."
    }
   }
  ],
  "commonErrors": [
   {
    "zh": "圈画太大，骨盆跟着晃",
-   "en": "Making the circles so big that the pelvis rocks."
+   "en": "Drawing circles so big the pelvis rocks."
   },
   {
    "zh": "抬腿时腰离开地面",
@@ -51,8 +51,8 @@
  ],
  "cautions": [
   {
-   "zh": "髋部疼痛或弹响不适时缩小圈的大小，仍痛就停止",
-   "en": "Make the circles smaller if your hip hurts or clicks uncomfortably, and stop if the pain continues."
+   "zh": "髋部疼或响得不舒服时圈画小一点，还疼就停",
+   "en": "If your hip hurts or clicks uncomfortably, draw smaller circles, and stop if it still hurts."
   }
  ],
  "tags": {
@@ -81,16 +81,51 @@
  },
  "phases": {
   "start": {
-   "zh": "慢慢画圈",
-   "en": "Circle slowly"
+   "zh": "画圈再交叉",
+   "en": "Circle, then cross"
   },
   "peak": {
-   "zh": "向内交叉",
-   "en": "Cross over"
+   "zh": "停住",
+   "en": "Hold"
   },
   "end": {
-   "zh": "回到中间",
-   "en": "Back to center"
+   "zh": "收回来",
+   "en": "Bring it back"
+  }
+ },
+ "training": {
+  "kind": "rep_cycle",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 6.0,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 0.6,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 1.4,
+    "cue": "phase.end"
+   }
+  ],
+  "perSide": "each-side-separately",
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "派生按 work 轨道算成 8 s 2 下，与动画不符；按 spec 手算：一下 = 画一圈 3.6 s + 放低交叉 2.4 s（go 6.0）/ 停 0.6 / 收回抬起 1.4 s（rep_cycle）",
+    "口令原「慢慢画圈/向内交叉/回到中间」改为「画圈再交叉/停住/收回来」对应相位",
+    "cue3「对侧」改「另一侧」"
+   ],
+   "flags": [
+    "rep_cycle 一下 8 s（画圈+交叉合在 go 里），计数方式请确认"
+   ]
   }
  }
 }

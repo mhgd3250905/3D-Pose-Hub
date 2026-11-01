@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "lats-B",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/data/drills.json",
   "drill-anim/specs/lats-B-r2.js"
@@ -11,15 +11,15 @@
   "en": "Banded Straight-Arm Pulldown"
  },
  "purpose": {
-  "zh": "练背阔肌连接上臂和躯干的力量",
-  "en": "Train the lats to connect your arms to your trunk."
+  "zh": "直臂把弹力带往下拉，练背部两侧",
+  "en": "Pull the band down with straight arms to work the sides of your back."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "手臂伸直，从前方下拉到大腿旁",
+    "zh": "手臂伸直，从前面往下拉到大腿旁",
     "en": "Keep your arms straight and sweep them down to your thighs"
    }
   },
@@ -27,33 +27,33 @@
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "下拉时肩胛下沉，肋骨不外翻",
-    "en": "Draw your shoulder blades down without flaring the ribs."
+    "zh": "下拉时肩膀往下沉，别耸肩。",
+    "en": "Keep your shoulders down as you pull; do not shrug."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "底部停1秒，再慢慢回到前方",
+    "zh": "底部停1秒，再慢慢回到前面。",
     "en": "Pause for one second at the bottom, then return slowly."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "弯肘拉",
-   "en": "Bending the elbows."
+   "zh": "弯手肘去拉",
+   "en": "Bending the elbows to pull."
   },
   {
-   "zh": "身体前后摆动借力",
-   "en": "Rocking the body to help."
+   "zh": "身体前后摆借力",
+   "en": "Swinging the body to help."
   }
  ],
  "cautions": [
   {
-   "zh": "肩部疼痛时减小幅度或换更轻的弹力带，仍痛就停止",
-   "en": "Reduce the range or use a lighter band if your shoulders hurt, and stop if the pain continues."
+   "zh": "肩膀疼时拉小一点或换轻的弹力带，还疼就停",
+   "en": "If your shoulders hurt, move less far or use a lighter band, and stop if it still hurts."
   }
  ],
  "tags": {
@@ -80,7 +80,7 @@
  },
  "phases": {
   "start": {
-   "zh": "直臂下拉",
+   "zh": "往下拉",
    "en": "Pull down"
   },
   "peak": {
@@ -88,8 +88,44 @@
    "en": "Hold"
   },
   "end": {
-   "zh": "慢慢还原",
-   "en": "Return slowly"
+   "zh": "抬回去",
+   "en": "Return"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.7,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 1.5,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.8,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.0
+   }
+  ],
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "purpose「背阔肌连接上臂和躯干」改口语",
+    "cue2「肋骨不外翻」改「肩膀往下沉，别耸肩」",
+    "口令「慢慢还原」→「抬回去」"
+   ],
+   "flags": []
   }
  }
 }

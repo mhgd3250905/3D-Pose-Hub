@@ -1,59 +1,59 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "hip-abductors-A",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/data/drills.json",
   "drill-anim/specs/hip-abductors-A-r2.js"
  ],
  "name": {
   "zh": "侧平板抬腿",
-  "en": "Side Plank Hip Abduction"
+  "en": "Side Plank Leg Lift"
  },
  "purpose": {
-  "zh": "在侧撑中练臀中肌主动开腿",
-  "en": "Train the side glutes to lift the leg while holding a side plank."
+  "zh": "侧撑住身体，练臀部侧面把腿往外抬的力量",
+  "en": "Hold a side plank and train the side of your hip to lift the leg."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "前臂侧撑，髋抬起成一条直线",
-    "en": "Prop on your forearm and lift your hips into one straight line"
+    "zh": "前臂侧撑，身体成一条直线，上面的腿抬起",
+    "en": "Hold a forearm side plank and lift the top leg"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "上方腿伸直抬起，脚尖朝前不外转",
-    "en": "Lift the straight top leg with the toes pointing forward."
+    "zh": "上面的腿伸直，脚尖朝前不往外转。",
+    "en": "Keep the top leg straight with the toes pointing forward."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "手肘在肩正下方，慢抬慢放",
+    "zh": "手肘在肩膀正下方，慢抬慢放。",
     "en": "Keep your elbow under your shoulder and lift and lower slowly."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "髋下沉",
+   "zh": "髋往下掉",
    "en": "Letting the hips sag."
   },
   {
-   "zh": "上方腿向前摆",
+   "zh": "上面的腿往前摆",
    "en": "Swinging the top leg forward."
   }
  ],
  "cautions": [
   {
-   "zh": "肩部疼痛时改为屈膝侧撑或减少次数，仍痛就停止",
-   "en": "If your shoulder hurts, bend your knees or do fewer reps, and stop if the pain continues."
+   "zh": "肩膀疼时改成屈膝侧撑或少做几次，还疼就停",
+   "en": "If your shoulder hurts, bend your knees or do fewer reps, and stop if it still hurts."
   }
  ],
  "tags": {
@@ -91,8 +91,47 @@
    "en": "Hold"
   },
   "end": {
-   "zh": "慢放",
+   "zh": "放下",
    "en": "Lower"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.6,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 1.0,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.7,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.7
+   }
+  ],
+  "perSide": "each-side-separately",
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "英文名 Hip Abduction 是术语，改 Side Plank Leg Lift",
+    "主口令原只说「抬髋成直线」没说抬腿，改为侧撑 + 抬腿",
+    "purpose「臀中肌主动开腿」改口语"
+   ],
+   "flags": [
+    "英文改名请确认"
+   ]
   }
  }
 }

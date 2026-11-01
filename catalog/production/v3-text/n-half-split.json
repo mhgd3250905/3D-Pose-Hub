@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "n-half-split",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/n-half-split.js"
  ],
@@ -10,15 +10,15 @@
   "en": "Half-Kneeling Half Split (Blocks)"
  },
  "purpose": {
-  "zh": "拉伸前腿后侧，为前后劈叉打基础",
-  "en": "Stretch the back of the front leg as a first step toward the front splits."
+  "zh": "拉伸前腿的大腿后侧，为前后劈叉打基础",
+  "en": "Stretch the back of your front thigh as a first step toward the front splits."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "臀部向后坐，前腿伸直，背部拉长",
+    "zh": "臀部往后坐，前腿伸直，背拉长",
     "en": "Sit your hips back, straighten the front leg and keep your back long"
    }
   },
@@ -26,7 +26,7 @@
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "后膝跪地，前脚跟着地、脚尖勾起",
+    "zh": "后膝跪地，前脚跟着地、勾脚尖。",
     "en": "Kneel on the back knee with the front heel down and toes up."
    }
   },
@@ -34,25 +34,29 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "双手扶砖，从髋部向前折",
-    "en": "Rest your hands on the blocks and fold forward from your hips."
+    "zh": "双手扶砖，上身往前倾，背保持平直。",
+    "en": "Rest your hands on the blocks and lean forward with a flat back."
    }
   }
  ],
  "commonErrors": [
   {
    "zh": "弓背去够脚",
-   "en": "Rounding the back to reach forward."
+   "en": "Rounding your back to reach the foot."
   },
   {
-   "zh": "强行伸直前膝",
+   "zh": "硬把前腿膝盖伸直",
    "en": "Forcing the front knee straight."
   }
  ],
  "cautions": [
   {
-   "zh": "跪地膝下垫软垫；拉伸处疼痛时减小幅度，仍痛就停止",
-   "en": "Pad the kneeling knee; ease off if the stretch hurts, and stop if the pain continues."
+   "zh": "跪着的膝盖下面垫个软垫",
+   "en": "Put a soft pad under the kneeling knee."
+  },
+  {
+   "zh": "大腿后侧疼时坐得少一点，还疼就停",
+   "en": "If the back of your thigh hurts, sit back less, and stop if it still hurts."
   }
  ],
  "tags": {
@@ -74,23 +78,63 @@
  "unilateral": true,
  "startingSide": "right",
  "defaultDose": {
-  "mode": "hold",
+  "mode": "reps",
   "sets": 2,
-  "seconds": 30,
+  "reps": 5,
   "restSeconds": 20
  },
  "phases": {
   "start": {
-   "zh": "向后坐",
+   "zh": "往后坐",
    "en": "Sit back"
   },
   "peak": {
-   "zh": "保持呼吸",
-   "en": "Breathe and hold"
+   "zh": "停住呼吸",
+   "en": "Hold and breathe"
   },
   "end": {
    "zh": "慢慢回来",
    "en": "Come back"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.3,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 2.9,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 1.3,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 2.5
+   }
+  ],
+  "perSide": "each-side-separately",
+  "stretchLoop": true,
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画每 8 秒一次「后坐-停约 2 s-回来」，剂量从 30 秒保持改为每侧 2 组×5 次（rep_hold）",
+    "cue3「从髋部向前折」改「上身往前倾，背保持平直」",
+    "caution 分成两条短句"
+   ],
+   "flags": [
+    "拉伸按次数：原剂量是静止计时，但动画每 8 秒做一次「进入-停住-回来」，按规则改成按次数（rep_hold，training.stretchLoop=true）；想改回计时需动画改成一直停住，请定"
+   ]
   }
  }
 }
