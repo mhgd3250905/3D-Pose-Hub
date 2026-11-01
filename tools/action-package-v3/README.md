@@ -48,7 +48,12 @@ python tools/action-package-v3/produce.py --root F:/PoseHub-v3 --dry-run   # 只
 
 - `native` = 模型原生外观；`luma-ramp` = 按原生明暗映射到 dark→light，再加边缘光，只作用于人物，不改道具、几何、姿态、镜头。
 - 在 profile 的 `skins` 里列出它，或运行时 `--skins realistic,my-skin`。
-- 目前四个非原生皮肤（tech-white / neon-night / neon-night-b / hologram）是 v3 着色近似版，状态 `draft-needs-user-look-approval`，需要你看样确认。
+- 四个 V2 皮肤（tech-white / neon-night / neon-night-b / hologram）是 `v2-port`：原版 V2 着色器 + `v2-skins/port.mjs` 的断言补丁（PORT_VERSION v2skin-port-r2）。
+  `look.v3Tune` 是 r2 外观微调（线宽/线透明度/线光晕倍率、高亮内收 1px 羽化、高亮处压掉线光晕；暗色皮肤暖色高亮 #f2906a + 自发光 #ff4a24×0.10；tech-white 线色 #5e4418），
+  每次 setSkin 之后自动套用；`v2Params` 仍是原版 V2 参数快照（哈希/一致性检查不变）。
+- realistic 用 `look.highlightStyle: "pump-r1"`（native-highlight.mjs：按 core 的体积渐变、半透明 0.55–0.82、随脉冲的内侧菲涅尔光、细深色轮廓），高亮色 `look.highlightColor`。
+- `look.rim: {"strength":0.5,"colour":"body"}`：边缘光强度 0.5，颜色取人物自身底色（V2 皮肤 = 皮肤灰；原生 = 各衣物底色），不再是橙色。
+- 5 个皮肤状态均为 `look-tuned-r2-needs-user-approval`，需要你看样确认。
 
 ## 换模型
 
