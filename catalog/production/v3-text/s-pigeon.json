@@ -1,48 +1,48 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "s-pigeon",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/s-pigeon.js"
  ],
  "name": {
   "zh": "鸽子式",
-  "en": "Pigeon Pose"
+  "en": "Pigeon Stretch"
  },
  "purpose": {
-  "zh": "拉伸前腿臀部和后腿髋前侧",
-  "en": "Stretch the glute of the front leg and the front of the back hip."
+  "zh": "拉伸前腿的臀部和后腿的髋前侧",
+  "en": "Stretch the glute of your front leg and the front of your back hip."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "上身直立，双手扶砖，呼气时微微前倾",
-    "en": "Stay tall with hands on the blocks and lean forward slightly as you exhale"
+    "zh": "上身挺直，呼气时微微往前倾",
+    "en": "Stay tall and lean forward slightly as you breathe out"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "前腿小腿横在身前，后腿向后伸直",
-    "en": "Front shin across your body, back leg straight behind you."
+    "zh": "前腿小腿横在身前，后腿往后伸直，双手扶砖。",
+    "en": "Front shin across your body, back leg straight behind you, hands on the blocks."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "骨盆尽量摆正，不要硬往下压",
+    "zh": "骨盆尽量摆正，别硬往下压。",
     "en": "Keep your hips as square as you can and do not force them down."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "骨盆歪向一侧",
-   "en": "Letting the pelvis tilt to one side."
+   "zh": "骨盆歪向一边",
+   "en": "Letting your hips tilt to one side."
   },
   {
    "zh": "硬压前腿膝盖",
@@ -51,8 +51,8 @@
  ],
  "cautions": [
   {
-   "zh": "膝盖疼痛时垫高臀部或换成仰卧4字拉伸",
-   "en": "If your knee hurts, prop your hips up or switch to the supine figure-4 stretch."
+   "zh": "膝盖疼时垫高臀部，或换成仰卧4字拉伸",
+   "en": "If your knee hurts, prop your hips higher or switch to the lying figure-4 stretch."
   }
  ],
  "tags": {
@@ -74,9 +74,9 @@
  "unilateral": true,
  "startingSide": "right",
  "defaultDose": {
-  "mode": "hold",
+  "mode": "reps",
   "sets": 2,
-  "seconds": 30,
+  "reps": 4,
   "restSeconds": 15
  },
  "phases": {
@@ -85,12 +85,52 @@
    "en": "Lean in"
   },
   "peak": {
-   "zh": "保持呼吸",
-   "en": "Breathe and hold"
+   "zh": "停住呼吸",
+   "en": "Hold and breathe"
   },
   "end": {
    "zh": "慢慢坐直",
    "en": "Sit up"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.4,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 3.6,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 1.4,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.6
+   }
+  ],
+  "perSide": "each-side-separately",
+  "stretchLoop": true,
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "剂量 → 每侧 2 组×4 次（rep_hold，stretchLoop）",
+    "EN 名 Pigeon Pose → Pigeon Stretch（与其余拉伸统一）",
+    "primary 缩短为一个指令（扶砖移到 cue2）"
+   ],
+   "flags": [
+    "拉伸按次数：原剂量是静止计时，但动画每 8 秒做一次「进入-停住约 3.6 s-回来」，按规则改成按次数（rep_hold，training.stretchLoop=true）；想改回计时需动画改成一直停住，请定"
+   ]
   }
  }
 }

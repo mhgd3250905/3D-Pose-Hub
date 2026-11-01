@@ -1,33 +1,33 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "quadriceps-A",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/data/drills.json",
   "drill-anim/specs/quadriceps-A.js"
  ],
  "name": {
-  "zh": "跪姿反向北欧",
-  "en": "Reverse Nordic"
+  "zh": "跪姿身体后倾",
+  "en": "Kneeling Lean-Back"
  },
  "purpose": {
-  "zh": "在拉长位加强大腿前侧",
-  "en": "Strengthen the front of your thighs in a lengthened position."
+  "zh": "在拉长的位置加强大腿前侧",
+  "en": "Strengthen the front of your thighs while they are stretched."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "膝到肩一条直线，向后倾到可控范围",
-    "en": "Keep a line from knees to shoulders and lean back as far as you control"
+    "zh": "膝到肩一条直线，往后倒到能控制的程度",
+    "en": "Keep knees to shoulders in one line and lean back only as far as you control"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "跪立夹紧臀部，双手交叉放胸前",
+    "zh": "跪直夹紧臀部，双手交叉放在胸前。",
     "en": "Kneel tall, squeeze your glutes and cross your arms on your chest."
    }
   },
@@ -35,25 +35,25 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "不在髋处折叠，再回正",
-    "en": "Do not bend at the hips, then return upright."
+    "zh": "髋部别弯，整个人一起回正。",
+    "en": "Do not bend at the hips; come back up in one piece."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "屈髋后坐",
+   "zh": "弯髋往后坐",
    "en": "Bending at the hips and sitting back."
   },
   {
    "zh": "倒得太深回不来",
-   "en": "Leaning back too far to return."
+   "en": "Leaning back too far to come back up."
   }
  ],
  "cautions": [
   {
-   "zh": "膝前不适时减小后倾幅度，可在膝下加垫",
-   "en": "Lean back less if the front of your knee feels uncomfortable, and pad under your knees."
+   "zh": "膝前不舒服时少倒一点，膝下加垫",
+   "en": "If the front of your knee feels uncomfortable, lean back less and pad under your knees."
   }
  ],
  "tags": {
@@ -81,16 +81,55 @@
  },
  "phases": {
   "start": {
-   "zh": "向后倾",
+   "zh": "往后倒",
    "en": "Lean back"
   },
   "peak": {
-   "zh": "控制住",
-   "en": "Control it"
+   "zh": "稳住",
+   "en": "Hold"
   },
   "end": {
    "zh": "回正",
    "en": "Come up"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.3,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 0.8,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 1.2,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 0.7
+   }
+  ],
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "改名：「反向北欧」听不懂 → 跪姿身体后倾 / Kneeling Lean-Back",
+    "cue3「不在髋处折叠」改「髋部别弯」，error「屈髋后坐」改「弯髋往后坐」",
+    "节奏按 spec 1.3/0.8/1.2/0.7"
+   ],
+   "flags": [
+    "改名：跪姿反向北欧 → 跪姿身体后倾（Reverse Nordic 是通用名，若想保留请定）",
+    "顶点停 0.8 s 恰在 rep_hold 阈值上"
+   ]
   }
  }
 }

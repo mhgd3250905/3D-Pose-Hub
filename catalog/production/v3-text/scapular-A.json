@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "scapular-A",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/data/drills.json",
   "drill-anim/specs/scapular-A-r2.js"
@@ -11,49 +11,49 @@
   "en": "Prone Y-T-W Raise"
  },
  "purpose": {
-  "zh": "加强斜方肌中下部和菱形肌，摆正肩胛",
-  "en": "Strengthen the mid and lower traps and rhomboids to set your shoulder blades."
+  "zh": "加强上背和肩胛周围，让肩膀摆正",
+  "en": "Strengthen your upper back and around your shoulder blades for better shoulder position."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "先把肩胛下沉后收，再抬手",
-    "en": "Draw your shoulder blades down and back before you lift"
+    "zh": "先把肩胛骨往下往后收，再抬手",
+    "en": "Pull your shoulder blades down and back before you lift"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "额头轻贴地，依次做Y、T、W",
-    "en": "Rest your forehead lightly down and move through Y, T, then W."
+    "zh": "趴着额头轻贴垫子，依次做 Y、T、W。",
+    "en": "Lie face down, forehead lightly on the mat, and go Y, T, then W."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "拇指朝上，顶端稍停",
-    "en": "Thumbs up, and pause at the top."
+    "zh": "拇指朝上，手抬离垫子就放下。",
+    "en": "Thumbs up; lift your hands just off the mat, then lower."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "抬头、耸肩",
-   "en": "Lifting the head or shrugging."
+   "zh": "抬头或耸肩",
+   "en": "Lifting your head or shrugging."
   },
   {
-   "zh": "用腰把上身抬高",
-   "en": "Arching the lower back to lift the chest."
+   "zh": "靠拱腰把上身抬起来",
+   "en": "Arching your lower back to lift your chest."
   }
  ],
  "cautions": [
   {
-   "zh": "肩部疼痛时减小抬手高度，仍痛就停止",
-   "en": "Lift lower if your shoulders hurt, and stop if the pain continues."
+   "zh": "肩膀疼时幅度小一点，还疼就停",
+   "en": "If your shoulders hurts, move less far, and stop if it still hurts."
   }
  ],
  "tags": {
@@ -76,12 +76,12 @@
  "defaultDose": {
   "mode": "reps",
   "sets": 2,
-  "reps": 8,
+  "reps": 9,
   "restSeconds": 45
  },
  "phases": {
   "start": {
-   "zh": "抬起双臂",
+   "zh": "抬起",
    "en": "Lift"
   },
   "peak": {
@@ -89,8 +89,46 @@
    "en": "Hold"
   },
   "end": {
-   "zh": "放下换位",
-   "en": "Lower and switch"
+   "zh": "放下",
+   "en": "Lower"
+  }
+ },
+ "training": {
+  "kind": "rep_updown",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.8,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 0.2
+   },
+   {
+    "id": "back",
+    "seconds": 0.8,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 0.9
+   }
+  ],
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画 8 s 内 Y、T、W 各抬一次（抬 0.8 s、停 0.17 s、放 0.8 s、滑到下一字型 0.9 s），按每个字型计一下，rep_updown",
+    "剂量 8→9 次（3 轮 Y-T-W）",
+    "cue「顶端稍停」与动画不符，改「抬离垫子就放下」",
+    "purpose 去掉肌肉学名；口令缩短适配 0.8 s"
+   ],
+   "flags": [
+    "剂量按每个字型计数：9 次 = 3 轮 Y-T-W；若想按「轮」计请定"
+   ]
   }
  }
 }

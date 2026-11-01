@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "s-seated-fold",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/s-seated-fold-r4.js"
  ],
@@ -18,15 +18,15 @@
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "背部拉长，从髋部向前折",
-    "en": "Keep your back long and fold forward from your hips"
+    "zh": "背挺直，身体慢慢往前折",
+    "en": "Keep your back long and slowly fold forward"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "双腿伸直并拢，脚尖朝上",
+    "zh": "双腿伸直并拢，脚尖朝上。",
     "en": "Sit with both legs straight together, toes up."
    }
   },
@@ -34,7 +34,7 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "双手沿腿滑向小腿，拉伸感出现就停",
+    "zh": "双手顺着腿滑向小腿，有拉伸感就停。",
     "en": "Slide your hands toward your shins and stop when you feel the stretch."
    }
   }
@@ -42,13 +42,13 @@
  "commonErrors": [
   {
    "zh": "弓背去够脚",
-   "en": "Rounding the back to reach the feet."
+   "en": "Rounding your back to reach your feet."
   }
  ],
  "cautions": [
   {
-   "zh": "大腿后侧疼痛或发麻时减小幅度，仍不适就停止",
-   "en": "Ease off if the back of your thighs hurts or tingles, and stop if it continues."
+   "zh": "大腿后侧疼或发麻时幅度小一点，还不舒服就停",
+   "en": "If the backs of your thighs hurt or tingle, ease off, and stop if it continues."
   }
  ],
  "tags": {
@@ -68,23 +68,62 @@
  },
  "unilateral": false,
  "defaultDose": {
-  "mode": "hold",
+  "mode": "reps",
   "sets": 2,
-  "seconds": 30,
+  "reps": 4,
   "restSeconds": 15
  },
  "phases": {
   "start": {
-   "zh": "向前折",
+   "zh": "往前折",
    "en": "Fold forward"
   },
   "peak": {
-   "zh": "保持呼吸",
-   "en": "Breathe and hold"
+   "zh": "停住呼吸",
+   "en": "Hold and breathe"
   },
   "end": {
    "zh": "慢慢坐直",
    "en": "Sit up"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.4,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 3.6,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 1.4,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.6
+   }
+  ],
+  "stretchLoop": true,
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "剂量 30 s 保持 → 2 组×4 次（rep_hold，stretchLoop）",
+    "primary 去掉「从髋部」",
+    "口令「保持呼吸」→「停住呼吸」"
+   ],
+   "flags": [
+    "拉伸按次数：原剂量是静止计时，但动画每 8 秒做一次「进入-停住约 3.6 s-回来」，按规则改成按次数（rep_hold，training.stretchLoop=true）；想改回计时需动画改成一直停住，请定"
+   ]
   }
  }
 }

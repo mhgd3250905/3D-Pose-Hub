@@ -1,55 +1,59 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "quadriceps-C",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/data/drills.json",
   "drill-anim/specs/quadriceps-C-r2.js"
  ],
  "name": {
-  "zh": "器械腿屈伸（顶端锁直）",
-  "en": "Machine Leg Extension (Lockout)"
+  "zh": "器械坐姿伸腿（顶端停住）",
+  "en": "Machine Leg Extension with Pause"
  },
  "purpose": {
-  "zh": "在完全伸直位加强大腿前侧",
-  "en": "Strengthen the front of your thighs at full knee extension."
+  "zh": "在膝盖完全伸直时加强大腿前侧",
+  "en": "Strengthen the front of your thighs with your knees fully straight."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "踢到完全伸直，顶端停2秒再慢放",
-    "en": "Extend until fully straight, hold for two seconds, then lower slowly"
+    "zh": "把腿踢到完全伸直，停两秒再慢慢放",
+    "en": "Straighten your legs fully, hold two seconds, then lower slowly"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "膝关节对齐器械转轴",
-    "en": "Line your knees up with the machine pivot."
+    "zh": "膝盖对准器械的转轴。",
+    "en": "Line your knees up with the machine's pivot."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "背靠垫子，双手扶把手",
+    "zh": "背靠垫子，双手扶住把手。",
     "en": "Sit back against the pad and hold the handles."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "重量太重，用甩踢代替控制",
-   "en": "Using too much weight and kicking instead of controlling."
+   "zh": "重量太重，靠甩腿踢上去",
+   "en": "Using too much weight and swinging your legs up."
   }
  ],
  "cautions": [
   {
-   "zh": "重量从轻开始；膝前痛时缩小幅度",
-   "en": "Start light, and reduce the range if the front of your knee hurts."
+   "zh": "重量从轻开始",
+   "en": "Start with a light weight."
+  },
+  {
+   "zh": "膝盖前面疼时幅度小一点",
+   "en": "If the front of your knee hurts, move less far."
   }
  ],
  "tags": {
@@ -74,15 +78,54 @@
  "phases": {
   "start": {
    "zh": "伸直",
-   "en": "Extend"
+   "en": "Straighten"
   },
   "peak": {
    "zh": "停两秒",
    "en": "Hold two"
   },
   "end": {
-   "zh": "慢放",
+   "zh": "慢慢放",
    "en": "Lower slowly"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.2,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 2.0,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 1.4,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 3.4
+   }
+  ],
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "改名：「腿屈伸」是术语 → 器械坐姿伸腿（顶端停住）",
+    "节奏按 spec 时间线：伸 1.2 s、停 2 s、放 1.4 s、底部 3.4 s（派生值偏离）",
+    "EN「Extend」→「Straighten」，caution 拆成两条短句"
+   ],
+   "flags": [
+    "改名：器械腿屈伸（顶端锁直）→ 器械坐姿伸腿（顶端停住）；EN 保留 Leg Extension（器械通用名）",
+    "动画每 8 s 只做 1 下，底部停 3.4 s，App 节奏会偏慢；若要更紧凑需改动画"
+   ]
   }
  }
 }

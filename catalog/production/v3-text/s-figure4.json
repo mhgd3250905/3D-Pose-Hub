@@ -1,32 +1,32 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "s-figure4",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/s-figure4-r2.js"
  ],
  "name": {
-  "zh": "仰卧4字梨状肌拉伸",
-  "en": "Supine Figure-4 Stretch"
+  "zh": "仰卧4字臀部拉伸",
+  "en": "Lying Figure-4 Stretch"
  },
  "purpose": {
-  "zh": "拉伸臀部深层，缓解髋部紧张",
-  "en": "Stretch the deep glutes and ease hip tightness."
+  "zh": "拉伸臀部深处，缓解髋部发紧",
+  "en": "Stretch deep in your glutes and ease tight hips."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "脚踝搭在对侧大腿上，膝盖向外打开",
-    "en": "Cross your ankle over the other thigh and let the knee fall open"
+    "zh": "脚踝搭在另一条腿的大腿上，膝盖往外打开",
+    "en": "Cross your ankle over your other thigh and let the knee fall open"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "仰卧，头和肩放松贴地",
+    "zh": "仰躺，头和肩膀放松贴地。",
     "en": "Lie on your back with your head and shoulders relaxed on the floor."
    }
   },
@@ -34,7 +34,7 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "支撑脚稍微往臀部移，加深拉伸",
+    "zh": "踩地的脚往臀部挪一点，拉伸更深。",
     "en": "Walk the planted foot a little closer to deepen the stretch."
    }
   }
@@ -42,7 +42,7 @@
  "commonErrors": [
   {
    "zh": "抬头耸肩用力",
-   "en": "Lifting the head and tensing the shoulders."
+   "en": "Lifting your head and tensing your shoulders."
   },
   {
    "zh": "用力压膝盖",
@@ -51,8 +51,8 @@
  ],
  "cautions": [
   {
-   "zh": "膝盖疼痛时减小幅度，仍痛就停止",
-   "en": "Reduce the range if your knee hurts, and stop if the pain continues."
+   "zh": "膝盖疼时幅度小一点，还疼就停",
+   "en": "If your knee hurts, move less far, and stop if it still hurts."
   }
  ],
  "tags": {
@@ -72,23 +72,64 @@
  "unilateral": true,
  "startingSide": "right",
  "defaultDose": {
-  "mode": "hold",
+  "mode": "reps",
   "sets": 2,
-  "seconds": 30,
+  "reps": 4,
   "restSeconds": 15
  },
  "phases": {
   "start": {
-   "zh": "脚往回移",
-   "en": "Walk the foot in"
+   "zh": "脚往回挪",
+   "en": "Walk in"
   },
   "peak": {
-   "zh": "保持呼吸",
-   "en": "Breathe and hold"
+   "zh": "停住呼吸",
+   "en": "Hold and breathe"
   },
   "end": {
    "zh": "慢慢放松",
    "en": "Ease out"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.4,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 3.6,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 1.4,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.6
+   }
+  ],
+  "perSide": "each-side-separately",
+  "stretchLoop": true,
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "改名：「梨状肌」是术语 → 仰卧4字臀部拉伸 / Lying Figure-4 Stretch",
+    "primary「对侧大腿」→「另一条腿的大腿」",
+    "剂量 → 每侧 2 组×4 次（rep_hold，stretchLoop）"
+   ],
+   "flags": [
+    "拉伸按次数：原剂量是静止计时，但动画每 8 秒做一次「进入-停住约 3.6 s-回来」，按规则改成按次数（rep_hold，training.stretchLoop=true）；想改回计时需动画改成一直停住，请定",
+    "改名：仰卧4字梨状肌拉伸 → 仰卧4字臀部拉伸"
+   ]
   }
  }
 }

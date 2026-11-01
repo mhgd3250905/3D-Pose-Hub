@@ -1,41 +1,41 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "obliques-A",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/data/drills.json",
   "drill-anim/specs/obliques-A-r2.js"
  ],
  "name": {
   "zh": "熊爬穿腿",
-  "en": "Kick-Through (Beast Flow)"
+  "en": "Bear Kick-Through"
  },
  "purpose": {
-  "zh": "在单手支撑下练转体，是托马斯转体的雏形",
-  "en": "Train trunk rotation on one hand, a first step toward flares."
+  "zh": "单手撑地时练身体转动和控制",
+  "en": "Train turning your body with control while supported on one hand."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "单手撑地，腿从身体下方穿过去",
-    "en": "Support on one hand and thread your leg under your body"
+    "zh": "单手撑地，一条腿从身体下面穿过去",
+    "en": "Push through one hand and thread one leg under your body"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "从四足悬膝位起，膝盖离地",
-    "en": "Start in a bear position with your knees hovering."
+    "zh": "四点支撑，膝盖离地一点开始。",
+    "en": "Start on hands and feet with your knees just off the floor."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "转体时支撑手推地，髋不要落地",
+    "zh": "转身时撑地的手用力推，臀部别落地。",
     "en": "Push the floor with the support hand as you turn and keep your hips up."
    }
   }
@@ -43,17 +43,21 @@
  "commonErrors": [
   {
    "zh": "臀部坐到地上",
-   "en": "Sitting the hips down."
+   "en": "Sitting your hips down on the floor."
   },
   {
-   "zh": "支撑肩塌下去",
+   "zh": "撑地那侧肩膀塌下去",
    "en": "Letting the support shoulder sink."
   }
  ],
  "cautions": [
   {
-   "zh": "先做2–3分钟手腕热身；腕部刺痛或麻木立即停止",
-   "en": "Warm up your wrists for 2–3 minutes first; stop right away if they feel sharp pain or numbness."
+   "zh": "手腕不舒服时先活动一下手腕",
+   "en": "If your wrists feel stiff, warm them up first."
+  },
+  {
+   "zh": "手腕刺痛或发麻时马上停",
+   "en": "Stop right away if your wrists feel sharp pain or numbness."
   }
  ],
  "tags": {
@@ -89,6 +93,43 @@
   "end": {
    "zh": "回到熊爬",
    "en": "Back to bear"
+  }
+ },
+ "training": {
+  "kind": "rep_alternate",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.2,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 0.8,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 1.2,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 0.8
+   }
+  ],
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画左右轮流穿腿，节奏改 rep_alternate（派生只读一侧轨道，误成 8 s 一下）",
+    "EN 名 Kick-Through (Beast Flow) → Bear Kick-Through",
+    "purpose 去掉「托马斯转体」术语",
+    "手腕注意拆成两条短句"
+   ],
+   "flags": []
   }
  }
 }

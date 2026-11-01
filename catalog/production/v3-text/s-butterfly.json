@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "s-butterfly",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/s-butterfly-r2.js"
  ],
@@ -18,15 +18,15 @@
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "脚心相对，背部拉长从髋部前倾",
-    "en": "Press your soles together and hinge forward from your hips with a long back"
+    "zh": "脚心相对，背挺直慢慢往前倾",
+    "en": "Press your soles together and lean forward with a long back"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "脚跟靠近身体，膝盖自然向两侧打开",
+    "zh": "脚跟靠近身体，膝盖自然往两边打开。",
     "en": "Bring your heels in and let your knees fall open."
    }
   },
@@ -34,7 +34,7 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "双手扶小腿，不要用手压膝盖",
+    "zh": "双手扶小腿，别用手压膝盖。",
     "en": "Hold your shins and do not push your knees down."
    }
   }
@@ -42,17 +42,17 @@
  "commonErrors": [
   {
    "zh": "弓背往前够",
-   "en": "Rounding the back to reach forward."
+   "en": "Rounding your back to reach forward."
   },
   {
    "zh": "用手硬压膝盖",
-   "en": "Forcing the knees down with your hands."
+   "en": "Forcing your knees down with your hands."
   }
  ],
  "cautions": [
   {
-   "zh": "拉伸处疼痛时减小幅度，仍痛就停止",
-   "en": "Ease off if the stretch hurts, and stop if the pain continues."
+   "zh": "大腿内侧疼时幅度小一点，还疼就停",
+   "en": "If your inner thighs hurts, move less far, and stop if it still hurts."
   }
  ],
  "tags": {
@@ -71,23 +71,62 @@
  },
  "unilateral": false,
  "defaultDose": {
-  "mode": "hold",
+  "mode": "reps",
   "sets": 2,
-  "seconds": 30,
+  "reps": 4,
   "restSeconds": 15
  },
  "phases": {
   "start": {
-   "zh": "向前倾",
+   "zh": "身体前倾",
    "en": "Lean forward"
   },
   "peak": {
-   "zh": "保持呼吸",
-   "en": "Breathe and hold"
+   "zh": "停住呼吸",
+   "en": "Hold and breathe"
   },
   "end": {
    "zh": "慢慢坐直",
    "en": "Sit up"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.4,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 3.6,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 1.4,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.6
+   }
+  ],
+  "stretchLoop": true,
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "剂量 30 s 保持 → 2 组×4 次（rep_hold，stretchLoop）",
+    "primary 去掉「从髋部」",
+    "口令「保持呼吸」→「停住呼吸」"
+   ],
+   "flags": [
+    "拉伸按次数：原剂量是静止计时，但动画每 8 秒做一次「进入-停住约 3.6 s-回来」，按规则改成按次数（rep_hold，training.stretchLoop=true）；想改回计时需动画改成一直停住，请定"
+   ]
   }
  }
 }

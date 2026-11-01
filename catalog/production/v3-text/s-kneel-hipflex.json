@@ -1,16 +1,16 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "s-kneel-hipflex",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/s-kneel-hipflex.js"
  ],
  "name": {
-  "zh": "半跪髋屈肌拉伸",
-  "en": "Half-Kneeling Hip Flexor Stretch"
+  "zh": "半跪髋前侧拉伸",
+  "en": "Half-Kneeling Hip Stretch"
  },
  "purpose": {
-  "zh": "拉伸髋前侧，缓解久坐紧张",
+  "zh": "拉伸髋部前面，缓解久坐发紧",
   "en": "Stretch the front of your hip to ease tightness from sitting."
  },
  "cues": [
@@ -18,37 +18,41 @@
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "骨盆后卷，向前推，拉伸后腿髋前侧",
-    "en": "Tuck your pelvis and shift forward to stretch the front of the back hip"
+    "zh": "夹紧臀部，身体慢慢往前推",
+    "en": "Squeeze your glute and slowly shift your body forward"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "后膝跪地，前脚踩地，上身直立",
-    "en": "Kneel on the back knee, front foot planted, trunk tall."
+    "zh": "后膝跪地，前脚踩地，上身直立。",
+    "en": "Kneel on the back knee, front foot planted, upper body tall."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "呼气时稍微加深，腰不往前拱",
-    "en": "Ease a little deeper on each exhale without arching your back."
+    "zh": "呼气时再往前一点，腰别往前拱。",
+    "en": "Ease a little further as you breathe out, without arching your back."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "腰往前拱代替骨盆后卷",
-   "en": "Arching the lower back instead of tucking the pelvis."
+   "zh": "靠拱腰往前，而不是收臀",
+   "en": "Arching your lower back instead of squeezing your glute."
   }
  ],
  "cautions": [
   {
-   "zh": "跪地膝下垫软垫；拉伸处疼痛时减小幅度",
-   "en": "Pad under the kneeling knee, and ease off if the stretch hurts."
+   "zh": "跪地的膝盖下面垫软垫",
+   "en": "Pad under the kneeling knee."
+  },
+  {
+   "zh": "髋前侧疼时幅度小一点，还疼就停",
+   "en": "If your hip hurts, move less far, and stop if it still hurts."
   }
  ],
  "tags": {
@@ -69,23 +73,64 @@
  "unilateral": true,
  "startingSide": "left",
  "defaultDose": {
-  "mode": "hold",
+  "mode": "reps",
   "sets": 2,
-  "seconds": 30,
+  "reps": 4,
   "restSeconds": 15
  },
  "phases": {
   "start": {
-   "zh": "卷骨盆前推",
-   "en": "Tuck and shift"
+   "zh": "收臀前推",
+   "en": "Squeeze forward"
   },
   "peak": {
-   "zh": "保持呼吸",
-   "en": "Breathe and hold"
+   "zh": "停住呼吸",
+   "en": "Hold and breathe"
   },
   "end": {
    "zh": "慢慢回来",
    "en": "Come back"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.4,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 3.6,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 1.4,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.6
+   }
+  ],
+  "perSide": "each-side-separately",
+  "stretchLoop": true,
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "改名：「髋屈肌」是术语 → 半跪髋前侧拉伸 / Half-Kneeling Hip Stretch",
+    "primary「骨盆后卷」改「夹紧臀部往前推」，口令同步",
+    "剂量 → 每侧 2 组×4 次（rep_hold，stretchLoop）"
+   ],
+   "flags": [
+    "拉伸按次数：原剂量是静止计时，但动画每 8 秒做一次「进入-停住约 3.6 s-回来」，按规则改成按次数（rep_hold，training.stretchLoop=true）；想改回计时需动画改成一直停住，请定",
+    "改名：半跪髋屈肌拉伸 → 半跪髋前侧拉伸"
+   ]
   }
  }
 }

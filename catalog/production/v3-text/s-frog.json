@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "s-frog",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "catalog/v2/actions/s-frog.json",
   "catalog/voice-v2/script.json",
@@ -13,56 +13,52 @@
  },
  "purpose": {
   "zh": "拉伸大腿内侧",
-  "en": "Explore a comfortable inner-thigh stretch in a wide-knee position."
+  "en": "Stretch your inner thighs."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "膝盖向两侧打开，脚尖朝外，臀部慢慢往后坐",
-    "en": "Knees wide, toes out, sit your hips back slowly"
+    "zh": "膝盖往两边打开，臀部慢慢往后坐",
+    "en": "Spread your knees wide and slowly sit your hips back"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "缓慢移动，停在自己能控制的幅度",
-    "en": "Move slowly and stop within a range you can control."
+    "zh": "前臂撑地，脚尖朝外，背放平。",
+    "en": "Rest on your forearms, toes out, back flat."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "保持呼吸，回程也要平稳",
-    "en": "Keep breathing and return smoothly."
+    "zh": "停在自己能控制的幅度，回来也要慢。",
+    "en": "Stop where you can stay in control, and come back slowly."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "强压髋部追求过大的幅度",
-   "en": "Forcing the hips into an excessive range."
+   "zh": "硬压髋部追求更大幅度",
+   "en": "Forcing your hips to go further."
   },
   {
-   "zh": "出现不适仍弹震或继续加深",
-   "en": "Bouncing or pushing deeper despite discomfort."
+   "zh": "不舒服还往下颠",
+   "en": "Bouncing deeper when it feels uncomfortable."
   }
  ],
  "cautions": [
   {
-   "zh": "膝：使用舒适垫面，膝部承托不适时不要继续加宽。",
-   "en": "Knees: use comfortable padding and do not widen the stance through knee discomfort."
+   "zh": "膝盖下面垫软垫，膝盖不舒服就别再分开",
+   "en": "Pad under your knees and stop widening if they feel uncomfortable."
   },
   {
-   "zh": "大腿内侧与髋：缓慢后坐，只保留可控拉伸感，不弹震、不让他人强压。",
-   "en": "Inner thighs and hips: rock back slowly within a controlled stretch without bouncing or being pushed."
-  },
-  {
-   "zh": "腰背：保持躯干可控，不为更深后坐强行塌腰或憋气。",
-   "en": "Lower back: keep the trunk controlled instead of forcing a deeper rock through the lower back or breath-holding."
+   "zh": "大腿内侧疼时坐浅一点，别让别人帮你压",
+   "en": "If your inner thighs hurt, sit back less, and never let someone push you down."
   }
  ],
  "tags": {
@@ -82,23 +78,63 @@
  },
  "unilateral": false,
  "defaultDose": {
-  "mode": "hold",
+  "mode": "reps",
   "sets": 1,
-  "seconds": 40,
+  "reps": 5,
   "restSeconds": 10
  },
  "phases": {
   "start": {
-   "zh": "髋向后坐",
-   "en": "Sit your hips back"
+   "zh": "臀部后坐",
+   "en": "Sit back"
   },
   "peak": {
-   "zh": "保持住",
-   "en": "Hold"
+   "zh": "停住呼吸",
+   "en": "Hold and breathe"
   },
   "end": {
-   "zh": "慢慢还原",
-   "en": "Slowly come out of it"
+   "zh": "慢慢回来",
+   "en": "Come back"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.4,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 3.6,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 1.4,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.6
+   }
+  ],
+  "stretchLoop": true,
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "purpose 中英对齐（EN 原为长句）",
+    "3 条「部位：…」长句注意改成 2 条短句，error 去掉「弹震」",
+    "剂量 40 s 保持 → 1 组×5 次（rep_hold，stretchLoop）",
+    "口令缩短：Sit your hips back → Sit back"
+   ],
+   "flags": [
+    "拉伸按次数：原剂量是静止计时，但动画每 8 秒做一次「进入-停住约 3.6 s-回来」，按规则改成按次数（rep_hold，training.stretchLoop=true）；想改回计时需动画改成一直停住，请定"
+   ]
   }
  }
 }
