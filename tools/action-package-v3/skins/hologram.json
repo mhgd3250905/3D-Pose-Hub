@@ -2,12 +2,38 @@
  "format": "pose-hub-package-skin@1",
  "id": "hologram",
  "label": "Hologram",
- "status": "ported-from-v2-needs-user-look-approval",
+ "status": "look-tuned-r2-needs-user-approval",
  "look": {
   "mode": "v2-port",
-  "v2Skin": "hologram"
+  "v2Skin": "hologram",
+  "v3Tune": {
+   "source": "user-approved probe r219/probe-hi3.mjs (A tune), 2026-10-31",
+   "lineWidthK": 0.32,
+   "lineAlphaK": 0.6,
+   "glowK": 0.5,
+   "inwardMask": true,
+   "featherPx": 1.0,
+   "glowOverHighlight": "suppressed",
+   "highlight": {
+    "color": "#f2906a",
+    "shade": [
+     0.62,
+     0.36,
+     0.06
+    ],
+    "alpha": 0.42
+   },
+   "emissive": {
+    "color": "#ff4a24",
+    "k": 0.1
+   }
+  },
+  "rim": {
+   "strength": 0.5,
+   "colour": "body"
+  }
  },
- "highlightColor": "#e9d49c",
+ "highlightColor": "#f2906a",
  "background": {
   "centre": [
    18,
@@ -21,7 +47,7 @@
   ]
  },
  "port": {
-  "version": "v2skin-port-r1",
+  "version": "v2skin-port-r2",
   "v2Source": "drill-anim/page/human-v2plus-regions.js",
   "v2SourceSha256": "730047f0bc5d62eb7aae57d6dfcbbfaef6b73201dd770e4a56e29143614e99ac",
   "regionTable": "drill-anim/models/training-human-v2plus-regions.json",
@@ -34,7 +60,8 @@
    "patchHolder(): every matched material slot (tail)",
    "setRegions(): re-wrap check on every matched slot",
    "meshInfo: first matched slot uuid",
-   "highlight colour: the skin hi.c with the recipe pulse curve"
+   "highlight colour: the skin hi.c with the recipe pulse curve",
+   "r2 look tune: look.v3Tune (line width/alpha/glow scale, inward 1px-feather highlight mask, glow suppressed over the highlight, dark-skin warm highlight + emissive) applied after every setSkin; v2Params stays the raw V2 snapshot"
   ]
  },
  "v2Params": {

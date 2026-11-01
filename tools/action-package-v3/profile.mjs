@@ -23,6 +23,13 @@ export function validateSkin(s){
   fail(HEX.test(s.highlightColor??''),'Skin highlightColor must be #RRGGBB');
   const l=s.look;fail(l&&['native','luma-ramp','v2-port'].includes(l.mode),'Skin look.mode must be native, luma-ramp or v2-port');
   if(l.mode==='v2-port'){fail(/^[a-z0-9-]+$/.test(l.v2Skin??''),'v2-port needs look.v2Skin');fail(s.v2Params&&s.port&&/^[0-9a-f]{64}$/.test(s.port.v2SourceSha256??'')&&/^[0-9a-f]{64}$/.test(s.port.regionTableSha256??''),'v2-port needs v2Params and port hashes');}
+  if(l.mode!=='luma-ramp'&&l.rim)fail(l.rim.strength>=0&&l.rim.strength<=2&&l.rim.colour==='body','look.rim needs strength 0..2 and colour "body"');
+  if(l.highlightStyle!==undefined)fail(l.mode==='native'&&l.highlightStyle==='pump-r1','look.highlightStyle: only pump-r1 on a native skin');
+  if(l.highlightColor!==undefined)fail(HEX.test(l.highlightColor),'look.highlightColor must be #RRGGBB');
+  if(l.v3Tune){const t=l.v3Tune;fail(l.mode==='v2-port'&&[t.lineWidthK,t.lineAlphaK,t.glowK,t.featherPx].every(x=>typeof x==='number'&&x>=0),'Bad look.v3Tune');
+    if(t.lineColor)fail(HEX.test(t.lineColor),'Bad v3Tune.lineColor');
+    if(t.highlight)fail(HEX.test(t.highlight.color)&&t.highlight.shade?.length===3&&t.highlight.alpha>=0&&t.highlight.alpha<=1,'Bad v3Tune.highlight');
+    if(t.emissive)fail(HEX.test(t.emissive.color)&&t.emissive.k>=0,'Bad v3Tune.emissive');}
   if(l.mode==='luma-ramp'){
     fail(HEX.test(l.dark)&&HEX.test(l.light),'luma-ramp needs dark/light colours');
     if(l.ramp)fail(l.ramp.length===2&&l.ramp[0]<l.ramp[1]&&l.ramp.every(x=>x>=0&&x<=1),'Bad ramp');

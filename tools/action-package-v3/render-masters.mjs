@@ -58,7 +58,7 @@ export async function run(opts){
     authoringModel:key(prepared.recipe.model),productionModel:key(adapter),profile:{id:profile.id,sha256:profile.sha256},
     sourceSha256:loaded.pinned.sha256,rendererSha256:{
       'render-masters.mjs':sha(fs.readFileSync(SELF)),'recipe-scene.mjs':sha(fs.readFileSync(path.join(HERE,'recipe-scene.mjs'))),
-      'browser-package-layers.js':sha(fs.readFileSync(path.join(HERE,'browser-package-layers.js'))),'v2-skins/port.mjs':sha(fs.readFileSync(path.join(HERE,'v2-skins/port.mjs')))},
+      'browser-package-layers.js':sha(fs.readFileSync(path.join(HERE,'browser-package-layers.js'))),'v2-skins/port.mjs':sha(fs.readFileSync(path.join(HERE,'v2-skins/port.mjs'))),'native-highlight.mjs':sha(fs.readFileSync(path.join(HERE,'native-highlight.mjs')))},
     size,fps,durationSeconds:source.timeline.duration,loopFrames:plan.loopFrames,complete:plan.complete,qaEndpointFrame:plan.endpoint,
     skins:skins.map(s=>({id:s.id,sha256:s.sha256,status:s.status})),layers,alphaMode:'straight',camera:'fixed (recipe camera, fitTimeline)',
     pageErrors:[],frames:[],
@@ -78,16 +78,26 @@ export async function run(opts){
       report.v2SkinPort.firstBake=await port.setV2Skin(page,v2[0].look.v2Skin);await port.setV2Skin(page,null);
       const live=await port.v2SkinParams(page);
       for(const s of v2)fail(JSON.stringify(live[s.look.v2Skin])===JSON.stringify(s.v2Params),'V2 SKINS params differ from the snapshot in '+s.id);
+      // r2 look tune (after the raw snapshot check): per-skin look.v3Tune, re-applied after every setSkin
+      const tunes=Object.fromEntries(v2.filter(s=>s.look.v3Tune).map(s=>[s.look.v2Skin,port.resolveTune(s.look.v3Tune)]));
+      report.v2SkinPort.tune={specs:Object.fromEntries(v2.filter(s=>s.look.v3Tune).map(s=>[s.id,s.look.v3Tune])),resolved:tunes,
+        tunedSkins:Object.keys(tunes).length?await port.applyV3Tunes(page,tunes):{}};
     }
     await page.addScriptTag({content:fs.readFileSync(path.join(HERE,'browser-package-layers.js'),'utf8')});
     report.layerPatch=await page.evaluate(()=>__pkgLayers.patch());
     fail(report.layerPatch.patched>0,'No materials patched');
+    if(skins.some(s=>s.look?.highlightStyle==='pump-r1')){// realistic skin's own highlight style; gated per skin, after the layer patch
+      const nh=await import('./native-highlight.mjs');report.nativeHighlight=await nh.installPumpHighlight(page);
+      fail(report.nativeHighlight.materials>0,'pump-r1: no toon materials patched');
+    }
+    report.skinLooks=skins.map(s=>({id:s.id,look:s.look}));
     let warm=null;const t0=Date.now();
     for(const f of plan.frames){
       fail(freeGiB()>=.5,'Low free memory at frame '+f);
       const t=f/fps,staged=await stageAt(page,source,t,warm);warm=staged.x;
       const shots=await page.evaluate(([l,s])=>__pkgLayers.render(l,s),[layers,skins.map(s=>({id:s.id,look:s.look}))]);
       fail(!report.pageErrors.length,'Browser/shader errors: '+report.pageErrors[0]);
+      if(report.nativeHighlight){const pe=await page.evaluate(()=>window.__pkgPumpErr);fail(!pe.length,pe[0]);}
       const record={frame:f,time:t,endpoint:f===plan.endpoint,pulse:staged.pulse,warn:staged.warn??null,files:{}};
       for(const[name,url]of Object.entries(shots)){
         const [skin,layer]=name.includes('/')?name.split('/'):[null,name];

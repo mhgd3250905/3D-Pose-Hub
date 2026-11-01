@@ -52,12 +52,23 @@
   function setV2(name){const V=window.__v2p;if(!V?.setSkin){if(name)throw Error('V2 skins not installed');return;}
     if((V.skinOverride??null)===(name??null)&&V.regions.skin===(name??undefined))return applyHi(name);
     V.regions.skin=undefined;V.setSkin(name);applyHi(name);}
-  function applyHi(name){const H=window.__pkgHi;if(!H)return;const K=name&&window.__v2p.SKINS[name]?.hi;
-    __toonUni.uHiC.value=(K?new T.Color(K.c[0],K.c[1],K.c[2]):new T.Color(H.color)).multiplyScalar(H.k);__toonUni.uHiShade.value=(K?K.shade:H.shade).slice();}
+  function applyHi(name,look){const H=window.__pkgHi;if(!H)return;const K=name&&window.__v2p.SKINS[name]?.hi;
+    const c=K?new T.Color(K.c[0],K.c[1],K.c[2]):new T.Color(look?.highlightColor??H.color);
+    __toonUni.uHiC.value=c.multiplyScalar(H.k);__toonUni.uHiShade.value=(K?K.shade:(look?.highlightShade??H.shade)).slice();}
+  // look.rim {strength, colour:'body'}: rim strength (__rimU) and a neutral rim in the body's own tone (toon uRimC = garment base;
+  // ported V2 skins: uV2pRRim = the skin grey). No rim field = the scene default (strength 1, theme rim colours).
+  let rimOrig=null;
+  function applyRim(s){const TU=__toonUni,r=s&&s.mode!=='luma-ramp'?s.rim:null;__rimU.value=r?r.strength:1;
+    if(!TU.uRimC.value.__pkgBody)rimOrig=TU.uRimC.value;
+    if(r?.colour==='body'){const a=TU.uBase.value.map(c=>c.clone());a.__pkgBody=true;TU.uRimC.value=a;
+      if(s.mode==='v2-port'){const K=window.__v2p.SKINS[s.v2Skin];window.__v2p.regions.uni.uV2pRRim.value=[...K.grey,1];}}
+    else if(TU.uRimC.value.__pkgBody)TU.uRimC.value=rimOrig;}
   function setSkin(s){
-    if(s?.mode==='v2-port'){U.uPkgSkin.value=0;setV2(s.v2Skin);return;}
+    if(window.__pkgPumpU)window.__pkgPumpU.value=s?.highlightStyle==='pump-r1'?2:0;
+    if(s?.mode==='v2-port'){U.uPkgSkin.value=0;setV2(s.v2Skin);applyRim(s);return;}
     if(window.__v2p?.skinOverride)setV2(null);
-    if(!s||s.mode==='native'){U.uPkgSkin.value=0;return;}
+    applyRim(s);
+    if(!s||s.mode==='native'){U.uPkgSkin.value=0;if(s?.highlightColor||s?.highlightShade)applyHi(null,s);else applyHi(null);return;}
     if(s.mode!=='luma-ramp')throw Error('Unsupported skin mode '+s.mode);
     U.uPkgSkin.value=1;U.uPkgDark.value.set(s.dark);U.uPkgLight.value.set(s.light);U.uPkgRim.value.set(s.rim?.color??'#000000');
     U.uPkgRim.value.multiplyScalar(s.rim?.strength??0);U.uPkgRimPow.value=s.rim?.power??2;
