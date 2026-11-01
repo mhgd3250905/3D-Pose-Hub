@@ -37,6 +37,14 @@
     "zh": "腿放下停稳后，手抬起转到另一边再撑地。",
     "en": "Once the leg is down, lift your hands, turn to the other side and place them again."
    }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "两边各做一次算 1 次。",
+    "en": "One on each side counts as one rep."
+   }
   }
  ],
  "commonErrors": [
@@ -113,6 +121,7 @@
    }
   ],
   "perSide": "alternate",
+  "repUnit": "left+right",
   "source": "spec-timeline manual r2"
  },
  "review": {
@@ -120,12 +129,13 @@
    "changes": [
     "动画左右轮流（先左腿，每次之间手转到另一边约 1.8 s）→ unilateral=true、startingSide left、rep_alternate、剂量每侧 4 次",
     "节奏按 spec：抬 0.3 s + 顶端停 0.3 s 合成 go 0.6 s / 放下 0.5 s / 休+换边 2.9 s",
-    "EN 名改 Single-Leg Lift；purpose 去掉「屈髋肌」"
+    "EN 名改 Single-Leg Lift；purpose 去掉「屈髋肌」",
+    "轮流计数口径：一左一右算 1 次，剂量为每侧 N 次（reps=N），training.phases 描述一侧的一下，repUnit=left+right；startingSide=先动的一侧（left）",
+    "最终口径：按真实做法定（2026-11-01）",
+    "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除"
    ],
    "flags": [
-    "unilateral 由 false 改 true（动画是左右轮流各抬一次）",
-    "顶端只停 0.3 s，念不完口令，并进 go 段",
-    "EN 改名：Seated Straddle Lifts (1 Leg) → Seated Straddle Single-Leg Lift；中文 坐姿分腿单腿抬起 → 分腿坐单腿抬起"
+    "顶端只停 0.3 s，念不完口令，并进 go 段"
    ]
   }
  }

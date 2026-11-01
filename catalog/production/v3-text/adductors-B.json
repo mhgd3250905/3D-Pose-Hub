@@ -19,8 +19,8 @@
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "上面那条腿的膝盖压住凳子，把髋抬起",
-    "en": "Press your top knee into the bench and lift your hips"
+    "zh": "上面那条腿的膝盖压住凳子，把髋抬起撑住",
+    "en": "Press your top knee into the bench, lift your hips and hold"
    }
   },
   {
@@ -35,8 +35,8 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "抬到肩、髋、膝成一条直线，停两秒。",
-    "en": "Lift until your shoulder, hip, and knee line up, and hold for two seconds."
+    "zh": "肩、髋、膝成一条直线，撑住别掉，均匀呼吸。",
+    "en": "Keep your shoulder, hip, and knee in one line, hold it there, and keep breathing."
    }
   }
  ],
@@ -76,9 +76,9 @@
  "unilateral": true,
  "startingSide": "right",
  "defaultDose": {
-  "mode": "reps",
+  "mode": "time",
   "sets": 3,
-  "reps": 6,
+  "seconds": 15,
   "restSeconds": 45
  },
  "phases": {
@@ -91,48 +91,26 @@
    "en": "Hold"
   },
   "end": {
-   "zh": "放下",
-   "en": "Lower"
+   "zh": "保持呼吸",
+   "en": "Keep breathing"
   }
  },
  "training": {
-  "kind": "rep_hold",
+  "kind": "hold",
   "leadSeconds": 1,
-  "phases": [
-   {
-    "id": "go",
-    "seconds": 0.9,
-    "cue": "phase.start"
-   },
-   {
-    "id": "hold",
-    "seconds": 2.5,
-    "cue": "phase.peak"
-   },
-   {
-    "id": "back",
-    "seconds": 0.3,
-    "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 0.3
-   }
-  ],
   "perSide": "each-side-separately",
-  "source": "spec-pulse-track r2"
+  "source": "real-practice r2"
  },
  "review": {
   "r2": {
    "changes": [
     "动画 8 秒 2 次「抬髋-停 2.4 s-放下」，剂量从 15 秒保持改为每侧 3 组×6 次（rep_hold）",
     "主口令去掉「内收肌」（工具拦截），改口语；删掉 caution 里「从屈膝版开始」（本动作就是屈膝版）",
-    "口令缩短：抬髋 0.9 s、放下 0.3 s"
+    "口令缩短：抬髋 0.9 s、放下 0.3 s",
+    "真实做法是静止保持：改回计时 15 秒×3 组/每侧，口令改成进入—保持—呼吸；动画的起落只作示意",
+    "最终口径：按真实做法定（2026-11-01）"
    ],
-   "flags": [
-    "原设计是保持 15 秒；动画做成抬放重复，选哪种请定",
-    "放下只有 0.3 s，「放下」会念进休息里"
-   ]
+   "flags": []
   }
  }
 }

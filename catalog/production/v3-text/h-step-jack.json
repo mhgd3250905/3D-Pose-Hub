@@ -39,6 +39,14 @@
     "zh": "收脚放下手臂，下一次换另一只脚。",
     "en": "Step back in as your arms come down, then switch feet."
    }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "两边各做一次算 1 次。",
+    "en": "One on each side counts as one rep."
+   }
   }
  ],
  "commonErrors": [
@@ -118,6 +126,7 @@
    }
   ],
   "perSide": "alternate",
+  "repUnit": "left+right",
   "source": "spec-pulse-track r2"
  },
  "review": {
@@ -125,11 +134,13 @@
    "changes": [
     "动画 8 秒左右脚轮流各迈 1 次，剂量从 40 秒计时改为 3 组×每侧 10 次（rep_alternate）",
     "起始口令「迈出举臂」按 0.8 s 缩为「迈出」，举臂放进主口令",
-    "caution 改「X 时 Y」"
+    "caution 改「X 时 Y」",
+    "真实做法是左右轮流迈出，保留计次",
+    "最终口径：按真实做法定（2026-11-01）",
+    "轮流计数口径：一左一右算 1 次，剂量为每侧 N 次（reps=N），training.phases 描述一侧的一下，repUnit=left+right；startingSide=先动的一侧（right）",
+    "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除"
    ],
-   "flags": [
-    "有氧动作原本按 40 秒计时，现按动画改为计次（每侧 10 次）；若更想按时间请定"
-   ]
+   "flags": []
   }
  }
 }

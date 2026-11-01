@@ -39,6 +39,14 @@
     "zh": "身体微微前倾，双臂往前平伸保持平衡。",
     "en": "Lean forward a little and reach your arms forward for balance."
    }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "两边各做一次算 1 次。",
+    "en": "One on each side counts as one rep."
+   }
   }
  ],
  "commonErrors": [
@@ -119,6 +127,7 @@
    }
   ],
   "perSide": "alternate",
+  "repUnit": "left+right",
   "source": "spec-timeline manual r2"
  },
  "review": {
@@ -126,11 +135,12 @@
    "changes": [
     "动画左右轮流（先右后左），training=rep_alternate、perSide alternate，一侧算一次",
     "rest 由 5.2 s（含另一侧）改为本侧一下 4 s 内的 1.2 s；口令缩短（蹲下去/稳住/站起来）",
-    "cue3 按动画改为身体微微前倾（原「胸口挺起」与动画前倾 25° 不符）"
+    "cue3 按动画改为身体微微前倾（原「胸口挺起」与动画前倾 25° 不符）",
+    "轮流计数口径：一左一右算 1 次，剂量为每侧 N 次（reps=N），training.phases 描述一侧的一下，repUnit=left+right；startingSide=先动的一侧（right）",
+    "最终口径：按真实做法定（2026-11-01）",
+    "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除"
    ],
-   "flags": [
-    "次数 6 次指每侧（轮流共 12 下），确认 App 计法"
-   ]
+   "flags": []
   }
  }
 }

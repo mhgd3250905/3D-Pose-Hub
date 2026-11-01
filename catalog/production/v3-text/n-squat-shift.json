@@ -37,6 +37,14 @@
     "zh": "双手在胸前合十，弯的那侧膝盖对着脚尖。",
     "en": "Keep your palms together at your chest and the bent knee over the toes."
    }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "两边各做一次算 1 次。",
+    "en": "One on each side counts as one rep."
+   }
   }
  ],
  "commonErrors": [
@@ -69,7 +77,7 @@
   "position": "standing",
   "difficulty": 2
  },
- "unilateral": false,
+ "unilateral": true,
  "defaultDose": {
   "mode": "reps",
   "sets": 2,
@@ -114,6 +122,8 @@
     "seconds": 0.3
    }
   ],
+  "perSide": "alternate",
+  "repUnit": "left+right",
   "source": "spec-timeline manual r2"
  },
  "review": {
@@ -121,11 +131,13 @@
    "changes": [
     "动画 8 秒左右各移一次（先左），training=rep_alternate，一侧算一次",
     "节奏按 spec 时间轴手算（派生值把 90% 以上都算停顿，和 spec 不符）：每下 移 1.5/停 1.0/回 1.2/歇 0.3 s",
-    "cue3 补上动画里的双手胸前合十；purpose 写清练哪里"
+    "cue3 补上动画里的双手胸前合十；purpose 写清练哪里",
+    "轮流计数口径：一左一右算 1 次，剂量为每侧 N 次（reps=N），training.phases 描述一侧的一下，repUnit=left+right；startingSide=先动的一侧（left）",
+    "最终口径：按真实做法定（2026-11-01）",
+    "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除"
    ],
-   "flags": [
-    "非单侧动作（unilateral=false）但左右轮流计数：剂量 2 组×6 次按「左右各算一次」理解，请确认"
-   ]
+   "flags": []
   }
- }
+ },
+ "startingSide": "left"
 }

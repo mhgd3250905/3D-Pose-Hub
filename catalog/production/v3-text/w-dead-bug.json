@@ -39,6 +39,14 @@
     "zh": "慢慢收回起始位，再换另一组手脚。",
     "en": "Return slowly to the start, then switch to the other arm and leg."
    }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "两边各做一次算 1 次。",
+    "en": "One on each side counts as one rep."
+   }
   }
  ],
  "commonErrors": [
@@ -123,6 +131,7 @@
    }
   ],
   "perSide": "alternate",
+  "repUnit": "left+right",
   "source": "spec-timeline manual r2"
  },
  "review": {
@@ -130,11 +139,12 @@
    "changes": [
     "动画左右轮流（先右手+左腿）→ unilateral=true、rep_alternate、剂量每侧 6 次（原 10 次未分侧）",
     "节奏按 spec：伸 1.2 / 停 0.7 / 收 1.3 / 休 0.8 s",
-    "purpose 中英文不一致（中文只写「练腹部」）已统一；主口令去掉「对侧」；冒号式 cautions 改短句"
+    "purpose 中英文不一致（中文只写「练腹部」）已统一；主口令去掉「对侧」；冒号式 cautions 改短句",
+    "轮流计数口径：一左一右算 1 次，剂量为每侧 N 次（reps=N），training.phases 描述一侧的一下，repUnit=left+right；startingSide=先动的一侧（right）",
+    "最终口径：按真实做法定（2026-11-01）",
+    "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除"
    ],
-   "flags": [
-    "unilateral 由 false 改 true；startingSide=right 指右手+左腿先动，请确认这样标侧"
-   ]
+   "flags": []
   }
  }
 }

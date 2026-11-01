@@ -34,8 +34,16 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "手脚位置不动，压完回到普通下犬式。",
-    "en": "Keep your hands and feet in place, then ease back to a normal downward dog."
+    "zh": "停住不动，慢慢呼吸。",
+    "en": "Stay still and breathe slowly."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "每次呼气再放松一点，别来回颠。",
+    "en": "Each time you breathe out, relax a little deeper. No bouncing."
    }
   }
  ],
@@ -47,6 +55,10 @@
   {
    "zh": "耸肩挤脖子",
    "en": "Shrugging toward the neck."
+  },
+  {
+   "zh": "来回颠着往下压",
+   "en": "Bouncing to go deeper."
   }
  ],
  "cautions": [
@@ -78,57 +90,37 @@
  },
  "unilateral": false,
  "defaultDose": {
-  "mode": "reps",
+  "mode": "time",
   "sets": 2,
-  "reps": 8,
+  "seconds": 30,
   "restSeconds": 20
  },
  "phases": {
   "start": {
-   "zh": "往下压",
-   "en": "Press back"
+   "zh": "慢慢往下压",
+   "en": "Ease into it"
   },
   "peak": {
-   "zh": "保持呼吸",
-   "en": "Breathe"
+   "zh": "保持，慢慢呼气",
+   "en": "Hold and breathe out"
   },
   "end": {
-   "zh": "松回来",
-   "en": "Ease back"
+   "zh": "呼气再放松",
+   "en": "Relax a bit deeper"
   }
  },
  "training": {
-  "kind": "rep_hold",
+  "kind": "hold",
   "leadSeconds": 1,
-  "phases": [
-   {
-    "id": "go",
-    "seconds": 0.8,
-    "cue": "phase.start"
-   },
-   {
-    "id": "hold",
-    "seconds": 1.9,
-    "cue": "phase.peak"
-   },
-   {
-    "id": "back",
-    "seconds": 0.6,
-    "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 0.7
-   }
-  ],
-  "source": "spec-pulse-track r2"
+  "source": "real-practice r2"
  },
  "review": {
   "r2": {
    "changes": [
     "起止口令按相位缩短（下压 0.8 s、放松 0.6 s）",
     "purpose 去掉「背阔肌」学名；cue3 改为动画里的「手脚不动」，去掉 neutral",
-    "按用户决定：真实做法是来回动态拉伸，保留计次，去掉 stretchLoop"
+    "按用户最终决定改为静态保持 30 秒×2 组（取代上一版「来回动态、计次」），口令和要点改成进入—保持—呼气放松，动画只作示意",
+    "最终口径：按真实做法定（2026-11-01）"
    ],
    "flags": []
   }

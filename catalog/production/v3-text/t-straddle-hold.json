@@ -34,8 +34,8 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "肩膀往下压，身体前倾，撑住约5秒再坐下。",
-    "en": "Press your shoulders down, lean forward, hold about five seconds, then sit down."
+    "zh": "肩膀往下压，身体前倾，撑住别落地。",
+    "en": "Press your shoulders down, lean forward, and stay up."
    }
   }
  ],
@@ -78,9 +78,9 @@
  },
  "unilateral": false,
  "defaultDose": {
-  "mode": "reps",
+  "mode": "time",
   "sets": 3,
-  "reps": 4,
+  "seconds": 10,
   "restSeconds": 60
  },
  "phases": {
@@ -93,45 +93,24 @@
    "en": "Hold"
   },
   "end": {
-   "zh": "慢慢坐下",
-   "en": "Sit down"
+   "zh": "保持呼吸",
+   "en": "Keep breathing"
   }
  },
  "training": {
-  "kind": "rep_hold",
+  "kind": "hold",
   "leadSeconds": 1,
-  "phases": [
-   {
-    "id": "go",
-    "seconds": 1.0,
-    "cue": "phase.start"
-   },
-   {
-    "id": "hold",
-    "seconds": 4.8,
-    "cue": "phase.peak"
-   },
-   {
-    "id": "back",
-    "seconds": 1.0,
-    "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 1.2
-   }
-  ],
-  "source": "spec-timeline manual r2"
+  "source": "real-practice r2"
  },
  "review": {
   "r2": {
    "changes": [
     "剂量从计时 10 s 改为按次数 3×4：动画每 8 s 撑起 1.0 s → 停 4.8 s → 坐下 1.0 s → 休 1.2 s",
-    "cue3 写明撑住约 5 秒"
+    "cue3 写明撑住约 5 秒",
+    "真实做法是静止保持：改回计时 10 秒×3 组，口令改成进入—保持—呼吸；动画的起落只作示意",
+    "最终口径：按真实做法定（2026-11-01）"
    ],
-   "flags": [
-    "剂量方式改按次数（名字叫 Hold，动画却每 8 s 撑起-停-坐下一次）；若想保持计时需动画改成一直撑住，请定"
-   ]
+   "flags": []
   }
  }
 }

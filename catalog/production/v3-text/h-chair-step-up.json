@@ -39,6 +39,14 @@
     "zh": "下来时另一只脚先落地，慢慢下。",
     "en": "On the way down, lower the other foot first, slowly."
    }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "两边各做一次算 1 次。",
+    "en": "One on each side counts as one rep."
+   }
   }
  ],
  "commonErrors": [
@@ -124,6 +132,7 @@
    }
   ],
   "perSide": "alternate",
+  "repUnit": "left+right",
   "source": "spec-timeline manual r2"
  },
  "review": {
@@ -131,11 +140,13 @@
    "changes": [
     "动画第 1 下右腿先上、第 2 下左腿先上，是左右轮流：training 改 rep_alternate，剂量改每侧 8 次",
     "批表 up 轨只算到站上去那段，按 spec 注释手算：抬脚+站上 1.8、站稳 0.4、下来 1.4、站立 0.4（4 s）",
-    "「前腿」改「这条腿」；补 cue「两腿轮流先上、双手叉腰」；cautions 去掉「膝：/踝与平衡：」格式"
+    "「前腿」改「这条腿」；补 cue「两腿轮流先上、双手叉腰」；cautions 去掉「膝：/踝与平衡：」格式",
+    "轮流计数口径：一左一右算 1 次，剂量为每侧 N 次（reps=N），training.phases 描述一侧的一下，repUnit=left+right；startingSide=先动的一侧（right）",
+    "最终口径：按真实做法定（2026-11-01）",
+    "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除"
    ],
    "flags": [
-    "相位为手算（非批表），请确认",
-    "原文是固定一侧做 10 次；现按动画改成左右轮流，请确认"
+    "相位为手算（非批表），请确认"
    ]
   }
  }

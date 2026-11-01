@@ -38,6 +38,14 @@
     "zh": "一只手抬起摸另一边肩膀，再放回。",
     "en": "Lift one hand to tap the other shoulder, then put it back."
    }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "两边各做一次算 1 次。",
+    "en": "One on each side counts as one rep."
+   }
   }
  ],
  "commonErrors": [
@@ -75,7 +83,7 @@
   "position": "plank",
   "difficulty": 1
  },
- "unilateral": false,
+ "unilateral": true,
  "defaultDose": {
   "mode": "reps",
   "sets": 3,
@@ -119,6 +127,8 @@
     "seconds": 0.5
    }
   ],
+  "perSide": "alternate",
+  "repUnit": "left+right",
   "source": "spec-timeline manual r2"
  },
  "review": {
@@ -127,9 +137,12 @@
     "动画 8 s 左右轮流摸肩 4 次，每次 2 s，节奏改 rep_alternate（派生只读右手，误成 4 s 一下）",
     "口令「抬手触肩」→「摸肩」适配 0.6 s 相位",
     "cue3 改为动画里的「摸另一边肩膀」",
-    "手腕注意拆成短句"
+    "手腕注意拆成短句",
+    "轮流计数口径：一左一右算 1 次，剂量为每侧 N 次（reps=N），training.phases 描述一侧的一下，repUnit=left+right；startingSide=先动的一侧（right）",
+    "最终口径：按真实做法定（2026-11-01）"
    ],
    "flags": []
   }
- }
+ },
+ "startingSide": "right"
 }

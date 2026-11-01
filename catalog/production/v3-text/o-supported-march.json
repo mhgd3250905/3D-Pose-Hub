@@ -37,6 +37,14 @@
     "zh": "膝盖抬到舒服的高度，再慢慢放下。",
     "en": "Lift to a comfortable height, then lower slowly."
    }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "两边各做一次算 1 次。",
+    "en": "One on each side counts as one rep."
+   }
   }
  ],
  "commonErrors": [
@@ -70,7 +78,7 @@
   "position": "standing",
   "difficulty": 1
  },
- "unilateral": false,
+ "unilateral": true,
  "defaultDose": {
   "mode": "reps",
   "sets": 2,
@@ -115,6 +123,8 @@
     "seconds": 0.6
    }
   ],
+  "perSide": "alternate",
+  "repUnit": "left+right",
   "source": "spec-timeline manual r2"
  },
  "review": {
@@ -123,9 +133,12 @@
     "动画只有左手扶椅，cue「双手扶稳」改「一只手扶稳」",
     "purpose「屈髋」改「抬腿力量」",
     "两腿轮流抬，节奏 rep_alternate（每侧一下算一次）",
-    "口令「Lower」→「Lower slowly」与中文一致"
+    "口令「Lower」→「Lower slowly」与中文一致",
+    "轮流计数口径：一左一右算 1 次，剂量为每侧 N 次（reps=N），training.phases 描述一侧的一下，repUnit=left+right；startingSide=先动的一侧（right）",
+    "最终口径：按真实做法定（2026-11-01）"
    ],
    "flags": []
   }
- }
+ },
+ "startingSide": "right"
 }

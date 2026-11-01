@@ -34,8 +34,8 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "跟着呼吸慢慢做，每个位置停一下。",
-    "en": "Move slowly with your breath and pause in each position."
+    "zh": "拱背再挺胸算 1 次，跟着呼吸慢慢做。",
+    "en": "Rounding and lifting counts as one. Move slowly with your breath."
    }
   }
  ],
@@ -116,7 +116,9 @@
    "changes": [
     "动画一圈 8 秒：拱背-停-回中间-挺胸-停-回中间，按 rep_cycle 计一次",
     "相位：go 3.8 s（拱背整段，念「低头拱背」）/back 3.6 s（挺胸整段，念「抬头挺胸」）/rest 0.6 s；spec-timeline manual",
-    "主口令去掉「骨盆后卷」，改成「先拱背低头，再挺胸抬头」；phase.end 原「回到中立」改「抬头挺胸」"
+    "主口令去掉「骨盆后卷」，改成「先拱背低头，再挺胸抬头」；phase.end 原「回到中立」改「抬头挺胸」",
+    "计数单位保持不变，cue 写明 1 次是什么",
+    "最终口径：按真实做法定（2026-11-01）"
    ],
    "flags": [
     "猫牛有两个停顿点，四相位装不下：go/back 各包含一次「进入+停+回中间」，phase.peak「停一下」不绑定；如 App 支持双停顿请改"

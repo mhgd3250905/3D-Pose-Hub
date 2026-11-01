@@ -35,8 +35,8 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "撑住约3秒，再慢慢放脚。",
-    "en": "Hold for about three seconds, then lower your feet slowly."
+    "zh": "撑住不动，均匀呼吸，别憋气。",
+    "en": "Hold still and keep breathing evenly."
    }
   }
  ],
@@ -79,9 +79,9 @@
  },
  "unilateral": false,
  "defaultDose": {
-  "mode": "reps",
-  "sets": 3,
-  "reps": 5,
+  "mode": "time",
+  "sets": 4,
+  "seconds": 15,
   "restSeconds": 60
  },
  "phases": {
@@ -94,45 +94,24 @@
    "en": "Hold"
   },
   "end": {
-   "zh": "慢慢放脚",
-   "en": "Lower your feet"
+   "zh": "保持呼吸",
+   "en": "Keep breathing"
   }
  },
  "training": {
-  "kind": "rep_hold",
+  "kind": "hold",
   "leadSeconds": 1,
-  "phases": [
-   {
-    "id": "go",
-    "seconds": 1.8,
-    "cue": "phase.start"
-   },
-   {
-    "id": "hold",
-    "seconds": 2.9,
-    "cue": "phase.peak"
-   },
-   {
-    "id": "back",
-    "seconds": 1.7,
-    "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 1.6
-   }
-  ],
-  "source": "spec-timeline manual r2"
+  "source": "real-practice r2"
  },
  "review": {
   "r2": {
    "changes": [
     "剂量从计时 15 s 改为按次数 3×5：动画每 8 s 压肩+收腿 1.8 s → 撑住 2.9 s → 放脚+松肩 1.7 s → 休 1.6 s",
-    "cue2/3 按动画顺序写（脚尖点地 → 压肩 → 收膝撑起 → 约 3 秒）"
+    "cue2/3 按动画顺序写（脚尖点地 → 压肩 → 收膝撑起 → 约 3 秒）",
+    "真实做法是静止保持：改回计时 15 秒×4 组，口令改成进入—保持—呼吸；动画的起落只作示意",
+    "最终口径：按真实做法定（2026-11-01）"
    ],
-   "flags": [
-    "剂量方式改按次数（名字叫 Support Hold，spec 也注明这是演示循环而非静止计时）；若想保持计时 15 s 请定"
-   ]
+   "flags": []
   }
  }
 }

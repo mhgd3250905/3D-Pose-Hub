@@ -38,6 +38,14 @@
     "zh": "双手不动，两只脚轮流点。",
     "en": "Keep your hands still and switch feet each time."
    }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "两边各做一次算 1 次。",
+    "en": "One on each side counts as one rep."
+   }
   }
  ],
  "commonErrors": [
@@ -124,6 +132,7 @@
    }
   ],
   "perSide": "alternate",
+  "repUnit": "left+right",
   "source": "spec-pulse-track r2"
  },
  "review": {
@@ -131,7 +140,9 @@
    "changes": [
     "动画右脚、左脚轮流点地 → training=rep_alternate、perSide alternate（每侧 8 次）",
     "口令按 0.6/0.7 s 缩短（点地/收回）",
-    "「骨盆始终朝向地面」改口语"
+    "「骨盆始终朝向地面」改口语",
+    "轮流计数口径：一左一右算 1 次，剂量为每侧 N 次（reps=N），training.phases 描述一侧的一下，repUnit=left+right；startingSide=先动的一侧（right）",
+    "最终口径：按真实做法定（2026-11-01）"
    ],
    "flags": []
   }

@@ -37,6 +37,14 @@
     "zh": "两条腿轮流收，每次停一下再踩回。",
     "en": "Switch legs each time, pausing before you step back."
    }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "两边各做一次算 1 次。",
+    "en": "One on each side counts as one rep."
+   }
   }
  ],
  "commonErrors": [
@@ -119,6 +127,7 @@
    }
   ],
   "perSide": "alternate",
+  "repUnit": "left+right",
   "source": "spec-pulse-track r2"
  },
  "review": {
@@ -126,11 +135,12 @@
    "changes": [
     "动画右腿、左腿轮流各收一次（4 s 一下），unilateral 改 true、startingSide right，training=rep_alternate（每侧 8 次）",
     "主口令去掉「髋保持水平」改「屁股别翘高」；cue3 改为「两腿轮流」",
-    "cautions 改短句"
+    "cautions 改短句",
+    "轮流计数口径：一左一右算 1 次，剂量为每侧 N 次（reps=N），training.phases 描述一侧的一下，repUnit=left+right；startingSide=先动的一侧（right）",
+    "最终口径：按真实做法定（2026-11-01）",
+    "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除"
    ],
-   "flags": [
-    "unilateral 由 false 改为 true（左右轮流），请确认"
-   ]
+   "flags": []
   }
  }
 }

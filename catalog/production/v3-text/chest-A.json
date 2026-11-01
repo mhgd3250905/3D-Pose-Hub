@@ -39,6 +39,14 @@
     "zh": "上面的手伸向天花板，停一下再转回来。",
     "en": "Reach your top arm to the ceiling, pause, then turn back."
    }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "两边各做一次算 1 次。",
+    "en": "One on each side counts as one rep."
+   }
   }
  ],
  "commonErrors": [
@@ -120,6 +128,7 @@
    }
   ],
   "perSide": "alternate",
+  "repUnit": "left+right",
   "source": "spec-timeline manual r2"
  },
  "review": {
@@ -127,7 +136,9 @@
    "changes": [
     "动画左右轮流（先右手向上），training=rep_alternate、perSide alternate",
     "相位按 spec phaseSeconds：俯卧撑 1.7 s+转身 1.0 s=go 2.7、顶点 0.3、转回 1.0（批表只取了俯卧撑那段）",
-    "主口令拆成「俯卧撑-转身」一件事；原「支撑手不动」并入 cues"
+    "主口令拆成「俯卧撑-转身」一件事；原「支撑手不动」并入 cues",
+    "轮流计数口径：一左一右算 1 次，剂量为每侧 N 次（reps=N），training.phases 描述一侧的一下，repUnit=left+right；startingSide=先动的一侧（right）",
+    "最终口径：按真实做法定（2026-11-01）"
    ],
    "flags": [
     "相位没按批表 down 轨（0.5/0.33/0.5/2.68）而按 spec 手算，请确认",

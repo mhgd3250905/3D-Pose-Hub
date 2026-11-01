@@ -20,8 +20,8 @@
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "腰压住地面，上背和双腿一起抬起",
-    "en": "Keep your lower back down and lift your upper back and legs"
+    "zh": "腰压住地面，上背和双腿抬离地面",
+    "en": "Press your lower back down and lift your upper back and legs"
    }
   },
   {
@@ -36,8 +36,8 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "抬起后停两秒，再慢慢放下。",
-    "en": "Hold for two seconds at the top, then lower slowly."
+    "zh": "停住不动，均匀呼吸，别憋气。",
+    "en": "Stay still and keep breathing evenly."
    }
   }
  ],
@@ -53,8 +53,8 @@
  ],
  "cautions": [
   {
-   "zh": "腰发紧或疼时，腿抬高一点、幅度小一点",
-   "en": "If your lower back feels tight or sore, raise your legs higher and make the move smaller."
+   "zh": "腰离地或发疼时，把腿抬高一点",
+   "en": "If your lower back lifts or hurts, raise your legs a little higher."
   }
  ],
  "tags": {
@@ -73,14 +73,14 @@
  },
  "unilateral": false,
  "defaultDose": {
-  "mode": "reps",
+  "mode": "time",
   "sets": 3,
-  "reps": 8,
+  "seconds": 20,
   "restSeconds": 45
  },
  "phases": {
   "start": {
-   "zh": "卷起",
+   "zh": "卷起来",
    "en": "Curl up"
   },
   "peak": {
@@ -88,46 +88,25 @@
    "en": "Hold"
   },
   "end": {
-   "zh": "放下",
-   "en": "Lower"
+   "zh": "保持呼吸",
+   "en": "Keep breathing"
   }
  },
  "training": {
-  "kind": "rep_hold",
+  "kind": "hold",
   "leadSeconds": 1,
-  "phases": [
-   {
-    "id": "go",
-    "seconds": 0.6,
-    "cue": "phase.start"
-   },
-   {
-    "id": "hold",
-    "seconds": 2.2,
-    "cue": "phase.peak"
-   },
-   {
-    "id": "back",
-    "seconds": 0.5,
-    "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 0.7
-   }
-  ],
-  "source": "spec-pulse-track r2"
+  "source": "real-practice r2"
  },
  "review": {
   "r2": {
    "changes": [
     "动画是 8 秒 2 次「卷起-停约 2 秒-放下」，剂量从 20 秒保持改为 3 组×8 次（rep_hold）",
     "主口令合并成一句：腰压地、上背和腿一起抬；删掉动画里没有的「手脚越低越难」",
-    "口令按相位时长缩短（卷起 0.6 s / 放下 0.5 s）"
+    "口令按相位时长缩短（卷起 0.6 s / 放下 0.5 s）",
+    "真实做法是静止保持：改回计时 20 秒×3 组，口令改成进入—保持—呼吸；动画的起落只作示意",
+    "最终口径：按真实做法定（2026-11-01）"
    ],
-   "flags": [
-    "名字仍叫「空心体支撑 / Hollow Body Hold」但现在按次数计；要不要改名（如「空心体卷起」）或改回计时、动画改成静止保持，请定"
-   ]
+   "flags": []
   }
  }
 }

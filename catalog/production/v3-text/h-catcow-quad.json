@@ -39,6 +39,14 @@
     "zh": "头跟着身体自然动，别甩头。",
     "en": "Let your head follow your body without throwing it."
    }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "拱背再抬胸算 1 次。",
+    "en": "Rounding up and lifting your chest counts as one."
+   }
   }
  ],
  "commonErrors": [
@@ -129,11 +137,13 @@
    "changes": [
     "动画是 8 秒 2 个完整「拱背-停-抬胸塌腰-停-回中」循环，剂量从 40 秒计时改成 2 组×8 次",
     "批表 cat 轨把拱背和塌腰各算一次（4 次/8 s），我按 spec 关键帧手算：拱背 1.0、停 0.6、到塌腰 1.2、停+回中 1.2（共 4 s）",
-    "名字「四足」改「跪撑」；英文 purpose 与中文对齐；去掉「中立位」和「呼气/吸气」长口令；cautions 改短句"
+    "名字「四足」改「跪撑」；英文 purpose 与中文对齐；去掉「中立位」和「呼气/吸气」长口令；cautions 改短句",
+    "真实做法是跟着呼吸来回拱背/塌腰，保留计次；cue 写明一次的定义",
+    "最终口径：按真实做法定（2026-11-01）",
+    "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除"
    ],
    "flags": [
-    "相位为手算（非批表），kind 用 rep_updown（顶点 0.6 s），也可考虑 rep_cycle，请确认",
-    "原为 40 秒计时，改成按次数，请确认"
+    "相位为手算（非批表），kind 用 rep_updown（顶点 0.6 s），也可考虑 rep_cycle，请确认"
    ]
   }
  }

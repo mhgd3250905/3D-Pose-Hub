@@ -39,6 +39,14 @@
     "zh": "放下时慢一点，身体别晃。",
     "en": "Lower slowly and keep your body still."
    }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "两边各做一次算 1 次。",
+    "en": "One on each side counts as one rep."
+   }
   }
  ],
  "commonErrors": [
@@ -118,6 +126,7 @@
    }
   ],
   "perSide": "alternate",
+  "repUnit": "left+right",
   "source": "spec-pulse-track r2"
  },
  "review": {
@@ -126,11 +135,12 @@
     "英文 purpose 的 elbow flexion 改口语并与中文对齐",
     "补「往上时掌心转向上」（动画有前臂外转）",
     "cautions 去掉「肘：/手腕：」格式合成一句",
-    "training rep_alternate（右 0–4 s、左 4–8 s），每侧 10 次"
+    "training rep_alternate（右 0–4 s、左 4–8 s），每侧 10 次",
+    "轮流计数口径：一左一右算 1 次，剂量为每侧 N 次（reps=N），training.phases 描述一侧的一下，repUnit=left+right；startingSide=先动的一侧（right）",
+    "最终口径：按真实做法定（2026-11-01）",
+    "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除"
    ],
-   "flags": [
-    "剂量从 12 次改为每侧 10 次（轮流做，总 20 下），请确认"
-   ]
+   "flags": []
   }
  }
 }

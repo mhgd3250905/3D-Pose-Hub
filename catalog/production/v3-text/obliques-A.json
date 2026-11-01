@@ -38,6 +38,14 @@
     "zh": "转身时撑地的手用力推，臀部别落地。",
     "en": "Push the floor with the support hand as you turn and keep your hips up."
    }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "两边各做一次算 1 次。",
+    "en": "One on each side counts as one rep."
+   }
   }
  ],
  "commonErrors": [
@@ -74,7 +82,7 @@
   "position": "quadruped",
   "difficulty": 2
  },
- "unilateral": false,
+ "unilateral": true,
  "defaultDose": {
   "mode": "reps",
   "sets": 3,
@@ -119,6 +127,8 @@
     "seconds": 0.8
    }
   ],
+  "perSide": "alternate",
+  "repUnit": "left+right",
   "source": "spec-timeline manual r2"
  },
  "review": {
@@ -127,9 +137,12 @@
     "动画左右轮流穿腿，节奏改 rep_alternate（派生只读一侧轨道，误成 8 s 一下）",
     "EN 名 Kick-Through (Beast Flow) → Bear Kick-Through",
     "purpose 去掉「托马斯转体」术语",
-    "手腕注意拆成两条短句"
+    "手腕注意拆成两条短句",
+    "轮流计数口径：一左一右算 1 次，剂量为每侧 N 次（reps=N），training.phases 描述一侧的一下，repUnit=left+right；startingSide=先动的一侧（right）",
+    "最终口径：按真实做法定（2026-11-01）"
    ],
    "flags": []
   }
- }
+ },
+ "startingSide": "right"
 }

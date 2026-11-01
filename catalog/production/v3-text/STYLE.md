@@ -2,8 +2,9 @@
 
 每个 `<id>.json` 是该动作文字、语音和 App 计数/计时的唯一来源。目标：**用户第一次听就懂，跟着做不会错，App 每个动作都会计数或计时。**
 
-## 1. 一切以动画为准
-- 文案只描述动画里真的发生的动作（看 spec 文件头注释和 recipe）。动画没有的细节不要写；和动画矛盾的一律改。
+## 1. 以真实做法为准（2026-11-01 最终口径）
+- 每个动作按它真实怎么练来定剂量、计数和口令；动画只负责演示动作。语音和文字必须描述真实做法（例如平板类、静力支撑真实是静止保持 → 计时，即使动画为演示做了起落）。
+- 动画没有的细节不要乱加；动画节奏偏慢只是演示，文案不写动画时长（不出现「8 秒做一次」这类话）。
 - 拿不准的（例如动作本身是否合理、目标肌群存疑）不要硬改，写进 `review.flags`。
 
 ## 2. 会被念出来的句子（name、primary cue、phases）
@@ -29,7 +30,7 @@
 - `startingSide` 写动画里先做的那侧。
 
 ## 5. 剂量（defaultDose）
-- 动画在重复做 → `mode: reps`；动画是静止保持 → `mode: time`（`seconds`）。不能混用。
+- 真实做法是重复动作 → `mode: reps`；真实做法是静止保持 → `mode: time`（`seconds`），口令写进入—保持—呼吸，不写「回来/再来」。不能混用。
 - 单侧动作的次数/时长指每侧。组数、休息合理即可（力量 3 组 8–12 次休息 45–60 s，拉伸/活动 2 组 6–10 次或 20–30 s，保持 2–3 组 15–30 s）。
 
 ## 6. 训练节奏（training，新必填，决定 App 怎么计数/计时）
@@ -49,10 +50,11 @@
 ```
 - 时长取自动画（`rhythm-all.json` 从 spec 主轨道导出的一下的 go/hold/back/rest 秒数），四舍五入到 0.1 s；0 秒的相位省略。各相位相加 = 动画里一下的时长。
 - `mode: time` → `kind: hold`，不写 phases（App 计时）。
-- 顶点停留 ≥ 0.8 s 用 `rep_hold`，否则 `rep_updown`；左右轮流做、一下换一边 → `rep_alternate`（每侧算一次）；连续画圈/没有明显停顿的循环 → `rep_cycle`。
+- 顶点停留 ≥ 0.8 s 用 `rep_hold`，否则 `rep_updown`；左右轮流做、一下换一边 → `rep_alternate`：一左一右算 1 次，剂量写「每侧 N 次」（reps=N），`perSide: alternate`，`repUnit: left+right`，phases 描述一侧的一下，`startingSide` 写先动的一侧，cue 写明「两边各做一次算 1 次」；连续画圈/没有明显停顿的循环 → `rep_cycle`。
 - phases 的 `cue` 把口令绑到相位：go 念 phase.start，hold（或顶点）念 phase.peak，back 念 phase.end。没有 hold 相位时 phase.peak 可不绑。
 - 口令要念得完：中文约 4 字/秒、英文约 2.5 词/秒，口令长度不超过它所在相位时长能念完的量，太短的相位就用更短的口令。
-- `perSide` 仅单侧动作写。
+- `perSide` 仅单侧动作写。单侧非轮流动作：一侧做完所有次数再换另一侧（`each-side-separately`），`startingSide` 写先练的一侧。
+- 特殊计数单位（每个方向/每圈/每个字型/每次点地）保留，但 cue 要写明 1 次是什么。
 
 ## 7. 审核记录
 - 改完后 `reviewStatus` 写 `ai-reviewed-r2-needs-user-review`。

@@ -37,6 +37,14 @@
     "zh": "停一下回来，再换另一侧。",
     "en": "Pause, come back up, then switch sides."
    }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "两边各做一次算 1 次。",
+    "en": "One on each side counts as one rep."
+   }
   }
  ],
  "commonErrors": [
@@ -117,6 +125,7 @@
    }
   ],
   "perSide": "alternate",
+  "repUnit": "left+right",
   "source": "spec-pulse-track r2"
  },
  "review": {
@@ -125,12 +134,12 @@
     "动画右膝、左膝轮流 → rep_alternate，unilateral 改 true（先右），剂量为每侧 6 次",
     "英文名 Internal-Rotation 是术语，改 Seated Lean-Back Knee Drop",
     "purpose 去掉「髋内旋末端」",
-    "口令「膝盖内倒」→「往里倒」，「回到中间」→「回来」"
+    "口令「膝盖内倒」→「往里倒」，「回到中间」→「回来」",
+    "轮流计数口径：一左一右算 1 次，剂量为每侧 N 次（reps=N），training.phases 描述一侧的一下，repUnit=left+right；startingSide=先动的一侧（right）",
+    "最终口径：按真实做法定（2026-11-01）",
+    "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除"
    ],
-   "flags": [
-    "英文改名请确认",
-    "unilateral 由 false 改 true（为左右轮流计数），请确认"
-   ]
+   "flags": []
   }
  }
 }

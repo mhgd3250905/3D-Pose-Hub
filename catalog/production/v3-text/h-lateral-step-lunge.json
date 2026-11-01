@@ -37,6 +37,14 @@
     "zh": "跨出的脚推地回到站立，再换另一边。",
     "en": "Push off the stepping foot to stand, then switch sides."
    }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "两边各做一次算 1 次。",
+    "en": "One on each side counts as one rep."
+   }
   }
  ],
  "commonErrors": [
@@ -116,6 +124,7 @@
    }
   ],
   "perSide": "alternate",
+  "repUnit": "left+right",
   "source": "spec-timeline manual r2"
  },
  "review": {
@@ -123,7 +132,9 @@
    "changes": [
     "动画 10 秒左右轮流（先右），一下 5 s；派生只读下蹲轨道漏了跨步，按 spec 手算：抬脚+跨步+下蹲 2.0、底部 0.4、推回+收脚 1.6、站立 1.0",
     "training=rep_alternate、perSide alternate（每侧 8 次）",
-    "起始口令改「跨步下蹲」覆盖整段；cue3 补「换另一边」"
+    "起始口令改「跨步下蹲」覆盖整段；cue3 补「换另一边」",
+    "轮流计数口径：一左一右算 1 次，剂量为每侧 N 次（reps=N），training.phases 描述一侧的一下，repUnit=left+right；startingSide=先动的一侧（right）",
+    "最终口径：按真实做法定（2026-11-01）"
    ],
    "flags": [
     "相位为手算（非批表），请确认"

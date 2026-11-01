@@ -37,6 +37,14 @@
     "zh": "膝盖不用抬太高，先把重心移到支撑脚再抬。",
     "en": "Lift your knee only a little, after shifting onto the standing foot."
    }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "两边各抬一次算 1 次，下一组换手提。",
+    "en": "One lift on each side counts as one rep. Switch hands next set."
+   }
   }
  ],
  "commonErrors": [
@@ -119,6 +127,7 @@
    }
   ],
   "perSide": "alternate",
+  "repUnit": "left+right",
   "source": "spec-pulse-track r2"
  },
  "review": {
@@ -126,12 +135,12 @@
    "changes": [
     "名字「交替踏步抗侧屈」是术语，改「单手提哑铃踏步」",
     "动画左右腿轮流抬（先右后左）→ rep_alternate，每侧算 1 次",
-    "起止口令按 0.4/0.5 s 缩成 2 字/1 词；cue3 补动画里的「先移重心再抬」"
+    "起止口令按 0.4/0.5 s 缩成 2 字/1 词；cue3 补动画里的「先移重心再抬」",
+    "轮流计数口径：一左一右算 1 次，剂量为每侧 N 次（reps=N），training.phases 描述一侧的一下，repUnit=left+right；startingSide=先动的一侧（right）",
+    "最终口径：按真实做法定（2026-11-01）",
+    "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除"
    ],
-   "flags": [
-    "改名请确认",
-    "动画只用右手提哑铃；文案写「一手」并提示下一组可换手吗？目前未写，请定"
-   ]
+   "flags": []
   }
  }
 }

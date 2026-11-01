@@ -34,8 +34,8 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "每圈换一次方向，画得慢而稳。",
-    "en": "Switch direction each circle and move slowly and steadily."
+    "zh": "画一圈算 1 次，每圈换方向，慢而稳。",
+    "en": "One circle counts as one. Switch direction each circle and stay steady."
    }
   }
  ],
@@ -123,7 +123,9 @@
    "changes": [
     "节奏按 spec（10 s 循环两圈、方向相反）：打开+抬到V 1.9 s / 放回L撑 1.0 s / 停 2.1 s；kind=rep_cycle",
     "end 口令「换方向」改「放回来」（换方向在两圈之间，不是每圈的结尾）",
-    "剂量 2 → 4 圈（两个方向各 2）"
+    "剂量 2 → 4 圈（两个方向各 2）",
+    "计数单位保持不变，cue 写明 1 次是什么",
+    "最终口径：按真实做法定（2026-11-01）"
    ],
    "flags": [
     "批表换用 feet 轨（go 0.53/rest 3.45）不可信，按 spec 手算；每圈之后停约 1 s，循环接缝处再多停 1.2 s，rest 取平均"

@@ -37,6 +37,14 @@
     "zh": "脚轻轻放回地面，再换另一只。",
     "en": "Set the foot down softly, then switch feet."
    }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "两边各做一次算 1 次。",
+    "en": "One on each side counts as one rep."
+   }
   }
  ],
  "commonErrors": [
@@ -117,13 +125,16 @@
    }
   ],
   "perSide": "alternate",
+  "repUnit": "left+right",
   "source": "spec-pulse-track r2"
  },
  "review": {
   "r2": {
    "changes": [
     "动画左右脚轮流（先右），每 2 s 一下，training=rep_alternate、perSide alternate，每侧 10 次",
-    "口令按 0.4 s 相位缩到 2 字/1 词；主口令去掉固定方位"
+    "口令按 0.4 s 相位缩到 2 字/1 词；主口令去掉固定方位",
+    "轮流计数口径：一左一右算 1 次，剂量为每侧 N 次（reps=N），training.phases 描述一侧的一下，repUnit=left+right；startingSide=先动的一侧（right）",
+    "最终口径：按真实做法定（2026-11-01）"
    ],
    "flags": []
   }

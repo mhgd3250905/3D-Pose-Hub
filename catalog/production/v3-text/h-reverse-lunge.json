@@ -37,6 +37,14 @@
     "zh": "前脚跟推地站起，后脚收回，再换另一条腿。",
     "en": "Push through the front heel to stand, bring the back foot in, then switch legs."
    }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "两边各做一次算 1 次。",
+    "en": "One on each side counts as one rep."
+   }
   }
  ],
  "commonErrors": [
@@ -117,6 +125,7 @@
    }
   ],
   "perSide": "alternate",
+  "repUnit": "left+right",
   "source": "spec-timeline manual r2"
  },
  "review": {
@@ -124,10 +133,12 @@
    "changes": [
     "动画第 1 下右脚后撤、第 2 下左脚后撤，是左右轮流：unilateral 改 true、startingSide right，training=rep_alternate，剂量改每侧 8 次",
     "派生只读下蹲轨道漏了后撤/收脚，按 spec 手算：后撤+下蹲 1.7、底部 0.5、站起+收脚 1.5、站立 0.3（4 s）",
-    "cue3 补「换另一条腿」"
+    "cue3 补「换另一条腿」",
+    "轮流计数口径：一左一右算 1 次，剂量为每侧 N 次（reps=N），training.phases 描述一侧的一下，repUnit=left+right；startingSide=先动的一侧（right）",
+    "最终口径：按真实做法定（2026-11-01）",
+    "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除"
    ],
    "flags": [
-    "unilateral 改 true，startingSide 记的是先后撤的脚（右），请确认",
     "相位为手算（非批表），请确认"
    ]
   }

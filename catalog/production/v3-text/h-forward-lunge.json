@@ -37,6 +37,14 @@
     "zh": "前脚推地退回站立，换另一条腿。",
     "en": "Push off your front foot to step back, then switch legs."
    }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "两边各做一次算 1 次。",
+    "en": "One on each side counts as one rep."
+   }
   }
  ],
  "commonErrors": [
@@ -117,13 +125,16 @@
    }
   ],
   "perSide": "alternate",
+  "repUnit": "left+right",
   "source": "spec-timeline manual r2"
  },
  "review": {
   "r2": {
    "changes": [
     "动画 10 秒左右腿轮流（先右），一下 5 s：节奏按 spec 手算（跨步+下蹲 1.5 s、底部 0.7 s、推回+收脚 1.3 s、站立 1.5 s；派生只读下蹲轨道漏了跨步），training=rep_alternate、perSide alternate",
-    "起始口令改「跨步下蹲」覆盖跨步和下沉；cue3 补「换另一条腿」"
+    "起始口令改「跨步下蹲」覆盖跨步和下沉；cue3 补「换另一条腿」",
+    "轮流计数口径：一左一右算 1 次，剂量为每侧 N 次（reps=N），training.phases 描述一侧的一下，repUnit=left+right；startingSide=先动的一侧（right）",
+    "最终口径：按真实做法定（2026-11-01）"
    ],
    "flags": []
   }

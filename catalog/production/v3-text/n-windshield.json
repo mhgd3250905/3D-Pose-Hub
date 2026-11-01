@@ -37,6 +37,14 @@
     "zh": "停一下，经过中间再倒向另一侧。",
     "en": "Pause, then pass through the middle to the other side."
    }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "两边各做一次算 1 次。",
+    "en": "One on each side counts as one rep."
+   }
   }
  ],
  "commonErrors": [
@@ -71,7 +79,7 @@
   "position": "supine",
   "difficulty": 1
  },
- "unilateral": false,
+ "unilateral": true,
  "defaultDose": {
   "mode": "reps",
   "sets": 2,
@@ -116,6 +124,8 @@
     "seconds": 0.4
    }
   ],
+  "perSide": "alternate",
+  "repUnit": "left+right",
   "source": "spec-timeline manual r2"
  },
  "review": {
@@ -123,11 +133,13 @@
    "changes": [
     "动画 8 秒左右各倒一次（先右），training=rep_alternate，一侧算一次",
     "节奏按 spec 时间轴手算（派生值把 90% 以上都算停顿，和 spec 不符）：倒 1.4/停 1.0/回 1.2/歇 0.4 s",
-    "cue2 补「掌心向下」（动画手掌压垫）"
+    "cue2 补「掌心向下」（动画手掌压垫）",
+    "轮流计数口径：一左一右算 1 次，剂量为每侧 N 次（reps=N），training.phases 描述一侧的一下，repUnit=left+right；startingSide=先动的一侧（right）",
+    "最终口径：按真实做法定（2026-11-01）",
+    "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除"
    ],
-   "flags": [
-    "非单侧动作但左右轮流计数：2 组×6 次按「左右各算一次」理解，请确认"
-   ]
+   "flags": []
   }
- }
+ },
+ "startingSide": "right"
 }
