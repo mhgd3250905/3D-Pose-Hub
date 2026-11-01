@@ -93,7 +93,7 @@
   }
  },
  "training": {
-  "kind": "rep_hold",
+  "kind": "rep_updown",
   "leadSeconds": 1,
   "phases": [
    {
@@ -124,7 +124,8 @@
     "口令按 0.8/0.7 s 相位缩短（下放/撑起）",
     "cue2 去掉「45°」改口语",
     "cautions 改「X 时 Y」短句",
-    "加 training"
+    "加 training",
+    "节奏核对：动画顶点真正静止约 0.37 秒（<0.8），rep_hold 改为 rep_updown"
    ],
    "flags": [
     "派生把顶点算成 ≥0.8 s 判为 rep_hold，但 spec 轨道真正的静止只有约 0.4 s（注释/关键帧），若按实际应为 rep_updown，请确认"

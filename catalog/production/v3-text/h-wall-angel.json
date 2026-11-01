@@ -93,7 +93,7 @@
   }
  },
  "training": {
-  "kind": "rep_hold",
+  "kind": "rep_updown",
   "leadSeconds": 1,
   "phases": [
    {
@@ -122,7 +122,8 @@
   "r2": {
    "changes": [
     "purpose 去掉「外旋」「胸椎」术语",
-    "常见错误拆成一句一个错误；caution 改「X 时 Y」"
+    "常见错误拆成一句一个错误；caution 改「X 时 Y」",
+    "节奏核对：动画顶点真正静止约 0.57 秒（<0.8），rep_hold 改为 rep_updown"
    ],
    "flags": [
     "派生顶点 1.1 s 判为 rep_hold，但 spec 注释写顶点只停 0.5 s；若按实际应为 rep_updown，请确认"

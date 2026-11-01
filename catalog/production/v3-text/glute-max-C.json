@@ -93,7 +93,7 @@
   }
  },
  "training": {
-  "kind": "rep_hold",
+  "kind": "rep_updown",
   "leadSeconds": 1,
   "phases": [
    {
@@ -122,7 +122,8 @@
   "r2": {
    "changes": [
     "purpose 去掉「伸髋」；口令「Lift your legs」按 0.6 s 缩为「Legs up」",
-    "加 training rep_hold"
+    "加 training rep_hold",
+    "节奏核对：动画顶点真正静止约 0.67 秒（<0.8），rep_hold 改为 rep_updown"
    ],
    "flags": []
   }

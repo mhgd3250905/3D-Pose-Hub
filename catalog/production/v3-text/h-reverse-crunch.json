@@ -91,7 +91,7 @@
   }
  },
  "training": {
-  "kind": "rep_hold",
+  "kind": "rep_updown",
   "leadSeconds": 1,
   "phases": [
    {
@@ -121,7 +121,8 @@
    "changes": [
     "主口令「卷起骨盆」改「用下腹把屁股卷离垫子」",
     "口令按 0.8/0.9 s 缩短",
-    "cautions 改短句"
+    "cautions 改短句",
+    "节奏核对：动画顶点真正静止约 0.57 秒（<0.8），rep_hold 改为 rep_updown"
    ],
    "flags": [
     "派生把顶点算成 ≥0.8 s 判为 rep_hold，但 spec 轨道真正的静止只有约 0.5–0.6 s（注释/关键帧），若按实际应为 rep_updown，请确认"
