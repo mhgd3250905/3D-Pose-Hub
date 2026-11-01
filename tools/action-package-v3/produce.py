@@ -156,7 +156,7 @@ def _run(args, root, items, log, results):
                 if args.verify_size: cmd += ['--size', str(args.verify_size)]
                 if args.verify_frames: cmd += ['--frames', args.verify_frames]
                 if args.heavy: cmd = ['/workspace/bin/heavy', '--'] + cmd
-                subprocess.run(cmd, check=True, cwd=REPO)
+                subprocess.run(cmd, check=True, cwd=REPO, env=VENV)
             if state != 'packaged':
                 cmd = [sys.executable, str(HERE / 'compose.py'), '--root', str(root), '--id', aid, '--profile', args.profile]
                 if args.verify_size or args.verify_frames: cmd += ['--allow-partial', '--sizes-from-masters']
