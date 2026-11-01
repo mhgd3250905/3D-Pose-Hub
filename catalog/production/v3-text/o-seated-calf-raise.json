@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "o-seated-calf-raise",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/o-seated-calf-raise-rr1.js"
  ],
@@ -10,8 +10,8 @@
   "en": "Chair-Seated Heel Raise"
  },
  "purpose": {
-  "zh": "低负荷练踝关节和小腿控制",
-  "en": "Build low-load ankle and calf control."
+  "zh": "不加重量，练小腿和脚踝的控制",
+  "en": "Train calf and ankle control, with no added weight."
  },
  "cues": [
   {
@@ -26,15 +26,15 @@
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "坐在稳固的椅子上，膝盖弯曲",
-    "en": "Sit on a stable chair with your knees bent."
+    "zh": "坐在稳固的椅子上，膝盖弯着，臀部一直坐稳。",
+    "en": "Sit on a stable chair with your knees bent and stay seated."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "顶端稍停，再慢慢放下",
+    "zh": "顶端稍停，再慢慢放下。",
     "en": "Pause at the top, then lower slowly."
    }
   }
@@ -51,8 +51,8 @@
  ],
  "cautions": [
   {
-   "zh": "脚踝或小腿疼痛时减小幅度，仍痛就停止",
-   "en": "Reduce the range if your ankles or calves hurt, and stop if the pain continues."
+   "zh": "脚踝或小腿疼时幅度小一点，还疼就停",
+   "en": "If your ankles or calves hurt, move less far, and stop if it still hurts."
   }
  ],
  "tags": {
@@ -86,6 +86,42 @@
   "end": {
    "zh": "慢慢放下",
    "en": "Lower slowly"
+  }
+ },
+ "training": {
+  "kind": "rep_updown",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.3,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 0.7,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 1.3,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 0.7
+   }
+  ],
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画 8 秒 2 下，顶端只停 0.7 s → rep_updown",
+    "节奏按 spec 时间轴手算（派生值把 90% 以上都算停顿，和 spec 不符）：抬 1.3/停 0.7/放 1.3/歇 0.7 s（派生 0.8/1.2/0.8/1.2）",
+    "purpose「低负荷」改「不加重量」"
+   ],
+   "flags": []
   }
  }
 }

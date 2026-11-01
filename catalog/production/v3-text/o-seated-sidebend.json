@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "o-seated-sidebend",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/o-seated-sidebend-rr2.js"
  ],
@@ -10,32 +10,32 @@
   "en": "Seated Overhead Side Stretch"
  },
  "purpose": {
-  "zh": "拉伸身体侧面，缓解久坐腰背紧张",
-  "en": "Stretch the side of your trunk to ease tightness from sitting."
+  "zh": "拉伸身体侧面，缓解久坐腰背发紧",
+  "en": "Stretch the side of your body to ease back tightness from sitting."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "手臂上举，身体向对侧慢慢侧弯",
-    "en": "Raise your arm overhead and bend slowly to the opposite side"
+    "zh": "一只手臂举高，身体往另一侧慢慢弯",
+    "en": "Raise one arm and slowly bend toward the other side"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "臀部坐稳，双脚踩地",
-    "en": "Keep your hips seated and feet planted."
+    "zh": "臀部坐稳，双脚踩地，另一只手臂放松垂着。",
+    "en": "Keep your hips seated, feet flat, and the other arm relaxed by your side."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "停3秒，再慢慢回正，不扭转不前倾",
-    "en": "Hold for three seconds, then come back up without twisting or slumping."
+    "zh": "停约 3 秒，再慢慢回正。",
+    "en": "Hold for about three seconds, then come back up slowly."
    }
   }
  ],
@@ -51,8 +51,8 @@
  ],
  "cautions": [
   {
-   "zh": "腰背或肩部疼痛时减小幅度，仍痛就停止",
-   "en": "Reduce the range if your back or shoulder hurts, and stop if the pain continues."
+   "zh": "腰背或肩膀疼时幅度小一点，还疼就停",
+   "en": "If your back or shoulder hurts, bend less, and stop if it still hurts."
   }
  ],
  "tags": {
@@ -73,23 +73,63 @@
  "unilateral": true,
  "startingSide": "right",
  "defaultDose": {
-  "mode": "hold",
+  "mode": "reps",
   "sets": 2,
-  "seconds": 15,
+  "reps": 6,
   "restSeconds": 15
  },
  "phases": {
   "start": {
-   "zh": "向侧弯",
+   "zh": "往侧边弯",
    "en": "Bend over"
   },
   "peak": {
-   "zh": "保持",
+   "zh": "停住",
    "en": "Hold"
   },
   "end": {
    "zh": "慢慢回正",
    "en": "Come back up"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.7,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 3.0,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 2.1,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.2
+   }
+  ],
+  "perSide": "each-side-separately",
+  "stretchLoop": true,
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "剂量 15 s 保持 → 每侧 2 组×6 次（rep_hold，stretchLoop）",
+    "节奏按 spec 时间轴手算（派生值把 90% 以上都算停顿，和 spec 不符）：弯 1.7/停 3.0/回 2.1/歇 1.2 s",
+    "主口令去掉「对侧」；cue2 补另一只手臂放松垂着"
+   ],
+   "flags": [
+    "拉伸按次数：原剂量是静止计时，但动画每 8 秒做一次「进入-停住-回来」，按规则改成按次数（training.stretchLoop=true）；想改回计时需把动画改成一直停住，请定"
+   ]
   }
  }
 }

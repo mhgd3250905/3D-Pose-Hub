@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "o-supported-hip-airplane",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/o-supported-hip-airplane.js"
  ],
@@ -10,49 +10,49 @@
   "en": "Chair-Supported Hip Airplane"
  },
  "purpose": {
-  "zh": "练单腿站立时髋关节的旋转控制",
-  "en": "Train rotational hip control while standing on one leg."
+  "zh": "练单腿站时髋部的转动控制",
+  "en": "Train hip control for turning while standing on one leg."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "骨盆和上身一起，绕支撑髋慢慢打开",
-    "en": "Turn your pelvis and trunk together slowly around the standing hip"
+    "zh": "骨盆和上身一起，慢慢转开",
+    "en": "Turn your hips and chest together, slowly opening up"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "单腿站稳，膝盖微屈，手轻扶椅子",
-    "en": "Stand on one leg, knee soft, hand lightly on the chair."
+    "zh": "单腿站稳，膝盖微弯，一只手轻扶椅子。",
+    "en": "Stand on one leg, knee soft, one hand lightly on the chair."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "小幅度打开再回正，不扭腰",
-    "en": "Open a little, then return, without twisting at the waist."
+    "zh": "小幅度转开再转回，腰别单独扭。",
+    "en": "Open a little, then turn back, without twisting at the waist."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "只扭腰不转髋",
+   "zh": "只扭腰，髋没转",
    "en": "Twisting the waist instead of turning at the hip."
   },
   {
-   "zh": "支撑膝盖内扣",
+   "zh": "支撑腿膝盖往里扣",
    "en": "Letting the standing knee cave in."
   }
  ],
  "cautions": [
   {
-   "zh": "扶稳无轮的椅子，疼痛或站不稳时就停止",
-   "en": "Hold a stable chair without wheels, and stop if it hurts or you feel unsteady."
+   "zh": "扶稳没有轮子的椅子，疼或站不稳时就停",
+   "en": "Use a stable chair without wheels, and stop if it hurts or you feel unsteady."
   }
  ],
  "tags": {
@@ -81,7 +81,7 @@
  },
  "phases": {
   "start": {
-   "zh": "慢慢打开",
+   "zh": "慢慢转开",
    "en": "Open slowly"
   },
   "peak": {
@@ -89,8 +89,44 @@
    "en": "Hold"
   },
   "end": {
-   "zh": "回正",
-   "en": "Return"
+   "zh": "慢慢转回",
+   "en": "Turn back"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.5,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 1.5,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 2.5,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 2.5
+   }
+  ],
+  "perSide": "each-side-separately",
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "节奏按 spec 时间轴手算（派生值把 90% 以上都算停顿，和 spec 不符）：转 1.5/停 1.5/回 2.5/歇 2.5 s（派生 0.9/2.3/1.5/3.4）",
+    "主口令去「绕支撑髋」；口令「回正」→「慢慢转回」"
+   ],
+   "flags": []
   }
  }
 }

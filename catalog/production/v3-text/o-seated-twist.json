@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "o-seated-twist",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/o-seated-twist.js"
  ],
@@ -10,49 +10,49 @@
   "en": "Seated Chair Twist"
  },
  "purpose": {
-  "zh": "活动胸椎旋转，缓解久坐僵硬",
-  "en": "Ease stiffness from sitting by rotating your upper back."
+  "zh": "转动上背和腰，缓解久坐僵硬",
+  "en": "Turn your upper back and waist to ease stiffness from sitting."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "坐高，身体转向一侧，手扶椅背",
-    "en": "Sit tall, turn your trunk to one side and hold the backrest"
+    "zh": "坐直，身体转向一侧，手扶椅背",
+    "en": "Sit tall, turn to one side and hold the backrest"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "另一只手放在对侧膝盖外侧",
-    "en": "Place the other hand on the outside of the opposite knee."
+    "zh": "另一只手扶在转向那侧的膝盖外面。",
+    "en": "Put the other hand on the outside of the knee on the side you turn to."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "每次呼气稍微多转一点，再慢慢回正",
-    "en": "Turn a little more on each exhale, then come back slowly."
+    "zh": "呼气时可以再多转一点。",
+    "en": "Turn a little more as you breathe out."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "弓背扭转",
+   "zh": "弓着背扭",
    "en": "Twisting with a slumped back."
   },
   {
    "zh": "用手猛拉加深",
-   "en": "Yanking with the hands to go further."
+   "en": "Yanking with your hands to go further."
   }
  ],
  "cautions": [
   {
-   "zh": "腰背疼痛时减小扭转幅度，仍痛就停止",
-   "en": "Turn less if your back hurts, and stop if the pain continues."
+   "zh": "腰背疼时转得少一点，还疼就停",
+   "en": "If your back hurts, turn less, and stop if it still hurts."
   }
  ],
  "tags": {
@@ -73,9 +73,9 @@
  "unilateral": true,
  "startingSide": "right",
  "defaultDose": {
-  "mode": "hold",
+  "mode": "reps",
   "sets": 2,
-  "seconds": 20,
+  "reps": 6,
   "restSeconds": 15
  },
  "phases": {
@@ -84,12 +84,52 @@
    "en": "Turn"
   },
   "peak": {
-   "zh": "保持呼吸",
-   "en": "Breathe and hold"
+   "zh": "停住呼吸",
+   "en": "Hold and breathe"
   },
   "end": {
-   "zh": "慢慢回正",
+   "zh": "慢慢转回",
    "en": "Turn back"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.6,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 3.4,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 1.4,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.6
+   }
+  ],
+  "perSide": "each-side-separately",
+  "stretchLoop": true,
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "剂量 20 s 保持 → 每侧 2 组×6 次（rep_hold，stretchLoop）",
+    "节奏按 spec 时间轴手算（派生值把 90% 以上都算停顿，和 spec 不符）：转 1.6/停 3.4/回 1.4/歇 1.6 s",
+    "purpose 去「胸椎」；cue2 去「对侧」改说清是转向那侧的膝盖"
+   ],
+   "flags": [
+    "拉伸按次数：原剂量是静止计时，但动画每 8 秒做一次「进入-停住-回来」，按规则改成按次数（training.stretchLoop=true）；想改回计时需把动画改成一直停住，请定"
+   ]
   }
  }
 }

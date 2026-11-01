@@ -1,16 +1,16 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "o-stand-lunge",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/o-stand-lunge.js"
  ],
  "name": {
-  "zh": "扶椅站姿弓步屈髋拉伸",
+  "zh": "扶椅弓步拉伸髋前侧",
   "en": "Chair-Supported Standing Hip Flexor Stretch"
  },
  "purpose": {
-  "zh": "拉伸髋前侧，缓解久坐紧张",
+  "zh": "拉伸髋部前侧，缓解久坐发紧",
   "en": "Stretch the front of your hip to ease tightness from sitting."
  },
  "cues": [
@@ -18,24 +18,24 @@
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "骨盆后卷，向前推，拉伸后腿髋前侧",
-    "en": "Tuck your pelvis and glide forward to stretch the front of the back hip"
+    "zh": "收紧臀部，髋慢慢往前推",
+    "en": "Squeeze your glutes and ease your hips forward"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "前后分腿站，后脚前掌着地，手扶椅背",
-    "en": "Stand in a split stance, back heel up, hand on the chair."
+    "zh": "前后分腿站，后脚踮起，一只手扶椅背。",
+    "en": "Stand in a split stance, back heel up, one hand on the chair."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "双膝微屈，上身保持直立",
-    "en": "Bend both knees a little and keep your trunk upright."
+    "zh": "双膝微弯，上身直立，拉的是后腿的髋前侧。",
+    "en": "Bend both knees a little and stay upright; you stretch the front of the back hip."
    }
   }
  ],
@@ -45,14 +45,14 @@
    "en": "Arching the lower back."
   },
   {
-   "zh": "上身向前倒",
+   "zh": "上身往前倒",
    "en": "Leaning the trunk forward."
   }
  ],
  "cautions": [
   {
-   "zh": "腰部疼痛时减小幅度，仍痛就停止",
-   "en": "Reduce the range if your lower back hurts, and stop if the pain continues."
+   "zh": "腰疼时幅度小一点，还疼就停",
+   "en": "If your lower back hurts, move less far, and stop if it still hurts."
   }
  ],
  "tags": {
@@ -73,23 +73,65 @@
  "unilateral": true,
  "startingSide": "left",
  "defaultDose": {
-  "mode": "hold",
+  "mode": "reps",
   "sets": 2,
-  "seconds": 30,
+  "reps": 6,
   "restSeconds": 15
  },
  "phases": {
   "start": {
-   "zh": "卷骨盆前推",
-   "en": "Tuck and glide"
+   "zh": "髋往前推",
+   "en": "Hips forward"
   },
   "peak": {
-   "zh": "保持呼吸",
-   "en": "Breathe and hold"
+   "zh": "停住呼吸",
+   "en": "Hold and breathe"
   },
   "end": {
    "zh": "慢慢回来",
    "en": "Come back"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.4,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 3.6,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 1.4,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.6
+   }
+  ],
+  "perSide": "each-side-separately",
+  "stretchLoop": true,
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "改名「扶椅站姿弓步屈髋拉伸」→「扶椅弓步拉伸髋前侧」（屈髋是术语）",
+    "剂量 30 s 保持 → 每侧 2 组×6 次（rep_hold，stretchLoop）",
+    "节奏按 spec 时间轴手算（派生值把 90% 以上都算停顿，和 spec 不符）：推 1.4/停 3.6/回 1.4/歇 1.6 s",
+    "主口令「骨盆后卷」改「收紧臀部，髋往前推」"
+   ],
+   "flags": [
+    "拉伸按次数：原剂量是静止计时，但动画每 8 秒做一次「进入-停住-回来」，按规则改成按次数（training.stretchLoop=true）；想改回计时需把动画改成一直停住，请定",
+    "改名：扶椅站姿弓步屈髋拉伸 → 扶椅弓步拉伸髋前侧"
+   ]
   }
  }
 }

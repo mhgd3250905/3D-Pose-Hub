@@ -1,12 +1,12 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "o-stand-quad",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/o-stand-quad.js"
  ],
  "name": {
-  "zh": "扶椅站姿股四头肌拉伸",
+  "zh": "扶椅站姿大腿前侧拉伸",
   "en": "Chair-Supported Standing Quad Stretch"
  },
  "purpose": {
@@ -18,15 +18,15 @@
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "手抓脚踝，脚跟靠近臀部，骨盆后卷",
-    "en": "Hold your ankle, bring your heel toward your glute and tuck your pelvis"
+    "zh": "手抓脚踝，把脚跟拉向臀部",
+    "en": "Hold your ankle and draw your heel toward your glutes"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "单腿站直，一手扶椅背保持平衡",
+    "zh": "单腿站直，一手扶椅背保持平衡。",
     "en": "Stand tall on one leg with a hand on the chair for balance."
    }
   },
@@ -34,8 +34,8 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "双膝并排，不要向外打开",
-    "en": "Keep your knees side by side, not flaring out."
+    "zh": "两个膝盖并排，臀部轻轻收紧。",
+    "en": "Keep your knees side by side and gently squeeze your glutes."
    }
   }
  ],
@@ -45,14 +45,14 @@
    "en": "Arching the lower back."
   },
   {
-   "zh": "膝盖向外或向前跑",
+   "zh": "膝盖往外或往前跑",
    "en": "Letting the knee drift out or forward."
   }
  ],
  "cautions": [
   {
-   "zh": "膝盖疼痛时减小屈膝幅度，仍痛就停止",
-   "en": "Bend the knee less if it hurts, and stop if the pain continues."
+   "zh": "膝盖疼时少弯一点，还疼就停",
+   "en": "If your knee hurts, bend it less, and stop if it still hurts."
   }
  ],
  "tags": {
@@ -71,9 +71,9 @@
  "unilateral": true,
  "startingSide": "right",
  "defaultDose": {
-  "mode": "hold",
+  "mode": "reps",
   "sets": 2,
-  "seconds": 30,
+  "reps": 6,
   "restSeconds": 15
  },
  "phases": {
@@ -82,12 +82,54 @@
    "en": "Pull the heel in"
   },
   "peak": {
-   "zh": "保持呼吸",
-   "en": "Breathe and hold"
+   "zh": "停住呼吸",
+   "en": "Hold and breathe"
   },
   "end": {
-   "zh": "慢慢放下",
-   "en": "Release"
+   "zh": "稍微放松",
+   "en": "Ease off"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.4,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 3.6,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 1.4,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.6
+   }
+  ],
+  "perSide": "each-side-separately",
+  "stretchLoop": true,
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "改名「扶椅站姿股四头肌拉伸」→「扶椅站姿大腿前侧拉伸」",
+    "剂量 30 s 保持 → 每侧 2 组×6 次（rep_hold，stretchLoop）",
+    "节奏按 spec 时间轴手算（派生值把 90% 以上都算停顿，和 spec 不符）：拉 1.4/停 3.6/松 1.4/歇 1.6 s",
+    "主口令去「骨盆后卷」；回来口令「慢慢放下」→「稍微放松」（动画一直抓着脚踝，不放下）"
+   ],
+   "flags": [
+    "拉伸按次数：原剂量是静止计时，但动画每 8 秒做一次「进入-停住-回来」，按规则改成按次数（training.stretchLoop=true）；想改回计时需把动画改成一直停住，请定",
+    "改名：扶椅站姿股四头肌拉伸 → 扶椅站姿大腿前侧拉伸"
+   ]
   }
  }
 }

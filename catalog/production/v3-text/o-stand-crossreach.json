@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "o-stand-crossreach",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/o-stand-crossreach-r2.js"
  ],
@@ -10,32 +10,32 @@
   "en": "Chair-Supported Cross-Leg Side Reach"
  },
  "purpose": {
-  "zh": "拉伸髋外侧和腰侧",
-  "en": "Stretch the outer hip and the side of your waist."
+  "zh": "拉伸髋部外侧和腰侧",
+  "en": "Stretch the outside of your hip and the side of your waist."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "腿交叉在后，髋向外推，身体向椅子侧弯",
-    "en": "Cross the leg behind, push that hip out and lean toward the chair"
+    "zh": "髋往外推，身体往椅子那边弯",
+    "en": "Push your hip out and lean toward the chair"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "一手扶椅背，另一只手臂举过头顶",
-    "en": "Hold the backrest with one hand and reach the other arm overhead."
+    "zh": "离椅子远的那条腿交叉到后面，双膝微弯。",
+    "en": "Cross the leg farther from the chair behind the other, knees soft."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "膝盖微屈，拉伸感出现就停住呼吸",
-    "en": "Keep your knees soft and hold where you feel the stretch."
+    "zh": "一手扶椅背，另一只手臂举过头顶。",
+    "en": "Hold the backrest with one hand and reach the other arm overhead."
    }
   }
  ],
@@ -51,8 +51,8 @@
  ],
  "cautions": [
   {
-   "zh": "髋或腰部疼痛时减小幅度，仍痛就停止",
-   "en": "Reduce the range if your hip or back hurts, and stop if the pain continues."
+   "zh": "髋部或腰疼时幅度小一点，还疼就停",
+   "en": "If your hip or back hurts, move less far, and stop if it still hurts."
   }
  ],
  "tags": {
@@ -73,23 +73,63 @@
  "unilateral": true,
  "startingSide": "right",
  "defaultDose": {
-  "mode": "hold",
+  "mode": "reps",
   "sets": 2,
-  "seconds": 20,
+  "reps": 6,
   "restSeconds": 15
  },
  "phases": {
   "start": {
-   "zh": "推髋侧伸",
-   "en": "Push and reach"
+   "zh": "推髋侧弯",
+   "en": "Push and lean"
   },
   "peak": {
-   "zh": "保持呼吸",
-   "en": "Breathe and hold"
+   "zh": "停住呼吸",
+   "en": "Hold and breathe"
   },
   "end": {
    "zh": "慢慢站直",
    "en": "Stand tall"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.4,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 3.6,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 1.4,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.6
+   }
+  ],
+  "perSide": "each-side-separately",
+  "stretchLoop": true,
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "剂量 20 s 保持 → 每侧 2 组×6 次（rep_hold，stretchLoop）",
+    "节奏按 spec 时间轴手算（派生值把 90% 以上都算停顿，和 spec 不符）：弯 1.4/停 3.6/回 1.4/歇 1.6 s",
+    "主口令缩成一句（交叉腿移到 cue2，并说清是离椅子远的那条腿）"
+   ],
+   "flags": [
+    "拉伸按次数：原剂量是静止计时，但动画每 8 秒做一次「进入-停住-回来」，按规则改成按次数（training.stretchLoop=true）；想改回计时需把动画改成一直停住，请定"
+   ]
   }
  }
 }

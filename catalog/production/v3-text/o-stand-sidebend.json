@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "o-stand-sidebend",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/o-stand-sidebend-r2.js"
  ],
@@ -10,23 +10,23 @@
   "en": "Standing Overhead Side Bend"
  },
  "purpose": {
-  "zh": "拉伸腰侧和背阔肌",
-  "en": "Stretch the side of your waist and your lats."
+  "zh": "拉伸腰侧和背部侧面",
+  "en": "Stretch the side of your waist and back."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "手臂上举，身体向对侧侧弯，髋不动",
-    "en": "Reach your arm overhead and bend to the opposite side with your hips still"
+    "zh": "手臂举高，身体往另一侧弯，髋不动",
+    "en": "Reach one arm up and bend to the other side, hips still"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "双脚与髋同宽站稳",
+    "zh": "双脚与髋同宽站稳。",
     "en": "Stand with your feet hip-width apart."
    }
   },
@@ -34,8 +34,8 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "另一只手扶在大腿上，慢慢回正",
-    "en": "Rest the other hand on your thigh, then come back up slowly."
+    "zh": "另一只手放在大腿外侧，跟着身体往下滑。",
+    "en": "Rest the other hand on the outside of your thigh and let it slide down."
    }
   }
  ],
@@ -45,14 +45,14 @@
    "en": "Leaning forward or twisting."
   },
   {
-   "zh": "髋部向侧面甩出",
+   "zh": "髋部往侧面甩出去",
    "en": "Swinging the hips out to the side."
   }
  ],
  "cautions": [
   {
-   "zh": "腰背或肩部疼痛时减小幅度，仍痛就停止",
-   "en": "Reduce the range if your back or shoulder hurts, and stop if the pain continues."
+   "zh": "腰背或肩膀疼时幅度小一点，还疼就停",
+   "en": "If your back or shoulder hurts, bend less, and stop if it still hurts."
   }
  ],
  "tags": {
@@ -69,23 +69,64 @@
  "unilateral": true,
  "startingSide": "right",
  "defaultDose": {
-  "mode": "hold",
+  "mode": "reps",
   "sets": 2,
-  "seconds": 15,
+  "reps": 6,
   "restSeconds": 15
  },
  "phases": {
   "start": {
-   "zh": "向侧弯",
+   "zh": "往侧边弯",
    "en": "Bend over"
   },
   "peak": {
-   "zh": "保持呼吸",
-   "en": "Breathe and hold"
+   "zh": "停住呼吸",
+   "en": "Hold and breathe"
   },
   "end": {
    "zh": "慢慢回正",
    "en": "Come back up"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.4,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 3.6,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 1.4,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.6
+   }
+  ],
+  "perSide": "each-side-separately",
+  "stretchLoop": true,
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "剂量 15 s 保持 → 每侧 2 组×6 次（rep_hold，stretchLoop）",
+    "节奏按 spec 时间轴手算（派生值把 90% 以上都算停顿，和 spec 不符）：弯 1.4/停 3.6/回 1.4/歇 1.6 s",
+    "主口令去「对侧」；purpose 去「背阔肌」"
+   ],
+   "flags": [
+    "拉伸按次数：原剂量是静止计时，但动画每 8 秒做一次「进入-停住-回来」，按规则改成按次数（training.stretchLoop=true）；想改回计时需把动画改成一直停住，请定",
+    "cue3「手顺着大腿往下滑」按 spec「左手放在左大腿上」推断，请看动画确认手是否滑动"
+   ]
   }
  }
 }

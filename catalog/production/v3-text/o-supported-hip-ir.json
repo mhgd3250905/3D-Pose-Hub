@@ -1,17 +1,17 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "o-supported-hip-ir",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/o-supported-hip-ir.js"
  ],
  "name": {
-  "zh": "扶椅屈膝髋内旋控制",
-  "en": "Chair-Supported Isolated Hip Internal Rotation"
+  "zh": "扶椅小腿向外摆",
+  "en": "Chair-Supported Outward Shin Swing"
  },
  "purpose": {
-  "zh": "低负荷练髋内旋的主动控制",
-  "en": "Train low-load control of hip internal rotation."
+  "zh": "不加重量，练髋部向内转的控制",
+  "en": "Train control of turning your hip inward, with no added weight."
  },
  "cues": [
   {
@@ -26,16 +26,16 @@
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "站直，骨盆朝前，单手轻扶椅子",
-    "en": "Stand tall, pelvis facing forward, one hand lightly on the chair."
+    "zh": "站直，骨盆朝前，一只手轻扶椅子。",
+    "en": "Stand tall, hips facing forward, one hand lightly on the chair."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "在舒适范围内摆动，不扭膝盖和脚踝",
-    "en": "Move in a comfortable range without twisting the knee or ankle."
+    "zh": "在舒服的范围内摆，别硬扭膝盖和脚踝。",
+    "en": "Stay in a comfortable range and do not force the knee or ankle."
    }
   }
  ],
@@ -51,8 +51,8 @@
  ],
  "cautions": [
   {
-   "zh": "每侧先做1组4–6次，疼痛就停止",
-   "en": "Start with one easy set of 4–6 per side, and stop if it hurts."
+   "zh": "刚开始时每侧先做 1 组 4–6 次，疼就停",
+   "en": "When starting out, do one easy set of 4–6 per side, and stop if it hurts."
   }
  ],
  "tags": {
@@ -90,6 +90,46 @@
   "end": {
    "zh": "慢慢回来",
    "en": "Return slowly"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.5,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 2.0,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 2.5,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 2.0
+   }
+  ],
+  "perSide": "each-side-separately",
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "改名「扶椅屈膝髋内旋控制」→「扶椅小腿向外摆」（内旋是术语），EN 同步",
+    "节奏按 spec 时间轴手算（派生值把 90% 以上都算停顿，和 spec 不符）：摆 1.5/停 2.0/回 2.5/歇 2.0 s",
+    "purpose 去术语"
+   ],
+   "flags": [
+    "改名：扶椅屈膝髋内旋控制 / Chair-Supported Isolated Hip Internal Rotation → 扶椅小腿向外摆 / Chair-Supported Outward Shin Swing",
+    "tags.activeMuscles 为 glutes+abductors（spec 注明只是髋部大致区域），请定"
+   ]
   }
  }
 }

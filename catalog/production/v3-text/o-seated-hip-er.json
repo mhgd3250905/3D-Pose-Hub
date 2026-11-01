@@ -1,17 +1,17 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "o-seated-hip-er",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/o-seated-hip-er.js"
  ],
  "name": {
-  "zh": "坐椅无阻力髋外旋控制",
-  "en": "Seated Active Hip External Rotation"
+  "zh": "坐椅小腿向内摆",
+  "en": "Seated Inward Shin Swing"
  },
  "purpose": {
-  "zh": "低负荷练髋外旋的主动控制",
-  "en": "Train low-load control of hip external rotation."
+  "zh": "不加重量，练髋部向外转的控制",
+  "en": "Train control of turning your hip outward, with no added weight."
  },
  "cues": [
   {
@@ -26,22 +26,22 @@
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "坐在椅子上，脚稍离地，另一只脚踩稳",
-    "en": "Sit with the working foot just off the floor and the other foot planted."
+    "zh": "坐在椅子上，这只脚稍微离地，另一只脚踩稳。",
+    "en": "Sit with this foot just off the floor and the other foot planted."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "小幅度慢慢摆动，身体不转",
-    "en": "Move through a small range slowly without turning your body."
+    "zh": "小幅度慢慢摆，上身和骨盆不转。",
+    "en": "Move through a small range slowly, keeping your hips and body facing forward."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "膝盖向侧面推",
+   "zh": "膝盖往侧面推",
    "en": "Pushing the knee sideways."
   },
   {
@@ -51,8 +51,8 @@
  ],
  "cautions": [
   {
-   "zh": "膝或髋疼痛时减小幅度，仍痛就停止",
-   "en": "Reduce the range if your knees or hips hurt, and stop if the pain continues."
+   "zh": "膝盖或髋部疼时幅度小一点，还疼就停",
+   "en": "If your knee or hip hurts, move less far, and stop if it still hurts."
   }
  ],
  "tags": {
@@ -89,6 +89,45 @@
   "end": {
    "zh": "慢慢回来",
    "en": "Return slowly"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.7,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 3.0,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 2.1,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.2
+   }
+  ],
+  "perSide": "each-side-separately",
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "改名「坐椅无阻力髋外旋控制」→「坐椅小腿向内摆」（外旋是术语）；EN 名同步",
+    "节奏按 spec 时间轴手算（派生值把 90% 以上都算停顿，和 spec 不符）：摆 1.7/停 3.0/回 2.1/歇 1.2 s",
+    "purpose 去术语"
+   ],
+   "flags": [
+    "改名：坐椅无阻力髋外旋控制 / Seated Active Hip External Rotation → 坐椅小腿向内摆 / Seated Inward Shin Swing"
+   ]
   }
  }
 }

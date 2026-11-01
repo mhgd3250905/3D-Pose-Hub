@@ -1,41 +1,41 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "o-supported-ankle-pump",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/o-supported-ankle-pump.js"
  ],
  "name": {
-  "zh": "扶椅悬空踝屈伸",
-  "en": "Chair-Supported Unloaded Ankle Pump"
+  "zh": "扶椅悬空勾绷脚",
+  "en": "Chair-Supported Ankle Pump"
  },
  "purpose": {
-  "zh": "活动踝关节，促进小腿放松",
-  "en": "Move your ankle and loosen up your lower legs."
+  "zh": "活动脚踝，让小腿放松",
+  "en": "Move your ankle and loosen up your lower leg."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "髋和膝不动，脚尖慢慢勾起再绷直",
-    "en": "Keep your hip and knee still, pull your toes up, then point them"
+    "zh": "髋和膝不动，脚尖先绷直再勾起",
+    "en": "Keep your hip and knee still, point your toes, then pull them up"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "单手轻扶椅子，一只脚悬空",
-    "en": "Rest one hand lightly on a chair and lift one foot off the floor."
+    "zh": "一只手轻扶椅子，这只脚悬空。",
+    "en": "Rest one hand lightly on a chair and lift this foot off the floor."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "动作缓慢有节奏，保持呼吸",
-    "en": "Move slowly and steadily and keep breathing."
+    "zh": "慢慢做，每个位置停一下，保持呼吸。",
+    "en": "Move slowly, pause at each end and keep breathing."
    }
   }
  ],
@@ -47,8 +47,8 @@
  ],
  "cautions": [
   {
-   "zh": "扶稳无轮的椅子，疼痛或站不稳时就停止",
-   "en": "Hold a stable chair without wheels, and stop if it hurts or you feel unsteady."
+   "zh": "扶稳没有轮子的椅子，疼或站不稳时就停",
+   "en": "Use a stable chair without wheels, and stop if it hurts or you feel unsteady."
   }
  ],
  "tags": {
@@ -69,21 +69,61 @@
  "defaultDose": {
   "mode": "reps",
   "sets": 2,
-  "reps": 12,
+  "reps": 8,
   "restSeconds": 30
  },
  "phases": {
   "start": {
-   "zh": "勾脚尖",
-   "en": "Toes up"
-  },
-  "peak": {
    "zh": "绷脚尖",
    "en": "Point"
   },
+  "peak": {
+   "zh": "停住",
+   "en": "Hold"
+  },
   "end": {
-   "zh": "放松",
-   "en": "Relax"
+   "zh": "勾脚尖",
+   "en": "Toes up"
+  }
+ },
+ "training": {
+  "kind": "rep_cycle",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.6,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 1.0,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 3.0,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 2.4
+   }
+  ],
+  "perSide": "each-side-separately",
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "改名「扶椅悬空踝屈伸」→「扶椅悬空勾绷脚」（屈伸是术语），EN 去 Unloaded",
+    "动画一圈 8 秒：绷脚尖-停-勾脚尖-停-回中间，rep_cycle；go 1.6 绷/hold 1.0/back 3.0 勾+停/rest 2.4 回中间+歇（spec-timeline manual）",
+    "口令顺序按动画改成先绷后勾（原文先勾后绷）；每侧 12 次 → 8 次（一圈 8 秒）"
+   ],
+   "flags": [
+    "先绷后勾是按 spec 脚旋转角度（+1 方向脚尖向下）推断，请看动画确认；若是先勾后绷，主口令和 phases 对调",
+    "改名：扶椅悬空踝屈伸 → 扶椅悬空勾绷脚"
+   ]
   }
  }
 }

@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "o-seated-fig4",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/o-seated-fig4.js"
  ],
@@ -10,7 +10,7 @@
   "en": "Seated Figure-4 Stretch"
  },
  "purpose": {
-  "zh": "拉伸臀部，缓解久坐髋部紧张",
+  "zh": "拉伸臀部，缓解久坐髋部发紧",
   "en": "Stretch your glutes and ease hip tightness from sitting."
  },
  "cues": [
@@ -18,24 +18,24 @@
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "脚踝搭在对侧膝上，背部拉长向前折",
-    "en": "Cross your ankle over the other knee and fold forward with a long back"
+    "zh": "一只脚踝搭在另一侧膝盖上，背挺直往前倾",
+    "en": "Cross one ankle over the other knee and lean forward with a long back"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "支撑脚踩平，膝盖自然向外打开",
-    "en": "Keep the standing foot flat and let the crossed knee fall open."
+    "zh": "支撑脚踩平，翘起的膝盖自然往外打开。",
+    "en": "Keep the other foot flat and let the crossed knee fall open."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "臀部有拉伸感就停住，慢慢呼吸",
-    "en": "Stop where you feel your glute stretch and breathe slowly."
+    "zh": "一手扶脚踝，一手扶膝盖，臀部有拉伸感就停。",
+    "en": "One hand on the ankle, one on the knee; stop where you feel your glute stretch."
    }
   }
  ],
@@ -51,8 +51,8 @@
  ],
  "cautions": [
   {
-   "zh": "膝盖疼痛时减小前倾幅度，仍痛就停止",
-   "en": "Lean less if your knee hurts, and stop if the pain continues."
+   "zh": "膝盖疼时少往前倾一点，还疼就停",
+   "en": "If your knee hurts, lean less, and stop if it still hurts."
   }
  ],
  "tags": {
@@ -72,23 +72,63 @@
  "unilateral": true,
  "startingSide": "right",
  "defaultDose": {
-  "mode": "hold",
+  "mode": "reps",
   "sets": 2,
-  "seconds": 30,
+  "reps": 6,
   "restSeconds": 15
  },
  "phases": {
   "start": {
-   "zh": "向前折",
-   "en": "Fold forward"
+   "zh": "慢慢前倾",
+   "en": "Lean forward"
   },
   "peak": {
-   "zh": "保持呼吸",
-   "en": "Breathe and hold"
+   "zh": "停住呼吸",
+   "en": "Hold and breathe"
   },
   "end": {
    "zh": "慢慢坐直",
    "en": "Sit up"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.4,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 3.6,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 1.4,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.6
+   }
+  ],
+  "perSide": "each-side-separately",
+  "stretchLoop": true,
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "剂量 30 s 保持 → 每侧 2 组×6 次（rep_hold，stretchLoop）",
+    "节奏按 spec 时间轴手算（派生值把 90% 以上都算停顿，和 spec 不符）：倾 1.4/停 3.6/回 1.4/歇 1.6 s（派生 1.9/2.4/1.9/1.9）",
+    "主口令去掉「对侧」；cue3 补上动画里双手的位置"
+   ],
+   "flags": [
+    "拉伸按次数：原剂量是静止计时，但动画每 8 秒做一次「进入-停住-回来」，按规则改成按次数（training.stretchLoop=true）；想改回计时需把动画改成一直停住，请定"
+   ]
   }
  }
 }

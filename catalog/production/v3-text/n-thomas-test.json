@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "n-thomas-test",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/n-thomas-test-r3.js"
  ],
@@ -10,49 +10,49 @@
   "en": "Supine Single Knee-to-Chest (Thomas Test)"
  },
  "purpose": {
-  "zh": "检查髋前侧是否紧张，同时放松髋前侧",
-  "en": "Check for tight hip flexors while gently stretching the front of the hip."
+  "zh": "看看髋前侧紧不紧，同时轻轻拉伸髋前侧",
+  "en": "Check whether the front of your hip is tight while gently stretching it."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "一侧膝盖抱向胸口，另一条腿放松贴地",
-    "en": "Hug one knee to your chest and let the other leg rest long on the floor"
+    "zh": "双手抱住一侧膝盖，另一条腿放松贴地",
+    "en": "Hug one knee with both hands and let the other leg rest long"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "呼气时轻轻拉近膝盖，吸气时放松",
-    "en": "Draw the knee in gently as you exhale and ease off as you inhale."
+    "zh": "呼气时把膝盖再抱近一点，吸气时松一松。",
+    "en": "Draw the knee in a little as you breathe out and ease off as you breathe in."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "观察伸直的大腿是否离开地面",
-    "en": "Notice whether the straight thigh lifts off the floor."
+    "zh": "看伸直那条腿的大腿会不会离开地面，离开说明髋前侧偏紧。",
+    "en": "Watch whether the straight thigh lifts off the floor; if it does, the front of that hip is tight."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "伸直的腿主动用力压地或抬起",
+   "zh": "伸直的腿故意用力压地或抬起",
    "en": "Pressing the straight leg down or lifting it on purpose."
   },
   {
-   "zh": "抱膝太用力，腰部离地",
-   "en": "Pulling the knee in too hard so the lower back lifts."
+   "zh": "抱得太用力，腰离开地面",
+   "en": "Pulling the knee in so hard that your lower back lifts."
   }
  ],
  "cautions": [
   {
-   "zh": "膝或髋疼痛时减小抱膝幅度，仍痛就停止",
-   "en": "Hug the knee less if your knees or hips hurt, and stop if the pain continues."
+   "zh": "膝盖或髋部疼时抱得松一点，还疼就停",
+   "en": "If your knee or hip hurts, hug less, and stop if it still hurts."
   }
  ],
  "tags": {
@@ -72,23 +72,64 @@
  "unilateral": true,
  "startingSide": "right",
  "defaultDose": {
-  "mode": "hold",
+  "mode": "reps",
   "sets": 2,
-  "seconds": 30,
+  "reps": 8,
   "restSeconds": 15
  },
  "phases": {
   "start": {
-   "zh": "抱膝",
-   "en": "Hug the knee"
+   "zh": "呼气抱近",
+   "en": "Breathe out, hug"
   },
   "peak": {
-   "zh": "保持呼吸",
-   "en": "Breathe and hold"
+   "zh": "停住",
+   "en": "Hold"
   },
   "end": {
-   "zh": "慢慢放开",
-   "en": "Release"
+   "zh": "吸气放松",
+   "en": "Breathe in, ease"
+  }
+ },
+ "training": {
+  "kind": "rep_updown",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.8,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 0.7,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 1.1,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 0.4
+   }
+  ],
+  "perSide": "each-side-separately",
+  "stretchLoop": true,
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画 r3 是双手一起抱膝（原文「一侧膝盖抱向胸口」未写双手），主口令改为双手抱膝",
+    "动画 8 秒两次「呼气抱近-吸气放松」，剂量 30 s 保持 → 每侧 2 组×8 次；真正停顿仅 0.7 s，用 rep_updown（派生 hold 1.3 s 偏大）",
+    "节奏按 spec 时间轴手算（派生值把 90% 以上都算停顿，和 spec 不符）：抱 1.8/停 0.7/松 1.1/歇 0.4 s；口令改成跟呼吸走"
+   ],
+   "flags": [
+    "拉伸按次数：原剂量是静止计时，但动画每 8 秒做一次「进入-停住-回来」，按规则改成按次数（training.stretchLoop=true）；想改回计时需把动画改成一直停住，请定（此动作停顿 0.7 s，用 rep_updown 而非 rep_hold）",
+    "startingSide 保持 right＝被拉伸、伸直贴地的腿（高亮侧）；动画里抱的是左膝。若 startingSide 应指抱膝那侧请改成 left"
+   ]
   }
  }
 }

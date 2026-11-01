@@ -1,12 +1,12 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "o-seated-ham",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/o-seated-ham.js"
  ],
  "name": {
-  "zh": "坐姿腘绳肌前伸",
+  "zh": "坐姿大腿后侧拉伸",
   "en": "Seated Hamstring Stretch"
  },
  "purpose": {
@@ -18,23 +18,23 @@
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "腿向前伸直，背部拉长从髋部前折",
-    "en": "Straighten the leg forward and fold from your hips with a long back"
+    "zh": "一条腿伸直放前面，背挺直，上身往前倾",
+    "en": "Straighten one leg forward and lean forward with a long back"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "坐在椅子前部，脚跟着地，脚尖勾起",
-    "en": "Sit near the front of the chair, heel down, toes up."
+    "zh": "坐在椅子前半部分，伸直那条腿脚跟着地、脚尖勾起。",
+    "en": "Sit near the front of the chair, straight leg heel down, toes up."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "双手沿大腿向膝盖滑，拉伸感出现就停",
+    "zh": "双手沿大腿往膝盖滑，有拉伸感就停。",
     "en": "Slide your hands toward your knees and stop once you feel the stretch."
    }
   }
@@ -47,8 +47,8 @@
  ],
  "cautions": [
   {
-   "zh": "大腿后侧疼痛或发麻时减小幅度，仍不适就停止",
-   "en": "Ease off if the back of your thigh hurts or tingles, and stop if it continues."
+   "zh": "大腿后侧疼或发麻时幅度小一点，还不舒服就停",
+   "en": "If the back of your thigh hurts or tingles, ease off, and stop if it continues."
   }
  ],
  "tags": {
@@ -69,23 +69,65 @@
  "unilateral": true,
  "startingSide": "right",
  "defaultDose": {
-  "mode": "hold",
+  "mode": "reps",
   "sets": 2,
-  "seconds": 30,
+  "reps": 6,
   "restSeconds": 15
  },
  "phases": {
   "start": {
-   "zh": "向前折",
-   "en": "Fold forward"
+   "zh": "慢慢前倾",
+   "en": "Lean forward"
   },
   "peak": {
-   "zh": "保持呼吸",
-   "en": "Breathe and hold"
+   "zh": "停住呼吸",
+   "en": "Hold and breathe"
   },
   "end": {
    "zh": "慢慢坐直",
    "en": "Sit up"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.4,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 3.6,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 1.4,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.6
+   }
+  ],
+  "perSide": "each-side-separately",
+  "stretchLoop": true,
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "改名「坐姿腘绳肌前伸」→「坐姿大腿后侧拉伸」（腘绳肌听不懂）",
+    "剂量 30 s 保持 → 每侧 2 组×6 次（rep_hold，stretchLoop）",
+    "节奏按 spec 时间轴手算（派生值把 90% 以上都算停顿，和 spec 不符）：倾 1.4/停 3.6/回 1.4/歇 1.6 s",
+    "主口令去掉「从髋部前折」"
+   ],
+   "flags": [
+    "拉伸按次数：原剂量是静止计时，但动画每 8 秒做一次「进入-停住-回来」，按规则改成按次数（training.stretchLoop=true）；想改回计时需把动画改成一直停住，请定",
+    "改名：坐姿腘绳肌前伸 → 坐姿大腿后侧拉伸"
+   ]
   }
  }
 }

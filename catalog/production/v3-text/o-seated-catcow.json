@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "o-seated-catcow",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/o-seated-catcow.js"
  ],
@@ -10,31 +10,31 @@
   "en": "Seated Cat-Cow"
  },
  "purpose": {
-  "zh": "在椅子上活动脊柱，缓解久坐僵硬",
-  "en": "Move your spine from your chair to ease sitting stiffness."
+  "zh": "坐在椅子上活动整条脊柱，缓解久坐僵硬",
+  "en": "Move your whole spine from your chair to ease stiffness from sitting."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "骨盆后卷背拱起，再前倾挺胸",
-    "en": "Tuck your pelvis and round your back, then tip forward and lift your chest"
+    "zh": "先拱背低头，再挺胸抬头",
+    "en": "Round your back, then lift your chest"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "坐在椅子前部，双脚踩地，手放膝上",
-    "en": "Sit near the front of the chair, feet flat, hands on knees."
+    "zh": "坐在椅子前半部分，双脚踩地，手放膝盖上。",
+    "en": "Sit near the front of the chair, feet flat, hands on your knees."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "配合呼吸慢慢做，每个位置稍停",
+    "zh": "跟着呼吸慢慢做，每个位置停一下。",
     "en": "Move slowly with your breath and pause in each position."
    }
   }
@@ -51,8 +51,8 @@
  ],
  "cautions": [
   {
-   "zh": "腰背疼痛时减小幅度，仍痛就停止",
-   "en": "Reduce the range if your back hurts, and stop if the pain continues."
+   "zh": "腰背疼时幅度小一点，还疼就停",
+   "en": "If your back hurts, move less far, and stop if it still hurts."
   }
  ],
  "tags": {
@@ -78,16 +78,49 @@
  },
  "phases": {
   "start": {
-   "zh": "拱背",
-   "en": "Round"
+   "zh": "低头拱背",
+   "en": "Round your back"
   },
   "peak": {
-   "zh": "挺胸",
-   "en": "Lift chest"
+   "zh": "停一下",
+   "en": "Pause"
   },
   "end": {
-   "zh": "回到中立",
-   "en": "Back to neutral"
+   "zh": "抬头挺胸",
+   "en": "Lift your chest"
+  }
+ },
+ "training": {
+  "kind": "rep_cycle",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 3.8,
+    "cue": "phase.start"
+   },
+   {
+    "id": "back",
+    "seconds": 3.6,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 0.6
+   }
+  ],
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画一圈 8 秒：拱背-停-回中间-挺胸-停-回中间，按 rep_cycle 计一次",
+    "相位：go 3.8 s（拱背整段，念「低头拱背」）/back 3.6 s（挺胸整段，念「抬头挺胸」）/rest 0.6 s；spec-timeline manual",
+    "主口令去掉「骨盆后卷」，改成「先拱背低头，再挺胸抬头」；phase.end 原「回到中立」改「抬头挺胸」"
+   ],
+   "flags": [
+    "猫牛有两个停顿点，四相位装不下：go/back 各包含一次「进入+停+回中间」，phase.peak「停一下」不绑定；如 App 支持双停顿请改"
+   ]
   }
  }
 }
