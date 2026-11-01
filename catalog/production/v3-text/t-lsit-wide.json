@@ -1,24 +1,24 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "t-lsit-wide",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/t-lsit-wide-r6.js"
  ],
  "name": {
   "zh": "宽腿L撑",
-  "en": "Wide-leg L-sit"
+  "en": "Wide-Leg L-Sit"
  },
  "purpose": {
-  "zh": "练宽腿L撑的支撑和屈髋力量",
-  "en": "Build support and hip-flexor strength in a wide-leg L-sit."
+  "zh": "练撑住身体、把分开的双腿抬离地面的力量",
+  "en": "Build the strength to hold yourself up with your legs wide off the floor."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "双手撑地顶起，双腿伸直分开离地",
+    "zh": "双手撑起，伸直的双腿分开离地",
     "en": "Press up on your hands and hold your straight legs wide off the floor"
    }
   },
@@ -26,15 +26,15 @@
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "肩往下压，手臂锁直",
-    "en": "Press your shoulders down and lock your arms."
+    "zh": "肩膀往下压，手臂伸直。",
+    "en": "Press your shoulders down and keep your arms straight."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "保持均匀呼吸，不憋气",
+    "zh": "均匀呼吸，别憋气。",
     "en": "Breathe steadily and do not hold your breath."
    }
   }
@@ -45,14 +45,18 @@
    "en": "Shrugging."
   },
   {
-   "zh": "屈膝",
-   "en": "Bending the knees."
+   "zh": "弯膝盖",
+   "en": "Bending your knees."
   }
  ],
  "cautions": [
   {
-   "zh": "手腕热身后再做；腕部或肩部疼痛时缩短时间或改简单版本",
-   "en": "Warm up your wrists first; if your wrists or shoulders hurt, shorten the hold or use an easier version."
+   "zh": "手腕不舒服时先活动一下手腕",
+   "en": "If your wrists feel stiff, warm them up first."
+  },
+  {
+   "zh": "手腕或肩膀疼时缩短时间，还疼就停",
+   "en": "If your wrists or shoulders hurt, hold for less time, and stop if it still hurts."
   }
  ],
  "tags": {
@@ -73,7 +77,7 @@
  },
  "unilateral": false,
  "defaultDose": {
-  "mode": "hold",
+  "mode": "time",
   "sets": 3,
   "seconds": 10,
   "restSeconds": 60
@@ -90,6 +94,21 @@
   "end": {
    "zh": "慢慢坐下",
    "en": "Sit down"
+  }
+ },
+ "training": {
+  "kind": "hold",
+  "leadSeconds": 1,
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "EN 名改 Title Case：Wide-Leg L-Sit",
+    "purpose 去掉「屈髋」",
+    "training=hold（计时）；动画是静止撑住只有呼吸，批表的 3 次是呼吸"
+   ],
+   "flags": []
   }
  }
 }

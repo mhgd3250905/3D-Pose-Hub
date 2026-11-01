@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "w-bird-dog",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/w-bird-dog.js"
  ],
@@ -10,23 +10,23 @@
   "en": "Bird Dog"
  },
  "purpose": {
-  "zh": "练躯干稳定和对侧手脚协调",
-  "en": "Build trunk stability and opposite arm-leg coordination."
+  "zh": "练腰腹稳定，让一只手和另一侧的腿配合",
+  "en": "Build trunk stability and get one arm and the opposite leg working together."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "对侧手脚伸远，躯干保持水平不动",
-    "en": "Reach the opposite arm and leg long while your trunk stays level"
+    "zh": "一只手和另一侧的腿伸远，身体不晃",
+    "en": "Reach one arm and the other leg long while your body stays still"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "四足跪撑，手在肩下，膝在髋下",
+    "zh": "跪撑，手在肩膀下面，膝盖在髋下面。",
     "en": "Start on hands and knees, hands under shoulders, knees under hips."
    }
   },
@@ -34,7 +34,7 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "腿伸到髋高、手到肩高，停住再收回",
+    "zh": "腿伸到髋那么高，手到肩那么高，停住再收回。",
     "en": "Reach the leg to hip height and the arm to shoulder height, hold, then return."
    }
   }
@@ -42,17 +42,17 @@
  "commonErrors": [
   {
    "zh": "腰往下塌或骨盆转开",
-   "en": "Sagging the lower back or rotating the pelvis."
+   "en": "Letting your lower back sag or your hips twist."
   },
   {
-   "zh": "腿抬得过高",
+   "zh": "腿抬得太高",
    "en": "Lifting the leg too high."
   }
  ],
  "cautions": [
   {
-   "zh": "腰部疼痛时减小伸展幅度，仍痛就停止",
-   "en": "Reach less if your lower back hurts, and stop if the pain continues."
+   "zh": "腰疼时伸得近一点，还疼就停",
+   "en": "If your lower back hurts, reach less far, and stop if it still hurts."
   }
  ],
  "tags": {
@@ -81,7 +81,7 @@
  },
  "phases": {
   "start": {
-   "zh": "伸远",
+   "zh": "伸出去",
    "en": "Reach out"
   },
   "peak": {
@@ -89,8 +89,47 @@
    "en": "Hold"
   },
   "end": {
-   "zh": "收回",
-   "en": "Bring it back"
+   "zh": "收回来",
+   "en": "Come back"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.2,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 1.4,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 1.0,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 0.4
+   }
+  ],
+  "perSide": "each-side-separately",
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "主口令去掉术语「对侧」",
+    "节奏按 spec 头注释：伸 1.2 / 停 1.4 / 收 1.0 / 休 0.4 s；end 口令 EN 缩短为 Come back",
+    "cautions 改短句"
+   ],
+   "flags": [
+    "动画一侧连做（右腿+左手），另一侧是镜像；按「每侧分开做」计数，请确认"
+   ]
   }
  }
 }

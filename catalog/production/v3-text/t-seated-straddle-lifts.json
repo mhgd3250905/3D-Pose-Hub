@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "t-seated-straddle-lifts",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/t-seated-straddle-lifts-r6.js"
  ],
@@ -10,8 +10,8 @@
   "en": "Seated Straddle Lifts"
  },
  "purpose": {
-  "zh": "在分腿坐姿下练屈髋肌抬腿",
-  "en": "Train the hip flexors to lift both legs in a straddle."
+  "zh": "分腿坐，练大腿前侧把双腿抬起来",
+  "en": "Train the front of your thighs to lift both legs in a straddle."
  },
  "cues": [
   {
@@ -26,32 +26,32 @@
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "宽分腿坐，双手在两腿之间撑地，胸口前倾",
-    "en": "Sit in a wide straddle, hands on the floor between your legs, chest forward."
+    "zh": "宽分腿坐，双手在两腿之间撑地，上身前倾。",
+    "en": "Sit in a wide straddle, hands on the floor between your legs, leaning forward."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "髋部不离地，稍停再放下",
+    "zh": "屁股不离地，停一下再放下。",
     "en": "Keep your hips down, pause, then lower."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "身体后仰去抬腿",
-   "en": "Leaning back to lift the legs."
+   "zh": "身体往后仰去抬腿",
+   "en": "Leaning back to lift your legs."
   },
   {
    "zh": "膝盖弯曲",
-   "en": "Bending the knees."
+   "en": "Bending your knees."
   }
  ],
  "cautions": [
   {
-   "zh": "大腿前侧抽筋或髋部疼痛时停下休息",
+   "zh": "大腿前侧抽筋或髋疼时停下休息",
    "en": "Stop and rest if the front of your thighs cramps or your hips hurt."
   }
  ],
@@ -80,16 +80,51 @@
  },
  "phases": {
   "start": {
-   "zh": "抬腿",
+   "zh": "抬起",
    "en": "Lift"
   },
   "peak": {
-   "zh": "停住",
+   "zh": "停",
    "en": "Hold"
   },
   "end": {
    "zh": "放下",
-   "en": "Lower"
+   "en": "Down"
+  }
+ },
+ "training": {
+  "kind": "rep_updown",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.6,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 0.4,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.6,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 0.4
+   }
+  ],
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "节奏按 spec 头注释：抬 0.6 / 停 0.4 / 放 0.6 / 休 0.4 s",
+    "purpose 去掉「屈髋肌」；end 口令 0.6 s 内念完（放下 / Down）"
+   ],
+   "flags": []
   }
  }
 }

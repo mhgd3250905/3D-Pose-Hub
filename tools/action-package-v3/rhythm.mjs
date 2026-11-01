@@ -49,6 +49,9 @@ for (const f of fs.readdirSync(dir).filter(f => f.endsWith('.json')).sort()) {
     const segs = runs.map((x, i) => ({ ...x, kind: x.s === 'T' ? 'hold' : x.s === 'B' ? 'rest' : (runs[i + 1]?.s === 'T' || runs[i - 1]?.s === 'B' ? 'go' : 'back') }));
     const sum = kind => +(segs.filter(s => s.kind === kind).reduce((a, s) => a + s.n, 0) * dt / Math.max(reps, 1)).toFixed(2);
     row.phases = { go: sum('go'), hold: sum('hold'), back: sum('back'), rest: sum('rest') };
+    // truly still top: frames within 2 % of max whose step is < 0.3 % of range (the 90 % band above overstates pauses)
+    let still = 0; for (let i = 1; i < n.length; i++) if (n[i] > 0.98 && Math.abs(n[i] - n[i - 1]) < 0.003) still++;
+    row.stillTopSeconds = +(still * dt / Math.max(reps, 1)).toFixed(2);
     row.repSeconds = +(D / Math.max(reps, 1)).toFixed(2);
   } catch (e) { row.error = String(e.message || e).slice(0, 200); }
   out[r.id] = row;

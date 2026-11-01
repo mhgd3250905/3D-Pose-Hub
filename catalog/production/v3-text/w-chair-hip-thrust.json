@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "w-chair-hip-thrust",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/w-chair-hip-thrust.js"
  ],
@@ -10,7 +10,7 @@
   "en": "Chair Hip Thrust"
  },
  "purpose": {
-  "zh": "用椅子支撑上背，强化臀部",
+  "zh": "上背靠在椅子上，练臀部力量",
   "en": "Strengthen your glutes with your upper back on a chair."
  },
  "cues": [
@@ -18,41 +18,45 @@
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "脚跟推地把髋顶起，顶端夹紧臀部",
-    "en": "Drive through your heels to lift your hips and squeeze your glutes at the top"
+    "zh": "脚跟踩地把髋往上推，顶端夹紧臀部",
+    "en": "Push through your heels to lift your hips and squeeze your glutes at the top"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "上背靠在稳固椅面边缘，双脚与髋同宽",
-    "en": "Rest your upper back on the edge of a sturdy chair, feet hip-width apart."
+    "zh": "上背靠在稳固椅子的边缘，双脚与髋同宽，手放在髋上。",
+    "en": "Rest your upper back on the edge of a sturdy chair, feet hip-width apart, hands on your hips."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "顶端大腿和躯干成一线，小腿竖直",
-    "en": "At the top, keep thighs and trunk level with shins vertical."
+    "zh": "顶端大腿和身体成一条线，小腿竖直。",
+    "en": "At the top, keep your thighs and body in one line with your shins upright."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "腰部过度拱起代替臀部发力",
-   "en": "Arching the lower back instead of using the glutes."
+   "zh": "拱腰代替臀部发力",
+   "en": "Arching your lower back instead of using your glutes."
   },
   {
-   "zh": "膝盖向内扣",
-   "en": "Letting the knees cave in."
+   "zh": "膝盖往里扣",
+   "en": "Letting your knees cave in."
   }
  ],
  "cautions": [
   {
-   "zh": "确认椅子稳固不滑；腰部疼痛时减小幅度，仍痛就停止",
-   "en": "Make sure the chair will not slide; reduce the range if your lower back hurts, and stop if the pain continues."
+   "zh": "确认椅子稳固不滑",
+   "en": "Make sure the chair is sturdy and will not slide."
+  },
+  {
+   "zh": "腰疼时幅度小一点，还疼就停",
+   "en": "If your lower back hurts, move less far, and stop if it still hurts."
   }
  ],
  "tags": {
@@ -80,7 +84,7 @@
  },
  "phases": {
   "start": {
-   "zh": "顶髋",
+   "zh": "往上推",
    "en": "Drive up"
   },
   "peak": {
@@ -90,6 +94,42 @@
   "end": {
    "zh": "慢慢放下",
    "en": "Lower slowly"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.0,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 1.3,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 1.2,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 0.5
+   }
+  ],
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "节奏按 spec：推起 1.0 / 停 1.3 / 放下 1.2 / 休 0.5 s",
+    "start 口令「顶髋」改口语「往上推」；cue2 补上动画里的手放髋上",
+    "cautions 拆成两条短句"
+   ],
+   "flags": []
   }
  }
 }

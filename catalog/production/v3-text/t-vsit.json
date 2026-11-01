@@ -1,17 +1,17 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "t-vsit",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/t-vsit-r7.js"
  ],
  "name": {
-  "zh": "V 撑",
+  "zh": "V撑",
   "en": "V-Sit"
  },
  "purpose": {
-  "zh": "练高位屈髋压缩力量",
-  "en": "Build hip compression strength in a V-sit."
+  "zh": "练把双腿高高抬起、贴近身体的力量",
+  "en": "Build the strength to pull your legs up high toward your body."
  },
  "cues": [
   {
@@ -26,7 +26,7 @@
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "双手撑地，肩往下压",
+    "zh": "双手撑地，肩膀往下压。",
     "en": "Support on your hands and press your shoulders down."
    }
   },
@@ -34,15 +34,15 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "靠屈髋抬腿，不靠整个身体后仰",
-    "en": "Lift by folding at the hips, not by leaning your whole body back."
+    "zh": "靠大腿往胸口收来抬腿，别整个人往后倒。",
+    "en": "Lift by pulling your thighs toward your chest, not by leaning your whole body back."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "整个身体后仰",
-   "en": "Leaning the whole body back."
+   "zh": "整个人往后倒",
+   "en": "Leaning your whole body back."
   },
   {
    "zh": "耸肩",
@@ -51,8 +51,12 @@
  ],
  "cautions": [
   {
-   "zh": "手腕热身后再做；腕部或肩部疼痛时缩短时间或改简单版本",
-   "en": "Warm up your wrists first; if your wrists or shoulders hurt, shorten the hold or use an easier version."
+   "zh": "手腕不舒服时先活动一下手腕",
+   "en": "If your wrists feel stiff, warm them up first."
+  },
+  {
+   "zh": "手腕或肩膀疼时缩短时间，还疼就停",
+   "en": "If your wrists or shoulders hurt, hold for less time, and stop if it still hurts."
   }
  ],
  "tags": {
@@ -73,7 +77,7 @@
  },
  "unilateral": false,
  "defaultDose": {
-  "mode": "hold",
+  "mode": "time",
   "sets": 3,
   "seconds": 8,
   "restSeconds": 60
@@ -90,6 +94,20 @@
   "end": {
    "zh": "慢慢放下",
    "en": "Lower"
+  }
+ },
+ "training": {
+  "kind": "hold",
+  "leadSeconds": 1,
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "purpose 去掉「屈髋压缩」，cue3 去掉「屈髋」",
+    "training=hold（动画静止定住）"
+   ],
+   "flags": []
   }
  }
 }

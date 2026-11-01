@@ -1,41 +1,41 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "t-lsit-open-close",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/t-lsit-open-close-r6.js"
  ],
  "name": {
   "zh": "L撑开合",
-  "en": "L-sit Open-Close"
+  "en": "L-Sit Open-Close"
  },
  "purpose": {
-  "zh": "在L撑中练双腿开合控制",
-  "en": "Practise opening and closing your legs in an L-sit."
+  "zh": "撑住L撑，练双腿分开再并拢的控制",
+  "en": "Hold an L-sit and control your legs as they open and close."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "双手撑地顶起身体，伸直的腿开合",
-    "en": "Press up on your hands and open and close your straight legs"
+    "zh": "撑住不落地，伸直的双腿慢慢分开再并拢",
+    "en": "Stay up on your hands and slowly open and close your straight legs"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "肩往下压，手臂锁直",
-    "en": "Press your shoulders down and lock your arms."
+    "zh": "肩膀往下压，手臂伸直。",
+    "en": "Press your shoulders down and keep your arms straight."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "腿保持离地，动作慢而稳",
-    "en": "Keep your legs off the floor and move slowly and steadily."
+    "zh": "整组腿一直离地，膝盖不弯。",
+    "en": "Keep your legs off the floor the whole set, knees straight."
    }
   }
  ],
@@ -45,14 +45,18 @@
    "en": "Shrugging."
   },
   {
-   "zh": "屈膝或脚落地",
-   "en": "Bending the knees or letting the feet touch down."
+   "zh": "弯膝盖或脚碰地",
+   "en": "Bending your knees or touching your feet down."
   }
  ],
  "cautions": [
   {
-   "zh": "手腕热身后再做；腕部或肩部疼痛时缩短时间或改简单版本",
-   "en": "Warm up your wrists first; if your wrists or shoulders hurt, shorten the hold or use an easier version."
+   "zh": "手腕不舒服时先活动一下手腕",
+   "en": "If your wrists feel stiff, warm them up first."
+  },
+  {
+   "zh": "手腕或肩膀疼时少做一点，还疼就停",
+   "en": "If your wrists or shoulders hurt, do less, and stop if it still hurts."
   }
  ],
  "tags": {
@@ -76,7 +80,7 @@
  "defaultDose": {
   "mode": "reps",
   "sets": 3,
-  "reps": 4,
+  "reps": 6,
   "restSeconds": 60
  },
  "phases": {
@@ -85,12 +89,50 @@
    "en": "Open"
   },
   "peak": {
-   "zh": "合拢",
-   "en": "Close"
+   "zh": "停",
+   "en": "Hold"
   },
   "end": {
-   "zh": "稳住",
-   "en": "Hold steady"
+   "zh": "并拢",
+   "en": "Close"
+  }
+ },
+ "training": {
+  "kind": "rep_updown",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.0,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 0.5,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 1.0,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.5
+   }
+  ],
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "EN 名改 Title Case：L-sit → L-Sit",
+    "节奏按 spec open 轨：分开 1.0 s / 停 0.5 s / 并拢 1.0 s / 休 1.5 s；口令顺序改成 分开→停→并拢（原 peak「合拢」、end「稳住」错位）",
+    "剂量 4 → 6 次"
+   ],
+   "flags": [
+    "批表主轨是平的、换用 feet 轨（go 0.53/hold 0.87）不可信，按 spec 手算；动画一次循环里两下之间只停 0.5 s、循环接缝处停 2.5 s，rest 取平均 1.5 s"
+   ]
   }
  }
 }

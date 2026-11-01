@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "t-tuck-planche",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/t-tuck-planche-r6.js"
  ],
@@ -10,49 +10,53 @@
   "en": "Tuck Planche"
  },
  "purpose": {
-  "zh": "练手撑平衡和肩部前倾力量",
-  "en": "Build hand-balance and forward-lean shoulder strength."
+  "zh": "练手撑平衡和肩膀往前顶的力量",
+  "en": "Build hand balance and the shoulder strength to lean forward over your hands."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "肩前倾过手，锁臂背微拱，抬脚团身",
-    "en": "Lean your shoulders past your hands, lock your arms, round your upper back and lift your feet"
+    "zh": "肩膀往前送过手，双脚离地",
+    "en": "Lean your shoulders past your hands and lift your feet"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "蹲姿双手撑地，手指略向外",
-    "en": "Start in a crouch with your hands flat and fingers turned out."
+    "zh": "蹲着双手撑地，手指稍微朝外，手臂伸直。",
+    "en": "Crouch with your hands flat, fingers turned slightly out, arms straight."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "膝盖收在胸口下方，保持平衡",
-    "en": "Tuck your knees under your chest and hold the balance."
+    "zh": "膝盖收在胸口下面，背微微拱起，稳住平衡。",
+    "en": "Tuck your knees under your chest, round your back a little and hold the balance."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "屈肘",
-   "en": "Bending the elbows."
+   "zh": "弯手肘",
+   "en": "Bending your elbows."
   },
   {
-   "zh": "肩没有前倾就抬脚",
-   "en": "Lifting the feet without leaning forward."
+   "zh": "肩膀没往前就抬脚",
+   "en": "Lifting your feet before leaning forward."
   }
  ],
  "cautions": [
   {
-   "zh": "手腕热身后再做；腕部或肩部疼痛时缩短时间或改简单版本",
-   "en": "Warm up your wrists first; if your wrists or shoulders hurt, shorten the hold or use an easier version."
+   "zh": "手腕不舒服时先活动一下手腕",
+   "en": "If your wrists feel stiff, warm them up first."
+  },
+  {
+   "zh": "手腕或肩膀疼时缩短时间，还疼就停",
+   "en": "If your wrists or shoulders hurt, hold for less time, and stop if it still hurts."
   }
  ],
  "tags": {
@@ -74,7 +78,7 @@
  },
  "unilateral": false,
  "defaultDose": {
-  "mode": "hold",
+  "mode": "time",
   "sets": 3,
   "seconds": 8,
   "restSeconds": 90
@@ -91,6 +95,20 @@
   "end": {
    "zh": "放下双脚",
    "en": "Feet down"
+  }
+ },
+ "training": {
+  "kind": "hold",
+  "leadSeconds": 1,
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "主口令原来塞了 4 个指令，缩成一件事：肩膀往前送过手、双脚离地；锁臂/拱背挪到 cues",
+    "training=hold（动画全程离地静止定住 8 s）"
+   ],
+   "flags": []
   }
  }
 }

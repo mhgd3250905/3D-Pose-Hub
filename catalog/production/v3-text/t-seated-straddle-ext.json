@@ -1,58 +1,58 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "t-seated-straddle-ext",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/t-seated-straddle-ext-r6.js"
  ],
  "name": {
-  "zh": "坐姿分腿屈伸",
-  "en": "Seated Straddle Extension"
+  "zh": "分腿坐收腿伸腿",
+  "en": "Seated Straddle Tuck and Extend"
  },
  "purpose": {
-  "zh": "在分腿坐姿下练双腿屈伸控制",
-  "en": "Train bending and straightening your legs in a straddle."
+  "zh": "分腿坐、双脚离地，练腿收回和伸直的控制",
+  "en": "Sit in a straddle with your feet up and control your legs as they bend and straighten."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "双脚离地，膝盖向两侧打开收腿再伸直",
-    "en": "Keep your feet off the floor, fold your knees open to the sides, then straighten"
+    "zh": "双脚不落地，腿伸直再往两边收回",
+    "en": "Keep your feet up, straighten your legs, then bend your knees back out to the sides"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "双手在骨盆前方撑地，胸口朝前",
-    "en": "Place your palms in front of your pelvis and keep your chest facing forward."
+    "zh": "双手撑在身体前面，胸口朝前。",
+    "en": "Put your hands on the floor in front of you and keep your chest facing forward."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "不后仰，动作慢而有控制",
-    "en": "Do not lean back; move slowly with control."
+    "zh": "别往后仰，慢一点做。",
+    "en": "Do not lean back; move slowly."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "身体后仰",
+   "zh": "身体往后仰",
    "en": "Leaning back."
   },
   {
-   "zh": "脚落地",
-   "en": "Letting the feet touch down."
+   "zh": "脚碰地",
+   "en": "Letting your feet touch down."
   }
  ],
  "cautions": [
   {
-   "zh": "髋部或腰部疼痛时减小幅度，仍痛就停止",
-   "en": "Reduce the range if your hips or lower back hurt, and stop if the pain continues."
+   "zh": "髋或腰疼时幅度小一点，还疼就停",
+   "en": "If your hips or lower back hurt, move less far, and stop if it still hurts."
   }
  ],
  "tags": {
@@ -75,21 +75,58 @@
  "defaultDose": {
   "mode": "reps",
   "sets": 3,
-  "reps": 6,
+  "reps": 8,
   "restSeconds": 45
  },
  "phases": {
   "start": {
-   "zh": "收腿",
-   "en": "Fold in"
+   "zh": "伸直",
+   "en": "Straighten"
   },
   "peak": {
-   "zh": "伸直",
-   "en": "Extend"
+   "zh": "停",
+   "en": "Hold"
   },
   "end": {
-   "zh": "稳住",
-   "en": "Hold steady"
+   "zh": "收回",
+   "en": "Bend in"
+  }
+ },
+ "training": {
+  "kind": "rep_updown",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.8,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 0.2
+   },
+   {
+    "id": "back",
+    "seconds": 0.8,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 0.2
+   }
+  ],
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "改名：「屈伸」是术语 → 分腿坐收腿伸腿 / Seated Straddle Tuck and Extend",
+    "动画从收腿开始：伸直 0.8 s / 停 0.2 s / 收回 0.8 s / 停 0.2 s；口令顺序改成 伸直→收回（原 start「收腿」peak「伸直」顺序反了）",
+    "剂量 6 → 8 次"
+   ],
+   "flags": [
+    "改名：坐姿分腿屈伸 → 分腿坐收腿伸腿（EN Seated Straddle Extension → Seated Straddle Tuck and Extend）"
+   ]
   }
  }
 }

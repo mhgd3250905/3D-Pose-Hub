@@ -1,41 +1,41 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "t-lsit-tuck",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/t-lsit-tuck-r5.js"
  ],
  "name": {
-  "zh": "L 撑↔团身",
+  "zh": "L撑收腿伸腿",
   "en": "L-Sit to Tuck"
  },
  "purpose": {
-  "zh": "在支撑中练屈髋收腿",
-  "en": "Train hip compression while holding your support."
+  "zh": "撑住身体，练双腿收回和伸直的控制",
+  "en": "Stay up on your hands and control your legs as they tuck and straighten."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "撑起身体，膝盖高高收向胸口",
-    "en": "Press up and draw your knees high toward your chest"
+    "zh": "撑住不落地，腿伸直成L撑再收回膝盖",
+    "en": "Stay up on your hands, straighten your legs into an L, then pull your knees back in"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "肩往下压，手臂锁直",
-    "en": "Press your shoulders down and lock your arms."
+    "zh": "肩膀往下压，手臂伸直。",
+    "en": "Press your shoulders down and keep your arms straight."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "脚跟收回，再把腿伸成L撑",
-    "en": "Pull your heels in, then extend back to the L-sit."
+    "zh": "收腿时脚跟收到身体下面。",
+    "en": "When you tuck, pull your heels in under you."
    }
   }
  ],
@@ -45,14 +45,18 @@
    "en": "Shrugging."
   },
   {
-   "zh": "身体后仰代替收腿",
-   "en": "Leaning back instead of tucking."
+   "zh": "身体往后仰代替收腿",
+   "en": "Leaning back instead of tucking your knees."
   }
  ],
  "cautions": [
   {
-   "zh": "手腕热身后再做；腕部或肩部疼痛时缩短时间或改简单版本",
-   "en": "Warm up your wrists first; if your wrists or shoulders hurt, shorten the hold or use an easier version."
+   "zh": "手腕不舒服时先活动一下手腕",
+   "en": "If your wrists feel stiff, warm them up first."
+  },
+  {
+   "zh": "手腕或肩膀疼时少做一点，还疼就停",
+   "en": "If your wrists or shoulders hurt, do less, and stop if it still hurts."
   }
  ],
  "tags": {
@@ -75,21 +79,60 @@
  "defaultDose": {
   "mode": "reps",
   "sets": 3,
-  "reps": 5,
+  "reps": 6,
   "restSeconds": 60
  },
  "phases": {
   "start": {
-   "zh": "收腿",
-   "en": "Tuck"
+   "zh": "伸直腿",
+   "en": "Legs out"
   },
   "peak": {
-   "zh": "伸直",
-   "en": "Extend"
+   "zh": "停",
+   "en": "Hold"
   },
   "end": {
-   "zh": "稳住",
-   "en": "Hold steady"
+   "zh": "收膝盖",
+   "en": "Knees in"
+  }
+ },
+ "training": {
+  "kind": "rep_updown",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.0,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 0.5,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 1.0,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.5
+   }
+  ],
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "改名：「L 撑↔团身」带箭头念不出 → L撑收腿伸腿",
+    "动画从团身开始：伸成L撑 1.0 s / 停 0.5 s / 收回 1.0 s / 团身停 1.5 s；口令顺序改成 伸直腿→停→收膝盖（原 start「收腿」peak「伸直」与动画顺序相反）",
+    "purpose 去掉「屈髋」；剂量 5 → 6 次"
+   ],
+   "flags": [
+    "改名：L 撑↔团身 → L撑收腿伸腿",
+    "动画一次循环里两下之间只停 0.5 s、循环接缝处停 2.5 s，rest 取平均 1.5 s"
+   ]
   }
  }
 }
