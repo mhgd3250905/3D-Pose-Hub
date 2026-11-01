@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "adductors-B",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/data/drills.json",
   "drill-anim/specs/adductors-B.js"
@@ -11,23 +11,23 @@
   "en": "Short-Lever Copenhagen Plank"
  },
  "purpose": {
-  "zh": "练大腿内侧和侧腹，提升髋部稳定",
-  "en": "Build the inner thighs and obliques and improve hip stability."
+  "zh": "练大腿内侧和侧腰，让髋部更稳",
+  "en": "Build your inner thighs and the sides of your waist for steadier hips."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "上方膝内侧压凳，用内收肌把髋顶起",
-    "en": "Press your top inner knee into the bench and lift your hips"
+    "zh": "上面那条腿的膝盖压住凳子，把髋抬起",
+    "en": "Press your top knee into the bench and lift your hips"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "前臂撑地，肘在肩正下方",
+    "zh": "前臂撑地，手肘在肩膀正下方。",
     "en": "Rest on your forearm with the elbow under your shoulder."
    }
   },
@@ -35,25 +35,25 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "顶到肩、髋、膝成一条直线",
-    "en": "Lift until your shoulder, hip, and knee form a straight line."
+    "zh": "抬到肩、髋、膝成一条直线，停两秒。",
+    "en": "Lift until your shoulder, hip, and knee line up, and hold for two seconds."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "髋下沉",
+   "zh": "髋往下掉",
    "en": "Letting the hips sag."
   },
   {
-   "zh": "身体前倾",
-   "en": "Leaning the body forward."
+   "zh": "身体往前倒",
+   "en": "Rolling the body forward."
   }
  ],
  "cautions": [
   {
-   "zh": "从屈膝短力臂版本开始；腹股沟刺痛立即停止",
-   "en": "Start with the bent-knee version, and stop right away if your groin feels sharp pain."
+   "zh": "大腿根内侧刺痛时立刻停",
+   "en": "Stop right away if you feel sharp pain in your inner groin."
   }
  ],
  "tags": {
@@ -76,23 +76,63 @@
  "unilateral": true,
  "startingSide": "right",
  "defaultDose": {
-  "mode": "hold",
+  "mode": "reps",
   "sets": 3,
-  "seconds": 15,
+  "reps": 6,
   "restSeconds": 45
  },
  "phases": {
   "start": {
-   "zh": "顶起髋部",
-   "en": "Lift your hips"
+   "zh": "抬髋",
+   "en": "Hips up"
   },
   "peak": {
    "zh": "保持住",
    "en": "Hold"
   },
   "end": {
-   "zh": "慢慢放下",
-   "en": "Lower slowly"
+   "zh": "放下",
+   "en": "Lower"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.9,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 2.5,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.3,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 0.3
+   }
+  ],
+  "perSide": "each-side-separately",
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画 8 秒 2 次「抬髋-停 2.4 s-放下」，剂量从 15 秒保持改为每侧 3 组×6 次（rep_hold）",
+    "主口令去掉「内收肌」（工具拦截），改口语；删掉 caution 里「从屈膝版开始」（本动作就是屈膝版）",
+    "口令缩短：抬髋 0.9 s、放下 0.3 s"
+   ],
+   "flags": [
+    "原设计是保持 15 秒；动画做成抬放重复，选哪种请定",
+    "放下只有 0.3 s，「放下」会念进休息里"
+   ]
   }
  }
 }

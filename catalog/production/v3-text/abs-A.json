@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "abs-A",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/data/drills.json",
   "drill-anim/specs/abs-A-r2.js",
@@ -12,23 +12,23 @@
   "en": "Hollow Body Hold"
  },
  "purpose": {
-  "zh": "练腹部核心，提升躯干控制",
-  "en": "Build core strength and trunk control."
+  "zh": "练腹部，让身体更稳",
+  "en": "Build your abs and a steadier trunk."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "下背压实地面，肩胛离地",
-    "en": "Press your lower back into the floor and lift your shoulder blades"
+    "zh": "腰压住地面，上背和双腿一起抬起",
+    "en": "Keep your lower back down and lift your upper back and legs"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "手臂贴耳伸直，双腿并拢伸直",
+    "zh": "手臂贴着耳朵伸直，双腿并拢伸直。",
     "en": "Keep your arms straight by your ears and your legs straight together."
    }
   },
@@ -36,8 +36,8 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "手和腿离地越低越难，以腰不离地为准",
-    "en": "The lower your arms and legs, the harder it gets; keep your back down."
+    "zh": "抬起后停两秒，再慢慢放下。",
+    "en": "Hold for two seconds at the top, then lower slowly."
    }
   }
  ],
@@ -53,8 +53,8 @@
  ],
  "cautions": [
   {
-   "zh": "全程保持腰部贴地，腰部发紧或疼痛时减小幅度",
-   "en": "Keep your lower back down; reduce the range if it feels tight or painful."
+   "zh": "腰发紧或疼时，腿抬高一点、幅度小一点",
+   "en": "If your lower back feels tight or sore, raise your legs higher and make the move smaller."
   }
  ],
  "tags": {
@@ -73,14 +73,14 @@
  },
  "unilateral": false,
  "defaultDose": {
-  "mode": "hold",
+  "mode": "reps",
   "sets": 3,
-  "seconds": 20,
-  "restSeconds": 30
+  "reps": 8,
+  "restSeconds": 45
  },
  "phases": {
   "start": {
-   "zh": "卷起离地",
+   "zh": "卷起",
    "en": "Curl up"
   },
   "peak": {
@@ -88,8 +88,46 @@
    "en": "Hold"
   },
   "end": {
-   "zh": "慢慢放下",
-   "en": "Lower slowly"
+   "zh": "放下",
+   "en": "Lower"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.6,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 2.2,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.5,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 0.7
+   }
+  ],
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画是 8 秒 2 次「卷起-停约 2 秒-放下」，剂量从 20 秒保持改为 3 组×8 次（rep_hold）",
+    "主口令合并成一句：腰压地、上背和腿一起抬；删掉动画里没有的「手脚越低越难」",
+    "口令按相位时长缩短（卷起 0.6 s / 放下 0.5 s）"
+   ],
+   "flags": [
+    "名字仍叫「空心体支撑 / Hollow Body Hold」但现在按次数计；要不要改名（如「空心体卷起」）或改回计时、动画改成静止保持，请定"
+   ]
   }
  }
 }

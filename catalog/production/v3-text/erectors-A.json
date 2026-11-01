@@ -1,25 +1,25 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "erectors-A",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/data/drills.json",
   "drill-anim/specs/erectors-A.js"
  ],
  "name": {
-  "zh": "反向平板（后撑抬髋）",
-  "en": "Reverse Plank"
+  "zh": "反向平板抬髋",
+  "en": "Reverse Plank Hip Lift"
  },
  "purpose": {
-  "zh": "练背部、臀部和腿后侧",
-  "en": "Build the back, glutes, and hamstrings."
+  "zh": "练背部、臀部和大腿后侧",
+  "en": "Build your back, glutes, and the backs of your thighs."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "推地抬髋到身体一条直线，夹紧臀部",
+    "zh": "手推地把髋抬起，身体成一条直线",
     "en": "Push the floor away and lift your hips into one straight line"
    }
   },
@@ -27,33 +27,37 @@
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "双手在肩下方，手指朝脚或朝两侧",
-    "en": "Keep your hands under your shoulders, fingers toward your feet or out to the sides."
+    "zh": "双手在肩膀下面，手指朝脚的方向。",
+    "en": "Keep your hands under your shoulders with fingers toward your feet."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "手臂伸直，脚跟踩地",
-    "en": "Keep your arms straight and your heels on the floor."
+    "zh": "手臂伸直，脚跟踩地，顶上夹紧臀部。",
+    "en": "Keep your arms straight, heels down, and squeeze your glutes at the top."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "髋下坠",
+   "zh": "髋往下掉",
    "en": "Letting the hips drop."
   },
   {
-   "zh": "头后仰、肩往前塌",
+   "zh": "头往后仰，肩往前塌",
    "en": "Dropping the head back and letting the shoulders roll forward."
   }
  ],
  "cautions": [
   {
-   "zh": "先做手腕热身；手腕刺痛或发麻就停止",
-   "en": "Warm up your wrists first, and stop if they feel sharp pain or numbness."
+   "zh": "手腕疼或发麻时停下",
+   "en": "Stop if your wrists hurt or go numb."
+  },
+  {
+   "zh": "先活动手腕再做",
+   "en": "Warm up your wrists before you start."
   }
  ],
  "tags": {
@@ -75,23 +79,61 @@
  },
  "unilateral": false,
  "defaultDose": {
-  "mode": "hold",
+  "mode": "reps",
   "sets": 3,
-  "seconds": 20,
-  "restSeconds": 30
+  "reps": 10,
+  "restSeconds": 45
  },
  "phases": {
   "start": {
-   "zh": "抬起髋部",
-   "en": "Lift your hips"
+   "zh": "抬髋",
+   "en": "Hips up"
   },
   "peak": {
-   "zh": "夹紧保持",
+   "zh": "夹臀保持",
    "en": "Squeeze and hold"
   },
   "end": {
-   "zh": "慢慢放下",
-   "en": "Lower slowly"
+   "zh": "放下",
+   "en": "Lower"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.8,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 2.4,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.4,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 0.4
+   }
+  ],
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画 8 秒 2 次「抬髋-停 1.7 s-放下」，剂量从 20 秒保持改为 3 组×10 次（rep_hold）；名字随之改为「反向平板抬髋 / Reverse Plank Hip Lift」",
+    "cue2 删掉动画里没有的「或朝两侧」；「夹紧臀部」从主口令挪到 cue3",
+    "口令按相位缩短（抬髋 0.8 s / 放下 0.4 s）"
+   ],
+   "flags": [
+    "原设计是保持 20 秒，改成次数是否接受；改名请确认"
+   ]
   }
  }
 }

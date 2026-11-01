@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "glute-max-B",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/data/drills.json",
   "drill-anim/specs/glute-max-B.js"
@@ -11,15 +11,15 @@
   "en": "Banded Quadruped Straight-Leg Kickback"
  },
  "purpose": {
-  "zh": "练臀部，提升伸髋力量",
-  "en": "Build the glutes and strengthen hip extension."
+  "zh": "练臀部，让你把腿往后抬得更有力",
+  "en": "Build your glutes for a stronger backward leg lift."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "四足跪姿，腿伸直向后上方抬",
+    "zh": "跪撑在垫上，腿伸直往后上方抬",
     "en": "On hands and knees, lift your straight leg back and up"
    }
   },
@@ -27,29 +27,33 @@
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "腰不塌，只让髋发力",
-    "en": "Keep your lower back from sagging and let the hip do the work."
+    "zh": "腰别塌，抬到和身体差不多高就好。",
+    "en": "Keep your lower back from sagging, and lift only to about body height."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "顶端停一秒，再慢慢放下",
+    "zh": "顶上停一秒，再慢慢放下。",
     "en": "Pause for a second at the top, then lower slowly."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "抬太高导致腰过度后仰",
-   "en": "Lifting too high and overarching the lower back."
+   "zh": "抬太高，腰往下塌",
+   "en": "Lifting too high and letting the lower back sag."
+  },
+  {
+   "zh": "膝盖弯了",
+   "en": "Bending the knee."
   }
  ],
  "cautions": [
   {
-   "zh": "腰部不适时减小幅度，仍痛就停止",
-   "en": "Reduce the range if your lower back feels uncomfortable, and stop if it still hurts."
+   "zh": "腰不舒服时抬低一点，还疼就停",
+   "en": "If your lower back feels uncomfortable, lift lower, and stop if it still hurts."
   }
  ],
  "tags": {
@@ -78,7 +82,7 @@
  },
  "phases": {
   "start": {
-   "zh": "向后抬",
+   "zh": "往后抬",
    "en": "Lift back"
   },
   "peak": {
@@ -88,6 +92,43 @@
   "end": {
    "zh": "慢慢放下",
    "en": "Lower slowly"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.8,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 1.2,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 1.1,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 0.9
+   }
+  ],
+  "perSide": "each-side-separately",
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "主口令「四足跪姿」改「跪撑在垫上」",
+    "cue2「只让髋发力」改成可执行的「抬到和身体差不多高」（动画只比髋线高 12°）；补常见错误「膝盖弯了」",
+    "purpose 去掉「伸髋」"
+   ],
+   "flags": []
   }
  }
 }

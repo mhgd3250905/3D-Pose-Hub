@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "forearms-A",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/data/drills.json",
   "drill-anim/specs/forearms-A-r2.js",
@@ -12,48 +12,48 @@
   "en": "Quadruped Wrist Rocks"
  },
  "purpose": {
-  "zh": "活动手腕，为支撑类动作做准备",
-  "en": "Mobilize your wrists to prepare for weight-bearing work."
+  "zh": "活动手腕，为撑地的动作做准备",
+  "en": "Loosen up your wrists before moves where you push on your hands."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "身体前后移动重心，力度由轻到重",
-    "en": "Rock your weight forward and back, starting light and building up"
+    "zh": "身体前后轻轻摇，力度由轻到重",
+    "en": "Rock your weight forward and back, starting light"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "手指依次朝前、朝侧、朝后，最后手背着地",
-    "en": "Turn your fingers forward, sideways, back, then rest on the backs of your hands."
+    "zh": "手指依次朝前、朝外、朝后，最后手背贴地。",
+    "en": "Point your fingers forward, out, back, then rest on the backs of your hands."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "手臂伸直，膝盖跪稳",
+    "zh": "手臂伸直，膝盖跪稳。",
     "en": "Keep your arms straight and your knees steady."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "一上来就压全部体重",
-   "en": "Putting full weight on the wrists right away."
+   "zh": "一开始就压上全身重量",
+   "en": "Putting your full weight on the wrists right away."
   },
   {
-   "zh": "只做手指朝前一个方向",
+   "zh": "只做手指朝前这一种",
    "en": "Only doing the fingers-forward position."
   }
  ],
  "cautions": [
   {
-   "zh": "手腕刺痛或发麻就停止",
+   "zh": "手腕刺痛或发麻时停下",
    "en": "Stop if your wrists feel sharp pain or numbness."
   }
  ],
@@ -73,14 +73,14 @@
  },
  "unilateral": false,
  "defaultDose": {
-  "mode": "time",
+  "mode": "reps",
   "sets": 2,
-  "seconds": 60,
+  "reps": 16,
   "restSeconds": 20
  },
  "phases": {
   "start": {
-   "zh": "重心前移",
+   "zh": "往前摇",
    "en": "Rock forward"
   },
   "peak": {
@@ -88,8 +88,45 @@
    "en": "Pause"
   },
   "end": {
-   "zh": "重心后移",
-   "en": "Rock back"
+   "zh": "往后",
+   "en": "Back"
+  }
+ },
+ "training": {
+  "kind": "rep_updown",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.1,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 0.3
+   },
+   {
+    "id": "back",
+    "seconds": 0.3,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 0.3
+   }
+  ],
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画在重复前后摇（8 秒 4 下、每下换一种手位），剂量从 60 秒计时改为 2 组×16 下（4 种手位各 4 下），rep_updown",
+    "主口令缩短；结束口令按 0.3 s 相位缩为「往后」"
+   ],
+   "flags": [
+    "动画每摇一下就换手位，实际练习通常每个手位摇几下；按次数还是改回 60 秒计时请定",
+    "批表 go 1.1 s 里包含换手的时间，App 节奏会显得前摇很慢、后摇很快"
+   ]
   }
  }
 }

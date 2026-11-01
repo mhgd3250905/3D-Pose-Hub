@@ -1,60 +1,64 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "deltoids-B",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/data/drills.json",
   "drill-anim/specs/deltoids-B-r2.js",
   "drill-anim/specs/deltoids-B.js"
  ],
  "name": {
-  "zh": "哑铃半程土耳其起立（至高桥）",
+  "zh": "哑铃半程土耳其起立",
   "en": "Dumbbell Half Turkish Get-Up"
  },
  "purpose": {
-  "zh": "练肩部稳定，在身体变换姿势时稳住手臂",
-  "en": "Build shoulder stability while your body changes position."
+  "zh": "练肩膀稳定，身体换姿势时手臂一直稳住",
+  "en": "Build shoulder stability by keeping your arm steady while your body changes position."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "负重手臂始终垂直指天，眼睛看着哑铃",
-    "en": "Keep the loaded arm pointing straight up and your eyes on the dumbbell"
+    "zh": "举哑铃的手一直指向天花板",
+    "en": "Keep the dumbbell arm pointing straight at the ceiling"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "依次肘撑、手撑坐起，再推地抬髋到高桥",
-    "en": "Roll to your elbow, press up to sitting, then lift your hips into a bridge."
+    "zh": "先撑到手肘，再撑手坐起，最后抬髋到高桥。",
+    "en": "Roll onto your elbow, press up to sitting, then lift your hips into a high bridge."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "每一步做稳再进入下一步，原路返回",
-    "en": "Settle each step before the next, then reverse the same way."
+    "zh": "每一步稳住再走下一步，原路回去。",
+    "en": "Settle each step before the next, then go back the same way."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "负重臂向头后或身体前方倒",
-   "en": "Letting the loaded arm drift behind the head or in front of the body."
+   "zh": "举哑铃的手往头后或身前倒",
+   "en": "Letting the dumbbell arm drift behind your head or in front of your body."
+  },
+  {
+   "zh": "眼睛离开哑铃",
+   "en": "Taking your eyes off the dumbbell."
   }
  ],
  "cautions": [
   {
-   "zh": "从很轻的重量开始，每一步做稳再继续",
-   "en": "Start with a very light weight and steady each step before moving on."
+   "zh": "先用很轻的重量练熟",
+   "en": "Learn it with a very light weight first."
   },
   {
-   "zh": "肩前侧夹痛时缩小幅度或换简单版本",
-   "en": "If the front of your shoulder pinches, reduce the range or switch to an easier version."
+   "zh": "肩前面夹着疼时停下",
+   "en": "Stop if the front of your shoulder pinches."
   }
  ],
  "tags": {
@@ -85,16 +89,56 @@
  },
  "phases": {
   "start": {
-   "zh": "撑起",
-   "en": "Press up"
+   "zh": "一步步撑起",
+   "en": "Rise step by step"
   },
   "peak": {
-   "zh": "高桥稳住",
-   "en": "Hold the bridge"
+   "zh": "稳住",
+   "en": "Hold"
   },
   "end": {
-   "zh": "原路返回",
-   "en": "Reverse down"
+   "zh": "原路回去",
+   "en": "Go back down"
+  }
+ },
+ "training": {
+  "kind": "rep_updown",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 3.4,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 0.6,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 3.4,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 0.6
+   }
+  ],
+  "perSide": "each-side-separately",
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画（r2）一次 8 秒：0.3–3.7 s 依次肘撑/坐起/高桥，3.7–4.3 s 停，4.3–7.7 s 原路返回；相位按此手算（go 3.4/hold 0.6/back 3.4/rest 0.6）",
+    "名字去掉「（至高桥）」以免超长；主口令只说手臂指天花板，「看哑铃」挪到常见错误",
+    "起始/结束口令改「一步步撑起」「原路回去」"
+   ],
+   "flags": [
+    "批表 sit 轨把高桥上下也算成 hold（3.0 s），我没用批表值，请确认手算相位",
+    "原文案剂量 3 组×3 次，每次 8 秒偏快（真实一次约 15–20 秒），保留未改"
+   ]
   }
  }
 }

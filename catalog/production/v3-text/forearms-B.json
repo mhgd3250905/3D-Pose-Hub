@@ -1,18 +1,18 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "forearms-B",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/data/drills.json",
   "drill-anim/specs/forearms-B.js"
  ],
  "name": {
-  "zh": "哑铃腕屈 + 腕伸",
-  "en": "Seated Dumbbell Wrist Curl + Extension"
+  "zh": "坐姿哑铃上下卷腕",
+  "en": "Seated Full-Range Dumbbell Wrist Curl"
  },
  "purpose": {
-  "zh": "练前臂屈伸肌，增强握力和手腕力量",
-  "en": "Build the forearm muscles for stronger grip and wrists."
+  "zh": "练前臂，让握力和手腕更有力",
+  "en": "Build your forearms for a stronger grip and wrists."
  },
  "cues": [
   {
@@ -27,16 +27,16 @@
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "手腕向上卷起，再慢慢放下过中立位",
-    "en": "Curl your wrist up, then lower slowly past neutral."
+    "zh": "手腕往上卷，再慢慢往下放到底。",
+    "en": "Curl your wrist up, then lower it slowly all the way down."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "上1秒、下3秒，全幅度慢放",
-    "en": "Lift for one second and lower for three, through the full range."
+    "zh": "往上约 1 秒，往下约 2 秒。",
+    "en": "Take about one second up and two seconds down."
    }
   }
  ],
@@ -46,14 +46,14 @@
    "en": "Swinging the weight."
   },
   {
-   "zh": "用前臂抬起代替手腕屈伸",
+   "zh": "前臂跟着抬起来",
    "en": "Lifting the forearm instead of bending the wrist."
   }
  ],
  "cautions": [
   {
-   "zh": "用轻重量，手腕不适时减小幅度",
-   "en": "Use a light weight and reduce the range if your wrist feels uncomfortable."
+   "zh": "手腕不舒服时用更轻的哑铃、幅度小一点",
+   "en": "If your wrist feels uncomfortable, use a lighter dumbbell and a smaller range."
   }
  ],
  "tags": {
@@ -79,7 +79,7 @@
  },
  "phases": {
   "start": {
-   "zh": "卷起手腕",
+   "zh": "往上卷",
    "en": "Curl up"
   },
   "peak": {
@@ -87,8 +87,47 @@
    "en": "Pause"
   },
   "end": {
-   "zh": "慢慢放下",
-   "en": "Lower slowly"
+   "zh": "慢慢放到底",
+   "en": "Lower all the way"
+  }
+ },
+ "training": {
+  "kind": "rep_updown",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.0,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 0.4
+   },
+   {
+    "id": "back",
+    "seconds": 2.2,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 0.4
+   }
+  ],
+  "perSide": "each-side-separately",
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "名字「腕屈 + 腕伸」改为口语「坐姿哑铃上下卷腕 / Seated Full-Range Dumbbell Wrist Curl」",
+    "按 spec 关键帧手算相位：上卷 1.0、停 0.4、下放到底并回中 2.2、停 0.4（批表 flex 轨没包含往下那段）",
+    "cue3「上 1 秒下 3 秒」改成动画的「上约 1 秒、下约 2 秒」；删「过中立位」"
+   ],
+   "flags": [
+    "相位没用批表（0.57/0.87/0.53/2.05），请确认手算值",
+    "改名请确认"
+   ]
   }
  }
 }

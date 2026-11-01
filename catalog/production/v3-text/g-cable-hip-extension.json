@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "g-cable-hip-extension",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/g-cable-hip-extension.js"
  ],
@@ -10,23 +10,23 @@
   "en": "Low Cable Hip Extension"
  },
  "purpose": {
-  "zh": "练臀部，提升伸髋力量",
-  "en": "Build the glutes and strengthen hip extension."
+  "zh": "练臀部，让你把腿往后推得更有力",
+  "en": "Build your glutes for a stronger backward leg drive."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "用臀部把腿向后推，骨盆和躯干保持不动",
-    "en": "Drive the leg back with your glutes while your pelvis and trunk stay still"
+    "zh": "用臀部把腿往后推，上身不动",
+    "en": "Push your leg back with your glutes and keep your trunk still"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "一手扶稳椅子，支撑脚踩实",
+    "zh": "一只手扶稳椅子，支撑脚踩实。",
     "en": "Hold a stable chair with one hand and keep the standing foot planted."
    }
   },
@@ -34,21 +34,21 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "不要腰往后仰，慢慢放回",
+    "zh": "腰别往后仰，慢慢放回。",
     "en": "Do not arch your lower back, and return slowly."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "用腰后仰代替伸髋",
-   "en": "Arching the lower back instead of extending the hip."
+   "zh": "腰往后仰代替臀部发力",
+   "en": "Arching the lower back instead of using your glutes."
   }
  ],
  "cautions": [
   {
-   "zh": "腰部不适时减小幅度，仍痛就停止",
-   "en": "Reduce the range if your lower back feels uncomfortable, and stop if it still hurts."
+   "zh": "腰不舒服时幅度小一点，还疼就停",
+   "en": "If your lower back feels uncomfortable, make the move smaller, and stop if it still hurts."
   }
  ],
  "tags": {
@@ -78,16 +78,52 @@
  },
  "phases": {
   "start": {
-   "zh": "向后推",
+   "zh": "往后推",
    "en": "Push back"
   },
   "peak": {
-   "zh": "夹臀",
+   "zh": "夹紧臀部",
    "en": "Squeeze"
   },
   "end": {
-   "zh": "慢慢放回",
-   "en": "Return slowly"
+   "zh": "放回来",
+   "en": "Bring back"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.7,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 1.3,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.7,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.3
+   }
+  ],
+  "perSide": "each-side-separately",
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "purpose 和常见错误去掉「伸髋」；主口令缩到一个指令",
+    "加 training rep_hold，每侧分开做"
+   ],
+   "flags": []
   }
  }
 }

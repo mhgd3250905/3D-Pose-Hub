@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "abs-B",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/data/drills.json",
   "drill-anim/specs/abs-B.js"
@@ -11,49 +11,53 @@
   "en": "Parallette Tuck L-Sit"
  },
  "purpose": {
-  "zh": "练腹部和髋屈肌，提升支撑力量",
-  "en": "Build the abs and hip flexors and strengthen your support."
+  "zh": "练腹部和抬腿的力量，提升撑住身体的能力",
+  "en": "Build your abs and leg-lifting strength while you hold yourself up."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "手臂锁直、肩下压，把膝盖抬到胸前",
-    "en": "Lock your arms, press your shoulders down, and pull your knees to your chest"
+    "zh": "手臂撑直，膝盖抬到胸前",
+    "en": "Lock your arms and pull your knees to your chest"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "骨盆微微后倾，胸口保持挺直",
-    "en": "Tilt your pelvis back slightly and keep your chest tall."
+    "zh": "肩膀往下压，别耸肩。",
+    "en": "Press your shoulders down, away from your ears."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "能力够了再一条腿伸直，逐步到 L 撑",
-    "en": "When ready, straighten one leg, working toward a full L-sit."
+    "zh": "做得稳了，再试着把一条腿往前伸直。",
+    "en": "Once it feels steady, try straightening one leg forward."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "弓背耸肩",
-   "en": "Rounding the back and shrugging the shoulders."
+   "zh": "耸肩，脖子缩起来",
+   "en": "Shrugging and letting the neck shorten."
   },
   {
-   "zh": "膝盖下垂碰地",
-   "en": "Letting the knees drop to the floor."
+   "zh": "膝盖往下掉",
+   "en": "Letting the knees drop."
   }
  ],
  "cautions": [
   {
-   "zh": "先做手腕热身；手腕刺痛或发麻就停止",
-   "en": "Warm up your wrists first, and stop if they feel sharp pain or numbness."
+   "zh": "手腕疼或发麻时停下",
+   "en": "Stop if your wrists hurt or go numb."
+  },
+  {
+   "zh": "先活动手腕再做",
+   "en": "Warm up your wrists before you start."
   }
  ],
  "tags": {
@@ -89,8 +93,25 @@
    "en": "Hold"
   },
   "end": {
-   "zh": "收回团身",
-   "en": "Tuck back in"
+   "zh": "慢慢放下",
+   "en": "Lower slowly"
+  }
+ },
+ "training": {
+  "kind": "hold",
+  "leadSeconds": 1,
+  "source": "timer"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画是一直撑着团身，中间一条腿伸直再收回（进阶演示），保持计时不变，training=hold",
+    "主口令删掉「肩下压」，一句只说一件事；「骨盆后倾」删掉；结束口令改为「慢慢放下」（原「收回团身」和起始重复）",
+    "purpose 去掉「髋屈肌」；cautions 改成「X 时 Y」短句"
+   ],
+   "flags": [
+    "动画只伸右腿做进阶演示，文案写「一条腿」，是否需要说明两腿轮流"
+   ]
   }
  }
 }

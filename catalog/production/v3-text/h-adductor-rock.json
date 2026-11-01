@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-adductor-rock",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/h-adductor-rock.js"
  ],
@@ -10,23 +10,23 @@
   "en": "Quadruped Adductor Rock-Back"
  },
  "purpose": {
-  "zh": "拉伸大腿内侧，改善髋部活动度",
-  "en": "Stretch the inner thigh and improve hip mobility."
+  "zh": "拉伸大腿内侧，让髋更灵活",
+  "en": "Stretch your inner thigh for more mobile hips."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "背部保持平直，臀部向后坐向脚跟",
-    "en": "Keep your back long and rock your hips back toward your heel"
+    "zh": "背保持平直，臀部往后坐向脚跟",
+    "en": "Keep your back flat and sit your hips back toward your heel"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "一条腿向侧伸直，整只脚踩地，脚尖朝前",
+    "zh": "一条腿往侧面伸直，整只脚踩地，脚尖朝前。",
     "en": "Reach one leg straight out to the side, foot flat and toes forward."
    }
   },
@@ -34,25 +34,25 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "大腿内侧有拉伸感时停一下，再向前回",
+    "zh": "大腿内侧有拉伸感时停一下，再往前回。",
     "en": "Pause when you feel the inner thigh stretch, then rock forward."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "后摇时弓背",
-   "en": "Rounding the back as you rock back."
+   "zh": "往后坐时弓背",
+   "en": "Rounding the back as you sit back."
   },
   {
-   "zh": "伸直腿的脚离地或膝盖弯曲",
+   "zh": "伸直那条腿的脚离地或膝盖弯了",
    "en": "Lifting the straight-leg foot or bending that knee."
   }
  ],
  "cautions": [
   {
-   "zh": "只到舒适的拉伸感，腹股沟刺痛就停止",
-   "en": "Stretch only to a comfortable point, and stop if your groin feels sharp pain."
+   "zh": "大腿根内侧刺痛时停下",
+   "en": "Stop if you feel sharp pain in your inner groin."
   }
  ],
  "tags": {
@@ -80,7 +80,7 @@
  },
  "phases": {
   "start": {
-   "zh": "向后坐",
+   "zh": "往后坐",
    "en": "Rock back"
   },
   "peak": {
@@ -88,8 +88,46 @@
    "en": "Feel the stretch"
   },
   "end": {
-   "zh": "向前回",
+   "zh": "往前回",
    "en": "Rock forward"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.0,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 1.4,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.7,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 0.9
+   }
+  ],
+  "perSide": "each-side-separately",
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "文案与动画一致，只改口语（背部保持平直→背保持平直等）、caution 短句",
+    "加 training rep_hold，每侧分开做"
+   ],
+   "flags": [
+    "category 是 mobility、动作是拉伸，剂量按次数（每侧 2×8），未改"
+   ]
   }
  }
 }

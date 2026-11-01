@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "g-cable-hip-abduction",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/specs/g-cable-hip-abduction.js"
  ],
@@ -10,23 +10,23 @@
   "en": "Low Cable Hip Abduction"
  },
  "purpose": {
-  "zh": "练臀部外侧，提升髋部稳定",
-  "en": "Build the outer glutes and improve hip stability."
+  "zh": "练臀部外侧，让髋部更稳",
+  "en": "Build the outer glutes for steadier hips."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "工作腿向外侧抬，骨盆和躯干保持不动",
-    "en": "Lift the working leg out to the side while your pelvis and trunk stay still"
+    "zh": "腿往外侧抬，骨盆和上身不动",
+    "en": "Lift your leg out to the side and keep your hips and trunk still"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "一手扶稳椅子，支撑脚踩实",
+    "zh": "一只手扶稳椅子，支撑脚踩实。",
     "en": "Hold a stable chair with one hand and keep the standing foot planted."
    }
   },
@@ -34,21 +34,25 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "慢慢放回，控制绳索",
-    "en": "Return slowly and control the cable."
+    "zh": "慢慢放回，别让绳子拉回去。",
+    "en": "Return slowly and do not let the cable pull the leg back."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "上身向一侧歪来抬腿",
+   "zh": "上身往一边歪来抬腿",
    "en": "Leaning the trunk sideways to lift the leg."
+  },
+  {
+   "zh": "抬得太快，靠甩",
+   "en": "Lifting too fast and swinging the leg."
   }
  ],
  "cautions": [
   {
-   "zh": "出现疼痛时减小幅度，仍痛就停止",
-   "en": "If you feel pain, reduce the range, and stop if it continues."
+   "zh": "疼时缩小幅度，还疼就停",
+   "en": "If it hurts, make the move smaller, and stop if it still hurts."
   }
  ],
  "tags": {
@@ -86,8 +90,44 @@
    "en": "Pause"
   },
   "end": {
-   "zh": "慢慢放回",
-   "en": "Return slowly"
+   "zh": "放回来",
+   "en": "Bring back"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.7,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 1.3,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.7,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.3
+   }
+  ],
+  "perSide": "each-side-separately",
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "主口令「工作腿」改为「腿」，更口语；补一条常见错误",
+    "加 training rep_hold，每侧分开做"
+   ],
+   "flags": []
   }
  }
 }

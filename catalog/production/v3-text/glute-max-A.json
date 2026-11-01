@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "glute-max-A",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "catalog/v2/actions/glute-max-A.json",
   "catalog/voice-v2/script.json",
@@ -9,60 +9,56 @@
  ],
  "name": {
   "zh": "单腿臀桥",
-  "en": "Single-leg glute bridge"
+  "en": "Single-Leg Glute Bridge"
  },
  "purpose": {
-  "zh": "单腿臀桥，练臀大肌伸髋（每侧）",
-  "en": "Practice a single-leg hip bridge with a level pelvis."
+  "zh": "练臀部，单腿把髋抬起",
+  "en": "Build your glutes by lifting your hips on one leg."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "一条腿抬起，用臀部把身体推高",
-    "en": "One leg up, drive your hips up with your glutes"
+    "zh": "一条腿伸直抬起，用臀部把髋推高",
+    "en": "Lift one leg straight and drive your hips up with your glutes"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "左脚稳定支撑，保持骨盆朝向一致",
-    "en": "Keep the left foot planted and the pelvis level."
+    "zh": "支撑脚踩稳，骨盆别歪。",
+    "en": "Keep the standing foot planted and your hips level."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "缓慢放回起始位，不用腰部猛顶",
-    "en": "Lower slowly to the starting position without thrusting through the lower back."
+    "zh": "慢慢放回，别用腰往上顶。",
+    "en": "Lower slowly and do not push up with your lower back."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "抬起时骨盆明显倾斜或旋转",
-   "en": "Tilting or rotating the pelvis as you lift."
+   "zh": "抬起时骨盆歪向一边",
+   "en": "Letting the hips tilt or twist as you lift."
   },
   {
-   "zh": "借腰部过度后仰代替臀部发力",
-   "en": "Overarching the lower back instead of driving through the hip."
+   "zh": "拱腰代替臀部发力",
+   "en": "Arching the lower back instead of using your glutes."
   }
  ],
  "cautions": [
   {
-   "zh": "腰背：抬髋来自臀部，避免用过度拱腰换取高度。",
-   "en": "Lower back: lift through the hips rather than forcing extra height by arching the lower back."
+   "zh": "腰不舒服时抬低一点，还疼就停",
+   "en": "If your lower back feels uncomfortable, lift lower, and stop if it still hurts."
   },
   {
-   "zh": "骨盆与支撑脚：保持骨盆平稳、左脚稳定支撑，下降时继续控制。",
-   "en": "Pelvis and support foot: keep the pelvis level and the left foot planted while lowering under control."
-  },
-  {
-   "zh": "颈肩：头和肩胛区域舒适承托，不把体重压在颈部。",
-   "en": "Neck and shoulders: keep the head and shoulder-blade area comfortably supported rather than loading the neck."
+   "zh": "头和肩放在垫子上，别用脖子撑",
+   "en": "Keep your head and shoulders on the mat and do not push through your neck."
   }
  ],
  "tags": {
@@ -92,7 +88,7 @@
  },
  "phases": {
   "start": {
-   "zh": "臀部抬起",
+   "zh": "抬髋",
    "en": "Hips up"
   },
   "peak": {
@@ -100,8 +96,47 @@
    "en": "Hold"
   },
   "end": {
-   "zh": "放下",
+   "zh": "放下来",
    "en": "Lower"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.8,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 1.8,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.8,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 0.6
+   }
+  ],
+  "perSide": "each-side-separately",
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "英文名改 Title Case；purpose 去掉「臀大肌伸髋」",
+    "cue2 删掉写死的「左脚」改「支撑脚」，「保持骨盆朝向一致」改「骨盆别歪」",
+    "3 条「部位：……」长句 caution 改成 2 条短句；口令按 0.8 s 缩短"
+   ],
+   "flags": [
+    "sources 是 catalog/v2 旧文件，保留未改"
+   ]
   }
  }
 }

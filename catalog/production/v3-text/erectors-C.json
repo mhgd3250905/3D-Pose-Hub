@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "erectors-C",
- "reviewStatus": "draft-ai-needs-user-review",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
  "sources": [
   "drill-anim/data/drills.json",
   "drill-anim/specs/erectors-C.js"
@@ -11,49 +11,49 @@
   "en": "45° Hyperextension"
  },
  "purpose": {
-  "zh": "练下背、臀部和腿后侧的伸髋力量",
-  "en": "Build hip-extension strength in the lower back, glutes, and hamstrings."
+  "zh": "练下背、臀部和大腿后侧，让你更有力地把身体抬起",
+  "en": "Build your lower back, glutes, and the backs of your thighs for a stronger lift."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "以髋为轴下放，起到身体一条直线",
-    "en": "Hinge at the hips to lower, then rise until your body is straight"
+    "zh": "从髋部往下弯，背保持平直",
+    "en": "Bend down from your hips and keep your back flat"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "垫子顶在髋骨下方，脊柱保持中立",
-    "en": "Set the pad just below your hip bones and keep your spine neutral."
+    "zh": "垫子顶在髋骨下面，双手交叉放胸前。",
+    "en": "Set the pad just below your hip bones and cross your arms on your chest."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "顶端停一秒，不再往后仰",
-    "en": "Pause at the top without leaning back further."
+    "zh": "抬到身体成一条直线就停，别再往后仰。",
+    "en": "Stop when your body is straight, without leaning back further."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "腰过度后仰甩起",
-   "en": "Swinging up into an overarched lower back."
+   "zh": "甩起来，腰往后折",
+   "en": "Swinging up and bending the lower back backward."
   },
   {
-   "zh": "圆背下放太快",
-   "en": "Rounding the back and lowering too fast."
+   "zh": "弓着背快速往下放",
+   "en": "Rounding the back and dropping too fast."
   }
  ],
  "cautions": [
   {
-   "zh": "腰部不适时减小幅度，仍痛就停止",
-   "en": "Reduce the range if your lower back feels uncomfortable, and stop if it still hurts."
+   "zh": "腰不舒服时弯得浅一点，还疼就停",
+   "en": "If your lower back feels uncomfortable, bend less deep, and stop if it still hurts."
   }
  ],
  "tags": {
@@ -81,16 +81,54 @@
  },
  "phases": {
   "start": {
-   "zh": "以髋下放",
-   "en": "Hinge down"
+   "zh": "往下弯",
+   "en": "Bend down"
   },
   "peak": {
-   "zh": "触底",
+   "zh": "到底",
    "en": "Bottom"
   },
   "end": {
    "zh": "起到直线",
-   "en": "Rise to straight"
+   "en": "Rise up"
+  }
+ },
+ "training": {
+  "kind": "rep_updown",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.1,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 0.5,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 1.1,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.3
+   }
+  ],
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "主口令和起始口令去掉 hinge/「以髋为轴」，改「从髋部往下弯，背保持平直」",
+    "cue2 按动画补「双手交叉放胸前」，去掉「脊柱中立」；cue3 去掉动画里没有的「停一秒」（动画是在直线位停 1.3 s 后再下）",
+    "purpose 去掉「伸髋」；底部只停 0.5 s → rep_updown"
+   ],
+   "flags": [
+    "动画一下从直线位开始往下（go=下放），口令顺序为 往下弯→到底→起到直线，请确认"
+   ]
   }
  }
 }
