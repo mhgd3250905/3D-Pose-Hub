@@ -57,6 +57,7 @@ def build(root: Path, aid: str) -> dict:
     d = {k: text[k] for k in ('name', 'purpose', 'cues', 'commonErrors', 'tags', 'unilateral', 'defaultDose')}
     d['cautions'] = text.get('cautions', [])
     if text['unilateral']: d['startingSide'] = text['startingSide']
+    if text.get('training'): d['training'] = text['training']  # app count/timer rhythm (ugk_trainer Rhythm)
     return {
         'format': FORMAT, 'id': aid,
         'text': {'path': str(tpath.relative_to(REPO)), 'sha256': sha(tpath), 'reviewStatus': text['reviewStatus']},
