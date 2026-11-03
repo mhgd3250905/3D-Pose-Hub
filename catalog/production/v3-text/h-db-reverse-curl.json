@@ -1,0 +1,128 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "h-db-reverse-curl",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/h-db-reverse-curl-r5.js"
+ ],
+ "name": {
+  "zh": "站姿哑铃反握弯举",
+  "en": "Standing Dumbbell Reverse Curl"
+ },
+ "purpose": {
+  "zh": "练前臂和上臂前侧，让握力和手腕更稳",
+  "en": "Build your forearms and the fronts of your upper arms for a steadier grip and wrist."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "手背朝前握哑铃，手肘贴身往上弯",
+    "en": "Hold the dumbbells palms down and curl up with elbows at your sides"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "手腕保持平直，不要往下折。",
+    "en": "Keep your wrists straight, not bent down."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "举到胸口高度停一下。",
+    "en": "Pause at chest height."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "手腕弯折",
+   "en": "Bending the wrists."
+  },
+  {
+   "zh": "身体前后晃借力",
+   "en": "Swinging the body."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "手腕或手肘疼时停止，先用轻哑铃",
+   "en": "Stop if your wrists or elbows hurt, and start with light dumbbells."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "forearms",
+   "biceps"
+  ],
+  "synergistMuscles": [],
+  "equipment": [
+   "dumbbell"
+  ],
+  "position": "standing",
+  "difficulty": 1
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 3,
+  "reps": 10,
+  "restSeconds": 45
+ },
+ "phases": {
+  "start": {
+   "zh": "举起",
+   "en": "Curl up"
+  },
+  "peak": {
+   "zh": "停住",
+   "en": "Hold"
+  },
+  "end": {
+   "zh": "慢慢放下",
+   "en": "Lower slowly"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.8,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 1.0,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 1.0,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.2
+   }
+  ],
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "节奏按动画的弯举轨道（curl）算：0.8 s 举起、顶端 1.0 s、1.0 s 放下、底部 1.2 s（派生用的是 effort 轨道）",
+    "「反握」改成「手背朝前」更好懂；删掉动画看不出的「拇指朝内」；英文名去掉 Dumbbell 前的数量词",
+    "equipment dumbbells→dumbbell（统一词表）；cautions 改「X 时 Y」"
+   ],
+   "flags": []
+  }
+ }
+}

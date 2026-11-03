@@ -1,0 +1,132 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "n-prone-ir",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/n-prone-ir.js"
+ ],
+ "name": {
+  "zh": "俯卧小腿外摆",
+  "en": "Prone Shin Fall-Outs"
+ },
+ "purpose": {
+  "zh": "轻松活动髋关节，让大腿往里转得更顺",
+  "en": "Gently loosen your hips so your thighs can turn inward more easily."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "膝盖和骨盆贴地，小腿往两边打开",
+    "en": "Keep your knees and pelvis down and let your shins open out to the sides"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "俯卧，双膝弯成90度，小腿竖直。",
+    "en": "Lie face down with both knees bent to 90 degrees, shins upright."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "停一下，再慢慢回到竖直。",
+    "en": "Pause, then bring your shins slowly back up."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "骨盆跟着抬起或扭动",
+   "en": "Letting the pelvis lift or twist."
+  },
+  {
+   "zh": "用力把小腿往下压",
+   "en": "Forcing the shins down."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "膝盖或髋部疼时打开小一点，还疼就停",
+   "en": "If your knees or hips hurt, open less, and stop if it still hurts."
+  }
+ ],
+ "tags": {
+  "category": "mobility",
+  "activeMuscles": [
+   "glutes",
+   "abductors"
+  ],
+  "synergistMuscles": [
+   "adductors"
+  ],
+  "equipment": [
+   "mat"
+  ],
+  "position": "prone",
+  "difficulty": 1
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 2,
+  "reps": 8,
+  "restSeconds": 30
+ },
+ "phases": {
+  "start": {
+   "zh": "往外倒",
+   "en": "Shins out"
+  },
+  "peak": {
+   "zh": "停一下",
+   "en": "Pause"
+  },
+  "end": {
+   "zh": "回来",
+   "en": "Back up"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.8,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 1.4,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.8,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.0
+   }
+  ],
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "名字去掉「（髋内旋）/ Internal Rotation」，英文改 Prone Shin Fall-Outs",
+    "purpose 去掉「内旋」",
+    "口令「小腿外摆」(0.8 s 念不完) → 「往外倒」",
+    "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除",
+    "最终口径：按真实做法定（2026-11-01）"
+   ],
+   "flags": []
+  }
+ }
+}

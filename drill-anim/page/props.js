@@ -24,8 +24,8 @@ P.mat = toonMat;
 const B = {
   // yoga mat: rounded slab, top face at at.y (default 0 = the floor plane the body rests on); edge band slightly lighter
   mat(th, s) { const t = T(); const [L, W, H] = s.size || [1.83, 0.61, 0.006]; const g = new t.Group();
-    const top = new t.Mesh(new t.BoxGeometry(L, H, W, 1, 1, 1), toonMat(th, { rimK: 0.0 })); top.position.y = -H / 2; g.add(top);
-    const edge = new t.Mesh(new t.BoxGeometry(L + 0.004, H * 0.6, W + 0.004), toonMat(th, { base: th.edge || th.base, rimK: 0.15 })); edge.position.y = -H * 0.55; g.add(edge);
+    const top = new t.Mesh(new t.BoxGeometry(L, H, W, 1, 1, 1), toonMat(th, s.colour ? { base: s.colour, rimK: 0.0 } : { rimK: 0.0 })); top.position.y = -H / 2; g.add(top);
+    const edge = new t.Mesh(new t.BoxGeometry(L + 0.004, H * 0.6, W + 0.004), toonMat(th, { base: s.edgeColour || s.colour || th.edge || th.base, rimK: 0.15 })); edge.position.y = -H * 0.55; g.add(edge);
     return g; },
   // ---- stubs below: geometry only
   dumbbell(th, s) { const t = T(); const g = new t.Group(); const len = s.length || 0.30, r = s.plate || 0.055;
@@ -55,10 +55,10 @@ const B = {
   rings(th, s) { const t = T(); const g = new t.Group(); const H = s.height || 2.4, gap = s.gap || 0.5, low = s.ringY || 1.0;
     for (const sg of [-1, 1]) { const ring = new t.Mesh(new t.TorusGeometry(0.09, 0.014, 10, 32), toonMat(th)); ring.position.set(sg * gap / 2, low, 0); g.add(ring);
       const strap = new t.Mesh(new t.BoxGeometry(0.035, H - low - 0.09, 0.004), toonMat(th, { base: th.edge })); strap.position.set(sg * gap / 2, (H + low + 0.09) / 2, 0); g.add(strap); } return g; },
-  dipBars(th, s) { const t = T(); const g = new t.Group(); const L = s.length || 0.9, H = s.height || 1.2, gap = s.gap || 0.55;
-    for (const sg of [-1, 1]) { const bar = new t.Mesh(new t.CylinderGeometry(0.022, 0.022, L, 16), toonMat(th)); bar.rotation.x = Math.PI / 2; bar.position.set(sg * gap / 2, H, 0); g.add(bar);
+  dipBars(th, s) { const t = T(); const g = new t.Group(); const L = s.length || 0.9, H = s.height || 1.2, gap = s.gap || 0.55, br = s.r || 0.022;
+    for (const sg of [-1, 1]) { const bar = new t.Mesh(new t.CylinderGeometry(br, br, L, 16), toonMat(th)); bar.rotation.x = Math.PI / 2; bar.position.set(sg * gap / 2, H, 0); g.add(bar);
       for (const e of [-1, 1]) { const post = new t.Mesh(new t.CylinderGeometry(0.025, 0.025, H, 12), toonMat(th)); post.position.set(sg * gap / 2, H / 2, e * L * 0.45); g.add(post); } } return g; },
-  foamRoller(th, s) { const t = T(); const m = new t.Mesh(new t.CylinderGeometry(s.r || 0.075, s.r || 0.075, s.length || 0.9, 32), toonMat(th)); m.rotation.z = Math.PI / 2; const g = new t.Group(); g.add(m); return g; },
+  foamRoller(th, s) { const t = T(); const m = new t.Mesh(new t.CylinderGeometry(s.r || 0.075, s.r || 0.075, s.length || 0.9, 32), toonMat(th, s.colour ? { base: s.colour } : undefined)); m.rotation.z = Math.PI / 2; const g = new t.Group(); g.add(m); return g; },
   // flat bench (B-tier): padded top (s.length 1.1, s.width 0.29, top surface at s.height 0.44), two splayed steel feet; long axis X at yaw 0
   bench(th, s) { const t = T(); const g = new t.Group(); const L = s.length || 1.1, W = s.width || 0.29, H = s.height || 0.44, pt = 0.06;
     const pad = new t.Mesh(new t.BoxGeometry(L, pt, W), toonMat(th, { base: s.padColour || '#26282d', rimK: 0.6 })); pad.position.y = H - pt / 2; g.add(pad);
@@ -263,6 +263,8 @@ Object.assign(B, {
       for (const o of ms) { const N = o.geometry.attributes.position.count; for (let i = 0; i < N; i++) { o.getVertexPosition(i, p); p.applyMatrix4(o.matrixWorld);
         if (Math.abs(p.clone().sub(c0).dot(ax)) < 0.075 && Math.abs(p.z - c0.z) < 0.09 && sg * p.x > 0 && sg * (p.x - c0.x) > out) out = sg * (p.x - c0.x);
         if (p.y < 0.13 && sg * p.x > 0) { if (p.y < soleY) soleY = p.y; fx0 = Math.min(fx0, p.x); fx1 = Math.max(fx1, p.x); fz0 = Math.min(fz0, p.z); fz1 = Math.max(fz1, p.z); } } }
+      // padOut (optional): the knee's lateral half-width from c0, overriding the mesh scan (the v3 armfix body scans ~8 cm too wide here)
+      if (s.padOut != null) out = s.padOut;
       const gp = s.gap ?? 0.003, padC = c0.clone().add(new t.Vector3(sg * (out + gp + 0.025), 0, 0));
       const pg = new t.Group(); box([0.05, 0.16, 0.14], [0, 0, 0], pad, 0, pg); g.add(pg);
       const fg = new t.Group(); box([fx1 - fx0 + 0.03, 0.02, fz1 - fz0 + 0.04], [0, -0.01, 0], frame, 0, fg); g.add(fg);
@@ -314,7 +316,10 @@ P.place = function(o) { const t = T(), v = flareInspector.viewer, s = o.userData
     const a = G.a.clone().applyQuaternion(bq).normalize(), c = G.c.clone().applyQuaternion(bq).add(bp).addScaledVector(a, s.shift || 0); o.position.copy(c);   /* shift: slide the handle along its axis to centre it in the fist */ o.quaternion.setFromUnitVectors(new t.Vector3(0, 1, 0), a);
     o.updateMatrixWorld(true);
     // swivel: loop apex toward the cable (pulley), but never closer than `lean` to the palmar side
-    const tgt = P.anchors[s.toward] ? P.anchors[s.toward].clone() : c.clone().add(new t.Vector3(0, 0, -1));
+    // toward:'@fingers' = loop on the knuckle face of the fist (fingers pass through the D, so the loop rides with the hand): aim along
+    // the hand bone (wrist -> finger roots), i.e. the front of the closed fist, instead of swivelling to a world anchor
+    const fb = s.toward === '@fingers' ? bone.children.find(ch => ch.isBone && /Middle|Index/.test(ch.name)) || bone.children.find(ch => ch.isBone) : null;
+    const tgt = fb ? c.clone().add(fb.getWorldPosition(new t.Vector3()).sub(bp)) : P.anchors[s.toward] ? P.anchors[s.toward].clone() : c.clone().add(new t.Vector3(0, 0, -1));
     const want = tgt.sub(c); want.addScaledVector(a, -want.dot(a)); want.normalize();
     const dors = G.pal.clone().applyQuaternion(bq).negate(); dors.addScaledVector(a, -dors.dot(a)).normalize();
     const dir = dors.clone().multiplyScalar(s.lean ?? 0.6).add(want.multiplyScalar(1 - (s.lean ?? 0.6))).normalize();
@@ -340,6 +345,14 @@ P.place = function(o) { const t = T(), v = flareInspector.viewer, s = o.userData
     const end = U.rg.position.clone(); end.x = ax; setTube(t, U.arm, hubP, end); o.updateMatrixWorld(true); return; }
   if (s.type === 'hipAbductor') { for (const [side, S] of Object.entries(o.userData.sides)) { const th = v.coach.getObjectByName(side + 'Thigh'), ft = v.coach.getObjectByName(side + 'Foot'); th.updateMatrixWorld(true); ft.updateMatrixWorld(true);
       S.pg.position.copy(th.localToWorld(S.po.clone())); S.pg.quaternion.copy(th.getWorldQuaternion(new t.Quaternion())).multiply(S.pq);
+      // padFollow 'knee' (opt-in): place the pad from the hip -> knee line instead of the thigh bone's frame, so thigh twist from the
+      // ankle yaw cannot swing it over or under the knee: centre = knee + padUp along the thigh + (padOut + gap + half pad) sideways,
+      // sideways = horizontal, perpendicular to the thigh; the pad's long side runs along the thigh.
+      if (s.padFollow === 'knee') { const sh = v.coach.getObjectByName(side + 'Shin'), Hp = th.getWorldPosition(new t.Vector3()), K = sh.getWorldPosition(new t.Vector3());
+        const a = Hp.clone().sub(K).normalize(), lat = new t.Vector3().crossVectors(new t.Vector3(0, 1, 0), a).normalize(); if (lat.x * S.sg < 0) lat.negate();
+        const up = new t.Vector3().crossVectors(a, lat).normalize(); if (up.y < 0) up.negate(); const fw = new t.Vector3().crossVectors(lat, up).normalize();
+        S.pg.position.copy(K).addScaledVector(a, s.padUp ?? 0.09).addScaledVector(lat, (s.padOut ?? 0.06) + (s.gap ?? 0.003) + 0.025);
+        S.pg.quaternion.setFromRotationMatrix(new t.Matrix4().makeBasis(lat, up, fw)); }
       S.fg.position.copy(ft.localToWorld(S.fo.clone())); S.fg.quaternion.copy(ft.getWorldQuaternion(new t.Quaternion())).multiply(S.fq);
       const py = s.pivotY ?? s.seatY - 0.13, hip = th.getWorldPosition(new t.Vector3()), piv = new t.Vector3(S.sg * 0.05, py, hip.z);
       const under = new t.Vector3(S.pg.position.x + S.sg * 0.01, py, S.pg.position.z), low = new t.Vector3(under.x, S.fg.position.y - 0.01, under.z);

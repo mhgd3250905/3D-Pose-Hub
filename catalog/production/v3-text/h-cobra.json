@@ -1,0 +1,132 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "h-cobra",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/h-cobra.js"
+ ],
+ "name": {
+  "zh": "眼镜蛇式",
+  "en": "Cobra Stretch"
+ },
+ "purpose": {
+  "zh": "让背部更灵活，拉伸肚子前面",
+  "en": "Loosen your back and stretch the front of your belly."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "双手轻推地，胸口慢慢抬起",
+    "en": "Press gently through your hands and slowly lift your chest"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "髋和大腿贴着垫子，肩膀往下放。",
+    "en": "Keep your hips and thighs on the mat and your shoulders down."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "停住呼吸，再慢慢放下。",
+    "en": "Stay and breathe, then lower slowly."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "耸肩",
+   "en": "Shrugging the shoulders."
+  },
+  {
+   "zh": "髋离开垫子",
+   "en": "Lifting the hips off the mat."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "腰不舒服时抬低一点，还疼就停",
+   "en": "If your lower back feels uncomfortable, lift lower, and stop if it still hurts."
+  }
+ ],
+ "tags": {
+  "category": "stretch",
+  "activeMuscles": [
+   "core"
+  ],
+  "synergistMuscles": [
+   "lower-back"
+  ],
+  "equipment": [
+   "mat"
+  ],
+  "position": "prone",
+  "difficulty": 1
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 2,
+  "reps": 8,
+  "restSeconds": 20
+ },
+ "phases": {
+  "start": {
+   "zh": "抬胸口",
+   "en": "Chest up"
+  },
+  "peak": {
+   "zh": "保持呼吸",
+   "en": "Breathe and hold"
+  },
+  "end": {
+   "zh": "放下",
+   "en": "Lower"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.9,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 1.8,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.6,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 0.7
+   }
+  ],
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "purpose「伸展脊柱」改口语",
+    "口令按 0.9/0.6 s 缩短（抬胸口/放下）",
+    "加 training rep_hold",
+    "按用户决定：真实做法是来回动态拉伸，保留计次，去掉 stretchLoop"
+   ],
+   "flags": [
+    "tags 主肌群写 core，请确认"
+   ]
+  }
+ }
+}

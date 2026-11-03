@@ -1,0 +1,135 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "h-band-hip-extension",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/h-band-hip-extension.js"
+ ],
+ "name": {
+  "zh": "扶椅弹力带后抬腿",
+  "en": "Standing Band Leg Kickback"
+ },
+ "purpose": {
+  "zh": "练臀部，让腿往后推更有力",
+  "en": "Build your glutes for pushing your leg back."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "用臀部把腿往后推，身体不动",
+    "en": "Use your glutes to push the leg back and keep your body still"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "弹力带固定在前方低处，椅子只用来扶稳。",
+    "en": "Anchor the band low in front of you; use the chair only for balance."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "腰别往后弯，慢慢放回。",
+    "en": "Keep your lower back from arching and return slowly."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "用腰往后弯代替臀部发力",
+   "en": "Arching your lower back instead of using your glutes."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "第一次先做一组轻松的 6 次",
+   "en": "The first time, do just one easy set of 6."
+  },
+  {
+   "zh": "别把弹力带绑在椅子上",
+   "en": "Never tie the band to the chair."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "glutes"
+  ],
+  "synergistMuscles": [
+   "hamstrings",
+   "core"
+  ],
+  "equipment": [
+   "resistance-band",
+   "ankle-strap",
+   "chair"
+  ],
+  "position": "standing",
+  "difficulty": 1
+ },
+ "unilateral": true,
+ "startingSide": "right",
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 2,
+  "reps": 10,
+  "restSeconds": 45
+ },
+ "phases": {
+  "start": {
+   "zh": "往后推",
+   "en": "Push back"
+  },
+  "peak": {
+   "zh": "夹臀",
+   "en": "Squeeze"
+  },
+  "end": {
+   "zh": "放回",
+   "en": "Return"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.7,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 1.3,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.7,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.3
+   }
+  ],
+  "perSide": "each-side-separately",
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "名字去掉「髋后伸 / Hip Extension」术语，改「后抬腿 / Leg Kickback」",
+    "主口令去掉「骨盆和躯干」两个指令，口令按 0.7 s 相位缩短",
+    "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除",
+    "最终口径：按真实做法定（2026-11-01）"
+   ],
+   "flags": []
+  }
+ }
+}

@@ -1,0 +1,128 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "quadriceps-B",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/data/drills.json",
+  "drill-anim/specs/quadriceps-B.js"
+ ],
+ "name": {
+  "zh": "弹力带锁直膝盖",
+  "en": "Band Knee Lockout"
+ },
+ "purpose": {
+  "zh": "专练膝盖最后伸直的那一下",
+  "en": "Train the last bit of straightening your knee."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "把膝盖用力伸直，大腿前侧绷紧",
+    "en": "Straighten your knee hard and tighten the front of your thigh"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "弹力带套在膝盖后面，膝盖微弯开始。",
+    "en": "Loop the band behind your knee and start with a slight bend."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "伸直后停两秒，脚跟不离地。",
+    "en": "Hold straight for two seconds without lifting your heel."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "只把髋往前顶，膝盖没伸直",
+   "en": "Pushing your hips forward without fully straightening the knee."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "膝盖疼时换更轻的弹力带，还疼就停",
+   "en": "If your knee hurts, use a lighter band, and stop if it still hurts."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "quadriceps"
+  ],
+  "synergistMuscles": [],
+  "equipment": [
+   "resistance-band"
+  ],
+  "position": "standing",
+  "difficulty": 1
+ },
+ "unilateral": true,
+ "startingSide": "right",
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 3,
+  "reps": 15,
+  "restSeconds": 45
+ },
+ "phases": {
+  "start": {
+   "zh": "伸直",
+   "en": "Lock it"
+  },
+  "peak": {
+   "zh": "停两秒",
+   "en": "Hold two"
+  },
+  "end": {
+   "zh": "放松",
+   "en": "Ease back"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.8,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 2.0,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.9,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 0.3
+   }
+  ],
+  "perSide": "each-side-separately",
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "改名：「终末伸膝」是术语 → 弹力带锁直膝盖 / Band Knee Lockout",
+    "口令「锁直膝盖」→「伸直」、「慢慢放松」→「放松」，适配 0.8/0.9 s 相位",
+    "error「挺髋」改口语",
+    "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除",
+    "最终口径：按真实做法定（2026-11-01）"
+   ],
+   "flags": []
+  }
+ }
+}

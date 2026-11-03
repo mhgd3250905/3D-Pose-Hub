@@ -1,0 +1,110 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "h-towel-isometric-curl",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/h-towel-isometric-curl-rr1.js"
+ ],
+ "name": {
+  "zh": "脚踩毛巾静力弯举",
+  "en": "Foot-Anchored Towel Curl Hold"
+ },
+ "purpose": {
+  "zh": "不用器械练手臂前侧",
+  "en": "Build the fronts of your upper arms without equipment."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "脚踩住毛巾，双手握住往上拉并停住",
+    "en": "Step on the towel, grip it, and pull up and hold"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "大臂贴身，手肘弯成直角。",
+    "en": "Keep your upper arms by your sides with elbows at a right angle."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "保持呼吸，不要憋气。",
+    "en": "Keep breathing and do not hold your breath."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "憋气",
+   "en": "Holding your breath."
+  },
+  {
+   "zh": "身体后仰借力",
+   "en": "Leaning back to pull."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "手肘或手腕疼时停止，力量慢慢加上去",
+   "en": "Stop if your elbows or wrists hurt, and build the effort gradually."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "biceps"
+  ],
+  "synergistMuscles": [
+   "forearms"
+  ],
+  "equipment": [
+   "towel"
+  ],
+  "position": "standing",
+  "difficulty": 1
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "time",
+  "sets": 3,
+  "seconds": 15,
+  "restSeconds": 30
+ },
+ "phases": {
+  "start": {
+   "zh": "向上拉",
+   "en": "Pull up"
+  },
+  "peak": {
+   "zh": "保持住",
+   "en": "Hold"
+  },
+  "end": {
+   "zh": "慢慢放松",
+   "en": "Release"
+  }
+ },
+ "training": {
+  "kind": "hold",
+  "leadSeconds": 1,
+  "source": "timer"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画全程静止用力 → kind hold（App 计时）；dose mode hold→time",
+    "名字「等长」是术语，改「静力 / Curl Hold」；cue「90度」改「直角」",
+    "caution 改「X 时 Y」",
+    "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除",
+    "最终口径：按真实做法定（2026-11-01）"
+   ],
+   "flags": []
+  }
+ }
+}

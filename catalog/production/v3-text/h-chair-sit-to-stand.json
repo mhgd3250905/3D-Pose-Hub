@@ -1,0 +1,139 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "h-chair-sit-to-stand",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/h-chair-sit-to-stand.js"
+ ],
+ "name": {
+  "zh": "椅子坐下站起",
+  "en": "Chair Sit-to-Stand"
+ },
+ "purpose": {
+  "zh": "练大腿和臀部，让起身更轻松",
+  "en": "Build your thighs and glutes and make standing up easier."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "上身前倾，双脚踩实站起来",
+    "en": "Lean forward and push through both feet to stand up"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "双臂往前伸，帮助保持平衡。",
+    "en": "Reach your arms forward to help your balance."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "坐回去时慢慢来，别一屁股坐下。",
+    "en": "Sit back down slowly instead of dropping."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "猛地坐下",
+   "en": "Dropping into the chair."
+  },
+  {
+   "zh": "膝盖往里扣",
+   "en": "Letting the knees cave in."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "用结实、不带轮子的椅子，最好靠墙放",
+   "en": "Use a sturdy chair without wheels, ideally against a wall."
+  },
+  {
+   "zh": "膝盖不舒服时换高一点的椅子，还疼就停",
+   "en": "If your knees feel uncomfortable, use a higher seat, and stop if it still hurts."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "quadriceps",
+   "glutes"
+  ],
+  "synergistMuscles": [
+   "hamstrings",
+   "core"
+  ],
+  "equipment": [
+   "chair"
+  ],
+  "position": "seated",
+  "difficulty": 1
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 3,
+  "reps": 10,
+  "restSeconds": 45
+ },
+ "phases": {
+  "start": {
+   "zh": "前倾站起",
+   "en": "Lean and stand"
+  },
+  "peak": {
+   "zh": "站直",
+   "en": "Stand tall"
+  },
+  "end": {
+   "zh": "慢慢坐下",
+   "en": "Sit down slowly"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 2.8,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 1.0,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 3.2,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.0
+   }
+  ],
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画是 8 秒 1 次（批表 effort 轨在前倾和下坐各有一个峰，误算成 2 次/8 s）；按 spec 关键帧手算：前倾+站起 2.8、站直 1.0、坐下+坐正 3.2、坐着 1.0",
+    "名字「普通椅双脚坐站」改口语「椅子坐下站起」",
+    "caution「减小下蹲深度」改「换高一点的椅子」（动画椅高固定）",
+    "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除",
+    "最终口径：按真实做法定（2026-11-01）"
+   ],
+   "flags": [
+    "相位为手算（非批表），请确认"
+   ]
+  }
+ }
+}

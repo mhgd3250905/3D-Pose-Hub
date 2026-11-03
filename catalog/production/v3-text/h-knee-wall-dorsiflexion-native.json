@@ -1,0 +1,134 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "h-knee-wall-dorsiflexion-native",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/h-knee-wall-dorsiflexion-native.js"
+ ],
+ "name": {
+  "zh": "膝盖碰墙脚踝活动",
+  "en": "Knee-to-Wall Ankle Mobility"
+ },
+ "purpose": {
+  "zh": "让脚踝往前弯得更多，下蹲和走路更轻松",
+  "en": "Help your ankle bend forward more for easier squats and walking."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "前脚跟踩住地，膝盖往前碰墙",
+    "en": "Keep your front heel down and push your knee forward to the wall"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "膝盖朝第二、三个脚趾的方向走。",
+    "en": "Point your knee over your second and third toes."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "双手自然垂在身体两侧，身体跟着膝盖往前。",
+    "en": "Let your arms hang and let your body follow your knee."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "前脚跟抬起来",
+   "en": "Letting the front heel lift."
+  },
+  {
+   "zh": "膝盖往里倒",
+   "en": "Letting the knee drift inward."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "脚踝前面夹着疼时幅度小一点，还疼就停",
+   "en": "If the front of your ankle pinches, move less far, and stop if it still hurts."
+  }
+ ],
+ "tags": {
+  "category": "mobility",
+  "activeMuscles": [
+   "calves"
+  ],
+  "synergistMuscles": [
+   "tibialis"
+  ],
+  "equipment": [
+   "wall"
+  ],
+  "position": "standing",
+  "difficulty": 1
+ },
+ "unilateral": true,
+ "startingSide": "left",
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 2,
+  "reps": 10,
+  "restSeconds": 20
+ },
+ "phases": {
+  "start": {
+   "zh": "膝盖往前",
+   "en": "Knee forward"
+  },
+  "peak": {
+   "zh": "碰墙停住",
+   "en": "Touch and hold"
+  },
+  "end": {
+   "zh": "慢慢退回",
+   "en": "Ease back"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.2,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 3.4,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 1.3,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 2.1
+   }
+  ],
+  "perSide": "each-side-separately",
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "名字含术语「背屈/Dorsiflexion」，改为「膝盖碰墙脚踝活动 / Knee-to-Wall Ankle Mobility」",
+    "purpose 去掉「背屈活动度」改口语",
+    "cue3 原与口令重复，改为动画可见的「手垂身侧、身体跟着往前」",
+    "顶点停 ~2.7 s → rep_hold，每侧分开做",
+    "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除",
+    "最终口径：按真实做法定（2026-11-01）"
+   ],
+   "flags": []
+  }
+ }
+}

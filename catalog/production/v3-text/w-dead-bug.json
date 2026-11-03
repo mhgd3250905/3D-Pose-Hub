@@ -1,0 +1,150 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "w-dead-bug",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "catalog/v2/actions/w-dead-bug.json",
+  "catalog/voice-v2/script.json",
+  "drill-anim/specs/w-dead-bug-r2.js"
+ ],
+ "name": {
+  "zh": "死虫式",
+  "en": "Dead Bug"
+ },
+ "purpose": {
+  "zh": "练腰腹稳定，手脚动的时候腰不离地",
+  "en": "Train your core to keep your lower back down while your arms and legs move."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "下背贴地，一只手和另一侧的腿慢慢伸远",
+    "en": "Keep your lower back down and slowly reach one arm and the other leg long"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "仰躺，双手指向天花板，髋和膝各弯成直角。",
+    "en": "Lie on your back, arms pointing to the ceiling, hips and knees bent at right angles."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "慢慢收回起始位，再换另一组手脚。",
+    "en": "Return slowly to the start, then switch to the other arm and leg."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "两边各做一次算 1 次。",
+    "en": "One on each side counts as one rep."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "伸手伸腿时腰拱起来",
+   "en": "Arching your lower back as your arm and leg reach out."
+  },
+  {
+   "zh": "甩手甩腿，不受控制",
+   "en": "Swinging your arm and leg instead of moving with control."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "腰拱起来时伸得近一点",
+   "en": "If your lower back starts to arch, reach less far."
+  },
+  {
+   "zh": "髋前面不舒服时腿放高一点",
+   "en": "If the front of your hip feels uncomfortable, keep the leg higher."
+  }
+ ],
+ "tags": {
+  "category": "stability",
+  "activeMuscles": [
+   "core"
+  ],
+  "synergistMuscles": [
+   "obliques",
+   "hip-flexors"
+  ],
+  "equipment": [
+   "mat"
+  ],
+  "position": "supine",
+  "difficulty": 1
+ },
+ "unilateral": true,
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 3,
+  "reps": 6,
+  "restSeconds": 30
+ },
+ "phases": {
+  "start": {
+   "zh": "慢慢伸远",
+   "en": "Reach out"
+  },
+  "peak": {
+   "zh": "停住",
+   "en": "Hold"
+  },
+  "end": {
+   "zh": "慢慢收回",
+   "en": "Bring it back"
+  }
+ },
+ "startingSide": "right",
+ "training": {
+  "kind": "rep_alternate",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.2,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 0.7,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 1.3,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 0.8
+   }
+  ],
+  "perSide": "alternate",
+  "repUnit": "left+right",
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画左右轮流（先右手+左腿）→ unilateral=true、rep_alternate、剂量每侧 6 次（原 10 次未分侧）",
+    "节奏按 spec：伸 1.2 / 停 0.7 / 收 1.3 / 休 0.8 s",
+    "purpose 中英文不一致（中文只写「练腹部」）已统一；主口令去掉「对侧」；冒号式 cautions 改短句",
+    "轮流计数口径：一左一右算 1 次，剂量为每侧 N 次（reps=N），training.phases 描述一侧的一下，repUnit=left+right；startingSide=先动的一侧（right）",
+    "最终口径：按真实做法定（2026-11-01）",
+    "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除"
+   ],
+   "flags": []
+  }
+ }
+}

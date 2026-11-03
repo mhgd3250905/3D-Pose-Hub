@@ -1,0 +1,143 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "o-supported-star-reach",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/o-supported-star-reach.js"
+ ],
+ "name": {
+  "zh": "扶椅单腿三向点地",
+  "en": "Chair-Supported Three-Direction Reach"
+ },
+ "purpose": {
+  "zh": "单腿微蹲时练稳定和控制",
+  "en": "Build steadiness and control while bending on one leg."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "支撑腿微蹲，另一只脚轮流向前、侧、后点地",
+    "en": "Bend the standing knee a little and tap front, side, then back"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "骨盆放平朝前，一只手轻扶椅子。",
+    "en": "Keep your hips level and facing forward, one hand lightly on the chair."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "点地要轻，别把体重放到点地的脚上。",
+    "en": "Tap lightly and keep your weight off the tapping foot."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "每点一次地算 1 次。",
+    "en": "Each tap counts as one."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "支撑腿膝盖往里扣",
+   "en": "Letting the standing knee cave in."
+  },
+  {
+   "zh": "体重压到点地的脚上",
+   "en": "Putting your weight on the tapping foot."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "用不带轮子的稳固椅子，站不稳就停",
+   "en": "Use a sturdy chair without wheels, and stop if you feel unsteady."
+  }
+ ],
+ "tags": {
+  "category": "balance",
+  "activeMuscles": [
+   "quadriceps",
+   "glutes"
+  ],
+  "synergistMuscles": [
+   "abductors",
+   "core"
+  ],
+  "equipment": [
+   "chair"
+  ],
+  "position": "standing",
+  "difficulty": 2
+ },
+ "unilateral": true,
+ "startingSide": "left",
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 2,
+  "reps": 6,
+  "restSeconds": 30
+ },
+ "phases": {
+  "start": {
+   "zh": "点地",
+   "en": "Tap"
+  },
+  "peak": {
+   "zh": "稳住",
+   "en": "Hold"
+  },
+  "end": {
+   "zh": "收回",
+   "en": "Back"
+  }
+ },
+ "training": {
+  "kind": "rep_updown",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.8,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 0.4
+   },
+   {
+    "id": "back",
+    "seconds": 0.8,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 0.7
+   }
+  ],
+  "perSide": "each-side-separately",
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "每 8 s 点地 3 次（前、侧、后），每次停 0.35 s，节奏 rep_updown（每次点地算一下）",
+    "剂量 4→6 次/侧（=前侧后两轮）",
+    "口令「Bring it back」→「Back」，适配 0.8 s 回收相位",
+    "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除",
+    "计数单位保持不变，cue 写明 1 次是什么",
+    "最终口径：按真实做法定（2026-11-01）"
+   ],
+   "flags": []
+  }
+ }
+}

@@ -1,0 +1,128 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "h-chair-elbow-triceps-stretch",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/h-chair-elbow-triceps-stretch-r4.js"
+ ],
+ "name": {
+  "zh": "扶椅屈肘手臂后侧拉伸",
+  "en": "Chair Bent-Elbow Triceps Stretch"
+ },
+ "purpose": {
+  "zh": "拉伸上臂后侧和腋下",
+  "en": "Stretch the backs of your upper arms and your armpits."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "手肘搭稳椅背，臀部往后让胸口下沉",
+    "en": "Rest your elbows on the chair, push your hips back, and let your chest sink"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "双肘弯着，手放在后颈附近，别碰头。",
+    "en": "Keep your elbows bent with your hands near the back of your neck, not touching your head."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "停住不动，慢慢呼吸。",
+    "en": "Stay still and breathe slowly."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "每次呼气再放松一点，别来回颠。",
+    "en": "Each time you breathe out, relax a little deeper. No bouncing."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "用手压头或脖子",
+   "en": "Pushing on your head or neck."
+  },
+  {
+   "zh": "憋气",
+   "en": "Holding your breath."
+  },
+  {
+   "zh": "来回颠着往下压",
+   "en": "Bouncing to go deeper."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "肩膀疼时下沉少一点",
+   "en": "If your shoulders hurt, sink less."
+  },
+  {
+   "zh": "用结实、不带轮子的椅子",
+   "en": "Use a sturdy chair without wheels."
+  }
+ ],
+ "tags": {
+  "category": "stretch",
+  "activeMuscles": [
+   "triceps",
+   "lats"
+  ],
+  "synergistMuscles": [
+   "upper-back"
+  ],
+  "equipment": [
+   "chair"
+  ],
+  "position": "standing",
+  "difficulty": 1
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "time",
+  "sets": 2,
+  "seconds": 30,
+  "restSeconds": 15
+ },
+ "phases": {
+  "start": {
+   "zh": "慢慢沉下去",
+   "en": "Sink down"
+  },
+  "peak": {
+   "zh": "保持，慢慢呼气",
+   "en": "Hold and breathe out"
+  },
+  "end": {
+   "zh": "呼气再沉一点",
+   "en": "Sink a bit deeper"
+  }
+ },
+ "training": {
+  "kind": "hold",
+  "leadSeconds": 1,
+  "source": "user-decision static-hold r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画每 8 秒一次下沉-停 2.4 s-回来，剂量从 30 秒保持改为 2 组×4 次（rep_hold）",
+    "名字去掉「肱三头肌」学名、缩短",
+    "安全提示拆成短句",
+    "按用户决定改为静态保持计时，动画只作示意：30 秒×2 组，休息 15 秒；口令和要点改成进入—保持—呼气放松",
+    "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除",
+    "最终口径：按真实做法定（2026-11-01）"
+   ],
+   "flags": []
+  }
+ }
+}

@@ -1,0 +1,16 @@
+{
+  "format": "pose-hub-package-profile@1",
+  "id": "default",
+  "_doc": "One production profile = model + skins + sizes + derivative set. Copy and edit for another look; never edit a profile that already produced packages (outputs record its sha256).",
+  "model": null,
+  "skins": ["realistic", "tech-white", "neon-night", "neon-night-b", "hologram"],
+  "masters": {"size": 1080, "fps": 30, "layers": ["body", "body-highlight", "mask"]},
+  "derivatives": {
+    "videoSize": 720, "codec": "libx264", "crf": 18, "pixelFormat": "yuv420p",
+    "themes": {"dark": "#101013", "light": "#f3f2ef"},
+    "highlight": {"source": "body-highlight", "blendBrightness": 0.45},
+    "coverSize": 720, "thumbnailSize": 240, "keyframeSize": 720, "transparentCoverSize": 1080,
+    "keyframes": ["start", "peak", "end"],
+    "framing": {"policy": "union-of-all-skins-all-frames-body-alpha", "padding": 0.08}
+  }
+}

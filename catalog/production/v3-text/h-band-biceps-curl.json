@@ -1,0 +1,127 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "h-band-biceps-curl",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/h-band-biceps-curl-r6.js"
+ ],
+ "name": {
+  "zh": "站姿踩带弹力带弯举",
+  "en": "Standing Band Biceps Curl"
+ },
+ "purpose": {
+  "zh": "用弹力带练上臂前侧（二头肌）",
+  "en": "Build the front of your upper arms (biceps) with a band."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "手肘贴住身体，双手弯向肩膀",
+    "en": "Keep your elbows at your sides and curl your hands up"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "双脚踩住弹力带中间，掌心朝前。",
+    "en": "Stand on the middle of the band with your palms facing forward."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "放下时慢一点，直到手臂伸直。",
+    "en": "Lower slowly until your arms are straight."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "身体后仰或甩动借力",
+   "en": "Leaning back or swinging to help."
+  },
+  {
+   "zh": "手肘往前跑",
+   "en": "Letting your elbows drift forward."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "手肘疼时换更轻的弹力带",
+   "en": "If your elbows hurt, switch to a lighter band."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "biceps"
+  ],
+  "synergistMuscles": [
+   "forearms"
+  ],
+  "equipment": [
+   "resistance-band"
+  ],
+  "position": "standing",
+  "difficulty": 1
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 3,
+  "reps": 12,
+  "restSeconds": 45
+ },
+ "phases": {
+  "start": {
+   "zh": "弯起",
+   "en": "Curl up"
+  },
+  "peak": {
+   "zh": "夹紧",
+   "en": "Squeeze"
+  },
+  "end": {
+   "zh": "慢慢放下",
+   "en": "Lower slowly"
+  }
+ },
+ "training": {
+  "kind": "rep_updown",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.3,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 0.4
+   },
+   {
+    "id": "back",
+    "seconds": 1.6,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 0.7
+   }
+  ],
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "节奏按 spec 关键帧手算：顶端只停 0.4 s（派生轨道算成 1 s），kind 用 rep_updown",
+    "目的/提示/注意改口语短句"
+   ],
+   "flags": []
+  }
+ }
+}

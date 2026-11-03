@@ -1,0 +1,116 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "t-straddle-hold",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/t-straddle-hold-r6.js"
+ ],
+ "name": {
+  "zh": "分腿支撑",
+  "en": "Straddle Support Hold"
+ },
+ "purpose": {
+  "zh": "练托马斯全旋需要的分腿撑起力量",
+  "en": "Build the straddle support strength you need for flares."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "手臂伸直推地，把屁股和双腿撑离地面",
+    "en": "Lock your arms and push the floor to lift your hips and legs up"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "宽分腿坐，双手在两腿之间撑地。",
+    "en": "Sit in a wide straddle with your hands on the floor between your legs."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "肩膀往下压，身体前倾，撑住别落地。",
+    "en": "Press your shoulders down, lean forward, and stay up."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "耸肩",
+   "en": "Shrugging."
+  },
+  {
+   "zh": "弯手肘",
+   "en": "Bending your elbows."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "手腕不舒服时先活动一下手腕",
+   "en": "If your wrists feel stiff, warm them up first."
+  },
+  {
+   "zh": "手腕或肩膀疼时少做一点，还疼就停",
+   "en": "If your wrists or shoulders hurt, do less, and stop if it still hurts."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "hip-flexors",
+   "core",
+   "triceps"
+  ],
+  "synergistMuscles": [
+   "adductors",
+   "deltoids"
+  ],
+  "equipment": [
+   "mat"
+  ],
+  "position": "seated",
+  "difficulty": 3
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "time",
+  "sets": 3,
+  "seconds": 10,
+  "restSeconds": 60
+ },
+ "phases": {
+  "start": {
+   "zh": "推地撑起",
+   "en": "Press up"
+  },
+  "peak": {
+   "zh": "保持住",
+   "en": "Hold"
+  },
+  "end": {
+   "zh": "保持呼吸",
+   "en": "Keep breathing"
+  }
+ },
+ "training": {
+  "kind": "hold",
+  "leadSeconds": 1,
+  "source": "real-practice r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "剂量从计时 10 s 改为按次数 3×4：动画每 8 s 撑起 1.0 s → 停 4.8 s → 坐下 1.0 s → 休 1.2 s",
+    "cue3 写明撑住约 5 秒",
+    "真实做法是静止保持：改回计时 10 秒×3 组，口令改成进入—保持—呼吸；动画的起落只作示意",
+    "最终口径：按真实做法定（2026-11-01）"
+   ],
+   "flags": []
+  }
+ }
+}

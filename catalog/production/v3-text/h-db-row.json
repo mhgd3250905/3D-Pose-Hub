@@ -1,0 +1,138 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "h-db-row",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/h-db-row.js"
+ ],
+ "name": {
+  "zh": "扶椅单臂哑铃划船",
+  "en": "Chair-Supported One-Arm Dumbbell Row"
+ },
+ "purpose": {
+  "zh": "练背部，让往回拉更有力",
+  "en": "Build your back for stronger pulling."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "手肘贴着身体往上往后拉，哑铃拉到肋骨旁",
+    "en": "Pull your elbow up and back until the dumbbell reaches your ribs"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "一只手撑在椅面上，背保持平直不扭。",
+    "en": "Rest one hand on the seat and keep your back flat and square."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "肩胛骨往后夹，停一下再慢慢放下。",
+    "en": "Squeeze your shoulder blade back, pause, then lower slowly."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "上身转动借力",
+   "en": "Twisting the trunk to lift."
+  },
+  {
+   "zh": "耸肩",
+   "en": "Shrugging the shoulder."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "从轻重量开始，出现疼痛就停止",
+   "en": "Start with a light weight, and stop if you feel pain."
+  },
+  {
+   "zh": "椅子会滑动时换一把稳固、不带轮子的",
+   "en": "If the chair can slide, use a sturdy one without wheels."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "lats",
+   "upper-back"
+  ],
+  "synergistMuscles": [
+   "biceps",
+   "deltoids"
+  ],
+  "equipment": [
+   "dumbbell",
+   "chair"
+  ],
+  "position": "standing",
+  "difficulty": 1
+ },
+ "unilateral": true,
+ "startingSide": "right",
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 3,
+  "reps": 10,
+  "restSeconds": 45
+ },
+ "phases": {
+  "start": {
+   "zh": "向上拉",
+   "en": "Pull up"
+  },
+  "peak": {
+   "zh": "夹紧",
+   "en": "Squeeze"
+  },
+  "end": {
+   "zh": "慢慢放下",
+   "en": "Lower slowly"
+  }
+ },
+ "training": {
+  "kind": "rep_updown",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.8,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 1.1,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 1.0,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.1
+   }
+  ],
+  "perSide": "each-side-separately",
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "文案与动画一致，只改口语；主口令缩短到一个指令",
+    "cautions 改「X 时 Y」",
+    "节奏核对：动画顶点真正静止约 0.6 秒（<0.8），rep_hold 改为 rep_updown"
+   ],
+   "flags": []
+  }
+ }
+}

@@ -1,0 +1,131 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "o-supported-ankle-eversion",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/o-supported-ankle-eversion-r2.js"
+ ],
+ "name": {
+  "zh": "扶椅脚底向外翻",
+  "en": "Chair-Supported Foot Turn-Out"
+ },
+ "purpose": {
+  "zh": "不加重量，练脚踝把脚底往外翻的控制",
+  "en": "Train control of turning the sole of your foot outward, with no added weight."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "小腿不动，脚底慢慢向外翻",
+    "en": "Keep your shin still and slowly turn your sole outward"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "一只手轻扶椅子，这只脚悬空。",
+    "en": "Rest one hand lightly on a chair and lift this foot off the floor."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "在舒服的范围内翻到位，再慢慢回正。",
+    "en": "Turn as far as is comfortable, then come back slowly."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "转小腿或转髋来代替脚踝",
+   "en": "Turning the shin or hip instead of the ankle."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "扶稳没有轮子的椅子，疼或站不稳时就停",
+   "en": "Use a stable chair without wheels, and stop if it hurts or you feel unsteady."
+  }
+ ],
+ "tags": {
+  "category": "mobility",
+  "activeMuscles": [
+   "calves"
+  ],
+  "synergistMuscles": [
+   "tibialis"
+  ],
+  "equipment": [
+   "chair"
+  ],
+  "position": "standing",
+  "difficulty": 1
+ },
+ "unilateral": true,
+ "startingSide": "right",
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 2,
+  "reps": 10,
+  "restSeconds": 30
+ },
+ "phases": {
+  "start": {
+   "zh": "脚底朝外",
+   "en": "Turn out"
+  },
+  "peak": {
+   "zh": "停住",
+   "en": "Hold"
+  },
+  "end": {
+   "zh": "慢慢回正",
+   "en": "Come back"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.5,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 2.0,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 2.0,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 2.5
+   }
+  ],
+  "perSide": "each-side-separately",
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "改名「扶椅悬空足外翻控制」→「扶椅脚底向外翻」，EN 去 Eversion",
+    "节奏按 spec 时间轴手算（派生值把 90% 以上都算停顿，和 spec 不符）：翻 1.5/停 2.0/回 2.0/歇 2.5 s（派生 0.9/2.7/1.2/3.3）",
+    "caution 改「X 时 Y」短句",
+    "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除",
+    "最终口径：按真实做法定（2026-11-01）"
+   ],
+   "flags": [
+    "tags.activeMuscles 是 calves（目标其实是小腿外侧腓骨肌，词表里没有），请定是否保留"
+   ]
+  }
+ }
+}

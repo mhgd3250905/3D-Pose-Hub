@@ -1,0 +1,117 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "triceps-B",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/data/drills.json",
+  "drill-anim/specs/triceps-B-r2.js"
+ ],
+ "name": {
+  "zh": "平行杆直臂支撑",
+  "en": "Parallette Support Hold"
+ },
+ "purpose": {
+  "zh": "练手臂伸直撑住体重",
+  "en": "Train holding your body weight on straight arms."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "手臂伸直，肩膀往下压、远离耳朵",
+    "en": "Lock your arms and press your shoulders down away from your ears"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "脚尖先轻点地，压肩后收膝把身体撑离地面。",
+    "en": "Start with your toes lightly on the floor, press your shoulders down, then tuck your knees to lift off."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "撑住不动，均匀呼吸，别憋气。",
+    "en": "Hold still and keep breathing evenly."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "手肘微弯",
+   "en": "Letting your elbows bend."
+  },
+  {
+   "zh": "耸肩，身体挂在肩膀上",
+   "en": "Shrugging and hanging on your shoulders."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "手腕不舒服时先活动一下手腕",
+   "en": "If your wrists feel stiff, warm them up first."
+  },
+  {
+   "zh": "手腕刺痛或发麻时马上停",
+   "en": "Stop right away if your wrists feel sharp pain or numbness."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "triceps",
+   "chest"
+  ],
+  "synergistMuscles": [
+   "deltoids",
+   "core",
+   "hip-flexors"
+  ],
+  "equipment": [
+   "parallettes"
+  ],
+  "position": "other",
+  "difficulty": 2
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "time",
+  "sets": 4,
+  "seconds": 15,
+  "restSeconds": 60
+ },
+ "phases": {
+  "start": {
+   "zh": "压肩收腿",
+   "en": "Press and tuck"
+  },
+  "peak": {
+   "zh": "撑住",
+   "en": "Hold"
+  },
+  "end": {
+   "zh": "保持呼吸",
+   "en": "Keep breathing"
+  }
+ },
+ "training": {
+  "kind": "hold",
+  "leadSeconds": 1,
+  "source": "real-practice r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "剂量从计时 15 s 改为按次数 3×5：动画每 8 s 压肩+收腿 1.8 s → 撑住 2.9 s → 放脚+松肩 1.7 s → 休 1.6 s",
+    "cue2/3 按动画顺序写（脚尖点地 → 压肩 → 收膝撑起 → 约 3 秒）",
+    "真实做法是静止保持：改回计时 15 秒×4 组，口令改成进入—保持—呼吸；动画的起落只作示意",
+    "最终口径：按真实做法定（2026-11-01）"
+   ],
+   "flags": []
+  }
+ }
+}

@@ -1,0 +1,126 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "n-thomas-test",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/n-thomas-test-r3.js"
+ ],
+ "name": {
+  "zh": "仰卧单膝抱胸（托马斯测试）",
+  "en": "Supine Single Knee-to-Chest (Thomas Test)"
+ },
+ "purpose": {
+  "zh": "看看髋前侧紧不紧，同时轻轻拉伸髋前侧",
+  "en": "Check whether the front of your hip is tight while gently stretching it."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "双手抱住一侧膝盖，另一条腿放松贴地",
+    "en": "Hug one knee with both hands and let the other leg rest long"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "看伸直那条腿的大腿会不会离开地面，离开说明髋前侧偏紧。",
+    "en": "Watch whether the straight thigh lifts off the floor; if it does, the front of that hip is tight."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "保持不动，慢慢呼吸，每次呼气再放松一点。",
+    "en": "Stay still, breathe slowly, and relax a little deeper each time you breathe out."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "别来回颠，有拉伸感就够，别拉到疼。",
+    "en": "Do not bounce; a clear stretch is enough, never pain."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "伸直的腿故意用力压地或抬起",
+   "en": "Pressing the straight leg down or lifting it on purpose."
+  },
+  {
+   "zh": "抱得太用力，腰离开地面",
+   "en": "Pulling the knee in so hard that your lower back lifts."
+  },
+  {
+   "zh": "憋气或来回颠",
+   "en": "Holding your breath or bouncing."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "膝盖或髋部疼时抱得松一点，还疼就停",
+   "en": "If your knee or hip hurts, hug less, and stop if it still hurts."
+  }
+ ],
+ "tags": {
+  "category": "assessment",
+  "activeMuscles": [
+   "hip-flexors"
+  ],
+  "synergistMuscles": [
+   "glutes"
+  ],
+  "equipment": [
+   "mat"
+  ],
+  "position": "supine",
+  "difficulty": 1
+ },
+ "unilateral": true,
+ "startingSide": "right",
+ "defaultDose": {
+  "mode": "time",
+  "sets": 2,
+  "seconds": 30,
+  "restSeconds": 15
+ },
+ "phases": {
+  "start": {
+   "zh": "抱住膝盖",
+   "en": "Hug your knee"
+  },
+  "peak": {
+   "zh": "保持，慢慢呼气",
+   "en": "Hold and breathe out"
+  },
+  "end": {
+   "zh": "呼气再放松",
+   "en": "Relax a bit deeper"
+  }
+ },
+ "training": {
+  "kind": "hold",
+  "leadSeconds": 1,
+  "perSide": "each-side-separately",
+  "source": "user-decision static-hold r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画 r3 是双手一起抱膝（原文「一侧膝盖抱向胸口」未写双手），主口令改为双手抱膝",
+    "动画 8 秒两次「呼气抱近-吸气放松」，剂量 30 s 保持 → 每侧 2 组×8 次；真正停顿仅 0.7 s，用 rep_updown（派生 hold 1.3 s 偏大）",
+    "节奏按 spec 时间轴手算（派生值把 90% 以上都算停顿，和 spec 不符）：抱 1.8/停 0.7/松 1.1/歇 0.4 s；口令改成跟呼吸走",
+    "按用户决定改为静态保持计时，动画只作示意",
+    "剂量 → 每侧 2 组×30 秒，休息 15 秒；口令/要点改为进入-保持-呼气放松，去掉来回/计数描述",
+    "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除",
+    "最终口径：按真实做法定（2026-11-01）"
+   ],
+   "flags": []
+  }
+ }
+}

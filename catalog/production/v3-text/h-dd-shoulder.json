@@ -1,0 +1,128 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "h-dd-shoulder",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/h-dd-shoulder.js"
+ ],
+ "name": {
+  "zh": "下犬式压肩",
+  "en": "Downward Dog Shoulder Press"
+ },
+ "purpose": {
+  "zh": "打开肩膀，拉伸腋下和胸口",
+  "en": "Open your shoulders and stretch your armpits and chest."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "手臂伸直，胸口往大腿方向压",
+    "en": "Keep your arms straight and press your chest toward your thighs"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "臀部推高，背拉长，脚跟往地面落。",
+    "en": "Push your hips high, keep your back long and reach your heels down."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "停住不动，慢慢呼吸。",
+    "en": "Stay still and breathe slowly."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "每次呼气再放松一点，别来回颠。",
+    "en": "Each time you breathe out, relax a little deeper. No bouncing."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "弓背",
+   "en": "Rounding the back."
+  },
+  {
+   "zh": "耸肩挤脖子",
+   "en": "Shrugging toward the neck."
+  },
+  {
+   "zh": "来回颠着往下压",
+   "en": "Bouncing to go deeper."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "出现疼痛时放松，只拉到舒服的程度",
+   "en": "If anything hurts, ease off and stretch only to a comfortable point."
+  },
+  {
+   "zh": "手腕刺痛或发麻时停止，开始前先活动手腕",
+   "en": "Stop if your wrists feel sharp pain or numbness, and warm them up first."
+  }
+ ],
+ "tags": {
+  "category": "stretch",
+  "activeMuscles": [
+   "lats",
+   "chest"
+  ],
+  "synergistMuscles": [
+   "deltoids",
+   "hamstrings",
+   "calves"
+  ],
+  "equipment": [
+   "mat"
+  ],
+  "position": "other",
+  "difficulty": 1
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "time",
+  "sets": 2,
+  "seconds": 30,
+  "restSeconds": 20
+ },
+ "phases": {
+  "start": {
+   "zh": "慢慢往下压",
+   "en": "Ease into it"
+  },
+  "peak": {
+   "zh": "保持，慢慢呼气",
+   "en": "Hold and breathe out"
+  },
+  "end": {
+   "zh": "呼气再放松",
+   "en": "Relax a bit deeper"
+  }
+ },
+ "training": {
+  "kind": "hold",
+  "leadSeconds": 1,
+  "source": "real-practice r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "起止口令按相位缩短（下压 0.8 s、放松 0.6 s）",
+    "purpose 去掉「背阔肌」学名；cue3 改为动画里的「手脚不动」，去掉 neutral",
+    "按用户最终决定改为静态保持 30 秒×2 组（取代上一版「来回动态、计次」），口令和要点改成进入—保持—呼气放松，动画只作示意",
+    "最终口径：按真实做法定（2026-11-01）"
+   ],
+   "flags": []
+  }
+ }
+}

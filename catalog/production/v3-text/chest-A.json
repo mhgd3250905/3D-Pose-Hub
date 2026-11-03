@@ -1,0 +1,149 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "chest-A",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/data/drills.json",
+  "drill-anim/specs/chest-A-r3.js",
+  "drill-anim/specs/chest-A-r2.js"
+ ],
+ "name": {
+  "zh": "俯卧撑转侧撑",
+  "en": "Push-Up to Side Plank Rotation"
+ },
+ "purpose": {
+  "zh": "练胸部和肩膀，转身时稳住腰腹",
+  "en": "Build your chest and shoulders and keep your trunk steady as you turn."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "做一个俯卧撑，再整个人转向侧面",
+    "en": "Do a push-up, then turn your whole body to the side"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "胸口和髋一起转，别只扭腰。",
+    "en": "Turn your chest and hips together, not just your waist."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "上面的手伸向天花板，停一下再转回来。",
+    "en": "Reach your top arm to the ceiling, pause, then turn back."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "两边各做一次算 1 次。",
+    "en": "One on each side counts as one rep."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "转得太快",
+   "en": "Turning too fast."
+  },
+  {
+   "zh": "撑地那侧肩膀塌下去",
+   "en": "Letting the supporting shoulder sink."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "手腕疼或发麻时停下",
+   "en": "Stop if your wrists hurt or go numb."
+  },
+  {
+   "zh": "先活动手腕再做",
+   "en": "Warm up your wrists before you start."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "chest",
+   "obliques"
+  ],
+  "synergistMuscles": [
+   "triceps",
+   "deltoids",
+   "core"
+  ],
+  "equipment": [
+   "mat"
+  ],
+  "position": "plank",
+  "difficulty": 2
+ },
+ "unilateral": true,
+ "startingSide": "right",
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 3,
+  "reps": 6,
+  "restSeconds": 60
+ },
+ "phases": {
+  "start": {
+   "zh": "俯卧撑转身",
+   "en": "Push up and turn"
+  },
+  "peak": {
+   "zh": "手伸向上",
+   "en": "Reach up"
+  },
+  "end": {
+   "zh": "转回来",
+   "en": "Turn back"
+  }
+ },
+ "training": {
+  "kind": "rep_alternate",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 2.7,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 0.3
+   },
+   {
+    "id": "back",
+    "seconds": 1.0,
+    "cue": "phase.end"
+   }
+  ],
+  "perSide": "alternate",
+  "repUnit": "left+right",
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画左右轮流（先右手向上），training=rep_alternate、perSide alternate",
+    "相位按 spec phaseSeconds：俯卧撑 1.7 s+转身 1.0 s=go 2.7、顶点 0.3、转回 1.0（批表只取了俯卧撑那段）",
+    "主口令拆成「俯卧撑-转身」一件事；原「支撑手不动」并入 cues",
+    "轮流计数口径：一左一右算 1 次，剂量为每侧 N 次（reps=N），training.phases 描述一侧的一下，repUnit=left+right；startingSide=先动的一侧（right）",
+    "最终口径：按真实做法定（2026-11-01）"
+   ],
+   "flags": [
+    "相位没按批表 down 轨（0.5/0.33/0.5/2.68）而按 spec 手算，请确认",
+    "顶点只有 0.3 s，「手伸向上」不绑相位，只在 phases.peak 文本里"
+   ]
+  }
+ }
+}

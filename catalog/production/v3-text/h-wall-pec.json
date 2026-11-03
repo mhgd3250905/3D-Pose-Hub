@@ -1,0 +1,125 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "h-wall-pec",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/h-wall-pec-r5.js"
+ ],
+ "name": {
+  "zh": "靠墙单臂胸肌拉伸",
+  "en": "Single-Arm Wall Pec Stretch"
+ },
+ "purpose": {
+  "zh": "拉伸胸部、肩膀前面和上臂前侧",
+  "en": "Stretch your chest, the front of your shoulder and the front of your upper arm."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "手掌贴墙不动，身体慢慢转离墙面",
+    "en": "Keep your palm on the wall and slowly turn away from it"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "手臂向后贴墙，和肩同高，肩膀往下沉。",
+    "en": "Arm back along the wall at shoulder height, shoulder down."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "停住不动，慢慢呼吸。",
+    "en": "Stay still and breathe slowly."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "每次呼气再放松一点，别来回颠。",
+    "en": "Each time you breathe out, relax a little deeper. No bouncing."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "耸肩",
+   "en": "Shrugging your shoulder."
+  },
+  {
+   "zh": "憋气",
+   "en": "Holding your breath."
+  },
+  {
+   "zh": "来回颠着往下压",
+   "en": "Bouncing to go deeper."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "肩膀疼时幅度小一点，还疼就停",
+   "en": "If your shoulder hurts, move less far, and stop if it still hurts."
+  }
+ ],
+ "tags": {
+  "category": "stretch",
+  "activeMuscles": [
+   "chest",
+   "deltoids"
+  ],
+  "synergistMuscles": [
+   "biceps"
+  ],
+  "equipment": [
+   "wall"
+  ],
+  "position": "standing",
+  "difficulty": 1
+ },
+ "unilateral": true,
+ "startingSide": "right",
+ "defaultDose": {
+  "mode": "time",
+  "sets": 2,
+  "seconds": 30,
+  "restSeconds": 15
+ },
+ "phases": {
+  "start": {
+   "zh": "慢慢转开",
+   "en": "Turn away"
+  },
+  "peak": {
+   "zh": "保持，慢慢呼气",
+   "en": "Hold and breathe out"
+  },
+  "end": {
+   "zh": "呼气再放松",
+   "en": "Relax a bit deeper"
+  }
+ },
+ "training": {
+  "kind": "hold",
+  "leadSeconds": 1,
+  "perSide": "each-side-separately",
+  "source": "user-decision static-hold r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画每 8 秒一次「转开-停约 2.6 s-转回」，剂量从 30 秒保持改为每侧 2 组×6 次（rep_hold）",
+    "purpose「二头肌」改口语「上臂前侧」",
+    "cue3「肋骨不外翻」改「别耸肩、慢慢呼吸」",
+    "口令「保持呼吸」→「停住呼吸」",
+    "按用户决定改为静态保持计时，动画只作示意：30 秒×2 组/每侧，休息 15 秒；口令和要点改成进入—保持—呼气放松"
+   ],
+   "flags": []
+  }
+ }
+}

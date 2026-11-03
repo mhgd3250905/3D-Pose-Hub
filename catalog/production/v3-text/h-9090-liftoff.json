@@ -1,0 +1,135 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "h-9090-liftoff",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/h-9090-liftoff-r3.js",
+  "drill-anim/specs/h-9090-liftoff-r2.js"
+ ],
+ "name": {
+  "zh": "90/90 后腿主动抬起",
+  "en": "90/90 Back-Leg Lift-Off"
+ },
+ "purpose": {
+  "zh": "练大腿向内转的力量和控制，让髋更灵活",
+  "en": "Build strength and control turning your thigh inward for more mobile hips."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "坐直，后腿膝盖贴地，把小腿和脚抬起",
+    "en": "Sit tall, keep your back knee down, and lift that shin and foot"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "前腿小腿横在身前，双手放在膝盖上。",
+    "en": "Keep your front shin across your body and your hands on your knees."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "顶上停一下，再慢慢放下。",
+    "en": "Pause at the top, then lower slowly."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "身体往后仰或歪向一边来抬脚",
+   "en": "Leaning back or sideways to lift the foot."
+  },
+  {
+   "zh": "后腿膝盖跟着离地",
+   "en": "Letting the back knee come off the floor."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "髋或膝不舒服时抬低一点，还疼就停",
+   "en": "If your hip or knee feels uncomfortable, lift lower, and stop if it still hurts."
+  }
+ ],
+ "tags": {
+  "category": "mobility",
+  "activeMuscles": [
+   "abductors",
+   "glutes"
+  ],
+  "synergistMuscles": [
+   "hip-flexors",
+   "core"
+  ],
+  "equipment": [
+   "mat"
+  ],
+  "position": "seated",
+  "difficulty": 2
+ },
+ "unilateral": true,
+ "startingSide": "left",
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 2,
+  "reps": 8,
+  "restSeconds": 30
+ },
+ "phases": {
+  "start": {
+   "zh": "抬小腿",
+   "en": "Lift up"
+  },
+  "peak": {
+   "zh": "停一下",
+   "en": "Pause"
+  },
+  "end": {
+   "zh": "放下来",
+   "en": "Lower"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.7,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 1.5,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.7,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.1
+   }
+  ],
+  "perSide": "each-side-separately",
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "purpose 去掉「髋内旋」改口语；补常见错误「后腿膝盖离地」",
+    "口令按 0.7 s 缩短（抬小腿/放下来）",
+    "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除",
+    "最终口径：按真实做法定（2026-11-01）"
+   ],
+   "flags": []
+  }
+ }
+}

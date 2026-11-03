@@ -1,0 +1,135 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "h-kneeling-pushup",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/h-kneeling-pushup-rr1.js"
+ ],
+ "name": {
+  "zh": "跪姿俯卧撑",
+  "en": "Knee-Supported Push-Up"
+ },
+ "purpose": {
+  "zh": "练胸部和手臂，适合入门的俯卧撑",
+  "en": "Build your chest and arms with a beginner push-up."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "膝盖着地，从头到膝一条直线往下",
+    "en": "Kneel and lower with your body straight from head to knees"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "手肘斜着往后，别往两边张开。",
+    "en": "Bend your elbows back at an angle, not out to the sides."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "撑回到手臂伸直。",
+    "en": "Push back up to straight arms."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "塌腰或屁股翘起来",
+   "en": "Sagging or lifting the hips."
+  },
+  {
+   "zh": "手肘往两边张开",
+   "en": "Flaring the elbows out."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "手腕刺痛或发麻时停止，开始前先活动手腕",
+   "en": "Stop if your wrists feel sharp pain or numbness, and warm them up first."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "chest",
+   "triceps"
+  ],
+  "synergistMuscles": [
+   "deltoids",
+   "core"
+  ],
+  "equipment": [
+   "mat"
+  ],
+  "position": "kneeling",
+  "difficulty": 1
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 3,
+  "reps": 10,
+  "restSeconds": 45
+ },
+ "phases": {
+  "start": {
+   "zh": "下放",
+   "en": "Lower"
+  },
+  "peak": {
+   "zh": "停一下",
+   "en": "Pause"
+  },
+  "end": {
+   "zh": "撑起",
+   "en": "Push up"
+  }
+ },
+ "training": {
+  "kind": "rep_updown",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.8,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 0.8,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.7,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.7
+   }
+  ],
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "口令按 0.8/0.7 s 相位缩短（下放/撑起）",
+    "cue2 去掉「45°」改口语",
+    "cautions 改「X 时 Y」短句",
+    "加 training",
+    "节奏核对：动画顶点真正静止约 0.37 秒（<0.8），rep_hold 改为 rep_updown"
+   ],
+   "flags": [
+    "派生把顶点算成 ≥0.8 s 判为 rep_hold，但 spec 轨道真正的静止只有约 0.4 s（注释/关键帧），若按实际应为 rep_updown，请确认"
+   ]
+  }
+ }
+}

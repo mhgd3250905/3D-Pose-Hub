@@ -1,0 +1,100 @@
+{
+  "format": "pose-hub-action-recipe@1",
+  "id": "s-frog",
+  "nameZh": "青蛙式",
+  "spec": "drill-anim/specs/s-frog-r3.js",
+  "specSha256Lf": "2a4814bdebdf1b65029cdf04e0f10e49dc3e4bfb84ce78149dc5ab2f388a6307",
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "hands": {
+    "left": "native",
+    "right": "native"
+  },
+  "camera": {
+    "dir": [
+      0.8,
+      0.45,
+      -0.6
+    ],
+    "fit": [
+      "head",
+      "leftKnee",
+      "rightKnee",
+      "pelvis",
+      "leftToe",
+      "rightToe",
+      "leftElbow"
+    ],
+    "pad": 0.16,
+    "k": 1,
+    "at": 0,
+    "drift": 0,
+    "fitTimeline": true,
+    "orbitDegrees": 0,
+    "frontSweepDegrees": 0
+  },
+  "cameraScale": 1.15,
+  "output": {
+    "groundShadow": false,
+    "cameraMotion": false,
+    "wholeCycleContentRect": true,
+    "fps": 30,
+    "exerciseMat": true,
+    "matProp": {
+      "type": "mat",
+      "at": [
+        0,
+        0,
+        0.209
+      ],
+      "size": [
+        1.477,
+        1.14,
+        0.006
+      ],
+      "yaw": -90,
+      "source": "remote-rotation-r1 auto footprint"
+    }
+  },
+  "appearance": {
+    "highlight": {
+      "color": "#F05A36",
+      "shade": [
+        0.5,
+        0.42,
+        0.08
+      ],
+      "intensity": [
+        0.75,
+        1
+      ]
+    },
+    "purpose": "Visual cue for target muscle effort, not a physiological measurement",
+    "status": "parameterized-selection-deferred-by-user"
+  },
+  "jointCorrections": [
+    {
+      "profile": "upper-arm-contour-r3",
+      "version": "0.1.0-r3"
+    },
+    {
+      "profile": "ankle-join-r5",
+      "version": "0.1.0-r5"
+    }
+  ],
+  "adaptation": {
+    "status": "remote-keyframe-pending",
+    "method": "Fixed queue source reused unchanged on armfix-r2.",
+    "cameraChanges": "drift->0 (static)"
+  },
+  "source": {
+    "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
+    "selectedSpec": "drill-anim/specs/s-frog-r3.js"
+  },
+  "sampledOnly": true,
+  "fullCycleValidated": false,
+  "userAccepted": false,
+  "releaseEligible": false
+}

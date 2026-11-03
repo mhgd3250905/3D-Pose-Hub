@@ -1,0 +1,126 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "h-seated-reachback",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/h-seated-reachback.js"
+ ],
+ "name": {
+  "zh": "坐姿后撑滑臀",
+  "en": "Seated Reach-Back Shoulder Stretch"
+ },
+ "purpose": {
+  "zh": "拉伸胸口和肩膀前面",
+  "en": "Stretch your chest and the fronts of your shoulders."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "双手撑在身后不动，屁股慢慢往前滑",
+    "en": "Keep your hands planted behind you and slowly slide your hips forward"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "手指朝后，手臂伸直，胸口抬起。",
+    "en": "Fingers point back, arms straight, chest up."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "停住不动，慢慢呼吸。",
+    "en": "Stay still and breathe slowly."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "每次呼气再放松一点，别来回颠。",
+    "en": "Each time you breathe out, relax a little deeper. No bouncing."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "耸肩",
+   "en": "Shrugging your shoulders."
+  },
+  {
+   "zh": "憋气",
+   "en": "Holding your breath."
+  },
+  {
+   "zh": "来回颠着往下压",
+   "en": "Bouncing to go deeper."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "出现疼痛时放松，只拉到舒服的程度",
+   "en": "If anything hurts, ease off and stretch only to a comfortable point."
+  },
+  {
+   "zh": "手腕刺痛或发麻时停止，开始前先活动手腕",
+   "en": "Stop if your wrists feel sharp pain or numbness, and warm them up first."
+  }
+ ],
+ "tags": {
+  "category": "stretch",
+  "activeMuscles": [
+   "chest",
+   "deltoids"
+  ],
+  "synergistMuscles": [
+   "biceps"
+  ],
+  "equipment": [
+   "mat"
+  ],
+  "position": "seated",
+  "difficulty": 1
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "time",
+  "sets": 2,
+  "seconds": 30,
+  "restSeconds": 15
+ },
+ "phases": {
+  "start": {
+   "zh": "慢慢往前滑",
+   "en": "Slide forward"
+  },
+  "peak": {
+   "zh": "保持，慢慢呼气",
+   "en": "Hold and breathe out"
+  },
+  "end": {
+   "zh": "呼气再放松",
+   "en": "Relax a bit deeper"
+  }
+ },
+ "training": {
+  "kind": "hold",
+  "leadSeconds": 1,
+  "source": "user-decision static-hold r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "cue2 补动画可见的「手臂伸直」",
+    "cautions 改短句",
+    "顶点停 ~3 s → rep_hold",
+    "按用户决定改为静态保持计时，动画只作示意：30 秒×2 组，休息 15 秒；口令和要点改成进入—保持—呼气放松"
+   ],
+   "flags": []
+  }
+ }
+}

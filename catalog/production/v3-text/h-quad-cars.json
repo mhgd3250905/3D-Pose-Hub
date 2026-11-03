@@ -1,0 +1,144 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "h-quad-cars",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/h-quad-cars-r2.js",
+  "drill-anim/specs/h-quad-cars.js"
+ ],
+ "name": {
+  "zh": "跪撑髋部画圈",
+  "en": "Hands-and-Knees Hip Circles"
+ },
+ "purpose": {
+  "zh": "让髋部在最大范围内慢慢转动，更灵活",
+  "en": "Move your hip slowly through its biggest range to keep it mobile."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "膝盖抬起，画一个你能做到的最大的圈",
+    "en": "Lift your knee and draw the biggest circle you can"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "屁股和背不动，只有腿在转。",
+    "en": "Keep your hips and back still; only the leg moves."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "画一圈算 1 次，下一圈反方向。",
+    "en": "One circle counts as one. Go the other way on the next one."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "屁股跟着转",
+   "en": "Turning the hips with the leg."
+  },
+  {
+   "zh": "画得太快",
+   "en": "Circling too fast."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "髋部不舒服时幅度小一点，还疼就停",
+   "en": "If your hip feels uncomfortable, move less far, and stop if it still hurts."
+  },
+  {
+   "zh": "手腕刺痛或发麻时停止，开始前先活动手腕",
+   "en": "Stop if your wrists feel sharp pain or numbness, and warm them up first."
+  }
+ ],
+ "tags": {
+  "category": "mobility",
+  "activeMuscles": [
+   "glutes",
+   "abductors",
+   "hip-flexors"
+  ],
+  "synergistMuscles": [
+   "core"
+  ],
+  "equipment": [
+   "mat"
+  ],
+  "position": "quadruped",
+  "difficulty": 2
+ },
+ "unilateral": true,
+ "startingSide": "right",
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 2,
+  "reps": 6,
+  "restSeconds": 20
+ },
+ "phases": {
+  "start": {
+   "zh": "抬膝画圈",
+   "en": "Lift and circle"
+  },
+  "peak": {
+   "zh": "往外打开",
+   "en": "Open out"
+  },
+  "end": {
+   "zh": "画回原位",
+   "en": "Circle home"
+  }
+ },
+ "training": {
+  "kind": "rep_cycle",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.9,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 0.9,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 1.7,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 0.6
+   }
+  ],
+  "perSide": "each-side-separately",
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "名字「四足」「CARs」难懂，改「跪撑髋部画圈 / Hands-and-Knees Hip Circles」",
+    "动画 8 s 内一圈正向（0.5–3.9 s）+ 一圈反向（4.3–7.7 s）；派生 lift 轨只看抬膝高度（go1.7/back0.5 不对），按 spec 注释手算：一圈 = 1 次，前半圈 1.7、后半圈 1.7、停 0.6 → rep_cycle",
+    "剂量 3 次改为每侧 6 圈（正反各 3）",
+    "计数单位保持不变，cue 写明 1 次是什么",
+    "最终口径：按真实做法定（2026-11-01）",
+    "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除",
+    "小样听审后：画圈前半段拆出「往外打开」口令段，确保顶点口令能播"
+   ],
+   "flags": [
+    "相位为手算（非批表），请确认"
+   ]
+  }
+ }
+}

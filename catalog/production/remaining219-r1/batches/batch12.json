@@ -1,0 +1,391 @@
+{
+  "format": "pose-hub-remaining219-remote-index@1",
+  "batch": "batch12",
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "environment": {
+    "host": "Hark sandbox aarch64, 2 cores, 7.9 GiB, no GPU",
+    "browser": "Playwright 1.48.2 chromium-1140",
+    "renderer": "software (ANGLE SwiftShader)",
+    "serial": true
+  },
+  "checks": {
+    "keyframes": "tools/action-completion-v3-r2/remote-keyframes-r1.mjs, 256/320px, 3-6 frames",
+    "rotation": "tools/action-completion-v3-r2/remote-rotation-r1.mjs, 15Hz sequential solve, axial twist of forearm|upperArm, hand|forearm, foot|shin (range>120, step>25, net>150 deg flagged)"
+  },
+  "sampledOnly": true,
+  "fullCycleValidated": false,
+  "userAccepted": false,
+  "releaseEligible": false,
+  "items": [
+    {
+      "stableId": "h-chair-progressive-front-split-native",
+      "status": "remote-keyframe-reviewed",
+      "spec": "drill-anim/specs/h-chair-progressive-front-split-native.js",
+      "specSha256Lf": "8cc7586f6453c42b0b469e48f45380bc7bd3bc1efee805232c66e4470127e0b2",
+      "recipe": "catalog/production/remaining219-r1/recipes/h-chair-progressive-front-split-native.json",
+      "recipeSha256Lf": "72f9ddab8a832e0d9edf9ff9a4d47b0916388ea1445e09f58db3f08badb64eab",
+      "keyframes": {
+        "attempt": "h-chair-progressive-front-split-native-a01",
+        "times": [
+          1,
+          3,
+          5,
+          7
+        ],
+        "size": 256,
+        "recipeSha256": "72f9ddab8a832e0d9edf9ff9a4d47b0916388ea1445e09f58db3f08badb64eab",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "598d184932d16fee2b56d2b47567f9086ae55a2776f2502e73f4f62d61517174",
+          "keyframe-01.png": "fa072a20c74823516927bd3549fc404b7ef7bd87825ef64af8b38842d7a53410",
+          "keyframe-02.png": "935ec87453be49dcf6d03fc6d517828afd25480d121238ffb368e66cd73f3a42",
+          "keyframe-03.png": "d60e33f707a95cfb2a0e342e112e0e6535b65ebe93427edbd572f557795b195a"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "573ca0c525e5ca252f29bd7968387d4ae7a46e1c0b4c2e9d46c3e3152ecac1e0",
+        "samples": 121,
+        "flagged": [],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 9.0,
+            "maxStepDeg": 0.5,
+            "netDeg": 0
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 16.6,
+            "maxStepDeg": 0.8,
+            "netDeg": 0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          }
+        },
+        "note": "rotation screen ran on an earlier recipe revision that differs only in camera; twist is camera independent"
+      },
+      "notes": "chair-assisted progressive front split on mat.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect"
+      ]
+    },
+    {
+      "stableId": "h-chair-single-leg-hip-thrust",
+      "status": "remote-keyframe-reviewed",
+      "spec": "drill-anim/specs/h-chair-single-leg-hip-thrust-rr8.js",
+      "specSha256Lf": "b929aad6f24cfb85648040381360656fd262b4ee6c2a4c74b83d6ea33f58fd38",
+      "recipe": "catalog/production/remaining219-r1/recipes/h-chair-single-leg-hip-thrust.json",
+      "recipeSha256Lf": "104c24535706a1d01c1e7bcfea99a31c642744bbea7bdb21b54be645b0f6cbb0",
+      "keyframes": {
+        "attempt": "h-chair-single-leg-hip-thrust-a01",
+        "times": [
+          1,
+          3,
+          5,
+          7
+        ],
+        "size": 256,
+        "recipeSha256": "104c24535706a1d01c1e7bcfea99a31c642744bbea7bdb21b54be645b0f6cbb0",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "d3c085404c45fb2284b83b5cfc5bd4e20c29b75c1a989972ad353a82aa16f5bc",
+          "keyframe-01.png": "5e8ac6b92f4a27a0da416bb91d8d8b4885ea1f1fdcb1c1eec6e7f9000d16fb75",
+          "keyframe-02.png": "e25f4a1bb4432e86777d3647676aff48a573cdaa63fa5f5473eb46895f928187",
+          "keyframe-03.png": "b8abb7b5f4607031ce16dcbf870d42926eb4f591a4e4b8241638f872e95c4a99"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "3f8499e13ea8f62f4a838716b644b0075a13d28c690992cc8ca7dba92cb4e7f6",
+        "samples": 121,
+        "flagged": [],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 8.5,
+            "maxStepDeg": 0.5,
+            "netDeg": -0.0
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 43.2,
+            "maxStepDeg": 2.5,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 8.5,
+            "maxStepDeg": 0.5,
+            "netDeg": 0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 43.2,
+            "maxStepDeg": 2.5,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          }
+        },
+        "note": "rotation screen ran on an earlier recipe revision that differs only in camera; twist is camera independent"
+      },
+      "notes": "shoulders on chair seat, single-leg hip thrust; raised leg alternates.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect",
+        "upper back contact on chair seat edge"
+      ]
+    },
+    {
+      "stableId": "h-chair-sit-to-stand",
+      "status": "remote-keyframe-reviewed",
+      "spec": "drill-anim/specs/h-chair-sit-to-stand.js",
+      "specSha256Lf": "32298d1f62af5fa3de00b2c0d737c83a716e568a96b6cb644ac45d13872a3fe7",
+      "recipe": "catalog/production/remaining219-r1/recipes/h-chair-sit-to-stand.json",
+      "recipeSha256Lf": "fdd511b8d94d801150c75e07d606410c817631a7c5df9770510c32f1e83bd42d",
+      "keyframes": {
+        "attempt": "h-chair-sit-to-stand-a01",
+        "times": [
+          1,
+          3,
+          5,
+          7
+        ],
+        "size": 256,
+        "recipeSha256": "fdd511b8d94d801150c75e07d606410c817631a7c5df9770510c32f1e83bd42d",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "77b0c3b3e9d08a050175d7608d2f003c19db40e5cd5e5e897c7e7df8a759f529",
+          "keyframe-01.png": "316b5e07472a7d97e9d5921ff1f9d473c50c87e5ee95fd92303ac5c730b1695c",
+          "keyframe-02.png": "e744988ef82c02ca725209a3b53cf7a4bbbf5597f021ef0e6ce00f5b0aa32b64",
+          "keyframe-03.png": "e0ac5141ea54741d4ec48dfc29f6fdd11bf75bde364d6c0e39d96944ca175cd2"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "1602094d31d0ced34eabab349f9bbf3c3fd93ffe0e4f0b73e355a6480f929548",
+        "samples": 121,
+        "flagged": [],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 5.9,
+            "maxStepDeg": 0.6,
+            "netDeg": 0
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 0.0,
+            "maxStepDeg": 0.0,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 5.9,
+            "maxStepDeg": 0.6,
+            "netDeg": 0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 0.0,
+            "maxStepDeg": 0.0,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          }
+        },
+        "note": "rotation screen ran on an earlier recipe revision that differs only in camera; twist is camera independent"
+      },
+      "notes": "sit-to-stand with arms reaching forward.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect"
+      ]
+    },
+    {
+      "stableId": "h-chair-step-up",
+      "status": "remote-keyframe-reviewed",
+      "spec": "drill-anim/specs/h-chair-step-up-r2.js",
+      "specSha256Lf": "340af315a9f01479b0df8e6349162d83e51199f16bf01a946e16393df0ca1668",
+      "recipe": "catalog/production/remaining219-r1/recipes/h-chair-step-up.json",
+      "recipeSha256Lf": "acf814ab91c774b94d45530e2064c616e202aabbddd7ee5444f727dc5227fd42",
+      "keyframes": {
+        "attempt": "h-chair-step-up-a01",
+        "times": [
+          1,
+          3,
+          5,
+          7
+        ],
+        "size": 256,
+        "recipeSha256": "acf814ab91c774b94d45530e2064c616e202aabbddd7ee5444f727dc5227fd42",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "df7100786c240ba52ed4db40d452391b3743c9dda03a06a30591941fdf4b3d02",
+          "keyframe-01.png": "cb4bb09737efce88fbb5b6b5699bcd556768300c3897509fbc7b7db96842cbdd",
+          "keyframe-02.png": "cc8c2d4d484b708e4efe0818b086d72ace1e8a1e2b58aa18cc9f7ce7667273d1",
+          "keyframe-03.png": "5caf62b061f5005968428d0f3fc590d6306773a2406e427f57c8832d98e4760d"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "cf4b24ddf20a6d707ad9e9c87e24d0d33d522ca0a1d7ae99c4ca783352035cec",
+        "samples": 121,
+        "flagged": [],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 8.8,
+            "maxStepDeg": 2.2,
+            "netDeg": 0
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 16.5,
+            "maxStepDeg": 4.1,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0.0,
+            "maxStepDeg": 0.0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 8.8,
+            "maxStepDeg": 2.2,
+            "netDeg": 0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 16.5,
+            "maxStepDeg": 4.1,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 0.0,
+            "maxStepDeg": 0.0,
+            "netDeg": 0
+          }
+        },
+        "note": "rotation screen ran on an earlier recipe revision that differs only in camera; twist is camera independent"
+      },
+      "notes": "chair step-up; figure small after extra pad.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect",
+        "camera: figure small in frame, could tighten"
+      ]
+    },
+    {
+      "stableId": "h-chair-tspine",
+      "status": "remote-keyframe-reviewed",
+      "spec": "drill-anim/specs/h-chair-tspine.js",
+      "specSha256Lf": "3c0ec668f5139db529d6225bbef9c86183940c373f486255b6598591281d7f3c",
+      "recipe": "catalog/production/remaining219-r1/recipes/h-chair-tspine.json",
+      "recipeSha256Lf": "8f3f60b5367e64e52336efd371ee3d7d8be28cb80ae488e074553ce3d75e7ed2",
+      "keyframes": {
+        "attempt": "h-chair-tspine-a01",
+        "times": [
+          1,
+          3,
+          5,
+          7
+        ],
+        "size": 256,
+        "recipeSha256": "8f3f60b5367e64e52336efd371ee3d7d8be28cb80ae488e074553ce3d75e7ed2",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "f2996f04d91e5b70194dc2fbb1c6a23a4ed3afce14bf6835d109fdf1eae15399",
+          "keyframe-01.png": "739f910a4299ce596f5a43756367633bf67e79e52be61ea3e18350bba024a78a",
+          "keyframe-02.png": "6f280e376cb8e28c90b6e04b203b708c6131fd67a6432f5b04ffc9821d1d4ef9",
+          "keyframe-03.png": "739f910a4299ce596f5a43756367633bf67e79e52be61ea3e18350bba024a78a"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "39519a382592a202101746eac5341eccd3af5ae03a562d9d36d868fcc4fbbff1",
+        "samples": 121,
+        "flagged": [],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 18.7,
+            "maxStepDeg": 2.0,
+            "netDeg": -0.0
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 19.2,
+            "maxStepDeg": 2.0,
+            "netDeg": 0.0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          }
+        },
+        "note": "rotation screen ran on an earlier recipe revision that differs only in camera; twist is camera independent"
+      },
+      "notes": "kneeling thoracic extension with elbows on chair seat.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "h-db-kickback",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/h-db-kickback.js"
+ ],
+ "name": {
+  "zh": "俯身哑铃后伸臂",
+  "en": "Bent-Over Dumbbell Kickback"
+ },
+ "purpose": {
+  "zh": "练手臂后侧",
+  "en": "Build the backs of your upper arms."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "大臂贴住身体不动，把小臂往后伸直",
+    "en": "Keep your upper arms still and straighten your arms back"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "身体前倾，背保持平直，膝盖微弯。",
+    "en": "Lean forward with a flat back and soft knees."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "伸直后停一下，再慢慢弯回来。",
+    "en": "Pause with your arms straight, then bend back slowly."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "甩大臂借力",
+   "en": "Swinging the upper arms."
+  },
+  {
+   "zh": "弓背",
+   "en": "Rounding the back."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "用轻重量，先做 1 组轻松的 6 次",
+   "en": "Use light weights and start with one easy set of 6 reps."
+  },
+  {
+   "zh": "腰不舒服时上身抬高一点，还疼就停",
+   "en": "If your lower back feels uncomfortable, raise your chest a little, and stop if it still hurts."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "triceps"
+  ],
+  "synergistMuscles": [
+   "upper-back",
+   "core"
+  ],
+  "equipment": [
+   "dumbbell"
+  ],
+  "position": "standing",
+  "difficulty": 1
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 3,
+  "reps": 12,
+  "restSeconds": 30
+ },
+ "phases": {
+  "start": {
+   "zh": "往后伸",
+   "en": "Push back"
+  },
+  "peak": {
+   "zh": "停一下",
+   "en": "Squeeze"
+  },
+  "end": {
+   "zh": "慢慢弯回",
+   "en": "Bend back slowly"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.9,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 1.7,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 1.2,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 4.2
+   }
+  ],
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "名字「臂屈伸」含术语，改「俯身哑铃后伸臂 / Bent-Over Dumbbell Kickback」",
+    "主口令英文去掉 Hinge，只说「大臂不动、往后伸直」，俯身放 cue2",
+    "口令「Extend back」改「Push back」",
+    "动画节奏偏慢只是演示；口令只说动作与短停，未写动画时长",
+    "最终口径：按真实做法定（2026-11-01）",
+    "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除"
+   ],
+   "flags": [
+    "动画 8 秒只做 1 下，之后静止约 3 s，App 每下间隔 4.2 s，偏慢；要不要动画改成 2 下/8 s，请定"
+   ]
+  }
+ }
+}

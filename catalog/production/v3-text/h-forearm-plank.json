@@ -1,0 +1,109 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "h-forearm-plank",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/h-forearm-plank.js"
+ ],
+ "name": {
+  "zh": "前臂平板支撑",
+  "en": "Forearm Plank"
+ },
+ "purpose": {
+  "zh": "练腹部和身体两侧，让躯干更稳",
+  "en": "Build your abs and sides for a steadier trunk."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "手肘在肩膀正下方，从头到脚跟一条直线",
+    "en": "Elbows under shoulders, body in one line from head to heels"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "收紧臀部和肚子，屁股不高不低。",
+    "en": "Squeeze your glutes and abs, hips neither high nor low."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "均匀呼吸，不要憋气。",
+    "en": "Breathe evenly and do not hold your breath."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "塌腰",
+   "en": "Letting the lower back sag."
+  },
+  {
+   "zh": "屁股翘太高",
+   "en": "Piking the hips too high."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "腰疼时缩短时间或改跪姿做",
+   "en": "If your lower back hurts, hold for less time or drop to your knees."
+  }
+ ],
+ "tags": {
+  "category": "stability",
+  "activeMuscles": [
+   "core",
+   "obliques"
+  ],
+  "synergistMuscles": [
+   "deltoids",
+   "glutes"
+  ],
+  "equipment": [
+   "mat"
+  ],
+  "position": "plank",
+  "difficulty": 1
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "time",
+  "sets": 3,
+  "seconds": 30,
+  "restSeconds": 30
+ },
+ "phases": {
+  "start": {
+   "zh": "撑起收紧",
+   "en": "Brace up"
+  },
+  "peak": {
+   "zh": "保持住",
+   "en": "Hold"
+  },
+  "end": {
+   "zh": "慢慢放下",
+   "en": "Lower down"
+  }
+ },
+ "training": {
+  "kind": "hold",
+  "leadSeconds": 1,
+  "source": "timer"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画是静止平板，只有约 4 mm 的收紧呼吸起伏，保持计时 30 秒，training=hold；dose mode hold→time",
+    "caution 改成平板适用的「腰疼时缩短时间或跪姿」（原「减小幅度」不适用）"
+   ],
+   "flags": []
+  }
+ }
+}

@@ -1,0 +1,138 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "h-chair-tspine",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/h-chair-tspine.js"
+ ],
+ "name": {
+  "zh": "跪姿扶椅开上背",
+  "en": "Kneeling Chair Upper-Back Opener"
+ },
+ "purpose": {
+  "zh": "让上背更灵活，打开肩膀",
+  "en": "Loosen your upper back and open your shoulders."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "臀部在膝盖正上方，胸口在两臂之间下沉",
+    "en": "Keep your hips over your knees and sink your chest between your arms"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "双手平放椅面，手臂伸直。",
+    "en": "Place your hands flat on the seat with straight arms."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "腰别往下塌，停住呼吸再抬回平背。",
+    "en": "Keep your lower back from sagging, breathe, then lift back to a flat back."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "塌腰，而不是上背往下沉",
+   "en": "Sagging the lower back instead of sinking the upper back."
+  },
+  {
+   "zh": "臀部往后坐",
+   "en": "Sitting the hips back."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "只拉到舒服的程度，疼就放松",
+   "en": "Stretch only to a comfortable point, and ease off if anything hurts."
+  },
+  {
+   "zh": "用结实、不带轮子的椅子",
+   "en": "Use a sturdy chair without wheels."
+  }
+ ],
+ "tags": {
+  "category": "mobility",
+  "activeMuscles": [
+   "upper-back",
+   "lats"
+  ],
+  "synergistMuscles": [
+   "deltoids",
+   "lower-back"
+  ],
+  "equipment": [
+   "chair",
+   "mat"
+  ],
+  "position": "kneeling",
+  "difficulty": 1
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 2,
+  "reps": 8,
+  "restSeconds": 20
+ },
+ "phases": {
+  "start": {
+   "zh": "胸下沉",
+   "en": "Sink"
+  },
+  "peak": {
+   "zh": "保持呼吸",
+   "en": "Breathe and hold"
+  },
+  "end": {
+   "zh": "抬起",
+   "en": "Lift"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.8,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 1.9,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.6,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 0.7
+   }
+  ],
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "名字「胸椎伸展 / Thoracic Extension」是术语，改「开上背 / Upper-Back Opener」",
+    "purpose 和常见错误去掉「伸展」书面词",
+    "口令按 0.8/0.6 s 缩短（胸下沉/抬起）",
+    "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除",
+    "最终口径：按真实做法定（2026-11-01）"
+   ],
+   "flags": []
+  }
+ }
+}

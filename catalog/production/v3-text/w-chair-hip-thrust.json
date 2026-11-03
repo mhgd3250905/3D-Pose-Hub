@@ -1,0 +1,135 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "w-chair-hip-thrust",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/w-chair-hip-thrust.js"
+ ],
+ "name": {
+  "zh": "椅子臀推",
+  "en": "Chair Hip Thrust"
+ },
+ "purpose": {
+  "zh": "上背靠在椅子上，练臀部力量",
+  "en": "Strengthen your glutes with your upper back on a chair."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "脚跟踩地把髋往上推，顶端夹紧臀部",
+    "en": "Push through your heels to lift your hips and squeeze your glutes at the top"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "上背靠在稳固椅子的边缘，双脚与髋同宽，手放在髋上。",
+    "en": "Rest your upper back on the edge of a sturdy chair, feet hip-width apart, hands on your hips."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "顶端大腿和身体成一条线，小腿竖直。",
+    "en": "At the top, keep your thighs and body in one line with your shins upright."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "拱腰代替臀部发力",
+   "en": "Arching your lower back instead of using your glutes."
+  },
+  {
+   "zh": "膝盖往里扣",
+   "en": "Letting your knees cave in."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "确认椅子稳固不滑",
+   "en": "Make sure the chair is sturdy and will not slide."
+  },
+  {
+   "zh": "腰疼时幅度小一点，还疼就停",
+   "en": "If your lower back hurts, move less far, and stop if it still hurts."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "glutes"
+  ],
+  "synergistMuscles": [
+   "hamstrings",
+   "quadriceps",
+   "core"
+  ],
+  "equipment": [
+   "chair"
+  ],
+  "position": "supine",
+  "difficulty": 2
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 3,
+  "reps": 10,
+  "restSeconds": 60
+ },
+ "phases": {
+  "start": {
+   "zh": "往上推",
+   "en": "Drive up"
+  },
+  "peak": {
+   "zh": "夹紧臀部",
+   "en": "Squeeze"
+  },
+  "end": {
+   "zh": "慢慢放下",
+   "en": "Lower slowly"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.0,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 1.3,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 1.2,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 0.5
+   }
+  ],
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "节奏按 spec：推起 1.0 / 停 1.3 / 放下 1.2 / 休 0.5 s",
+    "start 口令「顶髋」改口语「往上推」；cue2 补上动画里的手放髋上",
+    "cautions 拆成两条短句"
+   ],
+   "flags": []
+  }
+ }
+}

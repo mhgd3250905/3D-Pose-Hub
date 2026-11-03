@@ -1,0 +1,127 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "n-wide-fold",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/n-wide-fold.js"
+ ],
+ "name": {
+  "zh": "站姿宽距体前屈（扶椅）",
+  "en": "Standing Wide-Leg Fold (Chair)"
+ },
+ "purpose": {
+  "zh": "拉伸大腿内侧和后侧，在办公室就能做",
+  "en": "Stretch the inner and back of your thighs, right at the office."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "背部拉长，双手扶椅面，上身往前倾",
+    "en": "Keep your back long, hands on the chair seat, and lean forward"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "双脚分得很宽，脚尖朝前，膝盖伸直但别锁死。",
+    "en": "Stand with your feet wide, toes forward, knees straight but not locked."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "保持不动，慢慢呼吸，每次呼气再放松一点。",
+    "en": "Stay still, breathe slowly, and relax a little deeper each time you breathe out."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "别来回颠，有拉伸感就够，别拉到疼。",
+    "en": "Do not bounce; a clear stretch is enough, never pain."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "弓背、手去够地面",
+   "en": "Rounding the back and reaching for the floor."
+  },
+  {
+   "zh": "膝盖锁死",
+   "en": "Locking the knees."
+  },
+  {
+   "zh": "憋气或来回颠",
+   "en": "Holding your breath or bouncing."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "起身时慢一点，头晕就先停",
+   "en": "If you feel dizzy, stop, and come up slowly."
+  },
+  {
+   "zh": "拉伸处疼时幅度小一点，还疼就停",
+   "en": "If your stretch hurts, move less far, and stop if it still hurts."
+  }
+ ],
+ "tags": {
+  "category": "stretch",
+  "activeMuscles": [
+   "hamstrings",
+   "adductors"
+  ],
+  "synergistMuscles": [
+   "calves"
+  ],
+  "equipment": [
+   "chair"
+  ],
+  "position": "standing",
+  "difficulty": 1
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "time",
+  "sets": 2,
+  "seconds": 30,
+  "restSeconds": 15
+ },
+ "phases": {
+  "start": {
+   "zh": "慢慢前倾",
+   "en": "Lean forward"
+  },
+  "peak": {
+   "zh": "保持，慢慢呼气",
+   "en": "Hold and breathe out"
+  },
+  "end": {
+   "zh": "胸口再沉点",
+   "en": "Let your chest sink"
+  }
+ },
+ "training": {
+  "kind": "hold",
+  "leadSeconds": 1,
+  "source": "user-decision static-hold r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "剂量 30 s 保持 → 2 组×6 次（rep_hold，stretchLoop）",
+    "节奏按 spec 时间轴手算（派生值把 90% 以上都算停顿，和 spec 不符）：倾 2.1/停 2.0/回 2.2/歇 1.7 s",
+    "回来口令「慢慢起身」→「稍微起来」（动画始终扶着椅面，只回起一点）；caution 拆成两条短句",
+    "按用户决定改为静态保持计时，动画只作示意",
+    "剂量 → 2 组×30 秒，休息 15 秒；口令/要点改为进入-保持-呼气放松，去掉来回/计数描述"
+   ],
+   "flags": []
+  }
+ }
+}

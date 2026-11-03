@@ -1,0 +1,126 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "s-figure4",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/s-figure4-r2.js"
+ ],
+ "name": {
+  "zh": "仰卧4字臀部拉伸",
+  "en": "Lying Figure-4 Stretch"
+ },
+ "purpose": {
+  "zh": "拉伸臀部深处，缓解髋部发紧",
+  "en": "Stretch deep in your glutes and ease tight hips."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "脚踝搭在另一条腿的大腿上，膝盖往外打开",
+    "en": "Cross your ankle over your other thigh and let the knee fall open"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "仰躺，踩地的脚往臀部挪一点，头和肩膀放松。",
+    "en": "Lie on your back, walk the planted foot closer, and relax your head and shoulders."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "保持不动，慢慢呼吸，每次呼气再放松一点。",
+    "en": "Stay still, breathe slowly, and relax a little deeper each time you breathe out."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "别来回颠，有拉伸感就够，别拉到疼。",
+    "en": "Do not bounce; a clear stretch is enough, never pain."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "抬头耸肩用力",
+   "en": "Lifting your head and tensing your shoulders."
+  },
+  {
+   "zh": "用力压膝盖",
+   "en": "Pushing the knee down hard."
+  },
+  {
+   "zh": "憋气或来回颠",
+   "en": "Holding your breath or bouncing."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "膝盖疼时幅度小一点，还疼就停",
+   "en": "If your knee hurts, move less far, and stop if it still hurts."
+  }
+ ],
+ "tags": {
+  "category": "stretch",
+  "activeMuscles": [
+   "glutes"
+  ],
+  "synergistMuscles": [
+   "abductors"
+  ],
+  "equipment": [
+   "mat"
+  ],
+  "position": "supine",
+  "difficulty": 1
+ },
+ "unilateral": true,
+ "startingSide": "right",
+ "defaultDose": {
+  "mode": "time",
+  "sets": 2,
+  "seconds": 30,
+  "restSeconds": 15
+ },
+ "phases": {
+  "start": {
+   "zh": "脚往回挪",
+   "en": "Walk your foot in"
+  },
+  "peak": {
+   "zh": "保持，慢慢呼气",
+   "en": "Hold and breathe out"
+  },
+  "end": {
+   "zh": "呼气再放松",
+   "en": "Relax a bit deeper"
+  }
+ },
+ "training": {
+  "kind": "hold",
+  "leadSeconds": 1,
+  "perSide": "each-side-separately",
+  "source": "user-decision static-hold r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "改名：「梨状肌」是术语 → 仰卧4字臀部拉伸 / Lying Figure-4 Stretch",
+    "primary「对侧大腿」→「另一条腿的大腿」",
+    "剂量 → 每侧 2 组×4 次（rep_hold，stretchLoop）",
+    "按用户决定改为静态保持计时，动画只作示意",
+    "剂量 → 每侧 2 组×30 秒，休息 15 秒；口令/要点改为进入-保持-呼气放松，去掉来回/计数描述",
+    "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除",
+    "最终口径：按真实做法定（2026-11-01）"
+   ],
+   "flags": []
+  }
+ }
+}

@@ -1,0 +1,117 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "forearms-C",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/data/drills.json",
+  "drill-anim/specs/forearms-C-r3.js",
+  "drill-anim/specs/forearms-C-r2.js",
+  "drill-anim/specs/forearms-C.js"
+ ],
+ "name": {
+  "zh": "壶铃倒握行走",
+  "en": "Bottoms-Up Kettlebell Carry"
+ },
+ "purpose": {
+  "zh": "练握力和前臂，让手腕更稳",
+  "en": "Build your grip and forearms for a steadier wrist."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "壶铃底朝上，前臂竖直，手腕别弯",
+    "en": "Hold the kettlebell upside down with your forearm upright"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "握紧把手，手肘在肩膀前下方。",
+    "en": "Grip the handle tight with your elbow in front of and below your shoulder."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "慢慢走，身体站直。",
+    "en": "Walk slowly and stay tall."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "手腕往后折",
+   "en": "Letting the wrist bend back."
+  },
+  {
+   "zh": "握得太松，壶铃倒下",
+   "en": "Loosening the grip so the kettlebell tips over."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "用轻的壶铃，倒下时让它倒，别硬接",
+   "en": "Use a light kettlebell, and if it tips, let it go rather than catching it."
+  }
+ ],
+ "tags": {
+  "category": "stability",
+  "activeMuscles": [
+   "forearms"
+  ],
+  "synergistMuscles": [
+   "deltoids",
+   "rotator-cuff",
+   "core"
+  ],
+  "equipment": [
+   "kettlebell"
+  ],
+  "position": "standing",
+  "difficulty": 2
+ },
+ "unilateral": true,
+ "startingSide": "right",
+ "defaultDose": {
+  "mode": "time",
+  "sets": 3,
+  "seconds": 30,
+  "restSeconds": 45
+ },
+ "phases": {
+  "start": {
+   "zh": "握紧出发",
+   "en": "Grip and walk"
+  },
+  "peak": {
+   "zh": "稳住手腕",
+   "en": "Steady wrist"
+  },
+  "end": {
+   "zh": "放下壶铃",
+   "en": "Set it down"
+  }
+ },
+ "training": {
+  "kind": "hold",
+  "leadSeconds": 1,
+  "perSide": "each-side-separately",
+  "source": "timer"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画是一直慢走、无重复起落，保持 30 秒计时，training=hold",
+    "主口令去掉「手腕中立」，en 不再写 neutral；结束口令「慢慢放下」改「放下壶铃」"
+   ],
+   "flags": [
+    "caution 新加「倒下别硬接」是我加的安全提示，请确认",
+    "批表 lz 轨 1.6 s 是走一步的节奏，未使用"
+   ]
+  }
+ }
+}

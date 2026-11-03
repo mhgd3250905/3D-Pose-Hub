@@ -1,0 +1,108 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "h-bilateral-upper-back-hug",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/h-bilateral-upper-back-hug-rr3.js"
+ ],
+ "name": {
+  "zh": "双臂环抱上背拉伸",
+  "en": "Upper Back Hug Stretch"
+ },
+ "purpose": {
+  "zh": "拉伸上背和两块肩胛骨之间",
+  "en": "Stretch your upper back between your shoulder blades."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "双臂往前环抱，上背往后拱",
+    "en": "Wrap your arms forward and round your upper back"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "肩胛骨往两边分开，低头放松脖子。",
+    "en": "Spread your shoulder blades apart and relax your neck."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "保持呼吸，每次呼气再抱紧一点。",
+    "en": "Keep breathing and hug a little tighter each time you breathe out."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "耸肩",
+   "en": "Shrugging your shoulders."
+  },
+  {
+   "zh": "憋气",
+   "en": "Holding your breath."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "拉到舒服的程度就好，疼就松开",
+   "en": "Stretch only to a comfortable point, and let go if it hurts."
+  }
+ ],
+ "tags": {
+  "category": "stretch",
+  "activeMuscles": [
+   "upper-back"
+  ],
+  "synergistMuscles": [
+   "deltoids"
+  ],
+  "equipment": [],
+  "position": "standing",
+  "difficulty": 1
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "time",
+  "sets": 2,
+  "seconds": 30,
+  "restSeconds": 10
+ },
+ "phases": {
+  "start": {
+   "zh": "抱住拱背",
+   "en": "Hug and round"
+  },
+  "peak": {
+   "zh": "保持呼吸",
+   "en": "Breathe and hold"
+  },
+  "end": {
+   "zh": "慢慢松开",
+   "en": "Release slowly"
+  }
+ },
+ "training": {
+  "kind": "hold",
+  "leadSeconds": 1,
+  "source": "timer"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "保持计时 30 s，training=hold；dose mode hold→time",
+    "提示改为「每次呼气再抱紧一点」，对应动画里的小幅加深-放松",
+    "英文名去掉 Bilateral",
+    "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除",
+    "最终口径：按真实做法定（2026-11-01）"
+   ],
+   "flags": []
+  }
+ }
+}

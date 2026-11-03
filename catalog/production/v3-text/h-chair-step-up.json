@@ -1,0 +1,153 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "h-chair-step-up",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "catalog/v2/actions/h-chair-step-up.json",
+  "catalog/voice-v2/script.json",
+  "drill-anim/specs/h-chair-step-up-r2.js"
+ ],
+ "name": {
+  "zh": "椅子上步",
+  "en": "Chair Step-Up"
+ },
+ "purpose": {
+  "zh": "练大腿前侧和臀部",
+  "en": "Build the fronts of your thighs and your glutes."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "整只脚踩上椅面，用这条腿发力站上去",
+    "en": "Plant your whole foot on the seat and stand up with that leg"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "两条腿轮流先上，双手叉腰。",
+    "en": "Switch the leading leg each rep, hands on your hips."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "下来时另一只脚先落地，慢慢下。",
+    "en": "On the way down, lower the other foot first, slowly."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "两边各做一次算 1 次。",
+    "en": "One on each side counts as one rep."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "后脚猛蹬地借力冲上去",
+   "en": "Pushing hard off the back foot to bounce up."
+  },
+  {
+   "zh": "只踩到椅面边缘",
+   "en": "Putting only part of the foot on the edge."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "用结实、防滑、不带轮子的椅子或凳子，最好靠墙",
+   "en": "Use a sturdy, non-slip chair or stool without wheels, ideally against a wall."
+  },
+  {
+   "zh": "膝盖往里扣或疼时换矮一点的台阶",
+   "en": "If your knee caves in or hurts, use a lower step."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "quadriceps",
+   "glutes"
+  ],
+  "synergistMuscles": [
+   "hamstrings",
+   "calves",
+   "abductors"
+  ],
+  "equipment": [
+   "chair"
+  ],
+  "position": "standing",
+  "difficulty": 2
+ },
+ "unilateral": true,
+ "startingSide": "right",
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 3,
+  "reps": 8,
+  "restSeconds": 45
+ },
+ "phases": {
+  "start": {
+   "zh": "踩上站起",
+   "en": "Step up"
+  },
+  "peak": {
+   "zh": "站稳",
+   "en": "Stand tall"
+  },
+  "end": {
+   "zh": "慢慢下来",
+   "en": "Step down"
+  }
+ },
+ "training": {
+  "kind": "rep_alternate",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.8,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 0.4
+   },
+   {
+    "id": "back",
+    "seconds": 1.4,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 0.4
+   }
+  ],
+  "perSide": "alternate",
+  "repUnit": "left+right",
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画第 1 下右腿先上、第 2 下左腿先上，是左右轮流：training 改 rep_alternate，剂量改每侧 8 次",
+    "批表 up 轨只算到站上去那段，按 spec 注释手算：抬脚+站上 1.8、站稳 0.4、下来 1.4、站立 0.4（4 s）",
+    "「前腿」改「这条腿」；补 cue「两腿轮流先上、双手叉腰」；cautions 去掉「膝：/踝与平衡：」格式",
+    "轮流计数口径：一左一右算 1 次，剂量为每侧 N 次（reps=N），training.phases 描述一侧的一下，repUnit=left+right；startingSide=先动的一侧（right）",
+    "最终口径：按真实做法定（2026-11-01）",
+    "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除"
+   ],
+   "flags": [
+    "相位为手算（非批表），请确认"
+   ]
+  }
+ }
+}

@@ -1,0 +1,132 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "scapular-B",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/data/drills.json",
+  "drill-anim/specs/scapular-B.js"
+ ],
+ "name": {
+  "zh": "单杠肩胛引体",
+  "en": "Scapular Pull-Up"
+ },
+ "purpose": {
+  "zh": "练肩胛骨往下压的力量和稳定",
+  "en": "Train pulling your shoulder blades down and holding them steady."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "手臂伸直，只靠肩胛骨下沉把身体抬起",
+    "en": "Keep your arms straight and lift yourself by pulling your shoulder blades down"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "正握单杠，比肩稍宽，双腿并拢。",
+    "en": "Grip the bar overhand a little wider than your shoulders, legs together."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "到顶停一秒，再慢慢回到吊着的姿势。",
+    "en": "Hold for one second at the top, then lower slowly back to the hang."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "弯手肘拉上去，变成小幅引体向上",
+   "en": "Bending your elbows so it turns into a small pull-up."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "先确认单杠装牢",
+   "en": "Check that the bar is secure first."
+  },
+  {
+   "zh": "肩膀前面夹着疼时减少次数",
+   "en": "If the front of your shoulder pinches, do fewer reps."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "lats",
+   "upper-back"
+  ],
+  "synergistMuscles": [
+   "forearms",
+   "rotator-cuff"
+  ],
+  "equipment": [
+   "pull-up-bar"
+  ],
+  "position": "hanging",
+  "difficulty": 2
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 3,
+  "reps": 8,
+  "restSeconds": 60
+ },
+ "phases": {
+  "start": {
+   "zh": "肩胛下沉",
+   "en": "Pull down"
+  },
+  "peak": {
+   "zh": "停一秒",
+   "en": "Hold one"
+  },
+  "end": {
+   "zh": "慢慢放下",
+   "en": "Lower slowly"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.0,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 1.0,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 1.2,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 0.8
+   }
+  ],
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "节奏按 spec 1.0/1.0/1.2/0.8（派生值偏离）",
+    "purpose「下压」改口语",
+    "caution 拆成两条短句，「缩短时长」改「减少次数」（剂量是次数）"
+   ],
+   "flags": []
+  }
+ }
+}

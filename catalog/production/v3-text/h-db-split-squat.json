@@ -1,0 +1,138 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "h-db-split-squat",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/h-db-split-squat.js"
+ ],
+ "name": {
+  "zh": "双哑铃原地分腿蹲",
+  "en": "Dumbbell Split Squat"
+ },
+ "purpose": {
+  "zh": "练大腿和臀部，提升单腿力量",
+  "en": "Build your thighs and glutes for single-leg strength."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "双脚前后站定不动，身体直直往下沉",
+    "en": "Stay in your split stance and lower straight down"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "前脚整只踩地，前膝对着脚尖。",
+    "en": "Keep your whole front foot down and your front knee over your toes."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "用前脚推地站起，上身挺直。",
+    "en": "Push through your front foot to rise, keeping your chest tall."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "前膝往里扣",
+   "en": "Letting the front knee cave in."
+  },
+  {
+   "zh": "上身前倾太多",
+   "en": "Leaning too far forward."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "从轻重量开始，出现疼痛就停止",
+   "en": "Start with a light weight, and stop if you feel pain."
+  },
+  {
+   "zh": "膝盖不舒服时蹲浅一点，仍痛就停止",
+   "en": "If your knees feel uncomfortable, go less deep, and stop if it still hurts."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "quadriceps",
+   "glutes"
+  ],
+  "synergistMuscles": [
+   "hamstrings",
+   "adductors",
+   "core"
+  ],
+  "equipment": [
+   "dumbbell"
+  ],
+  "position": "standing",
+  "difficulty": 2
+ },
+ "unilateral": true,
+ "startingSide": "left",
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 3,
+  "reps": 8,
+  "restSeconds": 60
+ },
+ "phases": {
+  "start": {
+   "zh": "向下沉",
+   "en": "Lower down"
+  },
+  "peak": {
+   "zh": "稳住",
+   "en": "Hold"
+  },
+  "end": {
+   "zh": "站起",
+   "en": "Push up"
+  }
+ },
+ "training": {
+  "kind": "rep_updown",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.0,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 0.9,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.8,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.3
+   }
+  ],
+  "perSide": "each-side-separately",
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "文案与动画一致，改口语；结束口令按 0.8 s 缩为「站起」",
+    "膝盖 caution 改短句",
+    "节奏核对：动画顶点真正静止约 0.37 秒（<0.8），rep_hold 改为 rep_updown"
+   ],
+   "flags": []
+  }
+ }
+}

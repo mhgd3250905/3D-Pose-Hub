@@ -1,0 +1,137 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "deltoids-A",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/data/drills.json",
+  "drill-anim/specs/deltoids-A-r3.js"
+ ],
+ "name": {
+  "zh": "直臂侧平板沉髋",
+  "en": "Straight-Arm Side Plank Hip Dip"
+ },
+ "purpose": {
+  "zh": "练肩膀和侧腰，让单手撑地更稳",
+  "en": "Build your shoulders and the sides of your waist for a steadier one-arm support."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "手撑在肩膀正下方，把地推远",
+    "en": "Keep your hand under your shoulder and push the floor away"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "髋慢慢往下沉，再抬回身体成一条直线。",
+    "en": "Lower your hips slowly, then lift back into one straight line."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "另一只手放在髋上，肩和脚不动。",
+    "en": "Rest your other hand on your hip and keep your shoulders and feet still."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "肩膀往耳朵方向塌",
+   "en": "Letting the shoulder sink toward the ear."
+  },
+  {
+   "zh": "髋抬不回直线",
+   "en": "Not lifting the hips back into line."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "手腕疼或发麻时停下",
+   "en": "Stop if your wrists hurt or go numb."
+  },
+  {
+   "zh": "先活动手腕再做",
+   "en": "Warm up your wrists before you start."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "deltoids",
+   "obliques"
+  ],
+  "synergistMuscles": [
+   "core",
+   "triceps"
+  ],
+  "equipment": [
+   "mat"
+  ],
+  "position": "side-lying",
+  "difficulty": 1
+ },
+ "unilateral": true,
+ "startingSide": "right",
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 3,
+  "reps": 8,
+  "restSeconds": 45
+ },
+ "phases": {
+  "start": {
+   "zh": "髋往下沉",
+   "en": "Dip your hips"
+  },
+  "peak": {
+   "zh": "到底",
+   "en": "Bottom"
+  },
+  "end": {
+   "zh": "抬回直线",
+   "en": "Lift back up"
+  }
+ },
+ "training": {
+  "kind": "rep_updown",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.2,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 0.3
+   },
+   {
+    "id": "back",
+    "seconds": 1.2,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.3
+   }
+  ],
+  "perSide": "each-side-separately",
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "名字改为「直臂侧平板沉髋 / Straight-Arm Side Plank Hip Dip」，去掉括号，说清是沉髋动作",
+    "底部停 0.3 s，「到底」不绑相位；rep_updown",
+    "caution 拆成两条短句"
+   ],
+   "flags": []
+  }
+ }
+}

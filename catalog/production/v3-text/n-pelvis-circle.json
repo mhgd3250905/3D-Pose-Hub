@@ -1,0 +1,118 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "n-pelvis-circle",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/n-pelvis-circle-r2.js"
+ ],
+ "name": {
+  "zh": "站姿骨盆画圈",
+  "en": "Standing Pelvis Circles"
+ },
+ "purpose": {
+  "zh": "活动髋部和腰，久坐后快速放松",
+  "en": "Loosen up your hips and lower back after sitting."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "双脚踩稳，骨盆慢慢画大圈",
+    "en": "Keep your feet planted and draw big, slow circles with your pelvis"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "双脚比髋略宽，膝盖微弯，双手叉腰。",
+    "en": "Stand with feet a little wider than your hips, knees soft, hands on hips."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "画一圈算 1 次，每圈换方向，肩膀尽量平。",
+    "en": "One circle counts as one. Switch direction each time and keep your shoulders level."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "用上身甩动代替骨盆画圈",
+   "en": "Swinging the upper body instead of circling the pelvis."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "腰疼时圈画小一点，还疼就停",
+   "en": "If your lower back hurts, draw smaller circles, and stop if it still hurts."
+  }
+ ],
+ "tags": {
+  "category": "mobility",
+  "activeMuscles": [
+   "hip-flexors",
+   "glutes",
+   "core"
+  ],
+  "synergistMuscles": [
+   "obliques",
+   "lower-back"
+  ],
+  "equipment": [],
+  "position": "standing",
+  "difficulty": 1
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 2,
+  "reps": 8,
+  "restSeconds": 20
+ },
+ "phases": {
+  "start": {
+   "zh": "画一圈",
+   "en": "Circle"
+  },
+  "peak": {
+   "zh": "画大一点",
+   "en": "Go big"
+  },
+  "end": {
+   "zh": "换方向",
+   "en": "Switch direction"
+  }
+ },
+ "training": {
+  "kind": "rep_cycle",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 3.6,
+    "cue": "phase.start"
+   },
+   {
+    "id": "rest",
+    "seconds": 0.4
+   }
+  ],
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "派生把 8 s 当成 1 下（hold 6.9 s）；动画是顺时针、逆时针各一圈，每圈 3.6 s + 0.4 s → 每圈算一次（rep_cycle，go 3.6 / rest 0.4）",
+    "剂量改 2 组×8 圈（每方向 4 圈）",
+    "cue3 改「每画完一圈换方向」；口令只绑 go（「画一圈」），peak/end 不绑",
+    "计数单位保持不变，cue 写明 1 次是什么",
+    "最终口径：按真实做法定（2026-11-01）"
+   ],
+   "flags": []
+  }
+ }
+}

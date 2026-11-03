@@ -1,0 +1,133 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "h-adductor-rock",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/h-adductor-rock.js"
+ ],
+ "name": {
+  "zh": "四足单腿侧伸后摇",
+  "en": "Quadruped Adductor Rock-Back"
+ },
+ "purpose": {
+  "zh": "拉伸大腿内侧，让髋更灵活",
+  "en": "Stretch your inner thigh for more mobile hips."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "背保持平直，臀部往后坐向脚跟",
+    "en": "Keep your back flat and sit your hips back toward your heel"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "一条腿往侧面伸直，整只脚踩地，脚尖朝前。",
+    "en": "Reach one leg straight out to the side, foot flat and toes forward."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "大腿内侧有拉伸感时停一下，再往前回。",
+    "en": "Pause when you feel the inner thigh stretch, then rock forward."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "往后坐时弓背",
+   "en": "Rounding the back as you sit back."
+  },
+  {
+   "zh": "伸直那条腿的脚离地或膝盖弯了",
+   "en": "Lifting the straight-leg foot or bending that knee."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "大腿根内侧刺痛时停下",
+   "en": "Stop if you feel sharp pain in your inner groin."
+  }
+ ],
+ "tags": {
+  "category": "mobility",
+  "activeMuscles": [
+   "adductors"
+  ],
+  "synergistMuscles": [
+   "glutes",
+   "core"
+  ],
+  "equipment": [
+   "mat"
+  ],
+  "position": "quadruped",
+  "difficulty": 1
+ },
+ "unilateral": true,
+ "startingSide": "right",
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 2,
+  "reps": 8,
+  "restSeconds": 30
+ },
+ "phases": {
+  "start": {
+   "zh": "往后坐",
+   "en": "Rock back"
+  },
+  "peak": {
+   "zh": "感受拉伸",
+   "en": "Feel the stretch"
+  },
+  "end": {
+   "zh": "往前回",
+   "en": "Rock forward"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.0,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 1.4,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.7,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 0.9
+   }
+  ],
+  "perSide": "each-side-separately",
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "文案与动画一致，只改口语（背部保持平直→背保持平直等）、caution 短句",
+    "加 training rep_hold，每侧分开做",
+    "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除",
+    "最终口径：按真实做法定（2026-11-01）"
+   ],
+   "flags": []
+  }
+ }
+}

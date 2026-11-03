@@ -1,0 +1,391 @@
+{
+  "format": "pose-hub-remaining219-remote-index@1",
+  "batch": "batch24",
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "environment": {
+    "host": "Hark sandbox aarch64, 2 cores, 7.9 GiB, no GPU",
+    "browser": "Playwright 1.48.2 chromium-1140",
+    "renderer": "software (ANGLE SwiftShader)",
+    "serial": true
+  },
+  "checks": {
+    "keyframes": "tools/action-completion-v3-r2/remote-keyframes-r1.mjs, 256/320px, 3-6 frames",
+    "rotation": "tools/action-completion-v3-r2/remote-rotation-r1.mjs, 15Hz sequential solve, axial twist of forearm|upperArm, hand|forearm, foot|shin (range>120, step>25, net>150 deg flagged)"
+  },
+  "sampledOnly": true,
+  "fullCycleValidated": false,
+  "userAccepted": false,
+  "releaseEligible": false,
+  "items": [
+    {
+      "stableId": "h-straight-arm-hang-native",
+      "status": "remote-keyframe-reviewed",
+      "spec": "drill-anim/specs/h-straight-arm-hang-native.js",
+      "specSha256Lf": "ec25922f2b717f5987d29512f4ed8cb3b50e40cd28a9cccfbe873689e7a4a7e7",
+      "recipe": "catalog/production/remaining219-r1/recipes/h-straight-arm-hang-native.json",
+      "recipeSha256Lf": "3a19f1eadccfd9a10210006cdd8fbdf7d05f35d216c0d08d78f3fa41a43f7485",
+      "keyframes": {
+        "attempt": "h-straight-arm-hang-native-a01",
+        "times": [
+          1,
+          3,
+          5,
+          7
+        ],
+        "size": 256,
+        "recipeSha256": "3a19f1eadccfd9a10210006cdd8fbdf7d05f35d216c0d08d78f3fa41a43f7485",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "437ddcd545f58aaa83d9d0d7db9d8ada227ea2a188e189aaffafd7c98d82b7c4",
+          "keyframe-01.png": "8f01a8f6431f0dc8c59ac38c315c30d2c6dc9679bd7d0dc807f12e4424d5daca",
+          "keyframe-02.png": "437ddcd545f58aaa83d9d0d7db9d8ada227ea2a188e189aaffafd7c98d82b7c4",
+          "keyframe-03.png": "8f01a8f6431f0dc8c59ac38c315c30d2c6dc9679bd7d0dc807f12e4424d5daca"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "582a1615809f6b16937cf4dbd83656500ffe74953bd823635f98822c6d55c91f",
+        "samples": 121,
+        "flagged": [],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          }
+        },
+        "note": "rotation screen ran on an earlier recipe revision that differs only in camera; twist is camera independent"
+      },
+      "notes": "straight-arm bar hang with bar-grasp; figure small inside the pull-up frame.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect",
+        "camera: figure small, frame posts dominate"
+      ]
+    },
+    {
+      "stableId": "h-suitcase-hold",
+      "status": "remote-keyframe-reviewed",
+      "spec": "drill-anim/specs/h-suitcase-hold.js",
+      "specSha256Lf": "ae9e29ac2d4ac1a208b9bada8684e724b669c40cf8f47854dea5407f1691fbfc",
+      "recipe": "catalog/production/remaining219-r1/recipes/h-suitcase-hold.json",
+      "recipeSha256Lf": "52b7ec1e1a4183c0cd3b2611997596d93c8fda201db1d0dcf2b5f77f9bbbdedd",
+      "keyframes": {
+        "attempt": "h-suitcase-hold-a01",
+        "times": [
+          1,
+          3,
+          5,
+          7
+        ],
+        "size": 256,
+        "recipeSha256": "52b7ec1e1a4183c0cd3b2611997596d93c8fda201db1d0dcf2b5f77f9bbbdedd",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "b335c1323bf9b60e901ce01fce6dd1a3f3388e5faf0eee719271eeaad1b32de6",
+          "keyframe-01.png": "3e80bab171ff15a2c38c0fec637f090fb4aef8b00dd65a5403d03b213f5cd2dd",
+          "keyframe-02.png": "b335c1323bf9b60e901ce01fce6dd1a3f3388e5faf0eee719271eeaad1b32de6",
+          "keyframe-03.png": "3e80bab171ff15a2c38c0fec637f090fb4aef8b00dd65a5403d03b213f5cd2dd"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "bc3a34e6ce8f2e2ed1f6871a3b52b970cabb750058e8e503d5842af953f407f8",
+        "samples": 121,
+        "flagged": [],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          }
+        },
+        "note": "rotation screen ran on an earlier recipe revision that differs only in camera; twist is camera independent"
+      },
+      "notes": "single dumbbell suitcase hold, native hand.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect",
+        "native-hand dumbbell grip"
+      ]
+    },
+    {
+      "stableId": "h-suitcase-march",
+      "status": "remote-keyframe-reviewed",
+      "spec": "drill-anim/specs/h-suitcase-march.js",
+      "specSha256Lf": "f61b1d21bc4accf6e7a161344665298f53f366d4a5fb76cc67ff460711e3923b",
+      "recipe": "catalog/production/remaining219-r1/recipes/h-suitcase-march.json",
+      "recipeSha256Lf": "2a915ead4021fc8bd55f282c5b89487a20cfcac3fec1e7d0a77ca8ab7c958b94",
+      "keyframes": {
+        "attempt": "h-suitcase-march-a01",
+        "times": [
+          0.4,
+          1.85,
+          5.5
+        ],
+        "size": 256,
+        "recipeSha256": "2a915ead4021fc8bd55f282c5b89487a20cfcac3fec1e7d0a77ca8ab7c958b94",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "1b715450994f4b91fdde6acf96e3226f6e21792b0c2bd54f7ae933dfdda45b39",
+          "keyframe-01.png": "7d06c27eeb9bb0dd67dafff7e560fe1d2f77245f566764fc9f0cf9fa19dc30a6",
+          "keyframe-02.png": "3afc14c2e5d063169d7513ff55f03b7385f4500ce1309ab9e7bf0d553bd102d1"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "d8457c8d01f617af25eb34aba03d0adf8a0f13812a7fde305abd17c7f16d9fc5",
+        "samples": 121,
+        "flagged": [],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 0.0,
+            "maxStepDeg": 0.0,
+            "netDeg": 0
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 0.0,
+            "maxStepDeg": 0.0,
+            "netDeg": 0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          }
+        },
+        "note": "rotation screen ran on an earlier recipe revision that differs only in camera; twist is camera independent"
+      },
+      "notes": "single dumbbell suitcase march, alternating knee lifts.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect",
+        "native-hand dumbbell grip"
+      ]
+    },
+    {
+      "stableId": "h-sumo-pry",
+      "status": "remote-keyframe-reviewed",
+      "spec": "drill-anim/specs/h-sumo-pry-r2.js",
+      "specSha256Lf": "a15d736c39f4eed8ed445e3b28760a48f58214e1d0978a03cb001cb193d80d82",
+      "recipe": "catalog/production/remaining219-r1/recipes/h-sumo-pry.json",
+      "recipeSha256Lf": "c29f421cea4fcc44bbb9d65b8f5e9118d844cc0a2d42999c2493cd5a23a1763d",
+      "keyframes": {
+        "attempt": "h-sumo-pry-a01",
+        "times": [
+          0.1,
+          2.5,
+          4.1,
+          6.5
+        ],
+        "size": 256,
+        "recipeSha256": "c29f421cea4fcc44bbb9d65b8f5e9118d844cc0a2d42999c2493cd5a23a1763d",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "cdc7308147249133cfb35e85f7b81dd6736fa8f6ae28ac19b156d333aab4cc0e",
+          "keyframe-01.png": "a0c1334620df9cb3daa017253a2d7186cf66c42cb6eef93a020ffe3a0a6f52af",
+          "keyframe-02.png": "cdc7308147249133cfb35e85f7b81dd6736fa8f6ae28ac19b156d333aab4cc0e",
+          "keyframe-03.png": "a0c1334620df9cb3daa017253a2d7186cf66c42cb6eef93a020ffe3a0a6f52af"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "5c2227b58058e94d7e38d94047dda97026cc400a031ddc5b5cc19eb11ac1667f",
+        "samples": 121,
+        "flagged": [],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 28.9,
+            "maxStepDeg": 3.7,
+            "netDeg": 0
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 15.9,
+            "maxStepDeg": 2.1,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 28.9,
+            "maxStepDeg": 3.7,
+            "netDeg": 0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 15.9,
+            "maxStepDeg": 2.1,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          }
+        },
+        "note": "rotation screen ran on an earlier recipe revision that differs only in camera; twist is camera independent"
+      },
+      "notes": "sumo squat pry with elbows pushing knees, front view.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect"
+      ]
+    },
+    {
+      "stableId": "h-superman",
+      "status": "remote-keyframe-reviewed",
+      "spec": "drill-anim/specs/h-superman-r2.js",
+      "specSha256Lf": "bb60b133cfad91c37ae749bfb4feea371350432d70b0550ec46ac4e13f76d8ad",
+      "recipe": "catalog/production/remaining219-r1/recipes/h-superman.json",
+      "recipeSha256Lf": "2505446309d66d12fe701ef3d9337f69bce67e179f0cb359cc6a4c7de91fecf8",
+      "keyframes": {
+        "attempt": "h-superman-a01",
+        "times": [
+          0.1,
+          2.15,
+          4.05,
+          6.15
+        ],
+        "size": 256,
+        "recipeSha256": "2505446309d66d12fe701ef3d9337f69bce67e179f0cb359cc6a4c7de91fecf8",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "c76e5f60647f4d7b2e2f6d89b796b93b950f3689517df9b1ae923e7b4ee5422e",
+          "keyframe-01.png": "edbf2f2d2aef4bd0a34966a612afc1f36d290b32548aa5d2e39f703a83d69a06",
+          "keyframe-02.png": "d1e061e695fa2211dbefb684f512a189458f4cd0d3827123203b32f37f228076",
+          "keyframe-03.png": "edbf2f2d2aef4bd0a34966a612afc1f36d290b32548aa5d2e39f703a83d69a06"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "16219a769ff654277b7cb1a29a764e6bed10af624f8f63d7f278d1ca7481b5ff",
+        "samples": 121,
+        "flagged": [],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 36.3,
+            "maxStepDeg": 3.8,
+            "netDeg": 0
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 1.3,
+            "maxStepDeg": 0.1,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 36.3,
+            "maxStepDeg": 3.8,
+            "netDeg": 0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 1.3,
+            "maxStepDeg": 0.1,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          }
+        },
+        "note": "rotation screen ran on an earlier recipe revision that differs only in camera; twist is camera independent"
+      },
+      "notes": "prone superman on mat; feet extend past the mat end.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect",
+        "mat length vs body"
+      ]
+    }
+  ]
+}

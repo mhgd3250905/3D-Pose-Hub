@@ -1,0 +1,127 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "h-chair-lat",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/h-chair-lat.js"
+ ],
+ "name": {
+  "zh": "扶椅侧背拉伸",
+  "en": "Chair-Supported Lat Stretch"
+ },
+ "purpose": {
+  "zh": "拉伸腋下到身体两侧的后背",
+  "en": "Stretch from your armpits down the sides of your back."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "臀部往后推，胸口在两臂之间下沉",
+    "en": "Push your hips back and let your chest sink between your arms"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "双手扶椅背，手臂伸直，膝盖微弯。",
+    "en": "Hands on the chair back, arms straight, knees slightly bent."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "停住不动，慢慢呼吸。",
+    "en": "Stay still and breathe slowly."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "每次呼气再放松一点，别来回颠。",
+    "en": "Each time you breathe out, relax a little deeper. No bouncing."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "弓背或耸肩",
+   "en": "Rounding your back or shrugging."
+  },
+  {
+   "zh": "憋气",
+   "en": "Holding your breath."
+  },
+  {
+   "zh": "来回颠着往下压",
+   "en": "Bouncing to go deeper."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "只拉到舒服的程度，疼就放松",
+   "en": "Stretch only to a comfortable point, and ease off if anything hurts."
+  },
+  {
+   "zh": "用结实、不带轮子的椅子",
+   "en": "Use a sturdy chair without wheels."
+  }
+ ],
+ "tags": {
+  "category": "stretch",
+  "activeMuscles": [
+   "lats"
+  ],
+  "synergistMuscles": [
+   "upper-back",
+   "hamstrings"
+  ],
+  "equipment": [
+   "chair"
+  ],
+  "position": "standing",
+  "difficulty": 1
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "time",
+  "sets": 2,
+  "seconds": 30,
+  "restSeconds": 15
+ },
+ "phases": {
+  "start": {
+   "zh": "慢慢沉下去",
+   "en": "Sink down"
+  },
+  "peak": {
+   "zh": "保持，慢慢呼气",
+   "en": "Hold and breathe out"
+  },
+  "end": {
+   "zh": "呼气再沉一点",
+   "en": "Sink a bit deeper"
+  }
+ },
+ "training": {
+  "kind": "hold",
+  "leadSeconds": 1,
+  "source": "user-decision static-hold r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画每 8 秒一次下沉-停-回来，剂量从 30 秒保持改为 2 组×4 次（rep_hold）",
+    "名字「背阔肌」学名改为「侧背」；purpose 中英对齐",
+    "按用户决定改为静态保持计时，动画只作示意：30 秒×2 组，休息 15 秒；口令和要点改成进入—保持—呼气放松",
+    "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除",
+    "最终口径：按真实做法定（2026-11-01）"
+   ],
+   "flags": []
+  }
+ }
+}

@@ -1,0 +1,123 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "h-wall-calf",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/h-wall-calf.js"
+ ],
+ "name": {
+  "zh": "靠墙小腿拉伸",
+  "en": "Wall Calf Stretch"
+ },
+ "purpose": {
+  "zh": "拉伸小腿后面，让脚踝更灵活",
+  "en": "Stretch the back of your calf and loosen your ankle."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "后腿伸直，脚跟压地，屁股往墙靠",
+    "en": "Back leg straight, heel down, lean your hips toward the wall"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "后脚尖正对墙，从脚跟到头一条直线。",
+    "en": "Back toes point at the wall, one line from heel to head."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "停住不动，慢慢呼吸。",
+    "en": "Stay still and breathe slowly."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "每次呼气再放松一点，别来回颠。",
+    "en": "Each time you breathe out, relax a little deeper. No bouncing."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "后脚跟离地或后膝弯曲",
+   "en": "Lifting the back heel or bending the back knee."
+  },
+  {
+   "zh": "憋气",
+   "en": "Holding your breath."
+  },
+  {
+   "zh": "来回颠着往下压",
+   "en": "Bouncing to go deeper."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "疼痛时少往前靠，仍痛就停止",
+   "en": "If it hurts, lean in less, and stop if it still hurts."
+  }
+ ],
+ "tags": {
+  "category": "stretch",
+  "activeMuscles": [
+   "calves"
+  ],
+  "synergistMuscles": [
+   "hamstrings"
+  ],
+  "equipment": [
+   "wall"
+  ],
+  "position": "standing",
+  "difficulty": 1
+ },
+ "unilateral": true,
+ "startingSide": "right",
+ "defaultDose": {
+  "mode": "time",
+  "sets": 2,
+  "seconds": 30,
+  "restSeconds": 15
+ },
+ "phases": {
+  "start": {
+   "zh": "慢慢往前靠",
+   "en": "Lean in"
+  },
+  "peak": {
+   "zh": "保持，慢慢呼气",
+   "en": "Hold and breathe out"
+  },
+  "end": {
+   "zh": "呼气再放松",
+   "en": "Relax a bit deeper"
+  }
+ },
+ "training": {
+  "kind": "hold",
+  "leadSeconds": 1,
+  "perSide": "each-side-separately",
+  "source": "user-decision static-hold r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画 8 秒 1 次「前靠-停约 4 s-退回」在重复，剂量从 30 秒保持改为 2 组×5 次/侧（rep_hold）",
+    "purpose 去掉「踝关节活动度」术语；「髋部」改「屁股」",
+    "顶点口令英文缩为 Breathe",
+    "按用户决定改为静态保持计时，动画只作示意：30 秒×2 组/每侧，休息 15 秒；口令和要点改成进入—保持—呼气放松"
+   ],
+   "flags": []
+  }
+ }
+}

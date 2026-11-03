@@ -1,0 +1,121 @@
+{
+ "format": "pose-hub-package-skin@1",
+ "id": "tech-white",
+ "label": "White",
+ "status": "look-approved-r2",
+ "look": {
+  "mode": "v2-port",
+  "v2Skin": "tech-white",
+  "v3Tune": {
+   "source": "user-approved probe r219/probe-hi3.mjs (A tune), 2026-10-31",
+   "lineWidthK": 0.4,
+   "lineAlphaK": 0.8,
+   "glowK": 0.5,
+   "inwardMask": true,
+   "featherPx": 1.0,
+   "glowOverHighlight": "suppressed",
+   "lineColor": "#5e4418"
+  },
+  "rim": {
+   "strength": 0.5,
+   "colour": "body"
+  }
+ },
+ "highlightColor": "#f08a3c",
+ "background": {
+  "centre": [
+   243,
+   242,
+   239
+  ],
+  "edge": [
+   207,
+   204,
+   198
+  ]
+ },
+ "port": {
+  "version": "v2skin-port-r2",
+  "v2Source": "drill-anim/page/human-v2plus-regions.js",
+  "v2SourceSha256": "730047f0bc5d62eb7aae57d6dfcbbfaef6b73201dd770e4a56e29143614e99ac",
+  "regionTable": "drill-anim/models/training-human-v2plus-regions.json",
+  "regionTableSha256": "70c74aa5e8986e2575077a49ebcae405ebf68d5eb0bb00b04eb0cc9cc6c1e822",
+  "bakedRegionAttributes": "re-baked at load from the current mesh rest pose (per-vertex region distances, 8 channels); no stored geometry attribute",
+  "adaptations": [
+   "meshes(): v3 torso / head-neck keys, multi-material meshes (every matching slot)",
+   "patch(): every matched material slot",
+   "patchHolder(): every matched material slot (head)",
+   "patchHolder(): every matched material slot (tail)",
+   "setRegions(): re-wrap check on every matched slot",
+   "meshInfo: first matched slot uuid",
+   "highlight colour: the skin hi.c with the recipe pulse curve",
+   "r2 look tune: look.v3Tune (line width/alpha/glow scale, inward 1px-feather highlight mask, glow suppressed over the highlight, dark-skin warm highlight + emissive) applied after every setSkin; v2Params stays the raw V2 snapshot"
+  ]
+ },
+ "v2Params": {
+  "lines": true,
+  "grey": [
+   0.8549926081242338,
+   0.83879901174074,
+   0.8069522576692516
+  ],
+  "shade": [
+   0.45641102318040466,
+   0.4341536361747489,
+   0.40197777983219574
+  ],
+  "line": [
+   0.25415209433082675,
+   0.14412847085805777,
+   0.027320891639074897
+  ],
+  "lw": 0.5,
+  "la": 0.9,
+  "glow": [
+   0,
+   0
+  ],
+  "rim": [
+   0.8879231178819663,
+   0.8713671191987973,
+   0.83879901174074
+  ],
+  "tint": [
+   1,
+   1,
+   1
+  ],
+  "sk": 1,
+  "hi": {
+   "c": [
+    0.8713671191987973,
+    0.25415209433082675,
+    0.04518620438567554
+   ],
+   "shade": [
+    0.62,
+    0.36,
+    0.06
+   ],
+   "a": 0.45,
+   "fe": 7
+  },
+  "bg": {
+   "centre": [
+    243,
+    242,
+    239
+   ],
+   "edge": [
+    207,
+    204,
+    198
+   ]
+  }
+ },
+ "approval": {
+  "by": "user",
+  "at": "2026-11-01T11:36+08:00",
+  "scope": "look r2 (lines, flush highlight, inward mask, rim 0.5 body tone, realistic pump-r1)"
+ }
+}

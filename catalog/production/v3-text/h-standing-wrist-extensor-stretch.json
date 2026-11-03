@@ -1,0 +1,130 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "h-standing-wrist-extensor-stretch",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/h-standing-wrist-extensor-stretch.js"
+ ],
+ "name": {
+  "zh": "站姿前臂背侧拉伸",
+  "en": "Standing Forearm Top Stretch"
+ },
+ "purpose": {
+  "zh": "拉伸前臂靠手背的一侧，让手腕更放松",
+  "en": "Stretch the top of your forearm so your wrist feels looser."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "手臂伸向前方，掌心朝下，手腕慢慢往下弯",
+    "en": "Reach your arm forward palm down and slowly bend your wrist down"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "手肘伸直但不锁死，不用另一只手压。",
+    "en": "Keep your elbow straight but soft, without pressing with the other hand."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "肩膀放松，每次停一下再慢慢放松手腕。",
+    "en": "Keep your shoulder relaxed, pause, then slowly let the wrist come back up."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "耸肩",
+   "en": "Shrugging the shoulder."
+  },
+  {
+   "zh": "用力硬压",
+   "en": "Forcing the stretch."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "出现疼痛时放松，只拉到舒服的程度",
+   "en": "If anything hurts, ease off and stretch only to a comfortable point."
+  }
+ ],
+ "tags": {
+  "category": "stretch",
+  "activeMuscles": [
+   "forearms"
+  ],
+  "synergistMuscles": [],
+  "equipment": [],
+  "position": "standing",
+  "difficulty": 1
+ },
+ "unilateral": true,
+ "startingSide": "right",
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 2,
+  "reps": 5,
+  "restSeconds": 15
+ },
+ "phases": {
+  "start": {
+   "zh": "手腕下弯",
+   "en": "Bend down"
+  },
+  "peak": {
+   "zh": "保持住",
+   "en": "Hold"
+  },
+  "end": {
+   "zh": "慢慢放松",
+   "en": "Release"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 3.8,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 1.3,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.9
+   }
+  ],
+  "perSide": "each-side-separately",
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画 8 秒 1 次「下弯-停约 3.8 s-放松」在重复，剂量从 20 秒保持改为 2 组×5 次/侧（rep_hold）",
+    "名字「腕伸肌」是学名，改「前臂背侧拉伸 / Forearm Top Stretch」",
+    "cue3 改为不重复起止口令的「肩膀放松」",
+    "按用户决定：真实做法是来回动态拉伸，保留计次，去掉 stretchLoop",
+    "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除",
+    "最终口径：按真实做法定（2026-11-01）"
+   ],
+   "flags": []
+  }
+ }
+}

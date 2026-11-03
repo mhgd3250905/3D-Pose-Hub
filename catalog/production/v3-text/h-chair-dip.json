@@ -1,0 +1,139 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "h-chair-dip",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/h-chair-dip.js"
+ ],
+ "name": {
+  "zh": "椅子反撑",
+  "en": "Chair Dip"
+ },
+ "purpose": {
+  "zh": "练手臂后侧和胸部",
+  "en": "Build the backs of your arms and your chest."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "手肘直直往后弯，肩膀别耸",
+    "en": "Bend your elbows straight back and keep your shoulders down"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "双手撑在椅面前沿，膝盖弯着，双脚踩地。",
+    "en": "Put your hands on the front edge of the seat, knees bent and feet flat."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "下到大臂差不多和地面平，再撑回手臂伸直。",
+    "en": "Lower until your upper arms are about level, then push back up to straight arms."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "手肘往两边张开",
+   "en": "Flaring the elbows out."
+  },
+  {
+   "zh": "耸肩或肩膀往前塌",
+   "en": "Shrugging or letting the shoulders roll forward."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "肩膀前面夹着疼时下得浅一点或换简单版本",
+   "en": "If the front of your shoulder pinches, go less deep or switch to an easier version."
+  },
+  {
+   "zh": "用结实、不带轮子的椅子",
+   "en": "Use a sturdy chair without wheels."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "triceps"
+  ],
+  "synergistMuscles": [
+   "chest",
+   "deltoids"
+  ],
+  "equipment": [
+   "chair"
+  ],
+  "position": "other",
+  "difficulty": 1
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 3,
+  "reps": 10,
+  "restSeconds": 45
+ },
+ "phases": {
+  "start": {
+   "zh": "往下",
+   "en": "Lower"
+  },
+  "peak": {
+   "zh": "停一下",
+   "en": "Pause"
+  },
+  "end": {
+   "zh": "撑起来",
+   "en": "Push up"
+  }
+ },
+ "training": {
+  "kind": "rep_updown",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.0,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 0.9,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.7,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.4
+   }
+  ],
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "名字「臂屈伸」含术语「屈伸」，改为「椅子反撑」",
+    "口令「推起」改「撑起来」（0.7 s）",
+    "cautions 口语化",
+    "节奏核对：动画顶点真正静止约 0.37 秒（<0.8），rep_hold 改为 rep_updown",
+    "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除",
+    "最终口径：按真实做法定（2026-11-01）"
+   ],
+   "flags": [
+    "spec 注释写底部停 0.3 s，批表按动作轨算出顶点 0.9 s → rep_hold；如要按注释则是 rep_updown，请确认"
+   ]
+  }
+ }
+}

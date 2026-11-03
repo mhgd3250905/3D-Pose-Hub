@@ -1,0 +1,134 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "erectors-C",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/data/drills.json",
+  "drill-anim/specs/erectors-C.js"
+ ],
+ "name": {
+  "zh": "45° 罗马椅背伸",
+  "en": "45° Hyperextension"
+ },
+ "purpose": {
+  "zh": "练下背、臀部和大腿后侧，让你更有力地把身体抬起",
+  "en": "Build your lower back, glutes, and the backs of your thighs for a stronger lift."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "从髋部往下弯，背保持平直",
+    "en": "Bend down from your hips and keep your back flat"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "垫子顶在髋骨下面，双手交叉放胸前。",
+    "en": "Set the pad just below your hip bones and cross your arms on your chest."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "抬到身体成一条直线就停，别再往后仰。",
+    "en": "Stop when your body is straight, without leaning back further."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "甩起来，腰往后折",
+   "en": "Swinging up and bending the lower back backward."
+  },
+  {
+   "zh": "弓着背快速往下放",
+   "en": "Rounding the back and dropping too fast."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "腰不舒服时弯得浅一点，还疼就停",
+   "en": "If your lower back feels uncomfortable, bend less deep, and stop if it still hurts."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "lower-back",
+   "glutes",
+   "hamstrings"
+  ],
+  "synergistMuscles": [
+   "core"
+  ],
+  "equipment": [
+   "roman-chair"
+  ],
+  "position": "other",
+  "difficulty": 2
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 3,
+  "reps": 10,
+  "restSeconds": 60
+ },
+ "phases": {
+  "start": {
+   "zh": "往下弯",
+   "en": "Bend down"
+  },
+  "peak": {
+   "zh": "到底",
+   "en": "Bottom"
+  },
+  "end": {
+   "zh": "起到直线",
+   "en": "Rise up"
+  }
+ },
+ "training": {
+  "kind": "rep_updown",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.1,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 0.5,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 1.1,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.3
+   }
+  ],
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "主口令和起始口令去掉 hinge/「以髋为轴」，改「从髋部往下弯，背保持平直」",
+    "cue2 按动画补「双手交叉放胸前」，去掉「脊柱中立」；cue3 去掉动画里没有的「停一秒」（动画是在直线位停 1.3 s 后再下）",
+    "purpose 去掉「伸髋」；底部只停 0.5 s → rep_updown"
+   ],
+   "flags": [
+    "动画一下从直线位开始往下（go=下放），口令顺序为 往下弯→到底→起到直线，请确认"
+   ]
+  }
+ }
+}

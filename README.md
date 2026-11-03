@@ -2,15 +2,17 @@
 
 > **第一次来？先读 [docs/START-HERE.md](docs/START-HERE.md)**（半小时上手、低配机验证、贡献流程）；动作总表见 [docs/drill-catalog.md](docs/drill-catalog.md)，审核标准见 [docs/review-rubric.md](docs/review-rubric.md)。
 
-新生产以 [动作包 v2](catalog/v2/README.md) 为合同，按稳定动作 ID 管理定义、动作源、分层母版、派生、双语语音和校验六层；AI 的 [action-library](catalog/action-library/index.md) 从 catalog 自动生成。现有 App 尚在使用的 [catalog/catalog.json](catalog/catalog.json) 为 0.3.0 历史兼容目录，其完整度不等于 v2 发布资格。版本规则见 [版本管理](docs/version-management.md)，当前版本、PR 合入与接入待办见 [版本对齐台账](docs/version-ledger.md)。
+当前全量制作使用 [动作包 v3](tools/action-package-v3/README.md)：217 个后续配方加首批 32 个配方，共 249 个动作，包含分层母版、五套皮肤、派生包、双语定义和语音。249 份文案 r2 仍待用户审核，源码合入不代表全量成片验收或媒体发布。本次来源、完整性修复及验证见 [249 动作主线集成记录](docs/production-snapshots/action-package-v3-main-integration-20261103-r1.md)；正在执行的本机制作沿用其固定源码和原运行目录，合入后不自动切换或重启。
+
+[动作包 v2](catalog/v2/README.md) 的稳定 ID 与六层合同、历史批次及 AI [action-library](catalog/action-library/index.md) 保留。现有 App 尚在使用的 [catalog/catalog.json](catalog/catalog.json) 为 0.3.0 历史兼容目录，其完整度不等于新版发布资格。版本规则见 [版本管理](docs/version-management.md)，当前版本、PR 合入与接入待办见 [版本对齐台账](docs/version-ledger.md)。
 
 Pose-Hub 是 FlareLab（托马斯训练助手）和 HipLab（开胯训练助手）共用的**动作库**：动作渲染工具 drill-anim、训练人物模型及其制作工具、每个动作的规格（spec）、以及成片素材清单都在这里。各 App 不再自己改动作，只按固定版本从这里取成片。
 
 2026-10-17 从 [3D-Body](https://github.com/mhgd3250905/3D-Body) `master@66067a6` 迁来，保留了相关文件的 Git 历史。迁移细节、路径对照和验证结果见 [MIGRATION.md](MIGRATION.md)；协作规则见 [AGENTS.md](AGENTS.md)。
 
-## 远端agent接手本轮219动作
+## 219 动作远端关键帧历史入口
 
-通过GitHub克隆、弱云服务器串行关键帧检查，请先读[远端任务入口](docs/remaining219-remote-agent-20261029-r1.md)。它提供固定源码恢复包、256/320px低清关键帧工具及回传标准；无需本机盘符或RTX4080。完整循环与最终验收仍由主线补齐。
+该轮弱云服务器任务的固定源码恢复包、256/320px 关键帧工具及回传标准见[远端任务入口](docs/remaining219-remote-agent-20261029-r1.md)。其后修订已进入当前 249 动作的 v3 源码范围；停止项见 `catalog/production/remaining219-r1/dropped.json`，不要据旧 219 队列重新生产已停止动作。完整循环与最终验收继续单独记录。
 
 ## 动作素材库盘点
 

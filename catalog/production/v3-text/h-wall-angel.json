@@ -1,0 +1,133 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "h-wall-angel",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/h-wall-angel.js"
+ ],
+ "name": {
+  "zh": "靠墙天使",
+  "en": "Wall Angel"
+ },
+ "purpose": {
+  "zh": "练手臂举过头时肩膀的控制，打开上背和肩膀",
+  "en": "Train shoulder control overhead and open up your upper back and shoulders."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "前臂贴着墙，双臂从 W 滑到 Y",
+    "en": "Keep your forearms near the wall and slide from a W up to a Y"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "后脑、后背和屁股贴墙，肋骨往下收。",
+    "en": "Keep your head, back and hips on the wall, with your ribs down."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "滑到手肘快伸直，再慢慢滑回 W。",
+    "en": "Slide up until your elbows are almost straight, then slowly back to the W."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "腰离开墙拱起来",
+   "en": "Arching the lower back off the wall."
+  },
+  {
+   "zh": "手臂离开墙往前掉",
+   "en": "Letting the arms drift forward off the wall."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "肩膀疼时少往上滑，仍痛就停止",
+   "en": "If your shoulders hurt, slide up less, and stop if it still hurts."
+  }
+ ],
+ "tags": {
+  "category": "mobility",
+  "activeMuscles": [
+   "deltoids",
+   "rotator-cuff",
+   "upper-back"
+  ],
+  "synergistMuscles": [
+   "core"
+  ],
+  "equipment": [
+   "wall"
+  ],
+  "position": "standing",
+  "difficulty": 1
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 2,
+  "reps": 8,
+  "restSeconds": 30
+ },
+ "phases": {
+  "start": {
+   "zh": "向上滑",
+   "en": "Slide up"
+  },
+  "peak": {
+   "zh": "稳住",
+   "en": "Hold"
+  },
+  "end": {
+   "zh": "滑回来",
+   "en": "Slide down"
+  }
+ },
+ "training": {
+  "kind": "rep_updown",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.9,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 1.1,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.9,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.1
+   }
+  ],
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "purpose 去掉「外旋」「胸椎」术语",
+    "常见错误拆成一句一个错误；caution 改「X 时 Y」",
+    "节奏核对：动画顶点真正静止约 0.57 秒（<0.8），rep_hold 改为 rep_updown"
+   ],
+   "flags": [
+    "派生顶点 1.1 s 判为 rep_hold，但 spec 注释写顶点只停 0.5 s；若按实际应为 rep_updown，请确认"
+   ]
+  }
+ }
+}

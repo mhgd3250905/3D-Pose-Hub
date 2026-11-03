@@ -1,0 +1,137 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "h-goblet-squat",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/h-goblet-squat-r3.js",
+  "drill-anim/specs/h-goblet-squat-rr1.js"
+ ],
+ "name": {
+  "zh": "壶铃高脚杯深蹲",
+  "en": "Kettlebell Goblet Squat"
+ },
+ "purpose": {
+  "zh": "负重练大腿和臀部，让下蹲更稳",
+  "en": "Build your thighs and glutes and a steadier squat with added weight."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "壶铃抱在胸前，臀部往后往下坐",
+    "en": "Hold the kettlebell at your chest and sit down and back"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "膝盖对着脚尖，脚跟踩地。",
+    "en": "Keep your knees over your toes and your heels down."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "胸口保持抬起，壶铃贴身。",
+    "en": "Keep your chest up and the bell close to your body."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "膝盖往里扣",
+   "en": "Letting the knees cave in."
+  },
+  {
+   "zh": "弓背、壶铃离开身体",
+   "en": "Rounding the back and letting the bell drift away."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "膝盖不舒服时蹲浅一点，仍痛就停止",
+   "en": "If your knees feel uncomfortable, go less deep, and stop if it still hurts."
+  },
+  {
+   "zh": "从轻重量开始，出现疼痛就停止",
+   "en": "Start with a light weight, and stop if you feel pain."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "quadriceps",
+   "glutes"
+  ],
+  "synergistMuscles": [
+   "adductors",
+   "core",
+   "upper-back"
+  ],
+  "equipment": [
+   "kettlebell"
+  ],
+  "position": "standing",
+  "difficulty": 2
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 3,
+  "reps": 10,
+  "restSeconds": 60
+ },
+ "phases": {
+  "start": {
+   "zh": "向下坐",
+   "en": "Sit down"
+  },
+  "peak": {
+   "zh": "稳住",
+   "en": "Hold"
+  },
+  "end": {
+   "zh": "站起",
+   "en": "Stand up"
+  }
+ },
+ "training": {
+  "kind": "rep_updown",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.0,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 1,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.8,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.2
+   }
+  ],
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "结束口令按 0.8 s 缩为「站起」；cue3 去掉和口令重复的「推地站起」，改成「壶铃贴身」",
+    "cautions 短句",
+    "节奏核对：动画顶点真正静止约 0.47 秒（<0.8），rep_hold 改为 rep_updown"
+   ],
+   "flags": []
+  }
+ }
+}

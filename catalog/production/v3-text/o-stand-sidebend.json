@@ -1,0 +1,121 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "o-stand-sidebend",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/o-stand-sidebend-r2.js"
+ ],
+ "name": {
+  "zh": "站姿举手侧屈",
+  "en": "Standing Overhead Side Bend"
+ },
+ "purpose": {
+  "zh": "拉伸腰侧和背部侧面",
+  "en": "Stretch the side of your waist and back."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "手臂举高，身体往另一侧弯，髋不动",
+    "en": "Reach one arm up and bend to the other side, hips still"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "双脚与髋同宽，另一只手放在大腿外侧。",
+    "en": "Feet hip-width apart, the other hand resting on the outside of your thigh."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "保持不动，慢慢呼吸，每次呼气再放松一点。",
+    "en": "Stay still, breathe slowly, and relax a little deeper each time you breathe out."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "别来回颠，有拉伸感就够，别拉到疼。",
+    "en": "Do not bounce; a clear stretch is enough, never pain."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "身体前倾或扭转",
+   "en": "Leaning forward or twisting."
+  },
+  {
+   "zh": "髋部往侧面甩出去",
+   "en": "Swinging the hips out to the side."
+  },
+  {
+   "zh": "憋气或来回颠",
+   "en": "Holding your breath or bouncing."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "腰背或肩膀疼时幅度小一点，还疼就停",
+   "en": "If your back or shoulder hurts, bend less, and stop if it still hurts."
+  }
+ ],
+ "tags": {
+  "category": "stretch",
+  "activeMuscles": [
+   "obliques",
+   "lats"
+  ],
+  "synergistMuscles": [],
+  "equipment": [],
+  "position": "standing",
+  "difficulty": 1
+ },
+ "unilateral": true,
+ "startingSide": "right",
+ "defaultDose": {
+  "mode": "time",
+  "sets": 2,
+  "seconds": 30,
+  "restSeconds": 15
+ },
+ "phases": {
+  "start": {
+   "zh": "往侧边弯",
+   "en": "Bend to the side"
+  },
+  "peak": {
+   "zh": "保持，慢慢呼气",
+   "en": "Hold and breathe out"
+  },
+  "end": {
+   "zh": "呼气再放松",
+   "en": "Relax a bit deeper"
+  }
+ },
+ "training": {
+  "kind": "hold",
+  "leadSeconds": 1,
+  "perSide": "each-side-separately",
+  "source": "user-decision static-hold r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "剂量 15 s 保持 → 每侧 2 组×6 次（rep_hold，stretchLoop）",
+    "节奏按 spec 时间轴手算（派生值把 90% 以上都算停顿，和 spec 不符）：弯 1.4/停 3.6/回 1.4/歇 1.6 s",
+    "主口令去「对侧」；purpose 去「背阔肌」",
+    "按用户决定改为静态保持计时，动画只作示意",
+    "剂量 → 每侧 2 组×30 秒，休息 15 秒；口令/要点改为进入-保持-呼气放松，去掉来回/计数描述"
+   ],
+   "flags": []
+  }
+ }
+}

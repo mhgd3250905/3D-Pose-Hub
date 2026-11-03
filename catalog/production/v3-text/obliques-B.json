@@ -1,0 +1,140 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "obliques-B",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/data/drills.json",
+  "drill-anim/specs/obliques-B-r2.js"
+ ],
+ "name": {
+  "zh": "弹力带抗旋转推",
+  "en": "Banded Pallof Press"
+ },
+ "purpose": {
+  "zh": "练腰腹两侧，让身体不被拉着转",
+  "en": "Train your core to keep your body from being twisted."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "双手往前推直，身体别被拉转",
+    "en": "Press your hands straight out and do not let your body turn"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "侧对固定点站直，双手握住把手放在胸前。",
+    "en": "Stand tall side-on to the anchor with the handle at your chest."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "推直后停两秒，再收回胸前。",
+    "en": "Hold for two seconds, then bring your hands back to your chest."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "身体被拉向固定点",
+   "en": "Letting your body turn toward the anchor."
+  },
+  {
+   "zh": "耸肩或憋气",
+   "en": "Shrugging or holding your breath."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "固定点不牢时先别开始",
+   "en": "Do not start until the anchor is secure."
+  },
+  {
+   "zh": "腰背不舒服时换更轻的弹力带",
+   "en": "If your back feels uncomfortable, switch to a lighter band."
+  }
+ ],
+ "tags": {
+  "category": "stability",
+  "activeMuscles": [
+   "obliques",
+   "core"
+  ],
+  "synergistMuscles": [
+   "deltoids",
+   "chest"
+  ],
+  "equipment": [
+   "resistance-band"
+  ],
+  "position": "standing",
+  "difficulty": 1
+ },
+ "unilateral": true,
+ "startingSide": "right",
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 3,
+  "reps": 10,
+  "restSeconds": 45
+ },
+ "phases": {
+  "start": {
+   "zh": "往前推",
+   "en": "Press out"
+  },
+  "peak": {
+   "zh": "停两秒",
+   "en": "Hold two"
+  },
+  "end": {
+   "zh": "收回",
+   "en": "Back"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.9,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 2.0,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.8,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 0.3
+   }
+  ],
+  "perSide": "each-side-separately",
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "与 h-band-pallof 同一动画，purpose/cues 对齐其已审文案",
+    "节奏按 spec：推 0.9 s、停 2 s、收 0.75 s",
+    "EN 名 Banded Pallof Press 保留（Pallof 为通用名）",
+    "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除",
+    "最终口径：按真实做法定（2026-11-01）"
+   ],
+   "flags": []
+  }
+ }
+}

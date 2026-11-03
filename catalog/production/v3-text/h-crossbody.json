@@ -1,0 +1,123 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "h-crossbody",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/h-crossbody-r9.js"
+ ],
+ "name": {
+  "zh": "交叉臂肩后侧拉伸",
+  "en": "Cross-Body Shoulder Stretch"
+ },
+ "purpose": {
+  "zh": "拉伸肩膀后侧",
+  "en": "Stretch the back of your shoulder."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "手臂横过胸前，另一手把它拉近",
+    "en": "Bring your arm across your chest and pull it in with the other hand"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "另一手按在肘关节上方，肩膀往下放别耸。",
+    "en": "Hold just above the elbow and keep your shoulder down."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "停住不动，慢慢呼吸。",
+    "en": "Stay still and breathe slowly."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "每次呼气再放松一点，别来回颠。",
+    "en": "Each time you breathe out, relax a little deeper. No bouncing."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "耸肩",
+   "en": "Shrugging your shoulder."
+  },
+  {
+   "zh": "憋气",
+   "en": "Holding your breath."
+  },
+  {
+   "zh": "来回颠着往下压",
+   "en": "Bouncing to go deeper."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "肩膀疼时拉轻一点，还疼就停",
+   "en": "If your shoulder hurts, pull more gently, and stop if it still hurts."
+  }
+ ],
+ "tags": {
+  "category": "stretch",
+  "activeMuscles": [
+   "deltoids",
+   "rotator-cuff"
+  ],
+  "synergistMuscles": [
+   "upper-back"
+  ],
+  "equipment": [],
+  "position": "standing",
+  "difficulty": 1
+ },
+ "unilateral": true,
+ "startingSide": "right",
+ "defaultDose": {
+  "mode": "time",
+  "sets": 2,
+  "seconds": 30,
+  "restSeconds": 15
+ },
+ "phases": {
+  "start": {
+   "zh": "慢慢拉近",
+   "en": "Pull it in"
+  },
+  "peak": {
+   "zh": "保持，慢慢呼气",
+   "en": "Hold and breathe out"
+  },
+  "end": {
+   "zh": "呼气再放松",
+   "en": "Relax a bit deeper"
+  }
+ },
+ "training": {
+  "kind": "hold",
+  "leadSeconds": 1,
+  "perSide": "each-side-separately",
+  "source": "user-decision static-hold r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画每 8 秒一次拉近-停 3 s-放松，剂量从 30 秒保持改为每侧 2 组×4 次（rep_hold）",
+    "补「手按在肘上方」（动画可见），口令「拉近」英文改 Pull in",
+    "按用户决定改为静态保持计时，动画只作示意：30 秒×2 组/每侧，休息 15 秒；口令和要点改成进入—保持—呼气放松",
+    "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除",
+    "最终口径：按真实做法定（2026-11-01）"
+   ],
+   "flags": []
+  }
+ }
+}

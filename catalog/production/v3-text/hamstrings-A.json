@@ -1,0 +1,136 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "hamstrings-A",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/data/drills.json",
+  "drill-anim/specs/hamstrings-A-r3.js"
+ ],
+ "name": {
+  "zh": "徒手单腿罗马尼亚硬拉",
+  "en": "Bodyweight Single-Leg Romanian Deadlift"
+ },
+ "purpose": {
+  "zh": "练大腿后侧和臀部，单腿站得更稳",
+  "en": "Strengthen the back of your thigh and your glutes, and stand steadier on one leg."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "支撑腿微弯，上身向前倾，后腿往后抬",
+    "en": "Soften the standing knee, tip forward and let the back leg rise"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "后腿和上身成一条直线，骨盆别歪。",
+    "en": "Keep the back leg in line with your body and your hips level."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "手臂自然下垂，背保持平直。",
+    "en": "Let your arms hang straight down and keep your back flat."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "弯腰驼背",
+   "en": "Rounding the back."
+  },
+  {
+   "zh": "抬起的腿那一侧骨盆往外翻",
+   "en": "Letting the hip of the lifted leg twist open."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "腰发紧或疼时前倾少一点，还疼就停",
+   "en": "If your lower back feels tight or hurts, tip less far, and stop if it still hurts."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "hamstrings",
+   "glutes"
+  ],
+  "synergistMuscles": [
+   "core",
+   "lower-back"
+  ],
+  "equipment": [],
+  "position": "standing",
+  "difficulty": 1
+ },
+ "unilateral": true,
+ "startingSide": "left",
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 3,
+  "reps": 8,
+  "restSeconds": 45
+ },
+ "phases": {
+  "start": {
+   "zh": "向前倾",
+   "en": "Tip forward"
+  },
+  "peak": {
+   "zh": "稳住",
+   "en": "Hold steady"
+  },
+  "end": {
+   "zh": "站起来",
+   "en": "Stand up"
+  }
+ },
+ "training": {
+  "kind": "rep_updown",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.8,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 1.2,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.8,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.2
+   }
+  ],
+  "perSide": "each-side-separately",
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "英文名缩写 RDL 改全称",
+    "主口令去掉「以髋为轴向前折 / hinge」，改「上身向前倾，后腿往后抬」",
+    "purpose 去掉「腘绳肌拉长下的控制」改口语",
+    "caution「腰椎中立」改「X 时 Y」短句",
+    "节奏核对：动画顶点真正静止约 0.67 秒（<0.8），rep_hold 改为 rep_updown"
+   ],
+   "flags": [
+    "派生顶点 ≥0.8 s 判为 rep_hold，但 spec 注释里真正的停顿只有约 0.6 s，若按实际应为 rep_updown，请确认"
+   ]
+  }
+ }
+}

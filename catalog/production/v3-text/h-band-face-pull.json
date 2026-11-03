@@ -1,0 +1,134 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "h-band-face-pull",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/h-band-face-pull-rr1.js"
+ ],
+ "name": {
+  "zh": "站姿弹力带面拉",
+  "en": "Standing Band Face Pull"
+ },
+ "purpose": {
+  "zh": "练上背和肩膀后侧，改善含胸圆肩",
+  "en": "Build your upper back and the back of your shoulders to help rounded shoulders."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "把弹力带拉向脸，手肘抬高往两边",
+    "en": "Pull the band to your face with your elbows high and wide"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "肩胛骨往后夹，不耸肩。",
+    "en": "Squeeze your shoulder blades back without shrugging."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "慢慢放回，直到手臂伸直。",
+    "en": "Return slowly until your arms are straight."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "身体后仰借力",
+   "en": "Leaning back to pull."
+  },
+  {
+   "zh": "耸肩",
+   "en": "Shrugging your shoulders."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "固定点不牢时先别开始",
+   "en": "Do not start until the anchor is secure."
+  },
+  {
+   "zh": "肩膀疼时换更轻的弹力带",
+   "en": "If your shoulders hurt, switch to a lighter band."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "deltoids",
+   "upper-back"
+  ],
+  "synergistMuscles": [
+   "rotator-cuff",
+   "biceps"
+  ],
+  "equipment": [
+   "resistance-band"
+  ],
+  "position": "standing",
+  "difficulty": 1
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 3,
+  "reps": 12,
+  "restSeconds": 45
+ },
+ "phases": {
+  "start": {
+   "zh": "拉向脸",
+   "en": "Pull back"
+  },
+  "peak": {
+   "zh": "夹紧",
+   "en": "Squeeze"
+  },
+  "end": {
+   "zh": "放回",
+   "en": "Return"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.9,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 1.5,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.6,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.0
+   }
+  ],
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "口令按相位缩短（放回约 0.6 s → 「放回」）",
+    "目的/注意改口语，注意拆成两句"
+   ],
+   "flags": []
+  }
+ }
+}

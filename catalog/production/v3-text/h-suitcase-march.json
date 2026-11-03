@@ -1,0 +1,146 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "h-suitcase-march",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/h-suitcase-march.js"
+ ],
+ "name": {
+  "zh": "单手提哑铃踏步",
+  "en": "Single-Arm Suitcase March"
+ },
+ "purpose": {
+  "zh": "练身体侧面和臀部，单手提重物走路时身体更稳",
+  "en": "Build the sides of your trunk and hips so you stay steady carrying weight in one hand."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "一手提哑铃，两腿轮流抬膝，骨盆别歪",
+    "en": "Hold a dumbbell in one hand and march without tipping your hips"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "上身挺直，不往一边歪。",
+    "en": "Keep your upper body tall without leaning."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "膝盖不用抬太高，先把重心移到支撑脚再抬。",
+    "en": "Lift your knee only a little, after shifting onto the standing foot."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "两边各抬一次算 1 次，下一组换手提。",
+    "en": "One lift on each side counts as one rep. Switch hands next set."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "身体往哑铃一侧歪",
+   "en": "Leaning toward the weight."
+  },
+  {
+   "zh": "抬腿时骨盆一边往下掉",
+   "en": "Letting one hip drop as you lift."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "腰或肩膀疼时停止，换轻一点的哑铃",
+   "en": "If your back or shoulder hurts, stop and use a lighter dumbbell."
+  }
+ ],
+ "tags": {
+  "category": "stability",
+  "activeMuscles": [
+   "obliques",
+   "abductors"
+  ],
+  "synergistMuscles": [
+   "core",
+   "forearms",
+   "hip-flexors"
+  ],
+  "equipment": [
+   "dumbbell"
+  ],
+  "position": "standing",
+  "difficulty": 2
+ },
+ "unilateral": true,
+ "startingSide": "right",
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 3,
+  "reps": 10,
+  "restSeconds": 30
+ },
+ "phases": {
+  "start": {
+   "zh": "抬膝",
+   "en": "Lift"
+  },
+  "peak": {
+   "zh": "稳住",
+   "en": "Hold"
+  },
+  "end": {
+   "zh": "放下",
+   "en": "Down"
+  }
+ },
+ "training": {
+  "kind": "rep_alternate",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.4,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 1,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.5,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 2.1
+   }
+  ],
+  "perSide": "alternate",
+  "repUnit": "left+right",
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "名字「交替踏步抗侧屈」是术语，改「单手提哑铃踏步」",
+    "动画左右腿轮流抬（先右后左）→ rep_alternate，每侧算 1 次",
+    "起止口令按 0.4/0.5 s 缩成 2 字/1 词；cue3 补动画里的「先移重心再抬」",
+    "轮流计数口径：一左一右算 1 次，剂量为每侧 N 次（reps=N），training.phases 描述一侧的一下，repUnit=left+right；startingSide=先动的一侧（right）",
+    "最终口径：按真实做法定（2026-11-01）",
+    "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除"
+   ],
+   "flags": []
+  }
+ }
+}

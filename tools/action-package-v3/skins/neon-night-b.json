@@ -1,0 +1,133 @@
+{
+ "format": "pose-hub-package-skin@1",
+ "id": "neon-night-b",
+ "label": "Green",
+ "status": "look-approved-r2",
+ "look": {
+  "mode": "v2-port",
+  "v2Skin": "neon-night-b",
+  "v3Tune": {
+   "source": "user-approved probe r219/probe-hi3.mjs (A tune), 2026-10-31",
+   "lineWidthK": 0.32,
+   "lineAlphaK": 0.6,
+   "glowK": 0.5,
+   "inwardMask": true,
+   "featherPx": 1.0,
+   "glowOverHighlight": "suppressed",
+   "highlight": {
+    "color": "#f2906a",
+    "shade": [
+     0.62,
+     0.36,
+     0.06
+    ],
+    "alpha": 0.42
+   },
+   "emissive": {
+    "color": "#ff4a24",
+    "k": 0.1
+   }
+  },
+  "rim": {
+   "strength": 0.5,
+   "colour": "body"
+  }
+ },
+ "highlightColor": "#f2906a",
+ "background": {
+  "centre": [
+   34,
+   38,
+   42
+  ],
+  "edge": [
+   7,
+   8,
+   10
+  ]
+ },
+ "port": {
+  "version": "v2skin-port-r2",
+  "v2Source": "drill-anim/page/human-v2plus-regions.js",
+  "v2SourceSha256": "730047f0bc5d62eb7aae57d6dfcbbfaef6b73201dd770e4a56e29143614e99ac",
+  "regionTable": "drill-anim/models/training-human-v2plus-regions.json",
+  "regionTableSha256": "70c74aa5e8986e2575077a49ebcae405ebf68d5eb0bb00b04eb0cc9cc6c1e822",
+  "bakedRegionAttributes": "re-baked at load from the current mesh rest pose (per-vertex region distances, 8 channels); no stored geometry attribute",
+  "adaptations": [
+   "meshes(): v3 torso / head-neck keys, multi-material meshes (every matching slot)",
+   "patch(): every matched material slot",
+   "patchHolder(): every matched material slot (head)",
+   "patchHolder(): every matched material slot (tail)",
+   "setRegions(): re-wrap check on every matched slot",
+   "meshInfo: first matched slot uuid",
+   "highlight colour: the skin hi.c with the recipe pulse curve",
+   "r2 look tune: look.v3Tune (line width/alpha/glow scale, inward 1px-feather highlight mask, glow suppressed over the highlight, dark-skin warm highlight + emissive) applied after every setSkin; v2Params stays the raw V2 snapshot"
+  ]
+ },
+ "v2Params": {
+  "lines": true,
+  "grey": [
+   0.048171824226889426,
+   0.042311410620809675,
+   0.03954623527673283
+  ],
+  "shade": [
+   0.008023192985384994,
+   0.006995410187265387,
+   0.006995410187265387
+  ],
+  "line": [
+   0.07421356838014963,
+   1,
+   0.32314320911295075
+  ],
+  "lw": 0.5,
+  "la": 0.95,
+  "glow": [
+   1.2,
+   0.13
+  ],
+  "rim": [
+   0.06847816984440017,
+   0.05448027644244237,
+   0.05126945837404324
+  ],
+  "tint": [
+   1,
+   1,
+   1
+  ],
+  "sk": 1,
+  "hi": {
+   "c": [
+    0.467783796112159,
+    1,
+    0.6307571363461468
+   ],
+   "shade": [
+    0.6,
+    0.38,
+    0.06
+   ],
+   "a": 0.38,
+   "fe": 7
+  },
+  "bg": {
+   "centre": [
+    34,
+    38,
+    42
+   ],
+   "edge": [
+    7,
+    8,
+    10
+   ]
+  }
+ },
+ "approval": {
+  "by": "user",
+  "at": "2026-11-01T11:36+08:00",
+  "scope": "look r2 (lines, flush highlight, inward mask, rim 0.5 body tone, realistic pump-r1)"
+ }
+}

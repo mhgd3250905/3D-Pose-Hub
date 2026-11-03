@@ -1,0 +1,124 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "h-band-leg-out",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/h-band-leg-out.js"
+ ],
+ "name": {
+  "zh": "仰卧弹力带单腿向外落",
+  "en": "Lying Band Leg Drop-Out"
+ },
+ "purpose": {
+  "zh": "拉伸大腿内侧和大腿后侧",
+  "en": "Stretch your inner thigh and the back of your thigh."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "膝盖伸直，腿慢慢往外侧落",
+    "en": "Keep your knee straight and slowly lower the leg out"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "用手拉住弹力带，让带子托住腿的重量。",
+    "en": "Hold the band so it takes the weight of your leg."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "停住不动，慢慢呼吸。",
+    "en": "Stay still and breathe slowly."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "每次呼气再放松一点，别来回颠。",
+    "en": "Each time you breathe out, relax a little deeper. No bouncing."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "骨盆跟着翻向一侧",
+   "en": "Letting your hips roll to one side."
+  },
+  {
+   "zh": "憋气",
+   "en": "Holding your breath."
+  },
+  {
+   "zh": "来回颠着往下压",
+   "en": "Bouncing to go deeper."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "大腿根刺痛时就停",
+   "en": "Stop if you feel a sharp pain in your groin."
+  }
+ ],
+ "tags": {
+  "category": "stretch",
+  "activeMuscles": [
+   "adductors",
+   "hamstrings"
+  ],
+  "synergistMuscles": [
+   "hip-flexors"
+  ],
+  "equipment": [
+   "resistance-band",
+   "mat"
+  ],
+  "position": "supine",
+  "difficulty": 1
+ },
+ "unilateral": true,
+ "startingSide": "right",
+ "defaultDose": {
+  "mode": "time",
+  "sets": 2,
+  "seconds": 30,
+  "restSeconds": 15
+ },
+ "phases": {
+  "start": {
+   "zh": "慢慢往外落",
+   "en": "Lower it out"
+  },
+  "peak": {
+   "zh": "保持，慢慢呼气",
+   "en": "Hold and breathe out"
+  },
+  "end": {
+   "zh": "呼气再放松",
+   "en": "Relax a bit deeper"
+  }
+ },
+ "training": {
+  "kind": "hold",
+  "leadSeconds": 1,
+  "perSide": "each-side-separately",
+  "source": "user-decision static-hold r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "名字/英文名改口语（Supine→Lying，Lower-Out→Drop-Out）",
+    "训练节奏 1 下/8 s、外侧停约 3.4 s，剂量保持每侧 6 次",
+    "按用户决定改为静态保持计时，动画只作示意：30 秒×2 组/每侧，休息 15 秒；口令和要点改成进入—保持—呼气放松"
+   ],
+   "flags": []
+  }
+ }
+}

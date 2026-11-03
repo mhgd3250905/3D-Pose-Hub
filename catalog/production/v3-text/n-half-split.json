@@ -1,0 +1,130 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "n-half-split",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/n-half-split.js"
+ ],
+ "name": {
+  "zh": "半跪半劈叉（扶砖）",
+  "en": "Half-Kneeling Half Split (Blocks)"
+ },
+ "purpose": {
+  "zh": "拉伸前腿的大腿后侧，为前后劈叉打基础",
+  "en": "Stretch the back of your front thigh as a first step toward the front splits."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "臀部往后坐，前腿伸直，背拉长",
+    "en": "Sit your hips back, straighten the front leg and keep your back long"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "后膝跪地，前脚跟着地、勾脚尖。",
+    "en": "Kneel on the back knee with the front heel down and toes up."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "保持不动，慢慢呼吸，每次呼气再放松一点。",
+    "en": "Stay still, breathe slowly, and relax a little deeper each time you breathe out."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "别来回颠，有拉伸感就够，别拉到疼。",
+    "en": "Do not bounce; a clear stretch is enough, never pain."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "弓背去够脚",
+   "en": "Rounding your back to reach the foot."
+  },
+  {
+   "zh": "硬把前腿膝盖伸直",
+   "en": "Forcing the front knee straight."
+  },
+  {
+   "zh": "憋气或来回颠",
+   "en": "Holding your breath or bouncing."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "跪着的膝盖下面垫个软垫",
+   "en": "Put a soft pad under the kneeling knee."
+  },
+  {
+   "zh": "大腿后侧疼时坐得少一点，还疼就停",
+   "en": "If the back of your thigh hurts, sit back less, and stop if it still hurts."
+  }
+ ],
+ "tags": {
+  "category": "stretch",
+  "activeMuscles": [
+   "hamstrings"
+  ],
+  "synergistMuscles": [
+   "calves",
+   "hip-flexors"
+  ],
+  "equipment": [
+   "yoga-blocks",
+   "mat"
+  ],
+  "position": "half-kneeling",
+  "difficulty": 1
+ },
+ "unilateral": true,
+ "startingSide": "right",
+ "defaultDose": {
+  "mode": "time",
+  "sets": 2,
+  "seconds": 30,
+  "restSeconds": 15
+ },
+ "phases": {
+  "start": {
+   "zh": "慢慢往后坐",
+   "en": "Sit back slowly"
+  },
+  "peak": {
+   "zh": "保持，慢慢呼气",
+   "en": "Hold and breathe out"
+  },
+  "end": {
+   "zh": "呼气再放松",
+   "en": "Relax a bit deeper"
+  }
+ },
+ "training": {
+  "kind": "hold",
+  "leadSeconds": 1,
+  "perSide": "each-side-separately",
+  "source": "user-decision static-hold r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画每 8 秒一次「后坐-停约 2 s-回来」，剂量从 30 秒保持改为每侧 2 组×5 次（rep_hold）",
+    "cue3「从髋部向前折」改「上身往前倾，背保持平直」",
+    "caution 分成两条短句",
+    "按用户决定改为静态保持计时，动画只作示意",
+    "剂量 → 每侧 2 组×30 秒，休息 15 秒；口令/要点改为进入-保持-呼气放松，去掉来回/计数描述"
+   ],
+   "flags": []
+  }
+ }
+}

@@ -1,0 +1,133 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "forearms-A",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/data/drills.json",
+  "drill-anim/specs/forearms-A-r2.js",
+  "drill-anim/specs/forearms-A.js"
+ ],
+ "name": {
+  "zh": "跪姿多方向腕部摇摆",
+  "en": "Quadruped Wrist Rocks"
+ },
+ "purpose": {
+  "zh": "活动手腕，为撑地的动作做准备",
+  "en": "Loosen up your wrists before moves where you push on your hands."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "身体前后轻轻摇，力度由轻到重",
+    "en": "Rock your weight forward and back, starting light"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "指尖朝前、朝外、朝后、手背贴地，每个手位摇 4 次再换。",
+    "en": "Fingers forward, out, back, then backs of the hands: rock 4 times in each position."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "往前再往后摇一下算 1 次，手臂伸直、膝盖跪稳。",
+    "en": "One rock forward and back counts as one. Keep your arms straight and knees steady."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "一开始就压上全身重量",
+   "en": "Putting your full weight on the wrists right away."
+  },
+  {
+   "zh": "只做手指朝前这一种",
+   "en": "Only doing the fingers-forward position."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "手腕刺痛或发麻时停下",
+   "en": "Stop if your wrists feel sharp pain or numbness."
+  }
+ ],
+ "tags": {
+  "category": "mobility",
+  "activeMuscles": [
+   "forearms"
+  ],
+  "synergistMuscles": [
+   "deltoids"
+  ],
+  "equipment": [
+   "mat"
+  ],
+  "position": "quadruped",
+  "difficulty": 1
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 2,
+  "reps": 16,
+  "restSeconds": 20
+ },
+ "phases": {
+  "start": {
+   "zh": "往前摇",
+   "en": "Rock forward"
+  },
+  "peak": {
+   "zh": "停一下",
+   "en": "Pause"
+  },
+  "end": {
+   "zh": "往后",
+   "en": "Back"
+  }
+ },
+ "training": {
+  "kind": "rep_updown",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.1,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 0.3
+   },
+   {
+    "id": "back",
+    "seconds": 0.3,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 0.3
+   }
+  ],
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画在重复前后摇（8 秒 4 下、每下换一种手位），剂量从 60 秒计时改为 2 组×16 下（4 种手位各 4 下），rep_updown",
+    "主口令缩短；结束口令按 0.3 s 相位缩为「往后」",
+    "真实做法是每个手位前后摇几下再换（动画每摇一下就换手位只作示意）：保留计次 2×16（4 个手位×4 次），cue 写明每个手位摇 4 次、一前一后算 1 次",
+    "最终口径：按真实做法定（2026-11-01）"
+   ],
+   "flags": [
+    "批表 go 1.1 s 里包含换手的时间，App 节奏会显得前摇很慢、后摇很快"
+   ]
+  }
+ }
+}

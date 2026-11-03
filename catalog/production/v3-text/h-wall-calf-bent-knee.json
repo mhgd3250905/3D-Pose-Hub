@@ -1,0 +1,125 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "h-wall-calf-bent-knee",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/h-wall-calf-bent-knee.js"
+ ],
+ "name": {
+  "zh": "扶墙屈膝小腿拉伸",
+  "en": "Bent-Knee Wall Calf Stretch"
+ },
+ "purpose": {
+  "zh": "拉伸小腿靠下的深处，让脚踝更灵活",
+  "en": "Stretch the lower calf and loosen your ankle."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "后脚跟踩实，两膝微弯往前往下沉",
+    "en": "Keep your back heel down and bend both knees forward and down"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "小步前后站，双手扶墙。",
+    "en": "Short split stance, hands on the wall."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "停住不动，慢慢呼吸。",
+    "en": "Stay still and breathe slowly."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "每次呼气再放松一点，别来回颠。",
+    "en": "Each time you breathe out, relax a little deeper. No bouncing."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "后脚跟抬起",
+   "en": "Lifting your back heel."
+  },
+  {
+   "zh": "憋气",
+   "en": "Holding your breath."
+  },
+  {
+   "zh": "来回颠着往下压",
+   "en": "Bouncing to go deeper."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "地面滑时穿防滑鞋，扶稳墙面",
+   "en": "If the floor is slippery, wear non-slip shoes and hold the wall firmly."
+  },
+  {
+   "zh": "疼痛时减小幅度，仍痛就停止",
+   "en": "If it hurts, reduce the range, and stop if it still hurts."
+  }
+ ],
+ "tags": {
+  "category": "stretch",
+  "activeMuscles": [
+   "calves"
+  ],
+  "synergistMuscles": [],
+  "equipment": [
+   "wall"
+  ],
+  "position": "standing",
+  "difficulty": 1
+ },
+ "unilateral": true,
+ "startingSide": "right",
+ "defaultDose": {
+  "mode": "time",
+  "sets": 2,
+  "seconds": 30,
+  "restSeconds": 15
+ },
+ "phases": {
+  "start": {
+   "zh": "慢慢沉下去",
+   "en": "Sink down"
+  },
+  "peak": {
+   "zh": "保持，慢慢呼气",
+   "en": "Hold and breathe out"
+  },
+  "end": {
+   "zh": "呼气再沉一点",
+   "en": "Sink a bit deeper"
+  }
+ },
+ "training": {
+  "kind": "hold",
+  "leadSeconds": 1,
+  "perSide": "each-side-separately",
+  "source": "user-decision static-hold r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画 8 秒 1 次「下沉-停约 4 s-放松」在重复，剂量从 30 秒保持改为 2 组×5 次/侧（rep_hold）",
+    "「弹震」改「上下颠」；长 caution 拆成两条「X 时 Y」",
+    "口令英文缩短（Sink / Breathe）",
+    "按用户决定改为静态保持计时，动画只作示意：30 秒×2 组/每侧，休息 15 秒；口令和要点改成进入—保持—呼气放松"
+   ],
+   "flags": []
+  }
+ }
+}

@@ -1,0 +1,114 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "h-bear-plank",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/h-bear-plank-r4.js"
+ ],
+ "name": {
+  "zh": "熊式支撑",
+  "en": "Bear Plank"
+ },
+ "purpose": {
+  "zh": "练核心稳定和肩膀的支撑力",
+  "en": "Build a steady core and shoulder support."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "收紧肚子，膝盖离地一点点",
+    "en": "Tighten your belly and lift your knees just off the floor"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "手在肩膀下，膝盖在臀部下，脚尖踩地。",
+    "en": "Hands under shoulders, knees under hips, toes tucked."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "背放平，臀部别翘高，撑住均匀呼吸。",
+    "en": "Keep your back flat and hips level, and keep breathing as you hold."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "臀部翘高",
+   "en": "Pushing your hips up high."
+  },
+  {
+   "zh": "塌腰",
+   "en": "Letting your lower back sag."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "先活动一下手腕再做",
+   "en": "Warm up your wrists first."
+  },
+  {
+   "zh": "手腕刺痛或发麻时停下",
+   "en": "Stop if your wrists feel sharp pain or go numb."
+  }
+ ],
+ "tags": {
+  "category": "stability",
+  "activeMuscles": [
+   "core"
+  ],
+  "synergistMuscles": [
+   "deltoids",
+   "quadriceps"
+  ],
+  "equipment": [
+   "mat"
+  ],
+  "position": "quadruped",
+  "difficulty": 1
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "time",
+  "sets": 3,
+  "seconds": 20,
+  "restSeconds": 30
+ },
+ "phases": {
+  "start": {
+   "zh": "膝盖离地",
+   "en": "Lift your knees"
+  },
+  "peak": {
+   "zh": "保持住",
+   "en": "Hold"
+  },
+  "end": {
+   "zh": "保持呼吸",
+   "en": "Keep breathing"
+  }
+ },
+ "training": {
+  "kind": "hold",
+  "leadSeconds": 1,
+  "source": "real-practice r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画是 2 次/8 s「膝盖离地-悬停约 2.5 s-放下」，剂量由 20 s 保持改为 3 组×8 次（rep_hold）",
+    "英文名去掉「Hold」；口令按 0.4–0.5 s 相位缩短",
+    "真实做法是静止保持：改回计时 20 秒×3 组，口令改成进入—保持—呼吸；动画的起落只作示意",
+    "最终口径：按真实做法定（2026-11-01）"
+   ],
+   "flags": []
+  }
+ }
+}

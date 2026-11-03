@@ -1,0 +1,118 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "abs-B",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/data/drills.json",
+  "drill-anim/specs/abs-B.js"
+ ],
+ "name": {
+  "zh": "平行杆团身 L 撑",
+  "en": "Parallette Tuck L-Sit"
+ },
+ "purpose": {
+  "zh": "练腹部和抬腿的力量，提升撑住身体的能力",
+  "en": "Build your abs and leg-lifting strength while you hold yourself up."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "手臂撑直，膝盖抬到胸前",
+    "en": "Lock your arms and pull your knees to your chest"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "肩膀往下压，别耸肩。",
+    "en": "Press your shoulders down, away from your ears."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "做得稳了，再试着两腿轮流往前伸直。",
+    "en": "Once it feels steady, try straightening one leg forward, then the other."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "耸肩，脖子缩起来",
+   "en": "Shrugging and letting the neck shorten."
+  },
+  {
+   "zh": "膝盖往下掉",
+   "en": "Letting the knees drop."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "手腕疼或发麻时停下",
+   "en": "Stop if your wrists hurt or go numb."
+  },
+  {
+   "zh": "先活动手腕再做",
+   "en": "Warm up your wrists before you start."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "core",
+   "hip-flexors"
+  ],
+  "synergistMuscles": [
+   "triceps",
+   "deltoids"
+  ],
+  "equipment": [
+   "parallettes"
+  ],
+  "position": "other",
+  "difficulty": 2
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "hold",
+  "sets": 4,
+  "seconds": 10,
+  "restSeconds": 60
+ },
+ "phases": {
+  "start": {
+   "zh": "撑起团身",
+   "en": "Press up and tuck"
+  },
+  "peak": {
+   "zh": "保持住",
+   "en": "Hold"
+  },
+  "end": {
+   "zh": "慢慢放下",
+   "en": "Lower slowly"
+  }
+ },
+ "training": {
+  "kind": "hold",
+  "leadSeconds": 1,
+  "source": "timer"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画是一直撑着团身，中间一条腿伸直再收回（进阶演示），保持计时不变，training=hold",
+    "主口令删掉「肩下压」，一句只说一件事；「骨盆后倾」删掉；结束口令改为「慢慢放下」（原「收回团身」和起始重复）",
+    "purpose 去掉「髋屈肌」；cautions 改成「X 时 Y」短句",
+    "真实做法进阶时两腿轮流伸，cue 改「两腿轮流」",
+    "最终口径：按真实做法定（2026-11-01）",
+    "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除"
+   ],
+   "flags": []
+  }
+ }
+}

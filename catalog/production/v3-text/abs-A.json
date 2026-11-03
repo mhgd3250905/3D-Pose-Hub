@@ -1,0 +1,112 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "abs-A",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/data/drills.json",
+  "drill-anim/specs/abs-A-r2.js",
+  "drill-anim/specs/abs-A.js"
+ ],
+ "name": {
+  "zh": "空心体支撑",
+  "en": "Hollow Body Hold"
+ },
+ "purpose": {
+  "zh": "练腹部，让身体更稳",
+  "en": "Build your abs and a steadier trunk."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "腰压住地面，上背和双腿抬离地面",
+    "en": "Press your lower back down and lift your upper back and legs"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "手臂贴着耳朵伸直，双腿并拢伸直。",
+    "en": "Keep your arms straight by your ears and your legs straight together."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "停住不动，均匀呼吸，别憋气。",
+    "en": "Stay still and keep breathing evenly."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "腰拱起离开地面",
+   "en": "Letting the lower back arch off the floor."
+  },
+  {
+   "zh": "憋气",
+   "en": "Holding your breath."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "腰离地或发疼时，把腿抬高一点",
+   "en": "If your lower back lifts or hurts, raise your legs a little higher."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "core"
+  ],
+  "synergistMuscles": [
+   "hip-flexors"
+  ],
+  "equipment": [
+   "mat"
+  ],
+  "position": "supine",
+  "difficulty": 1
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "time",
+  "sets": 3,
+  "seconds": 20,
+  "restSeconds": 45
+ },
+ "phases": {
+  "start": {
+   "zh": "卷起来",
+   "en": "Curl up"
+  },
+  "peak": {
+   "zh": "保持住",
+   "en": "Hold"
+  },
+  "end": {
+   "zh": "保持呼吸",
+   "en": "Keep breathing"
+  }
+ },
+ "training": {
+  "kind": "hold",
+  "leadSeconds": 1,
+  "source": "real-practice r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画是 8 秒 2 次「卷起-停约 2 秒-放下」，剂量从 20 秒保持改为 3 组×8 次（rep_hold）",
+    "主口令合并成一句：腰压地、上背和腿一起抬；删掉动画里没有的「手脚越低越难」",
+    "口令按相位时长缩短（卷起 0.6 s / 放下 0.5 s）",
+    "真实做法是静止保持：改回计时 20 秒×3 组，口令改成进入—保持—呼吸；动画的起落只作示意",
+    "最终口径：按真实做法定（2026-11-01）"
+   ],
+   "flags": []
+  }
+ }
+}

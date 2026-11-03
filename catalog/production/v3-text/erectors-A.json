@@ -1,0 +1,140 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "erectors-A",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/data/drills.json",
+  "drill-anim/specs/erectors-A.js"
+ ],
+ "name": {
+  "zh": "反向平板抬髋",
+  "en": "Reverse Plank Hip Lift"
+ },
+ "purpose": {
+  "zh": "练背部、臀部和大腿后侧",
+  "en": "Build your back, glutes, and the backs of your thighs."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "手推地把髋抬起，身体成一条直线",
+    "en": "Push the floor away and lift your hips into one straight line"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "双手在肩膀下面，手指朝脚的方向。",
+    "en": "Keep your hands under your shoulders with fingers toward your feet."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "手臂伸直，脚跟踩地，顶上夹紧臀部。",
+    "en": "Keep your arms straight, heels down, and squeeze your glutes at the top."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "髋往下掉",
+   "en": "Letting the hips drop."
+  },
+  {
+   "zh": "头往后仰，肩往前塌",
+   "en": "Dropping the head back and letting the shoulders roll forward."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "手腕疼或发麻时停下",
+   "en": "Stop if your wrists hurt or go numb."
+  },
+  {
+   "zh": "先活动手腕再做",
+   "en": "Warm up your wrists before you start."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "lower-back",
+   "glutes",
+   "hamstrings"
+  ],
+  "synergistMuscles": [
+   "deltoids",
+   "triceps"
+  ],
+  "equipment": [
+   "mat"
+  ],
+  "position": "supine",
+  "difficulty": 1
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 3,
+  "reps": 10,
+  "restSeconds": 45
+ },
+ "phases": {
+  "start": {
+   "zh": "抬髋",
+   "en": "Hips up"
+  },
+  "peak": {
+   "zh": "夹臀保持",
+   "en": "Squeeze and hold"
+  },
+  "end": {
+   "zh": "放下",
+   "en": "Lower"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.8,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 2.4,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.4,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 0.4
+   }
+  ],
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画 8 秒 2 次「抬髋-停 1.7 s-放下」，剂量从 20 秒保持改为 3 组×10 次（rep_hold）；名字随之改为「反向平板抬髋 / Reverse Plank Hip Lift」",
+    "cue2 删掉动画里没有的「或朝两侧」；「夹紧臀部」从主口令挪到 cue3",
+    "口令按相位缩短（抬髋 0.8 s / 放下 0.4 s）",
+    "保留 r2 改名「反向平板抬髋」，按抬髋重复计次",
+    "最终口径：按真实做法定（2026-11-01）",
+    "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除"
+   ],
+   "flags": []
+  }
+ }
+}

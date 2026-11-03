@@ -1,0 +1,132 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "h-band-row",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/h-band-row.js"
+ ],
+ "name": {
+  "zh": "弹力带坐姿划船",
+  "en": "Seated Band Row"
+ },
+ "purpose": {
+  "zh": "练背部，让拉的动作更有力",
+  "en": "Build your back and your pulling strength."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "手肘贴着身体往后拉",
+    "en": "Pull your elbows back close to your sides"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "坐直，腿伸直，弹力带套住双脚。",
+    "en": "Sit tall with your legs straight and the band around your feet."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "拉到底夹一下肩胛骨，再慢慢伸直手臂。",
+    "en": "Squeeze your shoulder blades at the end, then slowly straighten your arms."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "身体后仰借力",
+   "en": "Leaning back to pull."
+  },
+  {
+   "zh": "耸肩",
+   "en": "Shrugging your shoulders."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "腰背发紧时膝盖弯一点再做",
+   "en": "If your back feels tight, bend your knees a little."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "lats",
+   "upper-back"
+  ],
+  "synergistMuscles": [
+   "biceps",
+   "deltoids"
+  ],
+  "equipment": [
+   "resistance-band",
+   "mat"
+  ],
+  "position": "seated",
+  "difficulty": 1
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 3,
+  "reps": 12,
+  "restSeconds": 45
+ },
+ "phases": {
+  "start": {
+   "zh": "往后拉",
+   "en": "Pull back"
+  },
+  "peak": {
+   "zh": "夹紧",
+   "en": "Squeeze"
+  },
+  "end": {
+   "zh": "慢慢放回",
+   "en": "Return slowly"
+  }
+ },
+ "training": {
+  "kind": "rep_updown",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.3,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 0.6,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 1.7,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 0.4
+   }
+  ],
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "节奏按 spec 关键帧手算：拉到底只停 0.6 s（派生算成 1.2 s），kind rep_updown",
+    "主口令一句只说一件事（拉肘），夹肩胛挪到提示",
+    "删掉不适用的固定点注意（弹力带套在脚上）"
+   ],
+   "flags": []
+  }
+ }
+}

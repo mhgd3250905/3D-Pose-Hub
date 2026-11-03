@@ -1,0 +1,134 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "deltoids-C",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/data/drills.json",
+  "drill-anim/specs/deltoids-C.js"
+ ],
+ "name": {
+  "zh": "地雷杆半跪单臂推举",
+  "en": "Half-Kneeling Single-Arm Landmine Press"
+ },
+ "purpose": {
+  "zh": "练肩膀推举力量，斜着往上推对肩更友好",
+  "en": "Build shoulder pressing strength on an angle that is kinder to your shoulder."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "斜着往前上方推，直到手臂伸直",
+    "en": "Press up and forward until your arm is straight"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "收紧臀部和肚子，上身别往后仰。",
+    "en": "Squeeze your glutes and belly and keep your trunk from leaning back."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "慢慢放回肩膀前面。",
+    "en": "Lower slowly back to the front of your shoulder."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "推的时候腰往后仰借力",
+   "en": "Arching the lower back to help the press."
+  },
+  {
+   "zh": "肋骨往外翻",
+   "en": "Letting the ribs flare out."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "肩前面夹着疼时，推的幅度小一点",
+   "en": "If the front of your shoulder pinches, make the press smaller."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "deltoids"
+  ],
+  "synergistMuscles": [
+   "triceps",
+   "chest",
+   "core"
+  ],
+  "equipment": [
+   "landmine",
+   "barbell"
+  ],
+  "position": "half-kneeling",
+  "difficulty": 2
+ },
+ "unilateral": true,
+ "startingSide": "right",
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 3,
+  "reps": 8,
+  "restSeconds": 60
+ },
+ "phases": {
+  "start": {
+   "zh": "推上去",
+   "en": "Press up"
+  },
+  "peak": {
+   "zh": "停一下",
+   "en": "Hold"
+  },
+  "end": {
+   "zh": "放回来",
+   "en": "Lower"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.7,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 1.3,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.7,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.3
+   }
+  ],
+  "perSide": "each-side-separately",
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "主口令删掉「最后肩胛向前送」（动画只是推到手臂伸直，没有额外前送），英文同步",
+    "口令按 0.7 s 相位缩短（推上去/放回来）；顶点「锁住」改「停一下」"
+   ],
+   "flags": []
+  }
+ }
+}

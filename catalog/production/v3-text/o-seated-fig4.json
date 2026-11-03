@@ -1,0 +1,124 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "o-seated-fig4",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/o-seated-fig4.js"
+ ],
+ "name": {
+  "zh": "坐姿四字前压",
+  "en": "Seated Figure-4 Stretch"
+ },
+ "purpose": {
+  "zh": "拉伸臀部，缓解久坐髋部发紧",
+  "en": "Stretch your glutes and ease hip tightness from sitting."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "一只脚踝搭在另一侧膝盖上，背挺直往前倾",
+    "en": "Cross one ankle over the other knee and lean forward with a long back"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "支撑脚踩平，翘起的膝盖自然往外打开。",
+    "en": "Keep the other foot flat and let the crossed knee fall open."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "保持不动，慢慢呼吸，每次呼气再放松一点。",
+    "en": "Stay still, breathe slowly, and relax a little deeper each time you breathe out."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "别来回颠，有拉伸感就够，别拉到疼。",
+    "en": "Do not bounce; a clear stretch is enough, never pain."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "弓背往下压",
+   "en": "Rounding the back to go deeper."
+  },
+  {
+   "zh": "用手硬压膝盖",
+   "en": "Forcing the knee down with your hand."
+  },
+  {
+   "zh": "憋气或来回颠",
+   "en": "Holding your breath or bouncing."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "膝盖疼时少往前倾一点，还疼就停",
+   "en": "If your knee hurts, lean less, and stop if it still hurts."
+  }
+ ],
+ "tags": {
+  "category": "stretch",
+  "activeMuscles": [
+   "glutes"
+  ],
+  "synergistMuscles": [
+   "lower-back"
+  ],
+  "equipment": [
+   "chair"
+  ],
+  "position": "seated",
+  "difficulty": 1
+ },
+ "unilateral": true,
+ "startingSide": "right",
+ "defaultDose": {
+  "mode": "time",
+  "sets": 2,
+  "seconds": 30,
+  "restSeconds": 15
+ },
+ "phases": {
+  "start": {
+   "zh": "慢慢前倾",
+   "en": "Lean forward"
+  },
+  "peak": {
+   "zh": "保持，慢慢呼气",
+   "en": "Hold and breathe out"
+  },
+  "end": {
+   "zh": "呼气再放松",
+   "en": "Relax a bit deeper"
+  }
+ },
+ "training": {
+  "kind": "hold",
+  "leadSeconds": 1,
+  "perSide": "each-side-separately",
+  "source": "user-decision static-hold r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "剂量 30 s 保持 → 每侧 2 组×6 次（rep_hold，stretchLoop）",
+    "节奏按 spec 时间轴手算（派生值把 90% 以上都算停顿，和 spec 不符）：倾 1.4/停 3.6/回 1.4/歇 1.6 s（派生 1.9/2.4/1.9/1.9）",
+    "主口令去掉「对侧」；cue3 补上动画里双手的位置",
+    "按用户决定改为静态保持计时，动画只作示意",
+    "剂量 → 每侧 2 组×30 秒，休息 15 秒；口令/要点改为进入-保持-呼气放松，去掉来回/计数描述"
+   ],
+   "flags": []
+  }
+ }
+}

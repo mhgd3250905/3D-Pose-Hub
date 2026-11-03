@@ -1,0 +1,114 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "h-straight-arm-hang-native",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/h-straight-arm-hang-native.js",
+  "drill-anim/specs/h-fixed-bar-vertical-pull-rr7.js"
+ ],
+ "name": {
+  "zh": "单杠直臂悬垂",
+  "en": "Straight-Arm Bar Hang"
+ },
+ "purpose": {
+  "zh": "练握力，放松拉长背部两侧",
+  "en": "Build grip strength and lengthen the sides of your back."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "双手握杠，手臂伸直，身体自然挂着",
+    "en": "Grip the bar with straight arms and let your body hang"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "身体保持不动，不要晃。",
+    "en": "Keep your body still without swinging."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "快握不住前先踩稳再松手。",
+    "en": "Step down safely before your grip gives out."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "身体前后摆动",
+   "en": "Swinging the body."
+  },
+  {
+   "zh": "直接松手掉下",
+   "en": "Letting go and dropping."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "肩膀疼时缩短时间，或脚踩地分担体重",
+   "en": "If your shoulders hurt, hang for less time or keep your feet on the floor to take some weight."
+  },
+  {
+   "zh": "单杠不牢或下方没有落脚处时不要做",
+   "en": "Do not hang if the bar is not secure or there is nowhere to step down."
+  }
+ ],
+ "tags": {
+  "category": "stability",
+  "activeMuscles": [
+   "forearms",
+   "lats"
+  ],
+  "synergistMuscles": [
+   "deltoids"
+  ],
+  "equipment": [
+   "pull-up-bar"
+  ],
+  "position": "hanging",
+  "difficulty": 2
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "time",
+  "sets": 3,
+  "seconds": 20,
+  "restSeconds": 60
+ },
+ "phases": {
+  "start": {
+   "zh": "握杠挂住",
+   "en": "Grip and hang"
+  },
+  "peak": {
+   "zh": "保持住",
+   "en": "Hold"
+  },
+  "end": {
+   "zh": "踩稳松手",
+   "en": "Step down"
+  }
+ },
+ "training": {
+  "kind": "hold",
+  "leadSeconds": 1,
+  "source": "timer"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画全程静止悬挂 → kind hold（App 计时）；dose mode hold→time",
+    "名字去掉重复的「保持」；purpose 去掉「背阔肌」学名",
+    "cautions 改成适用悬垂的「X 时 Y」（原「缩小幅度」不适用）"
+   ],
+   "flags": []
+  }
+ }
+}

@@ -1,0 +1,114 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "t-tuck-planche",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/t-tuck-planche-r6.js"
+ ],
+ "name": {
+  "zh": "团身俄挺",
+  "en": "Tuck Planche"
+ },
+ "purpose": {
+  "zh": "练手撑平衡和肩膀往前顶的力量",
+  "en": "Build hand balance and the shoulder strength to lean forward over your hands."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "肩膀往前送过手，双脚离地",
+    "en": "Lean your shoulders past your hands and lift your feet"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "蹲着双手撑地，手指稍微朝外，手臂伸直。",
+    "en": "Crouch with your hands flat, fingers turned slightly out, arms straight."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "膝盖收在胸口下面，背微微拱起，稳住平衡。",
+    "en": "Tuck your knees under your chest, round your back a little and hold the balance."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "弯手肘",
+   "en": "Bending your elbows."
+  },
+  {
+   "zh": "肩膀没往前就抬脚",
+   "en": "Lifting your feet before leaning forward."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "手腕不舒服时先活动一下手腕",
+   "en": "If your wrists feel stiff, warm them up first."
+  },
+  {
+   "zh": "手腕或肩膀疼时缩短时间，还疼就停",
+   "en": "If your wrists or shoulders hurt, hold for less time, and stop if it still hurts."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "deltoids",
+   "core"
+  ],
+  "synergistMuscles": [
+   "chest",
+   "triceps",
+   "forearms"
+  ],
+  "equipment": [
+   "mat"
+  ],
+  "position": "other",
+  "difficulty": 3
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "time",
+  "sets": 3,
+  "seconds": 8,
+  "restSeconds": 90
+ },
+ "phases": {
+  "start": {
+   "zh": "前倾",
+   "en": "Lean forward"
+  },
+  "peak": {
+   "zh": "抬脚定住",
+   "en": "Lift and hold"
+  },
+  "end": {
+   "zh": "放下双脚",
+   "en": "Feet down"
+  }
+ },
+ "training": {
+  "kind": "hold",
+  "leadSeconds": 1,
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "主口令原来塞了 4 个指令，缩成一件事：肩膀往前送过手、双脚离地；锁臂/拱背挪到 cues",
+    "training=hold（动画全程离地静止定住 8 s）"
+   ],
+   "flags": []
+  }
+ }
+}

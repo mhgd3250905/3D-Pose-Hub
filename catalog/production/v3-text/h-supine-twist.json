@@ -1,0 +1,128 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "h-supine-twist",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/h-supine-twist-r4.js",
+  "drill-anim/specs/h-supine-twist-r3.js",
+  "drill-anim/specs/h-supine-twist-r2.js",
+  "drill-anim/specs/h-supine-twist.js"
+ ],
+ "name": {
+  "zh": "仰卧屈膝扭转",
+  "en": "Lying Knee-Drop Twist"
+ },
+ "purpose": {
+  "zh": "放松腰部，拉伸身体两侧",
+  "en": "Relax your lower back and stretch the sides of your trunk."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "双膝慢慢倒向一边，两肩贴住垫子",
+    "en": "Slowly drop both knees to one side, shoulders on the mat"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "双臂成 T 字放在垫子上。",
+    "en": "Arms out in a T on the mat."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "停住不动，慢慢呼吸。",
+    "en": "Stay still and breathe slowly."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "每次呼气再放松一点，别来回颠。",
+    "en": "Each time you breathe out, relax a little deeper. No bouncing."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "肩膀离开垫子",
+   "en": "Letting a shoulder lift off the mat."
+  },
+  {
+   "zh": "憋气",
+   "en": "Holding your breath."
+  },
+  {
+   "zh": "来回颠着往下压",
+   "en": "Bouncing to go deeper."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "出现疼痛时放松，只拉到舒服的程度",
+   "en": "If anything hurts, ease off and stretch only to a comfortable point."
+  }
+ ],
+ "tags": {
+  "category": "stretch",
+  "activeMuscles": [
+   "obliques",
+   "lower-back"
+  ],
+  "synergistMuscles": [
+   "glutes"
+  ],
+  "equipment": [
+   "mat"
+  ],
+  "position": "supine",
+  "difficulty": 1
+ },
+ "unilateral": true,
+ "startingSide": "right",
+ "defaultDose": {
+  "mode": "time",
+  "sets": 2,
+  "seconds": 30,
+  "restSeconds": 15
+ },
+ "phases": {
+  "start": {
+   "zh": "膝盖倒下",
+   "en": "Drop the knees"
+  },
+  "peak": {
+   "zh": "保持，慢慢呼气",
+   "en": "Hold and breathe out"
+  },
+  "end": {
+   "zh": "呼气再放松",
+   "en": "Relax a bit deeper"
+  }
+ },
+ "training": {
+  "kind": "hold",
+  "leadSeconds": 1,
+  "perSide": "each-side-separately",
+  "source": "user-decision static-hold r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画 8 秒先倒向右、再倒向左轮流重复，剂量从 20 秒保持改为 2 组×每侧 6 次（rep_alternate）",
+    "英文名 Supine 改 Lying；口令按相位缩短（倒下 / Knees down，回中间 / Back up）",
+    "按用户决定改为静态保持计时，动画只作示意：30 秒×2 组/每侧，休息 15 秒；口令和要点改成进入—保持—呼气放松",
+    "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除",
+    "最终口径：按真实做法定（2026-11-01）"
+   ],
+   "flags": []
+  }
+ }
+}

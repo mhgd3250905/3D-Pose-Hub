@@ -1,0 +1,124 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "o-seated-ham",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/o-seated-ham.js"
+ ],
+ "name": {
+  "zh": "坐姿大腿后侧拉伸",
+  "en": "Seated Hamstring Stretch"
+ },
+ "purpose": {
+  "zh": "坐在椅子上拉伸大腿后侧",
+  "en": "Stretch the back of your thigh from your chair."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "一条腿伸直放前面，背挺直，上身往前倾",
+    "en": "Straighten one leg forward and lean forward with a long back"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "坐在椅子前半部分，伸直那条腿脚跟着地、脚尖勾起。",
+    "en": "Sit near the front of the chair, straight leg heel down, toes up."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "保持不动，慢慢呼吸，每次呼气再放松一点。",
+    "en": "Stay still, breathe slowly, and relax a little deeper each time you breathe out."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "别来回颠，有拉伸感就够，别拉到疼。",
+    "en": "Do not bounce; a clear stretch is enough, never pain."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "弓背去够脚",
+   "en": "Rounding the back to reach the foot."
+  },
+  {
+   "zh": "憋气或来回颠",
+   "en": "Holding your breath or bouncing."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "大腿后侧疼或发麻时幅度小一点，还不舒服就停",
+   "en": "If the back of your thigh hurts or tingles, ease off, and stop if it continues."
+  }
+ ],
+ "tags": {
+  "category": "stretch",
+  "activeMuscles": [
+   "hamstrings"
+  ],
+  "synergistMuscles": [
+   "calves",
+   "lower-back"
+  ],
+  "equipment": [
+   "chair"
+  ],
+  "position": "seated",
+  "difficulty": 1
+ },
+ "unilateral": true,
+ "startingSide": "right",
+ "defaultDose": {
+  "mode": "time",
+  "sets": 2,
+  "seconds": 30,
+  "restSeconds": 15
+ },
+ "phases": {
+  "start": {
+   "zh": "慢慢前倾",
+   "en": "Lean forward"
+  },
+  "peak": {
+   "zh": "保持，慢慢呼气",
+   "en": "Hold and breathe out"
+  },
+  "end": {
+   "zh": "呼气再放松",
+   "en": "Relax a bit deeper"
+  }
+ },
+ "training": {
+  "kind": "hold",
+  "leadSeconds": 1,
+  "perSide": "each-side-separately",
+  "source": "user-decision static-hold r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "改名「坐姿腘绳肌前伸」→「坐姿大腿后侧拉伸」（腘绳肌听不懂）",
+    "剂量 30 s 保持 → 每侧 2 组×6 次（rep_hold，stretchLoop）",
+    "节奏按 spec 时间轴手算（派生值把 90% 以上都算停顿，和 spec 不符）：倾 1.4/停 3.6/回 1.4/歇 1.6 s",
+    "主口令去掉「从髋部前折」",
+    "按用户决定改为静态保持计时，动画只作示意",
+    "剂量 → 每侧 2 组×30 秒，休息 15 秒；口令/要点改为进入-保持-呼气放松，去掉来回/计数描述",
+    "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除",
+    "最终口径：按真实做法定（2026-11-01）"
+   ],
+   "flags": []
+  }
+ }
+}

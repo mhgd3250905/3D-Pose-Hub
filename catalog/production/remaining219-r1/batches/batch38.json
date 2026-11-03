@@ -1,0 +1,447 @@
+{
+  "format": "pose-hub-remaining219-remote-index@1",
+  "batch": "batch38",
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "environment": {
+    "host": "Hark sandbox aarch64, 2 cores, 7.9 GiB, no GPU",
+    "browser": "Playwright 1.48.2 chromium-1140",
+    "renderer": "software (ANGLE SwiftShader)",
+    "serial": true
+  },
+  "checks": {
+    "keyframes": "tools/action-completion-v3-r2/remote-keyframes-r1.mjs, 256/320px, 3-6 frames",
+    "rotation": "tools/action-completion-v3-r2/remote-rotation-r1.mjs, 15Hz sequential solve, axial twist of forearm|upperArm, hand|forearm, foot|shin (range>120, step>25, net>150 deg flagged)"
+  },
+  "sampledOnly": true,
+  "fullCycleValidated": false,
+  "userAccepted": false,
+  "releaseEligible": false,
+  "items": [
+    {
+      "stableId": "o-wall-hip-hinge-stretch",
+      "status": "remote-keyframe-reviewed",
+      "spec": "drill-anim/specs/o-wall-hip-hinge-stretch.js",
+      "specSha256Lf": "0999dd03a1d70f6bc97a340302b3ef21e91122ec175da763c07a0812d25b5950",
+      "recipe": "catalog/production/remaining219-r1/recipes/o-wall-hip-hinge-stretch.json",
+      "recipeSha256Lf": "411d321ecfcd87965f6c30358126069078a9ebabd79bfc4f9659fc4f81df6306",
+      "keyframes": {
+        "attempt": "o-wall-hip-hinge-stretch-a01",
+        "times": [
+          1,
+          3,
+          5,
+          7
+        ],
+        "size": 256,
+        "recipeSha256": "411d321ecfcd87965f6c30358126069078a9ebabd79bfc4f9659fc4f81df6306",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "750e0eec3e0ecc9447e93383967748d227a632388a962ca9d930ccc56a7a05c6",
+          "keyframe-01.png": "e941399736cf25817a6e81effae281c58f7222ea85aff4ff5b7a1a2b1d168e75",
+          "keyframe-02.png": "0e6c3471177514a0c39fde95f3e45e867c590d09d7e1f58f95363968db012734",
+          "keyframe-03.png": "b1985829eac1ae1b07d16d0b40a4bb1d8d5896b4b86b3b143304a620d51e9b1c"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "3a0e59423ac136320b24daf2ca20e393a99b52e7868663a05a4b41cd2aaeb385",
+        "samples": 121,
+        "flagged": [],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 12.0,
+            "maxStepDeg": 0.8,
+            "netDeg": 0
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 12.0,
+            "maxStepDeg": 0.8,
+            "netDeg": 0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          }
+        },
+        "note": "rotation screen ran on an earlier recipe revision that differs only in camera; twist is camera independent"
+      },
+      "notes": "wall-supported hip-back trunk lengthening, palms on wall; static hold.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect"
+      ]
+    },
+    {
+      "stableId": "obliques-A",
+      "status": "remote-keyframe-reviewed",
+      "spec": "drill-anim/specs/obliques-A-r2.js",
+      "specSha256Lf": "15805a6c13cd5ae58b337d8301f0b23e777267d1b276cbe43ebf18cd0422eb57",
+      "recipe": "catalog/production/remaining219-r1/recipes/obliques-A.json",
+      "recipeSha256Lf": "2c02f1813fdc58959adaa58e81829d602804c55b65bfdf06ea7a5db55db5ed40",
+      "keyframes": {
+        "attempt": "obliques-A-a01",
+        "times": [
+          1,
+          3,
+          5,
+          7
+        ],
+        "size": 256,
+        "recipeSha256": "2c02f1813fdc58959adaa58e81829d602804c55b65bfdf06ea7a5db55db5ed40",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "3f09b731aba7cfabb879df39f5de0f3a55feccad53406536fbf4d989775cd0d4",
+          "keyframe-01.png": "f04beca06edc9d874ac20def3d737caa78d63d877e328288a25fe54d2d2c8a07",
+          "keyframe-02.png": "7934d6442966ac76c9312cec889b729b3a1bacfc1797d7e8d0bb2843867ff140",
+          "keyframe-03.png": "1d72cb3fc6b2a24edd85ebb9f337e57c541dfff492a22cfe371917c0065e546e"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "a681be425c2c1224c88372792cc399ab854675fd4095228b3a3f39820f59ff6d",
+        "samples": 121,
+        "flagged": [
+          {
+            "channel": "left.forearm|upperArm",
+            "flags": [
+              "twist-range"
+            ],
+            "rangeDeg": 204.4,
+            "maxStepDeg": 23.6,
+            "netDeg": 0,
+            "worstAt": 4.6667
+          },
+          {
+            "channel": "left.foot|shin",
+            "flags": [
+              "twist-range"
+            ],
+            "rangeDeg": 135,
+            "maxStepDeg": 13.9,
+            "netDeg": 0,
+            "worstAt": 1.0667
+          },
+          {
+            "channel": "right.forearm|upperArm",
+            "flags": [
+              "twist-range"
+            ],
+            "rangeDeg": 204.4,
+            "maxStepDeg": 23.6,
+            "netDeg": 0,
+            "worstAt": 0.6667
+          },
+          {
+            "channel": "right.foot|shin",
+            "flags": [
+              "twist-range"
+            ],
+            "rangeDeg": 135,
+            "maxStepDeg": 13.9,
+            "netDeg": 0,
+            "worstAt": 5.0667
+          }
+        ],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 204.4,
+            "maxStepDeg": 23.6,
+            "netDeg": -0.0
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 108.1,
+            "maxStepDeg": 10.8,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 135,
+            "maxStepDeg": 13.9,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 204.4,
+            "maxStepDeg": 23.6,
+            "netDeg": 0.0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 108.1,
+            "maxStepDeg": 10.8,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 135,
+            "maxStepDeg": 13.9,
+            "netDeg": 0
+          }
+        },
+        "note": "rotation screen ran on an earlier recipe revision that differs only in camera; twist is camera independent"
+      },
+      "notes": "bear crawl leg thread-through on mat; forearm/foot range flags come from the large thread-through rotation.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect",
+        "left/right forearm and foot range flags: skin check"
+      ]
+    },
+    {
+      "stableId": "obliques-B",
+      "status": "remote-keyframe-reviewed",
+      "spec": "drill-anim/specs/obliques-B.js",
+      "specSha256Lf": "b6c695dad3ab8aa15d1e4f727a923be34455c99c7ebfac70f4cdfa12007f75a0",
+      "recipe": "catalog/production/remaining219-r1/recipes/obliques-B.json",
+      "recipeSha256Lf": "6ac1da29c6fa254aec2c1886b8f69378f9e2c0a3c5d9923f3635b27cde36be8a",
+      "keyframes": {
+        "attempt": "obliques-B-a01",
+        "times": [
+          1,
+          3,
+          5,
+          7
+        ],
+        "size": 256,
+        "recipeSha256": "6ac1da29c6fa254aec2c1886b8f69378f9e2c0a3c5d9923f3635b27cde36be8a",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "f72ebe2331538461b8efe3281c77ae7b1f3cc2abede14ec44bc829d5db1b5cfb",
+          "keyframe-01.png": "5348138ca85b726da6cc7c5eed978b09b0c9e07948abd0c901dd4dd4eaee3251",
+          "keyframe-02.png": "8f61a0c81f758d076c60a3276a83c35eb62e620f81a1c346158f3b31e3128e93",
+          "keyframe-03.png": "ccf537cbe3a7ea2a794e694b89886e7bca6097c10fdb6a8b53656d7d30530869"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "7429c2b2fc3cca6d121c9d2d02e84519ad812025118a58ce890ba0a8b83e5022",
+        "samples": 121,
+        "flagged": [],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 38.4,
+            "maxStepDeg": 7.0,
+            "netDeg": 0
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 28.2,
+            "maxStepDeg": 6.3,
+            "netDeg": 0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          }
+        },
+        "note": "rotation screen ran on an earlier recipe revision that differs only in camera; twist is camera independent"
+      },
+      "notes": "band anti-rotation (Pallof) press from post, front view.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect"
+      ]
+    },
+    {
+      "stableId": "obliques-C",
+      "status": "remote-keyframe-reviewed",
+      "spec": "drill-anim/specs/obliques-C.js",
+      "specSha256Lf": "738934860c4afae6cbdcb8ee1641d7c928eb6d972f376d54015c14ca311a0d17",
+      "recipe": "catalog/production/remaining219-r1/recipes/obliques-C.json",
+      "recipeSha256Lf": "45b2fc2c5b6434ce57241939da5eca8722ee752acf554aa7c5411b0c5e7a0fa9",
+      "keyframes": {
+        "attempt": "obliques-C-a01",
+        "times": [
+          1,
+          3,
+          5,
+          7
+        ],
+        "size": 256,
+        "recipeSha256": "45b2fc2c5b6434ce57241939da5eca8722ee752acf554aa7c5411b0c5e7a0fa9",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "c546b799cb72842dbdbce8a7b75e728a43d9d26c2647ca2a46504f8b6c5feb0c",
+          "keyframe-01.png": "e8d98a754336dceb9aa1cfadbe02ba44baf0e1be402019951e74aa3638d801b8",
+          "keyframe-02.png": "8b0e35777b97245018effd9e13975e178b4cfd00804f21c7f99656ec6320ed3d",
+          "keyframe-03.png": "2a85f4592f3fdd8f450ff20d3e153156e9a736affb79a41f1e9778a9a3db40b0"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "eb2ef5fa7c3b338038037d3e730b88c761a103bc44504aa4acbea7c444fff300",
+        "samples": 121,
+        "flagged": [
+          {
+            "channel": "right.forearm|upperArm",
+            "flags": [
+              "twist-range"
+            ],
+            "rangeDeg": 126.2,
+            "maxStepDeg": 11.9,
+            "netDeg": 0,
+            "worstAt": 4.7333
+          }
+        ],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 71.0,
+            "maxStepDeg": 8.1,
+            "netDeg": 0
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 40.4,
+            "maxStepDeg": 4.2,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 126.2,
+            "maxStepDeg": 11.9,
+            "netDeg": 0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 17.9,
+            "maxStepDeg": 2.9,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 35,
+            "maxStepDeg": 3.0,
+            "netDeg": 0
+          }
+        },
+        "note": "rotation screen ran on an earlier recipe revision that differs only in camera; twist is camera independent"
+      },
+      "notes": "high-to-low cable woodchop; stack in frame after wider pad; chop arc small in sampled frames.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect",
+        "right forearm range flag",
+        "chop arc amplitude in sampled frames"
+      ]
+    },
+    {
+      "stableId": "quadriceps-A",
+      "status": "remote-keyframe-reviewed",
+      "spec": "drill-anim/specs/quadriceps-A.js",
+      "specSha256Lf": "d292acbb310fc9f8d57eedd4461b9231c87a8c764ba9b932306ddc766cce6d6d",
+      "recipe": "catalog/production/remaining219-r1/recipes/quadriceps-A.json",
+      "recipeSha256Lf": "16084fae7f9d19df51b8377b3ab52d4ba8d9d429fd507b09419615352aa055cb",
+      "keyframes": {
+        "attempt": "quadriceps-A-a02",
+        "times": [
+          1,
+          3,
+          5,
+          7
+        ],
+        "size": 256,
+        "recipeSha256": "16084fae7f9d19df51b8377b3ab52d4ba8d9d429fd507b09419615352aa055cb",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "7b1ba37c7785f721ccd17ad45ea48b67e8b3f19300ed0079e9e1fb9704bb6f9f",
+          "keyframe-01.png": "4a3785d0f78b3847d65081e040e60fe5d5f57b9b93e44864cc2b43f96e7b386f",
+          "keyframe-02.png": "7b1ba37c7785f721ccd17ad45ea48b67e8b3f19300ed0079e9e1fb9704bb6f9f",
+          "keyframe-03.png": "4a3785d0f78b3847d65081e040e60fe5d5f57b9b93e44864cc2b43f96e7b386f"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [
+        "quadriceps-A-a01 (too close: mat cut, head at top edge)"
+      ],
+      "rotation": {
+        "recipeSha256": "2844bc615b7b6cb7738f7ad04867f2f6eb8eb41ec75d184ef3db452797766400",
+        "samples": 121,
+        "flagged": [],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 63.7,
+            "maxStepDeg": 5.9,
+            "netDeg": -0.1
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 6.5,
+            "maxStepDeg": 0.6,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 86.1,
+            "maxStepDeg": 7.9,
+            "netDeg": -3.5
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 6.5,
+            "maxStepDeg": 0.6,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          }
+        },
+        "note": "rotation screen ran on an earlier recipe revision that differs only in camera; twist is camera independent"
+      },
+      "notes": "kneeling reverse Nordic, arms crossed; fixed camera widened to an oblique side view; lean-back is subtle.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect",
+        "lean-back amplitude small"
+      ]
+    }
+  ]
+}

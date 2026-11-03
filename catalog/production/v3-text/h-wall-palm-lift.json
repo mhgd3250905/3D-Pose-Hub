@@ -1,0 +1,132 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "h-wall-palm-lift",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/h-wall-palm-lift-rr5.js"
+ ],
+ "name": {
+  "zh": "指尖贴墙抬掌根",
+  "en": "Wall Fingertip Palm Lift"
+ },
+ "purpose": {
+  "zh": "检查指尖撑墙时，掌根能不能稳稳抬起",
+  "en": "Check how well you can lift the heel of your hand with your fingertips on the wall."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "指尖贴墙不动，慢慢抬起掌根",
+    "en": "Keep your fingertips on the wall and slowly lift the heel of your hand"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "面向墙站稳，手臂放松，不耸肩。",
+    "en": "Stand facing the wall, arm relaxed, shoulders down."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "抬到能控制的高度，停约 3 秒再放回。",
+    "en": "Lift as high as you can control, hold about three seconds, then lower."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "指尖在墙上滑动或离开墙",
+   "en": "Letting the fingertips slide or leave the wall."
+  },
+  {
+   "zh": "用身体前倾代替手腕发力",
+   "en": "Leaning in instead of moving the wrist."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "手腕或手指疼时减小幅度，仍痛就停止",
+   "en": "If your wrist or fingers hurt, reduce the range, and stop if it still hurts."
+  }
+ ],
+ "tags": {
+  "category": "assessment",
+  "activeMuscles": [
+   "forearms"
+  ],
+  "synergistMuscles": [],
+  "equipment": [
+   "wall"
+  ],
+  "position": "standing",
+  "difficulty": 1
+ },
+ "unilateral": true,
+ "startingSide": "right",
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 1,
+  "reps": 5,
+  "restSeconds": 15
+ },
+ "phases": {
+  "start": {
+   "zh": "抬起掌根",
+   "en": "Lift"
+  },
+  "peak": {
+   "zh": "停住",
+   "en": "Hold"
+  },
+  "end": {
+   "zh": "慢慢放回",
+   "en": "Lower"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 3.8,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 1.3,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.9
+   }
+  ],
+  "perSide": "each-side-separately",
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画 8 秒 1 次「抬起-停约 3.8 s-放回」在重复，剂量从 1 组 3 秒保持改为 1 组×5 次/侧（rep_hold）",
+    "名字「…诊断」太长且书面，改「指尖贴墙抬掌根」；英文同步",
+    "口令英文缩短",
+    "保留计次（每次抬起停约 3 秒，原「保持 3 秒」写进 cue）；口令只描述抬起-停-放回",
+    "最终口径：按真实做法定（2026-11-01）",
+    "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除"
+   ],
+   "flags": []
+  }
+ }
+}

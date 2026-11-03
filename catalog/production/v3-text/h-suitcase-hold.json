@@ -1,0 +1,114 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "h-suitcase-hold",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/h-suitcase-hold.js"
+ ],
+ "name": {
+  "zh": "单手提哑铃站立",
+  "en": "Single-Arm Suitcase Hold"
+ },
+ "purpose": {
+  "zh": "练身体侧面，单手提重物时身体不歪",
+  "en": "Build the sides of your trunk so you stay upright carrying weight in one hand."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "一手提哑铃站直，身体不往任何一边歪",
+    "en": "Hold a dumbbell in one hand and stand tall without leaning"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "两边肩膀一样高，正常呼吸。",
+    "en": "Keep your shoulders level and breathe normally."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "时间到后慢慢放下，换手再做。",
+    "en": "Set it down slowly, then switch hands."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "身体往哑铃一侧歪",
+   "en": "Leaning toward the weight."
+  },
+  {
+   "zh": "提哑铃的肩膀耸起",
+   "en": "Shrugging the loaded shoulder."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "腰或肩膀疼时停止，换轻一点的哑铃",
+   "en": "If your back or shoulder hurts, stop and use a lighter dumbbell."
+  }
+ ],
+ "tags": {
+  "category": "stability",
+  "activeMuscles": [
+   "obliques",
+   "core"
+  ],
+  "synergistMuscles": [
+   "forearms",
+   "upper-back"
+  ],
+  "equipment": [
+   "dumbbell"
+  ],
+  "position": "standing",
+  "difficulty": 1
+ },
+ "unilateral": true,
+ "startingSide": "right",
+ "defaultDose": {
+  "mode": "time",
+  "sets": 3,
+  "seconds": 30,
+  "restSeconds": 30
+ },
+ "phases": {
+  "start": {
+   "zh": "提起站直",
+   "en": "Lift and stand"
+  },
+  "peak": {
+   "zh": "保持住",
+   "en": "Hold"
+  },
+  "end": {
+   "zh": "慢慢放下",
+   "en": "Set it down"
+  }
+ },
+ "training": {
+  "kind": "hold",
+  "leadSeconds": 1,
+  "perSide": "each-side-separately",
+  "source": "timer"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画全程静止 → kind hold（App 计时），每侧 30 秒；dose mode hold→time",
+    "名字「静态提握抗侧屈」是术语，改「单手提哑铃站立」",
+    "purpose 去掉「侧腹」以外的书面语；caution 改「X 时 Y」",
+    "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除",
+    "最终口径：按真实做法定（2026-11-01）"
+   ],
+   "flags": []
+  }
+ }
+}

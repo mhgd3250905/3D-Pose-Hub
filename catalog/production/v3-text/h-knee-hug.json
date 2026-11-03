@@ -1,0 +1,123 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "h-knee-hug",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/h-knee-hug-r3.js",
+  "drill-anim/specs/h-knee-hug-r2.js",
+  "drill-anim/specs/h-knee-hug.js"
+ ],
+ "name": {
+  "zh": "仰卧抱膝",
+  "en": "Lying Knees-to-Chest"
+ },
+ "purpose": {
+  "zh": "放松下背和臀部",
+  "en": "Relax your lower back and glutes."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "双手抱住膝盖，轻轻拉向胸口",
+    "en": "Hug your knees and gently pull them toward your chest"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "头和肩放松贴地。",
+    "en": "Keep your head and shoulders relaxed on the floor."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "停住不动，慢慢呼吸。",
+    "en": "Stay still and breathe slowly."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "每次呼气再放松一点，别来回颠。",
+    "en": "Each time you breathe out, relax a little deeper. No bouncing."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "用力猛拉",
+   "en": "Yanking your knees in."
+  },
+  {
+   "zh": "憋气",
+   "en": "Holding your breath."
+  },
+  {
+   "zh": "来回颠着往下压",
+   "en": "Bouncing to go deeper."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "出现疼痛时放松，只拉到舒服的程度",
+   "en": "If anything hurts, ease off and stretch only to a comfortable point."
+  }
+ ],
+ "tags": {
+  "category": "stretch",
+  "activeMuscles": [
+   "lower-back",
+   "glutes"
+  ],
+  "synergistMuscles": [],
+  "equipment": [
+   "mat"
+  ],
+  "position": "supine",
+  "difficulty": 1
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "time",
+  "sets": 2,
+  "seconds": 30,
+  "restSeconds": 15
+ },
+ "phases": {
+  "start": {
+   "zh": "抱膝贴胸",
+   "en": "Hug them in"
+  },
+  "peak": {
+   "zh": "保持，慢慢呼气",
+   "en": "Hold and breathe out"
+  },
+  "end": {
+   "zh": "呼气再放松",
+   "en": "Relax a bit deeper"
+  }
+ },
+ "training": {
+  "kind": "hold",
+  "leadSeconds": 1,
+  "source": "user-decision static-hold r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画是 8 秒 2 次「呼气抱紧-停 1.3 s-吸气放松」在重复，剂量从 40 秒计时改为 2 组×8 次（rep_hold），dose mode time→reps",
+    "英文名 Supine 改 Lying；结束口令按 0.7 s 缩为「放松」",
+    "按用户决定改为静态保持计时，动画只作示意：30 秒×2 组，休息 15 秒；口令和要点改成进入—保持—呼气放松",
+    "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除",
+    "最终口径：按真实做法定（2026-11-01）"
+   ],
+   "flags": []
+  }
+ }
+}

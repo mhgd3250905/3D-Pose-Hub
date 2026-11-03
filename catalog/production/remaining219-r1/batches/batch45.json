@@ -1,0 +1,266 @@
+{
+  "format": "pose-hub-remaining219-remote-index@1",
+  "batch": "batch45",
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "environment": {
+    "host": "Hark sandbox aarch64, 2 cores, 7.9 GiB, no GPU",
+    "browser": "Playwright 1.48.2 chromium-1140",
+    "renderer": "software (ANGLE SwiftShader)",
+    "serial": true
+  },
+  "checks": {
+    "keyframes": "tools/action-completion-v3-r2/remote-keyframes-r1.mjs, 256/320px, 3-6 frames",
+    "rotation": "tools/action-completion-v3-r2/remote-rotation-r1.mjs, 15Hz sequential solve, axial twist of forearm|upperArm, hand|forearm, foot|shin (range>120, step>25, net>150 deg flagged)"
+  },
+  "sampledOnly": true,
+  "fullCycleValidated": false,
+  "userAccepted": false,
+  "releaseEligible": false,
+  "items": [
+    {
+      "stableId": "w-fire-hydrant",
+      "status": "remote-keyframe-reviewed",
+      "spec": "drill-anim/specs/w-fire-hydrant.js",
+      "specSha256Lf": "6b53673cd7026ac41ae02db04ee054c3da4f0090582c9b516b9cfef11c219d9f",
+      "recipe": "catalog/production/remaining219-r1/recipes/w-fire-hydrant.json",
+      "recipeSha256Lf": "d453cfbeeba5d8c580aeee70cef04625160b13dace3a72463dae6e4ba4831933",
+      "keyframes": {
+        "attempt": "w-fire-hydrant-a01",
+        "times": [
+          0.2,
+          1.9,
+          4,
+          5.9
+        ],
+        "size": 256,
+        "recipeSha256": "d453cfbeeba5d8c580aeee70cef04625160b13dace3a72463dae6e4ba4831933",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "f8aa088e4ef3549399b0af2eaef882c1c77cb1cdecfaae82a7497fce1ce90d38",
+          "keyframe-01.png": "8e98af7c67dfe27d7981e7f0bf22a1f1b8c235153d623352db54ba29dfe876d8",
+          "keyframe-02.png": "d0218613cbd64e31e0a7201eb70261dad09371cbeb3373e1ae21129ab47e3b5d",
+          "keyframe-03.png": "8e98af7c67dfe27d7981e7f0bf22a1f1b8c235153d623352db54ba29dfe876d8"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "30b4de6aa71090d883a95a7b959ba8b2e40cbd87e0bb6b1f8587b3c9b53c3da6",
+        "samples": 121,
+        "flagged": [],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 28.0,
+            "maxStepDeg": 2.9,
+            "netDeg": 0
+          }
+        },
+        "note": "rotation screen ran on an earlier recipe revision that differs only in camera; twist is camera independent"
+      },
+      "notes": "quadruped fire hydrant from rear-high fixed camera; hip abduction visible; mat extends far behind.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect",
+        "camera: high rear angle, mat dominates"
+      ]
+    },
+    {
+      "stableId": "w-prone-swimmer",
+      "status": "remote-keyframe-reviewed",
+      "spec": "drill-anim/specs/w-prone-swimmer-r2.js",
+      "specSha256Lf": "fafbf91af452f728231b97705a4af61649e67cd1ea630c47ce2a7b84cd5bfca9",
+      "recipe": "catalog/production/remaining219-r1/recipes/w-prone-swimmer.json",
+      "recipeSha256Lf": "28bf92e86b86c912ebcaadf0530d0b033cb754cd9ebab4d448f1953cc6a54663",
+      "keyframes": {
+        "attempt": "w-prone-swimmer-a01",
+        "times": [
+          1.75,
+          3.75,
+          5.75
+        ],
+        "size": 256,
+        "recipeSha256": "28bf92e86b86c912ebcaadf0530d0b033cb754cd9ebab4d448f1953cc6a54663",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "bcdd9da376f57ee84f40a7fc44fcc05cd6a6fe6c398a7a87a13f60304351e919",
+          "keyframe-01.png": "136a429171a9cc013a540727d11341eeb6e21dfc9685c4a0757fc18b1d534222",
+          "keyframe-02.png": "bcdd9da376f57ee84f40a7fc44fcc05cd6a6fe6c398a7a87a13f60304351e919"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "e0a382207cd3ada919d39991de06c8f1b4ce8a583fcaaccc6cb357b63410ac6e",
+        "samples": 121,
+        "flagged": [
+          {
+            "channel": "left.hand|forearm",
+            "flags": [
+              "twist-range",
+              "twist-step"
+            ],
+            "rangeDeg": 197.6,
+            "maxStepDeg": 68.3,
+            "netDeg": 0,
+            "worstAt": 2.2
+          },
+          {
+            "channel": "right.hand|forearm",
+            "flags": [
+              "twist-range",
+              "twist-step"
+            ],
+            "rangeDeg": 197.6,
+            "maxStepDeg": 68.3,
+            "netDeg": 0,
+            "worstAt": 2.2
+          }
+        ],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 119.9,
+            "maxStepDeg": 8.1,
+            "netDeg": 0
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 197.6,
+            "maxStepDeg": 68.3,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 119.9,
+            "maxStepDeg": 8.1,
+            "netDeg": 0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 197.6,
+            "maxStepDeg": 68.3,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          }
+        },
+        "note": "rotation screen ran on an earlier recipe revision that differs only in camera; twist is camera independent"
+      },
+      "notes": "prone swimmer arm sweep; hand range/step flags from the sweep.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect",
+        "left/right hand twist flags: skin check"
+      ]
+    },
+    {
+      "stableId": "w-wall-sit",
+      "status": "remote-keyframe-reviewed",
+      "spec": "drill-anim/specs/w-wall-sit.js",
+      "specSha256Lf": "d9e8e0a3ffad2b701c1b7758028f71561e4b65620a03324bc29bd4c111c775fa",
+      "recipe": "catalog/production/remaining219-r1/recipes/w-wall-sit.json",
+      "recipeSha256Lf": "30827fc0c042b312365092418c77749429d427bd6be4e2648e109e72404ef3b6",
+      "keyframes": {
+        "attempt": "w-wall-sit-a01",
+        "times": [
+          1,
+          3,
+          5,
+          7
+        ],
+        "size": 256,
+        "recipeSha256": "30827fc0c042b312365092418c77749429d427bd6be4e2648e109e72404ef3b6",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "pngSha256": {
+          "keyframe-00.png": "d35b50e26ad349e61b01ec0aebfcb88d1771ca67ca771155280c3782f4386778",
+          "keyframe-01.png": "00863bf8abf12436c4c15cecf5074620b462c19fd9d31e7cc5c54c770dbaea46",
+          "keyframe-02.png": "d35b50e26ad349e61b01ec0aebfcb88d1771ca67ca771155280c3782f4386778",
+          "keyframe-03.png": "00863bf8abf12436c4c15cecf5074620b462c19fd9d31e7cc5c54c770dbaea46"
+        }
+      },
+      "diagnostics": [],
+      "supersededAttempts": [],
+      "rotation": {
+        "recipeSha256": "b42a42062b7d991dddca4a58d7eefa741f8609319053ea2ac8cbb30abf7b8b2f",
+        "samples": 121,
+        "flagged": [],
+        "channels": {
+          "left.forearm|upperArm": {
+            "rangeDeg": 0.1,
+            "maxStepDeg": 0.0,
+            "netDeg": 0
+          },
+          "left.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "left.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.forearm|upperArm": {
+            "rangeDeg": 0.1,
+            "maxStepDeg": 0.0,
+            "netDeg": 0
+          },
+          "right.hand|forearm": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          },
+          "right.foot|shin": {
+            "rangeDeg": 0,
+            "maxStepDeg": 0,
+            "netDeg": 0
+          }
+        },
+        "note": "rotation screen ran on an earlier recipe revision that differs only in camera; twist is camera independent"
+      },
+      "notes": "wall sit hold, arms forward; static.",
+      "pendingLocalChecks": [
+        "full low-res cycle",
+        "30Hz rotation path and skin twist",
+        "contact surfaces",
+        "whole-cycle content rect"
+      ]
+    }
+  ]
+}

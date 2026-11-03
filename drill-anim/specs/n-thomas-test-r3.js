@@ -1,0 +1,70 @@
+// n-thomas-test r3 (2026-10-30): both hands hug the left knee; grip moved below the knee to stop finger/knee clipping.
+// n-thomas-test 仰卧单膝抱胸（托马斯测试演示） (supine single knee-to-chest, floor Thomas test) · N HipLab 开胯 MVP 新增.
+// Lying on the back. The left hand draws the LEFT knee toward the chest (palm on the outer shin just below the knee) while the RIGHT leg stays long and relaxed on the mat; the right arm rests long on the mat, palm down. On the exhale the knee comes a little closer and
+// the pelvis tucks slightly; the long leg should stay on the floor (if the right thigh lifts, the right hip flexors are short:
+// HipLab self-test 3). On the inhale the grip eases. 2 breaths / 8 s. Also a relaxing stretch for the front of the right hip.
+// Head points -X, face up (+Y), body left = -Z (frame of h-knee-hug). No solver: the pelvis curls about the waist joint, the
+// long leg is counter-extended at the hip by the same angle so it stays on the mat. TIGHT(t) (0 here) lifts the long leg for the
+// A/B/C stills of the self-test (a-thomas).
+import { build, keys, sg, r4, DEG, norm } from '../lib/home-anim.mjs';
+import { leg } from '../lib/ss-geo.mjs';
+const DUR = 8;
+const p = keys([[0, 0], [0.4, 0], [2.2, 1], [2.9, 1], [4.0, 0.0], [4.4, 0], [6.2, 1], [6.9, 1]], DUR);   // 0 = eased, 1 = hugged in
+const TIGHT = t => 0;   // 0 = long leg flat, 1 = thigh lifted / knee bent (stills only)
+const F = t => 134 + 5 * p(t), K = t => 135 + 5 * p(t), TH = t => 6 + 6 * p(t), ABD = -2;   // r3: knee nearer chest and midline so both hands reach
+const W0 = [-0.141, 0.123], P0 = [0.0, 0.122];
+const pelvis = t => { const a = TH(t) * DEG, rx = P0[0] - W0[0], ry = P0[1] - W0[1];
+  return r4([W0[0] + rx * Math.cos(a) - ry * Math.sin(a), W0[1] + rx * Math.sin(a) + ry * Math.cos(a), 0]); };
+const L3 = t => leg('left', F(t), K(t), [[[0, 0, 1], ABD]]);
+const LR = t => leg('right', -TH(t) - 2.5 + 26 * TIGHT(t), 3 + 42 * TIGHT(t));
+const sub3 = (a, b) => a.map((x, i) => x - b[i]), cr = (a, b) => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
+// palms on the top of the left shin (left hand tipped outward, right hand tipped inward), fingers wrapping round it
+const D_GRIP = 0.06, R_GRIP = 0.078, W_GRIP = 1.0;   // r3: grip moved further down the shin and off its surface so fingers clear the knee
+const handGeo = (s, t) => { const L = L3(t), ds = norm(sub3(L.ankle, L.knee)), n = norm(cr(sub3(L.knee, L.hip), ds));
+  let an = norm(cr(ds, n)); const g = (F(t) - K(t)) * DEG; if (an[1] * Math.sin(g) + an[2] * Math.cos(g) < 0) an = an.map(x => -x);
+  const out = norm(cr(an, ds)).map(x => x * Math.sign(cr(an, ds)[0] * sg('left') || 1));   // away from the midline (left side)
+  const lat = s === 'left' ? out : out.map(x => -x), d = D_GRIP, w = W_GRIP;
+  const sq = norm(an.map((a, i) => a * 0.85 + lat[i] * w));
+  const c = Math.cos(40 * DEG), si = Math.sin(40 * DEG);
+  return { palm: r4(L.knee.map((k, i) => k + ds[i] * d + sq[i] * R_GRIP)), normal: r4(sq.map(x => -x)),
+    finger: r4(norm(ds.map((dd, i) => dd * c - lat[i] * si))) }; };
+const handHug = s => ({ mode: 'free', frame: 'hips', palmAt: t => handGeo(s, t).palm, finger: t => handGeo(s, t).finger, normal: t => handGeo(s, t).normal,
+  poleLow: [sg(s) * 0.7, 1.05, 0.15], relax: 0.5 });
+const P = build(DUR, {
+  pelvis,
+  hips: { up: [-1, 0, 0], front: [0, 1, 0], rot: [[[0, 0, 1], TH]] },
+  chest: { waist: [[[0, 0, 1], t => -TH(t)]] },
+  hands: { left: handHug('left'),
+    // r3: both hands hug the left knee (user 2026-10-30)
+    right: handHug('right') },
+  feet: {
+    left: { mode: 'free', frame: 'hips', ankle: t => L3(t).ankle, rot: [[[0, 0, 1], t => -(8 - (F(t) - K(t))) - TH(t) + 22]],
+      poleLow: t => { const L = L3(t); return r4(L.knee.map((k, i) => k + 1.5 * (k - (L.hip[i] + L.ankle[i]) / 2))); } },   // r3: pole in the leg plane so the drawn knee matches the grip geometry
+    right: { mode: 'free', frame: 'hips', ankle: t => LR(t).ankle, rot: [[[0, 0, 1], t => -TH(t) - 2.5 + 3]],
+      poleLow: t => { const L = LR(t); return r4([L.knee[0] - 0.05, L.knee[1], L.knee[2] + 0.5]); } },
+  },
+  constraints: [],
+  solve: { vars: [], reg: {} },
+}, { hug: p });
+export default {
+  id: 'n-thomas-test-r3', name: '仰卧单膝抱胸（托马斯测试）', nameEn: 'Supine Single Knee-to-Chest (Thomas Test)',
+  modelProfile: 'training-human-v2plus', fps: 30, size: 1080,
+  v2plus: { outfit: 'compression', torso: 'base', limbs: 'base', hands: 'base', skin: 'realistic' }, alignClavicles: false,
+  timeline: { duration: DUR, tracks: P.tracks },
+  pose: { base: P.base, deltas: P.deltas },
+  highlight: { groups: ['hip-flexors'], side: 'right', pulseTrack: 'hug', pulseBase: 0.35 },
+  camera: { dir: [0.1, 0.35, 1], fit: ['head', 'leftToe', 'rightToe', 'pelvis', 'leftPalm', 'rightPalm', 'leftKnee', 'rightKnee'], pad: 0.12, k: 0.8, drift: 3, at: 2.5, fitTimeline: true },
+  frame: { mode: 'fit', width: 800, height: 600, cx: 512, cy: 580 },
+  stillAt: 2.5,
+  shadow: { joints: ['pelvis', 'waist', 'shoulderCenter', 'head', 'rightKnee', 'rightAnkle'],
+    blobs: [{ j: 'pelvis', rx: 80, ry: 14, a: 0.6 }, { j: 'waist', rx: 70, ry: 13, a: 0.5 }, { j: 'shoulderCenter', rx: 85, ry: 14, a: 0.55 }, { j: 'head', rx: 50, ry: 12, a: 0.45 },
+      { j: 'rightKnee', rx: 45, ry: 10, a: 0.45, fade: [0.06, 0.2] }, { j: 'rightAnkle', rx: 40, ry: 10, a: 0.45, fade: [0.06, 0.2] }],
+    bands: [{ from: 'shoulderCenter', to: 'waist', mid: 'waist', rx: 70, ry: 13, a: 0.3, dy: 4, sag: 0.3 }] },
+  props: [{ type: 'mat', at: [0.1, 0, 0], size: [1.83, 0.61, 0.006] }],
+  keyFrames: [0.2, 2.5, 3.6],
+  qa: {
+    pins: [],
+    straight: [{ j: 'knee.right', min: 168 }],
+    allowContact: ['handL|shinL', 'thighL|torso', 'forearmL|thighL', 'forearmL|shinL', 'handL|thighL', 'handR|torso', 'forearmR|torso', 'handR|shinL', 'forearmR|thighL', 'forearmR|shinL', 'handR|thighL', 'handL|handR'],
+  },
+};

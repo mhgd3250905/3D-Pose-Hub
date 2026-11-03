@@ -1,0 +1,144 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "o-supported-march",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/o-supported-march.js"
+ ],
+ "name": {
+  "zh": "扶椅站姿交替抬膝",
+  "en": "Chair-Supported Alternating March"
+ },
+ "purpose": {
+  "zh": "扶着椅子练平衡和抬腿力量",
+  "en": "Practise balance and leg-lifting strength with chair support."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "身体站直，两条腿轮流慢慢抬膝",
+    "en": "Stand tall and slowly lift one knee, then the other"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "一只手扶稳椅背，另一只手自然放松。",
+    "en": "Hold the chair back with one hand and relax the other arm."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "膝盖抬到舒服的高度，再慢慢放下。",
+    "en": "Lift to a comfortable height, then lower slowly."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "两边各做一次算 1 次。",
+    "en": "One on each side counts as one rep."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "身体后仰或歪向一边",
+   "en": "Leaning back or to the side."
+  },
+  {
+   "zh": "脚重重落地",
+   "en": "Stamping the foot down."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "用不带轮子的稳固椅子，站不稳就停",
+   "en": "Use a sturdy chair without wheels, and stop if you feel unsteady."
+  }
+ ],
+ "tags": {
+  "category": "balance",
+  "activeMuscles": [
+   "hip-flexors"
+  ],
+  "synergistMuscles": [
+   "core",
+   "glutes"
+  ],
+  "equipment": [
+   "chair"
+  ],
+  "position": "standing",
+  "difficulty": 1
+ },
+ "unilateral": true,
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 2,
+  "reps": 10,
+  "restSeconds": 30
+ },
+ "phases": {
+  "start": {
+   "zh": "抬膝",
+   "en": "Knee up"
+  },
+  "peak": {
+   "zh": "停住",
+   "en": "Hold"
+  },
+  "end": {
+   "zh": "慢慢放下",
+   "en": "Lower slowly"
+  }
+ },
+ "training": {
+  "kind": "rep_alternate",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.1,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 1.1,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 1.2,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 0.6
+   }
+  ],
+  "perSide": "alternate",
+  "repUnit": "left+right",
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画只有左手扶椅，cue「双手扶稳」改「一只手扶稳」",
+    "purpose「屈髋」改「抬腿力量」",
+    "两腿轮流抬，节奏 rep_alternate（每侧一下算一次）",
+    "口令「Lower」→「Lower slowly」与中文一致",
+    "轮流计数口径：一左一右算 1 次，剂量为每侧 N 次（reps=N），training.phases 描述一侧的一下，repUnit=left+right；startingSide=先动的一侧（right）",
+    "最终口径：按真实做法定（2026-11-01）"
+   ],
+   "flags": []
+  }
+ },
+ "startingSide": "right"
+}

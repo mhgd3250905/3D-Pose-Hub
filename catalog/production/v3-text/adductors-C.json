@@ -1,0 +1,132 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "adductors-C",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/data/drills.json",
+  "drill-anim/specs/adductors-C.js"
+ ],
+ "name": {
+  "zh": "绳索站姿髋内收",
+  "en": "Standing Cable Hip Adduction"
+ },
+ "purpose": {
+  "zh": "练大腿内侧，让髋部更好控制",
+  "en": "Build your inner thigh and better hip control."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "腿伸直，往里扫到支撑腿前面",
+    "en": "Keep the leg straight and sweep it in front of the standing leg"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "侧对器械站，靠近器械的脚踝套上绑带。",
+    "en": "Stand side-on to the machine with the strap on the near ankle."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "骨盆放平，慢慢放回外侧。",
+    "en": "Keep your hips level and let the leg back out slowly."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "上身往一边歪来带腿",
+   "en": "Leaning the upper body to move the leg."
+  },
+  {
+   "zh": "放回时被绳子拉回去",
+   "en": "Letting the cable yank the leg back out."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "疼时缩小幅度，还疼就停",
+   "en": "If it hurts, make the move smaller, and stop if it still hurts."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "adductors"
+  ],
+  "synergistMuscles": [
+   "core"
+  ],
+  "equipment": [
+   "cable-machine",
+   "ankle-strap"
+  ],
+  "position": "standing",
+  "difficulty": 1
+ },
+ "unilateral": true,
+ "startingSide": "left",
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 3,
+  "reps": 12,
+  "restSeconds": 45
+ },
+ "phases": {
+  "start": {
+   "zh": "拉进来",
+   "en": "Pull in"
+  },
+  "peak": {
+   "zh": "停一下",
+   "en": "Pause"
+  },
+  "end": {
+   "zh": "放回去",
+   "en": "Ease out"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.7,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 1.3,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.7,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.3
+   }
+  ],
+  "perSide": "each-side-separately",
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "主口令去掉「中线」，按动画说成「往里扫到支撑腿前面」",
+    "口令按 0.7 s 相位缩到 3 字；补一条常见错误（放回失控）；caution 改短句"
+   ],
+   "flags": []
+  }
+ }
+}

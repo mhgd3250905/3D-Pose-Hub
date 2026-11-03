@@ -1,0 +1,124 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "h-doorframe-forearms-pec-native-r3",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/h-doorframe-forearms-pec-native-r3.js"
+ ],
+ "name": {
+  "zh": "门框双前臂胸部拉伸",
+  "en": "Doorframe Forearm Chest Stretch"
+ },
+ "purpose": {
+  "zh": "拉伸胸口和肩膀前侧",
+  "en": "Stretch your chest and the fronts of your shoulders."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "双前臂贴住门框，身体慢慢往前穿过门口",
+    "en": "Forearms on the doorframe, slowly lean through the doorway"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "前后脚站稳，脚不动。",
+    "en": "Keep your feet planted in a split stance."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "停住不动，慢慢呼吸。",
+    "en": "Stay still and breathe slowly."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "每次呼气再放松一点，别来回颠。",
+    "en": "Each time you breathe out, relax a little deeper. No bouncing."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "腰往前挺代替打开胸口",
+   "en": "Pushing your belly forward instead of opening your chest."
+  },
+  {
+   "zh": "憋气",
+   "en": "Holding your breath."
+  },
+  {
+   "zh": "来回颠着往下压",
+   "en": "Bouncing to go deeper."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "出现疼痛时放松，只拉到舒服的程度",
+   "en": "If anything hurts, ease off and stretch only to a comfortable point."
+  },
+  {
+   "zh": "肩前侧夹着疼时，缩小幅度或换简单版本",
+   "en": "If the front of your shoulder pinches, reduce the range or switch to an easier version."
+  }
+ ],
+ "tags": {
+  "category": "stretch",
+  "activeMuscles": [
+   "chest"
+  ],
+  "synergistMuscles": [
+   "deltoids"
+  ],
+  "equipment": [
+   "doorframe"
+  ],
+  "position": "standing",
+  "difficulty": 1
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "time",
+  "sets": 2,
+  "seconds": 30,
+  "restSeconds": 15
+ },
+ "phases": {
+  "start": {
+   "zh": "慢慢往前",
+   "en": "Lean forward"
+  },
+  "peak": {
+   "zh": "保持，慢慢呼气",
+   "en": "Hold and breathe out"
+  },
+  "end": {
+   "zh": "呼气再放松",
+   "en": "Relax a bit deeper"
+  }
+ },
+ "training": {
+  "kind": "hold",
+  "leadSeconds": 1,
+  "source": "user-decision static-hold r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "动画是 8 秒 1 次「前倾-停 3.4 s-回来」在重复，剂量从 30 秒保持改为 2 组×6 次（rep_hold），dose mode hold→reps",
+    "名字「胸肌」改「胸部」；cautions 改「X 时 Y」",
+    "按用户决定改为静态保持计时，动画只作示意：30 秒×2 组，休息 15 秒；口令和要点改成进入—保持—呼气放松"
+   ],
+   "flags": []
+  }
+ }
+}

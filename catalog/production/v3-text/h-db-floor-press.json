@@ -1,0 +1,132 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "h-db-floor-press",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/h-db-floor-press.js"
+ ],
+ "name": {
+  "zh": "哑铃地板卧推",
+  "en": "Dumbbell Floor Press"
+ },
+ "purpose": {
+  "zh": "练胸部和手臂后侧",
+  "en": "Build your chest and the backs of your arms."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "慢慢放到大臂碰地，再推回肩膀上方",
+    "en": "Lower until your upper arms touch the floor, then press up over your shoulders"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "手腕在手肘正上方，大臂和身体斜着约 45 度。",
+    "en": "Keep your wrists over your elbows and your upper arms angled out at about 45 degrees."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "碰地轻停，不要弹起来。",
+    "en": "Pause lightly at the floor without bouncing."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "手肘往两边张得太开",
+   "en": "Flaring the elbows too wide."
+  },
+  {
+   "zh": "手腕往后折",
+   "en": "Letting the wrists bend back."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "从轻重量开始，疼就停",
+   "en": "Start with a light weight, and stop if you feel pain."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "chest",
+   "triceps"
+  ],
+  "synergistMuscles": [
+   "deltoids"
+  ],
+  "equipment": [
+   "dumbbell",
+   "mat"
+  ],
+  "position": "supine",
+  "difficulty": 1
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 3,
+  "reps": 10,
+  "restSeconds": 60
+ },
+ "phases": {
+  "start": {
+   "zh": "慢慢放下",
+   "en": "Lower slowly"
+  },
+  "peak": {
+   "zh": "轻停",
+   "en": "Pause"
+  },
+  "end": {
+   "zh": "推起",
+   "en": "Press up"
+  }
+ },
+ "training": {
+  "kind": "rep_updown",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.8,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 0.4
+   },
+   {
+    "id": "back",
+    "seconds": 1.3,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 0.5
+   }
+  ],
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "主口令去掉「45°」符号（念不顺），角度移到 cue2",
+    "口令「向上推」缩为「推起」（1.3 s）",
+    "手算相位 rep_updown"
+   ],
+   "flags": [
+    "批表 press 轨从 1（手臂在上）开始，相位方向反了；按 spec 关键帧手算：放下 1.8、底部停 0.4、推回 1.3、顶部 0.5，请确认"
+   ]
+  }
+ }
+}

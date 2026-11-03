@@ -1,0 +1,139 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "serratus-C",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/data/drills.json",
+  "drill-anim/specs/serratus-C-r2.js"
+ ],
+ "name": {
+  "zh": "吊环俯卧撑加推背",
+  "en": "Ring Push-Up Plus"
+ },
+ "purpose": {
+  "zh": "在晃动的吊环上练胸、手臂和肩胛骨的稳定",
+  "en": "Build your chest, arms and shoulder-blade control on unsteady rings."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "推起后再往下推一点，让上背微微拱起",
+    "en": "After you press up, push a little further so your upper back rounds"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "吊环挂低，离地十几厘米，环贴在身体两侧。",
+    "en": "Hang the rings low, about a hand span off the floor, close to your sides."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "身体一条直线，慢慢下去。",
+    "en": "Keep your body in one line and lower slowly."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "吊环往两边散开",
+   "en": "Letting the rings drift out to the sides."
+  },
+  {
+   "zh": "塌腰",
+   "en": "Letting your hips sag."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "肩膀前面夹着疼时，下浅一点或换简单版",
+   "en": "If the front of your shoulder pinches, go less deep or use an easier version."
+  },
+  {
+   "zh": "手腕刺痛或发麻时马上停",
+   "en": "Stop right away if your wrists feel sharp pain or numbness."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "chest",
+   "triceps"
+  ],
+  "synergistMuscles": [
+   "deltoids",
+   "core"
+  ],
+  "equipment": [
+   "gymnastic-rings"
+  ],
+  "position": "plank",
+  "difficulty": 3
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 3,
+  "reps": 6,
+  "restSeconds": 90
+ },
+ "phases": {
+  "start": {
+   "zh": "慢慢下去",
+   "en": "Lower slowly"
+  },
+  "peak": {
+   "zh": "稳住",
+   "en": "Hold"
+  },
+  "end": {
+   "zh": "推起再推背",
+   "en": "Press up, round"
+  }
+ },
+ "training": {
+  "kind": "rep_updown",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.2,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 0.2
+   },
+   {
+    "id": "back",
+    "seconds": 1.5,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.1
+   }
+  ],
+  "source": "spec-timeline manual r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "改名：去掉术语「前伸」→ 吊环俯卧撑加推背（EN 不变）",
+    "节奏按 spec：下 1.2 s / 底 0.2 s / 推起 1.0 s + 推背 0.5 s = back 1.5 s / 顶端停 0.6 s + 放回 0.5 s = rest 1.1 s",
+    "口令顺序改成 下去 → 推起再推背（原 end「稳住」与动画顺序不符）；主口令只留一件事",
+    "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除",
+    "最终口径：按真实做法定（2026-11-01）"
+   ],
+   "flags": [
+    "批表取的是 scap 推背轨（go 0.4/hold 0.7），与俯卧撑整体节奏不符，按 spec 手算；推背后 0.6 s 停顿落在 rest 段、不念口令"
+   ]
+  }
+ }
+}

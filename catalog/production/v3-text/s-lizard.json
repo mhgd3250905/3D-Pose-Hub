@@ -1,0 +1,131 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "s-lizard",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/s-lizard.js"
+ ],
+ "name": {
+  "zh": "蜥蜴式低弓步",
+  "en": "Lizard Lunge"
+ },
+ "purpose": {
+  "zh": "拉伸后腿髋前侧和前腿大腿内侧",
+  "en": "Stretch the front of your back hip and the inner thigh of your front leg."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "髋部慢慢往前往下沉",
+    "en": "Let your hips sink slowly forward and down"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "前脚远远踩在前面，后膝跪地，双手扶砖。",
+    "en": "Plant your front foot far forward, kneel on the back knee, hands on the blocks."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "保持不动，慢慢呼吸，每次呼气再放松一点。",
+    "en": "Stay still, breathe slowly, and relax a little deeper each time you breathe out."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "别来回颠，有拉伸感就够，别拉到疼。",
+    "en": "Do not bounce; a clear stretch is enough, never pain."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "前膝往里扣或远远超过脚尖",
+   "en": "Letting the front knee cave in or drift far past your toes."
+  },
+  {
+   "zh": "耸肩塌背",
+   "en": "Shrugging and sagging your back."
+  },
+  {
+   "zh": "憋气或来回颠",
+   "en": "Holding your breath or bouncing."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "跪地的膝盖下面垫软垫",
+   "en": "Pad under the kneeling knee."
+  },
+  {
+   "zh": "髋或大腿内侧疼时幅度小一点，还疼就停",
+   "en": "If your hip or inner thigh hurts, move less far, and stop if it still hurts."
+  }
+ ],
+ "tags": {
+  "category": "stretch",
+  "activeMuscles": [
+   "hip-flexors",
+   "adductors"
+  ],
+  "synergistMuscles": [
+   "glutes",
+   "quadriceps"
+  ],
+  "equipment": [
+   "yoga-blocks",
+   "mat"
+  ],
+  "position": "half-kneeling",
+  "difficulty": 2
+ },
+ "unilateral": true,
+ "startingSide": "left",
+ "defaultDose": {
+  "mode": "time",
+  "sets": 2,
+  "seconds": 45,
+  "restSeconds": 15
+ },
+ "phases": {
+  "start": {
+   "zh": "髋部下沉",
+   "en": "Sink your hips"
+  },
+  "peak": {
+   "zh": "保持，慢慢呼气",
+   "en": "Hold and breathe out"
+  },
+  "end": {
+   "zh": "呼气再沉点",
+   "en": "Sink a bit deeper"
+  }
+ },
+ "training": {
+  "kind": "hold",
+  "leadSeconds": 1,
+  "perSide": "each-side-separately",
+  "source": "user-decision static-hold r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "剂量 → 每侧 2 组×4 次（rep_hold，stretchLoop）",
+    "purpose「深度」删掉（动画是入门扶砖版）",
+    "口令「保持呼吸」→「停住呼吸」，caution 拆短句",
+    "按用户决定改为静态保持计时，动画只作示意",
+    "剂量 → 每侧 2 组×45 秒，休息 15 秒；口令/要点改为进入-保持-呼气放松，去掉来回/计数描述"
+   ],
+   "flags": []
+  }
+ }
+}

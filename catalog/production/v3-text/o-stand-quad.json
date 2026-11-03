@@ -1,0 +1,126 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "o-stand-quad",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/specs/o-stand-quad.js"
+ ],
+ "name": {
+  "zh": "扶椅站姿大腿前侧拉伸",
+  "en": "Chair-Supported Standing Quad Stretch"
+ },
+ "purpose": {
+  "zh": "拉伸大腿前侧",
+  "en": "Stretch the front of your thigh."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "手抓脚踝，把脚跟拉向臀部",
+    "en": "Hold your ankle and draw your heel toward your glutes"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "单腿站直扶椅，两个膝盖并排。",
+    "en": "Stand tall on one leg holding the chair, knees side by side."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "保持不动，慢慢呼吸，每次呼气再放松一点。",
+    "en": "Stay still, breathe slowly, and relax a little deeper each time you breathe out."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "别来回颠，有拉伸感就够，别拉到疼。",
+    "en": "Do not bounce; a clear stretch is enough, never pain."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "腰往前拱",
+   "en": "Arching the lower back."
+  },
+  {
+   "zh": "膝盖往外或往前跑",
+   "en": "Letting the knee drift out or forward."
+  },
+  {
+   "zh": "憋气或来回颠",
+   "en": "Holding your breath or bouncing."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "膝盖疼时少弯一点，还疼就停",
+   "en": "If your knee hurts, bend it less, and stop if it still hurts."
+  }
+ ],
+ "tags": {
+  "category": "stretch",
+  "activeMuscles": [
+   "quadriceps",
+   "hip-flexors"
+  ],
+  "synergistMuscles": [],
+  "equipment": [
+   "chair"
+  ],
+  "position": "standing",
+  "difficulty": 1
+ },
+ "unilateral": true,
+ "startingSide": "right",
+ "defaultDose": {
+  "mode": "time",
+  "sets": 2,
+  "seconds": 30,
+  "restSeconds": 15
+ },
+ "phases": {
+  "start": {
+   "zh": "拉近脚跟",
+   "en": "Pull the heel in"
+  },
+  "peak": {
+   "zh": "保持，慢慢呼气",
+   "en": "Hold and breathe out"
+  },
+  "end": {
+   "zh": "呼气再放松",
+   "en": "Relax a bit deeper"
+  }
+ },
+ "training": {
+  "kind": "hold",
+  "leadSeconds": 1,
+  "perSide": "each-side-separately",
+  "source": "user-decision static-hold r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "改名「扶椅站姿股四头肌拉伸」→「扶椅站姿大腿前侧拉伸」",
+    "剂量 30 s 保持 → 每侧 2 组×6 次（rep_hold，stretchLoop）",
+    "节奏按 spec 时间轴手算（派生值把 90% 以上都算停顿，和 spec 不符）：拉 1.4/停 3.6/松 1.4/歇 1.6 s",
+    "主口令去「骨盆后卷」；回来口令「慢慢放下」→「稍微放松」（动画一直抓着脚踝，不放下）",
+    "按用户决定改为静态保持计时，动画只作示意",
+    "剂量 → 每侧 2 组×30 秒，休息 15 秒；口令/要点改为进入-保持-呼气放松，去掉来回/计数描述",
+    "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除",
+    "最终口径：按真实做法定（2026-11-01）"
+   ],
+   "flags": []
+  }
+ }
+}

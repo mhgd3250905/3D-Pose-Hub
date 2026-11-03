@@ -1,0 +1,134 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "hip-flexors-A",
+ "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "sources": [
+  "drill-anim/data/drills.json",
+  "drill-anim/specs/hip-flexors-A-r2.js"
+ ],
+ "name": {
+  "zh": "坐姿直腿抬腿",
+  "en": "Seated Pike Leg Lifts"
+ },
+ "purpose": {
+  "zh": "身体前倾时把腿抬起来，练大腿前面根部的力量",
+  "en": "Lift your legs while leaning forward to strengthen the tops of your thighs."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "身体前倾，双腿伸直抬离地面几厘米",
+    "en": "Lean forward and lift both straight legs a few centimetres off the floor"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "坐在地上腿伸直并拢，双手撑在膝盖两侧。",
+    "en": "Sit with your legs straight together and your hands beside your knees."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "抬起后停住，再慢慢放下。",
+    "en": "Hold the lift, then lower slowly."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "身体往后仰去抬腿",
+   "en": "Leaning back to lift the legs."
+  },
+  {
+   "zh": "膝盖弯曲",
+   "en": "Bending the knees."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "大腿前面抽筋或髋部疼时停下休息",
+   "en": "Stop and rest if the front of your thigh cramps or your hip hurts."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "hip-flexors",
+   "quadriceps"
+  ],
+  "synergistMuscles": [
+   "core"
+  ],
+  "equipment": [
+   "mat"
+  ],
+  "position": "seated",
+  "difficulty": 2
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 3,
+  "reps": 8,
+  "restSeconds": 45
+ },
+ "phases": {
+  "start": {
+   "zh": "抬腿",
+   "en": "Lift"
+  },
+  "peak": {
+   "zh": "停住",
+   "en": "Hold"
+  },
+  "end": {
+   "zh": "放下",
+   "en": "Lower"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 0.6,
+    "cue": "phase.start"
+   },
+   {
+    "id": "hold",
+    "seconds": 1.6,
+    "cue": "phase.peak"
+   },
+   {
+    "id": "back",
+    "seconds": 0.6,
+    "cue": "phase.end"
+   },
+   {
+    "id": "rest",
+    "seconds": 1.2
+   }
+  ],
+  "source": "spec-pulse-track r2"
+ },
+ "review": {
+  "r2": {
+   "changes": [
+    "中文名去掉「（压缩）」",
+    "purpose「屈髋肌在缩短位」改口语",
+    "cue2「长坐」改「坐在地上腿伸直并拢」",
+    "口令「慢放」→「放下」（0.6 s）",
+    "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除",
+    "最终口径：按真实做法定（2026-11-01）"
+   ],
+   "flags": []
+  }
+ }
+}
