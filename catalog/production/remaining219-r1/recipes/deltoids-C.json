@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "deltoids-C",
   "nameZh": "地雷杆半跪单臂推举",
-  "spec": "drill-anim/specs/deltoids-C.js",
-  "specSha256Lf": "bc34a8bb3fa12798b7ac940d65d23d5a6849c46387226ae23c29efc99b111b42",
+  "spec": "drill-anim/specs/deltoids-C-gc1.js",
+  "specSha256Lf": "ede0d111611cc3faf6654aa5b5c47ba1e46803f5f689408bc66f9493e5ff6fcb",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -91,10 +91,18 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/deltoids-C.js"
+    "selectedSpec": "drill-anim/specs/deltoids-C-gc1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
   "userAccepted": false,
-  "releaseEligible": false
+  "releaseEligible": false,
+  "groundContactFix": {
+    "r1": {
+      "from": "drill-anim/specs/deltoids-C.js",
+      "to": "drill-anim/specs/deltoids-C-gc1.js",
+      "date": "2026-11-03",
+      "branch": "fix/ground-contact-r1"
+    }
+  }
 }
