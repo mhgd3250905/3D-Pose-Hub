@@ -59,12 +59,35 @@ for line in open(sys.argv[1]):
                     m=min(y for _,y in vals)
                     if m>HOV: hovers.append({'id':r['id'],'joint':j,'region':reg,'closestMm':round(m*1000,1)})
 rows.sort(key=lambda x:-x['depthMm'])
+# per-vertex raised-mat check (raised-mat-vertex-audit.mjs), optional 4th arg
+blockrows=[]
+if len(sys.argv)>4 and os.path.exists(sys.argv[4]):
+    for line in open(sys.argv[4]):
+        r=json.loads(line); step=r['stride']
+        for bi,b in enumerate(r['blocks']):
+            regs={}
+            for f in r['frames']:
+                for reg,v in f['blocks'][bi]['regions'].items():
+                    regs.setdefault(reg,[]).append((f['f'],v['minClear'],v['inside'],v.get('at')))
+            for reg,vals in regs.items():
+                f0,c0,_,at=min(vals,key=lambda x:x[1])
+                if c0 >= 0.03: continue  # region never near this block top
+                below=[f for f,c,_,_ in vals if c< -0.005]
+                out=[]
+                for f in below:
+                    if out and f-out[-1][1]<=step*1.01: out[-1][1]=f
+                    else: out.append([f,f])
+                blockrows.append({'id':r['id'],'block':bi,'blockAt':b['at'],'blockSize':b['size'],'blockTopMm':round(b['at'][1]*1000,1),'region':reg,
+                    'minClearanceMm':round(c0*1000,1),'frame':f0,'maxVerticesInsideBlock':max(i for _,_,i,_ in vals),
+                    'framesBelow5mm':[f"{a}-{b2}" if a!=b2 else f"{a}" for a,b2 in out],'sampledFrames':len(vals),'at':at})
+    blockrows.sort(key=lambda x:x['minClearanceMm'])
 done=[json.loads(l)['id'] for l in open(sys.argv[1])]
 summary={'thresholds':{'penetrationMm':5,'hoverMm':15},'floor':'y=0 world plane (engine.js); no 3-D mat; props not counted',
-         'audited':done,'penetratingActions':sorted(set(x['id'] for x in rows)),'penetrations':rows,'hoverReference':hovers,'raisedMatProps':matrows,
+         'audited':done,'penetratingActions':sorted(set(x['id'] for x in rows)),'penetrations':rows,'hoverReference':hovers,'raisedMatProps':matrows,'raisedMatPerVertex':blockrows,
          'notes':['clearance = CPU-skinned drawn-vertex height (SkinnedMesh.getVertexPosition) after onAfterRender of a real 128px render; GPU-only displacement (chest breath <=1.8mm outward, cloth sink inward) not included','raised-mat check uses only each region\'s lowest vertex position (approximate)']}
 json.dump(summary,open(sys.argv[2],'w'),ensure_ascii=False,indent=1)
 print(len(done),'audited;',len(summary['penetratingActions']),'actions >5mm')
 for x in rows[:40]: print(x['id'],x['region'],x['depthMm'],'f',x['frame'],x['framesBelow5mm'],'jY',x['jointCentreYmm'],'t',x['jointToLowestVertexMm'],x['mesh'])
 print('raised mats:'); [print(m) for m in matrows]
+print('raised per-vertex:'); [print(b) for b in blockrows if b['minClearanceMm']<-5]
 print('hover:'); [print(h) for h in hovers]
