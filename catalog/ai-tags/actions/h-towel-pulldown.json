@@ -1,0 +1,147 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-towel-pulldown",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-towel-pulldown.json",
+    "textSha256Lf": "a0079c749160f70e2a95c2d01f07d834c029f91f88b68c2b5b0d57ebba29546d",
+    "spec": "drill-anim/specs/h-towel-pulldown-r7.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel",
+    "outdoor"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "towel"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "pull-vertical"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "frontal"
+  ],
+  "bodyRegion": [
+    "upper"
+  ],
+  "primaryMuscles": [
+    "lats",
+    "scapular"
+  ],
+  "secondaryMuscles": [
+    "biceps",
+    "deltoids"
+  ],
+  "stabilizers": [
+    "abs"
+  ],
+  "joints": [
+    {
+      "joint": "shoulder",
+      "actions": [
+        "adduction"
+      ]
+    },
+    {
+      "joint": "scapulothoracic",
+      "actions": [
+        "depression",
+        "retraction"
+      ]
+    },
+    {
+      "joint": "elbow",
+      "actions": [
+        "flexion"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "low",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup",
+    "main"
+  ],
+  "goals": [
+    "posture",
+    "desk-relief",
+    "strength"
+  ],
+  "alternatives": [
+    "lats-B"
+  ],
+  "regressions": [],
+  "progressions": [
+    "scapular-B"
+  ],
+  "aiSummary": {
+    "zh": "站姿拉紧毛巾下拉，没有器械时练背和肩胛下沉，适合久坐圆肩。",
+    "en": "Standing towel pulldown for lats and scapular depression with no equipment."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "muscles",
+      "existing": {
+        "activeMuscles": [
+          "lats",
+          "upper-back"
+        ],
+        "synergistMuscles": [
+          "biceps",
+          "rotator-cuff"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "lats",
+          "scapular"
+        ],
+        "secondaryMuscles": [
+          "biceps",
+          "deltoids"
+        ],
+        "stabilizers": [
+          "abs"
+        ]
+      },
+      "reason": "v3 粗粒度肌群（core/glutes/upper-back/lower-back/abductors）按本动作实际做法拆到细分 id。"
+    }
+  ],
+  "reviewNotes": []
+}

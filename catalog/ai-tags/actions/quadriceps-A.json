@@ -1,0 +1,141 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "quadriceps-A",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/quadriceps-A.json",
+    "textSha256Lf": "f429a8ada46f15370d91b052dc46c452a0319e1a61fe1ff32ae07a8333ecb7bc",
+    "spec": "drill-anim/specs/quadriceps-A.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "isolation"
+  ],
+  "contraction": [
+    "dynamic",
+    "isometric"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "quadriceps"
+  ],
+  "secondaryMuscles": [],
+  "stabilizers": [
+    "glute-max",
+    "abs"
+  ],
+  "joints": [
+    {
+      "joint": "knee",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    },
+    {
+      "joint": "hip",
+      "actions": [
+        "isometric-hold"
+      ]
+    }
+  ],
+  "difficulty": 3,
+  "intensity": "moderate",
+  "prerequisites": [
+    "kneeling-tolerance"
+  ],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "moderate",
+    "lumbar": "low",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "floor-transfer"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "performance",
+    "mobility"
+  ],
+  "alternatives": [],
+  "regressions": [
+    "quadriceps-B",
+    "quadriceps-C"
+  ],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "跪姿后倾在拉长位练股四头肌，为舞蹈后桥、跪姿动作打基础。",
+    "en": "Kneeling lean-back to strengthen quads at long length."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "quadriceps"
+        ],
+        "synergistMuscles": [
+          "hip-flexors",
+          "core",
+          "glutes"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "quadriceps"
+        ],
+        "secondaryMuscles": [],
+        "stabilizers": [
+          "glute-max",
+          "abs"
+        ]
+      },
+      "reason": "股直肌属于股四头肌，不再单列 hip-flexors；臀部夹紧只为保持髋伸直，归稳定。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 2,
+      "chosen": 3,
+      "reason": "膝在屈曲位承受全身离心负荷，倒得深回不来，属 3 级；同组 B/C 更易。"
+    }
+  ],
+  "reviewNotes": []
+}

@@ -1,0 +1,148 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-step-jack",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-step-jack.json",
+    "textSha256Lf": "8af7833a2d340fe234b818398ac62f48dbf1e1477cd10f52b7bc0bd607001a3d",
+    "spec": "drill-anim/specs/h-step-jack-r3.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "outdoor",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "low",
+  "sweat": "light",
+  "requiredEquipment": [],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "cardio"
+  ],
+  "movementPattern": [
+    "gait"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "frontal"
+  ],
+  "bodyRegion": [
+    "full"
+  ],
+  "primaryMuscles": [
+    "deltoids",
+    "hip-abductors"
+  ],
+  "secondaryMuscles": [
+    "calves"
+  ],
+  "stabilizers": [
+    "abs"
+  ],
+  "joints": [
+    {
+      "joint": "shoulder",
+      "actions": [
+        "abduction"
+      ]
+    },
+    {
+      "joint": "hip",
+      "actions": [
+        "abduction",
+        "adduction"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "moderate",
+  "prerequisites": [],
+  "laterality": "alternating",
+  "jointStress": {
+    "knee": "low",
+    "lumbar": "none",
+    "shoulder": "low",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "low",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    },
+    {
+      "population": "overweight",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup",
+    "main"
+  ],
+  "goals": [
+    "fat-loss",
+    "performance"
+  ],
+  "alternatives": [],
+  "regressions": [
+    "o-supported-march"
+  ],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "不跳的开合跳，楼下听不到，适合酒店或居家热身提心率。",
+    "en": "No-jump step jack to raise heart rate quietly at home or in a hotel."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "muscles",
+      "existing": {
+        "activeMuscles": [
+          "deltoids",
+          "abductors"
+        ],
+        "synergistMuscles": [
+          "calves",
+          "core"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "deltoids",
+          "hip-abductors"
+        ],
+        "secondaryMuscles": [
+          "calves"
+        ],
+        "stabilizers": [
+          "abs"
+        ]
+      },
+      "reason": "v3 粗粒度肌群（core/glutes/upper-back/lower-back/abductors）按本动作实际做法拆到细分 id。"
+    }
+  ],
+  "reviewNotes": []
+}

@@ -1,0 +1,137 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-kneeling-thread-needle",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-kneeling-thread-needle.json",
+    "textSha256Lf": "34fbc5397b0b215188d5627f5cc5d527777a6a6ee921cba5b66a4e2e5614216d",
+    "spec": "drill-anim/specs/h-kneeling-thread-needle-r2.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "mobility"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "transverse"
+  ],
+  "bodyRegion": [
+    "upper",
+    "core"
+  ],
+  "primaryMuscles": [],
+  "secondaryMuscles": [
+    "obliques"
+  ],
+  "stabilizers": [],
+  "stretchedMuscles": [
+    "scapular",
+    "deltoids"
+  ],
+  "joints": [
+    {
+      "joint": "thoracic-spine",
+      "actions": [
+        "rotation"
+      ]
+    },
+    {
+      "joint": "shoulder",
+      "actions": [
+        "horizontal-adduction"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [
+    "wrist-loading",
+    "kneeling-tolerance"
+  ],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "low",
+    "lumbar": "none",
+    "shoulder": "low",
+    "wrist": "low",
+    "neck": "low",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup",
+    "cooldown"
+  ],
+  "goals": [
+    "mobility",
+    "desk-relief",
+    "posture"
+  ],
+  "alternatives": [
+    "h-quadruped-open",
+    "h-open-book"
+  ],
+  "regressions": [
+    "o-seated-twist"
+  ],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "跪撑转上背、放松肩胛，适合久坐驼背后在垫子上活动胸椎。",
+    "en": "Kneeling thoracic rotation to loosen the upper back and shoulder blades."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "muscles",
+      "existing": {
+        "activeMuscles": [
+          "upper-back"
+        ],
+        "synergistMuscles": [
+          "deltoids",
+          "obliques"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [],
+        "secondaryMuscles": [
+          "obliques"
+        ],
+        "stabilizers": [],
+        "stretchedMuscles": [
+          "scapular",
+          "deltoids"
+        ]
+      },
+      "reason": "v3 upper-back 主练：穿针主要是胸椎旋转并拉开肩胛周围和三角肌后束，放 stretchedMuscles；无明确主动肌。"
+    }
+  ],
+  "reviewNotes": []
+}

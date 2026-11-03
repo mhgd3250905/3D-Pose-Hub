@@ -1,0 +1,128 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-doorframe-forearms-pec-native-r3",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-doorframe-forearms-pec-native-r3.json",
+    "textSha256Lf": "0e6219304b315fd53192d7ddebb23c247ba99c120e8a82771923ddaa0dbf8541",
+    "spec": "drill-anim/specs/h-doorframe-forearms-pec-native-r3.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "office",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "doorframe"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "static-stretch"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "isometric"
+  ],
+  "plane": [
+    "transverse"
+  ],
+  "bodyRegion": [
+    "upper"
+  ],
+  "primaryMuscles": [],
+  "secondaryMuscles": [],
+  "stabilizers": [],
+  "stretchedMuscles": [
+    "chest",
+    "deltoids"
+  ],
+  "joints": [
+    {
+      "joint": "shoulder",
+      "actions": [
+        "horizontal-abduction",
+        "external-rotation"
+      ]
+    },
+    {
+      "joint": "scapulothoracic",
+      "actions": [
+        "retraction"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "low",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "cooldown"
+  ],
+  "goals": [
+    "posture",
+    "desk-relief",
+    "mobility"
+  ],
+  "alternatives": [
+    "h-wall-pec",
+    "h-towel-behind"
+  ],
+  "regressions": [
+    "h-supine-cactus-chest"
+  ],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "有门框就能做的双侧胸前拉伸，适合久坐圆肩、工间或训练后放松。",
+    "en": "Two-arm doorway chest stretch for rounded shoulders, desk breaks or cooldowns."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "muscles",
+      "existing": {
+        "activeMuscles": [
+          "chest"
+        ],
+        "synergistMuscles": [
+          "deltoids"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [],
+        "secondaryMuscles": [],
+        "stabilizers": [],
+        "stretchedMuscles": [
+          "chest",
+          "deltoids"
+        ]
+      },
+      "reason": "拉伸类：v3 activeMuscles 是被拉肌，改放 stretchedMuscles。"
+    }
+  ],
+  "reviewNotes": []
+}

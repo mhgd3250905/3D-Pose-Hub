@@ -1,0 +1,164 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-goblet-squat",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-goblet-squat.json",
+    "textSha256Lf": "430abaef655a44d825c13e9b24021fb33a0f660e95ff821a598d6743ef8a07de",
+    "spec": "drill-anim/specs/h-goblet-squat-r3.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "gym",
+    "home"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [
+    "kettlebell"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [
+    {
+      "for": "kettlebell",
+      "use": [
+        "dumbbell"
+      ],
+      "loadNote": "similar"
+    },
+    {
+      "for": "kettlebell",
+      "use": [
+        "backpack"
+      ],
+      "loadNote": "lighter"
+    }
+  ],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "squat"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "quadriceps",
+    "glute-max"
+  ],
+  "secondaryMuscles": [
+    "adductors"
+  ],
+  "stabilizers": [
+    "abs",
+    "erectors",
+    "scapular"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    },
+    {
+      "joint": "knee",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    },
+    {
+      "joint": "ankle",
+      "actions": [
+        "dorsiflexion"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "moderate",
+  "prerequisites": [],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "low",
+    "lumbar": "low",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "low",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "modify",
+      "reasons": [
+        "heavy-load"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "hypertrophy",
+    "fat-loss"
+  ],
+  "alternatives": [],
+  "regressions": [
+    "h-squat",
+    "o-supported-mini-squat"
+  ],
+  "progressions": [
+    "h-db-split-squat"
+  ],
+  "aiSummary": {
+    "zh": "有壶铃或哑铃时的负重深蹲首选，适合会徒手深蹲后加负重练腿臀。",
+    "en": "Go-to loaded squat with a kettlebell or dumbbell once bodyweight squats are easy."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "muscles",
+      "existing": {
+        "activeMuscles": [
+          "quadriceps",
+          "glutes"
+        ],
+        "synergistMuscles": [
+          "adductors",
+          "core",
+          "upper-back"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "quadriceps",
+          "glute-max"
+        ],
+        "secondaryMuscles": [
+          "adductors"
+        ],
+        "stabilizers": [
+          "abs",
+          "erectors",
+          "scapular"
+        ]
+      },
+      "reason": "v3 粗粒度肌群（core/glutes/upper-back/lower-back/abductors）按本动作实际做法拆到细分 id。"
+    }
+  ],
+  "reviewNotes": []
+}

@@ -1,0 +1,159 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "serratus-B",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/serratus-B.json",
+    "textSha256Lf": "ec3aa8e6f5d791ff65e755ec33b7908d65d33daf02d4dc90af1b3e8d24faaeee",
+    "spec": "drill-anim/specs/serratus-B-r2.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "foam-roller",
+    "wall"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [
+    {
+      "for": "foam-roller",
+      "use": [
+        "towel"
+      ],
+      "loadNote": "similar"
+    }
+  ],
+  "trainingType": [
+    "strength",
+    "mobility"
+  ],
+  "movementPattern": [
+    "push-vertical"
+  ],
+  "contraction": [
+    "dynamic",
+    "isometric"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "upper"
+  ],
+  "primaryMuscles": [
+    "serratus"
+  ],
+  "secondaryMuscles": [
+    "deltoids",
+    "scapular"
+  ],
+  "stabilizers": [
+    "rotator-cuff",
+    "abs"
+  ],
+  "joints": [
+    {
+      "joint": "scapulothoracic",
+      "actions": [
+        "upward-rotation",
+        "protraction"
+      ]
+    },
+    {
+      "joint": "shoulder",
+      "actions": [
+        "flexion"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [
+    "overhead-range"
+  ],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "low",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup",
+    "main"
+  ],
+  "goals": [
+    "posture",
+    "mobility"
+  ],
+  "alternatives": [],
+  "regressions": [],
+  "progressions": [
+    "serratus-A"
+  ],
+  "aiSummary": {
+    "zh": "站着贴墙练手臂上举时的肩胛上回旋，圆肩、举手肩卡时选。",
+    "en": "Foam roller wall slide for scapular upward rotation overhead."
+  },
+  "confidence": "medium",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "chest",
+          "deltoids"
+        ],
+        "synergistMuscles": [
+          "upper-back",
+          "rotator-cuff"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "serratus"
+        ],
+        "secondaryMuscles": [
+          "deltoids",
+          "scapular"
+        ],
+        "stabilizers": [
+          "rotator-cuff",
+          "abs"
+        ]
+      },
+      "reason": "举臂时肩胛上回旋+前伸由前锯肌主导，v3 写 chest 有误；三角肌协同。"
+    }
+  ],
+  "reviewNotes": [
+    "movementPattern 写 push-vertical 有推断（手臂沿墙上滑）。"
+  ]
+}

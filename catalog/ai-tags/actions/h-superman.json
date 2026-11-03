@@ -1,0 +1,143 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-superman",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-superman.json",
+    "textSha256Lf": "8876ccd69d305ed088d303d2a841951ed9c77c3e5ca29370fb5391a9294474d0",
+    "spec": "drill-anim/specs/h-superman-r2.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "core"
+  ],
+  "primaryMuscles": [
+    "erectors",
+    "glute-max"
+  ],
+  "secondaryMuscles": [
+    "scapular",
+    "hamstrings",
+    "deltoids"
+  ],
+  "stabilizers": [],
+  "joints": [
+    {
+      "joint": "lumbar-spine",
+      "actions": [
+        "extension"
+      ]
+    },
+    {
+      "joint": "hip",
+      "actions": [
+        "extension"
+      ]
+    },
+    {
+      "joint": "shoulder",
+      "actions": [
+        "flexion"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "low",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "low",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "pregnancy",
+      "flag": "caution",
+      "reasons": [
+        "prone-position"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main",
+    "warmup"
+  ],
+  "goals": [
+    "posture",
+    "strength"
+  ],
+  "alternatives": [
+    "erectors-B"
+  ],
+  "regressions": [
+    "w-bird-dog"
+  ],
+  "progressions": [
+    "w-prone-swimmer"
+  ],
+  "aiSummary": {
+    "zh": "俯卧同时抬起手脚，练背部和臀部，改善久坐驼背。",
+    "en": "Prone superman for back and glutes to counter desk posture."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "muscles",
+      "existing": {
+        "activeMuscles": [
+          "lower-back",
+          "glutes"
+        ],
+        "synergistMuscles": [
+          "upper-back",
+          "hamstrings",
+          "deltoids"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "erectors",
+          "glute-max"
+        ],
+        "secondaryMuscles": [
+          "scapular",
+          "hamstrings",
+          "deltoids"
+        ],
+        "stabilizers": []
+      },
+      "reason": "v3 粗粒度肌群（core/glutes/upper-back/lower-back/abductors）按本动作实际做法拆到细分 id。"
+    }
+  ],
+  "reviewNotes": []
+}

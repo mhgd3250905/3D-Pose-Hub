@@ -1,0 +1,140 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "n-seated-knee-lift",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/n-seated-knee-lift.json",
+    "textSha256Lf": "339058102df9377caa9bc50c841391b456df3faa8fe998987ba73561d345f5dd",
+    "spec": "drill-anim/specs/n-seated-knee-lift.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "office",
+    "gym",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "chair"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "isolation"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "hip-flexors"
+  ],
+  "secondaryMuscles": [],
+  "stabilizers": [
+    "abs"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [],
+  "laterality": "alternating",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup",
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "desk-relief"
+  ],
+  "alternatives": [],
+  "regressions": [],
+  "progressions": [
+    "o-supported-march",
+    "hip-flexors-B"
+  ],
+  "aiSummary": {
+    "zh": "坐在椅子上就能练抬腿力量，工位、年长者或入门都合适。",
+    "en": "Seated knee-lift hover for hip-flexor strength from a chair; office friendly."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "hip-flexors"
+        ],
+        "synergistMuscles": [
+          "core",
+          "quadriceps"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "hip-flexors"
+        ],
+        "secondaryMuscles": [],
+        "stabilizers": [
+          "abs"
+        ]
+      },
+      "reason": "大腿抬离座面主要靠髋屈肌；股四头肌只是股直肌参与，不单列；core 只稳定，归 abs 稳定肌。"
+    },
+    {
+      "field": "laterality",
+      "existing": {
+        "unilateral": true,
+        "training.kind": "rep_alternate"
+      },
+      "chosen": "alternating",
+      "reason": "v3 unilateral=true 实为左右交替（rep_alternate），与单侧分开。"
+    }
+  ],
+  "reviewNotes": []
+}

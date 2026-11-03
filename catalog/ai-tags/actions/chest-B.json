@@ -1,0 +1,115 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "chest-B",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/chest-B.json",
+    "textSha256Lf": "48ff0fd351e3a992e24efcbe63817ef7104c12791dae66c90ef45a9da768b7d9",
+    "spec": "drill-anim/specs/chest-B-r2.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "gym"
+  ],
+  "space": "mat",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [
+    "parallettes"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "push-horizontal"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "upper"
+  ],
+  "primaryMuscles": [
+    "chest"
+  ],
+  "secondaryMuscles": [
+    "triceps",
+    "deltoids"
+  ],
+  "stabilizers": [
+    "abs",
+    "serratus"
+  ],
+  "joints": [
+    {
+      "joint": "shoulder",
+      "actions": [
+        "horizontal-adduction",
+        "horizontal-abduction",
+        "extension"
+      ]
+    },
+    {
+      "joint": "elbow",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    }
+  ],
+  "difficulty": 3,
+  "intensity": "moderate",
+  "prerequisites": [
+    "pushup-10",
+    "wrist-loading"
+  ],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "moderate",
+    "wrist": "low",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "hypertrophy"
+  ],
+  "alternatives": [],
+  "regressions": [
+    "chest-A",
+    "triceps-A"
+  ],
+  "progressions": [
+    "serratus-C"
+  ],
+  "aiSummary": {
+    "zh": "平行杆上做比普通俯卧撑更深的胸部力量动作，需先能做10个俯卧撑。",
+    "en": "Deficit push-up on parallettes for chest; requires 10 solid push-ups first."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "difficulty",
+      "existing": 2,
+      "chosen": 3,
+      "reason": "深幅俯卧撑在标准俯卧撑基础上加大肩伸幅度，定中级 3。"
+    }
+  ],
+  "reviewNotes": [
+    "手只撑杆，floorRequired=false；肩 moderate 对应 cautions 肩前夹痛。"
+  ]
+}

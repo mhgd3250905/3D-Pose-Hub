@@ -1,0 +1,124 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-band-standing-adduction",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-band-standing-adduction.json",
+    "textSha256Lf": "eaf3c6015d20fac8cca035699db59ce1e1d667b2d033e1682819f4bc1d168e25",
+    "spec": "drill-anim/specs/h-band-standing-adduction.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [
+    "band"
+  ],
+  "optionalEquipment": [
+    "chair",
+    "ankle-strap"
+  ],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "isolation"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "frontal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "adductors"
+  ],
+  "secondaryMuscles": [],
+  "stabilizers": [
+    "hip-abductors",
+    "abs"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "adduction"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [
+    "band-anchor"
+  ],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "performance"
+  ],
+  "alternatives": [
+    "adductors-C"
+  ],
+  "regressions": [],
+  "progressions": [
+    "adductors-B"
+  ],
+  "aiSummary": {
+    "zh": "居家用弹力带站姿练大腿内侧，绳索内收的平替。",
+    "en": "Standing band adduction for the inner thigh; home stand-in for cable adduction."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "requiredEquipment/optionalEquipment",
+      "existing": [
+        "resistance-band",
+        "ankle-strap",
+        "chair"
+      ],
+      "chosen": {
+        "requiredEquipment": [
+          "band"
+        ],
+        "optionalEquipment": [
+          "chair",
+          "ankle-strap"
+        ]
+      },
+      "reason": "resistance-band 归一为 band；ankle-strap 和 chair 非必需，改为可选。"
+    }
+  ],
+  "reviewNotes": []
+}

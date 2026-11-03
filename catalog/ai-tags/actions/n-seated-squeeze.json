@@ -1,0 +1,144 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "n-seated-squeeze",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/n-seated-squeeze.json",
+    "textSha256Lf": "cd7bc7971f61b91136ac6e27476b1b62b417db6061fb58edbcf9e417958465d1",
+    "spec": "drill-anim/specs/n-seated-squeeze-r2.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "office",
+    "gym",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "chair",
+    "block"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [
+    {
+      "for": "block",
+      "use": [
+        "book",
+        "towel"
+      ],
+      "loadNote": "similar"
+    }
+  ],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "isolation"
+  ],
+  "contraction": [
+    "isometric"
+  ],
+  "plane": [
+    "frontal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "adductors"
+  ],
+  "secondaryMuscles": [],
+  "stabilizers": [
+    "abs"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "isometric-hold"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "low",
+    "lumbar": "none",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    },
+    {
+      "population": "hypertension",
+      "flag": "modify",
+      "reasons": [
+        "breath-holding-risk"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup",
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "desk-relief"
+  ],
+  "alternatives": [
+    "h-band-standing-adduction"
+  ],
+  "regressions": [],
+  "progressions": [
+    "h-inner-thigh",
+    "adductors-B"
+  ],
+  "aiSummary": {
+    "zh": "坐着用膝盖夹砖练大腿内侧，工位可做，没有砖可夹书或卷毛巾。",
+    "en": "Seated knee squeeze for inner-thigh strength at a desk; a book or rolled towel works."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "requiredEquipment/optionalEquipment",
+      "existing": [
+        "chair",
+        "yoga-block"
+      ],
+      "chosen": {
+        "requiredEquipment": [
+          "chair",
+          "block"
+        ],
+        "optionalEquipment": []
+      },
+      "reason": "yoga-block→block；办公室没有砖时用书代替。"
+    }
+  ],
+  "reviewNotes": [
+    "contraction 只写 isometric：每次夹住 5 秒，没有可见关节动作。"
+  ]
+}

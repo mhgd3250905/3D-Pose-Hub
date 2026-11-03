@@ -1,0 +1,130 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "o-supported-ankle-eversion",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/o-supported-ankle-eversion.json",
+    "textSha256Lf": "9ae4afe7b04a8ac1da7ac429638e007c434257d1b32415d26c13c1cc57357cf0",
+    "spec": "drill-anim/specs/o-supported-ankle-eversion-r2.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "office",
+    "gym",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "chair"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "mobility"
+  ],
+  "movementPattern": [
+    "isolation"
+  ],
+  "contraction": [
+    "dynamic",
+    "isometric"
+  ],
+  "plane": [
+    "frontal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "peroneals"
+  ],
+  "secondaryMuscles": [],
+  "stabilizers": [
+    "hip-abductors"
+  ],
+  "joints": [
+    {
+      "joint": "ankle",
+      "actions": [
+        "eversion",
+        "inversion"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [
+    "single-leg-supported"
+  ],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "low",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "balance-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup"
+  ],
+  "goals": [
+    "mobility",
+    "recovery",
+    "performance"
+  ],
+  "alternatives": [],
+  "regressions": [],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "扶椅练脚踝外翻控制，崴脚后恢复或跑跳前热身。",
+    "en": "Chair-supported ankle eversion control for ankle stability or rehab."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "calves"
+        ],
+        "synergistMuscles": [
+          "tibialis"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "peroneals"
+        ],
+        "secondaryMuscles": [],
+        "stabilizers": [
+          "hip-abductors"
+        ]
+      },
+      "reason": "脚底外翻的主动肌是腓骨长短肌（新 id peroneals），v3 写成 calves 有误。"
+    }
+  ],
+  "reviewNotes": []
+}

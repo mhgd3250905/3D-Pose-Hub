@@ -1,0 +1,179 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "rotator-cuff-A",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/rotator-cuff-A.json",
+    "textSha256Lf": "becf3fb83b93202643aadf7985ac95f258db47beb5eb8e45d6758bf2bdc7173a",
+    "spec": "drill-anim/specs/rotator-cuff-A-r2.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [],
+  "optionalEquipment": [
+    "mat"
+  ],
+  "substitutes": [],
+  "trainingType": [
+    "stability-control"
+  ],
+  "movementPattern": [
+    "anti-rotation",
+    "anti-extension"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "transverse"
+  ],
+  "bodyRegion": [
+    "core",
+    "upper"
+  ],
+  "primaryMuscles": [
+    "rotator-cuff",
+    "abs",
+    "obliques"
+  ],
+  "secondaryMuscles": [
+    "deltoids",
+    "serratus"
+  ],
+  "stabilizers": [
+    "triceps",
+    "chest",
+    "glute-max"
+  ],
+  "joints": [
+    {
+      "joint": "shoulder",
+      "actions": [
+        "isometric-hold"
+      ]
+    },
+    {
+      "joint": "scapulothoracic",
+      "actions": [
+        "isometric-hold"
+      ]
+    },
+    {
+      "joint": "wrist",
+      "actions": [
+        "isometric-hold"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "moderate",
+  "prerequisites": [
+    "wrist-loading",
+    "plank-30s"
+  ],
+  "laterality": "alternating",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "low",
+    "shoulder": "low",
+    "wrist": "moderate",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "modify",
+      "reasons": [
+        "balance-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "floor-transfer"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main",
+    "warmup"
+  ],
+  "goals": [
+    "strength",
+    "posture",
+    "performance"
+  ],
+  "alternatives": [],
+  "regressions": [
+    "h-forearm-plank"
+  ],
+  "progressions": [
+    "h-plank-side-step"
+  ],
+  "aiSummary": {
+    "zh": "高位平板交替触肩，练肩稳定和抗旋转，需要手腕能承重。",
+    "en": "Plank shoulder taps for shoulder stability and anti-rotation."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "rotator-cuff",
+          "core"
+        ],
+        "synergistMuscles": [
+          "deltoids",
+          "chest",
+          "triceps"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "rotator-cuff",
+          "abs",
+          "obliques"
+        ],
+        "secondaryMuscles": [
+          "deltoids",
+          "serratus"
+        ],
+        "stabilizers": [
+          "triceps",
+          "chest",
+          "glute-max"
+        ]
+      },
+      "reason": "v3 core 拆成 abs + obliques（抗旋转）；肩袖维持单手撑；胸/三头只稳定。"
+    },
+    {
+      "field": "laterality",
+      "existing": {
+        "unilateral": true,
+        "training.kind": "rep_alternate"
+      },
+      "chosen": "alternating",
+      "reason": "v3 unilateral=true 实为左右交替（rep_alternate），与单侧分开。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 2,
+      "reason": "高位平板中单手支撑，需先能平板 30 秒，调到 2 级。"
+    }
+  ],
+  "reviewNotes": []
+}

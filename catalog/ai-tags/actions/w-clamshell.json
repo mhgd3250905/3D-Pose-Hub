@@ -1,0 +1,146 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "w-clamshell",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/w-clamshell.json",
+    "textSha256Lf": "80747e9ec52ceeb87ef47de63b1d13aefc8193268fa5a52be8dd674dc541bf5f",
+    "spec": "drill-anim/specs/w-clamshell-r3.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [
+    "mini-band"
+  ],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "isolation"
+  ],
+  "contraction": [
+    "dynamic",
+    "isometric"
+  ],
+  "plane": [
+    "transverse",
+    "frontal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "hip-abductors",
+    "hip-rotators"
+  ],
+  "secondaryMuscles": [
+    "glute-max"
+  ],
+  "stabilizers": [
+    "abs",
+    "obliques"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "external-rotation",
+        "abduction"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [
+    "floor-transfer"
+  ],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "floor-transfer"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup",
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "posture",
+    "recovery"
+  ],
+  "alternatives": [
+    "w-fire-hydrant"
+  ],
+  "regressions": [],
+  "progressions": [
+    "hip-abductors-A"
+  ],
+  "aiSummary": {
+    "zh": "侧卧蚌式练臀中肌，膝内扣、髋不稳的入门激活。",
+    "en": "Side-lying clamshell for glute med activation."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "glutes",
+          "abductors"
+        ],
+        "synergistMuscles": [
+          "core"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "hip-abductors",
+          "hip-rotators"
+        ],
+        "secondaryMuscles": [
+          "glute-max"
+        ],
+        "stabilizers": [
+          "abs",
+          "obliques"
+        ]
+      },
+      "reason": "v3 粗粒度 id 按实际做法拆到 taxonomy id（core→abs/obliques，glutes→glute-max 或 hip-abductors，upper-back→scapular，lower-back→erectors），只稳定不推动的归稳定肌。"
+    }
+  ],
+  "reviewNotes": []
+}

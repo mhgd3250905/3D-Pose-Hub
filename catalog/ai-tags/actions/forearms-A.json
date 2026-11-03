@@ -1,0 +1,153 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "forearms-A",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/forearms-A.json",
+    "textSha256Lf": "01c8f571ed11e71bbf4d8d349e3539bdfe4fd03fec1a586f7335aab0091e209a",
+    "spec": "drill-anim/specs/forearms-A-r2.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [
+    {
+      "for": "mat",
+      "use": [
+        "towel"
+      ],
+      "loadNote": "similar"
+    }
+  ],
+  "trainingType": [
+    "mobility",
+    "dynamic-stretch"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "upper"
+  ],
+  "primaryMuscles": [],
+  "secondaryMuscles": [],
+  "stabilizers": [
+    "deltoids",
+    "serratus"
+  ],
+  "stretchedMuscles": [
+    "forearms"
+  ],
+  "joints": [
+    {
+      "joint": "wrist",
+      "actions": [
+        "extension",
+        "flexion",
+        "radial-deviation",
+        "ulnar-deviation"
+      ]
+    },
+    {
+      "joint": "forearm",
+      "actions": [
+        "supination",
+        "pronation"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [
+    "floor-transfer",
+    "kneeling-tolerance"
+  ],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "low",
+    "lumbar": "none",
+    "shoulder": "none",
+    "wrist": "low",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "floor-transfer"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup"
+  ],
+  "goals": [
+    "mobility",
+    "performance"
+  ],
+  "alternatives": [
+    "h-wall-wrist-flexor-stretch",
+    "h-standing-wrist-extensor-stretch"
+  ],
+  "regressions": [],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "做撑地动作（俯卧撑、平板、手撑类）前的手腕热身，需要跪地。",
+    "en": "Wrist warm-up before hand-supported work like push-ups and planks; done kneeling."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers/stretchedMuscles",
+      "existing": {
+        "activeMuscles": [
+          "forearms"
+        ],
+        "synergistMuscles": [
+          "deltoids"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [],
+        "secondaryMuscles": [],
+        "stabilizers": [
+          "deltoids",
+          "serratus"
+        ],
+        "stretchedMuscles": [
+          "forearms"
+        ]
+      },
+      "reason": "拉伸/活动类：v3 把被拉肌写在 activeMuscles，这里移到 stretchedMuscles，无主动发力肌。"
+    }
+  ],
+  "reviewNotes": [
+    "与同组 B/C（力量）不同类型，未串进退阶；办公室替代给站姿手腕拉伸。"
+  ]
+}

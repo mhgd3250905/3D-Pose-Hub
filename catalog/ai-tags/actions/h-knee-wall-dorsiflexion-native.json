@@ -1,0 +1,131 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-knee-wall-dorsiflexion-native",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-knee-wall-dorsiflexion-native.json",
+    "textSha256Lf": "1f79788696c14f200078cc3cd5f1cbf993f3aa653b55cf37ff3bfbe4b950b093",
+    "spec": "drill-anim/specs/h-knee-wall-dorsiflexion-native.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "office",
+    "gym",
+    "outdoor",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "wall"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "mobility"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [],
+  "secondaryMuscles": [
+    "tibialis"
+  ],
+  "stabilizers": [
+    "hip-abductors"
+  ],
+  "stretchedMuscles": [
+    "calves"
+  ],
+  "joints": [
+    {
+      "joint": "ankle",
+      "actions": [
+        "dorsiflexion"
+      ]
+    },
+    {
+      "joint": "knee",
+      "actions": [
+        "flexion"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "low",
+    "lumbar": "none",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "low",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup"
+  ],
+  "goals": [
+    "mobility",
+    "performance"
+  ],
+  "alternatives": [
+    "h-wall-calf-bent-knee"
+  ],
+  "regressions": [],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "对着墙练脚踝前弯幅度，适合深蹲或跑步前热身、任何场地。",
+    "en": "Knee-to-wall ankle mobility drill before squats or runs, anywhere with a wall."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "muscles",
+      "existing": {
+        "activeMuscles": [
+          "calves"
+        ],
+        "synergistMuscles": [
+          "tibialis"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [],
+        "secondaryMuscles": [
+          "tibialis"
+        ],
+        "stabilizers": [
+          "hip-abductors"
+        ],
+        "stretchedMuscles": [
+          "calves"
+        ]
+      },
+      "reason": "v3 把 calves 写成 activeMuscles，实际是被拉开的肌群；主动发力很少，primary 留空，calves 放 stretchedMuscles。"
+    }
+  ],
+  "reviewNotes": []
+}

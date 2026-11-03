@@ -1,0 +1,163 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "t-seated-straddle-lifts",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/t-seated-straddle-lifts.json",
+    "textSha256Lf": "99ed006ac82b2c494a688618c4ca23cfa23db9d049824a4878b4a0717ab039a6",
+    "spec": "drill-anim/specs/t-seated-straddle-lifts-r6.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "strength",
+    "mobility"
+  ],
+  "movementPattern": [
+    "isolation"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "hip-flexors",
+    "quadriceps"
+  ],
+  "secondaryMuscles": [
+    "abs",
+    "adductors"
+  ],
+  "stabilizers": [
+    "triceps"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    },
+    {
+      "joint": "knee",
+      "actions": [
+        "isometric-hold"
+      ]
+    }
+  ],
+  "difficulty": 3,
+  "intensity": "moderate",
+  "prerequisites": [
+    "floor-transfer"
+  ],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "modify",
+      "reasons": [
+        "end-range-stretch"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "floor-transfer"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "performance",
+    "mobility",
+    "strength"
+  ],
+  "alternatives": [],
+  "regressions": [
+    "t-seated-straddle-lift-1leg"
+  ],
+  "progressions": [
+    "t-seated-straddle-ext"
+  ],
+  "aiSummary": {
+    "zh": "分腿坐双腿同时抬起，练压缩力量和主动柔韧，为分腿撑做准备。",
+    "en": "Seated straddle double-leg lifts for compression and active flexibility."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "hip-flexors",
+          "quadriceps"
+        ],
+        "synergistMuscles": [
+          "core",
+          "adductors"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "hip-flexors",
+          "quadriceps"
+        ],
+        "secondaryMuscles": [
+          "abs",
+          "adductors"
+        ],
+        "stabilizers": [
+          "triceps"
+        ]
+      },
+      "reason": "分腿坐抬腿靠髋屈肌（含股直肌）发力，腹部协同；手指点地只是稳定。"
+    },
+    {
+      "field": "floorRequired",
+      "existing": {
+        "position": "seated"
+      },
+      "chosen": true,
+      "reason": "坐在地上做（不是坐椅子），需要着地，不进办公室。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 2,
+      "chosen": 3,
+      "reason": "双腿同时离地需要末端主动柔韧，属 3 级\"末端活动度\"。"
+    }
+  ],
+  "reviewNotes": []
+}

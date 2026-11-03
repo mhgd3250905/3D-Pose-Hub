@@ -1,0 +1,160 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-incline-pushup",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-incline-pushup.json",
+    "textSha256Lf": "2dc61cfc4b1b3b1c0dbf0fa9d901d4d4233ec62a00497a94504e11d553ed2523",
+    "spec": "drill-anim/specs/h-incline-pushup-r2.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "office",
+    "gym",
+    "outdoor",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [
+    "chair"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "push-horizontal"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "upper"
+  ],
+  "primaryMuscles": [
+    "chest",
+    "triceps"
+  ],
+  "secondaryMuscles": [
+    "deltoids"
+  ],
+  "stabilizers": [
+    "abs",
+    "serratus",
+    "glute-max"
+  ],
+  "joints": [
+    {
+      "joint": "shoulder",
+      "actions": [
+        "horizontal-adduction"
+      ]
+    },
+    {
+      "joint": "elbow",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    },
+    {
+      "joint": "scapulothoracic",
+      "actions": [
+        "protraction"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "moderate",
+  "prerequisites": [],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "low",
+    "wrist": "low",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main",
+    "warmup"
+  ],
+  "goals": [
+    "strength",
+    "hypertrophy"
+  ],
+  "alternatives": [],
+  "regressions": [],
+  "progressions": [
+    "h-kneeling-pushup",
+    "triceps-A"
+  ],
+  "aiSummary": {
+    "zh": "手扶稳固椅子或桌沿的入门俯卧撑，不着地，办公室也能做。",
+    "en": "Entry push-up with hands on a sturdy chair or desk; no floor contact needed."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "muscles",
+      "existing": {
+        "activeMuscles": [
+          "chest",
+          "triceps"
+        ],
+        "synergistMuscles": [
+          "deltoids",
+          "core"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "chest",
+          "triceps"
+        ],
+        "secondaryMuscles": [
+          "deltoids"
+        ],
+        "stabilizers": [
+          "abs",
+          "serratus",
+          "glute-max"
+        ]
+      },
+      "reason": "v3 粗粒度肌群（core/glutes/upper-back/lower-back/abductors）按本动作实际做法拆到细分 id。"
+    },
+    {
+      "field": "requiredEquipment",
+      "existing": [
+        "stool"
+      ],
+      "chosen": [
+        "chair"
+      ],
+      "reason": "v3 器械同义写法归一到词表 id。"
+    }
+  ],
+  "reviewNotes": [
+    "办公室可用桌沿代替椅子；椅子必须稳固不滑。"
+  ]
+}

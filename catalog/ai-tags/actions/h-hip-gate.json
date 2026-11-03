@@ -1,0 +1,155 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-hip-gate",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-hip-gate.json",
+    "textSha256Lf": "9705c98a23b527404985af7836cf8d5db0f7e302cd049eff7b05a7b2f7bdf680",
+    "spec": "drill-anim/specs/h-hip-gate-r2.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "office",
+    "gym",
+    "outdoor",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [],
+  "optionalEquipment": [
+    "chair",
+    "wall"
+  ],
+  "substitutes": [],
+  "trainingType": [
+    "mobility"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal",
+    "frontal",
+    "transverse"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "hip-flexors",
+    "hip-abductors"
+  ],
+  "secondaryMuscles": [
+    "hip-rotators"
+  ],
+  "stabilizers": [
+    "abs",
+    "obliques"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "flexion",
+        "abduction",
+        "external-rotation",
+        "circumduction"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [
+    "single-leg-supported"
+  ],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "balance-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup"
+  ],
+  "goals": [
+    "mobility",
+    "desk-relief",
+    "performance"
+  ],
+  "alternatives": [
+    "o-supported-hip-ir"
+  ],
+  "regressions": [],
+  "progressions": [
+    "h-quad-cars"
+  ],
+  "aiSummary": {
+    "zh": "扶椅或扶墙站着做的髋部画圈，适合热身或久坐后活动髋关节。",
+    "en": "Standing supported hip circle for warm-ups or loosening hips after sitting."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "muscles",
+      "existing": {
+        "activeMuscles": [
+          "hip-flexors",
+          "abductors"
+        ],
+        "synergistMuscles": [
+          "glutes",
+          "core"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "hip-flexors",
+          "hip-abductors"
+        ],
+        "secondaryMuscles": [
+          "hip-rotators"
+        ],
+        "stabilizers": [
+          "abs",
+          "obliques"
+        ]
+      },
+      "reason": "v3 粗粒度肌群（core/glutes/upper-back/lower-back/abductors）按本动作实际做法拆到细分 id。"
+    },
+    {
+      "field": "requiredEquipment",
+      "existing": [
+        "chair"
+      ],
+      "chosen": [],
+      "reason": "椅子只用来扶稳，墙也可以，改为可选。"
+    }
+  ],
+  "reviewNotes": []
+}

@@ -1,0 +1,150 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-butterfly-active",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-butterfly-active.json",
+    "textSha256Lf": "f06078333f077ff6e3308a155b5fe3739f0c34acb47aa8ec7ed1b6bcad54520a",
+    "spec": "drill-anim/specs/h-butterfly-active-r2.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [
+    {
+      "for": "mat",
+      "use": [
+        "towel"
+      ],
+      "loadNote": "similar"
+    }
+  ],
+  "trainingType": [
+    "mobility"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "frontal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "adductors"
+  ],
+  "secondaryMuscles": [
+    "hip-flexors"
+  ],
+  "stabilizers": [],
+  "stretchedMuscles": [
+    "adductors"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "abduction",
+        "adduction",
+        "external-rotation"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [
+    "floor-transfer"
+  ],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "floor-transfer"
+      ]
+    },
+    {
+      "population": "pregnancy",
+      "flag": "modify",
+      "reasons": [
+        "supine-position"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup"
+  ],
+  "goals": [
+    "mobility"
+  ],
+  "alternatives": [
+    "h-adductor-rock",
+    "s-butterfly"
+  ],
+  "regressions": [],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "躺着开合膝盖，主动活动髋和练大腿内侧控制。",
+    "en": "Lying butterfly open-close to mobilise hips with active inner-thigh control."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers/stretchedMuscles",
+      "existing": {
+        "activeMuscles": [
+          "adductors"
+        ],
+        "synergistMuscles": [
+          "glutes",
+          "hip-flexors"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "adductors"
+        ],
+        "secondaryMuscles": [
+          "hip-flexors"
+        ],
+        "stabilizers": [],
+        "stretchedMuscles": [
+          "adductors"
+        ]
+      },
+      "reason": "按动作实际做法调整主动肌。开时被拉长、合时内收肌主动收回；v3 的 glutes 协同删去。"
+    }
+  ],
+  "reviewNotes": []
+}

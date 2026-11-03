@@ -1,0 +1,159 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "rotator-cuff-B",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/rotator-cuff-B.json",
+    "textSha256Lf": "5f8dff78ec78d3feefa6281927042437d0781e9a22557518e69ee98249cb8a53",
+    "spec": "drill-anim/specs/rotator-cuff-B-r2.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "band"
+  ],
+  "optionalEquipment": [
+    "block",
+    "towel"
+  ],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "isolation"
+  ],
+  "contraction": [
+    "dynamic",
+    "isometric"
+  ],
+  "plane": [
+    "transverse"
+  ],
+  "bodyRegion": [
+    "upper"
+  ],
+  "primaryMuscles": [
+    "rotator-cuff"
+  ],
+  "secondaryMuscles": [
+    "deltoids"
+  ],
+  "stabilizers": [
+    "scapular"
+  ],
+  "joints": [
+    {
+      "joint": "shoulder",
+      "actions": [
+        "external-rotation",
+        "internal-rotation"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [
+    "band-anchor"
+  ],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "low",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup",
+    "main"
+  ],
+  "goals": [
+    "posture",
+    "strength",
+    "recovery"
+  ],
+  "alternatives": [
+    "h-side-er"
+  ],
+  "regressions": [],
+  "progressions": [
+    "rotator-cuff-C"
+  ],
+  "aiSummary": {
+    "zh": "弹力带练肩袖外旋，肩不稳、圆肩或上肢训练前热身首选。",
+    "en": "Banded external rotation for rotator-cuff strength and shoulder health."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "rotator-cuff"
+        ],
+        "synergistMuscles": [
+          "upper-back",
+          "deltoids"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "rotator-cuff"
+        ],
+        "secondaryMuscles": [
+          "deltoids"
+        ],
+        "stabilizers": [
+          "scapular"
+        ]
+      },
+      "reason": "v3 粗粒度 id 按实际做法拆到 taxonomy id（core→abs/obliques，glutes→glute-max 或 hip-abductors，upper-back→scapular，lower-back→erectors），只稳定不推动的归稳定肌。"
+    },
+    {
+      "field": "requiredEquipment/optionalEquipment",
+      "existing": [
+        "resistance-band",
+        "foam-block"
+      ],
+      "chosen": {
+        "requiredEquipment": [
+          "band"
+        ],
+        "optionalEquipment": [
+          "block",
+          "towel"
+        ]
+      },
+      "reason": "resistance-band→band；foam-block→block，夹在肘和身体之间的小垫，毛巾卷也行，改可选。"
+    }
+  ],
+  "reviewNotes": []
+}

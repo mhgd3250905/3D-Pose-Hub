@@ -1,0 +1,165 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-bridge-march",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-bridge-march.json",
+    "textSha256Lf": "14e4632e72424787946265f51489aa7324e8a25f2293c0a14d9009828678874f",
+    "spec": "drill-anim/specs/h-bridge-march.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [
+    {
+      "for": "mat",
+      "use": [
+        "towel"
+      ],
+      "loadNote": "similar"
+    }
+  ],
+  "trainingType": [
+    "strength",
+    "stability-control"
+  ],
+  "movementPattern": [
+    "hinge",
+    "anti-rotation"
+  ],
+  "contraction": [
+    "isometric",
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal",
+    "transverse"
+  ],
+  "bodyRegion": [
+    "lower",
+    "core"
+  ],
+  "primaryMuscles": [
+    "glute-max",
+    "hamstrings"
+  ],
+  "secondaryMuscles": [
+    "hip-flexors"
+  ],
+  "stabilizers": [
+    "abs",
+    "obliques",
+    "hip-abductors"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "extension",
+        "flexion"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "moderate",
+  "prerequisites": [
+    "floor-transfer"
+  ],
+  "laterality": "alternating",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "low",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "floor-transfer"
+      ]
+    },
+    {
+      "population": "pregnancy",
+      "flag": "modify",
+      "reasons": [
+        "supine-position"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "posture"
+  ],
+  "alternatives": [],
+  "regressions": [
+    "w-feet-on-chair-bridge",
+    "h-bridge-overhead"
+  ],
+  "progressions": [
+    "glute-max-A"
+  ],
+  "aiSummary": {
+    "zh": "臀桥保持中交替抬脚，练臀和骨盆稳定。",
+    "en": "Glute bridge march for glutes and pelvic stability."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "glutes",
+          "hamstrings"
+        ],
+        "synergistMuscles": [
+          "core"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "glute-max",
+          "hamstrings"
+        ],
+        "secondaryMuscles": [
+          "hip-flexors"
+        ],
+        "stabilizers": [
+          "abs",
+          "obliques",
+          "hip-abductors"
+        ]
+      },
+      "reason": "v3 粗粒度肌群（glutes）按动作实际做法拆到细分 id。"
+    },
+    {
+      "field": "laterality",
+      "existing": {
+        "unilateral": true,
+        "training.kind": "rep_alternate"
+      },
+      "chosen": "alternating",
+      "reason": "v3 unilateral=true 包含交替；本动作每次换一侧，标 alternating。"
+    }
+  ],
+  "reviewNotes": []
+}

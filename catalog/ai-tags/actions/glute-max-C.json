@@ -1,0 +1,120 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "glute-max-C",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/glute-max-C.json",
+    "textSha256Lf": "12a4a2db64f8c40c6624f187c7b3cd0c5dd86520e9e840c25ac0acb3cc347931",
+    "spec": "drill-anim/specs/glute-max-C.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "gym"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [
+    "reverse-hyper"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "hinge"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "glute-max",
+    "hamstrings"
+  ],
+  "secondaryMuscles": [
+    "erectors"
+  ],
+  "stabilizers": [
+    "abs",
+    "lats"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "extension",
+        "flexion"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "moderate",
+  "prerequisites": [],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "low",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "hypertrophy"
+  ],
+  "alternatives": [],
+  "regressions": [
+    "glute-max-B",
+    "g-cable-hip-extension"
+  ],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "健身房反向背伸机练臀和大腿后侧，对腰椎压缩小。",
+    "en": "Reverse hyper machine for glutes and hamstrings with little spinal compression."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "glutes",
+          "hamstrings"
+        ],
+        "synergistMuscles": [
+          "lower-back"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "glute-max",
+          "hamstrings"
+        ],
+        "secondaryMuscles": [
+          "erectors"
+        ],
+        "stabilizers": [
+          "abs",
+          "lats"
+        ]
+      },
+      "reason": "v3 粗粒度肌群（glutes）按动作实际做法拆到细分 id。"
+    }
+  ],
+  "reviewNotes": []
+}

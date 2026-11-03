@@ -1,0 +1,138 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-quadruped-open",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-quadruped-open.json",
+    "textSha256Lf": "1d7e4582960322d307321f5c1a5ed89ce406a6b08402c60cb08a0198cca3703c",
+    "spec": "drill-anim/specs/h-quadruped-open-rr1.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "mobility"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "transverse"
+  ],
+  "bodyRegion": [
+    "upper",
+    "core"
+  ],
+  "primaryMuscles": [],
+  "secondaryMuscles": [
+    "obliques",
+    "scapular"
+  ],
+  "stabilizers": [],
+  "stretchedMuscles": [
+    "chest"
+  ],
+  "joints": [
+    {
+      "joint": "thoracic-spine",
+      "actions": [
+        "rotation"
+      ]
+    },
+    {
+      "joint": "shoulder",
+      "actions": [
+        "horizontal-abduction"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [
+    "wrist-loading",
+    "kneeling-tolerance"
+  ],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "low",
+    "lumbar": "none",
+    "shoulder": "low",
+    "wrist": "low",
+    "neck": "low",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup",
+    "cooldown"
+  ],
+  "goals": [
+    "mobility",
+    "posture",
+    "desk-relief"
+  ],
+  "alternatives": [
+    "h-kneeling-thread-needle",
+    "h-open-book"
+  ],
+  "regressions": [
+    "o-seated-twist"
+  ],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "跪撑单臂朝天打开，活动胸椎、打开胸口，适合热身或久坐后。",
+    "en": "Quadruped arm opener for thoracic rotation and chest opening."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "muscles",
+      "existing": {
+        "activeMuscles": [
+          "upper-back",
+          "chest"
+        ],
+        "synergistMuscles": [
+          "obliques",
+          "deltoids"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [],
+        "secondaryMuscles": [
+          "obliques",
+          "scapular"
+        ],
+        "stabilizers": [],
+        "stretchedMuscles": [
+          "chest"
+        ]
+      },
+      "reason": "v3 upper-back/chest 主练：跪撑开胸是胸椎旋转，胸大肌被拉开放 stretchedMuscles。"
+    }
+  ],
+  "reviewNotes": []
+}

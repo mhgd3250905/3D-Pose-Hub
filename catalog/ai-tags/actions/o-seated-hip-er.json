@@ -1,0 +1,135 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "o-seated-hip-er",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/o-seated-hip-er.json",
+    "textSha256Lf": "1a8af97ed28420ecb32e9c9d56616ce44659e1d09be02c6f7ff6574fa127ee92",
+    "spec": "drill-anim/specs/o-seated-hip-er.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "office",
+    "gym",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "chair"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "mobility"
+  ],
+  "movementPattern": [
+    "rotation"
+  ],
+  "contraction": [
+    "dynamic",
+    "isometric"
+  ],
+  "plane": [
+    "transverse"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "hip-rotators"
+  ],
+  "secondaryMuscles": [
+    "glute-max"
+  ],
+  "stabilizers": [
+    "hip-flexors",
+    "abs"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "external-rotation"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "low",
+    "lumbar": "none",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup"
+  ],
+  "goals": [
+    "mobility",
+    "desk-relief",
+    "performance"
+  ],
+  "alternatives": [],
+  "regressions": [],
+  "progressions": [
+    "h-9090-liftoff"
+  ],
+  "aiSummary": {
+    "zh": "坐椅子上练髋外旋控制，工位热身或久坐后活动髋。",
+    "en": "Seated inward shin swings for hip external-rotation control."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "glutes"
+        ],
+        "synergistMuscles": [
+          "hip-flexors"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "hip-rotators"
+        ],
+        "secondaryMuscles": [
+          "glute-max"
+        ],
+        "stabilizers": [
+          "hip-flexors",
+          "abs"
+        ]
+      },
+      "reason": "小腿向内摆=髋外旋，主动是深层外旋肌（新 id hip-rotators），臀大肌协同；髋屈肌只托腿。"
+    }
+  ],
+  "reviewNotes": []
+}

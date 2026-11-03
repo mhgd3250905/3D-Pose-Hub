@@ -1,0 +1,162 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "lats-B",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/lats-B.json",
+    "textSha256Lf": "165c9b632fdcddb8a3cfd3fc48236f15f42ab91179d87d9f0a70bce973d0deb3",
+    "spec": "drill-anim/specs/lats-B-r2.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [
+    "band"
+  ],
+  "optionalEquipment": [
+    "doorframe"
+  ],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "isolation"
+  ],
+  "contraction": [
+    "dynamic",
+    "isometric"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "upper"
+  ],
+  "primaryMuscles": [
+    "lats"
+  ],
+  "secondaryMuscles": [
+    "triceps",
+    "scapular"
+  ],
+  "stabilizers": [
+    "abs",
+    "erectors"
+  ],
+  "joints": [
+    {
+      "joint": "shoulder",
+      "actions": [
+        "extension",
+        "flexion"
+      ]
+    },
+    {
+      "joint": "scapulothoracic",
+      "actions": [
+        "depression"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "moderate",
+  "prerequisites": [
+    "band-anchor"
+  ],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "low",
+    "shoulder": "low",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup",
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "hypertrophy",
+    "posture"
+  ],
+  "alternatives": [
+    "h-towel-pulldown"
+  ],
+  "regressions": [],
+  "progressions": [
+    "lats-A",
+    "scapular-B"
+  ],
+  "aiSummary": {
+    "zh": "只有弹力带时直臂练背阔肌，适合居家或酒店热身和主训练。",
+    "en": "Banded straight-arm pulldown to target the lats at home or in a hotel."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "lats"
+        ],
+        "synergistMuscles": [
+          "triceps",
+          "core"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "lats"
+        ],
+        "secondaryMuscles": [
+          "triceps",
+          "scapular"
+        ],
+        "stabilizers": [
+          "abs",
+          "erectors"
+        ]
+      },
+      "reason": "v3 粗粒度 id 按实际做法拆到 taxonomy id（core→abs/obliques，glutes→glute-max 或 hip-abductors，upper-back→scapular，lower-back→erectors），只稳定不推动的归稳定肌。"
+    },
+    {
+      "field": "requiredEquipment/optionalEquipment",
+      "existing": [
+        "resistance-band"
+      ],
+      "chosen": {
+        "requiredEquipment": [
+          "band"
+        ],
+        "optionalEquipment": [
+          "doorframe"
+        ]
+      },
+      "reason": "同义写法归一到词表 id，并按实际做法区分必需与可选。"
+    }
+  ],
+  "reviewNotes": [
+    "弹力带需固定在高处（门框/门把上方），optionalEquipment 写 doorframe。"
+  ]
+}

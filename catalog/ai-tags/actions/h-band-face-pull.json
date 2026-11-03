@@ -1,0 +1,161 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-band-face-pull",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-band-face-pull.json",
+    "textSha256Lf": "717cfa80156572390a157445c898bd94f88a9f03054edd0b029b4f219be62e4a",
+    "spec": "drill-anim/specs/h-band-face-pull-rr1.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [
+    "band"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "pull-horizontal"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "transverse"
+  ],
+  "bodyRegion": [
+    "upper"
+  ],
+  "primaryMuscles": [
+    "deltoids",
+    "scapular"
+  ],
+  "secondaryMuscles": [
+    "rotator-cuff",
+    "biceps"
+  ],
+  "stabilizers": [
+    "abs"
+  ],
+  "joints": [
+    {
+      "joint": "shoulder",
+      "actions": [
+        "horizontal-abduction",
+        "external-rotation"
+      ]
+    },
+    {
+      "joint": "scapulothoracic",
+      "actions": [
+        "retraction"
+      ]
+    },
+    {
+      "joint": "elbow",
+      "actions": [
+        "flexion"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "low",
+  "prerequisites": [
+    "band-anchor"
+  ],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "low",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [],
+  "sessionRole": [
+    "main",
+    "warmup"
+  ],
+  "goals": [
+    "posture",
+    "strength",
+    "desk-relief"
+  ],
+  "alternatives": [
+    "h-db-reverse-fly"
+  ],
+  "regressions": [
+    "h-band-pull-apart"
+  ],
+  "progressions": [
+    "rotator-cuff-C"
+  ],
+  "aiSummary": {
+    "zh": "改善圆肩、练后束和上背的弹力带面拉，需要高处固定点。",
+    "en": "Band face pull for rear delts and upper back to counter rounded shoulders; needs a high anchor."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "deltoids",
+          "upper-back"
+        ],
+        "synergistMuscles": [
+          "rotator-cuff",
+          "biceps"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "deltoids",
+          "scapular"
+        ],
+        "secondaryMuscles": [
+          "rotator-cuff",
+          "biceps"
+        ],
+        "stabilizers": [
+          "abs"
+        ]
+      },
+      "reason": "v3 粗粒度肌群（upper-back）按动作实际做法拆到细分 id。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 2,
+      "reason": "要同时协调抬肘、外旋和肩胛后缩，按词表定基础 2。"
+    },
+    {
+      "field": "requiredEquipment/optionalEquipment",
+      "existing": [
+        "resistance-band"
+      ],
+      "chosen": {
+        "requiredEquipment": [
+          "band"
+        ],
+        "optionalEquipment": []
+      },
+      "reason": "同义写法归一到词表 id。"
+    }
+  ],
+  "reviewNotes": []
+}

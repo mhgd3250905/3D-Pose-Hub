@@ -1,0 +1,156 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-db-row",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-db-row.json",
+    "textSha256Lf": "204ed5e5f359da74727f11e9acd3e563f14ca8a6d96b7ce2adba74bf634d4aab",
+    "spec": "drill-anim/specs/h-db-row.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [
+    "dumbbell",
+    "chair"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [
+    {
+      "for": "dumbbell",
+      "use": [
+        "backpack"
+      ],
+      "loadNote": "similar"
+    }
+  ],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "pull-horizontal"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "upper"
+  ],
+  "primaryMuscles": [
+    "lats",
+    "scapular"
+  ],
+  "secondaryMuscles": [
+    "biceps",
+    "deltoids"
+  ],
+  "stabilizers": [
+    "erectors",
+    "abs",
+    "obliques"
+  ],
+  "joints": [
+    {
+      "joint": "shoulder",
+      "actions": [
+        "extension"
+      ]
+    },
+    {
+      "joint": "scapulothoracic",
+      "actions": [
+        "retraction"
+      ]
+    },
+    {
+      "joint": "elbow",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "moderate",
+  "prerequisites": [],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "low",
+    "shoulder": "low",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "hypertrophy",
+    "posture"
+  ],
+  "alternatives": [
+    "h-band-row"
+  ],
+  "regressions": [],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "扶椅单臂哑铃划船，居家练背的主力动作，可用背包代替。",
+    "en": "Chair-supported one-arm row; the main home back builder, a backpack works too."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "lats",
+          "upper-back"
+        ],
+        "synergistMuscles": [
+          "biceps",
+          "deltoids"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "lats",
+          "scapular"
+        ],
+        "secondaryMuscles": [
+          "biceps",
+          "deltoids"
+        ],
+        "stabilizers": [
+          "erectors",
+          "abs",
+          "obliques"
+        ]
+      },
+      "reason": "v3 粗粒度肌群（upper-back）按动作实际做法拆到细分 id。upper-back 归到 scapular（肩胛后缩）。"
+    }
+  ],
+  "reviewNotes": []
+}

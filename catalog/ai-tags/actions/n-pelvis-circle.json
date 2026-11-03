@@ -1,0 +1,147 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "n-pelvis-circle",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/n-pelvis-circle.json",
+    "textSha256Lf": "080cf50f105c923cc4714b36f2f3c542a25c5a76f310ec45909bbbcedfe397ef",
+    "spec": "drill-anim/specs/n-pelvis-circle-r2.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "office",
+    "gym",
+    "outdoor",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "mobility"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal",
+    "frontal",
+    "transverse"
+  ],
+  "bodyRegion": [
+    "core",
+    "lower"
+  ],
+  "primaryMuscles": [
+    "abs",
+    "obliques",
+    "erectors"
+  ],
+  "secondaryMuscles": [
+    "hip-flexors",
+    "glute-max"
+  ],
+  "stabilizers": [],
+  "joints": [
+    {
+      "joint": "lumbar-spine",
+      "actions": [
+        "flexion",
+        "extension",
+        "lateral-flexion"
+      ]
+    },
+    {
+      "joint": "hip",
+      "actions": [
+        "circumduction"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "low",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup",
+    "cooldown"
+  ],
+  "goals": [
+    "desk-relief",
+    "mobility"
+  ],
+  "alternatives": [
+    "o-seated-catcow"
+  ],
+  "regressions": [],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "久坐后站起来快速活动腰和髋，任何场地都能做，不出汗。",
+    "en": "Quick standing pelvis circles to loosen the low back and hips anywhere."
+  },
+  "confidence": "low",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "hip-flexors",
+          "glutes",
+          "core"
+        ],
+        "synergistMuscles": [
+          "obliques",
+          "lower-back"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "abs",
+          "obliques",
+          "erectors"
+        ],
+        "secondaryMuscles": [
+          "hip-flexors",
+          "glute-max"
+        ],
+        "stabilizers": []
+      },
+      "reason": "骨盆画圈主要由腹部、腹斜肌、竖脊肌带动腰骨盆，髋周肌群配合；v3 把 hip-flexors/glutes 写成主动肌，改为协同。"
+    }
+  ],
+  "reviewNotes": [
+    "primaryMuscles 不确定：这是关节活动、主动肌很分散，改写了 v3，需要人工确认（low）。"
+  ]
+}

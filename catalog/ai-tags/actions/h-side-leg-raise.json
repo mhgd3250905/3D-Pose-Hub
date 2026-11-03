@@ -1,0 +1,137 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-side-leg-raise",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-side-leg-raise.json",
+    "textSha256Lf": "a853fcbd21a2f241410e0cbb1e37a440eba37489a648ca62aab78b42ecf1b495",
+    "spec": "drill-anim/specs/h-side-leg-raise-r5.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "office",
+    "gym",
+    "outdoor",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [],
+  "optionalEquipment": [
+    "chair",
+    "wall"
+  ],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "isolation"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "frontal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "hip-abductors"
+  ],
+  "secondaryMuscles": [],
+  "stabilizers": [
+    "obliques",
+    "abs"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "abduction"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "low",
+  "prerequisites": [
+    "single-leg-supported"
+  ],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "balance-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "posture"
+  ],
+  "alternatives": [
+    "h-band-standing-abduction"
+  ],
+  "regressions": [
+    "w-clamshell"
+  ],
+  "progressions": [
+    "hip-abductors-A"
+  ],
+  "aiSummary": {
+    "zh": "站姿侧抬腿练臀部外侧，可扶椅墙，工间也能做。",
+    "en": "Standing side leg raise for outer hips; hold a chair or wall if needed."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "muscles",
+      "existing": {
+        "activeMuscles": [
+          "abductors"
+        ],
+        "synergistMuscles": [
+          "glutes",
+          "core"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "hip-abductors"
+        ],
+        "secondaryMuscles": [],
+        "stabilizers": [
+          "obliques",
+          "abs"
+        ]
+      },
+      "reason": "v3 abductors/glutes：侧抬腿以外展为主，归 hip-abductors；支撑腿的臀中肌也在稳骨盆，同 id 不重复列。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 2,
+      "reason": "文案为双手扶腰不扶物单腿站，需平衡，按 2 级；扶椅/墙可退回 1 级。"
+    }
+  ],
+  "reviewNotes": []
+}

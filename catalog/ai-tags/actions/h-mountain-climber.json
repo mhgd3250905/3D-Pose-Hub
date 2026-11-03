@@ -1,0 +1,161 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-mountain-climber",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-mountain-climber.json",
+    "textSha256Lf": "c55442281029cfd1e3ec67015187635a33db90090ec7bb636fab07527a8f3b64",
+    "spec": "drill-anim/specs/h-mountain-climber-r8.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "stability-control"
+  ],
+  "movementPattern": [
+    "anti-extension",
+    "gait"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "core"
+  ],
+  "primaryMuscles": [
+    "abs",
+    "hip-flexors"
+  ],
+  "secondaryMuscles": [
+    "obliques"
+  ],
+  "stabilizers": [
+    "deltoids",
+    "serratus",
+    "chest"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    },
+    {
+      "joint": "knee",
+      "actions": [
+        "flexion"
+      ]
+    },
+    {
+      "joint": "shoulder",
+      "actions": [
+        "isometric-hold"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "moderate",
+  "prerequisites": [
+    "wrist-loading",
+    "plank-30s"
+  ],
+  "laterality": "alternating",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "low",
+    "shoulder": "low",
+    "wrist": "low",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "pregnancy",
+      "flag": "modify",
+      "reasons": [
+        "abdominal-pressure"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup",
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "fat-loss"
+  ],
+  "alternatives": [
+    "h-plank-side-step"
+  ],
+  "regressions": [
+    "h-bear-plank",
+    "h-forearm-plank"
+  ],
+  "progressions": [
+    "h-slider-body-saw"
+  ],
+  "aiSummary": {
+    "zh": "慢速登山跑，直臂俯撑练核心稳定，比平板多一点心率。",
+    "en": "Slow mountain climber for plank stability with a bit more heart rate than a plank."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "muscles",
+      "existing": {
+        "activeMuscles": [
+          "core",
+          "hip-flexors"
+        ],
+        "synergistMuscles": [
+          "deltoids",
+          "chest",
+          "quadriceps"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "abs",
+          "hip-flexors"
+        ],
+        "secondaryMuscles": [
+          "obliques"
+        ],
+        "stabilizers": [
+          "deltoids",
+          "serratus",
+          "chest"
+        ]
+      },
+      "reason": "v3 core 拆为 abs（抗伸展）+ obliques；quadriceps 只是屈膝收腿时跟着动，不列入；deltoids/chest 是支撑稳定，归 stabilizers。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 2,
+      "reason": "直臂全身支撑下交替收腿，需要先能平板 30 秒，按 2 级。"
+    }
+  ],
+  "reviewNotes": []
+}

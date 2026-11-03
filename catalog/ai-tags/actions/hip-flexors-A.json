@@ -1,0 +1,146 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "hip-flexors-A",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/hip-flexors-A.json",
+    "textSha256Lf": "3ae9eb7268d0cfc9ddd0dd92d339cee1ee6019e3f298bddca43092f9b43ef36c",
+    "spec": "drill-anim/specs/hip-flexors-A-r2.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "isolation"
+  ],
+  "contraction": [
+    "dynamic",
+    "isometric"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "lower",
+    "core"
+  ],
+  "primaryMuscles": [
+    "hip-flexors",
+    "quadriceps"
+  ],
+  "secondaryMuscles": [
+    "abs"
+  ],
+  "stabilizers": [],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "flexion"
+      ]
+    },
+    {
+      "joint": "knee",
+      "actions": [
+        "extension"
+      ]
+    }
+  ],
+  "difficulty": 3,
+  "intensity": "low",
+  "prerequisites": [],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "low",
+    "shoulder": "none",
+    "wrist": "low",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "modify"
+    }
+  ],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "performance"
+  ],
+  "alternatives": [
+    "hip-flexors-C"
+  ],
+  "regressions": [
+    "n-seated-knee-lift",
+    "hip-flexors-B"
+  ],
+  "progressions": [
+    "t-lsit-tuck"
+  ],
+  "aiSummary": {
+    "zh": "坐地前倾抬直腿，练髋屈肌末端力量，为 L 撑等技巧做准备。",
+    "en": "Seated pike leg lifts for end-range hip flexor strength, prep for L-sits."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "muscles",
+      "existing": {
+        "activeMuscles": [
+          "hip-flexors",
+          "quadriceps"
+        ],
+        "synergistMuscles": [
+          "core"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "hip-flexors",
+          "quadriceps"
+        ],
+        "secondaryMuscles": [
+          "abs"
+        ],
+        "stabilizers": []
+      },
+      "reason": "v3 粗粒度肌群（core/glutes/upper-back/lower-back/abductors）按本动作实际做法拆到细分 id。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 2,
+      "chosen": 3,
+      "reason": "前倾坐姿抬直腿属于末端主动压缩力量，多数人抬不起来，按 3 级。"
+    },
+    {
+      "field": "floorRequired",
+      "existing": {
+        "position": "seated"
+      },
+      "chosen": true,
+      "reason": "坐在地上做，算着地，不进办公室。"
+    }
+  ],
+  "reviewNotes": []
+}

@@ -1,0 +1,144 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-db-rdl",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-db-rdl.json",
+    "textSha256Lf": "b833570e9b667d06ad9a9b6fbdc412f5ad69802bd1672fcf43e8831b3128855c",
+    "spec": "drill-anim/specs/h-db-rdl.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [
+    "dumbbell"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [
+    {
+      "for": "dumbbell",
+      "use": [
+        "backpack",
+        "water-bottle"
+      ],
+      "loadNote": "lighter"
+    }
+  ],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "hinge"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "hamstrings",
+    "glute-max"
+  ],
+  "secondaryMuscles": [
+    "erectors"
+  ],
+  "stabilizers": [
+    "forearms",
+    "abs",
+    "scapular"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    },
+    {
+      "joint": "lumbar-spine",
+      "actions": [
+        "isometric-hold"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "moderate",
+  "prerequisites": [
+    "hip-hinge"
+  ],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "moderate",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "hypertrophy"
+  ],
+  "alternatives": [],
+  "regressions": [
+    "h-good-morning"
+  ],
+  "progressions": [
+    "hamstrings-A"
+  ],
+  "aiSummary": {
+    "zh": "哑铃罗马尼亚硬拉，练大腿后侧和学会髋铰链的主力动作。",
+    "en": "Dumbbell RDL, the main hamstring builder and hip-hinge teacher."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "hamstrings",
+          "glutes"
+        ],
+        "synergistMuscles": [
+          "lower-back",
+          "forearms"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "hamstrings",
+          "glute-max"
+        ],
+        "secondaryMuscles": [
+          "erectors"
+        ],
+        "stabilizers": [
+          "forearms",
+          "abs",
+          "scapular"
+        ]
+      },
+      "reason": "v3 粗粒度肌群（glutes）按动作实际做法拆到细分 id。"
+    }
+  ],
+  "reviewNotes": [
+    "progressions 给 hamstrings-A（徒手单腿 RDL）：单腿平衡要求更高。"
+  ]
+}

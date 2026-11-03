@@ -1,0 +1,157 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-chair-progressive-front-split-native",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-chair-progressive-front-split-native.json",
+    "textSha256Lf": "f53fc5ac81b9219421759a120c2d1d86e119cfd02248d20710d27f66e4b09089",
+    "spec": "drill-anim/specs/h-chair-progressive-front-split-native.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "chair",
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "static-stretch"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "isometric"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [],
+  "secondaryMuscles": [],
+  "stabilizers": [
+    "abs",
+    "glute-max"
+  ],
+  "stretchedMuscles": [
+    "hamstrings",
+    "hip-flexors",
+    "quadriceps"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    },
+    {
+      "joint": "knee",
+      "actions": [
+        "extension"
+      ]
+    }
+  ],
+  "difficulty": 4,
+  "intensity": "low",
+  "prerequisites": [
+    "floor-transfer",
+    "kneeling-tolerance",
+    "split-stance"
+  ],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "low",
+    "lumbar": "low",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "moderate"
+  },
+  "populationNotes": [
+    {
+      "population": "older-adult",
+      "flag": "caution",
+      "reasons": [
+        "end-range-stretch",
+        "floor-transfer"
+      ]
+    },
+    {
+      "population": "beginner",
+      "flag": "caution",
+      "reasons": [
+        "end-range-stretch"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "cooldown"
+  ],
+  "goals": [
+    "mobility",
+    "performance"
+  ],
+  "alternatives": [],
+  "regressions": [
+    "n-half-split",
+    "s-kneel-hipflex",
+    "h-couch-stretch"
+  ],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "练前后劈叉的深度柔韧拉伸，只给已有基础柔韧的人。",
+    "en": "Progressive front-split stretch for people with a flexibility base."
+  },
+  "confidence": "medium",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers/stretchedMuscles",
+      "existing": {
+        "activeMuscles": [
+          "hamstrings",
+          "hip-flexors"
+        ],
+        "synergistMuscles": [
+          "adductors",
+          "quadriceps"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [],
+        "secondaryMuscles": [],
+        "stabilizers": [
+          "abs",
+          "glute-max"
+        ],
+        "stretchedMuscles": [
+          "hamstrings",
+          "hip-flexors",
+          "quadriceps"
+        ]
+      },
+      "reason": "拉伸/活动类：v3 把被拉肌写在 activeMuscles，这里移到 stretchedMuscles，无主动发力肌。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 2,
+      "chosen": 4,
+      "reason": "前后劈叉属词表“深度柔韧类”，定进阶 4。"
+    }
+  ],
+  "reviewNotes": [
+    "难度 4 有争议：渐进滑开可只做部分幅度，但目标姿势是劈叉。"
+  ]
+}

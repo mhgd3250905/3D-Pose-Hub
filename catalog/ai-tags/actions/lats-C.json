@@ -1,0 +1,154 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "lats-C",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/lats-C.json",
+    "textSha256Lf": "c86b0961d84d3e9bd8cb74e9b7f74bc343d855cdfb73e67763d39b6149571284",
+    "spec": "drill-anim/specs/lats-C.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "gym",
+    "outdoor"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "dip-bars"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [
+    {
+      "for": "dip-bars",
+      "use": [
+        "chair"
+      ],
+      "loadNote": "lighter"
+    }
+  ],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "dynamic",
+    "isometric"
+  ],
+  "plane": [
+    "frontal"
+  ],
+  "bodyRegion": [
+    "upper"
+  ],
+  "primaryMuscles": [
+    "lats",
+    "scapular"
+  ],
+  "secondaryMuscles": [
+    "chest"
+  ],
+  "stabilizers": [
+    "triceps",
+    "abs",
+    "forearms"
+  ],
+  "joints": [
+    {
+      "joint": "scapulothoracic",
+      "actions": [
+        "depression",
+        "elevation"
+      ]
+    },
+    {
+      "joint": "shoulder",
+      "actions": [
+        "isometric-hold"
+      ]
+    },
+    {
+      "joint": "elbow",
+      "actions": [
+        "isometric-hold"
+      ]
+    }
+  ],
+  "difficulty": 3,
+  "intensity": "moderate",
+  "prerequisites": [],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "moderate",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "performance"
+  ],
+  "alternatives": [
+    "scapular-B"
+  ],
+  "regressions": [
+    "lats-A",
+    "triceps-B"
+  ],
+  "progressions": [
+    "triceps-C"
+  ],
+  "aiSummary": {
+    "zh": "有双杠时练肩胛下压和撑体稳定，是双杠臂屈伸和撑类技巧的前置。",
+    "en": "Dip-bar scapular depression for support strength; prep for dips and support skills."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "lats"
+        ],
+        "synergistMuscles": [
+          "chest",
+          "triceps"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "lats",
+          "scapular"
+        ],
+        "secondaryMuscles": [
+          "chest"
+        ],
+        "stabilizers": [
+          "triceps",
+          "abs",
+          "forearms"
+        ]
+      },
+      "reason": "v3 粗粒度 id 按实际做法拆到 taxonomy id（core→abs/obliques，glutes→glute-max 或 hip-abductors，upper-back→scapular，lower-back→erectors），只稳定不推动的归稳定肌。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 2,
+      "chosen": 3,
+      "reason": "双杠上直臂撑起全身体重并反复升降肩带，属 3 级\"全身支撑\"。"
+    }
+  ],
+  "reviewNotes": [
+    "户外公园常有双杠，故加 outdoor；两把稳固椅子可勉强替代（脚可点地减重）。"
+  ]
+}

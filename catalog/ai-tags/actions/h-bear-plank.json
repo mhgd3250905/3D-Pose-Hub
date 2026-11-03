@@ -1,0 +1,171 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-bear-plank",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-bear-plank.json",
+    "textSha256Lf": "910cd2f5f300b4aef9f838ec59a036b9ad913aa5692fc151640d9a1c9468f6af",
+    "spec": "drill-anim/specs/h-bear-plank-r4.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [
+    {
+      "for": "mat",
+      "use": [
+        "towel"
+      ],
+      "loadNote": "similar"
+    }
+  ],
+  "trainingType": [
+    "stability-control"
+  ],
+  "movementPattern": [
+    "anti-extension"
+  ],
+  "contraction": [
+    "isometric"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "core"
+  ],
+  "primaryMuscles": [
+    "abs"
+  ],
+  "secondaryMuscles": [
+    "quadriceps",
+    "deltoids"
+  ],
+  "stabilizers": [
+    "serratus",
+    "obliques",
+    "hip-flexors"
+  ],
+  "joints": [
+    {
+      "joint": "shoulder",
+      "actions": [
+        "isometric-hold"
+      ]
+    },
+    {
+      "joint": "wrist",
+      "actions": [
+        "extension"
+      ]
+    },
+    {
+      "joint": "knee",
+      "actions": [
+        "isometric-hold"
+      ]
+    },
+    {
+      "joint": "hip",
+      "actions": [
+        "isometric-hold"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "moderate",
+  "prerequisites": [
+    "floor-transfer",
+    "wrist-loading"
+  ],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "low",
+    "lumbar": "none",
+    "shoulder": "low",
+    "wrist": "moderate",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "floor-transfer"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main",
+    "warmup"
+  ],
+  "goals": [
+    "strength",
+    "performance"
+  ],
+  "alternatives": [
+    "h-forearm-plank"
+  ],
+  "regressions": [
+    "w-bird-dog"
+  ],
+  "progressions": [
+    "obliques-A",
+    "h-mountain-climber"
+  ],
+  "aiSummary": {
+    "zh": "四足位膝盖离地的核心稳定保持，比平板支撑对腰更友好。",
+    "en": "Quadruped knee-hover core hold; gentler on the low back than a full plank."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "core"
+        ],
+        "synergistMuscles": [
+          "deltoids",
+          "quadriceps"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "abs"
+        ],
+        "secondaryMuscles": [
+          "quadriceps",
+          "deltoids"
+        ],
+        "stabilizers": [
+          "serratus",
+          "obliques",
+          "hip-flexors"
+        ]
+      },
+      "reason": "v3 粗粒度肌群（core）按动作实际做法拆到细分 id。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 2,
+      "reason": "膝离地全身支撑需持续核心和肩稳定，定基础 2。"
+    }
+  ],
+  "reviewNotes": []
+}

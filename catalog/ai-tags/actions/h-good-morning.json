@@ -1,0 +1,142 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-good-morning",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-good-morning.json",
+    "textSha256Lf": "d85d55b92397337b72e150fe8c5700dd7d302ae87f1beb8cb1a88e097ea93f01",
+    "spec": "drill-anim/specs/h-good-morning-r2.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "office",
+    "gym",
+    "outdoor",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "hinge"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "hamstrings",
+    "erectors"
+  ],
+  "secondaryMuscles": [
+    "glute-max"
+  ],
+  "stabilizers": [
+    "abs"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    },
+    {
+      "joint": "lumbar-spine",
+      "actions": [
+        "isometric-hold"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "low",
+  "prerequisites": [],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "low",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup",
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "posture",
+    "mobility"
+  ],
+  "alternatives": [],
+  "regressions": [],
+  "progressions": [
+    "h-db-rdl",
+    "hamstrings-A"
+  ],
+  "aiSummary": {
+    "zh": "零器械学髋铰链的站姿动作，适合新手练大腿后侧和下背、也可工间做。",
+    "en": "Bodyweight hip-hinge drill to learn bending from the hips; fine for desk breaks."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "muscles",
+      "existing": {
+        "activeMuscles": [
+          "hamstrings",
+          "lower-back"
+        ],
+        "synergistMuscles": [
+          "glutes"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "hamstrings",
+          "erectors"
+        ],
+        "secondaryMuscles": [
+          "glute-max"
+        ],
+        "stabilizers": [
+          "abs"
+        ]
+      },
+      "reason": "v3 粗粒度肌群（core/glutes/upper-back/lower-back/abductors）按本动作实际做法拆到细分 id。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 2,
+      "reason": "要同时做到推髋、背平、膝微弯，属于需要协调要点的基础级。"
+    }
+  ],
+  "reviewNotes": []
+}

@@ -1,0 +1,155 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-sumo-pry",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-sumo-pry.json",
+    "textSha256Lf": "69774f2c4bcfecc7ab13d077b700e938f5067c54472e7c5aa88b50a8ba3371c6",
+    "spec": "drill-anim/specs/h-sumo-pry-r2.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "office",
+    "gym",
+    "outdoor",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "mobility"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "frontal",
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [],
+  "secondaryMuscles": [
+    "quadriceps",
+    "glute-max"
+  ],
+  "stabilizers": [
+    "abs",
+    "erectors"
+  ],
+  "stretchedMuscles": [
+    "adductors"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "flexion",
+        "abduction",
+        "external-rotation"
+      ]
+    },
+    {
+      "joint": "knee",
+      "actions": [
+        "flexion"
+      ]
+    },
+    {
+      "joint": "ankle",
+      "actions": [
+        "dorsiflexion"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "low",
+  "prerequisites": [
+    "deep-squat-range"
+  ],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "low",
+    "lumbar": "none",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "low",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "balance-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup"
+  ],
+  "goals": [
+    "mobility",
+    "performance",
+    "desk-relief"
+  ],
+  "alternatives": [
+    "n-squat-shift"
+  ],
+  "regressions": [],
+  "progressions": [
+    "adductors-A"
+  ],
+  "aiSummary": {
+    "zh": "宽距深蹲肘推膝停留，打开髋和大腿内侧，适合深蹲前热身。",
+    "en": "Sumo squat hold with elbow pry to open hips and inner thighs before squats."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "muscles",
+      "existing": {
+        "activeMuscles": [
+          "adductors",
+          "glutes"
+        ],
+        "synergistMuscles": [
+          "quadriceps",
+          "core"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [],
+        "secondaryMuscles": [
+          "quadriceps",
+          "glute-max"
+        ],
+        "stabilizers": [
+          "abs",
+          "erectors"
+        ],
+        "stretchedMuscles": [
+          "adductors"
+        ]
+      },
+      "reason": "v3 adductors/glutes 主练：低位相扑蹲停留主要是撑开大腿内侧，放 stretchedMuscles；股四头肌与臀维持蹲姿，归协同。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 2,
+      "reason": "需要能蹲到大腿接近平行并稳住，按 2 级。"
+    }
+  ],
+  "reviewNotes": []
+}

@@ -1,0 +1,152 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-band-stepout",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-band-stepout.json",
+    "textSha256Lf": "9c3ac559857f23e1029c0b9f27cfbb87d1431038133c6da09a7eec3cace6a0cc",
+    "spec": "drill-anim/specs/h-band-stepout-r2.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "low",
+  "sweat": "light",
+  "requiredEquipment": [
+    "band"
+  ],
+  "optionalEquipment": [
+    "d-handle"
+  ],
+  "substitutes": [],
+  "trainingType": [
+    "stability-control"
+  ],
+  "movementPattern": [
+    "anti-rotation"
+  ],
+  "contraction": [
+    "isometric",
+    "dynamic"
+  ],
+  "plane": [
+    "transverse",
+    "frontal"
+  ],
+  "bodyRegion": [
+    "core"
+  ],
+  "primaryMuscles": [
+    "obliques",
+    "abs"
+  ],
+  "secondaryMuscles": [
+    "hip-abductors"
+  ],
+  "stabilizers": [
+    "glute-max",
+    "deltoids"
+  ],
+  "joints": [
+    {
+      "joint": "lumbar-spine",
+      "actions": [
+        "isometric-hold"
+      ]
+    },
+    {
+      "joint": "hip",
+      "actions": [
+        "abduction",
+        "adduction"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "moderate",
+  "prerequisites": [
+    "band-anchor"
+  ],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "low",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "performance"
+  ],
+  "alternatives": [],
+  "regressions": [
+    "h-band-pallof",
+    "obliques-B"
+  ],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "在抗旋转推基础上加侧步，练移动中的核心稳定。",
+    "en": "Pallof press with lateral steps for core stability while moving."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "obliques",
+          "core"
+        ],
+        "synergistMuscles": [
+          "deltoids",
+          "glutes",
+          "abductors"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "obliques",
+          "abs"
+        ],
+        "secondaryMuscles": [
+          "hip-abductors"
+        ],
+        "stabilizers": [
+          "glute-max",
+          "deltoids"
+        ]
+      },
+      "reason": "v3 粗粒度肌群（core）按动作实际做法拆到细分 id。"
+    },
+    {
+      "field": "requiredEquipment/optionalEquipment",
+      "existing": [
+        "resistance-band",
+        "d-handle"
+      ],
+      "chosen": {
+        "requiredEquipment": [
+          "band"
+        ],
+        "optionalEquipment": [
+          "d-handle"
+        ]
+      },
+      "reason": "resistance-band 归一为 band；d-handle 非必需，改为可选。"
+    }
+  ],
+  "reviewNotes": []
+}

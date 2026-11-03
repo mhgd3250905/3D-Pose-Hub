@@ -1,0 +1,136 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-towel-pass",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-towel-pass.json",
+    "textSha256Lf": "86e2f2e47723094a49a9184c75ae440f44d3a60891687e0978366138c8fbbf51",
+    "spec": "drill-anim/specs/h-towel-pass-r11.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel",
+    "outdoor"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "towel"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "mobility"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "upper"
+  ],
+  "primaryMuscles": [],
+  "secondaryMuscles": [
+    "rotator-cuff",
+    "scapular"
+  ],
+  "stabilizers": [],
+  "stretchedMuscles": [
+    "chest",
+    "deltoids"
+  ],
+  "joints": [
+    {
+      "joint": "shoulder",
+      "actions": [
+        "flexion",
+        "extension",
+        "circumduction"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "low",
+  "prerequisites": [
+    "overhead-range"
+  ],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "moderate",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "modify"
+    }
+  ],
+  "sessionRole": [
+    "warmup"
+  ],
+  "goals": [
+    "mobility",
+    "posture",
+    "performance"
+  ],
+  "alternatives": [
+    "h-wall-angel"
+  ],
+  "regressions": [
+    "h-towel-behind"
+  ],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "毛巾宽握直臂过头转肩，热身打开肩前侧，需手臂能无痛举过头。",
+    "en": "Towel pass-through to open the front shoulders; needs pain-free overhead range."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "muscles",
+      "existing": {
+        "activeMuscles": [
+          "deltoids",
+          "chest"
+        ],
+        "synergistMuscles": [
+          "rotator-cuff",
+          "upper-back"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [],
+        "secondaryMuscles": [
+          "rotator-cuff",
+          "scapular"
+        ],
+        "stabilizers": [],
+        "stretchedMuscles": [
+          "chest",
+          "deltoids"
+        ]
+      },
+      "reason": "v3 deltoids/chest 主练：直臂过头转肩是活动度练习，胸大肌和三角肌前束被拉开，放 stretchedMuscles。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 2,
+      "reason": "直臂过头绕到背后需要较好肩活动度，按 2 级。"
+    }
+  ],
+  "reviewNotes": []
+}

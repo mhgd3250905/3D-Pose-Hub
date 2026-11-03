@@ -1,0 +1,180 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "erectors-A",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/erectors-A.json",
+    "textSha256Lf": "9019b15b97f77c820d39b4d8e6395a14c3a10baf86e803460032c8766bf554a6",
+    "spec": "drill-anim/specs/erectors-A.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [
+    {
+      "for": "mat",
+      "use": [
+        "towel"
+      ],
+      "loadNote": "similar"
+    }
+  ],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "hinge"
+  ],
+  "contraction": [
+    "dynamic",
+    "isometric"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "lower",
+    "upper"
+  ],
+  "primaryMuscles": [
+    "glute-max",
+    "hamstrings",
+    "erectors"
+  ],
+  "secondaryMuscles": [
+    "triceps",
+    "deltoids"
+  ],
+  "stabilizers": [
+    "abs",
+    "scapular"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "extension"
+      ]
+    },
+    {
+      "joint": "shoulder",
+      "actions": [
+        "extension"
+      ]
+    },
+    {
+      "joint": "wrist",
+      "actions": [
+        "extension"
+      ]
+    },
+    {
+      "joint": "elbow",
+      "actions": [
+        "isometric-hold"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "moderate",
+  "prerequisites": [
+    "floor-transfer",
+    "wrist-loading"
+  ],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "low",
+    "shoulder": "moderate",
+    "wrist": "moderate",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "floor-transfer"
+      ]
+    },
+    {
+      "population": "pregnancy",
+      "flag": "modify",
+      "reasons": [
+        "supine-position"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "posture"
+  ],
+  "alternatives": [],
+  "regressions": [
+    "h-tabletop"
+  ],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "徒手练后侧链和肩伸的反向平板抬髋，手腕肩前侧要能承重。",
+    "en": "Bodyweight reverse plank hip lift for the posterior chain; needs wrist and shoulder tolerance."
+  },
+  "confidence": "medium",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "lower-back",
+          "glutes",
+          "hamstrings"
+        ],
+        "synergistMuscles": [
+          "deltoids",
+          "triceps"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "glute-max",
+          "hamstrings",
+          "erectors"
+        ],
+        "secondaryMuscles": [
+          "triceps",
+          "deltoids"
+        ],
+        "stabilizers": [
+          "abs",
+          "scapular"
+        ]
+      },
+      "reason": "v3 粗粒度肌群（glutes/lower-back）按动作实际做法拆到细分 id。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 2,
+      "reason": "直腿反向平板要求手腕后伸承重和肩伸展，比屈膝桌面式难，定 2。"
+    }
+  ],
+  "reviewNotes": [
+    "与同组 B/C（背伸）模式不同，未与它们串进退阶；退阶给屈膝版 h-tabletop。"
+  ]
+}

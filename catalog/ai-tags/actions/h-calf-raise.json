@@ -1,0 +1,123 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-calf-raise",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-calf-raise.json",
+    "textSha256Lf": "83607720bfeba8ad86dfa261cab42dd1edb5af699f9571d90adad3cbe4cfa184",
+    "spec": "drill-anim/specs/h-calf-raise.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "office",
+    "gym",
+    "outdoor",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [],
+  "optionalEquipment": [
+    "wall",
+    "chair"
+  ],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "isolation"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "calves"
+  ],
+  "secondaryMuscles": [],
+  "stabilizers": [
+    "tibialis",
+    "peroneals"
+  ],
+  "joints": [
+    {
+      "joint": "ankle",
+      "actions": [
+        "plantarflexion"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "moderate",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main",
+    "warmup"
+  ],
+  "goals": [
+    "strength",
+    "performance",
+    "desk-relief"
+  ],
+  "alternatives": [
+    "h-bent-knee-calf-raise"
+  ],
+  "regressions": [
+    "o-seated-calf-raise"
+  ],
+  "progressions": [
+    "h-supported-single-leg-calf",
+    "h-db-calf-raise"
+  ],
+  "aiSummary": {
+    "zh": "扶墙提踵是练小腿的入门动作，工位旁随时能做。",
+    "en": "Wall-supported calf raise, an entry calf exercise doable beside a desk."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "requiredEquipment/optionalEquipment",
+      "existing": [
+        "wall"
+      ],
+      "chosen": {
+        "requiredEquipment": [],
+        "optionalEquipment": [
+          "wall",
+          "chair"
+        ]
+      },
+      "reason": "墙只用来扶稳保持平衡，改为可选（椅子也行）。"
+    }
+  ],
+  "reviewNotes": []
+}

@@ -1,0 +1,167 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "t-seated-straddle-lift-1leg",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/t-seated-straddle-lift-1leg.json",
+    "textSha256Lf": "f21708fde020c1903aa5c3b2645926f6730d5fdb244aa4456595b86b9f3155de",
+    "spec": "drill-anim/specs/t-seated-straddle-lift-1leg-r3.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "strength",
+    "mobility"
+  ],
+  "movementPattern": [
+    "isolation"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "hip-flexors",
+    "quadriceps"
+  ],
+  "secondaryMuscles": [
+    "abs",
+    "adductors"
+  ],
+  "stabilizers": [
+    "triceps"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    },
+    {
+      "joint": "knee",
+      "actions": [
+        "isometric-hold"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "moderate",
+  "prerequisites": [
+    "floor-transfer"
+  ],
+  "laterality": "alternating",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "modify",
+      "reasons": [
+        "end-range-stretch"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "floor-transfer"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup",
+    "main"
+  ],
+  "goals": [
+    "performance",
+    "mobility",
+    "strength"
+  ],
+  "alternatives": [
+    "hip-flexors-A"
+  ],
+  "regressions": [],
+  "progressions": [
+    "t-seated-straddle-lifts"
+  ],
+  "aiSummary": {
+    "zh": "分腿坐单腿抬起，练主动柔韧和抬腿力量，L 撑/托马斯链条的起点。",
+    "en": "Seated straddle single-leg lift for active flexibility; start of the L-sit chain."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "hip-flexors",
+          "quadriceps"
+        ],
+        "synergistMuscles": [
+          "core",
+          "adductors"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "hip-flexors",
+          "quadriceps"
+        ],
+        "secondaryMuscles": [
+          "abs",
+          "adductors"
+        ],
+        "stabilizers": [
+          "triceps"
+        ]
+      },
+      "reason": "分腿坐抬腿靠髋屈肌（含股直肌）发力，腹部协同；手指点地只是稳定。"
+    },
+    {
+      "field": "floorRequired",
+      "existing": {
+        "position": "seated"
+      },
+      "chosen": true,
+      "reason": "坐在地上做（不是坐椅子），需要着地，不进办公室。"
+    },
+    {
+      "field": "laterality",
+      "existing": {
+        "unilateral": true,
+        "training.kind": "rep_alternate"
+      },
+      "chosen": "alternating",
+      "reason": "v3 unilateral=true 实为左右交替（rep_alternate），与单侧分开。"
+    }
+  ],
+  "reviewNotes": []
+}
