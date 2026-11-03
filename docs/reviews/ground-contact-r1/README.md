@@ -81,3 +81,24 @@ h-open-book 剖面依据 `probe-profile.mjs`：x≥0.20 处头最低 222 mm、x 
 h-floor-nordic-hand-reset★、h-quadruped-rockback★、h-kneeling-pushup★、h-quadruped-open★、h-supine-bilateral-leg-raise★、h-supine-heel-slide★、
 h-kneeling-thread-needle、h-catcow-quad、glute-max-A、s-frog、adductors-B、deltoids-B、n-half-split、s-lizard、n-straddle-fold、s-pigeon（仅手）、h-open-book（仅头枕）。
 M1 改过、本次未动、仍需按 M1 重渲：w-bird-dog、w-fire-hydrant、h-quad-cars、h-donkey-kick、deltoids-C、h-short-side-plank、h-adductor-rock。
+
+---
+
+# 里程碑 M3（s-pigeon 方案 A + C 类小穿透）2026-11-04
+
+生成器 `tools/ground-contact-r1/m3-fix.mjs`（`FIX` 表一行一个动作，参数均由 `probe.mjs` 标定）；recipe 只改指向/SHA，记 `groundContactFix.r1m3`。
+复测：`ground-penetration-audit.mjs --stride 16 --size 128`（`m3-after-<id>.jsonl`）；s-pigeon 另跑 `raised-mat-vertex-audit.mjs`（`m3-after-s-pigeon-blocks.jsonl`）。
+
+| 动作 | 修前（原版，整循环最深） | 修后（整循环 15 帧） | 改了什么 | 外观 |
+|---|---|---|---|---|
+| s-pigeon (gc2) | 后膝 −32.1、后小腿 −19.0、前膝 −17.9、后大腿 −17.2、前小腿 −11.3、后脚背 −8.4；双手陷砖 −24.3；臀下垫块被右大腿压入 40.8 | 前膝 −2.8、后小腿 −1.3、后脚背 +0.1、后膝 +0.6、前脚 0、前小腿 +0.4；后大腿离地 19.7（M2 probe 为 19.1）；双手砖面 +1.0，砖体内 0 顶点；垫块离右大腿 5.7 mm，0 顶点在垫内 | 方案 A：双手+立砖外移到两髋外侧（左 x 0.33/z −0.02，避开前脚尖；右 x −0.35/z −0.04，避开前膝/小腿），手高不变；骨盆 +45 mm；后脚 floor→free world（踝 [0.12,0.0505,−0.80]、跖屈 154.8°，同 n-half-split 后脚做法）；臀下垫块 z 后移 3 cm、顶面 65→58 mm | 双臂从「撑在胸前两侧」变成「撑在两髋外侧」，躯干整体高 4.5 cm；节奏不变 |
+| h-kneeling-instep-stretch | 双小腿 −10.8、脚背 −8.6 | 小腿 −1.0、脚背 +2.3/+2.4；膝 22→23（本不着地） | 双脚踝 +11 mm、跖屈 −3° | 无可见变化 |
+| s-kneel-hipflex | 后小腿 −10.2、脚背 −5.6 | 后小腿 −0.4、脚背 +1.1、后膝 +1.5…+3.0（原 +0.8…+2.4）；前脚 0 | 后脚同 n-half-split-gc1（踝 +11 mm、跖屈 −3°） | 无 |
+| hip-abductors-A | 左肘 −7.1、前臂 −6.8 | 肘 +0.2、前臂 −1.2；手 −1.8 原样、下侧脚 +0.1 | 左肘 mid 约束 y 0.042→0.052 | 无 |
+| forearms-A | 膝 −5.0（f96），整循环 −5.0…+4.4 | 膝 −2.7…+6.6；脚/手 0 不变 | 双膝 mid 约束 y +3 mm | 摇摆中膝高本就起伏 ~9 mm，整体平移后峰值离地 6.6 mm（原 4.4，+2.2 mm，单帧瞬时）；整循环最近距离 −2.7，仍算贴地 |
+
+依据：`/workspace/work/posehub-ground/m3/probe-*.json`（size 96）、`prof-pigeon.json`（gc2 姿态 x/z 2 cm 网格剖面，用来定砖和垫块位置）。
+对比图 `m3-before-after.jpg`：s-pigeon f0，256px 侧视调试图（红色 = 地面以下），左原版、右 gc2。
+
+## 需重渲（M3 改了 spec 的动作）
+s-pigeon★（M2 只改了手，本次 gc2 是完整修复）、h-kneeling-instep-stretch、s-kneel-hipflex、hip-abductors-A、forearms-A。
