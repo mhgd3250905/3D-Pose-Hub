@@ -123,3 +123,12 @@ s-pigeon★（M2 只改了手，本次 gc2 是完整修复）、h-kneeling-inste
 
 ## 需重渲（M5 改了 spec 的动作）
 h-chair-progressive-front-split-native、t-seated-straddle-lift-1leg、scapular-A。
+
+## M5 第二部分：剩余 136 个站姿/器械/悬垂动作扫查（只测不修）
+`--stride 32 --size 128`，按脚部模式排序先测 free 脚（39 个，全部测完），再测 floor 脚。时限内测完 **52 / 136**（总计实测 165 / 249），新增 >5 mm 穿地 2 个，只记录：
+- h-chair-kickback 扶椅站姿后踢腿：右（踢）脚 −62.8 mm，静止/回位段（f0–32、96–128、224）。hips 系 free 脚目标按旧模型腿长写「脚尖悬停在支撑脚旁 ~1 cm」，armfix-r2 腿更长，脚掌压进地面（A1）。
+- o-supported-hip-hitch 扶椅单腿骨盆提拉：右（抬起）脚 −31.2 mm，全程（提髋到顶 −10.8）。屈膝 60° 后脚再跖屈 57°，脚尖朝下压进地面；本应离地悬空（A1/C）。
+其余 50 个最低皮肤 ≥ −1.8 mm（o-supported-march −1.8）。未测 84 个（floor 脚站姿/器械/悬垂类）列在审计报告「续测 r1·M5」一节，续跑用 `m5-ids136-ordered.txt`。
+
+## 需重渲（r1 M1–M5 累计，去重 31 个）
+adductors-B、deltoids-B、deltoids-C、forearms-A、glute-max-A、h-adductor-rock、h-catcow-quad、h-chair-progressive-front-split-native、h-donkey-kick、h-floor-nordic-hand-reset、h-kneeling-instep-stretch、h-kneeling-pushup、h-kneeling-thread-needle、h-open-book、h-quad-cars、h-quadruped-open、h-quadruped-rockback、h-short-side-plank、h-supine-bilateral-leg-raise、h-supine-heel-slide、hip-abductors-A、n-half-split、n-straddle-fold、s-frog、s-kneel-hipflex、s-lizard、s-pigeon、scapular-A、t-seated-straddle-lift-1leg、w-bird-dog、w-fire-hydrant。
