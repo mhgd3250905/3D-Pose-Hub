@@ -1,0 +1,159 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-half-kneeling-quad-stretch",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-half-kneeling-quad-stretch.json",
+    "textSha256Lf": "93adfed5f9e312ed917a9c15acadd730e58b4ce88e640a586e792f734c06778c",
+    "spec": "drill-anim/specs/h-half-kneeling-quad-stretch-r6.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [
+    "chair",
+    "towel"
+  ],
+  "substitutes": [
+    {
+      "for": "mat",
+      "use": [
+        "towel"
+      ],
+      "loadNote": "similar"
+    }
+  ],
+  "trainingType": [
+    "static-stretch"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "isometric"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [],
+  "secondaryMuscles": [],
+  "stabilizers": [
+    "glute-max",
+    "abs",
+    "hip-abductors"
+  ],
+  "stretchedMuscles": [
+    "quadriceps",
+    "hip-flexors"
+  ],
+  "joints": [
+    {
+      "joint": "knee",
+      "actions": [
+        "flexion"
+      ]
+    },
+    {
+      "joint": "hip",
+      "actions": [
+        "extension"
+      ]
+    },
+    {
+      "joint": "lumbar-spine",
+      "actions": [
+        "isometric-hold"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "low",
+  "prerequisites": [
+    "kneeling-tolerance",
+    "split-stance"
+  ],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "moderate",
+    "lumbar": "low",
+    "shoulder": "low",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "low",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "modify",
+      "reasons": [
+        "balance-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "floor-transfer",
+        "balance-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "cooldown"
+  ],
+  "goals": [
+    "mobility",
+    "desk-relief",
+    "posture",
+    "recovery"
+  ],
+  "alternatives": [
+    "o-stand-quad"
+  ],
+  "regressions": [
+    "s-kneel-hipflex"
+  ],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "久坐后大腿前侧和髋前侧都紧时的训练后放松拉伸，需要能跪在垫子上。",
+    "en": "Post-workout stretch for tight front thighs and hip flexors after sitting; requires kneeling on a mat."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/stretchedMuscles",
+      "existing": {
+        "activeMuscles": [
+          "quadriceps",
+          "hip-flexors"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [],
+        "stretchedMuscles": [
+          "quadriceps",
+          "hip-flexors"
+        ]
+      },
+      "reason": "v3 拉伸类把被拉的肌群写在 activeMuscles；本 schema 把被拉肌放 stretchedMuscles，静态拉伸无主动发力肌。"
+    }
+  ],
+  "reviewNotes": [
+    "新增动作（gap 组），v1 旧目录没有，只能依据 v3 文案和 r6 spec。",
+    "半跪 + 手拉后脚需要平衡，难度保持 v3 的 2；optionalEquipment 的 chair 用于扶稳，towel 用于够不到脚时绕脚背。",
+    "膝 jointStress=moderate：跪地膝 + 后腿屈膝最大，cautions 也提示跪的膝。"
+  ]
+}

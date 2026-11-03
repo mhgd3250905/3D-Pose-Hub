@@ -1,0 +1,152 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-band-row",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-band-row.json",
+    "textSha256Lf": "953646f33f4fb0d8be38fee63bb3a47869041f9d0d03a06af56ab75bafc85a82",
+    "spec": "drill-anim/specs/h-band-row.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [
+    "band",
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "pull-horizontal"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "upper"
+  ],
+  "primaryMuscles": [
+    "lats",
+    "scapular"
+  ],
+  "secondaryMuscles": [
+    "biceps",
+    "deltoids"
+  ],
+  "stabilizers": [
+    "erectors",
+    "abs"
+  ],
+  "joints": [
+    {
+      "joint": "shoulder",
+      "actions": [
+        "extension"
+      ]
+    },
+    {
+      "joint": "scapulothoracic",
+      "actions": [
+        "retraction"
+      ]
+    },
+    {
+      "joint": "elbow",
+      "actions": [
+        "flexion"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "moderate",
+  "prerequisites": [
+    "floor-transfer"
+  ],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "low",
+    "shoulder": "low",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "floor-transfer"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "posture",
+    "hypertrophy"
+  ],
+  "alternatives": [
+    "h-db-row"
+  ],
+  "regressions": [
+    "h-band-pull-apart"
+  ],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "只有一根弹力带时练背和改善圆肩的基础拉类动作，适合居家或出差酒店。",
+    "en": "Basic pulling move for back strength and posture when all you have is a band, at home or in a hotel."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles",
+      "existing": [
+        "lats",
+        "upper-back"
+      ],
+      "chosen": [
+        "lats",
+        "scapular"
+      ],
+      "reason": "v3 的 upper-back 换算为 taxonomy 的 scapular（斜方肌中下部·菱形肌）；与 v1 旧目录 muscleGroups 一致。"
+    },
+    {
+      "field": "floorRequired",
+      "existing": {
+        "position": "seated"
+      },
+      "chosen": true,
+      "reason": "v3/taxonomy 的 seated 默认 floor=false，但本动作是坐在地上腿伸直、弹力带套脚，实际需要坐地。"
+    }
+  ],
+  "reviewNotes": [
+    "v1 旧目录 equipment 只有 band，v3 加了 mat；按坐地做法保留 mat 为必需，地毯上可不用垫。",
+    "办公室不标：需要坐地；办公室可改用固定在门把手的站姿划船（库里暂无该动作）。",
+    "库里没有更难的水平拉（如反向划船），progressions 留空。"
+  ]
+}
