@@ -132,3 +132,20 @@ h-chair-progressive-front-split-native、t-seated-straddle-lift-1leg、scapular-
 
 ## 需重渲（r1 M1–M5 累计，去重 31 个）
 adductors-B、deltoids-B、deltoids-C、forearms-A、glute-max-A、h-adductor-rock、h-catcow-quad、h-chair-progressive-front-split-native、h-donkey-kick、h-floor-nordic-hand-reset、h-kneeling-instep-stretch、h-kneeling-pushup、h-kneeling-thread-needle、h-open-book、h-quad-cars、h-quadruped-open、h-quadruped-rockback、h-short-side-plank、h-supine-bilateral-leg-raise、h-supine-heel-slide、hip-abductors-A、n-half-split、n-straddle-fold、s-frog、s-kneel-hipflex、s-lizard、s-pigeon、scapular-A、t-seated-straddle-lift-1leg、w-bird-dog、w-fire-hydrant。
+
+---
+
+# 里程碑 M6（修 M5 扫查新发现的 2 个 + 剩余 84 个站姿/器械/悬垂动作扫查）2026-11-04
+
+生成器 `tools/ground-contact-r1/m6-fix.mjs`（`FIX` 表一行一个）；recipe 只改指向/SHA，记 `groundContactFix.r1m6`。参数由 `probe.mjs` 标定（`m6-probe-kick1/kick2/hitch1.json`）。
+复测：`ground-penetration-audit.mjs --stride 16 --size 128`（整循环 15 帧，生产安装链），结果 `m6-after-results.jsonl`。两个都无引擎「位置已限制」提示、无 pageErrors。
+
+| 动作 | 修前（整循环最深） | 修后（整循环 15 帧，最低皮肤 min…max） | 改了什么 | 外观 |
+|---|---|---|---|---|
+| h-chair-kickback | 右（踢）脚 −62.8（静止/回位段 f0–32、96–128、224） | 右脚 +9.9…+44.5（静止段悬空 9.9–10.1 mm，踢到顶 44.5 不变）；支撑左脚 0（全程） | 右脚 hips 系踝 y 加 75 mm·(1−p³)（p = kick 进度）：静止段抬 75 mm，回到原设计「脚尖悬在支撑脚旁 ~1 cm」，p=1 踢到顶完全不变。脚旋转 +11° 试过，更差（−102） | 静止/回位时右脚不再陷地、悬在支撑脚旁 1 cm；踢腿幅度（34°）与节奏不变 |
+| o-supported-hip-hitch | 右（抬起）脚 −31.2（全程，提髋到顶 −10.8） | 右脚 +11.2…+30.6（静止 11.2，提髋到顶 30.6）；支撑左脚 +0.2（全程） | 右脚跖屈 57°→33°；屈膝 60°、踝心位置、提髋 6° 均不变（试过踝 +40 mm 同样有效，但会改屈膝角，弃用） | 右脚从「脚尖朝下扎地」变为脚尖略下垂悬空 ~1 cm |
+
+对比图 `m6-before-after.jpg`（每行左修前右修后，256px 侧视调试图 f0，红色 = y=0 地面：上 h-chair-kickback，下 o-supported-hip-hitch）。注意 render-worst 的侧视轴由头—双脚尖连线自动定，脚位变了视角也会变（kickback 修前那张近似正视、右脚被椅子挡住）；以数值复测为准。
+
+## 需重渲（M6 改了 spec 的动作）
+h-chair-kickback、o-supported-hip-hitch。
