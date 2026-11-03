@@ -9,7 +9,12 @@ function eachHand(spec,cb){const visit=h=>{if(!h||typeof h!=='object')return;cb(
   for(const s of ['left','right'])visit(spec.pose.base.hands[s]);}
 const fingertips=d=>s=>eachHand(s,h=>{if(h.mode==='fingertips')h.clear=r6(h.clear+d);});
 const palmY=(d,sides=['left','right'])=>s=>{for(const k of sides){const h=s.pose.base.hands[k];h.palmAt[1]=r6(h.palmAt[1]+d);}};
+// 'floor' 模式的落点高度由共享运行时 getGroundHandPose 决定（只改 spec 无法抬高），改成同 x/z、掌心朝下的
+// 'fingertips' 模式（r2 系列 catcow/glute-max-A 已用此做法），clear 由 probe 标定到手掌最低皮肤 ≈ +1 mm。
+const floor2tips=(side,c)=>s=>{const h=s.pose.base.hands[side];s.pose.base.hands[side]={mode:'fingertips',floor:0,clear:c,at:h.at,finger:[h.finger[0],0,h.finger[1]],normal:[0,-1,0],poleUp:h.poleUp,relax:0};};
 export const FIX={
+  'deltoids-B':{d:floor2tips('left',0.0253),note:'左支撑手 floor→fingertips（同 x/z），clear 25.3 mm：手 −18.3→≈+1 mm，左肘随之离开地面下'},
+  'adductors-B':{d:floor2tips('left',0.0253),note:'左支撑手 floor→fingertips（同 x/z），clear 25.3 mm：手 −18.3→≈+1 mm'},
   'h-kneeling-thread-needle':{d:fingertips(0.0084),note:'双手 fingertips clear +8.4 mm（手掌最低皮肤 −7.4→≈+1 mm）'},
   'h-quadruped-rockback':{d:fingertips(0.0084),note:'双手 clear +8.4 mm'},
   'h-kneeling-pushup':{d:fingertips(0.0084),note:'双手 clear +8.4 mm'},
