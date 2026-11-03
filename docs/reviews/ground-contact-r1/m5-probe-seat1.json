@@ -1,0 +1,5402 @@
+{
+ "id": "t-seated-straddle-lift-1leg",
+ "stride": 16,
+ "results": [
+  {
+   "name": "base",
+   "regions": {
+    "torso": {
+     "min": 13.4,
+     "maxOfMin": 15.6,
+     "minF": 0,
+     "maxF": 112
+    },
+    "all": {
+     "min": -44.7,
+     "maxOfMin": -44.3,
+     "minF": 0,
+     "maxF": 16
+    },
+    "leftThigh": {
+     "min": -5.4,
+     "maxOfMin": 13.9,
+     "minF": 0,
+     "maxF": 16
+    },
+    "leftShin": {
+     "min": -29.9,
+     "maxOfMin": 87.1,
+     "minF": 0,
+     "maxF": 16
+    },
+    "leftFoot": {
+     "min": -44.7,
+     "maxOfMin": 140.4,
+     "minF": 0,
+     "maxF": 16
+    },
+    "head": {
+     "min": 592.2,
+     "maxOfMin": 594.2,
+     "minF": 0,
+     "maxF": 96
+    },
+    "rightThigh": {
+     "min": -5,
+     "maxOfMin": 13.6,
+     "minF": 160,
+     "maxF": 144
+    },
+    "rightShin": {
+     "min": -30.5,
+     "maxOfMin": 84.5,
+     "minF": 160,
+     "maxF": 144
+    },
+    "rightFoot": {
+     "min": -44.7,
+     "maxOfMin": 135.8,
+     "minF": 160,
+     "maxF": 144
+    },
+    "rightElbow": {
+     "min": 247.5,
+     "maxOfMin": 406.1,
+     "minF": 0,
+     "maxF": 112
+    },
+    "rightForearm": {
+     "min": 152.3,
+     "maxOfMin": 371.4,
+     "minF": 0,
+     "maxF": 208
+    },
+    "rightKnee": {
+     "min": -17.3,
+     "maxOfMin": 64.4,
+     "minF": 160,
+     "maxF": 144
+    },
+    "rightUpperArm": {
+     "min": 360.1,
+     "maxOfMin": 448.1,
+     "minF": 80,
+     "maxF": 192
+    },
+    "leftElbow": {
+     "min": 247,
+     "maxOfMin": 401.1,
+     "minF": 128,
+     "maxF": 80
+    },
+    "leftForearm": {
+     "min": 151.9,
+     "maxOfMin": 374.5,
+     "minF": 128,
+     "maxF": 80
+    },
+    "leftKnee": {
+     "min": -17.5,
+     "maxOfMin": 65.5,
+     "minF": 0,
+     "maxF": 16
+    },
+    "leftUpperArm": {
+     "min": 356.8,
+     "maxOfMin": 438.5,
+     "minF": 192,
+     "maxF": 80
+    },
+    "leftHand": {
+     "min": 40.2,
+     "maxOfMin": 371.2,
+     "minF": 128,
+     "maxF": 112
+    },
+    "rightHand": {
+     "min": 40.2,
+     "maxOfMin": 379.8,
+     "minF": 0,
+     "maxF": 224
+    }
+   },
+   "joints": {
+    "leftKnee": {
+     "min": 46.6,
+     "max": 132.7
+    },
+    "rightKnee": {
+     "min": 46.6,
+     "max": 130.5
+    },
+    "leftElbow": {
+     "min": 309.5,
+     "max": 465
+    },
+    "rightElbow": {
+     "min": 315.6,
+     "max": 479.9
+    },
+    "leftWrist": {
+     "min": 167.6,
+     "max": 401.7
+    },
+    "rightWrist": {
+     "min": 167.6,
+     "max": 400.2
+    },
+    "leftPalm": {
+     "min": 101,
+     "max": 428
+    },
+    "rightPalm": {
+     "min": 101,
+     "max": 443
+    },
+    "leftAnkle": {
+     "min": 7,
+     "max": 180.6
+    },
+    "rightAnkle": {
+     "min": 7,
+     "max": 176.4
+    },
+    "leftToe": {
+     "min": 187,
+     "max": 357.5
+    },
+    "rightToe": {
+     "min": 187,
+     "max": 353.4
+    },
+    "pelvis": {
+     "min": 132.1,
+     "max": 134
+    },
+    "head": {
+     "min": 704,
+     "max": 706
+    }
+   },
+   "frames": [
+    {
+     "f": 0,
+     "torso": 13.4,
+     "all": -44.7,
+     "leftThigh": -5.4,
+     "leftShin": -29.9,
+     "leftFoot": -44.7,
+     "head": 592.2,
+     "rightThigh": -2.7,
+     "rightShin": -23.6,
+     "rightFoot": -44.3,
+     "rightElbow": 247.5,
+     "rightForearm": 152.3,
+     "rightKnee": -12.6,
+     "rightUpperArm": 366.9,
+     "leftElbow": 258.3,
+     "leftForearm": 157.2,
+     "leftKnee": -17.5,
+     "leftUpperArm": 370.9,
+     "leftHand": 42,
+     "rightHand": 40.2,
+     "warn": 3,
+     "wt": "[\"躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。\",\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 46.6,
+      "rightKnee": 46.8,
+      "leftElbow": 344.9,
+      "rightElbow": 333.7,
+      "leftWrist": 172,
+      "rightWrist": 167.6,
+      "leftPalm": 104.4,
+      "rightPalm": 101,
+      "leftAnkle": 7,
+      "rightAnkle": 7.4,
+      "leftToe": 187,
+      "rightToe": 187.3,
+      "pelvis": 132.1,
+      "head": 704.1
+     },
+     "P": [
+      2,
+      132,
+      0
+     ],
+     "LK": [
+      454,
+      47,
+      145
+     ],
+     "LA": [
+      834,
+      7,
+      313
+     ],
+     "LH": [
+      81,
+      85,
+      -20
+     ]
+    },
+    {
+     "f": 16,
+     "torso": 13.4,
+     "all": -44.3,
+     "leftThigh": 13.9,
+     "leftShin": 87.1,
+     "leftFoot": 140.4,
+     "head": 592.2,
+     "rightThigh": -2.7,
+     "rightShin": -23.6,
+     "rightFoot": -44.3,
+     "rightElbow": 247.5,
+     "rightForearm": 152.3,
+     "rightKnee": -12.6,
+     "rightUpperArm": 366.9,
+     "leftElbow": 258.3,
+     "leftForearm": 157.2,
+     "leftKnee": 65.5,
+     "leftUpperArm": 370.9,
+     "leftHand": 42,
+     "rightHand": 40.2,
+     "warn": 3,
+     "wt": "[\"躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。\",\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 132.7,
+      "rightKnee": 46.8,
+      "leftElbow": 344.9,
+      "rightElbow": 333.7,
+      "leftWrist": 172,
+      "rightWrist": 167.6,
+      "leftPalm": 104.4,
+      "rightPalm": 101,
+      "leftAnkle": 180.6,
+      "rightAnkle": 7.4,
+      "leftToe": 357.5,
+      "rightToe": 187.3,
+      "pelvis": 132.1,
+      "head": 704.1
+     },
+     "P": [
+      2,
+      132,
+      0
+     ],
+     "LK": [
+      453,
+      133,
+      145
+     ],
+     "LA": [
+      832,
+      181,
+      312
+     ],
+     "LH": [
+      81,
+      85,
+      -20
+     ]
+    },
+    {
+     "f": 32,
+     "torso": 13.4,
+     "all": -44.3,
+     "leftThigh": 0.7,
+     "leftShin": 5.3,
+     "leftFoot": 9.8,
+     "head": 592.2,
+     "rightThigh": -2.7,
+     "rightShin": -23.6,
+     "rightFoot": -44.3,
+     "rightElbow": 247.5,
+     "rightForearm": 152.3,
+     "rightKnee": -12.6,
+     "rightUpperArm": 366.9,
+     "leftElbow": 258.3,
+     "leftForearm": 157.2,
+     "leftKnee": 13.6,
+     "leftUpperArm": 370.9,
+     "leftHand": 42,
+     "rightHand": 40.2,
+     "warn": 3,
+     "wt": "[\"躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。\",\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 72,
+      "rightKnee": 46.8,
+      "leftElbow": 344.9,
+      "rightElbow": 333.7,
+      "leftWrist": 172,
+      "rightWrist": 167.6,
+      "leftPalm": 104.4,
+      "rightPalm": 101,
+      "leftAnkle": 58.2,
+      "rightAnkle": 7.4,
+      "leftToe": 238.1,
+      "rightToe": 187.3,
+      "pelvis": 132.1,
+      "head": 704.1
+     },
+     "P": [
+      2,
+      132,
+      0
+     ],
+     "LK": [
+      456,
+      72,
+      146
+     ],
+     "LA": [
+      837,
+      58,
+      314
+     ],
+     "LH": [
+      81,
+      85,
+      -20
+     ]
+    },
+    {
+     "f": 48,
+     "torso": 13.4,
+     "all": -44.7,
+     "leftThigh": -5.4,
+     "leftShin": -29.9,
+     "leftFoot": -44.7,
+     "head": 592.2,
+     "rightThigh": -2.7,
+     "rightShin": -23.6,
+     "rightFoot": -44.3,
+     "rightElbow": 247.5,
+     "rightForearm": 152.3,
+     "rightKnee": -12.6,
+     "rightUpperArm": 366.9,
+     "leftElbow": 258.3,
+     "leftForearm": 157.2,
+     "leftKnee": -17.5,
+     "leftUpperArm": 370.9,
+     "leftHand": 42,
+     "rightHand": 40.2,
+     "warn": 3,
+     "wt": "[\"躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。\",\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 46.6,
+      "rightKnee": 46.8,
+      "leftElbow": 344.9,
+      "rightElbow": 333.7,
+      "leftWrist": 172,
+      "rightWrist": 167.6,
+      "leftPalm": 104.4,
+      "rightPalm": 101,
+      "leftAnkle": 7,
+      "rightAnkle": 7.4,
+      "leftToe": 187,
+      "rightToe": 187.3,
+      "pelvis": 132.1,
+      "head": 704.1
+     },
+     "P": [
+      2,
+      132,
+      0
+     ],
+     "LK": [
+      454,
+      47,
+      145
+     ],
+     "LA": [
+      834,
+      7,
+      313
+     ],
+     "LH": [
+      81,
+      85,
+      -20
+     ]
+    },
+    {
+     "f": 64,
+     "torso": 13.4,
+     "all": -44.7,
+     "leftThigh": -5.4,
+     "leftShin": -29.9,
+     "leftFoot": -44.7,
+     "head": 592.2,
+     "rightThigh": -2.7,
+     "rightShin": -23.6,
+     "rightFoot": -44.3,
+     "rightElbow": 247.5,
+     "rightForearm": 152.3,
+     "rightKnee": -12.6,
+     "rightUpperArm": 366.9,
+     "leftElbow": 258.3,
+     "leftForearm": 157.2,
+     "leftKnee": -17.5,
+     "leftUpperArm": 370.9,
+     "leftHand": 42,
+     "rightHand": 40.2,
+     "warn": 3,
+     "wt": "[\"躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。\",\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 46.6,
+      "rightKnee": 46.8,
+      "leftElbow": 344.9,
+      "rightElbow": 333.7,
+      "leftWrist": 172,
+      "rightWrist": 167.6,
+      "leftPalm": 104.4,
+      "rightPalm": 101,
+      "leftAnkle": 7,
+      "rightAnkle": 7.4,
+      "leftToe": 187,
+      "rightToe": 187.3,
+      "pelvis": 132.1,
+      "head": 704.1
+     },
+     "P": [
+      2,
+      132,
+      0
+     ],
+     "LK": [
+      454,
+      47,
+      145
+     ],
+     "LA": [
+      834,
+      7,
+      313
+     ],
+     "LH": [
+      81,
+      85,
+      -20
+     ]
+    },
+    {
+     "f": 80,
+     "torso": 15.2,
+     "all": -44.5,
+     "leftThigh": -3.7,
+     "leftShin": -28.9,
+     "leftFoot": -44.5,
+     "head": 594.1,
+     "rightThigh": -1.3,
+     "rightShin": -23.4,
+     "rightFoot": -44.4,
+     "rightElbow": 283.2,
+     "rightForearm": 300.2,
+     "rightKnee": -12.2,
+     "rightUpperArm": 360.1,
+     "leftElbow": 401.1,
+     "leftForearm": 374.5,
+     "leftKnee": -16.5,
+     "leftUpperArm": 438.5,
+     "leftHand": 302.1,
+     "rightHand": 379.4,
+     "warn": 2,
+     "wt": "[\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 47.6,
+      "rightKnee": 47.7,
+      "leftElbow": 465,
+      "rightElbow": 315.6,
+      "leftWrist": 401.7,
+      "rightWrist": 397.5,
+      "leftPalm": 376.6,
+      "rightPalm": 440.8,
+      "leftAnkle": 7.2,
+      "rightAnkle": 7.3,
+      "leftToe": 187.2,
+      "rightToe": 187.2,
+      "pelvis": 134,
+      "head": 706
+     },
+     "P": [
+      0,
+      134,
+      0
+     ],
+     "LK": [
+      453,
+      48,
+      146
+     ],
+     "LA": [
+      833,
+      7,
+      313
+     ],
+     "LH": [
+      80,
+      87,
+      -19
+     ]
+    },
+    {
+     "f": 96,
+     "torso": 15.4,
+     "all": -44.5,
+     "leftThigh": -2.9,
+     "leftShin": -25.2,
+     "leftFoot": -44.4,
+     "head": 594.2,
+     "rightThigh": -2.6,
+     "rightShin": -26.7,
+     "rightFoot": -44.5,
+     "rightElbow": 370.6,
+     "rightForearm": 370.6,
+     "rightKnee": -14.7,
+     "rightUpperArm": 412.6,
+     "leftElbow": 338.3,
+     "leftForearm": 343.1,
+     "leftKnee": -13.5,
+     "leftUpperArm": 389.3,
+     "leftHand": 339.9,
+     "rightHand": 316.6,
+     "warn": 2,
+     "wt": "[\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 47.7,
+      "rightKnee": 47.7,
+      "leftElbow": 381.6,
+      "rightElbow": 422.8,
+      "leftWrist": 398.4,
+      "rightWrist": 399.7,
+      "leftPalm": 408.1,
+      "rightPalm": 389.3,
+      "leftAnkle": 7.3,
+      "rightAnkle": 7.2,
+      "leftToe": 187.2,
+      "rightToe": 187.2,
+      "pelvis": 134,
+      "head": 705.9
+     },
+     "P": [
+      0,
+      134,
+      0
+     ],
+     "LK": [
+      455,
+      48,
+      159
+     ],
+     "LA": [
+      835,
+      7,
+      326
+     ],
+     "LH": [
+      82,
+      87,
+      -6
+     ]
+    },
+    {
+     "f": 112,
+     "torso": 15.6,
+     "all": -44.5,
+     "leftThigh": -1.8,
+     "leftShin": -23,
+     "leftFoot": -44.4,
+     "head": 594.1,
+     "rightThigh": -3.3,
+     "rightShin": -29.8,
+     "rightFoot": -44.5,
+     "rightElbow": 406.1,
+     "rightForearm": 368.3,
+     "rightKnee": -16.4,
+     "rightUpperArm": 444.3,
+     "leftElbow": 282.8,
+     "leftForearm": 298.1,
+     "leftKnee": -11.8,
+     "leftUpperArm": 361.4,
+     "leftHand": 371.2,
+     "rightHand": 288.2,
+     "warn": 2,
+     "wt": "[\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 47.7,
+      "rightKnee": 47.6,
+      "leftElbow": 315.6,
+      "rightElbow": 473.8,
+      "leftWrist": 390.7,
+      "rightWrist": 395.1,
+      "leftPalm": 428,
+      "rightPalm": 364.1,
+      "leftAnkle": 7.3,
+      "rightAnkle": 7.2,
+      "leftToe": 187.2,
+      "rightToe": 187.2,
+      "pelvis": 134,
+      "head": 706
+     },
+     "P": [
+      0,
+      134,
+      0
+     ],
+     "LK": [
+      455,
+      48,
+      167
+     ],
+     "LA": [
+      835,
+      7,
+      334
+     ],
+     "LH": [
+      82,
+      87,
+      3
+     ]
+    },
+    {
+     "f": 128,
+     "torso": 13.8,
+     "all": -44.4,
+     "leftThigh": -3.4,
+     "leftShin": -23.6,
+     "leftFoot": -44.4,
+     "head": 592.2,
+     "rightThigh": 1.7,
+     "rightShin": 8.7,
+     "rightFoot": 15.7,
+     "rightElbow": 258.2,
+     "rightForearm": 157.1,
+     "rightKnee": 17.2,
+     "rightUpperArm": 371.2,
+     "leftElbow": 247,
+     "leftForearm": 151.9,
+     "leftKnee": -12.5,
+     "leftUpperArm": 366.3,
+     "leftHand": 40.2,
+     "rightHand": 42,
+     "warn": 3,
+     "wt": "[\"躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。\",\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 46.7,
+      "rightKnee": 74.7,
+      "leftElbow": 333,
+      "rightElbow": 344.9,
+      "leftWrist": 167.6,
+      "rightWrist": 172,
+      "leftPalm": 101,
+      "rightPalm": 104.4,
+      "leftAnkle": 7.3,
+      "rightAnkle": 63.8,
+      "leftToe": 187.3,
+      "rightToe": 243.6,
+      "pelvis": 132.1,
+      "head": 704
+     },
+     "P": [
+      -1,
+      132,
+      1
+     ],
+     "LK": [
+      454,
+      47,
+      167
+     ],
+     "LA": [
+      834,
+      7,
+      334
+     ],
+     "LH": [
+      81,
+      85,
+      4
+     ]
+    },
+    {
+     "f": 144,
+     "torso": 13.8,
+     "all": -44.4,
+     "leftThigh": -3.4,
+     "leftShin": -23.6,
+     "leftFoot": -44.4,
+     "head": 592.2,
+     "rightThigh": 13.6,
+     "rightShin": 84.5,
+     "rightFoot": 135.8,
+     "rightElbow": 258.2,
+     "rightForearm": 157.1,
+     "rightKnee": 64.4,
+     "rightUpperArm": 371.2,
+     "leftElbow": 247,
+     "leftForearm": 151.9,
+     "leftKnee": -12.5,
+     "leftUpperArm": 366.3,
+     "leftHand": 40.2,
+     "rightHand": 42,
+     "warn": 3,
+     "wt": "[\"躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。\",\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 46.7,
+      "rightKnee": 130.5,
+      "leftElbow": 333,
+      "rightElbow": 344.9,
+      "leftWrist": 167.6,
+      "rightWrist": 172,
+      "leftPalm": 101,
+      "rightPalm": 104.4,
+      "leftAnkle": 7.3,
+      "rightAnkle": 176.4,
+      "leftToe": 187.3,
+      "rightToe": 353.4,
+      "pelvis": 132.1,
+      "head": 704
+     },
+     "P": [
+      -1,
+      132,
+      1
+     ],
+     "LK": [
+      454,
+      47,
+      167
+     ],
+     "LA": [
+      834,
+      7,
+      334
+     ],
+     "LH": [
+      81,
+      85,
+      4
+     ]
+    },
+    {
+     "f": 160,
+     "torso": 13.8,
+     "all": -44.7,
+     "leftThigh": -3.4,
+     "leftShin": -23.6,
+     "leftFoot": -44.4,
+     "head": 592.2,
+     "rightThigh": -5,
+     "rightShin": -30.5,
+     "rightFoot": -44.7,
+     "rightElbow": 258.2,
+     "rightForearm": 157.1,
+     "rightKnee": -17.3,
+     "rightUpperArm": 371.2,
+     "leftElbow": 247,
+     "leftForearm": 151.9,
+     "leftKnee": -12.5,
+     "leftUpperArm": 366.3,
+     "leftHand": 40.2,
+     "rightHand": 42,
+     "warn": 3,
+     "wt": "[\"躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。\",\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 46.7,
+      "rightKnee": 46.6,
+      "leftElbow": 333,
+      "rightElbow": 344.9,
+      "leftWrist": 167.6,
+      "rightWrist": 172,
+      "leftPalm": 101,
+      "rightPalm": 104.4,
+      "leftAnkle": 7.3,
+      "rightAnkle": 7,
+      "leftToe": 187.3,
+      "rightToe": 187,
+      "pelvis": 132.1,
+      "head": 704
+     },
+     "P": [
+      -1,
+      132,
+      1
+     ],
+     "LK": [
+      454,
+      47,
+      167
+     ],
+     "LA": [
+      834,
+      7,
+      334
+     ],
+     "LH": [
+      81,
+      85,
+      4
+     ]
+    },
+    {
+     "f": 176,
+     "torso": 13.8,
+     "all": -44.7,
+     "leftThigh": -3.4,
+     "leftShin": -23.6,
+     "leftFoot": -44.4,
+     "head": 592.2,
+     "rightThigh": -5,
+     "rightShin": -30.5,
+     "rightFoot": -44.7,
+     "rightElbow": 258.2,
+     "rightForearm": 157.1,
+     "rightKnee": -17.3,
+     "rightUpperArm": 371.2,
+     "leftElbow": 247,
+     "leftForearm": 151.9,
+     "leftKnee": -12.5,
+     "leftUpperArm": 366.3,
+     "leftHand": 40.2,
+     "rightHand": 42,
+     "warn": 3,
+     "wt": "[\"躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。\",\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 46.7,
+      "rightKnee": 46.6,
+      "leftElbow": 333,
+      "rightElbow": 344.9,
+      "leftWrist": 167.6,
+      "rightWrist": 172,
+      "leftPalm": 101,
+      "rightPalm": 104.4,
+      "leftAnkle": 7.3,
+      "rightAnkle": 7,
+      "leftToe": 187.3,
+      "rightToe": 187,
+      "pelvis": 132.1,
+      "head": 704
+     },
+     "P": [
+      -1,
+      132,
+      1
+     ],
+     "LK": [
+      454,
+      47,
+      167
+     ],
+     "LA": [
+      834,
+      7,
+      334
+     ],
+     "LH": [
+      81,
+      85,
+      4
+     ]
+    },
+    {
+     "f": 192,
+     "torso": 15.6,
+     "all": -44.5,
+     "leftThigh": -1.8,
+     "leftShin": -23,
+     "leftFoot": -44.4,
+     "head": 594.1,
+     "rightThigh": -3.3,
+     "rightShin": -29.8,
+     "rightFoot": -44.5,
+     "rightElbow": 398.9,
+     "rightForearm": 323.8,
+     "rightKnee": -16.4,
+     "rightUpperArm": 448.1,
+     "leftElbow": 269.1,
+     "leftForearm": 275.9,
+     "leftKnee": -11.8,
+     "leftUpperArm": 356.8,
+     "leftHand": 317.1,
+     "rightHand": 219,
+     "warn": 2,
+     "wt": "[\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 47.7,
+      "rightKnee": 47.6,
+      "leftElbow": 309.5,
+      "rightElbow": 479.9,
+      "leftWrist": 340.1,
+      "rightWrist": 344.5,
+      "leftPalm": 357.8,
+      "rightPalm": 289.7,
+      "leftAnkle": 7.3,
+      "rightAnkle": 7.2,
+      "leftToe": 187.2,
+      "rightToe": 187.2,
+      "pelvis": 134,
+      "head": 706
+     },
+     "P": [
+      0,
+      134,
+      0
+     ],
+     "LK": [
+      455,
+      48,
+      167
+     ],
+     "LA": [
+      835,
+      7,
+      334
+     ],
+     "LH": [
+      82,
+      87,
+      3
+     ]
+    },
+    {
+     "f": 208,
+     "torso": 15.5,
+     "all": -44.5,
+     "leftThigh": -2.7,
+     "leftShin": -24.7,
+     "leftFoot": -44.4,
+     "head": 594.1,
+     "rightThigh": -2.9,
+     "rightShin": -27.4,
+     "rightFoot": -44.5,
+     "rightElbow": 377.7,
+     "rightForearm": 371.4,
+     "rightKnee": -15,
+     "rightUpperArm": 418.6,
+     "leftElbow": 322.3,
+     "leftForearm": 331.8,
+     "leftKnee": -13.1,
+     "leftUpperArm": 379.7,
+     "leftHand": 359.9,
+     "rightHand": 312.8,
+     "warn": 2,
+     "wt": "[\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 47.7,
+      "rightKnee": 47.6,
+      "leftElbow": 363.1,
+      "rightElbow": 432.8,
+      "leftWrist": 398,
+      "rightWrist": 400.2,
+      "leftPalm": 419.9,
+      "rightPalm": 386,
+      "leftAnkle": 7.3,
+      "rightAnkle": 7.2,
+      "leftToe": 187.2,
+      "rightToe": 187.2,
+      "pelvis": 134,
+      "head": 705.9
+     },
+     "P": [
+      0,
+      134,
+      0
+     ],
+     "LK": [
+      455,
+      48,
+      161
+     ],
+     "LA": [
+      835,
+      7,
+      328
+     ],
+     "LH": [
+      82,
+      87,
+      -4
+     ]
+    },
+    {
+     "f": 224,
+     "torso": 15.2,
+     "all": -44.5,
+     "leftThigh": -3.7,
+     "leftShin": -28.6,
+     "leftFoot": -44.5,
+     "head": 594.1,
+     "rightThigh": -1.4,
+     "rightShin": -23.6,
+     "rightFoot": -44.4,
+     "rightElbow": 285,
+     "rightForearm": 301.4,
+     "rightKnee": -12.3,
+     "rightUpperArm": 360.9,
+     "leftElbow": 396,
+     "leftForearm": 373.9,
+     "leftKnee": -16.3,
+     "leftUpperArm": 434.1,
+     "leftHand": 304.3,
+     "rightHand": 379.8,
+     "warn": 2,
+     "wt": "[\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 47.6,
+      "rightKnee": 47.7,
+      "leftElbow": 458.1,
+      "rightElbow": 318.6,
+      "leftWrist": 401.4,
+      "rightWrist": 397.5,
+      "leftPalm": 378.6,
+      "rightPalm": 443,
+      "leftAnkle": 7.2,
+      "rightAnkle": 7.3,
+      "leftToe": 187.2,
+      "rightToe": 187.2,
+      "pelvis": 134,
+      "head": 705.9
+     },
+     "P": [
+      0,
+      134,
+      0
+     ],
+     "LK": [
+      453,
+      48,
+      147
+     ],
+     "LA": [
+      833,
+      7,
+      314
+     ],
+     "LH": [
+      80,
+      87,
+      -18
+     ]
+    }
+   ]
+  },
+  {
+   "name": "hip1.5",
+   "regions": {
+    "torso": {
+     "min": 1.6,
+     "maxOfMin": 15.1,
+     "minF": 0,
+     "maxF": 96
+    },
+    "all": {
+     "min": -27.9,
+     "maxOfMin": -23,
+     "minF": 112,
+     "maxF": 96
+    },
+    "leftThigh": {
+     "min": -13,
+     "maxOfMin": 14.8,
+     "minF": 0,
+     "maxF": 16
+    },
+    "leftShin": {
+     "min": -18.9,
+     "maxOfMin": 136.1,
+     "minF": 128,
+     "maxF": 16
+    },
+    "leftFoot": {
+     "min": -27.9,
+     "maxOfMin": 168.5,
+     "minF": 112,
+     "maxF": 16
+    },
+    "head": {
+     "min": 586.6,
+     "maxOfMin": 600.1,
+     "minF": 0,
+     "maxF": 96
+    },
+    "rightThigh": {
+     "min": -12.4,
+     "maxOfMin": 14.5,
+     "minF": 0,
+     "maxF": 144
+    },
+    "rightShin": {
+     "min": -19.3,
+     "maxOfMin": 132.1,
+     "minF": 0,
+     "maxF": 144
+    },
+    "rightFoot": {
+     "min": -27.6,
+     "maxOfMin": 164.3,
+     "minF": 0,
+     "maxF": 144
+    },
+    "rightElbow": {
+     "min": 248.4,
+     "maxOfMin": 404.6,
+     "minF": 0,
+     "maxF": 112
+    },
+    "rightForearm": {
+     "min": 152.4,
+     "maxOfMin": 371.3,
+     "minF": 0,
+     "maxF": 208
+    },
+    "rightKnee": {
+     "min": -9.9,
+     "maxOfMin": 111.5,
+     "minF": 0,
+     "maxF": 144
+    },
+    "rightUpperArm": {
+     "min": 362.2,
+     "maxOfMin": 446,
+     "minF": 0,
+     "maxF": 192
+    },
+    "leftElbow": {
+     "min": 248.7,
+     "maxOfMin": 400.7,
+     "minF": 128,
+     "maxF": 80
+    },
+    "leftForearm": {
+     "min": 152,
+     "maxOfMin": 374.4,
+     "minF": 128,
+     "maxF": 80
+    },
+    "leftKnee": {
+     "min": -9.7,
+     "maxOfMin": 113.2,
+     "minF": 128,
+     "maxF": 16
+    },
+    "leftUpperArm": {
+     "min": 362.1,
+     "maxOfMin": 439.4,
+     "minF": 128,
+     "maxF": 80
+    },
+    "leftHand": {
+     "min": 40.2,
+     "maxOfMin": 371.1,
+     "minF": 128,
+     "maxF": 112
+    },
+    "rightHand": {
+     "min": 40.2,
+     "maxOfMin": 379.9,
+     "minF": 0,
+     "maxF": 224
+    }
+   },
+   "joints": {
+    "leftKnee": {
+     "min": 47.5,
+     "max": 195.1
+    },
+    "rightKnee": {
+     "min": 47.4,
+     "max": 191.6
+    },
+    "leftElbow": {
+     "min": 324.3,
+     "max": 464.3
+    },
+    "rightElbow": {
+     "min": 329.3,
+     "max": 474.6
+    },
+    "leftWrist": {
+     "min": 167.6,
+     "max": 401.7
+    },
+    "rightWrist": {
+     "min": 167.6,
+     "max": 400.2
+    },
+    "leftPalm": {
+     "min": 101,
+     "max": 428
+    },
+    "rightPalm": {
+     "min": 101,
+     "max": 443
+    },
+    "leftAnkle": {
+     "min": 20.6,
+     "max": 206.6
+    },
+    "rightAnkle": {
+     "min": 20.9,
+     "max": 202.4
+    },
+    "leftToe": {
+     "min": 200.5,
+     "max": 381
+    },
+    "rightToe": {
+     "min": 200.7,
+     "max": 377
+    },
+    "pelvis": {
+     "min": 120.6,
+     "max": 134
+    },
+    "head": {
+     "min": 696.7,
+     "max": 710
+    }
+   },
+   "frames": [
+    {
+     "f": 0,
+     "torso": 1.6,
+     "all": -27.6,
+     "leftThigh": -13,
+     "leftShin": -17.6,
+     "leftFoot": -16,
+     "head": 586.6,
+     "rightThigh": -12.4,
+     "rightShin": -19.3,
+     "rightFoot": -27.6,
+     "rightElbow": 248.4,
+     "rightForearm": 152.4,
+     "rightKnee": -9.9,
+     "rightUpperArm": 362.2,
+     "leftElbow": 261.5,
+     "leftForearm": 157.4,
+     "leftKnee": -7.5,
+     "leftUpperArm": 367.9,
+     "leftHand": 42,
+     "rightHand": 40.2,
+     "warn": 3,
+     "wt": "[\"躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。\",\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 53.2,
+      "rightKnee": 47.4,
+      "leftElbow": 348.6,
+      "rightElbow": 334.7,
+      "leftWrist": 172,
+      "rightWrist": 167.6,
+      "leftPalm": 104.4,
+      "rightPalm": 101,
+      "leftAnkle": 32.5,
+      "rightAnkle": 20.9,
+      "leftToe": 212.4,
+      "rightToe": 200.7,
+      "pelvis": 120.6,
+      "head": 696.7
+     },
+     "P": [
+      12,
+      121,
+      4
+     ],
+     "LK": [
+      465,
+      53,
+      154
+     ],
+     "LA": [
+      845,
+      33,
+      324
+     ],
+     "LH": [
+      91,
+      73,
+      -13
+     ]
+    },
+    {
+     "f": 16,
+     "torso": 1.6,
+     "all": -27.6,
+     "leftThigh": 14.8,
+     "leftShin": 136.1,
+     "leftFoot": 168.5,
+     "head": 586.6,
+     "rightThigh": -12.4,
+     "rightShin": -19.3,
+     "rightFoot": -27.6,
+     "rightElbow": 248.4,
+     "rightForearm": 152.4,
+     "rightKnee": -9.9,
+     "rightUpperArm": 362.2,
+     "leftElbow": 261.5,
+     "leftForearm": 157.4,
+     "leftKnee": 113.2,
+     "leftUpperArm": 367.9,
+     "leftHand": 42,
+     "rightHand": 40.2,
+     "warn": 2,
+     "wt": "[\"躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 195.1,
+      "rightKnee": 47.4,
+      "leftElbow": 348.6,
+      "rightElbow": 334.7,
+      "leftWrist": 172,
+      "rightWrist": 167.6,
+      "leftPalm": 104.4,
+      "rightPalm": 101,
+      "leftAnkle": 206.6,
+      "rightAnkle": 20.9,
+      "leftToe": 381,
+      "rightToe": 200.7,
+      "pelvis": 120.6,
+      "head": 696.7
+     },
+     "P": [
+      12,
+      121,
+      4
+     ],
+     "LK": [
+      451,
+      195,
+      140
+     ],
+     "LA": [
+      832,
+      207,
+      309
+     ],
+     "LH": [
+      91,
+      73,
+      -13
+     ]
+    },
+    {
+     "f": 32,
+     "torso": 1.6,
+     "all": -27.6,
+     "leftThigh": -3.9,
+     "leftShin": 27.5,
+     "leftFoot": 39.4,
+     "head": 586.6,
+     "rightThigh": -12.4,
+     "rightShin": -19.3,
+     "rightFoot": -27.6,
+     "rightElbow": 248.4,
+     "rightForearm": 152.4,
+     "rightKnee": -9.9,
+     "rightUpperArm": 362.2,
+     "leftElbow": 261.5,
+     "leftForearm": 157.4,
+     "leftKnee": 32.6,
+     "leftUpperArm": 367.9,
+     "leftHand": 42,
+     "rightHand": 40.2,
+     "warn": 2,
+     "wt": "[\"躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 94.1,
+      "rightKnee": 47.4,
+      "leftElbow": 348.6,
+      "rightElbow": 334.7,
+      "leftWrist": 172,
+      "rightWrist": 167.6,
+      "leftPalm": 104.4,
+      "rightPalm": 101,
+      "leftAnkle": 84.4,
+      "rightAnkle": 20.9,
+      "leftToe": 263.5,
+      "rightToe": 200.7,
+      "pelvis": 120.6,
+      "head": 696.7
+     },
+     "P": [
+      12,
+      121,
+      4
+     ],
+     "LK": [
+      466,
+      94,
+      152
+     ],
+     "LA": [
+      846,
+      84,
+      322
+     ],
+     "LH": [
+      91,
+      73,
+      -13
+     ]
+    },
+    {
+     "f": 48,
+     "torso": 1.6,
+     "all": -27.6,
+     "leftThigh": -13,
+     "leftShin": -17.6,
+     "leftFoot": -16,
+     "head": 586.6,
+     "rightThigh": -12.4,
+     "rightShin": -19.3,
+     "rightFoot": -27.6,
+     "rightElbow": 248.4,
+     "rightForearm": 152.4,
+     "rightKnee": -9.9,
+     "rightUpperArm": 362.2,
+     "leftElbow": 261.5,
+     "leftForearm": 157.4,
+     "leftKnee": -7.5,
+     "leftUpperArm": 367.9,
+     "leftHand": 42,
+     "rightHand": 40.2,
+     "warn": 3,
+     "wt": "[\"躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。\",\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 53.2,
+      "rightKnee": 47.4,
+      "leftElbow": 348.6,
+      "rightElbow": 334.7,
+      "leftWrist": 172,
+      "rightWrist": 167.6,
+      "leftPalm": 104.4,
+      "rightPalm": 101,
+      "leftAnkle": 32.5,
+      "rightAnkle": 20.9,
+      "leftToe": 212.4,
+      "rightToe": 200.7,
+      "pelvis": 120.6,
+      "head": 696.7
+     },
+     "P": [
+      12,
+      121,
+      4
+     ],
+     "LK": [
+      465,
+      53,
+      154
+     ],
+     "LA": [
+      845,
+      33,
+      324
+     ],
+     "LH": [
+      91,
+      73,
+      -13
+     ]
+    },
+    {
+     "f": 64,
+     "torso": 1.6,
+     "all": -27.6,
+     "leftThigh": -13,
+     "leftShin": -17.6,
+     "leftFoot": -16,
+     "head": 586.6,
+     "rightThigh": -12.4,
+     "rightShin": -19.3,
+     "rightFoot": -27.6,
+     "rightElbow": 248.4,
+     "rightForearm": 152.4,
+     "rightKnee": -9.9,
+     "rightUpperArm": 362.2,
+     "leftElbow": 261.5,
+     "leftForearm": 157.4,
+     "leftKnee": -7.5,
+     "leftUpperArm": 367.9,
+     "leftHand": 42,
+     "rightHand": 40.2,
+     "warn": 3,
+     "wt": "[\"躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。\",\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 53.2,
+      "rightKnee": 47.4,
+      "leftElbow": 348.6,
+      "rightElbow": 334.7,
+      "leftWrist": 172,
+      "rightWrist": 167.6,
+      "leftPalm": 104.4,
+      "rightPalm": 101,
+      "leftAnkle": 32.5,
+      "rightAnkle": 20.9,
+      "leftToe": 212.4,
+      "rightToe": 200.7,
+      "pelvis": 120.6,
+      "head": 696.7
+     },
+     "P": [
+      12,
+      121,
+      4
+     ],
+     "LK": [
+      465,
+      53,
+      154
+     ],
+     "LA": [
+      845,
+      33,
+      324
+     ],
+     "LH": [
+      91,
+      73,
+      -13
+     ]
+    },
+    {
+     "f": 80,
+     "torso": 14.5,
+     "all": -27.2,
+     "leftThigh": -1.1,
+     "leftShin": -12.8,
+     "leftFoot": -15.7,
+     "head": 600,
+     "rightThigh": -0.8,
+     "rightShin": -15.2,
+     "rightFoot": -27.2,
+     "rightElbow": 294.7,
+     "rightForearm": 308.4,
+     "rightKnee": -4.7,
+     "rightUpperArm": 366.6,
+     "leftElbow": 400.7,
+     "leftForearm": 374.4,
+     "leftKnee": -1.9,
+     "leftUpperArm": 439.4,
+     "leftHand": 302.1,
+     "rightHand": 379.2,
+     "warn": 2,
+     "wt": "[\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 60.1,
+      "rightKnee": 54.4,
+      "leftElbow": 464.3,
+      "rightElbow": 329.3,
+      "leftWrist": 401.7,
+      "rightWrist": 397.5,
+      "leftPalm": 376.6,
+      "rightPalm": 440.8,
+      "leftAnkle": 32.8,
+      "rightAnkle": 21.3,
+      "leftToe": 212.7,
+      "rightToe": 201.1,
+      "pelvis": 134,
+      "head": 710
+     },
+     "P": [
+      0,
+      134,
+      0
+     ],
+     "LK": [
+      454,
+      60,
+      151
+     ],
+     "LA": [
+      833,
+      33,
+      320
+     ],
+     "LH": [
+      80,
+      87,
+      -16
+     ]
+    },
+    {
+     "f": 96,
+     "torso": 15.1,
+     "all": -23,
+     "leftThigh": -1.4,
+     "leftShin": -13.9,
+     "leftFoot": -23,
+     "head": 600.1,
+     "rightThigh": -1,
+     "rightShin": -13.4,
+     "rightFoot": -19.7,
+     "rightElbow": 374.6,
+     "rightForearm": 370.6,
+     "rightKnee": -2.7,
+     "rightUpperArm": 417.4,
+     "leftElbow": 348.8,
+     "leftForearm": 351.2,
+     "leftKnee": -3.6,
+     "leftUpperArm": 397.5,
+     "leftHand": 339.9,
+     "rightHand": 316.6,
+     "warn": 2,
+     "wt": "[\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 56.5,
+      "rightKnee": 58.1,
+      "leftElbow": 393.5,
+      "rightElbow": 428.4,
+      "leftWrist": 398.4,
+      "rightWrist": 399.7,
+      "leftPalm": 408.1,
+      "rightPalm": 389.3,
+      "leftAnkle": 25.5,
+      "rightAnkle": 28.8,
+      "leftToe": 205.4,
+      "rightToe": 208.7,
+      "pelvis": 134,
+      "head": 710
+     },
+     "P": [
+      0,
+      134,
+      0
+     ],
+     "LK": [
+      455,
+      57,
+      164
+     ],
+     "LA": [
+      834,
+      26,
+      333
+     ],
+     "LH": [
+      82,
+      87,
+      -3
+     ]
+    },
+    {
+     "f": 112,
+     "torso": 14.9,
+     "all": -27.9,
+     "leftThigh": -1.3,
+     "leftShin": -15.1,
+     "leftFoot": -27.9,
+     "head": 600,
+     "rightThigh": -0.7,
+     "rightShin": -13.3,
+     "rightFoot": -15.1,
+     "rightElbow": 404.6,
+     "rightForearm": 368.1,
+     "rightKnee": -1.7,
+     "rightUpperArm": 444.3,
+     "leftElbow": 293.1,
+     "leftForearm": 305.7,
+     "leftKnee": -4.8,
+     "leftUpperArm": 366.6,
+     "leftHand": 371.1,
+     "rightHand": 288.2,
+     "warn": 2,
+     "wt": "[\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 54.1,
+      "rightKnee": 60.4,
+      "leftElbow": 328,
+      "rightElbow": 471.7,
+      "leftWrist": 390.7,
+      "rightWrist": 395.1,
+      "leftPalm": 428,
+      "rightPalm": 364.1,
+      "leftAnkle": 20.6,
+      "rightAnkle": 33.4,
+      "leftToe": 200.5,
+      "rightToe": 213.2,
+      "pelvis": 134,
+      "head": 710
+     },
+     "P": [
+      0,
+      134,
+      0
+     ],
+     "LK": [
+      455,
+      54,
+      172
+     ],
+     "LA": [
+      834,
+      21,
+      342
+     ],
+     "LH": [
+      82,
+      87,
+      6
+     ]
+    },
+    {
+     "f": 128,
+     "torso": 2.3,
+     "all": -27.8,
+     "leftThigh": -12.7,
+     "leftShin": -18.9,
+     "leftFoot": -27.8,
+     "head": 587,
+     "rightThigh": -2.5,
+     "rightShin": 32,
+     "rightFoot": 45.4,
+     "rightElbow": 260.5,
+     "rightForearm": 157.5,
+     "rightKnee": 36.6,
+     "rightUpperArm": 367.9,
+     "leftElbow": 248.7,
+     "leftForearm": 152,
+     "leftKnee": -9.7,
+     "leftUpperArm": 362.1,
+     "leftHand": 40.2,
+     "rightHand": 42,
+     "warn": 2,
+     "wt": "[\"躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。\",\"左脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 47.5,
+      "rightKnee": 98.6,
+      "leftElbow": 334.9,
+      "rightElbow": 347.6,
+      "leftWrist": 167.6,
+      "rightWrist": 172,
+      "leftPalm": 101,
+      "rightPalm": 104.4,
+      "leftAnkle": 20.7,
+      "rightAnkle": 90.1,
+      "leftToe": 200.6,
+      "rightToe": 269,
+      "pelvis": 120.9,
+      "head": 697
+     },
+     "P": [
+      -10,
+      121,
+      7
+     ],
+     "LK": [
+      447,
+      48,
+      174
+     ],
+     "LA": [
+      829,
+      21,
+      340
+     ],
+     "LH": [
+      72,
+      73,
+      12
+     ]
+    },
+    {
+     "f": 144,
+     "torso": 2.3,
+     "all": -27.8,
+     "leftThigh": -12.7,
+     "leftShin": -18.9,
+     "leftFoot": -27.8,
+     "head": 587,
+     "rightThigh": 14.5,
+     "rightShin": 132.1,
+     "rightFoot": 164.3,
+     "rightElbow": 260.5,
+     "rightForearm": 157.5,
+     "rightKnee": 111.5,
+     "rightUpperArm": 367.9,
+     "leftElbow": 248.7,
+     "leftForearm": 152,
+     "leftKnee": -9.7,
+     "leftUpperArm": 362.1,
+     "leftHand": 40.2,
+     "rightHand": 42,
+     "warn": 2,
+     "wt": "[\"躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。\",\"左脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 47.5,
+      "rightKnee": 191.6,
+      "leftElbow": 334.9,
+      "rightElbow": 347.6,
+      "leftWrist": 167.6,
+      "rightWrist": 172,
+      "leftPalm": 101,
+      "rightPalm": 104.4,
+      "leftAnkle": 20.7,
+      "rightAnkle": 202.4,
+      "leftToe": 200.6,
+      "rightToe": 377,
+      "pelvis": 120.9,
+      "head": 697
+     },
+     "P": [
+      -10,
+      121,
+      7
+     ],
+     "LK": [
+      447,
+      48,
+      174
+     ],
+     "LA": [
+      829,
+      21,
+      340
+     ],
+     "LH": [
+      72,
+      73,
+      12
+     ]
+    },
+    {
+     "f": 160,
+     "torso": 2.3,
+     "all": -27.8,
+     "leftThigh": -12.7,
+     "leftShin": -18.9,
+     "leftFoot": -27.8,
+     "head": 587,
+     "rightThigh": -12.4,
+     "rightShin": -17.9,
+     "rightFoot": -16,
+     "rightElbow": 260.5,
+     "rightForearm": 157.5,
+     "rightKnee": -7.3,
+     "rightUpperArm": 367.9,
+     "leftElbow": 248.7,
+     "leftForearm": 152,
+     "leftKnee": -9.7,
+     "leftUpperArm": 362.1,
+     "leftHand": 40.2,
+     "rightHand": 42,
+     "warn": 3,
+     "wt": "[\"躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。\",\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 47.5,
+      "rightKnee": 53.4,
+      "leftElbow": 334.9,
+      "rightElbow": 347.6,
+      "leftWrist": 167.6,
+      "rightWrist": 172,
+      "leftPalm": 101,
+      "rightPalm": 104.4,
+      "leftAnkle": 20.7,
+      "rightAnkle": 32.5,
+      "leftToe": 200.6,
+      "rightToe": 212.4,
+      "pelvis": 120.9,
+      "head": 697
+     },
+     "P": [
+      -10,
+      121,
+      7
+     ],
+     "LK": [
+      447,
+      48,
+      174
+     ],
+     "LA": [
+      829,
+      21,
+      340
+     ],
+     "LH": [
+      72,
+      73,
+      12
+     ]
+    },
+    {
+     "f": 176,
+     "torso": 2.3,
+     "all": -27.8,
+     "leftThigh": -12.7,
+     "leftShin": -18.9,
+     "leftFoot": -27.8,
+     "head": 587,
+     "rightThigh": -12.4,
+     "rightShin": -17.9,
+     "rightFoot": -16,
+     "rightElbow": 260.5,
+     "rightForearm": 157.5,
+     "rightKnee": -7.3,
+     "rightUpperArm": 367.9,
+     "leftElbow": 248.7,
+     "leftForearm": 152,
+     "leftKnee": -9.7,
+     "leftUpperArm": 362.1,
+     "leftHand": 40.2,
+     "rightHand": 42,
+     "warn": 3,
+     "wt": "[\"躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。\",\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 47.5,
+      "rightKnee": 53.4,
+      "leftElbow": 334.9,
+      "rightElbow": 347.6,
+      "leftWrist": 167.6,
+      "rightWrist": 172,
+      "leftPalm": 101,
+      "rightPalm": 104.4,
+      "leftAnkle": 20.7,
+      "rightAnkle": 32.5,
+      "leftToe": 200.6,
+      "rightToe": 212.4,
+      "pelvis": 120.9,
+      "head": 697
+     },
+     "P": [
+      -10,
+      121,
+      7
+     ],
+     "LK": [
+      447,
+      48,
+      174
+     ],
+     "LA": [
+      829,
+      21,
+      340
+     ],
+     "LH": [
+      72,
+      73,
+      12
+     ]
+    },
+    {
+     "f": 192,
+     "torso": 14.9,
+     "all": -27.9,
+     "leftThigh": -1.3,
+     "leftShin": -15.1,
+     "leftFoot": -27.9,
+     "head": 600,
+     "rightThigh": -0.7,
+     "rightShin": -13.3,
+     "rightFoot": -15.1,
+     "rightElbow": 394.5,
+     "rightForearm": 323.4,
+     "rightKnee": -1.7,
+     "rightUpperArm": 446,
+     "leftElbow": 281.5,
+     "leftForearm": 285.7,
+     "leftKnee": -4.8,
+     "leftUpperArm": 363.6,
+     "leftHand": 317.1,
+     "rightHand": 219,
+     "warn": 2,
+     "wt": "[\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 54.1,
+      "rightKnee": 60.4,
+      "leftElbow": 324.3,
+      "rightElbow": 474.6,
+      "leftWrist": 340.1,
+      "rightWrist": 344.5,
+      "leftPalm": 357.8,
+      "rightPalm": 289.7,
+      "leftAnkle": 20.6,
+      "rightAnkle": 33.4,
+      "leftToe": 200.5,
+      "rightToe": 213.2,
+      "pelvis": 134,
+      "head": 710
+     },
+     "P": [
+      0,
+      134,
+      0
+     ],
+     "LK": [
+      455,
+      54,
+      172
+     ],
+     "LA": [
+      834,
+      21,
+      342
+     ],
+     "LH": [
+      82,
+      87,
+      6
+     ]
+    },
+    {
+     "f": 208,
+     "torso": 15,
+     "all": -24,
+     "leftThigh": -1.4,
+     "leftShin": -14.2,
+     "leftFoot": -24,
+     "head": 600.1,
+     "rightThigh": -1,
+     "rightShin": -13.4,
+     "rightFoot": -18.6,
+     "rightElbow": 380.6,
+     "rightForearm": 371.3,
+     "rightKnee": -2.4,
+     "rightUpperArm": 422.5,
+     "leftElbow": 335.6,
+     "leftForearm": 341.3,
+     "leftKnee": -3.8,
+     "leftUpperArm": 388.3,
+     "leftHand": 359.9,
+     "rightHand": 312.8,
+     "warn": 2,
+     "wt": "[\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 56,
+      "rightKnee": 58.6,
+      "leftElbow": 377.2,
+      "rightElbow": 436.8,
+      "leftWrist": 398,
+      "rightWrist": 400.2,
+      "leftPalm": 419.9,
+      "rightPalm": 386,
+      "leftAnkle": 24.5,
+      "rightAnkle": 29.9,
+      "leftToe": 204.3,
+      "rightToe": 209.7,
+      "pelvis": 134,
+      "head": 710
+     },
+     "P": [
+      0,
+      134,
+      0
+     ],
+     "LK": [
+      455,
+      56,
+      166
+     ],
+     "LA": [
+      834,
+      24,
+      335
+     ],
+     "LH": [
+      82,
+      87,
+      -1
+     ]
+    },
+    {
+     "f": 224,
+     "torso": 14.5,
+     "all": -26.7,
+     "leftThigh": -1.2,
+     "leftShin": -12.8,
+     "leftFoot": -16.2,
+     "head": 600.1,
+     "rightThigh": -0.8,
+     "rightShin": -15,
+     "rightFoot": -26.7,
+     "rightElbow": 297.7,
+     "rightForearm": 310.6,
+     "rightKnee": -4.6,
+     "rightUpperArm": 368.7,
+     "leftElbow": 396.3,
+     "leftForearm": 373.8,
+     "leftKnee": -2,
+     "leftUpperArm": 435.6,
+     "leftHand": 304.3,
+     "rightHand": 379.9,
+     "warn": 2,
+     "wt": "[\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 59.9,
+      "rightKnee": 54.7,
+      "leftElbow": 458.4,
+      "rightElbow": 333.8,
+      "leftWrist": 401.4,
+      "rightWrist": 397.5,
+      "leftPalm": 378.6,
+      "rightPalm": 443,
+      "leftAnkle": 32.3,
+      "rightAnkle": 21.9,
+      "leftToe": 212.1,
+      "rightToe": 201.7,
+      "pelvis": 134,
+      "head": 710
+     },
+     "P": [
+      0,
+      134,
+      0
+     ],
+     "LK": [
+      454,
+      60,
+      151
+     ],
+     "LA": [
+      834,
+      32,
+      321
+     ],
+     "LH": [
+      80,
+      87,
+      -15
+     ]
+    }
+   ]
+  },
+  {
+   "name": "hip8.5",
+   "regions": {
+    "torso": {
+     "min": 15.9,
+     "maxOfMin": 16.4,
+     "minF": 0,
+     "maxF": 128
+    },
+    "all": {
+     "min": -73.2,
+     "maxOfMin": -60.3,
+     "minF": 0,
+     "maxF": 16
+    },
+    "leftThigh": {
+     "min": -8.9,
+     "maxOfMin": 13.9,
+     "minF": 0,
+     "maxF": 16
+    },
+    "leftShin": {
+     "min": -45.8,
+     "maxOfMin": 72.1,
+     "minF": 0,
+     "maxF": 16
+    },
+    "leftFoot": {
+     "min": -73.2,
+     "maxOfMin": 110.8,
+     "minF": 0,
+     "maxF": 16
+    },
+    "head": {
+     "min": 586.4,
+     "maxOfMin": 586.4,
+     "minF": 0,
+     "maxF": 0
+    },
+    "rightThigh": {
+     "min": -9,
+     "maxOfMin": 13.8,
+     "minF": 112,
+     "maxF": 144
+    },
+    "rightShin": {
+     "min": -45.9,
+     "maxOfMin": 69.3,
+     "minF": 112,
+     "maxF": 144
+    },
+    "rightFoot": {
+     "min": -73.2,
+     "maxOfMin": 106.3,
+     "minF": 112,
+     "maxF": 144
+    },
+    "rightElbow": {
+     "min": 222.2,
+     "maxOfMin": 407.5,
+     "minF": 0,
+     "maxF": 112
+    },
+    "rightForearm": {
+     "min": 150,
+     "maxOfMin": 371.6,
+     "minF": 0,
+     "maxF": 208
+    },
+    "rightKnee": {
+     "min": -30.8,
+     "maxOfMin": 55.6,
+     "minF": 112,
+     "maxF": 144
+    },
+    "rightUpperArm": {
+     "min": 353.5,
+     "maxOfMin": 449.6,
+     "minF": 224,
+     "maxF": 192
+    },
+    "leftElbow": {
+     "min": 222.3,
+     "maxOfMin": 401.4,
+     "minF": 128,
+     "maxF": 80
+    },
+    "leftForearm": {
+     "min": 150,
+     "maxOfMin": 374.7,
+     "minF": 128,
+     "maxF": 80
+    },
+    "leftKnee": {
+     "min": -31.1,
+     "maxOfMin": 56.9,
+     "minF": 0,
+     "maxF": 16
+    },
+    "leftUpperArm": {
+     "min": 350.7,
+     "maxOfMin": 436.8,
+     "minF": 192,
+     "maxF": 80
+    },
+    "leftHand": {
+     "min": 40.2,
+     "maxOfMin": 371.3,
+     "minF": 128,
+     "maxF": 112
+    },
+    "rightHand": {
+     "min": 40.2,
+     "maxOfMin": 379.8,
+     "minF": 0,
+     "maxF": 224
+    }
+   },
+   "joints": {
+    "leftKnee": {
+     "min": 35.2,
+     "max": 121
+    },
+    "rightKnee": {
+     "min": 35.2,
+     "max": 118.9
+    },
+    "leftElbow": {
+     "min": 296.3,
+     "max": 465.5
+    },
+    "rightElbow": {
+     "min": 303.2,
+     "max": 485.1
+    },
+    "leftWrist": {
+     "min": 167.6,
+     "max": 401.7
+    },
+    "rightWrist": {
+     "min": 167.6,
+     "max": 400.2
+    },
+    "leftPalm": {
+     "min": 101,
+     "max": 428
+    },
+    "rightPalm": {
+     "min": 101,
+     "max": 443
+    },
+    "leftAnkle": {
+     "min": -18.5,
+     "max": 154.5
+    },
+    "rightAnkle": {
+     "min": -18.5,
+     "max": 150.3
+    },
+    "leftToe": {
+     "min": 160.9,
+     "max": 333.1
+    },
+    "rightToe": {
+     "min": 160.9,
+     "max": 328.9
+    },
+    "pelvis": {
+     "min": 134,
+     "max": 134
+    },
+    "head": {
+     "min": 699.7,
+     "max": 699.7
+    }
+   },
+   "frames": [
+    {
+     "f": 0,
+     "torso": 15.9,
+     "all": -73.2,
+     "leftThigh": -8.9,
+     "leftShin": -45.8,
+     "leftFoot": -73.2,
+     "head": 586.4,
+     "rightThigh": -4.2,
+     "rightShin": -30.5,
+     "rightFoot": -60.3,
+     "rightElbow": 222.2,
+     "rightForearm": 150,
+     "rightKnee": -18.6,
+     "rightUpperArm": 355.9,
+     "leftElbow": 273.5,
+     "leftForearm": 158.6,
+     "leftKnee": -31.1,
+     "leftUpperArm": 376.7,
+     "leftHand": 42,
+     "rightHand": 40.2,
+     "warn": 2,
+     "wt": "[\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 35.2,
+      "rightKnee": 41.6,
+      "leftElbow": 361.2,
+      "rightElbow": 303.8,
+      "leftWrist": 172,
+      "rightWrist": 167.6,
+      "leftPalm": 104.4,
+      "rightPalm": 101,
+      "leftAnkle": -18.5,
+      "rightAnkle": -5.6,
+      "leftToe": 160.9,
+      "rightToe": 173.8,
+      "pelvis": 134,
+      "head": 699.7
+     },
+     "P": [
+      0,
+      134,
+      0
+     ],
+     "LK": [
+      452,
+      35,
+      139
+     ],
+     "LA": [
+      831,
+      -18,
+      304
+     ],
+     "LH": [
+      79,
+      88,
+      -23
+     ]
+    },
+    {
+     "f": 16,
+     "torso": 15.9,
+     "all": -60.3,
+     "leftThigh": 13.9,
+     "leftShin": 72.1,
+     "leftFoot": 110.8,
+     "head": 586.4,
+     "rightThigh": -4.2,
+     "rightShin": -30.5,
+     "rightFoot": -60.3,
+     "rightElbow": 222.2,
+     "rightForearm": 150,
+     "rightKnee": -18.6,
+     "rightUpperArm": 355.9,
+     "leftElbow": 273.5,
+     "leftForearm": 158.6,
+     "leftKnee": 56.9,
+     "leftUpperArm": 376.7,
+     "leftHand": 42,
+     "rightHand": 40.2,
+     "warn": 2,
+     "wt": "[\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 121,
+      "rightKnee": 41.6,
+      "leftElbow": 361.2,
+      "rightElbow": 303.8,
+      "leftWrist": 172,
+      "rightWrist": 167.6,
+      "leftPalm": 104.4,
+      "rightPalm": 101,
+      "leftAnkle": 154.5,
+      "rightAnkle": -5.6,
+      "leftToe": 333.1,
+      "rightToe": 173.8,
+      "pelvis": 134,
+      "head": 699.7
+     },
+     "P": [
+      0,
+      134,
+      0
+     ],
+     "LK": [
+      452,
+      121,
+      144
+     ],
+     "LA": [
+      831,
+      155,
+      313
+     ],
+     "LH": [
+      79,
+      88,
+      -23
+     ]
+    },
+    {
+     "f": 32,
+     "torso": 15.9,
+     "all": -60.3,
+     "leftThigh": 0.2,
+     "leftShin": -10.4,
+     "leftFoot": -19.2,
+     "head": 586.4,
+     "rightThigh": -4.2,
+     "rightShin": -30.5,
+     "rightFoot": -60.3,
+     "rightElbow": 222.2,
+     "rightForearm": 150,
+     "rightKnee": -18.6,
+     "rightUpperArm": 355.9,
+     "leftElbow": 273.5,
+     "leftForearm": 158.6,
+     "leftKnee": -0.3,
+     "leftUpperArm": 376.7,
+     "leftHand": 42,
+     "rightHand": 40.2,
+     "warn": 2,
+     "wt": "[\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 60.4,
+      "rightKnee": 41.6,
+      "leftElbow": 361.2,
+      "rightElbow": 303.8,
+      "leftWrist": 172,
+      "rightWrist": 167.6,
+      "leftPalm": 104.4,
+      "rightPalm": 101,
+      "leftAnkle": 32.4,
+      "rightAnkle": -5.6,
+      "leftToe": 212.4,
+      "rightToe": 173.8,
+      "pelvis": 134,
+      "head": 699.7
+     },
+     "P": [
+      0,
+      134,
+      0
+     ],
+     "LK": [
+      454,
+      60,
+      141
+     ],
+     "LA": [
+      835,
+      32,
+      308
+     ],
+     "LH": [
+      79,
+      88,
+      -23
+     ]
+    },
+    {
+     "f": 48,
+     "torso": 15.9,
+     "all": -73.2,
+     "leftThigh": -8.9,
+     "leftShin": -45.8,
+     "leftFoot": -73.2,
+     "head": 586.4,
+     "rightThigh": -4.2,
+     "rightShin": -30.5,
+     "rightFoot": -60.3,
+     "rightElbow": 222.2,
+     "rightForearm": 150,
+     "rightKnee": -18.6,
+     "rightUpperArm": 355.9,
+     "leftElbow": 273.5,
+     "leftForearm": 158.6,
+     "leftKnee": -31.1,
+     "leftUpperArm": 376.7,
+     "leftHand": 42,
+     "rightHand": 40.2,
+     "warn": 2,
+     "wt": "[\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 35.2,
+      "rightKnee": 41.6,
+      "leftElbow": 361.2,
+      "rightElbow": 303.8,
+      "leftWrist": 172,
+      "rightWrist": 167.6,
+      "leftPalm": 104.4,
+      "rightPalm": 101,
+      "leftAnkle": -18.5,
+      "rightAnkle": -5.6,
+      "leftToe": 160.9,
+      "rightToe": 173.8,
+      "pelvis": 134,
+      "head": 699.7
+     },
+     "P": [
+      0,
+      134,
+      0
+     ],
+     "LK": [
+      452,
+      35,
+      139
+     ],
+     "LA": [
+      831,
+      -18,
+      304
+     ],
+     "LH": [
+      79,
+      88,
+      -23
+     ]
+    },
+    {
+     "f": 64,
+     "torso": 15.9,
+     "all": -73.2,
+     "leftThigh": -8.9,
+     "leftShin": -45.8,
+     "leftFoot": -73.2,
+     "head": 586.4,
+     "rightThigh": -4.2,
+     "rightShin": -30.5,
+     "rightFoot": -60.3,
+     "rightElbow": 222.2,
+     "rightForearm": 150,
+     "rightKnee": -18.6,
+     "rightUpperArm": 355.9,
+     "leftElbow": 273.5,
+     "leftForearm": 158.6,
+     "leftKnee": -31.1,
+     "leftUpperArm": 376.7,
+     "leftHand": 42,
+     "rightHand": 40.2,
+     "warn": 2,
+     "wt": "[\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 35.2,
+      "rightKnee": 41.6,
+      "leftElbow": 361.2,
+      "rightElbow": 303.8,
+      "leftWrist": 172,
+      "rightWrist": 167.6,
+      "leftPalm": 104.4,
+      "rightPalm": 101,
+      "leftAnkle": -18.5,
+      "rightAnkle": -5.6,
+      "leftToe": 160.9,
+      "rightToe": 173.8,
+      "pelvis": 134,
+      "head": 699.7
+     },
+     "P": [
+      0,
+      134,
+      0
+     ],
+     "LK": [
+      452,
+      35,
+      139
+     ],
+     "LA": [
+      831,
+      -18,
+      304
+     ],
+     "LH": [
+      79,
+      88,
+      -23
+     ]
+    },
+    {
+     "f": 80,
+     "torso": 15.9,
+     "all": -72.6,
+     "leftThigh": -8.7,
+     "leftShin": -45.1,
+     "leftFoot": -72.6,
+     "head": 586.4,
+     "rightThigh": -4.3,
+     "rightShin": -31.2,
+     "rightFoot": -60.9,
+     "rightElbow": 272.8,
+     "rightForearm": 292.9,
+     "rightKnee": -19.2,
+     "rightUpperArm": 354.1,
+     "leftElbow": 401.4,
+     "leftForearm": 374.7,
+     "leftKnee": -30.5,
+     "leftUpperArm": 436.8,
+     "leftHand": 302.1,
+     "rightHand": 379.4,
+     "warn": 2,
+     "wt": "[\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 35.5,
+      "rightKnee": 41.3,
+      "leftElbow": 465.5,
+      "rightElbow": 303.2,
+      "leftWrist": 401.7,
+      "rightWrist": 397.5,
+      "leftPalm": 376.6,
+      "rightPalm": 440.8,
+      "leftAnkle": -17.9,
+      "rightAnkle": -6.2,
+      "leftToe": 161.5,
+      "rightToe": 173.2,
+      "pelvis": 134,
+      "head": 699.7
+     },
+     "P": [
+      0,
+      134,
+      0
+     ],
+     "LK": [
+      452,
+      35,
+      140
+     ],
+     "LA": [
+      831,
+      -18,
+      305
+     ],
+     "LH": [
+      79,
+      88,
+      -22
+     ]
+    },
+    {
+     "f": 96,
+     "torso": 16,
+     "all": -68.6,
+     "leftThigh": -5.9,
+     "leftShin": -36.1,
+     "leftFoot": -65.2,
+     "head": 586.4,
+     "rightThigh": -7,
+     "rightShin": -39.9,
+     "rightFoot": -68.6,
+     "rightElbow": 366.6,
+     "rightForearm": 366.8,
+     "rightKnee": -26.4,
+     "rightUpperArm": 407.3,
+     "leftElbow": 327.6,
+     "leftForearm": 335.5,
+     "leftKnee": -23.1,
+     "leftUpperArm": 380.5,
+     "leftHand": 339.9,
+     "rightHand": 316.6,
+     "warn": 2,
+     "wt": "[\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 39.1,
+      "rightKnee": 37.5,
+      "leftElbow": 370.1,
+      "rightElbow": 417.3,
+      "leftWrist": 398.4,
+      "rightWrist": 399.7,
+      "leftPalm": 408.1,
+      "rightPalm": 389.3,
+      "leftAnkle": -10.6,
+      "rightAnkle": -13.9,
+      "leftToe": 168.8,
+      "rightToe": 165.5,
+      "pelvis": 134,
+      "head": 699.7
+     },
+     "P": [
+      0,
+      134,
+      0
+     ],
+     "LK": [
+      455,
+      39,
+      153
+     ],
+     "LA": [
+      835,
+      -11,
+      318
+     ],
+     "LH": [
+      82,
+      88,
+      -9
+     ]
+    },
+    {
+     "f": 112,
+     "torso": 16.3,
+     "all": -73.2,
+     "leftThigh": -4.2,
+     "leftShin": -30.6,
+     "leftFoot": -60.3,
+     "head": 586.4,
+     "rightThigh": -9,
+     "rightShin": -45.9,
+     "rightFoot": -73.2,
+     "rightElbow": 407.5,
+     "rightForearm": 368.4,
+     "rightKnee": -30.8,
+     "rightUpperArm": 443.7,
+     "leftElbow": 273.7,
+     "leftForearm": 291.5,
+     "leftKnee": -18.5,
+     "leftUpperArm": 356.4,
+     "leftHand": 371.3,
+     "rightHand": 288.2,
+     "warn": 2,
+     "wt": "[\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 41.6,
+      "rightKnee": 35.2,
+      "leftElbow": 304.7,
+      "rightElbow": 475.9,
+      "leftWrist": 390.7,
+      "rightWrist": 395.1,
+      "leftPalm": 428,
+      "rightPalm": 364.1,
+      "leftAnkle": -5.6,
+      "rightAnkle": -18.5,
+      "leftToe": 173.8,
+      "rightToe": 160.9,
+      "pelvis": 134,
+      "head": 699.7
+     },
+     "P": [
+      0,
+      134,
+      0
+     ],
+     "LK": [
+      456,
+      42,
+      162
+     ],
+     "LA": [
+      836,
+      -6,
+      326
+     ],
+     "LH": [
+      82,
+      88,
+      0
+     ]
+    },
+    {
+     "f": 128,
+     "torso": 16.4,
+     "all": -60.3,
+     "leftThigh": -4.2,
+     "leftShin": -30.6,
+     "leftFoot": -60.3,
+     "head": 586.4,
+     "rightThigh": 1.4,
+     "rightShin": -6.7,
+     "rightFoot": -13.3,
+     "rightElbow": 273.3,
+     "rightForearm": 158.9,
+     "rightKnee": 3.4,
+     "rightUpperArm": 377,
+     "leftElbow": 222.3,
+     "leftForearm": 150,
+     "leftKnee": -18.5,
+     "leftUpperArm": 355.9,
+     "leftHand": 40.2,
+     "rightHand": 42,
+     "warn": 2,
+     "wt": "[\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 41.6,
+      "rightKnee": 63.2,
+      "leftElbow": 303.8,
+      "rightElbow": 361.3,
+      "leftWrist": 167.6,
+      "rightWrist": 172,
+      "leftPalm": 101,
+      "rightPalm": 104.4,
+      "leftAnkle": -5.6,
+      "rightAnkle": 38,
+      "leftToe": 173.8,
+      "rightToe": 218,
+      "pelvis": 134,
+      "head": 699.7
+     },
+     "P": [
+      0,
+      134,
+      0
+     ],
+     "LK": [
+      456,
+      42,
+      162
+     ],
+     "LA": [
+      836,
+      -6,
+      326
+     ],
+     "LH": [
+      82,
+      88,
+      0
+     ]
+    },
+    {
+     "f": 144,
+     "torso": 16.4,
+     "all": -60.3,
+     "leftThigh": -4.2,
+     "leftShin": -30.6,
+     "leftFoot": -60.3,
+     "head": 586.4,
+     "rightThigh": 13.8,
+     "rightShin": 69.3,
+     "rightFoot": 106.3,
+     "rightElbow": 273.3,
+     "rightForearm": 158.9,
+     "rightKnee": 55.6,
+     "rightUpperArm": 377,
+     "leftElbow": 222.3,
+     "leftForearm": 150,
+     "leftKnee": -18.5,
+     "leftUpperArm": 355.9,
+     "leftHand": 40.2,
+     "rightHand": 42,
+     "warn": 2,
+     "wt": "[\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 41.6,
+      "rightKnee": 118.9,
+      "leftElbow": 303.8,
+      "rightElbow": 361.3,
+      "leftWrist": 167.6,
+      "rightWrist": 172,
+      "leftPalm": 101,
+      "rightPalm": 104.4,
+      "leftAnkle": -5.6,
+      "rightAnkle": 150.3,
+      "leftToe": 173.8,
+      "rightToe": 328.9,
+      "pelvis": 134,
+      "head": 699.7
+     },
+     "P": [
+      0,
+      134,
+      0
+     ],
+     "LK": [
+      456,
+      42,
+      162
+     ],
+     "LA": [
+      836,
+      -6,
+      326
+     ],
+     "LH": [
+      82,
+      88,
+      0
+     ]
+    },
+    {
+     "f": 160,
+     "torso": 16.3,
+     "all": -73.2,
+     "leftThigh": -4.2,
+     "leftShin": -30.6,
+     "leftFoot": -60.3,
+     "head": 586.4,
+     "rightThigh": -9,
+     "rightShin": -45.9,
+     "rightFoot": -73.2,
+     "rightElbow": 273.3,
+     "rightForearm": 158.9,
+     "rightKnee": -30.8,
+     "rightUpperArm": 377,
+     "leftElbow": 222.3,
+     "leftForearm": 150,
+     "leftKnee": -18.5,
+     "leftUpperArm": 355.9,
+     "leftHand": 40.2,
+     "rightHand": 42,
+     "warn": 2,
+     "wt": "[\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 41.6,
+      "rightKnee": 35.2,
+      "leftElbow": 303.8,
+      "rightElbow": 361.3,
+      "leftWrist": 167.6,
+      "rightWrist": 172,
+      "leftPalm": 101,
+      "rightPalm": 104.4,
+      "leftAnkle": -5.6,
+      "rightAnkle": -18.5,
+      "leftToe": 173.8,
+      "rightToe": 160.9,
+      "pelvis": 134,
+      "head": 699.7
+     },
+     "P": [
+      0,
+      134,
+      0
+     ],
+     "LK": [
+      456,
+      42,
+      162
+     ],
+     "LA": [
+      836,
+      -6,
+      326
+     ],
+     "LH": [
+      82,
+      88,
+      0
+     ]
+    },
+    {
+     "f": 176,
+     "torso": 16.3,
+     "all": -73.2,
+     "leftThigh": -4.2,
+     "leftShin": -30.6,
+     "leftFoot": -60.3,
+     "head": 586.4,
+     "rightThigh": -9,
+     "rightShin": -45.9,
+     "rightFoot": -73.2,
+     "rightElbow": 273.3,
+     "rightForearm": 158.9,
+     "rightKnee": -30.8,
+     "rightUpperArm": 377,
+     "leftElbow": 222.3,
+     "leftForearm": 150,
+     "leftKnee": -18.5,
+     "leftUpperArm": 355.9,
+     "leftHand": 40.2,
+     "rightHand": 42,
+     "warn": 2,
+     "wt": "[\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 41.6,
+      "rightKnee": 35.2,
+      "leftElbow": 303.8,
+      "rightElbow": 361.3,
+      "leftWrist": 167.6,
+      "rightWrist": 172,
+      "leftPalm": 101,
+      "rightPalm": 104.4,
+      "leftAnkle": -5.6,
+      "rightAnkle": -18.5,
+      "leftToe": 173.8,
+      "rightToe": 160.9,
+      "pelvis": 134,
+      "head": 699.7
+     },
+     "P": [
+      0,
+      134,
+      0
+     ],
+     "LK": [
+      456,
+      42,
+      162
+     ],
+     "LA": [
+      836,
+      -6,
+      326
+     ],
+     "LH": [
+      82,
+      88,
+      0
+     ]
+    },
+    {
+     "f": 192,
+     "torso": 16.3,
+     "all": -73.2,
+     "leftThigh": -4.2,
+     "leftShin": -30.6,
+     "leftFoot": -60.3,
+     "head": 586.4,
+     "rightThigh": -9,
+     "rightShin": -45.9,
+     "rightFoot": -73.2,
+     "rightElbow": 403.1,
+     "rightForearm": 324.1,
+     "rightKnee": -30.8,
+     "rightUpperArm": 449.6,
+     "leftElbow": 258,
+     "leftForearm": 267.3,
+     "leftKnee": -18.5,
+     "leftUpperArm": 350.7,
+     "leftHand": 317.1,
+     "rightHand": 219,
+     "warn": 2,
+     "wt": "[\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 41.6,
+      "rightKnee": 35.2,
+      "leftElbow": 296.3,
+      "rightElbow": 485.1,
+      "leftWrist": 340.1,
+      "rightWrist": 344.5,
+      "leftPalm": 357.8,
+      "rightPalm": 289.7,
+      "leftAnkle": -5.6,
+      "rightAnkle": -18.5,
+      "leftToe": 173.8,
+      "rightToe": 160.9,
+      "pelvis": 134,
+      "head": 699.7
+     },
+     "P": [
+      0,
+      134,
+      0
+     ],
+     "LK": [
+      456,
+      42,
+      162
+     ],
+     "LA": [
+      836,
+      -6,
+      326
+     ],
+     "LH": [
+      82,
+      88,
+      0
+     ]
+    },
+    {
+     "f": 208,
+     "torso": 16,
+     "all": -69.6,
+     "leftThigh": -5.5,
+     "leftShin": -34.9,
+     "leftFoot": -64.2,
+     "head": 586.4,
+     "rightThigh": -7.5,
+     "rightShin": -41.1,
+     "rightFoot": -69.6,
+     "rightElbow": 374.9,
+     "rightForearm": 371.6,
+     "rightKnee": -27.3,
+     "rightUpperArm": 414.2,
+     "leftElbow": 309.2,
+     "leftForearm": 322.9,
+     "leftKnee": -22.1,
+     "leftUpperArm": 370.5,
+     "leftHand": 359.9,
+     "rightHand": 312.8,
+     "warn": 2,
+     "wt": "[\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 39.7,
+      "rightKnee": 37,
+      "leftElbow": 349.5,
+      "rightElbow": 428.9,
+      "leftWrist": 398,
+      "rightWrist": 400.2,
+      "leftPalm": 419.9,
+      "rightPalm": 386,
+      "leftAnkle": -9.5,
+      "rightAnkle": -14.9,
+      "leftToe": 169.9,
+      "rightToe": 164.5,
+      "pelvis": 134,
+      "head": 699.7
+     },
+     "P": [
+      0,
+      134,
+      0
+     ],
+     "LK": [
+      455,
+      40,
+      155
+     ],
+     "LA": [
+      835,
+      -9,
+      320
+     ],
+     "LH": [
+      82,
+      88,
+      -7
+     ]
+    },
+    {
+     "f": 224,
+     "torso": 15.9,
+     "all": -72.1,
+     "leftThigh": -8.5,
+     "leftShin": -44.4,
+     "leftFoot": -72.1,
+     "head": 586.4,
+     "rightThigh": -4.5,
+     "rightShin": -31.9,
+     "rightFoot": -61.5,
+     "rightElbow": 273.3,
+     "rightForearm": 293.1,
+     "rightKnee": -19.7,
+     "rightUpperArm": 353.5,
+     "leftElbow": 395.7,
+     "leftForearm": 374.1,
+     "leftKnee": -30,
+     "leftUpperArm": 431.9,
+     "leftHand": 304.3,
+     "rightHand": 379.8,
+     "warn": 2,
+     "wt": "[\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 35.8,
+      "rightKnee": 41,
+      "leftElbow": 457.9,
+      "rightElbow": 304.6,
+      "leftWrist": 401.4,
+      "rightWrist": 397.5,
+      "leftPalm": 378.6,
+      "rightPalm": 443,
+      "leftAnkle": -17.4,
+      "rightAnkle": -6.8,
+      "leftToe": 162,
+      "rightToe": 172.6,
+      "pelvis": 134,
+      "head": 699.7
+     },
+     "P": [
+      0,
+      134,
+      0
+     ],
+     "LK": [
+      453,
+      36,
+      141
+     ],
+     "LA": [
+      832,
+      -17,
+      306
+     ],
+     "LH": [
+      80,
+      88,
+      -21
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ankY+04",
+   "regions": {
+    "torso": {
+     "min": 14.7,
+     "maxOfMin": 17,
+     "minF": 0,
+     "maxF": 112
+    },
+    "all": {
+     "min": -6.3,
+     "maxOfMin": -4.7,
+     "minF": 160,
+     "maxF": 128
+    },
+    "leftThigh": {
+     "min": -0.7,
+     "maxOfMin": 17,
+     "minF": 0,
+     "maxF": 16
+    },
+    "leftShin": {
+     "min": -3,
+     "maxOfMin": 107.7,
+     "minF": 0,
+     "maxF": 16
+    },
+    "leftFoot": {
+     "min": -5.5,
+     "maxOfMin": 172.4,
+     "minF": 0,
+     "maxF": 16
+    },
+    "head": {
+     "min": 592.2,
+     "maxOfMin": 594.2,
+     "minF": 0,
+     "maxF": 96
+    },
+    "rightThigh": {
+     "min": -0.5,
+     "maxOfMin": 16.6,
+     "minF": 160,
+     "maxF": 144
+    },
+    "rightShin": {
+     "min": -4,
+     "maxOfMin": 104.9,
+     "minF": 160,
+     "maxF": 144
+    },
+    "rightFoot": {
+     "min": -6.3,
+     "maxOfMin": 167.3,
+     "minF": 160,
+     "maxF": 144
+    },
+    "rightElbow": {
+     "min": 247.5,
+     "maxOfMin": 406.1,
+     "minF": 0,
+     "maxF": 112
+    },
+    "rightForearm": {
+     "min": 152.3,
+     "maxOfMin": 371.4,
+     "minF": 0,
+     "maxF": 208
+    },
+    "rightKnee": {
+     "min": 5.9,
+     "maxOfMin": 76.8,
+     "minF": 160,
+     "maxF": 144
+    },
+    "rightUpperArm": {
+     "min": 360.1,
+     "maxOfMin": 448.1,
+     "minF": 80,
+     "maxF": 192
+    },
+    "leftElbow": {
+     "min": 247,
+     "maxOfMin": 401.1,
+     "minF": 128,
+     "maxF": 80
+    },
+    "leftForearm": {
+     "min": 151.9,
+     "maxOfMin": 374.5,
+     "minF": 128,
+     "maxF": 80
+    },
+    "leftKnee": {
+     "min": 6.2,
+     "maxOfMin": 78.1,
+     "minF": 0,
+     "maxF": 16
+    },
+    "leftUpperArm": {
+     "min": 356.8,
+     "maxOfMin": 438.5,
+     "minF": 192,
+     "maxF": 80
+    },
+    "leftHand": {
+     "min": 40.2,
+     "maxOfMin": 371.2,
+     "minF": 128,
+     "maxF": 112
+    },
+    "rightHand": {
+     "min": 40.2,
+     "maxOfMin": 379.8,
+     "minF": 0,
+     "maxF": 224
+    }
+   },
+   "joints": {
+    "leftKnee": {
+     "min": 66,
+     "max": 148.5
+    },
+    "rightKnee": {
+     "min": 65.6,
+     "max": 146.1
+    },
+    "leftElbow": {
+     "min": 309.5,
+     "max": 465
+    },
+    "rightElbow": {
+     "min": 315.6,
+     "max": 479.9
+    },
+    "leftWrist": {
+     "min": 167.6,
+     "max": 401.7
+    },
+    "rightWrist": {
+     "min": 167.6,
+     "max": 400.2
+    },
+    "leftPalm": {
+     "min": 101,
+     "max": 428
+    },
+    "rightPalm": {
+     "min": 101,
+     "max": 443
+    },
+    "leftAnkle": {
+     "min": 46.2,
+     "max": 212.6
+    },
+    "rightAnkle": {
+     "min": 45.4,
+     "max": 207.9
+    },
+    "leftToe": {
+     "min": 226.1,
+     "max": 389.4
+    },
+    "rightToe": {
+     "min": 225.4,
+     "max": 384.8
+    },
+    "pelvis": {
+     "min": 132.1,
+     "max": 134
+    },
+    "head": {
+     "min": 704,
+     "max": 706
+    }
+   },
+   "frames": [
+    {
+     "f": 0,
+     "torso": 14.7,
+     "all": -5.5,
+     "leftThigh": -0.7,
+     "leftShin": -3,
+     "leftFoot": -5.5,
+     "head": 592.2,
+     "rightThigh": 1.6,
+     "rightShin": 2.9,
+     "rightFoot": -5.4,
+     "rightElbow": 247.5,
+     "rightForearm": 152.3,
+     "rightKnee": 11,
+     "rightUpperArm": 366.9,
+     "leftElbow": 258.3,
+     "leftForearm": 157.2,
+     "leftKnee": 6.2,
+     "leftUpperArm": 370.9,
+     "leftHand": 42,
+     "rightHand": 40.2,
+     "warn": 3,
+     "wt": "[\"躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。\",\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 66,
+      "rightKnee": 66.1,
+      "leftElbow": 344.9,
+      "rightElbow": 333.7,
+      "leftWrist": 172,
+      "rightWrist": 167.6,
+      "leftPalm": 104.4,
+      "rightPalm": 101,
+      "leftAnkle": 46.2,
+      "rightAnkle": 46.3,
+      "leftToe": 226.1,
+      "rightToe": 226.3,
+      "pelvis": 132.1,
+      "head": 704.1
+     },
+     "P": [
+      2,
+      132,
+      0
+     ],
+     "LK": [
+      455,
+      66,
+      147
+     ],
+     "LA": [
+      835,
+      46,
+      316
+     ],
+     "LH": [
+      81,
+      85,
+      -20
+     ]
+    },
+    {
+     "f": 16,
+     "torso": 14.7,
+     "all": -5.4,
+     "leftThigh": 17,
+     "leftShin": 107.7,
+     "leftFoot": 172.4,
+     "head": 592.2,
+     "rightThigh": 1.6,
+     "rightShin": 2.9,
+     "rightFoot": -5.4,
+     "rightElbow": 247.5,
+     "rightForearm": 152.3,
+     "rightKnee": 11,
+     "rightUpperArm": 366.9,
+     "leftElbow": 258.3,
+     "leftForearm": 157.2,
+     "leftKnee": 78.1,
+     "leftUpperArm": 370.9,
+     "leftHand": 42,
+     "rightHand": 40.2,
+     "warn": 3,
+     "wt": "[\"躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。\",\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 148.5,
+      "rightKnee": 66.1,
+      "leftElbow": 344.9,
+      "rightElbow": 333.7,
+      "leftWrist": 172,
+      "rightWrist": 167.6,
+      "leftPalm": 104.4,
+      "rightPalm": 101,
+      "leftAnkle": 212.6,
+      "rightAnkle": 46.3,
+      "leftToe": 389.4,
+      "rightToe": 226.3,
+      "pelvis": 132.1,
+      "head": 704.1
+     },
+     "P": [
+      2,
+      132,
+      0
+     ],
+     "LK": [
+      451,
+      149,
+      145
+     ],
+     "LA": [
+      827,
+      213,
+      312
+     ],
+     "LH": [
+      81,
+      85,
+      -20
+     ]
+    },
+    {
+     "f": 32,
+     "torso": 14.7,
+     "all": -5.4,
+     "leftThigh": 5,
+     "leftShin": 30.4,
+     "leftFoot": 47.1,
+     "head": 592.2,
+     "rightThigh": 1.6,
+     "rightShin": 2.9,
+     "rightFoot": -5.4,
+     "rightElbow": 247.5,
+     "rightForearm": 152.3,
+     "rightKnee": 11,
+     "rightUpperArm": 366.9,
+     "leftElbow": 258.3,
+     "leftForearm": 157.2,
+     "leftKnee": 32.5,
+     "leftUpperArm": 370.9,
+     "leftHand": 42,
+     "rightHand": 40.2,
+     "warn": 3,
+     "wt": "[\"躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。\",\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 90.5,
+      "rightKnee": 66.1,
+      "leftElbow": 344.9,
+      "rightElbow": 333.7,
+      "leftWrist": 172,
+      "rightWrist": 167.6,
+      "leftPalm": 104.4,
+      "rightPalm": 101,
+      "leftAnkle": 95.5,
+      "rightAnkle": 46.3,
+      "leftToe": 275.4,
+      "rightToe": 226.3,
+      "pelvis": 132.1,
+      "head": 704.1
+     },
+     "P": [
+      2,
+      132,
+      0
+     ],
+     "LK": [
+      455,
+      90,
+      147
+     ],
+     "LA": [
+      836,
+      96,
+      317
+     ],
+     "LH": [
+      81,
+      85,
+      -20
+     ]
+    },
+    {
+     "f": 48,
+     "torso": 14.7,
+     "all": -5.5,
+     "leftThigh": -0.7,
+     "leftShin": -3,
+     "leftFoot": -5.5,
+     "head": 592.2,
+     "rightThigh": 1.6,
+     "rightShin": 2.9,
+     "rightFoot": -5.4,
+     "rightElbow": 247.5,
+     "rightForearm": 152.3,
+     "rightKnee": 11,
+     "rightUpperArm": 366.9,
+     "leftElbow": 258.3,
+     "leftForearm": 157.2,
+     "leftKnee": 6.2,
+     "leftUpperArm": 370.9,
+     "leftHand": 42,
+     "rightHand": 40.2,
+     "warn": 3,
+     "wt": "[\"躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。\",\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 66,
+      "rightKnee": 66.1,
+      "leftElbow": 344.9,
+      "rightElbow": 333.7,
+      "leftWrist": 172,
+      "rightWrist": 167.6,
+      "leftPalm": 104.4,
+      "rightPalm": 101,
+      "leftAnkle": 46.2,
+      "rightAnkle": 46.3,
+      "leftToe": 226.1,
+      "rightToe": 226.3,
+      "pelvis": 132.1,
+      "head": 704.1
+     },
+     "P": [
+      2,
+      132,
+      0
+     ],
+     "LK": [
+      455,
+      66,
+      147
+     ],
+     "LA": [
+      835,
+      46,
+      316
+     ],
+     "LH": [
+      81,
+      85,
+      -20
+     ]
+    },
+    {
+     "f": 64,
+     "torso": 14.7,
+     "all": -5.5,
+     "leftThigh": -0.7,
+     "leftShin": -3,
+     "leftFoot": -5.5,
+     "head": 592.2,
+     "rightThigh": 1.6,
+     "rightShin": 2.9,
+     "rightFoot": -5.4,
+     "rightElbow": 247.5,
+     "rightForearm": 152.3,
+     "rightKnee": 11,
+     "rightUpperArm": 366.9,
+     "leftElbow": 258.3,
+     "leftForearm": 157.2,
+     "leftKnee": 6.2,
+     "leftUpperArm": 370.9,
+     "leftHand": 42,
+     "rightHand": 40.2,
+     "warn": 3,
+     "wt": "[\"躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。\",\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 66,
+      "rightKnee": 66.1,
+      "leftElbow": 344.9,
+      "rightElbow": 333.7,
+      "leftWrist": 172,
+      "rightWrist": 167.6,
+      "leftPalm": 104.4,
+      "rightPalm": 101,
+      "leftAnkle": 46.2,
+      "rightAnkle": 46.3,
+      "leftToe": 226.1,
+      "rightToe": 226.3,
+      "pelvis": 132.1,
+      "head": 704.1
+     },
+     "P": [
+      2,
+      132,
+      0
+     ],
+     "LK": [
+      455,
+      66,
+      147
+     ],
+     "LA": [
+      835,
+      46,
+      316
+     ],
+     "LH": [
+      81,
+      85,
+      -20
+     ]
+    },
+    {
+     "f": 80,
+     "torso": 16.5,
+     "all": -5.5,
+     "leftThigh": 1.1,
+     "leftShin": -2,
+     "leftFoot": -5.4,
+     "head": 594.1,
+     "rightThigh": 3.1,
+     "rightShin": 3.2,
+     "rightFoot": -5.5,
+     "rightElbow": 283.2,
+     "rightForearm": 300.2,
+     "rightKnee": 11.5,
+     "rightUpperArm": 360.1,
+     "leftElbow": 401.1,
+     "leftForearm": 374.5,
+     "leftKnee": 7.2,
+     "leftUpperArm": 438.5,
+     "leftHand": 302.1,
+     "rightHand": 379.4,
+     "warn": 2,
+     "wt": "[\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 67,
+      "rightKnee": 67,
+      "leftElbow": 465,
+      "rightElbow": 315.6,
+      "leftWrist": 401.7,
+      "rightWrist": 397.5,
+      "leftPalm": 376.6,
+      "rightPalm": 440.8,
+      "leftAnkle": 46.3,
+      "rightAnkle": 46.2,
+      "leftToe": 226.3,
+      "rightToe": 226.2,
+      "pelvis": 134,
+      "head": 706
+     },
+     "P": [
+      0,
+      134,
+      0
+     ],
+     "LK": [
+      454,
+      67,
+      148
+     ],
+     "LA": [
+      834,
+      46,
+      317
+     ],
+     "LH": [
+      80,
+      87,
+      -19
+     ]
+    },
+    {
+     "f": 96,
+     "torso": 16.8,
+     "all": -5.9,
+     "leftThigh": 1.8,
+     "leftShin": 2,
+     "leftFoot": -5,
+     "head": 594.2,
+     "rightThigh": 1.9,
+     "rightShin": -0.4,
+     "rightFoot": -5.9,
+     "rightElbow": 370.6,
+     "rightForearm": 370.6,
+     "rightKnee": 8.7,
+     "rightUpperArm": 412.6,
+     "leftElbow": 338.3,
+     "leftForearm": 343.1,
+     "leftKnee": 10.4,
+     "leftUpperArm": 389.3,
+     "leftHand": 339.9,
+     "rightHand": 316.6,
+     "warn": 2,
+     "wt": "[\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 67.2,
+      "rightKnee": 66.8,
+      "leftElbow": 381.6,
+      "rightElbow": 422.8,
+      "leftWrist": 398.4,
+      "rightWrist": 399.7,
+      "leftPalm": 408.1,
+      "rightPalm": 389.3,
+      "leftAnkle": 46.7,
+      "rightAnkle": 45.8,
+      "leftToe": 226.7,
+      "rightToe": 225.8,
+      "pelvis": 134,
+      "head": 705.9
+     },
+     "P": [
+      0,
+      134,
+      0
+     ],
+     "LK": [
+      456,
+      67,
+      161
+     ],
+     "LA": [
+      836,
+      47,
+      330
+     ],
+     "LH": [
+      82,
+      87,
+      -6
+     ]
+    },
+    {
+     "f": 112,
+     "torso": 17,
+     "all": -6.2,
+     "leftThigh": 2.8,
+     "leftShin": 4,
+     "leftFoot": -4.7,
+     "head": 594.1,
+     "rightThigh": 1.3,
+     "rightShin": -3.3,
+     "rightFoot": -6.2,
+     "rightElbow": 406.1,
+     "rightForearm": 368.3,
+     "rightKnee": 6.7,
+     "rightUpperArm": 444.3,
+     "leftElbow": 282.8,
+     "leftForearm": 298.1,
+     "leftKnee": 12.3,
+     "leftUpperArm": 361.4,
+     "leftHand": 371.2,
+     "rightHand": 288.2,
+     "warn": 2,
+     "wt": "[\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 67.4,
+      "rightKnee": 66.6,
+      "leftElbow": 315.6,
+      "rightElbow": 473.8,
+      "leftWrist": 390.7,
+      "rightWrist": 395.1,
+      "leftPalm": 428,
+      "rightPalm": 364.1,
+      "leftAnkle": 47,
+      "rightAnkle": 45.5,
+      "leftToe": 227,
+      "rightToe": 225.5,
+      "pelvis": 134,
+      "head": 706
+     },
+     "P": [
+      0,
+      134,
+      0
+     ],
+     "LK": [
+      456,
+      67,
+      169
+     ],
+     "LA": [
+      836,
+      47,
+      339
+     ],
+     "LH": [
+      82,
+      87,
+      3
+     ]
+    },
+    {
+     "f": 128,
+     "torso": 15.1,
+     "all": -4.7,
+     "leftThigh": 1.1,
+     "leftShin": 3.5,
+     "leftFoot": -4.7,
+     "head": 592.2,
+     "rightThigh": 5.7,
+     "rightShin": 33.3,
+     "rightFoot": 52.1,
+     "rightElbow": 258.2,
+     "rightForearm": 157.1,
+     "rightKnee": 34.6,
+     "rightUpperArm": 371.2,
+     "leftElbow": 247,
+     "leftForearm": 151.9,
+     "leftKnee": 11.6,
+     "leftUpperArm": 366.3,
+     "leftHand": 40.2,
+     "rightHand": 42,
+     "warn": 3,
+     "wt": "[\"躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。\",\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 66.4,
+      "rightKnee": 92.8,
+      "leftElbow": 333,
+      "rightElbow": 344.9,
+      "leftWrist": 167.6,
+      "rightWrist": 172,
+      "leftPalm": 101,
+      "rightPalm": 104.4,
+      "leftAnkle": 47,
+      "rightAnkle": 100.2,
+      "leftToe": 227,
+      "rightToe": 280,
+      "pelvis": 132.1,
+      "head": 704
+     },
+     "P": [
+      -1,
+      132,
+      1
+     ],
+     "LK": [
+      455,
+      66,
+      169
+     ],
+     "LA": [
+      835,
+      47,
+      338
+     ],
+     "LH": [
+      81,
+      85,
+      4
+     ]
+    },
+    {
+     "f": 144,
+     "torso": 15.1,
+     "all": -4.7,
+     "leftThigh": 1.1,
+     "leftShin": 3.5,
+     "leftFoot": -4.7,
+     "head": 592.2,
+     "rightThigh": 16.6,
+     "rightShin": 104.9,
+     "rightFoot": 167.3,
+     "rightElbow": 258.2,
+     "rightForearm": 157.1,
+     "rightKnee": 76.8,
+     "rightUpperArm": 371.2,
+     "leftElbow": 247,
+     "leftForearm": 151.9,
+     "leftKnee": 11.6,
+     "leftUpperArm": 366.3,
+     "leftHand": 40.2,
+     "rightHand": 42,
+     "warn": 3,
+     "wt": "[\"躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。\",\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 66.4,
+      "rightKnee": 146.1,
+      "leftElbow": 333,
+      "rightElbow": 344.9,
+      "leftWrist": 167.6,
+      "rightWrist": 172,
+      "leftPalm": 101,
+      "rightPalm": 104.4,
+      "leftAnkle": 47,
+      "rightAnkle": 207.9,
+      "leftToe": 227,
+      "rightToe": 384.8,
+      "pelvis": 132.1,
+      "head": 704
+     },
+     "P": [
+      -1,
+      132,
+      1
+     ],
+     "LK": [
+      455,
+      66,
+      169
+     ],
+     "LA": [
+      835,
+      47,
+      338
+     ],
+     "LH": [
+      81,
+      85,
+      4
+     ]
+    },
+    {
+     "f": 160,
+     "torso": 15.1,
+     "all": -6.3,
+     "leftThigh": 1.1,
+     "leftShin": 3.5,
+     "leftFoot": -4.7,
+     "head": 592.2,
+     "rightThigh": -0.5,
+     "rightShin": -4,
+     "rightFoot": -6.3,
+     "rightElbow": 258.2,
+     "rightForearm": 157.1,
+     "rightKnee": 5.9,
+     "rightUpperArm": 371.2,
+     "leftElbow": 247,
+     "leftForearm": 151.9,
+     "leftKnee": 11.6,
+     "leftUpperArm": 366.3,
+     "leftHand": 40.2,
+     "rightHand": 42,
+     "warn": 3,
+     "wt": "[\"躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。\",\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 66.4,
+      "rightKnee": 65.6,
+      "leftElbow": 333,
+      "rightElbow": 344.9,
+      "leftWrist": 167.6,
+      "rightWrist": 172,
+      "leftPalm": 101,
+      "rightPalm": 104.4,
+      "leftAnkle": 47,
+      "rightAnkle": 45.4,
+      "leftToe": 227,
+      "rightToe": 225.4,
+      "pelvis": 132.1,
+      "head": 704
+     },
+     "P": [
+      -1,
+      132,
+      1
+     ],
+     "LK": [
+      455,
+      66,
+      169
+     ],
+     "LA": [
+      835,
+      47,
+      338
+     ],
+     "LH": [
+      81,
+      85,
+      4
+     ]
+    },
+    {
+     "f": 176,
+     "torso": 15.1,
+     "all": -6.3,
+     "leftThigh": 1.1,
+     "leftShin": 3.5,
+     "leftFoot": -4.7,
+     "head": 592.2,
+     "rightThigh": -0.5,
+     "rightShin": -4,
+     "rightFoot": -6.3,
+     "rightElbow": 258.2,
+     "rightForearm": 157.1,
+     "rightKnee": 5.9,
+     "rightUpperArm": 371.2,
+     "leftElbow": 247,
+     "leftForearm": 151.9,
+     "leftKnee": 11.6,
+     "leftUpperArm": 366.3,
+     "leftHand": 40.2,
+     "rightHand": 42,
+     "warn": 3,
+     "wt": "[\"躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。\",\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 66.4,
+      "rightKnee": 65.6,
+      "leftElbow": 333,
+      "rightElbow": 344.9,
+      "leftWrist": 167.6,
+      "rightWrist": 172,
+      "leftPalm": 101,
+      "rightPalm": 104.4,
+      "leftAnkle": 47,
+      "rightAnkle": 45.4,
+      "leftToe": 227,
+      "rightToe": 225.4,
+      "pelvis": 132.1,
+      "head": 704
+     },
+     "P": [
+      -1,
+      132,
+      1
+     ],
+     "LK": [
+      455,
+      66,
+      169
+     ],
+     "LA": [
+      835,
+      47,
+      338
+     ],
+     "LH": [
+      81,
+      85,
+      4
+     ]
+    },
+    {
+     "f": 192,
+     "torso": 17,
+     "all": -6.2,
+     "leftThigh": 2.8,
+     "leftShin": 4,
+     "leftFoot": -4.7,
+     "head": 594.1,
+     "rightThigh": 1.3,
+     "rightShin": -3.3,
+     "rightFoot": -6.2,
+     "rightElbow": 398.9,
+     "rightForearm": 323.8,
+     "rightKnee": 6.7,
+     "rightUpperArm": 448.1,
+     "leftElbow": 269.1,
+     "leftForearm": 275.9,
+     "leftKnee": 12.3,
+     "leftUpperArm": 356.8,
+     "leftHand": 317.1,
+     "rightHand": 219,
+     "warn": 2,
+     "wt": "[\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 67.4,
+      "rightKnee": 66.6,
+      "leftElbow": 309.5,
+      "rightElbow": 479.9,
+      "leftWrist": 340.1,
+      "rightWrist": 344.5,
+      "leftPalm": 357.8,
+      "rightPalm": 289.7,
+      "leftAnkle": 47,
+      "rightAnkle": 45.5,
+      "leftToe": 227,
+      "rightToe": 225.5,
+      "pelvis": 134,
+      "head": 706
+     },
+     "P": [
+      0,
+      134,
+      0
+     ],
+     "LK": [
+      456,
+      67,
+      169
+     ],
+     "LA": [
+      836,
+      47,
+      339
+     ],
+     "LH": [
+      82,
+      87,
+      3
+     ]
+    },
+    {
+     "f": 208,
+     "torso": 16.9,
+     "all": -6,
+     "leftThigh": 2,
+     "leftShin": 2.5,
+     "leftFoot": -4.9,
+     "head": 594.1,
+     "rightThigh": 1.7,
+     "rightShin": -0.9,
+     "rightFoot": -6,
+     "rightElbow": 377.7,
+     "rightForearm": 371.4,
+     "rightKnee": 8.3,
+     "rightUpperArm": 418.6,
+     "leftElbow": 322.3,
+     "leftForearm": 331.8,
+     "leftKnee": 10.9,
+     "leftUpperArm": 379.7,
+     "leftHand": 359.9,
+     "rightHand": 312.8,
+     "warn": 2,
+     "wt": "[\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 67.3,
+      "rightKnee": 66.7,
+      "leftElbow": 363.1,
+      "rightElbow": 432.8,
+      "leftWrist": 398,
+      "rightWrist": 400.2,
+      "leftPalm": 419.9,
+      "rightPalm": 386,
+      "leftAnkle": 46.8,
+      "rightAnkle": 45.7,
+      "leftToe": 226.7,
+      "rightToe": 225.7,
+      "pelvis": 134,
+      "head": 705.9
+     },
+     "P": [
+      0,
+      134,
+      0
+     ],
+     "LK": [
+      456,
+      67,
+      163
+     ],
+     "LA": [
+      836,
+      47,
+      332
+     ],
+     "LH": [
+      82,
+      87,
+      -4
+     ]
+    },
+    {
+     "f": 224,
+     "torso": 16.6,
+     "all": -5.5,
+     "leftThigh": 1.1,
+     "leftShin": -1.7,
+     "leftFoot": -5.4,
+     "head": 594.1,
+     "rightThigh": 3.1,
+     "rightShin": 2.9,
+     "rightFoot": -5.5,
+     "rightElbow": 285,
+     "rightForearm": 301.4,
+     "rightKnee": 11.3,
+     "rightUpperArm": 360.9,
+     "leftElbow": 396,
+     "leftForearm": 373.9,
+     "leftKnee": 7.4,
+     "leftUpperArm": 434.1,
+     "leftHand": 304.3,
+     "rightHand": 379.8,
+     "warn": 2,
+     "wt": "[\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 67,
+      "rightKnee": 67,
+      "leftElbow": 458.1,
+      "rightElbow": 318.6,
+      "leftWrist": 401.4,
+      "rightWrist": 397.5,
+      "leftPalm": 378.6,
+      "rightPalm": 443,
+      "leftAnkle": 46.3,
+      "rightAnkle": 46.2,
+      "leftToe": 226.3,
+      "rightToe": 226.2,
+      "pelvis": 134,
+      "head": 705.9
+     },
+     "P": [
+      0,
+      134,
+      0
+     ],
+     "LK": [
+      454,
+      67,
+      149
+     ],
+     "LA": [
+      834,
+      46,
+      318
+     ],
+     "LH": [
+      80,
+      87,
+      -18
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ankZ+04",
+   "regions": {
+    "torso": {
+     "min": 13.4,
+     "maxOfMin": 15.6,
+     "minF": 0,
+     "maxF": 208
+    },
+    "all": {
+     "min": -47.1,
+     "maxOfMin": -46.5,
+     "minF": 112,
+     "maxF": 224
+    },
+    "leftThigh": {
+     "min": -5.6,
+     "maxOfMin": 13.2,
+     "minF": 0,
+     "maxF": 16
+    },
+    "leftShin": {
+     "min": -32.1,
+     "maxOfMin": 82.4,
+     "minF": 0,
+     "maxF": 16
+    },
+    "leftFoot": {
+     "min": -47.1,
+     "maxOfMin": 134.5,
+     "minF": 112,
+     "maxF": 16
+    },
+    "head": {
+     "min": 592.2,
+     "maxOfMin": 594.2,
+     "minF": 0,
+     "maxF": 96
+    },
+    "rightThigh": {
+     "min": -5.2,
+     "maxOfMin": 13.1,
+     "minF": 160,
+     "maxF": 144
+    },
+    "rightShin": {
+     "min": -32.1,
+     "maxOfMin": 80.7,
+     "minF": 160,
+     "maxF": 144
+    },
+    "rightFoot": {
+     "min": -46.6,
+     "maxOfMin": 131.2,
+     "minF": 0,
+     "maxF": 144
+    },
+    "rightElbow": {
+     "min": 247.5,
+     "maxOfMin": 406.1,
+     "minF": 0,
+     "maxF": 112
+    },
+    "rightForearm": {
+     "min": 152.3,
+     "maxOfMin": 371.4,
+     "minF": 0,
+     "maxF": 208
+    },
+    "rightKnee": {
+     "min": -18.5,
+     "maxOfMin": 62.5,
+     "minF": 160,
+     "maxF": 144
+    },
+    "rightUpperArm": {
+     "min": 360.1,
+     "maxOfMin": 448.1,
+     "minF": 80,
+     "maxF": 192
+    },
+    "leftElbow": {
+     "min": 247,
+     "maxOfMin": 401.1,
+     "minF": 128,
+     "maxF": 80
+    },
+    "leftForearm": {
+     "min": 151.9,
+     "maxOfMin": 374.5,
+     "minF": 128,
+     "maxF": 80
+    },
+    "leftKnee": {
+     "min": -18.9,
+     "maxOfMin": 63.1,
+     "minF": 0,
+     "maxF": 16
+    },
+    "leftUpperArm": {
+     "min": 356.8,
+     "maxOfMin": 438.5,
+     "minF": 192,
+     "maxF": 80
+    },
+    "leftHand": {
+     "min": 40.2,
+     "maxOfMin": 371.2,
+     "minF": 128,
+     "maxF": 112
+    },
+    "rightHand": {
+     "min": 40.2,
+     "maxOfMin": 379.8,
+     "minF": 0,
+     "maxF": 224
+    }
+   },
+   "joints": {
+    "leftKnee": {
+     "min": 45.4,
+     "max": 129.7
+    },
+    "rightKnee": {
+     "min": 45.6,
+     "max": 128.3
+    },
+    "leftElbow": {
+     "min": 309.5,
+     "max": 465
+    },
+    "rightElbow": {
+     "min": 315.6,
+     "max": 479.9
+    },
+    "leftWrist": {
+     "min": 167.6,
+     "max": 401.7
+    },
+    "rightWrist": {
+     "min": 167.6,
+     "max": 400.2
+    },
+    "leftPalm": {
+     "min": 101,
+     "max": 428
+    },
+    "rightPalm": {
+     "min": 101,
+     "max": 443
+    },
+    "leftAnkle": {
+     "min": 4.6,
+     "max": 174.7
+    },
+    "rightAnkle": {
+     "min": 5.1,
+     "max": 171.8
+    },
+    "leftToe": {
+     "min": 184.5,
+     "max": 351.5
+    },
+    "rightToe": {
+     "min": 185,
+     "max": 348.8
+    },
+    "pelvis": {
+     "min": 132.1,
+     "max": 134
+    },
+    "head": {
+     "min": 704,
+     "max": 706
+    }
+   },
+   "frames": [
+    {
+     "f": 0,
+     "torso": 13.4,
+     "all": -46.6,
+     "leftThigh": -5.6,
+     "leftShin": -32.1,
+     "leftFoot": -46,
+     "head": 592.2,
+     "rightThigh": -3.6,
+     "rightShin": -26.1,
+     "rightFoot": -46.6,
+     "rightElbow": 247.5,
+     "rightForearm": 152.3,
+     "rightKnee": -14.7,
+     "rightUpperArm": 366.9,
+     "leftElbow": 258.3,
+     "leftForearm": 157.2,
+     "leftKnee": -18.9,
+     "leftUpperArm": 370.9,
+     "leftHand": 42,
+     "rightHand": 40.2,
+     "warn": 3,
+     "wt": "[\"躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。\",\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 45.9,
+      "rightKnee": 45.6,
+      "leftElbow": 344.9,
+      "rightElbow": 333.7,
+      "leftWrist": 172,
+      "rightWrist": 167.6,
+      "leftPalm": 104.4,
+      "rightPalm": 101,
+      "leftAnkle": 5.6,
+      "rightAnkle": 5.1,
+      "leftToe": 185.6,
+      "rightToe": 185,
+      "pelvis": 132.1,
+      "head": 704.1
+     },
+     "P": [
+      2,
+      132,
+      0
+     ],
+     "LK": [
+      447,
+      46,
+      160
+     ],
+     "LA": [
+      820,
+      6,
+      342
+     ],
+     "LH": [
+      81,
+      85,
+      -20
+     ]
+    },
+    {
+     "f": 16,
+     "torso": 13.4,
+     "all": -46.6,
+     "leftThigh": 13.2,
+     "leftShin": 82.4,
+     "leftFoot": 134.5,
+     "head": 592.2,
+     "rightThigh": -3.6,
+     "rightShin": -26.1,
+     "rightFoot": -46.6,
+     "rightElbow": 247.5,
+     "rightForearm": 152.3,
+     "rightKnee": -14.7,
+     "rightUpperArm": 366.9,
+     "leftElbow": 258.3,
+     "leftForearm": 157.2,
+     "leftKnee": 63.1,
+     "leftUpperArm": 370.9,
+     "leftHand": 42,
+     "rightHand": 40.2,
+     "warn": 3,
+     "wt": "[\"躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。\",\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 129.7,
+      "rightKnee": 45.6,
+      "leftElbow": 344.9,
+      "rightElbow": 333.7,
+      "leftWrist": 172,
+      "rightWrist": 167.6,
+      "leftPalm": 104.4,
+      "rightPalm": 101,
+      "leftAnkle": 174.7,
+      "rightAnkle": 5.1,
+      "leftToe": 351.5,
+      "rightToe": 185,
+      "pelvis": 132.1,
+      "head": 704.1
+     },
+     "P": [
+      2,
+      132,
+      0
+     ],
+     "LK": [
+      447,
+      130,
+      160
+     ],
+     "LA": [
+      819,
+      175,
+      343
+     ],
+     "LH": [
+      81,
+      85,
+      -20
+     ]
+    },
+    {
+     "f": 32,
+     "torso": 13.4,
+     "all": -46.6,
+     "leftThigh": 0.4,
+     "leftShin": 2.4,
+     "leftFoot": 7.1,
+     "head": 592.2,
+     "rightThigh": -3.6,
+     "rightShin": -26.1,
+     "rightFoot": -46.6,
+     "rightElbow": 247.5,
+     "rightForearm": 152.3,
+     "rightKnee": -14.7,
+     "rightUpperArm": 366.9,
+     "leftElbow": 258.3,
+     "leftForearm": 157.2,
+     "leftKnee": 11.4,
+     "leftUpperArm": 370.9,
+     "leftHand": 42,
+     "rightHand": 40.2,
+     "warn": 3,
+     "wt": "[\"躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。\",\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 70.7,
+      "rightKnee": 45.6,
+      "leftElbow": 344.9,
+      "rightElbow": 333.7,
+      "leftWrist": 172,
+      "rightWrist": 167.6,
+      "leftPalm": 104.4,
+      "rightPalm": 101,
+      "leftAnkle": 55.5,
+      "rightAnkle": 5.1,
+      "leftToe": 235.4,
+      "rightToe": 185,
+      "pelvis": 132.1,
+      "head": 704.1
+     },
+     "P": [
+      2,
+      132,
+      0
+     ],
+     "LK": [
+      449,
+      71,
+      160
+     ],
+     "LA": [
+      823,
+      56,
+      344
+     ],
+     "LH": [
+      81,
+      85,
+      -20
+     ]
+    },
+    {
+     "f": 48,
+     "torso": 13.4,
+     "all": -46.6,
+     "leftThigh": -5.6,
+     "leftShin": -32.1,
+     "leftFoot": -46,
+     "head": 592.2,
+     "rightThigh": -3.6,
+     "rightShin": -26.1,
+     "rightFoot": -46.6,
+     "rightElbow": 247.5,
+     "rightForearm": 152.3,
+     "rightKnee": -14.7,
+     "rightUpperArm": 366.9,
+     "leftElbow": 258.3,
+     "leftForearm": 157.2,
+     "leftKnee": -18.9,
+     "leftUpperArm": 370.9,
+     "leftHand": 42,
+     "rightHand": 40.2,
+     "warn": 3,
+     "wt": "[\"躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。\",\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 45.9,
+      "rightKnee": 45.6,
+      "leftElbow": 344.9,
+      "rightElbow": 333.7,
+      "leftWrist": 172,
+      "rightWrist": 167.6,
+      "leftPalm": 104.4,
+      "rightPalm": 101,
+      "leftAnkle": 5.6,
+      "rightAnkle": 5.1,
+      "leftToe": 185.6,
+      "rightToe": 185,
+      "pelvis": 132.1,
+      "head": 704.1
+     },
+     "P": [
+      2,
+      132,
+      0
+     ],
+     "LK": [
+      447,
+      46,
+      160
+     ],
+     "LA": [
+      820,
+      6,
+      342
+     ],
+     "LH": [
+      81,
+      85,
+      -20
+     ]
+    },
+    {
+     "f": 64,
+     "torso": 13.4,
+     "all": -46.6,
+     "leftThigh": -5.6,
+     "leftShin": -32.1,
+     "leftFoot": -46,
+     "head": 592.2,
+     "rightThigh": -3.6,
+     "rightShin": -26.1,
+     "rightFoot": -46.6,
+     "rightElbow": 247.5,
+     "rightForearm": 152.3,
+     "rightKnee": -14.7,
+     "rightUpperArm": 366.9,
+     "leftElbow": 258.3,
+     "leftForearm": 157.2,
+     "leftKnee": -18.9,
+     "leftUpperArm": 370.9,
+     "leftHand": 42,
+     "rightHand": 40.2,
+     "warn": 3,
+     "wt": "[\"躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。\",\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 45.9,
+      "rightKnee": 45.6,
+      "leftElbow": 344.9,
+      "rightElbow": 333.7,
+      "leftWrist": 172,
+      "rightWrist": 167.6,
+      "leftPalm": 104.4,
+      "rightPalm": 101,
+      "leftAnkle": 5.6,
+      "rightAnkle": 5.1,
+      "leftToe": 185.6,
+      "rightToe": 185,
+      "pelvis": 132.1,
+      "head": 704.1
+     },
+     "P": [
+      2,
+      132,
+      0
+     ],
+     "LK": [
+      447,
+      46,
+      160
+     ],
+     "LA": [
+      820,
+      6,
+      342
+     ],
+     "LH": [
+      81,
+      85,
+      -20
+     ]
+    },
+    {
+     "f": 80,
+     "torso": 15.2,
+     "all": -46.6,
+     "leftThigh": -4,
+     "leftShin": -31,
+     "leftFoot": -45.9,
+     "head": 594.1,
+     "rightThigh": -2.1,
+     "rightShin": -25.8,
+     "rightFoot": -46.6,
+     "rightElbow": 283.2,
+     "rightForearm": 300.2,
+     "rightKnee": -14.1,
+     "rightUpperArm": 360.1,
+     "leftElbow": 401.1,
+     "leftForearm": 374.5,
+     "leftKnee": -17.9,
+     "leftUpperArm": 438.5,
+     "leftHand": 302.1,
+     "rightHand": 379.4,
+     "warn": 2,
+     "wt": "[\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 47,
+      "rightKnee": 46.6,
+      "leftElbow": 465,
+      "rightElbow": 315.6,
+      "leftWrist": 401.7,
+      "rightWrist": 397.5,
+      "leftPalm": 376.6,
+      "rightPalm": 440.8,
+      "leftAnkle": 5.8,
+      "rightAnkle": 5.1,
+      "leftToe": 185.8,
+      "rightToe": 185.1,
+      "pelvis": 134,
+      "head": 706
+     },
+     "P": [
+      0,
+      134,
+      0
+     ],
+     "LK": [
+      446,
+      47,
+      160
+     ],
+     "LA": [
+      818,
+      6,
+      343
+     ],
+     "LH": [
+      80,
+      87,
+      -19
+     ]
+    },
+    {
+     "f": 96,
+     "torso": 15.5,
+     "all": -46.6,
+     "leftThigh": -3.4,
+     "leftShin": -27.8,
+     "leftFoot": -46.6,
+     "head": 594.2,
+     "rightThigh": -3.1,
+     "rightShin": -28.8,
+     "rightFoot": -45.9,
+     "rightElbow": 370.6,
+     "rightForearm": 370.6,
+     "rightKnee": -16.1,
+     "rightUpperArm": 412.6,
+     "leftElbow": 338.3,
+     "leftForearm": 343.1,
+     "leftKnee": -15.6,
+     "leftUpperArm": 389.3,
+     "leftHand": 339.9,
+     "rightHand": 316.6,
+     "warn": 2,
+     "wt": "[\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 46.6,
+      "rightKnee": 46.9,
+      "leftElbow": 381.6,
+      "rightElbow": 422.8,
+      "leftWrist": 398.4,
+      "rightWrist": 399.7,
+      "leftPalm": 408.1,
+      "rightPalm": 389.3,
+      "leftAnkle": 5.1,
+      "rightAnkle": 5.8,
+      "leftToe": 185.1,
+      "rightToe": 185.8,
+      "pelvis": 134,
+      "head": 705.9
+     },
+     "P": [
+      0,
+      134,
+      0
+     ],
+     "LK": [
+      446,
+      47,
+      177
+     ],
+     "LA": [
+      817,
+      5,
+      362
+     ],
+     "LH": [
+      82,
+      87,
+      -6
+     ]
+    },
+    {
+     "f": 112,
+     "torso": 15.5,
+     "all": -47.1,
+     "leftThigh": -2.8,
+     "leftShin": -26,
+     "leftFoot": -47.1,
+     "head": 594.1,
+     "rightThigh": -3.4,
+     "rightShin": -31.4,
+     "rightFoot": -45.5,
+     "rightElbow": 406.1,
+     "rightForearm": 368.3,
+     "rightKnee": -17.6,
+     "rightUpperArm": 444.3,
+     "leftElbow": 282.8,
+     "leftForearm": 298.1,
+     "leftKnee": -14.3,
+     "leftUpperArm": 361.4,
+     "leftHand": 371.2,
+     "rightHand": 288.2,
+     "warn": 2,
+     "wt": "[\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 46.3,
+      "rightKnee": 47.1,
+      "leftElbow": 315.6,
+      "rightElbow": 473.8,
+      "leftWrist": 390.7,
+      "rightWrist": 395.1,
+      "leftPalm": 428,
+      "rightPalm": 364.1,
+      "leftAnkle": 4.6,
+      "rightAnkle": 6.2,
+      "leftToe": 184.5,
+      "rightToe": 186.1,
+      "pelvis": 134,
+      "head": 706
+     },
+     "P": [
+      0,
+      134,
+      0
+     ],
+     "LK": [
+      446,
+      46,
+      187
+     ],
+     "LA": [
+      815,
+      5,
+      375
+     ],
+     "LH": [
+      82,
+      87,
+      3
+     ]
+    },
+    {
+     "f": 128,
+     "torso": 13.7,
+     "all": -47.1,
+     "leftThigh": -4.4,
+     "leftShin": -26.6,
+     "leftFoot": -47.1,
+     "head": 592.2,
+     "rightThigh": 1.4,
+     "rightShin": 6.3,
+     "rightFoot": 13.5,
+     "rightElbow": 258.2,
+     "rightForearm": 157.1,
+     "rightKnee": 15.2,
+     "rightUpperArm": 371.2,
+     "leftElbow": 247,
+     "leftForearm": 151.9,
+     "leftKnee": -15,
+     "leftUpperArm": 366.3,
+     "leftHand": 40.2,
+     "rightHand": 42,
+     "warn": 3,
+     "wt": "[\"躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。\",\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 45.4,
+      "rightKnee": 73.6,
+      "leftElbow": 333,
+      "rightElbow": 344.9,
+      "leftWrist": 167.6,
+      "rightWrist": 172,
+      "leftPalm": 101,
+      "rightPalm": 104.4,
+      "leftAnkle": 4.6,
+      "rightAnkle": 61.6,
+      "leftToe": 184.5,
+      "rightToe": 241.4,
+      "pelvis": 132.1,
+      "head": 704
+     },
+     "P": [
+      -1,
+      132,
+      1
+     ],
+     "LK": [
+      445,
+      45,
+      187
+     ],
+     "LA": [
+      815,
+      5,
+      374
+     ],
+     "LH": [
+      81,
+      85,
+      4
+     ]
+    },
+    {
+     "f": 144,
+     "torso": 13.7,
+     "all": -47.1,
+     "leftThigh": -4.4,
+     "leftShin": -26.6,
+     "leftFoot": -47.1,
+     "head": 592.2,
+     "rightThigh": 13.1,
+     "rightShin": 80.7,
+     "rightFoot": 131.2,
+     "rightElbow": 258.2,
+     "rightForearm": 157.1,
+     "rightKnee": 62.5,
+     "rightUpperArm": 371.2,
+     "leftElbow": 247,
+     "leftForearm": 151.9,
+     "leftKnee": -15,
+     "leftUpperArm": 366.3,
+     "leftHand": 40.2,
+     "rightHand": 42,
+     "warn": 3,
+     "wt": "[\"躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。\",\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 45.4,
+      "rightKnee": 128.3,
+      "leftElbow": 333,
+      "rightElbow": 344.9,
+      "leftWrist": 167.6,
+      "rightWrist": 172,
+      "leftPalm": 101,
+      "rightPalm": 104.4,
+      "leftAnkle": 4.6,
+      "rightAnkle": 171.8,
+      "leftToe": 184.5,
+      "rightToe": 348.8,
+      "pelvis": 132.1,
+      "head": 704
+     },
+     "P": [
+      -1,
+      132,
+      1
+     ],
+     "LK": [
+      445,
+      45,
+      187
+     ],
+     "LA": [
+      815,
+      5,
+      374
+     ],
+     "LH": [
+      81,
+      85,
+      4
+     ]
+    },
+    {
+     "f": 160,
+     "torso": 13.7,
+     "all": -47.1,
+     "leftThigh": -4.4,
+     "leftShin": -26.6,
+     "leftFoot": -47.1,
+     "head": 592.2,
+     "rightThigh": -5.2,
+     "rightShin": -32.1,
+     "rightFoot": -45.8,
+     "rightElbow": 258.2,
+     "rightForearm": 157.1,
+     "rightKnee": -18.5,
+     "rightUpperArm": 371.2,
+     "leftElbow": 247,
+     "leftForearm": 151.9,
+     "leftKnee": -15,
+     "leftUpperArm": 366.3,
+     "leftHand": 40.2,
+     "rightHand": 42,
+     "warn": 3,
+     "wt": "[\"躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。\",\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 45.4,
+      "rightKnee": 46,
+      "leftElbow": 333,
+      "rightElbow": 344.9,
+      "leftWrist": 167.6,
+      "rightWrist": 172,
+      "leftPalm": 101,
+      "rightPalm": 104.4,
+      "leftAnkle": 4.6,
+      "rightAnkle": 5.9,
+      "leftToe": 184.5,
+      "rightToe": 185.9,
+      "pelvis": 132.1,
+      "head": 704
+     },
+     "P": [
+      -1,
+      132,
+      1
+     ],
+     "LK": [
+      445,
+      45,
+      187
+     ],
+     "LA": [
+      815,
+      5,
+      374
+     ],
+     "LH": [
+      81,
+      85,
+      4
+     ]
+    },
+    {
+     "f": 176,
+     "torso": 13.7,
+     "all": -47.1,
+     "leftThigh": -4.4,
+     "leftShin": -26.6,
+     "leftFoot": -47.1,
+     "head": 592.2,
+     "rightThigh": -5.2,
+     "rightShin": -32.1,
+     "rightFoot": -45.8,
+     "rightElbow": 258.2,
+     "rightForearm": 157.1,
+     "rightKnee": -18.5,
+     "rightUpperArm": 371.2,
+     "leftElbow": 247,
+     "leftForearm": 151.9,
+     "leftKnee": -15,
+     "leftUpperArm": 366.3,
+     "leftHand": 40.2,
+     "rightHand": 42,
+     "warn": 3,
+     "wt": "[\"躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。\",\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 45.4,
+      "rightKnee": 46,
+      "leftElbow": 333,
+      "rightElbow": 344.9,
+      "leftWrist": 167.6,
+      "rightWrist": 172,
+      "leftPalm": 101,
+      "rightPalm": 104.4,
+      "leftAnkle": 4.6,
+      "rightAnkle": 5.9,
+      "leftToe": 184.5,
+      "rightToe": 185.9,
+      "pelvis": 132.1,
+      "head": 704
+     },
+     "P": [
+      -1,
+      132,
+      1
+     ],
+     "LK": [
+      445,
+      45,
+      187
+     ],
+     "LA": [
+      815,
+      5,
+      374
+     ],
+     "LH": [
+      81,
+      85,
+      4
+     ]
+    },
+    {
+     "f": 192,
+     "torso": 15.5,
+     "all": -47.1,
+     "leftThigh": -2.8,
+     "leftShin": -26,
+     "leftFoot": -47.1,
+     "head": 594.1,
+     "rightThigh": -3.4,
+     "rightShin": -31.4,
+     "rightFoot": -45.5,
+     "rightElbow": 398.9,
+     "rightForearm": 323.8,
+     "rightKnee": -17.6,
+     "rightUpperArm": 448.1,
+     "leftElbow": 269.1,
+     "leftForearm": 275.9,
+     "leftKnee": -14.3,
+     "leftUpperArm": 356.8,
+     "leftHand": 317.1,
+     "rightHand": 219,
+     "warn": 2,
+     "wt": "[\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 46.3,
+      "rightKnee": 47.1,
+      "leftElbow": 309.5,
+      "rightElbow": 479.9,
+      "leftWrist": 340.1,
+      "rightWrist": 344.5,
+      "leftPalm": 357.8,
+      "rightPalm": 289.7,
+      "leftAnkle": 4.6,
+      "rightAnkle": 6.2,
+      "leftToe": 184.5,
+      "rightToe": 186.1,
+      "pelvis": 134,
+      "head": 706
+     },
+     "P": [
+      0,
+      134,
+      0
+     ],
+     "LK": [
+      446,
+      46,
+      187
+     ],
+     "LA": [
+      815,
+      5,
+      375
+     ],
+     "LH": [
+      82,
+      87,
+      3
+     ]
+    },
+    {
+     "f": 208,
+     "torso": 15.6,
+     "all": -46.7,
+     "leftThigh": -3.3,
+     "leftShin": -27.4,
+     "leftFoot": -46.7,
+     "head": 594.1,
+     "rightThigh": -3.3,
+     "rightShin": -29.3,
+     "rightFoot": -45.8,
+     "rightElbow": 377.7,
+     "rightForearm": 371.4,
+     "rightKnee": -16.4,
+     "rightUpperArm": 418.6,
+     "leftElbow": 322.3,
+     "leftForearm": 331.8,
+     "leftKnee": -15.3,
+     "leftUpperArm": 379.7,
+     "leftHand": 359.9,
+     "rightHand": 312.8,
+     "warn": 2,
+     "wt": "[\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 46.6,
+      "rightKnee": 47,
+      "leftElbow": 363.1,
+      "rightElbow": 432.8,
+      "leftWrist": 398,
+      "rightWrist": 400.2,
+      "leftPalm": 419.9,
+      "rightPalm": 386,
+      "leftAnkle": 5,
+      "rightAnkle": 5.9,
+      "leftToe": 185,
+      "rightToe": 185.8,
+      "pelvis": 134,
+      "head": 705.9
+     },
+     "P": [
+      0,
+      134,
+      0
+     ],
+     "LK": [
+      446,
+      47,
+      179
+     ],
+     "LA": [
+      817,
+      5,
+      365
+     ],
+     "LH": [
+      82,
+      87,
+      -4
+     ]
+    },
+    {
+     "f": 224,
+     "torso": 15.2,
+     "all": -46.5,
+     "leftThigh": -4,
+     "leftShin": -30.6,
+     "leftFoot": -45.9,
+     "head": 594.1,
+     "rightThigh": -2.2,
+     "rightShin": -26,
+     "rightFoot": -46.5,
+     "rightElbow": 285,
+     "rightForearm": 301.4,
+     "rightKnee": -14.3,
+     "rightUpperArm": 360.9,
+     "leftElbow": 396,
+     "leftForearm": 373.9,
+     "leftKnee": -17.7,
+     "leftUpperArm": 434.1,
+     "leftHand": 304.3,
+     "rightHand": 379.8,
+     "warn": 2,
+     "wt": "[\"左脚踝已按真实腿长限制。\",\"右脚踝已按真实腿长限制。\"]",
+     "J": {
+      "leftKnee": 46.9,
+      "rightKnee": 46.6,
+      "leftElbow": 458.1,
+      "rightElbow": 318.6,
+      "leftWrist": 401.4,
+      "rightWrist": 397.5,
+      "leftPalm": 378.6,
+      "rightPalm": 443,
+      "leftAnkle": 5.8,
+      "rightAnkle": 5.2,
+      "leftToe": 185.8,
+      "rightToe": 185.1,
+      "pelvis": 134,
+      "head": 705.9
+     },
+     "P": [
+      0,
+      134,
+      0
+     ],
+     "LK": [
+      446,
+      47,
+      162
+     ],
+     "LA": [
+      818,
+      6,
+      344
+     ],
+     "LH": [
+      80,
+      87,
+      -18
+     ]
+    }
+   ]
+  }
+ ],
+ "pageErrors": []
+}

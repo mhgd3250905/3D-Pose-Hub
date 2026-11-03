@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "scapular-A",
   "nameZh": "俯卧 Y-T-W 举",
-  "spec": "drill-anim/specs/scapular-A-r2.js",
-  "specSha256Lf": "b98f86ef8f01dd5439088fe6217b637861dc71c65c1eab8e760bf6fba6223ede",
+  "spec": "drill-anim/specs/scapular-A-r2-gc1.js",
+  "specSha256Lf": "25864902271882cd07f1c39d05e1abc2de57901674a74ade6a32c4b6e4517850",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -92,10 +92,18 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/scapular-A-r2.js"
+    "selectedSpec": "drill-anim/specs/scapular-A-r2-gc1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
   "userAccepted": false,
-  "releaseEligible": false
+  "releaseEligible": false,
+  "groundContactFix": {
+    "r1m5": {
+      "from": "drill-anim/specs/scapular-A-r2.js",
+      "to": "drill-anim/specs/scapular-A-r2-gc1.js",
+      "date": "2026-11-04",
+      "branch": "fix/ground-contact-r1"
+    }
+  }
 }

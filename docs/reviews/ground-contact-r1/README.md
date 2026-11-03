@@ -105,3 +105,21 @@ s-pigeon★（M2 只改了手，本次 gc2 是完整修复）、h-kneeling-inste
 
 # 里程碑 M4（只测不修）2026-11-04
 复筛清单剩余 36 个全部测完，新增 >5 mm 穿地 3 个：h-chair-progressive-front-split-native（后膝 71.5）、t-seated-straddle-lift-1leg（双脚 44.7）、scapular-A（双小腿 23.4）。详见 `docs/reviews/ground-penetration-audit-20261103/README.md`「续测 r1·M4」，原始结果 `m4-extra36-results.jsonl`。留到下一里程碑修。
+
+---
+
+# 里程碑 M5（修 M4 新发现的 3 个 + 剩余 136 个站姿/器械/悬垂动作脚部扫查）2026-11-04
+
+生成器 `tools/ground-contact-r1/m5-fix.mjs`（`FIX` 表一行一个动作）；recipe 只改指向/SHA，记 `groundContactFix.r1m5`。参数由 `probe.mjs` 标定（`m5-probe-*.json`，size 96）。
+复测：`ground-penetration-audit.mjs --stride 16 --size 128`（整循环 15 帧，生产安装链），结果 `m5-after-results.jsonl`。
+
+| 动作 | 修前（M4，整循环最深） | 修后（整循环 15 帧，最低皮肤 min…max） | 改了什么 | 外观 |
+|---|---|---|---|---|
+| h-chair-progressive-front-split-native | 后膝 −71.5（全程 −50.7…−71.5）、后小腿 −46.7、后脚背 −8.3 | 后膝 −0.6…+2.8、后小腿 −0.9…+0.3、后脚背 +1.1、前脚 0（不变） | 根因：spec 用 0.353/0.410 m 的大腿/小腿算后腿，armfix-r2 实测 0.410/0.417 m，IK 把后膝压到踝以下。骨盆 y 整段 +53 mm；后脚踝 y 0.0405→0.0515、跖屈 157.8→154.8°（同 n-half-split-gc1）；后脚踝 z 按真实骨长逐帧重算（后膝关节中心 y 44→53 mm，补皮肤 43–52 mm） | 整个人高 5.3 cm（下沉幅度 443→354 的 9 cm 不变）；劈叉最深时后膝再往后约 3 cm（跪姿起点不变）；前脚、扶椅左手、右手轨迹不动 |
+| t-seated-straddle-lift-1leg | 双脚 −44.7、双小腿 −30.5、双膝 −17.5、左大腿 −5.4 | 着地腿脚 −0.5…、小腿 0.0…、大腿 0.0…；膝窝 +9.4/+9.8（伸直腿本就不贴地） | 双脚 hips 系踝 y 基值 +46 mm（平放伸直腿绕髋上抬约 3°；抬腿段同样整体平移，相对上抬幅度 12° 不变） | 双腿平放时脚跟/小腿贴地而不是陷进去；臀部离地 13.4→14.9 mm（原有，未动） |
+| scapular-A | 双小腿 −23.4、双脚 −22.7（全程） | 小腿 +0.1、脚背/脚尖 +0.9（全程） | 双脚 hips 系踝 z 基值 −24 mm（俯卧时等于世界 y +23 mm）。脚旋转试过 −70°/−90°：只改脚尖关节高度、对最低点（踝前小腿/脚背）无效，故保留 −80° | 双腿绕髋略抬：大腿离地 12.4→19.3 mm、膝 20→37 mm（都不是接触部位，修前也不贴地） |
+
+三个都没有引擎「位置已限制」提示，无 pageErrors。对比图 `m5-before-after.jpg`（每行左修前右修后，256px 侧视调试图，红色 = y=0 地面：扶椅劈叉 f96、坐姿分腿 f0、俯卧 YTW f0）。
+
+## 需重渲（M5 改了 spec 的动作）
+h-chair-progressive-front-split-native、t-seated-straddle-lift-1leg、scapular-A。
