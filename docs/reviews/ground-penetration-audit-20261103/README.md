@@ -214,3 +214,25 @@
 - `raised-mat-per-vertex.json`：9 个带凸起道具动作的逐帧逐部位结果。
 - `floor-support-static-scan.json`（r1 静态筛选）、`nonfloor-203-keyword-rescan.json`（本轮复筛）、`extra-floor-list.txt`、`mat-prop-scan.json`。
 - `worst.jpg`：thread-needle f96、rockback f48、kneeling-pushup f64，256px 侧视调试图（镜头贴地平视，红色平板 = y=0 地面，红色以下即在地面以下）。不是生产镜头。
+
+---
+
+## 续测 r1·M4（2026-11-04，分支 fix/ground-contact-r1）：复筛清单剩余 36 个全部测完
+同一脚本、同一参数（`--stride 16 --size 128`，生产安装链，地面 y=0），结果 `m4-extra36-results.jsonl`。36 个都没有 at.y>0 的凸起道具，无需逐顶点道具复核；36 个均无 pageErrors。
+关键词复筛 67 个现已全部测完；总计实测 **113 / 249**（剩余 136 个为站姿/器械/悬垂/坐椅动作，见上文）。
+
+**新发现 >5 mm 穿地 3 个（本次只记录，未修）：**
+| 动作 | 部位 | 最深 mm | 最深帧 | 穿透帧段（抽样帧） | 关节中心 y mm | 推测根因 |
+|---|---|---|---|---|---|---|
+| h-chair-progressive-front-split-native 扶椅前后劈叉渐进 | 后膝（左） | 71.5 | 96 | 0-224（15/15，最浅 50.7@f0） | −8…−24 | A2：后膝着地目标按关节中心贴地写、未补皮肤厚度，骨盆下沉（443→354）时越压越深 |
+|  | 后小腿（左） | 46.7 | 96 | 0-224 |  | A2 |
+|  | 后脚背（左） | 8.3 | 96 | 0-224 |  | A2/C |
+| t-seated-straddle-lift-1leg 坐姿分腿单腿抬 | 双脚 | 44.7 | 0 / 160 | 着地腿全程（左 0、48–112；右 0、80–112、160–224；13/15） | 踝 7 | A1：平放伸直腿的目标高度按关节贴地（踝心 7、膝心 47 mm），没算脚跟/小腿/膝后厚度 |
+|  | 双小腿 | 30.5 | 160 | 同上 |  | A1 |
+|  | 双膝 | 17.5 | 0 | 同上 |  | A1 |
+|  | 左大腿 | 5.4 | 0 | 0-64（3/15） |  | A1 |
+| scapular-A 俯卧 Y-T-W 举 | 双小腿 | 23.4 | 0 | 0-224（15/15） | 踝 22、脚尖关节 −21 | A2/C：双脚 hips 坐标系 free 目标（踝 y 0.09、绕 z −80°），俯卧时脚背/脚尖被转到地面下 |
+|  | 双脚 | 22.7 | 0 | 0-224 |  | A2/C |
+
+其余 33 个干净（最低皮肤 ≥ −2.1 mm）：hamstrings-B, hip-abductors-B, hip-flexors-A, lats-A, n-leg-circles, n-seated-ir-drop, n-windshield, obliques-A, rotator-cuff-A, s-figure4, s-seated-fold, serratus-A, triceps-A, w-dead-bug, w-feet-on-chair-bridge, w-prone-swimmer, t-flare-side-hold, t-lsit-open-close, t-lsit-tuck, t-lsit-vsit-circles, t-lsit-wide, t-seated-straddle-ext, t-seated-straddle-lifts, t-straddle-hold, t-tuck-planche, t-vsit, abs-B, n-slider-lateral, h-bulgarian, h-reverse-lunge, h-db-split-squat, h-forward-lunge, adductors-A。
+（「悬空」未单独列：33 个里声明接触整循环最近距离都 ≤15 mm 的判定没有新增问题；abs-B 全身最低 124.8 mm 属器械/悬空动作本身。）

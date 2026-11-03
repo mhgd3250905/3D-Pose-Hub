@@ -102,3 +102,6 @@ M1 改过、本次未动、仍需按 M1 重渲：w-bird-dog、w-fire-hydrant、h
 
 ## 需重渲（M3 改了 spec 的动作）
 s-pigeon★（M2 只改了手，本次 gc2 是完整修复）、h-kneeling-instep-stretch、s-kneel-hipflex、hip-abductors-A、forearms-A。
+
+# 里程碑 M4（只测不修）2026-11-04
+复筛清单剩余 36 个全部测完，新增 >5 mm 穿地 3 个：h-chair-progressive-front-split-native（后膝 71.5）、t-seated-straddle-lift-1leg（双脚 44.7）、scapular-A（双小腿 23.4）。详见 `docs/reviews/ground-penetration-audit-20261103/README.md`「续测 r1·M4」，原始结果 `m4-extra36-results.jsonl`。留到下一里程碑修。
