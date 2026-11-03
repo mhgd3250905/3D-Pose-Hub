@@ -149,3 +149,9 @@ adductors-B、deltoids-B、deltoids-C、forearms-A、glute-max-A、h-adductor-ro
 
 ## 需重渲（M6 改了 spec 的动作）
 h-chair-kickback、o-supported-hip-hitch。
+
+## M6 第二部分：剩余 84 个站姿/器械/悬垂动作扫查（只测，未发现需修的）
+`--stride 32 --size 128`，续跑 `m5-ids136-ordered.txt`（M5 已测 52 个跳过）。**84 / 84 测完，新增 >5 mm 穿地 0 个**。136 个站姿类全部测完；**249 个动作全量覆盖：249 / 249 已实测**（113 地面/复筛类 + 136 站姿/器械/悬垂/坐椅类）。详见审计报告「续测 r1·M6」一节，结果 `m6-stand84-results.jsonl`、汇总 `m6-stand84-summary.json`。
+
+## 需重渲（r1 M1–M6 累计，去重 33 个）
+adductors-B、deltoids-B、deltoids-C、forearms-A、glute-max-A、h-adductor-rock、h-catcow-quad、h-chair-kickback、h-chair-progressive-front-split-native、h-donkey-kick、h-floor-nordic-hand-reset、h-kneeling-instep-stretch、h-kneeling-pushup、h-kneeling-thread-needle、h-open-book、h-quad-cars、h-quadruped-open、h-quadruped-rockback、h-short-side-plank、h-supine-bilateral-leg-raise、h-supine-heel-slide、hip-abductors-A、n-half-split、n-straddle-fold、o-supported-hip-hitch、s-frog、s-kneel-hipflex、s-lizard、s-pigeon、scapular-A、t-seated-straddle-lift-1leg、w-bird-dog、w-fire-hydrant。
