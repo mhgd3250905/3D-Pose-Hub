@@ -52,12 +52,26 @@
   "hip-abductors-C",
   "h-wall-wrist-flexor-stretch",
   "abs-A",
-  "chest-A"
+  "chest-A",
+  "deltoids-A",
+  "deltoids-B",
+  "erectors-A",
+  "glute-max-A",
+  "h-banana",
+  "h-band-leg-out",
+  "h-bridge-march",
+  "h-bridge-overhead",
+  "h-butterfly-active",
+  "h-cobra",
+  "h-crunch",
+  "h-db-floor-fly"
  ],
  "penetratingActions": [
   "adductors-B",
+  "deltoids-B",
   "deltoids-C",
   "forearms-A",
+  "glute-max-A",
   "h-adductor-rock",
   "h-catcow-quad",
   "h-donkey-kick",
@@ -609,6 +623,24 @@
    "mesh": "V2P_Base_Hands"
   },
   {
+   "id": "deltoids-B",
+   "region": "leftHand",
+   "depthMm": 18.3,
+   "frame": 0,
+   "loopFrames": 240,
+   "framesBelow5mm": [
+    "0-224"
+   ],
+   "jointCentreYmm": null,
+   "jointToLowestVertexMm": null,
+   "at": [
+    0.0464,
+    -0.0183,
+    -0.533
+   ],
+   "mesh": "V2P_Base_Hands"
+  },
+  {
    "id": "s-pigeon",
    "region": "rightKnee",
    "depthMm": 17.9,
@@ -789,6 +821,24 @@
    "mesh": "Coach_Body"
   },
   {
+   "id": "deltoids-B",
+   "region": "leftElbow",
+   "depthMm": 8.7,
+   "frame": 16,
+   "loopFrames": 240,
+   "framesBelow5mm": [
+    "0-16"
+   ],
+   "jointCentreYmm": 39.5,
+   "jointToLowestVertexMm": 48.2,
+   "at": [
+    -0.1564,
+    -0.0087,
+    -0.3644
+   ],
+   "mesh": "V2P_Base_Limbs"
+  },
+  {
    "id": "h-kneeling-instep-stretch",
    "region": "rightFoot",
    "depthMm": 8.6,
@@ -841,6 +891,24 @@
     -0.7193
    ],
    "mesh": "Coach_Body"
+  },
+  {
+   "id": "deltoids-B",
+   "region": "leftForearm",
+   "depthMm": 7.9,
+   "frame": 16,
+   "loopFrames": 240,
+   "framesBelow5mm": [
+    "0-16"
+   ],
+   "jointCentreYmm": 39.5,
+   "jointToLowestVertexMm": 47.4,
+   "at": [
+    -0.1436,
+    -0.0079,
+    -0.382
+   ],
+   "mesh": "V2P_Base_Limbs"
   },
   {
    "id": "h-kneeling-pushup",
@@ -1025,6 +1093,42 @@
    "mesh": "V2P_Base_Hands"
   },
   {
+   "id": "glute-max-A",
+   "region": "leftHand",
+   "depthMm": 7.4,
+   "frame": 0,
+   "loopFrames": 240,
+   "framesBelow5mm": [
+    "0-224"
+   ],
+   "jointCentreYmm": null,
+   "jointToLowestVertexMm": null,
+   "at": [
+    0.0936,
+    -0.0074,
+    -0.2248
+   ],
+   "mesh": "V2P_Base_Hands"
+  },
+  {
+   "id": "glute-max-A",
+   "region": "rightHand",
+   "depthMm": 7.4,
+   "frame": 0,
+   "loopFrames": 240,
+   "framesBelow5mm": [
+    "0-224"
+   ],
+   "jointCentreYmm": null,
+   "jointToLowestVertexMm": null,
+   "at": [
+    0.0936,
+    -0.0074,
+    0.2248
+   ],
+   "mesh": "V2P_Base_Hands"
+  },
+  {
    "id": "hip-abductors-A",
    "region": "leftElbow",
    "depthMm": 7.1,
@@ -1136,15 +1240,15 @@
  "hoverReference": [
   {
    "id": "quadriceps-A",
-   "joint": "rightKnee",
-   "region": "rightKnee",
-   "closestMm": 39.2
-  },
-  {
-   "id": "quadriceps-A",
    "joint": "leftKnee",
    "region": "leftKnee",
    "closestMm": 39.4
+  },
+  {
+   "id": "quadriceps-A",
+   "joint": "rightKnee",
+   "region": "rightKnee",
+   "closestMm": 39.2
   },
   {
    "id": "s-lizard",
@@ -1208,24 +1312,30 @@
   },
   {
    "id": "n-prone-ir",
-   "joint": "rightKnee",
-   "region": "rightKnee",
-   "closestMm": 52.4
-  },
-  {
-   "id": "n-prone-ir",
    "joint": "leftKnee",
    "region": "leftKnee",
    "closestMm": 51.9
   },
   {
+   "id": "n-prone-ir",
+   "joint": "rightKnee",
+   "region": "rightKnee",
+   "closestMm": 52.4
+  },
+  {
+   "id": "s-9090",
+   "joint": "leftKnee",
+   "region": "leftKnee",
+   "closestMm": 43.5
+  },
+  {
    "id": "s-9090",
    "joint": "rightKnee",
    "region": "rightKnee",
    "closestMm": 27.1
   },
   {
-   "id": "s-9090",
+   "id": "h-9090-liftoff",
    "joint": "leftKnee",
    "region": "leftKnee",
    "closestMm": 43.5
@@ -1235,18 +1345,6 @@
    "joint": "rightKnee",
    "region": "rightKnee",
    "closestMm": 27.1
-  },
-  {
-   "id": "h-9090-liftoff",
-   "joint": "leftKnee",
-   "region": "leftKnee",
-   "closestMm": 43.5
-  },
-  {
-   "id": "s-butterfly",
-   "joint": "rightKnee",
-   "region": "rightKnee",
-   "closestMm": 95.5
   },
   {
    "id": "s-butterfly",
@@ -1255,10 +1353,10 @@
    "closestMm": 97.3
   },
   {
-   "id": "n-straddle-fold",
+   "id": "s-butterfly",
    "joint": "rightKnee",
    "region": "rightKnee",
-   "closestMm": 152.4
+   "closestMm": 95.5
   },
   {
    "id": "n-straddle-fold",
@@ -1267,10 +1365,10 @@
    "closestMm": 152.2
   },
   {
-   "id": "n-thomas-test",
+   "id": "n-straddle-fold",
    "joint": "rightKnee",
    "region": "rightKnee",
-   "closestMm": 63.5
+   "closestMm": 152.4
   },
   {
    "id": "n-thomas-test",
@@ -1279,10 +1377,40 @@
    "closestMm": 41.0
   },
   {
+   "id": "n-thomas-test",
+   "joint": "rightKnee",
+   "region": "rightKnee",
+   "closestMm": 63.5
+  },
+  {
    "id": "h-band-row",
    "joint": "leftKnee",
    "region": "leftKnee",
    "closestMm": 16.8
+  },
+  {
+   "id": "h-banana",
+   "joint": "leftPalm",
+   "region": "leftHand",
+   "closestMm": 33.2
+  },
+  {
+   "id": "h-banana",
+   "joint": "rightPalm",
+   "region": "rightHand",
+   "closestMm": 34.0
+  },
+  {
+   "id": "h-cobra",
+   "joint": "leftToe",
+   "region": "leftFoot",
+   "closestMm": 22.9
+  },
+  {
+   "id": "h-cobra",
+   "joint": "rightToe",
+   "region": "rightFoot",
+   "closestMm": 22.9
   }
  ],
  "raisedMatProps": [
