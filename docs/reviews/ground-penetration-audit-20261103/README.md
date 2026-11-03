@@ -1,72 +1,216 @@
-# 地面穿模数值排查（v3 动作包，2026-11-03，只排查不修）
+# 地面穿模数值排查（v3 动作包，2026-11-03，只排查不修）— r2 续跑
 
 源码：origin/main `ed49ffb`（含用户本机批次 `9b67e5d` 的全部配方/模型/安装链）。分支 `fix/ground-penetration-audit`。
-未改任何 spec／配方／模型；未碰用户本机批次。
+未改任何 spec／配方／模型；未碰 main，未碰用户本机批次。
 
-## 方法
-- 脚本 `tools/ground-audit-r1/ground-penetration-audit.mjs`：直接复用 `tools/action-package-v3/recipe-scene.mjs` 的
-  `loadRecipe → openScene → stageAt`（即 render-masters 生产链：armfix-r2 模型、手部安装、joint corrections、腕部修正、action corrective、道具、固定镜头）。
-- 每帧做一次 128px 真实渲染，在 `scene.onAfterRender` 内对所有可见、被绘制的 coach 顶点做 CPU 蒙皮（`SkinnedMesh.getVertexPosition`），只回传数字，不截图。
+## 结论（先看这里）
+- 实测 **77 / 249** 个动作（46 个静态候选全部测完 + 关键词复筛补测 31 个；另 9 个带凸起道具的动作做了逐顶点复核），**26 个动作有 >5 mm 穿地**（地面 y=0）。
+- 另有 **6 个动作身体陷入凸起道具（瑜伽砖/垫块/靠垫）>5 mm**（逐顶点复核，见「结果二」），其中 n-straddle-fold、h-open-book 在地面检查里是干净的。**合计 28 个动作至少有一处 >5 mm 穿模**：adductors-B, deltoids-B, deltoids-C, forearms-A, glute-max-A, h-adductor-rock, h-catcow-quad, h-donkey-kick, h-floor-nordic-hand-reset, h-kneeling-instep-stretch, h-kneeling-pushup, h-kneeling-thread-needle, h-open-book, h-quad-cars, h-quadruped-open, h-quadruped-rockback, h-short-side-plank, h-supine-bilateral-leg-raise, h-supine-heel-slide, hip-abductors-A, n-half-split, n-straddle-fold, s-frog, s-kneel-hipflex, s-lizard, s-pigeon, w-bird-dog, w-fire-hydrant。
+- 本轮新增发现：h-floor-nordic-hand-reset（双膝 115.9 mm，A1）、s-pigeon（左膝 32.1 mm，A2；且右脚/双大腿穿进两块立砖，D）、deltoids-C（右膝 27.8 mm，A2）、h-short-side-plank（下侧膝 24.1 / 肘 20.1 mm，A2）、h-supine-bilateral-leg-raise（双肘 47.4 mm，A2）、h-supine-heel-slide（双肘 19.4 mm，A2）、adductors-B / deltoids-B（原生手撑地 18.3 mm，B）、glute-max-A（原生手 7.4 mm，B）、deltoids-B 左肘 8.7 mm（C）、n-straddle-fold 双手陷砖 24.9 mm（B）、h-open-book 头/躯干/上臂穿进头枕（D）。
+- n-half-split / s-lizard 手按瑜伽砖：逐顶点复核**确认**，双手最低点低于砖顶 **25.6 / 23.7 mm**，每帧 650–750 个手部顶点在砖体内，全程 15/15 帧。
+- 未测：172 个动作（见「覆盖范围」），原因是单个动作开页+安装 30–200 s，时限内跑不完；站姿动作的脚部检查同样受开页成本限制，抽帧降到每 32 帧 1 帧也省不了多少（成本在开页，不在抽帧），因此跳过。
+
+## 方法（与 r1 相同）
+- 脚本 `tools/ground-audit-r1/ground-penetration-audit.mjs`：直接复用 `tools/action-package-v3/recipe-scene.mjs` 的 `loadRecipe → openScene → stageAt`（render-masters 生产链：armfix-r2 模型、手部安装、joint corrections、腕部修正、action corrective、道具、固定镜头）。
+- 每帧一次 128px 真实渲染，在 `scene.onAfterRender` 内对所有可见、被绘制的 coach 顶点做 CPU 蒙皮（`SkinnedMesh.getVertexPosition`），只回传数字。
 - 部位：按顶点主骨骼分区（Patella→膝；Thigh/Shin 中距膝关节 11 cm 内也算膝；Forearm/UpperArm 中距肘关节 9 cm 内算肘；v2p 手指骨→手）。
-- 地面定义：世界平面 **y=0**（engine.js「floor y=0, up +Y」；生产里 stageFloor/grid/ring 全部隐藏，`output.exerciseMat` 不是 3-D 几何）。
-  `mat` 道具顶面在 `at.y`，默认 0；凸起的 mat（瑜伽砖/垫块）单独按其顶面对比（近似：只用各部位最低顶点是否落在砖的平面范围内）。
-- 抽样：8 s 循环 240 帧，每 16 帧取 1 帧（0,16,…,224，共 15 帧）；h-bear-plank 为每 10 帧。
-- 阈值：穿透 >5 mm；悬空参考：spec `shadow.blobs` 声明的接触关节整段循环最近距离仍 >15 mm。
-- 不含：GPU-only 位移（胸口呼吸 ≤1.8 mm 向外、cloth sink 向内）——对膝/肘/手不构成外鼓。
+- 地面：世界平面 **y=0**。抽样：240 帧循环每 16 帧 1 帧（15 帧）；h-bear-plank 每 10 帧。
+- 阈值：穿透 >5 mm 记问题；声明接触（spec `shadow.blobs` 的膝/肘/掌/脚）整段循环最近距离仍 >15 mm 记悬空参考。
+- **新增** `tools/ground-audit-r1/raised-mat-vertex-audit.mjs`：对 at.y>0 的 `mat` 道具（props.js：BoxGeometry，L 沿 x、W 沿 z、顶面在 at.y、高 H、绕 y 转 yaw），把每个被绘制的蒙皮顶点转到砖的局部坐标，落在砖的平面范围内就算「离砖顶距离 = y − 顶面」，并统计落在砖体积内（顶面以下、底面以上）的顶点数。结果 `raised-mat-per-vertex.json`，汇总进 `summary.json.raisedMatPerVertex`。
+- **新增** 静态复筛 `nonfloor-203-keyword-rescan.json`：对 r1 未入选的 203 个动作，扫 spec 源码关键词（kneel/quadruped/plank/prone/supine/side-lying/lying/seated/sit/floor/mat/palm-floor/hand support/bridge/crunch…）、中文名（跪/四足/平板/俯卧/仰卧/侧卧/坐/地/垫/撑/桥/卷腹/躺）、`output.exerciseMat`、spec 里 pelvis 目标 y。按此挑出 67 个躺/坐/撑地/弓步类动作补测（`extra-floor-list.txt`，按风险排序）。r1 静态筛选**确有遗漏**：只看膝/肘 shadow blob 和名称，漏掉了仰卧/俯卧/坐姿/手撑地/弓步类，补测里已经查出 h-floor-nordic-hand-reset（115.9 mm）等新问题。
+- 续跑（断点续传）：`/workspace/bin/heavy -- node tools/ground-audit-r1/ground-penetration-audit.mjs --out <dir> --stride 16 --size 128 --list ids.txt`；需先在仓库根目录起 Vite：`node_modules/.bin/vite --host 127.0.0.1 --port 8830 --strictPort`（drill-anim/config.json 的 app_url；r1 中断后续跑第一次就是因为它没起而 ERR_CONNECTION_REFUSED）。
+  汇总：`python3 tools/ground-audit-r1/summarize.py <dir>/results.jsonl summary.json mat-prop-scan.json <dir>/raised-mat-results.jsonl`；`python3 tools/ground-audit-r1/per_action.py <dir>/results.jsonl per-action.json`。
 
-## 覆盖范围（未完成部分如实列出）
-单个动作开页+安装约 35–260 s，249 个全跑约 3–4 小时，超出 60 分钟时限。先用静态扫描（`floor-support-static-scan.json`：shadow 接触关节含膝/肘、或名称含跪/四足/肘撑）筛出 46 个落地支撑候选，按优先级跑完 **22 个**：
+## 结果一：穿地 >5 mm（26 个动作，按最深排序）
+| # | 动作 | 部位 | 最深 mm | 最深帧 | 穿透帧段（抽样帧） | 关节中心 y mm | 关节→最低顶点 mm | 根因 |
+|---|---|---|---|---|---|---|---|---|
+| 1 | h-kneeling-thread-needle 跪姿穿针 | 左膝 | 134.8 | 96 | 0-224 | -104.9 | 30.0 | A2 |
+|  |  | 右膝 | 116.2 | 96 | 0-224 | -83.2 | 33.0 | A2 |
+|  |  | 左大腿 | 58.1 | 96 | 64-176 |  |  | A2 |
+|  |  | 右大腿 | 47.2 | 96 | 64-176 |  |  | A2 |
+|  |  | 左小腿 | 42.3 | 96 | 64-176 | -104.9 | -62.6 | A2 |
+|  |  | 右小腿 | 28.7 | 96 | 64-176 | -83.2 | -54.5 | A2 |
+|  |  | 左手 | 7.4 | 0 | 0-224 |  |  | B |
+|  |  | 右手 | 7.4 | 0 | 0-32, 208-224 |  |  | B |
+| 2 | h-floor-nordic-hand-reset 地面北欧离心及手撑复位 **（新）** | 左膝 | 115.9 | 128 | 0-224 | -64.6 | 51.3 | A1 |
+|  |  | 右膝 | 115.6 | 128 | 0-224 | -64.6 | 51.0 | A1 |
+|  |  | 右小腿 | 78.2 | 128 | 0-224 | -64.6 | 13.6 | A1 |
+|  |  | 左小腿 | 78.0 | 128 | 0-224 | -64.6 | 13.4 | A1 |
+|  |  | 左大腿 | 74.5 | 128 | 80-144 |  |  | A1 |
+|  |  | 右大腿 | 69.5 | 128 | 96-144 |  |  | A1 |
+|  |  | 左脚 | 15.2 | 128 | 0-224 |  |  | A1 |
+|  |  | 右脚 | 15.2 | 128 | 0-224 |  |  | A1 |
+|  |  | 左手 | 6.8 | 128 | 128-160 |  |  | B |
+|  |  | 右手 | 6.8 | 128 | 128-160 |  |  | B |
+| 3 | h-quadruped-rockback 四足中立背后坐 | 左膝 | 90.2 | 48 | 0-224 | -67.3 | 22.9 | A2 |
+|  |  | 右膝 | 90.2 | 48 | 0-224 | -67.3 | 22.9 | A2 |
+|  |  | 右小腿 | 18.5 | 48 | 32-80, 160-208 | -67.3 | -48.8 | A2 |
+|  |  | 左小腿 | 18.4 | 48 | 32-80, 160-208 | -67.3 | -48.9 | A2 |
+|  |  | 左手 | 7.4 | 0 | 0-224 |  |  | B |
+|  |  | 右手 | 7.4 | 0 | 0-224 |  |  | B |
+| 4 | h-kneeling-pushup 跪姿俯卧撑 | 左膝 | 60.0 | 64 | 0-224 | -10.2 | 49.8 | A2 |
+|  |  | 右膝 | 59.8 | 64 | 0-224 | -10.2 | 49.5 | A2 |
+|  |  | 左大腿 | 29.0 | 64 | 0-224 |  |  | A2 |
+|  |  | 右大腿 | 24.7 | 64 | 0-224 |  |  | A2 |
+|  |  | 左手 | 7.4 | 0 | 0-224 |  |  | B |
+|  |  | 右手 | 7.4 | 0 | 0-224 |  |  | B |
+| 5 | h-adductor-rock 四足单腿侧伸后摇 | 左膝 | 52.4 | 64 | 0-224 | -30.7 | 21.7 | A2 |
+| 6 | h-quadruped-open 四足跪姿单臂开胸 | 右膝 | 49.0 | 0 | 0-224 | -18.6 | 30.4 | A2 |
+|  |  | 左膝 | 48.9 | 0 | 0-224 | -18.6 | 30.3 | A2 |
+|  |  | 左手 | 7.4 | 0 | 0-224 |  |  | B |
+|  |  | 右手 | 7.4 | 0 | 0, 176-224 |  |  | B |
+| 7 | h-supine-bilateral-leg-raise 仰卧双直腿举腿 **（新）** | 右肘 | 47.4 | 80 | 0-224 | -7.8 | 39.6 | A2 |
+|  |  | 左肘 | 47.2 | 80 | 0-224 | -7.8 | 39.4 | A2 |
+|  |  | 右前臂 | 34.7 | 80 | 0-224 | -7.8 | 26.9 | A2 |
+|  |  | 左前臂 | 34.6 | 80 | 0-224 | -7.8 | 26.8 | A2 |
+|  |  | 左上臂 | 9.5 | 80 | 0-224 |  |  | A2 |
+|  |  | 右上臂 | 9.3 | 80 | 0-224 |  |  | A2 |
+|  |  | 左手 | 7.4 | 0 | 0-224 |  |  | B |
+|  |  | 右手 | 7.4 | 0 | 0-224 |  |  | B |
+| 8 | w-bird-dog 鸟狗式 | 左膝 | 45.3 | 0 | 0-224 | -16.9 | 28.4 | A1 |
+|  |  | 右膝 | 45.3 | 0 | 0-16, 112-128 | -16.9 | 28.4 | A1 |
+| 9 | h-donkey-kick 四足屈膝后踢 | 左膝 | 45.3 | 0 | 0-224 | -16.9 | 28.4 | A1 |
+|  |  | 右膝 | 32.3 | 0 | 0-16, 112-128, 224 | 5.2 | 37.5 | A1 |
+| 10 | w-fire-hydrant 四足消防栓 | 左膝 | 45.3 | 0 | 0-224 | -16.9 | 28.4 | A1 |
+|  |  | 右膝 | 45.3 | 0 | 0-16, 96-144, 208-224 | -16.9 | 28.4 | A1 |
+| 11 | h-quad-cars 四足髋关节画圈 | 左膝 | 45.3 | 0 | 0-224 | -16.9 | 28.4 | A1 |
+|  |  | 右膝 | 45.3 | 0 | 0-32, 112-144, 208-224 | -16.9 | 28.4 | A1 |
+| 12 | s-pigeon 鸽子式（直立扶砖版） **（新）** | 左膝 | 32.1 | 0 | 0-224 | 15.0 | 47.1 | A2 |
+|  |  | 左小腿 | 19.0 | 0 | 0-224 | 15.0 | 34.0 | A2 |
+|  |  | 右膝 | 17.9 | 0 | 0-224 | 20.3 | 38.2 | A2 |
+|  |  | 左大腿 | 17.2 | 0 | 0-224 |  |  | A2 |
+|  |  | 右小腿 | 11.3 | 0 | 0-224 | 20.3 | 31.6 | A2 |
+|  |  | 左脚 | 8.4 | 0 | 0-224 |  |  | A2 |
+| 13 | deltoids-C 地雷杆半跪单臂推举 **（新）** | 右膝 | 27.8 | 0 | 0-224 | 1.7 | 29.5 | A2 |
+| 14 | h-short-side-plank 屈膝短杠杆侧平板 **（新）** | 左膝 | 24.1 | 0 | 0-224 | 12.1 | 36.2 | A2 |
+|  |  | 左小腿 | 23.4 | 0 | 0-224 | 12.1 | 35.5 | A2 |
+|  |  | 左肘 | 20.1 | 0 | 0-224 | 23.4 | 43.5 | A2 |
+|  |  | 左前臂 | 15.1 | 0 | 0-224 | 23.4 | 38.5 | A2 |
+| 15 | h-supine-heel-slide 仰卧足跟滑 **（新）** | 右肘 | 19.4 | 64 | 0-224 | 23.9 | 43.3 | A2 |
+|  |  | 左肘 | 18.7 | 64 | 0-224 | 23.9 | 42.6 | A2 |
+|  |  | 左前臂 | 14.4 | 64 | 0-224 | 23.9 | 38.3 | A2 |
+|  |  | 右前臂 | 14.2 | 64 | 0-224 | 23.9 | 38.1 | A2 |
+|  |  | 左手 | 7.4 | 0 | 0-224 |  |  | B |
+|  |  | 右手 | 7.4 | 0 | 0-224 |  |  | B |
+| 16 | adductors-B 屈膝哥本哈根侧撑 **（新）** | 左手 | 18.3 | 0 | 0-224 |  |  | B |
+| 17 | deltoids-B 哑铃半程土耳其起立（至高桥） **（新）** | 左手 | 18.3 | 0 | 0-224 |  |  | B |
+|  |  | 左肘 | 8.7 | 16 | 0-16 | 39.5 | 48.2 | C |
+|  |  | 左前臂 | 7.9 | 16 | 0-16 | 39.5 | 47.4 | C |
+| 18 | s-frog 青蛙式 | 左手 | 12.8 | 0 | 0-224 |  |  | B |
+|  |  | 右手 | 12.8 | 0 | 0-224 |  |  | B |
+| 19 | h-kneeling-instep-stretch 跪姿脚背支撑拉伸 | 右小腿 | 10.8 | 0 | 0-224 | 69.3 | 80.1 | C |
+|  |  | 左小腿 | 10.7 | 0 | 0-224 | 69.3 | 80.0 | C |
+|  |  | 右脚 | 8.6 | 0 | 0-224 |  |  | C |
+|  |  | 左脚 | 8.5 | 0 | 0-224 |  |  | C |
+| 20 | n-half-split 半跪半劈叉 | 左小腿 | 10.3 | 0 | 0-224 | 48.8 | 59.1 | C |
+|  |  | 左脚 | 5.6 | 0 | 0-224 |  |  | C |
+| 21 | s-kneel-hipflex 半跪髋屈肌拉伸 | 左小腿 | 10.2 | 0 | 0-224 | 48.8 | 59.1 | C |
+|  |  | 左脚 | 5.6 | 0 | 0-224 |  |  | C |
+| 22 | s-lizard 蜥蜴式低弓步 | 左小腿 | 9.8 | 0 | 0-224 | 51.6 | 61.4 | C |
+|  |  | 左脚 | 5.5 | 0 | 0-224 |  |  | C |
+| 23 | h-catcow-quad 四足猫牛式 | 左手 | 7.4 | 0 | 0-224 |  |  | B |
+|  |  | 右手 | 7.4 | 0 | 0-224 |  |  | B |
+| 24 | glute-max-A 单腿臀桥 **（新）** | 左手 | 7.4 | 0 | 0-224 |  |  | B |
+|  |  | 右手 | 7.4 | 0 | 0-224 |  |  | B |
+| 25 | hip-abductors-A 侧平板抬腿 | 左肘 | 7.1 | 0 | 0-224 | 42.8 | 49.9 | C |
+|  |  | 左前臂 | 6.8 | 0 | 0-224 | 42.8 | 49.6 | C |
+| 26 | forearms-A 跪姿多方向腕部摇摆 | 左膝 | 5.0 | 96 | 96 | 34.5 | 39.5 | C |
 
-已测：h-bear-plank, h-forearm-plank, h-kneeling-pushup, h-catcow-quad, w-bird-dog, h-donkey-kick, w-fire-hydrant, h-quad-cars, h-quadruped-open, h-quadruped-rockback, h-kneeling-thread-needle, glute-max-B, h-adductor-rock, forearms-A, h-kneeling-instep-stretch, quadriceps-A, s-kneel-hipflex, h-half-kneeling-quad-stretch, n-half-split, s-lizard, s-frog, hip-abductors-A。
+## 结果二：凸起道具逐顶点复核（>5 mm 陷入）
+| 动作 | 道具（顶面 mm / 尺寸 L×W×H m） | 部位 | 低于顶面 mm | 砖体内顶点数(单帧最多) | 帧段 | 根因 |
+|---|---|---|---|---|---|---|
+| s-pigeon | #0 顶 255.0 / 0.11×0.23×0.255 | 右脚 | 254.8 | 2099 | 0-224 | D |
+| s-pigeon | #1 顶 255.0 / 0.11×0.23×0.255 | 右大腿 | 246.0 | 766 | 0-224 | D |
+| s-pigeon | #0 顶 255.0 / 0.11×0.23×0.255 | 左大腿 | 214.9 | 156 | 0-224 | D |
+| h-open-book | #0 顶 222.0 / 0.3×0.34×0.22 | 左上臂 | 214.0 | 647 | 0-224 | D |
+| h-open-book | #0 顶 222.0 / 0.3×0.34×0.22 | 躯干 | 198.3 | 1922 | 0-224 | D |
+| h-donkey-kick | #0 顶 6.0 / 1.2×0.61×0.006 | 左小腿 | 51.3 | 84 | 0-224 | A1+D |
+| h-open-book | #0 顶 222.0 / 0.3×0.34×0.22 | 头 | 47.8 | 331 | 0-224 | D |
+| h-donkey-kick | #0 顶 6.0 / 1.2×0.61×0.006 | 左大腿 | 47.5 | 53 | 0-224 | A1+D |
+| s-pigeon | #2 顶 65.0 / 0.21×0.26×0.065 | 右大腿 | 40.8 | 119 | 0-224 | D |
+| h-donkey-kick | #0 顶 6.0 / 1.2×0.61×0.006 | 右小腿 | 38.3 | 36 | 0-16, 112-128, 224 | A1+D |
+| h-donkey-kick | #0 顶 6.0 / 1.2×0.61×0.006 | 右大腿 | 35.9 | 29 | 0-16, 112-128, 224 | A1+D |
+| n-half-split | #0 顶 230.0 / 0.11×0.1594×0.23 | 左手 | 25.6 | 745 | 0-224 | B |
+| n-half-split | #1 顶 230.0 / 0.11×0.1594×0.23 | 右手 | 25.6 | 745 | 0-224 | B |
+| n-straddle-fold | #0 顶 159.4 / 0.11×0.23×0.1594 | 左手 | 24.9 | 695 | 0-224 | B |
+| n-straddle-fold | #1 顶 159.4 / 0.11×0.23×0.1594 | 右手 | 24.9 | 705 | 0-224 | B |
+| s-pigeon | #0 顶 255.0 / 0.11×0.23×0.255 | 左手 | 24.3 | 665 | 0-224 | B |
+| s-pigeon | #1 顶 255.0 / 0.11×0.23×0.255 | 右手 | 24.3 | 668 | 0-224 | B |
+| s-lizard | #0 顶 159.4 / 0.11×0.23×0.1594 | 左手 | 23.7 | 656 | 0-224 | B |
+| s-lizard | #1 顶 159.4 / 0.11×0.23×0.1594 | 右手 | 23.7 | 659 | 0-224 | B |
+| h-donkey-kick | #0 顶 6.0 / 1.2×0.61×0.006 | 左手 | 6.0 | 1672 | 0-224 | D |
+| h-donkey-kick | #0 顶 6.0 / 1.2×0.61×0.006 | 右手 | 6.0 | 1658 | 0-224 | D |
 
-未测（候选剩余 24）：adductors-B, h-side-er, w-clamshell, h-reverse-clam, h-inner-thigh, h-open-book, deltoids-C, h-chair-tspine, h-couch-stretch, s-pigeon, h-tabletop, h-supine-cactus-chest, n-prone-hip-ext, n-prone-ir, s-9090, h-9090-liftoff, s-butterfly, n-straddle-fold, n-thomas-test, h-reverse-crunch, h-band-row, hamstrings-C, hip-abductors-C, h-wall-wrist-flexor-stretch；以及其余 203 个非落地支撑动作。
-续跑（断点续传，已完成的自动跳过）：
-`/workspace/bin/heavy -- node tools/ground-audit-r1/ground-penetration-audit.mjs --out <dir> --stride 16 --size 128 [--list ids.txt]`，
-汇总：`python3 tools/ground-audit-r1/summarize.py <dir>/results.jsonl summary.json mat-prop-scan.json`。
-
-## 结果：22 个里 17 个 >5 mm
-| # | 动作 | 部位 | 最深 mm | 最深帧 | 穿透帧段（抽样帧） | 膝/肘关节中心 y mm | 关节中心→最低顶点 mm |
-|---|---|---|---|---|---|---|---|
-| 1 | h-kneeling-thread-needle 跪姿穿针 | 左膝 | 134.8 | 96 | 全程 0–224 | −104.9 | 30.0 |
-|   |  | 右膝 | 116.2 | 96 | 全程 | −83.2 | 33.0 |
-| 2 | h-quadruped-rockback 四足中立背后坐 | 左/右膝 | 90.2 | 48 | 全程 | −67.3 | 22.9 |
-| 3 | h-kneeling-pushup 跪姿俯卧撑 | 左/右膝 | 60.0 | 64 | 全程 | −10.2 | 49.8 |
-| 4 | h-adductor-rock 四足单腿侧伸后摇 | 左膝 | 52.4 | 64 | 全程 | −30.7 | 21.7 |
-| 5 | h-quadruped-open 四足跪姿单臂开胸 | 左/右膝 | 49.0 | 0 | 全程 | −18.6 | 30.4 |
-| 6 | w-bird-dog 鸟狗式 | 左膝 / 右膝 | 45.3 | 0 | 左全程；右 0–16、112–128 | −16.9 | 28.4 |
-| 7 | h-donkey-kick 四足屈膝后踢 | 左膝 / 右膝 | 45.3 / 32.3 | 0 | 左全程；右 0–16、112–128、224 | −16.9 / +5.2 | 28.4 / 37.5 |
-| 8 | w-fire-hydrant 四足消防栓 | 左/右膝 | 45.3 | 0 | 左全程；右 0–16、96–144、208–224 | −16.9 | 28.4 |
-| 9 | h-quad-cars 四足髋关节画圈 | 左/右膝 | 45.3 | 0 | 左全程；右 0–32、112–144、208–224 | −16.9 | 28.4 |
-| 10 | s-frog 青蛙式 | 左/右手 | 12.8 | 0 | 全程 | – | – |
-| 11 | s-kneel-hipflex 半跪髋屈肌拉伸 | 左小腿前侧 / 左脚 | 10.2 / 5.6 | 0 | 全程 | 膝 48.8 | 59.1 |
-| 12 | h-kneeling-instep-stretch 跪姿脚背支撑 | 左/右脚背 | 8.6 | 0 | 全程 | – | – |
-| 13 | h-catcow-quad, h-kneeling-pushup, h-quadruped-open, h-quadruped-rockback, h-kneeling-thread-needle | 左/右手 | 7.4 | 0 | 全程（thread-needle 右手 0–32、208–224） | – | – |
-| 14 | hip-abductors-A 侧平板抬腿 | 左肘 / 左前臂 | 7.1 / 6.8 | 0 | 全程 | 肘 42.8 | 49.9 |
-| 15 | forearms-A 跪姿多方向腕部摇摆 | 左膝 | 5.0 | 96 | 仅 96 | 34.5 | 39.5 |
-
-凸起垫块（近似，需复核）：n-half-split、s-lizard 手按在瑜伽砖上，手部最低点比砖顶低 25.6 / 23.7 mm；h-donkey-kick 的垫子顶面在 +6 mm（其他动作都是 0），所以它的左膝相对垫面实际是 −51 mm。
-
-悬空参考（声明接触却 >15 mm，修时不能再抬）：quadriceps-A 跪姿反向北欧 双膝最近 39 mm（全程没贴地）；h-bear-plank 双膝放下时也只到 9 mm（未超阈值但已偏高）；h-catcow-quad 膝 1.3 mm、h-half-kneeling-quad-stretch 膝 0.1 mm、s-kneel-hipflex 膝 0.8 mm、h-forearm-plank 肘/前臂 1.1 mm——这几个是正确贴地的对照。
-
-全部数值：`summary.json`（排名、帧段）、`per-action.json`（每动作每部位最低点、关节最低 y）。
+说明：
+- n-half-split / s-lizard / n-straddle-fold / s-pigeon 四个「手按砖」动作的手都是 `mode:'free', palmAt:[x, 砖顶+0.002, z], normal:[0,-1,0]`，即把**掌心关节点**放在砖顶上 2 mm，而手掌皮肤在掌心关节点以下约 25 mm，所以整只手掌一致地陷进砖 24–26 mm（r1 的近似值得到确认，与逐顶点结果相差 <0.1 mm）。归 B（手部接触标定），和原生手 palm-floor 的 7–18 mm 是同一类问题：接触点用的是关节而不是皮肤。
+- s-pigeon 的两块立砖（顶面 255 mm，高 255 mm）落在右脚和双大腿所在的位置：右脚 2099 个顶点、右大腿 766 个顶点在砖体内，右大腿还压进臀下垫块 40.8 mm。h-open-book 的头枕（0.30×0.34×0.22 m，顶面 222 mm）与躯干/左上臂/头重叠（头低于枕顶 47.8 mm，躯干 1922 个顶点在枕体内）。这两个是道具摆放/尺寸与身体不匹配（D），需要看图确认（本轮按要求不做大图渲染）。
+- h-donkey-kick 的垫子顶面 +6 mm（其他垫子都在 0），身体按 y=0 摆：双手正好在垫面下 6.0 mm，左小腿/膝相对垫面 −51.3 mm（D）。
+- h-kneeling-instep-stretch 小腿垫（顶面 21.4 mm）：小腿离垫顶 +0.5/+0.8 mm，正确贴合；h-supine-bilateral-leg-raise 头垫 −0.1 mm、h-supine-cactus-chest 头垫 +0.5 mm，正确。
 
 ## 根因分类
-**A. 姿态本身把膝关节中心放到地面以下（主因，覆盖第 1–9 名）。** 这些动作的膝关节中心 y 为负（−10 ~ −105 mm），而 armfix-r2 膝部「关节中心→最低皮肤」只有 22–50 mm（正常厚度），所以不是蒙皮鼓出，而是关节本身低了。
-- A1 固定烘焙的四足躯干：w-bird-dog / w-fire-hydrant / h-quad-cars / h-donkey-kick 用写死的 `HIPR=[-0.503,0.391,0.077]`、`KN0=[-0.51,0.039,0.077]`、`AN0`（注释：「glute-max-B 的四足躯干烘焙，无求解器」；glute-max-B v2 注释说 KY 0.0407 让髌骨贴垫）。设计的膝关节 y=+39 mm，实测 −16.9 mm，差了约 56 mm，四个动作数值完全一样 → 同一个源头。spec 是对着 `training-human-v2plus` 写的；armfix-r2 沿用 v3 的腿和躯干比例（README：「existing v3 leg and trunk proportions remain unchanged」），髋/踝目标不变、腿段长度变了，两骨 IK 只能把膝往下压。glute-max-B 本身走求解器，膝 −2.4 mm，基本正常。
-- A2 求解器动作的膝高度没有约束：h-kneeling-pushup、h-quadruped-rockback、h-kneeling-thread-needle、h-quadruped-open、h-adductor-rock 的 `qa.jointPins` 只钉膝的 xz（或只作 QA），求解器目标里没有「膝不低于地面」，模型换成 armfix-r2 后膝跟着骨盆/脚的目标沉下去（rockback −67 mm，thread-needle −105 mm）。同一族的 h-catcow-quad 膝在 +35 mm、贴地 1.3 mm，说明不是模型整体问题，而是这几个 spec 的骨盆/脚目标与新比例不匹配。
-**B. 原生手的手掌平面低于地面（第 13 名，7.4 mm，s-frog 12.8 mm）。** 只出现在 hands=native + `palm-floor` + `mode:'fingertips'` 的动作里；对应 spec 注释写「All new finger vertices clear the Y=0 mat by 0.5 mm」，那个 `clear≈0.01694` 是按 v2plus 手量出来的。armfix-r2 换成 `hands-native-c1r2-symmetric-r1` 手源，loader 里把「r5 palm-floor/contact calibration」标为 notMigrated。hands=support 的动作（bear-plank、bird-dog 等）手都正好 0 mm，没问题。→ 手资产换了，接地间隙没重新标定。
-**C. 支撑部位厚度/局部体积（轻度，第 11、12、14 名，5–10 mm）。** 关节中心在地面以上（膝 48.8 mm、肘 42.8 mm），但小腿前侧/脚背/肘部皮肤低 5–10 mm：s-kneel-hipflex 后侧小腿和脚背、h-kneeling-instep-stretch 脚背、hip-abductors-A 肘撑侧肘/前臂。属于目标高度按旧模型厚度设、armfix-r2 的局部体积（含 elbow-dqs/ankle-join 修正后的形状）略厚，属于 1 cm 以内的贴合误差。
-**D. 地面/垫子高度与配方不一致。** h-donkey-kick 的 mat `at.y=0.006`（顶面 +6 mm，其余 100 个 mat 都是 0），身体按 y=0 摆，额外多陷 6 mm；n-half-split / s-lizard 手按瑜伽砖（顶面 230 / 159 mm）疑似陷入 ~25 mm（近似计算，需复核）。
-**E. 固定镜头/构图：排除。** 生产镜头只做投影，不改几何；地面不渲染；所有穿透都在世界坐标里实测得到，与镜头无关。
+- **A1 固定烘焙姿态（无求解器）把膝关节压到地面以下**：w-bird-dog / w-fire-hydrant / h-quad-cars / h-donkey-kick（写死 `HIPR/KN0/AN0`，四个动作数值完全一样，膝关节中心 −16.9 mm）；**新增 h-floor-nordic-hand-reset**：spec 内嵌 240 帧离线表（注释「R3 ANALYTIC CANDIDATE ONLY… OFFLINE_CANDIDATE_REQUIRES_RUNTIME_FULL_BODY_QA」），表里膝 y=+49 mm，实测膝关节中心 −7.6 mm（站直）到 −64.6 mm（f128 最低点，骨盆降到 174 mm），全程穿地，骨盆越低越深——离线表按 v2plus 比例算，armfix-r2 腿段长度不同，两骨 IK 把膝往下压。
+- **A2 求解器/IK 动作的膝高度没有约束**：h-kneeling-thread-needle、h-quadruped-rockback、h-kneeling-pushup、h-adductor-rock、h-quadruped-open；**新增 s-pigeon**（固定 pelvis y=0.190 + 固定踝，膝由极向量求出，左膝关节中心 +15 mm 但膝部皮肤厚 47 mm）、**deltoids-C**（半跪地雷杆推举，pelvis 0.458 固定，右膝关节中心 +1.7 mm，皮肤厚 29.5 mm）、**h-short-side-plank**（rr1 求解器 spec 仍标 `modelProfile: training-human-v2plus`，下侧膝关节中心 +12.1 mm / 肘 +23.4 mm，皮肤厚 36 / 44 mm → 膝 24.1、肘 20.1 mm 全程穿地）；同类的还有仰卧双臂放地的 **h-supine-bilateral-leg-raise**（v2plus spec，肘关节中心 −7.8 mm，双肘 47.4 mm、前臂 34.7 mm、上臂 9.5 mm）和 **h-supine-heel-slide**（palm-floor，肘关节中心 +23.9 mm、肘厚 43 mm → 双肘 19.4 mm），手掌贴地后肘的高度没有约束。
+- **B 手部接触用关节点而非皮肤**：原生手 palm-floor（h-catcow-quad、h-kneeling-pushup、h-quadruped-open、h-quadruped-rockback、h-kneeling-thread-needle、glute-max-A、h-supine-bilateral-leg-raise、h-supine-heel-slide 7.4 mm；s-frog 12.8 mm；**新增 adductors-B、deltoids-B 18.3 mm**——这两个是 `mode:'floor'` 原生手单手撑地；h-floor-nordic-hand-reset 6.8 mm 仅 f128–160 手撑复位段）；以及手按砖的 palmAt（n-half-split、s-lizard、n-straddle-fold、s-pigeon，24–26 mm）。hands=support 的动作手都是 0 mm，没问题。
+- **C 支撑部位局部厚度（5–11 mm）**：s-kneel-hipflex / n-half-split / s-lizard 后侧小腿 10 mm、脚背 5.6 mm；h-kneeling-instep-stretch 小腿 10.8 mm / 脚背 8.6 mm；hip-abductors-A 肘 7.1 mm；**新增 deltoids-B 左肘 8.7 mm（仅 f0–16，土耳其起立肘撑段）**；forearms-A 膝 5.0 mm（仅 f96，临界）。
+- **D 道具高度/摆放与身体不一致**：h-donkey-kick 垫子 +6 mm；**新增** s-pigeon 立砖与腿重叠、h-open-book 头枕与躯干重叠。
+- E 固定镜头：排除（只投影，不改几何）。
 
-## 修复方案建议（未实施）
-1. **按 spec 修姿态目标（推荐，针对 A）**：对 A1 四个烘焙动作，用 armfix-r2 实测腿长重新求 `HIPR/KN0/AN0`（或把躯干抬高约 45 mm，让膝关节中心回到 ≈+28 mm，即最低皮肤 ≈0）；对 A2 五个求解器动作在求解目标里加膝 y 约束（膝关节 y ≥ 关节到皮肤厚度，约 22–50 mm，按本表的「关节中心→最低顶点」逐动作取）。重渲：第 1–9 名共 9 个动作。只动这几个 spec 的修订版，不影响其他动作。
-2. **安装链里加按部位地面夹紧（通用兜底，针对 A/C）**：在 `stageAt` 之后、渲染之前，对膝/肘/前臂/小腿/脚背做「只抬穿地部位」的 IK 修正：测出该部位最低顶点，若 <0 则把该肢段末端目标沿 +y 抬到 0（膝穿地→抬骨盆或膝目标；肘穿地→抬肩/肘目标），不对已贴地或悬空的部位施力，避免把 catcow/forearm-plank 这类贴地正确的动作抬离。缺点：改的是共享安装链（recipe-scene.mjs），所有 249 个动作的指纹/rendererSha256 都会变；按规矩全部要重渲或至少复核，而且 A 类 45–135 mm 的大幅修正交给夹紧会让身体角度明显变形，不建议用它来修 A，只用它兜 C 类的 5–10 mm。
-3. **重新标定原生手 palm-floor 间隙（针对 B）**：用 c1r2 手实测手指/手掌最低点，把 `clear` 由 0.01694 改成新值（约 +7.4 mm，s-frog 约 +12.8 mm），或者把 r5 palm-floor 标定移植到 armfix-r2。重渲：s-frog + 5 个 native 手撑地动作（catcow、kneeling-pushup、quadruped-open、rockback、thread-needle），未测部分里同类 native+palm-floor 动作也要一并核对。
-4. **垫子/砖（针对 D）**：h-donkey-kick 的 mat 改 `at.y=0`（或身体整体 +6 mm）；n-half-split / s-lizard 先用逐顶点版本复核手与砖的真实穿深，再决定抬手目标。
-5. **蒙皮不需要改**：膝/肘「关节中心→皮肤」厚度 22–50 mm 是正常体积，没看到 DQS/armfix 外鼓。
+## 悬空参考（声明接触却 >15 mm；修的时候不能再抬）
+- quadriceps-A 右膝（rightKnee）最近 39.2 mm
+- quadriceps-A 左膝（leftKnee）最近 39.4 mm
+- s-lizard 左手（leftPalm）最近 135.7 mm
+- h-side-er 左膝（leftKnee）最近 21.1 mm
+- w-clamshell 左膝（leftKnee）最近 21.1 mm
+- h-reverse-clam 左膝（leftKnee）最近 21.1 mm
+- h-inner-thigh 左脚（leftAnkle）最近 41.0 mm
+- h-open-book 左膝（leftKnee）最近 16.4 mm
+- h-open-book 左手（leftPalm）最近 16.5 mm
+- h-couch-stretch 左膝（leftKnee）最近 23.0 mm
+- n-prone-hip-ext 右膝（rightKnee）最近 79.4 mm
+- n-prone-hip-ext 左脚（leftToe）最近 27.3 mm
+- n-prone-ir 右膝（rightKnee）最近 52.4 mm
+- n-prone-ir 左膝（leftKnee）最近 51.9 mm
+- s-9090 右膝（rightKnee）最近 27.1 mm
+- s-9090 左膝（leftKnee）最近 43.5 mm
+- h-9090-liftoff 右膝（rightKnee）最近 27.1 mm
+- h-9090-liftoff 左膝（leftKnee）最近 43.5 mm
+- s-butterfly 右膝（rightKnee）最近 95.5 mm
+- s-butterfly 左膝（leftKnee）最近 97.3 mm
+- n-straddle-fold 右膝（rightKnee）最近 152.4 mm
+- n-straddle-fold 左膝（leftKnee）最近 152.2 mm
+- n-thomas-test 右膝（rightKnee）最近 63.5 mm
+- n-thomas-test 右脚（rightAnkle）最近 41.0 mm
+- h-band-row 左膝（leftKnee）最近 16.8 mm
+- h-banana 左手（leftPalm）最近 33.2 mm
+- h-banana 右手（rightPalm）最近 34.0 mm
+- h-cobra 右脚（rightToe）最近 22.9 mm
+- h-cobra 左脚（leftToe）最近 22.9 mm
+- h-superman 右脚（rightToe）最近 59.0 mm
+- h-superman 左手（leftPalm）最近 217.4 mm
+- h-superman 左脚（leftToe）最近 59.0 mm
+- h-superman 右手（rightPalm）最近 217.4 mm
+- h-supine-twist 左手（leftPalm）最近 25.0 mm
+- h-supine-twist 右手（rightPalm）最近 25.8 mm
 
-对用户本机正在跑的 `2026-11-02_v3r2_9b67e5d` 批次：方案 1/3/4 只改少数 spec，产生新配方修订，旧批次其余动作不受影响，只需要在批次跑完后单独重渲这些动作（目前确认 17 个，加未测候选里查出来的）；方案 2 改共享安装链，会让整批产物和新代码不一致，建议不要在这批跑的时候合入。
+注：shadow.blobs 是阴影声明，不一定都是真实接触；s-lizard 左掌在砖上（不是地面）、n-thomas-test 在凳上、s-butterfly/n-straddle-fold 膝本来就离地，属于预期。值得注意的：quadriceps-A 双膝 39 mm、n-prone-ir 双膝 52 mm、n-prone-hip-ext 右膝 79 mm、h-couch-stretch 左膝 23 mm、h-side-er/w-clamshell/h-reverse-clam 下侧膝 21 mm、s-9090/h-9090-liftoff 膝 27/43 mm——修穿地时不要把这些再抬高。另：h-knee-hug 仰卧躯干最低点 15.9 mm（整个背部离地约 1.6 cm，未在 blob 规则里，但也属悬空）。
 
-## 图
-`/workspace/work/posehub-ground/worst.jpg`：thread-needle f96、rockback f48、kneeling-pushup f64，256px 侧视调试图（镜头贴地平视，红色平板 = y=0 地面，红色以下即在地面以下）。不是生产镜头。
+## 覆盖范围
+- 46 个静态候选：全部测完（r1 22 个 + 本轮 24 个，含 r1 被中断的 adductors-B、h-side-er、w-clamshell）。
+- 关键词复筛补测（67 个，`extra-floor-list.txt`）：已测 31 个：abs-A, chest-A, deltoids-A, deltoids-B, erectors-A, glute-max-A, h-banana, h-band-leg-out, h-bridge-march, h-bridge-overhead, h-butterfly-active, h-cobra, h-crunch, h-db-floor-fly, h-db-floor-press, h-dd-shoulder, h-floor-nordic-hand-reset, h-knee-hug, h-pike-scapular-elevation, h-pike-pushup, h-plank-side-step, h-mountain-climber, h-russian-twist, h-seated-reachback, h-short-side-plank, h-slider-body-saw, h-superman, h-supine-bilateral-leg-raise, h-supine-heel-slide, h-supine-twist, h-wall-straddle。
+- 未测 172 个：
+  - 复筛补测清单里没轮到的 36 个（坐/撑/弓步类，按风险排在后面）：hamstrings-B, hip-abductors-B, hip-flexors-A, lats-A, n-leg-circles, n-seated-ir-drop, n-windshield, obliques-A, rotator-cuff-A, s-figure4, s-seated-fold, scapular-A, serratus-A, t-seated-straddle-lift-1leg, triceps-A, w-dead-bug, w-feet-on-chair-bridge, w-prone-swimmer, t-flare-side-hold, t-lsit-open-close, t-lsit-tuck, t-lsit-vsit-circles, t-lsit-wide, t-seated-straddle-ext, t-seated-straddle-lifts, t-straddle-hold, t-tuck-planche, t-vsit, abs-B, n-slider-lateral, h-chair-progressive-front-split-native, h-bulgarian, h-reverse-lunge, h-db-split-squat, h-forward-lunge, adductors-A。
+  - 其余 136 个站姿/器械/悬垂/坐椅动作：只需确认脚不穿地，但开页成本（每个 30–200 s）与抽帧无关，按每 32 帧 1 帧也要约 1.5–2 小时，本轮跳过。续跑时把 `nonfloor-203-keyword-rescan.json` 里 id 减去已测列表写进 ids.txt 即可，用 `--stride 32`。
+
+## 修复方案建议（未实施，与 r1 一致，补充新增项）
+1. A1/A2：按 spec 修姿态目标——A1 五个（含 h-floor-nordic-hand-reset 的离线表需按 armfix-r2 腿长重算）、A2 十个（求解器加膝 y ≥ 关节→皮肤厚度的约束；s-pigeon/deltoids-C 骨盆抬高或膝目标抬高）。
+2. B：接触点改为「皮肤最低点贴面」——原生手 palm-floor 重新标定 clear（+7.4 / +12.8 / +18.3 mm），手按砖的 palmAt 加掌厚（≈ +25 mm）。
+3. C：按部位地面夹紧兜底（只抬穿地部位），会改共享安装链，不建议在用户本机批次跑的时候合入。
+4. D：h-donkey-kick 垫子 at.y=0；s-pigeon 立砖外移/缩小、h-open-book 头枕尺寸/位置按身体重摆，先出图确认。
+5. 蒙皮不需要改。
+
+## 文件
+- `summary.json`：排名、帧段、悬空参考、凸起道具（近似 `raisedMatProps` + 逐顶点 `raisedMatPerVertex`）。
+- `per-action.json`：每动作每部位最低点、关节最低 y（77 个）。
+- `raised-mat-per-vertex.json`：9 个带凸起道具动作的逐帧逐部位结果。
+- `floor-support-static-scan.json`（r1 静态筛选）、`nonfloor-203-keyword-rescan.json`（本轮复筛）、`extra-floor-list.txt`、`mat-prop-scan.json`。
+- `worst.jpg`：thread-needle f96、rockback f48、kneeling-pushup f64，256px 侧视调试图（镜头贴地平视，红色平板 = y=0 地面，红色以下即在地面以下）。不是生产镜头。
