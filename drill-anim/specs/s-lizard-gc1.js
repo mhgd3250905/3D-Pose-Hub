@@ -1,4 +1,4 @@
-// s-lizard-gc1: ground-contact fix r1·M2 (2026-11-04) of s-lizard.js. 双手 palmAt y +24.7 mm（砖面）
+// s-lizard-gc1: ground-contact fix r1·M2 (2026-11-04) of s-lizard.js. 双手 palmAt y +24.7 mm（砖面）；后脚踝 +11 mm、跖屈 −3°
 export default {
   "id": "s-lizard-gc1",
   "name": "蜥蜴式低弓步",
@@ -147,7 +147,7 @@ export default {
           "frame": "world",
           "ankle": [
             0.1,
-            0.0405,
+            0.0515,
             -0.69
           ],
           "rot": [
@@ -157,7 +157,7 @@ export default {
                 0,
                 0
               ],
-              157.8
+              154.8
             ]
           ],
           "pole": [
