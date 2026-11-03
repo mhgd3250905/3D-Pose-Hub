@@ -76,3 +76,8 @@ h-open-book 剖面依据 `probe-profile.mjs`：x≥0.20 处头最低 222 mm、x 
 | 双手 −7.4；双膝静止段 −49、穿针段 −134.8/−116.2，大腿/小腿也入地 | 双手 +1.0；双膝 −1.5…+1.4，大腿/小腿不再入地；穿针手肘 +3.1 | 双手 clear +8.4 mm；四足基座同 quadruped-open-gc2（骨盆 0.3842→0.4388，髋俯仰 12.778→7.778°）；穿针段胸俯仰峰值 −24°（与腰扭 55° 同关键帧 1/3/5/7 s） | 穿针时胸口/右肩下沉更深（更像真实穿针），节奏不变 |
 
 依据 `m2-probe-h-kneeling-thread-needle.json`：只抬骨盆/俯仰时引擎为保持锁定左手仍把骨盆压到 0.373（膝 −56.5）；胸俯仰 −24° 后骨盆只降 3 mm（0.439→0.436），「躯干位置已限制」提示仍在 80–128 帧出现但位移可忽略。此为 probe（与审计同一测量，size 96）结果。
+
+## 需重渲（M2 改了 spec 的动作；★ = M1 已改过、本次再改）
+h-floor-nordic-hand-reset★、h-quadruped-rockback★、h-kneeling-pushup★、h-quadruped-open★、h-supine-bilateral-leg-raise★、h-supine-heel-slide★、
+h-kneeling-thread-needle、h-catcow-quad、glute-max-A、s-frog、adductors-B、deltoids-B、n-half-split、s-lizard、n-straddle-fold、s-pigeon（仅手）、h-open-book（仅头枕）。
+M1 改过、本次未动、仍需按 M1 重渲：w-bird-dog、w-fire-hydrant、h-quad-cars、h-donkey-kick、deltoids-C、h-short-side-plank、h-adductor-rock。
