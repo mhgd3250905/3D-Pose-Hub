@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "h-supine-bilateral-leg-raise",
   "nameZh": "仰卧双直腿举腿",
-  "spec": "drill-anim/specs/h-supine-bilateral-leg-raise-rr3.js",
-  "specSha256Lf": "4f68481e82153879dd46b7bcf22a373ec1f51fe6a3f5ca44df55db224a76f2c1",
+  "spec": "drill-anim/specs/h-supine-bilateral-leg-raise-gc1.js",
+  "specSha256Lf": "80db2bdc566496eed34c1c6dd6fe3cf71c41b547fc2828280cb1ee539dbfc6bc",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -92,10 +92,18 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/h-supine-bilateral-leg-raise-rr3.js"
+    "selectedSpec": "drill-anim/specs/h-supine-bilateral-leg-raise-gc1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
   "userAccepted": false,
-  "releaseEligible": false
+  "releaseEligible": false,
+  "groundContactFix": {
+    "r1": {
+      "from": "drill-anim/specs/h-supine-bilateral-leg-raise-gc1.js",
+      "to": "drill-anim/specs/h-supine-bilateral-leg-raise-gc1.js",
+      "date": "2026-11-03",
+      "branch": "fix/ground-contact-r1"
+    }
+  }
 }
