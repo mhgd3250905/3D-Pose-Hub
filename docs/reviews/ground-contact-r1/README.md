@@ -68,7 +68,7 @@ h-open-book 剖面依据 `probe-profile.mjs`：x≥0.20 处头最低 222 mm、x 
   B. 去掉手下立砖，双手直接撑地（手位需降 ~25 cm，躯干更前倾）；
   C. 保留现状，只当已知问题（手已贴砖面）。臀下垫块随 A/B 一起重排。
 - **h-kneeling-thread-needle**：见下方 thread 一节。
-- 本次所有动作只做了数值复测；前后对比图见 `m2-before-after.jpg`（如有）。
+- 本次所有动作只做了数值复测；前后对比图 `m2-before-after.jpg`（256px 侧视调试图，红色 = 地面以下，每行左修前右修后：s-pigeon f0、h-open-book f112、n-half-split f0、h-kneeling-thread-needle f96）。
 
 ## h-kneeling-thread-needle（M1 遗留，本次修好）
 | 修前（r2） | 修后（r2-gc1，整循环 15 帧） | 改了什么 | 外观 |
