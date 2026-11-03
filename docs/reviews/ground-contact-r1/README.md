@@ -29,3 +29,35 @@
 
 ## 对比图
 `m1-before-after.jpg`：256px 侧视调试图（红色 = y=0 地面以下），左修前右修后。
+
+---
+
+# 里程碑 M2（手掌陷地/陷砖 B 类 + 道具重叠 D 类）2026-11-04
+
+约定：已有 M1 `-gc1` 的动作新建 `-gc2`（gc1 保留作历史），其余新建 `-gc1`；recipe 只改指向/SHA，并记 `groundContactFix.r1m2`。
+生成器 `tools/ground-contact-r1/m2-fix.mjs`（每个动作的改法都在 `FIX` 表里，一行一个），道具剖面探针 `probe-profile.mjs`（整循环蒙皮顶点 2 cm x/z 网格最低 y）。
+复测：`ground-penetration-audit.mjs --stride 16 --size 128`（结果 `m2-after-<id>.jsonl`），砖/头枕另跑 `raised-mat-vertex-audit.mjs`（`m2-after-<id>-blocks.jsonl`）。
+
+palm-floor 间隙不是共享常量：`fingertips` 模式的 `clear`（0.016938）、`palmAt` 的 y 都是各 spec 自己写死的字面量，所以逐动作改，未动共享代码。
+`floor` 模式（adductors-B、deltoids-B）的落点高度由共享运行时 `getGroundHandPose` 决定、spec 无参数可调，改为同 x/z、掌心朝下的 `fingertips`（与 r2 版 catcow/glute-max-A 同法）。
+
+| 动作 | 修前 | 修后（整循环 15 帧） | 改了什么 | 外观 |
+|---|---|---|---|---|
+| glute-max-A | 双手 −7.4 | 手 +1.0 | clear +8.4 mm | 肘/前臂抬 5–8 mm（本不着地） |
+| h-catcow-quad | 双手 −7.4 | 手 +1.0，膝 +1.3 不变 | clear +8.4 mm | 无可见变化 |
+| h-floor-nordic-hand-reset (gc2) | 手撑段 −6.8 | 手 +1.0，腿部同 M1 | 手腕 y 轨迹在离地 5 cm 内渐隐抬 7.8 mm | 无 |
+| h-kneeling-pushup (gc2) | 双手 −7.4 | 手 +1.0，膝 −2.0…+3.8 同 M1 | clear +8.4 mm | 无 |
+| h-quadruped-rockback (gc2) | 双手 −7.4 | 手 +1.0，膝 −1.0→+1.1/+1.3 | clear +8.4 mm | 身体整体高 ~2.7 mm |
+| h-supine-bilateral-leg-raise (gc2) | 双手 −7.4 | 手 +1.0，肘 +1.7（原 −1.4） | clear +8.4 mm | 无 |
+| h-supine-heel-slide (gc2) | 双手 −7.4 | 手 +1.0，肘 +2.4（原 −0.5） | clear +8.4 mm | 无 |
+| s-frog | 双手 −12.8 | 手 +1.0，肘 +3.9/+4.1（原 +1.6），前臂 +8.4 | palmAt y +13.8 mm | 前臂略离垫（<5 mm 新增） |
+| adductors-B | 左手 −18.3，肘 −3.0 | 手 +1.0，肘 +0.9，前臂 +3.1 | 左手 floor→fingertips，clear 25.3 mm | 手型由「地面掌」改为掌心朝下平放 |
+| n-straddle-fold | 砖内 −24.9，右前臂 −0.8 | 砖面 +1.0，前臂不再入砖 | palmAt y +25.9 mm | 手臂/肩高 ~1 cm |
+| n-half-split | 砖内 −25.6 | 砖面 +1.0 | palmAt y +26.6 mm | 同上；后脚背/小腿 −5.6/−10.3 见下 |
+| s-lizard | 砖内 −23.7 | 砖面 +1.0 | palmAt y +24.7 mm | 头/胸高 ~3 cm；后脚背/小腿 −5.5/−9.8 未修 |
+| s-pigeon（部分） | 砖内 −24.3 | 砖面 +1.0 | palmAt y +25.3 mm | 腿/砖重叠未修，见下 |
+| deltoids-B | 左手 −18.3，左肘 −8.7（0–16 帧） | 手 +1.0，肘 +3.3，前臂 +5.1 | 左手 floor→fingertips，clear 25.3 mm | 同 adductors-B；右手哑铃「手腕限位」提示为原有 |
+| h-quadruped-open (gc2) | 双手 −7.4 | 手 +1.0，膝 +1.0/+1.4（M1 为 +0.1/+0.4） | clear +8.4 mm，骨盆 −8.4 mm（只抬手时引擎把整个身体顶高 8.4 mm、膝悬空 7.4，故抵消） | 无 |
+| h-open-book（D） | 头低于头枕顶 47.8，躯干 −198、左上臂 −214 在枕体内 | 枕体内无身体顶点；头：静止段陷枕 ≤2.3 mm，开肩保持段（头转向手）离枕 ≤4.9 mm；地面复测与修前完全一致 | 只动道具：头枕沿 +X 移 82 mm（近端 0.12→0.202，避开颈/肩/上臂），降 2.9 mm（顶 222→219.1） | 头枕往头顶方向挪约 8 cm，肩不再「长进」枕头 |
+
+h-open-book 剖面依据 `probe-profile.mjs`：x≥0.20 处头最低 222 mm、x 0.18–0.20 仍有肩/上臂（45–71 mm）。`m2-after-h-open-book-blocks-move-only.jsonl` 是只移不降时的头枕复测（头离枕 0.6–1.5 / 7.8 mm）；降 2.9 mm 为确定性平移（身体不动，地面审计不把道具当地面），未再跑一次。
