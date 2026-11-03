@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "s-pigeon",
   "nameZh": "鸽子式（直立扶砖版）",
-  "spec": "drill-anim/specs/s-pigeon.js",
-  "specSha256Lf": "0aab3fdce6ae6995dec95f1a71e2a3f33c8783931136fd71e99fde33c7bd3b2c",
+  "spec": "drill-anim/specs/s-pigeon-gc1.js",
+  "specSha256Lf": "385811125272bebefcbc536d2fb448dc8374f9be5c825370d81d2c625843fa21",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -92,10 +92,18 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/s-pigeon.js"
+    "selectedSpec": "drill-anim/specs/s-pigeon-gc1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
   "userAccepted": false,
-  "releaseEligible": false
+  "releaseEligible": false,
+  "groundContactFix": {
+    "r1m2": {
+      "from": "drill-anim/specs/s-pigeon.js",
+      "to": "drill-anim/specs/s-pigeon-gc1.js",
+      "date": "2026-11-04",
+      "branch": "fix/ground-contact-r1"
+    }
+  }
 }
