@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "h-quadruped-rockback",
   "nameZh": "四足中立背后坐",
-  "spec": "drill-anim/specs/h-quadruped-rockback-rr1.js",
-  "specSha256Lf": "743dcb03c2f1761e8b705343290821b6dd68969085e803e9e822843b437ce9ce",
+  "spec": "drill-anim/specs/h-quadruped-rockback-gc1.js",
+  "specSha256Lf": "5435fea3c5d6797b1f0f5060b7995ad5423f91db7ac4e509132dc2e374918733",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -93,10 +93,18 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/h-quadruped-rockback-rr1.js"
+    "selectedSpec": "drill-anim/specs/h-quadruped-rockback-gc1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
   "userAccepted": false,
-  "releaseEligible": false
+  "releaseEligible": false,
+  "groundContactFix": {
+    "r1": {
+      "from": "drill-anim/specs/h-quadruped-rockback-rr1.js",
+      "to": "drill-anim/specs/h-quadruped-rockback-gc1.js",
+      "date": "2026-11-03",
+      "branch": "fix/ground-contact-r1"
+    }
+  }
 }

@@ -21,7 +21,7 @@ try{
       const m=await page.evaluate(()=>{const v=flareInspector.viewer,sc=v.scene,prev=sc.onAfterRender;let val=null;sc.onAfterRender=function(...a){prev?.apply(this,a);val=__groundMeasure();};try{v.renderer.render(sc,v.camera);}finally{sc.onAfterRender=prev;}return val;});
       const fr={f};for(const [k,r] of Object.entries(m.regions)){const mm=+(r.minY*1000).toFixed(1);fr[k]=mm;const R=reg[k]??(reg[k]={min:Infinity,maxOfMin:-Infinity});if(mm<R.min){R.min=mm;R.minF=f;}if(mm>R.maxOfMin){R.maxOfMin=mm;R.maxF=f;}}
       for(const [k,y] of Object.entries(m.joints)){const J=jt[k]??(jt[k]={min:Infinity,max:-Infinity});J.min=Math.min(J.min,+(y*1000).toFixed(1));J.max=Math.max(J.max,+(y*1000).toFixed(1));}
-      fr.warn=st.warn?.length??0;fr.J=Object.fromEntries(Object.entries(m.joints).map(([k,y])=>[k,+(y*1000).toFixed(1)]));fr.P=st.joints.pelvis?.map(x=>+(x*1000).toFixed(0));fr.LK=st.joints.leftKnee?.map(x=>+(x*1000).toFixed(0));fr.LA=st.joints.leftAnkle?.map(x=>+(x*1000).toFixed(0));fr.LH=(st.joints.leftHip??st.joints.leftThigh)?.map(x=>+(x*1000).toFixed(0));frames.push(fr);
+      fr.warn=st.warn?.length??0;fr.wt=st.warn?.length?JSON.stringify(st.warn).slice(0,300):undefined;fr.J=Object.fromEntries(Object.entries(m.joints).map(([k,y])=>[k,+(y*1000).toFixed(1)]));fr.P=st.joints.pelvis?.map(x=>+(x*1000).toFixed(0));fr.LK=st.joints.leftKnee?.map(x=>+(x*1000).toFixed(0));fr.LA=st.joints.leftAnkle?.map(x=>+(x*1000).toFixed(0));fr.LH=(st.joints.leftHip??st.joints.leftThigh)?.map(x=>+(x*1000).toFixed(0));frames.push(fr);
     }
     const r={name:v.name,regions:reg,joints:jt,frames};results.push(r);
     console.log(JSON.stringify({variant:v.name,min:Object.fromEntries(Object.entries(reg).map(([k,x])=>[k,x.min+'/'+x.maxOfMin]))}));
