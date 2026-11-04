@@ -4,7 +4,7 @@
  "status": "test-unreviewed",
  "reviewed": false,
  "releaseEligible": false,
- "sourceCommit": "72e8626",
+ "sourceCommit": "3fccf68377ebf533cd2531bda0ff6d07d8051822",
  "snapshotSha256": "ade115b51dfc00c0165054cee35bb5a368f407818719e2ea18ebf0616b8c3543",
  "releaseManifestSha256": null,
  "scope": {
@@ -1607,13 +1607,16 @@
      "leadSeconds": 1,
      "phases": "go=0.8s@phase.start; hold=1.2s@phase.peak; back=0.8s@phase.end; rest=1.2s",
      "source": "spec-timeline manual r2",
-     "reps": 6
+     "reps": 6,
+     "perSide": "alternate",
+     "repUnit": "left+right",
+     "startingSide": "right"
     },
     "executionStatus": "ai-reviewed-r2-needs-user-review",
     "executionSource": {
      "path": "catalog/production/v3-text/adductors-A.json",
      "actionId": "adductors-A",
-     "sha256": "ad1078ccdfb46846cc81714e560210c7fcf6b2af55d97aabc243c2065560c6a6"
+     "sha256": "0b7facde3ebbf39d62a369781e936ea4fc085285324871daab5f75eedd71df69"
     },
     "videoLoopIsTrainingDose": false
    },
@@ -1653,7 +1656,7 @@
     "evidence": [
      {
       "path": "catalog/production/v3-text/adductors-A.json",
-      "sha256": "ad1078ccdfb46846cc81714e560210c7fcf6b2af55d97aabc243c2065560c6a6"
+      "sha256": "0b7facde3ebbf39d62a369781e936ea4fc085285324871daab5f75eedd71df69"
      },
      {
       "path": "catalog/production/remaining219-r1/recipes/adductors-A.json",
@@ -1705,7 +1708,7 @@
      "蹲向一侧，另一条腿伸直、脚尖朝上",
      "蹲的那只脚脚跟踩住，膝盖对着脚尖。",
      "身体微微前倾，双臂往前平伸保持平衡。",
-     "一侧做完这组次数，再换另一侧。"
+     "两边各做一次算 1 次。"
     ]
    },
    "primaryCue": 0,
@@ -1783,7 +1786,7 @@
     "Squat to one side and keep the other leg straight with toes up",
     "Keep the squatting heel down and the knee over the toes.",
     "Lean forward a little and reach your arms forward for balance.",
-    "Finish the set on one side, then switch sides."
+    "One on each side counts as one rep."
    ],
    "commonErrors": [
     {
@@ -1896,8 +1899,8 @@
       "id": "cue4",
       "primary": false,
       "text": {
-       "zh": "一侧做完这组次数，再换另一侧。",
-       "en": "Finish the set on one side, then switch sides."
+       "zh": "两边各做一次算 1 次。",
+       "en": "One on each side counts as one rep."
       }
      }
     ],
@@ -1993,10 +1996,6 @@
        "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除"
       ],
       "flags": []
-     },
-     "sideTextFix": {
-      "date": "2026-11-05",
-      "note": "unilateral=true 时 SDK 按「先做完一侧再换另一侧、次数指每侧」播放；口令里「两边各做一次算 1 次 / 轮流」改为每侧连续做。分侧标记、training 字段未改。"
      }
     }
    },
@@ -3257,13 +3256,16 @@
      "leadSeconds": 1,
      "phases": "go=2.7s@phase.start; hold=0.3s; back=1.0s@phase.end",
      "source": "spec-timeline manual r2",
-     "reps": 6
+     "reps": 6,
+     "perSide": "alternate",
+     "repUnit": "left+right",
+     "startingSide": "right"
     },
     "executionStatus": "ai-reviewed-r2-needs-user-review",
     "executionSource": {
      "path": "catalog/production/v3-text/chest-A.json",
      "actionId": "chest-A",
-     "sha256": "88ce79a8e0633ed1b6296c321262592a464d374f620ca6f159d26571edd203a1"
+     "sha256": "5f9a2d7798b08801ba735a4c78f6f1d422f9659a7f00dae56952c17bd6218f33"
     },
     "videoLoopIsTrainingDose": false
    },
@@ -3303,7 +3305,7 @@
     "evidence": [
      {
       "path": "catalog/production/v3-text/chest-A.json",
-      "sha256": "88ce79a8e0633ed1b6296c321262592a464d374f620ca6f159d26571edd203a1"
+      "sha256": "5f9a2d7798b08801ba735a4c78f6f1d422f9659a7f00dae56952c17bd6218f33"
      },
      {
       "path": "catalog/production/remaining219-r1/recipes/chest-A.json",
@@ -3354,7 +3356,7 @@
      "做一个俯卧撑，再整个人转向侧面",
      "胸口和髋一起转，别只扭腰。",
      "上面的手伸向天花板，停一下再转回来。",
-     "一侧做完这组次数，再换另一侧。"
+     "两边各做一次算 1 次。"
     ]
    },
    "primaryCue": 0,
@@ -3435,7 +3437,7 @@
     "Do a push-up, then turn your whole body to the side",
     "Turn your chest and hips together, not just your waist.",
     "Reach your top arm to the ceiling, pause, then turn back.",
-    "Finish the set on one side, then switch sides."
+    "One on each side counts as one rep."
    ],
    "commonErrors": [
     {
@@ -3544,8 +3546,8 @@
       "id": "cue4",
       "primary": false,
       "text": {
-       "zh": "一侧做完这组次数，再换另一侧。",
-       "en": "Finish the set on one side, then switch sides."
+       "zh": "两边各做一次算 1 次。",
+       "en": "One on each side counts as one rep."
       }
      }
     ],
@@ -3644,10 +3646,6 @@
        "相位没按批表 down 轨（0.5/0.33/0.5/2.68）而按 spec 手算，请确认",
        "顶点只有 0.3 s，「手伸向上」不绑相位，只在 phases.peak 文本里"
       ]
-     },
-     "sideTextFix": {
-      "date": "2026-11-05",
-      "note": "unilateral=true 时 SDK 按「先做完一侧再换另一侧、次数指每侧」播放；口令里「两边各做一次算 1 次 / 轮流」改为每侧连续做。分侧标记、training 字段未改。"
      }
     }
    },
@@ -25330,13 +25328,16 @@
      "leadSeconds": 1,
      "phases": "go=0.4s@phase.start; hold=0.8s@phase.peak; back=0.4s@phase.end; rest=0.4s",
      "source": "spec-pulse-track r2",
-     "reps": 10
+     "reps": 10,
+     "perSide": "alternate",
+     "repUnit": "left+right",
+     "startingSide": "right"
     },
     "executionStatus": "ai-reviewed-r2-needs-user-review",
     "executionSource": {
      "path": "catalog/production/v3-text/h-bridge-march.json",
      "actionId": "h-bridge-march",
-     "sha256": "ec0d6fc0d6c63d0d48b25aefa946519328b18229089d29994a004b7680eea28a"
+     "sha256": "14e4632e72424787946265f51489aa7324e8a25f2293c0a14d9009828678874f"
     },
     "videoLoopIsTrainingDose": false
    },
@@ -25376,7 +25377,7 @@
     "evidence": [
      {
       "path": "catalog/production/v3-text/h-bridge-march.json",
-      "sha256": "ec0d6fc0d6c63d0d48b25aefa946519328b18229089d29994a004b7680eea28a"
+      "sha256": "14e4632e72424787946265f51489aa7324e8a25f2293c0a14d9009828678874f"
      },
      {
       "path": "catalog/production/remaining219-r1/recipes/h-bridge-march.json",
@@ -25423,10 +25424,10 @@
    },
    "cues": {
     "zh": [
-     "臀部撑住不掉，一只脚抬起",
+     "臀部撑住不掉，两只脚轮流抬起",
      "夹紧臀部，骨盆保持水平。",
-     "脚轻轻放回地面，同一只脚再抬下一次。",
-     "一侧做完这组次数，再换另一侧。"
+     "脚轻轻放回地面，再换另一只。",
+     "两边各做一次算 1 次。"
     ]
    },
    "primaryCue": 0,
@@ -25501,10 +25502,10 @@
     "mat"
    ],
    "cuesEn": [
-    "Keep your hips up and lift one foot",
+    "Keep your hips up and lift one foot at a time",
     "Squeeze your glutes and keep your hips level.",
-    "Set the foot down softly, then lift the same foot again.",
-    "Finish the set on one side, then switch sides."
+    "Set the foot down softly, then switch feet.",
+    "One on each side counts as one rep."
    ],
    "commonErrors": [
     {
@@ -25591,8 +25592,8 @@
       "id": "cue1",
       "primary": true,
       "text": {
-       "zh": "臀部撑住不掉，一只脚抬起",
-       "en": "Keep your hips up and lift one foot"
+       "zh": "臀部撑住不掉，两只脚轮流抬起",
+       "en": "Keep your hips up and lift one foot at a time"
       }
      },
      {
@@ -25607,16 +25608,16 @@
       "id": "cue3",
       "primary": false,
       "text": {
-       "zh": "脚轻轻放回地面，同一只脚再抬下一次。",
-       "en": "Set the foot down softly, then lift the same foot again."
+       "zh": "脚轻轻放回地面，再换另一只。",
+       "en": "Set the foot down softly, then switch feet."
       }
      },
      {
       "id": "cue4",
       "primary": false,
       "text": {
-       "zh": "一侧做完这组次数，再换另一侧。",
-       "en": "Finish the set on one side, then switch sides."
+       "zh": "两边各做一次算 1 次。",
+       "en": "One on each side counts as one rep."
       }
      }
     ],
@@ -25710,10 +25711,6 @@
        "最终口径：按真实做法定（2026-11-01）"
       ],
       "flags": []
-     },
-     "sideTextFix": {
-      "date": "2026-11-05",
-      "note": "unilateral=true 时 SDK 按「先做完一侧再换另一侧、次数指每侧」播放；口令里「两边各做一次算 1 次 / 轮流」改为每侧连续做。分侧标记、training 字段未改。"
      }
     }
    },
@@ -25744,13 +25741,13 @@
       "language": "zh",
       "clipId": "primaryCue",
       "role": "intro",
-      "path": "voice/h-bridge-march/r2-v2/zh/primaryCue.m4a",
-      "sourcePath": "release/app-pack-r2-v2/upload/pack/r2-v1/voice/h-bridge-march/r2-v2/zh/primaryCue.m4a",
-      "bytes": 21153,
-      "sha256": "b938c7d81f3fb503d1a5ebbfa64a30d823ca0206fedeee3e66846eb6fa955ffc",
-      "durationSeconds": 2.438095,
+      "path": "voice/h-bridge-march/zh/primaryCue.m4a",
+      "sourcePath": "packages/h-bridge-march/voice/zh/primaryCue.m4a",
+      "bytes": 23755,
+      "sha256": "466cc9ad344d23434efc2c9bbf66fdbfb8898900678837728a4f31a809c1f79f",
+      "durationSeconds": 2.763175,
       "assetName": "primaryCue.m4a",
-      "downloadUrl": "https://media.uuugk.win/pack/r2-v1/voice/h-bridge-march/r2-v2/zh/primaryCue.m4a",
+      "downloadUrl": "https://media.uuugk.win/pack/r2-v1/voice/h-bridge-march/zh/primaryCue.m4a",
       "contentType": "audio/mp4"
      },
      {
@@ -25809,13 +25806,13 @@
       "language": "en",
       "clipId": "primaryCue",
       "role": "intro",
-      "path": "voice/h-bridge-march/r2-v2/en/primaryCue.m4a",
-      "sourcePath": "release/app-pack-r2-v2/upload/pack/r2-v1/voice/h-bridge-march/r2-v2/en/primaryCue.m4a",
-      "bytes": 16061,
-      "sha256": "ee36223719223e3c9cb24dd55be431288ee66ae8e21025bb9300bcf9577f6152",
-      "durationSeconds": 1.811156,
+      "path": "voice/h-bridge-march/en/primaryCue.m4a",
+      "sourcePath": "packages/h-bridge-march/voice/en/primaryCue.m4a",
+      "bytes": 19290,
+      "sha256": "99fd02b0d0cdb9ef0b33d1b6a80975296e4c9561563505520f0f0259682ca989",
+      "durationSeconds": 2.205896,
       "assetName": "primaryCue.m4a",
-      "downloadUrl": "https://media.uuugk.win/pack/r2-v1/voice/h-bridge-march/r2-v2/en/primaryCue.m4a",
+      "downloadUrl": "https://media.uuugk.win/pack/r2-v1/voice/h-bridge-march/en/primaryCue.m4a",
       "contentType": "audio/mp4"
      },
      {
@@ -32419,13 +32416,16 @@
      "leadSeconds": 1,
      "phases": "go=1.8s@phase.start; hold=0.4s; back=1.4s@phase.end; rest=0.4s",
      "source": "spec-timeline manual r2",
-     "reps": 8
+     "reps": 8,
+     "perSide": "alternate",
+     "repUnit": "left+right",
+     "startingSide": "right"
     },
     "executionStatus": "ai-reviewed-r2-needs-user-review",
     "executionSource": {
      "path": "catalog/production/v3-text/h-chair-step-up.json",
      "actionId": "h-chair-step-up",
-     "sha256": "d41fc54d2578415386be6bef94b940d4864c809f68d4116803f478399e2233bf"
+     "sha256": "7ae6a31b2d2055fc4bec6603fe78183ecacb930ca4f881869abe4df376f52984"
     },
     "videoLoopIsTrainingDose": false
    },
@@ -32465,7 +32465,7 @@
     "evidence": [
      {
       "path": "catalog/production/v3-text/h-chair-step-up.json",
-      "sha256": "d41fc54d2578415386be6bef94b940d4864c809f68d4116803f478399e2233bf"
+      "sha256": "7ae6a31b2d2055fc4bec6603fe78183ecacb930ca4f881869abe4df376f52984"
      },
      {
       "path": "catalog/production/remaining219-r1/recipes/h-chair-step-up.json",
@@ -32513,9 +32513,9 @@
    "cues": {
     "zh": [
      "整只脚踩上椅面，用这条腿发力站上去",
-     "每次都用同一条腿先上，双手叉腰。",
+     "两条腿轮流先上，双手叉腰。",
      "下来时另一只脚先落地，慢慢下。",
-     "一侧做完这组次数，再换另一侧。"
+     "两边各做一次算 1 次。"
     ]
    },
    "primaryCue": 0,
@@ -32594,9 +32594,9 @@
    ],
    "cuesEn": [
     "Plant your whole foot on the seat and stand up with that leg",
-    "Lead with the same leg every rep, hands on your hips.",
+    "Switch the leading leg each rep, hands on your hips.",
     "On the way down, lower the other foot first, slowly.",
-    "Finish the set on one side, then switch sides."
+    "One on each side counts as one rep."
    ],
    "commonErrors": [
     {
@@ -32693,8 +32693,8 @@
       "id": "cue2",
       "primary": false,
       "text": {
-       "zh": "每次都用同一条腿先上，双手叉腰。",
-       "en": "Lead with the same leg every rep, hands on your hips."
+       "zh": "两条腿轮流先上，双手叉腰。",
+       "en": "Switch the leading leg each rep, hands on your hips."
       }
      },
      {
@@ -32709,8 +32709,8 @@
       "id": "cue4",
       "primary": false,
       "text": {
-       "zh": "一侧做完这组次数，再换另一侧。",
-       "en": "Finish the set on one side, then switch sides."
+       "zh": "两边各做一次算 1 次。",
+       "en": "One on each side counts as one rep."
       }
      }
     ],
@@ -32813,10 +32813,6 @@
       "flags": [
        "相位为手算（非批表），请确认"
       ]
-     },
-     "sideTextFix": {
-      "date": "2026-11-05",
-      "note": "unilateral=true 时 SDK 按「先做完一侧再换另一侧、次数指每侧」播放；口令里「两边各做一次算 1 次 / 轮流」改为每侧连续做。分侧标记、training 字段未改。"
      }
     }
    },
@@ -36756,13 +36752,16 @@
      "leadSeconds": 1,
      "phases": "go=0.8s@phase.start; hold=1.0s@phase.peak; back=1.0s@phase.end; rest=1.2s",
      "source": "spec-pulse-track r2",
-     "reps": 10
+     "reps": 10,
+     "perSide": "alternate",
+     "repUnit": "left+right",
+     "startingSide": "right"
     },
     "executionStatus": "ai-reviewed-r2-needs-user-review",
     "executionSource": {
      "path": "catalog/production/v3-text/h-db-curl.json",
      "actionId": "h-db-curl",
-     "sha256": "da53a1040fe5600453e0041d18fc34d67f88533e7c1427c42d6b639752d804b5"
+     "sha256": "aafdfbc0c16454c314da4e05894c3f996c09c95c4bb32d0af2e94f3e8e8ee02b"
     },
     "videoLoopIsTrainingDose": false
    },
@@ -36802,7 +36801,7 @@
     "evidence": [
      {
       "path": "catalog/production/v3-text/h-db-curl.json",
-      "sha256": "da53a1040fe5600453e0041d18fc34d67f88533e7c1427c42d6b639752d804b5"
+      "sha256": "aafdfbc0c16454c314da4e05894c3f996c09c95c4bb32d0af2e94f3e8e8ee02b"
      },
      {
       "path": "catalog/production/remaining219-r1/recipes/h-db-curl.json",
@@ -36849,9 +36848,9 @@
    "cues": {
     "zh": [
      "大臂贴住身体，只动小臂",
-     "一只手弯举，往上时掌心慢慢转向上。",
+     "左右轮流弯，往上时掌心慢慢转向上。",
      "放下时慢一点，身体别晃。",
-     "一侧做完这组次数，再换另一侧。"
+     "两边各做一次算 1 次。"
     ]
    },
    "primaryCue": 0,
@@ -36926,9 +36925,9 @@
    ],
    "cuesEn": [
     "Keep your upper arms by your sides and move only your forearms",
-    "Curl one arm, turning your palm up as you lift.",
+    "Alternate arms, turning your palm up as you curl.",
     "Lower slowly and keep your body still.",
-    "Finish the set on one side, then switch sides."
+    "One on each side counts as one rep."
    ],
    "commonErrors": [
     {
@@ -37025,8 +37024,8 @@
       "id": "cue2",
       "primary": false,
       "text": {
-       "zh": "一只手弯举，往上时掌心慢慢转向上。",
-       "en": "Curl one arm, turning your palm up as you lift."
+       "zh": "左右轮流弯，往上时掌心慢慢转向上。",
+       "en": "Alternate arms, turning your palm up as you curl."
       }
      },
      {
@@ -37041,8 +37040,8 @@
       "id": "cue4",
       "primary": false,
       "text": {
-       "zh": "一侧做完这组次数，再换另一侧。",
-       "en": "Finish the set on one side, then switch sides."
+       "zh": "两边各做一次算 1 次。",
+       "en": "One on each side counts as one rep."
       }
      }
     ],
@@ -37138,10 +37137,6 @@
        "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除"
       ],
       "flags": []
-     },
-     "sideTextFix": {
-      "date": "2026-11-05",
-      "note": "unilateral=true 时 SDK 按「先做完一侧再换另一侧、次数指每侧」播放；口令里「两边各做一次算 1 次 / 轮流」改为每侧连续做。分侧标记、training 字段未改。"
      }
     }
    },
@@ -50083,13 +50078,16 @@
      "leadSeconds": 1,
      "phases": "go=1.5s@phase.start; hold=0.7s@phase.peak; back=1.3s@phase.end; rest=1.5s",
      "source": "spec-timeline manual r2",
-     "reps": 8
+     "reps": 8,
+     "perSide": "alternate",
+     "repUnit": "left+right",
+     "startingSide": "right"
     },
     "executionStatus": "ai-reviewed-r2-needs-user-review",
     "executionSource": {
      "path": "catalog/production/v3-text/h-forward-lunge.json",
      "actionId": "h-forward-lunge",
-     "sha256": "10eacbb1ba1106836f6e4627cd80c8c36abe8bbbeb138bea4eba8ad2a57efe43"
+     "sha256": "b51999ee53fbe371b6301f96529eea235fc742731654384cca2590fc64a2964b"
     },
     "videoLoopIsTrainingDose": false,
     "fps": 30,
@@ -50138,7 +50136,7 @@
     "evidence": [
      {
       "path": "catalog/production/v3-text/h-forward-lunge.json",
-      "sha256": "10eacbb1ba1106836f6e4627cd80c8c36abe8bbbeb138bea4eba8ad2a57efe43"
+      "sha256": "b51999ee53fbe371b6301f96529eea235fc742731654384cca2590fc64a2964b"
      },
      {
       "path": "catalog/production/remaining219-r1/recipes/h-forward-lunge.json",
@@ -50188,8 +50186,8 @@
     "zh": [
      "向前跨一步，身体直直往下沉",
      "前膝对着脚尖，前脚跟踩实。",
-     "前脚推地退回站立，同一条腿再跨下一次。",
-     "一侧做完这组次数，再换另一侧。"
+     "前脚推地退回站立，换另一条腿。",
+     "两边各做一次算 1 次。"
     ]
    },
    "primaryCue": 0,
@@ -50341,8 +50339,8 @@
    "cuesEn": [
     "Step forward and lower straight down",
     "Keep your front knee over your toes and your front heel down.",
-    "Push off your front foot to step back, then step forward with the same leg again.",
-    "Finish the set on one side, then switch sides."
+    "Push off your front foot to step back, then switch legs.",
+    "One on each side counts as one rep."
    ],
    "cautionsEn": [
     "If your knees feel uncomfortable, go less deep, and stop if it still hurts."
@@ -50435,16 +50433,16 @@
       "id": "cue3",
       "primary": false,
       "text": {
-       "zh": "前脚推地退回站立，同一条腿再跨下一次。",
-       "en": "Push off your front foot to step back, then step forward with the same leg again."
+       "zh": "前脚推地退回站立，换另一条腿。",
+       "en": "Push off your front foot to step back, then switch legs."
       }
      },
      {
       "id": "cue4",
       "primary": false,
       "text": {
-       "zh": "一侧做完这组次数，再换另一侧。",
-       "en": "Finish the set on one side, then switch sides."
+       "zh": "两边各做一次算 1 次。",
+       "en": "One on each side counts as one rep."
       }
      }
     ],
@@ -50538,10 +50536,6 @@
        "最终口径：按真实做法定（2026-11-01）"
       ],
       "flags": []
-     },
-     "sideTextFix": {
-      "date": "2026-11-05",
-      "note": "unilateral=true 时 SDK 按「先做完一侧再换另一侧、次数指每侧」播放；口令里「两边各做一次算 1 次 / 轮流」改为每侧连续做。分侧标记、training 字段未改。"
      }
     }
    },
@@ -56939,13 +56933,16 @@
      "leadSeconds": 1,
      "phases": "go=2.0s@phase.start; hold=0.4s; back=1.6s@phase.end; rest=1.0s",
      "source": "spec-timeline manual r2",
-     "reps": 8
+     "reps": 8,
+     "perSide": "alternate",
+     "repUnit": "left+right",
+     "startingSide": "right"
     },
     "executionStatus": "ai-reviewed-r2-needs-user-review",
     "executionSource": {
      "path": "catalog/production/v3-text/h-lateral-step-lunge.json",
      "actionId": "h-lateral-step-lunge",
-     "sha256": "a9366a47f21277df78aabda9c7e6ccb0cf947ed80af8464ee9064ecec0992488"
+     "sha256": "c85081a1857f7a788adbdbc36decfbb7feb8dd106ad34112bf7820321f3d3403"
     },
     "videoLoopIsTrainingDose": false,
     "fps": 30,
@@ -56994,7 +56991,7 @@
     "evidence": [
      {
       "path": "catalog/production/v3-text/h-lateral-step-lunge.json",
-      "sha256": "a9366a47f21277df78aabda9c7e6ccb0cf947ed80af8464ee9064ecec0992488"
+      "sha256": "c85081a1857f7a788adbdbc36decfbb7feb8dd106ad34112bf7820321f3d3403"
      },
      {
       "path": "catalog/production/remaining219-r1/recipes/h-lateral-step-lunge.json",
@@ -57045,8 +57042,8 @@
     "zh": [
      "往旁边跨一步，屁股往后坐到这条腿上",
      "另一条腿伸直，两只脚尖朝前。",
-     "跨出的脚推地回到站立，同一边再跨下一次。",
-     "一侧做完这组次数，再换另一侧。"
+     "跨出的脚推地回到站立，再换另一边。",
+     "两边各做一次算 1 次。"
     ]
    },
    "primaryCue": 0,
@@ -57140,8 +57137,8 @@
    "cuesEn": [
     "Step out to the side and sit your hips back over that leg",
     "Keep the other leg straight and both toes pointing forward.",
-    "Push off the stepping foot to stand, then step out to the same side again.",
-    "Finish the set on one side, then switch sides."
+    "Push off the stepping foot to stand, then switch sides.",
+    "One on each side counts as one rep."
    ],
    "cautionsEn": [
     "If your knees feel uncomfortable, go less deep, and stop if it still hurts."
@@ -57233,16 +57230,16 @@
       "id": "cue3",
       "primary": false,
       "text": {
-       "zh": "跨出的脚推地回到站立，同一边再跨下一次。",
-       "en": "Push off the stepping foot to stand, then step out to the same side again."
+       "zh": "跨出的脚推地回到站立，再换另一边。",
+       "en": "Push off the stepping foot to stand, then switch sides."
       }
      },
      {
       "id": "cue4",
       "primary": false,
       "text": {
-       "zh": "一侧做完这组次数，再换另一侧。",
-       "en": "Finish the set on one side, then switch sides."
+       "zh": "两边各做一次算 1 次。",
+       "en": "One on each side counts as one rep."
       }
      }
     ],
@@ -57338,10 +57335,6 @@
       "flags": [
        "相位为手算（非批表），请确认"
       ]
-     },
-     "sideTextFix": {
-      "date": "2026-11-05",
-      "note": "unilateral=true 时 SDK 按「先做完一侧再换另一侧、次数指每侧」播放；口令里「两边各做一次算 1 次 / 轮流」改为每侧连续做。分侧标记、training 字段未改。"
      }
     }
    },
@@ -57510,13 +57503,16 @@
      "leadSeconds": 1,
      "phases": "go=0.8s@phase.start; hold=1.1s@phase.peak; back=0.8s@phase.end; rest=1.3s",
      "source": "spec-pulse-track r2",
-     "reps": 8
+     "reps": 8,
+     "perSide": "alternate",
+     "repUnit": "left+right",
+     "startingSide": "right"
     },
     "executionStatus": "ai-reviewed-r2-needs-user-review",
     "executionSource": {
      "path": "catalog/production/v3-text/h-mountain-climber.json",
      "actionId": "h-mountain-climber",
-     "sha256": "5525d34491607996a8c99419d9a4da05474a43db872220ef8d1adb9fddb40b2b"
+     "sha256": "c55442281029cfd1e3ec67015187635a33db90090ec7bb636fab07527a8f3b64"
     },
     "videoLoopIsTrainingDose": false
    },
@@ -57556,7 +57552,7 @@
     "evidence": [
      {
       "path": "catalog/production/v3-text/h-mountain-climber.json",
-      "sha256": "5525d34491607996a8c99419d9a4da05474a43db872220ef8d1adb9fddb40b2b"
+      "sha256": "c55442281029cfd1e3ec67015187635a33db90090ec7bb636fab07527a8f3b64"
      },
      {
       "path": "catalog/production/remaining32-r4/groups/home/h-mountain-climber.json",
@@ -57593,8 +57589,8 @@
     "zh": [
      "膝盖慢慢收向胸口，屁股别翘高",
      "手在肩膀正下方，身体一条直线。",
-     "同一条腿收回，每次停一下再踩回。",
-     "一侧做完这组次数，再换另一侧。"
+     "两条腿轮流收，每次停一下再踩回。",
+     "两边各做一次算 1 次。"
     ]
    },
    "primaryCue": 0,
@@ -57673,8 +57669,8 @@
    "cuesEn": [
     "Slowly bring your knee toward your chest without lifting your hips",
     "Keep your hands under your shoulders and your body in one line.",
-    "Drive the same knee in each time, pausing before you step back.",
-    "Finish the set on one side, then switch sides."
+    "Switch legs each time, pausing before you step back.",
+    "One on each side counts as one rep."
    ],
    "commonErrors": [
     {
@@ -57777,16 +57773,16 @@
       "id": "cue3",
       "primary": false,
       "text": {
-       "zh": "同一条腿收回，每次停一下再踩回。",
-       "en": "Drive the same knee in each time, pausing before you step back."
+       "zh": "两条腿轮流收，每次停一下再踩回。",
+       "en": "Switch legs each time, pausing before you step back."
       }
      },
      {
       "id": "cue4",
       "primary": false,
       "text": {
-       "zh": "一侧做完这组次数，再换另一侧。",
-       "en": "Finish the set on one side, then switch sides."
+       "zh": "两边各做一次算 1 次。",
+       "en": "One on each side counts as one rep."
       }
      }
     ],
@@ -57884,10 +57880,6 @@
        "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除"
       ],
       "flags": []
-     },
-     "sideTextFix": {
-      "date": "2026-11-05",
-      "note": "unilateral=true 时 SDK 按「先做完一侧再换另一侧、次数指每侧」播放；口令里「两边各做一次算 1 次 / 轮流」改为每侧连续做。分侧标记、training 字段未改。"
      }
     }
    },
@@ -60112,13 +60104,16 @@
      "leadSeconds": 1,
      "phases": "go=0.6s@phase.start; hold=0.9s@phase.peak; back=0.7s@phase.end; rest=1.8s",
      "source": "spec-pulse-track r2",
-     "reps": 8
+     "reps": 8,
+     "perSide": "alternate",
+     "repUnit": "left+right",
+     "startingSide": "right"
     },
     "executionStatus": "ai-reviewed-r2-needs-user-review",
     "executionSource": {
      "path": "catalog/production/v3-text/h-plank-side-step.json",
      "actionId": "h-plank-side-step",
-     "sha256": "d4c21778a7812c3322f92c22e629fd62fb75a2c8f2568bc27af18f8224e23d5c"
+     "sha256": "34635ddf778fb252df9e89a9bfec08c6ae326d94f839755b17fe29f5f9f214d0"
     },
     "videoLoopIsTrainingDose": false
    },
@@ -60158,7 +60153,7 @@
     "evidence": [
      {
       "path": "catalog/production/v3-text/h-plank-side-step.json",
-      "sha256": "d4c21778a7812c3322f92c22e629fd62fb75a2c8f2568bc27af18f8224e23d5c"
+      "sha256": "34635ddf778fb252df9e89a9bfec08c6ae326d94f839755b17fe29f5f9f214d0"
      },
      {
       "path": "catalog/production/remaining219-r1/recipes/h-plank-side-step.json",
@@ -60209,8 +60204,8 @@
     "zh": [
      "高位平板，一只脚往旁边点地再收回",
      "屁股朝着地面，不左右晃。",
-     "双手不动，同一只脚往旁边点。",
-     "一侧做完这组次数，再换另一侧。"
+     "双手不动，两只脚轮流点。",
+     "两边各做一次算 1 次。"
     ]
    },
    "primaryCue": 0,
@@ -60308,8 +60303,8 @@
    "cuesEn": [
     "From a high plank, tap one foot out to the side and back",
     "Keep your hips facing the floor without swaying.",
-    "Keep your hands still and tap the same foot each time.",
-    "Finish the set on one side, then switch sides."
+    "Keep your hands still and switch feet each time.",
+    "One on each side counts as one rep."
    ],
    "cautionsEn": [
     "Stop if your wrists feel sharp pain or numbness, and warm them up first.",
@@ -60404,16 +60399,16 @@
       "id": "cue3",
       "primary": false,
       "text": {
-       "zh": "双手不动，同一只脚往旁边点。",
-       "en": "Keep your hands still and tap the same foot each time."
+       "zh": "双手不动，两只脚轮流点。",
+       "en": "Keep your hands still and switch feet each time."
       }
      },
      {
       "id": "cue4",
       "primary": false,
       "text": {
-       "zh": "一侧做完这组次数，再换另一侧。",
-       "en": "Finish the set on one side, then switch sides."
+       "zh": "两边各做一次算 1 次。",
+       "en": "One on each side counts as one rep."
       }
      }
     ],
@@ -60514,10 +60509,6 @@
        "最终口径：按真实做法定（2026-11-01）"
       ],
       "flags": []
-     },
-     "sideTextFix": {
-      "date": "2026-11-05",
-      "note": "unilateral=true 时 SDK 按「先做完一侧再换另一侧、次数指每侧」播放；口令里「两边各做一次算 1 次 / 轮流」改为每侧连续做。分侧标记、training 字段未改。"
      }
     }
    },
@@ -63163,13 +63154,16 @@
      "leadSeconds": 1,
      "phases": "go=1.7s@phase.start; hold=0.7s@phase.peak; back=1.3s@phase.end; rest=0.3s",
      "source": "spec-timeline manual r2",
-     "reps": 8
+     "reps": 8,
+     "perSide": "alternate",
+     "repUnit": "left+right",
+     "startingSide": "right"
     },
     "executionStatus": "ai-reviewed-r2-needs-user-review",
     "executionSource": {
      "path": "catalog/production/v3-text/h-reverse-lunge.json",
      "actionId": "h-reverse-lunge",
-     "sha256": "b2a8c980b7f4ca91fc22bfa96aaf9a81095515d4d50bcad6d39fc11e7bc353ce"
+     "sha256": "507ae8172cc2d3dceca3b770f7235d9f790215996933b122b7fc95a754d2d2cd"
     },
     "videoLoopIsTrainingDose": false
    },
@@ -63209,7 +63203,7 @@
     "evidence": [
      {
       "path": "catalog/production/v3-text/h-reverse-lunge.json",
-      "sha256": "b2a8c980b7f4ca91fc22bfa96aaf9a81095515d4d50bcad6d39fc11e7bc353ce"
+      "sha256": "507ae8172cc2d3dceca3b770f7235d9f790215996933b122b7fc95a754d2d2cd"
      },
      {
       "path": "catalog/production/remaining32-r4/groups/home/h-reverse-lunge.json",
@@ -63247,8 +63241,8 @@
     "zh": [
      "往后退一步，两腿弯到后膝快碰地",
      "前膝在脚踝正上方，上身直立稍前倾。",
-     "前脚跟推地站起，后脚收回，同一条腿再退下一次。",
-     "一侧做完这组次数，再换另一侧。"
+     "前脚跟推地站起，后脚收回，再换另一条腿。",
+     "两边各做一次算 1 次。"
     ]
    },
    "primaryCue": 0,
@@ -63325,8 +63319,8 @@
    "cuesEn": [
     "Step back and bend both knees until the back knee nearly touches the floor",
     "Keep the front knee over the ankle and your body tall with a slight lean.",
-    "Push through the front heel to stand, bring the back foot in, then step back with the same leg again.",
-    "Finish the set on one side, then switch sides."
+    "Push through the front heel to stand, bring the back foot in, then switch legs.",
+    "One on each side counts as one rep."
    ],
    "commonErrors": [
     {
@@ -63429,16 +63423,16 @@
       "id": "cue3",
       "primary": false,
       "text": {
-       "zh": "前脚跟推地站起，后脚收回，同一条腿再退下一次。",
-       "en": "Push through the front heel to stand, bring the back foot in, then step back with the same leg again."
+       "zh": "前脚跟推地站起，后脚收回，再换另一条腿。",
+       "en": "Push through the front heel to stand, bring the back foot in, then switch legs."
       }
      },
      {
       "id": "cue4",
       "primary": false,
       "text": {
-       "zh": "一侧做完这组次数，再换另一侧。",
-       "en": "Finish the set on one side, then switch sides."
+       "zh": "两边各做一次算 1 次。",
+       "en": "One on each side counts as one rep."
       }
      }
     ],
@@ -63537,10 +63531,6 @@
       "flags": [
        "相位为手算（非批表），请确认"
       ]
-     },
-     "sideTextFix": {
-      "date": "2026-11-05",
-      "note": "unilateral=true 时 SDK 按「先做完一侧再换另一侧、次数指每侧」播放；口令里「两边各做一次算 1 次 / 轮流」改为每侧连续做。分侧标记、training 字段未改。"
      }
     }
    },
@@ -63709,13 +63699,16 @@
      "leadSeconds": 1,
      "phases": "go=0.5s@phase.start; hold=0.7s@phase.peak; back=0.5s@phase.end; rest=0.3s",
      "source": "spec-pulse-track r2",
-     "reps": 10
+     "reps": 10,
+     "perSide": "alternate",
+     "repUnit": "left+right",
+     "startingSide": "right"
     },
     "executionStatus": "ai-reviewed-r2-needs-user-review",
     "executionSource": {
      "path": "catalog/production/v3-text/h-russian-twist.json",
      "actionId": "h-russian-twist",
-     "sha256": "0c104b323e878f3d762fecab435d82637664501c6f18ebff4e606bddb32048a1"
+     "sha256": "86520e57189a22e355077baca27ca240a2ab02c50c95fba61c1771b0dca687c6"
     },
     "videoLoopIsTrainingDose": false
    },
@@ -63755,7 +63748,7 @@
     "evidence": [
      {
       "path": "catalog/production/v3-text/h-russian-twist.json",
-      "sha256": "0c104b323e878f3d762fecab435d82637664501c6f18ebff4e606bddb32048a1"
+      "sha256": "86520e57189a22e355077baca27ca240a2ab02c50c95fba61c1771b0dca687c6"
      },
      {
       "path": "catalog/production/remaining219-r1/recipes/h-russian-twist.json",
@@ -63804,8 +63797,8 @@
     "zh": [
      "上身后仰背挺直，胸口慢慢转向一边",
      "膝盖和屁股朝前不动，脚跟踩地。",
-     "回到中间，再转向同一边。",
-     "一侧做完这组次数，再换另一侧。"
+     "回到中间，再转向另一边。",
+     "两边各做一次算 1 次。"
     ]
    },
    "primaryCue": 0,
@@ -63882,8 +63875,8 @@
    "cuesEn": [
     "Lean back with a long back and slowly turn your chest to one side",
     "Keep your knees and hips facing forward and your heels down.",
-    "Come back to the middle, then turn to the same side again.",
-    "Finish the set on one side, then switch sides."
+    "Come back to the middle, then turn to the other side.",
+    "One on each side counts as one rep."
    ],
    "commonErrors": [
     {
@@ -63987,16 +63980,16 @@
       "id": "cue3",
       "primary": false,
       "text": {
-       "zh": "回到中间，再转向同一边。",
-       "en": "Come back to the middle, then turn to the same side again."
+       "zh": "回到中间，再转向另一边。",
+       "en": "Come back to the middle, then turn to the other side."
       }
      },
      {
       "id": "cue4",
       "primary": false,
       "text": {
-       "zh": "一侧做完这组次数，再换另一侧。",
-       "en": "Finish the set on one side, then switch sides."
+       "zh": "两边各做一次算 1 次。",
+       "en": "One on each side counts as one rep."
       }
      }
     ],
@@ -64091,10 +64084,6 @@
        "最终口径：按真实做法定（2026-11-01）"
       ],
       "flags": []
-     },
-     "sideTextFix": {
-      "date": "2026-11-05",
-      "note": "unilateral=true 时 SDK 按「先做完一侧再换另一侧、次数指每侧」播放；口令里「两边各做一次算 1 次 / 轮流」改为每侧连续做。分侧标记、training 字段未改。"
      }
     }
    },
@@ -69624,13 +69613,16 @@
      "leadSeconds": 1,
      "phases": "go=0.8s@phase.start; hold=1.1s@phase.peak; back=0.8s@phase.end; rest=1.3s",
      "source": "spec-pulse-track r2",
-     "reps": 10
+     "reps": 10,
+     "perSide": "alternate",
+     "repUnit": "left+right",
+     "startingSide": "right"
     },
     "executionStatus": "ai-reviewed-r2-needs-user-review",
     "executionSource": {
      "path": "catalog/production/v3-text/h-step-jack.json",
      "actionId": "h-step-jack",
-     "sha256": "ad4adcd39482b84c6ec2d9818eb0b77646f9b6962a266bc8c7795af909410cae"
+     "sha256": "8af7833a2d340fe234b818398ac62f48dbf1e1477cd10f52b7bc0bd607001a3d"
     },
     "videoLoopIsTrainingDose": false
    },
@@ -69670,7 +69662,7 @@
     "evidence": [
      {
       "path": "catalog/production/v3-text/h-step-jack.json",
-      "sha256": "ad4adcd39482b84c6ec2d9818eb0b77646f9b6962a266bc8c7795af909410cae"
+      "sha256": "8af7833a2d340fe234b818398ac62f48dbf1e1477cd10f52b7bc0bd607001a3d"
      },
      {
       "path": "catalog/production/remaining219-r1/recipes/h-step-jack.json",
@@ -69720,8 +69712,8 @@
     "zh": [
      "一只脚往旁边迈，双臂同时举过头顶",
      "脚尖先落地再踩平。",
-     "收脚放下手臂，下一次还是同一只脚往外迈。",
-     "一侧做完这组次数，再换另一侧。"
+     "收脚放下手臂，下一次换另一只脚。",
+     "两边各做一次算 1 次。"
     ]
    },
    "primaryCue": 0,
@@ -69795,8 +69787,8 @@
    "cuesEn": [
     "Step one foot out as both arms sweep overhead",
     "Land on your toes, then set the foot flat.",
-    "Step back in as your arms come down, then step out with the same foot again.",
-    "Finish the set on one side, then switch sides."
+    "Step back in as your arms come down, then switch feet.",
+    "One on each side counts as one rep."
    ],
    "commonErrors": [
     {
@@ -69901,16 +69893,16 @@
       "id": "cue3",
       "primary": false,
       "text": {
-       "zh": "收脚放下手臂，下一次还是同一只脚往外迈。",
-       "en": "Step back in as your arms come down, then step out with the same foot again."
+       "zh": "收脚放下手臂，下一次换另一只脚。",
+       "en": "Step back in as your arms come down, then switch feet."
       }
      },
      {
       "id": "cue4",
       "primary": false,
       "text": {
-       "zh": "一侧做完这组次数，再换另一侧。",
-       "en": "Finish the set on one side, then switch sides."
+       "zh": "两边各做一次算 1 次。",
+       "en": "One on each side counts as one rep."
       }
      }
     ],
@@ -70006,10 +69998,6 @@
        "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除"
       ],
       "flags": []
-     },
-     "sideTextFix": {
-      "date": "2026-11-05",
-      "note": "unilateral=true 时 SDK 按「先做完一侧再换另一侧、次数指每侧」播放；口令里「两边各做一次算 1 次 / 轮流」改为每侧连续做。分侧标记、training 字段未改。"
      }
     }
    },
@@ -71275,13 +71263,16 @@
      "leadSeconds": 1,
      "phases": "go=0.4s@phase.start; hold=1s@phase.peak; back=0.5s@phase.end; rest=2.1s",
      "source": "spec-pulse-track r2",
-     "reps": 10
+     "reps": 10,
+     "perSide": "alternate",
+     "repUnit": "left+right",
+     "startingSide": "right"
     },
     "executionStatus": "ai-reviewed-r2-needs-user-review",
     "executionSource": {
      "path": "catalog/production/v3-text/h-suitcase-march.json",
      "actionId": "h-suitcase-march",
-     "sha256": "a475cc44e4b2ad9f6f264ebbb7bedd81d5ddc0ea9a94b8f06bc797d9abdc52b4"
+     "sha256": "b46f99177775d1d12b4a444383130a4da3f97e87d621c111797d31d8e7bbfb35"
     },
     "videoLoopIsTrainingDose": false
    },
@@ -71321,7 +71312,7 @@
     "evidence": [
      {
       "path": "catalog/production/v3-text/h-suitcase-march.json",
-      "sha256": "a475cc44e4b2ad9f6f264ebbb7bedd81d5ddc0ea9a94b8f06bc797d9abdc52b4"
+      "sha256": "b46f99177775d1d12b4a444383130a4da3f97e87d621c111797d31d8e7bbfb35"
      },
      {
       "path": "catalog/production/remaining219-r1/recipes/h-suitcase-march.json",
@@ -71369,10 +71360,10 @@
    },
    "cues": {
     "zh": [
-     "一手提哑铃，一条腿抬膝，骨盆别歪",
+     "一手提哑铃，两腿轮流抬膝，骨盆别歪",
      "上身挺直，不往一边歪。",
      "膝盖不用抬太高，先把重心移到支撑脚再抬。",
-     "一侧做完这组次数再换另一侧，换侧时哑铃换到另一只手。"
+     "两边各抬一次算 1 次，下一组换手提。"
     ]
    },
    "primaryCue": 0,
@@ -71467,10 +71458,10 @@
     "dumbbell"
    ],
    "cuesEn": [
-    "Hold a dumbbell in one hand and lift one knee without tipping your hips",
+    "Hold a dumbbell in one hand and march without tipping your hips",
     "Keep your upper body tall without leaning.",
     "Lift your knee only a little, after shifting onto the standing foot.",
-    "Finish the set on one side, then switch sides and move the dumbbell to the other hand."
+    "One lift on each side counts as one rep. Switch hands next set."
    ],
    "cautionsEn": [
     "If your back or shoulder hurts, stop and use a lighter dumbbell."
@@ -71547,8 +71538,8 @@
       "id": "cue1",
       "primary": true,
       "text": {
-       "zh": "一手提哑铃，一条腿抬膝，骨盆别歪",
-       "en": "Hold a dumbbell in one hand and lift one knee without tipping your hips"
+       "zh": "一手提哑铃，两腿轮流抬膝，骨盆别歪",
+       "en": "Hold a dumbbell in one hand and march without tipping your hips"
       }
      },
      {
@@ -71571,8 +71562,8 @@
       "id": "cue4",
       "primary": false,
       "text": {
-       "zh": "一侧做完这组次数再换另一侧，换侧时哑铃换到另一只手。",
-       "en": "Finish the set on one side, then switch sides and move the dumbbell to the other hand."
+       "zh": "两边各抬一次算 1 次，下一组换手提。",
+       "en": "One lift on each side counts as one rep. Switch hands next set."
       }
      }
     ],
@@ -71670,10 +71661,6 @@
        "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除"
       ],
       "flags": []
-     },
-     "sideTextFix": {
-      "date": "2026-11-05",
-      "note": "unilateral=true 时 SDK 按「先做完一侧再换另一侧、次数指每侧」播放；口令里「两边各做一次算 1 次 / 轮流」改为每侧连续做。分侧标记、training 字段未改。"
      }
     }
    },
@@ -71704,13 +71691,13 @@
       "language": "zh",
       "clipId": "primaryCue",
       "role": "intro",
-      "path": "voice/h-suitcase-march/r2-v2/zh/primaryCue.m4a",
-      "sourcePath": "release/app-pack-r2-v2/upload/pack/r2-v1/voice/h-suitcase-march/r2-v2/zh/primaryCue.m4a",
-      "bytes": 27461,
-      "sha256": "27ac2c8fd50e1bdb6cc26f46cd75e7d2c3b0429508beaf70c6fae90dc2450c20",
-      "durationSeconds": 3.227574,
+      "path": "voice/h-suitcase-march/zh/primaryCue.m4a",
+      "sourcePath": "packages/h-suitcase-march/voice/zh/primaryCue.m4a",
+      "bytes": 29763,
+      "sha256": "2d6279ad178c3841e7737cbab49f47220787286d43ee6f64e46ab57bfba1f8e7",
+      "durationSeconds": 3.506213,
       "assetName": "primaryCue.m4a",
-      "downloadUrl": "https://media.uuugk.win/pack/r2-v1/voice/h-suitcase-march/r2-v2/zh/primaryCue.m4a",
+      "downloadUrl": "https://media.uuugk.win/pack/r2-v1/voice/h-suitcase-march/zh/primaryCue.m4a",
       "contentType": "audio/mp4"
      },
      {
@@ -71769,13 +71756,13 @@
       "language": "en",
       "clipId": "primaryCue",
       "role": "intro",
-      "path": "voice/h-suitcase-march/r2-v2/en/primaryCue.m4a",
-      "sourcePath": "release/app-pack-r2-v2/upload/pack/r2-v1/voice/h-suitcase-march/r2-v2/en/primaryCue.m4a",
-      "bytes": 30379,
-      "sha256": "54a87d1ef9dc906c6b2655e048f5a1966d298c8885d708e4ccb7505e30c9a103",
-      "durationSeconds": 3.552653,
+      "path": "voice/h-suitcase-march/en/primaryCue.m4a",
+      "sourcePath": "packages/h-suitcase-march/voice/en/primaryCue.m4a",
+      "bytes": 25840,
+      "sha256": "e6e13a62ec1beebe1f8067d535a9a0945f8e753fa2b71934e49b417a8a932d0d",
+      "durationSeconds": 3.018594,
       "assetName": "primaryCue.m4a",
-      "downloadUrl": "https://media.uuugk.win/pack/r2-v1/voice/h-suitcase-march/r2-v2/en/primaryCue.m4a",
+      "downloadUrl": "https://media.uuugk.win/pack/r2-v1/voice/h-suitcase-march/en/primaryCue.m4a",
       "contentType": "audio/mp4"
      },
      {
@@ -89148,13 +89135,16 @@
      "leadSeconds": 1,
      "phases": "go=0.8s@phase.start; hold=1.4s@phase.peak; back=0.7s@phase.end; rest=1.1s",
      "source": "spec-pulse-track r2",
-     "reps": 6
+     "reps": 6,
+     "perSide": "alternate",
+     "repUnit": "left+right",
+     "startingSide": "right"
     },
     "executionStatus": "ai-reviewed-r2-needs-user-review",
     "executionSource": {
      "path": "catalog/production/v3-text/n-chair-wiper.json",
      "actionId": "n-chair-wiper",
-     "sha256": "ec0abb105acb1b9baf96ef80a13049173571552231df12fe9c98226f0144071b"
+     "sha256": "33407de19526d1a070c72771a5e0bea7abea82cc19b5d2b135ebae894c00004a"
     },
     "videoLoopIsTrainingDose": false
    },
@@ -89194,7 +89184,7 @@
     "evidence": [
      {
       "path": "catalog/production/v3-text/n-chair-wiper.json",
-      "sha256": "ec0abb105acb1b9baf96ef80a13049173571552231df12fe9c98226f0144071b"
+      "sha256": "33407de19526d1a070c72771a5e0bea7abea82cc19b5d2b135ebae894c00004a"
      },
      {
       "path": "catalog/production/remaining219-r1/recipes/n-chair-wiper.json",
@@ -89244,8 +89234,8 @@
     "zh": [
      "脚踩稳，一侧膝盖慢慢往里倒",
      "坐在椅子前三分之一，双脚比髋宽。",
-     "停一下回到中间，同一侧膝盖再倒下一次。",
-     "一侧做完这组次数，再换另一侧。"
+     "停一下回到中间，再换另一侧。",
+     "两边各做一次算 1 次。"
     ]
    },
    "primaryCue": 0,
@@ -89323,8 +89313,8 @@
    "cuesEn": [
     "Keep your feet planted and let one knee tip slowly inward",
     "Sit on the front third of the chair with your feet wider than your hips.",
-    "Pause, come back to center, then tip the same knee in again.",
-    "Finish the set on one side, then switch sides."
+    "Pause, come back to center, then switch sides.",
+    "One on each side counts as one rep."
    ],
    "commonErrors": [
     {
@@ -89427,16 +89417,16 @@
       "id": "cue3",
       "primary": false,
       "text": {
-       "zh": "停一下回到中间，同一侧膝盖再倒下一次。",
-       "en": "Pause, come back to center, then tip the same knee in again."
+       "zh": "停一下回到中间，再换另一侧。",
+       "en": "Pause, come back to center, then switch sides."
       }
      },
      {
       "id": "cue4",
       "primary": false,
       "text": {
-       "zh": "一侧做完这组次数，再换另一侧。",
-       "en": "Finish the set on one side, then switch sides."
+       "zh": "两边各做一次算 1 次。",
+       "en": "One on each side counts as one rep."
       }
      }
     ],
@@ -89532,10 +89522,6 @@
        "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除"
       ],
       "flags": []
-     },
-     "sideTextFix": {
-      "date": "2026-11-05",
-      "note": "unilateral=true 时 SDK 按「先做完一侧再换另一侧、次数指每侧」播放；口令里「两边各做一次算 1 次 / 轮流」改为每侧连续做。分侧标记、training 字段未改。"
      }
     }
    },
@@ -92204,13 +92190,16 @@
      "leadSeconds": 1,
      "phases": "go=0.9s@phase.start; hold=1.5s@phase.peak; back=0.7s@phase.end; rest=0.9s",
      "source": "spec-pulse-track r2",
-     "reps": 6
+     "reps": 6,
+     "perSide": "alternate",
+     "repUnit": "left+right",
+     "startingSide": "right"
     },
     "executionStatus": "ai-reviewed-r2-needs-user-review",
     "executionSource": {
      "path": "catalog/production/v3-text/n-seated-ir-drop.json",
      "actionId": "n-seated-ir-drop",
-     "sha256": "8ae86d609961545daaa4adf5e3b1531b673712e044c4ce437e376f5fd1d727be"
+     "sha256": "b865dfc2c1aa577c2647340d57c49cd97763c3f0f8cd8b4c7fafbfe4086c406e"
     },
     "videoLoopIsTrainingDose": false
    },
@@ -92250,7 +92239,7 @@
     "evidence": [
      {
       "path": "catalog/production/v3-text/n-seated-ir-drop.json",
-      "sha256": "8ae86d609961545daaa4adf5e3b1531b673712e044c4ce437e376f5fd1d727be"
+      "sha256": "b865dfc2c1aa577c2647340d57c49cd97763c3f0f8cd8b4c7fafbfe4086c406e"
      },
      {
       "path": "catalog/production/remaining219-r1/recipes/n-seated-ir-drop.json",
@@ -92299,8 +92288,8 @@
     "zh": [
      "脚踩稳，膝盖慢慢往里倒向地面",
      "坐地手撑在身后，手臂伸直，双脚分宽。",
-     "停一下回来，同一侧膝盖再倒下一次。",
-     "一侧做完这组次数，再换另一侧。"
+     "停一下回来，再换另一侧。",
+     "两边各做一次算 1 次。"
     ]
    },
    "primaryCue": 0,
@@ -92378,8 +92367,8 @@
    "cuesEn": [
     "Keep the foot planted and let the knee drop slowly in toward the floor",
     "Sit leaning back on straight arms with your feet wide.",
-    "Pause, come back up, then drop the same knee again.",
-    "Finish the set on one side, then switch sides."
+    "Pause, come back up, then switch sides.",
+    "One on each side counts as one rep."
    ],
    "commonErrors": [
     {
@@ -92482,16 +92471,16 @@
       "id": "cue3",
       "primary": false,
       "text": {
-       "zh": "停一下回来，同一侧膝盖再倒下一次。",
-       "en": "Pause, come back up, then drop the same knee again."
+       "zh": "停一下回来，再换另一侧。",
+       "en": "Pause, come back up, then switch sides."
       }
      },
      {
       "id": "cue4",
       "primary": false,
       "text": {
-       "zh": "一侧做完这组次数，再换另一侧。",
-       "en": "Finish the set on one side, then switch sides."
+       "zh": "两边各做一次算 1 次。",
+       "en": "One on each side counts as one rep."
       }
      }
     ],
@@ -92588,10 +92577,6 @@
        "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除"
       ],
       "flags": []
-     },
-     "sideTextFix": {
-      "date": "2026-11-05",
-      "note": "unilateral=true 时 SDK 按「先做完一侧再换另一侧、次数指每侧」播放；口令里「两边各做一次算 1 次 / 轮流」改为每侧连续做。分侧标记、training 字段未改。"
      }
     }
    },
@@ -92759,13 +92744,16 @@
      "leadSeconds": 1,
      "phases": "go=0.5s@phase.start; hold=2.1s@phase.peak; back=0.5s@phase.end; rest=0.9s",
      "source": "spec-pulse-track r2",
-     "reps": 8
+     "reps": 8,
+     "perSide": "alternate",
+     "repUnit": "left+right",
+     "startingSide": "right"
     },
     "executionStatus": "ai-reviewed-r2-needs-user-review",
     "executionSource": {
      "path": "catalog/production/v3-text/n-seated-knee-lift.json",
      "actionId": "n-seated-knee-lift",
-     "sha256": "69a15879c1c4bc11af4be99647b112ef344cf6aadbe4f7b3edae2cea17b49b8f"
+     "sha256": "339058102df9377caa9bc50c841391b456df3faa8fe998987ba73561d345f5dd"
     },
     "videoLoopIsTrainingDose": false
    },
@@ -92805,7 +92793,7 @@
     "evidence": [
      {
       "path": "catalog/production/v3-text/n-seated-knee-lift.json",
-      "sha256": "69a15879c1c4bc11af4be99647b112ef344cf6aadbe4f7b3edae2cea17b49b8f"
+      "sha256": "339058102df9377caa9bc50c841391b456df3faa8fe998987ba73561d345f5dd"
      },
      {
       "path": "catalog/production/remaining219-r1/recipes/n-seated-knee-lift.json",
@@ -92854,8 +92842,8 @@
     "zh": [
      "身体不往后仰，大腿抬离座面几厘米",
      "坐直，膝盖90度，双脚踩地。",
-     "停住一会儿再放下，同一条腿再抬下一次。",
-     "一侧做完这组次数，再换另一侧。"
+     "停住一会儿再放下，换另一侧。",
+     "两边各做一次算 1 次。"
     ]
    },
    "primaryCue": 0,
@@ -92932,8 +92920,8 @@
    "cuesEn": [
     "Without leaning back, lift your thigh a few centimetres off the seat",
     "Sit tall with knees at 90 degrees and feet flat.",
-    "Hover for a moment, lower, then lift the same leg again.",
-    "Finish the set on one side, then switch sides."
+    "Hover for a moment, lower, then switch sides.",
+    "One on each side counts as one rep."
    ],
    "commonErrors": [
     {
@@ -93032,16 +93020,16 @@
       "id": "cue3",
       "primary": false,
       "text": {
-       "zh": "停住一会儿再放下，同一条腿再抬下一次。",
-       "en": "Hover for a moment, lower, then lift the same leg again."
+       "zh": "停住一会儿再放下，换另一侧。",
+       "en": "Hover for a moment, lower, then switch sides."
       }
      },
      {
       "id": "cue4",
       "primary": false,
       "text": {
-       "zh": "一侧做完这组次数，再换另一侧。",
-       "en": "Finish the set on one side, then switch sides."
+       "zh": "两边各做一次算 1 次。",
+       "en": "One on each side counts as one rep."
       }
      }
     ],
@@ -93133,10 +93121,6 @@
        "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除"
       ],
       "flags": []
-     },
-     "sideTextFix": {
-      "date": "2026-11-05",
-      "note": "unilateral=true 时 SDK 按「先做完一侧再换另一侧、次数指每侧」播放；口令里「两边各做一次算 1 次 / 轮流」改为每侧连续做。分侧标记、training 字段未改。"
      }
     }
    },
@@ -94364,13 +94348,16 @@
      "leadSeconds": 1,
      "phases": "go=1.5s@phase.start; hold=1.0s@phase.peak; back=1.2s@phase.end; rest=0.3s",
      "source": "spec-timeline manual r2",
-     "reps": 6
+     "reps": 6,
+     "perSide": "alternate",
+     "repUnit": "left+right",
+     "startingSide": "left"
     },
     "executionStatus": "ai-reviewed-r2-needs-user-review",
     "executionSource": {
      "path": "catalog/production/v3-text/n-squat-shift.json",
      "actionId": "n-squat-shift",
-     "sha256": "5bab870402c8bc033e2a1fc80ada0f7d545e9ae92966fdc23e5be1abaae45a17"
+     "sha256": "16427b558b52e08e706800837827488b5c1189f4849ef2fa86b9ab6a34450847"
     },
     "videoLoopIsTrainingDose": false
    },
@@ -94410,7 +94397,7 @@
     "evidence": [
      {
       "path": "catalog/production/v3-text/n-squat-shift.json",
-      "sha256": "5bab870402c8bc033e2a1fc80ada0f7d545e9ae92966fdc23e5be1abaae45a17"
+      "sha256": "16427b558b52e08e706800837827488b5c1189f4849ef2fa86b9ab6a34450847"
      },
      {
       "path": "catalog/production/remaining219-r1/recipes/n-squat-shift.json",
@@ -94461,7 +94448,7 @@
      "胸口挺起，重心慢慢移到一只脚上",
      "双脚约两倍髋宽，脚尖朝外，脚跟踩地。",
      "双手在胸前合十，弯的那侧膝盖对着脚尖。",
-     "一侧做完这组次数，再换另一侧。"
+     "两边各做一次算 1 次。"
     ]
    },
    "primaryCue": 0,
@@ -94539,7 +94526,7 @@
     "Keep your chest up and slowly shift onto one foot",
     "Feet about twice hip-width, toes out, heels down.",
     "Keep your palms together at your chest and the bent knee over the toes.",
-    "Finish the set on one side, then switch sides."
+    "One on each side counts as one rep."
    ],
    "commonErrors": [
     {
@@ -94650,8 +94637,8 @@
       "id": "cue4",
       "primary": false,
       "text": {
-       "zh": "一侧做完这组次数，再换另一侧。",
-       "en": "Finish the set on one side, then switch sides."
+       "zh": "两边各做一次算 1 次。",
+       "en": "One on each side counts as one rep."
       }
      }
     ],
@@ -94745,10 +94732,6 @@
        "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除"
       ],
       "flags": []
-     },
-     "sideTextFix": {
-      "date": "2026-11-05",
-      "note": "unilateral=true 时 SDK 按「先做完一侧再换另一侧、次数指每侧」播放；口令里「两边各做一次算 1 次 / 轮流」改为每侧连续做。分侧标记、training 字段未改。"
      }
     },
     "startingSide": "left"
@@ -96321,13 +96304,16 @@
      "leadSeconds": 1,
      "phases": "go=1.4s@phase.start; hold=1.0s@phase.peak; back=1.2s@phase.end; rest=0.4s",
      "source": "spec-timeline manual r2",
-     "reps": 6
+     "reps": 6,
+     "perSide": "alternate",
+     "repUnit": "left+right",
+     "startingSide": "right"
     },
     "executionStatus": "ai-reviewed-r2-needs-user-review",
     "executionSource": {
      "path": "catalog/production/v3-text/n-windshield.json",
      "actionId": "n-windshield",
-     "sha256": "733f384fb4b24ed16a63daf859e080a94a4cc0b236ec89a5ae972a4ba26ebf1f"
+     "sha256": "428f16d330822e320ecdefb60997737c058b25e79501000b8974898d98a242cd"
     },
     "videoLoopIsTrainingDose": false
    },
@@ -96367,7 +96353,7 @@
     "evidence": [
      {
       "path": "catalog/production/v3-text/n-windshield.json",
-      "sha256": "733f384fb4b24ed16a63daf859e080a94a4cc0b236ec89a5ae972a4ba26ebf1f"
+      "sha256": "428f16d330822e320ecdefb60997737c058b25e79501000b8974898d98a242cd"
      },
      {
       "path": "catalog/production/remaining219-r1/recipes/n-windshield.json",
@@ -96416,8 +96402,8 @@
     "zh": [
      "双膝一起慢慢倒向一侧，脚踩稳",
      "仰卧屈膝，双脚比髋略宽，手臂放两侧、掌心向下。",
-     "停一下，回到中间，再倒向同一侧。",
-     "一侧做完这组次数，再换另一侧。"
+     "停一下，经过中间再倒向另一侧。",
+     "两边各做一次算 1 次。"
     ]
    },
    "primaryCue": 0,
@@ -96556,8 +96542,8 @@
    "cuesEn": [
     "Let both knees tip slowly to one side with your feet planted",
     "Lie on your back, knees bent, feet a bit wider than hips, arms by your sides, palms down.",
-    "Pause, come back through the middle, then tip to the same side again.",
-    "Finish the set on one side, then switch sides."
+    "Pause, then pass through the middle to the other side.",
+    "One on each side counts as one rep."
    ],
    "commonErrors": [
     {
@@ -96660,16 +96646,16 @@
       "id": "cue3",
       "primary": false,
       "text": {
-       "zh": "停一下，回到中间，再倒向同一侧。",
-       "en": "Pause, come back through the middle, then tip to the same side again."
+       "zh": "停一下，经过中间再倒向另一侧。",
+       "en": "Pause, then pass through the middle to the other side."
       }
      },
      {
       "id": "cue4",
       "primary": false,
       "text": {
-       "zh": "一侧做完这组次数，再换另一侧。",
-       "en": "Finish the set on one side, then switch sides."
+       "zh": "两边各做一次算 1 次。",
+       "en": "One on each side counts as one rep."
       }
      }
     ],
@@ -96765,10 +96751,6 @@
        "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除"
       ],
       "flags": []
-     },
-     "sideTextFix": {
-      "date": "2026-11-05",
-      "note": "unilateral=true 时 SDK 按「先做完一侧再换另一侧、次数指每侧」播放；口令里「两边各做一次算 1 次 / 轮流」改为每侧连续做。分侧标记、training 字段未改。"
      }
     },
     "startingSide": "right"
@@ -107661,13 +107643,16 @@
      "leadSeconds": 1,
      "phases": "go=1.1s@phase.start; hold=1.1s@phase.peak; back=1.2s@phase.end; rest=0.6s",
      "source": "spec-timeline manual r2",
-     "reps": 10
+     "reps": 10,
+     "perSide": "alternate",
+     "repUnit": "left+right",
+     "startingSide": "right"
     },
     "executionStatus": "ai-reviewed-r2-needs-user-review",
     "executionSource": {
      "path": "catalog/production/v3-text/o-supported-march.json",
      "actionId": "o-supported-march",
-     "sha256": "38498719a956c740855a014ec81b4fb7183c687da782a9ac535b8ca7cd94f674"
+     "sha256": "fe2a9474958362f74671990e86e7cb842172bc90d4054241a2c259ce6b73fe45"
     },
     "videoLoopIsTrainingDose": false
    },
@@ -107707,7 +107692,7 @@
     "evidence": [
      {
       "path": "catalog/production/v3-text/o-supported-march.json",
-      "sha256": "38498719a956c740855a014ec81b4fb7183c687da782a9ac535b8ca7cd94f674"
+      "sha256": "fe2a9474958362f74671990e86e7cb842172bc90d4054241a2c259ce6b73fe45"
      },
      {
       "path": "catalog/production/remaining219-r1/recipes/o-supported-march.json",
@@ -107753,10 +107738,10 @@
    },
    "cues": {
     "zh": [
-     "身体站直，一条腿慢慢抬膝",
+     "身体站直，两条腿轮流慢慢抬膝",
      "一只手扶稳椅背，另一只手自然放松。",
      "膝盖抬到舒服的高度，再慢慢放下。",
-     "一侧做完这组次数，再换另一侧。"
+     "两边各做一次算 1 次。"
     ]
    },
    "primaryCue": 0,
@@ -107906,10 +107891,10 @@
     "chair"
    ],
    "cuesEn": [
-    "Stand tall and slowly lift one knee",
+    "Stand tall and slowly lift one knee, then the other",
     "Hold the chair back with one hand and relax the other arm.",
     "Lift to a comfortable height, then lower slowly.",
-    "Finish the set on one side, then switch sides."
+    "One on each side counts as one rep."
    ],
    "cautionsEn": [
     "Use a sturdy chair without wheels, and stop if you feel unsteady."
@@ -107986,8 +107971,8 @@
       "id": "cue1",
       "primary": true,
       "text": {
-       "zh": "身体站直，一条腿慢慢抬膝",
-       "en": "Stand tall and slowly lift one knee"
+       "zh": "身体站直，两条腿轮流慢慢抬膝",
+       "en": "Stand tall and slowly lift one knee, then the other"
       }
      },
      {
@@ -108010,8 +107995,8 @@
       "id": "cue4",
       "primary": false,
       "text": {
-       "zh": "一侧做完这组次数，再换另一侧。",
-       "en": "Finish the set on one side, then switch sides."
+       "zh": "两边各做一次算 1 次。",
+       "en": "One on each side counts as one rep."
       }
      }
     ],
@@ -108106,10 +108091,6 @@
        "最终口径：按真实做法定（2026-11-01）"
       ],
       "flags": []
-     },
-     "sideTextFix": {
-      "date": "2026-11-05",
-      "note": "unilateral=true 时 SDK 按「先做完一侧再换另一侧、次数指每侧」播放；口令里「两边各做一次算 1 次 / 轮流」改为每侧连续做。分侧标记、training 字段未改。"
      }
     },
     "startingSide": "right"
@@ -108141,13 +108122,13 @@
       "language": "zh",
       "clipId": "primaryCue",
       "role": "intro",
-      "path": "voice/o-supported-march/r2-v2/zh/primaryCue.m4a",
-      "sourcePath": "release/app-pack-r2-v2/upload/pack/r2-v1/voice/o-supported-march/r2-v2/zh/primaryCue.m4a",
-      "bytes": 22492,
-      "sha256": "fcd5d96c34f76bf51368f30254484403d266264516312119498e45725d5d781a",
-      "durationSeconds": 2.600635,
+      "path": "voice/o-supported-march/zh/primaryCue.m4a",
+      "sourcePath": "packages/o-supported-march/voice/zh/primaryCue.m4a",
+      "bytes": 26495,
+      "sha256": "1921d394ce0bee917f1de4a5790d20ce85a9740c657c44487dde991ff4803214",
+      "durationSeconds": 3.088254,
       "assetName": "primaryCue.m4a",
-      "downloadUrl": "https://media.uuugk.win/pack/r2-v1/voice/o-supported-march/r2-v2/zh/primaryCue.m4a",
+      "downloadUrl": "https://media.uuugk.win/pack/r2-v1/voice/o-supported-march/zh/primaryCue.m4a",
       "contentType": "audio/mp4"
      },
      {
@@ -108206,13 +108187,13 @@
       "language": "en",
       "clipId": "primaryCue",
       "role": "intro",
-      "path": "voice/o-supported-march/r2-v2/en/primaryCue.m4a",
-      "sourcePath": "release/app-pack-r2-v2/upload/pack/r2-v1/voice/o-supported-march/r2-v2/en/primaryCue.m4a",
-      "bytes": 18383,
-      "sha256": "acbd778ab442f51d9cc9c6ffc7610c16a125c0359786c157a522eb1f4ae408d0",
-      "durationSeconds": 2.113016,
+      "path": "voice/o-supported-march/en/primaryCue.m4a",
+      "sourcePath": "packages/o-supported-march/voice/en/primaryCue.m4a",
+      "bytes": 25231,
+      "sha256": "6eb3ed2d03f4c4e5ab1b06f7236db2a469fdbc4a62b4d8f21fef243ac3273e12",
+      "durationSeconds": 2.948934,
       "assetName": "primaryCue.m4a",
-      "downloadUrl": "https://media.uuugk.win/pack/r2-v1/voice/o-supported-march/r2-v2/en/primaryCue.m4a",
+      "downloadUrl": "https://media.uuugk.win/pack/r2-v1/voice/o-supported-march/en/primaryCue.m4a",
       "contentType": "audio/mp4"
      },
      {
@@ -110562,13 +110543,16 @@
      "leadSeconds": 1,
      "phases": "go=1.2s@phase.start; hold=0.8s@phase.peak; back=1.2s@phase.end; rest=0.8s",
      "source": "spec-timeline manual r2",
-     "reps": 6
+     "reps": 6,
+     "perSide": "alternate",
+     "repUnit": "left+right",
+     "startingSide": "right"
     },
     "executionStatus": "ai-reviewed-r2-needs-user-review",
     "executionSource": {
      "path": "catalog/production/v3-text/obliques-A.json",
      "actionId": "obliques-A",
-     "sha256": "46567f5aeda48bc3fe2ee62393d84870480233d60387e2aa0494391b2a82e113"
+     "sha256": "b961d64070173814a1e3df1fe4bed6975fcda010b5682217408315a4f9bb5089"
     },
     "videoLoopIsTrainingDose": false
    },
@@ -110608,7 +110592,7 @@
     "evidence": [
      {
       "path": "catalog/production/v3-text/obliques-A.json",
-      "sha256": "46567f5aeda48bc3fe2ee62393d84870480233d60387e2aa0494391b2a82e113"
+      "sha256": "b961d64070173814a1e3df1fe4bed6975fcda010b5682217408315a4f9bb5089"
      },
      {
       "path": "catalog/production/remaining219-r1/recipes/obliques-A.json",
@@ -110659,7 +110643,7 @@
      "单手撑地，一条腿从身体下面穿过去",
      "四点支撑，膝盖离地一点开始。",
      "转身时撑地的手用力推，臀部别落地。",
-     "一侧做完这组次数，再换另一侧。"
+     "两边各做一次算 1 次。"
     ]
    },
    "primaryCue": 0,
@@ -110737,7 +110721,7 @@
     "Push through one hand and thread one leg under your body",
     "Start on hands and feet with your knees just off the floor.",
     "Push the floor with the support hand as you turn and keep your hips up.",
-    "Finish the set on one side, then switch sides."
+    "One on each side counts as one rep."
    ],
    "commonErrors": [
     {
@@ -110850,8 +110834,8 @@
       "id": "cue4",
       "primary": false,
       "text": {
-       "zh": "一侧做完这组次数，再换另一侧。",
-       "en": "Finish the set on one side, then switch sides."
+       "zh": "两边各做一次算 1 次。",
+       "en": "One on each side counts as one rep."
       }
      }
     ],
@@ -110949,10 +110933,6 @@
        "最终口径：按真实做法定（2026-11-01）"
       ],
       "flags": []
-     },
-     "sideTextFix": {
-      "date": "2026-11-05",
-      "note": "unilateral=true 时 SDK 按「先做完一侧再换另一侧、次数指每侧」播放；口令里「两边各做一次算 1 次 / 轮流」改为每侧连续做。分侧标记、training 字段未改。"
      }
     },
     "startingSide": "right"
@@ -113797,13 +113777,16 @@
      "leadSeconds": 1,
      "phases": "go=0.6s@phase.start; hold=0.3s; back=0.6s@phase.end; rest=0.5s",
      "source": "spec-timeline manual r2",
-     "reps": 8
+     "reps": 8,
+     "perSide": "alternate",
+     "repUnit": "left+right",
+     "startingSide": "right"
     },
     "executionStatus": "ai-reviewed-r2-needs-user-review",
     "executionSource": {
      "path": "catalog/production/v3-text/rotator-cuff-A.json",
      "actionId": "rotator-cuff-A",
-     "sha256": "e57d788792dbd8b1eb5db7dc9e6328bec0e2d50aa83a517cd6b96de817fd6849"
+     "sha256": "becf3fb83b93202643aadf7985ac95f258db47beb5eb8e45d6758bf2bdc7173a"
     },
     "videoLoopIsTrainingDose": false
    },
@@ -113843,7 +113826,7 @@
     "evidence": [
      {
       "path": "catalog/production/v3-text/rotator-cuff-A.json",
-      "sha256": "e57d788792dbd8b1eb5db7dc9e6328bec0e2d50aa83a517cd6b96de817fd6849"
+      "sha256": "becf3fb83b93202643aadf7985ac95f258db47beb5eb8e45d6758bf2bdc7173a"
      },
      {
       "path": "catalog/production/remaining219-r1/recipes/rotator-cuff-A.json",
@@ -113894,7 +113877,7 @@
      "撑地的手用力推，摸肩时臀部别晃",
      "高位平板，双脚稍微分开。",
      "一只手抬起摸另一边肩膀，再放回。",
-     "一侧做完这组次数，再换另一侧。"
+     "两边各做一次算 1 次。"
     ]
    },
    "primaryCue": 0,
@@ -113973,7 +113956,7 @@
     "Push the floor with the support hand and keep your hips still as you tap",
     "Hold a high plank with your feet a little apart.",
     "Lift one hand to tap the other shoulder, then put it back.",
-    "Finish the set on one side, then switch sides."
+    "One on each side counts as one rep."
    ],
    "commonErrors": [
     {
@@ -114085,8 +114068,8 @@
       "id": "cue4",
       "primary": false,
       "text": {
-       "zh": "一侧做完这组次数，再换另一侧。",
-       "en": "Finish the set on one side, then switch sides."
+       "zh": "两边各做一次算 1 次。",
+       "en": "One on each side counts as one rep."
       }
      }
     ],
@@ -114184,10 +114167,6 @@
        "最终口径：按真实做法定（2026-11-01）"
       ],
       "flags": []
-     },
-     "sideTextFix": {
-      "date": "2026-11-05",
-      "note": "unilateral=true 时 SDK 按「先做完一侧再换另一侧、次数指每侧」播放；口令里「两边各做一次算 1 次 / 轮流」改为每侧连续做。分侧标记、training 字段未改。"
      }
     },
     "startingSide": "right"
@@ -124646,13 +124625,16 @@
      "leadSeconds": 1,
      "phases": "go=0.6s@phase.start; back=0.5s@phase.end; rest=2.9s",
      "source": "spec-timeline manual r2",
-     "reps": 4
+     "reps": 4,
+     "perSide": "alternate",
+     "repUnit": "left+right",
+     "startingSide": "left"
     },
     "executionStatus": "ai-reviewed-r2-needs-user-review",
     "executionSource": {
      "path": "catalog/production/v3-text/t-seated-straddle-lift-1leg.json",
      "actionId": "t-seated-straddle-lift-1leg",
-     "sha256": "45a6d0f1d6958a273625e4d23117d8a8bec7c6a760ea932d05a558a082f62dd3"
+     "sha256": "f21708fde020c1903aa5c3b2645926f6730d5fdb244aa4456595b86b9f3155de"
     },
     "videoLoopIsTrainingDose": false
    },
@@ -124692,7 +124674,7 @@
     "evidence": [
      {
       "path": "catalog/production/v3-text/t-seated-straddle-lift-1leg.json",
-      "sha256": "45a6d0f1d6958a273625e4d23117d8a8bec7c6a760ea932d05a558a082f62dd3"
+      "sha256": "f21708fde020c1903aa5c3b2645926f6730d5fdb244aa4456595b86b9f3155de"
      },
      {
       "path": "catalog/production/remaining219-r1/recipes/t-seated-straddle-lift-1leg.json",
@@ -124741,8 +124723,8 @@
     "zh": [
      "腿伸直，一条腿抬离地面",
      "分腿坐直，指尖在要抬那条腿的两边点地。",
-     "腿放下停稳后，同一条腿再抬下一次。",
-     "一侧做完这组次数，再换另一侧。"
+     "腿放下停稳后，手抬起转到另一边再撑地。",
+     "两边各做一次算 1 次。"
     ]
    },
    "primaryCue": 0,
@@ -124820,8 +124802,8 @@
    "cuesEn": [
     "Keep the leg straight and lift it off the floor",
     "Sit tall in a wide straddle with your fingertips on the floor either side of the lifting leg.",
-    "Once the leg is down and steady, lift the same leg again.",
-    "Finish the set on one side, then switch sides."
+    "Once the leg is down, lift your hands, turn to the other side and place them again.",
+    "One on each side counts as one rep."
    ],
    "commonErrors": [
     {
@@ -124919,16 +124901,16 @@
       "id": "cue3",
       "primary": false,
       "text": {
-       "zh": "腿放下停稳后，同一条腿再抬下一次。",
-       "en": "Once the leg is down and steady, lift the same leg again."
+       "zh": "腿放下停稳后，手抬起转到另一边再撑地。",
+       "en": "Once the leg is down, lift your hands, turn to the other side and place them again."
       }
      },
      {
       "id": "cue4",
       "primary": false,
       "text": {
-       "zh": "一侧做完这组次数，再换另一侧。",
-       "en": "Finish the set on one side, then switch sides."
+       "zh": "两边各做一次算 1 次。",
+       "en": "One on each side counts as one rep."
       }
      }
     ],
@@ -125022,10 +125004,6 @@
       "flags": [
        "顶端只停 0.3 s，念不完口令，并进 go 段"
       ]
-     },
-     "sideTextFix": {
-      "date": "2026-11-05",
-      "note": "unilateral=true 时 SDK 按「先做完一侧再换另一侧、次数指每侧」播放；口令里「两边各做一次算 1 次 / 轮流」改为每侧连续做。分侧标记、training 字段未改。"
      }
     }
    },
@@ -130096,13 +130074,16 @@
      "leadSeconds": 1,
      "phases": "go=1.2s@phase.start; hold=0.7s@phase.peak; back=1.3s@phase.end; rest=0.8s",
      "source": "spec-timeline manual r2",
-     "reps": 6
+     "reps": 6,
+     "perSide": "alternate",
+     "repUnit": "left+right",
+     "startingSide": "right"
     },
     "executionStatus": "ai-reviewed-r2-needs-user-review",
     "executionSource": {
      "path": "catalog/production/v3-text/w-dead-bug.json",
      "actionId": "w-dead-bug",
-     "sha256": "47c2e0f3a7192000368c14994cea2b73e099a411e0dca3fde58869ab77dd16da"
+     "sha256": "0789d00e16b8709b1e3078b8e1eb2278398b825b30b341d836b33677a896ae36"
     },
     "videoLoopIsTrainingDose": false
    },
@@ -130142,7 +130123,7 @@
     "evidence": [
      {
       "path": "catalog/production/v3-text/w-dead-bug.json",
-      "sha256": "47c2e0f3a7192000368c14994cea2b73e099a411e0dca3fde58869ab77dd16da"
+      "sha256": "0789d00e16b8709b1e3078b8e1eb2278398b825b30b341d836b33677a896ae36"
      },
      {
       "path": "catalog/production/remaining219-r1/recipes/w-dead-bug.json",
@@ -130190,8 +130171,8 @@
     "zh": [
      "下背贴地，一只手和另一侧的腿慢慢伸远",
      "仰躺，双手指向天花板，髋和膝各弯成直角。",
-     "慢慢收回起始位，同一组手脚再伸下一次。",
-     "一侧做完这组次数，再换另一侧。"
+     "慢慢收回起始位，再换另一组手脚。",
+     "两边各做一次算 1 次。"
     ]
    },
    "primaryCue": 0,
@@ -130270,8 +130251,8 @@
    "cuesEn": [
     "Keep your lower back down and slowly reach one arm and the other leg long",
     "Lie on your back, arms pointing to the ceiling, hips and knees bent at right angles.",
-    "Return slowly to the start, then reach the same arm and leg again.",
-    "Finish the set on one side, then switch sides."
+    "Return slowly to the start, then switch to the other arm and leg.",
+    "One on each side counts as one rep."
    ],
    "commonErrors": [
     {
@@ -130377,16 +130358,16 @@
       "id": "cue3",
       "primary": false,
       "text": {
-       "zh": "慢慢收回起始位，同一组手脚再伸下一次。",
-       "en": "Return slowly to the start, then reach the same arm and leg again."
+       "zh": "慢慢收回起始位，再换另一组手脚。",
+       "en": "Return slowly to the start, then switch to the other arm and leg."
       }
      },
      {
       "id": "cue4",
       "primary": false,
       "text": {
-       "zh": "一侧做完这组次数，再换另一侧。",
-       "en": "Finish the set on one side, then switch sides."
+       "zh": "两边各做一次算 1 次。",
+       "en": "One on each side counts as one rep."
       }
      }
     ],
@@ -130486,10 +130467,6 @@
        "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除"
       ],
       "flags": []
-     },
-     "sideTextFix": {
-      "date": "2026-11-05",
-      "note": "unilateral=true 时 SDK 按「先做完一侧再换另一侧、次数指每侧」播放；口令里「两边各做一次算 1 次 / 轮流」改为每侧连续做。分侧标记、training 字段未改。"
      }
     }
    },
@@ -132608,8 +132585,8 @@
  "semanticCatalog": {
   "path": "catalog/catalog.json",
   "version": "2.1.0",
-  "bytes": 313317,
-  "sha256": "6a5ff07bea5a139713a1ba8fe5a37cb7e6d68bb6be7be06f3e3ca348f9137a71"
+  "bytes": 312850,
+  "sha256": "696b6d9d6c0a1d831991894e0c44af3f83f66dbf1d7145fc1d9cb12537373c67"
  },
  "trainingSemantics": {
   "format": "pose-hub-test-semantics-summary@1",
