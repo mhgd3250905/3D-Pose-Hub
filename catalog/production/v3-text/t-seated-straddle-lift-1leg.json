@@ -34,16 +34,16 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "腿放下停稳后，手抬起转到另一边再撑地。",
-    "en": "Once the leg is down, lift your hands, turn to the other side and place them again."
+    "zh": "腿放下停稳后，同一条腿再抬下一次。",
+    "en": "Once the leg is down and steady, lift the same leg again."
    }
   },
   {
    "id": "cue4",
    "primary": false,
    "text": {
-    "zh": "两边各做一次算 1 次。",
-    "en": "One on each side counts as one rep."
+    "zh": "一侧做完这组次数，再换另一侧。",
+    "en": "Finish the set on one side, then switch sides."
    }
   }
  ],
@@ -137,6 +137,10 @@
    "flags": [
     "顶端只停 0.3 s，念不完口令，并进 go 段"
    ]
+  },
+  "sideTextFix": {
+   "date": "2026-11-05",
+   "note": "unilateral=true 时 SDK 按「先做完一侧再换另一侧、次数指每侧」播放；口令里「两边各做一次算 1 次 / 轮流」改为每侧连续做。分侧标记、training 字段未改。"
   }
  }
 }

@@ -36,16 +36,16 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "慢慢收回起始位，再换另一组手脚。",
-    "en": "Return slowly to the start, then switch to the other arm and leg."
+    "zh": "慢慢收回起始位，同一组手脚再伸下一次。",
+    "en": "Return slowly to the start, then reach the same arm and leg again."
    }
   },
   {
    "id": "cue4",
    "primary": false,
    "text": {
-    "zh": "两边各做一次算 1 次。",
-    "en": "One on each side counts as one rep."
+    "zh": "一侧做完这组次数，再换另一侧。",
+    "en": "Finish the set on one side, then switch sides."
    }
   }
  ],
@@ -145,6 +145,10 @@
     "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除"
    ],
    "flags": []
+  },
+  "sideTextFix": {
+   "date": "2026-11-05",
+   "note": "unilateral=true 时 SDK 按「先做完一侧再换另一侧、次数指每侧」播放；口令里「两边各做一次算 1 次 / 轮流」改为每侧连续做。分侧标记、training 字段未改。"
   }
  }
 }

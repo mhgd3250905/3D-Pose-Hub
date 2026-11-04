@@ -18,8 +18,8 @@
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "一手提哑铃，两腿轮流抬膝，骨盆别歪",
-    "en": "Hold a dumbbell in one hand and march without tipping your hips"
+    "zh": "一手提哑铃，一条腿抬膝，骨盆别歪",
+    "en": "Hold a dumbbell in one hand and lift one knee without tipping your hips"
    }
   },
   {
@@ -42,8 +42,8 @@
    "id": "cue4",
    "primary": false,
    "text": {
-    "zh": "两边各抬一次算 1 次，下一组换手提。",
-    "en": "One lift on each side counts as one rep. Switch hands next set."
+    "zh": "一侧做完这组次数再换另一侧，换侧时哑铃换到另一只手。",
+    "en": "Finish the set on one side, then switch sides and move the dumbbell to the other hand."
    }
   }
  ],
@@ -141,6 +141,10 @@
     "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除"
    ],
    "flags": []
+  },
+  "sideTextFix": {
+   "date": "2026-11-05",
+   "note": "unilateral=true 时 SDK 按「先做完一侧再换另一侧、次数指每侧」播放；口令里「两边各做一次算 1 次 / 轮流」改为每侧连续做。分侧标记、training 字段未改。"
   }
  }
 }

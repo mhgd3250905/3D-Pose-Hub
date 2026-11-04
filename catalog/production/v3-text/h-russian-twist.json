@@ -35,16 +35,16 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "回到中间，再转向另一边。",
-    "en": "Come back to the middle, then turn to the other side."
+    "zh": "回到中间，再转向同一边。",
+    "en": "Come back to the middle, then turn to the same side again."
    }
   },
   {
    "id": "cue4",
    "primary": false,
    "text": {
-    "zh": "两边各做一次算 1 次。",
-    "en": "One on each side counts as one rep."
+    "zh": "一侧做完这组次数，再换另一侧。",
+    "en": "Finish the set on one side, then switch sides."
    }
   }
  ],
@@ -139,6 +139,10 @@
     "最终口径：按真实做法定（2026-11-01）"
    ],
    "flags": []
+  },
+  "sideTextFix": {
+   "date": "2026-11-05",
+   "note": "unilateral=true 时 SDK 按「先做完一侧再换另一侧、次数指每侧」播放；口令里「两边各做一次算 1 次 / 轮流」改为每侧连续做。分侧标记、training 字段未改。"
   }
  }
 }
