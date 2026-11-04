@@ -214,8 +214,9 @@ def normalize_vocab(act, tax, report):
     if new != pos:
         report["vocabMapped"].setdefault("position", {}).setdefault(f"{pos}->{new}", []).append(aid)
         act["position"] = new
-    act["muscleGroupsZh"] = [tax["muscleGroups"][m]["zh"] for m in act["muscleGroups"]]
-    act["equipmentZh"] = [tax["equipment"][e]["zh"] for e in act["equipment"]]
+    # 旧格式：中文名用「、」连成一个字符串（SDK 按 String 读）
+    act["muscleGroupsZh"] = "、".join(tax["muscleGroups"][m]["zh"] for m in act["muscleGroups"])
+    act["equipmentZh"] = "、".join(tax["equipment"][e]["zh"] for e in act["equipment"])
     # 禁忌部位词
     found, unmapped = [], []
     for sentence in act.get("cautions", []):
