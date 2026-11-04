@@ -20,7 +20,11 @@
 - poster 不在 SDK 认的媒体类型内（video/cover/thumbnail），从 files 去掉；线上文件不动。
 - defaultDose.mode=hold 映射为 time，秒数保留。
 - 媒体逐个核对 bytes/SHA 一致才标就绪。
-- 缺场景（scenes 为空）的动作不能当作完整训练定义：标 partial，不进语义目录，列清单。
+- 词表：r2-v1 新词按下方显式表映射回 SDK 旧词（SDK 不改词表）；注意事项整句保留，
+  抽旧禁忌部位词进 contraindications。
+- 原 scenes 为空的 32 个动作按器械推场所（SCENES_INFERRED 显式表），补完进语义目录。
+- 语义目录 apps/tags 只沿用旧语义目录同 ID 的数据；其余不标，由 App profile 规则筛。
+- 若仍有缺场景的动作：标 partial，不进语义目录，列清单。
 """
 from __future__ import annotations
 
@@ -44,46 +48,123 @@ DEFINITION_FIELDS = [
     "primaryCue", "cautions", "contraindications", "alternative",
 ]
 
-# r2-v1 新词表在旧 taxonomy 里没有的词条：中文名取自目录里同动作的中文字段，
-# 器械场所按旧词表里最接近的器械（band→gym、chair→三处、block→home/gym）。
-NEW_CATEGORIES = {
-    "stability": {"zh": "稳定", "en": "Stability"},
-    "balance": {"zh": "平衡", "en": "Balance"},
-    "assessment": {"zh": "评估", "en": "Assessment"},
+# ---------------------------------------------------------------------------
+# 词表对齐（用户 2026-11-04 定）：r2-v1 新词映射回 SDK 现有旧词，SDK 不改词表。
+# 旧词表 = catalog/taxonomy.json + SDK 问答/提示词里写死的 id
+#   （coach_qa_agent._muscleIds / _homeEquipment，prompt_builder._catShort/_posShort，
+#    qa_finder.ambientEquipment）。值为 None 表示该词是配件，并入同动作里的主器械后去掉。
+MUSCLE_MAP = {
+    "core": "abs",              # 腹直肌（含深层腹横肌）
+    "glutes": "glute-max",
+    "abductors": "hip-abductors",
+    "upper-back": "scapular",   # 斜方肌中下部 · 菱形肌 = SDK 中下斜方
+    "lower-back": "erectors",
+    "neck": "neck",             # SDK _muscleIds 已有；旧 taxonomy 无，补词条
 }
-NEW_MUSCLES = {
-    "core": {"zh": "腹直肌（含深层腹横肌）"},
-    "glutes": {"zh": "臀大肌"},
-    "abductors": {"zh": "臀中肌 · 髋外展"},
-    "upper-back": {"zh": "斜方肌中下部 · 菱形肌"},
-    "lower-back": {"zh": "竖脊肌"},
-    "neck": {"zh": "颈部"},
+CATEGORY_MAP = {
+    "stability": "core",        # SDK core → strength + stability-control
+    "balance": "core",
+    "assessment": "mobility",   # 两个评估动作（指尖贴墙抬掌根、托马斯测试）按活动度
 }
-NEW_EQUIPMENT = {
-    "resistance-band": {"zh": "弹力带", "scenes": ["gym"]},
-    "mini-band": {"zh": "迷你弹力圈", "scenes": ["gym"]},
-    "ankle-strap": {"zh": "脚踝绑带", "scenes": ["gym"]},
-    "cable-machine": {"zh": "绳索器械", "scenes": ["gym"]},
-    "d-handle": {"zh": "D 形把手", "scenes": ["gym"]},
-    "pull-up-bar": {"zh": "单杠", "scenes": ["gym"]},
-    "gymnastic-rings": {"zh": "吊环", "scenes": ["gym"]},
-    "hip-abduction-machine": {"zh": "髋外展机", "scenes": ["gym"]},
-    "stability-ball": {"zh": "瑞士球", "scenes": ["gym"]},
-    "sliders": {"zh": "滑垫（可用毛巾代替）", "scenes": ["gym"]},
-    "barbell": {"zh": "杠铃", "scenes": ["gym"]},
-    "bench": {"zh": "训练凳", "scenes": ["gym"]},
-    "yoga-block": {"zh": "瑜伽砖（可用厚书代替）", "scenes": ["home", "gym"]},
-    "yoga-blocks": {"zh": "瑜伽砖（可用厚书代替）", "scenes": ["home", "gym"]},
-    "foam-block": {"zh": "泡沫砖", "scenes": ["home", "gym"]},
-    "stool": {"zh": "椅子/凳子", "scenes": ["home", "office", "gym"]},
-    "towel": {"zh": "毛巾", "scenes": ["home", "office", "gym"]},
-    "doorframe": {"zh": "门框", "scenes": ["home", "office", "gym"]},
+EQUIPMENT_MAP = {
+    "resistance-band": "band",
+    "mini-band": "band",
+    "cable-machine": "cable",
+    "ankle-strap": None,        # 绳索/弹力带配件
+    "d-handle": None,           # 绳索/弹力带配件
+    "pull-up-bar": "pullup-bar",
+    "gymnastic-rings": "rings",
+    "hip-abduction-machine": "hip-abductor-machine",
+    "stability-ball": "swiss-ball",
+    "sliders": "slider",
+    "yoga-block": "block",
+    "yoga-blocks": "block",
+    "foam-block": "block",
+    "stool": "chair",
+    "towel": "towel",           # SDK 环境物（qa_finder），旧 taxonomy 无，补词条
+    "doorframe": "doorframe",   # 同上
+    "bench": "bench",           # 同上（qa_finder 户外/软器械）
+    "barbell": "barbell",       # 无法映射：SDK 无对应旧词，保留原词并补 taxonomy 词条（gym）
 }
-NEW_POSITIONS = {
-    "plank": {"zh": "平板支撑", "floor": True},
-    "side-lying": {"zh": "侧卧/侧撑", "floor": True},
-    "half-kneeling": {"zh": "单膝跪", "floor": True},
-    "other": {"zh": "其他（器械/支撑）", "floor": False},
+ACCESSORY_HOSTS = {"cable", "band"}
+POSITION_MAP = {
+    "plank": "prone",           # 俯撑，着地
+    "side-lying": "side_lying",
+    "half-kneeling": "kneeling",
+}
+# position=other 无统一对应，逐个指定
+POSITION_OTHER = {
+    "abs-B": "support", "abs-C": "support", "lats-C": "support", "triceps-B": "support",
+    "triceps-C": "support", "erectors-C": "support", "h-chair-dip": "support",
+    "h-dd-shoulder": "prone", "h-pike-pushup": "prone", "h-pike-scapular-elevation": "prone",
+    "t-tuck-planche": "prone", "s-pigeon": "prone",
+    "t-flare-side-hold": "side_lying",
+    "w-wall-sit": "standing",
+}
+# 旧 taxonomy 没有、但 SDK 认识的词：补词条（不是新词）
+TAXONOMY_EXTRA = {
+    "muscleGroups": {"neck": {"zh": "颈部"}},
+    "equipment": {
+        "towel": {"zh": "毛巾", "scenes": ["home", "office", "gym"]},
+        "doorframe": {"zh": "门框", "scenes": ["home", "office", "gym"]},
+        "bench": {"zh": "训练凳", "scenes": ["gym"]},
+        "barbell": {"zh": "杠铃", "scenes": ["gym"]},
+    },
+}
+# 注意事项整句保留；从句子里抽旧禁忌部位词（taxonomy.cautions）填 contraindications。
+CAUTION_WORDS = [
+    ("膝", ("膝",)),
+    ("腰", ("腰",)),
+    ("肩", ("肩",)),
+    ("手腕", ("腕",)),
+    ("颈", ("颈", "脖子")),
+    ("髋", ("髋",)),
+    ("大腿内侧", ("大腿内侧", "大腿根")),
+]
+# 句子里提到、但旧词表没有对应部位的词（只记清单，不填）
+UNMAPPED_PARTS = ("手肘", "脚踝", "跟腱", "脚后跟", "小腿", "大腿后侧", "大腿前", "手指", "脚背", "头")
+# 32 个原 scenes 为空的动作：按器械推场所（SDK 规则：office 只到椅子/墙 + 徒手且不躺地；
+# 哑铃/壶铃/弹力带/垫子类 → home、gym；单杠/吊环/双杠/绳索/机器 → gym）
+SCENES_ALL = ["home", "office", "gym"]
+EQUIPMENT_SCENES = {
+    **{e: ["home", "office", "gym"] for e in ("chair", "wall", "towel", "doorframe")},
+    **{e: ["home", "gym"] for e in ("mat", "block", "dumbbell", "kettlebell", "band", "slider",
+                                     "parallettes", "foam-roller")},
+}
+
+SCENES_INFERRED = {
+    "h-band-biceps-curl": ["home", "gym"],  # 站姿踩带弹力带弯举；band；standing
+    "h-bear-plank": ["home", "gym"],  # 熊式支撑；mat；quadruped
+    "h-biceps-self": ["home", "office", "gym"],  # 双手对抗弯举；徒手；standing
+    "h-bridge-overhead": ["home", "gym"],  # 臀桥过头伸臂；mat；supine
+    "h-chair-elbow-triceps-stretch": ["home", "office", "gym"],  # 扶椅屈肘手臂后侧拉伸；chair；standing
+    "h-crossbody": ["home", "office", "gym"],  # 交叉臂肩后侧拉伸；徒手；standing
+    "h-db-overhead-shrug": ["home", "gym"],  # 双哑铃过头耸肩；dumbbell；standing
+    "h-db-reverse-curl": ["home", "gym"],  # 站姿哑铃反握弯举；dumbbell；standing
+    "h-db-zottman-curl": ["home", "gym"],  # 站姿哑铃翻掌弯举；dumbbell；standing
+    "h-half-kneeling-quad-stretch": ["home", "gym"],  # 半跪手拉脚大腿前侧拉伸；mat；kneeling
+    "h-inner-thigh": ["home", "gym"],  # 侧卧大腿内侧抬腿；mat；side_lying
+    "h-kb-swing": ["home", "gym"],  # 单臂壶铃摆荡；kettlebell；standing
+    "h-mountain-climber": ["home", "gym"],  # 慢速登山跑；mat；prone
+    "h-open-book": ["home", "gym"],  # 侧卧开书式；mat；side_lying
+    "h-pike-pushup": ["home", "gym"],  # 派克俯卧撑；mat；prone
+    "h-reverse-lunge": ["home", "office", "gym"],  # 后撤步弓步蹲；徒手；standing
+    "h-standing-arm-extension-stretch": ["home", "office", "gym"],  # 站姿双臂后抬开肩；徒手；standing
+    "h-supine-cactus-chest": ["home", "gym"],  # 仰卧仙人掌开胸；mat；supine
+    "h-towel-behind": ["home", "office", "gym"],  # 背后握毛巾抬臂；towel；standing
+    "h-towel-pass": ["home", "office", "gym"],  # 毛巾过头转肩；towel；standing
+    "h-towel-pulldown": ["home", "office", "gym"],  # 站姿毛巾下拉；towel；standing
+    "h-wall-pec": ["home", "office", "gym"],  # 靠墙单臂胸肌拉伸；wall；standing
+    "t-flare-side-hold": ["home", "gym"],  # 托马斯侧撑定格；mat；side_lying
+    "t-lsit-open-close": ["home", "gym"],  # L撑开合；mat；seated
+    "t-lsit-tuck": ["home", "gym"],  # L撑收腿伸腿；mat；seated
+    "t-lsit-vsit-circles": ["home", "gym"],  # L 撑到 V 撑画圈；mat；seated
+    "t-lsit-wide": ["home", "gym"],  # 宽腿L撑；mat；seated
+    "t-seated-straddle-ext": ["home", "gym"],  # 分腿坐收腿伸腿；mat；seated
+    "t-seated-straddle-lifts": ["home", "gym"],  # 坐姿分腿双腿抬起；mat；seated
+    "t-straddle-hold": ["home", "gym"],  # 分腿支撑；mat；seated
+    "t-tuck-planche": ["home", "gym"],  # 团身俄挺；mat；prone
+    "t-vsit": ["home", "gym"],  # V撑；mat；seated
 }
 
 
@@ -95,6 +176,65 @@ def dump(obj) -> bytes:
     return (json.dumps(obj, ensure_ascii=False, indent=1) + "\n").encode("utf-8")
 
 
+def _mapped(values, table, report_key, report, aid):
+    out = []
+    for v in values:
+        m = table.get(v, v)
+        if v in table:
+            report["vocabMapped"].setdefault(report_key, {}).setdefault(f"{v}->{m}", []).append(aid)
+        if m is not None and m not in out:
+            out.append(m)
+    return out
+
+
+def normalize_vocab(act, tax, report):
+    """把一个动作的 r2-v1 新词改成 SDK 旧词；注意事项整句保留，抽部位词进 contraindications。"""
+    aid = act["id"]
+    act["muscleGroups"] = _mapped(act["muscleGroups"], MUSCLE_MAP, "muscleGroups", report, aid)
+    # muscles 旧格式是中文肌群名；新格式是 id，映射后用 taxonomy 中文名
+    ids = _mapped(act.get("muscles", []), MUSCLE_MAP, "muscles", report, aid)
+    act["muscles"] = [tax["muscleGroups"][m]["zh"] if m in tax["muscleGroups"] else m for m in ids]
+    if act["category"] in CATEGORY_MAP:
+        report["vocabMapped"].setdefault("category", {}).setdefault(
+            f"{act['category']}->{CATEGORY_MAP[act['category']]}", []).append(aid)
+        act["category"] = CATEGORY_MAP[act["category"]]
+    raw_eq = list(act["equipment"])
+    act["equipment"] = _mapped(raw_eq, EQUIPMENT_MAP, "equipment", report, aid)
+    if any(EQUIPMENT_MAP.get(e, e) is None for e in raw_eq) and not ACCESSORY_HOSTS & set(act["equipment"]):
+        raise SystemExit(f"{aid}: 配件 {raw_eq} 没有可并入的主器械")
+    if "barbell" in act["equipment"]:
+        report["unmapped"].setdefault("equipment:barbell", []).append(aid)
+    pos = act["position"]
+    if pos == "other":
+        if aid not in POSITION_OTHER:
+            raise SystemExit(f"{aid}: position=other 没有显式对应")
+        new = POSITION_OTHER[aid]
+    else:
+        new = POSITION_MAP.get(pos, pos)
+    if new != pos:
+        report["vocabMapped"].setdefault("position", {}).setdefault(f"{pos}->{new}", []).append(aid)
+        act["position"] = new
+    act["muscleGroupsZh"] = [tax["muscleGroups"][m]["zh"] for m in act["muscleGroups"]]
+    act["equipmentZh"] = [tax["equipment"][e]["zh"] for e in act["equipment"]]
+    # 禁忌部位词
+    found, unmapped = [], []
+    for sentence in act.get("cautions", []):
+        for word, keys in CAUTION_WORDS:
+            if any(k in sentence for k in keys) and word not in found:
+                found.append(word)
+        for part in UNMAPPED_PARTS:
+            if part in sentence and part not in unmapped:
+                unmapped.append(part)
+    old = [c for c in act.get("contraindications", []) if c]
+    act["contraindications"] = old + [w for w in found if w not in old]
+    if not act["contraindications"]:
+        report["noContraindication"].append({"id": aid, "cautions": act.get("cautions", []),
+                                             "unmappedParts": unmapped})
+    elif unmapped:
+        report["partialContraindication"].append({"id": aid, "filled": act["contraindications"],
+                                                  "unmappedParts": unmapped})
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--catalog", required=True)
@@ -104,6 +244,11 @@ def main() -> int:
     ap.add_argument("--published-at", required=True)
     ap.add_argument("--out", required=True)
     a = ap.parse_args()
+    import datetime
+    try:  # SDK 用 DateTime.tryParse 解析，必须是 ISO 8601
+        datetime.datetime.fromisoformat(a.published_at)
+    except ValueError:
+        raise SystemExit(f"--published-at 不是 ISO 8601：{a.published_at}")
 
     src_bytes = open(a.catalog, "rb").read()
     src = json.loads(src_bytes)
@@ -115,8 +260,12 @@ def main() -> int:
     report = {
         "source": {"bytes": len(src_bytes), "sha256": sha(src_bytes)},
         "holdToTime": [], "posterDropped": 0, "mediaMismatch": [],
-        "missingScenes": [], "appsTagsFromLegacy": [], "noAppsTags": [],
+        "missingScenes": [], "scenesInferred": {}, "appsTagsFromLegacy": [], "noAppsTags": [],
+        "vocabMapped": {}, "unmapped": {}, "noContraindication": [], "partialContraindication": [],
     }
+    tax = copy.deepcopy(taxonomy)
+    for dim, extra in TAXONOMY_EXTRA.items():
+        tax[dim].update(extra)
 
     ready, pending, complete, incomplete = [], [], [], []
     media_files = media_bytes = 0
@@ -126,6 +275,17 @@ def main() -> int:
         # 1) poster 去掉（SDK 只认 video/cover/thumbnail）
         if act["files"].pop("poster", None) is not None:
             report["posterDropped"] += 1
+        # 1b) 词表对齐 + 场所补齐
+        normalize_vocab(act, tax, report)
+        if not act.get("scenes"):
+            if aid not in SCENES_INFERRED:
+                raise SystemExit(f"{aid}: scenes 为空且没有推断表条目")
+            act["scenes"] = list(SCENES_INFERRED[aid])
+            act["scenesSource"] = "inferred-from-equipment-r2-v1-normalize"
+            report["scenesInferred"][aid] = {"equipment": act["equipment"], "position": act["position"],
+                                              "scenes": act["scenes"]}
+        elif aid in SCENES_INFERRED:
+            raise SystemExit(f"{aid}: 已有 scenes，不应在推断表里")
         # 2) 逐个核对线上实际文件
         ok = True
         for kind in SDK_KINDS:
@@ -184,11 +344,9 @@ def main() -> int:
                 {"path": SEMANTIC_PATH, "actionId": aid}
             ]
 
-    tax = copy.deepcopy(taxonomy)
-    tax["categories"].update(NEW_CATEGORIES)
-    tax["muscleGroups"].update(NEW_MUSCLES)
-    tax["equipment"].update(NEW_EQUIPMENT)
-    tax["positions"].update(NEW_POSITIONS)
+    used_cautions = {c for x in cat["actions"] for c in x["contraindications"]}
+    if used_cautions - set(tax["cautions"]):
+        raise SystemExit(f"contraindications 有旧词表外的词：{sorted(used_cautions - set(tax['cautions']))}")
     used = {
         "categories": {x["category"] for x in cat["actions"]},
         "muscleGroups": {m for x in cat["actions"] for m in x["muscleGroups"]},
