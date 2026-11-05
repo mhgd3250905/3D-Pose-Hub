@@ -23,6 +23,12 @@
 - 可选：A 保留 mv1（会动，但开头 1 s 左前臂压胸更深）；B 起点改 15–20°（幅度 18–23°，rest 穿模接近 r9）；C 重做这个动作的左手（rest 时左手放下、拉臂时再抓）。我倾向 C，需用户点头再做。
 - 小臂：左手相对前臂固定拧转 132°（r9 同样 132°），折返 2 次（r9 同样 2 次），没开 r6，留下一轮。
 
+## 时间有余做的：n-thomas-test 仰卧单膝抱胸（候选，请看图）
+- `n-thomas-test-r3-sc1`：同抱膝的做法（真实膝/小腿贴放 + 按实测往外推）。
+- 修前：右手→左大腿 50.9 mm、左手→左小腿 45.9、右手→左小腿 44.1、左手→左大腿 38.0；修后：手/前臂对全部 0（≤10 mm）。
+- 剩下：大腿↔躯干 13.7 mm 但只有 19 个顶点（<30，按审核规则不计）；腋下 77→36 mm（低可信）。地面：躯干最低 13.3→13.7 mm，没回退。
+- 看图（`img/cmp-n-thomas-test.jpg`，第 1/3 行修前、第 2/4 行修后）：双手从陷在大腿/小腿里变成搭在膝盖上方、看得见；但手更像「扶在膝盖顶上」，不是「抱在膝下」，手指张开。请用户定：接受，或改成抱膝下（要再调贴放位置）。
+
 ## 249 小臂清单
 - `elbow-249.md` / `elbow-249.csv`：249 个动作修前完整清单（循环内转动、单步跳变、±180 折返、肘角跳变）+ 本轮开 r6 的 12 个修后数。
 - `../../pose-fix-r1/hand-fixed-twist-before.csv`：手相对前臂固定拧转，修前 >120° 37 个、>90° 65 个。
@@ -30,7 +36,7 @@
 
 ## 已改 / 未改
 - 已改配方：h-knee-hug、h-bilateral-upper-back-hug、h-overhead-triceps-stretch、h-crossbody；r6 腕扭转运行时开启的 12 个：forearms-A、h-band-leg-out、h-bilateral-upper-back-hug、h-db-curl、h-db-overhead-triceps-extension、h-db-zottman-curl、h-kneeling-thread-needle、h-quadruped-open、h-tabletop、o-seated-twist、t-seated-straddle-lift-1leg、w-prone-swimmer。
-- 未改：n-thomas-test（试修 sc1：手→大腿/小腿 51→26 mm，不到 10 mm，本轮撤回，推手状态保留在工作区）；自穿模清单其余 60 个；h-goblet-squat 全链复核；两个 -native 悬挂/提握动作补测；方案 C 余下动作。
+- 未改：自穿模清单其余约 60 个；h-goblet-squat 全链复核；两个 -native 悬挂/提握动作补测；「手相对前臂最大固定拧转」全量指标（修前清单已有，修后未全量重扫）；方案 C 余下动作。
 
 ## 和 fix/ground-contact-r1 会冲突的配方文件
 两边都改了（合并时按 ground-contact 的 gc spec 为底，再叠本分支的 `wristTwistRuntime` / spec 版本）：
