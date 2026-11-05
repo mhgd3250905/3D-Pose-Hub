@@ -160,3 +160,38 @@
 2. `img/r4/cmp-t-vsit.jpg`：t=0 成片视角 / 侧面特写
 3. `img/r4/cmp-s-kneel-hipflex.jpg`：t=2 s 成片视角 / 左髋特写
 4. `img/r4/cobra-LR.jpg`：h-cobra t=0 修前右臂（左，红圈 = 审核报的最深点）/ 左臂（右）特写，左右一致
+
+---
+# r5（2026-11-05 16:20–17:35，用户授权自行决定修法；省额度、只做把握大的，做不动的记一行跳过）
+
+口径同 r4：d10 ≤ 10 mm 才算过；<30 个顶点超 10 mm 不计；腋下不计。修前 = ad39711（快扫 csv / hand-push 第 1 轮实测）。
+touch 类修后 = 全链 `self-collision-audit`（dbg 版）；hand-push 类修后 = hand-push final pass（同一测量、生产场景、每 0.5 s 一帧）。第 1、2 批已交渲染的 44 个没动。
+
+## 修好（10 个）
+| 动作 | 改动 | 修前→修后（d10 mm） |
+|---|---|---|
+| h-band-hip-ir 坐姿弹力带脚向外摆 | `-sc1` 手搭大腿 touch 间隙 +25/+21 mm | 左手→左大腿 20.2→0、右手→右大腿 16.2→0 |
+| n-chair-wiper 坐椅雨刷 | `-sc1` touch +18/+31 mm | 右手→右大腿 25.7→0、左 13.1→0 |
+| n-pelvis-circle 站姿骨盆画圈 | `-r2-sc1` 叉腰 touch +33/+31 mm | 左手→大腿 28.1→0、右 26.3→0、左手→躯干 24.6→0 |
+| n-seated-squeeze 坐姿夹砖 | `-r2-sc1` touch +32/+32 mm | 双手→大腿 27.0/27.2→0 |
+| w-chair-hip-thrust 椅子臀推 | `-sc1` 叉腰手型改：四指更朝下（finger y −0.35→−0.6）、掌心外移 15 mm、touch +35 mm | 右手→躯干 34.3→5.1、右手→右大腿 31→0、左手→躯干 30.2→4.6（**手型变了，请看图**）。另一候选（四指 −0.8、+30 mm）10.4 未用 |
+| h-lateral-step-lunge 侧跨步弓步蹲 | hand-push 手搭大腿，最大位移 31/31 mm | 左/右手→大腿 25.3/25.5→0（**特写里手离大腿外侧约 2–3 cm，像悬空，请看图**） |
+| h-squat 徒手深蹲 | hand-push，29/28 mm | 左/右手→大腿 22.9/22.5→0 |
+| h-chair-step-up 椅子上步 | hand-push 扶腰，28/29 mm | 左/右手→躯干 22.3/23.0→0；剩大腿↔躯干 19.4（35 顶点，抬腿帧腹股沟，修前就有，同 triceps-B 类蒙皮折叠） |
+| o-seated-ham 坐姿大腿后侧拉伸 | hand-push，左 26 mm | 左手→左大腿 20.3→0 |
+| o-seated-twist 坐姿扶椅扭转 | hand-push，39/39 mm（保留 r6） | 双手→大腿 33.3/33.3→0 |
+地面：hand-push final 全身最低点 ≥0（脚 0，同修前）；touch 类只动手离大腿/腰的距离，不涉及地面。
+
+## 撤回 / 跳过（各一行）
+- h-bulgarian（撤，2 次）：手型 A（四指 −0.8、+30 mm）右手→躯干 41→17.4、左手→大腿 21.9；手型 B（−0.6、外移 15 mm、+35 mm）右手→躯干 21。都没到 10，留待定。
+- h-half-kneeling-quad-stretch（跳过）：新 spec 过不了 `remote-keyframes-r1` 的 required action corrective 校验（corrective 绑定原 spec），要改 corrective 表，本轮不做。
+- adductors-A（跳过，蒙皮折叠）：全链复测 56.1 mm，两侧最深点都在 `V3_Head_Neck_Torso_Shared_R26` 同一网格的 left/rightThigh 权重顶点互判（深蹲侧裆部），同 triceps-B 类。
+- deltoids-A / h-kb-swing / n-straddle-fold（跳过）：主问题是两腿互穿或摆铃最低点前臂夹在两腿间，只推手解决不了，把握小。
+- t-seated-straddle-lifts / t-straddle-hold（跳过）：floor 支撑手标定点在两腿之间，挪手会破坏支撑高度。
+- s-butterfly 脚底互压（23）是动作本意；o-stand-crossreach 两大腿 22.8（97 顶点）为交叉腿，未做。
+- 手朝向 6 个：按用户要求本轮不做。
+
+## 图（上 = 修前，下 = 修后）
+1. `img/r5/cmp-w-chair-hip-thrust.jpg`：成片视角 / 右手特写（手型变化）
+2. `img/r5/cmp-h-lateral-step-lunge.jpg`：成片视角 / 左手特写
+（n-seated-squeeze 对比图渲染超时未出，只有上面 2 张。）
