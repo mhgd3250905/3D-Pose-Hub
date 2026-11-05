@@ -249,14 +249,56 @@ touch 类修后 = 全链 `self-collision-audit`（dbg 版）；hand-push 类修�
 - 第 1–4 批 58 个、与 fix/ground-contact-r1 重叠的 14 个、判为假象/蒙皮折叠/本意的 13 个。
 
 ---
-# 全轮总表（r1–r7，分支 fix/limb-twist-collision-r1）
+# r9（2026-11-05 20:55–21:45，固定拧转 90–120°；用户 18:28「全部做完」）
 
-## 已修（65 个：第 1–4 批已交渲染 58 个 + r7 第 5 批 7 个）
+范围：`../../pose-fix-r1/hand-fixed-twist-before.csv` 里手相对前臂固定拧转 90–120° 的 28 个，去掉 r8 已在 PR #30（fix/gc-overlap-limb-r1）修过的 6 个（adductors-B、deltoids-B、h-short-side-plank、h-supine-bilateral-leg-raise、h-supine-heel-slide、hip-abductors-A），剩 **22 个**（前几轮记的「18 个」未列 id，按 csv 实数是 22；这 22 个的配方都不在 fix/ground-contact-r1 的改动里，全部在本分支做）。
+做法同 r2：新 spec `<当前 spec>-et1` 只加常量前臂转角（`elbowTwist`，度），以各动作**当前**配方 spec 为底（已有 -sc1 的叠在 -sc1 上）；转角取 max(固定拧转/2, 最大拧转-80)，符号随 θ。手位置/朝向、握法、道具、肘极点、节奏、镜头不变；r6 腕扭转运行时按配方原样（只有 h-band-leg-out 带 r6）。
+数字：scan-fast（同 r6 口径，θ = 手相对前臂拧转，展开后），列「固定/最大 → 固定/最大」；修前 = 05ba687 实测 4 Hz，带 * 的 5 个（touch 手型，scan-fast 每帧解 touch 很慢）修前取 csv、修后 1 Hz 实测。step = 修后 θ 单帧最大跳变（4 Hz/1 Hz 采样）。
+只改前臂绕自身长轴的转角，手和身体位置不变，不涉及地面；未全链复测穿模（同 r2/r6 口径；全链 self-collision-audit 单个 touch 动作超过 120 s 单命令上限，未跑）。
+
+## 修好（22 个，全部 θ 最大值 ≤90°，0 折返）
+| 动作 | spec | θ 固定/最大 修前→修后 | 折返 | step |
+|---|---|---|---|---|
+| lats-A | `lats-A-wb-et1` | 左 114/115→55/**56**（et +55）；右 114/115→55/**56**（et -55） | 0 | 0 |
+| h-band-leg-out | `h-band-leg-out-et1` | 左 119/119→58/**58**（et +60）；右 105/181→4/**83**（et -100） | 0 | 21 |
+| h-butterfly-active | `h-butterfly-active-r2-et1` | 左 119/119→58/**58**（et +60）；右 119/119→58/**58**（et -60） | 0 | 0 |
+| h-wall-straddle | `h-wall-straddle-et1` | 左 119/119→58/**58**（et +60）；右 119/119→58/**58**（et -60） | 0 | 0 |
+| n-leg-circles | `n-leg-circles-r2-et1` | 左 119/119→58/**58**（et +60）；右 119/119→58/**58**（et -60） | 0 | 0 |
+| n-windshield | `n-windshield-r2-et1` | 左 117/120→56/**58**（et +60）；右 117/120→56/**58**（et -60） | 0 | 0 |
+| h-goblet-squat | `h-goblet-squat-r3-et1` | 左 116/146→58/**90**（et -65）；右 116/146→58/**90**（et +65） | 0 | 10 |
+| o-stand-sidebend | `o-stand-sidebend-r2-et1` | 右 115/120→56/**62**（et +60） | 0 | 3 |
+| o-stand-crossreach | `o-stand-crossreach-r2-sc1-et1` | 右 113/118→60/**64**（et +55） | 0 | 2 |
+| h-reverse-crunch | `h-reverse-crunch-et1` | 左 110/110→55/**55**（et +55）；右 110/110→55/**55**（et -55） | 0 | 0 |
+| h-chair-dip | `h-chair-dip-et1` | 左 109/143→38/**73**（et +65）；右 109/143→38/**73**（et -65） | 0 | 13 |
+| t-vsit | `t-vsit-r7-sc1-et1` | 左 109/109→48/**48**（et +55）；右 108/108→48/**48**（et -55） | 0 | 0 |
+| serratus-B | `serratus-B-r2-et1` | 左 102/118→53/**70**（et -50）；右 102/118→53/**70**（et +50） | 0 | 7 |
+| glute-max-C | `glute-max-C-et1` | 左 100/100→55/**55**（et -50）；右 100/100→55/**55**（et +50） | 0 | 0 |
+| h-db-front-raise | `h-db-front-raise-et1` | 左 98/153→22/**79**（et -75）；右 98/153→22/**79**（et +75） | 0 | 15 |
+| h-forward-lunge | `h-forward-lunge-et1` | 左 91/91→47/**47**（et -45）；右 91/91→47/**47**（et +45） | 0 | 0 |
+| h-band-hip-ir | `h-band-hip-ir-sc1-et1` | 左 100/100→46/**46**（et +50）；右 100/100→46/**46**（et -50） | 0 | 0 |
+| n-chair-wiper | `n-chair-wiper-sc1-et1` | 左 104/108*→43/**46**（et +55）；右 104/108*→42/**44**（et -55） | 0 | 2 |
+| n-seated-squeeze | `n-seated-squeeze-r2-sc1-et1` | 左 113/113*→51/**51**（et +55）；右 113/113*→51/**51**（et -55） | 0 | 0 |
+| s-9090 | `s-9090-r4-sc1-et1` | 左 98/124*→41/**69**（et +50） | 0 | 19 |
+| h-hip-gate | `h-hip-gate-r2-sc1-et1` | 左 94/94*→45/**45**（et +45） | 0 | 20 |
+| h-lateral-step-lunge | `h-lateral-step-lunge-sc1-et1` | 左 93/93*→45/**48**（et -45）；右 93/93*→45/**49**（et +45） | 0 | 3 |
+
+- h-lateral-step-lunge 第 1 次方向反了（et 左 +45/右 -45 → 136°），第 2 次反号过；其余 21 个第 1 次就过。
+- h-goblet-squat 最大 89.7°（刚好 ≤90，下蹲最深时）；h-db-front-raise / h-chair-dip / h-band-leg-out 右 / s-9090 左为动态拧转，常量转角把整段平移到 ≤83°，未改成随时间表（ht1）。
+- t-vsit（remaining32-r4 配方）`specId`、`source.files` 同步到 `t-vsit-r7-sc1-et1`。
+
+## 撤回
+- 无。
+
+---
+# 全轮总表（r1–r9，分支 fix/limb-twist-collision-r1；r8 在 PR #30）
+
+## 已修（79 个动作：第 1–4 批已交渲染 58 个 + r7 第 5 批 7 个 + r9 第 7 批 22 个，其中 8 个之前批次已修过穿模、本批在其上再叠 et1，净增 14 个；第 6 批 12 个在 PR #30）
 - 第 1 批（36）：erectors-A erectors-C forearms-B forearms-C g-cable-hip-abduction g-cable-hip-extension h-9090-liftoff h-band-hip-extension h-band-leg-out h-band-standing-abduction h-band-standing-adduction h-band-straight-leg-raise h-bilateral-upper-back-hug h-bridge-march h-crossbody h-good-morning h-knee-hug h-overhead-triceps-stretch h-tabletop hamstrings-B hip-abductors-B n-seated-knee-lift n-thomas-test o-seated-fig4 o-seated-sidebend o-supported-ankle-eversion o-supported-ankle-inversion o-supported-ankle-pump o-supported-hip-ir o-supported-knee-curl o-supported-march o-supported-star-reach quadriceps-A t-flare-side-hold w-feet-on-chair-bridge w-prone-swimmer
 - 第 2 批（8）：deltoids-C h-couch-stretch h-hip-gate h-side-er s-9090 s-figure4 s-kneel-hipflex t-vsit
 - 第 3 批（10）：h-band-hip-ir h-chair-step-up h-lateral-step-lunge h-squat n-chair-wiper n-pelvis-circle n-seated-squeeze o-seated-ham o-seated-twist w-chair-hip-thrust
 - 第 4 批（4）：h-db-curl h-db-zottman-curl h-db-overhead-triceps-extension obliques-C
 - 第 5 批（7，r7）：h-half-kneeling-quad-stretch h-bulgarian o-stand-crossreach rotator-cuff-A h-kb-swing n-straddle-fold t-lsit-tuck
+- 第 7 批（22，r9，固定拧转 90–120° et1）：glute-max-C h-band-hip-ir h-band-leg-out h-butterfly-active h-chair-dip h-db-front-raise h-forward-lunge h-goblet-squat h-hip-gate h-lateral-step-lunge h-reverse-crunch h-wall-straddle lats-A n-chair-wiper n-leg-circles n-seated-squeeze n-windshield o-stand-crossreach o-stand-sidebend s-9090 serratus-B t-vsit（其中 o-stand-crossreach、t-vsit、h-band-hip-ir、n-chair-wiper、n-seated-squeeze、s-9090、h-hip-gate、h-lateral-step-lunge 在前几批修过穿模，本批是在其 -sc1 上再叠 et1）
 - 备注：h-crossbody 握持过渡约 1 s 内仍转 ~100°（r2）；h-bridge-march / h-tabletop / hamstrings-B / quadriceps-A / w-feet-on-chair-bridge 另一侧固定拧转仍 >90°（常量分摊上限）；t-vsit、w-chair-hip-thrust、h-lateral-step-lunge、h-bulgarian（叉腰→下垂）、t-lsit-tuck（团身后仰）造型/手型有变化，待用户看图；t-lsit-tuck 大腿→腹剩 15 mm（<30 顶点）。
 
 ## 判为量测假象 / 蒙皮折叠 / 动作本意，不修（12 个）
@@ -269,4 +311,4 @@ touch 类修后 = 全链 `self-collision-audit`（dbg 版）；hand-push 类修�
 - 试过撤回（r7 各 2 次）：deltoids-A（两大腿同网格互判，疑蒙皮折叠；手的修法可单独采用）t-straddle-hold t-seated-straddle-lifts（撑手移到髋旁反而压进大腿外侧，需重写前倾支撑）
 - 跳过（工具限制）：h-biceps-self（扫描不支持）
 - 与 fix/ground-contact-r1 重叠未动：forearms-A h-kneeling-thread-needle h-quadruped-open t-seated-straddle-lift-1leg hip-abductors-A adductors-B deltoids-B glute-max-A h-short-side-plank h-supine-bilateral-leg-raise h-supine-heel-slide o-supported-hip-hitch s-pigeon scapular-A
-- 另：固定拧转 90–120° 的 18 个和 1–2 cm 穿模按用户要求未做（未逐个列 id）。
+- 固定拧转 90–120°：r9 已全部做完（22 个，见第 7 批）；1–2 cm 穿模仍未做。
