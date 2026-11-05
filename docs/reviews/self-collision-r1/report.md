@@ -101,3 +101,10 @@
 - 肢体压进躯干类（俯卧肘贴肋、V 撑、体前屈）：减小对应关节角（肩内收 / 屈髋）几度，或把肘/膝的目标外移，直到 d10 ≤ 10 mm。
 - 验收：用 `tools/self-collision-r1/self-collision-audit.mjs --recipe <新配方>` 全链复测，d10 ≤ 10 mm 才算过；地面检查一起再跑一遍，防止推开手后又穿地。
 - 腋下（上臂↔躯干）44 个低可信报数先不改，等用户看图再定。
+
+## 修前/修后对比（h-knee-hug，临时配方，不进正式配方）
+- 临时 spec `drill-anim/specs/h-knee-hug-sc1-tmp.js`（副本见 `docs/reviews/self-collision-r1/h-knee-hug-sc1-tmp.js.txt`）：掌心离小腿轴 6.2 → 10.5 cm、沿小腿 7 → 8 cm。全链复测（`fix-sc1-h-knee-hug.jsonl`）：
+  - 手→大腿 45 → 27 mm，前臂→大腿 35 → 26 mm，rest 帧手→小腿 49 → 36 mm；**但 peak/hold 帧手→小腿仍 45 mm**。
+  - 结论：只加偏移不够。原因是目标点是按 v2 腿长（ss-geo `leg()`）算出的「虚拟膝」，和新模型实际解出的膝/小腿位置不重合，手跟着虚拟膝走，仍落在真实小腿里。正确修法：掌心目标改为以**解算后的真实膝/踝**为参照（或把 `leg()` 换成 armfix-r2 实测腿长），再加「实测小腿半径 + 1.5 cm」的离面距离。时间到，未做第二轮。
+- 图：`img/ab-h-knee-hug-prod-before.png`、`img/ab-h-knee-hug-top-before.png`（俯视：双手完全看不见，整只手在小腿里）、`img/closeup-h-knee-hug-before.png` / `img/closeup-h-knee-hug-after-sc1.png`（修后手指露出一部分，仍不够）、`img/closeup-n-thomas-test.png`（右手陷进左膝/大腿）、`img/check-n-thomas-test-armpit.png`（腋下报数核对：贴合，判低可信）。
+- 未完成：前 10 名其余动作特写（沙箱中途重启，只排上了部分）；第二个代表动作的修复对比。
