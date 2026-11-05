@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "deltoids-C",
   "nameZh": "地雷杆半跪单臂推举",
-  "spec": "drill-anim/specs/deltoids-C.js",
-  "specSha256Lf": "bc34a8bb3fa12798b7ac940d65d23d5a6849c46387226ae23c29efc99b111b42",
+  "spec": "drill-anim/specs/deltoids-C-sc1.js",
+  "specSha256Lf": "ed6077ffea4219d7b5ecc219ea394622775bcd70e631cf1d2d70e578c58d814a",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -91,10 +91,21 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/deltoids-C.js"
+    "selectedSpec": "drill-anim/specs/deltoids-C-sc1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
   "userAccepted": false,
-  "releaseEligible": false
+  "releaseEligible": false,
+  "poseFixR1": {
+    "branch": "fix/limb-twist-collision-r1",
+    "date": "2026-11-05",
+    "spec": [
+      {
+        "from": "drill-anim/specs/deltoids-C.js",
+        "to": "drill-anim/specs/deltoids-C-sc1.js",
+        "why": "r4: left hand touch clearance +36 mm (hand on the thigh: fingers into the thigh, 31.1 mm)"
+      }
+    ]
+  }
 }
