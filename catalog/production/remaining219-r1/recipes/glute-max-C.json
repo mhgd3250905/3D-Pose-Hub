@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "glute-max-C",
   "nameZh": "反向背伸机",
-  "spec": "drill-anim/specs/glute-max-C.js",
-  "specSha256Lf": "14c48e71091a7830ed03d7bc799096105657a6d0a26e4f9fd812a1f09d0971ec",
+  "spec": "drill-anim/specs/glute-max-C-et1.js",
+  "specSha256Lf": "186183fe8e7c0c3774484b34c07f031c937d3a6f7056428fb38cacc47fa5df20",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -76,10 +76,21 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/glute-max-C.js"
+    "selectedSpec": "drill-anim/specs/glute-max-C-et1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
   "userAccepted": false,
-  "releaseEligible": false
+  "releaseEligible": false,
+  "poseFixR1": {
+    "branch": "fix/limb-twist-collision-r1",
+    "date": "2026-11-05",
+    "spec": [
+      {
+        "from": "drill-anim/specs/glute-max-C.js",
+        "to": "drill-anim/specs/glute-max-C-et1.js",
+        "why": "forearm twist: constant elbowTwist split (pose-fix r2 et)"
+      }
+    ]
+  }
 }

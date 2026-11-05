@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "o-supported-hip-ir",
   "nameZh": "扶椅屈膝髋内旋控制",
-  "spec": "drill-anim/specs/o-supported-hip-ir.js",
-  "specSha256Lf": "98fe24dc0778104ab2615b7ddd08ae5f26dc497e4d92d05efbc0d814f7050955",
+  "spec": "drill-anim/specs/o-supported-hip-ir-et1.js",
+  "specSha256Lf": "dc3d973d197733eab0dba93a45fca2f2db17d5db9cee48f6f5c68d8d9b090335",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -77,10 +77,21 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/o-supported-hip-ir.js"
+    "selectedSpec": "drill-anim/specs/o-supported-hip-ir-et1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
   "userAccepted": false,
-  "releaseEligible": false
+  "releaseEligible": false,
+  "poseFixR1": {
+    "branch": "fix/limb-twist-collision-r1",
+    "date": "2026-11-05",
+    "spec": [
+      {
+        "from": "drill-anim/specs/o-supported-hip-ir.js",
+        "to": "drill-anim/specs/o-supported-hip-ir-et1.js",
+        "why": "forearm twist: constant elbowTwist split (pose-fix r2 et)"
+      }
+    ]
+  }
 }

@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "h-band-leg-out",
   "nameZh": "仰卧弹力带单腿侧落",
-  "spec": "drill-anim/specs/h-band-leg-out.js",
-  "specSha256Lf": "619802cda867facd7f7dd0a6b4eed82ab97f8f5b2ea38377cfdea7208fa19057",
+  "spec": "drill-anim/specs/h-band-leg-out-et1.js",
+  "specSha256Lf": "2d008a6efba29d36adceab0665dbe83a9a51e6465e738a413876579aba8d92be",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -91,7 +91,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/h-band-leg-out.js"
+    "selectedSpec": "drill-anim/specs/h-band-leg-out-et1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -107,7 +107,14 @@
     "wristTwist": {
       "from": "hands-native-r5 (wrap +-180, uncapped)",
       "to": "hands-native-r6 (continuous, cap 40 deg)"
-    }
+    },
+    "spec": [
+      {
+        "from": "drill-anim/specs/h-band-leg-out.js",
+        "to": "drill-anim/specs/h-band-leg-out-et1.js",
+        "why": "forearm twist: constant elbowTwist split (pose-fix r2 et)"
+      }
+    ]
   },
   "wristTwistRuntime": {
     "version": "r6",

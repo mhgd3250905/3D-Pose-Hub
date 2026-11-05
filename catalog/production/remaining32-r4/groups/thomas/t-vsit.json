@@ -2,9 +2,9 @@
   "format": "pose-hub-action-recipe@1",
   "id": "t-vsit",
   "nameZh": "V 撑",
-  "spec": "drill-anim/specs/t-vsit-r7.js",
+  "spec": "drill-anim/specs/t-vsit-r7-et1.js",
   "specId": "t-vsit-r7",
-  "specSha256Lf": "686620610b418826f32576f136008aed6ef968ff4ccbc1d0695c8ab0ca81bf4e",
+  "specSha256Lf": "0745f808a881b4a91eecf7d181dbfc3ae09062b59480b5dfb214e90894cad4d6",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -310,5 +310,16 @@
     "priorRecipe": "catalog/production/remaining32-r3/groups/thomas/t-vsit.json",
     "priorRecipeSha256": "2476588af72a62837429bd2b3c0fc9d9ca300aeae5b3c7d618ca09987979791a",
     "status": "awaiting-matched-preview"
+  },
+  "poseFixR1": {
+    "branch": "fix/limb-twist-collision-r1",
+    "date": "2026-11-05",
+    "spec": [
+      {
+        "from": "drill-anim/specs/t-vsit-r7.js",
+        "to": "drill-anim/specs/t-vsit-r7-et1.js",
+        "why": "forearm twist: constant elbowTwist split (pose-fix r2 et)"
+      }
+    ]
   }
 }

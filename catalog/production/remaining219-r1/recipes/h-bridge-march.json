@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "h-bridge-march",
   "nameZh": "臀桥交替踏步",
-  "spec": "drill-anim/specs/h-bridge-march.js",
-  "specSha256Lf": "0bdb98cbd951c86c6f0ca93b04a164b2019ecec98c0cc8d45925543a92b8402c",
+  "spec": "drill-anim/specs/h-bridge-march-et1.js",
+  "specSha256Lf": "8e7777c59c71f589f50f2f9b076642e8f329cc84a8793b43472a49813c48f237",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -93,10 +93,21 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/h-bridge-march.js"
+    "selectedSpec": "drill-anim/specs/h-bridge-march-et1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
   "userAccepted": false,
-  "releaseEligible": false
+  "releaseEligible": false,
+  "poseFixR1": {
+    "branch": "fix/limb-twist-collision-r1",
+    "date": "2026-11-05",
+    "spec": [
+      {
+        "from": "drill-anim/specs/h-bridge-march.js",
+        "to": "drill-anim/specs/h-bridge-march-et1.js",
+        "why": "forearm twist: constant elbowTwist split (pose-fix r2 et)"
+      }
+    ]
+  }
 }

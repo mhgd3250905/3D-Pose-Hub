@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "h-good-morning",
   "nameZh": "徒手早安式",
-  "spec": "drill-anim/specs/h-good-morning-r2.js",
-  "specSha256Lf": "26cdd53e1f94e5215f226802abe7bbc8d5254bcc205172356deef87740230f0b",
+  "spec": "drill-anim/specs/h-good-morning-r2-et1.js",
+  "specSha256Lf": "66889598654ae1806784c9522ebd59a70f9c20dd8738f57c8f1ae25dc94bb6d0",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -77,10 +77,21 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/h-good-morning-r2.js"
+    "selectedSpec": "drill-anim/specs/h-good-morning-r2-et1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
   "userAccepted": false,
-  "releaseEligible": false
+  "releaseEligible": false,
+  "poseFixR1": {
+    "branch": "fix/limb-twist-collision-r1",
+    "date": "2026-11-05",
+    "spec": [
+      {
+        "from": "drill-anim/specs/h-good-morning-r2.js",
+        "to": "drill-anim/specs/h-good-morning-r2-et1.js",
+        "why": "forearm twist: constant elbowTwist split (pose-fix r2 et)"
+      }
+    ]
+  }
 }

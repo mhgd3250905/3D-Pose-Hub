@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "h-lateral-step-lunge",
   "nameZh": "侧跨步弓步蹲",
-  "spec": "drill-anim/specs/h-lateral-step-lunge.js",
-  "specSha256Lf": "f7702a2c6795a76a24030759528c179f8de3e671128475dd806259f8602ab086",
+  "spec": "drill-anim/specs/h-lateral-step-lunge-et1.js",
+  "specSha256Lf": "7f9ee364e839b6c95baf96785400cb0cee0f301330ff2897ca9ccfd05d0d249a",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -77,10 +77,21 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/h-lateral-step-lunge.js"
+    "selectedSpec": "drill-anim/specs/h-lateral-step-lunge-et1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
   "userAccepted": false,
-  "releaseEligible": false
+  "releaseEligible": false,
+  "poseFixR1": {
+    "branch": "fix/limb-twist-collision-r1",
+    "date": "2026-11-05",
+    "spec": [
+      {
+        "from": "drill-anim/specs/h-lateral-step-lunge.js",
+        "to": "drill-anim/specs/h-lateral-step-lunge-et1.js",
+        "why": "forearm twist: constant elbowTwist split (pose-fix r2 et)"
+      }
+    ]
+  }
 }

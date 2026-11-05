@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "h-butterfly-active",
   "nameZh": "仰卧蝴蝶主动开合",
-  "spec": "drill-anim/specs/h-butterfly-active-r2.js",
-  "specSha256Lf": "456e6aba8e6a797e9e586a61bf15db739d9e2f6a29ffe5f4e0ea9a7a9e056de4",
+  "spec": "drill-anim/specs/h-butterfly-active-r2-et1.js",
+  "specSha256Lf": "f819e35b994396a4c77aa99a1cf6b54820d6d41d44ee49ac42f3246a1f59fa32",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -92,10 +92,21 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/h-butterfly-active-r2.js"
+    "selectedSpec": "drill-anim/specs/h-butterfly-active-r2-et1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
   "userAccepted": false,
-  "releaseEligible": false
+  "releaseEligible": false,
+  "poseFixR1": {
+    "branch": "fix/limb-twist-collision-r1",
+    "date": "2026-11-05",
+    "spec": [
+      {
+        "from": "drill-anim/specs/h-butterfly-active-r2.js",
+        "to": "drill-anim/specs/h-butterfly-active-r2-et1.js",
+        "why": "forearm twist: constant elbowTwist split (pose-fix r2 et)"
+      }
+    ]
+  }
 }

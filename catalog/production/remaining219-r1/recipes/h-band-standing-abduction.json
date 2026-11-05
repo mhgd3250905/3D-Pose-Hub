@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "h-band-standing-abduction",
   "nameZh": "扶椅弹力带站姿外展",
-  "spec": "drill-anim/specs/h-band-standing-abduction.js",
-  "specSha256Lf": "e63d648c155502013e991328c4712b53174f873b2e0c65247a36e0899f5cfd8a",
+  "spec": "drill-anim/specs/h-band-standing-abduction-et1.js",
+  "specSha256Lf": "ae70a1949bc07048ab1db12b8ac80e987eb736665981a912b81b5c730361fa5e",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -75,7 +75,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/h-band-standing-abduction.js"
+    "selectedSpec": "drill-anim/specs/h-band-standing-abduction-et1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -84,5 +84,16 @@
   "fixedCorrectionStack": {
     "profile": "fixed-wrist-corrections-r1",
     "version": "0.1.0-r1"
+  },
+  "poseFixR1": {
+    "branch": "fix/limb-twist-collision-r1",
+    "date": "2026-11-05",
+    "spec": [
+      {
+        "from": "drill-anim/specs/h-band-standing-abduction.js",
+        "to": "drill-anim/specs/h-band-standing-abduction-et1.js",
+        "why": "forearm twist: constant elbowTwist split (pose-fix r2 et)"
+      }
+    ]
   }
 }
