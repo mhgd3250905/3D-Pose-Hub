@@ -1,0 +1,55 @@
+// h-bulgarian-sc2 (pose-fix r7b, 2026-11-05): rear-foot/chair overlap fix. In sc1 the right ankle sat only 3.5 cm inside the seat's
+// front edge with the foot pitched 12 deg toes-down (rot X 168), so the laces sloped ~14 deg (toe end 4.5 cm above the ankle end) and
+// the ankle end plus the lower shin front sank 9 / 21 mm into the seat's front edge. sc2: the rear foot is pitched 10 deg more
+// (rot X 158) so the laces lie flat, the chair moves 5.5 cm back (front edge z -0.355, the ankle now ~2 cm in front of it, the shin
+// hangs clear of the edge down to the bottom of the squat) and the seat top is 0.452 so the instep rests on it (laces 4 mm above the seat, no overlap).
+// Rear ankle position, front foot, pelvis path, trunk, arms, timing and camera are sc1's.
+// h-bulgarian-sc1 (pose-fix r7, 2026-11-05): hands-on-hips -> arms hang relaxed by the sides (bodyweight Bulgarian split squat
+// variant; the hip-hand thumbs/fingers kept sinking 17-41 mm into the waist/thigh on the current model, r4/r5 touch and hand-shape
+// tries failed). Arms are straight chest-frame chains (armWrist/armDir): flexion -4 deg, abduction 10 deg, palms facing the thighs.
+// Legs, pelvis path, trunk, timing, chair and camera are h-bulgarian's.
+// h-bulgarian 椅子保加利亚分腿蹲 (Bulgarian split squat, rear foot on a chair) · H 居家臀腿系列.
+// Standing in front of a sturdy chair, the top of the RIGHT foot rests on the seat behind, the LEFT foot ~70 cm in front, hands on
+// the hips. Lower straight down until the front thigh is about parallel to the floor and the back knee points at the mat (front
+// knee tracks over the toes, heel stays down, trunk tall with a slight forward lean), then drive up through the front heel.
+// 2 reps / 8 s: 0.4 s top, 1.6 s down, 0.3 s bottom, 1.3 s up, 0.4 s top.
+// Head +Y, front faces +Z (away from the chair), body left = +X. No solver: the pelvis path is prescribed, the front foot is a
+// floor foot, the rear foot is a world-frame foot lying laces-down on the seat; leg IK finds the knees.
+import { build, keys, sg, r4, REST, armWrist, armDir } from '../lib/home-anim.mjs';
+const DUR = 8, SEAT = 0.45, EDGE = -0.30, FZ = 0.37;
+// sc2 chair: centre z -0.565 (front edge -0.355), seat top 0.452; SEAT/EDGE still place the rear ankle exactly as in sc1.
+const d = keys([[0, 0], [0.4, 0], [2.0, 1], [2.3, 1], [3.6, 0], [4.4, 0], [6.0, 1], [6.3, 1], [7.6, 0]], DUR);
+const TOP = [0.0, 0.84, 0.11], BOT = [0.0, 0.52, -0.01];
+const PHI = -4, PSI = 10;
+const hangHand = s => ({ mode: 'free', frame: 'chest', relax: 0.5,
+  wrist: r4(armWrist(s, PHI, PSI, 0.482)), finger: r4(armDir(s, PHI, PSI)), normal: [-sg(s), 0, 0],
+  poleUp: r4(REST.shoulder(s).map((v, i) => v + 0.2567805323279002 * armDir(s, PHI, PSI)[i])) });
+const P = build(DUR, {
+  pelvis: t => r4(TOP.map((x, i) => x + (BOT[i] - x) * d(t))),
+  hips: { up: [0, 1, 0], front: [0, 0, 1], rot: [[[1, 0, 0], t => 8 + 8 * d(t)]] },
+  chest: { waist: [[[1, 0, 0], t => -2 - 2 * d(t)]] },
+  hands: { left: hangHand('left'), right: hangHand('right') },
+  feet: {
+    left: { mode: 'floor', at: [0.11, FZ], heading: 4, pitch: 0, poleLow: [0.2, 0.6, 1.4] },
+    right: { mode: 'free', frame: 'world', ankle: [-0.10, SEAT + 0.045, EDGE - 0.035], rot: [[[1, 0, 0], 158], [[0, 1, 0], 4]], poleLow: [-0.12, -0.3, 0.05] },
+  },
+  constraints: [],
+  solve: { vars: [], reg: {} },
+}, { down: d });
+export default {
+  id: 'h-bulgarian-sc2', name: '椅子保加利亚分腿蹲', nameEn: 'Bulgarian Split Squat',
+  modelProfile: 'training-human-v2', fps: 15, alignClavicles: false,
+  timeline: { duration: DUR, tracks: P.tracks },
+  pose: { base: P.base, deltas: P.deltas },
+  highlight: { groups: ['quadriceps', 'glute-max'], side: 'left', pulseTrack: 'down', pulseBase: 0.3 },
+  camera: { dir: [1, 0.18, 0.45], fit: ['head', 'leftToe', 'rightToe', 'pelvis', 'leftKnee', 'rightKnee', 'leftElbow', 'rightElbow'], pad: 0.14, k: 1.0, drift: 3, at: 2.1 },
+  frame: { mode: 'fit', width: 900, height: 800, cx: 520, cy: 500 },
+  stillAt: 0.2,
+  shadow: { joints: ['leftToe', 'leftAnkle', 'pelvis'], blobs: [{ j: 'leftAnkle', rx: 46, ry: 11, a: 0.6 }], bands: [] },
+  props: [{ type: 'chair', at: [-0.05, 0, -0.565], yaw: 0, height: 0.452, width: 0.44, depth: 0.42 }],
+  keyFrames: [0.2, 1.2, 2.1],
+  qa: {
+    pins: [{ c: 'footL', when: 'always' }],
+    allowContact: ['thighR|shinR'],
+  },
+};
