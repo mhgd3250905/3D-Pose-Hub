@@ -29,6 +29,9 @@
 - 剩下：大腿↔躯干 13.7 mm 但只有 19 个顶点（<30，按审核规则不计）；腋下 77→36 mm（低可信）。地面：躯干最低 13.3→13.7 mm，没回退。
 - 看图（`img/cmp-n-thomas-test.jpg`，第 1/3 行修前、第 2/4 行修后）：双手从陷在大腿/小腿里变成搭在膝盖上方、看得见；但手更像「扶在膝盖顶上」，不是「抱在膝下」，手指张开。请用户定：接受，或改成抱膝下（要再调贴放位置）。
 
+## h-goblet-squat 全链复核
+- 审核报告里的「右前臂→躯干 86 mm」来自快速扫描（不装道具/固定手）。全链复测（壶铃、固定手都装上）：前臂→躯干 17 mm 但只有 26–27 个顶点（<30，按规则不计，属贴胸抱铃的轻接触）；腋下 62–80 mm（低可信）。结论：不需要修，未改。
+
 ## 249 小臂清单
 - `elbow-249.md` / `elbow-249.csv`：249 个动作修前完整清单（循环内转动、单步跳变、±180 折返、肘角跳变）+ 本轮开 r6 的 12 个修后数。
 - `../../pose-fix-r1/hand-fixed-twist-before.csv`：手相对前臂固定拧转，修前 >120° 37 个、>90° 65 个。
@@ -36,7 +39,7 @@
 
 ## 已改 / 未改
 - 已改配方：h-knee-hug、h-bilateral-upper-back-hug、h-overhead-triceps-stretch、h-crossbody；r6 腕扭转运行时开启的 12 个：forearms-A、h-band-leg-out、h-bilateral-upper-back-hug、h-db-curl、h-db-overhead-triceps-extension、h-db-zottman-curl、h-kneeling-thread-needle、h-quadruped-open、h-tabletop、o-seated-twist、t-seated-straddle-lift-1leg、w-prone-swimmer。
-- 未改：自穿模清单其余约 60 个；h-goblet-squat 全链复核；两个 -native 悬挂/提握动作补测；「手相对前臂最大固定拧转」全量指标（修前清单已有，修后未全量重扫）；方案 C 余下动作。
+- 未改：自穿模清单其余约 60 个；两个 -native 悬挂/提握动作补测；「手相对前臂最大固定拧转」全量指标（修前清单已有，修后未全量重扫）；方案 C 余下动作。
 
 ## 和 fix/ground-contact-r1 会冲突的配方文件
 两边都改了（合并时按 ground-contact 的 gc spec 为底，再叠本分支的 `wristTwistRuntime` / spec 版本）：
