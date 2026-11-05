@@ -50,10 +50,10 @@ try{
     return Object.fromEntries(Object.entries(S).map(([k,x])=>[k,{aL:x.aL.toArray(),verts:x.verts.length}]));
   });
   for(const {f,l} of loadedAll){
-    const id=path.basename(f,'.json');const s=l.source;const sh=share??(s.nativeHands?.twistShare??0.5);
+    const id=path.basename(f,'.json');const s=l.source;const sh=share??(s.nativeHands?.twistShare??0.5);const wtr=l.prepared.recipe.wristTwistRuntime;const cap=wtr?.version==='r6'?(wtr.capDeg??40):null;
     const dur=s.timeline.duration,n=Math.max(8,Math.round(dur*hz));const times=Array.from({length:n+1},(_,i)=>+(i*dur/n).toFixed(4));
     try{
-      const rows=await page.evaluate(([s,times,sh])=>{
+      const rows=await page.evaluate(([s,times,sh,cap])=>{const last={};
         const v=flareInspector.viewer,E=__drill,T=__toonT,{S,mesh,tw,W,P}=__EA;
         E.selectModelProfile?.(s);v.motion.reset();let warm=null;const rows=[];const p=new T.Vector3();
         for(const t of times){const r=E.applyAt(s,t,warm);warm=r.x;v.coach.updateMatrixWorld(true);const o={t};
@@ -62,7 +62,8 @@ try{
             const relS=x.restLocal.clone().invert().multiply(x.fa.quaternion);const solved=tw(relS,x.aL);
             const qf=W(x.fa),qh=W(x.h),d=x.restHand.clone().invert().multiply(qf.clone().invert().multiply(qh));
             let th=2*Math.atan2(d.x*x.aL.x+d.y*x.aL.y+d.z*x.aL.z,d.w);if(th>Math.PI)th-=2*Math.PI;if(th<-Math.PI)th+=2*Math.PI;
-            const phi=sh*th;saved.push([x.fa,x.fa.quaternion.clone()],[x.h,x.h.quaternion.clone()]);
+            if(cap!==null){if(last[side]!==undefined){while(th-last[side]>Math.PI)th-=2*Math.PI;while(th-last[side]<-Math.PI)th+=2*Math.PI;}last[side]=th;}
+            const phi=cap===null?sh*th:Math.max(-cap*Math.PI/180,Math.min(cap*Math.PI/180,sh*th));saved.push([x.fa,x.fa.quaternion.clone()],[x.h,x.h.quaternion.clone()]);
             x.fa.quaternion.multiply(new T.Quaternion().setFromAxisAngle(x.aL,phi));x.fa.updateMatrixWorld(true);
             const qp=W(x.h.parent);x.h.quaternion.copy(qp.invert().multiply(qh));x.h.updateMatrixWorld(true);
             const rel=x.restLocal.clone().invert().multiply(x.fa.quaternion);const eff=tw(rel,x.aL);
@@ -80,8 +81,8 @@ try{
             delete o[side]._x;delete o[side]._sw;}
           for(const [b,q] of saved)b.quaternion.copy(q);v.coach.updateMatrixWorld(true);
           rows.push(o);}
-        return rows;},[s,times,sh]);
-      done[id]={id,rig,file:path.relative(REPO,path.resolve(f)),spec:l.prepared.recipe.spec,share:sh,hands:l.prepared.handSetup?.modes??null,handAdapter:l.prepared.handSetup?.adapter??null,
+        return rows;},[s,times,sh,cap]);
+      done[id]={id,rig,wristTwist:cap===null?'r5':'r6',capDeg:cap,file:path.relative(REPO,path.resolve(f)),spec:l.prepared.recipe.spec,share:sh,hands:l.prepared.handSetup?.modes??null,handAdapter:l.prepared.handSetup?.adapter??null,
         corrective:l.corrective?.id??null,nativeWristCorrective:!!l.prepared.recipe.nativeWristCorrective,fixedCorrectionStack:!!l.prepared.recipe.fixedCorrectionStack,duration:dur,hz,rows};
     }catch(e){done[id]={id,error:String(e).slice(0,300)};}
     fs.writeFileSync(out,JSON.stringify(done));

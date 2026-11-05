@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "h-crossbody",
   "nameZh": "交叉臂肩后侧拉伸",
-  "spec": "drill-anim/specs/h-crossbody-r9.js",
-  "specSha256Lf": "ecd910a14caf3f30dc36f137b8d2a922ea46cbf4a8345a24889f7f3bb55c7592",
+  "spec": "drill-anim/specs/h-crossbody-r9-mv1.js",
+  "specSha256Lf": "7c4ace2db16caaf24db134e0ef83f18e8b684f46b4135bfabc503ca3b6d25548",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -281,5 +281,16 @@
   ],
   "diagnostics": {
     "measureFootSurface": true
+  },
+  "poseFixR1": {
+    "branch": "fix/limb-twist-collision-r1",
+    "date": "2026-11-05",
+    "spec": [
+      {
+        "from": "drill-anim/specs/h-crossbody-r9.js",
+        "to": "drill-anim/specs/h-crossbody-r9-mv1.js",
+        "why": "user mark 4.2s looks static: arm adduction 13->33 deg, assist hand follows"
+      }
+    ]
   }
 }

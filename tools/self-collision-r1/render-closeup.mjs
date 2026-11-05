@@ -1,7 +1,7 @@
 // Small diagnostic close-ups (not production renders) of self-collision frames, one boot per recipe.
 //   node tools/self-collision-r1/render-closeup.mjs --shots shots.json
 // shots.json: [{id?, recipe?, t, at:[x,y,z], out, size?:320, dist?:0.55, dir?:[x,y,z] camera direction, mark?:bool}]  (grouped by recipe)
-// Camera: production camera direction, moved to look at `at` from `dist` metres; white background;
+// Camera: dist 0 = the production camera itself (成片视角); otherwise production camera direction, moved to look at `at` from `dist` metres; white background;
 // a small red ring (depthTest off) marks the deepest penetrating vertex.
 import fs from 'node:fs';
 import path from 'node:path';
@@ -26,7 +26,7 @@ async function main(){
           const v=flareInspector.viewer,T=__toonT,cam=v.camera,P=new T.Vector3().fromArray(at);
           const keep={pos:cam.position.clone(),q:cam.quaternion.clone(),fov:cam.fov,bg:v.scene.background};
           const dir=camDir?new T.Vector3().fromArray(camDir).normalize():cam.position.clone().sub(P).normalize();
-          cam.fov=30;cam.updateProjectionMatrix();cam.position.copy(P.clone().add(dir.multiplyScalar(dist)));cam.lookAt(P);cam.updateMatrixWorld();
+          if(dist>0){cam.fov=30;cam.updateProjectionMatrix();cam.position.copy(P.clone().add(dir.multiplyScalar(dist)));cam.lookAt(P);cam.updateMatrixWorld();}
           let ring=null;if(mark){ring=new T.Mesh(new T.RingGeometry(0.012,0.016,24),new T.MeshBasicMaterial({color:0xe02020,depthTest:false,transparent:true,opacity:.9}));ring.renderOrder=999;ring.position.copy(P);ring.quaternion.copy(cam.quaternion);v.scene.add(ring);}
           v.scene.background=new T.Color(0xffffff);v.renderer.render(v.scene,cam);const url=v.renderer.domElement.toDataURL('image/png');
           if(ring)v.scene.remove(ring);cam.position.copy(keep.pos);cam.quaternion.copy(keep.q);cam.fov=keep.fov;cam.updateProjectionMatrix();v.scene.background=keep.bg;return url;
