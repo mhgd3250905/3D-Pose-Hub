@@ -312,6 +312,7 @@ touch 类修后 = 全链 `self-collision-audit`（dbg 版）；hand-push 类修�
 ## 已修（81 个动作：第 1–4 批已交渲染 58 个 + r7 第 5 批 7 个 + r9 第 7 批 22 个（其中 8 个之前批次已修过穿模、本批在其上再叠 et1，净增 14 个）+ r10 第 8 批 2 个；第 6 批 12 个、r10 第 9 批 2 个在 PR #30）
 - 第 1 批（36）：erectors-A erectors-C forearms-B forearms-C g-cable-hip-abduction g-cable-hip-extension h-9090-liftoff h-band-hip-extension h-band-leg-out h-band-standing-abduction h-band-standing-adduction h-band-straight-leg-raise h-bilateral-upper-back-hug h-bridge-march h-crossbody h-good-morning h-knee-hug h-overhead-triceps-stretch h-tabletop hamstrings-B hip-abductors-B n-seated-knee-lift n-thomas-test o-seated-fig4 o-seated-sidebend o-supported-ankle-eversion o-supported-ankle-inversion o-supported-ankle-pump o-supported-hip-ir o-supported-knee-curl o-supported-march o-supported-star-reach quadriceps-A t-flare-side-hold w-feet-on-chair-bridge w-prone-swimmer
 - 第 2 批（8）：deltoids-C h-couch-stretch h-hip-gate h-side-er s-9090 s-figure4 s-kneel-hipflex t-vsit
+- 第 10 批（1，b10，替换第 2 批里的 s-figure4）：s-figure4 → `s-figure4-r2-et1-sc2`（sc1 去穿模后膝外倒幅度减半 12.2°/88→5.9°/45 mm；保留 sc1 右踝位置，只把 open 段右膝 pole y -0.4→-0.6，幅度 11.7°/87 mm，右脚→左大腿 6.5–10.4 mm 同 sc1，非腋下穿模 0，地面 0）
 - 第 3 批（10）：h-band-hip-ir h-chair-step-up h-lateral-step-lunge h-squat n-chair-wiper n-pelvis-circle n-seated-squeeze o-seated-ham o-seated-twist w-chair-hip-thrust
 - 第 4 批（4）：h-db-curl h-db-zottman-curl h-db-overhead-triceps-extension obliques-C
 - 第 5 批（7，r7）：h-half-kneeling-quad-stretch h-bulgarian o-stand-crossreach rotator-cuff-A h-kb-swing n-straddle-fold t-lsit-tuck
