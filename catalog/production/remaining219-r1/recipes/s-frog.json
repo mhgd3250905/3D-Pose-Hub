@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "s-frog",
   "nameZh": "青蛙式",
-  "spec": "drill-anim/specs/s-frog-r3.js",
-  "specSha256Lf": "2a4814bdebdf1b65029cdf04e0f10e49dc3e4bfb84ce78149dc5ab2f388a6307",
+  "spec": "drill-anim/specs/s-frog-r3-gc1.js",
+  "specSha256Lf": "1a725daac21c4dff18d0235e337b77c481aa856b5754440633a8229d78c4038e",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -91,10 +91,18 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/s-frog-r3.js"
+    "selectedSpec": "drill-anim/specs/s-frog-r3-gc1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
   "userAccepted": false,
-  "releaseEligible": false
+  "releaseEligible": false,
+  "groundContactFix": {
+    "r1m2": {
+      "from": "drill-anim/specs/s-frog-r3.js",
+      "to": "drill-anim/specs/s-frog-r3-gc1.js",
+      "date": "2026-11-04",
+      "branch": "fix/ground-contact-r1"
+    }
+  }
 }

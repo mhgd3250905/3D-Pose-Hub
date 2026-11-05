@@ -2,7 +2,7 @@
   "format": "pose-hub-action-recipe@1",
   "id": "h-kneeling-thread-needle",
   "nameZh": "跪姿穿针",
-  "spec": "drill-anim/specs/h-kneeling-thread-needle-r2.js",
+  "spec": "drill-anim/specs/h-kneeling-thread-needle-r2-gc1.js",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -76,11 +76,19 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/h-kneeling-thread-needle-r2.js"
+    "selectedSpec": "drill-anim/specs/h-kneeling-thread-needle-r2-gc1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
   "userAccepted": false,
   "releaseEligible": false,
-  "specSha256Lf": "6673964bd1568e9e92d16e405036eb206034ea8704610ccfa0a6d3878bde2e51"
+  "specSha256Lf": "ca830308b3d2dfe22fc7aad4c7965d8afc8451066c1894d4aabf05f6977cd0e6",
+  "groundContactFix": {
+    "r1m2": {
+      "from": "drill-anim/specs/h-kneeling-thread-needle-r2.js",
+      "to": "drill-anim/specs/h-kneeling-thread-needle-r2-gc1.js",
+      "date": "2026-11-04",
+      "branch": "fix/ground-contact-r1"
+    }
+  }
 }

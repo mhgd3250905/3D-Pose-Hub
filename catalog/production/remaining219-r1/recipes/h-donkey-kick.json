@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "h-donkey-kick",
   "nameZh": "四足屈膝后踢",
-  "spec": "drill-anim/specs/h-donkey-kick.js",
-  "specSha256Lf": "c896db2ccc30f02b48bbec17ab628f140ae24d1309d6b2e96ac8f81345cfa7a3",
+  "spec": "drill-anim/specs/h-donkey-kick-gc1.js",
+  "specSha256Lf": "a3529f882ec5769995df636a08b573ec9f88211e95f62dd718b2cbc95f3b975c",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -93,10 +93,18 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/h-donkey-kick.js"
+    "selectedSpec": "drill-anim/specs/h-donkey-kick-gc1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
   "userAccepted": false,
-  "releaseEligible": false
+  "releaseEligible": false,
+  "groundContactFix": {
+    "r1": {
+      "from": "drill-anim/specs/h-donkey-kick.js",
+      "to": "drill-anim/specs/h-donkey-kick-gc1.js",
+      "date": "2026-11-03",
+      "branch": "fix/ground-contact-r1"
+    }
+  }
 }

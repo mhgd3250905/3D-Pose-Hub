@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "h-adductor-rock",
   "nameZh": "四足单腿侧伸后摇",
-  "spec": "drill-anim/specs/h-adductor-rock.js",
-  "specSha256Lf": "d8d0601eb573cac10093a6d8fe6faec47040fbe22ab269801666b62f3f12eddd",
+  "spec": "drill-anim/specs/h-adductor-rock-gc1.js",
+  "specSha256Lf": "912cc21ade1ec9b562ba4bd44be5cc95f38df68b867a6e1215dd67116e5ccd8a",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -93,10 +93,18 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/h-adductor-rock.js"
+    "selectedSpec": "drill-anim/specs/h-adductor-rock-gc1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
   "userAccepted": false,
-  "releaseEligible": false
+  "releaseEligible": false,
+  "groundContactFix": {
+    "r1": {
+      "from": "drill-anim/specs/h-adductor-rock-gc1.js",
+      "to": "drill-anim/specs/h-adductor-rock-gc1.js",
+      "date": "2026-11-03",
+      "branch": "fix/ground-contact-r1"
+    }
+  }
 }
