@@ -219,24 +219,53 @@ touch 类修后 = 全链 `self-collision-audit`（dbg 版）；hand-push 类修�
 - o-seated-twist 已在第 3 批，按要求未动。
 
 ---
-# 全轮总表（r1–r6，分支 fix/limb-twist-collision-r1）
+# r7（2026-11-05 18:28–19:55，重写难修的动作；用户授权自行决定修法，每动作最多 2 次尝试）
 
-## 已修（58 个：第 1–3 批已交渲染 54 个 + r6 第 4 批 4 个）
+口径同 r4/r5：全链 `self-collision-audit`（dbg 版）d10 ≤ 10 mm 才算过；<30 个顶点超 10 mm 不计；腋下（上臂↔躯干）不计。
+小臂口径同 r6（scan-fast，θ = 手相对前臂拧转最大值）。修前 = 27f35d3（快扫 csv / r4–r6 实测）；修后全部是本轮全链实测。
+地面：`ground-penetration-audit`（每 4 帧，全身各部位最低点）。第 1–4 批已交渲染的 58 个、与 ground-contact 重叠的 14 个、判为假象/蒙皮折叠/本意的 13 个均未动。
+
+## 修好（7 个）
+| 动作 | 改动 | 修前→修后 |
+|---|---|---|
+| h-half-kneeling-quad-stretch 半跪手拉脚 | `-r6-sc1`：右手（扶髋/大腿）touch 间隙 +33 mm；**corrective 表绑定新 spec**：`native-action-hand-pose-r1.mjs` 的 `SPEC_IDS` 和 `drill-anim/models/native-action-hand-pose-r1/manifest.json` 的 `specIds` 加 `h-half-kneeling-quad-stretch-r6-sc1`，manifest 里模块 sha 更新；配方 `specId`/`source.files`/`dependencies` sha 同步。模块单测 `native-action-hand-pose-r1.test.mjs` 通过 | 右手→右大腿 28.3→0、右手→躯干 13.4→0；左手抓脚（动作本意）不变 |
+| h-bulgarian 保加利亚分腿蹲 | `h-bulgarian-sc1`：叉腰 → **双臂自然下垂在体侧**（胸坐标直臂，前屈 -4°、外展 10°，掌心朝大腿；徒手版常见做法），腿/骨盆/躯干/节奏/椅子/镜头不变 | 右手→躯干 41.3→0、左手→左大腿 35.7→0、左手→躯干 32.7→0（手/前臂全部 0）。**造型变了，请看图** |
+| o-stand-crossreach 扶椅交叉侧伸 | `-r2-sc1`：交叉变浅，右脚 x 0.20→0.18、z -0.25→-0.31 | 两大腿 22.8（97 顶点）→ 9.9（7 顶点） |
+| rotator-cuff-A 俯撑交替触肩 | `-r2-ht1`：r6 的随时间前臂转角，但表改为 **60 Hz 实测**（跟得上 0.2 s 内的解算翻转）；左侧「前臂/手各一半」，右侧「手相对前臂恒定 -60°、其余给前臂」（右侧总转动接近 ±180°，平分做不到 ≤90，第 1 次平分右 106°） | θ 左/右 256/255→**14/63**，单帧跳变 34→6/1，0 折返 |
+| h-kb-swing 单臂壶铃摆荡 | `-r5-sc1`：摆铃最低点（hike）手臂内收 -16→-20°、后摆角 -30→-26°（顶点不变），站距每侧 +5 cm（x ±0.19→±0.24，膝极点跟随）。第 1 次（内收 -23°、站距 +3 cm）前臂→大腿 0 但前臂→腹 27 mm，撤 | 右前臂→右大腿 39.1→0、右手→右大腿 23.8→0、前臂→躯干 15.9→9.3（7 顶点） |
+| n-straddle-fold 坐姿分腿体前屈 | `-sc1`：肘极点从向外（x 0.7）改为向后上、贴肩线外侧（[±0.22, 0.9, -0.35]），分腿 50→53° | 左/右前臂↔大腿 20.3/17.0→0、上臂↔大腿 19.9/19.1→0；剩前臂→躯干 16（13 顶点，不计） |
+| t-lsit-tuck 团身 L 撑 | `t-lsit-tuck-r4-sc1` → 重烘焙 `t-lsit-tuck-r5-sc1`：**团身时骨盆/躯干后仰**（骨盆 pitch -14→-32°，L 撑段 -10° 不变；腿按髋出发的世界方向写，膝/脚轨迹不变，髋角打开 18°），撑地手后移 5.5 cm（[±0.26, -0.045]→[±0.26, -0.10]）；用 `bake-thomas-reachability.mjs` + 本轮重新采的 rig 标定重烘根轨迹（最大根修正 <0.1 mm，直臂可达）。第 1 次（只减腰屈 37→25°）61→60.8，撤 | 大腿→腹 61.1→15.3 mm（但只有 17–22 个顶点超 10 mm，按规则不计；未到 ≤1 cm 的目标）。**造型变了，请看图** |
+
+地面（ground-penetration-audit，每 4 帧）：o-stand-crossreach、h-kb-swing 双脚最低 0（贴地，同修前）；n-straddle-fold 全身最低 12.8 mm（坐在垫上）；t-lsit-tuck 只有撑地手到 0，脚全程在空中不进地。h-half-kneeling / h-bulgarian / rotator-cuff-A 只动手或小臂转角，脚和骨盆没变，未测地面。
+
+新工具：`tools/pose-fix-r1/rig-calibration-capture.mjs`（从 armfix-r2 页面采 Thomas 用 rig 标定：R/L + 指定撑地点的 floor-hand 姿态，评估代码同 render-finalization-r7 的 `diagnostics.rigCalibration`）。仓库里没有原 `rig-calibration.json`，本轮重采的 R/L 和原 reach-data 里记录的完全一致（差 0）。
+
+## 撤回（各 2 次，配方不变）
+- deltoids-A 直臂侧平板：① 脚前后错开加大（左 -8 cm、右 +5 cm）+ 髋上手外移 3 cm：手→大腿 26.9→4.2 过，但两大腿 43.6→47.8；② 错开改为以身体线居中（z -0.13/+0.13）：两大腿 37.8。两侧最深点都在 `V3_Head_Neck_Torso_Shared_R26` 同一网格的 left/rightThigh 权重顶点之间（同 adductors-A 类），建议按蒙皮折叠归类；手的修法（外移 3 cm）可单独采用。
+- t-straddle-hold 分腿支撑 / t-seated-straddle-lifts 坐姿分腿双腿抬起：撑地手从两腿之间改到 ① 髋旁 [±0.235, -0.025]：前臂→大腿 74.5 / 82.8；② 髋外更宽 [±0.33, -0.03]：57.8 / 57.7。坐地分腿时臀部和大腿根在髋两侧一直铺到 x≈0.29，手放髋旁前臂就压进大腿外侧，比原来（两腿之间，26–51 mm）更差。要修得把手放到两腿之间更前面（z≈0.33，那里两大腿已分开）并加大前倾、重写支撑，超出 2 次范围。
+
+## 未动
+- 第 1–4 批 58 个、与 fix/ground-contact-r1 重叠的 14 个、判为假象/蒙皮折叠/本意的 13 个。
+
+---
+# 全轮总表（r1–r7，分支 fix/limb-twist-collision-r1）
+
+## 已修（65 个：第 1–4 批已交渲染 58 个 + r7 第 5 批 7 个）
 - 第 1 批（36）：erectors-A erectors-C forearms-B forearms-C g-cable-hip-abduction g-cable-hip-extension h-9090-liftoff h-band-hip-extension h-band-leg-out h-band-standing-abduction h-band-standing-adduction h-band-straight-leg-raise h-bilateral-upper-back-hug h-bridge-march h-crossbody h-good-morning h-knee-hug h-overhead-triceps-stretch h-tabletop hamstrings-B hip-abductors-B n-seated-knee-lift n-thomas-test o-seated-fig4 o-seated-sidebend o-supported-ankle-eversion o-supported-ankle-inversion o-supported-ankle-pump o-supported-hip-ir o-supported-knee-curl o-supported-march o-supported-star-reach quadriceps-A t-flare-side-hold w-feet-on-chair-bridge w-prone-swimmer
 - 第 2 批（8）：deltoids-C h-couch-stretch h-hip-gate h-side-er s-9090 s-figure4 s-kneel-hipflex t-vsit
 - 第 3 批（10）：h-band-hip-ir h-chair-step-up h-lateral-step-lunge h-squat n-chair-wiper n-pelvis-circle n-seated-squeeze o-seated-ham o-seated-twist w-chair-hip-thrust
 - 第 4 批（4）：h-db-curl h-db-zottman-curl h-db-overhead-triceps-extension obliques-C
-- 备注：h-crossbody 握持过渡约 1 s 内仍转 ~100°（r2）；h-bridge-march / h-tabletop / hamstrings-B / quadriceps-A / w-feet-on-chair-bridge 另一侧固定拧转仍 >90°（常量分摊上限）；t-vsit、w-chair-hip-thrust、h-lateral-step-lunge 造型/手型有变化，待用户看图。
+- 第 5 批（7，r7）：h-half-kneeling-quad-stretch h-bulgarian o-stand-crossreach rotator-cuff-A h-kb-swing n-straddle-fold t-lsit-tuck
+- 备注：h-crossbody 握持过渡约 1 s 内仍转 ~100°（r2）；h-bridge-march / h-tabletop / hamstrings-B / quadriceps-A / w-feet-on-chair-bridge 另一侧固定拧转仍 >90°（常量分摊上限）；t-vsit、w-chair-hip-thrust、h-lateral-step-lunge、h-bulgarian（叉腰→下垂）、t-lsit-tuck（团身后仰）造型/手型有变化，待用户看图；t-lsit-tuck 大腿→腹剩 15 mm（<30 顶点）。
 
-## 判为量测假象 / 蒙皮折叠 / 动作本意，不修（13 个）
+## 判为量测假象 / 蒙皮折叠 / 动作本意，不修（12 个）
 - 量测假象：h-cobra n-prone-ir n-prone-hip-ext h-goblet-squat
 - 复测本就无问题：h-bilateral-farmer-hold-native h-straight-arm-hang-native
 - 躯干网格蒙皮折叠：triceps-B s-seated-fold n-half-split h-chair-lat adductors-A
-- 动作本意（接触）：s-butterfly（脚底互压）、o-stand-crossreach（交叉腿）
+- 动作本意（接触）：s-butterfly（脚底互压）（o-stand-crossreach 已在 r7 修到 9.9 mm，移入第 5 批）
 
-## 撤回 / 跳过，仍有问题（24 个）
-- 试过撤回：t-lsit-tuck h-bulgarian rotator-cuff-A
-- 跳过（工具/校验限制）：h-half-kneeling-quad-stretch（corrective 校验）h-biceps-self（扫描不支持）
-- 跳过（把握小/会破坏标定）：deltoids-A h-kb-swing n-straddle-fold t-seated-straddle-lifts t-straddle-hold
+## 撤回 / 跳过，仍有问题（18 个）
+- 试过撤回（r7 各 2 次）：deltoids-A（两大腿同网格互判，疑蒙皮折叠；手的修法可单独采用）t-straddle-hold t-seated-straddle-lifts（撑手移到髋旁反而压进大腿外侧，需重写前倾支撑）
+- 跳过（工具限制）：h-biceps-self（扫描不支持）
 - 与 fix/ground-contact-r1 重叠未动：forearms-A h-kneeling-thread-needle h-quadruped-open t-seated-straddle-lift-1leg hip-abductors-A adductors-B deltoids-B glute-max-A h-short-side-plank h-supine-bilateral-leg-raise h-supine-heel-slide o-supported-hip-hitch s-pigeon scapular-A
 - 另：固定拧转 90–120° 的 18 个和 1–2 cm 穿模按用户要求未做（未逐个列 id）。
