@@ -195,3 +195,48 @@ touch 类修后 = 全链 `self-collision-audit`（dbg 版）；hand-push 类修�
 1. `img/r5/cmp-w-chair-hip-thrust.jpg`：成片视角 / 右手特写（手型变化）
 2. `img/r5/cmp-h-lateral-step-lunge.jpg`：成片视角 / 左手特写
 （n-seated-squeeze 对比图渲染超时未出，只有上面 2 张。）
+
+---
+# r6（2026-11-05 17:25–18:25，最后一轮：手朝向轨迹；省额度、只做把握大的）
+
+问题：这几个动作的前臂在解算里会绕自身长轴自转（屈肘/过头时 -100…+350°），手按胸坐标给的朝向不变，于是手相对前臂反向拧 180–250°；固定前臂转角（et1）抵消不了随时间变化的自转。
+做法：新 spec `<spec>-ht1` 只加一条**随时间变化的前臂转角**（`elbowTwist` 轨道，度；按 armfix-r2 实测逐帧表，15 Hz 线性插值，生成脚本 `tools/pose-fix-r1/hand-twist-table.py`；h-db-curl 按各臂弯举相位 q 手写表）。手位置/朝向、握法、哑铃、肘极点、节奏、镜头都不变，r6 腕扭转运行时照旧。
+分配：curl / triceps / obliques 为「前臂自转 ≈ 手相对前臂 ≈ 总转动的一半」；zottman 按真实尺桡：旋前/旋后全部放到前臂，手相对前臂恒定 -11°（左右镜像，= 中立握持时的值）。
+数字：scan-fast（15 Hz，h-db-curl 6 Hz），θ = 手相对前臂拧转最大值（展开后），eff = 前臂（含 r6）相对绑定姿势最大自转，step = θ 单帧最大跳变。修前 = 21bf0e1。
+只改前臂绕自身长轴的转角，手和道具的位置不变；未全链复测穿模/穿地（同 r2 et1 口径）。
+
+## 修好（4 个）
+| 动作 | spec | θ 修前→修后 | eff 修前→修后 | step |
+|---|---|---|---|---|
+| h-db-curl 哑铃交替弯举 | `h-db-curl-r2-ht1` | 左/右 197→**38** | 105→57 | 93→22 |
+| h-db-zottman-curl 佐特曼弯举 | `h-db-zottman-curl-r5-ht1` | 左/右 181→**12** | 108→113（旋前/旋后由前臂承担，本意保留） | 16→0 |
+| h-db-overhead-triceps-extension 右 | `-r5-ht1` | 右 249→**79**（左 17 不变） | 177→119 | 16→11 |
+| obliques-C | `obliques-C-r2-ht1` | 左 126→**70**、右 115→**37** | 175→107 / 105→55 | 11→6 |
+图：`img/r6/cmp-h-db-curl.jpg`（t=2 s 右小臂特写，左修前 / 右修后）。
+
+## 撤回（试 1 次）
+- rotator-cuff-A：左 256→14 过，右 255→**104** 没到 90（右侧解算在 0.2 s 内翻转约 200°，15 Hz 表跟不住），整动作撤回，配方不变。
+- o-seated-twist 已在第 3 批，按要求未动。
+
+---
+# 全轮总表（r1–r6，分支 fix/limb-twist-collision-r1）
+
+## 已修（58 个：第 1–3 批已交渲染 54 个 + r6 第 4 批 4 个）
+- 第 1 批（36）：erectors-A erectors-C forearms-B forearms-C g-cable-hip-abduction g-cable-hip-extension h-9090-liftoff h-band-hip-extension h-band-leg-out h-band-standing-abduction h-band-standing-adduction h-band-straight-leg-raise h-bilateral-upper-back-hug h-bridge-march h-crossbody h-good-morning h-knee-hug h-overhead-triceps-stretch h-tabletop hamstrings-B hip-abductors-B n-seated-knee-lift n-thomas-test o-seated-fig4 o-seated-sidebend o-supported-ankle-eversion o-supported-ankle-inversion o-supported-ankle-pump o-supported-hip-ir o-supported-knee-curl o-supported-march o-supported-star-reach quadriceps-A t-flare-side-hold w-feet-on-chair-bridge w-prone-swimmer
+- 第 2 批（8）：deltoids-C h-couch-stretch h-hip-gate h-side-er s-9090 s-figure4 s-kneel-hipflex t-vsit
+- 第 3 批（10）：h-band-hip-ir h-chair-step-up h-lateral-step-lunge h-squat n-chair-wiper n-pelvis-circle n-seated-squeeze o-seated-ham o-seated-twist w-chair-hip-thrust
+- 第 4 批（4）：h-db-curl h-db-zottman-curl h-db-overhead-triceps-extension obliques-C
+- 备注：h-crossbody 握持过渡约 1 s 内仍转 ~100°（r2）；h-bridge-march / h-tabletop / hamstrings-B / quadriceps-A / w-feet-on-chair-bridge 另一侧固定拧转仍 >90°（常量分摊上限）；t-vsit、w-chair-hip-thrust、h-lateral-step-lunge 造型/手型有变化，待用户看图。
+
+## 判为量测假象 / 蒙皮折叠 / 动作本意，不修（13 个）
+- 量测假象：h-cobra n-prone-ir n-prone-hip-ext h-goblet-squat
+- 复测本就无问题：h-bilateral-farmer-hold-native h-straight-arm-hang-native
+- 躯干网格蒙皮折叠：triceps-B s-seated-fold n-half-split h-chair-lat adductors-A
+- 动作本意（接触）：s-butterfly（脚底互压）、o-stand-crossreach（交叉腿）
+
+## 撤回 / 跳过，仍有问题（24 个）
+- 试过撤回：t-lsit-tuck h-bulgarian rotator-cuff-A
+- 跳过（工具/校验限制）：h-half-kneeling-quad-stretch（corrective 校验）h-biceps-self（扫描不支持）
+- 跳过（把握小/会破坏标定）：deltoids-A h-kb-swing n-straddle-fold t-seated-straddle-lifts t-straddle-hold
+- 与 fix/ground-contact-r1 重叠未动：forearms-A h-kneeling-thread-needle h-quadruped-open t-seated-straddle-lift-1leg hip-abductors-A adductors-B deltoids-B glute-max-A h-short-side-plank h-supine-bilateral-leg-raise h-supine-heel-slide o-supported-hip-hitch s-pigeon scapular-A
+- 另：固定拧转 90–120° 的 18 个和 1–2 cm 穿模按用户要求未做（未逐个列 id）。

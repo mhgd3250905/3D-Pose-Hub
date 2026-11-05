@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "h-db-zottman-curl",
   "nameZh": "站姿双哑铃佐特曼弯举",
-  "spec": "drill-anim/specs/h-db-zottman-curl-r5.js",
-  "specSha256Lf": "c7a93a77c5c4400f5ca8d80e9942e4479ecfd2ba081a2f88dfafff9281ee85f3",
+  "spec": "drill-anim/specs/h-db-zottman-curl-r5-ht1.js",
+  "specSha256Lf": "82e3202cec6f107b6e08a65f71c04edae6800c4e9ce5ff5c720502ed4fc5454d",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -152,7 +152,14 @@
     "wristTwist": {
       "from": "hands-native-r5 (wrap +-180, uncapped)",
       "to": "hands-native-r6 (continuous, cap 40 deg)"
-    }
+    },
+    "spec": [
+      {
+        "from": "drill-anim/specs/h-db-zottman-curl-r5.js",
+        "to": "drill-anim/specs/h-db-zottman-curl-r5-ht1.js",
+        "why": "r6 手朝向轨迹：随时间的前臂转角（elbowTwist 表）抵消解算器前臂自转，手相对前臂拧转 ≤90°（旋前/旋后放到前臂，手相对前臂恒定）"
+      }
+    ]
   },
   "wristTwistRuntime": {
     "version": "r6",

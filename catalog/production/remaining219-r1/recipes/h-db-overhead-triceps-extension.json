@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "h-db-overhead-triceps-extension",
   "nameZh": "单臂哑铃过头臂屈伸",
-  "spec": "drill-anim/specs/h-db-overhead-triceps-extension-r5.js",
-  "specSha256Lf": "8caa021b2572e2f4bf46c8cf9b7848a63486b3e9036959040ac7759658ad241f",
+  "spec": "drill-anim/specs/h-db-overhead-triceps-extension-r5-ht1.js",
+  "specSha256Lf": "ae4a1da1f1079cd4ec1e35aa374dbfeed892ba45141123924168e30fcfc8e2c5",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -77,7 +77,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/h-db-overhead-triceps-extension-rr4.js"
+    "selectedSpec": "drill-anim/specs/h-db-overhead-triceps-extension-r5-ht1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -96,7 +96,14 @@
     "wristTwist": {
       "from": "hands-native-r5 (wrap +-180, uncapped)",
       "to": "hands-native-r6 (continuous, cap 40 deg)"
-    }
+    },
+    "spec": [
+      {
+        "from": "drill-anim/specs/h-db-overhead-triceps-extension-r5.js",
+        "to": "drill-anim/specs/h-db-overhead-triceps-extension-r5-ht1.js",
+        "why": "r6 手朝向轨迹：随时间的前臂转角（elbowTwist 表）抵消解算器前臂自转，手相对前臂拧转 ≤90°（右）"
+      }
+    ]
   },
   "wristTwistRuntime": {
     "version": "r6",
