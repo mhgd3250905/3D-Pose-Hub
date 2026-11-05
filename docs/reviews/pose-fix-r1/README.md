@@ -113,3 +113,6 @@
 - 腿部深穿模（生成式/接触型，未动）：t-vsit 大腿→躯干 79（rest）、t-lsit-tuck 61（rest，两个都是 Thomas 校准生成）、s-figure4 右脚→左大腿 69、adductors-A 两大腿互穿 56（深蹲侧）。
 - 小臂严重项（动态拧转，常量分摊无效，需重做手朝向轨迹）：h-db-zottman-curl（本就旋前旋后）、h-db-overhead-triceps-extension 右、rotator-cuff-A、o-seated-twist 右、obliques-C 左、h-db-curl。与 ground-contact 重叠的 forearms-A、h-kneeling-thread-needle、h-quadruped-open、t-seated-straddle-lift-1leg 未动。
 - 按用户要求跳过：固定拧转 90–120° 的 18 个；与 ground-contact 重叠的固定拧转动作（adductors-B、deltoids-B、glute-max-A、h-short-side-plank、h-supine-bilateral-leg-raise、h-supine-heel-slide、hip-abductors-A、o-supported-hip-hitch、s-pigeon、scapular-A）；h-biceps-self（扫描工具不支持其动作校正，无法复测，已撤）；1–2 cm 穿模。
+
+## r3 补：o-seated-fig4 翘腿脚方向（2026-11-05 13:20，用户：「翘二郎腿那只脚的脚方向不对」）
+- `o-seated-fig4-sc1-ft1`：原 `feet.right.rot [[Y,80],[Z,-10]]` 让鞋底朝下、脚尖顺着小腿指向身体左侧（相对小腿 ≈ 跖屈 90° + 内翻 90°）。改为按解算后的真实小腿（膝→踝）定踝近中立：脚尖朝前、略上翘略朝外，脚底朝外侧（+X），外踝搭在左大腿上（小腿轴转 15°、放松跖屈 20°、外翻 8°；外翻 20° 时脚跟顶进左手 19 mm，撤）。只改右脚旋转，踝位置/手臂/躯干/左腿不变。全链 d10：右脚→左大腿 44→**≤9.8 mm**、右脚→左小腿 34→**0**、右手→腿 ≤2.6（保持）、左手→右脚 12.6→10.5（n21<30）。图 `img/r2/cmp-o-seated-fig4-foot.jpg`（上修前/下修后，正面+左侧）。
