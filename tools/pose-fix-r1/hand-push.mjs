@@ -16,7 +16,7 @@ import {withPalmOffsets,handTargetKey} from '../../drill-anim/lib/palm-offset-sc
 const a=process.argv.slice(2),o={step:0.25,iters:3,margin:0.004,size:64,sides:'left,right',maxStep:0.06,maxTotal:0.14};
 for(let i=0;i<a.length;i+=2)o[a[i].replace(/^--/,'')]=a[i+1];
 for(const k of ['step','iters','margin','size','maxStep','maxTotal'])o[k]=+o[k];
-const sides=o.sides.split(',');
+const sides=o.sides.split(',');const place=o.place?JSON.parse(o.place):null; // place mode: {left:{leg,along,latW,lat:'out'|'in',gap}} palm = real knee + along*shin + (measured shin radius + gap) on the shin's front/outer face
 const file=o.recipe?path.resolve(o.recipe):allRecipes().find(f=>path.basename(f,'.json')===o.id);if(!file)throw Error('no recipe '+o.id);
 const {loadTheme}=await import('../../drill-anim/lib/config.mjs');
 const loaded=await loadRecipe(file),base=loaded.source,D=base.timeline.duration;
@@ -29,6 +29,18 @@ const specWith=(extra)=>withPalmOffsets(base,base.id,extra??table());
 const selfSrc=measureSelfInPage.toString().replace('e.top.push([dep,x,y,z])','e.top.push([dep,x,y,z,NN[best*3],NN[best*3+1],NN[best*3+2]])')
   .replace("pairs[kp]={d10:","const nm=e.top.reduce((s,u)=>[s[0]+u[4],s[1]+u[5],s[2]+u[6]],[0,0,0]);pairs[kp]={nrm:nm.map(u=>+(u/e.top.length).toFixed(4)),d10:");
 if(!selfSrc.includes('NN[best*3+2]]')||!selfSrc.includes('nrm:'))throw Error('measure patch failed');
+
+function placeInPage(cfg){const T=window.__toonT,v=flareInspector.viewer;v.coach.updateWorldMatrix(true,true);const J=v.motion.getMetrics().joints,V=n=>J[n]?new T.Vector3().fromArray(J[n]):null;
+ const out={};const q=new T.Vector3();
+ for(const [side,c] of Object.entries(cfg)){const L=c.leg,O=L==='left'?'right':'left';const K=V(L+'Knee'),A=V(L+'Ankle'),H=V(L+'Hip')??V(L+'Thigh'),HO=V(O+'Hip')??V(O+'Thigh');
+  const ds=A.clone().sub(K).normalize();const hk=H.clone().sub(K);const front=hk.clone().sub(ds.clone().multiplyScalar(hk.dot(ds))).normalize().negate();
+  let lat=new T.Vector3().crossVectors(front,ds).normalize();if(lat.dot(H.clone().sub(HO))<0)lat.negate();if(c.lat==='in')lat.negate();
+  const sq=front.clone().multiplyScalar(0.85).add(lat.clone().multiplyScalar(c.latW)).normalize();
+  let sum=0,n=0;v.coach.traverse(m=>{if(!m.isSkinnedMesh||!m.visible)return;const g=m.geometry,si=g.attributes.skinIndex,sw=g.attributes.skinWeight,b=m.skeleton.bones;m.skeleton.update();
+   for(let i=0;i<g.attributes.position.count;i+=2){let bi=-1,bw=-1;for(let k=0;k<4;k++){const w=sw.getComponent(i,k);if(w>bw){bw=w;bi=si.getComponent(i,k);}}const bn=b[bi]?.name||'';if(!bn.startsWith(L)||!/Shin|Calf/.test(bn))continue;
+    m.getVertexPosition(i,q);q.applyMatrix4(m.matrixWorld);const d=q.clone().sub(K),ax=d.dot(ds);if(Math.abs(ax-c.along)>0.02)continue;const perp=d.sub(ds.clone().multiplyScalar(ax));const r=perp.length();if(r<1e-4)continue;if(perp.dot(sq)/r<Math.cos(20*Math.PI/180))continue;sum+=r;n++;}});
+  const r=n?sum/n:0.05;out[side]={radius:r,n,target:K.clone().add(ds.multiplyScalar(c.along)).add(sq.multiplyScalar(r+(c.gap??0.015))).toArray()};}
+ return out;}
 const report={pageErrors:[]};const {browser,page}=await openScene(loaded,{size:o.size,theme:loadTheme(),report});
 const measure=async(spec,t,warm,ground)=>{const st=await stageAt(page,spec,t,warm);
   const m=await page.evaluate(g=>{const v=flareInspector.viewer,sc=v.scene,prev=sc.onAfterRender;let val=null;sc.onAfterRender=function(...a){prev?.apply(this,a);val={self:__selfM({}),ground:g?__groundM():null};};try{v.renderer.render(sc,v.camera);}finally{sc.onAfterRender=prev;}return val;},ground);
@@ -38,7 +50,7 @@ const solve3=(M,b)=>{const d=M[0][0]*(M[1][1]*M[2][2]-M[1][2]*M[2][1])-M[0][1]*(
   if(Math.abs(d)<1e-6)return null;const r=[];for(let c=0;c<3;c++){const X=M.map((row,i)=>row.map((x,j)=>j===c?b[i]:x));r.push((X[0][0]*(X[1][1]*X[2][2]-X[1][2]*X[2][1])-X[0][1]*(X[1][0]*X[2][2]-X[1][2]*X[2][0])+X[0][2]*(X[1][0]*X[2][1]-X[1][1]*X[2][0]))/d);}return r;};
 const summary=frames=>{const worst={};for(const f of frames)for(const [k,p] of Object.entries(f.pairs)){if(p.n10<30&&p.d10<=10)continue;if(/UpperArm>torso/.test(k))continue;if(!worst[k]||p.d10>worst[k].d10)worst[k]={d10:p.d10,t:f.t,n10:p.n10};}return worst;};
 try{
-  await page.evaluate(([a,b])=>{window.__selfM=eval('('+a+')');window.__groundM=eval('('+b+')');},[selfSrc,measureRegionsInPage.toString()]);
+  await page.evaluate(([a,b,c])=>{window.__selfM=eval('('+a+')');window.__groundM=eval('('+b+')');window.__placeM=eval('('+c+')');},[selfSrc,measureRegionsInPage.toString(),placeInPage.toString()]);
   // Jacobian of palm world position w.r.t. the additive frame offset, per side and time (once)
   if(!state.J){state.J={};const h=0.02;
     for(const s of sides){state.J[s]=[];let warm=null;
@@ -52,6 +64,9 @@ try{
       const {st,m}=await measure(specWith(),t,warm,true);warm=st.x;frames.push({t,pairs:m.self.pairs});
       for(const [k,r] of Object.entries(m.ground.regions)){const mm=+(r.minY*1000).toFixed(1);if(!(k in ground)||mm<ground[k])ground[k]=mm;}
       if(!apply)continue;
+      if(place){const pl=await page.evaluate(c=>__placeM(c),place);state.radius=state.radius||{};
+        for(const s of sides){if(!pl[s])continue;const cur=palm(st,s),e=pl[s].target.map((x,q)=>x-cur[q]);state.radius[s]=+pl[s].radius.toFixed(4);const d=solve3(state.J[s][i],e);if(!d)continue;state.off[s][i]=state.off[s][i].map((x,q)=>+(x+d[q]).toFixed(4));}
+        continue;}
       for(const s of sides){const S=s==='left'?'left':'right';const per={};
         for(const [k,p] of Object.entries(m.self.pairs)){const [A,B]=k.split('>');if(A!==S+'Hand'&&A!==S+'Forearm')continue;if(p.d10<=3||/UpperArm$/.test(B)&&B.startsWith(S))continue;
           const L=Math.hypot(...p.nrm)||1,push=p.nrm.map(u=>u/L*(p.d10/1000+o.margin));const cur=per[B];if(!cur||Math.hypot(...push)>Math.hypot(...cur))per[B]=push;}

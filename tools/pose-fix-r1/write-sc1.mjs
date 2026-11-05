@@ -11,8 +11,8 @@ const mm=o=>Object.fromEntries(Object.entries(o||{}).map(([k,v])=>[k,v.d10]));
 const maxOff=Object.fromEntries(Object.entries(off).map(([s,rows])=>[s,+(1000*Math.max(...rows.map(q=>Math.hypot(q[1],q[2],q[3])))).toFixed(0)]));
 const head=`// ${newId}: self-collision fix r1 (pose-fix r1, 2026-11-05) of ${stem}. Only the hand targets move: a measured additive
 // offset (hand's own frame, metres) keeps palm/fingers on the surface of the armfix-r2 body instead of inside it. Motion,
-// timing, legs, poles, hand orientation and camera are the source's. Offsets: tools/pose-fix-r1/hand-push.mjs (real solved
-// limbs + ${'4 mm'} margin), max per side (mm): ${JSON.stringify(maxOff)}.
+// timing, legs, poles, hand orientation and camera are the source's. Offsets: tools/pose-fix-r1/hand-push.mjs ${st.radius?'place mode: palm = solved knee + along the real shin + (measured shin radius '+JSON.stringify(st.radius)+' m + gap) on its front/outer face':'push mode: out of the real solved surfaces + 4 mm'},
+// max offset per side (mm): ${JSON.stringify(maxOff)}.
 // Self-collision d10 before (mm): ${JSON.stringify(mm(st.baseline))}
 // after (mm): ${JSON.stringify(mm(st.final.worst))}
 `;
