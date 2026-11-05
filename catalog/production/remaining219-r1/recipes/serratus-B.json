@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "serratus-B",
   "nameZh": "泡沫轴墙面上滑",
-  "spec": "drill-anim/specs/serratus-B-r2.js",
-  "specSha256Lf": "3126e5875231a6f7ede6171b506581e522b0e74ad23c2835aa00aecee876793c",
+  "spec": "drill-anim/specs/serratus-B-r2-et1.js",
+  "specSha256Lf": "654fc1edea6c35e8ff317db352b7991b6f8f4955a1ff6004dbb42db36da5e041",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -76,10 +76,21 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/serratus-B.js"
+    "selectedSpec": "drill-anim/specs/serratus-B-r2-et1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
   "userAccepted": false,
-  "releaseEligible": false
+  "releaseEligible": false,
+  "poseFixR1": {
+    "branch": "fix/limb-twist-collision-r1",
+    "date": "2026-11-05",
+    "spec": [
+      {
+        "from": "drill-anim/specs/serratus-B-r2.js",
+        "to": "drill-anim/specs/serratus-B-r2-et1.js",
+        "why": "pose-fix r9: fixed hand-vs-forearm twist 90-120 deg -> constant forearm roll {\"left\": -50, \"right\": 50}"
+      }
+    ]
+  }
 }

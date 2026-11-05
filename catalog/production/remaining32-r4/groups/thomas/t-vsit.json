@@ -2,9 +2,9 @@
   "format": "pose-hub-action-recipe@1",
   "id": "t-vsit",
   "nameZh": "V 撑",
-  "spec": "drill-anim/specs/t-vsit-r7-sc1.js",
+  "spec": "drill-anim/specs/t-vsit-r7-sc1-et1.js",
   "specId": "t-vsit-r7-sc1",
-  "specSha256Lf": "049cf533d736a662ed2311a92970eafcd5081836d561a1a11510832a3678c60e",
+  "specSha256Lf": "37958c81832c9880a680fd462b6cc364d8fd7af1dcf9ff984661bf53006e6c00",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -319,6 +319,11 @@
         "from": "drill-anim/specs/t-vsit-r7.js",
         "to": "drill-anim/specs/t-vsit-r7-sc1.js",
         "why": "r4: legs swung down 32 deg about the hip (thighs->belly 79 mm)"
+      },
+      {
+        "from": "drill-anim/specs/t-vsit-r7-sc1.js",
+        "to": "drill-anim/specs/t-vsit-r7-sc1-et1.js",
+        "why": "pose-fix r9: fixed hand-vs-forearm twist 90-120 deg -> constant forearm roll {\"left\": 55, \"right\": -55}"
       }
     ]
   }

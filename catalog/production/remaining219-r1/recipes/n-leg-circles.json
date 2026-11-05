@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "n-leg-circles",
   "nameZh": "仰卧直腿画圈",
-  "spec": "drill-anim/specs/n-leg-circles-r2.js",
-  "specSha256Lf": "f528657c09a798d5700d9c82fe75ea27c5e41ec32d2c6ab4804eb4f9fb54eabb",
+  "spec": "drill-anim/specs/n-leg-circles-r2-et1.js",
+  "specSha256Lf": "7cf5fad3c5b6101378e410c1cf4feed65cced72cc84e6ffeb655ef1782331a48",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -91,10 +91,21 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/n-leg-circles-r2.js"
+    "selectedSpec": "drill-anim/specs/n-leg-circles-r2-et1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
   "userAccepted": false,
-  "releaseEligible": false
+  "releaseEligible": false,
+  "poseFixR1": {
+    "branch": "fix/limb-twist-collision-r1",
+    "date": "2026-11-05",
+    "spec": [
+      {
+        "from": "drill-anim/specs/n-leg-circles-r2.js",
+        "to": "drill-anim/specs/n-leg-circles-r2-et1.js",
+        "why": "pose-fix r9: fixed hand-vs-forearm twist 90-120 deg -> constant forearm roll {\"left\": 60, \"right\": -60}"
+      }
+    ]
+  }
 }
