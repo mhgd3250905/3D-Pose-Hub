@@ -290,25 +290,45 @@ touch 类修后 = 全链 `self-collision-audit`（dbg 版）；hand-push 类修�
 - 无。
 
 ---
-# 全轮总表（r1–r9，分支 fix/limb-twist-collision-r1；r8 在 PR #30）
+# r10（2026-11-05 21:50–23:00，两次都没过的 5 个整段重写；用户 21:50「全部做完」；本分支 3 个，另 2 个在 PR #30）
 
-## 已修（79 个动作：第 1–4 批已交渲染 58 个 + r7 第 5 批 7 个 + r9 第 7 批 22 个，其中 8 个之前批次已修过穿模、本批在其上再叠 et1，净增 14 个；第 6 批 12 个在 PR #30）
+口径同 r7：全链 `self-collision-audit`（dbg 版）d10 ≤ 10 mm 才算过；<30 个顶点超 10 mm 不计；腋下（上臂↔躯干）不计。地面：`ground-penetration-audit --stride 16 --size 128`，修前 = 上一提交的配方本轮实测。每动作最多 2 次。
+
+## 修好（2 个）
+| 动作 | 改动 | 自穿模 修前→修后 | 地面最低 修前→修后 |
+|---|---|---|---|
+| t-straddle-hold 分腿支撑 | 新源 `t-straddle-hold-r10b` → 重烘 `t-straddle-hold-r10b-sc1`：**重写支撑**——撑手从两腿之间贴大腿根（[±0.075, 0.21]）移到**髋前 36 cm、两腿之间**（[±0.12, 0.36]，那里两大腿已分开约 50 cm）；求解变量去掉 `pz`（骨盆 z 固定，不再整体滑向手——第 1 次 `-r10` 没去掉 pz，身体前滑 16–21 cm，手相对骨盆没变，前臂→大腿 53 mm，撤），改由腰前倾 c0 够到手（腰屈 20–25°→24–32°）；骨盆俯仰/高度轨迹、腿、节奏、镜头不变；用 r7 的 `rig-calibration.json`（已含该撑点）重烘可达根，直臂 177.5° 全程锁定 | 前臂/上臂→大腿 26–27（r7 两次 58–83）→ **0**（全部非腋下项 0）| 撑手 0 → 0（贴地）；大腿离地 4.9/5.3 → 5.5/7.3 mm |
+| t-seated-straddle-lifts 坐姿分腿双腿抬起 | 同上：`t-seated-straddle-lifts-r10b` → `-r10b-sc1`，撑手 [±0.075, 0.24] → [±0.12, 0.36]，骨盆 z 固定，腰前倾 c0（6–18°→18–24°）够到手；骨盆俯仰 14+3r 不变（第 1 次改 24+3r 且未固定 pz：33.7 mm，撤） | 前臂→大腿/腹 40–51（r7 两次 58–83）→ **0** | 撑手 0 → 0；大腿离地 6.8/7.2 → 7.2/9.1 mm |
+
+两者配方（remaining32-r4/groups/thomas）`spec`/`specId`/`specSha256Lf`、`source.files` 已同步（追加 `-r10b.js`、`_-r10b-sc1-reach-data.mjs`、`-r10b-sc1.js`）。
+腋下项（不计）：右上臂→躯干 d10 63–72 mm（57–76 顶点，最深点是躯干网格 rightScapula↔rightUpperArm 权重，即肩/腋下蒙皮），左 16–20 mm；r7 两次尝试同一项 67–83 mm。**造型变了（手前移、上身更前倾），请看图**：`work/pose-fix-r10/t-straddle-hold-r10-compare.jpg`、`t-seated-straddle-lifts-r10-compare.jpg`（左修前 / 右修后）。
+
+## 判为蒙皮折叠，不修（1 个）
+- deltoids-A 直臂侧平板：两大腿互穿修前（`deltoids-A-r3`）实测 43.3/42.6 mm（224/291 顶点，peak/q1/q3）。六个关键帧里每一帧的最深点都是 **`V3_Head_Neck_Torso_Shared_R26` 同一张躯干网格上 leftThigh 权重顶点 ↔ rightThigh 权重顶点**（短裤区，离骨盆 >16 cm，非两条腿网格互穿）；r7 的两种站姿（前后错开加大 / 以身体线居中错开 ±13 cm）同样 47.8 / 37.8 mm、最深点同一网格同一权重交界——与站姿基本无关，按规则记为蒙皮折叠（同 adductors-A 类），配方不变。（手→大腿 26.8 / 手→躯干 25.3 mm 是另一项，r7 的「髋上手外移 3 cm」可单独采用，本轮未做。）
+
+---
+# 全轮总表（r1–r10，分支 fix/limb-twist-collision-r1；r8 和 r10 的 2 个在 PR #30）
+
+## 已修（81 个动作：第 1–4 批已交渲染 58 个 + r7 第 5 批 7 个 + r9 第 7 批 22 个（其中 8 个之前批次已修过穿模、本批在其上再叠 et1，净增 14 个）+ r10 第 8 批 2 个；第 6 批 12 个、r10 第 9 批 2 个在 PR #30）
 - 第 1 批（36）：erectors-A erectors-C forearms-B forearms-C g-cable-hip-abduction g-cable-hip-extension h-9090-liftoff h-band-hip-extension h-band-leg-out h-band-standing-abduction h-band-standing-adduction h-band-straight-leg-raise h-bilateral-upper-back-hug h-bridge-march h-crossbody h-good-morning h-knee-hug h-overhead-triceps-stretch h-tabletop hamstrings-B hip-abductors-B n-seated-knee-lift n-thomas-test o-seated-fig4 o-seated-sidebend o-supported-ankle-eversion o-supported-ankle-inversion o-supported-ankle-pump o-supported-hip-ir o-supported-knee-curl o-supported-march o-supported-star-reach quadriceps-A t-flare-side-hold w-feet-on-chair-bridge w-prone-swimmer
 - 第 2 批（8）：deltoids-C h-couch-stretch h-hip-gate h-side-er s-9090 s-figure4 s-kneel-hipflex t-vsit
 - 第 3 批（10）：h-band-hip-ir h-chair-step-up h-lateral-step-lunge h-squat n-chair-wiper n-pelvis-circle n-seated-squeeze o-seated-ham o-seated-twist w-chair-hip-thrust
 - 第 4 批（4）：h-db-curl h-db-zottman-curl h-db-overhead-triceps-extension obliques-C
 - 第 5 批（7，r7）：h-half-kneeling-quad-stretch h-bulgarian o-stand-crossreach rotator-cuff-A h-kb-swing n-straddle-fold t-lsit-tuck
+- 第 8 批（2，r10，重写撑地支撑）：t-straddle-hold t-seated-straddle-lifts（**造型变了，请看图**）
+- PR #30 第 9 批（2，r10，以 GC 为底）：forearms-A h-kneeling-thread-needle（见 PR #30 README）
 - 第 7 批（22，r9，固定拧转 90–120° et1）：glute-max-C h-band-hip-ir h-band-leg-out h-butterfly-active h-chair-dip h-db-front-raise h-forward-lunge h-goblet-squat h-hip-gate h-lateral-step-lunge h-reverse-crunch h-wall-straddle lats-A n-chair-wiper n-leg-circles n-seated-squeeze n-windshield o-stand-crossreach o-stand-sidebend s-9090 serratus-B t-vsit（其中 o-stand-crossreach、t-vsit、h-band-hip-ir、n-chair-wiper、n-seated-squeeze、s-9090、h-hip-gate、h-lateral-step-lunge 在前几批修过穿模，本批是在其 -sc1 上再叠 et1）
 - 备注：h-crossbody 握持过渡约 1 s 内仍转 ~100°（r2）；h-bridge-march / h-tabletop / hamstrings-B / quadriceps-A / w-feet-on-chair-bridge 另一侧固定拧转仍 >90°（常量分摊上限）；t-vsit、w-chair-hip-thrust、h-lateral-step-lunge、h-bulgarian（叉腰→下垂）、t-lsit-tuck（团身后仰）造型/手型有变化，待用户看图；t-lsit-tuck 大腿→腹剩 15 mm（<30 顶点）。
 
-## 判为量测假象 / 蒙皮折叠 / 动作本意，不修（12 个）
+## 判为量测假象 / 蒙皮折叠 / 动作本意，不修（13 个）
 - 量测假象：h-cobra n-prone-ir n-prone-hip-ext h-goblet-squat
 - 复测本就无问题：h-bilateral-farmer-hold-native h-straight-arm-hang-native
-- 躯干网格蒙皮折叠：triceps-B s-seated-fold n-half-split h-chair-lat adductors-A
+- 躯干网格蒙皮折叠：triceps-B s-seated-fold n-half-split h-chair-lat adductors-A deltoids-A（r10 判定：两大腿最深点每帧都在躯干网格左右大腿权重交界，三种站姿都 38–48 mm）
 - 动作本意（接触）：s-butterfly（脚底互压）（o-stand-crossreach 已在 r7 修到 9.9 mm，移入第 5 批）
 
-## 撤回 / 跳过，仍有问题（18 个）
-- 试过撤回（r7 各 2 次）：deltoids-A（两大腿同网格互判，疑蒙皮折叠；手的修法可单独采用）t-straddle-hold t-seated-straddle-lifts（撑手移到髋旁反而压进大腿外侧，需重写前倾支撑）
+## 撤回 / 跳过，仍有问题（1 个；r10 后 r7 撤回的 3 个、与 GC 重叠的 14 个都已处理）
+- 试过撤回（r7 各 2 次）：已在 r10 处理（t-straddle-hold、t-seated-straddle-lifts 修好；deltoids-A 判为蒙皮折叠）。
 - 跳过（工具限制）：h-biceps-self（扫描不支持）
-- 与 fix/ground-contact-r1 重叠未动：forearms-A h-kneeling-thread-needle h-quadruped-open t-seated-straddle-lift-1leg hip-abductors-A adductors-B deltoids-B glute-max-A h-short-side-plank h-supine-bilateral-leg-raise h-supine-heel-slide o-supported-hip-hitch s-pigeon scapular-A
+- 另记（不在计数内）：deltoids-C、n-straddle-fold、s-kneel-hipflex 与 GC 配方冲突，合并时需以 gc spec 为底重做（r8 发现，未动）；deltoids-A 手→大腿/躯干 26.8/25.3 mm 未做。
+- 与 fix/ground-contact-r1 重叠：r8/r10 已在 PR #30 全部处理（forearms-A、h-kneeling-thread-needle 在 r10 修好）；原列表 forearms-A h-kneeling-thread-needle h-quadruped-open t-seated-straddle-lift-1leg hip-abductors-A adductors-B deltoids-B glute-max-A h-short-side-plank h-supine-bilateral-leg-raise h-supine-heel-slide o-supported-hip-hitch s-pigeon scapular-A
 - 固定拧转 90–120°：r9 已全部做完（22 个，见第 7 批）；1–2 cm 穿模仍未做。
