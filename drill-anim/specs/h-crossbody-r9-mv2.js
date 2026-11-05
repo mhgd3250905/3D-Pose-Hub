@@ -12,7 +12,7 @@ const ss = x => x <= 0 ? 0 : x >= 1 ? 1 : x * x * (3 - 2 * x);
 const UP0 = 0.6, UP1 = 1.6, DN0 = 5.6, DN1 = 6.8;
 export const grip = t => t < UP0 ? 0 : t < UP1 ? ss((t - UP0) / (UP1 - UP0)) : t < DN0 ? 1 : t < DN1 ? 1 - ss((t - DN0) / (DN1 - DN0)) : 0;
 // relaxed hang (world): left shoulder [0.188,1.370,-0.004], wrist 0.465 m below-out-front, palm toward the thigh
-const HANG = { wrist: [0.228, 0.91, 0.03], finger: [0.06, -1, 0.04], normal: [0.1, 0, -1] };   // palm turned back (pronated) so the catch rotates the hand the short way
+const HANG = { wrist: [0.228, 0.91, 0.03], finger: [0.06, -1, 0.04], normal: [-1, 0, 0.18] };
 const nz = v => { const l = Math.hypot(...v); return v.map(x => x / l); };
 const tr = s.timeline.tracks, key = (f, i) => 'contact_' + f + i;
 const times = tr[key('wrist', 0)].map(r => r[0]);
