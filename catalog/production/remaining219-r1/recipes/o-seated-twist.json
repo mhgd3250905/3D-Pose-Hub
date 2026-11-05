@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "o-seated-twist",
   "nameZh": "坐姿扶椅扭转",
-  "spec": "drill-anim/specs/o-seated-twist.js",
-  "specSha256Lf": "e4f0c990b184f7999dcfa73c6d505a6486048bcea10fabb81810e5038cdebd6b",
+  "spec": "drill-anim/specs/o-seated-twist-sc1.js",
+  "specSha256Lf": "c348812cd9b1756df69dc86aa8da9c000e760718b82ccd03fc3708375b96af71",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -76,7 +76,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/o-seated-twist.js"
+    "selectedSpec": "drill-anim/specs/o-seated-twist-sc1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -88,7 +88,14 @@
     "wristTwist": {
       "from": "hands-native-r5 (wrap +-180, uncapped)",
       "to": "hands-native-r6 (continuous, cap 40 deg)"
-    }
+    },
+    "spec": [
+      {
+        "from": "drill-anim/specs/o-seated-twist.js",
+        "to": "drill-anim/specs/o-seated-twist-sc1.js",
+        "why": "self-collision: hand targets pushed out of the body (hand-push r1)"
+      }
+    ]
   },
   "wristTwistRuntime": {
     "version": "r6",
