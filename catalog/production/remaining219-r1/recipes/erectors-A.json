@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "erectors-A",
   "nameZh": "反向平板（后撑抬髋）",
-  "spec": "drill-anim/specs/erectors-A.js",
-  "specSha256Lf": "e6d0f35aababc2e6a319209392c070130dc27703706001ce8945b747b4f8b82e",
+  "spec": "drill-anim/specs/erectors-A-et1.js",
+  "specSha256Lf": "16fe6d57cb4a4172d26a4da6c5915def5ef4b0b70bfc8a799b71af1e83f9f73d",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -93,10 +93,21 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/erectors-A.js"
+    "selectedSpec": "drill-anim/specs/erectors-A-et1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
   "userAccepted": false,
-  "releaseEligible": false
+  "releaseEligible": false,
+  "poseFixR1": {
+    "branch": "fix/limb-twist-collision-r1",
+    "date": "2026-11-05",
+    "spec": [
+      {
+        "from": "drill-anim/specs/erectors-A.js",
+        "to": "drill-anim/specs/erectors-A-et1.js",
+        "why": "forearm twist: constant elbowTwist split (pose-fix r2 et)"
+      }
+    ]
+  }
 }

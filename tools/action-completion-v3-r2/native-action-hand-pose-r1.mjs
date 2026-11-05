@@ -4,7 +4,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 export const PROFILE='native-action-hand-pose-r1', VERSION='0.1.0-r1';
-export const SPEC_IDS=['h-biceps-self-r7','h-half-kneeling-quad-stretch-r6'];
+export const SPEC_IDS=['h-biceps-self-r7','h-half-kneeling-quad-stretch-r6','h-half-kneeling-quad-stretch-r6-sc1'];
 export function verify(){
   const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../..'),m=JSON.parse(fs.readFileSync(path.join(root,'drill-anim/models/'+PROFILE+'/manifest.json'),'utf8'));
   if(m.profile!==PROFILE||m.version!==VERSION||JSON.stringify(m.specIds)!==JSON.stringify(SPEC_IDS))throw Error('Native action manifest identity differs');

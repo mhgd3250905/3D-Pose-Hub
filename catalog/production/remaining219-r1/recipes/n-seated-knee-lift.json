@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "n-seated-knee-lift",
   "nameZh": "坐姿抬膝悬停",
-  "spec": "drill-anim/specs/n-seated-knee-lift.js",
-  "specSha256Lf": "a885cd9687ee3411287999ce0d710ca380206eefed2ca88f1f16d3437552b0eb",
+  "spec": "drill-anim/specs/n-seated-knee-lift-et1.js",
+  "specSha256Lf": "b307cc371adc1cd6c4ec150d4d50fd840f09f981ad885a87572fa1d352a9cb49",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -75,10 +75,21 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/n-seated-knee-lift.js"
+    "selectedSpec": "drill-anim/specs/n-seated-knee-lift-et1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
   "userAccepted": false,
-  "releaseEligible": false
+  "releaseEligible": false,
+  "poseFixR1": {
+    "branch": "fix/limb-twist-collision-r1",
+    "date": "2026-11-05",
+    "spec": [
+      {
+        "from": "drill-anim/specs/n-seated-knee-lift.js",
+        "to": "drill-anim/specs/n-seated-knee-lift-et1.js",
+        "why": "forearm twist: constant elbowTwist split (pose-fix r2 et)"
+      }
+    ]
+  }
 }

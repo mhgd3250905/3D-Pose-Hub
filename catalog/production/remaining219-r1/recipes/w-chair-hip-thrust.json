@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "w-chair-hip-thrust",
   "nameZh": "椅子臀推",
-  "spec": "drill-anim/specs/w-chair-hip-thrust.js",
-  "specSha256Lf": "85e0e27abe7f323f82858e8206540fa25c1b21c93007fb8a88d695934cdb199a",
+  "spec": "drill-anim/specs/w-chair-hip-thrust-sc1.js",
+  "specSha256Lf": "e1a34035283f1cba6288f11950c6129fbb29909732cf0fb7a86e286fa5ccf509",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -77,10 +77,21 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/w-chair-hip-thrust.js"
+    "selectedSpec": "drill-anim/specs/w-chair-hip-thrust-sc1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
   "userAccepted": false,
-  "releaseEligible": false
+  "releaseEligible": false,
+  "poseFixR1": {
+    "branch": "fix/limb-twist-collision-r1",
+    "date": "2026-11-05",
+    "spec": [
+      {
+        "from": "drill-anim/specs/w-chair-hip-thrust.js",
+        "to": "drill-anim/specs/w-chair-hip-thrust-sc1.js",
+        "why": "r5: hands-on-hips hand shape: fingers more down (finger y -0.35 -> -0.6), palm 15 mm further out, touch clearance +35 mm (thumb wrapped into the waist, 34.3 mm)"
+      }
+    ]
+  }
 }

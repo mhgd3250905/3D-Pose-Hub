@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "o-supported-star-reach",
   "nameZh": "扶椅单腿三向点地",
-  "spec": "drill-anim/specs/o-supported-star-reach.js",
-  "specSha256Lf": "415bb8ff91c629f5c71d7aab8f5715c1c1a6d106d49b6328b7cf601b576593fb",
+  "spec": "drill-anim/specs/o-supported-star-reach-et1.js",
+  "specSha256Lf": "aa9ebc3ed538000eedb3c3e2a85fc50045c87f737cdfdb8349855dcf056aae7b",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -78,10 +78,21 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/o-supported-star-reach.js"
+    "selectedSpec": "drill-anim/specs/o-supported-star-reach-et1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
   "userAccepted": false,
-  "releaseEligible": false
+  "releaseEligible": false,
+  "poseFixR1": {
+    "branch": "fix/limb-twist-collision-r1",
+    "date": "2026-11-05",
+    "spec": [
+      {
+        "from": "drill-anim/specs/o-supported-star-reach.js",
+        "to": "drill-anim/specs/o-supported-star-reach-et1.js",
+        "why": "forearm twist: constant elbowTwist split (pose-fix r2 et)"
+      }
+    ]
+  }
 }

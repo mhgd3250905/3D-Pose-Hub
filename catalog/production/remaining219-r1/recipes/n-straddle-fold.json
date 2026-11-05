@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "n-straddle-fold",
   "nameZh": "坐姿分腿体前屈",
-  "spec": "drill-anim/specs/n-straddle-fold-gc1.js",
-  "specSha256Lf": "0d2f261d048ea43f2fb1392d0e4e40ab2cc9aa759a1760fe667d1ccd2b7beec9",
+  "spec": "drill-anim/specs/n-straddle-fold-gc-int1.js",
+  "specSha256Lf": "12bc881236d642c1bd2acbf57593fb6b479a77200a8a8451c94d758b1ab601fe",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -92,7 +92,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/n-straddle-fold-gc1.js"
+    "selectedSpec": "drill-anim/specs/n-straddle-fold-gc-int1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -104,6 +104,27 @@
       "to": "drill-anim/specs/n-straddle-fold-gc1.js",
       "date": "2026-11-04",
       "branch": "fix/ground-contact-r1"
+    }
+  },
+  "poseFixR1": {
+    "branch": "fix/limb-twist-collision-r1",
+    "date": "2026-11-05",
+    "spec": [
+      {
+        "from": "drill-anim/specs/n-straddle-fold.js",
+        "to": "drill-anim/specs/n-straddle-fold-sc1.js",
+        "why": "r7: elbow pole back/up inside + straddle 50->53 deg (arm->inner thigh 17-20 mm)"
+      }
+    ],
+    "integration": {
+      "branch": "release/pose-fix-integration-r1",
+      "date": "2026-11-06",
+      "from": [
+        "drill-anim/specs/n-straddle-fold-gc1.js",
+        "drill-anim/specs/n-straddle-fold-sc1.js"
+      ],
+      "to": "drill-anim/specs/n-straddle-fold-gc-int1.js",
+      "why": "GC spec 为底叠加 PR #29 的修正（两边都要保住）"
     }
   }
 }

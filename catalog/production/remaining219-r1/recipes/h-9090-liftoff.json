@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "h-9090-liftoff",
   "nameZh": "90/90 后腿主动抬起",
-  "spec": "drill-anim/specs/h-9090-liftoff-r3.js",
-  "specSha256Lf": "cfacfdec71f18f459627d9f719fadfc15da30471f692e7b7b2e8a0559401a786",
+  "spec": "drill-anim/specs/h-9090-liftoff-r3-et1.js",
+  "specSha256Lf": "3b9d4e78bc2637bba53f51d072d3e02f950e66a6e64325b5147c0431206f4659",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -91,10 +91,21 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/h-9090-liftoff-r3.js"
+    "selectedSpec": "drill-anim/specs/h-9090-liftoff-r3-et1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
   "userAccepted": false,
-  "releaseEligible": false
+  "releaseEligible": false,
+  "poseFixR1": {
+    "branch": "fix/limb-twist-collision-r1",
+    "date": "2026-11-05",
+    "spec": [
+      {
+        "from": "drill-anim/specs/h-9090-liftoff-r3.js",
+        "to": "drill-anim/specs/h-9090-liftoff-r3-et1.js",
+        "why": "forearm twist: constant elbowTwist split (pose-fix r2 et)"
+      }
+    ]
+  }
 }

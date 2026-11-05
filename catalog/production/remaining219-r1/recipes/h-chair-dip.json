@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "h-chair-dip",
   "nameZh": "椅子臂屈伸",
-  "spec": "drill-anim/specs/h-chair-dip.js",
-  "specSha256Lf": "f1ea209002d7bcb37eee45cec3114ff43550ceb6158259a49f568cbf329b0711",
+  "spec": "drill-anim/specs/h-chair-dip-et1.js",
+  "specSha256Lf": "bd6eafe0e82dc50a6dfa3c5f6ae69c538b506a72108444af779745825f645c1d",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -78,10 +78,21 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/h-chair-dip.js"
+    "selectedSpec": "drill-anim/specs/h-chair-dip-et1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
   "userAccepted": false,
-  "releaseEligible": false
+  "releaseEligible": false,
+  "poseFixR1": {
+    "branch": "fix/limb-twist-collision-r1",
+    "date": "2026-11-05",
+    "spec": [
+      {
+        "from": "drill-anim/specs/h-chair-dip.js",
+        "to": "drill-anim/specs/h-chair-dip-et1.js",
+        "why": "pose-fix r9: fixed hand-vs-forearm twist 90-120 deg -> constant forearm roll {\"left\": 65, \"right\": -65}"
+      }
+    ]
+  }
 }

@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "h-half-kneeling-quad-stretch",
   "nameZh": "半跪姿手拉脚股四头肌拉伸",
-  "spec": "drill-anim/specs/h-half-kneeling-quad-stretch-r6.js",
-  "specSha256Lf": "2c2529ac49986a5446e9aac9d64a856286645343cfc37b5b6663c18ee9f93314",
+  "spec": "drill-anim/specs/h-half-kneeling-quad-stretch-r6-sc1.js",
+  "specSha256Lf": "4fd29afe76716f11d01e00e4838c66fb8d24787093e86459c89a0bc2a513062a",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -115,7 +115,7 @@
   "diagnostics": {
     "measureFootSurface": true
   },
-  "specId": "h-half-kneeling-quad-stretch-r6",
+  "specId": "h-half-kneeling-quad-stretch-r6-sc1",
   "source": {
     "previousSpecs": [
       {
@@ -133,16 +133,31 @@
       {
         "path": "drill-anim/specs/h-half-kneeling-quad-stretch-r6.js",
         "sha256Lf": "2c2529ac49986a5446e9aac9d64a856286645343cfc37b5b6663c18ee9f93314"
+      },
+      {
+        "path": "drill-anim/specs/h-half-kneeling-quad-stretch-r6-sc1.js",
+        "sha256Lf": "4fd29afe76716f11d01e00e4838c66fb8d24787093e86459c89a0bc2a513062a"
       }
     ],
     "dependencies": [
       {
         "path": "tools/action-completion-v3-r2/native-action-hand-pose-r1.mjs",
-        "sha256Lf": "de9cf5a648776736b2875cae64acb0c42c925de39ad02c2041bfa82bc69fc017"
+        "sha256Lf": "92ea9be02dbaac3f09d9dad9aa39c03edf99e20ab92175d20e0903b6656f8a6e"
       },
       {
         "path": "drill-anim/models/native-action-hand-pose-r1/manifest.json",
-        "sha256Lf": "41a22e7d4b277aec85b14ad90ccaa88d55de0e82516887ff9d6d4d0697a8df00"
+        "sha256Lf": "f381272aa1485ebaf0ded7a0349deb8bb740af15e46a3652f03ab686596dd97a"
+      }
+    ]
+  },
+  "poseFixR1": {
+    "branch": "fix/limb-twist-collision-r1",
+    "date": "2026-11-05",
+    "spec": [
+      {
+        "from": "drill-anim/specs/h-half-kneeling-quad-stretch-r6.js",
+        "to": "drill-anim/specs/h-half-kneeling-quad-stretch-r6-sc1.js",
+        "why": "r7: right hand touch clear +33 mm (fingers 28.3 mm into right thigh); native action corrective re-bound to the new spec id"
       }
     ]
   }

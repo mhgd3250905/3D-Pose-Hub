@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "n-pelvis-circle",
   "nameZh": "站姿骨盆画圈",
-  "spec": "drill-anim/specs/n-pelvis-circle-r2.js",
-  "specSha256Lf": "d32ed0a30bea725972adc33308e9222ef29cbdf6c68735c410856f5ef30e4020",
+  "spec": "drill-anim/specs/n-pelvis-circle-r2-sc1.js",
+  "specSha256Lf": "29d71eae4151b2bee9773f2623585cefaf62105cfc4570885fbae1bc8aea1e83",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -75,10 +75,21 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/n-pelvis-circle-r2.js"
+    "selectedSpec": "drill-anim/specs/n-pelvis-circle-r2-sc1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
   "userAccepted": false,
-  "releaseEligible": false
+  "releaseEligible": false,
+  "poseFixR1": {
+    "branch": "fix/limb-twist-collision-r1",
+    "date": "2026-11-05",
+    "spec": [
+      {
+        "from": "drill-anim/specs/n-pelvis-circle-r2.js",
+        "to": "drill-anim/specs/n-pelvis-circle-r2-sc1.js",
+        "why": "r5: hand touch clearance +33/+31 mm (hands on hips: fingers into the thigh/waist, 28.1/26.3 mm)"
+      }
+    ]
+  }
 }

@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "h-band-hip-ir",
   "nameZh": "坐椅弹力带髋内旋",
-  "spec": "drill-anim/specs/h-band-hip-ir.js",
-  "specSha256Lf": "161ef46ee190db2fa35ed56a8c85756d6cb9f5cca0634d5102d6024d539bf8a6",
+  "spec": "drill-anim/specs/h-band-hip-ir-sc1-et1.js",
+  "specSha256Lf": "8c556a3d3e3ba7649e0c533afddb54a900790e936aa57f4bfac3f92f1ebf2814",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -76,7 +76,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/h-band-hip-ir.js"
+    "selectedSpec": "drill-anim/specs/h-band-hip-ir-sc1-et1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -85,5 +85,21 @@
   "fixedCorrectionStack": {
     "profile": "fixed-wrist-corrections-r1",
     "version": "0.1.0-r1"
+  },
+  "poseFixR1": {
+    "branch": "fix/limb-twist-collision-r1",
+    "date": "2026-11-05",
+    "spec": [
+      {
+        "from": "drill-anim/specs/h-band-hip-ir.js",
+        "to": "drill-anim/specs/h-band-hip-ir-sc1.js",
+        "why": "r5: hand touch clearance +25/+21 mm (hands on thighs: fingers into the thighs, 20.2/16.2 mm)"
+      },
+      {
+        "from": "drill-anim/specs/h-band-hip-ir-sc1.js",
+        "to": "drill-anim/specs/h-band-hip-ir-sc1-et1.js",
+        "why": "pose-fix r9: fixed hand-vs-forearm twist 90-120 deg -> constant forearm roll {\"left\": 50, \"right\": -50}"
+      }
+    ]
   }
 }

@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "o-supported-march",
   "nameZh": "扶椅站姿交替抬膝",
-  "spec": "drill-anim/specs/o-supported-march.js",
-  "specSha256Lf": "614fa124107875afe73fb4a3b8e12ef1735b86c427f751454e3cd3ac1f04aeb5",
+  "spec": "drill-anim/specs/o-supported-march-et1.js",
+  "specSha256Lf": "8f2cab75d1e91947890fc6e89178c3358dd2d546251bdf0da9001e96a447d9d4",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -77,10 +77,21 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/o-supported-march.js"
+    "selectedSpec": "drill-anim/specs/o-supported-march-et1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
   "userAccepted": false,
-  "releaseEligible": false
+  "releaseEligible": false,
+  "poseFixR1": {
+    "branch": "fix/limb-twist-collision-r1",
+    "date": "2026-11-05",
+    "spec": [
+      {
+        "from": "drill-anim/specs/o-supported-march.js",
+        "to": "drill-anim/specs/o-supported-march-et1.js",
+        "why": "forearm twist: constant elbowTwist split (pose-fix r2 et)"
+      }
+    ]
+  }
 }
