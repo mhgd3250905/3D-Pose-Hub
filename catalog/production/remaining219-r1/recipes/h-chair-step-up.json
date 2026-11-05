@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "h-chair-step-up",
   "nameZh": "椅子上步",
-  "spec": "drill-anim/specs/h-chair-step-up-r2.js",
-  "specSha256Lf": "340af315a9f01479b0df8e6349162d83e51199f16bf01a946e16393df0ca1668",
+  "spec": "drill-anim/specs/h-chair-step-up-r2-sc1.js",
+  "specSha256Lf": "51f658d61fed3e454936f44efa2bba5cddad6c35c64d12a44b8b98b9c319c78e",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -77,10 +77,21 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/h-chair-step-up-r2.js"
+    "selectedSpec": "drill-anim/specs/h-chair-step-up-r2-sc1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
   "userAccepted": false,
-  "releaseEligible": false
+  "releaseEligible": false,
+  "poseFixR1": {
+    "branch": "fix/limb-twist-collision-r1",
+    "date": "2026-11-05",
+    "spec": [
+      {
+        "from": "drill-anim/specs/h-chair-step-up-r2.js",
+        "to": "drill-anim/specs/h-chair-step-up-r2-sc1.js",
+        "why": "self-collision: hand targets pushed out of the body (hand-push r1)"
+      }
+    ]
+  }
 }
