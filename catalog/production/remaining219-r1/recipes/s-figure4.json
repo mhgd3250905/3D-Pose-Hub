@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "s-figure4",
   "nameZh": "仰卧 4 字拉伸",
-  "spec": "drill-anim/specs/s-figure4-r2-et1.js",
-  "specSha256Lf": "8242b9702b8575939ff9041c0f82d5a66bd99a95a959d634a98aea8aae248bfd",
+  "spec": "drill-anim/specs/s-figure4-r2-et1-sc1.js",
+  "specSha256Lf": "aa87fc60d269774aa8f1345ef466d1e63e45c08dc2a43eff46e3a6c3318cfe25",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -91,7 +91,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/s-figure4-r2-et1.js"
+    "selectedSpec": "drill-anim/specs/s-figure4-r2-et1-sc1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -105,6 +105,11 @@
         "from": "drill-anim/specs/s-figure4-r2.js",
         "to": "drill-anim/specs/s-figure4-r2-et1.js",
         "why": "forearm twist: constant elbowTwist split (pose-fix r2 et)"
+      },
+      {
+        "from": "drill-anim/specs/s-figure4-r2-et1.js",
+        "to": "drill-anim/specs/s-figure4-r2-et1-sc1.js",
+        "why": "r4: crossed right ankle lifted off the solved left thigh (shoe->left thigh 69 mm)"
       }
     ]
   }
