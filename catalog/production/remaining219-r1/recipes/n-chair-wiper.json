@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "n-chair-wiper",
   "nameZh": "坐椅雨刷（膝内倒）",
-  "spec": "drill-anim/specs/n-chair-wiper-et1.js",
-  "specSha256Lf": "aff5077a30b899f9964f0efc019dcca174cee64fe58c890cf141a2224d68a870",
+  "spec": "drill-anim/specs/n-chair-wiper.js",
+  "specSha256Lf": "5f336da54c7fb677ae7c421f23a41705ee297c5145cb12d92a1045d5f1fdfde9",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -75,21 +75,10 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/n-chair-wiper-et1.js"
+    "selectedSpec": "drill-anim/specs/n-chair-wiper.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
   "userAccepted": false,
-  "releaseEligible": false,
-  "poseFixR1": {
-    "branch": "fix/limb-twist-collision-r1",
-    "date": "2026-11-05",
-    "spec": [
-      {
-        "from": "drill-anim/specs/n-chair-wiper.js",
-        "to": "drill-anim/specs/n-chair-wiper-et1.js",
-        "why": "forearm twist: constant elbowTwist split (pose-fix r2 et)"
-      }
-    ]
-  }
+  "releaseEligible": false
 }

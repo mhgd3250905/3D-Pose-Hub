@@ -21,7 +21,7 @@ export function keyTimes(spec){
   const tr=spec.timeline.tracks,D=spec.timeline.duration;
   const name=spec.highlight?.pulseTrack&&tr[spec.highlight.pulseTrack]?spec.highlight.pulseTrack:Object.keys(tr)[0];
   const k=tr[name];
-  const val=t=>{if(typeof k==='function')return k(t);let a=k[0];for(const b of k){if(b[0]>=t){if(b===a)return b[1];const u=(t-a[0])/(b[0]-a[0]||1);return a[1]+(b[1]-a[1])*u;}a=b;}return a[1];};
+  const val=t=>{if(!k||(Array.isArray(k)&&!k.length))return 0;/* static hold (no tracks) */if(typeof k==='function')return k(t);let a=k[0];for(const b of k){if(b[0]>=t){if(b===a)return b[1];const u=(t-a[0])/(b[0]-a[0]||1);return a[1]+(b[1]-a[1])*u;}a=b;}return a[1];};
   const S=[];for(let t=0;t<=D*0.5+1e-9;t+=0.05)S.push([+t.toFixed(2),val(t)]);
   const lo=Math.min(...S.map(s=>s[1])),hi=Math.max(...S.map(s=>s[1]));
   const tLo=S.find(s=>s[1]<=lo+0.02*(hi-lo))[0];
