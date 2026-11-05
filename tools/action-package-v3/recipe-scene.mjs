@@ -20,6 +20,14 @@ const HERE=path.dirname(fileURLToPath(import.meta.url));
 const V3=path.resolve(HERE,'../action-completion-v3-r2');
 const nativeModules={'native-action-hand-pose-r1':nativeActionHand,'native-action-hand-pose-r2':nativeActionHandR2};
 export const fail=(ok,message)=>{if(!ok)throw Error(message);};
+/** Opt-in hands-native r6 wrist twist (continuous, capped). Replaces the r5 render wrapper that applyV3 installed. */
+export async function installWristTwistR6(page,{capDeg=40}={}){
+  return page.evaluate(([src,cap])=>{const v=flareInspector.viewer,R=v.renderer,E=__drill;
+    if(!E.__wristTwistR5||!R.__renderBeforeWristTwist)throw Error('wrist-twist r6 needs the r5 wrapper stashed before applyV3');
+    R.render=R.__renderBeforeWristTwist;delete R.__renderBeforeWristTwist;delete E.__wristTwistR5;window.__wristTwistCapDeg=cap;
+    (0,eval)(src);if(!E.__wristTwistR6)throw Error('wrist-twist r6 not installed');return {version:'r6',...E.__wristTwistR6};
+  },[fs.readFileSync(path.join(REPO,'drill-anim/models/hands-native-r6/wrist-twist.js'),'utf8'),capDeg]);
+}
 export function freeGiB(){return os.freemem()/1024**3;}
 
 /** Read and validate a recipe without a browser. Returns everything a frame plan needs. */
@@ -45,7 +53,11 @@ export async function openScene(loaded,{size,theme,report}){
   try{
     report.actualRuntime={platform:process.platform,node:process.version,browserVersion:browser.version(),...await page.evaluate(()=>{const gl=flareInspector.viewer.renderer.getContext(),e=gl.getExtension('WEBGL_debug_renderer_info');return {renderer:e?gl.getParameter(e.UNMASKED_RENDERER_WEBGL):gl.getParameter(gl.RENDERER),contextLost:gl.isContextLost()};})};
     fail(!report.actualRuntime.contextLost,'WebGL context lost');
+    const wtr=prepared.recipe.wristTwistRuntime;
+    if(wtr!==undefined){fail(wtr?.version==='r6'&&(wtr.capDeg===undefined||(wtr.capDeg>0&&wtr.capDeg<=90)),'Bad wristTwistRuntime');
+      await page.evaluate(()=>{const R=flareInspector.viewer.renderer;R.__renderBeforeWristTwist=R.render;});}
     report.modelSetup=await model.applyV3(page,source);
+    if(wtr!==undefined)report.wristTwistRuntime=await installWristTwistR6(page,wtr);
     fail(report.modelSetup.profile===adapter.profile&&report.modelSetup.version===adapter.version,'Wrong installed model');
     report.rigCompatibility=await checkModelCompatibility(page,adapter);
     if(source.renderAppearance?.highlight?.material)report.highlightMaterial=await page.evaluate(installHighlightMaterial,source.renderAppearance.highlight.material);

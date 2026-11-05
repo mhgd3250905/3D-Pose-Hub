@@ -2,7 +2,7 @@
   "format": "pose-hub-action-recipe@1",
   "id": "h-kneeling-thread-needle",
   "nameZh": "跪姿穿针",
-  "spec": "drill-anim/specs/h-kneeling-thread-needle-r2-gc1.js",
+  "spec": "drill-anim/specs/h-kneeling-thread-needle-r2-gc1-hp2.js",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -76,13 +76,13 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/h-kneeling-thread-needle-r2-gc1.js"
+    "selectedSpec": "drill-anim/specs/h-kneeling-thread-needle-r2-gc1-hp2.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
   "userAccepted": false,
   "releaseEligible": false,
-  "specSha256Lf": "ca830308b3d2dfe22fc7aad4c7965d8afc8451066c1894d4aabf05f6977cd0e6",
+  "specSha256Lf": "8c5ede55dab7a749eb360d22d6a10d157d2fbde1a34ff3e71565564ea6c27664",
   "groundContactFix": {
     "r1m2": {
       "from": "drill-anim/specs/h-kneeling-thread-needle-r2.js",
@@ -90,5 +90,22 @@
       "date": "2026-11-04",
       "branch": "fix/ground-contact-r1"
     }
+  },
+  "poseFixR1": {
+    "branch": "fix/gc-overlap-limb-r1",
+    "base": "fix/ground-contact-r1",
+    "date": "2026-11-05",
+    "spec": [
+      {
+        "from": "drill-anim/specs/h-kneeling-thread-needle-r2-gc1.js",
+        "to": "drill-anim/specs/h-kneeling-thread-needle-r2-gc1-hp1.js",
+        "why": "threading hand path: free target swept palm -x -> +y (thumb-up supination) so the plant->thread blend no longer rolls the hand ~318 deg the long way (pose-fix r10 hp1, on gc spec)"
+      },
+      {
+        "from": "drill-anim/specs/h-kneeling-thread-needle-r2-gc1-hp1.js",
+        "to": "drill-anim/specs/h-kneeling-thread-needle-r2-gc1-hp2.js",
+        "why": "threading arc 0.06 -> 0.10 m so the thumb-up hand clears the floor mid-blend (pose-fix r10 hp2, on hp1)"
+      }
+    ]
   }
 }
