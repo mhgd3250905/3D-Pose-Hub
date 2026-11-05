@@ -2,9 +2,9 @@
   "format": "pose-hub-action-recipe@1",
   "id": "t-straddle-hold",
   "nameZh": "分腿支撑",
-  "spec": "drill-anim/specs/t-straddle-hold-r6.js",
-  "specId": "t-straddle-hold-r6",
-  "specSha256Lf": "d81a1c979d9bf5c1ff1646384294b8adc297515fe17bc928c7b383bc79116964",
+  "spec": "drill-anim/specs/t-straddle-hold-r10b-sc1.js",
+  "specId": "t-straddle-hold-r10b-sc1",
+  "specSha256Lf": "4f28689f52f10a10dc5f1d8836321bb851a67df3426a8d7e576a57b698dcad81",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -98,6 +98,18 @@
       {
         "path": "drill-anim/specs/t-straddle-hold-r6.js",
         "sha256Lf": "d81a1c979d9bf5c1ff1646384294b8adc297515fe17bc928c7b383bc79116964"
+      },
+      {
+        "path": "drill-anim/specs/t-straddle-hold-r10b.js",
+        "sha256Lf": "92c72b9a5ccde278734398d2bcac074b6a40863cc4f267fb1e0fc89fa3fdf589"
+      },
+      {
+        "path": "drill-anim/specs/_t-straddle-hold-r10b-sc1-reach-data.mjs",
+        "sha256Lf": "ef5136192fffb5be746ee9dfb87b12e3fba68b6aa4db40016ed3dcfcf252b82e"
+      },
+      {
+        "path": "drill-anim/specs/t-straddle-hold-r10b-sc1.js",
+        "sha256Lf": "4f28689f52f10a10dc5f1d8836321bb851a67df3426a8d7e576a57b698dcad81"
       }
     ]
   },
@@ -278,5 +290,16 @@
     "priorRecipe": "catalog/production/remaining32-r3/groups/thomas/t-straddle-hold.json",
     "priorRecipeSha256": "17827a185a0dc852bada8313210ba6402ea37a4fba87768f83b53e1fe5427cfd",
     "status": "awaiting-matched-preview"
+  },
+  "poseFixR1": {
+    "branch": "fix/limb-twist-collision-r1",
+    "date": "2026-11-05",
+    "spec": [
+      {
+        "from": "drill-anim/specs/t-straddle-hold-r6.js",
+        "to": "drill-anim/specs/t-straddle-hold-r10b-sc1.js",
+        "why": "r10 support rewrite: hands 36 cm in front of the hips between the spread thighs (z 0.36, x +-0.12), pelvis z pinned, waist lean reaches them; re-baked reachable root"
+      }
+    ]
   }
 }
