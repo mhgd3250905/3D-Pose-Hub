@@ -32,6 +32,7 @@ export function recipeComponents(recipe){
   for(const j of recipe.jointCorrections??[])c.add('correction:'+j.profile);
   if(recipe.fixedCorrectionStack)c.add('fixed-stack:'+recipe.fixedCorrectionStack.profile);
   if(recipe.nativeWristCorrective)c.add('native-wrist-corrective:hand-wrist-corrective-r1');
+  if(recipe.wristTwistRuntime)c.add('wrist-twist:hands-native-'+recipe.wristTwistRuntime.version);
   for(const s of ['left','right'])if(recipe.hands?.[s])c.add('hand:'+recipe.hands[s]);
   return [...c].sort();
 }
