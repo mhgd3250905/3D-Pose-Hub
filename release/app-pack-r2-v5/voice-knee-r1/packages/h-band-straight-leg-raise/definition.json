@@ -1,0 +1,173 @@
+{
+  "format": "pose-hub-action-definition@3",
+  "id": "h-band-straight-leg-raise",
+  "text": {
+    "path": "catalog/production/v3-text/h-band-straight-leg-raise.json",
+    "sha256": "47d357511610d91539e47910c00a6cb4391a878fb86aa7d9dda051efbb01e1bd",
+    "reviewStatus": "ai-reviewed-r2-needs-user-review"
+  },
+  "recipe": {
+    "path": "catalog/production/remaining219-r1/recipes/h-band-straight-leg-raise.json",
+    "sha256": "a4ee5e6978487301b44b62105351f52c5995724a084449016ed6c2b794944f89",
+    "spec": "drill-anim/specs/h-band-straight-leg-raise-r2-et1-kn1.js",
+    "specSha256Lf": "1ba77c455fe2af46d00f26f941c1d53f0cb82072f78c43dcf4f4c1ac50eac283"
+  },
+  "productionModel": {
+    "format": "pose-hub-production-model",
+    "formatVersion": 1,
+    "modelProfile": "training-human-v3-armfix",
+    "modelVersion": "0.1.0-r2",
+    "id": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "definition": {
+    "name": {
+      "zh": "扶椅弹力带直腿前抬",
+      "en": "Standing Band Straight-Leg Raise"
+    },
+    "purpose": {
+      "zh": "练大腿根前侧和大腿前面",
+      "en": "Build the front of your hip and thigh."
+    },
+    "cues": [
+      {
+        "id": "cue1",
+        "primary": true,
+        "text": {
+          "zh": "膝盖伸直不动，腿往前抬",
+          "en": "Keep your knee straight and lift the leg forward"
+        }
+      },
+      {
+        "id": "cue2",
+        "primary": false,
+        "text": {
+          "zh": "上身别往后仰，椅子只用来扶稳。",
+          "en": "Keep your upper body from leaning back; use the chair only for balance."
+        }
+      },
+      {
+        "id": "cue3",
+        "primary": false,
+        "text": {
+          "zh": "慢慢放回，膝盖别绷死。",
+          "en": "Lower slowly without locking your knee."
+        }
+      }
+    ],
+    "commonErrors": [
+      {
+        "zh": "身体后仰帮忙抬腿",
+        "en": "Leaning back to help lift the leg."
+      },
+      {
+        "zh": "膝盖弯起来变成高抬腿",
+        "en": "Bending the knee so it turns into a march."
+      }
+    ],
+    "tags": {
+      "category": "strength",
+      "activeMuscles": [
+        "hip-flexors",
+        "quadriceps"
+      ],
+      "synergistMuscles": [
+        "core"
+      ],
+      "equipment": [
+        "resistance-band",
+        "ankle-strap",
+        "chair"
+      ],
+      "position": "standing",
+      "difficulty": 1
+    },
+    "unilateral": true,
+    "defaultDose": {
+      "mode": "reps",
+      "sets": 2,
+      "reps": 10,
+      "restSeconds": 45
+    },
+    "cautions": [
+      {
+        "zh": "第一次先做一组轻松的 6 次",
+        "en": "The first time, do just one easy set of 6."
+      },
+      {
+        "zh": "弹力带要固定在身后牢固的低处",
+        "en": "Anchor the band securely low behind you."
+      }
+    ],
+    "startingSide": "right",
+    "training": {
+      "kind": "rep_hold",
+      "leadSeconds": 1,
+      "phases": [
+        {
+          "id": "go",
+          "seconds": 0.7,
+          "cue": "phase.start"
+        },
+        {
+          "id": "hold",
+          "seconds": 1.3,
+          "cue": "phase.peak"
+        },
+        {
+          "id": "back",
+          "seconds": 0.7,
+          "cue": "phase.end"
+        },
+        {
+          "id": "rest",
+          "seconds": 1.3
+        }
+      ],
+      "perSide": "each-side-separately",
+      "source": "spec-pulse-track r2"
+    }
+  },
+  "voiceScript": {
+    "name": {
+      "zh": "扶椅弹力带直腿前抬",
+      "en": "Standing Band Straight-Leg Raise"
+    },
+    "primaryCue": {
+      "zh": "膝盖伸直不动，腿往前抬",
+      "en": "Keep your knee straight and lift the leg forward"
+    },
+    "phase.start": {
+      "zh": "往前抬",
+      "en": "Lift"
+    },
+    "phase.peak": {
+      "zh": "停一下",
+      "en": "Pause"
+    },
+    "phase.end": {
+      "zh": "放下",
+      "en": "Lower"
+    }
+  },
+  "rhythm": {
+    "durationSeconds": 8,
+    "fps": 30,
+    "cuePoints": {
+      "start": 0.8,
+      "peak": 1.6,
+      "end": 3.033,
+      "method": "masters highlight pulse (25 % rise / plateau reached / 50 % fall) — computed from spec pulse track (spec_pulse.mjs), masters not on this machine",
+      "sampled": false
+    },
+    "binding": {
+      "phase.start": "start",
+      "phase.peak": "peak",
+      "phase.end": "end"
+    },
+    "playback": "name + primaryCue before the set; phase lines at their cue points every rep, scheduled to END by the next cue point (skip a line that cannot fit, never cut or overlap)"
+  },
+  "review": {
+    "editorial": "passed"
+  }
+}
