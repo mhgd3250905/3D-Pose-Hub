@@ -1,0 +1,317 @@
+{
+  "format": "pose-hub-voice@3",
+  "actionId": "n-straddle-fold",
+  "definitionSha256": "395b27cd83d61d8ede1617a30ae87471082860628774b71bdfd1c378ec8cdace",
+  "standard": {
+    "lufsTarget": -16,
+    "lufsTolerance": 1,
+    "truePeakMaxDbtp": -1,
+    "codec": "aac",
+    "sampleRate": 44100,
+    "channels": 1,
+    "bitrateKbps": 64,
+    "process": "hiplab v4.1"
+  },
+  "voiceProfile": {
+    "zh": {
+      "voice": "zh-CN-XiaoxiaoNeural",
+      "rate": "+6%"
+    },
+    "en": {
+      "voice": "en-US-JennyNeural",
+      "rate": "+4%"
+    }
+  },
+  "common": "voice/common/manifest.json",
+  "contentReview": "passed",
+  "manualListening": "pending",
+  "cuePoints": {
+    "start": 1.2,
+    "peak": 2.6,
+    "end": 5.733,
+    "method": "masters highlight pulse (25 % rise / plateau reached / 50 % fall) — computed from spec pulse track (spec_pulse.mjs), masters not on this machine",
+    "sampled": false
+  },
+  "lines": {
+    "zh": {
+      "name": {
+        "text": "坐姿分腿体前屈",
+        "ref": {
+          "path": "packages/n-straddle-fold/voice/zh/name.m4a",
+          "sha256": "574f8210937f96bc773f73fa8d4a3030bd6a5c749b9f4d9279686356871ab313",
+          "bytes": 14315,
+          "durationSeconds": 1.602177
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "299f3057084288b560f8561d1483a203e9f5e6cb5f9bdd30ae296aa95ff14d7e",
+          "ttsFingerprint": "a12069947bb1e677b1e01a4bef86ff740ade40804cdbdfe29c9fb3aa897d8c6d"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.2,
+          "leadMs": 40,
+          "tailMs": 72
+        },
+        "role": "intro"
+      },
+      "primaryCue": {
+        "text": "背部拉长，上身慢慢往前倾",
+        "ref": {
+          "path": "packages/n-straddle-fold/voice/zh/primaryCue.m4a",
+          "sha256": "b8f33fd3a7a7577eccb6af5833f2653847e2d34277b53fac0057611ee4e09e54",
+          "bytes": 22052,
+          "durationSeconds": 2.554195
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "1297057caf5c86262a8eb96a0525c499799c6b1b3c1f10774cf29f4455278a60",
+          "ttsFingerprint": "2a15a9eb6f04ecf76e6b4a05a37fc85d13ec0a17fdf1ce0f3a0de1813634d8f6"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.5,
+          "leadMs": 40,
+          "tailMs": 84
+        },
+        "role": "intro"
+      },
+      "phase.start": {
+        "text": "慢慢前倾",
+        "ref": {
+          "path": "packages/n-straddle-fold/voice/zh/phase.start.m4a",
+          "sha256": "bbb133bce2d12bf16593f48037ab30c3a4085aa05871773e1b59439edefa82c5",
+          "bytes": 9530,
+          "durationSeconds": 1.021678
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "1a07eb8359253a1e1614a88de317a6e7fa7be6fcdb3d3c65aef7bed19ac0db6e",
+          "ttsFingerprint": "cdfe59d1386a2f5bff4228d219ce399b8f72b668ff53610f5a508cec98d653f4"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -4.1,
+          "leadMs": 40,
+          "tailMs": 82
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 1.2,
+          "gapSeconds": 1.4,
+          "fit": "fits"
+        }
+      },
+      "phase.peak": {
+        "text": "保持，慢慢呼气",
+        "ref": {
+          "path": "packages/n-straddle-fold/voice/zh/phase.peak.m4a",
+          "sha256": "142ef9d5f8a536cf942112977e02ed6ca323ea741ae8111fcf06bc2f7c656fb3",
+          "bytes": 14058,
+          "durationSeconds": 1.602177
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "fefe1fe3d4c5b7ad9bb3fbb93c92d331aa70bff3856111be5915bbea8de24f32",
+          "ttsFingerprint": "caf5396bbb32256a45f95388df0d257c5a8354e245bac4d7881509dea03073aa"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.4,
+          "leadMs": 40,
+          "tailMs": 102
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 2.6,
+          "gapSeconds": 3.133,
+          "fit": "fits"
+        }
+      },
+      "phase.end": {
+        "text": "呼气再前倾",
+        "ref": {
+          "path": "packages/n-straddle-fold/voice/zh/phase.end.m4a",
+          "sha256": "7a9d071c9ab099d859ae923f836397581872c177f741544f98cf8fdf50cd8ed9",
+          "bytes": 10669,
+          "durationSeconds": 1.160998
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "53619d08d1e44d947724c8c86ed3b68fac2154a0d1c1eb15abfba6f7ca9dc8df",
+          "ttsFingerprint": "b34c841650084732e4f779e1e761354aab558dcd80f028042ef41bebba0d8cf3"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.0,
+          "truePeak": -2.1,
+          "leadMs": 40,
+          "tailMs": 81
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 5.733,
+          "gapSeconds": 2.267,
+          "fit": "fits"
+        }
+      }
+    },
+    "en": {
+      "name": {
+        "text": "Seated Straddle Forward Fold",
+        "ref": {
+          "path": "packages/n-straddle-fold/voice/en/name.m4a",
+          "sha256": "cac8feefe66456940a3f22aecc490742362919cf5a536d43301c8e2d02e9ec89",
+          "bytes": 14689,
+          "durationSeconds": 1.648617
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "e1a41628a1b844762593567db6fcc0d2eec837d9313a1180d46647844c0abde9",
+          "ttsFingerprint": "46a32038b00bf95e412c0e4665c21731fb60a9810514233a611c18ec044750e2"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.3,
+          "leadMs": 30,
+          "tailMs": 69
+        },
+        "role": "intro"
+      },
+      "primaryCue": {
+        "text": "Keep your back long and lean forward from your hips",
+        "ref": {
+          "path": "packages/n-straddle-fold/voice/en/primaryCue.m4a",
+          "sha256": "f1e35e3ec31092e9f6dafa4c022897b0942346a5dfbdd3ea748fc27a3b88d2db",
+          "bytes": 21777,
+          "durationSeconds": 2.507755
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "d9ace40c994e90be70075e5e9c97f32d96e45a2c008cee1f39e0368f3bf3c0da",
+          "ttsFingerprint": "4d12601454c5ecd49a7fb35781bb639f5043a950d4ad7c770479fa747cd29ae5"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.1,
+          "leadMs": 40,
+          "tailMs": 88
+        },
+        "role": "intro"
+      },
+      "phase.start": {
+        "text": "Lean forward",
+        "ref": {
+          "path": "packages/n-straddle-fold/voice/en/phase.start.m4a",
+          "sha256": "2700dd6551552cd20ab8efc1603d0cf86461415526cd484905cfb4427c520cbb",
+          "bytes": 8613,
+          "durationSeconds": 0.905578
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "693a6f81078342328a940a485a2acc2a2c184a038da34b153cac1393a31816f7",
+          "ttsFingerprint": "e375d4ca05a210944aa06cbbc777795fbe9817cfd1064bb2fb59613ce3f0631d"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.0,
+          "truePeak": -3.1,
+          "leadMs": 40,
+          "tailMs": 86
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 1.2,
+          "gapSeconds": 1.4,
+          "fit": "fits"
+        }
+      },
+      "phase.peak": {
+        "text": "Hold and breathe out",
+        "ref": {
+          "path": "packages/n-straddle-fold/voice/en/phase.peak.m4a",
+          "sha256": "3558f656de66ed99e0bb7717fa9d307de92c7891e3cf7d86763539babf0402d4",
+          "bytes": 10071,
+          "durationSeconds": 1.091338
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "d6eeb7d45a84277b9e03214d7b03de15b1de6eee29aa65e21fb4a8f87e7964dc",
+          "ttsFingerprint": "5aa699e716389cfd8b232feef6bc51055b66dcea8c621175278f4c67b9b0116d"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -15.9,
+          "truePeak": -2.7,
+          "leadMs": 40,
+          "tailMs": 81
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 2.6,
+          "gapSeconds": 3.133,
+          "fit": "fits"
+        }
+      },
+      "phase.end": {
+        "text": "Breathe out, lean more",
+        "ref": {
+          "path": "packages/n-straddle-fold/voice/en/phase.end.m4a",
+          "sha256": "4c3b50d1cba578da092e0d5690756b88be299cc62b8d3a232303822f94438565",
+          "bytes": 13239,
+          "durationSeconds": 1.462857
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "12178e3a287e9e266c8c38d2f681fa155ec911f3c7aa4f86e39394471bbaece2",
+          "ttsFingerprint": "7a843a21b6e354259a7c588064f6a976cd4eb35305257b3dc7a9cb957419c435"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.2,
+          "leadMs": 40,
+          "tailMs": 83
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 5.733,
+          "gapSeconds": 2.267,
+          "fit": "fits"
+        }
+      }
+    }
+  },
+  "summary": {
+    "clips": 10,
+    "auditFailed": [],
+    "scheduleEarly": []
+  },
+  "status": "technical-passed"
+}

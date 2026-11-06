@@ -1,0 +1,322 @@
+{
+  "format": "pose-hub-voice@3",
+  "actionId": "t-seated-straddle-lift-1leg",
+  "definitionSha256": "e575ff97a6170982ee9d17a84a52480fbb49d286bcd579110fd60a88f1c25827",
+  "standard": {
+    "lufsTarget": -16,
+    "lufsTolerance": 1,
+    "truePeakMaxDbtp": -1,
+    "codec": "aac",
+    "sampleRate": 44100,
+    "channels": 1,
+    "bitrateKbps": 64,
+    "process": "hiplab v4.1"
+  },
+  "voiceProfile": {
+    "zh": {
+      "voice": "zh-CN-XiaoxiaoNeural",
+      "rate": "+6%"
+    },
+    "en": {
+      "voice": "en-US-JennyNeural",
+      "rate": "+4%"
+    }
+  },
+  "common": "voice/common/manifest.json",
+  "contentReview": "passed",
+  "manualListening": "pending",
+  "cuePoints": {
+    "start": 0.267,
+    "peak": 0.6,
+    "end": 0.867,
+    "method": "masters highlight pulse (25 % rise / plateau reached / 50 % fall) — computed from spec pulse track (spec_pulse.mjs), masters not on this machine",
+    "sampled": false
+  },
+  "lines": {
+    "zh": {
+      "name": {
+        "text": "分腿坐单腿抬起",
+        "ref": {
+          "path": "packages/t-seated-straddle-lift-1leg/voice/zh/name.m4a",
+          "sha256": "c357f65b310e19465831122aed7d11f6e62bd0f5af001b626ef84c70fa83796c",
+          "bytes": 14344,
+          "durationSeconds": 1.625397
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "fcbbef9c602b70c08ec6b1ba3868d6b180723e914ee9f1f8438a71491f9a50a1",
+          "ttsFingerprint": "26c1d9d6020b6741a88886660e4c901728fd795ee9b46bb3a3d0e9479c1f38d0"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.4,
+          "leadMs": 30,
+          "tailMs": 95
+        },
+        "role": "intro"
+      },
+      "primaryCue": {
+        "text": "腿伸直，一条腿抬离地面",
+        "ref": {
+          "path": "packages/t-seated-straddle-lift-1leg/voice/zh/primaryCue.m4a",
+          "sha256": "10d369bf1d202a336e67ff01ee6e446283640a2c5804fea75b588011926f3f2c",
+          "bytes": 19759,
+          "durationSeconds": 2.275556
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "6d9bfea04065e13774a74683d714df75b030f677d9b7a36d7b395f79a8027b51",
+          "ttsFingerprint": "f8b8113836750cf1ceb41954f0578e7acf1ad136a9c23628ede6cf9d530cad64"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.5,
+          "leadMs": 40,
+          "tailMs": 86
+        },
+        "role": "intro"
+      },
+      "phase.start": {
+        "text": "抬起",
+        "ref": {
+          "path": "packages/t-seated-straddle-lift-1leg/voice/zh/phase.start.m4a",
+          "sha256": "432cf36ca20360c090dfe93a46ac39c12401a8c2ce115f1549b23c71d09ac114",
+          "bytes": 6692,
+          "durationSeconds": 0.696599
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "de1f5f44c86b86aa844e4af213f0fd8c71b4e17fa9e7bb5ea8ca22dd4ae141e6",
+          "ttsFingerprint": "e3152581bdfbee85974bba8680d9324f4ef10d18858ac3ea96995a9ac27e6020"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.3,
+          "leadMs": 40,
+          "tailMs": 87
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 0.267,
+          "gapSeconds": 0.333,
+          "fit": "schedule-early"
+        }
+      },
+      "phase.peak": {
+        "text": "停一下",
+        "ref": {
+          "path": "packages/t-seated-straddle-lift-1leg/voice/zh/phase.peak.m4a",
+          "sha256": "3f3d887de35830c1bf91aeee71a5f7b1c81a4c9d00e1eade455ef7d51a19a151",
+          "bytes": 6786,
+          "durationSeconds": 0.696599
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "dd1af881c3a1e655ee3ad162bcde6f234606fc00fb1e24228ed86b70f5693ea2",
+          "ttsFingerprint": "60bad401c279150f999f052c15b2a6880658ebadc45b05c4d0ad0a6fc3adba87"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -3.2,
+          "leadMs": 40,
+          "tailMs": 77
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 0.6,
+          "gapSeconds": 0.267,
+          "fit": "schedule-early"
+        }
+      },
+      "phase.end": {
+        "text": "放下",
+        "ref": {
+          "path": "packages/t-seated-straddle-lift-1leg/voice/zh/phase.end.m4a",
+          "sha256": "a275ff8cc552c152f3efc8eb36179d458243ec37326f269e16467cc67608a052",
+          "bytes": 5764,
+          "durationSeconds": 0.580499
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "d5aafbc7cd960beb731a8582d5005c8645c90f8422248452aad76d539f96984c",
+          "ttsFingerprint": "f357c5f6f872734d607fc1c5aacd1da7f0c116b0b7be502be2996e5754d648cb"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.3,
+          "leadMs": 20,
+          "tailMs": 90
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 0.867,
+          "gapSeconds": 7.133,
+          "fit": "fits"
+        }
+      }
+    },
+    "en": {
+      "name": {
+        "text": "Seated Straddle Single-Leg Lift",
+        "ref": {
+          "path": "packages/t-seated-straddle-lift-1leg/voice/en/name.m4a",
+          "sha256": "1db7917b8019c127ba44238b95b1dd2dcce97e0bcabcdc8ae37c7cb9fec22f3c",
+          "bytes": 16240,
+          "durationSeconds": 1.834376
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "1bb6a46508d2209b000a168162965348af66422f9cc21906c925d3464edf2779",
+          "ttsFingerprint": "5539e6995cdc649ac51b2fae80af55af7a9d6858ca942cbc64e6e510d00f0470"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.3,
+          "leadMs": 30,
+          "tailMs": 84
+        },
+        "role": "intro"
+      },
+      "primaryCue": {
+        "text": "Keep the leg straight and lift it off the floor",
+        "ref": {
+          "path": "packages/t-seated-straddle-lift-1leg/voice/en/primaryCue.m4a",
+          "sha256": "0e91c0f9765060e652eb68c5857231ad6a78f1bef1db3c877988cdfb1b8f0f3c",
+          "bytes": 19499,
+          "durationSeconds": 2.252336
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "afdea40e6a935dd688495d70e3be4f12baa024b859b5d466f5e9cadf8052c626",
+          "ttsFingerprint": "cfcd97fd1be41783fdf0a2132861ceb8fec62f1a9484618c06f39ee37064931d"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.2,
+          "leadMs": 40,
+          "tailMs": 92
+        },
+        "role": "intro"
+      },
+      "phase.start": {
+        "text": "Lift",
+        "ref": {
+          "path": "packages/t-seated-straddle-lift-1leg/voice/en/phase.start.m4a",
+          "sha256": "cfea158f2504eae8a555b5163be75bf3a3318fb9e8218c11d1500eb4f8b71433",
+          "bytes": 5330,
+          "durationSeconds": 0.510839
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "8c0a548fa9379bc831e81d7d530f23505a57f3cec3b1f6158939903d8f2f59e0",
+          "ttsFingerprint": "6a3a1280c1b1ca14fb188aea4a2ece6aa980a35402ec58ecf68e2744c1e76f3e"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.0,
+          "truePeak": -2.3,
+          "leadMs": 40,
+          "tailMs": 71
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 0.267,
+          "gapSeconds": 0.333,
+          "fit": "schedule-early"
+        }
+      },
+      "phase.peak": {
+        "text": "Pause",
+        "ref": {
+          "path": "packages/t-seated-straddle-lift-1leg/voice/en/phase.peak.m4a",
+          "sha256": "370241428bef6c68bcf6767c333d28e61ec7ae34a34512111176bf527c64fff7",
+          "bytes": 6157,
+          "durationSeconds": 0.626939
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "0b229636f7179aed9963a2cf9b65f8800c196f6eaab56062fc47f525d5fc798d",
+          "ttsFingerprint": "31b0c0cc0e4f2268442e90aca06df30611d0232b02acc5fadf6825b18434017b"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.4,
+          "leadMs": 30,
+          "tailMs": 87
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 0.6,
+          "gapSeconds": 0.267,
+          "fit": "schedule-early"
+        }
+      },
+      "phase.end": {
+        "text": "Down",
+        "ref": {
+          "path": "packages/t-seated-straddle-lift-1leg/voice/en/phase.end.m4a",
+          "sha256": "d80d16eb1efe6e7a1dc85d52443c86113b58de93acb09c389f792a067085e344",
+          "bytes": 5491,
+          "durationSeconds": 0.534059
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "3bda95629bc8c068aa24d675298bb68d7189fb71e80f15fc27b14e636a3ae9a9",
+          "ttsFingerprint": "8b7a16556ae02580badf7c732f30b165fc8b0b88166e404f7f6312e786111faa"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.5,
+          "leadMs": 30,
+          "tailMs": 84
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 0.867,
+          "gapSeconds": 7.133,
+          "fit": "fits"
+        }
+      }
+    }
+  },
+  "summary": {
+    "clips": 10,
+    "auditFailed": [],
+    "scheduleEarly": [
+      "packages/t-seated-straddle-lift-1leg/voice/zh/phase.start.m4a",
+      "packages/t-seated-straddle-lift-1leg/voice/zh/phase.peak.m4a",
+      "packages/t-seated-straddle-lift-1leg/voice/en/phase.start.m4a",
+      "packages/t-seated-straddle-lift-1leg/voice/en/phase.peak.m4a"
+    ]
+  },
+  "status": "technical-passed"
+}

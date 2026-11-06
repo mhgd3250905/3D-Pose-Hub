@@ -1,0 +1,317 @@
+{
+  "format": "pose-hub-voice@3",
+  "actionId": "h-open-book",
+  "definitionSha256": "33849968d0c7ff5f85862cc17042369424a2684bc50604241b1e50619fec198b",
+  "standard": {
+    "lufsTarget": -16,
+    "lufsTolerance": 1,
+    "truePeakMaxDbtp": -1,
+    "codec": "aac",
+    "sampleRate": 44100,
+    "channels": 1,
+    "bitrateKbps": 64,
+    "process": "hiplab v4.1"
+  },
+  "voiceProfile": {
+    "zh": {
+      "voice": "zh-CN-XiaoxiaoNeural",
+      "rate": "+6%"
+    },
+    "en": {
+      "voice": "en-US-JennyNeural",
+      "rate": "+4%"
+    }
+  },
+  "common": "voice/common/manifest.json",
+  "contentReview": "passed",
+  "manualListening": "pending",
+  "cuePoints": {
+    "start": 1.4,
+    "peak": 3.4,
+    "end": 6.133,
+    "method": "masters highlight pulse (25 % rise / plateau reached / 50 % fall) — computed from spec pulse track (spec_pulse.mjs), masters not on this machine",
+    "sampled": false
+  },
+  "lines": {
+    "zh": {
+      "name": {
+        "text": "侧卧开书式",
+        "ref": {
+          "path": "packages/h-open-book/voice/zh/name.m4a",
+          "sha256": "570b528f3a78970bfba06a8db70438dafbeb018487d059ef304b4d57cc7d622f",
+          "bytes": 10494,
+          "durationSeconds": 1.160998
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "bdc328c63291c6a3180566c594f8dd16cf01c9d2c2a1a75a0576064a9820149e",
+          "ttsFingerprint": "9f7d474901d76dcf38e9031d96463cc33c9f27b2360c8e64ddd5f75432047d0a"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -3.3,
+          "leadMs": 40,
+          "tailMs": 101
+        },
+        "role": "intro"
+      },
+      "primaryCue": {
+        "text": "双膝并拢，上面的手臂画个大弧往后打开",
+        "ref": {
+          "path": "packages/h-open-book/voice/zh/primaryCue.m4a",
+          "sha256": "4d7bf07d1671ebc76bd3b4c90242f69a22212dcac9d04da9f80a4489d8ade4bf",
+          "bytes": 31646,
+          "durationSeconds": 3.738413
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "9ef4ee4edf813b0343d784ff76916fa37f707f0062ba3ac542aab91af2160f65",
+          "ttsFingerprint": "ff0e5153c08946ce81c4832b097625c11a1c68b654cfff47f8b5e71b63d1a297"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.3,
+          "leadMs": 40,
+          "tailMs": 98
+        },
+        "role": "intro"
+      },
+      "phase.start": {
+        "text": "往后打开",
+        "ref": {
+          "path": "packages/h-open-book/voice/zh/phase.start.m4a",
+          "sha256": "c205010454842e00c63708998bf2fdc45cd0f85f36c1af190e940479eeb95b5e",
+          "bytes": 8815,
+          "durationSeconds": 0.952018
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "6ff92bbb517b13610252990a8d5adf9c170107a43af0d15795abc1dc8a0ac022",
+          "ttsFingerprint": "2dcd019387b325345c7ae83cf3c636c6a14f177b98b7f9a188bba74f915b3660"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.6,
+          "leadMs": 40,
+          "tailMs": 102
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 1.4,
+          "gapSeconds": 2.0,
+          "fit": "fits"
+        }
+      },
+      "phase.peak": {
+        "text": "停住呼吸",
+        "ref": {
+          "path": "packages/h-open-book/voice/zh/phase.peak.m4a",
+          "sha256": "f816360e1e8a3c717ab5be4a650f03ee9b823d255f0b9d41a0404f3b84ee57a4",
+          "bytes": 8890,
+          "durationSeconds": 0.952018
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "aea737c616ea9f0b361e2ab31e97dd9a5627a8cf32b007b46a926eff564881c9",
+          "ttsFingerprint": "f90c818dafe4d189506e4dd0c3271f457b18b9b11bfc978ab7c8e14990e65697"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.0,
+          "truePeak": -4.1,
+          "leadMs": 40,
+          "tailMs": 82
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 3.4,
+          "gapSeconds": 2.733,
+          "fit": "fits"
+        }
+      },
+      "phase.end": {
+        "text": "慢慢回来",
+        "ref": {
+          "path": "packages/h-open-book/voice/zh/phase.end.m4a",
+          "sha256": "5db2fa57a8ff34c229218d660bdac9e50998b75a48d65bf4e8094df77b7b1938",
+          "bytes": 8500,
+          "durationSeconds": 0.905578
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "801fa47df332313d34b6804dc95cde102c373b15e46140e0a9e74946266b6f69",
+          "ttsFingerprint": "56f846cb43bc57f33b62cc1efd40980a7e5adfc8c4d34f8145d2282fcacde123"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -3.1,
+          "leadMs": 40,
+          "tailMs": 96
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 6.133,
+          "gapSeconds": 1.867,
+          "fit": "fits"
+        }
+      }
+    },
+    "en": {
+      "name": {
+        "text": "Side-Lying Open Book",
+        "ref": {
+          "path": "packages/h-open-book/voice/en/name.m4a",
+          "sha256": "50ae1b7300d1a55833274453f46c52855efcaa49d742bfabb994e16048c6016d",
+          "bytes": 12141,
+          "durationSeconds": 1.346757
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "3197c964dd046536d1937b52fdc5deb70a1c3c4fd14fc387c3a2af32b86754d1",
+          "ttsFingerprint": "b2a796ddc97da52062ce7f29a1eef0f0fcce2d29d628ebc52ddd108c776dc5b2"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.2,
+          "leadMs": 30,
+          "tailMs": 77
+        },
+        "role": "intro"
+      },
+      "primaryCue": {
+        "text": "Keep your knees together and sweep your top arm back in a big arc",
+        "ref": {
+          "path": "packages/h-open-book/voice/en/primaryCue.m4a",
+          "sha256": "c375ab5c2bb9cae47ff613decca1efe160b15875f15de4106c5557a4b157af51",
+          "bytes": 27087,
+          "durationSeconds": 3.181134
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "6caff03b126c0640112b6d73064b056de5380781582aba5c752b051c3c74eda6",
+          "ttsFingerprint": "b1798cdcb56e0e167d95531a52c9e5aee6b4a9969f120d5f1562c0052666cb50"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.0,
+          "leadMs": 40,
+          "tailMs": 91
+        },
+        "role": "intro"
+      },
+      "phase.start": {
+        "text": "Open up",
+        "ref": {
+          "path": "packages/h-open-book/voice/en/phase.start.m4a",
+          "sha256": "59d7ef7aef510beded9c8046b0eb8280ed3203c5f6b000aa3537e9c6046fefe3",
+          "bytes": 6263,
+          "durationSeconds": 0.626939
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "93e67c4c4daec8d3e94288ab69a3df79838443fddc1f5d3f6969d799f112e2db",
+          "ttsFingerprint": "38b9c91e0032b8b3b09509b3db07be5dbfb579f3004aeb2e6b0d03fde3f01e17"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.2,
+          "leadMs": 40,
+          "tailMs": 57
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 1.4,
+          "gapSeconds": 2.0,
+          "fit": "fits"
+        }
+      },
+      "phase.peak": {
+        "text": "Hold and breathe",
+        "ref": {
+          "path": "packages/h-open-book/voice/en/phase.peak.m4a",
+          "sha256": "77b4278eff1c4c5cb9f9bb3b5bef7fa9df910fe2d26221a836e48dc11b1c6767",
+          "bytes": 8189,
+          "durationSeconds": 0.859138
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "88fe7d2ba03a4dcea4f2978a873b3f6a2ca03806e49a0f3d79a2483d5170ab70",
+          "ttsFingerprint": "edb9f5db007078863ce5e746260ce6eeb8b8e1711a5757ecc8513e1bd77bc87e"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.9,
+          "leadMs": 40,
+          "tailMs": 69
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 3.4,
+          "gapSeconds": 2.733,
+          "fit": "fits"
+        }
+      },
+      "phase.end": {
+        "text": "Come back slowly",
+        "ref": {
+          "path": "packages/h-open-book/voice/en/phase.end.m4a",
+          "sha256": "33d50499068c94aa64e67ddd2dbecd0b3e57abb4e6a2bb99f9fb3ea3c892f495",
+          "bytes": 9585,
+          "durationSeconds": 1.021678
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "eec0cc529ae87161975b4d239076a565375fe97ec3f57a0790fa94ef8431ece6",
+          "ttsFingerprint": "aac0b19188f305cba6b7e3f2ef96d5742bc8d65ff6a21274ffe76dea354886b5"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.1,
+          "leadMs": 30,
+          "tailMs": 82
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 6.133,
+          "gapSeconds": 1.867,
+          "fit": "fits"
+        }
+      }
+    }
+  },
+  "summary": {
+    "clips": 10,
+    "auditFailed": [],
+    "scheduleEarly": []
+  },
+  "status": "technical-passed"
+}

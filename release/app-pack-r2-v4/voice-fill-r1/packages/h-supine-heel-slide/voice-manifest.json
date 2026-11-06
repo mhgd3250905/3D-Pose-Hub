@@ -1,0 +1,317 @@
+{
+  "format": "pose-hub-voice@3",
+  "actionId": "h-supine-heel-slide",
+  "definitionSha256": "59d45d8b164155dc5a52a318203d23adae8b1b87fa0ba5f14573beba6f18e0f9",
+  "standard": {
+    "lufsTarget": -16,
+    "lufsTolerance": 1,
+    "truePeakMaxDbtp": -1,
+    "codec": "aac",
+    "sampleRate": 44100,
+    "channels": 1,
+    "bitrateKbps": 64,
+    "process": "hiplab v4.1"
+  },
+  "voiceProfile": {
+    "zh": {
+      "voice": "zh-CN-XiaoxiaoNeural",
+      "rate": "+6%"
+    },
+    "en": {
+      "voice": "en-US-JennyNeural",
+      "rate": "+4%"
+    }
+  },
+  "common": "voice/common/manifest.json",
+  "contentReview": "passed",
+  "manualListening": "pending",
+  "cuePoints": {
+    "start": 1.0,
+    "peak": 2.0,
+    "end": 4.033,
+    "method": "masters highlight pulse (25 % rise / plateau reached / 50 % fall) — computed from spec pulse track (spec_pulse.mjs), masters not on this machine",
+    "sampled": false
+  },
+  "lines": {
+    "zh": {
+      "name": {
+        "text": "仰卧脚跟滑",
+        "ref": {
+          "path": "packages/h-supine-heel-slide/voice/zh/name.m4a",
+          "sha256": "1413ae491695834f7eaad6c75a8043ef743cbe90652547e8b36233f900330068",
+          "bytes": 10713,
+          "durationSeconds": 1.160998
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "89f439e5914722eeaea80c6ada10c15a47716f16e3d99110fc360d6c799e53b8",
+          "ttsFingerprint": "32e24532bf218d5d27753eb9200250ff173458a336b39e8388c828a34f472d33"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.3,
+          "leadMs": 40,
+          "tailMs": 91
+        },
+        "role": "intro"
+      },
+      "primaryCue": {
+        "text": "脚跟贴着地面慢慢滑远，再滑回来",
+        "ref": {
+          "path": "packages/h-supine-heel-slide/voice/zh/primaryCue.m4a",
+          "sha256": "cb29824c5e739b1a7e55c6e4ef3cf65a1f487a9e0874225f26a0c4c23a5a85e8",
+          "bytes": 25524,
+          "durationSeconds": 2.972154
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "2dbfcb25399856521581e26c36eee662764e8aa512a4b7a16501ce04ff90dd97",
+          "ttsFingerprint": "995510c55449343a607e2358cf092852eb6eca5f8b0d57b0554d233cca93d840"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.1,
+          "leadMs": 40,
+          "tailMs": 82
+        },
+        "role": "intro"
+      },
+      "phase.start": {
+        "text": "脚跟滑出",
+        "ref": {
+          "path": "packages/h-supine-heel-slide/voice/zh/phase.start.m4a",
+          "sha256": "48bae625605f37d542e3b93b9bd6d20b59777dabbf7ba62be0e689d8750feaa0",
+          "bytes": 9164,
+          "durationSeconds": 0.975238
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "97a26fae5f2e2f5dd3dddc52fb81c9e698b3694d12a8f529c09794e70395db77",
+          "ttsFingerprint": "791e21bdd07c1ab87009c450b016aa2c8a3e5e6aa84f65c4c7539e7c4bdab12c"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.4,
+          "leadMs": 40,
+          "tailMs": 75
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 1.0,
+          "gapSeconds": 1.0,
+          "fit": "fits"
+        }
+      },
+      "phase.peak": {
+        "text": "停一下",
+        "ref": {
+          "path": "packages/h-supine-heel-slide/voice/zh/phase.peak.m4a",
+          "sha256": "3f3d887de35830c1bf91aeee71a5f7b1c81a4c9d00e1eade455ef7d51a19a151",
+          "bytes": 6786,
+          "durationSeconds": 0.696599
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "dd1af881c3a1e655ee3ad162bcde6f234606fc00fb1e24228ed86b70f5693ea2",
+          "ttsFingerprint": "60bad401c279150f999f052c15b2a6880658ebadc45b05c4d0ad0a6fc3adba87"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -3.2,
+          "leadMs": 40,
+          "tailMs": 77
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 2.0,
+          "gapSeconds": 2.033,
+          "fit": "fits"
+        }
+      },
+      "phase.end": {
+        "text": "滑回",
+        "ref": {
+          "path": "packages/h-supine-heel-slide/voice/zh/phase.end.m4a",
+          "sha256": "92a316d0357dd67ad39a7d7ffb92dd18a12b7f885c254d294b1532acccf20d1a",
+          "bytes": 6121,
+          "durationSeconds": 0.603719
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "2f7b84119abb1136cb734e28f0306f930ba2c4cf72f01a27d9392f5da8fb1cf7",
+          "ttsFingerprint": "d92f22e0affed45fc6c9ece02c2a446a55df752afd04821a83f44a2742d8c130"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.3,
+          "leadMs": 40,
+          "tailMs": 74
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 4.033,
+          "gapSeconds": 3.967,
+          "fit": "fits"
+        }
+      }
+    },
+    "en": {
+      "name": {
+        "text": "Lying Heel Slide",
+        "ref": {
+          "path": "packages/h-supine-heel-slide/voice/en/name.m4a",
+          "sha256": "ee709ae940b5cd6ffde3cfea53226c9f2280df724526efde285da4c8caaff9dc",
+          "bytes": 10422,
+          "durationSeconds": 1.137778
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "f8c28c33e7e139897514c4f4ed5a611511f5c2d88942409452710f8357b5985f",
+          "ttsFingerprint": "2b5043cbcefcc0df3dd5e63f658e00f99f3d9560e10b35bed4a5230972c9649d"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.2,
+          "leadMs": 40,
+          "tailMs": 68
+        },
+        "role": "intro"
+      },
+      "primaryCue": {
+        "text": "Slide your heel slowly away along the floor, then back",
+        "ref": {
+          "path": "packages/h-supine-heel-slide/voice/en/primaryCue.m4a",
+          "sha256": "81b5c63f48f8d41874c1457e5b49d89d42058541178b2b909cd449a7bbce45f7",
+          "bytes": 27507,
+          "durationSeconds": 3.227574
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "fc6b5fe3987a7bc7ad07ad58f540953b2c38e7083ae6cc12d5be5caf645cf51d",
+          "ttsFingerprint": "23e0aab2430d9c55ab0b65964c996211138cb15f89b6a9e57d4e5f4ac244e562"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.3,
+          "leadMs": 40,
+          "tailMs": 78
+        },
+        "role": "intro"
+      },
+      "phase.start": {
+        "text": "Slide out",
+        "ref": {
+          "path": "packages/h-supine-heel-slide/voice/en/phase.start.m4a",
+          "sha256": "d559e35dd13321fba4705bf320f18f544c9925adea98ac86bb96e4ca1c437355",
+          "bytes": 7328,
+          "durationSeconds": 0.766259
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "c4a6f722ae1effba10674bc1fbc6c6ad17121b45a318c99f8ac03eb3acce4c28",
+          "ttsFingerprint": "e1e9181a47e1c9786585b295287b3eba58c1b36f020988a31ceee1b8baf0890d"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -3.3,
+          "leadMs": 30,
+          "tailMs": 76
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 1.0,
+          "gapSeconds": 1.0,
+          "fit": "fits"
+        }
+      },
+      "phase.peak": {
+        "text": "Pause",
+        "ref": {
+          "path": "packages/h-supine-heel-slide/voice/en/phase.peak.m4a",
+          "sha256": "370241428bef6c68bcf6767c333d28e61ec7ae34a34512111176bf527c64fff7",
+          "bytes": 6157,
+          "durationSeconds": 0.626939
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "0b229636f7179aed9963a2cf9b65f8800c196f6eaab56062fc47f525d5fc798d",
+          "ttsFingerprint": "31b0c0cc0e4f2268442e90aca06df30611d0232b02acc5fadf6825b18434017b"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.4,
+          "leadMs": 30,
+          "tailMs": 87
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 2.0,
+          "gapSeconds": 2.033,
+          "fit": "fits"
+        }
+      },
+      "phase.end": {
+        "text": "Slide back",
+        "ref": {
+          "path": "packages/h-supine-heel-slide/voice/en/phase.end.m4a",
+          "sha256": "1dcf925aefcb66cf98b7a2beacedb9186e0d00f59bdf7395ff373392fa75d13d",
+          "bytes": 7824,
+          "durationSeconds": 0.835918
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "c96328bf663082cec7687bd097bac4d907664f30d234bbda58851961a2287585",
+          "ttsFingerprint": "6b25d2234c472f658f669e01553402a711b08c04bd28f802d60892b8377f4e0d"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.4,
+          "leadMs": 30,
+          "tailMs": 86
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 4.033,
+          "gapSeconds": 3.967,
+          "fit": "fits"
+        }
+      }
+    }
+  },
+  "summary": {
+    "clips": 10,
+    "auditFailed": [],
+    "scheduleEarly": []
+  },
+  "status": "technical-passed"
+}

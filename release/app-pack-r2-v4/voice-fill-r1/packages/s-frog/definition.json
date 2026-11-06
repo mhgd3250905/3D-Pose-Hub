@@ -1,0 +1,156 @@
+{
+  "format": "pose-hub-action-definition@3",
+  "id": "s-frog",
+  "text": {
+    "path": "catalog/production/v3-text/s-frog.json",
+    "sha256": "ca1431047930a94757b94a0f39f1ba9977a2dd06d699cc6352f6524c2e8398ee",
+    "reviewStatus": "ai-reviewed-r2-needs-user-review"
+  },
+  "recipe": {
+    "path": "catalog/production/remaining219-r1/recipes/s-frog.json",
+    "sha256": "a65f04ad748e53cf573f703dafcec97e26e032cb3e9b8aacc6a9585867f73dfc",
+    "spec": "drill-anim/specs/s-frog-r3-gc1.js",
+    "specSha256Lf": "1a725daac21c4dff18d0235e337b77c481aa856b5754440633a8229d78c4038e"
+  },
+  "productionModel": {
+    "format": "pose-hub-production-model",
+    "formatVersion": 1,
+    "modelProfile": "training-human-v3-armfix",
+    "modelVersion": "0.1.0-r2",
+    "id": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "definition": {
+    "name": {
+      "zh": "青蛙式",
+      "en": "Frog Stretch"
+    },
+    "purpose": {
+      "zh": "拉伸大腿内侧",
+      "en": "Stretch your inner thighs."
+    },
+    "cues": [
+      {
+        "id": "cue1",
+        "primary": true,
+        "text": {
+          "zh": "膝盖往两边打开，臀部慢慢往后坐",
+          "en": "Spread your knees wide and slowly sit your hips back"
+        }
+      },
+      {
+        "id": "cue2",
+        "primary": false,
+        "text": {
+          "zh": "前臂撑地，脚尖朝外，背放平。",
+          "en": "Rest on your forearms, toes out, back flat."
+        }
+      },
+      {
+        "id": "cue3",
+        "primary": false,
+        "text": {
+          "zh": "保持不动，慢慢呼吸，每次呼气再放松一点。",
+          "en": "Stay still, breathe slowly, and relax a little deeper each time you breathe out."
+        }
+      },
+      {
+        "id": "cue4",
+        "primary": false,
+        "text": {
+          "zh": "别来回颠，有拉伸感就够，别拉到疼。",
+          "en": "Do not bounce; a clear stretch is enough, never pain."
+        }
+      }
+    ],
+    "commonErrors": [
+      {
+        "zh": "硬压髋部追求更大幅度",
+        "en": "Forcing your hips to go further."
+      },
+      {
+        "zh": "憋气或来回颠",
+        "en": "Holding your breath or bouncing."
+      }
+    ],
+    "tags": {
+      "category": "stretch",
+      "activeMuscles": [
+        "adductors"
+      ],
+      "synergistMuscles": [
+        "core",
+        "lower-back"
+      ],
+      "equipment": [
+        "mat"
+      ],
+      "position": "quadruped",
+      "difficulty": 3
+    },
+    "unilateral": false,
+    "defaultDose": {
+      "mode": "time",
+      "sets": 2,
+      "seconds": 45,
+      "restSeconds": 15
+    },
+    "cautions": [
+      {
+        "zh": "膝盖下面垫软垫，膝盖不舒服就别再分开",
+        "en": "Pad under your knees and stop widening if they feel uncomfortable."
+      },
+      {
+        "zh": "大腿内侧疼时坐浅一点，别让别人帮你压",
+        "en": "If your inner thighs hurt, sit back less, and never let someone push you down."
+      }
+    ],
+    "training": {
+      "kind": "hold",
+      "leadSeconds": 1,
+      "source": "user-decision static-hold r2"
+    }
+  },
+  "voiceScript": {
+    "name": {
+      "zh": "青蛙式",
+      "en": "Frog Stretch"
+    },
+    "primaryCue": {
+      "zh": "膝盖往两边打开，臀部慢慢往后坐",
+      "en": "Spread your knees wide and slowly sit your hips back"
+    },
+    "phase.start": {
+      "zh": "臀部后坐",
+      "en": "Sit hips back"
+    },
+    "phase.peak": {
+      "zh": "保持，慢慢呼气",
+      "en": "Hold and breathe out"
+    },
+    "phase.end": {
+      "zh": "呼气再放松",
+      "en": "Relax a bit deeper"
+    }
+  },
+  "rhythm": {
+    "durationSeconds": 8,
+    "fps": 30,
+    "cuePoints": {
+      "start": 1.133,
+      "peak": 3.8,
+      "end": 6.233,
+      "method": "masters highlight pulse (25 % rise / plateau reached / 50 % fall) — computed from spec pulse track (spec_pulse.mjs), masters not on this machine",
+      "sampled": false
+    },
+    "binding": {
+      "phase.start": "start",
+      "phase.peak": "peak",
+      "phase.end": "end"
+    },
+    "playback": "name + primaryCue before the set; phase lines at their cue points every rep, scheduled to END by the next cue point (skip a line that cannot fit, never cut or overlap)"
+  },
+  "review": {
+    "editorial": "passed"
+  }
+}

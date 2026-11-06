@@ -1,0 +1,164 @@
+{
+  "format": "pose-hub-action-definition@3",
+  "id": "h-chair-progressive-front-split-native",
+  "text": {
+    "path": "catalog/production/v3-text/h-chair-progressive-front-split-native.json",
+    "sha256": "f53fc5ac81b9219421759a120c2d1d86e119cfd02248d20710d27f66e4b09089",
+    "reviewStatus": "ai-reviewed-r2-needs-user-review"
+  },
+  "recipe": {
+    "path": "catalog/production/remaining219-r1/recipes/h-chair-progressive-front-split-native.json",
+    "sha256": "67acd6df0e768e0de201b5895816be46449d36946a9f5aeaa1dbdad8d2f3dd36",
+    "spec": "drill-anim/specs/h-chair-progressive-front-split-native-gc1.js",
+    "specSha256Lf": "0de69f01796d516debd8dce69377adb34ce4d671e813de354b336a58fb65c6af"
+  },
+  "productionModel": {
+    "format": "pose-hub-production-model",
+    "formatVersion": 1,
+    "modelProfile": "training-human-v3-armfix",
+    "modelVersion": "0.1.0-r2",
+    "id": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "definition": {
+    "name": {
+      "zh": "扶椅渐进前后劈叉",
+      "en": "Chair-Supported Progressive Front Split"
+    },
+    "purpose": {
+      "zh": "一点点拉开大腿后侧和髋前侧",
+      "en": "Gradually stretch the backs of your thighs and the front of your hips."
+    },
+    "cues": [
+      {
+        "id": "cue1",
+        "primary": true,
+        "text": {
+          "zh": "一手轻扶椅子，前后腿慢慢滑开",
+          "en": "Hold the chair lightly and slowly slide your legs apart"
+        }
+      },
+      {
+        "id": "cue2",
+        "primary": false,
+        "text": {
+          "zh": "只滑到能控制的地方，髋部朝前。",
+          "en": "Slide only as far as you can control, hips facing forward."
+        }
+      },
+      {
+        "id": "cue3",
+        "primary": false,
+        "text": {
+          "zh": "停住不动，慢慢呼吸。",
+          "en": "Stay still and breathe slowly."
+        }
+      },
+      {
+        "id": "cue4",
+        "primary": false,
+        "text": {
+          "zh": "每次呼气再放松一点，别来回颠。",
+          "en": "Each time you breathe out, relax a little deeper. No bouncing."
+        }
+      }
+    ],
+    "commonErrors": [
+      {
+        "zh": "一下子滑得太远",
+        "en": "Sliding too far too fast."
+      },
+      {
+        "zh": "憋气",
+        "en": "Holding your breath."
+      },
+      {
+        "zh": "来回颠着往下压",
+        "en": "Bouncing to go deeper."
+      }
+    ],
+    "tags": {
+      "category": "stretch",
+      "activeMuscles": [
+        "hamstrings",
+        "hip-flexors"
+      ],
+      "synergistMuscles": [
+        "adductors",
+        "quadriceps"
+      ],
+      "equipment": [
+        "chair",
+        "mat"
+      ],
+      "position": "half-kneeling",
+      "difficulty": 2
+    },
+    "unilateral": true,
+    "defaultDose": {
+      "mode": "time",
+      "sets": 2,
+      "seconds": 45,
+      "restSeconds": 15
+    },
+    "cautions": [
+      {
+        "zh": "只拉到舒服的程度，疼就放松",
+        "en": "Stretch only to a comfortable point, and ease off if anything hurts."
+      },
+      {
+        "zh": "用结实、不带轮子的椅子",
+        "en": "Use a sturdy chair without wheels."
+      }
+    ],
+    "startingSide": "right",
+    "training": {
+      "kind": "hold",
+      "leadSeconds": 1,
+      "perSide": "each-side-separately",
+      "source": "user-decision static-hold r2"
+    }
+  },
+  "voiceScript": {
+    "name": {
+      "zh": "扶椅渐进前后劈叉",
+      "en": "Chair-Supported Progressive Front Split"
+    },
+    "primaryCue": {
+      "zh": "一手轻扶椅子，前后腿慢慢滑开",
+      "en": "Hold the chair lightly and slowly slide your legs apart"
+    },
+    "phase.start": {
+      "zh": "慢慢滑开",
+      "en": "Slide apart"
+    },
+    "phase.peak": {
+      "zh": "保持，慢慢呼气",
+      "en": "Hold and breathe out"
+    },
+    "phase.end": {
+      "zh": "呼气再放松",
+      "en": "Relax a bit deeper"
+    }
+  },
+  "rhythm": {
+    "durationSeconds": 8,
+    "fps": 30,
+    "cuePoints": {
+      "start": 1.3,
+      "peak": 2.8,
+      "end": 6.033,
+      "method": "masters highlight pulse (25 % rise / plateau reached / 50 % fall) — computed from spec pulse track (spec_pulse.mjs), masters not on this machine",
+      "sampled": false
+    },
+    "binding": {
+      "phase.start": "start",
+      "phase.peak": "peak",
+      "phase.end": "end"
+    },
+    "playback": "name + primaryCue before the set; phase lines at their cue points every rep, scheduled to END by the next cue point (skip a line that cannot fit, never cut or overlap)"
+  },
+  "review": {
+    "editorial": "passed"
+  }
+}

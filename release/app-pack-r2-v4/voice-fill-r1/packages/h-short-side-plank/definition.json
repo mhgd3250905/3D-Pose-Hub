@@ -1,0 +1,147 @@
+{
+  "format": "pose-hub-action-definition@3",
+  "id": "h-short-side-plank",
+  "text": {
+    "path": "catalog/production/v3-text/h-short-side-plank.json",
+    "sha256": "47890d3cc0d4b25b28a02a3d522fe03c06b6604a1b1ff16341348ae38b50203f",
+    "reviewStatus": "ai-reviewed-r2-needs-user-review"
+  },
+  "recipe": {
+    "path": "catalog/production/remaining219-r1/recipes/h-short-side-plank.json",
+    "sha256": "337c75028d1374e19db9cd2a58edda054387e8ae47fea2b6e43d5348de2726c9",
+    "spec": "drill-anim/specs/h-short-side-plank-gc1-et1.js",
+    "specSha256Lf": "511e47a9c57bb354ab3b58b6616bc7e3dbec4dd442d857c2e08074f3c94b2047"
+  },
+  "productionModel": {
+    "format": "pose-hub-production-model",
+    "formatVersion": 1,
+    "modelProfile": "training-human-v3-armfix",
+    "modelVersion": "0.1.0-r2",
+    "id": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "definition": {
+    "name": {
+      "zh": "屈膝侧平板",
+      "en": "Bent-Knee Side Plank"
+    },
+    "purpose": {
+      "zh": "练侧腹和臀部外侧，适合入门的侧撑",
+      "en": "Build the sides of your waist and outer hips with a beginner side plank."
+    },
+    "cues": [
+      {
+        "id": "cue1",
+        "primary": true,
+        "text": {
+          "zh": "前臂和膝盖撑地，屁股抬起成一条直线",
+          "en": "Prop on your forearm and knee and lift your hips into a straight line"
+        }
+      },
+      {
+        "id": "cue2",
+        "primary": false,
+        "text": {
+          "zh": "手肘在肩膀正下方，用力推地。",
+          "en": "Keep your elbow under your shoulder and push the floor away."
+        }
+      },
+      {
+        "id": "cue3",
+        "primary": false,
+        "text": {
+          "zh": "正常呼吸，屁股别往下掉。",
+          "en": "Breathe normally and do not let your hips drop."
+        }
+      }
+    ],
+    "commonErrors": [
+      {
+        "zh": "屁股往下掉",
+        "en": "Letting the hips drop."
+      },
+      {
+        "zh": "肩膀往耳朵方向塌",
+        "en": "Letting the shoulder sink toward the ear."
+      }
+    ],
+    "tags": {
+      "category": "stability",
+      "activeMuscles": [
+        "obliques",
+        "core"
+      ],
+      "synergistMuscles": [
+        "abductors",
+        "deltoids"
+      ],
+      "equipment": [
+        "mat"
+      ],
+      "position": "side-lying",
+      "difficulty": 1
+    },
+    "unilateral": true,
+    "defaultDose": {
+      "mode": "time",
+      "sets": 3,
+      "seconds": 20,
+      "restSeconds": 30
+    },
+    "cautions": [
+      {
+        "zh": "肩膀前面夹着疼时，幅度小一点或换简单版本",
+        "en": "If the front of your shoulder pinches, move less far or switch to an easier version."
+      }
+    ],
+    "startingSide": "left",
+    "training": {
+      "kind": "hold",
+      "leadSeconds": 1,
+      "perSide": "each-side-separately",
+      "source": "timer"
+    }
+  },
+  "voiceScript": {
+    "name": {
+      "zh": "屈膝侧平板",
+      "en": "Bent-Knee Side Plank"
+    },
+    "primaryCue": {
+      "zh": "前臂和膝盖撑地，屁股抬起成一条直线",
+      "en": "Prop on your forearm and knee and lift your hips into a straight line"
+    },
+    "phase.start": {
+      "zh": "抬起屁股",
+      "en": "Lift your hips"
+    },
+    "phase.peak": {
+      "zh": "保持住",
+      "en": "Hold"
+    },
+    "phase.end": {
+      "zh": "慢慢放下",
+      "en": "Lower slowly"
+    }
+  },
+  "rhythm": {
+    "durationSeconds": 8,
+    "fps": 30,
+    "cuePoints": {
+      "start": 0.0,
+      "peak": 4.0,
+      "end": 8,
+      "method": "flat pulse (hold): 0 / mid / end — computed from spec pulse track (spec_pulse.mjs), masters not on this machine",
+      "sampled": false
+    },
+    "binding": {
+      "phase.start": "start",
+      "phase.peak": "peak",
+      "phase.end": "end"
+    },
+    "playback": "name + primaryCue before the set; phase lines at their cue points every rep, scheduled to END by the next cue point (skip a line that cannot fit, never cut or overlap)"
+  },
+  "review": {
+    "editorial": "passed"
+  }
+}

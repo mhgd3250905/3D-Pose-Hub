@@ -1,0 +1,157 @@
+{
+  "format": "pose-hub-action-definition@3",
+  "id": "n-straddle-fold",
+  "text": {
+    "path": "catalog/production/v3-text/n-straddle-fold.json",
+    "sha256": "6dc7cb7e06c95418406b305c6755cf7011dd1f9546547743aff2619c86a955b3",
+    "reviewStatus": "ai-reviewed-r2-needs-user-review"
+  },
+  "recipe": {
+    "path": "catalog/production/remaining219-r1/recipes/n-straddle-fold.json",
+    "sha256": "d54cace2eb4303d418dfbf847e8756f305f5a28291eac1cf7e9f4eacb772f1f7",
+    "spec": "drill-anim/specs/n-straddle-fold-gc-int1.js",
+    "specSha256Lf": "12bc881236d642c1bd2acbf57593fb6b479a77200a8a8451c94d758b1ab601fe"
+  },
+  "productionModel": {
+    "format": "pose-hub-production-model",
+    "formatVersion": 1,
+    "modelProfile": "training-human-v3-armfix",
+    "modelVersion": "0.1.0-r2",
+    "id": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "definition": {
+    "name": {
+      "zh": "坐姿分腿体前屈",
+      "en": "Seated Straddle Forward Fold"
+    },
+    "purpose": {
+      "zh": "拉伸大腿内侧和后侧",
+      "en": "Stretch the inner and back of your thighs."
+    },
+    "cues": [
+      {
+        "id": "cue1",
+        "primary": true,
+        "text": {
+          "zh": "背部拉长，上身慢慢往前倾",
+          "en": "Keep your back long and lean forward from your hips"
+        }
+      },
+      {
+        "id": "cue2",
+        "primary": false,
+        "text": {
+          "zh": "坐在垫子上，双腿伸直分开，脚尖和膝盖朝上。",
+          "en": "Sit with your legs straight and wide, toes and kneecaps up."
+        }
+      },
+      {
+        "id": "cue3",
+        "primary": false,
+        "text": {
+          "zh": "保持不动，慢慢呼吸，每次呼气再放松一点。",
+          "en": "Stay still, breathe slowly, and relax a little deeper each time you breathe out."
+        }
+      },
+      {
+        "id": "cue4",
+        "primary": false,
+        "text": {
+          "zh": "别来回颠，有拉伸感就够，别拉到疼。",
+          "en": "Do not bounce; a clear stretch is enough, never pain."
+        }
+      }
+    ],
+    "commonErrors": [
+      {
+        "zh": "弓背去够地面",
+        "en": "Rounding the back to reach the floor."
+      },
+      {
+        "zh": "膝盖往里倒",
+        "en": "Letting the knees roll inward."
+      },
+      {
+        "zh": "憋气或来回颠",
+        "en": "Holding your breath or bouncing."
+      }
+    ],
+    "tags": {
+      "category": "stretch",
+      "activeMuscles": [
+        "adductors",
+        "hamstrings"
+      ],
+      "synergistMuscles": [
+        "lower-back"
+      ],
+      "equipment": [
+        "yoga-blocks",
+        "mat"
+      ],
+      "position": "seated",
+      "difficulty": 1
+    },
+    "unilateral": false,
+    "defaultDose": {
+      "mode": "time",
+      "sets": 2,
+      "seconds": 30,
+      "restSeconds": 15
+    },
+    "cautions": [
+      {
+        "zh": "拉伸处疼时幅度小一点，还疼就停",
+        "en": "If your stretch hurts, move less far, and stop if it still hurts."
+      }
+    ],
+    "training": {
+      "kind": "hold",
+      "leadSeconds": 1,
+      "source": "user-decision static-hold r2"
+    }
+  },
+  "voiceScript": {
+    "name": {
+      "zh": "坐姿分腿体前屈",
+      "en": "Seated Straddle Forward Fold"
+    },
+    "primaryCue": {
+      "zh": "背部拉长，上身慢慢往前倾",
+      "en": "Keep your back long and lean forward from your hips"
+    },
+    "phase.start": {
+      "zh": "慢慢前倾",
+      "en": "Lean forward"
+    },
+    "phase.peak": {
+      "zh": "保持，慢慢呼气",
+      "en": "Hold and breathe out"
+    },
+    "phase.end": {
+      "zh": "呼气再前倾",
+      "en": "Breathe out, lean more"
+    }
+  },
+  "rhythm": {
+    "durationSeconds": 8,
+    "fps": 30,
+    "cuePoints": {
+      "start": 1.2,
+      "peak": 2.6,
+      "end": 5.733,
+      "method": "masters highlight pulse (25 % rise / plateau reached / 50 % fall) — computed from spec pulse track (spec_pulse.mjs), masters not on this machine",
+      "sampled": false
+    },
+    "binding": {
+      "phase.start": "start",
+      "phase.peak": "peak",
+      "phase.end": "end"
+    },
+    "playback": "name + primaryCue before the set; phase lines at their cue points every rep, scheduled to END by the next cue point (skip a line that cannot fit, never cut or overlap)"
+  },
+  "review": {
+    "editorial": "passed"
+  }
+}

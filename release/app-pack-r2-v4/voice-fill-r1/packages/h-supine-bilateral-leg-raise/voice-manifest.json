@@ -1,0 +1,317 @@
+{
+  "format": "pose-hub-voice@3",
+  "actionId": "h-supine-bilateral-leg-raise",
+  "definitionSha256": "af62ee2fbbc291b3596db5a020ae7f2d3eca9968ad1bf1126778a2d3efbf4a66",
+  "standard": {
+    "lufsTarget": -16,
+    "lufsTolerance": 1,
+    "truePeakMaxDbtp": -1,
+    "codec": "aac",
+    "sampleRate": 44100,
+    "channels": 1,
+    "bitrateKbps": 64,
+    "process": "hiplab v4.1"
+  },
+  "voiceProfile": {
+    "zh": {
+      "voice": "zh-CN-XiaoxiaoNeural",
+      "rate": "+6%"
+    },
+    "en": {
+      "voice": "en-US-JennyNeural",
+      "rate": "+4%"
+    }
+  },
+  "common": "voice/common/manifest.json",
+  "contentReview": "passed",
+  "manualListening": "pending",
+  "cuePoints": {
+    "start": 1.1,
+    "peak": 2.3,
+    "end": 5.433,
+    "method": "masters highlight pulse (25 % rise / plateau reached / 50 % fall) — computed from spec pulse track (spec_pulse.mjs), masters not on this machine",
+    "sampled": false
+  },
+  "lines": {
+    "zh": {
+      "name": {
+        "text": "仰卧双直腿举腿",
+        "ref": {
+          "path": "packages/h-supine-bilateral-leg-raise/voice/zh/name.m4a",
+          "sha256": "27875dfa04e3d76a1b8784d061ec67b468b3d4f05fb8353873c72f08d1e738cc",
+          "bytes": 13923,
+          "durationSeconds": 1.578957
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "5cab3f761f579ad6dd6db4fbf09aea90a4e9c017294cd76cdcd49965ec9ab3be",
+          "ttsFingerprint": "9bdd44868a4e269ed75640183f2a7aad27de874ade3248d8a2d36131cb60a026"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.0,
+          "truePeak": -2.2,
+          "leadMs": 40,
+          "tailMs": 89
+        },
+        "role": "intro"
+      },
+      "primaryCue": {
+        "text": "两腿伸直一起抬起，腰贴住垫子",
+        "ref": {
+          "path": "packages/h-supine-bilateral-leg-raise/voice/zh/primaryCue.m4a",
+          "sha256": "5a0e969eee02de9f0afb89d72d3373d291c815afd3d8b14695cd525a50824c66",
+          "bytes": 24427,
+          "durationSeconds": 2.832834
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "ca427c2cd0b22b4e10e5353920cd384b83b0ecee17ac00bb4d373b2ccc4725b9",
+          "ttsFingerprint": "ef77e934f355d2f51820e3cf3087fbce6f515607bf68ef14e2046efd115f430f"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.0,
+          "truePeak": -2.3,
+          "leadMs": 40,
+          "tailMs": 83
+        },
+        "role": "intro"
+      },
+      "phase.start": {
+        "text": "双腿抬起",
+        "ref": {
+          "path": "packages/h-supine-bilateral-leg-raise/voice/zh/phase.start.m4a",
+          "sha256": "c8c8e437b784528c6ff6f3bde28b381eb8eada4a7caa77fa120c3fc541b7e91b",
+          "bytes": 10121,
+          "durationSeconds": 1.091338
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "aa10d728e41dd5051570802c145b3cfd794e25212feb0fd309ba523cf8e01425",
+          "ttsFingerprint": "48faa5282ce4e4134c3383214648bf7ff135f2da8a28292748ccae7b62b86a7c"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.3,
+          "leadMs": 30,
+          "tailMs": 81
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 1.1,
+          "gapSeconds": 1.2,
+          "fit": "fits"
+        }
+      },
+      "phase.peak": {
+        "text": "停一下",
+        "ref": {
+          "path": "packages/h-supine-bilateral-leg-raise/voice/zh/phase.peak.m4a",
+          "sha256": "3f3d887de35830c1bf91aeee71a5f7b1c81a4c9d00e1eade455ef7d51a19a151",
+          "bytes": 6786,
+          "durationSeconds": 0.696599
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "dd1af881c3a1e655ee3ad162bcde6f234606fc00fb1e24228ed86b70f5693ea2",
+          "ttsFingerprint": "60bad401c279150f999f052c15b2a6880658ebadc45b05c4d0ad0a6fc3adba87"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -3.2,
+          "leadMs": 40,
+          "tailMs": 77
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 2.3,
+          "gapSeconds": 3.133,
+          "fit": "fits"
+        }
+      },
+      "phase.end": {
+        "text": "慢慢放下",
+        "ref": {
+          "path": "packages/h-supine-bilateral-leg-raise/voice/zh/phase.end.m4a",
+          "sha256": "e2b4d6cd0e31ab87cec3c3ea458dc8ac4930aa03348d3ea1fa7e76d4d384aeff",
+          "bytes": 8973,
+          "durationSeconds": 0.952018
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "2a17d22aa579936ba3634a9bafc89ecf3dc0ef6036823004bcf95b9deabdfeeb",
+          "ttsFingerprint": "d1c4fc3204be2bf20ed8bc875b2d5fa0ef0639002a47a430b4c8d074032b5eac"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -3.1,
+          "leadMs": 40,
+          "tailMs": 82
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 5.433,
+          "gapSeconds": 2.567,
+          "fit": "fits"
+        }
+      }
+    },
+    "en": {
+      "name": {
+        "text": "Lying Double Leg Raise",
+        "ref": {
+          "path": "packages/h-supine-bilateral-leg-raise/voice/en/name.m4a",
+          "sha256": "889071a175252b85a278a9585eb07467671cb24750a037c18810d56ec195f68f",
+          "bytes": 12799,
+          "durationSeconds": 1.439637
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "4fc35263ae2e2dfc95697b20c604a191f982e1d488b88c2fcc40ca0fcd35b544",
+          "ttsFingerprint": "2a2bbd1333b0f14a74ceed70aa4496925fdf78a47671a84fb7c55c85adfe10d4"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.2,
+          "leadMs": 40,
+          "tailMs": 90
+        },
+        "role": "intro"
+      },
+      "primaryCue": {
+        "text": "Lift both straight legs together with your lower back down",
+        "ref": {
+          "path": "packages/h-supine-bilateral-leg-raise/voice/en/primaryCue.m4a",
+          "sha256": "fc06e7cdbf43287234b734b84350a3dc3c023c43c0f7b903343da8c36c6c1577",
+          "bytes": 24518,
+          "durationSeconds": 2.856054
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "f89617f6896f25a768f07ec01b4adf18edb842735071349801518ad1c94583e2",
+          "ttsFingerprint": "539f3ff61a6712270f9f5a69c0704fdeb31e9e5aac4d4212e5178d37c2ad4373"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -1.4,
+          "leadMs": 40,
+          "tailMs": 86
+        },
+        "role": "intro"
+      },
+      "phase.start": {
+        "text": "Legs up",
+        "ref": {
+          "path": "packages/h-supine-bilateral-leg-raise/voice/en/phase.start.m4a",
+          "sha256": "3cf5c1cb2be504c86d58bb7f210cfa7f7cc25205d5dee0c3b6ea1320b180a4b3",
+          "bytes": 6913,
+          "durationSeconds": 0.696599
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "0f5b4b4886ad480f19e59e31dc2ea4c19917cba5ed56b40932ecc24ed3e19dc3",
+          "ttsFingerprint": "9e0cb8c1f53c117221fa763b488b3ca1992bf80f713f229a165c111cb8ef9a8f"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.0,
+          "leadMs": 40,
+          "tailMs": 77
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 1.1,
+          "gapSeconds": 1.2,
+          "fit": "fits"
+        }
+      },
+      "phase.peak": {
+        "text": "Pause",
+        "ref": {
+          "path": "packages/h-supine-bilateral-leg-raise/voice/en/phase.peak.m4a",
+          "sha256": "370241428bef6c68bcf6767c333d28e61ec7ae34a34512111176bf527c64fff7",
+          "bytes": 6157,
+          "durationSeconds": 0.626939
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "0b229636f7179aed9963a2cf9b65f8800c196f6eaab56062fc47f525d5fc798d",
+          "ttsFingerprint": "31b0c0cc0e4f2268442e90aca06df30611d0232b02acc5fadf6825b18434017b"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.4,
+          "leadMs": 30,
+          "tailMs": 87
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 2.3,
+          "gapSeconds": 3.133,
+          "fit": "fits"
+        }
+      },
+      "phase.end": {
+        "text": "Lower slowly",
+        "ref": {
+          "path": "packages/h-supine-bilateral-leg-raise/voice/en/phase.end.m4a",
+          "sha256": "9ac009cf33b2d72680e02f1b536915ace92c674fa8744c3fb74b5e1fbeb15e51",
+          "bytes": 8942,
+          "durationSeconds": 0.952018
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "0f42a3bea92f935d6e4eb79c0031e54c38b89060a8cbcb45e01851c6218c7e4a",
+          "ttsFingerprint": "b015637bbbc212f3f78e6ffd6c2be0b5eadcc55f5edfe2a06c231b32d8175fd8"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.5,
+          "leadMs": 30,
+          "tailMs": 92
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 5.433,
+          "gapSeconds": 2.567,
+          "fit": "fits"
+        }
+      }
+    }
+  },
+  "summary": {
+    "clips": 10,
+    "auditFailed": [],
+    "scheduleEarly": []
+  },
+  "status": "technical-passed"
+}

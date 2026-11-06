@@ -1,0 +1,321 @@
+{
+  "format": "pose-hub-voice@3",
+  "actionId": "hip-abductors-A",
+  "definitionSha256": "e3b016079770d1754ead9c0b2355a17c790b540fdd36d5810f1534afca8bd8af",
+  "standard": {
+    "lufsTarget": -16,
+    "lufsTolerance": 1,
+    "truePeakMaxDbtp": -1,
+    "codec": "aac",
+    "sampleRate": 44100,
+    "channels": 1,
+    "bitrateKbps": 64,
+    "process": "hiplab v4.1"
+  },
+  "voiceProfile": {
+    "zh": {
+      "voice": "zh-CN-XiaoxiaoNeural",
+      "rate": "+6%"
+    },
+    "en": {
+      "voice": "en-US-JennyNeural",
+      "rate": "+4%"
+    }
+  },
+  "common": "voice/common/manifest.json",
+  "contentReview": "passed",
+  "manualListening": "pending",
+  "cuePoints": {
+    "start": 1.033,
+    "peak": 1.6,
+    "end": 2.033,
+    "method": "masters highlight pulse (25 % rise / plateau reached / 50 % fall) — computed from spec pulse track (spec_pulse.mjs), masters not on this machine",
+    "sampled": false
+  },
+  "lines": {
+    "zh": {
+      "name": {
+        "text": "侧平板抬腿",
+        "ref": {
+          "path": "packages/hip-abductors-A/voice/zh/name.m4a",
+          "sha256": "6d87d3259466e187f7c0bf9d145facdf727ec21bd6ba321451f85806ccec0e79",
+          "bytes": 11071,
+          "durationSeconds": 1.230658
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "adefa9d40ba17e708461ede730eac1be7311911a3cc8de92e2812df2e64abc39",
+          "ttsFingerprint": "3a0017a7374fc689888dfaa3c6d64a8b50bbdb26b1c4355c3f4e6715f63cdf84"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.4,
+          "leadMs": 40,
+          "tailMs": 91
+        },
+        "role": "intro"
+      },
+      "primaryCue": {
+        "text": "前臂侧撑，身体成一条直线，上面的腿抬起",
+        "ref": {
+          "path": "packages/hip-abductors-A/voice/zh/primaryCue.m4a",
+          "sha256": "63a98779944e0a2e26672cd06afd5fa80dddcebd5d87879326f206b6ed65acbb",
+          "bytes": 33347,
+          "durationSeconds": 3.924172
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "e22979bf98bb6927248e70f5f619e215dcfc1f045b53da1fde01a19f9e1b0ad1",
+          "ttsFingerprint": "e35d50418fcf37da1d3779ca6a7d896b2954c09b7fcba5d99ed45668ef41a368"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.3,
+          "leadMs": 40,
+          "tailMs": 74
+        },
+        "role": "intro"
+      },
+      "phase.start": {
+        "text": "抬腿",
+        "ref": {
+          "path": "packages/hip-abductors-A/voice/zh/phase.start.m4a",
+          "sha256": "601b3dbf4817e31c7bc4776cd4fc63b2832f7f157f805f972f0ff1494a075c5e",
+          "bytes": 6693,
+          "durationSeconds": 0.673379
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "9a1e4a8b445e0933184212cbc294d8d7c19e115f16dd350b0ac1285783c67911",
+          "ttsFingerprint": "c6055d17636b754f14d641ba31cbe5e714b9283b282a108f82c42ecd429a1bde"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.3,
+          "leadMs": 40,
+          "tailMs": 73
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 1.033,
+          "gapSeconds": 0.567,
+          "fit": "schedule-early"
+        }
+      },
+      "phase.peak": {
+        "text": "停住",
+        "ref": {
+          "path": "packages/hip-abductors-A/voice/zh/phase.peak.m4a",
+          "sha256": "a237bcfdadc82cbd95d3fbf5cf87eb19d9c682d9f8ff17d6f25acfb1f45ab4b9",
+          "bytes": 6101,
+          "durationSeconds": 0.603719
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "d769047cb9f024550c287bb5c26df0a8882273103f38d09249f939fa6bbcdb3b",
+          "ttsFingerprint": "250d9dea1b8084d469559e0b9462bc82372678e3e0a278ed44cfbcd39d1d79fa"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -4.9,
+          "leadMs": 40,
+          "tailMs": 74
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 1.6,
+          "gapSeconds": 0.433,
+          "fit": "schedule-early"
+        }
+      },
+      "phase.end": {
+        "text": "放下",
+        "ref": {
+          "path": "packages/hip-abductors-A/voice/zh/phase.end.m4a",
+          "sha256": "a275ff8cc552c152f3efc8eb36179d458243ec37326f269e16467cc67608a052",
+          "bytes": 5764,
+          "durationSeconds": 0.580499
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "d5aafbc7cd960beb731a8582d5005c8645c90f8422248452aad76d539f96984c",
+          "ttsFingerprint": "f357c5f6f872734d607fc1c5aacd1da7f0c116b0b7be502be2996e5754d648cb"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.3,
+          "leadMs": 20,
+          "tailMs": 90
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 2.033,
+          "gapSeconds": 5.967,
+          "fit": "fits"
+        }
+      }
+    },
+    "en": {
+      "name": {
+        "text": "Side Plank Leg Lift",
+        "ref": {
+          "path": "packages/hip-abductors-A/voice/en/name.m4a",
+          "sha256": "7561e13aa0833f897b2a2f0fe3c3ddee4e45e2a90a72205b52a71fa2552b081b",
+          "bytes": 12694,
+          "durationSeconds": 1.393197
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "cbcc7a40ae8d0ad661b6c0d71a631aecf26494a2a77ae1b9f6cd1ab4e3528ab3",
+          "ttsFingerprint": "a379067cc6c28ba8c149d815c4bc2eea031db86a854815b1cc524eb85e526c68"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.2,
+          "leadMs": 30,
+          "tailMs": 83
+        },
+        "role": "intro"
+      },
+      "primaryCue": {
+        "text": "Hold a forearm side plank and lift the top leg",
+        "ref": {
+          "path": "packages/hip-abductors-A/voice/en/primaryCue.m4a",
+          "sha256": "dbd4a1eeb10fec66a4820b5fee617aa75e5780554d97ba194daf85aec1e3221e",
+          "bytes": 22205,
+          "durationSeconds": 2.577415
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "c3225c5cf8cfa3e80703ed0cb91bb0406e859b5c1b8ecbb6f7fa4e0e31abea3b",
+          "ttsFingerprint": "092d171a726ca2cf5df5daa9ebbc1f9e0e948d2359002f01841a6b79d53f68a3"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.1,
+          "leadMs": 30,
+          "tailMs": 87
+        },
+        "role": "intro"
+      },
+      "phase.start": {
+        "text": "Lift",
+        "ref": {
+          "path": "packages/hip-abductors-A/voice/en/phase.start.m4a",
+          "sha256": "cfea158f2504eae8a555b5163be75bf3a3318fb9e8218c11d1500eb4f8b71433",
+          "bytes": 5330,
+          "durationSeconds": 0.510839
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "8c0a548fa9379bc831e81d7d530f23505a57f3cec3b1f6158939903d8f2f59e0",
+          "ttsFingerprint": "6a3a1280c1b1ca14fb188aea4a2ece6aa980a35402ec58ecf68e2744c1e76f3e"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.0,
+          "truePeak": -2.3,
+          "leadMs": 40,
+          "tailMs": 71
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 1.033,
+          "gapSeconds": 0.567,
+          "fit": "fits"
+        }
+      },
+      "phase.peak": {
+        "text": "Hold",
+        "ref": {
+          "path": "packages/hip-abductors-A/voice/en/phase.peak.m4a",
+          "sha256": "b6ac50d0e6201d57e34af08a454421cebbcd2215d0b4e861d7918dbb0ead5371",
+          "bytes": 4998,
+          "durationSeconds": 0.464399
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "0e92c3a2459040c6ef55ea6950c927a2a1acee35e4a3dd23869d30ece94b9773",
+          "ttsFingerprint": "3abc227bfc3d1bd10e8614a94199d1210a8e483c37a7bba77c95128949b12c56"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.6,
+          "leadMs": 40,
+          "tailMs": 64
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 1.6,
+          "gapSeconds": 0.433,
+          "fit": "schedule-early"
+        }
+      },
+      "phase.end": {
+        "text": "Lower",
+        "ref": {
+          "path": "packages/hip-abductors-A/voice/en/phase.end.m4a",
+          "sha256": "112ba6840ae24a185a3acc8dfa2d75016c38480a19125cab97ca741ff42c2b33",
+          "bytes": 5598,
+          "durationSeconds": 0.534059
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "153c699395cf43f57e6e60bf95b07e29b23febd303c9298f56f7709170491eb5",
+          "ttsFingerprint": "994f87386967e210d9f9e7fa5d94c40bead47345fb9e11bed970cb0cb1086713"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -15.9,
+          "truePeak": -2.7,
+          "leadMs": 40,
+          "tailMs": 74
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 2.033,
+          "gapSeconds": 5.967,
+          "fit": "fits"
+        }
+      }
+    }
+  },
+  "summary": {
+    "clips": 10,
+    "auditFailed": [],
+    "scheduleEarly": [
+      "packages/hip-abductors-A/voice/zh/phase.start.m4a",
+      "packages/hip-abductors-A/voice/zh/phase.peak.m4a",
+      "packages/hip-abductors-A/voice/en/phase.peak.m4a"
+    ]
+  },
+  "status": "technical-passed"
+}

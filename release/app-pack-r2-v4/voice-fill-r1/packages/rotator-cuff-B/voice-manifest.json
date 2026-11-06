@@ -1,0 +1,319 @@
+{
+  "format": "pose-hub-voice@3",
+  "actionId": "rotator-cuff-B",
+  "definitionSha256": "5583c503cb1ac9db0cd3323d4961933287b91a40e15be643b7a14abfd1a44686",
+  "standard": {
+    "lufsTarget": -16,
+    "lufsTolerance": 1,
+    "truePeakMaxDbtp": -1,
+    "codec": "aac",
+    "sampleRate": 44100,
+    "channels": 1,
+    "bitrateKbps": 64,
+    "process": "hiplab v4.1"
+  },
+  "voiceProfile": {
+    "zh": {
+      "voice": "zh-CN-XiaoxiaoNeural",
+      "rate": "+6%"
+    },
+    "en": {
+      "voice": "en-US-JennyNeural",
+      "rate": "+4%"
+    }
+  },
+  "common": "voice/common/manifest.json",
+  "contentReview": "passed",
+  "manualListening": "pending",
+  "cuePoints": {
+    "start": 0.633,
+    "peak": 1.3,
+    "end": 3.067,
+    "method": "masters highlight pulse (25 % rise / plateau reached / 50 % fall) — computed from spec pulse track (spec_pulse.mjs), masters not on this machine",
+    "sampled": false
+  },
+  "lines": {
+    "zh": {
+      "name": {
+        "text": "弹力带夹肘向外转",
+        "ref": {
+          "path": "packages/rotator-cuff-B/voice/zh/name.m4a",
+          "sha256": "cec2aff0dccd363b4d4b6e299cd390f678cac0d8138fc9683411d6180601149c",
+          "bytes": 15820,
+          "durationSeconds": 1.811156
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "b8eb2b977a50be837d68b028cb3e2088838a787e817ef1c271e45fc6f1145ada",
+          "ttsFingerprint": "e1220010773380a31d29d7258c9de1ad9475edde7a6da0f1eb981b2098ff5320"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.9,
+          "leadMs": 40,
+          "tailMs": 101
+        },
+        "role": "intro"
+      },
+      "primaryCue": {
+        "text": "手肘贴住身体，只把前臂往外打开",
+        "ref": {
+          "path": "packages/rotator-cuff-B/voice/zh/primaryCue.m4a",
+          "sha256": "0d28e47b4781d11e53a56edb3b8a1472a05ec29a83445e1cdc830d8bd9f6cd2a",
+          "bytes": 26500,
+          "durationSeconds": 3.088254
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "cd204dea7ee6919c6421d771f5eb515d165d4351d72b6a7380a793a4e99cb366",
+          "ttsFingerprint": "0ccdbb853f6566ddd058d0304e2af602d8ca078b6418f64feada07351a53fd03"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.0,
+          "truePeak": -2.4,
+          "leadMs": 30,
+          "tailMs": 88
+        },
+        "role": "intro"
+      },
+      "phase.start": {
+        "text": "往外打开",
+        "ref": {
+          "path": "packages/rotator-cuff-B/voice/zh/phase.start.m4a",
+          "sha256": "00194ecb28a6d1789f3a21019587219c7a95cf18f190e29d26c2762ebf7ce28a",
+          "bytes": 8782,
+          "durationSeconds": 0.928798
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "d7e3f3367a2903b0076055915ebb368157b75524ac28c4ea68882baf8ad9024c",
+          "ttsFingerprint": "ede08502e339c380b75ade41c5179adfd90656f4d7f85e162d3ded9f3f8e3be1"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.7,
+          "leadMs": 40,
+          "tailMs": 79
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 0.633,
+          "gapSeconds": 0.667,
+          "fit": "schedule-early"
+        }
+      },
+      "phase.peak": {
+        "text": "停住",
+        "ref": {
+          "path": "packages/rotator-cuff-B/voice/zh/phase.peak.m4a",
+          "sha256": "a237bcfdadc82cbd95d3fbf5cf87eb19d9c682d9f8ff17d6f25acfb1f45ab4b9",
+          "bytes": 6101,
+          "durationSeconds": 0.603719
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "d769047cb9f024550c287bb5c26df0a8882273103f38d09249f939fa6bbcdb3b",
+          "ttsFingerprint": "250d9dea1b8084d469559e0b9462bc82372678e3e0a278ed44cfbcd39d1d79fa"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -4.9,
+          "leadMs": 40,
+          "tailMs": 74
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 1.3,
+          "gapSeconds": 1.767,
+          "fit": "fits"
+        }
+      },
+      "phase.end": {
+        "text": "慢慢放回",
+        "ref": {
+          "path": "packages/rotator-cuff-B/voice/zh/phase.end.m4a",
+          "sha256": "bbb70cfd8eb8c616f89c2e755e6c191edae8db1b4c28da957d55cffd59eaa3ca",
+          "bytes": 9389,
+          "durationSeconds": 0.998458
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "b414f668d3f32a7c0009688494324a398540a23e16d8c83188a9321dd86b8957",
+          "ttsFingerprint": "b7a8899de1a32f784364ee1b4e8225e90af019734deaa02d60797413f29bf42c"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.8,
+          "leadMs": 40,
+          "tailMs": 88
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 3.067,
+          "gapSeconds": 4.933,
+          "fit": "fits"
+        }
+      }
+    },
+    "en": {
+      "name": {
+        "text": "Band Elbow-In Turn-Out",
+        "ref": {
+          "path": "packages/rotator-cuff-B/voice/en/name.m4a",
+          "sha256": "24ef92a03b08d04b1fe7f2debb38e67c3741e16f3fef12f4731af96b3ff66be8",
+          "bytes": 11818,
+          "durationSeconds": 1.300317
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "3404133660625f9fe96a7a1dcc48d363c3450caa379811946c7522139a429e3a",
+          "ttsFingerprint": "debb654d37058812e01cfd1adc6fa86772e3c0947dd02ea90d9ed577ff1fc47f"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.1,
+          "leadMs": 30,
+          "tailMs": 60
+        },
+        "role": "intro"
+      },
+      "primaryCue": {
+        "text": "Keep your elbow at your side and swing only your forearm out",
+        "ref": {
+          "path": "packages/rotator-cuff-B/voice/en/primaryCue.m4a",
+          "sha256": "91c5acdc513c274eb99befbd2595a287c0a0aac6a4f8211f0c734b54a060250d",
+          "bytes": 26453,
+          "durationSeconds": 3.088254
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "65da089ff7d3a6684ee3ab843a1d2b2cf0fed85bd80ae620a0f2c0fc90f0596c",
+          "ttsFingerprint": "940d7d09910530fc9ac0fc7038efdfc59b3908a36cf763d589fffa4b5d3e8122"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.0,
+          "truePeak": -2.3,
+          "leadMs": 30,
+          "tailMs": 98
+        },
+        "role": "intro"
+      },
+      "phase.start": {
+        "text": "Turn out",
+        "ref": {
+          "path": "packages/rotator-cuff-B/voice/en/phase.start.m4a",
+          "sha256": "9ddf82bd3190c74bf0d9662b758bbc85f1457e39a6ee963b877173bb3e03e2b8",
+          "bytes": 6456,
+          "durationSeconds": 0.650159
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "a9a131b452ab57dba037df6568a50a03d67bfd49978fd6d750259abc5e762705",
+          "ttsFingerprint": "a0e9ba311db3409a45d175012c663dcac167a1d47fed2364ff8cd3b08c57a144"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.0,
+          "truePeak": -2.4,
+          "leadMs": 40,
+          "tailMs": 80
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 0.633,
+          "gapSeconds": 0.667,
+          "fit": "fits"
+        }
+      },
+      "phase.peak": {
+        "text": "Hold",
+        "ref": {
+          "path": "packages/rotator-cuff-B/voice/en/phase.peak.m4a",
+          "sha256": "b6ac50d0e6201d57e34af08a454421cebbcd2215d0b4e861d7918dbb0ead5371",
+          "bytes": 4998,
+          "durationSeconds": 0.464399
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "0e92c3a2459040c6ef55ea6950c927a2a1acee35e4a3dd23869d30ece94b9773",
+          "ttsFingerprint": "3abc227bfc3d1bd10e8614a94199d1210a8e483c37a7bba77c95128949b12c56"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.6,
+          "leadMs": 40,
+          "tailMs": 64
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 1.3,
+          "gapSeconds": 1.767,
+          "fit": "fits"
+        }
+      },
+      "phase.end": {
+        "text": "Return slowly",
+        "ref": {
+          "path": "packages/rotator-cuff-B/voice/en/phase.end.m4a",
+          "sha256": "02560a0e58e0c9beefb7124ce01c3eabe271644fec09e62e30da8f8845def673",
+          "bytes": 9754,
+          "durationSeconds": 1.044898
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "845014b707c29f96d409d9b1357967019ed2aa4665bd0a351ac5773ecbc31f2b",
+          "ttsFingerprint": "71e83eb4fde025333e5acb23580fd8f52124a0e7fe8a000d5d60e757c6c3fcd7"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -1.8,
+          "leadMs": 40,
+          "tailMs": 75
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 3.067,
+          "gapSeconds": 4.933,
+          "fit": "fits"
+        }
+      }
+    }
+  },
+  "summary": {
+    "clips": 10,
+    "auditFailed": [],
+    "scheduleEarly": [
+      "packages/rotator-cuff-B/voice/zh/phase.start.m4a"
+    ]
+  },
+  "status": "technical-passed"
+}
