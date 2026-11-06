@@ -38,7 +38,9 @@ const footFn=function(){
     const iS=bi(sd+'Shin'),iF=bi(sd+'Foot');
     const qBS=new T.Quaternion().setFromRotationMatrix(bindW(iS)),qBF=new T.Quaternion().setFromRotationMatrix(bindW(iF));
     const qS=new T.Quaternion(),qF=new T.Quaternion();sk.bones[iS].getWorldQuaternion(qS);sk.bones[iF].getWorldQuaternion(qF);
-    const RF=qF.clone().multiply(qBF.clone().invert()),RS=qS.clone().multiply(qBS.clone().invert());
+    // r2: normalise (the bind matrices carry a ~1.044 scale, so setFromRotationMatrix gave non-unit quaternions and every
+    // non-perpendicular angle read off scaled vectors; ±90 and 0 readings were unaffected)
+    const RF=qF.clone().normalize().multiply(qBF.clone().normalize().invert()).normalize(),RS=qS.clone().normalize().multiply(qBS.clone().normalize().invert()).normalize();
     const A=P(sd+'Ankle'),K=P(sd+'Knee'),Tt=P(sd+'Toe');
     const sUp=K.clone().sub(A).normalize(),tJ=Tt.clone().sub(A).normalize();
     const t=bz.clone().applyQuaternion(RF),up=by.clone().applyQuaternion(RF),lat=bx.clone().applyQuaternion(RF).multiplyScalar(sd==='right'?-1:1);
