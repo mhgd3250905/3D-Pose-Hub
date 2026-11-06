@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "h-squat",
   "nameZh": "徒手深蹲",
-  "spec": "drill-anim/specs/h-squat-r2-sc1.js",
-  "specSha256Lf": "1fab672fdf5d940f94381a8a13ff388ce658fb44f80da50053fe8873baf44d5b",
+  "spec": "drill-anim/specs/h-squat-r2-sc1-kn1.js",
+  "specSha256Lf": "1dfaeb3f49f2c83d2d3672dd26d8667f55142bd41caa67950576efb4579caae5",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -76,7 +76,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/h-squat-r2-sc1.js"
+    "selectedSpec": "drill-anim/specs/h-squat-r2-sc1-kn1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -92,5 +92,14 @@
         "why": "self-collision: hand targets pushed out of the body (hand-push r1)"
       }
     ]
+  },
+  "kneeFix": {
+    "r1": {
+      "from": "drill-anim/specs/h-squat-r2-sc1.js",
+      "to": "drill-anim/specs/h-squat-r2-sc1-kn1.js",
+      "date": "2026-11-06",
+      "branch": "codex/knee-fix-r1",
+      "note": "knee fix r1 (2026-11-06) of h-squat-r2-sc1.js: pelvis height rescaled to the v3 leg (kn-lib g); per-frame pelvis-y correction kn1y (standing leg straight ~5 deg)"
+    }
   }
 }

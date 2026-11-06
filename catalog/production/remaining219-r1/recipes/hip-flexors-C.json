@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "hip-flexors-C",
   "nameZh": "绳索站姿直腿前抬",
-  "spec": "drill-anim/specs/hip-flexors-C.js",
-  "specSha256Lf": "58b1401769648d0eede42f33ccf35f9ccc4411ac4ad3ee4a8c632f7c294026a5",
+  "spec": "drill-anim/specs/hip-flexors-C-kn1.js",
+  "specSha256Lf": "33cf2157092119300342beeb2bee404d7c6f5c4849600d8e89db9091c1bc7949",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -75,10 +75,19 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/hip-flexors-C.js"
+    "selectedSpec": "drill-anim/specs/hip-flexors-C-kn1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
   "userAccepted": false,
-  "releaseEligible": false
+  "releaseEligible": false,
+  "kneeFix": {
+    "r1": {
+      "from": "drill-anim/specs/hip-flexors-C.js",
+      "to": "drill-anim/specs/hip-flexors-C-kn1.js",
+      "date": "2026-11-06",
+      "branch": "codex/knee-fix-r1",
+      "note": "knee fix r1 (2026-11-06) of hip-flexors-C.js: pelvis height rescaled to the v3 leg (kn-lib g); raised right leg ankle arc scaled about the hip by the v3/old leg ratio"
+    }
+  }
 }
