@@ -12,16 +12,32 @@ const sha = b => crypto.createHash('sha256').update(b).digest('hex');
 const interp = (pts, t) => { if (!pts.length) return 0; if (t <= pts[0][0]) return pts[0][1];
   for (let i = 1; i < pts.length; i++) if (t <= pts[i][0]) { const [a, x] = pts[i - 1], [b, y] = pts[i]; return x + (y - x) * (t - a) / (b - a); }
   return pts[pts.length - 1][1]; };
+// pelvis y per frame of a spec (engine blend: base + sum p_k (delta_k - base))
+const pelvisYs = s => { const b = s.pose.base.pelvis[1], ks = Object.entries(s.pose.deltas).filter(([, d]) => Array.isArray(d?.pelvis) && typeof d.pelvis[1] === 'number');
+  const n = Math.max(...Object.values(s.timeline.tracks).map(t => t.length));
+  return Array.from({ length: n }, (_, f) => { let y = b; for (const [k, d] of ks) { const tr = s.timeline.tracks[k]; if (tr && tr[f]) y += tr[f][1] * (d.pelvis[1] - b); } return y; }); };
+// body-held world-frame hands (band handles, dumbbell behind the head, self-hug, kettlebell, towel, wall palms) follow the
+// lifted pelvis: add the per-frame pelvis rise to their position targets (wrist / palmAt / pole / poleUp y) as track kn1h
+function moveHands(orig, spec, sides) {
+  const y0 = pelvisYs(orig), y1 = pelvisYs(spec), ref = Object.values(spec.timeline.tracks).find(t => t.length === y1.length);
+  spec.timeline.tracks.kn1h = ref.map((r, f) => [r[0], +(y1[f] - y0[f]).toFixed(5), 'linear']);
+  const d = { hands: {} };
+  for (const sd of sides) { const h = spec.pose.base.hands[sd]; d.hands[sd] = {};
+    for (const fld of ['wrist', 'palmAt', 'pole', 'poleUp', 'poleLow']) if (Array.isArray(h[fld]) && typeof h[fld][1] === 'number') { const a = []; a[0] = {}; a[1] = h[fld][1] + 1; d.hands[sd][fld] = a; } }
+  spec.pose.deltas.kn1h = d;
+}
 export async function build(id) {
   const rp = recipePath(id), rec = JSON.parse(fs.readFileSync(rp, 'utf8'));
   const from = rec.kneeFix?.r1?.from || rec.spec;          // always rebuild from the pre-fix spec
-  const spec = structuredClone((await import(pathToFileURL(path.join(ROOT, from)) + '?' + Date.now())).default);
+  const orig = (await import(pathToFileURL(path.join(ROOT, from)) + '?' + Date.now())).default;
+  const spec = structuredClone(orig);
   const plan = PLAN[id] || {};
   const kind = plan.lift === false ? null : liftPelvis(spec, plan.map);
   if (plan.custom) plan.custom(spec);
   const cf = path.join(ROOT, 'tools/knee-fix-r1/corr', id + '.json');
   const corr = fs.existsSync(cf) ? JSON.parse(fs.readFileSync(cf, 'utf8')) : null;
   if (corr) addPelvisY(spec, t => interp(corr.dy, t));
+  if (plan.moveHands) moveHands(orig, spec, plan.moveHands);
   const nid = path.basename(from, '.js') + '-kn1'; spec.id = nid;
   const dst = path.join(path.dirname(from), nid + '.js');
   const note = `knee fix r1 (2026-11-06) of ${path.basename(from)}: pelvis height rescaled to the v3 leg (kn-lib g)${plan.note ? '; ' + plan.note : ''}${corr ? '; per-frame pelvis-y correction kn1y (' + corr.why + ')' : ''}`;

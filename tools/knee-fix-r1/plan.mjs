@@ -7,6 +7,15 @@ const isNum = x => typeof x === 'number';
 const keyAt = (s, pathArr) => Object.entries(s.pose.deltas).filter(([, d]) => { let c = d; for (const p of pathArr) { if (c == null) return false; c = c[p]; } return c === 1; }).map(([k]) => k);
 const mapTrack = (s, k, f) => { for (const r of s.timeline.tracks[k]) r[1] = +f(r[1]).toFixed(5); };
 export const PLAN = {
+  // world-frame hands that are held by the body (not resting on a chair) move up with the lifted pelvis
+  'h-band-face-pull': { moveHands: ['left', 'right'], note: 'body-held world-frame hands follow the pelvis rise (kn1h)' },
+  'h-band-pull-apart': { moveHands: ['left', 'right'], note: 'body-held world-frame hands follow the pelvis rise (kn1h)' },
+  'h-bilateral-upper-back-hug': { moveHands: ['left', 'right'], note: 'body-held world-frame hands follow the pelvis rise (kn1h)' },
+  'h-db-overhead-triceps-extension': { moveHands: ['left', 'right'], note: 'body-held world-frame hands follow the pelvis rise (kn1h)' },
+  'h-overhead-triceps-stretch': { moveHands: ['left', 'right'], note: 'body-held world-frame hands follow the pelvis rise (kn1h)' },
+  'h-goblet-squat': { moveHands: ['left', 'right'], note: 'body-held world-frame hands follow the pelvis rise (kn1h)' },
+  'h-towel-isometric-curl': { moveHands: ['left', 'right'], note: 'body-held world-frame hands follow the pelvis rise (kn1h)' },
+  'h-wall-calf': { moveHands: ['left', 'right'], note: 'wall palms slide up with the pelvis rise (kn1h) so the arms keep their angle' },
   // straight leg raised forward: ankle target (hips frame, rest coords) was set for the old 0.763 m leg; scale the whole
   // arc about the rest hip by the leg ratio so the raised leg stays long (base + every delta, so blends scale too)
   'hip-flexors-C': { note: 'raised right leg ankle arc scaled about the hip by the v3/old leg ratio',

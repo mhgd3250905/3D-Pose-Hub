@@ -1,4 +1,4 @@
-// h-towel-isometric-curl-rr1-kn1: knee fix r1 (2026-11-06) of h-towel-isometric-curl-rr1.js: pelvis height rescaled to the v3 leg (kn-lib g); per-frame pelvis-y correction kn1y (standing leg straight ~5 deg)
+// h-towel-isometric-curl-rr1-kn1: knee fix r1 (2026-11-06) of h-towel-isometric-curl-rr1.js: pelvis height rescaled to the v3 leg (kn-lib g); body-held world-frame hands follow the pelvis rise (kn1h); per-frame pelvis-y correction kn1y (standing leg straight ~5 deg)
 export default {
   "id": "h-towel-isometric-curl-rr1-kn1",
   "name": "毛巾脚锚等长弯举（卷束毛巾示意）",
@@ -40,6 +40,18 @@ export default {
         [
           8,
           0.01345,
+          "linear"
+        ]
+      ],
+      "kn1h": [
+        [
+          0,
+          0.07544,
+          "linear"
+        ],
+        [
+          8,
+          0.07544,
           "linear"
         ]
       ]
@@ -162,6 +174,30 @@ export default {
           {},
           1.9499900000000001
         ]
+      },
+      "kn1h": {
+        "hands": {
+          "left": {
+            "wrist": [
+              {},
+              2.0501
+            ],
+            "poleUp": [
+              {},
+              1.9300000000000002
+            ]
+          },
+          "right": {
+            "wrist": [
+              {},
+              2.0501
+            ],
+            "poleUp": [
+              {},
+              1.9300000000000002
+            ]
+          }
+        }
       }
     }
   },
