@@ -1,0 +1,317 @@
+{
+  "format": "pose-hub-voice@3",
+  "actionId": "w-bird-dog",
+  "definitionSha256": "f5b24aca8d7bb314780935c13a75781399c86b21a7f28efc9dac4d8207f9ee67",
+  "standard": {
+    "lufsTarget": -16,
+    "lufsTolerance": 1,
+    "truePeakMaxDbtp": -1,
+    "codec": "aac",
+    "sampleRate": 44100,
+    "channels": 1,
+    "bitrateKbps": 64,
+    "process": "hiplab v4.1"
+  },
+  "voiceProfile": {
+    "zh": {
+      "voice": "zh-CN-XiaoxiaoNeural",
+      "rate": "+6%"
+    },
+    "en": {
+      "voice": "en-US-JennyNeural",
+      "rate": "+4%"
+    }
+  },
+  "common": "voice/common/manifest.json",
+  "contentReview": "passed",
+  "manualListening": "pending",
+  "cuePoints": {
+    "start": 0.7,
+    "peak": 1.5,
+    "end": 3.433,
+    "method": "masters highlight pulse (25 % rise / plateau reached / 50 % fall) — computed from spec pulse track (spec_pulse.mjs), masters not on this machine",
+    "sampled": false
+  },
+  "lines": {
+    "zh": {
+      "name": {
+        "text": "鸟狗式",
+        "ref": {
+          "path": "packages/w-bird-dog/voice/zh/name.m4a",
+          "sha256": "48f32b05ce2e443fcf82591ee394e99dcf42739e6b4c560c4b997c7c0a12caa5",
+          "bytes": 7860,
+          "durationSeconds": 0.812698
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "ffb5d3734b7df892634ce69013bc9bc35785d368f02ba4f9f07c055adbcb2ab8",
+          "ttsFingerprint": "4bff7df379de5525ab84bfa33f102caaa3719d394e048de25a49e61374f60b8a"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.8,
+          "leadMs": 30,
+          "tailMs": 83
+        },
+        "role": "intro"
+      },
+      "primaryCue": {
+        "text": "一只手和另一侧的腿伸远，身体不晃",
+        "ref": {
+          "path": "packages/w-bird-dog/voice/zh/primaryCue.m4a",
+          "sha256": "b55b672131ddfdf5b39c811f28eb3a11715e0bb1dba3e638f44480191de2a3e2",
+          "bytes": 25932,
+          "durationSeconds": 3.041814
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "894e93e62f3874e4bbe943ff51b04353d1aecee951cf1d38b228c84c69e5aa12",
+          "ttsFingerprint": "86d44f07b29e1e74ab3640f4fdc48f8a1ce0b86b0f0aea4587a4a3c2a1fc4e3e"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.0,
+          "truePeak": -2.4,
+          "leadMs": 40,
+          "tailMs": 102
+        },
+        "role": "intro"
+      },
+      "phase.start": {
+        "text": "伸出去",
+        "ref": {
+          "path": "packages/w-bird-dog/voice/zh/phase.start.m4a",
+          "sha256": "c69856310d7ffb18edc7a71a343bcf21329c0d3946994d8fe009954b077b1be0",
+          "bytes": 7467,
+          "durationSeconds": 0.789478
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "405b52286a63219ffc934716f9911da37bfda857dbe33daee88883738acaccee",
+          "ttsFingerprint": "eaaf9e6cc785fa32d90becf719b8476f0a03be7c8971adebbae418c8d438e5ee"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.3,
+          "leadMs": 30,
+          "tailMs": 89
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 0.7,
+          "gapSeconds": 0.8,
+          "fit": "fits"
+        }
+      },
+      "phase.peak": {
+        "text": "保持住",
+        "ref": {
+          "path": "packages/w-bird-dog/voice/zh/phase.peak.m4a",
+          "sha256": "7cd979539d43761959287accf20737c0101ee4583487d20e7a98e47c8717a628",
+          "bytes": 7336,
+          "durationSeconds": 0.766259
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "299362736a831bab4848b32c93d7b6a5c383bfee3d94d1d29d0f923e3351e2c9",
+          "ttsFingerprint": "f3a18b67d8b58d74ce40f8dda0f464fa4e3d40178e62dc2a016ae28454c56a90"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.9,
+          "leadMs": 40,
+          "tailMs": 96
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 1.5,
+          "gapSeconds": 1.933,
+          "fit": "fits"
+        }
+      },
+      "phase.end": {
+        "text": "收回来",
+        "ref": {
+          "path": "packages/w-bird-dog/voice/zh/phase.end.m4a",
+          "sha256": "9c63b1b00d32baa93b2f3ce766dd2ee8a8459201e33f86315cab9749025de421",
+          "bytes": 7144,
+          "durationSeconds": 0.743039
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "5ef97871e30814b1c9b5e60de220ac9c51070c38d57c6642ab45fb0ce008a13e",
+          "ttsFingerprint": "858874c63ab806264fe821820eb01afbc2e4a222c5acc6c2b75a6c68a4db4a8f"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.5,
+          "leadMs": 40,
+          "tailMs": 93
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 3.433,
+          "gapSeconds": 4.567,
+          "fit": "fits"
+        }
+      }
+    },
+    "en": {
+      "name": {
+        "text": "Bird Dog",
+        "ref": {
+          "path": "packages/w-bird-dog/voice/en/name.m4a",
+          "sha256": "e6565b868628e3056dd3187389628f749115d8b4be129c2feda228cfbcb7876c",
+          "bytes": 6897,
+          "durationSeconds": 0.696599
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "bd5b12c9a72d04de7575effc3a4b50d72c1a89d999b66e23329362fcf9703fcc",
+          "ttsFingerprint": "04c2c1b578c783a3cba0734a18d71b59bc2a9108926c29b167cbe19d3c84923b"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.5,
+          "leadMs": 40,
+          "tailMs": 77
+        },
+        "role": "intro"
+      },
+      "primaryCue": {
+        "text": "Reach one arm and the other leg long while your body stays still",
+        "ref": {
+          "path": "packages/w-bird-dog/voice/en/primaryCue.m4a",
+          "sha256": "3b1d3d8d225cf52a0efeda415821d2afe7c6874c11a07d3fc56d1866a10db17d",
+          "bytes": 26903,
+          "durationSeconds": 3.157914
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "d9acda614e16ef9503b8278679ad55fb145183bbb3de2b6aa9d98f13c0acbd89",
+          "ttsFingerprint": "ac6465f81519e51c5b586a108fa0c3bb7b45abf954d231758444d5b65d60223e"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.1,
+          "leadMs": 40,
+          "tailMs": 98
+        },
+        "role": "intro"
+      },
+      "phase.start": {
+        "text": "Reach out",
+        "ref": {
+          "path": "packages/w-bird-dog/voice/en/phase.start.m4a",
+          "sha256": "3d503514b6c7f14b84258dada5270bfcc6cc748b63658b7a2e20993414630e85",
+          "bytes": 7405,
+          "durationSeconds": 0.766259
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "4a926042399330d59482a4d5c20c3a21d256b0600570d1b3173ed2bb28cbae04",
+          "ttsFingerprint": "4bf9e53013d4114f26f7df3f3aba2f90b95c447271543f53576909361c4ea79c"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -15.9,
+          "truePeak": -2.3,
+          "leadMs": 40,
+          "tailMs": 86
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 0.7,
+          "gapSeconds": 0.8,
+          "fit": "fits"
+        }
+      },
+      "phase.peak": {
+        "text": "Hold",
+        "ref": {
+          "path": "packages/w-bird-dog/voice/en/phase.peak.m4a",
+          "sha256": "b6ac50d0e6201d57e34af08a454421cebbcd2215d0b4e861d7918dbb0ead5371",
+          "bytes": 4998,
+          "durationSeconds": 0.464399
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "0e92c3a2459040c6ef55ea6950c927a2a1acee35e4a3dd23869d30ece94b9773",
+          "ttsFingerprint": "3abc227bfc3d1bd10e8614a94199d1210a8e483c37a7bba77c95128949b12c56"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.6,
+          "leadMs": 40,
+          "tailMs": 64
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 1.5,
+          "gapSeconds": 1.933,
+          "fit": "fits"
+        }
+      },
+      "phase.end": {
+        "text": "Come back",
+        "ref": {
+          "path": "packages/w-bird-dog/voice/en/phase.end.m4a",
+          "sha256": "e097d2dc48198be9839fd9bbb1c321aac59e309aa3e68fbf9781abbc6783d562",
+          "bytes": 6733,
+          "durationSeconds": 0.696599
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "ab126abca913c968f21832cd660b61e8587968d5a22c65e500b90d0326d340b3",
+          "ttsFingerprint": "40ad56dbe28e2edbc3f8e3d17d1f6a54116d0c2a213d5bf211d00e3619a9f5d7"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.3,
+          "leadMs": 30,
+          "tailMs": 87
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 3.433,
+          "gapSeconds": 4.567,
+          "fit": "fits"
+        }
+      }
+    }
+  },
+  "summary": {
+    "clips": 10,
+    "auditFailed": [],
+    "scheduleEarly": []
+  },
+  "status": "technical-passed"
+}

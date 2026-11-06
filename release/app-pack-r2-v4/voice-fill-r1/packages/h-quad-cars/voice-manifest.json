@@ -1,0 +1,320 @@
+{
+  "format": "pose-hub-voice@3",
+  "actionId": "h-quad-cars",
+  "definitionSha256": "2f0f1f8cb12087bbadd89ec8e3a83a428d79e9ef0ea1f1a38ec6400722960166",
+  "standard": {
+    "lufsTarget": -16,
+    "lufsTolerance": 1,
+    "truePeakMaxDbtp": -1,
+    "codec": "aac",
+    "sampleRate": 44100,
+    "channels": 1,
+    "bitrateKbps": 64,
+    "process": "hiplab v4.1"
+  },
+  "voiceProfile": {
+    "zh": {
+      "voice": "zh-CN-XiaoxiaoNeural",
+      "rate": "+6%"
+    },
+    "en": {
+      "voice": "en-US-JennyNeural",
+      "rate": "+4%"
+    }
+  },
+  "common": "voice/common/manifest.json",
+  "contentReview": "passed",
+  "manualListening": "pending",
+  "cuePoints": {
+    "start": 0.833,
+    "peak": 1.6,
+    "end": 3.267,
+    "method": "masters highlight pulse (25 % rise / plateau reached / 50 % fall) — computed from spec pulse track (spec_pulse.mjs), masters not on this machine",
+    "sampled": false
+  },
+  "lines": {
+    "zh": {
+      "name": {
+        "text": "跪撑髋部画圈",
+        "ref": {
+          "path": "packages/h-quad-cars/voice/zh/name.m4a",
+          "sha256": "fea93ddcb3cd530499845bb026486bef1dc0fcb575d9313876a850beeb6f0e54",
+          "bytes": 12216,
+          "durationSeconds": 1.369977
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "4c6ab7af33c2299c81f7882c19d2c2d89a168213e07d63f871953f6f8dfbca0d",
+          "ttsFingerprint": "707e3ec14f223fee5b47c3f0d4bdd4ecfefe6c7eadb136b5af75ec78b74eca16"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.3,
+          "leadMs": 40,
+          "tailMs": 100
+        },
+        "role": "intro"
+      },
+      "primaryCue": {
+        "text": "膝盖抬起，画一个你能做到的最大的圈",
+        "ref": {
+          "path": "packages/h-quad-cars/voice/zh/primaryCue.m4a",
+          "sha256": "1c5ad50d4fc3a7ea8c38046dc4a7b90e616e6abb32e59cad0988937203afc21e",
+          "bytes": 27044,
+          "durationSeconds": 3.157914
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "168965c14664e90e807e4ac14191dd616b50fb8026e85eed8cb974953e6eb393",
+          "ttsFingerprint": "547d4403ff5f45698ae283ec5cb3516c0ed08cee56769487a7882fd8eda881fd"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.0,
+          "truePeak": -2.3,
+          "leadMs": 30,
+          "tailMs": 88
+        },
+        "role": "intro"
+      },
+      "phase.start": {
+        "text": "抬膝画圈",
+        "ref": {
+          "path": "packages/h-quad-cars/voice/zh/phase.start.m4a",
+          "sha256": "b381f70df4750fecccf98381f86db94d391fba5ae668740d202a9edc1f7b410b",
+          "bytes": 9174,
+          "durationSeconds": 0.998458
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "412c9b0c4f0e11981ab72cdb4552419962869537a2502388a2d4f75e9b6c0841",
+          "ttsFingerprint": "a24c1f1b52b1c506312e4155530fcf6caf50eee5be3cd6c58be1fc81ebd12111"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.4,
+          "leadMs": 40,
+          "tailMs": 98
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 0.833,
+          "gapSeconds": 0.767,
+          "fit": "schedule-early"
+        }
+      },
+      "phase.peak": {
+        "text": "往外打开",
+        "ref": {
+          "path": "packages/h-quad-cars/voice/zh/phase.peak.m4a",
+          "sha256": "00194ecb28a6d1789f3a21019587219c7a95cf18f190e29d26c2762ebf7ce28a",
+          "bytes": 8782,
+          "durationSeconds": 0.928798
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "d7e3f3367a2903b0076055915ebb368157b75524ac28c4ea68882baf8ad9024c",
+          "ttsFingerprint": "ede08502e339c380b75ade41c5179adfd90656f4d7f85e162d3ded9f3f8e3be1"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.7,
+          "leadMs": 40,
+          "tailMs": 79
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 1.6,
+          "gapSeconds": 1.667,
+          "fit": "fits"
+        }
+      },
+      "phase.end": {
+        "text": "画回原位",
+        "ref": {
+          "path": "packages/h-quad-cars/voice/zh/phase.end.m4a",
+          "sha256": "f9660efb787d349a184ad78b5d7db86b99718515dcf612da2c19f6cc9e92ff8c",
+          "bytes": 8764,
+          "durationSeconds": 0.952018
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "17e5b6d88802a75baadf302ff70783d879e0f9f4c1937ee738726c92902517d0",
+          "ttsFingerprint": "8223048d9858fec514166fb7fa0ee725bb530c108d76c72a821fd7c9fe57a9ea"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.4,
+          "leadMs": 30,
+          "tailMs": 102
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 3.267,
+          "gapSeconds": 4.733,
+          "fit": "fits"
+        }
+      }
+    },
+    "en": {
+      "name": {
+        "text": "Hands-and-Knees Hip Circles",
+        "ref": {
+          "path": "packages/h-quad-cars/voice/en/name.m4a",
+          "sha256": "2d2757d3879f3893ec3355b4215a6ebb01862d42902f38825d77b378ae20157e",
+          "bytes": 12793,
+          "durationSeconds": 1.416417
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "6f7ed8bedb96e372403e731a999d21ee008bf25fa48dcead2d388e280c29b5f5",
+          "ttsFingerprint": "2d46ce1e40dc1568ffd1ea5f2cda5bbac58e1f7665d12beb68db8aefc1b1999e"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.3,
+          "leadMs": 30,
+          "tailMs": 66
+        },
+        "role": "intro"
+      },
+      "primaryCue": {
+        "text": "Lift your knee and draw the biggest circle you can",
+        "ref": {
+          "path": "packages/h-quad-cars/voice/en/primaryCue.m4a",
+          "sha256": "1d4353486fbdb5d3b54a15b4e2cf6c3259f0484090e8b96ba9c6ede46d4b9280",
+          "bytes": 20827,
+          "durationSeconds": 2.391655
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "9fb8c8a704b3f294b20bf48a310ee1c429aa9b92e7e51d15f034d60eece0d19c",
+          "ttsFingerprint": "6a329bd4474e78c284a7544fde40080c38de02fb851b740f88d7ef5b0506daaa"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.4,
+          "leadMs": 40,
+          "tailMs": 82
+        },
+        "role": "intro"
+      },
+      "phase.start": {
+        "text": "Lift and circle",
+        "ref": {
+          "path": "packages/h-quad-cars/voice/en/phase.start.m4a",
+          "sha256": "c5ff53e65daba707c60c6e9c951c11265c8237e4d5b15b368724c7a5e3afe269",
+          "bytes": 9397,
+          "durationSeconds": 1.021678
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "423a3cfac4e3b1e32079adecd0c985b557dc19606711dfd52f12abcd2fe01e0f",
+          "ttsFingerprint": "adcb13829b5ff083bf6c0cbb082904b973d4bc5f3cf33c7721433cdd1f222b66"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.1,
+          "leadMs": 40,
+          "tailMs": 92
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 0.833,
+          "gapSeconds": 0.767,
+          "fit": "schedule-early"
+        }
+      },
+      "phase.peak": {
+        "text": "Open out",
+        "ref": {
+          "path": "packages/h-quad-cars/voice/en/phase.peak.m4a",
+          "sha256": "ffb7bafdebeaaa3a30c73c616a4a299424689cbf4ccc697d15b8004cbb97be7f",
+          "bytes": 6855,
+          "durationSeconds": 0.696599
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "d2e597f5c7ed15cd8e54fa03a09761a929fcb39183a22aa128b8a6c271aab835",
+          "ttsFingerprint": "ad7e8d6866172436cf6bb035d6a1ad24c3505652d3a0cc3f210b522d4d92fe36"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.3,
+          "leadMs": 40,
+          "tailMs": 67
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 1.6,
+          "gapSeconds": 1.667,
+          "fit": "fits"
+        }
+      },
+      "phase.end": {
+        "text": "Circle home",
+        "ref": {
+          "path": "packages/h-quad-cars/voice/en/phase.end.m4a",
+          "sha256": "49591cad6b96b80cf0bb2082d384224bd56b9f7167da0e599f490d440ec168c9",
+          "bytes": 8231,
+          "durationSeconds": 0.859138
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "c6c0242fa43893bf13543d244d25d99121a37a6b0201148877a8a55a2fb51fc2",
+          "ttsFingerprint": "58f59a8bbe937244a686606968924136f997ccadba020d50ad3e3c8069f4069c"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.3,
+          "leadMs": 30,
+          "tailMs": 79
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 3.267,
+          "gapSeconds": 4.733,
+          "fit": "fits"
+        }
+      }
+    }
+  },
+  "summary": {
+    "clips": 10,
+    "auditFailed": [],
+    "scheduleEarly": [
+      "packages/h-quad-cars/voice/zh/phase.start.m4a",
+      "packages/h-quad-cars/voice/en/phase.start.m4a"
+    ]
+  },
+  "status": "technical-passed"
+}

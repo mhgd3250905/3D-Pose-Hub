@@ -1,0 +1,165 @@
+{
+  "format": "pose-hub-action-definition@3",
+  "id": "h-supine-cactus-chest",
+  "text": {
+    "path": "catalog/production/v3-text/h-supine-cactus-chest.json",
+    "sha256": "ee054687646190ab595322bf28dcdd231f2d8bdf729dd21dd84d956e48f6d82e",
+    "reviewStatus": "ai-reviewed-r2-needs-user-review"
+  },
+  "recipe": {
+    "path": "catalog/production/remaining32-r4/groups/gap/h-supine-cactus-chest.json",
+    "sha256": "dd095cd3dd2a3fac6a08917eda052d1662797690c563492a77ef588361505c0f",
+    "spec": "drill-anim/specs/h-supine-cactus-chest-r4.js",
+    "specSha256Lf": "1cd20fb7fe8400886cc380d36210b332d0fbe592d33df8cde16b06dcf4151110"
+  },
+  "productionModel": {
+    "format": "pose-hub-production-model",
+    "formatVersion": 1,
+    "modelProfile": "training-human-v3-armfix",
+    "modelVersion": "0.1.0-r2",
+    "id": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "definition": {
+    "name": {
+      "zh": "仰卧仙人掌开胸",
+      "en": "Lying Cactus-Arm Chest Stretch"
+    },
+    "purpose": {
+      "zh": "轻轻打开胸口和肩膀前侧",
+      "en": "Gently open your chest and the fronts of your shoulders."
+    },
+    "cues": [
+      {
+        "id": "cue1",
+        "primary": true,
+        "text": {
+          "zh": "手肘和手背贴地，双臂沿地面往头的方向滑",
+          "en": "Keep elbows and hands on the floor and slide your arms toward your head"
+        }
+      },
+      {
+        "id": "cue2",
+        "primary": false,
+        "text": {
+          "zh": "仰躺屈膝，双脚踩地，腰放松。",
+          "en": "Lie on your back, knees bent, feet flat, lower back relaxed."
+        }
+      },
+      {
+        "id": "cue3",
+        "primary": false,
+        "text": {
+          "zh": "有轻微拉伸感就停住，再慢慢滑回。",
+          "en": "Stop at a mild stretch, then slide back down slowly."
+        }
+      }
+    ],
+    "commonErrors": [
+      {
+        "zh": "手臂离开地面硬撑",
+        "en": "Lifting the arms off the floor and forcing it."
+      },
+      {
+        "zh": "腰拱起来",
+        "en": "Arching the lower back."
+      }
+    ],
+    "tags": {
+      "category": "stretch",
+      "activeMuscles": [
+        "chest",
+        "deltoids"
+      ],
+      "synergistMuscles": [
+        "rotator-cuff"
+      ],
+      "equipment": [
+        "mat"
+      ],
+      "position": "supine",
+      "difficulty": 1
+    },
+    "unilateral": false,
+    "defaultDose": {
+      "mode": "reps",
+      "sets": 2,
+      "reps": 5,
+      "restSeconds": 15
+    },
+    "cautions": [
+      {
+        "zh": "肩膀疼时减小幅度，仍痛就停止",
+        "en": "If your shoulders hurt, reduce the range, and stop if it still hurts."
+      }
+    ],
+    "training": {
+      "kind": "rep_hold",
+      "leadSeconds": 1,
+      "phases": [
+        {
+          "id": "go",
+          "seconds": 0.9,
+          "cue": "phase.start"
+        },
+        {
+          "id": "hold",
+          "seconds": 4.6,
+          "cue": "phase.peak"
+        },
+        {
+          "id": "back",
+          "seconds": 0.9,
+          "cue": "phase.end"
+        },
+        {
+          "id": "rest",
+          "seconds": 1.6
+        }
+      ],
+      "source": "spec-pulse-track r2"
+    }
+  },
+  "voiceScript": {
+    "name": {
+      "zh": "仰卧仙人掌开胸",
+      "en": "Lying Cactus-Arm Chest Stretch"
+    },
+    "primaryCue": {
+      "zh": "手肘和手背贴地，双臂沿地面往头的方向滑",
+      "en": "Keep elbows and hands on the floor and slide your arms toward your head"
+    },
+    "phase.start": {
+      "zh": "向上滑",
+      "en": "Slide up"
+    },
+    "phase.peak": {
+      "zh": "保持呼吸",
+      "en": "Breathe"
+    },
+    "phase.end": {
+      "zh": "慢慢滑回",
+      "en": "Slide back"
+    }
+  },
+  "rhythm": {
+    "durationSeconds": 8,
+    "fps": 30,
+    "cuePoints": {
+      "start": 1.0,
+      "peak": 2.0,
+      "end": 6.767,
+      "method": "masters highlight pulse (25 % rise / plateau reached / 50 % fall) — computed from spec pulse track (spec_pulse.mjs), masters not on this machine",
+      "sampled": false
+    },
+    "binding": {
+      "phase.start": "start",
+      "phase.peak": "peak",
+      "phase.end": "end"
+    },
+    "playback": "name + primaryCue before the set; phase lines at their cue points every rep, scheduled to END by the next cue point (skip a line that cannot fit, never cut or overlap)"
+  },
+  "review": {
+    "editorial": "passed"
+  }
+}

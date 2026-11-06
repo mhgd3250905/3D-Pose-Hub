@@ -1,0 +1,319 @@
+{
+  "format": "pose-hub-voice@3",
+  "actionId": "h-kneeling-instep-stretch",
+  "definitionSha256": "88ae76711215fe27d6ac4b13ef5ff43eb499e569cc9ecc812d2eb22df2cf6ea9",
+  "standard": {
+    "lufsTarget": -16,
+    "lufsTolerance": 1,
+    "truePeakMaxDbtp": -1,
+    "codec": "aac",
+    "sampleRate": 44100,
+    "channels": 1,
+    "bitrateKbps": 64,
+    "process": "hiplab v4.1"
+  },
+  "voiceProfile": {
+    "zh": {
+      "voice": "zh-CN-XiaoxiaoNeural",
+      "rate": "+6%"
+    },
+    "en": {
+      "voice": "en-US-JennyNeural",
+      "rate": "+4%"
+    }
+  },
+  "common": "voice/common/manifest.json",
+  "contentReview": "passed",
+  "manualListening": "pending",
+  "cuePoints": {
+    "start": 1.0,
+    "peak": 2.0,
+    "end": 5.033,
+    "method": "masters highlight pulse (25 % rise / plateau reached / 50 % fall) — computed from spec pulse track (spec_pulse.mjs), masters not on this machine",
+    "sampled": false
+  },
+  "lines": {
+    "zh": {
+      "name": {
+        "text": "跪姿脚背拉伸",
+        "ref": {
+          "path": "packages/h-kneeling-instep-stretch/voice/zh/name.m4a",
+          "sha256": "c827fc5e836e3f333c7c68b4e2918e5c0de7e7c73feccac36443efef7e41538a",
+          "bytes": 11845,
+          "durationSeconds": 1.300317
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "34f5f60ac0d3b193d1e0d3eb6736e2a75673f821056812b63f865a357dfab527",
+          "ttsFingerprint": "634712eb9cdd4084fbef97847e0ee7166ac82c149d0544791ee4f77df1c43b51"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.6,
+          "leadMs": 40,
+          "tailMs": 90
+        },
+        "role": "intro"
+      },
+      "primaryCue": {
+        "text": "脚背贴地跪好，身体慢慢往后坐",
+        "ref": {
+          "path": "packages/h-kneeling-instep-stretch/voice/zh/primaryCue.m4a",
+          "sha256": "badaa4b805a18e2d45d956989ce85f4e89ede92995b7f8667ff6d3aa1ae734d4",
+          "bytes": 24218,
+          "durationSeconds": 2.809615
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "4223aaa1eedd540976db8002383e554ad3ec42ac674b0f09ba90d5419e381b44",
+          "ttsFingerprint": "04f62b24e886a4cf1b6c7e7ddc4e73bc4ae12bc28bae48f2752952951cd89402"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.3,
+          "leadMs": 30,
+          "tailMs": 80
+        },
+        "role": "intro"
+      },
+      "phase.start": {
+        "text": "慢慢往后坐",
+        "ref": {
+          "path": "packages/h-kneeling-instep-stretch/voice/zh/phase.start.m4a",
+          "sha256": "09fc5dabf0722c0c09e7fa2a0f34ccc8c99481c6c8baa85df046f22f5c6782f3",
+          "bytes": 10307,
+          "durationSeconds": 1.114558
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "c6b5427d0f6e7e2e8a584b2c715b8b4cd16fa1f5ae15392a894abc0cea33a960",
+          "ttsFingerprint": "e7905ea1f68c184a3466bf1f42762f0bf59ea70d381f23cdb51bc6b840fbfbce"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.0,
+          "truePeak": -3.7,
+          "leadMs": 40,
+          "tailMs": 85
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 1.0,
+          "gapSeconds": 1.0,
+          "fit": "schedule-early"
+        }
+      },
+      "phase.peak": {
+        "text": "保持，慢慢呼气",
+        "ref": {
+          "path": "packages/h-kneeling-instep-stretch/voice/zh/phase.peak.m4a",
+          "sha256": "142ef9d5f8a536cf942112977e02ed6ca323ea741ae8111fcf06bc2f7c656fb3",
+          "bytes": 14058,
+          "durationSeconds": 1.602177
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "fefe1fe3d4c5b7ad9bb3fbb93c92d331aa70bff3856111be5915bbea8de24f32",
+          "ttsFingerprint": "caf5396bbb32256a45f95388df0d257c5a8354e245bac4d7881509dea03073aa"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.4,
+          "leadMs": 40,
+          "tailMs": 102
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 2.0,
+          "gapSeconds": 3.033,
+          "fit": "fits"
+        }
+      },
+      "phase.end": {
+        "text": "呼气再放松",
+        "ref": {
+          "path": "packages/h-kneeling-instep-stretch/voice/zh/phase.end.m4a",
+          "sha256": "7d67f32a409f71300f301ad16467733c39ebf82c80bade77dec77ad6e2cbdaa1",
+          "bytes": 10484,
+          "durationSeconds": 1.137778
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "12613bb7ff35f7d03caef036bbf53025d84450d57b08687264b52c4cab9a1a2e",
+          "ttsFingerprint": "4e0fb49c963701953bab2fbab18598b753f149810dbeb7856a0daab9f4a9d500"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -3.0,
+          "leadMs": 30,
+          "tailMs": 78
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 5.033,
+          "gapSeconds": 2.967,
+          "fit": "fits"
+        }
+      }
+    },
+    "en": {
+      "name": {
+        "text": "Kneeling Top-of-Foot Stretch",
+        "ref": {
+          "path": "packages/h-kneeling-instep-stretch/voice/en/name.m4a",
+          "sha256": "d2eab44d5f07d9b48870fc4bfe63b855f61f173101c918ac566fbb6c82b25a10",
+          "bytes": 14315,
+          "durationSeconds": 1.602177
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "5594dc805feb8be13e808ee5b1270e12733eb45b1b48a946ac4fb2fd3d5b3b42",
+          "ttsFingerprint": "8e65f75052561bb8e5f757d69f750704531754402a3094fe05c763d05fd3ee52"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -1.9,
+          "leadMs": 40,
+          "tailMs": 82
+        },
+        "role": "intro"
+      },
+      "primaryCue": {
+        "text": "Kneel with the tops of your feet down and slowly sit back",
+        "ref": {
+          "path": "packages/h-kneeling-instep-stretch/voice/en/primaryCue.m4a",
+          "sha256": "d27a04115edc5a665e9db9631f7e6128448fc47793adf231119e3b0f81d07a6b",
+          "bytes": 25004,
+          "durationSeconds": 2.902494
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "411222579ba77988aecef4e7e40ef821cc17cd677e4ccbe8f6355ad091df1799",
+          "ttsFingerprint": "978034e0119b6d82189b4b777e847fd14a03f8038a6970f01ff013a6fddb8392"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.2,
+          "leadMs": 40,
+          "tailMs": 62
+        },
+        "role": "intro"
+      },
+      "phase.start": {
+        "text": "Sit back",
+        "ref": {
+          "path": "packages/h-kneeling-instep-stretch/voice/en/phase.start.m4a",
+          "sha256": "d2f3e0ea3c2a69d3d044337d3ebb51f4c47cac96e1e686f3b8147eabd019145c",
+          "bytes": 7431,
+          "durationSeconds": 0.766259
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "41e7e8f68f51aa037522ac425e75a397adfa849e28ed68f5c17f47ffddcf56c3",
+          "ttsFingerprint": "f850283f0af567abdfe62731a187e8d6f5b8a8dd5bfe1094354dfb23e2bc2ee6"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.5,
+          "leadMs": 30,
+          "tailMs": 66
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 1.0,
+          "gapSeconds": 1.0,
+          "fit": "fits"
+        }
+      },
+      "phase.peak": {
+        "text": "Hold and breathe out",
+        "ref": {
+          "path": "packages/h-kneeling-instep-stretch/voice/en/phase.peak.m4a",
+          "sha256": "3558f656de66ed99e0bb7717fa9d307de92c7891e3cf7d86763539babf0402d4",
+          "bytes": 10071,
+          "durationSeconds": 1.091338
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "d6eeb7d45a84277b9e03214d7b03de15b1de6eee29aa65e21fb4a8f87e7964dc",
+          "ttsFingerprint": "5aa699e716389cfd8b232feef6bc51055b66dcea8c621175278f4c67b9b0116d"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -15.9,
+          "truePeak": -2.7,
+          "leadMs": 40,
+          "tailMs": 81
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 2.0,
+          "gapSeconds": 3.033,
+          "fit": "fits"
+        }
+      },
+      "phase.end": {
+        "text": "Relax a bit deeper",
+        "ref": {
+          "path": "packages/h-kneeling-instep-stretch/voice/en/phase.end.m4a",
+          "sha256": "9bfef77b2e3f0f08b617669d86699aa83df75d41c523067c2d6e2c334d35f6e1",
+          "bytes": 10676,
+          "durationSeconds": 1.160998
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "c78ceebe4d1a6cb6698dc31a4663567dfd64e5c1a164794c55c2d33b8c0cdb4c",
+          "ttsFingerprint": "d3b3be8016064f1523516f5b01aba71a544ab56d286f867431b777410e5289e7"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -1.9,
+          "leadMs": 30,
+          "tailMs": 71
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 5.033,
+          "gapSeconds": 2.967,
+          "fit": "fits"
+        }
+      }
+    }
+  },
+  "summary": {
+    "clips": 10,
+    "auditFailed": [],
+    "scheduleEarly": [
+      "packages/h-kneeling-instep-stretch/voice/zh/phase.start.m4a"
+    ]
+  },
+  "status": "technical-passed"
+}

@@ -1,0 +1,319 @@
+{
+  "format": "pose-hub-voice@3",
+  "actionId": "h-donkey-kick",
+  "definitionSha256": "5639390c9ac908a31c6acbb8e02a9dc5757bbb54a158c3fb312e2b2073436124",
+  "standard": {
+    "lufsTarget": -16,
+    "lufsTolerance": 1,
+    "truePeakMaxDbtp": -1,
+    "codec": "aac",
+    "sampleRate": 44100,
+    "channels": 1,
+    "bitrateKbps": 64,
+    "process": "hiplab v4.1"
+  },
+  "voiceProfile": {
+    "zh": {
+      "voice": "zh-CN-XiaoxiaoNeural",
+      "rate": "+6%"
+    },
+    "en": {
+      "voice": "en-US-JennyNeural",
+      "rate": "+4%"
+    }
+  },
+  "common": "voice/common/manifest.json",
+  "contentReview": "passed",
+  "manualListening": "pending",
+  "cuePoints": {
+    "start": 0.733,
+    "peak": 1.4,
+    "end": 3.033,
+    "method": "masters highlight pulse (25 % rise / plateau reached / 50 % fall) — computed from spec pulse track (spec_pulse.mjs), masters not on this machine",
+    "sampled": false
+  },
+  "lines": {
+    "zh": {
+      "name": {
+        "text": "跪撑屈膝后踢腿",
+        "ref": {
+          "path": "packages/h-donkey-kick/voice/zh/name.m4a",
+          "sha256": "7bfd477299b7738ec2ab83eabe41fb3df3797600c5705a96ffd4f8490864f26f",
+          "bytes": 13677,
+          "durationSeconds": 1.532517
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "acbf2e9d248497868b93403166da1c074a8c6dd7a59faf18b3ea2d74d313a62e",
+          "ttsFingerprint": "3a91a4bbb81e8e4514de59b12000374e88bf9adca1834bf5d9e27334115f1492"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.5,
+          "leadMs": 40,
+          "tailMs": 83
+        },
+        "role": "intro"
+      },
+      "primaryCue": {
+        "text": "膝盖弯成直角，脚底往天花板推",
+        "ref": {
+          "path": "packages/h-donkey-kick/voice/zh/primaryCue.m4a",
+          "sha256": "74bfdaa90f73a3704597fb7d5115acd24f88752713a655e1900dfba702e97c1e",
+          "bytes": 25684,
+          "durationSeconds": 3.018594
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "c334c79b4fb59c49beefc6772b40e73c33524165e53dc7c3becda14798e5b362",
+          "ttsFingerprint": "527b5dbb683ce128d4e1a5508b6d7cffd49f8a9e094ee569c4868b562ba232f2"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.0,
+          "truePeak": -2.4,
+          "leadMs": 40,
+          "tailMs": 99
+        },
+        "role": "intro"
+      },
+      "phase.start": {
+        "text": "上踢",
+        "ref": {
+          "path": "packages/h-donkey-kick/voice/zh/phase.start.m4a",
+          "sha256": "d1ef96b9af3f340d38586cbca7ba27d7fdf8f98b1e68c139f767972e1b89c48d",
+          "bytes": 6886,
+          "durationSeconds": 0.696599
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "06179ab28e8c8fd884dd07f29f89a1cbc6f37a2252c72991af29167b0beb17bb",
+          "ttsFingerprint": "b229ebd6af572b4f10cebff11f214becf4cd1cce11d0c3ad542b2522871d2072"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.1,
+          "leadMs": 30,
+          "tailMs": 87
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 0.733,
+          "gapSeconds": 0.667,
+          "fit": "schedule-early"
+        }
+      },
+      "phase.peak": {
+        "text": "夹臀",
+        "ref": {
+          "path": "packages/h-donkey-kick/voice/zh/phase.peak.m4a",
+          "sha256": "e379f9404e3e735e649ab9cb07683db8e51050e0a008e4ac81ecc90e7a05bb8b",
+          "bytes": 6318,
+          "durationSeconds": 0.650159
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "6461cff87262d75957d037396205aecef29a2c97c90bc6038c27978ba48726a9",
+          "ttsFingerprint": "8a81c51bb983e9b00141a514ae4498adaaa3b4742d85ed50b3310ab45670ded7"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.5,
+          "leadMs": 30,
+          "tailMs": 90
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 1.4,
+          "gapSeconds": 1.633,
+          "fit": "fits"
+        }
+      },
+      "phase.end": {
+        "text": "放回",
+        "ref": {
+          "path": "packages/h-donkey-kick/voice/zh/phase.end.m4a",
+          "sha256": "f2d3693500659beecac5823e3493bd0023f6643ce3988fd20b2687ba00539c2e",
+          "bytes": 6270,
+          "durationSeconds": 0.626939
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "ba3b8eb12183952ff1d40ab4031c8b8a74d01f440841c36b2178d9dcaa688562",
+          "ttsFingerprint": "9958dac9425d8365cd50c94c4ab363f5ae60559009e9aa2ba62c87437d822031"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.5,
+          "leadMs": 30,
+          "tailMs": 87
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 3.033,
+          "gapSeconds": 4.967,
+          "fit": "fits"
+        }
+      }
+    },
+    "en": {
+      "name": {
+        "text": "Bent-Knee Donkey Kick",
+        "ref": {
+          "path": "packages/h-donkey-kick/voice/en/name.m4a",
+          "sha256": "e9bb00654d219d87c4f494672d00bbbb0806d5ac69fda762c2ca8cc994c13802",
+          "bytes": 11001,
+          "durationSeconds": 1.207438
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "aa45fa3945be437258ebb67a05c5c9c711ef171adfa132f5038c22a2c3761a26",
+          "ttsFingerprint": "c31394f598b296b203257593ea93aac791fafc3d43e7601c4004ec7b3d4b6af8"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.0,
+          "leadMs": 30,
+          "tailMs": 77
+        },
+        "role": "intro"
+      },
+      "primaryCue": {
+        "text": "Keep your knee bent at a right angle and push your sole up",
+        "ref": {
+          "path": "packages/h-donkey-kick/voice/en/primaryCue.m4a",
+          "sha256": "4f3880799974b0edbc72955cff52b6d15dfb3304a29d6790095bcd66d0ac8c0e",
+          "bytes": 21793,
+          "durationSeconds": 2.530975
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "aa3c48f495607bc76bca96624edd6e7986508cef4bbc493190df7a74c3c97ca1",
+          "ttsFingerprint": "c300749eddcc93579089eb1367be68f87bfb656b9f69107c8e6650d9adb8a676"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.0,
+          "truePeak": -2.2,
+          "leadMs": 40,
+          "tailMs": 81
+        },
+        "role": "intro"
+      },
+      "phase.start": {
+        "text": "Kick",
+        "ref": {
+          "path": "packages/h-donkey-kick/voice/en/phase.start.m4a",
+          "sha256": "6281f49af71075334c0369da9233f3250323a98a3048c3109cd9e64426121c97",
+          "bytes": 5354,
+          "durationSeconds": 0.510839
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "6201b9c95fbb0314517ef8b108812de556245ee38a94e15732c7f006b9a81ca1",
+          "ttsFingerprint": "d84bfdec3b7830949ab54ada0134acc1dd3939e021c39b7b38beeeac993aeef0"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.2,
+          "leadMs": 30,
+          "tailMs": 51
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 0.733,
+          "gapSeconds": 0.667,
+          "fit": "fits"
+        }
+      },
+      "phase.peak": {
+        "text": "Squeeze",
+        "ref": {
+          "path": "packages/h-donkey-kick/voice/en/phase.peak.m4a",
+          "sha256": "ef8ab91db93d86e650546f134a1c8470fa55536af97f9cff4783f6aa68e1bc59",
+          "bytes": 7216,
+          "durationSeconds": 0.743039
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "7e12f5a59e88ae22330414e683b6aeee87fb9e271d1cab39ea9755d30b81dfd6",
+          "ttsFingerprint": "48f89aebdc5d94eeec8624b653d24dada81302297d758b257668501198a190b2"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.3,
+          "leadMs": 40,
+          "tailMs": 83
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 1.4,
+          "gapSeconds": 1.633,
+          "fit": "fits"
+        }
+      },
+      "phase.end": {
+        "text": "Lower",
+        "ref": {
+          "path": "packages/h-donkey-kick/voice/en/phase.end.m4a",
+          "sha256": "112ba6840ae24a185a3acc8dfa2d75016c38480a19125cab97ca741ff42c2b33",
+          "bytes": 5598,
+          "durationSeconds": 0.534059
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "153c699395cf43f57e6e60bf95b07e29b23febd303c9298f56f7709170491eb5",
+          "ttsFingerprint": "994f87386967e210d9f9e7fa5d94c40bead47345fb9e11bed970cb0cb1086713"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -15.9,
+          "truePeak": -2.7,
+          "leadMs": 40,
+          "tailMs": 74
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 3.033,
+          "gapSeconds": 4.967,
+          "fit": "fits"
+        }
+      }
+    }
+  },
+  "summary": {
+    "clips": 10,
+    "auditFailed": [],
+    "scheduleEarly": [
+      "packages/h-donkey-kick/voice/zh/phase.start.m4a"
+    ]
+  },
+  "status": "technical-passed"
+}

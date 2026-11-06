@@ -1,0 +1,317 @@
+{
+  "format": "pose-hub-voice@3",
+  "actionId": "s-lizard",
+  "definitionSha256": "751987b59c2e77a35128a96a004d8b8dfa8c89c64c8ff8e7c9d1b3b80e88bda7",
+  "standard": {
+    "lufsTarget": -16,
+    "lufsTolerance": 1,
+    "truePeakMaxDbtp": -1,
+    "codec": "aac",
+    "sampleRate": 44100,
+    "channels": 1,
+    "bitrateKbps": 64,
+    "process": "hiplab v4.1"
+  },
+  "voiceProfile": {
+    "zh": {
+      "voice": "zh-CN-XiaoxiaoNeural",
+      "rate": "+6%"
+    },
+    "en": {
+      "voice": "en-US-JennyNeural",
+      "rate": "+4%"
+    }
+  },
+  "common": "voice/common/manifest.json",
+  "contentReview": "passed",
+  "manualListening": "pending",
+  "cuePoints": {
+    "start": 1.133,
+    "peak": 3.8,
+    "end": 6.233,
+    "method": "masters highlight pulse (25 % rise / plateau reached / 50 % fall) — computed from spec pulse track (spec_pulse.mjs), masters not on this machine",
+    "sampled": false
+  },
+  "lines": {
+    "zh": {
+      "name": {
+        "text": "蜥蜴式低弓步",
+        "ref": {
+          "path": "packages/s-lizard/voice/zh/name.m4a",
+          "sha256": "135f06a312b3f26084199ab3372b68e2b71110a8c36ffad6cf5fd4688f6ebc6a",
+          "bytes": 11492,
+          "durationSeconds": 1.277098
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "112c86808e6383d96f5cf6a1fb098b76b6cd91531f0368e6d0ef670ec74d2c86",
+          "ttsFingerprint": "ec11a759be5cad3607811ef3b4ad169f49eec1d9f301aea2a87a408c6df96ba4"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -3.0,
+          "leadMs": 30,
+          "tailMs": 97
+        },
+        "role": "intro"
+      },
+      "primaryCue": {
+        "text": "髋部慢慢往前往下沉",
+        "ref": {
+          "path": "packages/s-lizard/voice/zh/primaryCue.m4a",
+          "sha256": "847234676ac54600ba4c226b0c2f03bd2800eabf67dffeaeefa7907bd1c3af83",
+          "bytes": 17509,
+          "durationSeconds": 2.020136
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "f99c96e02071239e56b9a3ed5ef65c5eb33020e6109d59788e35ca96d545c452",
+          "ttsFingerprint": "2f03b31e0ee2c39cc131e3eac472985836a6ae57d42a8e9d3a9d5cf2daf65ed4"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -3.3,
+          "leadMs": 40,
+          "tailMs": 100
+        },
+        "role": "intro"
+      },
+      "phase.start": {
+        "text": "髋部下沉",
+        "ref": {
+          "path": "packages/s-lizard/voice/zh/phase.start.m4a",
+          "sha256": "9b3f6cb355aa22989619b648e318c36715455c3ad5735eca0902b093d5efa58b",
+          "bytes": 9217,
+          "durationSeconds": 0.998458
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "67fd432ee6f5b52cd2c8fdf90832bb30ae9dc10ed0890a5a93a9bb5d5922141e",
+          "ttsFingerprint": "0a55237aa622a211ed7723c7e87bed6fd13b5b2cf451fad8caa07299abfaa525"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.7,
+          "leadMs": 40,
+          "tailMs": 98
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 1.133,
+          "gapSeconds": 2.667,
+          "fit": "fits"
+        }
+      },
+      "phase.peak": {
+        "text": "保持，慢慢呼气",
+        "ref": {
+          "path": "packages/s-lizard/voice/zh/phase.peak.m4a",
+          "sha256": "142ef9d5f8a536cf942112977e02ed6ca323ea741ae8111fcf06bc2f7c656fb3",
+          "bytes": 14058,
+          "durationSeconds": 1.602177
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "fefe1fe3d4c5b7ad9bb3fbb93c92d331aa70bff3856111be5915bbea8de24f32",
+          "ttsFingerprint": "caf5396bbb32256a45f95388df0d257c5a8354e245bac4d7881509dea03073aa"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.4,
+          "leadMs": 40,
+          "tailMs": 102
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 3.8,
+          "gapSeconds": 2.433,
+          "fit": "fits"
+        }
+      },
+      "phase.end": {
+        "text": "呼气再沉点",
+        "ref": {
+          "path": "packages/s-lizard/voice/zh/phase.end.m4a",
+          "sha256": "9eb2e07208a7d82c9f83e0225c06f7909b09897255f26f0a6053c88467753f35",
+          "bytes": 10526,
+          "durationSeconds": 1.137778
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "2245c76ae79fa896eaa940223c5f160a957d91e26e2bfce7a7e0c24a85382fa0",
+          "ttsFingerprint": "cbe1b056fa604d6284a05247bb000d8bf5a2bcf0e0a50f294ad5644af4f0a713"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.3,
+          "leadMs": 30,
+          "tailMs": 78
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 6.233,
+          "gapSeconds": 1.767,
+          "fit": "fits"
+        }
+      }
+    },
+    "en": {
+      "name": {
+        "text": "Lizard Lunge",
+        "ref": {
+          "path": "packages/s-lizard/voice/en/name.m4a",
+          "sha256": "38d4254c808e4425095a5ee2a317c15eedf15a1ddb34a8b39dec88173266c8ed",
+          "bytes": 9193,
+          "durationSeconds": 0.975238
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "d4f31a43d2ea640e53763c39c0cc43f844222c718a7521c95371cb488b3570bc",
+          "ttsFingerprint": "d63cdf4cd50ddd6ae6de74e863da5abbff7c63e3241c4af7540787e61f44eaf2"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.2,
+          "leadMs": 30,
+          "tailMs": 75
+        },
+        "role": "intro"
+      },
+      "primaryCue": {
+        "text": "Let your hips sink slowly forward and down",
+        "ref": {
+          "path": "packages/s-lizard/voice/en/primaryCue.m4a",
+          "sha256": "04f3ebcdbf582536762babb85bfd53c23d4a13b78579fa6bd179fe1977e0e538",
+          "bytes": 18691,
+          "durationSeconds": 2.136236
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "3352edb04d964000960e73364c9c3ded0a95713bca63fbb3b2fd0a6632ce8c90",
+          "ttsFingerprint": "d539b324bec611517f175a43c478311bb314c8c0b694b863fe5e4aae717eda80"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.4,
+          "leadMs": 30,
+          "tailMs": 76
+        },
+        "role": "intro"
+      },
+      "phase.start": {
+        "text": "Sink your hips",
+        "ref": {
+          "path": "packages/s-lizard/voice/en/phase.start.m4a",
+          "sha256": "69b4a0913200d31314e8a3da5008b3d75ec175097f017f3b7f35ec906aacba17",
+          "bytes": 8969,
+          "durationSeconds": 0.952018
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "552bee0663c9d8aca0a32eb4dfcf220d55c0706996c34959dd6158f1f66abaa2",
+          "ttsFingerprint": "95afdc1255a16fa7a28f93299fcef9c955b95dda12d31f6e4d5d2f63a183583e"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.3,
+          "leadMs": 40,
+          "tailMs": 72
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 1.133,
+          "gapSeconds": 2.667,
+          "fit": "fits"
+        }
+      },
+      "phase.peak": {
+        "text": "Hold and breathe out",
+        "ref": {
+          "path": "packages/s-lizard/voice/en/phase.peak.m4a",
+          "sha256": "3558f656de66ed99e0bb7717fa9d307de92c7891e3cf7d86763539babf0402d4",
+          "bytes": 10071,
+          "durationSeconds": 1.091338
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "d6eeb7d45a84277b9e03214d7b03de15b1de6eee29aa65e21fb4a8f87e7964dc",
+          "ttsFingerprint": "5aa699e716389cfd8b232feef6bc51055b66dcea8c621175278f4c67b9b0116d"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -15.9,
+          "truePeak": -2.7,
+          "leadMs": 40,
+          "tailMs": 81
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 3.8,
+          "gapSeconds": 2.433,
+          "fit": "fits"
+        }
+      },
+      "phase.end": {
+        "text": "Sink a bit deeper",
+        "ref": {
+          "path": "packages/s-lizard/voice/en/phase.end.m4a",
+          "sha256": "9e76efc5a77b36d4a56dd40594d7cde7bf524e9d0a5b52399b96c34979416f97",
+          "bytes": 9980,
+          "durationSeconds": 1.068118
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "2e18ecd627e91a60d813a9a4868db58b33b75ccc54bca4b2556633b51fe492a2",
+          "ttsFingerprint": "e529fb1430271ab0bef6eed153789151f62a47760d246cf3747604aa7cf9cb30"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.4,
+          "leadMs": 40,
+          "tailMs": 68
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 6.233,
+          "gapSeconds": 1.767,
+          "fit": "fits"
+        }
+      }
+    }
+  },
+  "summary": {
+    "clips": 10,
+    "auditFailed": [],
+    "scheduleEarly": []
+  },
+  "status": "technical-passed"
+}

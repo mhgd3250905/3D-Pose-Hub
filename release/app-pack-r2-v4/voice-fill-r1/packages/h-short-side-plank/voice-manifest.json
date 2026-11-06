@@ -1,0 +1,320 @@
+{
+  "format": "pose-hub-voice@3",
+  "actionId": "h-short-side-plank",
+  "definitionSha256": "fec1e8142e32d46d92ee9d534eb4386e719f239abd61f893567720c95b660099",
+  "standard": {
+    "lufsTarget": -16,
+    "lufsTolerance": 1,
+    "truePeakMaxDbtp": -1,
+    "codec": "aac",
+    "sampleRate": 44100,
+    "channels": 1,
+    "bitrateKbps": 64,
+    "process": "hiplab v4.1"
+  },
+  "voiceProfile": {
+    "zh": {
+      "voice": "zh-CN-XiaoxiaoNeural",
+      "rate": "+6%"
+    },
+    "en": {
+      "voice": "en-US-JennyNeural",
+      "rate": "+4%"
+    }
+  },
+  "common": "voice/common/manifest.json",
+  "contentReview": "passed",
+  "manualListening": "pending",
+  "cuePoints": {
+    "start": 0.0,
+    "peak": 4.0,
+    "end": 8,
+    "method": "flat pulse (hold): 0 / mid / end — computed from spec pulse track (spec_pulse.mjs), masters not on this machine",
+    "sampled": false
+  },
+  "lines": {
+    "zh": {
+      "name": {
+        "text": "屈膝侧平板",
+        "ref": {
+          "path": "packages/h-short-side-plank/voice/zh/name.m4a",
+          "sha256": "2cdf9d02e3bbdf4fdb610325ed668780143e7cfba8b63969cc45395b875f324f",
+          "bytes": 10811,
+          "durationSeconds": 1.184218
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "f155eca0152ef911bd7f41b5c0ef34c45406cfd20e2d11749f4c6b44f23c80b3",
+          "ttsFingerprint": "24a2c11bf04a14a015c27d84388b63c41147a088b36767b87b416b2a32792826"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.0,
+          "truePeak": -2.4,
+          "leadMs": 30,
+          "tailMs": 84
+        },
+        "role": "intro"
+      },
+      "primaryCue": {
+        "text": "前臂和膝盖撑地，屁股抬起成一条直线",
+        "ref": {
+          "path": "packages/h-short-side-plank/voice/zh/primaryCue.m4a",
+          "sha256": "ed34c97e0a3640cc384652571bb2763d8136279702d6dc2a9cd278e338b0f26e",
+          "bytes": 29442,
+          "durationSeconds": 3.459773
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "b96d1c545ea7d2cdade18fb7740c7afbafc70d0a2563453a325765af6524cc8f",
+          "ttsFingerprint": "77f604ace2568dfb55f2c1aef54b26effab8dce106c0428330c6d17e98999c3b"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.4,
+          "leadMs": 30,
+          "tailMs": 90
+        },
+        "role": "intro"
+      },
+      "phase.start": {
+        "text": "抬起屁股",
+        "ref": {
+          "path": "packages/h-short-side-plank/voice/zh/phase.start.m4a",
+          "sha256": "00ac59ac52309f3732d6a71a64bae6249f045fccf67e8ceb8fd32b6a0464b5ff",
+          "bytes": 8984,
+          "durationSeconds": 0.952018
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "663f0f19bd02fd4dc5b3d75bbfc484438db3bb22de94fa710214b051f66e5310",
+          "ttsFingerprint": "ed36f4883fa158a1ba6ff0b01a5a55fe4c2da563d22b7fa89467d5e7f5a84cc2"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.0,
+          "truePeak": -2.5,
+          "leadMs": 40,
+          "tailMs": 82
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 0.0,
+          "gapSeconds": 4.0,
+          "fit": "fits"
+        }
+      },
+      "phase.peak": {
+        "text": "保持住",
+        "ref": {
+          "path": "packages/h-short-side-plank/voice/zh/phase.peak.m4a",
+          "sha256": "7cd979539d43761959287accf20737c0101ee4583487d20e7a98e47c8717a628",
+          "bytes": 7336,
+          "durationSeconds": 0.766259
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "299362736a831bab4848b32c93d7b6a5c383bfee3d94d1d29d0f923e3351e2c9",
+          "ttsFingerprint": "f3a18b67d8b58d74ce40f8dda0f464fa4e3d40178e62dc2a016ae28454c56a90"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.9,
+          "leadMs": 40,
+          "tailMs": 96
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 4.0,
+          "gapSeconds": 4.0,
+          "fit": "fits"
+        }
+      },
+      "phase.end": {
+        "text": "慢慢放下",
+        "ref": {
+          "path": "packages/h-short-side-plank/voice/zh/phase.end.m4a",
+          "sha256": "e2b4d6cd0e31ab87cec3c3ea458dc8ac4930aa03348d3ea1fa7e76d4d384aeff",
+          "bytes": 8973,
+          "durationSeconds": 0.952018
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "2a17d22aa579936ba3634a9bafc89ecf3dc0ef6036823004bcf95b9deabdfeeb",
+          "ttsFingerprint": "d1c4fc3204be2bf20ed8bc875b2d5fa0ef0639002a47a430b4c8d074032b5eac"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -3.1,
+          "leadMs": 40,
+          "tailMs": 82
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 8,
+          "gapSeconds": 0,
+          "fit": "schedule-early"
+        }
+      }
+    },
+    "en": {
+      "name": {
+        "text": "Bent-Knee Side Plank",
+        "ref": {
+          "path": "packages/h-short-side-plank/voice/en/name.m4a",
+          "sha256": "c2c7059829aa0b9fadafc07a953e7572bf6ae8f4452202e0c8b82d90796e3dd6",
+          "bytes": 10432,
+          "durationSeconds": 1.137778
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "89286ecdac4e2432b7f0bb3c8683905a263465bf53291783b6bdcd8e1d5cec6b",
+          "ttsFingerprint": "a54a59d131224d64ad300627354679ab3a2c971b7960b23b0aedbb52ad87e078"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.0,
+          "truePeak": -2.2,
+          "leadMs": 30,
+          "tailMs": 68
+        },
+        "role": "intro"
+      },
+      "primaryCue": {
+        "text": "Prop on your forearm and knee and lift your hips into a straight line",
+        "ref": {
+          "path": "packages/h-short-side-plank/voice/en/primaryCue.m4a",
+          "sha256": "88adca167f6749b14ca72cf5a8a96fbf70cffac42074504726cf2f4e4bd0606c",
+          "bytes": 27508,
+          "durationSeconds": 3.250794
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "38c43ce1ebf50074018234466dcecfb6ca041fa43c8569b3481dad71892c04d4",
+          "ttsFingerprint": "2fa857bb1e44f0fefbde4bce144f6a5924d145846968bb3488dff8754e06df99"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.3,
+          "leadMs": 40,
+          "tailMs": 101
+        },
+        "role": "intro"
+      },
+      "phase.start": {
+        "text": "Lift your hips",
+        "ref": {
+          "path": "packages/h-short-side-plank/voice/en/phase.start.m4a",
+          "sha256": "a73159a64594e401f5df3b783b06faf3b1df76bea304922477a43c05a473ea3a",
+          "bytes": 8741,
+          "durationSeconds": 0.928798
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "783f452faab5a45116beb1bf3917c269435bad860d40f052198923b38579f6a6",
+          "ttsFingerprint": "02e0e1d2c2ad19dbb5dbddfbcda6dc89661f172298e20f8e030616b643655513"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.3,
+          "leadMs": 40,
+          "tailMs": 69
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 0.0,
+          "gapSeconds": 4.0,
+          "fit": "fits"
+        }
+      },
+      "phase.peak": {
+        "text": "Hold",
+        "ref": {
+          "path": "packages/h-short-side-plank/voice/en/phase.peak.m4a",
+          "sha256": "b6ac50d0e6201d57e34af08a454421cebbcd2215d0b4e861d7918dbb0ead5371",
+          "bytes": 4998,
+          "durationSeconds": 0.464399
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "0e92c3a2459040c6ef55ea6950c927a2a1acee35e4a3dd23869d30ece94b9773",
+          "ttsFingerprint": "3abc227bfc3d1bd10e8614a94199d1210a8e483c37a7bba77c95128949b12c56"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.6,
+          "leadMs": 40,
+          "tailMs": 64
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 4.0,
+          "gapSeconds": 4.0,
+          "fit": "fits"
+        }
+      },
+      "phase.end": {
+        "text": "Lower slowly",
+        "ref": {
+          "path": "packages/h-short-side-plank/voice/en/phase.end.m4a",
+          "sha256": "9ac009cf33b2d72680e02f1b536915ace92c674fa8744c3fb74b5e1fbeb15e51",
+          "bytes": 8942,
+          "durationSeconds": 0.952018
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "0f42a3bea92f935d6e4eb79c0031e54c38b89060a8cbcb45e01851c6218c7e4a",
+          "ttsFingerprint": "b015637bbbc212f3f78e6ffd6c2be0b5eadcc55f5edfe2a06c231b32d8175fd8"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.5,
+          "leadMs": 30,
+          "tailMs": 92
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 8,
+          "gapSeconds": 0,
+          "fit": "schedule-early"
+        }
+      }
+    }
+  },
+  "summary": {
+    "clips": 10,
+    "auditFailed": [],
+    "scheduleEarly": [
+      "packages/h-short-side-plank/voice/zh/phase.end.m4a",
+      "packages/h-short-side-plank/voice/en/phase.end.m4a"
+    ]
+  },
+  "status": "technical-passed"
+}

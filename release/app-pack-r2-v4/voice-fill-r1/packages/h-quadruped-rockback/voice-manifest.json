@@ -1,0 +1,320 @@
+{
+  "format": "pose-hub-voice@3",
+  "actionId": "h-quadruped-rockback",
+  "definitionSha256": "dbe5b839892b5a6e798130435e069e779b681dea65a0aeb1563089575e2cf1c0",
+  "standard": {
+    "lufsTarget": -16,
+    "lufsTolerance": 1,
+    "truePeakMaxDbtp": -1,
+    "codec": "aac",
+    "sampleRate": 44100,
+    "channels": 1,
+    "bitrateKbps": 64,
+    "process": "hiplab v4.1"
+  },
+  "voiceProfile": {
+    "zh": {
+      "voice": "zh-CN-XiaoxiaoNeural",
+      "rate": "+6%"
+    },
+    "en": {
+      "voice": "en-US-JennyNeural",
+      "rate": "+4%"
+    }
+  },
+  "common": "voice/common/manifest.json",
+  "contentReview": "passed",
+  "manualListening": "pending",
+  "cuePoints": {
+    "start": 0.8,
+    "peak": 1.5,
+    "end": 3.033,
+    "method": "masters highlight pulse (25 % rise / plateau reached / 50 % fall) — computed from spec pulse track (spec_pulse.mjs), masters not on this machine",
+    "sampled": false
+  },
+  "lines": {
+    "zh": {
+      "name": {
+        "text": "跪撑平背后坐",
+        "ref": {
+          "path": "packages/h-quadruped-rockback/voice/zh/name.m4a",
+          "sha256": "b6d9a3bee9c5f904b7a972ee4f0575f25886bccbd3c7062900c956796e21ad27",
+          "bytes": 11805,
+          "durationSeconds": 1.300317
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "d3f810871d54f40d3af6e69089f7b78a4cb575b49e69975d1145218a770eaf73",
+          "ttsFingerprint": "345d934869e7e4ddb1b906d85ab2780033c5cc42bc69ca4c4709ea23318a655d"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.0,
+          "truePeak": -2.4,
+          "leadMs": 40,
+          "tailMs": 70
+        },
+        "role": "intro"
+      },
+      "primaryCue": {
+        "text": "背保持平直，屁股往脚跟方向坐",
+        "ref": {
+          "path": "packages/h-quadruped-rockback/voice/zh/primaryCue.m4a",
+          "sha256": "d0b593933e5d2328f8d65f0ccc056e5474dd7e23153fb809ff4705cba867108d",
+          "bytes": 24040,
+          "durationSeconds": 2.809615
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "9fba240e39d3c0d4e4a67d2d349b4211aafaff474d23dcdc2a57da1280603c9e",
+          "ttsFingerprint": "500cbbe581f48362e6e48650ca42f77cb013e7e0580733c23baa9560de01569a"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.4,
+          "leadMs": 40,
+          "tailMs": 100
+        },
+        "role": "intro"
+      },
+      "phase.start": {
+        "text": "往后坐",
+        "ref": {
+          "path": "packages/h-quadruped-rockback/voice/zh/phase.start.m4a",
+          "sha256": "dad139ff96a0c06d99913312e90f62d894b50a04719cea2652a9c3ecd537e63d",
+          "bytes": 7369,
+          "durationSeconds": 0.766259
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "7432bda949b687e57bb8f74f372407657b97d6b3ec4d6ae5e57feb1fa14dd357",
+          "ttsFingerprint": "4677d4ef1d2a8816a23f26b69103cb74ea6d49546e8600e44945f77dcc02b22f"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.8,
+          "leadMs": 40,
+          "tailMs": 96
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 0.8,
+          "gapSeconds": 0.7,
+          "fit": "schedule-early"
+        }
+      },
+      "phase.peak": {
+        "text": "停一下",
+        "ref": {
+          "path": "packages/h-quadruped-rockback/voice/zh/phase.peak.m4a",
+          "sha256": "3f3d887de35830c1bf91aeee71a5f7b1c81a4c9d00e1eade455ef7d51a19a151",
+          "bytes": 6786,
+          "durationSeconds": 0.696599
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "dd1af881c3a1e655ee3ad162bcde6f234606fc00fb1e24228ed86b70f5693ea2",
+          "ttsFingerprint": "60bad401c279150f999f052c15b2a6880658ebadc45b05c4d0ad0a6fc3adba87"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -3.2,
+          "leadMs": 40,
+          "tailMs": 77
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 1.5,
+          "gapSeconds": 1.533,
+          "fit": "fits"
+        }
+      },
+      "phase.end": {
+        "text": "往前回",
+        "ref": {
+          "path": "packages/h-quadruped-rockback/voice/zh/phase.end.m4a",
+          "sha256": "cb8c4ef2c587f1b54611f052be6d2f576aeb13f0fda2e5173afcff97eb945bea",
+          "bytes": 7814,
+          "durationSeconds": 0.812698
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "ec5c72c754112b3c0003949adf14f94816fdd31264231af17ae92d912c22b86c",
+          "ttsFingerprint": "2261bff7dc0dbd9f5fd6a6740c47753f3b4d8bf715a1a265845c343add8252ef"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.6,
+          "leadMs": 40,
+          "tailMs": 83
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 3.033,
+          "gapSeconds": 4.967,
+          "fit": "fits"
+        }
+      }
+    },
+    "en": {
+      "name": {
+        "text": "Hands-and-Knees Rock Back",
+        "ref": {
+          "path": "packages/h-quadruped-rockback/voice/en/name.m4a",
+          "sha256": "151086a20e88f05a25ed421bf03322fe728eed3e8dbe3c2bfc6e88a4cc21bf24",
+          "bytes": 12137,
+          "durationSeconds": 1.346757
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "d5ae600f8d49677e458d5aa55caecee83788f3b900e538e714a27b0f51a20e9e",
+          "ttsFingerprint": "7e688f4179ef6b7d54bf39512367eff0a1c14f428f660464c3404d4335afa3ee"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -1.3,
+          "leadMs": 40,
+          "tailMs": 77
+        },
+        "role": "intro"
+      },
+      "primaryCue": {
+        "text": "Keep your back flat and rock your hips back toward your heels",
+        "ref": {
+          "path": "packages/h-quadruped-rockback/voice/en/primaryCue.m4a",
+          "sha256": "2778095a5d9ad08916cc0367bebab3154686f44daf3d6b7039ce8ca7f3b28a1c",
+          "bytes": 26028,
+          "durationSeconds": 3.041814
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "da05c70382643ca07682d17d611ca2b3e56814b17bcfa86537c8813f1b438bbd",
+          "ttsFingerprint": "4c681c0d693ce2eb0575849987caadce98b818841c3b859a113c7e78a27c11fd"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.1,
+          "leadMs": 40,
+          "tailMs": 92
+        },
+        "role": "intro"
+      },
+      "phase.start": {
+        "text": "Rock back",
+        "ref": {
+          "path": "packages/h-quadruped-rockback/voice/en/phase.start.m4a",
+          "sha256": "6c60a4709e1029f02ccd1bcffb7b0def1d96a6dc766f266abc60b80bb27e5c31",
+          "bytes": 7467,
+          "durationSeconds": 0.766259
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "2d1dfc2aad37a07f41499e3a2659f9744a4e8f224c933d7c564809ab43d7902c",
+          "ttsFingerprint": "36434c2f9bf324b4938f38185bafe07a31b19f90b2d32acc18aba7507207048e"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.3,
+          "leadMs": 40,
+          "tailMs": 56
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 0.8,
+          "gapSeconds": 0.7,
+          "fit": "schedule-early"
+        }
+      },
+      "phase.peak": {
+        "text": "Pause",
+        "ref": {
+          "path": "packages/h-quadruped-rockback/voice/en/phase.peak.m4a",
+          "sha256": "370241428bef6c68bcf6767c333d28e61ec7ae34a34512111176bf527c64fff7",
+          "bytes": 6157,
+          "durationSeconds": 0.626939
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "0b229636f7179aed9963a2cf9b65f8800c196f6eaab56062fc47f525d5fc798d",
+          "ttsFingerprint": "31b0c0cc0e4f2268442e90aca06df30611d0232b02acc5fadf6825b18434017b"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.4,
+          "leadMs": 30,
+          "tailMs": 87
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 1.5,
+          "gapSeconds": 1.533,
+          "fit": "fits"
+        }
+      },
+      "phase.end": {
+        "text": "Rock forward",
+        "ref": {
+          "path": "packages/h-quadruped-rockback/voice/en/phase.end.m4a",
+          "sha256": "3db14db23f0e70a21463afd1f58048d5a8a8010f25cdbcd7556d9323fb11a239",
+          "bytes": 7986,
+          "durationSeconds": 0.859138
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "cce0ec11569be77c731b971809372e8c8dcae376478d3e3794f852f056343f6f",
+          "ttsFingerprint": "e14f956e8a0053147b423e52016334c683b4e33d721a1b1798b8928a2343ff17"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.4,
+          "leadMs": 40,
+          "tailMs": 99
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 3.033,
+          "gapSeconds": 4.967,
+          "fit": "fits"
+        }
+      }
+    }
+  },
+  "summary": {
+    "clips": 10,
+    "auditFailed": [],
+    "scheduleEarly": [
+      "packages/h-quadruped-rockback/voice/zh/phase.start.m4a",
+      "packages/h-quadruped-rockback/voice/en/phase.start.m4a"
+    ]
+  },
+  "status": "technical-passed"
+}

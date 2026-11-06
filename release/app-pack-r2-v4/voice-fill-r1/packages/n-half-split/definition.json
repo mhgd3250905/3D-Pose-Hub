@@ -1,0 +1,163 @@
+{
+  "format": "pose-hub-action-definition@3",
+  "id": "n-half-split",
+  "text": {
+    "path": "catalog/production/v3-text/n-half-split.json",
+    "sha256": "152fad77bf0617626e087cd759a069904616690661c56f316fdcbf48d22fbc15",
+    "reviewStatus": "ai-reviewed-r2-needs-user-review"
+  },
+  "recipe": {
+    "path": "catalog/production/remaining219-r1/recipes/n-half-split.json",
+    "sha256": "c26a571b5678d601cf8e5b66fe600e592944255f2e8183b71540901bdf18be74",
+    "spec": "drill-anim/specs/n-half-split-gc1.js",
+    "specSha256Lf": "57265aed68978bb901a3d3e22b8a18213d191cd789bae08ad934bdec0683228f"
+  },
+  "productionModel": {
+    "format": "pose-hub-production-model",
+    "formatVersion": 1,
+    "modelProfile": "training-human-v3-armfix",
+    "modelVersion": "0.1.0-r2",
+    "id": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "definition": {
+    "name": {
+      "zh": "半跪半劈叉（扶砖）",
+      "en": "Half-Kneeling Half Split (Blocks)"
+    },
+    "purpose": {
+      "zh": "拉伸前腿的大腿后侧，为前后劈叉打基础",
+      "en": "Stretch the back of your front thigh as a first step toward the front splits."
+    },
+    "cues": [
+      {
+        "id": "cue1",
+        "primary": true,
+        "text": {
+          "zh": "臀部往后坐，前腿伸直，背拉长",
+          "en": "Sit your hips back, straighten the front leg and keep your back long"
+        }
+      },
+      {
+        "id": "cue2",
+        "primary": false,
+        "text": {
+          "zh": "后膝跪地，前脚跟着地、勾脚尖。",
+          "en": "Kneel on the back knee with the front heel down and toes up."
+        }
+      },
+      {
+        "id": "cue3",
+        "primary": false,
+        "text": {
+          "zh": "保持不动，慢慢呼吸，每次呼气再放松一点。",
+          "en": "Stay still, breathe slowly, and relax a little deeper each time you breathe out."
+        }
+      },
+      {
+        "id": "cue4",
+        "primary": false,
+        "text": {
+          "zh": "别来回颠，有拉伸感就够，别拉到疼。",
+          "en": "Do not bounce; a clear stretch is enough, never pain."
+        }
+      }
+    ],
+    "commonErrors": [
+      {
+        "zh": "弓背去够脚",
+        "en": "Rounding your back to reach the foot."
+      },
+      {
+        "zh": "硬把前腿膝盖伸直",
+        "en": "Forcing the front knee straight."
+      },
+      {
+        "zh": "憋气或来回颠",
+        "en": "Holding your breath or bouncing."
+      }
+    ],
+    "tags": {
+      "category": "stretch",
+      "activeMuscles": [
+        "hamstrings"
+      ],
+      "synergistMuscles": [
+        "calves",
+        "hip-flexors"
+      ],
+      "equipment": [
+        "yoga-blocks",
+        "mat"
+      ],
+      "position": "half-kneeling",
+      "difficulty": 1
+    },
+    "unilateral": true,
+    "defaultDose": {
+      "mode": "time",
+      "sets": 2,
+      "seconds": 30,
+      "restSeconds": 15
+    },
+    "cautions": [
+      {
+        "zh": "跪着的膝盖下面垫个软垫",
+        "en": "Put a soft pad under the kneeling knee."
+      },
+      {
+        "zh": "大腿后侧疼时坐得少一点，还疼就停",
+        "en": "If the back of your thigh hurts, sit back less, and stop if it still hurts."
+      }
+    ],
+    "startingSide": "right",
+    "training": {
+      "kind": "hold",
+      "leadSeconds": 1,
+      "perSide": "each-side-separately",
+      "source": "user-decision static-hold r2"
+    }
+  },
+  "voiceScript": {
+    "name": {
+      "zh": "半跪半劈叉（扶砖）",
+      "en": "Half-Kneeling Half Split (Blocks)"
+    },
+    "primaryCue": {
+      "zh": "臀部往后坐，前腿伸直，背拉长",
+      "en": "Sit your hips back, straighten the front leg and keep your back long"
+    },
+    "phase.start": {
+      "zh": "慢慢往后坐",
+      "en": "Sit back slowly"
+    },
+    "phase.peak": {
+      "zh": "保持，慢慢呼气",
+      "en": "Hold and breathe out"
+    },
+    "phase.end": {
+      "zh": "呼气再放松",
+      "en": "Relax a bit deeper"
+    }
+  },
+  "rhythm": {
+    "durationSeconds": 8,
+    "fps": 30,
+    "cuePoints": {
+      "start": 1.2,
+      "peak": 2.6,
+      "end": 5.733,
+      "method": "masters highlight pulse (25 % rise / plateau reached / 50 % fall) — computed from spec pulse track (spec_pulse.mjs), masters not on this machine",
+      "sampled": false
+    },
+    "binding": {
+      "phase.start": "start",
+      "phase.peak": "peak",
+      "phase.end": "end"
+    },
+    "playback": "name + primaryCue before the set; phase lines at their cue points every rep, scheduled to END by the next cue point (skip a line that cannot fit, never cut or overlap)"
+  },
+  "review": {
+    "editorial": "passed"
+  }
+}

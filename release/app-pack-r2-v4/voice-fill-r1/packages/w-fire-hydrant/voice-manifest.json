@@ -1,0 +1,320 @@
+{
+  "format": "pose-hub-voice@3",
+  "actionId": "w-fire-hydrant",
+  "definitionSha256": "ffdb99bd337a78e01ad461c86733aeb47bb4141ceea91ab57f88e5e9559a7586",
+  "standard": {
+    "lufsTarget": -16,
+    "lufsTolerance": 1,
+    "truePeakMaxDbtp": -1,
+    "codec": "aac",
+    "sampleRate": 44100,
+    "channels": 1,
+    "bitrateKbps": 64,
+    "process": "hiplab v4.1"
+  },
+  "voiceProfile": {
+    "zh": {
+      "voice": "zh-CN-XiaoxiaoNeural",
+      "rate": "+6%"
+    },
+    "en": {
+      "voice": "en-US-JennyNeural",
+      "rate": "+4%"
+    }
+  },
+  "common": "voice/common/manifest.json",
+  "contentReview": "passed",
+  "manualListening": "pending",
+  "cuePoints": {
+    "start": 0.733,
+    "peak": 1.4,
+    "end": 3.033,
+    "method": "masters highlight pulse (25 % rise / plateau reached / 50 % fall) — computed from spec pulse track (spec_pulse.mjs), masters not on this machine",
+    "sampled": false
+  },
+  "lines": {
+    "zh": {
+      "name": {
+        "text": "四足消防栓",
+        "ref": {
+          "path": "packages/w-fire-hydrant/voice/zh/name.m4a",
+          "sha256": "777648d27ba6681621b0184bd71c6b6b6306db284487208a7653212615ee8921",
+          "bytes": 11048,
+          "durationSeconds": 1.230658
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "d0636c3823f4be355e35c32ee300d44e001840fb0a8460a3bda459d7abf44ed6",
+          "ttsFingerprint": "208ca8c73e073d3b60ccdf2fefe88b06d8518f6536ca928b320609b6074d060b"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -3.2,
+          "leadMs": 30,
+          "tailMs": 101
+        },
+        "role": "intro"
+      },
+      "primaryCue": {
+        "text": "膝盖保持弯曲，腿往侧面抬起",
+        "ref": {
+          "path": "packages/w-fire-hydrant/voice/zh/primaryCue.m4a",
+          "sha256": "5c79d8acca960a6bf739347d3b49b7c85c216c55e473b4b09cc4be5088dad434",
+          "bytes": 23483,
+          "durationSeconds": 2.739955
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "32084cff14cfa4dd3692fd85e4729aa7bc706664b7b42ae890471d8b170e1ac1",
+          "ttsFingerprint": "94b6882b92c4c24ead3a0a28e9630e294ba9851c269f5403b64911a4948fe99a"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.3,
+          "leadMs": 30,
+          "tailMs": 90
+        },
+        "role": "intro"
+      },
+      "phase.start": {
+        "text": "往侧面抬",
+        "ref": {
+          "path": "packages/w-fire-hydrant/voice/zh/phase.start.m4a",
+          "sha256": "256f88b2c3d7dbee7046b772c9af9899e7e1e898726c210806a943738cf0a0c9",
+          "bytes": 9375,
+          "durationSeconds": 1.021678
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "5f79d284ef41b627d06256fb7d1b9d2a7e81fd5766d7d47328a3ba2827b42352",
+          "ttsFingerprint": "213014267f5cef5a3ecf9542cd8041487e0c336efc2e4c719e22a401ef00ca3f"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.6,
+          "leadMs": 40,
+          "tailMs": 102
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 0.733,
+          "gapSeconds": 0.667,
+          "fit": "schedule-early"
+        }
+      },
+      "phase.peak": {
+        "text": "停住",
+        "ref": {
+          "path": "packages/w-fire-hydrant/voice/zh/phase.peak.m4a",
+          "sha256": "a237bcfdadc82cbd95d3fbf5cf87eb19d9c682d9f8ff17d6f25acfb1f45ab4b9",
+          "bytes": 6101,
+          "durationSeconds": 0.603719
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "d769047cb9f024550c287bb5c26df0a8882273103f38d09249f939fa6bbcdb3b",
+          "ttsFingerprint": "250d9dea1b8084d469559e0b9462bc82372678e3e0a278ed44cfbcd39d1d79fa"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -4.9,
+          "leadMs": 40,
+          "tailMs": 74
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 1.4,
+          "gapSeconds": 1.633,
+          "fit": "fits"
+        }
+      },
+      "phase.end": {
+        "text": "慢慢放下",
+        "ref": {
+          "path": "packages/w-fire-hydrant/voice/zh/phase.end.m4a",
+          "sha256": "e2b4d6cd0e31ab87cec3c3ea458dc8ac4930aa03348d3ea1fa7e76d4d384aeff",
+          "bytes": 8973,
+          "durationSeconds": 0.952018
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "2a17d22aa579936ba3634a9bafc89ecf3dc0ef6036823004bcf95b9deabdfeeb",
+          "ttsFingerprint": "d1c4fc3204be2bf20ed8bc875b2d5fa0ef0639002a47a430b4c8d074032b5eac"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -3.1,
+          "leadMs": 40,
+          "tailMs": 82
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 3.033,
+          "gapSeconds": 4.967,
+          "fit": "fits"
+        }
+      }
+    },
+    "en": {
+      "name": {
+        "text": "Quadruped Fire Hydrant",
+        "ref": {
+          "path": "packages/w-fire-hydrant/voice/en/name.m4a",
+          "sha256": "4531ef8e3d2c88d77011d1dd6c76cf4a875bdc3a830735684ae6b5cfd9ca011d",
+          "bytes": 13353,
+          "durationSeconds": 1.486077
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "05e319081ad55dabfd91e9bc35cf6ad1b7072e983c0677826bc96b962e55c3dc",
+          "ttsFingerprint": "222f7c4c3c65610d541f7054f4de197612a75399cc67abf4c8379fd3e9282bd7"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.3,
+          "leadMs": 30,
+          "tailMs": 76
+        },
+        "role": "intro"
+      },
+      "primaryCue": {
+        "text": "Keep your knee bent and lift the leg out to the side",
+        "ref": {
+          "path": "packages/w-fire-hydrant/voice/en/primaryCue.m4a",
+          "sha256": "7a7cf73601906a4a72498f58dbd3ec6442b4ae0252b22c806a711df5552d1a74",
+          "bytes": 20076,
+          "durationSeconds": 2.321995
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "0f12277f92fe2d2c897b88156523ed522e894b1bafc471cb24ba6d8c038d054a",
+          "ttsFingerprint": "4120488a79238a220990bf19c94ab1662b88a1f328aeefac17a154eb9c53cfe6"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.0,
+          "truePeak": -2.2,
+          "leadMs": 40,
+          "tailMs": 72
+        },
+        "role": "intro"
+      },
+      "phase.start": {
+        "text": "Lift out",
+        "ref": {
+          "path": "packages/w-fire-hydrant/voice/en/phase.start.m4a",
+          "sha256": "2642705f5038283c3be12e1c3730e4f2bc5da21c43a3d2acb5746a774aa5d7ae",
+          "bytes": 7278,
+          "durationSeconds": 0.743039
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "3f1157144a3b01ec686a49bef9ad900763aabf08a9f731bfafba58c61e85d50a",
+          "ttsFingerprint": "6dbbe648f52a5c8f4b43526a42ff2b48251398faf5dd06f0d873d2f4ba675cbd"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.3,
+          "leadMs": 40,
+          "tailMs": 73
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 0.733,
+          "gapSeconds": 0.667,
+          "fit": "schedule-early"
+        }
+      },
+      "phase.peak": {
+        "text": "Hold",
+        "ref": {
+          "path": "packages/w-fire-hydrant/voice/en/phase.peak.m4a",
+          "sha256": "b6ac50d0e6201d57e34af08a454421cebbcd2215d0b4e861d7918dbb0ead5371",
+          "bytes": 4998,
+          "durationSeconds": 0.464399
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "0e92c3a2459040c6ef55ea6950c927a2a1acee35e4a3dd23869d30ece94b9773",
+          "ttsFingerprint": "3abc227bfc3d1bd10e8614a94199d1210a8e483c37a7bba77c95128949b12c56"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.6,
+          "leadMs": 40,
+          "tailMs": 64
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 1.4,
+          "gapSeconds": 1.633,
+          "fit": "fits"
+        }
+      },
+      "phase.end": {
+        "text": "Lower slowly",
+        "ref": {
+          "path": "packages/w-fire-hydrant/voice/en/phase.end.m4a",
+          "sha256": "9ac009cf33b2d72680e02f1b536915ace92c674fa8744c3fb74b5e1fbeb15e51",
+          "bytes": 8942,
+          "durationSeconds": 0.952018
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "0f42a3bea92f935d6e4eb79c0031e54c38b89060a8cbcb45e01851c6218c7e4a",
+          "ttsFingerprint": "b015637bbbc212f3f78e6ffd6c2be0b5eadcc55f5edfe2a06c231b32d8175fd8"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.5,
+          "leadMs": 30,
+          "tailMs": 92
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 3.033,
+          "gapSeconds": 4.967,
+          "fit": "fits"
+        }
+      }
+    }
+  },
+  "summary": {
+    "clips": 10,
+    "auditFailed": [],
+    "scheduleEarly": [
+      "packages/w-fire-hydrant/voice/zh/phase.start.m4a",
+      "packages/w-fire-hydrant/voice/en/phase.start.m4a"
+    ]
+  },
+  "status": "technical-passed"
+}

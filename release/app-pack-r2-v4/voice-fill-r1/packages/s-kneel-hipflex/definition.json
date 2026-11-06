@@ -1,0 +1,158 @@
+{
+  "format": "pose-hub-action-definition@3",
+  "id": "s-kneel-hipflex",
+  "text": {
+    "path": "catalog/production/v3-text/s-kneel-hipflex.json",
+    "sha256": "32f75cea46f1818ac242a37b56d60d58317496091a7a524fc6b09e80509ae7ea",
+    "reviewStatus": "ai-reviewed-r2-needs-user-review"
+  },
+  "recipe": {
+    "path": "catalog/production/remaining219-r1/recipes/s-kneel-hipflex.json",
+    "sha256": "77f9eb7bd6d3c99a72d4ef220b8a657981f14ff5dd2f0cd5611e9d03bd790885",
+    "spec": "drill-anim/specs/s-kneel-hipflex-gc-int1.js",
+    "specSha256Lf": "01c251bce2553413ea8a7a6a52ecd78edde3d2331132da4e63b4c56d3cc976c8"
+  },
+  "productionModel": {
+    "format": "pose-hub-production-model",
+    "formatVersion": 1,
+    "modelProfile": "training-human-v3-armfix",
+    "modelVersion": "0.1.0-r2",
+    "id": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "definition": {
+    "name": {
+      "zh": "半跪髋前侧拉伸",
+      "en": "Half-Kneeling Hip Stretch"
+    },
+    "purpose": {
+      "zh": "拉伸髋部前面，缓解久坐发紧",
+      "en": "Stretch the front of your hip to ease tightness from sitting."
+    },
+    "cues": [
+      {
+        "id": "cue1",
+        "primary": true,
+        "text": {
+          "zh": "夹紧臀部，身体慢慢往前推",
+          "en": "Squeeze your glute and slowly shift your body forward"
+        }
+      },
+      {
+        "id": "cue2",
+        "primary": false,
+        "text": {
+          "zh": "后膝跪地，前脚踩地，上身直立。",
+          "en": "Kneel on the back knee, front foot planted, upper body tall."
+        }
+      },
+      {
+        "id": "cue3",
+        "primary": false,
+        "text": {
+          "zh": "保持不动，慢慢呼吸，每次呼气再放松一点。",
+          "en": "Stay still, breathe slowly, and relax a little deeper each time you breathe out."
+        }
+      },
+      {
+        "id": "cue4",
+        "primary": false,
+        "text": {
+          "zh": "别来回颠，有拉伸感就够，别拉到疼。",
+          "en": "Do not bounce; a clear stretch is enough, never pain."
+        }
+      }
+    ],
+    "commonErrors": [
+      {
+        "zh": "靠拱腰往前，而不是收臀",
+        "en": "Arching your lower back instead of squeezing your glute."
+      },
+      {
+        "zh": "憋气或来回颠",
+        "en": "Holding your breath or bouncing."
+      }
+    ],
+    "tags": {
+      "category": "stretch",
+      "activeMuscles": [
+        "hip-flexors"
+      ],
+      "synergistMuscles": [
+        "quadriceps",
+        "glutes"
+      ],
+      "equipment": [
+        "mat"
+      ],
+      "position": "half-kneeling",
+      "difficulty": 1
+    },
+    "unilateral": true,
+    "defaultDose": {
+      "mode": "time",
+      "sets": 2,
+      "seconds": 30,
+      "restSeconds": 15
+    },
+    "cautions": [
+      {
+        "zh": "跪地的膝盖下面垫软垫",
+        "en": "Pad under the kneeling knee."
+      },
+      {
+        "zh": "髋前侧疼时幅度小一点，还疼就停",
+        "en": "If your hip hurts, move less far, and stop if it still hurts."
+      }
+    ],
+    "startingSide": "left",
+    "training": {
+      "kind": "hold",
+      "leadSeconds": 1,
+      "perSide": "each-side-separately",
+      "source": "user-decision static-hold r2"
+    }
+  },
+  "voiceScript": {
+    "name": {
+      "zh": "半跪髋前侧拉伸",
+      "en": "Half-Kneeling Hip Stretch"
+    },
+    "primaryCue": {
+      "zh": "夹紧臀部，身体慢慢往前推",
+      "en": "Squeeze your glute and slowly shift your body forward"
+    },
+    "phase.start": {
+      "zh": "收臀前推",
+      "en": "Squeeze forward"
+    },
+    "phase.peak": {
+      "zh": "保持，慢慢呼气",
+      "en": "Hold and breathe out"
+    },
+    "phase.end": {
+      "zh": "呼气再放松",
+      "en": "Relax a bit deeper"
+    }
+  },
+  "rhythm": {
+    "durationSeconds": 8,
+    "fps": 30,
+    "cuePoints": {
+      "start": 1.133,
+      "peak": 3.8,
+      "end": 6.233,
+      "method": "masters highlight pulse (25 % rise / plateau reached / 50 % fall) — computed from spec pulse track (spec_pulse.mjs), masters not on this machine",
+      "sampled": false
+    },
+    "binding": {
+      "phase.start": "start",
+      "phase.peak": "peak",
+      "phase.end": "end"
+    },
+    "playback": "name + primaryCue before the set; phase lines at their cue points every rep, scheduled to END by the next cue point (skip a line that cannot fit, never cut or overlap)"
+  },
+  "review": {
+    "editorial": "passed"
+  }
+}
