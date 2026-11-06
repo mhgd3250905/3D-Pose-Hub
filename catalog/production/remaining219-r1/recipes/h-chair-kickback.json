@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "h-chair-kickback",
   "nameZh": "扶椅站姿后踢腿",
-  "spec": "drill-anim/specs/h-chair-kickback-gc1.js",
-  "specSha256Lf": "acb4219539523d5f830d9acde8ced7b1b19ad139e89620e5fb3780b607f1d3ac",
+  "spec": "drill-anim/specs/h-chair-kickback-gc1-kn1.js",
+  "specSha256Lf": "38c32e28f5ac16c77c7d37dfca94e40b6a8e02caba74b1956ce328ce4f744712",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -76,7 +76,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/h-chair-kickback-gc1.js"
+    "selectedSpec": "drill-anim/specs/h-chair-kickback-gc1-kn1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -88,6 +88,15 @@
       "to": "drill-anim/specs/h-chair-kickback-gc1.js",
       "date": "2026-11-04",
       "branch": "fix/ground-contact-r1"
+    }
+  },
+  "kneeFix": {
+    "r1": {
+      "from": "drill-anim/specs/h-chair-kickback-gc1.js",
+      "to": "drill-anim/specs/h-chair-kickback-gc1-kn1.js",
+      "date": "2026-11-06",
+      "branch": "codex/knee-fix-r1",
+      "note": "knee fix r1 (2026-11-06) of h-chair-kickback-gc1.js: pelvis height rescaled to the v3 leg (kn-lib g); per-frame pelvis-y correction kn1y (standing leg straight ~5 deg)"
     }
   }
 }

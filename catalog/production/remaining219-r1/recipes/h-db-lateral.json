@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "h-db-lateral",
   "nameZh": "哑铃侧平举",
-  "spec": "drill-anim/specs/h-db-lateral.js",
-  "specSha256Lf": "06356fe5bc651f5d21a3954521f669d379ec257c03ea737fa953605c3f5a123b",
+  "spec": "drill-anim/specs/h-db-lateral-kn1.js",
+  "specSha256Lf": "ca8829c9fdc33b31bc4e77de1a2583fc2cf31caff8f6e4c746812ff93c17df0a",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -77,7 +77,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/h-db-lateral.js"
+    "selectedSpec": "drill-anim/specs/h-db-lateral-kn1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -86,5 +86,14 @@
   "fixedCorrectionStack": {
     "profile": "fixed-wrist-corrections-r1",
     "version": "0.1.0-r1"
+  },
+  "kneeFix": {
+    "r1": {
+      "from": "drill-anim/specs/h-db-lateral.js",
+      "to": "drill-anim/specs/h-db-lateral-kn1.js",
+      "date": "2026-11-06",
+      "branch": "codex/knee-fix-r1",
+      "note": "knee fix r1 (2026-11-06) of h-db-lateral.js: pelvis height rescaled to the v3 leg (kn-lib g); per-frame pelvis-y correction kn1y (standing leg straight ~5 deg)"
+    }
   }
 }

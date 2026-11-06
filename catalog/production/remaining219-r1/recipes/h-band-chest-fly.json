@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "h-band-chest-fly",
   "nameZh": "站姿单臂弹力带夹胸",
-  "spec": "drill-anim/specs/h-band-chest-fly-r2.js",
-  "specSha256Lf": "1030a2116df96f4f8a9ef26552b3e2c335c167e865a8568d70463ab146b041d2",
+  "spec": "drill-anim/specs/h-band-chest-fly-r2-kn1.js",
+  "specSha256Lf": "c94a6e170b76a374016392af44e250c3cb070cb30614be9532fccdeec7011516",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -76,7 +76,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/h-band-chest-fly-r2.js"
+    "selectedSpec": "drill-anim/specs/h-band-chest-fly-r2-kn1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -86,5 +86,14 @@
   "fixedCorrectionStack": {
     "profile": "fixed-wrist-corrections-r1",
     "version": "0.1.0-r1"
+  },
+  "kneeFix": {
+    "r1": {
+      "from": "drill-anim/specs/h-band-chest-fly-r2.js",
+      "to": "drill-anim/specs/h-band-chest-fly-r2-kn1.js",
+      "date": "2026-11-06",
+      "branch": "codex/knee-fix-r1",
+      "note": "knee fix r1 (2026-11-06) of h-band-chest-fly-r2.js: pelvis height rescaled to the v3 leg (kn-lib g); per-frame pelvis-y correction kn1y (standing leg straight ~5 deg)"
+    }
   }
 }

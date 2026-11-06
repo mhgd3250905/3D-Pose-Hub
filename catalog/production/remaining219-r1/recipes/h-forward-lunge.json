@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "h-forward-lunge",
   "nameZh": "前跨步弓步蹲",
-  "spec": "drill-anim/specs/h-forward-lunge-et1.js",
-  "specSha256Lf": "1388f716d7bd74ef426cbf30545c43a8edbd46049b7ce5540827cc5f3350d4d2",
+  "spec": "drill-anim/specs/h-forward-lunge-et1-kn1.js",
+  "specSha256Lf": "45c6a5b3ebda32d1308732b8baa1869d4b22912223d69ce19cadb9926458a03f",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -77,7 +77,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/h-forward-lunge-et1.js"
+    "selectedSpec": "drill-anim/specs/h-forward-lunge-et1-kn1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -93,5 +93,14 @@
         "why": "pose-fix r9: fixed hand-vs-forearm twist 90-120 deg -> constant forearm roll {\"left\": -45, \"right\": 45}"
       }
     ]
+  },
+  "kneeFix": {
+    "r1": {
+      "from": "drill-anim/specs/h-forward-lunge-et1.js",
+      "to": "drill-anim/specs/h-forward-lunge-et1-kn1.js",
+      "date": "2026-11-06",
+      "branch": "codex/knee-fix-r1",
+      "note": "knee fix r1 (2026-11-06) of h-forward-lunge-et1.js: pelvis height rescaled to the v3 leg (kn-lib g); per-frame pelvis-y correction kn1y (standing leg straight ~5 deg)"
+    }
   }
 }

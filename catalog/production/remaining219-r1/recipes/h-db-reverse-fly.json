@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "h-db-reverse-fly",
   "nameZh": "哑铃俯身飞鸟",
-  "spec": "drill-anim/specs/h-db-reverse-fly.js",
-  "specSha256Lf": "cacb386ac8af558d6f2fe37d5c6ff5ca93d03f22be5d6bc1a1e83a8fd66fb8d4",
+  "spec": "drill-anim/specs/h-db-reverse-fly-kn1.js",
+  "specSha256Lf": "66ceebe51520ab49222c5213769a5494ac6f6d1a4543900124169e46370d9b9b",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -77,7 +77,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/h-db-reverse-fly.js"
+    "selectedSpec": "drill-anim/specs/h-db-reverse-fly-kn1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -86,5 +86,14 @@
   "fixedCorrectionStack": {
     "profile": "fixed-wrist-corrections-r1",
     "version": "0.1.0-r1"
+  },
+  "kneeFix": {
+    "r1": {
+      "from": "drill-anim/specs/h-db-reverse-fly.js",
+      "to": "drill-anim/specs/h-db-reverse-fly-kn1.js",
+      "date": "2026-11-06",
+      "branch": "codex/knee-fix-r1",
+      "note": "knee fix r1 (2026-11-06) of h-db-reverse-fly.js: pelvis height rescaled to the v3 leg (kn-lib g); per-frame pelvis-y correction kn1y (hinge: knees soft ~17 deg, held through the lowering)"
+    }
   }
 }

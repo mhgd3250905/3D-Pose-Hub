@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "n-slider-lateral",
   "nameZh": "滑垫侧向滑",
-  "spec": "drill-anim/specs/n-slider-lateral.js",
-  "specSha256Lf": "a6f6463269d394ad688df00a0174dd3514b52d9ead41f28be19ef7cc6f2da5b8",
+  "spec": "drill-anim/specs/n-slider-lateral-kn1.js",
+  "specSha256Lf": "587e9367644e2f9be365079f5a13e7d09ce7918cbff009b04416e971765aad6e",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -77,10 +77,19 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/n-slider-lateral.js"
+    "selectedSpec": "drill-anim/specs/n-slider-lateral-kn1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
   "userAccepted": false,
-  "releaseEligible": false
+  "releaseEligible": false,
+  "kneeFix": {
+    "r1": {
+      "from": "drill-anim/specs/n-slider-lateral.js",
+      "to": "drill-anim/specs/n-slider-lateral-kn1.js",
+      "date": "2026-11-06",
+      "branch": "codex/knee-fix-r1",
+      "note": "knee fix r1 (2026-11-06) of n-slider-lateral.js: pelvis height rescaled to the v3 leg (kn-lib g); per-frame pelvis-y correction kn1y (sliding leg straight, standing leg straight at rest)"
+    }
+  }
 }

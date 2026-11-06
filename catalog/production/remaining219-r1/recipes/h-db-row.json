@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "h-db-row",
   "nameZh": "扶椅单臂哑铃划船",
-  "spec": "drill-anim/specs/h-db-row.js",
-  "specSha256Lf": "7a372104484f3c13753231a25ddff1c34a1586c3dfd6af108ff734093910716a",
+  "spec": "drill-anim/specs/h-db-row-kn1.js",
+  "specSha256Lf": "ae575c3db86a0c451bce566c4080aefc917190491421dd490205321ca4316140",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -77,10 +77,19 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/h-db-row.js"
+    "selectedSpec": "drill-anim/specs/h-db-row-kn1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
   "userAccepted": false,
-  "releaseEligible": false
+  "releaseEligible": false,
+  "kneeFix": {
+    "r1": {
+      "from": "drill-anim/specs/h-db-row.js",
+      "to": "drill-anim/specs/h-db-row-kn1.js",
+      "date": "2026-11-06",
+      "branch": "codex/knee-fix-r1",
+      "note": "knee fix r1 (2026-11-06) of h-db-row.js: pelvis height rescaled to the v3 leg (kn-lib g); per-frame pelvis-y correction kn1y (hinge: knees soft ~17 deg, held through the lowering)"
+    }
+  }
 }

@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "h-band-straight-leg-raise",
   "nameZh": "扶椅弹力带直腿前抬",
-  "spec": "drill-anim/specs/h-band-straight-leg-raise-r2-et1.js",
-  "specSha256Lf": "6ad874d52449321822ba072c350edc176b6c2b0ce91467a500e41920ea621d91",
+  "spec": "drill-anim/specs/h-band-straight-leg-raise-r2-et1-kn1.js",
+  "specSha256Lf": "1ba77c455fe2af46d00f26f941c1d53f0cb82072f78c43dcf4f4c1ac50eac283",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -75,7 +75,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/h-band-straight-leg-raise-r2-et1.js"
+    "selectedSpec": "drill-anim/specs/h-band-straight-leg-raise-r2-et1-kn1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -95,5 +95,14 @@
         "why": "forearm twist: constant elbowTwist split (pose-fix r2 et)"
       }
     ]
+  },
+  "kneeFix": {
+    "r1": {
+      "from": "drill-anim/specs/h-band-straight-leg-raise-r2-et1.js",
+      "to": "drill-anim/specs/h-band-straight-leg-raise-r2-et1-kn1.js",
+      "date": "2026-11-06",
+      "branch": "codex/knee-fix-r1",
+      "note": "knee fix r1 (2026-11-06) of h-band-straight-leg-raise-r2-et1.js: pelvis height rescaled to the v3 leg (kn-lib g); working-leg ankle follows the lifted pelvis and is lengthened about the hip by the leg ratio"
+    }
   }
 }
