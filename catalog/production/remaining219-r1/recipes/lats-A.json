@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "lats-A",
   "nameZh": "坐姿撑地抬臀",
-  "spec": "drill-anim/specs/lats-A-wb.js",
-  "specSha256Lf": "316701b3f0ba81d4baa51feace901ebed602b9c352e6338d71a193a59d658a44",
+  "spec": "drill-anim/specs/lats-A-wb-et1.js",
+  "specSha256Lf": "f7df94bfad569650cc9dc9a870125c63f930b85458e3f51ef871a22a75d38943",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -92,10 +92,21 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/lats-A-wb.js"
+    "selectedSpec": "drill-anim/specs/lats-A-wb-et1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
   "userAccepted": false,
-  "releaseEligible": false
+  "releaseEligible": false,
+  "poseFixR1": {
+    "branch": "fix/limb-twist-collision-r1",
+    "date": "2026-11-05",
+    "spec": [
+      {
+        "from": "drill-anim/specs/lats-A-wb.js",
+        "to": "drill-anim/specs/lats-A-wb-et1.js",
+        "why": "pose-fix r9: fixed hand-vs-forearm twist 90-120 deg -> constant forearm roll {\"left\": 55, \"right\": -55}"
+      }
+    ]
+  }
 }

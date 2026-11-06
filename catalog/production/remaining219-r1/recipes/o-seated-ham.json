@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "o-seated-ham",
   "nameZh": "坐姿腘绳肌前伸",
-  "spec": "drill-anim/specs/o-seated-ham.js",
-  "specSha256Lf": "871ccbd2022c8a9d2ce561750d1d75b7a45b2853ff357ca76c133a49db5a6527",
+  "spec": "drill-anim/specs/o-seated-ham-sc1.js",
+  "specSha256Lf": "f784fff0571dc7d8603a8158af4fb386dfc00a57a7af4ca4192b33421c7bbbbb",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -75,10 +75,21 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/o-seated-ham.js"
+    "selectedSpec": "drill-anim/specs/o-seated-ham-sc1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
   "userAccepted": false,
-  "releaseEligible": false
+  "releaseEligible": false,
+  "poseFixR1": {
+    "branch": "fix/limb-twist-collision-r1",
+    "date": "2026-11-05",
+    "spec": [
+      {
+        "from": "drill-anim/specs/o-seated-ham.js",
+        "to": "drill-anim/specs/o-seated-ham-sc1.js",
+        "why": "self-collision: hand targets pushed out of the body (hand-push r1)"
+      }
+    ]
+  }
 }

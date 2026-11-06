@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "rotator-cuff-A",
   "nameZh": "俯撑交替触肩",
-  "spec": "drill-anim/specs/rotator-cuff-A-r2.js",
-  "specSha256Lf": "29bf03a7176ceaca15262705c009b1f9c4f665d2919e5336c39a8afcd0537953",
+  "spec": "drill-anim/specs/rotator-cuff-A-r2-ht1.js",
+  "specSha256Lf": "f3a4d13a8f154b2e49b8174c8568477e22d4f0e090f3a7d06e6a5d60bfda9f4e",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -91,10 +91,21 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/rotator-cuff-A-r2.js"
+    "selectedSpec": "drill-anim/specs/rotator-cuff-A-r2-ht1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
   "userAccepted": false,
-  "releaseEligible": false
+  "releaseEligible": false,
+  "poseFixR1": {
+    "branch": "fix/limb-twist-collision-r1",
+    "date": "2026-11-05",
+    "spec": [
+      {
+        "from": "drill-anim/specs/rotator-cuff-A-r2.js",
+        "to": "drill-anim/specs/rotator-cuff-A-r2-ht1.js",
+        "why": "r7: time-varying forearm roll (60 Hz table; left even split, right constant hand-vs-forearm -60 deg) over the right/left solver flip; hand theta 256/255 -> 14/63"
+      }
+    ]
+  }
 }

@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "h-floor-nordic-hand-reset",
   "nameZh": "地面北欧离心及手撑复位",
-  "spec": "drill-anim/specs/h-floor-nordic-hand-reset-rr3.js",
-  "specSha256Lf": "49884b794c28bef9d0723873c94f312dcad29ac050a99ba4855ef958ad83f2e8",
+  "spec": "drill-anim/specs/h-floor-nordic-hand-reset-gc2.js",
+  "specSha256Lf": "bdb3170c86f71484cdc211b402f29af9dde5b9e4f54e70f426a7d3df5124d3cb",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -92,10 +92,24 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/h-floor-nordic-hand-reset-rr3.js"
+    "selectedSpec": "drill-anim/specs/h-floor-nordic-hand-reset-gc2.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
   "userAccepted": false,
-  "releaseEligible": false
+  "releaseEligible": false,
+  "groundContactFix": {
+    "r1": {
+      "from": "drill-anim/specs/h-floor-nordic-hand-reset-gc1.js",
+      "to": "drill-anim/specs/h-floor-nordic-hand-reset-gc1.js",
+      "date": "2026-11-03",
+      "branch": "fix/ground-contact-r1"
+    },
+    "r1m2": {
+      "from": "drill-anim/specs/h-floor-nordic-hand-reset-gc1.js",
+      "to": "drill-anim/specs/h-floor-nordic-hand-reset-gc2.js",
+      "date": "2026-11-04",
+      "branch": "fix/ground-contact-r1"
+    }
+  }
 }

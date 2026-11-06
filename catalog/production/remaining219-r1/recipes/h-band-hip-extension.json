@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "h-band-hip-extension",
   "nameZh": "扶椅弹力带髋后伸",
-  "spec": "drill-anim/specs/h-band-hip-extension.js",
-  "specSha256Lf": "1d59bb191d6c65a5e20214c6dab7719b2a5b15e10cc4c58a7e366cafa78dd9aa",
+  "spec": "drill-anim/specs/h-band-hip-extension-et1.js",
+  "specSha256Lf": "2b286d4bce2399c98a4267a3da15b4ed237639fc8c949351ea78dc3cf82661a8",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -75,7 +75,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/h-band-hip-extension.js"
+    "selectedSpec": "drill-anim/specs/h-band-hip-extension-et1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -84,5 +84,16 @@
   "fixedCorrectionStack": {
     "profile": "fixed-wrist-corrections-r1",
     "version": "0.1.0-r1"
+  },
+  "poseFixR1": {
+    "branch": "fix/limb-twist-collision-r1",
+    "date": "2026-11-05",
+    "spec": [
+      {
+        "from": "drill-anim/specs/h-band-hip-extension.js",
+        "to": "drill-anim/specs/h-band-hip-extension-et1.js",
+        "why": "forearm twist: constant elbowTwist split (pose-fix r2 et)"
+      }
+    ]
   }
 }

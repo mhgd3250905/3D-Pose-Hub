@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "s-kneel-hipflex",
   "nameZh": "半跪髋屈肌拉伸",
-  "spec": "drill-anim/specs/s-kneel-hipflex.js",
-  "specSha256Lf": "e5ce7dfa048f12a7ea8b7436e0af4972d179c6766652c98739f1438f85dafee2",
+  "spec": "drill-anim/specs/s-kneel-hipflex-gc-int1.js",
+  "specSha256Lf": "01c251bce2553413ea8a7a6a52ecd78edde3d2331132da4e63b4c56d3cc976c8",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -90,10 +90,39 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/s-kneel-hipflex.js"
+    "selectedSpec": "drill-anim/specs/s-kneel-hipflex-gc-int1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
   "userAccepted": false,
-  "releaseEligible": false
+  "releaseEligible": false,
+  "groundContactFix": {
+    "r1m3": {
+      "from": "drill-anim/specs/s-kneel-hipflex.js",
+      "to": "drill-anim/specs/s-kneel-hipflex-gc1.js",
+      "date": "2026-11-04",
+      "branch": "fix/ground-contact-r1"
+    }
+  },
+  "poseFixR1": {
+    "branch": "fix/limb-twist-collision-r1",
+    "date": "2026-11-05",
+    "spec": [
+      {
+        "from": "drill-anim/specs/s-kneel-hipflex.js",
+        "to": "drill-anim/specs/s-kneel-hipflex-sc1.js",
+        "why": "r4: hands-on-hips touch clearance +41/+39 mm (hand->hip 36.4 mm)"
+      }
+    ],
+    "integration": {
+      "branch": "release/pose-fix-integration-r1",
+      "date": "2026-11-06",
+      "from": [
+        "drill-anim/specs/s-kneel-hipflex-gc1.js",
+        "drill-anim/specs/s-kneel-hipflex-sc1.js"
+      ],
+      "to": "drill-anim/specs/s-kneel-hipflex-gc-int1.js",
+      "why": "GC spec 为底叠加 PR #29 的修正（两边都要保住）"
+    }
+  }
 }

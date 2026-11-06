@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "glute-max-C",
   "nameZh": "反向背伸机",
-  "spec": "drill-anim/specs/glute-max-C.js",
-  "specSha256Lf": "14c48e71091a7830ed03d7bc799096105657a6d0a26e4f9fd812a1f09d0971ec",
+  "spec": "drill-anim/specs/glute-max-C-et1.js",
+  "specSha256Lf": "b833d22dc83875726d7929c9062b2185d21d6f6790a7421f5a197b5e3bb7b22d",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -76,10 +76,21 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/glute-max-C.js"
+    "selectedSpec": "drill-anim/specs/glute-max-C-et1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
   "userAccepted": false,
-  "releaseEligible": false
+  "releaseEligible": false,
+  "poseFixR1": {
+    "branch": "fix/limb-twist-collision-r1",
+    "date": "2026-11-05",
+    "spec": [
+      {
+        "from": "drill-anim/specs/glute-max-C.js",
+        "to": "drill-anim/specs/glute-max-C-et1.js",
+        "why": "pose-fix r9: fixed hand-vs-forearm twist 90-120 deg -> constant forearm roll {\"left\": -50, \"right\": 50}"
+      }
+    ]
+  }
 }

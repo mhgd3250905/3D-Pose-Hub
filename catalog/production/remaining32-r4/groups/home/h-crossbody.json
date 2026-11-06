@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "h-crossbody",
   "nameZh": "交叉臂肩后侧拉伸",
-  "spec": "drill-anim/specs/h-crossbody-r9.js",
-  "specSha256Lf": "ecd910a14caf3f30dc36f137b8d2a922ea46cbf4a8345a24889f7f3bb55c7592",
+  "spec": "drill-anim/specs/h-crossbody-r9-mv2.js",
+  "specSha256Lf": "3fbaa3fe19d1331a34efafff57beb786039ffc9bd1be4fe3a2160fdb398abd79",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -281,5 +281,39 @@
   ],
   "diagnostics": {
     "measureFootSurface": true
+  },
+  "poseFixR1": {
+    "branch": "fix/limb-twist-collision-r1",
+    "date": "2026-11-05",
+    "spec": [
+      {
+        "from": "drill-anim/specs/h-crossbody-r9.js",
+        "to": "drill-anim/specs/h-crossbody-r9-mv1.js",
+        "why": "user mark 4.2s looks static: arm adduction 13->33 deg, assist hand follows"
+      },
+      {
+        "from": "drill-anim/specs/h-crossbody-r9-mv1.js",
+        "to": "drill-anim/specs/h-crossbody-r9-mv2.js",
+        "why": "option C: left hand hangs in the 1 s rest, catches the right upper arm as it crosses (pose-fix r2)"
+      },
+      {
+        "from": "drill-anim/specs/h-crossbody-r9-mv2.js",
+        "to": "drill-anim/specs/h-crossbody-r9-mv2.js",
+        "why": "sha refresh"
+      },
+      {
+        "from": "drill-anim/specs/h-crossbody-r9-mv2.js",
+        "to": "drill-anim/specs/h-crossbody-r9-mv2.js",
+        "why": "sha refresh (palm-back try reverted)"
+      }
+    ],
+    "wristTwist": {
+      "from": "hands-native-r5 (wrap +-180, uncapped)",
+      "to": "hands-native-r6 (continuous, cap 40 deg)"
+    }
+  },
+  "wristTwistRuntime": {
+    "version": "r6",
+    "capDeg": 40.0
   }
 }

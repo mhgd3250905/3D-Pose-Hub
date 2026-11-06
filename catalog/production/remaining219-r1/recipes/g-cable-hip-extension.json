@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "g-cable-hip-extension",
   "nameZh": "低位绳索髋后伸",
-  "spec": "drill-anim/specs/g-cable-hip-extension.js",
-  "specSha256Lf": "50f798463361eaf50e3b89e3ce19998695b356dc9b72ff3749ec5a9d7f539dc7",
+  "spec": "drill-anim/specs/g-cable-hip-extension-et1.js",
+  "specSha256Lf": "fc83703c893b6965fa96546ff58be877aa4f4b8e8e10fb61ad7cd7fffde508da",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -75,10 +75,21 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/g-cable-hip-extension.js"
+    "selectedSpec": "drill-anim/specs/g-cable-hip-extension-et1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
   "userAccepted": false,
-  "releaseEligible": false
+  "releaseEligible": false,
+  "poseFixR1": {
+    "branch": "fix/limb-twist-collision-r1",
+    "date": "2026-11-05",
+    "spec": [
+      {
+        "from": "drill-anim/specs/g-cable-hip-extension.js",
+        "to": "drill-anim/specs/g-cable-hip-extension-et1.js",
+        "why": "forearm twist: constant elbowTwist split (pose-fix r2 et)"
+      }
+    ]
+  }
 }

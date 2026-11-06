@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "h-short-side-plank",
   "nameZh": "屈膝短杠杆侧平板",
-  "spec": "drill-anim/specs/h-short-side-plank-rr2.js",
-  "specSha256Lf": "5f379d73d2415a63078b12591df1df4514cb537dc604f4e6fc76f0b16e44b8b5",
+  "spec": "drill-anim/specs/h-short-side-plank-gc1-et1.js",
+  "specSha256Lf": "511e47a9c57bb354ab3b58b6616bc7e3dbec4dd442d857c2e08074f3c94b2047",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -79,10 +79,30 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/h-short-side-plank-rr2.js"
+    "selectedSpec": "drill-anim/specs/h-short-side-plank-gc1-et1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
   "userAccepted": false,
-  "releaseEligible": false
+  "releaseEligible": false,
+  "groundContactFix": {
+    "r1": {
+      "from": "drill-anim/specs/h-short-side-plank-rr2.js",
+      "to": "drill-anim/specs/h-short-side-plank-gc1.js",
+      "date": "2026-11-03",
+      "branch": "fix/ground-contact-r1"
+    }
+  },
+  "poseFixR1": {
+    "branch": "fix/gc-overlap-limb-r1",
+    "base": "fix/ground-contact-r1",
+    "date": "2026-11-05",
+    "spec": [
+      {
+        "from": "drill-anim/specs/h-short-side-plank-gc1.js",
+        "to": "drill-anim/specs/h-short-side-plank-gc1-et1.js",
+        "why": "forearm twist: constant elbowTwist split (pose-fix r8 et, on gc spec)"
+      }
+    ]
+  }
 }

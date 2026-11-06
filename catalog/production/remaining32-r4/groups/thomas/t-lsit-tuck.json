@@ -2,9 +2,9 @@
   "format": "pose-hub-action-recipe@1",
   "id": "t-lsit-tuck",
   "nameZh": "L 撑↔团身",
-  "spec": "drill-anim/specs/t-lsit-tuck-r5.js",
-  "specId": "t-lsit-tuck-r5",
-  "specSha256Lf": "7a7b268d21a0a170f78514a78caf947bee8db0937ba5b560afeded4f07c52d2b",
+  "spec": "drill-anim/specs/t-lsit-tuck-r5-sc1.js",
+  "specId": "t-lsit-tuck-r5-sc1",
+  "specSha256Lf": "36d971eb0d3f33f6efba4c72faf21b32679b8ac7f79f677bc4f12060a3113436",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -98,6 +98,18 @@
       {
         "path": "drill-anim/specs/t-lsit-tuck-r5.js",
         "sha256Lf": "7a7b268d21a0a170f78514a78caf947bee8db0937ba5b560afeded4f07c52d2b"
+      },
+      {
+        "path": "drill-anim/specs/t-lsit-tuck-r4-sc1.js",
+        "sha256Lf": "40694a4fef946ad47539cab91e45e56b5c810c52134a04cf55630df9ffb282ab"
+      },
+      {
+        "path": "drill-anim/specs/_t-lsit-tuck-r5-sc1-reach-data.mjs",
+        "sha256Lf": "dcb12e1b06009c047e245d7b2e8d7200bf2110c19d67ed8fe636eedc3d69406c"
+      },
+      {
+        "path": "drill-anim/specs/t-lsit-tuck-r5-sc1.js",
+        "sha256Lf": "36d971eb0d3f33f6efba4c72faf21b32679b8ac7f79f677bc4f12060a3113436"
       }
     ]
   },
@@ -305,5 +317,16 @@
   },
   "diagnostics": {
     "measureFootSurface": true
+  },
+  "poseFixR1": {
+    "branch": "fix/limb-twist-collision-r1",
+    "date": "2026-11-05",
+    "spec": [
+      {
+        "from": "drill-anim/specs/t-lsit-tuck-r5.js",
+        "to": "drill-anim/specs/t-lsit-tuck-r5-sc1.js",
+        "why": "r7 try 2: pelvis/trunk lean back in the tuck (pitch -14->-32 deg at tuck, L-sit -10 unchanged), hands 5.5 cm back, root re-baked (thigh->belly 61 mm)"
+      }
+    ]
   }
 }

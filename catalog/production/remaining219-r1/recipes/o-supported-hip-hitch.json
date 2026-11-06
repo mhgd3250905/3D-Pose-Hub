@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "o-supported-hip-hitch",
   "nameZh": "扶椅单腿骨盆提拉",
-  "spec": "drill-anim/specs/o-supported-hip-hitch.js",
-  "specSha256Lf": "b8c6efc10cf0e56fcbdbadc5d86de3fa272ca6523d2e89bbc2fcf4d63cc75975",
+  "spec": "drill-anim/specs/o-supported-hip-hitch-gc1-et1.js",
+  "specSha256Lf": "1bcddf1f2a67367be755b81de7ae340f4f4645db13e2ffa48825e685c41af4ac",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -77,10 +77,30 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/o-supported-hip-hitch.js"
+    "selectedSpec": "drill-anim/specs/o-supported-hip-hitch-gc1-et1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
   "userAccepted": false,
-  "releaseEligible": false
+  "releaseEligible": false,
+  "groundContactFix": {
+    "r1m6": {
+      "from": "drill-anim/specs/o-supported-hip-hitch.js",
+      "to": "drill-anim/specs/o-supported-hip-hitch-gc1.js",
+      "date": "2026-11-04",
+      "branch": "fix/ground-contact-r1"
+    }
+  },
+  "poseFixR1": {
+    "branch": "fix/gc-overlap-limb-r1",
+    "base": "fix/ground-contact-r1",
+    "date": "2026-11-05",
+    "spec": [
+      {
+        "from": "drill-anim/specs/o-supported-hip-hitch-gc1.js",
+        "to": "drill-anim/specs/o-supported-hip-hitch-gc1-et1.js",
+        "why": "forearm twist: constant elbowTwist split (pose-fix r8 et, on gc spec)"
+      }
+    ]
+  }
 }

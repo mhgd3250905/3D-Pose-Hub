@@ -2,9 +2,9 @@
   "format": "pose-hub-action-recipe@1",
   "id": "t-seated-straddle-lifts",
   "nameZh": "坐姿分腿双腿抬起",
-  "spec": "drill-anim/specs/t-seated-straddle-lifts-r6.js",
-  "specId": "t-seated-straddle-lifts-r6",
-  "specSha256Lf": "70e3a1922f53e722dab544738a4092406717cd875168848067954ca4e62e1be0",
+  "spec": "drill-anim/specs/t-seated-straddle-lifts-r10b-sc1.js",
+  "specId": "t-seated-straddle-lifts-r10b-sc1",
+  "specSha256Lf": "6bbcbcd675694904f3f6af2123eb39f647ea2fc5e55c5f4d4e9b9436fadeedf1",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -99,6 +99,18 @@
       {
         "path": "drill-anim/specs/t-seated-straddle-lifts-r6.js",
         "sha256Lf": "70e3a1922f53e722dab544738a4092406717cd875168848067954ca4e62e1be0"
+      },
+      {
+        "path": "drill-anim/specs/t-seated-straddle-lifts-r10b.js",
+        "sha256Lf": "9c763a62bcdd853baf26e77d971aa4e751541d01d02d9502e307b093968056dd"
+      },
+      {
+        "path": "drill-anim/specs/_t-seated-straddle-lifts-r10b-sc1-reach-data.mjs",
+        "sha256Lf": "2a5fb776177ead4e0d7a83639f65287f8222c67dd04caa6313792d9924b44e32"
+      },
+      {
+        "path": "drill-anim/specs/t-seated-straddle-lifts-r10b-sc1.js",
+        "sha256Lf": "6bbcbcd675694904f3f6af2123eb39f647ea2fc5e55c5f4d4e9b9436fadeedf1"
       }
     ]
   },
@@ -293,5 +305,16 @@
     "priorRecipe": "catalog/production/remaining32-r3/groups/thomas/t-seated-straddle-lifts.json",
     "priorRecipeSha256": "aac0b91fe67ec37eb733c12dd8bd390991458b69a4be47a972d3056bc0d1ad19",
     "status": "awaiting-matched-preview"
+  },
+  "poseFixR1": {
+    "branch": "fix/limb-twist-collision-r1",
+    "date": "2026-11-05",
+    "spec": [
+      {
+        "from": "drill-anim/specs/t-seated-straddle-lifts-r6.js",
+        "to": "drill-anim/specs/t-seated-straddle-lifts-r10b-sc1.js",
+        "why": "r10 support rewrite: hands 36 cm in front of the hips between the spread thighs (z 0.36, x +-0.12), pelvis z pinned, waist lean reaches them; re-baked reachable root"
+      }
+    ]
   }
 }

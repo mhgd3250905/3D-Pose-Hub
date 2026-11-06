@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "h-chair-kickback",
   "nameZh": "扶椅站姿后踢腿",
-  "spec": "drill-anim/specs/h-chair-kickback.js",
-  "specSha256Lf": "747635cc31567d084594c72fec9fc0b0c043f14221561188d51da2c81b3eb719",
+  "spec": "drill-anim/specs/h-chair-kickback-gc1.js",
+  "specSha256Lf": "acb4219539523d5f830d9acde8ced7b1b19ad139e89620e5fb3780b607f1d3ac",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -76,10 +76,18 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/h-chair-kickback.js"
+    "selectedSpec": "drill-anim/specs/h-chair-kickback-gc1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
   "userAccepted": false,
-  "releaseEligible": false
+  "releaseEligible": false,
+  "groundContactFix": {
+    "r1m6": {
+      "from": "drill-anim/specs/h-chair-kickback.js",
+      "to": "drill-anim/specs/h-chair-kickback-gc1.js",
+      "date": "2026-11-04",
+      "branch": "fix/ground-contact-r1"
+    }
+  }
 }

@@ -2,9 +2,9 @@
   "format": "pose-hub-action-recipe@1",
   "id": "t-flare-side-hold",
   "nameZh": "托马斯侧撑定格",
-  "spec": "drill-anim/specs/t-flare-side-hold-r4.js",
+  "spec": "drill-anim/specs/t-flare-side-hold-r4-et1.js",
   "specId": "t-flare-side-hold-r4",
-  "specSha256Lf": "1f56563362588e268ea05f8d9cf60b7b9b1da4283f15366e6be90af5b9da9808",
+  "specSha256Lf": "4f7fd550a57bd5941dd6b89398ab9b2e911a581d9d95d6f2b05c330e0eb9c4f3",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -282,5 +282,16 @@
   },
   "diagnostics": {
     "measureFootSurface": true
+  },
+  "poseFixR1": {
+    "branch": "fix/limb-twist-collision-r1",
+    "date": "2026-11-05",
+    "spec": [
+      {
+        "from": "drill-anim/specs/t-flare-side-hold-r4.js",
+        "to": "drill-anim/specs/t-flare-side-hold-r4-et1.js",
+        "why": "forearm twist: constant elbowTwist split (pose-fix r2 et)"
+      }
+    ]
   }
 }
