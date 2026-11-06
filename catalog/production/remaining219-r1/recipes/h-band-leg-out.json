@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "h-band-leg-out",
   "nameZh": "仰卧弹力带单腿侧落",
-  "spec": "drill-anim/specs/h-band-leg-out-et1.js",
-  "specSha256Lf": "7fe3d47b2fdde97631f2c5d7dfb07cb8c83e09863278b6043703320fe6458212",
+  "spec": "drill-anim/specs/h-band-leg-out-et1-fa1.js",
+  "specSha256Lf": "f1797cfd242ace4b2791efcee7d193a7fe6dce8991fbc662fdda741a9b9d7db7",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -91,7 +91,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/h-band-leg-out-et1.js"
+    "selectedSpec": "drill-anim/specs/h-band-leg-out-et1-fa1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -113,6 +113,11 @@
         "from": "drill-anim/specs/h-band-leg-out.js",
         "to": "drill-anim/specs/h-band-leg-out-et1.js",
         "why": "pose-fix r9: fixed hand-vs-forearm twist 90-120 deg -> constant forearm roll {\"left\": 60, \"right\": -100}"
+      },
+      {
+        "from": "drill-anim/specs/h-band-leg-out-et1.js",
+        "to": "drill-anim/specs/h-band-leg-out-et1-fa1.js",
+        "why": "foot-angle r3: right (band) foot externally rotated up to -59deg vs the solved shin as the leg falls out (single-axis foot rot track). Baked per-frame foot-follow tracks: right foot follows the real shin, neutral ankle; ankle/poles/timing unchanged"
       }
     ]
   },
