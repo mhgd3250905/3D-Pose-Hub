@@ -64,6 +64,9 @@ try{
   const base=JSON.parse(JSON.stringify(first.source));delete base.nativeHands;
   await model.applyV3(page,base);
   await page.evaluate(([src,ff])=>{const v=flareInspector.viewer;v.playing=false;v.animate=()=>{};v.motion.reset();window.__selfMeasure=eval('('+src+')');window.__footM=eval('('+ff+')');},[measureSelfInPage.toString(),footFn.toString()]);
+  // r3: --corr 1 installs the recipe's render-time action corrective (only mountain-airborne-foot-r2 is supported here) so
+  // the scan reads what the render runner shows; without it the scan reads the raw engine pose (as in r1/r2).
+  if(Number(o.corr)&&first.source.actionCorrective?.id==='mountain-airborne-foot-r2'){const m=await import(pathToFileURL(W+'/tools/action-completion-v3-r2/mountain-airborne-foot-r2.mjs'));console.log('corrective',JSON.stringify(await m.install(page)));}
   console.log('boot',((Date.now()-t0)/1000).toFixed(0)+'s');
   for(const [id,f] of todo){
     if((Date.now()-t0)/1000>Number(o.budget))break;
