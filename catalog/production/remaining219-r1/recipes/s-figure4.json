@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "s-figure4",
   "nameZh": "仰卧 4 字拉伸",
-  "spec": "drill-anim/specs/s-figure4-r2-et1-sc2-fa1-ak3.js",
-  "specSha256Lf": "13f69043373754da25af084b7ec6473e596c02495a146cbd0057f3466046f08d",
+  "spec": "drill-anim/specs/s-figure4-r2-et1-sc2-fa1-ak4.js",
+  "specSha256Lf": "848ceef35a0a67d0d05a909ce5eedcaf9d1a90a9a455cde0d10a330c890c548c",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -135,6 +135,11 @@
         "from": "drill-anim/specs/s-figure4-r2-et1-sc2-fa1-ak2.js",
         "to": "drill-anim/specs/s-figure4-r2-et1-sc2-fa1-ak3.js",
         "why": "ankle r3 (2026-11-07, user: ankle on the other knee as pivot, lifted leg moves): motion rewritten to the standard supine figure-4 - left foot lifts and left thigh draws in (hip 54->100 deg) while the right ankle rides on the left thigh just above the knee (|gap|<=1.8 mm all loop); camera dir -> [0.9,0.45,0.3] (side view); right foot held at rest relation to the shin (DF~15, add~0, ev~14), self-collision 0"
+      },
+      {
+        "from": "drill-anim/specs/s-figure4-r2-et1-sc2-fa1-ak3.js",
+        "to": "drill-anim/specs/s-figure4-r2-et1-sc2-fa1-ak4.js",
+        "why": "ak4 (user 2026-11-07): both hands clasp behind the lifted left thigh and draw it in; right hand threads between the legs under the right shin. Left hip 54->112deg, slight upper-trunk curl (13deg) while gripping, fingers curl on grip. Right ankle-on-left-knee contact -2.2..+0.7 mm; self-collision at hold: arm-on-chest <=22 mm, forearm/shin <=5 mm, thigh/torso <=9 mm."
       }
     ]
   }
