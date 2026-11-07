@@ -1,0 +1,179 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "o-supported-hip-airplane",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/o-supported-hip-airplane.json",
+    "textSha256Lf": "1be6ef1b5bfc6d8e19412ce4f23caafa432739e84f50afc0e9168c26a6ea3217",
+    "spec": "drill-anim/specs/o-supported-hip-airplane.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "office",
+    "gym",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "chair"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [
+    {
+      "for": "chair",
+      "use": [
+        "wall",
+        "doorframe"
+      ],
+      "loadNote": "similar"
+    }
+  ],
+  "trainingType": [
+    "balance",
+    "stability-control"
+  ],
+  "movementPattern": [
+    "rotation"
+  ],
+  "contraction": [
+    "dynamic",
+    "isometric"
+  ],
+  "plane": [
+    "transverse"
+  ],
+  "bodyRegion": [
+    "lower",
+    "core"
+  ],
+  "primaryMuscles": [
+    "glute-max",
+    "hip-rotators",
+    "hip-abductors"
+  ],
+  "secondaryMuscles": [
+    "adductors"
+  ],
+  "stabilizers": [
+    "obliques",
+    "abs",
+    "quadriceps",
+    "calves"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "external-rotation",
+        "internal-rotation"
+      ]
+    },
+    {
+      "joint": "knee",
+      "actions": [
+        "isometric-hold"
+      ]
+    },
+    {
+      "joint": "ankle",
+      "actions": [
+        "isometric-hold"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "low",
+  "prerequisites": [
+    "single-leg-supported"
+  ],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "low",
+    "lumbar": "low",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "low",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "balance-demand"
+      ]
+    },
+    {
+      "population": "pregnancy",
+      "flag": "modify",
+      "reasons": [
+        "balance-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup",
+    "main"
+  ],
+  "goals": [
+    "performance",
+    "mobility"
+  ],
+  "alternatives": [
+    "o-supported-star-reach"
+  ],
+  "regressions": [
+    "o-supported-hip-hitch"
+  ],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "扶着椅子练单腿站时髋部转动控制，适合办公室或热身，给跑步、舞步前的单腿稳定做准备。",
+    "en": "Chair-supported single-leg hip rotation control for the office or a warm-up, prepping single-leg stability."
+  },
+  "confidence": "medium",
+  "notes": [
+    {
+      "field": "primaryMuscles",
+      "existing": [
+        "glutes",
+        "abductors"
+      ],
+      "chosen": [
+        "glute-max",
+        "hip-rotators",
+        "hip-abductors"
+      ],
+      "reason": "spec 写明目标是支撑髋上的骨盆整体旋转（Single target: pelvis/trunk en-bloc axial rotation over the stance hip），主要靠髋深层旋转肌，故补新 id hip-rotators。"
+    },
+    {
+      "field": "trainingType",
+      "existing": {
+        "category": "balance"
+      },
+      "chosen": [
+        "balance",
+        "stability-control"
+      ],
+      "reason": "单腿站（平衡）+ 慢速控制旋转并停 1.5 秒（稳定控制），两者兼有，balance 为主。"
+    }
+  ],
+  "reviewNotes": [
+    "新增办公室动作，v1 旧目录没有。",
+    "spec 中髋有约 40° 前倾、旋转只开 20°（保守版），未标 hinge 模式；如果 AI 需要区分'前倾髋飞机'，可在复核时加 hinge 和 hamstrings。",
+    "hip-rotators 是本词表新增肌群，批量时需确认用法一致。",
+    "progressions 留空：库里没有不扶椅的髋飞机。"
+  ]
+}

@@ -1,0 +1,157 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "t-flare-side-hold",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/t-flare-side-hold.json",
+    "textSha256Lf": "b4285fc65dcbb642302d94c4326343d659896265696b221fd904da676073552b",
+    "spec": "drill-anim/specs/t-flare-side-hold-r4.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "strength",
+    "stability-control"
+  ],
+  "movementPattern": [
+    "anti-lateral-flexion"
+  ],
+  "contraction": [
+    "isometric"
+  ],
+  "plane": [
+    "frontal"
+  ],
+  "bodyRegion": [
+    "full"
+  ],
+  "primaryMuscles": [
+    "obliques",
+    "deltoids"
+  ],
+  "secondaryMuscles": [
+    "hip-abductors",
+    "triceps"
+  ],
+  "stabilizers": [
+    "abs",
+    "serratus",
+    "adductors"
+  ],
+  "joints": [
+    {
+      "joint": "shoulder",
+      "actions": [
+        "isometric-hold"
+      ]
+    },
+    {
+      "joint": "wrist",
+      "actions": [
+        "extension"
+      ]
+    },
+    {
+      "joint": "hip",
+      "actions": [
+        "abduction"
+      ]
+    }
+  ],
+  "difficulty": 4,
+  "intensity": "moderate",
+  "prerequisites": [
+    "wrist-loading",
+    "plank-30s"
+  ],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "moderate",
+    "wrist": "moderate",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "caution",
+      "reasons": [
+        "balance-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "performance",
+    "strength"
+  ],
+  "alternatives": [],
+  "regressions": [
+    "h-short-side-plank",
+    "deltoids-A"
+  ],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "托马斯全旋专项：单手单脚侧撑定格，侧平板稳定后再选。",
+    "en": "Flare side hold on one hand and foot; after solid side planks."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "obliques",
+          "deltoids"
+        ],
+        "synergistMuscles": [
+          "core",
+          "abductors",
+          "triceps"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "obliques",
+          "deltoids"
+        ],
+        "secondaryMuscles": [
+          "hip-abductors",
+          "triceps"
+        ],
+        "stabilizers": [
+          "abs",
+          "serratus",
+          "adductors"
+        ]
+      },
+      "reason": "v3 粗粒度 id 按实际做法拆到 taxonomy id（core→abs/obliques，glutes→glute-max 或 hip-abductors，upper-back→scapular，lower-back→erectors），只稳定不推动的归稳定肌。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 3,
+      "chosen": 4,
+      "reason": "单手单脚接近水平侧撑并抬上腿，属托马斯要素，定 4 级。"
+    }
+  ],
+  "reviewNotes": []
+}

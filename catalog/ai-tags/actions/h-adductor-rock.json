@@ -1,0 +1,148 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-adductor-rock",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-adductor-rock.json",
+    "textSha256Lf": "e923c9aa9e0f8b44163f1609267577a3e6ace1ff734a440e05fbaf79910931ed",
+    "spec": "drill-anim/specs/h-adductor-rock.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [
+    {
+      "for": "mat",
+      "use": [
+        "towel"
+      ],
+      "loadNote": "similar"
+    }
+  ],
+  "trainingType": [
+    "dynamic-stretch",
+    "mobility"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "dynamic",
+    "isometric"
+  ],
+  "plane": [
+    "frontal",
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [],
+  "secondaryMuscles": [],
+  "stabilizers": [
+    "abs",
+    "erectors"
+  ],
+  "stretchedMuscles": [
+    "adductors"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "flexion",
+        "abduction"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [
+    "floor-transfer",
+    "kneeling-tolerance",
+    "wrist-loading"
+  ],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "low",
+    "lumbar": "none",
+    "shoulder": "low",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "floor-transfer"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup",
+    "cooldown"
+  ],
+  "goals": [
+    "mobility",
+    "recovery"
+  ],
+  "alternatives": [
+    "h-butterfly-active"
+  ],
+  "regressions": [],
+  "progressions": [
+    "s-frog"
+  ],
+  "aiSummary": {
+    "zh": "四足位动态拉开大腿内侧，适合下肢训练前热身。",
+    "en": "Quadruped rock-back to open the inner thigh before lower-body training."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers/stretchedMuscles",
+      "existing": {
+        "activeMuscles": [
+          "adductors"
+        ],
+        "synergistMuscles": [
+          "glutes",
+          "core"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [],
+        "secondaryMuscles": [],
+        "stabilizers": [
+          "abs",
+          "erectors"
+        ],
+        "stretchedMuscles": [
+          "adductors"
+        ]
+      },
+      "reason": "拉伸/活动类：v3 把被拉肌写在 activeMuscles，这里移到 stretchedMuscles，无主动发力肌。"
+    }
+  ],
+  "reviewNotes": []
+}

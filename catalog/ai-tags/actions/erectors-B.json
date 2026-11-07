@@ -1,0 +1,152 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "erectors-B",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/erectors-B.json",
+    "textSha256Lf": "e001332dc27d494f6e7ef93225daad89ba09e4a849838621905fcf36f45e53c0",
+    "spec": "drill-anim/specs/erectors-B.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "gym"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [
+    "swiss-ball"
+  ],
+  "optionalEquipment": [
+    "wall"
+  ],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "hinge"
+  ],
+  "contraction": [
+    "dynamic",
+    "isometric"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "core",
+    "lower"
+  ],
+  "primaryMuscles": [
+    "erectors",
+    "glute-max"
+  ],
+  "secondaryMuscles": [
+    "hamstrings"
+  ],
+  "stabilizers": [
+    "scapular"
+  ],
+  "joints": [
+    {
+      "joint": "lumbar-spine",
+      "actions": [
+        "extension"
+      ]
+    },
+    {
+      "joint": "hip",
+      "actions": [
+        "extension"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "moderate",
+  "prerequisites": [],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "moderate",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "posture"
+  ],
+  "alternatives": [],
+  "regressions": [
+    "h-superman"
+  ],
+  "progressions": [
+    "erectors-C"
+  ],
+  "aiSummary": {
+    "zh": "有瑞士球时练下背和臀部耐力，幅度比罗马椅小。",
+    "en": "Swiss-ball back extension for low-back and glute endurance; smaller range than a Roman chair."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "lower-back",
+          "glutes"
+        ],
+        "synergistMuscles": [
+          "hamstrings",
+          "upper-back"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "erectors",
+          "glute-max"
+        ],
+        "secondaryMuscles": [
+          "hamstrings"
+        ],
+        "stabilizers": [
+          "scapular"
+        ]
+      },
+      "reason": "v3 粗粒度肌群（glutes/lower-back）按动作实际做法拆到细分 id。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 2,
+      "reason": "需要在球上保持平衡并控制背伸，定基础 2。"
+    },
+    {
+      "field": "requiredEquipment/optionalEquipment",
+      "existing": [
+        "stability-ball"
+      ],
+      "chosen": {
+        "requiredEquipment": [
+          "swiss-ball"
+        ],
+        "optionalEquipment": [
+          "wall"
+        ]
+      },
+      "reason": "同义写法归一到词表 id。"
+    }
+  ],
+  "reviewNotes": [
+    "脚抵墙即可，floorRequired=false（只有脚和髋压球）。"
+  ]
+}

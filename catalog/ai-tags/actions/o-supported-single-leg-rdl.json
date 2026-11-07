@@ -1,0 +1,154 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "o-supported-single-leg-rdl",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/o-supported-single-leg-rdl.json",
+    "textSha256Lf": "cda05b1aeb8be42496e715fbc9ab85dec57c86d2064b81b4060629cefb225bee",
+    "spec": "drill-anim/specs/o-supported-single-leg-rdl.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "office",
+    "gym",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "chair"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "strength",
+    "balance"
+  ],
+  "movementPattern": [
+    "hinge"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "hamstrings",
+    "glute-max"
+  ],
+  "secondaryMuscles": [],
+  "stabilizers": [
+    "erectors",
+    "hip-abductors",
+    "abs"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    },
+    {
+      "joint": "knee",
+      "actions": [
+        "isometric-hold"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "low",
+  "prerequisites": [
+    "hip-hinge",
+    "single-leg-supported"
+  ],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "low",
+    "lumbar": "low",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "modify",
+      "reasons": [
+        "balance-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "balance-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "performance"
+  ],
+  "alternatives": [],
+  "regressions": [
+    "h-good-morning"
+  ],
+  "progressions": [
+    "hamstrings-A"
+  ],
+  "aiSummary": {
+    "zh": "扶椅单腿髋铰链，练臀和大腿后侧，单腿硬拉的入门版。",
+    "en": "Chair-supported single-leg hinge for glutes and hamstrings."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "hamstrings",
+          "glutes"
+        ],
+        "synergistMuscles": [
+          "core",
+          "lower-back"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "hamstrings",
+          "glute-max"
+        ],
+        "secondaryMuscles": [],
+        "stabilizers": [
+          "erectors",
+          "hip-abductors",
+          "abs"
+        ]
+      },
+      "reason": "v3 粗粒度 id 按实际做法拆到 taxonomy id（core→abs/obliques，glutes→glute-max 或 hip-abductors，upper-back→scapular，lower-back→erectors），只稳定不推动的归稳定肌。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 2,
+      "reason": "单腿 + 髋铰链 + 背平直需要协调多个要点，属 2 级\"扶物单腿\"。"
+    }
+  ],
+  "reviewNotes": []
+}

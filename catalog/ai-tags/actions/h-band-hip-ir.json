@@ -1,0 +1,150 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-band-hip-ir",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-band-hip-ir.json",
+    "textSha256Lf": "46bb870b0a3f336d62649abeb5f0db3a49c832c04ec56ce2d14cd750be7be0a0",
+    "spec": "drill-anim/specs/h-band-hip-ir.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "office",
+    "gym",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "band",
+    "chair"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "strength",
+    "mobility"
+  ],
+  "movementPattern": [
+    "isolation"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "transverse"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "hip-rotators"
+  ],
+  "secondaryMuscles": [
+    "hip-abductors"
+  ],
+  "stabilizers": [
+    "quadriceps"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "internal-rotation"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [
+    "band-anchor"
+  ],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "low",
+    "lumbar": "none",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup",
+    "main"
+  ],
+  "goals": [
+    "mobility",
+    "strength",
+    "performance"
+  ],
+  "alternatives": [],
+  "regressions": [
+    "o-supported-hip-ir"
+  ],
+  "progressions": [
+    "h-9090-liftoff"
+  ],
+  "aiSummary": {
+    "zh": "坐椅子加弹力带练髋内旋力量，工位也能做，需固定点。",
+    "en": "Seated banded hip internal rotation; doable at a desk with a low anchor."
+  },
+  "confidence": "medium",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "abductors",
+          "glutes"
+        ],
+        "synergistMuscles": [
+          "hip-flexors"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "hip-rotators"
+        ],
+        "secondaryMuscles": [
+          "hip-abductors"
+        ],
+        "stabilizers": [
+          "quadriceps"
+        ]
+      },
+      "reason": "v3 粗粒度肌群（abductors/glutes）按动作实际做法拆到细分 id。脚往外摆、膝不动是髋内旋，主动肌归 hip-rotators。"
+    },
+    {
+      "field": "requiredEquipment/optionalEquipment",
+      "existing": [
+        "resistance-band",
+        "chair"
+      ],
+      "chosen": {
+        "requiredEquipment": [
+          "band",
+          "chair"
+        ],
+        "optionalEquipment": []
+      },
+      "reason": "同义写法归一到词表 id。"
+    }
+  ],
+  "reviewNotes": [
+    "办公室需要能固定弹力带的桌腿等低处固定点。"
+  ]
+}

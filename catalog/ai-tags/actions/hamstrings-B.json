@@ -1,0 +1,164 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "hamstrings-B",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/hamstrings-B.json",
+    "textSha256Lf": "f7ddb471f227a64274553e200163e0136f8463009d268e768592b29c2b608da5",
+    "spec": "drill-anim/specs/hamstrings-B.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [
+    "slider"
+  ],
+  "optionalEquipment": [
+    "mat"
+  ],
+  "substitutes": [
+    {
+      "for": "slider",
+      "use": [
+        "towel"
+      ],
+      "loadNote": "similar"
+    }
+  ],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "hinge",
+    "isolation"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "hamstrings"
+  ],
+  "secondaryMuscles": [
+    "glute-max"
+  ],
+  "stabilizers": [
+    "abs",
+    "erectors",
+    "calves"
+  ],
+  "joints": [
+    {
+      "joint": "knee",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    },
+    {
+      "joint": "hip",
+      "actions": [
+        "extension"
+      ]
+    }
+  ],
+  "difficulty": 3,
+  "intensity": "moderate",
+  "prerequisites": [],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "low",
+    "lumbar": "low",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "pregnancy",
+      "flag": "modify",
+      "reasons": [
+        "supine-position"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "hypertrophy"
+  ],
+  "alternatives": [],
+  "regressions": [
+    "w-feet-on-chair-bridge"
+  ],
+  "progressions": [
+    "h-floor-nordic-hand-reset",
+    "hamstrings-C"
+  ],
+  "aiSummary": {
+    "zh": "仰卧抬臀脚踩滑盘或毛巾做腿弯举，居家练大腿后侧的主力动作。",
+    "en": "Slider leg curl in a bridge, the main home option for hamstrings."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "muscles",
+      "existing": {
+        "activeMuscles": [
+          "hamstrings"
+        ],
+        "synergistMuscles": [
+          "glutes",
+          "core"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "hamstrings"
+        ],
+        "secondaryMuscles": [
+          "glute-max"
+        ],
+        "stabilizers": [
+          "abs",
+          "erectors",
+          "calves"
+        ]
+      },
+      "reason": "v3 粗粒度肌群（core/glutes/upper-back/lower-back/abductors）按本动作实际做法拆到细分 id。"
+    },
+    {
+      "field": "requiredEquipment",
+      "existing": [
+        "sliders"
+      ],
+      "chosen": [
+        "slider"
+      ],
+      "reason": "v3 器械同义写法归一到词表 id。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 2,
+      "chosen": 3,
+      "reason": "抬臀保持下做全幅腿弯举，腘绳肌负担大易抽筋，按 3 级。"
+    }
+  ],
+  "reviewNotes": []
+}

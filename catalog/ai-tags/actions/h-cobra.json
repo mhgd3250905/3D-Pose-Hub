@@ -1,0 +1,153 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-cobra",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-cobra.json",
+    "textSha256Lf": "17344c06e960169c6ca09ad9154d173d7eafdd0a46543bf64031ffe73e863cef",
+    "spec": "drill-anim/specs/h-cobra.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [
+    {
+      "for": "mat",
+      "use": [
+        "towel"
+      ],
+      "loadNote": "similar"
+    }
+  ],
+  "trainingType": [
+    "dynamic-stretch",
+    "mobility"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "dynamic",
+    "isometric"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "core"
+  ],
+  "primaryMuscles": [],
+  "secondaryMuscles": [
+    "erectors"
+  ],
+  "stabilizers": [],
+  "stretchedMuscles": [
+    "abs",
+    "hip-flexors"
+  ],
+  "joints": [
+    {
+      "joint": "lumbar-spine",
+      "actions": [
+        "extension"
+      ]
+    },
+    {
+      "joint": "thoracic-spine",
+      "actions": [
+        "extension"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [
+    "floor-transfer"
+  ],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "low",
+    "shoulder": "low",
+    "wrist": "low",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "floor-transfer"
+      ]
+    },
+    {
+      "population": "pregnancy",
+      "flag": "caution",
+      "reasons": [
+        "prone-position"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "cooldown",
+    "warmup"
+  ],
+  "goals": [
+    "mobility",
+    "recovery",
+    "posture"
+  ],
+  "alternatives": [],
+  "regressions": [],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "趴着抬胸做脊柱后伸，久坐弯腰后放松腹部前侧。",
+    "en": "Prone cobra for spinal extension after long sitting."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers/stretchedMuscles",
+      "existing": {
+        "activeMuscles": [
+          "core"
+        ],
+        "synergistMuscles": [
+          "lower-back"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [],
+        "secondaryMuscles": [
+          "erectors"
+        ],
+        "stabilizers": [],
+        "stretchedMuscles": [
+          "abs",
+          "hip-flexors"
+        ]
+      },
+      "reason": "拉伸/活动类：v3 把被拉肌写在 activeMuscles，这里移到 stretchedMuscles，无主动发力肌。手推起是被动伸展为主，竖脊肌轻度参与改为协同。"
+    }
+  ],
+  "reviewNotes": []
+}

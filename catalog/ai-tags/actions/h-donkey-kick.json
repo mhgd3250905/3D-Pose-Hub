@@ -1,0 +1,152 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-donkey-kick",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-donkey-kick.json",
+    "textSha256Lf": "c02d4ad03d99149799bcdc9dc3d0b777689e2fd7ad4db0da256eb4353c0bb7d5",
+    "spec": "drill-anim/specs/h-donkey-kick.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "isolation"
+  ],
+  "contraction": [
+    "dynamic",
+    "isometric"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "glute-max"
+  ],
+  "secondaryMuscles": [
+    "hamstrings"
+  ],
+  "stabilizers": [
+    "abs",
+    "erectors",
+    "serratus"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "extension"
+      ]
+    },
+    {
+      "joint": "lumbar-spine",
+      "actions": [
+        "isometric-hold"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [
+    "kneeling-tolerance",
+    "wrist-loading"
+  ],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "low",
+    "lumbar": "low",
+    "shoulder": "low",
+    "wrist": "low",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "floor-transfer"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup",
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "hypertrophy",
+    "posture"
+  ],
+  "alternatives": [
+    "h-chair-kickback"
+  ],
+  "regressions": [
+    "n-prone-hip-ext"
+  ],
+  "progressions": [
+    "glute-max-B",
+    "glute-max-A"
+  ],
+  "aiSummary": {
+    "zh": "在垫子上跪撑练臀部后侧的入门孤立动作，适合热身激活或臀部辅助训练。",
+    "en": "Entry-level kneeling glute isolation on a mat, for activation or glute accessory work."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "muscles",
+      "existing": {
+        "activeMuscles": [
+          "glutes"
+        ],
+        "synergistMuscles": [
+          "hamstrings",
+          "core"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "glute-max"
+        ],
+        "secondaryMuscles": [
+          "hamstrings"
+        ],
+        "stabilizers": [
+          "abs",
+          "erectors",
+          "serratus"
+        ]
+      },
+      "reason": "v3 粗粒度肌群（core/glutes/upper-back/lower-back/abductors）按本动作实际做法拆到细分 id。"
+    }
+  ],
+  "reviewNotes": []
+}

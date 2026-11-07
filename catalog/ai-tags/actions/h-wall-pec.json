@@ -1,0 +1,132 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-wall-pec",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-wall-pec.json",
+    "textSha256Lf": "12004cd0a6936c221028ec07800ec4c014ae9d604d9ed6b1af70d7c52e1a2cd3",
+    "spec": "drill-anim/specs/h-wall-pec-r5.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "office",
+    "gym",
+    "outdoor",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "wall"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "static-stretch"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "isometric"
+  ],
+  "plane": [
+    "transverse"
+  ],
+  "bodyRegion": [
+    "upper"
+  ],
+  "primaryMuscles": [],
+  "secondaryMuscles": [],
+  "stabilizers": [],
+  "stretchedMuscles": [
+    "chest",
+    "deltoids",
+    "biceps"
+  ],
+  "joints": [
+    {
+      "joint": "shoulder",
+      "actions": [
+        "horizontal-abduction",
+        "external-rotation"
+      ]
+    },
+    {
+      "joint": "thoracic-spine",
+      "actions": [
+        "rotation"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "low",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "cooldown"
+  ],
+  "goals": [
+    "posture",
+    "desk-relief",
+    "mobility"
+  ],
+  "alternatives": [
+    "h-doorframe-forearms-pec-native-r3"
+  ],
+  "regressions": [
+    "h-supine-cactus-chest"
+  ],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "单臂贴墙转身拉胸，有墙就能做，适合工间缓解圆肩。",
+    "en": "Single-arm wall pec stretch, doable anywhere with a wall, for desk posture."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "muscles",
+      "existing": {
+        "activeMuscles": [
+          "chest",
+          "deltoids"
+        ],
+        "synergistMuscles": [
+          "biceps"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [],
+        "secondaryMuscles": [],
+        "stabilizers": [],
+        "stretchedMuscles": [
+          "chest",
+          "deltoids",
+          "biceps"
+        ]
+      },
+      "reason": "拉伸类：v3 activeMuscles 是被拉肌，改放 stretchedMuscles。"
+    }
+  ],
+  "reviewNotes": []
+}

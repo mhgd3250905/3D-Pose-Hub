@@ -1,0 +1,157 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "scapular-A",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/scapular-A.json",
+    "textSha256Lf": "5397b020eebbfa8ab3937ebb6cc85dd120d381210de711699f8154bf770b9c0d",
+    "spec": "drill-anim/specs/scapular-A-r2.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "frontal",
+    "transverse"
+  ],
+  "bodyRegion": [
+    "upper"
+  ],
+  "primaryMuscles": [
+    "scapular",
+    "rotator-cuff"
+  ],
+  "secondaryMuscles": [
+    "deltoids"
+  ],
+  "stabilizers": [
+    "erectors"
+  ],
+  "joints": [
+    {
+      "joint": "scapulothoracic",
+      "actions": [
+        "retraction",
+        "depression",
+        "upward-rotation"
+      ]
+    },
+    {
+      "joint": "shoulder",
+      "actions": [
+        "flexion",
+        "horizontal-abduction",
+        "external-rotation"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "low",
+  "prerequisites": [
+    "floor-transfer",
+    "overhead-range"
+  ],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "low",
+    "shoulder": "low",
+    "wrist": "none",
+    "neck": "low",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "floor-transfer"
+      ]
+    },
+    {
+      "population": "pregnancy",
+      "flag": "caution",
+      "reasons": [
+        "prone-position"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup",
+    "main"
+  ],
+  "goals": [
+    "posture",
+    "strength"
+  ],
+  "alternatives": [
+    "h-wall-angel"
+  ],
+  "regressions": [
+    "h-band-pull-apart"
+  ],
+  "progressions": [
+    "w-prone-swimmer"
+  ],
+  "aiSummary": {
+    "zh": "趴着做 Y-T-W 练上背和肩胛控制，改善圆肩，居家无器械。",
+    "en": "Prone Y-T-W raises for upper-back and scapular control; fixes rounded shoulders."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "upper-back",
+          "rotator-cuff"
+        ],
+        "synergistMuscles": [
+          "deltoids",
+          "lower-back"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "scapular",
+          "rotator-cuff"
+        ],
+        "secondaryMuscles": [
+          "deltoids"
+        ],
+        "stabilizers": [
+          "erectors"
+        ]
+      },
+      "reason": "v3 粗粒度 id 按实际做法拆到 taxonomy id（core→abs/obliques，glutes→glute-max 或 hip-abductors，upper-back→scapular，lower-back→erectors），只稳定不推动的归稳定肌。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 2,
+      "reason": "三种字型轮换、每个都要先收肩胛再抬手，属 2 级\"协调两三个要点\"。"
+    }
+  ],
+  "reviewNotes": []
+}

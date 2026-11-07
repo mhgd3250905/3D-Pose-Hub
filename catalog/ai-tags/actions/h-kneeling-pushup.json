@@ -1,0 +1,154 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-kneeling-pushup",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-kneeling-pushup.json",
+    "textSha256Lf": "20ae674849aed8ae0bf52165f59f54c85ef5deb335853bf861202e3877b1f33e",
+    "spec": "drill-anim/specs/h-kneeling-pushup-rr1.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "push-horizontal"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "upper"
+  ],
+  "primaryMuscles": [
+    "chest",
+    "triceps"
+  ],
+  "secondaryMuscles": [
+    "deltoids"
+  ],
+  "stabilizers": [
+    "abs",
+    "serratus"
+  ],
+  "joints": [
+    {
+      "joint": "shoulder",
+      "actions": [
+        "horizontal-adduction"
+      ]
+    },
+    {
+      "joint": "elbow",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    },
+    {
+      "joint": "scapulothoracic",
+      "actions": [
+        "protraction"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "moderate",
+  "prerequisites": [
+    "wrist-loading",
+    "kneeling-tolerance"
+  ],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "low",
+    "lumbar": "none",
+    "shoulder": "low",
+    "wrist": "low",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "hypertrophy"
+  ],
+  "alternatives": [],
+  "regressions": [
+    "h-incline-pushup"
+  ],
+  "progressions": [
+    "triceps-A",
+    "chest-A"
+  ],
+  "aiSummary": {
+    "zh": "上斜俯卧撑轻松后的下一步，跪在垫子上练胸和手臂。",
+    "en": "Next step after incline push-ups: knee push-ups on a mat for chest and arms."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "muscles",
+      "existing": {
+        "activeMuscles": [
+          "chest",
+          "triceps"
+        ],
+        "synergistMuscles": [
+          "deltoids",
+          "core"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "chest",
+          "triceps"
+        ],
+        "secondaryMuscles": [
+          "deltoids"
+        ],
+        "stabilizers": [
+          "abs",
+          "serratus"
+        ]
+      },
+      "reason": "v3 粗粒度肌群（core/glutes/upper-back/lower-back/abductors）按本动作实际做法拆到细分 id。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 2,
+      "reason": "在地面全幅度推起，比扶凳上斜难一级。"
+    }
+  ],
+  "reviewNotes": []
+}

@@ -1,0 +1,166 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "t-seated-straddle-ext",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/t-seated-straddle-ext.json",
+    "textSha256Lf": "a635c101e841630fd179ba758f68fd898e4f3aabce121bd7abbbe3f48a48403e",
+    "spec": "drill-anim/specs/t-seated-straddle-ext-r6.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "strength",
+    "mobility"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal",
+    "frontal"
+  ],
+  "bodyRegion": [
+    "core",
+    "lower"
+  ],
+  "primaryMuscles": [
+    "hip-flexors",
+    "abs"
+  ],
+  "secondaryMuscles": [
+    "quadriceps",
+    "adductors"
+  ],
+  "stabilizers": [
+    "triceps"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "flexion",
+        "abduction",
+        "adduction"
+      ]
+    },
+    {
+      "joint": "knee",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    }
+  ],
+  "difficulty": 3,
+  "intensity": "moderate",
+  "prerequisites": [
+    "floor-transfer"
+  ],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "low",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "modify",
+      "reasons": [
+        "end-range-stretch"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "floor-transfer"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "performance",
+    "strength",
+    "mobility"
+  ],
+  "alternatives": [],
+  "regressions": [
+    "t-seated-straddle-lifts"
+  ],
+  "progressions": [
+    "t-lsit-wide",
+    "t-straddle-hold"
+  ],
+  "aiSummary": {
+    "zh": "分腿坐双脚离地收腿伸腿，练核心压缩控制，L 撑前的过渡。",
+    "en": "Seated straddle tuck-and-extend with feet up; bridge to L-sits."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "hip-flexors",
+          "core"
+        ],
+        "synergistMuscles": [
+          "quadriceps",
+          "adductors"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "hip-flexors",
+          "abs"
+        ],
+        "secondaryMuscles": [
+          "quadriceps",
+          "adductors"
+        ],
+        "stabilizers": [
+          "triceps"
+        ]
+      },
+      "reason": "分腿坐抬腿靠髋屈肌（含股直肌）发力，腹部协同；手指点地只是稳定。"
+    },
+    {
+      "field": "floorRequired",
+      "existing": {
+        "position": "seated"
+      },
+      "chosen": true,
+      "reason": "坐在地上做（不是坐椅子），需要着地，不进办公室。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 2,
+      "chosen": 3,
+      "reason": "整组双脚离地并反复收伸，需要较强压缩力量，调到 3 级。"
+    }
+  ],
+  "reviewNotes": []
+}

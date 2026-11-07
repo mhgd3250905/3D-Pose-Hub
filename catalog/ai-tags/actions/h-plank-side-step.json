@@ -1,0 +1,156 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-plank-side-step",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-plank-side-step.json",
+    "textSha256Lf": "34635ddf778fb252df9e89a9bfec08c6ae326d94f839755b17fe29f5f9f214d0",
+    "spec": "drill-anim/specs/h-plank-side-step-r2.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "stability-control"
+  ],
+  "movementPattern": [
+    "anti-rotation",
+    "anti-extension"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "frontal",
+    "transverse"
+  ],
+  "bodyRegion": [
+    "core"
+  ],
+  "primaryMuscles": [
+    "abs",
+    "obliques"
+  ],
+  "secondaryMuscles": [
+    "hip-abductors"
+  ],
+  "stabilizers": [
+    "deltoids",
+    "serratus",
+    "glute-max"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "abduction",
+        "adduction"
+      ]
+    },
+    {
+      "joint": "shoulder",
+      "actions": [
+        "isometric-hold"
+      ]
+    },
+    {
+      "joint": "lumbar-spine",
+      "actions": [
+        "isometric-hold"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "moderate",
+  "prerequisites": [
+    "wrist-loading",
+    "plank-30s"
+  ],
+  "laterality": "alternating",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "low",
+    "shoulder": "low",
+    "wrist": "low",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "pregnancy",
+      "flag": "modify",
+      "reasons": [
+        "abdominal-pressure"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "posture"
+  ],
+  "alternatives": [
+    "h-mountain-climber",
+    "rotator-cuff-A"
+  ],
+  "regressions": [
+    "h-forearm-plank",
+    "h-bear-plank"
+  ],
+  "progressions": [
+    "h-slider-body-saw"
+  ],
+  "aiSummary": {
+    "zh": "直臂平板里双脚轮流侧点，练核心抗旋转，适合能稳住平板的人。",
+    "en": "High-plank alternating side taps for anti-rotation once a plank is solid."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "muscles",
+      "existing": {
+        "activeMuscles": [
+          "core",
+          "obliques",
+          "abductors"
+        ],
+        "synergistMuscles": [
+          "deltoids",
+          "glutes"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "abs",
+          "obliques"
+        ],
+        "secondaryMuscles": [
+          "hip-abductors"
+        ],
+        "stabilizers": [
+          "deltoids",
+          "serratus",
+          "glute-max"
+        ]
+      },
+      "reason": "v3 粗粒度肌群（core/glutes/upper-back/lower-back/abductors）按本动作实际做法拆到细分 id。"
+    }
+  ],
+  "reviewNotes": []
+}

@@ -1,0 +1,135 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-chair-elbow-triceps-stretch",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-chair-elbow-triceps-stretch.json",
+    "textSha256Lf": "711e654f62affe0ea65bfcd9613d29cbb4105df2f39e153753d0c445914d232a",
+    "spec": "drill-anim/specs/h-chair-elbow-triceps-stretch-r4.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "office",
+    "gym",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "chair"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "static-stretch"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "isometric"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "upper"
+  ],
+  "primaryMuscles": [],
+  "secondaryMuscles": [],
+  "stabilizers": [],
+  "stretchedMuscles": [
+    "triceps",
+    "lats"
+  ],
+  "joints": [
+    {
+      "joint": "shoulder",
+      "actions": [
+        "flexion"
+      ]
+    },
+    {
+      "joint": "elbow",
+      "actions": [
+        "flexion"
+      ]
+    },
+    {
+      "joint": "thoracic-spine",
+      "actions": [
+        "extension"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [
+    "overhead-range"
+  ],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "low",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "cooldown"
+  ],
+  "goals": [
+    "mobility",
+    "desk-relief",
+    "recovery"
+  ],
+  "alternatives": [
+    "h-overhead-triceps-stretch",
+    "h-chair-lat"
+  ],
+  "regressions": [],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "扶椅背拉伸三头肌和腋下，工位旁做的上肢放松。",
+    "en": "Chair-supported triceps and lat stretch for desk-side upper-body relief."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers/stretchedMuscles",
+      "existing": {
+        "activeMuscles": [
+          "triceps",
+          "lats"
+        ],
+        "synergistMuscles": [
+          "upper-back"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [],
+        "secondaryMuscles": [],
+        "stabilizers": [],
+        "stretchedMuscles": [
+          "triceps",
+          "lats"
+        ]
+      },
+      "reason": "拉伸/活动类：v3 把被拉肌写在 activeMuscles，这里移到 stretchedMuscles，无主动发力肌。"
+    }
+  ],
+  "reviewNotes": []
+}

@@ -1,0 +1,164 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-couch-stretch",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-couch-stretch.json",
+    "textSha256Lf": "c3203782d76c757eb7b8fea840529fb13edeb9d2c9f660a78aefaf5797623af0",
+    "spec": "drill-anim/specs/h-couch-stretch.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "chair",
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "static-stretch"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "isometric"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [],
+  "secondaryMuscles": [],
+  "stabilizers": [
+    "glute-max",
+    "abs"
+  ],
+  "stretchedMuscles": [
+    "hip-flexors",
+    "quadriceps"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "extension"
+      ]
+    },
+    {
+      "joint": "knee",
+      "actions": [
+        "flexion"
+      ]
+    }
+  ],
+  "difficulty": 3,
+  "intensity": "low",
+  "prerequisites": [
+    "floor-transfer",
+    "kneeling-tolerance",
+    "split-stance"
+  ],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "moderate",
+    "lumbar": "low",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "floor-transfer"
+      ]
+    },
+    {
+      "population": "beginner",
+      "flag": "modify",
+      "reasons": [
+        "end-range-stretch"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "cooldown"
+  ],
+  "goals": [
+    "mobility",
+    "desk-relief"
+  ],
+  "alternatives": [],
+  "regressions": [
+    "h-half-kneeling-quad-stretch",
+    "s-kneel-hipflex"
+  ],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "后脚搭凳的强度较高的髋前侧和大腿前侧拉伸，适合久坐族进阶。",
+    "en": "Intense couch stretch for hip flexors and quads; a progression for desk workers."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers/stretchedMuscles",
+      "existing": {
+        "activeMuscles": [
+          "hip-flexors",
+          "quadriceps"
+        ],
+        "synergistMuscles": [
+          "glutes"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [],
+        "secondaryMuscles": [],
+        "stabilizers": [
+          "glute-max",
+          "abs"
+        ],
+        "stretchedMuscles": [
+          "hip-flexors",
+          "quadriceps"
+        ]
+      },
+      "reason": "拉伸/活动类：v3 把被拉肌写在 activeMuscles，这里移到 stretchedMuscles，无主动发力肌。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 2,
+      "chosen": 3,
+      "reason": "后膝深屈加髋伸到末端，强度明显高于半跪拉伸，定 3。"
+    },
+    {
+      "field": "requiredEquipment/optionalEquipment",
+      "existing": [
+        "stool",
+        "mat"
+      ],
+      "chosen": {
+        "requiredEquipment": [
+          "chair",
+          "mat"
+        ],
+        "optionalEquipment": []
+      },
+      "reason": "stool 归一为 chair（矮凳/椅子同一 id）。"
+    }
+  ],
+  "reviewNotes": []
+}

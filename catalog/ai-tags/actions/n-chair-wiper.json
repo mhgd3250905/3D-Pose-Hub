@@ -1,0 +1,147 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "n-chair-wiper",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/n-chair-wiper.json",
+    "textSha256Lf": "33407de19526d1a070c72771a5e0bea7abea82cc19b5d2b135ebae894c00004a",
+    "spec": "drill-anim/specs/n-chair-wiper.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "office",
+    "gym",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "chair"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "mobility"
+  ],
+  "movementPattern": [
+    "rotation"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "transverse"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "hip-abductors"
+  ],
+  "secondaryMuscles": [
+    "adductors"
+  ],
+  "stabilizers": [],
+  "stretchedMuscles": [
+    "hip-rotators",
+    "glute-max"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "internal-rotation"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [],
+  "laterality": "alternating",
+  "jointStress": {
+    "knee": "low",
+    "lumbar": "none",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup",
+    "cooldown"
+  ],
+  "goals": [
+    "desk-relief",
+    "mobility"
+  ],
+  "alternatives": [
+    "o-supported-hip-ir"
+  ],
+  "regressions": [],
+  "progressions": [
+    "n-seated-ir-drop",
+    "n-prone-ir"
+  ],
+  "aiSummary": {
+    "zh": "久坐后在椅子上放松髋部、改善髋内旋，工位可做。",
+    "en": "Seated knee drop-in to loosen the hips and improve internal rotation at the desk."
+  },
+  "confidence": "medium",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "glutes",
+          "abductors"
+        ],
+        "synergistMuscles": [
+          "adductors"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "hip-abductors"
+        ],
+        "secondaryMuscles": [
+          "adductors"
+        ],
+        "stabilizers": []
+      },
+      "reason": "膝内倒=髋内旋：主动发力是臀中肌前部（hip-abductors），被拉的是深层外旋肌和臀大肌；v3 的 glutes/abductors 合并改写。"
+    },
+    {
+      "field": "laterality",
+      "existing": {
+        "unilateral": true,
+        "training.kind": "rep_alternate"
+      },
+      "chosen": "alternating",
+      "reason": "v3 unilateral=true 实为左右交替（rep_alternate），与单侧分开。"
+    }
+  ],
+  "reviewNotes": [
+    "primaryMuscles 有推断：重力帮了大半，主动肌不明显（medium）。"
+  ]
+}

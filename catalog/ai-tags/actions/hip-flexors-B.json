@@ -1,0 +1,170 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "hip-flexors-B",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/hip-flexors-B.json",
+    "textSha256Lf": "e6b73665ffbab1f077d43151fd7894b57db42dca1ca87175b10a4742d5600283",
+    "spec": "drill-anim/specs/hip-flexors-B.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [
+    "band"
+  ],
+  "optionalEquipment": [
+    "wall",
+    "chair"
+  ],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "isolation"
+  ],
+  "contraction": [
+    "dynamic",
+    "isometric"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "hip-flexors"
+  ],
+  "secondaryMuscles": [
+    "quadriceps"
+  ],
+  "stabilizers": [
+    "abs",
+    "hip-abductors"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "moderate",
+  "prerequisites": [
+    "single-leg-supported",
+    "band-anchor"
+  ],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "low",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "low",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "balance-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup",
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "performance"
+  ],
+  "alternatives": [
+    "hip-flexors-C"
+  ],
+  "regressions": [
+    "o-supported-march",
+    "n-seated-knee-lift"
+  ],
+  "progressions": [
+    "hip-flexors-A"
+  ],
+  "aiSummary": {
+    "zh": "想加强抬腿力量（跑步、踢腿、舞步）时选，弹力带加阻，扶墙单腿站，居家或酒店。",
+    "en": "Banded standing knee drive for hip-flexor strength; wall-supported, home or hotel."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "hip-flexors"
+        ],
+        "synergistMuscles": [
+          "core",
+          "quadriceps"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "hip-flexors"
+        ],
+        "secondaryMuscles": [
+          "quadriceps"
+        ],
+        "stabilizers": [
+          "abs",
+          "hip-abductors"
+        ]
+      },
+      "reason": "v3 粗粒度 id 按实际做法拆到 taxonomy id（core→abs/obliques，glutes→glute-max 或 hip-abductors，upper-back→scapular，lower-back→erectors），只稳定不推动的归稳定肌。"
+    },
+    {
+      "field": "requiredEquipment/optionalEquipment",
+      "existing": [
+        "resistance-band",
+        "wall"
+      ],
+      "chosen": {
+        "requiredEquipment": [
+          "band"
+        ],
+        "optionalEquipment": [
+          "wall",
+          "chair"
+        ]
+      },
+      "reason": "resistance-band→band；墙只用来扶稳，椅子也行，改为可选。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 2,
+      "reason": "扶墙单腿站 + 弹力带阻力 + 顶端停 2 秒，符合 2 级\"扶物单腿、轻中负重\"。"
+    }
+  ],
+  "reviewNotes": []
+}

@@ -1,0 +1,177 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-bridge-overhead",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-bridge-overhead.json",
+    "textSha256Lf": "6307d6871aa32bf2aa2af7d85bee6dcf2dac661271bac3d44c18b3c58bcdf386",
+    "spec": "drill-anim/specs/h-bridge-overhead-r5.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [
+    {
+      "for": "mat",
+      "use": [
+        "towel"
+      ],
+      "loadNote": "similar"
+    }
+  ],
+  "trainingType": [
+    "strength",
+    "mobility"
+  ],
+  "movementPattern": [
+    "hinge"
+  ],
+  "contraction": [
+    "dynamic",
+    "isometric"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "lower",
+    "upper"
+  ],
+  "primaryMuscles": [
+    "glute-max"
+  ],
+  "secondaryMuscles": [
+    "hamstrings"
+  ],
+  "stabilizers": [
+    "abs",
+    "erectors"
+  ],
+  "stretchedMuscles": [
+    "lats"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "extension"
+      ]
+    },
+    {
+      "joint": "shoulder",
+      "actions": [
+        "flexion"
+      ]
+    },
+    {
+      "joint": "thoracic-spine",
+      "actions": [
+        "extension"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "moderate",
+  "prerequisites": [
+    "floor-transfer",
+    "overhead-range"
+  ],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "low",
+    "shoulder": "low",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "floor-transfer"
+      ]
+    },
+    {
+      "population": "pregnancy",
+      "flag": "modify",
+      "reasons": [
+        "supine-position"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup",
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "mobility"
+  ],
+  "alternatives": [
+    "w-feet-on-chair-bridge"
+  ],
+  "regressions": [],
+  "progressions": [
+    "h-bridge-march"
+  ],
+  "aiSummary": {
+    "zh": "臀桥加手臂过头，同时练臀和打开肩，为后桥做准备。",
+    "en": "Glute bridge with overhead reach to train glutes and open the shoulders before full bridges."
+  },
+  "confidence": "medium",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers/stretchedMuscles",
+      "existing": {
+        "activeMuscles": [
+          "glutes",
+          "deltoids"
+        ],
+        "synergistMuscles": [
+          "hamstrings",
+          "lats",
+          "core"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "glute-max"
+        ],
+        "secondaryMuscles": [
+          "hamstrings"
+        ],
+        "stabilizers": [
+          "abs",
+          "erectors"
+        ],
+        "stretchedMuscles": [
+          "lats"
+        ]
+      },
+      "reason": "v3 粗粒度肌群（glutes）按动作实际做法拆到细分 id。手臂贴地过头是被动肩屈，非三角肌主动发力；改为 stretchedMuscles 的 lats。"
+    }
+  ],
+  "reviewNotes": []
+}

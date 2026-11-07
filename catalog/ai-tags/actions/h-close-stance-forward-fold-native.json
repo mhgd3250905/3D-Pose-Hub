@@ -1,0 +1,137 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-close-stance-forward-fold-native",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-close-stance-forward-fold-native.json",
+    "textSha256Lf": "081bc4fbd99b58a2b84076f9949e72d1832d4abf791ab379214367028b594156",
+    "spec": "drill-anim/specs/h-close-stance-forward-fold-native.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "office",
+    "gym",
+    "outdoor",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "static-stretch"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "isometric"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [],
+  "secondaryMuscles": [],
+  "stabilizers": [],
+  "stretchedMuscles": [
+    "hamstrings",
+    "erectors",
+    "calves"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "flexion"
+      ]
+    },
+    {
+      "joint": "lumbar-spine",
+      "actions": [
+        "flexion"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "low",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    },
+    {
+      "population": "hypertension",
+      "flag": "caution",
+      "reasons": [
+        "head-below-heart"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "cooldown"
+  ],
+  "goals": [
+    "mobility",
+    "recovery",
+    "desk-relief"
+  ],
+  "alternatives": [
+    "o-stand-ham",
+    "n-wide-fold"
+  ],
+  "regressions": [],
+  "progressions": [
+    "s-seated-fold"
+  ],
+  "aiSummary": {
+    "zh": "站着拉伸大腿后侧和背，不需要垫子。",
+    "en": "Standing forward fold for hamstrings and back, no mat needed."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers/stretchedMuscles",
+      "existing": {
+        "activeMuscles": [
+          "hamstrings"
+        ],
+        "synergistMuscles": [
+          "lower-back",
+          "calves"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [],
+        "secondaryMuscles": [],
+        "stabilizers": [],
+        "stretchedMuscles": [
+          "hamstrings",
+          "erectors",
+          "calves"
+        ]
+      },
+      "reason": "拉伸/活动类：v3 把被拉肌写在 activeMuscles，这里移到 stretchedMuscles，无主动发力肌。"
+    }
+  ],
+  "reviewNotes": []
+}

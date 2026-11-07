@@ -1,0 +1,142 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "n-thomas-test",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/n-thomas-test.json",
+    "textSha256Lf": "fab1c86cb512db154a2ae9f38ee2a1f9e9a95ab2c94e0874d305af660b5a3a2c",
+    "spec": "drill-anim/specs/n-thomas-test-r3.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "assessment",
+    "static-stretch",
+    "mobility"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "isometric"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [],
+  "secondaryMuscles": [],
+  "stabilizers": [
+    "abs"
+  ],
+  "stretchedMuscles": [
+    "hip-flexors",
+    "glute-max"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [
+    "floor-transfer"
+  ],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "low",
+    "lumbar": "low",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "floor-transfer"
+      ]
+    },
+    {
+      "population": "pregnancy",
+      "flag": "modify",
+      "reasons": [
+        "supine-position"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup",
+    "cooldown"
+  ],
+  "goals": [
+    "mobility",
+    "recovery"
+  ],
+  "alternatives": [
+    "h-knee-hug"
+  ],
+  "regressions": [],
+  "progressions": [
+    "s-kneel-hipflex"
+  ],
+  "aiSummary": {
+    "zh": "躺着自测髋前侧紧不紧，同时轻拉髋前侧，适合训练前评估。",
+    "en": "Supine Thomas test to check and gently stretch tight hip flexors."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/stretchedMuscles",
+      "existing": {
+        "activeMuscles": [
+          "hip-flexors"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [],
+        "stretchedMuscles": [
+          "hip-flexors",
+          "glute-max"
+        ]
+      },
+      "reason": "拉伸类：v3 把被拉肌写在 activeMuscles，本 schema 放 stretchedMuscles。"
+    },
+    {
+      "field": "trainingType",
+      "existing": {
+        "category": "assessment"
+      },
+      "chosen": [
+        "static-stretch",
+        "mobility"
+      ],
+      "reason": "评估动作按实际做法：抱膝保持 30 秒，伸直腿的髋屈肌被拉。"
+    }
+  ],
+  "reviewNotes": [
+    "stretchedMuscles 的 glute-max 是抱膝那侧被拉，主目标仍是伸直腿的髋屈肌。"
+  ]
+}

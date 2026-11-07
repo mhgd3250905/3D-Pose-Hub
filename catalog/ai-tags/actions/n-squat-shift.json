@@ -1,0 +1,161 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "n-squat-shift",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/n-squat-shift.json",
+    "textSha256Lf": "16427b558b52e08e706800837827488b5c1189f4849ef2fa86b9ab6a34450847",
+    "spec": "drill-anim/specs/n-squat-shift-r2.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "outdoor",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "mobility"
+  ],
+  "movementPattern": [
+    "squat"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "frontal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "adductors",
+    "quadriceps",
+    "glute-max"
+  ],
+  "secondaryMuscles": [],
+  "stabilizers": [
+    "abs"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "flexion",
+        "abduction"
+      ]
+    },
+    {
+      "joint": "knee",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    },
+    {
+      "joint": "ankle",
+      "actions": [
+        "dorsiflexion"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "low",
+  "prerequisites": [
+    "deep-squat-range"
+  ],
+  "laterality": "alternating",
+  "jointStress": {
+    "knee": "low",
+    "lumbar": "none",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "low",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "modify",
+      "reasons": [
+        "balance-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "balance-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup"
+  ],
+  "goals": [
+    "mobility",
+    "performance"
+  ],
+  "alternatives": [
+    "h-sumo-pry"
+  ],
+  "regressions": [],
+  "progressions": [
+    "n-slider-lateral",
+    "adductors-A"
+  ],
+  "aiSummary": {
+    "zh": "深蹲位左右移重心，练髋和大腿内侧的控制，为哥萨克蹲打基础。",
+    "en": "Low squat side-to-side shift for adductor and hip control; builds toward Cossack squats."
+  },
+  "confidence": "medium",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "adductors",
+          "quadriceps",
+          "glutes"
+        ],
+        "synergistMuscles": [
+          "core"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "adductors",
+          "quadriceps",
+          "glute-max"
+        ],
+        "secondaryMuscles": [],
+        "stabilizers": [
+          "abs"
+        ]
+      },
+      "reason": "v3 粗粒度 id 按实际做法拆到 taxonomy id（core→abs/obliques，glutes→glute-max 或 hip-abductors，upper-back→scapular，lower-back→erectors），只稳定不推动的归稳定肌。"
+    },
+    {
+      "field": "laterality",
+      "existing": {
+        "unilateral": true,
+        "training.kind": "rep_alternate"
+      },
+      "chosen": "alternating",
+      "reason": "v3 unilateral=true 实为左右交替（rep_alternate），与单侧分开。"
+    }
+  ],
+  "reviewNotes": [
+    "office 有推断：动作本身符合办公室条件，但穿裙装/西裤深蹲不方便，复核可删。"
+  ]
+}

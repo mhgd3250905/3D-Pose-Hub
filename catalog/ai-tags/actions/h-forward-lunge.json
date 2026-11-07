@@ -1,0 +1,164 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-forward-lunge",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-forward-lunge.json",
+    "textSha256Lf": "b51999ee53fbe371b6301f96529eea235fc742731654384cca2590fc64a2964b",
+    "spec": "drill-anim/specs/h-forward-lunge.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "outdoor",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "low",
+  "sweat": "light",
+  "requiredEquipment": [],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "lunge"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "quadriceps",
+    "glute-max"
+  ],
+  "secondaryMuscles": [
+    "adductors",
+    "hamstrings"
+  ],
+  "stabilizers": [
+    "abs",
+    "hip-abductors",
+    "calves"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    },
+    {
+      "joint": "knee",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    },
+    {
+      "joint": "ankle",
+      "actions": [
+        "dorsiflexion"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "moderate",
+  "prerequisites": [
+    "split-stance"
+  ],
+  "laterality": "alternating",
+  "jointStress": {
+    "knee": "moderate",
+    "lumbar": "none",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "low",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "modify",
+      "reasons": [
+        "balance-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "balance-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "hypertrophy",
+    "fat-loss"
+  ],
+  "alternatives": [
+    "h-lateral-step-lunge"
+  ],
+  "regressions": [
+    "h-reverse-lunge"
+  ],
+  "progressions": [
+    "h-db-split-squat",
+    "h-bulgarian"
+  ],
+  "aiSummary": {
+    "zh": "零器械交替前弓步，适合已会深蹲的人练大腿臀部和单腿控制。",
+    "en": "No-equipment alternating forward lunge for thighs, glutes and single-leg control."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "muscles",
+      "existing": {
+        "activeMuscles": [
+          "quadriceps",
+          "glutes"
+        ],
+        "synergistMuscles": [
+          "hamstrings",
+          "adductors",
+          "core"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "quadriceps",
+          "glute-max"
+        ],
+        "secondaryMuscles": [
+          "adductors",
+          "hamstrings"
+        ],
+        "stabilizers": [
+          "abs",
+          "hip-abductors",
+          "calves"
+        ]
+      },
+      "reason": "v3 粗粒度肌群（core/glutes/upper-back/lower-back/abductors）按本动作实际做法拆到细分 id。"
+    }
+  ],
+  "reviewNotes": [
+    "向前跨步落地要刹车，膝负担和冲击比后撤步大：impact=low、knee=moderate，因此不进办公室。"
+  ]
+}

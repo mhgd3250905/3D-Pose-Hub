@@ -1,0 +1,127 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-bilateral-upper-back-hug",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-bilateral-upper-back-hug.json",
+    "textSha256Lf": "eba6e5d341acf80a67e538ff8caa3243113b074e504a41c17bd6118608c33b10",
+    "spec": "drill-anim/specs/h-bilateral-upper-back-hug-rr3.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "office",
+    "gym",
+    "outdoor",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "static-stretch"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "isometric"
+  ],
+  "plane": [
+    "transverse"
+  ],
+  "bodyRegion": [
+    "upper"
+  ],
+  "primaryMuscles": [],
+  "secondaryMuscles": [],
+  "stabilizers": [],
+  "stretchedMuscles": [
+    "scapular",
+    "upper-traps"
+  ],
+  "joints": [
+    {
+      "joint": "scapulothoracic",
+      "actions": [
+        "protraction"
+      ]
+    },
+    {
+      "joint": "thoracic-spine",
+      "actions": [
+        "flexion"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "low",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "cooldown",
+    "warmup"
+  ],
+  "goals": [
+    "desk-relief",
+    "recovery",
+    "mobility"
+  ],
+  "alternatives": [
+    "h-crossbody"
+  ],
+  "regressions": [],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "站着就能做的上背和肩胛间拉伸，久坐肩背紧时随时用。",
+    "en": "Standing upper-back hug stretch for tight shoulders after desk work."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers/stretchedMuscles",
+      "existing": {
+        "activeMuscles": [
+          "upper-back"
+        ],
+        "synergistMuscles": [
+          "deltoids"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [],
+        "secondaryMuscles": [],
+        "stabilizers": [],
+        "stretchedMuscles": [
+          "scapular",
+          "upper-traps"
+        ]
+      },
+      "reason": "拉伸/活动类：v3 把被拉肌写在 activeMuscles，这里移到 stretchedMuscles，无主动发力肌。"
+    }
+  ],
+  "reviewNotes": [
+    "upper-traps 来自低头放松脖子的部分，主要被拉的是肩胛间（scapular）。"
+  ]
+}

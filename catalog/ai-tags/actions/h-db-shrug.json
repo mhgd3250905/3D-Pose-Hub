@@ -1,0 +1,130 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-db-shrug",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-db-shrug.json",
+    "textSha256Lf": "19f64dbdd0e6b30c29b6ce0837472a7769340bdead42e9a4b59198fed11022d9",
+    "spec": "drill-anim/specs/h-db-shrug.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [
+    "dumbbell"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [
+    {
+      "for": "dumbbell",
+      "use": [
+        "backpack",
+        "water-bottle"
+      ],
+      "loadNote": "lighter"
+    }
+  ],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "isolation"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "frontal"
+  ],
+  "bodyRegion": [
+    "upper"
+  ],
+  "primaryMuscles": [
+    "upper-traps"
+  ],
+  "secondaryMuscles": [],
+  "stabilizers": [
+    "forearms"
+  ],
+  "joints": [
+    {
+      "joint": "scapulothoracic",
+      "actions": [
+        "elevation",
+        "depression"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "low",
+    "wrist": "none",
+    "neck": "low",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "hypertrophy",
+    "strength"
+  ],
+  "alternatives": [],
+  "regressions": [],
+  "progressions": [
+    "h-db-overhead-shrug"
+  ],
+  "aiSummary": {
+    "zh": "双哑铃耸肩练斜方肌上部，用轻重量、脖子不动。",
+    "en": "Dumbbell shrug for the upper traps; light weight, neck still."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "upper-back",
+          "neck"
+        ],
+        "synergistMuscles": [
+          "forearms"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "upper-traps"
+        ],
+        "secondaryMuscles": [],
+        "stabilizers": [
+          "forearms"
+        ]
+      },
+      "reason": "v3 粗粒度肌群（upper-back）按动作实际做法拆到细分 id。v3 的 upper-back+neck 实为耸肩的斜方肌上部/肩胛提肌，归入新 id upper-traps。"
+    }
+  ],
+  "reviewNotes": []
+}

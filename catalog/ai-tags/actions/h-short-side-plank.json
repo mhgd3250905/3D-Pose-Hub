@@ -1,0 +1,134 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-short-side-plank",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-short-side-plank.json",
+    "textSha256Lf": "47890d3cc0d4b25b28a02a3d522fe03c06b6604a1b1ff16341348ae38b50203f",
+    "spec": "drill-anim/specs/h-short-side-plank-rr2.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "stability-control"
+  ],
+  "movementPattern": [
+    "anti-lateral-flexion"
+  ],
+  "contraction": [
+    "isometric"
+  ],
+  "plane": [
+    "frontal"
+  ],
+  "bodyRegion": [
+    "core"
+  ],
+  "primaryMuscles": [
+    "obliques"
+  ],
+  "secondaryMuscles": [
+    "hip-abductors"
+  ],
+  "stabilizers": [
+    "abs",
+    "deltoids"
+  ],
+  "joints": [
+    {
+      "joint": "shoulder",
+      "actions": [
+        "isometric-hold"
+      ]
+    },
+    {
+      "joint": "hip",
+      "actions": [
+        "isometric-hold"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "low",
+    "lumbar": "none",
+    "shoulder": "low",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "posture"
+  ],
+  "alternatives": [],
+  "regressions": [],
+  "progressions": [
+    "hip-abductors-A",
+    "deltoids-A"
+  ],
+  "aiSummary": {
+    "zh": "膝盖着地的入门侧撑，练侧腹和臀部外侧。",
+    "en": "Bent-knee side plank, the entry version for obliques and outer hips."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "muscles",
+      "existing": {
+        "activeMuscles": [
+          "obliques",
+          "core"
+        ],
+        "synergistMuscles": [
+          "abductors",
+          "deltoids"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "obliques"
+        ],
+        "secondaryMuscles": [
+          "hip-abductors"
+        ],
+        "stabilizers": [
+          "abs",
+          "deltoids"
+        ]
+      },
+      "reason": "v3 粗粒度肌群（core/glutes/upper-back/lower-back/abductors）按本动作实际做法拆到细分 id。"
+    }
+  ],
+  "reviewNotes": []
+}

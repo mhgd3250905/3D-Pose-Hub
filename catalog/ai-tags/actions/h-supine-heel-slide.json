@@ -1,0 +1,137 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-supine-heel-slide",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-supine-heel-slide.json",
+    "textSha256Lf": "c110e1f535e8d358c4fa89c6aa9b3e68c44ead48d5118e3fc969e62764e3f077",
+    "spec": "drill-anim/specs/h-supine-heel-slide-rr1.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "mobility"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "hip-flexors",
+    "hamstrings"
+  ],
+  "secondaryMuscles": [],
+  "stabilizers": [
+    "abs"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    },
+    {
+      "joint": "knee",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "low",
+    "lumbar": "none",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup"
+  ],
+  "goals": [
+    "mobility",
+    "recovery"
+  ],
+  "alternatives": [],
+  "regressions": [],
+  "progressions": [
+    "w-dead-bug"
+  ],
+  "aiSummary": {
+    "zh": "仰卧滑脚跟温和活动髋膝、练骨盆稳住，适合恢复期或新手热身。",
+    "en": "Lying heel slide to gently move hips and knees while keeping the pelvis still."
+  },
+  "confidence": "medium",
+  "notes": [
+    {
+      "field": "muscles",
+      "existing": {
+        "activeMuscles": [
+          "core"
+        ],
+        "synergistMuscles": [
+          "hip-flexors",
+          "hamstrings"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "hip-flexors",
+          "hamstrings"
+        ],
+        "secondaryMuscles": [],
+        "stabilizers": [
+          "abs"
+        ]
+      },
+      "reason": "v3 主练写 core，但动作是屈伸髋膝滑脚跟，动画高亮大腿；改为 hip-flexors/hamstrings 主动，腹部只稳住骨盆（stabilizer）。"
+    }
+  ],
+  "reviewNotes": [
+    "主动肌改动依据 v3 flag（动画高亮大腿前后侧），待确认，medium。"
+  ]
+}

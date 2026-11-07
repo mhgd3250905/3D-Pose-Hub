@@ -1,0 +1,177 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-catcow-quad",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-catcow-quad.json",
+    "textSha256Lf": "6fc16f1c696e0aa71ab368207ed401964407b1b0b68a6283df57d63c76b58e2d",
+    "spec": "drill-anim/specs/h-catcow-quad-r2.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [
+    {
+      "for": "mat",
+      "use": [
+        "towel"
+      ],
+      "loadNote": "similar"
+    }
+  ],
+  "trainingType": [
+    "mobility"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "core"
+  ],
+  "primaryMuscles": [
+    "erectors",
+    "abs"
+  ],
+  "secondaryMuscles": [],
+  "stabilizers": [
+    "deltoids",
+    "serratus",
+    "forearms"
+  ],
+  "joints": [
+    {
+      "joint": "lumbar-spine",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    },
+    {
+      "joint": "thoracic-spine",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    },
+    {
+      "joint": "cervical-spine",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    },
+    {
+      "joint": "scapulothoracic",
+      "actions": [
+        "protraction",
+        "retraction"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [
+    "floor-transfer",
+    "kneeling-tolerance",
+    "wrist-loading"
+  ],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "low",
+    "lumbar": "low",
+    "shoulder": "low",
+    "wrist": "low",
+    "neck": "low",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "floor-transfer"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup",
+    "cooldown"
+  ],
+  "goals": [
+    "mobility",
+    "desk-relief",
+    "recovery",
+    "posture"
+  ],
+  "alternatives": [
+    "o-seated-catcow"
+  ],
+  "regressions": [],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "腰背僵硬时的温和热身或放松，适合起床、久坐后在垫子上做；办公室换坐姿猫牛式。",
+    "en": "Gentle spine warm-up or cool-down for a stiff back on a mat; swap to seated cat-cow at the office."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles",
+      "existing": [
+        "lower-back",
+        "core"
+      ],
+      "chosen": [
+        "erectors",
+        "abs"
+      ],
+      "reason": "v3 粗粒度 id 换算为 taxonomy id；与 v1 旧目录 muscleGroups 一致。"
+    },
+    {
+      "field": "stabilizers",
+      "existing": {
+        "synergistMuscles": [
+          "deltoids",
+          "forearms"
+        ]
+      },
+      "chosen": {
+        "secondaryMuscles": [],
+        "stabilizers": [
+          "deltoids",
+          "serratus",
+          "forearms"
+        ]
+      },
+      "reason": "手撑地只承重不推动脊柱动作，按实际做法归为稳定肌，并补上撑地时的前锯肌。"
+    }
+  ],
+  "reviewNotes": [
+    "movementPattern 为空：脊柱屈伸活动不属于 14 个基本模式。",
+    "未填 stretchedMuscles：灵活性动作、交替进出，没有单一被拉目标。",
+    "手腕/脖子 jointStress=low，对应 cautions 里的手腕和脖子提示。"
+  ]
+}

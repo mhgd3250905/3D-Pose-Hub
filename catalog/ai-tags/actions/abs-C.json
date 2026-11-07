@@ -1,0 +1,156 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "abs-C",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/abs-C.json",
+    "textSha256Lf": "6a9378482122414a9e5d61ca80655bcca086661508b68bae0553fa158dfb0655",
+    "spec": "drill-anim/specs/abs-C-r2.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "gym"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [
+    "dip-bars"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "dynamic",
+    "isometric"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "core"
+  ],
+  "primaryMuscles": [
+    "abs",
+    "hip-flexors"
+  ],
+  "secondaryMuscles": [
+    "obliques"
+  ],
+  "stabilizers": [
+    "triceps",
+    "deltoids",
+    "scapular",
+    "lats"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    },
+    {
+      "joint": "lumbar-spine",
+      "actions": [
+        "flexion"
+      ]
+    },
+    {
+      "joint": "scapulothoracic",
+      "actions": [
+        "depression"
+      ]
+    }
+  ],
+  "difficulty": 3,
+  "intensity": "moderate",
+  "prerequisites": [
+    "plank-30s"
+  ],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "low",
+    "shoulder": "moderate",
+    "wrist": "low",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "caution",
+      "reasons": [
+        "abdominal-pressure"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "hypertrophy",
+    "performance"
+  ],
+  "alternatives": [],
+  "regressions": [
+    "abs-A"
+  ],
+  "progressions": [
+    "abs-B"
+  ],
+  "aiSummary": {
+    "zh": "健身房双杠上练卷腹抬膝，适合已能稳定直臂支撑的人。",
+    "en": "Dip-bar knee raise for abs, for people who can already hold a straight-arm support."
+  },
+  "confidence": "medium",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "core",
+          "hip-flexors"
+        ],
+        "synergistMuscles": [
+          "triceps",
+          "deltoids"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "abs",
+          "hip-flexors"
+        ],
+        "secondaryMuscles": [
+          "obliques"
+        ],
+        "stabilizers": [
+          "triceps",
+          "deltoids",
+          "scapular",
+          "lats"
+        ]
+      },
+      "reason": "v3 粗粒度肌群（core）按动作实际做法拆到细分 id。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 2,
+      "chosen": 3,
+      "reason": "需要先能在双杠上直臂撑住身体再控制抬膝，定中级 3。"
+    }
+  ],
+  "reviewNotes": [
+    "同组排序 A→C→B：空心体（地面）→双杠抬膝（动态）→平行杆团身 L 撑（静态压缩），C 与 B 难度接近。"
+  ]
+}

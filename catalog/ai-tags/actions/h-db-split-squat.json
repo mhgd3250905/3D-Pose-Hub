@@ -1,0 +1,160 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-db-split-squat",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-db-split-squat.json",
+    "textSha256Lf": "3286b6c2f6e63741678f08baa504a5936653763df1902e566f569f58620aa44b",
+    "spec": "drill-anim/specs/h-db-split-squat.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "gym"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "moderate",
+  "requiredEquipment": [
+    "dumbbell"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [
+    {
+      "for": "dumbbell",
+      "use": [
+        "backpack",
+        "water-bottle"
+      ],
+      "loadNote": "lighter"
+    }
+  ],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "lunge"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "quadriceps",
+    "glute-max"
+  ],
+  "secondaryMuscles": [
+    "adductors",
+    "hamstrings"
+  ],
+  "stabilizers": [
+    "abs",
+    "hip-abductors",
+    "forearms"
+  ],
+  "joints": [
+    {
+      "joint": "knee",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    },
+    {
+      "joint": "hip",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    }
+  ],
+  "difficulty": 3,
+  "intensity": "moderate",
+  "prerequisites": [
+    "split-stance"
+  ],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "moderate",
+    "lumbar": "none",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "low",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "modify",
+      "reasons": [
+        "balance-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "hypertrophy"
+  ],
+  "alternatives": [
+    "h-bulgarian"
+  ],
+  "regressions": [
+    "h-reverse-lunge"
+  ],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "双哑铃原地分腿蹲，负重练单腿力量。",
+    "en": "Dumbbell split squat for loaded single-leg strength."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "quadriceps",
+          "glutes"
+        ],
+        "synergistMuscles": [
+          "hamstrings",
+          "adductors",
+          "core"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "quadriceps",
+          "glute-max"
+        ],
+        "secondaryMuscles": [
+          "adductors",
+          "hamstrings"
+        ],
+        "stabilizers": [
+          "abs",
+          "hip-abductors",
+          "forearms"
+        ]
+      },
+      "reason": "v3 粗粒度肌群（glutes）按动作实际做法拆到细分 id。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 2,
+      "chosen": 3,
+      "reason": "不扶、负重分腿，按词表定中级 3。"
+    }
+  ],
+  "reviewNotes": []
+}

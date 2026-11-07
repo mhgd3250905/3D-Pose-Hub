@@ -1,0 +1,133 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-standing-arm-extension-stretch",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-standing-arm-extension-stretch.json",
+    "textSha256Lf": "642f02dc19276ee7465bb08bb7f315f0e7e2f7150066e47cf1dfd86ad67f01da",
+    "spec": "drill-anim/specs/h-standing-arm-extension-stretch-r5.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "office",
+    "gym",
+    "outdoor",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "dynamic-stretch"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "upper"
+  ],
+  "primaryMuscles": [],
+  "secondaryMuscles": [
+    "scapular"
+  ],
+  "stabilizers": [],
+  "stretchedMuscles": [
+    "chest",
+    "deltoids",
+    "biceps"
+  ],
+  "joints": [
+    {
+      "joint": "shoulder",
+      "actions": [
+        "extension"
+      ]
+    },
+    {
+      "joint": "scapulothoracic",
+      "actions": [
+        "retraction",
+        "depression"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "low",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup",
+    "cooldown"
+  ],
+  "goals": [
+    "posture",
+    "desk-relief",
+    "mobility"
+  ],
+  "alternatives": [
+    "h-towel-behind"
+  ],
+  "regressions": [],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "站着双臂后抬开肩，零器械，适合工间缓解圆肩。",
+    "en": "Standing arms-back shoulder opener, equipment-free, for desk-break posture relief."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "muscles",
+      "existing": {
+        "activeMuscles": [
+          "chest",
+          "deltoids"
+        ],
+        "synergistMuscles": [
+          "biceps"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [],
+        "secondaryMuscles": [
+          "scapular"
+        ],
+        "stabilizers": [],
+        "stretchedMuscles": [
+          "chest",
+          "deltoids",
+          "biceps"
+        ]
+      },
+      "reason": "拉伸类：v3 activeMuscles 是被拉肌，改放 stretchedMuscles。"
+    }
+  ],
+  "reviewNotes": []
+}

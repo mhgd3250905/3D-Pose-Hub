@@ -1,0 +1,162 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-pike-pushup",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-pike-pushup.json",
+    "textSha256Lf": "0100d4b6c12e0ae2534ea0333763eff1b43362d7edf4e2e7e328e7a37f592b2d",
+    "spec": "drill-anim/specs/h-pike-pushup-r5.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "push-vertical"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "upper"
+  ],
+  "primaryMuscles": [
+    "deltoids",
+    "triceps"
+  ],
+  "secondaryMuscles": [
+    "chest"
+  ],
+  "stabilizers": [
+    "serratus",
+    "abs"
+  ],
+  "joints": [
+    {
+      "joint": "shoulder",
+      "actions": [
+        "flexion"
+      ]
+    },
+    {
+      "joint": "elbow",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    },
+    {
+      "joint": "scapulothoracic",
+      "actions": [
+        "upward-rotation"
+      ]
+    }
+  ],
+  "difficulty": 3,
+  "intensity": "moderate",
+  "prerequisites": [
+    "pushup-10",
+    "wrist-loading",
+    "overhead-range"
+  ],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "moderate",
+    "wrist": "moderate",
+    "neck": "low",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "hypertension",
+      "flag": "caution",
+      "reasons": [
+        "head-below-heart"
+      ]
+    },
+    {
+      "population": "pregnancy",
+      "flag": "caution",
+      "reasons": [
+        "head-below-heart"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "hypertrophy",
+    "performance"
+  ],
+  "alternatives": [
+    "h-db-press"
+  ],
+  "regressions": [
+    "h-pike-scapular-elevation"
+  ],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "零器械练肩推的倒 V 俯卧撑，为倒立做准备，需已能做标准俯卧撑。",
+    "en": "Bodyweight vertical press in a pike, building toward handstands; needs solid push-ups."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "muscles",
+      "existing": {
+        "activeMuscles": [
+          "deltoids",
+          "triceps"
+        ],
+        "synergistMuscles": [
+          "chest",
+          "core"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "deltoids",
+          "triceps"
+        ],
+        "secondaryMuscles": [
+          "chest"
+        ],
+        "stabilizers": [
+          "serratus",
+          "abs"
+        ]
+      },
+      "reason": "v3 粗粒度肌群（core/glutes/upper-back/lower-back/abductors）按本动作实际做法拆到细分 id。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 2,
+      "chosen": 3,
+      "reason": "头低位垂直推、需先有俯卧撑基础，按 3 级。"
+    }
+  ],
+  "reviewNotes": []
+}

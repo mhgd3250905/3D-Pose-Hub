@@ -1,0 +1,173 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "t-tuck-planche",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/t-tuck-planche.json",
+    "textSha256Lf": "9295c637b80f83ff8f5f10339c8dc4673e55243b19164b67d55b376f9508dd7a",
+    "spec": "drill-anim/specs/t-tuck-planche-r6.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [
+    "parallettes"
+  ],
+  "substitutes": [],
+  "trainingType": [
+    "strength",
+    "balance"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "isometric"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "upper",
+    "core"
+  ],
+  "primaryMuscles": [
+    "deltoids",
+    "serratus",
+    "abs"
+  ],
+  "secondaryMuscles": [
+    "chest",
+    "triceps"
+  ],
+  "stabilizers": [
+    "forearms",
+    "scapular",
+    "biceps"
+  ],
+  "joints": [
+    {
+      "joint": "shoulder",
+      "actions": [
+        "isometric-hold"
+      ]
+    },
+    {
+      "joint": "scapulothoracic",
+      "actions": [
+        "protraction"
+      ]
+    },
+    {
+      "joint": "elbow",
+      "actions": [
+        "isometric-hold"
+      ]
+    },
+    {
+      "joint": "wrist",
+      "actions": [
+        "extension"
+      ]
+    }
+  ],
+  "difficulty": 4,
+  "intensity": "moderate",
+  "prerequisites": [
+    "wrist-loading",
+    "plank-30s",
+    "pushup-10"
+  ],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "moderate",
+    "wrist": "moderate",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "caution",
+      "reasons": [
+        "balance-demand"
+      ]
+    },
+    {
+      "population": "hypertension",
+      "flag": "modify",
+      "reasons": [
+        "breath-holding-risk"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "performance",
+    "strength"
+  ],
+  "alternatives": [],
+  "regressions": [
+    "triceps-B"
+  ],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "霹雳舞/体操技巧：团身俄挺，练肩前顶和手撑平衡，需要腕肩基础。",
+    "en": "Tuck planche for straight-arm pushing and hand balance; skill level."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "deltoids",
+          "core"
+        ],
+        "synergistMuscles": [
+          "chest",
+          "triceps",
+          "forearms"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "deltoids",
+          "serratus",
+          "abs"
+        ],
+        "secondaryMuscles": [
+          "chest",
+          "triceps"
+        ],
+        "stabilizers": [
+          "forearms",
+          "scapular",
+          "biceps"
+        ]
+      },
+      "reason": "团身俄挺靠三角肌前束顶肩、前锯肌前伸肩胛，v3 漏了 serratus；core→abs。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 3,
+      "chosen": 4,
+      "reason": "俯撑平衡（俄挺）团身版，词表 5 级是完整俯撑平衡，团身版定 4 级。"
+    }
+  ],
+  "reviewNotes": []
+}

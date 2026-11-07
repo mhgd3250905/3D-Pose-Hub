@@ -1,0 +1,173 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-squat",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-squat.json",
+    "textSha256Lf": "2f64c11c89a93f62105bb1f0bee1d52eaa3237c8ecef27e87388d4d254e02dd4",
+    "spec": "drill-anim/specs/h-squat.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "office",
+    "gym",
+    "outdoor",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [],
+  "optionalEquipment": [
+    "chair"
+  ],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "squat"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "quadriceps",
+    "glute-max"
+  ],
+  "secondaryMuscles": [
+    "adductors",
+    "hamstrings"
+  ],
+  "stabilizers": [
+    "abs",
+    "erectors",
+    "calves"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    },
+    {
+      "joint": "knee",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    },
+    {
+      "joint": "ankle",
+      "actions": [
+        "dorsiflexion"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "moderate",
+  "prerequisites": [],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "low",
+    "lumbar": "low",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "low",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "balance-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup",
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "fat-loss",
+    "desk-relief"
+  ],
+  "alternatives": [
+    "w-wall-sit"
+  ],
+  "regressions": [
+    "h-chair-sit-to-stand",
+    "o-supported-mini-squat"
+  ],
+  "progressions": [
+    "h-goblet-squat",
+    "h-db-split-squat"
+  ],
+  "aiSummary": {
+    "zh": "不限场地、零器械的下肢力量首选，适合新手和工间站起来动一动时练大腿和臀部。",
+    "en": "Default no-equipment lower-body strength pick for any setting, good for beginners and desk breaks."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "secondaryMuscles/stabilizers",
+      "existing": {
+        "synergistMuscles": [
+          "adductors",
+          "hamstrings",
+          "core"
+        ]
+      },
+      "chosen": {
+        "secondaryMuscles": [
+          "adductors",
+          "hamstrings"
+        ],
+        "stabilizers": [
+          "abs",
+          "erectors",
+          "calves"
+        ]
+      },
+      "reason": "v3 的 core 在深蹲里起稳定作用、不推动动作，归为稳定肌并拆成 abs/erectors。"
+    },
+    {
+      "field": "primaryMuscles",
+      "existing": [
+        "quadriceps",
+        "glutes"
+      ],
+      "chosen": [
+        "quadriceps",
+        "glute-max"
+      ],
+      "reason": "v3 粗粒度 glutes 换算为 taxonomy id glute-max。"
+    }
+  ],
+  "reviewNotes": [
+    "scenes 比 v1 旧目录（home/office）多了 gym/outdoor/hotel：徒手站姿、无冲击，任何场地都可做。",
+    "sweat 按 3×12 估为 light；做多组时 AI 不应在办公室安排太多。",
+    "optionalEquipment 的 chair 用作下蹲深度参照或扶手，非必需。"
+  ]
+}

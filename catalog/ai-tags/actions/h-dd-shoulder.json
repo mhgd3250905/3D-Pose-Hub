@@ -1,0 +1,183 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-dd-shoulder",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-dd-shoulder.json",
+    "textSha256Lf": "83b8b85ff63e2f03f4b22415ed0eb45eff221a89cc8047a5a571b455f187a1cb",
+    "spec": "drill-anim/specs/h-dd-shoulder.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [
+    {
+      "for": "mat",
+      "use": [
+        "towel"
+      ],
+      "loadNote": "similar"
+    }
+  ],
+  "trainingType": [
+    "static-stretch"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "isometric"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "upper"
+  ],
+  "primaryMuscles": [],
+  "secondaryMuscles": [],
+  "stabilizers": [
+    "deltoids",
+    "serratus",
+    "triceps"
+  ],
+  "stretchedMuscles": [
+    "lats",
+    "chest",
+    "hamstrings",
+    "calves"
+  ],
+  "joints": [
+    {
+      "joint": "shoulder",
+      "actions": [
+        "flexion"
+      ]
+    },
+    {
+      "joint": "thoracic-spine",
+      "actions": [
+        "extension"
+      ]
+    },
+    {
+      "joint": "hip",
+      "actions": [
+        "flexion"
+      ]
+    },
+    {
+      "joint": "ankle",
+      "actions": [
+        "dorsiflexion"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "low",
+  "prerequisites": [
+    "floor-transfer",
+    "wrist-loading",
+    "overhead-range"
+  ],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "low",
+    "wrist": "moderate",
+    "neck": "none",
+    "ankle": "low",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "floor-transfer"
+      ]
+    },
+    {
+      "population": "hypertension",
+      "flag": "caution",
+      "reasons": [
+        "head-below-heart"
+      ]
+    },
+    {
+      "population": "pregnancy",
+      "flag": "modify",
+      "reasons": [
+        "head-below-heart"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "cooldown"
+  ],
+  "goals": [
+    "mobility",
+    "recovery"
+  ],
+  "alternatives": [],
+  "regressions": [
+    "h-chair-lat",
+    "h-chair-tspine"
+  ],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "下犬式压肩打开腋下和胸，需要手腕能撑地。",
+    "en": "Downward-dog shoulder opener for lats and chest; needs wrist tolerance."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers/stretchedMuscles",
+      "existing": {
+        "activeMuscles": [
+          "lats",
+          "chest"
+        ],
+        "synergistMuscles": [
+          "deltoids",
+          "hamstrings",
+          "calves"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [],
+        "secondaryMuscles": [],
+        "stabilizers": [
+          "deltoids",
+          "serratus",
+          "triceps"
+        ],
+        "stretchedMuscles": [
+          "lats",
+          "chest",
+          "hamstrings",
+          "calves"
+        ]
+      },
+      "reason": "拉伸/活动类：v3 把被拉肌写在 activeMuscles，这里移到 stretchedMuscles，无主动发力肌。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 2,
+      "reason": "下犬需要肩屈和腿后侧柔韧，手撑承重，定 2。"
+    }
+  ],
+  "reviewNotes": []
+}

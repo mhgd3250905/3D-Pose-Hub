@@ -1,0 +1,150 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-chair-sit-to-stand",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-chair-sit-to-stand.json",
+    "textSha256Lf": "71762f95d1685c859ad3b9890fd531807608c17536c098b77fac532340027439",
+    "spec": "drill-anim/specs/h-chair-sit-to-stand.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "office",
+    "gym",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [
+    "chair"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "squat"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "quadriceps",
+    "glute-max"
+  ],
+  "secondaryMuscles": [
+    "hamstrings",
+    "adductors"
+  ],
+  "stabilizers": [
+    "abs",
+    "erectors"
+  ],
+  "joints": [
+    {
+      "joint": "knee",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    },
+    {
+      "joint": "hip",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "low",
+    "lumbar": "none",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup",
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "desk-relief"
+  ],
+  "alternatives": [
+    "o-supported-mini-squat"
+  ],
+  "regressions": [],
+  "progressions": [
+    "h-squat"
+  ],
+  "aiSummary": {
+    "zh": "最入门的下肢力量动作，适合新手、年长者和工位起身活动。",
+    "en": "The most basic lower-body strength move; great for beginners, older adults and desk breaks."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "quadriceps",
+          "glutes"
+        ],
+        "synergistMuscles": [
+          "hamstrings",
+          "core"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "quadriceps",
+          "glute-max"
+        ],
+        "secondaryMuscles": [
+          "hamstrings",
+          "adductors"
+        ],
+        "stabilizers": [
+          "abs",
+          "erectors"
+        ]
+      },
+      "reason": "v3 粗粒度肌群（glutes）按动作实际做法拆到细分 id。"
+    }
+  ],
+  "reviewNotes": []
+}

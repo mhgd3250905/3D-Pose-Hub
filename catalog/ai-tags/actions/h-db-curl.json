@@ -1,0 +1,125 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-db-curl",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-db-curl.json",
+    "textSha256Lf": "aafdfbc0c16454c314da4e05894c3f996c09c95c4bb32d0af2e94f3e8e8ee02b",
+    "spec": "drill-anim/specs/h-db-curl-r2.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [
+    "dumbbell"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [
+    {
+      "for": "dumbbell",
+      "use": [
+        "water-bottle"
+      ],
+      "loadNote": "lighter"
+    }
+  ],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "isolation"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "upper"
+  ],
+  "primaryMuscles": [
+    "biceps"
+  ],
+  "secondaryMuscles": [
+    "forearms"
+  ],
+  "stabilizers": [],
+  "joints": [
+    {
+      "joint": "elbow",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    },
+    {
+      "joint": "forearm",
+      "actions": [
+        "supination"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [],
+  "laterality": "alternating",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "none",
+    "wrist": "low",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "hypertrophy"
+  ],
+  "alternatives": [
+    "h-band-biceps-curl",
+    "h-db-hammer-curl"
+  ],
+  "regressions": [],
+  "progressions": [
+    "h-db-zottman-curl"
+  ],
+  "aiSummary": {
+    "zh": "哑铃交替弯举，练二头肌的标准选择。",
+    "en": "Alternating dumbbell curl, the standard biceps pick."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "laterality",
+      "existing": {
+        "unilateral": true,
+        "training.kind": "rep_alternate"
+      },
+      "chosen": "alternating",
+      "reason": "v3 unilateral=true 包含交替；本动作每次换一侧，标 alternating。"
+    }
+  ],
+  "reviewNotes": []
+}

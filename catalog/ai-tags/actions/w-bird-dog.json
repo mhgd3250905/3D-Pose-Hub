@@ -1,0 +1,168 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "w-bird-dog",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/w-bird-dog.json",
+    "textSha256Lf": "a76e1f41c13079ad0aaf9ef0845c79a1826b7ebdc33b5365f7eed2fba01dd314",
+    "spec": "drill-anim/specs/w-bird-dog.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "stability-control"
+  ],
+  "movementPattern": [
+    "anti-rotation",
+    "anti-extension"
+  ],
+  "contraction": [
+    "dynamic",
+    "isometric"
+  ],
+  "plane": [
+    "sagittal",
+    "transverse"
+  ],
+  "bodyRegion": [
+    "core"
+  ],
+  "primaryMuscles": [
+    "abs",
+    "glute-max"
+  ],
+  "secondaryMuscles": [
+    "erectors",
+    "obliques",
+    "deltoids"
+  ],
+  "stabilizers": [
+    "hip-abductors",
+    "serratus"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "extension"
+      ]
+    },
+    {
+      "joint": "shoulder",
+      "actions": [
+        "flexion"
+      ]
+    },
+    {
+      "joint": "lumbar-spine",
+      "actions": [
+        "isometric-hold"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "low",
+  "prerequisites": [
+    "kneeling-tolerance",
+    "wrist-loading"
+  ],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "low",
+    "lumbar": "low",
+    "shoulder": "low",
+    "wrist": "low",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "floor-transfer"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup",
+    "main"
+  ],
+  "goals": [
+    "posture",
+    "strength",
+    "recovery"
+  ],
+  "alternatives": [
+    "w-dead-bug"
+  ],
+  "regressions": [],
+  "progressions": [
+    "h-plank-side-step"
+  ],
+  "aiSummary": {
+    "zh": "跪撑练腰腹稳定和异侧手脚配合，腰不舒服的人做核心首选之一。",
+    "en": "Bird dog for spinal stability and cross-body coordination."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "core",
+          "glutes"
+        ],
+        "synergistMuscles": [
+          "lower-back",
+          "deltoids"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "abs",
+          "glute-max"
+        ],
+        "secondaryMuscles": [
+          "erectors",
+          "obliques",
+          "deltoids"
+        ],
+        "stabilizers": [
+          "hip-abductors",
+          "serratus"
+        ]
+      },
+      "reason": "v3 粗粒度 id 按实际做法拆到 taxonomy id（core→abs/obliques，glutes→glute-max 或 hip-abductors，upper-back→scapular，lower-back→erectors），只稳定不推动的归稳定肌。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 2,
+      "reason": "异侧手脚同时伸展并停住、骨盆不转，需要协调两三个要点，调到 2 级。"
+    }
+  ],
+  "reviewNotes": []
+}

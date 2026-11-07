@@ -1,0 +1,135 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-band-straight-leg-raise",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-band-straight-leg-raise.json",
+    "textSha256Lf": "0b2557b070fabb5c3320d551efffba6298320d8b83c9032f360d40cbf6cd5d43",
+    "spec": "drill-anim/specs/h-band-straight-leg-raise-r2.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [
+    "band"
+  ],
+  "optionalEquipment": [
+    "chair",
+    "ankle-strap"
+  ],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "isolation"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "hip-flexors",
+    "quadriceps"
+  ],
+  "secondaryMuscles": [],
+  "stabilizers": [
+    "abs",
+    "glute-max",
+    "hip-abductors"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    },
+    {
+      "joint": "knee",
+      "actions": [
+        "isometric-hold"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [
+    "band-anchor"
+  ],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main",
+    "warmup"
+  ],
+  "goals": [
+    "strength",
+    "performance"
+  ],
+  "alternatives": [
+    "hip-flexors-B",
+    "hip-flexors-C"
+  ],
+  "regressions": [],
+  "progressions": [
+    "hip-flexors-A"
+  ],
+  "aiSummary": {
+    "zh": "居家用弹力带站姿直腿前抬，练髋屈肌和股四头肌。",
+    "en": "Standing band straight-leg raise for hip flexors and quads at home."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "requiredEquipment/optionalEquipment",
+      "existing": [
+        "resistance-band",
+        "ankle-strap",
+        "chair"
+      ],
+      "chosen": {
+        "requiredEquipment": [
+          "band"
+        ],
+        "optionalEquipment": [
+          "chair",
+          "ankle-strap"
+        ]
+      },
+      "reason": "resistance-band 归一为 band；ankle-strap 和 chair 非必需，改为可选。"
+    }
+  ],
+  "reviewNotes": []
+}

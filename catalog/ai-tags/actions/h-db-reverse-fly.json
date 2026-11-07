@@ -1,0 +1,144 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-db-reverse-fly",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-db-reverse-fly.json",
+    "textSha256Lf": "53146a07532ccd15a0c76b34324e58eb7569a06ff47f45164e934e41ab318add",
+    "spec": "drill-anim/specs/h-db-reverse-fly.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [
+    "dumbbell"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [
+    {
+      "for": "dumbbell",
+      "use": [
+        "water-bottle"
+      ],
+      "loadNote": "lighter"
+    }
+  ],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "isolation"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "transverse"
+  ],
+  "bodyRegion": [
+    "upper"
+  ],
+  "primaryMuscles": [
+    "deltoids",
+    "scapular"
+  ],
+  "secondaryMuscles": [
+    "rotator-cuff"
+  ],
+  "stabilizers": [
+    "erectors",
+    "abs"
+  ],
+  "joints": [
+    {
+      "joint": "shoulder",
+      "actions": [
+        "horizontal-abduction"
+      ]
+    },
+    {
+      "joint": "scapulothoracic",
+      "actions": [
+        "retraction"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "low",
+  "prerequisites": [
+    "hip-hinge"
+  ],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "low",
+    "shoulder": "low",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "posture",
+    "hypertrophy",
+    "strength"
+  ],
+  "alternatives": [
+    "h-band-face-pull"
+  ],
+  "regressions": [
+    "h-band-pull-apart"
+  ],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "俯身哑铃飞鸟练后束和上背，改善圆肩。",
+    "en": "Bent-over reverse fly for rear delts and upper back to fix rounded shoulders."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "deltoids",
+          "upper-back"
+        ],
+        "synergistMuscles": [
+          "rotator-cuff"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "deltoids",
+          "scapular"
+        ],
+        "secondaryMuscles": [
+          "rotator-cuff"
+        ],
+        "stabilizers": [
+          "erectors",
+          "abs"
+        ]
+      },
+      "reason": "v3 粗粒度肌群（upper-back）按动作实际做法拆到细分 id。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 2,
+      "reason": "需保持俯身平背再做水平外展，定 2。"
+    }
+  ],
+  "reviewNotes": []
+}

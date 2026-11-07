@@ -1,0 +1,165 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-tabletop",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-tabletop.json",
+    "textSha256Lf": "362a548a9ebb111ea1d39bfe1d89983a5439985e92a1174d0e78086c7efbfab4",
+    "spec": "drill-anim/specs/h-tabletop.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "hinge"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "lower",
+    "upper"
+  ],
+  "primaryMuscles": [
+    "glute-max"
+  ],
+  "secondaryMuscles": [
+    "hamstrings",
+    "deltoids",
+    "triceps"
+  ],
+  "stabilizers": [
+    "scapular",
+    "abs"
+  ],
+  "stretchedMuscles": [
+    "chest"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "extension"
+      ]
+    },
+    {
+      "joint": "shoulder",
+      "actions": [
+        "extension"
+      ]
+    },
+    {
+      "joint": "wrist",
+      "actions": [
+        "extension"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "low",
+  "prerequisites": [
+    "wrist-loading"
+  ],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "moderate",
+    "wrist": "moderate",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "modify"
+    }
+  ],
+  "sessionRole": [
+    "main",
+    "warmup"
+  ],
+  "goals": [
+    "strength",
+    "posture"
+  ],
+  "alternatives": [
+    "erectors-A"
+  ],
+  "regressions": [],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "后撑抬髋成桌面，练臀部同时打开胸肩，需手腕能承重。",
+    "en": "Reverse tabletop bridge for glutes while opening chest and shoulders."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "muscles",
+      "existing": {
+        "activeMuscles": [
+          "glutes",
+          "deltoids"
+        ],
+        "synergistMuscles": [
+          "chest",
+          "hamstrings",
+          "triceps"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "glute-max"
+        ],
+        "secondaryMuscles": [
+          "hamstrings",
+          "deltoids",
+          "triceps"
+        ],
+        "stabilizers": [
+          "scapular",
+          "abs"
+        ],
+        "stretchedMuscles": [
+          "chest"
+        ]
+      },
+      "reason": "v3 glutes/deltoids 主练：抬髋靠臀大肌，三角肌后束在肩伸位支撑，归协同；胸口被打开放 stretchedMuscles。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 2,
+      "reason": "手腕后伸承重 + 肩伸展末端，按 2 级。"
+    },
+    {
+      "field": "floorRequired",
+      "existing": {
+        "position": "seated"
+      },
+      "chosen": true,
+      "reason": "坐在地上做，算着地，不进办公室。"
+    }
+  ],
+  "reviewNotes": []
+}

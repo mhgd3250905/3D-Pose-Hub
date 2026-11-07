@@ -1,0 +1,140 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-supine-cactus-chest",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-supine-cactus-chest.json",
+    "textSha256Lf": "ee054687646190ab595322bf28dcdd231f2d8bdf729dd21dd84d956e48f6d82e",
+    "spec": "drill-anim/specs/h-supine-cactus-chest-r4.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "dynamic-stretch"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "upper"
+  ],
+  "primaryMuscles": [],
+  "secondaryMuscles": [
+    "rotator-cuff",
+    "scapular"
+  ],
+  "stabilizers": [],
+  "stretchedMuscles": [
+    "chest"
+  ],
+  "joints": [
+    {
+      "joint": "shoulder",
+      "actions": [
+        "abduction",
+        "external-rotation"
+      ]
+    },
+    {
+      "joint": "scapulothoracic",
+      "actions": [
+        "upward-rotation"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "low",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    },
+    {
+      "population": "pregnancy",
+      "flag": "modify",
+      "reasons": [
+        "supine-position"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "cooldown",
+    "warmup"
+  ],
+  "goals": [
+    "posture",
+    "desk-relief",
+    "mobility"
+  ],
+  "alternatives": [
+    "h-doorframe-forearms-pec-native-r3"
+  ],
+  "regressions": [],
+  "progressions": [
+    "h-wall-angel"
+  ],
+  "aiSummary": {
+    "zh": "仰躺手臂沿地面上滑，温和打开胸口和肩前侧，适合肩紧的新手。",
+    "en": "Gentle lying cactus-arm slide to open chest and front shoulders."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "muscles",
+      "existing": {
+        "activeMuscles": [
+          "chest",
+          "deltoids"
+        ],
+        "synergistMuscles": [
+          "rotator-cuff"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [],
+        "secondaryMuscles": [
+          "rotator-cuff",
+          "scapular"
+        ],
+        "stabilizers": [],
+        "stretchedMuscles": [
+          "chest"
+        ]
+      },
+      "reason": "拉伸类：v3 activeMuscles 是被拉肌，改放 stretchedMuscles。"
+    }
+  ],
+  "reviewNotes": []
+}

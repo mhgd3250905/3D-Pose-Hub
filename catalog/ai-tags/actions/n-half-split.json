@@ -1,0 +1,170 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "n-half-split",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/n-half-split.json",
+    "textSha256Lf": "152fad77bf0617626e087cd759a069904616690661c56f316fdcbf48d22fbc15",
+    "spec": "drill-anim/specs/n-half-split.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "mat",
+    "block"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [
+    {
+      "for": "block",
+      "use": [
+        "book"
+      ],
+      "loadNote": "similar"
+    }
+  ],
+  "trainingType": [
+    "static-stretch"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "isometric"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [],
+  "secondaryMuscles": [],
+  "stabilizers": [
+    "abs"
+  ],
+  "stretchedMuscles": [
+    "hamstrings",
+    "calves"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "flexion"
+      ]
+    },
+    {
+      "joint": "knee",
+      "actions": [
+        "extension"
+      ]
+    },
+    {
+      "joint": "ankle",
+      "actions": [
+        "dorsiflexion"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "low",
+  "prerequisites": [
+    "kneeling-tolerance",
+    "split-stance"
+  ],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "low",
+    "lumbar": "low",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "floor-transfer"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "cooldown"
+  ],
+  "goals": [
+    "mobility",
+    "performance"
+  ],
+  "alternatives": [
+    "s-seated-fold"
+  ],
+  "regressions": [
+    "o-stand-ham"
+  ],
+  "progressions": [
+    "h-chair-progressive-front-split-native"
+  ],
+  "aiSummary": {
+    "zh": "想练前后劈叉或放松大腿后侧时选，半跪扶砖，需要跪在垫子上。",
+    "en": "Half-kneeling hamstring stretch with blocks, a step toward front splits; needs kneeling on a mat."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/stretchedMuscles",
+      "existing": {
+        "activeMuscles": [
+          "hamstrings"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [],
+        "stretchedMuscles": [
+          "hamstrings",
+          "calves"
+        ]
+      },
+      "reason": "拉伸类：v3 把被拉肌写在 activeMuscles，本 schema 放 stretchedMuscles。"
+    },
+    {
+      "field": "requiredEquipment/optionalEquipment",
+      "existing": [
+        "yoga-blocks",
+        "mat"
+      ],
+      "chosen": {
+        "requiredEquipment": [
+          "mat",
+          "block"
+        ],
+        "optionalEquipment": []
+      },
+      "reason": "yoga-blocks→block；扶砖是做法的一部分，保留必需，可用厚书代替。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 2,
+      "reason": "半跪分腿 + 末端拉伸、为劈叉打基础，需稳住分腿姿势，调到 2 级。"
+    }
+  ],
+  "reviewNotes": []
+}
