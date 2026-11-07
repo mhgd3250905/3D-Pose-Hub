@@ -11,11 +11,13 @@ SDK 单前缀规则：媒体仍放 pack/r2-v1/ 前缀，新媒体用新的版本
   python3 tools/app-pack/build_r2_v6.py --out release/app-pack-r2-v6 --source-commit <40 位> --draft
   # 2) 定稿（本机导出完新媒体之后）：读 --media-root 下 media/<id>/r2-v6/ 的真实文件，算 bytes/SHA/宽高
   python3 tools/app-pack/build_r2_v6.py --out F:/PoseHub-v3/app-pack/r2-v6 --source-commit <40 位> \
-      --media-root F:/PoseHub-v3/app-pack/r2-v6 --published-at "<时间>"
+      --media-root F:/PoseHub-v3/app-pack/r2-v6 --published-at "2026-11-07T10:45:00+08:00"
 定稿写 catalog.json、catalog/catalog.json、report.json、media-receipts.json、plan.json、channels/{dev,beta}.json（指向 r2-v6；
 不生成 stable；channels 不在 plan.json 里，切指针单独上传）。有问题列出并拒绝写目录。
 """
 import argparse, hashlib, json, os, subprocess
+
+from catalog_pointer import default_published_at, published_at, validate_catalog_pointer
 
 PACK, PREV, MEDIA_PACK = "r2-v6", "r2-v5", "r2-v1"
 CAT_BASE = f"https://media.uuugk.win/pack/{PACK}/"
@@ -50,9 +52,11 @@ def probe(path):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", required=True); ap.add_argument("--source-commit", required=True)
-    ap.add_argument("--media-root"); ap.add_argument("--published-at"); ap.add_argument("--draft", action="store_true")
+    ap.add_argument("--media-root")
+    ap.add_argument("--published-at", type=published_at, default=default_published_at())
+    ap.add_argument("--draft", action="store_true")
     a = ap.parse_args()
-    if not a.draft and not (a.media_root and a.published_at): raise SystemExit("定稿需要 --media-root 和 --published-at")
+    if not a.draft and not a.media_root: raise SystemExit("定稿需要 --media-root")
     if len(a.source_commit) != 40: raise SystemExit("--source-commit 要 40 位完整提交号")
     raw = open(f"{SRC}/catalog.json", "rb").read()
     if sha(raw) != SRC_CATALOG_SHA: raise SystemExit("r2-v5 catalog.json SHA 不符")
@@ -137,12 +141,12 @@ def main():
     sem["source"]["pack"], sem["source"]["previousPack"] = PACK, PREV
     if a.published_at: sem["generatedAt"] = a.published_at
     sem_bytes = dump(sem); cat["semanticCatalog"].update({"bytes": len(sem_bytes), "sha256": sha(sem_bytes)})
-    os.makedirs(os.path.join(a.out, "catalog"), exist_ok=True)
     report = {"pack": PACK, "from": PREV, "fromCatalogSha256": SRC_CATALOG_SHA, "mediaPrefix": f"pack/{MEDIA_PACK}/", "catalogPrefix": f"pack/{PACK}/",
               "sourceCommit": a.source_commit, "newMediaActions": len(src), "newMediaActionIds": sorted(src),
               "reusedMediaActions": len(acts) - len(src), "textEditedActionIds": [], "voiceRegeneratedActionIds": [], "problems": problems,
               "channelsGenerated": ["channels/dev.json", "channels/beta.json"], "stableUntouched": True}
     if a.draft:
+        os.makedirs(os.path.join(a.out, "catalog"), exist_ok=True)
         cb = dump(cat); open(os.path.join(a.out, "catalog.draft.json"), "wb").write(cb)
         open(os.path.join(a.out, "catalog", "catalog.json"), "wb").write(sem_bytes)
         open(os.path.join(a.out, "plan.json"), "wb").write(dump(plan))
@@ -151,10 +155,12 @@ def main():
         print(json.dumps({k: report[k] for k in ("newMediaActions", "reusedMediaActions", "problems")}, ensure_ascii=False)); return
     if problems: print("\n".join(problems)); raise SystemExit("有问题，未写目录")
     cb = dump(cat)
-    open(os.path.join(a.out, "catalog.json"), "wb").write(cb); open(os.path.join(a.out, "catalog", "catalog.json"), "wb").write(sem_bytes)
-    os.makedirs(os.path.join(a.out, "channels"), exist_ok=True)
     ptr = {"schema": 1, "pack": PACK, "catalog": CAT_BASE + "catalog.json", "catalog_sha256": sha(cb), "catalog_bytes": len(cb),
            "min_sdk": MIN_SDK, "published_at": a.published_at}
+    validate_catalog_pointer(ptr)
+    os.makedirs(os.path.join(a.out, "catalog"), exist_ok=True)
+    open(os.path.join(a.out, "catalog.json"), "wb").write(cb); open(os.path.join(a.out, "catalog", "catalog.json"), "wb").write(sem_bytes)
+    os.makedirs(os.path.join(a.out, "channels"), exist_ok=True)
     for ch in ("dev", "beta"): open(os.path.join(a.out, "channels", f"{ch}.json"), "wb").write(dump(ptr))
     rb = dump(receipts); open(os.path.join(a.out, "media-receipts.json"), "wb").write(rb)
     report.update({"catalog": {"bytes": len(cb), "sha256": sha(cb)}, "semantic": {"bytes": len(sem_bytes), "sha256": sha(sem_bytes)},
