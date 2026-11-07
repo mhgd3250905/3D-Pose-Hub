@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "s-figure4",
   "nameZh": "仰卧 4 字拉伸",
-  "spec": "drill-anim/specs/s-figure4-r2-et1-sc2-fa1-ak1.js",
-  "specSha256Lf": "ed3260f0443df9cad963e5290e775d88f9a4571af03de15c72c543697ea3a0aa",
+  "spec": "drill-anim/specs/s-figure4-r2-et1-sc2-fa1-ak2.js",
+  "specSha256Lf": "1aabb60eea01f0bebbab7e436b84337a0b51a59af0e9d37edc426cac58537e01",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -14,9 +14,9 @@
   },
   "camera": {
     "dir": [
-      -0.45,
+      0.55,
       0.75,
-      0.9
+      0.7
     ],
     "fit": [
       "head",
@@ -91,7 +91,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/s-figure4-r2-et1-sc2-fa1-ak1.js"
+    "selectedSpec": "drill-anim/specs/s-figure4-r2-et1-sc2-fa1-ak2.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -125,6 +125,11 @@
         "from": "drill-anim/specs/s-figure4-r2-et1-sc2-fa1.js",
         "to": "drill-anim/specs/s-figure4-r2-et1-sc2-fa1-ak1.js",
         "why": "ankle r1 (2026-11-07): crossed right ankle hung in the air over the left thigh; ankle offset [-0.0029,0.0027,0.0483] in base+open -> outer ankle on thigh 10.3 cm above knee (gap -0.5..+1.6 mm, self-collision 0); foot rot re-set: hold PF -0.5 -> DF 10.5, inv -0.1, add 0"
+      },
+      {
+        "from": "drill-anim/specs/s-figure4-r2-et1-sc2-fa1-ak1.js",
+        "to": "drill-anim/specs/s-figure4-r2-et1-sc2-fa1-ak2.js",
+        "why": "ankle r2 (2026-11-07, device feedback: foot still floating): ankle moved past the outer side of the left thigh so the lower shin lies across the thigh just above the knee (contact whole loop, |gap|<=1.2 mm); camera dir [-0.45,0.75,0.9] -> [0.55,0.75,0.7] (planted-leg side) so the crossing reads"
       }
     ]
   }
