@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "s-figure4",
   "nameZh": "仰卧 4 字拉伸",
-  "spec": "drill-anim/specs/s-figure4-r2-et1-sc2-fa1-ak2.js",
-  "specSha256Lf": "1aabb60eea01f0bebbab7e436b84337a0b51a59af0e9d37edc426cac58537e01",
+  "spec": "drill-anim/specs/s-figure4-r2-et1-sc2-fa1-ak3.js",
+  "specSha256Lf": "13f69043373754da25af084b7ec6473e596c02495a146cbd0057f3466046f08d",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -14,9 +14,9 @@
   },
   "camera": {
     "dir": [
-      0.55,
-      0.75,
-      0.7
+      0.9,
+      0.45,
+      0.3
     ],
     "fit": [
       "head",
@@ -91,7 +91,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/s-figure4-r2-et1-sc2-fa1-ak2.js"
+    "selectedSpec": "drill-anim/specs/s-figure4-r2-et1-sc2-fa1-ak3.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -130,6 +130,11 @@
         "from": "drill-anim/specs/s-figure4-r2-et1-sc2-fa1-ak1.js",
         "to": "drill-anim/specs/s-figure4-r2-et1-sc2-fa1-ak2.js",
         "why": "ankle r2 (2026-11-07, device feedback: foot still floating): ankle moved past the outer side of the left thigh so the lower shin lies across the thigh just above the knee (contact whole loop, |gap|<=1.2 mm); camera dir [-0.45,0.75,0.9] -> [0.55,0.75,0.7] (planted-leg side) so the crossing reads"
+      },
+      {
+        "from": "drill-anim/specs/s-figure4-r2-et1-sc2-fa1-ak2.js",
+        "to": "drill-anim/specs/s-figure4-r2-et1-sc2-fa1-ak3.js",
+        "why": "ankle r3 (2026-11-07, user: ankle on the other knee as pivot, lifted leg moves): motion rewritten to the standard supine figure-4 - left foot lifts and left thigh draws in (hip 54->100 deg) while the right ankle rides on the left thigh just above the knee (|gap|<=1.8 mm all loop); camera dir -> [0.9,0.45,0.3] (side view); right foot held at rest relation to the shin (DF~15, add~0, ev~14), self-collision 0"
       }
     ]
   }
