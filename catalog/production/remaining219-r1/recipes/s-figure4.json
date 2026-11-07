@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "s-figure4",
   "nameZh": "仰卧 4 字拉伸",
-  "spec": "drill-anim/specs/s-figure4-r2-et1-sc2-fa1.js",
-  "specSha256Lf": "72b11276b7215be197c678b51d04bbb8cfc4915b0e4ffa366e859ea9d3dcfedb",
+  "spec": "drill-anim/specs/s-figure4-r2-et1-sc2-fa1-ak1.js",
+  "specSha256Lf": "ed3260f0443df9cad963e5290e775d88f9a4571af03de15c72c543697ea3a0aa",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -91,7 +91,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/s-figure4-r2-et1-sc2-fa1.js"
+    "selectedSpec": "drill-anim/specs/s-figure4-r2-et1-sc2-fa1-ak1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -120,6 +120,11 @@
         "from": "drill-anim/specs/s-figure4-r2-et1-sc2.js",
         "to": "drill-anim/specs/s-figure4-r2-et1-sc2-fa1.js",
         "why": "foot-angle r1: crossed right foot was a fixed world rot = ~90deg plantar flexion vs the solved shin; now follows the shin + 5deg dorsiflexion (PF 82-90 -> DF 6-7, toe in/out -60..-38 -> 0..-1, inv 11..23 -> -10..2)"
+      },
+      {
+        "from": "drill-anim/specs/s-figure4-r2-et1-sc2-fa1.js",
+        "to": "drill-anim/specs/s-figure4-r2-et1-sc2-fa1-ak1.js",
+        "why": "ankle r1 (2026-11-07): crossed right ankle hung in the air over the left thigh; ankle offset [-0.0029,0.0027,0.0483] in base+open -> outer ankle on thigh 10.3 cm above knee (gap -0.5..+1.6 mm, self-collision 0); foot rot re-set: hold PF -0.5 -> DF 10.5, inv -0.1, add 0"
       }
     ]
   }
