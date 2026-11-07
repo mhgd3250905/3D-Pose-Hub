@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "s-figure4",
   "nameZh": "仰卧 4 字拉伸",
-  "spec": "drill-anim/specs/s-figure4-r2-et1-sc2-fa1-ak5.js",
-  "specSha256Lf": "a7d02195e6825f67c13385812d7dd16126c238a15b011540f12408dc2c114679",
+  "spec": "drill-anim/specs/s-figure4-r2-et1-sc2-fa1-ak6.js",
+  "specSha256Lf": "b7c2f4be84fd3934b632a368a408e6b76380180d135e28e39985536d7a2d2483",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -145,6 +145,11 @@
         "from": "drill-anim/specs/s-figure4-r2-et1-sc2-fa1-ak4.js",
         "to": "drill-anim/specs/s-figure4-r2-et1-sc2-fa1-ak5.js",
         "why": "ak5 (user 2026-11-07): supine rest arms lie flat on the mat with elbows out (ak4 tented the elbows ~8 cm above the shoulder with palms flat, reading as a reverse bend). Rest elbow y 0.182->0.053 m; grip and leg motion unchanged. Contact -0.3..+0.7 mm; self-collision same as ak4 except reach rightHand>leftThigh 14 mm at 3.15 s."
+      },
+      {
+        "from": "drill-anim/specs/s-figure4-r2-et1-sc2-fa1-ak5.js",
+        "to": "drill-anim/specs/s-figure4-r2-et1-sc2-fa1-ak6.js",
+        "why": "ak6 (user 2026-11-07): ak5 rest forearms looked twisted - the grip-tuned elbowTwist 95 was kept at rest. Rest arms now nearly straight on the mat (palm [+-0.24,0.03,0.11], pole [+-1,-0.1,0]) with elbowTwist -20/+20, blending to 95/-95 with the grip. Grip and legs unchanged; self-collision same as ak5."
       }
     ]
   }
