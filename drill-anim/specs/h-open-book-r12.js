@@ -5,6 +5,8 @@
 // floor. The extra sweep is 0 up to the straight-up moment (p = P2, t = 2 s) and eases in with a smoothstep to the full value
 // at p = 1 (hold), easing out the same way on the return, so the start segment and t = 2 are exactly r11. Elbow flexion,
 // bend direction, palm-vs-crease (mirror of the bottom arm), ELEV(p), chest turn, bottom arm, legs, pillow, timing: r11.
+// DH fitted on the production chain at t=4 (hand min height: DH -16 -> 70 mm, -24 -> 4 mm, -32 -> -62 mm): DH = -18.5 -> 50 mm
+// (r11 208 mm, r10 47 mm); t=3 155 mm (r11 304); t=0.2 / t=2 bit-identical to r11; 0 solver warnings.
 import { make } from './h-open-book-r9.js';
 import { elev } from './h-open-book-r10.js';
 import { rightHand } from './h-open-book-r11.js';
