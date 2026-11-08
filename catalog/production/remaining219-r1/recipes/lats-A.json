@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "lats-A",
   "nameZh": "坐姿撑地抬臀",
-  "spec": "drill-anim/specs/lats-A-wb-et1.js",
-  "specSha256Lf": "f7df94bfad569650cc9dc9a870125c63f930b85458e3f51ef871a22a75d38943",
+  "spec": "drill-anim/specs/lats-A-r2.js",
+  "specSha256Lf": "4e5395828c6d0267b570752648496f64291fc994b7ef0d5fd51fcda7f5d46f8f",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -92,7 +92,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/lats-A-wb-et1.js"
+    "selectedSpec": "drill-anim/specs/lats-A-r2.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -108,5 +108,15 @@
         "why": "pose-fix r9: fixed hand-vs-forearm twist 90-120 deg -> constant forearm roll {\"left\": 55, \"right\": -55}"
       }
     ]
+  },
+  "elbowTwistFix": {
+    "branch": "codex/elbow-twist-r1",
+    "date": "2026-11-08",
+    "from": "drill-anim/specs/lats-A-wb-et1.js",
+    "to": "drill-anim/specs/lats-A-r2.js",
+    "why": "2026-11-08 全局肘部扫描：前臂相对未转动的上臂滚转，肘部皮肤拧成糖纸状 -> 改在肩部转上臂（左 upperArmTwist +110、elbowTwist +30（肘窝朝后偏头，上臂轴向总旋 110°）；右 upperArmTwist -110、elbowTwist -60（肘窝朝后偏头，上臂轴向总旋 -110°）），肘保持近纯铰链；肘部最小截面比 左 0.54→0.99/右 0.54→0.99，跨肘扭转 左 113°→1°/右 114°→3°；关节位置漂移 ≤0.0 mm，求解警告不增，地面/贴身接触代理指标不变差",
+    "reviewed": false,
+    "qaStatus": "candidate-awaiting-gpu-and-user-review",
+    "elbowTwistFix": "r1"
   }
 }
