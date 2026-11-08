@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "lats-B",
   "nameZh": "弹力带直臂下拉",
-  "spec": "drill-anim/specs/lats-B-r2.js",
-  "specSha256Lf": "e61ae8c72faa49e70c9b0831f1a5c50ee0e37c47eae20da28ce2aa422cc5d545",
+  "spec": "drill-anim/specs/lats-B-r3.js",
+  "specSha256Lf": "f4917e84d548b038ba3cc6cbc9dfc67edb09454b3fe9497c17f79ba8266c0743",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -75,7 +75,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/lats-B-r2.js"
+    "selectedSpec": "drill-anim/specs/lats-B-r3.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -85,5 +85,15 @@
   "fixedCorrectionStack": {
     "profile": "fixed-wrist-corrections-r1",
     "version": "0.1.0-r1"
+  },
+  "elbowTwistFix": {
+    "branch": "codex/elbow-twist-r1",
+    "date": "2026-11-08",
+    "from": "drill-anim/specs/lats-B-r2.js",
+    "to": "drill-anim/specs/lats-B-r3.js",
+    "why": "2026-11-08 全局肘部扫描：前臂相对未转动的上臂滚转，肘部皮肤拧成糖纸状 -> 改在肩部转上臂（右 upperArmTwist -45、elbowTwist -15（肘窝朝内偏后，上臂轴向总旋 -45°）），肘保持近纯铰链；肘部最小截面比 右 0.85→0.96，跨肘扭转 右 60°→24°；关节位置漂移 ≤0.0 mm，求解警告不增，地面/贴身接触代理指标不变差",
+    "reviewed": false,
+    "qaStatus": "candidate-awaiting-gpu-and-user-review",
+    "elbowTwistFix": "r1"
   }
 }
