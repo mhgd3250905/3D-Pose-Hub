@@ -1,18 +1,22 @@
 // h-open-book-r9: open-book arm fix r1 (2026-11-08) of h-open-book-r8-gc1.js. Only the top (right) arm and the chest turn change;
-// legs, pelvis, bottom arm formula, pillow, 8 s timing, highlight and camera are r8-gc1's.
-// Review of r8: the top arm already swept in the chest transverse plane, but it ended floating at shoulder height (wrist ~0.38 m
-// above the floor) with the elbow bent ~23 deg, 57 deg horizontal abduction behind the chest's frontal plane and only 32 deg of
-// chest turn, so the stretch read as the arm being pulled back instead of the chest opening.
-// r9: (1) the chest turns about the trunk's own (side-bent) long axis instead of world X, so the head stays on the pillow as the
-// chest opens further; ROT 32 -> 60. (2) the top arm is straight (reach 0.4835 m = <= 8 deg elbow bend), at shoulder height
-// tipped 4 deg toward the head, sweeping in the chest transverse plane from resting on the bottom forearm (A0 = 22 deg, forward
-// and down) through straight up to A1 = -150 deg (60 deg horizontal abduction behind the chest frontal plane), so with the chest
-// turn the hand ends just above the floor behind. Palm normal turns with the arm in that plane (no forearm twist): down on the
-// forearm at the start, toward the ceiling at the hold. Head is rigid with the chest in this rig, so it turns with the chest.
+// legs, pelvis, pillow, 8 s timing, keys, highlight and camera are r8-gc1's; bottom arm keeps r8's floor solve.
+// Review of r8 (measured, production chain): the top arm already swept in the chest transverse plane (rest-frame (sin a,0,cos a)
+// is perpendicular to the trunk), but it ended floating at shoulder height (wrist 0.38 m above the floor) with the elbow bent
+// 23 deg, 57 deg horizontal abduction behind the chest frontal plane and only 32 deg of chest turn, and at the start the top hand
+// hung 11 cm above the bottom arm instead of resting on it - the stretch read as the arm being pulled back, not the chest opening.
+// r9: (1) chest turn 32 -> 55 deg, split R1 = 15 deg about the trunk's own (side-bent) axis + R2 = 40 deg about world X (r8's axis):
+// pure world-X lowers the head into the pillow, pure trunk-axis lifts the bottom shoulder off the mat; this split keeps the head
+// on the pillow (gap 0.2-6.9 mm) with the torso still on the mat (lowest skin 12.5 mm). (2) top arm straight (reach 0.4835 m,
+// elbow 8.4 deg), at shoulder height (~4 deg toward the head in the chest frame), sweeping in the chest transverse plane from
+// A0 = 42 deg (forward and down, palm resting on the bottom forearm, wrist extended 28 deg so the fingers lie level) through
+// straight up to A1 = -150 deg (59.5 deg horizontal abduction behind the chest frontal plane); with the chest turn the hand ends
+// ~5 cm above the floor behind. Palm normal turns with the arm in that plane (no forearm twist): down on the forearm at the
+// start, toward the ceiling at the hold. Head is rigid with the chest in this rig, so it turns with the chest toward the hand.
+// Bottom support wrist distance is capped at 99.5 % of the arm reach (it slides back <= 2 mm when the shoulder lifts).
 import base from './h-open-book-r8-gc1.js';
 import { REST, UA, FA, leg, rot, restToWorld, footRotW, r4 } from './_home-armfix-r1.mjs';
 import { build, keys } from './_home-armfix-r1.mjs';
-export function make({ R1 = 10, R2 = 40, A0 = 22, A1 = -150, ELEV = 4, REACH = 0.4835, RETR = 0.03, pole = [-0.2, 1.8, 0.05] } = {}) {
+export function make({ R1 = 15, R2 = 40, A0 = 42, WX = 28, A1 = -150, ELEV = 4, REACH = 0.4835, RETR = 0, pole = [-0.2, 1.8, 0.05] } = {}) {
 const DUR = 8, TIP = 0;
 const P0 = [-0.336029828141, 0.16916500072453428, -0.001954201688];
 const hips = { up: [1, 0, 0], front: [0, 0, 1], rot: [[[0, 0, 1], TIP]] };
@@ -28,7 +32,7 @@ const SHR = [0, 0, -RETR];   // top scapula retracts (rest -Z) with the opening
 const SR = REST.shoulder('right'), e = ELEV * Math.PI / 180;
 const ang = t => A0 + (A1 - A0) * p(t);
 const dR = t => { const a = ang(t) * Math.PI / 180; return [Math.sin(a) * Math.cos(e), Math.sin(e), Math.cos(a) * Math.cos(e)]; };
-const fa = t => (ang(t) - 14 * (1 - p(t))) * Math.PI / 180;   // wrist a little extended at the start (fingers level), as r8
+const fa = t => (ang(t) - WX * (1 - p(t))) * Math.PI / 180;   // wrist a little extended at the start (fingers level), as r8
 const fR = t => { const a = fa(t); return [Math.sin(a) * Math.cos(e), Math.sin(e), Math.cos(a) * Math.cos(e)]; };
 const nR = t => { const a = fa(t); return [Math.cos(a), 0, -Math.sin(a)]; };
 const bottomShoulder=t=>{const w=restToWorld(hips,WAIST.map((x,k)=>x-REST.pelvis[k]));let d=restToWorld(hips,REST.shoulder('left').map((x,k)=>x-WAIST[k]));d=rot(rot(rot(d,[1,0,0],-R1*p(t)),[0,0,1],SB(t)),[1,0,0],-R2*p(t));return P0.map((x,k)=>x+w[k]+d[k]);};
