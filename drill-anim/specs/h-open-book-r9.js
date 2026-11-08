@@ -29,11 +29,11 @@ const WAIST = [0, 1.08554168, 0.0040458], SB = t => 16.77445327758789 + (-1.6117
 // about world X after it (r8's turn: bottom shoulder stays down, head drops toward the pillow)
 const CH = [[[1, 0, 0], t => -R1 * p(t)], [[0, 0, 1], SB], [[1, 0, 0], t => -R2 * p(t)]];
 const SHR = [0, 0, -RETR];   // top scapula retracts (rest -Z) with the opening
-const SR = REST.shoulder('right'), e = ELEV * Math.PI / 180;
+const SR = REST.shoulder('right'), eOf = t => (typeof ELEV === 'function' ? ELEV(p(t)) : ELEV) * Math.PI / 180;   // ELEV may be a function of the opening p (r10)
 const ang = t => A0 + (A1 - A0) * p(t);
-const dR = t => { const a = ang(t) * Math.PI / 180; return [Math.sin(a) * Math.cos(e), Math.sin(e), Math.cos(a) * Math.cos(e)]; };
+const dR = t => { const a = ang(t) * Math.PI / 180, e = eOf(t); return [Math.sin(a) * Math.cos(e), Math.sin(e), Math.cos(a) * Math.cos(e)]; };
 const fa = t => (ang(t) - WX * (1 - p(t))) * Math.PI / 180;   // wrist a little extended at the start (fingers level), as r8
-const fR = t => { const a = fa(t); return [Math.sin(a) * Math.cos(e), Math.sin(e), Math.cos(a) * Math.cos(e)]; };
+const fR = t => { const a = fa(t), e = eOf(t); return [Math.sin(a) * Math.cos(e), Math.sin(e), Math.cos(a) * Math.cos(e)]; };
 const nR = t => { const a = fa(t); return [Math.cos(a), 0, -Math.sin(a)]; };
 const bottomShoulder=t=>{const w=restToWorld(hips,WAIST.map((x,k)=>x-REST.pelvis[k]));let d=restToWorld(hips,REST.shoulder('left').map((x,k)=>x-WAIST[k]));d=rot(rot(rot(d,[1,0,0],-R1*p(t)),[0,0,1],SB(t)),[1,0,0],-R2*p(t));return P0.map((x,k)=>x+w[k]+d[k]);};
 // r8's support-arm solve; the forward wrist distance is capped at 99.5 % of the reach when the chest turn lifts the shoulder
