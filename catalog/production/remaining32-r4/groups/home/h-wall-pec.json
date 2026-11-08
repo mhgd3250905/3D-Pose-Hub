@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "h-wall-pec",
   "nameZh": "靠墙单臂胸肌拉伸",
-  "spec": "drill-anim/specs/h-wall-pec-r5.js",
-  "specSha256Lf": "29314eb3a07503223a6dfd9b102d3f2381a790d22b56b003c28a4844cc0464b2",
+  "spec": "drill-anim/specs/h-wall-pec-r6.js",
+  "specSha256Lf": "8535824dbcf547b02b3d7793451195ab46423d7836410ffc30d46a85fed34f4f",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -277,5 +277,15 @@
   ],
   "diagnostics": {
     "measureFootSurface": true
+  },
+  "elbowTwistFix": {
+    "branch": "codex/elbow-twist-r1",
+    "date": "2026-11-08",
+    "from": "drill-anim/specs/h-wall-pec-r5.js",
+    "to": "drill-anim/specs/h-wall-pec-r6.js",
+    "why": "2026-11-08 全局肘部扫描：前臂相对未转动的上臂滚转，肘部皮肤拧成糖纸状 -> 改在肩部转上臂（右 upperArmTwist +90、elbowTwist +0（肘窝朝外，上臂轴向总旋 90°）），肘保持近纯铰链；肘部最小截面比 右 0.78→0.96，跨肘扭转 右 98°→5°；关节位置漂移 ≤0.0 mm，求解警告不增，地面/贴身接触代理指标不变差",
+    "reviewed": false,
+    "qaStatus": "candidate-awaiting-gpu-and-user-review",
+    "elbowTwistFix": "r1"
   }
 }
