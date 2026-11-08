@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "scapular-A",
   "nameZh": "俯卧 Y-T-W 举",
-  "spec": "drill-anim/specs/scapular-A-r2-gc1-et1.js",
-  "specSha256Lf": "d15cc71486d187166489f70b959e6fedd80c8ebeb53fda4db0e105435923ac2f",
+  "spec": "drill-anim/specs/scapular-A-r3.js",
+  "specSha256Lf": "0dd0d38f6cf184b38060ea6c7a12575226465150eeffdfb337c528599fddf5d5",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -92,7 +92,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/scapular-A-r2-gc1-et1.js"
+    "selectedSpec": "drill-anim/specs/scapular-A-r3.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -117,5 +117,15 @@
         "why": "forearm twist: constant elbowTwist split (pose-fix r8 et, on gc spec)"
       }
     ]
+  },
+  "elbowTwistFix": {
+    "branch": "codex/elbow-twist-r1",
+    "date": "2026-11-08",
+    "from": "drill-anim/specs/scapular-A-r2-gc1-et1.js",
+    "to": "drill-anim/specs/scapular-A-r3.js",
+    "why": "2026-11-08 全局肘部扫描：前臂相对未转动的上臂滚转，肘部皮肤拧成糖纸状 -> 改在肩部转上臂（左 upperArmTwist -105、elbowTwist +0（肘窝朝前偏头，上臂轴向总旋 -105°）；右 upperArmTwist +135、elbowTwist -45（肘窝朝头偏前，上臂轴向总旋 135°）），肘保持近纯铰链；肘部最小截面比 左 0.60→0.99/右 0.36→0.99，跨肘扭转 左 124°→19°/右 174°→17°；关节位置漂移 ≤0.0 mm，求解警告不增，地面/贴身接触代理指标不变差",
+    "reviewed": false,
+    "qaStatus": "candidate-awaiting-gpu-and-user-review",
+    "elbowTwistFix": "r1"
   }
 }
