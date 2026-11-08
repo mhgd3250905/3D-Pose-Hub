@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "erectors-B",
   "nameZh": "瑞士球背伸",
-  "spec": "drill-anim/specs/erectors-B.js",
-  "specSha256Lf": "d38cdb0a92363873660d918cb1b1f2d0c505c0827b631bac825e0ba6e5c259ff",
+  "spec": "drill-anim/specs/erectors-B-r2.js",
+  "specSha256Lf": "77c0f5a7584949e768cddffcee6bf59f8a982214f33c6a38d77f611be88e9064",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -77,10 +77,19 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/erectors-B.js"
+    "selectedSpec": "drill-anim/specs/erectors-B-r2.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
   "userAccepted": false,
-  "releaseEligible": false
+  "releaseEligible": false,
+  "poseFix1108": {
+    "branch": "codex/pose-fix-1108-r1",
+    "date": "2026-11-08",
+    "from": "drill-anim/specs/erectors-B.js",
+    "to": "drill-anim/specs/erectors-B-r2.js",
+    "why": "2026-11-08 用户审核：脚方向反了 -> 双脚 heading 90（鞋尖朝身体前下，前脚掌着地，脚跟朝墙，脚底对墙），墙面后移到 -0.5456（脚跟留 1 mm）",
+    "reviewed": false,
+    "qaStatus": "candidate-awaiting-gpu-and-user-review"
+  }
 }
