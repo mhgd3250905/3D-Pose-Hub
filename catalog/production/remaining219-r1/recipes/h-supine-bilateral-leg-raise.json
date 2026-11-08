@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "h-supine-bilateral-leg-raise",
   "nameZh": "仰卧双直腿举腿",
-  "spec": "drill-anim/specs/h-supine-bilateral-leg-raise-gc2-et1.js",
-  "specSha256Lf": "a0934fda3fdc32b443532e424a95a866e1d13e810f40ee919e4cfa50a3cb8b81",
+  "spec": "drill-anim/specs/h-supine-bilateral-leg-raise-r2.js",
+  "specSha256Lf": "7112fd88ce349443d47f65311466d27d4d12ad59df95c4edc57bd2f4996593d5",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -92,7 +92,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/h-supine-bilateral-leg-raise-gc2-et1.js"
+    "selectedSpec": "drill-anim/specs/h-supine-bilateral-leg-raise-r2.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -123,5 +123,15 @@
         "why": "forearm twist: constant elbowTwist split (pose-fix r8 et, on gc spec)"
       }
     ]
+  },
+  "elbowTwistFix": {
+    "branch": "codex/elbow-twist-r1",
+    "date": "2026-11-08",
+    "from": "drill-anim/specs/h-supine-bilateral-leg-raise-gc2-et1.js",
+    "to": "drill-anim/specs/h-supine-bilateral-leg-raise-r2.js",
+    "why": "2026-11-08 全局肘部扫描：前臂相对未转动的上臂滚转，肘部皮肤拧成糖纸状 -> 改在肩部转上臂（左 upperArmTwist +5、elbowTwist -75（肘窝朝内，上臂轴向总旋 5°）；右 upperArmTwist -5、elbowTwist +170（肘窝朝内，上臂轴向总旋 -5°）），肘保持近纯铰链；肘部最小截面比 左 0.58→0.81/右 0.41→0.80，跨肘扭转 左 112°→69°/右 160°→69°；关节位置漂移 ≤0.0 mm，求解警告不增，地面/贴身接触代理指标不变差",
+    "reviewed": false,
+    "qaStatus": "candidate-awaiting-gpu-and-user-review",
+    "elbowTwistFix": "r1"
   }
 }
