@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "h-kb-swing",
   "nameZh": "单臂壶铃摆荡",
-  "spec": "drill-anim/specs/h-kb-swing-r5-sc1.js",
-  "specSha256Lf": "e9ac784c13710ac23b5686600145d73df21c8aee15ff2cfe843722a6f731a127",
+  "spec": "drill-anim/specs/h-kb-swing-r6.js",
+  "specSha256Lf": "37c4731fe1dc96d9e5e41339f8339da85d4435a9abec3af458fd6e7a1c068b06",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -302,5 +302,15 @@
         "why": "r7 try 2: hike adduction -20, hike arm -26 deg, stance +5 cm/foot"
       }
     ]
+  },
+  "elbowTwistFix": {
+    "branch": "codex/elbow-twist-r1",
+    "date": "2026-11-08",
+    "from": "drill-anim/specs/h-kb-swing-r5-sc1.js",
+    "to": "drill-anim/specs/h-kb-swing-r6.js",
+    "why": "2026-11-08 全局肘部扫描：前臂相对未转动的上臂滚转，肘部皮肤拧成糖纸状 -> 改在肩部转上臂（右 upperArmTwist -50、elbowTwist +45（肘窝朝后偏脚，上臂轴向总旋 -50°）），肘保持近纯铰链；肘部最小截面比 右 0.74→0.94，跨肘扭转 右 82°→32°；关节位置漂移 ≤0.0 mm，求解警告不增，地面/贴身接触代理指标不变差",
+    "reviewed": false,
+    "qaStatus": "candidate-awaiting-gpu-and-user-review",
+    "elbowTwistFix": "r1"
   }
 }
