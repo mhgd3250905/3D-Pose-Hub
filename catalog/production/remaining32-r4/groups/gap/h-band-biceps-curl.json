@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "h-band-biceps-curl",
   "nameZh": "站姿踩带弹力带弯举（带握柄）",
-  "spec": "drill-anim/specs/h-band-biceps-curl-r6.js",
-  "specSha256Lf": "ec0555689f1b33963c8c0a36fda8abe679e71c61164239a2495e80f8e0811985",
+  "spec": "drill-anim/specs/h-band-biceps-curl-r7.js",
+  "specSha256Lf": "5f75ec84c5c6e92f10366c2544158c038cf6003f511a8380073a7083b7773aae",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -159,5 +159,15 @@
       "manifest": "drill-anim/models/fixed-band-handles-r1/manifest.json",
       "manifestSha256Lf": "5f20d9504f5deb3b130b32c3b4dfbdc22123ee18690f60ea510fbe8405f47d6f"
     }
-  ]
+  ],
+  "elbowTwistFix": {
+    "branch": "codex/elbow-twist-r1",
+    "date": "2026-11-08",
+    "from": "drill-anim/specs/h-band-biceps-curl-r6.js",
+    "to": "drill-anim/specs/h-band-biceps-curl-r7.js",
+    "why": "2026-11-08 全局肘部扫描：前臂相对未转动的上臂滚转，肘部皮肤拧成糖纸状 -> 改在肩部转上臂（右 upperArmTwist +75、elbowTwist -30（肘窝朝前，上臂轴向总旋 75°）），肘保持近纯铰链；肘部最小截面比 右 0.85→0.95，跨肘扭转 右 81°→13°；关节位置漂移 ≤0.0 mm，求解警告不增，地面/贴身接触代理指标不变差",
+    "reviewed": false,
+    "qaStatus": "candidate-awaiting-gpu-and-user-review",
+    "elbowTwistFix": "r1"
+  }
 }
