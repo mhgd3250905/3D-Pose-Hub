@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "forearms-A",
   "nameZh": "跪姿多方向腕部摇摆",
-  "spec": "drill-anim/specs/forearms-A-r2-gc1-ht2.js",
-  "specSha256Lf": "050eabb803a427df8371dcf9a8e2d5eb5df764d41920a70b4bcf2dfdff3c48b7",
+  "spec": "drill-anim/specs/forearms-A-r3.js",
+  "specSha256Lf": "63ac4b0f31dae84a75af4bdbc222ebe5a2e63fdc93490a715914eae58b0fa81c",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -93,7 +93,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/forearms-A-r2-gc1-ht2.js"
+    "selectedSpec": "drill-anim/specs/forearms-A-r3.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -118,5 +118,15 @@
         "why": "forearm twist: time-varying elbowTwist table, right hand target -85 -> -65 deg vs forearm (pose-fix r10 ht2, on gc spec)"
       }
     ]
+  },
+  "elbowTwistFix": {
+    "branch": "codex/elbow-twist-r1",
+    "date": "2026-11-08",
+    "from": "drill-anim/specs/forearms-A-r2-gc1-ht2.js",
+    "to": "drill-anim/specs/forearms-A-r3.js",
+    "why": "2026-11-08 全局肘部扫描：前臂相对未转动的上臂滚转，肘部皮肤拧成糖纸状 -> 改在肩部转上臂（左 upperArmTwist -15、elbowTwist +0、时变扭转 100% 移到肩部（肘窝朝脚偏内，上臂轴向总旋 -15°）；右 upperArmTwist -55、elbowTwist -45、时变扭转 100% 移到肩部（肘窝朝脚偏后，上臂轴向总旋 -55°）），肘保持近纯铰链；肘部最小截面比 左 0.66→0.96/右 0.38→0.99，跨肘扭转 左 112°→30°/右 172°→3°；关节位置漂移 ≤0.0 mm，求解警告不增，地面/贴身接触代理指标不变差",
+    "reviewed": false,
+    "qaStatus": "candidate-awaiting-gpu-and-user-review",
+    "elbowTwistFix": "r1"
   }
 }
