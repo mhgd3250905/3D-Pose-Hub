@@ -7,21 +7,24 @@
 // r11: top upper arm = r10's measured upper-arm line (r10 shoulder-wrist line + 4 deg toward the head, which is where r10's
 // straight-ish arm put the humerus), forearm flexed phi(p) in the mirrored bend plane psi(p) toward the head, palm rotated
 // theta(p) from the crease (mirror of the bottom arm's values, quadratic in the opening p through t=0.2/2/4); wrist extension at
-// the start (fingers level on the bottom forearm) as r9. Upper-arm sweep, ELEV(p), chest turn, bottom arm, legs, pillow, timing: r10.
+// the start (fingers level on the bottom forearm) as r9. With the mirrored 32 deg elbow the hand would land 13 cm head-ward of the
+// bottom forearm, so at the start only the upper arm tilts 20 deg toward the feet (-4 deg sweep) - i.e. the mirror of the bottom
+// upper arm (~76 vs 74 deg) - fading out smoothly by p 0.45 (t ~1.7 s); from there on the upper arm is exactly r10's. Upper-arm sweep, ELEV(p), chest turn, bottom arm, legs, pillow, timing: r10.
 import { make } from './h-open-book-r9.js';
 import { elev } from './h-open-book-r10.js';
 import { UA, FA, r4 } from './_home-armfix-r1.mjs';
 const P2 = 0.5522642316338267;   // opening p at t=2 s
 const q3 = (a, b, c) => q => { const l0 = (q - P2) * (q - 1) / (P2), l1 = q * (q - 1) / (P2 * (P2 - 1)), l2 = q * (q - P2) / (1 - P2); return a * l0 + b * l1 + c * l2; };
 export const MIRROR = { flex: [32.0, 30.8, 26.3], psi: [5.1, 14.4, 57.0], theta: [71.6, 63.1, 23.1] };   // bottom arm, measured r10
-export function rightHand({ flex = MIRROR.flex, psi = MIRROR.psi, theta = MIRROR.theta, UADEG = 4.0 } = {}) {
+export function rightHand({ flex = MIRROR.flex, psi = MIRROR.psi, theta = MIRROR.theta, UADEG = 4.0, DE0 = -20, DA0 = -4, FADE = 0.45 } = {}) {
   const PHI = q3(...flex), PSI = q3(...psi), TH = q3(...theta), D = Math.PI / 180, sg = -1;
   const add = (a, b, k = 1) => a.map((x, i) => x + k * b[i]), dot = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
   const cr = (a, b) => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
   const nz = a => { const l = Math.hypot(...a); return a.map(x => x / l); };
   const rotAx = (v, k, ang) => { const c = Math.cos(ang), s = Math.sin(ang), kv = cr(k, v), kd = dot(k, v); return v.map((x, i) => x * c + kv[i] * s + k[i] * kd * (1 - c)); };
   return ({ p, SR, eOf, ang, WX }) => {
-    const geo = t => { const q = p(t), a = ang(t) * D, e = eOf(t) + UADEG * D;
+    const fd = q => { const x = Math.min(1, q / FADE); return 1 - x * x * (3 - 2 * x); };   // start-only tilt, gone by p = FADE (t~1.7 s)
+    const geo = t => { const q = p(t), a = (ang(t) + DA0 * fd(q)) * D, e = eOf(t) + (UADEG + DE0 * fd(q)) * D;
       const u = [Math.sin(a) * Math.cos(e), Math.sin(e), Math.cos(a) * Math.cos(e)];          // upper arm (chest rest frame)
       const h = nz(add([0, 1, 0], u, -u[1])), e2 = cr(u, h).map(x => sg * x);                     // head dir perp to u; mirrored 2nd axis
       const ps = PSI(q) * D, b = add(h.map(x => x * Math.cos(ps)), e2.map(x => x * Math.sin(ps)));   // forearm bend direction
