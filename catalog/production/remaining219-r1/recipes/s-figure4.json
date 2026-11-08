@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "s-figure4",
   "nameZh": "仰卧 4 字拉伸",
-  "spec": "drill-anim/specs/s-figure4-r2-et1-sc2-fa1.js",
-  "specSha256Lf": "72b11276b7215be197c678b51d04bbb8cfc4915b0e4ffa366e859ea9d3dcfedb",
+  "spec": "drill-anim/specs/s-figure4-r3.js",
+  "specSha256Lf": "c8e9cf5f8b1cf5b2015be9304c59a339a3867fcc6c73dec8b3aa8a7769087527",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -91,7 +91,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/s-figure4-r2-et1-sc2-fa1.js"
+    "selectedSpec": "drill-anim/specs/s-figure4-r3.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -122,5 +122,15 @@
         "why": "foot-angle r1: crossed right foot was a fixed world rot = ~90deg plantar flexion vs the solved shin; now follows the shin + 5deg dorsiflexion (PF 82-90 -> DF 6-7, toe in/out -60..-38 -> 0..-1, inv 11..23 -> -10..2)"
       }
     ]
+  },
+  "elbowTwistFix": {
+    "branch": "codex/elbow-twist-r1",
+    "date": "2026-11-08",
+    "from": "drill-anim/specs/s-figure4-r2-et1-sc2-fa1.js",
+    "to": "drill-anim/specs/s-figure4-r3.js",
+    "why": "2026-11-08 全局肘部扫描：前臂相对未转动的上臂滚转，肘部皮肤拧成糖纸状 -> 改在肩部转上臂（左 upperArmTwist +75、elbowTwist +0（肘窝朝后偏脚，上臂轴向总旋 75°）；右 upperArmTwist -75、elbowTwist +0（肘窝朝后偏脚，上臂轴向总旋 -75°）），肘保持近纯铰链；肘部最小截面比 左 0.84→0.95/右 0.84→0.95，跨肘扭转 左 74°→3°/右 74°→3°；关节位置漂移 ≤0.0 mm，求解警告不增，地面/贴身接触代理指标不变差",
+    "reviewed": false,
+    "qaStatus": "candidate-awaiting-gpu-and-user-review",
+    "elbowTwistFix": "r1"
   }
 }
