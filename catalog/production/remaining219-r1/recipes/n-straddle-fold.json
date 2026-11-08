@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "n-straddle-fold",
   "nameZh": "坐姿分腿体前屈",
-  "spec": "drill-anim/specs/n-straddle-fold-gc-int1.js",
-  "specSha256Lf": "12bc881236d642c1bd2acbf57593fb6b479a77200a8a8451c94d758b1ab601fe",
+  "spec": "drill-anim/specs/n-straddle-fold-r2.js",
+  "specSha256Lf": "46c57dc6f968805098699fc4d0a2669a19eed263929d0e0a8e9258aca9531427",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -92,7 +92,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/n-straddle-fold-gc-int1.js"
+    "selectedSpec": "drill-anim/specs/n-straddle-fold-r2.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -126,5 +126,15 @@
       "to": "drill-anim/specs/n-straddle-fold-gc-int1.js",
       "why": "GC spec 为底叠加 PR #29 的修正（两边都要保住）"
     }
+  },
+  "elbowTwistFix": {
+    "branch": "codex/elbow-twist-r1",
+    "date": "2026-11-08",
+    "from": "drill-anim/specs/n-straddle-fold-gc-int1.js",
+    "to": "drill-anim/specs/n-straddle-fold-r2.js",
+    "why": "2026-11-08 全局肘部扫描：前臂相对未转动的上臂滚转，肘部皮肤拧成糖纸状 -> 改在肩部转上臂（左 upperArmTwist +125、elbowTwist +60（肘窝朝脚偏外，上臂轴向总旋 125°）；右 upperArmTwist -125、elbowTwist -60（肘窝朝外偏脚，上臂轴向总旋 -125°）），肘保持近纯铰链；肘部最小截面比 左 0.82→0.99/右 0.82→0.99，跨肘扭转 左 111°→19°/右 111°→19°；关节位置漂移 ≤0.0 mm，求解警告不增，地面/贴身接触代理指标不变差",
+    "reviewed": false,
+    "qaStatus": "candidate-awaiting-gpu-and-user-review",
+    "elbowTwistFix": "r1"
   }
 }
