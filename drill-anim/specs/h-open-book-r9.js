@@ -16,7 +16,7 @@
 import base from './h-open-book-r8-gc1.js';
 import { REST, UA, FA, leg, rot, restToWorld, footRotW, r4 } from './_home-armfix-r1.mjs';
 import { build, keys } from './_home-armfix-r1.mjs';
-export function make({ R1 = 15, R2 = 40, A0 = 42, WX = 28, A1 = -150, ELEV = 4, REACH = 0.4835, RETR = 0, pole = [-0.2, 1.8, 0.05] } = {}) {
+export function make({ R1 = 15, R2 = 40, A0 = 42, WX = 28, A1 = -150, ELEV = 4, REACH = 0.4835, RETR = 0, pole = [-0.2, 1.8, 0.05], RIGHT = null } = {}) {
 const DUR = 8, TIP = 0;
 const P0 = [-0.336029828141, 0.16916500072453428, -0.001954201688];
 const hips = { up: [1, 0, 0], front: [0, 0, 1], rot: [[[0, 0, 1], TIP]] };
@@ -45,8 +45,8 @@ const P = build(DUR, {
   shoulders: { right: t => SHR.map(x => x * p(t)) },
   hands: {
     left: { mode: 'free', frame: 'world', wrist: t => r4(lowerArm(t).wrist), finger: [0,0,1], normal: [0,1,0], pole: t => r4(lowerArm(t).elbow), relax: 0.6 },
-    right: { mode: 'free', frame: 'chest', wrist: t => { const d = dR(t), q = p(t); return r4(SR.map((x, k) => x + SHR[k] * q + d[k] * REACH)); },
-      finger: t => r4(fR(t)), normal: t => r4(nR(t)), poleUp: pole, relax: 0.6 },
+    right: RIGHT ? RIGHT({ p, SR, eOf, ang, WX }) : { mode: 'free', frame: 'chest', wrist: t => { const d = dR(t), q = p(t); return r4(SR.map((x, k) => x + SHR[k] * q + d[k] * REACH)); },
+      finger: t => r4(fR(t)), normal: t => r4(nR(t)), poleUp: pole, relax: 0.6 },   // RIGHT (r11): optional top-hand override, default = r9
   },
   feet: {
     left: { mode: 'free', frame: 'hips', ankle: FL.ankle, rot: footRotW(hips, [[[0,1,0],2.4], ...FROT]), poleLow: poleOf(FL.hip, FL.ankle, FL.knee) },
