@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "h-band-face-pull",
   "nameZh": "站姿弹力带面拉",
-  "spec": "drill-anim/specs/h-band-face-pull-rr1-kn1.js",
-  "specSha256Lf": "57e81cbfe525f878ea8b0432d0a559135d9bcf11a6a983b7241945919d6135fd",
+  "spec": "drill-anim/specs/h-band-face-pull-r2.js",
+  "specSha256Lf": "f946131be8010165a14bdeea2110ca9b1d1931c53595a8788802693cf554917d",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -77,7 +77,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/h-band-face-pull-rr1-kn1.js"
+    "selectedSpec": "drill-anim/specs/h-band-face-pull-r2.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -95,5 +95,15 @@
       "branch": "codex/knee-fix-r1",
       "note": "knee fix r1 (2026-11-06) of h-band-face-pull-rr1.js: pelvis height rescaled to the v3 leg (kn-lib g); body-held world-frame hands follow the pelvis rise (kn1h); per-frame pelvis-y correction kn1y (standing leg straight ~5 deg)"
     }
+  },
+  "elbowTwistFix": {
+    "branch": "codex/elbow-twist-r1",
+    "date": "2026-11-08",
+    "from": "drill-anim/specs/h-band-face-pull-rr1-kn1.js",
+    "to": "drill-anim/specs/h-band-face-pull-r2.js",
+    "why": "2026-11-08 全局肘部扫描：前臂相对未转动的上臂滚转，肘部皮肤拧成糖纸状 -> 改在肩部转上臂（左 upperArmTwist -90、elbowTwist -30（肘窝朝内偏前，上臂轴向总旋 -90°）；右 upperArmTwist +100、elbowTwist +45（肘窝朝内偏前，上臂轴向总旋 100°）），肘保持近纯铰链；肘部最小截面比 左 0.80→0.96/右 0.79→0.97，跨肘扭转 左 90°→19°/右 90°→17°；关节位置漂移 ≤0.0 mm，求解警告不增，地面/贴身接触代理指标不变差",
+    "reviewed": false,
+    "qaStatus": "candidate-awaiting-gpu-and-user-review",
+    "elbowTwistFix": "r1"
   }
 }
