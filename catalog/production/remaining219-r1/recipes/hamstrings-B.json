@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "hamstrings-B",
   "nameZh": "滑盘腿弯举",
-  "spec": "drill-anim/specs/hamstrings-B-et1.js",
-  "specSha256Lf": "93241076cac1c2c1fc5e0167cfb99b1df8e9dde40f90a1008e58470198375c40",
+  "spec": "drill-anim/specs/hamstrings-B-r2.js",
+  "specSha256Lf": "1f1c945ca87bdf6d682ca4f663061170e3eed4830457022a2b9868b0b8c00ddc",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -91,7 +91,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/hamstrings-B-et1.js"
+    "selectedSpec": "drill-anim/specs/hamstrings-B-r2.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -107,5 +107,15 @@
         "why": "forearm twist: constant elbowTwist split (pose-fix r2 et)"
       }
     ]
+  },
+  "elbowTwistFix": {
+    "branch": "codex/elbow-twist-r1",
+    "date": "2026-11-08",
+    "from": "drill-anim/specs/hamstrings-B-et1.js",
+    "to": "drill-anim/specs/hamstrings-B-r2.js",
+    "why": "2026-11-08 全局肘部扫描：前臂相对未转动的上臂滚转，肘部皮肤拧成糖纸状 -> 改在肩部转上臂（左 upperArmTwist +110、elbowTwist -30（肘窝朝后，上臂轴向总旋 110°）；右 upperArmTwist -70、elbowTwist -15（肘窝朝内偏后，上臂轴向总旋 -70°）），肘保持近纯铰链；肘部最小截面比 左 0.49→1.00/右 0.82→1.00，跨肘扭转 左 127°→2°/右 64°→2°；关节位置漂移 ≤0.0 mm，求解警告不增，地面/贴身接触代理指标不变差",
+    "reviewed": false,
+    "qaStatus": "candidate-awaiting-gpu-and-user-review",
+    "elbowTwistFix": "r1"
   }
 }
