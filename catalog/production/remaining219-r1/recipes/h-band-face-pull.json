@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "h-band-face-pull",
   "nameZh": "站姿弹力带面拉",
-  "spec": "drill-anim/specs/h-band-face-pull-r2.js",
-  "specSha256Lf": "f946131be8010165a14bdeea2110ca9b1d1931c53595a8788802693cf554917d",
+  "spec": "drill-anim/specs/h-band-face-pull-r3.js",
+  "specSha256Lf": "66b1ea7f052318f6886b1959fc4ad41c35daa120738ad785bc7778f91875bf1e",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -77,7 +77,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/h-band-face-pull-r2.js"
+    "selectedSpec": "drill-anim/specs/h-band-face-pull-r3.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -98,12 +98,13 @@
   },
   "elbowTwistFix": {
     "branch": "codex/elbow-twist-r1",
-    "date": "2026-11-08",
+    "date": "2026-11-09",
     "from": "drill-anim/specs/h-band-face-pull-rr1-kn1.js",
-    "to": "drill-anim/specs/h-band-face-pull-r2.js",
-    "why": "2026-11-08 全局肘部扫描：前臂相对未转动的上臂滚转，肘部皮肤拧成糖纸状 -> 改在肩部转上臂（左 upperArmTwist -90、elbowTwist -30（肘窝朝内偏前，上臂轴向总旋 -90°）；右 upperArmTwist +100、elbowTwist +45（肘窝朝内偏前，上臂轴向总旋 100°）），肘保持近纯铰链；肘部最小截面比 左 0.80→0.96/右 0.79→0.97，跨肘扭转 左 90°→19°/右 90°→17°；关节位置漂移 ≤0.0 mm，求解警告不增，地面/贴身接触代理指标不变差",
+    "to": "drill-anim/specs/h-band-face-pull-r3.js",
+    "supersedes": "drill-anim/specs/h-band-face-pull-r2.js",
+    "why": "2026-11-09 朝向优先重做（用户看图：r1 把双臂外旋外翻，「应该手臂正面相对」）：原始上臂朝向本来就对（两肘窝/上臂内侧相对），错的是握把掌心朝上，前臂对上臂扭 90° 造成肘部糖纸状收窄；r1 在肩部外旋上臂 90–100° 去补偿，导致外翻且三角肌处折叠。r2：上臂不动，两手绕手指轴各转 90° 改为掌心相对（中立握），elbowTwist/upperArmTwist 不变；肘部最小截面比 左 0.80→0.95/右 0.79→0.95，跨肘扭转 90°→46°，手对前臂 69°→24°；肩部截面比 左 0.83/右 0.85 与修前相同（r1 为 0.57），跨肩扭转不变；腕关节位置、肘极向、时间轴、机位不变，掌心点随手绕腕转动 ≤35 mm（弹力带末端挂在手骨上随手）",
     "reviewed": false,
     "qaStatus": "candidate-awaiting-gpu-and-user-review",
-    "elbowTwistFix": "r1"
+    "elbowTwistFix": "r2"
   }
 }
