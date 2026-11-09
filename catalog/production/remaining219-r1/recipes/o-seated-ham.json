@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "o-seated-ham",
   "nameZh": "坐姿腘绳肌前伸",
-  "spec": "drill-anim/specs/o-seated-ham-sc1.js",
-  "specSha256Lf": "f784fff0571dc7d8603a8158af4fb386dfc00a57a7af4ca4192b33421c7bbbbb",
+  "spec": "drill-anim/specs/o-seated-ham-r1.js",
+  "specSha256Lf": "a9fd2936a8d763f75d00a3e7a0f208689b3b26640efdd80682accc00d77830d6",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -75,7 +75,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/o-seated-ham-sc1.js"
+    "selectedSpec": "drill-anim/specs/o-seated-ham-r1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -91,5 +91,17 @@
         "why": "self-collision: hand targets pushed out of the body (hand-push r1)"
       }
     ]
+  },
+  "elbowTwistFix": {
+    "branch": "codex/elbow-twist-r1",
+    "date": "2026-11-10",
+    "from": "drill-anim/specs/o-seated-ham-sc1.js",
+    "to": "drill-anim/specs/o-seated-ham-r1.js",
+    "supersedes": "drill-anim/specs/o-seated-ham-sc1.js",
+    "why": "2026-11-10 ROM 修复（tools/rom-spec/ROM.md r1.1）：在 sc1 上左臂 upperArmTwist +10：前臂总扭转 foreTot 左 149°→141°（限 140，仍超 1°，明显减小），htw 58° 不变。肘部最小截面比 左 0.82→0.83；R5 左 0.92→0.89（−0.03，在判据内）；翻面 3→1；跨肩扭转 |14|°→24°；腕截面 1.00 不变；右侧未动；关节/手掌漂移 0 mm，求解警告不增，近身计数 0（密集 81 帧）；配方指向 o-seated-ham-r1，supersedes o-seated-ham-sc1，reviewed=false",
+    "reviewed": false,
+    "qaStatus": "candidate-awaiting-gpu-and-user-review",
+    "elbowTwistFix": "r2",
+    "romFix": "r1.1"
   }
 }
