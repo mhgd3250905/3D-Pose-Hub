@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "s-pigeon",
   "nameZh": "鸽子式（直立扶砖版）",
-  "spec": "drill-anim/specs/s-pigeon-gc2-et1.js",
-  "specSha256Lf": "f374ded4cfe9cfd20b00a0652380768a20d0148f25e3be48ef02789942630e39",
+  "spec": "drill-anim/specs/s-pigeon-r1.js",
+  "specSha256Lf": "449a10210df6f687250689c8c3a2b06eabcec46a8db4d96cf3c312c3eae0e29a",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -92,7 +92,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/s-pigeon-gc2-et1.js"
+    "selectedSpec": "drill-anim/specs/s-pigeon-r1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -123,5 +123,17 @@
         "why": "forearm twist: constant elbowTwist split (pose-fix r8 et, on gc spec)"
       }
     ]
+  },
+  "elbowTwistFix": {
+    "branch": "codex/elbow-twist-r1",
+    "date": "2026-11-10",
+    "from": "drill-anim/specs/s-pigeon-gc2-et1.js",
+    "to": "drill-anim/specs/s-pigeon-r1.js",
+    "supersedes": "drill-anim/specs/s-pigeon-gc2-et1.js",
+    "why": "2026-11-10 ROM 修复（tools/rom-spec/ROM.md r1.1）：上臂外旋 30°（左 upperArmTwist +30/右 -30）：前臂总扭转 foreTot 162°/157°→134°/129°（限 140），htw 35°/32° 不变。肘部最小截面比 左 0.85→0.86/右 0.80→0.81；R5 0.84→0.85；翻面 左 29→3/右 25→2；跨肩扭转 24°→6°；腕截面 1.27/1.24 不变；关节/手掌漂移 0 mm，求解警告不增，近身计数 0（密集 81 帧）；配方指向 s-pigeon-r1，supersedes s-pigeon-gc2-et1，reviewed=false",
+    "reviewed": false,
+    "qaStatus": "candidate-awaiting-gpu-and-user-review",
+    "elbowTwistFix": "r2",
+    "romFix": "r1.1"
   }
 }
