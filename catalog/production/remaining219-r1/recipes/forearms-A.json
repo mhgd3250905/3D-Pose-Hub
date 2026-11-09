@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "forearms-A",
   "nameZh": "跪姿多方向腕部摇摆",
-  "spec": "drill-anim/specs/forearms-A-r3.js",
-  "specSha256Lf": "63ac4b0f31dae84a75af4bdbc222ebe5a2e63fdc93490a715914eae58b0fa81c",
+  "spec": "drill-anim/specs/forearms-A-r4.js",
+  "specSha256Lf": "20a6576a0f696798443516578a0d2f0df9b445754a7b5b54da9d14e033972157",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -93,7 +93,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/forearms-A-r3.js"
+    "selectedSpec": "drill-anim/specs/forearms-A-r4.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -121,12 +121,13 @@
   },
   "elbowTwistFix": {
     "branch": "codex/elbow-twist-r1",
-    "date": "2026-11-08",
+    "date": "2026-11-09",
     "from": "drill-anim/specs/forearms-A-r2-gc1-ht2.js",
-    "to": "drill-anim/specs/forearms-A-r3.js",
-    "why": "2026-11-08 全局肘部扫描：前臂相对未转动的上臂滚转，肘部皮肤拧成糖纸状 -> 改在肩部转上臂（左 upperArmTwist -15、elbowTwist +0、时变扭转 100% 移到肩部（肘窝朝脚偏内，上臂轴向总旋 -15°）；右 upperArmTwist -55、elbowTwist -45、时变扭转 100% 移到肩部（肘窝朝脚偏后，上臂轴向总旋 -55°）），肘保持近纯铰链；肘部最小截面比 左 0.66→0.96/右 0.38→0.99，跨肘扭转 左 112°→30°/右 172°→3°；关节位置漂移 ≤0.0 mm，求解警告不增，地面/贴身接触代理指标不变差",
+    "to": "drill-anim/specs/forearms-A-r4.js",
+    "supersedes": "drill-anim/specs/forearms-A-r3.js",
+    "why": "2026-11-09 朝向优先重做（用户看图：r1 肘修好但肩部折叠）：原始上臂内旋到两肘窝相对，手腕各方向摇摆时前臂对上臂扭 116°/174°；r1 把时变扭转 100% 移到肩部，肘好了但肩部被拧折（右肩截面 0.76→0.31，肩部扭转幅度 21°→182°）。r2：上臂静态外旋 45°（撑地肘窝朝前/朝头），两侧 elbowTwist -45，时变扭转全部留在前臂/腕（c=0，肩部无时变扭转）；肘部最小截面比 左 0.65→0.77/右 0.36→0.66（未达 0.85，取肩部不变差前提下的最好值），跨肘扭转 左 116°→93°/右 174°→110°；肩部截面比 左 0.72→0.80/右 0.76→0.85，跨肩扭转 左 72°→27°/右 71°→26°；关节漂移 0 mm，求解警告不增；肩部面翻折计数偏高、左肩腋下特写有轻微折痕，待用户看图定",
     "reviewed": false,
     "qaStatus": "candidate-awaiting-gpu-and-user-review",
-    "elbowTwistFix": "r1"
+    "elbowTwistFix": "r2"
   }
 }
