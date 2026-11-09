@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "forearms-B",
   "nameZh": "哑铃腕屈 + 腕伸",
-  "spec": "drill-anim/specs/forearms-B-r3.js",
-  "specSha256Lf": "799172836db626205d730233e7b21a7445364a345d3589e3885efbf0750f4620",
+  "spec": "drill-anim/specs/forearms-B-r4.js",
+  "specSha256Lf": "977c823d38fb1da49f6cfcfb2f6a93255078b27f741d10fa3cadc9697a11d017",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -75,7 +75,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/forearms-B-r3.js"
+    "selectedSpec": "drill-anim/specs/forearms-B-r4.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -94,13 +94,14 @@
   },
   "elbowTwistFix": {
     "branch": "codex/elbow-twist-r1",
-    "date": "2026-11-09",
+    "date": "2026-11-10",
     "from": "drill-anim/specs/forearms-B-et1.js",
-    "to": "drill-anim/specs/forearms-B-r3.js",
-    "supersedes": "drill-anim/specs/forearms-B-r2.js",
-    "why": "2026-11-09 先定朝向、后调扭转重做（r1 肩部变差）：前臂放大腿、肘窝朝前；左前臂滚转绕了远路（跨肘约 170°），r1 转上臂 -135°（肩 0.98→0.53）。r3 上臂不动，左 elbowTwist -220（走近路），掌心/手/哑铃不变。肘部最小截面比 左 0.71→0.85（恰在线上），跨肘扭转 168°→57°；肩部截面 0.98、R5 0.81、翻面 15、跨肩扭转 16° 均不变；关节/手掌漂移 0 mm，求解警告不增；手对前臂扭转 21°→85°",
+    "to": "drill-anim/specs/forearms-B-r4.js",
+    "supersedes": "drill-anim/specs/forearms-B-r3.js",
+    "why": "2026-11-10 ROM 修复（tools/rom-spec/ROM.md r1.1）：在 r3 上左臂 upperArmTwist +15：前臂总扭转 foreTot 左 146°→132°（限 140）。htw 89° 不变（仍超 75，只能改手朝向，待验收）。肘部最小截面比 左 0.85→0.90；R5 左 0.81→0.78（−0.03，在判据内）；翻面 15→18；跨肩扭转 16°→31°（+15，在判据边界）；腕截面 0.97 不变；右侧未动；关节/手掌漂移 0 mm，求解警告不增，近身计数不变（密集 81 帧）；配方指向 forearms-B-r4，supersedes forearms-B-r3，reviewed=false",
     "reviewed": false,
     "qaStatus": "candidate-awaiting-gpu-and-user-review",
-    "elbowTwistFix": "r2"
+    "elbowTwistFix": "r2",
+    "romFix": "r1.1"
   }
 }
