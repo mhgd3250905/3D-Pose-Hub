@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "erectors-B",
   "nameZh": "瑞士球背伸",
-  "spec": "drill-anim/specs/erectors-B-r2.js",
-  "specSha256Lf": "77c0f5a7584949e768cddffcee6bf59f8a982214f33c6a38d77f611be88e9064",
+  "spec": "drill-anim/specs/erectors-B-r3.js",
+  "specSha256Lf": "9072c6b9e37dac319da3023a6213a99218fd9071ec14410fec238c7cfd9c448c",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -77,7 +77,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/erectors-B-r2.js"
+    "selectedSpec": "drill-anim/specs/erectors-B-r3.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -91,5 +91,17 @@
     "why": "2026-11-08 用户审核：脚方向反了 -> 双脚 heading 90（鞋尖朝身体前下，前脚掌着地，脚跟朝墙，脚底对墙），墙面后移到 -0.5456（脚跟留 1 mm）",
     "reviewed": false,
     "qaStatus": "candidate-awaiting-gpu-and-user-review"
+  },
+  "elbowTwistFix": {
+    "branch": "codex/elbow-twist-r1",
+    "date": "2026-11-10",
+    "from": "drill-anim/specs/erectors-B-r2.js",
+    "to": "drill-anim/specs/erectors-B-r3.js",
+    "supersedes": "drill-anim/specs/erectors-B-r2.js",
+    "why": "2026-11-10 ROM 修复（tools/rom-spec/ROM.md r1.1）：前臂总扭转 foreTot 170°→136°（限 140），htw 0° 不变；上臂外旋 45°（左 upperArmTwist +45/右 -45）。肘部最小截面比 左 0.94→0.93/右 0.93→0.93；R5 左 0.50→0.48/右 0.53→0.50；翻面 左 110→88/右 101→80；跨肩扭转 70°→25°；腕截面 1.14 不变；关节/手掌漂移 0 mm，求解警告不增，近身计数 38 不变（密集 81 帧）；配方指向 erectors-B-r3，supersedes erectors-B-r2，reviewed=false",
+    "reviewed": false,
+    "qaStatus": "candidate-awaiting-gpu-and-user-review",
+    "elbowTwistFix": "r2",
+    "romFix": "r1.1"
   }
 }
