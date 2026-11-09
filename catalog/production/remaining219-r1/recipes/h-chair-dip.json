@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "h-chair-dip",
   "nameZh": "椅子臂屈伸",
-  "spec": "drill-anim/specs/h-chair-dip-et1.js",
-  "specSha256Lf": "bd6eafe0e82dc50a6dfa3c5f6ae69c538b506a72108444af779745825f645c1d",
+  "spec": "drill-anim/specs/h-chair-dip-r1.js",
+  "specSha256Lf": "23a68af27d244ebce69ffebd14adc392feeed99f73f5eb90bc32b20c3f333f3b",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -78,7 +78,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/h-chair-dip-et1.js"
+    "selectedSpec": "drill-anim/specs/h-chair-dip-r1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -94,5 +94,17 @@
         "why": "pose-fix r9: fixed hand-vs-forearm twist 90-120 deg -> constant forearm roll {\"left\": 65, \"right\": -65}"
       }
     ]
+  },
+  "elbowTwistFix": {
+    "branch": "codex/elbow-twist-r1",
+    "date": "2026-11-10",
+    "from": "drill-anim/specs/h-chair-dip-et1.js",
+    "to": "drill-anim/specs/h-chair-dip-r1.js",
+    "supersedes": "drill-anim/specs/h-chair-dip-et1.js",
+    "why": "2026-11-10 ROM 修复（tools/rom-spec/ROM.md r1.1）：前臂总扭转 foreTot 186°→131°（限 140），htw 39° 不变；上臂外旋 60°（左 upperArmTwist +60/右 -60）。肘部最小截面比 左 0.53→0.80/右 0.53→0.78；R5 左 0.50→0.47/右 0.49→0.47；翻面 左 43→39/右 27→26；跨肩扭转 |28|°→32°/63°→3°；腕截面 0.99 不变；关节/手掌漂移 0 mm，求解警告不增，近身计数 28/87→0（密集 81 帧）；配方指向 h-chair-dip-r1，supersedes h-chair-dip-et1，reviewed=false",
+    "reviewed": false,
+    "qaStatus": "candidate-awaiting-gpu-and-user-review",
+    "elbowTwistFix": "r2",
+    "romFix": "r1.1"
   }
 }
