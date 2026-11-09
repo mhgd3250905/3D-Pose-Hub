@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "lats-A",
   "nameZh": "坐姿撑地抬臀",
-  "spec": "drill-anim/specs/lats-A-r2.js",
-  "specSha256Lf": "4e5395828c6d0267b570752648496f64291fc994b7ef0d5fd51fcda7f5d46f8f",
+  "spec": "drill-anim/specs/lats-A-r3.js",
+  "specSha256Lf": "0b1772bfde14e2dac5d44cff6d795fb5aa1b9453fc3e1f28fda5a2b2c23fae4b",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -92,7 +92,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/lats-A-r2.js"
+    "selectedSpec": "drill-anim/specs/lats-A-r3.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -111,12 +111,13 @@
   },
   "elbowTwistFix": {
     "branch": "codex/elbow-twist-r1",
-    "date": "2026-11-08",
+    "date": "2026-11-09",
     "from": "drill-anim/specs/lats-A-wb-et1.js",
-    "to": "drill-anim/specs/lats-A-r2.js",
-    "why": "2026-11-08 全局肘部扫描：前臂相对未转动的上臂滚转，肘部皮肤拧成糖纸状 -> 改在肩部转上臂（左 upperArmTwist +110、elbowTwist +30（肘窝朝后偏头，上臂轴向总旋 110°）；右 upperArmTwist -110、elbowTwist -60（肘窝朝后偏头，上臂轴向总旋 -110°）），肘保持近纯铰链；肘部最小截面比 左 0.54→0.99/右 0.54→0.99，跨肘扭转 左 113°→1°/右 114°→3°；关节位置漂移 ≤0.0 mm，求解警告不增，地面/贴身接触代理指标不变差",
+    "to": "drill-anim/specs/lats-A-r3.js",
+    "supersedes": "drill-anim/specs/lats-A-r2.js",
+    "why": "2026-11-09 先定朝向、后调扭转重做：前臂滚转 elbowTwist 对该 spec 无效（b ±113 肘不变），只能转上臂；r1 转上臂过大，肩部截面 0.95→0.65/0.68、跨肩扭转 19°→93°。r3 上臂外旋 60°（左 upperArmTwist +60/右 -60），用户 16:34 同意找不到更好时采用。肘部最小截面比 左 0.54→0.87/右 0.54→0.86，跨肘扭转 113°→53°；肩部截面 左 0.95→0.86/右 0.95→0.88（-0.09/-0.07），R5 0.72/0.70→0.73，翻面 左 43→67/右 34→39，跨肩扭转 19°→43°；关节/手掌漂移 0 mm，求解警告 336=336（密集 81 帧），近身计数不增；手对前臂扭转 5° 不变；配方指向 lats-A-r3，supersedes lats-A-r2，elbowTwistFix=r2，reviewed=false",
     "reviewed": false,
     "qaStatus": "candidate-awaiting-gpu-and-user-review",
-    "elbowTwistFix": "r1"
+    "elbowTwistFix": "r2"
   }
 }
