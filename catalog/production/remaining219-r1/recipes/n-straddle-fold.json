@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "n-straddle-fold",
   "nameZh": "坐姿分腿体前屈",
-  "spec": "drill-anim/specs/n-straddle-fold-r3.js",
-  "specSha256Lf": "d9f8163c5852b96c4af4182192c2345a80b8c7108ad1806e18c7f9f31f7f5a09",
+  "spec": "drill-anim/specs/n-straddle-fold-r4.js",
+  "specSha256Lf": "dce0dd90a1634db757e10d47ca845b267f17ca9f7d48f2514464d5efd1d49a20",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -92,7 +92,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/n-straddle-fold-r3.js"
+    "selectedSpec": "drill-anim/specs/n-straddle-fold-r4.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -129,13 +129,14 @@
   },
   "elbowTwistFix": {
     "branch": "codex/elbow-twist-r1",
-    "date": "2026-11-09",
+    "date": "2026-11-10",
     "from": "drill-anim/specs/n-straddle-fold-gc-int1.js",
-    "to": "drill-anim/specs/n-straddle-fold-r3.js",
-    "supersedes": "drill-anim/specs/n-straddle-fold-r2.js",
-    "why": "2026-11-09 先定朝向、后调扭转重做：上臂不动（r1 把上臂转 ±125°，肩部截面 0.58/0.62→0.31/0.29、跨肩扭转 34°→159°），仅前臂滚转 elbowTwist 左 -150/右 +150。肘部最小截面比 左 0.81→0.96/右 0.82→0.96，跨肘扭转 110°→36°；肩部截面 左 0.58/右 0.62 不变，R5 不变，翻面 左 123→113/右 63→47，跨肩扭转 34° 不变；关节/手掌漂移 0 mm，求解警告不增（密集 81 帧）；近身计数 左 736→741/右 745→763（+5/+18，待用户看图）；手对前臂扭转 8°→83°；配方指向 n-straddle-fold-r3，supersedes n-straddle-fold-r2，elbowTwistFix=r2，reviewed=false",
+    "to": "drill-anim/specs/n-straddle-fold-r4.js",
+    "supersedes": "drill-anim/specs/n-straddle-fold-r3.js",
+    "why": "2026-11-10 ROM 修复（tools/rom-spec/ROM.md r1.1）：在 r3 上 elbowTwist 左 +30 / 右 −30：htw 两侧 84°→69°（限 75），foreTot 109° 不变。肘部最小截面比 0.96/0.96→0.96/0.95；腕截面 0.96/0.95→0.99/0.99；R5 不变；翻面 123/63→113/47；关节/手掌漂移 0 mm，求解警告不增；近身计数 741/763→793/831（+7%/+9%，违反近身不增，按整体变好采用，列待验收）（密集 81 帧）；配方指向 n-straddle-fold-r4，supersedes n-straddle-fold-r3，reviewed=false",
     "reviewed": false,
     "qaStatus": "candidate-awaiting-gpu-and-user-review",
-    "elbowTwistFix": "r2"
+    "elbowTwistFix": "r2",
+    "romFix": "r1.1"
   }
 }
