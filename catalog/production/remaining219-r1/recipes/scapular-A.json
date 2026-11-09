@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "scapular-A",
   "nameZh": "俯卧 Y-T-W 举",
-  "spec": "drill-anim/specs/scapular-A-r4.js",
-  "specSha256Lf": "fc5db8a769b78e8e3511dd18a025f4315a53517b26cc4da634cd8665baaa72b9",
+  "spec": "drill-anim/specs/scapular-A-r5.js",
+  "specSha256Lf": "6c10cd4084504e17012aeb2d89eaa5bb1825938fbcf15bc2bf086f0061def4c3",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -92,7 +92,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/scapular-A-r4.js"
+    "selectedSpec": "drill-anim/specs/scapular-A-r5.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -122,9 +122,9 @@
     "branch": "codex/elbow-twist-r1",
     "date": "2026-11-09",
     "from": "drill-anim/specs/scapular-A-r2-gc1-et1.js",
-    "to": "drill-anim/specs/scapular-A-r4.js",
-    "supersedes": "drill-anim/specs/scapular-A-r3.js",
-    "why": "2026-11-09 先定朝向、后调扭转重做：依据 ACE 等 Y-T-W 说明（Y 位拇指朝上、掌心朝内）：r1 把上臂转 ±125° 量级，肩部截面 0.47/0.50→0.35/0.38、跨肩扭转 29°→129°/159°；仅调前臂滚转时肘最好 0.76/0.78。r4 改为上臂小幅转动 + 前臂滚转：左 upperArmTwist -20、elbowTwist +60，右 upperArmTwist +30、elbowTwist -170。肘部最小截面比 左 0.60→0.86/右 0.36→0.90，跨肘扭转 左 124°→74°/右 174°→59°；肩部截面 左 0.47→0.46/右 0.50→0.49，R5 左 0.56→0.55/右 0.56→0.53，翻面 左 75→83/右 58→79，跨肩扭转 29°→44°/54°（右 +25°，为拇指朝上朝向所需）；关节/手掌漂移 0 mm，求解警告不增（密集 81 帧），近身计数不增；手对前臂扭转 左 41°→70°/右 25°→75°；用户 16:34 授权按「整体变好」原则定朝向；配方指向 scapular-A-r4，supersedes scapular-A-r3，elbowTwistFix=r2，reviewed=false",
+    "to": "drill-anim/specs/scapular-A-r5.js",
+    "supersedes": "drill-anim/specs/scapular-A-r4.js",
+    "why": "2026-11-09 退回修前：r4 使腕部变细（前臂+手掌网格腕截面 左 0.88→0.76/右 0.99→0.73，手对前臂扭转 70°/75°），参数空间内无解（目标掌心朝向所需前臂总旋转超出 ROM）。用户 21:54 同意退回。r5 与 scapular-A-r2-gc1-et1（修前）姿态完全相同（仅改 id），待 ROM 规范确认后重做掌心朝向；配方指向 scapular-A-r5，supersedes scapular-A-r4，elbowTwistFix=r2，reviewed=false",
     "reviewed": false,
     "qaStatus": "candidate-awaiting-gpu-and-user-review",
     "elbowTwistFix": "r2"
