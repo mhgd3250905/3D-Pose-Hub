@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "h-wall-pec",
   "nameZh": "靠墙单臂胸肌拉伸",
-  "spec": "drill-anim/specs/h-wall-pec-r6.js",
-  "specSha256Lf": "8535824dbcf547b02b3d7793451195ab46423d7836410ffc30d46a85fed34f4f",
+  "spec": "drill-anim/specs/h-wall-pec-r7.js",
+  "specSha256Lf": "c0f86633389ac1283c49d96a2fce85544677e418656249c911ebff93a34c492c",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -280,12 +280,13 @@
   },
   "elbowTwistFix": {
     "branch": "codex/elbow-twist-r1",
-    "date": "2026-11-08",
+    "date": "2026-11-09",
     "from": "drill-anim/specs/h-wall-pec-r5.js",
-    "to": "drill-anim/specs/h-wall-pec-r6.js",
-    "why": "2026-11-08 全局肘部扫描：前臂相对未转动的上臂滚转，肘部皮肤拧成糖纸状 -> 改在肩部转上臂（右 upperArmTwist +90、elbowTwist +0（肘窝朝外，上臂轴向总旋 90°）），肘保持近纯铰链；肘部最小截面比 右 0.78→0.96，跨肘扭转 右 98°→5°；关节位置漂移 ≤0.0 mm，求解警告不增，地面/贴身接触代理指标不变差",
+    "to": "drill-anim/specs/h-wall-pec-r7.js",
+    "supersedes": "drill-anim/specs/h-wall-pec-r6.js",
+    "why": "2026-11-09 先定朝向、后调扭转重做：依据靠墙胸肌拉伸参考（手掌贴墙、拇指朝上、手指朝后）：该 spec twistShare=1，前臂滚转 elbowTwist 无效，只能转上臂；上臂负向转动肘变差（-60 时 0.47），r1 正向转动过大，肩部截面 0.72→0.25。r7 右 upperArmTwist +20。肘部最小截面比 右 0.78→0.86，跨肘扭转 98°→77°；肩部截面 0.72→0.66（-0.06），R5 0.41→0.39，翻面 85→110，跨肩扭转 73°→93°；关节/手掌漂移 0 mm，求解警告不增（密集 81 帧），近身计数不增；手对前臂扭转 1° 不变；用户 16:34 授权按「整体变好」原则定朝向，肩部变化列明待看图；配方指向 h-wall-pec-r7，supersedes h-wall-pec-r6，elbowTwistFix=r2，reviewed=false",
     "reviewed": false,
     "qaStatus": "candidate-awaiting-gpu-and-user-review",
-    "elbowTwistFix": "r1"
+    "elbowTwistFix": "r2"
   }
 }
