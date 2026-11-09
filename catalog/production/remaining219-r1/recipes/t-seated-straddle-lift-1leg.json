@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "t-seated-straddle-lift-1leg",
   "nameZh": "坐姿分腿单腿抬起",
-  "spec": "drill-anim/specs/t-seated-straddle-lift-1leg-r4.js",
-  "specSha256Lf": "d2e1161fbb064417cc8375851a9e69ce47aa08bdedacaebc2a0bed81a66440b7",
+  "spec": "drill-anim/specs/t-seated-straddle-lift-1leg-r5.js",
+  "specSha256Lf": "ccac2db20cc1b95a4baac2a4f20bc02fa31f5485f84d66c1f9c37c7aa27fd32b",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -92,7 +92,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/t-seated-straddle-lift-1leg-r4.js"
+    "selectedSpec": "drill-anim/specs/t-seated-straddle-lift-1leg-r5.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -120,12 +120,13 @@
   },
   "elbowTwistFix": {
     "branch": "codex/elbow-twist-r1",
-    "date": "2026-11-08",
+    "date": "2026-11-09",
     "from": "drill-anim/specs/t-seated-straddle-lift-1leg-r3-gc1-ht1.js",
-    "to": "drill-anim/specs/t-seated-straddle-lift-1leg-r4.js",
-    "why": "2026-11-08 全局肘部扫描：前臂相对未转动的上臂滚转，肘部皮肤拧成糖纸状 -> 改在肩部转上臂（左 upperArmTwist -35、elbowTwist -55、时变扭转 100% 移到肩部（肘窝朝外，上臂轴向总旋 -35°）；右 upperArmTwist +45、elbowTwist +75、时变扭转 100% 移到肩部（肘窝朝外，上臂轴向总旋 45°）），肘保持近纯铰链；肘部最小截面比 左 0.42→0.98/右 0.42→0.97，跨肘扭转 左 142°→30°/右 142°→30°；关节位置漂移 ≤0.0 mm，求解警告不增，地面/贴身接触代理指标不变差",
+    "to": "drill-anim/specs/t-seated-straddle-lift-1leg-r5.js",
+    "supersedes": "drill-anim/specs/t-seated-straddle-lift-1leg-r4.js",
+    "why": "2026-11-09 先定朝向、后调扭转重做（r1 肩部变差）：11-05 ht1 时变前臂滚转表让前臂滚转最多摆 245°，肘截面 0.42；r1 把滚转推到肩部（0.78→0.35）。r5 回到 gc1 姿态、去掉 ht1 表，手对前臂扭转交运行时沿前臂分摊；手臂、手、地面接触不变。肘部最小截面比 左 0.42→0.78/右 0.42→0.74（未达 0.85，取肩不变差前提下的改善，待用户看图）；肩部截面 左 0.78/右 0.77 不变，R5 不变，翻面 右 43→17；关节/手掌漂移 0 mm，求解警告 218=218（密集），近身计数 166/169→158/152；手对前臂扭转 42°→82°/87°",
     "reviewed": false,
     "qaStatus": "candidate-awaiting-gpu-and-user-review",
-    "elbowTwistFix": "r1"
+    "elbowTwistFix": "r2"
   }
 }
