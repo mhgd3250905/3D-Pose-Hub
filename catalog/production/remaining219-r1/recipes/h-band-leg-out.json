@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "h-band-leg-out",
   "nameZh": "仰卧弹力带单腿侧落",
-  "spec": "drill-anim/specs/h-band-leg-out-r2.js",
-  "specSha256Lf": "9c9fc2415d1b4c6e0161dc55961e7291c07697e53440ac2387ba072877df145c",
+  "spec": "drill-anim/specs/h-band-leg-out-r3.js",
+  "specSha256Lf": "fdd89dbcea4798c3882995a1c7f54163925a21df2c7cc3bde2341c8916834e69",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -91,7 +91,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/h-band-leg-out-r2.js"
+    "selectedSpec": "drill-anim/specs/h-band-leg-out-r3.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -127,12 +127,13 @@
   },
   "elbowTwistFix": {
     "branch": "codex/elbow-twist-r1",
-    "date": "2026-11-08",
+    "date": "2026-11-09",
     "from": "drill-anim/specs/h-band-leg-out-et1-fa1.js",
-    "to": "drill-anim/specs/h-band-leg-out-r2.js",
-    "why": "2026-11-08 全局肘部扫描：前臂相对未转动的上臂滚转，肘部皮肤拧成糖纸状 -> 改在肩部转上臂（右 upperArmTwist -135、elbowTwist -30（肘窝朝外偏后，上臂轴向总旋 -135°）），肘保持近纯铰链；肘部最小截面比 右 0.49→0.96，跨肘扭转 右 140°→12°；关节位置漂移 ≤0.0 mm，求解警告不增，地面/贴身接触代理指标不变差",
+    "to": "drill-anim/specs/h-band-leg-out-r3.js",
+    "supersedes": "drill-anim/specs/h-band-leg-out-r2.js",
+    "why": "2026-11-09 朝向优先重做（用户看图：「核心问题是搞错了手臂的旋转方向」）：右手握带的拳头原本手指方向指回身体（与前臂反向约 150°）、掌心相对前臂扭 140°，et1 又加 elbowTwist -100 掩盖，肘部截面 0.49 且拳头陷进身体；r1 再把上臂转 135° 让肘窝朝地，三角肌折叠（肩截面 0.95→0.29）。r2：上臂不动（仰卧肘窝朝上偏内），撤掉 et1 的 elbowTwist -100，拳头逐帧沿自身前臂方向（腕伸直）重新定向为中立握再旋前 30°（掌心朝内偏脚）；肘部最小截面比 0.49→0.92，跨肘扭转 140°→26°，手对前臂 19°→27°，肩部截面 0.95 不变，拳头穿身接触代理 133→0；腕轨迹、肘极向、腿、脚端弹力带锚点、时间轴、机位不变，掌心点随拳头重新定向移动（带端挂手骨随手）",
     "reviewed": false,
     "qaStatus": "candidate-awaiting-gpu-and-user-review",
-    "elbowTwistFix": "r1"
+    "elbowTwistFix": "r2"
   }
 }
