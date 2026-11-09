@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "forearms-B",
   "nameZh": "哑铃腕屈 + 腕伸",
-  "spec": "drill-anim/specs/forearms-B-r2.js",
-  "specSha256Lf": "6dea08d0c15dff005cfb3dfa9a19383c9b7454e4c27a373c10afd6743c2680bd",
+  "spec": "drill-anim/specs/forearms-B-r3.js",
+  "specSha256Lf": "799172836db626205d730233e7b21a7445364a345d3589e3885efbf0750f4620",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -75,7 +75,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/forearms-B-r2.js"
+    "selectedSpec": "drill-anim/specs/forearms-B-r3.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -94,12 +94,13 @@
   },
   "elbowTwistFix": {
     "branch": "codex/elbow-twist-r1",
-    "date": "2026-11-08",
+    "date": "2026-11-09",
     "from": "drill-anim/specs/forearms-B-et1.js",
-    "to": "drill-anim/specs/forearms-B-r2.js",
-    "why": "2026-11-08 全局肘部扫描：前臂相对未转动的上臂滚转，肘部皮肤拧成糖纸状 -> 改在肩部转上臂（左 upperArmTwist -135、elbowTwist +15（肘窝朝前偏外，上臂轴向总旋 -135°）），肘保持近纯铰链；肘部最小截面比 左 0.71→1.05，跨肘扭转 左 168°→75°；关节位置漂移 ≤0.0 mm，求解警告不增，地面/贴身接触代理指标不变差",
+    "to": "drill-anim/specs/forearms-B-r3.js",
+    "supersedes": "drill-anim/specs/forearms-B-r2.js",
+    "why": "2026-11-09 先定朝向、后调扭转重做（r1 肩部变差）：前臂放大腿、肘窝朝前；左前臂滚转绕了远路（跨肘约 170°），r1 转上臂 -135°（肩 0.98→0.53）。r3 上臂不动，左 elbowTwist -220（走近路），掌心/手/哑铃不变。肘部最小截面比 左 0.71→0.85（恰在线上），跨肘扭转 168°→57°；肩部截面 0.98、R5 0.81、翻面 15、跨肩扭转 16° 均不变；关节/手掌漂移 0 mm，求解警告不增；手对前臂扭转 21°→85°",
     "reviewed": false,
     "qaStatus": "candidate-awaiting-gpu-and-user-review",
-    "elbowTwistFix": "r1"
+    "elbowTwistFix": "r2"
   }
 }
