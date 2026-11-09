@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "h-kb-swing",
   "nameZh": "单臂壶铃摆荡",
-  "spec": "drill-anim/specs/h-kb-swing-r6.js",
-  "specSha256Lf": "37c4731fe1dc96d9e5e41339f8339da85d4435a9abec3af458fd6e7a1c068b06",
+  "spec": "drill-anim/specs/h-kb-swing-r7.js",
+  "specSha256Lf": "aa9607032f0add668118cf13dab1e7ceadc0a11ff142a1a9337b65f65d5e9684",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -305,12 +305,13 @@
   },
   "elbowTwistFix": {
     "branch": "codex/elbow-twist-r1",
-    "date": "2026-11-08",
+    "date": "2026-11-09",
     "from": "drill-anim/specs/h-kb-swing-r5-sc1.js",
-    "to": "drill-anim/specs/h-kb-swing-r6.js",
-    "why": "2026-11-08 全局肘部扫描：前臂相对未转动的上臂滚转，肘部皮肤拧成糖纸状 -> 改在肩部转上臂（右 upperArmTwist -50、elbowTwist +45（肘窝朝后偏脚，上臂轴向总旋 -50°）），肘保持近纯铰链；肘部最小截面比 右 0.74→0.94，跨肘扭转 右 82°→32°；关节位置漂移 ≤0.0 mm，求解警告不增，地面/贴身接触代理指标不变差",
+    "to": "drill-anim/specs/h-kb-swing-r7.js",
+    "supersedes": "drill-anim/specs/h-kb-swing-r6.js",
+    "why": "2026-11-09 先定朝向、后调扭转重做：依据单臂壶铃摆荡参考（顶端自然中立握、掌心朝下或朝中线）：该 spec twistShare=1，前臂滚转 elbowTwist 无效，只能转上臂。r1 转上臂过大，肩部截面 0.52→0.32；r7 右 upperArmTwist -25（r1 同方向、幅度减小）。肘部最小截面比 右 0.74→0.85，跨肘扭转 82°→57°；肩部截面 0.52→0.43（-0.09），R5 0.33→0.29，翻面 151→205，跨肩扭转 89°→114°；关节/手掌漂移 0 mm，求解警告 44=44（密集 81 帧），近身计数 426→402；手对前臂扭转 2° 不变；用户 16:34 授权按「整体变好」原则定朝向，肩部变化列明待看图；配方指向 h-kb-swing-r7，supersedes h-kb-swing-r6，elbowTwistFix=r2，reviewed=false",
     "reviewed": false,
     "qaStatus": "candidate-awaiting-gpu-and-user-review",
-    "elbowTwistFix": "r1"
+    "elbowTwistFix": "r2"
   }
 }
