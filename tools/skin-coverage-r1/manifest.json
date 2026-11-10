@@ -1,0 +1,44 @@
+{
+  "format": "pose-hub-appearance@1",
+  "id": "skin-coverage",
+  "version": "0.1.0-r1",
+  "status": "verification-candidate",
+  "approvedBase": "original-head-eye-soften-20261110-r1",
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "handSelection": "action-recipe",
+  "skins": [
+    "realistic",
+    "tech-white",
+    "neon-night",
+    "neon-night-b",
+    "hologram"
+  ],
+  "previewEntry": "tools/skin-coverage-r1/preview.mjs",
+  "productionEntry": "tools/skin-coverage-r1/render-masters.mjs",
+  "sources": {
+    "tools/skin-coverage-r1/install.mjs": "5aee67645d9aca4316f842a3f1b61654074d291bd1a15f60b41d5933bf7a43d6",
+    "tools/skin-coverage-r1/port.mjs": "edfa4eed21f81e3c3152d33a2d1c384744b1c1b8d2d0e052d69bc0e0c2a3f908",
+    "tools/skin-coverage-r1/preview.mjs": "46d344d51c13f77a5277ef57357b42214b521950ed88e6f6841e16c14ad45829",
+    "tools/skin-coverage-r1/render-masters.mjs": "8edb42c5d31acd65690b09004d2a22544d7c78c7c1a26379a385ba524befc094",
+    "tools/skin-coverage-r1/runtime.js": "38b940b4141500bd2a26ff233395f0741acf38899b7d9147e3955caa8ffbb05f",
+    "tools/skin-coverage-r1/test.mjs": "454e49acde486c330c4086e881b9ac33676f049bf2b2b820eaff9892e42d4b1e",
+    "tools/skin-coverage-r1/verify.mjs": "5232ddae64908b69c33688ec768763821363a3eb2540eb88d25e457c01898846",
+    "tools/action-package-v3/v2-skins/port.mjs": "4903cb6ac7790763643baea122de79812f20efcc3a0c2b98ca9d035c1164974c",
+    "tools/action-package-v3/render-masters.mjs": "ba50be43903bd51a5b5f0d1a88632beaa9448ca758527122c9b8c4b2f30a72f4",
+    "tools/action-package-v3/skins/realistic.json": "a2678bb3b662bca44104e60cf6c2b86bf17167d4bf0e90f38460c5d1e5b97bae",
+    "tools/action-package-v3/skins/tech-white.json": "7d8ee655c441c48dd45335c74e7f2ddcef6c9560da325443649d6f08dfee8fad",
+    "tools/action-package-v3/skins/neon-night.json": "1ec6bc72c8aa9e906060683b0e6a06eb9199ea4c2a1d1d2ea3b2431c86d562f9",
+    "tools/action-package-v3/skins/neon-night-b.json": "a6cc0b5833a1fbc3f8dd61761f07c995269d02552fe7633e71483349b492b5a6",
+    "tools/action-package-v3/skins/hologram.json": "a2ede66fe3e8628443eb7033f0668ec60b525cc4748d3f6c681fdaf69987b61a",
+    "tools/preview-current-skins.mjs": "de2d23b2065546878447d05132a3cdea51e05de8531d13a73fd99af2ad0bf265"
+  },
+  "rimPolicy": {
+    "realistic": "unchanged",
+    "nonDefault": "off",
+    "hologramFresnelAlpha": 0,
+    "userRequested": true
+  }
+}

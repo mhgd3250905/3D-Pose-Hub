@@ -62,3 +62,7 @@
 - 先用 `--frames` 预览，再决定全片。整机最多两路渲染、每路 `--jobs 1`，不要把机器拖垮。
 - Chrome / 渲染进程意外重启时，先查原因（内存、磁盘、驱动），再继续。
 - 新输出和临时帧放在 `out_dir` / `work_dir`（默认在仓库外或 `output/`，已忽略），不要放进源码目录。
+
+## 当前五皮肤修复核验（2026-11-10）
+
+已批准底座继续由 `preview-current-model.mjs` 校验。五皮肤修复使用 `node tools/preview-current-skins.mjs --recipe <配方.json> [--out <新目录>]`，指针为 `drill-anim/models/current-skin-coverage.json`；入口及证据见 `docs/body-v3/skin-coverage-r1-20261110.md`。非默认皮肤按用户要求关闭边缘光。该修复不替换已确认外观指针，也不触发全库重渲；缺源或哈希漂移必须停止。
