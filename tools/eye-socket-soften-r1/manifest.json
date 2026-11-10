@@ -1,0 +1,23 @@
+{
+  "format": "pose-hub-appearance@1",
+  "profile": "eye-socket-soften",
+  "version": "0.1.0-r1",
+  "status": "preview-candidate",
+  "baseModel": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "baseAppearance": "head-surface-smooth/0.1.0-r1",
+  "positionsChanged": false,
+  "topologyChanged": false,
+  "normalsChanged": "eye socket region only",
+  "userDirection": "Keep eye socket depth and shape; soften internal sharp shading boundaries. Preserve original head, brow and nose.",
+  "sources": {
+    "tools/eye-socket-soften-r1/runtime.js": "89a6a656e174dc19fd14199003bac50cdb4c36d7ba83e43b98bb24639bb60e13",
+    "tools/eye-socket-soften-r1/preview.mjs": "8d44c182e312f6105bb03960155f805ecfc1c71751ab7aeefb87b126d9e86d5c",
+    "tools/eye-socket-soften-r1/verify.mjs": "f5887a11a1e771b06fd0e36fd6051e4ff0927ccd87c4f07191ea925741b47ffc",
+    "tools/head-surface-smooth-r1/runtime.js": "770fc97d5b77ca0da0e476877cc9b59e6be6d764c9c62ff3d7ad8232d91c6657",
+    "tools/human-polish-v3/runtime.js": "a690f308a27f1cd5ef9ae4970dbc3121b7215a365061afaa9193a3af54454740",
+    "tools/action-package-v3/skins/realistic.json": "a2678bb3b662bca44104e60cf6c2b86bf17167d4bf0e90f38460c5d1e5b97bae"
+  }
+}

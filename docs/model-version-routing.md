@@ -1,5 +1,7 @@
 # 人体与场景手型的版本入口
 
+2026-11-10 后续眼窝要求：保留眼窝深度与形状，仅柔化内部锐利交界。增量候选 `eye-socket-soften / 0.1.0-r1` 只处理局部法线和凹陷暗色过渡，位置/拓扑/蒙皮不变，见 `docs/body-v3/eye-socket-soften-r1-20261110.md`。
+
 2026-11-10 头部方向已收敛：保留原头型和五官，仅平滑明暗。当前独立候选为 `head-surface-smooth / 0.1.0-r1`，见 `docs/body-v3/head-surface-smooth-r1-20261110.md`。`faceless-head-r1` 和 `head-detail-simplify-r1` 已被用户停止，不得复用为默认头。
 
 实际制作以动作 recipe 的显式选择为准。`drill-anim/models/current-production.json` 仍保留 v2plus rc2 历史全局默认；后续动作已通过 recipe 采用 `training-human-v3-armfix / 0.1.0-r2` 及场景手型。不能用旧默认配置推断某个当前动作的实际人体。
