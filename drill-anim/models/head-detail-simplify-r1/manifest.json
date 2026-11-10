@@ -1,0 +1,56 @@
+{
+  "format": "pose-hub-model-component@1",
+  "profile": "head-detail-simplify",
+  "version": "0.1.0-r1",
+  "status": "stopped-by-user",
+  "baseModel": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "sourceRestSha256": "5b9c3ca24086b17d157903f5c13ef44ee4eb355a4618d5a8b95358e3fd15cbce",
+  "userDirection": "Preserve original skull/forehead/occiput/jaw. Keep subtle nasal bridge and facial planes; remove eye socket/lip/nostril/ear-fold details. Rounded faceless-head-r1 rejected.",
+  "sources": {
+    "tools/head-detail-simplify-r1/build.py": {
+      "encoding": "lf",
+      "sha256": "1e61c2ad5a047d23d11421d5f8e5a26a997bbbdf3f7d2def5e57c438005a59e0"
+    },
+    "tools/head-detail-simplify-r1/runtime.js": {
+      "encoding": "lf",
+      "sha256": "6098f31b920d50a64831d0882df836aa093654531da2733ad504638caf9078c3"
+    },
+    "tools/head-detail-simplify-r1/preview.mjs": {
+      "encoding": "lf",
+      "sha256": "ae1b08243422d39b5dce112762938bb776a8fa06b99f59013d3fefe824aa062f"
+    },
+    "tools/head-detail-simplify-r1/preview-verified.mjs": {
+      "encoding": "lf",
+      "sha256": "d0b005536da9d68d845c1fe22014c88be4798bed59dc033fdf6778fdeff27c45"
+    },
+    "tools/head-detail-simplify-r1/verify.mjs": {
+      "encoding": "lf",
+      "sha256": "931895dd40d7edc9588521136b26a27e752d55df157d80cf01f53c3b2757b36e"
+    },
+    "tools/human-v2plus/head-base/head_m.py": {
+      "encoding": "lf",
+      "sha256": "a3b26f94604ac4a067707be0baefe3d788edbcc4c51e11a9204607ee14d34330"
+    },
+    "tools/human-v2plus/torso-base/meshops.py": {
+      "encoding": "lf",
+      "sha256": "c0677f800d7544c46813dd09e4af9d54cbba97507793db865be0acdc3763e018"
+    },
+    "tools/human-polish-v3/runtime.js": {
+      "encoding": "lf",
+      "sha256": "a690f308a27f1cd5ef9ae4970dbc3121b7215a365061afaa9193a3af54454740"
+    },
+    "tools/action-package-v3/skins/realistic.json": {
+      "encoding": "lf",
+      "sha256": "a2678bb3b662bca44104e60cf6c2b86bf17167d4bf0e90f38460c5d1e5b97bae"
+    },
+    "drill-anim/models/head-detail-simplify-r1/geometry.json": {
+      "encoding": "raw",
+      "sha256": "75bb2e2aa6d7b7448c6c9c3f4165f72b8f41e96e32db7b62975214f10253e0f1"
+    }
+  },
+  "currentDirection": "2026-11-10: retain original head and facial features; smooth head/face shading only. No replacement or facial reshaping.",
+  "archiveNote": "Stopped experiment snapshot; production entry blocked. Intermediate render provenance remains in its F-drive verification.json; not an accepted model."
+}
