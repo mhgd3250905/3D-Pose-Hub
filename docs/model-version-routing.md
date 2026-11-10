@@ -1,5 +1,7 @@
 # 人体与场景手型的版本入口
 
+**当前已确认基线：`original-head-eye-soften-20261110-r1`。** 用户已确认并要求保存。后续预览统一走 `tools/preview-current-model.mjs`，由 `drill-anim/models/current-approved-look.json` 指向固定来源；见 `docs/body-v3/approved-look-20261110-r1.md`。下方早先的“候选/待看样”描述为当时阶段，当前确认状态以该批准记录为准。
+
 2026-11-10 后续眼窝要求：保留眼窝深度与形状，仅柔化内部锐利交界。增量候选 `eye-socket-soften / 0.1.0-r1` 只处理局部法线和凹陷暗色过渡，位置/拓扑/蒙皮不变，见 `docs/body-v3/eye-socket-soften-r1-20261110.md`。
 
 2026-11-10 头部方向已收敛：保留原头型和五官，仅平滑明暗。当前独立候选为 `head-surface-smooth / 0.1.0-r1`，见 `docs/body-v3/head-surface-smooth-r1-20261110.md`。`faceless-head-r1` 和 `head-detail-simplify-r1` 已被用户停止，不得复用为默认头。

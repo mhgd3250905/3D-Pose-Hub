@@ -1,0 +1,56 @@
+{
+  "format": "pose-hub-approved-look@1",
+  "id": "original-head-eye-soften-20261110-r1",
+  "status": "visually-approved",
+  "approvedDate": "2026-11-10",
+  "sourceCommit": "eb00e820790b9ac118fe008c76a927f89c3b6a11",
+  "baseModel": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "skin": "realistic",
+  "handSelection": "action-recipe",
+  "layers": [
+    {
+      "id": "default-body-polish",
+      "version": "0.1.0-r1",
+      "manifest": "tools/human-polish-v3/manifest.json"
+    },
+    {
+      "id": "head-surface-smooth",
+      "version": "0.1.0-r1",
+      "manifest": "tools/head-surface-smooth-r1/manifest.json"
+    },
+    {
+      "id": "eye-socket-soften",
+      "version": "0.1.0-r1",
+      "manifest": "tools/eye-socket-soften-r1/manifest.json"
+    }
+  ],
+  "previewEntry": "tools/eye-socket-soften-r1/preview.mjs",
+  "approval": "docs/body-v3/approved-look-20261110-r1.md",
+  "scope": "Approved visual baseline for subsequent work; scene-specific hands retained; not a whole-library release receipt.",
+  "pinnedSources": {
+    "tools/human-polish-v3/manifest.json": "4d0d870e3807514b38ef5c0390d586f38de0da4d509544c92808efd51f5f9eb0",
+    "tools/human-polish-v3/runtime.js": "a690f308a27f1cd5ef9ae4970dbc3121b7215a365061afaa9193a3af54454740",
+    "tools/human-polish-v3/preview.mjs": "2ec997746a3a5e949bc2b6c329a640e76299241209e5301c212401b57d14d958",
+    "tools/head-surface-smooth-r1/manifest.json": "866b45e400a5a3522424dc5632e7138fc24103d6e926751edaad7ff187b52b69",
+    "tools/head-surface-smooth-r1/runtime.js": "770fc97d5b77ca0da0e476877cc9b59e6be6d764c9c62ff3d7ad8232d91c6657",
+    "tools/head-surface-smooth-r1/preview.mjs": "3980410a1468805ea7049cc1596e4ce982ad95f552aece34bbe7dd798a2365c8",
+    "tools/head-surface-smooth-r1/verify.mjs": "691b09f50c0037d180cdd057a3254932098ef3e94e73cf41b73e810b13d0199e",
+    "tools/action-package-v3/skins/realistic.json": "a2678bb3b662bca44104e60cf6c2b86bf17167d4bf0e90f38460c5d1e5b97bae",
+    "tools/eye-socket-soften-r1/manifest.json": "bb50d28dd13648778e81c9fad46847ba48657fc1672c9cc24661c07c4d858fe8",
+    "tools/eye-socket-soften-r1/runtime.js": "89a6a656e174dc19fd14199003bac50cdb4c36d7ba83e43b98bb24639bb60e13",
+    "tools/eye-socket-soften-r1/preview.mjs": "8d44c182e312f6105bb03960155f805ecfc1c71751ab7aeefb87b126d9e86d5c",
+    "tools/eye-socket-soften-r1/verify.mjs": "f5887a11a1e771b06fd0e36fd6051e4ff0927ccd87c4f07191ea925741b47ffc",
+    "tools/preview-current-model.mjs": "37526ccd36420c86cb4cf4d6fa0c288760c088ed3e5491867e152f40750358c1",
+    "tools/model-version.mjs": "4b0bd81da2a8f7b78b3ec75aa1de4a0b6511094c64ac794278deda04560b6368",
+    "tools/action-package-v3/recipe-scene.mjs": "1d772c3230bce61ff0fe0e86e8d7541530e3911d4dd1b78c2831ea7886bbcb79",
+    "tools/action-package-v3/model-adapters.mjs": "0b5808c10d3273acb7f7747c657344a1cb24508b1cbe02625bfcfde99a6e5c78",
+    "tools/action-package-v3/models.json": "d03cba51f14ae6bb6e694c8e5390f1a9368631f8778f7cfc0deb3ddeb9ac0f84",
+    "tools/action-package-v3/browser-package-layers.js": "8ab661d9dbd4636dd05750701357017081145ba643c6842a04e080ecb1b8f3db",
+    "tools/action-package-v3/native-highlight.mjs": "9bd4125a96a1ee360c27383f668552494fdedc18e9d2b44c099b1055a7aa9cbf",
+    "tools/action-package-v3/profile.mjs": "b2c0b5dd0a9e1d27c47164e4343b93640de1d8b958063c606c377eb211f9589f",
+    "docs/body-v3/eye-socket-soften-r1-20261110.json": "f034b4110a8fd7bda4b58ca5f7903c1784d5ab47c2c86bfa45dcccb8786f179e"
+  }
+}

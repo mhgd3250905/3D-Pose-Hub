@@ -35,6 +35,8 @@
 
 ## 4. 人物模型版本
 
+- 2026-11-10 用户已确认当前原头/眼窝平滑外观。后续新预览统一使用 `node tools/preview-current-model.mjs --recipe <配方.json> [--out <新目录>]`；唯一已确认外观指针是 `drill-anim/models/current-approved-look.json`，说明见 `docs/body-v3/approved-look-20261110-r1.md`。配方决定人体及左右手型，已确认指针决定外观。缺源或哈希不符必须停止，不能回退旧全局默认，也不能把最新试验当已确认版本。新的外观试验另建版本，经用户看样确认才更新指针。
+
 - 有动作 recipe 的美化、预览和重渲，先运行 `node tools/model-version.mjs --recipe <仓库内配方.json>`，按 recipe 的人体、动作修订及左右手模式加载。下述 `current-production.json` 全局默认仅表示保留的默认配置，不能覆盖后续 recipe 显式采用的 armfix/native/固定握持版本。缺少配方或版本门禁工具时先定位正确源码工作树，禁止静默回退旧默认。
 - 出图随附 recipe/spec/模型/手型/外观版本和源指纹，并核对实际渲染的手部源资产、模式与可见网格；网格名称不能代替版本证据。已发布复现使用该发布包来源回执，本地当前修订另记。入口与记录格式见 `docs/model-version-routing.md`。
 
