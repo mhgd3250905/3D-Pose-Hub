@@ -1,6 +1,8 @@
 # 身体 v3：当前入口与文档索引
 
-当前已获用户网页看样确认的身体为 `training-human-v3-completed / 1.0.0-r7`。其上的可选接触扩展为 `training-human-v3-contact / 0.1.0-r5`，已完成所列局部复测和源码采纳。两者通过专用 loader 显式初始化；全局新生产配方仍由 [current-production.json](../../drill-anim/models/current-production.json) 选择 `training-human-v2plus / 1.0.0-rc2`。当前 Git／版本汇总以 [版本台账](../version-ledger.md) 为准。
+当前本地外观以 armfix-r2 动作配方和用户已确认的原头/眼窝柔化为基线。五皮肤修复单独核验。工作树、固定版本及入口见 [人体版本路由](../model-version-routing.md)，早期身体版本的验收范围见下方分项记录。
+
+2026-10-28 网页看样确认的身体为 `training-human-v3-completed / 1.0.0-r7`。其上的可选接触扩展为 `training-human-v3-contact / 0.1.0-r5`，已完成所列局部复测和源码采纳。两者通过专用 loader 显式初始化；全局新生产配方仍由 [current-production.json](../../drill-anim/models/current-production.json) 选择 `training-human-v2plus / 1.0.0-rc2`。当前 Git／版本汇总以 [版本台账](../version-ledger.md) 为准。
 
 2026-10-29首批32模板显式采用 `training-human-v3-armfix / 0.1.0-r2`、当前左右对称native手或固定握持，并接入脚踝 `ankle-join-r5`、大臂 `upper-arm-contour-r3` 和按需肘部 `elbow-dqs-r1`。这些成果已合入main；当前32为候选复核完成、用户验收待定，不扩大旧r7或局部大臂确认的范围。配方以 [remaining32-r4](../../catalog/production/remaining32-r4/README.md) 为入口，阶段版本、验证和后续见[收束汇总](../closeout-template-optimizations-20261029-r1.md)。
 

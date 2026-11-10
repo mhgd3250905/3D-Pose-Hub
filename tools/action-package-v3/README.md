@@ -2,6 +2,8 @@
 
 一条命令把 `pose-hub-action-recipe@1` 配方变成完整动作包。模型、皮肤、尺寸、派生规格都是数据文件，换皮肤/换兼容模型不用改代码。
 
+五皮肤修复候选通过独立入口 `tools/skin-coverage-r1/render-masters.mjs` 做新目录抽帧核验，动作配方沿用本流程。旧批次按各自固定清单复现，当前修复证据见 [皮肤修复记录](../../docs/body-v3/skin-coverage-r1-20261110.md)。
+
 ## 流程
 
 ```

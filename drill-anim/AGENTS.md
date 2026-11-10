@@ -8,7 +8,7 @@
 
 用户于 2026-10-21 明确采用更新细节后的 `training-human-v2plus` 制作今后动作；默认原配色、动作肌群高亮、不显示肌群分区线，白金、蓝、绿、全息仅供显式选择。此决定取代本文件原先“新动作以及后续优化/重渲的旧动作必须使用 `modelProfile: 'training-human-v2'`”的要求。2026-10-12/13 的 v2 验收与旧素材仍作为历史保留。
 
-新动作及用户安排的新版本重渲，统一读取 [当前生产配置](models/current-production.json)，说明见 [v2plus 制作标准](../docs/training-human-v2plus.md)。本次配置为 `training-human-v2plus` / `1.0.0-rc2`、`alignClavicles:false`，`v2plus` 使用 `outfit:'compression'`、`torso:'base'`、`limbs:'base'`、`hands:'base'`、`skin:'realistic'`；`head:'base'` 不启用，保留原 v2 灰色人台头。普通新 spec 须显式写入这套配置；HD 新建任务由生产配置生成包装规格，不能只改 profile 而漏掉新版网格开关。
+显式 recipe 的 v3 动作先查 [人体版本路由](../docs/model-version-routing.md)，按配方选择人体与手型，再核验已确认外观或独立皮肤修复。沿用 v2plus 流程的动作读取 [生产配置](models/current-production.json)，说明见 [v2plus 制作标准](../docs/training-human-v2plus.md)。本次配置为 `training-human-v2plus` / `1.0.0-rc2`、`alignClavicles:false`，`v2plus` 使用 `outfit:'compression'`、`torso:'base'`、`limbs:'base'`、`hands:'base'`、`skin:'realistic'`；`head:'base'` 不启用，保留原 v2 灰色人台头。普通新 spec 须显式写入这套配置；HD 新建任务由生产配置生成包装规格，不能只改 profile 而漏掉新版网格开关。
 
 人体配置与动作参数分开。更换人体不得擅改动作支点、髋部、腿轨迹、节奏或镜头；每项任务先检查预览、实际看图，再决定全片，并核对正面、侧面、完整循环和道具接触。试片只证明实际检查过的场景，不代表所有动作已验收。
 
