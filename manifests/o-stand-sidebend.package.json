@@ -1,0 +1,817 @@
+{
+  "format": "pose-hub-action-package-v3@1",
+  "actionId": "o-stand-sidebend",
+  "profile": {
+    "id": "default",
+    "sha256": "8b90de7f3d89b026a324df54eb835cff9dcb775a0d11f3071bdbeb1b2344ce22"
+  },
+  "masters": {
+    "path": "masters/o-stand-sidebend/layer-manifest.json",
+    "sha256": "20b483cc8922dcb602921bb796094c38c69c0b301bd5a6a2ee30de93dd984028",
+    "bytes": 6906251
+  },
+  "recipe": {
+    "path": "catalog/production/remaining219-r1/recipes/o-stand-sidebend.json",
+    "sha256": "54d3c793024c62eca286229e246919b397409734e53b5060e1dda18e33ff7a3f"
+  },
+  "productionModel": "training-human-v3-armfix@0.1.0-r2",
+  "authoringModel": "training-human-v3-armfix@0.1.0-r2",
+  "fps": 30,
+  "durationSeconds": 8,
+  "loopFrames": 240,
+  "framesUsed": 240,
+  "framing": {
+    "path": "packages/o-stand-sidebend/framing.json",
+    "sha256": "854a828e0bc273f0818b6f6d37f7a1b9c1210136cd2ae2c8892c45e6b6beedf5",
+    "bytes": 341
+  },
+  "keyframes": {
+    "start": 0,
+    "peak": 114,
+    "end": 239
+  },
+  "peakRule": "max highlight pulse (middle of plateau)",
+  "skins": {
+    "realistic": {
+      "label": "Original",
+      "status": "look-approved-r2",
+      "themes": {
+        "dark": {
+          "video": {
+            "path": "packages/o-stand-sidebend/realistic/dark/loop.720.mp4",
+            "sha256": "2008d4c07ffdb33f2c9925bde26f265ee3d6338e4ca5e90076bf30f5ab15d5d1",
+            "bytes": 126282,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#101013"
+          },
+          "start": {
+            "path": "packages/o-stand-sidebend/realistic/dark/start.720.png",
+            "sha256": "90ac66c67ac5f001fdc1325b2a783c10c78234f839b8cdfe0bbe209654d8473a",
+            "bytes": 71720,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/o-stand-sidebend/realistic/dark/peak.720.png",
+            "sha256": "e37fe4844ea65d09c1389d14a0e3925bdef11b14f293643fe34fdb6bbcf6366e",
+            "bytes": 71220,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "end": {
+            "path": "packages/o-stand-sidebend/realistic/dark/end.720.png",
+            "sha256": "3a3bcff61f30ece11c1ab2f0dd3ead89cb9d14f2970845770dcfe77d1273b237",
+            "bytes": 71715,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/o-stand-sidebend/realistic/dark/cover.720.jpg",
+            "sha256": "7196bc85acb8f44e5776e2cce1486aad67b56f2909a250644d33d076c61e8429",
+            "bytes": 27518,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "thumbnail": {
+            "path": "packages/o-stand-sidebend/realistic/dark/thumbnail.240.jpg",
+            "sha256": "c5fe0bb18f5560080af12d62669d572075f0b107dff1c687c57be986debc7eb2",
+            "bytes": 6323,
+            "width": 240,
+            "height": 240,
+            "frame": 114
+          },
+          "peakHighlightOff": {
+            "path": "packages/o-stand-sidebend/realistic/dark/peak.highlight-off.720.png",
+            "sha256": "a364bc0c399ad9c0c027f7e7b5e03efdc4e15d3621d0685251330d88303ed359",
+            "bytes": 69235,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          }
+        },
+        "light": {
+          "video": {
+            "path": "packages/o-stand-sidebend/realistic/light/loop.720.mp4",
+            "sha256": "1ca37982f735e5dc43fb4c62a4ad864ddb5a2b279ff29442135de0d1800046e7",
+            "bytes": 151032,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#f3f2ef"
+          },
+          "start": {
+            "path": "packages/o-stand-sidebend/realistic/light/start.720.png",
+            "sha256": "6428091b4c365aef3263eecdc954ed6c395d664e167cc5596881bb974f3e5431",
+            "bytes": 79990,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/o-stand-sidebend/realistic/light/peak.720.png",
+            "sha256": "0f79eed49f650cc583bd79330f1e2a88391488cb49975e00e09150d6db1d2a78",
+            "bytes": 79617,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "end": {
+            "path": "packages/o-stand-sidebend/realistic/light/end.720.png",
+            "sha256": "497e3f094e4bdc009bb2cec4df307cbdc68744d8a4de0afd23683d0cb172f150",
+            "bytes": 79986,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/o-stand-sidebend/realistic/light/cover.720.jpg",
+            "sha256": "824af5529d0be6592e62eec0abbf104f555bbec33373a87df6d85138cc900c36",
+            "bytes": 37135,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "thumbnail": {
+            "path": "packages/o-stand-sidebend/realistic/light/thumbnail.240.jpg",
+            "sha256": "378f0833b34cbc8dd24243a4f0dd6487a99f6f2e1e6f269e2188bb312ca00cd0",
+            "bytes": 9266,
+            "width": 240,
+            "height": 240,
+            "frame": 114
+          },
+          "peakHighlightOff": {
+            "path": "packages/o-stand-sidebend/realistic/light/peak.highlight-off.720.png",
+            "sha256": "bc94c590bcade5463f9264461cdf9d2f4bb83496d69c1fdf400dfb748d772431",
+            "bytes": 77897,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          }
+        }
+      },
+      "transparentLoop": {
+        "path": "packages/o-stand-sidebend/realistic/loop.alpha.720.webm",
+        "sha256": "6004bd164b5fd8cc07c92bc6c7f266ed179ba4f6431a0294940be0dc074872da",
+        "bytes": 818418,
+        "width": 720,
+        "height": 720,
+        "codec": "vp9",
+        "alpha": true,
+        "frames": 240,
+        "fps": 30
+      },
+      "transparentCover": {
+        "path": "packages/o-stand-sidebend/realistic/cover.transparent.1080.png",
+        "sha256": "99bf401a84156cc9ed1f80a49d58c175f0fb9fed545a06c4caf49c881e45d589",
+        "bytes": 174208,
+        "width": 1080,
+        "height": 1080,
+        "frame": 114
+      },
+      "transparentFirstFrame": {
+        "path": "packages/o-stand-sidebend/realistic/first-frame.transparent.1080.png",
+        "sha256": "758dcd6914135870ca2614297fb02bcb95af27790b526da30fac34ff0df3b09e",
+        "bytes": 173729,
+        "width": 1080,
+        "height": 1080,
+        "frame": 0
+      }
+    },
+    "tech-white": {
+      "label": "White",
+      "status": "look-approved-r2",
+      "themes": {
+        "dark": {
+          "video": {
+            "path": "packages/o-stand-sidebend/tech-white/dark/loop.720.mp4",
+            "sha256": "efd943b3b4db9f6ee16f6361034783a1edab3848ecf8a66f987cf574b8483486",
+            "bytes": 246033,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#101013"
+          },
+          "start": {
+            "path": "packages/o-stand-sidebend/tech-white/dark/start.720.png",
+            "sha256": "ff72ab163909ea9bb3bc96ace783de9aed1c7b8d7df59f01ca5ceb697ae06c3e",
+            "bytes": 99017,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/o-stand-sidebend/tech-white/dark/peak.720.png",
+            "sha256": "d2838e8072aebc6820db0e88c19da4f222022a92f878cb1199ee333e2202fbee",
+            "bytes": 99990,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "end": {
+            "path": "packages/o-stand-sidebend/tech-white/dark/end.720.png",
+            "sha256": "1f0fdaf3c07ba50266424e0f5fe21db7f9ccb0d0df326ac15383060f880e3589",
+            "bytes": 99044,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/o-stand-sidebend/tech-white/dark/cover.720.jpg",
+            "sha256": "da649f0280b0bc95ed9747e94d39e4f9389970624cf6ba6b675bd8f31887c4a8",
+            "bytes": 38150,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "thumbnail": {
+            "path": "packages/o-stand-sidebend/tech-white/dark/thumbnail.240.jpg",
+            "sha256": "13ea94f9cdce1fa0ba2a78f95a5642cd9a75d6bd26e4b5a53fe444db8aeb5797",
+            "bytes": 8180,
+            "width": 240,
+            "height": 240,
+            "frame": 114
+          },
+          "peakHighlightOff": {
+            "path": "packages/o-stand-sidebend/tech-white/dark/peak.highlight-off.720.png",
+            "sha256": "3a50ac05a44f085609be1fa680d2a620249a9ea2e973615203bba9cf731a7535",
+            "bytes": 99859,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          }
+        },
+        "light": {
+          "video": {
+            "path": "packages/o-stand-sidebend/tech-white/light/loop.720.mp4",
+            "sha256": "5c3ebb5a23f48c96b9aaa7f1dfe31aed3093359ee847af9e0121b23d75608a5c",
+            "bytes": 215158,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#f3f2ef"
+          },
+          "start": {
+            "path": "packages/o-stand-sidebend/tech-white/light/start.720.png",
+            "sha256": "16876ad30351c83b419582f951ef37bc68f30b99659206e3dc630bd84b7ddbf5",
+            "bytes": 97654,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/o-stand-sidebend/tech-white/light/peak.720.png",
+            "sha256": "6a9bfbc901d74005b86ff1be57b1b0f6fe84ae7f1d6efea3ea0c4abd9cf5df03",
+            "bytes": 98122,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "end": {
+            "path": "packages/o-stand-sidebend/tech-white/light/end.720.png",
+            "sha256": "3f5389cd03e64bffc1e9120bb2051c7b91bacf6b729546be664e174ee644d310",
+            "bytes": 97675,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/o-stand-sidebend/tech-white/light/cover.720.jpg",
+            "sha256": "eda9493b10a90f1c438e0b8697ec31f5dbdc2ba8a481d53eca434df6eae880f4",
+            "bytes": 36452,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "thumbnail": {
+            "path": "packages/o-stand-sidebend/tech-white/light/thumbnail.240.jpg",
+            "sha256": "cbda462f2a527902a99eb4ea782fa5559493f4dcb0f029dd1667e10518d8fa6f",
+            "bytes": 7545,
+            "width": 240,
+            "height": 240,
+            "frame": 114
+          },
+          "peakHighlightOff": {
+            "path": "packages/o-stand-sidebend/tech-white/light/peak.highlight-off.720.png",
+            "sha256": "31aa73f7a8086e45dc43dd0ad7af427fb267069fb236a0f57ddd1d3c9ec924de",
+            "bytes": 97941,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          }
+        }
+      },
+      "transparentLoop": {
+        "path": "packages/o-stand-sidebend/tech-white/loop.alpha.720.webm",
+        "sha256": "8dc7f61bd99643e98f0421e829e480e847f9145d482155d323f73cba9d784efb",
+        "bytes": 968983,
+        "width": 720,
+        "height": 720,
+        "codec": "vp9",
+        "alpha": true,
+        "frames": 240,
+        "fps": 30
+      },
+      "transparentCover": {
+        "path": "packages/o-stand-sidebend/tech-white/cover.transparent.1080.png",
+        "sha256": "d0e67db91a2dc4efdd2ba4be2ad244d3e8b6c48afd064b7833908c4979709809",
+        "bytes": 232518,
+        "width": 1080,
+        "height": 1080,
+        "frame": 114
+      },
+      "transparentFirstFrame": {
+        "path": "packages/o-stand-sidebend/tech-white/first-frame.transparent.1080.png",
+        "sha256": "bc0391a3a7a2c71d582d9c01e97cecda7723461ffca1dcc9918cfa46ae91c107",
+        "bytes": 229376,
+        "width": 1080,
+        "height": 1080,
+        "frame": 0
+      }
+    },
+    "neon-night": {
+      "label": "Blue",
+      "status": "look-approved-r2",
+      "themes": {
+        "dark": {
+          "video": {
+            "path": "packages/o-stand-sidebend/neon-night/dark/loop.720.mp4",
+            "sha256": "53367dfec13d83641efdb1509fb47505507506b96af6c2d8df87b397c8f1f087",
+            "bytes": 228050,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#101013"
+          },
+          "start": {
+            "path": "packages/o-stand-sidebend/neon-night/dark/start.720.png",
+            "sha256": "20b22bc61547c05e291842905e8123538da611bc1d675d2102f3e59e77dd46ef",
+            "bytes": 93348,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/o-stand-sidebend/neon-night/dark/peak.720.png",
+            "sha256": "8d1dd5982a6d48bab4571433f76787710a35bb5f336c785b1c04198794db3849",
+            "bytes": 94966,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "end": {
+            "path": "packages/o-stand-sidebend/neon-night/dark/end.720.png",
+            "sha256": "a3770c2f0083af84e5dc6413046d002784b170876770ec1b15795e03098d4276",
+            "bytes": 93328,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/o-stand-sidebend/neon-night/dark/cover.720.jpg",
+            "sha256": "eb4d3e90c74b9b143aa33021c775f56d36cff3510b797069935a91a91b009543",
+            "bytes": 35528,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "thumbnail": {
+            "path": "packages/o-stand-sidebend/neon-night/dark/thumbnail.240.jpg",
+            "sha256": "c8bb9cd4502b1a0164d8238cfba1ad119746397fd027c75973f57f6f199b9b32",
+            "bytes": 6573,
+            "width": 240,
+            "height": 240,
+            "frame": 114
+          },
+          "peakHighlightOff": {
+            "path": "packages/o-stand-sidebend/neon-night/dark/peak.highlight-off.720.png",
+            "sha256": "2be5dd77fd832c45d2ede02e58e218967170177999ce05d018748f0c12f56352",
+            "bytes": 94875,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          }
+        },
+        "light": {
+          "video": {
+            "path": "packages/o-stand-sidebend/neon-night/light/loop.720.mp4",
+            "sha256": "040b5268a80735ca0a915390c6872f3c695f31401e75fb8b3a462cbcc2da8350",
+            "bytes": 280390,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#f3f2ef"
+          },
+          "start": {
+            "path": "packages/o-stand-sidebend/neon-night/light/start.720.png",
+            "sha256": "4157c055ede2f692dea361c61490230ba46edb67d4973247b081eb9242b9e729",
+            "bytes": 105137,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/o-stand-sidebend/neon-night/light/peak.720.png",
+            "sha256": "f2c0726ceb027eece0694ebc292670496e62fb1d295d0793fccffdf331a284ee",
+            "bytes": 106798,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "end": {
+            "path": "packages/o-stand-sidebend/neon-night/light/end.720.png",
+            "sha256": "f73fb9a604f0e8226174862daadfa78e99ab7e0a23c84585a2874b9c0640c154",
+            "bytes": 105137,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/o-stand-sidebend/neon-night/light/cover.720.jpg",
+            "sha256": "4b48db3d4b7e41f19b662476d589c3dfdeba071a68f83e8d1a0ac6753b485be6",
+            "bytes": 47419,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "thumbnail": {
+            "path": "packages/o-stand-sidebend/neon-night/light/thumbnail.240.jpg",
+            "sha256": "2892cb26272c03f87057c2a5619b1fee3f30c60dbe62b87bc7af5d2975f66561",
+            "bytes": 10154,
+            "width": 240,
+            "height": 240,
+            "frame": 114
+          },
+          "peakHighlightOff": {
+            "path": "packages/o-stand-sidebend/neon-night/light/peak.highlight-off.720.png",
+            "sha256": "d148a6582ad4e70f715e873a361ef201bba8a93a6ba067cb4b7f31760a909aae",
+            "bytes": 106828,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          }
+        }
+      },
+      "transparentLoop": {
+        "path": "packages/o-stand-sidebend/neon-night/loop.alpha.720.webm",
+        "sha256": "16589eab214576268151ad2ad3be1e4b9ec44a55942d56ee27dbb2126cf3e7c0",
+        "bytes": 717545,
+        "width": 720,
+        "height": 720,
+        "codec": "vp9",
+        "alpha": true,
+        "frames": 240,
+        "fps": 30
+      },
+      "transparentCover": {
+        "path": "packages/o-stand-sidebend/neon-night/cover.transparent.1080.png",
+        "sha256": "1d62b85e37a26d5d7b50cb78d1e7bd68eeb2cf1389fe7d539757c9f1abda82e3",
+        "bytes": 234679,
+        "width": 1080,
+        "height": 1080,
+        "frame": 114
+      },
+      "transparentFirstFrame": {
+        "path": "packages/o-stand-sidebend/neon-night/first-frame.transparent.1080.png",
+        "sha256": "d133fb763aba287bfc76758c75957414fbe2c1eac7c5f2a686874a5f7f852cde",
+        "bytes": 229883,
+        "width": 1080,
+        "height": 1080,
+        "frame": 0
+      }
+    },
+    "neon-night-b": {
+      "label": "Green",
+      "status": "look-approved-r2",
+      "themes": {
+        "dark": {
+          "video": {
+            "path": "packages/o-stand-sidebend/neon-night-b/dark/loop.720.mp4",
+            "sha256": "a7c6a5f67c761178dcc0b74d823b96e9b165797b416dd0adcaabf07472c7d72d",
+            "bytes": 244882,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#101013"
+          },
+          "start": {
+            "path": "packages/o-stand-sidebend/neon-night-b/dark/start.720.png",
+            "sha256": "b19fda5756f2c3b5cbfa9ccc3cba3e944ff89ffd2feea3bc3716a9706da1770b",
+            "bytes": 92907,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/o-stand-sidebend/neon-night-b/dark/peak.720.png",
+            "sha256": "da4631e5a9cd7cde0bdc05b2d47dc321c61d6a3a12539651736d3b7079054d37",
+            "bytes": 94445,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "end": {
+            "path": "packages/o-stand-sidebend/neon-night-b/dark/end.720.png",
+            "sha256": "a0f32e0ffeb751fee0aa36f867eadfbb57e43eb884ad51dcab7f4effe68a0cb5",
+            "bytes": 92914,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/o-stand-sidebend/neon-night-b/dark/cover.720.jpg",
+            "sha256": "a2cf55add0871939e9747e92dbefa83a14110c7f2a9b5035ab17e51c0d23cde7",
+            "bytes": 35967,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "thumbnail": {
+            "path": "packages/o-stand-sidebend/neon-night-b/dark/thumbnail.240.jpg",
+            "sha256": "0bc1109a498001cc79c4bbdbce4e6420e72bd03e625c7a56c6b6fc75aa1fe571",
+            "bytes": 6772,
+            "width": 240,
+            "height": 240,
+            "frame": 114
+          },
+          "peakHighlightOff": {
+            "path": "packages/o-stand-sidebend/neon-night-b/dark/peak.highlight-off.720.png",
+            "sha256": "67998e456089d2f66d86c158f68040ba695bcd7e70659d78c081cf40c3171f67",
+            "bytes": 94379,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          }
+        },
+        "light": {
+          "video": {
+            "path": "packages/o-stand-sidebend/neon-night-b/light/loop.720.mp4",
+            "sha256": "b06217c86c4f5179b1357c4735e2bdd5509023539ab4da6bc2f6ae601bd4d129",
+            "bytes": 290748,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#f3f2ef"
+          },
+          "start": {
+            "path": "packages/o-stand-sidebend/neon-night-b/light/start.720.png",
+            "sha256": "b0aea8c15ac0d53585bff587867fb3ca892ed5960ac4cec2058bb369f07f248f",
+            "bytes": 104921,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/o-stand-sidebend/neon-night-b/light/peak.720.png",
+            "sha256": "79b027bf1e19166dcaa25f10afd4d3d42f297b80d360fbedabfc135f5be7b2ce",
+            "bytes": 106544,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "end": {
+            "path": "packages/o-stand-sidebend/neon-night-b/light/end.720.png",
+            "sha256": "6cd898d5badf82e323cf84b82e0cebba291d05a99adfef5df02d87167c5d8b45",
+            "bytes": 104938,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/o-stand-sidebend/neon-night-b/light/cover.720.jpg",
+            "sha256": "26ed88911bd2aafd0f0b9ef77501504b42941c91a487885ebff226442e83a17b",
+            "bytes": 47245,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "thumbnail": {
+            "path": "packages/o-stand-sidebend/neon-night-b/light/thumbnail.240.jpg",
+            "sha256": "070d30dfce976d49bbb7c982430edad6b89ac641e70ddf6ea72f533c5a0f8840",
+            "bytes": 10167,
+            "width": 240,
+            "height": 240,
+            "frame": 114
+          },
+          "peakHighlightOff": {
+            "path": "packages/o-stand-sidebend/neon-night-b/light/peak.highlight-off.720.png",
+            "sha256": "8b3bcd586f6a21114ab57312d49d35a17a3ecfb2ed028e8936f04dd9d062830f",
+            "bytes": 106586,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          }
+        }
+      },
+      "transparentLoop": {
+        "path": "packages/o-stand-sidebend/neon-night-b/loop.alpha.720.webm",
+        "sha256": "66c44353a0229591349b0cbedd8c944b68a2f789d7ed74cbfd04b93009814237",
+        "bytes": 756567,
+        "width": 720,
+        "height": 720,
+        "codec": "vp9",
+        "alpha": true,
+        "frames": 240,
+        "fps": 30
+      },
+      "transparentCover": {
+        "path": "packages/o-stand-sidebend/neon-night-b/cover.transparent.1080.png",
+        "sha256": "f9f44fc0b6d4d4c274f969edf58c77a551b96a4968379208840ae46ccc3508db",
+        "bytes": 234350,
+        "width": 1080,
+        "height": 1080,
+        "frame": 114
+      },
+      "transparentFirstFrame": {
+        "path": "packages/o-stand-sidebend/neon-night-b/first-frame.transparent.1080.png",
+        "sha256": "dfca32cde4905b1270e9b47614ea7ea812dbbe523439cff43ee44ae27cb20911",
+        "bytes": 229265,
+        "width": 1080,
+        "height": 1080,
+        "frame": 0
+      }
+    },
+    "hologram": {
+      "label": "Hologram",
+      "status": "look-approved-r2",
+      "themes": {
+        "dark": {
+          "video": {
+            "path": "packages/o-stand-sidebend/hologram/dark/loop.720.mp4",
+            "sha256": "00c50040d44996e4b07241f404b51912cc5c9f524c28786083fc36d7cf4f587e",
+            "bytes": 178886,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#101013"
+          },
+          "start": {
+            "path": "packages/o-stand-sidebend/hologram/dark/start.720.png",
+            "sha256": "dc0d902818929868e92162348d8030915b00420d18ab34d9749e1ecc9d64c88f",
+            "bytes": 97939,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/o-stand-sidebend/hologram/dark/peak.720.png",
+            "sha256": "8da09c20aa0799c9f221b08d153e9dffb589b00e0db52d7e4cec302726258b71",
+            "bytes": 101171,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "end": {
+            "path": "packages/o-stand-sidebend/hologram/dark/end.720.png",
+            "sha256": "922421a894d87436c7f1ea3a5a13c5a20743f37f1d51f62c48a5979dfa3d3f9c",
+            "bytes": 97925,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/o-stand-sidebend/hologram/dark/cover.720.jpg",
+            "sha256": "1168a4deb320b57bedfd82066a28dcf84fd340c0709f712e82db2368716d0ca6",
+            "bytes": 32017,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "thumbnail": {
+            "path": "packages/o-stand-sidebend/hologram/dark/thumbnail.240.jpg",
+            "sha256": "bc0ad1e4aaf9647bab9c928107f1444f93b99846a44c0b4e4061d914a83ebee9",
+            "bytes": 6317,
+            "width": 240,
+            "height": 240,
+            "frame": 114
+          },
+          "peakHighlightOff": {
+            "path": "packages/o-stand-sidebend/hologram/dark/peak.highlight-off.720.png",
+            "sha256": "bf6099e6119bdbd3596afab4bd8e6375e0138469e6ffb3db1d68205579e6ecb5",
+            "bytes": 100638,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          }
+        },
+        "light": {
+          "video": {
+            "path": "packages/o-stand-sidebend/hologram/light/loop.720.mp4",
+            "sha256": "e5fe7c3a71857ca1ce7e02cbfae56fadf389de83d448e8b2b6d82bf14c26141c",
+            "bytes": 105202,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#f3f2ef"
+          },
+          "start": {
+            "path": "packages/o-stand-sidebend/hologram/light/start.720.png",
+            "sha256": "ca2204e201874b2cdd84d9160bbe1aa195c45ae8a51a07a9bc916f5b1c40bb4e",
+            "bytes": 97863,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/o-stand-sidebend/hologram/light/peak.720.png",
+            "sha256": "7dd8f8e4056c029883088c697a2fcd227d81f40bd2c69869c8973a4b8fc60b76",
+            "bytes": 100047,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "end": {
+            "path": "packages/o-stand-sidebend/hologram/light/end.720.png",
+            "sha256": "0d3735f9c9daad25d5acbc5f70cb2782ee7549b63d1264b73a5c0dffe87ca3bd",
+            "bytes": 97875,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/o-stand-sidebend/hologram/light/cover.720.jpg",
+            "sha256": "6662fb82fce2c4657f441eb9cfdbc59b15f6cc0204ba5e04f5b1530e1c72f892",
+            "bytes": 33270,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "thumbnail": {
+            "path": "packages/o-stand-sidebend/hologram/light/thumbnail.240.jpg",
+            "sha256": "4bd162b758b179445b873b59b718d09468099bd619e111e1bc4b1a531c88f6a2",
+            "bytes": 7655,
+            "width": 240,
+            "height": 240,
+            "frame": 114
+          },
+          "peakHighlightOff": {
+            "path": "packages/o-stand-sidebend/hologram/light/peak.highlight-off.720.png",
+            "sha256": "4c65b7547a29db363860c20bc656f2eb43e83db703d9bcd6e71d4215f380f6e2",
+            "bytes": 99293,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          }
+        }
+      },
+      "transparentLoop": {
+        "path": "packages/o-stand-sidebend/hologram/loop.alpha.720.webm",
+        "sha256": "902bae9ad28ac6684fea0c9bedf4ebe9882082fd9f9e6750b026ff0775ebb7ca",
+        "bytes": 817838,
+        "width": 720,
+        "height": 720,
+        "codec": "vp9",
+        "alpha": true,
+        "frames": 240,
+        "fps": 30
+      },
+      "transparentCover": {
+        "path": "packages/o-stand-sidebend/hologram/cover.transparent.1080.png",
+        "sha256": "2c8968a7f61b67438e44692e940148c5182854e05700ac25535b13e2eacba01f",
+        "bytes": 304557,
+        "width": 1080,
+        "height": 1080,
+        "frame": 114
+      },
+      "transparentFirstFrame": {
+        "path": "packages/o-stand-sidebend/hologram/first-frame.transparent.1080.png",
+        "sha256": "d1b933476b952b34f2f268a6a60c71bcb803ea69df14865b0f165d6b5bab2d29",
+        "bytes": 291997,
+        "width": 1080,
+        "height": 1080,
+        "frame": 0
+      }
+    }
+  },
+  "flags": {
+    "sampledOnly": false,
+    "fullCycleValidated": false,
+    "userAccepted": false,
+    "releaseEligible": false
+  }
+}

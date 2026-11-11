@@ -1,0 +1,5671 @@
+{
+ "actionId": "obliques-A",
+ "recipe": {
+  "path": "catalog/production/remaining219-r1/recipes/obliques-A.json",
+  "sha256": "2c02f1813fdc58959adaa58e81829d602804c55b65bfdf06ea7a5db55db5ed40"
+ },
+ "productionModel": "training-human-v3-armfix@0.1.0-r2",
+ "profile": {
+  "id": "default",
+  "sha256": "8b90de7f3d89b026a324df54eb835cff9dcb775a0d11f3071bdbeb1b2344ce22"
+ },
+ "rendererSha256": {
+  "tools/skin-coverage-r1/render-masters.mjs": "bed0ffc7acd4c7cf1d4508b6efa0adec5e0222747ebcd846715fd576928cfcab",
+  "tools/skin-coverage-r1/install.mjs": "41a11294e10ed2e1d426697f2291d704f49b4c34b156849c93984257f253ff28",
+  "tools/skin-coverage-r1/runtime.js": "109629b853d94adcc9caa40c9aa2b6a3d40f209aa98f31b2e3ad39f0d3f9aa2e",
+  "tools/skin-coverage-r1/port.mjs": "e62cc9aaefd5648a2fb0496d961066c5c9727229112103fb3038b12c8dca3d46",
+  "tools/skin-coverage-r1/verify.mjs": "a7c125d461ec016619226a8103aa9a87c78ba6204824e63bc48fb25794a696de",
+  "tools/action-package-v3/render-masters.mjs": "dac6cd000a32f2b23c0d2f3952d044724231f79cc3414a9ec83bcf0f3f480acb",
+  "tools/action-package-v3/recipe-scene.mjs": "9e6745e775a8abaf9eef8feb07c299285b83188216660cc3ddf906a28d35d93d",
+  "tools/action-package-v3/browser-package-layers.js": "a8d40b3e38ad043f699b242b2a0acb31a1cf6f82229a86292dc502d329a057fd",
+  "tools/action-package-v3/native-highlight.mjs": "c4ad2f22fe317e81d70b6d4b267bcdaf96b94360c45f18560517434437aa3144",
+  "tools/joint-opt-r1/render-masters-joint.mjs": "14eb2f7552b302c5c5571894e0addb536592a9f5ef7db14fd90aa8740c5d2e5e",
+  "tools/joint-opt-r1/joint-production.mjs": "a265969db29b8b5310c3baae9c189eb336329486a050cad4bff53350eed6d80a",
+  "tools/joint-opt-r1/shoulder-axilla-production.json": "c1e98a5f41fc2e8e3548c3a278853bf819030609e004b80bffea4811d571ff79",
+  "tools/joint-opt-r1/shoulder-axilla-r2.mjs": "aef3ed3360ae4dbf7043244d5162455d31fc29b78f464c968c92fc554cbfa514"
+ },
+ "appearance": {
+  "approvedBase": "original-head-eye-soften-20261110-r1",
+  "approvedPointer": {
+   "format": "pose-hub-approved-look-pointer@1",
+   "id": "original-head-eye-soften-20261110-r1",
+   "record": "drill-anim/models/approved-looks/20261110-r1.json",
+   "sha256Lf": "ac435f84ee22ed84a0eaaeef31107beef251465945fa01f9de66de978fb73f99"
+  }
+ },
+ "jointOpt": {
+  "shoulderAxilla": {
+   "id": "shoulder-axilla",
+   "enabled": true,
+   "source": "cli",
+   "switchFile": "tools/joint-opt-r1/shoulder-axilla-production.json",
+   "switchSha256Lf": "c1e98a5f41fc2e8e3548c3a278853bf819030609e004b80bffea4811d571ff79",
+   "switchDefault": true,
+   "module": "tools/joint-opt-r1/shoulder-axilla-r2.mjs",
+   "moduleVersion": "0.2.0-r2",
+   "moduleGlobal": "__shoulderAxillaR2",
+   "options": {},
+   "baseEntry": "tools/skin-coverage-r1/render-masters.mjs",
+   "reviewed": false,
+   "userAccepted": false,
+   "setup": {
+    "enabled": true,
+    "installed": true,
+    "version": "0.2.0-r2",
+    "mesh": "V3_Head_Neck_Torso_Shared_R26",
+    "sides": {
+     "left": {
+      "seedEdges": 68,
+      "weldedVertices": 611,
+      "vertices": 611,
+      "normalFaces": 1358,
+      "normalOutsideVertices": 137,
+      "maxRing": 8
+     },
+     "right": {
+      "seedEdges": 66,
+      "weldedVertices": 696,
+      "vertices": 696,
+      "normalFaces": 1544,
+      "normalOutsideVertices": 153,
+      "maxRing": 8
+     }
+    },
+    "elevStartDeg": 90,
+    "elevFullDeg": 120,
+    "normalRepair": true,
+    "restReproductionErrorMm": 1.1123893155135927e-13,
+    "bonesChanged": false,
+    "weightsAttributeChanged": false,
+    "indexChanged": false
+   }
+  }
+ },
+ "size": 1080,
+ "fps": 30,
+ "loopFrames": 240,
+ "complete": true,
+ "skins": [
+  {
+   "id": "realistic",
+   "sha256": "a2678bb3b662bca44104e60cf6c2b86bf17167d4bf0e90f38460c5d1e5b97bae",
+   "status": "look-approved-r2"
+  },
+  {
+   "id": "tech-white",
+   "sha256": "7d8ee655c441c48dd45335c74e7f2ddcef6c9560da325443649d6f08dfee8fad",
+   "status": "look-approved-r2"
+  },
+  {
+   "id": "neon-night",
+   "sha256": "1ec6bc72c8aa9e906060683b0e6a06eb9199ea4c2a1d1d2ea3b2431c86d562f9",
+   "status": "look-approved-r2"
+  },
+  {
+   "id": "neon-night-b",
+   "sha256": "a6cc0b5833a1fbc3f8dd61761f07c995269d02552fe7633e71483349b492b5a6",
+   "status": "look-approved-r2"
+  },
+  {
+   "id": "hologram",
+   "sha256": "a2ede66fe3e8628443eb7033f0668ec60b525cc4748d3f6c681fdaf69987b61a",
+   "status": "look-approved-r2"
+  }
+ ],
+ "layers": [
+  "body",
+  "body-highlight",
+  "mask"
+ ],
+ "flags": {
+  "sampledOnly": false,
+  "fullCycleValidated": false,
+  "userAccepted": false,
+  "releaseEligible": false
+ },
+ "pageErrors": [],
+ "renderSeconds": 283.602,
+ "frames": [
+  {
+   "frame": 0,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 29.783,
+     "maxNormalChangeDeg": 94.17,
+     "sides": {
+      "left": {
+       "gate": 0.8615,
+       "elevationDeg": 112.98
+      },
+      "right": {
+       "gate": 0.7903,
+       "elevationDeg": 111.15
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 1,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 29.783,
+     "maxNormalChangeDeg": 94.17,
+     "sides": {
+      "left": {
+       "gate": 0.8615,
+       "elevationDeg": 112.98
+      },
+      "right": {
+       "gate": 0.7903,
+       "elevationDeg": 111.15
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 2,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 29.783,
+     "maxNormalChangeDeg": 94.17,
+     "sides": {
+      "left": {
+       "gate": 0.8615,
+       "elevationDeg": 112.98
+      },
+      "right": {
+       "gate": 0.7903,
+       "elevationDeg": 111.15
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 3,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 29.783,
+     "maxNormalChangeDeg": 94.17,
+     "sides": {
+      "left": {
+       "gate": 0.8615,
+       "elevationDeg": 112.98
+      },
+      "right": {
+       "gate": 0.7903,
+       "elevationDeg": 111.15
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 4,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 29.783,
+     "maxNormalChangeDeg": 94.17,
+     "sides": {
+      "left": {
+       "gate": 0.8615,
+       "elevationDeg": 112.98
+      },
+      "right": {
+       "gate": 0.7903,
+       "elevationDeg": 111.15
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 5,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 29.783,
+     "maxNormalChangeDeg": 94.17,
+     "sides": {
+      "left": {
+       "gate": 0.8615,
+       "elevationDeg": 112.98
+      },
+      "right": {
+       "gate": 0.7903,
+       "elevationDeg": 111.15
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 6,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 29.783,
+     "maxNormalChangeDeg": 94.17,
+     "sides": {
+      "left": {
+       "gate": 0.8615,
+       "elevationDeg": 112.98
+      },
+      "right": {
+       "gate": 0.7903,
+       "elevationDeg": 111.15
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 7,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 29.783,
+     "maxNormalChangeDeg": 94.17,
+     "sides": {
+      "left": {
+       "gate": 0.8615,
+       "elevationDeg": 112.98
+      },
+      "right": {
+       "gate": 0.7903,
+       "elevationDeg": 111.15
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 8,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 29.783,
+     "maxNormalChangeDeg": 94.17,
+     "sides": {
+      "left": {
+       "gate": 0.8615,
+       "elevationDeg": 112.98
+      },
+      "right": {
+       "gate": 0.7903,
+       "elevationDeg": 111.15
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 9,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 29.783,
+     "maxNormalChangeDeg": 94.17,
+     "sides": {
+      "left": {
+       "gate": 0.8615,
+       "elevationDeg": 112.98
+      },
+      "right": {
+       "gate": 0.7903,
+       "elevationDeg": 111.15
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 10,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 29.783,
+     "maxNormalChangeDeg": 94.17,
+     "sides": {
+      "left": {
+       "gate": 0.8615,
+       "elevationDeg": 112.98
+      },
+      "right": {
+       "gate": 0.7903,
+       "elevationDeg": 111.15
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 11,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 29.783,
+     "maxNormalChangeDeg": 94.17,
+     "sides": {
+      "left": {
+       "gate": 0.8615,
+       "elevationDeg": 112.98
+      },
+      "right": {
+       "gate": 0.7903,
+       "elevationDeg": 111.15
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 12,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 29.783,
+     "maxNormalChangeDeg": 94.17,
+     "sides": {
+      "left": {
+       "gate": 0.8615,
+       "elevationDeg": 112.98
+      },
+      "right": {
+       "gate": 0.7903,
+       "elevationDeg": 111.15
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 13,
+   "warn": [
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 32.928,
+     "maxNormalChangeDeg": 89.21,
+     "sides": {
+      "left": {
+       "gate": 0.8045,
+       "elevationDeg": 111.5
+      },
+      "right": {
+       "gate": 0.8698,
+       "elevationDeg": 113.22
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 14,
+   "warn": [
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 32.4,
+     "maxNormalChangeDeg": 88.21,
+     "sides": {
+      "left": {
+       "gate": 0.7941,
+       "elevationDeg": 111.24
+      },
+      "right": {
+       "gate": 0.854,
+       "elevationDeg": 112.78
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 15,
+   "warn": [
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 31.477,
+     "maxNormalChangeDeg": 86.43,
+     "sides": {
+      "left": {
+       "gate": 0.7763,
+       "elevationDeg": 110.82
+      },
+      "right": {
+       "gate": 0.8268,
+       "elevationDeg": 112.06
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 16,
+   "warn": [
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 30.036,
+     "maxNormalChangeDeg": 83.7,
+     "sides": {
+      "left": {
+       "gate": 0.7503,
+       "elevationDeg": 110.22
+      },
+      "right": {
+       "gate": 0.785,
+       "elevationDeg": 111.02
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 17,
+   "warn": [
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 27.389,
+     "maxNormalChangeDeg": 79.78,
+     "sides": {
+      "left": {
+       "gate": 0.7152,
+       "elevationDeg": 109.43
+      },
+      "right": {
+       "gate": 0.7117,
+       "elevationDeg": 109.36
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 18,
+   "warn": [
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 21.093,
+     "maxNormalChangeDeg": 98.21,
+     "sides": {
+      "left": {
+       "gate": 0.6698,
+       "elevationDeg": 108.46
+      },
+      "right": {
+       "gate": 0.5469,
+       "elevationDeg": 105.94
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 19,
+   "warn": [
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 14.625,
+     "maxNormalChangeDeg": 66.94,
+     "sides": {
+      "left": {
+       "gate": 0.6134,
+       "elevationDeg": 107.29
+      },
+      "right": {
+       "gate": 0.2337,
+       "elevationDeg": 99.42
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 20,
+   "warn": [
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 12.78,
+     "maxNormalChangeDeg": 57.49,
+     "sides": {
+      "left": {
+       "gate": 0.5457,
+       "elevationDeg": 105.92
+      },
+      "right": {
+       "gate": 0.0051,
+       "elevationDeg": 91.26
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 21,
+   "warn": [
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 10.834,
+     "maxNormalChangeDeg": 47.01,
+     "sides": {
+      "left": {
+       "gate": 0.4727,
+       "elevationDeg": 104.45
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 86.49
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 22,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 9.116,
+     "maxNormalChangeDeg": 37.95,
+     "sides": {
+      "left": {
+       "gate": 0.4075,
+       "elevationDeg": 103.14
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 86.96
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 23,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 7.765,
+     "maxNormalChangeDeg": 31.27,
+     "sides": {
+      "left": {
+       "gate": 0.3562,
+       "elevationDeg": 102.09
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 87.54
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 24,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 6.817,
+     "maxNormalChangeDeg": 27.03,
+     "sides": {
+      "left": {
+       "gate": 0.3213,
+       "elevationDeg": 101.35
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 88.28
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 25,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 6.227,
+     "maxNormalChangeDeg": 24.75,
+     "sides": {
+      "left": {
+       "gate": 0.3016,
+       "elevationDeg": 100.93
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 89.18
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 26,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 5.806,
+     "maxNormalChangeDeg": 23.33,
+     "sides": {
+      "left": {
+       "gate": 0.289,
+       "elevationDeg": 100.66
+      },
+      "right": {
+       "gate": 0.0002,
+       "elevationDeg": 90.25
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 27,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 4.673,
+     "maxNormalChangeDeg": 18.23,
+     "sides": {
+      "left": {
+       "gate": 0.2402,
+       "elevationDeg": 99.57
+      },
+      "right": {
+       "gate": 0.007,
+       "elevationDeg": 91.47
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 28,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 2.978,
+     "maxNormalChangeDeg": 10.9,
+     "sides": {
+      "left": {
+       "gate": 0.159,
+       "elevationDeg": 97.57
+      },
+      "right": {
+       "gate": 0.0247,
+       "elevationDeg": 92.81
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 29,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 1.549,
+     "maxNormalChangeDeg": 3.97,
+     "sides": {
+      "left": {
+       "gate": 0.0647,
+       "elevationDeg": 94.65
+      },
+      "right": {
+       "gate": 0.0537,
+       "elevationDeg": 94.22
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 30,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 2.667,
+     "maxNormalChangeDeg": 5.9,
+     "sides": {
+      "left": {
+       "gate": 0.0122,
+       "elevationDeg": 91.96
+      },
+      "right": {
+       "gate": 0.0932,
+       "elevationDeg": 95.65
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 31,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 4.597,
+     "maxNormalChangeDeg": 9.91,
+     "sides": {
+      "left": {
+       "gate": 0.0049,
+       "elevationDeg": 91.23
+      },
+      "right": {
+       "gate": 0.1469,
+       "elevationDeg": 97.25
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 32,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 7.537,
+     "maxNormalChangeDeg": 15.58,
+     "sides": {
+      "left": {
+       "gate": 0.0081,
+       "elevationDeg": 91.58
+      },
+      "right": {
+       "gate": 0.2148,
+       "elevationDeg": 98.97
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 33,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 11.413,
+     "maxNormalChangeDeg": 22.35,
+     "sides": {
+      "left": {
+       "gate": 0.0029,
+       "elevationDeg": 90.94
+      },
+      "right": {
+       "gate": 0.293,
+       "elevationDeg": 100.75
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 34,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 16.156,
+     "maxNormalChangeDeg": 31.02,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 88.65
+      },
+      "right": {
+       "gate": 0.3777,
+       "elevationDeg": 102.53
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 35,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 21.384,
+     "maxNormalChangeDeg": 40.26,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 85.15
+      },
+      "right": {
+       "gate": 0.4609,
+       "elevationDeg": 104.22
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 36,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 27.166,
+     "maxNormalChangeDeg": 49.78,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 83.52
+      },
+      "right": {
+       "gate": 0.5442,
+       "elevationDeg": 105.88
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 37,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 33.11,
+     "maxNormalChangeDeg": 58.48,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 84.71
+      },
+      "right": {
+       "gate": 0.6218,
+       "elevationDeg": 107.46
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 38,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 38.778,
+     "maxNormalChangeDeg": 65.61,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 83.29
+      },
+      "right": {
+       "gate": 0.6892,
+       "elevationDeg": 108.87
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 39,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 44.088,
+     "maxNormalChangeDeg": 71.29,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 80.53
+      },
+      "right": {
+       "gate": 0.747,
+       "elevationDeg": 110.14
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 40,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 49.037,
+     "maxNormalChangeDeg": 75.79,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 78.39
+      },
+      "right": {
+       "gate": 0.7968,
+       "elevationDeg": 111.31
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 41,
+   "warn": [
+    "左脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 53.318,
+     "maxNormalChangeDeg": 79.12,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 76.9
+      },
+      "right": {
+       "gate": 0.8364,
+       "elevationDeg": 112.31
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 42,
+   "warn": [
+    "左脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 57.028,
+     "maxNormalChangeDeg": 81.64,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 76.35
+      },
+      "right": {
+       "gate": 0.8682,
+       "elevationDeg": 113.17
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 43,
+   "warn": [
+    "左脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 60.023,
+     "maxNormalChangeDeg": 83.43,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 76.14
+      },
+      "right": {
+       "gate": 0.892,
+       "elevationDeg": 113.88
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 44,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "左脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 62.427,
+     "maxNormalChangeDeg": 84.72,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 76.2
+      },
+      "right": {
+       "gate": 0.9098,
+       "elevationDeg": 114.44
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 45,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "左脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 64.338,
+     "maxNormalChangeDeg": 85.68,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 76.38
+      },
+      "right": {
+       "gate": 0.9233,
+       "elevationDeg": 114.91
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 46,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "左脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 65.559,
+     "maxNormalChangeDeg": 86.23,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 76.58
+      },
+      "right": {
+       "gate": 0.9313,
+       "elevationDeg": 115.2
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 47,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "左脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 66.397,
+     "maxNormalChangeDeg": 86.61,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 76.73
+      },
+      "right": {
+       "gate": 0.9368,
+       "elevationDeg": 115.41
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 48,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "左脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 66.623,
+     "maxNormalChangeDeg": 86.71,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 76.78
+      },
+      "right": {
+       "gate": 0.9382,
+       "elevationDeg": 115.46
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 49,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "左脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 66.623,
+     "maxNormalChangeDeg": 86.71,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 76.78
+      },
+      "right": {
+       "gate": 0.9382,
+       "elevationDeg": 115.46
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 50,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "左脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 66.623,
+     "maxNormalChangeDeg": 86.71,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 76.78
+      },
+      "right": {
+       "gate": 0.9382,
+       "elevationDeg": 115.46
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 51,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "左脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 66.623,
+     "maxNormalChangeDeg": 86.71,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 76.78
+      },
+      "right": {
+       "gate": 0.9382,
+       "elevationDeg": 115.46
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 52,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "左脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 66.623,
+     "maxNormalChangeDeg": 86.71,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 76.78
+      },
+      "right": {
+       "gate": 0.9382,
+       "elevationDeg": 115.46
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 53,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "左脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 66.623,
+     "maxNormalChangeDeg": 86.71,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 76.78
+      },
+      "right": {
+       "gate": 0.9382,
+       "elevationDeg": 115.46
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 54,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "左脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 66.623,
+     "maxNormalChangeDeg": 86.71,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 76.78
+      },
+      "right": {
+       "gate": 0.9382,
+       "elevationDeg": 115.46
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 55,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "左脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 66.623,
+     "maxNormalChangeDeg": 86.71,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 76.78
+      },
+      "right": {
+       "gate": 0.9382,
+       "elevationDeg": 115.46
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 56,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "左脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 66.623,
+     "maxNormalChangeDeg": 86.71,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 76.78
+      },
+      "right": {
+       "gate": 0.9382,
+       "elevationDeg": 115.46
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 57,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "左脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 66.623,
+     "maxNormalChangeDeg": 86.71,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 76.78
+      },
+      "right": {
+       "gate": 0.9382,
+       "elevationDeg": 115.46
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 58,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "左脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 66.623,
+     "maxNormalChangeDeg": 86.71,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 76.78
+      },
+      "right": {
+       "gate": 0.9382,
+       "elevationDeg": 115.46
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 59,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "左脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 66.623,
+     "maxNormalChangeDeg": 86.71,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 76.78
+      },
+      "right": {
+       "gate": 0.9382,
+       "elevationDeg": 115.46
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 60,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "左脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 66.623,
+     "maxNormalChangeDeg": 86.71,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 76.78
+      },
+      "right": {
+       "gate": 0.9382,
+       "elevationDeg": 115.46
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 61,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "左脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 66.623,
+     "maxNormalChangeDeg": 86.71,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 76.78
+      },
+      "right": {
+       "gate": 0.9382,
+       "elevationDeg": 115.46
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 62,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "左脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 66.623,
+     "maxNormalChangeDeg": 86.71,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 76.78
+      },
+      "right": {
+       "gate": 0.9382,
+       "elevationDeg": 115.46
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 63,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "左脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 66.623,
+     "maxNormalChangeDeg": 86.71,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 76.78
+      },
+      "right": {
+       "gate": 0.9382,
+       "elevationDeg": 115.46
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 64,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "左脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 66.623,
+     "maxNormalChangeDeg": 86.71,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 76.78
+      },
+      "right": {
+       "gate": 0.9382,
+       "elevationDeg": 115.46
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 65,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "左脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 66.623,
+     "maxNormalChangeDeg": 86.71,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 76.78
+      },
+      "right": {
+       "gate": 0.9382,
+       "elevationDeg": 115.46
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 66,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "左脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 66.623,
+     "maxNormalChangeDeg": 86.71,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 76.78
+      },
+      "right": {
+       "gate": 0.9382,
+       "elevationDeg": 115.46
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 67,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "左脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 66.623,
+     "maxNormalChangeDeg": 86.71,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 76.78
+      },
+      "right": {
+       "gate": 0.9382,
+       "elevationDeg": 115.46
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 68,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "左脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 66.623,
+     "maxNormalChangeDeg": 86.71,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 76.78
+      },
+      "right": {
+       "gate": 0.9382,
+       "elevationDeg": 115.46
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 69,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "左脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 66.623,
+     "maxNormalChangeDeg": 86.71,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 76.78
+      },
+      "right": {
+       "gate": 0.9382,
+       "elevationDeg": 115.46
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 70,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "左脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 66.623,
+     "maxNormalChangeDeg": 86.71,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 76.78
+      },
+      "right": {
+       "gate": 0.9382,
+       "elevationDeg": 115.46
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 71,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "左脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 66.623,
+     "maxNormalChangeDeg": 86.71,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 76.78
+      },
+      "right": {
+       "gate": 0.9382,
+       "elevationDeg": 115.46
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 72,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "左脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 66.623,
+     "maxNormalChangeDeg": 86.71,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 76.78
+      },
+      "right": {
+       "gate": 0.9382,
+       "elevationDeg": 115.46
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 73,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "左脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 66.397,
+     "maxNormalChangeDeg": 86.61,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 76.73
+      },
+      "right": {
+       "gate": 0.9368,
+       "elevationDeg": 115.41
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 74,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "左脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 65.559,
+     "maxNormalChangeDeg": 86.23,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 76.58
+      },
+      "right": {
+       "gate": 0.9313,
+       "elevationDeg": 115.2
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 75,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "左脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 64.338,
+     "maxNormalChangeDeg": 85.68,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 76.38
+      },
+      "right": {
+       "gate": 0.9233,
+       "elevationDeg": 114.91
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 76,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "左脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 62.427,
+     "maxNormalChangeDeg": 84.72,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 76.2
+      },
+      "right": {
+       "gate": 0.9098,
+       "elevationDeg": 114.44
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 77,
+   "warn": [
+    "左脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 60.023,
+     "maxNormalChangeDeg": 83.43,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 76.14
+      },
+      "right": {
+       "gate": 0.892,
+       "elevationDeg": 113.88
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 78,
+   "warn": [
+    "左脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 57.028,
+     "maxNormalChangeDeg": 81.64,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 76.35
+      },
+      "right": {
+       "gate": 0.8682,
+       "elevationDeg": 113.17
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 79,
+   "warn": [
+    "左脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 53.318,
+     "maxNormalChangeDeg": 79.12,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 76.9
+      },
+      "right": {
+       "gate": 0.8364,
+       "elevationDeg": 112.31
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 80,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 48.717,
+     "maxNormalChangeDeg": 75.49,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 78.34
+      },
+      "right": {
+       "gate": 0.7933,
+       "elevationDeg": 111.22
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 81,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 44.088,
+     "maxNormalChangeDeg": 71.29,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 80.53
+      },
+      "right": {
+       "gate": 0.747,
+       "elevationDeg": 110.14
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 82,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 38.778,
+     "maxNormalChangeDeg": 65.61,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 83.29
+      },
+      "right": {
+       "gate": 0.6892,
+       "elevationDeg": 108.87
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 83,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 33.11,
+     "maxNormalChangeDeg": 58.48,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 84.71
+      },
+      "right": {
+       "gate": 0.6218,
+       "elevationDeg": 107.46
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 84,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 27.166,
+     "maxNormalChangeDeg": 49.78,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 83.52
+      },
+      "right": {
+       "gate": 0.5442,
+       "elevationDeg": 105.88
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 85,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 21.384,
+     "maxNormalChangeDeg": 40.26,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 85.15
+      },
+      "right": {
+       "gate": 0.4609,
+       "elevationDeg": 104.22
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 86,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 16.156,
+     "maxNormalChangeDeg": 31.02,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 88.65
+      },
+      "right": {
+       "gate": 0.3777,
+       "elevationDeg": 102.53
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 87,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 11.413,
+     "maxNormalChangeDeg": 22.35,
+     "sides": {
+      "left": {
+       "gate": 0.0029,
+       "elevationDeg": 90.94
+      },
+      "right": {
+       "gate": 0.293,
+       "elevationDeg": 100.75
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 88,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 7.537,
+     "maxNormalChangeDeg": 15.58,
+     "sides": {
+      "left": {
+       "gate": 0.0081,
+       "elevationDeg": 91.58
+      },
+      "right": {
+       "gate": 0.2148,
+       "elevationDeg": 98.97
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 89,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 4.597,
+     "maxNormalChangeDeg": 9.91,
+     "sides": {
+      "left": {
+       "gate": 0.0049,
+       "elevationDeg": 91.23
+      },
+      "right": {
+       "gate": 0.1469,
+       "elevationDeg": 97.25
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 90,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 2.667,
+     "maxNormalChangeDeg": 5.9,
+     "sides": {
+      "left": {
+       "gate": 0.0122,
+       "elevationDeg": 91.96
+      },
+      "right": {
+       "gate": 0.0932,
+       "elevationDeg": 95.65
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 91,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 1.549,
+     "maxNormalChangeDeg": 3.97,
+     "sides": {
+      "left": {
+       "gate": 0.0647,
+       "elevationDeg": 94.65
+      },
+      "right": {
+       "gate": 0.0537,
+       "elevationDeg": 94.22
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 92,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 2.978,
+     "maxNormalChangeDeg": 10.9,
+     "sides": {
+      "left": {
+       "gate": 0.159,
+       "elevationDeg": 97.57
+      },
+      "right": {
+       "gate": 0.0247,
+       "elevationDeg": 92.81
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 93,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 4.673,
+     "maxNormalChangeDeg": 18.23,
+     "sides": {
+      "left": {
+       "gate": 0.2402,
+       "elevationDeg": 99.57
+      },
+      "right": {
+       "gate": 0.007,
+       "elevationDeg": 91.47
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 94,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 5.806,
+     "maxNormalChangeDeg": 23.33,
+     "sides": {
+      "left": {
+       "gate": 0.289,
+       "elevationDeg": 100.66
+      },
+      "right": {
+       "gate": 0.0002,
+       "elevationDeg": 90.25
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 95,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 6.227,
+     "maxNormalChangeDeg": 24.75,
+     "sides": {
+      "left": {
+       "gate": 0.3016,
+       "elevationDeg": 100.93
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 89.18
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 96,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 6.817,
+     "maxNormalChangeDeg": 27.03,
+     "sides": {
+      "left": {
+       "gate": 0.3213,
+       "elevationDeg": 101.35
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 88.28
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 97,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 7.765,
+     "maxNormalChangeDeg": 31.27,
+     "sides": {
+      "left": {
+       "gate": 0.3562,
+       "elevationDeg": 102.09
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 87.54
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 98,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 9.116,
+     "maxNormalChangeDeg": 37.95,
+     "sides": {
+      "left": {
+       "gate": 0.4075,
+       "elevationDeg": 103.14
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 86.96
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 99,
+   "warn": [
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 10.834,
+     "maxNormalChangeDeg": 47.01,
+     "sides": {
+      "left": {
+       "gate": 0.4727,
+       "elevationDeg": 104.45
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 86.49
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 100,
+   "warn": [
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 12.78,
+     "maxNormalChangeDeg": 57.49,
+     "sides": {
+      "left": {
+       "gate": 0.5457,
+       "elevationDeg": 105.92
+      },
+      "right": {
+       "gate": 0.0051,
+       "elevationDeg": 91.26
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 101,
+   "warn": [
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 14.625,
+     "maxNormalChangeDeg": 66.94,
+     "sides": {
+      "left": {
+       "gate": 0.6134,
+       "elevationDeg": 107.29
+      },
+      "right": {
+       "gate": 0.2337,
+       "elevationDeg": 99.42
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 102,
+   "warn": [
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 21.093,
+     "maxNormalChangeDeg": 98.22,
+     "sides": {
+      "left": {
+       "gate": 0.6698,
+       "elevationDeg": 108.46
+      },
+      "right": {
+       "gate": 0.5469,
+       "elevationDeg": 105.94
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 103,
+   "warn": [
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 27.389,
+     "maxNormalChangeDeg": 79.78,
+     "sides": {
+      "left": {
+       "gate": 0.7152,
+       "elevationDeg": 109.43
+      },
+      "right": {
+       "gate": 0.7117,
+       "elevationDeg": 109.36
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 104,
+   "warn": [
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 30.036,
+     "maxNormalChangeDeg": 83.7,
+     "sides": {
+      "left": {
+       "gate": 0.7503,
+       "elevationDeg": 110.22
+      },
+      "right": {
+       "gate": 0.785,
+       "elevationDeg": 111.02
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 105,
+   "warn": [
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 31.477,
+     "maxNormalChangeDeg": 86.43,
+     "sides": {
+      "left": {
+       "gate": 0.7763,
+       "elevationDeg": 110.82
+      },
+      "right": {
+       "gate": 0.8268,
+       "elevationDeg": 112.06
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 106,
+   "warn": [
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 32.4,
+     "maxNormalChangeDeg": 88.21,
+     "sides": {
+      "left": {
+       "gate": 0.7941,
+       "elevationDeg": 111.24
+      },
+      "right": {
+       "gate": 0.854,
+       "elevationDeg": 112.78
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 107,
+   "warn": [
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 32.927,
+     "maxNormalChangeDeg": 89.21,
+     "sides": {
+      "left": {
+       "gate": 0.8045,
+       "elevationDeg": 111.5
+      },
+      "right": {
+       "gate": 0.8698,
+       "elevationDeg": 113.22
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 108,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 29.783,
+     "maxNormalChangeDeg": 94.17,
+     "sides": {
+      "left": {
+       "gate": 0.8615,
+       "elevationDeg": 112.98
+      },
+      "right": {
+       "gate": 0.7903,
+       "elevationDeg": 111.15
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 109,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 29.783,
+     "maxNormalChangeDeg": 94.17,
+     "sides": {
+      "left": {
+       "gate": 0.8615,
+       "elevationDeg": 112.98
+      },
+      "right": {
+       "gate": 0.7903,
+       "elevationDeg": 111.15
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 110,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 29.783,
+     "maxNormalChangeDeg": 94.17,
+     "sides": {
+      "left": {
+       "gate": 0.8615,
+       "elevationDeg": 112.98
+      },
+      "right": {
+       "gate": 0.7903,
+       "elevationDeg": 111.15
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 111,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 29.783,
+     "maxNormalChangeDeg": 94.17,
+     "sides": {
+      "left": {
+       "gate": 0.8615,
+       "elevationDeg": 112.98
+      },
+      "right": {
+       "gate": 0.7903,
+       "elevationDeg": 111.15
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 112,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 29.783,
+     "maxNormalChangeDeg": 94.17,
+     "sides": {
+      "left": {
+       "gate": 0.8615,
+       "elevationDeg": 112.98
+      },
+      "right": {
+       "gate": 0.7903,
+       "elevationDeg": 111.15
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 113,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 29.783,
+     "maxNormalChangeDeg": 94.17,
+     "sides": {
+      "left": {
+       "gate": 0.8615,
+       "elevationDeg": 112.98
+      },
+      "right": {
+       "gate": 0.7903,
+       "elevationDeg": 111.15
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 114,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 29.783,
+     "maxNormalChangeDeg": 94.17,
+     "sides": {
+      "left": {
+       "gate": 0.8615,
+       "elevationDeg": 112.98
+      },
+      "right": {
+       "gate": 0.7903,
+       "elevationDeg": 111.15
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 115,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 29.783,
+     "maxNormalChangeDeg": 94.17,
+     "sides": {
+      "left": {
+       "gate": 0.8615,
+       "elevationDeg": 112.98
+      },
+      "right": {
+       "gate": 0.7903,
+       "elevationDeg": 111.15
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 116,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 29.783,
+     "maxNormalChangeDeg": 94.17,
+     "sides": {
+      "left": {
+       "gate": 0.8615,
+       "elevationDeg": 112.98
+      },
+      "right": {
+       "gate": 0.7903,
+       "elevationDeg": 111.15
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 117,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 29.783,
+     "maxNormalChangeDeg": 94.17,
+     "sides": {
+      "left": {
+       "gate": 0.8615,
+       "elevationDeg": 112.98
+      },
+      "right": {
+       "gate": 0.7903,
+       "elevationDeg": 111.15
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 118,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 29.783,
+     "maxNormalChangeDeg": 94.17,
+     "sides": {
+      "left": {
+       "gate": 0.8615,
+       "elevationDeg": 112.98
+      },
+      "right": {
+       "gate": 0.7903,
+       "elevationDeg": 111.15
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 119,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 29.783,
+     "maxNormalChangeDeg": 94.17,
+     "sides": {
+      "left": {
+       "gate": 0.8615,
+       "elevationDeg": 112.98
+      },
+      "right": {
+       "gate": 0.7903,
+       "elevationDeg": 111.15
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 120,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 29.783,
+     "maxNormalChangeDeg": 94.17,
+     "sides": {
+      "left": {
+       "gate": 0.8615,
+       "elevationDeg": 112.98
+      },
+      "right": {
+       "gate": 0.7903,
+       "elevationDeg": 111.15
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 121,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 29.783,
+     "maxNormalChangeDeg": 94.17,
+     "sides": {
+      "left": {
+       "gate": 0.8615,
+       "elevationDeg": 112.98
+      },
+      "right": {
+       "gate": 0.7903,
+       "elevationDeg": 111.15
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 122,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 29.783,
+     "maxNormalChangeDeg": 94.17,
+     "sides": {
+      "left": {
+       "gate": 0.8615,
+       "elevationDeg": 112.98
+      },
+      "right": {
+       "gate": 0.7903,
+       "elevationDeg": 111.15
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 123,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 29.783,
+     "maxNormalChangeDeg": 94.17,
+     "sides": {
+      "left": {
+       "gate": 0.8615,
+       "elevationDeg": 112.98
+      },
+      "right": {
+       "gate": 0.7903,
+       "elevationDeg": 111.15
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 124,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 29.783,
+     "maxNormalChangeDeg": 94.17,
+     "sides": {
+      "left": {
+       "gate": 0.8615,
+       "elevationDeg": 112.98
+      },
+      "right": {
+       "gate": 0.7903,
+       "elevationDeg": 111.15
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 125,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 29.783,
+     "maxNormalChangeDeg": 94.17,
+     "sides": {
+      "left": {
+       "gate": 0.8615,
+       "elevationDeg": 112.98
+      },
+      "right": {
+       "gate": 0.7903,
+       "elevationDeg": 111.15
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 126,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 29.783,
+     "maxNormalChangeDeg": 94.17,
+     "sides": {
+      "left": {
+       "gate": 0.8615,
+       "elevationDeg": 112.98
+      },
+      "right": {
+       "gate": 0.7903,
+       "elevationDeg": 111.15
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 127,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 29.783,
+     "maxNormalChangeDeg": 94.17,
+     "sides": {
+      "left": {
+       "gate": 0.8615,
+       "elevationDeg": 112.98
+      },
+      "right": {
+       "gate": 0.7903,
+       "elevationDeg": 111.15
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 128,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 29.783,
+     "maxNormalChangeDeg": 94.17,
+     "sides": {
+      "left": {
+       "gate": 0.8615,
+       "elevationDeg": 112.98
+      },
+      "right": {
+       "gate": 0.7903,
+       "elevationDeg": 111.15
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 129,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 29.783,
+     "maxNormalChangeDeg": 94.17,
+     "sides": {
+      "left": {
+       "gate": 0.8615,
+       "elevationDeg": 112.98
+      },
+      "right": {
+       "gate": 0.7903,
+       "elevationDeg": 111.15
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 130,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 29.783,
+     "maxNormalChangeDeg": 94.17,
+     "sides": {
+      "left": {
+       "gate": 0.8615,
+       "elevationDeg": 112.98
+      },
+      "right": {
+       "gate": 0.7903,
+       "elevationDeg": 111.15
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 131,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 29.783,
+     "maxNormalChangeDeg": 94.17,
+     "sides": {
+      "left": {
+       "gate": 0.8615,
+       "elevationDeg": 112.98
+      },
+      "right": {
+       "gate": 0.7903,
+       "elevationDeg": 111.15
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 132,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 29.783,
+     "maxNormalChangeDeg": 94.17,
+     "sides": {
+      "left": {
+       "gate": 0.8615,
+       "elevationDeg": 112.98
+      },
+      "right": {
+       "gate": 0.7903,
+       "elevationDeg": 111.15
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 133,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 30.225,
+     "maxNormalChangeDeg": 94.56,
+     "sides": {
+      "left": {
+       "gate": 0.8662,
+       "elevationDeg": 113.12
+      },
+      "right": {
+       "gate": 0.8021,
+       "elevationDeg": 111.44
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 134,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 29.758,
+     "maxNormalChangeDeg": 93.3,
+     "sides": {
+      "left": {
+       "gate": 0.8504,
+       "elevationDeg": 112.68
+      },
+      "right": {
+       "gate": 0.7917,
+       "elevationDeg": 111.18
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 135,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 28.959,
+     "maxNormalChangeDeg": 91,
+     "sides": {
+      "left": {
+       "gate": 0.823,
+       "elevationDeg": 111.96
+      },
+      "right": {
+       "gate": 0.7738,
+       "elevationDeg": 110.76
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 136,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 27.805,
+     "maxNormalChangeDeg": 87.16,
+     "sides": {
+      "left": {
+       "gate": 0.781,
+       "elevationDeg": 110.93
+      },
+      "right": {
+       "gate": 0.7477,
+       "elevationDeg": 110.16
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 137,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 26.27,
+     "maxNormalChangeDeg": 79.4,
+     "sides": {
+      "left": {
+       "gate": 0.7076,
+       "elevationDeg": 109.27
+      },
+      "right": {
+       "gate": 0.7125,
+       "elevationDeg": 109.37
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 138,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 24.323,
+     "maxNormalChangeDeg": 75.82,
+     "sides": {
+      "left": {
+       "gate": 0.543,
+       "elevationDeg": 105.86
+      },
+      "right": {
+       "gate": 0.667,
+       "elevationDeg": 108.4
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 139,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 21.955,
+     "maxNormalChangeDeg": 83.65,
+     "sides": {
+      "left": {
+       "gate": 0.2315,
+       "elevationDeg": 99.37
+      },
+      "right": {
+       "gate": 0.6105,
+       "elevationDeg": 107.23
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 140,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 19.19,
+     "maxNormalChangeDeg": 84.16,
+     "sides": {
+      "left": {
+       "gate": 0.005,
+       "elevationDeg": 91.24
+      },
+      "right": {
+       "gate": 0.5428,
+       "elevationDeg": 105.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 141,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 16.274,
+     "maxNormalChangeDeg": 61.43,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 86.49
+      },
+      "right": {
+       "gate": 0.4697,
+       "elevationDeg": 104.39
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 142,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 13.706,
+     "maxNormalChangeDeg": 41.46,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 86.96
+      },
+      "right": {
+       "gate": 0.4045,
+       "elevationDeg": 103.08
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 143,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 11.691,
+     "maxNormalChangeDeg": 32.94,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 87.54
+      },
+      "right": {
+       "gate": 0.3533,
+       "elevationDeg": 102.03
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 144,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 10.285,
+     "maxNormalChangeDeg": 27.82,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 88.28
+      },
+      "right": {
+       "gate": 0.3184,
+       "elevationDeg": 101.29
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 145,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 9.42,
+     "maxNormalChangeDeg": 25.21,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 89.18
+      },
+      "right": {
+       "gate": 0.2987,
+       "elevationDeg": 100.87
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 146,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 8.808,
+     "maxNormalChangeDeg": 23.53,
+     "sides": {
+      "left": {
+       "gate": 0.0002,
+       "elevationDeg": 90.25
+      },
+      "right": {
+       "gate": 0.2861,
+       "elevationDeg": 100.6
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 147,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 7.099,
+     "maxNormalChangeDeg": 18.13,
+     "sides": {
+      "left": {
+       "gate": 0.007,
+       "elevationDeg": 91.47
+      },
+      "right": {
+       "gate": 0.2375,
+       "elevationDeg": 99.5
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 148,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 4.672,
+     "maxNormalChangeDeg": 10.71,
+     "sides": {
+      "left": {
+       "gate": 0.0247,
+       "elevationDeg": 92.81
+      },
+      "right": {
+       "gate": 0.1567,
+       "elevationDeg": 97.51
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 149,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 1.996,
+     "maxNormalChangeDeg": 3.87,
+     "sides": {
+      "left": {
+       "gate": 0.0537,
+       "elevationDeg": 94.22
+      },
+      "right": {
+       "gate": 0.0632,
+       "elevationDeg": 94.6
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 150,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 1.734,
+     "maxNormalChangeDeg": 5.9,
+     "sides": {
+      "left": {
+       "gate": 0.0932,
+       "elevationDeg": 95.65
+      },
+      "right": {
+       "gate": 0.0115,
+       "elevationDeg": 91.9
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 151,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 2.718,
+     "maxNormalChangeDeg": 9.92,
+     "sides": {
+      "left": {
+       "gate": 0.147,
+       "elevationDeg": 97.25
+      },
+      "right": {
+       "gate": 0.0045,
+       "elevationDeg": 91.18
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 152,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 3.965,
+     "maxNormalChangeDeg": 15.78,
+     "sides": {
+      "left": {
+       "gate": 0.2148,
+       "elevationDeg": 98.97
+      },
+      "right": {
+       "gate": 0.0075,
+       "elevationDeg": 91.52
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 153,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 5.424,
+     "maxNormalChangeDeg": 23.72,
+     "sides": {
+      "left": {
+       "gate": 0.2931,
+       "elevationDeg": 100.75
+      },
+      "right": {
+       "gate": 0.0025,
+       "elevationDeg": 90.88
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 154,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 7.039,
+     "maxNormalChangeDeg": 33.72,
+     "sides": {
+      "left": {
+       "gate": 0.3777,
+       "elevationDeg": 102.53
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 88.59
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 155,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 8.697,
+     "maxNormalChangeDeg": 44.67,
+     "sides": {
+      "left": {
+       "gate": 0.461,
+       "elevationDeg": 104.22
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 85.1
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 156,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 11.126,
+     "maxNormalChangeDeg": 56.06,
+     "sides": {
+      "left": {
+       "gate": 0.5442,
+       "elevationDeg": 105.89
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 83.47
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 157,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 13.632,
+     "maxNormalChangeDeg": 66.32,
+     "sides": {
+      "left": {
+       "gate": 0.6218,
+       "elevationDeg": 107.46
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 84.66
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 158,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 16.031,
+     "maxNormalChangeDeg": 74.5,
+     "sides": {
+      "left": {
+       "gate": 0.6892,
+       "elevationDeg": 108.87
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 83.24
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 159,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 18.284,
+     "maxNormalChangeDeg": 80.81,
+     "sides": {
+      "left": {
+       "gate": 0.7471,
+       "elevationDeg": 110.14
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 80.49
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 160,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 20.388,
+     "maxNormalChangeDeg": 85.67,
+     "sides": {
+      "left": {
+       "gate": 0.7968,
+       "elevationDeg": 111.31
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 78.39
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 161,
+   "warn": [
+    "右脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 22.212,
+     "maxNormalChangeDeg": 89.19,
+     "sides": {
+      "left": {
+       "gate": 0.8364,
+       "elevationDeg": 112.31
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 76.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 162,
+   "warn": [
+    "右脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 23.796,
+     "maxNormalChangeDeg": 91.79,
+     "sides": {
+      "left": {
+       "gate": 0.8683,
+       "elevationDeg": 113.17
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 76.32
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 163,
+   "warn": [
+    "右脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 25.077,
+     "maxNormalChangeDeg": 93.62,
+     "sides": {
+      "left": {
+       "gate": 0.892,
+       "elevationDeg": 113.88
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 76.1
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 164,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "右脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 26.106,
+     "maxNormalChangeDeg": 94.93,
+     "sides": {
+      "left": {
+       "gate": 0.9099,
+       "elevationDeg": 114.45
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 76.16
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 165,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "右脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 26.925,
+     "maxNormalChangeDeg": 95.89,
+     "sides": {
+      "left": {
+       "gate": 0.9233,
+       "elevationDeg": 114.91
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 76.34
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 166,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "右脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 27.449,
+     "maxNormalChangeDeg": 96.45,
+     "sides": {
+      "left": {
+       "gate": 0.9314,
+       "elevationDeg": 115.2
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 76.55
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 167,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "右脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 27.808,
+     "maxNormalChangeDeg": 96.83,
+     "sides": {
+      "left": {
+       "gate": 0.9369,
+       "elevationDeg": 115.41
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 76.69
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 168,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "右脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 27.905,
+     "maxNormalChangeDeg": 96.92,
+     "sides": {
+      "left": {
+       "gate": 0.9382,
+       "elevationDeg": 115.46
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 76.75
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 169,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "右脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 27.905,
+     "maxNormalChangeDeg": 96.92,
+     "sides": {
+      "left": {
+       "gate": 0.9382,
+       "elevationDeg": 115.46
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 76.75
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 170,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "右脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 27.905,
+     "maxNormalChangeDeg": 96.92,
+     "sides": {
+      "left": {
+       "gate": 0.9382,
+       "elevationDeg": 115.46
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 76.75
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 171,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "右脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 27.905,
+     "maxNormalChangeDeg": 96.92,
+     "sides": {
+      "left": {
+       "gate": 0.9382,
+       "elevationDeg": 115.46
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 76.75
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 172,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "右脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 27.905,
+     "maxNormalChangeDeg": 96.92,
+     "sides": {
+      "left": {
+       "gate": 0.9382,
+       "elevationDeg": 115.46
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 76.75
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 173,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "右脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 27.905,
+     "maxNormalChangeDeg": 96.92,
+     "sides": {
+      "left": {
+       "gate": 0.9382,
+       "elevationDeg": 115.46
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 76.75
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 174,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "右脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 27.905,
+     "maxNormalChangeDeg": 96.92,
+     "sides": {
+      "left": {
+       "gate": 0.9382,
+       "elevationDeg": 115.46
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 76.75
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 175,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "右脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 27.905,
+     "maxNormalChangeDeg": 96.92,
+     "sides": {
+      "left": {
+       "gate": 0.9382,
+       "elevationDeg": 115.46
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 76.75
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 176,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "右脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 27.905,
+     "maxNormalChangeDeg": 96.92,
+     "sides": {
+      "left": {
+       "gate": 0.9382,
+       "elevationDeg": 115.46
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 76.75
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 177,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "右脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 27.905,
+     "maxNormalChangeDeg": 96.92,
+     "sides": {
+      "left": {
+       "gate": 0.9382,
+       "elevationDeg": 115.46
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 76.75
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 178,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "右脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 27.905,
+     "maxNormalChangeDeg": 96.92,
+     "sides": {
+      "left": {
+       "gate": 0.9382,
+       "elevationDeg": 115.46
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 76.75
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 179,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "右脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 27.905,
+     "maxNormalChangeDeg": 96.92,
+     "sides": {
+      "left": {
+       "gate": 0.9382,
+       "elevationDeg": 115.46
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 76.75
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 180,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "右脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 27.905,
+     "maxNormalChangeDeg": 96.92,
+     "sides": {
+      "left": {
+       "gate": 0.9382,
+       "elevationDeg": 115.46
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 76.75
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 181,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "右脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 27.905,
+     "maxNormalChangeDeg": 96.92,
+     "sides": {
+      "left": {
+       "gate": 0.9382,
+       "elevationDeg": 115.46
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 76.75
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 182,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "右脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 27.905,
+     "maxNormalChangeDeg": 96.92,
+     "sides": {
+      "left": {
+       "gate": 0.9382,
+       "elevationDeg": 115.46
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 76.75
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 183,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "右脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 27.905,
+     "maxNormalChangeDeg": 96.92,
+     "sides": {
+      "left": {
+       "gate": 0.9382,
+       "elevationDeg": 115.46
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 76.75
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 184,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "右脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 27.905,
+     "maxNormalChangeDeg": 96.92,
+     "sides": {
+      "left": {
+       "gate": 0.9382,
+       "elevationDeg": 115.46
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 76.75
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 185,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "右脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 27.905,
+     "maxNormalChangeDeg": 96.92,
+     "sides": {
+      "left": {
+       "gate": 0.9382,
+       "elevationDeg": 115.46
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 76.75
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 186,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "右脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 27.905,
+     "maxNormalChangeDeg": 96.92,
+     "sides": {
+      "left": {
+       "gate": 0.9382,
+       "elevationDeg": 115.46
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 76.75
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 187,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "右脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 27.905,
+     "maxNormalChangeDeg": 96.92,
+     "sides": {
+      "left": {
+       "gate": 0.9382,
+       "elevationDeg": 115.46
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 76.75
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 188,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "右脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 27.905,
+     "maxNormalChangeDeg": 96.92,
+     "sides": {
+      "left": {
+       "gate": 0.9382,
+       "elevationDeg": 115.46
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 76.75
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 189,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "右脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 27.905,
+     "maxNormalChangeDeg": 96.92,
+     "sides": {
+      "left": {
+       "gate": 0.9382,
+       "elevationDeg": 115.46
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 76.75
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 190,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "右脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 27.905,
+     "maxNormalChangeDeg": 96.92,
+     "sides": {
+      "left": {
+       "gate": 0.9382,
+       "elevationDeg": 115.46
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 76.75
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 191,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "右脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 27.905,
+     "maxNormalChangeDeg": 96.92,
+     "sides": {
+      "left": {
+       "gate": 0.9382,
+       "elevationDeg": 115.46
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 76.75
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 192,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "右脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 27.905,
+     "maxNormalChangeDeg": 96.92,
+     "sides": {
+      "left": {
+       "gate": 0.9382,
+       "elevationDeg": 115.46
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 76.75
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 193,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "右脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 27.808,
+     "maxNormalChangeDeg": 96.83,
+     "sides": {
+      "left": {
+       "gate": 0.9369,
+       "elevationDeg": 115.41
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 76.69
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 194,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "右脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 27.449,
+     "maxNormalChangeDeg": 96.45,
+     "sides": {
+      "left": {
+       "gate": 0.9314,
+       "elevationDeg": 115.2
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 76.55
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 195,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "右脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 26.925,
+     "maxNormalChangeDeg": 95.89,
+     "sides": {
+      "left": {
+       "gate": 0.9233,
+       "elevationDeg": 114.91
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 76.34
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 196,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。",
+    "右脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 26.106,
+     "maxNormalChangeDeg": 94.93,
+     "sides": {
+      "left": {
+       "gate": 0.9099,
+       "elevationDeg": 114.45
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 76.16
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 197,
+   "warn": [
+    "右脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 25.077,
+     "maxNormalChangeDeg": 93.62,
+     "sides": {
+      "left": {
+       "gate": 0.892,
+       "elevationDeg": 113.88
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 76.1
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 198,
+   "warn": [
+    "右脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 23.796,
+     "maxNormalChangeDeg": 91.79,
+     "sides": {
+      "left": {
+       "gate": 0.8683,
+       "elevationDeg": 113.17
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 76.32
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 199,
+   "warn": [
+    "右脚踝已按真实腿长限制。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 22.212,
+     "maxNormalChangeDeg": 89.19,
+     "sides": {
+      "left": {
+       "gate": 0.8364,
+       "elevationDeg": 112.31
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 76.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 200,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 20.249,
+     "maxNormalChangeDeg": 85.34,
+     "sides": {
+      "left": {
+       "gate": 0.7933,
+       "elevationDeg": 111.22
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 78.3
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 201,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 18.284,
+     "maxNormalChangeDeg": 80.81,
+     "sides": {
+      "left": {
+       "gate": 0.7471,
+       "elevationDeg": 110.14
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 80.49
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 202,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 16.031,
+     "maxNormalChangeDeg": 74.5,
+     "sides": {
+      "left": {
+       "gate": 0.6892,
+       "elevationDeg": 108.87
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 83.24
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 203,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 13.632,
+     "maxNormalChangeDeg": 66.32,
+     "sides": {
+      "left": {
+       "gate": 0.6218,
+       "elevationDeg": 107.46
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 84.66
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 204,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 11.126,
+     "maxNormalChangeDeg": 56.06,
+     "sides": {
+      "left": {
+       "gate": 0.5442,
+       "elevationDeg": 105.89
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 83.47
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 205,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 8.697,
+     "maxNormalChangeDeg": 44.67,
+     "sides": {
+      "left": {
+       "gate": 0.461,
+       "elevationDeg": 104.22
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 85.1
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 206,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 611,
+     "maxMoveMm": 7.039,
+     "maxNormalChangeDeg": 33.72,
+     "sides": {
+      "left": {
+       "gate": 0.3777,
+       "elevationDeg": 102.53
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 88.59
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 207,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 5.424,
+     "maxNormalChangeDeg": 23.72,
+     "sides": {
+      "left": {
+       "gate": 0.2931,
+       "elevationDeg": 100.75
+      },
+      "right": {
+       "gate": 0.0025,
+       "elevationDeg": 90.88
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 208,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 3.965,
+     "maxNormalChangeDeg": 15.78,
+     "sides": {
+      "left": {
+       "gate": 0.2148,
+       "elevationDeg": 98.97
+      },
+      "right": {
+       "gate": 0.0075,
+       "elevationDeg": 91.52
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 209,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 2.718,
+     "maxNormalChangeDeg": 9.92,
+     "sides": {
+      "left": {
+       "gate": 0.147,
+       "elevationDeg": 97.25
+      },
+      "right": {
+       "gate": 0.0045,
+       "elevationDeg": 91.18
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 210,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 1.734,
+     "maxNormalChangeDeg": 5.9,
+     "sides": {
+      "left": {
+       "gate": 0.0932,
+       "elevationDeg": 95.65
+      },
+      "right": {
+       "gate": 0.0115,
+       "elevationDeg": 91.9
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 211,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 1.996,
+     "maxNormalChangeDeg": 3.87,
+     "sides": {
+      "left": {
+       "gate": 0.0537,
+       "elevationDeg": 94.22
+      },
+      "right": {
+       "gate": 0.0632,
+       "elevationDeg": 94.6
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 212,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 4.672,
+     "maxNormalChangeDeg": 10.71,
+     "sides": {
+      "left": {
+       "gate": 0.0247,
+       "elevationDeg": 92.81
+      },
+      "right": {
+       "gate": 0.1567,
+       "elevationDeg": 97.51
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 213,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 7.099,
+     "maxNormalChangeDeg": 18.13,
+     "sides": {
+      "left": {
+       "gate": 0.007,
+       "elevationDeg": 91.47
+      },
+      "right": {
+       "gate": 0.2375,
+       "elevationDeg": 99.5
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 214,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 8.808,
+     "maxNormalChangeDeg": 23.53,
+     "sides": {
+      "left": {
+       "gate": 0.0002,
+       "elevationDeg": 90.25
+      },
+      "right": {
+       "gate": 0.2861,
+       "elevationDeg": 100.6
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 215,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 9.42,
+     "maxNormalChangeDeg": 25.21,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 89.18
+      },
+      "right": {
+       "gate": 0.2987,
+       "elevationDeg": 100.87
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 216,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 10.285,
+     "maxNormalChangeDeg": 27.82,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 88.28
+      },
+      "right": {
+       "gate": 0.3184,
+       "elevationDeg": 101.29
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 217,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 11.691,
+     "maxNormalChangeDeg": 32.94,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 87.54
+      },
+      "right": {
+       "gate": 0.3533,
+       "elevationDeg": 102.03
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 218,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 13.706,
+     "maxNormalChangeDeg": 41.46,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 86.96
+      },
+      "right": {
+       "gate": 0.4045,
+       "elevationDeg": 103.08
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 219,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 696,
+     "maxMoveMm": 16.274,
+     "maxNormalChangeDeg": 61.43,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 86.49
+      },
+      "right": {
+       "gate": 0.4697,
+       "elevationDeg": 104.39
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 220,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 19.19,
+     "maxNormalChangeDeg": 84.16,
+     "sides": {
+      "left": {
+       "gate": 0.005,
+       "elevationDeg": 91.24
+      },
+      "right": {
+       "gate": 0.5428,
+       "elevationDeg": 105.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 221,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 21.955,
+     "maxNormalChangeDeg": 83.65,
+     "sides": {
+      "left": {
+       "gate": 0.2315,
+       "elevationDeg": 99.37
+      },
+      "right": {
+       "gate": 0.6105,
+       "elevationDeg": 107.23
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 222,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 24.323,
+     "maxNormalChangeDeg": 75.82,
+     "sides": {
+      "left": {
+       "gate": 0.543,
+       "elevationDeg": 105.86
+      },
+      "right": {
+       "gate": 0.667,
+       "elevationDeg": 108.4
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 223,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 26.27,
+     "maxNormalChangeDeg": 79.4,
+     "sides": {
+      "left": {
+       "gate": 0.7075,
+       "elevationDeg": 109.27
+      },
+      "right": {
+       "gate": 0.7125,
+       "elevationDeg": 109.37
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 224,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 27.805,
+     "maxNormalChangeDeg": 87.16,
+     "sides": {
+      "left": {
+       "gate": 0.781,
+       "elevationDeg": 110.93
+      },
+      "right": {
+       "gate": 0.7477,
+       "elevationDeg": 110.16
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 225,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 28.959,
+     "maxNormalChangeDeg": 91,
+     "sides": {
+      "left": {
+       "gate": 0.823,
+       "elevationDeg": 111.96
+      },
+      "right": {
+       "gate": 0.7738,
+       "elevationDeg": 110.76
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 226,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 29.758,
+     "maxNormalChangeDeg": 93.3,
+     "sides": {
+      "left": {
+       "gate": 0.8504,
+       "elevationDeg": 112.68
+      },
+      "right": {
+       "gate": 0.7917,
+       "elevationDeg": 111.18
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 227,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 30.225,
+     "maxNormalChangeDeg": 94.56,
+     "sides": {
+      "left": {
+       "gate": 0.8662,
+       "elevationDeg": 113.12
+      },
+      "right": {
+       "gate": 0.8021,
+       "elevationDeg": 111.44
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 228,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 29.783,
+     "maxNormalChangeDeg": 94.17,
+     "sides": {
+      "left": {
+       "gate": 0.8615,
+       "elevationDeg": 112.98
+      },
+      "right": {
+       "gate": 0.7903,
+       "elevationDeg": 111.15
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 229,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 29.783,
+     "maxNormalChangeDeg": 94.17,
+     "sides": {
+      "left": {
+       "gate": 0.8615,
+       "elevationDeg": 112.98
+      },
+      "right": {
+       "gate": 0.7903,
+       "elevationDeg": 111.15
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 230,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 29.783,
+     "maxNormalChangeDeg": 94.17,
+     "sides": {
+      "left": {
+       "gate": 0.8615,
+       "elevationDeg": 112.98
+      },
+      "right": {
+       "gate": 0.7903,
+       "elevationDeg": 111.15
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 231,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 29.783,
+     "maxNormalChangeDeg": 94.17,
+     "sides": {
+      "left": {
+       "gate": 0.8615,
+       "elevationDeg": 112.98
+      },
+      "right": {
+       "gate": 0.7903,
+       "elevationDeg": 111.15
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 232,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 29.783,
+     "maxNormalChangeDeg": 94.17,
+     "sides": {
+      "left": {
+       "gate": 0.8615,
+       "elevationDeg": 112.98
+      },
+      "right": {
+       "gate": 0.7903,
+       "elevationDeg": 111.15
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 233,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 29.783,
+     "maxNormalChangeDeg": 94.17,
+     "sides": {
+      "left": {
+       "gate": 0.8615,
+       "elevationDeg": 112.98
+      },
+      "right": {
+       "gate": 0.7903,
+       "elevationDeg": 111.15
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 234,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 29.783,
+     "maxNormalChangeDeg": 94.17,
+     "sides": {
+      "left": {
+       "gate": 0.8615,
+       "elevationDeg": 112.98
+      },
+      "right": {
+       "gate": 0.7903,
+       "elevationDeg": 111.15
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 235,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 29.783,
+     "maxNormalChangeDeg": 94.17,
+     "sides": {
+      "left": {
+       "gate": 0.8615,
+       "elevationDeg": 112.98
+      },
+      "right": {
+       "gate": 0.7903,
+       "elevationDeg": 111.15
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 236,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 29.783,
+     "maxNormalChangeDeg": 94.17,
+     "sides": {
+      "left": {
+       "gate": 0.8615,
+       "elevationDeg": 112.98
+      },
+      "right": {
+       "gate": 0.7903,
+       "elevationDeg": 111.15
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 237,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 29.783,
+     "maxNormalChangeDeg": 94.17,
+     "sides": {
+      "left": {
+       "gate": 0.8615,
+       "elevationDeg": 112.98
+      },
+      "right": {
+       "gate": 0.7903,
+       "elevationDeg": 111.15
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 238,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 29.783,
+     "maxNormalChangeDeg": 94.17,
+     "sides": {
+      "left": {
+       "gate": 0.8615,
+       "elevationDeg": 112.98
+      },
+      "right": {
+       "gate": 0.7903,
+       "elevationDeg": 111.15
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 239,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 29.783,
+     "maxNormalChangeDeg": 94.17,
+     "sides": {
+      "left": {
+       "gate": 0.8615,
+       "elevationDeg": 112.98
+      },
+      "right": {
+       "gate": 0.7903,
+       "elevationDeg": 111.15
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 240,
+   "warn": [
+    "躯干位置已限制，以保持锁定手掌、真实骨长和地面高度。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 29.783,
+     "maxNormalChangeDeg": 94.17,
+     "sides": {
+      "left": {
+       "gate": 0.8615,
+       "elevationDeg": 112.98
+      },
+      "right": {
+       "gate": 0.7903,
+       "elevationDeg": 111.15
+      }
+     }
+    }
+   }
+  }
+ ]
+}

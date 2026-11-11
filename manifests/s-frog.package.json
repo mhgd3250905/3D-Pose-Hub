@@ -1,0 +1,817 @@
+{
+  "format": "pose-hub-action-package-v3@1",
+  "actionId": "s-frog",
+  "profile": {
+    "id": "default",
+    "sha256": "8b90de7f3d89b026a324df54eb835cff9dcb775a0d11f3071bdbeb1b2344ce22"
+  },
+  "masters": {
+    "path": "masters/s-frog/layer-manifest.json",
+    "sha256": "26ca581b4e4d114bf2ce8e759e8907c5bca596adfdd1ccb4813fcc66ec969474",
+    "bytes": 6880544
+  },
+  "recipe": {
+    "path": "catalog/production/remaining219-r1/recipes/s-frog.json",
+    "sha256": "a65f04ad748e53cf573f703dafcec97e26e032cb3e9b8aacc6a9585867f73dfc"
+  },
+  "productionModel": "training-human-v3-armfix@0.1.0-r2",
+  "authoringModel": "training-human-v3-armfix@0.1.0-r2",
+  "fps": 30,
+  "durationSeconds": 8,
+  "loopFrames": 240,
+  "framesUsed": 240,
+  "framing": {
+    "path": "packages/s-frog/framing.json",
+    "sha256": "36b0cbfea14549d21726c81bc071617920f66d5b5c57a5dcc570c92bd15196fc",
+    "bytes": 340
+  },
+  "keyframes": {
+    "start": 0,
+    "peak": 114,
+    "end": 239
+  },
+  "peakRule": "max highlight pulse (middle of plateau)",
+  "skins": {
+    "realistic": {
+      "label": "Original",
+      "status": "look-approved-r2",
+      "themes": {
+        "dark": {
+          "video": {
+            "path": "packages/s-frog/realistic/dark/loop.720.mp4",
+            "sha256": "702e3af3960be07a24d5d9c31a03019af70a041b6f8ad191370a4f3b51d0247c",
+            "bytes": 68566,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#101013"
+          },
+          "start": {
+            "path": "packages/s-frog/realistic/dark/start.720.png",
+            "sha256": "02729c62a3f7190d0a86966a3a58c375de73d61c451c7c6025b9dd3f15e799f3",
+            "bytes": 47059,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/s-frog/realistic/dark/peak.720.png",
+            "sha256": "0eb720960e23b10eee6c5b32de647e4e50f59b3101c965ecd4cab279138f73b0",
+            "bytes": 44805,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "end": {
+            "path": "packages/s-frog/realistic/dark/end.720.png",
+            "sha256": "35e3aa5db3f87ab4c0f1deb8cab53f4260a75f19609def15a867add30ab9162f",
+            "bytes": 47056,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/s-frog/realistic/dark/cover.720.jpg",
+            "sha256": "346813dcd52ee9116f0a155695d6b371cb14fa999b9de99d842b806f6ac5cbcb",
+            "bytes": 19768,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "thumbnail": {
+            "path": "packages/s-frog/realistic/dark/thumbnail.240.jpg",
+            "sha256": "afcfbb27f6de2734181180accd2c6e0c77f68fb93ae627aafa3d1b06da2cdc0e",
+            "bytes": 4499,
+            "width": 240,
+            "height": 240,
+            "frame": 114
+          },
+          "peakHighlightOff": {
+            "path": "packages/s-frog/realistic/dark/peak.highlight-off.720.png",
+            "sha256": "8590e65c6c4db639d4558061a5d46160ab81a5fea257cc89384498e86f35e789",
+            "bytes": 44035,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          }
+        },
+        "light": {
+          "video": {
+            "path": "packages/s-frog/realistic/light/loop.720.mp4",
+            "sha256": "d853b2e56a5ca9262fd57776ed9e2dfbd1151bc61aa081d0558675964f10a31a",
+            "bytes": 78505,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#f3f2ef"
+          },
+          "start": {
+            "path": "packages/s-frog/realistic/light/start.720.png",
+            "sha256": "b309569151f4009feff4d759ff783a5db3932c02803e3af10e430ecd90e7ccc0",
+            "bytes": 50751,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/s-frog/realistic/light/peak.720.png",
+            "sha256": "5c231eaf528c831d5ca2ceea75ad3351bfeb58519e74f783e16bba2de104c8bd",
+            "bytes": 48315,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "end": {
+            "path": "packages/s-frog/realistic/light/end.720.png",
+            "sha256": "95a20b9592dc34681eb29ea3b2365378c4d3dd4638c69c7cb6a0d9a5a97c9bb9",
+            "bytes": 50754,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/s-frog/realistic/light/cover.720.jpg",
+            "sha256": "b0743b25b2f6113539ea037cb91ad3e387628d20a16f587e9a3891c3a4131a4d",
+            "bytes": 24426,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "thumbnail": {
+            "path": "packages/s-frog/realistic/light/thumbnail.240.jpg",
+            "sha256": "a893bfb5d086d3bd292427104053e5fc2605cea698525b99a9e7b3f8c985ae6f",
+            "bytes": 6091,
+            "width": 240,
+            "height": 240,
+            "frame": 114
+          },
+          "peakHighlightOff": {
+            "path": "packages/s-frog/realistic/light/peak.highlight-off.720.png",
+            "sha256": "0f0b3ee3c5a9c4a4f791368823002d569ce17648441ea2fe7aed60a590e7a7ec",
+            "bytes": 47196,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          }
+        }
+      },
+      "transparentLoop": {
+        "path": "packages/s-frog/realistic/loop.alpha.720.webm",
+        "sha256": "ef0ae4e483ac1fcd9757600a9c805c4d6ce169746250c6b0bf235226d1cbcf55",
+        "bytes": 187952,
+        "width": 720,
+        "height": 720,
+        "codec": "vp9",
+        "alpha": true,
+        "frames": 240,
+        "fps": 30
+      },
+      "transparentCover": {
+        "path": "packages/s-frog/realistic/cover.transparent.1080.png",
+        "sha256": "df189e3c8defe0e1522e77aeb0568d3abbc16d4d96c93dfa87426cc3c9b65599",
+        "bytes": 100990,
+        "width": 1080,
+        "height": 1080,
+        "frame": 114
+      },
+      "transparentFirstFrame": {
+        "path": "packages/s-frog/realistic/first-frame.transparent.1080.png",
+        "sha256": "3542099396c98cedd844c80cd9f92e7982401716a43f6a277a5f18fcc177d1af",
+        "bytes": 105612,
+        "width": 1080,
+        "height": 1080,
+        "frame": 0
+      }
+    },
+    "tech-white": {
+      "label": "White",
+      "status": "look-approved-r2",
+      "themes": {
+        "dark": {
+          "video": {
+            "path": "packages/s-frog/tech-white/dark/loop.720.mp4",
+            "sha256": "8d023d83006702af17692a686c22dbe0ee9990b3c334197f0b6cfbab68b992cb",
+            "bytes": 138798,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#101013"
+          },
+          "start": {
+            "path": "packages/s-frog/tech-white/dark/start.720.png",
+            "sha256": "b0ee4381710d1fcd0de1045c2d43c1e9e8df0d5eaf334a84f82a56179cbca1d8",
+            "bytes": 66833,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/s-frog/tech-white/dark/peak.720.png",
+            "sha256": "c7ae6ef3df86f9df43209f9a445a0df0296acd30b2b0204876df0df01085dd66",
+            "bytes": 63014,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "end": {
+            "path": "packages/s-frog/tech-white/dark/end.720.png",
+            "sha256": "64e039008d226585180143ea3cfbeab2d220dc6ea2043c0801ca533b285d1650",
+            "bytes": 66830,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/s-frog/tech-white/dark/cover.720.jpg",
+            "sha256": "b8352157fb19b98cbccc655a0522b374e58254b8bec4760ca1df6fb1a4e0ccaf",
+            "bytes": 27869,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "thumbnail": {
+            "path": "packages/s-frog/tech-white/dark/thumbnail.240.jpg",
+            "sha256": "b69050a4760e5107821930df1756557eb0ad012da8ee6dbac6f94537f15e17fd",
+            "bytes": 6220,
+            "width": 240,
+            "height": 240,
+            "frame": 114
+          },
+          "peakHighlightOff": {
+            "path": "packages/s-frog/tech-white/dark/peak.highlight-off.720.png",
+            "sha256": "670f476eb98b50c4a21a35e18cfa0bc0623380e9fbd40ca8ee585d94ec2e7aea",
+            "bytes": 62915,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          }
+        },
+        "light": {
+          "video": {
+            "path": "packages/s-frog/tech-white/light/loop.720.mp4",
+            "sha256": "6e4f5ab923422f0277b8333eb52b97277d5fd717a0b7287b126d8e6204888fed",
+            "bytes": 137601,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#f3f2ef"
+          },
+          "start": {
+            "path": "packages/s-frog/tech-white/light/start.720.png",
+            "sha256": "124326d47009133b75efa43f7789db3e21485973e693cb56653a7a1ced5c3429",
+            "bytes": 67085,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/s-frog/tech-white/light/peak.720.png",
+            "sha256": "cad8e03cd0970dcbb976675c96c79b2b12f4da11a77a09f1fc0ce9ddd0956b19",
+            "bytes": 63841,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "end": {
+            "path": "packages/s-frog/tech-white/light/end.720.png",
+            "sha256": "0c6893a17a2c47ef0d523c397c0c0dec7157539ad27469d70c55f80f26e2e1e9",
+            "bytes": 67081,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/s-frog/tech-white/light/cover.720.jpg",
+            "sha256": "a7b881972024a46b3a35f295ce56af18b71a613b026ffe56e940b36f1ffa4378",
+            "bytes": 29453,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "thumbnail": {
+            "path": "packages/s-frog/tech-white/light/thumbnail.240.jpg",
+            "sha256": "dbdbe3df6c3962170de1878d8a36dc712232f2bcd758df6c5d559b529ebe2dc8",
+            "bytes": 6718,
+            "width": 240,
+            "height": 240,
+            "frame": 114
+          },
+          "peakHighlightOff": {
+            "path": "packages/s-frog/tech-white/light/peak.highlight-off.720.png",
+            "sha256": "eb09229a65e6fbcc6a2f56da596eb5394adc15ba738a85633cd7be05f4866b01",
+            "bytes": 63744,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          }
+        }
+      },
+      "transparentLoop": {
+        "path": "packages/s-frog/tech-white/loop.alpha.720.webm",
+        "sha256": "f2570c9ac4bf334d06318ff89fee524524aba5e5f3de5be83e8bd260564d0882",
+        "bytes": 259586,
+        "width": 720,
+        "height": 720,
+        "codec": "vp9",
+        "alpha": true,
+        "frames": 240,
+        "fps": 30
+      },
+      "transparentCover": {
+        "path": "packages/s-frog/tech-white/cover.transparent.1080.png",
+        "sha256": "1ff2935b760f4176963e7d1fa70856560e1cf74fca4b2377223a98b6ccc15c29",
+        "bytes": 135613,
+        "width": 1080,
+        "height": 1080,
+        "frame": 114
+      },
+      "transparentFirstFrame": {
+        "path": "packages/s-frog/tech-white/first-frame.transparent.1080.png",
+        "sha256": "ba108767e08c15be5726fd52f1a2cd117e3b63fca07437a5d378cdb16f9e870b",
+        "bytes": 143681,
+        "width": 1080,
+        "height": 1080,
+        "frame": 0
+      }
+    },
+    "neon-night": {
+      "label": "Blue",
+      "status": "look-approved-r2",
+      "themes": {
+        "dark": {
+          "video": {
+            "path": "packages/s-frog/neon-night/dark/loop.720.mp4",
+            "sha256": "25d2e32c03fb20f7faea1ba97777e2227648655ab78850864be9a27036256e82",
+            "bytes": 154867,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#101013"
+          },
+          "start": {
+            "path": "packages/s-frog/neon-night/dark/start.720.png",
+            "sha256": "98f373be9db25fe206d2c5792db4e103b433d54f7b2f3e28fe1f72445cf8a894",
+            "bytes": 63188,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/s-frog/neon-night/dark/peak.720.png",
+            "sha256": "5c934d3628f2088a6f2bd5249dbe4376e99c1ac444b5efa0b4416059c582580b",
+            "bytes": 59475,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "end": {
+            "path": "packages/s-frog/neon-night/dark/end.720.png",
+            "sha256": "5a2dfff31f4c5db8b8946780ffe55215bc8f3352123eecc80bcc83661389b469",
+            "bytes": 63198,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/s-frog/neon-night/dark/cover.720.jpg",
+            "sha256": "6a9f7fda435a083d2d4890ceabccfbb5b1fb06facc522260dc6ffd019b1be2e3",
+            "bytes": 25238,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "thumbnail": {
+            "path": "packages/s-frog/neon-night/dark/thumbnail.240.jpg",
+            "sha256": "3e7eab212c5a13875aae4ed1bb7f8a687ff2db46c8853841e2320496366fd861",
+            "bytes": 4771,
+            "width": 240,
+            "height": 240,
+            "frame": 114
+          },
+          "peakHighlightOff": {
+            "path": "packages/s-frog/neon-night/dark/peak.highlight-off.720.png",
+            "sha256": "92595b000b919935aadb8936dc403c8aac0ed6ef756e638e04e80c9cc31f383e",
+            "bytes": 59394,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          }
+        },
+        "light": {
+          "video": {
+            "path": "packages/s-frog/neon-night/light/loop.720.mp4",
+            "sha256": "78c2fd37254b92e95f2d01cb26d878a0d446639665b0626f9153735027d4924f",
+            "bytes": 163758,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#f3f2ef"
+          },
+          "start": {
+            "path": "packages/s-frog/neon-night/light/start.720.png",
+            "sha256": "40bcbdb70612db00595a4789bc4564dca46e00ef11bdbb9e227e4481e2a81913",
+            "bytes": 67298,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/s-frog/neon-night/light/peak.720.png",
+            "sha256": "3fb5892e1b14a008071f4c96c97aeaa4b514a48a4cd23e933ba52d25876145b7",
+            "bytes": 63647,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "end": {
+            "path": "packages/s-frog/neon-night/light/end.720.png",
+            "sha256": "2a31078519c5f3117eba3674c355ea111aec4d0b17bb182ba3b98a11257ad50e",
+            "bytes": 67290,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/s-frog/neon-night/light/cover.720.jpg",
+            "sha256": "c573ce9e865e128611aff914288ce4e6bfa61f1a3fece3f5a93a3a8991d64ec8",
+            "bytes": 30189,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "thumbnail": {
+            "path": "packages/s-frog/neon-night/light/thumbnail.240.jpg",
+            "sha256": "355725c36c6562ef716f1c887a23239d550683d8d9ea0a8fb0e884bda69c4105",
+            "bytes": 6455,
+            "width": 240,
+            "height": 240,
+            "frame": 114
+          },
+          "peakHighlightOff": {
+            "path": "packages/s-frog/neon-night/light/peak.highlight-off.720.png",
+            "sha256": "6dd4909c7ebcaa240d66da20e6e50819306cfc6b1d947e3b3ae7cf76f99855f7",
+            "bytes": 63569,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          }
+        }
+      },
+      "transparentLoop": {
+        "path": "packages/s-frog/neon-night/loop.alpha.720.webm",
+        "sha256": "0019af76ace69ade3f520fed47c93fa0f93c77c4e791b44cf62a7832dde164bf",
+        "bytes": 220248,
+        "width": 720,
+        "height": 720,
+        "codec": "vp9",
+        "alpha": true,
+        "frames": 240,
+        "fps": 30
+      },
+      "transparentCover": {
+        "path": "packages/s-frog/neon-night/cover.transparent.1080.png",
+        "sha256": "a8dafd99ea38a7f42d2e4843bb02142dae7b418cdbcbeefbee51a2b07bf50d80",
+        "bytes": 135410,
+        "width": 1080,
+        "height": 1080,
+        "frame": 114
+      },
+      "transparentFirstFrame": {
+        "path": "packages/s-frog/neon-night/first-frame.transparent.1080.png",
+        "sha256": "efdd056e21dadd61cec00cf94b8b7435ec8f6afa4980a2b618ee0f574229ae37",
+        "bytes": 144584,
+        "width": 1080,
+        "height": 1080,
+        "frame": 0
+      }
+    },
+    "neon-night-b": {
+      "label": "Green",
+      "status": "look-approved-r2",
+      "themes": {
+        "dark": {
+          "video": {
+            "path": "packages/s-frog/neon-night-b/dark/loop.720.mp4",
+            "sha256": "af2643334a2cf30b8d70405a97d59e5d3e2e585357fdaf0a81090e00dd0dfa83",
+            "bytes": 168260,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#101013"
+          },
+          "start": {
+            "path": "packages/s-frog/neon-night-b/dark/start.720.png",
+            "sha256": "2ba4a22ab8b62547f9cd70ff878badcdb6e48135017dbb19e1ed571943ebaca8",
+            "bytes": 62866,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/s-frog/neon-night-b/dark/peak.720.png",
+            "sha256": "d22d9c6c462e1587bfdfdfd3f6812a295afd2283eb84d548bb537b6d71657257",
+            "bytes": 59111,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "end": {
+            "path": "packages/s-frog/neon-night-b/dark/end.720.png",
+            "sha256": "742f59299242f5a462aa9f752603a74d90ef8035ed4974ef9a67b536d0221e77",
+            "bytes": 62873,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/s-frog/neon-night-b/dark/cover.720.jpg",
+            "sha256": "34ec366a6b9a1809f5b2e787d6880cda271f29e6b7077fe86f92c65a0d205793",
+            "bytes": 25669,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "thumbnail": {
+            "path": "packages/s-frog/neon-night-b/dark/thumbnail.240.jpg",
+            "sha256": "64d75e59aed89bda9ad49026b441413e346a37779f848e7b2b0b9f17f2326f12",
+            "bytes": 4917,
+            "width": 240,
+            "height": 240,
+            "frame": 114
+          },
+          "peakHighlightOff": {
+            "path": "packages/s-frog/neon-night-b/dark/peak.highlight-off.720.png",
+            "sha256": "6052aa5bd21ed1bf8870d3290ae1abb40b17f4f19493f77324f31e33da27cab0",
+            "bytes": 58973,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          }
+        },
+        "light": {
+          "video": {
+            "path": "packages/s-frog/neon-night-b/light/loop.720.mp4",
+            "sha256": "1203462ae9ca218a2d894ef4a7f69519e509c015f9e545fff8217704b57ee1d5",
+            "bytes": 176113,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#f3f2ef"
+          },
+          "start": {
+            "path": "packages/s-frog/neon-night-b/light/start.720.png",
+            "sha256": "fa9e4f7ce5179ca436f3c17b88d9811490a284e517a18c8cd467d32113f4f79d",
+            "bytes": 67137,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/s-frog/neon-night-b/light/peak.720.png",
+            "sha256": "7fe5081eb9e1d89b9626a3c3774966d6f6f798919aceccb2724cb47e1e56b546",
+            "bytes": 63447,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "end": {
+            "path": "packages/s-frog/neon-night-b/light/end.720.png",
+            "sha256": "5b9c5deaac61be81345e110291f2bd458d960c4e94d15008c7038ec0780e2e18",
+            "bytes": 67135,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/s-frog/neon-night-b/light/cover.720.jpg",
+            "sha256": "b28521c8760b505941829f5e44ada47b9776dd5e9fb2a4c8818c1e5229a4b625",
+            "bytes": 30506,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "thumbnail": {
+            "path": "packages/s-frog/neon-night-b/light/thumbnail.240.jpg",
+            "sha256": "77d8e0fc60672a3bc6646780603882efe03d82a17748aa1c67a6019aad7a9b1f",
+            "bytes": 6553,
+            "width": 240,
+            "height": 240,
+            "frame": 114
+          },
+          "peakHighlightOff": {
+            "path": "packages/s-frog/neon-night-b/light/peak.highlight-off.720.png",
+            "sha256": "b8b6652187fcc24eaa26081dcf70bb5ca9fa23c91e8222ffa9d7bcbfed0d11eb",
+            "bytes": 63380,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          }
+        }
+      },
+      "transparentLoop": {
+        "path": "packages/s-frog/neon-night-b/loop.alpha.720.webm",
+        "sha256": "6b41fb4f9b50ba94b1fc60caef51e5be991094116fa3d9d8d7a313f1424fa304",
+        "bytes": 238138,
+        "width": 720,
+        "height": 720,
+        "codec": "vp9",
+        "alpha": true,
+        "frames": 240,
+        "fps": 30
+      },
+      "transparentCover": {
+        "path": "packages/s-frog/neon-night-b/cover.transparent.1080.png",
+        "sha256": "51731e97055b999e7f64f3ef1c89ceb08f79657646560877fcef63ece8da2948",
+        "bytes": 135627,
+        "width": 1080,
+        "height": 1080,
+        "frame": 114
+      },
+      "transparentFirstFrame": {
+        "path": "packages/s-frog/neon-night-b/first-frame.transparent.1080.png",
+        "sha256": "17f664dbfff5dde69591ab519ece2285cbadfa60a7aefb5d3c7c7006b43e5692",
+        "bytes": 144375,
+        "width": 1080,
+        "height": 1080,
+        "frame": 0
+      }
+    },
+    "hologram": {
+      "label": "Hologram",
+      "status": "look-approved-r2",
+      "themes": {
+        "dark": {
+          "video": {
+            "path": "packages/s-frog/hologram/dark/loop.720.mp4",
+            "sha256": "7b8981b5ca7990f840d7b5468abc7dbecf811ea837085f29444c6f7cc69090b9",
+            "bytes": 117428,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#101013"
+          },
+          "start": {
+            "path": "packages/s-frog/hologram/dark/start.720.png",
+            "sha256": "790f750ddb2ba4a43baf7e6a389e84390b2ded30c99f0a4f2de294f51573024c",
+            "bytes": 65792,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/s-frog/hologram/dark/peak.720.png",
+            "sha256": "61c37b982b6dfa2239e628a9648aafc142bff0812bb8ec7ea42be05562013c99",
+            "bytes": 62662,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "end": {
+            "path": "packages/s-frog/hologram/dark/end.720.png",
+            "sha256": "aba27d365bc59b0346c9ff4b1562f422e280ec9f4abcf3a46aaf1fd692e31db0",
+            "bytes": 65786,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/s-frog/hologram/dark/cover.720.jpg",
+            "sha256": "af4a02cda875d750bd7334e1152c280ffd5f64a79629c206b547afef3f025267",
+            "bytes": 22614,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "thumbnail": {
+            "path": "packages/s-frog/hologram/dark/thumbnail.240.jpg",
+            "sha256": "f9bd2102364f4837a902af579a1f44bf35bc6f26ed0601c0cb305cf1a30263a0",
+            "bytes": 4546,
+            "width": 240,
+            "height": 240,
+            "frame": 114
+          },
+          "peakHighlightOff": {
+            "path": "packages/s-frog/hologram/dark/peak.highlight-off.720.png",
+            "sha256": "1574eae48c902b4c08325aced295012c6c539b0506ded3e5b50f5bbe0438338e",
+            "bytes": 62268,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          }
+        },
+        "light": {
+          "video": {
+            "path": "packages/s-frog/hologram/light/loop.720.mp4",
+            "sha256": "90dbafadfce92f55ef4f06c41b3d7af1c6c6447e6f1f7b985362fc09a90982ea",
+            "bytes": 76450,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#f3f2ef"
+          },
+          "start": {
+            "path": "packages/s-frog/hologram/light/start.720.png",
+            "sha256": "668864ee6e2faf8f312f005bb8e1a008b40524e7895860693c3d3f3842093168",
+            "bytes": 69031,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/s-frog/hologram/light/peak.720.png",
+            "sha256": "eff60507bae87b899a02e6c777a536b37eb6061728894cf79a8f07138873dec6",
+            "bytes": 66068,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "end": {
+            "path": "packages/s-frog/hologram/light/end.720.png",
+            "sha256": "91dce4c4512d8c9053dc716fbf1ad995a5e48c0bb07fb02d6b83ddfecfd2d9e0",
+            "bytes": 69044,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/s-frog/hologram/light/cover.720.jpg",
+            "sha256": "74a75a35a99c36685afa328a6965d11fb890bc4cba1c68e91968bd0245a485ab",
+            "bytes": 26958,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "thumbnail": {
+            "path": "packages/s-frog/hologram/light/thumbnail.240.jpg",
+            "sha256": "1716d9b1ee310ad616ec825553b6e132d43d1a6874470bf72e63a9ebb768c8fa",
+            "bytes": 6637,
+            "width": 240,
+            "height": 240,
+            "frame": 114
+          },
+          "peakHighlightOff": {
+            "path": "packages/s-frog/hologram/light/peak.highlight-off.720.png",
+            "sha256": "014e8fe2fc040684ed3ea0a4e2538daec41eb5505ff183f52deb522513af08ce",
+            "bytes": 65742,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          }
+        }
+      },
+      "transparentLoop": {
+        "path": "packages/s-frog/hologram/loop.alpha.720.webm",
+        "sha256": "5cb46ac9264dcba3eba8d9067e79c63dd724dd8db8bf5075e6b6183453faec37",
+        "bytes": 311113,
+        "width": 720,
+        "height": 720,
+        "codec": "vp9",
+        "alpha": true,
+        "frames": 240,
+        "fps": 30
+      },
+      "transparentCover": {
+        "path": "packages/s-frog/hologram/cover.transparent.1080.png",
+        "sha256": "1ff83e172210816364b856e39f449224ac1eef0bf98f58cbf6f66376cf697255",
+        "bytes": 187581,
+        "width": 1080,
+        "height": 1080,
+        "frame": 114
+      },
+      "transparentFirstFrame": {
+        "path": "packages/s-frog/hologram/first-frame.transparent.1080.png",
+        "sha256": "2264c6ae0022d92dc9f723d73632d4aaf7d63d5ad28800276aa21627041bc887",
+        "bytes": 197043,
+        "width": 1080,
+        "height": 1080,
+        "frame": 0
+      }
+    }
+  },
+  "flags": {
+    "sampledOnly": false,
+    "fullCycleValidated": false,
+    "userAccepted": false,
+    "releaseEligible": false
+  }
+}

@@ -1,0 +1,283 @@
+{
+ "format": "pose-hub-joint-production-trial-state@1",
+ "plan": "joint-shoulder-r2-prod-1111",
+ "started": "2026-11-11T06:02:56.016Z",
+ "git": {
+  "head": "d0caccd15fe60426f10a4bae06495d790bd3f788",
+  "branch": "HEAD",
+  "trackedChanges": 0
+ },
+ "sources": {
+  "tools/joint-opt-r1/produce-joint-r2.mjs": "88f6a5bce97c139b2e45ffd0de2f17087db9f3bfecee598fb2610dccfdbba467",
+  "tools/joint-opt-r1/produce-joint-r2.plan.json": "519a982070189f9c7ee6864762dffdf4fd8427983ab0cb79b8c4d6c3884b35d0",
+  "tools/joint-opt-r1/render-masters-joint.mjs": "007c8e259ec1621eadab2cb91380a532bb08291bb864d49b9fd276bb69b7f0ec",
+  "tools/joint-opt-r1/joint-production.mjs": "996c99ace97b87d0bb097baf5a7abc5b4a07e6e03c9cd7b7762e95ea0d130842",
+  "tools/joint-opt-r1/shoulder-axilla-production.json": "c1e98a5f41fc2e8e3548c3a278853bf819030609e004b80bffea4811d571ff79",
+  "tools/joint-opt-r1/shoulder-axilla-r2.mjs": "627206a8c5377bb7214132a4def45b53bb9823eb4796ba9ee0784f4f58d796c7",
+  "tools/joint-opt-r1/keyframe-sheet.py": "cd8dcb4ae9182937ef2d9c7dbc34e861e164aa88be5979d34485069fd46933bb",
+  "tools/skin-coverage-r1/render-masters.mjs": "8edb42c5d31acd65690b09004d2a22544d7c78c7c1a26379a385ba524befc094",
+  "tools/action-package-v3/compose.py": "e215990405c515f7c1202277b23bb87ed8e4295bd62cc80e67e4b2c214cf4e47",
+  "tools/action-package-v3/profiles/default.json": "8b90de7f3d89b026a324df54eb835cff9dcb775a0d11f3071bdbeb1b2344ce22"
+ },
+ "options": {
+  "only": [
+   "o-seated-sidebend",
+   "o-stand-sidebend",
+   "obliques-A",
+   "s-frog",
+   "w-dead-bug",
+   "abs-A",
+   "scapular-B",
+   "o-stand-crossreach",
+   "h-db-curl"
+  ],
+  "size": null,
+  "framesOn": null
+ },
+ "testMode": true,
+ "python": "python",
+ "actions": {
+  "o-seated-sidebend": {
+   "group": "fixed-by-r2",
+   "stages": {
+    "on": {
+     "status": "done",
+     "seconds": 353.2,
+     "finished": "2026-11-11T06:08:49.834Z"
+    },
+    "compose": {
+     "status": "done",
+     "seconds": 162.3,
+     "finished": "2026-11-11T06:11:32.165Z"
+    },
+    "offref": {
+     "status": "done",
+     "seconds": 174.1,
+     "finished": "2026-11-11T06:14:26.230Z"
+    },
+    "sheet": {
+     "status": "done",
+     "seconds": 1.1,
+     "finished": "2026-11-11T06:14:27.297Z"
+    }
+   },
+   "complete": true
+  },
+  "o-stand-sidebend": {
+   "group": "fixed-by-r2",
+   "stages": {
+    "on": {
+     "status": "done",
+     "seconds": 355.3,
+     "finished": "2026-11-11T06:20:22.646Z"
+    },
+    "compose": {
+     "status": "done",
+     "seconds": 168,
+     "finished": "2026-11-11T06:23:10.622Z"
+    },
+    "offref": {
+     "status": "done",
+     "seconds": 181.7,
+     "finished": "2026-11-11T06:26:12.360Z"
+    },
+    "sheet": {
+     "status": "done",
+     "seconds": 1,
+     "finished": "2026-11-11T06:26:13.369Z"
+    }
+   },
+   "complete": true
+  },
+  "obliques-A": {
+   "group": "fixed-by-r2",
+   "stages": {
+    "on": {
+     "status": "done",
+     "seconds": 368.6,
+     "finished": "2026-11-11T06:32:22.011Z"
+    },
+    "compose": {
+     "status": "done",
+     "seconds": 147.4,
+     "finished": "2026-11-11T06:34:49.379Z"
+    },
+    "offref": {
+     "status": "done",
+     "seconds": 188.8,
+     "finished": "2026-11-11T06:37:58.222Z"
+    },
+    "sheet": {
+     "status": "done",
+     "seconds": 1.3,
+     "finished": "2026-11-11T06:37:59.481Z"
+    }
+   },
+   "complete": true
+  },
+  "s-frog": {
+   "group": "fixed-by-r2",
+   "stages": {
+    "on": {
+     "status": "done",
+     "seconds": 349.7,
+     "finished": "2026-11-11T06:43:49.152Z"
+    },
+    "compose": {
+     "status": "done",
+     "seconds": 161.1,
+     "finished": "2026-11-11T06:46:30.281Z"
+    },
+    "offref": {
+     "status": "done",
+     "seconds": 188.6,
+     "finished": "2026-11-11T06:49:38.909Z"
+    },
+    "sheet": {
+     "status": "done",
+     "seconds": 1.2,
+     "finished": "2026-11-11T06:49:40.129Z"
+    }
+   },
+   "complete": true
+  },
+  "w-dead-bug": {
+   "group": "fixed-by-r2",
+   "stages": {
+    "on": {
+     "status": "done",
+     "seconds": 359.4,
+     "finished": "2026-11-11T06:55:39.580Z"
+    },
+    "compose": {
+     "status": "done",
+     "seconds": 157.9,
+     "finished": "2026-11-11T06:58:17.457Z"
+    },
+    "offref": {
+     "status": "done",
+     "seconds": 176.4,
+     "finished": "2026-11-11T07:01:13.812Z"
+    },
+    "sheet": {
+     "status": "done",
+     "seconds": 1.1,
+     "finished": "2026-11-11T07:01:14.878Z"
+    }
+   },
+   "complete": true
+  },
+  "abs-A": {
+   "group": "control-raised",
+   "stages": {
+    "on": {
+     "status": "done",
+     "seconds": 326.4,
+     "finished": "2026-11-11T07:06:41.320Z"
+    },
+    "compose": {
+     "status": "done",
+     "seconds": 167.9,
+     "finished": "2026-11-11T07:09:29.178Z"
+    },
+    "offref": {
+     "status": "done",
+     "seconds": 178.7,
+     "finished": "2026-11-11T07:12:27.830Z"
+    },
+    "sheet": {
+     "status": "done",
+     "seconds": 1.1,
+     "finished": "2026-11-11T07:12:28.924Z"
+    }
+   },
+   "complete": true
+  },
+  "scapular-B": {
+   "group": "control-raised",
+   "stages": {
+    "on": {
+     "status": "done",
+     "seconds": 319.8,
+     "finished": "2026-11-11T07:17:48.676Z"
+    },
+    "compose": {
+     "status": "done",
+     "seconds": 162.5,
+     "finished": "2026-11-11T07:20:31.150Z"
+    },
+    "offref": {
+     "status": "done",
+     "seconds": 152.3,
+     "finished": "2026-11-11T07:23:03.439Z"
+    },
+    "sheet": {
+     "status": "done",
+     "seconds": 1,
+     "finished": "2026-11-11T07:23:04.438Z"
+    }
+   },
+   "complete": true
+  },
+  "o-stand-crossreach": {
+   "group": "control-raised",
+   "stages": {
+    "on": {
+     "status": "done",
+     "seconds": 346.3,
+     "finished": "2026-11-11T07:28:50.738Z"
+    },
+    "compose": {
+     "status": "done",
+     "seconds": 146.5,
+     "finished": "2026-11-11T07:31:17.251Z"
+    },
+    "offref": {
+     "status": "done",
+     "seconds": 154.5,
+     "finished": "2026-11-11T07:33:51.726Z"
+    },
+    "sheet": {
+     "status": "done",
+     "seconds": 0.9,
+     "finished": "2026-11-11T07:33:52.642Z"
+    }
+   },
+   "complete": true
+  },
+  "h-db-curl": {
+   "group": "control-low-arm",
+   "stages": {
+    "on": {
+     "status": "done",
+     "seconds": 353.2,
+     "finished": "2026-11-11T07:39:45.799Z"
+    },
+    "compose": {
+     "status": "done",
+     "seconds": 155,
+     "finished": "2026-11-11T07:42:20.808Z"
+    },
+    "offref": {
+     "status": "done",
+     "seconds": 127.4,
+     "finished": "2026-11-11T07:44:28.208Z"
+    },
+    "sheet": {
+     "status": "done",
+     "seconds": 1,
+     "finished": "2026-11-11T07:44:29.209Z"
+    }
+   },
+   "complete": true
+  }
+ },
+ "resumes": 0,
+ "devServer": {
+  "url": "http://127.0.0.1:8849",
+  "startedByScript": true,
+  "pid": 15584
+ },
+ "finished": "2026-11-11T07:44:29.211Z",
+ "complete": true
+}

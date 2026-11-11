@@ -1,0 +1,817 @@
+{
+  "format": "pose-hub-action-package-v3@1",
+  "actionId": "scapular-B",
+  "profile": {
+    "id": "default",
+    "sha256": "8b90de7f3d89b026a324df54eb835cff9dcb775a0d11f3071bdbeb1b2344ce22"
+  },
+  "masters": {
+    "path": "masters/scapular-B/layer-manifest.json",
+    "sha256": "1ff476aa416d50d91b299c5d15157417e8f55a14429d4f8be3a69a7daed33918",
+    "bytes": 15861766
+  },
+  "recipe": {
+    "path": "catalog/production/remaining219-r1/recipes/scapular-B.json",
+    "sha256": "3de6206ad23c47d92407bb75475f94fa5224609358f9a94f390fe66acf2fcbfa"
+  },
+  "productionModel": "training-human-v3-armfix@0.1.0-r2",
+  "authoringModel": "training-human-v3-armfix@0.1.0-r2",
+  "fps": 30,
+  "durationSeconds": 8,
+  "loopFrames": 240,
+  "framesUsed": 240,
+  "framing": {
+    "path": "packages/scapular-B/framing.json",
+    "sha256": "7218808eaafc561920bd30f194a1c32dc9f43dd460956543d4779dc44c38afb5",
+    "bytes": 342
+  },
+  "keyframes": {
+    "start": 0,
+    "peak": 162,
+    "end": 239
+  },
+  "peakRule": "max highlight pulse (middle of plateau)",
+  "skins": {
+    "realistic": {
+      "label": "Original",
+      "status": "look-approved-r2",
+      "themes": {
+        "dark": {
+          "video": {
+            "path": "packages/scapular-B/realistic/dark/loop.720.mp4",
+            "sha256": "d29b0112ed300f1dcaa6e56a803233961c5fb53c245a5cbacd600d30e88302fb",
+            "bytes": 70922,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#101013"
+          },
+          "start": {
+            "path": "packages/scapular-B/realistic/dark/start.720.png",
+            "sha256": "af7249d98bb63df6a4a4348433c450d48b9312eb438f35d5367632c0d191f2a3",
+            "bytes": 54053,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/scapular-B/realistic/dark/peak.720.png",
+            "sha256": "9b334939e1d6f7c85cb122ecd5c34eccc0e60dff805db164d89aec4232f49342",
+            "bytes": 53708,
+            "width": 720,
+            "height": 720,
+            "frame": 162
+          },
+          "end": {
+            "path": "packages/scapular-B/realistic/dark/end.720.png",
+            "sha256": "d82716c551b1b59cbba2c9c3df12fa347a3f107fe88bb31957c140110f1598ad",
+            "bytes": 54050,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/scapular-B/realistic/dark/cover.720.jpg",
+            "sha256": "23231e97a9ea243bcf89000ff9dd3c539653352565ee188500b5b99ba7497726",
+            "bytes": 25849,
+            "width": 720,
+            "height": 720,
+            "frame": 162
+          },
+          "thumbnail": {
+            "path": "packages/scapular-B/realistic/dark/thumbnail.240.jpg",
+            "sha256": "a16d37cf7f5671b5a6a6e524167386787d007d03f0097fd0f0f8b9ca26aa3811",
+            "bytes": 5613,
+            "width": 240,
+            "height": 240,
+            "frame": 162
+          },
+          "peakHighlightOff": {
+            "path": "packages/scapular-B/realistic/dark/peak.highlight-off.720.png",
+            "sha256": "8c0dbc63e18de13c355cd40053fd788be2a1fe943faa5eeb2acb5707d67b7887",
+            "bytes": 50173,
+            "width": 720,
+            "height": 720,
+            "frame": 162
+          }
+        },
+        "light": {
+          "video": {
+            "path": "packages/scapular-B/realistic/light/loop.720.mp4",
+            "sha256": "14e005972717d9e2b75dabff2602ae058b0bafb38a472d5e813a38d1b556531b",
+            "bytes": 96648,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#f3f2ef"
+          },
+          "start": {
+            "path": "packages/scapular-B/realistic/light/start.720.png",
+            "sha256": "d05f982c01faba1adda61bb628502ce494220fabaa217bd0ad2f70f4bc56667a",
+            "bytes": 58410,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/scapular-B/realistic/light/peak.720.png",
+            "sha256": "a046faafdc8d99616e822f200b6c0b9ffa6479b4e53239c8f9bb4be7bb8d4e3e",
+            "bytes": 58095,
+            "width": 720,
+            "height": 720,
+            "frame": 162
+          },
+          "end": {
+            "path": "packages/scapular-B/realistic/light/end.720.png",
+            "sha256": "274dd2877f35a03240cb65ee4864533fcd549d3ef8d1ef6f8c16ffe2dae67759",
+            "bytes": 58410,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/scapular-B/realistic/light/cover.720.jpg",
+            "sha256": "0160a12ac05c5491c9b2a107a559547ab5d01ba258b71f14cadfca02f04881ea",
+            "bytes": 33078,
+            "width": 720,
+            "height": 720,
+            "frame": 162
+          },
+          "thumbnail": {
+            "path": "packages/scapular-B/realistic/light/thumbnail.240.jpg",
+            "sha256": "69002d5c8bc40c2003d83d6615a9bac9ee833fbb644d685c192f182a73cdbf68",
+            "bytes": 7687,
+            "width": 240,
+            "height": 240,
+            "frame": 162
+          },
+          "peakHighlightOff": {
+            "path": "packages/scapular-B/realistic/light/peak.highlight-off.720.png",
+            "sha256": "6708c1de030e4068f8f362e3f1ffb5739c7f4295438132f745595b879de846c7",
+            "bytes": 54567,
+            "width": 720,
+            "height": 720,
+            "frame": 162
+          }
+        }
+      },
+      "transparentLoop": {
+        "path": "packages/scapular-B/realistic/loop.alpha.720.webm",
+        "sha256": "9f03109ed512078044fa34f591a1dc17ecf2f5ce87a797d02b28f9b98a3dc250",
+        "bytes": 397440,
+        "width": 720,
+        "height": 720,
+        "codec": "vp9",
+        "alpha": true,
+        "frames": 240,
+        "fps": 30
+      },
+      "transparentCover": {
+        "path": "packages/scapular-B/realistic/cover.transparent.1080.png",
+        "sha256": "317199a73b79aebfe942fbb8d62285bec72a6e93340b105656713c87162c7bb1",
+        "bytes": 126253,
+        "width": 1080,
+        "height": 1080,
+        "frame": 162
+      },
+      "transparentFirstFrame": {
+        "path": "packages/scapular-B/realistic/first-frame.transparent.1080.png",
+        "sha256": "76b7d75c1ad1f04b42fa4477ba79053a2cdb62934baa04d2a066b6100ee7ab8e",
+        "bytes": 127234,
+        "width": 1080,
+        "height": 1080,
+        "frame": 0
+      }
+    },
+    "tech-white": {
+      "label": "White",
+      "status": "look-approved-r2",
+      "themes": {
+        "dark": {
+          "video": {
+            "path": "packages/scapular-B/tech-white/dark/loop.720.mp4",
+            "sha256": "0f6010ef3165eb28009b09de783afcd0e15f5ba0ca85b9654e7604dcff71251d",
+            "bytes": 136426,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#101013"
+          },
+          "start": {
+            "path": "packages/scapular-B/tech-white/dark/start.720.png",
+            "sha256": "788bd21620c836c7b9b0a04ef9ed16c9d185de98c65a486eaee6131216a69ee4",
+            "bytes": 72336,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/scapular-B/tech-white/dark/peak.720.png",
+            "sha256": "f9506394a2de37d145ff35044a290871f24cf4f1f696e2959736d9d1b8bd659d",
+            "bytes": 71899,
+            "width": 720,
+            "height": 720,
+            "frame": 162
+          },
+          "end": {
+            "path": "packages/scapular-B/tech-white/dark/end.720.png",
+            "sha256": "1eda9eae8ef9aeaf299ee9d8d1e4fd176519222cb46c9b7c87e0b6705375a230",
+            "bytes": 72337,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/scapular-B/tech-white/dark/cover.720.jpg",
+            "sha256": "90408be7a1212626c8dfa950129f617097f1bc1823ab784ceea4d1da71817f06",
+            "bytes": 32762,
+            "width": 720,
+            "height": 720,
+            "frame": 162
+          },
+          "thumbnail": {
+            "path": "packages/scapular-B/tech-white/dark/thumbnail.240.jpg",
+            "sha256": "a355af582239e5358d30fc942594615939806099a260d4c3bcbd1cc05114127e",
+            "bytes": 6860,
+            "width": 240,
+            "height": 240,
+            "frame": 162
+          },
+          "peakHighlightOff": {
+            "path": "packages/scapular-B/tech-white/dark/peak.highlight-off.720.png",
+            "sha256": "f5acd05f7b8fc92d89cbe61c0b565169b4401cb630c6115823d3ae0bd74addb2",
+            "bytes": 71814,
+            "width": 720,
+            "height": 720,
+            "frame": 162
+          }
+        },
+        "light": {
+          "video": {
+            "path": "packages/scapular-B/tech-white/light/loop.720.mp4",
+            "sha256": "40558a1570a01a6bcf0d037aca26fa98cc91e20dcaa8ffb12e2d5d3516040277",
+            "bytes": 127697,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#f3f2ef"
+          },
+          "start": {
+            "path": "packages/scapular-B/tech-white/light/start.720.png",
+            "sha256": "56ae54db1cf398c0c867e03e4b721a56ca53ad8685c9f35655d80f5babf45111",
+            "bytes": 69529,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/scapular-B/tech-white/light/peak.720.png",
+            "sha256": "dad959650eb21c5593ab2291bcee987702d98262b23dfca691192466a8abaef6",
+            "bytes": 68814,
+            "width": 720,
+            "height": 720,
+            "frame": 162
+          },
+          "end": {
+            "path": "packages/scapular-B/tech-white/light/end.720.png",
+            "sha256": "d516bc0174a4d3450d2b86e1b2c09fa66fda64fcdc4112e3cb2c5942a36e403f",
+            "bytes": 69525,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/scapular-B/tech-white/light/cover.720.jpg",
+            "sha256": "ddf37bc91442688f7243d25b26cf2388f77fd17f941e1c43b062d4f97b474326",
+            "bytes": 31920,
+            "width": 720,
+            "height": 720,
+            "frame": 162
+          },
+          "thumbnail": {
+            "path": "packages/scapular-B/tech-white/light/thumbnail.240.jpg",
+            "sha256": "e477c6fc2aa1d261c75137a517bfcec295f6fe27a0b21e2ad2d2e7a199bd5d13",
+            "bytes": 6610,
+            "width": 240,
+            "height": 240,
+            "frame": 162
+          },
+          "peakHighlightOff": {
+            "path": "packages/scapular-B/tech-white/light/peak.highlight-off.720.png",
+            "sha256": "c13174c04850d90b9b728229404cc41754c1c3b6f103847351f0869bdd8223e3",
+            "bytes": 68706,
+            "width": 720,
+            "height": 720,
+            "frame": 162
+          }
+        }
+      },
+      "transparentLoop": {
+        "path": "packages/scapular-B/tech-white/loop.alpha.720.webm",
+        "sha256": "8e79fe49c1c9731e72eaf5aed3e81aa3d76edc08cc763be37a936f5cbefb29dd",
+        "bytes": 546353,
+        "width": 720,
+        "height": 720,
+        "codec": "vp9",
+        "alpha": true,
+        "frames": 240,
+        "fps": 30
+      },
+      "transparentCover": {
+        "path": "packages/scapular-B/tech-white/cover.transparent.1080.png",
+        "sha256": "3cbe7f3823f1ed77de0785a17e384c86c98870079fcf477763dffe341d2d8f39",
+        "bytes": 164265,
+        "width": 1080,
+        "height": 1080,
+        "frame": 162
+      },
+      "transparentFirstFrame": {
+        "path": "packages/scapular-B/tech-white/first-frame.transparent.1080.png",
+        "sha256": "eb43d4b1e646d000676245a877f07b093baac572733aac1a9d91e778dc1a329f",
+        "bytes": 165655,
+        "width": 1080,
+        "height": 1080,
+        "frame": 0
+      }
+    },
+    "neon-night": {
+      "label": "Blue",
+      "status": "look-approved-r2",
+      "themes": {
+        "dark": {
+          "video": {
+            "path": "packages/scapular-B/neon-night/dark/loop.720.mp4",
+            "sha256": "b440cc8007fef469adab80e282f684473975d74ba3e9d7d7395ffd6a73805b16",
+            "bytes": 134371,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#101013"
+          },
+          "start": {
+            "path": "packages/scapular-B/neon-night/dark/start.720.png",
+            "sha256": "7291edae3e8a6c03d6a006a2e47ba8618a9001681517d8fee136edc5d4075902",
+            "bytes": 67222,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/scapular-B/neon-night/dark/peak.720.png",
+            "sha256": "6449d9ae2046b9645d4f595e2611eff36e880537530a3bbf95c54feca6a47526",
+            "bytes": 66296,
+            "width": 720,
+            "height": 720,
+            "frame": 162
+          },
+          "end": {
+            "path": "packages/scapular-B/neon-night/dark/end.720.png",
+            "sha256": "b3a991940811f701c994b37345eb99a397d1144f7154d4a8f43b5a54f206295a",
+            "bytes": 67218,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/scapular-B/neon-night/dark/cover.720.jpg",
+            "sha256": "65541377f110563e03a3925d7b18498094bcc9ee37ddd9af6de9ad35c9d25492",
+            "bytes": 30089,
+            "width": 720,
+            "height": 720,
+            "frame": 162
+          },
+          "thumbnail": {
+            "path": "packages/scapular-B/neon-night/dark/thumbnail.240.jpg",
+            "sha256": "e186467a19cd11be951689403fe2be2a7e287adad41bbc3b372156f279e7587e",
+            "bytes": 5738,
+            "width": 240,
+            "height": 240,
+            "frame": 162
+          },
+          "peakHighlightOff": {
+            "path": "packages/scapular-B/neon-night/dark/peak.highlight-off.720.png",
+            "sha256": "6fdcc16a07360e7766fb2254dfd12115498ac81ffdf33ce6cc711afbb466cf47",
+            "bytes": 66204,
+            "width": 720,
+            "height": 720,
+            "frame": 162
+          }
+        },
+        "light": {
+          "video": {
+            "path": "packages/scapular-B/neon-night/light/loop.720.mp4",
+            "sha256": "0e0ce045a0a15daf4846bb8e9d8986e74f74d2139828660d417887ea64b537b2",
+            "bytes": 156449,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#f3f2ef"
+          },
+          "start": {
+            "path": "packages/scapular-B/neon-night/light/start.720.png",
+            "sha256": "e49b0912b6d80db0572ba8170bfc52234aa67ed10d24909a5714f3b3524c544d",
+            "bytes": 73709,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/scapular-B/neon-night/light/peak.720.png",
+            "sha256": "21d506e7c0ad1d1ccf571a8ecbc1fdad047db301cda9f6364349d94450a40d26",
+            "bytes": 72999,
+            "width": 720,
+            "height": 720,
+            "frame": 162
+          },
+          "end": {
+            "path": "packages/scapular-B/neon-night/light/end.720.png",
+            "sha256": "6a09e09cb6e0e72aebf1baf11648f5390087472827fb14d499a844bdb664682f",
+            "bytes": 73702,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/scapular-B/neon-night/light/cover.720.jpg",
+            "sha256": "3ab0eafaff09af727edcd2b84e90572a5304df8a5ceb257d9fa6dad98a2421e3",
+            "bytes": 38935,
+            "width": 720,
+            "height": 720,
+            "frame": 162
+          },
+          "thumbnail": {
+            "path": "packages/scapular-B/neon-night/light/thumbnail.240.jpg",
+            "sha256": "20d545ae9ef640ed8964bbd94e5858180e37b4ada9fac3a6964a8a024bef896b",
+            "bytes": 8204,
+            "width": 240,
+            "height": 240,
+            "frame": 162
+          },
+          "peakHighlightOff": {
+            "path": "packages/scapular-B/neon-night/light/peak.highlight-off.720.png",
+            "sha256": "10fc5739057d4319a1d694dd6fa8e908d6d76e43eb3aba923696e9e2a52318a7",
+            "bytes": 73294,
+            "width": 720,
+            "height": 720,
+            "frame": 162
+          }
+        }
+      },
+      "transparentLoop": {
+        "path": "packages/scapular-B/neon-night/loop.alpha.720.webm",
+        "sha256": "0e693bdd8268df1a3a541ac7c637a6ba6b34bf91dc42b589836fb58ac1543bf4",
+        "bytes": 389137,
+        "width": 720,
+        "height": 720,
+        "codec": "vp9",
+        "alpha": true,
+        "frames": 240,
+        "fps": 30
+      },
+      "transparentCover": {
+        "path": "packages/scapular-B/neon-night/cover.transparent.1080.png",
+        "sha256": "5f34e31b54e86638af2f36d64989c45dc9fcfc898c18b65a251cbe7eb6b7c72f",
+        "bytes": 160214,
+        "width": 1080,
+        "height": 1080,
+        "frame": 162
+      },
+      "transparentFirstFrame": {
+        "path": "packages/scapular-B/neon-night/first-frame.transparent.1080.png",
+        "sha256": "f8e11496db93488f2a1c967ffd659d185db4be05a30ba144dcb7f70ea3283d16",
+        "bytes": 161853,
+        "width": 1080,
+        "height": 1080,
+        "frame": 0
+      }
+    },
+    "neon-night-b": {
+      "label": "Green",
+      "status": "look-approved-r2",
+      "themes": {
+        "dark": {
+          "video": {
+            "path": "packages/scapular-B/neon-night-b/dark/loop.720.mp4",
+            "sha256": "d987fb8efa1987d2573fd855e9a6527a16941298274e0f621a613df581a55e29",
+            "bytes": 144712,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#101013"
+          },
+          "start": {
+            "path": "packages/scapular-B/neon-night-b/dark/start.720.png",
+            "sha256": "f31a3508b348e9be4d774d683a6b0b964d0cbd6cdeec89f0cebc5f533a4878c4",
+            "bytes": 66728,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/scapular-B/neon-night-b/dark/peak.720.png",
+            "sha256": "31ebdb5a33b2226e23c688be40a4dc76f4adf9ec12c5ff2c83559e05e92378ee",
+            "bytes": 65771,
+            "width": 720,
+            "height": 720,
+            "frame": 162
+          },
+          "end": {
+            "path": "packages/scapular-B/neon-night-b/dark/end.720.png",
+            "sha256": "90e016d25efe3e56bd2c90cdb0ba7c2efba3e646a1455a0e6eec923a33cfcd7b",
+            "bytes": 66718,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/scapular-B/neon-night-b/dark/cover.720.jpg",
+            "sha256": "cd13301d22ab79429c64225c4852e61805dfc5a23236b6e208f539d728b3887b",
+            "bytes": 30283,
+            "width": 720,
+            "height": 720,
+            "frame": 162
+          },
+          "thumbnail": {
+            "path": "packages/scapular-B/neon-night-b/dark/thumbnail.240.jpg",
+            "sha256": "27193ae48feff93ece29863c9a664a9dec8897eb6ca867e1ac3cc38fefaeaf79",
+            "bytes": 5855,
+            "width": 240,
+            "height": 240,
+            "frame": 162
+          },
+          "peakHighlightOff": {
+            "path": "packages/scapular-B/neon-night-b/dark/peak.highlight-off.720.png",
+            "sha256": "9ae4e8d1ea9057c449fd2fcb42fa697e436fb381b84d0a2926f25cedd0475c33",
+            "bytes": 65810,
+            "width": 720,
+            "height": 720,
+            "frame": 162
+          }
+        },
+        "light": {
+          "video": {
+            "path": "packages/scapular-B/neon-night-b/light/loop.720.mp4",
+            "sha256": "71c7f6d8eff4c751b14d2d44201fd09cb77dea8801ba3939406ba29c7ef7d5d0",
+            "bytes": 162628,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#f3f2ef"
+          },
+          "start": {
+            "path": "packages/scapular-B/neon-night-b/light/start.720.png",
+            "sha256": "ddf3f60e309e7fbab28ae7739dd5b86e06ce8c9c236f22266cbed89194eafad1",
+            "bytes": 73520,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/scapular-B/neon-night-b/light/peak.720.png",
+            "sha256": "bea6cd828e5fe21d8a73341602d2db2289147a4ff5ab18f4656d324c7c214e0b",
+            "bytes": 72588,
+            "width": 720,
+            "height": 720,
+            "frame": 162
+          },
+          "end": {
+            "path": "packages/scapular-B/neon-night-b/light/end.720.png",
+            "sha256": "a6a67444d3f652d1e19108fad54159f005edf2811d8d6ae7fbe6f1cbb9ae719b",
+            "bytes": 73520,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/scapular-B/neon-night-b/light/cover.720.jpg",
+            "sha256": "392c57738dbe8729a972fe384bd6682978697cb29339209b51f7aba6bcdb73d8",
+            "bytes": 38740,
+            "width": 720,
+            "height": 720,
+            "frame": 162
+          },
+          "thumbnail": {
+            "path": "packages/scapular-B/neon-night-b/light/thumbnail.240.jpg",
+            "sha256": "d3f3d5e019d0c8bc6d952e6896c1b89377206cb55e16843c0bba2fcb4afd9997",
+            "bytes": 8211,
+            "width": 240,
+            "height": 240,
+            "frame": 162
+          },
+          "peakHighlightOff": {
+            "path": "packages/scapular-B/neon-night-b/light/peak.highlight-off.720.png",
+            "sha256": "a32547ca2d9809aed958503a8b31fda896af6184dcaafad4993e52cbafbe15f9",
+            "bytes": 73043,
+            "width": 720,
+            "height": 720,
+            "frame": 162
+          }
+        }
+      },
+      "transparentLoop": {
+        "path": "packages/scapular-B/neon-night-b/loop.alpha.720.webm",
+        "sha256": "0f241a8bd2f5d36c51bae7a9f6311f17d79593a6c2cd356e44bec7819e35e5e1",
+        "bytes": 414437,
+        "width": 720,
+        "height": 720,
+        "codec": "vp9",
+        "alpha": true,
+        "frames": 240,
+        "fps": 30
+      },
+      "transparentCover": {
+        "path": "packages/scapular-B/neon-night-b/cover.transparent.1080.png",
+        "sha256": "57e964320e7d2bbe3c7bbf54305b6d9c6b679b8011fe7220093d92b1c90d25c9",
+        "bytes": 159484,
+        "width": 1080,
+        "height": 1080,
+        "frame": 162
+      },
+      "transparentFirstFrame": {
+        "path": "packages/scapular-B/neon-night-b/first-frame.transparent.1080.png",
+        "sha256": "bbf420a35abc77a3e6a59d3bb856dfa922daa6e43b41c63e38edb6264024cc34",
+        "bytes": 161282,
+        "width": 1080,
+        "height": 1080,
+        "frame": 0
+      }
+    },
+    "hologram": {
+      "label": "Hologram",
+      "status": "look-approved-r2",
+      "themes": {
+        "dark": {
+          "video": {
+            "path": "packages/scapular-B/hologram/dark/loop.720.mp4",
+            "sha256": "b677d4da2e5e6e6efe7d37edd617fce463d92047e7dc10a6196ce198a23b38a9",
+            "bytes": 106974,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#101013"
+          },
+          "start": {
+            "path": "packages/scapular-B/hologram/dark/start.720.png",
+            "sha256": "dc3f117a14e3aeeb4f8105be6bccb9cf500250fd4efe4f529e5b760b34956374",
+            "bytes": 71630,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/scapular-B/hologram/dark/peak.720.png",
+            "sha256": "63cf3d91ce9c29690384a1e0f4bb5095c81c8c2017a3f0b33e78d631c6c22205",
+            "bytes": 70575,
+            "width": 720,
+            "height": 720,
+            "frame": 162
+          },
+          "end": {
+            "path": "packages/scapular-B/hologram/dark/end.720.png",
+            "sha256": "10d1b4e4facecc84a853d1710cd886a79e2a5f753d53aa20616c9ebbd00d11e2",
+            "bytes": 71630,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/scapular-B/hologram/dark/cover.720.jpg",
+            "sha256": "277b96c8a80980e348506358a11b8be10fde84a358a0acbf759829e03f1dccf0",
+            "bytes": 28738,
+            "width": 720,
+            "height": 720,
+            "frame": 162
+          },
+          "thumbnail": {
+            "path": "packages/scapular-B/hologram/dark/thumbnail.240.jpg",
+            "sha256": "0b22ddb65139d755a2b82676b200b6d8adb121f7aec950083afd423448e36caa",
+            "bytes": 5688,
+            "width": 240,
+            "height": 240,
+            "frame": 162
+          },
+          "peakHighlightOff": {
+            "path": "packages/scapular-B/hologram/dark/peak.highlight-off.720.png",
+            "sha256": "7213dd504f4d09b9c6bb0892664167f532384fdd98428f26a628a684f545cf1a",
+            "bytes": 69239,
+            "width": 720,
+            "height": 720,
+            "frame": 162
+          }
+        },
+        "light": {
+          "video": {
+            "path": "packages/scapular-B/hologram/light/loop.720.mp4",
+            "sha256": "67c91c21ad52d9ab7e5c6b51d9e258e755e1551ff7493bbd9d2d854bc2109ac5",
+            "bytes": 76102,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#f3f2ef"
+          },
+          "start": {
+            "path": "packages/scapular-B/hologram/light/start.720.png",
+            "sha256": "feef980ead4e0eabc6a0e30dea66175bd628d25252977dae980fcbfc78dfcb86",
+            "bytes": 69909,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/scapular-B/hologram/light/peak.720.png",
+            "sha256": "4ff3bcba31fdaae18e270c0c9c7fc50fb8f879b1edb5c08904b109006ee3c003",
+            "bytes": 69059,
+            "width": 720,
+            "height": 720,
+            "frame": 162
+          },
+          "end": {
+            "path": "packages/scapular-B/hologram/light/end.720.png",
+            "sha256": "861eff896ca2c3d2dd96e7549249c2be86d11ed6abb9de2270c5bd2b5737a6b9",
+            "bytes": 69917,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/scapular-B/hologram/light/cover.720.jpg",
+            "sha256": "5d1f6f18ccb4b15f263651b32039b468e38a7abf69f85e358aabc9b0ff9d8b58",
+            "bytes": 30578,
+            "width": 720,
+            "height": 720,
+            "frame": 162
+          },
+          "thumbnail": {
+            "path": "packages/scapular-B/hologram/light/thumbnail.240.jpg",
+            "sha256": "455a43941c42813e350ae0dd15cc13732dac5d9620683edd7af2dbcd47f79238",
+            "bytes": 6751,
+            "width": 240,
+            "height": 240,
+            "frame": 162
+          },
+          "peakHighlightOff": {
+            "path": "packages/scapular-B/hologram/light/peak.highlight-off.720.png",
+            "sha256": "e436558b5a69a31cdbd23bf4bff69de6ca86ea824127f795176ece45be6be0ae",
+            "bytes": 66722,
+            "width": 720,
+            "height": 720,
+            "frame": 162
+          }
+        }
+      },
+      "transparentLoop": {
+        "path": "packages/scapular-B/hologram/loop.alpha.720.webm",
+        "sha256": "721f63555ff14338cae80e7f000471dddee124364e9b7b684dc272321cdbf6d9",
+        "bytes": 464734,
+        "width": 720,
+        "height": 720,
+        "codec": "vp9",
+        "alpha": true,
+        "frames": 240,
+        "fps": 30
+      },
+      "transparentCover": {
+        "path": "packages/scapular-B/hologram/cover.transparent.1080.png",
+        "sha256": "761dba2cbdc1ddd60e011002cf1d75e7e9702cea381f321f8967401bcfccef78",
+        "bytes": 200380,
+        "width": 1080,
+        "height": 1080,
+        "frame": 162
+      },
+      "transparentFirstFrame": {
+        "path": "packages/scapular-B/hologram/first-frame.transparent.1080.png",
+        "sha256": "10a9814517d89f8c2d3bad3c42d8041338045a11e993afa7c34b0e3d0173dc81",
+        "bytes": 204018,
+        "width": 1080,
+        "height": 1080,
+        "frame": 0
+      }
+    }
+  },
+  "flags": {
+    "sampledOnly": false,
+    "fullCycleValidated": false,
+    "userAccepted": false,
+    "releaseEligible": false
+  }
+}

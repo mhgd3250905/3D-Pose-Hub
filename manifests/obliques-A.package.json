@@ -1,0 +1,817 @@
+{
+  "format": "pose-hub-action-package-v3@1",
+  "actionId": "obliques-A",
+  "profile": {
+    "id": "default",
+    "sha256": "8b90de7f3d89b026a324df54eb835cff9dcb775a0d11f3071bdbeb1b2344ce22"
+  },
+  "masters": {
+    "path": "masters/obliques-A/layer-manifest.json",
+    "sha256": "0bd07d3f935f90dc8684708161fd3f477c36f50e8523cb82ea02b70770ebaf98",
+    "bytes": 6921307
+  },
+  "recipe": {
+    "path": "catalog/production/remaining219-r1/recipes/obliques-A.json",
+    "sha256": "2c02f1813fdc58959adaa58e81829d602804c55b65bfdf06ea7a5db55db5ed40"
+  },
+  "productionModel": "training-human-v3-armfix@0.1.0-r2",
+  "authoringModel": "training-human-v3-armfix@0.1.0-r2",
+  "fps": 30,
+  "durationSeconds": 8,
+  "loopFrames": 240,
+  "framesUsed": 240,
+  "framing": {
+    "path": "packages/obliques-A/framing.json",
+    "sha256": "aae8bf5dc1511c18e2cab5534243700167bc563c22cdc1712148c5c28de25758",
+    "bytes": 341
+  },
+  "keyframes": {
+    "start": 0,
+    "peak": 180,
+    "end": 239
+  },
+  "peakRule": "max highlight pulse (middle of plateau)",
+  "skins": {
+    "realistic": {
+      "label": "Original",
+      "status": "look-approved-r2",
+      "themes": {
+        "dark": {
+          "video": {
+            "path": "packages/obliques-A/realistic/dark/loop.720.mp4",
+            "sha256": "e006a21fc0f90d5ae7e9cbee41c5fd2f1a68667d8322ea5bc9f6bb96bae92d3c",
+            "bytes": 261593,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#101013"
+          },
+          "start": {
+            "path": "packages/obliques-A/realistic/dark/start.720.png",
+            "sha256": "7caa314aba27dfbbfa1efb428af9ac5732a203ae512d575be9f5176a5264f3c8",
+            "bytes": 59051,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/obliques-A/realistic/dark/peak.720.png",
+            "sha256": "6c8c878ed4ff0de0d7cd98ac177a0248f1ecdac2f395d32b08942083549d0a3f",
+            "bytes": 62353,
+            "width": 720,
+            "height": 720,
+            "frame": 180
+          },
+          "end": {
+            "path": "packages/obliques-A/realistic/dark/end.720.png",
+            "sha256": "da4a3309d485318220d7cde7e1326a3ac085d3b9cd11cc6c31dd77864c23b945",
+            "bytes": 59035,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/obliques-A/realistic/dark/cover.720.jpg",
+            "sha256": "aff64ba07bbddb8bd63628d6f2eb588a0186f6dc4935588520c399e9076284d7",
+            "bytes": 23668,
+            "width": 720,
+            "height": 720,
+            "frame": 180
+          },
+          "thumbnail": {
+            "path": "packages/obliques-A/realistic/dark/thumbnail.240.jpg",
+            "sha256": "eacabef9a92151b965a2747690cde9f3338c43416951844edc4b51a169bf827f",
+            "bytes": 5521,
+            "width": 240,
+            "height": 240,
+            "frame": 180
+          },
+          "peakHighlightOff": {
+            "path": "packages/obliques-A/realistic/dark/peak.highlight-off.720.png",
+            "sha256": "8b588e2aa65746e9e2e2905717efd511b70aa991097322558c7fa932bbbb6f97",
+            "bytes": 60411,
+            "width": 720,
+            "height": 720,
+            "frame": 180
+          }
+        },
+        "light": {
+          "video": {
+            "path": "packages/obliques-A/realistic/light/loop.720.mp4",
+            "sha256": "0a02ff69d12803d4989418caf3d27a2d595bb101c082d28dc01b44f5bcf92192",
+            "bytes": 314572,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#f3f2ef"
+          },
+          "start": {
+            "path": "packages/obliques-A/realistic/light/start.720.png",
+            "sha256": "89023e62a8e7e95b7801ebdae96d913706f6dfbbba64f3dedb5a0c01aa534bf8",
+            "bytes": 64270,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/obliques-A/realistic/light/peak.720.png",
+            "sha256": "8a62bcfa9ad91e2ed34fb43846d164ad7651dc135bfd552a756295f1f722f711",
+            "bytes": 68557,
+            "width": 720,
+            "height": 720,
+            "frame": 180
+          },
+          "end": {
+            "path": "packages/obliques-A/realistic/light/end.720.png",
+            "sha256": "73f78d6fc491b0d6dfac0fb843776ad51de17f9cb016a50ad743fae2c3aaf6f7",
+            "bytes": 64255,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/obliques-A/realistic/light/cover.720.jpg",
+            "sha256": "1dbe0137bd2f48b7adcab6a5bf0bd464e58655dec277124f6bbb40a3520f79da",
+            "bytes": 30379,
+            "width": 720,
+            "height": 720,
+            "frame": 180
+          },
+          "thumbnail": {
+            "path": "packages/obliques-A/realistic/light/thumbnail.240.jpg",
+            "sha256": "2d926d999437ea671ae7d6a26e01eb82a2db38732774c0d100ad51a161da4a33",
+            "bytes": 7494,
+            "width": 240,
+            "height": 240,
+            "frame": 180
+          },
+          "peakHighlightOff": {
+            "path": "packages/obliques-A/realistic/light/peak.highlight-off.720.png",
+            "sha256": "5965e3ac312fdaceaf77d817be5b357a3332f36fc769b74bf8d02aa17c4922a0",
+            "bytes": 66766,
+            "width": 720,
+            "height": 720,
+            "frame": 180
+          }
+        }
+      },
+      "transparentLoop": {
+        "path": "packages/obliques-A/realistic/loop.alpha.720.webm",
+        "sha256": "31d15a9cfd35f4bae6319e7ec34dc98ab96e7bff9fbbca28b38553f9f96ff894",
+        "bytes": 829062,
+        "width": 720,
+        "height": 720,
+        "codec": "vp9",
+        "alpha": true,
+        "frames": 240,
+        "fps": 30
+      },
+      "transparentCover": {
+        "path": "packages/obliques-A/realistic/cover.transparent.1080.png",
+        "sha256": "ced594df931ee221c46206462612b303ad6abc102145a9207a4a8efa02bd5a3d",
+        "bytes": 155907,
+        "width": 1080,
+        "height": 1080,
+        "frame": 180
+      },
+      "transparentFirstFrame": {
+        "path": "packages/obliques-A/realistic/first-frame.transparent.1080.png",
+        "sha256": "25a8348db6fa0bf385671e824c312a5208058bd3355fbb30c61f8dda1daf00ff",
+        "bytes": 139184,
+        "width": 1080,
+        "height": 1080,
+        "frame": 0
+      }
+    },
+    "tech-white": {
+      "label": "White",
+      "status": "look-approved-r2",
+      "themes": {
+        "dark": {
+          "video": {
+            "path": "packages/obliques-A/tech-white/dark/loop.720.mp4",
+            "sha256": "6498c26bafd7b2ae0444333977de91171085e032c66453c3c8cb322c09f520b4",
+            "bytes": 579778,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#101013"
+          },
+          "start": {
+            "path": "packages/obliques-A/tech-white/dark/start.720.png",
+            "sha256": "951d69e7f7f3271aa55d10030c3eb9b8ce586d6ba3863840a96e118cee40c029",
+            "bytes": 83933,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/obliques-A/tech-white/dark/peak.720.png",
+            "sha256": "da1b2a077db0bbd1b00c402d2cbd6cf5f3eb3a6e0f491c819f18f060f6aa69f3",
+            "bytes": 87728,
+            "width": 720,
+            "height": 720,
+            "frame": 180
+          },
+          "end": {
+            "path": "packages/obliques-A/tech-white/dark/end.720.png",
+            "sha256": "50623e53ba05a6fb8080df1d508b9dd85276c00bdc82adfba4a5ce91bcc163c0",
+            "bytes": 83948,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/obliques-A/tech-white/dark/cover.720.jpg",
+            "sha256": "3a8b3768367f33cf36c3820d032e3bfaf8057d70fc4acdd70d0716441b6763d0",
+            "bytes": 33425,
+            "width": 720,
+            "height": 720,
+            "frame": 180
+          },
+          "thumbnail": {
+            "path": "packages/obliques-A/tech-white/dark/thumbnail.240.jpg",
+            "sha256": "16e3cf01e910138a4019befadd283c1fc1b253d1da013529c29e6ea80da40d2b",
+            "bytes": 7150,
+            "width": 240,
+            "height": 240,
+            "frame": 180
+          },
+          "peakHighlightOff": {
+            "path": "packages/obliques-A/tech-white/dark/peak.highlight-off.720.png",
+            "sha256": "682a3c9e70433aacbd6400f3d11b2035981957aa9414543e350de77c386042de",
+            "bytes": 87662,
+            "width": 720,
+            "height": 720,
+            "frame": 180
+          }
+        },
+        "light": {
+          "video": {
+            "path": "packages/obliques-A/tech-white/light/loop.720.mp4",
+            "sha256": "6d873053b3270e58986ff6401885ae933d4788d44458445ba96ede4a81d6b9d7",
+            "bytes": 534836,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#f3f2ef"
+          },
+          "start": {
+            "path": "packages/obliques-A/tech-white/light/start.720.png",
+            "sha256": "586339058b9d062f5e302956889ee9b8035015313acc39a1a631c5bcd15ea440",
+            "bytes": 83777,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/obliques-A/tech-white/light/peak.720.png",
+            "sha256": "3aa4b156523ef31d02b6eda683d082907477b716b5f592f6420fbd404075f8a8",
+            "bytes": 86401,
+            "width": 720,
+            "height": 720,
+            "frame": 180
+          },
+          "end": {
+            "path": "packages/obliques-A/tech-white/light/end.720.png",
+            "sha256": "c1454834ae41ca8179ca45a7f2619e750e792ccdf6cceba936e0618c4ce738ae",
+            "bytes": 83780,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/obliques-A/tech-white/light/cover.720.jpg",
+            "sha256": "0a0eb50933374f5308efa219e1c73c9a98130ef2daa45e0f8f884410bef29815",
+            "bytes": 33213,
+            "width": 720,
+            "height": 720,
+            "frame": 180
+          },
+          "thumbnail": {
+            "path": "packages/obliques-A/tech-white/light/thumbnail.240.jpg",
+            "sha256": "853689740839648e2a39e8fa1c9c0d5c17302a90adf72c6028c908f38e8bb9cc",
+            "bytes": 6922,
+            "width": 240,
+            "height": 240,
+            "frame": 180
+          },
+          "peakHighlightOff": {
+            "path": "packages/obliques-A/tech-white/light/peak.highlight-off.720.png",
+            "sha256": "a84adbbe8ffb887fabc15414133d875b28ba7279e7b492645647d59444041eef",
+            "bytes": 86326,
+            "width": 720,
+            "height": 720,
+            "frame": 180
+          }
+        }
+      },
+      "transparentLoop": {
+        "path": "packages/obliques-A/tech-white/loop.alpha.720.webm",
+        "sha256": "767e624f66b5723f75ba3c1169e00913b9c536c8cb9499d036425d8dcd420a5b",
+        "bytes": 1187251,
+        "width": 720,
+        "height": 720,
+        "codec": "vp9",
+        "alpha": true,
+        "frames": 240,
+        "fps": 30
+      },
+      "transparentCover": {
+        "path": "packages/obliques-A/tech-white/cover.transparent.1080.png",
+        "sha256": "e63ae685f2ed252b42cd06855be04e1d5ea446fe7b7c46364c5c4fc2ed9e1a4f",
+        "bytes": 208976,
+        "width": 1080,
+        "height": 1080,
+        "frame": 180
+      },
+      "transparentFirstFrame": {
+        "path": "packages/obliques-A/tech-white/first-frame.transparent.1080.png",
+        "sha256": "56d2f488e9f02165dbffa56c831fb148541cde6ad7db88514496b5997b61df1e",
+        "bytes": 190639,
+        "width": 1080,
+        "height": 1080,
+        "frame": 0
+      }
+    },
+    "neon-night": {
+      "label": "Blue",
+      "status": "look-approved-r2",
+      "themes": {
+        "dark": {
+          "video": {
+            "path": "packages/obliques-A/neon-night/dark/loop.720.mp4",
+            "sha256": "b70412227e72c612e536ef436e9e9693c468a7d8e4805a293bd88b9808aa365c",
+            "bytes": 568903,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#101013"
+          },
+          "start": {
+            "path": "packages/obliques-A/neon-night/dark/start.720.png",
+            "sha256": "5ad1421e159603a95f67e4a160a34d26ed012bee70db23934b0259af5a326e2a",
+            "bytes": 82025,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/obliques-A/neon-night/dark/peak.720.png",
+            "sha256": "7fc09782e62720d4223cc4be92d7985b0c66eecafab611a6a7ae9d4a7c31362b",
+            "bytes": 86995,
+            "width": 720,
+            "height": 720,
+            "frame": 180
+          },
+          "end": {
+            "path": "packages/obliques-A/neon-night/dark/end.720.png",
+            "sha256": "4ac0844363849ed56aa5f1573573fa99f48df3161eca13a26f4855ad1cde0687",
+            "bytes": 82029,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/obliques-A/neon-night/dark/cover.720.jpg",
+            "sha256": "5cbfe7e1aee53d25d23e26ce204400ca54da5740c1f5831a5d89c8f81f305f00",
+            "bytes": 32312,
+            "width": 720,
+            "height": 720,
+            "frame": 180
+          },
+          "thumbnail": {
+            "path": "packages/obliques-A/neon-night/dark/thumbnail.240.jpg",
+            "sha256": "35fb95d47dab41cfed10750e0ce9be2825899672c1939d0a64e2f1ca871009a1",
+            "bytes": 6011,
+            "width": 240,
+            "height": 240,
+            "frame": 180
+          },
+          "peakHighlightOff": {
+            "path": "packages/obliques-A/neon-night/dark/peak.highlight-off.720.png",
+            "sha256": "2d509d1f033c62425f753b8cda84d567a226b44fdabc303339dd22cba3eb9a13",
+            "bytes": 86888,
+            "width": 720,
+            "height": 720,
+            "frame": 180
+          }
+        },
+        "light": {
+          "video": {
+            "path": "packages/obliques-A/neon-night/light/loop.720.mp4",
+            "sha256": "db32da43ce351333b01e44680413f0722a2ff197eb7eb0395c6ac708b0d3d939",
+            "bytes": 636576,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#f3f2ef"
+          },
+          "start": {
+            "path": "packages/obliques-A/neon-night/light/start.720.png",
+            "sha256": "a5ecf79138e6f6757a39cc8da13db7d33859733a92778734f059b5f3f5add779",
+            "bytes": 88163,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/obliques-A/neon-night/light/peak.720.png",
+            "sha256": "2ca4c74d2e584410359330d6446084eb8c0b0a56c2616f190385dca19711697a",
+            "bytes": 95301,
+            "width": 720,
+            "height": 720,
+            "frame": 180
+          },
+          "end": {
+            "path": "packages/obliques-A/neon-night/light/end.720.png",
+            "sha256": "9d4e90a5895dbdc28e91057664280eeefa71ecc7829c9d2a7a1ed1a28b23f16d",
+            "bytes": 88161,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/obliques-A/neon-night/light/cover.720.jpg",
+            "sha256": "a0d5f31cf380f527c2afa92c9b940287ed110e1b07259495d147c36cd7c2983b",
+            "bytes": 40398,
+            "width": 720,
+            "height": 720,
+            "frame": 180
+          },
+          "thumbnail": {
+            "path": "packages/obliques-A/neon-night/light/thumbnail.240.jpg",
+            "sha256": "016f79cd3db4859aa2fa18052d9f422db77dd4b85c333239b64ed6fc991417bf",
+            "bytes": 8499,
+            "width": 240,
+            "height": 240,
+            "frame": 180
+          },
+          "peakHighlightOff": {
+            "path": "packages/obliques-A/neon-night/light/peak.highlight-off.720.png",
+            "sha256": "ec77f6dd74f5f47c3bf1ca05c19bf6210413baac4db06d56b4924c5b5eec2ac6",
+            "bytes": 95323,
+            "width": 720,
+            "height": 720,
+            "frame": 180
+          }
+        }
+      },
+      "transparentLoop": {
+        "path": "packages/obliques-A/neon-night/loop.alpha.720.webm",
+        "sha256": "8fce62466a6696d51e179ef9df06b1de2db18107562c08978ab042f55f482137",
+        "bytes": 956173,
+        "width": 720,
+        "height": 720,
+        "codec": "vp9",
+        "alpha": true,
+        "frames": 240,
+        "fps": 30
+      },
+      "transparentCover": {
+        "path": "packages/obliques-A/neon-night/cover.transparent.1080.png",
+        "sha256": "704ad86099a63540ab3d4c86237acf1a89e0d01f74acf33b91fc4e51a1417548",
+        "bytes": 214754,
+        "width": 1080,
+        "height": 1080,
+        "frame": 180
+      },
+      "transparentFirstFrame": {
+        "path": "packages/obliques-A/neon-night/first-frame.transparent.1080.png",
+        "sha256": "8ba221e2eba30741b9339a3128ff34344982a935107f1593362bc7f0bd08d4d8",
+        "bytes": 193435,
+        "width": 1080,
+        "height": 1080,
+        "frame": 0
+      }
+    },
+    "neon-night-b": {
+      "label": "Green",
+      "status": "look-approved-r2",
+      "themes": {
+        "dark": {
+          "video": {
+            "path": "packages/obliques-A/neon-night-b/dark/loop.720.mp4",
+            "sha256": "fb30dff3df658872f81a7cb4ab1c345d99187a248dcfe6f2a1ecacfe4a5c8181",
+            "bytes": 597178,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#101013"
+          },
+          "start": {
+            "path": "packages/obliques-A/neon-night-b/dark/start.720.png",
+            "sha256": "67e4492f893df189648a450d77a25467f30ce7e4045092a57c812a647ff066d3",
+            "bytes": 81690,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/obliques-A/neon-night-b/dark/peak.720.png",
+            "sha256": "6f317355daa887dcd1d2ce5f21ce28a0055b6a566c74a6d8b7987789017bbf93",
+            "bytes": 86479,
+            "width": 720,
+            "height": 720,
+            "frame": 180
+          },
+          "end": {
+            "path": "packages/obliques-A/neon-night-b/dark/end.720.png",
+            "sha256": "b2e3387225984944ec3db412e8ab8957fdaf6da3868af12d7e353ab3dc83c06a",
+            "bytes": 81675,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/obliques-A/neon-night-b/dark/cover.720.jpg",
+            "sha256": "e4ac19f72a0306887ec48ba27898f9f94045bc2ffcc4abf2ae471dbc8ef844b0",
+            "bytes": 32667,
+            "width": 720,
+            "height": 720,
+            "frame": 180
+          },
+          "thumbnail": {
+            "path": "packages/obliques-A/neon-night-b/dark/thumbnail.240.jpg",
+            "sha256": "48c080595bb4e037b001fd37e9d809c7ce07296d3cbb834a2fd7684064a1dee2",
+            "bytes": 6162,
+            "width": 240,
+            "height": 240,
+            "frame": 180
+          },
+          "peakHighlightOff": {
+            "path": "packages/obliques-A/neon-night-b/dark/peak.highlight-off.720.png",
+            "sha256": "6908064e615cd1b921a6bc6a7750fbc6424ef63e6e973612e2caf02740d75aef",
+            "bytes": 86388,
+            "width": 720,
+            "height": 720,
+            "frame": 180
+          }
+        },
+        "light": {
+          "video": {
+            "path": "packages/obliques-A/neon-night-b/light/loop.720.mp4",
+            "sha256": "561a3b373c567efc0dc62d131d76b7e0a2ebcada18ccba262a23e47a3d94d254",
+            "bytes": 661340,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#f3f2ef"
+          },
+          "start": {
+            "path": "packages/obliques-A/neon-night-b/light/start.720.png",
+            "sha256": "cac95a80f354905476626188d6c20b35d6455a36d80d2e05325c64a3aa4a12b5",
+            "bytes": 87912,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/obliques-A/neon-night-b/light/peak.720.png",
+            "sha256": "850be992bed795b53022fc1cd8d7c70610f4b6442f325617d103a10745ef5aa4",
+            "bytes": 94964,
+            "width": 720,
+            "height": 720,
+            "frame": 180
+          },
+          "end": {
+            "path": "packages/obliques-A/neon-night-b/light/end.720.png",
+            "sha256": "56d181fab2a63c09814042b2533e2fc2478a19d42ac2db3cb6e55f34cffb40cd",
+            "bytes": 87896,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/obliques-A/neon-night-b/light/cover.720.jpg",
+            "sha256": "897a8d889d171bd518c52c3d27ec1eabfa5378cd4f05ad20087988632135a51b",
+            "bytes": 40335,
+            "width": 720,
+            "height": 720,
+            "frame": 180
+          },
+          "thumbnail": {
+            "path": "packages/obliques-A/neon-night-b/light/thumbnail.240.jpg",
+            "sha256": "8400c9664f443d97d375166d50f33cbaf063dda1a29ee337326767bf304b9f30",
+            "bytes": 8516,
+            "width": 240,
+            "height": 240,
+            "frame": 180
+          },
+          "peakHighlightOff": {
+            "path": "packages/obliques-A/neon-night-b/light/peak.highlight-off.720.png",
+            "sha256": "69b5425f41da5acccdc077fdd920c3a7a00f9047459b46af3d82aca6ab9c3bd4",
+            "bytes": 94993,
+            "width": 720,
+            "height": 720,
+            "frame": 180
+          }
+        }
+      },
+      "transparentLoop": {
+        "path": "packages/obliques-A/neon-night-b/loop.alpha.720.webm",
+        "sha256": "a21caa0b0418bc0e93bf5b994fd839afd466e433727e0abc783f5e24f6adf4fd",
+        "bytes": 1008485,
+        "width": 720,
+        "height": 720,
+        "codec": "vp9",
+        "alpha": true,
+        "frames": 240,
+        "fps": 30
+      },
+      "transparentCover": {
+        "path": "packages/obliques-A/neon-night-b/cover.transparent.1080.png",
+        "sha256": "9ea4c35ba0f61449c014698ea1ec273afb8133ec26f2c2948793b691372b0208",
+        "bytes": 214776,
+        "width": 1080,
+        "height": 1080,
+        "frame": 180
+      },
+      "transparentFirstFrame": {
+        "path": "packages/obliques-A/neon-night-b/first-frame.transparent.1080.png",
+        "sha256": "69a8a8e873eaec9f01e024321f1e6a444bd4735528784babeb3fde9e305a8cad",
+        "bytes": 193791,
+        "width": 1080,
+        "height": 1080,
+        "frame": 0
+      }
+    },
+    "hologram": {
+      "label": "Hologram",
+      "status": "look-approved-r2",
+      "themes": {
+        "dark": {
+          "video": {
+            "path": "packages/obliques-A/hologram/dark/loop.720.mp4",
+            "sha256": "7280deba9e0988a54b7e983649dbc93ee74f6db8824375199ec27a923b745d00",
+            "bytes": 444513,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#101013"
+          },
+          "start": {
+            "path": "packages/obliques-A/hologram/dark/start.720.png",
+            "sha256": "bb219a3fba46421df3089f5b36fb7de588c339704810611c42cba1eef50853f9",
+            "bytes": 78190,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/obliques-A/hologram/dark/peak.720.png",
+            "sha256": "56e319a63a9f0f103412fb8d035952b6c96d42e5bcf5c8b147da9f588d7d2ed4",
+            "bytes": 85055,
+            "width": 720,
+            "height": 720,
+            "frame": 180
+          },
+          "end": {
+            "path": "packages/obliques-A/hologram/dark/end.720.png",
+            "sha256": "c2fd77dcb844a1ad672c60ac0fe8256c9f810521532384c74614a5be82318f91",
+            "bytes": 78208,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/obliques-A/hologram/dark/cover.720.jpg",
+            "sha256": "ece698886862b15bb81a219270238ea0ceb2788c1540f72afe06c89721c18fd7",
+            "bytes": 27959,
+            "width": 720,
+            "height": 720,
+            "frame": 180
+          },
+          "thumbnail": {
+            "path": "packages/obliques-A/hologram/dark/thumbnail.240.jpg",
+            "sha256": "018133f83f5c22985a4d0edb32d52c6f022abef1a0d84a1563ef7484cdcc600f",
+            "bytes": 5545,
+            "width": 240,
+            "height": 240,
+            "frame": 180
+          },
+          "peakHighlightOff": {
+            "path": "packages/obliques-A/hologram/dark/peak.highlight-off.720.png",
+            "sha256": "19e601f674d181a6309ca585d9d33e84e54169efb333178a42460bd89850d7a5",
+            "bytes": 84711,
+            "width": 720,
+            "height": 720,
+            "frame": 180
+          }
+        },
+        "light": {
+          "video": {
+            "path": "packages/obliques-A/hologram/light/loop.720.mp4",
+            "sha256": "d8e44c31772a751c4dcebb1439ad6d92622968ca6e9d52180ff0474bb5f675d3",
+            "bytes": 269470,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#f3f2ef"
+          },
+          "start": {
+            "path": "packages/obliques-A/hologram/light/start.720.png",
+            "sha256": "746666f4fe9acd68d41d9e11b5069a4f530091e58debd67a471df0278ae6ebfc",
+            "bytes": 78378,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/obliques-A/hologram/light/peak.720.png",
+            "sha256": "4397dcd239d540540b9ff41b9c8f6da654b550c6141cdf01c0565b09f8459dcc",
+            "bytes": 83406,
+            "width": 720,
+            "height": 720,
+            "frame": 180
+          },
+          "end": {
+            "path": "packages/obliques-A/hologram/light/end.720.png",
+            "sha256": "ab4f7bfda37a3094f9b016c24c08e725f571027c050da462eee647dd1a921ba5",
+            "bytes": 78391,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/obliques-A/hologram/light/cover.720.jpg",
+            "sha256": "66b00e3c4b9e0c864e7b7cac37f95b7bc19e69e918769f7523dc12da1daafd71",
+            "bytes": 28758,
+            "width": 720,
+            "height": 720,
+            "frame": 180
+          },
+          "thumbnail": {
+            "path": "packages/obliques-A/hologram/light/thumbnail.240.jpg",
+            "sha256": "3048a63f4f51a6f8ed875ed4cbd24de23adc9f6c3ec4a12e8180c4ae4320bacf",
+            "bytes": 6804,
+            "width": 240,
+            "height": 240,
+            "frame": 180
+          },
+          "peakHighlightOff": {
+            "path": "packages/obliques-A/hologram/light/peak.highlight-off.720.png",
+            "sha256": "c77ef48ca8e82f448965b8a226a61b9d7ecfa56ea825c5f11c10b5c33887ac55",
+            "bytes": 82984,
+            "width": 720,
+            "height": 720,
+            "frame": 180
+          }
+        }
+      },
+      "transparentLoop": {
+        "path": "packages/obliques-A/hologram/loop.alpha.720.webm",
+        "sha256": "4b082aa8e93105acbdd2a0654642567f2b28e15d2cc9c74af55bbc77b0cabb76",
+        "bytes": 1217456,
+        "width": 720,
+        "height": 720,
+        "codec": "vp9",
+        "alpha": true,
+        "frames": 240,
+        "fps": 30
+      },
+      "transparentCover": {
+        "path": "packages/obliques-A/hologram/cover.transparent.1080.png",
+        "sha256": "8b4dbec997c7580e5dd43f75ade3c4c81fe21a82fef7d3666f4ae8e7481da04f",
+        "bytes": 244273,
+        "width": 1080,
+        "height": 1080,
+        "frame": 180
+      },
+      "transparentFirstFrame": {
+        "path": "packages/obliques-A/hologram/first-frame.transparent.1080.png",
+        "sha256": "74b3a92e3fcf70d1a772e107069d01d81c277e1c7898cbfc03320a9ce34dce9e",
+        "bytes": 224942,
+        "width": 1080,
+        "height": 1080,
+        "frame": 0
+      }
+    }
+  },
+  "flags": {
+    "sampledOnly": false,
+    "fullCycleValidated": false,
+    "userAccepted": false,
+    "releaseEligible": false
+  }
+}

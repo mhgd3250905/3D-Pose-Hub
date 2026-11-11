@@ -1,0 +1,5191 @@
+{
+ "actionId": "o-stand-crossreach",
+ "recipe": {
+  "path": "catalog/production/remaining219-r1/recipes/o-stand-crossreach.json",
+  "sha256": "d26c17cdfad98e2cf2108d679fc41c7857771719e13f32e446b06cca5adaf8d3"
+ },
+ "productionModel": "training-human-v3-armfix@0.1.0-r2",
+ "profile": {
+  "id": "default",
+  "sha256": "8b90de7f3d89b026a324df54eb835cff9dcb775a0d11f3071bdbeb1b2344ce22"
+ },
+ "rendererSha256": {
+  "tools/skin-coverage-r1/render-masters.mjs": "bed0ffc7acd4c7cf1d4508b6efa0adec5e0222747ebcd846715fd576928cfcab",
+  "tools/skin-coverage-r1/install.mjs": "41a11294e10ed2e1d426697f2291d704f49b4c34b156849c93984257f253ff28",
+  "tools/skin-coverage-r1/runtime.js": "109629b853d94adcc9caa40c9aa2b6a3d40f209aa98f31b2e3ad39f0d3f9aa2e",
+  "tools/skin-coverage-r1/port.mjs": "e62cc9aaefd5648a2fb0496d961066c5c9727229112103fb3038b12c8dca3d46",
+  "tools/skin-coverage-r1/verify.mjs": "a7c125d461ec016619226a8103aa9a87c78ba6204824e63bc48fb25794a696de",
+  "tools/action-package-v3/render-masters.mjs": "dac6cd000a32f2b23c0d2f3952d044724231f79cc3414a9ec83bcf0f3f480acb",
+  "tools/action-package-v3/recipe-scene.mjs": "9e6745e775a8abaf9eef8feb07c299285b83188216660cc3ddf906a28d35d93d",
+  "tools/action-package-v3/browser-package-layers.js": "a8d40b3e38ad043f699b242b2a0acb31a1cf6f82229a86292dc502d329a057fd",
+  "tools/action-package-v3/native-highlight.mjs": "c4ad2f22fe317e81d70b6d4b267bcdaf96b94360c45f18560517434437aa3144",
+  "tools/joint-opt-r1/render-masters-joint.mjs": "14eb2f7552b302c5c5571894e0addb536592a9f5ef7db14fd90aa8740c5d2e5e",
+  "tools/joint-opt-r1/joint-production.mjs": "a265969db29b8b5310c3baae9c189eb336329486a050cad4bff53350eed6d80a",
+  "tools/joint-opt-r1/shoulder-axilla-production.json": "c1e98a5f41fc2e8e3548c3a278853bf819030609e004b80bffea4811d571ff79",
+  "tools/joint-opt-r1/shoulder-axilla-r2.mjs": "aef3ed3360ae4dbf7043244d5162455d31fc29b78f464c968c92fc554cbfa514"
+ },
+ "appearance": {
+  "approvedBase": "original-head-eye-soften-20261110-r1",
+  "approvedPointer": {
+   "format": "pose-hub-approved-look-pointer@1",
+   "id": "original-head-eye-soften-20261110-r1",
+   "record": "drill-anim/models/approved-looks/20261110-r1.json",
+   "sha256Lf": "ac435f84ee22ed84a0eaaeef31107beef251465945fa01f9de66de978fb73f99"
+  }
+ },
+ "jointOpt": {
+  "shoulderAxilla": {
+   "id": "shoulder-axilla",
+   "enabled": true,
+   "source": "cli",
+   "switchFile": "tools/joint-opt-r1/shoulder-axilla-production.json",
+   "switchSha256Lf": "c1e98a5f41fc2e8e3548c3a278853bf819030609e004b80bffea4811d571ff79",
+   "switchDefault": true,
+   "module": "tools/joint-opt-r1/shoulder-axilla-r2.mjs",
+   "moduleVersion": "0.2.0-r2",
+   "moduleGlobal": "__shoulderAxillaR2",
+   "options": {},
+   "baseEntry": "tools/skin-coverage-r1/render-masters.mjs",
+   "reviewed": false,
+   "userAccepted": false,
+   "setup": {
+    "enabled": true,
+    "installed": true,
+    "version": "0.2.0-r2",
+    "mesh": "V3_Head_Neck_Torso_Shared_R26",
+    "sides": {
+     "left": {
+      "seedEdges": 68,
+      "weldedVertices": 611,
+      "vertices": 611,
+      "normalFaces": 1358,
+      "normalOutsideVertices": 137,
+      "maxRing": 8
+     },
+     "right": {
+      "seedEdges": 66,
+      "weldedVertices": 696,
+      "vertices": 696,
+      "normalFaces": 1544,
+      "normalOutsideVertices": 153,
+      "maxRing": 8
+     }
+    },
+    "elevStartDeg": 90,
+    "elevFullDeg": 120,
+    "normalRepair": true,
+    "restReproductionErrorMm": 1.1123893155135927e-13,
+    "bonesChanged": false,
+    "weightsAttributeChanged": false,
+    "indexChanged": false
+   }
+  }
+ },
+ "size": 1080,
+ "fps": 30,
+ "loopFrames": 240,
+ "complete": true,
+ "skins": [
+  {
+   "id": "realistic",
+   "sha256": "a2678bb3b662bca44104e60cf6c2b86bf17167d4bf0e90f38460c5d1e5b97bae",
+   "status": "look-approved-r2"
+  },
+  {
+   "id": "tech-white",
+   "sha256": "7d8ee655c441c48dd45335c74e7f2ddcef6c9560da325443649d6f08dfee8fad",
+   "status": "look-approved-r2"
+  },
+  {
+   "id": "neon-night",
+   "sha256": "1ec6bc72c8aa9e906060683b0e6a06eb9199ea4c2a1d1d2ea3b2431c86d562f9",
+   "status": "look-approved-r2"
+  },
+  {
+   "id": "neon-night-b",
+   "sha256": "a6cc0b5833a1fbc3f8dd61761f07c995269d02552fe7633e71483349b492b5a6",
+   "status": "look-approved-r2"
+  },
+  {
+   "id": "hologram",
+   "sha256": "a2ede66fe3e8628443eb7033f0668ec60b525cc4748d3f6c681fdaf69987b61a",
+   "status": "look-approved-r2"
+  }
+ ],
+ "layers": [
+  "body",
+  "body-highlight",
+  "mask"
+ ],
+ "flags": {
+  "sampledOnly": false,
+  "fullCycleValidated": false,
+  "userAccepted": false,
+  "releaseEligible": false
+ },
+ "pageErrors": [],
+ "renderSeconds": 243.356,
+ "frames": [
+  {
+   "frame": 0,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.18,
+     "maxNormalChangeDeg": 93.04,
+     "sides": {
+      "left": {
+       "gate": 0.0037,
+       "elevationDeg": 91.06
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.28
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 1,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.18,
+     "maxNormalChangeDeg": 93.04,
+     "sides": {
+      "left": {
+       "gate": 0.0037,
+       "elevationDeg": 91.06
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.28
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 2,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.18,
+     "maxNormalChangeDeg": 93.04,
+     "sides": {
+      "left": {
+       "gate": 0.0037,
+       "elevationDeg": 91.06
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.28
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 3,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.18,
+     "maxNormalChangeDeg": 93.04,
+     "sides": {
+      "left": {
+       "gate": 0.0037,
+       "elevationDeg": 91.06
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.28
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 4,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.18,
+     "maxNormalChangeDeg": 93.04,
+     "sides": {
+      "left": {
+       "gate": 0.0037,
+       "elevationDeg": 91.06
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.28
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 5,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.18,
+     "maxNormalChangeDeg": 93.04,
+     "sides": {
+      "left": {
+       "gate": 0.0037,
+       "elevationDeg": 91.06
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.28
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 6,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.18,
+     "maxNormalChangeDeg": 93.04,
+     "sides": {
+      "left": {
+       "gate": 0.0037,
+       "elevationDeg": 91.06
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.28
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 7,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.18,
+     "maxNormalChangeDeg": 93.04,
+     "sides": {
+      "left": {
+       "gate": 0.0037,
+       "elevationDeg": 91.06
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.28
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 8,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.18,
+     "maxNormalChangeDeg": 93.04,
+     "sides": {
+      "left": {
+       "gate": 0.0037,
+       "elevationDeg": 91.06
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.28
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 9,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.18,
+     "maxNormalChangeDeg": 93.04,
+     "sides": {
+      "left": {
+       "gate": 0.0037,
+       "elevationDeg": 91.06
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.28
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 10,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.18,
+     "maxNormalChangeDeg": 93.04,
+     "sides": {
+      "left": {
+       "gate": 0.0037,
+       "elevationDeg": 91.06
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.28
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 11,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.18,
+     "maxNormalChangeDeg": 93.04,
+     "sides": {
+      "left": {
+       "gate": 0.0037,
+       "elevationDeg": 91.06
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.28
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 12,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.18,
+     "maxNormalChangeDeg": 93.04,
+     "sides": {
+      "left": {
+       "gate": 0.0037,
+       "elevationDeg": 91.06
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.28
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 13,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.18,
+     "maxNormalChangeDeg": 93.04,
+     "sides": {
+      "left": {
+       "gate": 0.0037,
+       "elevationDeg": 91.06
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.28
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 14,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.18,
+     "maxNormalChangeDeg": 93.04,
+     "sides": {
+      "left": {
+       "gate": 0.0037,
+       "elevationDeg": 91.06
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.28
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 15,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.18,
+     "maxNormalChangeDeg": 93.04,
+     "sides": {
+      "left": {
+       "gate": 0.0037,
+       "elevationDeg": 91.06
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.28
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 16,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.18,
+     "maxNormalChangeDeg": 93.04,
+     "sides": {
+      "left": {
+       "gate": 0.0037,
+       "elevationDeg": 91.06
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.28
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 17,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.18,
+     "maxNormalChangeDeg": 93.04,
+     "sides": {
+      "left": {
+       "gate": 0.0037,
+       "elevationDeg": 91.06
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.28
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 18,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.18,
+     "maxNormalChangeDeg": 93.04,
+     "sides": {
+      "left": {
+       "gate": 0.0037,
+       "elevationDeg": 91.06
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.28
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 19,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.183,
+     "maxNormalChangeDeg": 93.04,
+     "sides": {
+      "left": {
+       "gate": 0.0039,
+       "elevationDeg": 91.09
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.29
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 20,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.189,
+     "maxNormalChangeDeg": 93.04,
+     "sides": {
+      "left": {
+       "gate": 0.0046,
+       "elevationDeg": 91.19
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.31
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 21,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.2,
+     "maxNormalChangeDeg": 93.04,
+     "sides": {
+      "left": {
+       "gate": 0.0059,
+       "elevationDeg": 91.36
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.35
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 22,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.215,
+     "maxNormalChangeDeg": 93.05,
+     "sides": {
+      "left": {
+       "gate": 0.0081,
+       "elevationDeg": 91.58
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.41
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 23,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.233,
+     "maxNormalChangeDeg": 93.05,
+     "sides": {
+      "left": {
+       "gate": 0.0112,
+       "elevationDeg": 91.88
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.48
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 24,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.256,
+     "maxNormalChangeDeg": 93.05,
+     "sides": {
+      "left": {
+       "gate": 0.0157,
+       "elevationDeg": 92.23
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.57
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 25,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.282,
+     "maxNormalChangeDeg": 93.06,
+     "sides": {
+      "left": {
+       "gate": 0.0218,
+       "elevationDeg": 92.64
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.67
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 26,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.311,
+     "maxNormalChangeDeg": 93.06,
+     "sides": {
+      "left": {
+       "gate": 0.0298,
+       "elevationDeg": 93.1
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.78
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 27,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.343,
+     "maxNormalChangeDeg": 93.07,
+     "sides": {
+      "left": {
+       "gate": 0.0399,
+       "elevationDeg": 93.61
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.91
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 28,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.377,
+     "maxNormalChangeDeg": 93.07,
+     "sides": {
+      "left": {
+       "gate": 0.0524,
+       "elevationDeg": 94.16
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 166.05
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 29,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.413,
+     "maxNormalChangeDeg": 93.08,
+     "sides": {
+      "left": {
+       "gate": 0.0673,
+       "elevationDeg": 94.75
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 166.2
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 30,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.451,
+     "maxNormalChangeDeg": 93.09,
+     "sides": {
+      "left": {
+       "gate": 0.0847,
+       "elevationDeg": 95.37
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 166.36
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 31,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.488,
+     "maxNormalChangeDeg": 93.09,
+     "sides": {
+      "left": {
+       "gate": 0.1044,
+       "elevationDeg": 96.01
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 166.53
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 32,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.525,
+     "maxNormalChangeDeg": 93.1,
+     "sides": {
+      "left": {
+       "gate": 0.1264,
+       "elevationDeg": 96.67
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 166.71
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 33,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.56,
+     "maxNormalChangeDeg": 93.11,
+     "sides": {
+      "left": {
+       "gate": 0.15,
+       "elevationDeg": 97.33
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 166.9
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 34,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.592,
+     "maxNormalChangeDeg": 93.12,
+     "sides": {
+      "left": {
+       "gate": 0.1751,
+       "elevationDeg": 97.99
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 167.1
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 35,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.62,
+     "maxNormalChangeDeg": 93.13,
+     "sides": {
+      "left": {
+       "gate": 0.2009,
+       "elevationDeg": 98.64
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 167.29
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 36,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.642,
+     "maxNormalChangeDeg": 93.14,
+     "sides": {
+      "left": {
+       "gate": 0.227,
+       "elevationDeg": 99.26
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 167.5
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 37,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.657,
+     "maxNormalChangeDeg": 93.14,
+     "sides": {
+      "left": {
+       "gate": 0.2527,
+       "elevationDeg": 99.85
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 167.7
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 38,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.664,
+     "maxNormalChangeDeg": 93.15,
+     "sides": {
+      "left": {
+       "gate": 0.2775,
+       "elevationDeg": 100.41
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 167.91
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 39,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.661,
+     "maxNormalChangeDeg": 93.16,
+     "sides": {
+      "left": {
+       "gate": 0.3011,
+       "elevationDeg": 100.92
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 168.11
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 40,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.647,
+     "maxNormalChangeDeg": 93.17,
+     "sides": {
+      "left": {
+       "gate": 0.323,
+       "elevationDeg": 101.39
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 168.32
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 41,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.623,
+     "maxNormalChangeDeg": 93.18,
+     "sides": {
+      "left": {
+       "gate": 0.3431,
+       "elevationDeg": 101.81
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 168.52
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 42,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.588,
+     "maxNormalChangeDeg": 93.19,
+     "sides": {
+      "left": {
+       "gate": 0.3613,
+       "elevationDeg": 102.19
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 168.72
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 43,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.543,
+     "maxNormalChangeDeg": 93.19,
+     "sides": {
+      "left": {
+       "gate": 0.3777,
+       "elevationDeg": 102.53
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 168.91
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 44,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.489,
+     "maxNormalChangeDeg": 93.2,
+     "sides": {
+      "left": {
+       "gate": 0.3923,
+       "elevationDeg": 102.83
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 169.1
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 45,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.429,
+     "maxNormalChangeDeg": 93.21,
+     "sides": {
+      "left": {
+       "gate": 0.4053,
+       "elevationDeg": 103.09
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 169.28
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 46,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.363,
+     "maxNormalChangeDeg": 93.21,
+     "sides": {
+      "left": {
+       "gate": 0.4168,
+       "elevationDeg": 103.33
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 169.46
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 47,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.294,
+     "maxNormalChangeDeg": 93.22,
+     "sides": {
+      "left": {
+       "gate": 0.4269,
+       "elevationDeg": 103.53
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 169.62
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 48,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.223,
+     "maxNormalChangeDeg": 93.23,
+     "sides": {
+      "left": {
+       "gate": 0.4359,
+       "elevationDeg": 103.71
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 169.78
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 49,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.153,
+     "maxNormalChangeDeg": 93.23,
+     "sides": {
+      "left": {
+       "gate": 0.4437,
+       "elevationDeg": 103.87
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 169.93
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 50,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.085,
+     "maxNormalChangeDeg": 93.24,
+     "sides": {
+      "left": {
+       "gate": 0.4506,
+       "elevationDeg": 104.01
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.07
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 51,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.02,
+     "maxNormalChangeDeg": 93.24,
+     "sides": {
+      "left": {
+       "gate": 0.4565,
+       "elevationDeg": 104.13
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.19
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 52,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.96,
+     "maxNormalChangeDeg": 93.25,
+     "sides": {
+      "left": {
+       "gate": 0.4616,
+       "elevationDeg": 104.23
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.31
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 53,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.905,
+     "maxNormalChangeDeg": 93.25,
+     "sides": {
+      "left": {
+       "gate": 0.466,
+       "elevationDeg": 104.32
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.41
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 54,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.857,
+     "maxNormalChangeDeg": 93.25,
+     "sides": {
+      "left": {
+       "gate": 0.4696,
+       "elevationDeg": 104.39
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.5
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 55,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.815,
+     "maxNormalChangeDeg": 93.26,
+     "sides": {
+      "left": {
+       "gate": 0.4725,
+       "elevationDeg": 104.45
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.57
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 56,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.78,
+     "maxNormalChangeDeg": 93.26,
+     "sides": {
+      "left": {
+       "gate": 0.4749,
+       "elevationDeg": 104.5
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 57,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.753,
+     "maxNormalChangeDeg": 93.26,
+     "sides": {
+      "left": {
+       "gate": 0.4766,
+       "elevationDeg": 104.53
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.68
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 58,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.733,
+     "maxNormalChangeDeg": 93.26,
+     "sides": {
+      "left": {
+       "gate": 0.4779,
+       "elevationDeg": 104.56
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.72
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 59,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.721,
+     "maxNormalChangeDeg": 93.26,
+     "sides": {
+      "left": {
+       "gate": 0.4786,
+       "elevationDeg": 104.57
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.74
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 60,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.718,
+     "maxNormalChangeDeg": 93.26,
+     "sides": {
+      "left": {
+       "gate": 0.4789,
+       "elevationDeg": 104.58
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.75
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 61,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.717,
+     "maxNormalChangeDeg": 93.26,
+     "sides": {
+      "left": {
+       "gate": 0.4789,
+       "elevationDeg": 104.58
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.75
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 62,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.716,
+     "maxNormalChangeDeg": 93.26,
+     "sides": {
+      "left": {
+       "gate": 0.479,
+       "elevationDeg": 104.58
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.75
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 63,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.714,
+     "maxNormalChangeDeg": 93.26,
+     "sides": {
+      "left": {
+       "gate": 0.4791,
+       "elevationDeg": 104.58
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.75
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 64,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.711,
+     "maxNormalChangeDeg": 93.26,
+     "sides": {
+      "left": {
+       "gate": 0.4793,
+       "elevationDeg": 104.59
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.76
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 65,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.707,
+     "maxNormalChangeDeg": 93.26,
+     "sides": {
+      "left": {
+       "gate": 0.4795,
+       "elevationDeg": 104.59
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.77
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 66,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.702,
+     "maxNormalChangeDeg": 93.26,
+     "sides": {
+      "left": {
+       "gate": 0.4798,
+       "elevationDeg": 104.6
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.77
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 67,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.697,
+     "maxNormalChangeDeg": 93.26,
+     "sides": {
+      "left": {
+       "gate": 0.4801,
+       "elevationDeg": 104.6
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.78
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 68,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.691,
+     "maxNormalChangeDeg": 93.26,
+     "sides": {
+      "left": {
+       "gate": 0.4805,
+       "elevationDeg": 104.61
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.79
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 69,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.684,
+     "maxNormalChangeDeg": 93.27,
+     "sides": {
+      "left": {
+       "gate": 0.4809,
+       "elevationDeg": 104.62
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.81
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 70,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.676,
+     "maxNormalChangeDeg": 93.27,
+     "sides": {
+      "left": {
+       "gate": 0.4814,
+       "elevationDeg": 104.63
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.82
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 71,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.668,
+     "maxNormalChangeDeg": 93.27,
+     "sides": {
+      "left": {
+       "gate": 0.4818,
+       "elevationDeg": 104.64
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.84
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 72,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.659,
+     "maxNormalChangeDeg": 93.27,
+     "sides": {
+      "left": {
+       "gate": 0.4824,
+       "elevationDeg": 104.65
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.85
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 73,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.649,
+     "maxNormalChangeDeg": 93.27,
+     "sides": {
+      "left": {
+       "gate": 0.4829,
+       "elevationDeg": 104.66
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.87
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 74,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.639,
+     "maxNormalChangeDeg": 93.27,
+     "sides": {
+      "left": {
+       "gate": 0.4835,
+       "elevationDeg": 104.67
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.89
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 75,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.628,
+     "maxNormalChangeDeg": 93.27,
+     "sides": {
+      "left": {
+       "gate": 0.4841,
+       "elevationDeg": 104.68
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.91
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 76,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.617,
+     "maxNormalChangeDeg": 93.27,
+     "sides": {
+      "left": {
+       "gate": 0.4847,
+       "elevationDeg": 104.69
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.93
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 77,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.605,
+     "maxNormalChangeDeg": 93.27,
+     "sides": {
+      "left": {
+       "gate": 0.4853,
+       "elevationDeg": 104.71
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.95
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 78,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.592,
+     "maxNormalChangeDeg": 93.27,
+     "sides": {
+      "left": {
+       "gate": 0.486,
+       "elevationDeg": 104.72
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.97
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 79,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.58,
+     "maxNormalChangeDeg": 93.27,
+     "sides": {
+      "left": {
+       "gate": 0.4867,
+       "elevationDeg": 104.73
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.99
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 80,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.566,
+     "maxNormalChangeDeg": 93.27,
+     "sides": {
+      "left": {
+       "gate": 0.4873,
+       "elevationDeg": 104.75
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.01
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 81,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.553,
+     "maxNormalChangeDeg": 93.27,
+     "sides": {
+      "left": {
+       "gate": 0.488,
+       "elevationDeg": 104.76
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.04
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 82,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.539,
+     "maxNormalChangeDeg": 93.27,
+     "sides": {
+      "left": {
+       "gate": 0.4887,
+       "elevationDeg": 104.77
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.06
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 83,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.525,
+     "maxNormalChangeDeg": 93.28,
+     "sides": {
+      "left": {
+       "gate": 0.4893,
+       "elevationDeg": 104.79
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.09
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 84,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.511,
+     "maxNormalChangeDeg": 93.28,
+     "sides": {
+      "left": {
+       "gate": 0.49,
+       "elevationDeg": 104.8
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.11
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 85,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.497,
+     "maxNormalChangeDeg": 93.28,
+     "sides": {
+      "left": {
+       "gate": 0.4906,
+       "elevationDeg": 104.81
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.14
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 86,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.482,
+     "maxNormalChangeDeg": 93.28,
+     "sides": {
+      "left": {
+       "gate": 0.4913,
+       "elevationDeg": 104.83
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.16
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 87,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.468,
+     "maxNormalChangeDeg": 93.28,
+     "sides": {
+      "left": {
+       "gate": 0.4919,
+       "elevationDeg": 104.84
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.19
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 88,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.454,
+     "maxNormalChangeDeg": 93.28,
+     "sides": {
+      "left": {
+       "gate": 0.4925,
+       "elevationDeg": 104.85
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.21
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 89,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.439,
+     "maxNormalChangeDeg": 93.28,
+     "sides": {
+      "left": {
+       "gate": 0.4931,
+       "elevationDeg": 104.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.24
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 90,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.425,
+     "maxNormalChangeDeg": 93.28,
+     "sides": {
+      "left": {
+       "gate": 0.4936,
+       "elevationDeg": 104.87
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.26
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 91,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.411,
+     "maxNormalChangeDeg": 93.28,
+     "sides": {
+      "left": {
+       "gate": 0.4942,
+       "elevationDeg": 104.88
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.29
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 92,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.397,
+     "maxNormalChangeDeg": 93.28,
+     "sides": {
+      "left": {
+       "gate": 0.4947,
+       "elevationDeg": 104.89
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.31
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 93,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.384,
+     "maxNormalChangeDeg": 93.29,
+     "sides": {
+      "left": {
+       "gate": 0.4952,
+       "elevationDeg": 104.9
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.34
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 94,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.37,
+     "maxNormalChangeDeg": 93.29,
+     "sides": {
+      "left": {
+       "gate": 0.4957,
+       "elevationDeg": 104.91
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.36
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 95,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.358,
+     "maxNormalChangeDeg": 93.29,
+     "sides": {
+      "left": {
+       "gate": 0.4961,
+       "elevationDeg": 104.92
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.38
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 96,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.345,
+     "maxNormalChangeDeg": 93.29,
+     "sides": {
+      "left": {
+       "gate": 0.4965,
+       "elevationDeg": 104.93
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.4
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 97,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.333,
+     "maxNormalChangeDeg": 93.29,
+     "sides": {
+      "left": {
+       "gate": 0.4969,
+       "elevationDeg": 104.94
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.43
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 98,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.321,
+     "maxNormalChangeDeg": 93.29,
+     "sides": {
+      "left": {
+       "gate": 0.4973,
+       "elevationDeg": 104.95
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.45
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 99,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.31,
+     "maxNormalChangeDeg": 93.29,
+     "sides": {
+      "left": {
+       "gate": 0.4976,
+       "elevationDeg": 104.95
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.47
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 100,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.3,
+     "maxNormalChangeDeg": 93.29,
+     "sides": {
+      "left": {
+       "gate": 0.4979,
+       "elevationDeg": 104.96
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.48
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 101,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.29,
+     "maxNormalChangeDeg": 93.29,
+     "sides": {
+      "left": {
+       "gate": 0.4982,
+       "elevationDeg": 104.96
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.5
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 102,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.281,
+     "maxNormalChangeDeg": 93.29,
+     "sides": {
+      "left": {
+       "gate": 0.4985,
+       "elevationDeg": 104.97
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.52
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 103,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.272,
+     "maxNormalChangeDeg": 93.29,
+     "sides": {
+      "left": {
+       "gate": 0.4987,
+       "elevationDeg": 104.97
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.53
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 104,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.264,
+     "maxNormalChangeDeg": 93.29,
+     "sides": {
+      "left": {
+       "gate": 0.4989,
+       "elevationDeg": 104.98
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.55
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 105,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.257,
+     "maxNormalChangeDeg": 93.29,
+     "sides": {
+      "left": {
+       "gate": 0.4991,
+       "elevationDeg": 104.98
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.56
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 106,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.25,
+     "maxNormalChangeDeg": 93.29,
+     "sides": {
+      "left": {
+       "gate": 0.4993,
+       "elevationDeg": 104.99
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.57
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 107,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.244,
+     "maxNormalChangeDeg": 93.29,
+     "sides": {
+      "left": {
+       "gate": 0.4994,
+       "elevationDeg": 104.99
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.58
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 108,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.239,
+     "maxNormalChangeDeg": 93.3,
+     "sides": {
+      "left": {
+       "gate": 0.4995,
+       "elevationDeg": 104.99
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.59
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 109,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.235,
+     "maxNormalChangeDeg": 93.3,
+     "sides": {
+      "left": {
+       "gate": 0.4996,
+       "elevationDeg": 104.99
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.6
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 110,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.231,
+     "maxNormalChangeDeg": 93.3,
+     "sides": {
+      "left": {
+       "gate": 0.4997,
+       "elevationDeg": 104.99
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.61
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 111,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.228,
+     "maxNormalChangeDeg": 93.3,
+     "sides": {
+      "left": {
+       "gate": 0.4998,
+       "elevationDeg": 105
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.61
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 112,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.226,
+     "maxNormalChangeDeg": 93.3,
+     "sides": {
+      "left": {
+       "gate": 0.4998,
+       "elevationDeg": 105
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.62
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 113,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.225,
+     "maxNormalChangeDeg": 93.3,
+     "sides": {
+      "left": {
+       "gate": 0.4998,
+       "elevationDeg": 105
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.62
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 114,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.225,
+     "maxNormalChangeDeg": 93.3,
+     "sides": {
+      "left": {
+       "gate": 0.4998,
+       "elevationDeg": 105
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.62
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 115,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.225,
+     "maxNormalChangeDeg": 93.3,
+     "sides": {
+      "left": {
+       "gate": 0.4998,
+       "elevationDeg": 105
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.62
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 116,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.226,
+     "maxNormalChangeDeg": 93.3,
+     "sides": {
+      "left": {
+       "gate": 0.4998,
+       "elevationDeg": 105
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.62
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 117,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.228,
+     "maxNormalChangeDeg": 93.3,
+     "sides": {
+      "left": {
+       "gate": 0.4998,
+       "elevationDeg": 105
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.61
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 118,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.231,
+     "maxNormalChangeDeg": 93.3,
+     "sides": {
+      "left": {
+       "gate": 0.4997,
+       "elevationDeg": 104.99
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.61
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 119,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.235,
+     "maxNormalChangeDeg": 93.3,
+     "sides": {
+      "left": {
+       "gate": 0.4996,
+       "elevationDeg": 104.99
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.6
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 120,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.239,
+     "maxNormalChangeDeg": 93.3,
+     "sides": {
+      "left": {
+       "gate": 0.4995,
+       "elevationDeg": 104.99
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.59
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 121,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.244,
+     "maxNormalChangeDeg": 93.29,
+     "sides": {
+      "left": {
+       "gate": 0.4994,
+       "elevationDeg": 104.99
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.58
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 122,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.25,
+     "maxNormalChangeDeg": 93.29,
+     "sides": {
+      "left": {
+       "gate": 0.4993,
+       "elevationDeg": 104.99
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.57
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 123,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.257,
+     "maxNormalChangeDeg": 93.29,
+     "sides": {
+      "left": {
+       "gate": 0.4991,
+       "elevationDeg": 104.98
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.56
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 124,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.264,
+     "maxNormalChangeDeg": 93.29,
+     "sides": {
+      "left": {
+       "gate": 0.4989,
+       "elevationDeg": 104.98
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.55
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 125,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.272,
+     "maxNormalChangeDeg": 93.29,
+     "sides": {
+      "left": {
+       "gate": 0.4987,
+       "elevationDeg": 104.97
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.53
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 126,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.281,
+     "maxNormalChangeDeg": 93.29,
+     "sides": {
+      "left": {
+       "gate": 0.4985,
+       "elevationDeg": 104.97
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.52
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 127,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.29,
+     "maxNormalChangeDeg": 93.29,
+     "sides": {
+      "left": {
+       "gate": 0.4982,
+       "elevationDeg": 104.96
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.5
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 128,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.3,
+     "maxNormalChangeDeg": 93.29,
+     "sides": {
+      "left": {
+       "gate": 0.4979,
+       "elevationDeg": 104.96
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.48
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 129,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.31,
+     "maxNormalChangeDeg": 93.29,
+     "sides": {
+      "left": {
+       "gate": 0.4976,
+       "elevationDeg": 104.95
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.47
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 130,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.321,
+     "maxNormalChangeDeg": 93.29,
+     "sides": {
+      "left": {
+       "gate": 0.4973,
+       "elevationDeg": 104.95
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.45
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 131,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.333,
+     "maxNormalChangeDeg": 93.29,
+     "sides": {
+      "left": {
+       "gate": 0.4969,
+       "elevationDeg": 104.94
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.43
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 132,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.345,
+     "maxNormalChangeDeg": 93.29,
+     "sides": {
+      "left": {
+       "gate": 0.4965,
+       "elevationDeg": 104.93
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.4
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 133,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.358,
+     "maxNormalChangeDeg": 93.29,
+     "sides": {
+      "left": {
+       "gate": 0.4961,
+       "elevationDeg": 104.92
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.38
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 134,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.37,
+     "maxNormalChangeDeg": 93.29,
+     "sides": {
+      "left": {
+       "gate": 0.4957,
+       "elevationDeg": 104.91
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.36
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 135,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.384,
+     "maxNormalChangeDeg": 93.29,
+     "sides": {
+      "left": {
+       "gate": 0.4952,
+       "elevationDeg": 104.9
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.34
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 136,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.397,
+     "maxNormalChangeDeg": 93.28,
+     "sides": {
+      "left": {
+       "gate": 0.4947,
+       "elevationDeg": 104.89
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.31
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 137,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.411,
+     "maxNormalChangeDeg": 93.28,
+     "sides": {
+      "left": {
+       "gate": 0.4942,
+       "elevationDeg": 104.88
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.29
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 138,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.425,
+     "maxNormalChangeDeg": 93.28,
+     "sides": {
+      "left": {
+       "gate": 0.4936,
+       "elevationDeg": 104.87
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.26
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 139,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.439,
+     "maxNormalChangeDeg": 93.28,
+     "sides": {
+      "left": {
+       "gate": 0.4931,
+       "elevationDeg": 104.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.24
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 140,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.454,
+     "maxNormalChangeDeg": 93.28,
+     "sides": {
+      "left": {
+       "gate": 0.4925,
+       "elevationDeg": 104.85
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.21
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 141,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.468,
+     "maxNormalChangeDeg": 93.28,
+     "sides": {
+      "left": {
+       "gate": 0.4919,
+       "elevationDeg": 104.84
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.19
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 142,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.482,
+     "maxNormalChangeDeg": 93.28,
+     "sides": {
+      "left": {
+       "gate": 0.4913,
+       "elevationDeg": 104.83
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.16
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 143,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.497,
+     "maxNormalChangeDeg": 93.28,
+     "sides": {
+      "left": {
+       "gate": 0.4906,
+       "elevationDeg": 104.81
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.14
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 144,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.511,
+     "maxNormalChangeDeg": 93.28,
+     "sides": {
+      "left": {
+       "gate": 0.49,
+       "elevationDeg": 104.8
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.11
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 145,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.525,
+     "maxNormalChangeDeg": 93.28,
+     "sides": {
+      "left": {
+       "gate": 0.4893,
+       "elevationDeg": 104.79
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.09
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 146,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.539,
+     "maxNormalChangeDeg": 93.27,
+     "sides": {
+      "left": {
+       "gate": 0.4887,
+       "elevationDeg": 104.77
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.06
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 147,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.553,
+     "maxNormalChangeDeg": 93.27,
+     "sides": {
+      "left": {
+       "gate": 0.488,
+       "elevationDeg": 104.76
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.04
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 148,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.566,
+     "maxNormalChangeDeg": 93.27,
+     "sides": {
+      "left": {
+       "gate": 0.4873,
+       "elevationDeg": 104.75
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 171.01
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 149,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.58,
+     "maxNormalChangeDeg": 93.27,
+     "sides": {
+      "left": {
+       "gate": 0.4867,
+       "elevationDeg": 104.73
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.99
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 150,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.592,
+     "maxNormalChangeDeg": 93.27,
+     "sides": {
+      "left": {
+       "gate": 0.486,
+       "elevationDeg": 104.72
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.97
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 151,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.605,
+     "maxNormalChangeDeg": 93.27,
+     "sides": {
+      "left": {
+       "gate": 0.4853,
+       "elevationDeg": 104.71
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.95
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 152,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.617,
+     "maxNormalChangeDeg": 93.27,
+     "sides": {
+      "left": {
+       "gate": 0.4847,
+       "elevationDeg": 104.69
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.93
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 153,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.628,
+     "maxNormalChangeDeg": 93.27,
+     "sides": {
+      "left": {
+       "gate": 0.4841,
+       "elevationDeg": 104.68
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.91
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 154,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.639,
+     "maxNormalChangeDeg": 93.27,
+     "sides": {
+      "left": {
+       "gate": 0.4835,
+       "elevationDeg": 104.67
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.89
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 155,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.649,
+     "maxNormalChangeDeg": 93.27,
+     "sides": {
+      "left": {
+       "gate": 0.4829,
+       "elevationDeg": 104.66
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.87
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 156,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.659,
+     "maxNormalChangeDeg": 93.27,
+     "sides": {
+      "left": {
+       "gate": 0.4824,
+       "elevationDeg": 104.65
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.85
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 157,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.668,
+     "maxNormalChangeDeg": 93.27,
+     "sides": {
+      "left": {
+       "gate": 0.4818,
+       "elevationDeg": 104.64
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.84
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 158,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.676,
+     "maxNormalChangeDeg": 93.27,
+     "sides": {
+      "left": {
+       "gate": 0.4814,
+       "elevationDeg": 104.63
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.82
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 159,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.684,
+     "maxNormalChangeDeg": 93.27,
+     "sides": {
+      "left": {
+       "gate": 0.4809,
+       "elevationDeg": 104.62
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.81
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 160,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.691,
+     "maxNormalChangeDeg": 93.26,
+     "sides": {
+      "left": {
+       "gate": 0.4805,
+       "elevationDeg": 104.61
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.79
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 161,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.697,
+     "maxNormalChangeDeg": 93.26,
+     "sides": {
+      "left": {
+       "gate": 0.4801,
+       "elevationDeg": 104.6
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.78
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 162,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.702,
+     "maxNormalChangeDeg": 93.26,
+     "sides": {
+      "left": {
+       "gate": 0.4798,
+       "elevationDeg": 104.6
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.77
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 163,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.707,
+     "maxNormalChangeDeg": 93.26,
+     "sides": {
+      "left": {
+       "gate": 0.4795,
+       "elevationDeg": 104.59
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.77
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 164,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.711,
+     "maxNormalChangeDeg": 93.26,
+     "sides": {
+      "left": {
+       "gate": 0.4793,
+       "elevationDeg": 104.59
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.76
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 165,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.714,
+     "maxNormalChangeDeg": 93.26,
+     "sides": {
+      "left": {
+       "gate": 0.4791,
+       "elevationDeg": 104.58
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.75
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 166,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.716,
+     "maxNormalChangeDeg": 93.26,
+     "sides": {
+      "left": {
+       "gate": 0.479,
+       "elevationDeg": 104.58
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.75
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 167,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.717,
+     "maxNormalChangeDeg": 93.26,
+     "sides": {
+      "left": {
+       "gate": 0.4789,
+       "elevationDeg": 104.58
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.75
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 168,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.718,
+     "maxNormalChangeDeg": 93.26,
+     "sides": {
+      "left": {
+       "gate": 0.4789,
+       "elevationDeg": 104.58
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.75
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 169,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.721,
+     "maxNormalChangeDeg": 93.26,
+     "sides": {
+      "left": {
+       "gate": 0.4786,
+       "elevationDeg": 104.57
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.74
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 170,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.733,
+     "maxNormalChangeDeg": 93.26,
+     "sides": {
+      "left": {
+       "gate": 0.4779,
+       "elevationDeg": 104.56
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.72
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 171,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.753,
+     "maxNormalChangeDeg": 93.26,
+     "sides": {
+      "left": {
+       "gate": 0.4766,
+       "elevationDeg": 104.53
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.68
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 172,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.78,
+     "maxNormalChangeDeg": 93.26,
+     "sides": {
+      "left": {
+       "gate": 0.4749,
+       "elevationDeg": 104.5
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 173,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.815,
+     "maxNormalChangeDeg": 93.26,
+     "sides": {
+      "left": {
+       "gate": 0.4725,
+       "elevationDeg": 104.45
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.57
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 174,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.857,
+     "maxNormalChangeDeg": 93.25,
+     "sides": {
+      "left": {
+       "gate": 0.4696,
+       "elevationDeg": 104.39
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.5
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 175,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.905,
+     "maxNormalChangeDeg": 93.25,
+     "sides": {
+      "left": {
+       "gate": 0.466,
+       "elevationDeg": 104.32
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.41
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 176,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.96,
+     "maxNormalChangeDeg": 93.25,
+     "sides": {
+      "left": {
+       "gate": 0.4616,
+       "elevationDeg": 104.23
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.31
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 177,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.02,
+     "maxNormalChangeDeg": 93.24,
+     "sides": {
+      "left": {
+       "gate": 0.4565,
+       "elevationDeg": 104.13
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.19
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 178,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.085,
+     "maxNormalChangeDeg": 93.24,
+     "sides": {
+      "left": {
+       "gate": 0.4506,
+       "elevationDeg": 104.01
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 170.07
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 179,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.153,
+     "maxNormalChangeDeg": 93.23,
+     "sides": {
+      "left": {
+       "gate": 0.4437,
+       "elevationDeg": 103.87
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 169.93
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 180,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.223,
+     "maxNormalChangeDeg": 93.23,
+     "sides": {
+      "left": {
+       "gate": 0.4359,
+       "elevationDeg": 103.71
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 169.78
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 181,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.294,
+     "maxNormalChangeDeg": 93.22,
+     "sides": {
+      "left": {
+       "gate": 0.4269,
+       "elevationDeg": 103.53
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 169.62
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 182,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.363,
+     "maxNormalChangeDeg": 93.21,
+     "sides": {
+      "left": {
+       "gate": 0.4168,
+       "elevationDeg": 103.33
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 169.46
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 183,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.429,
+     "maxNormalChangeDeg": 93.21,
+     "sides": {
+      "left": {
+       "gate": 0.4053,
+       "elevationDeg": 103.09
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 169.28
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 184,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.489,
+     "maxNormalChangeDeg": 93.2,
+     "sides": {
+      "left": {
+       "gate": 0.3923,
+       "elevationDeg": 102.83
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 169.1
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 185,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.543,
+     "maxNormalChangeDeg": 93.19,
+     "sides": {
+      "left": {
+       "gate": 0.3777,
+       "elevationDeg": 102.53
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 168.91
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 186,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.588,
+     "maxNormalChangeDeg": 93.19,
+     "sides": {
+      "left": {
+       "gate": 0.3613,
+       "elevationDeg": 102.19
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 168.72
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 187,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.623,
+     "maxNormalChangeDeg": 93.18,
+     "sides": {
+      "left": {
+       "gate": 0.3431,
+       "elevationDeg": 101.81
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 168.52
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 188,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.647,
+     "maxNormalChangeDeg": 93.17,
+     "sides": {
+      "left": {
+       "gate": 0.323,
+       "elevationDeg": 101.39
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 168.32
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 189,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.661,
+     "maxNormalChangeDeg": 93.16,
+     "sides": {
+      "left": {
+       "gate": 0.3011,
+       "elevationDeg": 100.92
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 168.11
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 190,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.664,
+     "maxNormalChangeDeg": 93.15,
+     "sides": {
+      "left": {
+       "gate": 0.2775,
+       "elevationDeg": 100.41
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 167.91
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 191,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.657,
+     "maxNormalChangeDeg": 93.14,
+     "sides": {
+      "left": {
+       "gate": 0.2527,
+       "elevationDeg": 99.85
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 167.7
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 192,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.642,
+     "maxNormalChangeDeg": 93.14,
+     "sides": {
+      "left": {
+       "gate": 0.227,
+       "elevationDeg": 99.26
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 167.5
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 193,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.62,
+     "maxNormalChangeDeg": 93.13,
+     "sides": {
+      "left": {
+       "gate": 0.2009,
+       "elevationDeg": 98.64
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 167.29
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 194,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.592,
+     "maxNormalChangeDeg": 93.12,
+     "sides": {
+      "left": {
+       "gate": 0.1751,
+       "elevationDeg": 97.99
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 167.1
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 195,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.56,
+     "maxNormalChangeDeg": 93.11,
+     "sides": {
+      "left": {
+       "gate": 0.15,
+       "elevationDeg": 97.33
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 166.9
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 196,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.525,
+     "maxNormalChangeDeg": 93.1,
+     "sides": {
+      "left": {
+       "gate": 0.1264,
+       "elevationDeg": 96.67
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 166.71
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 197,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.488,
+     "maxNormalChangeDeg": 93.09,
+     "sides": {
+      "left": {
+       "gate": 0.1044,
+       "elevationDeg": 96.01
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 166.53
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 198,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.451,
+     "maxNormalChangeDeg": 93.09,
+     "sides": {
+      "left": {
+       "gate": 0.0847,
+       "elevationDeg": 95.37
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 166.36
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 199,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.413,
+     "maxNormalChangeDeg": 93.08,
+     "sides": {
+      "left": {
+       "gate": 0.0673,
+       "elevationDeg": 94.75
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 166.2
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 200,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.377,
+     "maxNormalChangeDeg": 93.07,
+     "sides": {
+      "left": {
+       "gate": 0.0524,
+       "elevationDeg": 94.16
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 166.05
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 201,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.343,
+     "maxNormalChangeDeg": 93.07,
+     "sides": {
+      "left": {
+       "gate": 0.0399,
+       "elevationDeg": 93.61
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.91
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 202,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.311,
+     "maxNormalChangeDeg": 93.06,
+     "sides": {
+      "left": {
+       "gate": 0.0298,
+       "elevationDeg": 93.1
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.78
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 203,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.282,
+     "maxNormalChangeDeg": 93.06,
+     "sides": {
+      "left": {
+       "gate": 0.0218,
+       "elevationDeg": 92.64
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.67
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 204,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.256,
+     "maxNormalChangeDeg": 93.05,
+     "sides": {
+      "left": {
+       "gate": 0.0157,
+       "elevationDeg": 92.23
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.57
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 205,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.233,
+     "maxNormalChangeDeg": 93.05,
+     "sides": {
+      "left": {
+       "gate": 0.0112,
+       "elevationDeg": 91.88
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.48
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 206,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.215,
+     "maxNormalChangeDeg": 93.05,
+     "sides": {
+      "left": {
+       "gate": 0.0081,
+       "elevationDeg": 91.58
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.41
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 207,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.2,
+     "maxNormalChangeDeg": 93.04,
+     "sides": {
+      "left": {
+       "gate": 0.0059,
+       "elevationDeg": 91.36
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.35
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 208,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.189,
+     "maxNormalChangeDeg": 93.04,
+     "sides": {
+      "left": {
+       "gate": 0.0046,
+       "elevationDeg": 91.19
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.31
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 209,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.183,
+     "maxNormalChangeDeg": 93.04,
+     "sides": {
+      "left": {
+       "gate": 0.0039,
+       "elevationDeg": 91.09
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.29
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 210,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.18,
+     "maxNormalChangeDeg": 93.04,
+     "sides": {
+      "left": {
+       "gate": 0.0037,
+       "elevationDeg": 91.06
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.28
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 211,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.18,
+     "maxNormalChangeDeg": 93.04,
+     "sides": {
+      "left": {
+       "gate": 0.0037,
+       "elevationDeg": 91.06
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.28
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 212,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.18,
+     "maxNormalChangeDeg": 93.04,
+     "sides": {
+      "left": {
+       "gate": 0.0037,
+       "elevationDeg": 91.06
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.28
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 213,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.18,
+     "maxNormalChangeDeg": 93.04,
+     "sides": {
+      "left": {
+       "gate": 0.0037,
+       "elevationDeg": 91.06
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.28
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 214,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.18,
+     "maxNormalChangeDeg": 93.04,
+     "sides": {
+      "left": {
+       "gate": 0.0037,
+       "elevationDeg": 91.06
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.28
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 215,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.18,
+     "maxNormalChangeDeg": 93.04,
+     "sides": {
+      "left": {
+       "gate": 0.0037,
+       "elevationDeg": 91.06
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.28
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 216,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.18,
+     "maxNormalChangeDeg": 93.04,
+     "sides": {
+      "left": {
+       "gate": 0.0037,
+       "elevationDeg": 91.06
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.28
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 217,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.18,
+     "maxNormalChangeDeg": 93.04,
+     "sides": {
+      "left": {
+       "gate": 0.0037,
+       "elevationDeg": 91.06
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.28
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 218,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.18,
+     "maxNormalChangeDeg": 93.04,
+     "sides": {
+      "left": {
+       "gate": 0.0037,
+       "elevationDeg": 91.06
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.28
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 219,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.18,
+     "maxNormalChangeDeg": 93.04,
+     "sides": {
+      "left": {
+       "gate": 0.0037,
+       "elevationDeg": 91.06
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.28
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 220,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.18,
+     "maxNormalChangeDeg": 93.04,
+     "sides": {
+      "left": {
+       "gate": 0.0037,
+       "elevationDeg": 91.06
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.28
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 221,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.18,
+     "maxNormalChangeDeg": 93.04,
+     "sides": {
+      "left": {
+       "gate": 0.0037,
+       "elevationDeg": 91.06
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.28
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 222,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.18,
+     "maxNormalChangeDeg": 93.04,
+     "sides": {
+      "left": {
+       "gate": 0.0037,
+       "elevationDeg": 91.06
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.28
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 223,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.18,
+     "maxNormalChangeDeg": 93.04,
+     "sides": {
+      "left": {
+       "gate": 0.0037,
+       "elevationDeg": 91.06
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.28
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 224,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.18,
+     "maxNormalChangeDeg": 93.04,
+     "sides": {
+      "left": {
+       "gate": 0.0037,
+       "elevationDeg": 91.06
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.28
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 225,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.18,
+     "maxNormalChangeDeg": 93.04,
+     "sides": {
+      "left": {
+       "gate": 0.0037,
+       "elevationDeg": 91.06
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.28
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 226,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.18,
+     "maxNormalChangeDeg": 93.04,
+     "sides": {
+      "left": {
+       "gate": 0.0037,
+       "elevationDeg": 91.06
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.28
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 227,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.18,
+     "maxNormalChangeDeg": 93.04,
+     "sides": {
+      "left": {
+       "gate": 0.0037,
+       "elevationDeg": 91.06
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.28
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 228,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.18,
+     "maxNormalChangeDeg": 93.04,
+     "sides": {
+      "left": {
+       "gate": 0.0037,
+       "elevationDeg": 91.06
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.28
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 229,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.18,
+     "maxNormalChangeDeg": 93.04,
+     "sides": {
+      "left": {
+       "gate": 0.0037,
+       "elevationDeg": 91.06
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.28
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 230,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.18,
+     "maxNormalChangeDeg": 93.04,
+     "sides": {
+      "left": {
+       "gate": 0.0037,
+       "elevationDeg": 91.06
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.28
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 231,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.18,
+     "maxNormalChangeDeg": 93.04,
+     "sides": {
+      "left": {
+       "gate": 0.0037,
+       "elevationDeg": 91.06
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.28
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 232,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.18,
+     "maxNormalChangeDeg": 93.04,
+     "sides": {
+      "left": {
+       "gate": 0.0037,
+       "elevationDeg": 91.06
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.28
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 233,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.18,
+     "maxNormalChangeDeg": 93.04,
+     "sides": {
+      "left": {
+       "gate": 0.0037,
+       "elevationDeg": 91.06
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.28
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 234,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.18,
+     "maxNormalChangeDeg": 93.04,
+     "sides": {
+      "left": {
+       "gate": 0.0037,
+       "elevationDeg": 91.06
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.28
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 235,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.18,
+     "maxNormalChangeDeg": 93.04,
+     "sides": {
+      "left": {
+       "gate": 0.0037,
+       "elevationDeg": 91.06
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.28
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 236,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.18,
+     "maxNormalChangeDeg": 93.04,
+     "sides": {
+      "left": {
+       "gate": 0.0037,
+       "elevationDeg": 91.06
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.28
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 237,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.18,
+     "maxNormalChangeDeg": 93.04,
+     "sides": {
+      "left": {
+       "gate": 0.0037,
+       "elevationDeg": 91.06
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.28
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 238,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.18,
+     "maxNormalChangeDeg": 93.04,
+     "sides": {
+      "left": {
+       "gate": 0.0037,
+       "elevationDeg": 91.06
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.28
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 239,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.18,
+     "maxNormalChangeDeg": 93.04,
+     "sides": {
+      "left": {
+       "gate": 0.0037,
+       "elevationDeg": 91.06
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.28
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 240,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.18,
+     "maxNormalChangeDeg": 93.04,
+     "sides": {
+      "left": {
+       "gate": 0.0037,
+       "elevationDeg": 91.06
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.28
+      }
+     }
+    }
+   }
+  }
+ ]
+}

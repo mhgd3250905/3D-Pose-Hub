@@ -1,0 +1,5191 @@
+{
+ "actionId": "h-db-curl",
+ "recipe": {
+  "path": "catalog/production/remaining219-r1/recipes/h-db-curl.json",
+  "sha256": "2acbb43c278092c7ae7e717803874c2c74a132fc2c8b3ed2ba34fa06aa9a19ed"
+ },
+ "productionModel": "training-human-v3-armfix@0.1.0-r2",
+ "profile": {
+  "id": "default",
+  "sha256": "8b90de7f3d89b026a324df54eb835cff9dcb775a0d11f3071bdbeb1b2344ce22"
+ },
+ "rendererSha256": {
+  "tools/skin-coverage-r1/render-masters.mjs": "bed0ffc7acd4c7cf1d4508b6efa0adec5e0222747ebcd846715fd576928cfcab",
+  "tools/skin-coverage-r1/install.mjs": "41a11294e10ed2e1d426697f2291d704f49b4c34b156849c93984257f253ff28",
+  "tools/skin-coverage-r1/runtime.js": "109629b853d94adcc9caa40c9aa2b6a3d40f209aa98f31b2e3ad39f0d3f9aa2e",
+  "tools/skin-coverage-r1/port.mjs": "e62cc9aaefd5648a2fb0496d961066c5c9727229112103fb3038b12c8dca3d46",
+  "tools/skin-coverage-r1/verify.mjs": "a7c125d461ec016619226a8103aa9a87c78ba6204824e63bc48fb25794a696de",
+  "tools/action-package-v3/render-masters.mjs": "dac6cd000a32f2b23c0d2f3952d044724231f79cc3414a9ec83bcf0f3f480acb",
+  "tools/action-package-v3/recipe-scene.mjs": "9e6745e775a8abaf9eef8feb07c299285b83188216660cc3ddf906a28d35d93d",
+  "tools/action-package-v3/browser-package-layers.js": "a8d40b3e38ad043f699b242b2a0acb31a1cf6f82229a86292dc502d329a057fd",
+  "tools/action-package-v3/native-highlight.mjs": "c4ad2f22fe317e81d70b6d4b267bcdaf96b94360c45f18560517434437aa3144",
+  "tools/joint-opt-r1/render-masters-joint.mjs": "14eb2f7552b302c5c5571894e0addb536592a9f5ef7db14fd90aa8740c5d2e5e",
+  "tools/joint-opt-r1/joint-production.mjs": "a265969db29b8b5310c3baae9c189eb336329486a050cad4bff53350eed6d80a",
+  "tools/joint-opt-r1/shoulder-axilla-production.json": "c1e98a5f41fc2e8e3548c3a278853bf819030609e004b80bffea4811d571ff79",
+  "tools/joint-opt-r1/shoulder-axilla-r2.mjs": "aef3ed3360ae4dbf7043244d5162455d31fc29b78f464c968c92fc554cbfa514"
+ },
+ "appearance": {
+  "approvedBase": "original-head-eye-soften-20261110-r1",
+  "approvedPointer": {
+   "format": "pose-hub-approved-look-pointer@1",
+   "id": "original-head-eye-soften-20261110-r1",
+   "record": "drill-anim/models/approved-looks/20261110-r1.json",
+   "sha256Lf": "ac435f84ee22ed84a0eaaeef31107beef251465945fa01f9de66de978fb73f99"
+  }
+ },
+ "jointOpt": {
+  "shoulderAxilla": {
+   "id": "shoulder-axilla",
+   "enabled": true,
+   "source": "cli",
+   "switchFile": "tools/joint-opt-r1/shoulder-axilla-production.json",
+   "switchSha256Lf": "c1e98a5f41fc2e8e3548c3a278853bf819030609e004b80bffea4811d571ff79",
+   "switchDefault": true,
+   "module": "tools/joint-opt-r1/shoulder-axilla-r2.mjs",
+   "moduleVersion": "0.2.0-r2",
+   "moduleGlobal": "__shoulderAxillaR2",
+   "options": {},
+   "baseEntry": "tools/skin-coverage-r1/render-masters.mjs",
+   "reviewed": false,
+   "userAccepted": false,
+   "setup": {
+    "enabled": true,
+    "installed": true,
+    "version": "0.2.0-r2",
+    "mesh": "V3_Head_Neck_Torso_Shared_R26",
+    "sides": {
+     "left": {
+      "seedEdges": 68,
+      "weldedVertices": 611,
+      "vertices": 611,
+      "normalFaces": 1358,
+      "normalOutsideVertices": 137,
+      "maxRing": 8
+     },
+     "right": {
+      "seedEdges": 66,
+      "weldedVertices": 696,
+      "vertices": 696,
+      "normalFaces": 1544,
+      "normalOutsideVertices": 153,
+      "maxRing": 8
+     }
+    },
+    "elevStartDeg": 90,
+    "elevFullDeg": 120,
+    "normalRepair": true,
+    "restReproductionErrorMm": 1.1123893155135927e-13,
+    "bonesChanged": false,
+    "weightsAttributeChanged": false,
+    "indexChanged": false
+   }
+  }
+ },
+ "size": 1080,
+ "fps": 30,
+ "loopFrames": 240,
+ "complete": true,
+ "skins": [
+  {
+   "id": "realistic",
+   "sha256": "a2678bb3b662bca44104e60cf6c2b86bf17167d4bf0e90f38460c5d1e5b97bae",
+   "status": "look-approved-r2"
+  },
+  {
+   "id": "tech-white",
+   "sha256": "7d8ee655c441c48dd45335c74e7f2ddcef6c9560da325443649d6f08dfee8fad",
+   "status": "look-approved-r2"
+  },
+  {
+   "id": "neon-night",
+   "sha256": "1ec6bc72c8aa9e906060683b0e6a06eb9199ea4c2a1d1d2ea3b2431c86d562f9",
+   "status": "look-approved-r2"
+  },
+  {
+   "id": "neon-night-b",
+   "sha256": "a6cc0b5833a1fbc3f8dd61761f07c995269d02552fe7633e71483349b492b5a6",
+   "status": "look-approved-r2"
+  },
+  {
+   "id": "hologram",
+   "sha256": "a2ede66fe3e8628443eb7033f0668ec60b525cc4748d3f6c681fdaf69987b61a",
+   "status": "look-approved-r2"
+  }
+ ],
+ "layers": [
+  "body",
+  "body-highlight",
+  "mask"
+ ],
+ "flags": {
+  "sampledOnly": false,
+  "fullCycleValidated": false,
+  "userAccepted": false,
+  "releaseEligible": false
+ },
+ "pageErrors": [],
+ "renderSeconds": 294.865,
+ "frames": [
+  {
+   "frame": 0,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 1,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 2,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 3,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 4,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 5,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 6,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 7,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 8,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 9,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 10,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 11,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.68
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 12,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.77
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 13,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.85
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 14,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.96
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 15,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 7.13
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 16,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 7.31
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 17,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 7.5
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 18,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 7.74
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 19,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 8.04
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 20,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 8.35
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 21,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 8.73
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 22,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 9.18
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 23,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 9.66
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 24,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 10.22
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 25,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 10.82
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 26,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 11.45
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 27,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 12.11
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 28,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 12.76
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 29,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 13.41
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 30,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 14.08
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 31,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 14.75
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 32,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 15.43
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 33,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 16.11
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 34,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 16.79
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 35,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 17.45
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 36,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 18.11
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 37,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 18.75
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 38,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 19.37
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 39,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 19.96
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 40,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 20.53
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 41,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 21.04
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 42,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 21.52
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 43,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 21.91
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 44,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 22.26
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 45,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 22.54
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 46,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 22.74
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 47,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 22.87
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 48,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 22.91
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 49,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 22.91
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 50,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 22.91
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 51,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 22.91
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 52,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 22.91
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 53,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 22.91
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 54,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 22.91
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 55,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 22.91
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 56,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 22.91
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 57,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 22.91
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 58,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 22.91
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 59,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 22.91
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 60,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 22.91
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 61,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 22.88
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 62,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 22.79
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 63,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 22.66
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 64,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 22.48
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 65,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 22.24
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 66,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 21.96
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 67,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 21.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 68,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 21.28
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 69,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 20.89
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 70,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 20.45
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 71,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 20.01
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 72,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 19.53
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 73,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 19.03
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 74,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 18.51
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 75,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 17.99
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 76,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 17.45
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 77,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 16.91
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 78,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 16.36
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 79,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 15.82
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 80,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 15.26
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 81,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 14.71
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 82,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 14.16
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 83,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 13.62
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 84,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 13.08
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 85,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 12.56
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 86,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 12.02
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 87,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 11.5
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 88,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 10.97
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 89,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 10.49
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 90,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 10.01
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 91,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 9.57
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 92,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 9.18
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 93,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 8.81
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 94,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 8.48
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 95,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 8.2
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 96,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 7.94
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 97,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 7.72
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 98,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 7.54
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 99,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 7.36
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 100,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 7.2
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 101,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 7.07
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 102,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.97
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 103,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 104,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.78
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 105,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.72
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 106,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.69
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 107,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.66
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 108,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 109,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 110,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 111,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 112,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 113,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 114,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 115,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 116,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 117,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 118,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 119,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 120,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 121,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 122,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 123,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 124,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 125,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 126,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 127,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 128,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 129,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 130,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 131,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.68
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 132,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.77
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 133,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.85
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 134,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.96
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 135,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 7.13
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 136,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 7.31
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 137,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 7.5
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 138,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 7.74
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 139,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 8.04
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 140,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 8.35
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 141,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 8.73
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 142,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 9.18
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 143,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 9.66
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 144,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 10.22
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 145,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 10.82
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 146,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 11.45
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 147,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 12.11
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 148,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 12.76
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 149,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 13.41
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 150,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 14.08
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 151,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 14.75
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 152,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 15.43
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 153,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 16.11
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 154,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 16.79
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 155,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 17.45
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 156,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 18.11
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 157,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 18.75
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 158,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 19.37
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 159,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 19.96
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 160,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 20.53
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 161,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 21.04
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 162,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 21.52
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 163,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 21.91
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 164,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 22.26
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 165,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 22.54
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 166,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 22.74
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 167,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 22.87
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 168,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 22.91
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 169,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 22.91
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 170,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 22.91
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 171,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 22.91
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 172,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 22.91
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 173,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 22.91
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 174,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 22.91
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 175,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 22.91
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 176,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 22.91
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 177,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 22.91
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 178,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 22.91
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 179,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 22.91
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 180,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 22.91
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 181,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 22.88
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 182,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 22.79
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 183,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 22.66
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 184,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 22.48
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 185,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 22.24
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 186,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 21.96
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 187,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 21.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 188,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 21.28
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 189,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 20.89
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 190,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 20.45
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 191,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 20.01
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 192,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 19.53
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 193,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 19.03
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 194,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 18.51
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 195,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 17.99
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 196,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 17.45
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 197,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 16.91
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 198,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 16.36
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 199,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 15.82
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 200,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 15.26
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 201,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 14.71
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 202,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 14.16
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 203,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 13.62
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 204,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 13.08
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 205,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 12.56
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 206,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 12.02
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 207,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 11.5
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 208,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 10.97
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 209,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 10.49
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 210,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 10.01
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 211,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 9.57
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 212,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 9.18
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 213,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 8.81
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 214,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 8.48
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 215,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 8.2
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 216,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 7.94
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 217,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 7.72
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 218,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 7.54
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 219,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 7.36
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 220,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 7.2
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 221,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 7.07
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 222,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.97
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 223,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.86
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 224,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.78
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 225,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.72
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 226,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.69
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 227,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.66
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 228,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 229,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 230,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 231,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 232,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 233,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 234,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 235,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 236,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 237,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 238,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 239,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 240,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 0,
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0,
+     "sides": {
+      "left": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      },
+      "right": {
+       "gate": 0,
+       "elevationDeg": 6.64
+      }
+     }
+    }
+   }
+  }
+ ]
+}

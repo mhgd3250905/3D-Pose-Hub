@@ -1,0 +1,817 @@
+{
+  "format": "pose-hub-action-package-v3@1",
+  "actionId": "o-stand-crossreach",
+  "profile": {
+    "id": "default",
+    "sha256": "8b90de7f3d89b026a324df54eb835cff9dcb775a0d11f3071bdbeb1b2344ce22"
+  },
+  "masters": {
+    "path": "masters/o-stand-crossreach/layer-manifest.json",
+    "sha256": "0294c266584c4f1076c25560c666ad2151f18d7fb7a398d3021990efaf0733bb",
+    "bytes": 6913112
+  },
+  "recipe": {
+    "path": "catalog/production/remaining219-r1/recipes/o-stand-crossreach.json",
+    "sha256": "d26c17cdfad98e2cf2108d679fc41c7857771719e13f32e446b06cca5adaf8d3"
+  },
+  "productionModel": "training-human-v3-armfix@0.1.0-r2",
+  "authoringModel": "training-human-v3-armfix@0.1.0-r2",
+  "fps": 30,
+  "durationSeconds": 8,
+  "loopFrames": 240,
+  "framesUsed": 240,
+  "framing": {
+    "path": "packages/o-stand-crossreach/framing.json",
+    "sha256": "78df267e0f249f93bfa0541752128635e1e8ec8dd7375fe671a1fe7146933942",
+    "bytes": 340
+  },
+  "keyframes": {
+    "start": 0,
+    "peak": 114,
+    "end": 239
+  },
+  "peakRule": "max highlight pulse (middle of plateau)",
+  "skins": {
+    "realistic": {
+      "label": "Original",
+      "status": "look-approved-r2",
+      "themes": {
+        "dark": {
+          "video": {
+            "path": "packages/o-stand-crossreach/realistic/dark/loop.720.mp4",
+            "sha256": "15fb3323a1d46b3c3097c274a953d0b40d649e18c6f020b77c449c152905cd27",
+            "bytes": 135027,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#101013"
+          },
+          "start": {
+            "path": "packages/o-stand-crossreach/realistic/dark/start.720.png",
+            "sha256": "d6e35e14b8224cc72670c342973d02aa11a5c88ee3048c68bb72c512b0ae837e",
+            "bytes": 74141,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/o-stand-crossreach/realistic/dark/peak.720.png",
+            "sha256": "b2a75c6e145e358c32fbb2a234dd0dc9fed228961c8011a7b7c77e402b0eb6d3",
+            "bytes": 74141,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "end": {
+            "path": "packages/o-stand-crossreach/realistic/dark/end.720.png",
+            "sha256": "4cb1293f3e31a5bb4f21bc8c0e4e2d9fd8f93df0d39f4e22ed9cfcfcadb04cfa",
+            "bytes": 74128,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/o-stand-crossreach/realistic/dark/cover.720.jpg",
+            "sha256": "a0bf92540f9aff9f065181bf0068b8ff491e431755a4193453da01d158bbe049",
+            "bytes": 26748,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "thumbnail": {
+            "path": "packages/o-stand-crossreach/realistic/dark/thumbnail.240.jpg",
+            "sha256": "e6a7118f4bed25a8a0b0b53ee2548fc1d19cb1587c4254b8e51efec1fd1baca4",
+            "bytes": 6061,
+            "width": 240,
+            "height": 240,
+            "frame": 114
+          },
+          "peakHighlightOff": {
+            "path": "packages/o-stand-crossreach/realistic/dark/peak.highlight-off.720.png",
+            "sha256": "74159f02affa21f5c0d8c488a496e46d9440e91b90f1eebff4dbc0c59a6f8420",
+            "bytes": 72916,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          }
+        },
+        "light": {
+          "video": {
+            "path": "packages/o-stand-crossreach/realistic/light/loop.720.mp4",
+            "sha256": "325c346f2b49d5fd842d366df320aa6edfd85e95aac4a5336c359d20d4f0f872",
+            "bytes": 186023,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#f3f2ef"
+          },
+          "start": {
+            "path": "packages/o-stand-crossreach/realistic/light/start.720.png",
+            "sha256": "78f76529b95e99725c3cb453c94da7acf6fd38ea4b472d9bb90e43d2393d9c44",
+            "bytes": 83371,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/o-stand-crossreach/realistic/light/peak.720.png",
+            "sha256": "9c48cac87552227ae69a78af644113cb3bd819351417e7e9bb0cc7be72c0df16",
+            "bytes": 83289,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "end": {
+            "path": "packages/o-stand-crossreach/realistic/light/end.720.png",
+            "sha256": "c71f01e989fd29c0510ee158120b4753989612f50d67bcbd0ca022ae1553b0d9",
+            "bytes": 83370,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/o-stand-crossreach/realistic/light/cover.720.jpg",
+            "sha256": "fc1aaa73e735790a5aeb2b5ad2adc271f9a213d398e5546a6e0fbf438e263315",
+            "bytes": 36484,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "thumbnail": {
+            "path": "packages/o-stand-crossreach/realistic/light/thumbnail.240.jpg",
+            "sha256": "68ba1e4708befe2bfdb03487a62659166d30c11d46d5b7eaa54d76bc5c42ecec",
+            "bytes": 8901,
+            "width": 240,
+            "height": 240,
+            "frame": 114
+          },
+          "peakHighlightOff": {
+            "path": "packages/o-stand-crossreach/realistic/light/peak.highlight-off.720.png",
+            "sha256": "d85ed8e3c6bdeb2c6e1e98f8c93bf220fc1002ed19675211d0c373b42a084985",
+            "bytes": 82238,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          }
+        }
+      },
+      "transparentLoop": {
+        "path": "packages/o-stand-crossreach/realistic/loop.alpha.720.webm",
+        "sha256": "ac1088eb1e1c2fff86b526b4d18b3c47327d31b8f8d7ad32dccb6baeff272013",
+        "bytes": 887029,
+        "width": 720,
+        "height": 720,
+        "codec": "vp9",
+        "alpha": true,
+        "frames": 240,
+        "fps": 30
+      },
+      "transparentCover": {
+        "path": "packages/o-stand-crossreach/realistic/cover.transparent.1080.png",
+        "sha256": "298b6dfcf4394b43c6d538fd246c7b8196ad76a8693eeee49e43aced6f096363",
+        "bytes": 179951,
+        "width": 1080,
+        "height": 1080,
+        "frame": 114
+      },
+      "transparentFirstFrame": {
+        "path": "packages/o-stand-crossreach/realistic/first-frame.transparent.1080.png",
+        "sha256": "ff5befdb029fab1fb388ea74e1e720522f8db410ab231b8ecc7ded14521c699b",
+        "bytes": 180810,
+        "width": 1080,
+        "height": 1080,
+        "frame": 0
+      }
+    },
+    "tech-white": {
+      "label": "White",
+      "status": "look-approved-r2",
+      "themes": {
+        "dark": {
+          "video": {
+            "path": "packages/o-stand-crossreach/tech-white/dark/loop.720.mp4",
+            "sha256": "516b9ab388af05abb276468360c42052c07cb5e58f2cf38d0fbcbfe07b43057b",
+            "bytes": 305459,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#101013"
+          },
+          "start": {
+            "path": "packages/o-stand-crossreach/tech-white/dark/start.720.png",
+            "sha256": "05dc952278f59436c542db2b6d18e86074a848d49ef0746d6dcc2d4023a5c2e1",
+            "bytes": 103733,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/o-stand-crossreach/tech-white/dark/peak.720.png",
+            "sha256": "d047f55338150dc31054d9bc823906c97d2484d761f7157023970612a6da3979",
+            "bytes": 104179,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "end": {
+            "path": "packages/o-stand-crossreach/tech-white/dark/end.720.png",
+            "sha256": "42268378d3f61af8ec6c609592e5206cb04a0ad322522d625dd5fe3234b6f485",
+            "bytes": 103738,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/o-stand-crossreach/tech-white/dark/cover.720.jpg",
+            "sha256": "f84efc88efc8aff455b11582414794929c8c77ac99eb62a2d10f5a06f8990a5e",
+            "bytes": 37798,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "thumbnail": {
+            "path": "packages/o-stand-crossreach/tech-white/dark/thumbnail.240.jpg",
+            "sha256": "dfcd8b864c355bc3dc89a52bc59a29ab961783b8b1cdc21cc872259445f9f188",
+            "bytes": 8076,
+            "width": 240,
+            "height": 240,
+            "frame": 114
+          },
+          "peakHighlightOff": {
+            "path": "packages/o-stand-crossreach/tech-white/dark/peak.highlight-off.720.png",
+            "sha256": "2051d8cd104bc27ccf349d07d146be00bbcd970c3e7348f4800f9c448cf65c0f",
+            "bytes": 104027,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          }
+        },
+        "light": {
+          "video": {
+            "path": "packages/o-stand-crossreach/tech-white/light/loop.720.mp4",
+            "sha256": "8ef855067393e2b7c1aed97078b3589f94642842b344bba8ab64039030a52e7f",
+            "bytes": 269053,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#f3f2ef"
+          },
+          "start": {
+            "path": "packages/o-stand-crossreach/tech-white/light/start.720.png",
+            "sha256": "6f4f250f4b9d2b766721435774a028d6aad6cc4250136cf26f8154c0944305fe",
+            "bytes": 102255,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/o-stand-crossreach/tech-white/light/peak.720.png",
+            "sha256": "490237abf86ed23617fc5574fda36c0ab5001740768648dbed80a2f752bd90d8",
+            "bytes": 102643,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "end": {
+            "path": "packages/o-stand-crossreach/tech-white/light/end.720.png",
+            "sha256": "9af2797ff0a0814e83b94be5a8ab185e424428eb20af355f59a78c6b401afbfb",
+            "bytes": 102262,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/o-stand-crossreach/tech-white/light/cover.720.jpg",
+            "sha256": "472b61667835c65d8e087349cb8993ba12dc7e3258211cab8c9c6d585ae9dfd7",
+            "bytes": 36339,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "thumbnail": {
+            "path": "packages/o-stand-crossreach/tech-white/light/thumbnail.240.jpg",
+            "sha256": "af8f290691c81e820fdb93ff8838c55b1add4f8e3cffee9b7feb320359ae11af",
+            "bytes": 7468,
+            "width": 240,
+            "height": 240,
+            "frame": 114
+          },
+          "peakHighlightOff": {
+            "path": "packages/o-stand-crossreach/tech-white/light/peak.highlight-off.720.png",
+            "sha256": "2fb669b8c94c07447794376c3f6ff0c1385328755421ae0983d45f82e9d6da74",
+            "bytes": 102478,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          }
+        }
+      },
+      "transparentLoop": {
+        "path": "packages/o-stand-crossreach/tech-white/loop.alpha.720.webm",
+        "sha256": "9a545d473979477e0a7d3a36447ac3a53573a96a44bcc10d0f9448dfcae2bfc5",
+        "bytes": 1146289,
+        "width": 720,
+        "height": 720,
+        "codec": "vp9",
+        "alpha": true,
+        "frames": 240,
+        "fps": 30
+      },
+      "transparentCover": {
+        "path": "packages/o-stand-crossreach/tech-white/cover.transparent.1080.png",
+        "sha256": "702fa5b8152247fe2b6b79d3ca290176dbc45400010c6ae67071b79676029028",
+        "bytes": 237546,
+        "width": 1080,
+        "height": 1080,
+        "frame": 114
+      },
+      "transparentFirstFrame": {
+        "path": "packages/o-stand-crossreach/tech-white/first-frame.transparent.1080.png",
+        "sha256": "8d04777e5fca2d6a9ae032574138701da326d620459b4a20086a67f465ff6ec9",
+        "bytes": 238112,
+        "width": 1080,
+        "height": 1080,
+        "frame": 0
+      }
+    },
+    "neon-night": {
+      "label": "Blue",
+      "status": "look-approved-r2",
+      "themes": {
+        "dark": {
+          "video": {
+            "path": "packages/o-stand-crossreach/neon-night/dark/loop.720.mp4",
+            "sha256": "b17c6a1c764184569767d2fc790704c1b79ce9ac8ef3edc95256d0e770f4735c",
+            "bytes": 295813,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#101013"
+          },
+          "start": {
+            "path": "packages/o-stand-crossreach/neon-night/dark/start.720.png",
+            "sha256": "cbb1b68de8626b59c17be8c33ef38acef0976c6b2d212f59ff75a786587b22cb",
+            "bytes": 99332,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/o-stand-crossreach/neon-night/dark/peak.720.png",
+            "sha256": "72eeeb6fd34ab0e77577c4297ae5d259cd586453fa1d0c07c6c90918b821773e",
+            "bytes": 98690,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "end": {
+            "path": "packages/o-stand-crossreach/neon-night/dark/end.720.png",
+            "sha256": "f44081a4e6e671878fb35372cc172e604c6d0a1192537239b204f79383e76eb7",
+            "bytes": 99343,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/o-stand-crossreach/neon-night/dark/cover.720.jpg",
+            "sha256": "027028d0374b8040d50edb48901f4c97e71461df6a91f3a0a5d376bdb2a54351",
+            "bytes": 34749,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "thumbnail": {
+            "path": "packages/o-stand-crossreach/neon-night/dark/thumbnail.240.jpg",
+            "sha256": "f934140aa5430594cae9fb37ff2f20506859852d91d86c667dc6ca0676f8aa0f",
+            "bytes": 6459,
+            "width": 240,
+            "height": 240,
+            "frame": 114
+          },
+          "peakHighlightOff": {
+            "path": "packages/o-stand-crossreach/neon-night/dark/peak.highlight-off.720.png",
+            "sha256": "705c7e08c8bcaba6d253ae125c4a9f634cc567447de6b9c9931644d64087d836",
+            "bytes": 98705,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          }
+        },
+        "light": {
+          "video": {
+            "path": "packages/o-stand-crossreach/neon-night/light/loop.720.mp4",
+            "sha256": "80141557e3e5957a74d39735d12199bc055f6f47c04a55120834500f12347fc0",
+            "bytes": 354836,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#f3f2ef"
+          },
+          "start": {
+            "path": "packages/o-stand-crossreach/neon-night/light/start.720.png",
+            "sha256": "814f711a03fcee0b73823615dcb16cf02915257adbbca5f325962d76c075a10c",
+            "bytes": 111805,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/o-stand-crossreach/neon-night/light/peak.720.png",
+            "sha256": "7a97e5f712cebce009477073ca5afba1f1ccb2730adbad5f8c313af6f8ceebe5",
+            "bytes": 110943,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "end": {
+            "path": "packages/o-stand-crossreach/neon-night/light/end.720.png",
+            "sha256": "6fb617feaebd5df4ead0d61d29aea5ef9b53f6c5af09aed851f4be8b8ca18702",
+            "bytes": 111803,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/o-stand-crossreach/neon-night/light/cover.720.jpg",
+            "sha256": "3cd3c75a7e1363dfb6d3d1acba7111782d11a65ed00a53e9cd605b6f5af2dc6f",
+            "bytes": 46425,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "thumbnail": {
+            "path": "packages/o-stand-crossreach/neon-night/light/thumbnail.240.jpg",
+            "sha256": "ae0676b89b4fed24144bf091387760b508ae5d522cb43324cf1e80349a0291d8",
+            "bytes": 9858,
+            "width": 240,
+            "height": 240,
+            "frame": 114
+          },
+          "peakHighlightOff": {
+            "path": "packages/o-stand-crossreach/neon-night/light/peak.highlight-off.720.png",
+            "sha256": "ac79ecfae13a21a9bec5752e669bc09a83e223be38432c966b530a438cd8d5b5",
+            "bytes": 111063,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          }
+        }
+      },
+      "transparentLoop": {
+        "path": "packages/o-stand-crossreach/neon-night/loop.alpha.720.webm",
+        "sha256": "ba39adfc4f66301116ded8534b7d4a27c04820b4590cb9ba2ef2dc7f9da123cf",
+        "bytes": 878527,
+        "width": 720,
+        "height": 720,
+        "codec": "vp9",
+        "alpha": true,
+        "frames": 240,
+        "fps": 30
+      },
+      "transparentCover": {
+        "path": "packages/o-stand-crossreach/neon-night/cover.transparent.1080.png",
+        "sha256": "d557ca7b920f5d98a2551c370423b9e566fe3c32adca562d1061dc423d941c1f",
+        "bytes": 241115,
+        "width": 1080,
+        "height": 1080,
+        "frame": 114
+      },
+      "transparentFirstFrame": {
+        "path": "packages/o-stand-crossreach/neon-night/first-frame.transparent.1080.png",
+        "sha256": "4d756021d2ecf2634e3b851179ea5f935210df7094d7bd9c06db18ee3d5a3464",
+        "bytes": 243326,
+        "width": 1080,
+        "height": 1080,
+        "frame": 0
+      }
+    },
+    "neon-night-b": {
+      "label": "Green",
+      "status": "look-approved-r2",
+      "themes": {
+        "dark": {
+          "video": {
+            "path": "packages/o-stand-crossreach/neon-night-b/dark/loop.720.mp4",
+            "sha256": "d911d2d9613cdc9ccd8ed9bf0becaeb2cf6bbc9e00c6b93024587e3c3493daa0",
+            "bytes": 318082,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#101013"
+          },
+          "start": {
+            "path": "packages/o-stand-crossreach/neon-night-b/dark/start.720.png",
+            "sha256": "f560c74d2bc8b842f726f7fd2744e4c5596ee1e545d5eef3ee0bcae330223bf5",
+            "bytes": 98629,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/o-stand-crossreach/neon-night-b/dark/peak.720.png",
+            "sha256": "1ed24076c6f0958832377b440924fa11a196d9413c05f0f05c7a324551452df1",
+            "bytes": 98052,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "end": {
+            "path": "packages/o-stand-crossreach/neon-night-b/dark/end.720.png",
+            "sha256": "1770e86bd43c8043eb42d1852b83f4152f748ef7c64effae9478a4a17ed64e5a",
+            "bytes": 98619,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/o-stand-crossreach/neon-night-b/dark/cover.720.jpg",
+            "sha256": "d137121888d0c32c5ab920d742dad5723021cd9d878b9237d3e55e293dd20b2d",
+            "bytes": 35117,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "thumbnail": {
+            "path": "packages/o-stand-crossreach/neon-night-b/dark/thumbnail.240.jpg",
+            "sha256": "e69226deedcf5db15919d8a75e3854becea59d322a43b99efcad39e0c9e71fff",
+            "bytes": 6610,
+            "width": 240,
+            "height": 240,
+            "frame": 114
+          },
+          "peakHighlightOff": {
+            "path": "packages/o-stand-crossreach/neon-night-b/dark/peak.highlight-off.720.png",
+            "sha256": "54f11d108f5bd6cfa77ad35613e9925c1d24d36cbfafb87b8dce7dd1a68f003a",
+            "bytes": 98129,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          }
+        },
+        "light": {
+          "video": {
+            "path": "packages/o-stand-crossreach/neon-night-b/light/loop.720.mp4",
+            "sha256": "700721c98baea8c3bf54dd73308a2eacf8059b5721a9660e9eb8e7d9025e5f7d",
+            "bytes": 366355,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#f3f2ef"
+          },
+          "start": {
+            "path": "packages/o-stand-crossreach/neon-night-b/light/start.720.png",
+            "sha256": "49fab68cc3b94980109cc407e11b0d093ccc65d5080b66d8eeef3ecfe46efe7f",
+            "bytes": 111280,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/o-stand-crossreach/neon-night-b/light/peak.720.png",
+            "sha256": "e42b28d3b7166b2e21c8a1e22552b0ca5034b57b1b19d769fe8016087844e2bd",
+            "bytes": 110821,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "end": {
+            "path": "packages/o-stand-crossreach/neon-night-b/light/end.720.png",
+            "sha256": "411d5e268840a306013b1d301608bc29b0a829cf727cd26f9dc2b7b453484c0a",
+            "bytes": 111279,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/o-stand-crossreach/neon-night-b/light/cover.720.jpg",
+            "sha256": "fd1c4d11ec40e101dad3cc1f655c4c5a05f58d87c45fee326f5a8961c199b84e",
+            "bytes": 46270,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "thumbnail": {
+            "path": "packages/o-stand-crossreach/neon-night-b/light/thumbnail.240.jpg",
+            "sha256": "2839f7aca6a2a342d72f7ba0ebb5dd96601180782ca3878dae527f2e8cd5aec3",
+            "bytes": 9846,
+            "width": 240,
+            "height": 240,
+            "frame": 114
+          },
+          "peakHighlightOff": {
+            "path": "packages/o-stand-crossreach/neon-night-b/light/peak.highlight-off.720.png",
+            "sha256": "2c40f76ebc79b3de958099a7b1f405086585ea60a321c1da98f23a1bf1c8288f",
+            "bytes": 111006,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          }
+        }
+      },
+      "transparentLoop": {
+        "path": "packages/o-stand-crossreach/neon-night-b/loop.alpha.720.webm",
+        "sha256": "42021bdabfecba3c5bbadcd26a8d572949884cc2f81947a901add80c50d488e3",
+        "bytes": 928806,
+        "width": 720,
+        "height": 720,
+        "codec": "vp9",
+        "alpha": true,
+        "frames": 240,
+        "fps": 30
+      },
+      "transparentCover": {
+        "path": "packages/o-stand-crossreach/neon-night-b/cover.transparent.1080.png",
+        "sha256": "fed06fb4afb56c2c3857603b03a8e8a4002379aca9ae4f6765545be097d830c7",
+        "bytes": 240702,
+        "width": 1080,
+        "height": 1080,
+        "frame": 114
+      },
+      "transparentFirstFrame": {
+        "path": "packages/o-stand-crossreach/neon-night-b/first-frame.transparent.1080.png",
+        "sha256": "57d197e70c4a8f0fe93fca9fed54f8d2e424bb47641b9ac6b414e45e7a5dc69d",
+        "bytes": 242747,
+        "width": 1080,
+        "height": 1080,
+        "frame": 0
+      }
+    },
+    "hologram": {
+      "label": "Hologram",
+      "status": "look-approved-r2",
+      "themes": {
+        "dark": {
+          "video": {
+            "path": "packages/o-stand-crossreach/hologram/dark/loop.720.mp4",
+            "sha256": "6db04d92e4db575b260b526fbc38d9222ce4bb5a408ecc3169630ca5e4473d84",
+            "bytes": 229014,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#101013"
+          },
+          "start": {
+            "path": "packages/o-stand-crossreach/hologram/dark/start.720.png",
+            "sha256": "7d4630994e505c63d24fba4fd6697f7ce5ef74e9bbcb3e8e011643e3ee14dc43",
+            "bytes": 103077,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/o-stand-crossreach/hologram/dark/peak.720.png",
+            "sha256": "2babe5cedc427fd20740fb33153766f40064574d1a539a3497476de589d67db0",
+            "bytes": 102727,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "end": {
+            "path": "packages/o-stand-crossreach/hologram/dark/end.720.png",
+            "sha256": "fc30a0bd4b967fe9bba81fe3b5533d537894bb1ea8232048d06d55d2802f67af",
+            "bytes": 103082,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/o-stand-crossreach/hologram/dark/cover.720.jpg",
+            "sha256": "ae34071fb00ff728d533d541768b3b10473d864f9f6f82fe766ea64023cfff5a",
+            "bytes": 31420,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "thumbnail": {
+            "path": "packages/o-stand-crossreach/hologram/dark/thumbnail.240.jpg",
+            "sha256": "4c07625ae08a992cd636d9bd5b4b0bfbb593db16ed6b174c86b87882447475be",
+            "bytes": 6178,
+            "width": 240,
+            "height": 240,
+            "frame": 114
+          },
+          "peakHighlightOff": {
+            "path": "packages/o-stand-crossreach/hologram/dark/peak.highlight-off.720.png",
+            "sha256": "9096e49bd0e55522a2dded60ba9d03338fdf1dfc419445e80fa9abd83a11227f",
+            "bytes": 102277,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          }
+        },
+        "light": {
+          "video": {
+            "path": "packages/o-stand-crossreach/hologram/light/loop.720.mp4",
+            "sha256": "8efb238f4fccd708fd32bbfbb775923b63be3332baf02925927a99d3dffcece0",
+            "bytes": 126778,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#f3f2ef"
+          },
+          "start": {
+            "path": "packages/o-stand-crossreach/hologram/light/start.720.png",
+            "sha256": "55fb033c1abfd67217a6d94e4253d29a4c08f671f04a4373809f090e9fbffb14",
+            "bytes": 104082,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/o-stand-crossreach/hologram/light/peak.720.png",
+            "sha256": "23269cbc3b096e451148da1d502e388c4657fd3cdb8a2ccbadde1b0069fee276",
+            "bytes": 103254,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "end": {
+            "path": "packages/o-stand-crossreach/hologram/light/end.720.png",
+            "sha256": "f743308c790a9275eeb0ebd648af8d0ddd1aea497c60e352a174f2143e0c99b6",
+            "bytes": 104099,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/o-stand-crossreach/hologram/light/cover.720.jpg",
+            "sha256": "0b5e2e3917271d7e1d37789a96df3f732d2900c5e1eb03fbbbe186def221c6f6",
+            "bytes": 33247,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          },
+          "thumbnail": {
+            "path": "packages/o-stand-crossreach/hologram/light/thumbnail.240.jpg",
+            "sha256": "ceb3c5c6403ed2ede5092ce0715f20b0c077ac0393c3e6742fb4f5c968ca0a83",
+            "bytes": 7575,
+            "width": 240,
+            "height": 240,
+            "frame": 114
+          },
+          "peakHighlightOff": {
+            "path": "packages/o-stand-crossreach/hologram/light/peak.highlight-off.720.png",
+            "sha256": "767e39b4353959f61e61917729ea76f8b3ebbf2e2d0fe30fd41898e1f9bbc042",
+            "bytes": 102697,
+            "width": 720,
+            "height": 720,
+            "frame": 114
+          }
+        }
+      },
+      "transparentLoop": {
+        "path": "packages/o-stand-crossreach/hologram/loop.alpha.720.webm",
+        "sha256": "34b9a357442a1af07e88742e41d83773b8b67b3b50951a5f36332f9abc80753b",
+        "bytes": 996359,
+        "width": 720,
+        "height": 720,
+        "codec": "vp9",
+        "alpha": true,
+        "frames": 240,
+        "fps": 30
+      },
+      "transparentCover": {
+        "path": "packages/o-stand-crossreach/hologram/cover.transparent.1080.png",
+        "sha256": "4e5c3e9883497013346d34c0218ac88368ee818adc1605ac8c2b0250c808e601",
+        "bytes": 306851,
+        "width": 1080,
+        "height": 1080,
+        "frame": 114
+      },
+      "transparentFirstFrame": {
+        "path": "packages/o-stand-crossreach/hologram/first-frame.transparent.1080.png",
+        "sha256": "2cca513f7d4b6cf9fee614fea7a245640f3119102e89fead80e7ff32cb1f969d",
+        "bytes": 306807,
+        "width": 1080,
+        "height": 1080,
+        "frame": 0
+      }
+    }
+  },
+  "flags": {
+    "sampledOnly": false,
+    "fullCycleValidated": false,
+    "userAccepted": false,
+    "releaseEligible": false
+  }
+}

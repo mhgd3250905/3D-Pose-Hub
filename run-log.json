@@ -1,0 +1,967 @@
+{
+ "format": "pose-hub-joint-production-trial-log@1",
+ "plan": "joint-shoulder-r2-prod-1111",
+ "started": "2026-11-11T06:02:56.016Z",
+ "finished": "2026-11-11T07:44:29.211Z",
+ "complete": true,
+ "testMode": true,
+ "git": {
+  "head": "d0caccd15fe60426f10a4bae06495d790bd3f788",
+  "branch": "HEAD",
+  "trackedChanges": 0
+ },
+ "sources": {
+  "tools/joint-opt-r1/produce-joint-r2.mjs": "88f6a5bce97c139b2e45ffd0de2f17087db9f3bfecee598fb2610dccfdbba467",
+  "tools/joint-opt-r1/produce-joint-r2.plan.json": "519a982070189f9c7ee6864762dffdf4fd8427983ab0cb79b8c4d6c3884b35d0",
+  "tools/joint-opt-r1/render-masters-joint.mjs": "007c8e259ec1621eadab2cb91380a532bb08291bb864d49b9fd276bb69b7f0ec",
+  "tools/joint-opt-r1/joint-production.mjs": "996c99ace97b87d0bb097baf5a7abc5b4a07e6e03c9cd7b7762e95ea0d130842",
+  "tools/joint-opt-r1/shoulder-axilla-production.json": "c1e98a5f41fc2e8e3548c3a278853bf819030609e004b80bffea4811d571ff79",
+  "tools/joint-opt-r1/shoulder-axilla-r2.mjs": "627206a8c5377bb7214132a4def45b53bb9823eb4796ba9ee0784f4f58d796c7",
+  "tools/joint-opt-r1/keyframe-sheet.py": "cd8dcb4ae9182937ef2d9c7dbc34e861e164aa88be5979d34485069fd46933bb",
+  "tools/skin-coverage-r1/render-masters.mjs": "8edb42c5d31acd65690b09004d2a22544d7c78c7c1a26379a385ba524befc094",
+  "tools/action-package-v3/compose.py": "e215990405c515f7c1202277b23bb87ed8e4295bd62cc80e67e4b2c214cf4e47",
+  "tools/action-package-v3/profiles/default.json": "8b90de7f3d89b026a324df54eb835cff9dcb775a0d11f3071bdbeb1b2344ce22"
+ },
+ "resumes": 0,
+ "devServer": {
+  "url": "http://127.0.0.1:8849",
+  "startedByScript": true,
+  "pid": 15584
+ },
+ "out": "F:\\PoseHub-v3\\trial\\joint-shoulder-r2-prod-20261111-lane2",
+ "actions": [
+  {
+   "id": "o-seated-sidebend",
+   "group": "fixed-by-r2",
+   "complete": true,
+   "stages": {
+    "on": {
+     "status": "done",
+     "seconds": 353.2,
+     "finished": "2026-11-11T06:08:49.834Z"
+    },
+    "compose": {
+     "status": "done",
+     "seconds": 162.3,
+     "finished": "2026-11-11T06:11:32.165Z"
+    },
+    "offref": {
+     "status": "done",
+     "seconds": 174.1,
+     "finished": "2026-11-11T06:14:26.230Z"
+    },
+    "sheet": {
+     "status": "done",
+     "seconds": 1.1,
+     "finished": "2026-11-11T06:14:27.297Z"
+    }
+   },
+   "sheetFrames": [
+    110,
+    125,
+    140,
+    155
+   ],
+   "sheet": {
+    "file": "sheets/o-seated-sidebend.jpg",
+    "frames": [
+     {
+      "frame": 110,
+      "changedPixels": 614,
+      "maxDiff": 34,
+      "bytesIdentical": false
+     },
+     {
+      "frame": 125,
+      "changedPixels": 613,
+      "maxDiff": 34,
+      "bytesIdentical": false
+     },
+     {
+      "frame": 140,
+      "changedPixels": 615,
+      "maxDiff": 34,
+      "bytesIdentical": false
+     },
+     {
+      "frame": 155,
+      "changedPixels": 613,
+      "maxDiff": 34,
+      "bytesIdentical": false
+     }
+    ]
+   },
+   "masters": {
+    "size": 1080,
+    "frames": 241,
+    "complete": true,
+    "skins": [
+     "realistic",
+     "tech-white",
+     "neon-night",
+     "neon-night-b",
+     "hologram"
+    ],
+    "layers": [
+     "body",
+     "body-highlight",
+     "mask"
+    ],
+    "renderSeconds": 269.857,
+    "pageErrors": 0,
+    "flags": {
+     "sampledOnly": false,
+     "fullCycleValidated": false,
+     "userAccepted": false,
+     "releaseEligible": false
+    },
+    "shoulderAxilla": {
+     "enabled": true,
+     "version": "0.2.0-r2",
+     "framesWritten": 241,
+     "maxGate": {
+      "left": 0,
+      "right": 1
+     },
+     "maxMoveMm": 82.882,
+     "maxNormalChangeDeg": 93.26
+    }
+   },
+   "video": {
+    "local": "on/packages/o-seated-sidebend/realistic/dark/loop.720.mp4",
+    "bytes": 105231,
+    "pushed": true
+   }
+  },
+  {
+   "id": "o-stand-sidebend",
+   "group": "fixed-by-r2",
+   "complete": true,
+   "stages": {
+    "on": {
+     "status": "done",
+     "seconds": 355.3,
+     "finished": "2026-11-11T06:20:22.646Z"
+    },
+    "compose": {
+     "status": "done",
+     "seconds": 168,
+     "finished": "2026-11-11T06:23:10.622Z"
+    },
+    "offref": {
+     "status": "done",
+     "seconds": 181.7,
+     "finished": "2026-11-11T06:26:12.360Z"
+    },
+    "sheet": {
+     "status": "done",
+     "seconds": 1,
+     "finished": "2026-11-11T06:26:13.369Z"
+    }
+   },
+   "sheetFrames": [
+    10,
+    115,
+    220,
+    235
+   ],
+   "sheet": {
+    "file": "sheets/o-stand-sidebend.jpg",
+    "frames": [
+     {
+      "frame": 10,
+      "changedPixels": 461,
+      "maxDiff": 49,
+      "bytesIdentical": false
+     },
+     {
+      "frame": 115,
+      "changedPixels": 279,
+      "maxDiff": 51,
+      "bytesIdentical": false
+     },
+     {
+      "frame": 220,
+      "changedPixels": 464,
+      "maxDiff": 49,
+      "bytesIdentical": false
+     },
+     {
+      "frame": 235,
+      "changedPixels": 462,
+      "maxDiff": 49,
+      "bytesIdentical": false
+     }
+    ]
+   },
+   "masters": {
+    "size": 1080,
+    "frames": 241,
+    "complete": true,
+    "skins": [
+     "realistic",
+     "tech-white",
+     "neon-night",
+     "neon-night-b",
+     "hologram"
+    ],
+    "layers": [
+     "body",
+     "body-highlight",
+     "mask"
+    ],
+    "renderSeconds": 273.724,
+    "pageErrors": 0,
+    "flags": {
+     "sampledOnly": false,
+     "fullCycleValidated": false,
+     "userAccepted": false,
+     "releaseEligible": false
+    },
+    "shoulderAxilla": {
+     "enabled": true,
+     "version": "0.2.0-r2",
+     "framesWritten": 241,
+     "maxGate": {
+      "left": 0,
+      "right": 1
+     },
+     "maxMoveMm": 89.141,
+     "maxNormalChangeDeg": 93.31
+    }
+   },
+   "video": {
+    "local": "on/packages/o-stand-sidebend/realistic/dark/loop.720.mp4",
+    "bytes": 126282,
+    "pushed": true
+   }
+  },
+  {
+   "id": "obliques-A",
+   "group": "fixed-by-r2",
+   "complete": true,
+   "stages": {
+    "on": {
+     "status": "done",
+     "seconds": 368.6,
+     "finished": "2026-11-11T06:32:22.011Z"
+    },
+    "compose": {
+     "status": "done",
+     "seconds": 147.4,
+     "finished": "2026-11-11T06:34:49.379Z"
+    },
+    "offref": {
+     "status": "done",
+     "seconds": 188.8,
+     "finished": "2026-11-11T06:37:58.222Z"
+    },
+    "sheet": {
+     "status": "done",
+     "seconds": 1.3,
+     "finished": "2026-11-11T06:37:59.481Z"
+    }
+   },
+   "sheetFrames": [
+    55,
+    70,
+    175,
+    190
+   ],
+   "sheet": {
+    "file": "sheets/obliques-A.jpg",
+    "frames": [
+     {
+      "frame": 55,
+      "changedPixels": 334,
+      "maxDiff": 25,
+      "bytesIdentical": false
+     },
+     {
+      "frame": 70,
+      "changedPixels": 332,
+      "maxDiff": 25,
+      "bytesIdentical": false
+     },
+     {
+      "frame": 175,
+      "changedPixels": 370,
+      "maxDiff": 49,
+      "bytesIdentical": false
+     },
+     {
+      "frame": 190,
+      "changedPixels": 370,
+      "maxDiff": 49,
+      "bytesIdentical": false
+     }
+    ]
+   },
+   "masters": {
+    "size": 1080,
+    "frames": 241,
+    "complete": true,
+    "skins": [
+     "realistic",
+     "tech-white",
+     "neon-night",
+     "neon-night-b",
+     "hologram"
+    ],
+    "layers": [
+     "body",
+     "body-highlight",
+     "mask"
+    ],
+    "renderSeconds": 283.602,
+    "pageErrors": 0,
+    "flags": {
+     "sampledOnly": false,
+     "fullCycleValidated": false,
+     "userAccepted": false,
+     "releaseEligible": false
+    },
+    "shoulderAxilla": {
+     "enabled": true,
+     "version": "0.2.0-r2",
+     "framesWritten": 241,
+     "maxGate": {
+      "left": 0.9382,
+      "right": 0.9382
+     },
+     "maxMoveMm": 66.623,
+     "maxNormalChangeDeg": 98.22
+    }
+   },
+   "video": {
+    "local": "on/packages/obliques-A/realistic/dark/loop.720.mp4",
+    "bytes": 261593,
+    "pushed": true
+   }
+  },
+  {
+   "id": "s-frog",
+   "group": "fixed-by-r2",
+   "complete": true,
+   "stages": {
+    "on": {
+     "status": "done",
+     "seconds": 349.7,
+     "finished": "2026-11-11T06:43:49.152Z"
+    },
+    "compose": {
+     "status": "done",
+     "seconds": 161.1,
+     "finished": "2026-11-11T06:46:30.281Z"
+    },
+    "offref": {
+     "status": "done",
+     "seconds": 188.6,
+     "finished": "2026-11-11T06:49:38.909Z"
+    },
+    "sheet": {
+     "status": "done",
+     "seconds": 1.2,
+     "finished": "2026-11-11T06:49:40.129Z"
+    }
+   },
+   "sheetFrames": [
+    10,
+    115,
+    220,
+    235
+   ],
+   "sheet": {
+    "file": "sheets/s-frog.jpg",
+    "frames": [
+     {
+      "frame": 10,
+      "changedPixels": 47,
+      "maxDiff": 20,
+      "bytesIdentical": false
+     },
+     {
+      "frame": 115,
+      "changedPixels": 195,
+      "maxDiff": 49,
+      "bytesIdentical": false
+     },
+     {
+      "frame": 220,
+      "changedPixels": 47,
+      "maxDiff": 20,
+      "bytesIdentical": false
+     },
+     {
+      "frame": 235,
+      "changedPixels": 47,
+      "maxDiff": 20,
+      "bytesIdentical": false
+     }
+    ]
+   },
+   "masters": {
+    "size": 1080,
+    "frames": 241,
+    "complete": true,
+    "skins": [
+     "realistic",
+     "tech-white",
+     "neon-night",
+     "neon-night-b",
+     "hologram"
+    ],
+    "layers": [
+     "body",
+     "body-highlight",
+     "mask"
+    ],
+    "renderSeconds": 262.652,
+    "pageErrors": 0,
+    "flags": {
+     "sampledOnly": false,
+     "fullCycleValidated": false,
+     "userAccepted": false,
+     "releaseEligible": false
+    },
+    "shoulderAxilla": {
+     "enabled": true,
+     "version": "0.2.0-r2",
+     "framesWritten": 241,
+     "maxGate": {
+      "left": 1,
+      "right": 1
+     },
+     "maxMoveMm": 38.089,
+     "maxNormalChangeDeg": 103.74
+    }
+   },
+   "video": {
+    "local": "on/packages/s-frog/realistic/dark/loop.720.mp4",
+    "bytes": 68566,
+    "pushed": true
+   }
+  },
+  {
+   "id": "w-dead-bug",
+   "group": "fixed-by-r2",
+   "complete": true,
+   "stages": {
+    "on": {
+     "status": "done",
+     "seconds": 359.4,
+     "finished": "2026-11-11T06:55:39.580Z"
+    },
+    "compose": {
+     "status": "done",
+     "seconds": 157.9,
+     "finished": "2026-11-11T06:58:17.457Z"
+    },
+    "offref": {
+     "status": "done",
+     "seconds": 176.4,
+     "finished": "2026-11-11T07:01:13.812Z"
+    },
+    "sheet": {
+     "status": "done",
+     "seconds": 1.1,
+     "finished": "2026-11-11T07:01:14.878Z"
+    }
+   },
+   "sheetFrames": [
+    50,
+    65,
+    170,
+    185
+   ],
+   "sheet": {
+    "file": "sheets/w-dead-bug.jpg",
+    "frames": [
+     {
+      "frame": 50,
+      "changedPixels": 628,
+      "maxDiff": 24,
+      "bytesIdentical": false
+     },
+     {
+      "frame": 65,
+      "changedPixels": 627,
+      "maxDiff": 24,
+      "bytesIdentical": false
+     },
+     {
+      "frame": 170,
+      "changedPixels": 30,
+      "maxDiff": 40,
+      "bytesIdentical": false
+     },
+     {
+      "frame": 185,
+      "changedPixels": 30,
+      "maxDiff": 40,
+      "bytesIdentical": false
+     }
+    ]
+   },
+   "masters": {
+    "size": 1080,
+    "frames": 241,
+    "complete": true,
+    "skins": [
+     "realistic",
+     "tech-white",
+     "neon-night",
+     "neon-night-b",
+     "hologram"
+    ],
+    "layers": [
+     "body",
+     "body-highlight",
+     "mask"
+    ],
+    "renderSeconds": 256.748,
+    "pageErrors": 0,
+    "flags": {
+     "sampledOnly": false,
+     "fullCycleValidated": false,
+     "userAccepted": false,
+     "releaseEligible": false
+    },
+    "shoulderAxilla": {
+     "enabled": true,
+     "version": "0.2.0-r2",
+     "framesWritten": 176,
+     "maxGate": {
+      "left": 1,
+      "right": 1
+     },
+     "maxMoveMm": 69.472,
+     "maxNormalChangeDeg": 172.84
+    }
+   },
+   "video": {
+    "local": "on/packages/w-dead-bug/realistic/dark/loop.720.mp4",
+    "bytes": 114488,
+    "pushed": true
+   }
+  },
+  {
+   "id": "abs-A",
+   "group": "control-raised",
+   "complete": true,
+   "stages": {
+    "on": {
+     "status": "done",
+     "seconds": 326.4,
+     "finished": "2026-11-11T07:06:41.320Z"
+    },
+    "compose": {
+     "status": "done",
+     "seconds": 167.9,
+     "finished": "2026-11-11T07:09:29.178Z"
+    },
+    "offref": {
+     "status": "done",
+     "seconds": 178.7,
+     "finished": "2026-11-11T07:12:27.830Z"
+    },
+    "sheet": {
+     "status": "done",
+     "seconds": 1.1,
+     "finished": "2026-11-11T07:12:28.924Z"
+    }
+   },
+   "sheetFrames": [
+    15,
+    115,
+    135,
+    235
+   ],
+   "sheet": {
+    "file": "sheets/abs-A.jpg",
+    "frames": [
+     {
+      "frame": 15,
+      "changedPixels": 795,
+      "maxDiff": 51,
+      "bytesIdentical": false
+     },
+     {
+      "frame": 115,
+      "changedPixels": 734,
+      "maxDiff": 51,
+      "bytesIdentical": false
+     },
+     {
+      "frame": 135,
+      "changedPixels": 795,
+      "maxDiff": 51,
+      "bytesIdentical": false
+     },
+     {
+      "frame": 235,
+      "changedPixels": 734,
+      "maxDiff": 51,
+      "bytesIdentical": false
+     }
+    ]
+   },
+   "masters": {
+    "size": 1080,
+    "frames": 241,
+    "complete": true,
+    "skins": [
+     "realistic",
+     "tech-white",
+     "neon-night",
+     "neon-night-b",
+     "hologram"
+    ],
+    "layers": [
+     "body",
+     "body-highlight",
+     "mask"
+    ],
+    "renderSeconds": 242.77,
+    "pageErrors": 0,
+    "flags": {
+     "sampledOnly": false,
+     "fullCycleValidated": false,
+     "userAccepted": false,
+     "releaseEligible": false
+    },
+    "shoulderAxilla": {
+     "enabled": true,
+     "version": "0.2.0-r2",
+     "framesWritten": 241,
+     "maxGate": {
+      "left": 1,
+      "right": 1
+     },
+     "maxMoveMm": 76.554,
+     "maxNormalChangeDeg": 98.14
+    }
+   },
+   "video": {
+    "local": "on/packages/abs-A/realistic/dark/loop.720.mp4",
+    "bytes": 120473,
+    "pushed": true
+   }
+  },
+  {
+   "id": "scapular-B",
+   "group": "control-raised",
+   "complete": true,
+   "stages": {
+    "on": {
+     "status": "done",
+     "seconds": 319.8,
+     "finished": "2026-11-11T07:17:48.676Z"
+    },
+    "compose": {
+     "status": "done",
+     "seconds": 162.5,
+     "finished": "2026-11-11T07:20:31.150Z"
+    },
+    "offref": {
+     "status": "done",
+     "seconds": 152.3,
+     "finished": "2026-11-11T07:23:03.439Z"
+    },
+    "sheet": {
+     "status": "done",
+     "seconds": 1,
+     "finished": "2026-11-11T07:23:04.438Z"
+    }
+   },
+   "sheetFrames": [
+    10,
+    115,
+    130,
+    235
+   ],
+   "sheet": {
+    "file": "sheets/scapular-B.jpg",
+    "frames": [
+     {
+      "frame": 10,
+      "changedPixels": 642,
+      "maxDiff": 43,
+      "bytesIdentical": false
+     },
+     {
+      "frame": 115,
+      "changedPixels": 641,
+      "maxDiff": 43,
+      "bytesIdentical": false
+     },
+     {
+      "frame": 130,
+      "changedPixels": 642,
+      "maxDiff": 43,
+      "bytesIdentical": false
+     },
+     {
+      "frame": 235,
+      "changedPixels": 641,
+      "maxDiff": 43,
+      "bytesIdentical": false
+     }
+    ]
+   },
+   "masters": {
+    "size": 1080,
+    "frames": 241,
+    "complete": true,
+    "skins": [
+     "realistic",
+     "tech-white",
+     "neon-night",
+     "neon-night-b",
+     "hologram"
+    ],
+    "layers": [
+     "body",
+     "body-highlight",
+     "mask"
+    ],
+    "renderSeconds": 251.435,
+    "pageErrors": 0,
+    "flags": {
+     "sampledOnly": false,
+     "fullCycleValidated": false,
+     "userAccepted": false,
+     "releaseEligible": false
+    },
+    "shoulderAxilla": {
+     "enabled": true,
+     "version": "0.2.0-r2",
+     "framesWritten": 241,
+     "maxGate": {
+      "left": 1,
+      "right": 1
+     },
+     "maxMoveMm": 89.328,
+     "maxNormalChangeDeg": 105.11
+    }
+   },
+   "video": {
+    "local": "on/packages/scapular-B/realistic/dark/loop.720.mp4",
+    "bytes": 70922,
+    "pushed": true
+   }
+  },
+  {
+   "id": "o-stand-crossreach",
+   "group": "control-raised",
+   "complete": true,
+   "stages": {
+    "on": {
+     "status": "done",
+     "seconds": 346.3,
+     "finished": "2026-11-11T07:28:50.738Z"
+    },
+    "compose": {
+     "status": "done",
+     "seconds": 146.5,
+     "finished": "2026-11-11T07:31:17.251Z"
+    },
+    "offref": {
+     "status": "done",
+     "seconds": 154.5,
+     "finished": "2026-11-11T07:33:51.726Z"
+    },
+    "sheet": {
+     "status": "done",
+     "seconds": 0.9,
+     "finished": "2026-11-11T07:33:52.642Z"
+    }
+   },
+   "sheetFrames": [
+    10,
+    115,
+    220,
+    235
+   ],
+   "sheet": {
+    "file": "sheets/o-stand-crossreach.jpg",
+    "frames": [
+     {
+      "frame": 10,
+      "changedPixels": 551,
+      "maxDiff": 31,
+      "bytesIdentical": false
+     },
+     {
+      "frame": 115,
+      "changedPixels": 812,
+      "maxDiff": 36,
+      "bytesIdentical": false
+     },
+     {
+      "frame": 220,
+      "changedPixels": 551,
+      "maxDiff": 31,
+      "bytesIdentical": false
+     },
+     {
+      "frame": 235,
+      "changedPixels": 550,
+      "maxDiff": 31,
+      "bytesIdentical": false
+     }
+    ]
+   },
+   "masters": {
+    "size": 1080,
+    "frames": 241,
+    "complete": true,
+    "skins": [
+     "realistic",
+     "tech-white",
+     "neon-night",
+     "neon-night-b",
+     "hologram"
+    ],
+    "layers": [
+     "body",
+     "body-highlight",
+     "mask"
+    ],
+    "renderSeconds": 243.356,
+    "pageErrors": 0,
+    "flags": {
+     "sampledOnly": false,
+     "fullCycleValidated": false,
+     "userAccepted": false,
+     "releaseEligible": false
+    },
+    "shoulderAxilla": {
+     "enabled": true,
+     "version": "0.2.0-r2",
+     "framesWritten": 241,
+     "maxGate": {
+      "left": 0.4998,
+      "right": 1
+     },
+     "maxMoveMm": 89.664,
+     "maxNormalChangeDeg": 93.3
+    }
+   },
+   "video": {
+    "local": "on/packages/o-stand-crossreach/realistic/dark/loop.720.mp4",
+    "bytes": 135027,
+    "pushed": true
+   }
+  },
+  {
+   "id": "h-db-curl",
+   "group": "control-low-arm",
+   "complete": true,
+   "stages": {
+    "on": {
+     "status": "done",
+     "seconds": 353.2,
+     "finished": "2026-11-11T07:39:45.799Z"
+    },
+    "compose": {
+     "status": "done",
+     "seconds": 155,
+     "finished": "2026-11-11T07:42:20.808Z"
+    },
+    "offref": {
+     "status": "done",
+     "seconds": 127.4,
+     "finished": "2026-11-11T07:44:28.208Z"
+    },
+    "sheet": {
+     "status": "done",
+     "seconds": 1,
+     "finished": "2026-11-11T07:44:29.209Z"
+    }
+   },
+   "sheetFrames": [
+    0,
+    50,
+    60,
+    170
+   ],
+   "sheet": {
+    "file": "sheets/h-db-curl.jpg",
+    "frames": [
+     {
+      "frame": 0,
+      "changedPixels": 0,
+      "maxDiff": 0,
+      "bytesIdentical": true
+     },
+     {
+      "frame": 50,
+      "changedPixels": 0,
+      "maxDiff": 0,
+      "bytesIdentical": true
+     },
+     {
+      "frame": 60,
+      "changedPixels": 0,
+      "maxDiff": 0,
+      "bytesIdentical": true
+     },
+     {
+      "frame": 170,
+      "changedPixels": 0,
+      "maxDiff": 0,
+      "bytesIdentical": true
+     }
+    ]
+   },
+   "masters": {
+    "size": 1080,
+    "frames": 241,
+    "complete": true,
+    "skins": [
+     "realistic",
+     "tech-white",
+     "neon-night",
+     "neon-night-b",
+     "hologram"
+    ],
+    "layers": [
+     "body",
+     "body-highlight",
+     "mask"
+    ],
+    "renderSeconds": 294.865,
+    "pageErrors": 0,
+    "flags": {
+     "sampledOnly": false,
+     "fullCycleValidated": false,
+     "userAccepted": false,
+     "releaseEligible": false
+    },
+    "shoulderAxilla": {
+     "enabled": true,
+     "version": "0.2.0-r2",
+     "framesWritten": 0,
+     "maxGate": {
+      "left": 0,
+      "right": 0
+     },
+     "maxMoveMm": 0,
+     "maxNormalChangeDeg": 0
+    }
+   },
+   "video": {
+    "local": "on/packages/h-db-curl/realistic/dark/loop.720.mp4",
+    "bytes": 94985,
+    "pushed": true
+   }
+  }
+ ],
+ "totals": {
+  "actions": 9,
+  "complete": 9,
+  "videosPushedBytes": 1097567
+ },
+ "notes": "Videos/masters not in _qa stay at <out>/on/ on this machine. Flags userAccepted/releaseEligible stay false; nothing uploaded, no pointer changed."
+}

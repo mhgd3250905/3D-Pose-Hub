@@ -1,0 +1,5542 @@
+{
+ "actionId": "scapular-B",
+ "recipe": {
+  "path": "catalog/production/remaining219-r1/recipes/scapular-B.json",
+  "sha256": "3de6206ad23c47d92407bb75475f94fa5224609358f9a94f390fe66acf2fcbfa"
+ },
+ "productionModel": "training-human-v3-armfix@0.1.0-r2",
+ "profile": {
+  "id": "default",
+  "sha256": "8b90de7f3d89b026a324df54eb835cff9dcb775a0d11f3071bdbeb1b2344ce22"
+ },
+ "rendererSha256": {
+  "tools/skin-coverage-r1/render-masters.mjs": "bed0ffc7acd4c7cf1d4508b6efa0adec5e0222747ebcd846715fd576928cfcab",
+  "tools/skin-coverage-r1/install.mjs": "41a11294e10ed2e1d426697f2291d704f49b4c34b156849c93984257f253ff28",
+  "tools/skin-coverage-r1/runtime.js": "109629b853d94adcc9caa40c9aa2b6a3d40f209aa98f31b2e3ad39f0d3f9aa2e",
+  "tools/skin-coverage-r1/port.mjs": "e62cc9aaefd5648a2fb0496d961066c5c9727229112103fb3038b12c8dca3d46",
+  "tools/skin-coverage-r1/verify.mjs": "a7c125d461ec016619226a8103aa9a87c78ba6204824e63bc48fb25794a696de",
+  "tools/action-package-v3/render-masters.mjs": "dac6cd000a32f2b23c0d2f3952d044724231f79cc3414a9ec83bcf0f3f480acb",
+  "tools/action-package-v3/recipe-scene.mjs": "9e6745e775a8abaf9eef8feb07c299285b83188216660cc3ddf906a28d35d93d",
+  "tools/action-package-v3/browser-package-layers.js": "a8d40b3e38ad043f699b242b2a0acb31a1cf6f82229a86292dc502d329a057fd",
+  "tools/action-package-v3/native-highlight.mjs": "c4ad2f22fe317e81d70b6d4b267bcdaf96b94360c45f18560517434437aa3144",
+  "tools/joint-opt-r1/render-masters-joint.mjs": "14eb2f7552b302c5c5571894e0addb536592a9f5ef7db14fd90aa8740c5d2e5e",
+  "tools/joint-opt-r1/joint-production.mjs": "a265969db29b8b5310c3baae9c189eb336329486a050cad4bff53350eed6d80a",
+  "tools/joint-opt-r1/shoulder-axilla-production.json": "c1e98a5f41fc2e8e3548c3a278853bf819030609e004b80bffea4811d571ff79",
+  "tools/joint-opt-r1/shoulder-axilla-r2.mjs": "aef3ed3360ae4dbf7043244d5162455d31fc29b78f464c968c92fc554cbfa514"
+ },
+ "appearance": {
+  "approvedBase": "original-head-eye-soften-20261110-r1",
+  "approvedPointer": {
+   "format": "pose-hub-approved-look-pointer@1",
+   "id": "original-head-eye-soften-20261110-r1",
+   "record": "drill-anim/models/approved-looks/20261110-r1.json",
+   "sha256Lf": "ac435f84ee22ed84a0eaaeef31107beef251465945fa01f9de66de978fb73f99"
+  }
+ },
+ "jointOpt": {
+  "shoulderAxilla": {
+   "id": "shoulder-axilla",
+   "enabled": true,
+   "source": "cli",
+   "switchFile": "tools/joint-opt-r1/shoulder-axilla-production.json",
+   "switchSha256Lf": "c1e98a5f41fc2e8e3548c3a278853bf819030609e004b80bffea4811d571ff79",
+   "switchDefault": true,
+   "module": "tools/joint-opt-r1/shoulder-axilla-r2.mjs",
+   "moduleVersion": "0.2.0-r2",
+   "moduleGlobal": "__shoulderAxillaR2",
+   "options": {},
+   "baseEntry": "tools/skin-coverage-r1/render-masters.mjs",
+   "reviewed": false,
+   "userAccepted": false,
+   "setup": {
+    "enabled": true,
+    "installed": true,
+    "version": "0.2.0-r2",
+    "mesh": "V3_Head_Neck_Torso_Shared_R26",
+    "sides": {
+     "left": {
+      "seedEdges": 68,
+      "weldedVertices": 611,
+      "vertices": 611,
+      "normalFaces": 1358,
+      "normalOutsideVertices": 137,
+      "maxRing": 8
+     },
+     "right": {
+      "seedEdges": 66,
+      "weldedVertices": 696,
+      "vertices": 696,
+      "normalFaces": 1544,
+      "normalOutsideVertices": 153,
+      "maxRing": 8
+     }
+    },
+    "elevStartDeg": 90,
+    "elevFullDeg": 120,
+    "normalRepair": true,
+    "restReproductionErrorMm": 1.1123893155135927e-13,
+    "bonesChanged": false,
+    "weightsAttributeChanged": false,
+    "indexChanged": false
+   }
+  }
+ },
+ "size": 1080,
+ "fps": 30,
+ "loopFrames": 240,
+ "complete": true,
+ "skins": [
+  {
+   "id": "realistic",
+   "sha256": "a2678bb3b662bca44104e60cf6c2b86bf17167d4bf0e90f38460c5d1e5b97bae",
+   "status": "look-approved-r2"
+  },
+  {
+   "id": "tech-white",
+   "sha256": "7d8ee655c441c48dd45335c74e7f2ddcef6c9560da325443649d6f08dfee8fad",
+   "status": "look-approved-r2"
+  },
+  {
+   "id": "neon-night",
+   "sha256": "1ec6bc72c8aa9e906060683b0e6a06eb9199ea4c2a1d1d2ea3b2431c86d562f9",
+   "status": "look-approved-r2"
+  },
+  {
+   "id": "neon-night-b",
+   "sha256": "a6cc0b5833a1fbc3f8dd61761f07c995269d02552fe7633e71483349b492b5a6",
+   "status": "look-approved-r2"
+  },
+  {
+   "id": "hologram",
+   "sha256": "a2ede66fe3e8628443eb7033f0668ec60b525cc4748d3f6c681fdaf69987b61a",
+   "status": "look-approved-r2"
+  }
+ ],
+ "layers": [
+  "body",
+  "body-highlight",
+  "mask"
+ ],
+ "flags": {
+  "sampledOnly": false,
+  "fullCycleValidated": false,
+  "userAccepted": false,
+  "releaseEligible": false
+ },
+ "pageErrors": [],
+ "renderSeconds": 251.435,
+ "frames": [
+  {
+   "frame": 0,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.328,
+     "maxNormalChangeDeg": 105.11,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 1,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.328,
+     "maxNormalChangeDeg": 105.11,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 2,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.328,
+     "maxNormalChangeDeg": 105.11,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 3,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.328,
+     "maxNormalChangeDeg": 105.11,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 4,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.328,
+     "maxNormalChangeDeg": 105.11,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 5,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.328,
+     "maxNormalChangeDeg": 105.11,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 6,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.328,
+     "maxNormalChangeDeg": 105.11,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 7,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.328,
+     "maxNormalChangeDeg": 105.11,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 8,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.328,
+     "maxNormalChangeDeg": 105.11,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 9,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.328,
+     "maxNormalChangeDeg": 105.11,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 10,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.328,
+     "maxNormalChangeDeg": 105.11,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 11,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.328,
+     "maxNormalChangeDeg": 105.11,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 12,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.328,
+     "maxNormalChangeDeg": 105.11,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 13,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.296,
+     "maxNormalChangeDeg": 105.1,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.6
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.6
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 14,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.202,
+     "maxNormalChangeDeg": 105.07,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.6
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.6
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 15,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.047,
+     "maxNormalChangeDeg": 105.01,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.59
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.59
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 16,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.832,
+     "maxNormalChangeDeg": 104.94,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.58
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.58
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 17,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.56,
+     "maxNormalChangeDeg": 104.85,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.56
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.56
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 18,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.234,
+     "maxNormalChangeDeg": 104.73,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.54
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.54
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 19,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 87.858,
+     "maxNormalChangeDeg": 104.6,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.52
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.52
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 20,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 87.437,
+     "maxNormalChangeDeg": 104.45,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.49
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.5
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 21,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 86.975,
+     "maxNormalChangeDeg": 104.28,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.47
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.47
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 22,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 86.477,
+     "maxNormalChangeDeg": 104.1,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.44
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.44
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 23,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 85.951,
+     "maxNormalChangeDeg": 103.9,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.4
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.4
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 24,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 85.401,
+     "maxNormalChangeDeg": 103.69,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.37
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.37
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 25,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 84.834,
+     "maxNormalChangeDeg": 103.47,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.33
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.33
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 26,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 84.256,
+     "maxNormalChangeDeg": 103.24,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.29
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.29
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 27,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 83.674,
+     "maxNormalChangeDeg": 103,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.26
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.26
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 28,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 83.914,
+     "maxNormalChangeDeg": 102.72,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.22
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.22
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 29,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 83.952,
+     "maxNormalChangeDeg": 102.44,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.18
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.18
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 30,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 83.815,
+     "maxNormalChangeDeg": 102.17,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.14
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.14
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 31,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 83.617,
+     "maxNormalChangeDeg": 101.91,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.1
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.1
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 32,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 83.395,
+     "maxNormalChangeDeg": 101.65,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.06
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.06
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 33,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 83.167,
+     "maxNormalChangeDeg": 101.41,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.03
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.03
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 34,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 82.944,
+     "maxNormalChangeDeg": 101.18,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 35,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 82.733,
+     "maxNormalChangeDeg": 100.97,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.97
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.97
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 36,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 82.541,
+     "maxNormalChangeDeg": 100.79,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.94
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.94
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 37,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 82.372,
+     "maxNormalChangeDeg": 100.62,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.92
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.92
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 38,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 82.23,
+     "maxNormalChangeDeg": 100.49,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.9
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.9
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 39,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 82.117,
+     "maxNormalChangeDeg": 100.38,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.88
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.88
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 40,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 82.035,
+     "maxNormalChangeDeg": 100.3,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.87
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.87
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 41,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.985,
+     "maxNormalChangeDeg": 100.25,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 42,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 43,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 44,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 45,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 46,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 47,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 48,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 49,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 50,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 51,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 52,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 53,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 54,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 55,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 56,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 57,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 58,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 59,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 60,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 61,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 62,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 63,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 64,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 65,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 66,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 67,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 68,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 69,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 70,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 71,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 72,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 73,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.98,
+     "maxNormalChangeDeg": 100.24,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 74,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 82.014,
+     "maxNormalChangeDeg": 100.28,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.87
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.87
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 75,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 82.072,
+     "maxNormalChangeDeg": 100.33,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.88
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.88
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 76,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 82.151,
+     "maxNormalChangeDeg": 100.41,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.89
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.89
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 77,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 82.252,
+     "maxNormalChangeDeg": 100.51,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.9
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.9
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 78,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 82.372,
+     "maxNormalChangeDeg": 100.62,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.92
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.92
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 79,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 82.511,
+     "maxNormalChangeDeg": 100.76,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.94
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.94
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 80,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 82.667,
+     "maxNormalChangeDeg": 100.91,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.96
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.96
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 81,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 82.836,
+     "maxNormalChangeDeg": 101.08,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.98
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.98
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 82,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 83.017,
+     "maxNormalChangeDeg": 101.26,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.01
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.01
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 83,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 83.205,
+     "maxNormalChangeDeg": 101.45,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.03
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.04
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 84,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 83.395,
+     "maxNormalChangeDeg": 101.65,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.06
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.06
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 85,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 83.581,
+     "maxNormalChangeDeg": 101.86,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.09
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.09
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 86,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 83.753,
+     "maxNormalChangeDeg": 102.08,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.13
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.13
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 87,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 83.895,
+     "maxNormalChangeDeg": 102.3,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.16
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.16
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 88,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 83.971,
+     "maxNormalChangeDeg": 102.53,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.19
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.19
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 89,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 83.857,
+     "maxNormalChangeDeg": 102.77,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.22
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.22
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 90,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 83.674,
+     "maxNormalChangeDeg": 103,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.26
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.26
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 91,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 84.159,
+     "maxNormalChangeDeg": 103.2,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.29
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.29
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 92,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 84.642,
+     "maxNormalChangeDeg": 103.4,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.32
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.32
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 93,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 85.119,
+     "maxNormalChangeDeg": 103.58,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.35
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.35
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 94,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 85.586,
+     "maxNormalChangeDeg": 103.76,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.38
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.38
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 95,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 86.04,
+     "maxNormalChangeDeg": 103.94,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.41
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.41
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 96,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 86.477,
+     "maxNormalChangeDeg": 104.1,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.44
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.44
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 97,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 86.894,
+     "maxNormalChangeDeg": 104.25,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.46
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.46
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 98,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 87.287,
+     "maxNormalChangeDeg": 104.4,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.49
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.49
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 99,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 87.653,
+     "maxNormalChangeDeg": 104.53,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.51
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.51
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 100,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 87.988,
+     "maxNormalChangeDeg": 104.65,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.53
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.53
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 101,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.292,
+     "maxNormalChangeDeg": 104.75,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.55
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.55
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 102,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.56,
+     "maxNormalChangeDeg": 104.85,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.56
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.56
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 103,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.79,
+     "maxNormalChangeDeg": 104.93,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.57
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.58
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 104,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.981,
+     "maxNormalChangeDeg": 104.99,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.59
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.59
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 105,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.132,
+     "maxNormalChangeDeg": 105.04,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.59
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.6
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 106,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.24,
+     "maxNormalChangeDeg": 105.08,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.6
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.6
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 107,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.306,
+     "maxNormalChangeDeg": 105.1,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.6
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.6
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 108,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.328,
+     "maxNormalChangeDeg": 105.11,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 109,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.328,
+     "maxNormalChangeDeg": 105.11,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 110,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.328,
+     "maxNormalChangeDeg": 105.11,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 111,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.328,
+     "maxNormalChangeDeg": 105.11,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 112,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.328,
+     "maxNormalChangeDeg": 105.11,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 113,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.328,
+     "maxNormalChangeDeg": 105.11,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 114,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.328,
+     "maxNormalChangeDeg": 105.11,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 115,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.328,
+     "maxNormalChangeDeg": 105.11,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 116,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.328,
+     "maxNormalChangeDeg": 105.11,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 117,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.328,
+     "maxNormalChangeDeg": 105.11,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 118,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.328,
+     "maxNormalChangeDeg": 105.11,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 119,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.328,
+     "maxNormalChangeDeg": 105.11,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 120,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.328,
+     "maxNormalChangeDeg": 105.11,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 121,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.328,
+     "maxNormalChangeDeg": 105.11,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 122,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.328,
+     "maxNormalChangeDeg": 105.11,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 123,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.328,
+     "maxNormalChangeDeg": 105.11,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 124,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.328,
+     "maxNormalChangeDeg": 105.11,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 125,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.328,
+     "maxNormalChangeDeg": 105.11,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 126,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.328,
+     "maxNormalChangeDeg": 105.11,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 127,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.328,
+     "maxNormalChangeDeg": 105.11,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 128,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.328,
+     "maxNormalChangeDeg": 105.11,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 129,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.328,
+     "maxNormalChangeDeg": 105.11,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 130,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.328,
+     "maxNormalChangeDeg": 105.11,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 131,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.328,
+     "maxNormalChangeDeg": 105.11,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 132,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.328,
+     "maxNormalChangeDeg": 105.11,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 133,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.296,
+     "maxNormalChangeDeg": 105.1,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.6
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.6
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 134,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.202,
+     "maxNormalChangeDeg": 105.07,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.6
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.6
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 135,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.047,
+     "maxNormalChangeDeg": 105.01,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.59
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.59
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 136,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.832,
+     "maxNormalChangeDeg": 104.94,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.58
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.58
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 137,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.56,
+     "maxNormalChangeDeg": 104.85,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.56
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.56
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 138,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.234,
+     "maxNormalChangeDeg": 104.73,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.54
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.54
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 139,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 87.858,
+     "maxNormalChangeDeg": 104.6,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.52
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.52
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 140,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 87.437,
+     "maxNormalChangeDeg": 104.45,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.49
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.5
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 141,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 86.975,
+     "maxNormalChangeDeg": 104.28,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.47
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.47
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 142,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 86.477,
+     "maxNormalChangeDeg": 104.1,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.44
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.44
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 143,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 85.951,
+     "maxNormalChangeDeg": 103.9,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.4
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.4
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 144,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 85.401,
+     "maxNormalChangeDeg": 103.69,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.37
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.37
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 145,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 84.834,
+     "maxNormalChangeDeg": 103.47,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.33
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.33
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 146,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 84.256,
+     "maxNormalChangeDeg": 103.24,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.29
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.29
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 147,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 83.674,
+     "maxNormalChangeDeg": 103,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.26
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.26
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 148,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 83.914,
+     "maxNormalChangeDeg": 102.72,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.22
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.22
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 149,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 83.952,
+     "maxNormalChangeDeg": 102.44,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.18
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.18
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 150,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 83.815,
+     "maxNormalChangeDeg": 102.17,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.14
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.14
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 151,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 83.617,
+     "maxNormalChangeDeg": 101.91,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.1
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.1
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 152,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 83.395,
+     "maxNormalChangeDeg": 101.65,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.06
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.06
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 153,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 83.167,
+     "maxNormalChangeDeg": 101.41,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.03
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.03
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 154,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 82.944,
+     "maxNormalChangeDeg": 101.18,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 155,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 82.733,
+     "maxNormalChangeDeg": 100.97,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.97
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.97
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 156,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 82.541,
+     "maxNormalChangeDeg": 100.79,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.94
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.94
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 157,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 82.372,
+     "maxNormalChangeDeg": 100.62,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.92
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.92
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 158,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 82.23,
+     "maxNormalChangeDeg": 100.49,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.9
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.9
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 159,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 82.117,
+     "maxNormalChangeDeg": 100.38,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.88
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.88
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 160,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 82.035,
+     "maxNormalChangeDeg": 100.3,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.87
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.87
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 161,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.985,
+     "maxNormalChangeDeg": 100.25,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 162,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 163,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 164,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 165,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 166,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 167,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 168,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 169,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 170,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 171,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 172,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 173,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 174,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 175,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 176,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 177,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 178,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 179,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 180,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 181,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 182,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 183,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 184,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 185,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 186,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 187,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 188,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 189,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 190,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 191,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 192,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.968,
+     "maxNormalChangeDeg": 100.23,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 193,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 81.98,
+     "maxNormalChangeDeg": 100.24,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.86
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 194,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 82.014,
+     "maxNormalChangeDeg": 100.28,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.87
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.87
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 195,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 82.072,
+     "maxNormalChangeDeg": 100.33,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.88
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.88
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 196,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 82.151,
+     "maxNormalChangeDeg": 100.41,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.89
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.89
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 197,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 82.252,
+     "maxNormalChangeDeg": 100.51,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.9
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.9
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 198,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 82.372,
+     "maxNormalChangeDeg": 100.62,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.92
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.92
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 199,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 82.511,
+     "maxNormalChangeDeg": 100.76,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.94
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.94
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 200,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 82.667,
+     "maxNormalChangeDeg": 100.91,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.96
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.96
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 201,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 82.836,
+     "maxNormalChangeDeg": 101.08,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 164.98
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 164.98
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 202,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 83.017,
+     "maxNormalChangeDeg": 101.26,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.01
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.01
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 203,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 83.205,
+     "maxNormalChangeDeg": 101.45,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.03
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.04
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 204,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 83.395,
+     "maxNormalChangeDeg": 101.65,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.06
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.06
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 205,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 83.581,
+     "maxNormalChangeDeg": 101.86,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.09
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.09
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 206,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 83.753,
+     "maxNormalChangeDeg": 102.08,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.13
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.13
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 207,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 83.895,
+     "maxNormalChangeDeg": 102.3,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.16
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.16
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 208,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 83.971,
+     "maxNormalChangeDeg": 102.53,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.19
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.19
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 209,
+   "warn": [],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 83.857,
+     "maxNormalChangeDeg": 102.77,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.22
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.22
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 210,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 83.674,
+     "maxNormalChangeDeg": 103,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.26
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.26
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 211,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 84.159,
+     "maxNormalChangeDeg": 103.2,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.29
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.29
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 212,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 84.642,
+     "maxNormalChangeDeg": 103.4,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.32
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.32
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 213,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 85.119,
+     "maxNormalChangeDeg": 103.58,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.35
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.35
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 214,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 85.586,
+     "maxNormalChangeDeg": 103.76,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.38
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.38
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 215,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 86.04,
+     "maxNormalChangeDeg": 103.94,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.41
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.41
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 216,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 86.477,
+     "maxNormalChangeDeg": 104.1,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.44
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.44
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 217,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 86.894,
+     "maxNormalChangeDeg": 104.25,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.46
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.46
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 218,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 87.287,
+     "maxNormalChangeDeg": 104.4,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.49
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.49
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 219,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 87.653,
+     "maxNormalChangeDeg": 104.53,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.51
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.51
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 220,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 87.988,
+     "maxNormalChangeDeg": 104.65,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.53
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.53
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 221,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.292,
+     "maxNormalChangeDeg": 104.75,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.55
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.55
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 222,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.56,
+     "maxNormalChangeDeg": 104.85,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.56
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.56
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 223,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.79,
+     "maxNormalChangeDeg": 104.93,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.57
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.58
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 224,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 88.981,
+     "maxNormalChangeDeg": 104.99,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.59
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.59
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 225,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.132,
+     "maxNormalChangeDeg": 105.04,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.59
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.6
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 226,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.24,
+     "maxNormalChangeDeg": 105.08,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.6
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.6
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 227,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.306,
+     "maxNormalChangeDeg": 105.1,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.6
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.6
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 228,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.328,
+     "maxNormalChangeDeg": 105.11,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 229,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.328,
+     "maxNormalChangeDeg": 105.11,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 230,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.328,
+     "maxNormalChangeDeg": 105.11,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 231,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.328,
+     "maxNormalChangeDeg": 105.11,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 232,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.328,
+     "maxNormalChangeDeg": 105.11,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 233,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.328,
+     "maxNormalChangeDeg": 105.11,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 234,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.328,
+     "maxNormalChangeDeg": 105.11,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 235,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.328,
+     "maxNormalChangeDeg": 105.11,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 236,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.328,
+     "maxNormalChangeDeg": 105.11,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 237,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.328,
+     "maxNormalChangeDeg": 105.11,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 238,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.328,
+     "maxNormalChangeDeg": 105.11,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 239,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.328,
+     "maxNormalChangeDeg": 105.11,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      }
+     }
+    }
+   }
+  },
+  {
+   "frame": 240,
+   "warn": [
+    "左手腕已限制在原始手臂能够到达的位置。",
+    "右手腕已限制在原始手臂能够到达的位置。"
+   ],
+   "jointOpt": {
+    "shoulderAxilla": {
+     "written": 1307,
+     "maxMoveMm": 89.328,
+     "maxNormalChangeDeg": 105.11,
+     "sides": {
+      "left": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      },
+      "right": {
+       "gate": 1,
+       "elevationDeg": 165.61
+      }
+     }
+    }
+   }
+  }
+ ]
+}

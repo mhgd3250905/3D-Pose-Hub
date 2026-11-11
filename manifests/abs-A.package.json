@@ -1,0 +1,817 @@
+{
+  "format": "pose-hub-action-package-v3@1",
+  "actionId": "abs-A",
+  "profile": {
+    "id": "default",
+    "sha256": "8b90de7f3d89b026a324df54eb835cff9dcb775a0d11f3071bdbeb1b2344ce22"
+  },
+  "masters": {
+    "path": "masters/abs-A/layer-manifest.json",
+    "sha256": "bfbb78c6ff092def242517c3b5c29a5fd0be0ecd371e78bb955f85aa40a4917a",
+    "bytes": 6877808
+  },
+  "recipe": {
+    "path": "catalog/production/remaining219-r1/recipes/abs-A.json",
+    "sha256": "246aa96b92d50121d93c17dd89e87862dd878d7a4799ff1d4d258be70dee9c26"
+  },
+  "productionModel": "training-human-v3-armfix@0.1.0-r2",
+  "authoringModel": "training-human-v3-armfix@0.1.0-r2",
+  "fps": 30,
+  "durationSeconds": 8,
+  "loopFrames": 240,
+  "framesUsed": 240,
+  "framing": {
+    "path": "packages/abs-A/framing.json",
+    "sha256": "cd210fe82b8dd3d5a8442c94295536cb791281f50adfb8c4b74d9470e183d57a",
+    "bytes": 341
+  },
+  "keyframes": {
+    "start": 0,
+    "peak": 186,
+    "end": 239
+  },
+  "peakRule": "max highlight pulse (middle of plateau)",
+  "skins": {
+    "realistic": {
+      "label": "Original",
+      "status": "look-approved-r2",
+      "themes": {
+        "dark": {
+          "video": {
+            "path": "packages/abs-A/realistic/dark/loop.720.mp4",
+            "sha256": "612ad95c32e3954cd70521b9547015e4a0cdae7172df8b712836956060cf1bf0",
+            "bytes": 120473,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#101013"
+          },
+          "start": {
+            "path": "packages/abs-A/realistic/dark/start.720.png",
+            "sha256": "5a1b69e309361a4701659a1d96c3c21bbf928030deb8a465fc4f8e8b060cbec2",
+            "bytes": 40871,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/abs-A/realistic/dark/peak.720.png",
+            "sha256": "faee1c5bb33f8f3a9222010d2ea2837800d50ba9163daf72024db766f1340c15",
+            "bytes": 49890,
+            "width": 720,
+            "height": 720,
+            "frame": 186
+          },
+          "end": {
+            "path": "packages/abs-A/realistic/dark/end.720.png",
+            "sha256": "93b388c2a527b6826ef2275b550b4971224f868f37b83f4b17cd92fb2edbc9ad",
+            "bytes": 40863,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/abs-A/realistic/dark/cover.720.jpg",
+            "sha256": "61bf5dbb34cc790debfb15f5e3f8d44e551c49b2bac64bcc519ac9f3cc1cbfb3",
+            "bytes": 20927,
+            "width": 720,
+            "height": 720,
+            "frame": 186
+          },
+          "thumbnail": {
+            "path": "packages/abs-A/realistic/dark/thumbnail.240.jpg",
+            "sha256": "ab0600983d6f43116a71a89647f63b852aa97b73a3735c7b01d8d79158278865",
+            "bytes": 4740,
+            "width": 240,
+            "height": 240,
+            "frame": 186
+          },
+          "peakHighlightOff": {
+            "path": "packages/abs-A/realistic/dark/peak.highlight-off.720.png",
+            "sha256": "9800e68547503b0f5a03b9fd55fce6028b6da1e478cc77c74d284a439d13c05b",
+            "bytes": 48220,
+            "width": 720,
+            "height": 720,
+            "frame": 186
+          }
+        },
+        "light": {
+          "video": {
+            "path": "packages/abs-A/realistic/light/loop.720.mp4",
+            "sha256": "087a0f850b845e5b6219f8d1c31b34a8bcb7f6ee32ae8d5d1e997509553c7beb",
+            "bytes": 146159,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#f3f2ef"
+          },
+          "start": {
+            "path": "packages/abs-A/realistic/light/start.720.png",
+            "sha256": "ccf95662c86fc9c4a9bdf7d117d02096a703ff89168b0df1f4cf78eb7d116eec",
+            "bytes": 43794,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/abs-A/realistic/light/peak.720.png",
+            "sha256": "134a55776d405f116dd62d0858779220f2f91c48b418ed0a6538d248df1d6a3a",
+            "bytes": 53732,
+            "width": 720,
+            "height": 720,
+            "frame": 186
+          },
+          "end": {
+            "path": "packages/abs-A/realistic/light/end.720.png",
+            "sha256": "043329b3d8a57370a1ebffa32115bd80cc81b6cab0399c397133afc8667df67a",
+            "bytes": 43789,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/abs-A/realistic/light/cover.720.jpg",
+            "sha256": "4a09458ba55fd75f75d33450d316a278b9b6908c4474abbc87686e814d50f5ce",
+            "bytes": 25719,
+            "width": 720,
+            "height": 720,
+            "frame": 186
+          },
+          "thumbnail": {
+            "path": "packages/abs-A/realistic/light/thumbnail.240.jpg",
+            "sha256": "ea703e27367c358ed8a5927dc90dbf5ab2580020bb9122b64e848ce2966fb3ab",
+            "bytes": 6123,
+            "width": 240,
+            "height": 240,
+            "frame": 186
+          },
+          "peakHighlightOff": {
+            "path": "packages/abs-A/realistic/light/peak.highlight-off.720.png",
+            "sha256": "6879da577e5a4c28683532d2fe0619e1c90201a70e0cce5beb123d3b6e4a8a70",
+            "bytes": 51041,
+            "width": 720,
+            "height": 720,
+            "frame": 186
+          }
+        }
+      },
+      "transparentLoop": {
+        "path": "packages/abs-A/realistic/loop.alpha.720.webm",
+        "sha256": "a9bad482e6400369ff0e4afdf3e6e82b7f908df3db3561502cb25ce84c4e1b36",
+        "bytes": 484917,
+        "width": 720,
+        "height": 720,
+        "codec": "vp9",
+        "alpha": true,
+        "frames": 240,
+        "fps": 30
+      },
+      "transparentCover": {
+        "path": "packages/abs-A/realistic/cover.transparent.1080.png",
+        "sha256": "6d811b8fac0c51e95a57648c99623d4a2706348784f85d63670084dc5e2679f8",
+        "bytes": 110451,
+        "width": 1080,
+        "height": 1080,
+        "frame": 186
+      },
+      "transparentFirstFrame": {
+        "path": "packages/abs-A/realistic/first-frame.transparent.1080.png",
+        "sha256": "8a6b2da6d01116fdb516c15a03feabdaebcbda6fa4af18fe0b1ddf375a560186",
+        "bytes": 86197,
+        "width": 1080,
+        "height": 1080,
+        "frame": 0
+      }
+    },
+    "tech-white": {
+      "label": "White",
+      "status": "look-approved-r2",
+      "themes": {
+        "dark": {
+          "video": {
+            "path": "packages/abs-A/tech-white/dark/loop.720.mp4",
+            "sha256": "56b3f36127cece3e0d21a21a5756e5abafd5cd40bc340c32d193f9fba99397ff",
+            "bytes": 241363,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#101013"
+          },
+          "start": {
+            "path": "packages/abs-A/tech-white/dark/start.720.png",
+            "sha256": "be5deab3a83b0444bed0615e5ed521f1ca7ba06b642dbcbfbb9f539f67c16b8f",
+            "bytes": 57952,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/abs-A/tech-white/dark/peak.720.png",
+            "sha256": "b86518e671745890faf41fe725ca24e369dd8bbeb10537e22dd90da60279ff55",
+            "bytes": 69433,
+            "width": 720,
+            "height": 720,
+            "frame": 186
+          },
+          "end": {
+            "path": "packages/abs-A/tech-white/dark/end.720.png",
+            "sha256": "3fe4f9b47ac680959191187bb2d3f7fc5f1184db35be60f10ac193537841b0aa",
+            "bytes": 57928,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/abs-A/tech-white/dark/cover.720.jpg",
+            "sha256": "db9cafbe83bd6db2efb22e5dfef499fe23c2bde99d177f4822183e8d602821ee",
+            "bytes": 28663,
+            "width": 720,
+            "height": 720,
+            "frame": 186
+          },
+          "thumbnail": {
+            "path": "packages/abs-A/tech-white/dark/thumbnail.240.jpg",
+            "sha256": "3cb4e6a0e43373260ea8c9ae1c5ca17252219d74f4fe895b4d12842b1aa6ca04",
+            "bytes": 6045,
+            "width": 240,
+            "height": 240,
+            "frame": 186
+          },
+          "peakHighlightOff": {
+            "path": "packages/abs-A/tech-white/dark/peak.highlight-off.720.png",
+            "sha256": "98c4a2cc447d4df5c50e7b9ae480af30c0a6932cf439b2ea1c4405ec1c7211cc",
+            "bytes": 69195,
+            "width": 720,
+            "height": 720,
+            "frame": 186
+          }
+        },
+        "light": {
+          "video": {
+            "path": "packages/abs-A/tech-white/light/loop.720.mp4",
+            "sha256": "8e9844352d1d41385a717446f0c1d0b366e80b087eecbfa164b926412b260aeb",
+            "bytes": 225401,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#f3f2ef"
+          },
+          "start": {
+            "path": "packages/abs-A/tech-white/light/start.720.png",
+            "sha256": "345f000d97b9dc339c6ccee2252e6a629d91be38b54c9dbc0d7e95e8324d1253",
+            "bytes": 56782,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/abs-A/tech-white/light/peak.720.png",
+            "sha256": "9e1da39eae5f609485dcdb3d15e94becfcbf0bcad3f5e70155805795031e84d5",
+            "bytes": 67093,
+            "width": 720,
+            "height": 720,
+            "frame": 186
+          },
+          "end": {
+            "path": "packages/abs-A/tech-white/light/end.720.png",
+            "sha256": "f629f1efaa360a40619ff77a6a451f26645a5647848f799700fa7753354a96e7",
+            "bytes": 56772,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/abs-A/tech-white/light/cover.720.jpg",
+            "sha256": "965424e80f9a88c8af728190942c1fcf26f138dbf56b20cdfc6ee57957f31264",
+            "bytes": 26544,
+            "width": 720,
+            "height": 720,
+            "frame": 186
+          },
+          "thumbnail": {
+            "path": "packages/abs-A/tech-white/light/thumbnail.240.jpg",
+            "sha256": "05ac87815c189229699d3f619e6bd8be0c2dc22d7004ea1639197e205716e65f",
+            "bytes": 5439,
+            "width": 240,
+            "height": 240,
+            "frame": 186
+          },
+          "peakHighlightOff": {
+            "path": "packages/abs-A/tech-white/light/peak.highlight-off.720.png",
+            "sha256": "5ac9acf113fa20b4ab5491ea26aa5b5d7eea648060c974bdb3c086f3d183741a",
+            "bytes": 66780,
+            "width": 720,
+            "height": 720,
+            "frame": 186
+          }
+        }
+      },
+      "transparentLoop": {
+        "path": "packages/abs-A/tech-white/loop.alpha.720.webm",
+        "sha256": "38c3241fc376c45f373600e5584489d26750268a24b6749d48036b94c505c4a1",
+        "bytes": 622115,
+        "width": 720,
+        "height": 720,
+        "codec": "vp9",
+        "alpha": true,
+        "frames": 240,
+        "fps": 30
+      },
+      "transparentCover": {
+        "path": "packages/abs-A/tech-white/cover.transparent.1080.png",
+        "sha256": "bcd9cf673c7b4334d9a306d42dab1e046d8f941119e2ed679f3af25b68a23e0c",
+        "bytes": 149143,
+        "width": 1080,
+        "height": 1080,
+        "frame": 186
+      },
+      "transparentFirstFrame": {
+        "path": "packages/abs-A/tech-white/first-frame.transparent.1080.png",
+        "sha256": "1a950a46d740eeca9cb74a2d1786053c64f85e040c1097987b9ecd5a5ab73ca7",
+        "bytes": 118241,
+        "width": 1080,
+        "height": 1080,
+        "frame": 0
+      }
+    },
+    "neon-night": {
+      "label": "Blue",
+      "status": "look-approved-r2",
+      "themes": {
+        "dark": {
+          "video": {
+            "path": "packages/abs-A/neon-night/dark/loop.720.mp4",
+            "sha256": "7b51f6a026a264410174ed5cf77edfc32f8d0797a97630d40471057dd9cc58b6",
+            "bytes": 214328,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#101013"
+          },
+          "start": {
+            "path": "packages/abs-A/neon-night/dark/start.720.png",
+            "sha256": "12469ab5a5619431d93077d14fec28579512ad69c0136b6f73cf01acb482b448",
+            "bytes": 56121,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/abs-A/neon-night/dark/peak.720.png",
+            "sha256": "3b9095393a223533b817b54d3d1b2bec34896db280166a4a49b8ebeb5e9d52fd",
+            "bytes": 66265,
+            "width": 720,
+            "height": 720,
+            "frame": 186
+          },
+          "end": {
+            "path": "packages/abs-A/neon-night/dark/end.720.png",
+            "sha256": "75117b232a7b86e4db006835f7ebdbd7e0b37ab22938f47ec6c10a442bbb6a89",
+            "bytes": 56109,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/abs-A/neon-night/dark/cover.720.jpg",
+            "sha256": "bd0165c803f35ee33bad48b62eff1af97961dff8dc0fc0dd23cc69c21f02e8e8",
+            "bytes": 26378,
+            "width": 720,
+            "height": 720,
+            "frame": 186
+          },
+          "thumbnail": {
+            "path": "packages/abs-A/neon-night/dark/thumbnail.240.jpg",
+            "sha256": "2a5b96fe45f420c944114a48159407ae0f34262bf8dc44d81714f8e125906b16",
+            "bytes": 4893,
+            "width": 240,
+            "height": 240,
+            "frame": 186
+          },
+          "peakHighlightOff": {
+            "path": "packages/abs-A/neon-night/dark/peak.highlight-off.720.png",
+            "sha256": "7691c572545e1c5f5f8d0c30cc94032ae5c4d77d9fee23ffe47d542bd78240e6",
+            "bytes": 65915,
+            "width": 720,
+            "height": 720,
+            "frame": 186
+          }
+        },
+        "light": {
+          "video": {
+            "path": "packages/abs-A/neon-night/light/loop.720.mp4",
+            "sha256": "3489bf5762621f273b2062320ea520be8c76ace9c9788275c1d4905619f0ec31",
+            "bytes": 260879,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#f3f2ef"
+          },
+          "start": {
+            "path": "packages/abs-A/neon-night/light/start.720.png",
+            "sha256": "c43992fe1ca416755e654db9cd40124c5646d1029e49437a7615c956da8c0656",
+            "bytes": 60062,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/abs-A/neon-night/light/peak.720.png",
+            "sha256": "987a97ca8f4b2352a57da415d78ad55c1dd04cdac28816a6252aa50b4777fd82",
+            "bytes": 72704,
+            "width": 720,
+            "height": 720,
+            "frame": 186
+          },
+          "end": {
+            "path": "packages/abs-A/neon-night/light/end.720.png",
+            "sha256": "d622e5c08c1546cf5f7d100767f4addbcc83a8e4227835473537f60a3b92edbf",
+            "bytes": 60069,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/abs-A/neon-night/light/cover.720.jpg",
+            "sha256": "a0624a834af32f3fe15b1dc680fbd6592c87fb530d6e7edde69158a1c0850c51",
+            "bytes": 32815,
+            "width": 720,
+            "height": 720,
+            "frame": 186
+          },
+          "thumbnail": {
+            "path": "packages/abs-A/neon-night/light/thumbnail.240.jpg",
+            "sha256": "77ccd5791b27b2f678104b1639abaf6a90b2acb1bf9fa84c0d1f6915289b7717",
+            "bytes": 6753,
+            "width": 240,
+            "height": 240,
+            "frame": 186
+          },
+          "peakHighlightOff": {
+            "path": "packages/abs-A/neon-night/light/peak.highlight-off.720.png",
+            "sha256": "d197eb69b2f5c9a48e951a562be605b1706f8575b97e976b9c27bee26dbd296a",
+            "bytes": 72322,
+            "width": 720,
+            "height": 720,
+            "frame": 186
+          }
+        }
+      },
+      "transparentLoop": {
+        "path": "packages/abs-A/neon-night/loop.alpha.720.webm",
+        "sha256": "a1791a79e9a9e889d9419309d08d2fe2d8caa21d9e94d72cc889a8e990ed2dd0",
+        "bytes": 461010,
+        "width": 720,
+        "height": 720,
+        "codec": "vp9",
+        "alpha": true,
+        "frames": 240,
+        "fps": 30
+      },
+      "transparentCover": {
+        "path": "packages/abs-A/neon-night/cover.transparent.1080.png",
+        "sha256": "89f21adea361ceb42c70ec5e4863fe3cf4297fb331805cdb0835d3cd157e61de",
+        "bytes": 153325,
+        "width": 1080,
+        "height": 1080,
+        "frame": 186
+      },
+      "transparentFirstFrame": {
+        "path": "packages/abs-A/neon-night/first-frame.transparent.1080.png",
+        "sha256": "bceff4321d67e6b4de68a16668a76429e7d6abc7310fad166a71ecd3f9f50070",
+        "bytes": 122505,
+        "width": 1080,
+        "height": 1080,
+        "frame": 0
+      }
+    },
+    "neon-night-b": {
+      "label": "Green",
+      "status": "look-approved-r2",
+      "themes": {
+        "dark": {
+          "video": {
+            "path": "packages/abs-A/neon-night-b/dark/loop.720.mp4",
+            "sha256": "2e120eb9f11eb5a342e1db34c4a52b39d12d0f82ac15cbfc9113797de255f8b7",
+            "bytes": 232359,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#101013"
+          },
+          "start": {
+            "path": "packages/abs-A/neon-night-b/dark/start.720.png",
+            "sha256": "656bd93b5360e8ee9e741fdbae8a9343645eb1314e6ec933f49219d5b3822689",
+            "bytes": 55754,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/abs-A/neon-night-b/dark/peak.720.png",
+            "sha256": "4ada55af677c30b9912fe83db63a6eaaac2e41bc1b57b07ba77fe30c32abfa08",
+            "bytes": 65986,
+            "width": 720,
+            "height": 720,
+            "frame": 186
+          },
+          "end": {
+            "path": "packages/abs-A/neon-night-b/dark/end.720.png",
+            "sha256": "7a73e82d7c778b67158eda81cd5f5c575a1036868719f884ef5f04bc4dbae75c",
+            "bytes": 55765,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/abs-A/neon-night-b/dark/cover.720.jpg",
+            "sha256": "ead3e0efa249b4e246fbd29791487bd1643255847bbd0063b9e7f5d8eb84f902",
+            "bytes": 26702,
+            "width": 720,
+            "height": 720,
+            "frame": 186
+          },
+          "thumbnail": {
+            "path": "packages/abs-A/neon-night-b/dark/thumbnail.240.jpg",
+            "sha256": "011809e9551f340579f7f5f6b009842049557726b27b96d19c7c24f954f26c8c",
+            "bytes": 5051,
+            "width": 240,
+            "height": 240,
+            "frame": 186
+          },
+          "peakHighlightOff": {
+            "path": "packages/abs-A/neon-night-b/dark/peak.highlight-off.720.png",
+            "sha256": "6e5d3890c87df37318284ba8b0484305cd80cebb7b37bf43fdf4aa70d0c6e5f6",
+            "bytes": 65756,
+            "width": 720,
+            "height": 720,
+            "frame": 186
+          }
+        },
+        "light": {
+          "video": {
+            "path": "packages/abs-A/neon-night-b/light/loop.720.mp4",
+            "sha256": "d5479fd93f57ee872d7126e13f44b4e4d175aa07680c97f31fb6133b682d7aad",
+            "bytes": 272936,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#f3f2ef"
+          },
+          "start": {
+            "path": "packages/abs-A/neon-night-b/light/start.720.png",
+            "sha256": "a4c15c842b85dfcb4fdd0c656d756e06d045369f3bd2887a316eba1f8fb5df74",
+            "bytes": 59881,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/abs-A/neon-night-b/light/peak.720.png",
+            "sha256": "fb3c7e96e29680bc78b116f0125e03d71707819163f73accdb36472aed7be933",
+            "bytes": 72501,
+            "width": 720,
+            "height": 720,
+            "frame": 186
+          },
+          "end": {
+            "path": "packages/abs-A/neon-night-b/light/end.720.png",
+            "sha256": "f961f726af1dc9ea1445bc968c4724d2012bbe794a08275ae212123619db4407",
+            "bytes": 59872,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/abs-A/neon-night-b/light/cover.720.jpg",
+            "sha256": "9aa1eab2164016df1fd1c2af992423861b557e892e90c85acfe74c02c3061b35",
+            "bytes": 32863,
+            "width": 720,
+            "height": 720,
+            "frame": 186
+          },
+          "thumbnail": {
+            "path": "packages/abs-A/neon-night-b/light/thumbnail.240.jpg",
+            "sha256": "788189111ffd49549ab294ba41fef90e77e67a4084066a13842a118cd01ffecb",
+            "bytes": 6814,
+            "width": 240,
+            "height": 240,
+            "frame": 186
+          },
+          "peakHighlightOff": {
+            "path": "packages/abs-A/neon-night-b/light/peak.highlight-off.720.png",
+            "sha256": "7c2307dc042d434f46b5e2ca5978bf3df1cfdfaef0e2f8c4c4c328e6b37e3a46",
+            "bytes": 72198,
+            "width": 720,
+            "height": 720,
+            "frame": 186
+          }
+        }
+      },
+      "transparentLoop": {
+        "path": "packages/abs-A/neon-night-b/loop.alpha.720.webm",
+        "sha256": "454bbc87e9f82bff28ade6680490aa966f3755a26bdc42306b9e59f37fef751c",
+        "bytes": 485455,
+        "width": 720,
+        "height": 720,
+        "codec": "vp9",
+        "alpha": true,
+        "frames": 240,
+        "fps": 30
+      },
+      "transparentCover": {
+        "path": "packages/abs-A/neon-night-b/cover.transparent.1080.png",
+        "sha256": "ee4e087ee9578b95fe1aafd1000b4746acfa30b97dc3ed749ef548ec973d0190",
+        "bytes": 153009,
+        "width": 1080,
+        "height": 1080,
+        "frame": 186
+      },
+      "transparentFirstFrame": {
+        "path": "packages/abs-A/neon-night-b/first-frame.transparent.1080.png",
+        "sha256": "c945b9df2ccfe1917c768eae629d2f7804316f177bba6276dadbc2c2d78ff49b",
+        "bytes": 122386,
+        "width": 1080,
+        "height": 1080,
+        "frame": 0
+      }
+    },
+    "hologram": {
+      "label": "Hologram",
+      "status": "look-approved-r2",
+      "themes": {
+        "dark": {
+          "video": {
+            "path": "packages/abs-A/hologram/dark/loop.720.mp4",
+            "sha256": "76f5bc622369f72c480830e063816f4fc8ca9df1fcf851cdf22d4165f36d23dc",
+            "bytes": 183115,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#101013"
+          },
+          "start": {
+            "path": "packages/abs-A/hologram/dark/start.720.png",
+            "sha256": "8939240c21bc98f0571f73a833f081fa9bad90d7fd64948fac72d2adf651f2d4",
+            "bytes": 63053,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/abs-A/hologram/dark/peak.720.png",
+            "sha256": "e81849481f86f242a8e173c41f410b803e8160b764a17a2d801a5ac92ac24d09",
+            "bytes": 71446,
+            "width": 720,
+            "height": 720,
+            "frame": 186
+          },
+          "end": {
+            "path": "packages/abs-A/hologram/dark/end.720.png",
+            "sha256": "6df5d467559d33e245306ee922f8c94a21bc57ccc202001d211ff88fb36bf79c",
+            "bytes": 63077,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/abs-A/hologram/dark/cover.720.jpg",
+            "sha256": "a5f8bd838f0761f8c75a34ae831c174e2bdf2864eab29c3fdac7a47f921a1778",
+            "bytes": 23929,
+            "width": 720,
+            "height": 720,
+            "frame": 186
+          },
+          "thumbnail": {
+            "path": "packages/abs-A/hologram/dark/thumbnail.240.jpg",
+            "sha256": "405c3e69ece56a2f98eced6f2dfc3b722fd5a42da0f3af3e6c541b17c322203d",
+            "bytes": 4730,
+            "width": 240,
+            "height": 240,
+            "frame": 186
+          },
+          "peakHighlightOff": {
+            "path": "packages/abs-A/hologram/dark/peak.highlight-off.720.png",
+            "sha256": "bcc3109e88e1e9794d4d6544030280fd6b5df9376117b11df9abe26b1169c0c7",
+            "bytes": 70480,
+            "width": 720,
+            "height": 720,
+            "frame": 186
+          }
+        },
+        "light": {
+          "video": {
+            "path": "packages/abs-A/hologram/light/loop.720.mp4",
+            "sha256": "33cabcfc37ec16bfddb5abbfb4c0f1391fb4f52694c15e1a2d0ba753c0fe3554",
+            "bytes": 131217,
+            "width": 720,
+            "height": 720,
+            "codec": "h264",
+            "frames": 240,
+            "fps": 30,
+            "background": "#f3f2ef"
+          },
+          "start": {
+            "path": "packages/abs-A/hologram/light/start.720.png",
+            "sha256": "d786f548008740d139d7efee45f1ceba8430a6e3669b17748f61780189a364c5",
+            "bytes": 61721,
+            "width": 720,
+            "height": 720,
+            "frame": 0
+          },
+          "peak": {
+            "path": "packages/abs-A/hologram/light/peak.720.png",
+            "sha256": "278f3cff737a140309fb81f55b42ad53703a2703d6b963da86a628009ac8a4b9",
+            "bytes": 70083,
+            "width": 720,
+            "height": 720,
+            "frame": 186
+          },
+          "end": {
+            "path": "packages/abs-A/hologram/light/end.720.png",
+            "sha256": "db4304f6dc998982f03c724d20952b3c1c9570a0eea6bb72bfc6b32d22ce81bc",
+            "bytes": 61730,
+            "width": 720,
+            "height": 720,
+            "frame": 239
+          },
+          "cover": {
+            "path": "packages/abs-A/hologram/light/cover.720.jpg",
+            "sha256": "1eda17a7b755a62c480b700cc5bdd4bcfef30163c0654905423926b59cdcd259",
+            "bytes": 24453,
+            "width": 720,
+            "height": 720,
+            "frame": 186
+          },
+          "thumbnail": {
+            "path": "packages/abs-A/hologram/light/thumbnail.240.jpg",
+            "sha256": "4bceb10be892145840aa2d650f260c90b6a6511276298addb828dae2ed10e8cc",
+            "bytes": 5559,
+            "width": 240,
+            "height": 240,
+            "frame": 186
+          },
+          "peakHighlightOff": {
+            "path": "packages/abs-A/hologram/light/peak.highlight-off.720.png",
+            "sha256": "3d2b330e68eaa248b22200b8015b2053005ff3595b4a4b8a079f9a26a6db2836",
+            "bytes": 69039,
+            "width": 720,
+            "height": 720,
+            "frame": 186
+          }
+        }
+      },
+      "transparentLoop": {
+        "path": "packages/abs-A/hologram/loop.alpha.720.webm",
+        "sha256": "02b59ab07073aef4b3e6d1d869cabb7401d8cc22ebd4574b36afcf52f0885649",
+        "bytes": 600530,
+        "width": 720,
+        "height": 720,
+        "codec": "vp9",
+        "alpha": true,
+        "frames": 240,
+        "fps": 30
+      },
+      "transparentCover": {
+        "path": "packages/abs-A/hologram/cover.transparent.1080.png",
+        "sha256": "d7898a7d4cef8c4d7d52df8177d0e56a6d4763b66d89bacefe22abb09c3f7660",
+        "bytes": 209612,
+        "width": 1080,
+        "height": 1080,
+        "frame": 186
+      },
+      "transparentFirstFrame": {
+        "path": "packages/abs-A/hologram/first-frame.transparent.1080.png",
+        "sha256": "05d05a629c6671f7ddd6741f7070ab2b1dac72539b4b8c46dc7cf29d47bbf5c2",
+        "bytes": 181874,
+        "width": 1080,
+        "height": 1080,
+        "frame": 0
+      }
+    }
+  },
+  "flags": {
+    "sampledOnly": false,
+    "fullCycleValidated": false,
+    "userAccepted": false,
+    "releaseEligible": false
+  }
+}
