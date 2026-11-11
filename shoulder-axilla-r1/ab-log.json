@@ -1,0 +1,4028 @@
+{
+  "format": "pose-hub-shoulder-axilla-render-ab-log@1",
+  "started": "2026-11-10T23:47:51.346Z",
+  "git": {
+    "head": "161830a56947522d094b25f18de9d4315801ba95",
+    "branch": "HEAD",
+    "trackedChanges": 0
+  },
+  "command": "node tools/joint-opt-r1/render-ab-r1.mjs --out <dir>",
+  "testMode": false,
+  "width": 720,
+  "fullLayers": [
+    "body-highlight"
+  ],
+  "closeupLayers": [
+    "body-highlight",
+    "body"
+  ],
+  "background": "#101013",
+  "pointers": {
+    "approvedLook": {
+      "id": "original-head-eye-soften-20261110-r1",
+      "sha256Lf": "ac435f84ee22ed84a0eaaeef31107beef251465945fa01f9de66de978fb73f99",
+      "record": "drill-anim/models/approved-looks/20261110-r1.json"
+    },
+    "skinCoverage": {
+      "id": "skin-coverage",
+      "version": "0.1.0-r1",
+      "sha256Lf": "aa6665a44f960857829217a3c7ff4e216f0af7a1409ba998fff455b5df24446d",
+      "manifest": "tools/skin-coverage-r1/manifest.json",
+      "visualApproval": "pending-user-review"
+    }
+  },
+  "approved": {
+    "id": "original-head-eye-soften-20261110-r1",
+    "sourceCommit": "eb00e820790b9ac118fe008c76a927f89c3b6a11",
+    "baseModel": {
+      "profile": "training-human-v3-armfix",
+      "version": "0.1.0-r2"
+    },
+    "previewEntry": "tools/eye-socket-soften-r1/preview.mjs",
+    "skin": "realistic"
+  },
+  "module": {
+    "file": "tools/joint-opt-r1/shoulder-axilla-r1.mjs",
+    "sha256Lf": "8095ff06e7a7bfcd6b469988e84bf239b8d05484326b6e217e1053995a5342d0"
+  },
+  "renderer": {
+    "file": "tools/joint-opt-r1/render-ab-r1.mjs",
+    "sha256Lf": "fa3a2a7ff1e57e861ff6023c1a8fce3abf1c1636dfb6bb13e57ad88709f41ef1",
+    "plan": "tools/joint-opt-r1/render-ab-r1.plan.json",
+    "planSha256Lf": "4487fad3549393fc68d84af34548f954e68388814090965f8a3559c8ce53bdaf"
+  },
+  "recipes": {
+    "h-banana": {
+      "file": "catalog/production/remaining219-r1/recipes/h-banana.json",
+      "sha256": "9e31344b779a6b8dcbebfc86c313baac1540768350e9708b517f781e4a00901b",
+      "model": {
+        "profile": "training-human-v3-armfix",
+        "version": "0.1.0-r2",
+        "loader": "drill-anim/models/training-human-v3-armfix-r2/loader.mjs",
+        "authoring": "training-human-v3-armfix@0.1.0-r2"
+      },
+      "hands": {
+        "modes": {
+          "left": "native",
+          "right": "native"
+        },
+        "adapter": "symmetric-native",
+        "poses": {},
+        "removedSourceDumbbells": 0,
+        "showDumbbells": true,
+        "barGrip": null,
+        "status": "native-candidate-action-validation-pending",
+        "notes": [
+          "support uses native palm-floor; assist uses native open; relaxed uses native relaxed.",
+          "These are explicit native poses, not acceptance of four completed new fixed hand assets."
+        ]
+      },
+      "spec": {
+        "path": "drill-anim/specs/h-banana-r2.js",
+        "id": "h-banana-r2",
+        "sha256Lf": "af14c1aca135a08bc0547f40bc31e17acccbb6054be56b33b40ce177c15785a6"
+      }
+    },
+    "h-db-press": {
+      "file": "catalog/production/remaining219-r1/recipes/h-db-press.json",
+      "sha256": "c1a5678f051df45020d2ee95e10420c9fce6a4bae99951289475fb62ea70d546",
+      "model": {
+        "profile": "training-human-v3-armfix",
+        "version": "0.1.0-r2",
+        "loader": "drill-anim/models/training-human-v3-armfix-r2/loader.mjs",
+        "authoring": "training-human-v3-armfix@0.1.0-r2"
+      },
+      "hands": {
+        "modes": {
+          "left": "dumbbell-grasp",
+          "right": "dumbbell-grasp"
+        },
+        "adapter": "webxr-dumbbell-wrist-r1",
+        "poses": {
+          "left": "open",
+          "right": "open"
+        },
+        "removedSourceDumbbells": 2,
+        "showDumbbells": true,
+        "barGrip": null,
+        "status": "fixed-template-accepted-action-validation-pending",
+        "notes": [
+          "Fixed hand and dumbbell are one rigid combination; no duplicate action dumbbells."
+        ]
+      },
+      "spec": {
+        "path": "drill-anim/specs/h-db-press-kn1.js",
+        "id": "h-db-press-kn1",
+        "sha256Lf": "778833b4c58c6d6c3b57e8a954f976dad2e3a5688179e41de1bc8d3904ca95d1"
+      }
+    },
+    "h-fixed-bar-vertical-pull": {
+      "file": "catalog/production/remaining219-r1/recipes/h-fixed-bar-vertical-pull.json",
+      "sha256": "23463c358b144b48469706b45774c1a0a0fc384521eff6e84cc3fe5fa9c4db7c",
+      "model": {
+        "profile": "training-human-v3-armfix",
+        "version": "0.1.0-r2",
+        "loader": "drill-anim/models/training-human-v3-armfix-r2/loader.mjs",
+        "authoring": "training-human-v3-armfix@0.1.0-r2"
+      },
+      "hands": {
+        "modes": {
+          "left": "bar-grasp",
+          "right": "bar-grasp"
+        },
+        "adapter": "webxr-dumbbell-wrist-r1",
+        "poses": {
+          "left": "open",
+          "right": "open"
+        },
+        "removedSourceDumbbells": 0,
+        "showDumbbells": false,
+        "barGrip": {
+          "left": {
+            "source": "recovered-from-old-grip",
+            "bar": [
+              0.33854,
+              2.15037,
+              0.03384
+            ],
+            "axis": [
+              -0.91427,
+              0.32557,
+              -0.24107
+            ],
+            "palm": [
+              0.34516,
+              0.31453,
+              -0.88427
+            ],
+            "old": {
+              "wrist": [
+                0.3328332505269669,
+                2.056676216527624,
+                -0.0017977655611494635
+              ]
+            },
+            "new": {
+              "wrist": [
+                0.3522,
+                2.07853,
+                -0.01418
+              ],
+              "finger": [
+                -0.18593,
+                0.98246,
+                -0.01452
+              ],
+              "normal": [
+                -0.23889,
+                -0.03087,
+                0.97056
+              ]
+            }
+          },
+          "right": {
+            "source": "recovered-from-old-grip",
+            "bar": [
+              -0.33854,
+              2.15037,
+              0.03384
+            ],
+            "axis": [
+              0.91427,
+              0.32557,
+              -0.24107
+            ],
+            "palm": [
+              -0.34516,
+              0.31453,
+              -0.88427
+            ],
+            "old": {
+              "wrist": [
+                -0.3328332505269669,
+                2.056676216527624,
+                -0.0017977655611494635
+              ]
+            },
+            "new": {
+              "wrist": [
+                -0.3522,
+                2.07853,
+                -0.01418
+              ],
+              "finger": [
+                0.18593,
+                0.98246,
+                -0.01452
+              ],
+              "normal": [
+                0.23889,
+                -0.03087,
+                0.97056
+              ]
+            }
+          }
+        },
+        "status": "fixed-template-accepted-action-validation-pending",
+        "notes": [
+          "Fixed hand and dumbbell are one rigid combination; no duplicate action dumbbells."
+        ]
+      },
+      "spec": {
+        "path": "drill-anim/specs/h-fixed-bar-vertical-pull-rr7.js",
+        "id": "h-fixed-bar-vertical-pull-rr7",
+        "sha256Lf": "7fe5a262204328b00ea16ccfa005d9734868b0b4028ec177050816803b7a699c"
+      }
+    },
+    "abs-A": {
+      "file": "catalog/production/remaining219-r1/recipes/abs-A.json",
+      "sha256": "246aa96b92d50121d93c17dd89e87862dd878d7a4799ff1d4d258be70dee9c26",
+      "model": {
+        "profile": "training-human-v3-armfix",
+        "version": "0.1.0-r2",
+        "loader": "drill-anim/models/training-human-v3-armfix-r2/loader.mjs",
+        "authoring": "training-human-v3-armfix@0.1.0-r2"
+      },
+      "hands": {
+        "modes": {
+          "left": "native",
+          "right": "native"
+        },
+        "adapter": "symmetric-native",
+        "poses": {},
+        "removedSourceDumbbells": 0,
+        "showDumbbells": true,
+        "barGrip": null,
+        "status": "native-candidate-action-validation-pending",
+        "notes": [
+          "support uses native palm-floor; assist uses native open; relaxed uses native relaxed.",
+          "These are explicit native poses, not acceptance of four completed new fixed hand assets."
+        ]
+      },
+      "spec": {
+        "path": "drill-anim/specs/abs-A-r3.js",
+        "id": "abs-A-r3",
+        "sha256Lf": "48281021dde5a6ac824f01e040f800425e57fabb89ebcfc0e845ac4d8ef1b02e"
+      }
+    },
+    "o-stand-crossreach": {
+      "file": "catalog/production/remaining219-r1/recipes/o-stand-crossreach.json",
+      "sha256": "d26c17cdfad98e2cf2108d679fc41c7857771719e13f32e446b06cca5adaf8d3",
+      "model": {
+        "profile": "training-human-v3-armfix",
+        "version": "0.1.0-r2",
+        "loader": "drill-anim/models/training-human-v3-armfix-r2/loader.mjs",
+        "authoring": "training-human-v3-armfix@0.1.0-r2"
+      },
+      "hands": {
+        "modes": {
+          "left": "native",
+          "right": "native"
+        },
+        "adapter": "symmetric-native",
+        "poses": {},
+        "removedSourceDumbbells": 0,
+        "showDumbbells": true,
+        "barGrip": null,
+        "status": "native-candidate-action-validation-pending",
+        "notes": [
+          "support uses native palm-floor; assist uses native open; relaxed uses native relaxed.",
+          "These are explicit native poses, not acceptance of four completed new fixed hand assets."
+        ]
+      },
+      "spec": {
+        "path": "drill-anim/specs/o-stand-crossreach-r2-sc1-et1-kn1.js",
+        "id": "o-stand-crossreach-r2-sc1-et1-kn1",
+        "sha256Lf": "046c404a511772337e980a18215b193738b7844ea5e2204119523abdf35fec71"
+      }
+    },
+    "scapular-B": {
+      "file": "catalog/production/remaining219-r1/recipes/scapular-B.json",
+      "sha256": "3de6206ad23c47d92407bb75475f94fa5224609358f9a94f390fe66acf2fcbfa",
+      "model": {
+        "profile": "training-human-v3-armfix",
+        "version": "0.1.0-r2",
+        "loader": "drill-anim/models/training-human-v3-armfix-r2/loader.mjs",
+        "authoring": "training-human-v3-armfix@0.1.0-r2"
+      },
+      "hands": {
+        "modes": {
+          "left": "bar-grasp",
+          "right": "bar-grasp"
+        },
+        "adapter": "webxr-dumbbell-wrist-r1",
+        "poses": {
+          "left": "open",
+          "right": "open"
+        },
+        "removedSourceDumbbells": 0,
+        "showDumbbells": false,
+        "barGrip": {
+          "left": {
+            "source": "recovered-from-old-grip",
+            "bar": [
+              0.27001,
+              2.20001,
+              0.01997
+            ],
+            "axis": [
+              -1,
+              0.00003,
+              -0.00005
+            ],
+            "palm": [
+              0.00005,
+              -0.00001,
+              -1
+            ],
+            "old": {
+              "wrist": [
+                0.2867,
+                2.101,
+                0.0199
+              ]
+            },
+            "new": {
+              "wrist": [
+                0.29431,
+                2.11965,
+                -0.00461
+              ],
+              "finger": [
+                -0.49331,
+                0.8308,
+                -0.2577
+              ],
+              "normal": [
+                0.02557,
+                0.30999,
+                0.9504
+              ]
+            }
+          },
+          "right": {
+            "source": "recovered-from-old-grip",
+            "bar": [
+              -0.27001,
+              2.20001,
+              0.01997
+            ],
+            "axis": [
+              1,
+              0.00003,
+              -0.00005
+            ],
+            "palm": [
+              -0.00005,
+              -0.00001,
+              -1
+            ],
+            "old": {
+              "wrist": [
+                -0.2867,
+                2.101,
+                0.0199
+              ]
+            },
+            "new": {
+              "wrist": [
+                -0.29431,
+                2.11965,
+                -0.00461
+              ],
+              "finger": [
+                0.49331,
+                0.8308,
+                -0.2577
+              ],
+              "normal": [
+                -0.02557,
+                0.30999,
+                0.9504
+              ]
+            }
+          }
+        },
+        "status": "fixed-template-accepted-action-validation-pending",
+        "notes": [
+          "Fixed hand and dumbbell are one rigid combination; no duplicate action dumbbells."
+        ]
+      },
+      "spec": {
+        "path": "drill-anim/specs/scapular-B.js",
+        "id": "scapular-B",
+        "sha256Lf": "09c0d9659a0ac794f16e04643040444bdfe8c5717bbfe0d155ac4f41e4939151"
+      }
+    }
+  },
+  "closeupConfig": {
+    "_doc": "Close-up camera is computed per side from the shoulder joint and the axilla region of shoulder-axilla-r1: target = centroid of that side's region vertices in the current skinned pose (the axilla). 'stageB' = production camera direction (like the stage-B tiles; falls back to 'axilla' when that direction would look at the axilla from behind). 'axilla' = torso frame direction forward*f + lateral*l + up*u + (joint->region centroid)*jointToRegion. Perspective camera at distanceM, fov chosen so the frame is +-halfHeightM around the target; near plane clips geometry more than clipFrontM in front of the target (like the stage-B crop sphere), so the other arm/head never block the view.",
+    "halfHeightM": 0.16,
+    "distanceM": 1.2,
+    "clipFrontM": 0.32,
+    "axillaDir": {
+      "forward": 1,
+      "lateral": 0.7,
+      "up": -0.25,
+      "jointToRegion": 0.5
+    },
+    "minBodyCoverage": 0.15
+  },
+  "runtime": {
+    "platform": "win32",
+    "node": "v24.15.0",
+    "browserVersion": "130.0.6723.31",
+    "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4080 Laptop GPU (0x000027A0) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "contextLost": false
+  },
+  "moduleSetup": {
+    "h-banana": {
+      "mesh": "V3_Head_Neck_Torso_Shared_R26",
+      "radius": 0.12,
+      "cliff": 0.3,
+      "stitchRatio": 3,
+      "uaMin": 0.05,
+      "rings": 5,
+      "iters": 60,
+      "lambda": 0.5,
+      "elevStartDeg": 90,
+      "elevFullDeg": 120,
+      "weldMm": 0.001,
+      "enabled": false,
+      "version": "0.1.0-r1",
+      "restReproductionErrorMm": 1.1123893155135927e-13,
+      "bindScale": 0.3066685199737549,
+      "sides": {
+        "left": {
+          "seedEdges": 68,
+          "weldedVertices": 611,
+          "vertices": 611
+        },
+        "right": {
+          "seedEdges": 66,
+          "weldedVertices": 696,
+          "vertices": 696
+        }
+      },
+      "bonesChanged": false,
+      "weightsAttributeChanged": false,
+      "indexChanged": false,
+      "reviewed": false
+    },
+    "h-db-press": {
+      "mesh": "V3_Head_Neck_Torso_Shared_R26",
+      "radius": 0.12,
+      "cliff": 0.3,
+      "stitchRatio": 3,
+      "uaMin": 0.05,
+      "rings": 5,
+      "iters": 60,
+      "lambda": 0.5,
+      "elevStartDeg": 90,
+      "elevFullDeg": 120,
+      "weldMm": 0.001,
+      "enabled": false,
+      "version": "0.1.0-r1",
+      "restReproductionErrorMm": 1.1123893155135927e-13,
+      "bindScale": 0.3066685199737549,
+      "sides": {
+        "left": {
+          "seedEdges": 68,
+          "weldedVertices": 611,
+          "vertices": 611
+        },
+        "right": {
+          "seedEdges": 66,
+          "weldedVertices": 696,
+          "vertices": 696
+        }
+      },
+      "bonesChanged": false,
+      "weightsAttributeChanged": false,
+      "indexChanged": false,
+      "reviewed": false
+    },
+    "h-fixed-bar-vertical-pull": {
+      "mesh": "V3_Head_Neck_Torso_Shared_R26",
+      "radius": 0.12,
+      "cliff": 0.3,
+      "stitchRatio": 3,
+      "uaMin": 0.05,
+      "rings": 5,
+      "iters": 60,
+      "lambda": 0.5,
+      "elevStartDeg": 90,
+      "elevFullDeg": 120,
+      "weldMm": 0.001,
+      "enabled": false,
+      "version": "0.1.0-r1",
+      "restReproductionErrorMm": 1.1123893155135927e-13,
+      "bindScale": 0.3066685199737549,
+      "sides": {
+        "left": {
+          "seedEdges": 68,
+          "weldedVertices": 611,
+          "vertices": 611
+        },
+        "right": {
+          "seedEdges": 66,
+          "weldedVertices": 696,
+          "vertices": 696
+        }
+      },
+      "bonesChanged": false,
+      "weightsAttributeChanged": false,
+      "indexChanged": false,
+      "reviewed": false
+    },
+    "abs-A": {
+      "mesh": "V3_Head_Neck_Torso_Shared_R26",
+      "radius": 0.12,
+      "cliff": 0.3,
+      "stitchRatio": 3,
+      "uaMin": 0.05,
+      "rings": 5,
+      "iters": 60,
+      "lambda": 0.5,
+      "elevStartDeg": 90,
+      "elevFullDeg": 120,
+      "weldMm": 0.001,
+      "enabled": false,
+      "version": "0.1.0-r1",
+      "restReproductionErrorMm": 1.1123893155135927e-13,
+      "bindScale": 0.3066685199737549,
+      "sides": {
+        "left": {
+          "seedEdges": 68,
+          "weldedVertices": 611,
+          "vertices": 611
+        },
+        "right": {
+          "seedEdges": 66,
+          "weldedVertices": 696,
+          "vertices": 696
+        }
+      },
+      "bonesChanged": false,
+      "weightsAttributeChanged": false,
+      "indexChanged": false,
+      "reviewed": false
+    },
+    "o-stand-crossreach": {
+      "mesh": "V3_Head_Neck_Torso_Shared_R26",
+      "radius": 0.12,
+      "cliff": 0.3,
+      "stitchRatio": 3,
+      "uaMin": 0.05,
+      "rings": 5,
+      "iters": 60,
+      "lambda": 0.5,
+      "elevStartDeg": 90,
+      "elevFullDeg": 120,
+      "weldMm": 0.001,
+      "enabled": false,
+      "version": "0.1.0-r1",
+      "restReproductionErrorMm": 1.1123893155135927e-13,
+      "bindScale": 0.3066685199737549,
+      "sides": {
+        "left": {
+          "seedEdges": 68,
+          "weldedVertices": 611,
+          "vertices": 611
+        },
+        "right": {
+          "seedEdges": 66,
+          "weldedVertices": 696,
+          "vertices": 696
+        }
+      },
+      "bonesChanged": false,
+      "weightsAttributeChanged": false,
+      "indexChanged": false,
+      "reviewed": false
+    },
+    "scapular-B": {
+      "mesh": "V3_Head_Neck_Torso_Shared_R26",
+      "radius": 0.12,
+      "cliff": 0.3,
+      "stitchRatio": 3,
+      "uaMin": 0.05,
+      "rings": 5,
+      "iters": 60,
+      "lambda": 0.5,
+      "elevStartDeg": 90,
+      "elevFullDeg": 120,
+      "weldMm": 0.001,
+      "enabled": false,
+      "version": "0.1.0-r1",
+      "restReproductionErrorMm": 1.1123893155135927e-13,
+      "bindScale": 0.3066685199737549,
+      "sides": {
+        "left": {
+          "seedEdges": 68,
+          "weldedVertices": 611,
+          "vertices": 611
+        },
+        "right": {
+          "seedEdges": 66,
+          "weldedVertices": 696,
+          "vertices": 696
+        }
+      },
+      "bonesChanged": false,
+      "weightsAttributeChanged": false,
+      "indexChanged": false,
+      "reviewed": false
+    }
+  },
+  "images": [
+    {
+      "file": "png/h-banana_t3.00_full_off.png",
+      "action": "h-banana",
+      "group": "pilot",
+      "t": 3,
+      "frame": 90,
+      "camera": "full",
+      "side": null,
+      "coveredSides": [
+        "right"
+      ],
+      "view": "production",
+      "state": "off",
+      "layer": "body-highlight",
+      "layerLabel": "product look",
+      "width": 720,
+      "height": 720,
+      "bodyCoverage": 0.2778,
+      "elevationDeg": {
+        "right": 153.07
+      },
+      "gate": {
+        "right": 0
+      },
+      "gateIfEnabled": {
+        "right": 1
+      },
+      "verticesWritten": 0,
+      "verticesWrittenBySide": {
+        "left": 0,
+        "right": 0
+      },
+      "maxMoveMm": 0,
+      "pageErrors": 0,
+      "pageErrorText": [],
+      "closeupCamera": null,
+      "warnings": [],
+      "approvedLook": {
+        "id": "original-head-eye-soften-20261110-r1",
+        "sha256Lf": "ac435f84ee22ed84a0eaaeef31107beef251465945fa01f9de66de978fb73f99"
+      },
+      "skinCoverage": {
+        "id": "skin-coverage",
+        "version": "0.1.0-r1",
+        "sha256Lf": "aa6665a44f960857829217a3c7ff4e216f0af7a1409ba998fff455b5df24446d"
+      },
+      "head": "161830a56947522d094b25f18de9d4315801ba95"
+    },
+    {
+      "file": "png/h-banana_t3.00_full_on.png",
+      "action": "h-banana",
+      "group": "pilot",
+      "t": 3,
+      "frame": 90,
+      "camera": "full",
+      "side": null,
+      "coveredSides": [
+        "right"
+      ],
+      "view": "production",
+      "state": "on",
+      "layer": "body-highlight",
+      "layerLabel": "product look",
+      "width": 720,
+      "height": 720,
+      "bodyCoverage": 0.2778,
+      "elevationDeg": {
+        "right": 153.07
+      },
+      "gate": {
+        "right": 1
+      },
+      "gateIfEnabled": {
+        "right": 1
+      },
+      "verticesWritten": 1307,
+      "verticesWrittenBySide": {
+        "left": 611,
+        "right": 696
+      },
+      "maxMoveMm": 93.29,
+      "pageErrors": 0,
+      "pageErrorText": [],
+      "closeupCamera": null,
+      "warnings": [],
+      "approvedLook": {
+        "id": "original-head-eye-soften-20261110-r1",
+        "sha256Lf": "ac435f84ee22ed84a0eaaeef31107beef251465945fa01f9de66de978fb73f99"
+      },
+      "skinCoverage": {
+        "id": "skin-coverage",
+        "version": "0.1.0-r1",
+        "sha256Lf": "aa6665a44f960857829217a3c7ff4e216f0af7a1409ba998fff455b5df24446d"
+      },
+      "head": "161830a56947522d094b25f18de9d4315801ba95"
+    },
+    {
+      "file": "png/h-banana_t3.00_closeup-right_off.png",
+      "action": "h-banana",
+      "group": "pilot",
+      "t": 3,
+      "frame": 90,
+      "camera": "closeup-right",
+      "side": "right",
+      "coveredSides": [
+        "right"
+      ],
+      "view": "stageB",
+      "state": "off",
+      "layer": "body-highlight",
+      "layerLabel": "product look",
+      "width": 720,
+      "height": 720,
+      "bodyCoverage": 0.898,
+      "elevationDeg": {
+        "right": 153.07
+      },
+      "gate": {
+        "right": 0
+      },
+      "gateIfEnabled": {
+        "right": 1
+      },
+      "verticesWritten": 0,
+      "verticesWrittenBySide": {
+        "left": 0,
+        "right": 0
+      },
+      "maxMoveMm": 0,
+      "pageErrors": 0,
+      "pageErrorText": [],
+      "closeupCamera": {
+        "target": [
+          -0.30827277790031243,
+          0.1307754977981078,
+          0.2584172178450241
+        ],
+        "position": [
+          0.1725617021779539,
+          1.2294772503179277,
+          0.21776427480593563
+        ],
+        "up": [
+          -0.9863416633702038,
+          -0.024671960262903567,
+          0.16285397593207657
+        ],
+        "fov": 15.18928673718289,
+        "near": 0.8799999999999999,
+        "far": 4.2,
+        "used": "stageB",
+        "fallback": null,
+        "regionVertices": 696,
+        "regionCentroidFromJointMm": 38.3,
+        "viewDotForward": 0.9055413760439127,
+        "viewDotLateral": 0.028061439631042892
+      },
+      "warnings": [],
+      "approvedLook": {
+        "id": "original-head-eye-soften-20261110-r1",
+        "sha256Lf": "ac435f84ee22ed84a0eaaeef31107beef251465945fa01f9de66de978fb73f99"
+      },
+      "skinCoverage": {
+        "id": "skin-coverage",
+        "version": "0.1.0-r1",
+        "sha256Lf": "aa6665a44f960857829217a3c7ff4e216f0af7a1409ba998fff455b5df24446d"
+      },
+      "head": "161830a56947522d094b25f18de9d4315801ba95"
+    },
+    {
+      "file": "png/h-banana_t3.00_closeup-right_off_hl-off.png",
+      "action": "h-banana",
+      "group": "pilot",
+      "t": 3,
+      "frame": 90,
+      "camera": "closeup-right",
+      "side": "right",
+      "coveredSides": [
+        "right"
+      ],
+      "view": "stageB",
+      "state": "off",
+      "layer": "body",
+      "layerLabel": "highlight off",
+      "width": 720,
+      "height": 720,
+      "bodyCoverage": 0.898,
+      "elevationDeg": {
+        "right": 153.07
+      },
+      "gate": {
+        "right": 0
+      },
+      "gateIfEnabled": {
+        "right": 1
+      },
+      "verticesWritten": 0,
+      "verticesWrittenBySide": {
+        "left": 0,
+        "right": 0
+      },
+      "maxMoveMm": 0,
+      "pageErrors": 0,
+      "pageErrorText": [],
+      "closeupCamera": {
+        "target": [
+          -0.30827277790031243,
+          0.1307754977981078,
+          0.2584172178450241
+        ],
+        "position": [
+          0.1725617021779539,
+          1.2294772503179277,
+          0.21776427480593563
+        ],
+        "up": [
+          -0.9863416633702038,
+          -0.024671960262903567,
+          0.16285397593207657
+        ],
+        "fov": 15.18928673718289,
+        "near": 0.8799999999999999,
+        "far": 4.2,
+        "used": "stageB",
+        "fallback": null,
+        "regionVertices": 696,
+        "regionCentroidFromJointMm": 38.3,
+        "viewDotForward": 0.9055413760439127,
+        "viewDotLateral": 0.028061439631042892
+      },
+      "warnings": [],
+      "approvedLook": {
+        "id": "original-head-eye-soften-20261110-r1",
+        "sha256Lf": "ac435f84ee22ed84a0eaaeef31107beef251465945fa01f9de66de978fb73f99"
+      },
+      "skinCoverage": {
+        "id": "skin-coverage",
+        "version": "0.1.0-r1",
+        "sha256Lf": "aa6665a44f960857829217a3c7ff4e216f0af7a1409ba998fff455b5df24446d"
+      },
+      "head": "161830a56947522d094b25f18de9d4315801ba95"
+    },
+    {
+      "file": "png/h-banana_t3.00_closeup-right_on.png",
+      "action": "h-banana",
+      "group": "pilot",
+      "t": 3,
+      "frame": 90,
+      "camera": "closeup-right",
+      "side": "right",
+      "coveredSides": [
+        "right"
+      ],
+      "view": "stageB",
+      "state": "on",
+      "layer": "body-highlight",
+      "layerLabel": "product look",
+      "width": 720,
+      "height": 720,
+      "bodyCoverage": 0.898,
+      "elevationDeg": {
+        "right": 153.07
+      },
+      "gate": {
+        "right": 1
+      },
+      "gateIfEnabled": {
+        "right": 1
+      },
+      "verticesWritten": 1307,
+      "verticesWrittenBySide": {
+        "left": 611,
+        "right": 696
+      },
+      "maxMoveMm": 93.29,
+      "pageErrors": 0,
+      "pageErrorText": [],
+      "closeupCamera": {
+        "target": [
+          -0.30827277790031243,
+          0.1307754977981078,
+          0.2584172178450241
+        ],
+        "position": [
+          0.1725617021779539,
+          1.2294772503179277,
+          0.21776427480593563
+        ],
+        "up": [
+          -0.9863416633702038,
+          -0.024671960262903567,
+          0.16285397593207657
+        ],
+        "fov": 15.18928673718289,
+        "near": 0.8799999999999999,
+        "far": 4.2,
+        "used": "stageB",
+        "fallback": null,
+        "regionVertices": 696,
+        "regionCentroidFromJointMm": 38.3,
+        "viewDotForward": 0.9055413760439127,
+        "viewDotLateral": 0.028061439631042892
+      },
+      "warnings": [],
+      "approvedLook": {
+        "id": "original-head-eye-soften-20261110-r1",
+        "sha256Lf": "ac435f84ee22ed84a0eaaeef31107beef251465945fa01f9de66de978fb73f99"
+      },
+      "skinCoverage": {
+        "id": "skin-coverage",
+        "version": "0.1.0-r1",
+        "sha256Lf": "aa6665a44f960857829217a3c7ff4e216f0af7a1409ba998fff455b5df24446d"
+      },
+      "head": "161830a56947522d094b25f18de9d4315801ba95"
+    },
+    {
+      "file": "png/h-banana_t3.00_closeup-right_on_hl-off.png",
+      "action": "h-banana",
+      "group": "pilot",
+      "t": 3,
+      "frame": 90,
+      "camera": "closeup-right",
+      "side": "right",
+      "coveredSides": [
+        "right"
+      ],
+      "view": "stageB",
+      "state": "on",
+      "layer": "body",
+      "layerLabel": "highlight off",
+      "width": 720,
+      "height": 720,
+      "bodyCoverage": 0.898,
+      "elevationDeg": {
+        "right": 153.07
+      },
+      "gate": {
+        "right": 1
+      },
+      "gateIfEnabled": {
+        "right": 1
+      },
+      "verticesWritten": 1307,
+      "verticesWrittenBySide": {
+        "left": 611,
+        "right": 696
+      },
+      "maxMoveMm": 93.29,
+      "pageErrors": 0,
+      "pageErrorText": [],
+      "closeupCamera": {
+        "target": [
+          -0.30827277790031243,
+          0.1307754977981078,
+          0.2584172178450241
+        ],
+        "position": [
+          0.1725617021779539,
+          1.2294772503179277,
+          0.21776427480593563
+        ],
+        "up": [
+          -0.9863416633702038,
+          -0.024671960262903567,
+          0.16285397593207657
+        ],
+        "fov": 15.18928673718289,
+        "near": 0.8799999999999999,
+        "far": 4.2,
+        "used": "stageB",
+        "fallback": null,
+        "regionVertices": 696,
+        "regionCentroidFromJointMm": 38.3,
+        "viewDotForward": 0.9055413760439127,
+        "viewDotLateral": 0.028061439631042892
+      },
+      "warnings": [],
+      "approvedLook": {
+        "id": "original-head-eye-soften-20261110-r1",
+        "sha256Lf": "ac435f84ee22ed84a0eaaeef31107beef251465945fa01f9de66de978fb73f99"
+      },
+      "skinCoverage": {
+        "id": "skin-coverage",
+        "version": "0.1.0-r1",
+        "sha256Lf": "aa6665a44f960857829217a3c7ff4e216f0af7a1409ba998fff455b5df24446d"
+      },
+      "head": "161830a56947522d094b25f18de9d4315801ba95"
+    },
+    {
+      "file": "png/h-banana_t6.00_full_off.png",
+      "action": "h-banana",
+      "group": "pilot",
+      "t": 6,
+      "frame": 180,
+      "camera": "full",
+      "side": null,
+      "coveredSides": [
+        "left"
+      ],
+      "view": "production",
+      "state": "off",
+      "layer": "body-highlight",
+      "layerLabel": "product look",
+      "width": 720,
+      "height": 720,
+      "bodyCoverage": 0.2779,
+      "elevationDeg": {
+        "left": 153.07
+      },
+      "gate": {
+        "left": 0
+      },
+      "gateIfEnabled": {
+        "left": 1
+      },
+      "verticesWritten": 0,
+      "verticesWrittenBySide": {
+        "left": 0,
+        "right": 0
+      },
+      "maxMoveMm": 0,
+      "pageErrors": 0,
+      "pageErrorText": [],
+      "closeupCamera": null,
+      "warnings": [],
+      "approvedLook": {
+        "id": "original-head-eye-soften-20261110-r1",
+        "sha256Lf": "ac435f84ee22ed84a0eaaeef31107beef251465945fa01f9de66de978fb73f99"
+      },
+      "skinCoverage": {
+        "id": "skin-coverage",
+        "version": "0.1.0-r1",
+        "sha256Lf": "aa6665a44f960857829217a3c7ff4e216f0af7a1409ba998fff455b5df24446d"
+      },
+      "head": "161830a56947522d094b25f18de9d4315801ba95"
+    },
+    {
+      "file": "png/h-banana_t6.00_full_on.png",
+      "action": "h-banana",
+      "group": "pilot",
+      "t": 6,
+      "frame": 180,
+      "camera": "full",
+      "side": null,
+      "coveredSides": [
+        "left"
+      ],
+      "view": "production",
+      "state": "on",
+      "layer": "body-highlight",
+      "layerLabel": "product look",
+      "width": 720,
+      "height": 720,
+      "bodyCoverage": 0.2779,
+      "elevationDeg": {
+        "left": 153.07
+      },
+      "gate": {
+        "left": 1
+      },
+      "gateIfEnabled": {
+        "left": 1
+      },
+      "verticesWritten": 1307,
+      "verticesWrittenBySide": {
+        "left": 611,
+        "right": 696
+      },
+      "maxMoveMm": 93.29,
+      "pageErrors": 0,
+      "pageErrorText": [],
+      "closeupCamera": null,
+      "warnings": [],
+      "approvedLook": {
+        "id": "original-head-eye-soften-20261110-r1",
+        "sha256Lf": "ac435f84ee22ed84a0eaaeef31107beef251465945fa01f9de66de978fb73f99"
+      },
+      "skinCoverage": {
+        "id": "skin-coverage",
+        "version": "0.1.0-r1",
+        "sha256Lf": "aa6665a44f960857829217a3c7ff4e216f0af7a1409ba998fff455b5df24446d"
+      },
+      "head": "161830a56947522d094b25f18de9d4315801ba95"
+    },
+    {
+      "file": "png/h-banana_t6.00_closeup-left_off.png",
+      "action": "h-banana",
+      "group": "pilot",
+      "t": 6,
+      "frame": 180,
+      "camera": "closeup-left",
+      "side": "left",
+      "coveredSides": [
+        "left"
+      ],
+      "view": "stageB",
+      "state": "off",
+      "layer": "body-highlight",
+      "layerLabel": "product look",
+      "width": 720,
+      "height": 720,
+      "bodyCoverage": 0.8747,
+      "elevationDeg": {
+        "left": 153.07
+      },
+      "gate": {
+        "left": 0
+      },
+      "gateIfEnabled": {
+        "left": 1
+      },
+      "verticesWritten": 0,
+      "verticesWrittenBySide": {
+        "left": 0,
+        "right": 0
+      },
+      "maxMoveMm": 0,
+      "pageErrors": 0,
+      "pageErrorText": [],
+      "closeupCamera": {
+        "target": [
+          -0.2988253240355518,
+          0.12519444942934513,
+          -0.25822920056211324
+        ],
+        "position": [
+          0.1774427984128913,
+          1.221290159355001,
+          -0.14986467582266091
+        ],
+        "up": [
+          -0.9863416633702038,
+          -0.024671960262903532,
+          -0.16285397593207657
+        ],
+        "fov": 15.18928673718289,
+        "near": 0.8799999999999999,
+        "far": 4.2,
+        "used": "stageB",
+        "fallback": null,
+        "regionVertices": 611,
+        "regionCentroidFromJointMm": 40.1,
+        "viewDotForward": 0.903000684072241,
+        "viewDotLateral": -0.028220870561831903
+      },
+      "warnings": [],
+      "approvedLook": {
+        "id": "original-head-eye-soften-20261110-r1",
+        "sha256Lf": "ac435f84ee22ed84a0eaaeef31107beef251465945fa01f9de66de978fb73f99"
+      },
+      "skinCoverage": {
+        "id": "skin-coverage",
+        "version": "0.1.0-r1",
+        "sha256Lf": "aa6665a44f960857829217a3c7ff4e216f0af7a1409ba998fff455b5df24446d"
+      },
+      "head": "161830a56947522d094b25f18de9d4315801ba95"
+    },
+    {
+      "file": "png/h-banana_t6.00_closeup-left_off_hl-off.png",
+      "action": "h-banana",
+      "group": "pilot",
+      "t": 6,
+      "frame": 180,
+      "camera": "closeup-left",
+      "side": "left",
+      "coveredSides": [
+        "left"
+      ],
+      "view": "stageB",
+      "state": "off",
+      "layer": "body",
+      "layerLabel": "highlight off",
+      "width": 720,
+      "height": 720,
+      "bodyCoverage": 0.8747,
+      "elevationDeg": {
+        "left": 153.07
+      },
+      "gate": {
+        "left": 0
+      },
+      "gateIfEnabled": {
+        "left": 1
+      },
+      "verticesWritten": 0,
+      "verticesWrittenBySide": {
+        "left": 0,
+        "right": 0
+      },
+      "maxMoveMm": 0,
+      "pageErrors": 0,
+      "pageErrorText": [],
+      "closeupCamera": {
+        "target": [
+          -0.2988253240355518,
+          0.12519444942934513,
+          -0.25822920056211324
+        ],
+        "position": [
+          0.1774427984128913,
+          1.221290159355001,
+          -0.14986467582266091
+        ],
+        "up": [
+          -0.9863416633702038,
+          -0.024671960262903532,
+          -0.16285397593207657
+        ],
+        "fov": 15.18928673718289,
+        "near": 0.8799999999999999,
+        "far": 4.2,
+        "used": "stageB",
+        "fallback": null,
+        "regionVertices": 611,
+        "regionCentroidFromJointMm": 40.1,
+        "viewDotForward": 0.903000684072241,
+        "viewDotLateral": -0.028220870561831903
+      },
+      "warnings": [],
+      "approvedLook": {
+        "id": "original-head-eye-soften-20261110-r1",
+        "sha256Lf": "ac435f84ee22ed84a0eaaeef31107beef251465945fa01f9de66de978fb73f99"
+      },
+      "skinCoverage": {
+        "id": "skin-coverage",
+        "version": "0.1.0-r1",
+        "sha256Lf": "aa6665a44f960857829217a3c7ff4e216f0af7a1409ba998fff455b5df24446d"
+      },
+      "head": "161830a56947522d094b25f18de9d4315801ba95"
+    },
+    {
+      "file": "png/h-banana_t6.00_closeup-left_on.png",
+      "action": "h-banana",
+      "group": "pilot",
+      "t": 6,
+      "frame": 180,
+      "camera": "closeup-left",
+      "side": "left",
+      "coveredSides": [
+        "left"
+      ],
+      "view": "stageB",
+      "state": "on",
+      "layer": "body-highlight",
+      "layerLabel": "product look",
+      "width": 720,
+      "height": 720,
+      "bodyCoverage": 0.8747,
+      "elevationDeg": {
+        "left": 153.07
+      },
+      "gate": {
+        "left": 1
+      },
+      "gateIfEnabled": {
+        "left": 1
+      },
+      "verticesWritten": 1307,
+      "verticesWrittenBySide": {
+        "left": 611,
+        "right": 696
+      },
+      "maxMoveMm": 93.29,
+      "pageErrors": 0,
+      "pageErrorText": [],
+      "closeupCamera": {
+        "target": [
+          -0.2988253240355518,
+          0.12519444942934513,
+          -0.25822920056211324
+        ],
+        "position": [
+          0.1774427984128913,
+          1.221290159355001,
+          -0.14986467582266091
+        ],
+        "up": [
+          -0.9863416633702038,
+          -0.024671960262903532,
+          -0.16285397593207657
+        ],
+        "fov": 15.18928673718289,
+        "near": 0.8799999999999999,
+        "far": 4.2,
+        "used": "stageB",
+        "fallback": null,
+        "regionVertices": 611,
+        "regionCentroidFromJointMm": 40.1,
+        "viewDotForward": 0.903000684072241,
+        "viewDotLateral": -0.028220870561831903
+      },
+      "warnings": [],
+      "approvedLook": {
+        "id": "original-head-eye-soften-20261110-r1",
+        "sha256Lf": "ac435f84ee22ed84a0eaaeef31107beef251465945fa01f9de66de978fb73f99"
+      },
+      "skinCoverage": {
+        "id": "skin-coverage",
+        "version": "0.1.0-r1",
+        "sha256Lf": "aa6665a44f960857829217a3c7ff4e216f0af7a1409ba998fff455b5df24446d"
+      },
+      "head": "161830a56947522d094b25f18de9d4315801ba95"
+    },
+    {
+      "file": "png/h-banana_t6.00_closeup-left_on_hl-off.png",
+      "action": "h-banana",
+      "group": "pilot",
+      "t": 6,
+      "frame": 180,
+      "camera": "closeup-left",
+      "side": "left",
+      "coveredSides": [
+        "left"
+      ],
+      "view": "stageB",
+      "state": "on",
+      "layer": "body",
+      "layerLabel": "highlight off",
+      "width": 720,
+      "height": 720,
+      "bodyCoverage": 0.8747,
+      "elevationDeg": {
+        "left": 153.07
+      },
+      "gate": {
+        "left": 1
+      },
+      "gateIfEnabled": {
+        "left": 1
+      },
+      "verticesWritten": 1307,
+      "verticesWrittenBySide": {
+        "left": 611,
+        "right": 696
+      },
+      "maxMoveMm": 93.29,
+      "pageErrors": 0,
+      "pageErrorText": [],
+      "closeupCamera": {
+        "target": [
+          -0.2988253240355518,
+          0.12519444942934513,
+          -0.25822920056211324
+        ],
+        "position": [
+          0.1774427984128913,
+          1.221290159355001,
+          -0.14986467582266091
+        ],
+        "up": [
+          -0.9863416633702038,
+          -0.024671960262903532,
+          -0.16285397593207657
+        ],
+        "fov": 15.18928673718289,
+        "near": 0.8799999999999999,
+        "far": 4.2,
+        "used": "stageB",
+        "fallback": null,
+        "regionVertices": 611,
+        "regionCentroidFromJointMm": 40.1,
+        "viewDotForward": 0.903000684072241,
+        "viewDotLateral": -0.028220870561831903
+      },
+      "warnings": [],
+      "approvedLook": {
+        "id": "original-head-eye-soften-20261110-r1",
+        "sha256Lf": "ac435f84ee22ed84a0eaaeef31107beef251465945fa01f9de66de978fb73f99"
+      },
+      "skinCoverage": {
+        "id": "skin-coverage",
+        "version": "0.1.0-r1",
+        "sha256Lf": "aa6665a44f960857829217a3c7ff4e216f0af7a1409ba998fff455b5df24446d"
+      },
+      "head": "161830a56947522d094b25f18de9d4315801ba95"
+    },
+    {
+      "file": "png/h-db-press_t2.00_full_off.png",
+      "action": "h-db-press",
+      "group": "pilot",
+      "t": 2,
+      "frame": 60,
+      "camera": "full",
+      "side": null,
+      "coveredSides": [
+        "right",
+        "left"
+      ],
+      "view": "production",
+      "state": "off",
+      "layer": "body-highlight",
+      "layerLabel": "product look",
+      "width": 720,
+      "height": 720,
+      "bodyCoverage": 0.09,
+      "elevationDeg": {
+        "right": 164.4,
+        "left": 164.4
+      },
+      "gate": {
+        "right": 0,
+        "left": 0
+      },
+      "gateIfEnabled": {
+        "right": 1,
+        "left": 1
+      },
+      "verticesWritten": 0,
+      "verticesWrittenBySide": {
+        "left": 0,
+        "right": 0
+      },
+      "maxMoveMm": 0,
+      "pageErrors": 0,
+      "pageErrorText": [],
+      "closeupCamera": null,
+      "warnings": [],
+      "approvedLook": {
+        "id": "original-head-eye-soften-20261110-r1",
+        "sha256Lf": "ac435f84ee22ed84a0eaaeef31107beef251465945fa01f9de66de978fb73f99"
+      },
+      "skinCoverage": {
+        "id": "skin-coverage",
+        "version": "0.1.0-r1",
+        "sha256Lf": "aa6665a44f960857829217a3c7ff4e216f0af7a1409ba998fff455b5df24446d"
+      },
+      "head": "161830a56947522d094b25f18de9d4315801ba95"
+    },
+    {
+      "file": "png/h-db-press_t2.00_full_on.png",
+      "action": "h-db-press",
+      "group": "pilot",
+      "t": 2,
+      "frame": 60,
+      "camera": "full",
+      "side": null,
+      "coveredSides": [
+        "right",
+        "left"
+      ],
+      "view": "production",
+      "state": "on",
+      "layer": "body-highlight",
+      "layerLabel": "product look",
+      "width": 720,
+      "height": 720,
+      "bodyCoverage": 0.0901,
+      "elevationDeg": {
+        "right": 164.4,
+        "left": 164.4
+      },
+      "gate": {
+        "right": 1,
+        "left": 1
+      },
+      "gateIfEnabled": {
+        "right": 1,
+        "left": 1
+      },
+      "verticesWritten": 1307,
+      "verticesWrittenBySide": {
+        "left": 611,
+        "right": 696
+      },
+      "maxMoveMm": 82.67,
+      "pageErrors": 0,
+      "pageErrorText": [],
+      "closeupCamera": null,
+      "warnings": [],
+      "approvedLook": {
+        "id": "original-head-eye-soften-20261110-r1",
+        "sha256Lf": "ac435f84ee22ed84a0eaaeef31107beef251465945fa01f9de66de978fb73f99"
+      },
+      "skinCoverage": {
+        "id": "skin-coverage",
+        "version": "0.1.0-r1",
+        "sha256Lf": "aa6665a44f960857829217a3c7ff4e216f0af7a1409ba998fff455b5df24446d"
+      },
+      "head": "161830a56947522d094b25f18de9d4315801ba95"
+    },
+    {
+      "file": "png/h-db-press_t2.00_closeup-right_off.png",
+      "action": "h-db-press",
+      "group": "pilot",
+      "t": 2,
+      "frame": 60,
+      "camera": "closeup-right",
+      "side": "right",
+      "coveredSides": [
+        "right"
+      ],
+      "view": "stageB",
+      "state": "off",
+      "layer": "body-highlight",
+      "layerLabel": "product look",
+      "width": 720,
+      "height": 720,
+      "bodyCoverage": 0.4631,
+      "elevationDeg": {
+        "right": 164.4
+      },
+      "gate": {
+        "right": 0
+      },
+      "gateIfEnabled": {
+        "right": 1
+      },
+      "verticesWritten": 0,
+      "verticesWrittenBySide": {
+        "left": 0,
+        "right": 0
+      },
+      "maxMoveMm": 0,
+      "pageErrors": 0,
+      "pageErrorText": [],
+      "closeupCamera": {
+        "target": [
+          -0.2119777830773222,
+          1.3542219910641113,
+          0.027546952644389427
+        ],
+        "position": [
+          0.23053327399064502,
+          1.3866763493134888,
+          1.1425046554310068
+        ],
+        "up": [
+          0,
+          0.9997186903943907,
+          -0.02371792731509839
+        ],
+        "fov": 15.18928673718289,
+        "near": 0.8799999999999999,
+        "far": 4.2,
+        "used": "stageB",
+        "fallback": null,
+        "regionVertices": 696,
+        "regionCentroidFromJointMm": 42.6,
+        "viewDotForward": 0.9295114991662932,
+        "viewDotLateral": -0.36875922595573896
+      },
+      "warnings": [],
+      "approvedLook": {
+        "id": "original-head-eye-soften-20261110-r1",
+        "sha256Lf": "ac435f84ee22ed84a0eaaeef31107beef251465945fa01f9de66de978fb73f99"
+      },
+      "skinCoverage": {
+        "id": "skin-coverage",
+        "version": "0.1.0-r1",
+        "sha256Lf": "aa6665a44f960857829217a3c7ff4e216f0af7a1409ba998fff455b5df24446d"
+      },
+      "head": "161830a56947522d094b25f18de9d4315801ba95"
+    },
+    {
+      "file": "png/h-db-press_t2.00_closeup-right_off_hl-off.png",
+      "action": "h-db-press",
+      "group": "pilot",
+      "t": 2,
+      "frame": 60,
+      "camera": "closeup-right",
+      "side": "right",
+      "coveredSides": [
+        "right"
+      ],
+      "view": "stageB",
+      "state": "off",
+      "layer": "body",
+      "layerLabel": "highlight off",
+      "width": 720,
+      "height": 720,
+      "bodyCoverage": 0.4631,
+      "elevationDeg": {
+        "right": 164.4
+      },
+      "gate": {
+        "right": 0
+      },
+      "gateIfEnabled": {
+        "right": 1
+      },
+      "verticesWritten": 0,
+      "verticesWrittenBySide": {
+        "left": 0,
+        "right": 0
+      },
+      "maxMoveMm": 0,
+      "pageErrors": 0,
+      "pageErrorText": [],
+      "closeupCamera": {
+        "target": [
+          -0.2119777830773222,
+          1.3542219910641113,
+          0.027546952644389427
+        ],
+        "position": [
+          0.23053327399064502,
+          1.3866763493134888,
+          1.1425046554310068
+        ],
+        "up": [
+          0,
+          0.9997186903943907,
+          -0.02371792731509839
+        ],
+        "fov": 15.18928673718289,
+        "near": 0.8799999999999999,
+        "far": 4.2,
+        "used": "stageB",
+        "fallback": null,
+        "regionVertices": 696,
+        "regionCentroidFromJointMm": 42.6,
+        "viewDotForward": 0.9295114991662932,
+        "viewDotLateral": -0.36875922595573896
+      },
+      "warnings": [],
+      "approvedLook": {
+        "id": "original-head-eye-soften-20261110-r1",
+        "sha256Lf": "ac435f84ee22ed84a0eaaeef31107beef251465945fa01f9de66de978fb73f99"
+      },
+      "skinCoverage": {
+        "id": "skin-coverage",
+        "version": "0.1.0-r1",
+        "sha256Lf": "aa6665a44f960857829217a3c7ff4e216f0af7a1409ba998fff455b5df24446d"
+      },
+      "head": "161830a56947522d094b25f18de9d4315801ba95"
+    },
+    {
+      "file": "png/h-db-press_t2.00_closeup-right_on.png",
+      "action": "h-db-press",
+      "group": "pilot",
+      "t": 2,
+      "frame": 60,
+      "camera": "closeup-right",
+      "side": "right",
+      "coveredSides": [
+        "right"
+      ],
+      "view": "stageB",
+      "state": "on",
+      "layer": "body-highlight",
+      "layerLabel": "product look",
+      "width": 720,
+      "height": 720,
+      "bodyCoverage": 0.4718,
+      "elevationDeg": {
+        "right": 164.4
+      },
+      "gate": {
+        "right": 1
+      },
+      "gateIfEnabled": {
+        "right": 1
+      },
+      "verticesWritten": 1307,
+      "verticesWrittenBySide": {
+        "left": 611,
+        "right": 696
+      },
+      "maxMoveMm": 82.67,
+      "pageErrors": 0,
+      "pageErrorText": [],
+      "closeupCamera": {
+        "target": [
+          -0.2119777830773222,
+          1.3542219910641113,
+          0.027546952644389427
+        ],
+        "position": [
+          0.23053327399064502,
+          1.3866763493134888,
+          1.1425046554310068
+        ],
+        "up": [
+          0,
+          0.9997186903943907,
+          -0.02371792731509839
+        ],
+        "fov": 15.18928673718289,
+        "near": 0.8799999999999999,
+        "far": 4.2,
+        "used": "stageB",
+        "fallback": null,
+        "regionVertices": 696,
+        "regionCentroidFromJointMm": 42.6,
+        "viewDotForward": 0.9295114991662932,
+        "viewDotLateral": -0.36875922595573896
+      },
+      "warnings": [],
+      "approvedLook": {
+        "id": "original-head-eye-soften-20261110-r1",
+        "sha256Lf": "ac435f84ee22ed84a0eaaeef31107beef251465945fa01f9de66de978fb73f99"
+      },
+      "skinCoverage": {
+        "id": "skin-coverage",
+        "version": "0.1.0-r1",
+        "sha256Lf": "aa6665a44f960857829217a3c7ff4e216f0af7a1409ba998fff455b5df24446d"
+      },
+      "head": "161830a56947522d094b25f18de9d4315801ba95"
+    },
+    {
+      "file": "png/h-db-press_t2.00_closeup-right_on_hl-off.png",
+      "action": "h-db-press",
+      "group": "pilot",
+      "t": 2,
+      "frame": 60,
+      "camera": "closeup-right",
+      "side": "right",
+      "coveredSides": [
+        "right"
+      ],
+      "view": "stageB",
+      "state": "on",
+      "layer": "body",
+      "layerLabel": "highlight off",
+      "width": 720,
+      "height": 720,
+      "bodyCoverage": 0.4718,
+      "elevationDeg": {
+        "right": 164.4
+      },
+      "gate": {
+        "right": 1
+      },
+      "gateIfEnabled": {
+        "right": 1
+      },
+      "verticesWritten": 1307,
+      "verticesWrittenBySide": {
+        "left": 611,
+        "right": 696
+      },
+      "maxMoveMm": 82.67,
+      "pageErrors": 0,
+      "pageErrorText": [],
+      "closeupCamera": {
+        "target": [
+          -0.2119777830773222,
+          1.3542219910641113,
+          0.027546952644389427
+        ],
+        "position": [
+          0.23053327399064502,
+          1.3866763493134888,
+          1.1425046554310068
+        ],
+        "up": [
+          0,
+          0.9997186903943907,
+          -0.02371792731509839
+        ],
+        "fov": 15.18928673718289,
+        "near": 0.8799999999999999,
+        "far": 4.2,
+        "used": "stageB",
+        "fallback": null,
+        "regionVertices": 696,
+        "regionCentroidFromJointMm": 42.6,
+        "viewDotForward": 0.9295114991662932,
+        "viewDotLateral": -0.36875922595573896
+      },
+      "warnings": [],
+      "approvedLook": {
+        "id": "original-head-eye-soften-20261110-r1",
+        "sha256Lf": "ac435f84ee22ed84a0eaaeef31107beef251465945fa01f9de66de978fb73f99"
+      },
+      "skinCoverage": {
+        "id": "skin-coverage",
+        "version": "0.1.0-r1",
+        "sha256Lf": "aa6665a44f960857829217a3c7ff4e216f0af7a1409ba998fff455b5df24446d"
+      },
+      "head": "161830a56947522d094b25f18de9d4315801ba95"
+    },
+    {
+      "file": "png/h-db-press_t2.00_closeup-left_off.png",
+      "action": "h-db-press",
+      "group": "pilot",
+      "t": 2,
+      "frame": 60,
+      "camera": "closeup-left",
+      "side": "left",
+      "coveredSides": [
+        "left"
+      ],
+      "view": "stageB",
+      "state": "off",
+      "layer": "body-highlight",
+      "layerLabel": "product look",
+      "width": 720,
+      "height": 720,
+      "bodyCoverage": 0.491,
+      "elevationDeg": {
+        "left": 164.4
+      },
+      "gate": {
+        "left": 0
+      },
+      "gateIfEnabled": {
+        "left": 1
+      },
+      "verticesWritten": 0,
+      "verticesWrittenBySide": {
+        "left": 0,
+        "right": 0
+      },
+      "maxMoveMm": 0,
+      "pageErrors": 0,
+      "pageErrorText": [],
+      "closeupCamera": {
+        "target": [
+          0.21575202082078068,
+          1.345725826777504,
+          0.021506241933130714
+        ],
+        "position": [
+          0.5503398391835915,
+          1.3816250005176178,
+          1.1733578995383938
+        ],
+        "up": [
+          0,
+          0.9997186903943907,
+          -0.02371792731509839
+        ],
+        "fov": 15.18928673718289,
+        "near": 0.8799999999999999,
+        "far": 4.2,
+        "used": "stageB",
+        "fallback": null,
+        "regionVertices": 611,
+        "regionCentroidFromJointMm": 43.1,
+        "viewDotForward": 0.960315900366637,
+        "viewDotLateral": 0.27882319409025974
+      },
+      "warnings": [],
+      "approvedLook": {
+        "id": "original-head-eye-soften-20261110-r1",
+        "sha256Lf": "ac435f84ee22ed84a0eaaeef31107beef251465945fa01f9de66de978fb73f99"
+      },
+      "skinCoverage": {
+        "id": "skin-coverage",
+        "version": "0.1.0-r1",
+        "sha256Lf": "aa6665a44f960857829217a3c7ff4e216f0af7a1409ba998fff455b5df24446d"
+      },
+      "head": "161830a56947522d094b25f18de9d4315801ba95"
+    },
+    {
+      "file": "png/h-db-press_t2.00_closeup-left_off_hl-off.png",
+      "action": "h-db-press",
+      "group": "pilot",
+      "t": 2,
+      "frame": 60,
+      "camera": "closeup-left",
+      "side": "left",
+      "coveredSides": [
+        "left"
+      ],
+      "view": "stageB",
+      "state": "off",
+      "layer": "body",
+      "layerLabel": "highlight off",
+      "width": 720,
+      "height": 720,
+      "bodyCoverage": 0.491,
+      "elevationDeg": {
+        "left": 164.4
+      },
+      "gate": {
+        "left": 0
+      },
+      "gateIfEnabled": {
+        "left": 1
+      },
+      "verticesWritten": 0,
+      "verticesWrittenBySide": {
+        "left": 0,
+        "right": 0
+      },
+      "maxMoveMm": 0,
+      "pageErrors": 0,
+      "pageErrorText": [],
+      "closeupCamera": {
+        "target": [
+          0.21575202082078068,
+          1.345725826777504,
+          0.021506241933130714
+        ],
+        "position": [
+          0.5503398391835915,
+          1.3816250005176178,
+          1.1733578995383938
+        ],
+        "up": [
+          0,
+          0.9997186903943907,
+          -0.02371792731509839
+        ],
+        "fov": 15.18928673718289,
+        "near": 0.8799999999999999,
+        "far": 4.2,
+        "used": "stageB",
+        "fallback": null,
+        "regionVertices": 611,
+        "regionCentroidFromJointMm": 43.1,
+        "viewDotForward": 0.960315900366637,
+        "viewDotLateral": 0.27882319409025974
+      },
+      "warnings": [],
+      "approvedLook": {
+        "id": "original-head-eye-soften-20261110-r1",
+        "sha256Lf": "ac435f84ee22ed84a0eaaeef31107beef251465945fa01f9de66de978fb73f99"
+      },
+      "skinCoverage": {
+        "id": "skin-coverage",
+        "version": "0.1.0-r1",
+        "sha256Lf": "aa6665a44f960857829217a3c7ff4e216f0af7a1409ba998fff455b5df24446d"
+      },
+      "head": "161830a56947522d094b25f18de9d4315801ba95"
+    },
+    {
+      "file": "png/h-db-press_t2.00_closeup-left_on.png",
+      "action": "h-db-press",
+      "group": "pilot",
+      "t": 2,
+      "frame": 60,
+      "camera": "closeup-left",
+      "side": "left",
+      "coveredSides": [
+        "left"
+      ],
+      "view": "stageB",
+      "state": "on",
+      "layer": "body-highlight",
+      "layerLabel": "product look",
+      "width": 720,
+      "height": 720,
+      "bodyCoverage": 0.491,
+      "elevationDeg": {
+        "left": 164.4
+      },
+      "gate": {
+        "left": 1
+      },
+      "gateIfEnabled": {
+        "left": 1
+      },
+      "verticesWritten": 1307,
+      "verticesWrittenBySide": {
+        "left": 611,
+        "right": 696
+      },
+      "maxMoveMm": 82.67,
+      "pageErrors": 0,
+      "pageErrorText": [],
+      "closeupCamera": {
+        "target": [
+          0.21575202082078068,
+          1.345725826777504,
+          0.021506241933130714
+        ],
+        "position": [
+          0.5503398391835915,
+          1.3816250005176178,
+          1.1733578995383938
+        ],
+        "up": [
+          0,
+          0.9997186903943907,
+          -0.02371792731509839
+        ],
+        "fov": 15.18928673718289,
+        "near": 0.8799999999999999,
+        "far": 4.2,
+        "used": "stageB",
+        "fallback": null,
+        "regionVertices": 611,
+        "regionCentroidFromJointMm": 43.1,
+        "viewDotForward": 0.960315900366637,
+        "viewDotLateral": 0.27882319409025974
+      },
+      "warnings": [],
+      "approvedLook": {
+        "id": "original-head-eye-soften-20261110-r1",
+        "sha256Lf": "ac435f84ee22ed84a0eaaeef31107beef251465945fa01f9de66de978fb73f99"
+      },
+      "skinCoverage": {
+        "id": "skin-coverage",
+        "version": "0.1.0-r1",
+        "sha256Lf": "aa6665a44f960857829217a3c7ff4e216f0af7a1409ba998fff455b5df24446d"
+      },
+      "head": "161830a56947522d094b25f18de9d4315801ba95"
+    },
+    {
+      "file": "png/h-db-press_t2.00_closeup-left_on_hl-off.png",
+      "action": "h-db-press",
+      "group": "pilot",
+      "t": 2,
+      "frame": 60,
+      "camera": "closeup-left",
+      "side": "left",
+      "coveredSides": [
+        "left"
+      ],
+      "view": "stageB",
+      "state": "on",
+      "layer": "body",
+      "layerLabel": "highlight off",
+      "width": 720,
+      "height": 720,
+      "bodyCoverage": 0.491,
+      "elevationDeg": {
+        "left": 164.4
+      },
+      "gate": {
+        "left": 1
+      },
+      "gateIfEnabled": {
+        "left": 1
+      },
+      "verticesWritten": 1307,
+      "verticesWrittenBySide": {
+        "left": 611,
+        "right": 696
+      },
+      "maxMoveMm": 82.67,
+      "pageErrors": 0,
+      "pageErrorText": [],
+      "closeupCamera": {
+        "target": [
+          0.21575202082078068,
+          1.345725826777504,
+          0.021506241933130714
+        ],
+        "position": [
+          0.5503398391835915,
+          1.3816250005176178,
+          1.1733578995383938
+        ],
+        "up": [
+          0,
+          0.9997186903943907,
+          -0.02371792731509839
+        ],
+        "fov": 15.18928673718289,
+        "near": 0.8799999999999999,
+        "far": 4.2,
+        "used": "stageB",
+        "fallback": null,
+        "regionVertices": 611,
+        "regionCentroidFromJointMm": 43.1,
+        "viewDotForward": 0.960315900366637,
+        "viewDotLateral": 0.27882319409025974
+      },
+      "warnings": [],
+      "approvedLook": {
+        "id": "original-head-eye-soften-20261110-r1",
+        "sha256Lf": "ac435f84ee22ed84a0eaaeef31107beef251465945fa01f9de66de978fb73f99"
+      },
+      "skinCoverage": {
+        "id": "skin-coverage",
+        "version": "0.1.0-r1",
+        "sha256Lf": "aa6665a44f960857829217a3c7ff4e216f0af7a1409ba998fff455b5df24446d"
+      },
+      "head": "161830a56947522d094b25f18de9d4315801ba95"
+    },
+    {
+      "file": "png/h-fixed-bar-vertical-pull_t0.00_full_off.png",
+      "action": "h-fixed-bar-vertical-pull",
+      "group": "pilot",
+      "t": 0,
+      "frame": 0,
+      "camera": "full",
+      "side": null,
+      "coveredSides": [
+        "right",
+        "left"
+      ],
+      "view": "production",
+      "state": "off",
+      "layer": "body-highlight",
+      "layerLabel": "product look",
+      "width": 720,
+      "height": 720,
+      "bodyCoverage": 0.1104,
+      "elevationDeg": {
+        "right": 160.86,
+        "left": 160.86
+      },
+      "gate": {
+        "right": 0,
+        "left": 0
+      },
+      "gateIfEnabled": {
+        "right": 1,
+        "left": 1
+      },
+      "verticesWritten": 0,
+      "verticesWrittenBySide": {
+        "left": 0,
+        "right": 0
+      },
+      "maxMoveMm": 0,
+      "pageErrors": 0,
+      "pageErrorText": [],
+      "closeupCamera": null,
+      "warnings": [],
+      "approvedLook": {
+        "id": "original-head-eye-soften-20261110-r1",
+        "sha256Lf": "ac435f84ee22ed84a0eaaeef31107beef251465945fa01f9de66de978fb73f99"
+      },
+      "skinCoverage": {
+        "id": "skin-coverage",
+        "version": "0.1.0-r1",
+        "sha256Lf": "aa6665a44f960857829217a3c7ff4e216f0af7a1409ba998fff455b5df24446d"
+      },
+      "head": "161830a56947522d094b25f18de9d4315801ba95"
+    },
+    {
+      "file": "png/h-fixed-bar-vertical-pull_t0.00_full_on.png",
+      "action": "h-fixed-bar-vertical-pull",
+      "group": "pilot",
+      "t": 0,
+      "frame": 0,
+      "camera": "full",
+      "side": null,
+      "coveredSides": [
+        "right",
+        "left"
+      ],
+      "view": "production",
+      "state": "on",
+      "layer": "body-highlight",
+      "layerLabel": "product look",
+      "width": 720,
+      "height": 720,
+      "bodyCoverage": 0.1104,
+      "elevationDeg": {
+        "right": 160.86,
+        "left": 160.86
+      },
+      "gate": {
+        "right": 1,
+        "left": 1
+      },
+      "gateIfEnabled": {
+        "right": 1,
+        "left": 1
+      },
+      "verticesWritten": 1307,
+      "verticesWrittenBySide": {
+        "left": 611,
+        "right": 696
+      },
+      "maxMoveMm": 80,
+      "pageErrors": 0,
+      "pageErrorText": [],
+      "closeupCamera": null,
+      "warnings": [],
+      "approvedLook": {
+        "id": "original-head-eye-soften-20261110-r1",
+        "sha256Lf": "ac435f84ee22ed84a0eaaeef31107beef251465945fa01f9de66de978fb73f99"
+      },
+      "skinCoverage": {
+        "id": "skin-coverage",
+        "version": "0.1.0-r1",
+        "sha256Lf": "aa6665a44f960857829217a3c7ff4e216f0af7a1409ba998fff455b5df24446d"
+      },
+      "head": "161830a56947522d094b25f18de9d4315801ba95"
+    },
+    {
+      "file": "png/h-fixed-bar-vertical-pull_t0.00_closeup-right_off.png",
+      "action": "h-fixed-bar-vertical-pull",
+      "group": "pilot",
+      "t": 0,
+      "frame": 0,
+      "camera": "closeup-right",
+      "side": "right",
+      "coveredSides": [
+        "right"
+      ],
+      "view": "stageB",
+      "state": "off",
+      "layer": "body-highlight",
+      "layerLabel": "product look",
+      "width": 720,
+      "height": 720,
+      "bodyCoverage": 0.4581,
+      "elevationDeg": {
+        "right": 160.86
+      },
+      "gate": {
+        "right": 0
+      },
+      "gateIfEnabled": {
+        "right": 1
+      },
+      "verticesWritten": 0,
+      "verticesWrittenBySide": {
+        "left": 0,
+        "right": 0
+      },
+      "maxMoveMm": 0,
+      "pageErrors": 0,
+      "pageErrorText": [],
+      "closeupCamera": {
+        "target": [
+          -0.21202848358401155,
+          1.5309461129183684,
+          -0.05202858924299607
+        ],
+        "position": [
+          -0.005621112553172519,
+          1.5850417303294597,
+          1.1288480602683109
+        ],
+        "up": [
+          0,
+          0.9997186903943907,
+          -0.0237179273150984
+        ],
+        "fov": 15.18928673718289,
+        "near": 0.8799999999999999,
+        "far": 4.2,
+        "used": "stageB",
+        "fallback": null,
+        "regionVertices": 696,
+        "regionCentroidFromJointMm": 44.2,
+        "viewDotForward": 0.9848562424027306,
+        "viewDotLateral": -0.17200615495670174
+      },
+      "warnings": [],
+      "approvedLook": {
+        "id": "original-head-eye-soften-20261110-r1",
+        "sha256Lf": "ac435f84ee22ed84a0eaaeef31107beef251465945fa01f9de66de978fb73f99"
+      },
+      "skinCoverage": {
+        "id": "skin-coverage",
+        "version": "0.1.0-r1",
+        "sha256Lf": "aa6665a44f960857829217a3c7ff4e216f0af7a1409ba998fff455b5df24446d"
+      },
+      "head": "161830a56947522d094b25f18de9d4315801ba95"
+    },
+    {
+      "file": "png/h-fixed-bar-vertical-pull_t0.00_closeup-right_off_hl-off.png",
+      "action": "h-fixed-bar-vertical-pull",
+      "group": "pilot",
+      "t": 0,
+      "frame": 0,
+      "camera": "closeup-right",
+      "side": "right",
+      "coveredSides": [
+        "right"
+      ],
+      "view": "stageB",
+      "state": "off",
+      "layer": "body",
+      "layerLabel": "highlight off",
+      "width": 720,
+      "height": 720,
+      "bodyCoverage": 0.4581,
+      "elevationDeg": {
+        "right": 160.86
+      },
+      "gate": {
+        "right": 0
+      },
+      "gateIfEnabled": {
+        "right": 1
+      },
+      "verticesWritten": 0,
+      "verticesWrittenBySide": {
+        "left": 0,
+        "right": 0
+      },
+      "maxMoveMm": 0,
+      "pageErrors": 0,
+      "pageErrorText": [],
+      "closeupCamera": {
+        "target": [
+          -0.21202848358401155,
+          1.5309461129183684,
+          -0.05202858924299607
+        ],
+        "position": [
+          -0.005621112553172519,
+          1.5850417303294597,
+          1.1288480602683109
+        ],
+        "up": [
+          0,
+          0.9997186903943907,
+          -0.0237179273150984
+        ],
+        "fov": 15.18928673718289,
+        "near": 0.8799999999999999,
+        "far": 4.2,
+        "used": "stageB",
+        "fallback": null,
+        "regionVertices": 696,
+        "regionCentroidFromJointMm": 44.2,
+        "viewDotForward": 0.9848562424027306,
+        "viewDotLateral": -0.17200615495670174
+      },
+      "warnings": [],
+      "approvedLook": {
+        "id": "original-head-eye-soften-20261110-r1",
+        "sha256Lf": "ac435f84ee22ed84a0eaaeef31107beef251465945fa01f9de66de978fb73f99"
+      },
+      "skinCoverage": {
+        "id": "skin-coverage",
+        "version": "0.1.0-r1",
+        "sha256Lf": "aa6665a44f960857829217a3c7ff4e216f0af7a1409ba998fff455b5df24446d"
+      },
+      "head": "161830a56947522d094b25f18de9d4315801ba95"
+    },
+    {
+      "file": "png/h-fixed-bar-vertical-pull_t0.00_closeup-right_on.png",
+      "action": "h-fixed-bar-vertical-pull",
+      "group": "pilot",
+      "t": 0,
+      "frame": 0,
+      "camera": "closeup-right",
+      "side": "right",
+      "coveredSides": [
+        "right"
+      ],
+      "view": "stageB",
+      "state": "on",
+      "layer": "body-highlight",
+      "layerLabel": "product look",
+      "width": 720,
+      "height": 720,
+      "bodyCoverage": 0.4603,
+      "elevationDeg": {
+        "right": 160.86
+      },
+      "gate": {
+        "right": 1
+      },
+      "gateIfEnabled": {
+        "right": 1
+      },
+      "verticesWritten": 1307,
+      "verticesWrittenBySide": {
+        "left": 611,
+        "right": 696
+      },
+      "maxMoveMm": 80,
+      "pageErrors": 0,
+      "pageErrorText": [],
+      "closeupCamera": {
+        "target": [
+          -0.21202848358401155,
+          1.5309461129183684,
+          -0.05202858924299607
+        ],
+        "position": [
+          -0.005621112553172519,
+          1.5850417303294597,
+          1.1288480602683109
+        ],
+        "up": [
+          0,
+          0.9997186903943907,
+          -0.0237179273150984
+        ],
+        "fov": 15.18928673718289,
+        "near": 0.8799999999999999,
+        "far": 4.2,
+        "used": "stageB",
+        "fallback": null,
+        "regionVertices": 696,
+        "regionCentroidFromJointMm": 44.2,
+        "viewDotForward": 0.9848562424027306,
+        "viewDotLateral": -0.17200615495670174
+      },
+      "warnings": [],
+      "approvedLook": {
+        "id": "original-head-eye-soften-20261110-r1",
+        "sha256Lf": "ac435f84ee22ed84a0eaaeef31107beef251465945fa01f9de66de978fb73f99"
+      },
+      "skinCoverage": {
+        "id": "skin-coverage",
+        "version": "0.1.0-r1",
+        "sha256Lf": "aa6665a44f960857829217a3c7ff4e216f0af7a1409ba998fff455b5df24446d"
+      },
+      "head": "161830a56947522d094b25f18de9d4315801ba95"
+    },
+    {
+      "file": "png/h-fixed-bar-vertical-pull_t0.00_closeup-right_on_hl-off.png",
+      "action": "h-fixed-bar-vertical-pull",
+      "group": "pilot",
+      "t": 0,
+      "frame": 0,
+      "camera": "closeup-right",
+      "side": "right",
+      "coveredSides": [
+        "right"
+      ],
+      "view": "stageB",
+      "state": "on",
+      "layer": "body",
+      "layerLabel": "highlight off",
+      "width": 720,
+      "height": 720,
+      "bodyCoverage": 0.4603,
+      "elevationDeg": {
+        "right": 160.86
+      },
+      "gate": {
+        "right": 1
+      },
+      "gateIfEnabled": {
+        "right": 1
+      },
+      "verticesWritten": 1307,
+      "verticesWrittenBySide": {
+        "left": 611,
+        "right": 696
+      },
+      "maxMoveMm": 80,
+      "pageErrors": 0,
+      "pageErrorText": [],
+      "closeupCamera": {
+        "target": [
+          -0.21202848358401155,
+          1.5309461129183684,
+          -0.05202858924299607
+        ],
+        "position": [
+          -0.005621112553172519,
+          1.5850417303294597,
+          1.1288480602683109
+        ],
+        "up": [
+          0,
+          0.9997186903943907,
+          -0.0237179273150984
+        ],
+        "fov": 15.18928673718289,
+        "near": 0.8799999999999999,
+        "far": 4.2,
+        "used": "stageB",
+        "fallback": null,
+        "regionVertices": 696,
+        "regionCentroidFromJointMm": 44.2,
+        "viewDotForward": 0.9848562424027306,
+        "viewDotLateral": -0.17200615495670174
+      },
+      "warnings": [],
+      "approvedLook": {
+        "id": "original-head-eye-soften-20261110-r1",
+        "sha256Lf": "ac435f84ee22ed84a0eaaeef31107beef251465945fa01f9de66de978fb73f99"
+      },
+      "skinCoverage": {
+        "id": "skin-coverage",
+        "version": "0.1.0-r1",
+        "sha256Lf": "aa6665a44f960857829217a3c7ff4e216f0af7a1409ba998fff455b5df24446d"
+      },
+      "head": "161830a56947522d094b25f18de9d4315801ba95"
+    },
+    {
+      "file": "png/h-fixed-bar-vertical-pull_t0.00_closeup-left_off.png",
+      "action": "h-fixed-bar-vertical-pull",
+      "group": "pilot",
+      "t": 0,
+      "frame": 0,
+      "camera": "closeup-left",
+      "side": "left",
+      "coveredSides": [
+        "left"
+      ],
+      "view": "stageB",
+      "state": "off",
+      "layer": "body-highlight",
+      "layerLabel": "product look",
+      "width": 720,
+      "height": 720,
+      "bodyCoverage": 0.4673,
+      "elevationDeg": {
+        "left": 160.86
+      },
+      "gate": {
+        "left": 0
+      },
+      "gateIfEnabled": {
+        "left": 1
+      },
+      "verticesWritten": 0,
+      "verticesWrittenBySide": {
+        "left": 0,
+        "right": 0
+      },
+      "maxMoveMm": 0,
+      "pageErrors": 0,
+      "pageErrorText": [],
+      "closeupCamera": {
+        "target": [
+          0.21565648297657647,
+          1.522422401328608,
+          -0.05813043917185541
+        ],
+        "position": [
+          0.34573088872892843,
+          1.5785135431467343,
+          1.1334795778965274
+        ],
+        "up": [
+          0,
+          0.9997186903943907,
+          -0.0237179273150984
+        ],
+        "fov": 15.18928673718289,
+        "near": 0.8799999999999999,
+        "far": 4.2,
+        "used": "stageB",
+        "fallback": null,
+        "regionVertices": 611,
+        "regionCentroidFromJointMm": 44.7,
+        "viewDotForward": 0.9938376414227382,
+        "viewDotLateral": 0.10839535067132702
+      },
+      "warnings": [],
+      "approvedLook": {
+        "id": "original-head-eye-soften-20261110-r1",
+        "sha256Lf": "ac435f84ee22ed84a0eaaeef31107beef251465945fa01f9de66de978fb73f99"
+      },
+      "skinCoverage": {
+        "id": "skin-coverage",
+        "version": "0.1.0-r1",
+        "sha256Lf": "aa6665a44f960857829217a3c7ff4e216f0af7a1409ba998fff455b5df24446d"
+      },
+      "head": "161830a56947522d094b25f18de9d4315801ba95"
+    },
+    {
+      "file": "png/h-fixed-bar-vertical-pull_t0.00_closeup-left_off_hl-off.png",
+      "action": "h-fixed-bar-vertical-pull",
+      "group": "pilot",
+      "t": 0,
+      "frame": 0,
+      "camera": "closeup-left",
+      "side": "left",
+      "coveredSides": [
+        "left"
+      ],
+      "view": "stageB",
+      "state": "off",
+      "layer": "body",
+      "layerLabel": "highlight off",
+      "width": 720,
+      "height": 720,
+      "bodyCoverage": 0.4673,
+      "elevationDeg": {
+        "left": 160.86
+      },
+      "gate": {
+        "left": 0
+      },
+      "gateIfEnabled": {
+        "left": 1
+      },
+      "verticesWritten": 0,
+      "verticesWrittenBySide": {
+        "left": 0,
+        "right": 0
+      },
+      "maxMoveMm": 0,
+      "pageErrors": 0,
+      "pageErrorText": [],
+      "closeupCamera": {
+        "target": [
+          0.21565648297657647,
+          1.522422401328608,
+          -0.05813043917185541
+        ],
+        "position": [
+          0.34573088872892843,
+          1.5785135431467343,
+          1.1334795778965274
+        ],
+        "up": [
+          0,
+          0.9997186903943907,
+          -0.0237179273150984
+        ],
+        "fov": 15.18928673718289,
+        "near": 0.8799999999999999,
+        "far": 4.2,
+        "used": "stageB",
+        "fallback": null,
+        "regionVertices": 611,
+        "regionCentroidFromJointMm": 44.7,
+        "viewDotForward": 0.9938376414227382,
+        "viewDotLateral": 0.10839535067132702
+      },
+      "warnings": [],
+      "approvedLook": {
+        "id": "original-head-eye-soften-20261110-r1",
+        "sha256Lf": "ac435f84ee22ed84a0eaaeef31107beef251465945fa01f9de66de978fb73f99"
+      },
+      "skinCoverage": {
+        "id": "skin-coverage",
+        "version": "0.1.0-r1",
+        "sha256Lf": "aa6665a44f960857829217a3c7ff4e216f0af7a1409ba998fff455b5df24446d"
+      },
+      "head": "161830a56947522d094b25f18de9d4315801ba95"
+    },
+    {
+      "file": "png/h-fixed-bar-vertical-pull_t0.00_closeup-left_on.png",
+      "action": "h-fixed-bar-vertical-pull",
+      "group": "pilot",
+      "t": 0,
+      "frame": 0,
+      "camera": "closeup-left",
+      "side": "left",
+      "coveredSides": [
+        "left"
+      ],
+      "view": "stageB",
+      "state": "on",
+      "layer": "body-highlight",
+      "layerLabel": "product look",
+      "width": 720,
+      "height": 720,
+      "bodyCoverage": 0.4673,
+      "elevationDeg": {
+        "left": 160.86
+      },
+      "gate": {
+        "left": 1
+      },
+      "gateIfEnabled": {
+        "left": 1
+      },
+      "verticesWritten": 1307,
+      "verticesWrittenBySide": {
+        "left": 611,
+        "right": 696
+      },
+      "maxMoveMm": 80,
+      "pageErrors": 0,
+      "pageErrorText": [],
+      "closeupCamera": {
+        "target": [
+          0.21565648297657647,
+          1.522422401328608,
+          -0.05813043917185541
+        ],
+        "position": [
+          0.34573088872892843,
+          1.5785135431467343,
+          1.1334795778965274
+        ],
+        "up": [
+          0,
+          0.9997186903943907,
+          -0.0237179273150984
+        ],
+        "fov": 15.18928673718289,
+        "near": 0.8799999999999999,
+        "far": 4.2,
+        "used": "stageB",
+        "fallback": null,
+        "regionVertices": 611,
+        "regionCentroidFromJointMm": 44.7,
+        "viewDotForward": 0.9938376414227382,
+        "viewDotLateral": 0.10839535067132702
+      },
+      "warnings": [],
+      "approvedLook": {
+        "id": "original-head-eye-soften-20261110-r1",
+        "sha256Lf": "ac435f84ee22ed84a0eaaeef31107beef251465945fa01f9de66de978fb73f99"
+      },
+      "skinCoverage": {
+        "id": "skin-coverage",
+        "version": "0.1.0-r1",
+        "sha256Lf": "aa6665a44f960857829217a3c7ff4e216f0af7a1409ba998fff455b5df24446d"
+      },
+      "head": "161830a56947522d094b25f18de9d4315801ba95"
+    },
+    {
+      "file": "png/h-fixed-bar-vertical-pull_t0.00_closeup-left_on_hl-off.png",
+      "action": "h-fixed-bar-vertical-pull",
+      "group": "pilot",
+      "t": 0,
+      "frame": 0,
+      "camera": "closeup-left",
+      "side": "left",
+      "coveredSides": [
+        "left"
+      ],
+      "view": "stageB",
+      "state": "on",
+      "layer": "body",
+      "layerLabel": "highlight off",
+      "width": 720,
+      "height": 720,
+      "bodyCoverage": 0.4673,
+      "elevationDeg": {
+        "left": 160.86
+      },
+      "gate": {
+        "left": 1
+      },
+      "gateIfEnabled": {
+        "left": 1
+      },
+      "verticesWritten": 1307,
+      "verticesWrittenBySide": {
+        "left": 611,
+        "right": 696
+      },
+      "maxMoveMm": 80,
+      "pageErrors": 0,
+      "pageErrorText": [],
+      "closeupCamera": {
+        "target": [
+          0.21565648297657647,
+          1.522422401328608,
+          -0.05813043917185541
+        ],
+        "position": [
+          0.34573088872892843,
+          1.5785135431467343,
+          1.1334795778965274
+        ],
+        "up": [
+          0,
+          0.9997186903943907,
+          -0.0237179273150984
+        ],
+        "fov": 15.18928673718289,
+        "near": 0.8799999999999999,
+        "far": 4.2,
+        "used": "stageB",
+        "fallback": null,
+        "regionVertices": 611,
+        "regionCentroidFromJointMm": 44.7,
+        "viewDotForward": 0.9938376414227382,
+        "viewDotLateral": 0.10839535067132702
+      },
+      "warnings": [],
+      "approvedLook": {
+        "id": "original-head-eye-soften-20261110-r1",
+        "sha256Lf": "ac435f84ee22ed84a0eaaeef31107beef251465945fa01f9de66de978fb73f99"
+      },
+      "skinCoverage": {
+        "id": "skin-coverage",
+        "version": "0.1.0-r1",
+        "sha256Lf": "aa6665a44f960857829217a3c7ff4e216f0af7a1409ba998fff455b5df24446d"
+      },
+      "head": "161830a56947522d094b25f18de9d4315801ba95"
+    },
+    {
+      "file": "png/abs-A_t0.50_full_off.png",
+      "action": "abs-A",
+      "group": "control",
+      "t": 0.5,
+      "frame": 15,
+      "camera": "full",
+      "side": null,
+      "coveredSides": [
+        "right"
+      ],
+      "view": "production",
+      "state": "off",
+      "layer": "body-highlight",
+      "layerLabel": "product look",
+      "width": 720,
+      "height": 720,
+      "bodyCoverage": 0.1243,
+      "elevationDeg": {
+        "right": 179.48
+      },
+      "gate": {
+        "right": 0
+      },
+      "gateIfEnabled": {
+        "right": 1
+      },
+      "verticesWritten": 0,
+      "verticesWrittenBySide": {
+        "left": 0,
+        "right": 0
+      },
+      "maxMoveMm": 0,
+      "pageErrors": 0,
+      "pageErrorText": [],
+      "closeupCamera": null,
+      "warnings": [],
+      "approvedLook": {
+        "id": "original-head-eye-soften-20261110-r1",
+        "sha256Lf": "ac435f84ee22ed84a0eaaeef31107beef251465945fa01f9de66de978fb73f99"
+      },
+      "skinCoverage": {
+        "id": "skin-coverage",
+        "version": "0.1.0-r1",
+        "sha256Lf": "aa6665a44f960857829217a3c7ff4e216f0af7a1409ba998fff455b5df24446d"
+      },
+      "head": "161830a56947522d094b25f18de9d4315801ba95"
+    },
+    {
+      "file": "png/abs-A_t0.50_full_on.png",
+      "action": "abs-A",
+      "group": "control",
+      "t": 0.5,
+      "frame": 15,
+      "camera": "full",
+      "side": null,
+      "coveredSides": [
+        "right"
+      ],
+      "view": "production",
+      "state": "on",
+      "layer": "body-highlight",
+      "layerLabel": "product look",
+      "width": 720,
+      "height": 720,
+      "bodyCoverage": 0.1243,
+      "elevationDeg": {
+        "right": 179.48
+      },
+      "gate": {
+        "right": 1
+      },
+      "gateIfEnabled": {
+        "right": 1
+      },
+      "verticesWritten": 1307,
+      "verticesWrittenBySide": {
+        "left": 611,
+        "right": 696
+      },
+      "maxMoveMm": 75.97,
+      "pageErrors": 0,
+      "pageErrorText": [],
+      "closeupCamera": null,
+      "warnings": [],
+      "approvedLook": {
+        "id": "original-head-eye-soften-20261110-r1",
+        "sha256Lf": "ac435f84ee22ed84a0eaaeef31107beef251465945fa01f9de66de978fb73f99"
+      },
+      "skinCoverage": {
+        "id": "skin-coverage",
+        "version": "0.1.0-r1",
+        "sha256Lf": "aa6665a44f960857829217a3c7ff4e216f0af7a1409ba998fff455b5df24446d"
+      },
+      "head": "161830a56947522d094b25f18de9d4315801ba95"
+    },
+    {
+      "file": "png/abs-A_t0.50_closeup-right_off.png",
+      "action": "abs-A",
+      "group": "control",
+      "t": 0.5,
+      "frame": 15,
+      "camera": "closeup-right",
+      "side": "right",
+      "coveredSides": [
+        "right"
+      ],
+      "view": "axilla",
+      "state": "off",
+      "layer": "body-highlight",
+      "layerLabel": "product look",
+      "width": 720,
+      "height": 720,
+      "bodyCoverage": 0.997,
+      "elevationDeg": {
+        "right": 179.48
+      },
+      "gate": {
+        "right": 0
+      },
+      "gateIfEnabled": {
+        "right": 1
+      },
+      "verticesWritten": 0,
+      "verticesWrittenBySide": {
+        "left": 0,
+        "right": 0
+      },
+      "maxMoveMm": 0,
+      "pageErrors": 0,
+      "pageErrorText": [],
+      "closeupCamera": {
+        "target": [
+          -0.4054934779156968,
+          0.14984665642911574,
+          0.18572053171813113
+        ],
+        "position": [
+          -0.2610688006832674,
+          1.2382400853749593,
+          0.6700151284604623
+        ],
+        "up": [
+          -0.9984730059932333,
+          -0.055241798511968684,
+          9.330522889968074e-17
+        ],
+        "fov": 15.18928673718289,
+        "near": 0.8799999999999999,
+        "far": 4.2,
+        "used": "axilla",
+        "fallback": null,
+        "regionVertices": 696,
+        "regionCentroidFromJointMm": 39.8,
+        "viewDotForward": 0.8989609911812779,
+        "viewDotLateral": 0.4035788127347391
+      },
+      "warnings": [],
+      "approvedLook": {
+        "id": "original-head-eye-soften-20261110-r1",
+        "sha256Lf": "ac435f84ee22ed84a0eaaeef31107beef251465945fa01f9de66de978fb73f99"
+      },
+      "skinCoverage": {
+        "id": "skin-coverage",
+        "version": "0.1.0-r1",
+        "sha256Lf": "aa6665a44f960857829217a3c7ff4e216f0af7a1409ba998fff455b5df24446d"
+      },
+      "head": "161830a56947522d094b25f18de9d4315801ba95"
+    },
+    {
+      "file": "png/abs-A_t0.50_closeup-right_off_hl-off.png",
+      "action": "abs-A",
+      "group": "control",
+      "t": 0.5,
+      "frame": 15,
+      "camera": "closeup-right",
+      "side": "right",
+      "coveredSides": [
+        "right"
+      ],
+      "view": "axilla",
+      "state": "off",
+      "layer": "body",
+      "layerLabel": "highlight off",
+      "width": 720,
+      "height": 720,
+      "bodyCoverage": 0.997,
+      "elevationDeg": {
+        "right": 179.48
+      },
+      "gate": {
+        "right": 0
+      },
+      "gateIfEnabled": {
+        "right": 1
+      },
+      "verticesWritten": 0,
+      "verticesWrittenBySide": {
+        "left": 0,
+        "right": 0
+      },
+      "maxMoveMm": 0,
+      "pageErrors": 0,
+      "pageErrorText": [],
+      "closeupCamera": {
+        "target": [
+          -0.4054934779156968,
+          0.14984665642911574,
+          0.18572053171813113
+        ],
+        "position": [
+          -0.2610688006832674,
+          1.2382400853749593,
+          0.6700151284604623
+        ],
+        "up": [
+          -0.9984730059932333,
+          -0.055241798511968684,
+          9.330522889968074e-17
+        ],
+        "fov": 15.18928673718289,
+        "near": 0.8799999999999999,
+        "far": 4.2,
+        "used": "axilla",
+        "fallback": null,
+        "regionVertices": 696,
+        "regionCentroidFromJointMm": 39.8,
+        "viewDotForward": 0.8989609911812779,
+        "viewDotLateral": 0.4035788127347391
+      },
+      "warnings": [],
+      "approvedLook": {
+        "id": "original-head-eye-soften-20261110-r1",
+        "sha256Lf": "ac435f84ee22ed84a0eaaeef31107beef251465945fa01f9de66de978fb73f99"
+      },
+      "skinCoverage": {
+        "id": "skin-coverage",
+        "version": "0.1.0-r1",
+        "sha256Lf": "aa6665a44f960857829217a3c7ff4e216f0af7a1409ba998fff455b5df24446d"
+      },
+      "head": "161830a56947522d094b25f18de9d4315801ba95"
+    },
+    {
+      "file": "png/abs-A_t0.50_closeup-right_on.png",
+      "action": "abs-A",
+      "group": "control",
+      "t": 0.5,
+      "frame": 15,
+      "camera": "closeup-right",
+      "side": "right",
+      "coveredSides": [
+        "right"
+      ],
+      "view": "axilla",
+      "state": "on",
+      "layer": "body-highlight",
+      "layerLabel": "product look",
+      "width": 720,
+      "height": 720,
+      "bodyCoverage": 0.997,
+      "elevationDeg": {
+        "right": 179.48
+      },
+      "gate": {
+        "right": 1
+      },
+      "gateIfEnabled": {
+        "right": 1
+      },
+      "verticesWritten": 1307,
+      "verticesWrittenBySide": {
+        "left": 611,
+        "right": 696
+      },
+      "maxMoveMm": 75.97,
+      "pageErrors": 0,
+      "pageErrorText": [],
+      "closeupCamera": {
+        "target": [
+          -0.4054934779156968,
+          0.14984665642911574,
+          0.18572053171813113
+        ],
+        "position": [
+          -0.2610688006832674,
+          1.2382400853749593,
+          0.6700151284604623
+        ],
+        "up": [
+          -0.9984730059932333,
+          -0.055241798511968684,
+          9.330522889968074e-17
+        ],
+        "fov": 15.18928673718289,
+        "near": 0.8799999999999999,
+        "far": 4.2,
+        "used": "axilla",
+        "fallback": null,
+        "regionVertices": 696,
+        "regionCentroidFromJointMm": 39.8,
+        "viewDotForward": 0.8989609911812779,
+        "viewDotLateral": 0.4035788127347391
+      },
+      "warnings": [],
+      "approvedLook": {
+        "id": "original-head-eye-soften-20261110-r1",
+        "sha256Lf": "ac435f84ee22ed84a0eaaeef31107beef251465945fa01f9de66de978fb73f99"
+      },
+      "skinCoverage": {
+        "id": "skin-coverage",
+        "version": "0.1.0-r1",
+        "sha256Lf": "aa6665a44f960857829217a3c7ff4e216f0af7a1409ba998fff455b5df24446d"
+      },
+      "head": "161830a56947522d094b25f18de9d4315801ba95"
+    },
+    {
+      "file": "png/abs-A_t0.50_closeup-right_on_hl-off.png",
+      "action": "abs-A",
+      "group": "control",
+      "t": 0.5,
+      "frame": 15,
+      "camera": "closeup-right",
+      "side": "right",
+      "coveredSides": [
+        "right"
+      ],
+      "view": "axilla",
+      "state": "on",
+      "layer": "body",
+      "layerLabel": "highlight off",
+      "width": 720,
+      "height": 720,
+      "bodyCoverage": 0.997,
+      "elevationDeg": {
+        "right": 179.48
+      },
+      "gate": {
+        "right": 1
+      },
+      "gateIfEnabled": {
+        "right": 1
+      },
+      "verticesWritten": 1307,
+      "verticesWrittenBySide": {
+        "left": 611,
+        "right": 696
+      },
+      "maxMoveMm": 75.97,
+      "pageErrors": 0,
+      "pageErrorText": [],
+      "closeupCamera": {
+        "target": [
+          -0.4054934779156968,
+          0.14984665642911574,
+          0.18572053171813113
+        ],
+        "position": [
+          -0.2610688006832674,
+          1.2382400853749593,
+          0.6700151284604623
+        ],
+        "up": [
+          -0.9984730059932333,
+          -0.055241798511968684,
+          9.330522889968074e-17
+        ],
+        "fov": 15.18928673718289,
+        "near": 0.8799999999999999,
+        "far": 4.2,
+        "used": "axilla",
+        "fallback": null,
+        "regionVertices": 696,
+        "regionCentroidFromJointMm": 39.8,
+        "viewDotForward": 0.8989609911812779,
+        "viewDotLateral": 0.4035788127347391
+      },
+      "warnings": [],
+      "approvedLook": {
+        "id": "original-head-eye-soften-20261110-r1",
+        "sha256Lf": "ac435f84ee22ed84a0eaaeef31107beef251465945fa01f9de66de978fb73f99"
+      },
+      "skinCoverage": {
+        "id": "skin-coverage",
+        "version": "0.1.0-r1",
+        "sha256Lf": "aa6665a44f960857829217a3c7ff4e216f0af7a1409ba998fff455b5df24446d"
+      },
+      "head": "161830a56947522d094b25f18de9d4315801ba95"
+    },
+    {
+      "file": "png/o-stand-crossreach_t3.83_full_off.png",
+      "action": "o-stand-crossreach",
+      "group": "control",
+      "t": 3.8333,
+      "frame": 115,
+      "camera": "full",
+      "side": null,
+      "coveredSides": [
+        "right"
+      ],
+      "view": "production",
+      "state": "off",
+      "layer": "body-highlight",
+      "layerLabel": "product look",
+      "width": 720,
+      "height": 720,
+      "bodyCoverage": 0.098,
+      "elevationDeg": {
+        "right": 171.62
+      },
+      "gate": {
+        "right": 0
+      },
+      "gateIfEnabled": {
+        "right": 1
+      },
+      "verticesWritten": 0,
+      "verticesWrittenBySide": {
+        "left": 0,
+        "right": 0
+      },
+      "maxMoveMm": 0,
+      "pageErrors": 0,
+      "pageErrorText": [],
+      "closeupCamera": null,
+      "warnings": [],
+      "approvedLook": {
+        "id": "original-head-eye-soften-20261110-r1",
+        "sha256Lf": "ac435f84ee22ed84a0eaaeef31107beef251465945fa01f9de66de978fb73f99"
+      },
+      "skinCoverage": {
+        "id": "skin-coverage",
+        "version": "0.1.0-r1",
+        "sha256Lf": "aa6665a44f960857829217a3c7ff4e216f0af7a1409ba998fff455b5df24446d"
+      },
+      "head": "161830a56947522d094b25f18de9d4315801ba95"
+    },
+    {
+      "file": "png/o-stand-crossreach_t3.83_full_on.png",
+      "action": "o-stand-crossreach",
+      "group": "control",
+      "t": 3.8333,
+      "frame": 115,
+      "camera": "full",
+      "side": null,
+      "coveredSides": [
+        "right"
+      ],
+      "view": "production",
+      "state": "on",
+      "layer": "body-highlight",
+      "layerLabel": "product look",
+      "width": 720,
+      "height": 720,
+      "bodyCoverage": 0.0982,
+      "elevationDeg": {
+        "right": 171.62
+      },
+      "gate": {
+        "right": 1
+      },
+      "gateIfEnabled": {
+        "right": 1
+      },
+      "verticesWritten": 1307,
+      "verticesWrittenBySide": {
+        "left": 611,
+        "right": 696
+      },
+      "maxMoveMm": 88.22,
+      "pageErrors": 0,
+      "pageErrorText": [],
+      "closeupCamera": null,
+      "warnings": [],
+      "approvedLook": {
+        "id": "original-head-eye-soften-20261110-r1",
+        "sha256Lf": "ac435f84ee22ed84a0eaaeef31107beef251465945fa01f9de66de978fb73f99"
+      },
+      "skinCoverage": {
+        "id": "skin-coverage",
+        "version": "0.1.0-r1",
+        "sha256Lf": "aa6665a44f960857829217a3c7ff4e216f0af7a1409ba998fff455b5df24446d"
+      },
+      "head": "161830a56947522d094b25f18de9d4315801ba95"
+    },
+    {
+      "file": "png/o-stand-crossreach_t3.83_closeup-right_off.png",
+      "action": "o-stand-crossreach",
+      "group": "control",
+      "t": 3.8333,
+      "frame": 115,
+      "camera": "closeup-right",
+      "side": "right",
+      "coveredSides": [
+        "right"
+      ],
+      "view": "axilla",
+      "state": "off",
+      "layer": "body-highlight",
+      "layerLabel": "product look",
+      "width": 720,
+      "height": 720,
+      "bodyCoverage": 0.5834,
+      "elevationDeg": {
+        "right": 171.62
+      },
+      "gate": {
+        "right": 0
+      },
+      "gateIfEnabled": {
+        "right": 1
+      },
+      "verticesWritten": 0,
+      "verticesWrittenBySide": {
+        "left": 0,
+        "right": 0
+      },
+      "maxMoveMm": 0,
+      "pageErrors": 0,
+      "pageErrorText": [],
+      "closeupCamera": {
+        "target": [
+          -0.1907682017283535,
+          1.2879116801904593,
+          0.01739251210278887
+        ],
+        "position": [
+          -0.9246995087261222,
+          1.235057587600368,
+          0.9653119609511732
+        ],
+        "up": [
+          0.19930993715112247,
+          0.9796395581590863,
+          -0.02412229347897435
+        ],
+        "fov": 15.18928673718289,
+        "near": 0.8799999999999999,
+        "far": 4.2,
+        "used": "axilla",
+        "fallback": null,
+        "regionVertices": 696,
+        "regionCentroidFromJointMm": 40.4,
+        "viewDotForward": 0.7840954928619095,
+        "viewDotLateral": 0.5927059104620997
+      },
+      "warnings": [],
+      "approvedLook": {
+        "id": "original-head-eye-soften-20261110-r1",
+        "sha256Lf": "ac435f84ee22ed84a0eaaeef31107beef251465945fa01f9de66de978fb73f99"
+      },
+      "skinCoverage": {
+        "id": "skin-coverage",
+        "version": "0.1.0-r1",
+        "sha256Lf": "aa6665a44f960857829217a3c7ff4e216f0af7a1409ba998fff455b5df24446d"
+      },
+      "head": "161830a56947522d094b25f18de9d4315801ba95"
+    },
+    {
+      "file": "png/o-stand-crossreach_t3.83_closeup-right_off_hl-off.png",
+      "action": "o-stand-crossreach",
+      "group": "control",
+      "t": 3.8333,
+      "frame": 115,
+      "camera": "closeup-right",
+      "side": "right",
+      "coveredSides": [
+        "right"
+      ],
+      "view": "axilla",
+      "state": "off",
+      "layer": "body",
+      "layerLabel": "highlight off",
+      "width": 720,
+      "height": 720,
+      "bodyCoverage": 0.5834,
+      "elevationDeg": {
+        "right": 171.62
+      },
+      "gate": {
+        "right": 0
+      },
+      "gateIfEnabled": {
+        "right": 1
+      },
+      "verticesWritten": 0,
+      "verticesWrittenBySide": {
+        "left": 0,
+        "right": 0
+      },
+      "maxMoveMm": 0,
+      "pageErrors": 0,
+      "pageErrorText": [],
+      "closeupCamera": {
+        "target": [
+          -0.1907682017283535,
+          1.2879116801904593,
+          0.01739251210278887
+        ],
+        "position": [
+          -0.9246995087261222,
+          1.235057587600368,
+          0.9653119609511732
+        ],
+        "up": [
+          0.19930993715112247,
+          0.9796395581590863,
+          -0.02412229347897435
+        ],
+        "fov": 15.18928673718289,
+        "near": 0.8799999999999999,
+        "far": 4.2,
+        "used": "axilla",
+        "fallback": null,
+        "regionVertices": 696,
+        "regionCentroidFromJointMm": 40.4,
+        "viewDotForward": 0.7840954928619095,
+        "viewDotLateral": 0.5927059104620997
+      },
+      "warnings": [],
+      "approvedLook": {
+        "id": "original-head-eye-soften-20261110-r1",
+        "sha256Lf": "ac435f84ee22ed84a0eaaeef31107beef251465945fa01f9de66de978fb73f99"
+      },
+      "skinCoverage": {
+        "id": "skin-coverage",
+        "version": "0.1.0-r1",
+        "sha256Lf": "aa6665a44f960857829217a3c7ff4e216f0af7a1409ba998fff455b5df24446d"
+      },
+      "head": "161830a56947522d094b25f18de9d4315801ba95"
+    },
+    {
+      "file": "png/o-stand-crossreach_t3.83_closeup-right_on.png",
+      "action": "o-stand-crossreach",
+      "group": "control",
+      "t": 3.8333,
+      "frame": 115,
+      "camera": "closeup-right",
+      "side": "right",
+      "coveredSides": [
+        "right"
+      ],
+      "view": "axilla",
+      "state": "on",
+      "layer": "body-highlight",
+      "layerLabel": "product look",
+      "width": 720,
+      "height": 720,
+      "bodyCoverage": 0.5834,
+      "elevationDeg": {
+        "right": 171.62
+      },
+      "gate": {
+        "right": 1
+      },
+      "gateIfEnabled": {
+        "right": 1
+      },
+      "verticesWritten": 1307,
+      "verticesWrittenBySide": {
+        "left": 611,
+        "right": 696
+      },
+      "maxMoveMm": 88.22,
+      "pageErrors": 0,
+      "pageErrorText": [],
+      "closeupCamera": {
+        "target": [
+          -0.1907682017283535,
+          1.2879116801904593,
+          0.01739251210278887
+        ],
+        "position": [
+          -0.9246995087261222,
+          1.235057587600368,
+          0.9653119609511732
+        ],
+        "up": [
+          0.19930993715112247,
+          0.9796395581590863,
+          -0.02412229347897435
+        ],
+        "fov": 15.18928673718289,
+        "near": 0.8799999999999999,
+        "far": 4.2,
+        "used": "axilla",
+        "fallback": null,
+        "regionVertices": 696,
+        "regionCentroidFromJointMm": 40.4,
+        "viewDotForward": 0.7840954928619095,
+        "viewDotLateral": 0.5927059104620997
+      },
+      "warnings": [],
+      "approvedLook": {
+        "id": "original-head-eye-soften-20261110-r1",
+        "sha256Lf": "ac435f84ee22ed84a0eaaeef31107beef251465945fa01f9de66de978fb73f99"
+      },
+      "skinCoverage": {
+        "id": "skin-coverage",
+        "version": "0.1.0-r1",
+        "sha256Lf": "aa6665a44f960857829217a3c7ff4e216f0af7a1409ba998fff455b5df24446d"
+      },
+      "head": "161830a56947522d094b25f18de9d4315801ba95"
+    },
+    {
+      "file": "png/o-stand-crossreach_t3.83_closeup-right_on_hl-off.png",
+      "action": "o-stand-crossreach",
+      "group": "control",
+      "t": 3.8333,
+      "frame": 115,
+      "camera": "closeup-right",
+      "side": "right",
+      "coveredSides": [
+        "right"
+      ],
+      "view": "axilla",
+      "state": "on",
+      "layer": "body",
+      "layerLabel": "highlight off",
+      "width": 720,
+      "height": 720,
+      "bodyCoverage": 0.5834,
+      "elevationDeg": {
+        "right": 171.62
+      },
+      "gate": {
+        "right": 1
+      },
+      "gateIfEnabled": {
+        "right": 1
+      },
+      "verticesWritten": 1307,
+      "verticesWrittenBySide": {
+        "left": 611,
+        "right": 696
+      },
+      "maxMoveMm": 88.22,
+      "pageErrors": 0,
+      "pageErrorText": [],
+      "closeupCamera": {
+        "target": [
+          -0.1907682017283535,
+          1.2879116801904593,
+          0.01739251210278887
+        ],
+        "position": [
+          -0.9246995087261222,
+          1.235057587600368,
+          0.9653119609511732
+        ],
+        "up": [
+          0.19930993715112247,
+          0.9796395581590863,
+          -0.02412229347897435
+        ],
+        "fov": 15.18928673718289,
+        "near": 0.8799999999999999,
+        "far": 4.2,
+        "used": "axilla",
+        "fallback": null,
+        "regionVertices": 696,
+        "regionCentroidFromJointMm": 40.4,
+        "viewDotForward": 0.7840954928619095,
+        "viewDotLateral": 0.5927059104620997
+      },
+      "warnings": [],
+      "approvedLook": {
+        "id": "original-head-eye-soften-20261110-r1",
+        "sha256Lf": "ac435f84ee22ed84a0eaaeef31107beef251465945fa01f9de66de978fb73f99"
+      },
+      "skinCoverage": {
+        "id": "skin-coverage",
+        "version": "0.1.0-r1",
+        "sha256Lf": "aa6665a44f960857829217a3c7ff4e216f0af7a1409ba998fff455b5df24446d"
+      },
+      "head": "161830a56947522d094b25f18de9d4315801ba95"
+    },
+    {
+      "file": "png/scapular-B_t0.33_full_off.png",
+      "action": "scapular-B",
+      "group": "control",
+      "t": 0.3333,
+      "frame": 10,
+      "camera": "full",
+      "side": null,
+      "coveredSides": [
+        "left"
+      ],
+      "view": "production",
+      "state": "off",
+      "layer": "body-highlight",
+      "layerLabel": "product look",
+      "width": 720,
+      "height": 720,
+      "bodyCoverage": 0.0852,
+      "elevationDeg": {
+        "left": 165.61
+      },
+      "gate": {
+        "left": 0
+      },
+      "gateIfEnabled": {
+        "left": 1
+      },
+      "verticesWritten": 0,
+      "verticesWrittenBySide": {
+        "left": 0,
+        "right": 0
+      },
+      "maxMoveMm": 0,
+      "pageErrors": 0,
+      "pageErrorText": [],
+      "closeupCamera": null,
+      "warnings": [],
+      "approvedLook": {
+        "id": "original-head-eye-soften-20261110-r1",
+        "sha256Lf": "ac435f84ee22ed84a0eaaeef31107beef251465945fa01f9de66de978fb73f99"
+      },
+      "skinCoverage": {
+        "id": "skin-coverage",
+        "version": "0.1.0-r1",
+        "sha256Lf": "aa6665a44f960857829217a3c7ff4e216f0af7a1409ba998fff455b5df24446d"
+      },
+      "head": "161830a56947522d094b25f18de9d4315801ba95"
+    },
+    {
+      "file": "png/scapular-B_t0.33_full_on.png",
+      "action": "scapular-B",
+      "group": "control",
+      "t": 0.3333,
+      "frame": 10,
+      "camera": "full",
+      "side": null,
+      "coveredSides": [
+        "left"
+      ],
+      "view": "production",
+      "state": "on",
+      "layer": "body-highlight",
+      "layerLabel": "product look",
+      "width": 720,
+      "height": 720,
+      "bodyCoverage": 0.0852,
+      "elevationDeg": {
+        "left": 165.61
+      },
+      "gate": {
+        "left": 1
+      },
+      "gateIfEnabled": {
+        "left": 1
+      },
+      "verticesWritten": 1307,
+      "verticesWrittenBySide": {
+        "left": 611,
+        "right": 696
+      },
+      "maxMoveMm": 89.33,
+      "pageErrors": 0,
+      "pageErrorText": [],
+      "closeupCamera": null,
+      "warnings": [],
+      "approvedLook": {
+        "id": "original-head-eye-soften-20261110-r1",
+        "sha256Lf": "ac435f84ee22ed84a0eaaeef31107beef251465945fa01f9de66de978fb73f99"
+      },
+      "skinCoverage": {
+        "id": "skin-coverage",
+        "version": "0.1.0-r1",
+        "sha256Lf": "aa6665a44f960857829217a3c7ff4e216f0af7a1409ba998fff455b5df24446d"
+      },
+      "head": "161830a56947522d094b25f18de9d4315801ba95"
+    },
+    {
+      "file": "png/scapular-B_t0.33_closeup-left_off.png",
+      "action": "scapular-B",
+      "group": "control",
+      "t": 0.3333,
+      "frame": 10,
+      "camera": "closeup-left",
+      "side": "left",
+      "coveredSides": [
+        "left"
+      ],
+      "view": "axilla",
+      "state": "off",
+      "layer": "body-highlight",
+      "layerLabel": "product look",
+      "width": 720,
+      "height": 720,
+      "bodyCoverage": 0.6772,
+      "elevationDeg": {
+        "left": 165.61
+      },
+      "gate": {
+        "left": 0
+      },
+      "gateIfEnabled": {
+        "left": 1
+      },
+      "verticesWritten": 0,
+      "verticesWrittenBySide": {
+        "left": 0,
+        "right": 0
+      },
+      "maxMoveMm": 0,
+      "pageErrors": 0,
+      "pageErrorText": [],
+      "closeupCamera": {
+        "target": [
+          0.21589039563969165,
+          1.6248075582755936,
+          -0.015246395386876846
+        ],
+        "position": [
+          0.919778260731485,
+          1.2869260554479698,
+          0.8960043732950833
+        ],
+        "up": [
+          0,
+          0.9997186903943907,
+          -0.02371792731509838
+        ],
+        "fov": 15.18928673718289,
+        "near": 0.8799999999999999,
+        "far": 4.2,
+        "used": "axilla",
+        "fallback": null,
+        "regionVertices": 611,
+        "regionCentroidFromJointMm": 45.5,
+        "viewDotForward": 0.7524838060648764,
+        "viewDotLateral": 0.5865732304077906
+      },
+      "warnings": [],
+      "approvedLook": {
+        "id": "original-head-eye-soften-20261110-r1",
+        "sha256Lf": "ac435f84ee22ed84a0eaaeef31107beef251465945fa01f9de66de978fb73f99"
+      },
+      "skinCoverage": {
+        "id": "skin-coverage",
+        "version": "0.1.0-r1",
+        "sha256Lf": "aa6665a44f960857829217a3c7ff4e216f0af7a1409ba998fff455b5df24446d"
+      },
+      "head": "161830a56947522d094b25f18de9d4315801ba95"
+    },
+    {
+      "file": "png/scapular-B_t0.33_closeup-left_off_hl-off.png",
+      "action": "scapular-B",
+      "group": "control",
+      "t": 0.3333,
+      "frame": 10,
+      "camera": "closeup-left",
+      "side": "left",
+      "coveredSides": [
+        "left"
+      ],
+      "view": "axilla",
+      "state": "off",
+      "layer": "body",
+      "layerLabel": "highlight off",
+      "width": 720,
+      "height": 720,
+      "bodyCoverage": 0.6772,
+      "elevationDeg": {
+        "left": 165.61
+      },
+      "gate": {
+        "left": 0
+      },
+      "gateIfEnabled": {
+        "left": 1
+      },
+      "verticesWritten": 0,
+      "verticesWrittenBySide": {
+        "left": 0,
+        "right": 0
+      },
+      "maxMoveMm": 0,
+      "pageErrors": 0,
+      "pageErrorText": [],
+      "closeupCamera": {
+        "target": [
+          0.21589039563969165,
+          1.6248075582755936,
+          -0.015246395386876846
+        ],
+        "position": [
+          0.919778260731485,
+          1.2869260554479698,
+          0.8960043732950833
+        ],
+        "up": [
+          0,
+          0.9997186903943907,
+          -0.02371792731509838
+        ],
+        "fov": 15.18928673718289,
+        "near": 0.8799999999999999,
+        "far": 4.2,
+        "used": "axilla",
+        "fallback": null,
+        "regionVertices": 611,
+        "regionCentroidFromJointMm": 45.5,
+        "viewDotForward": 0.7524838060648764,
+        "viewDotLateral": 0.5865732304077906
+      },
+      "warnings": [],
+      "approvedLook": {
+        "id": "original-head-eye-soften-20261110-r1",
+        "sha256Lf": "ac435f84ee22ed84a0eaaeef31107beef251465945fa01f9de66de978fb73f99"
+      },
+      "skinCoverage": {
+        "id": "skin-coverage",
+        "version": "0.1.0-r1",
+        "sha256Lf": "aa6665a44f960857829217a3c7ff4e216f0af7a1409ba998fff455b5df24446d"
+      },
+      "head": "161830a56947522d094b25f18de9d4315801ba95"
+    },
+    {
+      "file": "png/scapular-B_t0.33_closeup-left_on.png",
+      "action": "scapular-B",
+      "group": "control",
+      "t": 0.3333,
+      "frame": 10,
+      "camera": "closeup-left",
+      "side": "left",
+      "coveredSides": [
+        "left"
+      ],
+      "view": "axilla",
+      "state": "on",
+      "layer": "body-highlight",
+      "layerLabel": "product look",
+      "width": 720,
+      "height": 720,
+      "bodyCoverage": 0.6778,
+      "elevationDeg": {
+        "left": 165.61
+      },
+      "gate": {
+        "left": 1
+      },
+      "gateIfEnabled": {
+        "left": 1
+      },
+      "verticesWritten": 1307,
+      "verticesWrittenBySide": {
+        "left": 611,
+        "right": 696
+      },
+      "maxMoveMm": 89.33,
+      "pageErrors": 0,
+      "pageErrorText": [],
+      "closeupCamera": {
+        "target": [
+          0.21589039563969165,
+          1.6248075582755936,
+          -0.015246395386876846
+        ],
+        "position": [
+          0.919778260731485,
+          1.2869260554479698,
+          0.8960043732950833
+        ],
+        "up": [
+          0,
+          0.9997186903943907,
+          -0.02371792731509838
+        ],
+        "fov": 15.18928673718289,
+        "near": 0.8799999999999999,
+        "far": 4.2,
+        "used": "axilla",
+        "fallback": null,
+        "regionVertices": 611,
+        "regionCentroidFromJointMm": 45.5,
+        "viewDotForward": 0.7524838060648764,
+        "viewDotLateral": 0.5865732304077906
+      },
+      "warnings": [],
+      "approvedLook": {
+        "id": "original-head-eye-soften-20261110-r1",
+        "sha256Lf": "ac435f84ee22ed84a0eaaeef31107beef251465945fa01f9de66de978fb73f99"
+      },
+      "skinCoverage": {
+        "id": "skin-coverage",
+        "version": "0.1.0-r1",
+        "sha256Lf": "aa6665a44f960857829217a3c7ff4e216f0af7a1409ba998fff455b5df24446d"
+      },
+      "head": "161830a56947522d094b25f18de9d4315801ba95"
+    },
+    {
+      "file": "png/scapular-B_t0.33_closeup-left_on_hl-off.png",
+      "action": "scapular-B",
+      "group": "control",
+      "t": 0.3333,
+      "frame": 10,
+      "camera": "closeup-left",
+      "side": "left",
+      "coveredSides": [
+        "left"
+      ],
+      "view": "axilla",
+      "state": "on",
+      "layer": "body",
+      "layerLabel": "highlight off",
+      "width": 720,
+      "height": 720,
+      "bodyCoverage": 0.6778,
+      "elevationDeg": {
+        "left": 165.61
+      },
+      "gate": {
+        "left": 1
+      },
+      "gateIfEnabled": {
+        "left": 1
+      },
+      "verticesWritten": 1307,
+      "verticesWrittenBySide": {
+        "left": 611,
+        "right": 696
+      },
+      "maxMoveMm": 89.33,
+      "pageErrors": 0,
+      "pageErrorText": [],
+      "closeupCamera": {
+        "target": [
+          0.21589039563969165,
+          1.6248075582755936,
+          -0.015246395386876846
+        ],
+        "position": [
+          0.919778260731485,
+          1.2869260554479698,
+          0.8960043732950833
+        ],
+        "up": [
+          0,
+          0.9997186903943907,
+          -0.02371792731509838
+        ],
+        "fov": 15.18928673718289,
+        "near": 0.8799999999999999,
+        "far": 4.2,
+        "used": "axilla",
+        "fallback": null,
+        "regionVertices": 611,
+        "regionCentroidFromJointMm": 45.5,
+        "viewDotForward": 0.7524838060648764,
+        "viewDotLateral": 0.5865732304077906
+      },
+      "warnings": [],
+      "approvedLook": {
+        "id": "original-head-eye-soften-20261110-r1",
+        "sha256Lf": "ac435f84ee22ed84a0eaaeef31107beef251465945fa01f9de66de978fb73f99"
+      },
+      "skinCoverage": {
+        "id": "skin-coverage",
+        "version": "0.1.0-r1",
+        "sha256Lf": "aa6665a44f960857829217a3c7ff4e216f0af7a1409ba998fff455b5df24446d"
+      },
+      "head": "161830a56947522d094b25f18de9d4315801ba95"
+    }
+  ],
+  "sheets": [
+    {
+      "action": "h-banana",
+      "file": "sheets/h-banana_ab.jpg",
+      "rows": [
+        "t=3.00s  right (full body)  production camera  product look  elev 153°  gate 1.00",
+        "t=3.00s  right shoulder  close-up (stageB)  product look  elev 153°  gate 1.00",
+        "t=3.00s  right shoulder  close-up (stageB)  highlight off  elev 153°  gate 1.00",
+        "t=6.00s  left (full body)  production camera  product look  elev 153°  gate 1.00",
+        "t=6.00s  left shoulder  close-up (stageB)  product look  elev 153°  gate 1.00",
+        "t=6.00s  left shoulder  close-up (stageB)  highlight off  elev 153°  gate 1.00"
+      ]
+    },
+    {
+      "action": "h-db-press",
+      "file": "sheets/h-db-press_ab.jpg",
+      "rows": [
+        "t=2.00s  right+left (full body)  production camera  product look  elev 164°/164°  gate 1.00/1.00",
+        "t=2.00s  right shoulder  close-up (stageB)  product look  elev 164°  gate 1.00",
+        "t=2.00s  right shoulder  close-up (stageB)  highlight off  elev 164°  gate 1.00",
+        "t=2.00s  left shoulder  close-up (stageB)  product look  elev 164°  gate 1.00",
+        "t=2.00s  left shoulder  close-up (stageB)  highlight off  elev 164°  gate 1.00"
+      ]
+    },
+    {
+      "action": "h-fixed-bar-vertical-pull",
+      "file": "sheets/h-fixed-bar-vertical-pull_ab.jpg",
+      "rows": [
+        "t=0.00s  right+left (full body)  production camera  product look  elev 161°/161°  gate 1.00/1.00",
+        "t=0.00s  right shoulder  close-up (stageB)  product look  elev 161°  gate 1.00",
+        "t=0.00s  right shoulder  close-up (stageB)  highlight off  elev 161°  gate 1.00",
+        "t=0.00s  left shoulder  close-up (stageB)  product look  elev 161°  gate 1.00",
+        "t=0.00s  left shoulder  close-up (stageB)  highlight off  elev 161°  gate 1.00"
+      ]
+    },
+    {
+      "action": "abs-A",
+      "file": "sheets/abs-A_ab.jpg",
+      "rows": [
+        "t=0.50s  right (full body)  production camera  product look  elev 179°  gate 1.00",
+        "t=0.50s  right shoulder  close-up (axilla)  product look  elev 179°  gate 1.00",
+        "t=0.50s  right shoulder  close-up (axilla)  highlight off  elev 179°  gate 1.00"
+      ]
+    },
+    {
+      "action": "o-stand-crossreach",
+      "file": "sheets/o-stand-crossreach_ab.jpg",
+      "rows": [
+        "t=3.83s  right (full body)  production camera  product look  elev 172°  gate 1.00",
+        "t=3.83s  right shoulder  close-up (axilla)  product look  elev 172°  gate 1.00",
+        "t=3.83s  right shoulder  close-up (axilla)  highlight off  elev 172°  gate 1.00"
+      ]
+    },
+    {
+      "action": "scapular-B",
+      "file": "sheets/scapular-B_ab.jpg",
+      "rows": [
+        "t=0.33s  left (full body)  production camera  product look  elev 166°  gate 1.00",
+        "t=0.33s  left shoulder  close-up (axilla)  product look  elev 166°  gate 1.00",
+        "t=0.33s  left shoulder  close-up (axilla)  highlight off  elev 166°  gate 1.00"
+      ]
+    }
+  ],
+  "failures": [],
+  "pageErrors": 0,
+  "userAccepted": false,
+  "devServer": {
+    "url": "http://127.0.0.1:8848",
+    "startedByScript": true,
+    "pid": 70284
+  },
+  "finished": "2026-11-11T00:01:54.728Z"
+}
