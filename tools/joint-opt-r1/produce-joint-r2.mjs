@@ -109,8 +109,8 @@ async function main(){
     fail(!fs.existsSync(out),'Output exists: '+out+' (use a new directory; nothing is overwritten)');
   }
   // tools
-  const py=spawnSync(PY,['-c','import numpy,PIL,scipy;print("ok")'],{encoding:'utf8'});
-  fail(py.status===0,'Python with numpy/scipy/Pillow not found as "'+PY+'" (set PYTHON=<python.exe> or fix PATH)');
+  const py=spawnSync(PY,['-c','import numpy,PIL;print("ok")'],{encoding:'utf8'});
+  fail(py.status===0,'Python with numpy/Pillow not found as "'+PY+'" (set PYTHON=<python.exe> or fix PATH)');
   const ff=spawnSync('ffmpeg',['-version'],{encoding:'utf8'});
   fail(ff.status===0,'ffmpeg not on PATH');
   const {config}=await import(pathToFileURL(path.join(ROOT,'drill-anim/lib/config.mjs')).href);
