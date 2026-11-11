@@ -47,3 +47,36 @@ python tools/action-package-v3/compose.py --root <同一目录> --id <动作>
 
 `regress-r2.mjs` 的 rest 检查：以前 `motion.reset()` 后并未把求解器/手部安装动过的骨骼全部复位，"rest 开启差 1.92"测的其实是非 rest 姿态（模块关闭时同值）。
 现在 `rest()` 额外恢复 openScene 后的全部骨骼快照；`restOnVsRestMax` 改为同一时刻 rest"开 vs 关"；原先的偏差另记 `restResetDriftMax`（框架复位误差，与模块无关）。不影响已有回归结论。
+
+## 给本机渲染机器人的固定命令（只执行，不判断）
+
+```powershell
+cd E:\AII-3D\3D-Pose-Hub-worktrees\joint-shoulder-axilla-r1
+git fetch origin codex/joint-shoulder-axilla-r1
+git checkout --detach <提交号>
+git status --porcelain --untracked-files=no        # 必须没有输出，否则停止并回报
+node tools/joint-opt-r1/produce-joint-r2.mjs --out F:\PoseHub-v3\trial\joint-shoulder-r2-prod-20261111
+```
+前置（该 worktree 上次已具备）：`npm install` 过（node_modules/vite、Playwright 1.48.2）、`drill-anim/config.json`（硬件 GL 的 chromium_args；不提交）、PATH 上的 `python`（numpy + Pillow，与 produce.py/compose.py 相同；不是这个名字就先 `$env:PYTHON='<python.exe>'`）和 `ffmpeg`（libx264 + libvpx-vp9）。开发服务器不用手动开，脚本按 config 的 app_url 自动启停（按 PID）。整机同时只跑这一个渲染。
+
+- 退出码 `0`：完成，去推送。`1`：预检拒绝，未渲染 → 停止并回报最后一行。`2`：渲染完但 `_qa` 整理失败 → 回报。
+  `3`：未完成 → **只执行一次** `node tools/joint-opt-r1/produce-joint-r2.mjs --resume F:\PoseHub-v3\trial\joint-shoulder-r2-prod-20261111`；续跑后仍非 0 → 停止并回报。
+- 最后一行是一行 JSON：`{"ok":true,"complete":true,"actions":25,"done":25,"failed":[],...}`。
+
+## 只推结果（孤立分支，不碰工作区和当前分支）
+
+```powershell
+$R="F:\PoseHub-v3\trial\joint-shoulder-r2-prod-20261111"; $S="$R\_qa"
+$G=(Resolve-Path (git rev-parse --git-common-dir)).Path
+$env:GIT_INDEX_FILE="$R\_qa.index"
+git --git-dir="$G" --work-tree="$S" add -A .
+$T=git --git-dir="$G" write-tree
+$C=git --git-dir="$G" commit-tree $T -m "qa: shoulder-axilla r2 production-chain trial (results only)"
+Remove-Item Env:GIT_INDEX_FILE; Remove-Item "$R\_qa.index"
+git push origin "${C}:refs/heads/qa/joint-shoulder-r2-prod-1111"
+git ls-remote origin qa/joint-shoulder-r2-prod-1111
+```
+`_qa` = sheets（每动作 OFF|ON 关键帧对比图 + 差异统计）、run-log.json、run-state.json、progress.log、plan.json、manifests（母帧摘要 + package.json）、videos（realistic 深色 720 mp4，单个 ≤8 MB 且合计 ≤60 MB，按计划顺序，超出的不推）。
+完整母帧、五皮肤视频、透明 webm 留在本机 `$R\on\`（masters / packages），不上传、不进 Git。
+
+回报格式（贴到话题）：退出码、最后一行 JSON、`git ls-remote` 输出的提交号；若失败，贴 progress.log 最后 10 行。
