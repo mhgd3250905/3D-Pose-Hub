@@ -53,6 +53,9 @@ const PAGE_SETUP=()=>{
   const P=o=>o.getWorldPosition(new T.Vector3());
   const joints=[];for(const [n,b] of bones){if(/^v2p_/.test(n))continue;if(b.parent&&b!==v.coach)joints.push(n);}
   const st={armed:null,result:null};
+  // rest snapshot of every bone, taken right after openScene (motion.reset() alone does not undo every bone the
+  // solver/hand installs touch after staging, which made the old rest-on check compare against a non-rest pose)
+  const restBones=[];v.scene.traverse(o=>{if(o.isBone)restBones.push([o,o.position.clone(),o.quaternion.clone(),o.scale.clone()]);});
   function skinNormalMat(m,i,M){const si=m.geometry.attributes.skinIndex,sw=m.geometry.attributes.skinWeight,bm=m.skeleton.boneMatrices,e=M.elements;e.fill(0);
     for(let k=0;k<4;k++){const w=sw.getComponent(i,k);if(!w)continue;const o=si.getComponent(i,k)*16;for(let j=0;j<16;j++)e[j]+=w*bm[o+j];}}
   function jpos(){const jp={};for(const n of joints)jp[n]=P(bones.get(n)).toArray();return jp;}
@@ -70,7 +73,7 @@ const PAGE_SETUP=()=>{
     const mods={};for(const g of window.__regressR2Globals||[])mods[g]=window[g]?.last?JSON.parse(JSON.stringify(window[g].last)):null;
     st.result={pos:jpos(),geom:geomDump(),mods,restore:window.__webxrWristJoin?.lastRestoreCheck?{p:window.__webxrWristJoin.lastRestoreCheck.positionsNormalsExact,b:window.__webxrWristJoin.lastRestoreCheck.boneTransformsExact,c:window.__webxrWristJoin.lastRestoreCheck.cacheExact}:null};};
   window.__regressR2={capture(){st.result=null;st.armed=true;v.renderer.render(v.scene,v.camera);if(!st.result)throw Error('onAfterRender not reached');return st.result;},
-    rest(){v.motion.reset();v.coach.updateMatrixWorld(true);return this.capture();},
+    rest(){v.motion.reset();for(const [o,p,q,s] of restBones){o.position.copy(p);o.quaternion.copy(q);o.scale.copy(s);}v.scene.updateMatrixWorld(true);return this.capture();},
     topology(){return meshes.map(m=>{const g=m.geometry,idx=g.index?Array.from(g.index.array):null;let dom=null;
       if(m.isSkinnedMesh){const si=g.attributes.skinIndex,sw=g.attributes.skinWeight;dom=new Array(g.attributes.position.count);for(let i=0;i<dom.length;i++){let bw=-1,bi=0;for(let k=0;k<4;k++){const w=sw.getComponent(i,k);if(w>bw){bw=w;bi=si.getComponent(i,k);}}dom[i]=m.skeleton.bones[bi].name;}}
       return {name:m.name||m.uuid.slice(0,8),role:role(m),n:g.attributes.position.count,index:idx,drawRange:[g.drawRange.start,Number.isFinite(g.drawRange.count)?g.drawRange.count:null],domBone:dom};});},
@@ -100,6 +103,7 @@ function summarize(plan,lines){
   const checks={offVsBaseMax:Math.max(0,...acts.map(a=>a.checks.offVsBaseMax)),offAfterVsBaseMax:Math.max(0,...acts.map(a=>a.checks.offAfterVsBaseMax)),
     outsideRegionMax:{r1:Math.max(0,...acts.map(a=>a.checks.outsideRegionMax.r1)),r2:Math.max(0,...acts.map(a=>a.checks.outsideRegionMax.r2))},
     restOnVsRestMax:{r1:Math.max(0,...acts.map(a=>a.checks.restOnVsRestMax.r1)),r2:Math.max(0,...acts.map(a=>a.checks.restOnVsRestMax.r2))},
+    restResetDriftMax:Math.max(0,...acts.map(a=>a.checks.restOffVsRestMax??0)),
     detachVsBaseMax:Math.max(0,...acts.map(a=>a.checks.detachVsBaseMax)),pageErrors:acts.reduce((n,a)=>n+a.pageErrors,0)};
   return {actionsMeasured:acts.length,actionsFailed:lines.filter(l=>l.error).map(l=>({id:l.id,error:l.error})),framesMeasured:acts.reduce((n,a)=>n+a.frames.length,0),
     issueActions:Object.fromEntries(variants.map(v=>[v,issueActs[v].length])),issueActionIds:issueActs,issueSides,issueFrameSides,
@@ -159,8 +163,10 @@ async function main(){
         const region=await page.evaluate(gs=>Object.fromEntries(gs.map(([k,g])=>[k,{mesh:window[g].config.mesh,ids:Object.values(window[g].vertexIds()).flat()}])),Object.entries(plan.variants).map(([k,v])=>[k,v.global]));
         const setEn=(g,on)=>page.evaluate(([g,on])=>{window[g].enabled=on;},[g,on]);
         const checks={offVsBaseMax:0,offAfterVsBaseMax:0,outsideRegionMax:{},restOnVsRestMax:{},detachVsBaseMax:null,webxrRestore:[]};
+        // rest checks: restOffVsRestMax = framework drift (rest after staging vs initial rest, modules off);
+        // restOnVsRestMax = module on vs module off at the SAME rest capture (the module's own effect at rest; must be 0)
         checks.restOffVsRestMax=maxDiff(decodeGeom(await page.evaluate(()=>__regressR2.rest())),restG);
-        for(const [k,v] of Object.entries(mods)){await setEn(v.global,true);checks.restOnVsRestMax[k]=maxDiff(decodeGeom(await page.evaluate(()=>__regressR2.rest())),restG);await setEn(v.global,false);checks.outsideRegionMax[k]=0;}
+        for(const [k,v] of Object.entries(mods)){const restOff=decodeGeom(await page.evaluate(()=>__regressR2.rest()));await setEn(v.global,true);checks.restOnVsRestMax[k]=maxDiff(decodeGeom(await page.evaluate(()=>__regressR2.rest())),restOff);await setEn(v.global,false);checks.outsideRegionMax[k]=0;}
         const proj=(await page.evaluate(()=>__regressR2.camera())).proj;
         const frames=[];warm=null;
         for(const t of times){const s=await stageAt(page,src,t,warm);warm=s.x;const B=base[t];
@@ -200,7 +206,7 @@ async function main(){
     `visible flagged area total mm2  OFF ${S.visibleFlaggedAreaTotalMm2.off}  r1 ${S.visibleFlaggedAreaTotalMm2.r1}  r2 ${S.visibleFlaggedAreaTotalMm2.r2}`,
     `supplementary shading-normal deviation >45 deg, visible area total mm2  OFF ${S.shadeDevVisibleAreaTotalMm2.off}  r1 ${S.shadeDevVisibleAreaTotalMm2.r1}  r2 ${S.shadeDevVisibleAreaTotalMm2.r2}`,
     `worse vs OFF (>50% and >50 mm2): r1 ${S.worse.r1.length}  r2 ${S.worse.r2.length}`,...S.worse.r2.map(w=>`  r2 worse: ${w.action} t=${w.t} ${w.side} ${w.metric} ${w.from} -> ${w.to}`),
-    `checks: off==base ${S.checks.offVsBaseMax}  offAfter==base ${S.checks.offAfterVsBaseMax}  outside region r1 ${S.checks.outsideRegionMax.r1} r2 ${S.checks.outsideRegionMax.r2}  rest on r1 ${S.checks.restOnVsRestMax.r1} r2 ${S.checks.restOnVsRestMax.r2}  detach ${S.checks.detachVsBaseMax}  pageErrors ${S.checks.pageErrors}`].join('\n');
+    `checks: off==base ${S.checks.offVsBaseMax}  offAfter==base ${S.checks.offAfterVsBaseMax}  outside region r1 ${S.checks.outsideRegionMax.r1} r2 ${S.checks.outsideRegionMax.r2}  rest on r1 ${S.checks.restOnVsRestMax.r1} r2 ${S.checks.restOnVsRestMax.r2} (vs rest with module off)  rest framework drift ${S.checks.restResetDriftMax}  detach ${S.checks.detachVsBaseMax}  pageErrors ${S.checks.pageErrors}`].join('\n');
   fs.writeFileSync(path.join(out,'summary.txt'),txt+'\n');log('measurement '+(complete?'complete':'INCOMPLETE'));
   // ---- images: render plan + top changed actions ----
   let render={skipped:true};
