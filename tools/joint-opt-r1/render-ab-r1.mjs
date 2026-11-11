@@ -15,19 +15,19 @@ import {spawn,execFileSync} from 'node:child_process';
 import {fileURLToPath,pathToFileURL} from 'node:url';
 
 const SELF=fileURLToPath(import.meta.url),HERE=path.dirname(SELF),ROOT=path.resolve(HERE,'../..');
-const PLAN_FILE=path.join(HERE,'render-ab-r1.plan.json');
+let PLAN_FILE=path.join(HERE,'render-ab-r1.plan.json'); // --plan <file> selects another plan (e.g. render-ab-r2.plan.json)
 const sha=b=>createHash('sha256').update(b).digest('hex');
 const shaLf=f=>sha(fs.readFileSync(f,'utf8').replace(/\r\n/g,'\n'));
 const rel=f=>path.relative(ROOT,f).replaceAll('\\','/');
 const inside=r=>{const f=path.resolve(ROOT,r),x=path.relative(ROOT,f);if(x.startsWith('..')||path.isAbsolute(x))throw Error('Path outside checkout: '+r);return f;};
 const fail=(ok,m)=>{if(!ok)throw Error(m);};
-const USAGE='Usage: node tools/joint-opt-r1/render-ab-r1.mjs --out <new-directory>';
+const USAGE='Usage: node tools/joint-opt-r1/render-ab-r1.mjs --out <new-directory> [--plan <plan.json>]';
 
 function parse(argv){
   const o={};
   for(let i=0;i<argv.length;i+=2){
     const k=argv[i],val=argv[i+1];
-    fail(['--out','--width','--only'].includes(k)&&val&&!val.startsWith('--')&&!(k in o),USAGE);
+    fail(['--out','--width','--only','--plan'].includes(k)&&val&&!val.startsWith('--')&&!(k in o),USAGE);
     o[k]=val;
   }
   fail(o['--out'],USAGE);
@@ -102,7 +102,7 @@ async function ensureServer(appUrl,out){
 }
 
 // ---- in-page helpers ----
-const PAGE_HELPERS=()=>{
+const PAGE_HELPERS=(G)=>{
   const v=flareInspector.viewer,T=__toonT;
   const named=n=>{let r=null;v.coach.traverse(x=>{if(x.isBone&&x.name===n&&!r)r=x;});if(!r)throw Error('missing bone '+n);return r;};
   const B={neck:named('neck'),pelvis:named('pelvis'),left:[named('leftUpperArm'),named('leftForearm')],right:[named('rightUpperArm'),named('rightForearm')]};
@@ -110,7 +110,7 @@ const PAGE_HELPERS=()=>{
   const ss=x=>{x=Math.min(1,Math.max(0,x));return x*x*(3-2*x);};
   function elevation(side){const d=P(B.pelvis).sub(P(B.neck)),u=P(B[side][1]).sub(P(B[side][0]));return d.angleTo(u)*180/Math.PI;}
   function joints(){
-    v.coach.updateMatrixWorld(true);const cfg=window.__shoulderAxillaR1.config,o={};
+    v.coach.updateMatrixWorld(true);const cfg=window[G].config,o={};
     for(const s of ['left','right']){const e=elevation(s);o[s]={elevationDeg:e,gate:ss((e-cfg.elevStartDeg)/(cfg.elevFullDeg-cfg.elevStartDeg)),joint:P(B[s][0]).toArray()};}
     return o;
   }
@@ -122,7 +122,7 @@ const PAGE_HELPERS=()=>{
     const lateral=side==='right'?R.clone():R.clone().negate();
     const forward=new T.Vector3().crossVectors(up,R).normalize();
     // aim point = centroid of the module's axilla region vertices (current skinned pose, module off)
-    const A=window.__shoulderAxillaR1;let mesh=null;v.scene.traverse(x=>{if(x.isSkinnedMesh&&x.name===A.config.mesh&&!mesh)mesh=x;});
+    const A=window[G];let mesh=null;v.scene.traverse(x=>{if(x.isSkinnedMesh&&x.name===A.config.mesh&&!mesh)mesh=x;});
     if(!mesh)throw Error('axilla mesh not found');mesh.skeleton.update();mesh.updateMatrixWorld(true);
     const ids=A.vertexIds()[side],q=new T.Vector3(),target=new T.Vector3();
     for(const i of ids)target.add(mesh.getVertexPosition(i,q).applyMatrix4(mesh.matrixWorld));target.divideScalar(ids.length);
@@ -140,7 +140,7 @@ const PAGE_HELPERS=()=>{
   }
   // render one layer; optional camera override (restored afterwards)
   function shot({enabled,camera,layers,skin}){
-    const A=window.__shoulderAxillaR1,c=v.camera,saved={m:c.matrixWorld.clone(),fov:c.fov,near:c.near,far:c.far,up:c.up.clone()};
+    const A=window[G],c=v.camera,saved={m:c.matrixWorld.clone(),fov:c.fov,near:c.near,far:c.far,up:c.up.clone()};
     A.enabled=enabled;A.last=null;
     let images;
     try{
@@ -153,7 +153,7 @@ const PAGE_HELPERS=()=>{
     const errors=[...(window.__pkgPumpErr||[]),...(window.__eyeSocketSoften?.errors||[])];
     return {uris:Object.fromEntries(layers.map(l=>[l,images[skin.id+'/'+l]])),last,errors,contextLost:v.renderer.getContext().isContextLost()};
   }
-  window.__abR1={joints,closeup,shot};
+  window.__abR1={joints,closeup,shot,global:G};
   return true;
 };
 
@@ -201,7 +201,9 @@ async function main(){
   const out=path.resolve(args['--out']);
   fail(!fs.existsSync(out),'Output exists: '+out+' (use a new directory; nothing is overwritten)');
   process.chdir(ROOT);
+  if(args['--plan'])PLAN_FILE=path.resolve(args['--plan']);
   const plan=JSON.parse(fs.readFileSync(PLAN_FILE,'utf8'));
+  const G=plan.moduleGlobal??'__shoulderAxillaR1',LABEL=plan.moduleLabel??'shoulder-axilla-r1';
   fail(plan.format==='pose-hub-shoulder-axilla-render-ab-plan@1','Bad plan format');
   const width=args['--width']?+args['--width']:plan.width;
   const only=args['--only']?args['--only'].split(','):null;
@@ -228,7 +230,7 @@ async function main(){
   fs.mkdirSync(work,{recursive:true});fs.writeFileSync(lock,JSON.stringify({pid:process.pid,out,entry:rel(SELF)}),{flag:'wx'});
 
   const log={format:'pose-hub-shoulder-axilla-render-ab-log@1',started:new Date().toISOString(),git,
-    command:'node '+rel(SELF)+' --out <dir>'+(args['--width']?' --width '+width:'')+(only?' --only '+only.join(','):''),
+    command:'node '+rel(SELF)+' --out <dir>'+(args['--plan']?' --plan '+args['--plan']:'')+(args['--width']?' --width '+width:'')+(only?' --only '+only.join(','):''),
     testMode:!!(args['--width']||only),width,fullLayers:plan.fullLayers.map(l=>l.layer),closeupLayers:plan.closeupLayers.map(l=>l.layer),background:plan.background,
     pointers:{approvedLook:pre.approvedPointer,skinCoverage:pre.skinPointer},approved:pre.approved,module:pre.module,renderer:pre.renderer,
     recipes:pre.recipes,closeupConfig:plan.closeup,runtime:null,moduleSetup:{},images:[],sheets:[],failures:[],pageErrors:0,
@@ -254,7 +256,7 @@ async function main(){
         const skin={id:installed.id,look:installed.look};
         const modCfg=await shoulder.install(page,{enabled:false});
         log.moduleSetup[action]=modCfg;
-        await page.evaluate(PAGE_HELPERS);
+        await page.evaluate(PAGE_HELPERS,G);
         const sheetRows=[];let warm=null;
         const times=[...new Set(list.map(e=>e.t))].sort((a,b)=>a-b);
         for(const t of times){
@@ -272,7 +274,7 @@ async function main(){
               const before=report.pageErrors.length;
               const r=await page.evaluate(a=>__abR1.shot(a),{enabled:state==='on',camera:cam.camera,layers:layers.map(l=>l.layer),skin});
               fail(!r.contextLost,'WebGL context lost');
-              if(state==='on')fail(r.last,'shoulder-axilla-r1 did not run while enabled');
+              if(state==='on')fail(r.last,LABEL+' did not run while enabled');
               const pe=report.pageErrors.length-before+r.errors.length;log.pageErrors+=pe;
               const sideKeys=cam.side?[cam.side]:sides;
               for(const L of layers){
@@ -308,7 +310,7 @@ async function main(){
           console.log(JSON.stringify({action,t,cameras:cams.map(c=>c.id),ok:true}));
         }
         if(report.pageErrors.length)throw Error('Page errors: '+report.pageErrors.join(';'));
-        const jpg=await page.evaluate(SHEET,{title:`${action} [${list[0].group}]  shoulder-axilla-r1  OFF | ON  (${pre.approvedPointer.id} + ${pre.skinPointer.id}@${pre.skinPointer.version}, ${(git.head||'').slice(0,7)})`,rows:sheetRows,quality:plan.jpegQuality,bg:plan.background});
+        const jpg=await page.evaluate(SHEET,{title:`${action} [${list[0].group}]  ${LABEL}  OFF | ON  (${pre.approvedPointer.id} + ${pre.skinPointer.id}@${pre.skinPointer.version}, ${(git.head||'').slice(0,7)})`,rows:sheetRows,quality:plan.jpegQuality,bg:plan.background});
         const sheet=`sheets/${action}_ab.jpg`;fs.writeFileSync(path.join(out,sheet),Buffer.from(jpg.split(',')[1],'base64'),{flag:'wx'});
         log.sheets.push({action,file:sheet,rows:sheetRows.map(r=>r.label)});
       }catch(e){

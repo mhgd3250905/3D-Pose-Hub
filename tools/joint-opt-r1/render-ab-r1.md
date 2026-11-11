@@ -39,3 +39,8 @@ node tools/joint-opt-r1/render-ab-r1.mjs --out F:\PoseHub-v3\trial\shoulder-axil
 
 ## 仅供沙箱测试的隐藏参数（本机不要用）
 `--width <px>`（低分辨率）和 `--only <动作,动作>`（只跑部分动作）；用了会在 ab-log.json 里标 `testMode:true`。
+
+## 选用其他 plan（2026-11-11 起，向后兼容）
+`--plan <file>`：例如 `--plan tools/joint-opt-r1/render-ab-r2.plan.json`（OFF | shoulder-axilla-r2）。plan 里的
+`moduleGlobal` / `moduleLabel` 指定模块的全局名与标题（缺省为 r1）。不带 `--plan` 时行为与原来完全相同。
+r2 的全量回归会自动调用它，见 `regress-r2.md`。
