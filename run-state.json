@@ -1,0 +1,489 @@
+{
+ "format": "pose-hub-joint-production-trial-state@1",
+ "plan": "joint-shoulder-r2-prod-1111",
+ "started": "2026-11-11T04:33:53.468Z",
+ "git": {
+  "head": "d0caccd15fe60426f10a4bae06495d790bd3f788",
+  "branch": "HEAD",
+  "trackedChanges": 0
+ },
+ "sources": {
+  "tools/joint-opt-r1/produce-joint-r2.mjs": "88f6a5bce97c139b2e45ffd0de2f17087db9f3bfecee598fb2610dccfdbba467",
+  "tools/joint-opt-r1/produce-joint-r2.plan.json": "519a982070189f9c7ee6864762dffdf4fd8427983ab0cb79b8c4d6c3884b35d0",
+  "tools/joint-opt-r1/render-masters-joint.mjs": "007c8e259ec1621eadab2cb91380a532bb08291bb864d49b9fd276bb69b7f0ec",
+  "tools/joint-opt-r1/joint-production.mjs": "996c99ace97b87d0bb097baf5a7abc5b4a07e6e03c9cd7b7762e95ea0d130842",
+  "tools/joint-opt-r1/shoulder-axilla-production.json": "c1e98a5f41fc2e8e3548c3a278853bf819030609e004b80bffea4811d571ff79",
+  "tools/joint-opt-r1/shoulder-axilla-r2.mjs": "627206a8c5377bb7214132a4def45b53bb9823eb4796ba9ee0784f4f58d796c7",
+  "tools/joint-opt-r1/keyframe-sheet.py": "cd8dcb4ae9182937ef2d9c7dbc34e861e164aa88be5979d34485069fd46933bb",
+  "tools/skin-coverage-r1/render-masters.mjs": "8edb42c5d31acd65690b09004d2a22544d7c78c7c1a26379a385ba524befc094",
+  "tools/action-package-v3/compose.py": "e215990405c515f7c1202277b23bb87ed8e4295bd62cc80e67e4b2c214cf4e47",
+  "tools/action-package-v3/profiles/default.json": "8b90de7f3d89b026a324df54eb835cff9dcb775a0d11f3071bdbeb1b2344ce22"
+ },
+ "options": {
+  "only": null,
+  "size": null,
+  "framesOn": null
+ },
+ "testMode": false,
+ "python": "python",
+ "actions": {
+  "chest-A": {
+   "group": "fixed-by-r2",
+   "stages": {
+    "on": {
+     "status": "done",
+     "seconds": 277.7,
+     "finished": "2026-11-11T04:38:31.870Z"
+    },
+    "compose": {
+     "status": "done",
+     "seconds": 128,
+     "finished": "2026-11-11T04:40:39.912Z"
+    },
+    "offref": {
+     "status": "done",
+     "seconds": 138.3,
+     "finished": "2026-11-11T04:42:58.194Z"
+    },
+    "sheet": {
+     "status": "done",
+     "seconds": 0.5,
+     "finished": "2026-11-11T04:42:58.727Z"
+    }
+   },
+   "complete": true
+  },
+  "deltoids-B": {
+   "group": "fixed-by-r2",
+   "stages": {
+    "on": {
+     "status": "done",
+     "seconds": 292.2,
+     "finished": "2026-11-11T04:47:50.974Z"
+    },
+    "compose": {
+     "status": "done",
+     "seconds": 130.5,
+     "finished": "2026-11-11T04:50:01.462Z"
+    },
+    "offref": {
+     "status": "done",
+     "seconds": 139.9,
+     "finished": "2026-11-11T04:52:21.386Z"
+    },
+    "sheet": {
+     "status": "done",
+     "seconds": 0.5,
+     "finished": "2026-11-11T04:52:21.928Z"
+    }
+   },
+   "complete": true
+  },
+  "deltoids-C": {
+   "group": "fixed-by-r2",
+   "stages": {
+    "on": {
+     "status": "done",
+     "seconds": 334,
+     "finished": "2026-11-11T04:57:55.902Z"
+    },
+    "compose": {
+     "status": "done",
+     "seconds": 146.8,
+     "finished": "2026-11-11T05:00:22.679Z"
+    },
+    "offref": {
+     "status": "done",
+     "seconds": 150.6,
+     "finished": "2026-11-11T05:02:53.244Z"
+    },
+    "sheet": {
+     "status": "done",
+     "seconds": 1.1,
+     "finished": "2026-11-11T05:02:54.298Z"
+    }
+   },
+   "complete": true
+  },
+  "erectors-B": {
+   "group": "fixed-by-r2",
+   "stages": {
+    "on": {
+     "status": "done",
+     "seconds": 513.4,
+     "finished": "2026-11-11T05:11:27.660Z"
+    },
+    "compose": {
+     "status": "done",
+     "seconds": 145.4,
+     "finished": "2026-11-11T05:13:53.096Z"
+    },
+    "offref": {
+     "status": "done",
+     "seconds": 209,
+     "finished": "2026-11-11T05:17:22.127Z"
+    },
+    "sheet": {
+     "status": "done",
+     "seconds": 0.9,
+     "finished": "2026-11-11T05:17:23.044Z"
+    }
+   },
+   "complete": true
+  },
+  "h-banana": {
+   "group": "fixed-by-r2",
+   "stages": {
+    "on": {
+     "status": "done",
+     "seconds": 289.7,
+     "finished": "2026-11-11T05:22:12.699Z"
+    },
+    "compose": {
+     "status": "done",
+     "seconds": 149.3,
+     "finished": "2026-11-11T05:24:42.003Z"
+    },
+    "offref": {
+     "status": "done",
+     "seconds": 145,
+     "finished": "2026-11-11T05:27:07.052Z"
+    },
+    "sheet": {
+     "status": "done",
+     "seconds": 0.9,
+     "finished": "2026-11-11T05:27:07.957Z"
+    }
+   },
+   "complete": true
+  },
+  "h-band-face-pull": {
+   "group": "fixed-by-r2",
+   "stages": {
+    "on": {
+     "status": "done",
+     "seconds": 329.1,
+     "finished": "2026-11-11T05:32:37.055Z"
+    },
+    "compose": {
+     "status": "done",
+     "seconds": 152.4,
+     "finished": "2026-11-11T05:35:09.502Z"
+    },
+    "offref": {
+     "status": "done",
+     "seconds": 127.9,
+     "finished": "2026-11-11T05:37:17.386Z"
+    },
+    "sheet": {
+     "status": "done",
+     "seconds": 0.9,
+     "finished": "2026-11-11T05:37:18.285Z"
+    }
+   },
+   "complete": true
+  },
+  "h-chair-lat": {
+   "group": "fixed-by-r2",
+   "stages": {
+    "on": {
+     "status": "done",
+     "seconds": 286.4,
+     "finished": "2026-11-11T05:42:04.673Z"
+    },
+    "compose": {
+     "status": "done",
+     "seconds": 142.9,
+     "finished": "2026-11-11T05:44:27.595Z"
+    },
+    "offref": {
+     "status": "done",
+     "seconds": 148.6,
+     "finished": "2026-11-11T05:46:56.171Z"
+    },
+    "sheet": {
+     "status": "done",
+     "seconds": 0.9,
+     "finished": "2026-11-11T05:46:57.078Z"
+    }
+   },
+   "complete": true
+  },
+  "h-chair-tspine": {
+   "group": "fixed-by-r2",
+   "stages": {
+    "on": {
+     "status": "done",
+     "seconds": 283.1,
+     "finished": "2026-11-11T05:51:40.142Z"
+    },
+    "compose": {
+     "status": "done",
+     "seconds": 151.5,
+     "finished": "2026-11-11T05:54:11.611Z"
+    },
+    "offref": {
+     "status": "done",
+     "seconds": 151.1,
+     "finished": "2026-11-11T05:56:42.722Z"
+    },
+    "sheet": {
+     "status": "done",
+     "seconds": 0.9,
+     "finished": "2026-11-11T05:56:43.651Z"
+    }
+   },
+   "complete": true
+  },
+  "h-db-overhead-triceps-extension": {
+   "group": "fixed-by-r2",
+   "stages": {
+    "on": {
+     "status": "done",
+     "seconds": 327.1,
+     "finished": "2026-11-11T06:02:10.731Z"
+    },
+    "compose": {
+     "status": "done",
+     "seconds": 136.9,
+     "finished": "2026-11-11T06:04:27.669Z"
+    },
+    "offref": {
+     "status": "done",
+     "seconds": 149.1,
+     "finished": "2026-11-11T06:06:56.798Z"
+    },
+    "sheet": {
+     "status": "done",
+     "seconds": 1,
+     "finished": "2026-11-11T06:06:57.792Z"
+    }
+   },
+   "complete": true
+  },
+  "h-db-press": {
+   "group": "fixed-by-r2",
+   "stages": {
+    "on": {
+     "status": "done",
+     "seconds": 379.9,
+     "finished": "2026-11-11T06:13:17.676Z"
+    },
+    "compose": {
+     "status": "done",
+     "seconds": 166.7,
+     "finished": "2026-11-11T06:16:04.423Z"
+    },
+    "offref": {
+     "status": "done",
+     "seconds": 156.6,
+     "finished": "2026-11-11T06:18:41.054Z"
+    },
+    "sheet": {
+     "status": "done",
+     "seconds": 0.8,
+     "finished": "2026-11-11T06:18:41.864Z"
+    }
+   },
+   "complete": true
+  },
+  "h-dd-shoulder": {
+   "group": "fixed-by-r2",
+   "stages": {
+    "on": {
+     "status": "done",
+     "seconds": 359.5,
+     "finished": "2026-11-11T06:24:41.398Z"
+    },
+    "compose": {
+     "status": "done",
+     "seconds": 180,
+     "finished": "2026-11-11T06:27:41.351Z"
+    },
+    "offref": {
+     "status": "done",
+     "seconds": 175,
+     "finished": "2026-11-11T06:30:36.365Z"
+    },
+    "sheet": {
+     "status": "done",
+     "seconds": 1,
+     "finished": "2026-11-11T06:30:37.376Z"
+    }
+   },
+   "complete": true
+  },
+  "h-fixed-bar-vertical-pull": {
+   "group": "fixed-by-r2",
+   "stages": {
+    "on": {
+     "status": "done",
+     "seconds": 338.7,
+     "finished": "2026-11-11T06:36:16.032Z"
+    },
+    "compose": {
+     "status": "done",
+     "seconds": 175.2,
+     "finished": "2026-11-11T06:39:11.226Z"
+    },
+    "offref": {
+     "status": "done",
+     "seconds": 149.4,
+     "finished": "2026-11-11T06:41:40.610Z"
+    },
+    "sheet": {
+     "status": "done",
+     "seconds": 1,
+     "finished": "2026-11-11T06:41:41.615Z"
+    }
+   },
+   "complete": true
+  },
+  "h-overhead-triceps-stretch": {
+   "group": "fixed-by-r2",
+   "stages": {
+    "on": {
+     "status": "done",
+     "seconds": 366,
+     "finished": "2026-11-11T06:47:47.663Z"
+    },
+    "compose": {
+     "status": "done",
+     "seconds": 167.9,
+     "finished": "2026-11-11T06:50:35.549Z"
+    },
+    "offref": {
+     "status": "done",
+     "seconds": 183.1,
+     "finished": "2026-11-11T06:53:38.663Z"
+    },
+    "sheet": {
+     "status": "done",
+     "seconds": 1.1,
+     "finished": "2026-11-11T06:53:39.741Z"
+    }
+   },
+   "complete": true
+  },
+  "h-step-jack": {
+   "group": "fixed-by-r2",
+   "stages": {
+    "on": {
+     "status": "done",
+     "seconds": 363.9,
+     "finished": "2026-11-11T06:59:43.637Z"
+    },
+    "compose": {
+     "status": "done",
+     "seconds": 167.6,
+     "finished": "2026-11-11T07:02:31.223Z"
+    },
+    "offref": {
+     "status": "done",
+     "seconds": 172,
+     "finished": "2026-11-11T07:05:23.267Z"
+    },
+    "sheet": {
+     "status": "done",
+     "seconds": 0.6,
+     "finished": "2026-11-11T07:05:23.885Z"
+    }
+   },
+   "complete": true
+  },
+  "h-straight-arm-hang-native": {
+   "group": "fixed-by-r2",
+   "stages": {
+    "on": {
+     "status": "done",
+     "seconds": 330.3,
+     "finished": "2026-11-11T07:10:54.213Z"
+    },
+    "compose": {
+     "status": "done",
+     "seconds": 145.2,
+     "finished": "2026-11-11T07:13:19.445Z"
+    },
+    "offref": {
+     "status": "done",
+     "seconds": 141.3,
+     "finished": "2026-11-11T07:15:40.731Z"
+    },
+    "sheet": {
+     "status": "done",
+     "seconds": 1.1,
+     "finished": "2026-11-11T07:15:41.791Z"
+    }
+   },
+   "complete": true
+  },
+  "h-wall-angel": {
+   "group": "fixed-by-r2",
+   "stages": {
+    "on": {
+     "status": "done",
+     "seconds": 348.1,
+     "finished": "2026-11-11T07:21:29.873Z"
+    },
+    "compose": {
+     "status": "done",
+     "seconds": 196.9,
+     "finished": "2026-11-11T07:24:46.731Z"
+    },
+    "offref": {
+     "status": "done",
+     "seconds": 177.6,
+     "finished": "2026-11-11T07:27:44.379Z"
+    },
+    "sheet": {
+     "status": "done",
+     "seconds": 0.8,
+     "finished": "2026-11-11T07:27:45.153Z"
+    }
+   },
+   "complete": true
+  },
+  "o-seated-sidebend": {
+   "group": "fixed-by-r2",
+   "stages": {}
+  },
+  "o-stand-sidebend": {
+   "group": "fixed-by-r2",
+   "stages": {}
+  },
+  "obliques-A": {
+   "group": "fixed-by-r2",
+   "stages": {}
+  },
+  "s-frog": {
+   "group": "fixed-by-r2",
+   "stages": {}
+  },
+  "w-dead-bug": {
+   "group": "fixed-by-r2",
+   "stages": {}
+  },
+  "abs-A": {
+   "group": "control-raised",
+   "stages": {}
+  },
+  "scapular-B": {
+   "group": "control-raised",
+   "stages": {}
+  },
+  "o-stand-crossreach": {
+   "group": "control-raised",
+   "stages": {}
+  },
+  "h-db-curl": {
+   "group": "control-low-arm",
+   "stages": {}
+  }
+ },
+ "resumes": 0,
+ "devServer": {
+  "url": "http://127.0.0.1:8848",
+  "startedByScript": true,
+  "pid": 5024
+ }
+}
