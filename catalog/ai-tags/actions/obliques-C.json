@@ -1,0 +1,170 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "obliques-C",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/obliques-C.json",
+    "textSha256Lf": "de6cd9d7f7a3d8281608354f7a20315c59163660d21840d49fe442af0a0f1b43",
+    "spec": "drill-anim/specs/obliques-C-r2.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "gym"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [
+    "cable"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [
+    {
+      "for": "cable",
+      "use": [
+        "band"
+      ],
+      "loadNote": "lighter"
+    }
+  ],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "rotation"
+  ],
+  "contraction": [
+    "dynamic",
+    "isometric"
+  ],
+  "plane": [
+    "transverse"
+  ],
+  "bodyRegion": [
+    "core",
+    "upper"
+  ],
+  "primaryMuscles": [
+    "obliques",
+    "abs"
+  ],
+  "secondaryMuscles": [
+    "deltoids",
+    "glute-max",
+    "lats"
+  ],
+  "stabilizers": [
+    "erectors",
+    "hip-abductors"
+  ],
+  "joints": [
+    {
+      "joint": "thoracic-spine",
+      "actions": [
+        "rotation"
+      ]
+    },
+    {
+      "joint": "hip",
+      "actions": [
+        "internal-rotation"
+      ]
+    },
+    {
+      "joint": "shoulder",
+      "actions": [
+        "extension",
+        "adduction"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "moderate",
+  "prerequisites": [],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "low",
+    "shoulder": "low",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "performance",
+    "fat-loss"
+  ],
+  "alternatives": [
+    "obliques-A"
+  ],
+  "regressions": [
+    "obliques-B"
+  ],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "在健身房用绳索练转体发力，服务挥拍、出拳、舞步转身。",
+    "en": "Cable high-to-low woodchop for rotational power in the gym."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "obliques",
+          "core"
+        ],
+        "synergistMuscles": [
+          "deltoids",
+          "glutes"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "obliques",
+          "abs"
+        ],
+        "secondaryMuscles": [
+          "deltoids",
+          "glute-max",
+          "lats"
+        ],
+        "stabilizers": [
+          "erectors",
+          "hip-abductors"
+        ]
+      },
+      "reason": "v3 粗粒度 id 按实际做法拆到 taxonomy id（core→abs/obliques，glutes→glute-max 或 hip-abductors，upper-back→scapular，lower-back→erectors），只稳定不推动的归稳定肌。"
+    },
+    {
+      "field": "requiredEquipment/optionalEquipment",
+      "existing": [
+        "cable-machine"
+      ],
+      "chosen": {
+        "requiredEquipment": [
+          "cable"
+        ],
+        "optionalEquipment": []
+      },
+      "reason": "cable-machine→cable。"
+    }
+  ],
+  "reviewNotes": []
+}

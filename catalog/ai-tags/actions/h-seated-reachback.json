@@ -1,0 +1,144 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-seated-reachback",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-seated-reachback.json",
+    "textSha256Lf": "a8432eaf68b116c8a3a913e406f58384af48c8b6d798000a4204951964983c9d",
+    "spec": "drill-anim/specs/h-seated-reachback.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "static-stretch"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "isometric"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "upper"
+  ],
+  "primaryMuscles": [],
+  "secondaryMuscles": [],
+  "stabilizers": [],
+  "stretchedMuscles": [
+    "chest",
+    "deltoids",
+    "biceps"
+  ],
+  "joints": [
+    {
+      "joint": "shoulder",
+      "actions": [
+        "extension"
+      ]
+    },
+    {
+      "joint": "scapulothoracic",
+      "actions": [
+        "retraction"
+      ]
+    },
+    {
+      "joint": "wrist",
+      "actions": [
+        "extension"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [
+    "wrist-loading"
+  ],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "low",
+    "wrist": "low",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "cooldown"
+  ],
+  "goals": [
+    "posture",
+    "mobility",
+    "desk-relief"
+  ],
+  "alternatives": [
+    "h-standing-arm-extension-stretch",
+    "h-towel-behind"
+  ],
+  "regressions": [],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "坐地后撑往前滑臀，拉伸胸口和肩前侧，适合训练后放松。",
+    "en": "Seated reach-back stretch for chest and front shoulders after training."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "muscles",
+      "existing": {
+        "activeMuscles": [
+          "chest",
+          "deltoids"
+        ],
+        "synergistMuscles": [
+          "biceps"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [],
+        "secondaryMuscles": [],
+        "stabilizers": [],
+        "stretchedMuscles": [
+          "chest",
+          "deltoids",
+          "biceps"
+        ]
+      },
+      "reason": "拉伸类：v3 activeMuscles 是被拉肌，改放 stretchedMuscles。"
+    },
+    {
+      "field": "floorRequired",
+      "existing": {
+        "position": "seated"
+      },
+      "chosen": true,
+      "reason": "坐在地上做，算着地，不进办公室。"
+    }
+  ],
+  "reviewNotes": []
+}

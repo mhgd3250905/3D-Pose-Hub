@@ -1,0 +1,162 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "scapular-B",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/scapular-B.json",
+    "textSha256Lf": "e5f6a5576a6eb63b0c1d22ed8e8cc0ece34ed3ed2899bc306e6d55582e271f21",
+    "spec": "drill-anim/specs/scapular-B.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "gym",
+    "outdoor"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "pullup-bar"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "pull-vertical"
+  ],
+  "contraction": [
+    "dynamic",
+    "isometric"
+  ],
+  "plane": [
+    "frontal"
+  ],
+  "bodyRegion": [
+    "upper"
+  ],
+  "primaryMuscles": [
+    "lats",
+    "scapular"
+  ],
+  "secondaryMuscles": [],
+  "stabilizers": [
+    "forearms",
+    "rotator-cuff",
+    "abs"
+  ],
+  "joints": [
+    {
+      "joint": "scapulothoracic",
+      "actions": [
+        "depression",
+        "elevation"
+      ]
+    },
+    {
+      "joint": "shoulder",
+      "actions": [
+        "isometric-hold"
+      ]
+    },
+    {
+      "joint": "elbow",
+      "actions": [
+        "isometric-hold"
+      ]
+    }
+  ],
+  "difficulty": 3,
+  "intensity": "moderate",
+  "prerequisites": [
+    "hang-30s"
+  ],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "moderate",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [],
+  "sessionRole": [
+    "main",
+    "warmup"
+  ],
+  "goals": [
+    "strength",
+    "performance",
+    "posture"
+  ],
+  "alternatives": [
+    "lats-C"
+  ],
+  "regressions": [
+    "h-straight-arm-hang-native",
+    "lats-A"
+  ],
+  "progressions": [
+    "h-fixed-bar-vertical-pull"
+  ],
+  "aiSummary": {
+    "zh": "单杠上练肩胛下压，是引体向上的第一步，需要能悬垂。",
+    "en": "Scapular pull-ups on a bar; first step toward pull-ups."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "lats",
+          "upper-back"
+        ],
+        "synergistMuscles": [
+          "forearms",
+          "rotator-cuff"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "lats",
+          "scapular"
+        ],
+        "secondaryMuscles": [],
+        "stabilizers": [
+          "forearms",
+          "rotator-cuff",
+          "abs"
+        ]
+      },
+      "reason": "v3 粗粒度 id 按实际做法拆到 taxonomy id（core→abs/obliques，glutes→glute-max 或 hip-abductors，upper-back→scapular，lower-back→erectors），只稳定不推动的归稳定肌。"
+    },
+    {
+      "field": "requiredEquipment/optionalEquipment",
+      "existing": [
+        "pull-up-bar"
+      ],
+      "chosen": {
+        "requiredEquipment": [
+          "pullup-bar"
+        ],
+        "optionalEquipment": []
+      },
+      "reason": "pull-up-bar→pullup-bar。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 2,
+      "chosen": 3,
+      "reason": "需先能悬垂并在悬垂中做肩胛下沉，接近引体前置，调到 3 级。"
+    }
+  ],
+  "reviewNotes": [
+    "户外单杠常见，加 outdoor；家里装门框单杠也可做，未标 home。"
+  ]
+}

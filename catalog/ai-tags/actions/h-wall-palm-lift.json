@@ -1,0 +1,112 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-wall-palm-lift",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-wall-palm-lift.json",
+    "textSha256Lf": "328d593451e7ff45a9f8482adabfb1e30aefd4b4090fb57aec9af8f620a11906",
+    "spec": "drill-anim/specs/h-wall-palm-lift-rr5.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "office",
+    "gym",
+    "outdoor",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "wall"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "assessment",
+    "mobility"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "dynamic",
+    "isometric"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "upper"
+  ],
+  "primaryMuscles": [
+    "forearms"
+  ],
+  "secondaryMuscles": [],
+  "stabilizers": [],
+  "joints": [
+    {
+      "joint": "wrist",
+      "actions": [
+        "flexion"
+      ]
+    },
+    {
+      "joint": "wrist",
+      "actions": [
+        "isometric-hold"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "none",
+    "wrist": "low",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup"
+  ],
+  "goals": [
+    "performance",
+    "mobility"
+  ],
+  "alternatives": [],
+  "regressions": [],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "指尖贴墙抬掌根，检查并练手指手腕控制，适合准备做指尖撑地类动作前。",
+    "en": "Wall fingertip palm lift to check and train finger/wrist control before fingertip loading."
+  },
+  "confidence": "low",
+  "notes": [
+    {
+      "field": "trainingType",
+      "existing": "assessment",
+      "chosen": [
+        "mobility"
+      ],
+      "reason": "词表无 assessment；按实际做法是手腕/手指低负荷控制练习，记为 mobility。"
+    }
+  ],
+  "reviewNotes": [
+    "手腕动作方向（掌根离墙=屈腕+指伸）与主动肌只能从文案推断，未看动画，low。"
+  ]
+}

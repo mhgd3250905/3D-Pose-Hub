@@ -1,0 +1,158 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-band-leg-out",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-band-leg-out.json",
+    "textSha256Lf": "460e9ba1cc377caabf58b19918cf5211bf3e7107a14715279c00900eaa7a91d8",
+    "spec": "drill-anim/specs/h-band-leg-out.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "band",
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "static-stretch"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "isometric"
+  ],
+  "plane": [
+    "frontal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [],
+  "secondaryMuscles": [],
+  "stabilizers": [],
+  "stretchedMuscles": [
+    "adductors",
+    "hamstrings"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "abduction",
+        "flexion"
+      ]
+    },
+    {
+      "joint": "knee",
+      "actions": [
+        "extension"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [
+    "floor-transfer"
+  ],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "moderate"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "floor-transfer"
+      ]
+    },
+    {
+      "population": "pregnancy",
+      "flag": "modify",
+      "reasons": [
+        "supine-position"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "cooldown"
+  ],
+  "goals": [
+    "mobility",
+    "recovery"
+  ],
+  "alternatives": [
+    "n-wide-fold",
+    "n-straddle-fold"
+  ],
+  "regressions": [],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "躺着用弹力带托腿拉伸大腿内侧和后侧，适合训练后放松。",
+    "en": "Supine band-assisted inner and back thigh stretch for cool-downs."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers/stretchedMuscles",
+      "existing": {
+        "activeMuscles": [
+          "adductors",
+          "hamstrings"
+        ],
+        "synergistMuscles": [
+          "hip-flexors"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [],
+        "secondaryMuscles": [],
+        "stabilizers": [],
+        "stretchedMuscles": [
+          "adductors",
+          "hamstrings"
+        ]
+      },
+      "reason": "拉伸/活动类：v3 把被拉肌写在 activeMuscles，这里移到 stretchedMuscles，无主动发力肌。"
+    },
+    {
+      "field": "requiredEquipment/optionalEquipment",
+      "existing": [
+        "resistance-band",
+        "mat"
+      ],
+      "chosen": {
+        "requiredEquipment": [
+          "band",
+          "mat"
+        ],
+        "optionalEquipment": []
+      },
+      "reason": "同义写法归一到词表 id。"
+    }
+  ],
+  "reviewNotes": []
+}

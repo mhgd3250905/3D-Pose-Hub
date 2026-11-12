@@ -1,0 +1,137 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "o-seated-ham",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/o-seated-ham.json",
+    "textSha256Lf": "553314b2df8874d967dac9bdfc33c1368d1c611ed30314b6c17df31fbe95fac8",
+    "spec": "drill-anim/specs/o-seated-ham.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "office",
+    "gym",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "chair"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "static-stretch"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "isometric"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [],
+  "secondaryMuscles": [],
+  "stabilizers": [
+    "erectors"
+  ],
+  "stretchedMuscles": [
+    "hamstrings",
+    "calves"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "flexion"
+      ]
+    },
+    {
+      "joint": "knee",
+      "actions": [
+        "extension"
+      ]
+    },
+    {
+      "joint": "ankle",
+      "actions": [
+        "dorsiflexion"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "low",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "cooldown"
+  ],
+  "goals": [
+    "mobility",
+    "desk-relief"
+  ],
+  "alternatives": [
+    "o-stand-ham"
+  ],
+  "regressions": [],
+  "progressions": [
+    "s-seated-fold",
+    "n-half-split"
+  ],
+  "aiSummary": {
+    "zh": "坐在椅子上拉大腿后侧，工位不用起身。",
+    "en": "Seated hamstring stretch from a chair, no need to stand up."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/stretchedMuscles",
+      "existing": {
+        "activeMuscles": [
+          "hamstrings"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [],
+        "stretchedMuscles": [
+          "hamstrings",
+          "calves"
+        ]
+      },
+      "reason": "拉伸类：v3 把被拉肌写在 activeMuscles，本 schema 放 stretchedMuscles。"
+    }
+  ],
+  "reviewNotes": []
+}

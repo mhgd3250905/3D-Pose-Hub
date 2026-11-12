@@ -1,0 +1,158 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "triceps-A",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/triceps-A.json",
+    "textSha256Lf": "9e6210b67d7f94bedeb995d1aef532a7b3d12dcff040d51662069e4e1df2bcd1",
+    "spec": "drill-anim/specs/triceps-A-r2.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel",
+    "outdoor"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [],
+  "optionalEquipment": [
+    "mat"
+  ],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "push-horizontal"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "upper"
+  ],
+  "primaryMuscles": [
+    "triceps",
+    "chest"
+  ],
+  "secondaryMuscles": [
+    "deltoids"
+  ],
+  "stabilizers": [
+    "abs",
+    "serratus",
+    "glute-max"
+  ],
+  "joints": [
+    {
+      "joint": "elbow",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    },
+    {
+      "joint": "shoulder",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    },
+    {
+      "joint": "wrist",
+      "actions": [
+        "isometric-hold"
+      ]
+    }
+  ],
+  "difficulty": 3,
+  "intensity": "moderate",
+  "prerequisites": [
+    "wrist-loading",
+    "plank-30s"
+  ],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "low",
+    "shoulder": "low",
+    "wrist": "moderate",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "floor-transfer"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "hypertrophy"
+  ],
+  "alternatives": [],
+  "regressions": [
+    "h-kneeling-pushup",
+    "h-incline-pushup"
+  ],
+  "progressions": [
+    "triceps-C"
+  ],
+  "aiSummary": {
+    "zh": "徒手练手臂后侧的窄距俯卧撑，能做 10 个标准俯卧撑后选。",
+    "en": "Close-grip push-up with lockout for triceps; no equipment."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "triceps",
+          "chest"
+        ],
+        "synergistMuscles": [
+          "deltoids",
+          "core"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "triceps",
+          "chest"
+        ],
+        "secondaryMuscles": [
+          "deltoids"
+        ],
+        "stabilizers": [
+          "abs",
+          "serratus",
+          "glute-max"
+        ]
+      },
+      "reason": "v3 粗粒度 id 按实际做法拆到 taxonomy id（core→abs/obliques，glutes→glute-max 或 hip-abductors，upper-back→scapular，lower-back→erectors），只稳定不推动的归稳定肌。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 3,
+      "reason": "标准俯卧撑类全身支撑，词表定 3 级；v3 的 1 级偏低。"
+    }
+  ],
+  "reviewNotes": []
+}

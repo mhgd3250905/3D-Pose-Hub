@@ -1,0 +1,163 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "abs-B",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/abs-B.json",
+    "textSha256Lf": "28bab6446a9d335a6217a0689077fd12ec180488f4f16dd791e7cd5c2d979952",
+    "spec": "drill-anim/specs/abs-B.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "gym"
+  ],
+  "space": "mat",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [
+    "parallettes"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "isometric"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "core"
+  ],
+  "primaryMuscles": [
+    "abs",
+    "hip-flexors"
+  ],
+  "secondaryMuscles": [
+    "triceps",
+    "lats"
+  ],
+  "stabilizers": [
+    "deltoids",
+    "scapular",
+    "forearms"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "isometric-hold"
+      ]
+    },
+    {
+      "joint": "scapulothoracic",
+      "actions": [
+        "depression"
+      ]
+    },
+    {
+      "joint": "elbow",
+      "actions": [
+        "isometric-hold"
+      ]
+    },
+    {
+      "joint": "wrist",
+      "actions": [
+        "extension"
+      ]
+    }
+  ],
+  "difficulty": 3,
+  "intensity": "moderate",
+  "prerequisites": [
+    "wrist-loading",
+    "plank-30s"
+  ],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "low",
+    "wrist": "moderate",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "caution",
+      "reasons": [
+        "abdominal-pressure"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "performance"
+  ],
+  "alternatives": [],
+  "regressions": [
+    "abs-C",
+    "triceps-B"
+  ],
+  "progressions": [
+    "t-lsit-tuck"
+  ],
+  "aiSummary": {
+    "zh": "有平行杆时练团身L撑的入门压缩力量，为地面L撑做准备。",
+    "en": "Entry compression-strength hold on parallettes, building toward floor L-sits."
+  },
+  "confidence": "medium",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "core",
+          "hip-flexors"
+        ],
+        "synergistMuscles": [
+          "triceps",
+          "deltoids"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "abs",
+          "hip-flexors"
+        ],
+        "secondaryMuscles": [
+          "triceps",
+          "lats"
+        ],
+        "stabilizers": [
+          "deltoids",
+          "scapular",
+          "forearms"
+        ]
+      },
+      "reason": "v3 粗粒度肌群（core）按动作实际做法拆到细分 id。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 2,
+      "chosen": 3,
+      "reason": "团身 L 撑需要直臂撑起全身体重并下沉肩，属技巧力量入门，定 3；完整 L 撑才到 4。"
+    }
+  ],
+  "reviewNotes": [
+    "movementPattern 留空：髋屈压缩保持不属于 14 个基本模式。",
+    "floorRequired=false：只有手撑杆、脚不着地；但场景只有 gym。",
+    "进阶给 t-lsit-tuck（地面 L 撑更难）。"
+  ]
+}

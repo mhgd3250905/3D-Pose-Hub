@@ -1,0 +1,160 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "serratus-C",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/serratus-C.json",
+    "textSha256Lf": "d44d3d29345e5be471cfdb4f0e0c0cbb8069b2014f992d8f430bb01744581b3a",
+    "spec": "drill-anim/specs/serratus-C-r2.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "gym"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [
+    "rings"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "push-horizontal"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "upper"
+  ],
+  "primaryMuscles": [
+    "chest",
+    "serratus",
+    "triceps"
+  ],
+  "secondaryMuscles": [
+    "deltoids"
+  ],
+  "stabilizers": [
+    "abs",
+    "rotator-cuff"
+  ],
+  "joints": [
+    {
+      "joint": "shoulder",
+      "actions": [
+        "horizontal-adduction",
+        "flexion"
+      ]
+    },
+    {
+      "joint": "elbow",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    },
+    {
+      "joint": "scapulothoracic",
+      "actions": [
+        "protraction",
+        "retraction"
+      ]
+    }
+  ],
+  "difficulty": 4,
+  "intensity": "moderate",
+  "prerequisites": [
+    "pushup-10",
+    "wrist-loading"
+  ],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "low",
+    "shoulder": "moderate",
+    "wrist": "low",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "performance",
+    "hypertrophy"
+  ],
+  "alternatives": [],
+  "regressions": [
+    "serratus-A",
+    "triceps-A"
+  ],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "吊环俯卧撑加推背，练晃动中的胸臂和肩胛稳定，已能做标准俯卧撑后选。",
+    "en": "Ring push-up plus for unstable pressing and scapular control."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "chest",
+          "triceps"
+        ],
+        "synergistMuscles": [
+          "deltoids",
+          "core"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "chest",
+          "serratus",
+          "triceps"
+        ],
+        "secondaryMuscles": [
+          "deltoids"
+        ],
+        "stabilizers": [
+          "abs",
+          "rotator-cuff"
+        ]
+      },
+      "reason": "v3 粗粒度 id 按实际做法拆到 taxonomy id（core→abs/obliques，glutes→glute-max 或 hip-abductors，upper-back→scapular，lower-back→erectors），只稳定不推动的归稳定肌。"
+    },
+    {
+      "field": "requiredEquipment/optionalEquipment",
+      "existing": [
+        "gymnastic-rings"
+      ],
+      "chosen": {
+        "requiredEquipment": [
+          "rings"
+        ],
+        "optionalEquipment": []
+      },
+      "reason": "gymnastic-rings→rings。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 3,
+      "chosen": 4,
+      "reason": "吊环不稳定 + 标准俯卧撑 + 末端前伸，高于 3 级标准俯卧撑，调到 4 级。"
+    }
+  ],
+  "reviewNotes": []
+}

@@ -1,0 +1,136 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "hip-abductors-C",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/hip-abductors-C.json",
+    "textSha256Lf": "149a6f10f06bb8b24e0308033d1fa61bf06112728bbba9c5e2051c6577b874ac",
+    "spec": "drill-anim/specs/hip-abductors-C-r3.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "gym"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "hip-abductor-machine"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "isolation"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "frontal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "hip-abductors"
+  ],
+  "secondaryMuscles": [
+    "glute-max"
+  ],
+  "stabilizers": [],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "abduction"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "hypertrophy"
+  ],
+  "alternatives": [
+    "g-cable-hip-abduction"
+  ],
+  "regressions": [],
+  "progressions": [
+    "hip-abductors-B",
+    "hip-abductors-A"
+  ],
+  "aiSummary": {
+    "zh": "健身房坐姿外展机，稳定加重量练臀中肌，新手也容易上手。",
+    "en": "Seated hip abductor machine, easy to load for glute med work at the gym."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "muscles",
+      "existing": {
+        "activeMuscles": [
+          "abductors",
+          "glutes"
+        ],
+        "synergistMuscles": []
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "hip-abductors"
+        ],
+        "secondaryMuscles": [
+          "glute-max"
+        ],
+        "stabilizers": []
+      },
+      "reason": "v3 abductors/glutes：坐姿屈髋外展时臀大肌上部也参与，列协同。"
+    },
+    {
+      "field": "requiredEquipment",
+      "existing": [
+        "hip-abduction-machine"
+      ],
+      "chosen": [
+        "hip-abductor-machine"
+      ],
+      "reason": "v3 器械同义写法归一到词表 id。"
+    }
+  ],
+  "reviewNotes": []
+}

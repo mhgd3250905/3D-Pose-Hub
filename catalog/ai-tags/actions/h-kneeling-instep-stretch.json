@@ -1,0 +1,130 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-kneeling-instep-stretch",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-kneeling-instep-stretch.json",
+    "textSha256Lf": "571d3818f2399325e06b35fc4d2fcfb4cbb1beb0e99a71f685055d4b0b383cb7",
+    "spec": "drill-anim/specs/h-kneeling-instep-stretch-rr6.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "static-stretch"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "isometric"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [],
+  "secondaryMuscles": [],
+  "stabilizers": [],
+  "stretchedMuscles": [
+    "tibialis",
+    "quadriceps"
+  ],
+  "joints": [
+    {
+      "joint": "ankle",
+      "actions": [
+        "plantarflexion"
+      ]
+    },
+    {
+      "joint": "knee",
+      "actions": [
+        "flexion"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "low",
+  "prerequisites": [
+    "kneeling-tolerance"
+  ],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "moderate",
+    "lumbar": "none",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "low",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "floor-transfer"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "cooldown"
+  ],
+  "goals": [
+    "mobility",
+    "recovery",
+    "performance"
+  ],
+  "alternatives": [],
+  "regressions": [],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "跪坐拉伸脚背和小腿前侧，适合需要能跪的人训练后放松。",
+    "en": "Kneeling top-of-foot stretch for those who can kneel comfortably."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "muscles",
+      "existing": {
+        "activeMuscles": [
+          "tibialis"
+        ],
+        "synergistMuscles": [
+          "quadriceps"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [],
+        "secondaryMuscles": [],
+        "stabilizers": [],
+        "stretchedMuscles": [
+          "tibialis",
+          "quadriceps"
+        ]
+      },
+      "reason": "拉伸类：v3 activeMuscles 是被拉肌，改放 stretchedMuscles。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 2,
+      "reason": "需要能跪坐到脚跟上，膝深屈有门槛，按 2 级。"
+    }
+  ],
+  "reviewNotes": []
+}

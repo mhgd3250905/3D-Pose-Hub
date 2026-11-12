@@ -1,0 +1,156 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "w-prone-swimmer",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/w-prone-swimmer.json",
+    "textSha256Lf": "4c9c6ca9ec509a0cb4d41e91b90609ef949bb90445d7c6866d751e2fec26a0c4",
+    "spec": "drill-anim/specs/w-prone-swimmer-r2.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "frontal",
+    "transverse"
+  ],
+  "bodyRegion": [
+    "upper"
+  ],
+  "primaryMuscles": [
+    "scapular",
+    "rotator-cuff"
+  ],
+  "secondaryMuscles": [
+    "deltoids",
+    "lats"
+  ],
+  "stabilizers": [
+    "erectors"
+  ],
+  "joints": [
+    {
+      "joint": "shoulder",
+      "actions": [
+        "abduction",
+        "adduction",
+        "internal-rotation",
+        "external-rotation"
+      ]
+    },
+    {
+      "joint": "scapulothoracic",
+      "actions": [
+        "retraction",
+        "depression"
+      ]
+    },
+    {
+      "joint": "thoracic-spine",
+      "actions": [
+        "isometric-hold"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "low",
+  "prerequisites": [
+    "floor-transfer",
+    "overhead-range"
+  ],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "low",
+    "shoulder": "low",
+    "wrist": "none",
+    "neck": "low",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "floor-transfer"
+      ]
+    },
+    {
+      "population": "pregnancy",
+      "flag": "caution",
+      "reasons": [
+        "prone-position"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup",
+    "main"
+  ],
+  "goals": [
+    "posture",
+    "strength",
+    "mobility"
+  ],
+  "alternatives": [],
+  "regressions": [
+    "scapular-A"
+  ],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "趴着划臂练上背和肩活动，圆肩、肩活动差时选。",
+    "en": "Prone swimmers for upper back strength and shoulder range."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "upper-back",
+          "rotator-cuff"
+        ],
+        "synergistMuscles": [
+          "lower-back",
+          "deltoids"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "scapular",
+          "rotator-cuff"
+        ],
+        "secondaryMuscles": [
+          "deltoids",
+          "lats"
+        ],
+        "stabilizers": [
+          "erectors"
+        ]
+      },
+      "reason": "v3 粗粒度 id 按实际做法拆到 taxonomy id（core→abs/obliques，glutes→glute-max 或 hip-abductors，upper-back→scapular，lower-back→erectors），只稳定不推动的归稳定肌。"
+    }
+  ],
+  "reviewNotes": []
+}

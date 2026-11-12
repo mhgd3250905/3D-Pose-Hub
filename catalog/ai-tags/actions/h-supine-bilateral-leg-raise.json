@@ -1,0 +1,151 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-supine-bilateral-leg-raise",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-supine-bilateral-leg-raise.json",
+    "textSha256Lf": "86cc1433c05378e13d454f12c58fe0f9ed0899f7edf4853a444f99778d1efddf",
+    "spec": "drill-anim/specs/h-supine-bilateral-leg-raise-rr3.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "anti-extension"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "core"
+  ],
+  "primaryMuscles": [
+    "hip-flexors",
+    "abs"
+  ],
+  "secondaryMuscles": [
+    "quadriceps"
+  ],
+  "stabilizers": [
+    "obliques"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    },
+    {
+      "joint": "lumbar-spine",
+      "actions": [
+        "isometric-hold"
+      ]
+    }
+  ],
+  "difficulty": 3,
+  "intensity": "low",
+  "prerequisites": [
+    "neutral-spine"
+  ],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "moderate",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "pregnancy",
+      "flag": "caution",
+      "reasons": [
+        "supine-position",
+        "abdominal-pressure"
+      ]
+    },
+    {
+      "population": "postpartum",
+      "flag": "caution",
+      "reasons": [
+        "abdominal-pressure"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength"
+  ],
+  "alternatives": [],
+  "regressions": [
+    "h-reverse-crunch",
+    "w-dead-bug"
+  ],
+  "progressions": [
+    "abs-C"
+  ],
+  "aiSummary": {
+    "zh": "仰卧双直腿举腿，给已能控制腰不拱的人练腹部和髋屈肌。",
+    "en": "Lying double leg raise for abs and hip flexors once you can keep the low back down."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "muscles",
+      "existing": {
+        "activeMuscles": [
+          "core",
+          "hip-flexors"
+        ],
+        "synergistMuscles": [
+          "quadriceps"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "hip-flexors",
+          "abs"
+        ],
+        "secondaryMuscles": [
+          "quadriceps"
+        ],
+        "stabilizers": [
+          "obliques"
+        ]
+      },
+      "reason": "v3 core/hip-flexors：抬放腿由髋屈肌完成，腹直肌负责腰不拱（抗伸展），两者都列主动肌。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 2,
+      "chosen": 3,
+      "reason": "双直腿放下时要靠腹部压住腰，杠杆长，按 3 级。"
+    }
+  ],
+  "reviewNotes": []
+}

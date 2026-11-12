@@ -1,0 +1,156 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-floor-nordic-hand-reset",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-floor-nordic-hand-reset.json",
+    "textSha256Lf": "f46054e06c6ed23cd0a3207e84d20375b792ac58873fa21237d511042ab2ed7d",
+    "spec": "drill-anim/specs/h-floor-nordic-hand-reset-rr3.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "gym"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [
+    "mat",
+    "chair"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "isolation"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "hamstrings"
+  ],
+  "secondaryMuscles": [
+    "glute-max",
+    "calves"
+  ],
+  "stabilizers": [
+    "abs",
+    "erectors"
+  ],
+  "joints": [
+    {
+      "joint": "knee",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    },
+    {
+      "joint": "hip",
+      "actions": [
+        "isometric-hold"
+      ]
+    }
+  ],
+  "difficulty": 4,
+  "intensity": "moderate",
+  "prerequisites": [
+    "kneeling-tolerance",
+    "neutral-spine"
+  ],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "moderate",
+    "lumbar": "low",
+    "shoulder": "low",
+    "wrist": "low",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "caution",
+      "reasons": [
+        "heavy-load"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "caution",
+      "reasons": [
+        "floor-transfer"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "performance"
+  ],
+  "alternatives": [],
+  "regressions": [
+    "hamstrings-B"
+  ],
+  "progressions": [
+    "hamstrings-C"
+  ],
+  "aiSummary": {
+    "zh": "居家用椅子或沙发压脚做的北欧挺，给已有基础的人练大腿后侧离心力量、防拉伤。",
+    "en": "Home Nordic curl with feet anchored, for experienced trainees building eccentric hamstring strength."
+  },
+  "confidence": "medium",
+  "notes": [
+    {
+      "field": "muscles",
+      "existing": {
+        "activeMuscles": [
+          "hamstrings"
+        ],
+        "synergistMuscles": [
+          "glutes",
+          "calves"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "hamstrings"
+        ],
+        "secondaryMuscles": [
+          "glute-max",
+          "calves"
+        ],
+        "stabilizers": [
+          "abs",
+          "erectors"
+        ]
+      },
+      "reason": "v3 粗粒度肌群（core/glutes/upper-back/lower-back/abductors）按本动作实际做法拆到细分 id。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 3,
+      "chosen": 4,
+      "reason": "离心北欧挺需要很高的腘绳肌相对力量，按词表定 4 级。"
+    }
+  ],
+  "reviewNotes": [
+    "requiredEquipment 保留 chair：脚跟必须有东西固定（椅子/沙发/同伴），文案未写清用什么固定，medium。",
+    "v3 flag：回位时屁股后坐约 84° 再起身，是否为想要的手撑复位待确认。"
+  ]
+}

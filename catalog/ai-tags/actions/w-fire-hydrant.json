@@ -1,0 +1,141 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "w-fire-hydrant",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/w-fire-hydrant.json",
+    "textSha256Lf": "d62e9d90876c43441a98199d7a910a0c6191a5f54cb6c70b17a81a5a5ea07a14",
+    "spec": "drill-anim/specs/w-fire-hydrant.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "isolation"
+  ],
+  "contraction": [
+    "dynamic",
+    "isometric"
+  ],
+  "plane": [
+    "frontal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "hip-abductors",
+    "glute-max"
+  ],
+  "secondaryMuscles": [],
+  "stabilizers": [
+    "abs",
+    "obliques",
+    "serratus"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "abduction",
+        "external-rotation"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [
+    "kneeling-tolerance",
+    "wrist-loading"
+  ],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "low",
+    "lumbar": "none",
+    "shoulder": "none",
+    "wrist": "low",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "floor-transfer"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup",
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "posture"
+  ],
+  "alternatives": [
+    "w-clamshell"
+  ],
+  "regressions": [],
+  "progressions": [
+    "hip-abductors-A"
+  ],
+  "aiSummary": {
+    "zh": "跪撑侧抬腿练臀外侧，居家臀部激活。",
+    "en": "Quadruped fire hydrant for outer glutes."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "glutes",
+          "abductors"
+        ],
+        "synergistMuscles": [
+          "core"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "hip-abductors",
+          "glute-max"
+        ],
+        "secondaryMuscles": [],
+        "stabilizers": [
+          "abs",
+          "obliques",
+          "serratus"
+        ]
+      },
+      "reason": "v3 粗粒度 id 按实际做法拆到 taxonomy id（core→abs/obliques，glutes→glute-max 或 hip-abductors，upper-back→scapular，lower-back→erectors），只稳定不推动的归稳定肌。"
+    }
+  ],
+  "reviewNotes": []
+}

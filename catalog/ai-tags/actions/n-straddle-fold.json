@@ -1,0 +1,160 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "n-straddle-fold",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/n-straddle-fold.json",
+    "textSha256Lf": "6dc7cb7e06c95418406b305c6755cf7011dd1f9546547743aff2619c86a955b3",
+    "spec": "drill-anim/specs/n-straddle-fold.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [
+    "block"
+  ],
+  "substitutes": [],
+  "trainingType": [
+    "static-stretch"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "isometric"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [],
+  "secondaryMuscles": [],
+  "stabilizers": [
+    "erectors"
+  ],
+  "stretchedMuscles": [
+    "adductors",
+    "hamstrings"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "flexion",
+        "abduction"
+      ]
+    },
+    {
+      "joint": "knee",
+      "actions": [
+        "extension"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "low",
+  "prerequisites": [
+    "floor-transfer"
+  ],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "low",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "floor-transfer"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "cooldown"
+  ],
+  "goals": [
+    "mobility",
+    "performance"
+  ],
+  "alternatives": [
+    "n-wide-fold"
+  ],
+  "regressions": [
+    "s-butterfly"
+  ],
+  "progressions": [
+    "s-frog"
+  ],
+  "aiSummary": {
+    "zh": "坐地分腿前屈，拉大腿内侧和后侧，练横叉、压腿时选。",
+    "en": "Seated straddle fold for inner and back thighs; for side-split training."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/stretchedMuscles",
+      "existing": {
+        "activeMuscles": [
+          "adductors",
+          "hamstrings"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [],
+        "stretchedMuscles": [
+          "adductors",
+          "hamstrings"
+        ]
+      },
+      "reason": "拉伸类：v3 把被拉肌写在 activeMuscles，本 schema 放 stretchedMuscles。"
+    },
+    {
+      "field": "requiredEquipment/optionalEquipment",
+      "existing": [
+        "yoga-blocks",
+        "mat"
+      ],
+      "chosen": {
+        "requiredEquipment": [
+          "mat"
+        ],
+        "optionalEquipment": [
+          "block"
+        ]
+      },
+      "reason": "yoga-blocks→block；扶砖只为柔韧不够时撑手，改为可选。"
+    },
+    {
+      "field": "floorRequired",
+      "existing": {
+        "position": "seated"
+      },
+      "chosen": true,
+      "reason": "坐在地上做（不是坐椅子），需要着地，不进办公室。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 2,
+      "reason": "分腿坐需要内收肌和腘绳肌同时有一定长度，新手难坐直，调到 2 级。"
+    }
+  ],
+  "reviewNotes": []
+}

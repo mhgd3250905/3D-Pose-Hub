@@ -1,0 +1,190 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "t-straddle-hold",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/t-straddle-hold.json",
+    "textSha256Lf": "8abccc28dac7959665ade65105e8a59c2d284f23505cb488cbc9ba9c52581dc9",
+    "spec": "drill-anim/specs/t-straddle-hold-r6.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [
+    "parallettes"
+  ],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "isometric"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "full"
+  ],
+  "primaryMuscles": [
+    "triceps",
+    "hip-flexors",
+    "abs"
+  ],
+  "secondaryMuscles": [
+    "lats",
+    "adductors"
+  ],
+  "stabilizers": [
+    "scapular",
+    "forearms"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "flexion",
+        "abduction"
+      ]
+    },
+    {
+      "joint": "scapulothoracic",
+      "actions": [
+        "depression"
+      ]
+    },
+    {
+      "joint": "elbow",
+      "actions": [
+        "isometric-hold"
+      ]
+    },
+    {
+      "joint": "wrist",
+      "actions": [
+        "isometric-hold"
+      ]
+    }
+  ],
+  "difficulty": 4,
+  "intensity": "moderate",
+  "prerequisites": [
+    "floor-transfer",
+    "wrist-loading"
+  ],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "moderate",
+    "wrist": "moderate",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "caution",
+      "reasons": [
+        "abdominal-pressure"
+      ]
+    },
+    {
+      "population": "postpartum",
+      "flag": "caution",
+      "reasons": [
+        "abdominal-pressure"
+      ]
+    },
+    {
+      "population": "hypertension",
+      "flag": "modify",
+      "reasons": [
+        "breath-holding-risk"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "performance",
+    "strength"
+  ],
+  "alternatives": [
+    "t-lsit-wide"
+  ],
+  "regressions": [
+    "t-seated-straddle-lifts",
+    "triceps-B"
+  ],
+  "progressions": [
+    "t-lsit-open-close"
+  ],
+  "aiSummary": {
+    "zh": "托马斯全旋前置：分腿支撑把臀和腿撑离地，需要手腕和肩能承重。",
+    "en": "Straddle support hold for flare prep; heavy wrist and shoulder load."
+  },
+  "confidence": "medium",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "hip-flexors",
+          "core",
+          "triceps"
+        ],
+        "synergistMuscles": [
+          "adductors",
+          "deltoids"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "triceps",
+          "hip-flexors",
+          "abs"
+        ],
+        "secondaryMuscles": [
+          "lats",
+          "adductors"
+        ],
+        "stabilizers": [
+          "triceps",
+          "scapular",
+          "forearms"
+        ]
+      },
+      "reason": "分腿撑由三头肌伸肘撑起（v3 列主动肌，保留）+ 髋屈肌/腹直肌压缩抬腿；背阔肌下压协同。"
+    },
+    {
+      "field": "floorRequired",
+      "existing": {
+        "position": "seated"
+      },
+      "chosen": true,
+      "reason": "坐在地上做（不是坐椅子），需要着地，不进办公室。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 3,
+      "chosen": 4,
+      "reason": "词表把 L 坐保持列为 4 级（较高相对力量/技巧），v3 只到 3 级，上调。"
+    }
+  ],
+  "reviewNotes": []
+}

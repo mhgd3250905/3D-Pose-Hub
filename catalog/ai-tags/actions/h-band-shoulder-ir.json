@@ -1,0 +1,120 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-band-shoulder-ir",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-band-shoulder-ir.json",
+    "textSha256Lf": "8dba9c99decf70275b59db07fe91fec37f80d14197e53107c69c9e3a4a88d4a6",
+    "spec": "drill-anim/specs/h-band-shoulder-ir-r2.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "office",
+    "gym",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "band"
+  ],
+  "optionalEquipment": [
+    "d-handle"
+  ],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "isolation"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "transverse"
+  ],
+  "bodyRegion": [
+    "upper"
+  ],
+  "primaryMuscles": [
+    "rotator-cuff"
+  ],
+  "secondaryMuscles": [
+    "chest"
+  ],
+  "stabilizers": [],
+  "joints": [
+    {
+      "joint": "shoulder",
+      "actions": [
+        "internal-rotation"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [
+    "band-anchor"
+  ],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "low",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup",
+    "main"
+  ],
+  "goals": [
+    "performance",
+    "strength"
+  ],
+  "alternatives": [],
+  "regressions": [],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "弹力带练肩袖内旋，配合外旋做肩稳定或热身。",
+    "en": "Band shoulder internal rotation for rotator-cuff balance and warm-ups."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "requiredEquipment/optionalEquipment",
+      "existing": [
+        "resistance-band",
+        "d-handle"
+      ],
+      "chosen": {
+        "requiredEquipment": [
+          "band"
+        ],
+        "optionalEquipment": [
+          "d-handle"
+        ]
+      },
+      "reason": "resistance-band 归一为 band；d-handle 非必需，改为可选。"
+    }
+  ],
+  "reviewNotes": [
+    "库里没有同模式的进退阶动作，关联留空；可与 rotator-cuff-B（外旋）搭配。"
+  ]
+}

@@ -1,0 +1,129 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "s-frog",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/s-frog.json",
+    "textSha256Lf": "ca1431047930a94757b94a0f39f1ba9977a2dd06d699cc6352f6524c2e8398ee",
+    "spec": "drill-anim/specs/s-frog-r3.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [
+    "towel"
+  ],
+  "substitutes": [],
+  "trainingType": [
+    "static-stretch"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "isometric"
+  ],
+  "plane": [
+    "frontal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [],
+  "secondaryMuscles": [],
+  "stabilizers": [
+    "abs",
+    "erectors"
+  ],
+  "stretchedMuscles": [
+    "adductors"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "abduction",
+        "flexion",
+        "external-rotation"
+      ]
+    }
+  ],
+  "difficulty": 3,
+  "intensity": "low",
+  "prerequisites": [
+    "floor-transfer",
+    "kneeling-tolerance"
+  ],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "moderate",
+    "lumbar": "low",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "moderate"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "caution",
+      "reasons": [
+        "end-range-stretch"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "caution",
+      "reasons": [
+        "floor-transfer",
+        "end-range-stretch"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "cooldown"
+  ],
+  "goals": [
+    "mobility",
+    "performance"
+  ],
+  "alternatives": [],
+  "regressions": [
+    "s-butterfly",
+    "h-adductor-rock"
+  ],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "深度拉大腿内侧，练横叉、开胯有一定基础后选。",
+    "en": "Deep frog stretch for inner thighs; for side-split training once you have a base."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/stretchedMuscles",
+      "existing": {
+        "activeMuscles": [
+          "adductors"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [],
+        "stretchedMuscles": [
+          "adductors"
+        ]
+      },
+      "reason": "拉伸类：v3 把被拉肌写在 activeMuscles，本 schema 放 stretchedMuscles。"
+    }
+  ],
+  "reviewNotes": []
+}

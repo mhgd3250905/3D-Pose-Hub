@@ -1,0 +1,155 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "glute-max-A",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/glute-max-A.json",
+    "textSha256Lf": "bdbb0af4adb928c96587ded6c2ebdb9fa398e88256373198a9dd8548c12bdb70",
+    "spec": "drill-anim/specs/glute-max-A-r2.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [
+    {
+      "for": "mat",
+      "use": [
+        "towel"
+      ],
+      "loadNote": "similar"
+    }
+  ],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "hinge"
+  ],
+  "contraction": [
+    "dynamic",
+    "isometric"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "glute-max"
+  ],
+  "secondaryMuscles": [
+    "hamstrings"
+  ],
+  "stabilizers": [
+    "abs",
+    "obliques",
+    "hip-abductors"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "extension",
+        "flexion"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "moderate",
+  "prerequisites": [
+    "floor-transfer"
+  ],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "low",
+    "shoulder": "low",
+    "wrist": "none",
+    "neck": "low",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "floor-transfer"
+      ]
+    },
+    {
+      "population": "pregnancy",
+      "flag": "modify",
+      "reasons": [
+        "supine-position"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "hypertrophy"
+  ],
+  "alternatives": [
+    "h-bridge-march"
+  ],
+  "regressions": [
+    "w-feet-on-chair-bridge"
+  ],
+  "progressions": [
+    "h-chair-single-leg-hip-thrust"
+  ],
+  "aiSummary": {
+    "zh": "居家单腿练臀的基础动作，适合双腿臀桥已轻松的人。",
+    "en": "Single-leg glute bridge for home glute work once double-leg bridges are easy."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "glutes"
+        ],
+        "synergistMuscles": [
+          "hamstrings",
+          "core",
+          "obliques",
+          "abductors"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "glute-max"
+        ],
+        "secondaryMuscles": [
+          "hamstrings"
+        ],
+        "stabilizers": [
+          "abs",
+          "obliques",
+          "hip-abductors"
+        ]
+      },
+      "reason": "v3 粗粒度肌群（glutes）按动作实际做法拆到细分 id。"
+    }
+  ],
+  "reviewNotes": [
+    "同组 A/B/C 模式不同（桥/四足后踢/器械），A 走桥→臀推线；B→C 走直腿后伸线。"
+  ]
+}

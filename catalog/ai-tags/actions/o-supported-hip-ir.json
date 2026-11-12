@@ -1,0 +1,141 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "o-supported-hip-ir",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/o-supported-hip-ir.json",
+    "textSha256Lf": "16f7335cf7cc1b02cd9a0178c441b4238031c9eb6804beafa9b47d3c0eb45de3",
+    "spec": "drill-anim/specs/o-supported-hip-ir.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "office",
+    "gym",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "chair"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "mobility"
+  ],
+  "movementPattern": [
+    "rotation"
+  ],
+  "contraction": [
+    "dynamic",
+    "isometric"
+  ],
+  "plane": [
+    "transverse"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "hip-rotators"
+  ],
+  "secondaryMuscles": [],
+  "stabilizers": [
+    "glute-max",
+    "abs"
+  ],
+  "stretchedMuscles": [
+    "hip-rotators"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "internal-rotation"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [
+    "single-leg-supported"
+  ],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "low",
+    "lumbar": "none",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "low",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "balance-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup"
+  ],
+  "goals": [
+    "mobility",
+    "performance"
+  ],
+  "alternatives": [
+    "n-chair-wiper"
+  ],
+  "regressions": [],
+  "progressions": [
+    "n-prone-ir",
+    "h-9090-liftoff"
+  ],
+  "aiSummary": {
+    "zh": "扶椅站着练髋内旋控制，热身或改善髋转动。",
+    "en": "Chair-supported outward shin swings for hip internal-rotation control."
+  },
+  "confidence": "low",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "glutes",
+          "abductors"
+        ],
+        "synergistMuscles": [
+          "core"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "hip-abductors"
+        ],
+        "secondaryMuscles": [],
+        "stabilizers": [
+          "glute-max",
+          "abs"
+        ]
+      },
+      "reason": "小腿外摆=髋内旋，主动是臀中肌前部/阔筋膜张肌，词表没有单独的髋内旋肌 id，暂用 hip-abductors；v3 glutes 改为稳定。"
+    }
+  ],
+  "reviewNotes": [
+    "primaryMuscles 低把握：髋内旋肌在词表里没有对应 id（low）。"
+  ]
+}

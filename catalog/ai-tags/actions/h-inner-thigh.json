@@ -1,0 +1,126 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-inner-thigh",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-inner-thigh.json",
+    "textSha256Lf": "27afd1a2daca9998e8891e6dcf0d071256698db4680fbd880ede578a5c5b1108",
+    "spec": "drill-anim/specs/h-inner-thigh-r6.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "isolation"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "frontal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "adductors"
+  ],
+  "secondaryMuscles": [],
+  "stabilizers": [
+    "obliques",
+    "abs"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "adduction"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "low",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main",
+    "warmup"
+  ],
+  "goals": [
+    "strength",
+    "posture"
+  ],
+  "alternatives": [
+    "h-band-standing-adduction"
+  ],
+  "regressions": [
+    "n-seated-squeeze"
+  ],
+  "progressions": [
+    "adductors-B"
+  ],
+  "aiSummary": {
+    "zh": "侧躺在垫子上练大腿内侧的入门孤立动作。",
+    "en": "Side-lying inner-thigh isolation on a mat for beginners."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "muscles",
+      "existing": {
+        "activeMuscles": [
+          "adductors"
+        ],
+        "synergistMuscles": [
+          "core"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "adductors"
+        ],
+        "secondaryMuscles": [],
+        "stabilizers": [
+          "obliques",
+          "abs"
+        ]
+      },
+      "reason": "v3 粗粒度肌群（core/glutes/upper-back/lower-back/abductors）按本动作实际做法拆到细分 id。"
+    }
+  ],
+  "reviewNotes": []
+}

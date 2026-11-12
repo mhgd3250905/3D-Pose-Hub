@@ -1,0 +1,133 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-chair-kickback",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-chair-kickback.json",
+    "textSha256Lf": "42863292a6832d846224bfee1e60b3d9d42166423bbc5d83bde707c9a408a273",
+    "spec": "drill-anim/specs/h-chair-kickback.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "office",
+    "gym",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [
+    "chair"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "isolation"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "glute-max"
+  ],
+  "secondaryMuscles": [
+    "hamstrings"
+  ],
+  "stabilizers": [
+    "abs",
+    "erectors",
+    "hip-abductors"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "extension"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "low",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main",
+    "warmup"
+  ],
+  "goals": [
+    "strength",
+    "desk-relief"
+  ],
+  "alternatives": [
+    "n-prone-hip-ext"
+  ],
+  "regressions": [],
+  "progressions": [
+    "h-band-hip-extension",
+    "g-cable-hip-extension"
+  ],
+  "aiSummary": {
+    "zh": "扶椅站姿后踢腿，工位旁就能激活臀部。",
+    "en": "Chair-supported standing kickback to wake up the glutes beside a desk."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "glutes"
+        ],
+        "synergistMuscles": [
+          "hamstrings",
+          "core"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "glute-max"
+        ],
+        "secondaryMuscles": [
+          "hamstrings"
+        ],
+        "stabilizers": [
+          "abs",
+          "erectors",
+          "hip-abductors"
+        ]
+      },
+      "reason": "v3 粗粒度肌群（glutes）按动作实际做法拆到细分 id。"
+    }
+  ],
+  "reviewNotes": []
+}

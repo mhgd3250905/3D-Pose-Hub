@@ -1,0 +1,133 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "s-figure4",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/s-figure4.json",
+    "textSha256Lf": "afbd29543b339c793e6679e72902c945c5ee9739057b743cd893d385e33858f2",
+    "spec": "drill-anim/specs/s-figure4-r2.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "static-stretch"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "isometric"
+  ],
+  "plane": [
+    "transverse"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [],
+  "secondaryMuscles": [],
+  "stabilizers": [],
+  "stretchedMuscles": [
+    "glute-max",
+    "hip-rotators"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "flexion",
+        "external-rotation"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [
+    "floor-transfer"
+  ],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "low",
+    "lumbar": "none",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "floor-transfer"
+      ]
+    },
+    {
+      "population": "pregnancy",
+      "flag": "modify",
+      "reasons": [
+        "supine-position"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "cooldown"
+  ],
+  "goals": [
+    "mobility",
+    "recovery",
+    "desk-relief"
+  ],
+  "alternatives": [
+    "o-seated-fig4"
+  ],
+  "regressions": [],
+  "progressions": [
+    "s-9090",
+    "s-pigeon"
+  ],
+  "aiSummary": {
+    "zh": "躺着拉臀部深处，髋紧或膝盖不适不能做鸽子式时选。",
+    "en": "Lying figure-4 for deep glutes; a gentler pigeon substitute."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/stretchedMuscles",
+      "existing": {
+        "activeMuscles": [
+          "glutes"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [],
+        "stretchedMuscles": [
+          "glute-max",
+          "hip-rotators"
+        ]
+      },
+      "reason": "拉伸类：v3 把被拉肌写在 activeMuscles，本 schema 放 stretchedMuscles。"
+    }
+  ],
+  "reviewNotes": []
+}

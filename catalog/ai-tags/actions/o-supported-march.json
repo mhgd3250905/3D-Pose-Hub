@@ -1,0 +1,161 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "o-supported-march",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/o-supported-march.json",
+    "textSha256Lf": "fe2a9474958362f74671990e86e7cb842172bc90d4054241a2c259ce6b73fe45",
+    "spec": "drill-anim/specs/o-supported-march.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "office",
+    "gym",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "chair"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [
+    {
+      "for": "chair",
+      "use": [
+        "wall"
+      ],
+      "loadNote": "similar"
+    }
+  ],
+  "trainingType": [
+    "balance"
+  ],
+  "movementPattern": [
+    "gait"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "hip-flexors"
+  ],
+  "secondaryMuscles": [],
+  "stabilizers": [
+    "hip-abductors",
+    "glute-max",
+    "abs"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    },
+    {
+      "joint": "knee",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [],
+  "laterality": "alternating",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "low",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "balance-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup",
+    "main"
+  ],
+  "goals": [
+    "performance",
+    "recovery",
+    "strength"
+  ],
+  "alternatives": [
+    "n-seated-knee-lift"
+  ],
+  "regressions": [],
+  "progressions": [
+    "hip-flexors-B"
+  ],
+  "aiSummary": {
+    "zh": "扶椅交替抬膝练平衡，年长者、入门或工间活动首选。",
+    "en": "Chair-supported alternating march for balance and leg lift."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "hip-flexors"
+        ],
+        "synergistMuscles": [
+          "core",
+          "glutes"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "hip-flexors"
+        ],
+        "secondaryMuscles": [],
+        "stabilizers": [
+          "hip-abductors",
+          "glute-max",
+          "abs"
+        ]
+      },
+      "reason": "core/glutes 在单腿站时只稳定，归稳定肌（abs/glute-max/hip-abductors）。"
+    },
+    {
+      "field": "laterality",
+      "existing": {
+        "unilateral": true,
+        "training.kind": "rep_alternate"
+      },
+      "chosen": "alternating",
+      "reason": "v3 unilateral=true 实为左右交替（rep_alternate），与单侧分开。"
+    }
+  ],
+  "reviewNotes": []
+}

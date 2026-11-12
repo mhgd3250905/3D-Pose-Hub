@@ -1,0 +1,160 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "n-slider-lateral",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/n-slider-lateral.json",
+    "textSha256Lf": "dc7afe37c2dd11d87d30b8d9b0ee7d53abae1fe576422d27910456e121e330ef",
+    "spec": "drill-anim/specs/n-slider-lateral.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [
+    "slider"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [
+    {
+      "for": "slider",
+      "use": [
+        "towel"
+      ],
+      "loadNote": "similar"
+    }
+  ],
+  "trainingType": [
+    "mobility",
+    "strength"
+  ],
+  "movementPattern": [
+    "lunge"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "frontal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "adductors"
+  ],
+  "secondaryMuscles": [
+    "quadriceps",
+    "glute-max"
+  ],
+  "stabilizers": [
+    "hip-abductors",
+    "abs"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "abduction",
+        "adduction",
+        "flexion"
+      ]
+    },
+    {
+      "joint": "knee",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "moderate",
+  "prerequisites": [],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "low",
+    "lumbar": "none",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "modify",
+      "reasons": [
+        "balance-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "balance-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup",
+    "main"
+  ],
+  "goals": [
+    "mobility",
+    "performance",
+    "strength"
+  ],
+  "alternatives": [
+    "h-lateral-step-lunge"
+  ],
+  "regressions": [
+    "n-squat-shift"
+  ],
+  "progressions": [
+    "adductors-A"
+  ],
+  "aiSummary": {
+    "zh": "想练横叉或侧向移动能力时选，滑盘侧滑练内收肌末端控制。",
+    "en": "Lateral slider for end-range adductor control toward side splits."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "adductors"
+        ],
+        "synergistMuscles": [
+          "glutes",
+          "quadriceps"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "adductors"
+        ],
+        "secondaryMuscles": [
+          "quadriceps",
+          "glute-max"
+        ],
+        "stabilizers": [
+          "hip-abductors",
+          "abs"
+        ]
+      },
+      "reason": "v3 粗粒度 id 按实际做法拆到 taxonomy id（core→abs/obliques，glutes→glute-max 或 hip-abductors，upper-back→scapular，lower-back→erectors），只稳定不推动的归稳定肌。"
+    }
+  ],
+  "reviewNotes": [
+    "trainingType 加 strength：内收肌离心拉回有明显力量成分。"
+  ]
+}

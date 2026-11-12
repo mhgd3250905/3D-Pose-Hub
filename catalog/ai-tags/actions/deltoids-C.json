@@ -1,0 +1,131 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "deltoids-C",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/deltoids-C.json",
+    "textSha256Lf": "3d49b9a090fc83cf50d37c97107fc80ad05c55fa74c455a25bc8cdc902b4b266",
+    "spec": "drill-anim/specs/deltoids-C.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "gym"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [
+    "landmine",
+    "barbell"
+  ],
+  "optionalEquipment": [
+    "mat"
+  ],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "push-vertical"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "upper"
+  ],
+  "primaryMuscles": [
+    "deltoids"
+  ],
+  "secondaryMuscles": [
+    "triceps",
+    "chest",
+    "serratus"
+  ],
+  "stabilizers": [
+    "abs",
+    "obliques",
+    "glute-max"
+  ],
+  "joints": [
+    {
+      "joint": "shoulder",
+      "actions": [
+        "flexion"
+      ]
+    },
+    {
+      "joint": "elbow",
+      "actions": [
+        "extension",
+        "flexion"
+      ]
+    },
+    {
+      "joint": "scapulothoracic",
+      "actions": [
+        "upward-rotation"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "moderate",
+  "prerequisites": [
+    "floor-transfer",
+    "kneeling-tolerance"
+  ],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "low",
+    "lumbar": "low",
+    "shoulder": "low",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "floor-transfer"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "hypertrophy"
+  ],
+  "alternatives": [],
+  "regressions": [],
+  "progressions": [
+    "h-db-press"
+  ],
+  "aiSummary": {
+    "zh": "健身房里对肩更友好的斜向推举，肩前侧敏感时优先于正上推举。",
+    "en": "Shoulder-friendly angled landmine press for people sensitive to strict overhead pressing."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "floorRequired",
+      "existing": {
+        "position": "half-kneeling"
+      },
+      "chosen": true,
+      "reason": "半跪姿后膝着地，按词表算需要着地。"
+    }
+  ],
+  "reviewNotes": [
+    "与 h-db-press 是同模式，地雷杆角度更友好所以作为其退阶。"
+  ]
+}

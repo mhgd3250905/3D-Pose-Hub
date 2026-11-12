@@ -1,0 +1,144 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "rotator-cuff-C",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/rotator-cuff-C.json",
+    "textSha256Lf": "3ceca59036fb7ff6e706e25e57a99b7a51d963426aacfe0c3c92383539164631",
+    "spec": "drill-anim/specs/rotator-cuff-C-r2.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "gym"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "cable"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [
+    {
+      "for": "cable",
+      "use": [
+        "band"
+      ],
+      "loadNote": "similar"
+    }
+  ],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "isolation"
+  ],
+  "contraction": [
+    "dynamic",
+    "isometric"
+  ],
+  "plane": [
+    "transverse"
+  ],
+  "bodyRegion": [
+    "upper"
+  ],
+  "primaryMuscles": [
+    "rotator-cuff"
+  ],
+  "secondaryMuscles": [
+    "deltoids"
+  ],
+  "stabilizers": [
+    "scapular",
+    "abs"
+  ],
+  "joints": [
+    {
+      "joint": "shoulder",
+      "actions": [
+        "external-rotation",
+        "internal-rotation",
+        "abduction"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "low",
+  "prerequisites": [
+    "overhead-range"
+  ],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "moderate",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [],
+  "sessionRole": [
+    "main",
+    "warmup"
+  ],
+  "goals": [
+    "performance",
+    "posture",
+    "strength"
+  ],
+  "alternatives": [],
+  "regressions": [
+    "rotator-cuff-B"
+  ],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "健身房绳索练手臂抬高位的肩外旋，服务投掷、倒立、撑类动作。",
+    "en": "Cable 90/90 external rotation for overhead shoulder control."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "rotator-cuff"
+        ],
+        "synergistMuscles": [
+          "deltoids",
+          "upper-back"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "rotator-cuff"
+        ],
+        "secondaryMuscles": [
+          "deltoids"
+        ],
+        "stabilizers": [
+          "scapular",
+          "abs"
+        ]
+      },
+      "reason": "v3 粗粒度 id 按实际做法拆到 taxonomy id（core→abs/obliques，glutes→glute-max 或 hip-abductors，upper-back→scapular，lower-back→erectors），只稳定不推动的归稳定肌。"
+    },
+    {
+      "field": "requiredEquipment/optionalEquipment",
+      "existing": [
+        "cable-machine"
+      ],
+      "chosen": {
+        "requiredEquipment": [
+          "cable"
+        ],
+        "optionalEquipment": []
+      },
+      "reason": "cable-machine→cable。"
+    }
+  ],
+  "reviewNotes": []
+}

@@ -1,0 +1,150 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "o-supported-mini-squat",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/o-supported-mini-squat.json",
+    "textSha256Lf": "4c918d85487b4379440dbcc1f1ea460b89fbd9407d4c13638f605ba027f9a222",
+    "spec": "drill-anim/specs/o-supported-mini-squat.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "office",
+    "gym",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "chair"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "squat"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "quadriceps",
+    "glute-max"
+  ],
+  "secondaryMuscles": [],
+  "stabilizers": [
+    "abs",
+    "hip-abductors"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    },
+    {
+      "joint": "knee",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    },
+    {
+      "joint": "ankle",
+      "actions": [
+        "dorsiflexion"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "low",
+    "lumbar": "none",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "low",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup",
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "recovery"
+  ],
+  "alternatives": [
+    "h-chair-sit-to-stand"
+  ],
+  "regressions": [],
+  "progressions": [
+    "h-squat",
+    "w-wall-sit"
+  ],
+  "aiSummary": {
+    "zh": "扶椅小幅下蹲，年长者、膝盖不适或刚入门时的深蹲替代。",
+    "en": "Chair-supported mini squat; entry squat for beginners and older adults."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "quadriceps",
+          "glutes"
+        ],
+        "synergistMuscles": [
+          "core"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "quadriceps",
+          "glute-max"
+        ],
+        "secondaryMuscles": [],
+        "stabilizers": [
+          "abs",
+          "hip-abductors"
+        ]
+      },
+      "reason": "v3 粗粒度 id 按实际做法拆到 taxonomy id（core→abs/obliques，glutes→glute-max 或 hip-abductors，upper-back→scapular，lower-back→erectors），只稳定不推动的归稳定肌。"
+    }
+  ],
+  "reviewNotes": []
+}

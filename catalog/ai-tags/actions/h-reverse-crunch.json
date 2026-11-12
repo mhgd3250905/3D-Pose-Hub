@@ -1,0 +1,146 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-reverse-crunch",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-reverse-crunch.json",
+    "textSha256Lf": "5315d4de0fa85e18ed4428183d2e83e26e569a953f8730e7f60e149cc4841623",
+    "spec": "drill-anim/specs/h-reverse-crunch.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "core"
+  ],
+  "primaryMuscles": [
+    "abs"
+  ],
+  "secondaryMuscles": [
+    "hip-flexors"
+  ],
+  "stabilizers": [
+    "obliques"
+  ],
+  "joints": [
+    {
+      "joint": "lumbar-spine",
+      "actions": [
+        "flexion"
+      ]
+    },
+    {
+      "joint": "hip",
+      "actions": [
+        "flexion"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "low",
+  "prerequisites": [],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "low",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "pregnancy",
+      "flag": "caution",
+      "reasons": [
+        "supine-position",
+        "abdominal-pressure"
+      ]
+    },
+    {
+      "population": "postpartum",
+      "flag": "caution",
+      "reasons": [
+        "abdominal-pressure"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "hypertrophy"
+  ],
+  "alternatives": [
+    "h-crunch"
+  ],
+  "regressions": [
+    "h-crunch"
+  ],
+  "progressions": [
+    "h-supine-bilateral-leg-raise",
+    "abs-C"
+  ],
+  "aiSummary": {
+    "zh": "仰躺卷起骨盆练下腹，卷腹做顺后的下一步。",
+    "en": "Reverse crunch for the lower abs, the step after basic crunches."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "muscles",
+      "existing": {
+        "activeMuscles": [
+          "core"
+        ],
+        "synergistMuscles": [
+          "hip-flexors"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "abs"
+        ],
+        "secondaryMuscles": [
+          "hip-flexors"
+        ],
+        "stabilizers": [
+          "obliques"
+        ]
+      },
+      "reason": "v3 粗粒度肌群（core/glutes/upper-back/lower-back/abductors）按本动作实际做法拆到细分 id。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 2,
+      "reason": "要用下腹卷起骨盆、不靠甩腿，比卷腹难一级。"
+    }
+  ],
+  "reviewNotes": []
+}

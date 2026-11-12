@@ -1,0 +1,134 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-chair-lat",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-chair-lat.json",
+    "textSha256Lf": "4b373f0f3072507f7580a8a81727557e9392ee9c1e505739fad524d5c2a422e2",
+    "spec": "drill-anim/specs/h-chair-lat.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "office",
+    "gym",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "chair"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "static-stretch"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "isometric"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "upper"
+  ],
+  "primaryMuscles": [],
+  "secondaryMuscles": [],
+  "stabilizers": [],
+  "stretchedMuscles": [
+    "lats"
+  ],
+  "joints": [
+    {
+      "joint": "shoulder",
+      "actions": [
+        "flexion"
+      ]
+    },
+    {
+      "joint": "thoracic-spine",
+      "actions": [
+        "extension"
+      ]
+    },
+    {
+      "joint": "hip",
+      "actions": [
+        "flexion"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "low",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "cooldown"
+  ],
+  "goals": [
+    "desk-relief",
+    "mobility",
+    "posture"
+  ],
+  "alternatives": [
+    "o-wall-hip-hinge-stretch"
+  ],
+  "regressions": [],
+  "progressions": [
+    "h-dd-shoulder"
+  ],
+  "aiSummary": {
+    "zh": "扶椅背俯身拉伸背阔肌，久坐后打开肩背。",
+    "en": "Chair-supported lat stretch to open shoulders and back after sitting."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers/stretchedMuscles",
+      "existing": {
+        "activeMuscles": [
+          "lats"
+        ],
+        "synergistMuscles": [
+          "upper-back",
+          "hamstrings"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [],
+        "secondaryMuscles": [],
+        "stabilizers": [],
+        "stretchedMuscles": [
+          "lats"
+        ]
+      },
+      "reason": "拉伸/活动类：v3 把被拉肌写在 activeMuscles，这里移到 stretchedMuscles，无主动发力肌。"
+    }
+  ],
+  "reviewNotes": [
+    "v3 synergist 的 upper-back/hamstrings 在俯身时也有轻度拉伸，只写主目标 lats。"
+  ]
+}

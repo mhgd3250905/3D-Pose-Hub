@@ -1,0 +1,149 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-wall-angel",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-wall-angel.json",
+    "textSha256Lf": "8e7ce9d6cd1db9f90e9fd3b0a0d1107a8227bee90e5c56c13c2874087fa361c3",
+    "spec": "drill-anim/specs/h-wall-angel.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "office",
+    "gym",
+    "outdoor",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "wall"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "mobility"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "frontal"
+  ],
+  "bodyRegion": [
+    "upper"
+  ],
+  "primaryMuscles": [
+    "scapular",
+    "rotator-cuff"
+  ],
+  "secondaryMuscles": [
+    "deltoids"
+  ],
+  "stabilizers": [
+    "abs"
+  ],
+  "stretchedMuscles": [
+    "chest"
+  ],
+  "joints": [
+    {
+      "joint": "shoulder",
+      "actions": [
+        "abduction",
+        "external-rotation"
+      ]
+    },
+    {
+      "joint": "scapulothoracic",
+      "actions": [
+        "upward-rotation",
+        "depression"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "low",
+  "prerequisites": [
+    "overhead-range"
+  ],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "low",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "modify"
+    }
+  ],
+  "sessionRole": [
+    "warmup"
+  ],
+  "goals": [
+    "posture",
+    "desk-relief",
+    "mobility"
+  ],
+  "alternatives": [],
+  "regressions": [
+    "h-supine-cactus-chest"
+  ],
+  "progressions": [
+    "serratus-B"
+  ],
+  "aiSummary": {
+    "zh": "靠墙前臂 W 到 Y 滑动，练举手时肩胛控制，适合圆肩久坐者工间做。",
+    "en": "Wall angel to train overhead scapular control for rounded-shoulder desk workers."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "muscles",
+      "existing": {
+        "activeMuscles": [
+          "deltoids",
+          "rotator-cuff",
+          "upper-back"
+        ],
+        "synergistMuscles": [
+          "core"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "scapular",
+          "rotator-cuff"
+        ],
+        "secondaryMuscles": [
+          "deltoids"
+        ],
+        "stabilizers": [
+          "abs"
+        ],
+        "stretchedMuscles": [
+          "chest"
+        ]
+      },
+      "reason": "v3 upper-back 归 scapular；胸大肌在 Y 位被拉开，补 stretchedMuscles。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 2,
+      "reason": "多数久坐者前臂贴不住墙，需要较好的胸椎和肩外旋，按 2 级。"
+    }
+  ],
+  "reviewNotes": []
+}

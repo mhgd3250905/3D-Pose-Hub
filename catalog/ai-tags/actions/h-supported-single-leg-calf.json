@@ -1,0 +1,125 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-supported-single-leg-calf",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-supported-single-leg-calf.json",
+    "textSha256Lf": "e9f4d9beb2d5b1f35b7870854c49f3aee7ef03928b7721bcf7ac0f18fcd07fc7",
+    "spec": "drill-anim/specs/h-supported-single-leg-calf.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "office",
+    "gym",
+    "outdoor",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "wall"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "isolation"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "calves"
+  ],
+  "secondaryMuscles": [],
+  "stabilizers": [
+    "hip-abductors",
+    "peroneals"
+  ],
+  "joints": [
+    {
+      "joint": "ankle",
+      "actions": [
+        "plantarflexion"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "low",
+  "prerequisites": [
+    "single-leg-supported"
+  ],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "low",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "performance"
+  ],
+  "alternatives": [],
+  "regressions": [
+    "h-calf-raise"
+  ],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "扶墙单腿提踵练小腿，双腿提踵太轻松后的进阶，任何有墙的地方都能做。",
+    "en": "Wall-supported single-leg calf raise, the step up from two-leg raises."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "muscles",
+      "existing": {
+        "activeMuscles": [
+          "calves"
+        ],
+        "synergistMuscles": [
+          "abductors"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "calves"
+        ],
+        "secondaryMuscles": [],
+        "stabilizers": [
+          "hip-abductors",
+          "peroneals"
+        ]
+      },
+      "reason": "v3 synergist abductors：单腿站时臀中肌只是稳骨盆，归 stabilizers；补 peroneals 稳踝外侧。"
+    }
+  ],
+  "reviewNotes": []
+}

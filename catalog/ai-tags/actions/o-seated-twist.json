@@ -1,0 +1,130 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "o-seated-twist",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/o-seated-twist.json",
+    "textSha256Lf": "29fe2346bd0b608b0a7e63673b31b8d8a46fdf7a8f8ff504c0ac5885dc84a299",
+    "spec": "drill-anim/specs/o-seated-twist.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "office",
+    "gym",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "chair"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "static-stretch"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "isometric"
+  ],
+  "plane": [
+    "transverse"
+  ],
+  "bodyRegion": [
+    "core"
+  ],
+  "primaryMuscles": [],
+  "secondaryMuscles": [],
+  "stabilizers": [],
+  "stretchedMuscles": [
+    "obliques",
+    "erectors"
+  ],
+  "joints": [
+    {
+      "joint": "thoracic-spine",
+      "actions": [
+        "rotation"
+      ]
+    },
+    {
+      "joint": "lumbar-spine",
+      "actions": [
+        "rotation"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "low",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "cooldown",
+    "warmup"
+  ],
+  "goals": [
+    "desk-relief",
+    "mobility"
+  ],
+  "alternatives": [
+    "h-supine-twist"
+  ],
+  "regressions": [],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "工位坐着转动上背和腰，久坐僵硬时放松。",
+    "en": "Seated chair twist to rotate the upper back and waist at the desk."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/stretchedMuscles",
+      "existing": {
+        "activeMuscles": [
+          "obliques",
+          "upper-back"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [],
+        "stretchedMuscles": [
+          "obliques",
+          "erectors"
+        ]
+      },
+      "reason": "拉伸类：v3 把被拉肌写在 activeMuscles，本 schema 放 stretchedMuscles。"
+    }
+  ],
+  "reviewNotes": [
+    "v3 的 upper-back 在扭转中是胸椎旋转肌，并入 erectors 作为被拉肌，不是 scapular。"
+  ]
+}

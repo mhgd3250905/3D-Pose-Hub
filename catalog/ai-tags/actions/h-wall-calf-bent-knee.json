@@ -1,0 +1,122 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-wall-calf-bent-knee",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-wall-calf-bent-knee.json",
+    "textSha256Lf": "62f908cf25b3e256fb7a4cf5093d052a81933953f1701aef8d4c1a1bed50d3e1",
+    "spec": "drill-anim/specs/h-wall-calf-bent-knee.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "office",
+    "gym",
+    "outdoor",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "wall"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "static-stretch"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "isometric"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [],
+  "secondaryMuscles": [],
+  "stabilizers": [],
+  "stretchedMuscles": [
+    "calves"
+  ],
+  "joints": [
+    {
+      "joint": "ankle",
+      "actions": [
+        "dorsiflexion"
+      ]
+    },
+    {
+      "joint": "knee",
+      "actions": [
+        "flexion"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "low",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "cooldown"
+  ],
+  "goals": [
+    "mobility",
+    "recovery"
+  ],
+  "alternatives": [
+    "h-wall-calf",
+    "h-knee-wall-dorsiflexion-native"
+  ],
+  "regressions": [],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "扶墙屈膝拉小腿深层，直腿小腿拉伸的补充，改善脚踝前弯。",
+    "en": "Bent-knee wall calf stretch for the deeper calf (soleus) and ankle range."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "muscles",
+      "existing": {
+        "activeMuscles": [
+          "calves"
+        ],
+        "synergistMuscles": []
+      },
+      "chosen": {
+        "primaryMuscles": [],
+        "secondaryMuscles": [],
+        "stabilizers": [],
+        "stretchedMuscles": [
+          "calves"
+        ]
+      },
+      "reason": "拉伸类：v3 activeMuscles 是被拉肌，改放 stretchedMuscles。"
+    }
+  ],
+  "reviewNotes": []
+}

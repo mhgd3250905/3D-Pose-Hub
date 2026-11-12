@@ -1,0 +1,141 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "n-leg-circles",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/n-leg-circles.json",
+    "textSha256Lf": "94c50e08e0bb2eaafc20a37f2ad16947b2ba8f1b2867d5152f87fd033bc7ad30",
+    "spec": "drill-anim/specs/n-leg-circles-r2.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "mobility"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal",
+    "frontal",
+    "transverse"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "hip-flexors",
+    "hip-abductors",
+    "adductors"
+  ],
+  "secondaryMuscles": [],
+  "stabilizers": [
+    "abs"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "circumduction"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [
+    "floor-transfer"
+  ],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "low",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "floor-transfer"
+      ]
+    },
+    {
+      "population": "pregnancy",
+      "flag": "modify",
+      "reasons": [
+        "supine-position"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup"
+  ],
+  "goals": [
+    "mobility",
+    "performance"
+  ],
+  "alternatives": [],
+  "regressions": [],
+  "progressions": [
+    "h-quad-cars"
+  ],
+  "aiSummary": {
+    "zh": "躺着做的髋关节全方向控制热身，适合练腿前或劈叉前。",
+    "en": "Supine leg circles to warm up hip control in all directions."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "hip-flexors",
+          "abductors",
+          "adductors"
+        ],
+        "synergistMuscles": [
+          "core"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "hip-flexors",
+          "hip-abductors",
+          "adductors"
+        ],
+        "secondaryMuscles": [],
+        "stabilizers": [
+          "abs"
+        ]
+      },
+      "reason": "v3 粗粒度 id 按实际做法拆到 taxonomy id（core→abs/obliques，glutes→glute-max 或 hip-abductors，upper-back→scapular，lower-back→erectors），只稳定不推动的归稳定肌。"
+    }
+  ],
+  "reviewNotes": []
+}

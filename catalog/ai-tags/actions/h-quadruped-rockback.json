@@ -1,0 +1,138 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-quadruped-rockback",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-quadruped-rockback.json",
+    "textSha256Lf": "8ec416fca059e4a1e0974f707edd903660f0ad13d911252ff4d32648f9ff761f",
+    "spec": "drill-anim/specs/h-quadruped-rockback-rr1.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "mobility"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [],
+  "secondaryMuscles": [],
+  "stabilizers": [
+    "abs",
+    "erectors"
+  ],
+  "stretchedMuscles": [
+    "glute-max"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "flexion"
+      ]
+    },
+    {
+      "joint": "knee",
+      "actions": [
+        "flexion"
+      ]
+    },
+    {
+      "joint": "lumbar-spine",
+      "actions": [
+        "isometric-hold"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [
+    "kneeling-tolerance",
+    "wrist-loading"
+  ],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "low",
+    "lumbar": "none",
+    "shoulder": "none",
+    "wrist": "low",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup"
+  ],
+  "goals": [
+    "mobility",
+    "performance"
+  ],
+  "alternatives": [
+    "h-catcow-quad"
+  ],
+  "regressions": [],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "跪撑平背后坐，练屈髋时背不弯，适合深蹲前热身。",
+    "en": "Quadruped rock-back to groove hip flexion with a flat back before squatting."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "muscles",
+      "existing": {
+        "activeMuscles": [
+          "glutes",
+          "hip-flexors"
+        ],
+        "synergistMuscles": [
+          "core",
+          "lower-back"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [],
+        "secondaryMuscles": [],
+        "stabilizers": [
+          "abs",
+          "erectors"
+        ],
+        "stretchedMuscles": [
+          "glute-max"
+        ]
+      },
+      "reason": "v3 glutes/hip-flexors 主练：后坐时髋屈、臀部被拉长，背保持平直靠腹部和竖脊肌稳定；无明确主动肌。"
+    }
+  ],
+  "reviewNotes": []
+}

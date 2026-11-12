@@ -1,0 +1,155 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-band-hip-extension",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-band-hip-extension.json",
+    "textSha256Lf": "fa73979bebc3bc9d94b1b903351c49f41763b2e207fe481b332ac0fe745a195a",
+    "spec": "drill-anim/specs/h-band-hip-extension.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [
+    "band"
+  ],
+  "optionalEquipment": [
+    "chair",
+    "ankle-strap"
+  ],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "isolation"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "glute-max"
+  ],
+  "secondaryMuscles": [
+    "hamstrings"
+  ],
+  "stabilizers": [
+    "abs",
+    "erectors",
+    "hip-abductors"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "extension"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [
+    "band-anchor"
+  ],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "low",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "hypertrophy"
+  ],
+  "alternatives": [
+    "g-cable-hip-extension"
+  ],
+  "regressions": [
+    "h-chair-kickback"
+  ],
+  "progressions": [
+    "glute-max-B"
+  ],
+  "aiSummary": {
+    "zh": "居家用弹力带站姿练臀后伸，带子固定在低处、椅子只扶稳。",
+    "en": "Standing band kickback for glutes at home; anchor low, chair only for balance."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "glutes"
+        ],
+        "synergistMuscles": [
+          "hamstrings",
+          "core"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "glute-max"
+        ],
+        "secondaryMuscles": [
+          "hamstrings"
+        ],
+        "stabilizers": [
+          "abs",
+          "erectors",
+          "hip-abductors"
+        ]
+      },
+      "reason": "v3 粗粒度肌群（glutes）按动作实际做法拆到细分 id。"
+    },
+    {
+      "field": "requiredEquipment/optionalEquipment",
+      "existing": [
+        "resistance-band",
+        "ankle-strap",
+        "chair"
+      ],
+      "chosen": {
+        "requiredEquipment": [
+          "band"
+        ],
+        "optionalEquipment": [
+          "chair",
+          "ankle-strap"
+        ]
+      },
+      "reason": "resistance-band 归一为 band；ankle-strap 在家可用带子直接套脚踝、chair 只扶稳，均改为可选。"
+    }
+  ],
+  "reviewNotes": []
+}

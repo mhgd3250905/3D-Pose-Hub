@@ -1,0 +1,145 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "o-stand-lunge",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/o-stand-lunge.json",
+    "textSha256Lf": "41ef71296babf88dab84b32071e5d71415cf0b558a354b798fdd9b4f5e711f8a",
+    "spec": "drill-anim/specs/o-stand-lunge.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "office",
+    "gym",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "chair"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "static-stretch"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "isometric"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [],
+  "secondaryMuscles": [],
+  "stabilizers": [
+    "glute-max",
+    "abs"
+  ],
+  "stretchedMuscles": [
+    "hip-flexors"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "extension"
+      ]
+    },
+    {
+      "joint": "knee",
+      "actions": [
+        "flexion"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [
+    "split-stance"
+  ],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "low",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "balance-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "cooldown"
+  ],
+  "goals": [
+    "desk-relief",
+    "mobility",
+    "posture"
+  ],
+  "alternatives": [],
+  "regressions": [],
+  "progressions": [
+    "s-kneel-hipflex",
+    "s-lizard"
+  ],
+  "aiSummary": {
+    "zh": "站着扶椅拉髋前侧，久坐骨盆前倾、髋前紧时工位可做。",
+    "en": "Standing chair-supported hip-flexor stretch for desk workers."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/stretchedMuscles",
+      "existing": {
+        "activeMuscles": [
+          "hip-flexors"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [],
+        "stretchedMuscles": [
+          "hip-flexors"
+        ]
+      },
+      "reason": "拉伸类：v3 把被拉肌写在 activeMuscles，本 schema 放 stretchedMuscles。"
+    },
+    {
+      "field": "stabilizers",
+      "existing": {
+        "synergistMuscles": [
+          "quadriceps",
+          "glutes"
+        ]
+      },
+      "chosen": [
+        "glute-max",
+        "abs"
+      ],
+      "reason": "夹臀是为了让骨盆后倾加深拉伸，臀大肌是稳定肌不是被拉肌。"
+    }
+  ],
+  "reviewNotes": []
+}

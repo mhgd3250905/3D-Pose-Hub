@@ -1,0 +1,161 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-unsupported-star-reach-native",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-unsupported-star-reach-native.json",
+    "textSha256Lf": "24a621f643e68d214ff2660304fc5ab12569ec7300c6eb53cd87738e7c4e751b",
+    "spec": "drill-anim/specs/h-unsupported-star-reach-native.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "office",
+    "gym",
+    "outdoor",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "balance"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal",
+    "frontal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "hip-abductors",
+    "glute-max"
+  ],
+  "secondaryMuscles": [
+    "quadriceps"
+  ],
+  "stabilizers": [
+    "calves",
+    "peroneals",
+    "abs"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "flexion",
+        "abduction",
+        "extension"
+      ]
+    },
+    {
+      "joint": "knee",
+      "actions": [
+        "flexion"
+      ]
+    },
+    {
+      "joint": "ankle",
+      "actions": [
+        "isometric-hold"
+      ]
+    }
+  ],
+  "difficulty": 3,
+  "intensity": "low",
+  "prerequisites": [
+    "single-leg-unsupported"
+  ],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "low",
+    "lumbar": "none",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "low",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "modify",
+      "reasons": [
+        "balance-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "caution",
+      "reasons": [
+        "balance-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup",
+    "main"
+  ],
+  "goals": [
+    "performance",
+    "strength"
+  ],
+  "alternatives": [],
+  "regressions": [
+    "o-supported-star-reach"
+  ],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "不扶的单腿三向点地，练单腿平衡和臀部控制，扶椅版做稳后的进阶。",
+    "en": "Unsupported single-leg star reach for balance, after the chair-supported version."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "muscles",
+      "existing": {
+        "activeMuscles": [
+          "glutes",
+          "abductors"
+        ],
+        "synergistMuscles": [
+          "quadriceps",
+          "calves",
+          "core"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "hip-abductors",
+          "glute-max"
+        ],
+        "secondaryMuscles": [
+          "quadriceps"
+        ],
+        "stabilizers": [
+          "calves",
+          "peroneals",
+          "abs"
+        ]
+      },
+      "reason": "v3 粗粒度肌群（core/glutes/upper-back/lower-back/abductors）按本动作实际做法拆到细分 id。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 2,
+      "chosen": 3,
+      "reason": "不扶单腿站 + 三方向移动重心，按词表 3 级。"
+    }
+  ],
+  "reviewNotes": []
+}

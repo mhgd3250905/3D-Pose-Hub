@@ -1,0 +1,174 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "abs-A",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/abs-A.json",
+    "textSha256Lf": "204a217df5d0416174c5b049b8eb0c010a9710afe07c2da3ff6aa69d54d26fd3",
+    "spec": "drill-anim/specs/abs-A-r2.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [
+    {
+      "for": "mat",
+      "use": [
+        "towel"
+      ],
+      "loadNote": "similar"
+    }
+  ],
+  "trainingType": [
+    "strength",
+    "stability-control"
+  ],
+  "movementPattern": [
+    "anti-extension"
+  ],
+  "contraction": [
+    "isometric"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "core"
+  ],
+  "primaryMuscles": [
+    "abs"
+  ],
+  "secondaryMuscles": [
+    "hip-flexors",
+    "obliques"
+  ],
+  "stabilizers": [
+    "quadriceps"
+  ],
+  "joints": [
+    {
+      "joint": "lumbar-spine",
+      "actions": [
+        "isometric-hold"
+      ]
+    },
+    {
+      "joint": "hip",
+      "actions": [
+        "isometric-hold"
+      ]
+    }
+  ],
+  "difficulty": 3,
+  "intensity": "moderate",
+  "prerequisites": [
+    "floor-transfer",
+    "neutral-spine"
+  ],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "moderate",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "low",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "floor-transfer"
+      ]
+    },
+    {
+      "population": "pregnancy",
+      "flag": "caution",
+      "reasons": [
+        "supine-position",
+        "abdominal-pressure"
+      ]
+    },
+    {
+      "population": "beginner",
+      "flag": "modify",
+      "reasons": [
+        "abdominal-pressure"
+      ]
+    },
+    {
+      "population": "postpartum",
+      "flag": "caution",
+      "reasons": [
+        "abdominal-pressure"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "performance"
+  ],
+  "alternatives": [],
+  "regressions": [
+    "w-dead-bug",
+    "h-crunch"
+  ],
+  "progressions": [
+    "abs-C"
+  ],
+  "aiSummary": {
+    "zh": "有垫子时练腹部抗伸展的标准静态保持，需先能稳住死虫式。",
+    "en": "Standard floor anti-extension hold for abs once dead bugs are solid."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "core"
+        ],
+        "synergistMuscles": [
+          "hip-flexors"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "abs"
+        ],
+        "secondaryMuscles": [
+          "hip-flexors",
+          "obliques"
+        ],
+        "stabilizers": [
+          "quadriceps"
+        ]
+      },
+      "reason": "v3 粗粒度肌群（core）按动作实际做法拆到细分 id。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 3,
+      "reason": "完整空心体（手臂过头、双腿伸直）需要较强腹部控制，按词表属中级 3；v3 的 1 偏低。"
+    }
+  ],
+  "reviewNotes": []
+}

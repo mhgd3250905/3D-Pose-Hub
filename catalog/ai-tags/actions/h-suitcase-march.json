@@ -1,0 +1,158 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-suitcase-march",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-suitcase-march.json",
+    "textSha256Lf": "b46f99177775d1d12b4a444383130a4da3f97e87d621c111797d31d8e7bbfb35",
+    "spec": "drill-anim/specs/h-suitcase-march.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "outdoor",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "dumbbell"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [
+    {
+      "for": "dumbbell",
+      "use": [
+        "backpack",
+        "water-bottle"
+      ],
+      "loadNote": "lighter"
+    }
+  ],
+  "trainingType": [
+    "stability-control"
+  ],
+  "movementPattern": [
+    "carry",
+    "anti-lateral-flexion",
+    "gait"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "frontal",
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "core",
+    "lower"
+  ],
+  "primaryMuscles": [
+    "obliques",
+    "hip-abductors"
+  ],
+  "secondaryMuscles": [
+    "hip-flexors",
+    "forearms"
+  ],
+  "stabilizers": [
+    "abs",
+    "erectors"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "flexion"
+      ]
+    },
+    {
+      "joint": "lumbar-spine",
+      "actions": [
+        "isometric-hold"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "low",
+  "prerequisites": [
+    "single-leg-supported"
+  ],
+  "laterality": "alternating",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "low",
+    "shoulder": "low",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "balance-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "posture",
+    "performance"
+  ],
+  "alternatives": [],
+  "regressions": [
+    "h-suitcase-hold",
+    "o-supported-march"
+  ],
+  "progressions": [
+    "forearms-C"
+  ],
+  "aiSummary": {
+    "zh": "单手提重物原地踏步，练侧腹和臀中肌稳骨盆，单手提哑铃站稳后的进阶。",
+    "en": "Suitcase march for oblique and hip stability, the step after a suitcase hold."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "muscles",
+      "existing": {
+        "activeMuscles": [
+          "obliques",
+          "abductors"
+        ],
+        "synergistMuscles": [
+          "core",
+          "forearms",
+          "hip-flexors"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "obliques",
+          "hip-abductors"
+        ],
+        "secondaryMuscles": [
+          "hip-flexors",
+          "forearms"
+        ],
+        "stabilizers": [
+          "abs",
+          "erectors"
+        ]
+      },
+      "reason": "v3 粗粒度肌群（core/glutes/upper-back/lower-back/abductors）按本动作实际做法拆到细分 id。"
+    }
+  ],
+  "reviewNotes": []
+}

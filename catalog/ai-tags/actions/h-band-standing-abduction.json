@@ -1,0 +1,149 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-band-standing-abduction",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-band-standing-abduction.json",
+    "textSha256Lf": "40cc3a41af3322840676f8b4369845158990c9d69fde952f14279f09d7030113",
+    "spec": "drill-anim/specs/h-band-standing-abduction.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [
+    "band"
+  ],
+  "optionalEquipment": [
+    "chair",
+    "ankle-strap"
+  ],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "isolation"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "frontal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "hip-abductors"
+  ],
+  "secondaryMuscles": [],
+  "stabilizers": [
+    "abs",
+    "obliques"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "abduction"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [
+    "band-anchor"
+  ],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "performance"
+  ],
+  "alternatives": [
+    "g-cable-hip-abduction"
+  ],
+  "regressions": [
+    "h-side-leg-raise"
+  ],
+  "progressions": [
+    "hip-abductors-A"
+  ],
+  "aiSummary": {
+    "zh": "居家用弹力带站姿练臀部外侧，提升髋稳定。",
+    "en": "Standing band hip abduction at home for outer-glute strength and hip stability."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "abductors"
+        ],
+        "synergistMuscles": [
+          "glutes",
+          "core"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "hip-abductors"
+        ],
+        "secondaryMuscles": [],
+        "stabilizers": [
+          "abs",
+          "obliques"
+        ]
+      },
+      "reason": "v3 粗粒度肌群（abductors）按动作实际做法拆到细分 id。"
+    },
+    {
+      "field": "requiredEquipment/optionalEquipment",
+      "existing": [
+        "resistance-band",
+        "ankle-strap",
+        "chair"
+      ],
+      "chosen": {
+        "requiredEquipment": [
+          "band"
+        ],
+        "optionalEquipment": [
+          "chair",
+          "ankle-strap"
+        ]
+      },
+      "reason": "resistance-band 归一为 band；ankle-strap 和 chair 非必需，改为可选。"
+    }
+  ],
+  "reviewNotes": []
+}

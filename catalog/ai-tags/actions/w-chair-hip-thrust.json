@@ -1,0 +1,153 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "w-chair-hip-thrust",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/w-chair-hip-thrust.json",
+    "textSha256Lf": "cbe17cb3a923e1c364ef61987364239f4a510993aa5383a8add3730d170f6d8e",
+    "spec": "drill-anim/specs/w-chair-hip-thrust.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [
+    "chair"
+  ],
+  "optionalEquipment": [
+    "mat"
+  ],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "hinge"
+  ],
+  "contraction": [
+    "dynamic",
+    "isometric"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "glute-max"
+  ],
+  "secondaryMuscles": [
+    "hamstrings",
+    "quadriceps"
+  ],
+  "stabilizers": [
+    "abs",
+    "erectors",
+    "hip-abductors"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "extension",
+        "flexion"
+      ]
+    },
+    {
+      "joint": "knee",
+      "actions": [
+        "isometric-hold"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "moderate",
+  "prerequisites": [
+    "floor-transfer"
+  ],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "low",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "floor-transfer"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "hypertrophy"
+  ],
+  "alternatives": [],
+  "regressions": [
+    "w-feet-on-chair-bridge"
+  ],
+  "progressions": [
+    "h-chair-single-leg-hip-thrust"
+  ],
+  "aiSummary": {
+    "zh": "上背靠椅子练臀推，居家没有凳子时的臀部主力动作。",
+    "en": "Chair hip thrust for glute strength at home."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "glutes"
+        ],
+        "synergistMuscles": [
+          "hamstrings",
+          "quadriceps",
+          "core"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "glute-max"
+        ],
+        "secondaryMuscles": [
+          "hamstrings",
+          "quadriceps"
+        ],
+        "stabilizers": [
+          "abs",
+          "erectors",
+          "hip-abductors"
+        ]
+      },
+      "reason": "v3 粗粒度 id 按实际做法拆到 taxonomy id（core→abs/obliques，glutes→glute-max 或 hip-abductors，upper-back→scapular，lower-back→erectors），只稳定不推动的归稳定肌。"
+    },
+    {
+      "field": "floorRequired",
+      "existing": {
+        "position": "supine"
+      },
+      "chosen": true,
+      "reason": "起始坐在地上、上背靠椅，臀部下落接近地面，需要着地，不进办公室。"
+    }
+  ],
+  "reviewNotes": []
+}

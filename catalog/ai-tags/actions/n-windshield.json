@@ -1,0 +1,158 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "n-windshield",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/n-windshield.json",
+    "textSha256Lf": "428f16d330822e320ecdefb60997737c058b25e79501000b8974898d98a242cd",
+    "spec": "drill-anim/specs/n-windshield-r2.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "mobility"
+  ],
+  "movementPattern": [
+    "rotation"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "transverse"
+  ],
+  "bodyRegion": [
+    "lower",
+    "core"
+  ],
+  "primaryMuscles": [
+    "hip-rotators",
+    "obliques"
+  ],
+  "secondaryMuscles": [
+    "hip-abductors",
+    "adductors"
+  ],
+  "stabilizers": [
+    "abs"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "internal-rotation",
+        "external-rotation"
+      ]
+    },
+    {
+      "joint": "lumbar-spine",
+      "actions": [
+        "rotation"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [
+    "floor-transfer"
+  ],
+  "laterality": "alternating",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "low",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "floor-transfer"
+      ]
+    },
+    {
+      "population": "pregnancy",
+      "flag": "modify",
+      "reasons": [
+        "supine-position"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup",
+    "cooldown"
+  ],
+  "goals": [
+    "mobility",
+    "recovery"
+  ],
+  "alternatives": [
+    "n-chair-wiper"
+  ],
+  "regressions": [],
+  "progressions": [
+    "n-seated-ir-drop"
+  ],
+  "aiSummary": {
+    "zh": "躺着轻松转动髋和腰，训练后放松或起床活动。",
+    "en": "Supine windshield wipers to gently rotate the hips and low back."
+  },
+  "confidence": "medium",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "glutes",
+          "obliques"
+        ],
+        "synergistMuscles": [
+          "adductors",
+          "abductors"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "hip-rotators",
+          "obliques"
+        ],
+        "secondaryMuscles": [
+          "hip-abductors",
+          "adductors"
+        ],
+        "stabilizers": [
+          "abs"
+        ]
+      },
+      "reason": "双膝倒向一侧=一侧髋内旋、另一侧外旋加腰椎旋转，主动是髋旋转肌和腹斜肌；v3 glutes 改为 hip-rotators。"
+    },
+    {
+      "field": "laterality",
+      "existing": {
+        "unilateral": true,
+        "training.kind": "rep_alternate"
+      },
+      "chosen": "alternating",
+      "reason": "v3 unilateral=true 实为左右交替（rep_alternate），与单侧分开。"
+    }
+  ],
+  "reviewNotes": []
+}

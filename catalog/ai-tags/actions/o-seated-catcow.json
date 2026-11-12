@@ -1,0 +1,140 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "o-seated-catcow",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/o-seated-catcow.json",
+    "textSha256Lf": "15c62500bda35aa20b12fd8d5b6eeb040d3682189360e8aa84e8c402e7b1f94e",
+    "spec": "drill-anim/specs/o-seated-catcow.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "office",
+    "gym",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "chair"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "mobility"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "core"
+  ],
+  "primaryMuscles": [
+    "erectors",
+    "abs"
+  ],
+  "secondaryMuscles": [],
+  "stabilizers": [],
+  "joints": [
+    {
+      "joint": "lumbar-spine",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    },
+    {
+      "joint": "thoracic-spine",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    },
+    {
+      "joint": "cervical-spine",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "low",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "low",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup",
+    "cooldown"
+  ],
+  "goals": [
+    "desk-relief",
+    "mobility",
+    "posture"
+  ],
+  "alternatives": [
+    "h-catcow-quad"
+  ],
+  "regressions": [],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "工位坐着活动整条脊柱，久坐腰背僵硬时首选。",
+    "en": "Seated cat-cow to mobilise the whole spine at the desk."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "lower-back",
+          "upper-back",
+          "core"
+        ],
+        "synergistMuscles": []
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "erectors",
+          "abs"
+        ],
+        "secondaryMuscles": [],
+        "stabilizers": []
+      },
+      "reason": "v3 lower-back/upper-back/core 换算：脊柱屈伸由竖脊肌和腹直肌主导，upper-back 在此是胸椎伸展，并入 erectors。"
+    }
+  ],
+  "reviewNotes": []
+}

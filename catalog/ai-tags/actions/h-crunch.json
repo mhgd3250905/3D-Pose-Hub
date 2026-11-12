@@ -1,0 +1,160 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-crunch",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-crunch.json",
+    "textSha256Lf": "b8956836feb187d103f8145fc9f18cf476e457fce9c27dae6853e7f3cdb839ce",
+    "spec": "drill-anim/specs/h-crunch-r2.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [
+    {
+      "for": "mat",
+      "use": [
+        "towel"
+      ],
+      "loadNote": "similar"
+    }
+  ],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "isolation"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "core"
+  ],
+  "primaryMuscles": [
+    "abs"
+  ],
+  "secondaryMuscles": [
+    "obliques"
+  ],
+  "stabilizers": [],
+  "joints": [
+    {
+      "joint": "thoracic-spine",
+      "actions": [
+        "flexion"
+      ]
+    },
+    {
+      "joint": "lumbar-spine",
+      "actions": [
+        "flexion"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "moderate",
+  "prerequisites": [
+    "floor-transfer"
+  ],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "low",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "low",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "floor-transfer"
+      ]
+    },
+    {
+      "population": "pregnancy",
+      "flag": "caution",
+      "reasons": [
+        "supine-position",
+        "abdominal-pressure"
+      ]
+    },
+    {
+      "population": "postpartum",
+      "flag": "caution",
+      "reasons": [
+        "abdominal-pressure"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "hypertrophy"
+  ],
+  "alternatives": [
+    "h-reverse-crunch"
+  ],
+  "regressions": [],
+  "progressions": [
+    "abs-A",
+    "h-supine-bilateral-leg-raise"
+  ],
+  "aiSummary": {
+    "zh": "最基础的腹直肌练习，新手居家练腹首选。",
+    "en": "Basic crunch for the abs; the beginner home ab choice."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "core"
+        ],
+        "synergistMuscles": [
+          "obliques"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "abs"
+        ],
+        "secondaryMuscles": [
+          "obliques"
+        ],
+        "stabilizers": []
+      },
+      "reason": "v3 粗粒度肌群（core）按动作实际做法拆到细分 id。"
+    }
+  ],
+  "reviewNotes": []
+}

@@ -1,0 +1,154 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "s-lizard",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/s-lizard.json",
+    "textSha256Lf": "fab114d09c07cbb3aab09d849d058d595c6abba03e8f1c33b16b6a0299242835",
+    "spec": "drill-anim/specs/s-lizard.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "mat",
+    "block"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [
+    {
+      "for": "block",
+      "use": [
+        "book"
+      ],
+      "loadNote": "similar"
+    }
+  ],
+  "trainingType": [
+    "static-stretch"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "isometric"
+  ],
+  "plane": [
+    "sagittal",
+    "frontal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [],
+  "secondaryMuscles": [],
+  "stabilizers": [
+    "abs"
+  ],
+  "stretchedMuscles": [
+    "hip-flexors",
+    "adductors"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "extension",
+        "flexion",
+        "abduction"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "low",
+  "prerequisites": [
+    "kneeling-tolerance",
+    "split-stance"
+  ],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "low",
+    "lumbar": "low",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "moderate"
+  },
+  "populationNotes": [
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "floor-transfer"
+      ]
+    },
+    {
+      "population": "beginner",
+      "flag": "modify",
+      "reasons": [
+        "end-range-stretch"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "cooldown"
+  ],
+  "goals": [
+    "mobility",
+    "performance"
+  ],
+  "alternatives": [],
+  "regressions": [
+    "s-kneel-hipflex"
+  ],
+  "progressions": [
+    "h-chair-progressive-front-split-native"
+  ],
+  "aiSummary": {
+    "zh": "低弓步拉后腿髋前侧和前腿内侧，练劈叉或开髋时选。",
+    "en": "Lizard lunge for hip flexors and inner thigh; split training."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/stretchedMuscles",
+      "existing": {
+        "activeMuscles": [
+          "hip-flexors",
+          "adductors"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [],
+        "stretchedMuscles": [
+          "hip-flexors",
+          "adductors"
+        ]
+      },
+      "reason": "拉伸类：v3 把被拉肌写在 activeMuscles，本 schema 放 stretchedMuscles。"
+    },
+    {
+      "field": "requiredEquipment/optionalEquipment",
+      "existing": [
+        "yoga-blocks",
+        "mat"
+      ],
+      "chosen": {
+        "requiredEquipment": [
+          "mat",
+          "block"
+        ],
+        "optionalEquipment": []
+      },
+      "reason": "yoga-blocks→block。"
+    }
+  ],
+  "reviewNotes": []
+}

@@ -1,0 +1,125 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-reverse-clam",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-reverse-clam.json",
+    "textSha256Lf": "62160d2b2ee7235c60fa901d7cbbcddf063599aba16763a4c02ef7121121b6d7",
+    "spec": "drill-anim/specs/h-reverse-clam-r2.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "mobility",
+    "strength"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "transverse"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "hip-rotators",
+    "hip-abductors"
+  ],
+  "secondaryMuscles": [],
+  "stabilizers": [
+    "abs"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "internal-rotation"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup",
+    "main"
+  ],
+  "goals": [
+    "mobility",
+    "strength"
+  ],
+  "alternatives": [
+    "o-supported-hip-ir",
+    "n-prone-ir"
+  ],
+  "regressions": [],
+  "progressions": [
+    "h-band-hip-ir"
+  ],
+  "aiSummary": {
+    "zh": "侧躺练髋内旋控制，适合髋内转受限的人热身。",
+    "en": "Side-lying reverse clam to train hip internal rotation control."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "muscles",
+      "existing": {
+        "activeMuscles": [
+          "abductors",
+          "glutes"
+        ],
+        "synergistMuscles": [
+          "core"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "hip-rotators",
+          "hip-abductors"
+        ],
+        "secondaryMuscles": [],
+        "stabilizers": [
+          "abs"
+        ]
+      },
+      "reason": "v3 abductors/glutes：反向蚌式是髋内旋，主要靠深层旋转肌和臀中肌前束，不是臀大肌。"
+    }
+  ],
+  "reviewNotes": []
+}

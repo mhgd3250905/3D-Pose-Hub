@@ -1,0 +1,129 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-wall-straddle",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-wall-straddle.json",
+    "textSha256Lf": "cbf76e458f69f833a2e17283191266fb184e42b69768bdb4b6edf5e94aace475",
+    "spec": "drill-anim/specs/h-wall-straddle.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "wall",
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "static-stretch"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "isometric"
+  ],
+  "plane": [
+    "frontal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [],
+  "secondaryMuscles": [],
+  "stabilizers": [],
+  "stretchedMuscles": [
+    "adductors",
+    "hamstrings"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "abduction",
+        "flexion"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    },
+    {
+      "population": "pregnancy",
+      "flag": "modify",
+      "reasons": [
+        "supine-position"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "cooldown"
+  ],
+  "goals": [
+    "mobility",
+    "recovery"
+  ],
+  "alternatives": [
+    "s-butterfly",
+    "n-straddle-fold"
+  ],
+  "regressions": [],
+  "progressions": [
+    "s-frog"
+  ],
+  "aiSummary": {
+    "zh": "仰躺腿搭墙靠重力分腿，最省力的大腿内侧拉伸，适合睡前放松。",
+    "en": "Legs-up-the-wall straddle, the easiest gravity-assisted inner-thigh stretch."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "muscles",
+      "existing": {
+        "activeMuscles": [
+          "adductors"
+        ],
+        "synergistMuscles": [
+          "hamstrings"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [],
+        "secondaryMuscles": [],
+        "stabilizers": [],
+        "stretchedMuscles": [
+          "adductors",
+          "hamstrings"
+        ]
+      },
+      "reason": "拉伸类：v3 activeMuscles 是被拉肌，改放 stretchedMuscles。"
+    }
+  ],
+  "reviewNotes": []
+}

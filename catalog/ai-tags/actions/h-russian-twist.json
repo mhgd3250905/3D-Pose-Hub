@@ -1,0 +1,152 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-russian-twist",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-russian-twist.json",
+    "textSha256Lf": "86520e57189a22e355077baca27ca240a2ab02c50c95fba61c1771b0dca687c6",
+    "spec": "drill-anim/specs/h-russian-twist-r2.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "rotation"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "transverse"
+  ],
+  "bodyRegion": [
+    "core"
+  ],
+  "primaryMuscles": [
+    "obliques"
+  ],
+  "secondaryMuscles": [
+    "abs",
+    "hip-flexors"
+  ],
+  "stabilizers": [
+    "erectors"
+  ],
+  "joints": [
+    {
+      "joint": "thoracic-spine",
+      "actions": [
+        "rotation"
+      ]
+    },
+    {
+      "joint": "lumbar-spine",
+      "actions": [
+        "isometric-hold"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "low",
+  "prerequisites": [],
+  "laterality": "alternating",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "moderate",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "pregnancy",
+      "flag": "caution",
+      "reasons": [
+        "abdominal-pressure"
+      ]
+    },
+    {
+      "population": "postpartum",
+      "flag": "caution",
+      "reasons": [
+        "abdominal-pressure"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength"
+  ],
+  "alternatives": [],
+  "regressions": [],
+  "progressions": [
+    "obliques-A"
+  ],
+  "aiSummary": {
+    "zh": "坐在垫子上脚踩地的转体，练侧腹旋转控制。",
+    "en": "Feet-down Russian twist on a mat for oblique rotation control."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "muscles",
+      "existing": {
+        "activeMuscles": [
+          "obliques",
+          "core"
+        ],
+        "synergistMuscles": [
+          "hip-flexors"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "obliques"
+        ],
+        "secondaryMuscles": [
+          "abs",
+          "hip-flexors"
+        ],
+        "stabilizers": [
+          "erectors"
+        ]
+      },
+      "reason": "v3 粗粒度肌群（core/glutes/upper-back/lower-back/abductors）按本动作实际做法拆到细分 id。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 2,
+      "reason": "上身后仰保持同时转体，需躯干控制，按 2 级。"
+    },
+    {
+      "field": "floorRequired",
+      "existing": {
+        "position": "seated"
+      },
+      "chosen": true,
+      "reason": "坐在地上做，算着地，不进办公室。"
+    }
+  ],
+  "reviewNotes": []
+}
