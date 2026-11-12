@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "s-figure4",
   "nameZh": "仰卧 4 字拉伸",
-  "spec": "drill-anim/specs/s-figure4-r4.js",
-  "specSha256Lf": "98fb759d7c39ca28df16a8945aa660a953c3ccc363f6ebcbd27d52d8bd889293",
+  "spec": "drill-anim/specs/s-figure4-r2-et1-sc2-fa1-ak6.js",
+  "specSha256Lf": "b7c2f4be84fd3934b632a368a408e6b76380180d135e28e39985536d7a2d2483",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -14,9 +14,9 @@
   },
   "camera": {
     "dir": [
-      -0.45,
-      0.75,
-      0.9
+      0.9,
+      0.45,
+      0.3
     ],
     "fit": [
       "head",
@@ -91,7 +91,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/s-figure4-r4.js"
+    "selectedSpec": "drill-anim/specs/s-figure4-r2-et1-sc2-fa1-ak3.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -120,18 +120,45 @@
         "from": "drill-anim/specs/s-figure4-r2-et1-sc2.js",
         "to": "drill-anim/specs/s-figure4-r2-et1-sc2-fa1.js",
         "why": "foot-angle r1: crossed right foot was a fixed world rot = ~90deg plantar flexion vs the solved shin; now follows the shin + 5deg dorsiflexion (PF 82-90 -> DF 6-7, toe in/out -60..-38 -> 0..-1, inv 11..23 -> -10..2)"
+      },
+      {
+        "from": "drill-anim/specs/s-figure4-r2-et1-sc2-fa1.js",
+        "to": "drill-anim/specs/s-figure4-r2-et1-sc2-fa1-ak1.js",
+        "why": "ankle r1 (2026-11-07): crossed right ankle hung in the air over the left thigh; ankle offset [-0.0029,0.0027,0.0483] in base+open -> outer ankle on thigh 10.3 cm above knee (gap -0.5..+1.6 mm, self-collision 0); foot rot re-set: hold PF -0.5 -> DF 10.5, inv -0.1, add 0"
+      },
+      {
+        "from": "drill-anim/specs/s-figure4-r2-et1-sc2-fa1-ak1.js",
+        "to": "drill-anim/specs/s-figure4-r2-et1-sc2-fa1-ak2.js",
+        "why": "ankle r2 (2026-11-07, device feedback: foot still floating): ankle moved past the outer side of the left thigh so the lower shin lies across the thigh just above the knee (contact whole loop, |gap|<=1.2 mm); camera dir [-0.45,0.75,0.9] -> [0.55,0.75,0.7] (planted-leg side) so the crossing reads"
+      },
+      {
+        "from": "drill-anim/specs/s-figure4-r2-et1-sc2-fa1-ak2.js",
+        "to": "drill-anim/specs/s-figure4-r2-et1-sc2-fa1-ak3.js",
+        "why": "ankle r3 (2026-11-07, user: ankle on the other knee as pivot, lifted leg moves): motion rewritten to the standard supine figure-4 - left foot lifts and left thigh draws in (hip 54->100 deg) while the right ankle rides on the left thigh just above the knee (|gap|<=1.8 mm all loop); camera dir -> [0.9,0.45,0.3] (side view); right foot held at rest relation to the shin (DF~15, add~0, ev~14), self-collision 0"
+      },
+      {
+        "from": "drill-anim/specs/s-figure4-r2-et1-sc2-fa1-ak3.js",
+        "to": "drill-anim/specs/s-figure4-r2-et1-sc2-fa1-ak4.js",
+        "why": "ak4 (user 2026-11-07): both hands clasp behind the lifted left thigh and draw it in; right hand threads between the legs under the right shin. Left hip 54->112deg, slight upper-trunk curl (13deg) while gripping, fingers curl on grip. Right ankle-on-left-knee contact -2.2..+0.7 mm; self-collision at hold: arm-on-chest <=22 mm, forearm/shin <=5 mm, thigh/torso <=9 mm."
+      },
+      {
+        "from": "drill-anim/specs/s-figure4-r2-et1-sc2-fa1-ak4.js",
+        "to": "drill-anim/specs/s-figure4-r2-et1-sc2-fa1-ak5.js",
+        "why": "ak5 (user 2026-11-07): supine rest arms lie flat on the mat with elbows out (ak4 tented the elbows ~8 cm above the shoulder with palms flat, reading as a reverse bend). Rest elbow y 0.182->0.053 m; grip and leg motion unchanged. Contact -0.3..+0.7 mm; self-collision same as ak4 except reach rightHand>leftThigh 14 mm at 3.15 s."
+      },
+      {
+        "from": "drill-anim/specs/s-figure4-r2-et1-sc2-fa1-ak5.js",
+        "to": "drill-anim/specs/s-figure4-r2-et1-sc2-fa1-ak6.js",
+        "why": "ak6 (user 2026-11-07): ak5 rest forearms looked twisted - the grip-tuned elbowTwist 95 was kept at rest. Rest arms now nearly straight on the mat (palm [+-0.24,0.03,0.11], pole [+-1,-0.1,0]) with elbowTwist -20/+20, blending to 95/-95 with the grip. Grip and legs unchanged; self-collision same as ak5."
       }
     ]
   },
-  "elbowTwistFix": {
-    "branch": "codex/elbow-twist-r1",
-    "date": "2026-11-09",
-    "from": "drill-anim/specs/s-figure4-r2-et1-sc2-fa1.js",
-    "to": "drill-anim/specs/s-figure4-r4.js",
-    "supersedes": "drill-anim/specs/s-figure4-r3.js",
-    "why": "2026-11-09 先定朝向、后调扭转重做：上臂不动（r1 把上臂转 ±75°，肩部截面 1.02→0.85、R5 0.92→0.60），仅前臂滚转 elbowTwist 左 -90/右 +90。肘部最小截面比 左 0.84→0.92/右 0.84→0.93，跨肘扭转 74°→30°；肩部截面 1.02 不变，R5 不变，翻面 左 23→5/右 22→0，跨肩扭转 12° 不变；关节/手掌漂移 0 mm，求解警告不增（密集 81 帧），近身计数不增；手对前臂扭转 25°→70°；配方指向 s-figure4-r4，supersedes s-figure4-r3，elbowTwistFix=r2，reviewed=false",
-    "reviewed": false,
-    "qaStatus": "candidate-awaiting-gpu-and-user-review",
-    "elbowTwistFix": "r2"
+  "integrationR1": {
+    "branch": "codex/integration-r1-20261112",
+    "date": "2026-11-12",
+    "kept": "drill-anim/specs/s-figure4-r2-et1-sc2-fa1-ak6.js",
+    "dropped": "drill-anim/specs/s-figure4-r4.js",
+    "why": "线上 r2-v10（2026-11-07）为用户已看的 ak6（双手抱腿、平躺手臂与前臂旋转修正）；elbow-twist r4 是在 ak 系列之前的旧姿态上做的肘部修复，与 ak6 手臂姿态不同，不叠加。ak6 的肘部是否需要另修待查",
+    "reviewed": false
   }
 }
