@@ -46,31 +46,31 @@
    "batch": "01"
   },
   "chest-A": {
-   "status": "failed",
-   "seconds": 1,
-   "bytes": null,
-   "at": "2026-11-12T09:30:33.900Z",
+   "status": "done",
+   "seconds": 467,
+   "bytes": 252222094,
+   "at": "2026-11-12T11:29:21.935Z",
    "batch": "01"
   },
   "chest-B": {
-   "status": "failed",
-   "seconds": 1,
-   "bytes": null,
-   "at": "2026-11-12T09:30:34.408Z",
+   "status": "done",
+   "seconds": 501,
+   "bytes": 375167102,
+   "at": "2026-11-12T11:37:43.253Z",
    "batch": "01"
   },
   "chest-C": {
-   "status": "failed",
-   "seconds": 1,
-   "bytes": null,
-   "at": "2026-11-12T09:30:35.460Z",
+   "status": "done",
+   "seconds": 429,
+   "bytes": 408841694,
+   "at": "2026-11-12T11:44:52.279Z",
    "batch": "01"
   },
   "deltoids-A": {
-   "status": "failed",
-   "seconds": 1,
-   "bytes": null,
-   "at": "2026-11-12T09:30:36.069Z",
+   "status": "done",
+   "seconds": 491,
+   "bytes": 458421572,
+   "at": "2026-11-12T11:53:03.241Z",
    "batch": "01"
   },
   "deltoids-B": {
@@ -142,6 +142,13 @@
    "bytes": 457389447,
    "at": "2026-11-12T11:12:06.771Z",
    "batch": "02"
+  },
+  "glute-max-A": {
+   "status": "done",
+   "seconds": 455,
+   "bytes": 416163880,
+   "at": "2026-11-12T11:20:02.020Z",
+   "batch": "03"
   }
  },
  "batches": {
@@ -163,7 +170,12 @@
     "chest-C",
     "deltoids-A"
    ],
-   "done": [],
+   "done": [
+    "chest-A",
+    "chest-B",
+    "chest-C",
+    "deltoids-A"
+   ],
    "skipped": [
     "abs-A",
     "abs-B",
@@ -172,16 +184,11 @@
     "adductors-B",
     "adductors-C"
    ],
-   "failed": [
-    "chest-A:masters",
-    "chest-B:masters",
-    "chest-C:masters",
-    "deltoids-A:masters"
-   ],
-   "started": "2026-11-12T09:30:32.433Z",
-   "finished": "2026-11-12T09:30:37.396Z",
-   "minutes": 0,
-   "freeGB": 357.1
+   "failed": [],
+   "started": "2026-11-12T11:21:34.573Z",
+   "finished": "2026-11-12T11:53:04.738Z",
+   "minutes": 32,
+   "freeGB": 350.5
   },
   "02": {
    "ok": false,
