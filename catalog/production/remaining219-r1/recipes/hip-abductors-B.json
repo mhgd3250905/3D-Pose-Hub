@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "hip-abductors-B",
   "nameZh": "仰卧弹力带 V 字开腿",
-  "spec": "drill-anim/specs/hip-abductors-B-r4.js",
-  "specSha256Lf": "4aac1f7b2749c7d66f577d4bdf04db00542403744c8b6b86cafa077657c5098b",
+  "spec": "drill-anim/specs/hip-abductors-B-r5.js",
+  "specSha256Lf": "c444826d7edd449cb7f7e7bf29f79d4083f000635321ea5be1327e29e0a34c60",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -92,7 +92,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/hip-abductors-B-r4.js"
+    "selectedSpec": "drill-anim/specs/hip-abductors-B-r5.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -122,5 +122,22 @@
     "reviewed": false,
     "qaStatus": "candidate-awaiting-gpu-and-user-review",
     "elbowTwistFix": "r1"
+  },
+  "bandFix": {
+    "branch": "codex/band-fix-r1",
+    "date": "2026-11-07",
+    "spec": "drill-anim/specs/hip-abductors-B-r3-et1-bf1.js",
+    "why": "弹力带端点从骨心退到出皮肤处，管体穿入皮肤 8.3 mm→0（tools/band-fix-r1/scan-band.mjs）；线上 r2-v7 已用该版"
+  },
+  "integrationR1": {
+    "branch": "codex/integration-r1-20261112",
+    "date": "2026-11-12",
+    "from": [
+      "drill-anim/specs/hip-abductors-B-r4.js",
+      "drill-anim/specs/hip-abductors-B-r3-et1-bf1.js"
+    ],
+    "to": "drill-anim/specs/hip-abductors-B-r5.js",
+    "why": "肘部修复（仅手臂）与弹力带修复（仅脚上带端）互不相交，合成 r5；pose 与 r4 逐字段一致，props 与 bf1 逐字段一致",
+    "reviewed": false
   }
 }
