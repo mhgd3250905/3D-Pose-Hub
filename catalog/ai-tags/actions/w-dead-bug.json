@@ -1,0 +1,177 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "w-dead-bug",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/w-dead-bug.json",
+    "textSha256Lf": "0789d00e16b8709b1e3078b8e1eb2278398b825b30b341d836b33677a896ae36",
+    "spec": "drill-anim/specs/w-dead-bug-r2.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "stability-control"
+  ],
+  "movementPattern": [
+    "anti-extension"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "core"
+  ],
+  "primaryMuscles": [
+    "abs"
+  ],
+  "secondaryMuscles": [
+    "obliques",
+    "hip-flexors"
+  ],
+  "stabilizers": [
+    "erectors"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    },
+    {
+      "joint": "shoulder",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    },
+    {
+      "joint": "lumbar-spine",
+      "actions": [
+        "isometric-hold"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "low",
+  "prerequisites": [
+    "floor-transfer"
+  ],
+  "laterality": "alternating",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "low",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "floor-transfer"
+      ]
+    },
+    {
+      "population": "pregnancy",
+      "flag": "modify",
+      "reasons": [
+        "supine-position"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup",
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "posture",
+    "recovery"
+  ],
+  "alternatives": [
+    "w-bird-dog"
+  ],
+  "regressions": [
+    "h-supine-heel-slide"
+  ],
+  "progressions": [
+    "abs-A"
+  ],
+  "aiSummary": {
+    "zh": "仰卧练腰腹抗伸展，腰不离地，产后或腰不适人群的核心入门。",
+    "en": "Dead bug for anti-extension core control with a flat low back."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "core"
+        ],
+        "synergistMuscles": [
+          "obliques",
+          "hip-flexors"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "abs"
+        ],
+        "secondaryMuscles": [
+          "obliques",
+          "hip-flexors"
+        ],
+        "stabilizers": [
+          "erectors"
+        ]
+      },
+      "reason": "v3 粗粒度 id 按实际做法拆到 taxonomy id（core→abs/obliques，glutes→glute-max 或 hip-abductors，upper-back→scapular，lower-back→erectors），只稳定不推动的归稳定肌。"
+    },
+    {
+      "field": "laterality",
+      "existing": {
+        "unilateral": true,
+        "training.kind": "rep_alternate"
+      },
+      "chosen": "alternating",
+      "reason": "v3 unilateral=true 实为左右交替（rep_alternate），与单侧分开。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 2,
+      "reason": "异侧手脚交替伸远同时保持腰贴地，需要协调，调到 2 级。"
+    }
+  ],
+  "reviewNotes": []
+}

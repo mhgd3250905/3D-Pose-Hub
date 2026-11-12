@@ -1,5 +1,7 @@
 # Pose-Hub · 动作库
 
+> 本地人体外观和五皮肤修复的版本与入口见 [人体版本路由](docs/model-version-routing.md)，技术验证和接手范围见 [版本台账](docs/version-ledger.md)。
+
 > **第一次来？先读 [docs/START-HERE.md](docs/START-HERE.md)**（半小时上手、低配机验证、贡献流程）；动作总表见 [docs/drill-catalog.md](docs/drill-catalog.md)，审核标准见 [docs/review-rubric.md](docs/review-rubric.md)。
 
 当前全量制作使用 [动作包 v3](tools/action-package-v3/README.md)：217 个后续配方加首批 32 个配方，共 249 个动作，包含分层母版、五套皮肤、派生包、双语定义和语音。249 份文案 r2 仍待用户审核，源码合入不代表全量成片验收或媒体发布。本次来源、完整性修复及验证见 [249 动作主线集成记录](docs/production-snapshots/action-package-v3-main-integration-20261103-r1.md)；正在执行的本机制作沿用其固定源码和原运行目录，合入后不自动切换或重启。

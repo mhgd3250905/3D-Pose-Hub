@@ -1,0 +1,169 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-bulgarian",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-bulgarian.json",
+    "textSha256Lf": "4240a83be4ca8a37a6d9f763d15164ec59a9e90ace59470c88fcb77ce8127fec",
+    "spec": "drill-anim/specs/h-bulgarian.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "moderate",
+  "requiredEquipment": [
+    "chair"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "lunge"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "quadriceps",
+    "glute-max"
+  ],
+  "secondaryMuscles": [
+    "adductors",
+    "hamstrings"
+  ],
+  "stabilizers": [
+    "abs",
+    "hip-abductors",
+    "calves"
+  ],
+  "joints": [
+    {
+      "joint": "knee",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    },
+    {
+      "joint": "hip",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    },
+    {
+      "joint": "ankle",
+      "actions": [
+        "dorsiflexion"
+      ]
+    }
+  ],
+  "difficulty": 3,
+  "intensity": "moderate",
+  "prerequisites": [
+    "split-stance",
+    "single-leg-supported"
+  ],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "moderate",
+    "lumbar": "low",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "low",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "modify",
+      "reasons": [
+        "balance-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "caution",
+      "reasons": [
+        "balance-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "hypertrophy",
+    "fat-loss"
+  ],
+  "alternatives": [
+    "h-db-split-squat"
+  ],
+  "regressions": [
+    "h-reverse-lunge"
+  ],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "只需一把椅子的单腿力量主力动作，居家练腿首选进阶。",
+    "en": "Chair-only single-leg strength staple; the go-to home leg progression."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "quadriceps",
+          "glutes"
+        ],
+        "synergistMuscles": [
+          "adductors",
+          "hamstrings",
+          "core"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "quadriceps",
+          "glute-max"
+        ],
+        "secondaryMuscles": [
+          "adductors",
+          "hamstrings"
+        ],
+        "stabilizers": [
+          "abs",
+          "hip-abductors",
+          "calves"
+        ]
+      },
+      "reason": "v3 粗粒度肌群（glutes）按动作实际做法拆到细分 id。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 2,
+      "chosen": 3,
+      "reason": "后脚垫高、不扶的分腿蹲，按词表“不扶单腿/分腿”属中级 3。"
+    }
+  ],
+  "reviewNotes": [
+    "sweat=moderate（3×8 每侧），不放办公室。"
+  ]
+}

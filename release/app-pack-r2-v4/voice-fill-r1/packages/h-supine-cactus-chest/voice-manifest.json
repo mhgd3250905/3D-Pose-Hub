@@ -1,0 +1,318 @@
+{
+  "format": "pose-hub-voice@3",
+  "actionId": "h-supine-cactus-chest",
+  "definitionSha256": "19acac6721e39e98314d1f77b6d93c1e3b5ffeb3e3f9d1c63a9112272355334e",
+  "standard": {
+    "lufsTarget": -16,
+    "lufsTolerance": 1,
+    "truePeakMaxDbtp": -1,
+    "codec": "aac",
+    "sampleRate": 44100,
+    "channels": 1,
+    "bitrateKbps": 64,
+    "process": "hiplab v4.1"
+  },
+  "voiceProfile": {
+    "zh": {
+      "voice": "zh-CN-XiaoxiaoNeural",
+      "rate": "+6%"
+    },
+    "en": {
+      "voice": "en-US-JennyNeural",
+      "rate": "+4%"
+    }
+  },
+  "common": "voice/common/manifest.json",
+  "contentReview": "passed",
+  "manualListening": "pending",
+  "cuePoints": {
+    "start": 1.0,
+    "peak": 2.0,
+    "end": 6.767,
+    "method": "masters highlight pulse (25 % rise / plateau reached / 50 % fall) — computed from spec pulse track (spec_pulse.mjs), masters not on this machine",
+    "sampled": false
+  },
+  "lines": {
+    "zh": {
+      "name": {
+        "text": "仰卧仙人掌开胸",
+        "ref": {
+          "path": "packages/h-supine-cactus-chest/voice/zh/name.m4a",
+          "sha256": "3ac10c1892db1321ea7b92016283c2d2c9bb9daa4d4c8a0d7ab3190d4b62d4a5",
+          "bytes": 13162,
+          "durationSeconds": 1.462857
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "ff9a784fee593ae74bccca4b2823e9dc6add7c929161b9499afa1ea64b84cd66",
+          "ttsFingerprint": "a8cdb3e26106970c9bcfe1d06a78e68728bc2d559853bc9e295bcaf42b1ac8df"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.5,
+          "leadMs": 40,
+          "tailMs": 83
+        },
+        "role": "intro"
+      },
+      "primaryCue": {
+        "text": "手肘和手背贴地，双臂沿地面往头的方向滑",
+        "ref": {
+          "path": "packages/h-supine-cactus-chest/voice/zh/primaryCue.m4a",
+          "sha256": "e3b53629c8d9003507add66f1f6a6fef6eac8aa48c432855a1a603d9e4ad85c6",
+          "bytes": 32666,
+          "durationSeconds": 3.854512
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "468ab91ff6eb2dfad270a19d1b67e34edd2caafd4bfdbb7379cd343e3c65c59e",
+          "ttsFingerprint": "5c0ac541082993070fc9c79732517bd7cd7c4c11725a737c6d31d79a6a780d1f"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.0,
+          "truePeak": -2.3,
+          "leadMs": 30,
+          "tailMs": 95
+        },
+        "role": "intro"
+      },
+      "phase.start": {
+        "text": "向上滑",
+        "ref": {
+          "path": "packages/h-supine-cactus-chest/voice/zh/phase.start.m4a",
+          "sha256": "774e08fed9edb1a14c0b8894938451a0dfd78f5a66e83a006b4c854f9dfabf79",
+          "bytes": 7991,
+          "durationSeconds": 0.835918
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "cdd2a2da4e47c8f176de217df82bb7666fbbde73a276b6b14e98aca27fc5d3a6",
+          "ttsFingerprint": "7c279353ff3372243670534d0fcb8e37e61c17dad8a714b20c0abdc06b278fee"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.2,
+          "leadMs": 30,
+          "tailMs": 76
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 1.0,
+          "gapSeconds": 1.0,
+          "fit": "fits"
+        }
+      },
+      "phase.peak": {
+        "text": "保持呼吸",
+        "ref": {
+          "path": "packages/h-supine-cactus-chest/voice/zh/phase.peak.m4a",
+          "sha256": "061c8685b1112b1a220292e0a8f1915f3c8cd95ada861ae94c91d126b5baf080",
+          "bytes": 8726,
+          "durationSeconds": 0.928798
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "352b0548577a864fb3b8df76edb38b1ee709243f11dfc4f76d0621e22ba20a9f",
+          "ttsFingerprint": "8933130b44a59112dacc8e3d127a4226adfab002c76d245e2789fa1a6be11a5b"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.5,
+          "leadMs": 40,
+          "tailMs": 79
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 2.0,
+          "gapSeconds": 4.767,
+          "fit": "fits"
+        }
+      },
+      "phase.end": {
+        "text": "慢慢滑回",
+        "ref": {
+          "path": "packages/h-supine-cactus-chest/voice/zh/phase.end.m4a",
+          "sha256": "3b2ca672a751cdb79a0e9da901b1abc05520c7d25ffe81cea91d819c2ac0cdfe",
+          "bytes": 9171,
+          "durationSeconds": 0.975238
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "bc1c4e6bf126b4e0652897ee74cf3fe7b2b9e13211d400ddeb9aa46f89da95ff",
+          "ttsFingerprint": "927abfc3377c5ab2dd29e652cb50b1cb351f6f765e798ae9897d7b804c58c76b"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.6,
+          "leadMs": 40,
+          "tailMs": 85
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 6.767,
+          "gapSeconds": 1.233,
+          "fit": "fits"
+        }
+      }
+    },
+    "en": {
+      "name": {
+        "text": "Lying Cactus-Arm Chest Stretch",
+        "ref": {
+          "path": "packages/h-supine-cactus-chest/voice/en/name.m4a",
+          "sha256": "1476a5c64ccec6a4b7b73743ff429e19e770807125f240e9e8b4008f58de3890",
+          "bytes": 16991,
+          "durationSeconds": 1.927256
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "a1fb0373ed4b4079c720883454b9c78b67d42cd5b8e57a0a8e2ef2395acbb760",
+          "ttsFingerprint": "8f1a6161763eefa03a2c2ca5f150ac5265570b929c236d6273e21989f76e0db0"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.0,
+          "truePeak": -2.0,
+          "leadMs": 40,
+          "tailMs": 77
+        },
+        "role": "intro"
+      },
+      "primaryCue": {
+        "text": "Keep elbows and hands on the floor and slide your arms toward your head",
+        "ref": {
+          "path": "packages/h-supine-cactus-chest/voice/en/primaryCue.m4a",
+          "sha256": "8c7c50cfa30cedde0b59c437f1572c621720caf53a11670478fec393508ebfcb",
+          "bytes": 28508,
+          "durationSeconds": 3.320454
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "7c5322092ab8bae3722cb54ce0193a5c7eea1b24e109cac9cd69e540728d9948",
+          "ttsFingerprint": "752eedce3280643350b1cc5b5b9796ea68a41e29156548af81cbf8cd103e78da"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.4,
+          "leadMs": 30,
+          "tailMs": 70
+        },
+        "role": "intro"
+      },
+      "phase.start": {
+        "text": "Slide up",
+        "ref": {
+          "path": "packages/h-supine-cactus-chest/voice/en/phase.start.m4a",
+          "sha256": "a386d5106ff143aeb6ea8b2d32e57a95f99546949d7f35a1dde6b7c8837ea9ad",
+          "bytes": 6662,
+          "durationSeconds": 0.673379
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "b53af294e005cf3e4da5b260b98879c55e2ec99e96e8498a64e476307768e0d1",
+          "ttsFingerprint": "ebc698b62eea393605db2b827f5af48c5792f88b07fc8c3262ad2f4492f67ef2"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.9,
+          "truePeak": -2.2,
+          "leadMs": 40,
+          "tailMs": 63
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 1.0,
+          "gapSeconds": 1.0,
+          "fit": "fits"
+        }
+      },
+      "phase.peak": {
+        "text": "Breathe",
+        "ref": {
+          "path": "packages/h-supine-cactus-chest/voice/en/phase.peak.m4a",
+          "sha256": "71f29dd11682d0dfac4c44e9c221217900baa9f4b2a7b21fefecb8693864f762",
+          "bytes": 4697,
+          "durationSeconds": 0.441179
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "898b76f0415c6eed935179dd926ed22a3eadc10dae822bbdb0ea433acfd84a10",
+          "ttsFingerprint": "d91e61dc733a0b8c62320bd9dee255f5bfc2f3c51308e61011fdd667b1ae19b4",
+          "ttsInput": "Breathe…"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.0,
+          "truePeak": -3.2,
+          "leadMs": 40,
+          "tailMs": 71
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 2.0,
+          "gapSeconds": 4.767,
+          "fit": "fits"
+        }
+      },
+      "phase.end": {
+        "text": "Slide back",
+        "ref": {
+          "path": "packages/h-supine-cactus-chest/voice/en/phase.end.m4a",
+          "sha256": "1dcf925aefcb66cf98b7a2beacedb9186e0d00f59bdf7395ff373392fa75d13d",
+          "bytes": 7824,
+          "durationSeconds": 0.835918
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "c96328bf663082cec7687bd097bac4d907664f30d234bbda58851961a2287585",
+          "ttsFingerprint": "6b25d2234c472f658f669e01553402a711b08c04bd28f802d60892b8377f4e0d"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.4,
+          "leadMs": 30,
+          "tailMs": 86
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 6.767,
+          "gapSeconds": 1.233,
+          "fit": "fits"
+        }
+      }
+    }
+  },
+  "summary": {
+    "clips": 10,
+    "auditFailed": [],
+    "scheduleEarly": []
+  },
+  "status": "technical-passed"
+}

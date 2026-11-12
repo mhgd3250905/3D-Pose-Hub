@@ -1,0 +1,317 @@
+{
+  "format": "pose-hub-voice@3",
+  "actionId": "h-quadruped-open",
+  "definitionSha256": "e9792e9261282356f310688f60e6fa1dbfe4db575fcbc0917f02e6f9239c2a8e",
+  "standard": {
+    "lufsTarget": -16,
+    "lufsTolerance": 1,
+    "truePeakMaxDbtp": -1,
+    "codec": "aac",
+    "sampleRate": 44100,
+    "channels": 1,
+    "bitrateKbps": 64,
+    "process": "hiplab v4.1"
+  },
+  "voiceProfile": {
+    "zh": {
+      "voice": "zh-CN-XiaoxiaoNeural",
+      "rate": "+6%"
+    },
+    "en": {
+      "voice": "en-US-JennyNeural",
+      "rate": "+4%"
+    }
+  },
+  "common": "voice/common/manifest.json",
+  "contentReview": "passed",
+  "manualListening": "pending",
+  "cuePoints": {
+    "start": 1.2,
+    "peak": 2.5,
+    "end": 4.533,
+    "method": "masters highlight pulse (25 % rise / plateau reached / 50 % fall) — computed from spec pulse track (spec_pulse.mjs), masters not on this machine",
+    "sampled": false
+  },
+  "lines": {
+    "zh": {
+      "name": {
+        "text": "跪撑单臂开胸",
+        "ref": {
+          "path": "packages/h-quadruped-open/voice/zh/name.m4a",
+          "sha256": "e8f15bacd703ed967d3448ecd5a00e96488a41892f5e41f36a96adfe9dfef158",
+          "bytes": 12405,
+          "durationSeconds": 1.393197
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "7e2448947b3a368842b2c75632e0a5daaace4a470b0bdfc886d99608c26caf7d",
+          "ttsFingerprint": "1dd8d94e8f572b894e24c5ee268af668a97669d1b9b33edb9184aa842e7b2922"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.8,
+          "leadMs": 40,
+          "tailMs": 103
+        },
+        "role": "intro"
+      },
+      "primaryCue": {
+        "text": "一只手撑地，另一只手臂朝天花板打开",
+        "ref": {
+          "path": "packages/h-quadruped-open/voice/zh/primaryCue.m4a",
+          "sha256": "7df3a9a1c203d4fd96e397934f5c35cd9f54dd5e3690529696d2309264631a7b",
+          "bytes": 30259,
+          "durationSeconds": 3.552653
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "02100493e7274bdf142e7bcee311633e58fc00ab58a4fbdb40ddeedb69a5e99b",
+          "ttsFingerprint": "4e477a3fbfebce4a836a55a49518a051c5a2a6a6f3f31025bcf214b129de3191"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.0,
+          "truePeak": -2.4,
+          "leadMs": 30,
+          "tailMs": 73
+        },
+        "role": "intro"
+      },
+      "phase.start": {
+        "text": "手臂打开",
+        "ref": {
+          "path": "packages/h-quadruped-open/voice/zh/phase.start.m4a",
+          "sha256": "ffaec07020bacde2fa8db0fcaca744d34a2f94661c3c7581671285d1a0a4f159",
+          "bytes": 9634,
+          "durationSeconds": 1.044898
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "2b57a317c9416560110d9356da4df06bb720b7407dcff33b9bdac47d713e56b5",
+          "ttsFingerprint": "871967f9a2feb40b41bdde328283bce82cfa720dcd4b7f307349ef20bc2f94c8"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.3,
+          "leadMs": 40,
+          "tailMs": 95
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 1.2,
+          "gapSeconds": 1.3,
+          "fit": "fits"
+        }
+      },
+      "phase.peak": {
+        "text": "停住呼吸",
+        "ref": {
+          "path": "packages/h-quadruped-open/voice/zh/phase.peak.m4a",
+          "sha256": "f816360e1e8a3c717ab5be4a650f03ee9b823d255f0b9d41a0404f3b84ee57a4",
+          "bytes": 8890,
+          "durationSeconds": 0.952018
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "aea737c616ea9f0b361e2ab31e97dd9a5627a8cf32b007b46a926eff564881c9",
+          "ttsFingerprint": "f90c818dafe4d189506e4dd0c3271f457b18b9b11bfc978ab7c8e14990e65697"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.0,
+          "truePeak": -4.1,
+          "leadMs": 40,
+          "tailMs": 82
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 2.5,
+          "gapSeconds": 2.033,
+          "fit": "fits"
+        }
+      },
+      "phase.end": {
+        "text": "慢慢收回",
+        "ref": {
+          "path": "packages/h-quadruped-open/voice/zh/phase.end.m4a",
+          "sha256": "73580300d1ac17d5b686c12f4df22870fb1bb34616ab8eb5147f0103c507ae6a",
+          "bytes": 9390,
+          "durationSeconds": 1.021678
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "25ae612968e31adbe8c7dba14d24d6ea372a81297885ecb2ae03d1226363a2df",
+          "ttsFingerprint": "e09aab7a1df2d021959fe46657114276b0b8a2d2a7bd87493d6fea9345c205a4"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.0,
+          "truePeak": -2.6,
+          "leadMs": 40,
+          "tailMs": 102
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 4.533,
+          "gapSeconds": 3.467,
+          "fit": "fits"
+        }
+      }
+    },
+    "en": {
+      "name": {
+        "text": "Hands-and-Knees Arm Opener",
+        "ref": {
+          "path": "packages/h-quadruped-open/voice/en/name.m4a",
+          "sha256": "dfcc40ac287b6d7e85e11d0eef9fef48e8e77d8ec1ebc323876bba44ecb74af5",
+          "bytes": 11463,
+          "durationSeconds": 1.253878
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "8244d980136d2c43a2b758c93535aae5ca14903b1a6203f82cc92eb43af9c409",
+          "ttsFingerprint": "5eee908dd92411888d3b632ffb1f340a05bb7f95192a43fa34a934714790ea7b"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.3,
+          "leadMs": 40,
+          "tailMs": 84
+        },
+        "role": "intro"
+      },
+      "primaryCue": {
+        "text": "Keep one hand down and open your other arm toward the ceiling",
+        "ref": {
+          "path": "packages/h-quadruped-open/voice/en/primaryCue.m4a",
+          "sha256": "e27ab554dcd389d64adb28942d408a5fbd034c27ed0e5d284e5672fdc4b0881d",
+          "bytes": 25901,
+          "durationSeconds": 3.018594
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "e055f54b474a5a7691db445de698c58ffbd05acff83c63d66610cc0c2fd65b4d",
+          "ttsFingerprint": "205421e939cf4c53974080765c9857771b9f3aa41b5a0986035923d363f12ab3"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.2,
+          "leadMs": 40,
+          "tailMs": 79
+        },
+        "role": "intro"
+      },
+      "phase.start": {
+        "text": "Open your arm",
+        "ref": {
+          "path": "packages/h-quadruped-open/voice/en/phase.start.m4a",
+          "sha256": "9639b0f4533f27e07d7db48d06d17f523ab4be3ef2e92884aa7cc04cb7e6b4bf",
+          "bytes": 8397,
+          "durationSeconds": 0.882358
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "33d230b41d6d37aeac244cbcb458146e58e03d13e68f283a47396f8c89f0752c",
+          "ttsFingerprint": "29e2d6d0163c24d4625bde99f47f20a66e0205a99a9823264ef0132bb31b4e22"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.4,
+          "leadMs": 40,
+          "tailMs": 82
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 1.2,
+          "gapSeconds": 1.3,
+          "fit": "fits"
+        }
+      },
+      "phase.peak": {
+        "text": "Hold and breathe",
+        "ref": {
+          "path": "packages/h-quadruped-open/voice/en/phase.peak.m4a",
+          "sha256": "77b4278eff1c4c5cb9f9bb3b5bef7fa9df910fe2d26221a836e48dc11b1c6767",
+          "bytes": 8189,
+          "durationSeconds": 0.859138
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "88fe7d2ba03a4dcea4f2978a873b3f6a2ca03806e49a0f3d79a2483d5170ab70",
+          "ttsFingerprint": "edb9f5db007078863ce5e746260ce6eeb8b8e1711a5757ecc8513e1bd77bc87e"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.9,
+          "leadMs": 40,
+          "tailMs": 69
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 2.5,
+          "gapSeconds": 2.033,
+          "fit": "fits"
+        }
+      },
+      "phase.end": {
+        "text": "Bring it back",
+        "ref": {
+          "path": "packages/h-quadruped-open/voice/en/phase.end.m4a",
+          "sha256": "9189eb3ed677222cb81c90a210ac4f3f1971839a646dbbdd2c139a6bfbe67eb0",
+          "bytes": 7687,
+          "durationSeconds": 0.812698
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "fd6f53d8fd0f2fd2f46603d8567a7a0b4940896202c70b1a5f3831d7d15c9ed5",
+          "ttsFingerprint": "2f6d563485c78e2055dd907da9475506958f56b963c80aaf804d0d6bb7f3c364"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.5,
+          "leadMs": 30,
+          "tailMs": 93
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 4.533,
+          "gapSeconds": 3.467,
+          "fit": "fits"
+        }
+      }
+    }
+  },
+  "summary": {
+    "clips": 10,
+    "auditFailed": [],
+    "scheduleEarly": []
+  },
+  "status": "technical-passed"
+}

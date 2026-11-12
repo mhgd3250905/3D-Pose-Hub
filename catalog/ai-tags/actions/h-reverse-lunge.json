@@ -1,0 +1,172 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-reverse-lunge",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-reverse-lunge.json",
+    "textSha256Lf": "507ae8172cc2d3dceca3b770f7235d9f790215996933b122b7fc95a754d2d2cd",
+    "spec": "drill-anim/specs/h-reverse-lunge-r5.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "office",
+    "gym",
+    "outdoor",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "lunge"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "quadriceps",
+    "glute-max"
+  ],
+  "secondaryMuscles": [
+    "adductors",
+    "hamstrings"
+  ],
+  "stabilizers": [
+    "abs",
+    "hip-abductors",
+    "calves"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    },
+    {
+      "joint": "knee",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    },
+    {
+      "joint": "ankle",
+      "actions": [
+        "dorsiflexion"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "moderate",
+  "prerequisites": [
+    "split-stance"
+  ],
+  "laterality": "alternating",
+  "jointStress": {
+    "knee": "low",
+    "lumbar": "none",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "modify",
+      "reasons": [
+        "balance-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "balance-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "hypertrophy",
+    "fat-loss"
+  ],
+  "alternatives": [
+    "h-lateral-step-lunge"
+  ],
+  "regressions": [
+    "h-squat"
+  ],
+  "progressions": [
+    "h-forward-lunge",
+    "h-db-split-squat",
+    "h-bulgarian"
+  ],
+  "aiSummary": {
+    "zh": "零器械后撤步弓步，对膝更友好，练腿臀和单腿稳定，任何场地都可做。",
+    "en": "Bodyweight reverse lunge, knee-friendlier than forward lunges, doable anywhere."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "muscles",
+      "existing": {
+        "activeMuscles": [
+          "quadriceps",
+          "glutes"
+        ],
+        "synergistMuscles": [
+          "hamstrings",
+          "adductors",
+          "core"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "quadriceps",
+          "glute-max"
+        ],
+        "secondaryMuscles": [
+          "adductors",
+          "hamstrings"
+        ],
+        "stabilizers": [
+          "abs",
+          "hip-abductors",
+          "calves"
+        ]
+      },
+      "reason": "v3 粗粒度肌群（core/glutes/upper-back/lower-back/abductors）按本动作实际做法拆到细分 id。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 2,
+      "reason": "不扶的交替分腿全幅度自重，按词表 2 级（v3 为 1）。"
+    }
+  ],
+  "reviewNotes": [
+    "后撤步轻放后脚，按 impact=none 处理，保留办公室。"
+  ]
+}

@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "scapular-A",
   "nameZh": "俯卧 Y-T-W 举",
-  "spec": "drill-anim/specs/scapular-A-r2-gc1-et1.js",
-  "specSha256Lf": "d15cc71486d187166489f70b959e6fedd80c8ebeb53fda4db0e105435923ac2f",
+  "spec": "drill-anim/specs/scapular-A-r5.js",
+  "specSha256Lf": "6c10cd4084504e17012aeb2d89eaa5bb1825938fbcf15bc2bf086f0061def4c3",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -92,7 +92,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/scapular-A-r2-gc1-et1.js"
+    "selectedSpec": "drill-anim/specs/scapular-A-r5.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -117,5 +117,16 @@
         "why": "forearm twist: constant elbowTwist split (pose-fix r8 et, on gc spec)"
       }
     ]
+  },
+  "elbowTwistFix": {
+    "branch": "codex/elbow-twist-r1",
+    "date": "2026-11-09",
+    "from": "drill-anim/specs/scapular-A-r2-gc1-et1.js",
+    "to": "drill-anim/specs/scapular-A-r5.js",
+    "supersedes": "drill-anim/specs/scapular-A-r4.js",
+    "why": "2026-11-09 退回修前：r4 使腕部变细（前臂+手掌网格腕截面 左 0.88→0.76/右 0.99→0.73，手对前臂扭转 70°/75°），参数空间内无解（目标掌心朝向所需前臂总旋转超出 ROM）。用户 21:54 同意退回。r5 与 scapular-A-r2-gc1-et1（修前）姿态完全相同（仅改 id），待 ROM 规范确认后重做掌心朝向；配方指向 scapular-A-r5，supersedes scapular-A-r4，elbowTwistFix=r2，reviewed=false",
+    "reviewed": false,
+    "qaStatus": "candidate-awaiting-gpu-and-user-review",
+    "elbowTwistFix": "r2"
   }
 }

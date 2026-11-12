@@ -3,7 +3,8 @@
 // The body lies prone on a level pad (head toward +Z), hips just past the pad's rear (-Z) end, legs swing below/behind it.
 // spec: {type:'reverseHyper', top: pad top height, rear: z of the pad's rear end, len: pad length (toward +Z), w: pad width,
 //        handles: {x, y, z0, z1, r}  (two grip bars along Z at x = +-x, height y, from z0 to z1),
-//        pivot: [0, y, z] (pendulum axle, axis X), lever: length, ankles: ['leftAnkle','rightAnkle'] (bones the strap cuff follows)}
+//        pivot: [0, y, z] (pendulum axle, axis X), lever: length, ankles: ['leftAnkle','rightAnkle'] (bones the strap cuff follows),
+//        plateX (weight plate offset along the horn, default 0.09), hornHalf (half horn length, default 0.12) — 2026-11-08: lets glute-max-C-r2 keep the plate outside the legs}
 // Moving parts (updated every frame from the bones): an ankle cuff around both lower shins, the pendulum lever swinging about the
 // pivot toward the cuff with a weight horn + plate at its end, and a strap from the lever end to the cuff.
 // QA primitives: pad (box), handles (capsules), pivot axle (capsule); moving parts are listed under userData.qaMoving.
@@ -59,8 +60,8 @@ P.place = function(o) { const s = o.userData.spec; if (!s || s.type !== 'reverse
   M.cuff.position.copy(cc); M.cuff.quaternion.setFromUnitVectors(new t.Vector3(0, 1, 0), up); M.cuff.scale.set(half, 1, s.cuffDepth ?? 0.058);
   // the cuff is an ellipse: wide across the two shins (x), cuffDepth front-back
   const dir = cc.clone().sub(M.Q); const dl = dir.length(); dir.normalize(); const E = M.Q.clone().addScaledVector(dir, M.L);
-  setTube(t, M.lever, M.Q, E); const side = new t.Vector3(1, 0, 0); setTube(t, M.horn, E.clone().addScaledVector(side, -0.12), E.clone().addScaledVector(side, 0.12));
-  M.plate.position.copy(E).addScaledVector(side, 0.09); M.plate.quaternion.setFromUnitVectors(new t.Vector3(0, 1, 0), side);
+  setTube(t, M.lever, M.Q, E); const side = new t.Vector3(1, 0, 0); const hh = s.hornHalf ?? 0.12; setTube(t, M.horn, E.clone().addScaledVector(side, -hh), E.clone().addScaledVector(side, hh));
+  M.plate.position.copy(E).addScaledVector(side, s.plateX ?? 0.09); M.plate.quaternion.setFromUnitVectors(new t.Vector3(0, 1, 0), side);
   const sb = cc.clone().addScaledVector(dir, -0.0); setTube(t, M.strap, E, sb); M.strap.scale.x = 1;
   o.userData.qaMoving = [{ a: M.Q.toArray(), b: E.toArray(), r: 0.018 }];
   o.updateMatrixWorld(true); };

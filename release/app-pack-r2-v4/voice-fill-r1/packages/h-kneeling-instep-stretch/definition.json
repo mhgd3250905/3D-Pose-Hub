@@ -1,0 +1,151 @@
+{
+  "format": "pose-hub-action-definition@3",
+  "id": "h-kneeling-instep-stretch",
+  "text": {
+    "path": "catalog/production/v3-text/h-kneeling-instep-stretch.json",
+    "sha256": "571d3818f2399325e06b35fc4d2fcfb4cbb1beb0e99a71f685055d4b0b383cb7",
+    "reviewStatus": "ai-reviewed-r2-needs-user-review"
+  },
+  "recipe": {
+    "path": "catalog/production/remaining219-r1/recipes/h-kneeling-instep-stretch.json",
+    "sha256": "186d7f0b292c6d41b75c368b3e92fd5b1160d07089caddfc829c3a3a070a8e47",
+    "spec": "drill-anim/specs/h-kneeling-instep-stretch-rr6-gc1.js",
+    "specSha256Lf": "0b283b939f89366654555d3beaeb16a4b3adb6af7c16f64e6d6014472aa23477"
+  },
+  "productionModel": {
+    "format": "pose-hub-production-model",
+    "formatVersion": 1,
+    "modelProfile": "training-human-v3-armfix",
+    "modelVersion": "0.1.0-r2",
+    "id": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "definition": {
+    "name": {
+      "zh": "跪姿脚背拉伸",
+      "en": "Kneeling Top-of-Foot Stretch"
+    },
+    "purpose": {
+      "zh": "拉伸脚背和小腿前面",
+      "en": "Stretch the tops of your feet and the fronts of your shins."
+    },
+    "cues": [
+      {
+        "id": "cue1",
+        "primary": true,
+        "text": {
+          "zh": "脚背贴地跪好，身体慢慢往后坐",
+          "en": "Kneel with the tops of your feet down and slowly sit back"
+        }
+      },
+      {
+        "id": "cue2",
+        "primary": false,
+        "text": {
+          "zh": "停住不动，慢慢呼吸。",
+          "en": "Stay still and breathe slowly."
+        }
+      },
+      {
+        "id": "cue3",
+        "primary": false,
+        "text": {
+          "zh": "每次呼气再放松一点，别来回颠。",
+          "en": "Each time you breathe out, relax a little deeper. No bouncing."
+        }
+      }
+    ],
+    "commonErrors": [
+      {
+        "zh": "一下子重重坐下去",
+        "en": "Dropping down hard."
+      },
+      {
+        "zh": "憋气",
+        "en": "Holding your breath."
+      },
+      {
+        "zh": "来回颠着往下压",
+        "en": "Bouncing to go deeper."
+      }
+    ],
+    "tags": {
+      "category": "stretch",
+      "activeMuscles": [
+        "tibialis"
+      ],
+      "synergistMuscles": [
+        "quadriceps"
+      ],
+      "equipment": [
+        "mat"
+      ],
+      "position": "kneeling",
+      "difficulty": 1
+    },
+    "unilateral": false,
+    "defaultDose": {
+      "mode": "time",
+      "sets": 2,
+      "seconds": 20,
+      "restSeconds": 15
+    },
+    "cautions": [
+      {
+        "zh": "出现疼痛时放松，只拉到舒服的程度",
+        "en": "If anything hurts, ease off and stretch only to a comfortable point."
+      },
+      {
+        "zh": "膝盖或脚背不舒服时垫个软垫，或少坐一点",
+        "en": "If your knees or feet feel uncomfortable, add padding or sit back less."
+      }
+    ],
+    "training": {
+      "kind": "hold",
+      "leadSeconds": 1,
+      "source": "user-decision static-hold r2"
+    }
+  },
+  "voiceScript": {
+    "name": {
+      "zh": "跪姿脚背拉伸",
+      "en": "Kneeling Top-of-Foot Stretch"
+    },
+    "primaryCue": {
+      "zh": "脚背贴地跪好，身体慢慢往后坐",
+      "en": "Kneel with the tops of your feet down and slowly sit back"
+    },
+    "phase.start": {
+      "zh": "慢慢往后坐",
+      "en": "Sit back"
+    },
+    "phase.peak": {
+      "zh": "保持，慢慢呼气",
+      "en": "Hold and breathe out"
+    },
+    "phase.end": {
+      "zh": "呼气再放松",
+      "en": "Relax a bit deeper"
+    }
+  },
+  "rhythm": {
+    "durationSeconds": 8,
+    "fps": 30,
+    "cuePoints": {
+      "start": 1.0,
+      "peak": 2.0,
+      "end": 5.033,
+      "method": "masters highlight pulse (25 % rise / plateau reached / 50 % fall) — computed from spec pulse track (spec_pulse.mjs), masters not on this machine",
+      "sampled": false
+    },
+    "binding": {
+      "phase.start": "start",
+      "phase.peak": "peak",
+      "phase.end": "end"
+    },
+    "playback": "name + primaryCue before the set; phase lines at their cue points every rep, scheduled to END by the next cue point (skip a line that cannot fit, never cut or overlap)"
+  },
+  "review": {
+    "editorial": "passed"
+  }
+}

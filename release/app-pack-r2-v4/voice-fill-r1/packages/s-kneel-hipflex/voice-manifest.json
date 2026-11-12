@@ -1,0 +1,317 @@
+{
+  "format": "pose-hub-voice@3",
+  "actionId": "s-kneel-hipflex",
+  "definitionSha256": "3269931d60c38aec303948b023c7c305279f8aaa5d111e4ed9ac74c4afa4ee3e",
+  "standard": {
+    "lufsTarget": -16,
+    "lufsTolerance": 1,
+    "truePeakMaxDbtp": -1,
+    "codec": "aac",
+    "sampleRate": 44100,
+    "channels": 1,
+    "bitrateKbps": 64,
+    "process": "hiplab v4.1"
+  },
+  "voiceProfile": {
+    "zh": {
+      "voice": "zh-CN-XiaoxiaoNeural",
+      "rate": "+6%"
+    },
+    "en": {
+      "voice": "en-US-JennyNeural",
+      "rate": "+4%"
+    }
+  },
+  "common": "voice/common/manifest.json",
+  "contentReview": "passed",
+  "manualListening": "pending",
+  "cuePoints": {
+    "start": 1.133,
+    "peak": 3.8,
+    "end": 6.233,
+    "method": "masters highlight pulse (25 % rise / plateau reached / 50 % fall) — computed from spec pulse track (spec_pulse.mjs), masters not on this machine",
+    "sampled": false
+  },
+  "lines": {
+    "zh": {
+      "name": {
+        "text": "半跪髋前侧拉伸",
+        "ref": {
+          "path": "packages/s-kneel-hipflex/voice/zh/name.m4a",
+          "sha256": "7c11a09c8374c76eeeb3b5fb492ae4ca7c9102f722f2017272789d429a472d5f",
+          "bytes": 13764,
+          "durationSeconds": 1.555737
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "b2c28734d3dfd6b021086c624c7bb0340f4bfea82bec00a7611711cc903aaba3",
+          "ttsFingerprint": "f0fb79d94ebe7d1126a736aa9ed7f64ac37e03be7ff6886f8d9d876533928b2e"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -1.8,
+          "leadMs": 30,
+          "tailMs": 96
+        },
+        "role": "intro"
+      },
+      "primaryCue": {
+        "text": "夹紧臀部，身体慢慢往前推",
+        "ref": {
+          "path": "packages/s-kneel-hipflex/voice/zh/primaryCue.m4a",
+          "sha256": "44c44b653aa2383b39786f8ff104d61415391899d81712ebbd728d7b003583a2",
+          "bytes": 22179,
+          "durationSeconds": 2.577415
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "84bfd1e02ccb9bf9229f629aae8ef0ba5644ada9ce5d193988ed2f7fff2c2434",
+          "ttsFingerprint": "278f6485c05d2455524bc24e9b95dda3162732f73223a2f4c689d0ccab0a317d"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.3,
+          "leadMs": 40,
+          "tailMs": 97
+        },
+        "role": "intro"
+      },
+      "phase.start": {
+        "text": "收臀前推",
+        "ref": {
+          "path": "packages/s-kneel-hipflex/voice/zh/phase.start.m4a",
+          "sha256": "465c24597949e59088759f53ac97e52e45f08094c8984fbd9c3509814ddaf788",
+          "bytes": 9949,
+          "durationSeconds": 1.068118
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "786f45c47c2ea140ce865ebb62ed7ad1bb3cdcf1f29df18740e985ea4ccd0e35",
+          "ttsFingerprint": "1324922272211f8c39bfea89dcdb119f01742dec75a1a89b8db16d0a41b34de6"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.7,
+          "leadMs": 40,
+          "tailMs": 88
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 1.133,
+          "gapSeconds": 2.667,
+          "fit": "fits"
+        }
+      },
+      "phase.peak": {
+        "text": "保持，慢慢呼气",
+        "ref": {
+          "path": "packages/s-kneel-hipflex/voice/zh/phase.peak.m4a",
+          "sha256": "142ef9d5f8a536cf942112977e02ed6ca323ea741ae8111fcf06bc2f7c656fb3",
+          "bytes": 14058,
+          "durationSeconds": 1.602177
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "fefe1fe3d4c5b7ad9bb3fbb93c92d331aa70bff3856111be5915bbea8de24f32",
+          "ttsFingerprint": "caf5396bbb32256a45f95388df0d257c5a8354e245bac4d7881509dea03073aa"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.4,
+          "leadMs": 40,
+          "tailMs": 102
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 3.8,
+          "gapSeconds": 2.433,
+          "fit": "fits"
+        }
+      },
+      "phase.end": {
+        "text": "呼气再放松",
+        "ref": {
+          "path": "packages/s-kneel-hipflex/voice/zh/phase.end.m4a",
+          "sha256": "7d67f32a409f71300f301ad16467733c39ebf82c80bade77dec77ad6e2cbdaa1",
+          "bytes": 10484,
+          "durationSeconds": 1.137778
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "12613bb7ff35f7d03caef036bbf53025d84450d57b08687264b52c4cab9a1a2e",
+          "ttsFingerprint": "4e0fb49c963701953bab2fbab18598b753f149810dbeb7856a0daab9f4a9d500"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -3.0,
+          "leadMs": 30,
+          "tailMs": 78
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 6.233,
+          "gapSeconds": 1.767,
+          "fit": "fits"
+        }
+      }
+    },
+    "en": {
+      "name": {
+        "text": "Half-Kneeling Hip Stretch",
+        "ref": {
+          "path": "packages/s-kneel-hipflex/voice/en/name.m4a",
+          "sha256": "fa64ec9529b830b21d8a545083a8508fa423a1a1c974698c0ce07a345b67fa15",
+          "bytes": 12613,
+          "durationSeconds": 1.393197
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "1a0af9b2b371373ea180fd97d5f78b0974f81e0bece8da60787972338b037f87",
+          "ttsFingerprint": "a510672771c01f580e1785a6745746699b3016eb60a7b46b60138253a6210a0d"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.2,
+          "leadMs": 30,
+          "tailMs": 73
+        },
+        "role": "intro"
+      },
+      "primaryCue": {
+        "text": "Squeeze your glute and slowly shift your body forward",
+        "ref": {
+          "path": "packages/s-kneel-hipflex/voice/en/primaryCue.m4a",
+          "sha256": "e253bc0ef9bfddccd397a9eb6548686bd51e2d69177e7e417bd4f9d3740d32a9",
+          "bytes": 22756,
+          "durationSeconds": 2.647075
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "8957a8c614e5f9e20c0d337a544cb8f8a8624e5f84276cf89b84a5997de5a450",
+          "ttsFingerprint": "aff2f0fcfd35305a31ab2b05edf95ffe8471096037fce4474a487549dd9aef2e"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.1,
+          "leadMs": 30,
+          "tailMs": 87
+        },
+        "role": "intro"
+      },
+      "phase.start": {
+        "text": "Squeeze forward",
+        "ref": {
+          "path": "packages/s-kneel-hipflex/voice/en/phase.start.m4a",
+          "sha256": "f8d32ece578e18339f7c0596c01ae7907ab07bf3a44a757c281421b98e8080ee",
+          "bytes": 9215,
+          "durationSeconds": 0.998458
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "2ea5074260c6233f94e81b90323e85d1b74436415093ee2212b5c496bfa47c0c",
+          "ttsFingerprint": "f28c8262fd8f8080191520116d400c9baab0e486da484a487a815d1542851760"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -3.4,
+          "leadMs": 30,
+          "tailMs": 98
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 1.133,
+          "gapSeconds": 2.667,
+          "fit": "fits"
+        }
+      },
+      "phase.peak": {
+        "text": "Hold and breathe out",
+        "ref": {
+          "path": "packages/s-kneel-hipflex/voice/en/phase.peak.m4a",
+          "sha256": "3558f656de66ed99e0bb7717fa9d307de92c7891e3cf7d86763539babf0402d4",
+          "bytes": 10071,
+          "durationSeconds": 1.091338
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "d6eeb7d45a84277b9e03214d7b03de15b1de6eee29aa65e21fb4a8f87e7964dc",
+          "ttsFingerprint": "5aa699e716389cfd8b232feef6bc51055b66dcea8c621175278f4c67b9b0116d"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -15.9,
+          "truePeak": -2.7,
+          "leadMs": 40,
+          "tailMs": 81
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 3.8,
+          "gapSeconds": 2.433,
+          "fit": "fits"
+        }
+      },
+      "phase.end": {
+        "text": "Relax a bit deeper",
+        "ref": {
+          "path": "packages/s-kneel-hipflex/voice/en/phase.end.m4a",
+          "sha256": "9bfef77b2e3f0f08b617669d86699aa83df75d41c523067c2d6e2c334d35f6e1",
+          "bytes": 10676,
+          "durationSeconds": 1.160998
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "c78ceebe4d1a6cb6698dc31a4663567dfd64e5c1a164794c55c2d33b8c0cdb4c",
+          "ttsFingerprint": "d3b3be8016064f1523516f5b01aba71a544ab56d286f867431b777410e5289e7"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -1.9,
+          "leadMs": 30,
+          "tailMs": 71
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 6.233,
+          "gapSeconds": 1.767,
+          "fit": "fits"
+        }
+      }
+    }
+  },
+  "summary": {
+    "clips": 10,
+    "auditFailed": [],
+    "scheduleEarly": []
+  },
+  "status": "technical-passed"
+}

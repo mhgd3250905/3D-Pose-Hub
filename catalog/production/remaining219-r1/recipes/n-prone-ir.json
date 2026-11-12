@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "n-prone-ir",
   "nameZh": "俯卧小腿外摆",
-  "spec": "drill-anim/specs/n-prone-ir.js",
-  "specSha256Lf": "5dc95dd335ea18a21b1b2a1f0b3faa876cf5f3f936c64649d079a19dcb3f32d5",
+  "spec": "drill-anim/specs/n-prone-ir-fa1.js",
+  "specSha256Lf": "6aed1c7af2ed5a3c35dd8933c9094ce8ac88e6103339528be14fc7b9077ae210",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -94,10 +94,19 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/n-prone-ir.js"
+    "selectedSpec": "drill-anim/specs/n-prone-ir-fa1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
   "userAccepted": false,
-  "releaseEligible": false
+  "releaseEligible": false,
+  "poseFixR1": {
+    "spec": [
+      {
+        "from": "drill-anim/specs/n-prone-ir.js",
+        "to": "drill-anim/specs/n-prone-ir-fa1.js",
+        "why": "foot-angle r3: both feet ~60deg plantar flexion, toe-in to 14, inversion to 24 vs the solved shin while the shins fall out (foot rot did not follow the shin). Baked per-frame foot-follow tracks (tools/foot-angle-r3/foot-follow.mjs): feet follow the real shin + 10deg plantar flexion; ankle/poles/timing unchanged"
+      }
+    ]
+  }
 }

@@ -35,13 +35,18 @@
 
 ## 4. 人物模型版本
 
+- 2026-11-10 用户已确认当前原头/眼窝平滑外观。已确认外观的预览使用 `node tools/preview-current-model.mjs --recipe <配方.json> [--out <新目录>]`；唯一已确认外观指针是 `drill-anim/models/current-approved-look.json`，说明见 `docs/body-v3/approved-look-20261110-r1.md`。配方决定人体及左右手型，已确认指针决定外观。缺源或哈希不符必须停止，不能回退旧全局默认，也不能把最新试验当已确认版本。新的外观试验另建版本，经用户看样确认才更新指针。
+
+- 有动作 recipe 的美化、预览和重渲，先运行 `node tools/model-version.mjs --recipe <仓库内配方.json>`，按 recipe 的人体、动作修订及左右手模式加载。下述 `current-production.json` 全局默认仅表示保留的默认配置，不能覆盖后续 recipe 显式采用的 armfix/native/固定握持版本。缺少配方或版本门禁工具时先定位正确源码工作树，禁止静默回退旧默认。
+- 出图随附 recipe/spec/模型/手型/外观版本和源指纹，并核对实际渲染的手部源资产、模式与可见网格；网格名称不能代替版本证据。已发布复现使用该发布包来源回执，本地当前修订另记。入口与记录格式见 `docs/model-version-routing.md`。
+
 - 用户于 2026-10-21 确认全库重制采用新版人体：`training-human-v2` 已退出新生产，仅保留冻结历史复现。本轮先在分支完成动作包 v2 与六动作、五套皮肤试制，开哥看样同意后才合入 main 并推送；全库批量生产另等确认。
 - 用户于 2026-10-21 接受 r2 颈部修正后的六动作五皮肤样片并同意合入 main、按约定推送；记录见 [试制确认](docs/pilot-approval-20261021.md)。这不表示编辑、语音试听或素材发布门禁全部通过，全库批量生产仍另等确认。
 - 后续全库制作授权已给出。生产分支 `codex/action-library-v2-production` 于 `36e1bb678047a3d5613a553a05be37dac8d9046b` 保存 `library-v2-20261022-r1`：142 正式动作加 PR #14 新增 47 动作，1890 视频及配图第一版完成，整体仍待审核。该冻结快照仍在生产分支，未因 PR15 合入而进入 main；不得把早期“全库另等确认”继续当作当前制作门槛，也不因保存快照重做全库。
 - 2026-10-24，用户明确授权将 `codex/pr15-contact-repair` 合入 main、对齐文档并提交推送；main 已从 `41b1922459e36cd4ff2947828135b755465d0613` 快进接入 `335a033569e223487ab2fd37ba036801fdbb6a3d` 的新手部及修订源码。native-r3 手部外观确认仅覆盖原确认范围；其余动作、穿针式低位小范围候选和公开发布仍待审核。本轮版本与 Git 交付状态见[版本对齐台账](docs/version-ledger.md)，独立模型不自动替换全局生产配方。
 - 本轮新增母版、临时帧、派生素材与语音按用户授权放在 `F:/PoseHub-v2-pilot/`，分 `masters/`、`derivatives/`、`voice/`、`previews/`、`qa/`、`manifests/`、`work/` 等目录。此项仅调整本轮新素材的存储位置，既有 E 盘原件和备份保留。
 
-- 新制作默认以 [current-production.json](drill-anim/models/current-production.json) 为唯一配方入口；当前采用 `training-human-v2plus` / `1.0.0-rc2`，原配色、动作肌群高亮、不显示肌群分区线。制作标准见 [training-human-v2plus.md](docs/training-human-v2plus.md)，实际合入、验证与待办见 [版本对齐台账](docs/version-ledger.md)。
+- 沿用 v2plus 全局流程的任务读取 [current-production.json](drill-anim/models/current-production.json)，该配置采用 `training-human-v2plus` / `1.0.0-rc2`，原配色、动作肌群高亮、不显示肌群分区线。制作标准见 [training-human-v2plus.md](docs/training-human-v2plus.md)，实际合入、验证与待办见 [版本对齐台账](docs/version-ledger.md)。
 - 新版扩展清单 `drill-anim/models/training-human-v2plus.json` 固定 loader、运行脚本、模型数据及生产入口；变更固定源需另建模型版本。已冻结清单的审批注记保留其编制时身份，当前 Git 合入状态以台账为准。
 - `drill-anim/models/training-human-v2.json` 固定了 13 个源文件的 sha256。改动其中任何一个（网格、头、材质、肩颈配置、渲染核心）都要建立新的模型版本和验证记录，不能静默改变 `training-human-v2`。
 - 模型清单里的路径是本仓库的路径（例如 `runtime/public/coach/flare-coach.glb`）；历史批次里记录的是 3D-Body 的旧路径，`drill-anim/lib/legacy-paths.mjs` 负责两者互转。
@@ -57,3 +62,7 @@
 - 先用 `--frames` 预览，再决定全片。整机最多两路渲染、每路 `--jobs 1`，不要把机器拖垮。
 - Chrome / 渲染进程意外重启时，先查原因（内存、磁盘、驱动），再继续。
 - 新输出和临时帧放在 `out_dir` / `work_dir`（默认在仓库外或 `output/`，已忽略），不要放进源码目录。
+
+## 当前五皮肤修复核验（2026-11-10）
+
+已批准底座继续由 `preview-current-model.mjs` 校验。五皮肤修复使用 `node tools/preview-current-skins.mjs --recipe <配方.json> [--out <新目录>]`，指针为 `drill-anim/models/current-skin-coverage.json`；入口及证据见 `docs/body-v3/skin-coverage-r1-20261110.md`。非默认皮肤按用户要求关闭边缘光。该修复不替换已确认外观指针，也不触发全库重渲；缺源或哈希漂移必须停止。

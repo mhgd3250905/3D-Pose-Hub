@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "glute-max-A",
   "nameZh": "单腿臀桥",
-  "spec": "drill-anim/specs/glute-max-A-r2-gc1-et1.js",
-  "specSha256Lf": "c56f4e30f9eb74a4192d56f409be221573f490a5b565d220dc5f0d267de93caf",
+  "spec": "drill-anim/specs/glute-max-A-r4.js",
+  "specSha256Lf": "05131ab42c7182d8b4867bc9c00dd69ce14454eb816dce48825e5e734dfa6c0e",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -91,7 +91,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/glute-max-A-r2-gc1-et1.js"
+    "selectedSpec": "drill-anim/specs/glute-max-A-r4.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -116,5 +116,14 @@
         "why": "forearm twist: constant elbowTwist split (pose-fix r8 et, on gc spec)"
       }
     ]
+  },
+  "poseFix1108": {
+    "branch": "codex/pose-fix-1108-r1",
+    "date": "2026-11-08",
+    "from": "drill-anim/specs/glute-max-A-r2-gc1-et1.js",
+    "to": "drill-anim/specs/glute-max-A-r4.js",
+    "why": "2026-11-08 用户复审：两侧肘部仍拧成糖纸状（r3 只用 elbowTwist ±120 对齐手与前臂，跨肘扭转 129–134°） -> 改在肩部转上臂 upperArmTwist ±60（肘窝朝上偏内），elbowTwist ±15，肘保持近纯铰链；肘部最小截面宽 L 39.6/R 39.7 mm（0.50/0.50）→ L 77.8/R 78.1 mm（0.98/0.98），跨肘扭转 →17–22°；手掌/肘位置不变，0 求解警告，无地面/自穿模",
+    "reviewed": false,
+    "qaStatus": "candidate-awaiting-gpu-and-user-review"
   }
 }

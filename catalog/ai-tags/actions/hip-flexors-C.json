@@ -1,0 +1,171 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "hip-flexors-C",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/hip-flexors-C.json",
+    "textSha256Lf": "45540b5df1152fe7d07aa022bb1d7dc40d39b91479a8e2bf81e3904f34a0103a",
+    "spec": "drill-anim/specs/hip-flexors-C.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "gym"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [
+    "cable",
+    "ankle-strap"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [
+    {
+      "for": "cable",
+      "use": [
+        "band"
+      ],
+      "loadNote": "lighter"
+    }
+  ],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "isolation"
+  ],
+  "contraction": [
+    "dynamic",
+    "isometric"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "hip-flexors",
+    "quadriceps"
+  ],
+  "secondaryMuscles": [],
+  "stabilizers": [
+    "abs",
+    "hip-abductors",
+    "glute-max"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    },
+    {
+      "joint": "knee",
+      "actions": [
+        "isometric-hold"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "moderate",
+  "prerequisites": [
+    "single-leg-supported"
+  ],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "low",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "low",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "balance-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "performance"
+  ],
+  "alternatives": [
+    "h-band-straight-leg-raise",
+    "hip-flexors-B"
+  ],
+  "regressions": [
+    "o-supported-march"
+  ],
+  "progressions": [
+    "hip-flexors-A",
+    "t-seated-straddle-lifts"
+  ],
+  "aiSummary": {
+    "zh": "在健身房用绳索加重练直腿抬腿力量，服务踢腿、跑步等专项。",
+    "en": "Cable straight-leg raise for loaded hip-flexor strength in the gym."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "hip-flexors",
+          "quadriceps"
+        ],
+        "synergistMuscles": [
+          "core"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "hip-flexors",
+          "quadriceps"
+        ],
+        "secondaryMuscles": [],
+        "stabilizers": [
+          "abs",
+          "hip-abductors",
+          "glute-max"
+        ]
+      },
+      "reason": "v3 粗粒度 id 按实际做法拆到 taxonomy id（core→abs/obliques，glutes→glute-max 或 hip-abductors，upper-back→scapular，lower-back→erectors），只稳定不推动的归稳定肌。"
+    },
+    {
+      "field": "requiredEquipment/optionalEquipment",
+      "existing": [
+        "cable-machine",
+        "ankle-strap"
+      ],
+      "chosen": {
+        "requiredEquipment": [
+          "cable",
+          "ankle-strap"
+        ],
+        "optionalEquipment": []
+      },
+      "reason": "同义写法归一到词表 id，并按实际做法区分必需与可选。"
+    }
+  ],
+  "reviewNotes": []
+}

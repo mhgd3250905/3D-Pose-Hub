@@ -1,0 +1,186 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "adductors-A",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/adductors-A.json",
+    "textSha256Lf": "0b7facde3ebbf39d62a369781e936ea4fc085285324871daab5f75eedd71df69",
+    "spec": "drill-anim/specs/adductors-A-r2.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "outdoor",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "strength",
+    "mobility"
+  ],
+  "movementPattern": [
+    "squat",
+    "lunge"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "frontal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "adductors",
+    "quadriceps",
+    "glute-max"
+  ],
+  "secondaryMuscles": [
+    "hamstrings"
+  ],
+  "stabilizers": [
+    "abs",
+    "erectors",
+    "hip-abductors"
+  ],
+  "stretchedMuscles": [
+    "adductors"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "flexion",
+        "extension",
+        "abduction"
+      ]
+    },
+    {
+      "joint": "knee",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    },
+    {
+      "joint": "ankle",
+      "actions": [
+        "dorsiflexion"
+      ]
+    }
+  ],
+  "difficulty": 3,
+  "intensity": "moderate",
+  "prerequisites": [
+    "deep-squat-range"
+  ],
+  "laterality": "alternating",
+  "jointStress": {
+    "knee": "moderate",
+    "lumbar": "low",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "low",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "modify",
+      "reasons": [
+        "balance-demand",
+        "end-range-stretch"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "balance-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main",
+    "warmup"
+  ],
+  "goals": [
+    "strength",
+    "mobility",
+    "performance"
+  ],
+  "alternatives": [],
+  "regressions": [
+    "h-lateral-step-lunge",
+    "n-squat-shift"
+  ],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "徒手练侧向深蹲和大腿内侧柔韧，适合已能蹲到平行的人。",
+    "en": "Bodyweight lateral deep squat for inner-thigh strength and range; needs a parallel squat first."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers/stretchedMuscles",
+      "existing": {
+        "activeMuscles": [
+          "adductors",
+          "quadriceps",
+          "glutes"
+        ],
+        "synergistMuscles": [
+          "hamstrings",
+          "core"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "adductors",
+          "quadriceps",
+          "glute-max"
+        ],
+        "secondaryMuscles": [
+          "hamstrings"
+        ],
+        "stabilizers": [
+          "abs",
+          "erectors",
+          "hip-abductors"
+        ],
+        "stretchedMuscles": [
+          "adductors"
+        ]
+      },
+      "reason": "v3 粗粒度肌群（glutes）按动作实际做法拆到细分 id。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 2,
+      "chosen": 3,
+      "reason": "侧向深蹲到末端、伸直腿内收肌被拉长，需要蹲深能力和平衡，定中级 3。"
+    },
+    {
+      "field": "laterality",
+      "existing": {
+        "unilateral": true,
+        "training.kind": "rep_alternate"
+      },
+      "chosen": "alternating",
+      "reason": "v3 unilateral=true 包含交替；本动作每次换一侧，标 alternating。"
+    }
+  ],
+  "reviewNotes": [
+    "办公室不标：深蹲到底幅度大，通勤衣服不方便；stretchedMuscles 写 adductors 指伸直那条腿。"
+  ]
+}

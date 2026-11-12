@@ -1,0 +1,151 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-pike-scapular-elevation",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-pike-scapular-elevation.json",
+    "textSha256Lf": "9a14cac4505e029e1c1568dd9b0e4e283605eb0c0dadf2fd074992bf8847740e",
+    "spec": "drill-anim/specs/h-pike-scapular-elevation.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "isolation"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "upper"
+  ],
+  "primaryMuscles": [
+    "serratus",
+    "upper-traps"
+  ],
+  "secondaryMuscles": [
+    "deltoids"
+  ],
+  "stabilizers": [
+    "triceps",
+    "abs"
+  ],
+  "joints": [
+    {
+      "joint": "scapulothoracic",
+      "actions": [
+        "elevation",
+        "upward-rotation"
+      ]
+    },
+    {
+      "joint": "shoulder",
+      "actions": [
+        "isometric-hold"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "low",
+  "prerequisites": [
+    "wrist-loading",
+    "overhead-range"
+  ],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "low",
+    "wrist": "low",
+    "neck": "low",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "hypertension",
+      "flag": "caution",
+      "reasons": [
+        "head-below-heart"
+      ]
+    },
+    {
+      "population": "pregnancy",
+      "flag": "caution",
+      "reasons": [
+        "head-below-heart"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup",
+    "main"
+  ],
+  "goals": [
+    "performance",
+    "strength"
+  ],
+  "alternatives": [
+    "h-db-overhead-shrug"
+  ],
+  "regressions": [],
+  "progressions": [
+    "h-pike-pushup"
+  ],
+  "aiSummary": {
+    "zh": "倒 V 支撑下直臂耸肩，练倒立所需的肩胛上推控制，派克俯卧撑的前置。",
+    "en": "Straight-arm shrug in a pike to build overhead scapular control before pike push-ups."
+  },
+  "confidence": "medium",
+  "notes": [
+    {
+      "field": "muscles",
+      "existing": {
+        "activeMuscles": [
+          "upper-back",
+          "deltoids"
+        ],
+        "synergistMuscles": [
+          "triceps",
+          "core"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "serratus",
+          "upper-traps"
+        ],
+        "secondaryMuscles": [
+          "deltoids"
+        ],
+        "stabilizers": [
+          "triceps",
+          "abs"
+        ]
+      },
+      "reason": "v3 upper-back/deltoids：倒 V 直臂耸肩是肩胛上提+上回旋，主要由前锯肌和斜方肌上部完成，三角肌只是举臂位维持。"
+    }
+  ],
+  "reviewNotes": [
+    "primaryMuscles 用 serratus+upper-traps 是按解剖推断（v3 写 upper-back），medium。"
+  ]
+}

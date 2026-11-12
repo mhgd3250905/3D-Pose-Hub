@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "deltoids-C",
   "nameZh": "地雷杆半跪单臂推举",
-  "spec": "drill-anim/specs/deltoids-C-gc-int1.js",
-  "specSha256Lf": "9bf995207fa917fc34f01573ab1e9256b0e3879920f69c88675600aef733fc66",
+  "spec": "drill-anim/specs/deltoids-C-r1.js",
+  "specSha256Lf": "d1b85b9bd5b886f1a3364bc11bf061e2860479bf5b60bf2bde1ffeaafed743fe",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -91,7 +91,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/deltoids-C-gc-int1.js"
+    "selectedSpec": "drill-anim/specs/deltoids-C-r1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -125,5 +125,17 @@
       "to": "drill-anim/specs/deltoids-C-gc-int1.js",
       "why": "GC spec 为底叠加 PR #29 的修正（两边都要保住）"
     }
+  },
+  "elbowTwistFix": {
+    "branch": "codex/elbow-twist-r1",
+    "date": "2026-11-10",
+    "from": "drill-anim/specs/deltoids-C-gc-int1.js",
+    "to": "drill-anim/specs/deltoids-C-r1.js",
+    "supersedes": "drill-anim/specs/deltoids-C-gc-int1.js",
+    "why": "2026-11-10 ROM 修复（tools/rom-spec/ROM.md r1.1）：左臂 upperArmTwist +15：前臂总扭转 foreTot 左 142°→129°（限 140），htw 26° 不变。肘部最小截面比 左 0.94→0.92；R5 左 0.97→0.98；翻面 3→1；跨肩扭转 |6|°→9°；腕截面 1.00 不变；右侧未动；关节/手掌漂移 0 mm，求解警告 23=23 不增，近身计数 0（密集 81 帧）；配方指向 deltoids-C-r1，supersedes deltoids-C-gc-int1，reviewed=false",
+    "reviewed": false,
+    "qaStatus": "candidate-awaiting-gpu-and-user-review",
+    "elbowTwistFix": "r2",
+    "romFix": "r1.1"
   }
 }

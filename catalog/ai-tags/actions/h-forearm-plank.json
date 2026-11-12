@@ -1,0 +1,171 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-forearm-plank",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-forearm-plank.json",
+    "textSha256Lf": "48529d60925eeb26af08cc1158213024c3b456b6d1b8a9facf617b253f53d8c6",
+    "spec": "drill-anim/specs/h-forearm-plank.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "stability-control"
+  ],
+  "movementPattern": [
+    "anti-extension"
+  ],
+  "contraction": [
+    "isometric"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "core"
+  ],
+  "primaryMuscles": [
+    "abs"
+  ],
+  "secondaryMuscles": [
+    "obliques"
+  ],
+  "stabilizers": [
+    "deltoids",
+    "glute-max",
+    "serratus",
+    "quadriceps"
+  ],
+  "joints": [
+    {
+      "joint": "shoulder",
+      "actions": [
+        "isometric-hold"
+      ]
+    },
+    {
+      "joint": "lumbar-spine",
+      "actions": [
+        "isometric-hold"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "moderate",
+  "prerequisites": [],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "low",
+    "shoulder": "low",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "modify",
+      "reasons": [
+        "abdominal-pressure"
+      ]
+    },
+    {
+      "population": "pregnancy",
+      "flag": "modify",
+      "reasons": [
+        "abdominal-pressure"
+      ]
+    },
+    {
+      "population": "postpartum",
+      "flag": "caution",
+      "reasons": [
+        "abdominal-pressure"
+      ]
+    },
+    {
+      "population": "hypertension",
+      "flag": "modify",
+      "reasons": [
+        "breath-holding-risk"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main",
+    "warmup"
+  ],
+  "goals": [
+    "strength",
+    "posture"
+  ],
+  "alternatives": [
+    "rotator-cuff-A"
+  ],
+  "regressions": [
+    "h-bear-plank",
+    "w-dead-bug"
+  ],
+  "progressions": [
+    "h-plank-side-step",
+    "h-slider-body-saw"
+  ],
+  "aiSummary": {
+    "zh": "在垫子上练腹部抗塌腰的经典静态核心动作，适合练核心稳定和体态。",
+    "en": "Classic forearm plank on a mat for anti-extension core stability and posture."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "muscles",
+      "existing": {
+        "activeMuscles": [
+          "core",
+          "obliques"
+        ],
+        "synergistMuscles": [
+          "deltoids",
+          "glutes"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "abs"
+        ],
+        "secondaryMuscles": [
+          "obliques"
+        ],
+        "stabilizers": [
+          "deltoids",
+          "glute-max",
+          "serratus",
+          "quadriceps"
+        ]
+      },
+      "reason": "v3 粗粒度肌群（core/glutes/upper-back/lower-back/abductors）按本动作实际做法拆到细分 id。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 2,
+      "reason": "全身俯撑静态保持，需要基本躯干控制，按词表 2 级。"
+    }
+  ],
+  "reviewNotes": []
+}

@@ -1,0 +1,142 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-open-book",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-open-book.json",
+    "textSha256Lf": "96e10d304399032d20d21ccb66c4f05b2f02e5e75c69dd3d081840d66bffd0ae",
+    "spec": "drill-anim/specs/h-open-book-r8.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "mobility"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "transverse"
+  ],
+  "bodyRegion": [
+    "upper",
+    "core"
+  ],
+  "primaryMuscles": [],
+  "secondaryMuscles": [
+    "obliques",
+    "scapular"
+  ],
+  "stabilizers": [],
+  "stretchedMuscles": [
+    "chest"
+  ],
+  "joints": [
+    {
+      "joint": "thoracic-spine",
+      "actions": [
+        "rotation"
+      ]
+    },
+    {
+      "joint": "shoulder",
+      "actions": [
+        "horizontal-abduction"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "low",
+    "shoulder": "low",
+    "wrist": "none",
+    "neck": "low",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "floor-transfer"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup",
+    "cooldown"
+  ],
+  "goals": [
+    "mobility",
+    "posture",
+    "desk-relief"
+  ],
+  "alternatives": [
+    "h-quadruped-open",
+    "h-kneeling-thread-needle"
+  ],
+  "regressions": [
+    "o-seated-twist"
+  ],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "侧躺开书活动胸椎、打开胸口，适合久坐后热身或放松，膝不承重。",
+    "en": "Side-lying open book for thoracic rotation and chest opening; no kneeling."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "muscles",
+      "existing": {
+        "activeMuscles": [
+          "upper-back",
+          "chest"
+        ],
+        "synergistMuscles": [
+          "obliques",
+          "deltoids"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [],
+        "secondaryMuscles": [
+          "obliques",
+          "scapular"
+        ],
+        "stabilizers": [],
+        "stretchedMuscles": [
+          "chest"
+        ]
+      },
+      "reason": "v3 upper-back/chest 主练：开书式是胸椎旋转（obliques、肩胛肌协同），胸大肌被拉开放 stretchedMuscles。"
+    }
+  ],
+  "reviewNotes": []
+}

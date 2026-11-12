@@ -1,0 +1,148 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-bilateral-farmer-hold-native",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-bilateral-farmer-hold-native.json",
+    "textSha256Lf": "932b685a45fbffe45b0c3694ca25e0507cd7b054139837d4ab4dbe0c7abdb86d",
+    "spec": "drill-anim/specs/h-bilateral-farmer-hold-native-r2.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "gym"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [
+    "dumbbell"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [
+    {
+      "for": "dumbbell",
+      "use": [
+        "backpack",
+        "water-bottle"
+      ],
+      "loadNote": "lighter"
+    }
+  ],
+  "trainingType": [
+    "stability-control",
+    "strength"
+  ],
+  "movementPattern": [
+    "carry"
+  ],
+  "contraction": [
+    "isometric"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "full"
+  ],
+  "primaryMuscles": [
+    "forearms"
+  ],
+  "secondaryMuscles": [
+    "upper-traps",
+    "scapular"
+  ],
+  "stabilizers": [
+    "abs",
+    "obliques",
+    "erectors"
+  ],
+  "joints": [
+    {
+      "joint": "wrist",
+      "actions": [
+        "isometric-hold"
+      ]
+    },
+    {
+      "joint": "scapulothoracic",
+      "actions": [
+        "depression"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "low",
+    "shoulder": "low",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "posture",
+    "performance"
+  ],
+  "alternatives": [],
+  "regressions": [],
+  "progressions": [
+    "h-suitcase-hold",
+    "forearms-C"
+  ],
+  "aiSummary": {
+    "zh": "双手持重站立练握力和站姿稳定，入门负重保持。",
+    "en": "Double dumbbell farmer hold for grip and upright posture; entry-level loaded hold."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "forearms",
+          "core"
+        ],
+        "synergistMuscles": [
+          "upper-back",
+          "deltoids"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "forearms"
+        ],
+        "secondaryMuscles": [
+          "upper-traps",
+          "scapular"
+        ],
+        "stabilizers": [
+          "abs",
+          "obliques",
+          "erectors"
+        ]
+      },
+      "reason": "v3 粗粒度肌群（core）按动作实际做法拆到细分 id。握力为主动，核心在保持中起稳定作用，改为 stabilizers。"
+    }
+  ],
+  "reviewNotes": []
+}

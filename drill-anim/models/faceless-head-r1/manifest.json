@@ -1,0 +1,57 @@
+{
+  "format": "pose-hub-model-component@1",
+  "profile": "faceless-head",
+  "version": "0.1.0-r1",
+  "status": "stopped-by-user",
+  "baseModel": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "sourceRestSha256": "5b9c3ca24086b17d157903f5c13ef44ee4eb355a4618d5a8b95358e3fd15cbce",
+  "scope": "Independent geometry component; retains original lower faces, vertex IDs, skin attributes and skeleton. Does not replace production recipes.",
+  "sources": {
+    "tools/faceless-head-r1/build.py": {
+      "encoding": "lf",
+      "sha256": "9c0f69cd2fcac5943cd18616b4b2866e9a14eaf7ff645b072e9ae8eb70e8d3e7"
+    },
+    "tools/faceless-head-r1/runtime.js": {
+      "encoding": "lf",
+      "sha256": "0b7b4f63e3a0077a94682f946ec1e7c5cc0996bfc98b0adb4a1a9f90ba071a41"
+    },
+    "tools/faceless-head-r1/preview.mjs": {
+      "encoding": "lf",
+      "sha256": "bbee21fbd755b7e1566d8d9207155b7b2c7e6329a6e7f578b13dfc949cb31ccc"
+    },
+    "tools/faceless-head-r1/preview-verified.mjs": {
+      "encoding": "lf",
+      "sha256": "d0b005536da9d68d845c1fe22014c88be4798bed59dc033fdf6778fdeff27c45"
+    },
+    "tools/faceless-head-r1/verify.mjs": {
+      "encoding": "lf",
+      "sha256": "ea224dfdc64671f3fa0e13b4a4b5ac8e4275b616bb9fcc349e9fb696e91814c0"
+    },
+    "tools/human-v2plus/head-base/head_e.py": {
+      "encoding": "lf",
+      "sha256": "5be7a600d2f8a8f8643759095789f3e0049184589e0cc3a8c11e881cb68d44b5"
+    },
+    "tools/human-v2plus/torso-base/meshops.py": {
+      "encoding": "lf",
+      "sha256": "c0677f800d7544c46813dd09e4af9d54cbba97507793db865be0acdc3763e018"
+    },
+    "tools/human-polish-v3/runtime.js": {
+      "encoding": "lf",
+      "sha256": "a690f308a27f1cd5ef9ae4970dbc3121b7215a365061afaa9193a3af54454740"
+    },
+    "tools/action-package-v3/skins/realistic.json": {
+      "encoding": "lf",
+      "sha256": "a2678bb3b662bca44104e60cf6c2b86bf17167d4bf0e90f38460c5d1e5b97bae"
+    },
+    "drill-anim/models/faceless-head-r1/geometry.json": {
+      "encoding": "raw",
+      "sha256": "4194952a41ec6f80639c212ed537b19bfa19a4c7ab5313065ec6ed087a8fabba"
+    }
+  },
+  "rejection": "2026-11-10: generic rounded mannequin shape rejected; preserve original skull, forehead, occiput and jaw; keep subtle nasal bridge and facial planes, remove eye socket/lip/nostril/ear-fold details.",
+  "currentDirection": "2026-11-10: retain original head and facial features; smooth head/face shading only. No replacement or facial reshaping.",
+  "archiveNote": "Stopped experiment snapshot; production entry blocked. Intermediate render provenance remains in its F-drive verification.json; not an accepted model."
+}

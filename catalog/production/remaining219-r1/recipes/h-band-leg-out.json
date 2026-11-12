@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "h-band-leg-out",
   "nameZh": "仰卧弹力带单腿侧落",
-  "spec": "drill-anim/specs/h-band-leg-out-et1.js",
-  "specSha256Lf": "7fe3d47b2fdde97631f2c5d7dfb07cb8c83e09863278b6043703320fe6458212",
+  "spec": "drill-anim/specs/h-band-leg-out-r3.js",
+  "specSha256Lf": "fdd89dbcea4798c3882995a1c7f54163925a21df2c7cc3bde2341c8916834e69",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -91,7 +91,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/h-band-leg-out-et1.js"
+    "selectedSpec": "drill-anim/specs/h-band-leg-out-r3.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -113,11 +113,27 @@
         "from": "drill-anim/specs/h-band-leg-out.js",
         "to": "drill-anim/specs/h-band-leg-out-et1.js",
         "why": "pose-fix r9: fixed hand-vs-forearm twist 90-120 deg -> constant forearm roll {\"left\": 60, \"right\": -100}"
+      },
+      {
+        "from": "drill-anim/specs/h-band-leg-out-et1.js",
+        "to": "drill-anim/specs/h-band-leg-out-et1-fa1.js",
+        "why": "foot-angle r3: right (band) foot externally rotated up to -59deg vs the solved shin as the leg falls out (single-axis foot rot track). Baked per-frame foot-follow tracks: right foot follows the real shin, neutral ankle; ankle/poles/timing unchanged"
       }
     ]
   },
   "wristTwistRuntime": {
     "version": "r6",
     "capDeg": 40
+  },
+  "elbowTwistFix": {
+    "branch": "codex/elbow-twist-r1",
+    "date": "2026-11-09",
+    "from": "drill-anim/specs/h-band-leg-out-et1-fa1.js",
+    "to": "drill-anim/specs/h-band-leg-out-r3.js",
+    "supersedes": "drill-anim/specs/h-band-leg-out-r2.js",
+    "why": "2026-11-09 朝向优先重做（用户看图：「核心问题是搞错了手臂的旋转方向」）：右手握带的拳头原本手指方向指回身体（与前臂反向约 150°）、掌心相对前臂扭 140°，et1 又加 elbowTwist -100 掩盖，肘部截面 0.49 且拳头陷进身体；r1 再把上臂转 135° 让肘窝朝地，三角肌折叠（肩截面 0.95→0.29）。r2：上臂不动（仰卧肘窝朝上偏内），撤掉 et1 的 elbowTwist -100，拳头逐帧沿自身前臂方向（腕伸直）重新定向为中立握再旋前 30°（掌心朝内偏脚）；肘部最小截面比 0.49→0.92，跨肘扭转 140°→26°，手对前臂 19°→27°，肩部截面 0.95 不变，拳头穿身接触代理 133→0；腕轨迹、肘极向、腿、脚端弹力带锚点、时间轴、机位不变，掌心点随拳头重新定向移动（带端挂手骨随手）",
+    "reviewed": false,
+    "qaStatus": "candidate-awaiting-gpu-and-user-review",
+    "elbowTwistFix": "r2"
   }
 }

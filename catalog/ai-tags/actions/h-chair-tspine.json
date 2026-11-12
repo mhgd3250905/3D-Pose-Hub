@@ -1,0 +1,154 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-chair-tspine",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-chair-tspine.json",
+    "textSha256Lf": "8970995960d85c5dc9863b347035c4fca0008d3e14c908f2ad0870ae75d93be9",
+    "spec": "drill-anim/specs/h-chair-tspine.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "chair",
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "mobility"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "dynamic",
+    "isometric"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "upper"
+  ],
+  "primaryMuscles": [],
+  "secondaryMuscles": [],
+  "stabilizers": [
+    "abs"
+  ],
+  "stretchedMuscles": [
+    "lats",
+    "chest"
+  ],
+  "joints": [
+    {
+      "joint": "thoracic-spine",
+      "actions": [
+        "extension"
+      ]
+    },
+    {
+      "joint": "shoulder",
+      "actions": [
+        "flexion"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [
+    "floor-transfer",
+    "kneeling-tolerance",
+    "overhead-range"
+  ],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "low",
+    "lumbar": "low",
+    "shoulder": "low",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "floor-transfer"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup",
+    "cooldown"
+  ],
+  "goals": [
+    "mobility",
+    "posture",
+    "desk-relief"
+  ],
+  "alternatives": [
+    "h-chair-lat"
+  ],
+  "regressions": [],
+  "progressions": [
+    "h-dd-shoulder"
+  ],
+  "aiSummary": {
+    "zh": "跪姿扶椅打开上背和肩，适合久坐圆背的热身。",
+    "en": "Kneeling chair thoracic opener for rounded upper backs."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers/stretchedMuscles",
+      "existing": {
+        "activeMuscles": [
+          "upper-back",
+          "lats"
+        ],
+        "synergistMuscles": [
+          "deltoids",
+          "lower-back"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [],
+        "secondaryMuscles": [],
+        "stabilizers": [
+          "abs"
+        ],
+        "stretchedMuscles": [
+          "lats",
+          "chest"
+        ]
+      },
+      "reason": "拉伸/活动类：v3 把被拉肌写在 activeMuscles，这里移到 stretchedMuscles，无主动发力肌。"
+    },
+    {
+      "field": "floorRequired",
+      "existing": {
+        "position": "kneeling"
+      },
+      "chosen": true,
+      "reason": "跪在地上做，需要着地，不进办公室。"
+    }
+  ],
+  "reviewNotes": []
+}

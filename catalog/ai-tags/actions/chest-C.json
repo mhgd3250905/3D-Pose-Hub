@@ -1,0 +1,123 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "chest-C",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/chest-C.json",
+    "textSha256Lf": "fe942145dc2c057b91808adb705aca2aaffbd01db28022a0a81e4400996d1f34",
+    "spec": "drill-anim/specs/chest-C-r2.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "gym"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [
+    "cable",
+    "d-handle"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "push-horizontal",
+    "anti-rotation"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal",
+    "transverse"
+  ],
+  "bodyRegion": [
+    "upper",
+    "core"
+  ],
+  "primaryMuscles": [
+    "chest"
+  ],
+  "secondaryMuscles": [
+    "triceps",
+    "deltoids"
+  ],
+  "stabilizers": [
+    "obliques",
+    "abs",
+    "glute-max"
+  ],
+  "joints": [
+    {
+      "joint": "shoulder",
+      "actions": [
+        "horizontal-adduction"
+      ]
+    },
+    {
+      "joint": "elbow",
+      "actions": [
+        "extension",
+        "flexion"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "moderate",
+  "prerequisites": [
+    "split-stance"
+  ],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "low",
+    "shoulder": "low",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "hypertrophy"
+  ],
+  "alternatives": [],
+  "regressions": [],
+  "progressions": [
+    "chest-A"
+  ],
+  "aiSummary": {
+    "zh": "健身房绳索单臂推胸，同时练核心抗旋，肩前侧不适者可控幅度。",
+    "en": "Single-arm standing cable press for chest plus core anti-rotation."
+  },
+  "confidence": "medium",
+  "notes": [
+    {
+      "field": "requiredEquipment/optionalEquipment",
+      "existing": [
+        "cable-machine",
+        "d-handle"
+      ],
+      "chosen": {
+        "requiredEquipment": [
+          "cable",
+          "d-handle"
+        ],
+        "optionalEquipment": []
+      },
+      "reason": "同义写法归一到词表 id。"
+    }
+  ],
+  "reviewNotes": [
+    "同组排序 C→A→B：绳索推胸（站姿可调重量）→俯卧撑转侧撑→平行杆深幅俯卧撑。"
+  ]
+}

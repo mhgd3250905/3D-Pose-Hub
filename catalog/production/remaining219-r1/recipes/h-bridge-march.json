@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "h-bridge-march",
   "nameZh": "臀桥交替踏步",
-  "spec": "drill-anim/specs/h-bridge-march-et1.js",
-  "specSha256Lf": "8e7777c59c71f589f50f2f9b076642e8f329cc84a8793b43472a49813c48f237",
+  "spec": "drill-anim/specs/h-bridge-march-r3.js",
+  "specSha256Lf": "7eba75bf072d941a87f80a1407af0a542369f68115804924cb03851d0baa828d",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -93,7 +93,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/h-bridge-march-et1.js"
+    "selectedSpec": "drill-anim/specs/h-bridge-march-r3.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -109,5 +109,16 @@
         "why": "forearm twist: constant elbowTwist split (pose-fix r2 et)"
       }
     ]
+  },
+  "elbowTwistFix": {
+    "branch": "codex/elbow-twist-r1",
+    "date": "2026-11-09",
+    "from": "drill-anim/specs/h-bridge-march-et1.js",
+    "to": "drill-anim/specs/h-bridge-march-r3.js",
+    "supersedes": "drill-anim/specs/h-bridge-march-r2.js",
+    "why": "2026-11-09 手臂姿态重做（用户：「手臂不要反向去支撑摸地，而是平放在地上」；依据 NASM Floor Bridge「arms at your sides with palms facing down」、Physitrack/exercise.com Glute Bridge March「arms down at your sides」）：原始掌心钉在髋旁，双臂屈肘约 55° 往回撑地，左前臂对上臂扭 143°（肘截面 0.80）；r1 再把左上臂转 130°，肩部折叠（0.75→0.50）。r2：双臂伸直平放身体两侧地面，与躯干约 20°（腕距肩 0.47 m，肘微屈约 8°），掌心朝下（floor 模式贴地），手指朝脚；上臂内旋 30°（肘窝朝上偏脚），前臂旋前留给前臂/腕；肘部最小截面比 左 0.80→0.95/右 0.95→0.95，跨肘扭转 左 143°→29°；肩部截面 左 0.75→1.01/右 0.94→1.01，跨肩扭转 ≤13°；手臂皮肤最低点离地 11–13 mm（不穿地），自穿模接触代理 119→0；手对前臂扭转 66°（腕部由 r6 运行时分摊）",
+    "reviewed": false,
+    "qaStatus": "candidate-awaiting-gpu-and-user-review",
+    "elbowTwistFix": "r2"
   }
 }

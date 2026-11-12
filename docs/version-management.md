@@ -18,6 +18,8 @@
 
 ## 人体制作版本与生产默认
 
+有显式 recipe 的 v3 动作按 [人体版本路由](model-version-routing.md) 记录人体、手型及动作修订。已批准外观和独立皮肤修复分别由 [批准指针](../drill-anim/models/current-approved-look.json) 和 [修复指针](../drill-anim/models/current-skin-coverage.json) 固定。技术验证、视觉确认、制作与发布各自登记。
+
 2026-10-21 用户选择新版人体制作今后动作，默认配方由 `drill-anim/models/current-production.json` 管理：`training-human-v2plus` / `1.0.0-rc2`、`alignClavicles:false`，compression 训练服、base 躯干/四肢/手、原 v2 头（head off）、`skin:'realistic'`，保留动作肌群高亮，不显示肌群分区线。白金、蓝、绿和全息仅为可选皮肤，详见 [v2plus 制作标准](training-human-v2plus.md)。PR #12 和集成修复已合入并推送 main；具体 SHA 和证据见台账。App 接入与全量动作验收仍单独跟踪。
 
 模型固定清单及生产配方中的流程描述是该版本编制时的注记；当前合入、推送、动作验收与媒体发布状态集中维护在台账，不为改变这些状态改写已固定来源和模型身份。

@@ -1,0 +1,319 @@
+{
+  "format": "pose-hub-voice@3",
+  "actionId": "h-band-straight-leg-raise",
+  "definitionSha256": "4592a5c5a941c5fadf0db9961f388a442b5f0a847159326e597889c2066f6597",
+  "standard": {
+    "lufsTarget": -16,
+    "lufsTolerance": 1,
+    "truePeakMaxDbtp": -1,
+    "codec": "aac",
+    "sampleRate": 44100,
+    "channels": 1,
+    "bitrateKbps": 64,
+    "process": "hiplab v4.1"
+  },
+  "voiceProfile": {
+    "zh": {
+      "voice": "zh-CN-XiaoxiaoNeural",
+      "rate": "+6%"
+    },
+    "en": {
+      "voice": "en-US-JennyNeural",
+      "rate": "+4%"
+    }
+  },
+  "common": "voice/common/manifest.json",
+  "contentReview": "passed",
+  "manualListening": "pending",
+  "cuePoints": {
+    "start": 0.8,
+    "peak": 1.6,
+    "end": 3.033,
+    "method": "masters highlight pulse (25 % rise / plateau reached / 50 % fall) — computed from spec pulse track (spec_pulse.mjs), masters not on this machine",
+    "sampled": false
+  },
+  "lines": {
+    "zh": {
+      "name": {
+        "text": "扶椅弹力带直腿前抬",
+        "ref": {
+          "path": "packages/h-band-straight-leg-raise/voice/zh/name.m4a",
+          "sha256": "8e94a3d0015dc5f3b3d85a03d2731f6a7eb515a8d055121f6ec2b07ad3356cc1",
+          "bytes": 16718,
+          "durationSeconds": 1.904036
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "2b5092062c56c72f435336c1d683ac531e48f93f399d9c69b5d2a1450117fd61",
+          "ttsFingerprint": "24b2d36dd4dfaebac5be7456f919e0b3e10d41b72ab41b57f33ba154d275c793"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.4,
+          "leadMs": 30,
+          "tailMs": 94
+        },
+        "role": "intro"
+      },
+      "primaryCue": {
+        "text": "膝盖伸直不动，腿往前抬",
+        "ref": {
+          "path": "packages/h-band-straight-leg-raise/voice/zh/primaryCue.m4a",
+          "sha256": "f9c88005bc6c766c6bfce81c2905f11893b81ce2691a84e42aa356068bb65bdb",
+          "bytes": 20441,
+          "durationSeconds": 2.368435
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "32553e9b990e7557b4ed5e76c46524f3971f4b1e86d951d77bdc95f980e63295",
+          "ttsFingerprint": "a7c830cdf58123eb20976c8be18b724fcf62b9d9b9363fe29af8f69a8087592e"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -15.9,
+          "truePeak": -2.3,
+          "leadMs": 30,
+          "tailMs": 98
+        },
+        "role": "intro"
+      },
+      "phase.start": {
+        "text": "往前抬",
+        "ref": {
+          "path": "packages/h-band-straight-leg-raise/voice/zh/phase.start.m4a",
+          "sha256": "908d4907cdf049c2b6eafbf3b7ad8015f42491b9c99dccacb29cc579af7e6040",
+          "bytes": 7816,
+          "durationSeconds": 0.812698
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "b2e746a559fd1e94999b95591186cb4ae7f048c6c9ba4aac7f13d15282ffbf19",
+          "ttsFingerprint": "c3f1169d6140cd2779308f548229952035349129af1297a23d7058144c2fe5f7"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.2,
+          "leadMs": 40,
+          "tailMs": 93
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 0.8,
+          "gapSeconds": 0.8,
+          "fit": "schedule-early"
+        }
+      },
+      "phase.peak": {
+        "text": "停一下",
+        "ref": {
+          "path": "packages/h-band-straight-leg-raise/voice/zh/phase.peak.m4a",
+          "sha256": "ef806c53945f31578b36d9d568522f2df5cbfa20442551823f53f13626556b37",
+          "bytes": 6794,
+          "durationSeconds": 0.696599
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "16858fe033a1c4eee1743df3c838ff6f9e3c179733f74f28d1336fd47a5522ef",
+          "ttsFingerprint": "60bad401c279150f999f052c15b2a6880658ebadc45b05c4d0ad0a6fc3adba87"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -3.2,
+          "leadMs": 40,
+          "tailMs": 77
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 1.6,
+          "gapSeconds": 1.433,
+          "fit": "fits"
+        }
+      },
+      "phase.end": {
+        "text": "放下",
+        "ref": {
+          "path": "packages/h-band-straight-leg-raise/voice/zh/phase.end.m4a",
+          "sha256": "a275ff8cc552c152f3efc8eb36179d458243ec37326f269e16467cc67608a052",
+          "bytes": 5764,
+          "durationSeconds": 0.580499
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "fa683d7104f0483d0284f4738f288462bebb41f78dbacc646c2bc45ab5d40abb",
+          "ttsFingerprint": "f357c5f6f872734d607fc1c5aacd1da7f0c116b0b7be502be2996e5754d648cb"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.3,
+          "leadMs": 20,
+          "tailMs": 90
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 3.033,
+          "gapSeconds": 4.967,
+          "fit": "fits"
+        }
+      }
+    },
+    "en": {
+      "name": {
+        "text": "Standing Band Straight-Leg Raise",
+        "ref": {
+          "path": "packages/h-band-straight-leg-raise/voice/en/name.m4a",
+          "sha256": "d93035cf9bcbf45f93826d68fd7b7803119fc71d9fae8b23671d789b4e0571e3",
+          "bytes": 15414,
+          "durationSeconds": 1.741497
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "313b3e407b18842bd10cc67082ecb99329da473f7de5eb61430277eefd0a8c85",
+          "ttsFingerprint": "0befc99f00ef9746ad0a9f89aee5c57710ae247bae0019dbf52a32216c2cacbc"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.3,
+          "leadMs": 40,
+          "tailMs": 71
+        },
+        "role": "intro"
+      },
+      "primaryCue": {
+        "text": "Keep your knee straight and lift the leg forward",
+        "ref": {
+          "path": "packages/h-band-straight-leg-raise/voice/en/primaryCue.m4a",
+          "sha256": "6900113071ce797ae1838d7ec975cb0e25fb67a6fd31f494dc252e0822013f66",
+          "bytes": 18605,
+          "durationSeconds": 2.113016
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "868d82224338cba85d188a4bd2334973fca1e54deae28fea7333d59dfa0b6255",
+          "ttsFingerprint": "eaff4b3f4e2ca5d63f9e097dcb19ea885c3fa8216f6c7936ad858f07d462453c"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.4,
+          "leadMs": 40,
+          "tailMs": 53
+        },
+        "role": "intro"
+      },
+      "phase.start": {
+        "text": "Lift",
+        "ref": {
+          "path": "packages/h-band-straight-leg-raise/voice/en/phase.start.m4a",
+          "sha256": "cfea158f2504eae8a555b5163be75bf3a3318fb9e8218c11d1500eb4f8b71433",
+          "bytes": 5330,
+          "durationSeconds": 0.510839
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "0fd35e86b7458bb23d4aebb1231c2120adb9874c0501c61bdb34177f9dc5d791",
+          "ttsFingerprint": "6a3a1280c1b1ca14fb188aea4a2ece6aa980a35402ec58ecf68e2744c1e76f3e"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.0,
+          "truePeak": -2.3,
+          "leadMs": 40,
+          "tailMs": 71
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 0.8,
+          "gapSeconds": 0.8,
+          "fit": "fits"
+        }
+      },
+      "phase.peak": {
+        "text": "Pause",
+        "ref": {
+          "path": "packages/h-band-straight-leg-raise/voice/en/phase.peak.m4a",
+          "sha256": "370241428bef6c68bcf6767c333d28e61ec7ae34a34512111176bf527c64fff7",
+          "bytes": 6157,
+          "durationSeconds": 0.626939
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "5afc3d7ac7fdf245c3c8ebfb04634c6692d5f99614e75066e1639cf3cc75d394",
+          "ttsFingerprint": "31b0c0cc0e4f2268442e90aca06df30611d0232b02acc5fadf6825b18434017b"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.4,
+          "leadMs": 30,
+          "tailMs": 87
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 1.6,
+          "gapSeconds": 1.433,
+          "fit": "fits"
+        }
+      },
+      "phase.end": {
+        "text": "Lower",
+        "ref": {
+          "path": "packages/h-band-straight-leg-raise/voice/en/phase.end.m4a",
+          "sha256": "112ba6840ae24a185a3acc8dfa2d75016c38480a19125cab97ca741ff42c2b33",
+          "bytes": 5598,
+          "durationSeconds": 0.534059
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "1b4508c536134b4d6d3b768d8b3ebc5c3b2ba952ec5cfa6599602fe11a256d50",
+          "ttsFingerprint": "994f87386967e210d9f9e7fa5d94c40bead47345fb9e11bed970cb0cb1086713"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -15.9,
+          "truePeak": -2.7,
+          "leadMs": 40,
+          "tailMs": 74
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 3.033,
+          "gapSeconds": 4.967,
+          "fit": "fits"
+        }
+      }
+    }
+  },
+  "summary": {
+    "clips": 10,
+    "auditFailed": [],
+    "scheduleEarly": [
+      "packages/h-band-straight-leg-raise/voice/zh/phase.start.m4a"
+    ]
+  },
+  "status": "technical-passed"
+}

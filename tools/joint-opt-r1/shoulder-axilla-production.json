@@ -1,0 +1,17 @@
+{
+ "format": "pose-hub-joint-production-switch@1",
+ "id": "shoulder-axilla",
+ "_doc": "Production switch for the shoulder-axilla correction, read by tools/joint-opt-r1/render-masters-joint.mjs. enabled=true installs shoulder-axilla-r2 (r1 axilla weight overlay positions + r2 in-region shading-normal repair; one module, r1 is NOT installed in addition: both enabled would apply the position overlay twice) and turns it on for every frame. One-key off: set enabled to false here, or pass --shoulder-axilla off, or render with the unchanged base entry tools/skin-coverage-r1/render-masters.mjs. Off = module not installed at all = the base entry's pixels. Not a user approval: reviewed/userAccepted stay false until the user signs off the trial renders.",
+ "enabled": true,
+ "module": "tools/joint-opt-r1/shoulder-axilla-r2.mjs",
+ "moduleVersion": "0.2.0-r2",
+ "moduleSha256Lf": "627206a8c5377bb7214132a4def45b53bb9823eb4796ba9ee0784f4f58d796c7",
+ "moduleGlobal": "__shoulderAxillaR2",
+ "options": {},
+ "baseEntry": "tools/skin-coverage-r1/render-masters.mjs",
+ "baseEntrySha256Lf": "8edb42c5d31acd65690b09004d2a22544d7c78c7c1a26379a385ba524befc094",
+ "evidence": "regress-r2 @ 7383f5e (54 actions, local GPU): issue actions OFF 26 -> r2 5, worse vs OFF 0, outside-region displacement 0, installed-but-off == OFF 0",
+ "decision": "2026-11-11 11:47 user: connect r2 to the production render chain (trial renders first; no upload, no pointer switch)",
+ "reviewed": false,
+ "userAccepted": false
+}

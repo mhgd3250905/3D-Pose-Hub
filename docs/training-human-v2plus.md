@@ -12,7 +12,7 @@ PR #12 与集成修复已于 2026-10-21 经用户同意合入并推送 main，�
 
 ## 新任务使用哪套配置
 
-唯一生产入口是 [current-production.json](../drill-anim/models/current-production.json)，模型固定源见 [training-human-v2plus.json](../drill-anim/models/training-human-v2plus.json)。模型支持的可选功能与生产默认分别管理。普通渲染对显式选择的 `training-human-v2plus` 补齐生产默认；`--model-profile current` 可让旧规格另出新版人体试片，未指定覆盖时普通旧 spec 保留原 profile。批次与新 spec 仍显式记录完整字段，以便查清实际使用的配置。
+v2plus 流程的生产入口是 [current-production.json](../drill-anim/models/current-production.json)。显式 v3 recipe 按 [人体版本路由](model-version-routing.md) 选择来源。v2plus 模型固定源见 [training-human-v2plus.json](../drill-anim/models/training-human-v2plus.json)。模型支持的可选功能与生产默认分别管理。普通渲染对显式选择的 `training-human-v2plus` 补齐生产默认；`--model-profile current` 可让旧规格另出新版人体试片，未指定覆盖时普通旧 spec 保留原 profile。批次与新 spec 仍显式记录完整字段，以便查清实际使用的配置。
 
 新 spec 显式采用下列字段；HD 新建任务从生产配置读取同样的字段并写入批次包装规格：
 

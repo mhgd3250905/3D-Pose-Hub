@@ -1,0 +1,137 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "hip-abductors-B",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/hip-abductors-B.json",
+    "textSha256Lf": "48a0ff642c4e590af8c14352b41bc89a3f3627334b84544d0da06f825f894141",
+    "spec": "drill-anim/specs/hip-abductors-B-r3.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "mini-band",
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "isolation"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "frontal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "hip-abductors"
+  ],
+  "secondaryMuscles": [
+    "hip-rotators"
+  ],
+  "stabilizers": [
+    "abs",
+    "hip-flexors"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "abduction",
+        "adduction"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "low",
+  "prerequisites": [],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "low",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "pregnancy",
+      "flag": "modify",
+      "reasons": [
+        "supine-position"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "hypertrophy"
+  ],
+  "alternatives": [],
+  "regressions": [
+    "w-clamshell",
+    "hip-abductors-C"
+  ],
+  "progressions": [
+    "hip-abductors-A"
+  ],
+  "aiSummary": {
+    "zh": "仰卧双腿举起套迷你带开合，居家练臀中肌，比蚌式强度更高。",
+    "en": "Supine banded straddle opens for glute med, a step up from clamshells."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "muscles",
+      "existing": {
+        "activeMuscles": [
+          "abductors",
+          "glutes"
+        ],
+        "synergistMuscles": [
+          "core",
+          "hip-flexors"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "hip-abductors"
+        ],
+        "secondaryMuscles": [
+          "hip-rotators"
+        ],
+        "stabilizers": [
+          "abs",
+          "hip-flexors"
+        ]
+      },
+      "reason": "v3 abductors/glutes：举腿位开腿以外展为主，归 hip-abductors；双腿保持垂直靠髋屈肌和腹部。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 2,
+      "reason": "双腿举直保持并对抗弹力带外展，比蚌式难，按 2 级。"
+    }
+  ],
+  "reviewNotes": []
+}

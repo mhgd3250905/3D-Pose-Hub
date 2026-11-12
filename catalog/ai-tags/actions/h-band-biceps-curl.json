@@ -1,0 +1,119 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-band-biceps-curl",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-band-biceps-curl.json",
+    "textSha256Lf": "2b018f7deddc7f40b057ec123538ae93a5f4b86da0f72411d47bd0bd5444e4ab",
+    "spec": "drill-anim/specs/h-band-biceps-curl-r6.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "office",
+    "gym",
+    "outdoor",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [
+    "band"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "isolation"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "upper"
+  ],
+  "primaryMuscles": [
+    "biceps"
+  ],
+  "secondaryMuscles": [
+    "forearms"
+  ],
+  "stabilizers": [],
+  "joints": [
+    {
+      "joint": "elbow",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "hypertrophy"
+  ],
+  "alternatives": [
+    "h-db-curl",
+    "h-db-hammer-curl"
+  ],
+  "regressions": [
+    "h-biceps-self"
+  ],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "只带一根弹力带就能练二头肌，适合居家、酒店和工间。",
+    "en": "Biceps curl with just a band; works at home, in hotels and on desk breaks."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "requiredEquipment/optionalEquipment",
+      "existing": [
+        "resistance-band"
+      ],
+      "chosen": {
+        "requiredEquipment": [
+          "band"
+        ],
+        "optionalEquipment": []
+      },
+      "reason": "resistance-band 归一为 band。"
+    }
+  ],
+  "reviewNotes": [
+    "弹力带便携、踩住即可，无需固定点，所以场景放宽到办公室/户外/酒店。"
+  ]
+}

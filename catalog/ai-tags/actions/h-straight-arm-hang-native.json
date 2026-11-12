@@ -1,0 +1,153 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-straight-arm-hang-native",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-straight-arm-hang-native.json",
+    "textSha256Lf": "60cfc819720440a471b50d12ea06f94b5cf81c6f03bb4942aabf485c28920bf0",
+    "spec": "drill-anim/specs/h-straight-arm-hang-native.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "gym",
+    "outdoor"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "pullup-bar"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "stability-control",
+    "static-stretch"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "isometric"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "upper"
+  ],
+  "primaryMuscles": [
+    "forearms"
+  ],
+  "secondaryMuscles": [
+    "deltoids"
+  ],
+  "stabilizers": [
+    "rotator-cuff",
+    "scapular"
+  ],
+  "stretchedMuscles": [
+    "lats"
+  ],
+  "joints": [
+    {
+      "joint": "shoulder",
+      "actions": [
+        "flexion"
+      ]
+    },
+    {
+      "joint": "wrist",
+      "actions": [
+        "isometric-hold"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "low",
+  "prerequisites": [
+    "overhead-range"
+  ],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "moderate",
+    "wrist": "low",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "overweight",
+      "flag": "modify",
+      "reasons": [
+        "heavy-load"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main",
+    "warmup"
+  ],
+  "goals": [
+    "strength",
+    "mobility",
+    "performance"
+  ],
+  "alternatives": [],
+  "regressions": [],
+  "progressions": [
+    "scapular-B",
+    "h-fixed-bar-vertical-pull"
+  ],
+  "aiSummary": {
+    "zh": "有单杠时练握力并拉长背两侧，是学引体前的第一步。",
+    "en": "Bar hang for grip and lat lengthening, the first step toward pull-ups."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "muscles",
+      "existing": {
+        "activeMuscles": [
+          "forearms",
+          "lats"
+        ],
+        "synergistMuscles": [
+          "deltoids"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "forearms"
+        ],
+        "secondaryMuscles": [
+          "deltoids"
+        ],
+        "stabilizers": [
+          "rotator-cuff",
+          "scapular"
+        ],
+        "stretchedMuscles": [
+          "lats"
+        ]
+      },
+      "reason": "v3 lats 主练：被动悬垂时背阔肌被拉长，放 stretchedMuscles；真正持续发力的是握力（forearms）。"
+    },
+    {
+      "field": "requiredEquipment",
+      "existing": [
+        "pull-up-bar"
+      ],
+      "chosen": [
+        "pullup-bar"
+      ],
+      "reason": "v3 器械同义写法归一到词表 id。"
+    }
+  ],
+  "reviewNotes": [
+    "outdoor 指公园单杠，会出非健身房器械警告。"
+  ]
+}

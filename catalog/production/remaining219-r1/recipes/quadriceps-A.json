@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "quadriceps-A",
   "nameZh": "跪姿反向北欧",
-  "spec": "drill-anim/specs/quadriceps-A-et1.js",
-  "specSha256Lf": "338dd82edd18e6b15aa787b3f3d1ed7e8838adf87644b180215f3c82fd959cc3",
+  "spec": "drill-anim/specs/quadriceps-A-r1.js",
+  "specSha256Lf": "51fabb822c0fb39da5501047cf9bd43aa546bdb4aa320296e90753aac42cf318",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -92,7 +92,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/quadriceps-A-et1.js"
+    "selectedSpec": "drill-anim/specs/quadriceps-A-r1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -108,5 +108,17 @@
         "why": "forearm twist: constant elbowTwist split (pose-fix r2 et)"
       }
     ]
+  },
+  "elbowTwistFix": {
+    "branch": "codex/elbow-twist-r1",
+    "date": "2026-11-10",
+    "from": "drill-anim/specs/quadriceps-A-et1.js",
+    "to": "drill-anim/specs/quadriceps-A-r1.js",
+    "supersedes": "drill-anim/specs/quadriceps-A-et1.js",
+    "why": "2026-11-10 ROM 修复（tools/rom-spec/ROM.md r1.1）：在 et1 上右臂 elbowTwist −20：手对前臂扭转 htw 右 84°→74°（限 75），foreTot 32° 不变。肘部最小截面比 右 0.98→0.99；腕截面 右 0.88→0.90；R5 不变；翻面 28→25；跨肩扭转不变；关节/手掌漂移 0 mm，求解警告不增；近身计数 1394/1454→1415/1458（+1.5%/+0.3%，左侧未改动，属测量波动，列待验收）（密集 81 帧）。b−30 漂移 8.7 mm，未用；配方指向 quadriceps-A-r1，supersedes quadriceps-A-et1，reviewed=false",
+    "reviewed": false,
+    "qaStatus": "candidate-awaiting-gpu-and-user-review",
+    "elbowTwistFix": "r2",
+    "romFix": "r1.1"
   }
 }

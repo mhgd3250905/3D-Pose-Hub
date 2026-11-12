@@ -1,0 +1,147 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "o-supported-hip-hitch",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/o-supported-hip-hitch.json",
+    "textSha256Lf": "bfeb5fb4bedc4494d49567486be782a2511d80314be553ffb07a378639ee7702",
+    "spec": "drill-anim/specs/o-supported-hip-hitch.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "office",
+    "gym",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "chair"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "stability-control"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "dynamic",
+    "isometric"
+  ],
+  "plane": [
+    "frontal"
+  ],
+  "bodyRegion": [
+    "lower",
+    "core"
+  ],
+  "primaryMuscles": [
+    "hip-abductors"
+  ],
+  "secondaryMuscles": [
+    "obliques",
+    "erectors"
+  ],
+  "stabilizers": [
+    "glute-max",
+    "abs"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "abduction",
+        "adduction"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [
+    "single-leg-supported"
+  ],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "low",
+    "lumbar": "low",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "balance-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup",
+    "main"
+  ],
+  "goals": [
+    "performance",
+    "posture",
+    "recovery"
+  ],
+  "alternatives": [
+    "w-clamshell"
+  ],
+  "regressions": [],
+  "progressions": [
+    "o-supported-hip-airplane",
+    "h-side-leg-raise"
+  ],
+  "aiSummary": {
+    "zh": "扶椅练单腿站时骨盆不歪，跑步、走路骨盆晃的人入门选。",
+    "en": "Chair-supported hip hitch to train pelvic control on one leg."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "abductors",
+          "glutes"
+        ],
+        "synergistMuscles": [
+          "obliques",
+          "core"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "hip-abductors"
+        ],
+        "secondaryMuscles": [
+          "obliques",
+          "erectors"
+        ],
+        "stabilizers": [
+          "glute-max",
+          "abs"
+        ]
+      },
+      "reason": "支撑腿臀中肌稳骨盆（hip-abductors），抬起侧由腰方肌/腹斜肌提骨盆（erectors/obliques 协同）；v3 glutes 改为稳定。"
+    }
+  ],
+  "reviewNotes": [
+    "扶物单腿按词表可到 2 级，但幅度极小、起始量 1×4，保持 1 级，与髋飞机（2 级）形成梯度。"
+  ]
+}

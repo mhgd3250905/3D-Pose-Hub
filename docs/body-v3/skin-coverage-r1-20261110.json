@@ -1,0 +1,119 @@
+{
+  "date": "2026-11-10",
+  "version": "skin-coverage@0.1.0-r1",
+  "status": "implementation-verified-awaiting-user-visual-review",
+  "recipeAudit": {
+    "effectiveRecipes": 217,
+    "native": 165,
+    "fixed": 52,
+    "fixedRoutes": {
+      "dumbbell": 17,
+      "fixed": 25,
+      "bar": 10
+    }
+  },
+  "runs": [
+    {
+      "id": "curl-b",
+      "path": "F:/PoseHub-v3/skin-coverage-r1/curl-b/verification.json",
+      "sha256": "e2d868860a6a45328592395fe2fef497cd2c73e51eb99993cfbe8fe1fac5171d",
+      "action": "h-db-curl",
+      "handAdapter": "webxr-dumbbell-wrist-r1",
+      "frames": [
+        0,
+        36
+      ],
+      "skinCount": 5,
+      "renderCases": 32,
+      "errors": [],
+      "geometryUnchanged": true,
+      "defaultPixelsUnchanged": true,
+      "rimOff": false
+    },
+    {
+      "id": "support-b",
+      "path": "F:/PoseHub-v3/skin-coverage-r1/support-b/verification.json",
+      "sha256": "5e8a92d13e18151a71c81b8a7bf01b818d0928a5c7e281ab31eec2e92799a9b0",
+      "action": "h-adductor-rock",
+      "handAdapter": "symmetric-native",
+      "frames": [
+        0,
+        36
+      ],
+      "skinCount": 5,
+      "renderCases": 32,
+      "errors": [],
+      "geometryUnchanged": true,
+      "defaultPixelsUnchanged": true,
+      "rimOff": false
+    },
+    {
+      "id": "squat-a",
+      "path": "F:/PoseHub-v3/skin-coverage-r1/squat-a/verification.json",
+      "sha256": "be11c4065b764b0bd0c07c744e813121e9d468e45d932b6cb834754cd5a7f82d",
+      "action": "h-squat",
+      "handAdapter": "symmetric-native",
+      "frames": [
+        0,
+        36
+      ],
+      "skinCount": 5,
+      "renderCases": 32,
+      "errors": [],
+      "geometryUnchanged": true,
+      "defaultPixelsUnchanged": true,
+      "rimOff": false
+    },
+    {
+      "id": "curl-no-rim",
+      "path": "F:/PoseHub-v3/skin-coverage-r1/curl-no-rim/verification.json",
+      "sha256": "363ee61eacab8fdf60865a8082139f38747d5e1aaf9e64ba9a98dd4f34f96bb1",
+      "action": "h-db-curl",
+      "handAdapter": "webxr-dumbbell-wrist-r1",
+      "frames": [
+        0,
+        36
+      ],
+      "skinCount": 5,
+      "renderCases": 32,
+      "errors": [],
+      "geometryUnchanged": true,
+      "defaultPixelsUnchanged": true,
+      "rimOff": true
+    }
+  ],
+  "productionSmoke": {
+    "path": "F:/PoseHub-v3/skin-coverage-r1/production-no-rim/masters/h-squat/layer-manifest.json",
+    "sha256": "f0aaaa86f41cc9dcbd0e53ec2544f9ea70f6221f36c11209f3dd156ffc6c355d",
+    "frames": [
+      0
+    ],
+    "skins": 5,
+    "layers": [
+      "body",
+      "body-highlight",
+      "mask"
+    ],
+    "nonDefaultRimOff": true
+  },
+  "manuallyInspected": [
+    "curl-b neck/hands five-skin contact sheet",
+    "support-b frame 0 full tech-white highlight and hologram hand close-up",
+    "curl-no-rim neck/hands five-skin contact sheet"
+  ],
+  "checks": [
+    "material lifecycle regression 4 passed",
+    "approved model gate passed",
+    "model and hand routing gate passed",
+    "portability 7 passed",
+    "visible body/head/neck/shoe slots and fixed hand/bridge shaders covered",
+    "stale root rejects missing repair sources"
+  ],
+  "limits": [
+    "Sampled frames only; not full-cycle acceptance of all 217 actions",
+    "Historical media unchanged; no bulk rerender or publication",
+    "Prior curl-a browser startup stalled, support-a local server unavailable; successful reruns retained separately"
+  ],
+  "previousSourceSnapshot": "F:/PoseHub-v3/skin-coverage-r1/before-rim-policy-source",
+  "sourceManifest": "tools/skin-coverage-r1/manifest.json"
+}

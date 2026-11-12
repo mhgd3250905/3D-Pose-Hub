@@ -1,0 +1,157 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "chest-A",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/chest-A.json",
+    "textSha256Lf": "5f9a2d7798b08801ba735a4c78f6f1d422f9659a7f00dae56952c17bd6218f33",
+    "spec": "drill-anim/specs/chest-A-r3.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [
+    {
+      "for": "mat",
+      "use": [
+        "towel"
+      ],
+      "loadNote": "similar"
+    }
+  ],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "push-horizontal",
+    "rotation"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal",
+    "transverse"
+  ],
+  "bodyRegion": [
+    "upper",
+    "core"
+  ],
+  "primaryMuscles": [
+    "chest",
+    "obliques"
+  ],
+  "secondaryMuscles": [
+    "triceps",
+    "deltoids"
+  ],
+  "stabilizers": [
+    "abs",
+    "serratus",
+    "rotator-cuff"
+  ],
+  "joints": [
+    {
+      "joint": "shoulder",
+      "actions": [
+        "horizontal-adduction",
+        "horizontal-abduction"
+      ]
+    },
+    {
+      "joint": "elbow",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    },
+    {
+      "joint": "thoracic-spine",
+      "actions": [
+        "rotation"
+      ]
+    },
+    {
+      "joint": "wrist",
+      "actions": [
+        "extension"
+      ]
+    }
+  ],
+  "difficulty": 3,
+  "intensity": "moderate",
+  "prerequisites": [
+    "floor-transfer",
+    "wrist-loading",
+    "pushup-10"
+  ],
+  "laterality": "alternating",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "low",
+    "shoulder": "low",
+    "wrist": "moderate",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "floor-transfer"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "performance"
+  ],
+  "alternatives": [],
+  "regressions": [
+    "chest-C",
+    "h-kneeling-pushup"
+  ],
+  "progressions": [
+    "chest-B"
+  ],
+  "aiSummary": {
+    "zh": "能做标准俯卧撑后，加转体练胸和核心抗旋的徒手动作。",
+    "en": "Push-up plus rotation to side plank for chest and core once standard push-ups are easy."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "difficulty",
+      "existing": 2,
+      "chosen": 3,
+      "reason": "包含一个标准俯卧撑再转成单手侧撑，按词表属中级 3。"
+    },
+    {
+      "field": "laterality",
+      "existing": {
+        "unilateral": true,
+        "training.kind": "rep_alternate"
+      },
+      "chosen": "alternating",
+      "reason": "v3 unilateral=true 包含交替；本动作每次换一侧，标 alternating。"
+    }
+  ],
+  "reviewNotes": []
+}

@@ -1,0 +1,182 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "obliques-A",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/obliques-A.json",
+    "textSha256Lf": "b961d64070173814a1e3df1fe4bed6975fcda010b5682217408315a4f9bb5089",
+    "spec": "drill-anim/specs/obliques-A-r2.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "low",
+  "sweat": "light",
+  "requiredEquipment": [],
+  "optionalEquipment": [
+    "mat"
+  ],
+  "substitutes": [],
+  "trainingType": [
+    "strength",
+    "stability-control"
+  ],
+  "movementPattern": [
+    "rotation"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "transverse"
+  ],
+  "bodyRegion": [
+    "full"
+  ],
+  "primaryMuscles": [
+    "obliques",
+    "abs"
+  ],
+  "secondaryMuscles": [
+    "deltoids",
+    "hip-flexors"
+  ],
+  "stabilizers": [
+    "serratus",
+    "triceps",
+    "quadriceps"
+  ],
+  "joints": [
+    {
+      "joint": "thoracic-spine",
+      "actions": [
+        "rotation"
+      ]
+    },
+    {
+      "joint": "shoulder",
+      "actions": [
+        "isometric-hold"
+      ]
+    },
+    {
+      "joint": "hip",
+      "actions": [
+        "flexion",
+        "external-rotation"
+      ]
+    },
+    {
+      "joint": "wrist",
+      "actions": [
+        "isometric-hold"
+      ]
+    }
+  ],
+  "difficulty": 3,
+  "intensity": "moderate",
+  "prerequisites": [
+    "wrist-loading",
+    "plank-30s"
+  ],
+  "laterality": "alternating",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "low",
+    "shoulder": "low",
+    "wrist": "moderate",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "modify",
+      "reasons": [
+        "balance-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "floor-transfer"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main",
+    "warmup"
+  ],
+  "goals": [
+    "performance",
+    "strength",
+    "fat-loss"
+  ],
+  "alternatives": [
+    "obliques-C"
+  ],
+  "regressions": [
+    "h-bear-plank"
+  ],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "练霹雳舞、地面舞步的转身控制，单手撑地转体，需要手腕能承重。",
+    "en": "Bear kick-through for rotational control on one hand; breaking and floorwork prep."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "obliques",
+          "core"
+        ],
+        "synergistMuscles": [
+          "deltoids",
+          "hip-flexors"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "obliques",
+          "abs"
+        ],
+        "secondaryMuscles": [
+          "deltoids",
+          "hip-flexors"
+        ],
+        "stabilizers": [
+          "serratus",
+          "triceps",
+          "quadriceps"
+        ]
+      },
+      "reason": "v3 粗粒度 id 按实际做法拆到 taxonomy id（core→abs/obliques，glutes→glute-max 或 hip-abductors，upper-back→scapular，lower-back→erectors），只稳定不推动的归稳定肌。"
+    },
+    {
+      "field": "laterality",
+      "existing": {
+        "unilateral": true,
+        "training.kind": "rep_alternate"
+      },
+      "chosen": "alternating",
+      "reason": "v3 unilateral=true 实为左右交替（rep_alternate），与单侧分开。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 2,
+      "chosen": 3,
+      "reason": "单手撑地 + 转体穿腿 + 节奏协调，属 3 级\"较快协调\"。"
+    }
+  ],
+  "reviewNotes": []
+}

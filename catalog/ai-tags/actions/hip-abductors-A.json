@@ -1,0 +1,142 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "hip-abductors-A",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/hip-abductors-A.json",
+    "textSha256Lf": "5caee1efef35e8bcd70202ff422d4ac78e57fc180eaf00fca37285c8303baab2",
+    "spec": "drill-anim/specs/hip-abductors-A-r2.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "isolation",
+    "anti-lateral-flexion"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "frontal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "hip-abductors"
+  ],
+  "secondaryMuscles": [
+    "obliques"
+  ],
+  "stabilizers": [
+    "abs",
+    "deltoids"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "abduction"
+      ]
+    },
+    {
+      "joint": "shoulder",
+      "actions": [
+        "isometric-hold"
+      ]
+    }
+  ],
+  "difficulty": 3,
+  "intensity": "moderate",
+  "prerequisites": [
+    "plank-30s"
+  ],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "moderate",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "modify"
+    }
+  ],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "performance"
+  ],
+  "alternatives": [],
+  "regressions": [
+    "hip-abductors-B",
+    "h-short-side-plank",
+    "w-clamshell"
+  ],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "前臂侧撑同时抬上腿，进阶练臀中肌和侧腹，需要肩能承重。",
+    "en": "Side plank with leg lift, an advanced glute med and oblique drill."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "muscles",
+      "existing": {
+        "activeMuscles": [
+          "abductors",
+          "glutes"
+        ],
+        "synergistMuscles": [
+          "obliques",
+          "core",
+          "deltoids"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "hip-abductors"
+        ],
+        "secondaryMuscles": [
+          "obliques"
+        ],
+        "stabilizers": [
+          "abs",
+          "deltoids"
+        ]
+      },
+      "reason": "v3 abductors/glutes 主练：抬腿是外展，全部归 hip-abductors，不加 glute-max。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 2,
+      "chosen": 3,
+      "reason": "直腿侧撑保持同时外展抬腿，按词表 3 级。"
+    }
+  ],
+  "reviewNotes": []
+}

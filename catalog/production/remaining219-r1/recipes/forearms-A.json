@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "forearms-A",
   "nameZh": "跪姿多方向腕部摇摆",
-  "spec": "drill-anim/specs/forearms-A-r2-gc1-ht2.js",
-  "specSha256Lf": "050eabb803a427df8371dcf9a8e2d5eb5df764d41920a70b4bcf2dfdff3c48b7",
+  "spec": "drill-anim/specs/forearms-A-r5.js",
+  "specSha256Lf": "35ffcc87a57101708b8d9149b6a8bfbc99a7f3206cc18ee9e5b493f387d2489d",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -93,7 +93,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/forearms-A-r2-gc1-ht2.js"
+    "selectedSpec": "drill-anim/specs/forearms-A-r5.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -118,5 +118,16 @@
         "why": "forearm twist: time-varying elbowTwist table, right hand target -85 -> -65 deg vs forearm (pose-fix r10 ht2, on gc spec)"
       }
     ]
+  },
+  "elbowTwistFix": {
+    "branch": "codex/elbow-twist-r1",
+    "date": "2026-11-09",
+    "from": "drill-anim/specs/forearms-A-r2-gc1-ht2.js",
+    "to": "drill-anim/specs/forearms-A-r5.js",
+    "supersedes": "drill-anim/specs/forearms-A-r4.js",
+    "why": "2026-11-09 二次修肘（用户看 r4 图：「肩膀好了，手肘这里又有问题了」，右肘窝收成细颈）：r4 把手在前/外/后/手背四个方向之间的整段转动（右侧约 210°）都留在前臂滚转上，跨肘扭转 左 93°/右 110°。依据四点跪撑腕部摇摆参考（Animal Flow L1 手册、Stretch Therapy 腕部指南、Fullphysio、EVO「肘窝外旋朝前」）：肘是铰链，手的方向变化由肩部旋转（整臂一起转）和沿前臂分布、腕端最大的旋前旋后承担。r5 在 r4 朝向（上臂外旋 45°、肘窝朝头）基础上：上臂按时变转动的 15%（左）/20%（右）以手指朝外为中心双向转动（右侧静态 -5°，让手指朝后段保持 r4 的肩部朝向），前臂滚转只保留 30%，其余交给手对前臂扭转由运行时沿前臂向腕部分摊；手在空中换方向时前臂滚转表滞后，加 7 段短余弦修正。手位置/手指方向/掌心不变。肘部最小截面比 左 0.77→0.87/右 0.66→0.89，跨肘扭转 左 93°→67°/右 110°→67°；肩部截面比 左 0.80→0.79/右 0.85→0.83，跨肩扭转 左 27°→30°/右 26°→48°（右手指朝前段肩部内旋约 -45°，截面仍 ≥0.87）；关节/手掌漂移 0 mm，求解警告不增（23=23，密集采样），接触代理 最大 144→132；手对前臂扭转 左 38°→64°/右 20°→56°；四个手指方向保持参考原样，无需改向",
+    "reviewed": false,
+    "qaStatus": "candidate-awaiting-gpu-and-user-review",
+    "elbowTwistFix": "r2"
   }
 }

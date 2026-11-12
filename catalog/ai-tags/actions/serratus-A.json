@@ -1,0 +1,155 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "serratus-A",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/serratus-A.json",
+    "textSha256Lf": "bdcfea7168bfb0eb0a308d0a648c998e68846c1a5c762feed58f35838ec7ee5c",
+    "spec": "drill-anim/specs/serratus-A-r2.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [],
+  "optionalEquipment": [
+    "mat"
+  ],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "push-horizontal"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "upper"
+  ],
+  "primaryMuscles": [
+    "serratus"
+  ],
+  "secondaryMuscles": [
+    "chest"
+  ],
+  "stabilizers": [
+    "abs",
+    "triceps",
+    "deltoids"
+  ],
+  "joints": [
+    {
+      "joint": "scapulothoracic",
+      "actions": [
+        "protraction",
+        "retraction"
+      ]
+    },
+    {
+      "joint": "shoulder",
+      "actions": [
+        "isometric-hold"
+      ]
+    },
+    {
+      "joint": "wrist",
+      "actions": [
+        "isometric-hold"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "moderate",
+  "prerequisites": [
+    "wrist-loading",
+    "plank-30s"
+  ],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "low",
+    "shoulder": "low",
+    "wrist": "moderate",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "floor-transfer"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup",
+    "main"
+  ],
+  "goals": [
+    "posture",
+    "strength",
+    "performance"
+  ],
+  "alternatives": [],
+  "regressions": [
+    "serratus-B"
+  ],
+  "progressions": [
+    "serratus-C"
+  ],
+  "aiSummary": {
+    "zh": "高位平板推地拱背练前锯肌，俯卧撑和撑类动作前热身。",
+    "en": "Plank push-away (scapular push-up) for serratus control."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "chest",
+          "core"
+        ],
+        "synergistMuscles": [
+          "deltoids",
+          "triceps"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "serratus"
+        ],
+        "secondaryMuscles": [
+          "chest"
+        ],
+        "stabilizers": [
+          "abs",
+          "triceps",
+          "deltoids"
+        ]
+      },
+      "reason": "推地拱背=肩胛前伸，主动肌是前锯肌，v3 写成 chest/core 有误；胸大肌协同、腹部稳定。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 2,
+      "reason": "需要保持高位平板全程，调到 2 级。"
+    }
+  ],
+  "reviewNotes": []
+}

@@ -1,0 +1,195 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "t-lsit-open-close",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/t-lsit-open-close.json",
+    "textSha256Lf": "2f5a795a728533e3b154e1756fcf91d37e26479439a1ef0ec7e14c2a161a9dde",
+    "spec": "drill-anim/specs/t-lsit-open-close-r6.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [
+    "parallettes"
+  ],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "frontal",
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "core",
+    "lower"
+  ],
+  "primaryMuscles": [
+    "hip-flexors",
+    "abs"
+  ],
+  "secondaryMuscles": [
+    "quadriceps",
+    "lats",
+    "adductors",
+    "hip-abductors"
+  ],
+  "stabilizers": [
+    "triceps",
+    "scapular",
+    "forearms"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "flexion",
+        "abduction",
+        "adduction"
+      ]
+    },
+    {
+      "joint": "scapulothoracic",
+      "actions": [
+        "depression"
+      ]
+    },
+    {
+      "joint": "elbow",
+      "actions": [
+        "isometric-hold"
+      ]
+    },
+    {
+      "joint": "wrist",
+      "actions": [
+        "isometric-hold"
+      ]
+    }
+  ],
+  "difficulty": 4,
+  "intensity": "moderate",
+  "prerequisites": [
+    "floor-transfer",
+    "wrist-loading"
+  ],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "low",
+    "wrist": "moderate",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "caution",
+      "reasons": [
+        "abdominal-pressure"
+      ]
+    },
+    {
+      "population": "postpartum",
+      "flag": "caution",
+      "reasons": [
+        "abdominal-pressure"
+      ]
+    },
+    {
+      "population": "hypertension",
+      "flag": "modify",
+      "reasons": [
+        "breath-holding-risk"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "performance",
+    "strength"
+  ],
+  "alternatives": [
+    "t-lsit-tuck"
+  ],
+  "regressions": [
+    "t-lsit-wide"
+  ],
+  "progressions": [
+    "t-lsit-vsit-circles"
+  ],
+  "aiSummary": {
+    "zh": "L 撑中双腿开合，练撑住时腿的控制，为托马斯全旋做准备。",
+    "en": "L-sit open-close for leg control while supporting; flare prep."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "hip-flexors",
+          "core"
+        ],
+        "synergistMuscles": [
+          "triceps",
+          "abductors",
+          "adductors"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "hip-flexors",
+          "abs"
+        ],
+        "secondaryMuscles": [
+          "quadriceps",
+          "lats",
+          "adductors",
+          "hip-abductors"
+        ],
+        "stabilizers": [
+          "triceps",
+          "scapular",
+          "forearms"
+        ]
+      },
+      "reason": "L 撑类：髋屈肌和腹直肌主动发力把腿抬住；手臂伸直、肩下压只是撑住，三头肌/斜方肌下部归稳定，背阔肌下压归协同；v3 core→abs。"
+    },
+    {
+      "field": "floorRequired",
+      "existing": {
+        "position": "seated"
+      },
+      "chosen": true,
+      "reason": "坐在地上做（不是坐椅子），需要着地，不进办公室。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 3,
+      "chosen": 4,
+      "reason": "词表把 L 坐保持列为 4 级（较高相对力量/技巧），v3 只到 3 级，上调。"
+    }
+  ],
+  "reviewNotes": []
+}

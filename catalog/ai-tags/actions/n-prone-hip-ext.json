@@ -1,0 +1,154 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "n-prone-hip-ext",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/n-prone-hip-ext.json",
+    "textSha256Lf": "3f7d4c04e388719dc3fc1d15abf125092ce10e14da90e67a2303320415cf9604",
+    "spec": "drill-anim/specs/n-prone-hip-ext.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "isolation"
+  ],
+  "contraction": [
+    "dynamic",
+    "isometric"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "glute-max"
+  ],
+  "secondaryMuscles": [
+    "hamstrings"
+  ],
+  "stabilizers": [
+    "erectors",
+    "abs"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "extension"
+      ]
+    },
+    {
+      "joint": "knee",
+      "actions": [
+        "isometric-hold"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [
+    "floor-transfer"
+  ],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "low",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "floor-transfer"
+      ]
+    },
+    {
+      "population": "pregnancy",
+      "flag": "caution",
+      "reasons": [
+        "prone-position"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup",
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "posture",
+    "performance"
+  ],
+  "alternatives": [
+    "h-donkey-kick"
+  ],
+  "regressions": [],
+  "progressions": [
+    "glute-max-B",
+    "glute-max-A"
+  ],
+  "aiSummary": {
+    "zh": "久坐、臀部不会发力时的入门臀部激活，也给劈叉后腿做准备，需要趴在垫子上。",
+    "en": "Prone bent-knee hip extension to wake up the glutes; also preps the back leg for splits."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "glutes",
+          "hamstrings"
+        ],
+        "synergistMuscles": [
+          "lower-back"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "glute-max"
+        ],
+        "secondaryMuscles": [
+          "hamstrings"
+        ],
+        "stabilizers": [
+          "erectors",
+          "abs"
+        ]
+      },
+      "reason": "屈膝 90° 让腘绳肌处于缩短位，伸髋主要靠臀大肌；v3 的 hamstrings 降为协同，lower-back 只稳定。"
+    }
+  ],
+  "reviewNotes": []
+}

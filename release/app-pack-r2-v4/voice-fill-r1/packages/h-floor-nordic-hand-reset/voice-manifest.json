@@ -1,0 +1,317 @@
+{
+  "format": "pose-hub-voice@3",
+  "actionId": "h-floor-nordic-hand-reset",
+  "definitionSha256": "96bef3bdbfdd4da6c5325e67d58b593f2912bb852fe66091bab2cd88ac69b680",
+  "standard": {
+    "lufsTarget": -16,
+    "lufsTolerance": 1,
+    "truePeakMaxDbtp": -1,
+    "codec": "aac",
+    "sampleRate": 44100,
+    "channels": 1,
+    "bitrateKbps": 64,
+    "process": "hiplab v4.1"
+  },
+  "voiceProfile": {
+    "zh": {
+      "voice": "zh-CN-XiaoxiaoNeural",
+      "rate": "+6%"
+    },
+    "en": {
+      "voice": "en-US-JennyNeural",
+      "rate": "+4%"
+    }
+  },
+  "common": "voice/common/manifest.json",
+  "contentReview": "passed",
+  "manualListening": "pending",
+  "cuePoints": {
+    "start": 1.733,
+    "peak": 4.0,
+    "end": 5.767,
+    "method": "masters highlight pulse (25 % rise / plateau reached / 50 % fall) — computed from spec pulse track (spec_pulse.mjs), masters not on this machine",
+    "sampled": false
+  },
+  "lines": {
+    "zh": {
+      "name": {
+        "text": "跪姿北欧挺（手撑推回）",
+        "ref": {
+          "path": "packages/h-floor-nordic-hand-reset/voice/zh/name.m4a",
+          "sha256": "70b07d84c4b6057a544aa8c0c7ae5f41de6f35e3bce099aa25434fbdf66c651b",
+          "bytes": 18337,
+          "durationSeconds": 2.089796
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "0a46b358ac1d01b0dec8e4111440b5f8ff94e3282989112a92a5dd7ed6504d89",
+          "ttsFingerprint": "6699b84a334669bb52b4e19124f0b3343aa6153fb74643d742d410fcee9bbce8"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.0,
+          "truePeak": -2.2,
+          "leadMs": 40,
+          "tailMs": 80
+        },
+        "role": "intro"
+      },
+      "primaryCue": {
+        "text": "跪姿固定脚跟，身体一条直线慢慢往前倒",
+        "ref": {
+          "path": "packages/h-floor-nordic-hand-reset/voice/zh/primaryCue.m4a",
+          "sha256": "82258a97c5b0d7b3275a1a217836ef70a3631b5f845679985743d4bb47b940c6",
+          "bytes": 30686,
+          "durationSeconds": 3.622313
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "942370d3433bee9d4ca8753f187f3fabe329c0b5e1ec615cbc621c6ca2ed3a9b",
+          "ttsFingerprint": "2f00d7f74d4bff483881d124d1a3c5713529aecefa9244e746c25459338038de"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.2,
+          "leadMs": 40,
+          "tailMs": 92
+        },
+        "role": "intro"
+      },
+      "phase.start": {
+        "text": "慢慢前倒",
+        "ref": {
+          "path": "packages/h-floor-nordic-hand-reset/voice/zh/phase.start.m4a",
+          "sha256": "a441dc656a33375da9b1478f941a7464eb58a4a6c7844dca3a6ae8f11145885c",
+          "bytes": 8973,
+          "durationSeconds": 0.952018
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "fae7d93deb54dd3a1129e0c542fd2311ca5c7c83032c93ca5880fc66fcf57d9d",
+          "ttsFingerprint": "3c2513e2bfe57a21dabe1dffa2c99b89c51c8dbc61755e81f173d9982eb1bb3d"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -3.4,
+          "leadMs": 40,
+          "tailMs": 82
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 1.733,
+          "gapSeconds": 2.267,
+          "fit": "fits"
+        }
+      },
+      "phase.peak": {
+        "text": "双手撑地",
+        "ref": {
+          "path": "packages/h-floor-nordic-hand-reset/voice/zh/phase.peak.m4a",
+          "sha256": "76798bf0a79dca25dd0c1abfa515d7463680b7f40d910f4c0dc338bc5d664892",
+          "bytes": 9547,
+          "durationSeconds": 1.021678
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "385e45af847400eeb1024c499cf7a4a4248abfd0c9fbe7cd571cf87950512d3a",
+          "ttsFingerprint": "0669ec8bef441ec0d783fd4a210131e8e46ab44e7058b9cabe11c39b702a9ab3"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.4,
+          "leadMs": 40,
+          "tailMs": 72
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 4.0,
+          "gapSeconds": 1.767,
+          "fit": "fits"
+        }
+      },
+      "phase.end": {
+        "text": "推回跪直",
+        "ref": {
+          "path": "packages/h-floor-nordic-hand-reset/voice/zh/phase.end.m4a",
+          "sha256": "e599f69769dc3b5555150ed633ccfdd44bdea840b1cbca873bbb36ca51da4458",
+          "bytes": 9576,
+          "durationSeconds": 1.021678
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "d81d999d0453a38b590d6d3b23487661f52bf7fd6b2173a05c68afe5c39be1ed",
+          "ttsFingerprint": "5bdb6d2937c6cd54df3e45c943c3de5f58c92b488cf1fcb271b1d636492a05ba"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.5,
+          "leadMs": 40,
+          "tailMs": 82
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 5.767,
+          "gapSeconds": 2.233,
+          "fit": "fits"
+        }
+      }
+    },
+    "en": {
+      "name": {
+        "text": "Kneeling Nordic Curl with Hand Push-Back",
+        "ref": {
+          "path": "packages/h-floor-nordic-hand-reset/voice/en/name.m4a",
+          "sha256": "9f53aefcaf15f6a77b988eb5e18231443641abe2a6a4a33abf9c786912424e35",
+          "bytes": 17740,
+          "durationSeconds": 2.020136
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "8a624d886f4cf22d699b635419b4c741218b7422f2a9a8170ccc36e7e0c105ea",
+          "ttsFingerprint": "9f10ed0f96aca10652b586e6cbf792e09925aca391b39a8901684388eb9a4d2e"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.3,
+          "leadMs": 40,
+          "tailMs": 70
+        },
+        "role": "intro"
+      },
+      "primaryCue": {
+        "text": "Kneel with heels anchored and fall forward slowly in one line",
+        "ref": {
+          "path": "packages/h-floor-nordic-hand-reset/voice/en/primaryCue.m4a",
+          "sha256": "ec25fada830adb86b287a933c565621e47de1b10b728e030de47cee30cd41f33",
+          "bytes": 26703,
+          "durationSeconds": 3.111474
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "f827883c76af907ff48f4ad12a2c48be49c4266c17f547737a2ae154a2e95cc3",
+          "ttsFingerprint": "7f24511d542eeb9b101e099b2e58c9d5d91f9231a0b7e89f4e9aa1d0f61c3160"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -1.7,
+          "leadMs": 30,
+          "tailMs": 91
+        },
+        "role": "intro"
+      },
+      "phase.start": {
+        "text": "Lower slowly",
+        "ref": {
+          "path": "packages/h-floor-nordic-hand-reset/voice/en/phase.start.m4a",
+          "sha256": "9ac009cf33b2d72680e02f1b536915ace92c674fa8744c3fb74b5e1fbeb15e51",
+          "bytes": 8942,
+          "durationSeconds": 0.952018
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "0f42a3bea92f935d6e4eb79c0031e54c38b89060a8cbcb45e01851c6218c7e4a",
+          "ttsFingerprint": "b015637bbbc212f3f78e6ffd6c2be0b5eadcc55f5edfe2a06c231b32d8175fd8"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.5,
+          "leadMs": 30,
+          "tailMs": 92
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 1.733,
+          "gapSeconds": 2.267,
+          "fit": "fits"
+        }
+      },
+      "phase.peak": {
+        "text": "Catch with hands",
+        "ref": {
+          "path": "packages/h-floor-nordic-hand-reset/voice/en/phase.peak.m4a",
+          "sha256": "8ec5208e6f41e28450892bd4b0797939b8c403f46c9be710d0161a727736d688",
+          "bytes": 9524,
+          "durationSeconds": 1.021678
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "57f0efd8815825a37568abc9b5d843f42ddf007e14978ef164edfaa684fc514d",
+          "ttsFingerprint": "377dced2d947b1b5ea2ca3c8d5ab595dae6eb4f95d7e6711ceaf3affcee82180"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -1.8,
+          "leadMs": 30,
+          "tailMs": 62
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 4.0,
+          "gapSeconds": 1.767,
+          "fit": "fits"
+        }
+      },
+      "phase.end": {
+        "text": "Push back up",
+        "ref": {
+          "path": "packages/h-floor-nordic-hand-reset/voice/en/phase.end.m4a",
+          "sha256": "75730fdb4ad2d1b5e513e3cf28a766b614bc1e8774b354be6afd76d7effdc9ca",
+          "bytes": 8189,
+          "durationSeconds": 0.882358
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "d3d368ab507ef5c6fdefe53c9b7bfe23eee177e3fc0eaa7628cf13f381e5aa24",
+          "ttsFingerprint": "3ed776571253f31e8d7b7ffb8a453116f059911ccbcb71f642509e18374c613b"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.2,
+          "leadMs": 30,
+          "tailMs": 82
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 5.767,
+          "gapSeconds": 2.233,
+          "fit": "fits"
+        }
+      }
+    }
+  },
+  "summary": {
+    "clips": 10,
+    "auditFailed": [],
+    "scheduleEarly": []
+  },
+  "status": "technical-passed"
+}

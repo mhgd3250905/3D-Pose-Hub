@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "erectors-A",
   "nameZh": "反向平板（后撑抬髋）",
-  "spec": "drill-anim/specs/erectors-A-et1.js",
-  "specSha256Lf": "16fe6d57cb4a4172d26a4da6c5915def5ef4b0b70bfc8a799b71af1e83f9f73d",
+  "spec": "drill-anim/specs/erectors-A-r3.js",
+  "specSha256Lf": "c15e5ef087b6841417a44095c8db614f0a9fef74f6545ca4e4aa7d8a70d18804",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -93,7 +93,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/erectors-A-et1.js"
+    "selectedSpec": "drill-anim/specs/erectors-A-r3.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -109,5 +109,14 @@
         "why": "forearm twist: constant elbowTwist split (pose-fix r2 et)"
       }
     ]
+  },
+  "poseFix1108": {
+    "branch": "codex/pose-fix-1108-r1",
+    "date": "2026-11-08",
+    "from": "drill-anim/specs/erectors-A-et1.js",
+    "to": "drill-anim/specs/erectors-A-r3.js",
+    "why": "2026-11-08 用户复审：两侧肘部仍拧成糖纸状（r2 把手部滚转全放在 elbowTwist ±180，肘部跨关节扭转 172–180°） -> 改在肩部转上臂 upperArmTwist ±105（肘窝朝脚、略向内），elbowTwist ±75 跟随，肘保持纯铰链；肘部最小截面宽 L 28.4/R 30.5 mm（静止位 0.36/0.38）→ L 76.3/R 77.2 mm（0.96/0.96），跨肘扭转 ~175°→31–36°；手掌/肘位置不变，0 新增求解警告，无地面/自穿模",
+    "reviewed": false,
+    "qaStatus": "candidate-awaiting-gpu-and-user-review"
   }
 }

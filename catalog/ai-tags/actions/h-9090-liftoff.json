@@ -1,0 +1,163 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-9090-liftoff",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-9090-liftoff.json",
+    "textSha256Lf": "05f7a28e753a44874197af3f74ccbac9fb61c5bb6a4df2fd17f1ffce20e65928",
+    "spec": "drill-anim/specs/h-9090-liftoff-r3.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [
+    {
+      "for": "mat",
+      "use": [
+        "towel"
+      ],
+      "loadNote": "similar"
+    }
+  ],
+  "trainingType": [
+    "mobility",
+    "strength"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "dynamic",
+    "isometric"
+  ],
+  "plane": [
+    "transverse"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "hip-rotators",
+    "hip-abductors"
+  ],
+  "secondaryMuscles": [
+    "hip-flexors"
+  ],
+  "stabilizers": [
+    "abs",
+    "erectors"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "internal-rotation"
+      ]
+    }
+  ],
+  "difficulty": 3,
+  "intensity": "low",
+  "prerequisites": [
+    "floor-transfer"
+  ],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "low",
+    "lumbar": "none",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "moderate"
+  },
+  "populationNotes": [
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "floor-transfer"
+      ]
+    },
+    {
+      "population": "beginner",
+      "flag": "modify",
+      "reasons": [
+        "end-range-stretch"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup",
+    "main"
+  ],
+  "goals": [
+    "mobility",
+    "performance"
+  ],
+  "alternatives": [],
+  "regressions": [
+    "s-9090",
+    "n-seated-ir-drop",
+    "h-band-hip-ir"
+  ],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "练髋内旋末端主动控制，适合已能舒服坐90/90的人。",
+    "en": "Active end-range hip internal-rotation lift-off for people already comfortable in 90/90."
+  },
+  "confidence": "medium",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "abductors",
+          "glutes"
+        ],
+        "synergistMuscles": [
+          "hip-flexors",
+          "core"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "hip-rotators",
+          "hip-abductors"
+        ],
+        "secondaryMuscles": [
+          "hip-flexors"
+        ],
+        "stabilizers": [
+          "abs",
+          "erectors"
+        ]
+      },
+      "reason": "v3 粗粒度肌群（abductors/glutes）按动作实际做法拆到细分 id。抬后腿小腿是髋内旋，主动肌为深层旋转肌和臀中小肌前部。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 2,
+      "chosen": 3,
+      "reason": "末端主动抬起，多数人只能抬起很小幅度，定中级 3。"
+    },
+    {
+      "field": "floorRequired",
+      "existing": {
+        "position": "seated"
+      },
+      "chosen": true,
+      "reason": "坐在地上做，按词表 seated 也算着地。"
+    }
+  ],
+  "reviewNotes": []
+}

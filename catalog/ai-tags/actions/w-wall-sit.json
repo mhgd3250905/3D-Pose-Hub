@@ -1,0 +1,159 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "w-wall-sit",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/w-wall-sit.json",
+    "textSha256Lf": "89f7baf04c2c0bebbbda0bc8d4ccf9b314ff2ed45c908a7bd6a7d02a219dccf4",
+    "spec": "drill-anim/specs/w-wall-sit.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "office",
+    "gym",
+    "outdoor",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [
+    "wall"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "squat"
+  ],
+  "contraction": [
+    "isometric"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "quadriceps",
+    "glute-max"
+  ],
+  "secondaryMuscles": [
+    "adductors"
+  ],
+  "stabilizers": [
+    "abs"
+  ],
+  "joints": [
+    {
+      "joint": "knee",
+      "actions": [
+        "isometric-hold"
+      ]
+    },
+    {
+      "joint": "hip",
+      "actions": [
+        "isometric-hold"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "moderate",
+  "prerequisites": [],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "moderate",
+    "lumbar": "none",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "hypertension",
+      "flag": "modify",
+      "reasons": [
+        "breath-holding-risk"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength"
+  ],
+  "alternatives": [
+    "h-squat"
+  ],
+  "regressions": [
+    "o-supported-mini-squat"
+  ],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "靠墙静蹲练大腿耐力，任何有墙的地方都能做，不出声。",
+    "en": "Wall sit for quad endurance anywhere with a wall."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "quadriceps",
+          "glutes"
+        ],
+        "synergistMuscles": [
+          "core",
+          "adductors"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "quadriceps",
+          "glute-max"
+        ],
+        "secondaryMuscles": [
+          "adductors"
+        ],
+        "stabilizers": [
+          "abs"
+        ]
+      },
+      "reason": "v3 粗粒度 id 按实际做法拆到 taxonomy id（core→abs/obliques，glutes→glute-max 或 hip-abductors，upper-back→scapular，lower-back→erectors），只稳定不推动的归稳定肌。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 2,
+      "reason": "大腿平行静蹲 30 秒×3 需要较好股四头肌耐力，调到 2 级。"
+    },
+    {
+      "field": "space/floorRequired",
+      "existing": {
+        "position": "other"
+      },
+      "chosen": {
+        "floorRequired": false
+      },
+      "reason": "背靠墙脚踩地，不着地。"
+    }
+  ],
+  "reviewNotes": []
+}

@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "glute-max-C",
   "nameZh": "反向背伸机",
-  "spec": "drill-anim/specs/glute-max-C-et1.js",
-  "specSha256Lf": "b833d22dc83875726d7929c9062b2185d21d6f6790a7421f5a197b5e3bb7b22d",
+  "spec": "drill-anim/specs/glute-max-C-r3.js",
+  "specSha256Lf": "0713fc5aac6df63adbcd3464350bb3941f2a89c33478874f98e77b92cad20977",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -76,7 +76,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/glute-max-C-et1.js"
+    "selectedSpec": "drill-anim/specs/glute-max-C-r3.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -92,5 +92,25 @@
         "why": "pose-fix r9: fixed hand-vs-forearm twist 90-120 deg -> constant forearm roll {\"left\": -50, \"right\": 50}"
       }
     ]
+  },
+  "poseFix1108": {
+    "branch": "codex/pose-fix-1108-r1",
+    "date": "2026-11-08",
+    "from": "drill-anim/specs/glute-max-C-et1.js",
+    "to": "drill-anim/specs/glute-max-C-r2.js",
+    "why": "2026-11-08 用户审核：腿摆动时膝盖反向折叠（反人类角度）-> 按 v3 实测腿长重写踝弧线 + 膝盖 pole 随大腿前侧旋转，全程软膝 ~172°；把手前移 25 mm 消除手腕够不到；配重片移到左腿外侧",
+    "reviewed": false,
+    "qaStatus": "candidate-awaiting-gpu-and-user-review"
+  },
+  "elbowTwistFix": {
+    "boundaryDecision": "2026-11-10 用户 08:53 看图同意采用 r3（边界决定，密集 81 帧 r2→r3）：肘截面 .79→1.00/.99，foreTot 112→22；R5 .37/.35→.32/.30（超 −0.03 判据），翻面 341/320→365/288。R5 降幅与翻面增幅列为 GPU 渲染重点观察项；仍为 reviewed=false，等待本机 GPU 渲染与用户最终验收",
+    "branch": "codex/elbow-twist-r1",
+    "date": "2026-11-08",
+    "from": "drill-anim/specs/glute-max-C-r2.js",
+    "to": "drill-anim/specs/glute-max-C-r3.js",
+    "why": "2026-11-08 全局肘部扫描：前臂相对未转动的上臂滚转，肘部皮肤拧成糖纸状 -> 改在肩部转上臂（左 upperArmTwist -90、elbowTwist +0（肘窝朝内偏前，上臂轴向总旋 -90°）；右 upperArmTwist +90、elbowTwist +0（肘窝朝内偏前，上臂轴向总旋 90°）），肘保持近纯铰链；肘部最小截面比 左 0.79→1.00/右 0.79→0.99，跨肘扭转 左 89°→1°/右 89°→1°；关节位置漂移 ≤0.0 mm，求解警告不增，地面/贴身接触代理指标不变差",
+    "reviewed": false,
+    "qaStatus": "candidate-awaiting-gpu-and-user-review",
+    "elbowTwistFix": "r1"
   }
 }

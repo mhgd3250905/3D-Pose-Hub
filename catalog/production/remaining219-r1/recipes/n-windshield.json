@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "n-windshield",
   "nameZh": "仰卧雨刷式",
-  "spec": "drill-anim/specs/n-windshield-r2-et1.js",
-  "specSha256Lf": "f796f3acc196660c588a36d226c75145de7d629e74d63b669a6e27b03510d136",
+  "spec": "drill-anim/specs/n-windshield-r4.js",
+  "specSha256Lf": "cc8db8e12c791f81bd3c0e4b1640c71f05f0e1c48856eaea7dd65e22dea3d2a7",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -92,7 +92,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/n-windshield-r2-et1.js"
+    "selectedSpec": "drill-anim/specs/n-windshield-r4.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -108,5 +108,16 @@
         "why": "pose-fix r9: fixed hand-vs-forearm twist 90-120 deg -> constant forearm roll {\"left\": 60, \"right\": -60}"
       }
     ]
+  },
+  "elbowTwistFix": {
+    "branch": "codex/elbow-twist-r1",
+    "date": "2026-11-09",
+    "from": "drill-anim/specs/n-windshield-r2-et1.js",
+    "to": "drill-anim/specs/n-windshield-r4.js",
+    "supersedes": "drill-anim/specs/n-windshield-r3.js",
+    "why": "2026-11-09 先定朝向、后调扭转重做：上臂不动（r1 把上臂转 ±45°，肩部截面 1.09→1.03、R5 0.96→0.89、跨肩扭转 7°→42°），仅前臂滚转 elbowTwist 左 -45/右 +45。肘部最小截面比 左 0.84→0.87/右 0.85→0.87，跨肘扭转 91°→69°；肩部截面 左 1.09/右 1.12 不变，R5 0.96 不变，翻面 左 39→1/右 29→0，跨肩扭转 7° 不变；关节/手掌漂移 0 mm，求解警告不增（密集 81 帧），近身计数不增；手对前臂扭转 29°→51°；配方指向 n-windshield-r4，supersedes n-windshield-r3，elbowTwistFix=r2，reviewed=false",
+    "reviewed": false,
+    "qaStatus": "candidate-awaiting-gpu-and-user-review",
+    "elbowTwistFix": "r2"
   }
 }

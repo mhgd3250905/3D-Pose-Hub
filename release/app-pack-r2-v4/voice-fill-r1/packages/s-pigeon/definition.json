@@ -1,0 +1,159 @@
+{
+  "format": "pose-hub-action-definition@3",
+  "id": "s-pigeon",
+  "text": {
+    "path": "catalog/production/v3-text/s-pigeon.json",
+    "sha256": "122f4508b250c9ab48eeee545083dc58fce5090197ed52f64d76d019121114b2",
+    "reviewStatus": "ai-reviewed-r2-needs-user-review"
+  },
+  "recipe": {
+    "path": "catalog/production/remaining219-r1/recipes/s-pigeon.json",
+    "sha256": "441197693e679d0d60ea047e884fd419ef0d3236e139d948aacf00aef38fa379",
+    "spec": "drill-anim/specs/s-pigeon-gc2-et1.js",
+    "specSha256Lf": "f374ded4cfe9cfd20b00a0652380768a20d0148f25e3be48ef02789942630e39"
+  },
+  "productionModel": {
+    "format": "pose-hub-production-model",
+    "formatVersion": 1,
+    "modelProfile": "training-human-v3-armfix",
+    "modelVersion": "0.1.0-r2",
+    "id": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "definition": {
+    "name": {
+      "zh": "鸽子式",
+      "en": "Pigeon Stretch"
+    },
+    "purpose": {
+      "zh": "拉伸前腿的臀部和后腿的髋前侧",
+      "en": "Stretch the glute of your front leg and the front of your back hip."
+    },
+    "cues": [
+      {
+        "id": "cue1",
+        "primary": true,
+        "text": {
+          "zh": "前腿小腿横在身前，后腿往后伸直",
+          "en": "Bring your front shin across and stretch the back leg behind you"
+        }
+      },
+      {
+        "id": "cue2",
+        "primary": false,
+        "text": {
+          "zh": "双手扶砖，骨盆尽量摆正，别硬往下压。",
+          "en": "Hands on the blocks, hips as square as you can, do not force them down."
+        }
+      },
+      {
+        "id": "cue3",
+        "primary": false,
+        "text": {
+          "zh": "保持不动，慢慢呼吸，每次呼气再放松一点。",
+          "en": "Stay still, breathe slowly, and relax a little deeper each time you breathe out."
+        }
+      },
+      {
+        "id": "cue4",
+        "primary": false,
+        "text": {
+          "zh": "别来回颠，有拉伸感就够，别拉到疼。",
+          "en": "Do not bounce; a clear stretch is enough, never pain."
+        }
+      }
+    ],
+    "commonErrors": [
+      {
+        "zh": "骨盆歪向一边",
+        "en": "Letting your hips tilt to one side."
+      },
+      {
+        "zh": "硬压前腿膝盖",
+        "en": "Forcing the front knee down."
+      },
+      {
+        "zh": "憋气或来回颠",
+        "en": "Holding your breath or bouncing."
+      }
+    ],
+    "tags": {
+      "category": "stretch",
+      "activeMuscles": [
+        "glutes",
+        "hip-flexors"
+      ],
+      "synergistMuscles": [
+        "abductors"
+      ],
+      "equipment": [
+        "yoga-blocks",
+        "mat"
+      ],
+      "position": "other",
+      "difficulty": 2
+    },
+    "unilateral": true,
+    "defaultDose": {
+      "mode": "time",
+      "sets": 2,
+      "seconds": 45,
+      "restSeconds": 15
+    },
+    "cautions": [
+      {
+        "zh": "膝盖疼时垫高臀部，或换成仰卧4字拉伸",
+        "en": "If your knee hurts, prop your hips higher or switch to the lying figure-4 stretch."
+      }
+    ],
+    "startingSide": "right",
+    "training": {
+      "kind": "hold",
+      "leadSeconds": 1,
+      "perSide": "each-side-separately",
+      "source": "user-decision static-hold r2"
+    }
+  },
+  "voiceScript": {
+    "name": {
+      "zh": "鸽子式",
+      "en": "Pigeon Stretch"
+    },
+    "primaryCue": {
+      "zh": "前腿小腿横在身前，后腿往后伸直",
+      "en": "Bring your front shin across and stretch the back leg behind you"
+    },
+    "phase.start": {
+      "zh": "慢慢沉下",
+      "en": "Settle in"
+    },
+    "phase.peak": {
+      "zh": "保持，慢慢呼气",
+      "en": "Hold and breathe out"
+    },
+    "phase.end": {
+      "zh": "呼气微微前倾",
+      "en": "Breathe out, lean in"
+    }
+  },
+  "rhythm": {
+    "durationSeconds": 8,
+    "fps": 30,
+    "cuePoints": {
+      "start": 1.133,
+      "peak": 3.8,
+      "end": 6.233,
+      "method": "masters highlight pulse (25 % rise / plateau reached / 50 % fall) — computed from spec pulse track (spec_pulse.mjs), masters not on this machine",
+      "sampled": false
+    },
+    "binding": {
+      "phase.start": "start",
+      "phase.peak": "peak",
+      "phase.end": "end"
+    },
+    "playback": "name + primaryCue before the set; phase lines at their cue points every rep, scheduled to END by the next cue point (skip a line that cannot fit, never cut or overlap)"
+  },
+  "review": {
+    "editorial": "passed"
+  }
+}

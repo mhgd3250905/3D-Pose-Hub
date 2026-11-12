@@ -1,0 +1,168 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "lats-A",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/lats-A.json",
+    "textSha256Lf": "f88c8804ae7f50002d8ab6101d4bcb6da178990ee4a071408690075400e3ef61",
+    "spec": "drill-anim/specs/lats-A-wb.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [],
+  "optionalEquipment": [
+    "mat"
+  ],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "isolation"
+  ],
+  "contraction": [
+    "dynamic",
+    "isometric"
+  ],
+  "plane": [
+    "frontal"
+  ],
+  "bodyRegion": [
+    "upper"
+  ],
+  "primaryMuscles": [
+    "lats"
+  ],
+  "secondaryMuscles": [
+    "scapular"
+  ],
+  "stabilizers": [
+    "triceps",
+    "abs",
+    "forearms"
+  ],
+  "joints": [
+    {
+      "joint": "scapulothoracic",
+      "actions": [
+        "depression",
+        "elevation"
+      ]
+    },
+    {
+      "joint": "elbow",
+      "actions": [
+        "isometric-hold"
+      ]
+    },
+    {
+      "joint": "wrist",
+      "actions": [
+        "isometric-hold"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "moderate",
+  "prerequisites": [
+    "floor-transfer",
+    "wrist-loading"
+  ],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "low",
+    "wrist": "moderate",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "floor-transfer"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup",
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "performance",
+    "posture"
+  ],
+  "alternatives": [],
+  "regressions": [
+    "lats-B"
+  ],
+  "progressions": [
+    "lats-C",
+    "scapular-B"
+  ],
+  "aiSummary": {
+    "zh": "没有器械时练背阔肌下压肩带，也是 L 撑、托马斯类撑地动作的基础。",
+    "en": "No-equipment lat depression drill; foundation for L-sit and floor support skills."
+  },
+  "confidence": "medium",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "lats"
+        ],
+        "synergistMuscles": [
+          "triceps",
+          "core"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "lats"
+        ],
+        "secondaryMuscles": [
+          "scapular"
+        ],
+        "stabilizers": [
+          "triceps",
+          "abs",
+          "forearms"
+        ]
+      },
+      "reason": "v3 synergist triceps 只锁住肘不推动，归稳定肌；肩胛下沉主要靠背阔肌和斜方肌下部，补 scapular 为协同。"
+    },
+    {
+      "field": "floorRequired",
+      "existing": {
+        "position": "seated"
+      },
+      "chosen": true,
+      "reason": "坐在地上做（不是坐椅子），需要着地，不进办公室。"
+    }
+  ],
+  "reviewNotes": [
+    "movementPattern 留空：肩胛下沉不属于 14 个模式，也可以考虑归 pull-vertical，待复核（low）。",
+    "mat 写可选：手撑硬地面更稳，坐垫子即可。"
+  ]
+}

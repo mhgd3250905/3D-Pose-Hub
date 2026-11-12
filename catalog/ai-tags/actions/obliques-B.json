@@ -1,0 +1,175 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "obliques-B",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/obliques-B.json",
+    "textSha256Lf": "ff1ff6247adb8f6887446da2afabb9cc97e06e389e7101308aced8f5e738baa8",
+    "spec": "drill-anim/specs/obliques-B-r2.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [
+    "band"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "stability-control"
+  ],
+  "movementPattern": [
+    "anti-rotation"
+  ],
+  "contraction": [
+    "dynamic",
+    "isometric"
+  ],
+  "plane": [
+    "transverse"
+  ],
+  "bodyRegion": [
+    "core"
+  ],
+  "primaryMuscles": [
+    "obliques",
+    "abs"
+  ],
+  "secondaryMuscles": [
+    "deltoids",
+    "chest"
+  ],
+  "stabilizers": [
+    "glute-max",
+    "hip-abductors"
+  ],
+  "joints": [
+    {
+      "joint": "shoulder",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    },
+    {
+      "joint": "elbow",
+      "actions": [
+        "extension",
+        "flexion"
+      ]
+    },
+    {
+      "joint": "lumbar-spine",
+      "actions": [
+        "isometric-hold"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "moderate",
+  "prerequisites": [
+    "band-anchor"
+  ],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "low",
+    "shoulder": "low",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    },
+    {
+      "population": "hypertension",
+      "flag": "modify",
+      "reasons": [
+        "breath-holding-risk"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main",
+    "warmup"
+  ],
+  "goals": [
+    "strength",
+    "posture",
+    "performance"
+  ],
+  "alternatives": [
+    "h-band-pallof"
+  ],
+  "regressions": [],
+  "progressions": [
+    "h-band-stepout",
+    "obliques-C"
+  ],
+  "aiSummary": {
+    "zh": "用弹力带练腰腹抗旋转，护腰、改善核心稳定的入门首选。",
+    "en": "Banded Pallof press for anti-rotation core strength."
+  },
+  "confidence": "medium",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "obliques",
+          "core"
+        ],
+        "synergistMuscles": [
+          "deltoids",
+          "chest"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "obliques",
+          "abs"
+        ],
+        "secondaryMuscles": [
+          "deltoids",
+          "chest"
+        ],
+        "stabilizers": [
+          "glute-max",
+          "hip-abductors"
+        ]
+      },
+      "reason": "v3 粗粒度 id 按实际做法拆到 taxonomy id（core→abs/obliques，glutes→glute-max 或 hip-abductors，upper-back→scapular，lower-back→erectors），只稳定不推动的归稳定肌。"
+    },
+    {
+      "field": "requiredEquipment/optionalEquipment",
+      "existing": [
+        "resistance-band"
+      ],
+      "chosen": {
+        "requiredEquipment": [
+          "band"
+        ],
+        "optionalEquipment": []
+      },
+      "reason": "同义写法归一到词表 id，并按实际做法区分必需与可选。"
+    }
+  ],
+  "reviewNotes": [
+    "与 h-band-pallof（弹力带抗旋转推）同名同做法，疑似重复动作，需用户裁定是否合并。"
+  ]
+}

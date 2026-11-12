@@ -1,0 +1,157 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "triceps-B",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/triceps-B.json",
+    "textSha256Lf": "6ada766e39b26117a6cb50c61c54860f05ea8dd58c8433ce91fe369ad96071b7",
+    "spec": "drill-anim/specs/triceps-B-r2.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "gym"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "parallettes"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "isometric"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "upper"
+  ],
+  "primaryMuscles": [
+    "triceps"
+  ],
+  "secondaryMuscles": [
+    "chest",
+    "lats"
+  ],
+  "stabilizers": [
+    "deltoids",
+    "abs",
+    "scapular",
+    "forearms",
+    "hip-flexors"
+  ],
+  "joints": [
+    {
+      "joint": "elbow",
+      "actions": [
+        "isometric-hold"
+      ]
+    },
+    {
+      "joint": "scapulothoracic",
+      "actions": [
+        "depression"
+      ]
+    },
+    {
+      "joint": "shoulder",
+      "actions": [
+        "isometric-hold"
+      ]
+    },
+    {
+      "joint": "wrist",
+      "actions": [
+        "isometric-hold"
+      ]
+    }
+  ],
+  "difficulty": 3,
+  "intensity": "moderate",
+  "prerequisites": [
+    "wrist-loading"
+  ],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "low",
+    "shoulder": "low",
+    "wrist": "low",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "performance"
+  ],
+  "alternatives": [
+    "lats-C"
+  ],
+  "regressions": [
+    "h-chair-dip"
+  ],
+  "progressions": [
+    "triceps-C",
+    "t-straddle-hold"
+  ],
+  "aiSummary": {
+    "zh": "平行杆直臂撑起全身，练锁肘和撑体力量，双杠臂屈伸和L撑的前置。",
+    "en": "Parallette support hold; prerequisite for dips and L-sits."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/secondaryMuscles/stabilizers",
+      "existing": {
+        "activeMuscles": [
+          "triceps",
+          "chest"
+        ],
+        "synergistMuscles": [
+          "deltoids",
+          "core",
+          "hip-flexors"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "triceps"
+        ],
+        "secondaryMuscles": [
+          "chest",
+          "lats"
+        ],
+        "stabilizers": [
+          "deltoids",
+          "abs",
+          "scapular",
+          "forearms",
+          "hip-flexors"
+        ]
+      },
+      "reason": "v3 粗粒度 id 按实际做法拆到 taxonomy id（core→abs/obliques，glutes→glute-max 或 hip-abductors，upper-back→scapular，lower-back→erectors），只稳定不推动的归稳定肌。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 2,
+      "chosen": 3,
+      "reason": "直臂撑起全身体重，属 3 级\"全身支撑\"。"
+    }
+  ],
+  "reviewNotes": [
+    "scenes 只标 gym：平行杆是健身房器械；家里有俯撑架时也可做。"
+  ]
+}

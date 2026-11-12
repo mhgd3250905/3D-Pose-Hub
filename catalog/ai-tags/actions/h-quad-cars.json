@@ -1,0 +1,138 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-quad-cars",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-quad-cars.json",
+    "textSha256Lf": "1b5b07fea577eb689241c5bfa10bb6e3e5efbe28367b06bb8134d9aed2beb987",
+    "spec": "drill-anim/specs/h-quad-cars-r2.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "mobility"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal",
+    "frontal",
+    "transverse"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "hip-flexors",
+    "hip-abductors",
+    "hip-rotators"
+  ],
+  "secondaryMuscles": [
+    "glute-max"
+  ],
+  "stabilizers": [
+    "abs",
+    "erectors"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "flexion",
+        "extension",
+        "abduction",
+        "internal-rotation",
+        "external-rotation",
+        "circumduction"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "low",
+  "prerequisites": [
+    "wrist-loading",
+    "kneeling-tolerance"
+  ],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "low",
+    "lumbar": "none",
+    "shoulder": "none",
+    "wrist": "low",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "modify"
+    }
+  ],
+  "sessionRole": [
+    "warmup"
+  ],
+  "goals": [
+    "mobility",
+    "performance"
+  ],
+  "alternatives": [
+    "w-fire-hydrant"
+  ],
+  "regressions": [
+    "h-hip-gate"
+  ],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "跪撑做最大范围髋部画圈，适合有基础的人热身或练髋关节控制。",
+    "en": "Quadruped hip CARs for end-range hip control in warm-ups."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "muscles",
+      "existing": {
+        "activeMuscles": [
+          "glutes",
+          "abductors",
+          "hip-flexors"
+        ],
+        "synergistMuscles": [
+          "core"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "hip-flexors",
+          "hip-abductors",
+          "hip-rotators"
+        ],
+        "secondaryMuscles": [
+          "glute-max"
+        ],
+        "stabilizers": [
+          "abs",
+          "erectors"
+        ]
+      },
+      "reason": "v3 glutes/abductors：画圈含外展与内外旋，拆为 hip-abductors + hip-rotators，伸髋段 glute-max 协同。"
+    }
+  ],
+  "reviewNotes": []
+}

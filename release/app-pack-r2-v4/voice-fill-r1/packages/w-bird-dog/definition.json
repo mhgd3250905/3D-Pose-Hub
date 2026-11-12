@@ -1,0 +1,168 @@
+{
+  "format": "pose-hub-action-definition@3",
+  "id": "w-bird-dog",
+  "text": {
+    "path": "catalog/production/v3-text/w-bird-dog.json",
+    "sha256": "a76e1f41c13079ad0aaf9ef0845c79a1826b7ebdc33b5365f7eed2fba01dd314",
+    "reviewStatus": "ai-reviewed-r2-needs-user-review"
+  },
+  "recipe": {
+    "path": "catalog/production/remaining219-r1/recipes/w-bird-dog.json",
+    "sha256": "efb80dc42d5fdc4cc9d951f1a1de247eb80a454c1c236a11b206a28d2ca82bf1",
+    "spec": "drill-anim/specs/w-bird-dog-gc1.js",
+    "specSha256Lf": "3d93252000dcfc334b6484184a21ee77417bf0db0b643e98e67384ddc7e932b7"
+  },
+  "productionModel": {
+    "format": "pose-hub-production-model",
+    "formatVersion": 1,
+    "modelProfile": "training-human-v3-armfix",
+    "modelVersion": "0.1.0-r2",
+    "id": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "definition": {
+    "name": {
+      "zh": "鸟狗式",
+      "en": "Bird Dog"
+    },
+    "purpose": {
+      "zh": "练腰腹稳定，让一只手和另一侧的腿配合",
+      "en": "Build trunk stability and get one arm and the opposite leg working together."
+    },
+    "cues": [
+      {
+        "id": "cue1",
+        "primary": true,
+        "text": {
+          "zh": "一只手和另一侧的腿伸远，身体不晃",
+          "en": "Reach one arm and the other leg long while your body stays still"
+        }
+      },
+      {
+        "id": "cue2",
+        "primary": false,
+        "text": {
+          "zh": "跪撑，手在肩膀下面，膝盖在髋下面。",
+          "en": "Start on hands and knees, hands under shoulders, knees under hips."
+        }
+      },
+      {
+        "id": "cue3",
+        "primary": false,
+        "text": {
+          "zh": "腿伸到髋那么高，手到肩那么高，停住再收回。",
+          "en": "Reach the leg to hip height and the arm to shoulder height, hold, then return."
+        }
+      }
+    ],
+    "commonErrors": [
+      {
+        "zh": "腰往下塌或骨盆转开",
+        "en": "Letting your lower back sag or your hips twist."
+      },
+      {
+        "zh": "腿抬得太高",
+        "en": "Lifting the leg too high."
+      }
+    ],
+    "tags": {
+      "category": "stability",
+      "activeMuscles": [
+        "core",
+        "glutes"
+      ],
+      "synergistMuscles": [
+        "lower-back",
+        "deltoids"
+      ],
+      "equipment": [
+        "mat"
+      ],
+      "position": "quadruped",
+      "difficulty": 1
+    },
+    "unilateral": true,
+    "defaultDose": {
+      "mode": "reps",
+      "sets": 3,
+      "reps": 8,
+      "restSeconds": 30
+    },
+    "cautions": [
+      {
+        "zh": "腰疼时伸得近一点，还疼就停",
+        "en": "If your lower back hurts, reach less far, and stop if it still hurts."
+      }
+    ],
+    "startingSide": "right",
+    "training": {
+      "kind": "rep_hold",
+      "leadSeconds": 1,
+      "phases": [
+        {
+          "id": "go",
+          "seconds": 1.2,
+          "cue": "phase.start"
+        },
+        {
+          "id": "hold",
+          "seconds": 1.4,
+          "cue": "phase.peak"
+        },
+        {
+          "id": "back",
+          "seconds": 1.0,
+          "cue": "phase.end"
+        },
+        {
+          "id": "rest",
+          "seconds": 0.4
+        }
+      ],
+      "perSide": "each-side-separately",
+      "source": "spec-timeline manual r2"
+    }
+  },
+  "voiceScript": {
+    "name": {
+      "zh": "鸟狗式",
+      "en": "Bird Dog"
+    },
+    "primaryCue": {
+      "zh": "一只手和另一侧的腿伸远，身体不晃",
+      "en": "Reach one arm and the other leg long while your body stays still"
+    },
+    "phase.start": {
+      "zh": "伸出去",
+      "en": "Reach out"
+    },
+    "phase.peak": {
+      "zh": "保持住",
+      "en": "Hold"
+    },
+    "phase.end": {
+      "zh": "收回来",
+      "en": "Come back"
+    }
+  },
+  "rhythm": {
+    "durationSeconds": 8,
+    "fps": 30,
+    "cuePoints": {
+      "start": 0.7,
+      "peak": 1.5,
+      "end": 3.433,
+      "method": "masters highlight pulse (25 % rise / plateau reached / 50 % fall) — computed from spec pulse track (spec_pulse.mjs), masters not on this machine",
+      "sampled": false
+    },
+    "binding": {
+      "phase.start": "start",
+      "phase.peak": "peak",
+      "phase.end": "end"
+    },
+    "playback": "name + primaryCue before the set; phase lines at their cue points every rep, scheduled to END by the next cue point (skip a line that cannot fit, never cut or overlap)"
+  },
+  "review": {
+    "editorial": "passed"
+  }
+}

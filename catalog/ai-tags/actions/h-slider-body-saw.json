@@ -1,0 +1,175 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-slider-body-saw",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-slider-body-saw.json",
+    "textSha256Lf": "27752837353949402b97182c23d43d5dff123bef78bcaf8e46522ac979472a78",
+    "spec": "drill-anim/specs/h-slider-body-saw.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "gym"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [
+    "slider",
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [
+    {
+      "for": "slider",
+      "use": [
+        "towel"
+      ],
+      "loadNote": "similar"
+    }
+  ],
+  "trainingType": [
+    "stability-control"
+  ],
+  "movementPattern": [
+    "anti-extension"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "core"
+  ],
+  "primaryMuscles": [
+    "abs"
+  ],
+  "secondaryMuscles": [
+    "lats",
+    "deltoids"
+  ],
+  "stabilizers": [
+    "serratus",
+    "obliques",
+    "glute-max"
+  ],
+  "joints": [
+    {
+      "joint": "shoulder",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    },
+    {
+      "joint": "lumbar-spine",
+      "actions": [
+        "isometric-hold"
+      ]
+    }
+  ],
+  "difficulty": 3,
+  "intensity": "moderate",
+  "prerequisites": [
+    "plank-30s",
+    "wrist-loading"
+  ],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "moderate",
+    "shoulder": "moderate",
+    "wrist": "low",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "caution",
+      "reasons": [
+        "abdominal-pressure"
+      ]
+    },
+    {
+      "population": "pregnancy",
+      "flag": "caution",
+      "reasons": [
+        "abdominal-pressure"
+      ]
+    },
+    {
+      "population": "postpartum",
+      "flag": "caution",
+      "reasons": [
+        "abdominal-pressure"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength"
+  ],
+  "alternatives": [],
+  "regressions": [
+    "h-plank-side-step",
+    "h-forearm-plank"
+  ],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "滑盘或木地板垫毛巾做的平板前后滑，给平板已稳的人加强抗塌腰。",
+    "en": "Slider body saw for advanced anti-extension once planks are easy."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "muscles",
+      "existing": {
+        "activeMuscles": [
+          "core"
+        ],
+        "synergistMuscles": [
+          "deltoids",
+          "lats",
+          "obliques"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [
+          "abs"
+        ],
+        "secondaryMuscles": [
+          "lats",
+          "deltoids"
+        ],
+        "stabilizers": [
+          "serratus",
+          "obliques",
+          "glute-max"
+        ]
+      },
+      "reason": "v3 粗粒度肌群（core/glutes/upper-back/lower-back/abductors）按本动作实际做法拆到细分 id。"
+    },
+    {
+      "field": "requiredEquipment",
+      "existing": [
+        "sliders",
+        "mat"
+      ],
+      "chosen": [
+        "slider",
+        "mat"
+      ],
+      "reason": "v3 器械同义写法归一到词表 id。"
+    }
+  ],
+  "reviewNotes": []
+}

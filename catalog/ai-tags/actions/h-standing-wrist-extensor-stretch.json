@@ -1,0 +1,121 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-standing-wrist-extensor-stretch",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-standing-wrist-extensor-stretch.json",
+    "textSha256Lf": "65656e1bf0c5aca65bd433d0bf7ddb0fea98f1431b54ae61284c3d463c80a7d3",
+    "spec": "drill-anim/specs/h-standing-wrist-extensor-stretch.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "office",
+    "gym",
+    "outdoor",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "dynamic-stretch"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "upper"
+  ],
+  "primaryMuscles": [],
+  "secondaryMuscles": [],
+  "stabilizers": [],
+  "stretchedMuscles": [
+    "forearms"
+  ],
+  "joints": [
+    {
+      "joint": "wrist",
+      "actions": [
+        "flexion"
+      ]
+    },
+    {
+      "joint": "elbow",
+      "actions": [
+        "extension"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "none",
+    "wrist": "low",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup",
+    "cooldown"
+  ],
+  "goals": [
+    "desk-relief",
+    "mobility",
+    "recovery"
+  ],
+  "alternatives": [],
+  "regressions": [],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "手臂前伸屈腕拉伸前臂背侧，适合打字鼠标久了的工间放松。",
+    "en": "Forearm extensor stretch for desk workers after long typing or mouse use."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "muscles",
+      "existing": {
+        "activeMuscles": [
+          "forearms"
+        ],
+        "synergistMuscles": []
+      },
+      "chosen": {
+        "primaryMuscles": [],
+        "secondaryMuscles": [],
+        "stabilizers": [],
+        "stretchedMuscles": [
+          "forearms"
+        ]
+      },
+      "reason": "拉伸类：v3 activeMuscles 是被拉肌，改放 stretchedMuscles。"
+    }
+  ],
+  "reviewNotes": [
+    "被拉的是前臂伸肌，词表只有 forearms 一个 id，无法区分屈/伸肌。"
+  ]
+}

@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "obliques-C",
   "nameZh": "绳索高位伐木",
-  "spec": "drill-anim/specs/obliques-C-r2-ht1.js",
-  "specSha256Lf": "e2371d220361ddfdc665c06e6116007c7f262d192a583b225285629f6cea1057",
+  "spec": "drill-anim/specs/obliques-C-r3.js",
+  "specSha256Lf": "e28b0bbddca16ad317028440450219fbaf399ced487484101ad65197b8ea6688",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -77,7 +77,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/obliques-C-r2-ht1.js"
+    "selectedSpec": "drill-anim/specs/obliques-C-r3.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -98,5 +98,15 @@
         "why": "r6 手朝向轨迹：随时间的前臂转角（elbowTwist 表）抵消解算器前臂自转，手相对前臂拧转 ≤90°"
       }
     ]
+  },
+  "elbowTwistFix": {
+    "branch": "codex/elbow-twist-r1",
+    "date": "2026-11-08",
+    "from": "drill-anim/specs/obliques-C-r2-ht1.js",
+    "to": "drill-anim/specs/obliques-C-r3.js",
+    "why": "2026-11-08 全局肘部扫描：前臂相对未转动的上臂滚转，肘部皮肤拧成糖纸状 -> 改在肩部转上臂（右 upperArmTwist -15、elbowTwist +15、时变扭转 75% 移到肩部（肘窝朝内，上臂轴向总旋 -15°）），肘保持近纯铰链；肘部最小截面比 右 0.82→0.94，跨肘扭转 右 85°→4°；关节位置漂移 ≤0.0 mm，求解警告不增，地面/贴身接触代理指标不变差",
+    "reviewed": false,
+    "qaStatus": "candidate-awaiting-gpu-and-user-review",
+    "elbowTwistFix": "r1"
   }
 }

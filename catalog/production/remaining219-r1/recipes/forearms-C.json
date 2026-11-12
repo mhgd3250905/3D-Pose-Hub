@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "forearms-C",
   "nameZh": "壶铃倒握行走",
-  "spec": "drill-anim/specs/forearms-C-r3-et1.js",
-  "specSha256Lf": "d71f1156fc3bbf7ddaab2f06215eb9f45f7006286aaf2b8a4ffd42203a0125b9",
+  "spec": "drill-anim/specs/forearms-C-r3-et1-kn1.js",
+  "specSha256Lf": "ed1518327c928ca4beae54f136ba7dbfc46ce5d214cfd6d705fd49743aef9c96",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -77,7 +77,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/forearms-C-r3-et1.js"
+    "selectedSpec": "drill-anim/specs/forearms-C-r3-et1-kn1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -101,5 +101,14 @@
         "why": "forearm twist: constant elbowTwist split (pose-fix r2 et)"
       }
     ]
+  },
+  "kneeFix": {
+    "r1": {
+      "from": "drill-anim/specs/forearms-C-r3-et1.js",
+      "to": "drill-anim/specs/forearms-C-r3-et1-kn1.js",
+      "date": "2026-11-06",
+      "branch": "codex/knee-fix-r1",
+      "note": "knee fix r1 (2026-11-06) of forearms-C-r3-et1.js: pelvis height rescaled to the v3 leg (kn-lib g); per-frame pelvis-y correction kn1y (standing leg straight ~5 deg)"
+    }
   }
 }

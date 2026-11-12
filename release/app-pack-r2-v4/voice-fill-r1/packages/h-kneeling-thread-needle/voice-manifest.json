@@ -1,0 +1,317 @@
+{
+  "format": "pose-hub-voice@3",
+  "actionId": "h-kneeling-thread-needle",
+  "definitionSha256": "53ca00a8ca06daf811c83eadf80c1b5bf36d54c03cc989bbe881e033e316118e",
+  "standard": {
+    "lufsTarget": -16,
+    "lufsTolerance": 1,
+    "truePeakMaxDbtp": -1,
+    "codec": "aac",
+    "sampleRate": 44100,
+    "channels": 1,
+    "bitrateKbps": 64,
+    "process": "hiplab v4.1"
+  },
+  "voiceProfile": {
+    "zh": {
+      "voice": "zh-CN-XiaoxiaoNeural",
+      "rate": "+6%"
+    },
+    "en": {
+      "voice": "en-US-JennyNeural",
+      "rate": "+4%"
+    }
+  },
+  "common": "voice/common/manifest.json",
+  "contentReview": "passed",
+  "manualListening": "pending",
+  "cuePoints": {
+    "start": 1.733,
+    "peak": 3.0,
+    "end": 6.033,
+    "method": "masters highlight pulse (25 % rise / plateau reached / 50 % fall) — computed from spec pulse track (spec_pulse.mjs), masters not on this machine",
+    "sampled": false
+  },
+  "lines": {
+    "zh": {
+      "name": {
+        "text": "跪姿穿针",
+        "ref": {
+          "path": "packages/h-kneeling-thread-needle/voice/zh/name.m4a",
+          "sha256": "b99d4b9c639d86a94186eaa2d58033fc36f057ce0afe29727706961bebdbcf63",
+          "bytes": 8947,
+          "durationSeconds": 0.952018
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "d241319a21ee40c2e89fec8056b15ea68ec1d28376688e09d83256bddf10d0cf",
+          "ttsFingerprint": "845e9887938467c0b3089cb9e8defcedf5b7e3559220552a4e502677f9d8505c"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.0,
+          "truePeak": -2.5,
+          "leadMs": 40,
+          "tailMs": 82
+        },
+        "role": "intro"
+      },
+      "primaryCue": {
+        "text": "一只手掌心朝上，从另一只手臂下面穿过去",
+        "ref": {
+          "path": "packages/h-kneeling-thread-needle/voice/zh/primaryCue.m4a",
+          "sha256": "1b537d56af9cb890845254e9a6afc58dd77722aa5b436d4e5279fe7d2e95a06c",
+          "bytes": 30586,
+          "durationSeconds": 3.575873
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "f77b588be229117863dfa05a2c877f5ea2380140d11f4281b61ddfa1228d1b28",
+          "ttsFingerprint": "dbcb6490f98ce3a6eda4f1cfb2a61a9da69437deeb40dc54bbdf165caee582d4"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.0,
+          "truePeak": -2.5,
+          "leadMs": 40,
+          "tailMs": 96
+        },
+        "role": "intro"
+      },
+      "phase.start": {
+        "text": "穿过去",
+        "ref": {
+          "path": "packages/h-kneeling-thread-needle/voice/zh/phase.start.m4a",
+          "sha256": "749922239fcde5277258b526150d190740cf1a1d833c799934ce67fe1a604150",
+          "bytes": 7390,
+          "durationSeconds": 0.766259
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "4b619c5e6f040d44bca4ac3e7e573ca31049535a2ba33205db4c182dc71aef2f",
+          "ttsFingerprint": "90d89336a53030ca217cc83c8aeb4bb4af5885caa90cc3870dcbbc169e1c5684"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.3,
+          "leadMs": 40,
+          "tailMs": 76
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 1.733,
+          "gapSeconds": 1.267,
+          "fit": "fits"
+        }
+      },
+      "phase.peak": {
+        "text": "停住呼吸",
+        "ref": {
+          "path": "packages/h-kneeling-thread-needle/voice/zh/phase.peak.m4a",
+          "sha256": "f816360e1e8a3c717ab5be4a650f03ee9b823d255f0b9d41a0404f3b84ee57a4",
+          "bytes": 8890,
+          "durationSeconds": 0.952018
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "aea737c616ea9f0b361e2ab31e97dd9a5627a8cf32b007b46a926eff564881c9",
+          "ttsFingerprint": "f90c818dafe4d189506e4dd0c3271f457b18b9b11bfc978ab7c8e14990e65697"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.0,
+          "truePeak": -4.1,
+          "leadMs": 40,
+          "tailMs": 82
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 3.0,
+          "gapSeconds": 3.033,
+          "fit": "fits"
+        }
+      },
+      "phase.end": {
+        "text": "慢慢回来",
+        "ref": {
+          "path": "packages/h-kneeling-thread-needle/voice/zh/phase.end.m4a",
+          "sha256": "5db2fa57a8ff34c229218d660bdac9e50998b75a48d65bf4e8094df77b7b1938",
+          "bytes": 8500,
+          "durationSeconds": 0.905578
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "801fa47df332313d34b6804dc95cde102c373b15e46140e0a9e74946266b6f69",
+          "ttsFingerprint": "56f846cb43bc57f33b62cc1efd40980a7e5adfc8c4d34f8145d2282fcacde123"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -3.1,
+          "leadMs": 40,
+          "tailMs": 96
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 6.033,
+          "gapSeconds": 1.967,
+          "fit": "fits"
+        }
+      }
+    },
+    "en": {
+      "name": {
+        "text": "Kneeling Thread the Needle",
+        "ref": {
+          "path": "packages/h-kneeling-thread-needle/voice/en/name.m4a",
+          "sha256": "2b9148581753fa74cc9cd68962ed8632c3602f4a31ed516d9d56e5efcf8f474b",
+          "bytes": 11382,
+          "durationSeconds": 1.253878
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "7ebb2d759b29dd31e0a9e7e8892a1d4b944771492d5da2c4ac13f0cb04b7334e",
+          "ttsFingerprint": "ec1775de2c0c4b365554acdc504a5365987afc966f09ed26377f2e307e4ef821"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.5,
+          "leadMs": 40,
+          "tailMs": 84
+        },
+        "role": "intro"
+      },
+      "primaryCue": {
+        "text": "Slide one hand palm-up under your other arm",
+        "ref": {
+          "path": "packages/h-kneeling-thread-needle/voice/en/primaryCue.m4a",
+          "sha256": "2b0c53f4b7b1fd82bb15a6f4e020d3ab1fd1f2d3aafe47262bd5ce4345545801",
+          "bytes": 19168,
+          "durationSeconds": 2.205896
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "241ec2e975e4c14a52fbc035502c7a5ad66776e9da30d17760476475750ab04c",
+          "ttsFingerprint": "71a25567b7aea994c92d3c92e0a7a28907d6917df036164159d0526528d4cf18"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -1.8,
+          "leadMs": 30,
+          "tailMs": 96
+        },
+        "role": "intro"
+      },
+      "phase.start": {
+        "text": "Thread through",
+        "ref": {
+          "path": "packages/h-kneeling-thread-needle/voice/en/phase.start.m4a",
+          "sha256": "4f2ea9e78cdc35d5f980b19c63197dd8c9edc2116aa93839c17b6da4c29d7ad1",
+          "bytes": 7456,
+          "durationSeconds": 0.766259
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "1c851e4812c6605a49ebd642d7005b6e428c71e5e8f278ef5a01650ad23e7f28",
+          "ttsFingerprint": "773ae78d3a0fa7e914ba75e22b6549099c886fd7e0db8a9ba81425eb2bdba0da"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.2,
+          "leadMs": 40,
+          "tailMs": 86
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 1.733,
+          "gapSeconds": 1.267,
+          "fit": "fits"
+        }
+      },
+      "phase.peak": {
+        "text": "Hold and breathe",
+        "ref": {
+          "path": "packages/h-kneeling-thread-needle/voice/en/phase.peak.m4a",
+          "sha256": "77b4278eff1c4c5cb9f9bb3b5bef7fa9df910fe2d26221a836e48dc11b1c6767",
+          "bytes": 8189,
+          "durationSeconds": 0.859138
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "88fe7d2ba03a4dcea4f2978a873b3f6a2ca03806e49a0f3d79a2483d5170ab70",
+          "ttsFingerprint": "edb9f5db007078863ce5e746260ce6eeb8b8e1711a5757ecc8513e1bd77bc87e"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.9,
+          "leadMs": 40,
+          "tailMs": 69
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 3.0,
+          "gapSeconds": 3.033,
+          "fit": "fits"
+        }
+      },
+      "phase.end": {
+        "text": "Come back slowly",
+        "ref": {
+          "path": "packages/h-kneeling-thread-needle/voice/en/phase.end.m4a",
+          "sha256": "33d50499068c94aa64e67ddd2dbecd0b3e57abb4e6a2bb99f9fb3ea3c892f495",
+          "bytes": 9585,
+          "durationSeconds": 1.021678
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "eec0cc529ae87161975b4d239076a565375fe97ec3f57a0790fa94ef8431ece6",
+          "ttsFingerprint": "aac0b19188f305cba6b7e3f2ef96d5742bc8d65ff6a21274ffe76dea354886b5"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.1,
+          "leadMs": 30,
+          "tailMs": 82
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 6.033,
+          "gapSeconds": 1.967,
+          "fit": "fits"
+        }
+      }
+    }
+  },
+  "summary": {
+    "clips": 10,
+    "auditFailed": [],
+    "scheduleEarly": []
+  },
+  "status": "technical-passed"
+}

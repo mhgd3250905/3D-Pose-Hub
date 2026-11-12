@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "h-db-kickback",
   "nameZh": "双哑铃俯身臂屈伸",
-  "spec": "drill-anim/specs/h-db-kickback.js",
-  "specSha256Lf": "1e5b1211ba92dfde599dbe743c6001a1932ab04eb0fe357939711bc1a993281b",
+  "spec": "drill-anim/specs/h-db-kickback-kn1.js",
+  "specSha256Lf": "d4f65bb8f271ccd6a0e45998eab73ac477c9d2542f19f809c0eaf8e1a39b1a3d",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -77,7 +77,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/h-db-kickback.js"
+    "selectedSpec": "drill-anim/specs/h-db-kickback-kn1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -86,5 +86,14 @@
   "fixedCorrectionStack": {
     "profile": "fixed-wrist-corrections-r1",
     "version": "0.1.0-r1"
+  },
+  "kneeFix": {
+    "r1": {
+      "from": "drill-anim/specs/h-db-kickback.js",
+      "to": "drill-anim/specs/h-db-kickback-kn1.js",
+      "date": "2026-11-06",
+      "branch": "codex/knee-fix-r1",
+      "note": "knee fix r1 (2026-11-06) of h-db-kickback.js: pelvis height rescaled to the v3 leg (kn-lib g); per-frame pelvis-y correction kn1y (hinge: knees soft ~17 deg, held through the lowering)"
+    }
   }
 }

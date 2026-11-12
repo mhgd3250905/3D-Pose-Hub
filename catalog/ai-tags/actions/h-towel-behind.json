@@ -1,0 +1,136 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "h-towel-behind",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/h-towel-behind.json",
+    "textSha256Lf": "255b06997cd73122241052434808531ceeabc402a9bb9eaed4287fa294e52a49",
+    "spec": "drill-anim/specs/h-towel-behind-r7.js",
+    "catalogV1": null
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel",
+    "outdoor"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "towel"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "dynamic-stretch"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "upper"
+  ],
+  "primaryMuscles": [],
+  "secondaryMuscles": [
+    "scapular"
+  ],
+  "stabilizers": [],
+  "stretchedMuscles": [
+    "chest",
+    "deltoids",
+    "biceps"
+  ],
+  "joints": [
+    {
+      "joint": "shoulder",
+      "actions": [
+        "extension"
+      ]
+    },
+    {
+      "joint": "scapulothoracic",
+      "actions": [
+        "retraction"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [],
+  "laterality": "bilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "low",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup",
+    "cooldown"
+  ],
+  "goals": [
+    "posture",
+    "mobility",
+    "desk-relief"
+  ],
+  "alternatives": [
+    "h-standing-arm-extension-stretch"
+  ],
+  "regressions": [],
+  "progressions": [
+    "h-seated-reachback"
+  ],
+  "aiSummary": {
+    "zh": "背后握毛巾抬臂拉伸肩前侧和胸口，适合圆肩的人。",
+    "en": "Behind-back towel arm lift to stretch front shoulders and chest."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "muscles",
+      "existing": {
+        "activeMuscles": [
+          "chest",
+          "deltoids"
+        ],
+        "synergistMuscles": [
+          "biceps",
+          "upper-back"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [],
+        "secondaryMuscles": [
+          "scapular"
+        ],
+        "stabilizers": [],
+        "stretchedMuscles": [
+          "chest",
+          "deltoids",
+          "biceps"
+        ]
+      },
+      "reason": "拉伸类：v3 activeMuscles 是被拉肌，改放 stretchedMuscles。"
+    }
+  ],
+  "reviewNotes": []
+}

@@ -1,0 +1,152 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "s-pigeon",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/s-pigeon.json",
+    "textSha256Lf": "122f4508b250c9ab48eeee545083dc58fce5090197ed52f64d76d019121114b2",
+    "spec": "drill-anim/specs/s-pigeon.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "mat"
+  ],
+  "optionalEquipment": [
+    "block"
+  ],
+  "substitutes": [],
+  "trainingType": [
+    "static-stretch"
+  ],
+  "movementPattern": [],
+  "contraction": [
+    "isometric"
+  ],
+  "plane": [
+    "transverse",
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [],
+  "secondaryMuscles": [],
+  "stabilizers": [],
+  "stretchedMuscles": [
+    "glute-max",
+    "hip-rotators",
+    "hip-flexors"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "external-rotation",
+        "flexion",
+        "extension"
+      ]
+    }
+  ],
+  "difficulty": 3,
+  "intensity": "low",
+  "prerequisites": [
+    "floor-transfer"
+  ],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "moderate",
+    "lumbar": "low",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "low"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "modify",
+      "reasons": [
+        "end-range-stretch"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "caution",
+      "reasons": [
+        "floor-transfer"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "cooldown"
+  ],
+  "goals": [
+    "mobility",
+    "performance"
+  ],
+  "alternatives": [],
+  "regressions": [
+    "s-figure4",
+    "s-9090"
+  ],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "深度拉臀部和后腿髋前侧，柔韧有基础后选；膝不适换仰卧4字。",
+    "en": "Pigeon stretch for glutes and back-leg hip flexors; swap to lying figure-4 if knees complain."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "primaryMuscles/stretchedMuscles",
+      "existing": {
+        "activeMuscles": [
+          "glutes",
+          "hip-flexors"
+        ]
+      },
+      "chosen": {
+        "primaryMuscles": [],
+        "stretchedMuscles": [
+          "glute-max",
+          "hip-rotators",
+          "hip-flexors"
+        ]
+      },
+      "reason": "拉伸类：v3 把被拉肌写在 activeMuscles，本 schema 放 stretchedMuscles。"
+    },
+    {
+      "field": "requiredEquipment/optionalEquipment",
+      "existing": [
+        "yoga-blocks",
+        "mat"
+      ],
+      "chosen": {
+        "requiredEquipment": [
+          "mat"
+        ],
+        "optionalEquipment": [
+          "block"
+        ]
+      },
+      "reason": "yoga-blocks→block；扶砖只为调整高度，改可选。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 2,
+      "chosen": 3,
+      "reason": "前腿髋深度外旋 + 后腿伸髋同时接近末端，膝也受扭力，调到 3 级。"
+    }
+  ],
+  "reviewNotes": []
+}

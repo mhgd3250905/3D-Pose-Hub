@@ -1,5 +1,22 @@
 # Pose-Hub 版本对齐台账
 
+## 2026-11-10 人体外观与五皮肤修复收束
+
+阶段版本 `human-appearance-closeout-20261110-r1`。完整实现位于 `codex/skin-coverage-r1-20261110` 的本机工作树 `E:/AII-3D/3D-Pose-Hub-worktrees/human-polish-v3-20261110`，固定源码提交为 `3b74fb565f0195dbf16e6c34aafdb6f261fcf785`。主目录的同名入口仅保存路由和记录，完整实现与固定来源在该工作树。
+
+| 对象 | 固定版本与状态 | 入口与证据 |
+| --- | --- | --- |
+| 人体及左右手 | `training-human-v3-armfix / 0.1.0-r2`，动作 recipe 选择 native 或固定握持及其组件 | [人体版本路由](model-version-routing.md)，`tools/model-version.mjs --recipe <配方>` |
+| 已确认外观 | `original-head-eye-soften-20261110-r1`，源码 `eb00e820790b9ac118fe008c76a927f89c3b6a11`。保留原头型、五官和眼窝深度，柔化全身与头部明暗、眼窝内部交界 | [批准指针](../drill-anim/models/current-approved-look.json)、[确认记录](body-v3/approved-look-20261110-r1.md) |
+| 五皮肤修复 | `skin-coverage / 0.1.0-r1` 已保存且通过技术检查，待用户视觉复核。固定握持手、腕桥和头颈随皮肤显示。四套非默认皮肤关闭边缘光，保留分区线和扫描 | [修复指针](../drill-anim/models/current-skin-coverage.json)、[修复说明](body-v3/skin-coverage-r1-20261110.md)、[QA 回执](body-v3/skin-coverage-r1-20261110.json) |
+| 历史配置及试验 | v2plus rc2 继续用于既有全局流程，v2 保留冻结复现。两项改头型试验已停止，早期 v2plus 美化因基线不符退出当前候选 | [版本规则](version-management.md)与[人体版本路由](model-version-routing.md) |
+
+本轮皮肤审核涉及 217 个有效配方的适配器清点，以及深蹲、撑地、哑铃弯举三类手型的五皮肤抽帧。关闭边缘光后复核弯举对照及深蹲单帧母版，包括 body、body-highlight、mask。已记录的抽帧中，默认外观像素与变形后的顶点位置一致。技术证据的范围为上述样本。动作完整循环、全库视觉审核和关节试点由各自任务继续记录。
+
+本地收束核验于 2026-11-10 17:59（Asia/Shanghai）执行。完整工作树的阶段基线为 `36550dd755056e3769552bd24a3ffb5c3f20a668`，到上述固定源码提交共 6 提交、54 路径，待提交和未跟踪均为 0。主目录阶段基线为 `codex/action-library-v2-production@36e1bb678047a3d5613a553a05be37dac8d9046b`，到记录提交 `b2f596eb3f8b3078f7be0f882a5472bd84db8425` 共 5 提交、15 路径。主目录原有 1 个修改、7 个未跟踪文件排除于本次范围。
+
+源码提交 `3b74fb5` 上，`node tools/preview-current-model.mjs --recipe catalog/production/remaining219-r1/recipes/h-squat.json`、`node tools/preview-current-skins.mjs --recipe catalog/production/remaining219-r1/recipes/h-db-curl.json`、`node tools/skin-coverage-r1/verify.mjs` 及 `node --test tools/skin-coverage-r1/test.mjs` 通过。主目录缺完整源码时的入口拒绝符合预期。收束提交仅对齐文档，沿用上述固定版本身份和本地分支状态。素材发布与主线集成另由各自台账记录。
+
 ## 2026-11-03 全量 249 动作 v3 源码集成
 
 用户明确同意将 `codex/remaining219-templates@9b67e5d7cf2748139a828dc74bf57737dc0bcbb7` 合入并推送 main，并要求保留另一聊天正在进行的渲染。本次在独立 E 盘整合副本，以 `main@c1bea90d7380857ee0bf3dfc1a8b0f28fa7552cd` 为目标三方合并，保留该主线已有的 10 月 29 日收束文档。

@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "w-bird-dog",
   "nameZh": "鸟狗式",
-  "spec": "drill-anim/specs/w-bird-dog-gc1.js",
-  "specSha256Lf": "3d93252000dcfc334b6484184a21ee77417bf0db0b643e98e67384ddc7e932b7",
+  "spec": "drill-anim/specs/w-bird-dog-r1.js",
+  "specSha256Lf": "466cf0d80910fe07387ea51814d94b4bddcd46d7242c6b55032cd57440ad5442",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -93,7 +93,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/w-bird-dog-gc1.js"
+    "selectedSpec": "drill-anim/specs/w-bird-dog-r1.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -106,5 +106,17 @@
       "date": "2026-11-03",
       "branch": "fix/ground-contact-r1"
     }
+  },
+  "elbowTwistFix": {
+    "branch": "codex/elbow-twist-r1",
+    "date": "2026-11-10",
+    "from": "drill-anim/specs/w-bird-dog-gc1.js",
+    "to": "drill-anim/specs/w-bird-dog-r1.js",
+    "supersedes": "drill-anim/specs/w-bird-dog-gc1.js",
+    "why": "2026-11-10 ROM 修复（tools/rom-spec/ROM.md r1.1）：在 gc1 上左臂 upperArmTwist −10：前臂总扭转 foreTot 左 147°→137°（限 140），htw 68° 不变。肘部最小截面比 左 0.83→0.88；R5 0.35 不变；翻面 左 370→380（+10，判据上限）、右 35→29；跨肩扭转 |123|°→113°；腕截面 0.71 不变（修前已偏低）；关节/手掌漂移 0 mm，求解警告 99=99 不增，近身计数 0（密集 81 帧）。a−15 翻面 +16 超判据，未用；配方指向 w-bird-dog-r1，supersedes w-bird-dog-gc1，reviewed=false",
+    "reviewed": false,
+    "qaStatus": "candidate-awaiting-gpu-and-user-review",
+    "elbowTwistFix": "r2",
+    "romFix": "r1.1"
   }
 }

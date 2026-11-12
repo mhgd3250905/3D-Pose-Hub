@@ -1,0 +1,287 @@
+{
+ "format": "pose-hub-joint-production-trial-plan@1",
+ "id": "joint-shoulder-r2-prod-1111",
+ "_doc": "Fixed trial plan: re-render the actions the shoulder-axilla r2 regression (7383f5e, local GPU, 2026-11-11) fixed (OFF over threshold, r2 not) plus 4 controls (3 raised-arm protection controls from stage B, 1 low-arm control whose ON output must be pixel-identical to OFF) through the joint production entry. Frames = the regression's measured frames. Do not edit: a changed plan is a new version.",
+ "source": {
+  "regression": "qa/joint-shoulder-r2-1111 @ 6c14bd7 regression.json",
+  "issueOff": 26,
+  "issueR2": 5,
+  "fixedByR2": 21,
+  "notHandled": [
+   "h-kneeling-thread-needle",
+   "h-pike-scapular-elevation",
+   "h-quadruped-rockback",
+   "h-reverse-clam",
+   "w-clamshell"
+  ]
+ },
+ "recipesDir": "catalog/production/remaining219-r1/recipes",
+ "entry": "tools/joint-opt-r1/render-masters-joint.mjs",
+ "on": {
+  "shoulderAxilla": "on",
+  "profile": "default",
+  "_doc": "full production masters: profile default = 5 skins x body/body-highlight/mask, 1080 px, every loop frame; then tools/action-package-v3/compose.py (dark/light mp4, alpha webm, start/peak/end, covers)"
+ },
+ "offReference": {
+  "shoulderAxilla": "off",
+  "profile": "default",
+  "skins": "realistic",
+  "layers": "body-highlight",
+  "_doc": "only the sheet frames, realistic body-highlight, same size: the OFF side of the comparison"
+ },
+ "sheet": {
+  "skin": "realistic",
+  "layer": "body-highlight",
+  "background": "#101013",
+  "cell": 480,
+  "threshold": 8
+ },
+ "qa": {
+  "video": "realistic/dark/loop.720.mp4",
+  "maxVideoBytes": 8000000,
+  "maxTotalVideoBytes": 60000000,
+  "_doc": "<out>/_qa is the push set: sheets, sheet stats, run-log, progress, per-action layer-manifest/package/framing JSON, and the realistic dark mp4 per action while each <= maxVideoBytes and the running total <= maxTotalVideoBytes (in plan order); the rest stays local"
+ },
+ "actions": [
+  {
+   "id": "chest-A",
+   "group": "fixed-by-r2",
+   "frames": [
+    90,
+    210
+   ]
+  },
+  {
+   "id": "deltoids-B",
+   "group": "fixed-by-r2",
+   "frames": [
+    80,
+    160
+   ]
+  },
+  {
+   "id": "deltoids-C",
+   "group": "fixed-by-r2",
+   "frames": [
+    55,
+    70,
+    175,
+    190
+   ]
+  },
+  {
+   "id": "erectors-B",
+   "group": "fixed-by-r2",
+   "frames": [
+    5,
+    125,
+    190,
+    235
+   ]
+  },
+  {
+   "id": "h-banana",
+   "group": "fixed-by-r2",
+   "frames": [
+    90,
+    180,
+    195,
+    210
+   ]
+  },
+  {
+   "id": "h-band-face-pull",
+   "group": "fixed-by-r2",
+   "frames": [
+    90,
+    180,
+    195,
+    210
+   ]
+  },
+  {
+   "id": "h-chair-lat",
+   "group": "fixed-by-r2",
+   "frames": [
+    105,
+    120,
+    135,
+    150
+   ]
+  },
+  {
+   "id": "h-chair-tspine",
+   "group": "fixed-by-r2",
+   "frames": [
+    15,
+    115,
+    135,
+    235
+   ]
+  },
+  {
+   "id": "h-db-overhead-triceps-extension",
+   "group": "fixed-by-r2",
+   "frames": [
+    30,
+    140,
+    220,
+    235
+   ]
+  },
+  {
+   "id": "h-db-press",
+   "group": "fixed-by-r2",
+   "frames": [
+    60,
+    180
+   ]
+  },
+  {
+   "id": "h-dd-shoulder",
+   "group": "fixed-by-r2",
+   "frames": [
+    10,
+    130,
+    190,
+    205
+   ]
+  },
+  {
+   "id": "h-fixed-bar-vertical-pull",
+   "group": "fixed-by-r2",
+   "frames": [
+    0,
+    15,
+    220,
+    235
+   ]
+  },
+  {
+   "id": "h-overhead-triceps-stretch",
+   "group": "fixed-by-r2",
+   "frames": [
+    75,
+    90,
+    105,
+    120
+   ]
+  },
+  {
+   "id": "h-step-jack",
+   "group": "fixed-by-r2",
+   "frames": [
+    65,
+    185
+   ]
+  },
+  {
+   "id": "h-straight-arm-hang-native",
+   "group": "fixed-by-r2",
+   "frames": [
+    190,
+    205,
+    220,
+    235
+   ]
+  },
+  {
+   "id": "h-wall-angel",
+   "group": "fixed-by-r2",
+   "frames": [
+    65,
+    185
+   ]
+  },
+  {
+   "id": "o-seated-sidebend",
+   "group": "fixed-by-r2",
+   "frames": [
+    110,
+    125,
+    140,
+    155
+   ]
+  },
+  {
+   "id": "o-stand-sidebend",
+   "group": "fixed-by-r2",
+   "frames": [
+    10,
+    115,
+    220,
+    235
+   ]
+  },
+  {
+   "id": "obliques-A",
+   "group": "fixed-by-r2",
+   "frames": [
+    55,
+    70,
+    175,
+    190
+   ]
+  },
+  {
+   "id": "s-frog",
+   "group": "fixed-by-r2",
+   "frames": [
+    10,
+    115,
+    220,
+    235
+   ]
+  },
+  {
+   "id": "w-dead-bug",
+   "group": "fixed-by-r2",
+   "frames": [
+    50,
+    65,
+    170,
+    185
+   ]
+  },
+  {
+   "id": "abs-A",
+   "group": "control-raised",
+   "frames": [
+    15,
+    115,
+    135,
+    235
+   ]
+  },
+  {
+   "id": "scapular-B",
+   "group": "control-raised",
+   "frames": [
+    10,
+    115,
+    130,
+    235
+   ]
+  },
+  {
+   "id": "o-stand-crossreach",
+   "group": "control-raised",
+   "frames": [
+    10,
+    115,
+    220,
+    235
+   ]
+  },
+  {
+   "id": "h-db-curl",
+   "group": "control-low-arm",
+   "frames": [
+    0,
+    50,
+    60,
+    170
+   ]
+  }
+ ]
+}

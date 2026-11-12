@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "s-9090",
   "nameZh": "90/90 坐姿换髋",
-  "spec": "drill-anim/specs/s-9090-r4-sc1-et1.js",
-  "specSha256Lf": "51a6ae0f55df087a8e91540b00bb923b31caf3cb65f8254434311cc432d78f32",
+  "spec": "drill-anim/specs/s-9090-r7.js",
+  "specSha256Lf": "5b0c65b3a360b99c28cbf1d68511be2c58537f2d67795e178163b02767c409d0",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -90,7 +90,7 @@
   },
   "source": {
     "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
-    "selectedSpec": "drill-anim/specs/s-9090-r4-sc1-et1.js"
+    "selectedSpec": "drill-anim/specs/s-9090-r7.js"
   },
   "sampledOnly": true,
   "fullCycleValidated": false,
@@ -111,5 +111,26 @@
         "why": "pose-fix r9: fixed hand-vs-forearm twist 90-120 deg -> constant forearm roll {\"left\": 50}"
       }
     ]
+  },
+  "elbowTwistFix": {
+    "branch": "codex/elbow-twist-r1",
+    "date": "2026-11-10",
+    "from": "drill-anim/specs/s-9090-r4-sc1-et1.js",
+    "to": "drill-anim/specs/s-9090-r6.js",
+    "supersedes": "drill-anim/specs/s-9090-r5.js",
+    "why": "2026-11-10 ROM 修复（tools/rom-spec/ROM.md r1.1）：在 r5 上左臂 upperArmTwist +25：前臂总扭转 foreTot 左 154°→132°（限 140），htw 44° 不变；右侧保持 r5（fT 147）。肘部最小截面比 左 0.94→0.89；R5 左 0.97→0.96；翻面 左 27→2；跨肩扭转 |5|°→20°（+15，判据边界）；腕截面 1.07 不变；关节/手掌漂移 0 mm，求解警告不增，近身计数 0（密集 81 帧）。a+15 时 fT 141 仍超 1°；配方指向 s-9090-r6，supersedes s-9090-r5，reviewed=false",
+    "reviewed": false,
+    "qaStatus": "candidate-awaiting-gpu-and-user-review",
+    "elbowTwistFix": "r2",
+    "romFix": "r1.1"
+  },
+  "jitterFix": {
+    "r1": {
+      "from": "drill-anim/specs/s-9090-r6.js",
+      "to": "drill-anim/specs/s-9090-r7.js",
+      "date": "2026-11-12",
+      "branch": "codex/jitter-fix-r1",
+      "note": "left wrist follows the r6 touch-solved path smoothed in time (sigma 3 frames); per-frame touch solve off for that hand"
+    }
   }
 }

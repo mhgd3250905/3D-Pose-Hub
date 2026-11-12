@@ -1,0 +1,317 @@
+{
+  "format": "pose-hub-voice@3",
+  "actionId": "o-supported-hip-hitch",
+  "definitionSha256": "e98c4e7874fa91ca59d6f3abfcd8efc58dc0ca5ffdaf40404dcb3a13f5e0715a",
+  "standard": {
+    "lufsTarget": -16,
+    "lufsTolerance": 1,
+    "truePeakMaxDbtp": -1,
+    "codec": "aac",
+    "sampleRate": 44100,
+    "channels": 1,
+    "bitrateKbps": 64,
+    "process": "hiplab v4.1"
+  },
+  "voiceProfile": {
+    "zh": {
+      "voice": "zh-CN-XiaoxiaoNeural",
+      "rate": "+6%"
+    },
+    "en": {
+      "voice": "en-US-JennyNeural",
+      "rate": "+4%"
+    }
+  },
+  "common": "voice/common/manifest.json",
+  "contentReview": "passed",
+  "manualListening": "pending",
+  "cuePoints": {
+    "start": 1.0,
+    "peak": 2.0,
+    "end": 5.033,
+    "method": "masters highlight pulse (25 % rise / plateau reached / 50 % fall) — computed from spec pulse track (spec_pulse.mjs), masters not on this machine",
+    "sampled": false
+  },
+  "lines": {
+    "zh": {
+      "name": {
+        "text": "扶椅单腿骨盆提拉",
+        "ref": {
+          "path": "packages/o-supported-hip-hitch/voice/zh/name.m4a",
+          "sha256": "dbfc1ebb17a4526ddb81ed1970944bcbd00874b8b5becb79daea101a7da9e849",
+          "bytes": 13823,
+          "durationSeconds": 1.555737
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "a52a58dd4b6cb1ba90985220e4feb8dbf064d5b892f45348deb8f8894a4b4d1b",
+          "ttsFingerprint": "a59769d5f93c974f51d4db17cfe5fc9324d5051623a836c36f2ebb7c3df99444"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.0,
+          "truePeak": -2.5,
+          "leadMs": 30,
+          "tailMs": 96
+        },
+        "role": "intro"
+      },
+      "primaryCue": {
+        "text": "支撑腿站稳，另一侧骨盆慢慢提起",
+        "ref": {
+          "path": "packages/o-supported-hip-hitch/voice/zh/primaryCue.m4a",
+          "sha256": "9cffee84f64bdcbe628cc312af1a0a95cd3a9c9812ecf2df32892b9030f488d3",
+          "bytes": 26077,
+          "durationSeconds": 3.041814
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "e2b3005c34023f5d2e458eb50e2501bd6b83ecbd8a0f1b3f820e62fd1780ef75",
+          "ttsFingerprint": "2a0d8717eaf0bf3d39dc4b66d5a8f3cad882fb9f4fd2ff3c8fe93c3eb4d73f32"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.6,
+          "leadMs": 40,
+          "tailMs": 72
+        },
+        "role": "intro"
+      },
+      "phase.start": {
+        "text": "提起骨盆",
+        "ref": {
+          "path": "packages/o-supported-hip-hitch/voice/zh/phase.start.m4a",
+          "sha256": "6c00dd66ec692c3bf1c8debe08da5bc4a4961e36f6e8d9287bc2943f38edfb7f",
+          "bytes": 9101,
+          "durationSeconds": 0.975238
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "3328a9d3ff144bdb539695ab5663a67ef509c6cff071db155357bbeb05e2c0cf",
+          "ttsFingerprint": "5830b161a2bb8b06bd508f3cb4d0726a8ccddfc676977604efbb0d20d4d4bfa1"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.5,
+          "leadMs": 40,
+          "tailMs": 85
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 1.0,
+          "gapSeconds": 1.0,
+          "fit": "fits"
+        }
+      },
+      "phase.peak": {
+        "text": "停住",
+        "ref": {
+          "path": "packages/o-supported-hip-hitch/voice/zh/phase.peak.m4a",
+          "sha256": "a237bcfdadc82cbd95d3fbf5cf87eb19d9c682d9f8ff17d6f25acfb1f45ab4b9",
+          "bytes": 6101,
+          "durationSeconds": 0.603719
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "d769047cb9f024550c287bb5c26df0a8882273103f38d09249f939fa6bbcdb3b",
+          "ttsFingerprint": "250d9dea1b8084d469559e0b9462bc82372678e3e0a278ed44cfbcd39d1d79fa"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -4.9,
+          "leadMs": 40,
+          "tailMs": 74
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 2.0,
+          "gapSeconds": 3.033,
+          "fit": "fits"
+        }
+      },
+      "phase.end": {
+        "text": "慢慢放平",
+        "ref": {
+          "path": "packages/o-supported-hip-hitch/voice/zh/phase.end.m4a",
+          "sha256": "7785779c7d77066eb99621f45ec2efe3e9d6beaca39860f625d583b6129aab8d",
+          "bytes": 9636,
+          "durationSeconds": 1.044898
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "b2f73e9b62103ee8d3479681891370bb18eed1663c303b4d78ec3db5ec277f62",
+          "ttsFingerprint": "4f7c714005b1410c49f6ac63a5b2955111bb34d6020fb2aa9ce93f4cee1c5972"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -15.9,
+          "truePeak": -2.5,
+          "leadMs": 40,
+          "tailMs": 95
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 5.033,
+          "gapSeconds": 2.967,
+          "fit": "fits"
+        }
+      }
+    },
+    "en": {
+      "name": {
+        "text": "Chair-Supported Hip Hitch",
+        "ref": {
+          "path": "packages/o-supported-hip-hitch/voice/en/name.m4a",
+          "sha256": "e035b2b60b1b6b3193bde947c69647927436269ccdab03c50138161c69fbaa69",
+          "bytes": 11973,
+          "durationSeconds": 1.323537
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "4af292cf5dc67867bb98f729511bce79d5422b2bf45046ad58a30a9663270a21",
+          "ttsFingerprint": "d682769e6f7589c8f733510dfd288dfdf9df91120ffe2cb4584dc1d335e9156d"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.0,
+          "leadMs": 40,
+          "tailMs": 74
+        },
+        "role": "intro"
+      },
+      "primaryCue": {
+        "text": "Stand firm on one leg and slowly lift the other hip",
+        "ref": {
+          "path": "packages/o-supported-hip-hitch/voice/en/primaryCue.m4a",
+          "sha256": "20773ae40688bc9cdf6e0000f254165ba6bf71b82f617d459ed7b4e86349b47d",
+          "bytes": 24450,
+          "durationSeconds": 2.832834
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "912bbf1536c1d33408d11109961d4b9aba1ceee8b3f8759f9a3d190bda724efb",
+          "ttsFingerprint": "16de2f08ec98d6d1e05fa3726f6b6808312aacc2f8c7d409fe598b4441c6196f"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.3,
+          "leadMs": 40,
+          "tailMs": 73
+        },
+        "role": "intro"
+      },
+      "phase.start": {
+        "text": "Lift your hip",
+        "ref": {
+          "path": "packages/o-supported-hip-hitch/voice/en/phase.start.m4a",
+          "sha256": "313a6c6f50e6994a710dd851e61d80a71a1ca0370c0a7c070181ca01ebaeb672",
+          "bytes": 7741,
+          "durationSeconds": 0.812698
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "3550e9cae30f2cd646f95cc34c694a1aa1d5e5b650450126afab2ffdaebe21ec",
+          "ttsFingerprint": "c1a44f1862cd82893783e9da31edc236845d6b2a7b712c34a8aad3a6a58cf8cb"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.3,
+          "leadMs": 30,
+          "tailMs": 73
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 1.0,
+          "gapSeconds": 1.0,
+          "fit": "fits"
+        }
+      },
+      "phase.peak": {
+        "text": "Hold",
+        "ref": {
+          "path": "packages/o-supported-hip-hitch/voice/en/phase.peak.m4a",
+          "sha256": "b6ac50d0e6201d57e34af08a454421cebbcd2215d0b4e861d7918dbb0ead5371",
+          "bytes": 4998,
+          "durationSeconds": 0.464399
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "0e92c3a2459040c6ef55ea6950c927a2a1acee35e4a3dd23869d30ece94b9773",
+          "ttsFingerprint": "3abc227bfc3d1bd10e8614a94199d1210a8e483c37a7bba77c95128949b12c56"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.6,
+          "leadMs": 40,
+          "tailMs": 64
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 2.0,
+          "gapSeconds": 3.033,
+          "fit": "fits"
+        }
+      },
+      "phase.end": {
+        "text": "Lower to level",
+        "ref": {
+          "path": "packages/o-supported-hip-hitch/voice/en/phase.end.m4a",
+          "sha256": "72fb12d9d23d99d42775400241374a35bbe7c877166f1a5cd28ee4f9d443e857",
+          "bytes": 8800,
+          "durationSeconds": 0.952018
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "48081470ffcff9cdeee82cd718016055078e1be414a95884e0a0fbebe4d60a1e",
+          "ttsFingerprint": "04a88373d10010f2cb269e050cfb840178ca5a71210fddbf21ebf04e17b949b0"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.3,
+          "leadMs": 40,
+          "tailMs": 92
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 5.033,
+          "gapSeconds": 2.967,
+          "fit": "fits"
+        }
+      }
+    }
+  },
+  "summary": {
+    "clips": 10,
+    "auditFailed": [],
+    "scheduleEarly": []
+  },
+  "status": "technical-passed"
+}

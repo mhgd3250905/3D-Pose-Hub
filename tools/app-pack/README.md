@@ -13,3 +13,11 @@ python3 tools/app-pack/normalize_r2_v1.py --catalog /tmp/r2v1.json --verify /tmp
 ```
 
 产物：`catalog.json`（上传到 `pack/r2-v1/catalog.json`）、`catalog/catalog.json`（上传到 `pack/r2-v1/catalog/catalog.json`）、`channels/{dev,beta,stable}.json`（上传到 `pack/channels/`）、`report.json`（转换报告，不上传）。
+
+`build_r2_v6.py` / `build_r2_v7.py` 的 `--published-at` 必须是带时区的 ISO-8601，例如
+`2026-11-07T10:45:00+08:00`；省略时使用当前 UTC+08:00 时间（精确到秒）。
+非 ISO 时间在读取输入、创建输出目录之前就会退出。定稿写本地 `channels/{dev,beta}.json`
+前，还会按 SDK 的 schema、pack、catalog URL、SHA-256、字节数、min_sdk 规则自检；不生成 stable 指针。
+这些脚本只构建本地产物，不上传或切换线上指针。
+
+验证：`python -m unittest discover -s tools/app-pack -p test_catalog_pointer.py -v`。

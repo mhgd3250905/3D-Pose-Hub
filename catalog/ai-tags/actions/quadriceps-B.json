@@ -1,0 +1,126 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "quadriceps-B",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/quadriceps-B.json",
+    "textSha256Lf": "3ed805a46ddeddb1f904645139223a011df85c3ea0d641b961d03df854d3d455",
+    "spec": "drill-anim/specs/quadriceps-B.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "band"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "isolation"
+  ],
+  "contraction": [
+    "dynamic",
+    "isometric"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "lower"
+  ],
+  "primaryMuscles": [
+    "quadriceps"
+  ],
+  "secondaryMuscles": [],
+  "stabilizers": [
+    "glute-max"
+  ],
+  "joints": [
+    {
+      "joint": "knee",
+      "actions": [
+        "extension",
+        "flexion"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [
+    "band-anchor"
+  ],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "low",
+    "lumbar": "none",
+    "shoulder": "none",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    },
+    {
+      "population": "older-adult",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "warmup",
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "recovery"
+  ],
+  "alternatives": [
+    "o-chair-knee-extension"
+  ],
+  "regressions": [],
+  "progressions": [
+    "quadriceps-C",
+    "quadriceps-A"
+  ],
+  "aiSummary": {
+    "zh": "弹力带练膝盖最后伸直那一下，膝盖恢复或跑步预防时选。",
+    "en": "Banded terminal knee extension for knee lockout strength."
+  },
+  "confidence": "high",
+  "notes": [
+    {
+      "field": "requiredEquipment/optionalEquipment",
+      "existing": [
+        "resistance-band"
+      ],
+      "chosen": {
+        "requiredEquipment": [
+          "band"
+        ],
+        "optionalEquipment": []
+      },
+      "reason": "同义写法归一到词表 id，并按实际做法区分必需与可选。"
+    }
+  ],
+  "reviewNotes": []
+}

@@ -1,0 +1,128 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "adductors-B",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/adductors-B.json",
+    "textSha256Lf": "689825f707ecb52630492c66964dcb6c5acc96925be2055c975b10e385d0329e",
+    "spec": "drill-anim/specs/adductors-B.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "gym",
+    "hotel"
+  ],
+  "space": "mat",
+  "floorRequired": true,
+  "impact": "none",
+  "sweat": "light",
+  "requiredEquipment": [
+    "bench",
+    "mat"
+  ],
+  "optionalEquipment": [],
+  "substitutes": [
+    {
+      "for": "bench",
+      "use": [
+        "chair"
+      ],
+      "loadNote": "similar"
+    }
+  ],
+  "trainingType": [
+    "strength",
+    "stability-control"
+  ],
+  "movementPattern": [
+    "anti-lateral-flexion"
+  ],
+  "contraction": [
+    "isometric"
+  ],
+  "plane": [
+    "frontal"
+  ],
+  "bodyRegion": [
+    "lower",
+    "core"
+  ],
+  "primaryMuscles": [
+    "adductors",
+    "obliques"
+  ],
+  "secondaryMuscles": [
+    "hip-abductors"
+  ],
+  "stabilizers": [
+    "abs",
+    "deltoids",
+    "scapular"
+  ],
+  "joints": [
+    {
+      "joint": "hip",
+      "actions": [
+        "adduction",
+        "isometric-hold"
+      ]
+    },
+    {
+      "joint": "shoulder",
+      "actions": [
+        "isometric-hold"
+      ]
+    }
+  ],
+  "difficulty": 2,
+  "intensity": "moderate",
+  "prerequisites": [
+    "floor-transfer",
+    "plank-30s"
+  ],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "low",
+    "lumbar": "none",
+    "shoulder": "low",
+    "wrist": "none",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "moderate"
+  },
+  "populationNotes": [
+    {
+      "population": "older-adult",
+      "flag": "modify",
+      "reasons": [
+        "floor-transfer"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "performance"
+  ],
+  "alternatives": [],
+  "regressions": [
+    "adductors-C",
+    "h-inner-thigh",
+    "h-band-standing-adduction"
+  ],
+  "progressions": [],
+  "aiSummary": {
+    "zh": "练大腿内侧和侧腰的短力臂侧撑，家里用椅子代替凳子。",
+    "en": "Short-lever Copenhagen side plank for adductors and obliques; a chair can replace the bench."
+  },
+  "confidence": "high",
+  "notes": [],
+  "reviewNotes": [
+    "bench 在家用椅子代替（高度相近），因此场景含 home/hotel。",
+    "髋 jointStress=moderate 对应 cautions 的大腿根内侧。"
+  ]
+}

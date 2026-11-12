@@ -1,0 +1,129 @@
+{
+  "format": "pose-hub-ai-tags@1",
+  "id": "forearms-B",
+  "vocabularyVersion": "0.1.0",
+  "status": "ai-draft",
+  "source": {
+    "text": "catalog/production/v3-text/forearms-B.json",
+    "textSha256Lf": "1bd65ebfdaf30319949d2369e1d2928d53dd04b22124a64142a020113f5d9298",
+    "spec": "drill-anim/specs/forearms-B.js",
+    "catalogV1": "catalog/catalog.json"
+  },
+  "scenes": [
+    "home",
+    "office",
+    "gym",
+    "hotel"
+  ],
+  "space": "in-place",
+  "floorRequired": false,
+  "impact": "none",
+  "sweat": "none",
+  "requiredEquipment": [
+    "dumbbell"
+  ],
+  "optionalEquipment": [
+    "chair",
+    "bench"
+  ],
+  "substitutes": [
+    {
+      "for": "dumbbell",
+      "use": [
+        "water-bottle"
+      ],
+      "loadNote": "lighter"
+    }
+  ],
+  "trainingType": [
+    "strength"
+  ],
+  "movementPattern": [
+    "isolation"
+  ],
+  "contraction": [
+    "dynamic"
+  ],
+  "plane": [
+    "sagittal"
+  ],
+  "bodyRegion": [
+    "upper"
+  ],
+  "primaryMuscles": [
+    "forearms"
+  ],
+  "secondaryMuscles": [],
+  "stabilizers": [],
+  "joints": [
+    {
+      "joint": "wrist",
+      "actions": [
+        "flexion",
+        "extension"
+      ]
+    }
+  ],
+  "difficulty": 1,
+  "intensity": "low",
+  "prerequisites": [],
+  "laterality": "unilateral",
+  "jointStress": {
+    "knee": "none",
+    "lumbar": "none",
+    "shoulder": "none",
+    "wrist": "low",
+    "neck": "none",
+    "ankle": "none",
+    "hip": "none"
+  },
+  "populationNotes": [
+    {
+      "population": "beginner",
+      "flag": "suitable",
+      "reasons": [
+        "low-demand"
+      ]
+    }
+  ],
+  "sessionRole": [
+    "main"
+  ],
+  "goals": [
+    "strength",
+    "hypertrophy",
+    "performance"
+  ],
+  "alternatives": [],
+  "regressions": [],
+  "progressions": [
+    "forearms-C"
+  ],
+  "aiSummary": {
+    "zh": "坐着就能做的前臂和握力练习，办公室可用水瓶代替哑铃。",
+    "en": "Seated wrist curl for forearms and grip; a water bottle works at the office."
+  },
+  "confidence": "medium",
+  "notes": [
+    {
+      "field": "requiredEquipment/optionalEquipment",
+      "existing": [
+        "dumbbell",
+        "bench"
+      ],
+      "chosen": {
+        "requiredEquipment": [
+          "dumbbell"
+        ],
+        "optionalEquipment": [
+          "chair",
+          "bench"
+        ]
+      },
+      "reason": "v3 的 bench 只是坐的地方，任何椅子都行，改为可选；哑铃可用水瓶代替（更轻）。"
+    }
+  ],
+  "reviewNotes": [
+    "办公室场景依赖水瓶替代哑铃，负重明显更轻。"
+  ]
+}

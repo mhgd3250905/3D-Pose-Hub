@@ -1,0 +1,105 @@
+{
+ "format": "pose-hub-shoulder-axilla-render-ab-plan@1",
+ "_doc": "shoulder-axilla-r2 product-look A/B (OFF | r2). Used by: node tools/joint-opt-r1/render-ab-r1.mjs --plan tools/joint-opt-r1/render-ab-r2.plan.json --out <dir>, and by regress-r2.mjs (which appends the 3 most-changed regression actions).",
+ "module": "tools/joint-opt-r1/shoulder-axilla-r2.mjs",
+ "moduleGlobal": "__shoulderAxillaR2",
+ "moduleLabel": "shoulder-axilla-r2",
+ "recipesDir": "catalog/production/remaining219-r1/recipes",
+ "width": 720,
+ "fullLayers": [
+  {
+   "layer": "body-highlight",
+   "suffix": "",
+   "label": "product look"
+  }
+ ],
+ "closeupLayers": [
+  {
+   "layer": "body-highlight",
+   "suffix": "",
+   "label": "product look"
+  },
+  {
+   "layer": "body",
+   "suffix": "_hl-off",
+   "label": "highlight off"
+  }
+ ],
+ "background": "#101013",
+ "jpegQuality": 0.9,
+ "closeup": {
+  "_doc": "Close-up camera is computed per side from the shoulder joint and the axilla region of shoulder-axilla-r1: target = centroid of that side's region vertices in the current skinned pose (the axilla). 'stageB' = production camera direction (like the stage-B tiles; falls back to 'axilla' when that direction would look at the axilla from behind). 'axilla' = torso frame direction forward*f + lateral*l + up*u + (joint->region centroid)*jointToRegion. Perspective camera at distanceM, fov chosen so the frame is +-halfHeightM around the target; near plane clips geometry more than clipFrontM in front of the target (like the stage-B crop sphere), so the other arm/head never block the view.",
+  "halfHeightM": 0.16,
+  "distanceM": 1.2,
+  "clipFrontM": 0.32,
+  "axillaDir": {
+   "forward": 1.0,
+   "lateral": 0.7,
+   "up": -0.25,
+   "jointToRegion": 0.5
+  },
+  "minBodyCoverage": 0.15
+ },
+ "entries": [
+  {
+   "action": "h-banana",
+   "group": "pilot",
+   "t": 3.0,
+   "sides": [
+    "right",
+    "left"
+   ],
+   "closeupView": "stageB"
+  },
+  {
+   "action": "h-db-press",
+   "group": "pilot",
+   "t": 2.0,
+   "sides": [
+    "right",
+    "left"
+   ],
+   "closeupView": "stageB"
+  },
+  {
+   "action": "h-fixed-bar-vertical-pull",
+   "group": "pilot",
+   "t": 0.0,
+   "sides": [
+    "right",
+    "left"
+   ],
+   "closeupView": "stageB"
+  },
+  {
+   "action": "abs-A",
+   "group": "control",
+   "t": 0.5,
+   "sides": [
+    "right",
+    "left"
+   ],
+   "closeupView": "axilla"
+  },
+  {
+   "action": "o-stand-crossreach",
+   "group": "control",
+   "t": 3.8333,
+   "sides": [
+    "right",
+    "left"
+   ],
+   "closeupView": "axilla"
+  },
+  {
+   "action": "scapular-B",
+   "group": "control",
+   "t": 0.3333,
+   "sides": [
+    "right",
+    "left"
+   ],
+   "closeupView": "axilla"
+  }
+ ]
+}

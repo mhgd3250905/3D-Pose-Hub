@@ -1,0 +1,317 @@
+{
+  "format": "pose-hub-voice@3",
+  "actionId": "h-kneeling-pushup",
+  "definitionSha256": "c4c75b134305e31a32b05aea63469e7392eb3e0c6127adc126d48cd7c1be7fb2",
+  "standard": {
+    "lufsTarget": -16,
+    "lufsTolerance": 1,
+    "truePeakMaxDbtp": -1,
+    "codec": "aac",
+    "sampleRate": 44100,
+    "channels": 1,
+    "bitrateKbps": 64,
+    "process": "hiplab v4.1"
+  },
+  "voiceProfile": {
+    "zh": {
+      "voice": "zh-CN-XiaoxiaoNeural",
+      "rate": "+6%"
+    },
+    "en": {
+      "voice": "en-US-JennyNeural",
+      "rate": "+4%"
+    }
+  },
+  "common": "voice/common/manifest.json",
+  "contentReview": "passed",
+  "manualListening": "pending",
+  "cuePoints": {
+    "start": 1.2,
+    "peak": 2.1,
+    "end": 2.967,
+    "method": "masters highlight pulse (25 % rise / plateau reached / 50 % fall) — computed from spec pulse track (spec_pulse.mjs), masters not on this machine",
+    "sampled": false
+  },
+  "lines": {
+    "zh": {
+      "name": {
+        "text": "跪姿俯卧撑",
+        "ref": {
+          "path": "packages/h-kneeling-pushup/voice/zh/name.m4a",
+          "sha256": "85f9c5204077aa8ae9cf38b79c293051f588e1033a51c013bbfcbe66a185f0f6",
+          "bytes": 10318,
+          "durationSeconds": 1.137778
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "c2dfe321b2bcdcfddfad5c5f921de321accc0a935f68ce81f6207225a85a3ed7",
+          "ttsFingerprint": "27c3f28f701bf8e781d44600a6185a8c00cdc1615d8639051cfe35db77c5da0d"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.4,
+          "leadMs": 40,
+          "tailMs": 98
+        },
+        "role": "intro"
+      },
+      "primaryCue": {
+        "text": "膝盖着地，从头到膝一条直线往下",
+        "ref": {
+          "path": "packages/h-kneeling-pushup/voice/zh/primaryCue.m4a",
+          "sha256": "eb0a3c4db832d16f9498d88838e6bbc8e2da05617e0d5c9f97291bb38a569e10",
+          "bytes": 27665,
+          "durationSeconds": 3.250794
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "21b2be5dba933851cbe0c3a4e99aef49271a6824ac6878133e429711e8ae3866",
+          "ttsFingerprint": "a1edfc89e29a07ed4febd377e24025bcea87fb81424dc10e5661a81cee920f5a"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.6,
+          "leadMs": 40,
+          "tailMs": 91
+        },
+        "role": "intro"
+      },
+      "phase.start": {
+        "text": "下放",
+        "ref": {
+          "path": "packages/h-kneeling-pushup/voice/zh/phase.start.m4a",
+          "sha256": "060fe9343c3ac46be5707d19eacde43787af637441ffb0c5e21914a5055cf071",
+          "bytes": 6314,
+          "durationSeconds": 0.650159
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "80875069dd81005ca0e8a5c3eb367f1c298a619c8e485bde1697a583707883e6",
+          "ttsFingerprint": "1ca0b457f25e7bb0cacf14a42581ebae7fee204c930de48c82459e0484d0150c"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.4,
+          "leadMs": 40,
+          "tailMs": 100
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 1.2,
+          "gapSeconds": 0.9,
+          "fit": "fits"
+        }
+      },
+      "phase.peak": {
+        "text": "停一下",
+        "ref": {
+          "path": "packages/h-kneeling-pushup/voice/zh/phase.peak.m4a",
+          "sha256": "3f3d887de35830c1bf91aeee71a5f7b1c81a4c9d00e1eade455ef7d51a19a151",
+          "bytes": 6786,
+          "durationSeconds": 0.696599
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "dd1af881c3a1e655ee3ad162bcde6f234606fc00fb1e24228ed86b70f5693ea2",
+          "ttsFingerprint": "60bad401c279150f999f052c15b2a6880658ebadc45b05c4d0ad0a6fc3adba87"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -3.2,
+          "leadMs": 40,
+          "tailMs": 77
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 2.1,
+          "gapSeconds": 0.867,
+          "fit": "fits"
+        }
+      },
+      "phase.end": {
+        "text": "撑起",
+        "ref": {
+          "path": "packages/h-kneeling-pushup/voice/zh/phase.end.m4a",
+          "sha256": "1daf73838eb39020fbb85e9e187f9885de3de265f898a7c4d5028b371d26702a",
+          "bytes": 6726,
+          "durationSeconds": 0.696599
+        },
+        "provenance": {
+          "voice": "zh-CN-XiaoxiaoNeural",
+          "rate": "+6%",
+          "rawSha256": "d2d9d9acd005dfe785a1d7373657ccbd8160d3a41945e3ee4e014ffec6ce4c9d",
+          "ttsFingerprint": "262edc94287257c9dae242c312217fbd73e46aeaebfeacb8d35b913d1e810328"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.0,
+          "truePeak": -2.9,
+          "leadMs": 40,
+          "tailMs": 87
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 2.967,
+          "gapSeconds": 5.033,
+          "fit": "fits"
+        }
+      }
+    },
+    "en": {
+      "name": {
+        "text": "Knee-Supported Push-Up",
+        "ref": {
+          "path": "packages/h-kneeling-pushup/voice/en/name.m4a",
+          "sha256": "f4e91c0e787473aee3396eed00fa58390505cea5825d8c9a7cf7a605008397af",
+          "bytes": 11455,
+          "durationSeconds": 1.253878
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "dec4ff291012bfbdd0ff008f4458b0df69f478598de415858065add1fa5eaffd",
+          "ttsFingerprint": "6b03f9c01e2113368a91c1c033ae1776b40035efffa07cc9ca2277ab89127dca"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.3,
+          "leadMs": 40,
+          "tailMs": 74
+        },
+        "role": "intro"
+      },
+      "primaryCue": {
+        "text": "Kneel and lower with your body straight from head to knees",
+        "ref": {
+          "path": "packages/h-kneeling-pushup/voice/en/primaryCue.m4a",
+          "sha256": "e741b46b4c34c69e508c9b027c4c0f6b5d6d3ac1572c68269460bfb273959ee8",
+          "bytes": 22889,
+          "durationSeconds": 2.670295
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "5bc45230d8f9320185f8707aaa8f67a6a75e350e7bffda33904bacf9548c62a6",
+          "ttsFingerprint": "77eae1b30c1a271c691fa5bc0ce579c49a10d946c3e59104507f0f981ea7cbe4"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.1,
+          "leadMs": 40,
+          "tailMs": 100
+        },
+        "role": "intro"
+      },
+      "phase.start": {
+        "text": "Lower",
+        "ref": {
+          "path": "packages/h-kneeling-pushup/voice/en/phase.start.m4a",
+          "sha256": "112ba6840ae24a185a3acc8dfa2d75016c38480a19125cab97ca741ff42c2b33",
+          "bytes": 5598,
+          "durationSeconds": 0.534059
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "153c699395cf43f57e6e60bf95b07e29b23febd303c9298f56f7709170491eb5",
+          "ttsFingerprint": "994f87386967e210d9f9e7fa5d94c40bead47345fb9e11bed970cb0cb1086713"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -15.9,
+          "truePeak": -2.7,
+          "leadMs": 40,
+          "tailMs": 74
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 1.2,
+          "gapSeconds": 0.9,
+          "fit": "fits"
+        }
+      },
+      "phase.peak": {
+        "text": "Pause",
+        "ref": {
+          "path": "packages/h-kneeling-pushup/voice/en/phase.peak.m4a",
+          "sha256": "370241428bef6c68bcf6767c333d28e61ec7ae34a34512111176bf527c64fff7",
+          "bytes": 6157,
+          "durationSeconds": 0.626939
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "0b229636f7179aed9963a2cf9b65f8800c196f6eaab56062fc47f525d5fc798d",
+          "ttsFingerprint": "31b0c0cc0e4f2268442e90aca06df30611d0232b02acc5fadf6825b18434017b"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.2,
+          "truePeak": -2.4,
+          "leadMs": 30,
+          "tailMs": 87
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 2.1,
+          "gapSeconds": 0.867,
+          "fit": "fits"
+        }
+      },
+      "phase.end": {
+        "text": "Push up",
+        "ref": {
+          "path": "packages/h-kneeling-pushup/voice/en/phase.end.m4a",
+          "sha256": "d9f4b5333c120533f2971f822453528f702d56f9aa8d271ba9e2c3fb61be5533",
+          "bytes": 6077,
+          "durationSeconds": 0.626939
+        },
+        "provenance": {
+          "voice": "en-US-JennyNeural",
+          "rate": "+4%",
+          "rawSha256": "ab39d02e431dd2a4e3bacd384992380e66d7a309c6bb11df954e35f12dcc10b7",
+          "ttsFingerprint": "4791508df6620996cfa321c4784b42e34f673d7cd0dd79e42376c21bf23f131e"
+        },
+        "audit": {
+          "status": "passed",
+          "fails": [],
+          "lufs": -16.1,
+          "truePeak": -2.5,
+          "leadMs": 40,
+          "tailMs": 77
+        },
+        "role": "phase",
+        "schedule": {
+          "at": 2.967,
+          "gapSeconds": 5.033,
+          "fit": "fits"
+        }
+      }
+    }
+  },
+  "summary": {
+    "clips": 10,
+    "auditFailed": [],
+    "scheduleEarly": []
+  },
+  "status": "technical-passed"
+}

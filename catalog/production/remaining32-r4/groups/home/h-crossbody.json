@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "h-crossbody",
   "nameZh": "交叉臂肩后侧拉伸",
-  "spec": "drill-anim/specs/h-crossbody-r9-mv2.js",
-  "specSha256Lf": "3fbaa3fe19d1331a34efafff57beb786039ffc9bd1be4fe3a2160fdb398abd79",
+  "spec": "drill-anim/specs/h-crossbody-r10.js",
+  "specSha256Lf": "5351fbe46bf9d579dbf3205d00b2c7cfb871dbc37760bb90ecf3fb0319f19f34",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -315,5 +315,17 @@
   "wristTwistRuntime": {
     "version": "r6",
     "capDeg": 40.0
+  },
+  "elbowTwistFix": {
+    "branch": "codex/elbow-twist-r1",
+    "date": "2026-11-10",
+    "from": "drill-anim/specs/h-crossbody-r9-mv2.js",
+    "to": "drill-anim/specs/h-crossbody-r10.js",
+    "supersedes": "drill-anim/specs/h-crossbody-r9-mv2.js",
+    "why": "2026-11-10 ROM 修复（tools/rom-spec/ROM.md r1.1）：左臂 upperArmTwist -30、elbowTwist -60：前臂总扭转 foreTot 308°→26°（限 140），手对前臂扭转 htw 180°→124°（仍超 75，明显减小）。肘部最小截面比 左 0.80→0.90；R5 0.38 不变；翻面 106→102；跨肩扭转 53°→23°；腕截面 0.87 不变；关节/手掌漂移 0 mm，求解警告不增（密集 81 帧）。近身计数 左 517→563、右 442→459（+9%，横抱手臂贴胸，列待验收）；配方指向 h-crossbody-r10，supersedes h-crossbody-r9-mv2，reviewed=false",
+    "reviewed": false,
+    "qaStatus": "candidate-awaiting-gpu-and-user-review",
+    "elbowTwistFix": "r2",
+    "romFix": "r1.1"
   }
 }
