@@ -24,7 +24,7 @@ node tools/v4/produce-v4.mjs --out $R --batch <N>
 ```
 `<N>` 从 1 开始，每批结束后：
 
-1. 把最后一行 JSON 里 `report` 字段的文字**原样**发到飞书群「开哥(UGK-Claw 创始人）」，开头加「V4 进度」。
+1. 在派任务的那条飞书话题里回复，@hark-sk，正文 = 「V4 进度」+ 最后一行 JSON 里 `report` 字段的文字（原样）。
 2. 按退出码处理：
    - `0` 或 `3`（3 = 本批个别动作失败，其余已完成）：发完回报后**立刻**跑下一批 `N+1`。
    - `4`（预览推送失败，渲染本身没问题）：回报里附上 `error`，继续下一批。
@@ -35,7 +35,7 @@ node tools/v4/produce-v4.mjs --out $R --batch <N>
 ```powershell
 node tools/v4/produce-v4.mjs --out $R --batch retry
 ```
-只跑一次，把 `report` 发群里，并写「V4 全量渲染结束」。之后停下，不做任何上传。
+只跑一次，按同样方式回报，并写「V4 全量渲染结束」。之后停下，不做任何上传。
 
 ## 说明（不用执行）
 - 每个动作：`render-masters-joint.mjs --shoulder-axilla on --profile default`（5 套皮肤母帧）→ `compose.py --profile default`（每套皮肤的透明 webm、深/浅 mp4、封面、缩略图、关键帧）。与 r2-v12/r2-v13 线上成片同一入口；渲染内容固定为 main d6fb47c。
