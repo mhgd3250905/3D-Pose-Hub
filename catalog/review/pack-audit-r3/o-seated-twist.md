@@ -48,3 +48,14 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点3：就停在这儿，慢慢喘气，每次呼气再松一点。 → 转到胸口对着椅背就停，脑袋跟着慢慢转过去。（Stay right there, breathe slowly, let go a little more each breath out. → Turn until your chest faces the backrest, head following slowly.）
+- 要点4：别一下一下往下压，有拉的感觉就够，别拉到疼。 → 转到有感觉就停，别用手硬掰椅背。（Don't bounce. A clear stretch is enough, never pain. → Stop when you feel it. Don't crank yourself around with your hands.）
+- 常见错误3：憋气或一下一下往下压 → 屁股跟着在椅子上挪（Holding your breath or bouncing. → Shifting your butt on the seat as you turn.）
+- 注意事项1：腰背疼就转少点，还疼就停 → 腰扭着疼就转一半，坐直了再转（If your back hurts, don't turn as far. Stop if it still hurts. → If your back hurts in the twist, only turn halfway and sit taller.）
+- 相位口令 end：呼气再转点 → 呼气坐高点（Turn a bit more → Sit taller）
+- 语音 set[3]：呼气，再松一点 → 呼气，坐高一点再转（Breathe out, let go → Breathe out, sit tall, turn）

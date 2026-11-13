@@ -44,3 +44,10 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 常见错误2：站着那条腿膝盖往里倒 → 转开时站着那条腿的膝盖往里扣（Standing knee caving in. → Standing knee caving in as you turn open.）
+- 注意事项1：用不带轮子的结实椅子，疼或站不稳就停 → 两手扶住椅背，站不稳就转小点（Use a sturdy chair without wheels. Stop if it hurts or you feel wobbly. → Both hands on the chair. If you're wobbly, turn less.）

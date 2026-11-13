@@ -47,3 +47,9 @@
 ## 8. 待开哥定
 - r2 flag 沿用：tags.activeMuscles 写 calves（目标是小腿外侧，词表没有），是否保留请定
 - 预览帧几乎看不到高亮，请看视频确认
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 注意事项1：扶稳没轮子的椅子，疼或站不稳就停 → 扶住椅背再翻脚，脚踝外面疼就翻小点（Use a sturdy chair without wheels. Stop if it hurts or you feel wobbly. → Hold the chair before you turn the foot. If the outside of your ankle hurts, turn less.）

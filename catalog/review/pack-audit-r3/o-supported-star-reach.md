@@ -44,3 +44,11 @@
 
 ## 8. 待开哥定
 - 难度从 2 降到 1（扶椅、比不扶版容易），请确认
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 常见错误1：站着那条腿膝盖往里倒 → 往旁边、往后点地时站着的膝盖往里歪（Standing knee caving in. → Standing knee falling in as you tap to the side and back.）
+- 注意事项1：用不带轮子的结实椅子，疼或站不稳就停 → 扶稳椅背，点得近一点也行，别为了远站不稳（Use a sturdy chair without wheels. Stop if it hurts or you feel wobbly. → Hold the chair. Tap closer if you need to. Don't wobble just to reach far.）
+- 语音 reminders[0]：膝盖对着脚尖 → 膝盖别往里歪（Knee over toes → Knee doesn't cave）

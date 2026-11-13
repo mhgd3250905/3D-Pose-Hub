@@ -44,3 +44,9 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 注意事项1：腰背疼就动小点，还疼就停 → 腰背发紧就拱一半挺一半，动作放慢（If your back hurts, don't move as far. Stop if it still hurts. → If your back tightens, only go halfway each way and slow down.）

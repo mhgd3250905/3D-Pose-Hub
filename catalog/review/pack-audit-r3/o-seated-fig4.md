@@ -47,3 +47,13 @@
 
 ## 8. 待开哥定
 - 预览帧几乎看不到屁股高亮，请看视频确认
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点3：就停在这儿，慢慢喘气，每次呼气再松一点。 → 搭着的那条小腿放平，膝盖自然往下落。（Stay right there, breathe slowly, let go a little more each breath out. → Keep the crossed shin level and let that knee drop.）
+- 要点4：别一下一下往下压，有拉的感觉就够，别拉到疼。 → 呼气时胸口往小腿那边再靠近一点，背别弓。（Don't bounce. A clear stretch is enough, never pain. → Each breath out, bring your chest a little closer to your shin, back long.）
+- 常见错误3：憋气或一下一下往下压 → 用手往下按膝盖（Holding your breath or bouncing. → Pushing the knee down with your hand.）
+- 语音 set[1]：背挺直，别弓 → 胸口往前，背挺直（Long back → Chest forward, back long）
+- 语音 set[3]：呼气，再松一点 → 呼气，胸口再靠近（Breathe out, let go → Breathe out, chest closer）

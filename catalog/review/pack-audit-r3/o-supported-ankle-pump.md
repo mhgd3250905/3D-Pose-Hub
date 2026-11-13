@@ -45,3 +45,9 @@
 
 ## 8. 待开哥定
 - r2 flag 沿用：先绷后勾是按 spec 推断，请看动画确认；若是先勾后绷，主口令和相位口令对调
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 注意事项1：用不带轮子的结实椅子，疼或站不稳就停 → 扶稳椅背单腿站，小腿抽筋就放下脚歇歇（Use a sturdy chair without wheels. Stop if it hurts or you feel wobbly. → Hold the chair while on one leg. If your calf cramps, put the foot down and rest.）

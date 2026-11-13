@@ -46,3 +46,9 @@
 
 ## 8. 待开哥定
 - 预览帧几乎看不到胯部高亮，请看视频确认
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 注意事项1：膝盖或胯疼就摆小点，还疼就停 → 膝盖里面别着疼就摆小点，大腿别跟着转（If your knee or hip hurts, don't swing as far. Stop if it still hurts. → If your knee feels twisted, swing less and keep your thigh still.）

@@ -46,3 +46,9 @@
 
 ## 8. 待开哥定
 - 高亮看着在小腿前面，坐姿提踵练的是小腿后面；高亮位置可能误导（只报告，已列渲染侧复核清单）
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点3：顶上稍停，再慢慢放下。 → 脚后跟抬到最高停一下，再轻轻落回地。（Pause at the top, then lower slowly. → Hold your heels up for a moment, then set them down softly.）

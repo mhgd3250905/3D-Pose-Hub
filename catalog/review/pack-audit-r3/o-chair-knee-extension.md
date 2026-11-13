@@ -46,3 +46,11 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 常见错误2：身子往后仰 → 往后靠在椅背上，借身子把腿抬起来（Leaning back. → Leaning back into the chair to get the leg up.）
+- 注意事项1：膝盖疼就伸少点，还疼就停 → 膝盖里面疼就伸到一半，脚尖勾着慢慢来（If your knee hurts, don't straighten as far. Stop if it still hurts. → If your knee hurts inside, only straighten halfway and go slow.）
+- 语音 reminders[2]：身子别往后仰 → 背离开椅背坐直（Don't lean back → Sit tall, off the backrest）

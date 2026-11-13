@@ -44,3 +44,9 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 注意事项1：用不带轮子的结实椅子，疼或站不稳就停 → 一手扶椅背，单腿站不稳就让后脚尖点着地（Use a sturdy chair without wheels. Stop if it hurts or you feel wobbly. → Keep a hand on the chair. If one leg is too wobbly, keep your back toes touching down.）

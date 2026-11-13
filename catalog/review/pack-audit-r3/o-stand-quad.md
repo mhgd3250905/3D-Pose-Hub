@@ -48,3 +48,15 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点3：就停在这儿，慢慢喘气，每次呼气再松一点。 → 两个膝盖并在一起，抬起的膝盖朝地。（Stay right there, breathe slowly, let go a little more each breath out. → Keep your knees side by side, the bent one pointing down.）
+- 要点4：别一下一下往下压，有拉的感觉就够，别拉到疼。 → 呼气时屁股夹一下，大腿前面会拉得更开，别硬拽脚。（Don't bounce. A clear stretch is enough, never pain. → Each breath out, squeeze your butt to feel more. Don't yank the foot.）
+- 常见错误1：腰往前挺 → 拽着脚，肚子往前挺（Arching your lower back. → Pulling the foot and pushing your belly forward.）
+- 常见错误3：憋气或一下一下往下压 → 抬起的膝盖往外跑（Holding your breath or bouncing. → The bent knee drifting out to the side.）
+- 注意事项1：膝盖疼就少弯点，还疼就停 → 膝盖弯着疼就抓裤脚或用毛巾套脚（If your knee hurts, don't bend it as far. Stop if it still hurts. → If bending the knee hurts, hold your pant leg or loop a towel around the foot.）
+- 语音 set[2]：腰别往前挺 → 两膝并拢，肚子别挺（Don't arch → Knees together, belly in）
+- 语音 set[3]：呼气，再松一点 → 呼气，屁股夹一下（Breathe out, let go → Breathe out, squeeze）
