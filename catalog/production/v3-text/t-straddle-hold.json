@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "t-straddle-hold",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/t-straddle-hold-r6.js"
  ],
@@ -10,32 +10,32 @@
   "en": "Straddle Support Hold"
  },
  "purpose": {
-  "zh": "练托马斯全旋需要的分腿撑起力量",
-  "en": "Build the straddle support strength you need for flares."
+  "zh": "练托马斯全旋要的分腿撑起劲",
+  "en": "Builds the straddle support strength you need for flares."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "手臂伸直推地，把屁股和双腿撑离地面",
-    "en": "Lock your arms and push the floor to lift your hips and legs up"
+    "zh": "手臂伸直推地，把屁股和两腿撑离地面",
+    "en": "Lock your arms and push the floor to lift your hips and legs"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "宽分腿坐，双手在两腿之间撑地。",
-    "en": "Sit in a wide straddle with your hands on the floor between your legs."
+    "zh": "宽分腿坐，两手在两腿中间撑地。",
+    "en": "Wide straddle, hands on the floor between your legs."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "肩膀往下压，身体前倾，撑住别落地。",
-    "en": "Press your shoulders down, lean forward, and stay up."
+    "zh": "肩膀往下压，上身前倾，撑住别落地。",
+    "en": "Shoulders down, lean forward, stay up."
    }
   }
  ],
@@ -51,12 +51,12 @@
  ],
  "cautions": [
   {
-   "zh": "手腕不舒服时先活动一下手腕",
-   "en": "If your wrists feel stiff, warm them up first."
+   "zh": "开始前先转转手腕",
+   "en": "Roll out your wrists before you start."
   },
   {
-   "zh": "手腕或肩膀疼时少做一点，还疼就停",
-   "en": "If your wrists or shoulders hurt, do less, and stop if it still hurts."
+   "zh": "手腕或肩膀疼就少撑几秒，还疼就停；撑不住就只撑起屁股、脚跟点地",
+   "en": "If your wrists or shoulders hurt, hold for less time. Stop if it still hurts. Can't hold it? Lift just your hips with your heels down."
   }
  ],
  "tags": {
@@ -89,11 +89,11 @@
    "en": "Press up"
   },
   "peak": {
-   "zh": "保持住",
-   "en": "Hold"
+   "zh": "撑住",
+   "en": "Hold it"
   },
   "end": {
-   "zh": "保持呼吸",
+   "zh": "别憋气",
    "en": "Keep breathing"
   }
  },
@@ -111,6 +111,85 @@
     "最终口径：按真实做法定（2026-11-01）"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "剂量 3 组×10 秒、休息 60 秒不变",
+    "注意事项「少做一点」→「少撑几秒」，补退阶「只撑起屁股」",
+    "难度 v3 3 / ai-tags 4 → 统一 3"
+   ],
+   "flags": [
+    "V4 预览没有这一批（batch-24），画面待补看"
+   ],
+   "audit": {
+    "dose": [
+     "3 组×10 秒，休息 60 秒",
+     "3 组×10 秒，休息 60 秒"
+    ],
+    "rep": [
+     "计时",
+     "计时"
+    ],
+    "difficulty": [
+     {
+      "v3": 3,
+      "ai": 4
+     },
+     3
+    ],
+    "voice": "口吻改写",
+    "frame": "待 V4 补看（batch-24 预览未出）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 3,
+    "role": "posture",
+    "zh": "肩膀往下压",
+    "en": "Shoulders down",
+    "from": [
+     "cue3",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "at": 7,
+    "key": "n.3"
+   },
+   {
+    "at": 8,
+    "key": "n.2"
+   },
+   {
+    "at": 9,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.release",
+    "p.rest",
+    "sec.60"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
   }
  }
 }

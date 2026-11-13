@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "triceps-C",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/data/drills.json",
   "drill-anim/specs/triceps-C.js"
@@ -11,16 +11,16 @@
   "en": "Parallel Bar Dips"
  },
  "purpose": {
-  "zh": "练手臂后侧和胸，从低处把身体推起",
-  "en": "Build the back of your arms and your chest by pressing up from low down."
+  "zh": "练大臂后面和胸，从低处把身子推起来",
+  "en": "Builds the backs of your upper arms and your chest by pressing up from low down."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "下到上臂差不多和地面平行，再推起",
-    "en": "Lower until your upper arms are about level with the floor, then press up"
+    "zh": "下到大臂差不多跟地面平，再推起来",
+    "en": "Lower until your upper arms are about level, then press up"
    }
   },
   {
@@ -36,24 +36,28 @@
    "primary": false,
    "text": {
     "zh": "膝盖弯着，腿别甩。",
-    "en": "Keep your knees bent and do not swing your legs."
+    "en": "Knees bent. Don't swing your legs."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "下得太深，肩膀往前塌",
-   "en": "Going too deep and letting your shoulders roll forward."
+   "zh": "下太深，肩膀往前塌",
+   "en": "Going too deep so your shoulders roll forward."
   },
   {
-   "zh": "甩腿借力",
+   "zh": "甩腿借劲",
    "en": "Swinging your legs for momentum."
   }
  ],
  "cautions": [
   {
-   "zh": "肩膀不舒服时先只做顶端撑住，再慢慢加深",
-   "en": "If your shoulders feel uncomfortable, start with top holds and only go as deep as is pain-free."
+   "zh": "肩膀不舒服就先只在顶上撑住，再一点点往下",
+   "en": "If your shoulders feel off, start with holds at the top, then go a little deeper over time."
+  },
+  {
+   "zh": "做不满就脚踩地帮一把",
+   "en": "Can't get them all? Let your feet help from the floor."
   }
  ],
  "tags": {
@@ -98,24 +102,25 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 1.3,
+    "seconds": 2.0,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 0.2
+    "seconds": 0.3,
+    "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 1.3,
+    "seconds": 1.2,
     "cue": "phase.end"
    },
    {
     "id": "rest",
-    "seconds": 1.2
+    "seconds": 0.5
    }
   ],
-  "source": "spec-timeline manual r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -126,6 +131,77 @@
    ],
    "flags": [
     "批表 d 轨 go/back 1.07 与 spec 1.3 s 不符，按 spec 手算"
+   ]
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 4.0 s → 4.0 s（慢下 2.0 / 底 0.3 / 推起 1.2 / 顶上停 0.5）；r2「批表与 spec 不符」flag 与节奏脱钩",
+    "剂量 3 组×5 次、休息 90 秒不变（共用词已补 sec.90）",
+    "难度 v3 3 / ai-tags 4 → 统一 3；退阶「脚踩地帮一把」写进注意事项"
+   ],
+   "flags": [
+    "V4 预览没有这一批（batch-24），画面待补看"
+   ],
+   "audit": {
+    "dose": [
+     "3 组×5 次，休息 90 秒",
+     "3 组×5 次，休息 90 秒"
+    ],
+    "rep": [
+     "4.0 s",
+     "4.0 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 3,
+      "ai": 4
+     },
+     3
+    ],
+    "voice": "口吻改写",
+    "frame": "待 V4 补看（batch-24 预览未出）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 4.0,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "halfway",
+    "zh": "别下太深",
+    "en": "Not too deep",
+    "from": [
+     "cue1",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 4,
+    "key": "p.last_rep"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.90"
+   ],
+   "allDone": [
+    "p.nice"
    ]
   }
  }

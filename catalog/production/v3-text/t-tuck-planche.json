@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "t-tuck-planche",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/t-tuck-planche-r6.js"
  ],
@@ -10,15 +10,15 @@
   "en": "Tuck Planche"
  },
  "purpose": {
-  "zh": "练手撑平衡和肩膀往前顶的力量",
-  "en": "Build hand balance and the shoulder strength to lean forward over your hands."
+  "zh": "练手撑平衡和肩膀往前顶的劲",
+  "en": "Builds hand balance and the shoulder strength to lean forward over your hands."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "肩膀往前送过手，双脚离地",
+    "zh": "肩膀往前送过手，两脚离地",
     "en": "Lean your shoulders past your hands and lift your feet"
    }
   },
@@ -26,7 +26,7 @@
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "蹲着双手撑地，手指稍微朝外，手臂伸直。",
+    "zh": "蹲着两手撑地，手指稍微朝外，手臂伸直。",
     "en": "Crouch with your hands flat, fingers turned slightly out, arms straight."
    }
   },
@@ -34,8 +34,8 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "膝盖收在胸口下面，背微微拱起，稳住平衡。",
-    "en": "Tuck your knees under your chest, round your back a little and hold the balance."
+    "zh": "膝盖收在胸口下面，背微微拱起，稳住。",
+    "en": "Knees tucked under your chest, back slightly rounded. Hold the balance."
    }
   }
  ],
@@ -51,12 +51,12 @@
  ],
  "cautions": [
   {
-   "zh": "手腕不舒服时先活动一下手腕",
-   "en": "If your wrists feel stiff, warm them up first."
+   "zh": "开始前先转转手腕",
+   "en": "Roll out your wrists before you start."
   },
   {
-   "zh": "手腕或肩膀疼时缩短时间，还疼就停",
-   "en": "If your wrists or shoulders hurt, hold for less time, and stop if it still hurts."
+   "zh": "手腕或肩膀疼就少撑几秒，还疼就停；撑不住就脚尖点地，只练肩膀往前送",
+   "en": "If your wrists or shoulders hurt, hold for less time. Stop if it still hurts. Can't lift off? Keep your toes down and just practise leaning forward."
   }
  ],
  "tags": {
@@ -85,7 +85,7 @@
  },
  "phases": {
   "start": {
-   "zh": "前倾",
+   "zh": "往前倾",
    "en": "Lean forward"
   },
   "peak": {
@@ -93,8 +93,8 @@
    "en": "Lift and hold"
   },
   "end": {
-   "zh": "放下双脚",
-   "en": "Feet down"
+   "zh": "别憋气",
+   "en": "Keep breathing"
   }
  },
  "training": {
@@ -109,6 +109,85 @@
     "training=hold（动画全程离地静止定住 8 s）"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "剂量 3 组×8 秒、休息 90 秒不变（共用词已补 sec.90）",
+    "相位口令「放下双脚」→「别憋气」（计时类不写回来）；补退阶「脚尖点地只练前送」",
+    "难度 v3 3 / ai-tags 4 → 统一 3"
+   ],
+   "flags": [
+    "V4 预览没有这一批（batch-24），画面待补看"
+   ],
+   "audit": {
+    "dose": [
+     "3 组×8 秒，休息 90 秒",
+     "3 组×8 秒，休息 90 秒"
+    ],
+    "rep": [
+     "计时",
+     "计时"
+    ],
+    "difficulty": [
+     {
+      "v3": 3,
+      "ai": 4
+     },
+     3
+    ],
+    "voice": "口吻改写",
+    "frame": "待 V4 补看（batch-24 预览未出）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 3,
+    "role": "posture",
+    "zh": "手肘别弯",
+    "en": "Arms straight",
+    "from": [
+     "cue2",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "at": 5,
+    "key": "n.3"
+   },
+   {
+    "at": 6,
+    "key": "n.2"
+   },
+   {
+    "at": 7,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.release",
+    "p.rest",
+    "sec.90"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
   }
  }
 }
