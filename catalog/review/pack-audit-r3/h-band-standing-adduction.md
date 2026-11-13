@@ -52,4 +52,4 @@
 跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
 
 - 要点4：一边做完，绑带换到另一只脚，转过身再做。 → 一侧做完，带子换到另一只脚踝，转身让带子还从外侧拉。（When one side is done, move the strap to the other ankle and turn around. → When one side is done, switch ankles and turn so the band still pulls from the outside.）
-- 语音 reminders[2]：两边胯骨一样高 → 站着那条腿别弯（Hips level → Standing leg stays straight）
+- 语音 reminders[2]：两边胯骨一样高 → 慢慢放回外边（Hips level → Back out slowly）

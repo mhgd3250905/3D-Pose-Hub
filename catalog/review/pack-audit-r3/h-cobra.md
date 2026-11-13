@@ -45,3 +45,9 @@
 
 ## 8. 待开哥定
 - r2 flag 沿用：tags 主肌群写 core，动作主要是拉肚子前面、活动后背，请确认
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 语音 reminders[0]：肩膀往下，离耳朵远点 → 脖子拉长，别缩着（Shoulders away from your ears → Long neck, don't scrunch）

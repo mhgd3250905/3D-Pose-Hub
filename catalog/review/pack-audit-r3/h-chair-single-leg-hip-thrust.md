@@ -45,3 +45,12 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 常见错误1：胯往一边掉 → 抬着的腿那边胯往下掉（Hips dropping to one side. → The lifted leg's side of your hips dropping.）
+- 注意事项2：用结实、不带轮子的椅子 → 椅子靠墙放稳，肩膀压上去不会往后滑（Use a sturdy chair without wheels. → Put the chair against a wall so it won't slide when your shoulders press.）
+- 语音 reminders[0]：两边胯一样高 → 抬腿那边别往下掉（Hips level → Lifted side doesn't drop）
+- 语音 reminders[2]：顶上夹紧屁股 → 踩地那只脚蹬实（Squeeze at the top → Drive through your foot）

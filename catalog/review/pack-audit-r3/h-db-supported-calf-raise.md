@@ -45,3 +45,12 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点3：顶上停一下，再慢慢放下来。 → 踮到最高停一下，脚后跟慢慢落回地。（Pause at the top, then lower slowly. → Pause on your tiptoes, then lower your heel slowly.）
+- 常见错误1：脚踝往外翻 → 踮起来重心往小脚趾那边倒（Ankles rolling outward. → Rolling onto your little toes as you rise.）
+- 注意事项1：先用轻哑铃，哪儿疼就停 → 一手扶墙，哑铃从轻的开始（Start with light dumbbells. Stop if anything hurts. → Keep a hand on the wall and start with a light dumbbell.）
+- 语音 reminders[0]：脚踝别往外翻 → 压住大脚趾（Ankles don't roll out → Press through big toe）

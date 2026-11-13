@@ -45,3 +45,11 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 注意事项1：先用轻哑铃，哪儿疼就停 → 先用轻哑铃，学会屁股往后推再加重（Start with light dumbbells. Stop if anything hurts. → Start light. Add weight once pushing your hips back feels natural.）
+- 注意事项2：腰不舒服就往下少弯点，还疼就停 → 腰发紧就弯到膝盖高度就起来（If your lower back feels off, don't bend as far. Stop if it still hurts. → If your lower back tightens, only go down to your knees.）
+- 语音 reminders[0]：背挺平，别弓 → 哑铃贴腿，背别弓（Flat back, no rounding → Weights on legs, flat back）

@@ -45,3 +45,11 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点2：肩膀往下放，离耳朵远点。 → 像往两边倒水，小指那侧稍微高一点。（Shoulders down, away from your ears. → Lead with your elbows, like pouring water out to the sides.）
+- 注意事项1：先用轻哑铃，哪儿疼就停 → 先拿轻的，侧平举很轻也够累（Start with light dumbbells. Stop if anything hurts. → Go light. Side raises burn even with small weights.）
+- 注意事项2：肩膀前面夹着疼就抬低点，还疼就停 → 肩膀夹着疼就只抬到胸口高（If the front of your shoulder pinches, don't go as high. Stop if it still hurts. → If your shoulders pinch, only raise to chest height.）

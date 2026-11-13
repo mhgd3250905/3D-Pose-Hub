@@ -46,3 +46,12 @@
 
 ## 8. 待开哥定
 - 预览帧几乎看不到大臂后面高亮，请看视频确认
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 常见错误2：腰往后仰 → 举直的时候挺肚子、腰往后弯（Arching your lower back. → Pushing your belly out and bending your back as you press up.）
+- 注意事项1：先用轻哑铃，哪儿疼就停 → 先用轻哑铃，放到脑后时手肘疼就停（Start with light dumbbells. Stop if anything hurts. → Start light. Stop if your elbow hurts when the weight is behind your head.）
+- 注意事项2：肩膀前面夹着疼就往下放浅点，还疼就停 → 肩膀前面夹着疼就往脑后少放一点（If the front of your shoulder pinches, don't lower as far. Stop if it still hurts. → If the front of your shoulder pinches, don't lower as far behind your head.）
+- 语音 reminders[1]：腰别往后仰 → 肋骨收住，腰别弯（Don't arch your back → Ribs down, back still）

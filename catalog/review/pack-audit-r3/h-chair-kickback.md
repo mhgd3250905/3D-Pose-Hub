@@ -45,3 +45,12 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- purpose：练屁股，让腿往后抬更有劲 → 练屁股，站着就能练，让腿往后摆更有劲（Builds your butt for a stronger backward leg lift. → Builds your butt with nothing but a chair.）
+- 注意事项1：腰不舒服就抬低点，还疼就停 → 腿踢到腰开始往后折就太高了，降一点（If your lower back feels off, don't lift as high. Stop if it still hurts. → If your lower back starts bending, you're kicking too high. Bring it down.）
+- 注意事项2：用结实、不带轮子的椅子 → 扶的椅子要稳，别用带轮子的转椅（Use a sturdy chair without wheels. → Hold a steady chair, not an office chair on wheels.）
+- 语音 reminders[0]：腰别往后仰 → 屁股发力，腰不动（Don't arch your back → Butt works, back stays still）

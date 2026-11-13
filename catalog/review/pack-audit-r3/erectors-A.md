@@ -51,4 +51,4 @@
 跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
 
 - 注意事项1：手腕疼或发麻就停，做之前先转转手腕 → 手指朝脚的方向撑地，手腕不舒服就换拳头撑（Stop if your wrists hurt or go numb. Loosen them up first. → Fingers point toward your feet. If your wrists complain, press on your fists instead.）
-- 语音 reminders[1]：顶上把屁股夹紧 → 屁股顶住，别往下掉（Squeeze at the top → Butt up, don't let it drop）
+- 语音 reminders[1]：顶上把屁股夹紧 → 脚跟踩地，屁股夹紧（Squeeze at the top → Heels down, squeeze）

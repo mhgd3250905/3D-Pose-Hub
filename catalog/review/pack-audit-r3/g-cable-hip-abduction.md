@@ -52,4 +52,4 @@
 跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
 
 - 要点4：一边做完，绑带换到另一只脚，转过身再做。 → 一侧做完，绑带换到另一只脚踝，人转过来面朝另一边。（When one side is done, move the strap to the other ankle and turn around. → When one side is done, strap the other ankle and turn around.）
-- 语音 reminders[1]：慢慢放回来 → 腿慢慢收回中间（Bring it back slowly → Leg back to center slowly）
+- 语音 reminders[1]：慢慢放回来 → 别让绳子拽回去（Bring it back slowly → Don't let it yank you back）

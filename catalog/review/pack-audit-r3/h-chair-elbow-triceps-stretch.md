@@ -47,3 +47,14 @@
 
 ## 8. 待开哥定
 - 高亮落在背阔和大腿后侧，没有大臂后面；名称是三头拉伸，是否补大臂后面高亮（只报告）
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点3：就停在这儿，慢慢喘气。 → 手肘搭在椅背上别挪，让胸口自己往下沉。（Stay right there and breathe slowly. → Keep your elbows on the chair back and let your chest sink.）
+- 要点4：每次呼气再松一点，别一下一下往下压。 → 呼气时手往后背再滑一点。（Each breath out, let go a little more. Don't bounce. → Each breath out, slide your hands a little further down your back.）
+- 常见错误3：一下一下往下压 → 手肘从椅背上滑下去（Bouncing to go deeper. → Elbows sliding off the chair back.）
+- 注意事项2：用结实、不带轮子的椅子 → 椅子靠墙放，手肘压上去不会滑走（Use a sturdy chair without wheels. → Put the chair against a wall so it won't slide when you lean.）
+- 相位口令 start：慢慢沉下去 → 屁股往后推（Sink down → Hips back）
+- 语音 set[3]：呼气，再松一点 → 呼气，手再往下滑（Breathe out, let go → Breathe out, hands lower）

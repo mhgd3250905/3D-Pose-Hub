@@ -45,3 +45,10 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 常见错误2：膝盖往里倒 → 站起来那一下膝盖往里夹（Knees caving in. → Knees pinching in as you stand.）
+- 语音 reminders[1]：膝盖对着脚尖 → 站起时膝盖往外撑（Knees over toes → Push knees out as you stand）

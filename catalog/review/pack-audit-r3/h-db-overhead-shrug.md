@@ -45,3 +45,9 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点3：顶上停一下，再慢慢放下。 → 耸到顶耳朵贴肩膀停一下，再慢慢落。（Pause at the top, then lower slowly. → Hold with your shoulders up by your ears, then let them down slowly.）

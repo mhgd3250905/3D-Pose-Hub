@@ -45,3 +45,9 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 注意事项1：先用轻哑铃，哪儿疼就停 → 先用轻哑铃，打开时胸口前面扯着疼就合小点（Start with light dumbbells. Stop if anything hurts. → Start light. If your chest feels a tearing pull, open less.）

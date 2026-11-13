@@ -45,3 +45,10 @@
 
 ## 8. 待开哥定
 - 预览帧大臂后面高亮不明显，请看视频确认
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 常见错误1：手肘往两边张开 → 手肘往外撇成八字（Elbows flaring out. → Elbows splaying out to the sides.）
+- 注意事项2：用结实、不带轮子的椅子 → 椅子顶住墙放，确认撑上去不会往后滑（Use a sturdy chair without wheels. → Push the chair against a wall so it can't slide back.）

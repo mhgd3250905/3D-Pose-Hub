@@ -44,3 +44,10 @@
 
 ## 8. 待开哥定
 - 高亮在腰背，动作要的是上背往下沉、腰别塌；高亮位置可能误导，是否改到上背（只报告）
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 注意事项1：拉到舒服就行，疼就松一点 → 肩膀前面夹着疼就把手肘放宽点，胸口少沉点（Stretch only to a comfortable point. Ease off if anything hurts. → If your shoulders pinch, spread your elbows and don't sink as low.）
+- 注意事项2：用结实、不带轮子的椅子 → 椅子顶住墙，手肘压上去别让它往前滑（Use a sturdy chair without wheels. → Brace the chair against a wall so it won't slide away.）

@@ -46,3 +46,12 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- purpose：练屁股，让腿往后抬更有劲 → 练屁股，跪着就能把屁股练酸（Builds your butt for a stronger backward leg lift. → Works your butt from hands and knees.）
+- 注意事项1：腰不舒服就抬低点，还疼就停 → 腿蹬太高腰会塌，脚到屁股高就够（If your lower back feels off, don't lift as high. Stop if it still hurts. → Kicking too high sags your back. Foot level with your butt is enough.）
+- 注意事项2：手腕刺疼或发麻就停，开始前先转转手腕 → 跪撑时手腕不舒服就用拳头撑地（Stop if your wrists get sharp pain or go numb. Roll them out before you start. → If your wrists complain, press on your fists.）
+- 语音 reminders[0]：腰别塌 → 脚底朝天，腰别塌（Don't sag your back → Sole up, don't sag）

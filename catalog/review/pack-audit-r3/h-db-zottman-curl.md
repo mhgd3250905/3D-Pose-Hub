@@ -44,3 +44,10 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 常见错误2：身子前后晃借劲 → 翻手腕时身子跟着晃（Rocking your body. → Rocking your body as you turn your wrists.）
+- 语音 reminders[0]：手肘贴住身体 → 大臂贴身，只翻手腕（Elbows at your sides → Arms still, only wrists turn）

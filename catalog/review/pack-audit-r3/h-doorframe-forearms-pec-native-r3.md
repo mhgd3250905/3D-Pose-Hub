@@ -47,3 +47,13 @@
 
 ## 8. 待开哥定
 - 预览帧几乎看不到胸口高亮，请看视频确认
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点3：就停在这儿，慢慢喘气。 → 小臂压住门框，人往前走半步就停。（Stay right there and breathe slowly. → Press your forearms on the frame and step half a step through.）
+- 要点4：每次呼气再松一点，别一下一下往下压。 → 呼气时胸口再往门里探一点，肩膀别耸。（Each breath out, let go a little more. Don't bounce. → Each breath out, lean your chest a little further through, shoulders down.）
+- 常见错误3：一下一下往下压 → 脑袋往前伸，胸口没打开（Bouncing to go deeper. → Poking your head forward instead of opening your chest.）
+- 注意事项1：拉到舒服就行，疼就松一点 → 肩膀前面刺疼或手发麻就把手臂放低一点（Stretch only to a comfortable point. Ease off if anything hurts. → If your shoulders get a sharp pain or hands tingle, lower your arms.）
+- 语音 set[3]：呼气，再松一点 → 呼气，胸口再探出去（Breathe out, let go → Breathe out, chest through）

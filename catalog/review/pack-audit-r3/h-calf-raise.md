@@ -46,3 +46,11 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 常见错误1：脚踝往外翻 → 踮起来时重心跑到小脚趾那边（Ankles rolling out. → Weight rolling onto your little toes as you rise.）
+- 语音 reminders[0]：脚踝别外翻 → 大脚趾压住地（Ankles straight → Big toes press down）
+- 语音 reminders[3]：脚踝别外翻 → 脚后跟直上直下（Ankles straight → Heels straight up and down）

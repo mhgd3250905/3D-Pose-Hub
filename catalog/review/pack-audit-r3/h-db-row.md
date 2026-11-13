@@ -46,3 +46,11 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 注意事项1：先用轻哑铃，哪儿疼就停 → 先用轻哑铃，拉的时候腰发紧就减重（Start with light dumbbells. Stop if anything hurts. → Start light. Go lighter if your back tightens as you pull.）
+- 注意事项2：用结实、不带轮子的椅子 → 撑的椅子要稳，手压上去不能晃（Use a sturdy chair without wheels. → The chair you lean on has to be solid, no wobble.）
+- 语音 reminders[0]：背平，别扭 → 身子别跟着转（Flat back, no twisting → Don't twist）

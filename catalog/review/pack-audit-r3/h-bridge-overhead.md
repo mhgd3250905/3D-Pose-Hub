@@ -50,4 +50,4 @@
 
 跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
 
-- 语音 reminders[2]：慢慢放下来 → 手臂贴地，屁股慢慢落（Lower slowly → Arms down, hips lower slowly）
+- 语音 reminders[2]：慢慢放下来 → 肋骨收住，慢慢放（Lower slowly → Ribs down, lower slowly）

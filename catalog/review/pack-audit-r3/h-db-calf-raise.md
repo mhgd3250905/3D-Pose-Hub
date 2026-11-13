@@ -45,3 +45,11 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 常见错误1：脚踝往外翻 → 哑铃一拿，踮起来身子就往前晃（Ankles rolling outward. → Tipping forward as you rise with the weights.）
+- 注意事项1：先用轻哑铃，哪儿疼就停 → 先拿轻哑铃，小腿或跟腱疼就停（Start with light dumbbells. Stop if anything hurts. → Start light. Stop if your calves or Achilles hurt.）
+- 语音 reminders[0]：脚踝别往外翻 → 哑铃垂直，人别晃（Ankles don't roll out → Weights still, body still）

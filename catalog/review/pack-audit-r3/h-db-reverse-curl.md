@@ -45,3 +45,10 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 常见错误2：身子前后晃借劲 → 手腕往下耷拉，靠晃身子把铃带上来（Rocking your body. → Wrists drooping and swinging your body to get it up.）
+- 语音 reminders[2]：手肘贴住身体 → 手腕伸直别耷拉（Elbows at your sides → Wrists straight, don't droop）

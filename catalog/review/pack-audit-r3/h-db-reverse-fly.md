@@ -45,3 +45,10 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 注意事项1：先用轻哑铃，哪儿疼就停 → 先用很轻的哑铃，这个动作重了只会甩（Start with light dumbbells. Stop if anything hurts. → Use very light dumbbells. Heavy ones just turn into swinging.）
+- 注意事项2：腰不舒服就往下少弯点，还疼就停 → 弯着腰撑不住就坐着、胸口趴在大腿上做（If your lower back feels off, don't bend as far. Stop if it still hurts. → If your back can't hold the bend, sit and rest your chest on your thighs.）

@@ -47,3 +47,14 @@
 
 ## 8. 待开哥定
 - 高亮在大腿后、小腿后，没有肩膀/腋下；动作名是压肩，是否补肩膀高亮（只报告）
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点3：就停在这儿，慢慢喘气。 → 手掌压实地，屁股往上往后顶。（Stay right there and breathe slowly. → Press your palms into the floor and push your hips up and back.）
+- 要点4：每次呼气再松一点，别一下一下往下压。 → 呼气时胸口往大腿那边再靠一点。（Each breath out, let go a little more. Don't bounce. → Each breath out, let your chest sink a little closer to your thighs.）
+- 常见错误3：一下一下往下压 → 背弓起来，胸口沉不下去（Bouncing to go deeper. → Rounding your back so your chest can't sink.）
+- 注意事项2：手腕刺疼或发麻就停，开始前先转转手腕 → 手腕撑着不舒服就把手往前挪一点、手指张开（Stop if your wrists get sharp pain or go numb. Roll them out before you start. → If your wrists complain, walk your hands forward a bit and spread your fingers.）
+- 语音 set[1]：肩膀离耳朵远点 → 手推地，屁股往上顶（Shoulders away from your ears → Push the floor, hips up）
+- 语音 set[2]：背拉长，别弓 → 胸口往大腿靠（Long back, no rounding → Chest toward thighs）

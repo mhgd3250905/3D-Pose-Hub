@@ -45,3 +45,10 @@
 
 ## 8. 待开哥定
 - 预览帧几乎看不到肩膀上面高亮，请看视频确认
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点3：顶上停一下。 → 耸到最高停一下，像用肩膀去碰耳朵。（Pause at the top. → Hold at the top like you are touching your ears with your shoulders.）
+- 语音 reminders[2]：顶上停一下 → 肩膀碰耳朵停住（Pause at the top → Shoulders to ears, hold）

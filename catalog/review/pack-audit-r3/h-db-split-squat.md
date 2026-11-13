@@ -45,3 +45,11 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 常见错误1：前膝往里倒 → 前膝往里倒，后脚跟往外撇（Front knee caving in. → Front knee caving in and back heel twisting out.）
+- 注意事项1：先用轻哑铃，哪儿疼就停 → 先用轻哑铃，站不稳就先空手做（Start with light dumbbells. Stop if anything hurts. → Start light. If you're wobbly, go without weights first.）
+- 注意事项2：膝盖不舒服就蹲浅点，还疼就停 → 前膝不舒服就蹲浅点，后膝离地一拳就够（If your knee feels off, don't go as low. Stop if it still hurts. → If your front knee complains, don't go as low. A fist above the floor is enough.）

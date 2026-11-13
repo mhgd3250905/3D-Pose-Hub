@@ -47,3 +47,9 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 常见错误2：腰离开垫子 → 下巴往胸口戳，脖子在使劲（Lower back lifting off the mat. → Jamming your chin down and pulling with your neck.）

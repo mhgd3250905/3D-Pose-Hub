@@ -45,3 +45,10 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 注意事项1：先用轻哑铃，哪儿疼就停 → 先用轻哑铃，推起来手臂发抖就换轻的（Start with light dumbbells. Stop if anything hurts. → Start light. If your arms shake on the way up, go lighter.）
+- 注意事项2：肩膀前面夹着疼就推低点，还疼就停 → 肩膀夹着疼就推到额头高就停（If the front of your shoulder pinches, don't press as high. Stop if it still hurts. → If your shoulders pinch, stop at forehead height.）

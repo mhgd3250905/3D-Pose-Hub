@@ -44,3 +44,9 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点4：两边各上一次算 1 下。 → 左腿上一次、右腿上一次，才算 1 下。（One step-up on each side counts as one. → A step-up with each leg counts as one.）
