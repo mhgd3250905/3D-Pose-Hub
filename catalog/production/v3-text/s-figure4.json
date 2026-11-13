@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "s-figure4",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/s-figure4-r2.js"
  ],
@@ -10,8 +10,8 @@
   "en": "Lying Figure-4 Stretch"
  },
  "purpose": {
-  "zh": "拉伸臀部深处，缓解髋部发紧",
-  "en": "Stretch deep in your glutes and ease tight hips."
+  "zh": "拉开屁股深处，胯发紧时松一松",
+  "en": "Stretches deep in your butt to ease tight hips."
  },
  "cues": [
   {
@@ -19,52 +19,52 @@
    "primary": true,
    "text": {
     "zh": "脚踝搭在另一条腿的大腿上，膝盖往外打开",
-    "en": "Cross your ankle over your other thigh and let the knee fall open"
+    "en": "Cross your ankle over your other thigh and let that knee fall open"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "仰躺，踩地的脚往臀部挪一点，头和肩膀放松。",
-    "en": "Lie on your back, walk the planted foot closer, and relax your head and shoulders."
+    "zh": "仰躺，踩地的脚往屁股挪一点，头和肩膀放松。",
+    "en": "Lie on your back, walk the planted foot in a bit, head and shoulders relaxed."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "保持不动，慢慢呼吸，每次呼气再放松一点。",
-    "en": "Stay still, breathe slowly, and relax a little deeper each time you breathe out."
+    "zh": "就停在这儿，慢慢喘气，每次呼气再松一点。",
+    "en": "Stay right there, breathe slowly, let go a little more each breath out."
    }
   },
   {
    "id": "cue4",
    "primary": false,
    "text": {
-    "zh": "别来回颠，有拉伸感就够，别拉到疼。",
-    "en": "Do not bounce; a clear stretch is enough, never pain."
+    "zh": "别一下一下往下压，有拉的感觉就够，别拉到疼。",
+    "en": "Don't bounce. A clear stretch is enough, never pain."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "抬头耸肩用力",
+   "zh": "抬头耸肩使劲",
    "en": "Lifting your head and tensing your shoulders."
   },
   {
-   "zh": "用力压膝盖",
+   "zh": "使劲压膝盖",
    "en": "Pushing the knee down hard."
   },
   {
-   "zh": "憋气或来回颠",
+   "zh": "憋气或一下一下往下压",
    "en": "Holding your breath or bouncing."
   }
  ],
  "cautions": [
   {
-   "zh": "膝盖疼时幅度小一点，还疼就停",
-   "en": "If your knee hurts, move less far, and stop if it still hurts."
+   "zh": "膝盖疼就松一点，还疼就停",
+   "en": "If your knee hurts, ease off. Stop if it still hurts."
   }
  ],
  "tags": {
@@ -95,12 +95,12 @@
    "en": "Walk your foot in"
   },
   "peak": {
-   "zh": "保持，慢慢呼气",
-   "en": "Hold and breathe out"
+   "zh": "停住，呼气",
+   "en": "Hold, breathe out"
   },
   "end": {
-   "zh": "呼气再放松",
-   "en": "Relax a bit deeper"
+   "zh": "呼气再松",
+   "en": "Let go more"
   }
  },
  "training": {
@@ -121,6 +121,113 @@
     "最终口径：按真实做法定（2026-11-01）"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "剂量 每侧 2 组×30 秒、休息 15 秒不变；仰卧原地换腿，不加换边准备",
+    "「臀部深处…髋部」→「屁股深处…胯」",
+    "难度 1/1 不变",
+    "「别来回颠」→「别一下一下往下压」"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "2 组×每侧30 秒，休息 15 秒",
+     "2 组×每侧30 秒，休息 15 秒"
+    ],
+    "rep": [
+     "计时",
+     "计时"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：仰卧四字、屁股高亮（b22 第 7 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 4,
+    "role": "posture",
+    "zh": "头和肩膀放松",
+    "en": "Head and shoulders relaxed",
+    "from": [
+     "cue2",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "at": 12,
+    "role": "halfway",
+    "zh": "别使劲压膝盖",
+    "en": "Don't push the knee",
+    "from": [
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "at": 20,
+    "role": "form",
+    "zh": "呼气，再松一点",
+    "en": "Breathe out, let go",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "at": 27,
+    "key": "n.3"
+   },
+   {
+    "at": 28,
+    "key": "n.2"
+   },
+   {
+    "at": 29,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSetsSameSide": [
+    "p.rest",
+    "sec.15"
+   ],
+   "sideDone": [
+    "p.release",
+    "p.switch_left"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
+  },
+  "sides": {
+   "order": [
+    "right",
+    "left"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边"
   }
  }
 }

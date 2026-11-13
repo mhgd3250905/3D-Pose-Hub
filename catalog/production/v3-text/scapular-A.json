@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "scapular-A",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/data/drills.json",
   "drill-anim/specs/scapular-A-r2.js"
@@ -11,39 +11,39 @@
   "en": "Prone Y-T-W Raise"
  },
  "purpose": {
-  "zh": "加强上背和肩胛周围，让肩膀摆正",
-  "en": "Strengthen your upper back and around your shoulder blades for better shoulder position."
+  "zh": "练上背和肩胛骨周围，让肩膀摆正",
+  "en": "Builds your upper back and the area around your shoulder blades so your shoulders sit right."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "先把肩胛骨往下往后收，再抬手",
-    "en": "Pull your shoulder blades down and back before you lift"
+    "zh": "先把肩胛骨往下往后夹，再抬手",
+    "en": "Squeeze your shoulder blades down and back before you lift"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "趴着额头轻贴垫子，依次做 Y、T、W。",
-    "en": "Lie face down, forehead lightly on the mat, and go Y, T, then W."
+    "zh": "趴着额头轻贴垫子，按 Y、T、W 轮流做。",
+    "en": "Lie face down, forehead on the mat, go Y, T, then W."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "拇指朝上，手抬离垫子就放下。",
-    "en": "Thumbs up; lift your hands just off the mat, then lower."
+    "zh": "大拇指朝上，手抬离垫子就放下。",
+    "en": "Thumbs up. Lift your hands just off the mat, then lower."
    }
   },
   {
    "id": "cue4",
    "primary": false,
    "text": {
-    "zh": "每做一个字型算 1 次。",
+    "zh": "每做一个字算 1 下。",
     "en": "Each letter counts as one."
    }
   }
@@ -54,14 +54,14 @@
    "en": "Lifting your head or shrugging."
   },
   {
-   "zh": "靠拱腰把上身抬起来",
+   "zh": "拱腰把上身抬起来",
    "en": "Arching your lower back to lift your chest."
   }
  ],
  "cautions": [
   {
-   "zh": "肩膀疼时幅度小一点，还疼就停",
-   "en": "If your shoulders hurts, move less far, and stop if it still hurts."
+   "zh": "肩膀疼就抬低点，还疼就停",
+   "en": "If your shoulders hurt, don't lift as high. Stop if it still hurts."
   }
  ],
  "tags": {
@@ -107,24 +107,21 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 0.8,
+    "seconds": 1.0,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 0.2
+    "seconds": 0.5,
+    "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 0.8,
+    "seconds": 1.0,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 0.9
    }
   ],
-  "source": "spec-timeline manual r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -138,6 +135,83 @@
     "最终口径：按真实做法定（2026-11-01）"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 2.7 s → 2.5 s（抬 1.0 / 停 0.5 / 放 1.0），每个字算 1 下",
+    "难度 v3 1 / ai-tags 2 → 统一 1",
+    "「肩胛周围」→「肩胛骨周围」，「收」→「夹」；「幅度小一点」→「抬低点」"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "2 组×9 次，休息 45 秒",
+     "2 组×9 次，休息 45 秒"
+    ],
+    "rep": [
+     "2.7 s",
+     "2.5 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 2
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：俯卧手臂抬起、上背高亮（batch-23 第 3 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 2.5,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "肩膀别耸",
+    "en": "Shoulders down",
+    "from": [
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "别拱腰",
+    "en": "Don't arch",
+    "from": [
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 8,
+    "key": "p.last_rep"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.45"
+   ],
+   "allDone": [
+    "p.nice"
+   ]
   }
  }
 }

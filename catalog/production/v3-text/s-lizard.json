@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "s-lizard",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/s-lizard.js"
  ],
@@ -10,15 +10,15 @@
   "en": "Lizard Lunge"
  },
  "purpose": {
-  "zh": "拉伸后腿髋前侧和前腿大腿内侧",
-  "en": "Stretch the front of your back hip and the inner thigh of your front leg."
+  "zh": "拉开后腿胯前面和前腿大腿内侧",
+  "en": "Stretches the front of your back hip and the inner thigh of your front leg."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "髋部慢慢往前往下沉",
+    "zh": "胯慢慢往前往下沉",
     "en": "Let your hips sink slowly forward and down"
    }
   },
@@ -26,49 +26,49 @@
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "前脚远远踩在前面，后膝跪地，双手扶砖。",
-    "en": "Plant your front foot far forward, kneel on the back knee, hands on the blocks."
+    "zh": "前脚远远踩在前面，后膝跪地，两手扶砖。",
+    "en": "Front foot far forward, back knee down, hands on the blocks."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "保持不动，慢慢呼吸，每次呼气再放松一点。",
-    "en": "Stay still, breathe slowly, and relax a little deeper each time you breathe out."
+    "zh": "就停在这儿，慢慢喘气，每次呼气再松一点。",
+    "en": "Stay right there, breathe slowly, let go a little more each breath out."
    }
   },
   {
    "id": "cue4",
    "primary": false,
    "text": {
-    "zh": "别来回颠，有拉伸感就够，别拉到疼。",
-    "en": "Do not bounce; a clear stretch is enough, never pain."
+    "zh": "别一下一下往下压，有拉的感觉就够，别拉到疼。",
+    "en": "Don't bounce. A clear stretch is enough, never pain."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "前膝往里扣或远远超过脚尖",
-   "en": "Letting the front knee cave in or drift far past your toes."
+   "zh": "前膝往里倒或远远超过脚尖",
+   "en": "Front knee caving in or drifting far past your toes."
   },
   {
    "zh": "耸肩塌背",
    "en": "Shrugging and sagging your back."
   },
   {
-   "zh": "憋气或来回颠",
+   "zh": "憋气或一下一下往下压",
    "en": "Holding your breath or bouncing."
   }
  ],
  "cautions": [
   {
-   "zh": "跪地的膝盖下面垫软垫",
-   "en": "Pad under the kneeling knee."
+   "zh": "跪着的膝盖下面垫软垫",
+   "en": "Pad under your kneeling knee."
   },
   {
-   "zh": "髋或大腿内侧疼时幅度小一点，还疼就停",
-   "en": "If your hip or inner thigh hurts, move less far, and stop if it still hurts."
+   "zh": "胯或大腿内侧疼就沉少点，还疼就停",
+   "en": "If your hip or inner thigh hurts, don't sink as far. Stop if it still hurts."
   }
  ],
  "tags": {
@@ -93,28 +93,29 @@
  "defaultDose": {
   "mode": "time",
   "sets": 2,
-  "seconds": 45,
+  "seconds": 30,
   "restSeconds": 15
  },
  "phases": {
   "start": {
-   "zh": "髋部下沉",
+   "zh": "胯往下沉",
    "en": "Sink your hips"
   },
   "peak": {
-   "zh": "保持，慢慢呼气",
-   "en": "Hold and breathe out"
+   "zh": "停住，呼气",
+   "en": "Hold, breathe out"
   },
   "end": {
    "zh": "呼气再沉点",
-   "en": "Sink a bit deeper"
+   "en": "Sink a bit more"
   }
  },
  "training": {
   "kind": "hold",
   "leadSeconds": 1,
   "perSide": "each-side-separately",
-  "source": "user-decision static-hold r2"
+  "source": "user-decision static-hold r2",
+  "sideSwitchSeconds": 10
  },
  "review": {
   "r2": {
@@ -126,6 +127,113 @@
     "剂量 → 每侧 2 组×45 秒，休息 15 秒；口令/要点改为进入-保持-呼气放松，去掉来回/计数描述"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "剂量 每侧 2 组×45 秒 → 2 组×30 秒（静态拉伸统一 30 秒），休息 15 秒不变",
+    "新增 sideSwitchSeconds 10（低弓步换前后腿要重新摆）",
+    "「髋部」→「胯」；「幅度小一点」→「沉少点」",
+    "难度 2/2 不变",
+    "「别来回颠」→「别一下一下往下压」"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "2 组×每侧45 秒，休息 15 秒",
+     "2 组×每侧30 秒，休息 15 秒"
+    ],
+    "rep": [
+     "计时",
+     "计时"
+    ],
+    "difficulty": [
+     {
+      "v3": 2,
+      "ai": 2
+     },
+     2
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：蜥蜴式低弓步两手撑在前脚内侧、胯前/大腿内侧淡高亮（b22 第 10 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 4,
+    "role": "posture",
+    "zh": "前膝别往里倒",
+    "en": "Front knee out",
+    "from": [
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "at": 12,
+    "role": "halfway",
+    "zh": "肩膀别耸",
+    "en": "Shoulders down",
+    "from": [
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "at": 20,
+    "role": "form",
+    "zh": "呼气，再松一点",
+    "en": "Breathe out, let go",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "at": 27,
+    "key": "n.3"
+   },
+   {
+    "at": 28,
+    "key": "n.2"
+   },
+   {
+    "at": 29,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSetsSameSide": [
+    "p.rest",
+    "sec.15"
+   ],
+   "sideDone": [
+    "p.release",
+    "p.switch_right"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
+  },
+  "sides": {
+   "order": [
+    "left",
+    "right"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边；换边准备 10 秒（training.sideSwitchSeconds，App 未接入）"
   }
  }
 }
