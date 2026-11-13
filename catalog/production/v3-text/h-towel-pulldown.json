@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-towel-pulldown",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-towel-pulldown-r7.js"
  ],
@@ -10,8 +10,8 @@
   "en": "Standing Towel Pulldown"
  },
  "purpose": {
-  "zh": "用毛巾练背部，让肩胛骨更会往下收",
-  "en": "Train your back and learn to pull your shoulder blades down with a towel."
+  "zh": "用毛巾练背，学会把肩胛骨往下放",
+  "en": "Uses a towel to train your back and teach your shoulder blades to drop down."
  },
  "cues": [
   {
@@ -26,33 +26,33 @@
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "双手宽握毛巾，从头顶 V 字开始。",
-    "en": "Hold the towel wide, starting with your arms in a V overhead."
+    "zh": "两手握宽毛巾，从头顶 V 字开始。",
+    "en": "Wide grip on the towel, start with your arms in a V overhead."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "推回头顶时毛巾也不松。",
+    "zh": "推回头顶时毛巾也别松。",
     "en": "Keep the towel tight as you press back up."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "毛巾松掉",
+   "zh": "毛巾松了",
    "en": "Letting the towel go slack."
   },
   {
-   "zh": "腰往前拱",
-   "en": "Arching the lower back."
+   "zh": "腰往前挺",
+   "en": "Arching your lower back."
   }
  ],
  "cautions": [
   {
-   "zh": "肩膀疼时减小幅度，仍痛就停止",
-   "en": "If your shoulders hurt, reduce the range, and stop if it still hurts."
+   "zh": "肩膀疼就拉小点，还疼就停",
+   "en": "If your shoulders hurt, don't pull as far. Stop if it still hurts."
   }
  ],
  "tags": {
@@ -80,7 +80,7 @@
  },
  "phases": {
   "start": {
-   "zh": "向下拉",
+   "zh": "往下拉",
    "en": "Pull down"
   },
   "peak": {
@@ -98,25 +98,21 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 0.8,
+    "seconds": 1.5,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 1.2,
+    "seconds": 0.5,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 1.0,
+    "seconds": 1.5,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 1.0
    }
   ],
-  "source": "spec-pulse-track r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -128,6 +124,93 @@
     "最终口径：按真实做法定（2026-11-01）"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 4.0 s → 3.5 s（拉 1.5 / 夹 0.5 / 推回 1.5）",
+    "「背部」→「背」，「往下收」→「往下放」；「减小幅度」→「拉小点」",
+    "难度 1/1 不变"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "3 组×10 次，休息 30 秒",
+     "3 组×10 次，休息 30 秒"
+    ],
+    "rep": [
+     "4.0 s",
+     "3.5 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：两手举毛巾往下拉到头后（背面）、背阔高亮（b15 第 5 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 3.5,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "毛巾往两边拉紧",
+    "en": "Pull the towel apart",
+    "from": [
+     "cue1",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "腰别往前挺",
+    "en": "Don't arch",
+    "from": [
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 8,
+    "role": "form",
+    "zh": "推回去也别松",
+    "en": "Stay tight going up",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "afterRep": 9,
+    "key": "p.last_rep"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.30"
+   ],
+   "allDone": [
+    "p.nice"
+   ]
   }
  }
 }

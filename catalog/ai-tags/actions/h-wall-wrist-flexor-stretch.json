@@ -5,7 +5,7 @@
   "status": "ai-draft",
   "source": {
     "text": "catalog/production/v3-text/h-wall-wrist-flexor-stretch.json",
-    "textSha256Lf": "e845b932a6af1ba98f8306add30517e9d71df2e5217d44c27cfcbf6fe1afb216",
+    "textSha256Lf": "80539dd2bc31c77425ce1818a4c304ec5b46c9d33bcb7801a5acfc330e9e361e",
     "spec": "drill-anim/specs/h-wall-wrist-flexor-stretch.js",
     "catalogV1": null
   },
@@ -115,6 +115,12 @@
         ]
       },
       "reason": "拉伸类：v3 activeMuscles 是被拉肌，改放 stretchedMuscles。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 1,
+      "reason": "r3 动作包核对（开哥 2026-11-13）：逐个重定，与 v3 tags.difficulty 同值。"
     }
   ],
   "reviewNotes": [

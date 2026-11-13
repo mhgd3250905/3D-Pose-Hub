@@ -5,7 +5,7 @@
   "status": "ai-draft",
   "source": {
     "text": "catalog/production/v3-text/h-wall-straddle.json",
-    "textSha256Lf": "cbf76e458f69f833a2e17283191266fb184e42b69768bdb4b6edf5e94aace475",
+    "textSha256Lf": "d47fb9c26c7766e1a6e69d73a2769ac0d65a2b4db58bc6848ed1b15d83613296",
     "spec": "drill-anim/specs/h-wall-straddle.js",
     "catalogV1": "catalog/catalog.json"
   },
@@ -123,6 +123,12 @@
         ]
       },
       "reason": "拉伸类：v3 activeMuscles 是被拉肌，改放 stretchedMuscles。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 1,
+      "reason": "r3 动作包核对（开哥 2026-11-13）：逐个重定，与 v3 tags.difficulty 同值。"
     }
   ],
   "reviewNotes": []

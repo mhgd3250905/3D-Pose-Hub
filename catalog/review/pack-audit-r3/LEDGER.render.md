@@ -11,3 +11,4 @@
 | h-dd-shoulder | 大腿后/小腿后 | 肩膀、腋下、胸口 | b9 第 6 行 |
 | h-forearm-plank | 大腿前面 | 肚子 | b10 第 1 行 |
 | h-quadruped-open | 腰/侧腰 | 上背、胸口 | b12 第 3 行 |
+| h-wall-angel | 胸口、侧身 | 上背、肩膀 | b15 第 7 行 |

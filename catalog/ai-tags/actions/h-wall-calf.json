@@ -5,7 +5,7 @@
   "status": "ai-draft",
   "source": {
     "text": "catalog/production/v3-text/h-wall-calf.json",
-    "textSha256Lf": "b03499c58c81c0a2cbde58f65d6a8f7aa19e7fdc9f4115ef92c57032ecd379a9",
+    "textSha256Lf": "5048bb8e2a85a55cbfdbc4f5aa25853e87b1cd0f68d220e9cb8613eb23640a5d",
     "spec": "drill-anim/specs/h-wall-calf.js",
     "catalogV1": "catalog/catalog.json"
   },
@@ -118,6 +118,12 @@
         ]
       },
       "reason": "拉伸类：v3 activeMuscles 是被拉肌，改放 stretchedMuscles。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 1,
+      "reason": "r3 动作包核对（开哥 2026-11-13）：逐个重定，与 v3 tags.difficulty 同值。"
     }
   ],
   "reviewNotes": [

@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-wall-wrist-flexor-stretch",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-wall-wrist-flexor-stretch.js"
  ],
@@ -10,60 +10,60 @@
   "en": "Standing Wall Forearm Stretch"
  },
  "purpose": {
-  "zh": "轻轻拉伸手腕和前臂内侧",
-  "en": "Gently stretch your wrist and the inside of your forearm."
+  "zh": "轻轻拉开手腕和小臂里面",
+  "en": "Gently stretches your wrist and the inside of your forearm."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "手掌贴墙、手指朝上，身体慢慢往后靠",
-    "en": "Put your palm on the wall, fingers up, and slowly lean back"
+    "zh": "手掌贴墙、手指朝上，身子慢慢往后靠",
+    "en": "Palm on the wall, fingers up, slowly lean back"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "双脚站稳，手肘伸直但不锁死。",
-    "en": "Keep your feet planted and your elbow straight but not locked."
+    "zh": "两脚站稳，手肘伸直别锁死。",
+    "en": "Feet planted, elbow straight but soft."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "保持不动，慢慢呼吸，每次呼气再放松一点。",
-    "en": "Stay still, breathe slowly, and relax a little deeper each time you breathe out."
+    "zh": "就停在这儿，慢慢喘气，每次呼气再松一点。",
+    "en": "Stay right there, breathe slowly, let go a little more each breath out."
    }
   },
   {
    "id": "cue4",
    "primary": false,
    "text": {
-    "zh": "别来回颠，只要轻微拉伸感，别用力压墙。",
-    "en": "Do not bounce; a gentle stretch is enough, do not press hard into the wall."
+    "zh": "别一下一下往下压，有一点拉就够，别使劲压墙。",
+    "en": "Don't bounce. A gentle stretch is enough. Don't press hard into the wall."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "用身体重量压手腕",
-   "en": "Leaning your body weight onto the wrist."
+   "zh": "用身子的重量压手腕",
+   "en": "Leaning your body weight onto your wrist."
   },
   {
    "zh": "手肘锁死",
-   "en": "Locking the elbow."
+   "en": "Locking your elbow."
   },
   {
-   "zh": "憋气或来回颠",
+   "zh": "憋气或一下一下往下压",
    "en": "Holding your breath or bouncing."
   }
  ],
  "cautions": [
   {
-   "zh": "手腕疼或手指发麻时停下",
+   "zh": "手腕疼或手指发麻就停",
    "en": "Stop if your wrist hurts or your fingers tingle."
   }
  ],
@@ -93,12 +93,12 @@
    "en": "Ease back"
   },
   "peak": {
-   "zh": "保持，慢慢呼气",
-   "en": "Hold and breathe out"
+   "zh": "停住，呼气",
+   "en": "Hold, breathe out"
   },
   "end": {
-   "zh": "呼气再放松",
-   "en": "Relax a bit deeper"
+   "zh": "呼气再松",
+   "en": "Let go more"
   }
  },
  "training": {
@@ -119,6 +119,105 @@
     "最终口径：按真实做法定（2026-11-01）"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "剂量 每侧 2 组×20 秒、休息 15 秒不变（手腕小拉伸，短于 30 秒不改）；站着原地换手，不加换边准备",
+    "「前臂内侧」→「小臂里面」；「别来回颠」→「别一下一下往下压」",
+    "难度 1/1 不变"
+   ],
+   "flags": [
+    "静态拉伸规范统一 30 秒；这条手腕拉伸原为 20 秒，按小部位未改，若要统一 30 秒请定"
+   ],
+   "audit": {
+    "dose": [
+     "2 组×每侧20 秒，休息 15 秒",
+     "2 组×每侧20 秒，休息 15 秒"
+    ],
+    "rep": [
+     "计时",
+     "计时"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：侧对墙手掌贴墙手指朝上、小臂高亮（b16 第 3 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 4,
+    "role": "posture",
+    "zh": "别用身子压手腕",
+    "en": "Don't lean your weight on it",
+    "from": [
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "at": 11,
+    "role": "halfway",
+    "zh": "手肘别锁死",
+    "en": "Soft elbow",
+    "from": [
+     "cue2",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "at": 17,
+    "key": "n.3"
+   },
+   {
+    "at": 18,
+    "key": "n.2"
+   },
+   {
+    "at": 19,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSetsSameSide": [
+    "p.rest",
+    "sec.15"
+   ],
+   "sideDone": [
+    "p.release",
+    "p.switch_left"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
+  },
+  "sides": {
+   "order": [
+    "right",
+    "left"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边"
   }
  }
 }

@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-wall-straddle",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-wall-straddle.js"
  ],
@@ -10,61 +10,61 @@
   "en": "Legs-Up-the-Wall Straddle"
  },
  "purpose": {
-  "zh": "借重力慢慢打开大腿内侧",
-  "en": "Let gravity gently open your inner thighs."
+  "zh": "靠腿自己的重量，慢慢打开大腿内侧",
+  "en": "Lets your legs' own weight slowly open up your inner thighs."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "双腿贴墙，慢慢向两边滑开成V字",
-    "en": "Keep your legs on the wall and slowly slide them apart into a V"
+    "zh": "两腿贴墙，慢慢往两边滑开成 V 字",
+    "en": "Legs on the wall, slowly slide them apart into a V"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "仰卧，臀部靠近墙，脚跟搭在墙上。",
-    "en": "Lie on your back with your hips close to the wall and heels resting on it."
+    "zh": "仰躺，屁股靠近墙，脚后跟搭在墙上。",
+    "en": "Lie on your back, butt close to the wall, heels resting on it."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "保持不动，慢慢呼吸，每次呼气再放松一点。",
-    "en": "Stay still, breathe slowly, and relax a little deeper each time you breathe out."
+    "zh": "就停在这儿，慢慢喘气，每次呼气再松一点。",
+    "en": "Stay right there, breathe slowly, let go a little more each breath out."
    }
   },
   {
    "id": "cue4",
    "primary": false,
    "text": {
-    "zh": "别来回颠，有拉伸感就够，别拉到疼。",
-    "en": "Do not bounce; a clear stretch is enough, never pain."
+    "zh": "别一下一下往下压，有拉的感觉就够，别拉到疼。",
+    "en": "Don't bounce. A clear stretch is enough, never pain."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "用力往下压腿",
-   "en": "Pushing the legs down to go wider."
+   "zh": "使劲往下压腿",
+   "en": "Pushing your legs down to go wider."
   },
   {
-   "zh": "腰离开地面",
-   "en": "Lifting the lower back off the floor."
+   "zh": "腰离开地",
+   "en": "Lower back lifting off the floor."
   },
   {
-   "zh": "憋气或来回颠",
+   "zh": "憋气或一下一下往下压",
    "en": "Holding your breath or bouncing."
   }
  ],
  "cautions": [
   {
-   "zh": "大腿内侧或髋部疼时分得小一点，还疼就停",
-   "en": "If your inner thighs or hips hurt, open less, and stop if it still hurts."
+   "zh": "大腿内侧或胯疼就分小点，还疼就停",
+   "en": "If your inner thighs or hips hurt, don't open as wide. Stop if it still hurts."
   }
  ],
  "tags": {
@@ -92,15 +92,15 @@
  "phases": {
   "start": {
    "zh": "慢慢分开腿",
-   "en": "Slide legs apart"
+   "en": "Slide apart"
   },
   "peak": {
-   "zh": "保持，慢慢呼气",
-   "en": "Hold and breathe out"
+   "zh": "停住，呼气",
+   "en": "Hold, breathe out"
   },
   "end": {
    "zh": "让腿再沉点",
-   "en": "Let legs sink"
+   "en": "Let them sink"
   }
  },
  "training": {
@@ -118,6 +118,100 @@
     "剂量 → 2 组×30 秒，休息 15 秒；口令/要点改为进入-保持-呼气放松，去掉来回/计数描述"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "剂量 2 组×30 秒、休息 15 秒不变",
+    "「借重力」→「靠腿自己的重量」；「臀部」→「屁股」；「髋部」→「胯」；「别来回颠」→「别一下一下往下压」",
+    "难度 1/1 不变"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "2 组×30 秒，休息 15 秒",
+     "2 组×30 秒，休息 15 秒"
+    ],
+    "rep": [
+     "计时",
+     "计时"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：仰卧两腿贴墙分开成 V、大腿内侧淡高亮（b16 第 2 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 4,
+    "role": "posture",
+    "zh": "别使劲压腿",
+    "en": "Don't push your legs",
+    "from": [
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "at": 12,
+    "role": "halfway",
+    "zh": "腰贴着地",
+    "en": "Back on the floor",
+    "from": [
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "at": 20,
+    "role": "form",
+    "zh": "呼气，再松一点",
+    "en": "Breathe out, let go",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "at": 27,
+    "key": "n.3"
+   },
+   {
+    "at": 28,
+    "key": "n.2"
+   },
+   {
+    "at": 29,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.release",
+    "p.rest",
+    "sec.15"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
   }
  }
 }
