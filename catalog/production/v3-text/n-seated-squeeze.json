@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "n-seated-squeeze",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/n-seated-squeeze-r2.js"
  ],
@@ -10,15 +10,15 @@
   "en": "Seated Block Knee Squeeze"
  },
  "purpose": {
-  "zh": "坐着就能练大腿内侧力量",
-  "en": "Build inner-thigh strength right from your chair."
+  "zh": "坐着就能练大腿内侧的劲",
+  "en": "Builds inner-thigh strength right from your chair."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "双膝夹住瑜伽砖，用力夹紧",
+    "zh": "两膝夹住瑜伽砖，使劲夹紧",
     "en": "Squeeze the yoga block hard between your knees"
    }
   },
@@ -26,29 +26,29 @@
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "坐直，双脚与髋同宽，手放在大腿上。",
-    "en": "Sit tall, feet hip-width apart, hands on your thighs."
+    "zh": "坐直，两脚跟胯一样宽，手放在大腿上。",
+    "en": "Sit tall, feet hip-width, hands on your thighs."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "每次夹住约 5 秒，放松再夹，别憋气。",
-    "en": "Hold each squeeze about five seconds, ease off, and keep breathing."
+    "zh": "每次夹住约 5 秒，松开再夹，别憋气。",
+    "en": "Hold each squeeze about 5 seconds, ease off, and keep breathing."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "憋气用力",
-   "en": "Holding your breath."
+   "zh": "憋着气使劲",
+   "en": "Holding your breath to squeeze."
   }
  ],
  "cautions": [
   {
-   "zh": "大腿内侧或膝盖疼时夹轻一点，还疼就停",
-   "en": "If your inner thighs or knees hurt, squeeze lighter, and stop if it still hurts."
+   "zh": "大腿内侧或膝盖疼就夹轻点，还疼就停",
+   "en": "If your inner thighs or knees hurt, squeeze lighter. Stop if it still hurts."
   }
  ],
  "tags": {
@@ -81,7 +81,7 @@
    "en": "Hold"
   },
   "end": {
-   "zh": "放松",
+   "zh": "松开",
    "en": "Relax"
   }
  },
@@ -91,25 +91,21 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 0.4,
+    "seconds": 1.0,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 2.6,
+    "seconds": 5.0,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 0.4,
+    "seconds": 1.0,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 0.6
    }
   ],
-  "source": "spec-pulse-track r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -122,6 +118,93 @@
     "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 4.0 s → 7.0 s（夹 1.0 / 夹住 5.0 / 松 1.0），按原文「每次夹住约 5 秒」",
+    "「与髋同宽」→「跟胯一样宽」",
+    "难度 1/1 不变"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "2 组×10 次，休息 30 秒",
+     "2 组×10 次，休息 30 秒"
+    ],
+    "rep": [
+     "4.0 s",
+     "7.0 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：坐椅两膝夹砖、大腿内侧高亮（b18 第 4 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 7.0,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "别憋气",
+    "en": "Keep breathing",
+    "from": [
+     "cue3",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "坐直",
+    "en": "Sit tall",
+    "from": [
+     "cue2"
+    ]
+   },
+   {
+    "afterRep": 8,
+    "role": "form",
+    "zh": "夹紧砖",
+    "en": "Squeeze the block",
+    "from": [
+     "cue1"
+    ]
+   },
+   {
+    "afterRep": 9,
+    "key": "p.last_rep"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.30"
+   ],
+   "allDone": [
+    "p.nice"
+   ]
   }
  }
 }

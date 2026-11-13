@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "n-chair-wiper",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/n-chair-wiper.js"
  ],
@@ -10,57 +10,57 @@
   "en": "Seated Knee Drop-In"
  },
  "purpose": {
-  "zh": "坐在椅子上放松髋部，适合久坐时做",
-  "en": "Loosen your hips right from your chair, great for desk breaks."
+  "zh": "坐在椅子上让胯活动开，久坐时就能做",
+  "en": "Loosens your hips right from your chair. Great for desk breaks."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "脚踩稳，一侧膝盖慢慢往里倒",
-    "en": "Keep your feet planted and let one knee tip slowly inward"
+    "zh": "脚踩稳，一边膝盖慢慢往里倒",
+    "en": "Feet planted, let one knee tip slowly inward"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "坐在椅子前三分之一，双脚比髋宽。",
-    "en": "Sit on the front third of the chair with your feet wider than your hips."
+    "zh": "坐在椅子前面三分之一，两脚比胯宽。",
+    "en": "Sit on the front third of the chair, feet wider than your hips."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "停一下回到中间，再换另一侧。",
-    "en": "Pause, come back to center, then switch sides."
+    "zh": "停一下回到中间，再换另一边。",
+    "en": "Pause, come back to the middle, then switch sides."
    }
   },
   {
    "id": "cue4",
    "primary": false,
    "text": {
-    "zh": "两边各做一次算 1 次。",
-    "en": "One on each side counts as one rep."
+    "zh": "两边各做一次算 1 下。",
+    "en": "One on each side counts as one."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "两个膝盖碰在一起或用力往下压",
-   "en": "Letting the knees touch or forcing them down."
+   "zh": "两个膝盖碰在一起或使劲往下压",
+   "en": "Knees touching or forcing them down."
   },
   {
-   "zh": "身体跟着歪",
-   "en": "Letting the body lean with the knee."
+   "zh": "身子跟着歪",
+   "en": "Body leaning with the knee."
   }
  ],
  "cautions": [
   {
-   "zh": "膝盖或髋部疼时倒小一点，还疼就停",
-   "en": "If your knee or hip hurts, tip less far, and stop if it still hurts."
+   "zh": "膝盖或胯疼就倒小点，还疼就停",
+   "en": "If your knee or hip hurts, don't tip as far. Stop if it still hurts."
   }
  ],
  "tags": {
@@ -106,27 +106,23 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 0.8,
+    "seconds": 1.0,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 1.4,
+    "seconds": 0.5,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 0.7,
+    "seconds": 1.0,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 1.1
    }
   ],
   "perSide": "alternate",
   "repUnit": "left+right",
-  "source": "spec-pulse-track r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -139,6 +135,80 @@
     "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一侧一下 4.0 s → 2.5 s（倒 1.0 / 停 0.5 / 回 1.0），一左一右 5 s 计 1 下",
+    "「放松髋部」→「让胯活动开」；「比髋宽」→「比胯宽」",
+    "难度 1/1 不变"
+   ],
+   "flags": [
+    "预览帧高亮很淡，请看视频确认胯部高亮"
+   ],
+   "audit": {
+    "dose": [
+     "2 组×每侧6 次，休息 30 秒",
+     "2 组×每侧6 次，休息 30 秒"
+    ],
+    "rep": [
+     "4.0 s/侧（一左一右 8.0 s）",
+     "2.5 s/侧（一左一右 5.0 s）"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "动作一致：坐椅、一膝往里倒；高亮很淡（b17 第 6 行，非极端）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 5.0,
+  "repUnit": "left+right",
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "halfway",
+    "zh": "脚踩稳",
+    "en": "Feet planted",
+    "from": [
+     "cue1"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "key": "p.last_rep"
+   }
+  ],
+  "before": [
+   "p.right_first"
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.30"
+   ],
+   "allDone": [
+    "p.nice"
+   ]
   }
  }
 }

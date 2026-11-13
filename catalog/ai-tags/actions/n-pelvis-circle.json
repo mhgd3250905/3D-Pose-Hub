@@ -5,7 +5,7 @@
   "status": "ai-draft",
   "source": {
     "text": "catalog/production/v3-text/n-pelvis-circle.json",
-    "textSha256Lf": "080cf50f105c923cc4714b36f2f3c542a25c5a76f310ec45909bbbcedfe397ef",
+    "textSha256Lf": "e9c08e6a755c04176395cb8c0f24a64930ef851dfe7ff49a1b80b44b654142cb",
     "spec": "drill-anim/specs/n-pelvis-circle-r2.js",
     "catalogV1": "catalog/catalog.json"
   },
@@ -139,6 +139,12 @@
         "stabilizers": []
       },
       "reason": "骨盆画圈主要由腹部、腹斜肌、竖脊肌带动腰骨盆，髋周肌群配合；v3 把 hip-flexors/glutes 写成主动肌，改为协同。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 1,
+      "reason": "r3 动作包核对（开哥 2026-11-13）：逐个重定，与 v3 tags.difficulty 同值。"
     }
   ],
   "reviewNotes": [

@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "n-prone-ir",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/n-prone-ir.js"
  ],
@@ -10,24 +10,24 @@
   "en": "Prone Shin Fall-Outs"
  },
  "purpose": {
-  "zh": "轻松活动髋关节，让大腿往里转得更顺",
-  "en": "Gently loosen your hips so your thighs can turn inward more easily."
+  "zh": "让胯活动开，大腿往里转更顺",
+  "en": "Loosens your hips so your thighs turn inward more easily."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "膝盖和骨盆贴地，小腿往两边打开",
-    "en": "Keep your knees and pelvis down and let your shins open out to the sides"
+    "zh": "膝盖和胯贴地，小腿往两边倒",
+    "en": "Knees and hips stay down, let your shins fall out to the sides"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "俯卧，双膝弯成90度，小腿竖直。",
-    "en": "Lie face down with both knees bent to 90 degrees, shins upright."
+    "zh": "俯卧，两膝弯成 90 度，小腿竖直。",
+    "en": "Lie face down, both knees bent to 90 degrees, shins straight up."
    }
   },
   {
@@ -41,18 +41,18 @@
  ],
  "commonErrors": [
   {
-   "zh": "骨盆跟着抬起或扭动",
-   "en": "Letting the pelvis lift or twist."
+   "zh": "胯跟着抬起或扭",
+   "en": "Hips lifting or twisting."
   },
   {
-   "zh": "用力把小腿往下压",
-   "en": "Forcing the shins down."
+   "zh": "使劲把小腿往下压",
+   "en": "Forcing your shins down."
   }
  ],
  "cautions": [
   {
-   "zh": "膝盖或髋部疼时打开小一点，还疼就停",
-   "en": "If your knees or hips hurt, open less, and stop if it still hurts."
+   "zh": "膝盖或胯疼就倒小点，还疼就停",
+   "en": "If your knees or hips hurt, don't let them fall as far. Stop if it still hurts."
   }
  ],
  "tags": {
@@ -97,25 +97,21 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 0.8,
+    "seconds": 1.5,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 1.4,
+    "seconds": 1.0,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 0.8,
+    "seconds": 1.5,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 1.0
    }
   ],
-  "source": "spec-pulse-track r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -127,6 +123,84 @@
     "最终口径：按真实做法定（2026-11-01）"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 4.0 s → 4.0 s（倒 1.5 / 停 1.0 / 回 1.5），活动类慢做",
+    "「轻松活动髋关节」→「让胯活动开」；「骨盆」→「胯」",
+    "难度 1/1 不变"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "2 组×8 次，休息 30 秒",
+     "2 组×8 次，休息 30 秒"
+    ],
+    "rep": [
+     "4.0 s",
+     "4.0 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：俯卧两小腿往两边倒、屁股高亮（b18 第 1 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 4.0,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "胯贴着地",
+    "en": "Hips down",
+    "from": [
+     "cue1",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "别使劲压",
+    "en": "No forcing",
+    "from": [
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 7,
+    "key": "p.last_rep"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.30"
+   ],
+   "allDone": [
+    "p.nice"
+   ]
   }
  }
 }

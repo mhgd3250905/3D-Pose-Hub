@@ -5,7 +5,7 @@
   "status": "ai-draft",
   "source": {
     "text": "catalog/production/v3-text/n-leg-circles.json",
-    "textSha256Lf": "94c50e08e0bb2eaafc20a37f2ad16947b2ba8f1b2867d5152f87fd033bc7ad30",
+    "textSha256Lf": "071f2bc286747f2105ee1fb8881beb886df5a95ead65c2c1fd78dcc9c8bbbc19",
     "spec": "drill-anim/specs/n-leg-circles-r2.js",
     "catalogV1": "catalog/catalog.json"
   },
@@ -135,6 +135,12 @@
         ]
       },
       "reason": "v3 粗粒度 id 按实际做法拆到 taxonomy id（core→abs/obliques，glutes→glute-max 或 hip-abductors，upper-back→scapular，lower-back→erectors），只稳定不推动的归稳定肌。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 1,
+      "reason": "r3 动作包核对（开哥 2026-11-13）：逐个重定，与 v3 tags.difficulty 同值。"
     }
   ],
   "reviewNotes": []
