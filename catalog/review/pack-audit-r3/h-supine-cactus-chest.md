@@ -43,3 +43,9 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 注意事项1：肩膀疼就滑少点，还疼就停 → 手背贴不住地就少往上滑，肩膀刺疼就停（If your shoulders hurt, don't slide as far. Stop if it still hurts. → If your hands can't stay down, don't slide as high. Stop on sharp shoulder pain.）

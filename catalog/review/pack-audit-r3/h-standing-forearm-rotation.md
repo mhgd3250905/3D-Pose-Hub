@@ -46,3 +46,10 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 常见错误2：手肘离开身子 → 转手腕时大臂跟着往外甩（Elbow drifting away from your side. → Upper arm swinging out as you turn.）
+- 注意事项1：疼就转小点，还疼就停 → 手肘或手腕疼就转一半，慢慢来（If it hurts, don't turn as far. Stop if it still hurts. → If your elbow or wrist hurts, turn halfway and go slower.）

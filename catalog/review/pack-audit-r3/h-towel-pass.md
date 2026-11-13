@@ -44,3 +44,10 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 常见错误2：腰往前挺 → 毛巾往后过头时肋骨往前顶（Arching your lower back. → Ribs popping forward as the towel goes overhead.）
+- 注意事项1：肩膀疼就转小点，还疼就停 → 过不去就把毛巾握宽，别硬掰肩膀（If your shoulders hurt, don't go as far. Stop if it still hurts. → If you can't get it over, widen your grip. Don't force your shoulders.）

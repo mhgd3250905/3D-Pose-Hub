@@ -47,3 +47,13 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点3：就停在这儿，慢慢喘气。 → 两边肩膀都贴着垫子，膝盖倒到哪儿算哪儿。（Stay right there and breathe slowly. → Both shoulders stay on the mat. Let your knees go only as far as they go.）
+- 要点4：每次呼气再松一点，别一下一下往下压。 → 呼气时让膝盖自己再往下沉一点，别用手推。（Each breath out, let go a little more. Don't bounce. → Each breath out, let your knees sink a bit more on their own. Don't push them.）
+- 常见错误3：一下一下往下压 → 对面肩膀翘离垫子（Bouncing to go deeper. → Opposite shoulder peeling off the mat.）
+- 注意事项1：拉到舒服就行，疼就松一点 → 腰扭着疼就在膝盖下面垫个枕头（Stretch only to a comfortable point. Ease off if anything hurts. → If your back hurts in the twist, rest your knees on a pillow.）
+- 语音 set[3]：呼气，再松一点 → 呼气，膝盖自己往下沉（Breathe out, let go → Breathe out, knees sink）

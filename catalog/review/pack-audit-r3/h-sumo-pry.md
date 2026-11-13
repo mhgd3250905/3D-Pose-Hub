@@ -44,3 +44,10 @@
 
 ## 8. 待开哥定
 - 预览帧几乎看不到大腿内侧高亮，请看视频确认
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 注意事项1：膝盖不舒服就蹲浅点，还疼就停 → 膝盖不舒服就蹲高点，手肘推轻点（If your knees feel off, don't go as low. Stop if it still hurts. → If your knees complain, sit higher and press more gently.）
+- 语音 reminders[0]：脚后跟踩实 → 脚跟压地，胸口挺起（Heels down → Heels down, chest up）

@@ -46,3 +46,13 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点3：顶上停一下，再慢慢放下。 → 转到小臂快朝天就停一下，再慢慢落回肚子前。（Pause at the top, then lower slowly. → Pause when your forearm points almost straight up, then lower back to your belly.）
+- 常见错误1：手肘离开身子 → 转的时候手肘抬离身子（Elbow lifting off your side. → Elbow lifting off your side as you turn.）
+- 注意事项1：肩膀前面夹着疼就转小点，还疼就停 → 肩膀里面夹着疼就转一半，换轻哑铃（If the front of your shoulder pinches, don't turn as far. Stop if it still hurts. → If your shoulder pinches inside, turn halfway and use a lighter weight.）
+- 语音 reminders[0]：手肘贴着身子 → 手肘下面夹条毛巾（Elbow at your side → Towel under your elbow）
+- 语音 reminders[1]：身子别往后翻 → 侧躺稳，别往后翻（Don't roll back → Stay on your side）

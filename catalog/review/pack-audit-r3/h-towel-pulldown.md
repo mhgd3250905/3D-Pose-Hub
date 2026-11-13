@@ -45,3 +45,11 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 常见错误2：腰往前挺 → 往下拉时挺肚子，腰往后折（Arching your lower back. → Pushing your belly out and bending back as you pull.）
+- 注意事项1：肩膀疼就拉小点，还疼就停 → 肩膀疼就别拉到脑后，拉到下巴前就够（If your shoulders hurt, don't pull as far. Stop if it still hurts. → If your shoulders hurt, pull to your chin instead of behind your head.）
+- 语音 reminders[1]：腰别往前挺 → 肋骨往下收（Don't arch → Ribs down）

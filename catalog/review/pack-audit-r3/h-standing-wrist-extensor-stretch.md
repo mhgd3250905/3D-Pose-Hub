@@ -44,3 +44,9 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 注意事项1：拉到舒服就行，疼就松一点 → 手背到小臂扯着刺疼就少按一点（Stretch only to a comfortable point. Ease off if anything hurts. → If the back of your forearm gets a sharp pull, press less.）

@@ -46,3 +46,11 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点3：顶上停一下，再慢慢放下。 → 踮到最高停一下，脚后跟慢慢落到底。（Pause at the top, then lower slowly. → Pause on your tiptoe, then let your heel all the way down slowly.）
+- 常见错误1：脚踝往外翻 → 单脚踮起来往小脚趾那边歪（Ankle rolling out. → Rolling onto your little toe as you rise.）
+- 语音 reminders[0]：脚踝别往外翻 → 大脚趾压实（Ankle straight → Big toe pressing）

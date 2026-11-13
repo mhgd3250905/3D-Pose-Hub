@@ -44,3 +44,10 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点4：两边各做一次算 1 下。 → 左腿退一步、右腿退一步，合起来记 1 下。（One on each side counts as one. → Step back with each leg, and that pair is one.）
+- 常见错误1：前膝往里倒 → 落下去时前膝往里歪，前脚跟抬起来（Front knee caving in. → Front knee falling in and front heel lifting as you drop.）

@@ -45,3 +45,10 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点3：顶上停一下，再慢慢放下。 → 手脚抬离垫子停一下，再一起轻轻落回。（Pause at the top, then lower slowly. → Pause with arms and legs off the mat, then set them down together.）
+- 注意事项1：腰不舒服就抬低点，还疼就停 → 腰发紧就只抬手或只抬腿（If your lower back feels off, don't lift as high. Stop if it still hurts. → If your lower back tightens, lift only your arms or only your legs.）

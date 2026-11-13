@@ -46,3 +46,12 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 常见错误1：膝盖往里倒 → 蹲到底时两个膝盖往里夹（Knees caving in. → Knees caving in at the bottom.）
+- 注意事项1：膝盖不舒服就蹲浅点，还疼就停 → 膝盖不舒服就蹲到椅子高度，屁股往后多坐点（If your knees feel off, don't go as low. Stop if it still hurts. → If your knees complain, stop at chair height and sit back more.）
+- 语音 reminders[0]：膝盖对着脚尖 → 膝盖往外顶（Knees over toes → Knees push out）
+- 语音 reminders[1]：脚后跟踩实 → 重心在脚后跟（Heels down → Weight in your heels）

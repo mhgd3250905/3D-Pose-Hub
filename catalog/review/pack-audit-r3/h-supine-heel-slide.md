@@ -46,3 +46,9 @@
 
 ## 8. 待开哥定
 - r2 flag 沿用：动画高亮在大腿，tags 主练写 core，是否改主练肌群请定（只报告）
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 注意事项1：疼就滑短点，还疼就停 → 膝盖或胯卡着疼就滑短点（If it hurts, don't slide as far. Stop if it still hurts. → If your knee or hip pinches, slide a shorter distance.）

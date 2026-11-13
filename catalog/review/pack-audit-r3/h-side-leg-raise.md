@@ -46,3 +46,10 @@
 
 ## 8. 待开哥定
 - 预览帧几乎看不到屁股侧面高亮，请看视频确认
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点3：顶上停一下，再慢慢放下。 → 抬到胯边发酸就停一下，脚慢慢落回来。（Pause at the top, then lower slowly. → Pause when the side of your hip burns, then lower your foot slowly.）
+- 注意事项1：胯不舒服就抬低点，还疼就停 → 胯外面卡着疼就抬低点，扶住椅子站稳（If your hip feels off, don't lift as high. Stop if it still hurts. → If the outside of your hip pinches, lift lower and hold a chair.）

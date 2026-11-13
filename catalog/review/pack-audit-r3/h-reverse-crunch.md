@@ -45,3 +45,9 @@
 
 ## 8. 待开哥定
 - 预览帧肚子高亮很淡，请看视频确认
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 常见错误1：甩腿借劲 → 两腿往前一摆，借劲把屁股甩起来（Swinging your legs for momentum. → Kicking your legs to fling your hips up.）

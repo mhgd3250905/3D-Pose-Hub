@@ -47,3 +47,14 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点3：就停在这儿，慢慢喘气。 → 手不动，屁股往前挪到肩膀前面有拉的感觉就停。（Stay right there and breathe slowly. → Hands stay put. Scoot your butt forward until the fronts of your shoulders stretch.）
+- 要点4：每次呼气再松一点，别一下一下往下压。 → 呼气时胸口往上挺一点，肩膀往后打开。（Each breath out, let go a little more. Don't bounce. → Each breath out, lift your chest a little and open your shoulders back.）
+- 常见错误3：一下一下往下压 → 耸着肩，脑袋往前缩（Bouncing to go deeper. → Shoulders shrugging and head poking forward.）
+- 注意事项1：拉到舒服就行，疼就松一点 → 肩膀前面刺疼就把屁股往回挪一点（Stretch only to a comfortable point. Ease off if anything hurts. → If the fronts of your shoulders get a sharp pain, scoot back a little.）
+- 注意事项2：手腕刺疼或发麻就停，开始前先转转手腕 → 手指朝后撑地手腕难受，就把手指转向两边（Stop if your wrists get sharp pain or go numb. Roll them out before you start. → If your wrists complain with fingers pointing back, turn them out to the sides.）
+- 语音 set[3]：呼气，再松一点 → 呼气，胸口往上挺（Breathe out, let go → Breathe out, chest up）

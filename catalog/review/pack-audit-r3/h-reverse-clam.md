@@ -46,3 +46,11 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点3：顶上停一下，再慢慢放下。 → 脚抬到最高停一下，膝盖一直贴着另一只膝盖。（Pause at the top, then lower slowly. → Pause with your foot high, knees staying together.）
+- 注意事项1：胯不舒服就抬低点，还疼就停 → 胯里面卡着疼就抬低点，别硬抬（If your hip feels off, don't lift as high. Stop if it still hurts. → If your hip pinches inside, lift lower. Don't force it.）
+- 语音 reminders[2]：顶上停一下 → 两膝贴住别分开（Pause at the top → Knees stay together）

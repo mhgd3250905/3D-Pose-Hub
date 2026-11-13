@@ -44,3 +44,9 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 注意事项1：肩膀疼就抬低点，还疼就停 → 肩膀前面扯着疼就把毛巾握宽一点（If your shoulders hurt, don't lift as high. Stop if it still hurts. → If the fronts of your shoulders pull, grip the towel wider.）

@@ -45,3 +45,10 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点4：两边各转一次算 1 下。 → 转到左边、再转到右边，合起来记 1 下。（One turn each side counts as one. → Turning to the left and then to the right is one.）
+- 注意事项1：腰不舒服就转小点，还疼就停 → 腰发紧就脚踩地做，转小一点（If your lower back feels off, don't turn as far. Stop if it still hurts. → If your lower back tightens, keep your feet down and twist less.）
