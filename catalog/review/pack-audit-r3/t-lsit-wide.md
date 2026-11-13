@@ -1,6 +1,6 @@
 # t-lsit-wide 宽腿L撑（Wide-Leg L-Sit）· 动作包核对 r3
 
-- 类型：`hold`；V4 预览：待 V4 补看
+- 类型：`hold`；V4 预览：`/workspace/work/v4run/batch-24.jpg 第 2 行`（本机，不入库）
 - reviewStatus：`ai-reviewed-r2-needs-user-review` → `ai-reviewed-r3-needs-user-review`
 
 ## 1. 剂量
@@ -35,7 +35,7 @@
 - 组后：moreSets → 慢慢还原 + 休息 + 1 分钟；allDone → 慢慢还原 + 很好
 
 ## 6. 画面对照
-- 待 V4 补看（batch-24 预览未出）
+- 基本一致：手撑 L 撑、两腿抬起、肚子/胯前高亮；侧面这帧看不出两腿分多宽（batch-24 第 2 行，非极端）
 - 极端错误：无
 
 ## 7. 改了什么、为什么
@@ -44,4 +44,4 @@
 - 难度 v3 3 / ai-tags 4 → 统一 3；退阶「脚跟点地做」写进注意事项
 
 ## 8. 待开哥定
-- V4 预览没有这一批（batch-24），画面待补看
+- 侧面预览帧看不出两腿分开多宽，请看视频确认是宽腿

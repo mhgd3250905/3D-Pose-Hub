@@ -1,6 +1,6 @@
 # t-lsit-vsit-circles L 撑到 V 撑画圈（L-Sit to V-Sit Circles）· 动作包核对 r3
 
-- 类型：`rep_cycle`；V4 预览：待 V4 补看
+- 类型：`rep_cycle`；V4 预览：`/workspace/work/v4run/batch-24.jpg 第 1 行`（本机，不入库）
 - reviewStatus：`ai-reviewed-r2-needs-user-review` → `ai-reviewed-r3-needs-user-review`
 
 ## 1. 剂量
@@ -33,7 +33,7 @@
 - 组后：moreSets → 休息 + 1 分钟；allDone → 很好
 
 ## 6. 画面对照
-- 待 V4 补看（batch-24 预览未出）
+- 一致：坐地手撑、两腿离地（V 撑画圈）、肚子高亮（batch-24 第 1 行）
 - 极端错误：无
 
 ## 7. 改了什么、为什么
@@ -42,4 +42,4 @@
 - 「画得太快失去控制」→「画太快，腿甩起来」
 
 ## 8. 待开哥定
-- V4 预览没有这一批（batch-24），画面待补看
+- 无

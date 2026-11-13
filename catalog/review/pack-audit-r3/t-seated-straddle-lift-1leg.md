@@ -1,6 +1,6 @@
 # t-seated-straddle-lift-1leg 分腿坐单腿抬起（Seated Straddle Single-Leg Lift）· 动作包核对 r3
 
-- 类型：`rep_alternate`，单侧 alternate，先做 left；V4 预览：待 V4 补看
+- 类型：`rep_alternate`，单侧 alternate，先做 left；V4 预览：`/workspace/work/v4run/batch-24.jpg 第 4 行`（本机，不入库）
 - reviewStatus：`ai-reviewed-r2-needs-user-review` → `ai-reviewed-r3-needs-user-review`
 
 ## 1. 剂量
@@ -33,7 +33,7 @@
 - 组后：moreSets → 休息 + 45 秒；allDone → 很好
 
 ## 6. 画面对照
-- 待 V4 补看（batch-24 预览未出）
+- 一致：分腿坐、指尖在一条腿两边、胯前高亮（batch-24 第 4 行）
 - 极端错误：无
 
 ## 7. 改了什么、为什么
@@ -42,4 +42,4 @@
 - 难度 2/2 不变
 
 ## 8. 待开哥定
-- V4 预览没有这一批（batch-24），画面待补看
+- 无

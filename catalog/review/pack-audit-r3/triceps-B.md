@@ -1,6 +1,6 @@
 # triceps-B 平行杆直臂支撑（Parallette Support Hold）· 动作包核对 r3
 
-- 类型：`hold`；V4 预览：待 V4 补看
+- 类型：`hold`；V4 预览：`/workspace/work/v4run/batch-24.jpg 第 10 行`（本机，不入库）
 - reviewStatus：`ai-reviewed-r2-needs-user-review` → `ai-reviewed-r3-needs-user-review`
 
 ## 1. 剂量
@@ -36,7 +36,7 @@
 - 组后：moreSets → 慢慢还原 + 休息 + 1 分钟；allDone → 慢慢还原 + 很好
 
 ## 6. 画面对照
-- 待 V4 补看（batch-24 预览未出）
+- 动作一致：平行杆直臂撑团身；预览帧看不到高亮（batch-24 第 10 行，非极端）
 - 极端错误：无
 
 ## 7. 改了什么、为什么
@@ -45,4 +45,4 @@
 - 难度 v3 2 / ai-tags 3 → 统一 3
 
 ## 8. 待开哥定
-- V4 预览没有这一批（batch-24），画面待补看
+- 预览帧看不到大臂后面高亮，请看视频确认

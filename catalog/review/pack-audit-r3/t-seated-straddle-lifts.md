@@ -1,6 +1,6 @@
 # t-seated-straddle-lifts 坐姿分腿双腿抬起（Seated Straddle Lifts）· 动作包核对 r3
 
-- 类型：`rep_updown`；V4 预览：待 V4 补看
+- 类型：`rep_updown`；V4 预览：`/workspace/work/v4run/batch-24.jpg 第 5 行`（本机，不入库）
 - reviewStatus：`ai-reviewed-r2-needs-user-review` → `ai-reviewed-r3-needs-user-review`
 
 ## 1. 剂量
@@ -34,7 +34,7 @@
 - 组后：moreSets → 休息 + 45 秒；allDone → 很好
 
 ## 6. 画面对照
-- 待 V4 补看（batch-24 预览未出）
+- 一致：分腿坐两手撑中间、胯前淡高亮（batch-24 第 5 行）
 - 极端错误：无
 
 ## 7. 改了什么、为什么
@@ -43,4 +43,4 @@
 - 「大腿前侧」→「大腿前面」，「髋」→「胯」
 
 ## 8. 待开哥定
-- V4 预览没有这一批（batch-24），画面待补看
+- 无
