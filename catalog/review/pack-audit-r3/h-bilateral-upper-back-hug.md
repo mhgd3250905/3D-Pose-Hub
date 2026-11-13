@@ -53,3 +53,5 @@
 跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
 
 - 注意事项1：拉到舒服就行，疼就松开 → 肩膀前面夹着疼就抱松点，上背有拉开的感觉就够（Stretch only to a comfortable point. Let go if it hurts. → If the front of your shoulders pinch, hug looser. A stretch across your upper back is enough.）
+- 语音 set[2]：呼气，再抱紧一点 → 上背往后拱圆（Breathe out, hug tighter → Round your upper back）
+- 相位口令 peak：停住，呼气 → 上背拱住（Hold, breathe out → Round and hold）

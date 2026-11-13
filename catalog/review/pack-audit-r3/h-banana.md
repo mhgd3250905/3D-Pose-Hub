@@ -55,4 +55,6 @@
 - 要点3：就停在这儿，慢慢喘气。 → 手脚一直往两头够，侧腰慢慢被拉长。（Stay right there and breathe slowly. → Keep reaching hands and feet apart and let your side lengthen.）
 - 要点4：每次呼气再松一点，别一下一下往下压。 → 每次呼气，手和脚再往同一边挪一点。（Each breath out, let go a little more. Don't bounce. → Each breath out, slide your hands and feet a little further over.）
 - 常见错误3：一下一下往下压 → 屁股翻离地面，身子侧过去了（Bouncing to go deeper. → Rolling onto your side instead of staying flat.）
-- 语音 set[2]：呼气，再松一点 → 呼气，手脚再挪一点（Breathe out, let go → Breathe out, slide further）
+- 语音 set[2]：呼气，再松一点 → 手和脚再往一边挪（Breathe out, let go → Slide hands and feet over）
+- 相位口令 peak：停住，呼气 → 弯成香蕉（Hold, breathe out → Banana shape）
+- 相位口令 end：呼气再松 → 手脚再挪（Let go more → Slide further）

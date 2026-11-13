@@ -59,3 +59,5 @@
 - 注意事项1：拉到舒服就行，疼就松一点 → 肩膀夹着疼就把手放低一点（Stretch only to a comfortable point. Ease off if anything hurts. → If your shoulder pinches, bring the hand lower.）
 - 语音 set[1]：腰别往后仰 → 肚子收住，别挺（Don't arch your back → Belly in, don't push it out）
 - 语音 set[3]：呼气，再松一点 → 呼气，轻推手肘（Breathe out, let go → Breathe out, nudge the elbow）
+- 相位口令 peak：停住，呼气 → 手肘冲天（Hold, breathe out → Elbow up）
+- 相位口令 end：呼气再松 → 轻推手肘（Let go more → Nudge the elbow）

@@ -60,3 +60,5 @@
 - 常见错误3：憋气或一下一下往下压 → 前膝冲过脚尖太多（Holding your breath or bouncing. → Front knee shooting way past your toes.）
 - 语音 set[2]：腰别往前挺 → 肚子别往前挺（Don't arch → Don't push your belly out）
 - 语音 set[3]：呼气，再松一点 → 呼气，屁股再夹紧（Breathe out, let go → Breathe out, squeeze more）
+- 相位口令 peak：停住，呼气 → 屁股夹住（Hold, breathe out → Squeeze）
+- 相位口令 end：呼气再松 → 胯往前送（Let go more → Ease hips forward）

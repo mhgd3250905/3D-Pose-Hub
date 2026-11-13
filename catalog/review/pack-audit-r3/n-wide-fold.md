@@ -56,4 +56,6 @@
 - 要点4：别一下一下往下压，有拉的感觉就够，别拉到疼。 → 呼气时屁股再往后推一点，胸口跟着往下。（Don't bounce. A clear stretch is enough, never pain. → Each breath out, push your hips back a little and let your chest follow.）
 - 常见错误3：憋气或一下一下往下压 → 两手撑着椅子往下压肩膀（Holding your breath or bouncing. → Pushing down through your hands into the chair.）
 - 语音 set[1]：背拉长，别弓 → 胸口往前送，背别弓（Long back → Chest forward, back long）
-- 语音 set[3]：呼气，再松一点 → 呼气，屁股往后推（Breathe out, let go → Breathe out, hips back）
+- 语音 set[3]：呼气，再松一点 → 屁股往后，胸口往下（Breathe out, let go → Hips back, chest down）
+- 相位口令 peak：停住，呼气 → 背拉长（Hold, breathe out → Long back）
+- 相位口令 start：慢慢前倾 → 胸口往前送（Lean forward → Chest forward）

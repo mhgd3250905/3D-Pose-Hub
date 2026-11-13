@@ -59,3 +59,4 @@
 - 注意事项1：腰背疼就转少点，还疼就停 → 腰扭着疼就转一半，坐直了再转（If your back hurts, don't turn as far. Stop if it still hurts. → If your back hurts in the twist, only turn halfway and sit taller.）
 - 相位口令 end：呼气再转点 → 呼气坐高点（Turn a bit more → Sit taller）
 - 语音 set[3]：呼气，再松一点 → 呼气，坐高一点再转（Breathe out, let go → Breathe out, sit tall, turn）
+- 相位口令 peak：停住，呼气 → 胸口对椅背（Hold, breathe out → Chest to the backrest）

@@ -49,6 +49,6 @@
 
 跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
 
-- 要点4：两边各点一次算 1 下。 → 左脚点一次、右脚点一次，才算 1 下。（One tap on each side counts as one. → A tap with each foot counts as one.）
+- 要点4：两边各点一次算 1 下。 → 两只脚各往旁边点一次，数 1 下。（One tap on each side counts as one. → Both feet tap out once, and that is one.）
 - 常见错误1：胯往一边转 → 点地时屁股跟着往那边扭（Hips turning to one side. → Hips twisting toward the tapping foot.）
 - 注意事项1：手腕刺疼或发麻就停，开始前先转转手腕 → 手腕不舒服就撑在凳子上做，或换小臂撑（Stop if your wrists get sharp pain or go numb. Roll them out before you start. → If your wrists complain, put your hands on a bench or drop to your forearms.）

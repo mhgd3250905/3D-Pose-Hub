@@ -56,4 +56,5 @@
 - 要点4：别一下一下往下压，有拉的感觉就够，别拉到疼。 → 呼气时屁股再往后挪一点，胸口往地面沉。（Don't bounce. A clear stretch is enough, never pain. → Each breath out, walk your hips back a little and let your chest sink.）
 - 常见错误3：憋气或一下一下往下压 → 膝盖锁死，背反而弓起来（Holding your breath or bouncing. → Locking your knees so your back rounds instead.）
 - 注意事项1：肩膀疼就沉少点，还疼就停 → 肩膀夹着疼就把手扶高一点（If your shoulders hurt, don't sink as far. Stop if it still hurts. → If your shoulders pinch, put your hands higher on the wall.）
-- 语音 set[3]：呼气，再松一点 → 呼气，屁股往后挪（Breathe out, let go → Breathe out, hips back）
+- 语音 set[3]：呼气，再松一点 → 屁股往后挪一点（Breathe out, let go → Walk your hips back）
+- 相位口令 peak：停住，呼气 → 背像桌面（Hold, breathe out → Flat like a table）

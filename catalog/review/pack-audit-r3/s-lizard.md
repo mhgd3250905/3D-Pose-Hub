@@ -58,4 +58,5 @@
 - 要点4：别一下一下往下压，有拉的感觉就够，别拉到疼。 → 呼气时胯再往地上沉一点，够了就换小臂撑。（Don't bounce. A clear stretch is enough, never pain. → Each breath out, sink your hips lower. Drop to your forearms only if it feels easy.）
 - 常见错误3：憋气或一下一下往下压 → 前脚往里收，前膝往里倒（Holding your breath or bouncing. → Front foot creeping in and the knee falling inward.）
 - 相位口令 end：呼气再沉点 → 呼气胯下沉（Sink a bit more → Hips lower）
-- 语音 set[3]：呼气，再松一点 → 呼气，胯往下沉（Breathe out, let go → Breathe out, hips down）
+- 语音 set[3]：呼气，再松一点 → 胯往地上沉（Breathe out, let go → Let your hips sink）
+- 相位口令 peak：停住，呼气 → 手撑在里面（Hold, breathe out → Hands inside）

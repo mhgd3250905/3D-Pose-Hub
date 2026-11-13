@@ -59,3 +59,5 @@
 - 常见错误2：憋气或一下一下往下压 → 手抓着脚往前拽（Holding your breath or bouncing. → Grabbing your feet and yanking yourself forward.）
 - 语音 set[1]：背挺直，别弓 → 肚子贴大腿，背别弓（Long back → Belly to thighs, back long）
 - 语音 set[3]：呼气，再松一点 → 呼气，手往前滑（Breathe out, let go → Breathe out, slide forward）
+- 相位口令 peak：停住，呼气 → 肚子贴腿（Hold, breathe out → Belly to thighs）
+- 相位口令 end：呼气再松 → 手往前滑（Let go more → Slide forward）

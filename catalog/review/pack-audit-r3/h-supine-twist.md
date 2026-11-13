@@ -57,3 +57,5 @@
 - 常见错误3：一下一下往下压 → 对面肩膀翘离垫子（Bouncing to go deeper. → Opposite shoulder peeling off the mat.）
 - 注意事项1：拉到舒服就行，疼就松一点 → 腰扭着疼就在膝盖下面垫个枕头（Stretch only to a comfortable point. Ease off if anything hurts. → If your back hurts in the twist, rest your knees on a pillow.）
 - 语音 set[3]：呼气，再松一点 → 呼气，膝盖自己往下沉（Breathe out, let go → Breathe out, knees sink）
+- 相位口令 peak：停住，呼气 → 肩膀贴地（Hold, breathe out → Shoulders down）
+- 相位口令 end：呼气再松 → 膝盖再沉（Let go more → Knees sink）

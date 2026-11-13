@@ -58,3 +58,6 @@
 - 注意事项2：手腕刺疼或发麻就停，开始前先转转手腕 → 手腕撑着不舒服就把手往前挪一点、手指张开（Stop if your wrists get sharp pain or go numb. Roll them out before you start. → If your wrists complain, walk your hands forward a bit and spread your fingers.）
 - 语音 set[1]：肩膀离耳朵远点 → 手推地，屁股往上顶（Shoulders away from your ears → Push the floor, hips up）
 - 语音 set[2]：背拉长，别弓 → 胸口往大腿靠（Long back, no rounding → Chest toward thighs）
+- 语音 set[3]：呼气，胸口再压一点 → 胸口沉向大腿（Breathe out, chest down → Chest sinks to your thighs）
+- 相位口令 peak：停住，呼气 → 屁股顶高（Hold, breathe out → Hips high）
+- 相位口令 end：呼气再松 → 胸口再沉（Let go more → Chest sinks）

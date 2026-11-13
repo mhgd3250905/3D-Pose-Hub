@@ -57,3 +57,5 @@
 - 要点4：别一下一下往下压，有拉的感觉就够，别拉到疼。 → 呼气时举高的手再往椅子那边够远一点。（Don't bounce. A clear stretch is enough, never pain. → Each breath out, reach your top hand a little further toward the chair.）
 - 常见错误3：憋气或一下一下往下压 → 上身往前塌，不是侧着弯（Holding your breath or bouncing. → Folding forward instead of bending sideways.）
 - 语音 set[3]：呼气，再松一点 → 呼气，手再够远点（Breathe out, let go → Breathe out, reach further）
+- 相位口令 peak：停住，呼气 → 胯推出去（Hold, breathe out → Hip out）
+- 相位口令 end：呼气再松 → 手再够远（Let go more → Reach further）

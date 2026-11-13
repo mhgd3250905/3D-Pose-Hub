@@ -58,3 +58,5 @@
 - 常见错误1：胯跟着翻向一边 → 另一边屁股跟着离地翻过来（Hips rolling to one side. → The other side of your butt lifting off the floor.）
 - 常见错误3：一下一下往下压 → 不用带子托着，靠腿硬撑（Bouncing to go deeper. → Holding the leg up yourself instead of letting the band take it.）
 - 语音 set[3]：呼气，再松一点 → 呼气，带子松一点（Breathe out, let go → Breathe out, give some slack）
+- 相位口令 peak：停住，呼气 → 带子托住（Hold, breathe out → Band holds it）
+- 相位口令 end：呼气再松 → 再落一点（Let go more → Drop a bit more）

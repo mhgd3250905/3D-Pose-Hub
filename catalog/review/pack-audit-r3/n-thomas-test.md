@@ -57,3 +57,5 @@
 - 常见错误3：憋气或一下一下往下压 → 用手按另一条腿往下压（Holding your breath or bouncing. → Pushing the other leg down with your hand.）
 - 注意事项1：膝盖或胯疼就抱松点，还疼就停 → 膝盖抱着疼就改成抱大腿后面（If your knee or hip hurts, don't hug as tight. Stop if it still hurts. → If hugging the knee hurts, hold behind your thigh instead.）
 - 语音 set[3]：呼气，再松一点 → 另一条腿放松别压（Breathe out, let go → Other leg loose, no forcing）
+- 相位口令 peak：停住，呼气 → 另一条腿放松（Hold, breathe out → Other leg relaxed）
+- 相位口令 end：呼气再松 → 抱住别压（Let go more → Hold, don't force）

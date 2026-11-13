@@ -57,4 +57,6 @@
 - 要点4：每次呼气再松一点，别一下一下往下压。 → 呼气时屁股再夹紧一点，胯往前送一点点。（Each breath out, let go a little more. Don't bounce. → Each breath out, squeeze a little harder and nudge your hips forward.）
 - 常见错误1：腰往后仰，屁股没夹紧 → 胸口往后仰，腰被折成拱（Arching your lower back instead of squeezing your butt. → Leaning your chest back and bending your lower back.）
 - 常见错误3：一下一下往下压 → 上身往前趴，大腿前面没拉到（Bouncing to go deeper. → Leaning forward so the front of your thigh loses the stretch.）
-- 语音 set[3]：呼气，再松一点 → 呼气，屁股再夹紧（Breathe out, let go → Breathe out, squeeze harder）
+- 语音 set[3]：呼气，再松一点 → 屁股夹紧，胯往前送（Breathe out, let go → Squeeze and ease your hips forward）
+- 相位口令 peak：停住，呼气 → 屁股夹住（Hold, breathe out → Squeeze and hold）
+- 相位口令 end：呼气再松 → 胯再往前（Let go more → Hips forward more）

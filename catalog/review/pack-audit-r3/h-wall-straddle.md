@@ -58,3 +58,4 @@
 - 常见错误3：憋气或一下一下往下压 → 用手往下按膝盖（Holding your breath or bouncing. → Pushing your knees down with your hands.）
 - 语音 set[2]：腰贴着地 → 屁股贴墙，腰放平（Back on the floor → Butt to wall, back flat）
 - 语音 set[3]：呼气，再松一点 → 腿让它自己往下落（Breathe out, let go → Let your legs drop）
+- 相位口令 peak：停住，呼气 → 腿放松（Hold, breathe out → Legs relaxed）

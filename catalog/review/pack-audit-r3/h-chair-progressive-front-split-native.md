@@ -59,3 +59,5 @@
 - 注意事项1：拉到舒服就行，疼就松一点 → 大腿后面或腹股沟刺疼就滑回来一点（Stretch only to a comfortable point. Ease off if anything hurts. → If the back of your thigh or groin gets a sharp pain, slide back in.）
 - 注意事项2：用结实、不带轮子的椅子 → 两边椅子都要稳，地面别太滑（Use a sturdy chair without wheels. → Both chairs need to be steady, and the floor not too slippery.）
 - 语音 set[3]：呼气，再松一点 → 呼气，前脚再滑一点（Breathe out, let go → Breathe out, slide a bit more）
+- 相位口令 peak：停住，呼气 → 手撑稳（Hold, breathe out → Hands steady）
+- 相位口令 end：呼气再松 → 前脚再滑（Let go more → Slide a bit more）

@@ -60,3 +60,5 @@
 - 相位口令 end：呼气再前倾 → 手再往前走（Lean a bit more → Walk hands out）
 - 语音 set[1]：背拉长，别弓 → 从胯往前倒，背别弓（Long back → Tip from your hips, back long）
 - 语音 set[3]：呼气，再松一点 → 手再往前走一点（Breathe out, let go → Walk your hands out）
+- 相位口令 peak：停住，呼气 → 从胯往前倒（Hold, breathe out → Tip from the hips）
+- 相位口令 start：慢慢前倾 → 坐实往前倒（Lean forward → Sit tall, tip forward）

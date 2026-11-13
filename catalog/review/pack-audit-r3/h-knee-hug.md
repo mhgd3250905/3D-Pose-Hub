@@ -56,4 +56,6 @@
 - 要点4：每次呼气再松一点，别一下一下往下压。 → 呼气时把膝盖往胸口再抱近一点。（Each breath out, let go a little more. Don't bounce. → Each breath out, hug your knees a little closer.）
 - 常见错误3：一下一下往下压 → 抬头去够膝盖，脖子在使劲（Bouncing to go deeper. → Lifting your head to meet your knees.）
 - 注意事项1：拉到舒服就行，疼就松一点 → 膝盖弯着疼就抱大腿后面，别抱小腿（Stretch only to a comfortable point. Ease off if anything hurts. → If bending your knees hurts, hold behind your thighs instead of your shins.）
-- 语音 set[3]：呼气，再松一点 → 呼气，膝盖再抱近（Breathe out, let go → Breathe out, hug closer）
+- 语音 set[3]：呼气，再松一点 → 膝盖往胸口抱（Breathe out, let go → Knees to your chest）
+- 相位口令 peak：停住，呼气 → 腰贴地（Hold, breathe out → Back on the floor）
+- 相位口令 end：呼气再松 → 抱近一点（Let go more → Hug closer）

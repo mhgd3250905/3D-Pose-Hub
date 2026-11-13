@@ -54,3 +54,4 @@
 - 注意事项1：用不带轮子的结实椅子，疼或站不稳就停 → 两手扶椅背，别借力往下拽椅子（Use a sturdy chair without wheels. Stop if it hurts or you feel wobbly. → Rest your hands on the chair. Don't pull on it to get down.）
 - 注意事项2：膝盖疼就蹲浅点，还疼就停 → 膝盖疼就只蹲一点点，蹲到不疼的地方就起（If your knees hurt, don't go as low. Stop if it still hurts. → If your knees hurt, bend just a little, only as far as it feels fine.）
 - 语音 reminders[0]：膝盖对着脚尖 → 膝盖往外，别靠拢（Knees over toes → Knees apart, don't cave）
+- 语音 reminders[2]：屁股往后坐 → 像要坐椅子（Sit back → Like sitting on a chair）

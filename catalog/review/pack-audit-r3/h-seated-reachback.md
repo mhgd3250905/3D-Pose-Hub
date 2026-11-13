@@ -57,4 +57,6 @@
 - 常见错误3：一下一下往下压 → 耸着肩，脑袋往前缩（Bouncing to go deeper. → Shoulders shrugging and head poking forward.）
 - 注意事项1：拉到舒服就行，疼就松一点 → 肩膀前面刺疼就把屁股往回挪一点（Stretch only to a comfortable point. Ease off if anything hurts. → If the fronts of your shoulders get a sharp pain, scoot back a little.）
 - 注意事项2：手腕刺疼或发麻就停，开始前先转转手腕 → 手指朝后撑地手腕难受，就把手指转向两边（Stop if your wrists get sharp pain or go numb. Roll them out before you start. → If your wrists complain with fingers pointing back, turn them out to the sides.）
-- 语音 set[3]：呼气，再松一点 → 呼气，胸口往上挺（Breathe out, let go → Breathe out, chest up）
+- 语音 set[3]：呼气，再松一点 → 胸口挺起，肩往后开（Breathe out, let go → Chest up, shoulders open）
+- 相位口令 peak：停住，呼气 → 胸口挺起（Hold, breathe out → Chest up）
+- 相位口令 end：呼气再松 → 肩再打开（Let go more → Open the shoulders）

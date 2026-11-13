@@ -56,4 +56,6 @@
 - 要点4：每次呼气再松一点，别一下一下往下压。 → 呼气时把手臂往胸口再抱近一点。（Each breath out, let go a little more. Don't bounce. → Each breath out, hug the arm a little closer to your chest.）
 - 常见错误3：一下一下往下压 → 抱着手腕往里拽，手肘被扭着（Bouncing to go deeper. → Pulling on the wrist and twisting the elbow.）
 - 注意事项1：肩膀疼就拉轻点，还疼就停 → 肩膀前面夹着疼就把手臂放低一点再抱（If your shoulder hurts, pull more gently. Stop if it still hurts. → If the front of your shoulder pinches, lower the arm a bit before you pull.）
-- 语音 set[3]：呼气，再松一点 → 呼气，再抱近一点（Breathe out, let go → Breathe out, hug closer）
+- 语音 set[3]：呼气，再松一点 → 手臂往胸口贴近（Breathe out, let go → Arm closer to your chest）
+- 相位口令 peak：停住，呼气 → 肩膀放下（Hold, breathe out → Shoulder down）
+- 相位口令 end：呼气再松 → 再抱近点（Let go more → Hug closer）

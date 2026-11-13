@@ -56,4 +56,6 @@
 - 要点3：就停在这儿，慢慢喘气，每次呼气再松一点。 → 两只脚踩实，胯钉在原地，只有上身往旁边弯。（Stay right there, breathe slowly, let go a little more each breath out. → Feet planted, hips still. Only your upper body bends.）
 - 要点4：别一下一下往下压，有拉的感觉就够，别拉到疼。 → 呼气时举高的手往斜上方再拉远一点。（Don't bounce. A clear stretch is enough, never pain. → Each breath out, reach your raised hand a little further up and over.）
 - 常见错误3：憋气或一下一下往下压 → 胯往另一边推出去（Holding your breath or bouncing. → Hips sliding out the other way.）
-- 语音 set[3]：呼气，再松一点 → 呼气，手往上拉远（Breathe out, let go → Breathe out, reach long）
+- 语音 set[3]：呼气，再松一点 → 胯不动，手往上拉（Breathe out, let go → Hips still, reach long）
+- 相位口令 peak：停住，呼气 → 胯不动（Hold, breathe out → Hips still）
+- 相位口令 end：呼气再松 → 手往上拉（Let go more → Reach long）

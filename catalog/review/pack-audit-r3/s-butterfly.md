@@ -59,3 +59,6 @@
 - 常见错误3：憋气或一下一下往下压 → 手肘使劲往下压膝盖（Holding your breath or bouncing. → Pushing your knees down with your elbows.）
 - 语音 set[1]：背挺直，别弓 → 胸口往前送，别低头（Long back → Chest forward, don't drop your head）
 - 语音 set[3]：呼气，再松一点 → 呼气，肚子往前送（Breathe out, let go → Breathe out, belly forward）
+- 相位口令 peak：停住，呼气 → 膝盖往下落（Hold, breathe out → Knees drop）
+- 相位口令 end：呼气再松 → 肚子往前送（Let go more → Belly forward）
+- 相位口令 start：慢慢前倾 → 握脚往前送（Lean forward → Hold feet, lean in）

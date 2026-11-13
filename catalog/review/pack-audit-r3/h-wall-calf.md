@@ -57,3 +57,5 @@
 - 常见错误3：一下一下往下压 → 后脚尖往外撇，小腿没拉到（Bouncing to go deeper. → Back foot turned out, so the calf loses the stretch.）
 - 注意事项1：疼就少往前靠点，还疼就停 → 跟腱或小腿刺疼就少往前靠一点（If it hurts, don't lean in as far. Stop if it still hurts. → If your Achilles or calf gets a sharp pain, lean in less.）
 - 语音 set[3]：呼气，再松一点 → 呼气，后脚跟踩住（Breathe out, let go → Breathe out, heel down）
+- 相位口令 peak：停住，呼气 → 后脚跟踩住（Hold, breathe out → Back heel down）
+- 相位口令 end：呼气再松 → 前膝再弯（Let go more → Bend the front knee）

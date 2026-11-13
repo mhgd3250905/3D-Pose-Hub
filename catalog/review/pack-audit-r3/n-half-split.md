@@ -59,3 +59,5 @@
 - 常见错误3：憋气或一下一下往下压 → 前膝死死锁直，膝盖后面扯着疼（Holding your breath or bouncing. → Locking the front knee hard so the back of it hurts.）
 - 语音 set[1]：背拉长，别弓 → 胸口往前，背别弓（Long back → Chest forward, back flat）
 - 语音 set[3]：呼气，再松一点 → 呼气，屁股往后坐（Breathe out, let go → Breathe out, hips back）
+- 相位口令 peak：停住，呼气 → 前脚勾起（Hold, breathe out → Toes up）
+- 相位口令 end：呼气再松 → 再往后坐（Let go more → Sit back more）

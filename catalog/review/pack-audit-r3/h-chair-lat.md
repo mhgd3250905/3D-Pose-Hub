@@ -59,3 +59,6 @@
 - 注意事项2：用结实、不带轮子的椅子 → 椅子顶住墙，压上去不会往前跑（Use a sturdy chair without wheels. → Brace the chair against a wall so it won't slide.）
 - 相位口令 start：慢慢沉下去 → 往后推胯（Sink down → Push hips back）
 - 语音 set[3]：呼气，再沉一点 → 呼气，胸口再沉（Breathe out, sink → Breathe out, chest lower）
+- 语音 set[1]：屁股往后推 → 胯往后拉远（Hips back → Pull your hips away）
+- 相位口令 peak：停住，呼气 → 腋下拉长（Hold, breathe out → Long through the side）
+- 相位口令 end：呼气再松 → 胸口再沉（Let go more → Chest lower）

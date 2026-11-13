@@ -56,4 +56,6 @@
 - 要点4：每次呼气再松一点，别一下一下往下压。 → 呼气时胸口再往门里探一点，肩膀别耸。（Each breath out, let go a little more. Don't bounce. → Each breath out, lean your chest a little further through, shoulders down.）
 - 常见错误3：一下一下往下压 → 脑袋往前伸，胸口没打开（Bouncing to go deeper. → Poking your head forward instead of opening your chest.）
 - 注意事项1：拉到舒服就行，疼就松一点 → 肩膀前面刺疼或手发麻就把手臂放低一点（Stretch only to a comfortable point. Ease off if anything hurts. → If your shoulders get a sharp pain or hands tingle, lower your arms.）
-- 语音 set[3]：呼气，再松一点 → 呼气，胸口再探出去（Breathe out, let go → Breathe out, chest through）
+- 语音 set[3]：呼气，再松一点 → 胸口往门里探（Breathe out, let go → Lean through the doorway）
+- 相位口令 peak：停住，呼气 → 小臂压门框（Hold, breathe out → Forearms press）
+- 相位口令 end：呼气再松 → 再探一点（Let go more → Lean through more）

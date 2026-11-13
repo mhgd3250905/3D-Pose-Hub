@@ -51,3 +51,4 @@
 
 - 注意事项1：拉到舒服就行，疼就松一点 → 肩膀前面夹着疼就把手肘放宽点，胸口少沉点（Stretch only to a comfortable point. Ease off if anything hurts. → If your shoulders pinch, spread your elbows and don't sink as low.）
 - 注意事项2：用结实、不带轮子的椅子 → 椅子顶住墙，手肘压上去别让它往前滑（Use a sturdy chair without wheels. → Brace the chair against a wall so it won't slide away.）
+- 常见错误2：屁股往后坐 → 屁股往脚后跟坐，胯不在膝盖上方（Sitting your hips back. → Sitting back toward your heels instead of staying over your knees.）

@@ -56,4 +56,7 @@
 - 要点4：别一下一下往下压，有拉的感觉就够，别拉到疼。 → 呼气时胸口往小腿那边再靠近一点，背别弓。（Don't bounce. A clear stretch is enough, never pain. → Each breath out, bring your chest a little closer to your shin, back long.）
 - 常见错误3：憋气或一下一下往下压 → 用手往下按膝盖（Holding your breath or bouncing. → Pushing the knee down with your hand.）
 - 语音 set[1]：背挺直，别弓 → 胸口往前，背挺直（Long back → Chest forward, back long）
-- 语音 set[3]：呼气，再松一点 → 呼气，胸口再靠近（Breathe out, let go → Breathe out, chest closer）
+- 语音 set[3]：呼气，再松一点 → 胸口往小腿靠近（Breathe out, let go → Chest toward your shin）
+- 相位口令 peak：停住，呼气 → 膝盖往下落（Hold, breathe out → Knee drops）
+- 相位口令 end：呼气再松 → 胸口再靠近（Let go more → Chest closer）
+- 相位口令 start：慢慢前倾 → 背挺直前倾（Lean forward → Tall and tip forward）

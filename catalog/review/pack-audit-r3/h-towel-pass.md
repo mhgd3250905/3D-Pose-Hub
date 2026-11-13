@@ -51,3 +51,4 @@
 
 - 常见错误2：腰往前挺 → 毛巾往后过头时肋骨往前顶（Arching your lower back. → Ribs popping forward as the towel goes overhead.）
 - 注意事项1：肩膀疼就转小点，还疼就停 → 过不去就把毛巾握宽，别硬掰肩膀（If your shoulders hurt, don't go as far. Stop if it still hurts. → If you can't get it over, widen your grip. Don't force your shoulders.）
+- 语音 reminders[1]：肋骨往下收 → 肚子别往前顶（Ribs down → Don't push your belly out）

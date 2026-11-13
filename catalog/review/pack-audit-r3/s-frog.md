@@ -57,3 +57,5 @@
 - 要点4：别一下一下往下压，有拉的感觉就够，别拉到疼。 → 呼气时屁股往后坐一点点，大腿内侧有拉就停。（Don't bounce. A clear stretch is enough, never pain. → Each breath out, rock your hips back a touch. Stop at a clear inner-thigh stretch.）
 - 常见错误2：憋气或一下一下往下压 → 屁股猛往后坐，大腿内侧扯着疼（Holding your breath or bouncing. → Rocking back too hard so your inner thighs hurt.）
 - 语音 set[3]：呼气，再松一点 → 呼气，屁股往后一点（Breathe out, let go → Breathe out, hips back a bit）
+- 相位口令 peak：停住，呼气 → 小腿贴地（Hold, breathe out → Shins down）
+- 相位口令 end：呼气再松 → 往后一点（Let go more → Rock back a touch）

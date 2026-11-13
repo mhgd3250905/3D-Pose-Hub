@@ -51,5 +51,5 @@
 
 跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
 
-- 要点4：两边各弯一次算 1 下。 → 左手弯一次、右手弯一次，才算 1 下。（One curl on each side counts as one. → A curl with each arm counts as one.）
+- 要点4：两边各弯一次算 1 下。 → 两只手轮流各弯一次，数 1 下。（One curl on each side counts as one. → Curl each arm once, then count one.）
 - 语音 reminders[0]：手肘贴住身体 → 大臂别往前跑（Elbows at your sides → Upper arm stays put）

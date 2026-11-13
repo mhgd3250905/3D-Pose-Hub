@@ -55,3 +55,4 @@
 跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
 
 - 常见错误3：憋着气，或一下一下往下颠 → 身子往前趴时屁股歪到一边（Holding your breath or bouncing. → Hips tipping to one side as you fold forward.）
+- 相位口令 peak：停住，呼气 → 胯摆正（Hold, breathe out → Hips square）

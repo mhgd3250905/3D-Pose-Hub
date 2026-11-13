@@ -59,4 +59,5 @@
 - 相位口令 start：慢慢沉下去 → 膝盖往前弯（Sink down → Bend your knees）
 - 相位口令 end：呼气再沉点 → 呼气再弯点（Sink a bit more → Bend a bit more）
 - 语音 set[2]：两手扶稳墙 → 膝盖顶向墙（Hands on the wall → Knees toward the wall）
-- 语音 set[3]：呼气，再松一点 → 呼气，脚跟别抬（Breathe out, let go → Breathe out, heels down）
+- 语音 set[3]：呼气，再松一点 → 脚跟贴着地别抬（Breathe out, let go → Keep those heels down）
+- 相位口令 peak：停住，呼气 → 脚跟踩住（Hold, breathe out → Heels down）

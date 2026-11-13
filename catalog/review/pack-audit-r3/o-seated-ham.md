@@ -59,3 +59,5 @@
 - 常见错误2：憋气或一下一下往下压 → 伸直那条腿的膝盖往下压死（Holding your breath or bouncing. → Jamming the straight knee down hard.）
 - 语音 set[1]：背挺直，别弓 → 肚子往大腿靠，别低头（Long back → Belly to thigh, don't drop your head）
 - 语音 set[3]：呼气，再松一点 → 脚尖勾起来（Breathe out, let go → Flex your foot）
+- 相位口令 peak：停住，呼气 → 脚尖勾住（Hold, breathe out → Toes up）
+- 相位口令 end：呼气再松 → 肚子贴近腿（Let go more → Belly to thigh）

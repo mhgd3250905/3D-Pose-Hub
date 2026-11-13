@@ -59,3 +59,5 @@
 - 常见错误3：一下一下往下压 → 脚使劲往屁股拽，膝盖被拧着（Bouncing to go deeper. → Yanking the foot to your butt and twisting the knee.）
 - 语音 set[1]：腰别往后仰 → 肋骨收住，腰别折（Don't arch your back → Ribs down, back still）
 - 语音 set[3]：呼气，再松一点 → 呼气，屁股夹一下（Breathe out, let go → Breathe out, squeeze）
+- 相位口令 peak：停住，呼气 → 跪稳别晃（Hold, breathe out → Steady）
+- 相位口令 end：呼气再松 → 夹一下屁股（Let go more → Squeeze）

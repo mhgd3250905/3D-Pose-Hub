@@ -59,4 +59,6 @@
 - 常见错误3：憋气或一下一下往下压 → 抬起的膝盖往外跑（Holding your breath or bouncing. → The bent knee drifting out to the side.）
 - 注意事项1：膝盖疼就少弯点，还疼就停 → 膝盖弯着疼就抓裤脚或用毛巾套脚（If your knee hurts, don't bend it as far. Stop if it still hurts. → If bending the knee hurts, hold your pant leg or loop a towel around the foot.）
 - 语音 set[2]：腰别往前挺 → 两膝并拢，肚子别挺（Don't arch → Knees together, belly in）
-- 语音 set[3]：呼气，再松一点 → 呼气，屁股夹一下（Breathe out, let go → Breathe out, squeeze）
+- 语音 set[3]：呼气，再松一点 → 屁股夹一下，别拽脚（Breathe out, let go → Squeeze, don't yank the foot）
+- 相位口令 peak：停住，呼气 → 两膝并拢（Hold, breathe out → Knees together）
+- 相位口令 end：呼气再松 → 夹一下屁股（Let go more → Squeeze）

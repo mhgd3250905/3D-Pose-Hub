@@ -58,4 +58,6 @@
 - 要点4：别一下一下往下压，有拉的感觉就够，别拉到疼。 → 呼气时屁股夹得更紧一点，身子往前挪一点点。（Don't bounce. A clear stretch is enough, never pain. → Each breath out, squeeze your butt harder and shift forward a little.）
 - 常见错误1：拱腰往前，屁股没夹 → 身子往前冲，腰往前折，屁股松着（Arching your lower back instead of squeezing your butt. → Lunging forward with your back bent and your butt loose.）
 - 常见错误2：憋气或一下一下往下压 → 前膝冲出脚尖太多（Holding your breath or bouncing. → Front knee shooting far past your toes.）
-- 语音 set[3]：呼气，再松一点 → 呼气，屁股夹更紧（Breathe out, let go → Breathe out, squeeze harder）
+- 语音 set[3]：呼气，再松一点 → 屁股夹紧往前挪（Breathe out, let go → Squeeze and shift forward）
+- 相位口令 peak：停住，呼气 → 后膝跪稳（Hold, breathe out → Back knee steady）
+- 相位口令 end：呼气再松 → 再往前挪（Let go more → Shift forward）

@@ -57,3 +57,5 @@
 - 常见错误3：一下一下往下压 → 脚往两边撇，脚踝被别着（Bouncing to go deeper. → Feet splaying out and twisting your ankles.）
 - 注意事项1：拉到舒服就行，疼就松一点 → 脚背或脚踝刺疼就撑起来一点（Stretch only to a comfortable point. Ease off if anything hurts. → If the top of your foot or ankle gets a sharp pain, lift up a bit.）
 - 语音 set[2]：呼气，再松一点 → 手撑着，慢慢往后坐（Breathe out, let go → Hands back, sit back slowly）
+- 相位口令 peak：停住，呼气 → 手撑着坐住（Hold, breathe out → Sit and lean back）
+- 相位口令 end：呼气再松 → 再坐低点（Let go more → Sit lower）

@@ -53,3 +53,5 @@
 
 - 要点3：就停在这儿，慢慢喘气，每次呼气再松一点。 → 手掌整个压在墙上，身子往后靠到小臂里面有拉就停。（Stay right there, breathe slowly, let go a little more each breath out. → Whole palm flat on the wall. Lean back until the inside of your forearm stretches.）
 - 常见错误3：憋气或一下一下往下压 → 手掌根离开墙，只剩手指贴着（Holding your breath or bouncing. → Heel of your hand coming off the wall, only fingers touching.）
+- 相位口令 peak：停住，呼气 → 手掌压实（Hold, breathe out → Palm flat）
+- 相位口令 end：呼气再松 → 再往后靠（Let go more → Lean back more）

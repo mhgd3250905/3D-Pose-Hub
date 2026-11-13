@@ -59,3 +59,6 @@
 - 常见错误3：憋气或一下一下往下压 → 后面那条腿也跟着伸直，人往前栽（Holding your breath or bouncing. → Straightening the back leg too and tipping forward.）
 - 语音 set[1]：背挺直，别弓 → 屁股往后，背挺平（Long back → Hips back, flat back）
 - 语音 set[3]：呼气，再松一点 → 脚尖勾住（Breathe out, let go → Toes up）
+- 相位口令 peak：停住，呼气 → 脚尖勾住（Hold, breathe out → Toes up）
+- 相位口令 end：呼气再松 → 屁股往后（Let go more → Hips back）
+- 相位口令 start：慢慢前倾 → 屁股往后坐（Lean forward → Sit hips back）
