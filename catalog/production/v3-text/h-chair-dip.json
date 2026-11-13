@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-chair-dip",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-chair-dip.js"
  ],
@@ -10,8 +10,8 @@
   "en": "Chair Dip"
  },
  "purpose": {
-  "zh": "练手臂后侧和胸部",
-  "en": "Build the backs of your arms and your chest."
+  "zh": "练大臂后面和胸",
+  "en": "Builds the backs of your arms and your chest."
  },
  "cues": [
   {
@@ -19,22 +19,22 @@
    "primary": true,
    "text": {
     "zh": "手肘直直往后弯，肩膀别耸",
-    "en": "Bend your elbows straight back and keep your shoulders down"
+    "en": "Bend your elbows straight back, shoulders down"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "双手撑在椅面前沿，膝盖弯着，双脚踩地。",
-    "en": "Put your hands on the front edge of the seat, knees bent and feet flat."
+    "zh": "两手撑在椅面前沿，膝盖弯着，两脚踩地。",
+    "en": "Hands on the front edge of the seat, knees bent, feet flat."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "下到大臂差不多和地面平，再撑回手臂伸直。",
+    "zh": "下到大臂差不多跟地面平，再撑回手臂伸直。",
     "en": "Lower until your upper arms are about level, then push back up to straight arms."
    }
   }
@@ -42,17 +42,17 @@
  "commonErrors": [
   {
    "zh": "手肘往两边张开",
-   "en": "Flaring the elbows out."
+   "en": "Elbows flaring out."
   },
   {
-   "zh": "耸肩或肩膀往前塌",
-   "en": "Shrugging or letting the shoulders roll forward."
+   "zh": "耸肩，或肩膀往前塌",
+   "en": "Shrugging or shoulders rolling forward."
   }
  ],
  "cautions": [
   {
-   "zh": "肩膀前面夹着疼时下得浅一点或换简单版本",
-   "en": "If the front of your shoulder pinches, go less deep or switch to an easier version."
+   "zh": "肩膀前面夹着疼就下浅点；做不满就把脚往回收一点",
+   "en": "If the front of your shoulder pinches, don't go as low. Can't get them all? Walk your feet in closer."
   },
   {
    "zh": "用结实、不带轮子的椅子",
@@ -72,7 +72,7 @@
    "chair"
   ],
   "position": "other",
-  "difficulty": 1
+  "difficulty": 2
  },
  "unilateral": false,
  "defaultDose": {
@@ -101,25 +101,25 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 1.0,
+    "seconds": 1.5,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 0.9,
+    "seconds": 0.3,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 0.7,
+    "seconds": 1.2,
     "cue": "phase.end"
    },
    {
     "id": "rest",
-    "seconds": 1.4
+    "seconds": 0.5
    }
   ],
-  "source": "spec-pulse-track r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -133,6 +133,95 @@
    ],
    "flags": [
     "spec 注释写底部停 0.3 s，批表按动作轨算出顶点 0.9 s → rep_hold；如要按注释则是 rep_updown，请确认"
+   ]
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 4.0 s → 3.5 s（下 1.5 / 底 0.3 / 撑起 1.2）；底部短停，kind 维持 rep_updown，r2 flag 结束",
+    "难度 v3 1 / ai-tags 2 → 统一 2；退阶「脚往回收」",
+    "文字改教练口吻"
+   ],
+   "flags": [
+    "预览帧大臂后面高亮不明显，请看视频确认"
+   ],
+   "audit": {
+    "dose": [
+     "3 组×10 次，休息 45 秒",
+     "3 组×10 次，休息 45 秒"
+    ],
+    "rep": [
+     "4.0 s",
+     "3.5 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 2
+     },
+     2
+    ],
+    "voice": "口吻改写",
+    "frame": "动作一致：背对椅子手撑椅面臂屈伸；高亮在肩前/胸，大臂后面不明显（非极端）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 3.5,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "手肘往后，别张开",
+    "en": "Elbows back, not out",
+    "from": [
+     "cue1",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "肩膀别耸",
+    "en": "Shoulders down",
+    "from": [
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 8,
+    "role": "form",
+    "zh": "撑到手臂伸直",
+    "en": "Push to straight arms",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "afterRep": 9,
+    "key": "p.last_rep"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.45"
+   ],
+   "allDone": [
+    "p.nice"
    ]
   }
  }

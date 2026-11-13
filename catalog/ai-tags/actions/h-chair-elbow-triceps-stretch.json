@@ -5,7 +5,7 @@
   "status": "ai-draft",
   "source": {
     "text": "catalog/production/v3-text/h-chair-elbow-triceps-stretch.json",
-    "textSha256Lf": "711e654f62affe0ea65bfcd9613d29cbb4105df2f39e153753d0c445914d232a",
+    "textSha256Lf": "fd6db581cea498745b9b82c8cb2816bda6047cabb8d1f50f2167ffd1f5305d37",
     "spec": "drill-anim/specs/h-chair-elbow-triceps-stretch-r4.js",
     "catalogV1": null
   },
@@ -129,6 +129,12 @@
         ]
       },
       "reason": "拉伸/活动类：v3 把被拉肌写在 activeMuscles，这里移到 stretchedMuscles，无主动发力肌。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 1,
+      "reason": "r3 动作包核对（开哥 2026-11-13）：逐个重定，与 v3 tags.difficulty 同值。"
     }
   ],
   "reviewNotes": []

@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-chair-single-leg-hip-thrust",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-chair-single-leg-hip-thrust-rr8.js",
   "drill-anim/specs/h-chair-single-leg-hip-thrust-rr7.js",
@@ -17,49 +17,49 @@
   "en": "Chair-Supported Single-Leg Hip Thrust"
  },
  "purpose": {
-  "zh": "练臀部和大腿后侧，让单腿更有力",
-  "en": "Build your glutes and the backs of your thighs for stronger single-leg power."
+  "zh": "练屁股和大腿后面，一条腿也能顶得起来",
+  "en": "Builds your butt and hamstrings so one leg can drive you up."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "一只脚踩地发力，把臀部抬到身体放平",
-    "en": "Drive through one foot to lift your hips until your body is level"
+    "zh": "一只脚踩地使劲，把屁股顶到身体放平",
+    "en": "Drive through one foot and lift your hips until your body is flat"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "上背靠在椅面边上，另一条腿收起。",
-    "en": "Rest your upper back on the seat edge and keep the other knee tucked."
+    "zh": "上背靠在椅面边上，另一条腿收起来。",
+    "en": "Upper back on the seat edge, other knee tucked up."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "骨盆别往一边掉，顶上夹紧臀部。",
-    "en": "Keep your hips level and squeeze your glutes at the top."
+    "zh": "两边胯骨一样高，顶上夹紧屁股。",
+    "en": "Keep both hips level and squeeze your butt at the top."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "骨盆往一边掉",
-   "en": "Letting the hips drop to one side."
+   "zh": "胯往一边掉",
+   "en": "Hips dropping to one side."
   },
   {
-   "zh": "靠腰拱起把臀部顶高",
-   "en": "Arching the lower back to push the hips higher."
+   "zh": "靠腰拱起把屁股顶高",
+   "en": "Arching your lower back to push your hips higher."
   }
  ],
  "cautions": [
   {
-   "zh": "腰不舒服时抬低一点，还疼就停",
-   "en": "If your lower back feels uncomfortable, lift lower, and stop if it still hurts."
+   "zh": "腰不舒服就抬低点，还疼就停；太难就两只脚一起做",
+   "en": "If your lower back feels off, don't lift as high, and stop if it still hurts. Too hard? Use both feet."
   },
   {
    "zh": "用结实、不带轮子的椅子",
@@ -80,7 +80,7 @@
    "chair"
   ],
   "position": "supine",
-  "difficulty": 2
+  "difficulty": 3
  },
  "unilateral": true,
  "startingSide": "left",
@@ -92,15 +92,15 @@
  },
  "phases": {
   "start": {
-   "zh": "抬起臀部",
+   "zh": "顶起来",
    "en": "Hips up"
   },
   "peak": {
-   "zh": "夹紧臀部",
+   "zh": "夹屁股",
    "en": "Squeeze"
   },
   "end": {
-   "zh": "慢慢放下",
+   "zh": "慢慢放",
    "en": "Lower slowly"
   }
  },
@@ -110,26 +110,22 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 1.4,
+    "seconds": 1.2,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 2.4,
+    "seconds": 1.0,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 1.8,
+    "seconds": 1.3,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 2.4
    }
   ],
   "perSide": "each-side-separately",
-  "source": "spec-pulse-track r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -141,6 +137,106 @@
     "最终口径：按真实做法定（2026-11-01）"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 8.0 s → 3.5 s（顶 1.2 / 停 1.0 / 放 1.3）",
+    "难度 v3 2 / ai-tags 3 → 统一 3；退阶写进注意事项",
+    "「骨盆别往一边掉」→「两边胯骨一样高」"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "3 组×每侧10 次，休息 45 秒",
+     "3 组×每侧10 次，休息 45 秒"
+    ],
+    "rep": [
+     "8.0 s",
+     "3.5 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 2,
+      "ai": 3
+     },
+     3
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：上背靠椅单腿臀推、臀部高亮（b6 第 8 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 3.5,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "两边胯一样高",
+    "en": "Hips level",
+    "from": [
+     "cue3",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "用屁股顶，别拱腰",
+    "en": "Butt, not back",
+    "from": [
+     "cue1",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 8,
+    "role": "form",
+    "zh": "顶上夹紧屁股",
+    "en": "Squeeze at the top",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "afterRep": 9,
+    "key": "p.last_rep"
+   }
+  ],
+  "before": [],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.45"
+   ],
+   "allDone": [
+    "p.nice"
+   ],
+   "sideDone": [
+    "p.switch_right"
+   ]
+  },
+  "sides": {
+   "order": [
+    "left",
+    "right"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边"
   }
  }
 }

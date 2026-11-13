@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-chair-step-up",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "catalog/v2/actions/h-chair-step-up.json",
   "catalog/voice-v2/script.json",
@@ -12,24 +12,24 @@
   "en": "Chair Step-Up"
  },
  "purpose": {
-  "zh": "练大腿前侧和臀部",
-  "en": "Build the fronts of your thighs and your glutes."
+  "zh": "练大腿前面和屁股",
+  "en": "Builds the fronts of your thighs and your butt."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "整只脚踩上椅面，用这条腿发力站上去",
-    "en": "Plant your whole foot on the seat and stand up with that leg"
+    "zh": "整只脚踩上椅面，用这条腿使劲站上去",
+    "en": "Whole foot on the seat, stand up with that leg"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "两条腿轮流先上，双手叉腰。",
-    "en": "Switch the leading leg each rep, hands on your hips."
+    "zh": "两条腿轮流先上，两手叉腰。",
+    "en": "Switch the lead leg each time, hands on your hips."
    }
   },
   {
@@ -37,26 +37,26 @@
    "primary": false,
    "text": {
     "zh": "下来时另一只脚先落地，慢慢下。",
-    "en": "On the way down, lower the other foot first, slowly."
+    "en": "Coming down, the other foot lands first, slowly."
    }
   },
   {
    "id": "cue4",
    "primary": false,
    "text": {
-    "zh": "两边各做一次算 1 次。",
-    "en": "One on each side counts as one rep."
+    "zh": "两边各上一次算 1 下。",
+    "en": "One step-up on each side counts as one."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "后脚猛蹬地借力冲上去",
-   "en": "Pushing hard off the back foot to bounce up."
+   "zh": "后脚猛蹬地冲上去",
+   "en": "Shoving off the back foot to bounce up."
   },
   {
-   "zh": "只踩到椅面边缘",
-   "en": "Putting only part of the foot on the edge."
+   "zh": "只踩到椅子边",
+   "en": "Only part of the foot on the edge."
   }
  ],
  "cautions": [
@@ -65,7 +65,7 @@
    "en": "Use a sturdy, non-slip chair or stool without wheels, ideally against a wall."
   },
   {
-   "zh": "膝盖往里扣或疼时换矮一点的台阶",
+   "zh": "膝盖往里倒或疼就换个矮点的台阶",
    "en": "If your knee caves in or hurts, use a lower step."
   }
  ],
@@ -119,7 +119,8 @@
    },
    {
     "id": "hold",
-    "seconds": 0.4
+    "seconds": 0.4,
+    "cue": "phase.peak"
    },
    {
     "id": "back",
@@ -133,7 +134,7 @@
   ],
   "perSide": "alternate",
   "repUnit": "left+right",
-  "source": "spec-timeline manual r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -147,6 +148,88 @@
    ],
    "flags": [
     "相位为手算（非批表），请确认"
+   ]
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一侧一下 4.0 s（上 1.8 / 站稳 0.4 / 下 1.4），一左一右 8 s 计 1 下；r2 flag 手算相位不再适用",
+    "难度 v3 2 / ai-tags 3 → 统一 2",
+    "文字改教练口吻"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "3 组×每侧8 次，休息 45 秒",
+     "3 组×每侧8 次，休息 45 秒"
+    ],
+    "rep": [
+     "4.0 s/侧（一左一右 8.0 s）",
+     "4.0 s/侧（一左一右 8.0 s）"
+    ],
+    "difficulty": [
+     {
+      "v3": 2,
+      "ai": 3
+     },
+     2
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：踏上椅子、大腿前高亮（b6 第 10 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 8.0,
+  "repUnit": "left+right",
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "整只脚踩上去",
+    "en": "Whole foot on the seat",
+    "from": [
+     "cue1",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "别用后脚蹬",
+    "en": "Don't push off the back foot",
+    "from": [
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 7,
+    "key": "p.last_rep"
+   }
+  ],
+  "before": [
+   "p.right_first"
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.45"
+   ],
+   "allDone": [
+    "p.nice"
    ]
   }
  }

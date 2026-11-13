@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-close-stance-forward-fold-native",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-close-stance-forward-fold-native.js"
  ],
@@ -10,15 +10,15 @@
   "en": "Close-Stance Forward Fold"
  },
  "purpose": {
-  "zh": "拉伸大腿后侧和后背",
-  "en": "Stretch the backs of your thighs and your back."
+  "zh": "拉开大腿后面和后背",
+  "en": "Stretches the backs of your thighs and your back."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "双脚并拢膝盖微弯，从髋部往前折",
+    "zh": "两脚并拢膝盖微弯，从胯往前折",
     "en": "Feet together, knees soft, fold forward from your hips"
    }
   },
@@ -34,16 +34,16 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "停住不动，慢慢呼吸。",
-    "en": "Stay still and breathe slowly."
+    "zh": "就停在这儿，慢慢喘气。",
+    "en": "Stay right there and breathe slowly."
    }
   },
   {
    "id": "cue4",
    "primary": false,
    "text": {
-    "zh": "每次呼气再放松一点，别来回颠。",
-    "en": "Each time you breathe out, relax a little deeper. No bouncing."
+    "zh": "每次呼气再往下垂一点，别一下一下往下压。",
+    "en": "Each breath out, hang a little lower. Don't bounce."
    }
   }
  ],
@@ -57,18 +57,18 @@
    "en": "Holding your breath."
   },
   {
-   "zh": "来回颠着往下压",
+   "zh": "一下一下往下压",
    "en": "Bouncing to go deeper."
   }
  ],
  "cautions": [
   {
-   "zh": "只拉到舒服的拉伸感，疼就退一点",
-   "en": "Stretch only to a comfortable pull, and ease off if it hurts."
+   "zh": "拉到舒服的拉扯感就行，疼就往回退一点",
+   "en": "A comfortable pull is enough. Back off a little if it hurts."
   },
   {
    "zh": "结束时慢慢起身，头晕就停下扶稳",
-   "en": "Come up slowly at the end, and stop and hold on if you feel dizzy."
+   "en": "Come up slowly at the end. If you feel dizzy, stop and hold on to something."
   }
  ],
  "tags": {
@@ -97,12 +97,12 @@
    "en": "Fold down"
   },
   "peak": {
-   "zh": "保持，慢慢呼气",
-   "en": "Hold and breathe out"
+   "zh": "停住，呼气",
+   "en": "Hold, breathe out"
   },
   "end": {
-   "zh": "呼气再垂一点",
-   "en": "Hang a bit lower"
+   "zh": "呼气再垂",
+   "en": "Hang lower"
   }
  },
  "training": {
@@ -120,6 +120,101 @@
     "最终口径：按真实做法定（2026-11-01）"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "剂量 2 组×30 秒、休息 15 秒不变",
+    "「从髋部往前折」→「从胯往前折」，「别来回颠」→「别一下一下往下压」",
+    "难度 1/1 不变"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "2 组×30 秒，休息 15 秒",
+     "2 组×30 秒，休息 15 秒"
+    ],
+    "rep": [
+     "计时",
+     "计时"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：并脚站立膝微弯前屈、大腿后侧淡高亮（b7 第 2 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 4,
+    "role": "posture",
+    "zh": "膝盖微弯，别锁死",
+    "en": "Soft knees",
+    "from": [
+     "cue1",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "at": 12,
+    "role": "halfway",
+    "zh": "手臂放松垂着",
+    "en": "Arms hang loose",
+    "from": [
+     "cue2"
+    ]
+   },
+   {
+    "at": 20,
+    "role": "form",
+    "zh": "呼气，再垂一点",
+    "en": "Breathe out, hang lower",
+    "from": [
+     "cue4"
+    ]
+   },
+   {
+    "at": 27,
+    "key": "n.3"
+   },
+   {
+    "at": 28,
+    "key": "n.2"
+   },
+   {
+    "at": 29,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.release",
+    "p.rest",
+    "sec.15"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
   }
  }
 }

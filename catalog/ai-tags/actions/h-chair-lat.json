@@ -5,7 +5,7 @@
   "status": "ai-draft",
   "source": {
     "text": "catalog/production/v3-text/h-chair-lat.json",
-    "textSha256Lf": "4b373f0f3072507f7580a8a81727557e9392ee9c1e505739fad524d5c2a422e2",
+    "textSha256Lf": "ffa5ec1d3b31b4a4416623a94cea4de7b6c912da6951059cf03ed438ba24750c",
     "spec": "drill-anim/specs/h-chair-lat.js",
     "catalogV1": "catalog/catalog.json"
   },
@@ -126,6 +126,12 @@
         ]
       },
       "reason": "拉伸/活动类：v3 把被拉肌写在 activeMuscles，这里移到 stretchedMuscles，无主动发力肌。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 1,
+      "reason": "r3 动作包核对（开哥 2026-11-13）：逐个重定，与 v3 tags.difficulty 同值。"
     }
   ],
   "reviewNotes": [

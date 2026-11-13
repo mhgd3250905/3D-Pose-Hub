@@ -5,7 +5,7 @@
   "status": "ai-draft",
   "source": {
     "text": "catalog/production/v3-text/h-chair-sit-to-stand.json",
-    "textSha256Lf": "71762f95d1685c859ad3b9890fd531807608c17536c098b77fac532340027439",
+    "textSha256Lf": "d52f768b8d5faae085473dcb827c1ec7314c8e5b324d890597511e058cb970e3",
     "spec": "drill-anim/specs/h-chair-sit-to-stand.js",
     "catalogV1": null
   },
@@ -144,6 +144,12 @@
         ]
       },
       "reason": "v3 粗粒度肌群（glutes）按动作实际做法拆到细分 id。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 1,
+      "reason": "r3 动作包核对（开哥 2026-11-13）：逐个重定，与 v3 tags.difficulty 同值。"
     }
   ],
   "reviewNotes": []

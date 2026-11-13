@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-chair-lat",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-chair-lat.js"
  ],
@@ -10,40 +10,40 @@
   "en": "Chair-Supported Lat Stretch"
  },
  "purpose": {
-  "zh": "拉伸腋下到身体两侧的后背",
-  "en": "Stretch from your armpits down the sides of your back."
+  "zh": "拉开从腋下到身体两侧的后背",
+  "en": "Stretches from your armpits down the sides of your back."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "臀部往后推，胸口在两臂之间下沉",
-    "en": "Push your hips back and let your chest sink between your arms"
+    "zh": "屁股往后推，胸口在两臂中间往下沉",
+    "en": "Push your hips back, let your chest sink between your arms"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "双手扶椅背，手臂伸直，膝盖微弯。",
-    "en": "Hands on the chair back, arms straight, knees slightly bent."
+    "zh": "两手扶椅背，手臂伸直，膝盖微弯。",
+    "en": "Hands on the chair back, arms straight, knees soft."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "停住不动，慢慢呼吸。",
-    "en": "Stay still and breathe slowly."
+    "zh": "就停在这儿，慢慢喘气。",
+    "en": "Stay right there and breathe slowly."
    }
   },
   {
    "id": "cue4",
    "primary": false,
    "text": {
-    "zh": "每次呼气再放松一点，别来回颠。",
-    "en": "Each time you breathe out, relax a little deeper. No bouncing."
+    "zh": "每次呼气再松一点，别一下一下往下压。",
+    "en": "Each breath out, let go a little more. Don't bounce."
    }
   }
  ],
@@ -57,14 +57,14 @@
    "en": "Holding your breath."
   },
   {
-   "zh": "来回颠着往下压",
+   "zh": "一下一下往下压",
    "en": "Bouncing to go deeper."
   }
  ],
  "cautions": [
   {
-   "zh": "只拉到舒服的程度，疼就放松",
-   "en": "Stretch only to a comfortable point, and ease off if anything hurts."
+   "zh": "拉到舒服就行，疼就松一点",
+   "en": "Stretch only to a comfortable point. Ease off if anything hurts."
   },
   {
    "zh": "用结实、不带轮子的椅子",
@@ -99,12 +99,12 @@
    "en": "Sink down"
   },
   "peak": {
-   "zh": "保持，慢慢呼气",
-   "en": "Hold and breathe out"
+   "zh": "停住，呼气",
+   "en": "Hold, breathe out"
   },
   "end": {
-   "zh": "呼气再沉一点",
-   "en": "Sink a bit deeper"
+   "zh": "呼气再松",
+   "en": "Let go more"
   }
  },
  "training": {
@@ -122,6 +122,100 @@
     "最终口径：按真实做法定（2026-11-01）"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "剂量 2 组×30 秒、休息 15 秒不变",
+    "文字改教练口吻",
+    "难度 1/1 不变"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "2 组×30 秒，休息 15 秒",
+     "2 组×30 秒，休息 15 秒"
+    ],
+    "rep": [
+     "计时",
+     "计时"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：双手搭椅背俯身直臂下沉、背阔高亮（b6 第 6 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 4,
+    "role": "posture",
+    "zh": "屁股往后推",
+    "en": "Hips back",
+    "from": [
+     "cue1"
+    ]
+   },
+   {
+    "at": 12,
+    "role": "halfway",
+    "zh": "背别弓，肩别耸",
+    "en": "Flat back, shoulders down",
+    "from": [
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "at": 20,
+    "role": "form",
+    "zh": "呼气，再沉一点",
+    "en": "Breathe out, sink",
+    "from": [
+     "cue4"
+    ]
+   },
+   {
+    "at": 27,
+    "key": "n.3"
+   },
+   {
+    "at": 28,
+    "key": "n.2"
+   },
+   {
+    "at": 29,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.release",
+    "p.rest",
+    "sec.15"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
   }
  }
 }
