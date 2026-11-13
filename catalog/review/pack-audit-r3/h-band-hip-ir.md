@@ -46,4 +46,3 @@
 
 ## 8. 待开哥定
 - r2 flag 沿用：tags.activeMuscles 写 abductors+glutes，动作实为大腿往里转，是否调整
-- 计到 12，共用词只到 n.10

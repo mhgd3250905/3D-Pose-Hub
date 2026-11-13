@@ -119,7 +119,8 @@
    }
   ],
   "perSide": "each-side-separately",
-  "source": "real-tempo r3"
+  "source": "real-tempo r3",
+  "sideSwitchSeconds": 10
  },
  "review": {
   "r2": {
@@ -133,7 +134,8 @@
    "changes": [
     "节奏按真实带练：一下 4.0 s（下 2.0 / 底 0.5 / 起 1.5）",
     "难度 v3 2 / ai-tags 3 → 统一 3；退阶「后脚放地上做分腿蹲」写进注意事项",
-    "文字改教练口吻"
+    "文字改教练口吻",
+    "11-14 回查换边：后脚要从椅面拿下来换腿、重新找前脚站位，补 sideSwitchSeconds 10"
    ],
    "flags": [],
    "audit": {
@@ -218,7 +220,7 @@
     "right"
    ],
    "perSide": "each-side-separately",
-   "note": "一侧全部组做完再换边"
+   "note": "一侧全部组做完再换边；换边准备 10 秒（training.sideSwitchSeconds，App 未接入）"
   }
  }
 }

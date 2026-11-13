@@ -129,13 +129,14 @@ def training_errors(t: dict) -> list[str]:
         if k != 'hold' and tr.get('source') != 'real-tempo r3': e.append('training.source: real-tempo r3 (tempo from real training, not the animation)')
         if k != 'hold' and isinstance(tr.get('phases'), list):
             one = sum(p.get('seconds', 0) for p in tr['phases'])
-            if not 1.5 <= one <= 8: WARN.append(f"{t.get('id')}: one rep {one:.1f} s outside the usual 1.5-8 s")
+            if not 1.5 <= one <= 8 and not (one > 8 and (t.get('voiceGuide') or {}).get('phaseCues') == 'steps'): WARN.append(f"{t.get('id')}: one rep {one:.1f} s outside the usual 1.5-8 s")
     return e
 
 
 SHARED = REPO / 'catalog/voice-v2/script.json'
 WARN: list[str] = []
 VG_GAP, VG_LEAD, VG_TAIL, VG_MARGIN = 10.0, 3.0, 4.0, 0.3   # anti-blank gap, first-line earliest, countdown zone, line spacing (s)
+VG_STEP_MIN, VG_STEP_LEAD, VG_STEP_TAIL = 8.0, 1.5, 0.8   # steps mode: min rep length, first step earliest, room left for the count (s)
 
 
 def _speak_s(v):
@@ -195,8 +196,22 @@ def voice_guide_errors(t: dict) -> list[str]:
         one = sum(p.get('seconds', 0) for p in tr.get('phases') or []) * (2 if tr.get('repUnit') == 'left+right' else 1)
         R = vg.get('repSeconds')
         if not isinstance(R, (int, float)) or abs(R - one) > 0.15: e.append(f'voiceGuide.repSeconds must equal one counted rep ({one:.1f} s)')
-        if vg.get('phaseCues') not in ('first-2-reps', 'every-rep'): e.append('voiceGuide.phaseCues: first-2-reps | every-rep')
-        if t.get('reviewStatus') == 'ai-reviewed-r3-needs-user-review' and vg.get('phaseCues') != 'first-2-reps': e.append('voiceGuide.phaseCues: r3 uses first-2-reps')
+        steps = vg.get('phaseCues') == 'steps'   # r3 (开哥 2026-11-14): one long rep (>= 8 s) may speak one line per step, every rep
+        if vg.get('phaseCues') not in ('first-2-reps', 'every-rep', 'steps'): e.append('voiceGuide.phaseCues: first-2-reps | steps | every-rep')
+        if t.get('reviewStatus') == 'ai-reviewed-r3-needs-user-review' and vg.get('phaseCues') not in ('first-2-reps', 'steps'): e.append('voiceGuide.phaseCues: r3 uses first-2-reps (or steps for reps >= 8 s)')
+        if steps:
+            if not (isinstance(R, (int, float)) and R >= VG_STEP_MIN): e.append(f'voiceGuide.phaseCues steps only for one rep >= {VG_STEP_MIN:.0f} s')
+            st, prev_end = vg.get('steps') or [], None
+            if len(st) < 2: e.append('voiceGuide.steps: at least 2 step lines')
+            for i, x in enumerate(st):
+                dur = line_ok(x, f'voiceGuide.steps[{i}]')
+                a = x.get('at')
+                if not isinstance(a, (int, float)): e.append(f'voiceGuide.steps[{i}].at'); continue
+                if a < VG_STEP_LEAD: e.append(f'voiceGuide.steps[{i}]: first step not before {VG_STEP_LEAD} s (room for the count / last-rep cue)')
+                if prev_end is not None and a < prev_end + VG_MARGIN: e.append(f'voiceGuide.steps[{i}]: overlaps the previous step line')
+                prev_end = a + dur
+            if prev_end is not None and isinstance(R, (int, float)) and prev_end > R - VG_STEP_TAIL: e.append(f'voiceGuide.steps: last line runs into the count (ends ~{prev_end:.1f} s of {R} s)')
+        elif 'steps' in vg: e.append('voiceGuide.steps only with phaseCues steps')
         if N > 10 and vocab is not None and f'n.{N}' not in vocab: WARN.append(f'{aid}: counts up to {N} but shared vocabulary stops at n.10')
         if (vg.get('count') or {}).get('key') != 'n.{rep}': e.append('voiceGuide.count.key n.{rep}')
         rem, last = vg.get('reminders') or [], 0
@@ -204,7 +219,8 @@ def voice_guide_errors(t: dict) -> list[str]:
             a = x.get('afterRep')
             if not (isinstance(a, int) and last < a < N): e.append(f'voiceGuide.reminders[{i}].afterRep: increasing, 1..reps-1'); continue
             if a < min(2, N - 1): e.append(f'voiceGuide.reminders[{i}]: first 2 reps carry the phase cues; start after rep 2')
-            if a - last > 3: e.append(f'voiceGuide.reminders[{i}]: {a - last} reps without a line (max 3)')
+            if steps and 'key' not in x: e.append(f'voiceGuide.reminders[{i}]: steps mode fills every rep; only p.last_rep')
+            if a - last > 3 and not steps: e.append(f'voiceGuide.reminders[{i}]: {a - last} reps without a line (max 3)')
             dur = line_ok(x, f'voiceGuide.reminders[{i}]')
             if isinstance(R, (int, float)) and dur > R - 1.0: e.append(f'voiceGuide.reminders[{i}]: ~{dur:.1f} s line longer than one rep minus the count')
             last = a

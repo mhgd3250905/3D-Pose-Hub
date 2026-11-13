@@ -146,10 +146,11 @@
     "节奏按真实带练：一下 8.0 s → 14.0 s（起 6 / 高桥停 1.5 / 原路回 6），解决 r2 flag「8 秒一次偏快」；剂量 3 组×每侧 3 次不变",
     "新增 sideSwitchSeconds 10（换手、换躺的方向）",
     "难度 v3 2 / ai-tags 3 → 统一 3；「先空手练」写进注意事项",
-    "文字改教练口吻（「把屁股顶起来」）"
+    "文字改教练口吻（「把屁股顶起来」）",
+    "11-14 按开哥同意：超长单次（一下 14 s）每一下按步骤念口令（phaseCues steps：撑到手肘 → 撑手坐起来 → 屁股顶起来 → 停住看哑铃 → 原路三步回去），STYLE §8 写明"
    ],
    "flags": [
-    "一下 14 秒超出 text.py 常规 1.5–8 s（只警告）：只有 3 次，语音只在第 2 次后念「最后一次」，中间 14 秒靠前 2 次的相位口令；是否要给长动作加「每一步」口令"
+    "步骤口令的时间点按真实节奏估算，合成音频后请跟练试听一遍"
    ],
    "audit": {
     "dose": [
@@ -183,11 +184,70 @@
   },
   "sharedVocabulary": "catalog/voice-v2/script.json#common",
   "repSeconds": 14.0,
-  "phaseCues": "first-2-reps",
+  "phaseCues": "steps",
   "count": {
    "key": "n.{rep}",
    "at": "rep-end"
   },
+  "steps": [
+   {
+    "at": 1.5,
+    "zh": "撑到手肘",
+    "en": "Up to your elbow",
+    "from": [
+     "cue2"
+    ]
+   },
+   {
+    "at": 3.4,
+    "zh": "撑手坐起来",
+    "en": "Up to your hand",
+    "from": [
+     "cue2"
+    ]
+   },
+   {
+    "at": 5.3,
+    "zh": "屁股顶起来",
+    "en": "Hips up",
+    "from": [
+     "cue2"
+    ]
+   },
+   {
+    "at": 6.9,
+    "zh": "停住，看哑铃",
+    "en": "Hold, eyes up",
+    "from": [
+     "cue3",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "at": 8.5,
+    "zh": "屁股放下",
+    "en": "Hips down",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "at": 10.3,
+    "zh": "回到手肘",
+    "en": "Back to your elbow",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "at": 12.3,
+    "zh": "躺回去",
+    "en": "Lie back",
+    "from": [
+     "cue3"
+    ]
+   }
+  ],
   "reminders": [
    {
     "afterRep": 2,
