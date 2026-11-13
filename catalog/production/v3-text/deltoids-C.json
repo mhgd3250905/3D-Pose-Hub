@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "deltoids-C",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/data/drills.json",
   "drill-anim/specs/deltoids-C.js"
@@ -11,15 +11,15 @@
   "en": "Half-Kneeling Single-Arm Landmine Press"
  },
  "purpose": {
-  "zh": "练肩膀推举力量，斜着往上推对肩更友好",
-  "en": "Build shoulder pressing strength on an angle that is kinder to your shoulder."
+  "zh": "练肩膀往上推的劲，斜着推对肩膀更友好",
+  "en": "Builds your shoulder pressing strength on an angle that's easier on the shoulder."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "斜着往前上方推，直到手臂伸直",
+    "zh": "斜着往前上方推，推到手臂伸直",
     "en": "Press up and forward until your arm is straight"
    }
   },
@@ -27,8 +27,8 @@
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "收紧臀部和肚子，上身别往后仰。",
-    "en": "Squeeze your glutes and belly and keep your trunk from leaning back."
+    "zh": "屁股夹紧、肚子绷住，上身别往后仰。",
+    "en": "Squeeze your butt, brace your belly, and don't lean back."
    }
   },
   {
@@ -36,24 +36,24 @@
    "primary": false,
    "text": {
     "zh": "慢慢放回肩膀前面。",
-    "en": "Lower slowly back to the front of your shoulder."
+    "en": "Lower it slowly back to the front of your shoulder."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "推的时候腰往后仰借力",
-   "en": "Arching the lower back to help the press."
+   "zh": "推的时候腰往后仰借劲",
+   "en": "Arching your lower back to help the press."
   },
   {
    "zh": "肋骨往外翻",
-   "en": "Letting the ribs flare out."
+   "en": "Ribs flaring out."
   }
  ],
  "cautions": [
   {
-   "zh": "肩前面夹着疼时，推的幅度小一点",
-   "en": "If the front of your shoulder pinches, make the press smaller."
+   "zh": "肩膀前面夹着疼，就推得短一点",
+   "en": "If the front of your shoulder pinches, shorten the press."
   }
  ],
  "tags": {
@@ -87,8 +87,8 @@
    "en": "Press up"
   },
   "peak": {
-   "zh": "停一下",
-   "en": "Hold"
+   "zh": "推直",
+   "en": "Lock out"
   },
   "end": {
    "zh": "放回来",
@@ -96,31 +96,28 @@
   }
  },
  "training": {
-  "kind": "rep_hold",
+  "kind": "rep_updown",
   "leadSeconds": 1,
   "phases": [
    {
     "id": "go",
-    "seconds": 0.7,
+    "seconds": 1.0,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 1.3,
+    "seconds": 0.5,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 0.7,
+    "seconds": 1.5,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 1.3
    }
   ],
   "perSide": "each-side-separately",
-  "source": "spec-pulse-track r2"
+  "source": "real-tempo r3",
+  "sideSwitchSeconds": 10
  },
  "review": {
   "r2": {
@@ -129,6 +126,99 @@
     "口令按 0.7 s 相位缩短（推上去/放回来）；顶点「锁住」改「停一下」"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 4.0 s → 3.0 s（推 1.0 / 顶 0.5 / 慢放 1.5）；顶点 < 0.8 s，kind rep_hold → rep_updown",
+    "新增 sideSwitchSeconds 10（换跪的腿和手）",
+    "文字改教练口吻",
+    "难度 2/2 不变"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "3 组×每侧8 次，休息 60 秒",
+     "3 组×每侧8 次，休息 60 秒"
+    ],
+    "rep": [
+     "4.0 s",
+     "3.0 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 2,
+      "ai": 2
+     },
+     2
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：半跪地雷杆单臂推、肩部高亮（batch-02 第 2 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 3.0,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "上身别往后仰",
+    "en": "Don't lean back",
+    "from": [
+     "cue2",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "慢慢放回来",
+    "en": "Lower it slowly",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "afterRep": 7,
+    "key": "p.last_rep"
+   }
+  ],
+  "before": [
+   "p.right_first"
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.60"
+   ],
+   "allDone": [
+    "p.nice"
+   ],
+   "sideDone": [
+    "p.switch_left"
+   ]
+  },
+  "sides": {
+   "order": [
+    "right",
+    "left"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边；换边准备 10 秒（training.sideSwitchSeconds，App 未接入）"
   }
  }
 }

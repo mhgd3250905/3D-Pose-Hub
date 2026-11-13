@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "adductors-B",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/data/drills.json",
   "drill-anim/specs/adductors-B.js"
@@ -11,16 +11,16 @@
   "en": "Short-Lever Copenhagen Plank"
  },
  "purpose": {
-  "zh": "练大腿内侧和侧腰，让髋部更稳",
-  "en": "Build your inner thighs and the sides of your waist for steadier hips."
+  "zh": "练大腿内侧和侧腰，让胯更稳",
+  "en": "Builds your inner thighs and the sides of your waist for steadier hips."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "上面那条腿的膝盖压住凳子，把髋抬起撑住",
-    "en": "Press your top knee into the bench, lift your hips and hold"
+    "zh": "上面那条腿的膝盖压住凳子，把胯抬起来",
+    "en": "Press your top knee into the bench and lift your hips"
    }
   },
   {
@@ -28,32 +28,32 @@
    "primary": false,
    "text": {
     "zh": "前臂撑地，手肘在肩膀正下方。",
-    "en": "Rest on your forearm with the elbow under your shoulder."
+    "en": "Forearm on the floor, elbow right under your shoulder."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "肩、髋、膝成一条直线，撑住别掉，均匀呼吸。",
-    "en": "Keep your shoulder, hip, and knee in one line, hold it there, and keep breathing."
+    "zh": "肩、胯、膝一条线，屁股别往下掉，别憋气。",
+    "en": "Shoulder, hip and knee in one line. Don't let your butt drop, and keep breathing."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "髋往下掉",
-   "en": "Letting the hips sag."
+   "zh": "屁股往下掉",
+   "en": "Butt sagging toward the floor."
   },
   {
-   "zh": "身体往前倒",
-   "en": "Rolling the body forward."
+   "zh": "身子往前扣",
+   "en": "Rolling forward."
   }
  ],
  "cautions": [
   {
-   "zh": "大腿根内侧刺痛时立刻停",
-   "en": "Stop right away if you feel sharp pain in your inner groin."
+   "zh": "大腿根内侧刺痛就马上停",
+   "en": "Stop right away if you feel a sharp pain in your groin."
   }
  ],
  "tags": {
@@ -83,15 +83,15 @@
  },
  "phases": {
   "start": {
-   "zh": "抬髋",
+   "zh": "抬起来",
    "en": "Hips up"
   },
   "peak": {
-   "zh": "保持住",
-   "en": "Hold"
+   "zh": "撑住",
+   "en": "Hold it"
   },
   "end": {
-   "zh": "保持呼吸",
+   "zh": "别憋气",
    "en": "Keep breathing"
   }
  },
@@ -99,7 +99,8 @@
   "kind": "hold",
   "leadSeconds": 1,
   "perSide": "each-side-separately",
-  "source": "real-practice r2"
+  "source": "real-practice r2",
+  "sideSwitchSeconds": 10
  },
  "review": {
   "r2": {
@@ -111,6 +112,107 @@
     "最终口径：按真实做法定（2026-11-01）"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "剂量 3 组×每侧 15 秒、休息 45 秒不变；一侧 3 组做完换边",
+    "新增 sideSwitchSeconds 10（侧卧换边要翻身）",
+    "文字改教练口吻（「屁股别往下掉」），去掉「均匀呼吸」",
+    "难度 2/2 不变"
+   ],
+   "flags": [
+    "画面为直臂手撑，文字按入门常规写前臂撑；是否改动画为前臂（只报告）"
+   ],
+   "audit": {
+    "dose": [
+     "3 组×每侧15 秒，休息 45 秒",
+     "3 组×每侧15 秒，休息 45 秒"
+    ],
+    "rep": [
+     "计时",
+     "计时"
+    ],
+    "difficulty": [
+     {
+      "v3": 2,
+      "ai": 2
+     },
+     2
+    ],
+    "voice": "口吻改写",
+    "frame": "基本一致：侧撑、上腿搭凳、大腿内侧高亮；但画面是直臂手撑地，文字写前臂撑地（非极端）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 4,
+    "role": "posture",
+    "zh": "屁股别掉，一条线",
+    "en": "Hips up, one straight line",
+    "from": [
+     "cue3",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "at": 8,
+    "role": "halfway",
+    "zh": "别往前扣，接着喘气",
+    "en": "Stay stacked, keep breathing",
+    "from": [
+     "commonErrors[1]",
+     "cue3"
+    ]
+   },
+   {
+    "at": 12,
+    "key": "n.3"
+   },
+   {
+    "at": 13,
+    "key": "n.2"
+   },
+   {
+    "at": 14,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSetsSameSide": [
+    "p.rest",
+    "sec.45"
+   ],
+   "sideDone": [
+    "p.release",
+    "p.switch_left"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
+  },
+  "sides": {
+   "order": [
+    "right",
+    "left"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边；换边准备 10 秒（training.sideSwitchSeconds，App 未接入）"
   }
  }
 }

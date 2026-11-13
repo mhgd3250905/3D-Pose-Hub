@@ -5,7 +5,7 @@
   "status": "ai-draft",
   "source": {
     "text": "catalog/production/v3-text/adductors-A.json",
-    "textSha256Lf": "0b7facde3ebbf39d62a369781e936ea4fc085285324871daab5f75eedd71df69",
+    "textSha256Lf": "a9c225c05199a0b3a6c15d5cba6a141e614d5dd8834a47dfa248a1b49879a356",
     "spec": "drill-anim/specs/adductors-A-r2.js",
     "catalogV1": "catalog/catalog.json"
   },
@@ -165,12 +165,6 @@
       "reason": "v3 粗粒度肌群（glutes）按动作实际做法拆到细分 id。"
     },
     {
-      "field": "difficulty",
-      "existing": 2,
-      "chosen": 3,
-      "reason": "侧向深蹲到末端、伸直腿内收肌被拉长，需要蹲深能力和平衡，定中级 3。"
-    },
-    {
       "field": "laterality",
       "existing": {
         "unilateral": true,
@@ -178,6 +172,12 @@
       },
       "chosen": "alternating",
       "reason": "v3 unilateral=true 包含交替；本动作每次换一侧，标 alternating。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 2,
+      "chosen": 3,
+      "reason": "r3 动作包核对（开哥 2026-11-13）：逐个重定，与 v3 tags.difficulty 同值。侧蹲到底同时要柔韧和腿力，入门者常蹲不到底；退阶写进注意事项。"
     }
   ],
   "reviewNotes": [

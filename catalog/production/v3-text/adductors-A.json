@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "adductors-A",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/data/drills.json",
   "drill-anim/specs/adductors-A-r2.js",
@@ -12,57 +12,61 @@
   "en": "Cossack Squat"
  },
  "purpose": {
-  "zh": "练大腿内侧和臀腿，让你能稳稳蹲向一侧",
-  "en": "Build your inner thighs and legs so you can squat steadily to one side."
+  "zh": "练大腿内侧和腿，往一边蹲也能蹲得稳",
+  "en": "Builds your inner thighs and legs so you can squat steadily to one side."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "蹲向一侧，另一条腿伸直、脚尖朝上",
-    "en": "Squat to one side and keep the other leg straight with toes up"
+    "zh": "往一边蹲，另一条腿伸直、脚尖朝天",
+    "en": "Sit to one side, other leg straight, toes up"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "蹲的那只脚脚跟踩住，膝盖对着脚尖。",
-    "en": "Keep the squatting heel down and the knee over the toes."
+    "zh": "蹲的那只脚后跟踩实，膝盖对着脚尖。",
+    "en": "Keep the bent leg's heel planted and its knee over your toes."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "身体微微前倾，双臂往前平伸保持平衡。",
-    "en": "Lean forward a little and reach your arms forward for balance."
+    "zh": "上身微微往前，两手往前伸着帮你找平衡。",
+    "en": "Lean forward a little and reach your arms out front for balance."
    }
   },
   {
    "id": "cue4",
    "primary": false,
    "text": {
-    "zh": "两边各做一次算 1 次。",
-    "en": "One on each side counts as one rep."
+    "zh": "两边各蹲一次算 1 下。",
+    "en": "One on each side counts as one."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "伸直的那条腿膝盖弯了",
+   "zh": "伸直那条腿的膝盖弯了",
    "en": "Bending the knee of the straight leg."
   },
   {
-   "zh": "蹲的那侧脚跟离地",
-   "en": "Lifting the heel on the squatting side."
+   "zh": "蹲的那边脚后跟抬起来",
+   "en": "Heel lifting on the squatting side."
   }
  ],
  "cautions": [
   {
-   "zh": "膝盖不舒服时蹲浅一点，还疼就停",
-   "en": "If your knees feel uncomfortable, squat less deep, and stop if it still hurts."
+   "zh": "膝盖不舒服就蹲浅点，还疼就停",
+   "en": "If your knee bugs you, don't go as low. Stop if it still hurts."
+  },
+  {
+   "zh": "蹲不下去就扶着椅子做",
+   "en": "Can't get down yet? Hold a chair for support."
   }
  ],
  "tags": {
@@ -78,7 +82,7 @@
   ],
   "equipment": [],
   "position": "standing",
-  "difficulty": 2
+  "difficulty": 3
  },
  "unilateral": true,
  "startingSide": "right",
@@ -90,8 +94,8 @@
  },
  "phases": {
   "start": {
-   "zh": "蹲下去",
-   "en": "Sit down"
+   "zh": "蹲过去",
+   "en": "Sit over"
   },
   "peak": {
    "zh": "稳住",
@@ -108,27 +112,27 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 0.8,
+    "seconds": 1.5,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 1.2,
+    "seconds": 0.8,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 0.8,
+    "seconds": 1.5,
     "cue": "phase.end"
    },
    {
     "id": "rest",
-    "seconds": 1.2
+    "seconds": 0.2
    }
   ],
   "perSide": "alternate",
   "repUnit": "left+right",
-  "source": "spec-timeline manual r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -141,6 +145,79 @@
     "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一侧一下 4.0 s（蹲 1.5 / 停 0.8 / 起 1.5），大幅度动作放慢；一左一右 8 s 计 1 下",
+    "难度 v3 2 / ai-tags 3 → 统一 3；加退阶「扶着椅子做」",
+    "文字改教练口吻（「脚尖朝天」）"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "3 组×每侧6 次，休息 45 秒",
+     "3 组×每侧6 次，休息 45 秒"
+    ],
+    "rep": [
+     "4.0 s/侧（一左一右 8.0 s）",
+     "4.0 s/侧（一左一右 8.0 s）"
+    ],
+    "difficulty": [
+     {
+      "v3": 2,
+      "ai": 3
+     },
+     3
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：哥萨克侧蹲、一腿伸直、双臂前伸、大腿内侧高亮",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 8.0,
+  "repUnit": "left+right",
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "halfway",
+    "zh": "脚后跟踩住，膝盖对脚尖",
+    "en": "Heel down, knee over toes",
+    "from": [
+     "cue2",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "key": "p.last_rep"
+   }
+  ],
+  "before": [
+   "p.right_first"
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.45"
+   ],
+   "allDone": [
+    "p.nice"
+   ]
   }
  }
 }

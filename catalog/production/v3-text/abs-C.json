@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "abs-C",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/data/drills.json",
   "drill-anim/specs/abs-C-r2.js"
@@ -11,49 +11,53 @@
   "en": "Dip-Bar Support Leg Raise"
  },
  "purpose": {
-  "zh": "练腹部，提升在双杠上撑住时抬腿的能力",
-  "en": "Build your abs and lift your knees while holding yourself up on dip bars."
+  "zh": "练肚子，在双杠上撑住身体把腿抬起来",
+  "en": "Builds your abs by lifting your knees while you hold yourself up on dip bars."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "手臂撑直，卷起肚子把膝盖抬高",
-    "en": "Lock your arms and curl your knees up"
+    "zh": "手臂撑直，卷起肚子把膝盖往上提",
+    "en": "Lock your arms, curl up and drive your knees up"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "膝盖抬到比髋高一点，停一下。",
-    "en": "Lift your knees a little above your hips and pause."
+    "zh": "膝盖提到比胯高一点，停一下。",
+    "en": "Get your knees a bit higher than your hips and pause."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "慢慢放下，腿不要甩。",
-    "en": "Lower slowly without swinging your legs."
+    "zh": "慢慢放下来，腿别甩。",
+    "en": "Lower slowly. No swinging."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "甩腿借力",
-   "en": "Swinging the legs for momentum."
+   "zh": "甩腿借劲",
+   "en": "Swinging your legs for momentum."
   },
   {
-   "zh": "肩膀往耳朵方向塌",
-   "en": "Letting the shoulders sink toward the ears."
+   "zh": "肩膀往耳朵那儿塌",
+   "en": "Shoulders sinking up toward your ears."
   }
  ],
  "cautions": [
   {
-   "zh": "肩前面夹着疼时，抬低一点或换简单版本",
-   "en": "If the front of your shoulder pinches, lift lower or switch to an easier version."
+   "zh": "肩膀前面夹着疼就抬低点，或者换躺着举腿",
+   "en": "If the front of your shoulder pinches, lift lower or switch to lying leg raises."
+  },
+  {
+   "zh": "做不满 8 个就先只练双杠撑住",
+   "en": "Can't get 8? Just practise holding yourself up on the bars first."
   }
  ],
  "tags": {
@@ -70,7 +74,7 @@
    "dip-bars"
   ],
   "position": "other",
-  "difficulty": 2
+  "difficulty": 3
  },
  "unilateral": false,
  "defaultDose": {
@@ -81,7 +85,7 @@
  },
  "phases": {
   "start": {
-   "zh": "抬腿",
+   "zh": "提膝",
    "en": "Knees up"
   },
   "peak": {
@@ -89,7 +93,7 @@
    "en": "Pause"
   },
   "end": {
-   "zh": "慢慢放下",
+   "zh": "慢慢放",
    "en": "Lower slowly"
   }
  },
@@ -99,25 +103,25 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 0.6,
+    "seconds": 1.0,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 1.3,
+    "seconds": 0.8,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 1.0,
+    "seconds": 1.5,
     "cue": "phase.end"
    },
    {
     "id": "rest",
-    "seconds": 1.1
+    "seconds": 0.2
    }
   ],
-  "source": "spec-pulse-track r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -126,6 +130,84 @@
     "cue2 按动画改为膝盖抬到比髋高一点；起始口令缩短到 0.6 s 能念完"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 4.0 s → 3.5 s（提膝 1.0 / 停 0.8 / 慢放 1.5）",
+    "难度 v3 2 / ai-tags 3 → 统一 3；退阶写进注意事项",
+    "文字改教练口吻"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "3 组×8 次，休息 60 秒",
+     "3 组×8 次，休息 60 秒"
+    ],
+    "rep": [
+     "4.0 s",
+     "3.5 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 2,
+      "ai": 3
+     },
+     3
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：双杠直臂支撑、屈膝抬腿、腹部高亮",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 3.5,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "腿别甩，慢慢放",
+    "en": "Slow down, no swinging",
+    "from": [
+     "cue3",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "肩膀往下沉",
+    "en": "Shoulders down",
+    "from": [
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 7,
+    "key": "p.last_rep"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.60"
+   ],
+   "allDone": [
+    "p.nice"
+   ]
   }
  }
 }
