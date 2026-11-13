@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-towel-pass",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-towel-pass-r11.js"
  ],
@@ -10,16 +10,16 @@
   "en": "Towel Shoulder Pass-Through"
  },
  "purpose": {
-  "zh": "打开肩膀前侧和胸口，让手臂举过头更顺",
-  "en": "Open the fronts of your shoulders and chest so reaching overhead feels easier."
+  "zh": "打开肩膀前面和胸口，手臂举过头更顺",
+  "en": "Opens the fronts of your shoulders and chest so reaching overhead feels easier."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "手臂伸直，毛巾画大圈举过头再往后",
-    "en": "Keep your arms straight and arc the towel overhead and back"
+    "zh": "手臂伸直，毛巾画个大圈举过头再往后",
+    "en": "Arms straight, sweep the towel in a big arc overhead and back"
    }
   },
   {
@@ -27,32 +27,32 @@
    "primary": false,
    "text": {
     "zh": "两手握宽拉紧毛巾，肋骨往下收。",
-    "en": "Hold the towel taut with a wide grip and ribs down."
+    "en": "Wide grip, towel tight, ribs down."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "手肘弯了就把两手再分开些。",
+    "zh": "手肘一弯就把两手再分开点。",
     "en": "If your elbows bend, widen your grip."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "弯肘硬转",
-   "en": "Bending the elbows to force it."
+   "zh": "弯手肘硬转",
+   "en": "Bending your elbows to force it."
   },
   {
-   "zh": "腰往前拱",
-   "en": "Arching the lower back."
+   "zh": "腰往前挺",
+   "en": "Arching your lower back."
   }
  ],
  "cautions": [
   {
-   "zh": "肩膀疼时减小幅度，仍痛就停止",
-   "en": "If your shoulders hurt, reduce the range, and stop if it still hurts."
+   "zh": "肩膀疼就转小点，还疼就停",
+   "en": "If your shoulders hurt, don't go as far. Stop if it still hurts."
   }
  ],
  "tags": {
@@ -80,7 +80,7 @@
  },
  "phases": {
   "start": {
-   "zh": "向上画弧",
+   "zh": "往上画弧",
    "en": "Arc up"
   },
   "peak": {
@@ -88,35 +88,31 @@
    "en": "Pause"
   },
   "end": {
-   "zh": "原路返回",
+   "zh": "原路回来",
    "en": "Come back"
   }
  },
  "training": {
-  "kind": "rep_hold",
+  "kind": "rep_updown",
   "leadSeconds": 1,
   "phases": [
    {
     "id": "go",
-    "seconds": 1.8,
+    "seconds": 2.0,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 2.0,
+    "seconds": 0.5,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 1.8,
+    "seconds": 2.0,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 2.4
    }
   ],
-  "source": "spec-pulse-track r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -126,6 +122,85 @@
    ],
    "flags": [
     "派生节奏 go 1.8 s / 停 2.0 s，但 spec 关键帧是 3.0 s 画弧、0.8 s 停、3.0 s 返回（缓动导致顶点被算长）；按派生写入，若要按关键帧请定"
+   ]
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 8.0 s → 4.5 s（画弧 2.0 / 停 0.5 / 回 2.0）；r2「派生 vs 关键帧」flag 与节奏脱钩；顶点 < 0.8 s，kind rep_hold → rep_updown",
+    "难度 v3 1 / ai-tags 2 → 统一 1",
+    "「腰往前拱」→「腰往前挺」；「减小幅度」→「转小点」"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "2 组×8 次，休息 20 秒",
+     "2 组×8 次，休息 20 秒"
+    ],
+    "rep": [
+     "8.0 s",
+     "4.5 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 2
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：两手握毛巾举过头、肩/胸高亮（b15 第 4 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 4.5,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "手肘别弯",
+    "en": "Arms straight",
+    "from": [
+     "cue1",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "肋骨往下收",
+    "en": "Ribs down",
+    "from": [
+     "cue2",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 7,
+    "key": "p.last_rep"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.20"
+   ],
+   "allDone": [
+    "p.nice"
    ]
   }
  }

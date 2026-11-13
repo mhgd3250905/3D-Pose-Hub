@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-supine-bilateral-leg-raise",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-supine-bilateral-leg-raise-rr3.js"
  ],
@@ -10,16 +10,16 @@
   "en": "Lying Double Leg Raise"
  },
  "purpose": {
-  "zh": "练腹部和大腿根前侧",
-  "en": "Build your abs and the fronts of your hips."
+  "zh": "练肚子和大腿根前面",
+  "en": "Builds your abs and the fronts of your hips."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "两腿伸直一起抬起，腰贴住垫子",
-    "en": "Lift both straight legs together with your lower back down"
+    "zh": "两腿伸直一起抬起来，腰贴住垫子",
+    "en": "Lift both straight legs together, lower back stays down"
    }
   },
   {
@@ -27,32 +27,32 @@
    "primary": false,
    "text": {
     "zh": "头、上背和屁股贴着垫子。",
-    "en": "Keep your head, upper back and hips on the mat."
+    "en": "Head, upper back and butt stay on the mat."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "慢慢放下，腰不拱起来。",
-    "en": "Lower slowly without arching your back."
+    "zh": "慢慢放下，腰别拱起来。",
+    "en": "Lower slowly. Don't let your back arch."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "放腿时腰拱起",
-   "en": "Arching the lower back as the legs lower."
+   "zh": "放腿时腰拱起来",
+   "en": "Lower back arching as your legs come down."
   },
   {
-   "zh": "甩腿借力",
-   "en": "Swinging the legs."
+   "zh": "甩腿借劲",
+   "en": "Swinging your legs."
   }
  ],
  "cautions": [
   {
-   "zh": "腰不舒服时减小幅度，仍痛就停止",
-   "en": "If your lower back feels uncomfortable, reduce the range, and stop if it still hurts."
+   "zh": "腰不舒服就别往下放那么低，还疼就停；做不满就弯着膝盖做",
+   "en": "If your lower back feels off, don't lower as far. Stop if it still hurts. Can't get them all? Bend your knees."
   }
  ],
  "tags": {
@@ -68,7 +68,7 @@
    "mat"
   ],
   "position": "supine",
-  "difficulty": 2
+  "difficulty": 3
  },
  "unilateral": false,
  "defaultDose": {
@@ -79,7 +79,7 @@
  },
  "phases": {
   "start": {
-   "zh": "双腿抬起",
+   "zh": "两腿抬起",
    "en": "Legs up"
   },
   "peak": {
@@ -87,35 +87,31 @@
    "en": "Pause"
   },
   "end": {
-   "zh": "慢慢放下",
+   "zh": "慢慢放",
    "en": "Lower slowly"
   }
  },
  "training": {
-  "kind": "rep_hold",
+  "kind": "rep_updown",
   "leadSeconds": 1,
   "phases": [
    {
     "id": "go",
-    "seconds": 1.0,
+    "seconds": 1.5,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 2.8,
+    "seconds": 0.5,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 1.3,
+    "seconds": 2.0,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 2.9
    }
   ],
-  "source": "spec-pulse-track r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -126,6 +122,93 @@
     "最终口径：按真实做法定（2026-11-01）"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 8.0 s → 4.0 s（抬 1.5 / 停 0.5 / 慢放 2.0），放下慢是重点；顶点 < 0.8 s，kind rep_hold → rep_updown",
+    "难度 v3 2 / ai-tags 3 → 统一 3；退阶「弯着膝盖做」写进注意事项",
+    "「腹部」→「肚子」；「减小幅度」→「别往下放那么低」"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "3 组×10 次，休息 45 秒",
+     "3 组×10 次，休息 45 秒"
+    ],
+    "rep": [
+     "8.0 s",
+     "4.0 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 2,
+      "ai": 3
+     },
+     3
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：仰卧两腿一起抬起、肚子下/胯前淡高亮（b14 第 5 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 4.0,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "腰贴住垫子",
+    "en": "Back stays down",
+    "from": [
+     "cue1",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "别甩腿",
+    "en": "No swinging",
+    "from": [
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 8,
+    "role": "form",
+    "zh": "慢慢放",
+    "en": "Lower slowly",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "afterRep": 9,
+    "key": "p.last_rep"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.45"
+   ],
+   "allDone": [
+    "p.nice"
+   ]
   }
  }
 }

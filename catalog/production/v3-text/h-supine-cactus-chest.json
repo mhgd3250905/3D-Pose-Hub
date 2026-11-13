@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-supine-cactus-chest",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-supine-cactus-chest-r4.js"
  ],
@@ -10,23 +10,23 @@
   "en": "Lying Cactus-Arm Chest Stretch"
  },
  "purpose": {
-  "zh": "轻轻打开胸口和肩膀前侧",
-  "en": "Gently open your chest and the fronts of your shoulders."
+  "zh": "轻轻打开胸口和肩膀前面",
+  "en": "Gently opens your chest and the fronts of your shoulders."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "手肘和手背贴地，双臂沿地面往头的方向滑",
-    "en": "Keep elbows and hands on the floor and slide your arms toward your head"
+    "zh": "手肘和手背贴地，两臂贴着地往头那边滑",
+    "en": "Elbows and backs of your hands on the floor, slide your arms up toward your head"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "仰躺屈膝，双脚踩地，腰放松。",
+    "zh": "仰躺屈膝，两脚踩地，腰放松。",
     "en": "Lie on your back, knees bent, feet flat, lower back relaxed."
    }
   },
@@ -34,25 +34,25 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "有轻微拉伸感就停住，再慢慢滑回。",
+    "zh": "有一点拉的感觉就停住，再慢慢滑回来。",
     "en": "Stop at a mild stretch, then slide back down slowly."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "手臂离开地面硬撑",
-   "en": "Lifting the arms off the floor and forcing it."
+   "zh": "手臂离地硬撑",
+   "en": "Arms lifting off the floor to force it."
   },
   {
    "zh": "腰拱起来",
-   "en": "Arching the lower back."
+   "en": "Lower back arching."
   }
  ],
  "cautions": [
   {
-   "zh": "肩膀疼时减小幅度，仍痛就停止",
-   "en": "If your shoulders hurt, reduce the range, and stop if it still hurts."
+   "zh": "肩膀疼就滑少点，还疼就停",
+   "en": "If your shoulders hurt, don't slide as far. Stop if it still hurts."
   }
  ],
  "tags": {
@@ -79,12 +79,12 @@
  },
  "phases": {
   "start": {
-   "zh": "向上滑",
+   "zh": "往上滑",
    "en": "Slide up"
   },
   "peak": {
-   "zh": "保持呼吸",
-   "en": "Breathe"
+   "zh": "停住，喘气",
+   "en": "Hold, breathe"
   },
   "end": {
    "zh": "慢慢滑回",
@@ -97,25 +97,21 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 0.9,
+    "seconds": 1.5,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 4.6,
+    "seconds": 3.0,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 0.9,
+    "seconds": 1.5,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 1.6
    }
   ],
-  "source": "spec-pulse-track r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -126,6 +122,75 @@
     "按用户决定：真实做法是来回动态拉伸，保留计次，去掉 stretchLoop"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 8.0 s → 6.0 s（滑 1.5 / 停 3.0 / 回 1.5），往返拉伸每下停 3 秒",
+    "「减小幅度」→「滑少点」；「有轻微拉伸感」→「有一点拉的感觉」",
+    "难度 1/1 不变"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "2 组×5 次，休息 15 秒",
+     "2 组×5 次，休息 15 秒"
+    ],
+    "rep": [
+     "8.0 s",
+     "6.0 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：仰卧屈膝、手臂仙人掌摆地、胸口高亮（b14 第 6 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 6.0,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "halfway",
+    "zh": "手背贴着地",
+    "en": "Hands on the floor",
+    "from": [
+     "cue1",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 4,
+    "key": "p.last_rep"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.15"
+   ],
+   "allDone": [
+    "p.nice"
+   ]
   }
  }
 }

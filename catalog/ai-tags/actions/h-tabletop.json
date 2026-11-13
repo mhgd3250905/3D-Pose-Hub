@@ -5,7 +5,7 @@
   "status": "ai-draft",
   "source": {
     "text": "catalog/production/v3-text/h-tabletop.json",
-    "textSha256Lf": "362a548a9ebb111ea1d39bfe1d89983a5439985e92a1174d0e78086c7efbfab4",
+    "textSha256Lf": "1bc7b25ae3afa45a81f419e7ba656bf70063b26c9e9716a0e71df49f9b348006",
     "spec": "drill-anim/specs/h-tabletop.js",
     "catalogV1": "catalog/catalog.json"
   },
@@ -147,18 +147,18 @@
       "reason": "v3 glutes/deltoids 主练：抬髋靠臀大肌，三角肌后束在肩伸位支撑，归协同；胸口被打开放 stretchedMuscles。"
     },
     {
-      "field": "difficulty",
-      "existing": 1,
-      "chosen": 2,
-      "reason": "手腕后伸承重 + 肩伸展末端，按 2 级。"
-    },
-    {
       "field": "floorRequired",
       "existing": {
         "position": "seated"
       },
       "chosen": true,
       "reason": "坐在地上做，算着地，不进办公室。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 2,
+      "reason": "r3 动作包核对（开哥 2026-11-13）：逐个重定，与 v3 tags.difficulty 同值。要肩膀够开、手腕撑得住才抬得平；ai-tags 原 2。"
     }
   ],
   "reviewNotes": []

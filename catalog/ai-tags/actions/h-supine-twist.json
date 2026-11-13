@@ -5,7 +5,7 @@
   "status": "ai-draft",
   "source": {
     "text": "catalog/production/v3-text/h-supine-twist.json",
-    "textSha256Lf": "b571c683dfe95e026b50a0f40a0ef5f9e6d2d5de4b833c0a703ecb42ecb71db3",
+    "textSha256Lf": "7619ef8422df587ac554c4d4781298d240d9017e9c692691971294e137a9bf16",
     "spec": "drill-anim/specs/h-supine-twist-r4.js",
     "catalogV1": "catalog/catalog.json"
   },
@@ -127,6 +127,12 @@
         ]
       },
       "reason": "拉伸类：v3 activeMuscles 是被拉肌，改放 stretchedMuscles。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 1,
+      "reason": "r3 动作包核对（开哥 2026-11-13）：逐个重定，与 v3 tags.difficulty 同值。"
     }
   ],
   "reviewNotes": []

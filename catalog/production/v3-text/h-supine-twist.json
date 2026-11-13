@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-supine-twist",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-supine-twist-r4.js",
   "drill-anim/specs/h-supine-twist-r3.js",
@@ -13,23 +13,23 @@
   "en": "Lying Knee-Drop Twist"
  },
  "purpose": {
-  "zh": "放松腰部，拉伸身体两侧",
-  "en": "Relax your lower back and stretch the sides of your trunk."
+  "zh": "放松腰，拉开身子两边",
+  "en": "Relaxes your lower back and stretches the sides of your body."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "双膝慢慢倒向一边，两肩贴住垫子",
-    "en": "Slowly drop both knees to one side, shoulders on the mat"
+    "zh": "两膝慢慢倒向一边，两边肩膀贴住垫子",
+    "en": "Slowly drop both knees to one side, both shoulders on the mat"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "双臂成 T 字放在垫子上。",
+    "zh": "两臂摆成 T 字放在垫子上。",
     "en": "Arms out in a T on the mat."
    }
   },
@@ -37,37 +37,37 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "停住不动，慢慢呼吸。",
-    "en": "Stay still and breathe slowly."
+    "zh": "就停在这儿，慢慢喘气。",
+    "en": "Stay right there and breathe slowly."
    }
   },
   {
    "id": "cue4",
    "primary": false,
    "text": {
-    "zh": "每次呼气再放松一点，别来回颠。",
-    "en": "Each time you breathe out, relax a little deeper. No bouncing."
+    "zh": "每次呼气再松一点，别一下一下往下压。",
+    "en": "Each breath out, let go a little more. Don't bounce."
    }
   }
  ],
  "commonErrors": [
   {
    "zh": "肩膀离开垫子",
-   "en": "Letting a shoulder lift off the mat."
+   "en": "A shoulder lifting off the mat."
   },
   {
    "zh": "憋气",
    "en": "Holding your breath."
   },
   {
-   "zh": "来回颠着往下压",
+   "zh": "一下一下往下压",
    "en": "Bouncing to go deeper."
   }
  ],
  "cautions": [
   {
-   "zh": "出现疼痛时放松，只拉到舒服的程度",
-   "en": "If anything hurts, ease off and stretch only to a comfortable point."
+   "zh": "拉到舒服就行，疼就松一点",
+   "en": "Stretch only to a comfortable point. Ease off if anything hurts."
   }
  ],
  "tags": {
@@ -99,12 +99,12 @@
    "en": "Drop the knees"
   },
   "peak": {
-   "zh": "保持，慢慢呼气",
-   "en": "Hold and breathe out"
+   "zh": "停住，呼气",
+   "en": "Hold, breathe out"
   },
   "end": {
-   "zh": "呼气再放松",
-   "en": "Relax a bit deeper"
+   "zh": "呼气再松",
+   "en": "Let go more"
   }
  },
  "training": {
@@ -123,6 +123,112 @@
     "最终口径：按真实做法定（2026-11-01）"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "剂量 每侧 2 组×30 秒、休息 15 秒不变；仰卧原地把膝盖倒向另一边，不加换边准备",
+    "「腰部」→「腰」；「别来回颠」→「别一下一下往下压」",
+    "难度 1/1 不变"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "2 组×每侧30 秒，休息 15 秒",
+     "2 组×每侧30 秒，休息 15 秒"
+    ],
+    "rep": [
+     "计时",
+     "计时"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：仰卧屈膝倒向一侧、手臂打开、侧腰/胸高亮（b14 第 8 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 4,
+    "role": "posture",
+    "zh": "两边肩膀贴垫子",
+    "en": "Both shoulders down",
+    "from": [
+     "cue1",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "at": 12,
+    "role": "halfway",
+    "zh": "两臂摆成 T 字",
+    "en": "Arms in a T",
+    "from": [
+     "cue2"
+    ]
+   },
+   {
+    "at": 20,
+    "role": "form",
+    "zh": "呼气，再松一点",
+    "en": "Breathe out, let go",
+    "from": [
+     "cue4"
+    ]
+   },
+   {
+    "at": 27,
+    "key": "n.3"
+   },
+   {
+    "at": 28,
+    "key": "n.2"
+   },
+   {
+    "at": 29,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSetsSameSide": [
+    "p.rest",
+    "sec.15"
+   ],
+   "sideDone": [
+    "p.release",
+    "p.switch_left"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
+  },
+  "sides": {
+   "order": [
+    "right",
+    "left"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边"
   }
  }
 }
