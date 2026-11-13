@@ -44,3 +44,10 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 注意事项1：先转转手腕，手腕刺疼或发麻就停 → 手指朝前撑地，手腕刺疼就撑在两块砖上（Roll out your wrists first. Stop if they get sharp pain or go numb. → Fingers forward. If your wrists hurt sharply, press on two blocks instead.）
+- 语音 reminders[1]：肩膀离耳朵远点 → 肩膀往下压，把身子顶起（Shoulders away from ears → Shoulders down, push up）

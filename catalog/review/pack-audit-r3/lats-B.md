@@ -45,3 +45,9 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 常见错误2：身子前后摆借劲 → 上身往前一点头，用体重把带子拽下来（Swinging your body to help. → Bobbing forward to pull the band down with your bodyweight.）

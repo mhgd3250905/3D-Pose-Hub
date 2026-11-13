@@ -47,3 +47,13 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点3：就停在这儿，慢慢喘气。 → 后脚尖正冲着墙，别往外撇。（Stay right there and breathe slowly. → Back toes point at the wall, don't turn them out.）
+- 要点4：每次呼气再松一点，别一下一下往下压。 → 呼气时前膝往墙再弯一点，后脚跟一直踩实。（Each breath out, let go a little more. Don't bounce. → Each breath out, bend your front knee toward the wall, back heel stays down.）
+- 常见错误3：一下一下往下压 → 后脚尖往外撇，小腿没拉到（Bouncing to go deeper. → Back foot turned out, so the calf loses the stretch.）
+- 注意事项1：疼就少往前靠点，还疼就停 → 跟腱或小腿刺疼就少往前靠一点（If it hurts, don't lean in as far. Stop if it still hurts. → If your Achilles or calf gets a sharp pain, lean in less.）
+- 语音 set[3]：呼气，再松一点 → 呼气，后脚跟踩住（Breathe out, let go → Breathe out, heel down）

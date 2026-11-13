@@ -46,3 +46,10 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 常见错误1：拱腰代替屁股使劲 → 大腿抬太高，腰先拱起来（Arching your lower back instead of using your butt. → Lifting the thigh too high so your lower back arches first.）
+- 注意事项1：腰疼就抬低点，还疼就停 → 腰发紧就在肚子下面垫个枕头，抬低点（If your lower back hurts, don't lift as high. Stop if it still hurts. → If your lower back tightens, put a pillow under your belly and lift lower.）

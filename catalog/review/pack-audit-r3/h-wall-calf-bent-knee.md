@@ -47,3 +47,16 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点3：就停在这儿，慢慢喘气。 → 两个膝盖往前顶向墙，脚跟一直贴地。（Stay right there and breathe slowly. → Push both knees toward the wall, heels stuck to the floor.）
+- 要点4：每次呼气再松一点，别一下一下往下压。 → 呼气时膝盖再往下弯一点，拉的地方在脚跟上面。（Each breath out, let go a little more. Don't bounce. → Each breath out, bend your knees a little more. You should feel it just above the heel.）
+- 常见错误3：一下一下往下压 → 一弯膝盖脚跟就抬起来（Bouncing to go deeper. → Heels lifting as soon as you bend your knees.）
+- 注意事项2：疼就沉少点，还疼就停 → 脚跟上面刺疼就弯少点，酸胀就对了（If it hurts, don't sink as far. Stop if it still hurts. → If it gets sharp above your heel, bend less. A dull ache is right.）
+- 相位口令 start：慢慢沉下去 → 膝盖往前弯（Sink down → Bend your knees）
+- 相位口令 end：呼气再沉点 → 呼气再弯点（Sink a bit more → Bend a bit more）
+- 语音 set[2]：两手扶稳墙 → 膝盖顶向墙（Hands on the wall → Knees toward the wall）
+- 语音 set[3]：呼气，再松一点 → 呼气，脚跟别抬（Breathe out, let go → Breathe out, heels down）

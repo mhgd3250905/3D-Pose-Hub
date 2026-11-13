@@ -47,3 +47,14 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点3：就停在这儿，慢慢喘气，每次呼气再松一点。 → 两腿让地心引力往下拉，自己别使劲。（Stay right there, breathe slowly, let go a little more each breath out. → Let gravity pull your legs down. Do nothing.）
+- 要点4：别一下一下往下压，有拉的感觉就够，别拉到疼。 → 大腿内侧拉得发抖了就把腿收拢一点。（Don't bounce. A clear stretch is enough, never pain. → If your inner thighs start shaking, bring your legs in a little.）
+- 常见错误2：腰离开地 → 屁股离墙太远，腰悬空（Lower back lifting off the floor. → Butt too far from the wall, so your low back floats.）
+- 常见错误3：憋气或一下一下往下压 → 用手往下按膝盖（Holding your breath or bouncing. → Pushing your knees down with your hands.）
+- 语音 set[2]：腰贴着地 → 屁股贴墙，腰放平（Back on the floor → Butt to wall, back flat）
+- 语音 set[3]：呼气，再松一点 → 腿让它自己往下落（Breathe out, let go → Let your legs drop）

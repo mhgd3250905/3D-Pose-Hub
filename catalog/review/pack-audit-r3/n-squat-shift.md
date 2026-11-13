@@ -43,3 +43,11 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点4：两边各做一次算 1 下。 → 挪到左边、再挪到右边，合起来记 1 下。（One on each side counts as one. → Shifting to the left and back over to the right is one.）
+- 常见错误1：膝盖往里倒 → 挪过去那边的膝盖往里倒（Knees caving in. → The knee you shift onto caving in.）
+- 注意事项1：膝盖或胯疼就蹲浅点，还疼就停 → 蹲不到底就坐在矮凳上挪（If your knees or hips hurt, don't go as low. Stop if it still hurts. → If you can't sit that low, shift while sitting on a low stool.）

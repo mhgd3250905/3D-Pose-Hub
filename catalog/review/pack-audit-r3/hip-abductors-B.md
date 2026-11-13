@@ -45,3 +45,10 @@
 
 ## 8. 待开哥定
 - 预览帧高亮不明显、上身像微微抬起，请看视频确认
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 常见错误2：腰离开地 → 腿一张开，后腰就拱起来（Lower back lifting off the floor. → Lower back arching as your legs open.）
+- 语音 reminders[1]：腰贴着地 → 后腰压住垫子（Back on the floor → Low back on the mat）

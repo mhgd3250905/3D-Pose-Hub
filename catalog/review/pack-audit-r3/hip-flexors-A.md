@@ -44,3 +44,9 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 常见错误1：上身往后仰去抬腿 → 手往后撑、上身往后倒，腿才抬得起来（Leaning back to lift your legs. → Leaning back on your hands to get the legs up.）

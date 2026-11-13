@@ -45,3 +45,10 @@
 
 ## 8. 待开哥定
 - 预览帧几乎看不到大腿内侧高亮，请看视频确认
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 常见错误2：站着那条腿膝盖往里倒 → 滑出去时站着那条腿的膝盖往里扣（Standing knee caving in. → Standing knee caving in as the other leg slides out.）
+- 语音 reminders[1]：膝盖对着脚尖 → 屁股往后，膝盖朝外（Knee over toes → Hips back, knee out）

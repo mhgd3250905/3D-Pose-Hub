@@ -47,3 +47,13 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点3：就停在这儿，慢慢喘气，每次呼气再松一点。 → 抱住的膝盖贴胸口，另一条腿就让它自己往下放。（Stay right there, breathe slowly, let go a little more each breath out. → Hold one knee to your chest and let the other leg relax down.）
+- 要点4：别一下一下往下压，有拉的感觉就够，别拉到疼。 → 放着的那条大腿抬起来了也别硬压，记住它在哪儿。（Don't bounce. A clear stretch is enough, never pain. → If the resting thigh lifts, don't force it down. Just notice where it sits.）
+- 常见错误3：憋气或一下一下往下压 → 用手按另一条腿往下压（Holding your breath or bouncing. → Pushing the other leg down with your hand.）
+- 注意事项1：膝盖或胯疼就抱松点，还疼就停 → 膝盖抱着疼就改成抱大腿后面（If your knee or hip hurts, don't hug as tight. Stop if it still hurts. → If hugging the knee hurts, hold behind your thigh instead.）
+- 语音 set[3]：呼气，再松一点 → 另一条腿放松别压（Breathe out, let go → Other leg loose, no forcing）

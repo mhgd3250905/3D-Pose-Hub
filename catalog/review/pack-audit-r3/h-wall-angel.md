@@ -44,3 +44,10 @@
 
 ## 8. 待开哥定
 - 高亮在胸口和侧身，动作练的是上背和肩膀；高亮位置可能误导（只报告，已列渲染侧复核清单）
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 语音 reminders[0]：腰贴着墙 → 后腰压住墙（Back on the wall → Low back to the wall）
+- 语音 reminders[1]：小臂别离开墙 → 手背蹭着墙走（Forearms on the wall → Backs of hands brush the wall）

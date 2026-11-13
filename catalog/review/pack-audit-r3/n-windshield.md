@@ -43,3 +43,10 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点4：两边各做一次算 1 下。 → 倒到左边、倒到右边，合起来记 1 下。（One on each side counts as one. → Knees to the left, then to the right, makes one.）
+- 注意事项1：腰或胯疼就倒小点，还疼就停 → 腰扭着不舒服就倒一半，肩膀别离地（If your lower back or hips hurt, don't tip as far. Stop if it still hurts. → If your back feels off, only go halfway and keep your shoulders down.）

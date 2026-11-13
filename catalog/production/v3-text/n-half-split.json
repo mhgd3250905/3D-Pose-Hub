@@ -34,31 +34,31 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "就停在这儿，慢慢喘气，每次呼气再松一点。",
-    "en": "Stay right there, breathe slowly, let go a little more each breath out."
+    "zh": "前脚勾起来，大腿后面会拉得更明显。",
+    "en": "Flex your front foot to feel more in the back of your thigh."
    }
   },
   {
    "id": "cue4",
    "primary": false,
    "text": {
-    "zh": "别一下一下往下压，有拉的感觉就够，别拉到疼。",
-    "en": "Don't bounce. A clear stretch is enough, never pain."
+    "zh": "呼气时屁股再往后坐一点，背别弓。",
+    "en": "Each breath out, sit your hips back a little more without rounding."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "弓背去够脚",
-   "en": "Rounding your back to reach your foot."
+   "zh": "脑袋往脚尖凑，背弓成虾米",
+   "en": "Reaching your head to your toes and curling your back."
   },
   {
    "zh": "硬把前腿膝盖伸直",
    "en": "Forcing your front knee straight."
   },
   {
-   "zh": "憋气或一下一下往下压",
-   "en": "Holding your breath or bouncing."
+   "zh": "前膝死死锁直，膝盖后面扯着疼",
+   "en": "Locking the front knee hard so the back of it hurts."
   }
  ],
  "cautions": [
@@ -132,7 +132,8 @@
     "剂量 每侧 2 组×30 秒、休息 15 秒不变",
     "新增 sideSwitchSeconds 10（半跪换前后腿要重新摆）",
     "「臀部」→「屁股」，「大腿后侧」→「大腿后面」；「别来回颠」→「别一下一下往下压」",
-    "难度 v3 1 / ai-tags 2 → 统一 2"
+    "难度 v3 1 / ai-tags 2 → 统一 2",
+    "r3 第二遍（去套话，2026-11-14）：6 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
    ],
    "flags": [],
    "audit": {
@@ -174,10 +175,9 @@
    {
     "at": 4,
     "role": "posture",
-    "zh": "背拉长，别弓",
-    "en": "Long back",
+    "zh": "胸口往前，背别弓",
+    "en": "Chest forward, back flat",
     "from": [
-     "cue1",
      "commonErrors[0]"
     ]
    },
@@ -193,10 +193,10 @@
    {
     "at": 20,
     "role": "form",
-    "zh": "呼气，再松一点",
-    "en": "Breathe out, let go",
+    "zh": "呼气，屁股往后坐",
+    "en": "Breathe out, hips back",
     "from": [
-     "cue3"
+     "cue4"
     ]
    },
    {

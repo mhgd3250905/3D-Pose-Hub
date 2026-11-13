@@ -44,3 +44,12 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点4：两边各做一次算 1 下。 → 左腿抬一次、右腿抬一次，合起来记 1 下。（One on each side counts as one. → One lift with each leg makes one.）
+- 常见错误1：身子往后仰去抬腿 → 上身往后靠椅背，借着倒腿才抬起来（Leaning back to lift your leg. → Leaning back into the chair to get the leg up.）
+- 注意事项1：胯前面疼就抬低点，还疼就停 → 胯前面抽筋就放下歇一下（If the front of your hip hurts, don't lift as high. Stop if it still hurts. → If the front of your hip cramps, put it down and rest.）
+- 语音 reminders[0]：身子别往后仰 → 坐直，上身别后靠（Don't lean back → Sit tall, no leaning）

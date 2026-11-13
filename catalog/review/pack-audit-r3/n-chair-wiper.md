@@ -43,3 +43,10 @@
 
 ## 8. 待开哥定
 - 预览帧高亮很淡，请看视频确认胯部高亮
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点4：两边各做一次算 1 下。 → 左膝倒一次、右膝倒一次，合起来记 1 下。（One on each side counts as one. → Left knee in plus right knee in makes one.）
+- 注意事项1：膝盖或胯疼就倒小点，还疼就停 → 膝盖里面别着疼就倒小点，脚别动（If your knee or hip hurts, don't tip as far. Stop if it still hurts. → If your knee feels twisted, don't drop it as far and keep your feet still.）

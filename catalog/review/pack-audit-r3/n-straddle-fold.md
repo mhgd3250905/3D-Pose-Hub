@@ -47,3 +47,16 @@
 
 ## 8. 待开哥定
 - 预览帧几乎看不到大腿高亮，请看视频确认
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点3：就停在这儿，慢慢喘气，每次呼气再松一点。 → 屁股往后推一点坐实，从胯往前倒。（Stay right there, breathe slowly, let go a little more each breath out. → Sit firmly on your sit bones and tip forward from your hips.）
+- 要点4：别一下一下往下压，有拉的感觉就够，别拉到疼。 → 手在前面地上慢慢往前走，别用背去够。（Don't bounce. A clear stretch is enough, never pain. → Walk your hands forward slowly. Don't reach with your back.）
+- 常见错误1：弓背去够地 → 背弓起来，只是低头（Rounding your back to reach the floor. → Rounding your back and just dropping your head.）
+- 常见错误2：膝盖往里倒 → 脚尖往前倒，膝盖跟着往里翻（Knees rolling in. → Toes falling forward and knees rolling in.）
+- 常见错误3：憋气或一下一下往下压 → 手使劲往前拽，膝盖后面扯着疼（Holding your breath or bouncing. → Pulling forward with your hands until the backs of your knees hurt.）
+- 相位口令 end：呼气再前倾 → 手再往前走（Lean a bit more → Walk hands out）
+- 语音 set[1]：背拉长，别弓 → 从胯往前倒，背别弓（Long back → Tip from your hips, back long）
+- 语音 set[3]：呼气，再松一点 → 手再往前走一点（Breathe out, let go → Walk your hands out）

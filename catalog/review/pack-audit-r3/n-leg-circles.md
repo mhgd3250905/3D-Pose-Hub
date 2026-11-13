@@ -44,3 +44,10 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 常见错误2：抬腿时腰离开地 → 腿画到外面时后腰跟着拱起来（Lower back lifting off the floor. → Lower back arching as the leg circles out.）
+- 相位口令 end：收回来 → 画回中间（Bring it back → Circle back）

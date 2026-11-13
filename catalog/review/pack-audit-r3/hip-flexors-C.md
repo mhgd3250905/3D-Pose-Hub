@@ -45,3 +45,9 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点3：顶上稍停，再慢慢放下。 → 抬到最高停一下，再顶着绳子慢慢放回。（Pause briefly at the top, then lower slowly. → Pause at the top, then let the cable down slowly.）

@@ -46,3 +46,10 @@
 
 ## 8. 待开哥定
 - 静态拉伸规范统一 30 秒；这条手腕拉伸原为 20 秒，按小部位未改，若要统一 30 秒请定
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点3：就停在这儿，慢慢喘气，每次呼气再松一点。 → 手掌整个压在墙上，身子往后靠到小臂里面有拉就停。（Stay right there, breathe slowly, let go a little more each breath out. → Whole palm flat on the wall. Lean back until the inside of your forearm stretches.）
+- 常见错误3：憋气或一下一下往下压 → 手掌根离开墙，只剩手指贴着（Holding your breath or bouncing. → Heel of your hand coming off the wall, only fingers touching.）
