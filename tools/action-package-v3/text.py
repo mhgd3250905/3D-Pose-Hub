@@ -6,6 +6,7 @@ The text is the ONLY hand-authored input of the definition and voice layers; eve
 (timing, dose rhythm, file refs, hashes) is derived by definition.py / voice.py. Validate:
 
     python3 tools/action-package-v3/text.py [--ids a,b]       # all files, exit 1 on any error
+    python3 tools/action-package-v3/text.py --dupes [--dupes-min 4]   # report sentences shared across actions (STYLE §9, report only)
 """
 from __future__ import annotations
 import argparse, json, re, sys
@@ -237,10 +238,71 @@ def load(aid: str) -> dict:
     return t
 
 
+# ---- cross-action repeated sentences (STYLE §9 去套话; report only, never fails the check)
+_DUP_PUN = re.compile(r"[\s，。、！？,.!?；;：:「」\"'“”‘’（）()…—\-]")
+
+
+def _dup_items(t):
+    o = [('purpose', t['purpose'])] + [(c['id'], c['text']) for c in t['cues']]
+    o += [(f'commonErrors[{i}]', x) for i, x in enumerate(t['commonErrors'])]
+    o += [(f'cautions[{i}]', x) for i, x in enumerate(t.get('cautions') or [])]
+    o += [(f'phases.{k}', v) for k, v in t['phases'].items()]
+    vg = t.get('voiceGuide') or {}
+    for sec in ('set', 'reminders', 'steps'):
+        o += [(f'voiceGuide.{sec}[{i}]', x) for i, x in enumerate(vg.get(sec, [])) if 'zh' in x]
+    return o
+
+
+def _lev(a, b, m):
+    if abs(len(a) - len(b)) > m: return m + 1
+    prev = list(range(len(b) + 1))
+    for i, ca in enumerate(a, 1):
+        cur = [i] + [0] * len(b)
+        for j, cb in enumerate(b, 1):
+            cur[j] = min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (ca != cb))
+        if min(cur) > m: return m + 1
+        prev = cur
+    return prev[-1]
+
+
+def dupes(files, min_actions=4):
+    """Sentences (exact after stripping punctuation, or differing by 1-2 chars / words) that appear in
+    >= min_actions actions. Short commands (zh <= 4 chars, en <= 3 words) are reported as 口令."""
+    occ = {'zh': {}, 'en': {}}; raw = {'zh': {}, 'en': {}}
+    for p in files:
+        t = json.loads(p.read_text('utf-8'))
+        for _, v in _dup_items(t):
+            for L in ('zh', 'en'):
+                n = _DUP_PUN.sub('', v[L]); n = n.lower() if L == 'en' else n
+                if n: occ[L].setdefault(n, set()).add(t['id']); raw[L].setdefault(n, v[L])
+    groups = []
+    for L in ('zh', 'en'):
+        keys = sorted(occ[L], key=lambda k: -len(occ[L][k])); used = set()
+        words = {k: [_DUP_PUN.sub('', w) for w in raw[L][k].lower().split()] for k in keys} if L == 'en' else {}
+        for k in keys:
+            if k in used: continue
+            mem = [k]; used.add(k)
+            for k2 in keys:
+                if k2 in used: continue
+                if L == 'zh':
+                    m = 1 if len(k) < 10 else 2
+                    if len(k) >= 6 and _lev(k, k2, m) <= m: mem.append(k2); used.add(k2)
+                else:
+                    w1 = words[k]; m = 1 if len(w1) < 7 else 2
+                    if len(w1) >= 4 and _lev(w1, words[k2], m) <= m: mem.append(k2); used.add(k2)
+            ids = sorted(set().union(*[occ[L][x] for x in mem]))
+            if len(ids) >= min_actions:
+                short = all((len(x) <= 4 if L == 'zh' else len(raw[L][x].split()) <= 3) for x in mem)
+                groups.append({'lang': L, 'command': short, 'actions': len(ids), 'text': [raw[L][x] for x in mem], 'ids': ids})
+    return groups
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('--ids')
     ap.add_argument('--weak', action='store_true', help='list every vague/bookish word hit (STYLE §9)')
+    ap.add_argument('--dupes', action='store_true', help='report sentences repeated across actions (STYLE §9, report only)')
+    ap.add_argument('--dupes-min', type=int, default=4, help='min number of actions for --dupes (default 4)')
     a = ap.parse_args(argv)
     files = sorted(TEXT_DIR.glob('*.json')) if not a.ids else [TEXT_DIR / f'{i}.json' for i in a.ids.split(',')]
     bad = 0
@@ -251,7 +313,15 @@ def main(argv=None):
             bad += 1; print(str(ex)[:600])
     for w in WARN: print('WARN', w)
     for w in WEAK_HITS if a.weak else []: print('WEAK', w)
-    print(json.dumps({'checked': len(files), 'failed': bad, 'warnings': len(WARN), 'weakWords': len(WEAK_HITS)}))
+    summary = {'checked': len(files), 'failed': bad, 'warnings': len(WARN), 'weakWords': len(WEAK_HITS)}
+    if a.dupes:
+        g = dupes(files, a.dupes_min)
+        for x in g:
+            tag = '口令' if x['command'] else '句子'
+            print(f"DUPE {tag} {x['lang']} ×{x['actions']}: {' | '.join(x['text'][:4])} :: {', '.join(x['ids'])}")
+        summary['dupeSentences'] = sum(1 for x in g if not x['command'])
+        summary['dupeCommands'] = sum(1 for x in g if x['command'])
+    print(json.dumps(summary))
     return 1 if bad else 0
 
 

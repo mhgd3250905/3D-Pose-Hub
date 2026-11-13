@@ -58,4 +58,4 @@
 - 注意事项1：肩膀疼就转少点，还疼就停 → 手发麻或肩膀前面刺疼，就把手放低一点（If your shoulder hurts, don't turn as far. Stop if it still hurts. → If your hand tingles or the front of your shoulder hurts sharply, lower your hand.）
 - 语音 set[3]：呼气，再松一点 → 呼气，身子再转开（Breathe out, let go → Breathe out, turn away）
 - 相位口令 peak：停住，呼气 → 手掌贴墙（Hold, breathe out → Palm on the wall）
-- 相位口令 end：呼气再松 → 再转开点（Let go more → Turn a bit more）
+- 相位口令 end：呼气再松 → 再转开点（Let go more → Turn further）

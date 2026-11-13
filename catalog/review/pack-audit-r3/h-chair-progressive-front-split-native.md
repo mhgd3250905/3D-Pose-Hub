@@ -60,4 +60,4 @@
 - 注意事项2：用结实、不带轮子的椅子 → 两边椅子都要稳，地面别太滑（Use a sturdy chair without wheels. → Both chairs need to be steady, and the floor not too slippery.）
 - 语音 set[3]：呼气，再松一点 → 呼气，前脚再滑一点（Breathe out, let go → Breathe out, slide a bit more）
 - 相位口令 peak：停住，呼气 → 手撑稳（Hold, breathe out → Hands steady）
-- 相位口令 end：呼气再松 → 前脚再滑（Let go more → Slide a bit more）
+- 相位口令 end：呼气再松 → 前脚再滑（Let go more → Front foot out）

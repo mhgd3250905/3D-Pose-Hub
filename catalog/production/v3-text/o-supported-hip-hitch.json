@@ -51,8 +51,8 @@
  ],
  "cautions": [
   {
-   "zh": "刚开始每侧先做 1 组 4 次，动小点",
-   "en": "When starting out, do one set of 4 per side and keep it small."
+   "zh": "入门先做 1 组、每侧 4 次，提小一点；熟了再做满 2 组 8 次",
+   "en": "Beginners: one set of 4 per side, small lifts. Build up to 2 sets of 8."
   },
   {
    "zh": "腰、胯或膝盖疼，或站不稳就停",
@@ -79,8 +79,8 @@
  "startingSide": "left",
  "defaultDose": {
   "mode": "reps",
-  "sets": 1,
-  "reps": 4,
+  "sets": 2,
+  "reps": 8,
   "restSeconds": 30
  },
  "phases": {
@@ -134,15 +134,14 @@
     "节奏按真实带练：一下 8.0 s → 4.0 s（提 1.0 / 停 1.5 / 放 1.5）",
     "站着原地换边，不加换边准备",
     "名称「单腿骨盆提拉」→「单腿提胯」；「骨盆」→「胯」，「小幅度」→「提一点就够」",
-    "难度 1/1 不变"
+    "难度 1/1 不变",
+    "剂量 1 组 → 2 组×每侧 8 次（开哥 2026-11-14 同意）；入门少做写进注意事项；voiceGuide 提醒按 8 次重排"
    ],
-   "flags": [
-    "剂量每侧 1 组×4 次偏少（规范活动 2 组 6–10 次），按原稿入门量没改；要不要改 2 组×8 次请定"
-   ],
+   "flags": [],
    "audit": {
     "dose": [
      "1 组×每侧4 次，休息 30 秒",
-     "1 组×每侧4 次，休息 30 秒"
+     "2 组×每侧8 次，休息 30 秒"
     ],
     "rep": [
      "8.0 s",
@@ -179,7 +178,7 @@
   "reminders": [
    {
     "afterRep": 2,
-    "role": "halfway",
+    "role": "form",
     "zh": "上身别歪",
     "en": "Stay upright",
     "from": [
@@ -188,7 +187,17 @@
     ]
    },
    {
-    "afterRep": 3,
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "站着的腿别弯",
+    "en": "Standing leg straight",
+    "from": [
+     "cue2",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 7,
     "key": "p.last_rep"
    }
   ],

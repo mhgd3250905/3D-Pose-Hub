@@ -51,8 +51,8 @@
  ],
  "cautions": [
   {
-   "zh": "刚开始每侧先做 1 组 4–6 次，疼就停",
-   "en": "When starting out, do one easy set of 4–6 per side. Stop if it hurts."
+   "zh": "入门先做 1 组、每侧 4–6 次，熟了再做满 2 组 8 次；疼就停",
+   "en": "Beginners: one set of 4–6 per side, building to 2 sets of 8. Stop if it hurts."
   }
  ],
  "tags": {
@@ -74,8 +74,8 @@
  "startingSide": "right",
  "defaultDose": {
   "mode": "reps",
-  "sets": 1,
-  "reps": 6,
+  "sets": 2,
+  "reps": 8,
   "restSeconds": 30
  },
  "phases": {
@@ -133,16 +133,16 @@
     "节奏按真实带练：一下 8.0 s → 3.5 s（摆 1.0 / 停 1.0 / 回 1.5）",
     "站着原地换边，不加换边准备",
     "purpose 去掉「控制」；「髋部」「骨盆」→「胯」",
-    "难度 1/1 不变"
+    "难度 1/1 不变",
+    "剂量 1 组 → 2 组×每侧 8 次（开哥 2026-11-14 同意）；入门少做写进注意事项；voiceGuide 提醒按 8 次重排"
    ],
    "flags": [
-    "r2 flag 沿用：tags.activeMuscles 为 glutes+abductors（只是胯部大致区域），请定",
-    "剂量每侧 1 组×6 次偏少，按原稿入门量没改；要不要改 2 组×8 次请定"
+    "r2 flag 沿用：tags.activeMuscles 为 glutes+abductors（只是胯部大致区域），请定"
    ],
    "audit": {
     "dose": [
      "1 组×每侧6 次，休息 30 秒",
-     "1 组×每侧6 次，休息 30 秒"
+     "2 组×每侧8 次，休息 30 秒"
     ],
     "rep": [
      "8.0 s",
@@ -179,7 +179,7 @@
   "reminders": [
    {
     "afterRep": 2,
-    "role": "halfway",
+    "role": "form",
     "zh": "胯朝前别转",
     "en": "Hips forward",
     "from": [
@@ -189,6 +189,16 @@
    },
    {
     "afterRep": 5,
+    "role": "halfway",
+    "zh": "别硬扭膝盖",
+    "en": "Easy on that knee",
+    "from": [
+     "cue3",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 7,
     "key": "p.last_rep"
    }
   ],
