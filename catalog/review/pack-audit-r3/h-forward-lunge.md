@@ -45,3 +45,11 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点4：两边各做一次算 1 下。 → 左脚迈一次、右脚迈一次，才算 1 下。（One on each side counts as one. → A lunge with each leg counts as one.）
+- 常见错误1：前膝往里倒 → 迈出去的脚太窄，像走钢丝，膝盖往里晃（Front knee caving in. → Stepping in a tightrope line so the front knee wobbles in.）
+- 注意事项1：膝盖不舒服就蹲浅一点，还疼就停 → 前膝不舒服就步子迈小、蹲浅点（If your knee bugs you, don't go as low. Stop if it still hurts. → If your front knee complains, take a shorter step and don't go as low.）

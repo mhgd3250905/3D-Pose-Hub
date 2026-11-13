@@ -42,15 +42,15 @@
    "id": "cue4",
    "primary": false,
    "text": {
-    "zh": "两边各做一次算 1 下。",
-    "en": "One on each side counts as one."
+    "zh": "往左跨一次、往右跨一次，才算 1 下。",
+    "en": "A step to the left plus a step to the right counts as one."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "膝盖往里倒",
-   "en": "Knee caving in."
+   "zh": "蹲下那条腿的膝盖往里扣",
+   "en": "Bent knee caving inward."
   },
   {
    "zh": "跨出去那只脚后跟抬起来",
@@ -59,8 +59,8 @@
  ],
  "cautions": [
   {
-   "zh": "膝盖不舒服就蹲浅点，还疼就停",
-   "en": "If your knees feel off, don't go as low. Stop if it still hurts."
+   "zh": "膝盖不舒服就跨小步，蹲浅点",
+   "en": "If your knees complain, take a smaller step and stay higher."
   }
  ],
  "tags": {
@@ -141,7 +141,8 @@
    "changes": [
     "节奏按真实带练：一侧一下 5.0 s → 3.5 s（跨步下坐 1.5 / 停 0.5 / 蹬回 1.5），一左一右 7 s 计 1 下；r2「相位手算」flag 不再适用",
     "文字改教练口吻",
-    "难度 2/2 不变"
+    "难度 2/2 不变",
+    "r3 第二遍（去套话，2026-11-14）：5 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
    ],
    "flags": [],
    "audit": {
@@ -186,8 +187,8 @@
    {
     "afterRep": 2,
     "role": "form",
-    "zh": "膝盖对着脚尖",
-    "en": "Knee over toes",
+    "zh": "膝盖跟脚尖同一个方向",
+    "en": "Knee points where toes point",
     "from": [
      "commonErrors[0]"
     ]
@@ -195,10 +196,10 @@
    {
     "afterRep": 5,
     "role": "halfway",
-    "zh": "脚后跟踩实",
-    "en": "Heel down",
+    "zh": "屁股往后坐",
+    "en": "Sit your hips back",
     "from": [
-     "commonErrors[1]"
+     "cue1"
     ]
    },
    {

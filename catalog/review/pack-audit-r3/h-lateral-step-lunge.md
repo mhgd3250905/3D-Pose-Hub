@@ -44,3 +44,13 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点4：两边各做一次算 1 下。 → 往左跨一次、往右跨一次，才算 1 下。（One on each side counts as one. → A step to the left plus a step to the right counts as one.）
+- 常见错误1：膝盖往里倒 → 蹲下那条腿的膝盖往里扣（Knee caving in. → Bent knee caving inward.）
+- 注意事项1：膝盖不舒服就蹲浅点，还疼就停 → 膝盖不舒服就跨小步，蹲浅点（If your knees feel off, don't go as low. Stop if it still hurts. → If your knees complain, take a smaller step and stay higher.）
+- 语音 reminders[0]：膝盖对着脚尖 → 膝盖跟脚尖同一个方向（Knee over toes → Knee points where toes point）
+- 语音 reminders[1]：脚后跟踩实 → 屁股往后坐（Heel down → Sit your hips back）

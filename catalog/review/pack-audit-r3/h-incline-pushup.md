@@ -45,3 +45,10 @@
 
 ## 8. 待开哥定
 - 画面用的是椅子，名称写凳子；只要稳不影响，可不改
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 常见错误2：手肘往两边张 → 手肘往外撇成 T 字（Elbows flaring out. → Elbows flaring into a T.）
+- 注意事项1：手腕刺疼或发麻就停，开始前先转转手腕 → 凳子要顶住墙，手撑上去不会滑（Stop if your wrists get sharp pain or go numb. Roll them out before you start. → Brace the bench against a wall so it can't slide.）

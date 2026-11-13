@@ -44,3 +44,9 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 注意事项1：肩膀前面夹着疼就打开少点，还疼就停 → 肩膀前面扯着疼就把手臂弯起来再打开（If the front of your shoulder pinches, don't open as far. Stop if it still hurts. → If the front of your shoulder pulls, bend your arm and open again.）

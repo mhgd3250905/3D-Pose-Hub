@@ -44,3 +44,10 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点4：两边各收一次算 1 下。 → 左膝收一次、右膝收一次，才算 1 下。（One on each side counts as one. → Left knee in plus right knee in counts as one.）
+- 注意事项1：手腕刺疼或发麻就停，开始前先转转手腕 → 手撑在肩膀正下方，手腕不舒服就撑在凳子上做（Stop if your wrists get sharp pain or go numb. Roll them out before you start. → Hands under your shoulders. If your wrists complain, do it with hands on a bench.）

@@ -45,3 +45,13 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 常见错误1：膝盖往里倒 → 站起来时两个膝盖往中间夹（Knees caving in. → Knees squeezing together as you stand up.）
+- 注意事项1：膝盖不舒服就蹲浅点，还疼就停 → 膝盖不舒服就蹲到椅子高度就起来（If your knees feel off, don't go as low. Stop if it still hurts. → If your knees complain, only squat to chair height.）
+- 注意事项2：先用轻壶铃，哪儿疼就停 → 先用轻壶铃，抱不住胸口就换轻的（Start with a light kettlebell. Stop if anything hurts. → Start with a light kettlebell. If it pulls you forward, go lighter.）
+- 语音 reminders[0]：膝盖对着脚尖 → 站起时膝盖别夹（Knees over toes → Knees don't squeeze in）
+- 语音 reminders[2]：脚后跟踩实 → 全脚掌踩地（Heels down → Whole foot on the floor）

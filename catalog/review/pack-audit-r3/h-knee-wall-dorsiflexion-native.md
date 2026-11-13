@@ -46,3 +46,10 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 常见错误2：膝盖往里倒 → 膝盖往大脚趾里面偏着去碰墙（Knee drifting inward. → Knee heading inside your big toe to reach the wall.）
+- 语音 reminders[1]：膝盖对着脚趾 → 膝盖朝第二个脚趾（Knee over your toes → Knee over your second toe）

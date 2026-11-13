@@ -44,3 +44,12 @@
 
 ## 8. 待开哥定
 - 高亮在腰和侧腰，动作要的是上背转、腰别扭；高亮位置可能误导（只报告）
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 常见错误1：屁股往一边歪 → 手臂往上打开时屁股往后坐歪（Hips shifting to one side. → Hips sliding back and off to one side as you open.）
+- 注意事项1：拉到舒服就行，疼就松一点 → 打开时肩膀扯着疼就少转一点（Stretch only to a comfortable point. Ease off if anything hurts. → If your shoulder pulls as you open, don't turn as far.）
+- 注意事项2：手腕刺疼或发麻就停，开始前先转转手腕 → 撑地那只手腕不舒服就撑拳头（Stop if your wrists get sharp pain or go numb. Roll them out before you start. → Press on your fist if your support wrist complains.）
+- 相位口令 end：慢慢收回 → 手穿回来（Bring it back → Arm back down）

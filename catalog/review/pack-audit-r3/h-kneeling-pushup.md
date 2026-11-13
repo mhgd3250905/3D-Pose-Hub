@@ -45,3 +45,10 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 常见错误2：手肘往两边张开 → 手肘往外撇，肩膀先往下掉（Elbows flaring out. → Elbows flaring and shoulders dropping first.）
+- 注意事项1：手腕刺疼或发麻就停，开始前先转转手腕 → 跪的地方垫个垫子，手腕不舒服就撑拳头（Stop if your wrists get sharp pain or go numb. Roll them out before you start. → Pad your knees, and press on your fists if your wrists complain.）

@@ -48,3 +48,9 @@
 ## 8. 待开哥定
 
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 语音 reminders[0]：肩膀离耳朵远点 → 先沉肩，再拉（Shoulders away from your ears → Shoulders down, then pull）

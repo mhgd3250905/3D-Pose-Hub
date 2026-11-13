@@ -44,3 +44,11 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 常见错误1：屁股往一边歪 → 手往里穿的时候屁股跟着往外跑（Hips shifting to one side. → Hips drifting out as you thread your arm through.）
+- 注意事项1：拉到舒服就行，疼就松一点 → 肩膀压在地上不舒服就少穿一点（Stretch only to a comfortable point. Ease off if anything hurts. → If your shoulder on the floor feels off, don't thread as far.）
+- 注意事项2：手腕刺疼或发麻就停，开始前先转转手腕 → 撑地那只手腕不舒服就换小臂撑（Stop if your wrists get sharp pain or go numb. Roll them out before you start. → If your support wrist complains, drop onto that forearm.）

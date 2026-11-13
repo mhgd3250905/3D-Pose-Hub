@@ -45,3 +45,10 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 注意事项2：手腕刺疼或发麻就停，开始前先转转手腕 → 跪撑手腕不舒服就撑拳头，膝盖下垫软（Stop if your wrists get sharp pain or go numb. Roll them out before you start. → Press on your fists if your wrists complain, and pad your knees.）
+- 语音 reminders[0]：背挺平，别弓 → 往后坐，腰别弓（Flat back → Sit back, don't round）
