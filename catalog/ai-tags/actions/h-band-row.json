@@ -5,7 +5,7 @@
   "status": "ai-draft",
   "source": {
     "text": "catalog/production/v3-text/h-band-row.json",
-    "textSha256Lf": "953646f33f4fb0d8be38fee63bb3a47869041f9d0d03a06af56ab75bafc85a82",
+    "textSha256Lf": "e595bff40fdc481a21c6d8d3d2af3b0688b69c5d678e4226a4bb86a1004b56ce",
     "spec": "drill-anim/specs/h-band-row.js",
     "catalogV1": "catalog/catalog.json"
   },
@@ -142,6 +142,12 @@
       },
       "chosen": true,
       "reason": "v3/taxonomy 的 seated 默认 floor=false，但本动作是坐在地上腿伸直、弹力带套脚，实际需要坐地。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 1,
+      "reason": "r3 动作包核对（开哥 2026-11-13）：逐个重定，与 v3 tags.difficulty 同值。"
     }
   ],
   "reviewNotes": [
