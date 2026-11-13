@@ -57,5 +57,54 @@
 - 特殊计数单位（每个方向/每圈/每个字型/每次点地）保留，但 cue 要写明 1 次是什么。
 
 ## 7. 审核记录
-- 改完后 `reviewStatus` 写 `ai-reviewed-r2-needs-user-review`。
-- `review`: `{"r2": {"changes": ["改了什么、为什么"], "flags": ["拿不准、需用户定的"]}}`。
+- 改完后 `reviewStatus` 写 `ai-reviewed-r2-needs-user-review`；r3 动作包核对（2026-11-13 起，样例 5 个）写 `ai-reviewed-r3-needs-user-review`。
+- `review`: `{"r2": {"changes": ["改了什么、为什么"], "flags": ["拿不准、需用户定的"]}}`；r3 在同一对象里加 `"r3": {...}`，不删 r2。
+- r3 每个动作另有核对记录 `catalog/review/pack-audit-r3/<id>.md`（改前、改后、理由、画面对照、待定点），总台账 `LEDGER.md`。
+
+## 8. 中途语音引导 voiceGuide（r3 新增，可选）
+**现状：只写脚本，未合成音频，`produce.py`/`definition.py`/`voice.py` 与 App 都还没读这个字段，接入前不影响线上。** 校验在 `text.py`（字段存在才查）。
+
+目的：长组、计时组不冷场；次数组隔几下提醒一次要点。句子**必须来自本动作自己的** cues / commonErrors / cautions（`from` 写出处，如 `cue2`、`commonErrors[0]`、`cautions[0]`，校验会查是否存在），不说「加油」「坚持就是胜利」这类空话。共用词（开始、倒数、最后一次、换边、休息 N 秒）用 `catalog/voice-v2/script.json` 的 `common` 键，不重复写。
+
+时长按中文约 4 字/秒、英文约 2.5 词/秒估算，中英两版都要放得下。
+
+**计时类**（`defaultDose.mode: time` → `mode: hold`）：
+```json
+"voiceGuide": {
+  "format": "pose-hub-voice-guide@1", "status": "script-only", "mode": "hold",
+  "speechRate": {"zhCharsPerSecond": 4, "enWordsPerSecond": 2.5},
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+    {"at": 0, "key": "p.go"},
+    {"at": 5, "role": "posture", "zh": "骨盆摆正，别歪向一边", "en": "Square your hips, don't tilt", "from": ["commonErrors[0]", "cue2"]},
+    {"at": 14, "role": "halfway", "zh": "…", "en": "…", "from": ["cue3"]},
+    {"at": 27, "key": "n.3"}, {"at": 28, "key": "n.2"}, {"at": 29, "key": "n.1"}
+  ],
+  "afterSet": {"moreSetsSameSide": ["p.rest", "sec.15"], "sideDone": ["p.release", "p.switch_left"], "allDone": ["p.release", "p.nice"]},
+  "sides": {"order": ["right", "left"], "perSide": "each-side-separately"}
+}
+```
+- `at` 是组内秒数（计时从「开始」算），一组一条时间轴；单侧动作每侧同一条。
+- 大约每 8–10 秒一句：相邻两次发声间隔 ≤ 10 秒；第一句不早于 3 秒；最后 4 秒只留倒数（`n.3/n.2/n.1` 放在最后 3 秒）。
+- 一句念完要离下一次发声 ≥ 0.3 秒，不叠、不掐。
+- `role`：`posture` 姿势自查、`breath` 呼吸提醒、`halfway` 过半（可带一句要点）、`safety` 注意事项。≤ 20 秒的组 2 句即可（姿势 + 过半），别说太满。
+
+**次数类**（`mode: reps`）：
+```json
+"voiceGuide": {
+  "format": "pose-hub-voice-guide@1", "status": "script-only", "mode": "reps",
+  "repSeconds": 4.0, "phaseCues": "first-2-reps", "count": {"key": "n.{rep}", "at": "rep-end"},
+  "reminders": [
+    {"afterRep": 2, "role": "form", "zh": "身体一条直线，别塌腰", "en": "Body in one straight line", "from": ["cue3"]},
+    {"afterRep": 4, "role": "halfway", "zh": "…", "en": "…", "from": ["commonErrors[0]"]},
+    {"afterRep": 7, "key": "p.last_rep"}
+  ],
+  "afterSet": {"moreSets": ["p.rest", "sec.60"], "allDone": ["p.nice"]}
+}
+```
+- `repSeconds` = 计数的一下（training.phases 相加；`repUnit: left+right` 时 ×2），校验会对。
+- 每一下结束报数（`n.{rep}`）。`phaseCues: first-2-reps` = 前 2 下念 phase 口令带节奏，之后只报数 + 提醒；`every-rep` = 每下都念（待开哥定统一用哪种）。
+- 提醒在第 `afterRep` 下报数后开始念，占下一下的时间：一句 ≤ `repSeconds − 1` 秒能念完；最多隔 3 下必须有一句；最后一句固定 `p.last_rep`（在倒数第 2 下之后）。
+- 单侧 each-side-separately：每侧按同一份脚本，一侧做完念 `afterSet.sideDone`。
+
+**节奏字段（预留）**：若动画一下明显太快、计数跟不上，可在 `training` 加 `tempoSeconds`（建议的一下秒数），并在 `review.r3.flags` 写清与动画时长的差异；不改动画。App 未接入前只作记录。

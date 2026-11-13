@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-hip-gate",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-hip-gate-r2.js"
  ],
@@ -43,6 +43,10 @@
   {
    "zh": "身体跟着转或往一边倒",
    "en": "Turning or leaning the body with the leg."
+  },
+  {
+   "zh": "甩腿画圈太快",
+   "en": "Swinging the leg around too fast."
   }
  ],
  "cautions": [
@@ -131,6 +135,84 @@
     "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "剂量核对：2 组×每侧 6 次、休息 20 秒合理（活动类 2 组 6–10 次），未改；6 次 = 开门 3 次 + 关门 3 次轮流",
+    "节奏核对：动画一圈 4.0 秒（抬膝约 0.5–0.9 s、画圈约 1.4–1.5 s、放下约 0.8–1.3 s、站立约 0.4 s），大幅度动作下限，入门跟得上，未调整",
+    "commonErrors 补「甩腿画圈太快」：站姿画圈最常见的问题，也对应「慢慢画」的要求",
+    "新增 voiceGuide（前 2 次念相位；第 1 次后提醒反方向，第 3 次后过半+骨盆朝前，第 5 次后「最后一次」）",
+    "画面对照（V4 b10）：扶椅站姿、一手叉腰、髋前侧/外侧高亮、椅子，一致"
+   ],
+   "flags": [
+    "4 秒一圈对单腿站立的入门用户偏快的上限，若开哥觉得快，建议改为 5 秒一圈（需动画放慢，本轮不改动画）",
+    "共用词表缺 sec.20，「休息 20 秒」念不了；需补 sec.20 或改休息时长",
+    "相位口令「画圈」不区分开门/关门方向，靠第 1 次后的提醒补足；是否要分开两套口令请开哥定"
+   ]
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 4.0,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "before": [
+   "p.right_first"
+  ],
+  "reminders": [
+   {
+    "afterRep": 1,
+    "role": "form",
+    "zh": "下一圈反方向",
+    "en": "Now circle the other way",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "afterRep": 3,
+    "role": "halfway",
+    "zh": "过半了，骨盆朝前别转",
+    "en": "Halfway. Hips forward, don't turn",
+    "from": [
+     "cue2",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "key": "p.last_rep"
+   }
+  ],
+  "afterSet": {
+   "sideDone": [
+    "p.switch_left"
+   ],
+   "moreSets": [
+    "p.rest",
+    "sec.20"
+   ],
+   "allDone": [
+    "p.nice"
+   ]
+  },
+  "sides": {
+   "order": [
+    "right",
+    "left"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧 6 次（开门 3 + 关门 3，轮流）做完换边"
   }
  }
 }

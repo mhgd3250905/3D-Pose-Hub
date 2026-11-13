@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "chest-B",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/data/drills.json",
   "drill-anim/specs/chest-B-r2.js",
@@ -132,6 +132,78 @@
    ],
    "flags": [
     "批表底部停 0.7 s，spec 写底部只停 0.25 s，按批表取值"
+   ]
+  },
+  "r3": {
+   "changes": [
+    "剂量核对：3 组×8 次、休息 60 秒合理（力量 3 组 8–12 次，深幅俯卧撑取下限），未改",
+    "节奏核对：一下 4.0 秒（控制/力量型 3–4 秒），跟得上，未调整；按动画关键帧实测（3% 阈值）下放约 1.1–1.4 s、底部约 0.5 s、推起约 0.8–1.1 s、顶部约 1.3–1.6 s，r2 的 0.8/0.7/0.6/1.9 切分在阈值范围内，口令念得完，保留",
+    "r2 flag「底部 0.7 s vs spec 0.25 s」已核：spec 关键帧 0.25 s + 缓入缓出，实测底部平台约 0.5 s，0.7 s 可用",
+    "新增 voiceGuide（前 2 次念相位，之后报数；第 2/4/6 次后各一句要点，第 7 次后「最后一次」）",
+    "画面对照（V4 b1）：平行杆、俯卧撑、胸部高亮，一致"
+   ],
+   "flags": [
+    "入门用户可能做不满 8 个深幅俯卧撑：是否在 App 里给退阶（跪姿/普通俯卧撑），cautions 已满 2 条，未加",
+    "难度不一致：本文件 2，ai-tags 3"
+   ]
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 4.0,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "身体一条直线，别塌腰",
+    "en": "Body in one straight line",
+    "from": [
+     "cue3",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 4,
+    "role": "halfway",
+    "zh": "过半了，肩别往前顶",
+    "en": "Halfway. Keep shoulders back",
+    "from": [
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 6,
+    "role": "form",
+    "zh": "推起时手臂伸直",
+    "en": "Straighten your arms at the top",
+    "from": [
+     "cue2"
+    ]
+   },
+   {
+    "afterRep": 7,
+    "key": "p.last_rep"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.60"
+   ],
+   "allDone": [
+    "p.nice"
    ]
   }
  }

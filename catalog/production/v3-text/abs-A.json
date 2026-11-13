@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "abs-A",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/data/drills.json",
   "drill-anim/specs/abs-A-r2.js",
@@ -55,6 +55,10 @@
   {
    "zh": "腰离地或发疼时，把腿抬高一点",
    "en": "If your lower back lifts or hurts, raise your legs a little higher."
+  },
+  {
+   "zh": "脖子发酸时下巴微收，别往前探头",
+   "en": "If your neck gets tired, tuck your chin slightly and do not push your head forward."
   }
  ],
  "tags": {
@@ -107,6 +111,76 @@
     "最终口径：按真实做法定（2026-11-01）"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "剂量核对：3 组×20 秒、休息 45 秒合理（保持类 2–3 组 15–30 秒，空心体对入门偏难，取中间 20 秒），未改",
+    "注意事项补一条脖子：空心体最常见的不适是脖子发酸、头往前探",
+    "新增 voiceGuide（20 秒：4 秒腰压地+别憋气、10 秒过半+腰离地就抬腿、17–19 秒倒数）；20 秒组只放 2 句，避免说太多",
+    "画面对照（V4 b1）：仰卧、手臂过头、双腿并拢伸直抬起、腹部高亮、垫子，与名称/要点一致"
+   ],
+   "flags": [
+    "难度不一致：本文件 tags.difficulty 1，ai-tags 为 3；空心体（手臂过头+直腿）对入门不算 1 级，建议 2，请开哥定",
+    "共用词表缺 sec.45，休息播报「休息 45 秒」念不了；需补 sec.45 或把休息改为 30/60 秒",
+    "动画是 8 秒 2 次起落，App 按静止保持计时（r2 已定）；静帧看不出腰是否贴地，建议看视频确认"
+   ]
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 4,
+    "role": "posture",
+    "zh": "腰压住地面，别憋气",
+    "en": "Lower back down, keep breathing",
+    "from": [
+     "cue1",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "at": 10,
+    "role": "halfway",
+    "zh": "过半了，腰离地就抬高腿",
+    "en": "Halfway. Back lifting? Raise your legs",
+    "from": [
+     "cautions[0]"
+    ]
+   },
+   {
+    "at": 17,
+    "key": "n.3"
+   },
+   {
+    "at": 18,
+    "key": "n.2"
+   },
+   {
+    "at": 19,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.45"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
   }
  }
 }

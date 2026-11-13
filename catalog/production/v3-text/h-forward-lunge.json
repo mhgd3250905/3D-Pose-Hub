@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-forward-lunge",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-forward-lunge.js"
  ],
@@ -55,6 +55,10 @@
   {
    "zh": "上身前倾太多",
    "en": "Leaning the trunk too far forward."
+  },
+  {
+   "zh": "后膝砸到地上",
+   "en": "Dropping the back knee hard onto the floor."
   }
  ],
  "cautions": [
@@ -84,7 +88,7 @@
   "mode": "reps",
   "sets": 3,
   "reps": 8,
-  "restSeconds": 45
+  "restSeconds": 60
  },
  "phases": {
   "start": {
@@ -137,6 +141,81 @@
     "最终口径：按真实做法定（2026-11-01）"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "组间休息 45 → 60 秒：一组左右各 8 次共 16 步、约 80 秒，入门下肢大动作取 STYLE 力量范围上限",
+    "剂量其余不变：3 组×每侧 8 次（左右轮流，一左一右算 1 次）",
+    "节奏核对：动画每侧 5 秒（跨步下蹲约 1.5 s、底部约 0.5 s、推回 1.3 s、站立 1.5 s），1 次（左+右）10 秒，大幅度动作 4–6 秒/侧，跟得上，未调整",
+    "commonErrors 补「后膝砸到地上」：入门弓步最常见的错误之一",
+    "新增 voiceGuide（前 2 次念相位口令，之后每次报数；第 2/4/6 次后各一句要点，第 7 次后「最后一次」）",
+    "画面对照（V4 b10）：站姿弓步、无器械、大腿前侧+臀部高亮，一致"
+   ],
+   "flags": [
+    "phaseCues 方案：前 2 次念「跨步下蹲/稳住/推地退回」，之后只报数+隔几次提醒；也可以每次都念相位，请开哥定（5 个样例统一）"
+   ]
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 10.0,
+  "repUnit": "left+right",
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "before": [
+   "p.right_first"
+  ],
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "前膝对着脚尖",
+    "en": "Front knee over your toes",
+    "from": [
+     "cue2"
+    ]
+   },
+   {
+    "afterRep": 4,
+    "role": "halfway",
+    "zh": "过半了，上身别前倾",
+    "en": "Halfway. Don't lean forward",
+    "from": [
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 6,
+    "role": "form",
+    "zh": "后膝轻轻落，别砸地",
+    "en": "Lower the back knee gently",
+    "from": [
+     "commonErrors[2]"
+    ]
+   },
+   {
+    "afterRep": 7,
+    "key": "p.last_rep"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.60"
+   ],
+   "allDone": [
+    "p.nice"
+   ]
   }
  }
 }

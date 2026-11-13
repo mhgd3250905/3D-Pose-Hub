@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "s-pigeon",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/s-pigeon.js"
  ],
@@ -88,7 +88,7 @@
  "defaultDose": {
   "mode": "time",
   "sets": 2,
-  "seconds": 45,
+  "seconds": 30,
   "restSeconds": 15
  },
  "phases": {
@@ -121,6 +121,100 @@
     "剂量 → 每侧 2 组×45 秒，休息 15 秒；口令/要点改为进入-保持-呼气放松，去掉来回/计数描述"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "剂量 每侧 2 组×45 秒 → 每侧 2 组×30 秒，组间休息 15 秒不变：入门静态拉伸常规每次 20–30 秒（STYLE §5），每侧累计 60 秒已够；45 秒×2 对入门偏长，前膝和髋在末端受力时间过久",
+    "单侧算法明确：一侧 2 组做完再换边（少进出一次鸽子式），秒数指每侧每组；组间 15 秒留在原位抬起上身放松",
+    "新增 voiceGuide（30 秒时间轴：5 秒姿势自查、14 秒过半+呼气、22 秒别压膝、27–29 秒倒数），句子取自 commonErrors[0]/[1]、cue2/3/4",
+    "文字核对：要点、常见错误、注意事项准确口语，未改",
+    "画面对照（V4 batch-23）：鸽子式、双手扶两块瑜伽砖、前侧髋下有垫，与名称/要点/器械一致；高亮只在前腿臀部（purpose 还写了后腿髋前侧，未高亮），非极端错误"
+   ],
+   "flags": [
+    "换边准备时间 App 未定义：从右侧鸽子式换到左侧要 5–10 秒，建议换边时给 10 秒准备（或用 restSeconds）",
+    "30 秒还是保留 45 秒请开哥定；若保留 45 秒，voiceGuide 需在 32 秒处再加一句",
+    "purpose 写了「后腿髋前侧」但高亮只有前腿臀部，是否补后腿髋前侧高亮（只报告，未改模型）",
+    "ai-tags 难度 3，本文件 tags.difficulty 2，两处不一致"
+   ]
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 5,
+    "role": "posture",
+    "zh": "骨盆摆正，别歪向一边",
+    "en": "Square your hips, don't tilt",
+    "from": [
+     "commonErrors[0]",
+     "cue2"
+    ]
+   },
+   {
+    "at": 14,
+    "role": "halfway",
+    "zh": "过半了，呼气再放松一点",
+    "en": "Halfway. Breathe out and relax deeper",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "at": 22,
+    "role": "posture",
+    "zh": "别硬压膝盖，有拉伸感就够",
+    "en": "Don't force the knee. A stretch is enough",
+    "from": [
+     "commonErrors[1]",
+     "cue4"
+    ]
+   },
+   {
+    "at": 27,
+    "key": "n.3"
+   },
+   {
+    "at": 28,
+    "key": "n.2"
+   },
+   {
+    "at": 29,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSetsSameSide": [
+    "p.rest",
+    "sec.15"
+   ],
+   "sideDone": [
+    "p.release",
+    "p.switch_left"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
+  },
+  "sides": {
+   "order": [
+    "right",
+    "left"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧 2 组做完再换边；每侧用同一条时间轴"
   }
  }
 }

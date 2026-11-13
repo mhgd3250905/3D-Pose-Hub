@@ -15,7 +15,7 @@ HERE = Path(__file__).resolve().parent
 REPO = HERE.parents[1]
 TEXT_DIR = REPO / 'catalog/production/v3-text'
 FORMAT = 'pose-hub-action-text@1'
-REVIEW = {'draft-ai-needs-user-review', 'ai-reviewed-r2-needs-user-review', 'user-reviewed', 'imported-reviewed'}
+REVIEW = {'draft-ai-needs-user-review', 'ai-reviewed-r2-needs-user-review', 'ai-reviewed-r3-needs-user-review', 'user-reviewed', 'imported-reviewed'}
 KINDS = {'rep_updown', 'rep_hold', 'rep_alternate', 'rep_cycle', 'hold'}
 # words a listener rarely understands on first hearing: never in spoken lines (name/primaryCue/phases)
 JARGON = ['弹震', '离心', '向心', '等长', '伸髋', '屈髋', '屈伸', '内旋', '外旋', '内收', '外展', '背屈', '跖屈', '对侧', '同侧',
@@ -82,6 +82,7 @@ def validate(t: dict, aid: str) -> list[str]:
     if not isinstance(d.get('sets'), int) or not isinstance(d.get('restSeconds'), int): e.append('defaultDose.sets/restSeconds')
     if t.get('reviewStatus') != 'draft-ai-needs-user-review':
         e += training_errors(t)
+    e += voice_guide_errors(t)
     ph = t.get('phases') or {}
     for k in ('start', 'peak', 'end'):
         bi(ph.get(k), f'phases.{k}', e, 'phase')
@@ -109,6 +110,82 @@ def training_errors(t: dict) -> list[str]:
     return e
 
 
+SHARED = REPO / 'catalog/voice-v2/script.json'
+WARN: list[str] = []
+VG_GAP, VG_LEAD, VG_TAIL, VG_MARGIN = 10.0, 3.0, 4.0, 0.3   # anti-blank gap, first-line earliest, countdown zone, line spacing (s)
+
+
+def _speak_s(v):
+    zh = len(re.sub(r'[\s，。、！？,.!?]', '', v['zh'])) / 4.0
+    en = len(v['en'].split()) / 2.5
+    return max(zh, en)
+
+
+def _from_ok(t, ref):
+    m = re.fullmatch(r'(commonErrors|cautions)\[(\d+)\]', ref)
+    if m: return int(m.group(2)) < len(t.get(m.group(1)) or [])
+    return any(c.get('id') == ref for c in t.get('cues') or [])
+
+
+def voice_guide_errors(t: dict) -> list[str]:
+    """voiceGuide (optional, STYLE.md §8): mid-set voice lines + countdown. Script only; not read by produce.py / the App yet."""
+    vg = t.get('voiceGuide')
+    if vg is None: return []
+    e, d, aid = [], t.get('defaultDose') or {}, t.get('id')
+    if vg.get('format') != 'pose-hub-voice-guide@1': e.append('voiceGuide.format')
+    if vg.get('status') != 'script-only': e.append('voiceGuide.status: script-only until audio exists')
+    want = 'hold' if d.get('mode') in ('hold', 'time') else 'reps'
+    if vg.get('mode') != want: e.append(f'voiceGuide.mode must be {want} for this dose')
+    try: vocab = set(json.loads(SHARED.read_text('utf-8'))['common'])
+    except Exception: vocab = None
+    def key_ok(k, path):
+        if k == 'n.{rep}' or vocab is None: return
+        if k not in vocab:
+            if k.startswith('sec.'): WARN.append(f'{aid}: {path} {k} not in shared vocabulary yet (needs a clip)')
+            else: e.append(f'{path}: {k} not in shared vocabulary')
+    def line_ok(x, path):
+        if 'key' in x: key_ok(x['key'], path); return 0.0
+        bi(x, path, e)
+        if not (isinstance(x.get('from'), list) and x['from']): e.append(f'{path}.from: list the cue/error/caution it comes from')
+        else:
+            for r in x['from']:
+                if not _from_ok(t, r): e.append(f'{path}.from: {r} not in this action')
+        return _speak_s(x) if isinstance(x.get('zh'), str) and isinstance(x.get('en'), str) else 0.0
+    for k, v in (vg.get('afterSet') or {}).items():
+        for kk in v: key_ok(kk, f'voiceGuide.afterSet.{k}')
+    for kk in vg.get('before') or []: key_ok(kk, 'voiceGuide.before')
+    if want == 'hold':
+        S, ev = d.get('seconds') or 0, vg.get('set') or []
+        ats = [x.get('at') for x in ev]
+        if ats != sorted(ats) or not ev: e.append('voiceGuide.set: events sorted by at'); return e
+        if [x.get('key') for x in ev[-3:]] != ['n.3', 'n.2', 'n.1'] or [x['at'] for x in ev[-3:]] != [S - 3, S - 2, S - 1]:
+            e.append('voiceGuide.set: end with n.3/n.2/n.1 at seconds-3..-1')
+        for i, x in enumerate(ev):
+            dur = line_ok(x, f'voiceGuide.set[{i}]')
+            nxt = ev[i + 1]['at'] if i + 1 < len(ev) else S
+            if 'key' not in x:
+                if not (VG_LEAD <= x['at'] <= S - VG_TAIL): e.append(f'voiceGuide.set[{i}]: line at {x["at"]} s outside {VG_LEAD}..{S - VG_TAIL}')
+                if x['at'] + dur > nxt - VG_MARGIN: e.append(f'voiceGuide.set[{i}]: ~{dur:.1f} s line overruns next event at {nxt} s')
+            if nxt - x['at'] > VG_GAP: e.append(f'voiceGuide.set[{i}]: {nxt - x["at"]} s silent gap (max {VG_GAP})')
+    else:
+        N, tr = d.get('reps') or 0, t.get('training') or {}
+        one = sum(p.get('seconds', 0) for p in tr.get('phases') or []) * (2 if tr.get('repUnit') == 'left+right' else 1)
+        R = vg.get('repSeconds')
+        if not isinstance(R, (int, float)) or abs(R - one) > 0.15: e.append(f'voiceGuide.repSeconds must equal one counted rep ({one:.1f} s)')
+        if vg.get('phaseCues') not in ('first-2-reps', 'every-rep'): e.append('voiceGuide.phaseCues: first-2-reps | every-rep')
+        if (vg.get('count') or {}).get('key') != 'n.{rep}': e.append('voiceGuide.count.key n.{rep}')
+        rem, last = vg.get('reminders') or [], 0
+        for i, x in enumerate(rem):
+            a = x.get('afterRep')
+            if not (isinstance(a, int) and last < a < N): e.append(f'voiceGuide.reminders[{i}].afterRep: increasing, 1..reps-1'); continue
+            if a - last > 3: e.append(f'voiceGuide.reminders[{i}]: {a - last} reps without a line (max 3)')
+            dur = line_ok(x, f'voiceGuide.reminders[{i}]')
+            if isinstance(R, (int, float)) and dur > R - 1.0: e.append(f'voiceGuide.reminders[{i}]: ~{dur:.1f} s line longer than one rep minus the count')
+            last = a
+        if not rem or rem[-1].get('key') != 'p.last_rep' or rem[-1].get('afterRep') != N - 1: e.append('voiceGuide.reminders: end with p.last_rep after rep reps-1')
+    return e
+
+
 def load(aid: str) -> dict:
     p = TEXT_DIR / f'{aid}.json'
     t = json.loads(p.read_text('utf-8'))
@@ -129,7 +206,8 @@ def main(argv=None):
             load(p.stem)
         except Exception as ex:
             bad += 1; print(str(ex)[:600])
-    print(json.dumps({'checked': len(files), 'failed': bad}))
+    for w in WARN: print('WARN', w)
+    print(json.dumps({'checked': len(files), 'failed': bad, 'warnings': len(WARN)}))
     return 1 if bad else 0
 
 
