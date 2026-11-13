@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "o-chair-knee-extension",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/o-chair-knee-extension-rr1.js"
  ],
@@ -10,8 +10,8 @@
   "en": "Chair-Seated Unloaded Knee Extension"
  },
  "purpose": {
-  "zh": "不加重量，练大腿前侧的控制",
-  "en": "Train control of the front of your thigh, with no added weight."
+  "zh": "不加重量，练大腿前面",
+  "en": "Builds the front of your thigh with no added weight."
  },
  "cues": [
   {
@@ -19,15 +19,15 @@
    "primary": true,
    "text": {
     "zh": "大腿贴住椅面，小腿慢慢抬起伸直",
-    "en": "Keep your thigh on the seat and slowly straighten your lower leg"
+    "en": "Thigh stays on the seat, slowly straighten your lower leg"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "坐稳固、没有轮子的椅子，另一只脚踩地。",
-    "en": "Sit on a stable chair without wheels, other foot flat on the floor."
+    "zh": "坐结实、没轮子的椅子，另一只脚踩地。",
+    "en": "Sit on a sturdy chair without wheels, other foot flat on the floor."
    }
   },
   {
@@ -35,24 +35,24 @@
    "primary": false,
    "text": {
     "zh": "伸到快直就停，膝盖别锁死。",
-    "en": "Stop just short of straight, without locking the knee."
+    "en": "Stop just short of straight. Don't lock your knee."
    }
   }
  ],
  "commonErrors": [
   {
    "zh": "甩腿或猛地锁死膝盖",
-   "en": "Kicking the leg or snapping the knee locked."
+   "en": "Kicking your leg or snapping your knee locked."
   },
   {
-   "zh": "身体往后仰",
+   "zh": "身子往后仰",
    "en": "Leaning back."
   }
  ],
  "cautions": [
   {
-   "zh": "膝盖疼时幅度小一点，还疼就停",
-   "en": "If your knee hurts, move less far, and stop if it still hurts."
+   "zh": "膝盖疼就伸少点，还疼就停",
+   "en": "If your knee hurts, don't straighten as far. Stop if it still hurts."
   }
  ],
  "tags": {
@@ -97,26 +97,22 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 1.7,
+    "seconds": 1.5,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 3.0,
+    "seconds": 1.0,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 2.1,
+    "seconds": 1.5,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 1.2
    }
   ],
   "perSide": "each-side-separately",
-  "source": "spec-timeline manual r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -125,6 +121,107 @@
     "purpose「低负荷」改口语「不加重量」；cue3 拆出「别锁死」"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 8.0 s → 4.0 s（伸 1.5 / 停 1.0 / 放 1.5）",
+    "坐着原地换腿，不加换边准备",
+    "purpose 去掉「控制」；「幅度小一点」→「伸少点」",
+    "难度 1/1 不变"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "2 组×每侧10 次，休息 30 秒",
+     "2 组×每侧10 次，休息 30 秒"
+    ],
+    "rep": [
+     "8.0 s",
+     "4.0 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：坐椅一腿伸直、大腿前面高亮（b19 第 1 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 4.0,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "别甩腿",
+    "en": "No kicking",
+    "from": [
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "膝盖别锁死",
+    "en": "Soft knee",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "afterRep": 8,
+    "role": "form",
+    "zh": "身子别往后仰",
+    "en": "Don't lean back",
+    "from": [
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 9,
+    "key": "p.last_rep"
+   }
+  ],
+  "before": [
+   "p.right_first"
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.30"
+   ],
+   "allDone": [
+    "p.nice"
+   ],
+   "sideDone": [
+    "p.switch_left"
+   ]
+  },
+  "sides": {
+   "order": [
+    "right",
+    "left"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边"
   }
  }
 }
