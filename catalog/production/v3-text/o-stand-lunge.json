@@ -1,70 +1,70 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "o-stand-lunge",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/o-stand-lunge.js"
  ],
  "name": {
-  "zh": "扶椅弓步拉伸髋前侧",
+  "zh": "扶椅弓步拉胯前",
   "en": "Chair-Supported Standing Hip Flexor Stretch"
  },
  "purpose": {
-  "zh": "拉伸髋部前侧，缓解久坐发紧",
-  "en": "Stretch the front of your hip to ease tightness from sitting."
+  "zh": "拉开胯前面，久坐发紧时松一松",
+  "en": "Stretches the front of your hip to ease tightness from sitting."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "收紧臀部，髋慢慢往前推",
-    "en": "Squeeze your glutes and ease your hips forward"
+    "zh": "夹紧屁股，胯慢慢往前推",
+    "en": "Squeeze your butt and ease your hips forward"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "前后分腿站，后脚踮起，一只手扶椅背。",
-    "en": "Stand in a split stance, back heel up, one hand on the chair."
+    "zh": "前后分腿站，后脚踮起，一手扶椅背。",
+    "en": "Split stance, back heel up, one hand on the chair."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "保持不动，慢慢呼吸，每次呼气再放松一点。",
-    "en": "Stay still, breathe slowly, and relax a little deeper each time you breathe out."
+    "zh": "就停在这儿，慢慢喘气，每次呼气再松一点。",
+    "en": "Stay right there, breathe slowly, let go a little more each breath out."
    }
   },
   {
    "id": "cue4",
    "primary": false,
    "text": {
-    "zh": "别来回颠，有拉伸感就够，别拉到疼。",
-    "en": "Do not bounce; a clear stretch is enough, never pain."
+    "zh": "别一下一下往下压，有拉的感觉就够，别拉到疼。",
+    "en": "Don't bounce. A clear stretch is enough, never pain."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "腰往前拱",
-   "en": "Arching the lower back."
+   "zh": "腰往前挺",
+   "en": "Arching your lower back."
   },
   {
    "zh": "上身往前倒",
-   "en": "Leaning the trunk forward."
+   "en": "Leaning your upper body forward."
   },
   {
-   "zh": "憋气或来回颠",
+   "zh": "憋气或一下一下往下压",
    "en": "Holding your breath or bouncing."
   }
  ],
  "cautions": [
   {
-   "zh": "腰疼时幅度小一点，还疼就停",
-   "en": "If your lower back hurts, move less far, and stop if it still hurts."
+   "zh": "腰疼就推少点，还疼就停",
+   "en": "If your lower back hurts, don't push as far. Stop if it still hurts."
   }
  ],
  "tags": {
@@ -92,16 +92,16 @@
  },
  "phases": {
   "start": {
-   "zh": "髋往前推",
+   "zh": "胯往前推",
    "en": "Hips forward"
   },
   "peak": {
-   "zh": "保持，慢慢呼气",
-   "en": "Hold and breathe out"
+   "zh": "停住，呼气",
+   "en": "Hold, breathe out"
   },
   "end": {
-   "zh": "呼气再放松",
-   "en": "Relax a bit deeper"
+   "zh": "呼气再松",
+   "en": "Let go more"
   }
  },
  "training": {
@@ -123,6 +123,112 @@
     "最终口径：按真实做法定（2026-11-01）"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "剂量 每侧 2 组×30 秒、休息 15 秒不变；原地换边，不加换边准备",
+    "名称「扶椅弓步拉伸髋前侧」→「扶椅弓步拉胯前」；「髋部前侧」→「胯前面」，「收紧臀部」→「夹紧屁股」",
+    "「别来回颠」→「别一下一下往下压」",
+    "难度 1/1 不变"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "2 组×每侧30 秒，休息 15 秒",
+     "2 组×每侧30 秒，休息 15 秒"
+    ],
+    "rep": [
+     "计时",
+     "计时"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：扶椅前后分腿、胯前高亮（b20 第 1 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 4,
+    "role": "posture",
+    "zh": "夹紧屁股",
+    "en": "Squeeze your butt",
+    "from": [
+     "cue1"
+    ]
+   },
+   {
+    "at": 12,
+    "role": "halfway",
+    "zh": "腰别往前挺",
+    "en": "Don't arch",
+    "from": [
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "at": 20,
+    "role": "form",
+    "zh": "呼气，再松一点",
+    "en": "Breathe out, let go",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "at": 27,
+    "key": "n.3"
+   },
+   {
+    "at": 28,
+    "key": "n.2"
+   },
+   {
+    "at": 29,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSetsSameSide": [
+    "p.rest",
+    "sec.15"
+   ],
+   "sideDone": [
+    "p.release",
+    "p.switch_right"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
+  },
+  "sides": {
+   "order": [
+    "left",
+    "right"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边"
   }
  }
 }

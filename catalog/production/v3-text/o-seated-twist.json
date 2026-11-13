@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "o-seated-twist",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/o-seated-twist.js"
  ],
@@ -10,15 +10,15 @@
   "en": "Seated Chair Twist"
  },
  "purpose": {
-  "zh": "转动上背和腰，缓解久坐僵硬",
-  "en": "Turn your upper back and waist to ease stiffness from sitting."
+  "zh": "转转上背和腰，久坐僵了松一松",
+  "en": "Turns your upper back and waist to ease stiffness from sitting."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "坐直，身体转向一侧，手扶椅背",
+    "zh": "坐直，身子转向一边，手扶椅背",
     "en": "Sit tall, turn to one side and hold the backrest"
    }
   },
@@ -26,24 +26,24 @@
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "另一只手扶在转向那侧的膝盖外面。",
-    "en": "Put the other hand on the outside of the knee on the side you turn to."
+    "zh": "另一只手扶在转过去那边的膝盖外面。",
+    "en": "Other hand on the outside of the knee on the side you turn to."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "保持不动，慢慢呼吸，每次呼气再放松一点。",
-    "en": "Stay still, breathe slowly, and relax a little deeper each time you breathe out."
+    "zh": "就停在这儿，慢慢喘气，每次呼气再松一点。",
+    "en": "Stay right there, breathe slowly, let go a little more each breath out."
    }
   },
   {
    "id": "cue4",
    "primary": false,
    "text": {
-    "zh": "别来回颠，有拉伸感就够，别拉到疼。",
-    "en": "Do not bounce; a clear stretch is enough, never pain."
+    "zh": "别一下一下往下压，有拉的感觉就够，别拉到疼。",
+    "en": "Don't bounce. A clear stretch is enough, never pain."
    }
   }
  ],
@@ -53,18 +53,18 @@
    "en": "Twisting with a slumped back."
   },
   {
-   "zh": "用手猛拉加深",
+   "zh": "用手猛拉往深转",
    "en": "Yanking with your hands to go further."
   },
   {
-   "zh": "憋气或来回颠",
+   "zh": "憋气或一下一下往下压",
    "en": "Holding your breath or bouncing."
   }
  ],
  "cautions": [
   {
-   "zh": "腰背疼时转得少一点，还疼就停",
-   "en": "If your back hurts, turn less, and stop if it still hurts."
+   "zh": "腰背疼就转少点，还疼就停",
+   "en": "If your back hurts, don't turn as far. Stop if it still hurts."
   }
  ],
  "tags": {
@@ -96,12 +96,12 @@
    "en": "Turn slowly"
   },
   "peak": {
-   "zh": "保持，慢慢呼气",
-   "en": "Hold and breathe out"
+   "zh": "停住，呼气",
+   "en": "Hold, breathe out"
   },
   "end": {
    "zh": "呼气再转点",
-   "en": "Breathe out, turn more"
+   "en": "Turn a bit more"
   }
  },
  "training": {
@@ -120,6 +120,113 @@
     "剂量 → 每侧 2 组×30 秒，休息 15 秒；口令/要点改为进入-保持-呼气放松，去掉来回/计数描述"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "剂量 每侧 2 组×30 秒、休息 15 秒不变；原地换边，不加换边准备",
+    "「转动上背和腰」→「转转上背和腰」",
+    "「别来回颠」→「别一下一下往下压」",
+    "难度 1/1 不变"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "2 组×每侧30 秒，休息 15 秒",
+     "2 组×每侧30 秒，休息 15 秒"
+    ],
+    "rep": [
+     "计时",
+     "计时"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：坐椅转身扶椅背、侧腰高亮（b19 第 8 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 4,
+    "role": "posture",
+    "zh": "坐直，别弓",
+    "en": "Sit tall",
+    "from": [
+     "cue1",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "at": 12,
+    "role": "halfway",
+    "zh": "别用手猛拉",
+    "en": "Don't yank",
+    "from": [
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "at": 20,
+    "role": "form",
+    "zh": "呼气，再松一点",
+    "en": "Breathe out, let go",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "at": 27,
+    "key": "n.3"
+   },
+   {
+    "at": 28,
+    "key": "n.2"
+   },
+   {
+    "at": 29,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSetsSameSide": [
+    "p.rest",
+    "sec.15"
+   ],
+   "sideDone": [
+    "p.release",
+    "p.switch_left"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
+  },
+  "sides": {
+   "order": [
+    "right",
+    "left"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边"
   }
  }
 }

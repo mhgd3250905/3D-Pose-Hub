@@ -5,7 +5,7 @@
   "status": "ai-draft",
   "source": {
     "text": "catalog/production/v3-text/o-seated-ham.json",
-    "textSha256Lf": "553314b2df8874d967dac9bdfc33c1368d1c611ed30314b6c17df31fbe95fac8",
+    "textSha256Lf": "31dcde62b13b951deb7c0a283dbe798207ed809c11a5c8c97c6cfde009b32fed",
     "spec": "drill-anim/specs/o-seated-ham.js",
     "catalogV1": "catalog/catalog.json"
   },
@@ -131,6 +131,12 @@
         ]
       },
       "reason": "拉伸类：v3 把被拉肌写在 activeMuscles，本 schema 放 stretchedMuscles。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 1,
+      "reason": "r3 动作包核对（开哥 2026-11-13）：逐个重定，与 v3 tags.difficulty 同值。"
     }
   ],
   "reviewNotes": []

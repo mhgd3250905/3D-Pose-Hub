@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "o-supported-ankle-eversion",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/o-supported-ankle-eversion-r2.js"
  ],
@@ -10,16 +10,16 @@
   "en": "Chair-Supported Foot Turn-Out"
  },
  "purpose": {
-  "zh": "不加重量，练脚踝把脚底往外翻的控制",
-  "en": "Train control of turning the sole of your foot outward, with no added weight."
+  "zh": "不加重量，练脚踝把脚底往外翻的劲",
+  "en": "Builds the strength to turn the sole of your foot outward, with no added weight."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "小腿不动，脚底慢慢向外翻",
-    "en": "Keep your shin still and slowly turn your sole outward"
+    "zh": "小腿不动，脚底慢慢往外翻",
+    "en": "Shin stays still, slowly turn your sole outward"
    }
   },
   {
@@ -27,28 +27,28 @@
    "primary": false,
    "text": {
     "zh": "一只手轻扶椅子，这只脚悬空。",
-    "en": "Rest one hand lightly on a chair and lift this foot off the floor."
+    "en": "One hand resting on a chair, this foot off the floor."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "在舒服的范围内翻到位，再慢慢回正。",
+    "zh": "翻到舒服的地方，再慢慢回正。",
     "en": "Turn as far as is comfortable, then come back slowly."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "转小腿或转髋来代替脚踝",
-   "en": "Turning the shin or hip instead of the ankle."
+   "zh": "转小腿或转胯代替脚踝",
+   "en": "Turning your shin or hip instead of your ankle."
   }
  ],
  "cautions": [
   {
-   "zh": "扶稳没有轮子的椅子，疼或站不稳时就停",
-   "en": "Use a stable chair without wheels, and stop if it hurts or you feel unsteady."
+   "zh": "扶稳没轮子的椅子，疼或站不稳就停",
+   "en": "Use a sturdy chair without wheels. Stop if it hurts or you feel wobbly."
   }
  ],
  "tags": {
@@ -93,26 +93,22 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 1.5,
+    "seconds": 1.0,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 2.0,
+    "seconds": 1.0,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 2.0,
+    "seconds": 1.5,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 2.5
    }
   ],
   "perSide": "each-side-separately",
-  "source": "spec-timeline manual r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -126,6 +122,111 @@
    "flags": [
     "tags.activeMuscles 是 calves（目标其实是小腿外侧腓骨肌，词表里没有），请定是否保留"
    ]
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 8.0 s → 3.5 s（翻 1.0 / 停 1.0 / 回 1.5），小幅动作",
+    "站着原地换脚，不加换边准备",
+    "purpose 去掉「控制」；「转髋」→「转胯」",
+    "难度 1/1 不变"
+   ],
+   "flags": [
+    "r2 flag 沿用：tags.activeMuscles 写 calves（目标是小腿外侧，词表没有），是否保留请定",
+    "预览帧几乎看不到高亮，请看视频确认"
+   ],
+   "audit": {
+    "dose": [
+     "2 组×每侧10 次，休息 30 秒",
+     "2 组×每侧10 次，休息 30 秒"
+    ],
+    "rep": [
+     "8.0 s",
+     "3.5 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "动作一致：扶椅单脚悬空翻脚；预览帧几乎看不到高亮（b20 第 4 行，非极端）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 3.5,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "小腿别转",
+    "en": "Shin still",
+    "from": [
+     "cue1",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "慢慢回正",
+    "en": "Come back slowly",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "afterRep": 8,
+    "role": "form",
+    "zh": "扶稳椅子",
+    "en": "Hold the chair",
+    "from": [
+     "cue2"
+    ]
+   },
+   {
+    "afterRep": 9,
+    "key": "p.last_rep"
+   }
+  ],
+  "before": [
+   "p.right_first"
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.30"
+   ],
+   "allDone": [
+    "p.nice"
+   ],
+   "sideDone": [
+    "p.switch_left"
+   ]
+  },
+  "sides": {
+   "order": [
+    "right",
+    "left"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边"
   }
  }
 }
