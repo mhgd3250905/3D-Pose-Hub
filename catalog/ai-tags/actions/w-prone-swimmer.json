@@ -5,7 +5,7 @@
   "status": "ai-draft",
   "source": {
     "text": "catalog/production/v3-text/w-prone-swimmer.json",
-    "textSha256Lf": "4c9c6ca9ec509a0cb4d41e91b90609ef949bb90445d7c6866d751e2fec26a0c4",
+    "textSha256Lf": "6156ec4d134ee8c38b40a16178ca7e6f69f4002cd07c060d94448c6d65089eba",
     "spec": "drill-anim/specs/w-prone-swimmer-r2.js",
     "catalogV1": "catalog/catalog.json"
   },
@@ -150,6 +150,12 @@
         ]
       },
       "reason": "v3 粗粒度 id 按实际做法拆到 taxonomy id（core→abs/obliques，glutes→glute-max 或 hip-abductors，upper-back→scapular，lower-back→erectors），只稳定不推动的归稳定肌。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 2,
+      "chosen": 2,
+      "reason": "r3 动作包核对（开哥 2026-11-13）：逐个重定，与 v3 tags.difficulty 同值。"
     }
   ],
   "reviewNotes": []

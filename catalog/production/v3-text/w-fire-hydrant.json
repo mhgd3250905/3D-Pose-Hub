@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "w-fire-hydrant",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/w-fire-hydrant.js"
  ],
@@ -10,49 +10,49 @@
   "en": "Quadruped Fire Hydrant"
  },
  "purpose": {
-  "zh": "练臀部外侧，让髋更稳",
-  "en": "Strengthen the side of your hips to keep them steady."
+  "zh": "练屁股侧面，让胯更稳",
+  "en": "Builds the sides of your butt to keep your hips steady."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "膝盖保持弯曲，腿往侧面抬起",
-    "en": "Keep your knee bent and lift the leg out to the side"
+    "zh": "膝盖一直弯着，腿往旁边抬起来",
+    "en": "Knee stays bent, lift your leg out to the side"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "跪撑，手在肩膀下面，膝盖在髋下面。",
-    "en": "Start on hands and knees, hands under shoulders, knees under hips."
+    "zh": "跪撑，手在肩膀下面，膝盖在胯下面。",
+    "en": "Hands and knees, hands under shoulders, knees under hips."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "身体不动，停一下再慢慢放下。",
-    "en": "Keep your body still, pause, then lower slowly."
+    "zh": "身子别动，停一下再慢慢放下。",
+    "en": "Body stays still. Pause, then lower slowly."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "身体往另一边歪",
-   "en": "Leaning your body to the other side."
+   "zh": "身子往另一边歪",
+   "en": "Leaning your body the other way."
   },
   {
    "zh": "塌腰",
-   "en": "Letting your lower back sag."
+   "en": "Lower back sagging."
   }
  ],
  "cautions": [
   {
-   "zh": "髋疼时抬低一点，还疼就停",
-   "en": "If your hip hurts, lift lower, and stop if it still hurts."
+   "zh": "胯疼就抬低点，还疼就停",
+   "en": "If your hip hurts, don't lift as high. Stop if it still hurts."
   }
  ],
  "tags": {
@@ -80,7 +80,7 @@
  },
  "phases": {
   "start": {
-   "zh": "往侧面抬",
+   "zh": "往旁边抬",
    "en": "Lift out"
   },
   "peak": {
@@ -88,7 +88,7 @@
    "en": "Hold"
   },
   "end": {
-   "zh": "慢慢放下",
+   "zh": "慢慢放",
    "en": "Lower slowly"
   }
  },
@@ -108,16 +108,12 @@
    },
    {
     "id": "back",
-    "seconds": 1.2,
+    "seconds": 1.5,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 0.8
    }
   ],
   "perSide": "each-side-separately",
-  "source": "spec-timeline manual r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -126,6 +122,110 @@
     "purpose 去掉「激活」；cautions 改短句"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 4.0 s → 3.5 s（抬 1.0 / 停 1.0 / 放 1.5）",
+    "跪撑原地换腿，不加换边准备",
+    "「臀部外侧」→「屁股侧面」，「髋」→「胯」",
+    "难度 1/1 不变"
+   ],
+   "flags": [
+    "V4 预览没有这一批（batch-25），画面待补看"
+   ],
+   "audit": {
+    "dose": [
+     "3 组×每侧12 次，休息 30 秒",
+     "3 组×每侧12 次，休息 30 秒"
+    ],
+    "rep": [
+     "4.0 s",
+     "3.5 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "待 V4 补看（batch-25 预览未出）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 3.5,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "身子别歪",
+    "en": "Body still",
+    "from": [
+     "cue3",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "腰别塌",
+    "en": "Don't sag",
+    "from": [
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 8,
+    "role": "form",
+    "zh": "慢慢放下",
+    "en": "Lower slowly",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "afterRep": 11,
+    "key": "p.last_rep"
+   }
+  ],
+  "before": [
+   "p.right_first"
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.30"
+   ],
+   "allDone": [
+    "p.nice"
+   ],
+   "sideDone": [
+    "p.switch_left"
+   ]
+  },
+  "sides": {
+   "order": [
+    "right",
+    "left"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边"
   }
  }
 }
