@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "rotator-cuff-C",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/data/drills.json",
   "drill-anim/specs/rotator-cuff-C-r2.js"
@@ -11,23 +11,23 @@
   "en": "Cable 90/90 Shoulder Turn"
  },
  "purpose": {
-  "zh": "练手臂抬高时肩膀的控制",
-  "en": "Train shoulder control with your arm raised."
+  "zh": "手臂抬高时练肩膀里面的劲",
+  "en": "Builds the deep shoulder muscles with your arm raised."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "大臂抬平不动，只把前臂往上转到竖直",
-    "en": "Keep your upper arm level and turn only your forearm up"
+    "zh": "大臂抬平不动，只把小臂往上转到竖直",
+    "en": "Upper arm level and still, turn only your forearm up"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "大臂和肩一样高，手肘弯成直角。",
+    "zh": "大臂跟肩膀一样高，手肘弯成直角。",
     "en": "Upper arm at shoulder height, elbow at a right angle."
    }
   },
@@ -35,15 +35,15 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "肩膀往下沉，身体别动，到顶稍停再慢慢转回。",
-    "en": "Keep your shoulder down and body still; pause at the top, then turn back slowly."
+    "zh": "肩膀往下放，身子别动，到顶稍停再慢慢转回。",
+    "en": "Shoulder down, body still. Pause at the top, then turn back slowly."
    }
   }
  ],
  "commonErrors": [
   {
    "zh": "重量太重，靠耸肩或后仰拉上去",
-   "en": "Using too much weight and shrugging or leaning back to pull it up."
+   "en": "Using too much weight and shrugging or leaning back to get it up."
   }
  ],
  "cautions": [
@@ -52,7 +52,7 @@
    "en": "Use a very light weight."
   },
   {
-   "zh": "肩膀前面疼时马上停",
+   "zh": "肩膀前面疼马上停",
    "en": "Stop right away if the front of your shoulder hurts."
   }
  ],
@@ -94,31 +94,27 @@
   }
  },
  "training": {
-  "kind": "rep_hold",
+  "kind": "rep_updown",
   "leadSeconds": 1,
   "phases": [
    {
     "id": "go",
-    "seconds": 1.2,
+    "seconds": 1.0,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 0.8,
+    "seconds": 0.5,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 1.2,
+    "seconds": 2.0,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 0.8
    }
   ],
   "perSide": "each-side-separately",
-  "source": "spec-timeline manual r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -133,6 +129,110 @@
    "flags": [
     "顶点停 0.8 s 恰在 rep_hold 阈值上"
    ]
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 4.0 s → 3.5 s（转 1.0 / 稍停 0.5 / 慢回 2.0）；顶点 < 0.8 s，kind rep_hold → rep_updown，r2「恰在阈值」flag 结束",
+    "站着转身换手，不加换边准备",
+    "purpose 去掉「控制」；「前臂」→「小臂」",
+    "难度 2/2 不变"
+   ],
+   "flags": [
+    "预览帧几乎看不到肩膀高亮，请看视频确认"
+   ],
+   "audit": {
+    "dose": [
+     "3 组×每侧10 次，休息 60 秒",
+     "3 组×每侧10 次，休息 60 秒"
+    ],
+    "rep": [
+     "4.0 s",
+     "3.5 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 2,
+      "ai": 2
+     },
+     2
+    ],
+    "voice": "口吻改写",
+    "frame": "动作一致：站姿绳索、大臂抬平小臂朝上；预览帧几乎看不到高亮（b22 第 4 行，非极端）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 3.5,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "大臂别动",
+    "en": "Upper arm still",
+    "from": [
+     "cue1"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "肩膀往下放",
+    "en": "Shoulder down",
+    "from": [
+     "cue3",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 8,
+    "role": "form",
+    "zh": "慢慢转回",
+    "en": "Turn back slowly",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "afterRep": 9,
+    "key": "p.last_rep"
+   }
+  ],
+  "before": [
+   "p.right_first"
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.60"
+   ],
+   "allDone": [
+    "p.nice"
+   ],
+   "sideDone": [
+    "p.switch_left"
+   ]
+  },
+  "sides": {
+   "order": [
+    "right",
+    "left"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边"
   }
  }
 }

@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "quadriceps-A",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/data/drills.json",
   "drill-anim/specs/quadriceps-A.js"
@@ -11,49 +11,49 @@
   "en": "Kneeling Lean-Back"
  },
  "purpose": {
-  "zh": "在拉长的位置加强大腿前侧",
-  "en": "Strengthen the front of your thighs while they are stretched."
+  "zh": "大腿前面拉长时练它的劲",
+  "en": "Builds the fronts of your thighs while they are stretched."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "膝到肩一条直线，往后倒到能控制的程度",
-    "en": "Keep knees to shoulders in one line and lean back only as far as you control"
+    "zh": "膝盖到肩膀一条线，往后倒到还能回来的程度",
+    "en": "Knees to shoulders in one line, lean back only as far as you can come back"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "跪直夹紧臀部，双手交叉放在胸前。",
-    "en": "Kneel tall, squeeze your glutes and cross your arms on your chest."
+    "zh": "跪直夹紧屁股，两手交叉放在胸前。",
+    "en": "Kneel tall, squeeze your butt, arms crossed on your chest."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "髋部别弯，整个人一起回正。",
-    "en": "Do not bend at the hips; come back up in one piece."
+    "zh": "胯别弯，整个人一起回正。",
+    "en": "Don't bend at the hips. Come back up in one piece."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "弯髋往后坐",
+   "zh": "弯胯往后坐",
    "en": "Bending at the hips and sitting back."
   },
   {
-   "zh": "倒得太深回不来",
-   "en": "Leaning back too far to come back up."
+   "zh": "倒太深回不来",
+   "en": "Leaning back so far you can't come back up."
   }
  ],
  "cautions": [
   {
-   "zh": "膝前不舒服时少倒一点，膝下加垫",
-   "en": "If the front of your knee feels uncomfortable, lean back less and pad under your knees."
+   "zh": "膝盖前面不舒服就少倒点，膝盖下面加垫",
+   "en": "If the front of your knee feels off, don't lean as far, and pad under your knees."
   }
  ],
  "tags": {
@@ -70,7 +70,7 @@
    "mat"
   ],
   "position": "kneeling",
-  "difficulty": 2
+  "difficulty": 3
  },
  "unilateral": false,
  "defaultDose": {
@@ -94,30 +94,26 @@
   }
  },
  "training": {
-  "kind": "rep_hold",
+  "kind": "rep_updown",
   "leadSeconds": 1,
   "phases": [
    {
     "id": "go",
-    "seconds": 1.3,
+    "seconds": 2.0,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 0.8,
+    "seconds": 0.5,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 1.2,
+    "seconds": 1.5,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 0.7
    }
   ],
-  "source": "spec-timeline manual r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -130,6 +126,74 @@
    ],
    "flags": [
     "顶点停 0.8 s 恰在 rep_hold 阈值上"
+   ]
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 4.0 s → 4.0 s（慢倒 2.0 / 停 0.5 / 回 1.5）；顶点 < 0.8 s，kind rep_hold → rep_updown，r2「恰在阈值」flag 结束",
+    "难度 v3 2 / ai-tags 3 → 统一 3",
+    "「在拉长的位置加强大腿前侧」→「大腿前面拉长时练它的劲」；「能控制的程度」→「还能回来的程度」；「髋部」→「胯」"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "3 组×6 次，休息 60 秒",
+     "3 组×6 次，休息 60 秒"
+    ],
+    "rep": [
+     "4.0 s",
+     "4.0 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 2,
+      "ai": 3
+     },
+     3
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：跪姿上身往后倒、大腿前面高亮（b21 第 9 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 4.0,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "halfway",
+    "zh": "膝盖到肩一条线",
+    "en": "Knees to shoulders in line",
+    "from": [
+     "cue1"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "key": "p.last_rep"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.60"
+   ],
+   "allDone": [
+    "p.nice"
    ]
   }
  }
