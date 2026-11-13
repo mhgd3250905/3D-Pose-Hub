@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-standing-wrist-deviation",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-standing-wrist-deviation.js"
  ],
@@ -10,15 +10,15 @@
   "en": "Standing Wrist Side Tilt"
  },
  "purpose": {
-  "zh": "活动手腕，练习手腕往两边摆的控制",
-  "en": "Loosen your wrist and control tilting it side to side."
+  "zh": "活动手腕，往两边摆更灵活",
+  "en": "Loosens your wrist so it tilts side to side easily."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "掌心朝下，手腕先往拇指侧摆，再往小指侧摆",
+    "zh": "掌心朝下，手腕先往大拇指那边摆，再往小指那边摆",
     "en": "Palm down, tilt your hand to the thumb side, then the pinky side"
    }
   },
@@ -26,33 +26,33 @@
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "手肘弯着不动，前臂不转。",
-    "en": "Keep your elbow bent and still and your forearm from turning."
+    "zh": "手肘弯着别动，小臂别转。",
+    "en": "Elbow bent and still. Don't turn your forearm."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "摆到一侧算 1 次，慢而轻，不要硬掰。",
-    "en": "Each tilt to one side counts as one. Move slowly and gently."
+    "zh": "摆到一边算 1 下，慢慢摆，别硬掰。",
+    "en": "Each tilt to one side counts as one. Go slow, no forcing."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "前臂跟着转",
-   "en": "Turning the forearm."
+   "zh": "小臂跟着转",
+   "en": "Forearm turning."
   },
   {
-   "zh": "整条手臂跟着晃",
-   "en": "Swinging the whole arm."
+   "zh": "整条胳膊跟着晃",
+   "en": "Whole arm swinging."
   }
  ],
  "cautions": [
   {
-   "zh": "出现疼痛时减小幅度，仍痛就停止",
-   "en": "If you feel pain, reduce the range, and stop if it continues."
+   "zh": "疼就摆小点，还疼就停",
+   "en": "If it hurts, don't tilt as far. Stop if it still hurts."
   }
  ],
  "tags": {
@@ -88,31 +88,27 @@
   }
  },
  "training": {
-  "kind": "rep_hold",
+  "kind": "rep_updown",
   "leadSeconds": 1,
   "phases": [
    {
     "id": "go",
-    "seconds": 0.8,
+    "seconds": 1.0,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 1.6,
+    "seconds": 0.5,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 0.8,
+    "seconds": 1.0,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 0.8
    }
   ],
   "perSide": "each-side-separately",
-  "source": "spec-pulse-track r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -124,6 +120,108 @@
     "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 4.0 s → 2.5 s（摆 1.0 / 停 0.5 / 回 1.0），小幅活动；顶点 < 0.8 s，kind rep_hold → rep_updown",
+    "站着原地换手，不加换边准备",
+    "purpose「练习手腕往两边摆的控制」→「往两边摆更灵活」；「拇指侧/小指侧」→「大拇指那边/小指那边」；注意事项改短句",
+    "难度 1/1 不变"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "2 组×每侧10 次，休息 20 秒",
+     "2 组×每侧10 次，休息 20 秒"
+    ],
+    "rep": [
+     "4.0 s",
+     "2.5 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：站姿屈肘、手腕往两边摆、小臂高亮（b13 第 7 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 2.5,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "小臂别转",
+    "en": "Forearm still",
+    "from": [
+     "cue2",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "胳膊别晃",
+    "en": "Arm stays still",
+    "from": [
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 8,
+    "role": "form",
+    "zh": "慢慢摆，别硬掰",
+    "en": "Slow, no forcing",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "afterRep": 9,
+    "key": "p.last_rep"
+   }
+  ],
+  "before": [
+   "p.right_first"
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.20"
+   ],
+   "allDone": [
+    "p.nice"
+   ],
+   "sideDone": [
+    "p.switch_left"
+   ]
+  },
+  "sides": {
+   "order": [
+    "right",
+    "left"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边"
   }
  }
 }

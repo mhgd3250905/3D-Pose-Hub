@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-straight-arm-hang-native",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-straight-arm-hang-native.js",
   "drill-anim/specs/h-fixed-bar-vertical-pull-rr7.js"
@@ -11,53 +11,53 @@
   "en": "Straight-Arm Bar Hang"
  },
  "purpose": {
-  "zh": "练握力，放松拉长背部两侧",
-  "en": "Build grip strength and lengthen the sides of your back."
+  "zh": "练手的握力，顺便拉开腋下和背两边",
+  "en": "Builds your grip and stretches your armpits and the sides of your back."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "双手握杠，手臂伸直，身体自然挂着",
-    "en": "Grip the bar with straight arms and let your body hang"
+    "zh": "两手握杠，手臂伸直，身子自然挂着",
+    "en": "Grip the bar, arms straight, let your body hang"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "身体保持不动，不要晃。",
-    "en": "Keep your body still without swinging."
+    "zh": "身子别晃。",
+    "en": "Don't swing."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "快握不住前先踩稳再松手。",
-    "en": "Step down safely before your grip gives out."
+    "zh": "快握不住前，先踩稳再松手。",
+    "en": "Before your grip gives out, get your feet down, then let go."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "身体前后摆动",
-   "en": "Swinging the body."
+   "zh": "身子前后晃",
+   "en": "Swinging back and forth."
   },
   {
-   "zh": "直接松手掉下",
+   "zh": "直接松手掉下来",
    "en": "Letting go and dropping."
   }
  ],
  "cautions": [
   {
-   "zh": "肩膀疼时缩短时间，或脚踩地分担体重",
+   "zh": "肩膀疼就少挂几秒，或者脚踩地分担点体重",
    "en": "If your shoulders hurt, hang for less time or keep your feet on the floor to take some weight."
   },
   {
-   "zh": "单杠不牢或下方没有落脚处时不要做",
-   "en": "Do not hang if the bar is not secure or there is nowhere to step down."
+   "zh": "杠子不牢、底下没地方踩就别做",
+   "en": "Don't hang if the bar isn't solid or there's nowhere to step down."
   }
  ],
  "tags": {
@@ -88,12 +88,12 @@
    "en": "Grip and hang"
   },
   "peak": {
-   "zh": "保持住",
-   "en": "Hold"
+   "zh": "挂住",
+   "en": "Hang on"
   },
   "end": {
-   "zh": "踩稳松手",
-   "en": "Step down"
+   "zh": "别憋气",
+   "en": "Keep breathing"
   }
  },
  "training": {
@@ -109,6 +109,93 @@
     "cautions 改成适用悬垂的「X 时 Y」（原「缩小幅度」不适用）"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "剂量 3 组×20 秒、休息 60 秒不变",
+    "相位口令「踩稳松手」→「别憋气」（计时类不写回来）",
+    "「背部两侧」→「腋下和背两边」",
+    "难度 2/2 不变"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "3 组×20 秒，休息 60 秒",
+     "3 组×20 秒，休息 60 秒"
+    ],
+    "rep": [
+     "计时",
+     "计时"
+    ],
+    "difficulty": [
+     {
+      "v3": 2,
+      "ai": 2
+     },
+     2
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：单杠直臂悬挂、小臂/大臂高亮（b13 第 10 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 4,
+    "role": "posture",
+    "zh": "身子别晃",
+    "en": "No swinging",
+    "from": [
+     "cue2",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "at": 11,
+    "role": "halfway",
+    "zh": "快握不住就先踩稳",
+    "en": "Feet down before your grip goes",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "at": 17,
+    "key": "n.3"
+   },
+   {
+    "at": 18,
+    "key": "n.2"
+   },
+   {
+    "at": 19,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.release",
+    "p.rest",
+    "sec.60"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
   }
  }
 }

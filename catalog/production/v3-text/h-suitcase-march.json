@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-suitcase-march",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-suitcase-march.js"
  ],
@@ -10,56 +10,56 @@
   "en": "Single-Arm Suitcase March"
  },
  "purpose": {
-  "zh": "练身体侧面和臀部，单手提重物走路时身体更稳",
-  "en": "Build the sides of your trunk and hips so you stay steady carrying weight in one hand."
+  "zh": "练侧腰和屁股，单手拎东西走路身子更稳",
+  "en": "Builds the sides of your waist and your butt so you stay steady walking with weight in one hand."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "一手提哑铃，两腿轮流抬膝，骨盆别歪",
-    "en": "Hold a dumbbell in one hand and march without tipping your hips"
+    "zh": "一手提哑铃，两腿轮流抬膝，胯别歪",
+    "en": "Dumbbell in one hand, march in place, don't let your hips tip"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "上身挺直，不往一边歪。",
-    "en": "Keep your upper body tall without leaning."
+    "zh": "上身挺直，别往一边歪。",
+    "en": "Stand tall, don't lean to one side."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "膝盖不用抬太高，先把重心移到支撑脚再抬。",
-    "en": "Lift your knee only a little, after shifting onto the standing foot."
+    "zh": "膝盖不用抬太高，先把重心挪到站着那条腿再抬。",
+    "en": "Knee only a little high. Shift onto your standing leg first, then lift."
    }
   },
   {
    "id": "cue4",
    "primary": false,
    "text": {
-    "zh": "两边各抬一次算 1 次，下一组换手提。",
-    "en": "One lift on each side counts as one rep. Switch hands next set."
+    "zh": "两边各抬一次算 1 下，下一组换手提。",
+    "en": "One lift each side counts as one. Switch hands next set."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "身体往哑铃一侧歪",
+   "zh": "身子往哑铃那边歪",
    "en": "Leaning toward the weight."
   },
   {
-   "zh": "抬腿时骨盆一边往下掉",
-   "en": "Letting one hip drop as you lift."
+   "zh": "抬腿时一边胯往下掉",
+   "en": "One hip dropping as you lift."
   }
  ],
  "cautions": [
   {
-   "zh": "腰或肩膀疼时停止，换轻一点的哑铃",
+   "zh": "腰或肩膀疼就停，换个轻点的哑铃",
    "en": "If your back or shoulder hurts, stop and use a lighter dumbbell."
   }
  ],
@@ -108,27 +108,23 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 0.4,
+    "seconds": 1.0,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 1,
+    "seconds": 0.5,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 0.5,
+    "seconds": 1.0,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 2.1
    }
   ],
   "perSide": "alternate",
   "repUnit": "left+right",
-  "source": "spec-pulse-track r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -141,6 +137,97 @@
     "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一侧一下 4.0 s → 2.5 s（抬 1.0 / 停 0.5 / 放 1.0），一左一右 5 s 计 1 下",
+    "「骨盆别歪」→「胯别歪」，「骨盆一边往下掉」→「一边胯往下掉」，「重心移到支撑脚」→「挪到站着那条腿」",
+    "难度 2/2 不变"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "3 组×每侧10 次，休息 30 秒",
+     "3 组×每侧10 次，休息 30 秒"
+    ],
+    "rep": [
+     "4.0 s/侧（一左一右 8.0 s）",
+     "2.5 s/侧（一左一右 5.0 s）"
+    ],
+    "difficulty": [
+     {
+      "v3": 2,
+      "ai": 2
+     },
+     2
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：单手提哑铃原地踏步、侧腰高亮（b14 第 2 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 5.0,
+  "repUnit": "left+right",
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "胯别歪",
+    "en": "Hips level",
+    "from": [
+     "cue1",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "身子别往哑铃那边歪",
+    "en": "Don't lean toward the weight",
+    "from": [
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 8,
+    "role": "form",
+    "zh": "先站稳再抬",
+    "en": "Shift first, then lift",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "afterRep": 9,
+    "key": "p.last_rep"
+   }
+  ],
+  "before": [
+   "p.right_first"
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.30"
+   ],
+   "allDone": [
+    "p.nice"
+   ]
   }
  }
 }

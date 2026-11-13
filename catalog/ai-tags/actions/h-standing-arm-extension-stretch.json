@@ -5,7 +5,7 @@
   "status": "ai-draft",
   "source": {
     "text": "catalog/production/v3-text/h-standing-arm-extension-stretch.json",
-    "textSha256Lf": "642f02dc19276ee7465bb08bb7f315f0e7e2f7150066e47cf1dfd86ad67f01da",
+    "textSha256Lf": "c0c6902b2f0e7fcd2aa4b0482f5737b91d1dfb18c40ec33e990ac5deb4ea4b38",
     "spec": "drill-anim/specs/h-standing-arm-extension-stretch-r5.js",
     "catalogV1": null
   },
@@ -127,6 +127,12 @@
         ]
       },
       "reason": "拉伸类：v3 activeMuscles 是被拉肌，改放 stretchedMuscles。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 1,
+      "reason": "r3 动作包核对（开哥 2026-11-13）：逐个重定，与 v3 tags.difficulty 同值。"
     }
   ],
   "reviewNotes": []
