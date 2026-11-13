@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "serratus-C",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/data/drills.json",
   "drill-anim/specs/serratus-C-r2.js"
@@ -11,8 +11,8 @@
   "en": "Ring Push-Up Plus"
  },
  "purpose": {
-  "zh": "在晃动的吊环上练胸、手臂和肩胛骨的稳定",
-  "en": "Build your chest, arms and shoulder-blade control on unsteady rings."
+  "zh": "在晃的吊环上练胸、手臂和肩胛骨",
+  "en": "Builds your chest, arms and shoulder blades on wobbly rings."
  },
  "cues": [
   {
@@ -27,37 +27,37 @@
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "吊环挂低，离地十几厘米，环贴在身体两侧。",
-    "en": "Hang the rings low, about a hand span off the floor, close to your sides."
+    "zh": "吊环挂低，离地十几厘米，环贴在身子两边。",
+    "en": "Rings hung low, about a hand span off the floor, close to your sides."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "身体一条直线，慢慢下去。",
-    "en": "Keep your body in one line and lower slowly."
+    "zh": "身子一条直线，慢慢下去。",
+    "en": "Body in one line, lower slowly."
    }
   }
  ],
  "commonErrors": [
   {
    "zh": "吊环往两边散开",
-   "en": "Letting the rings drift out to the sides."
+   "en": "Rings drifting out to the sides."
   },
   {
    "zh": "塌腰",
-   "en": "Letting your hips sag."
+   "en": "Hips sagging."
   }
  ],
  "cautions": [
   {
-   "zh": "肩膀前面夹着疼时，下浅一点或换简单版",
-   "en": "If the front of your shoulder pinches, go less deep or use an easier version."
+   "zh": "肩膀前面夹着疼就下浅点，或者换成地上做",
+   "en": "If the front of your shoulder pinches, don't go as low, or do them on the floor."
   },
   {
-   "zh": "手腕刺痛或发麻时马上停",
-   "en": "Stop right away if your wrists feel sharp pain or numbness."
+   "zh": "手腕刺疼或发麻马上停",
+   "en": "Stop right away if your wrists get sharp pain or go numb."
   }
  ],
  "tags": {
@@ -103,24 +103,21 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 1.2,
+    "seconds": 2.0,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 0.2
+    "seconds": 0.5,
+    "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 1.5,
+    "seconds": 2.0,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 1.1
    }
   ],
-  "source": "spec-timeline manual r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -133,6 +130,77 @@
    ],
    "flags": [
     "批表取的是 scap 推背轨（go 0.4/hold 0.7），与俯卧撑整体节奏不符，按 spec 手算；推背后 0.6 s 停顿落在 rest 段、不念口令"
+   ]
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 4.0 s → 4.5 s（慢下 2.0 / 停 0.5 / 推起再推背 2.0）；r2「批表取推背轨」flag 与节奏脱钩",
+    "剂量 3 组×6 次、休息 90 秒不变（共用词已补 sec.90）",
+    "难度 v3 3 / ai-tags 4 → 统一 3",
+    "purpose 去掉「稳定」；「换简单版」→「换成地上做」"
+   ],
+   "flags": [
+    "预览帧看不到胸口/肩胛高亮，请看视频确认"
+   ],
+   "audit": {
+    "dose": [
+     "3 组×6 次，休息 90 秒",
+     "3 组×6 次，休息 90 秒"
+    ],
+    "rep": [
+     "4.0 s",
+     "4.5 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 3,
+      "ai": 4
+     },
+     3
+    ],
+    "voice": "口吻改写",
+    "frame": "动作一致：吊环低位俯卧撑；预览帧看不到高亮（batch-23 第 7 行，非极端）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 4.5,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "halfway",
+    "zh": "吊环别散开",
+    "en": "Rings stay in",
+    "from": [
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "key": "p.last_rep"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.90"
+   ],
+   "allDone": [
+    "p.nice"
    ]
   }
  }
