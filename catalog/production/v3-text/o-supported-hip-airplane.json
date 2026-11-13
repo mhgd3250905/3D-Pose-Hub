@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "o-supported-hip-airplane",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/o-supported-hip-airplane.js"
  ],
@@ -10,15 +10,15 @@
   "en": "Chair-Supported Hip Airplane"
  },
  "purpose": {
-  "zh": "练单腿站时髋部的转动控制",
-  "en": "Train hip control for turning while standing on one leg."
+  "zh": "单腿站着练胯转开转回，胯更灵活有劲",
+  "en": "Standing on one leg, turns your hips open and back to make them more mobile and strong."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "骨盆和上身一起，慢慢转开",
+    "zh": "胯和上身一起，慢慢转开",
     "en": "Turn your hips and chest together, slowly opening up"
    }
   },
@@ -27,32 +27,32 @@
    "primary": false,
    "text": {
     "zh": "单腿站稳，膝盖微弯，一只手轻扶椅子。",
-    "en": "Stand on one leg, knee soft, one hand lightly on the chair."
+    "en": "Stand on one leg, knee soft, one hand resting on the chair."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "小幅度转开再转回，腰别单独扭。",
-    "en": "Open a little, then turn back, without twisting at the waist."
+    "zh": "转开一点再转回来，腰别自己扭。",
+    "en": "Open a little, then turn back. Don't twist at the waist."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "只扭腰，髋没转",
-   "en": "Twisting the waist instead of turning at the hip."
+   "zh": "只扭腰，胯没转",
+   "en": "Twisting your waist instead of turning at the hip."
   },
   {
-   "zh": "支撑腿膝盖往里扣",
-   "en": "Letting the standing knee cave in."
+   "zh": "站着那条腿膝盖往里倒",
+   "en": "Standing knee caving in."
   }
  ],
  "cautions": [
   {
-   "zh": "扶稳没有轮子的椅子，疼或站不稳时就停",
-   "en": "Use a stable chair without wheels, and stop if it hurts or you feel unsteady."
+   "zh": "用不带轮子的结实椅子，疼或站不稳就停",
+   "en": "Use a sturdy chair without wheels. Stop if it hurts or you feel wobbly."
   }
  ],
  "tags": {
@@ -99,26 +99,22 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 1.5,
+    "seconds": 2.0,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 1.5,
+    "seconds": 1.0,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 2.5,
+    "seconds": 2.0,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 2.5
    }
   ],
   "perSide": "each-side-separately",
-  "source": "spec-timeline manual r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -127,6 +123,88 @@
     "主口令去「绕支撑髋」；口令「回正」→「慢慢转回」"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 8.0 s → 5.0 s（转开 2.0 / 停 1.0 / 转回 2.0），单腿大范围慢做",
+    "站着原地换边，不加换边准备",
+    "purpose「练单腿站时髋部的转动控制」→「练胯转开转回」；「骨盆」→「胯」",
+    "难度 2/2 不变"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "2 组×每侧6 次，休息 30 秒",
+     "2 组×每侧6 次，休息 30 秒"
+    ],
+    "rep": [
+     "8.0 s",
+     "5.0 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 2,
+      "ai": 2
+     },
+     2
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：扶椅单腿前倾、后腿伸直、屁股/胯高亮（b20 第 7 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 5.0,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "halfway",
+    "zh": "胯跟上身一起转",
+    "en": "Hips and chest together",
+    "from": [
+     "cue1",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "key": "p.last_rep"
+   }
+  ],
+  "before": [],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.30"
+   ],
+   "allDone": [
+    "p.nice"
+   ],
+   "sideDone": [
+    "p.switch_right"
+   ]
+  },
+  "sides": {
+   "order": [
+    "left",
+    "right"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边"
   }
  }
 }
