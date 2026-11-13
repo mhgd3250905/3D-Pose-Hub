@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "g-cable-hip-extension",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/g-cable-hip-extension.js"
  ],
@@ -10,16 +10,16 @@
   "en": "Low Cable Hip Extension"
  },
  "purpose": {
-  "zh": "练臀部，让你把腿往后推得更有力",
-  "en": "Build your glutes for a stronger backward leg drive."
+  "zh": "练屁股，让腿往后蹬更有劲",
+  "en": "Builds your butt for a stronger push back with your leg."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "用臀部把腿往后推，上身不动",
-    "en": "Push your leg back with your glutes and keep your trunk still"
+    "zh": "用屁股把腿往后推，上身不动",
+    "en": "Push your leg back with your butt, upper body still"
    }
   },
   {
@@ -27,28 +27,40 @@
    "primary": false,
    "text": {
     "zh": "一只手扶稳椅子，支撑脚踩实。",
-    "en": "Hold a stable chair with one hand and keep the standing foot planted."
+    "en": "One hand on a sturdy chair, standing foot planted."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "腰别往后仰，慢慢放回。",
-    "en": "Do not arch your lower back, and return slowly."
+    "zh": "腰别往后仰，慢慢放回来。",
+    "en": "Don't arch your lower back. Bring it back slowly."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "一边做完，绑带换到另一只脚，转过身再做。",
+    "en": "When one side is done, move the strap to the other ankle and turn around."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "腰往后仰代替臀部发力",
-   "en": "Arching the lower back instead of using your glutes."
+   "zh": "腰往后仰，不是屁股在使劲",
+   "en": "Arching your lower back instead of using your butt."
+  },
+  {
+   "zh": "甩腿",
+   "en": "Swinging the leg."
   }
  ],
  "cautions": [
   {
-   "zh": "腰不舒服时幅度小一点，还疼就停",
-   "en": "If your lower back feels uncomfortable, make the move smaller, and stop if it still hurts."
+   "zh": "腰不舒服就把动作做小点，还疼就停",
+   "en": "If your lower back feels off, make the move smaller. Stop if it still hurts."
   }
  ],
  "tags": {
@@ -82,7 +94,7 @@
    "en": "Push back"
   },
   "peak": {
-   "zh": "夹紧臀部",
+   "zh": "夹紧屁股",
    "en": "Squeeze"
   },
   "end": {
@@ -96,26 +108,27 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 0.7,
+    "seconds": 1.0,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 1.3,
+    "seconds": 0.8,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 0.7,
+    "seconds": 1.5,
     "cue": "phase.end"
    },
    {
     "id": "rest",
-    "seconds": 1.3
+    "seconds": 0.2
    }
   ],
   "perSide": "each-side-separately",
-  "source": "spec-pulse-track r2"
+  "source": "real-tempo r3",
+  "sideSwitchSeconds": 10
  },
  "review": {
   "r2": {
@@ -124,6 +137,110 @@
     "加 training rep_hold，每侧分开做"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 4.0 s → 3.5 s",
+    "新增 sideSwitchSeconds 10 与换边要点",
+    "常见错误补「甩腿」；文字改教练口吻",
+    "难度 1/1 不变"
+   ],
+   "flags": [
+    "计到 12，共用词只到 n.10"
+   ],
+   "audit": {
+    "dose": [
+     "3 组×每侧12 次，休息 45 秒",
+     "3 组×每侧12 次，休息 45 秒"
+    ],
+    "rep": [
+     "4.0 s",
+     "3.5 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：站姿绳索后踢、扶椅、臀部高亮（batch-02 第 10 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 3.5,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "腰别往后仰",
+    "en": "Don't arch your back",
+    "from": [
+     "cue3",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "用屁股往后推",
+    "en": "Push with your butt",
+    "from": [
+     "cue1"
+    ]
+   },
+   {
+    "afterRep": 8,
+    "role": "form",
+    "zh": "慢慢放回来",
+    "en": "Bring it back slowly",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "afterRep": 11,
+    "key": "p.last_rep"
+   }
+  ],
+  "before": [
+   "p.right_first"
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.45"
+   ],
+   "allDone": [
+    "p.nice"
+   ],
+   "sideDone": [
+    "p.switch_left"
+   ]
+  },
+  "sides": {
+   "order": [
+    "right",
+    "left"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边；换边准备 10 秒（training.sideSwitchSeconds，App 未接入）"
   }
  }
 }

@@ -5,7 +5,7 @@
   "status": "ai-draft",
   "source": {
     "text": "catalog/production/v3-text/glute-max-A.json",
-    "textSha256Lf": "bdbb0af4adb928c96587ded6c2ebdb9fa398e88256373198a9dd8548c12bdb70",
+    "textSha256Lf": "23dd286a970621a778461a99e8535ddff4f7974e0cce96caf46d28348aa2f280",
     "spec": "drill-anim/specs/glute-max-A-r2.js",
     "catalogV1": "catalog/catalog.json"
   },
@@ -147,6 +147,12 @@
         ]
       },
       "reason": "v3 粗粒度肌群（glutes）按动作实际做法拆到细分 id。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 2,
+      "chosen": 2,
+      "reason": "r3 动作包核对（开哥 2026-11-13）：逐个重定，与 v3 tags.difficulty 同值。"
     }
   ],
   "reviewNotes": [

@@ -5,7 +5,7 @@
   "status": "ai-draft",
   "source": {
     "text": "catalog/production/v3-text/erectors-B.json",
-    "textSha256Lf": "e001332dc27d494f6e7ef93225daad89ba09e4a849838621905fcf36f45e53c0",
+    "textSha256Lf": "593a14cc5f55464b8a2d18acdd9916085b8307a481fc4f62ee1e7d6acd8865fa",
     "spec": "drill-anim/specs/erectors-B.js",
     "catalogV1": "catalog/catalog.json"
   },
@@ -64,7 +64,7 @@
       ]
     }
   ],
-  "difficulty": 2,
+  "difficulty": 1,
   "intensity": "moderate",
   "prerequisites": [],
   "laterality": "bilateral",
@@ -125,12 +125,6 @@
       "reason": "v3 粗粒度肌群（glutes/lower-back）按动作实际做法拆到细分 id。"
     },
     {
-      "field": "difficulty",
-      "existing": 1,
-      "chosen": 2,
-      "reason": "需要在球上保持平衡并控制背伸，定基础 2。"
-    },
-    {
       "field": "requiredEquipment/optionalEquipment",
       "existing": [
         "stability-ball"
@@ -144,6 +138,12 @@
         ]
       },
       "reason": "同义写法归一到词表 id。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 1,
+      "reason": "r3 动作包核对（开哥 2026-11-13）：逐个重定，与 v3 tags.difficulty 同值。双脚抵墙、幅度只到直线，入门可做；ai-tags 原 2。"
     }
   ],
   "reviewNotes": [

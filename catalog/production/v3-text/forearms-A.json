@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "forearms-A",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/data/drills.json",
   "drill-anim/specs/forearms-A-r2.js",
@@ -12,49 +12,49 @@
   "en": "Quadruped Wrist Rocks"
  },
  "purpose": {
-  "zh": "活动手腕，为撑地的动作做准备",
-  "en": "Loosen up your wrists before moves where you push on your hands."
+  "zh": "活动手腕，撑地动作之前先让手腕热起来",
+  "en": "Warms up your wrists before moves where you push on your hands."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "身体前后轻轻摇，力度由轻到重",
-    "en": "Rock your weight forward and back, starting light"
+    "zh": "身子前后轻轻摇，先轻后重",
+    "en": "Rock gently forward and back, light at first"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "指尖朝前、朝外、朝后、手背贴地，每个手位摇 4 次再换。",
-    "en": "Fingers forward, out, back, then backs of the hands: rock 4 times in each position."
+    "zh": "指尖朝前、朝外、朝后、手背贴地，每种摇 4 下再换。",
+    "en": "Fingers forward, out, back, then backs of the hands: 4 rocks each, then switch."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "往前再往后摇一下算 1 次，手臂伸直、膝盖跪稳。",
-    "en": "One rock forward and back counts as one. Keep your arms straight and knees steady."
+    "zh": "往前往后摇一趟算 1 下，手臂伸直、膝盖跪稳。",
+    "en": "One rock forward and back counts as one. Arms straight, knees steady."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "一开始就压上全身重量",
-   "en": "Putting your full weight on the wrists right away."
+   "zh": "一上来就把全身重量压上去",
+   "en": "Dumping your full weight on your wrists right away."
   },
   {
-   "zh": "只做手指朝前这一种",
-   "en": "Only doing the fingers-forward position."
+   "zh": "只做指尖朝前这一种",
+   "en": "Only doing fingers-forward."
   }
  ],
  "cautions": [
   {
-   "zh": "手腕刺痛或发麻时停下",
-   "en": "Stop if your wrists feel sharp pain or numbness."
+   "zh": "手腕刺痛或发麻就停",
+   "en": "Stop if your wrists get sharp pain or go numb."
   }
  ],
  "tags": {
@@ -98,16 +98,17 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 1.1,
+    "seconds": 1.0,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 0.3
+    "seconds": 0.3,
+    "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 0.3,
+    "seconds": 0.9,
     "cue": "phase.end"
    },
    {
@@ -115,7 +116,7 @@
     "seconds": 0.3
    }
   ],
-  "source": "spec-pulse-track r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -127,6 +128,114 @@
    ],
    "flags": [
     "批表 go 1.1 s 里包含换手的时间，App 节奏会显得前摇很慢、后摇很快"
+   ]
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 2.0 s → 2.5 s（前摇 1.0 / 停 0.3 / 后摇 0.9），简单小幅度动作；r2 flag「前摇含换手时间」不再适用",
+    "文字改教练口吻",
+    "难度 1/1 不变"
+   ],
+   "flags": [
+    "计到 16，共用词只到 n.10，需补 n.11–n.16（或剂量改 4 个手位×3 = 12）；「换手位」提醒没法对准第 4/8/12 下，靠屏幕文字"
+   ],
+   "audit": {
+    "dose": [
+     "2 组×16 次，休息 20 秒",
+     "2 组×16 次，休息 20 秒"
+    ],
+    "rep": [
+     "2.0 s",
+     "2.5 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：四点跪、手掌撑地、前臂/手腕高亮（batch-02 第 6 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 2.5,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "先轻后重",
+    "en": "Light first",
+    "from": [
+     "cue1",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "form",
+    "zh": "手臂伸直",
+    "en": "Arms straight",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "afterRep": 8,
+    "role": "halfway",
+    "zh": "别压太狠",
+    "en": "Go easy",
+    "from": [
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 11,
+    "role": "form",
+    "zh": "先轻后重",
+    "en": "Light first",
+    "from": [
+     "cue1",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 14,
+    "role": "form",
+    "zh": "手臂伸直",
+    "en": "Arms straight",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "afterRep": 15,
+    "key": "p.last_rep"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.20"
+   ],
+   "allDone": [
+    "p.nice"
    ]
   }
  }
