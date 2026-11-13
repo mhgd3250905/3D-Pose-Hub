@@ -5,7 +5,7 @@
   "status": "ai-draft",
   "source": {
     "text": "catalog/production/v3-text/h-couch-stretch.json",
-    "textSha256Lf": "c3203782d76c757eb7b8fea840529fb13edeb9d2c9f660a78aefaf5797623af0",
+    "textSha256Lf": "8617e935decc2a75a1b5d9a7e68074072cf7c582ce21c7c3884b272015557d77",
     "spec": "drill-anim/specs/h-couch-stretch.js",
     "catalogV1": "catalog/catalog.json"
   },
@@ -61,7 +61,7 @@
       ]
     }
   ],
-  "difficulty": 3,
+  "difficulty": 2,
   "intensity": "low",
   "prerequisites": [
     "floor-transfer",
@@ -139,12 +139,6 @@
       "reason": "拉伸/活动类：v3 把被拉肌写在 activeMuscles，这里移到 stretchedMuscles，无主动发力肌。"
     },
     {
-      "field": "difficulty",
-      "existing": 2,
-      "chosen": 3,
-      "reason": "后膝深屈加髋伸到末端，强度明显高于半跪拉伸，定 3。"
-    },
-    {
       "field": "requiredEquipment/optionalEquipment",
       "existing": [
         "stool",
@@ -158,6 +152,12 @@
         "optionalEquipment": []
       },
       "reason": "stool 归一为 chair（矮凳/椅子同一 id）。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 2,
+      "chosen": 2,
+      "reason": "r3 动作包核对（开哥 2026-11-13）：逐个重定，与 v3 tags.difficulty 同值。大腿前面很紧的人拉起来吃力；ai-tags 原 3（1–5 制）。"
     }
   ],
   "reviewNotes": []

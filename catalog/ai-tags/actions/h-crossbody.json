@@ -5,7 +5,7 @@
   "status": "ai-draft",
   "source": {
     "text": "catalog/production/v3-text/h-crossbody.json",
-    "textSha256Lf": "c46956652d11eb5a80e56dc7ff75d1bcca0783707ff667b68f6e755722a7c5ce",
+    "textSha256Lf": "b0e338880f7417f8122d315070dd13bb47d120740496602e3349f5904b4855e8",
     "spec": "drill-anim/specs/h-crossbody-r9.js",
     "catalogV1": null
   },
@@ -114,6 +114,12 @@
         ]
       },
       "reason": "拉伸/活动类：v3 把被拉肌写在 activeMuscles，这里移到 stretchedMuscles，无主动发力肌。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 1,
+      "reason": "r3 动作包核对（开哥 2026-11-13）：逐个重定，与 v3 tags.difficulty 同值。"
     }
   ],
   "reviewNotes": []

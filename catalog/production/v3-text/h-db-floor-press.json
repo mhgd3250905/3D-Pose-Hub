@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-db-floor-press",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-db-floor-press.js"
  ],
@@ -10,49 +10,49 @@
   "en": "Dumbbell Floor Press"
  },
  "purpose": {
-  "zh": "练胸部和手臂后侧",
-  "en": "Build your chest and the backs of your arms."
+  "zh": "练胸和大臂后面",
+  "en": "Builds your chest and the backs of your arms."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "慢慢放到大臂碰地，再推回肩膀上方",
-    "en": "Lower until your upper arms touch the floor, then press up over your shoulders"
+    "zh": "慢慢放到大臂碰地，再推回肩膀正上方",
+    "en": "Lower until your upper arms touch the floor, then press back over your shoulders"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "手腕在手肘正上方，大臂和身体斜着约 45 度。",
-    "en": "Keep your wrists over your elbows and your upper arms angled out at about 45 degrees."
+    "zh": "手腕在手肘正上方，大臂跟身体斜着分开，别张成一字。",
+    "en": "Wrists over your elbows. Upper arms angled out from your body, not straight out to the sides."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "碰地轻停，不要弹起来。",
-    "en": "Pause lightly at the floor without bouncing."
+    "zh": "碰地轻轻停一下，别弹起来。",
+    "en": "Pause lightly on the floor. No bouncing."
    }
   }
  ],
  "commonErrors": [
   {
    "zh": "手肘往两边张得太开",
-   "en": "Flaring the elbows too wide."
+   "en": "Elbows flaring way out."
   },
   {
    "zh": "手腕往后折",
-   "en": "Letting the wrists bend back."
+   "en": "Wrists bending back."
   }
  ],
  "cautions": [
   {
-   "zh": "从轻重量开始，疼就停",
-   "en": "Start with a light weight, and stop if you feel pain."
+   "zh": "先用轻哑铃，哪儿疼就停",
+   "en": "Start with light dumbbells. Stop if anything hurts."
   }
  ],
  "tags": {
@@ -80,7 +80,7 @@
  },
  "phases": {
   "start": {
-   "zh": "慢慢放下",
+   "zh": "慢慢放",
    "en": "Lower slowly"
   },
   "peak": {
@@ -88,7 +88,7 @@
    "en": "Pause"
   },
   "end": {
-   "zh": "推起",
+   "zh": "推起来",
    "en": "Press up"
   }
  },
@@ -98,16 +98,17 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 1.8,
+    "seconds": 2.0,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 0.4
+    "seconds": 0.5,
+    "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 1.3,
+    "seconds": 1.0,
     "cue": "phase.end"
    },
    {
@@ -115,7 +116,7 @@
     "seconds": 0.5
    }
   ],
-  "source": "spec-timeline manual r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -126,6 +127,94 @@
    ],
    "flags": [
     "批表 press 轨从 1（手臂在上）开始，相位方向反了；按 spec 关键帧手算：放下 1.8、底部停 0.4、推回 1.3、顶部 0.5，请确认"
+   ]
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 4.0 s（放 2.0 / 碰地 0.5 / 推 1.0 / 顶上 0.5），慢放快推；相位按真实做法从手臂在上开始，r2「相位方向反了」flag 不再适用",
+    "「大臂和身体斜着约 45 度」→「斜着分开，别张成一字」",
+    "难度 1/1 不变"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "3 组×10 次，休息 60 秒",
+     "3 组×10 次，休息 60 秒"
+    ],
+    "rep": [
+     "4.0 s",
+     "4.0 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：仰卧地面哑铃卧推、胸/大臂后面高亮（b7 第 10 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 4.0,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "手肘斜着，别张太开",
+    "en": "Elbows angled, don't flare",
+    "from": [
+     "cue2",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "手腕立直，别折",
+    "en": "Wrists straight",
+    "from": [
+     "cue2",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 8,
+    "role": "form",
+    "zh": "碰地轻停，别弹",
+    "en": "Pause, no bouncing",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "afterRep": 9,
+    "key": "p.last_rep"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.60"
+   ],
+   "allDone": [
+    "p.nice"
    ]
   }
  }
