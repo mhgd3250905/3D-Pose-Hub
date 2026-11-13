@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-band-biceps-curl",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-band-biceps-curl-r6.js"
  ],
@@ -10,49 +10,49 @@
   "en": "Standing Band Biceps Curl"
  },
  "purpose": {
-  "zh": "用弹力带练上臂前侧（二头肌）",
-  "en": "Build the front of your upper arms (biceps) with a band."
+  "zh": "用弹力带练大臂前面",
+  "en": "Builds the front of your upper arms with a band."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "手肘贴住身体，双手弯向肩膀",
-    "en": "Keep your elbows at your sides and curl your hands up"
+    "zh": "手肘夹住身体两侧，两手往肩膀弯",
+    "en": "Elbows pinned to your sides, curl your hands to your shoulders"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "双脚踩住弹力带中间，掌心朝前。",
-    "en": "Stand on the middle of the band with your palms facing forward."
+    "zh": "两脚踩住弹力带中间，手心朝前。",
+    "en": "Stand on the middle of the band, palms facing forward."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "放下时慢一点，直到手臂伸直。",
+    "zh": "放下来慢一点，直到手臂伸直。",
     "en": "Lower slowly until your arms are straight."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "身体后仰或甩动借力",
+   "zh": "身子往后仰、甩着借劲",
    "en": "Leaning back or swinging to help."
   },
   {
    "zh": "手肘往前跑",
-   "en": "Letting your elbows drift forward."
+   "en": "Elbows drifting forward."
   }
  ],
  "cautions": [
   {
-   "zh": "手肘疼时换更轻的弹力带",
-   "en": "If your elbows hurt, switch to a lighter band."
+   "zh": "手肘疼就换根轻点的带子",
+   "en": "If your elbows hurt, use a lighter band."
   }
  ],
  "tags": {
@@ -78,7 +78,7 @@
  },
  "phases": {
   "start": {
-   "zh": "弯起",
+   "zh": "弯起来",
    "en": "Curl up"
   },
   "peak": {
@@ -86,7 +86,7 @@
    "en": "Squeeze"
   },
   "end": {
-   "zh": "慢慢放下",
+   "zh": "慢慢放",
    "en": "Lower slowly"
   }
  },
@@ -96,24 +96,25 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 1.3,
+    "seconds": 1.0,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 0.4
+    "seconds": 0.3,
+    "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 1.6,
+    "seconds": 1.5,
     "cue": "phase.end"
    },
    {
     "id": "rest",
-    "seconds": 0.7
+    "seconds": 0.2
    }
   ],
-  "source": "spec-timeline manual r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -122,6 +123,95 @@
     "目的/提示/注意改口语短句"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 4.0 s → 3.0 s（弯 1.0 / 放 1.5）",
+    "purpose 去掉「二头肌」学名",
+    "难度 1/1 不变"
+   ],
+   "flags": [
+    "计到 12，共用词只到 n.10"
+   ],
+   "audit": {
+    "dose": [
+     "3 组×12 次，休息 45 秒",
+     "3 组×12 次，休息 45 秒"
+    ],
+    "rep": [
+     "4.0 s",
+     "3.0 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：站姿踩带弯举、二头肌高亮（b3 第 7 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 3.0,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "手肘别往前跑",
+    "en": "Elbows stay put",
+    "from": [
+     "cue1",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "别甩，身子别仰",
+    "en": "No swinging",
+    "from": [
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 8,
+    "role": "form",
+    "zh": "慢慢放到伸直",
+    "en": "Lower all the way",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "afterRep": 11,
+    "key": "p.last_rep"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.45"
+   ],
+   "allDone": [
+    "p.nice"
+   ]
   }
  }
 }

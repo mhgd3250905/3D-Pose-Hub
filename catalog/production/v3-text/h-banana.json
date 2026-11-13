@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-banana",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-banana-r2.js",
   "drill-anim/specs/h-banana.js"
@@ -11,61 +11,61 @@
   "en": "Lying Banana Side Stretch"
  },
  "purpose": {
-  "zh": "拉伸身体两侧的腰和背",
-  "en": "Stretch the sides of your waist and back."
+  "zh": "拉开身体两侧的腰和背",
+  "en": "Stretches the sides of your waist and back."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "手脚一起移向一侧，身体弯成香蕉形",
-    "en": "Move your hands and feet to one side so your body curves"
+    "zh": "手脚一起挪向一边，身子弯成香蕉",
+    "en": "Walk hands and feet to one side, curve like a banana"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "双肩和臀部一直贴着垫子。",
-    "en": "Keep both shoulders and your hips on the mat."
+    "zh": "两边肩膀和屁股一直贴着垫子。",
+    "en": "Both shoulders and your butt stay on the mat."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "停住不动，慢慢呼吸。",
-    "en": "Stay still and breathe slowly."
+    "zh": "就停在这儿，慢慢喘气。",
+    "en": "Stay right there and breathe slowly."
    }
   },
   {
    "id": "cue4",
    "primary": false,
    "text": {
-    "zh": "每次呼气再放松一点，别来回颠。",
-    "en": "Each time you breathe out, relax a little deeper. No bouncing."
+    "zh": "每次呼气再松一点，别一下一下往下压。",
+    "en": "Each breath out, let go a little more. Don't bounce."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "肩或臀部离开垫子",
-   "en": "Letting a shoulder or your hips lift off the mat."
+   "zh": "肩膀或屁股离开垫子",
+   "en": "A shoulder or your butt lifting off the mat."
   },
   {
    "zh": "憋气",
    "en": "Holding your breath."
   },
   {
-   "zh": "来回颠着往下压",
+   "zh": "一下一下往下压",
    "en": "Bouncing to go deeper."
   }
  ],
  "cautions": [
   {
-   "zh": "身体侧面拉得发疼时就弯少一点",
-   "en": "If your side starts to hurt, curve a little less."
+   "zh": "侧面拉得发疼就弯少点",
+   "en": "If your side starts to hurt, curve a bit less."
   }
  ],
  "tags": {
@@ -97,12 +97,12 @@
    "en": "Curve over"
   },
   "peak": {
-   "zh": "保持，慢慢呼气",
-   "en": "Hold and breathe out"
+   "zh": "停住，呼气",
+   "en": "Hold, breathe out"
   },
   "end": {
-   "zh": "呼气再放松",
-   "en": "Relax a bit deeper"
+   "zh": "呼气再松",
+   "en": "Let go more"
   }
  },
  "training": {
@@ -121,6 +121,113 @@
     "最终口径：按真实做法定（2026-11-01）"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "剂量 2 组×每侧 30 秒、休息 15 秒不变；躺着挪手脚即可换边，不加换边准备",
+    "「别来回颠」→「别一下一下往下压」，「慢慢呼吸」→「慢慢喘气」",
+    "难度 1/1 不变"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "2 组×每侧30 秒，休息 15 秒",
+     "2 组×每侧30 秒，休息 15 秒"
+    ],
+    "rep": [
+     "计时",
+     "计时"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：仰卧双臂过头、身体侧弯成香蕉、侧腰高亮（b3 第 6 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 4,
+    "role": "posture",
+    "zh": "肩膀和屁股贴住垫子",
+    "en": "Shoulders and butt on the mat",
+    "from": [
+     "cue2",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "at": 12,
+    "role": "halfway",
+    "zh": "呼气，再松一点",
+    "en": "Breathe out, let go",
+    "from": [
+     "cue4"
+    ]
+   },
+   {
+    "at": 20,
+    "role": "form",
+    "zh": "别憋气，慢慢喘",
+    "en": "Keep breathing slowly",
+    "from": [
+     "cue3",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "at": 27,
+    "key": "n.3"
+   },
+   {
+    "at": 28,
+    "key": "n.2"
+   },
+   {
+    "at": 29,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSetsSameSide": [
+    "p.rest",
+    "sec.15"
+   ],
+   "sideDone": [
+    "p.release",
+    "p.switch_left"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
+  },
+  "sides": {
+   "order": [
+    "right",
+    "left"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边"
   }
  }
 }

@@ -5,7 +5,7 @@
   "status": "ai-draft",
   "source": {
     "text": "catalog/production/v3-text/h-banana.json",
-    "textSha256Lf": "d5e3195a018208e29230715f4e70218c393dd89a6a9cccb0f9dcc8d7508aeb48",
+    "textSha256Lf": "1f2c373aacc4f0bc928efa1259b60140c0e2d03afea2e69044fa5258df2fbea4",
     "spec": "drill-anim/specs/h-banana-r2.js",
     "catalogV1": "catalog/catalog.json"
   },
@@ -150,6 +150,12 @@
         ]
       },
       "reason": "拉伸/活动类：v3 把被拉肌写在 activeMuscles，这里移到 stretchedMuscles，无主动发力肌。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 1,
+      "reason": "r3 动作包核对（开哥 2026-11-13）：逐个重定，与 v3 tags.difficulty 同值。"
     }
   ],
   "reviewNotes": []

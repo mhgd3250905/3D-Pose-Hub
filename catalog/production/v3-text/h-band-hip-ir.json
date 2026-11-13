@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-band-hip-ir",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-band-hip-ir.js"
  ],
@@ -10,53 +10,61 @@
   "en": "Seated Band Foot Swing-Out"
  },
  "purpose": {
-  "zh": "练髋部往里转的力量和控制",
-  "en": "Build strength and control for turning your thigh inward."
+  "zh": "练胯往里转的劲",
+  "en": "Builds strength for turning your thigh inward."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "膝盖不动，脚往外侧摆开",
-    "en": "Keep your knee still and swing your foot out"
+    "zh": "膝盖不动，脚往外摆",
+    "en": "Knee still, swing your foot out"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "坐直，大腿贴住椅面，双手放在大腿上。",
-    "en": "Sit tall with your thigh on the seat and your hands on your thighs."
+    "zh": "坐直，大腿贴住椅面，两手放在大腿上。",
+    "en": "Sit tall, thigh on the seat, hands on your thighs."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "外面停一下，再慢慢收回。",
+    "zh": "摆到外面停一下，再慢慢收回来。",
     "en": "Pause out there, then bring it back slowly."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "一边做完，带子换到另一条腿。",
+    "en": "When one side is done, move the band to the other leg."
    }
   }
  ],
  "commonErrors": [
   {
    "zh": "膝盖跟着往里或往外跑",
-   "en": "Letting the knee drift in or out."
+   "en": "Knee drifting in or out."
   },
   {
-   "zh": "身体往一侧倒来帮忙",
-   "en": "Leaning your body to help."
+   "zh": "身子往一边倒帮忙",
+   "en": "Leaning to help."
   }
  ],
  "cautions": [
   {
-   "zh": "固定点不牢时先别开始",
-   "en": "Do not start until the anchor is secure."
+   "zh": "带子拴不牢先别开始",
+   "en": "Don't start until the band is anchored securely."
   },
   {
-   "zh": "髋或膝不舒服时摆小一点",
-   "en": "If your hip or knee feels uncomfortable, swing a smaller distance."
+   "zh": "胯或膝盖不舒服就摆小点",
+   "en": "If your hip or knee feels off, swing less."
   }
  ],
  "tags": {
@@ -103,26 +111,23 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 0.7,
+    "seconds": 1.0,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 1.3,
+    "seconds": 0.8,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 0.8,
+    "seconds": 1.2,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 1.2
    }
   ],
   "perSide": "each-side-separately",
-  "source": "spec-pulse-track r2"
+  "source": "real-tempo r3",
+  "sideSwitchSeconds": 10
  },
  "review": {
   "r2": {
@@ -134,6 +139,111 @@
    "flags": [
     "tags.activeMuscles 写的是 abductors+glutes，动画实为大腿向内转（臀中/小肌），是否调整请定"
    ]
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 4.0 s → 3.0 s",
+    "新增 sideSwitchSeconds 10（带子换腿）与换边要点",
+    "文字改教练口吻",
+    "难度 1/1 不变"
+   ],
+   "flags": [
+    "r2 flag 沿用：tags.activeMuscles 写 abductors+glutes，动作实为大腿往里转，是否调整",
+    "计到 12，共用词只到 n.10"
+   ],
+   "audit": {
+    "dose": [
+     "3 组×每侧12 次，休息 30 秒",
+     "3 组×每侧12 次，休息 30 秒"
+    ],
+    "rep": [
+     "4.0 s",
+     "3.0 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：坐椅、弹力带绑小腿、脚往外摆、髋外侧/臀高亮（b4 第 1 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 3.0,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "膝盖别跑",
+    "en": "Knee stays still",
+    "from": [
+     "cue1",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "身子别歪",
+    "en": "Sit tall",
+    "from": [
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 8,
+    "role": "form",
+    "zh": "慢慢收回来",
+    "en": "Bring it back slowly",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "afterRep": 11,
+    "key": "p.last_rep"
+   }
+  ],
+  "before": [
+   "p.right_first"
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.30"
+   ],
+   "allDone": [
+    "p.nice"
+   ],
+   "sideDone": [
+    "p.switch_left"
+   ]
+  },
+  "sides": {
+   "order": [
+    "right",
+    "left"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边；换边准备 10 秒（training.sideSwitchSeconds，App 未接入）"
   }
  }
 }
