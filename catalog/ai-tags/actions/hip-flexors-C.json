@@ -5,7 +5,7 @@
   "status": "ai-draft",
   "source": {
     "text": "catalog/production/v3-text/hip-flexors-C.json",
-    "textSha256Lf": "45540b5df1152fe7d07aa022bb1d7dc40d39b91479a8e2bf81e3904f34a0103a",
+    "textSha256Lf": "ee2a8ab3d033a0a98d94da32956da8c5c88660edcd4c93b118137ba8aba815d4",
     "spec": "drill-anim/specs/hip-flexors-C.js",
     "catalogV1": "catalog/catalog.json"
   },
@@ -165,6 +165,12 @@
         "optionalEquipment": []
       },
       "reason": "同义写法归一到词表 id，并按实际做法区分必需与可选。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 2,
+      "chosen": 2,
+      "reason": "r3 动作包核对（开哥 2026-11-13）：逐个重定，与 v3 tags.difficulty 同值。"
     }
   ],
   "reviewNotes": []

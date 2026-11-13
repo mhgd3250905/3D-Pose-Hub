@@ -12,3 +12,4 @@
 | h-forearm-plank | 大腿前面 | 肚子 | b10 第 1 行 |
 | h-quadruped-open | 腰/侧腰 | 上背、胸口 | b12 第 3 行 |
 | h-wall-angel | 胸口、侧身 | 上背、肩膀 | b15 第 7 行 |
+| hip-abductors-A | 动作是直臂手撑地侧撑（文字写小臂撑），屁股侧面高亮 | 小臂侧撑、屁股侧面 | b16 第 7 行 |

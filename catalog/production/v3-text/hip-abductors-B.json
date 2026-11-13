@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "hip-abductors-B",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/data/drills.json",
   "drill-anim/specs/hip-abductors-B-r3.js"
@@ -11,49 +11,49 @@
   "en": "Supine Banded Straddle Opens"
  },
  "purpose": {
-  "zh": "双腿举起，对抗弹力带往外分开，练臀部侧面",
-  "en": "With your legs up, open them against the band to work the sides of your hips."
+  "zh": "两腿举起来，顶着弹力带往外分开，练屁股侧面",
+  "en": "Legs up, open them against the band to build the sides of your butt."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "双腿伸直，对抗弹力带分成大V字",
-    "en": "Keep your legs straight and open them into a wide V against the band"
+    "zh": "两腿伸直，顶着弹力带分成大 V 字",
+    "en": "Legs straight, open them into a wide V against the band"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "仰卧，双腿举到垂直，腰贴地。",
-    "en": "Lie on your back with your legs straight up and your lower back down."
+    "zh": "仰躺，两腿举到朝天，腰贴地。",
+    "en": "Lie on your back, legs straight up, lower back down."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "分到最大停2秒，再合拢。",
-    "en": "Pause for two seconds at the widest point, then close."
+    "zh": "分到最开停 2 秒，再合拢。",
+    "en": "Pause 2 seconds at the widest, then close."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "膝盖弯曲",
-   "en": "Bending the knees."
+   "zh": "膝盖弯了",
+   "en": "Bending your knees."
   },
   {
-   "zh": "腰离开地面",
-   "en": "Lifting the lower back off the floor."
+   "zh": "腰离开地",
+   "en": "Lower back lifting off the floor."
   }
  ],
  "cautions": [
   {
-   "zh": "髋部疼时分得小一点，还疼就停",
-   "en": "If your hips hurt, open less, and stop if it still hurts."
+   "zh": "胯疼就分小点，还疼就停",
+   "en": "If your hips hurt, don't open as wide. Stop if it still hurts."
   }
  ],
  "tags": {
@@ -100,25 +100,21 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 0.5,
+    "seconds": 1.0,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 2.3,
+    "seconds": 2.0,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 0.5,
+    "seconds": 1.5,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 0.7
    }
   ],
-  "source": "spec-pulse-track r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -127,6 +123,96 @@
     "purpose 改口语"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 4.0 s → 4.5 s（分开 1.0 / 停 2.0 / 合拢 1.5），停 2 秒按原文",
+    "难度 v3 1 / ai-tags 2 → 统一 1",
+    "「臀部」→「屁股」，「髋部」→「胯」；「垂直」→「朝天」"
+   ],
+   "flags": [
+    "预览帧高亮不明显、上身像微微抬起，请看视频确认"
+   ],
+   "audit": {
+    "dose": [
+     "3 组×12 次，休息 45 秒",
+     "3 组×12 次，休息 45 秒"
+    ],
+    "rep": [
+     "4.0 s",
+     "4.5 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 2
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "基本一致：仰卧两腿举起分开、弹力带在两脚之间；高亮不明显（b16 第 8 行，非极端）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 4.5,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "腿伸直",
+    "en": "Legs straight",
+    "from": [
+     "cue1",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "腰贴着地",
+    "en": "Back on the floor",
+    "from": [
+     "cue2",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 8,
+    "role": "form",
+    "zh": "最开停 2 秒",
+    "en": "Hold 2 at the widest",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "afterRep": 11,
+    "key": "p.last_rep"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.45"
+   ],
+   "allDone": [
+    "p.nice"
+   ]
   }
  }
 }
