@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-half-kneeling-quad-stretch",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-half-kneeling-quad-stretch-r6.js"
  ],
@@ -10,23 +10,23 @@
   "en": "Half-Kneeling Quad Stretch"
  },
  "purpose": {
-  "zh": "拉伸大腿前侧和髋部前面",
-  "en": "Stretch the front of your thigh and hip."
+  "zh": "拉开大腿前面和胯前面",
+  "en": "Stretches the front of your thigh and hip."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "手拉后脚靠近臀部，髋轻轻往前送",
-    "en": "Pull your back foot toward your glutes and ease your hips forward"
+    "zh": "手把后脚往屁股拉，胯轻轻往前送",
+    "en": "Pull your back foot toward your butt, ease your hips forward"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "后膝跪在垫上，前脚踩地，另一只手扶髋。",
+    "zh": "后膝跪在垫上，前脚踩地，另一只手扶胯。",
     "en": "Back knee on the mat, front foot down, other hand on your hip."
    }
   },
@@ -34,37 +34,37 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "停住不动，慢慢呼吸。",
-    "en": "Stay still and breathe slowly."
+    "zh": "就停在这儿，慢慢喘气。",
+    "en": "Stay right there and breathe slowly."
    }
   },
   {
    "id": "cue4",
    "primary": false,
    "text": {
-    "zh": "每次呼气再放松一点，别来回颠。",
-    "en": "Each time you breathe out, relax a little deeper. No bouncing."
+    "zh": "每次呼气再松一点，别一下一下往下压。",
+    "en": "Each breath out, let go a little more. Don't bounce."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "腰往前拱",
-   "en": "Arching your lower back."
+   "zh": "腰往后仰，肚子往前挺",
+   "en": "Arching your lower back and pushing your belly out."
   },
   {
    "zh": "憋气",
    "en": "Holding your breath."
   },
   {
-   "zh": "来回颠着往下压",
+   "zh": "一下一下往下压",
    "en": "Bouncing to go deeper."
   }
  ],
  "cautions": [
   {
-   "zh": "跪的膝盖疼时多垫软垫，并少弯一点",
-   "en": "If the kneeling knee hurts, add padding and bend it less."
+   "zh": "跪的膝盖疼就多垫软垫；够不着脚就拉住裤脚或用毛巾套住脚",
+   "en": "If the kneeling knee hurts, add more padding. Can't reach your foot? Grab your pant leg or loop a towel around it."
   }
  ],
  "tags": {
@@ -90,23 +90,24 @@
  },
  "phases": {
   "start": {
-   "zh": "慢慢拉近",
+   "zh": "把脚拉近",
    "en": "Pull it in"
   },
   "peak": {
-   "zh": "保持，慢慢呼气",
-   "en": "Hold and breathe out"
+   "zh": "停住，呼气",
+   "en": "Hold, breathe out"
   },
   "end": {
-   "zh": "呼气再放松",
-   "en": "Relax a bit deeper"
+   "zh": "呼气再松",
+   "en": "Let go more"
   }
  },
  "training": {
   "kind": "hold",
   "leadSeconds": 1,
   "perSide": "each-side-separately",
-  "source": "user-decision static-hold r2"
+  "source": "user-decision static-hold r2",
+  "sideSwitchSeconds": 10
  },
  "review": {
   "r2": {
@@ -117,6 +118,113 @@
     "按用户决定改为静态保持计时，动画只作示意：30 秒×2 组/每侧，休息 15 秒；口令和要点改成进入—保持—呼气放松"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "剂量 每侧 2 组×30 秒、休息 15 秒不变",
+    "新增 sideSwitchSeconds 10（换跪的腿、重新拉脚）",
+    "退阶「用毛巾套住脚」写进注意事项",
+    "「髋轻轻往前送」→「胯轻轻往前送」，「腰往前拱」→「腰往后仰，肚子往前挺」，「别来回颠」→「别一下一下往下压」",
+    "难度 2/2 不变"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "2 组×每侧30 秒，休息 15 秒",
+     "2 组×每侧30 秒，休息 15 秒"
+    ],
+    "rep": [
+     "计时",
+     "计时"
+    ],
+    "difficulty": [
+     {
+      "v3": 2,
+      "ai": 2
+     },
+     2
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：半跪后手拉后脚、大腿前面高亮（b10 第 5 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 4,
+    "role": "posture",
+    "zh": "腰别往后仰",
+    "en": "Don't arch your back",
+    "from": [
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "at": 12,
+    "role": "halfway",
+    "zh": "胯往前送",
+    "en": "Hips forward",
+    "from": [
+     "cue1"
+    ]
+   },
+   {
+    "at": 20,
+    "role": "form",
+    "zh": "呼气，再松一点",
+    "en": "Breathe out, let go",
+    "from": [
+     "cue4"
+    ]
+   },
+   {
+    "at": 27,
+    "key": "n.3"
+   },
+   {
+    "at": 28,
+    "key": "n.2"
+   },
+   {
+    "at": 29,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSetsSameSide": [
+    "p.rest",
+    "sec.15"
+   ],
+   "sideDone": [
+    "p.release",
+    "p.switch_right"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
+  },
+  "sides": {
+   "order": [
+    "left",
+    "right"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边；换边准备 10 秒（training.sideSwitchSeconds，App 未接入）"
   }
  }
 }

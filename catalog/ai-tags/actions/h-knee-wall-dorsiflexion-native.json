@@ -5,7 +5,7 @@
   "status": "ai-draft",
   "source": {
     "text": "catalog/production/v3-text/h-knee-wall-dorsiflexion-native.json",
-    "textSha256Lf": "1f79788696c14f200078cc3cd5f1cbf993f3aa653b55cf37ff3bfbe4b950b093",
+    "textSha256Lf": "825bdcda6dc0ea7674a94a36f49119c44b7ff09efb60739bfb8ddc42251b944f",
     "spec": "drill-anim/specs/h-knee-wall-dorsiflexion-native.js",
     "catalogV1": null
   },
@@ -125,6 +125,12 @@
         ]
       },
       "reason": "v3 把 calves 写成 activeMuscles，实际是被拉开的肌群；主动发力很少，primary 留空，calves 放 stretchedMuscles。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 1,
+      "reason": "r3 动作包核对（开哥 2026-11-13）：逐个重定，与 v3 tags.difficulty 同值。"
     }
   ],
   "reviewNotes": []

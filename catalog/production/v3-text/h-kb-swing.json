@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-kb-swing",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-kb-swing-r5.js"
  ],
@@ -10,57 +10,57 @@
   "en": "One-Arm Kettlebell Swing"
  },
  "purpose": {
-  "zh": "用髋部发力练臀部和大腿后侧的爆发力",
-  "en": "Build explosive glute and hamstring power by driving with your hips."
+  "zh": "靠屁股往前一顶的劲，练屁股和大腿后面的爆发力",
+  "en": "Builds explosive power in your butt and hamstrings by snapping your hips forward."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "髋部猛地往前推，让手臂把壶铃荡起来",
-    "en": "Snap your hips forward and let your arm float the bell up"
+    "zh": "屁股猛地往前一顶，让壶铃自己荡起来",
+    "en": "Snap your hips forward and let the bell float up"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "背保持平直，臀部往后推，壶铃荡到两腿之间。",
-    "en": "Keep your back flat and push your hips back as the bell swings between your legs."
+    "zh": "背挺平，屁股往后坐，壶铃荡到两腿中间。",
+    "en": "Flat back, push your hips back as the bell swings between your legs."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "顶端站直夹臀，身体不后仰。",
-    "en": "Stand tall at the top with glutes tight, without leaning back."
+    "zh": "顶上站直、夹紧屁股，人别往后仰。",
+    "en": "Stand tall at the top, squeeze your butt, don't lean back."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "用手臂抬壶铃",
+   "zh": "用手臂把壶铃抬起来",
    "en": "Lifting the bell with your arm."
   },
   {
-   "zh": "下蹲代替臀部往后推",
-   "en": "Squatting instead of pushing the hips back."
+   "zh": "蹲下去，不是屁股往后坐",
+   "en": "Squatting instead of pushing your hips back."
   },
   {
    "zh": "弓背",
-   "en": "Rounding the back."
+   "en": "Rounding your back."
   }
  ],
  "cautions": [
   {
-   "zh": "腰疼时停止，先用轻壶铃",
-   "en": "Stop if your lower back hurts, and start with a light bell."
+   "zh": "腰疼就停；先两手抱一个轻壶铃练熟再单手",
+   "en": "Stop if your lower back hurts. Learn it with both hands on a light bell first."
   },
   {
-   "zh": "周围有人或东西时不要做",
-   "en": "Do not swing with people or objects nearby."
+   "zh": "周围有人或东西就别做",
+   "en": "Don't swing with people or things nearby."
   }
  ],
  "tags": {
@@ -78,7 +78,7 @@
    "kettlebell"
   ],
   "position": "standing",
-  "difficulty": 2
+  "difficulty": 3
  },
  "unilateral": true,
  "startingSide": "right",
@@ -90,7 +90,7 @@
  },
  "phases": {
   "start": {
-   "zh": "推髋",
+   "zh": "往前顶",
    "en": "Drive"
   },
   "peak": {
@@ -98,8 +98,8 @@
    "en": "Stand tall"
   },
   "end": {
-   "zh": "回摆",
-   "en": "Swing"
+   "zh": "往回荡",
+   "en": "Swing back"
   }
  },
  "training": {
@@ -108,26 +108,22 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 0.6,
+    "seconds": 0.8,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 0.8,
+    "seconds": 0.4,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 0.7,
+    "seconds": 0.8,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 0.6
    }
   ],
   "perSide": "each-side-separately",
-  "source": "spec-pulse-track r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -139,6 +135,112 @@
    "flags": [
     "顶端「停留」0.8 s 其实是壶铃荡到最高的惯性停顿，按规则记为 rep_hold；如更想要 rep_updown 请定"
    ]
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 2.0 s（顶 0.8 / 顶上 0.4 / 回荡 0.8），摆荡是连贯的；顶上只是惯性停顿，kind rep_hold → rep_updown，r2 flag 结束",
+    "站着原地换手，不加换边准备",
+    "难度 v3 2 / ai-tags 3 → 统一 3；退阶「先两手抱轻壶铃练熟」写进注意事项",
+    "「髋部猛地往前推」→「屁股猛地往前一顶」，purpose 去掉「髋部发力」"
+   ],
+   "flags": [
+    "难度 2 还是 3 拿不准：按技术门槛定 3，若按力量算可降 2"
+   ],
+   "audit": {
+    "dose": [
+     "3 组×每侧10 次，休息 60 秒",
+     "3 组×每侧10 次，休息 60 秒"
+    ],
+    "rep": [
+     "2.7 s",
+     "2.0 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 2,
+      "ai": 3
+     },
+     3
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：站姿单手壶铃前摆到胸高、大腿后面淡高亮（b10 第 9 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 2.0,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "背挺平",
+    "en": "Flat back",
+    "from": [
+     "cue2",
+     "commonErrors[2]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "背挺平",
+    "en": "Flat back",
+    "from": [
+     "cue2",
+     "commonErrors[2]"
+    ]
+   },
+   {
+    "afterRep": 8,
+    "role": "form",
+    "zh": "背挺平",
+    "en": "Flat back",
+    "from": [
+     "cue2",
+     "commonErrors[2]"
+    ]
+   },
+   {
+    "afterRep": 9,
+    "key": "p.last_rep"
+   }
+  ],
+  "before": [
+   "p.right_first"
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.60"
+   ],
+   "allDone": [
+    "p.nice"
+   ],
+   "sideDone": [
+    "p.switch_left"
+   ]
+  },
+  "sides": {
+   "order": [
+    "right",
+    "left"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边"
   }
  }
 }

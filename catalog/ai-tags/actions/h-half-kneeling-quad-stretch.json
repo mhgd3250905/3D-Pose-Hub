@@ -5,7 +5,7 @@
   "status": "ai-draft",
   "source": {
     "text": "catalog/production/v3-text/h-half-kneeling-quad-stretch.json",
-    "textSha256Lf": "93adfed5f9e312ed917a9c15acadd730e58b4ce88e640a586e792f734c06778c",
+    "textSha256Lf": "56ede2b3ba7a0f904fbe5a29d5bb521d1b3255fac421e14a82e86a0e5be75d7d",
     "spec": "drill-anim/specs/h-half-kneeling-quad-stretch-r6.js",
     "catalogV1": null
   },
@@ -149,6 +149,12 @@
         ]
       },
       "reason": "v3 拉伸类把被拉的肌群写在 activeMuscles；本 schema 把被拉肌放 stretchedMuscles，静态拉伸无主动发力肌。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 2,
+      "chosen": 2,
+      "reason": "r3 动作包核对（开哥 2026-11-13）：逐个重定，与 v3 tags.difficulty 同值。要手够得着后脚、跪得住，大腿前面紧的人吃力。"
     }
   ],
   "reviewNotes": [

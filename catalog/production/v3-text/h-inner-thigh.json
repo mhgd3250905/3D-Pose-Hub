@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-inner-thigh",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-inner-thigh-r6.js"
  ],
@@ -11,48 +11,48 @@
  },
  "purpose": {
   "zh": "练大腿内侧",
-  "en": "Strengthen your inner thighs."
+  "en": "Builds your inner thighs."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "下面的腿伸直，夹紧大腿内侧往上抬",
-    "en": "Keep the bottom leg straight and squeeze your inner thigh to lift"
+    "zh": "下面那条腿伸直，用大腿内侧把它往上抬",
+    "en": "Bottom leg straight, lift it with your inner thigh"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "侧躺用前臂撑地，上面的脚踩在下面膝盖前。",
-    "en": "Lie on your side on one forearm with the top foot planted in front of the bottom knee."
+    "zh": "侧躺用小臂撑地，上面的脚踩在下面膝盖前头。",
+    "en": "Lie on your side on one forearm, top foot planted in front of your bottom knee."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "顶端停一下，放下时不砸地。",
-    "en": "Pause at the top and lower without dropping."
+    "zh": "顶上停一下，放下来别砸地。",
+    "en": "Pause at the top. Don't drop it down."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "身体往后翻",
-   "en": "Rolling the body back."
+   "zh": "身子往后翻",
+   "en": "Rolling back."
   },
   {
-   "zh": "甩腿借力",
+   "zh": "甩腿借劲",
    "en": "Swinging the leg up."
   }
  ],
  "cautions": [
   {
-   "zh": "大腿内侧或髋部疼时抬低一点，仍痛就停止",
-   "en": "If your inner thigh or hip hurts, lift lower, and stop if it still hurts."
+   "zh": "大腿内侧或胯疼就抬低点，还疼就停",
+   "en": "If your inner thigh or hip hurts, don't lift as high. Stop if it still hurts."
   }
  ],
  "tags": {
@@ -79,7 +79,7 @@
  },
  "phases": {
   "start": {
-   "zh": "抬腿",
+   "zh": "往上抬",
    "en": "Lift"
   },
   "peak": {
@@ -97,26 +97,23 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 0.7,
+    "seconds": 1.0,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 1.3,
+    "seconds": 1.0,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 0.8,
+    "seconds": 1.0,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 1.2
    }
   ],
   "perSide": "each-side-separately",
-  "source": "spec-pulse-track r2"
+  "source": "real-tempo r3",
+  "sideSwitchSeconds": 10
  },
  "review": {
   "r2": {
@@ -125,6 +122,105 @@
     "文案改口语"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 4.0 s → 3.0 s（抬 1.0 / 停 1.0 / 放 1.0）",
+    "新增 sideSwitchSeconds 10（翻身换边侧躺）",
+    "「髋部」→「胯」",
+    "难度 1/1 不变"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "3 组×每侧12 次，休息 30 秒",
+     "3 组×每侧12 次，休息 30 秒"
+    ],
+    "rep": [
+     "4.0 s",
+     "3.0 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：侧卧上腿跨到前面、下腿往上抬、大腿内侧高亮（b10 第 8 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 3.0,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "身子别往后翻",
+    "en": "Don't roll back",
+    "from": [
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "别甩腿",
+    "en": "No swinging",
+    "from": [
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 8,
+    "role": "form",
+    "zh": "放下来别砸",
+    "en": "Don't drop it",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "afterRep": 11,
+    "key": "p.last_rep"
+   }
+  ],
+  "before": [],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.30"
+   ],
+   "allDone": [
+    "p.nice"
+   ],
+   "sideDone": [
+    "p.switch_right"
+   ]
+  },
+  "sides": {
+   "order": [
+    "left",
+    "right"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边；换边准备 10 秒（training.sideSwitchSeconds，App 未接入）"
   }
  }
 }

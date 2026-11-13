@@ -5,7 +5,7 @@
   "status": "ai-draft",
   "source": {
     "text": "catalog/production/v3-text/h-incline-pushup.json",
-    "textSha256Lf": "2dc61cfc4b1b3b1c0dbf0fa9d901d4d4233ec62a00497a94504e11d553ed2523",
+    "textSha256Lf": "8da1d85435827d565beb5a6d3beee64351aa4e8d1e4eb028a6bbe47047aedd01",
     "spec": "drill-anim/specs/h-incline-pushup-r2.js",
     "catalogV1": "catalog/catalog.json"
   },
@@ -152,6 +152,12 @@
         "chair"
       ],
       "reason": "v3 器械同义写法归一到词表 id。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 1,
+      "reason": "r3 动作包核对（开哥 2026-11-13）：逐个重定，与 v3 tags.difficulty 同值。"
     }
   ],
   "reviewNotes": [
