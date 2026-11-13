@@ -5,7 +5,7 @@
   "status": "ai-draft",
   "source": {
     "text": "catalog/production/v3-text/h-bilateral-upper-back-hug.json",
-    "textSha256Lf": "eba6e5d341acf80a67e538ff8caa3243113b074e504a41c17bd6118608c33b10",
+    "textSha256Lf": "9444d61b1a4bfc20456652280b04a6b8af0d42564c50ab59711ba3d8d2be83fc",
     "spec": "drill-anim/specs/h-bilateral-upper-back-hug-rr3.js",
     "catalogV1": null
   },
@@ -119,6 +119,12 @@
         ]
       },
       "reason": "拉伸/活动类：v3 把被拉肌写在 activeMuscles，这里移到 stretchedMuscles，无主动发力肌。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 1,
+      "reason": "r3 动作包核对（开哥 2026-11-13）：逐个重定，与 v3 tags.difficulty 同值。"
     }
   ],
   "reviewNotes": [

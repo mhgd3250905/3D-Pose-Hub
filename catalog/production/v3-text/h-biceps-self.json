@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-biceps-self",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-biceps-self-r8.js"
  ],
@@ -10,48 +10,48 @@
   "en": "Self-Resisted Biceps Curl"
  },
  "purpose": {
-  "zh": "不用器械，靠另一只手给阻力练上臂前侧",
-  "en": "Train the front of your upper arm with no equipment, using your other hand for resistance."
+  "zh": "不用器械，靠另一只手给阻力练大臂前面",
+  "en": "Builds the front of your upper arm with no equipment, using your other hand for resistance."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "另一只手压住小臂，顶着它慢慢弯起",
-    "en": "Press on your forearm with the other hand and curl slowly against it"
+    "zh": "另一只手压住小臂，顶着它慢慢弯起来",
+    "en": "Other hand presses on your forearm, curl slowly against it"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "手肘贴住身体，掌心朝上。",
-    "en": "Keep your elbow at your side, palm up."
+    "zh": "手肘贴住身体，手心朝上。",
+    "en": "Elbow at your side, palm up."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "放下时也要用力顶住，别松劲。",
-    "en": "Keep pushing back as you lower; do not relax."
+    "zh": "放下来也要顶着劲，别一下松了。",
+    "en": "Keep pushing on the way down too. Don't just let go."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "身体后仰",
+   "zh": "身子往后仰",
    "en": "Leaning back."
   },
   {
    "zh": "手肘离开身体",
-   "en": "Letting your elbow leave your side."
+   "en": "Elbow leaving your side."
   }
  ],
  "cautions": [
   {
-   "zh": "手肘疼时少用点力",
+   "zh": "手肘疼就少用点劲",
    "en": "If your elbow hurts, push more gently."
   }
  ],
@@ -96,25 +96,26 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 3.8,
+    "seconds": 2.5,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 0.4
+    "seconds": 0.5,
+    "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 3.2,
+    "seconds": 2.5,
     "cue": "phase.end"
    },
    {
     "id": "rest",
-    "seconds": 0.6
+    "seconds": 0.5
    }
   ],
   "perSide": "each-side-separately",
-  "source": "spec-timeline manual r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -123,6 +124,91 @@
     "口令「对抗弯举」改口语「顶着弯起/顶着放下」"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 8.0 s → 6.0 s（顶着弯 2.5 / 顶 0.5 / 顶着放 2.5），自阻力要慢",
+    "文字改教练口吻",
+    "难度 1/1 不变"
+   ],
+   "flags": [
+    "预览帧看不到上臂高亮，请看视频确认"
+   ],
+   "audit": {
+    "dose": [
+     "3 组×每侧6 次，休息 30 秒",
+     "3 组×每侧6 次，休息 30 秒"
+    ],
+    "rep": [
+     "8.0 s",
+     "6.0 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "动作一致：站姿一手压另一手自阻弯举；预览帧看不到上臂高亮（非极端）（b5 第 4 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 6.0,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "halfway",
+    "zh": "手肘贴住身体",
+    "en": "Elbow at your side",
+    "from": [
+     "cue2",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "key": "p.last_rep"
+   }
+  ],
+  "before": [
+   "p.right_first"
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.30"
+   ],
+   "allDone": [
+    "p.nice"
+   ],
+   "sideDone": [
+    "p.switch_left"
+   ]
+  },
+  "sides": {
+   "order": [
+    "right",
+    "left"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边"
   }
  }
 }
