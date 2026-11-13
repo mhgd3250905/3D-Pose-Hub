@@ -45,3 +45,11 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点3：顶上停一秒，再慢慢放下来。 → 抬到身体一条线就停，别往后翘，再贴着球放下。（Pause a second at the top, then lower slowly. → Stop at one straight line, no higher, then fold back over the ball.）
+- 注意事项1：腰不舒服就抬低点，还疼就停 → 腰发酸发紧就抬到一半，还难受就停（If your lower back feels off, don't lift as high. Stop if it still hurts. → If your lower back tightens up, only come halfway. Stop if it stays sore.）
+- 语音 reminders[2]：慢慢放下来 → 贴着球趴下去（Lower slowly → Fold back over the ball）

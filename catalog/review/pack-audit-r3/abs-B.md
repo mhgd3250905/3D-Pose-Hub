@@ -45,3 +45,9 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 注意事项1：手腕疼或发麻就停，做之前先转转手腕 → 撑起来手腕吃全身重量，先转转手腕；刺疼就下来（Stop if your wrists hurt or go numb. Loosen them up first. → Your wrists hold all your weight here. Roll them out first, and come down if they get sharp pain.）

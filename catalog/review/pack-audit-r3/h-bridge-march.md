@@ -45,3 +45,11 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点4：两边各抬一次算 1 下。 → 左脚抬一次、右脚抬一次，才算 1 下。（One lift on each side counts as one. → Left foot up plus right foot up counts as one.）
+- 常见错误2：用腰拱，不是屁股在使劲 → 一抬脚胯就往下掉、往一边歪（Arching your back instead of using your butt. → Hips dropping or tipping each time a foot lifts.）
+- 语音 reminders[1]：两边胯一样高 → 抬脚时胯别歪（Hips level → Don't let your hips tip）

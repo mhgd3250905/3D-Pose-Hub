@@ -43,3 +43,10 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点4：两边各蹲一次算 1 下。 → 左边蹲一次、右边蹲一次，才算 1 下。（One on each side counts as one. → Left squat plus right squat counts as one.）
+- 注意事项1：膝盖不舒服就蹲浅点，还疼就停 → 蹲的那侧膝盖不舒服就蹲浅点，还不行就停（If your knee bugs you, don't go as low. Stop if it still hurts. → If the bent knee complains, sit higher. Stop if it doesn't settle.）

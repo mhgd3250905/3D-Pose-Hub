@@ -46,3 +46,10 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 常见错误2：腰往后仰 → 拉不开就挺肚子、往后仰着拉（Arching your lower back. → Leaning back and pushing your belly out to get it apart.）
+- 注意事项1：肩膀疼就换根轻点的带子 → 肩膀疼就两手握宽一点，或换细带子（If your shoulders hurt, use a lighter band. → If your shoulders hurt, grip wider or use a lighter band.）

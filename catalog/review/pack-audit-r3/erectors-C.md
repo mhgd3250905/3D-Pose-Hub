@@ -45,3 +45,10 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 注意事项1：腰不舒服就弯浅点，还疼就停 → 腰发紧就往下弯一半就起来，还疼就停（If your lower back feels off, don't go as low. Stop if it still hurts. → If your lower back tightens, only go halfway down. Stop if it still hurts.）
+- 语音 reminders[0]：背挺平，别弓 → 从胯往下弯，背别弓（Flat back → Bend at the hips, back flat）

@@ -45,3 +45,11 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 注意事项1：带子拴不牢先别开始 → 带子拴在脸的高度，先用力拽一下试试牢不牢（Don't start until the band is anchored securely. → Anchor the band at face height and test it with a hard tug.）
+- 注意事项2：肩膀疼就换根轻点的带子 → 肩膀前面夹着疼就拉低一点，换细的带子（If your shoulders hurt, use a lighter band. → If the front of your shoulder pinches, pull a bit lower and use a lighter band.）
+- 语音 reminders[2]：身子别往后仰 → 人站直，靠手臂拉（Stay tall → Stand tall, arms pull）

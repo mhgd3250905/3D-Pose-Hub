@@ -46,3 +46,10 @@
 
 ## 8. 待开哥定
 - r2 flag 沿用：tags.activeMuscles 写 abductors+glutes，动作实为大腿往里转，是否调整
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 注意事项1：带子拴不牢先别开始 → 带子绑在椅子腿或桌腿上，先拽一下确认不会滑（Don't start until the band is anchored securely. → Tie the band to a chair or table leg and tug it so it won't slip.）
+- 语音 reminders[2]：慢慢收回来 → 小腿慢慢摆回来（Bring it back slowly → Shin back in slowly）

@@ -44,3 +44,11 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 常见错误1：手肘离开身体 → 手肘往外飘，靠甩手臂转进来（Elbow drifting away from your side. → Elbow drifting out so you swing the arm in.）
+- 注意事项1：带子拴不牢先别开始 → 带子拴在手肘高度，先拽一下确认牢（Don't start until the band is anchored securely. → Anchor the band at elbow height and tug-test it first.）
+- 语音 reminders[0]：手肘贴住身体 → 手肘夹条毛巾不掉（Elbow stays at your side → Pin your elbow in）

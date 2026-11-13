@@ -45,3 +45,9 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点3：顶上停一下，再慢慢放下。 → 小腿能抬多高抬多高，离地停一下再轻轻放下。（Pause at the top, then lower slowly. → Lift your shin as high as it goes, pause, then set it down softly.）

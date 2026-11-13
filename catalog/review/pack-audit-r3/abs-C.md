@@ -44,3 +44,9 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 常见错误1：甩腿借劲 → 腿往前一荡，借着惯性甩上去（Swinging your legs for momentum. → Swinging your legs up instead of curling them.）

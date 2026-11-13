@@ -43,3 +43,9 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 注意事项1：带子拴不牢先别开始 → 带子拴牢在胸口高度，往外迈之前先试拉一下（Don't start until the band is anchored securely. → Anchor the band at chest height and test it before you step out.）

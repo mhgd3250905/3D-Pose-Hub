@@ -45,3 +45,11 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- purpose：练屁股，让腿往后抬更有劲 → 练屁股，让腿往后踢得高、踢得稳（Builds your butt for a stronger backward leg lift. → Builds your butt for a strong backward kick.）
+- 要点3：顶上停一秒，再慢慢放下。 → 脚抬到跟身子一样高，顶住带子停一秒再放。（Pause a second at the top, then lower slowly. → Lift your foot level with your body, hold against the band, then lower.）
+- 注意事项1：腰不舒服就抬低点，还疼就停 → 踢高了腰会塌，腰一发紧就踢低点（If your lower back feels off, don't lift as high. Stop if it still hurts. → Kicking too high sags your back. Kick lower if your back tightens.）

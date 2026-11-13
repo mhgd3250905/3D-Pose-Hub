@@ -45,3 +45,12 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 常见错误2：拱腰，不是屁股在使劲 → 撑地那只脚没踩实，靠拱腰把胯顶上去（Arching your back instead of using your butt. → Heel not planted, so your back arches to lift you.）
+- 注意事项1：腰不舒服就抬低点，还疼就停 → 腰发紧就顶低一点，屁股用上了就够（If your lower back feels off, don't lift as high. Stop if it still hurts. → If your back tightens, lift a bit lower. Feeling it in your butt is enough.）
+- 语音 reminders[0]：两边胯一样高 → 抬起那侧胯别往下掉（Hips level → Don't let the lifted side drop）
+- 语音 reminders[2]：慢慢放下来 → 一节一节落下来（Lower slowly → Roll down slowly）

@@ -46,3 +46,13 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- purpose：练屁股，让腿往后蹬更有劲 → 练屁股，跑跳时往后蹬地更有力（Builds your butt for a stronger push back with your leg. → Builds your butt so you drive off the ground harder when you run and jump.）
+- 要点4：一边做完，绑带换到另一只脚，转过身再做。 → 一侧做完，把绑带挪到另一只脚踝，转身面对绳索机。（When one side is done, move the strap to the other ankle and turn around. → When one side is done, move the strap to the other ankle and face the machine again.）
+- 常见错误1：腰往后仰，不是屁股在使劲 → 腿往后甩太高，腰跟着往后折（Arching your lower back instead of using your butt. → Kicking too high and bending your lower back with it.）
+- 语音 reminders[0]：腰别往后仰 → 腿往后推，腰别折（Don't arch your back → Push back, don't bend your back）
+- 语音 reminders[2]：慢慢放回来 → 绳子别一下弹回去（Bring it back slowly → Don't let the cable snap back）

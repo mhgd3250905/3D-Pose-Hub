@@ -45,3 +45,12 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点3：顶上停一下，再慢慢放下来。 → 两腿抬到跟上身一样高停一下，再一路慢慢垂下去。（Pause at the top, then lower slowly. → Hold your legs level with your body, then let them swing down slowly.）
+- 常见错误1：甩腿借劲 → 两腿往下甩，再借反弹荡上来（Swinging your legs for momentum. → Dropping your legs and bouncing them back up.）
+- 注意事项1：腰不舒服就抬低点，还疼就停 → 先用轻重量，腰不舒服就抬到一半（If your lower back feels off, don't lift as high. Stop if it still hurts. → Start light. If your back complains, only lift halfway.）
+- 语音 reminders[2]：慢慢放下来 → 两腿慢慢垂下（Lower slowly → Let your legs down slowly）

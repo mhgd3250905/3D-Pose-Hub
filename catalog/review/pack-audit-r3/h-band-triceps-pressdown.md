@@ -44,3 +44,10 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 注意事项1：带子拴不牢先别开始 → 带子拴在高过头的地方，先往下拽一下试牢（Don't start until the band is anchored securely. → Anchor the band above head height and give it a hard pull first.）
+- 注意事项2：手肘疼就换根轻点的带子 → 手肘伸直时发疼，换细一点的带子（If your elbows hurt, use a lighter band. → If your elbow hurts at the bottom, use a lighter band.）

@@ -46,3 +46,9 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点4：一边做完，绑带换到另一只脚，转过身再做。 → 一侧做完，带子换到另一只脚踝，换手扶椅子。（When one side is done, move the strap to the other ankle and turn around. → When one side is done, move the band to the other ankle and switch hands on the chair.）

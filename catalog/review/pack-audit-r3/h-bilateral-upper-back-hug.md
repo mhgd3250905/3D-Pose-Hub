@@ -47,3 +47,9 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 注意事项1：拉到舒服就行，疼就松开 → 肩膀前面夹着疼就抱松点，上背有拉开的感觉就够（Stretch only to a comfortable point. Let go if it hurts. → If the front of your shoulders pinch, hug looser. A stretch across your upper back is enough.）

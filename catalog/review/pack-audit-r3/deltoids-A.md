@@ -45,3 +45,9 @@
 
 ## 8. 待开哥定
 - 预览帧肩部高亮不明显，请看视频确认
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 注意事项1：手腕疼或发麻就停，做之前先转转手腕 → 一只手撑全身，手腕疼或发麻就放下来（Stop if your wrists hurt or go numb. Loosen them up first. → One hand holds you up. Come down if that wrist hurts or goes numb.）

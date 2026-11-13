@@ -43,3 +43,11 @@
 
 ## 8. 待开哥定
 - 预览帧看不到上臂高亮，请看视频确认
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 常见错误1：身子往后仰 → 上身往后仰，靠身子把手拽上来（Leaning back. → Leaning back to drag the hand up.）
+- 常见错误2：手肘离开身体 → 弯的那只手肘往前跑（Elbow leaving your side. → Working elbow drifting forward.）
+- 语音 reminders[0]：手肘贴住身体 → 手肘钉在身侧（Elbow at your side → Elbow pinned to your side）

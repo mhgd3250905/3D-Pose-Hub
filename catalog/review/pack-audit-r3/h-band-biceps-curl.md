@@ -45,3 +45,9 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 注意事项1：手肘疼就换根轻点的带子 → 弯到顶手肘发酸发疼，就踩短一点或换轻带子（If your elbows hurt, use a lighter band. → If your elbows ache at the top, stand on less band or use a lighter one.）

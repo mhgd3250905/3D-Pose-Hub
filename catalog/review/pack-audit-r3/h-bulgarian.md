@@ -45,3 +45,10 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 常见错误1：前膝往里倒 → 蹲下去时前膝往大脚趾里面倒（Front knee caving in. → Front knee falling in past your big toe.）
+- 注意事项2：用稳当、不带轮子的椅子 → 后脚搭的椅子要靠墙放稳，别带轮子（Use a sturdy chair without wheels. → Brace the back chair against a wall, and no wheels.）

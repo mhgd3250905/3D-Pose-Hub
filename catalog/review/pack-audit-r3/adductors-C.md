@@ -46,3 +46,10 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点4：一边做完，绑带换到另一只脚，转过身再做。 → 换腿时把脚踝绑带解下来，绑到另一只脚，转身再接着做。（When one side is done, move the strap to the other ankle and turn around. → To switch, move the ankle strap to your other foot and turn to face the other way.）
+- 语音 reminders[2]：两边胯骨一样高 → 上身别往外歪（Hips level → Don't lean out）

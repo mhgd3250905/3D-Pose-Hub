@@ -48,3 +48,13 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点3：就停在这儿，慢慢喘气。 → 腿落到有拉的感觉就停，用带子托住它。（Stay right there and breathe slowly. → Let your leg drop until you feel the stretch, and let the band hold it.）
+- 要点4：每次呼气再松一点，别一下一下往下压。 → 呼气时手上的带子松一点，让腿再往外落一点。（Each breath out, let go a little more. Don't bounce. → On each breath out, give the band a little slack so your leg drops further.）
+- 常见错误1：胯跟着翻向一边 → 另一边屁股跟着离地翻过来（Hips rolling to one side. → The other side of your butt lifting off the floor.）
+- 常见错误3：一下一下往下压 → 不用带子托着，靠腿硬撑（Bouncing to go deeper. → Holding the leg up yourself instead of letting the band take it.）
+- 语音 set[3]：呼气，再松一点 → 呼气，带子松一点（Breathe out, let go → Breathe out, give some slack）

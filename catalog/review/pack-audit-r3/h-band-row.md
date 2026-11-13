@@ -45,3 +45,10 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 语音 reminders[0]：手肘贴着身体 → 手肘擦着肋骨往后（Elbows close → Elbows brush your ribs）
+- 语音 reminders[1]：身子别往后仰 → 坐直，别往后倒（Sit tall, no leaning → Sit tall, don't fall back）

@@ -43,3 +43,10 @@
 
 ## 8. 待开哥定
 - 预览帧看不到胸部高亮，请看视频确认
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点4：两边各转一次算 1 下。 → 往左转一次、往右转一次，才算 1 下。（One turn each way counts as one. → A turn to the left plus a turn to the right counts as one.）
+- 注意事项1：手腕疼或发麻就停，做之前先转转手腕 → 转侧撑时一只手扛全身，手腕先活动开，疼就别转（Stop if your wrists hurt or go numb. Loosen them up first. → One hand carries you in the side plank. Warm up your wrists first and skip the turn if they hurt.）
