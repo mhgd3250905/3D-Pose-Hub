@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-dd-shoulder",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-dd-shoulder.js"
  ],
@@ -10,65 +10,65 @@
   "en": "Downward Dog Shoulder Press"
  },
  "purpose": {
-  "zh": "打开肩膀，拉伸腋下和胸口",
-  "en": "Open your shoulders and stretch your armpits and chest."
+  "zh": "把肩膀打开，拉开腋下和胸口",
+  "en": "Opens up your shoulders and stretches your armpits and chest."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "手臂伸直，胸口往大腿方向压",
-    "en": "Keep your arms straight and press your chest toward your thighs"
+    "zh": "手臂伸直，胸口往大腿那边压",
+    "en": "Arms straight, press your chest toward your thighs"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "臀部推高，背拉长，脚跟往地面落。",
-    "en": "Push your hips high, keep your back long and reach your heels down."
+    "zh": "屁股往天上顶，背拉长，脚后跟往地上落。",
+    "en": "Hips up high, back long, heels reaching for the floor."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "停住不动，慢慢呼吸。",
-    "en": "Stay still and breathe slowly."
+    "zh": "就停在这儿，慢慢喘气。",
+    "en": "Stay right there and breathe slowly."
    }
   },
   {
    "id": "cue4",
    "primary": false,
    "text": {
-    "zh": "每次呼气再放松一点，别来回颠。",
-    "en": "Each time you breathe out, relax a little deeper. No bouncing."
+    "zh": "每次呼气再松一点，别一下一下往下压。",
+    "en": "Each breath out, let go a little more. Don't bounce."
    }
   }
  ],
  "commonErrors": [
   {
    "zh": "弓背",
-   "en": "Rounding the back."
+   "en": "Rounding your back."
   },
   {
-   "zh": "耸肩挤脖子",
-   "en": "Shrugging toward the neck."
+   "zh": "耸肩，肩膀挤着脖子",
+   "en": "Shrugging up into your neck."
   },
   {
-   "zh": "来回颠着往下压",
+   "zh": "一下一下往下压",
    "en": "Bouncing to go deeper."
   }
  ],
  "cautions": [
   {
-   "zh": "出现疼痛时放松，只拉到舒服的程度",
-   "en": "If anything hurts, ease off and stretch only to a comfortable point."
+   "zh": "拉到舒服就行；腿后面太紧就把膝盖弯一点",
+   "en": "Stretch only to a comfortable point. Backs of your legs too tight? Bend your knees a little."
   },
   {
-   "zh": "手腕刺痛或发麻时停止，开始前先活动手腕",
-   "en": "Stop if your wrists feel sharp pain or numbness, and warm them up first."
+   "zh": "手腕刺疼或发麻就停，开始前先转转手腕",
+   "en": "Stop if your wrists get sharp pain or go numb. Roll them out before you start."
   }
  ],
  "tags": {
@@ -86,7 +86,7 @@
    "mat"
   ],
   "position": "other",
-  "difficulty": 1
+  "difficulty": 2
  },
  "unilateral": false,
  "defaultDose": {
@@ -97,16 +97,16 @@
  },
  "phases": {
   "start": {
-   "zh": "慢慢往下压",
-   "en": "Ease into it"
+   "zh": "胸口往下压",
+   "en": "Chest down"
   },
   "peak": {
-   "zh": "保持，慢慢呼气",
-   "en": "Hold and breathe out"
+   "zh": "停住，呼气",
+   "en": "Hold, breathe out"
   },
   "end": {
-   "zh": "呼气再放松",
-   "en": "Relax a bit deeper"
+   "zh": "呼气再松",
+   "en": "Let go more"
   }
  },
  "training": {
@@ -123,6 +123,104 @@
     "最终口径：按真实做法定（2026-11-01）"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "剂量 2 组×30 秒、休息 20 秒不变",
+    "难度 v3 1 / ai-tags 2 → 统一 2；退阶「膝盖弯一点」写进注意事项",
+    "「臀部推高」→「屁股往天上顶」，「别来回颠」→「别一下一下往下压」"
+   ],
+   "flags": [
+    "高亮在大腿后、小腿后，没有肩膀/腋下；动作名是压肩，是否补肩膀高亮（只报告）"
+   ],
+   "audit": {
+    "dose": [
+     "2 组×30 秒，休息 20 秒",
+     "2 组×30 秒，休息 20 秒"
+    ],
+    "rep": [
+     "计时",
+     "计时"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 2
+     },
+     2
+    ],
+    "voice": "口吻改写",
+    "frame": "动作一致：下犬式（手撑地、屁股朝天）；高亮在大腿后/小腿后，名称和文字写肩膀、腋下、胸口（b9 第 6 行，非极端）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 4,
+    "role": "posture",
+    "zh": "肩膀离耳朵远点",
+    "en": "Shoulders away from your ears",
+    "from": [
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "at": 12,
+    "role": "halfway",
+    "zh": "背拉长，别弓",
+    "en": "Long back, no rounding",
+    "from": [
+     "cue2",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "at": 20,
+    "role": "form",
+    "zh": "呼气，胸口再压一点",
+    "en": "Breathe out, chest down",
+    "from": [
+     "cue4",
+     "cue1"
+    ]
+   },
+   {
+    "at": 27,
+    "key": "n.3"
+   },
+   {
+    "at": 28,
+    "key": "n.2"
+   },
+   {
+    "at": 29,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.release",
+    "p.rest",
+    "sec.20"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
   }
  }
 }

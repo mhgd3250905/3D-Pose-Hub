@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-goblet-squat",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-goblet-squat-r3.js",
   "drill-anim/specs/h-goblet-squat-rr1.js"
@@ -11,53 +11,53 @@
   "en": "Kettlebell Goblet Squat"
  },
  "purpose": {
-  "zh": "负重练大腿和臀部，让下蹲更稳",
-  "en": "Build your thighs and glutes and a steadier squat with added weight."
+  "zh": "抱着壶铃练大腿和屁股，蹲得更稳",
+  "en": "Builds your thighs and butt with a kettlebell for a steadier squat."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "壶铃抱在胸前，臀部往后往下坐",
-    "en": "Hold the kettlebell at your chest and sit down and back"
+    "zh": "壶铃抱在胸前，屁股往后往下坐",
+    "en": "Kettlebell at your chest, sit down and back"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "膝盖对着脚尖，脚跟踩地。",
-    "en": "Keep your knees over your toes and your heels down."
+    "zh": "膝盖对着脚尖，脚后跟踩实。",
+    "en": "Knees over toes, heels planted."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "胸口保持抬起，壶铃贴身。",
-    "en": "Keep your chest up and the bell close to your body."
+    "zh": "胸口一直挺着，壶铃贴着身子。",
+    "en": "Chest stays up, bell close to your body."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "膝盖往里扣",
-   "en": "Letting the knees cave in."
+   "zh": "膝盖往里倒",
+   "en": "Knees caving in."
   },
   {
-   "zh": "弓背、壶铃离开身体",
-   "en": "Rounding the back and letting the bell drift away."
+   "zh": "弓背，壶铃离开身子",
+   "en": "Rounding your back and letting the bell drift away."
   }
  ],
  "cautions": [
   {
-   "zh": "膝盖不舒服时蹲浅一点，仍痛就停止",
-   "en": "If your knees feel uncomfortable, go less deep, and stop if it still hurts."
+   "zh": "膝盖不舒服就蹲浅点，还疼就停",
+   "en": "If your knees feel off, don't go as low. Stop if it still hurts."
   },
   {
-   "zh": "从轻重量开始，出现疼痛就停止",
-   "en": "Start with a light weight, and stop if you feel pain."
+   "zh": "先用轻壶铃，哪儿疼就停",
+   "en": "Start with a light kettlebell. Stop if anything hurts."
   }
  ],
  "tags": {
@@ -86,7 +86,7 @@
  },
  "phases": {
   "start": {
-   "zh": "向下坐",
+   "zh": "往下坐",
    "en": "Sit down"
   },
   "peak": {
@@ -94,7 +94,7 @@
    "en": "Hold"
   },
   "end": {
-   "zh": "站起",
+   "zh": "站起来",
    "en": "Stand up"
   }
  },
@@ -104,25 +104,21 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 1.0,
+    "seconds": 2.0,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 1,
+    "seconds": 0.5,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 0.8,
+    "seconds": 1.5,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 1.2
    }
   ],
-  "source": "spec-pulse-track r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -132,6 +128,94 @@
     "节奏核对：动画顶点真正静止约 0.47 秒（<0.8），rep_hold 改为 rep_updown"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 4.0 s（下 2.0 / 底 0.5 / 起 1.5），慢蹲",
+    "文字改教练口吻",
+    "难度 2/2 不变"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "3 组×10 次，休息 60 秒",
+     "3 组×10 次，休息 60 秒"
+    ],
+    "rep": [
+     "4.0 s",
+     "4.0 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 2,
+      "ai": 2
+     },
+     2
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：胸前抱壶铃深蹲、大腿前面高亮（b10 第 3 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 4.0,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "膝盖对着脚尖",
+    "en": "Knees over toes",
+    "from": [
+     "cue2",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "胸口挺着",
+    "en": "Chest up",
+    "from": [
+     "cue3",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 8,
+    "role": "form",
+    "zh": "脚后跟踩实",
+    "en": "Heels down",
+    "from": [
+     "cue2"
+    ]
+   },
+   {
+    "afterRep": 9,
+    "key": "p.last_rep"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.60"
+   ],
+   "allDone": [
+    "p.nice"
+   ]
   }
  }
 }

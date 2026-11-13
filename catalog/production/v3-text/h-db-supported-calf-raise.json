@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-db-supported-calf-raise",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-db-supported-calf-raise.js"
  ],
@@ -10,31 +10,31 @@
   "en": "Wall-Supported Dumbbell Calf Raise"
  },
  "purpose": {
-  "zh": "负重练小腿，扶墙更稳",
-  "en": "Build your calves with added weight and a wall for balance."
+  "zh": "拿着哑铃练小腿，扶着墙更稳",
+  "en": "Builds your calves with a bit of weight and a wall for balance."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "一手扶墙一手拿哑铃，踮起脚跟",
-    "en": "Hold the wall with one hand and a dumbbell in the other, then rise up"
+    "zh": "一手扶墙一手拿哑铃，脚后跟抬起来",
+    "en": "One hand on the wall, dumbbell in the other, heels up"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "身体站直，脚踝不往外翻。",
-    "en": "Stand tall and keep your ankles from rolling out."
+    "zh": "人站直，脚踝别往外翻。",
+    "en": "Stand tall, don't let your ankles roll out."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "顶端停一下，再慢慢放下。",
+    "zh": "顶上停一下，再慢慢放下来。",
     "en": "Pause at the top, then lower slowly."
    }
   }
@@ -42,17 +42,17 @@
  "commonErrors": [
   {
    "zh": "脚踝往外翻",
-   "en": "Rolling the ankles outward."
+   "en": "Ankles rolling outward."
   },
   {
-   "zh": "落得太快",
-   "en": "Dropping down too fast."
+   "zh": "一下子掉下来",
+   "en": "Dropping down fast."
   }
  ],
  "cautions": [
   {
-   "zh": "从轻重量开始，出现疼痛就停止",
-   "en": "Start with a light weight, and stop if you feel pain."
+   "zh": "先用轻哑铃，哪儿疼就停",
+   "en": "Start with light dumbbells. Stop if anything hurts."
   }
  ],
  "tags": {
@@ -79,7 +79,7 @@
  },
  "phases": {
   "start": {
-   "zh": "踮起脚",
+   "zh": "踮起来",
    "en": "Heels up"
   },
   "peak": {
@@ -87,8 +87,8 @@
    "en": "Pause"
   },
   "end": {
-   "zh": "放下",
-   "en": "Lower"
+   "zh": "慢慢放",
+   "en": "Lower slowly"
   }
  },
  "training": {
@@ -102,20 +102,16 @@
    },
    {
     "id": "hold",
-    "seconds": 0.9,
+    "seconds": 0.5,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 0.8,
+    "seconds": 1.5,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 1.3
    }
   ],
-  "source": "spec-pulse-track r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -125,6 +121,94 @@
     "节奏核对：动画顶点真正静止约 0.37 秒（<0.8），rep_hold 改为 rep_updown"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 4.0 s → 3.0 s（踮 1.0 / 停 0.5 / 放 1.5）",
+    "文字改教练口吻",
+    "难度 1/1 不变"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "3 组×12 次，休息 45 秒",
+     "3 组×12 次，休息 45 秒"
+    ],
+    "rep": [
+     "4.0 s",
+     "3.0 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：扶墙单手提哑铃踮脚、小腿高亮（b9 第 4 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 3.0,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "脚踝别往外翻",
+    "en": "Ankles don't roll out",
+    "from": [
+     "cue2",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "慢慢放，别掉",
+    "en": "Lower slowly",
+    "from": [
+     "cue3",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 8,
+    "role": "form",
+    "zh": "人站直",
+    "en": "Stand tall",
+    "from": [
+     "cue2"
+    ]
+   },
+   {
+    "afterRep": 11,
+    "key": "p.last_rep"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.45"
+   ],
+   "allDone": [
+    "p.nice"
+   ]
   }
  }
 }

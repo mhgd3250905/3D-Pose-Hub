@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-db-zottman-curl",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-db-zottman-curl-r5.js"
  ],
@@ -10,32 +10,32 @@
   "en": "Standing Dumbbell Zottman Curl"
  },
  "purpose": {
-  "zh": "同时练上臂前侧和前臂",
-  "en": "Train the fronts of your upper arms and your forearms together."
+  "zh": "一个动作同时练大臂前面和小臂",
+  "en": "Builds the fronts of your upper arms and your forearms in one move."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "掌心朝上举起，顶端翻成掌心朝下再放",
-    "en": "Curl up palms up, turn them down at the top, then lower"
+    "zh": "手心朝上弯起来，顶上翻成手心朝下再放",
+    "en": "Curl up palms up, flip them down at the top, then lower"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "手肘贴住身体，手腕平直。",
-    "en": "Keep your elbows at your sides and wrists straight."
+    "zh": "手肘贴住身体，手腕立直。",
+    "en": "Elbows at your sides, wrists straight."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "放到底再把掌心翻回朝上。",
-    "en": "At the bottom, turn your palms back up."
+    "zh": "放到底再把手心翻回朝上。",
+    "en": "At the bottom, flip your palms back up."
    }
   }
  ],
@@ -45,14 +45,14 @@
    "en": "Lowering too fast."
   },
   {
-   "zh": "身体前后晃借力",
-   "en": "Swinging the body."
+   "zh": "身子前后晃借劲",
+   "en": "Rocking your body."
   }
  ],
  "cautions": [
   {
-   "zh": "手腕或手肘疼时停止，先用轻哑铃",
-   "en": "Stop if your wrists or elbows hurt, and start with light dumbbells."
+   "zh": "先用轻哑铃，手腕或手肘疼就停",
+   "en": "Start with light dumbbells. Stop if your wrists or elbows hurt."
   }
  ],
  "tags": {
@@ -77,15 +77,15 @@
  },
  "phases": {
   "start": {
-   "zh": "举起",
+   "zh": "弯起来",
    "en": "Curl up"
   },
   "peak": {
-   "zh": "翻掌朝下",
-   "en": "Turn palms down"
+   "zh": "翻掌",
+   "en": "Flip palms"
   },
   "end": {
-   "zh": "慢慢放下",
+   "zh": "慢慢放",
    "en": "Lower slowly"
   }
  },
@@ -100,20 +100,20 @@
    },
    {
     "id": "hold",
-    "seconds": 2.1,
+    "seconds": 1.0,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 1.5,
+    "seconds": 2.0,
     "cue": "phase.end"
    },
    {
     "id": "rest",
-    "seconds": 3.4
+    "seconds": 0.5
    }
   ],
-  "source": "spec-timeline manual r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -124,6 +124,84 @@
    ],
    "flags": [
     "动画 8 秒只做 1 次，节奏很慢（底部停 3.4 s）；是否保持请定"
+   ]
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 8.0 s → 4.5 s（弯 1.0 / 顶上翻掌 1.0 / 慢放 2.0 / 底下翻回 0.5）；r2「动画 8 秒只做 1 次」flag 与节奏脱钩，不改动画",
+    "文字改教练口吻",
+    "难度 2/2 不变"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "3 组×8 次，休息 60 秒",
+     "3 组×8 次，休息 60 秒"
+    ],
+    "rep": [
+     "8.0 s",
+     "4.5 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 2,
+      "ai": 2
+     },
+     2
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：站姿哑铃弯举到肩前、小臂高亮（b9 第 5 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 4.5,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "手肘贴住身体",
+    "en": "Elbows at your sides",
+    "from": [
+     "cue2"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "手背朝上，慢慢放",
+    "en": "Palms down, lower slowly",
+    "from": [
+     "cue1",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 7,
+    "key": "p.last_rep"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.60"
+   ],
+   "allDone": [
+    "p.nice"
    ]
   }
  }

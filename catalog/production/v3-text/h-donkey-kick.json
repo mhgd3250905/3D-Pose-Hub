@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-donkey-kick",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-donkey-kick.js"
  ],
@@ -10,53 +10,53 @@
   "en": "Bent-Knee Donkey Kick"
  },
  "purpose": {
-  "zh": "练臀部，让腿往后抬更有力",
-  "en": "Build your glutes for stronger backward leg lifts."
+  "zh": "练屁股，让腿往后抬更有劲",
+  "en": "Builds your butt for a stronger backward leg lift."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "膝盖弯成直角，脚底往天花板推",
-    "en": "Keep your knee bent at a right angle and push your sole up"
+    "zh": "膝盖弯成直角，脚底往天花板蹬",
+    "en": "Knee bent at a right angle, push your sole up to the ceiling"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "双手和支撑的膝盖稳住，身体不动。",
-    "en": "Keep your hands and supporting knee steady and your body still."
+    "zh": "两手和撑地的膝盖稳住，身子不动。",
+    "en": "Hands and the knee on the floor stay put, body still."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "腰不往下塌，慢慢放回。",
-    "en": "Keep your lower back from sagging and lower slowly."
+    "zh": "腰别往下塌，慢慢放回来。",
+    "en": "Don't let your lower back sag. Lower slowly."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "塌腰借力抬得更高",
-   "en": "Sagging the lower back to lift higher."
+   "zh": "塌腰把腿抬高",
+   "en": "Sagging your lower back to lift higher."
   },
   {
-   "zh": "骨盆往一边转开",
-   "en": "Letting the hips twist open."
+   "zh": "胯往一边转开",
+   "en": "Hips twisting open to one side."
   }
  ],
  "cautions": [
   {
-   "zh": "腰不舒服时减小幅度，仍痛就停止",
-   "en": "If your lower back feels uncomfortable, reduce the range, and stop if it still hurts."
+   "zh": "腰不舒服就抬低点，还疼就停",
+   "en": "If your lower back feels off, don't lift as high. Stop if it still hurts."
   },
   {
-   "zh": "手腕刺痛或发麻时停止，开始前先活动手腕",
-   "en": "Stop if your wrists feel sharp pain or numbness, and warm them up first."
+   "zh": "手腕刺疼或发麻就停，开始前先转转手腕",
+   "en": "Stop if your wrists get sharp pain or go numb. Roll them out before you start."
   }
  ],
  "tags": {
@@ -84,15 +84,15 @@
  },
  "phases": {
   "start": {
-   "zh": "上踢",
-   "en": "Kick"
+   "zh": "往上蹬",
+   "en": "Kick up"
   },
   "peak": {
-   "zh": "夹臀",
+   "zh": "夹屁股",
    "en": "Squeeze"
   },
   "end": {
-   "zh": "放回",
+   "zh": "放回来",
    "en": "Lower"
   }
  },
@@ -102,26 +102,22 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 0.6,
+    "seconds": 1.0,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 1.5,
+    "seconds": 1.0,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 0.7,
+    "seconds": 1.0,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 1.2
    }
   ],
   "perSide": "each-side-separately",
-  "source": "spec-pulse-track r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -130,6 +126,108 @@
     "起止口令按 0.6/0.7 s 缩成 2 字/1 词；主口令「90度」改「直角」"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 4.0 s → 3.0 s（蹬 1.0 / 夹 1.0 / 放 1.0）",
+    "跪撑原地换腿，不加换边准备",
+    "「骨盆往一边转开」→「胯往一边转开」，「减小幅度」→「抬低点」",
+    "难度 1/1 不变"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "3 组×每侧12 次，休息 30 秒",
+     "3 组×每侧12 次，休息 30 秒"
+    ],
+    "rep": [
+     "4.0 s",
+     "3.0 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：跪撑屈膝往上蹬、屁股高亮（b9 第 7 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 3.0,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "腰别塌",
+    "en": "Don't sag your back",
+    "from": [
+     "cue3",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "胯别转开",
+    "en": "Hips stay square",
+    "from": [
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 8,
+    "role": "form",
+    "zh": "脚底往天花板蹬",
+    "en": "Sole to the ceiling",
+    "from": [
+     "cue1"
+    ]
+   },
+   {
+    "afterRep": 11,
+    "key": "p.last_rep"
+   }
+  ],
+  "before": [
+   "p.right_first"
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.30"
+   ],
+   "allDone": [
+    "p.nice"
+   ],
+   "sideDone": [
+    "p.switch_left"
+   ]
+  },
+  "sides": {
+   "order": [
+    "right",
+    "left"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边"
   }
  }
 }
