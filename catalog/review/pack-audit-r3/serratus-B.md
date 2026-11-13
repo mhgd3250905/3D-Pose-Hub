@@ -45,3 +45,11 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 常见错误2：腰往前挺 → 手往上滚时肋骨往前顶、腰往前折（Arching your lower back. → Ribs flaring and lower back bending as you roll up.）
+- 语音 reminders[1]：腰别往前挺 → 肋骨收住（Don't arch → Ribs down）
+- 语音 reminders[2]：到顶肩往前送 → 到顶肩膀往墙里推（Reach at the top → At the top, push into the wall）

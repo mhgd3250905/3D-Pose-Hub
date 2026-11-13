@@ -43,3 +43,11 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点2：肩膀往下压，手臂伸直。 → 胳膊锁直，两手把地往下推。（Press your shoulders down, arms straight. → Lock your arms and shove the floor down.）
+- 注意事项1：开始前先转转手腕，刺疼或发麻马上停 → 手腕疼就换撑杆或撑拳头，先活动开再做（Roll out your wrists first. Stop right away if they get sharp pain or go numb. → If your wrists hurt, use parallettes or fists. Warm them up first.）
+- 语音 reminders[0]：肩膀往下压 → 胳膊锁直，推地（Shoulders down → Arms locked, push）

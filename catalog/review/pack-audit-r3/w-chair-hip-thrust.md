@@ -45,3 +45,11 @@
 
 ## 8. 待开哥定
 - V4 预览没有这一批（batch-25），画面待补看
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 常见错误1：拱腰代替屁股使劲 → 顶到最高还往上挺，腰拱成桥（Arching your lower back instead of using your butt. → Pushing past straight so your back arches into a bridge.）
+- 常见错误2：膝盖往里倒 → 往上顶时膝盖往中间夹（Knees caving in. → Knees falling together as you drive up.）
+- 语音 reminders[2]：顶上夹紧屁股 → 下巴微收，屁股夹紧（Squeeze at the top → Chin tucked, squeeze）

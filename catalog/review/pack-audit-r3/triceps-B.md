@@ -46,3 +46,10 @@
 
 ## 8. 待开哥定
 - 预览帧看不到大臂后面高亮，请看视频确认
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 注意事项1：开始前先转转手腕，刺疼或发麻马上停 → 握杠手腕别往后折，疼就下来（Roll out your wrists first. Stop right away if they get sharp pain or go numb. → Don't let your wrists bend back on the bars. Come down if they hurt.）
+- 语音 set[2]：肩膀离耳朵远点 → 把杠往下推，肩膀下沉（Shoulders away from ears → Push the bars down, shoulders down）

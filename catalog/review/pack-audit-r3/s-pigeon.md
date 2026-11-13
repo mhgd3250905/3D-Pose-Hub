@@ -49,3 +49,9 @@
 
 ## 8. 待开哥定
 - purpose 写了后腿大腿根前面，高亮只有前腿臀部，是否补后腿高亮（只报告，未改模型）
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 常见错误3：憋着气，或一下一下往下颠 → 身子往前趴时屁股歪到一边（Holding your breath or bouncing. → Hips tipping to one side as you fold forward.）

@@ -45,3 +45,9 @@
 
 ## 8. 待开哥定
 - V4 预览没有这一批（batch-25），画面待补看
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点3：顶上停住，再慢慢放下。 → 顶上屁股夹住停一下，再一节一节放下来。（Hold at the top, then lower slowly. → Squeeze and hold at the top, then roll down slowly.）

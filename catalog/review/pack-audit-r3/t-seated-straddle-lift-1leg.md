@@ -43,3 +43,10 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点4：两边各做一次算 1 下。 → 左腿抬一次、右腿抬一次，合起来记 1 下。（One on each side counts as one. → One lift with each leg makes one.）
+- 常见错误1：身子往后仰去抬腿 → 抬腿时上身往后倒（Leaning back to lift your leg. → Falling back as the leg lifts.）

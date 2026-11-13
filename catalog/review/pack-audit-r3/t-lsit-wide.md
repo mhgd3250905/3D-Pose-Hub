@@ -45,3 +45,11 @@
 
 ## 8. 待开哥定
 - 侧面预览帧看不出两腿分开多宽，请看视频确认是宽腿
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点2：肩膀往下压，手臂伸直。 → 肩膀用力往下压，像要把自己从地上顶起来。（Press your shoulders down, arms straight. → Drive your shoulders down like you are lifting yourself off the floor.）
+- 注意事项1：开始前先转转手腕 → 先把手腕前后转一转，撑着刺疼就落地（Roll out your wrists before you start. → Roll your wrists first, and come down if they hurt sharply.）
+- 语音 set[1]：肩膀往下压 → 肩膀往下压，顶高（Shoulders down → Shoulders down, lift up）

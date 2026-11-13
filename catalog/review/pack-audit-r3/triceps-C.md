@@ -43,3 +43,9 @@
 
 ## 8. 待开哥定
 - V4 预览没有这一批（batch-25），画面待补看
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 常见错误2：甩腿借劲 → 推起来时两腿往前一蹬借劲（Swinging your legs for momentum. → Kicking your legs to help push up.）

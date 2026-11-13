@@ -44,3 +44,10 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点4：两边各做一次算 1 下。 → 左手摸一次、右手摸一次，合起来记 1 下。（One on each side counts as one. → A touch with each hand makes one.）
+- 注意事项1：开始前先转转手腕，刺疼或发麻马上停 → 抬手时一只手腕扛全身，先活动开，疼就跪着做（Roll out your wrists first. Stop right away if they get sharp pain or go numb. → One wrist takes your weight when a hand lifts. Warm up, and drop to your knees if it hurts.）

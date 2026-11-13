@@ -43,3 +43,11 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点2：肩膀往下压，手臂伸直。 → 画圈的时候身子往上顶，手臂一直伸直。（Press your shoulders down, arms straight. → Stay pushed up tall and keep your arms straight as you circle.）
+- 注意事项1：开始前先转转手腕，刺疼或发麻马上停 → 撑久了手腕吃不消，圈数少一点也行（Roll out your wrists first. Stop right away if they get sharp pain or go numb. → Your wrists work the whole time. Fewer circles is fine.）
+- 语音 reminders[0]：肩膀往下压 → 身子往上顶住（Shoulders down → Stay pushed up）

@@ -34,16 +34,16 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "就停在这儿，慢慢喘气，每次呼气再松一点。",
-    "en": "Stay right there, breathe slowly, let go a little more each breath out."
+    "zh": "胸口对着前腿小腿往前倾，两边屁股都坐在地上。",
+    "en": "Lean your chest over your front shin, both sides of your butt on the floor."
    }
   },
   {
    "id": "cue4",
    "primary": false,
    "text": {
-    "zh": "别一下一下往下压，有拉的感觉就够，别拉到疼。",
-    "en": "Don't bounce. A clear stretch is enough, never pain."
+    "zh": "前腿屁股后面拉得最明显，膝盖别疼就行。",
+    "en": "You should feel it most behind the front hip. The knees should not hurt."
    }
   }
  ],
@@ -57,8 +57,8 @@
    "en": "Hips tipping off the floor."
   },
   {
-   "zh": "憋气或一下一下往下压",
-   "en": "Holding your breath or bouncing."
+   "zh": "后腿那边屁股翘起来离地",
+   "en": "Back-leg side of your butt lifting off the floor."
   }
  ],
  "cautions": [
@@ -130,7 +130,8 @@
     "新增 sideSwitchSeconds 10（90/90 换边两腿要重新摆）",
     "名称「90/90坐姿髋部拉伸」→「90/90 坐姿拉胯」；「臀部和髋外侧」→「屁股和胯外侧」",
     "难度 v3 1 / ai-tags 2 → 统一 2",
-    "「别来回颠」→「别一下一下往下压」"
+    "「别来回颠」→「别一下一下往下压」",
+    "r3 第二遍（去套话，2026-11-14）：5 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
    ],
    "flags": [],
    "audit": {
@@ -172,11 +173,10 @@
    {
     "at": 4,
     "role": "posture",
-    "zh": "背挺直，别弓",
-    "en": "Long back",
+    "zh": "胸口对着前小腿",
+    "en": "Chest over front shin",
     "from": [
-     "cue1",
-     "commonErrors[0]"
+     "cue3"
     ]
    },
    {
@@ -191,10 +191,11 @@
    {
     "at": 20,
     "role": "form",
-    "zh": "呼气，再松一点",
-    "en": "Breathe out, let go",
+    "zh": "两边屁股坐稳",
+    "en": "Both sit bones down",
     "from": [
-     "cue3"
+     "cue3",
+     "commonErrors[2]"
     ]
    },
    {

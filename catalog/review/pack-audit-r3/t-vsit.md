@@ -45,3 +45,9 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 注意事项1：开始前先转转手腕 → 手撑在身后吃重量，先转转手腕（Roll out your wrists before you start. → Your hands carry weight behind you, so roll out your wrists first.）

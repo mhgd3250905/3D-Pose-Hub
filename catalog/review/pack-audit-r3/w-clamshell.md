@@ -46,3 +46,9 @@
 
 ## 8. 待开哥定
 - V4 预览没有这一批（batch-25），画面待补看
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 注意事项1：胯疼就打开小点，还疼就停 → 胯前面卡着疼就打开小点，两脚别分开（If your hip hurts, don't open as far. Stop if it still hurts. → If the front of your hip pinches, open less and keep your feet together.）

@@ -43,3 +43,10 @@
 
 ## 8. 待开哥定
 - V4 预览没有这一批（batch-25），画面待补看
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点4：两边各做一次算 1 下。 → 左手右腿一次、右手左腿一次，合起来记 1 下。（One on each side counts as one. → Left arm with right leg, then right arm with left leg, makes one.）
+- 相位口令 end：慢慢收回 → 手脚收回（Bring it back → Arm and leg in）

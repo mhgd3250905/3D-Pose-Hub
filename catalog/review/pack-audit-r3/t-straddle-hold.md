@@ -45,3 +45,10 @@
 
 ## 8. 待开哥定
 - 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 注意事项1：开始前先转转手腕 → 手腕先活动开，撑拳头或撑杆更好受（Roll out your wrists before you start. → Warm up your wrists. Fists or parallettes feel easier.）
+- 语音 set[1]：肩膀往下压 → 手推地，屁股顶高（Shoulders down → Push down, hips high）
