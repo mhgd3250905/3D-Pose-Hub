@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-db-lateral",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-db-lateral.js"
  ],
@@ -10,53 +10,53 @@
   "en": "Dumbbell Lateral Raise"
  },
  "purpose": {
-  "zh": "练肩膀两侧",
-  "en": "Build the sides of your shoulders."
+  "zh": "练肩膀两边",
+  "en": "Builds the sides of your shoulders."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "手肘微弯别动，双臂往两边抬到肩高",
-    "en": "Keep your elbows softly bent and raise your arms out to shoulder height"
+    "zh": "手肘微弯别动，两臂往两边抬到肩膀高",
+    "en": "Soft elbows, raise your arms out to shoulder height"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "肩膀往下放，别耸肩。",
-    "en": "Keep your shoulders down without shrugging."
+    "zh": "肩膀往下放，离耳朵远点。",
+    "en": "Shoulders down, away from your ears."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "慢慢放下，身体别晃。",
-    "en": "Lower slowly without swinging your body."
+    "zh": "慢慢放下来，身子别晃。",
+    "en": "Lower slowly, body still."
    }
   }
  ],
  "commonErrors": [
   {
    "zh": "耸肩",
-   "en": "Shrugging the shoulders."
+   "en": "Shrugging."
   },
   {
-   "zh": "身体晃动把哑铃甩起来",
-   "en": "Swinging the body to lift the weights."
+   "zh": "身子晃着把哑铃甩起来",
+   "en": "Swinging your body to lift the weights."
   }
  ],
  "cautions": [
   {
-   "zh": "从轻重量开始，疼就停",
-   "en": "Start with a light weight, and stop if you feel pain."
+   "zh": "先用轻哑铃，哪儿疼就停",
+   "en": "Start with light dumbbells. Stop if anything hurts."
   },
   {
-   "zh": "肩膀前面夹着疼时抬低一点",
-   "en": "If the front of your shoulder pinches, raise your arms lower."
+   "zh": "肩膀前面夹着疼就抬低点，还疼就停",
+   "en": "If the front of your shoulder pinches, don't go as high. Stop if it still hurts."
   }
  ],
  "tags": {
@@ -82,7 +82,7 @@
  },
  "phases": {
   "start": {
-   "zh": "侧抬",
+   "zh": "往两边抬",
    "en": "Raise out"
   },
   "peak": {
@@ -90,7 +90,7 @@
    "en": "Pause"
   },
   "end": {
-   "zh": "慢放下",
+   "zh": "慢慢放",
    "en": "Lower slowly"
   }
  },
@@ -100,25 +100,21 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 0.8,
+    "seconds": 1.0,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 1.1,
+    "seconds": 0.5,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 1.0,
+    "seconds": 1.5,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 1.1
    }
   ],
-  "source": "spec-pulse-track r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -129,6 +125,94 @@
     "节奏核对：动画顶点真正静止约 0.6 秒（<0.8），rep_hold 改为 rep_updown"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 4.0 s → 3.0 s（抬 1.0 / 停 0.5 / 放 1.5）",
+    "文字改教练口吻（「离耳朵远点」）",
+    "难度 1/1 不变"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "3 组×12 次，休息 45 秒",
+     "3 组×12 次，休息 45 秒"
+    ],
+    "rep": [
+     "4.0 s",
+     "3.0 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：站姿侧平举、肩膀中间高亮（b8 第 4 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 3.0,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "肩膀别耸",
+    "en": "Shoulders down",
+    "from": [
+     "cue2",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "别甩，身子别晃",
+    "en": "No swinging",
+    "from": [
+     "cue3",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 8,
+    "role": "form",
+    "zh": "抬到肩膀高就停",
+    "en": "Stop at shoulder height",
+    "from": [
+     "cue1"
+    ]
+   },
+   {
+    "afterRep": 11,
+    "key": "p.last_rep"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.45"
+   ],
+   "allDone": [
+    "p.nice"
+   ]
   }
  }
 }

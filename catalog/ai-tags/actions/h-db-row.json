@@ -5,7 +5,7 @@
   "status": "ai-draft",
   "source": {
     "text": "catalog/production/v3-text/h-db-row.json",
-    "textSha256Lf": "204ed5e5f359da74727f11e9acd3e563f14ca8a6d96b7ce2adba74bf634d4aab",
+    "textSha256Lf": "ea9974a1181544680745725d788da863dbce8ebf1d3d0bcc4f769866d2488cb9",
     "spec": "drill-anim/specs/h-db-row.js",
     "catalogV1": "catalog/catalog.json"
   },
@@ -150,6 +150,12 @@
         ]
       },
       "reason": "v3 粗粒度肌群（upper-back）按动作实际做法拆到细分 id。upper-back 归到 scapular（肩胛后缩）。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 1,
+      "reason": "r3 动作包核对（开哥 2026-11-13）：逐个重定，与 v3 tags.difficulty 同值。"
     }
   ],
   "reviewNotes": []

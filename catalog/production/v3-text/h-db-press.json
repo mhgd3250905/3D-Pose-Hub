@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-db-press",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-db-press.js"
  ],
@@ -10,8 +10,8 @@
   "en": "Standing Dumbbell Shoulder Press"
  },
  "purpose": {
-  "zh": "练肩膀和手臂后侧，让往上推更有力",
-  "en": "Build your shoulders and the backs of your arms for stronger overhead pressing."
+  "zh": "练肩膀和大臂后面，往上推更有劲",
+  "en": "Builds your shoulders and the backs of your arms for stronger overhead pressing."
  },
  "cues": [
   {
@@ -26,37 +26,37 @@
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "手肘在手腕正下方，稍微在身体前面。",
-    "en": "Keep your elbows under your wrists and a little in front of your body."
+    "zh": "手肘在手腕正下方，稍微在身体前面一点。",
+    "en": "Elbows under your wrists, a little in front of your body."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "肋骨往下收，身体不后仰。",
-    "en": "Keep your ribs down and do not lean back."
+    "zh": "肋骨往下收，人别往后仰。",
+    "en": "Ribs down, don't lean back."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "腰往后仰借力",
-   "en": "Arching the lower back to press."
+   "zh": "腰往后仰借劲",
+   "en": "Arching your lower back to press."
   },
   {
-   "zh": "猛地把手肘锁死",
-   "en": "Snapping the elbows straight."
+   "zh": "猛地把手肘顶死",
+   "en": "Snapping your elbows locked."
   }
  ],
  "cautions": [
   {
-   "zh": "从轻重量开始，出现疼痛就停止",
-   "en": "Start with a light weight, and stop if you feel pain."
+   "zh": "先用轻哑铃，哪儿疼就停",
+   "en": "Start with light dumbbells. Stop if anything hurts."
   },
   {
-   "zh": "肩前侧夹着疼时，缩小幅度或换简单版本",
-   "en": "If the front of your shoulder pinches, reduce the range or switch to an easier version."
+   "zh": "肩膀前面夹着疼就推低点，还疼就停",
+   "en": "If the front of your shoulder pinches, don't press as high. Stop if it still hurts."
   }
  ],
  "tags": {
@@ -84,7 +84,7 @@
  },
  "phases": {
   "start": {
-   "zh": "向上推",
+   "zh": "往上推",
    "en": "Press up"
   },
   "peak": {
@@ -92,7 +92,7 @@
    "en": "Pause"
   },
   "end": {
-   "zh": "慢慢放下",
+   "zh": "慢慢放",
    "en": "Lower slowly"
   }
  },
@@ -102,25 +102,25 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 0.8,
+    "seconds": 1.0,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 1.1,
+    "seconds": 0.5,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 1.0,
+    "seconds": 1.5,
     "cue": "phase.end"
    },
    {
     "id": "rest",
-    "seconds": 1.1
+    "seconds": 0.5
    }
   ],
-  "source": "spec-pulse-track r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -130,6 +130,93 @@
     "节奏核对：动画顶点真正静止约 0.6 秒（<0.8），rep_hold 改为 rep_updown"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 4.0 s → 3.5 s（推 1.0 / 顶 0.5 / 放 1.5 / 底 0.5）",
+    "「缩小幅度或换简单版本」→「推低点」，「锁死」→「顶死」",
+    "难度 2/2 不变"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "3 组×10 次，休息 60 秒",
+     "3 组×10 次，休息 60 秒"
+    ],
+    "rep": [
+     "4.0 s",
+     "3.5 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 2,
+      "ai": 2
+     },
+     2
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：站姿双哑铃推举过头、肩膀高亮（b8 第 7 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 3.5,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "人别往后仰",
+    "en": "Don't lean back",
+    "from": [
+     "cue3",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "手肘别顶死",
+    "en": "Don't lock your elbows",
+    "from": [
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 8,
+    "role": "form",
+    "zh": "手肘在手腕下面",
+    "en": "Elbows under wrists",
+    "from": [
+     "cue2"
+    ]
+   },
+   {
+    "afterRep": 9,
+    "key": "p.last_rep"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.60"
+   ],
+   "allDone": [
+    "p.nice"
+   ]
   }
  }
 }
