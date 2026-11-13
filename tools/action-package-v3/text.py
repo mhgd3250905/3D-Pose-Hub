@@ -22,6 +22,13 @@ JARGON = ['弹震', '离心', '向心', '等长', '伸髋', '屈髋', '屈伸', 
           '中立位', '髋铰链', '激活', '代偿', '矢状', '冠状', '胸椎', '腰椎', '颈椎', '桡偏', '尺偏', '旋前', '旋后', '超伸', '前伸', '后缩', '骨盆后倾', '骨盆前倾']
 JARGON_EN = ['ballistic', 'eccentric', 'concentric', 'isometric', 'flexion', 'extension', 'abduct', 'adduct', 'internal rotation', 'external rotation',
              'dorsiflex', 'plantarflex', 'contralateral', 'ipsilateral', 'neutral spine', 'hinge', 'activate', 'thoracic', 'lumbar', 'protract', 'retract', 'posterior tilt', 'anterior tilt']
+# coach voice (STYLE.md §9): jargon/bookish words banned in EVERY text field incl. voiceGuide lines (error) ...
+JARGON_ALL = ['弹震', '代偿', '激活', '中立位', '离心', '向心', '等长', '髋铰链', '募集', '稳定性', '核心收紧', '收紧核心', '脊柱', '躯干', '姿态', '下肢', '上肢', '矢状面', '冠状面']
+# ... and vague/bookish words that should usually be said more concretely (warning only; counted, list with --weak)
+WEAK = ['髋部', '骨盆', '幅度', '控制', '核心', '均匀', '感受', '稳定']
+WEAK_EN = ['maintain', 'ensure', 'engage', 'core', 'stabil', 'control']
+WEAK_HITS: list[str] = []
+STRICT, CUR = [False], ['']   # jargon is an error only for r3-reviewed actions (older drafts warn until their batch)
 CATEGORY = {'strength', 'mobility', 'stretch', 'stability', 'cardio', 'balance', 'breathing', 'assessment'}
 POSITION = {'standing', 'seated', 'kneeling', 'half-kneeling', 'supine', 'prone', 'side-lying', 'quadruped', 'plank', 'hanging', 'other'}
 DOSE = {'reps', 'hold', 'time'}
@@ -46,10 +53,17 @@ def bi(v, path, errs, kind=None):
         if kind in ('phase', 'primaryCue'):
             bad = [w for w in JARGON if w in v['zh']] + [w for w in JARGON_EN if w in v['en'].lower()]
             if bad: errs.append(f'{path}: spoken line uses hard-to-hear words {bad}')
+    bad = [w for w in JARGON_ALL if w in v['zh']]
+    if bad:
+        if STRICT[0]: errs.append(f'{path}: jargon not allowed anywhere (STYLE §9) {bad}')
+        else: WARN.append(f'{CUR[0]}: {path} jargon {bad} (error once the action is r3-reviewed)')
+    weak = [w for w in WEAK if w in v['zh']] + [w for w in WEAK_EN if w in v['en'].lower()]
+    if weak: WEAK_HITS.append(f'{path}: {weak}')
 
 
 def validate(t: dict, aid: str) -> list[str]:
     e = []
+    STRICT[0], CUR[0] = t.get('reviewStatus') == 'ai-reviewed-r3-needs-user-review', aid
     if t.get('format') != FORMAT: e.append('format')
     if t.get('id') != aid: e.append('id must match file name')
     if t.get('reviewStatus') not in REVIEW: e.append('reviewStatus')
@@ -107,6 +121,15 @@ def training_errors(t: dict) -> list[str]:
                 if x.get('cue') not in (None, 'phase.start', 'phase.peak', 'phase.end'): e.append(f'training.phases[{i}].cue')
     if t.get('unilateral') and tr.get('perSide') not in ('each-side-separately', 'alternate', 'one-side-only'):
         e.append('training.perSide: each-side-separately | alternate | one-side-only')
+    if 'sideSwitchSeconds' in tr:   # r3, optional, not read by the App yet
+        ss = tr['sideSwitchSeconds']
+        if not (isinstance(ss, int) and 5 <= ss <= 20): e.append('training.sideSwitchSeconds: integer 5-20')
+        if tr.get('perSide') != 'each-side-separately': e.append('training.sideSwitchSeconds only for perSide each-side-separately')
+    if t.get('reviewStatus') == 'ai-reviewed-r3-needs-user-review':
+        if k != 'hold' and tr.get('source') != 'real-tempo r3': e.append('training.source: real-tempo r3 (tempo from real training, not the animation)')
+        if k != 'hold' and isinstance(tr.get('phases'), list):
+            one = sum(p.get('seconds', 0) for p in tr['phases'])
+            if not 1.5 <= one <= 8: WARN.append(f"{t.get('id')}: one rep {one:.1f} s outside the usual 1.5-8 s")
     return e
 
 
@@ -173,11 +196,14 @@ def voice_guide_errors(t: dict) -> list[str]:
         R = vg.get('repSeconds')
         if not isinstance(R, (int, float)) or abs(R - one) > 0.15: e.append(f'voiceGuide.repSeconds must equal one counted rep ({one:.1f} s)')
         if vg.get('phaseCues') not in ('first-2-reps', 'every-rep'): e.append('voiceGuide.phaseCues: first-2-reps | every-rep')
+        if t.get('reviewStatus') == 'ai-reviewed-r3-needs-user-review' and vg.get('phaseCues') != 'first-2-reps': e.append('voiceGuide.phaseCues: r3 uses first-2-reps')
+        if N > 10 and vocab is not None and f'n.{N}' not in vocab: WARN.append(f'{aid}: counts up to {N} but shared vocabulary stops at n.10')
         if (vg.get('count') or {}).get('key') != 'n.{rep}': e.append('voiceGuide.count.key n.{rep}')
         rem, last = vg.get('reminders') or [], 0
         for i, x in enumerate(rem):
             a = x.get('afterRep')
             if not (isinstance(a, int) and last < a < N): e.append(f'voiceGuide.reminders[{i}].afterRep: increasing, 1..reps-1'); continue
+            if a < min(2, N - 1): e.append(f'voiceGuide.reminders[{i}]: first 2 reps carry the phase cues; start after rep 2')
             if a - last > 3: e.append(f'voiceGuide.reminders[{i}]: {a - last} reps without a line (max 3)')
             dur = line_ok(x, f'voiceGuide.reminders[{i}]')
             if isinstance(R, (int, float)) and dur > R - 1.0: e.append(f'voiceGuide.reminders[{i}]: ~{dur:.1f} s line longer than one rep minus the count')
@@ -198,6 +224,7 @@ def load(aid: str) -> dict:
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('--ids')
+    ap.add_argument('--weak', action='store_true', help='list every vague/bookish word hit (STYLE §9)')
     a = ap.parse_args(argv)
     files = sorted(TEXT_DIR.glob('*.json')) if not a.ids else [TEXT_DIR / f'{i}.json' for i in a.ids.split(',')]
     bad = 0
@@ -207,7 +234,8 @@ def main(argv=None):
         except Exception as ex:
             bad += 1; print(str(ex)[:600])
     for w in WARN: print('WARN', w)
-    print(json.dumps({'checked': len(files), 'failed': bad, 'warnings': len(WARN)}))
+    for w in WEAK_HITS if a.weak else []: print('WEAK', w)
+    print(json.dumps({'checked': len(files), 'failed': bad, 'warnings': len(WARN), 'weakWords': len(WEAK_HITS)}))
     return 1 if bad else 0
 
 

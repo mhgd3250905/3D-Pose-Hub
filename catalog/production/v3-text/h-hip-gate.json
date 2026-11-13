@@ -10,53 +10,53 @@
   "en": "Chair-Supported Hip Gate Opener"
  },
  "purpose": {
-  "zh": "活动髋部，让腿往外打开和转动更灵活",
-  "en": "Loosen your hips so your leg opens out and turns more freely."
+  "zh": "把胯活动开，腿往外打开、转起来更顺",
+  "en": "Loosens your hips so your leg opens out and turns more easily."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "膝盖抬到髋的高度，往外画一圈再放下",
-    "en": "Lift your knee to hip height, circle it out, then lower"
+    "zh": "膝盖抬到跟胯一样高，往外画一圈放下",
+    "en": "Knee up to hip height, circle it out, then down"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "一手扶椅背，骨盆和上身朝前不转。",
-    "en": "Hold the chair back and keep your hips and chest facing forward."
+    "zh": "一手扶椅背，肚脐和胸口一直朝前。",
+    "en": "One hand on the chair. Belly button and chest keep facing forward."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "画一圈算 1 次，下一次反方向画回来。",
-    "en": "One circle counts as one. Circle back the other way on the next one."
+    "zh": "画一圈算 1 下，下一下反着画回来。",
+    "en": "One circle counts as one. The next one goes the other way."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "身体跟着转或往一边倒",
-   "en": "Turning or leaning the body with the leg."
+   "zh": "腿一转，身子也跟着转或往一边倒",
+   "en": "Body turning or tipping with the leg."
   },
   {
-   "zh": "甩腿画圈太快",
-   "en": "Swinging the leg around too fast."
+   "zh": "甩着腿画，太快",
+   "en": "Swinging the leg round too fast."
   }
  ],
  "cautions": [
   {
-   "zh": "髋不舒服时减小幅度，仍痛就停止",
-   "en": "If your hip feels uncomfortable, make the circle smaller, and stop if it still hurts."
+   "zh": "胯不舒服就把圈画小点，还疼就停",
+   "en": "If your hip feels off, make the circle smaller. Stop if it still hurts."
   },
   {
-   "zh": "椅子会滑动时换一把稳固、不带轮子的",
-   "en": "If the chair can slide, use a sturdy one without wheels."
+   "zh": "椅子会滑就换把稳的、不带轮子的",
+   "en": "If the chair slides, use a sturdy one without wheels."
   }
  ],
  "tags": {
@@ -90,7 +90,7 @@
   },
   "peak": {
    "zh": "画圈",
-   "en": "Circle around"
+   "en": "Circle"
   },
   "end": {
    "zh": "放下",
@@ -103,26 +103,26 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 0.9,
+    "seconds": 1.2,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 1.5,
+    "seconds": 2.4,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 0.8,
+    "seconds": 1.0,
     "cue": "phase.end"
    },
    {
     "id": "rest",
-    "seconds": 0.8
+    "seconds": 0.4
    }
   ],
   "perSide": "each-side-separately",
-  "source": "spec-pulse-track r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -138,17 +138,35 @@
   },
   "r3": {
    "changes": [
-    "剂量核对：2 组×每侧 6 次、休息 20 秒合理（活动类 2 组 6–10 次），未改；6 次 = 开门 3 次 + 关门 3 次轮流",
-    "节奏核对：动画一圈 4.0 秒（抬膝约 0.5–0.9 s、画圈约 1.4–1.5 s、放下约 0.8–1.3 s、站立约 0.4 s），大幅度动作下限，入门跟得上，未调整",
-    "commonErrors 补「甩腿画圈太快」：站姿画圈最常见的问题，也对应「慢慢画」的要求",
-    "新增 voiceGuide（前 2 次念相位；第 1 次后提醒反方向，第 3 次后过半+骨盆朝前，第 5 次后「最后一次」）",
-    "画面对照（V4 b10）：扶椅站姿、一手叉腰、髋前侧/外侧高亮、椅子，一致"
+    "节奏放慢：一圈 4.0 s → 5.0 s（开哥定，单腿站入门者约 5 秒一圈；不改动画）",
+    "剂量 2 组×每侧 6 次、休息 20 秒不变（sec.20 已补进共用词）",
+    "voiceGuide 第一句提醒挪到第 2 下之后（前 2 下念相位口令）",
+    "文字改教练口吻（「肚脐和胸口一直朝前」「别甩」）",
+    "难度 1/1 不变"
    ],
    "flags": [
-    "4 秒一圈对单腿站立的入门用户偏快的上限，若开哥觉得快，建议改为 5 秒一圈（需动画放慢，本轮不改动画）",
-    "共用词表缺 sec.20，「休息 20 秒」念不了；需补 sec.20 或改休息时长",
-    "相位口令「画圈」不区分开门/关门方向，靠第 1 次后的提醒补足；是否要分开两套口令请开哥定"
-   ]
+    "相位口令「画圈」不分开门/关门方向，靠 cue3 补足；是否要两套口令"
+   ],
+   "audit": {
+    "dose": [
+     "2 组×每侧6 次，休息 20 秒",
+     "2 组×每侧6 次，休息 20 秒"
+    ],
+    "rep": [
+     "4.0 s",
+     "5.0 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：扶椅站姿、髋前侧/外侧高亮、椅子",
+    "extreme": null
+   }
   }
  },
  "voiceGuide": {
@@ -160,30 +178,18 @@
    "enWordsPerSecond": 2.5
   },
   "sharedVocabulary": "catalog/voice-v2/script.json#common",
-  "repSeconds": 4.0,
+  "repSeconds": 5.0,
   "phaseCues": "first-2-reps",
   "count": {
    "key": "n.{rep}",
    "at": "rep-end"
   },
-  "before": [
-   "p.right_first"
-  ],
   "reminders": [
    {
-    "afterRep": 1,
-    "role": "form",
-    "zh": "下一圈反方向",
-    "en": "Now circle the other way",
-    "from": [
-     "cue3"
-    ]
-   },
-   {
-    "afterRep": 3,
+    "afterRep": 2,
     "role": "halfway",
-    "zh": "过半了，骨盆朝前别转",
-    "en": "Halfway. Hips forward, don't turn",
+    "zh": "胸口朝前，别跟着转",
+    "en": "Chest faces forward",
     "from": [
      "cue2",
      "commonErrors[0]"
@@ -194,16 +200,19 @@
     "key": "p.last_rep"
    }
   ],
+  "before": [
+   "p.right_first"
+  ],
   "afterSet": {
-   "sideDone": [
-    "p.switch_left"
-   ],
    "moreSets": [
     "p.rest",
     "sec.20"
    ],
    "allDone": [
     "p.nice"
+   ],
+   "sideDone": [
+    "p.switch_left"
    ]
   },
   "sides": {
@@ -212,7 +221,7 @@
     "left"
    ],
    "perSide": "each-side-separately",
-   "note": "一侧 6 次（开门 3 + 关门 3，轮流）做完换边"
+   "note": "一侧全部组做完再换边"
   }
  }
 }
