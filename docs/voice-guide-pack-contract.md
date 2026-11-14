@@ -50,5 +50,6 @@
 - **现有 SDK（main 036b5fcd，SmartFit 0.1.0+33 锁的 7b2c9933）不认识 `"none"`**：`PoseHubVoiceGuide.tryParse` 遇到未知 `phaseCues` 会抛 FormatException → 整个 voiceGuide 当成没有，回退旧逻辑（只报数，讲解句全丢）。所以：
   1. **发包时（不等 SDK）**：发包脚本把 `"none"` 写成 `"first-2-reps"` 再下发。效果完全一样——SDK 在前 2 下只念 `rhythm.execution.phases` 里的 `@phase.*` 标记，没有标记就什么都不念。已装的 SF 不用更新就能用新包。
   2. **SDK 跟进（建议，小改动）**：`PoseHubVoiceGuidePhaseCues` 加 `none`，解析 `'none'`，`_guidedWork` 里 `rep <= 2` 那段对 `none` 跳过。SDK 发版后，发包脚本可以直接下发 `"none"`。
+- **发包实现（r2-v16，分支 `codex/voice-no-tempo-publish`）**：`tools/vnt/voice_resynth.py` 只重合成 `resynth.json` 里的 557 个讲解片段（与 r2-v14 同一套 Edge TTS + HipLab 处理/审核）；`tools/app-pack/build_r2_v16.py` 以 `release/app-pack-r2-v15` 为基线重套 v3-text 文字、换新讲解片段（`voice/<id>/r2-v16/<lang>/<clipId>.m4a`）、删作废片段、`none` → `first-2-reps` 并核对无 `@phase` 标记，其余成片/语音/共用词沿用已上线对象；`tools/vnt/vnt_preflight_test.dart` 是 SDK 侧预检（checkNow 必须 updated，249 个 voiceGuide 全部可解析，讲解句中英文都有对应语音且文字一致）。
 - 讲解句的 `clipId` 规则不变（`g.set.<i>` / `g.rem.<i>`，`i` 是在 `set` / `reminders` 数组里的下标）。本次改动后要重合成的条目、作废的条目逐条列在 `catalog/review/voice-no-tempo-r1/resynth.json`。
 
