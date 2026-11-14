@@ -94,18 +94,15 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 0.8,
-    "cue": "phase.start"
+    "seconds": 0.8
    },
    {
     "id": "hold",
-    "seconds": 0.5,
-    "cue": "phase.peak"
+    "seconds": 0.5
    },
    {
     "id": "back",
-    "seconds": 1.2,
-    "cue": "phase.end"
+    "seconds": 1.2
    }
   ],
   "source": "real-tempo r3"
@@ -150,6 +147,14 @@
     "frame": "一致：背靠墙勾脚尖、小腿前面高亮（b15 第 1 行）",
     "extreme": null
    }
+  },
+  "voice-no-tempo-r1": {
+   "changes": [
+    "去掉相位口令绑定（training.phases 的 phase.* 标记），voiceGuide.phaseCues 改为 none：前 2 下不再念「勾脚尖/停一下/慢慢放」",
+    "引导句 4 → 2 句：去掉节拍/速度指令和短口令，只留怎么做对的要领"
+   ],
+   "flags": [],
+   "by": "开哥 2026-11-14 23:45（SF 测试反馈）"
   }
  },
  "voiceGuide": {
@@ -162,7 +167,7 @@
   },
   "sharedVocabulary": "catalog/voice-v2/script.json#common",
   "repSeconds": 2.5,
-  "phaseCues": "first-2-reps",
+  "phaseCues": "none",
   "count": {
    "key": "n.{rep}",
    "at": "rep-end"
@@ -171,40 +176,21 @@
    {
     "afterRep": 2,
     "role": "form",
-    "zh": "别拍地",
-    "en": "No slapping",
+    "zh": "脚尖落地不拍",
+    "en": "No slapping down",
     "from": [
      "cue3",
      "commonErrors[0]"
-    ]
-   },
-   {
-    "afterRep": 5,
-    "role": "form",
-    "zh": "屁股贴着墙",
-    "en": "Hips stay back",
-    "from": [
-     "cue2",
-     "commonErrors[1]"
     ]
    },
    {
     "afterRep": 8,
     "role": "halfway",
-    "zh": "脚尖往上勾",
-    "en": "Toes up",
+    "zh": "屁股贴着墙",
+    "en": "Hips stay back",
     "from": [
-     "cue1"
-    ]
-   },
-   {
-    "afterRep": 11,
-    "role": "form",
-    "zh": "别拍地",
-    "en": "No slapping",
-    "from": [
-     "cue3",
-     "commonErrors[0]"
+     "cue2",
+     "commonErrors[1]"
     ]
    },
    {

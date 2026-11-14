@@ -110,18 +110,15 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 0.8,
-    "cue": "phase.start"
+    "seconds": 0.8
    },
    {
     "id": "hold",
-    "seconds": 0.4,
-    "cue": "phase.peak"
+    "seconds": 0.4
    },
    {
     "id": "back",
-    "seconds": 0.8,
-    "cue": "phase.end"
+    "seconds": 0.8
    }
   ],
   "perSide": "alternate",
@@ -168,6 +165,14 @@
     "frame": "动作一致：高位平板（俯视）、肩膀高亮（b22 第 2 行）",
     "extreme": null
    }
+  },
+  "voice-no-tempo-r1": {
+   "changes": [
+    "去掉相位口令绑定（training.phases 的 phase.* 标记），voiceGuide.phaseCues 改为 none：前 2 下不再念「摸肩/停/放回」",
+    "引导句 2 → 2 句：去掉节拍/速度指令和短口令，只留怎么做对的要领"
+   ],
+   "flags": [],
+   "by": "开哥 2026-11-14 23:45（SF 测试反馈）"
   }
  },
  "startingSide": "right",
@@ -182,7 +187,7 @@
   "sharedVocabulary": "catalog/voice-v2/script.json#common",
   "repSeconds": 4.0,
   "repUnit": "left+right",
-  "phaseCues": "first-2-reps",
+  "phaseCues": "none",
   "count": {
    "key": "n.{rep}",
    "at": "rep-end"
@@ -191,8 +196,8 @@
    {
     "afterRep": 2,
     "role": "form",
-    "zh": "屁股别晃",
-    "en": "Hips still",
+    "zh": "摸肩时屁股不晃",
+    "en": "Hips stay still on each touch",
     "from": [
      "cue1",
      "commonErrors[0]"
@@ -201,10 +206,10 @@
    {
     "afterRep": 5,
     "role": "halfway",
-    "zh": "慢一点",
-    "en": "Slower",
+    "zh": "撑地那边肩膀不往下塌",
+    "en": "Support shoulder doesn't sink",
     "from": [
-     "commonErrors[0]"
+     "commonErrors[1]"
     ]
    },
    {

@@ -98,18 +98,15 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 1.5,
-    "cue": "phase.start"
+    "seconds": 1.5
    },
    {
     "id": "hold",
-    "seconds": 0.5,
-    "cue": "phase.peak"
+    "seconds": 0.5
    },
    {
     "id": "back",
-    "seconds": 1.0,
-    "cue": "phase.end"
+    "seconds": 1.0
    }
   ],
   "source": "real-tempo r3"
@@ -153,6 +150,14 @@
     "frame": "一致：四点跪往后坐、腰背/大腿高亮（b12 第 4 行）",
     "extreme": null
    }
+  },
+  "voice-no-tempo-r1": {
+   "changes": [
+    "去掉相位口令绑定（training.phases 的 phase.* 标记），voiceGuide.phaseCues 改为 none：前 2 下不再念「往后坐/停一下/往前回」",
+    "引导句 3 → 2 句：去掉节拍/速度指令和短口令，只留怎么做对的要领"
+   ],
+   "flags": [],
+   "by": "开哥 2026-11-14 23:45（SF 测试反馈）"
   }
  },
  "voiceGuide": {
@@ -165,7 +170,7 @@
   },
   "sharedVocabulary": "catalog/voice-v2/script.json#common",
   "repSeconds": 3.0,
-  "phaseCues": "first-2-reps",
+  "phaseCues": "none",
   "count": {
    "key": "n.{rep}",
    "at": "rep-end"
@@ -184,17 +189,8 @@
    {
     "afterRep": 5,
     "role": "halfway",
-    "zh": "快弓就停",
-    "en": "Stop before it rounds",
-    "from": [
-     "cue3"
-    ]
-   },
-   {
-    "afterRep": 8,
-    "role": "form",
-    "zh": "两手别动",
-    "en": "Hands stay put",
+    "zh": "两手不动，手臂伸直",
+    "en": "Hands fixed, arms straight",
     "from": [
      "cue2"
     ]

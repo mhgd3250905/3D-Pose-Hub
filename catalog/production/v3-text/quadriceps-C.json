@@ -95,18 +95,15 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 1.0,
-    "cue": "phase.start"
+    "seconds": 1.0
    },
    {
     "id": "hold",
-    "seconds": 2.0,
-    "cue": "phase.peak"
+    "seconds": 2.0
    },
    {
     "id": "back",
-    "seconds": 2.0,
-    "cue": "phase.end"
+    "seconds": 2.0
    }
   ],
   "source": "real-tempo r3"
@@ -152,6 +149,14 @@
     "frame": "一致：器械坐姿伸腿、大腿前面高亮（b22 第 1 行）",
     "extreme": null
    }
+  },
+  "voice-no-tempo-r1": {
+   "changes": [
+    "去掉相位口令绑定（training.phases 的 phase.* 标记），voiceGuide.phaseCues 改为 none：前 2 下不再念「伸直/停两秒/慢慢放」",
+    "引导句 3 → 2 句：去掉节拍/速度指令和短口令，只留怎么做对的要领"
+   ],
+   "flags": [],
+   "by": "开哥 2026-11-14 23:45（SF 测试反馈）"
   }
  },
  "voiceGuide": {
@@ -164,7 +169,7 @@
   },
   "sharedVocabulary": "catalog/voice-v2/script.json#common",
   "repSeconds": 5.0,
-  "phaseCues": "first-2-reps",
+  "phaseCues": "none",
   "count": {
    "key": "n.{rep}",
    "at": "rep-end"
@@ -173,8 +178,8 @@
    {
     "afterRep": 2,
     "role": "form",
-    "zh": "别甩腿",
-    "en": "No swinging",
+    "zh": "腿靠大腿前面发力伸直，不甩",
+    "en": "The thigh straightens the leg, no kicking",
     "from": [
      "commonErrors[0]"
     ]
@@ -182,19 +187,11 @@
    {
     "afterRep": 5,
     "role": "halfway",
-    "zh": "背靠垫子",
-    "en": "Sit back",
+    "zh": "背靠垫子，膝盖对准转轴",
+    "en": "Back on the pad, knee lined up with the pivot",
     "from": [
+     "cue2",
      "cue3"
-    ]
-   },
-   {
-    "afterRep": 8,
-    "role": "form",
-    "zh": "停 2 秒",
-    "en": "Hold 2",
-    "from": [
-     "cue1"
     ]
    },
    {

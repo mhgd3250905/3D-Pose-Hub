@@ -93,8 +93,7 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 4.0,
-    "cue": "phase.start"
+    "seconds": 4.0
    }
   ],
   "source": "real-tempo r3"
@@ -137,6 +136,14 @@
     "frame": "一致：站姿叉腰胯画圈、胯/屁股高亮（b17 第 9 行）",
     "extreme": null
    }
+  },
+  "voice-no-tempo-r1": {
+   "changes": [
+    "去掉相位口令绑定（training.phases 的 phase.* 标记），voiceGuide.phaseCues 改为 none：前 2 下不再念「画一圈/画大一点/换方向」",
+    "引导句 2 → 2 句：去掉节拍/速度指令和短口令，只留怎么做对的要领"
+   ],
+   "flags": [],
+   "by": "开哥 2026-11-14 23:45（SF 测试反馈）"
   }
  },
  "voiceGuide": {
@@ -149,7 +156,7 @@
   },
   "sharedVocabulary": "catalog/voice-v2/script.json#common",
   "repSeconds": 4.0,
-  "phaseCues": "first-2-reps",
+  "phaseCues": "none",
   "count": {
    "key": "n.{rep}",
    "at": "rep-end"
@@ -158,8 +165,8 @@
    {
     "afterRep": 2,
     "role": "form",
-    "zh": "上身别甩",
-    "en": "Upper body still",
+    "zh": "上身不甩，只有胯在画圈",
+    "en": "Upper body quiet, only hips circle",
     "from": [
      "commonErrors[0]"
     ]
@@ -167,8 +174,8 @@
    {
     "afterRep": 5,
     "role": "halfway",
-    "zh": "肩膀放平",
-    "en": "Shoulders level",
+    "zh": "两边肩膀尽量平",
+    "en": "Shoulders as level as you can",
     "from": [
      "cue3"
     ]

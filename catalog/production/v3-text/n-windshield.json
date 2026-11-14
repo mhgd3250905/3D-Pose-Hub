@@ -106,18 +106,15 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 1.5,
-    "cue": "phase.start"
+    "seconds": 1.5
    },
    {
     "id": "hold",
-    "seconds": 0.5,
-    "cue": "phase.peak"
+    "seconds": 0.5
    },
    {
     "id": "back",
-    "seconds": 1.0,
-    "cue": "phase.end"
+    "seconds": 1.0
    }
   ],
   "perSide": "alternate",
@@ -164,6 +161,14 @@
     "frame": "一致：仰卧屈膝两膝左右倒（雨刷）、屁股/胯高亮（b18 第 10 行）",
     "extreme": null
    }
+  },
+  "voice-no-tempo-r1": {
+   "changes": [
+    "去掉相位口令绑定（training.phases 的 phase.* 标记），voiceGuide.phaseCues 改为 none：前 2 下不再念「倒向一边/停一下/回到中间」",
+    "引导句 1 → 1 句：去掉节拍/速度指令和短口令，只留怎么做对的要领"
+   ],
+   "flags": [],
+   "by": "开哥 2026-11-14 23:45（SF 测试反馈）"
   }
  },
  "startingSide": "right",
@@ -178,7 +183,7 @@
   "sharedVocabulary": "catalog/voice-v2/script.json#common",
   "repSeconds": 6.0,
   "repUnit": "left+right",
-  "phaseCues": "first-2-reps",
+  "phaseCues": "none",
   "count": {
    "key": "n.{rep}",
    "at": "rep-end"
@@ -187,10 +192,11 @@
    {
     "afterRep": 2,
     "role": "halfway",
-    "zh": "肩膀贴着地",
-    "en": "Shoulders down",
+    "zh": "两边肩膀贴着地，膝盖倒到哪算哪",
+    "en": "Shoulders stay down; knees go only as far as they go",
     "from": [
-     "commonErrors[0]"
+     "commonErrors[0]",
+     "cautions[0]"
     ]
    },
    {

@@ -112,18 +112,15 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 1.5,
-    "cue": "phase.start"
+    "seconds": 1.5
    },
    {
     "id": "hold",
-    "seconds": 0.8,
-    "cue": "phase.peak"
+    "seconds": 0.8
    },
    {
     "id": "back",
-    "seconds": 1.5,
-    "cue": "phase.end"
+    "seconds": 1.5
    },
    {
     "id": "rest",
@@ -174,6 +171,14 @@
     "frame": "一致：哥萨克侧蹲、一腿伸直、双臂前伸、大腿内侧高亮",
     "extreme": null
    }
+  },
+  "voice-no-tempo-r1": {
+   "changes": [
+    "去掉相位口令绑定（training.phases 的 phase.* 标记），voiceGuide.phaseCues 改为 none：前 2 下不再念「蹲过去/稳住/站起来」",
+    "引导句 1 → 2 句：去掉节拍/速度指令和短口令，只留怎么做对的要领"
+   ],
+   "flags": [],
+   "by": "开哥 2026-11-14 23:45（SF 测试反馈）"
   }
  },
  "voiceGuide": {
@@ -187,7 +192,7 @@
   "sharedVocabulary": "catalog/voice-v2/script.json#common",
   "repSeconds": 8.0,
   "repUnit": "left+right",
-  "phaseCues": "first-2-reps",
+  "phaseCues": "none",
   "count": {
    "key": "n.{rep}",
    "at": "rep-end"
@@ -196,11 +201,21 @@
    {
     "afterRep": 2,
     "role": "halfway",
-    "zh": "脚后跟踩住，膝盖对脚尖",
-    "en": "Heel down, knee over toes",
+    "zh": "重心放在蹲那侧的脚后跟，另一条腿伸直、脚尖朝上",
+    "en": "Weight on the squatting heel, other leg straight, toes up",
+    "from": [
+     "cue1",
+     "cue2"
+    ]
+   },
+   {
+    "afterRep": 4,
+    "role": "form",
+    "zh": "蹲的那边膝盖跟脚尖朝同一个方向，上身微微前倾",
+    "en": "Bent knee tracks your toes, chest leaning slightly forward",
     "from": [
      "cue2",
-     "commonErrors[1]"
+     "cue3"
     ]
    },
    {

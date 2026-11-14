@@ -114,18 +114,15 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 1.8,
-    "cue": "phase.start"
+    "seconds": 1.8
    },
    {
     "id": "hold",
-    "seconds": 0.4,
-    "cue": "phase.peak"
+    "seconds": 0.4
    },
    {
     "id": "back",
-    "seconds": 1.4,
-    "cue": "phase.end"
+    "seconds": 1.4
    },
    {
     "id": "rest",
@@ -178,6 +175,14 @@
     "frame": "一致：踏上椅子、大腿前高亮（b6 第 10 行）",
     "extreme": null
    }
+  },
+  "voice-no-tempo-r1": {
+   "changes": [
+    "去掉相位口令绑定（training.phases 的 phase.* 标记），voiceGuide.phaseCues 改为 none：前 2 下不再念「踩上站起/站稳/慢慢下来」",
+    "引导句 2 → 2 句：去掉节拍/速度指令和短口令，只留怎么做对的要领"
+   ],
+   "flags": [],
+   "by": "开哥 2026-11-14 23:45（SF 测试反馈）"
   }
  },
  "voiceGuide": {
@@ -191,7 +196,7 @@
   "sharedVocabulary": "catalog/voice-v2/script.json#common",
   "repSeconds": 8.0,
   "repUnit": "left+right",
-  "phaseCues": "first-2-reps",
+  "phaseCues": "none",
   "count": {
    "key": "n.{rep}",
    "at": "rep-end"
@@ -200,8 +205,8 @@
    {
     "afterRep": 2,
     "role": "form",
-    "zh": "整只脚踩上去",
-    "en": "Whole foot on the seat",
+    "zh": "整只脚踩在椅面中间，别只踩边",
+    "en": "Whole foot on the seat, not the edge",
     "from": [
      "cue1",
      "commonErrors[1]"

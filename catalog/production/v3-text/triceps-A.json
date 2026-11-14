@@ -101,18 +101,15 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 2.0,
-    "cue": "phase.start"
+    "seconds": 2.0
    },
    {
     "id": "hold",
-    "seconds": 0.3,
-    "cue": "phase.peak"
+    "seconds": 0.3
    },
    {
     "id": "back",
-    "seconds": 1.0,
-    "cue": "phase.end"
+    "seconds": 1.0
    },
    {
     "id": "rest",
@@ -160,6 +157,14 @@
     "frame": "一致：窄距俯卧撑、大臂后淡高亮（batch-24 第 9 行）",
     "extreme": null
    }
+  },
+  "voice-no-tempo-r1": {
+   "changes": [
+    "去掉相位口令绑定（training.phases 的 phase.* 标记），voiceGuide.phaseCues 改为 none：前 2 下不再念「慢慢下去/停/推起伸直」",
+    "引导句 2 → 2 句：去掉节拍/速度指令和短口令，只留怎么做对的要领"
+   ],
+   "flags": [],
+   "by": "开哥 2026-11-14 23:45（SF 测试反馈）"
   }
  },
  "voiceGuide": {
@@ -172,7 +177,7 @@
   },
   "sharedVocabulary": "catalog/voice-v2/script.json#common",
   "repSeconds": 4.3,
-  "phaseCues": "first-2-reps",
+  "phaseCues": "none",
   "count": {
    "key": "n.{rep}",
    "at": "rep-end"
@@ -181,8 +186,8 @@
    {
     "afterRep": 2,
     "role": "form",
-    "zh": "手肘贴着身子",
-    "en": "Elbows in",
+    "zh": "手肘贴着身子往后弯",
+    "en": "Elbows hug your sides",
     "from": [
      "cue1",
      "commonErrors[0]"
@@ -191,8 +196,8 @@
    {
     "afterRep": 5,
     "role": "halfway",
-    "zh": "推到顶伸直",
-    "en": "Lock out at the top",
+    "zh": "顶端手臂完全伸直",
+    "en": "Full lockout, elbows straight",
     "from": [
      "cue1",
      "commonErrors[1]"
