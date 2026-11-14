@@ -24,8 +24,10 @@ import argparse, hashlib, json, os, subprocess, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from catalog_pointer import default_published_at, published_at, validate_catalog_pointer  # noqa: E402
 
-PACK, PREV, MEDIA_PACK = "r2-v14", "r2-v13", "r2-v1"
-CAT_BASE = f"https://media.uuugk.win/pack/{PACK}/"
+# PACK 是成片/语音的版本号（对象键 media|voice/<id>/r2-v14/ 已上传，不改）；CAT_PACK 是目录版本。
+# r2-v14 目录因 category/position 词表不一致没过 SDK 预检，已上传的 pack/r2-v14/ 目录不覆盖，修正后的目录发 pack/r2-v15/。
+PACK, CAT_PACK, PREV, MEDIA_PACK = "r2-v14", "r2-v15", "r2-v13", "r2-v1"
+CAT_BASE = f"https://media.uuugk.win/pack/{CAT_PACK}/"
 SRC = f"release/app-pack-{PREV}"
 SRC_CATALOG_SHA = "09237458290ea3c161f446bab7c267e027b672892b61c4c4ac2662c0e945e7c5"
 SRC_SEMANTIC_SHA = "4958eb7d3679365739747947df1d3a2eea02165db7704451fa6f2dc2c5fdee81"
@@ -38,6 +40,9 @@ BASE_CLIPS = ["name", "primaryCue", "phase.start", "phase.peak", "phase.end"]
 LANGS = ["zh", "en"]
 SECTIONS = (("set", "set"), ("reminders", "rem"), ("steps", "step"))
 TEXT_DIR = "catalog/production/v3-text"
+# 与 SDK lib/src/catalog/pose_hub_app_test_pack.dart _definitionFields 相同
+DEFINITION_FIELDS = ["purpose", "category", "muscles", "muscleGroups", "equipment", "position", "unilateral", "level", "scenes",
+                     "defaultDose", "doseRange", "cues", "primaryCue", "cautions", "contraindications", "alternative"]
 
 
 def sha(b): return hashlib.sha256(b).hexdigest()
@@ -75,8 +80,10 @@ def apply_text(act, drill, t, problems, notes):
         "defaultDose": t["defaultDose"], "unilateral": t["unilateral"], "reviewStatus": t["reviewStatus"],
     }
     if "difficulty" in tags: upd["level"] = tags["difficulty"]
-    for k in ("activeMuscles", "synergistMuscles", "category", "position"):
+    for k in ("activeMuscles", "synergistMuscles"):
         if k in tags: upd[k] = tags[k]
+    # category/position：ai-tags 词表（plank、side-lying、stability…）与目录词表（prone、side_lying、core…）不同，
+    # SDK 要求与 semantic catalog 逐字一致，沿用 r2-v13 不改
     # 器械：ai-tags 词表（resistance-band、cable-machine…）与目录词表（band、cable…）不同，目录沿用 r2-v13 不改
     act.update(upd)
     if t["unilateral"] and t.get("startingSide"): act["startingSide"] = t["startingSide"]
@@ -254,6 +261,13 @@ def main():
     script = json.load(open("catalog/voice-v2/script.json", encoding="utf-8"))["common"]
     if need_common - set(script): problems.append(f"voiceGuide 用到 script.json 没有的共用词 {sorted(need_common - set(script))}")
     cat["voiceCommon"] = vc
+    # ---- 定义字段与 semantic catalog 逐字一致（SDK _validateSemanticCatalog 同一张字段表，不一致整包拒收）
+    for act in cat["actions"]:
+        d = drills.get(act["id"])
+        if d is None: continue
+        if act.get("nameZh") != (d.get("name") or {}).get("zh"): problems.append(f"{act['id']}: nameZh 与 semantic catalog 不一致")
+        for f in DEFINITION_FIELDS:
+            if f in act and act[f] != d.get(f): problems.append(f"{act['id']}: {f} 与 semantic catalog 不一致")
     # ---- 总数与 SDK 规则
     seen, n, tot = set(), 0, 0
     allv = vc["files"] + [f for x in cat["actions"] for f in (x.get("voice") or {}).get("files", [])]
@@ -266,15 +280,15 @@ def main():
         for f in act["files"].values(): n += 1; tot += f["bytes"] or 0
     md.update({"mediaFiles": n, "mediaBytes": tot, "voiceFiles": len(allv), "voiceBytes": sum(f["bytes"] or 0 for f in allv),
                "pendingVoiceIds": sorted(x["id"] for x in cat["actions"] if (x.get("voice") or {}).get("status") != "ready"),
-               "version": f"posehub-app-pack-{PACK}",
-               "note": f"{PACK}：V4 定版。249 个动作全部换 V4 成片 media/<id>/{PACK}/、新文字（动作包核对 r3）、重合成语音 voice/<id>/{PACK}/ "
+               "version": f"posehub-app-pack-{CAT_PACK}",
+               "note": f"{CAT_PACK}：V4 定版（r2-v14 目录修正 category/position 后重发）。249 个动作全部换 V4 成片 media/<id>/{PACK}/、新文字（动作包核对 r3）、重合成语音 voice/<id>/{PACK}/ "
                        f"与引导句（voiceGuide），共用词 voice/_common/{PACK}/；媒体仍在 pack/{MEDIA_PACK}/ 前缀，只追加"})
     cat["sourceRuns"] = cat["sourceRuns"] + [{"batch": MEDIA_SET, "commit": RENDER_BASE, "selectedActions": len(acts), "replaces": f"{PREV} media/text/voice (V4)"}]
-    cat["pack"], cat["id"], cat["sourceCommit"], cat["previousPack"] = PACK, f"app-pack-{PACK}", a.source_commit, PREV
-    sem["source"].update({"pack": PACK, "previousPack": PREV, "commit": a.source_commit, "text": TEXT_DIR})
+    cat["pack"], cat["id"], cat["sourceCommit"], cat["previousPack"] = CAT_PACK, f"app-pack-{CAT_PACK}", a.source_commit, PREV
+    sem["source"].update({"pack": CAT_PACK, "previousPack": PREV, "commit": a.source_commit, "text": TEXT_DIR})
     if a.published_at: sem["generatedAt"] = a.published_at
     sem_bytes = dump(sem); cat["semanticCatalog"].update({"bytes": len(sem_bytes), "sha256": sha(sem_bytes)})
-    report = {"pack": PACK, "from": PREV, "fromCatalogSha256": SRC_CATALOG_SHA, "mediaPrefix": f"pack/{MEDIA_PACK}/", "catalogPrefix": f"pack/{PACK}/",
+    report = {"pack": CAT_PACK, "assetRevision": PACK, "from": PREV, "fromCatalogSha256": SRC_CATALOG_SHA, "mediaPrefix": f"pack/{MEDIA_PACK}/", "catalogPrefix": f"pack/{CAT_PACK}/",
               "sourceCommit": a.source_commit, "actions": len(acts), "voiceGuideActions": sum(1 for x in cat["actions"] if x.get("voiceGuide")),
               "commonKeysUsed": sorted(need_common), "notes": notes, "problems": problems,
               "channelsGenerated": ["channels/dev.json", "channels/beta.json"], "stableUntouched": True}
@@ -288,7 +302,7 @@ def main():
     if problems:
         print("\n".join(problems)); print(json.dumps({"error": f"{len(problems)} 个问题，未写目录"}, ensure_ascii=False)); sys.exit(1)
     cb = dump(cat)
-    ptr = {"schema": 1, "pack": PACK, "catalog": CAT_BASE + "catalog.json", "catalog_sha256": sha(cb), "catalog_bytes": len(cb),
+    ptr = {"schema": 1, "pack": CAT_PACK, "catalog": CAT_BASE + "catalog.json", "catalog_sha256": sha(cb), "catalog_bytes": len(cb),
            "min_sdk": MIN_SDK, "published_at": a.published_at}
     validate_catalog_pointer(ptr)
     open(os.path.join(a.out, "catalog.json"), "wb").write(cb); open(os.path.join(a.out, "catalog", "catalog.json"), "wb").write(sem_bytes)
@@ -301,7 +315,7 @@ def main():
     open(os.path.join(a.out, "report.json"), "wb").write(dump(report))
     for nme in ("catalog.json", "catalog/catalog.json", "report.json", "media-receipts.json"):
         b = rd(os.path.join(a.out, nme))
-        plan.append({"id": None, "kind": "catalog", "path": nme, "objectKey": f"pack/{PACK}/{nme}", "source": os.path.join(a.out, nme),
+        plan.append({"id": None, "kind": "catalog", "path": nme, "objectKey": f"pack/{CAT_PACK}/{nme}", "source": os.path.join(a.out, nme),
                      "contentType": "application/json", "bytes": len(b), "sha256": sha(b)})
     open(os.path.join(a.out, "plan.json"), "wb").write(dump(plan))
     print(json.dumps({"catalog": report["catalog"], "semantic": report["semantic"], "uploadFiles": len(plan), "mediaFiles": n, "mediaBytes": tot,
