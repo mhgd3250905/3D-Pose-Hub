@@ -107,13 +107,11 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 1.0,
-    "cue": "phase.start"
+    "seconds": 1.0
    },
    {
     "id": "back",
-    "seconds": 1.0,
-    "cue": "phase.end"
+    "seconds": 1.0
    }
   ],
   "perSide": "alternate",
@@ -161,6 +159,14 @@
     "frame": "一致：站姿开合步、两手举过头、肩/大臂外侧高亮（b13 第 9 行）",
     "extreme": null
    }
+  },
+  "voice-no-tempo-r1": {
+   "changes": [
+    "去掉相位口令绑定（training.phases 的 phase.* 标记），voiceGuide.phaseCues 改为 none：前 2 下不再念「迈出去/手举高/收回来」",
+    "引导句 3 → 2 句：去掉节拍/速度指令和短口令，只留怎么做对的要领"
+   ],
+   "flags": [],
+   "by": "开哥 2026-11-14 23:45（SF 测试反馈）"
   }
  },
  "voiceGuide": {
@@ -174,7 +180,7 @@
   "sharedVocabulary": "catalog/voice-v2/script.json#common",
   "repSeconds": 4.0,
   "repUnit": "left+right",
-  "phaseCues": "first-2-reps",
+  "phaseCues": "none",
   "count": {
    "key": "n.{rep}",
    "at": "rep-end"
@@ -183,8 +189,8 @@
    {
     "afterRep": 2,
     "role": "form",
-    "zh": "肩膀别耸",
-    "en": "Shoulders down",
+    "zh": "肩膀放松，不往耳朵耸",
+    "en": "Shoulders relaxed, not shrugged",
     "from": [
      "commonErrors[0]"
     ]
@@ -192,17 +198,8 @@
    {
     "afterRep": 5,
     "role": "halfway",
-    "zh": "别越做越快",
-    "en": "Steady pace",
-    "from": [
-     "commonErrors[1]"
-    ]
-   },
-   {
-    "afterRep": 8,
-    "role": "form",
-    "zh": "脚尖先落地",
-    "en": "Toes first",
+    "zh": "脚尖先着地再踩平",
+    "en": "Toes touch first, heel follows",
     "from": [
      "cue2"
     ]

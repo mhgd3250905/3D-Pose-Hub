@@ -100,18 +100,15 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 1.5,
-    "cue": "phase.start"
+    "seconds": 1.5
    },
    {
     "id": "hold",
-    "seconds": 1.0,
-    "cue": "phase.peak"
+    "seconds": 1.0
    },
    {
     "id": "back",
-    "seconds": 1.5,
-    "cue": "phase.end"
+    "seconds": 1.5
    }
   ],
   "source": "real-tempo r3"
@@ -155,6 +152,14 @@
     "frame": "一致：面墙、小臂贴泡沫轴往上滑、侧肋淡高亮（batch-23 第 6 行）",
     "extreme": null
    }
+  },
+  "voice-no-tempo-r1": {
+   "changes": [
+    "去掉相位口令绑定（training.phases 的 phase.* 标记），voiceGuide.phaseCues 改为 none：前 2 下不再念「往上滚/肩往前送/滑下来」",
+    "引导句 3 → 2 句：去掉节拍/速度指令和短口令，只留怎么做对的要领"
+   ],
+   "flags": [],
+   "by": "开哥 2026-11-14 23:45（SF 测试反馈）"
   }
  },
  "voiceGuide": {
@@ -167,7 +172,7 @@
   },
   "sharedVocabulary": "catalog/voice-v2/script.json#common",
   "repSeconds": 4.0,
-  "phaseCues": "first-2-reps",
+  "phaseCues": "none",
   "count": {
    "key": "n.{rep}",
    "at": "rep-end"
@@ -176,8 +181,8 @@
    {
     "afterRep": 2,
     "role": "form",
-    "zh": "肩膀别耸",
-    "en": "Shoulders down",
+    "zh": "往上滚时肩膀不耸",
+    "en": "Shoulders low as you roll",
     "from": [
      "commonErrors[0]"
     ]
@@ -185,19 +190,10 @@
    {
     "afterRep": 5,
     "role": "halfway",
-    "zh": "肋骨收住",
-    "en": "Ribs down",
+    "zh": "肋骨收着，腰不往前折",
+    "en": "Ribs in, low back not arching",
     "from": [
      "commonErrors[1]"
-    ]
-   },
-   {
-    "afterRep": 8,
-    "role": "form",
-    "zh": "到顶肩膀往墙里推",
-    "en": "At the top, push into the wall",
-    "from": [
-     "cue3"
     ]
    },
    {

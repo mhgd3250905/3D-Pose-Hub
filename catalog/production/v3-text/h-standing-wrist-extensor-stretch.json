@@ -93,18 +93,15 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 1.5,
-    "cue": "phase.start"
+    "seconds": 1.5
    },
    {
     "id": "hold",
-    "seconds": 3.0,
-    "cue": "phase.peak"
+    "seconds": 3.0
    },
    {
     "id": "back",
-    "seconds": 1.5,
-    "cue": "phase.end"
+    "seconds": 1.5
    }
   ],
   "perSide": "each-side-separately",
@@ -151,6 +148,14 @@
     "frame": "一致：站姿一臂前伸、手腕往下弯、小臂高亮（b13 第 8 行）",
     "extreme": null
    }
+  },
+  "voice-no-tempo-r1": {
+   "changes": [
+    "去掉相位口令绑定（training.phases 的 phase.* 标记），voiceGuide.phaseCues 改为 none：前 2 下不再念「手腕往下弯/停住，喘气/慢慢松开」",
+    "引导句 1 → 1 句：去掉节拍/速度指令和短口令，只留怎么做对的要领"
+   ],
+   "flags": [],
+   "by": "开哥 2026-11-14 23:45（SF 测试反馈）"
   }
  },
  "voiceGuide": {
@@ -163,7 +168,7 @@
   },
   "sharedVocabulary": "catalog/voice-v2/script.json#common",
   "repSeconds": 6.0,
-  "phaseCues": "first-2-reps",
+  "phaseCues": "none",
   "count": {
    "key": "n.{rep}",
    "at": "rep-end"
@@ -172,11 +177,12 @@
    {
     "afterRep": 2,
     "role": "halfway",
-    "zh": "肩膀放松，别耸",
-    "en": "Shoulder relaxed",
+    "zh": "肩膀放松，手腕往下弯着就够，不硬掰",
+    "en": "Shoulder relaxed, a gentle bend, no forcing",
     "from": [
      "cue3",
-     "commonErrors[0]"
+     "commonErrors[0]",
+     "commonErrors[1]"
     ]
    },
    {

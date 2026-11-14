@@ -92,13 +92,11 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 1.2,
-    "cue": "phase.start"
+    "seconds": 1.2
    },
    {
     "id": "back",
-    "seconds": 1.2,
-    "cue": "phase.end"
+    "seconds": 1.2
    }
   ],
   "perSide": "each-side-separately",
@@ -149,6 +147,14 @@
     "frame": "一致：扶椅一脚悬空勾绷脚、小腿高亮（b20 第 6 行）",
     "extreme": null
    }
+  },
+  "voice-no-tempo-r1": {
+   "changes": [
+    "去掉相位口令绑定（training.phases 的 phase.* 标记），voiceGuide.phaseCues 改为 none：前 2 下不再念「绷脚尖/别憋气/勾脚尖」",
+    "引导句 2 → 2 句：去掉节拍/速度指令和短口令，只留怎么做对的要领"
+   ],
+   "flags": [],
+   "by": "开哥 2026-11-14 23:45（SF 测试反馈）"
   }
  },
  "voiceGuide": {
@@ -161,7 +167,7 @@
   },
   "sharedVocabulary": "catalog/voice-v2/script.json#common",
   "repSeconds": 2.4,
-  "phaseCues": "first-2-reps",
+  "phaseCues": "none",
   "count": {
    "key": "n.{rep}",
    "at": "rep-end"
@@ -170,8 +176,8 @@
    {
     "afterRep": 2,
     "role": "form",
-    "zh": "别晃腿",
-    "en": "Leg still",
+    "zh": "整条腿不晃",
+    "en": "Leg stays quiet",
     "from": [
      "cue1",
      "commonErrors[0]"
@@ -180,11 +186,10 @@
    {
     "afterRep": 5,
     "role": "halfway",
-    "zh": "慢慢做",
-    "en": "Go slow",
+    "zh": "喘气别憋住",
+    "en": "Keep breathing easy",
     "from": [
-     "cue3",
-     "commonErrors[0]"
+     "cue3"
     ]
    },
    {

@@ -7,6 +7,7 @@ The text is the ONLY hand-authored input of the definition and voice layers; eve
 
     python3 tools/action-package-v3/text.py [--ids a,b]       # all files, exit 1 on any error
     python3 tools/action-package-v3/text.py --dupes [--dupes-min 4]   # report sentences shared across actions (STYLE §9, report only)
+    python3 tools/action-package-v3/text.py --tempo   # list voiceGuide lines hitting the beat/tempo-command word list (STYLE §8, must be 0)
 """
 from __future__ import annotations
 import argparse, json, re, sys
@@ -120,6 +121,8 @@ def training_errors(t: dict) -> list[str]:
                 if x.get('id') not in ('go', 'hold', 'back', 'rest') or not (isinstance(x.get('seconds'), (int, float)) and x['seconds'] > 0):
                     e.append(f'training.phases[{i}]: id go/hold/back/rest + seconds > 0')
                 if x.get('cue') not in (None, 'phase.start', 'phase.peak', 'phase.end'): e.append(f'training.phases[{i}].cue')
+                if x.get('cue') and t.get('reviewStatus') == 'ai-reviewed-r3-needs-user-review':
+                    e.append(f'training.phases[{i}].cue: no phase voice markers (voice-no-tempo-r1: phase words are not spoken)')
     if t.get('unilateral') and tr.get('perSide') not in ('each-side-separately', 'alternate', 'one-side-only'):
         e.append('training.perSide: each-side-separately | alternate | one-side-only')
     if 'sideSwitchSeconds' in tr:   # r3, optional, not read by the App yet
@@ -130,12 +133,34 @@ def training_errors(t: dict) -> list[str]:
         if k != 'hold' and tr.get('source') != 'real-tempo r3': e.append('training.source: real-tempo r3 (tempo from real training, not the animation)')
         if k != 'hold' and isinstance(tr.get('phases'), list):
             one = sum(p.get('seconds', 0) for p in tr['phases'])
-            if not 1.5 <= one <= 8 and not (one > 8 and (t.get('voiceGuide') or {}).get('phaseCues') == 'steps'): WARN.append(f"{t.get('id')}: one rep {one:.1f} s outside the usual 1.5-8 s")
+            if not 1.5 <= one <= 8 and t.get('id') not in LONG_REP_OK: WARN.append(f"{t.get('id')}: one rep {one:.1f} s outside the usual 1.5-8 s")
     return e
 
 
 SHARED = REPO / 'catalog/voice-v2/script.json'
 WARN: list[str] = []
+# voice-no-tempo-r1 (开哥 2026-11-14 23:45): voiceGuide 只讲「怎么做对」，不喊跟着每下节拍走的动作口令、不指挥快慢（STYLE §8）。
+# 词表命中即报错；`--tempo` 列出全部命中（目标 0）。改写成状态/要领描述：「蹲那侧脚后跟踩实」而不是「蹲过去、踩住」。
+TEMPO_ZH = ['现在', '下一下', '每一下', '每下', '这一下', '一下一下', '再来', '回来', '回去', '回到', '回正', '下去', '上去', '过去',
+            '放下', '放回', '落下', '落回', '收回', '转回', '摆回', '并回', '躺回', '坐回', '推起', '推上', '推出去', '推回', '推直',
+            '蹲下', '蹲过去', '站起来', '坐起来', '撑起来', '顶起来', '抬起来', '踩住', '稳住', '停住', '停一下', '停两秒', '停一秒',
+            '顿一下', '保持住', '顶住', '换边', '换腿', '换手', '吸气', '呼气', '慢', '快一点', '快点', '越做越快',
+            '节奏', '跟着数', '数两秒', '数到', '到顶', '到底', '继续', '夹一下', '碰一下', '再往', '再沉', '再够', '再滑', '再夹', '再转',
+            '再松', '再推', '再抬', '再坐', '再挪', '先轻后重']
+TEMPO_ZH_RE = [r'停\s*\d', r'\d\s*秒']
+TEMPO_EN_RE = [r'\bnow\b', r'\bagain\b', r'\bnext (rep|one)\b', r'\bexhale\b', r'\binhale\b', r'\bbreathe (in|out)\b', r'\bswitch\b',
+               r'\bhold\b', r'\bpause\b', r'\bslow(ly|er)?\b', r'\bfast(er)?\b', r'\bthen\b', r'\bcome back\b', r'\bback (up|down|in|out|to)\b',
+               r'\bstand up\b', r'\bsit up\b', r'\bpush up\b', r'\blie back\b', r'\blower(?! back)\b', r'\bfor (one|two|1|2)\b',
+               r'\b\d+ ?(s|sec|seconds?)\b', r'\bat the top\b', r'\ball the way (up|down)\b', r'\bkeep going\b', r'\bone more\b']
+TEMPO_HITS: list[str] = []
+VG_MIN_ZH, VG_MIN_EN = 5, 3   # shorter self-written lines sound like barked commands (「腰别塌」「Hold」); say what right looks like
+VG_REPS_MAX_LINES, VG_REPS_MIN_SPACING = 2, 2   # reps: at most 2 self-written lines per set, >= 2 reps apart (counts already fill the set)
+LONG_REP_OK = {'deltoids-B'}   # 半程土耳其起立：一下约 14 s 是真实节奏（开哥 2026-11-14 同意）
+
+
+def tempo_hits(zh: str, en: str) -> list[str]:
+    h = [w for w in TEMPO_ZH if w in zh] + [p for p in TEMPO_ZH_RE if re.search(p, zh)]
+    return h + [p for p in TEMPO_EN_RE if re.search(p, en.lower())]
 VG_GAP, VG_LEAD, VG_TAIL, VG_MARGIN = 10.0, 3.0, 4.0, 0.3   # anti-blank gap, first-line earliest, countdown zone, line spacing (s)
 VG_STEP_MIN, VG_STEP_LEAD, VG_STEP_TAIL = 8.0, 1.5, 0.8   # steps mode: min rep length, first step earliest, room left for the count (s)
 
@@ -171,6 +196,13 @@ def voice_guide_errors(t: dict) -> list[str]:
     def line_ok(x, path):
         if 'key' in x: key_ok(x['key'], path); return 0.0
         bi(x, path, e)
+        if isinstance(x.get('zh'), str) and isinstance(x.get('en'), str):
+            hit = tempo_hits(x['zh'], x['en'])
+            if hit:
+                TEMPO_HITS.append(f'{aid} {path}: {hit} {x["zh"]} / {x["en"]}')
+                e.append(f'{path}: beat/tempo command words {hit} (STYLE §8: say how to do it right, not what to do now)')
+            if len(re.sub(r'[\s，。、！？,.!?；;]', '', x['zh'])) < VG_MIN_ZH or len(x['en'].split()) < VG_MIN_EN:
+                e.append(f'{path}: line shorter than {VG_MIN_ZH} zh chars / {VG_MIN_EN} en words reads as a command; describe the form')
         if not (isinstance(x.get('from'), list) and x['from']): e.append(f'{path}.from: list the cue/error/caution it comes from')
         else:
             for r in x['from']:
@@ -197,9 +229,10 @@ def voice_guide_errors(t: dict) -> list[str]:
         one = sum(p.get('seconds', 0) for p in tr.get('phases') or []) * (2 if tr.get('repUnit') == 'left+right' else 1)
         R = vg.get('repSeconds')
         if not isinstance(R, (int, float)) or abs(R - one) > 0.15: e.append(f'voiceGuide.repSeconds must equal one counted rep ({one:.1f} s)')
-        steps = vg.get('phaseCues') == 'steps'   # r3 (开哥 2026-11-14): one long rep (>= 8 s) may speak one line per step, every rep
-        if vg.get('phaseCues') not in ('first-2-reps', 'every-rep', 'steps'): e.append('voiceGuide.phaseCues: first-2-reps | steps | every-rep')
-        if t.get('reviewStatus') == 'ai-reviewed-r3-needs-user-review' and vg.get('phaseCues') not in ('first-2-reps', 'steps'): e.append('voiceGuide.phaseCues: r3 uses first-2-reps (or steps for reps >= 8 s)')
+        # voice-no-tempo-r1 (开哥 2026-11-14 23:45): no phase words between counts -> phaseCues none; first-2-reps/steps/every-rep stay parseable for old drafts
+        steps = vg.get('phaseCues') == 'steps'
+        if vg.get('phaseCues') not in ('none', 'first-2-reps', 'every-rep', 'steps'): e.append('voiceGuide.phaseCues: none | first-2-reps | steps | every-rep')
+        if t.get('reviewStatus') == 'ai-reviewed-r3-needs-user-review' and vg.get('phaseCues') != 'none': e.append('voiceGuide.phaseCues: r3 uses none (no phase/step words, only counts + form lines)')
         if steps:
             if not (isinstance(R, (int, float)) and R >= VG_STEP_MIN): e.append(f'voiceGuide.phaseCues steps only for one rep >= {VG_STEP_MIN:.0f} s')
             st, prev_end = vg.get('steps') or [], None
@@ -216,12 +249,17 @@ def voice_guide_errors(t: dict) -> list[str]:
         if N > 10 and vocab is not None and f'n.{N}' not in vocab: WARN.append(f'{aid}: counts up to {N} but shared vocabulary stops at n.10')
         if (vg.get('count') or {}).get('key') != 'n.{rep}': e.append('voiceGuide.count.key n.{rep}')
         rem, last = vg.get('reminders') or [], 0
+        legacy = vg.get('phaseCues') != 'none'
+        own = [x.get('afterRep') for x in rem if 'key' not in x]
+        if not legacy:
+            if len(own) > VG_REPS_MAX_LINES: e.append(f'voiceGuide.reminders: {len(own)} self-written lines (max {VG_REPS_MAX_LINES} per set; the counts fill the set)')
+            if any(isinstance(a, int) and isinstance(b, int) and b - a < VG_REPS_MIN_SPACING for a, b in zip(own, own[1:])): e.append(f'voiceGuide.reminders: self-written lines < {VG_REPS_MIN_SPACING} reps apart')
         for i, x in enumerate(rem):
             a = x.get('afterRep')
             if not (isinstance(a, int) and last < a < N): e.append(f'voiceGuide.reminders[{i}].afterRep: increasing, 1..reps-1'); continue
-            if a < min(2, N - 1): e.append(f'voiceGuide.reminders[{i}]: first 2 reps carry the phase cues; start after rep 2')
+            if legacy and a < min(2, N - 1): e.append(f'voiceGuide.reminders[{i}]: first 2 reps carry the phase cues; start after rep 2')
             if steps and 'key' not in x: e.append(f'voiceGuide.reminders[{i}]: steps mode fills every rep; only p.last_rep')
-            if a - last > 3 and not steps: e.append(f'voiceGuide.reminders[{i}]: {a - last} reps without a line (max 3)')
+            if legacy and a - last > 3 and not steps: e.append(f'voiceGuide.reminders[{i}]: {a - last} reps without a line (max 3)')
             dur = line_ok(x, f'voiceGuide.reminders[{i}]')
             if isinstance(R, (int, float)) and dur > R - 1.0: e.append(f'voiceGuide.reminders[{i}]: ~{dur:.1f} s line longer than one rep minus the count')
             last = a
@@ -303,6 +341,7 @@ def main(argv=None):
     ap.add_argument('--weak', action='store_true', help='list every vague/bookish word hit (STYLE §9)')
     ap.add_argument('--dupes', action='store_true', help='report sentences repeated across actions (STYLE §9, report only)')
     ap.add_argument('--dupes-min', type=int, default=4, help='min number of actions for --dupes (default 4)')
+    ap.add_argument('--tempo', action='store_true', help='list voiceGuide lines with beat/tempo command words (STYLE §8, target 0)')
     a = ap.parse_args(argv)
     files = sorted(TEXT_DIR.glob('*.json')) if not a.ids else [TEXT_DIR / f'{i}.json' for i in a.ids.split(',')]
     bad = 0
@@ -313,7 +352,8 @@ def main(argv=None):
             bad += 1; print(str(ex)[:600])
     for w in WARN: print('WARN', w)
     for w in WEAK_HITS if a.weak else []: print('WEAK', w)
-    summary = {'checked': len(files), 'failed': bad, 'warnings': len(WARN), 'weakWords': len(WEAK_HITS)}
+    for w in TEMPO_HITS if a.tempo else []: print('TEMPO', w)
+    summary = {'checked': len(files), 'failed': bad, 'warnings': len(WARN), 'weakWords': len(WEAK_HITS), 'tempoHits': len(TEMPO_HITS)}
     if a.dupes:
         g = dupes(files, a.dupes_min)
         for x in g:

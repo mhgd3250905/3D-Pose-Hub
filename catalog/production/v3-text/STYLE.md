@@ -1,4 +1,4 @@
-# v3 动作文案与训练节奏规范（r2 2026-11-01；r3 修订 2026-11-13、11-14）
+# v3 动作文案与训练节奏规范（r2 2026-11-01；r3 修订 2026-11-13、11-14；voice-no-tempo-r1 2026-11-14 夜）
 
 每个 `<id>.json` 是该动作文字、语音和 App 计数/计时的唯一来源。目标：**用户第一次听就懂，跟着做不会错，App 每个动作都会计数或计时。**
 
@@ -13,7 +13,7 @@
   - 内旋/外旋 → 「向内转/向外转」；内收/外展 → 「往里并/往外打开」；背屈 → 「勾脚尖」；跖屈 → 「绷脚尖/踮脚」
   - 对侧/同侧 → 「另一侧/同一侧」；胸椎 → 「上背」；腰椎 → 「腰」；中立位 → 「背挺平」；激活、代偿、髋铰链 → 换成具体动作说法
   - 英文同理：no flexion/extension/eccentric/isometric/hinge/thoracic/lumbar/neutral spine/activate 等，用 bend、straighten、lower slowly、hold still、upper back、keep your back flat。
-- phases（start/peak/end）是前 2 下会念的短口令（之后报数，见 §8）：中文 2–6 字、英文 1–4 词，动词开头，和动画的「发力 → 顶点 → 回来」一一对应。保持类动作顶点用「保持住」「稳住」等。
+- phases（start/peak/end）是相位短口令：中文 2–6 字、英文 1–4 词，动词开头，和动画的「发力 → 顶点 → 回来」一一对应。**voice-no-tempo-r1（开哥 2026-11-14 23:45）起训练中不再念**（见 §8「讲解不是指挥」）：文字留在 JSON 里供显示和旧流程兼容，`training.phases` 不再绑 `cue`。
 - primary cue 是开组前念的一句：一句话说清最关键的一个动作要领，中文 ≤ 24 字。
 - 不要书面腔（「保持骨盆朝向一致」→「两边胯骨一样高」；口吻细则见 §9），不要一句里塞两个以上指令。
 
@@ -41,9 +41,9 @@
   "kind": "rep_updown | rep_hold | rep_alternate | rep_cycle | hold",
   "leadSeconds": 1,
   "phases": [
-    {"id": "go",   "seconds": 1.5, "cue": "phase.start"},
-    {"id": "hold", "seconds": 0.4, "cue": "phase.peak"},
-    {"id": "back", "seconds": 1.4, "cue": "phase.end"},
+    {"id": "go",   "seconds": 1.5},
+    {"id": "hold", "seconds": 0.4},
+    {"id": "back", "seconds": 1.4},
     {"id": "rest", "seconds": 0.7}
   ],
   "perSide": "each-side-separately | alternate | one-side-only",
@@ -59,8 +59,7 @@
 - 相位切分按真实发力习惯（例如力量动作放下慢、推起稍快、顶点停 0.5–1 s），四舍五入到 0.1 s；0 秒的相位省略。`source` 写 `real-tempo r3`。
 - `mode: time` → `kind: hold`，不写 phases（App 计时）。
 - 顶点停留 ≥ 0.8 s 用 `rep_hold`，否则 `rep_updown`；左右轮流做、一下换一边 → `rep_alternate`：一左一右算 1 次，剂量写「每侧 N 次」（reps=N），`perSide: alternate`，`repUnit: left+right`，phases 描述一侧的一下，`startingSide` 写先动的一侧，cue 写明「两边各做一次算 1 次」；连续画圈/没有明显停顿的循环 → `rep_cycle`。
-- phases 的 `cue` 把口令绑到相位：go 念 phase.start，hold（或顶点）念 phase.peak，back 念 phase.end。没有 hold 相位时 phase.peak 可不绑。
-- 口令要念得完：中文约 4 字/秒、英文约 2.5 词/秒，口令长度不超过它所在相位时长能念完的量，太短的相位就用更短的口令。
+- ~~phases 的 `cue` 把口令绑到相位~~（voice-no-tempo-r1 取消）：phases 只描述节奏、决定 App 怎么计数，**不写 `cue`**（r3 动作写了 `text.py` 报错）。用户按自己的速度做，语音不在每下中间喊相位。
 - `perSide` 仅单侧动作写。单侧非轮流动作：一侧做完所有次数再换另一侧（`each-side-separately`），`startingSide` 写先练的一侧。
 - `sideSwitchSeconds`（r3 新增，可选，整数秒）：each-side-separately 且换边要重新摆姿势的动作（如鸽子式、侧卧、跪姿单侧）写 10，给用户换边准备时间；站着原地换手、换脚就能接着做的不写（开哥 2026-11-14 同意）。算「重新摆姿势」：要翻身或换躺/跪的方向、脚踝绑带/弹力带要换到另一只脚并转身、后脚要从椅面拿下来换腿（保加利亚分腿蹲）；不算：站姿换手（单臂推、弯举、提壶铃）、仰卧/跪撑原地换一条腿抬。**App 尚未接入此字段**，接入前只作记录；`text.py` 字段存在时检查取值 5–20。
 - 特殊计数单位（每个方向/每圈/每个字型/每次点地）保留，但 cue 要写明 1 次是什么。
@@ -75,7 +74,15 @@
 - r3 每个动作另有核对记录 `catalog/review/pack-audit-r3/<id>.md`（改前、改后、理由、画面对照、待定点），总台账 `LEDGER.md`。
 
 ## 8. 中途语音引导 voiceGuide（r3 新增，可选）
-**现状：只写脚本，未合成音频，`produce.py`/`definition.py`/`voice.py` 与 App 都还没读这个字段，接入前不影响线上。** 校验在 `text.py`（字段存在才查）。
+**现状：r2-v14/r2-v15 起随包发布（约定见 `docs/voice-guide-pack-contract.md`），SDK 播放器已接入；源文件里 `status` 仍写 `script-only`，发包时改 `ready`。** 校验在 `text.py`（字段存在才查）。
+
+**讲解不是指挥（voice-no-tempo-r1，开哥 2026-11-14 23:45/23:47；推翻 r3 的「前 2 下念相位」「超长单次每步念口令」两条）**：开哥测 SF 时，哥萨克蹲每次计数之间念「蹲过去、踩住」——用户会被语音带着节奏走，他不希望干扰用户自己的动作速度和训练节奏。所以：
+1. **报数保留**：`n.{rep}`、倒数 `n.3/n.2/n.1`、「最后一次」、换边、休息这些共用词照旧。报数先按正常动作的标准节奏（§6），偏快的开哥后面再调。
+2. **不念任何按节拍的动作口令**：相位口令（蹲过去/稳住/站起来/推/起/下…）、分解步骤口令，以及「慢一点」「停两秒」「呼气，再沉一点」这类指挥快慢和时机的话，一律不进 voiceGuide。`phaseCues` 统一 `none`，`training.phases` 不绑 `cue`，不再用 `steps`。
+3. **只讲「这个动作怎么做对」**：说姿势、位置、发力点、范围和常见错（「重心放在蹲那侧的脚后跟，另一条腿伸直、脚尖朝上」），不说「现在做什么」。拉伸想加深用条件句（「想拉得更开，胯往外推」），不用「呼气，再往下」。
+4. **别踩点**：次数组每组最多 2 句自写讲解、两句至少隔 2 下，不跟着每一下念；计时组照旧每 8–10 秒一句防冷场，但内容只能是要领/注意点。
+5. **自写句子不短于中文 5 字 / 英文 3 词**：「腰别塌」「Hold」这种短句听着就是口令，改成说清楚对的样子。
+6. 检查：`python3 tools/action-package-v3/text.py --tempo` 列出命中「节拍/动作指令词表」（`TEMPO_ZH`/`TEMPO_ZH_RE`/`TEMPO_EN_RE`，见 `text.py`）的句子，**必须 0**，命中即校验失败。中文词表：现在、下一下、每一下、每下、这一下、一下一下、再来、回来、回去、回到、回正、下去、上去、过去、放下、放回、落下、落回、收回、转回、摆回、并回、躺回、坐回、推起、推上、推出去、推回、推直、蹲下、蹲过去、站起来、坐起来、撑起来、顶起来、抬起来、踩住、稳住、停住、停一下、停两秒、停一秒、顿一下、保持住、顶住、换边、换腿、换手、吸气、呼气、慢（含慢慢/慢一点）、快一点、快点、越做越快、节奏、跟着数、数两秒、数到、到顶、到底、继续、夹一下、碰一下、再往/再沉/再够/再滑/再夹/再转/再松/再推/再抬/再坐/再挪、先轻后重，以及「停 N」「N 秒」。英文：now、again、next rep、exhale、inhale、breathe in/out、switch、hold、pause、slow(ly/er)、fast(er)、then、come back、back up/down/in/out/to、stand up、sit up、push up、lie back、lower（lower back 除外）、for one/two、N s/sec、at the top、all the way up/down、keep going、one more。新出现的节拍词再补，宁少勿滥。
 
 目的：长组、计时组不冷场；次数组隔几下提醒一次要点。句子**必须来自本动作自己的** cues / commonErrors / cautions（`from` 写出处，如 `cue2`、`commonErrors[0]`、`cautions[0]`，校验会查是否存在），不说「加油」「坚持就是胜利」这类空话。共用词（开始、倒数、最后一次、换边、休息 N 秒）用 `catalog/voice-v2/script.json` 的 `common` 键，不重复写。
 
@@ -100,38 +107,27 @@
 - `at` 是组内秒数（计时从「开始」算），一组一条时间轴；单侧动作每侧同一条。
 - 大约每 8–10 秒一句：相邻两次发声间隔 ≤ 10 秒；第一句不早于 3 秒；最后 4 秒只留倒数（`n.3/n.2/n.1` 放在最后 3 秒）。
 - 一句念完要离下一次发声 ≥ 0.3 秒，不叠、不掐。
-- `role`：`posture` 姿势自查、`breath` 呼吸提醒、`halfway` 过半（可带一句要点）、`safety` 注意事项。≤ 20 秒的组 2 句即可（姿势 + 过半），别说太满。
+- `role`：`posture` 姿势自查、`breath` 呼吸提醒（「别憋气」这类，不喊「呼气/吸气」）、`halfway` 过半（可带一句要点）、`safety` 注意事项。≤ 20 秒的组 2 句即可（姿势 + 过半），别说太满。
 
 **次数类**（`mode: reps`）：
 ```json
 "voiceGuide": {
   "format": "pose-hub-voice-guide@1", "status": "script-only", "mode": "reps",
-  "repSeconds": 4.0, "phaseCues": "first-2-reps", "count": {"key": "n.{rep}", "at": "rep-end"},
+  "repSeconds": 4.0, "phaseCues": "none", "count": {"key": "n.{rep}", "at": "rep-end"},
   "reminders": [
-    {"afterRep": 2, "role": "form", "zh": "身体一条直线，别塌腰", "en": "Body in one straight line", "from": ["cue3"]},
-    {"afterRep": 4, "role": "halfway", "zh": "…", "en": "…", "from": ["commonErrors[0]"]},
+    {"afterRep": 2, "role": "form", "zh": "从头到脚跟一条直线，腰不往下塌", "en": "Head to heels in one line, no sagging", "from": ["cue3"]},
+    {"afterRep": 5, "role": "halfway", "zh": "…", "en": "…", "from": ["commonErrors[0]"]},
     {"afterRep": 7, "key": "p.last_rep"}
   ],
   "afterSet": {"moreSets": ["p.rest", "sec.60"], "allDone": ["p.nice"]}
 }
 ```
 - `repSeconds` = 计数的一下（training.phases 相加；`repUnit: left+right` 时 ×2），校验会对。
-- 每一下结束报数（`n.{rep}`）。**统一用 `phaseCues: first-2-reps`**（开哥 2026-11-13）：前 2 下念 phase 口令带节奏，之后只报数 + 提醒；`every-rep` 仅保留给校验兼容，新稿不用。
-- 提醒在第 `afterRep` 下报数后开始念，占下一下的时间：一句 ≤ `repSeconds − 1` 秒能念完；第一句在第 2 下之后，之后最多隔 3 下一句要点；最后一句固定 `p.last_rep`（倒数第 2 下报数后念「最后一次」）。
+- 每一下结束报数（`n.{rep}`）。**`phaseCues: none`**（voice-no-tempo-r1）：任何一下都不念 phase 口令，整组只有报数 + 少量要领讲解。~~`first-2-reps`（开哥 2026-11-13）~~、`steps`、`every-rep` 停用，只留给旧稿兼容（r3 动作写了就报错）。
+- 讲解在第 `afterRep` 下报数后开始念，占下一下的时间：一句 ≤ `repSeconds − 1` 秒能念完；**每组最多 2 句自写讲解，两句至少隔 2 下，第一句可以在第 1 下之后**（报数本身就不冷场，不再要求每 3 下一句）；最后一句固定 `p.last_rep`（倒数第 2 下报数后念「最后一次」）。一下太短放不下 ≥ 5 字的句子（如壶铃摆荡一下 2 秒）就不放自写句，只报数。
 - 共用词已补 `sec.20`「20 秒」、`sec.45`「45 秒」，以及报数 `n.11`–`n.20`（2026-11-14，开哥同意；都只写进 `script.json`，未合成音频）。休息时间不为语音改。
 
-**超长单次动作**（一下 ≥ 8 秒，如半程土耳其起立；开哥 2026-11-14 同意）：一下里有好几个分解步骤、前 2 下的相位口令撑不住，改用 `phaseCues: "steps"`，每一下都按步骤念一句口令，下末照常报数：
-```json
-"phaseCues": "steps",
-"steps": [
-  {"at": 1.5, "zh": "撑到手肘", "en": "Up to your elbow", "from": ["cue2"]},
-  {"at": 3.4, "zh": "撑手坐起来", "en": "Up to your hand", "from": ["cue2"]}
-],
-"reminders": [{"afterRep": 2, "key": "p.last_rep"}]
-```
-- `at` 是一下之内的秒数；第一句不早于 1.5 秒（给上一下的报数/「最后一次」留位），句与句不叠（间隔 ≥ 0.3 秒），最后一句在一下结束前 0.8 秒念完（留给报数）。
-- 步骤句同样必须来自本动作的 cues/commonErrors/cautions（`from`），中文 2–6 字为宜。
-- steps 模式每一下都被口令占满，`reminders` 只放 `p.last_rep`；一下不足 8 秒不能用（`text.py` 校验）。
+**超长单次动作**（一下 ≥ 8 秒，如半程土耳其起立 deltoids-B）：~~`phaseCues: "steps"` 每一下按步骤念口令~~（开哥 2026-11-14 同意，同夜 voice-no-tempo-r1 取消）。现在和其他次数类一样 `phaseCues: none`，分解步骤写在 cues 里给屏幕看，语音只在第 1 下后用一句讲清顺序和要点（「手肘、手掌、屁股一步一步撑稳，眼睛一直看着哑铃」）。`text.py` 对一下超过 8 秒的只放行 `LONG_REP_OK` 里的动作。
 - 单侧 each-side-separately：每侧按同一份脚本，一侧做完念 `afterSet.sideDone`。
 
 **节奏**：r3 起 `training.phases` 本身就是真实节奏（§6），不再另设 `tempoSeconds`。

@@ -97,18 +97,15 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 1.5,
-    "cue": "phase.start"
+    "seconds": 1.5
    },
    {
     "id": "hold",
-    "seconds": 2.5,
-    "cue": "phase.peak"
+    "seconds": 2.5
    },
    {
     "id": "back",
-    "seconds": 1.5,
-    "cue": "phase.end"
+    "seconds": 1.5
    }
   ],
   "source": "real-tempo r3"
@@ -153,6 +150,14 @@
     "frame": "动作一致：宽站相扑深蹲、两手合十肘推膝；预览帧几乎看不到高亮（b14 第 3 行，非极端）",
     "extreme": null
    }
+  },
+  "voice-no-tempo-r1": {
+   "changes": [
+    "去掉相位口令绑定（training.phases 的 phase.* 标记），voiceGuide.phaseCues 改为 none：前 2 下不再念「往下蹲/手肘推膝/站起来」",
+    "引导句 2 → 2 句：去掉节拍/速度指令和短口令，只留怎么做对的要领"
+   ],
+   "flags": [],
+   "by": "开哥 2026-11-14 23:45（SF 测试反馈）"
   }
  },
  "voiceGuide": {
@@ -165,7 +170,7 @@
   },
   "sharedVocabulary": "catalog/voice-v2/script.json#common",
   "repSeconds": 5.5,
-  "phaseCues": "first-2-reps",
+  "phaseCues": "none",
   "count": {
    "key": "n.{rep}",
    "at": "rep-end"
@@ -184,8 +189,8 @@
    {
     "afterRep": 5,
     "role": "halfway",
-    "zh": "胸口挺起来",
-    "en": "Chest up",
+    "zh": "胸口挺着，背不弓",
+    "en": "Chest up, back not rounding",
     "from": [
      "cue3",
      "commonErrors[1]"

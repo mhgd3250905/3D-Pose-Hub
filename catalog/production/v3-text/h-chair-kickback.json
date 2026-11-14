@@ -102,18 +102,15 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 1.0,
-    "cue": "phase.start"
+    "seconds": 1.0
    },
    {
     "id": "hold",
-    "seconds": 0.5,
-    "cue": "phase.peak"
+    "seconds": 0.5
    },
    {
     "id": "back",
-    "seconds": 1.2,
-    "cue": "phase.end"
+    "seconds": 1.2
    },
    {
     "id": "rest",
@@ -164,6 +161,14 @@
     "frame": "一致：扶椅站姿单腿后踢、臀/大腿后高亮（b6 第 5 行）",
     "extreme": null
    }
+  },
+  "voice-no-tempo-r1": {
+   "changes": [
+    "去掉相位口令绑定（training.phases 的 phase.* 标记），voiceGuide.phaseCues 改为 none：前 2 下不再念「往后抬/夹屁股/放回来」",
+    "引导句 3 → 2 句：去掉节拍/速度指令和短口令，只留怎么做对的要领"
+   ],
+   "flags": [],
+   "by": "开哥 2026-11-14 23:45（SF 测试反馈）"
   }
  },
  "voiceGuide": {
@@ -176,7 +181,7 @@
   },
   "sharedVocabulary": "catalog/voice-v2/script.json#common",
   "repSeconds": 3.0,
-  "phaseCues": "first-2-reps",
+  "phaseCues": "none",
   "count": {
    "key": "n.{rep}",
    "at": "rep-end"
@@ -193,22 +198,13 @@
     ]
    },
    {
-    "afterRep": 5,
-    "role": "halfway",
-    "zh": "胯别转开",
+    "afterRep": 6,
+    "role": "form",
+    "zh": "胯骨朝前，不转开",
     "en": "Hips face forward",
     "from": [
      "cue3",
      "commonErrors[1]"
-    ]
-   },
-   {
-    "afterRep": 8,
-    "role": "form",
-    "zh": "夹紧屁股",
-    "en": "Squeeze your butt",
-    "from": [
-     "cue1"
     ]
    },
    {

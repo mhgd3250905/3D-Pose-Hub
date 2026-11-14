@@ -91,18 +91,15 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 1.0,
-    "cue": "phase.start"
+    "seconds": 1.0
    },
    {
     "id": "hold",
-    "seconds": 5.0,
-    "cue": "phase.peak"
+    "seconds": 5.0
    },
    {
     "id": "back",
-    "seconds": 1.0,
-    "cue": "phase.end"
+    "seconds": 1.0
    }
   ],
   "source": "real-tempo r3"
@@ -146,6 +143,14 @@
     "frame": "一致：坐椅两膝夹砖、大腿内侧高亮（b18 第 4 行）",
     "extreme": null
    }
+  },
+  "voice-no-tempo-r1": {
+   "changes": [
+    "去掉相位口令绑定（training.phases 的 phase.* 标记），voiceGuide.phaseCues 改为 none：前 2 下不再念「夹紧/夹住/松开」",
+    "引导句 3 → 2 句：去掉节拍/速度指令和短口令，只留怎么做对的要领"
+   ],
+   "flags": [],
+   "by": "开哥 2026-11-14 23:45（SF 测试反馈）"
   }
  },
  "voiceGuide": {
@@ -158,7 +163,7 @@
   },
   "sharedVocabulary": "catalog/voice-v2/script.json#common",
   "repSeconds": 7.0,
-  "phaseCues": "first-2-reps",
+  "phaseCues": "none",
   "count": {
    "key": "n.{rep}",
    "at": "rep-end"
@@ -167,8 +172,8 @@
    {
     "afterRep": 2,
     "role": "form",
-    "zh": "别憋气",
-    "en": "Keep breathing",
+    "zh": "夹的时候照样喘气，别憋着",
+    "en": "Keep breathing while you squeeze",
     "from": [
      "cue3",
      "commonErrors[0]"
@@ -177,19 +182,10 @@
    {
     "afterRep": 5,
     "role": "halfway",
-    "zh": "坐直",
-    "en": "Sit tall",
+    "zh": "坐直，两脚跟胯一样宽，手放大腿上",
+    "en": "Sit tall, feet hip-width, hands on thighs",
     "from": [
      "cue2"
-    ]
-   },
-   {
-    "afterRep": 8,
-    "role": "form",
-    "zh": "夹紧砖",
-    "en": "Squeeze the block",
-    "from": [
-     "cue1"
     ]
    },
    {
