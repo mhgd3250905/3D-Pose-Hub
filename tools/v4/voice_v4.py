@@ -27,7 +27,7 @@ import voice as V  # noqa: E402
 # 单词句 TTS 收尾太急（与 voice_fill_r1 相同处理）：只换合成输入，manifest 里的 text 仍是原文。
 TTS_INPUT = {('en', 'Breathe'): 'Breathe\u2026',
              ('en', 'seventeen'): 'Seventeen',
-             ('en', 'Breathe out, sink'): 'Breathe out, sink down.'}  # s-pigeon phase.end：原句后半弱 9–11 dB，加标点/省略号都不过  # 小写原样合成响度 -17.7 LUFS 不达标，首字母大写后 -16.1
+             ('en', 'Breathe out, sink'): 'Breathe out, sink down.'}  # seventeen 小写 -17.7 LUFS；s-pigeon phase.end 原句后半弱 9–11 dB
 _orig_make_clip = V.make_clip
 
 
