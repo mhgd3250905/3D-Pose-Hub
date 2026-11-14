@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "serratus-A",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/data/drills.json",
   "drill-anim/specs/serratus-A-r2.js"
@@ -11,8 +11,8 @@
   "en": "Plank Push-Away"
  },
  "purpose": {
-  "zh": "练把地面推远的力量，让肩胛骨贴住身体",
-  "en": "Train pushing the floor away to keep your shoulder blades against your ribs."
+  "zh": "练把地面推远的劲，让肩胛骨贴住身子",
+  "en": "Builds the push that keeps your shoulder blades flat against your ribs."
  },
  "cues": [
   {
@@ -20,15 +20,15 @@
    "primary": true,
    "text": {
     "zh": "手臂伸直，胸口先往下沉，再把地面推远",
-    "en": "Keep your arms straight, let your chest sink, then push the floor away"
+    "en": "Arms straight, let your chest sink, then push the floor away"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "高位平板，身体一条直线。",
-    "en": "Hold a high plank with your body in one line."
+    "zh": "高位平板，身子一条直线。",
+    "en": "High plank, body in one straight line."
    }
   },
   {
@@ -36,28 +36,24 @@
    "primary": false,
    "text": {
     "zh": "推到顶时上背微微拱起。",
-    "en": "At the top, let your upper back round slightly."
+    "en": "At the top, let your upper back round a little."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "弯手肘变成俯卧撑",
+   "zh": "弯手肘成了俯卧撑",
    "en": "Bending your elbows into a push-up."
   },
   {
-   "zh": "塌腰代替肩胛骨动作",
+   "zh": "塌腰代替肩胛骨动",
    "en": "Sagging your hips instead of moving your shoulder blades."
   }
  ],
  "cautions": [
   {
-   "zh": "手腕不舒服时先活动一下手腕",
-   "en": "If your wrists feel stiff, warm them up first."
-  },
-  {
-   "zh": "手腕刺痛或发麻时马上停",
-   "en": "Stop right away if your wrists feel sharp pain or numbness."
+   "zh": "撑不住就跪着做，手腕不舒服就撑拳头",
+   "en": "Drop to your knees if needed, and press on your fists if your wrists complain."
   }
  ],
  "tags": {
@@ -72,7 +68,7 @@
   ],
   "equipment": [],
   "position": "plank",
-  "difficulty": 1
+  "difficulty": 2
  },
  "unilateral": false,
  "defaultDose": {
@@ -87,12 +83,12 @@
    "en": "Sink"
   },
   "peak": {
-   "zh": "推远地面",
-   "en": "Push away"
+   "zh": "停一下",
+   "en": "Pause"
   },
   "end": {
-   "zh": "回来",
-   "en": "Back"
+   "zh": "推远地面",
+   "en": "Push away"
   }
  },
  "training": {
@@ -106,20 +102,16 @@
    },
    {
     "id": "hold",
-    "seconds": 1.3,
+    "seconds": 0.5,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 0.4,
+    "seconds": 1.0,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 1.3
    }
   ],
-  "source": "spec-timeline manual r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -133,6 +125,95 @@
    ],
    "flags": [
     "一下里有「下沉」和「推远」两个动作段，推远段放在 hold 相位（实际在动），顶端真正停 0.3 s，用 rep_updown；App 若要求 hold 静止请定"
+   ]
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 4.0 s → 2.5 s（下沉 1.0 / 底下停 0.5 / 推远 1.0）；相位改成「下沉 → 停 → 推远」，r2「推远放在 hold」flag 结束",
+    "难度 v3 1 / ai-tags 2 → 统一 2",
+    "两条手腕注意事项并成一句",
+    "r3 第二遍（去套话，2026-11-14）：1 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "3 组×10 次，休息 45 秒",
+     "3 组×10 次，休息 45 秒"
+    ],
+    "rep": [
+     "4.0 s",
+     "2.5 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 2
+     },
+     2
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：高位平板、侧肋淡高亮（batch-23 第 5 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 2.5,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "手肘别弯",
+    "en": "Arms straight",
+    "from": [
+     "cue1",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "腰别塌",
+    "en": "Don't sag",
+    "from": [
+     "cue2",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 8,
+    "role": "form",
+    "zh": "上背拱起",
+    "en": "Round up top",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "afterRep": 9,
+    "key": "p.last_rep"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.45"
+   ],
+   "allDone": [
+    "p.nice"
    ]
   }
  }

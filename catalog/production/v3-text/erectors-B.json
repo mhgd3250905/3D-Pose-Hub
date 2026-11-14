@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "erectors-B",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/data/drills.json",
   "drill-anim/specs/erectors-B.js"
@@ -11,49 +11,49 @@
   "en": "Swiss Ball Back Extension"
  },
  "purpose": {
-  "zh": "练下背和臀部，让背更有耐力",
-  "en": "Build your lower back and glutes for a back that lasts longer."
+  "zh": "练下背和屁股，让腰更扛得住久坐久站",
+  "en": "Builds your lower back and butt so your back holds up through long days."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "髋压在球上，抬到身体成一条直线就停",
-    "en": "With hips on the ball, lift only until your body is straight"
+    "zh": "胯压在球上，抬到身体一条直线就停",
+    "en": "Hips on the ball, lift only until your body is straight"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "双脚抵住墙根，腿伸直。",
-    "en": "Brace your feet against the wall with legs straight."
+    "zh": "两只脚抵住墙根，腿伸直。",
+    "en": "Feet braced against the wall, legs straight."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "顶上停一秒，再慢慢放下。",
-    "en": "Pause for a second at the top, then lower slowly."
+    "zh": "抬到身体一条线就停，别往后翘，再贴着球放下。",
+    "en": "Stop at one straight line, no higher, then fold back over the ball."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "甩起上身",
-   "en": "Swinging the upper body up."
+   "zh": "猛地把上身甩起来",
+   "en": "Jerking your upper body up."
   },
   {
-   "zh": "抬得太高，腰往后折",
-   "en": "Lifting too high and bending the lower back backward."
+   "zh": "抬过头，腰往后折",
+   "en": "Going too high and bending your lower back backwards."
   }
  ],
  "cautions": [
   {
-   "zh": "腰不舒服时抬低一点，还疼就停",
-   "en": "If your lower back feels uncomfortable, lift lower, and stop if it still hurts."
+   "zh": "腰发酸发紧就抬到一半，还难受就停",
+   "en": "If your lower back tightens up, only come halfway. Stop if it stays sore."
   }
  ],
  "tags": {
@@ -81,7 +81,7 @@
  },
  "phases": {
   "start": {
-   "zh": "抬起上身",
+   "zh": "抬起来",
    "en": "Lift up"
   },
   "peak": {
@@ -89,7 +89,7 @@
    "en": "Pause"
   },
   "end": {
-   "zh": "慢慢放下",
+   "zh": "慢慢放",
    "en": "Lower slowly"
   }
  },
@@ -104,20 +104,20 @@
    },
    {
     "id": "hold",
-    "seconds": 1.3,
+    "seconds": 0.8,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 1.2,
+    "seconds": 1.5,
     "cue": "phase.end"
    },
    {
     "id": "rest",
-    "seconds": 0.5
+    "seconds": 0.2
    }
   ],
-  "source": "spec-pulse-track r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -126,6 +126,94 @@
     "加 training rep_hold"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 4.0 s → 3.5 s（起 1.0 / 停 0.8 / 慢放 1.5）",
+    "难度 v3 1 / ai-tags 2 → 统一 1",
+    "文字改教练口吻",
+    "r3 第二遍（去套话，2026-11-14）：3 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "3 组×12 次，休息 45 秒",
+     "3 组×12 次，休息 45 秒"
+    ],
+    "rep": [
+     "4.0 s",
+     "3.5 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 2
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：瑜伽球背伸、双脚抵墙、腰背高亮（batch-02 第 4 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 3.5,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "到一条直线就停",
+    "en": "Stop when you're straight",
+    "from": [
+     "cue1",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "别甩，慢慢起",
+    "en": "Smooth, no jerking",
+    "from": [
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 8,
+    "role": "form",
+    "zh": "贴着球趴下去",
+    "en": "Fold back over the ball",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "afterRep": 11,
+    "key": "p.last_rep"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.45"
+   ],
+   "allDone": [
+    "p.nice"
+   ]
   }
  }
 }

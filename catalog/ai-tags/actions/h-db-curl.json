@@ -5,7 +5,7 @@
   "status": "ai-draft",
   "source": {
     "text": "catalog/production/v3-text/h-db-curl.json",
-    "textSha256Lf": "aafdfbc0c16454c314da4e05894c3f996c09c95c4bb32d0af2e94f3e8e8ee02b",
+    "textSha256Lf": "b43c5ff3b2727b351c734c9a439b2a9b7dad79b84df430a2bd396fd411a7f127",
     "spec": "drill-anim/specs/h-db-curl-r2.js",
     "catalogV1": "catalog/catalog.json"
   },
@@ -119,6 +119,12 @@
       },
       "chosen": "alternating",
       "reason": "v3 unilateral=true 包含交替；本动作每次换一侧，标 alternating。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 1,
+      "reason": "r3 动作包核对（开哥 2026-11-13）：逐个重定，与 v3 tags.difficulty 同值。"
     }
   ],
   "reviewNotes": []

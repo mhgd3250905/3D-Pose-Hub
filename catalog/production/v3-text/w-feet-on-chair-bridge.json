@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "w-feet-on-chair-bridge",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/w-feet-on-chair-bridge.js"
  ],
@@ -10,52 +10,52 @@
   "en": "Feet-on-Chair Glute Bridge"
  },
  "purpose": {
-  "zh": "练臀部和大腿后侧",
-  "en": "Strengthen your glutes and the backs of your thighs."
+  "zh": "练屁股和大腿后面",
+  "en": "Builds your butt and the backs of your thighs."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "脚跟踩椅面，把髋抬到肩、髋、膝一条线",
-    "en": "With your heels on the chair, lift your hips into one line from shoulders to knees"
+    "zh": "脚后跟踩椅面，把胯抬到肩、胯、膝一条线",
+    "en": "Heels on the chair, lift your hips into one line from shoulders to knees"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "仰躺，手臂放在身体两侧压地。",
-    "en": "Lie on your back with your arms by your sides pressing down."
+    "zh": "仰躺，手臂放在身子两边压地。",
+    "en": "Lie on your back, arms by your sides pressing down."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "顶端停住，再慢慢放下。",
-    "en": "Hold at the top, then lower slowly."
+    "zh": "顶上屁股夹住停一下，再一节一节放下来。",
+    "en": "Squeeze and hold at the top, then roll down slowly."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "腰拱得太高",
+   "zh": "腰拱太高",
    "en": "Arching your lower back too much."
   },
   {
-   "zh": "椅子滑动",
-   "en": "Letting the chair slide."
+   "zh": "椅子滑了",
+   "en": "Chair sliding."
   }
  ],
  "cautions": [
   {
-   "zh": "确认椅子稳固不滑",
-   "en": "Make sure the chair is sturdy and will not slide."
+   "zh": "确认椅子结实不滑",
+   "en": "Make sure the chair is sturdy and won't slide."
   },
   {
-   "zh": "大腿后侧抽筋时停下休息",
+   "zh": "大腿后面抽筋就停下歇会儿",
    "en": "Stop and rest if the back of your thigh cramps."
   }
  ],
@@ -73,7 +73,7 @@
    "mat"
   ],
   "position": "supine",
-  "difficulty": 1
+  "difficulty": 2
  },
  "unilateral": false,
  "defaultDose": {
@@ -92,7 +92,7 @@
    "en": "Hold"
   },
   "end": {
-   "zh": "慢慢放下",
+   "zh": "慢慢放",
    "en": "Lower slowly"
   }
  },
@@ -107,20 +107,16 @@
    },
    {
     "id": "hold",
-    "seconds": 1.4,
+    "seconds": 1.0,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 1.1,
+    "seconds": 1.5,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 0.5
    }
   ],
-  "source": "spec-timeline manual r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -129,6 +125,95 @@
     "cautions 拆成两条短句；purpose 去掉肌肉名"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 4.0 s → 3.5 s（抬 1.0 / 停 1.0 / 放 1.5）",
+    "难度 v3 1 / ai-tags 2 → 统一 2",
+    "「臀部」→「屁股」，「髋」→「胯」，「大腿后侧」→「大腿后面」",
+    "r3 第二遍（去套话，2026-11-14）：1 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [
+    "V4 预览没有这一批（batch-25），画面待补看"
+   ],
+   "audit": {
+    "dose": [
+     "3 组×10 次，休息 45 秒",
+     "3 组×10 次，休息 45 秒"
+    ],
+    "rep": [
+     "4.0 s",
+     "3.5 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 2
+     },
+     2
+    ],
+    "voice": "口吻改写",
+    "frame": "待 V4 补看（batch-25 预览未出）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 3.5,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "别拱腰",
+    "en": "Don't over-arch",
+    "from": [
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "手臂压地",
+    "en": "Arms press down",
+    "from": [
+     "cue2"
+    ]
+   },
+   {
+    "afterRep": 8,
+    "role": "form",
+    "zh": "慢慢放下",
+    "en": "Lower slowly",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "afterRep": 9,
+    "key": "p.last_rep"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.45"
+   ],
+   "allDone": [
+    "p.nice"
+   ]
   }
  }
 }

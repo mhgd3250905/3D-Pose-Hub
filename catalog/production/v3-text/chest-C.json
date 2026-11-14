@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "chest-C",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/data/drills.json",
   "drill-anim/specs/chest-C-r2.js",
@@ -12,57 +12,57 @@
   "en": "Single-Arm Standing Cable Press"
  },
  "purpose": {
-  "zh": "练胸部，同时练腰腹不让身体被拉转",
-  "en": "Build your chest while your trunk resists being pulled into a twist."
+  "zh": "练胸，同时练腰腹别被绳子拽得转身",
+  "en": "Builds your chest while your middle fights the cable trying to twist you."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "前后脚站稳，一只手往前推到伸直",
-    "en": "Stand with one foot forward and press one arm straight out"
+    "zh": "前后脚站稳，一只手往前推直",
+    "en": "Stagger your feet and press one arm straight out"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "推的时候肩和髋都朝前，别跟着转。",
-    "en": "Keep your shoulders and hips facing forward as you press."
+    "zh": "推的时候肩和胯都朝正前方，别跟着转。",
+    "en": "Shoulders and hips face straight ahead as you press. Don't twist."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "收回时放慢，别让绳子把手拉回去。",
-    "en": "Return slowly and do not let the cable pull your hand back."
+    "zh": "收回来慢一点，别让绳子把手拽回去。",
+    "en": "Bring it back slowly. Don't let the cable yank your hand back."
    }
   },
   {
    "id": "cue4",
    "primary": false,
    "text": {
-    "zh": "换另一只手时，前后脚也换过来。",
-    "en": "When you switch arms, switch your front foot too."
+    "zh": "换手的时候，前后脚也换过来。",
+    "en": "When you switch hands, switch your front foot too."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "用转身代替推",
-   "en": "Twisting the body instead of pressing."
+   "zh": "靠转身把手甩出去",
+   "en": "Twisting your body to throw the hand out."
   },
   {
    "zh": "耸肩",
-   "en": "Shrugging the shoulder."
+   "en": "Shrugging."
   }
  ],
  "cautions": [
   {
-   "zh": "肩前面夹着疼时，推的幅度小一点",
-   "en": "If the front of your shoulder pinches, make the press smaller."
+   "zh": "肩膀前面夹着疼，就推得短一点",
+   "en": "If the front of your shoulder pinches, shorten the press."
   }
  ],
  "tags": {
@@ -101,7 +101,7 @@
    "en": "Squeeze"
   },
   "end": {
-   "zh": "慢慢收回",
+   "zh": "慢慢收",
    "en": "Return slowly"
   }
  },
@@ -111,26 +111,22 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 0.9,
+    "seconds": 1.0,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 1.0,
+    "seconds": 0.5,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 1.2,
+    "seconds": 1.5,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 0.9
    }
   ],
   "perSide": "each-side-separately",
-  "source": "spec-pulse-track r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -143,6 +139,107 @@
     "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 4.0 s → 3.0 s（推 1.0 / 停 0.5 / 慢收 1.5）",
+    "文字改教练口吻",
+    "难度 2/2 不变"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "3 组×每侧10 次，休息 45 秒",
+     "3 组×每侧10 次，休息 45 秒"
+    ],
+    "rep": [
+     "4.0 s",
+     "3.0 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 2,
+      "ai": 2
+     },
+     2
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：前后脚站、单臂推绳索、胸部高亮",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 3.0,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "身体别跟着转",
+    "en": "Hips face forward",
+    "from": [
+     "cue2",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "慢慢收回来",
+    "en": "Slow on the way back",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "afterRep": 8,
+    "role": "form",
+    "zh": "肩膀别耸",
+    "en": "Shoulders down",
+    "from": [
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 9,
+    "key": "p.last_rep"
+   }
+  ],
+  "before": [
+   "p.right_first"
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.45"
+   ],
+   "allDone": [
+    "p.nice"
+   ],
+   "sideDone": [
+    "p.switch_left"
+   ]
+  },
+  "sides": {
+   "order": [
+    "right",
+    "left"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边"
   }
  }
 }

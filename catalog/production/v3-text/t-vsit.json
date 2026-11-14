@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "t-vsit",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/t-vsit-r7.js"
  ],
@@ -10,15 +10,15 @@
   "en": "V-Sit"
  },
  "purpose": {
-  "zh": "练把双腿高高抬起、贴近身体的力量",
-  "en": "Build the strength to pull your legs up high toward your body."
+  "zh": "练把两腿高高抬起、贴近身子的劲",
+  "en": "Builds the strength to pull your legs up high toward your body."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "大腿折向胸口，双腿抬高成V字",
+    "zh": "大腿往胸口折，两腿抬高成 V 字",
     "en": "Fold your thighs toward your chest and lift your legs into a V"
    }
   },
@@ -26,8 +26,8 @@
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "双手撑地，肩膀往下压。",
-    "en": "Support on your hands and press your shoulders down."
+    "zh": "两手撑地，肩膀往下压。",
+    "en": "Hands on the floor, shoulders pressed down."
    }
   },
   {
@@ -35,7 +35,7 @@
    "primary": false,
    "text": {
     "zh": "靠大腿往胸口收来抬腿，别整个人往后倒。",
-    "en": "Lift by pulling your thighs toward your chest, not by leaning your whole body back."
+    "en": "Lift by pulling your thighs to your chest, not by leaning your whole body back."
    }
   }
  ],
@@ -51,12 +51,12 @@
  ],
  "cautions": [
   {
-   "zh": "手腕不舒服时先活动一下手腕",
-   "en": "If your wrists feel stiff, warm them up first."
+   "zh": "手撑在身后吃重量，先转转手腕",
+   "en": "Your hands carry weight behind you, so roll out your wrists first."
   },
   {
-   "zh": "手腕或肩膀疼时缩短时间，还疼就停",
-   "en": "If your wrists or shoulders hurt, hold for less time, and stop if it still hurts."
+   "zh": "手腕或肩膀疼就少撑几秒，还疼就停；做不到就弯着膝盖做",
+   "en": "If your wrists or shoulders hurt, hold for less time. Stop if it still hurts. Can't get there? Bend your knees."
   }
  ],
  "tags": {
@@ -88,12 +88,12 @@
    "en": "Lift"
   },
   "peak": {
-   "zh": "保持住",
-   "en": "Hold"
+   "zh": "撑住",
+   "en": "Hold it"
   },
   "end": {
-   "zh": "慢慢放下",
-   "en": "Lower"
+   "zh": "别憋气",
+   "en": "Keep breathing"
   }
  },
  "training": {
@@ -108,6 +108,84 @@
     "training=hold（动画静止定住）"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "剂量 3 组×8 秒、休息 60 秒不变",
+    "相位口令「慢慢放下」→「别憋气」；补退阶「弯着膝盖做」",
+    "难度 v3 3 / ai-tags 5 → 统一 3（1–3 档最高）",
+    "r3 第二遍（去套话，2026-11-14）：1 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "3 组×8 秒，休息 60 秒",
+     "3 组×8 秒，休息 60 秒"
+    ],
+    "rep": [
+     "计时",
+     "计时"
+    ],
+    "difficulty": [
+     {
+      "v3": 3,
+      "ai": 5
+     },
+     3
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：V 撑两腿高抬、肚子高亮（batch-24 第 8 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 3,
+    "role": "posture",
+    "zh": "别往后倒",
+    "en": "Don't lean back",
+    "from": [
+     "cue3",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "at": 5,
+    "key": "n.3"
+   },
+   {
+    "at": 6,
+    "key": "n.2"
+   },
+   {
+    "at": 7,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.release",
+    "p.rest",
+    "sec.60"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
   }
  }
 }

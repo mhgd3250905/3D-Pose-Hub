@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-overhead-triceps-stretch",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-overhead-triceps-stretch-rr1.js"
  ],
@@ -10,61 +10,61 @@
   "en": "Standing Overhead Triceps Stretch"
  },
  "purpose": {
-  "zh": "拉伸上臂后侧和肩膀",
-  "en": "Stretch the back of your upper arm and your shoulder."
+  "zh": "拉开大臂后面和肩膀",
+  "en": "Stretches the back of your upper arm and your shoulder."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "一只手举过头弯肘，另一只手轻推手肘",
-    "en": "Raise one arm, bend the elbow, and gently push it with your other hand"
+    "zh": "一只手举过头弯着，另一只手轻推手肘",
+    "en": "Raise one arm, bend it, and gently push the elbow with your other hand"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "身体站直，头别往前探。",
-    "en": "Stand tall and keep your head back."
+    "zh": "人站直，头别往前探。",
+    "en": "Stand tall, head back."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "停住不动，慢慢呼吸。",
-    "en": "Stay still and breathe slowly."
+    "zh": "举着的那只手往后背上找，手肘冲天。",
+    "en": "Reach your hand down your back, elbow pointing at the ceiling."
    }
   },
   {
    "id": "cue4",
    "primary": false,
    "text": {
-    "zh": "每次呼气再放松一点，别来回颠。",
-    "en": "Each time you breathe out, relax a little deeper. No bouncing."
+    "zh": "呼气时另一只手轻轻把手肘往后推一点。",
+    "en": "Each breath out, gently nudge the elbow back a bit more."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "腰往后仰",
-   "en": "Arching your lower back."
+   "zh": "推手肘时挺肚子、腰往后折",
+   "en": "Pushing your belly out and bending back as you press the elbow."
   },
   {
    "zh": "憋气",
    "en": "Holding your breath."
   },
   {
-   "zh": "来回颠着往下压",
-   "en": "Bouncing to go deeper."
+   "zh": "使劲按手肘，按到肩膀疼",
+   "en": "Pressing the elbow so hard your shoulder hurts."
   }
  ],
  "cautions": [
   {
-   "zh": "出现疼痛时放松，只拉到舒服的程度",
-   "en": "If anything hurts, ease off and stretch only to a comfortable point."
+   "zh": "肩膀夹着疼就把手放低一点",
+   "en": "If your shoulder pinches, bring the hand lower."
   }
  ],
  "tags": {
@@ -94,12 +94,12 @@
    "en": "Push the elbow"
   },
   "peak": {
-   "zh": "保持，慢慢呼气",
-   "en": "Hold and breathe out"
+   "zh": "手肘冲天",
+   "en": "Elbow up"
   },
   "end": {
-   "zh": "呼气再放松",
-   "en": "Relax a bit deeper"
+   "zh": "轻推手肘",
+   "en": "Nudge the elbow"
   }
  },
  "training": {
@@ -119,6 +119,114 @@
     "最终口径：按真实做法定（2026-11-01）"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "剂量 每侧 2 组×30 秒、休息 15 秒不变；站着原地换手，不加换边准备",
+    "「别来回颠」→「别一下一下往下压」",
+    "难度 1/1 不变",
+    "r3 第二遍（去套话，2026-11-14）：9 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [
+    "预览帧几乎看不到大臂后面高亮，请看视频确认"
+   ],
+   "audit": {
+    "dose": [
+     "2 组×每侧30 秒，休息 15 秒",
+     "2 组×每侧30 秒，休息 15 秒"
+    ],
+    "rep": [
+     "计时",
+     "计时"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "动作一致：站姿一臂过头屈肘另一手压；预览帧几乎看不到高亮（b11 第 8 行，非极端）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 4,
+    "role": "posture",
+    "zh": "肚子收住，别挺",
+    "en": "Belly in, don't push it out",
+    "from": [
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "at": 12,
+    "role": "halfway",
+    "zh": "头别往前探",
+    "en": "Head back",
+    "from": [
+     "cue2"
+    ]
+   },
+   {
+    "at": 20,
+    "role": "form",
+    "zh": "呼气，轻推手肘",
+    "en": "Breathe out, nudge the elbow",
+    "from": [
+     "cue4"
+    ]
+   },
+   {
+    "at": 27,
+    "key": "n.3"
+   },
+   {
+    "at": 28,
+    "key": "n.2"
+   },
+   {
+    "at": 29,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSetsSameSide": [
+    "p.rest",
+    "sec.15"
+   ],
+   "sideDone": [
+    "p.release",
+    "p.switch_left"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
+  },
+  "sides": {
+   "order": [
+    "right",
+    "left"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边"
   }
  }
 }

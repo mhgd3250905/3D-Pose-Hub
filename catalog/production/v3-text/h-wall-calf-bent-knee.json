@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-wall-calf-bent-knee",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-wall-calf-bent-knee.js"
  ],
@@ -10,8 +10,8 @@
   "en": "Bent-Knee Wall Calf Stretch"
  },
  "purpose": {
-  "zh": "拉伸小腿靠下的深处，让脚踝更灵活",
-  "en": "Stretch the lower calf and loosen your ankle."
+  "zh": "拉开小腿靠下面那段，脚踝更灵活",
+  "en": "Stretches the lower part of your calf and loosens your ankle."
  },
  "cues": [
   {
@@ -19,14 +19,14 @@
    "primary": true,
    "text": {
     "zh": "后脚跟踩实，两膝微弯往前往下沉",
-    "en": "Keep your back heel down and bend both knees forward and down"
+    "en": "Back heel down, bend both knees and sink forward"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "小步前后站，双手扶墙。",
+    "zh": "小步前后站，两手扶墙。",
     "en": "Short split stance, hands on the wall."
    }
   },
@@ -34,41 +34,41 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "停住不动，慢慢呼吸。",
-    "en": "Stay still and breathe slowly."
+    "zh": "两个膝盖往前顶向墙，脚跟一直贴地。",
+    "en": "Push both knees toward the wall, heels stuck to the floor."
    }
   },
   {
    "id": "cue4",
    "primary": false,
    "text": {
-    "zh": "每次呼气再放松一点，别来回颠。",
-    "en": "Each time you breathe out, relax a little deeper. No bouncing."
+    "zh": "呼气时膝盖再往下弯一点，拉的地方在脚跟上面。",
+    "en": "Each breath out, bend your knees a little more. You should feel it just above the heel."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "后脚跟抬起",
-   "en": "Lifting your back heel."
+   "zh": "后脚跟抬起来",
+   "en": "Back heel lifting."
   },
   {
    "zh": "憋气",
    "en": "Holding your breath."
   },
   {
-   "zh": "来回颠着往下压",
-   "en": "Bouncing to go deeper."
+   "zh": "一弯膝盖脚跟就抬起来",
+   "en": "Heels lifting as soon as you bend your knees."
   }
  ],
  "cautions": [
   {
-   "zh": "地面滑时穿防滑鞋，扶稳墙面",
+   "zh": "地滑就穿防滑鞋，扶稳墙",
    "en": "If the floor is slippery, wear non-slip shoes and hold the wall firmly."
   },
   {
-   "zh": "疼痛时减小幅度，仍痛就停止",
-   "en": "If it hurts, reduce the range, and stop if it still hurts."
+   "zh": "脚跟上面刺疼就弯少点，酸胀就对了",
+   "en": "If it gets sharp above your heel, bend less. A dull ache is right."
   }
  ],
  "tags": {
@@ -93,16 +93,16 @@
  },
  "phases": {
   "start": {
-   "zh": "慢慢沉下去",
-   "en": "Sink down"
+   "zh": "膝盖往前弯",
+   "en": "Bend your knees"
   },
   "peak": {
-   "zh": "保持，慢慢呼气",
-   "en": "Hold and breathe out"
+   "zh": "脚跟踩住",
+   "en": "Heels down"
   },
   "end": {
-   "zh": "呼气再沉一点",
-   "en": "Sink a bit deeper"
+   "zh": "呼气再弯点",
+   "en": "Bend a bit more"
   }
  },
  "training": {
@@ -120,6 +120,114 @@
     "按用户决定改为静态保持计时，动画只作示意：30 秒×2 组/每侧，休息 15 秒；口令和要点改成进入—保持—呼气放松"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "剂量 每侧 2 组×30 秒、休息 15 秒不变；站着原地换腿，不加换边准备",
+    "「小腿靠下的深处」→「小腿靠下面那段」；「减小幅度」→「沉少点」",
+    "难度 1/1 不变",
+    "r3 第二遍（去套话，2026-11-14）：9 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "2 组×每侧30 秒，休息 15 秒",
+     "2 组×每侧30 秒，休息 15 秒"
+    ],
+    "rep": [
+     "计时",
+     "计时"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：扶墙屈膝拉小腿、小腿高亮（b15 第 9 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 4,
+    "role": "posture",
+    "zh": "后脚跟踩实",
+    "en": "Back heel down",
+    "from": [
+     "cue1",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "at": 12,
+    "role": "halfway",
+    "zh": "膝盖顶向墙",
+    "en": "Knees toward the wall",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "at": 20,
+    "role": "form",
+    "zh": "脚跟贴着地别抬",
+    "en": "Keep those heels down",
+    "from": [
+     "cue4",
+     "commonErrors[2]"
+    ]
+   },
+   {
+    "at": 27,
+    "key": "n.3"
+   },
+   {
+    "at": 28,
+    "key": "n.2"
+   },
+   {
+    "at": 29,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSetsSameSide": [
+    "p.rest",
+    "sec.15"
+   ],
+   "sideDone": [
+    "p.release",
+    "p.switch_left"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
+  },
+  "sides": {
+   "order": [
+    "right",
+    "left"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边"
   }
  }
 }

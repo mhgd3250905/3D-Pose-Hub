@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-incline-pushup",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-incline-pushup-r2.js"
  ],
@@ -10,24 +10,24 @@
   "en": "Incline Push-Up on a Stool"
  },
  "purpose": {
-  "zh": "练胸口和手臂，适合入门的俯卧撑",
-  "en": "Build your chest and arms with a beginner-friendly push-up."
+  "zh": "练胸口和手臂，入门最好上手的俯卧撑",
+  "en": "Builds your chest and arms with the easiest push-up to start with."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "身体一条直线，胸口往凳边放下",
-    "en": "Keep your body in one line and lower your chest to the edge"
+    "zh": "从头到脚跟像一块板，胸口往凳边放",
+    "en": "Head to heels like a plank, lower your chest to the edge"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "手肘斜向后，不要往两边张。",
-    "en": "Angle your elbows back, not out to the sides."
+    "zh": "手肘斜着往后，别往两边张。",
+    "en": "Elbows angle back, not out to the sides."
    }
   },
   {
@@ -35,28 +35,28 @@
    "primary": false,
    "text": {
     "zh": "推回到手臂伸直。",
-    "en": "Press back up to straight arms."
+    "en": "Push back up to straight arms."
    }
   }
  ],
  "commonErrors": [
   {
    "zh": "塌腰",
-   "en": "Letting the hips sag."
+   "en": "Hips sagging."
   },
   {
-   "zh": "手肘往两边张",
-   "en": "Flaring the elbows."
+   "zh": "手肘往外撇成 T 字",
+   "en": "Elbows flaring into a T."
   }
  ],
  "cautions": [
   {
-   "zh": "手腕刺痛或发麻时停止，开始前先活动手腕",
-   "en": "Stop if your wrists feel sharp pain or numbness, and warm them up first."
+   "zh": "凳子要顶住墙，手撑上去不会滑",
+   "en": "Brace the bench against a wall so it can't slide."
   },
   {
-   "zh": "凳子会滑动时不要做，换稳固的",
-   "en": "If the stool can slide, switch to a sturdy one."
+   "zh": "凳子会滑就别做，换个结实的",
+   "en": "If the stool can slide, don't use it. Get a sturdy one."
   }
  ],
  "tags": {
@@ -84,7 +84,7 @@
  },
  "phases": {
   "start": {
-   "zh": "慢慢下放",
+   "zh": "慢慢放",
    "en": "Lower slowly"
   },
   "peak": {
@@ -92,8 +92,8 @@
    "en": "Pause"
   },
   "end": {
-   "zh": "推起",
-   "en": "Push"
+   "zh": "推起来",
+   "en": "Push up"
   }
  },
  "training": {
@@ -102,25 +102,25 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 1.0,
+    "seconds": 1.5,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 0.9,
+    "seconds": 0.5,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 0.7,
+    "seconds": 1.0,
     "cue": "phase.end"
    },
    {
     "id": "rest",
-    "seconds": 1.4
+    "seconds": 0.5
    }
   ],
-  "source": "spec-pulse-track r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -130,6 +130,97 @@
     "节奏核对：动画顶点真正静止约 0.37 秒（<0.8），rep_hold 改为 rep_updown"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 4.0 s → 3.5 s（放 1.5 / 底 0.5 / 推 1.0 / 顶 0.5）",
+    "文字改教练口吻（「像一块板」）",
+    "难度 1/1 不变",
+    "r3 第二遍（去套话，2026-11-14）：2 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [
+    "画面用的是椅子，名称写凳子；只要稳不影响，可不改"
+   ],
+   "audit": {
+    "dose": [
+     "3 组×10 次，休息 45 秒",
+     "3 组×10 次，休息 45 秒"
+    ],
+    "rep": [
+     "4.0 s",
+     "3.5 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：手撑椅面斜板俯卧撑、胸/肩前高亮（b10 第 7 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 3.5,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "一块板，别塌腰",
+    "en": "One plank, no sagging",
+    "from": [
+     "cue1",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "手肘别张开",
+    "en": "Elbows don't flare",
+    "from": [
+     "cue2",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 8,
+    "role": "form",
+    "zh": "推到手臂伸直",
+    "en": "Push to straight arms",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "afterRep": 9,
+    "key": "p.last_rep"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.45"
+   ],
+   "allDone": [
+    "p.nice"
+   ]
   }
  }
 }

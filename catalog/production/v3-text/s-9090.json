@@ -1,25 +1,25 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "s-9090",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/s-9090-r4.js"
  ],
  "name": {
-  "zh": "90/90坐姿髋部拉伸",
+  "zh": "90/90 坐姿拉胯",
   "en": "90/90 Hip Stretch"
  },
  "purpose": {
-  "zh": "拉伸前腿的臀部和髋外侧",
-  "en": "Stretch the glute and outer hip of your front leg."
+  "zh": "拉开前腿那边的屁股和胯外侧",
+  "en": "Stretches the butt and outer hip of your front leg."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "背挺直，身体朝前腿小腿上方慢慢前倾",
-    "en": "Keep your back long and lean forward over your front shin"
+    "zh": "背挺直，上身朝前腿小腿上方慢慢前倾",
+    "en": "Long back, slowly lean forward over your front shin"
    }
   },
   {
@@ -27,23 +27,23 @@
    "primary": false,
    "text": {
     "zh": "前腿和侧腿都弯成直角，胸口对着前腿。",
-    "en": "Bend both knees to a right angle and face your chest over the front shin."
+    "en": "Both knees bent at right angles, chest facing your front shin."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "保持不动，慢慢呼吸，每次呼气再放松一点。",
-    "en": "Stay still, breathe slowly, and relax a little deeper each time you breathe out."
+    "zh": "胸口对着前腿小腿往前倾，两边屁股都坐在地上。",
+    "en": "Lean your chest over your front shin, both sides of your butt on the floor."
    }
   },
   {
    "id": "cue4",
    "primary": false,
    "text": {
-    "zh": "别来回颠，有拉伸感就够，别拉到疼。",
-    "en": "Do not bounce; a clear stretch is enough, never pain."
+    "zh": "前腿屁股后面拉得最明显，膝盖别疼就行。",
+    "en": "You should feel it most behind the front hip. The knees should not hurt."
    }
   }
  ],
@@ -53,18 +53,18 @@
    "en": "Rounding your back to go deeper."
   },
   {
-   "zh": "臀部离地歪向一边",
-   "en": "Letting your hips tip off the floor."
+   "zh": "屁股离地歪向一边",
+   "en": "Hips tipping off the floor."
   },
   {
-   "zh": "憋气或来回颠",
-   "en": "Holding your breath or bouncing."
+   "zh": "后腿那边屁股翘起来离地",
+   "en": "Back-leg side of your butt lifting off the floor."
   }
  ],
  "cautions": [
   {
-   "zh": "膝盖疼时少倾一点或垫高臀部，还疼就停",
-   "en": "If your knees hurt, lean less or sit on a cushion, and stop if it still hurts."
+   "zh": "膝盖疼就少倾点或屁股下面垫高，还疼就停",
+   "en": "If your knees hurt, lean less or sit on a cushion. Stop if it still hurts."
   }
  ],
  "tags": {
@@ -80,7 +80,7 @@
    "mat"
   ],
   "position": "seated",
-  "difficulty": 1
+  "difficulty": 2
  },
  "unilateral": true,
  "startingSide": "right",
@@ -92,23 +92,24 @@
  },
  "phases": {
   "start": {
-   "zh": "身体前倾",
-   "en": "Lean forward"
+   "zh": "胸口对前小腿",
+   "en": "Chest over shin"
   },
   "peak": {
-   "zh": "保持，慢慢呼气",
-   "en": "Hold and breathe out"
+   "zh": "两边屁股坐稳",
+   "en": "Both hips down"
   },
   "end": {
-   "zh": "呼气再放松",
-   "en": "Relax a bit deeper"
+   "zh": "胸口再靠前",
+   "en": "Chest forward more"
   }
  },
  "training": {
   "kind": "hold",
   "leadSeconds": 1,
   "perSide": "each-side-separately",
-  "source": "user-decision static-hold r2"
+  "source": "user-decision static-hold r2",
+  "sideSwitchSeconds": 10
  },
  "review": {
   "r2": {
@@ -122,6 +123,115 @@
     "最终口径：按真实做法定（2026-11-01）"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "剂量 每侧 2 组×30 秒、休息 15 秒不变",
+    "新增 sideSwitchSeconds 10（90/90 换边两腿要重新摆）",
+    "名称「90/90坐姿髋部拉伸」→「90/90 坐姿拉胯」；「臀部和髋外侧」→「屁股和胯外侧」",
+    "难度 v3 1 / ai-tags 2 → 统一 2",
+    "「别来回颠」→「别一下一下往下压」",
+    "r3 第二遍（去套话，2026-11-14）：8 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "2 组×每侧30 秒，休息 15 秒",
+     "2 组×每侧30 秒，休息 15 秒"
+    ],
+    "rep": [
+     "计时",
+     "计时"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 2
+     },
+     2
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：地面 90/90 坐、上身前倾、屁股/胯高亮（b22 第 5 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 4,
+    "role": "posture",
+    "zh": "胸口对着前小腿",
+    "en": "Chest over front shin",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "at": 12,
+    "role": "halfway",
+    "zh": "屁股坐稳",
+    "en": "Hips down",
+    "from": [
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "at": 20,
+    "role": "form",
+    "zh": "两边屁股坐稳",
+    "en": "Both sit bones down",
+    "from": [
+     "cue3",
+     "commonErrors[2]"
+    ]
+   },
+   {
+    "at": 27,
+    "key": "n.3"
+   },
+   {
+    "at": 28,
+    "key": "n.2"
+   },
+   {
+    "at": 29,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSetsSameSide": [
+    "p.rest",
+    "sec.15"
+   ],
+   "sideDone": [
+    "p.release",
+    "p.switch_left"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
+  },
+  "sides": {
+   "order": [
+    "right",
+    "left"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边；换边准备 10 秒（training.sideSwitchSeconds，App 未接入）"
   }
  }
 }

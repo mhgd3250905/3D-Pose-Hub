@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "t-seated-straddle-ext",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/t-seated-straddle-ext-r6.js"
  ],
@@ -10,24 +10,24 @@
   "en": "Seated Straddle Tuck and Extend"
  },
  "purpose": {
-  "zh": "分腿坐、双脚离地，练腿收回和伸直的控制",
-  "en": "Sit in a straddle with your feet up and control your legs as they bend and straighten."
+  "zh": "分腿坐、两脚离地，练腿收回和伸直",
+  "en": "Sit in a straddle with your feet up and bend and straighten your legs."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "双脚不落地，腿伸直再往两边收回",
-    "en": "Keep your feet up, straighten your legs, then bend your knees back out to the sides"
+    "zh": "两脚别落地，腿伸直再往两边收回来",
+    "en": "Feet stay up, straighten your legs, then bend your knees back out to the sides"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "双手撑在身体前面，胸口朝前。",
-    "en": "Put your hands on the floor in front of you and keep your chest facing forward."
+    "zh": "两手撑在身子前面，胸口朝前。",
+    "en": "Hands on the floor in front of you, chest facing forward."
    }
   },
   {
@@ -35,24 +35,24 @@
    "primary": false,
    "text": {
     "zh": "别往后仰，慢一点做。",
-    "en": "Do not lean back; move slowly."
+    "en": "Don't lean back. Go slow."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "身体往后仰",
-   "en": "Leaning back."
+   "zh": "手往后撑、上身往后躺，腿才抬得动",
+   "en": "Leaning way back on your hands to get the legs moving."
   },
   {
    "zh": "脚碰地",
-   "en": "Letting your feet touch down."
+   "en": "Feet touching down."
   }
  ],
  "cautions": [
   {
-   "zh": "髋或腰疼时幅度小一点，还疼就停",
-   "en": "If your hips or lower back hurt, move less far, and stop if it still hurts."
+   "zh": "胯或腰疼就动小点，还疼就停；做不满就脚跟点地做",
+   "en": "If your hips or lower back hurt, make it smaller. Stop if it still hurts. Can't get them all? Let your heels touch the floor."
   }
  ],
  "tags": {
@@ -69,7 +69,7 @@
    "mat"
   ],
   "position": "seated",
-  "difficulty": 2
+  "difficulty": 3
  },
  "unilateral": false,
  "defaultDose": {
@@ -98,24 +98,21 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 0.8,
+    "seconds": 1.0,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 0.2
+    "seconds": 0.5,
+    "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 0.8,
+    "seconds": 1.0,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 0.2
    }
   ],
-  "source": "spec-timeline manual r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -127,6 +124,86 @@
     "最终口径：按真实做法定（2026-11-01）"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 2.0 s → 2.5 s（伸 1.0 / 停 0.5 / 收 1.0）",
+    "难度 v3 2 / ai-tags 3 → 统一 3；退阶「脚跟点地做」写进注意事项",
+    "purpose 去掉「控制」；「髋」→「胯」，「幅度小一点」→「动小点」",
+    "r3 第二遍（去套话，2026-11-14）：1 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "3 组×8 次，休息 45 秒",
+     "3 组×8 次，休息 45 秒"
+    ],
+    "rep": [
+     "2.0 s",
+     "2.5 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 2,
+      "ai": 3
+     },
+     3
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：分腿坐、两手撑身前、肚子高亮（batch-24 第 3 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 2.5,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "别往后仰",
+    "en": "Don't lean back",
+    "from": [
+     "cue3",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "脚别落地",
+    "en": "Feet up",
+    "from": [
+     "cue1",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 7,
+    "key": "p.last_rep"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.45"
+   ],
+   "allDone": [
+    "p.nice"
+   ]
   }
  }
 }

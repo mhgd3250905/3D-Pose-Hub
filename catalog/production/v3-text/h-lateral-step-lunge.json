@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-lateral-step-lunge",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-lateral-step-lunge.js"
  ],
@@ -10,57 +10,57 @@
   "en": "Lateral Step Lunge"
  },
  "purpose": {
-  "zh": "练大腿、臀部和大腿内侧，左右移动更稳",
-  "en": "Build your thighs, glutes and inner thighs for steadier side-to-side moves."
+  "zh": "练大腿、屁股和大腿内侧，左右移动更稳",
+  "en": "Builds your thighs, butt and inner thighs so side-to-side moves feel steadier."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "往旁边跨一步，屁股往后坐到这条腿上",
-    "en": "Step out to the side and sit your hips back over that leg"
+    "zh": "往旁边跨一大步，屁股往后坐到这条腿上",
+    "en": "Step out wide and sit your hips back over that leg"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "另一条腿伸直，两只脚尖朝前。",
-    "en": "Keep the other leg straight and both toes pointing forward."
+    "zh": "另一条腿伸直，两只脚尖都朝前。",
+    "en": "Other leg straight, both toes pointing forward."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "跨出的脚推地回到站立，再换另一边。",
-    "en": "Push off the stepping foot to stand, then switch sides."
+    "zh": "跨出去的脚一蹬回到站立，再换另一边。",
+    "en": "Push off the stepping foot back to standing, then switch sides."
    }
   },
   {
    "id": "cue4",
    "primary": false,
    "text": {
-    "zh": "两边各做一次算 1 次。",
-    "en": "One on each side counts as one rep."
+    "zh": "往左跨一次、往右跨一次，才算 1 下。",
+    "en": "A step to the left plus a step to the right counts as one."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "膝盖往里扣",
-   "en": "Letting the knee cave in."
+   "zh": "蹲下那条腿的膝盖往里扣",
+   "en": "Bent knee caving inward."
   },
   {
-   "zh": "跨出脚的脚跟抬起来",
-   "en": "Lifting the heel of the stepping foot."
+   "zh": "跨出去那只脚后跟抬起来",
+   "en": "Heel of the stepping foot lifting."
   }
  ],
  "cautions": [
   {
-   "zh": "膝盖不舒服时蹲浅一点，还疼就停",
-   "en": "If your knees feel uncomfortable, go less deep, and stop if it still hurts."
+   "zh": "膝盖不舒服就跨小步，蹲浅点",
+   "en": "If your knees complain, take a smaller step and stay higher."
   }
  ],
  "tags": {
@@ -88,7 +88,7 @@
  },
  "phases": {
   "start": {
-   "zh": "跨步下蹲",
+   "zh": "跨步下坐",
    "en": "Step and sit"
   },
   "peak": {
@@ -96,7 +96,7 @@
    "en": "Hold"
   },
   "end": {
-   "zh": "推地收回",
+   "zh": "蹬回来",
    "en": "Push back"
   }
  },
@@ -106,26 +106,23 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 2.0,
+    "seconds": 1.5,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 0.4
+    "seconds": 0.5,
+    "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 1.6,
+    "seconds": 1.5,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 1.0
    }
   ],
   "perSide": "alternate",
   "repUnit": "left+right",
-  "source": "spec-timeline manual r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -138,6 +135,88 @@
    ],
    "flags": [
     "相位为手算（非批表），请确认"
+   ]
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一侧一下 5.0 s → 3.5 s（跨步下坐 1.5 / 停 0.5 / 蹬回 1.5），一左一右 7 s 计 1 下；r2「相位手算」flag 不再适用",
+    "文字改教练口吻",
+    "难度 2/2 不变",
+    "r3 第二遍（去套话，2026-11-14）：5 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "3 组×每侧8 次，休息 45 秒",
+     "3 组×每侧8 次，休息 45 秒"
+    ],
+    "rep": [
+     "5.0 s/侧（一左一右 10.0 s）",
+     "3.5 s/侧（一左一右 7.0 s）"
+    ],
+    "difficulty": [
+     {
+      "v3": 2,
+      "ai": 2
+     },
+     2
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：侧弓步、大腿内侧/前面高亮（b11 第 5 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 7.0,
+  "repUnit": "left+right",
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "膝盖跟脚尖同一个方向",
+    "en": "Knee points where toes point",
+    "from": [
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "屁股往后坐",
+    "en": "Sit your hips back",
+    "from": [
+     "cue1"
+    ]
+   },
+   {
+    "afterRep": 7,
+    "key": "p.last_rep"
+   }
+  ],
+  "before": [
+   "p.right_first"
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.45"
+   ],
+   "allDone": [
+    "p.nice"
    ]
   }
  }

@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-band-chest-fly",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-band-chest-fly-r2.js",
   "drill-anim/specs/h-band-chest-fly.js"
@@ -11,23 +11,23 @@
   "en": "Standing One-Arm Band Chest Fly"
  },
  "purpose": {
-  "zh": "练胸部，让手臂往身前合拢更有力",
-  "en": "Build your chest and your strength for bringing the arm across your body."
+  "zh": "练胸，让手臂往身前合更有劲",
+  "en": "Builds your chest for bringing your arm across your body."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "肘微弯不动，手臂往身前合拢",
-    "en": "Keep your elbow slightly bent and sweep your arm across"
+    "zh": "手肘微弯别动，手臂往身前合",
+    "en": "Elbow soft and fixed, sweep your arm across"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "弹力带固定在身后外侧，和胸口一样高。",
+    "zh": "弹力带拴在身后外侧，跟胸口一样高。",
     "en": "Anchor the band behind you and out to the side, at chest height."
    }
   },
@@ -35,29 +35,29 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "合拢后停一下，再慢慢打开，手别到身体后面。",
-    "en": "Pause, then open slowly without letting the arm go behind you."
+    "zh": "合拢后停一下，再慢慢打开，手别跑到身后去。",
+    "en": "Pause, then open slowly. Don't let your hand go behind you."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "手肘一弯一伸，变成了推",
+   "zh": "手肘一弯一伸，变成推了",
    "en": "Bending and straightening the elbow so it turns into a push."
   },
   {
-   "zh": "身体跟着转",
-   "en": "Twisting your body with the arm."
+   "zh": "身子跟着转",
+   "en": "Twisting with the arm."
   }
  ],
  "cautions": [
   {
-   "zh": "固定点不牢时先别开始",
-   "en": "Do not start until the anchor is secure."
+   "zh": "带子拴在胸口高度，拉之前先拽一下看牢不牢",
+   "en": "Anchor the band at chest height and give it a tug before you start."
   },
   {
-   "zh": "肩膀前侧疼时减小幅度或停下",
-   "en": "If the front of your shoulder hurts, make the move smaller or stop."
+   "zh": "肩膀前面疼就做小点，或者停",
+   "en": "If the front of your shoulder hurts, make it smaller or stop."
   }
  ],
  "tags": {
@@ -86,7 +86,7 @@
  },
  "phases": {
   "start": {
-   "zh": "向内合",
+   "zh": "往里合",
    "en": "Sweep in"
   },
   "peak": {
@@ -104,26 +104,26 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 0.9,
+    "seconds": 1.0,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 4.6,
+    "seconds": 0.8,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 0.9,
+    "seconds": 1.5,
     "cue": "phase.end"
    },
    {
     "id": "rest",
-    "seconds": 1.6
+    "seconds": 0.2
    }
   ],
   "perSide": "each-side-separately",
-  "source": "spec-pulse-track r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -136,6 +136,99 @@
    "flags": [
     "每下停约 4.6 s，节奏偏慢；如想要常规夹胸节奏（2 下/8 s）需改动画"
    ]
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 8.0 s → 3.5 s（合 1.0 / 停 0.8 / 开 1.5）；r2 flag「每下停 4.6 s 偏慢」按开哥定的「与动画无关」解决，不改动画",
+    "文字改教练口吻",
+    "难度 1/1 不变",
+    "r3 第二遍（去套话，2026-11-14）：1 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "3 组×每侧8 次，休息 45 秒",
+     "3 组×每侧8 次，休息 45 秒"
+    ],
+    "rep": [
+     "8.0 s",
+     "3.5 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：站姿单臂弹力带夹胸、胸部高亮（b3 第 8 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 3.5,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "手肘别弯别伸",
+    "en": "Elbow stays soft",
+    "from": [
+     "cue1",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "身子别跟着转",
+    "en": "Body stays still",
+    "from": [
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 7,
+    "key": "p.last_rep"
+   }
+  ],
+  "before": [
+   "p.right_first"
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.45"
+   ],
+   "allDone": [
+    "p.nice"
+   ],
+   "sideDone": [
+    "p.switch_left"
+   ]
+  },
+  "sides": {
+   "order": [
+    "right",
+    "left"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边"
   }
  }
 }

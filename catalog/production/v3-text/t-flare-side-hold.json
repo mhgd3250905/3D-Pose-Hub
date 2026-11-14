@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "t-flare-side-hold",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/t-flare-side-hold-r4.js"
  ],
@@ -10,23 +10,23 @@
   "en": "Flare Side Hold"
  },
  "purpose": {
-  "zh": "练托马斯全旋需要的单手单脚侧撑力量",
-  "en": "Build the one-hand, one-foot side support you need for flares."
+  "zh": "练托马斯全旋要的单手单脚侧撑劲",
+  "en": "Builds the one-hand, one-foot side support you need for flares."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "下面的手和脚撑地，身体接近水平",
-    "en": "Push through your bottom hand and foot with your body almost level"
+    "zh": "下面的手和脚撑地，身子差不多放平",
+    "en": "Push through your bottom hand and foot, body almost level"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "上面的腿抬起，另一只手向上伸直。",
+    "zh": "上面的腿抬起来，另一只手往上伸直。",
     "en": "Lift your top leg and reach your free arm straight up."
    }
   },
@@ -34,29 +34,29 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "撑地的手推地，肩膀远离耳朵。",
+    "zh": "撑地的手推地，肩膀离耳朵远点。",
     "en": "Push the floor away so your shoulder stays away from your ear."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "肩膀塌向耳朵",
-   "en": "Letting your shoulder sink toward your ear."
+   "zh": "肩膀往耳朵塌",
+   "en": "Shoulder sinking toward your ear."
   },
   {
-   "zh": "髋往下掉",
-   "en": "Letting your hips drop."
+   "zh": "胯往下掉",
+   "en": "Hips dropping."
   }
  ],
  "cautions": [
   {
-   "zh": "手腕不舒服时先活动一下手腕",
-   "en": "If your wrists feel stiff, warm them up first."
+   "zh": "一只手扛全身，先把手腕转开，疼就别做",
+   "en": "One hand carries everything. Warm up your wrists, and skip it if they hurt."
   },
   {
-   "zh": "手腕或肩膀疼时缩短时间，还疼就停",
-   "en": "If your wrist or shoulder hurts, hold for less time, and stop if it still hurts."
+   "zh": "手腕或肩膀疼就少撑几秒，还疼就停；撑不住就把上面那条腿放下来",
+   "en": "If your wrist or shoulder hurts, hold for less time. Stop if it still hurts. Can't hold it? Lower your top leg."
   }
  ],
  "tags": {
@@ -94,15 +94,16 @@
    "en": "Hold steady"
   },
   "end": {
-   "zh": "慢慢放下",
-   "en": "Come down"
+   "zh": "别憋气",
+   "en": "Keep breathing"
   }
  },
  "training": {
   "kind": "hold",
   "leadSeconds": 1,
   "perSide": "each-side-separately",
-  "source": "spec-timeline manual r2"
+  "source": "spec-timeline manual r2",
+  "sideSwitchSeconds": 10
  },
  "review": {
   "r2": {
@@ -112,6 +113,95 @@
     "cautions 改短句"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "剂量 每侧 3 组×10 秒、休息 60 秒不变",
+    "新增 sideSwitchSeconds 10（侧撑换边要翻身）",
+    "相位口令「慢慢放下」→「别憋气」（计时类不写回来）；「髋往下掉」→「胯往下掉」",
+    "难度 v3 3 / ai-tags 4 → 统一 3；退阶「上面那条腿放下来」写进注意事项",
+    "r3 第二遍（去套话，2026-11-14）：1 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "3 组×每侧10 秒，休息 60 秒",
+     "3 组×每侧10 秒，休息 60 秒"
+    ],
+    "rep": [
+     "计时",
+     "计时"
+    ],
+    "difficulty": [
+     {
+      "v3": 3,
+      "ai": 4
+     },
+     3
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：单手单脚侧撑、上腿抬起上手朝天、侧腰/胯高亮（batch-23 第 8 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 3,
+    "role": "posture",
+    "zh": "胯别往下掉",
+    "en": "Hips up",
+    "from": [
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "at": 7,
+    "key": "n.3"
+   },
+   {
+    "at": 8,
+    "key": "n.2"
+   },
+   {
+    "at": 9,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSetsSameSide": [
+    "p.rest",
+    "sec.60"
+   ],
+   "sideDone": [
+    "p.release",
+    "p.switch_left"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
+  },
+  "sides": {
+   "order": [
+    "right",
+    "left"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边；换边准备 10 秒（training.sideSwitchSeconds，App 未接入）"
   }
  }
 }

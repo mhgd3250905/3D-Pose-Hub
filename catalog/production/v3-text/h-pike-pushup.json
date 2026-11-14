@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-pike-pushup",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-pike-pushup-r5.js"
  ],
@@ -10,24 +10,24 @@
   "en": "Pike Push-Up"
  },
  "purpose": {
-  "zh": "练肩膀往上推的力量，为倒立做准备",
-  "en": "Build pushing strength in your shoulders as prep for handstands."
+  "zh": "练肩膀往上推的劲，给倒立打底子",
+  "en": "Builds pushing strength in your shoulders as a step toward handstands."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "屁股保持高，弯肘让头落到双手前面",
-    "en": "Keep your hips high and bend your elbows to lower your head in front of your hands"
+    "zh": "屁股一直顶高，弯手肘让头落到两手前面",
+    "en": "Hips stay high, bend your elbows and lower your head in front of your hands"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "身体成倒 V 字，双手与肩同宽，腿伸直。",
-    "en": "Make an upside-down V with hands shoulder-width apart and legs straight."
+    "zh": "身子成倒 V 字，两手跟肩膀一样宽，腿伸直。",
+    "en": "Upside-down V, hands shoulder-width, legs straight."
    }
   },
   {
@@ -35,28 +35,28 @@
    "primary": false,
    "text": {
     "zh": "手肘斜着往后弯，再撑回手臂伸直。",
-    "en": "Bend your elbows back at an angle, then push back to straight arms."
+    "en": "Elbows bend back at an angle, then push back to straight arms."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "手肘往两边张开",
-   "en": "Flaring the elbows out."
+   "zh": "手肘往外撇，头往前冲",
+   "en": "Elbows flaring and head shooting forward."
   },
   {
-   "zh": "屁股掉下来变成普通俯卧撑",
-   "en": "Dropping the hips into a regular push-up."
+   "zh": "屁股掉下来，成了普通俯卧撑",
+   "en": "Hips dropping into a regular push-up."
   }
  ],
  "cautions": [
   {
-   "zh": "手腕刺痛或发麻时停止，开始前先活动手腕",
-   "en": "Stop if your wrists feel sharp pain or numbness, and warm them up first."
+   "zh": "头朝下压在手腕上，先转转手腕；刺疼就停",
+   "en": "Your weight is over your wrists, so warm them up. Stop on sharp pain."
   },
   {
-   "zh": "肩膀疼时下得浅一点",
-   "en": "If your shoulders hurt, go less deep."
+   "zh": "肩膀疼就下浅点；做不满就把手撑在凳子上做",
+   "en": "If your shoulders hurt, don't go as low. Can't get them all? Put your hands on a stool."
   }
  ],
  "tags": {
@@ -73,7 +73,7 @@
    "mat"
   ],
   "position": "other",
-  "difficulty": 2
+  "difficulty": 3
  },
  "unilateral": false,
  "defaultDose": {
@@ -92,7 +92,7 @@
    "en": "Pause"
   },
   "end": {
-   "zh": "撑起",
+   "zh": "撑起来",
    "en": "Push up"
   }
  },
@@ -102,25 +102,21 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 0.9,
+    "seconds": 1.5,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 0.9,
+    "seconds": 0.5,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 0.7,
+    "seconds": 1.0,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 1.5
    }
   ],
-  "source": "spec-pulse-track r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -133,6 +129,86 @@
    ],
    "flags": [
     "派生把顶点算成 ≥0.8 s 判为 rep_hold，但 spec 轨道真正的静止只有约 0.3–0.4 s（注释/关键帧），若按实际应为 rep_updown，请确认"
+   ]
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 4.0 s → 3.0 s（下 1.5 / 底 0.5 / 撑 1.0）；底部短停，kind 维持 rep_updown，r2 flag 结束",
+    "难度 v3 2 / ai-tags 3 → 统一 3；退阶「手撑在凳子上」写进注意事项",
+    "文字改教练口吻",
+    "r3 第二遍（去套话，2026-11-14）：2 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "3 组×8 次，休息 60 秒",
+     "3 组×8 次，休息 60 秒"
+    ],
+    "rep": [
+     "4.0 s",
+     "3.0 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 2,
+      "ai": 3
+     },
+     3
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：屁股朝天倒 V 俯卧撑、肩/大臂高亮（b11 第 9 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 3.0,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "屁股顶高",
+    "en": "Hips high",
+    "from": [
+     "cue1",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "手肘别张开",
+    "en": "Elbows don't flare",
+    "from": [
+     "cue3",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 7,
+    "key": "p.last_rep"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.60"
+   ],
+   "allDone": [
+    "p.nice"
    ]
   }
  }

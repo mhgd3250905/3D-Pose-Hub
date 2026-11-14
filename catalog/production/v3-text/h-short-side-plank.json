@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-short-side-plank",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-short-side-plank-rr2.js",
   "drill-anim/specs/h-short-side-plank-rr1.js"
@@ -11,49 +11,49 @@
   "en": "Bent-Knee Side Plank"
  },
  "purpose": {
-  "zh": "练侧腹和臀部外侧，适合入门的侧撑",
-  "en": "Build the sides of your waist and outer hips with a beginner side plank."
+  "zh": "练侧腰和屁股侧面，入门版侧撑",
+  "en": "Builds the sides of your waist and butt. A beginner side plank."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "前臂和膝盖撑地，屁股抬起成一条直线",
-    "en": "Prop on your forearm and knee and lift your hips into a straight line"
+    "zh": "小臂和膝盖撑地，屁股抬起来成一条线",
+    "en": "Forearm and knee on the floor, lift your hips into one line"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "手肘在肩膀正下方，用力推地。",
-    "en": "Keep your elbow under your shoulder and push the floor away."
+    "zh": "手肘在肩膀正下方，往下推地。",
+    "en": "Elbow under your shoulder, push the floor away."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "正常呼吸，屁股别往下掉。",
-    "en": "Breathe normally and do not let your hips drop."
+    "zh": "正常喘气，屁股别往下掉。",
+    "en": "Breathe normally. Don't let your hips drop."
    }
   }
  ],
  "commonErrors": [
   {
    "zh": "屁股往下掉",
-   "en": "Letting the hips drop."
+   "en": "Hips dropping."
   },
   {
-   "zh": "肩膀往耳朵方向塌",
-   "en": "Letting the shoulder sink toward the ear."
+   "zh": "肩膀往耳朵那边塌",
+   "en": "Shoulder sinking toward your ear."
   }
  ],
  "cautions": [
   {
-   "zh": "肩膀前面夹着疼时，幅度小一点或换简单版本",
-   "en": "If the front of your shoulder pinches, move less far or switch to an easier version."
+   "zh": "肩膀前面夹着疼就先停，别硬撑",
+   "en": "If the front of your shoulder pinches, stop. Don't push through it."
   }
  ],
  "tags": {
@@ -86,19 +86,20 @@
    "en": "Lift your hips"
   },
   "peak": {
-   "zh": "保持住",
-   "en": "Hold"
+   "zh": "撑住",
+   "en": "Hold it"
   },
   "end": {
-   "zh": "慢慢放下",
-   "en": "Lower slowly"
+   "zh": "别憋气",
+   "en": "Keep breathing"
   }
  },
  "training": {
   "kind": "hold",
   "leadSeconds": 1,
   "perSide": "each-side-separately",
-  "source": "timer"
+  "source": "timer",
+  "sideSwitchSeconds": 10
  },
  "review": {
   "r2": {
@@ -110,6 +111,106 @@
     "最终口径：按真实做法定（2026-11-01）"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "剂量 每侧 3 组×20 秒、休息 30 秒不变",
+    "新增 sideSwitchSeconds 10（翻身换边侧躺）",
+    "「幅度小一点或换简单版本」→「先停，别硬撑」（已经是入门版）；相位口令「慢慢放下」→「别憋气」（计时类不写回来）",
+    "难度 1/1 不变"
+   ],
+   "flags": [
+    "预览帧几乎看不到侧腰高亮，请看视频确认"
+   ],
+   "audit": {
+    "dose": [
+     "3 组×每侧20 秒，休息 30 秒",
+     "3 组×每侧20 秒，休息 30 秒"
+    ],
+    "rep": [
+     "计时",
+     "计时"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "动作一致：侧卧屈膝侧撑；预览帧几乎看不到高亮（b12 第 10 行，非极端）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 4,
+    "role": "posture",
+    "zh": "屁股别往下掉",
+    "en": "Hips up",
+    "from": [
+     "cue3",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "at": 11,
+    "role": "halfway",
+    "zh": "手肘推地",
+    "en": "Push the floor away",
+    "from": [
+     "cue2"
+    ]
+   },
+   {
+    "at": 17,
+    "key": "n.3"
+   },
+   {
+    "at": 18,
+    "key": "n.2"
+   },
+   {
+    "at": 19,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSetsSameSide": [
+    "p.rest",
+    "sec.30"
+   ],
+   "sideDone": [
+    "p.release",
+    "p.switch_right"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
+  },
+  "sides": {
+   "order": [
+    "left",
+    "right"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边；换边准备 10 秒（training.sideSwitchSeconds，App 未接入）"
   }
  }
 }

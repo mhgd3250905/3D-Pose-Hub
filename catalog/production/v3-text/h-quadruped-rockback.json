@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-quadruped-rockback",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-quadruped-rockback-rr1.js"
  ],
@@ -10,49 +10,49 @@
   "en": "Hands-and-Knees Rock Back"
  },
  "purpose": {
-  "zh": "活动髋部，练习往后坐时背保持平直",
-  "en": "Loosen your hips and practice keeping your back flat as you sit back."
+  "zh": "让胯活动开，练往后坐时背不弓",
+  "en": "Loosens your hips and practises keeping your back flat as you sit back."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "背保持平直，屁股往脚跟方向坐",
-    "en": "Keep your back flat and rock your hips back toward your heels"
+    "zh": "背挺平，屁股往脚后跟坐",
+    "en": "Flat back, rock your hips back toward your heels"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "双手不动，手臂伸直。",
-    "en": "Keep your hands planted and your arms straight."
+    "zh": "两手不动，手臂伸直。",
+    "en": "Hands stay planted, arms straight."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "背快要弯的时候就停住，再往前回。",
+    "zh": "背快要弓的时候就停，再往前回。",
     "en": "Stop just before your back starts to round, then rock forward."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "往后坐时弓背",
-   "en": "Rounding the back as you rock back."
+   "zh": "往后坐的时候弓背",
+   "en": "Rounding your back as you rock back."
   }
  ],
  "cautions": [
   {
-   "zh": "髋部不舒服时幅度小一点，还疼就停",
-   "en": "If your hip feels uncomfortable, move less far, and stop if it still hurts."
+   "zh": "胯不舒服就往后少坐点，还疼就停",
+   "en": "If your hip feels off, don't rock back as far. Stop if it still hurts."
   },
   {
-   "zh": "手腕刺痛或发麻时停止，开始前先活动手腕",
-   "en": "Stop if your wrists feel sharp pain or numbness, and warm them up first."
+   "zh": "跪撑手腕不舒服就撑拳头，膝盖下垫软",
+   "en": "Press on your fists if your wrists complain, and pad your knees."
   }
  ],
  "tags": {
@@ -93,30 +93,26 @@
   }
  },
  "training": {
-  "kind": "rep_hold",
+  "kind": "rep_updown",
   "leadSeconds": 1,
   "phases": [
    {
     "id": "go",
-    "seconds": 0.7,
+    "seconds": 1.5,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 1.3,
+    "seconds": 0.5,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 0.8,
+    "seconds": 1.0,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 1.2
    }
   ],
-  "source": "spec-pulse-track r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -128,6 +124,94 @@
     "最终口径：按真实做法定（2026-11-01）"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 4.0 s → 3.0 s（后坐 1.5 / 停 0.5 / 回 1.0）；顶点 < 0.8 s，kind rep_hold → rep_updown",
+    "purpose「活动髋部」→「让胯活动开」；「幅度小一点」→「往后少坐点」",
+    "难度 1/1 不变",
+    "r3 第二遍（去套话，2026-11-14）：2 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "2 组×10 次，休息 20 秒",
+     "2 组×10 次，休息 20 秒"
+    ],
+    "rep": [
+     "4.0 s",
+     "3.0 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：四点跪往后坐、腰背/大腿高亮（b12 第 4 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 3.0,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "往后坐，腰别弓",
+    "en": "Sit back, don't round",
+    "from": [
+     "cue1",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "快弓就停",
+    "en": "Stop before it rounds",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "afterRep": 8,
+    "role": "form",
+    "zh": "两手别动",
+    "en": "Hands stay put",
+    "from": [
+     "cue2"
+    ]
+   },
+   {
+    "afterRep": 9,
+    "key": "p.last_rep"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.20"
+   ],
+   "allDone": [
+    "p.nice"
+   ]
   }
  }
 }

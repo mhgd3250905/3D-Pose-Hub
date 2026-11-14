@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-db-overhead-triceps-extension",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-db-overhead-triceps-extension-r5.js",
   "drill-anim/specs/h-db-overhead-triceps-extension-rr4.js",
@@ -14,8 +14,8 @@
   "en": "One-Arm Overhead Triceps Extension"
  },
  "purpose": {
-  "zh": "练手臂后侧，让手臂伸直更有力",
-  "en": "Build the back of your upper arm for stronger arm straightening."
+  "zh": "练大臂后面，让手臂伸直更有劲",
+  "en": "Builds the back of your upper arm so straightening it gets stronger."
  },
  "cues": [
   {
@@ -23,14 +23,14 @@
    "primary": true,
    "text": {
     "zh": "大臂贴着耳朵不动，只用小臂把哑铃举直",
-    "en": "Keep your upper arm by your ear and straighten only the forearm"
+    "en": "Upper arm by your ear, straighten only your forearm"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "哑铃从头后面向上举到手臂伸直。",
+    "zh": "哑铃从头后面往上举，举到手臂伸直。",
     "en": "Lift the dumbbell from behind your head until your arm is straight."
    }
   },
@@ -38,29 +38,29 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "慢慢放回头后，在底部停一会儿再举。",
-    "en": "Lower it slowly behind your head and pause at the bottom before the next one."
+    "zh": "慢慢放回头后面，在底下停一下再举。",
+    "en": "Lower it slowly behind your head and pause at the bottom."
    }
   }
  ],
  "commonErrors": [
   {
    "zh": "大臂往前或往外跑",
-   "en": "Letting the upper arm drift forward or out."
+   "en": "Upper arm drifting forward or out."
   },
   {
-   "zh": "腰往后仰",
-   "en": "Arching the lower back."
+   "zh": "举直的时候挺肚子、腰往后弯",
+   "en": "Pushing your belly out and bending your back as you press up."
   }
  ],
  "cautions": [
   {
-   "zh": "从轻重量开始，出现疼痛就停止",
-   "en": "Start with a light weight, and stop if you feel pain."
+   "zh": "先用轻哑铃，放到脑后时手肘疼就停",
+   "en": "Start light. Stop if your elbow hurts when the weight is behind your head."
   },
   {
-   "zh": "肩前侧夹着疼时，缩小幅度或换简单版本",
-   "en": "If the front of your shoulder pinches, reduce the range or switch to an easier version."
+   "zh": "肩膀前面夹着疼就往脑后少放一点",
+   "en": "If the front of your shoulder pinches, don't lower as far behind your head."
   }
  ],
  "tags": {
@@ -88,7 +88,7 @@
  },
  "phases": {
   "start": {
-   "zh": "伸直",
+   "zh": "举直",
    "en": "Press up"
   },
   "peak": {
@@ -96,7 +96,7 @@
    "en": "Pause"
   },
   "end": {
-   "zh": "慢慢放下",
+   "zh": "慢慢放",
    "en": "Lower slowly"
   }
  },
@@ -106,26 +106,26 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 0.9,
+    "seconds": 1.0,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 1.7,
+    "seconds": 0.5,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 1.2,
+    "seconds": 2.0,
     "cue": "phase.end"
    },
    {
     "id": "rest",
-    "seconds": 4.2
+    "seconds": 0.5
    }
   ],
   "perSide": "each-side-separately",
-  "source": "spec-pulse-track r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -137,6 +137,111 @@
    "flags": [
     "动画 8 秒只做 1 次，底部在头后停约 4 s，节奏偏慢；是否要改成 8 秒 2 次请定"
    ]
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 8.0 s → 4.0 s（举 1.0 / 顶 0.5 / 放 2.0 / 底 0.5），慢放；顶点 < 0.8 s，kind rep_hold → rep_updown；r2「动画 8 秒只做 1 次」flag 与节奏脱钩，不改动画",
+    "站着原地换手，不加换边准备",
+    "「缩小幅度或换简单版本」→「往下放浅点」",
+    "难度 2/2 不变",
+    "r3 第二遍（去套话，2026-11-14）：4 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [
+    "预览帧几乎看不到大臂后面高亮，请看视频确认"
+   ],
+   "audit": {
+    "dose": [
+     "3 组×每侧10 次，休息 45 秒",
+     "3 组×每侧10 次，休息 45 秒"
+    ],
+    "rep": [
+     "8.0 s",
+     "4.0 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 2,
+      "ai": 2
+     },
+     2
+    ],
+    "voice": "口吻改写",
+    "frame": "动作一致：站姿单臂过头哑铃臂屈伸；预览帧几乎看不到高亮（b8 第 6 行，非极端）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 4.0,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "大臂贴着耳朵",
+    "en": "Arm by your ear",
+    "from": [
+     "cue1",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "肋骨收住，腰别弯",
+    "en": "Ribs down, back still",
+    "from": [
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 8,
+    "role": "form",
+    "zh": "慢慢放到头后",
+    "en": "Lower behind your head",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "afterRep": 9,
+    "key": "p.last_rep"
+   }
+  ],
+  "before": [
+   "p.right_first"
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.45"
+   ],
+   "allDone": [
+    "p.nice"
+   ],
+   "sideDone": [
+    "p.switch_left"
+   ]
+  },
+  "sides": {
+   "order": [
+    "right",
+    "left"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边"
   }
  }
 }

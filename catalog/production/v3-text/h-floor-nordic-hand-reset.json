@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-floor-nordic-hand-reset",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-floor-nordic-hand-reset-rr3.js"
  ],
@@ -10,39 +10,39 @@
   "en": "Kneeling Nordic Curl with Hand Push-Back"
  },
  "purpose": {
-  "zh": "练大腿后侧，学会慢慢控制身体往前倒",
-  "en": "Build your hamstrings by slowly controlling a forward fall."
+  "zh": "练大腿后面，学会慢慢刹住身体往前倒",
+  "en": "Builds your hamstrings by slowly braking a forward fall."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "跪姿固定脚跟，身体一条直线慢慢往前倒",
-    "en": "Kneel with heels anchored and fall forward slowly in one line"
+    "zh": "跪好、脚后跟勾住，身子一条直线慢慢往前倒",
+    "en": "Kneel with heels hooked, fall forward slowly in one straight line"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "用大腿后侧控制往下的速度。",
-    "en": "Use the backs of your thighs to control the speed."
+    "zh": "大腿后面使劲刹住，越慢越好。",
+    "en": "Brake with the backs of your thighs. The slower the better."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "倒到底双手撑地，屁股往后坐再推回跪直。",
-    "en": "Catch yourself with your hands, sit your hips back and push back up to kneeling."
+    "zh": "倒到底两手撑地，屁股往后坐，再推回跪直。",
+    "en": "Catch yourself with your hands, sit your hips back, then push back up to kneeling."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "一开始就弯腰",
-   "en": "Bending at the hips too early."
+   "zh": "一开始就撅屁股、弯着腰往下",
+   "en": "Sticking your butt out and bending at the hips right away."
   },
   {
    "zh": "倒得太快",
@@ -51,12 +51,12 @@
  ],
  "cautions": [
   {
-   "zh": "大腿后侧有拉扯感或疼时停止，先从小幅度做起",
-   "en": "Stop if the backs of your thighs feel strained or sore, and start with a small range."
+   "zh": "大腿后面发紧发疼就停；倒不了多远就先只倒一小段",
+   "en": "Stop if the backs of your thighs feel strained. Can't go far? Just lean forward a little to start."
   },
   {
-   "zh": "脚跟固定不牢时不要做，膝下垫软垫",
-   "en": "Do not start unless your heels are securely anchored, and pad your knees."
+   "zh": "脚后跟没勾牢别做，膝盖底下垫软垫",
+   "en": "Don't start unless your heels are hooked in securely. Pad your knees."
   }
  ],
  "tags": {
@@ -88,8 +88,8 @@
    "en": "Lower slowly"
   },
   "peak": {
-   "zh": "双手撑地",
-   "en": "Catch with hands"
+   "zh": "手撑地",
+   "en": "Catch"
   },
   "end": {
    "zh": "推回跪直",
@@ -102,25 +102,21 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 2.0,
+    "seconds": 3.5,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 1.5,
+    "seconds": 0.5,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 1.6,
+    "seconds": 1.5,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 2.9
    }
   ],
-  "source": "spec-pulse-track r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -132,6 +128,79 @@
    ],
    "flags": [
     "动画 8 秒 1 次；回位时屁股往后坐（约 84°弯腰）再起身，是否就是想要的「手撑复位」请确认"
+   ]
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 8.0 s → 5.5 s（慢倒 3.5 / 撑地 0.5 / 推回 1.5），慢倒是这个动作的重点",
+    "剂量 3 组×5 次、休息 90 秒不变",
+    "难度 v3 3 / ai-tags 4 → 统一 3",
+    "「用大腿后侧控制往下的速度」→「大腿后面使劲刹住，越慢越好」；「先从小幅度做起」→「先只倒一小段」",
+    "共用词补 sec.90「1 分半」（2026-11-14，只写脚本，未合成音频）"
+   ],
+   "flags": [
+    "r2 flag 沿用：回位时屁股往后坐（约 84° 弯腰）再起身，是否就是想要的「手撑复位」请确认"
+   ],
+   "audit": {
+    "dose": [
+     "3 组×5 次，休息 90 秒",
+     "3 组×5 次，休息 90 秒"
+    ],
+    "rep": [
+     "8.0 s",
+     "5.5 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 3,
+      "ai": 4
+     },
+     3
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：俯卧脚勾凳下、两手撑地（北欧挺撑回）、大腿后面高亮（b9 第 10 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 5.5,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "halfway",
+    "zh": "身子一条直线，别撅屁股",
+    "en": "One straight line, butt in",
+    "from": [
+     "cue1",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 4,
+    "key": "p.last_rep"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.90"
+   ],
+   "allDone": [
+    "p.nice"
    ]
   }
  }

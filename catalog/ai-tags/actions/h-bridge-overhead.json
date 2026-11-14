@@ -5,7 +5,7 @@
   "status": "ai-draft",
   "source": {
     "text": "catalog/production/v3-text/h-bridge-overhead.json",
-    "textSha256Lf": "6307d6871aa32bf2aa2af7d85bee6dcf2dac661271bac3d44c18b3c58bcdf386",
+    "textSha256Lf": "2dea73ac6a248603db3bb490f037c0993c454c64963f1bec46ad107f952eddfb",
     "spec": "drill-anim/specs/h-bridge-overhead-r5.js",
     "catalogV1": null
   },
@@ -171,6 +171,12 @@
         ]
       },
       "reason": "v3 粗粒度肌群（glutes）按动作实际做法拆到细分 id。手臂贴地过头是被动肩屈，非三角肌主动发力；改为 stretchedMuscles 的 lats。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 1,
+      "reason": "r3 动作包核对（开哥 2026-11-13）：逐个重定，与 v3 tags.difficulty 同值。"
     }
   ],
   "reviewNotes": []

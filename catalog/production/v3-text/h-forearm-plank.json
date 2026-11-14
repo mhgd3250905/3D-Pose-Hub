@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-forearm-plank",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-forearm-plank.js"
  ],
@@ -10,8 +10,8 @@
   "en": "Forearm Plank"
  },
  "purpose": {
-  "zh": "练腹部和身体两侧，让躯干更稳",
-  "en": "Build your abs and sides for a steadier trunk."
+  "zh": "练肚子和身体两侧，让整个人像一块板一样硬",
+  "en": "Builds your abs and sides so your whole body stays stiff like a board."
  },
  "cues": [
   {
@@ -19,39 +19,39 @@
    "primary": true,
    "text": {
     "zh": "手肘在肩膀正下方，从头到脚跟一条直线",
-    "en": "Elbows under shoulders, body in one line from head to heels"
+    "en": "Elbows under shoulders, one straight line from head to heels"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "收紧臀部和肚子，屁股不高不低。",
-    "en": "Squeeze your glutes and abs, hips neither high nor low."
+    "zh": "夹紧屁股，肚子像要挨一拳那样绷住，屁股不高不低。",
+    "en": "Squeeze your butt, brace like you are about to take a punch, hips not high or low."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "均匀呼吸，不要憋气。",
-    "en": "Breathe evenly and do not hold your breath."
+    "zh": "别憋气，正常喘。",
+    "en": "Don't hold your breath. Breathe normally."
    }
   }
  ],
  "commonErrors": [
   {
    "zh": "塌腰",
-   "en": "Letting the lower back sag."
+   "en": "Hips sagging."
   },
   {
-   "zh": "屁股翘太高",
-   "en": "Piking the hips too high."
+   "zh": "屁股撅太高",
+   "en": "Hips piked too high."
   }
  ],
  "cautions": [
   {
-   "zh": "腰疼时缩短时间或改跪姿做",
+   "zh": "腰疼就少撑几秒，或者跪着做",
    "en": "If your lower back hurts, hold for less time or drop to your knees."
   }
  ],
@@ -69,7 +69,7 @@
    "mat"
   ],
   "position": "plank",
-  "difficulty": 1
+  "difficulty": 2
  },
  "unilateral": false,
  "defaultDose": {
@@ -80,16 +80,16 @@
  },
  "phases": {
   "start": {
-   "zh": "撑起收紧",
-   "en": "Brace up"
+   "zh": "撑起来",
+   "en": "Get up"
   },
   "peak": {
-   "zh": "保持住",
-   "en": "Hold"
+   "zh": "撑住",
+   "en": "Hold it"
   },
   "end": {
-   "zh": "慢慢放下",
-   "en": "Lower down"
+   "zh": "别憋气",
+   "en": "Keep breathing"
   }
  },
  "training": {
@@ -104,6 +104,103 @@
     "caution 改成平板适用的「腰疼时缩短时间或跪姿」（原「减小幅度」不适用）"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "剂量 3 组×30 秒、休息 30 秒不变",
+    "purpose 去掉术语「躯干」；「收紧臀部和肚子」→「夹紧屁股，肚子像要挨一拳那样绷住」；「均匀呼吸」→「正常喘」",
+    "难度 v3 1 / ai-tags 2 → 统一 2；退阶「跪着做」已在注意事项"
+   ],
+   "flags": [
+    "高亮在大腿前面，没有肚子；是否改到腹部（只报告）"
+   ],
+   "audit": {
+    "dose": [
+     "3 组×30 秒，休息 30 秒",
+     "3 组×30 秒，休息 30 秒"
+    ],
+    "rep": [
+     "计时",
+     "计时"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 2
+     },
+     2
+    ],
+    "voice": "口吻改写",
+    "frame": "动作一致：前臂平板支撑；高亮在大腿前面，文字写肚子（b10 第 1 行，非极端）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 4,
+    "role": "posture",
+    "zh": "一条直线，别塌腰",
+    "en": "One straight line, no sagging",
+    "from": [
+     "cue1",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "at": 12,
+    "role": "halfway",
+    "zh": "夹紧屁股，肚子绷住",
+    "en": "Squeeze your butt, brace",
+    "from": [
+     "cue2"
+    ]
+   },
+   {
+    "at": 20,
+    "role": "form",
+    "zh": "别憋气，正常喘",
+    "en": "Keep breathing",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "at": 27,
+    "key": "n.3"
+   },
+   {
+    "at": 28,
+    "key": "n.2"
+   },
+   {
+    "at": 29,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.release",
+    "p.rest",
+    "sec.30"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
   }
  }
 }

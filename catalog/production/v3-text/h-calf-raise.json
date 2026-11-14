@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-calf-raise",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-calf-raise.js"
  ],
@@ -10,49 +10,49 @@
   "en": "Wall-Supported Calf Raise"
  },
  "purpose": {
-  "zh": "练小腿，让脚踝更有力",
-  "en": "Build your calves and stronger ankles."
+  "zh": "练小腿，让脚踝更有劲",
+  "en": "Builds your calves and stronger ankles."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "脚跟直直抬起，脚踝别往外翻",
-    "en": "Rise straight up onto the balls of your feet"
+    "zh": "脚后跟直直抬起来，脚踝别往外翻",
+    "en": "Rise straight up onto your toes, ankles don't roll out"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "指尖轻扶墙，只用来保持平衡。",
-    "en": "Rest your fingertips on the wall for balance only."
+    "zh": "指尖轻轻扶墙，只是帮你站稳。",
+    "en": "Fingertips on the wall, just for balance."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "膝盖伸直，身体像一根直线往上走。",
-    "en": "Keep your knees straight and rise as one straight line."
+    "zh": "膝盖伸直，整个人像一根棍子往上走。",
+    "en": "Knees straight, rise like one straight pole."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "脚踝往外翻",
-   "en": "Rolling the ankles outward."
+   "zh": "踮起来时重心跑到小脚趾那边",
+   "en": "Weight rolling onto your little toes as you rise."
   },
   {
-   "zh": "落下太快，脚跟砸地",
-   "en": "Dropping down fast and slamming the heels."
+   "zh": "落得太快，脚后跟砸地",
+   "en": "Dropping fast and slamming your heels."
   }
  ],
  "cautions": [
   {
-   "zh": "脚踝或跟腱不舒服时抬低一点，还疼就停",
-   "en": "If your ankles or Achilles feel uncomfortable, rise less high, and stop if it still hurts."
+   "zh": "脚踝或脚后跟上面的筋不舒服就踮低点，还疼就停",
+   "en": "If your ankles or Achilles feel off, don't rise as high. Stop if it still hurts."
   }
  ],
  "tags": {
@@ -84,7 +84,7 @@
    "en": "Hold"
   },
   "end": {
-   "zh": "慢放下",
+   "zh": "慢慢放",
    "en": "Lower slowly"
   }
  },
@@ -94,25 +94,21 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 0.7,
+    "seconds": 1.0,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 1.3,
+    "seconds": 0.8,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 0.8,
+    "seconds": 1.2,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 1.2
    }
   ],
-  "source": "spec-pulse-track r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -123,6 +119,104 @@
     "加 training rep_hold"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 4.0 s → 3.0 s（踮 1.0 / 停 0.8 / 放 1.2）",
+    "加「像一根棍子往上走」的画面；「跟腱」→「脚后跟上面的筋」",
+    "难度 1/1 不变",
+    "r3 第二遍（去套话，2026-11-14）：3 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "3 组×15 次，休息 30 秒",
+     "3 组×15 次，休息 30 秒"
+    ],
+    "rep": [
+     "4.0 s",
+     "3.0 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：扶墙站姿提踵、小腿高亮（b6 第 1 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 3.0,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "大脚趾压住地",
+    "en": "Big toes press down",
+    "from": [
+     "cue1",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "form",
+    "zh": "慢慢放，别砸",
+    "en": "Lower softly",
+    "from": [
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 8,
+    "role": "halfway",
+    "zh": "像一根棍子往上",
+    "en": "Rise tall",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "afterRep": 11,
+    "role": "form",
+    "zh": "脚后跟直上直下",
+    "en": "Heels straight up and down",
+    "from": [
+     "cue1",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 14,
+    "key": "p.last_rep"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.30"
+   ],
+   "allDone": [
+    "p.nice"
+   ]
   }
  }
 }

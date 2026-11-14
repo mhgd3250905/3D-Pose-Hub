@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "n-thomas-test",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/n-thomas-test-r3.js"
  ],
@@ -10,61 +10,61 @@
   "en": "Supine Single Knee-to-Chest (Thomas Test)"
  },
  "purpose": {
-  "zh": "看看髋前侧紧不紧，同时轻轻拉伸髋前侧",
-  "en": "Check whether the front of your hip is tight while gently stretching it."
+  "zh": "看看胯前面紧不紧，顺便轻轻拉开胯前面",
+  "en": "Checks whether the front of your hip is tight while gently stretching it."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "双手抱住一侧膝盖，另一条腿放松贴地",
-    "en": "Hug one knee with both hands and let the other leg rest long"
+    "zh": "两手抱住一边膝盖，另一条腿放松贴地",
+    "en": "Hug one knee with both hands, let the other leg rest long on the floor"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "看伸直那条腿的大腿会不会离开地面，离开说明髋前侧偏紧。",
-    "en": "Watch whether the straight thigh lifts off the floor; if it does, the front of that hip is tight."
+    "zh": "看伸直那条腿的大腿会不会离开地面，离开了就是胯前面偏紧。",
+    "en": "Watch whether the straight thigh lifts off the floor. If it does, the front of that hip is tight."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "保持不动，慢慢呼吸，每次呼气再放松一点。",
-    "en": "Stay still, breathe slowly, and relax a little deeper each time you breathe out."
+    "zh": "抱住的膝盖贴胸口，另一条腿就让它自己往下放。",
+    "en": "Hold one knee to your chest and let the other leg relax down."
    }
   },
   {
    "id": "cue4",
    "primary": false,
    "text": {
-    "zh": "别来回颠，有拉伸感就够，别拉到疼。",
-    "en": "Do not bounce; a clear stretch is enough, never pain."
+    "zh": "放着的那条大腿抬起来了也别硬压，记住它在哪儿。",
+    "en": "If the resting thigh lifts, don't force it down. Just notice where it sits."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "伸直的腿故意用力压地或抬起",
+   "zh": "伸直的腿故意使劲压地或抬起",
    "en": "Pressing the straight leg down or lifting it on purpose."
   },
   {
-   "zh": "抱得太用力，腰离开地面",
-   "en": "Pulling the knee in so hard that your lower back lifts."
+   "zh": "抱得太使劲，腰离开地",
+   "en": "Hugging so hard your lower back lifts."
   },
   {
-   "zh": "憋气或来回颠",
-   "en": "Holding your breath or bouncing."
+   "zh": "用手按另一条腿往下压",
+   "en": "Pushing the other leg down with your hand."
   }
  ],
  "cautions": [
   {
-   "zh": "膝盖或髋部疼时抱得松一点，还疼就停",
-   "en": "If your knee or hip hurts, hug less, and stop if it still hurts."
+   "zh": "膝盖抱着疼就改成抱大腿后面",
+   "en": "If hugging the knee hurts, hold behind your thigh instead."
   }
  ],
  "tags": {
@@ -95,12 +95,12 @@
    "en": "Hug your knee"
   },
   "peak": {
-   "zh": "保持，慢慢呼气",
-   "en": "Hold and breathe out"
+   "zh": "另一条腿放松",
+   "en": "Other leg relaxed"
   },
   "end": {
-   "zh": "呼气再放松",
-   "en": "Relax a bit deeper"
+   "zh": "抱住别压",
+   "en": "Hold, don't force"
   }
  },
  "training": {
@@ -121,6 +121,113 @@
     "最终口径：按真实做法定（2026-11-01）"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "剂量 每侧 2 组×30 秒、休息 15 秒不变；仰卧原地换抱另一边膝盖，不加换边准备",
+    "「髋前侧」→「胯前面」，「髋部」→「胯」；「别来回颠」→「别一下一下往下压」",
+    "难度 1/1 不变",
+    "r3 第二遍（去套话，2026-11-14）：7 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "2 组×每侧30 秒，休息 15 秒",
+     "2 组×每侧30 秒，休息 15 秒"
+    ],
+    "rep": [
+     "计时",
+     "计时"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：仰卧抱一膝、另一腿平放、胯前高亮（b18 第 8 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 4,
+    "role": "posture",
+    "zh": "伸直的腿放松",
+    "en": "Straight leg relaxed",
+    "from": [
+     "cue1",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "at": 12,
+    "role": "halfway",
+    "zh": "腰贴着地",
+    "en": "Back down",
+    "from": [
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "at": 20,
+    "role": "form",
+    "zh": "另一条腿放松别压",
+    "en": "Other leg loose, no forcing",
+    "from": [
+     "cue4"
+    ]
+   },
+   {
+    "at": 27,
+    "key": "n.3"
+   },
+   {
+    "at": 28,
+    "key": "n.2"
+   },
+   {
+    "at": 29,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSetsSameSide": [
+    "p.rest",
+    "sec.15"
+   ],
+   "sideDone": [
+    "p.release",
+    "p.switch_left"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
+  },
+  "sides": {
+   "order": [
+    "right",
+    "left"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边"
   }
  }
 }

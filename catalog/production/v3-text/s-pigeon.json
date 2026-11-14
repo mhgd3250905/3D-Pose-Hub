@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "s-pigeon",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/s-pigeon.js"
  ],
@@ -10,8 +10,8 @@
   "en": "Pigeon Stretch"
  },
  "purpose": {
-  "zh": "拉伸前腿的臀部和后腿的髋前侧",
-  "en": "Stretch the glute of your front leg and the front of your back hip."
+  "zh": "拉开前腿屁股和后腿大腿根前面，坐久了胯发紧最管用",
+  "en": "Opens up the butt of your front leg and the front of your back hip, great when sitting leaves your hips tight."
  },
  "cues": [
   {
@@ -19,52 +19,52 @@
    "primary": true,
    "text": {
     "zh": "前腿小腿横在身前，后腿往后伸直",
-    "en": "Bring your front shin across and stretch the back leg behind you"
+    "en": "Front shin across, back leg straight behind you"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "双手扶砖，骨盆尽量摆正，别硬往下压。",
-    "en": "Hands on the blocks, hips as square as you can, do not force them down."
+    "zh": "两手扶砖撑住，两边胯骨尽量一样高。",
+    "en": "Hands on the blocks. Try to keep both hip bones level."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "保持不动，慢慢呼吸，每次呼气再放松一点。",
-    "en": "Stay still, breathe slowly, and relax a little deeper each time you breathe out."
+    "zh": "就停在这儿，每次呼气往下沉一点点。",
+    "en": "Stay right there and sink a little lower each time you breathe out."
    }
   },
   {
    "id": "cue4",
    "primary": false,
    "text": {
-    "zh": "别来回颠，有拉伸感就够，别拉到疼。",
-    "en": "Do not bounce; a clear stretch is enough, never pain."
+    "zh": "别一下一下往下压，屁股有拉扯感就够了，别到疼。",
+    "en": "Don't bounce it down. A good pull in your butt is enough, never pain."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "骨盆歪向一边",
-   "en": "Letting your hips tilt to one side."
+   "zh": "身子歪着坐，两边胯一高一低",
+   "en": "Sitting crooked so one hip is higher."
   },
   {
-   "zh": "硬压前腿膝盖",
+   "zh": "硬把前腿膝盖往下按",
    "en": "Forcing the front knee down."
   },
   {
-   "zh": "憋气或来回颠",
-   "en": "Holding your breath or bouncing."
+   "zh": "身子往前趴时屁股歪到一边",
+   "en": "Hips tipping to one side as you fold forward."
   }
  ],
  "cautions": [
   {
-   "zh": "膝盖疼时垫高臀部，或换成仰卧4字拉伸",
-   "en": "If your knee hurts, prop your hips higher or switch to the lying figure-4 stretch."
+   "zh": "膝盖疼就在屁股底下多垫点，还疼就换成躺着的 4 字拉伸",
+   "en": "If your knee hurts, put more under your hip. Still hurts? Switch to the lying figure-4 stretch."
   }
  ],
  "tags": {
@@ -88,28 +88,29 @@
  "defaultDose": {
   "mode": "time",
   "sets": 2,
-  "seconds": 45,
+  "seconds": 30,
   "restSeconds": 15
  },
  "phases": {
   "start": {
-   "zh": "慢慢沉下",
+   "zh": "慢慢趴下",
    "en": "Settle in"
   },
   "peak": {
-   "zh": "保持，慢慢呼气",
-   "en": "Hold and breathe out"
+   "zh": "胯摆正",
+   "en": "Hips square"
   },
   "end": {
-   "zh": "呼气微微前倾",
-   "en": "Breathe out, lean in"
+   "zh": "呼气再沉",
+   "en": "Breathe out, sink"
   }
  },
  "training": {
   "kind": "hold",
   "leadSeconds": 1,
   "perSide": "each-side-separately",
-  "source": "user-decision static-hold r2"
+  "source": "user-decision static-hold r2",
+  "sideSwitchSeconds": 10
  },
  "review": {
   "r2": {
@@ -121,6 +122,118 @@
     "剂量 → 每侧 2 组×45 秒，休息 15 秒；口令/要点改为进入-保持-呼气放松，去掉来回/计数描述"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "剂量 每侧 2 组×45 秒 → 30 秒（开哥 2026-11-13 拍板），组间休息 15 秒不变；一侧 2 组做完再换边",
+    "新增 training.sideSwitchSeconds = 10：从一侧鸽子式换到另一侧要重新摆腿（App 未接入）",
+    "文字改教练口吻：「骨盆摆正」→「两边胯骨一样高」，「别来回颠」→「别一下一下往下压」，purpose 说清用处",
+    "难度 v3 2 / ai-tags 3 → 统一 2",
+    "voiceGuide 按新文字重排（4/12/20 秒三句 + 倒数）",
+    "r3 第二遍（去套话，2026-11-14）：2 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [
+    "purpose 写了后腿大腿根前面，高亮只有前腿臀部，是否补后腿高亮（只报告，未改模型）"
+   ],
+   "audit": {
+    "dose": [
+     "2 组×每侧45 秒，休息 15 秒",
+     "2 组×每侧30 秒，休息 15 秒"
+    ],
+    "rep": [
+     "计时",
+     "计时"
+    ],
+    "difficulty": [
+     {
+      "v3": 2,
+      "ai": 3
+     },
+     2
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：鸽子式、双手扶两块瑜伽砖、前侧胯下有垫；高亮只在前腿臀部（purpose 还写后腿大腿根前面），非极端",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 4,
+    "role": "posture",
+    "zh": "两边胯骨一样高，别歪",
+    "en": "Keep both hips level",
+    "from": [
+     "cue2",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "at": 12,
+    "role": "halfway",
+    "zh": "呼气，再往下沉一点",
+    "en": "Breathe out and sink a bit",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "at": 20,
+    "role": "form",
+    "zh": "别压膝盖，有拉扯感就行",
+    "en": "Easy on the knee. A pull is enough",
+    "from": [
+     "commonErrors[1]",
+     "cue4"
+    ]
+   },
+   {
+    "at": 27,
+    "key": "n.3"
+   },
+   {
+    "at": 28,
+    "key": "n.2"
+   },
+   {
+    "at": 29,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSetsSameSide": [
+    "p.rest",
+    "sec.15"
+   ],
+   "sideDone": [
+    "p.release",
+    "p.switch_left"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
+  },
+  "sides": {
+   "order": [
+    "right",
+    "left"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边；换边准备 10 秒（training.sideSwitchSeconds，App 未接入）"
   }
  }
 }

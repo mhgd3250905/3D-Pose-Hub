@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "deltoids-A",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/data/drills.json",
   "drill-anim/specs/deltoids-A-r3.js"
@@ -11,8 +11,8 @@
   "en": "Straight-Arm Side Plank Hip Dip"
  },
  "purpose": {
-  "zh": "练肩膀和侧腰，让单手撑地更稳",
-  "en": "Build your shoulders and the sides of your waist for a steadier one-arm support."
+  "zh": "练肩膀和侧腰，一只手撑地也撑得住",
+  "en": "Builds your shoulders and the sides of your waist so one arm can hold you up."
  },
  "cues": [
   {
@@ -20,44 +20,44 @@
    "primary": true,
    "text": {
     "zh": "手撑在肩膀正下方，把地推远",
-    "en": "Keep your hand under your shoulder and push the floor away"
+    "en": "Hand right under your shoulder, push the floor away"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "髋慢慢往下沉，再抬回身体成一条直线。",
-    "en": "Lower your hips slowly, then lift back into one straight line."
+    "zh": "屁股慢慢往下沉，再顶回成一条直线。",
+    "en": "Lower your hips slowly, then drive them back up into a straight line."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "另一只手放在髋上，肩和脚不动。",
-    "en": "Rest your other hand on your hip and keep your shoulders and feet still."
+    "zh": "另一只手叉腰，肩膀和脚不动。",
+    "en": "Other hand on your hip. Shoulders and feet stay put."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "肩膀往耳朵方向塌",
-   "en": "Letting the shoulder sink toward the ear."
+   "zh": "撑地那边肩膀往耳朵塌",
+   "en": "Supporting shoulder sinking toward your ear."
   },
   {
-   "zh": "髋抬不回直线",
-   "en": "Not lifting the hips back into line."
+   "zh": "屁股顶不回一条线",
+   "en": "Not getting your hips back up into line."
   }
  ],
  "cautions": [
   {
-   "zh": "手腕疼或发麻时停下",
-   "en": "Stop if your wrists hurt or go numb."
+   "zh": "一只手撑全身，手腕疼或发麻就放下来",
+   "en": "One hand holds you up. Come down if that wrist hurts or goes numb."
   },
   {
-   "zh": "先活动手腕再做",
-   "en": "Warm up your wrists before you start."
+   "zh": "撑不住就下面那条腿跪着做",
+   "en": "Too hard? Do it with your bottom knee on the floor."
   }
  ],
  "tags": {
@@ -74,7 +74,7 @@
    "mat"
   ],
   "position": "side-lying",
-  "difficulty": 1
+  "difficulty": 2
  },
  "unilateral": true,
  "startingSide": "right",
@@ -86,15 +86,15 @@
  },
  "phases": {
   "start": {
-   "zh": "髋往下沉",
-   "en": "Dip your hips"
+   "zh": "往下沉",
+   "en": "Dip"
   },
   "peak": {
    "zh": "到底",
    "en": "Bottom"
   },
   "end": {
-   "zh": "抬回直线",
+   "zh": "顶回来",
    "en": "Lift back up"
   }
  },
@@ -109,7 +109,8 @@
    },
    {
     "id": "hold",
-    "seconds": 0.3
+    "seconds": 0.3,
+    "cue": "phase.peak"
    },
    {
     "id": "back",
@@ -118,11 +119,12 @@
    },
    {
     "id": "rest",
-    "seconds": 1.3
+    "seconds": 0.3
    }
   ],
   "perSide": "each-side-separately",
-  "source": "spec-pulse-track r2"
+  "source": "real-tempo r3",
+  "sideSwitchSeconds": 10
  },
  "review": {
   "r2": {
@@ -132,6 +134,103 @@
     "caution 拆成两条短句"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 4.0 s → 3.0 s（沉 1.2 / 顶 1.2，两端短停）",
+    "新增 sideSwitchSeconds 10（侧撑换边要翻身）",
+    "难度 v3 1 / ai-tags 3 → 统一 2；退阶跪姿",
+    "文字改教练口吻",
+    "r3 第二遍（去套话，2026-11-14）：1 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [
+    "预览帧肩部高亮不明显，请看视频确认"
+   ],
+   "audit": {
+    "dose": [
+     "3 组×每侧8 次，休息 45 秒",
+     "3 组×每侧8 次，休息 45 秒"
+    ],
+    "rep": [
+     "4.0 s",
+     "3.0 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 3
+     },
+     2
+    ],
+    "voice": "口吻改写",
+    "frame": "动作一致：直臂侧撑、一手叉腰；肩部高亮在预览帧里不明显（非极端）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 3.0,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "把地推远，肩别塌",
+    "en": "Push the floor away",
+    "from": [
+     "cue1",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "顶回一条直线",
+    "en": "Back to a straight line",
+    "from": [
+     "cue2",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 7,
+    "key": "p.last_rep"
+   }
+  ],
+  "before": [
+   "p.right_first"
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.45"
+   ],
+   "allDone": [
+    "p.nice"
+   ],
+   "sideDone": [
+    "p.switch_left"
+   ]
+  },
+  "sides": {
+   "order": [
+    "right",
+    "left"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边；换边准备 10 秒（training.sideSwitchSeconds，App 未接入）"
   }
  }
 }

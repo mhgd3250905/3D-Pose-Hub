@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-bilateral-upper-back-hug",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-bilateral-upper-back-hug-rr3.js"
  ],
@@ -10,39 +10,39 @@
   "en": "Upper Back Hug Stretch"
  },
  "purpose": {
-  "zh": "拉伸上背和两块肩胛骨之间",
-  "en": "Stretch your upper back between your shoulder blades."
+  "zh": "拉开上背和两块肩胛骨中间",
+  "en": "Stretches your upper back, right between your shoulder blades."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "双臂往前环抱，上背往后拱",
-    "en": "Wrap your arms forward and round your upper back"
+    "zh": "两臂往前抱住自己，上背往后拱",
+    "en": "Hug yourself and round your upper back"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "肩胛骨往两边分开，低头放松脖子。",
-    "en": "Spread your shoulder blades apart and relax your neck."
+    "zh": "肩胛骨往两边分开，低头，脖子放松。",
+    "en": "Spread your shoulder blades apart, drop your head, relax your neck."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "保持呼吸，每次呼气再抱紧一点。",
-    "en": "Keep breathing and hug a little tighter each time you breathe out."
+    "zh": "别憋气，每次呼气再抱紧一点。",
+    "en": "Keep breathing and hug a little tighter each breath out."
    }
   }
  ],
  "commonErrors": [
   {
    "zh": "耸肩",
-   "en": "Shrugging your shoulders."
+   "en": "Shrugging."
   },
   {
    "zh": "憋气",
@@ -51,8 +51,8 @@
  ],
  "cautions": [
   {
-   "zh": "拉到舒服的程度就好，疼就松开",
-   "en": "Stretch only to a comfortable point, and let go if it hurts."
+   "zh": "肩膀前面夹着疼就抱松点，上背有拉开的感觉就够",
+   "en": "If the front of your shoulders pinch, hug looser. A stretch across your upper back is enough."
   }
  ],
  "tags": {
@@ -80,8 +80,8 @@
    "en": "Hug and round"
   },
   "peak": {
-   "zh": "保持呼吸",
-   "en": "Breathe and hold"
+   "zh": "上背拱住",
+   "en": "Round and hold"
   },
   "end": {
    "zh": "慢慢松开",
@@ -103,6 +103,101 @@
     "最终口径：按真实做法定（2026-11-01）"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "剂量 2 组×30 秒、休息 10 秒不变",
+    "文字改教练口吻",
+    "难度 1/1 不变",
+    "r3 第二遍（去套话，2026-11-14）：3 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "2 组×30 秒，休息 10 秒",
+     "2 组×30 秒，休息 10 秒"
+    ],
+    "rep": [
+     "计时",
+     "计时"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：站姿双臂自抱、上背拱；高亮很淡（b5 第 6 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 4,
+    "role": "posture",
+    "zh": "肩膀放下来，别耸",
+    "en": "Shoulders down",
+    "from": [
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "at": 12,
+    "role": "halfway",
+    "zh": "上背往后拱圆",
+    "en": "Round your upper back",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "at": 20,
+    "role": "form",
+    "zh": "低头，脖子放松",
+    "en": "Head down, neck loose",
+    "from": [
+     "cue2"
+    ]
+   },
+   {
+    "at": 27,
+    "key": "n.3"
+   },
+   {
+    "at": 28,
+    "key": "n.2"
+   },
+   {
+    "at": 29,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.release",
+    "p.rest",
+    "sec.10"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
   }
  }
 }

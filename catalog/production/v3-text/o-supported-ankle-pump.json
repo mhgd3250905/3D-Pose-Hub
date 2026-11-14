@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "o-supported-ankle-pump",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/o-supported-ankle-pump.js"
  ],
@@ -10,16 +10,16 @@
   "en": "Chair-Supported Ankle Pump"
  },
  "purpose": {
-  "zh": "活动脚踝，让小腿放松",
-  "en": "Move your ankle and loosen up your lower leg."
+  "zh": "活动脚踝，让小腿松开",
+  "en": "Moves your ankle and loosens up your lower leg."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "髋和膝不动，脚尖先绷直再勾起",
-    "en": "Keep your hip and knee still, point your toes, then pull them up"
+    "zh": "胯和膝盖不动，脚尖先绷直再勾起来",
+    "en": "Hip and knee stay still, point your toes, then pull them up"
    }
   },
   {
@@ -27,28 +27,28 @@
    "primary": false,
    "text": {
     "zh": "一只手轻扶椅子，这只脚悬空。",
-    "en": "Rest one hand lightly on a chair and lift this foot off the floor."
+    "en": "One hand resting on a chair, this foot off the floor."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "绷一下再勾一下算 1 次，慢慢做别憋气。",
-    "en": "One point and one pull counts as one. Go slowly and keep breathing."
+    "zh": "绷一下再勾一下算 1 下，慢慢做别憋气。",
+    "en": "One point and one pull counts as one. Go slow and keep breathing."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "动作太快，整条腿跟着晃",
-   "en": "Moving fast so the whole leg swings."
+   "zh": "做太快，整条腿跟着晃",
+   "en": "Going so fast your whole leg swings."
   }
  ],
  "cautions": [
   {
-   "zh": "扶稳没有轮子的椅子，疼或站不稳时就停",
-   "en": "Use a stable chair without wheels, and stop if it hurts or you feel unsteady."
+   "zh": "扶稳椅背单腿站，小腿抽筋就放下脚歇歇",
+   "en": "Hold the chair while on one leg. If your calf cramps, put the foot down and rest."
   }
  ],
  "tags": {
@@ -78,8 +78,8 @@
    "en": "Point"
   },
   "peak": {
-   "zh": "停住",
-   "en": "Hold"
+   "zh": "别憋气",
+   "en": "Keep breathing"
   },
   "end": {
    "zh": "勾脚尖",
@@ -92,26 +92,17 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 1.6,
+    "seconds": 1.2,
     "cue": "phase.start"
    },
    {
-    "id": "hold",
-    "seconds": 1.0,
-    "cue": "phase.peak"
-   },
-   {
     "id": "back",
-    "seconds": 3.0,
+    "seconds": 1.2,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 2.4
    }
   ],
   "perSide": "each-side-separately",
-  "source": "spec-timeline manual r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -126,6 +117,103 @@
    "flags": [
     "先绷后勾是按 spec 脚旋转角度（+1 方向脚尖向下）推断，请看动画确认；若是先勾后绷，主口令和 phases 对调"
    ]
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 8.0 s → 2.4 s（绷 1.2 / 勾 1.2，连续不停），rep_cycle；phase.peak 不绑",
+    "站着原地换边，不加换边准备",
+    "「髋和膝」→「胯和膝盖」",
+    "难度 1/1 不变",
+    "r3 第二遍（去套话，2026-11-14）：1 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [
+    "r2 flag 沿用：先绷后勾是按 spec 推断，请看动画确认；若是先勾后绷，主口令和相位口令对调"
+   ],
+   "audit": {
+    "dose": [
+     "2 组×每侧8 次，休息 30 秒",
+     "2 组×每侧8 次，休息 30 秒"
+    ],
+    "rep": [
+     "8.0 s",
+     "2.4 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：扶椅一脚悬空勾绷脚、小腿高亮（b20 第 6 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 2.4,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "别晃腿",
+    "en": "Leg still",
+    "from": [
+     "cue1",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "慢慢做",
+    "en": "Go slow",
+    "from": [
+     "cue3",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 7,
+    "key": "p.last_rep"
+   }
+  ],
+  "before": [
+   "p.right_first"
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.30"
+   ],
+   "allDone": [
+    "p.nice"
+   ],
+   "sideDone": [
+    "p.switch_left"
+   ]
+  },
+  "sides": {
+   "order": [
+    "right",
+    "left"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边"
   }
  }
 }

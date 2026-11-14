@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "o-stand-quad",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/o-stand-quad.js"
  ],
@@ -10,16 +10,16 @@
   "en": "Chair-Supported Standing Quad Stretch"
  },
  "purpose": {
-  "zh": "拉伸大腿前侧",
-  "en": "Stretch the front of your thigh."
+  "zh": "拉开大腿前面",
+  "en": "Stretches the front of your thigh."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "手抓脚踝，把脚跟拉向臀部",
-    "en": "Hold your ankle and draw your heel toward your glutes"
+    "zh": "手抓脚踝，把脚后跟往屁股拉",
+    "en": "Hold your ankle and pull your heel toward your butt"
    }
   },
   {
@@ -34,37 +34,37 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "保持不动，慢慢呼吸，每次呼气再放松一点。",
-    "en": "Stay still, breathe slowly, and relax a little deeper each time you breathe out."
+    "zh": "两个膝盖并在一起，抬起的膝盖朝地。",
+    "en": "Keep your knees side by side, the bent one pointing down."
    }
   },
   {
    "id": "cue4",
    "primary": false,
    "text": {
-    "zh": "别来回颠，有拉伸感就够，别拉到疼。",
-    "en": "Do not bounce; a clear stretch is enough, never pain."
+    "zh": "呼气时屁股夹一下，大腿前面会拉得更开，别硬拽脚。",
+    "en": "Each breath out, squeeze your butt to feel more. Don't yank the foot."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "腰往前拱",
-   "en": "Arching the lower back."
+   "zh": "拽着脚，肚子往前挺",
+   "en": "Pulling the foot and pushing your belly forward."
   },
   {
    "zh": "膝盖往外或往前跑",
-   "en": "Letting the knee drift out or forward."
+   "en": "Knee drifting out or forward."
   },
   {
-   "zh": "憋气或来回颠",
-   "en": "Holding your breath or bouncing."
+   "zh": "抬起的膝盖往外跑",
+   "en": "The bent knee drifting out to the side."
   }
  ],
  "cautions": [
   {
-   "zh": "膝盖疼时少弯一点，还疼就停",
-   "en": "If your knee hurts, bend it less, and stop if it still hurts."
+   "zh": "膝盖弯着疼就抓裤脚或用毛巾套脚",
+   "en": "If bending the knee hurts, hold your pant leg or loop a towel around the foot."
   }
  ],
  "tags": {
@@ -90,16 +90,16 @@
  },
  "phases": {
   "start": {
-   "zh": "拉近脚跟",
+   "zh": "脚跟拉近",
    "en": "Pull the heel in"
   },
   "peak": {
-   "zh": "保持，慢慢呼气",
-   "en": "Hold and breathe out"
+   "zh": "两膝并拢",
+   "en": "Knees together"
   },
   "end": {
-   "zh": "呼气再放松",
-   "en": "Relax a bit deeper"
+   "zh": "夹一下屁股",
+   "en": "Squeeze"
   }
  },
  "training": {
@@ -121,6 +121,115 @@
     "最终口径：按真实做法定（2026-11-01）"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "剂量 每侧 2 组×30 秒、休息 15 秒不变；原地换边，不加换边准备",
+    "「大腿前侧」→「大腿前面」，「臀部」→「屁股」",
+    "「别来回颠」→「别一下一下往下压」",
+    "难度 1/1 不变",
+    "r3 第二遍（去套话，2026-11-14）：9 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "2 组×每侧30 秒，休息 15 秒",
+     "2 组×每侧30 秒，休息 15 秒"
+    ],
+    "rep": [
+     "计时",
+     "计时"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：扶椅手拉脚、大腿前面高亮（b20 第 2 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 4,
+    "role": "posture",
+    "zh": "两个膝盖并排",
+    "en": "Knees side by side",
+    "from": [
+     "cue2",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "at": 12,
+    "role": "halfway",
+    "zh": "两膝并拢，肚子别挺",
+    "en": "Knees together, belly in",
+    "from": [
+     "cue3",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "at": 20,
+    "role": "form",
+    "zh": "屁股夹一下，别拽脚",
+    "en": "Squeeze, don't yank the foot",
+    "from": [
+     "cue4"
+    ]
+   },
+   {
+    "at": 27,
+    "key": "n.3"
+   },
+   {
+    "at": 28,
+    "key": "n.2"
+   },
+   {
+    "at": 29,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSetsSameSide": [
+    "p.rest",
+    "sec.15"
+   ],
+   "sideDone": [
+    "p.release",
+    "p.switch_left"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
+  },
+  "sides": {
+   "order": [
+    "right",
+    "left"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边"
   }
  }
 }

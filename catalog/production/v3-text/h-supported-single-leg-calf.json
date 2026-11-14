@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-supported-single-leg-calf",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-supported-single-leg-calf.js"
  ],
@@ -10,15 +10,15 @@
   "en": "Supported Single-Leg Calf Raise"
  },
  "purpose": {
-  "zh": "练单腿小腿力量",
-  "en": "Build calf strength one leg at a time."
+  "zh": "一条腿一条腿地练小腿",
+  "en": "Builds your calves one leg at a time."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "单脚站，脚跟抬起踮到前脚掌",
+    "zh": "单脚站，脚后跟往上抬，踮到前脚掌",
     "en": "Stand on one foot and rise onto the ball of your foot"
    }
   },
@@ -26,33 +26,33 @@
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "手扶墙保持平衡，骨盆别歪。",
-    "en": "Hold the wall for balance and keep your hips level."
+    "zh": "手扶墙站稳，胯别歪。",
+    "en": "Hand on the wall for balance, hips level."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "顶端停一下，再慢慢放下。",
-    "en": "Pause at the top, then lower slowly."
+    "zh": "踮到最高停一下，脚后跟慢慢落到底。",
+    "en": "Pause on your tiptoe, then let your heel all the way down slowly."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "脚踝往外翻",
-   "en": "Rolling the ankle outward."
+   "zh": "单脚踮起来往小脚趾那边歪",
+   "en": "Rolling onto your little toe as you rise."
   },
   {
-   "zh": "骨盆往一边掉",
-   "en": "Letting one hip drop."
+   "zh": "一边胯往下掉",
+   "en": "One hip dropping."
   }
  ],
  "cautions": [
   {
-   "zh": "脚踝或脚后跟不舒服时减小幅度，仍痛就停止",
-   "en": "If your ankle or heel cord feels uncomfortable, reduce the range, and stop if it still hurts."
+   "zh": "脚踝或脚后跟不舒服就踮低点，还疼就停；做不满就两只脚一起踮",
+   "en": "If your ankle or heel feels off, don't rise as high. Stop if it still hurts. Can't get them all? Use both feet."
   }
  ],
  "tags": {
@@ -79,7 +79,7 @@
  },
  "phases": {
   "start": {
-   "zh": "踮起脚",
+   "zh": "踮起来",
    "en": "Heel up"
   },
   "peak": {
@@ -87,8 +87,8 @@
    "en": "Pause"
   },
   "end": {
-   "zh": "放下",
-   "en": "Lower"
+   "zh": "慢慢放",
+   "en": "Lower slowly"
   }
  },
  "training": {
@@ -102,21 +102,17 @@
    },
    {
     "id": "hold",
-    "seconds": 0.9,
+    "seconds": 0.5,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 0.8,
+    "seconds": 1.5,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 1.3
    }
   ],
   "perSide": "each-side-separately",
-  "source": "spec-pulse-track r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -126,6 +122,108 @@
     "节奏核对：动画顶点真正静止约 0.37 秒（<0.8），rep_hold 改为 rep_updown"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 4.0 s → 3.0 s（踮 1.0 / 停 0.5 / 放 1.5）",
+    "站着原地换脚，不加换边准备",
+    "「骨盆」→「胯」；「减小幅度」→「踮低点」；退阶「两只脚一起踮」写进注意事项",
+    "难度 2/2 不变",
+    "r3 第二遍（去套话，2026-11-14）：3 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "3 组×每侧10 次，休息 30 秒",
+     "3 组×每侧10 次，休息 30 秒"
+    ],
+    "rep": [
+     "4.0 s",
+     "3.0 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 2,
+      "ai": 2
+     },
+     2
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：扶墙单腿踮脚、小腿高亮（b14 第 9 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 3.0,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "大脚趾压实",
+    "en": "Big toe pressing",
+    "from": [
+     "cue1",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "胯别歪",
+    "en": "Hips level",
+    "from": [
+     "cue2",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 8,
+    "role": "form",
+    "zh": "慢慢放下",
+    "en": "Lower slowly",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "afterRep": 9,
+    "key": "p.last_rep"
+   }
+  ],
+  "before": [],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.30"
+   ],
+   "allDone": [
+    "p.nice"
+   ],
+   "sideDone": [
+    "p.switch_right"
+   ]
+  },
+  "sides": {
+   "order": [
+    "left",
+    "right"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边"
   }
  }
 }

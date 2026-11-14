@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "o-stand-sidebend",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/o-stand-sidebend-r2.js"
  ],
@@ -10,15 +10,15 @@
   "en": "Standing Overhead Side Bend"
  },
  "purpose": {
-  "zh": "拉伸腰侧和背部侧面",
-  "en": "Stretch the side of your waist and back."
+  "zh": "拉开腰侧和背的侧面",
+  "en": "Stretches the side of your waist and back."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "手臂举高，身体往另一侧弯，髋不动",
+    "zh": "手臂举高，身子往另一边弯，胯别动",
     "en": "Reach one arm up and bend to the other side, hips still"
    }
   },
@@ -26,45 +26,45 @@
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "双脚与髋同宽，另一只手放在大腿外侧。",
-    "en": "Feet hip-width apart, the other hand resting on the outside of your thigh."
+    "zh": "两脚跟胯一样宽，另一只手放在大腿外面。",
+    "en": "Feet hip-width, other hand on the outside of your thigh."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "保持不动，慢慢呼吸，每次呼气再放松一点。",
-    "en": "Stay still, breathe slowly, and relax a little deeper each time you breathe out."
+    "zh": "两只脚踩实，胯钉在原地，只有上身往旁边弯。",
+    "en": "Feet planted, hips still. Only your upper body bends."
    }
   },
   {
    "id": "cue4",
    "primary": false,
    "text": {
-    "zh": "别来回颠，有拉伸感就够，别拉到疼。",
-    "en": "Do not bounce; a clear stretch is enough, never pain."
+    "zh": "呼气时举高的手往斜上方再拉远一点。",
+    "en": "Each breath out, reach your raised hand a little further up and over."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "身体前倾或扭转",
+   "zh": "身子往前倒或扭了",
    "en": "Leaning forward or twisting."
   },
   {
-   "zh": "髋部往侧面甩出去",
-   "en": "Swinging the hips out to the side."
+   "zh": "胯往旁边甩出去",
+   "en": "Swinging your hips out to the side."
   },
   {
-   "zh": "憋气或来回颠",
-   "en": "Holding your breath or bouncing."
+   "zh": "胯往另一边推出去",
+   "en": "Hips sliding out the other way."
   }
  ],
  "cautions": [
   {
-   "zh": "腰背或肩膀疼时幅度小一点，还疼就停",
-   "en": "If your back or shoulder hurts, bend less, and stop if it still hurts."
+   "zh": "腰背或肩膀疼就弯小点，还疼就停",
+   "en": "If your back or shoulder hurts, don't bend as far. Stop if it still hurts."
   }
  ],
  "tags": {
@@ -88,16 +88,16 @@
  },
  "phases": {
   "start": {
-   "zh": "往侧边弯",
-   "en": "Bend to the side"
+   "zh": "往旁边弯",
+   "en": "Bend sideways"
   },
   "peak": {
-   "zh": "保持，慢慢呼气",
-   "en": "Hold and breathe out"
+   "zh": "胯不动",
+   "en": "Hips still"
   },
   "end": {
-   "zh": "呼气再放松",
-   "en": "Relax a bit deeper"
+   "zh": "手往上拉",
+   "en": "Reach long"
   }
  },
  "training": {
@@ -116,6 +116,115 @@
     "剂量 → 每侧 2 组×30 秒，休息 15 秒；口令/要点改为进入-保持-呼气放松，去掉来回/计数描述"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "剂量 每侧 2 组×30 秒、休息 15 秒不变；原地换边，不加换边准备",
+    "「髋」→「胯」；「幅度小一点」→「弯小点」",
+    "「别来回颠」→「别一下一下往下压」",
+    "难度 1/1 不变",
+    "r3 第二遍（去套话，2026-11-14）：6 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "2 组×每侧30 秒，休息 15 秒",
+     "2 组×每侧30 秒，休息 15 秒"
+    ],
+    "rep": [
+     "计时",
+     "计时"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：站姿一臂过头侧弯、侧腰高亮（b20 第 3 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 4,
+    "role": "posture",
+    "zh": "胯别动",
+    "en": "Hips still",
+    "from": [
+     "cue1",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "at": 12,
+    "role": "halfway",
+    "zh": "别往前倒",
+    "en": "Don't lean forward",
+    "from": [
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "at": 20,
+    "role": "form",
+    "zh": "胯不动，手往上拉",
+    "en": "Hips still, reach long",
+    "from": [
+     "cue3",
+     "cue4"
+    ]
+   },
+   {
+    "at": 27,
+    "key": "n.3"
+   },
+   {
+    "at": 28,
+    "key": "n.2"
+   },
+   {
+    "at": 29,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSetsSameSide": [
+    "p.rest",
+    "sec.15"
+   ],
+   "sideDone": [
+    "p.release",
+    "p.switch_left"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
+  },
+  "sides": {
+   "order": [
+    "right",
+    "left"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边"
   }
  }
 }

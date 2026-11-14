@@ -1,0 +1,53 @@
+# t-lsit-open-close L撑开合（L-Sit Open-Close）· 动作包核对 r3
+
+- 类型：`rep_updown`；V4 预览：`/workspace/work/v4run/batch-23.jpg 第 9 行`（本机，不入库）
+- reviewStatus：`ai-reviewed-r2-needs-user-review` → `ai-reviewed-r3-needs-user-review`
+
+## 1. 剂量
+- 改前：3 组×6 次，休息 60 秒
+- 改后：3 组×6 次，休息 60 秒
+
+## 2. 真实节奏（与演示动画时长无关）
+- 一下：4.0 s → 2.5 s
+- 相位：go 1.0s / hold 0.5s / back 1.0s
+
+## 3. 难度
+- 改前 v3 3 / ai-tags 4 → 统一 3（要先撑得住 L 撑；ai-tags 原 4。退阶写进注意事项。）
+
+## 4. 指导文字（教练口吻）
+- purpose：撑住L撑，练双腿分开再并拢的控制 → 撑住 L 撑，练两腿分开再并拢
+- 要点 改前：撑住不落地，伸直的双腿慢慢分开再并拢；肩膀往下压，手臂伸直。；整组腿一直离地，膝盖不弯。
+- 要点 改后：撑住别落地，伸直的两腿慢慢分开再并拢；肩膀往下压，手臂伸直。；整组腿一直离地，膝盖别弯。
+- 常见错误 改前：耸肩；弯膝盖或脚碰地
+- 常见错误 改后：耸肩；弯膝盖或脚碰地
+- 注意事项 改前：手腕不舒服时先活动一下手腕；手腕或肩膀疼时少做一点，还疼就停
+- 注意事项 改后：开始前先转转手腕，刺疼或发麻马上停；手腕或肩膀疼就少做点，还疼就停；撑不住就脚跟点地做
+- 相位口令：分开 / 停 / 并拢 → 分开 / 停 / 并拢
+
+## 5. voiceGuide（脚本，未合成音频）
+- 一下 2.5 s；前 2 下念相位口令，之后每下报数
+| 第几下后 | 中文 | English | 出处 |
+|---|---|---|---|
+| 2 | 肩膀往下压 | Shoulders down | cue2, commonErrors[0] |
+| 5 | 最后一次 |  | p.last_rep |
+- 组后：moreSets → 休息 + 1 分钟；allDone → 很好
+
+## 6. 画面对照
+- 一致：手撑地两腿分开离地、大腿内侧/胯前高亮（batch-23 第 9 行）
+- 极端错误：无
+
+## 7. 改了什么、为什么
+- 节奏按真实带练：一下 4.0 s → 2.5 s（开 1.0 / 停 0.5 / 合 1.0）；r2「feet 轨不可信」flag 与节奏脱钩
+- 难度 v3 3 / ai-tags 4 → 统一 3；退阶「脚跟点地做」写进注意事项
+- purpose 去掉「控制」；两条手腕注意事项并成一句
+
+## 8. 待开哥定
+- 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点2：肩膀往下压，手臂伸直。 → 手推地把肩膀从耳朵边推下去。（Press your shoulders down, arms straight. → Push the floor so your shoulders slide away from your ears.）
+- 注意事项1：开始前先转转手腕，刺疼或发麻马上停 → 手腕吃全身重量，撑在拳头或撑杆上更舒服（Roll out your wrists first. Stop right away if they get sharp pain or go numb. → Your wrists take all your weight. Fists or parallettes feel better.）
+- 语音 reminders[0]：肩膀往下压 → 推地，肩膀下沉（Shoulders down → Push, shoulders down）

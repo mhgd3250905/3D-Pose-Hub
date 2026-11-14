@@ -1,0 +1,61 @@
+# h-crossbody 交叉臂肩后侧拉伸（Cross-Body Shoulder Stretch）· 动作包核对 r3
+
+- 类型：`hold`，单侧 each-side-separately，先做 right；V4 预览：`/workspace/work/v4run/b7.jpg 第 5 行`（本机，不入库）
+- reviewStatus：`ai-reviewed-r2-needs-user-review` → `ai-reviewed-r3-needs-user-review`
+
+## 1. 剂量
+- 改前：2 组×每侧30 秒，休息 15 秒
+- 改后：2 组×每侧30 秒，休息 15 秒
+
+## 2. 真实节奏（与演示动画时长无关）
+- 一下：计时 → 计时
+- 相位：计时
+
+## 3. 难度
+- 改前 v3 1 / ai-tags 1 → 统一 1
+
+## 4. 指导文字（教练口吻）
+- purpose：拉伸肩膀后侧 → 拉开肩膀后面
+- 要点 改前：手臂横过胸前，另一手把它拉近；另一手按在肘关节上方，肩膀往下放别耸。；停住不动，慢慢呼吸。；每次呼气再放松一点，别来回颠。
+- 要点 改后：手臂横过胸前，另一只手把它往身上抱；另一只手按在手肘上面一点，肩膀往下放，别耸。；就停在这儿，慢慢喘气。；每次呼气再松一点，别一下一下往下压。
+- 常见错误 改前：耸肩；憋气；来回颠着往下压
+- 常见错误 改后：耸肩；憋气；一下一下往下压
+- 注意事项 改前：肩膀疼时拉轻一点，还疼就停
+- 注意事项 改后：肩膀疼就拉轻点，还疼就停
+- 相位口令：慢慢拉近 / 保持，慢慢呼气 / 呼气再放松 → 往身上抱 / 停住，呼气 / 呼气再松
+
+## 5. voiceGuide（脚本，未合成音频）
+| 秒 | 中文 | English | 出处 |
+|---|---|---|---|
+| 0 | 开始 | Go | p.go |
+| 4 | 肩膀往下放，别耸 | Shoulder down, no shrugging | cue2, commonErrors[0] |
+| 12 | 按在手肘上面，别压手肘 | Hold above the elbow | cue2 |
+| 20 | 呼气，再松一点 | Breathe out, let go | cue4 |
+| 27 | 三 | three | n.3 |
+| 28 | 二 | two | n.2 |
+| 29 | 一 | one | n.1 |
+- 组后：moreSetsSameSide → 休息 + 15 秒；sideDone → 慢慢还原 + 换左边；allDone → 慢慢还原 + 很好
+
+## 6. 画面对照
+- 动作一致：站姿一臂横过胸前另一手压住；预览帧几乎无高亮（b7 第 5 行，非极端）
+- 极端错误：无
+
+## 7. 改了什么、为什么
+- 剂量 每侧 2 组×30 秒、休息 15 秒不变；站着原地换手，不加换边准备
+- 「拉近」→「往身上抱」，「按在肘关节上方」→「按在手肘上面一点」，「别来回颠」→「别一下一下往下压」
+- 难度 1/1 不变
+
+## 8. 待开哥定
+- 预览帧几乎看不到肩膀后面高亮，请看视频确认
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点3：就停在这儿，慢慢喘气。 → 另一只手扣在手肘上面，肩膀放下来别耸。（Stay right there and breathe slowly. → Hold just above the elbow and let that shoulder drop.）
+- 要点4：每次呼气再松一点，别一下一下往下压。 → 呼气时把手臂往胸口再抱近一点。（Each breath out, let go a little more. Don't bounce. → Each breath out, hug the arm a little closer to your chest.）
+- 常见错误3：一下一下往下压 → 抱着手腕往里拽，手肘被扭着（Bouncing to go deeper. → Pulling on the wrist and twisting the elbow.）
+- 注意事项1：肩膀疼就拉轻点，还疼就停 → 肩膀前面夹着疼就把手臂放低一点再抱（If your shoulder hurts, pull more gently. Stop if it still hurts. → If the front of your shoulder pinches, lower the arm a bit before you pull.）
+- 语音 set[3]：呼气，再松一点 → 手臂往胸口贴近（Breathe out, let go → Arm closer to your chest）
+- 相位口令 peak：停住，呼气 → 肩膀放下（Hold, breathe out → Shoulder down）
+- 相位口令 end：呼气再松 → 再抱近点（Let go more → Hug closer）

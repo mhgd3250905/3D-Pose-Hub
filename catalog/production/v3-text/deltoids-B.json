@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "deltoids-B",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/data/drills.json",
   "drill-anim/specs/deltoids-B-r2.js",
@@ -12,15 +12,15 @@
   "en": "Dumbbell Half Turkish Get-Up"
  },
  "purpose": {
-  "zh": "练肩膀稳定，身体换姿势时手臂一直稳住",
-  "en": "Build shoulder stability by keeping your arm steady while your body changes position."
+  "zh": "练肩膀，身体换姿势时手里的哑铃一直稳稳举着",
+  "en": "Builds your shoulder by keeping the dumbbell steady overhead while your body moves."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "举哑铃的手一直指向天花板",
+    "zh": "拿哑铃那只手一直指着天花板",
     "en": "Keep the dumbbell arm pointing straight at the ceiling"
    }
   },
@@ -28,36 +28,36 @@
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "先撑到手肘，再撑手坐起，最后抬髋到高桥。",
-    "en": "Roll onto your elbow, press up to sitting, then lift your hips into a high bridge."
+    "zh": "先撑到手肘，再撑手坐起来，最后把屁股顶起来。",
+    "en": "Roll to your elbow, press up to your hand, then lift your hips high."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "每一步稳住再走下一步，原路回去。",
-    "en": "Settle each step before the next, then go back the same way."
+    "zh": "每一步停稳了再走下一步，原路回去。",
+    "en": "Get steady at each step before the next, then go back the same way."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "举哑铃的手往头后或身前倒",
-   "en": "Letting the dumbbell arm drift behind your head or in front of your body."
+   "zh": "哑铃往头后面或身前倒",
+   "en": "Letting the dumbbell drift behind your head or in front of you."
   },
   {
-   "zh": "眼睛离开哑铃",
+   "zh": "眼睛不看哑铃",
    "en": "Taking your eyes off the dumbbell."
   }
  ],
  "cautions": [
   {
-   "zh": "先用很轻的重量练熟",
-   "en": "Learn it with a very light weight first."
+   "zh": "先空手或拿很轻的重量练熟",
+   "en": "Learn it empty-handed or with a very light weight first."
   },
   {
-   "zh": "肩前面夹着疼时停下",
+   "zh": "肩膀前面夹着疼就停",
    "en": "Stop if the front of your shoulder pinches."
   }
  ],
@@ -77,7 +77,7 @@
    "mat"
   ],
   "position": "supine",
-  "difficulty": 2
+  "difficulty": 3
  },
  "unilateral": true,
  "startingSide": "right",
@@ -89,7 +89,7 @@
  },
  "phases": {
   "start": {
-   "zh": "一步步撑起",
+   "zh": "一步步起来",
    "en": "Rise step by step"
   },
   "peak": {
@@ -107,26 +107,27 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 3.4,
+    "seconds": 6.0,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 0.6,
+    "seconds": 1.5,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 3.4,
+    "seconds": 6.0,
     "cue": "phase.end"
    },
    {
     "id": "rest",
-    "seconds": 0.6
+    "seconds": 0.5
    }
   ],
   "perSide": "each-side-separately",
-  "source": "spec-timeline manual r2"
+  "source": "real-tempo r3",
+  "sideSwitchSeconds": 10
  },
  "review": {
   "r2": {
@@ -139,6 +140,142 @@
     "批表 sit 轨把高桥上下也算成 hold（3.0 s），我没用批表值，请确认手算相位",
     "原文案剂量 3 组×3 次，每次 8 秒偏快（真实一次约 15–20 秒），保留未改"
    ]
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 8.0 s → 14.0 s（起 6 / 高桥停 1.5 / 原路回 6），解决 r2 flag「8 秒一次偏快」；剂量 3 组×每侧 3 次不变",
+    "新增 sideSwitchSeconds 10（换手、换躺的方向）",
+    "难度 v3 2 / ai-tags 3 → 统一 3；「先空手练」写进注意事项",
+    "文字改教练口吻（「把屁股顶起来」）",
+    "11-14 按开哥同意：超长单次（一下 14 s）每一下按步骤念口令（phaseCues steps：撑到手肘 → 撑手坐起来 → 屁股顶起来 → 停住看哑铃 → 原路三步回去），STYLE §8 写明"
+   ],
+   "flags": [
+    "步骤口令的时间点按真实节奏估算，合成音频后请跟练试听一遍"
+   ],
+   "audit": {
+    "dose": [
+     "3 组×每侧3 次，休息 60 秒",
+     "3 组×每侧3 次，休息 60 秒"
+    ],
+    "rep": [
+     "8.0 s",
+     "14.0 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 2,
+      "ai": 3
+     },
+     3
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：半程土耳其起立到高桥、哑铃举向上、肩部高亮（batch-02 第 1 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 14.0,
+  "phaseCues": "steps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "steps": [
+   {
+    "at": 1.5,
+    "zh": "撑到手肘",
+    "en": "Up to your elbow",
+    "from": [
+     "cue2"
+    ]
+   },
+   {
+    "at": 3.4,
+    "zh": "撑手坐起来",
+    "en": "Up to your hand",
+    "from": [
+     "cue2"
+    ]
+   },
+   {
+    "at": 5.3,
+    "zh": "屁股顶起来",
+    "en": "Hips up",
+    "from": [
+     "cue2"
+    ]
+   },
+   {
+    "at": 6.9,
+    "zh": "停住，看哑铃",
+    "en": "Hold, eyes up",
+    "from": [
+     "cue3",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "at": 8.5,
+    "zh": "屁股放下",
+    "en": "Hips down",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "at": 10.3,
+    "zh": "回到手肘",
+    "en": "Back to your elbow",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "at": 12.3,
+    "zh": "躺回去",
+    "en": "Lie back",
+    "from": [
+     "cue3"
+    ]
+   }
+  ],
+  "reminders": [
+   {
+    "afterRep": 2,
+    "key": "p.last_rep"
+   }
+  ],
+  "before": [
+   "p.right_first"
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.60"
+   ],
+   "allDone": [
+    "p.nice"
+   ],
+   "sideDone": [
+    "p.switch_left"
+   ]
+  },
+  "sides": {
+   "order": [
+    "right",
+    "left"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边；换边准备 10 秒（training.sideSwitchSeconds，App 未接入）"
   }
  }
 }

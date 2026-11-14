@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "lats-C",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/data/drills.json",
   "drill-anim/specs/lats-C.js"
@@ -11,45 +11,49 @@
   "en": "Dip-Bar Shoulder Press-Down"
  },
  "purpose": {
-  "zh": "撑在双杠上，只靠肩膀下压把身体顶高，练背部和肩膀稳定",
-  "en": "Support yourself on dip bars and lift your body by pressing your shoulders down."
+  "zh": "撑在双杠上，只靠肩膀往下压把身子顶高，练背和肩膀",
+  "en": "On dip bars, lift your body just by pressing your shoulders down. Builds your back and shoulders."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "手臂伸直，肩膀往下压把身体顶高",
-    "en": "Keep your arms straight and press your shoulders down to lift your body"
+    "zh": "手臂伸直，肩膀往下压把身子顶高",
+    "en": "Arms straight, press your shoulders down to lift your body"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "放松时肩膀慢慢升向耳朵，手臂不弯。",
-    "en": "Let your shoulders rise slowly toward your ears without bending your arms."
+    "zh": "放松时肩膀慢慢往耳朵升，手臂别弯。",
+    "en": "As you sink, let your shoulders rise slowly toward your ears. Arms stay straight."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "顶端停1秒，双腿伸直并拢。",
-    "en": "Hold for one second at the top with your legs straight together."
+    "zh": "顶上停 1 秒，两腿伸直并拢。",
+    "en": "Hold 1 second at the top, legs straight together."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "手肘上下弯，变成双杠臂屈伸",
-   "en": "Bending the elbows so it turns into a dip."
+   "zh": "手肘一弯一弯，成了双杠臂屈伸",
+   "en": "Bending your elbows so it turns into a dip."
+  },
+  {
+   "zh": "沉下去太快，肩膀一下掉到耳朵",
+   "en": "Dropping fast so your shoulders crash up to your ears."
   }
  ],
  "cautions": [
   {
-   "zh": "肩膀前面夹着疼时少做一会儿或换简单版本",
-   "en": "If the front of your shoulder pinches, do less or switch to an easier version."
+   "zh": "肩膀前面夹着疼就少做几下；撑不住就脚踩地分担点体重",
+   "en": "If the front of your shoulder pinches, do fewer. Can't hold yourself up? Keep your feet on the floor to take some weight."
   }
  ],
  "tags": {
@@ -65,7 +69,7 @@
    "dip-bars"
   ],
   "position": "other",
-  "difficulty": 2
+  "difficulty": 3
  },
  "unilateral": false,
  "defaultDose": {
@@ -84,7 +88,7 @@
    "en": "Hold"
   },
   "end": {
-   "zh": "慢慢沉下",
+   "zh": "慢慢沉",
    "en": "Sink slowly"
   }
  },
@@ -94,25 +98,21 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 0.8,
+    "seconds": 1.0,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 1.5,
+    "seconds": 1.0,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 1.2,
+    "seconds": 1.5,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 0.5
    }
   ],
-  "source": "spec-pulse-track r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -124,6 +124,86 @@
     "最终口径：按真实做法定（2026-11-01）"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 4.0 s → 3.5 s（压 1.0 / 停 1.0 / 沉 1.5）",
+    "难度 v3 2 / ai-tags 3 → 统一 3；退阶「脚踩地分担体重」写进注意事项",
+    "purpose 去掉「稳定」；常见错误补「沉下去太快」",
+    "r3 第二遍（去套话，2026-11-14）：1 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "3 组×8 次，休息 60 秒",
+     "3 组×8 次，休息 60 秒"
+    ],
+    "rep": [
+     "4.0 s",
+     "3.5 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 2,
+      "ai": 3
+     },
+     3
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：双杠直臂撑（背面）、背阔高亮（b17 第 5 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 3.5,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "手臂别弯",
+    "en": "Arms straight",
+    "from": [
+     "cue1",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "肩膀慢慢往上耸回去",
+    "en": "Let your shoulders rise slowly",
+    "from": [
+     "cue2",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 7,
+    "key": "p.last_rep"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.60"
+   ],
+   "allDone": [
+    "p.nice"
+   ]
   }
  }
 }

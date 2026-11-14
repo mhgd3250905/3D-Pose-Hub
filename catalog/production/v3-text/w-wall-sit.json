@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "w-wall-sit",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/w-wall-sit.js"
  ],
@@ -10,49 +10,49 @@
   "en": "Wall Sit"
  },
  "purpose": {
-  "zh": "静止蹲住，练大腿和臀部的耐力",
-  "en": "Build thigh and glute endurance with a still hold."
+  "zh": "蹲住不动，练大腿和屁股的耐力",
+  "en": "A still hold that builds endurance in your thighs and butt."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "背贴墙，大腿和地面平行，膝盖在脚踝上方",
-    "en": "Back on the wall, thighs level, knees over your ankles"
+    "zh": "背贴墙，大腿跟地面平，膝盖在脚踝正上方",
+    "en": "Back on the wall, thighs level, knees right over your ankles"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "双脚与髋同宽，手臂向前伸直。",
-    "en": "Feet hip-width apart, arms reaching forward."
+    "zh": "两脚跟胯一样宽，两手往前伸直。",
+    "en": "Feet hip-width, arms reaching forward."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "均匀呼吸，别憋气。",
-    "en": "Breathe steadily and do not hold your breath."
+    "zh": "正常喘气，别憋气。",
+    "en": "Breathe normally. Don't hold your breath."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "膝盖超过脚尖太多",
-   "en": "Letting your knees drift far past your toes."
+   "zh": "膝盖远远超过脚尖",
+   "en": "Knees drifting far past your toes."
   },
   {
    "zh": "背离开墙",
-   "en": "Letting your back come off the wall."
+   "en": "Back coming off the wall."
   }
  ],
  "cautions": [
   {
-   "zh": "膝盖疼时蹲高一点，还疼就停",
-   "en": "If your knees hurt, sit higher, and stop if it still hurts."
+   "zh": "膝盖疼或撑不满就蹲高点，还疼就停",
+   "en": "If your knees hurt or you can't last, sit higher. Stop if it still hurts."
   }
  ],
  "tags": {
@@ -69,7 +69,7 @@
    "wall"
   ],
   "position": "other",
-  "difficulty": 1
+  "difficulty": 2
  },
  "unilateral": false,
  "defaultDose": {
@@ -84,12 +84,12 @@
    "en": "Sit down"
   },
   "peak": {
-   "zh": "保持呼吸",
-   "en": "Breathe and hold"
+   "zh": "蹲住",
+   "en": "Hold it"
   },
   "end": {
-   "zh": "慢慢站起",
-   "en": "Stand up"
+   "zh": "别憋气",
+   "en": "Keep breathing"
   }
  },
  "training": {
@@ -104,6 +104,105 @@
     "cautions 改短句"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "剂量 3 组×30 秒、休息 45 秒不变",
+    "「均匀呼吸」→「正常喘气」；相位口令「慢慢站起」→「别憋气」（计时类不写回来）；退阶「撑不满就蹲高点」",
+    "难度 v3 1 / ai-tags 2 → 统一 2",
+    "r3 第二遍（去套话，2026-11-14）：1 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [
+    "V4 预览没有这一批（batch-25），画面待补看"
+   ],
+   "audit": {
+    "dose": [
+     "3 组×30 秒，休息 45 秒",
+     "3 组×30 秒，休息 45 秒"
+    ],
+    "rep": [
+     "计时",
+     "计时"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 2
+     },
+     2
+    ],
+    "voice": "口吻改写",
+    "frame": "待 V4 补看（batch-25 预览未出）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 4,
+    "role": "posture",
+    "zh": "后背和后脑都贴墙",
+    "en": "Back and head on the wall",
+    "from": [
+     "cue1",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "at": 12,
+    "role": "halfway",
+    "zh": "膝盖在脚踝上方",
+    "en": "Knees over ankles",
+    "from": [
+     "cue1",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "at": 20,
+    "role": "form",
+    "zh": "别憋气",
+    "en": "Keep breathing",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "at": 27,
+    "key": "n.3"
+   },
+   {
+    "at": 28,
+    "key": "n.2"
+   },
+   {
+    "at": 29,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.release",
+    "p.rest",
+    "sec.45"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
   }
  }
 }

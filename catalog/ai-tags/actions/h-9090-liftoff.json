@@ -5,7 +5,7 @@
   "status": "ai-draft",
   "source": {
     "text": "catalog/production/v3-text/h-9090-liftoff.json",
-    "textSha256Lf": "05f7a28e753a44874197af3f74ccbac9fb61c5bb6a4df2fd17f1ffce20e65928",
+    "textSha256Lf": "9b750b6a4e7628a2e2ab04920e272ee6286d02779913bfcb736004b8f826beb5",
     "spec": "drill-anim/specs/h-9090-liftoff-r3.js",
     "catalogV1": "catalog/catalog.json"
   },
@@ -145,18 +145,18 @@
       "reason": "v3 粗粒度肌群（abductors/glutes）按动作实际做法拆到细分 id。抬后腿小腿是髋内旋，主动肌为深层旋转肌和臀中小肌前部。"
     },
     {
-      "field": "difficulty",
-      "existing": 2,
-      "chosen": 3,
-      "reason": "末端主动抬起，多数人只能抬起很小幅度，定中级 3。"
-    },
-    {
       "field": "floorRequired",
       "existing": {
         "position": "seated"
       },
       "chosen": true,
       "reason": "坐在地上做，按词表 seated 也算着地。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 2,
+      "chosen": 3,
+      "reason": "r3 动作包核对（开哥 2026-11-13）：逐个重定，与 v3 tags.difficulty 同值。后腿主动抬起很多人一开始抬不起来；退阶写进注意事项。"
     }
   ],
   "reviewNotes": []

@@ -1,0 +1,53 @@
+# h-band-pallof 弹力带抗旋转推（Band Anti-Rotation Press）· 动作包核对 r3
+
+- 类型：`rep_hold`，单侧 each-side-separately，先做 right；V4 预览：`/workspace/work/v4run/b4.jpg 第 3 行`（本机，不入库）
+- reviewStatus：`ai-reviewed-r2-needs-user-review` → `ai-reviewed-r3-needs-user-review`
+
+## 1. 剂量
+- 改前：3 组×每侧10 次，休息 45 秒
+- 改后：3 组×每侧10 次，休息 45 秒
+
+## 2. 真实节奏（与演示动画时长无关）
+- 一下：4.0 s → 4.0 s
+- 相位：go 1.0s / hold 2.0s / back 1.0s
+
+## 3. 难度
+- 改前 v3 1 / ai-tags 1 → 统一 1
+
+## 4. 指导文字（教练口吻）
+- purpose：练腰腹两侧，让身体不被拉着转 → 练腰腹两侧，带子拽你也不跟着转
+- 要点 改前：双手往前推直，身体别被拉转；侧对固定点站直，膝盖放松别锁死。；推直后停两秒，再收回胸前。
+- 要点 改后：两手往前推直，身子别被拽转；侧对拴带的地方站直，膝盖微微松开别锁死。；推直了停两秒，再收回胸口。
+- 常见错误 改前：身体被拉向固定点；耸肩或憋气
+- 常见错误 改后：身子被拽向拴带那边；耸肩或憋气
+- 注意事项 改前：固定点不牢时先别开始；腰背不舒服时换更轻的弹力带
+- 注意事项 改后：带子拴不牢先别开始；腰背不舒服就换根轻点的带子
+- 相位口令：往前推 / 稳住 / 收回 → 往前推 / 稳住 / 收回
+
+## 5. voiceGuide（脚本，未合成音频）
+- 一下 4.0 s；前 2 下念相位口令，之后每下报数
+| 第几下后 | 中文 | English | 出处 |
+|---|---|---|---|
+| 2 | 身子别被拽过去 | Don't let it pull you | cue1, commonErrors[0] |
+| 5 | 肩膀放下，别憋气 | Shoulders down, keep breathing | commonErrors[1] |
+| 8 | 推直停两秒 | Hold it two seconds | cue3 |
+| 9 | 最后一次 |  | p.last_rep |
+- 组后：moreSets → 休息 + 45 秒；allDone → 很好；sideDone → 换左边
+
+## 6. 画面对照
+- 一致：站姿侧对柱子、双手握带推出、侧腰高亮（b4 第 3 行）
+- 极端错误：无
+
+## 7. 改了什么、为什么
+- 节奏按真实带练：一下 4.0 s（推 1.0 / 停 2.0 按 cue「停两秒」/ 收 1.0）
+- 「练核心」类说法改成「带子拽你也不跟着转」
+- 难度 1/1 不变
+
+## 8. 待开哥定
+- 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 注意事项1：带子拴不牢先别开始 → 带子拴在胸口高度，推之前先拽一下试牢（Don't start until the band is anchored securely. → Anchor the band at chest height and tug it before you press.）

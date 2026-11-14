@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "triceps-B",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/data/drills.json",
   "drill-anim/specs/triceps-B-r2.js"
@@ -12,22 +12,22 @@
  },
  "purpose": {
   "zh": "练手臂伸直撑住体重",
-  "en": "Train holding your body weight on straight arms."
+  "en": "Builds the strength to hold your body weight on straight arms."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "手臂伸直，肩膀往下压、远离耳朵",
-    "en": "Lock your arms and press your shoulders down away from your ears"
+    "zh": "手臂伸直，肩膀往下压、离耳朵远点",
+    "en": "Lock your arms, shoulders down away from your ears"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "脚尖先轻点地，压肩后收膝把身体撑离地面。",
+    "zh": "脚尖先轻点地，压住肩膀再收膝把身子撑离地面。",
     "en": "Start with your toes lightly on the floor, press your shoulders down, then tuck your knees to lift off."
    }
   },
@@ -35,29 +35,29 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "撑住不动，均匀呼吸，别憋气。",
-    "en": "Hold still and keep breathing evenly."
+    "zh": "撑住别动，正常喘气，别憋气。",
+    "en": "Hold still, breathe normally. Don't hold your breath."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "手肘微弯",
-   "en": "Letting your elbows bend."
+   "zh": "手肘微微弯",
+   "en": "Elbows bending."
   },
   {
-   "zh": "耸肩，身体挂在肩膀上",
+   "zh": "耸肩，身子挂在肩膀上",
    "en": "Shrugging and hanging on your shoulders."
   }
  ],
  "cautions": [
   {
-   "zh": "手腕不舒服时先活动一下手腕",
-   "en": "If your wrists feel stiff, warm them up first."
+   "zh": "握杠手腕别往后折，疼就下来",
+   "en": "Don't let your wrists bend back on the bars. Come down if they hurt."
   },
   {
-   "zh": "手腕刺痛或发麻时马上停",
-   "en": "Stop right away if your wrists feel sharp pain or numbness."
+   "zh": "撑不住就脚尖一直点地分担点体重",
+   "en": "Can't hold it? Keep your toes on the floor to take some weight."
   }
  ],
  "tags": {
@@ -75,12 +75,12 @@
    "parallettes"
   ],
   "position": "other",
-  "difficulty": 2
+  "difficulty": 3
  },
  "unilateral": false,
  "defaultDose": {
   "mode": "time",
-  "sets": 4,
+  "sets": 3,
   "seconds": 15,
   "restSeconds": 60
  },
@@ -91,10 +91,10 @@
   },
   "peak": {
    "zh": "撑住",
-   "en": "Hold"
+   "en": "Hold it"
   },
   "end": {
-   "zh": "保持呼吸",
+   "zh": "别憋气",
    "en": "Keep breathing"
   }
  },
@@ -112,6 +112,95 @@
     "最终口径：按真实做法定（2026-11-01）"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "剂量 4 组×15 秒 → 3 组×15 秒（保持类规范 2–3 组，同 abs-B），休息 60 秒不变",
+    "「均匀呼吸」→「正常喘气」；补退阶「脚尖一直点地」",
+    "难度 v3 2 / ai-tags 3 → 统一 3",
+    "r3 第二遍（去套话，2026-11-14）：2 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [
+    "预览帧看不到大臂后面高亮，请看视频确认"
+   ],
+   "audit": {
+    "dose": [
+     "4 组×15 秒，休息 60 秒",
+     "3 组×15 秒，休息 60 秒"
+    ],
+    "rep": [
+     "计时",
+     "计时"
+    ],
+    "difficulty": [
+     {
+      "v3": 2,
+      "ai": 3
+     },
+     3
+    ],
+    "voice": "口吻改写",
+    "frame": "动作一致：平行杆直臂撑团身；预览帧看不到高亮（batch-24 第 10 行，非极端）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 4,
+    "role": "posture",
+    "zh": "手肘别弯",
+    "en": "Arms straight",
+    "from": [
+     "cue1",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "at": 8,
+    "role": "halfway",
+    "zh": "把杠往下推，肩膀下沉",
+    "en": "Push the bars down, shoulders down",
+    "from": [
+     "cue1"
+    ]
+   },
+   {
+    "at": 12,
+    "key": "n.3"
+   },
+   {
+    "at": 13,
+    "key": "n.2"
+   },
+   {
+    "at": 14,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.release",
+    "p.rest",
+    "sec.60"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
   }
  }
 }

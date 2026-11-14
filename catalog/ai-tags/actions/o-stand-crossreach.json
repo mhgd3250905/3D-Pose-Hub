@@ -5,7 +5,7 @@
   "status": "ai-draft",
   "source": {
     "text": "catalog/production/v3-text/o-stand-crossreach.json",
-    "textSha256Lf": "b6c5fdd072eea2a6f6708876f908845399ac8168d6ac15ae517662adffa37aeb",
+    "textSha256Lf": "48c7df8ff84cc0103fdcac02be97d656f0a36f0df63054ae92ff49081e66cb41",
     "spec": "drill-anim/specs/o-stand-crossreach-r2.js",
     "catalogV1": "catalog/catalog.json"
   },
@@ -130,6 +130,12 @@
         ]
       },
       "reason": "拉伸类：v3 把被拉肌写在 activeMuscles，本 schema 放 stretchedMuscles。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 1,
+      "reason": "r3 动作包核对（开哥 2026-11-13）：逐个重定，与 v3 tags.difficulty 同值。"
     }
   ],
   "reviewNotes": []

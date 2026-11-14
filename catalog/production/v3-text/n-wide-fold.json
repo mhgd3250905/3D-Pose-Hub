@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "n-wide-fold",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/n-wide-fold.js"
  ],
@@ -10,65 +10,65 @@
   "en": "Standing Wide-Leg Fold (Chair)"
  },
  "purpose": {
-  "zh": "拉伸大腿内侧和后侧，在办公室就能做",
-  "en": "Stretch the inner and back of your thighs, right at the office."
+  "zh": "拉开大腿内侧和后面，在办公室就能做",
+  "en": "Stretches your inner thighs and the backs of your thighs, right at the office."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "背部拉长，双手扶椅面，上身往前倾",
-    "en": "Keep your back long, hands on the chair seat, and lean forward"
+    "zh": "背拉长，两手扶椅面，上身往前倾",
+    "en": "Long back, hands on the chair seat, lean forward"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "双脚分得很宽，脚尖朝前，膝盖伸直但别锁死。",
-    "en": "Stand with your feet wide, toes forward, knees straight but not locked."
+    "zh": "两脚分很宽，脚尖朝前，膝盖伸直别锁死。",
+    "en": "Feet very wide, toes forward, knees straight but soft."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "保持不动，慢慢呼吸，每次呼气再放松一点。",
-    "en": "Stay still, breathe slowly, and relax a little deeper each time you breathe out."
+    "zh": "胸口往椅子那边送，大腿内侧和后面都有拉的感觉就停。",
+    "en": "Send your chest toward the chair. Stop when you feel your inner and back thighs."
    }
   },
   {
    "id": "cue4",
    "primary": false,
    "text": {
-    "zh": "别来回颠，有拉伸感就够，别拉到疼。",
-    "en": "Do not bounce; a clear stretch is enough, never pain."
+    "zh": "呼气时屁股再往后推一点，胸口跟着往下。",
+    "en": "Each breath out, push your hips back a little and let your chest follow."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "弓背、手去够地面",
-   "en": "Rounding the back and reaching for the floor."
+   "zh": "弓背、手去够地",
+   "en": "Rounding your back and reaching for the floor."
   },
   {
    "zh": "膝盖锁死",
-   "en": "Locking the knees."
+   "en": "Locking your knees."
   },
   {
-   "zh": "憋气或来回颠",
-   "en": "Holding your breath or bouncing."
+   "zh": "两手撑着椅子往下压肩膀",
+   "en": "Pushing down through your hands into the chair."
   }
  ],
  "cautions": [
   {
-   "zh": "起身时慢一点，头晕就先停",
-   "en": "If you feel dizzy, stop, and come up slowly."
+   "zh": "起身慢一点，头晕就先停",
+   "en": "Come up slowly. If you feel dizzy, stop."
   },
   {
-   "zh": "拉伸处疼时幅度小一点，还疼就停",
-   "en": "If your stretch hurts, move less far, and stop if it still hurts."
+   "zh": "拉的地方疼就少往前倾点，还疼就停",
+   "en": "If the stretch hurts, don't lean as far. Stop if it still hurts."
   }
  ],
  "tags": {
@@ -95,12 +95,12 @@
  },
  "phases": {
   "start": {
-   "zh": "慢慢前倾",
-   "en": "Lean forward"
+   "zh": "胸口往前送",
+   "en": "Chest forward"
   },
   "peak": {
-   "zh": "保持，慢慢呼气",
-   "en": "Hold and breathe out"
+   "zh": "背拉长",
+   "en": "Long back"
   },
   "end": {
    "zh": "胸口再沉点",
@@ -122,6 +122,102 @@
     "剂量 → 2 组×30 秒，休息 15 秒；口令/要点改为进入-保持-呼气放松，去掉来回/计数描述"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "剂量 2 组×30 秒、休息 15 秒不变",
+    "「背部」→「背」；「幅度小一点」→「少往前倾点」；「别来回颠」→「别一下一下往下压」",
+    "难度 1/1 不变",
+    "r3 第二遍（去套话，2026-11-14）：7 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "2 组×30 秒，休息 15 秒",
+     "2 组×30 秒，休息 15 秒"
+    ],
+    "rep": [
+     "计时",
+     "计时"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：宽站俯身、两手扶椅、大腿内侧/后侧高亮（b18 第 9 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 4,
+    "role": "posture",
+    "zh": "胸口往前送，背别弓",
+    "en": "Chest forward, back long",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "at": 12,
+    "role": "halfway",
+    "zh": "膝盖别锁死",
+    "en": "Soft knees",
+    "from": [
+     "cue2",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "at": 20,
+    "role": "form",
+    "zh": "屁股往后，胸口往下",
+    "en": "Hips back, chest down",
+    "from": [
+     "cue4"
+    ]
+   },
+   {
+    "at": 27,
+    "key": "n.3"
+   },
+   {
+    "at": 28,
+    "key": "n.2"
+   },
+   {
+    "at": 29,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.release",
+    "p.rest",
+    "sec.15"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
   }
  }
 }

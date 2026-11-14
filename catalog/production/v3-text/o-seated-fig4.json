@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "o-seated-fig4",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/o-seated-fig4.js"
  ],
@@ -10,15 +10,15 @@
   "en": "Seated Figure-4 Stretch"
  },
  "purpose": {
-  "zh": "拉伸臀部，缓解久坐髋部发紧",
-  "en": "Stretch your glutes and ease hip tightness from sitting."
+  "zh": "拉开屁股，久坐胯发紧时松一松",
+  "en": "Stretches your butt to ease tight hips from sitting."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "一只脚踝搭在另一侧膝盖上，背挺直往前倾",
+    "zh": "一只脚踝搭在另一边膝盖上，背挺直往前倾",
     "en": "Cross one ankle over the other knee and lean forward with a long back"
    }
   },
@@ -26,45 +26,45 @@
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "支撑脚踩平，翘起的膝盖自然往外打开。",
-    "en": "Keep the other foot flat and let the crossed knee fall open."
+    "zh": "另一只脚踩平，翘起的膝盖自然往外打开。",
+    "en": "Other foot flat, let the crossed knee fall open."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "保持不动，慢慢呼吸，每次呼气再放松一点。",
-    "en": "Stay still, breathe slowly, and relax a little deeper each time you breathe out."
+    "zh": "搭着的那条小腿放平，膝盖自然往下落。",
+    "en": "Keep the crossed shin level and let that knee drop."
    }
   },
   {
    "id": "cue4",
    "primary": false,
    "text": {
-    "zh": "别来回颠，有拉伸感就够，别拉到疼。",
-    "en": "Do not bounce; a clear stretch is enough, never pain."
+    "zh": "呼气时胸口往小腿那边再靠近一点，背别弓。",
+    "en": "Each breath out, bring your chest a little closer to your shin, back long."
    }
   }
  ],
  "commonErrors": [
   {
    "zh": "弓背往下压",
-   "en": "Rounding the back to go deeper."
+   "en": "Rounding your back to go deeper."
   },
   {
    "zh": "用手硬压膝盖",
-   "en": "Forcing the knee down with your hand."
+   "en": "Forcing your knee down with your hand."
   },
   {
-   "zh": "憋气或来回颠",
-   "en": "Holding your breath or bouncing."
+   "zh": "用手往下按膝盖",
+   "en": "Pushing the knee down with your hand."
   }
  ],
  "cautions": [
   {
-   "zh": "膝盖疼时少往前倾一点，还疼就停",
-   "en": "If your knee hurts, lean less, and stop if it still hurts."
+   "zh": "膝盖疼就少往前倾点，还疼就停",
+   "en": "If your knee hurts, don't lean as far. Stop if it still hurts."
   }
  ],
  "tags": {
@@ -91,16 +91,16 @@
  },
  "phases": {
   "start": {
-   "zh": "慢慢前倾",
-   "en": "Lean forward"
+   "zh": "背挺直前倾",
+   "en": "Tall and tip forward"
   },
   "peak": {
-   "zh": "保持，慢慢呼气",
-   "en": "Hold and breathe out"
+   "zh": "膝盖往下落",
+   "en": "Knee drops"
   },
   "end": {
-   "zh": "呼气再放松",
-   "en": "Relax a bit deeper"
+   "zh": "胸口再靠近",
+   "en": "Chest closer"
   }
  },
  "training": {
@@ -119,6 +119,114 @@
     "剂量 → 每侧 2 组×30 秒，休息 15 秒；口令/要点改为进入-保持-呼气放松，去掉来回/计数描述"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "剂量 每侧 2 组×30 秒、休息 15 秒不变；坐着换腿，不加换边准备",
+    "「臀部」→「屁股」，「髋部」→「胯」；「别来回颠」→「别一下一下往下压」",
+    "难度 1/1 不变",
+    "r3 第二遍（去套话，2026-11-14）：8 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [
+    "预览帧几乎看不到屁股高亮，请看视频确认"
+   ],
+   "audit": {
+    "dose": [
+     "2 组×每侧30 秒，休息 15 秒",
+     "2 组×每侧30 秒，休息 15 秒"
+    ],
+    "rep": [
+     "计时",
+     "计时"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "动作一致：坐椅翘腿前倾；预览帧几乎看不到高亮（b19 第 4 行，非极端）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 4,
+    "role": "posture",
+    "zh": "胸口往前，背挺直",
+    "en": "Chest forward, back long",
+    "from": [
+     "cue1"
+    ]
+   },
+   {
+    "at": 12,
+    "role": "halfway",
+    "zh": "别用手硬压",
+    "en": "Don't push the knee",
+    "from": [
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "at": 20,
+    "role": "form",
+    "zh": "胸口往小腿靠近",
+    "en": "Chest toward your shin",
+    "from": [
+     "cue4"
+    ]
+   },
+   {
+    "at": 27,
+    "key": "n.3"
+   },
+   {
+    "at": 28,
+    "key": "n.2"
+   },
+   {
+    "at": 29,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSetsSameSide": [
+    "p.rest",
+    "sec.15"
+   ],
+   "sideDone": [
+    "p.release",
+    "p.switch_left"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
+  },
+  "sides": {
+   "order": [
+    "right",
+    "left"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边"
   }
  }
 }

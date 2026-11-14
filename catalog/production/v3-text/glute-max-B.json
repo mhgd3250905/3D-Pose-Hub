@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "glute-max-B",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/data/drills.json",
   "drill-anim/specs/glute-max-B.js"
@@ -11,8 +11,8 @@
   "en": "Banded Quadruped Straight-Leg Kickback"
  },
  "purpose": {
-  "zh": "练臀部，让你把腿往后抬得更有力",
-  "en": "Build your glutes for a stronger backward leg lift."
+  "zh": "练屁股，让腿往后踢得高、踢得稳",
+  "en": "Builds your butt for a strong backward kick."
  },
  "cues": [
   {
@@ -27,23 +27,23 @@
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "腰别塌，抬到和身体差不多高就好。",
-    "en": "Keep your lower back from sagging, and lift only to about body height."
+    "zh": "腰别塌，抬到跟身体差不多高就行。",
+    "en": "Don't let your back sag. Lift to about body height."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "顶上停一秒，再慢慢放下。",
-    "en": "Pause for a second at the top, then lower slowly."
+    "zh": "脚抬到跟身子一样高，顶住带子停一秒再放。",
+    "en": "Lift your foot level with your body, hold against the band, then lower."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "抬太高，腰往下塌",
-   "en": "Lifting too high and letting the lower back sag."
+   "zh": "抬过头，腰往下塌",
+   "en": "Lifting too high so your back sags."
   },
   {
    "zh": "膝盖弯了",
@@ -52,8 +52,8 @@
  ],
  "cautions": [
   {
-   "zh": "腰不舒服时抬低一点，还疼就停",
-   "en": "If your lower back feels uncomfortable, lift lower, and stop if it still hurts."
+   "zh": "踢高了腰会塌，腰一发紧就踢低点",
+   "en": "Kicking too high sags your back. Kick lower if your back tightens."
   }
  ],
  "tags": {
@@ -90,7 +90,7 @@
    "en": "Pause"
   },
   "end": {
-   "zh": "慢慢放下",
+   "zh": "慢慢放",
    "en": "Lower slowly"
   }
  },
@@ -100,26 +100,26 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 0.8,
+    "seconds": 1.0,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 1.2,
+    "seconds": 0.8,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 1.1,
+    "seconds": 1.2,
     "cue": "phase.end"
    },
    {
     "id": "rest",
-    "seconds": 0.9
+    "seconds": 0.2
    }
   ],
   "perSide": "each-side-separately",
-  "source": "spec-pulse-track r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -129,6 +129,108 @@
     "purpose 去掉「伸髋」"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 4.0 s → 3.2 s（抬 1.0 / 停 0.8 / 放 1.2）",
+    "难度 v3 1 / ai-tags 2 → 统一 1",
+    "文字改教练口吻",
+    "r3 第二遍（去套话，2026-11-14）：3 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "3 组×每侧12 次，休息 30 秒",
+     "3 组×每侧12 次，休息 30 秒"
+    ],
+    "rep": [
+     "4.0 s",
+     "3.2 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 2
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：四点跪、弹力带、直腿后踢、臀部高亮",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 3.2,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "腰别塌",
+    "en": "No sagging back",
+    "from": [
+     "cue2",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "腿伸直",
+    "en": "Straight leg",
+    "from": [
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 8,
+    "role": "form",
+    "zh": "跟身体一样高就行",
+    "en": "Body height is enough",
+    "from": [
+     "cue2"
+    ]
+   },
+   {
+    "afterRep": 11,
+    "key": "p.last_rep"
+   }
+  ],
+  "before": [
+   "p.right_first"
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.30"
+   ],
+   "allDone": [
+    "p.nice"
+   ],
+   "sideDone": [
+    "p.switch_left"
+   ]
+  },
+  "sides": {
+   "order": [
+    "right",
+    "left"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边"
   }
  }
 }

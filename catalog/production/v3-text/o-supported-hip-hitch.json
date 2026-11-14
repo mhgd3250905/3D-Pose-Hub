@@ -1,24 +1,24 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "o-supported-hip-hitch",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/o-supported-hip-hitch.js"
  ],
  "name": {
-  "zh": "扶椅单腿骨盆提拉",
+  "zh": "扶椅单腿提胯",
   "en": "Chair-Supported Hip Hitch"
  },
  "purpose": {
-  "zh": "练单腿站时骨盆左右不歪的控制",
-  "en": "Train control to keep your pelvis level while standing on one leg."
+  "zh": "练单腿站时两边胯不歪",
+  "en": "Trains your hips to stay level while standing on one leg."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "支撑腿站稳，另一侧骨盆慢慢提起",
+    "zh": "站着那条腿站稳，另一边胯慢慢提起来",
     "en": "Stand firm on one leg and slowly lift the other hip"
    }
   },
@@ -27,36 +27,36 @@
    "primary": false,
    "text": {
     "zh": "轻扶椅子，抬起的膝盖一直弯着。",
-    "en": "Hold the chair lightly and keep the lifted knee bent."
+    "en": "Hold the chair lightly, lifted knee stays bent."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "小幅度提起再放平，上身别侧弯。",
-    "en": "Lift a little, lower to level, and keep your trunk upright."
+    "zh": "提一点就够，再放平，上身别往旁边弯。",
+    "en": "Lift just a little, lower to level. Don't lean sideways."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "上身侧弯代替提骨盆",
-   "en": "Leaning the trunk instead of lifting the hip."
+   "zh": "上身往旁边弯代替提胯",
+   "en": "Leaning sideways instead of lifting your hip."
   },
   {
-   "zh": "支撑腿膝盖一弯一直地借力",
-   "en": "Bending and straightening the standing knee to help."
+   "zh": "站着那条腿膝盖一弯一直借劲",
+   "en": "Bending and straightening your standing knee to help."
   }
  ],
  "cautions": [
   {
-   "zh": "刚开始时每侧先做 1 组 4 次，幅度小一点",
-   "en": "When starting out, do one set of four per side in a small range."
+   "zh": "入门先做 1 组、每侧 4 次，提小一点；熟了再做满 2 组 8 次",
+   "en": "Beginners: one set of 4 per side, small lifts. Build up to 2 sets of 8."
   },
   {
-   "zh": "腰、髋或膝盖疼，或站不稳时就停",
-   "en": "If your back, hip or knee hurts or you feel unsteady, stop."
+   "zh": "腰、胯或膝盖疼，或站不稳就停",
+   "en": "Stop if your back, hip or knee hurts or you feel wobbly."
   }
  ],
  "tags": {
@@ -79,13 +79,13 @@
  "startingSide": "left",
  "defaultDose": {
   "mode": "reps",
-  "sets": 1,
-  "reps": 4,
+  "sets": 2,
+  "reps": 8,
   "restSeconds": 30
  },
  "phases": {
   "start": {
-   "zh": "提起骨盆",
+   "zh": "提胯",
    "en": "Lift your hip"
   },
   "peak": {
@@ -103,7 +103,7 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 1.5,
+    "seconds": 1.0,
     "cue": "phase.start"
    },
    {
@@ -113,16 +113,12 @@
    },
    {
     "id": "back",
-    "seconds": 3.0,
+    "seconds": 1.5,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 2.0
    }
   ],
   "perSide": "each-side-separately",
-  "source": "spec-timeline manual r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -132,6 +128,99 @@
     "EN 口令 Hitch up → Lift your hip"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 8.0 s → 4.0 s（提 1.0 / 停 1.5 / 放 1.5）",
+    "站着原地换边，不加换边准备",
+    "名称「单腿骨盆提拉」→「单腿提胯」；「骨盆」→「胯」，「小幅度」→「提一点就够」",
+    "难度 1/1 不变",
+    "剂量 1 组 → 2 组×每侧 8 次（开哥 2026-11-14 同意）；入门少做写进注意事项；voiceGuide 提醒按 8 次重排"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "1 组×每侧4 次，休息 30 秒",
+     "2 组×每侧8 次，休息 30 秒"
+    ],
+    "rep": [
+     "8.0 s",
+     "4.0 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：扶椅单腿站、另一边胯提起、屁股侧面高亮（b20 第 8 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 4.0,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "上身别歪",
+    "en": "Stay upright",
+    "from": [
+     "cue3",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "站着的腿别弯",
+    "en": "Standing leg straight",
+    "from": [
+     "cue2",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 7,
+    "key": "p.last_rep"
+   }
+  ],
+  "before": [],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.30"
+   ],
+   "allDone": [
+    "p.nice"
+   ],
+   "sideDone": [
+    "p.switch_right"
+   ]
+  },
+  "sides": {
+   "order": [
+    "left",
+    "right"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边"
   }
  }
 }

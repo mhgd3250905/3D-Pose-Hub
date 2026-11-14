@@ -5,7 +5,7 @@
   "status": "ai-draft",
   "source": {
     "text": "catalog/production/v3-text/s-frog.json",
-    "textSha256Lf": "ca1431047930a94757b94a0f39f1ba9977a2dd06d699cc6352f6524c2e8398ee",
+    "textSha256Lf": "af395b190e68308c0068e5944c62890a5e08e41a80bf436e44db1512b91d9f14",
     "spec": "drill-anim/specs/s-frog-r3.js",
     "catalogV1": "catalog/catalog.json"
   },
@@ -123,6 +123,12 @@
         ]
       },
       "reason": "拉伸类：v3 把被拉肌写在 activeMuscles，本 schema 放 stretchedMuscles。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 3,
+      "chosen": 3,
+      "reason": "r3 动作包核对（开哥 2026-11-13）：逐个重定，与 v3 tags.difficulty 同值。深度内收拉伸，膝盖、胯紧的人做不到位；ai-tags 原 3。"
     }
   ],
   "reviewNotes": []

@@ -5,7 +5,7 @@
   "status": "ai-draft",
   "source": {
     "text": "catalog/production/v3-text/w-wall-sit.json",
-    "textSha256Lf": "89f7baf04c2c0bebbbda0bc8d4ccf9b314ff2ed45c908a7bd6a7d02a219dccf4",
+    "textSha256Lf": "7c5dc14e33992c59da6b75f16ea2dd193ee451cf3c6878fa82ad6564467b5378",
     "spec": "drill-anim/specs/w-wall-sit.js",
     "catalogV1": "catalog/catalog.json"
   },
@@ -139,12 +139,6 @@
       "reason": "v3 粗粒度 id 按实际做法拆到 taxonomy id（core→abs/obliques，glutes→glute-max 或 hip-abductors，upper-back→scapular，lower-back→erectors），只稳定不推动的归稳定肌。"
     },
     {
-      "field": "difficulty",
-      "existing": 1,
-      "chosen": 2,
-      "reason": "大腿平行静蹲 30 秒×3 需要较好股四头肌耐力，调到 2 级。"
-    },
-    {
       "field": "space/floorRequired",
       "existing": {
         "position": "other"
@@ -153,6 +147,12 @@
         "floorRequired": false
       },
       "reason": "背靠墙脚踩地，不着地。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 2,
+      "reason": "r3 动作包核对（开哥 2026-11-13）：逐个重定，与 v3 tags.difficulty 同值。静蹲 30 秒大腿会很酸，入门者常撑不满；ai-tags 原 2。退阶写进注意事项。"
     }
   ],
   "reviewNotes": []

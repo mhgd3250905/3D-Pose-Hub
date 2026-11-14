@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "lats-B",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/data/drills.json",
   "drill-anim/specs/lats-B-r2.js"
@@ -11,49 +11,49 @@
   "en": "Banded Straight-Arm Pulldown"
  },
  "purpose": {
-  "zh": "直臂把弹力带往下拉，练背部两侧",
-  "en": "Pull the band down with straight arms to work the sides of your back."
+  "zh": "直臂把弹力带往下拉，练背两边",
+  "en": "Pull the band down with straight arms to build the sides of your back."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "手臂伸直，从前面往下拉到大腿旁",
-    "en": "Keep your arms straight and sweep them down to your thighs"
+    "zh": "手臂伸直，从前面往下拉到大腿边",
+    "en": "Arms straight, sweep them down to your thighs"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "下拉时肩膀往下沉，别耸肩。",
-    "en": "Keep your shoulders down as you pull; do not shrug."
+    "zh": "往下拉时肩膀往下放，别耸肩。",
+    "en": "Shoulders stay down as you pull. Don't shrug."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "底部停1秒，再慢慢回到前面。",
-    "en": "Pause for one second at the bottom, then return slowly."
+    "zh": "底下停 1 秒，再慢慢回到前面。",
+    "en": "Pause 1 second at the bottom, then return slowly."
    }
   }
  ],
  "commonErrors": [
   {
    "zh": "弯手肘去拉",
-   "en": "Bending the elbows to pull."
+   "en": "Bending your elbows to pull."
   },
   {
-   "zh": "身体前后摆借力",
-   "en": "Swinging the body to help."
+   "zh": "上身往前一点头，用体重把带子拽下来",
+   "en": "Bobbing forward to pull the band down with your bodyweight."
   }
  ],
  "cautions": [
   {
-   "zh": "肩膀疼时拉小一点或换轻的弹力带，还疼就停",
-   "en": "If your shoulders hurt, move less far or use a lighter band, and stop if it still hurts."
+   "zh": "肩膀疼就拉小点或换根轻的弹力带，还疼就停",
+   "en": "If your shoulders hurt, don't pull as far or use a lighter band. Stop if it still hurts."
   }
  ],
  "tags": {
@@ -98,25 +98,21 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 0.7,
+    "seconds": 1.0,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 1.5,
+    "seconds": 1.0,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 0.8,
+    "seconds": 1.5,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 1.0
    }
   ],
-  "source": "spec-pulse-track r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -126,6 +122,94 @@
     "口令「慢慢还原」→「抬回去」"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 4.0 s → 3.5 s（拉 1.0 / 停 1.0 / 回 1.5）",
+    "「背部两侧」→「背两边」；注意事项改短句",
+    "难度 1/1 不变",
+    "r3 第二遍（去套话，2026-11-14）：1 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "3 组×12 次，休息 45 秒",
+     "3 组×12 次，休息 45 秒"
+    ],
+    "rep": [
+     "4.0 s",
+     "3.5 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：站姿弹力带直臂下拉、背阔高亮（b17 第 4 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 3.5,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "手肘别弯",
+    "en": "Arms straight",
+    "from": [
+     "cue1",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "肩膀别耸",
+    "en": "Shoulders down",
+    "from": [
+     "cue2"
+    ]
+   },
+   {
+    "afterRep": 8,
+    "role": "form",
+    "zh": "身子别晃",
+    "en": "Body still",
+    "from": [
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 11,
+    "key": "p.last_rep"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.45"
+   ],
+   "allDone": [
+    "p.nice"
+   ]
   }
  }
 }

@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-towel-isometric-curl",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-towel-isometric-curl-rr1.js"
  ],
@@ -10,32 +10,32 @@
   "en": "Foot-Anchored Towel Curl Hold"
  },
  "purpose": {
-  "zh": "不用器械练手臂前侧",
-  "en": "Build the fronts of your upper arms without equipment."
+  "zh": "不用器械练大臂前面",
+  "en": "Builds the fronts of your upper arms with no equipment."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "脚踩住毛巾，双手握住往上拉并停住",
-    "en": "Step on the towel, grip it, and pull up and hold"
+    "zh": "脚踩住毛巾，两手握住往上拉，停住",
+    "en": "Step on the towel, grip it, pull up and hold"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "大臂贴身，手肘弯成直角。",
-    "en": "Keep your upper arms by your sides with elbows at a right angle."
+    "zh": "大臂贴着身子，手肘弯成直角。",
+    "en": "Upper arms at your sides, elbows bent at a right angle."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "保持呼吸，不要憋气。",
-    "en": "Keep breathing and do not hold your breath."
+    "zh": "正常喘气，别憋气。",
+    "en": "Breathe normally. Don't hold your breath."
    }
   }
  ],
@@ -45,14 +45,14 @@
    "en": "Holding your breath."
   },
   {
-   "zh": "身体后仰借力",
+   "zh": "身子往后仰借劲",
    "en": "Leaning back to pull."
   }
  ],
  "cautions": [
   {
-   "zh": "手肘或手腕疼时停止，力量慢慢加上去",
-   "en": "Stop if your elbows or wrists hurt, and build the effort gradually."
+   "zh": "手肘或手腕疼就停，劲一点一点加上去",
+   "en": "Stop if your elbows or wrists hurt. Build the effort up bit by bit."
   }
  ],
  "tags": {
@@ -78,16 +78,16 @@
  },
  "phases": {
   "start": {
-   "zh": "向上拉",
+   "zh": "往上拉",
    "en": "Pull up"
   },
   "peak": {
-   "zh": "保持住",
-   "en": "Hold"
+   "zh": "拉住",
+   "en": "Hold it"
   },
   "end": {
-   "zh": "慢慢放松",
-   "en": "Release"
+   "zh": "别憋气",
+   "en": "Keep breathing"
   }
  },
  "training": {
@@ -105,6 +105,94 @@
     "最终口径：按真实做法定（2026-11-01）"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "剂量 3 组×15 秒、休息 30 秒不变",
+    "相位口令「慢慢放松」→「别憋气」（计时类不写回来）；「力量慢慢加上去」→「劲一点一点加上去」",
+    "难度 1/1 不变",
+    "r3 第二遍（去套话，2026-11-14）：1 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [
+    "预览帧手肘不像直角，请看视频确认停住时手肘角度"
+   ],
+   "audit": {
+    "dose": [
+     "3 组×15 秒，休息 30 秒",
+     "3 组×15 秒，休息 30 秒"
+    ],
+    "rep": [
+     "计时",
+     "计时"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "动作一致：站姿脚踩毛巾两手往上拉、大臂前高亮；预览帧手臂接近伸直（可能是起始帧），文字写手肘直角（b15 第 3 行，非极端）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 4,
+    "role": "posture",
+    "zh": "大臂贴着身子",
+    "en": "Upper arms in",
+    "from": [
+     "cue2"
+    ]
+   },
+   {
+    "at": 8,
+    "role": "halfway",
+    "zh": "站直了拉，上身别后仰",
+    "en": "Stand tall, don't lean back",
+    "from": [
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "at": 12,
+    "key": "n.3"
+   },
+   {
+    "at": 13,
+    "key": "n.2"
+   },
+   {
+    "at": 14,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.release",
+    "p.rest",
+    "sec.30"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
   }
  }
 }

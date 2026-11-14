@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "chest-A",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/data/drills.json",
   "drill-anim/specs/chest-A-r3.js",
@@ -12,61 +12,61 @@
   "en": "Push-Up to Side Plank Rotation"
  },
  "purpose": {
-  "zh": "练胸部和肩膀，转身时稳住腰腹",
-  "en": "Build your chest and shoulders and keep your trunk steady as you turn."
+  "zh": "练胸和肩膀，转身的时候腰腹也得稳住",
+  "en": "Builds your chest and shoulders, and your middle has to stay solid as you turn."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "做一个俯卧撑，再整个人转向侧面",
-    "en": "Do a push-up, then turn your whole body to the side"
+    "zh": "做一个俯卧撑，再整个人转成侧撑",
+    "en": "Do a push-up, then turn your whole body into a side plank"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "胸口和髋一起转，别只扭腰。",
-    "en": "Turn your chest and hips together, not just your waist."
+    "zh": "胸口和胯一起转，像一扇门打开，别光扭腰。",
+    "en": "Turn chest and hips together like a door swinging open, not just your waist."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "上面的手伸向天花板，停一下再转回来。",
-    "en": "Reach your top arm to the ceiling, pause, then turn back."
+    "zh": "上面的手指向天花板，停一下再转回来。",
+    "en": "Reach your top hand to the ceiling, pause, then turn back."
    }
   },
   {
    "id": "cue4",
    "primary": false,
    "text": {
-    "zh": "两边各做一次算 1 次。",
-    "en": "One on each side counts as one rep."
+    "zh": "往左转一次、往右转一次，才算 1 下。",
+    "en": "A turn to the left plus a turn to the right counts as one."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "转得太快",
-   "en": "Turning too fast."
+   "zh": "转得太猛",
+   "en": "Whipping round too fast."
   },
   {
-   "zh": "撑地那侧肩膀塌下去",
-   "en": "Letting the supporting shoulder sink."
+   "zh": "撑地那边肩膀塌下去",
+   "en": "Supporting shoulder sinking."
   }
  ],
  "cautions": [
   {
-   "zh": "手腕疼或发麻时停下",
-   "en": "Stop if your wrists hurt or go numb."
+   "zh": "转侧撑时一只手扛全身，手腕先活动开，疼就别转",
+   "en": "One hand carries you in the side plank. Warm up your wrists first and skip the turn if they hurt."
   },
   {
-   "zh": "先活动手腕再做",
-   "en": "Warm up your wrists before you start."
+   "zh": "俯卧撑做不满就跪着做，再转身",
+   "en": "Can't manage the push-ups? Do them on your knees, then turn."
   }
  ],
  "tags": {
@@ -96,11 +96,11 @@
  },
  "phases": {
   "start": {
-   "zh": "俯卧撑转身",
-   "en": "Push up and turn"
+   "zh": "撑起转身",
+   "en": "Push up, turn"
   },
   "peak": {
-   "zh": "手伸向上",
+   "zh": "手指向上",
    "en": "Reach up"
   },
   "end": {
@@ -114,12 +114,13 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 2.7,
+    "seconds": 2.2,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 0.3
+    "seconds": 0.8,
+    "cue": "phase.peak"
    },
    {
     "id": "back",
@@ -129,7 +130,7 @@
   ],
   "perSide": "alternate",
   "repUnit": "left+right",
-  "source": "spec-timeline manual r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -143,6 +144,81 @@
    "flags": [
     "相位没按批表 down 轨（0.5/0.33/0.5/2.68）而按 spec 手算，请确认",
     "顶点只有 0.3 s，「手伸向上」不绑相位，只在 phases.peak 文本里"
+   ]
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一侧一下 4.0 s（俯卧撑+转身 2.2 / 顶点停 0.8 / 转回 1.0），顶点 0.8 s 现在能念「手指向上」；一左一右 8 s 计 1 下；r2 flag 的批表/手算之争不再适用（不按动画时长）",
+    "难度 v3 2 / ai-tags 3 → 统一 2；退阶跪姿写进注意事项",
+    "文字改教练口吻（「像一扇门打开」）",
+    "r3 第二遍（去套话，2026-11-14）：2 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [
+    "预览帧看不到胸部高亮，请看视频确认"
+   ],
+   "audit": {
+    "dose": [
+     "3 组×每侧6 次，休息 60 秒",
+     "3 组×每侧6 次，休息 60 秒"
+    ],
+    "rep": [
+     "4.0 s/侧（一左一右 8.0 s）",
+     "4.0 s/侧（一左一右 8.0 s）"
+    ],
+    "difficulty": [
+     {
+      "v3": 2,
+      "ai": 3
+     },
+     2
+    ],
+    "voice": "口吻改写",
+    "frame": "动作一致：垫上俯卧撑位；胸部高亮在预览帧里看不到（非极端，待看视频）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 8.0,
+  "repUnit": "left+right",
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "halfway",
+    "zh": "胸口和胯一起转，别光扭腰",
+    "en": "Chest and hips turn together",
+    "from": [
+     "cue2"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "key": "p.last_rep"
+   }
+  ],
+  "before": [
+   "p.right_first"
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.60"
+   ],
+   "allDone": [
+    "p.nice"
    ]
   }
  }

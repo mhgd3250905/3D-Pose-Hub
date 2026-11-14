@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-knee-hug",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-knee-hug-r3.js",
   "drill-anim/specs/h-knee-hug-r2.js",
@@ -12,15 +12,15 @@
   "en": "Lying Knees-to-Chest"
  },
  "purpose": {
-  "zh": "放松下背和臀部",
-  "en": "Relax your lower back and glutes."
+  "zh": "放松腰和屁股",
+  "en": "Relaxes your lower back and butt."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "双手抱住膝盖，轻轻拉向胸口",
+    "zh": "两手抱住膝盖，轻轻往胸口拉",
     "en": "Hug your knees and gently pull them toward your chest"
    }
   },
@@ -28,30 +28,30 @@
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "头和肩放松贴地。",
-    "en": "Keep your head and shoulders relaxed on the floor."
+    "zh": "头和肩膀放松，贴着地。",
+    "en": "Head and shoulders relaxed on the floor."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "停住不动，慢慢呼吸。",
-    "en": "Stay still and breathe slowly."
+    "zh": "腰和后脑勺都贴着地，肩膀放松。",
+    "en": "Lower back and head stay on the floor, shoulders relaxed."
    }
   },
   {
    "id": "cue4",
    "primary": false,
    "text": {
-    "zh": "每次呼气再放松一点，别来回颠。",
-    "en": "Each time you breathe out, relax a little deeper. No bouncing."
+    "zh": "呼气时把膝盖往胸口再抱近一点。",
+    "en": "Each breath out, hug your knees a little closer."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "用力猛拉",
+   "zh": "使劲猛拉",
    "en": "Yanking your knees in."
   },
   {
@@ -59,14 +59,14 @@
    "en": "Holding your breath."
   },
   {
-   "zh": "来回颠着往下压",
-   "en": "Bouncing to go deeper."
+   "zh": "抬头去够膝盖，脖子在使劲",
+   "en": "Lifting your head to meet your knees."
   }
  ],
  "cautions": [
   {
-   "zh": "出现疼痛时放松，只拉到舒服的程度",
-   "en": "If anything hurts, ease off and stretch only to a comfortable point."
+   "zh": "膝盖弯着疼就抱大腿后面，别抱小腿",
+   "en": "If bending your knees hurts, hold behind your thighs instead of your shins."
   }
  ],
  "tags": {
@@ -95,12 +95,12 @@
    "en": "Hug them in"
   },
   "peak": {
-   "zh": "保持，慢慢呼气",
-   "en": "Hold and breathe out"
+   "zh": "腰贴地",
+   "en": "Back on the floor"
   },
   "end": {
-   "zh": "呼气再放松",
-   "en": "Relax a bit deeper"
+   "zh": "抱近一点",
+   "en": "Hug closer"
   }
  },
  "training": {
@@ -118,6 +118,102 @@
     "最终口径：按真实做法定（2026-11-01）"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "剂量 2 组×30 秒、休息 15 秒不变",
+    "「别来回颠」→「别一下一下往下压」",
+    "难度 1/1 不变",
+    "r3 第二遍（去套话，2026-11-14）：7 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "2 组×30 秒，休息 15 秒",
+     "2 组×30 秒，休息 15 秒"
+    ],
+    "rep": [
+     "计时",
+     "计时"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：仰卧抱膝、屁股高亮（b10 第 10 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 4,
+    "role": "posture",
+    "zh": "轻轻拉，别猛拽",
+    "en": "Gently, no yanking",
+    "from": [
+     "cue1",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "at": 12,
+    "role": "halfway",
+    "zh": "头和肩膀放松",
+    "en": "Head and shoulders relaxed",
+    "from": [
+     "cue2"
+    ]
+   },
+   {
+    "at": 20,
+    "role": "form",
+    "zh": "膝盖往胸口抱",
+    "en": "Knees to your chest",
+    "from": [
+     "cue4"
+    ]
+   },
+   {
+    "at": 27,
+    "key": "n.3"
+   },
+   {
+    "at": 28,
+    "key": "n.2"
+   },
+   {
+    "at": 29,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.release",
+    "p.rest",
+    "sec.15"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
   }
  }
 }

@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-chair-progressive-front-split-native",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-chair-progressive-front-split-native.js"
  ],
@@ -10,8 +10,8 @@
   "en": "Chair-Supported Progressive Front Split"
  },
  "purpose": {
-  "zh": "一点点拉开大腿后侧和髋前侧",
-  "en": "Gradually stretch the backs of your thighs and the front of your hips."
+  "zh": "一点点拉开大腿后面和大腿根前面",
+  "en": "Gradually stretches the backs of your thighs and the front of your hips."
  },
  "cues": [
   {
@@ -19,37 +19,37 @@
    "primary": true,
    "text": {
     "zh": "一手轻扶椅子，前后腿慢慢滑开",
-    "en": "Hold the chair lightly and slowly slide your legs apart"
+    "en": "Hold the chair lightly, slowly slide your legs apart"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "只滑到能控制的地方，髋部朝前。",
-    "en": "Slide only as far as you can control, hips facing forward."
+    "zh": "只滑到自己撑得住的地方，两边胯朝前。",
+    "en": "Slide only as far as you can hold yourself, both hips facing forward."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "停住不动，慢慢呼吸。",
-    "en": "Stay still and breathe slowly."
+    "zh": "滑到大腿后面和胯前面有拉的感觉就停。",
+    "en": "Stop when you feel it in the back of the front leg and the front of the hip."
    }
   },
   {
    "id": "cue4",
    "primary": false,
    "text": {
-    "zh": "每次呼气再放松一点，别来回颠。",
-    "en": "Each time you breathe out, relax a little deeper. No bouncing."
+    "zh": "呼气时前脚再往前滑一点点，手撑住椅子分担重量。",
+    "en": "Each breath out, slide your front foot a touch further and let the chair take weight."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "一下子滑得太远",
+   "zh": "一下子滑太远",
    "en": "Sliding too far too fast."
   },
   {
@@ -57,18 +57,18 @@
    "en": "Holding your breath."
   },
   {
-   "zh": "来回颠着往下压",
-   "en": "Bouncing to go deeper."
+   "zh": "一下滑太开，手上撑不住",
+   "en": "Sliding too far at once so your hands can't hold you."
   }
  ],
  "cautions": [
   {
-   "zh": "只拉到舒服的程度，疼就放松",
-   "en": "Stretch only to a comfortable point, and ease off if anything hurts."
+   "zh": "大腿后面或腹股沟刺疼就滑回来一点",
+   "en": "If the back of your thigh or groin gets a sharp pain, slide back in."
   },
   {
-   "zh": "用结实、不带轮子的椅子",
-   "en": "Use a sturdy chair without wheels."
+   "zh": "两边椅子都要稳，地面别太滑",
+   "en": "Both chairs need to be steady, and the floor not too slippery."
   }
  ],
  "tags": {
@@ -86,14 +86,14 @@
    "mat"
   ],
   "position": "half-kneeling",
-  "difficulty": 2
+  "difficulty": 3
  },
  "unilateral": true,
  "startingSide": "right",
  "defaultDose": {
   "mode": "time",
   "sets": 2,
-  "seconds": 45,
+  "seconds": 30,
   "restSeconds": 15
  },
  "phases": {
@@ -102,19 +102,20 @@
    "en": "Slide apart"
   },
   "peak": {
-   "zh": "保持，慢慢呼气",
-   "en": "Hold and breathe out"
+   "zh": "手撑稳",
+   "en": "Hands steady"
   },
   "end": {
-   "zh": "呼气再放松",
-   "en": "Relax a bit deeper"
+   "zh": "前脚再滑",
+   "en": "Front foot out"
   }
  },
  "training": {
   "kind": "hold",
   "leadSeconds": 1,
   "perSide": "each-side-separately",
-  "source": "user-decision static-hold r2"
+  "source": "user-decision static-hold r2",
+  "sideSwitchSeconds": 10
  },
  "review": {
   "r2": {
@@ -126,6 +127,114 @@
     "最终口径：按真实做法定（2026-11-01）"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "剂量 每侧 2 组×45 秒 → 30 秒（静态拉伸统一 30 秒，开哥 11-14 同意）",
+    "新增 sideSwitchSeconds 10（地上换前后腿）",
+    "难度 v3 2 / ai-tags 4 → 统一 3",
+    "「能控制的地方」→「自己撑得住的地方」，「髋部朝前」→「两边胯朝前」",
+    "r3 第二遍（去套话，2026-11-14）：8 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "2 组×每侧45 秒，休息 15 秒",
+     "2 组×每侧30 秒，休息 15 秒"
+    ],
+    "rep": [
+     "计时",
+     "计时"
+    ],
+    "difficulty": [
+     {
+      "v3": 2,
+      "ai": 4
+     },
+     3
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：扶椅前后劈叉、大腿后侧/髋前高亮（b6 第 7 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 4,
+    "role": "posture",
+    "zh": "胯朝前，别歪",
+    "en": "Hips face forward",
+    "from": [
+     "cue2"
+    ]
+   },
+   {
+    "at": 12,
+    "role": "halfway",
+    "zh": "撑得住就停，别硬滑",
+    "en": "Only as far as you can hold",
+    "from": [
+     "cue2",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "at": 20,
+    "role": "form",
+    "zh": "呼气，前脚再滑一点",
+    "en": "Breathe out, slide a bit more",
+    "from": [
+     "cue4"
+    ]
+   },
+   {
+    "at": 27,
+    "key": "n.3"
+   },
+   {
+    "at": 28,
+    "key": "n.2"
+   },
+   {
+    "at": 29,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSetsSameSide": [
+    "p.rest",
+    "sec.15"
+   ],
+   "sideDone": [
+    "p.release",
+    "p.switch_left"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
+  },
+  "sides": {
+   "order": [
+    "right",
+    "left"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边；换边准备 10 秒（training.sideSwitchSeconds，App 未接入）"
   }
  }
 }

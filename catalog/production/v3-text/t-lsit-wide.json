@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "t-lsit-wide",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/t-lsit-wide-r6.js"
  ],
@@ -10,32 +10,32 @@
   "en": "Wide-Leg L-Sit"
  },
  "purpose": {
-  "zh": "练撑住身体、把分开的双腿抬离地面的力量",
-  "en": "Build the strength to hold yourself up with your legs wide off the floor."
+  "zh": "练撑住身子、把分开的两腿抬离地面的劲",
+  "en": "Builds the strength to hold yourself up with your legs wide off the floor."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "双手撑起，伸直的双腿分开离地",
-    "en": "Press up on your hands and hold your straight legs wide off the floor"
+    "zh": "两手撑起来，伸直的两腿分开离地",
+    "en": "Press up on your hands, straight legs wide off the floor"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "肩膀往下压，手臂伸直。",
-    "en": "Press your shoulders down and keep your arms straight."
+    "zh": "肩膀用力往下压，像要把自己从地上顶起来。",
+    "en": "Drive your shoulders down like you are lifting yourself off the floor."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "均匀呼吸，别憋气。",
-    "en": "Breathe steadily and do not hold your breath."
+    "zh": "正常喘气，别憋气。",
+    "en": "Breathe normally. Don't hold your breath."
    }
   }
  ],
@@ -51,12 +51,12 @@
  ],
  "cautions": [
   {
-   "zh": "手腕不舒服时先活动一下手腕",
-   "en": "If your wrists feel stiff, warm them up first."
+   "zh": "先把手腕前后转一转，撑着刺疼就落地",
+   "en": "Roll your wrists first, and come down if they hurt sharply."
   },
   {
-   "zh": "手腕或肩膀疼时缩短时间，还疼就停",
-   "en": "If your wrists or shoulders hurt, hold for less time, and stop if it still hurts."
+   "zh": "手腕或肩膀疼就少撑几秒，还疼就停；撑不住就脚跟点地做",
+   "en": "If your wrists or shoulders hurt, hold for less time. Stop if it still hurts. Can't stay up? Keep your heels touching the floor."
   }
  ],
  "tags": {
@@ -88,12 +88,12 @@
    "en": "Press up"
   },
   "peak": {
-   "zh": "保持呼吸",
-   "en": "Breathe and hold"
+   "zh": "撑住",
+   "en": "Hold it"
   },
   "end": {
-   "zh": "慢慢坐下",
-   "en": "Sit down"
+   "zh": "别憋气",
+   "en": "Keep breathing"
   }
  },
  "training": {
@@ -109,6 +109,85 @@
     "training=hold（计时）；动画是静止撑住只有呼吸，批表的 3 次是呼吸"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "剂量 3 组×10 秒、休息 60 秒不变",
+    "「均匀呼吸」→「正常喘气」；相位口令「慢慢坐下」→「别憋气」（计时类不写回来）",
+    "难度 v3 3 / ai-tags 4 → 统一 3；退阶「脚跟点地做」写进注意事项",
+    "r3 第二遍（去套话，2026-11-14）：3 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [
+    "侧面预览帧看不出两腿分开多宽，请看视频确认是宽腿"
+   ],
+   "audit": {
+    "dose": [
+     "3 组×10 秒，休息 60 秒",
+     "3 组×10 秒，休息 60 秒"
+    ],
+    "rep": [
+     "计时",
+     "计时"
+    ],
+    "difficulty": [
+     {
+      "v3": 3,
+      "ai": 4
+     },
+     3
+    ],
+    "voice": "口吻改写",
+    "frame": "基本一致：手撑 L 撑、两腿抬起、肚子/胯前高亮；侧面这帧看不出两腿分多宽（batch-24 第 2 行，非极端）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 3,
+    "role": "posture",
+    "zh": "肩膀往下压，顶高",
+    "en": "Shoulders down, lift up",
+    "from": [
+     "cue2"
+    ]
+   },
+   {
+    "at": 7,
+    "key": "n.3"
+   },
+   {
+    "at": 8,
+    "key": "n.2"
+   },
+   {
+    "at": 9,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.release",
+    "p.rest",
+    "sec.60"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
   }
  }
 }

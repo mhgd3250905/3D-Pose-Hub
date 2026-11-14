@@ -5,7 +5,7 @@
   "status": "ai-draft",
   "source": {
     "text": "catalog/production/v3-text/n-windshield.json",
-    "textSha256Lf": "428f16d330822e320ecdefb60997737c058b25e79501000b8974898d98a242cd",
+    "textSha256Lf": "e0143bb8bf61f8202707aa646373f506eb8bdb95b86d5f4c743bbaed66782e25",
     "spec": "drill-anim/specs/n-windshield-r2.js",
     "catalogV1": "catalog/catalog.json"
   },
@@ -152,6 +152,12 @@
       },
       "chosen": "alternating",
       "reason": "v3 unilateral=true 实为左右交替（rep_alternate），与单侧分开。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 1,
+      "reason": "r3 动作包核对（开哥 2026-11-13）：逐个重定，与 v3 tags.difficulty 同值。"
     }
   ],
   "reviewNotes": []

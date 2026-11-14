@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "t-lsit-tuck",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/t-lsit-tuck-r5.js"
  ],
@@ -10,31 +10,31 @@
   "en": "L-Sit to Tuck"
  },
  "purpose": {
-  "zh": "撑住身体，练双腿收回和伸直的控制",
-  "en": "Stay up on your hands and control your legs as they tuck and straighten."
+  "zh": "撑住身子，练两腿收回和伸直",
+  "en": "Stay up on your hands and tuck and straighten your legs."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "撑住不落地，腿伸直成L撑再收回膝盖",
-    "en": "Stay up on your hands, straighten your legs into an L, then pull your knees back in"
+    "zh": "撑住别落地，腿伸直成 L 撑再把膝盖收回来",
+    "en": "Stay up on your hands, straighten into an L, then pull your knees back in"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "肩膀往下压，手臂伸直。",
-    "en": "Press your shoulders down and keep your arms straight."
+    "zh": "胳膊锁直，两手把地往下推。",
+    "en": "Lock your arms and shove the floor down."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "收腿时脚跟收到身体下面。",
+    "zh": "收腿时脚后跟收到身子下面。",
     "en": "When you tuck, pull your heels in under you."
    }
   }
@@ -45,18 +45,18 @@
    "en": "Shrugging."
   },
   {
-   "zh": "身体往后仰代替收腿",
+   "zh": "身子往后仰代替收腿",
    "en": "Leaning back instead of tucking your knees."
   }
  ],
  "cautions": [
   {
-   "zh": "手腕不舒服时先活动一下手腕",
-   "en": "If your wrists feel stiff, warm them up first."
+   "zh": "手腕疼就换撑杆或撑拳头，先活动开再做",
+   "en": "If your wrists hurt, use parallettes or fists. Warm them up first."
   },
   {
-   "zh": "手腕或肩膀疼时少做一点，还疼就停",
-   "en": "If your wrists or shoulders hurt, do less, and stop if it still hurts."
+   "zh": "手腕或肩膀疼就少做点，还疼就停；撑不住就脚跟点地做",
+   "en": "If your wrists or shoulders hurt, do less. Stop if it still hurts. Can't stay up? Keep your heels touching the floor."
   }
  ],
  "tags": {
@@ -114,13 +114,9 @@
     "id": "back",
     "seconds": 1.0,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 1.5
    }
   ],
-  "source": "spec-timeline manual r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -133,6 +129,75 @@
    ],
    "flags": [
     "动画一次循环里两下之间只停 0.5 s、循环接缝处停 2.5 s，rest 取平均 1.5 s"
+   ]
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 4.0 s → 2.5 s（伸 1.0 / 停 0.5 / 收 1.0）；r2「循环接缝停顿」flag 与节奏脱钩",
+    "难度 v3 3 / ai-tags 4 → 统一 3；退阶「脚跟点地做」写进注意事项",
+    "purpose 去掉「控制」；两条手腕注意事项并成一句",
+    "r3 第二遍（去套话，2026-11-14）：3 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "3 组×6 次，休息 60 秒",
+     "3 组×6 次，休息 60 秒"
+    ],
+    "rep": [
+     "4.0 s",
+     "2.5 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 3,
+      "ai": 4
+     },
+     3
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：坐地手撑、腿伸直（L 撑）、肚子高亮（batch-23 第 10 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 2.5,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "halfway",
+    "zh": "胳膊锁直，推地",
+    "en": "Arms locked, push",
+    "from": [
+     "cue2"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "key": "p.last_rep"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.60"
+   ],
+   "allDone": [
+    "p.nice"
    ]
   }
  }

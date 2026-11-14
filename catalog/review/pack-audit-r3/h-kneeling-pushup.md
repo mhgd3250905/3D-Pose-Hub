@@ -1,0 +1,54 @@
+# h-kneeling-pushup 跪姿俯卧撑（Knee-Supported Push-Up）· 动作包核对 r3
+
+- 类型：`rep_updown`；V4 预览：`/workspace/work/v4run/b11.jpg 第 3 行`（本机，不入库）
+- reviewStatus：`ai-reviewed-r2-needs-user-review` → `ai-reviewed-r3-needs-user-review`
+
+## 1. 剂量
+- 改前：3 组×10 次，休息 45 秒
+- 改后：3 组×10 次，休息 45 秒
+
+## 2. 真实节奏（与演示动画时长无关）
+- 一下：4.0 s → 3.0 s
+- 相位：go 1.5s / hold 0.5s / back 1.0s
+
+## 3. 难度
+- 改前 v3 1 / ai-tags 2 → 统一 1（跪姿退阶版俯卧撑，入门可做；ai-tags 原 2。）
+
+## 4. 指导文字（教练口吻）
+- purpose：练胸部和手臂，适合入门的俯卧撑 → 练胸和手臂，入门的俯卧撑
+- 要点 改前：膝盖着地，从头到膝一条直线往下；手肘斜着往后，别往两边张开。；撑回到手臂伸直。
+- 要点 改后：膝盖着地，从头到膝盖一条直线往下放；手肘斜着往后，别往两边张开。；撑回到手臂伸直。
+- 常见错误 改前：塌腰或屁股翘起来；手肘往两边张开
+- 常见错误 改后：塌腰或屁股撅起来；手肘往两边张开
+- 注意事项 改前：手腕刺痛或发麻时停止，开始前先活动手腕
+- 注意事项 改后：手腕刺疼或发麻就停，开始前先转转手腕；膝盖底下垫块软垫
+- 相位口令：下放 / 停一下 / 撑起 → 往下放 / 停一下 / 撑起来
+
+## 5. voiceGuide（脚本，未合成音频）
+- 一下 3.0 s；前 2 下念相位口令，之后每下报数
+| 第几下后 | 中文 | English | 出处 |
+|---|---|---|---|
+| 2 | 一条直线，别塌腰 | One straight line | cue1, commonErrors[0] |
+| 5 | 手肘别张开 | Elbows don't flare | cue2, commonErrors[1] |
+| 8 | 撑到手臂伸直 | Push to straight arms | cue3 |
+| 9 | 最后一次 |  | p.last_rep |
+- 组后：moreSets → 休息 + 45 秒；allDone → 很好
+
+## 6. 画面对照
+- 一致：跪姿俯卧撑、胸/大臂后面高亮（b11 第 3 行）
+- 极端错误：无
+
+## 7. 改了什么、为什么
+- 节奏按真实带练：一下 4.0 s → 3.0 s（放 1.5 / 底 0.5 / 撑 1.0）；底部只是短停，kind 维持 rep_updown，r2 flag 结束
+- 难度 v3 1 / ai-tags 2 → 统一 1
+- 补「膝盖底下垫块软垫」
+
+## 8. 待开哥定
+- 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 常见错误2：手肘往两边张开 → 手肘往外撇，肩膀先往下掉（Elbows flaring out. → Elbows flaring and shoulders dropping first.）
+- 注意事项1：手腕刺疼或发麻就停，开始前先转转手腕 → 跪的地方垫个垫子，手腕不舒服就撑拳头（Stop if your wrists get sharp pain or go numb. Roll them out before you start. → Pad your knees, and press on your fists if your wrists complain.）

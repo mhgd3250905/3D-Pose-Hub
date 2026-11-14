@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-db-row",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-db-row.js"
  ],
@@ -10,8 +10,8 @@
   "en": "Chair-Supported One-Arm Dumbbell Row"
  },
  "purpose": {
-  "zh": "练背部，让往回拉更有力",
-  "en": "Build your back for stronger pulling."
+  "zh": "练后背，往回拉更有劲",
+  "en": "Builds your back for stronger pulling."
  },
  "cues": [
   {
@@ -19,15 +19,15 @@
    "primary": true,
    "text": {
     "zh": "手肘贴着身体往上往后拉，哑铃拉到肋骨旁",
-    "en": "Pull your elbow up and back until the dumbbell reaches your ribs"
+    "en": "Drive your elbow up and back until the dumbbell reaches your ribs"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "一只手撑在椅面上，背保持平直不扭。",
-    "en": "Rest one hand on the seat and keep your back flat and square."
+    "zh": "一只手撑在椅面上，背挺平，别扭。",
+    "en": "One hand on the seat, flat back, no twisting."
    }
   },
   {
@@ -41,22 +41,22 @@
  ],
  "commonErrors": [
   {
-   "zh": "上身转动借力",
-   "en": "Twisting the trunk to lift."
+   "zh": "身子跟着扭借劲",
+   "en": "Twisting your body to lift."
   },
   {
    "zh": "耸肩",
-   "en": "Shrugging the shoulder."
+   "en": "Shrugging."
   }
  ],
  "cautions": [
   {
-   "zh": "从轻重量开始，出现疼痛就停止",
-   "en": "Start with a light weight, and stop if you feel pain."
+   "zh": "先用轻哑铃，拉的时候腰发紧就减重",
+   "en": "Start light. Go lighter if your back tightens as you pull."
   },
   {
-   "zh": "椅子会滑动时换一把稳固、不带轮子的",
-   "en": "If the chair can slide, use a sturdy one without wheels."
+   "zh": "撑的椅子要稳，手压上去不能晃",
+   "en": "The chair you lean on has to be solid, no wobble."
   }
  ],
  "tags": {
@@ -86,15 +86,15 @@
  },
  "phases": {
   "start": {
-   "zh": "向上拉",
+   "zh": "往上拉",
    "en": "Pull up"
   },
   "peak": {
-   "zh": "夹紧",
+   "zh": "夹一下",
    "en": "Squeeze"
   },
   "end": {
-   "zh": "慢慢放下",
+   "zh": "慢慢放",
    "en": "Lower slowly"
   }
  },
@@ -104,26 +104,22 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 0.8,
+    "seconds": 1.0,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 1.1,
+    "seconds": 0.5,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 1.0,
+    "seconds": 1.5,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 1.1
    }
   ],
   "perSide": "each-side-separately",
-  "source": "spec-pulse-track r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -133,6 +129,109 @@
     "节奏核对：动画顶点真正静止约 0.6 秒（<0.8），rep_hold 改为 rep_updown"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 4.0 s → 3.0 s（拉 1.0 / 夹 0.5 / 放 1.5）",
+    "换边只是绕到椅子另一侧换手，不加换边准备",
+    "文字改教练口吻",
+    "难度 1/1 不变",
+    "r3 第二遍（去套话，2026-11-14）：3 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "3 组×每侧10 次，休息 45 秒",
+     "3 组×每侧10 次，休息 45 秒"
+    ],
+    "rep": [
+     "4.0 s",
+     "3.0 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：扶椅单臂哑铃划船、背阔高亮（b9 第 1 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 3.0,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "身子别跟着转",
+    "en": "Don't twist",
+    "from": [
+     "cue2",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "肩膀别耸",
+    "en": "Shoulder down",
+    "from": [
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 8,
+    "role": "form",
+    "zh": "拉到肋骨旁",
+    "en": "Pull to your ribs",
+    "from": [
+     "cue1"
+    ]
+   },
+   {
+    "afterRep": 9,
+    "key": "p.last_rep"
+   }
+  ],
+  "before": [
+   "p.right_first"
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.45"
+   ],
+   "allDone": [
+    "p.nice"
+   ],
+   "sideDone": [
+    "p.switch_left"
+   ]
+  },
+  "sides": {
+   "order": [
+    "right",
+    "left"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边"
   }
  }
 }

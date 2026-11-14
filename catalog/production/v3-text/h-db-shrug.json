@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-db-shrug",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-db-shrug.js"
  ],
@@ -10,49 +10,49 @@
   "en": "Standing Dumbbell Shrug"
  },
  "purpose": {
-  "zh": "练肩膀上方和脖子两侧的肌肉",
-  "en": "Build the muscles on top of your shoulders and the sides of your neck."
+  "zh": "练肩膀上面和脖子两边",
+  "en": "Builds the tops of your shoulders and the sides of your neck."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "手臂伸直，肩膀直直往耳朵方向耸",
-    "en": "Keep your arms straight and lift your shoulders toward your ears"
+    "zh": "手臂垂直，肩膀直直往耳朵耸",
+    "en": "Arms straight, shrug your shoulders straight up to your ears"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "不弯手肘、不转肩、脖子不动。",
-    "en": "Do not bend your elbows, roll your shoulders or move your neck."
+    "zh": "手肘别弯，肩膀直上直下，别画圈。",
+    "en": "Elbows straight. Shoulders go straight up and down, no rolling."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "顶端停一下。",
-    "en": "Pause at the top."
+    "zh": "耸到最高停一下，像用肩膀去碰耳朵。",
+    "en": "Hold at the top like you are touching your ears with your shoulders."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "转肩画圈",
-   "en": "Rolling the shoulders."
+   "zh": "肩膀转着画圈",
+   "en": "Rolling your shoulders."
   },
   {
-   "zh": "用腿弹起借力",
-   "en": "Bouncing with the legs."
+   "zh": "腿一弹借劲",
+   "en": "Bouncing with your legs."
   }
  ],
  "cautions": [
   {
-   "zh": "脖子或肩膀不舒服时停止，先用轻重量",
-   "en": "Stop if your neck or shoulders feel uncomfortable, and start light."
+   "zh": "先用轻哑铃，脖子或肩膀不舒服就停",
+   "en": "Start with light dumbbells. Stop if your neck or shoulders feel off."
   }
  ],
  "tags": {
@@ -79,7 +79,7 @@
  },
  "phases": {
   "start": {
-   "zh": "向上耸",
+   "zh": "往上耸",
    "en": "Shrug up"
   },
   "peak": {
@@ -92,7 +92,7 @@
   }
  },
  "training": {
-  "kind": "rep_updown",
+  "kind": "rep_hold",
   "leadSeconds": 1,
   "phases": [
    {
@@ -102,20 +102,16 @@
    },
    {
     "id": "hold",
-    "seconds": 0.9,
+    "seconds": 1.0,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 0.8,
+    "seconds": 1.0,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 1.3
    }
   ],
-  "source": "spec-pulse-track r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -125,6 +121,96 @@
     "节奏核对：动画顶点真正静止约 0.37 秒（<0.8），rep_hold 改为 rep_updown"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 4.0 s → 3.0 s（耸 1.0 / 顶上停 1.0 / 放 1.0）；顶点 ≥ 0.8 s，kind rep_updown → rep_hold",
+    "cue2 一句三个指令拆成「手肘别弯，肩膀直上直下」",
+    "难度 1/1 不变",
+    "r3 第二遍（去套话，2026-11-14）：2 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [
+    "预览帧几乎看不到肩膀上面高亮，请看视频确认"
+   ],
+   "audit": {
+    "dose": [
+     "3 组×12 次，休息 30 秒",
+     "3 组×12 次，休息 30 秒"
+    ],
+    "rep": [
+     "4.0 s",
+     "3.0 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "动作一致：站姿双手提哑铃耸肩；预览帧几乎看不到高亮（b9 第 2 行，非极端）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 3.0,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "直上直下，别画圈",
+    "en": "Straight up, no rolling",
+    "from": [
+     "cue2",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "腿别弹",
+    "en": "Don't bounce",
+    "from": [
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 8,
+    "role": "form",
+    "zh": "肩膀碰耳朵停住",
+    "en": "Shoulders to ears, hold",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "afterRep": 11,
+    "key": "p.last_rep"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.30"
+   ],
+   "allDone": [
+    "p.nice"
+   ]
   }
  }
 }

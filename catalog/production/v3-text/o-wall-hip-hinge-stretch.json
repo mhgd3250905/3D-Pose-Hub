@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "o-wall-hip-hinge-stretch",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/o-wall-hip-hinge-stretch.js"
  ],
@@ -10,15 +10,15 @@
   "en": "Wall-Supported Back Stretch"
  },
  "purpose": {
-  "zh": "拉伸背部两侧和腋下",
-  "en": "Stretch the sides of your back and under your arms."
+  "zh": "拉开背两边和腋下",
+  "en": "Stretches the sides of your back and your armpits."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "双手扶墙，臀部往后移，胸口往下沉",
+    "zh": "两手扶墙，屁股往后挪，胸口往下沉",
     "en": "Hands on the wall, push your hips back and let your chest sink"
    }
   },
@@ -26,7 +26,7 @@
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "双手和胸口一样高，双脚踩稳，膝盖微弯。",
+    "zh": "两手跟胸口一样高，两脚踩稳，膝盖微弯。",
     "en": "Hands at chest height, feet planted, knees soft."
    }
   },
@@ -34,37 +34,37 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "保持不动，慢慢呼吸，每次呼气再放松一点。",
-    "en": "Stay still, breathe slowly, and relax a little deeper each time you breathe out."
+    "zh": "手臂伸直扶墙，头夹在两臂中间，背像桌面一样平。",
+    "en": "Arms long on the wall, head between them, back flat like a table."
    }
   },
   {
    "id": "cue4",
    "primary": false,
    "text": {
-    "zh": "别来回颠，有拉伸感就够，别拉到疼。",
-    "en": "Do not bounce; a clear stretch is enough, never pain."
+    "zh": "呼气时屁股再往后挪一点，胸口往地面沉。",
+    "en": "Each breath out, walk your hips back a little and let your chest sink."
    }
   }
  ],
  "commonErrors": [
   {
    "zh": "塌腰硬压",
-   "en": "Sagging the lower back to go deeper."
+   "en": "Sagging your lower back to force it."
   },
   {
    "zh": "耸肩",
    "en": "Shrugging your shoulders."
   },
   {
-   "zh": "憋气或来回颠",
-   "en": "Holding your breath or bouncing."
+   "zh": "膝盖锁死，背反而弓起来",
+   "en": "Locking your knees so your back rounds instead."
   }
  ],
  "cautions": [
   {
-   "zh": "肩膀疼时幅度小一点，还疼就停",
-   "en": "If your shoulders hurts, move less far, and stop if it still hurts."
+   "zh": "肩膀夹着疼就把手扶高一点",
+   "en": "If your shoulders pinch, put your hands higher on the wall."
   }
  ],
  "tags": {
@@ -91,12 +91,12 @@
  },
  "phases": {
   "start": {
-   "zh": "臀部后移",
+   "zh": "屁股往后",
    "en": "Hips back"
   },
   "peak": {
-   "zh": "保持，慢慢呼气",
-   "en": "Hold and breathe out"
+   "zh": "背像桌面",
+   "en": "Flat like a table"
   },
   "end": {
    "zh": "胸口再沉点",
@@ -120,6 +120,101 @@
     "最终口径：按真实做法定（2026-11-01）"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "剂量 2 组×30 秒、休息 15 秒不变",
+    "「背部两侧」→「背两边」，「臀部后移」→「屁股往后挪」；「别来回颠」→「别一下一下往下压」",
+    "难度 1/1 不变",
+    "r3 第二遍（去套话，2026-11-14）：6 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "2 组×30 秒，休息 15 秒",
+     "2 组×30 秒，休息 15 秒"
+    ],
+    "rep": [
+     "计时",
+     "计时"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：两手推墙、屁股往后、上身放平、背/腋下高亮（b21 第 5 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 4,
+    "role": "posture",
+    "zh": "肩膀别耸",
+    "en": "Shoulders down",
+    "from": [
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "at": 12,
+    "role": "halfway",
+    "zh": "别塌腰硬压",
+    "en": "Don't sag to force it",
+    "from": [
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "at": 20,
+    "role": "form",
+    "zh": "屁股往后挪一点",
+    "en": "Walk your hips back",
+    "from": [
+     "cue4"
+    ]
+   },
+   {
+    "at": 27,
+    "key": "n.3"
+   },
+   {
+    "at": 28,
+    "key": "n.2"
+   },
+   {
+    "at": 29,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.release",
+    "p.rest",
+    "sec.15"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
   }
  }
 }

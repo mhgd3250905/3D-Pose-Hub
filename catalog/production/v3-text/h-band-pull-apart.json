@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-band-pull-apart",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-band-pull-apart-r2.js"
  ],
@@ -10,53 +10,53 @@
   "en": "Band Pull-Apart"
  },
  "purpose": {
-  "zh": "练上背和肩膀后侧，改善圆肩",
-  "en": "Build your upper back and the back of your shoulders to help rounded shoulders."
+  "zh": "练上背和肩膀后面，圆肩的人尤其该练",
+  "en": "Builds your upper back and the back of your shoulders, great for rounded shoulders."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "手臂伸直，把弹力带拉开成 T 字",
-    "en": "Keep your arms straight and pull the band apart into a T"
+    "zh": "手臂伸直，把带子拉开成 T 字",
+    "en": "Arms straight, pull the band apart into a T"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "肩胛骨往后、往下夹。",
-    "en": "Squeeze your shoulder blades back and down."
+    "zh": "肩胛骨往后往下夹，像要夹住一支笔。",
+    "en": "Squeeze your shoulder blades back and down like you're pinching a pencil."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "肋骨别往外顶，慢慢收回。",
-    "en": "Keep your ribs down and return slowly."
+    "zh": "肋骨别往外顶，慢慢收回来。",
+    "en": "Keep your ribs down and bring it back slowly."
    }
   }
  ],
  "commonErrors": [
   {
    "zh": "耸肩",
-   "en": "Shrugging your shoulders."
+   "en": "Shrugging."
   },
   {
-   "zh": "腰往后仰",
-   "en": "Arching your lower back."
+   "zh": "拉不开就挺肚子、往后仰着拉",
+   "en": "Leaning back and pushing your belly out to get it apart."
   }
  ],
  "cautions": [
   {
-   "zh": "肩膀疼时换更轻的弹力带",
-   "en": "If your shoulders hurt, switch to a lighter band."
+   "zh": "肩膀疼就两手握宽一点，或换细带子",
+   "en": "If your shoulders hurt, grip wider or use a lighter band."
   },
   {
-   "zh": "弹力带有裂口时别用",
-   "en": "Do not use a band with nicks or tears."
+   "zh": "带子有裂口别用",
+   "en": "Don't use a band with nicks or tears."
   }
  ],
  "tags": {
@@ -91,7 +91,7 @@
    "en": "Squeeze"
   },
   "end": {
-   "zh": "慢慢收回",
+   "zh": "慢慢收",
    "en": "Return slowly"
   }
  },
@@ -101,25 +101,21 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 0.8,
+    "seconds": 1.0,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 1.4,
+    "seconds": 0.8,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 0.9,
+    "seconds": 1.2,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 0.9
    }
   ],
-  "source": "spec-pulse-track r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -128,6 +124,103 @@
     "口令按 0.8 s 相位缩短（「向两侧拉开」→「拉开」）"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 4.0 s → 3.0 s（拉 1.0 / 夹 0.8 / 收 1.2）",
+    "加「像要夹住一支笔」的画面",
+    "难度 1/1 不变",
+    "r3 第二遍（去套话，2026-11-14）：2 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "3 组×15 次，休息 30 秒",
+     "3 组×15 次，休息 30 秒"
+    ],
+    "rep": [
+     "4.0 s",
+     "3.0 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：站姿双臂平举拉开弹力带、上背/肩后侧高亮（b4 第 4 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 3.0,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "肩膀别耸",
+    "en": "Shoulders down",
+    "from": [
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "form",
+    "zh": "像夹住一支笔",
+    "en": "Pinch a pencil",
+    "from": [
+     "cue2"
+    ]
+   },
+   {
+    "afterRep": 8,
+    "role": "halfway",
+    "zh": "肋骨别往外顶",
+    "en": "Ribs down",
+    "from": [
+     "cue3",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 11,
+    "role": "form",
+    "zh": "肩膀别耸",
+    "en": "Shoulders down",
+    "from": [
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 14,
+    "key": "p.last_rep"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.30"
+   ],
+   "allDone": [
+    "p.nice"
+   ]
   }
  }
 }

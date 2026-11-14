@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "t-seated-straddle-lift-1leg",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/t-seated-straddle-lift-1leg-r3.js"
  ],
@@ -10,8 +10,8 @@
   "en": "Seated Straddle Single-Leg Lift"
  },
  "purpose": {
-  "zh": "分腿坐，练大腿前侧把伸直的腿抬起来",
-  "en": "Train the front of your thigh to lift a straight leg in a wide straddle."
+  "zh": "分腿坐，练大腿前面把伸直的腿抬起来",
+  "en": "Sitting in a straddle, builds the front of your thigh to lift a straight leg."
  },
  "cues": [
   {
@@ -19,22 +19,22 @@
    "primary": true,
    "text": {
     "zh": "腿伸直，一条腿抬离地面",
-    "en": "Keep the leg straight and lift it off the floor"
+    "en": "Leg straight, lift it off the floor"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "分腿坐直，指尖在要抬那条腿的两边点地。",
-    "en": "Sit tall in a wide straddle with your fingertips on the floor either side of the lifting leg."
+    "zh": "分腿坐直，指尖在要抬那条腿两边点地。",
+    "en": "Sit tall in a wide straddle, fingertips on the floor either side of the lifting leg."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "腿放下停稳后，手抬起转到另一边再撑地。",
+    "zh": "腿放下停稳，手抬起转到另一边再撑地。",
     "en": "Once the leg is down, lift your hands, turn to the other side and place them again."
    }
   },
@@ -42,24 +42,24 @@
    "id": "cue4",
    "primary": false,
    "text": {
-    "zh": "两边各做一次算 1 次。",
-    "en": "One on each side counts as one rep."
+    "zh": "一边一条腿都抬过，才数 1 下。",
+    "en": "Each leg lifts once before you count one."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "身体往后仰去抬腿",
-   "en": "Leaning back to lift the leg."
+   "zh": "抬腿时上身往后倒",
+   "en": "Falling back as the leg lifts."
   },
   {
-   "zh": "膝盖弯曲",
-   "en": "Bending the knee."
+   "zh": "膝盖弯了",
+   "en": "Bending your knee."
   }
  ],
  "cautions": [
   {
-   "zh": "大腿前侧抽筋或髋疼时停下休息",
+   "zh": "大腿前面抽筋或胯疼就停下歇会儿",
    "en": "Stop and rest if the front of your thigh cramps or your hip hurts."
   }
  ],
@@ -96,8 +96,8 @@
    "en": "Pause"
   },
   "end": {
-   "zh": "放下",
-   "en": "Down"
+   "zh": "放下换边",
+   "en": "Down, switch"
   }
  },
  "startingSide": "left",
@@ -107,22 +107,23 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 0.6,
+    "seconds": 1.0,
     "cue": "phase.start"
    },
    {
-    "id": "back",
+    "id": "hold",
     "seconds": 0.5,
-    "cue": "phase.end"
+    "cue": "phase.peak"
    },
    {
-    "id": "rest",
-    "seconds": 2.9
+    "id": "back",
+    "seconds": 2.0,
+    "cue": "phase.end"
    }
   ],
   "perSide": "alternate",
   "repUnit": "left+right",
-  "source": "spec-timeline manual r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -136,6 +137,77 @@
    ],
    "flags": [
     "顶端只停 0.3 s，念不完口令，并进 go 段"
+   ]
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一侧一下 4.0 s → 3.5 s（抬 1.0 / 停 0.5 / 放下并换手 2.0），一左一右 7 s 计 1 下；r2「顶端只停 0.3 s」flag 结束",
+    "「大腿前侧」→「大腿前面」，「髋」→「胯」",
+    "难度 2/2 不变",
+    "r3 第二遍（去套话，2026-11-14）：2 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "3 组×每侧4 次，休息 45 秒",
+     "3 组×每侧4 次，休息 45 秒"
+    ],
+    "rep": [
+     "4.0 s/侧（一左一右 8.0 s）",
+     "3.5 s/侧（一左一右 7.0 s）"
+    ],
+    "difficulty": [
+     {
+      "v3": 2,
+      "ai": 2
+     },
+     2
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：分腿坐、指尖在一条腿两边、胯前高亮（batch-24 第 4 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 7.0,
+  "repUnit": "left+right",
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "halfway",
+    "zh": "别往后仰",
+    "en": "Don't lean back",
+    "from": [
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 3,
+    "key": "p.last_rep"
+   }
+  ],
+  "before": [],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.45"
+   ],
+   "allDone": [
+    "p.nice"
    ]
   }
  }

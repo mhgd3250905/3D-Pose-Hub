@@ -1,0 +1,54 @@
+# h-tabletop 桌面式后撑抬髋（Reverse Tabletop Bridge）· 动作包核对 r3
+
+- 类型：`rep_hold`；V4 预览：`/workspace/work/v4run/b14.jpg 第 10 行`（本机，不入库）
+- reviewStatus：`ai-reviewed-r2-needs-user-review` → `ai-reviewed-r3-needs-user-review`
+
+## 1. 剂量
+- 改前：3 组×10 次，休息 30 秒
+- 改后：3 组×10 次，休息 30 秒
+
+## 2. 真实节奏（与演示动画时长无关）
+- 一下：4.0 s → 3.5 s
+- 相位：go 1.0s / hold 1.0s / back 1.5s
+
+## 3. 难度
+- 改前 v3 1 / ai-tags 2 → 统一 2（要肩膀够开、手腕撑得住才抬得平；ai-tags 原 2。）
+
+## 4. 指导文字（教练口吻）
+- purpose：练臀部和肩膀，打开胸口 → 练屁股和肩膀，打开胸口
+- 要点 改前：手和脚跟推地，把屁股抬到和肩膀、膝盖一样高；手指朝向脚，手臂伸直。；胸口打开，肩胛骨往中间收。
+- 要点 改后：手和脚后跟推地，把屁股抬到跟膝盖一样高；手指朝着脚，手臂伸直。；胸口打开，肩胛骨往中间夹。
+- 常见错误 改前：屁股没有抬平；耸肩
+- 常见错误 改后：屁股没抬平；耸肩
+- 注意事项 改前：手腕刺痛或发麻时停止，开始前先活动手腕；肩前侧夹着疼时，缩小幅度或换简单版本
+- 注意事项 改后：手腕刺疼或发麻就停，开始前先转转手腕；肩膀前面夹着疼就抬低点，还疼就停
+- 相位口令：抬起 / 保持住 / 放下 → 抬起来 / 停住 / 慢慢放
+
+## 5. voiceGuide（脚本，未合成音频）
+- 一下 3.5 s；前 2 下念相位口令，之后每下报数
+| 第几下后 | 中文 | English | 出处 |
+|---|---|---|---|
+| 2 | 屁股抬平 | Hips level | cue1, commonErrors[0] |
+| 5 | 肩膀别耸 | Shoulders down | commonErrors[1] |
+| 8 | 胸口打开 | Open your chest | cue3 |
+| 9 | 最后一次 |  | p.last_rep |
+- 组后：moreSets → 休息 + 30 秒；allDone → 很好
+
+## 6. 画面对照
+- 一致：反向桌式（面朝上手撑地、屁股抬平）、胸/肩前高亮（b14 第 10 行）
+- 极端错误：无
+
+## 7. 改了什么、为什么
+- 节奏按真实带练：一下 4.0 s → 3.5 s（抬 1.0 / 停 1.0 / 放 1.5）
+- 难度 v3 1 / ai-tags 2 → 统一 2
+- 「臀部」→「屁股」；「肩前侧…缩小幅度或换简单版本」→「抬低点」
+
+## 8. 待开哥定
+- 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 注意事项1：手腕刺疼或发麻就停，开始前先转转手腕 → 手指朝脚撑地，手腕难受就转向两边（Stop if your wrists get sharp pain or go numb. Roll them out before you start. → Fingers toward your feet. If your wrists complain, turn them out.）
+- 注意事项2：肩膀前面夹着疼就抬低点，还疼就停 → 肩膀前面夹着疼就屁股抬低点（If the front of your shoulder pinches, don't lift as high. Stop if it still hurts. → If the fronts of your shoulders pinch, lift your hips lower.）

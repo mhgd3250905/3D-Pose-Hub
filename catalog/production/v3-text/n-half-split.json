@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "n-half-split",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/n-half-split.js"
  ],
@@ -10,65 +10,65 @@
   "en": "Half-Kneeling Half Split (Blocks)"
  },
  "purpose": {
-  "zh": "拉伸前腿的大腿后侧，为前后劈叉打基础",
-  "en": "Stretch the back of your front thigh as a first step toward the front splits."
+  "zh": "拉开前腿大腿后面，给前后劈叉打底子",
+  "en": "Stretches the back of your front thigh as a first step toward the front splits."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "臀部往后坐，前腿伸直，背拉长",
-    "en": "Sit your hips back, straighten the front leg and keep your back long"
+    "zh": "屁股往后坐，前腿伸直，背拉长",
+    "en": "Sit your hips back, straighten your front leg, keep your back long"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "后膝跪地，前脚跟着地、勾脚尖。",
-    "en": "Kneel on the back knee with the front heel down and toes up."
+    "zh": "后膝跪地，前脚后跟着地、勾脚尖。",
+    "en": "Back knee down, front heel on the floor, toes up."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "保持不动，慢慢呼吸，每次呼气再放松一点。",
-    "en": "Stay still, breathe slowly, and relax a little deeper each time you breathe out."
+    "zh": "前脚勾起来，大腿后面会拉得更明显。",
+    "en": "Flex your front foot to feel more in the back of your thigh."
    }
   },
   {
    "id": "cue4",
    "primary": false,
    "text": {
-    "zh": "别来回颠，有拉伸感就够，别拉到疼。",
-    "en": "Do not bounce; a clear stretch is enough, never pain."
+    "zh": "呼气时屁股再往后坐一点，背别弓。",
+    "en": "Each breath out, sit your hips back a little more without rounding."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "弓背去够脚",
-   "en": "Rounding your back to reach the foot."
+   "zh": "脑袋往脚尖凑，背弓成虾米",
+   "en": "Reaching your head to your toes and curling your back."
   },
   {
    "zh": "硬把前腿膝盖伸直",
-   "en": "Forcing the front knee straight."
+   "en": "Forcing your front knee straight."
   },
   {
-   "zh": "憋气或来回颠",
-   "en": "Holding your breath or bouncing."
+   "zh": "前膝死死锁直，膝盖后面扯着疼",
+   "en": "Locking the front knee hard so the back of it hurts."
   }
  ],
  "cautions": [
   {
    "zh": "跪着的膝盖下面垫个软垫",
-   "en": "Put a soft pad under the kneeling knee."
+   "en": "Put a soft pad under your kneeling knee."
   },
   {
-   "zh": "大腿后侧疼时坐得少一点，还疼就停",
-   "en": "If the back of your thigh hurts, sit back less, and stop if it still hurts."
+   "zh": "大腿后面疼就少往后坐点，还疼就停",
+   "en": "If the back of your thigh hurts, don't sit back as far. Stop if it still hurts."
   }
  ],
  "tags": {
@@ -85,7 +85,7 @@
    "mat"
   ],
   "position": "half-kneeling",
-  "difficulty": 1
+  "difficulty": 2
  },
  "unilateral": true,
  "startingSide": "right",
@@ -101,19 +101,20 @@
    "en": "Sit back slowly"
   },
   "peak": {
-   "zh": "保持，慢慢呼气",
-   "en": "Hold and breathe out"
+   "zh": "前脚勾起",
+   "en": "Toes up"
   },
   "end": {
-   "zh": "呼气再放松",
-   "en": "Relax a bit deeper"
+   "zh": "再往后坐",
+   "en": "Sit back more"
   }
  },
  "training": {
   "kind": "hold",
   "leadSeconds": 1,
   "perSide": "each-side-separately",
-  "source": "user-decision static-hold r2"
+  "source": "user-decision static-hold r2",
+  "sideSwitchSeconds": 10
  },
  "review": {
   "r2": {
@@ -125,6 +126,113 @@
     "剂量 → 每侧 2 组×30 秒，休息 15 秒；口令/要点改为进入-保持-呼气放松，去掉来回/计数描述"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "剂量 每侧 2 组×30 秒、休息 15 秒不变",
+    "新增 sideSwitchSeconds 10（半跪换前后腿要重新摆）",
+    "「臀部」→「屁股」，「大腿后侧」→「大腿后面」；「别来回颠」→「别一下一下往下压」",
+    "难度 v3 1 / ai-tags 2 → 统一 2",
+    "r3 第二遍（去套话，2026-11-14）：8 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "2 组×每侧30 秒，休息 15 秒",
+     "2 组×每侧30 秒，休息 15 秒"
+    ],
+    "rep": [
+     "计时",
+     "计时"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 2
+     },
+     2
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：半跪前腿伸直、两手扶砖、大腿后高亮（b17 第 7 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 4,
+    "role": "posture",
+    "zh": "胸口往前，背别弓",
+    "en": "Chest forward, back flat",
+    "from": [
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "at": 12,
+    "role": "halfway",
+    "zh": "前膝别硬伸直",
+    "en": "Don't force the knee",
+    "from": [
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "at": 20,
+    "role": "form",
+    "zh": "呼气，屁股往后坐",
+    "en": "Breathe out, hips back",
+    "from": [
+     "cue4"
+    ]
+   },
+   {
+    "at": 27,
+    "key": "n.3"
+   },
+   {
+    "at": 28,
+    "key": "n.2"
+   },
+   {
+    "at": 29,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSetsSameSide": [
+    "p.rest",
+    "sec.15"
+   ],
+   "sideDone": [
+    "p.release",
+    "p.switch_left"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
+  },
+  "sides": {
+   "order": [
+    "right",
+    "left"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边；换边准备 10 秒（training.sideSwitchSeconds，App 未接入）"
   }
  }
 }

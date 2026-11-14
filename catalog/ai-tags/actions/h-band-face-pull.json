@@ -5,7 +5,7 @@
   "status": "ai-draft",
   "source": {
     "text": "catalog/production/v3-text/h-band-face-pull.json",
-    "textSha256Lf": "717cfa80156572390a157445c898bd94f88a9f03054edd0b029b4f219be62e4a",
+    "textSha256Lf": "87a1545cd3fe41ca1825b21845bef353b51953fcb006912f28354d4c5103ad4e",
     "spec": "drill-anim/specs/h-band-face-pull-rr1.js",
     "catalogV1": null
   },
@@ -70,7 +70,7 @@
       ]
     }
   ],
-  "difficulty": 2,
+  "difficulty": 1,
   "intensity": "low",
   "prerequisites": [
     "band-anchor"
@@ -138,12 +138,6 @@
       "reason": "v3 粗粒度肌群（upper-back）按动作实际做法拆到细分 id。"
     },
     {
-      "field": "difficulty",
-      "existing": 1,
-      "chosen": 2,
-      "reason": "要同时协调抬肘、外旋和肩胛后缩，按词表定基础 2。"
-    },
-    {
       "field": "requiredEquipment/optionalEquipment",
       "existing": [
         "resistance-band"
@@ -155,6 +149,12 @@
         "optionalEquipment": []
       },
       "reason": "同义写法归一到词表 id。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 1,
+      "reason": "r3 动作包核对（开哥 2026-11-13）：逐个重定，与 v3 tags.difficulty 同值。弹力带面拉入门可做；ai-tags 原 2。"
     }
   ],
   "reviewNotes": []

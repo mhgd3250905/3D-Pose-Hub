@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-standing-forearm-rotation",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-standing-forearm-rotation.js"
  ],
@@ -10,8 +10,8 @@
   "en": "Standing Forearm Rotation"
  },
  "purpose": {
-  "zh": "活动前臂，让手掌翻转更灵活、更好控制",
-  "en": "Loosen your forearm so turning your palm feels freer and better controlled."
+  "zh": "活动小臂，手掌翻得更灵活",
+  "en": "Loosens your forearm so turning your palm feels easy."
  },
  "cues": [
   {
@@ -19,40 +19,40 @@
    "primary": true,
    "text": {
     "zh": "大臂不动，掌心转向上，再转向下",
-    "en": "Keep your upper arm still and turn your palm up, then down"
+    "en": "Upper arm still, turn your palm up, then down"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "手肘弯着贴在身侧，手腕不弯。",
-    "en": "Keep your elbow bent at your side and your wrist straight."
+    "zh": "手肘弯着贴在身边，手腕别弯。",
+    "en": "Elbow bent at your side, wrist straight."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "转到一头算 1 次，每到头停一下，慢慢转。",
-    "en": "Each turn to one end counts as one. Pause at each end and turn slowly."
+    "zh": "转到一头算 1 下，到头停一下，慢慢转。",
+    "en": "Each turn to one end counts as one. Pause there and turn slowly."
    }
   }
  ],
  "commonErrors": [
   {
    "zh": "用肩膀带着转",
-   "en": "Turning from the shoulder instead of the forearm."
+   "en": "Turning from your shoulder."
   },
   {
-   "zh": "手肘离开身体",
-   "en": "Letting the elbow drift away from your side."
+   "zh": "转手腕时大臂跟着往外甩",
+   "en": "Upper arm swinging out as you turn."
   }
  ],
  "cautions": [
   {
-   "zh": "出现疼痛时减小幅度，仍痛就停止",
-   "en": "If you feel pain, reduce the range, and stop if it continues."
+   "zh": "手肘或手腕疼就转一半，慢慢来",
+   "en": "If your elbow or wrist hurts, turn halfway and go slower."
   }
  ],
  "tags": {
@@ -90,31 +90,27 @@
   }
  },
  "training": {
-  "kind": "rep_hold",
+  "kind": "rep_updown",
   "leadSeconds": 1,
   "phases": [
    {
     "id": "go",
-    "seconds": 0.8,
+    "seconds": 1.0,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 1.6,
+    "seconds": 0.5,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 0.8,
+    "seconds": 1.0,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 0.8
    }
   ],
   "perSide": "each-side-separately",
-  "source": "spec-pulse-track r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -126,6 +122,110 @@
     "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 4.0 s → 2.5 s（转 1.0 / 停 0.5 / 回 1.0），小幅活动；顶点 < 0.8 s，kind rep_hold → rep_updown",
+    "站着原地换手，不加换边准备",
+    "purpose 去掉「更好控制」；「出现疼痛时减小幅度，仍痛就停止」→「疼就转小点，还疼就停」",
+    "难度 1/1 不变",
+    "r3 第二遍（去套话，2026-11-14）：2 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "2 组×每侧10 次，休息 20 秒",
+     "2 组×每侧10 次，休息 20 秒"
+    ],
+    "rep": [
+     "4.0 s",
+     "2.5 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：站姿屈肘转小臂、小臂高亮（b13 第 6 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 2.5,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "大臂别动",
+    "en": "Upper arm still",
+    "from": [
+     "cue1",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "手肘贴着身子",
+    "en": "Elbow in",
+    "from": [
+     "cue2",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 8,
+    "role": "form",
+    "zh": "慢慢转",
+    "en": "Turn slowly",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "afterRep": 9,
+    "key": "p.last_rep"
+   }
+  ],
+  "before": [
+   "p.right_first"
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.20"
+   ],
+   "allDone": [
+    "p.nice"
+   ],
+   "sideDone": [
+    "p.switch_left"
+   ]
+  },
+  "sides": {
+   "order": [
+    "right",
+    "left"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边"
   }
  }
 }

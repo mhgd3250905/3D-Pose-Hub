@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "obliques-A",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/data/drills.json",
   "drill-anim/specs/obliques-A-r2.js"
@@ -11,15 +11,15 @@
   "en": "Bear Kick-Through"
  },
  "purpose": {
-  "zh": "单手撑地时练身体转动和控制",
-  "en": "Train turning your body with control while supported on one hand."
+  "zh": "一只手撑地时练身子转过去，侧腰和肩膀都有劲",
+  "en": "Turning your body while one hand holds you up builds the sides of your waist and your shoulders."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "单手撑地，一条腿从身体下面穿过去",
+    "zh": "一只手撑地，一条腿从身子下面穿过去",
     "en": "Push through one hand and thread one leg under your body"
    }
   },
@@ -27,45 +27,45 @@
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "四点支撑，膝盖离地一点开始。",
-    "en": "Start on hands and feet with your knees just off the floor."
+    "zh": "四点撑，膝盖离地一点开始。",
+    "en": "Start on hands and feet, knees just off the floor."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "转身时撑地的手用力推，臀部别落地。",
-    "en": "Push the floor with the support hand as you turn and keep your hips up."
+    "zh": "转身时撑地的手使劲推，屁股别落地。",
+    "en": "Push the floor away with your support hand as you turn. Hips stay up."
    }
   },
   {
    "id": "cue4",
    "primary": false,
    "text": {
-    "zh": "两边各做一次算 1 次。",
-    "en": "One on each side counts as one rep."
+    "zh": "两条腿各穿过去一次，记 1 下。",
+    "en": "Thread each leg through once, and that pair is one."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "臀部坐到地上",
+   "zh": "屁股坐到地上",
    "en": "Sitting your hips down on the floor."
   },
   {
-   "zh": "撑地那侧肩膀塌下去",
-   "en": "Letting the support shoulder sink."
+   "zh": "撑地那边肩膀塌下去",
+   "en": "Support shoulder sinking."
   }
  ],
  "cautions": [
   {
-   "zh": "手腕不舒服时先活动一下手腕",
-   "en": "If your wrists feel stiff, warm them up first."
+   "zh": "一只手撑全身转过去，手腕先活动开，刺疼就停",
+   "en": "One hand holds you as you turn. Warm up your wrists first and stop on sharp pain."
   },
   {
-   "zh": "手腕刺痛或发麻时马上停",
-   "en": "Stop right away if your wrists feel sharp pain or numbness."
+   "zh": "转不过来就先只做熊爬撑住",
+   "en": "Can't turn through yet? Just hold the bear position."
   }
  ],
  "tags": {
@@ -80,7 +80,7 @@
   ],
   "equipment": [],
   "position": "quadruped",
-  "difficulty": 2
+  "difficulty": 3
  },
  "unilateral": true,
  "defaultDose": {
@@ -109,27 +109,23 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 1.2,
+    "seconds": 1.0,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 0.8,
+    "seconds": 0.5,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 1.2,
+    "seconds": 1.0,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 0.8
    }
   ],
   "perSide": "alternate",
   "repUnit": "left+right",
-  "source": "spec-timeline manual r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -142,7 +138,81 @@
     "最终口径：按真实做法定（2026-11-01）"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一侧一下 4.0 s → 2.5 s（穿 1.0 / 停 0.5 / 回 1.0），一左一右 5 s 计 1 下",
+    "难度 v3 2 / ai-tags 3 → 统一 3；退阶「先只做熊爬撑住」写进注意事项",
+    "purpose 去掉「控制」；「臀部」→「屁股」；两条手腕注意事项并成一句",
+    "r3 第二遍（去套话，2026-11-14）：2 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "3 组×每侧6 次，休息 45 秒",
+     "3 组×每侧6 次，休息 45 秒"
+    ],
+    "rep": [
+     "4.0 s/侧（一左一右 8.0 s）",
+     "2.5 s/侧（一左一右 5.0 s）"
+    ],
+    "difficulty": [
+     {
+      "v3": 2,
+      "ai": 3
+     },
+     3
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：熊爬一腿穿到身下、一手朝天、侧腰高亮（b21 第 6 行）",
+    "extreme": null
+   }
   }
  },
- "startingSide": "right"
+ "startingSide": "right",
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 5.0,
+  "repUnit": "left+right",
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "halfway",
+    "zh": "撑地的手使劲推",
+    "en": "Push the floor away",
+    "from": [
+     "cue3",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "key": "p.last_rep"
+   }
+  ],
+  "before": [
+   "p.right_first"
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.45"
+   ],
+   "allDone": [
+    "p.nice"
+   ]
+  }
+ }
 }

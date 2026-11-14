@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-wall-angel",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-wall-angel.js"
  ],
@@ -10,16 +10,16 @@
   "en": "Wall Angel"
  },
  "purpose": {
-  "zh": "练手臂举过头时肩膀的控制，打开上背和肩膀",
-  "en": "Train shoulder control overhead and open up your upper back and shoulders."
+  "zh": "让手臂举过头更顺，打开上背和肩膀",
+  "en": "Makes reaching overhead feel smoother and opens up your upper back and shoulders."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "前臂贴着墙，双臂从 W 滑到 Y",
-    "en": "Keep your forearms near the wall and slide from a W up to a Y"
+    "zh": "小臂贴着墙，两臂从 W 滑到 Y",
+    "en": "Forearms on the wall, slide from a W up to a Y"
    }
   },
   {
@@ -27,7 +27,7 @@
    "primary": false,
    "text": {
     "zh": "后脑、后背和屁股贴墙，肋骨往下收。",
-    "en": "Keep your head, back and hips on the wall, with your ribs down."
+    "en": "Head, back and butt on the wall, ribs down."
    }
   },
   {
@@ -42,17 +42,17 @@
  "commonErrors": [
   {
    "zh": "腰离开墙拱起来",
-   "en": "Arching the lower back off the wall."
+   "en": "Lower back arching off the wall."
   },
   {
    "zh": "手臂离开墙往前掉",
-   "en": "Letting the arms drift forward off the wall."
+   "en": "Arms drifting forward off the wall."
   }
  ],
  "cautions": [
   {
-   "zh": "肩膀疼时少往上滑，仍痛就停止",
-   "en": "If your shoulders hurt, slide up less, and stop if it still hurts."
+   "zh": "肩膀疼就少往上滑，还疼就停",
+   "en": "If your shoulders hurt, don't slide up as far. Stop if it still hurts."
   }
  ],
  "tags": {
@@ -69,7 +69,7 @@
    "wall"
   ],
   "position": "standing",
-  "difficulty": 1
+  "difficulty": 2
  },
  "unilateral": false,
  "defaultDose": {
@@ -80,7 +80,7 @@
  },
  "phases": {
   "start": {
-   "zh": "向上滑",
+   "zh": "往上滑",
    "en": "Slide up"
   },
   "peak": {
@@ -98,25 +98,21 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 0.9,
+    "seconds": 1.5,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 1.1,
+    "seconds": 0.5,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 0.9,
+    "seconds": 1.5,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 1.1
    }
   ],
-  "source": "spec-pulse-track r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -127,6 +123,88 @@
    ],
    "flags": [
     "派生顶点 1.1 s 判为 rep_hold，但 spec 注释写顶点只停 0.5 s；若按实际应为 rep_updown，请确认"
+   ]
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 4.0 s → 3.5 s（上滑 1.5 / 停 0.5 / 滑回 1.5）；顶点 < 0.8 s，kind 维持 rep_updown，r2 flag 结束",
+    "难度 v3 1 / ai-tags 2 → 统一 2",
+    "purpose「练手臂举过头时肩膀的控制」→「让手臂举过头更顺」；「前臂」→「小臂」",
+    "r3 第二遍（去套话，2026-11-14）：2 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [
+    "高亮在胸口和侧身，动作练的是上背和肩膀；高亮位置可能误导（只报告，已列渲染侧复核清单）"
+   ],
+   "audit": {
+    "dose": [
+     "2 组×8 次，休息 30 秒",
+     "2 组×8 次，休息 30 秒"
+    ],
+    "rep": [
+     "4.0 s",
+     "3.5 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 2
+     },
+     2
+    ],
+    "voice": "口吻改写",
+    "frame": "动作一致：背靠墙两臂举起；高亮在胸口/侧身，文字写上背和肩膀（b15 第 7 行，非极端）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 3.5,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "后腰压住墙",
+    "en": "Low back to the wall",
+    "from": [
+     "cue2",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "手背蹭着墙走",
+    "en": "Backs of hands brush the wall",
+    "from": [
+     "cue1",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 7,
+    "key": "p.last_rep"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.30"
+   ],
+   "allDone": [
+    "p.nice"
    ]
   }
  }

@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-reverse-clam",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-reverse-clam-r2.js",
   "drill-anim/specs/h-reverse-clam.js"
@@ -11,49 +11,49 @@
   "en": "Side-Lying Reverse Clamshell"
  },
  "purpose": {
-  "zh": "练臀部，让大腿向内转更有控制",
-  "en": "Build your glutes and control as your thigh turns inward."
+  "zh": "练屁股侧面，让大腿往里转也有劲",
+  "en": "Builds the side of your butt so your thigh can turn inward with strength."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "双膝并拢，上面的脚往上抬离下面的脚",
-    "en": "Keep your knees together and lift your top foot away from the bottom one"
+    "zh": "两膝并拢，上面那只脚往上抬",
+    "en": "Knees together, lift your top foot up"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "屁股别往后翻。",
-    "en": "Keep your hips from rolling back."
+    "zh": "侧躺撑着手肘，胯和膝盖都弯着，屁股别往后翻。",
+    "en": "Lie on your side on your elbow, hips and knees bent. Hips stay stacked."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "顶上停一下，再慢慢放下。",
-    "en": "Pause at the top, then lower slowly."
+    "zh": "脚抬到最高停一下，膝盖一直贴着另一只膝盖。",
+    "en": "Pause with your foot high, knees staying together."
    }
   }
  ],
  "commonErrors": [
   {
    "zh": "膝盖分开",
-   "en": "Letting the knees come apart."
+   "en": "Knees coming apart."
   },
   {
-   "zh": "屁股前后翻",
-   "en": "Rolling the hips."
+   "zh": "屁股往后翻",
+   "en": "Hips rolling back."
   }
  ],
  "cautions": [
   {
-   "zh": "髋部不舒服时幅度小一点，还疼就停",
-   "en": "If your hip feels uncomfortable, move less far, and stop if it still hurts."
+   "zh": "胯里面卡着疼就抬低点，别硬抬",
+   "en": "If your hip pinches inside, lift lower. Don't force it."
   }
  ],
  "tags": {
@@ -85,11 +85,11 @@
    "en": "Lift"
   },
   "peak": {
-   "zh": "停一下",
-   "en": "Pause"
+   "zh": "停住",
+   "en": "Hold"
   },
   "end": {
-   "zh": "慢放下",
+   "zh": "慢慢放",
    "en": "Lower slowly"
   }
  },
@@ -99,26 +99,23 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 0.7,
+    "seconds": 1.0,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 1.4,
+    "seconds": 1.0,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 0.7,
+    "seconds": 1.5,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 1.2
    }
   ],
   "perSide": "each-side-separately",
-  "source": "spec-pulse-track r2"
+  "source": "real-tempo r3",
+  "sideSwitchSeconds": 10
  },
  "review": {
   "r2": {
@@ -128,6 +125,111 @@
     "顶点停 ~1 s → rep_hold，每侧分开做"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 4.0 s → 3.5 s（抬 1.0 / 停 1.0 / 放 1.5），顶上停 1 秒维持 rep_hold",
+    "新增 sideSwitchSeconds 10（翻身换边侧躺）",
+    "purpose「练臀部…更有控制」→「练屁股侧面，让大腿往里转也有劲」；「髋部…幅度小一点」→「胯不舒服就抬低点」；cue2 补「撑着手肘」（画面）",
+    "难度 1/1 不变",
+    "r3 第二遍（去套话，2026-11-14）：3 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "2 组×每侧12 次，休息 20 秒",
+     "2 组×每侧12 次，休息 20 秒"
+    ],
+    "rep": [
+     "4.0 s",
+     "3.5 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：侧卧撑肘、上面的脚往上抬（反蚌式）、屁股侧面高亮（b12 第 5 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 3.5,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "两膝并拢",
+    "en": "Knees together",
+    "from": [
+     "cue1",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "屁股别往后翻",
+    "en": "Hips stay stacked",
+    "from": [
+     "cue2",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 8,
+    "role": "form",
+    "zh": "两膝贴住别分开",
+    "en": "Knees stay together",
+    "from": [
+     "cue1",
+     "cue3"
+    ]
+   },
+   {
+    "afterRep": 11,
+    "key": "p.last_rep"
+   }
+  ],
+  "before": [
+   "p.right_first"
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.20"
+   ],
+   "allDone": [
+    "p.nice"
+   ],
+   "sideDone": [
+    "p.switch_left"
+   ]
+  },
+  "sides": {
+   "order": [
+    "right",
+    "left"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边；换边准备 10 秒（training.sideSwitchSeconds，App 未接入）"
   }
  }
 }

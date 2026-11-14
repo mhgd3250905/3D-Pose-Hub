@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-couch-stretch",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-couch-stretch.js"
  ],
@@ -10,65 +10,65 @@
   "en": "Couch Stretch on a Stool"
  },
  "purpose": {
-  "zh": "拉伸后腿的髋前侧和大腿前侧",
-  "en": "Stretch the front of the back leg's hip and thigh."
+  "zh": "拉开后腿大腿根前面和大腿前面，坐久了胯前面发紧最管用",
+  "en": "Stretches the front of your back hip and thigh, great when sitting leaves your hips tight."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "上身挺直，收紧臀部把髋往前送",
-    "en": "Stay tall, squeeze your glutes, and ease your hips forward"
+    "zh": "上身挺直，夹紧屁股把胯往前送",
+    "en": "Stand tall, squeeze your butt, ease your hips forward"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "后脚脚背搭在矮凳上，前脚踩稳，双手叉腰。",
-    "en": "Rest the top of your back foot on the stool, front foot planted, hands on hips."
+    "zh": "后脚脚背搭在矮凳上，前脚踩稳，两手叉腰。",
+    "en": "Top of your back foot on the stool, front foot planted, hands on your hips."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "停住不动，慢慢呼吸。",
-    "en": "Stay still and breathe slowly."
+    "zh": "后膝贴地别动，屁股夹住，大腿前面一路被拉开。",
+    "en": "Back knee stays put, butt squeezed, feel the front of that thigh open."
    }
   },
   {
    "id": "cue4",
    "primary": false,
    "text": {
-    "zh": "每次呼气再放松一点，别来回颠。",
-    "en": "Each time you breathe out, relax a little deeper. No bouncing."
+    "zh": "呼气时屁股再夹紧一点，胯往前送一点点。",
+    "en": "Each breath out, squeeze a little harder and nudge your hips forward."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "腰往后仰，没收紧臀部",
-   "en": "Arching your lower back instead of squeezing your glutes."
+   "zh": "胸口往后仰，腰被折成拱",
+   "en": "Leaning your chest back and bending your lower back."
   },
   {
    "zh": "憋气",
    "en": "Holding your breath."
   },
   {
-   "zh": "来回颠着往下压",
-   "en": "Bouncing to go deeper."
+   "zh": "上身往前趴，大腿前面没拉到",
+   "en": "Leaning forward so the front of your thigh loses the stretch."
   }
  ],
  "cautions": [
   {
-   "zh": "只拉到舒服的程度，疼就放松",
-   "en": "Stretch only to a comfortable point, and ease off if anything hurts."
+   "zh": "拉到舒服的拉扯感就行，太紧就上身往前倾一点",
+   "en": "A comfortable pull is enough. Too tight? Lean your chest forward a little."
   },
   {
-   "zh": "后膝下面垫软垫，膝盖不舒服就幅度小一点",
-   "en": "Pad under your back knee, and move less if the knee feels uncomfortable."
+   "zh": "后膝底下垫块软垫，膝盖不舒服就往前挪一点",
+   "en": "Put a soft pad under your back knee. If the knee feels off, shift forward a little."
   }
  ],
  "tags": {
@@ -92,28 +92,29 @@
  "defaultDose": {
   "mode": "time",
   "sets": 2,
-  "seconds": 45,
+  "seconds": 30,
   "restSeconds": 15
  },
  "phases": {
   "start": {
-   "zh": "髋往前送",
+   "zh": "胯往前送",
    "en": "Hips forward"
   },
   "peak": {
-   "zh": "保持，慢慢呼气",
-   "en": "Hold and breathe out"
+   "zh": "屁股夹住",
+   "en": "Squeeze and hold"
   },
   "end": {
-   "zh": "呼气再放松",
-   "en": "Relax a bit deeper"
+   "zh": "胯再往前",
+   "en": "Hips forward more"
   }
  },
  "training": {
   "kind": "hold",
   "leadSeconds": 1,
   "perSide": "each-side-separately",
-  "source": "user-decision static-hold r2"
+  "source": "user-decision static-hold r2",
+  "sideSwitchSeconds": 10
  },
  "review": {
   "r2": {
@@ -126,6 +127,114 @@
     "最终口径：按真实做法定（2026-11-01）"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "剂量 每侧 2 组×45 秒 → 30 秒（静态拉伸统一 30 秒，开哥 11-14 同意）",
+    "新增 sideSwitchSeconds 10（后脚从凳子上拿下来换腿、重新跪好）",
+    "难度 v3 2 / ai-tags 3 → 统一 2；退阶「上身往前倾一点」写进注意事项",
+    "「收紧臀部把髋往前送」→「夹紧屁股把胯往前送」，「别来回颠」→「别一下一下往下压」，「幅度小一点」→「往前挪一点」",
+    "r3 第二遍（去套话，2026-11-14）：7 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "2 组×每侧45 秒，休息 15 秒",
+     "2 组×每侧30 秒，休息 15 秒"
+    ],
+    "rep": [
+     "计时",
+     "计时"
+    ],
+    "difficulty": [
+     {
+      "v3": 2,
+      "ai": 3
+     },
+     2
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：后膝跪地、后脚搭凳（沙发拉伸）、大腿前面高亮（b7 第 4 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 4,
+    "role": "posture",
+    "zh": "夹紧屁股，腰别往后仰",
+    "en": "Squeeze your butt, don't arch",
+    "from": [
+     "cue1",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "at": 12,
+    "role": "halfway",
+    "zh": "上身挺直",
+    "en": "Stay tall",
+    "from": [
+     "cue1"
+    ]
+   },
+   {
+    "at": 20,
+    "role": "form",
+    "zh": "屁股夹紧，胯往前送",
+    "en": "Squeeze and ease your hips forward",
+    "from": [
+     "cue4"
+    ]
+   },
+   {
+    "at": 27,
+    "key": "n.3"
+   },
+   {
+    "at": 28,
+    "key": "n.2"
+   },
+   {
+    "at": 29,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSetsSameSide": [
+    "p.rest",
+    "sec.15"
+   ],
+   "sideDone": [
+    "p.release",
+    "p.switch_right"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
+  },
+  "sides": {
+   "order": [
+    "left",
+    "right"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边；换边准备 10 秒（training.sideSwitchSeconds，App 未接入）"
   }
  }
 }

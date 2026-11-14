@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "hamstrings-B",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/data/drills.json",
   "drill-anim/specs/hamstrings-B.js"
@@ -11,45 +11,49 @@
   "en": "Slider Leg Curl"
  },
  "purpose": {
-  "zh": "臀部抬着，脚跟推出去再拉回来，练大腿后侧",
-  "en": "Keep your hips up and slide your heels out and back to work the back of your thighs."
+  "zh": "屁股抬着，脚后跟推出去再拉回来，练大腿后面",
+  "en": "Hips up, slide your heels out and pull them back to build the backs of your thighs."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "臀部抬高别掉，脚跟慢慢推出再拉回",
-    "en": "Keep your hips high, slowly slide your heels out, then curl them back"
+    "zh": "屁股抬高别掉，脚后跟慢慢推出去再拉回来",
+    "en": "Hips stay high, slowly slide your heels out, then pull them back"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "仰卧抬臀，脚跟踩在滑盘上。",
-    "en": "Lie on your back, lift your hips and rest your heels on the sliders."
+    "zh": "仰躺抬屁股，脚后跟踩在滑盘上。",
+    "en": "Lie on your back, lift your hips, heels on the sliders."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "拉回时脚跟回到膝盖下方，臀部夹紧。",
-    "en": "Pull your heels back under your knees and squeeze your glutes."
+    "zh": "拉回来时脚后跟回到膝盖下面，夹紧屁股。",
+    "en": "Pull your heels back under your knees and squeeze your butt."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "臀部往下掉，屁股蹭地",
-   "en": "Letting the hips drop to the floor."
+   "zh": "屁股往下掉蹭地",
+   "en": "Hips dropping to the floor."
+  },
+  {
+   "zh": "推出去太快，一下滑到底",
+   "en": "Sliding out too fast."
   }
  ],
  "cautions": [
   {
-   "zh": "大腿后侧容易抽筋，抽筋时先停下休息",
-   "en": "The backs of your thighs may cramp; if they do, stop and rest."
+   "zh": "大腿后面容易抽筋，抽筋就先停下歇会儿；做不满就只推出去一半",
+   "en": "The backs of your thighs may cramp. If they do, stop and rest. Can't get them all? Slide out only halfway."
   }
  ],
  "tags": {
@@ -65,7 +69,7 @@
    "sliders"
   ],
   "position": "supine",
-  "difficulty": 2
+  "difficulty": 3
  },
  "unilateral": false,
  "defaultDose": {
@@ -94,25 +98,21 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 1.3,
+    "seconds": 2.0,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 0.6,
+    "seconds": 0.5,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 1.0,
+    "seconds": 1.5,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 1.1
    }
   ],
-  "source": "spec-pulse-track r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -123,6 +123,84 @@
     "顶点只停约 0.6 s → rep_updown"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 4.0 s → 4.0 s（推出 2.0 / 停 0.5 / 拉回 1.5），推出去慢是重点",
+    "难度 v3 2 / ai-tags 3 → 统一 3；退阶「只推出去一半」写进注意事项",
+    "「臀部」→「屁股」，「大腿后侧」→「大腿后面」；常见错误补「推出去太快」"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "3 组×8 次，休息 60 秒",
+     "3 组×8 次，休息 60 秒"
+    ],
+    "rep": [
+     "4.0 s",
+     "4.0 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 2,
+      "ai": 3
+     },
+     3
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：仰卧屈膝抬屁股、脚跟踩滑盘、大腿后淡高亮（b16 第 5 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 4.0,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "屁股别掉",
+    "en": "Hips up",
+    "from": [
+     "cue1",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "慢慢推出去",
+    "en": "Slide out slowly",
+    "from": [
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 7,
+    "key": "p.last_rep"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.60"
+   ],
+   "allDone": [
+    "p.nice"
+   ]
   }
  }
 }

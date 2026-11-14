@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-russian-twist",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-russian-twist-r2.js",
   "drill-anim/specs/h-russian-twist.js"
@@ -11,15 +11,15 @@
   "en": "Russian Twist with Feet Down"
  },
  "purpose": {
-  "zh": "练侧腹，让身体转动更有控制",
-  "en": "Build the sides of your waist and control as you twist."
+  "zh": "练侧腰，让上身转得有劲",
+  "en": "Builds the sides of your waist so you can twist with strength."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "上身后仰背挺直，胸口慢慢转向一边",
+    "zh": "上身往后靠、背挺直，胸口慢慢转向一边",
     "en": "Lean back with a long back and slowly turn your chest to one side"
    }
   },
@@ -27,41 +27,41 @@
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "膝盖和屁股朝前不动，脚跟踩地。",
-    "en": "Keep your knees and hips facing forward and your heels down."
+    "zh": "膝盖和屁股朝前不动，脚后跟踩地。",
+    "en": "Knees and hips face forward, heels on the floor."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "回到中间，再转向另一边。",
-    "en": "Come back to the middle, then turn to the other side."
+    "zh": "回到中间，再转另一边。",
+    "en": "Come back to the middle, then turn the other way."
    }
   },
   {
    "id": "cue4",
    "primary": false,
    "text": {
-    "zh": "两边各做一次算 1 次。",
-    "en": "One on each side counts as one rep."
+    "zh": "转到左边、再转到右边，合起来记 1 下。",
+    "en": "Turning to the left and then to the right is one."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "只甩手臂，胸口不转",
-   "en": "Swinging the arms without turning the chest."
+   "zh": "只甩手，胸口没转",
+   "en": "Swinging your arms without turning your chest."
   },
   {
-   "zh": "弓背驼背",
-   "en": "Slouching or rounding the back."
+   "zh": "驼背",
+   "en": "Rounding your back."
   }
  ],
  "cautions": [
   {
-   "zh": "腰不舒服时幅度小一点，还疼就停",
-   "en": "If your lower back feels uncomfortable, move less far, and stop if it still hurts."
+   "zh": "腰发紧就脚踩地做，转小一点",
+   "en": "If your lower back tightens, keep your feet down and twist less."
   }
  ],
  "tags": {
@@ -77,7 +77,7 @@
    "mat"
   ],
   "position": "seated",
-  "difficulty": 1
+  "difficulty": 2
  },
  "unilateral": true,
  "startingSide": "right",
@@ -107,27 +107,23 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 0.5,
+    "seconds": 0.8,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 0.7,
+    "seconds": 0.4,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 0.5,
+    "seconds": 0.8,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 0.3
    }
   ],
   "perSide": "alternate",
   "repUnit": "left+right",
-  "source": "spec-pulse-track r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -139,6 +135,98 @@
     "最终口径：按真实做法定（2026-11-01）"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一侧一下 2.0 s → 2.0 s（转 0.8 / 停 0.4 / 回 0.8，原含 rest 0.3 去掉、停 0.7 → 0.4），一左一右 4 s 计 1 下",
+    "难度 v3 1 / ai-tags 2 → 统一 2",
+    "purpose「让身体转动更有控制」→「让上身转得有劲」；「弓背驼背」→「驼背」；「幅度小一点」→「转小点」",
+    "r3 第二遍（去套话，2026-11-14）：2 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "3 组×每侧10 次，休息 30 秒",
+     "3 组×每侧10 次，休息 30 秒"
+    ],
+    "rep": [
+     "2.0 s/侧（一左一右 4.0 s）",
+     "2.0 s/侧（一左一右 4.0 s）"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 2
+     },
+     2
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：坐姿后仰转体、脚着地、侧腰高亮（b12 第 8 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 4.0,
+  "repUnit": "left+right",
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "胸口跟着转",
+    "en": "Turn your chest",
+    "from": [
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "背挺直，别驼",
+    "en": "Long back",
+    "from": [
+     "cue1",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 8,
+    "role": "form",
+    "zh": "膝盖别动",
+    "en": "Knees stay put",
+    "from": [
+     "cue2"
+    ]
+   },
+   {
+    "afterRep": 9,
+    "key": "p.last_rep"
+   }
+  ],
+  "before": [
+   "p.right_first"
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.30"
+   ],
+   "allDone": [
+    "p.nice"
+   ]
   }
  }
 }

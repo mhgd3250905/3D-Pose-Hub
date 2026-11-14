@@ -1,0 +1,52 @@
+# h-standing-arm-extension-stretch 站姿双臂后抬开肩（Standing Arms-Back Shoulder Stretch）· 动作包核对 r3
+
+- 类型：`rep_hold`；V4 预览：`/workspace/work/v4run/b13.jpg 第 5 行`（本机，不入库）
+- reviewStatus：`ai-reviewed-r2-needs-user-review` → `ai-reviewed-r3-needs-user-review`
+
+## 1. 剂量
+- 改前：2 组×5 次，休息 15 秒
+- 改后：2 组×5 次，休息 15 秒
+
+## 2. 真实节奏（与演示动画时长无关）
+- 一下：8.0 s → 6.0 s
+- 相位：go 1.5s / hold 3.0s / back 1.5s
+
+## 3. 难度
+- 改前 v3 1 / ai-tags 1 → 统一 1
+
+## 4. 指导文字（教练口吻）
+- purpose：拉伸肩膀前面和胸口 → 拉开肩膀前面和胸口
+- 要点 改前：手臂伸直，慢慢往后抬；站直，膝盖微弯，肩胛骨轻轻往后往下收。；上身别往前倾，停一下再慢慢放下。
+- 要点 改后：手臂伸直，慢慢往后抬；站直，膝盖微弯，肩胛骨往后往下夹。；上身别往前倒，停一下再慢慢放下。
+- 常见错误 改前：身体往前倾；腰往前挺
+- 常见错误 改后：上身往前倒；腰往前挺
+- 注意事项 改前：肩膀前面夹着疼时，幅度小一点或换简单版本
+- 注意事项 改后：肩膀前面夹着疼就抬低点，还疼就停
+- 相位口令：往后抬 / 停住呼吸 / 慢慢放下 → 往后抬 / 停住，喘气 / 慢慢放
+
+## 5. voiceGuide（脚本，未合成音频）
+- 一下 6.0 s；前 2 下念相位口令，之后每下报数
+| 第几下后 | 中文 | English | 出处 |
+|---|---|---|---|
+| 2 | 上身别往前倒 | Stay upright | cue3, commonErrors[0] |
+| 4 | 最后一次 |  | p.last_rep |
+- 组后：moreSets → 休息 + 15 秒；allDone → 很好
+
+## 6. 画面对照
+- 一致：站姿两臂往后伸、胸/肩前高亮（b13 第 5 行）
+- 极端错误：无
+
+## 7. 改了什么、为什么
+- 节奏按真实带练：一下 8.0 s → 6.0 s（抬 1.5 / 停 3.0 / 放 1.5），往返拉伸每下停 3 秒
+- 「肩胛骨轻轻往后往下收」→「往后往下夹」；「幅度小一点或换简单版本」→「抬低点」
+- 难度 1/1 不变
+
+## 8. 待开哥定
+- 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 常见错误2：腰往前挺 → 手往后抬时肚子往前挺（Arching your lower back. → Belly pushing forward as your arms go back.）
+- 注意事项1：肩膀前面夹着疼就抬低点，还疼就停 → 肩膀前面扯着疼就两手握松点，抬低点（If the front of your shoulder pinches, don't lift as high. Stop if it still hurts. → If the fronts of your shoulders pull too hard, loosen your grip and lift lower.）

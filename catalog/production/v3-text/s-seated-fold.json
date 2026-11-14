@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "s-seated-fold",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/s-seated-fold-r4.js"
  ],
@@ -10,57 +10,57 @@
   "en": "Seated Forward Fold"
  },
  "purpose": {
-  "zh": "拉伸大腿后侧",
-  "en": "Stretch the backs of your thighs."
+  "zh": "拉开大腿后面",
+  "en": "Stretches the backs of your thighs."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "背挺直，身体慢慢往前折",
-    "en": "Keep your back long and slowly fold forward"
+    "zh": "背挺直，上身慢慢往前折",
+    "en": "Long back, slowly fold forward"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "双腿伸直并拢，脚尖朝上。",
-    "en": "Sit with both legs straight together, toes up."
+    "zh": "两腿伸直并拢，脚尖朝上。",
+    "en": "Legs straight and together, toes up."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "保持不动，慢慢呼吸，每次呼气再放松一点。",
-    "en": "Stay still, breathe slowly, and relax a little deeper each time you breathe out."
+    "zh": "膝盖可以微弯，肚子先往大腿上贴。",
+    "en": "Bend your knees a little and let your belly come down to your thighs first."
    }
   },
   {
    "id": "cue4",
    "primary": false,
    "text": {
-    "zh": "别来回颠，有拉伸感就够，别拉到疼。",
-    "en": "Do not bounce; a clear stretch is enough, never pain."
+    "zh": "呼气时手顺着腿往前滑一点，别往前拽。",
+    "en": "Each breath out, slide your hands a bit further along your legs. Don't pull."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "弓背去够脚",
-   "en": "Rounding your back to reach your feet."
+   "zh": "膝盖死死压直，背弓着去抓脚",
+   "en": "Locking your knees and rounding to grab your feet."
   },
   {
-   "zh": "憋气或来回颠",
-   "en": "Holding your breath or bouncing."
+   "zh": "手抓着脚往前拽",
+   "en": "Grabbing your feet and yanking yourself forward."
   }
  ],
  "cautions": [
   {
-   "zh": "大腿后侧疼或发麻时幅度小一点，还不舒服就停",
-   "en": "If the backs of your thighs hurt or tingle, ease off, and stop if it continues."
+   "zh": "大腿后面疼或发麻就少折点，还不舒服就停",
+   "en": "If the backs of your thighs hurt or tingle, don't fold as far. Stop if it still feels off."
   }
  ],
  "tags": {
@@ -91,12 +91,12 @@
    "en": "Fold forward"
   },
   "peak": {
-   "zh": "保持，慢慢呼气",
-   "en": "Hold and breathe out"
+   "zh": "肚子贴腿",
+   "en": "Belly to thighs"
   },
   "end": {
-   "zh": "呼气再放松",
-   "en": "Relax a bit deeper"
+   "zh": "手往前滑",
+   "en": "Slide forward"
   }
  },
  "training": {
@@ -114,6 +114,103 @@
     "剂量 → 2 组×30 秒，休息 15 秒；口令/要点改为进入-保持-呼气放松，去掉来回/计数描述"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "剂量 2 组×30 秒、休息 15 秒不变",
+    "「大腿后侧」→「大腿后面」；「幅度小一点」→「少折点」",
+    "难度 1/1 不变",
+    "「别来回颠」→「别一下一下往下压」",
+    "r3 第二遍（去套话，2026-11-14）：8 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "2 组×30 秒，休息 15 秒",
+     "2 组×30 秒，休息 15 秒"
+    ],
+    "rep": [
+     "计时",
+     "计时"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：坐地两腿伸直往前折、大腿后淡高亮（batch-23 第 2 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 4,
+    "role": "posture",
+    "zh": "肚子贴大腿，背别弓",
+    "en": "Belly to thighs, back long",
+    "from": [
+     "cue3",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "at": 12,
+    "role": "halfway",
+    "zh": "脚尖朝上",
+    "en": "Toes up",
+    "from": [
+     "cue2"
+    ]
+   },
+   {
+    "at": 20,
+    "role": "form",
+    "zh": "呼气，手往前滑",
+    "en": "Breathe out, slide forward",
+    "from": [
+     "cue4"
+    ]
+   },
+   {
+    "at": 27,
+    "key": "n.3"
+   },
+   {
+    "at": 28,
+    "key": "n.2"
+   },
+   {
+    "at": 29,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.release",
+    "p.rest",
+    "sec.15"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
   }
  }
 }

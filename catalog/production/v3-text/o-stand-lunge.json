@@ -1,70 +1,70 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "o-stand-lunge",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/o-stand-lunge.js"
  ],
  "name": {
-  "zh": "扶椅弓步拉伸髋前侧",
+  "zh": "扶椅弓步拉胯前",
   "en": "Chair-Supported Standing Hip Flexor Stretch"
  },
  "purpose": {
-  "zh": "拉伸髋部前侧，缓解久坐发紧",
-  "en": "Stretch the front of your hip to ease tightness from sitting."
+  "zh": "拉开胯前面，久坐发紧时松一松",
+  "en": "Stretches the front of your hip to ease tightness from sitting."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "收紧臀部，髋慢慢往前推",
-    "en": "Squeeze your glutes and ease your hips forward"
+    "zh": "夹紧屁股，胯慢慢往前推",
+    "en": "Squeeze your butt and ease your hips forward"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "前后分腿站，后脚踮起，一只手扶椅背。",
-    "en": "Stand in a split stance, back heel up, one hand on the chair."
+    "zh": "前后分腿站，后脚踮起，一手扶椅背。",
+    "en": "Split stance, back heel up, one hand on the chair."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "保持不动，慢慢呼吸，每次呼气再放松一点。",
-    "en": "Stay still, breathe slowly, and relax a little deeper each time you breathe out."
+    "zh": "后脚跟抬起，后腿伸长，胯前面一路被拉开。",
+    "en": "Back heel up, back leg long, feel the front of that hip open."
    }
   },
   {
    "id": "cue4",
    "primary": false,
    "text": {
-    "zh": "别来回颠，有拉伸感就够，别拉到疼。",
-    "en": "Do not bounce; a clear stretch is enough, never pain."
+    "zh": "呼气时屁股再夹紧一点，胯往前送一点点就够。",
+    "en": "Each breath out, squeeze your butt a little harder and ease your hips forward."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "腰往前拱",
-   "en": "Arching the lower back."
+   "zh": "胯没往前，靠挺肚子往后仰",
+   "en": "Pushing your belly out and leaning back instead of moving your hips."
   },
   {
    "zh": "上身往前倒",
-   "en": "Leaning the trunk forward."
+   "en": "Leaning your upper body forward."
   },
   {
-   "zh": "憋气或来回颠",
-   "en": "Holding your breath or bouncing."
+   "zh": "前膝冲过脚尖太多",
+   "en": "Front knee shooting way past your toes."
   }
  ],
  "cautions": [
   {
-   "zh": "腰疼时幅度小一点，还疼就停",
-   "en": "If your lower back hurts, move less far, and stop if it still hurts."
+   "zh": "腰疼就推少点，还疼就停",
+   "en": "If your lower back hurts, don't push as far. Stop if it still hurts."
   }
  ],
  "tags": {
@@ -92,16 +92,16 @@
  },
  "phases": {
   "start": {
-   "zh": "髋往前推",
+   "zh": "胯往前推",
    "en": "Hips forward"
   },
   "peak": {
-   "zh": "保持，慢慢呼气",
-   "en": "Hold and breathe out"
+   "zh": "屁股夹住",
+   "en": "Squeeze"
   },
   "end": {
-   "zh": "呼气再放松",
-   "en": "Relax a bit deeper"
+   "zh": "胯往前送",
+   "en": "Ease hips forward"
   }
  },
  "training": {
@@ -123,6 +123,113 @@
     "最终口径：按真实做法定（2026-11-01）"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "剂量 每侧 2 组×30 秒、休息 15 秒不变；原地换边，不加换边准备",
+    "名称「扶椅弓步拉伸髋前侧」→「扶椅弓步拉胯前」；「髋部前侧」→「胯前面」，「收紧臀部」→「夹紧屁股」",
+    "「别来回颠」→「别一下一下往下压」",
+    "难度 1/1 不变",
+    "r3 第二遍（去套话，2026-11-14）：8 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "2 组×每侧30 秒，休息 15 秒",
+     "2 组×每侧30 秒，休息 15 秒"
+    ],
+    "rep": [
+     "计时",
+     "计时"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：扶椅前后分腿、胯前高亮（b20 第 1 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 4,
+    "role": "posture",
+    "zh": "夹紧屁股",
+    "en": "Squeeze your butt",
+    "from": [
+     "cue1"
+    ]
+   },
+   {
+    "at": 12,
+    "role": "halfway",
+    "zh": "肚子别往前挺",
+    "en": "Don't push your belly out",
+    "from": [
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "at": 20,
+    "role": "form",
+    "zh": "呼气，屁股再夹紧",
+    "en": "Breathe out, squeeze more",
+    "from": [
+     "cue4"
+    ]
+   },
+   {
+    "at": 27,
+    "key": "n.3"
+   },
+   {
+    "at": 28,
+    "key": "n.2"
+   },
+   {
+    "at": 29,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSetsSameSide": [
+    "p.rest",
+    "sec.15"
+   ],
+   "sideDone": [
+    "p.release",
+    "p.switch_right"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
+  },
+  "sides": {
+   "order": [
+    "left",
+    "right"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边"
   }
  }
 }

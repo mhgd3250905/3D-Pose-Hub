@@ -1,0 +1,54 @@
+# h-russian-twist 俄罗斯转体（Russian Twist with Feet Down）· 动作包核对 r3
+
+- 类型：`rep_alternate`，单侧 alternate，先做 right；V4 预览：`/workspace/work/v4run/b12.jpg 第 8 行`（本机，不入库）
+- reviewStatus：`ai-reviewed-r2-needs-user-review` → `ai-reviewed-r3-needs-user-review`
+
+## 1. 剂量
+- 改前：3 组×每侧10 次，休息 30 秒
+- 改后：3 组×每侧10 次，休息 30 秒
+
+## 2. 真实节奏（与演示动画时长无关）
+- 一下：2.0 s/侧（一左一右 4.0 s） → 2.0 s/侧（一左一右 4.0 s）
+- 相位：go 0.8s / hold 0.4s / back 0.8s
+
+## 3. 难度
+- 改前 v3 1 / ai-tags 2 → 统一 2（上身后仰撑住要肚子有点劲；ai-tags 原 2。）
+
+## 4. 指导文字（教练口吻）
+- purpose：练侧腹，让身体转动更有控制 → 练侧腰，让上身转得有劲
+- 要点 改前：上身后仰背挺直，胸口慢慢转向一边；膝盖和屁股朝前不动，脚跟踩地。；回到中间，再转向另一边。；两边各做一次算 1 次。
+- 要点 改后：上身往后靠、背挺直，胸口慢慢转向一边；膝盖和屁股朝前不动，脚后跟踩地。；回到中间，再转另一边。；两边各转一次算 1 下。
+- 常见错误 改前：只甩手臂，胸口不转；弓背驼背
+- 常见错误 改后：只甩手，胸口没转；驼背
+- 注意事项 改前：腰不舒服时幅度小一点，还疼就停
+- 注意事项 改后：腰不舒服就转小点，还疼就停
+- 相位口令：转身 / 停 / 回正 → 转身 / 停 / 回正
+
+## 5. voiceGuide（脚本，未合成音频）
+- 一下 4.0 s；前 2 下念相位口令，之后每下报数
+| 第几下后 | 中文 | English | 出处 |
+|---|---|---|---|
+| 2 | 胸口跟着转 | Turn your chest | commonErrors[0] |
+| 5 | 背挺直，别驼 | Long back | cue1, commonErrors[1] |
+| 8 | 膝盖别动 | Knees stay put | cue2 |
+| 9 | 最后一次 |  | p.last_rep |
+- 组后：moreSets → 休息 + 30 秒；allDone → 很好
+
+## 6. 画面对照
+- 一致：坐姿后仰转体、脚着地、侧腰高亮（b12 第 8 行）
+- 极端错误：无
+
+## 7. 改了什么、为什么
+- 节奏按真实带练：一侧一下 2.0 s → 2.0 s（转 0.8 / 停 0.4 / 回 0.8，原含 rest 0.3 去掉、停 0.7 → 0.4），一左一右 4 s 计 1 下
+- 难度 v3 1 / ai-tags 2 → 统一 2
+- purpose「让身体转动更有控制」→「让上身转得有劲」；「弓背驼背」→「驼背」；「幅度小一点」→「转小点」
+
+## 8. 待开哥定
+- 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点4：两边各转一次算 1 下。 → 转到左边、再转到右边，合起来记 1 下。（One turn each side counts as one. → Turning to the left and then to the right is one.）
+- 注意事项1：腰不舒服就转小点，还疼就停 → 腰发紧就脚踩地做，转小一点（If your lower back feels off, don't turn as far. Stop if it still hurts. → If your lower back tightens, keep your feet down and twist less.）

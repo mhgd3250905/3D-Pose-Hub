@@ -1,0 +1,55 @@
+# erectors-B 瑞士球背伸（Swiss Ball Back Extension）· 动作包核对 r3
+
+- 类型：`rep_hold`；V4 预览：`/workspace/work/v4run/batch-02.jpg 第 4 行`（本机，不入库）
+- reviewStatus：`ai-reviewed-r2-needs-user-review` → `ai-reviewed-r3-needs-user-review`
+
+## 1. 剂量
+- 改前：3 组×12 次，休息 45 秒
+- 改后：3 组×12 次，休息 45 秒
+
+## 2. 真实节奏（与演示动画时长无关）
+- 一下：4.0 s → 3.5 s
+- 相位：go 1.0s / hold 0.8s / back 1.5s / rest 0.2s
+
+## 3. 难度
+- 改前 v3 1 / ai-tags 2 → 统一 1（双脚抵墙、幅度只到直线，入门可做；ai-tags 原 2。）
+
+## 4. 指导文字（教练口吻）
+- purpose：练下背和臀部，让背更有耐力 → 练下背和屁股，让腰更扛得住久坐久站
+- 要点 改前：髋压在球上，抬到身体成一条直线就停；双脚抵住墙根，腿伸直。；顶上停一秒，再慢慢放下。
+- 要点 改后：胯压在球上，抬到身体一条直线就停；两只脚抵住墙根，腿伸直。；顶上停一秒，再慢慢放下来。
+- 常见错误 改前：甩起上身；抬得太高，腰往后折
+- 常见错误 改后：猛地把上身甩起来；抬过头，腰往后折
+- 注意事项 改前：腰不舒服时抬低一点，还疼就停
+- 注意事项 改后：腰不舒服就抬低点，还疼就停
+- 相位口令：抬起上身 / 停一下 / 慢慢放下 → 抬起来 / 停一下 / 慢慢放
+
+## 5. voiceGuide（脚本，未合成音频）
+- 一下 3.5 s；前 2 下念相位口令，之后每下报数
+| 第几下后 | 中文 | English | 出处 |
+|---|---|---|---|
+| 2 | 到一条直线就停 | Stop when you're straight | cue1, commonErrors[1] |
+| 5 | 别甩，慢慢起 | Smooth, no jerking | commonErrors[0] |
+| 8 | 慢慢放下来 | Lower slowly | cue3 |
+| 11 | 最后一次 |  | p.last_rep |
+- 组后：moreSets → 休息 + 45 秒；allDone → 很好
+
+## 6. 画面对照
+- 一致：瑜伽球背伸、双脚抵墙、腰背高亮（batch-02 第 4 行）
+- 极端错误：无
+
+## 7. 改了什么、为什么
+- 节奏按真实带练：一下 4.0 s → 3.5 s（起 1.0 / 停 0.8 / 慢放 1.5）
+- 难度 v3 1 / ai-tags 2 → 统一 1
+- 文字改教练口吻
+
+## 8. 待开哥定
+- 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点3：顶上停一秒，再慢慢放下来。 → 抬到身体一条线就停，别往后翘，再贴着球放下。（Pause a second at the top, then lower slowly. → Stop at one straight line, no higher, then fold back over the ball.）
+- 注意事项1：腰不舒服就抬低点，还疼就停 → 腰发酸发紧就抬到一半，还难受就停（If your lower back feels off, don't lift as high. Stop if it still hurts. → If your lower back tightens up, only come halfway. Stop if it stays sore.）
+- 语音 reminders[2]：慢慢放下来 → 贴着球趴下去（Lower slowly → Fold back over the ball）

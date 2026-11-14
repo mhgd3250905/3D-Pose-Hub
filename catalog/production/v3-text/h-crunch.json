@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-crunch",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-crunch-r2.js",
   "drill-anim/specs/h-crunch.js"
@@ -11,49 +11,49 @@
   "en": "Crunch"
  },
  "purpose": {
-  "zh": "练腹部",
-  "en": "Build your abs."
+  "zh": "练肚子",
+  "en": "Builds your abs."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "把上身卷起来，肩胛骨离开垫子",
-    "en": "Curl up until your shoulder blades leave the mat"
+    "zh": "把上身卷起来，肩胛骨离开垫子就够",
+    "en": "Curl up just until your shoulder blades leave the mat"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "下背贴着垫子，双手沿大腿伸向膝盖。",
-    "en": "Keep your lower back down and reach your hands toward your knees."
+    "zh": "腰贴住垫子，两手顺着大腿往膝盖够。",
+    "en": "Lower back stays down. Slide your hands up your thighs toward your knees."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "停一下，再一节一节慢慢放下。",
-    "en": "Pause, then roll down slowly."
+    "zh": "停一下，再一节一节慢慢躺回去。",
+    "en": "Pause, then roll back down slowly."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "用手或脖子使劲",
-   "en": "Pulling with the neck or arms."
+   "zh": "用手或脖子把头往上拽",
+   "en": "Pulling yourself up with your neck or arms."
   },
   {
-   "zh": "下背离开垫子",
-   "en": "Lifting the lower back off the mat."
+   "zh": "下巴往胸口戳，脖子在使劲",
+   "en": "Jamming your chin down and pulling with your neck."
   }
  ],
  "cautions": [
   {
-   "zh": "脖子不舒服时卷低一点，还疼就停",
-   "en": "If your neck feels uncomfortable, curl up less, and stop if it still hurts."
+   "zh": "脖子不舒服就卷低点，下巴和胸口留一拳；还疼就停",
+   "en": "If your neck feels off, don't curl as high and keep a fist of space under your chin. Stop if it still hurts."
   }
  ],
  "tags": {
@@ -79,7 +79,7 @@
  },
  "phases": {
   "start": {
-   "zh": "卷起",
+   "zh": "卷起来",
    "en": "Curl up"
   },
   "peak": {
@@ -87,7 +87,7 @@
    "en": "Pause"
   },
   "end": {
-   "zh": "慢放下",
+   "zh": "慢慢躺回",
    "en": "Roll down"
   }
  },
@@ -97,25 +97,21 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 0.7,
+    "seconds": 1.0,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 1.1,
+    "seconds": 0.5,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 0.8,
+    "seconds": 1.5,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 1.4
    }
   ],
-  "source": "spec-pulse-track r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -126,6 +122,105 @@
     "节奏核对：动画顶点真正静止约 0.67 秒（<0.8），rep_hold 改为 rep_updown"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 4.0 s → 3.0 s（卷起 1.0 / 停 0.5 / 躺回 1.5）",
+    "剂量 3 组×15 次、休息 30 秒不变（n.11–n.15 共用词 11-14 已补）",
+    "文字改教练口吻（「下巴和胸口留一拳」）",
+    "难度 1/1 不变",
+    "r3 第二遍（去套话，2026-11-14）：1 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "3 组×15 次，休息 30 秒",
+     "3 组×15 次，休息 30 秒"
+    ],
+    "rep": [
+     "4.0 s",
+     "3.0 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：仰卧屈膝卷腹、肚子淡高亮（b7 第 6 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 3.0,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "腰贴住垫子",
+    "en": "Lower back down",
+    "from": [
+     "cue2",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "form",
+    "zh": "别拽脖子",
+    "en": "Don't pull your neck",
+    "from": [
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 8,
+    "role": "halfway",
+    "zh": "慢慢躺回去",
+    "en": "Roll down slowly",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "afterRep": 11,
+    "role": "form",
+    "zh": "腰贴住垫子",
+    "en": "Lower back down",
+    "from": [
+     "cue2",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 14,
+    "key": "p.last_rep"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.30"
+   ],
+   "allDone": [
+    "p.nice"
+   ]
   }
  }
 }

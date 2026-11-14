@@ -5,7 +5,7 @@
   "status": "ai-draft",
   "source": {
     "text": "catalog/production/v3-text/w-clamshell.json",
-    "textSha256Lf": "80747e9ec52ceeb87ef47de63b1d13aefc8193268fa5a52be8dd674dc541bf5f",
+    "textSha256Lf": "90638b3d0d3325249cd8d4c2d228cc5d8ba13569b6a495649157fa413d5e3242",
     "spec": "drill-anim/specs/w-clamshell-r3.js",
     "catalogV1": "catalog/catalog.json"
   },
@@ -140,6 +140,12 @@
         ]
       },
       "reason": "v3 粗粒度 id 按实际做法拆到 taxonomy id（core→abs/obliques，glutes→glute-max 或 hip-abductors，upper-back→scapular，lower-back→erectors），只稳定不推动的归稳定肌。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 1,
+      "reason": "r3 动作包核对（开哥 2026-11-13）：逐个重定，与 v3 tags.difficulty 同值。"
     }
   ],
   "reviewNotes": []

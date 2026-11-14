@@ -5,7 +5,7 @@
   "status": "ai-draft",
   "source": {
     "text": "catalog/production/v3-text/o-seated-twist.json",
-    "textSha256Lf": "29fe2346bd0b608b0a7e63673b31b8d8a46fdf7a8f8ff504c0ac5885dc84a299",
+    "textSha256Lf": "75c0fbc7aa791be612afe8ebc4b485ec7fe709f49233569ca0d75863d1c6ca97",
     "spec": "drill-anim/specs/o-seated-twist.js",
     "catalogV1": "catalog/catalog.json"
   },
@@ -122,6 +122,12 @@
         ]
       },
       "reason": "拉伸类：v3 把被拉肌写在 activeMuscles，本 schema 放 stretchedMuscles。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 1,
+      "reason": "r3 动作包核对（开哥 2026-11-13）：逐个重定，与 v3 tags.difficulty 同值。"
     }
   ],
   "reviewNotes": [

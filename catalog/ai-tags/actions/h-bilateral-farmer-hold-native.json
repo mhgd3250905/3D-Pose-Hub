@@ -5,7 +5,7 @@
   "status": "ai-draft",
   "source": {
     "text": "catalog/production/v3-text/h-bilateral-farmer-hold-native.json",
-    "textSha256Lf": "932b685a45fbffe45b0c3694ca25e0507cd7b054139837d4ab4dbe0c7abdb86d",
+    "textSha256Lf": "ebbfbb25fbd749bff145720974d2391db094b53a701ce7625bafe8969a8e6b74",
     "spec": "drill-anim/specs/h-bilateral-farmer-hold-native-r2.js",
     "catalogV1": null
   },
@@ -142,6 +142,12 @@
         ]
       },
       "reason": "v3 粗粒度肌群（core）按动作实际做法拆到细分 id。握力为主动，核心在保持中起稳定作用，改为 stabilizers。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 1,
+      "reason": "r3 动作包核对（开哥 2026-11-13）：逐个重定，与 v3 tags.difficulty 同值。"
     }
   ],
   "reviewNotes": []

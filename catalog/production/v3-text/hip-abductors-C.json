@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "hip-abductors-C",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/data/drills.json",
   "drill-anim/specs/hip-abductors-C-r3.js"
@@ -11,49 +11,49 @@
   "en": "Seated Machine Leg Opener"
  },
  "purpose": {
-  "zh": "用器械稳定加重量，练臀部侧面开腿的力量和耐力",
-  "en": "Use the machine to load the sides of your hips for leg-opening strength and endurance."
+  "zh": "用器械加重量，练屁股侧面往外开腿的劲和耐力",
+  "en": "Uses the machine to load the sides of your butt for leg-opening strength and endurance."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "靠稳椅背，膝盖外侧把垫子推开",
-    "en": "Sit back against the pad and push the pads out with your outer knees"
+    "zh": "靠稳椅背，膝盖外面把垫子推开",
+    "en": "Sit back against the pad and push the pads out with the outsides of your knees"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "推到最开停1秒，再慢慢收回。",
-    "en": "Pause for one second at the widest point, then return slowly."
+    "zh": "推到最开停 1 秒，再慢慢收回来。",
+    "en": "Pause 1 second at the widest, then return slowly."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "双手扶住把手，身体不前后晃。",
-    "en": "Hold the handles and keep your body from rocking."
+    "zh": "两手扶住把手，身子别前后晃。",
+    "en": "Hold the handles. Body stays still."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "身体前后晃借力",
-   "en": "Rocking the body to help."
+   "zh": "上身前后摇，用身子把垫子撞开",
+   "en": "Rocking your upper body to bump the pads open."
   },
   {
    "zh": "收回时让重量砸回去",
-   "en": "Letting the weight slam back on the return."
+   "en": "Letting the weight slam back."
   }
  ],
  "cautions": [
   {
-   "zh": "髋部疼时减轻重量或推小一点，还疼就停",
-   "en": "If your hips hurt, use less weight or move less far, and stop if it still hurts."
+   "zh": "胯疼就减点重量或推小点，还疼就停",
+   "en": "If your hips hurt, use less weight or don't push as wide. Stop if it still hurts."
   }
  ],
  "tags": {
@@ -96,25 +96,21 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 0.7,
+    "seconds": 1.0,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 1.3,
+    "seconds": 1.0,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 0.7,
+    "seconds": 2.0,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 1.3
    }
   ],
-  "source": "spec-pulse-track r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -126,6 +122,97 @@
     "最终口径：按真实做法定（2026-11-01）"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 4.0 s → 4.0 s（推 1.0 / 停 1.0 / 收 2.0），收回慢",
+    "「用器械稳定加重量」→「用器械加重量」；「臀部」→「屁股」，「髋部」→「胯」",
+    "难度 1/1 不变",
+    "r3 第二遍（去套话，2026-11-14）：1 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [
+    "预览帧高亮很淡，请看视频确认屁股侧面高亮"
+   ],
+   "audit": {
+    "dose": [
+     "3 组×12 次，休息 60 秒",
+     "3 组×12 次，休息 60 秒"
+    ],
+    "rep": [
+     "4.0 s",
+     "4.0 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "动作一致：坐姿器械两腿往外推；高亮很淡（b16 第 9 行，非极端）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 4.0,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "身子别晃",
+    "en": "Body still",
+    "from": [
+     "cue3",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "慢慢收回",
+    "en": "Return slowly",
+    "from": [
+     "cue2",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 8,
+    "role": "form",
+    "zh": "最开停 1 秒",
+    "en": "Pause at the widest",
+    "from": [
+     "cue2"
+    ]
+   },
+   {
+    "afterRep": 11,
+    "key": "p.last_rep"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.60"
+   ],
+   "allDone": [
+    "p.nice"
+   ]
   }
  }
 }

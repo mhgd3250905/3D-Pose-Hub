@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "abs-A",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/data/drills.json",
   "drill-anim/specs/abs-A-r2.js",
@@ -12,49 +12,53 @@
   "en": "Hollow Body Hold"
  },
  "purpose": {
-  "zh": "练腹部，让身体更稳",
-  "en": "Build your abs and a steadier trunk."
+  "zh": "练肚子，让整个身体像一块板一样硬",
+  "en": "Builds your abs so your whole body stays stiff like one board."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "腰压住地面，上背和双腿抬离地面",
-    "en": "Press your lower back down and lift your upper back and legs"
+    "zh": "腰死死贴住地，肩和腿一起离地",
+    "en": "Glue your lower back down, lift shoulders and legs"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "手臂贴着耳朵伸直，双腿并拢伸直。",
-    "en": "Keep your arms straight by your ears and your legs straight together."
+    "zh": "手臂贴着耳朵往远伸，两腿并拢伸直。",
+    "en": "Reach your arms long by your ears, legs straight and together."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "停住不动，均匀呼吸，别憋气。",
-    "en": "Stay still and keep breathing evenly."
+    "zh": "肚子绷住，像有人要往上放一本书，别憋气。",
+    "en": "Brace like someone's about to set a book on your belly, and keep breathing."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "腰拱起离开地面",
-   "en": "Letting the lower back arch off the floor."
+   "zh": "腰拱起来，手能从腰底下塞进去",
+   "en": "Lower back arching up so a hand could slide under it."
   },
   {
-   "zh": "憋气",
-   "en": "Holding your breath."
+   "zh": "憋着气硬撑",
+   "en": "Holding your breath to tough it out."
   }
  ],
  "cautions": [
   {
-   "zh": "腰离地或发疼时，把腿抬高一点",
-   "en": "If your lower back lifts or hurts, raise your legs a little higher."
+   "zh": "腰贴不住或腰疼，就把腿抬高点，或者弯着膝盖做",
+   "en": "If your lower back lifts or hurts, raise your legs higher or bend your knees."
+  },
+  {
+   "zh": "脖子酸就收一点下巴，别往前探头",
+   "en": "If your neck gets sore, tuck your chin a little and don't poke your head forward."
   }
  ],
  "tags": {
@@ -69,7 +73,7 @@
    "mat"
   ],
   "position": "supine",
-  "difficulty": 1
+  "difficulty": 2
  },
  "unilateral": false,
  "defaultDose": {
@@ -84,11 +88,11 @@
    "en": "Curl up"
   },
   "peak": {
-   "zh": "保持住",
-   "en": "Hold"
+   "zh": "撑住",
+   "en": "Hold it"
   },
   "end": {
-   "zh": "保持呼吸",
+   "zh": "别憋气",
    "en": "Keep breathing"
   }
  },
@@ -107,6 +111,96 @@
     "最终口径：按真实做法定（2026-11-01）"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "剂量 3 组×20 秒、休息 45 秒不变（休息 45 秒现可用新增共用词 sec.45）",
+    "难度 v3 1 / ai-tags 3 → 统一 2（开哥定）",
+    "退阶写进注意事项：「弯着膝盖做」",
+    "文字改教练口吻：「均匀呼吸」→「别憋气，接着喘」，加「像要往肚子上放一本书」的画面"
+   ],
+   "flags": [
+    "动画为演示做了起落，App 按静止计时（r2 已定），静帧看不出腰是否贴地，建议看视频确认"
+   ],
+   "audit": {
+    "dose": [
+     "3 组×20 秒，休息 45 秒",
+     "3 组×20 秒，休息 45 秒"
+    ],
+    "rep": [
+     "计时",
+     "计时"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 3
+     },
+     2
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：仰卧、手臂过头、双腿并拢伸直抬起、腹部高亮、垫子",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 4,
+    "role": "posture",
+    "zh": "腰贴住地，别拱",
+    "en": "Lower back stays down",
+    "from": [
+     "cue1",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "at": 11,
+    "role": "halfway",
+    "zh": "别憋气，接着喘",
+    "en": "Keep breathing",
+    "from": [
+     "cue3",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "at": 17,
+    "key": "n.3"
+   },
+   {
+    "at": 18,
+    "key": "n.2"
+   },
+   {
+    "at": 19,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.release",
+    "p.rest",
+    "sec.45"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
   }
  }
 }

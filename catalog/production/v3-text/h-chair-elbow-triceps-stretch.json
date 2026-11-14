@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-chair-elbow-triceps-stretch",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-chair-elbow-triceps-stretch-r4.js"
  ],
@@ -10,40 +10,40 @@
   "en": "Chair Bent-Elbow Triceps Stretch"
  },
  "purpose": {
-  "zh": "拉伸上臂后侧和腋下",
-  "en": "Stretch the backs of your upper arms and your armpits."
+  "zh": "拉开大臂后面和腋下",
+  "en": "Stretches the backs of your upper arms and your armpits."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "手肘搭稳椅背，臀部往后让胸口下沉",
-    "en": "Rest your elbows on the chair, push your hips back, and let your chest sink"
+    "zh": "手肘搭稳椅背，屁股往后推，胸口往下沉",
+    "en": "Elbows on the chair, push your hips back, let your chest sink"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "双肘弯着，手放在后颈附近，别碰头。",
-    "en": "Keep your elbows bent with your hands near the back of your neck, not touching your head."
+    "zh": "两肘弯着，手放在后脖子附近，别碰头。",
+    "en": "Elbows bent, hands near the back of your neck, not touching your head."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "停住不动，慢慢呼吸。",
-    "en": "Stay still and breathe slowly."
+    "zh": "手肘搭在椅背上别挪，让胸口自己往下沉。",
+    "en": "Keep your elbows on the chair back and let your chest sink."
    }
   },
   {
    "id": "cue4",
    "primary": false,
    "text": {
-    "zh": "每次呼气再放松一点，别来回颠。",
-    "en": "Each time you breathe out, relax a little deeper. No bouncing."
+    "zh": "呼气时手往后背再滑一点。",
+    "en": "Each breath out, slide your hands a little further down your back."
    }
   }
  ],
@@ -57,18 +57,18 @@
    "en": "Holding your breath."
   },
   {
-   "zh": "来回颠着往下压",
-   "en": "Bouncing to go deeper."
+   "zh": "手肘从椅背上滑下去",
+   "en": "Elbows sliding off the chair back."
   }
  ],
  "cautions": [
   {
-   "zh": "肩膀疼时下沉少一点",
+   "zh": "肩膀疼就沉少点",
    "en": "If your shoulders hurt, sink less."
   },
   {
-   "zh": "用结实、不带轮子的椅子",
-   "en": "Use a sturdy chair without wheels."
+   "zh": "椅子靠墙放，手肘压上去不会滑走",
+   "en": "Put the chair against a wall so it won't slide when you lean."
   }
  ],
  "tags": {
@@ -95,16 +95,16 @@
  },
  "phases": {
   "start": {
-   "zh": "慢慢沉下去",
-   "en": "Sink down"
+   "zh": "屁股往后推",
+   "en": "Hips back"
   },
   "peak": {
-   "zh": "保持，慢慢呼气",
-   "en": "Hold and breathe out"
+   "zh": "胸口沉住",
+   "en": "Chest heavy"
   },
   "end": {
-   "zh": "呼气再沉一点",
-   "en": "Sink a bit deeper"
+   "zh": "手往下滑",
+   "en": "Hands lower"
   }
  },
  "training": {
@@ -123,6 +123,104 @@
     "最终口径：按真实做法定（2026-11-01）"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "剂量 2 组×30 秒、休息 15 秒不变",
+    "「别来回颠」→「别一下一下往下压」，「慢慢呼吸」→「慢慢喘气」",
+    "难度 1/1 不变",
+    "r3 第二遍（去套话，2026-11-14）：8 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [
+    "高亮落在背阔和大腿后侧，没有大臂后面；名称是三头拉伸，是否补大臂后面高亮（只报告）"
+   ],
+   "audit": {
+    "dose": [
+     "2 组×30 秒，休息 15 秒",
+     "2 组×30 秒，休息 15 秒"
+    ],
+    "rep": [
+     "计时",
+     "计时"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "动作一致：双肘搭椅背俯身下沉；高亮在背阔/侧背和大腿后侧，名称写大臂后面（拉伸本身也拉腋下，非极端）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 4,
+    "role": "posture",
+    "zh": "胸口往下沉，屁股往后",
+    "en": "Chest down, hips back",
+    "from": [
+     "cue1"
+    ]
+   },
+   {
+    "at": 12,
+    "role": "halfway",
+    "zh": "手别压脖子",
+    "en": "Hands off your neck",
+    "from": [
+     "cue2",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "at": 20,
+    "role": "form",
+    "zh": "呼气，手再往下滑",
+    "en": "Breathe out, hands lower",
+    "from": [
+     "cue4"
+    ]
+   },
+   {
+    "at": 27,
+    "key": "n.3"
+   },
+   {
+    "at": 28,
+    "key": "n.2"
+   },
+   {
+    "at": 29,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.release",
+    "p.rest",
+    "sec.15"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
   }
  }
 }

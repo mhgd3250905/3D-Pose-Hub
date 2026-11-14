@@ -1,0 +1,55 @@
+# h-db-lateral 哑铃侧平举（Dumbbell Lateral Raise）· 动作包核对 r3
+
+- 类型：`rep_updown`；V4 预览：`/workspace/work/v4run/b8.jpg 第 4 行`（本机，不入库）
+- reviewStatus：`ai-reviewed-r2-needs-user-review` → `ai-reviewed-r3-needs-user-review`
+
+## 1. 剂量
+- 改前：3 组×12 次，休息 45 秒
+- 改后：3 组×12 次，休息 45 秒
+
+## 2. 真实节奏（与演示动画时长无关）
+- 一下：4.0 s → 3.0 s
+- 相位：go 1.0s / hold 0.5s / back 1.5s
+
+## 3. 难度
+- 改前 v3 1 / ai-tags 1 → 统一 1
+
+## 4. 指导文字（教练口吻）
+- purpose：练肩膀两侧 → 练肩膀两边
+- 要点 改前：手肘微弯别动，双臂往两边抬到肩高；肩膀往下放，别耸肩。；慢慢放下，身体别晃。
+- 要点 改后：手肘微弯别动，两臂往两边抬到肩膀高；肩膀往下放，离耳朵远点。；慢慢放下来，身子别晃。
+- 常见错误 改前：耸肩；身体晃动把哑铃甩起来
+- 常见错误 改后：耸肩；身子晃着把哑铃甩起来
+- 注意事项 改前：从轻重量开始，疼就停；肩膀前面夹着疼时抬低一点
+- 注意事项 改后：先用轻哑铃，哪儿疼就停；肩膀前面夹着疼就抬低点，还疼就停
+- 相位口令：侧抬 / 停一下 / 慢放下 → 往两边抬 / 停一下 / 慢慢放
+
+## 5. voiceGuide（脚本，未合成音频）
+- 一下 3.0 s；前 2 下念相位口令，之后每下报数
+| 第几下后 | 中文 | English | 出处 |
+|---|---|---|---|
+| 2 | 肩膀别耸 | Shoulders down | cue2, commonErrors[0] |
+| 5 | 别甩，身子别晃 | No swinging | cue3, commonErrors[1] |
+| 8 | 抬到肩膀高就停 | Stop at shoulder height | cue1 |
+| 11 | 最后一次 |  | p.last_rep |
+- 组后：moreSets → 休息 + 45 秒；allDone → 很好
+
+## 6. 画面对照
+- 一致：站姿侧平举、肩膀中间高亮（b8 第 4 行）
+- 极端错误：无
+
+## 7. 改了什么、为什么
+- 节奏按真实带练：一下 4.0 s → 3.0 s（抬 1.0 / 停 0.5 / 放 1.5）
+- 文字改教练口吻（「离耳朵远点」）
+- 难度 1/1 不变
+
+## 8. 待开哥定
+- 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点2：肩膀往下放，离耳朵远点。 → 像往两边倒水，小指那侧稍微高一点。（Shoulders down, away from your ears. → Lead with your elbows, like pouring water out to the sides.）
+- 注意事项1：先用轻哑铃，哪儿疼就停 → 先拿轻的，侧平举很轻也够累（Start with light dumbbells. Stop if anything hurts. → Go light. Side raises burn even with small weights.）
+- 注意事项2：肩膀前面夹着疼就抬低点，还疼就停 → 肩膀夹着疼就只抬到胸口高（If the front of your shoulder pinches, don't go as high. Stop if it still hurts. → If your shoulders pinch, only raise to chest height.）

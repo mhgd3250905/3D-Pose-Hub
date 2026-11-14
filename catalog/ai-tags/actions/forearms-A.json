@@ -5,7 +5,7 @@
   "status": "ai-draft",
   "source": {
     "text": "catalog/production/v3-text/forearms-A.json",
-    "textSha256Lf": "01c8f571ed11e71bbf4d8d349e3539bdfe4fd03fec1a586f7335aab0091e209a",
+    "textSha256Lf": "83a0e83759f7b87e8fae275acb29a6c65eb23b690b4c06631d559f8039e520e7",
     "spec": "drill-anim/specs/forearms-A-r2.js",
     "catalogV1": "catalog/catalog.json"
   },
@@ -145,6 +145,12 @@
         ]
       },
       "reason": "拉伸/活动类：v3 把被拉肌写在 activeMuscles，这里移到 stretchedMuscles，无主动发力肌。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 1,
+      "reason": "r3 动作包核对（开哥 2026-11-13）：逐个重定，与 v3 tags.difficulty 同值。"
     }
   ],
   "reviewNotes": [

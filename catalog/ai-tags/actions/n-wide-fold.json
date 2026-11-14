@@ -5,7 +5,7 @@
   "status": "ai-draft",
   "source": {
     "text": "catalog/production/v3-text/n-wide-fold.json",
-    "textSha256Lf": "aedfec373a3b3883820e787ec2d905d11f83be78505478c1778c1a3d16a206a1",
+    "textSha256Lf": "2c8cab65b54b1d60a87068aba1bc14432d7695c19ffd8028dab52148d4c742df",
     "spec": "drill-anim/specs/n-wide-fold.js",
     "catalogV1": "catalog/catalog.json"
   },
@@ -127,6 +127,12 @@
         ]
       },
       "reason": "拉伸类：v3 把被拉肌写在 activeMuscles，本 schema 放 stretchedMuscles。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 1,
+      "reason": "r3 动作包核对（开哥 2026-11-13）：逐个重定，与 v3 tags.difficulty 同值。"
     }
   ],
   "reviewNotes": []

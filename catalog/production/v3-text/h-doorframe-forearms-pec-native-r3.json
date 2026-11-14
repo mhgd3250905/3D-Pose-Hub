@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-doorframe-forearms-pec-native-r3",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-doorframe-forearms-pec-native-r3.js"
  ],
@@ -10,15 +10,15 @@
   "en": "Doorframe Forearm Chest Stretch"
  },
  "purpose": {
-  "zh": "拉伸胸口和肩膀前侧",
-  "en": "Stretch your chest and the fronts of your shoulders."
+  "zh": "拉开胸口和肩膀前面",
+  "en": "Stretches your chest and the fronts of your shoulders."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "双前臂贴住门框，身体慢慢往前穿过门口",
+    "zh": "两条小臂贴住门框，身子慢慢往门里探",
     "en": "Forearms on the doorframe, slowly lean through the doorway"
    }
   },
@@ -26,30 +26,30 @@
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "前后脚站稳，脚不动。",
-    "en": "Keep your feet planted in a split stance."
+    "zh": "前后脚站稳，脚别动。",
+    "en": "Split stance, feet stay planted."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "停住不动，慢慢呼吸。",
-    "en": "Stay still and breathe slowly."
+    "zh": "小臂压住门框，人往前走半步就停。",
+    "en": "Press your forearms on the frame and step half a step through."
    }
   },
   {
    "id": "cue4",
    "primary": false,
    "text": {
-    "zh": "每次呼气再放松一点，别来回颠。",
-    "en": "Each time you breathe out, relax a little deeper. No bouncing."
+    "zh": "呼气时胸口再往门里探一点，肩膀别耸。",
+    "en": "Each breath out, lean your chest a little further through, shoulders down."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "腰往前挺代替打开胸口",
+   "zh": "肚子往前挺，胸口没打开",
    "en": "Pushing your belly forward instead of opening your chest."
   },
   {
@@ -57,18 +57,18 @@
    "en": "Holding your breath."
   },
   {
-   "zh": "来回颠着往下压",
-   "en": "Bouncing to go deeper."
+   "zh": "脑袋往前伸，胸口没打开",
+   "en": "Poking your head forward instead of opening your chest."
   }
  ],
  "cautions": [
   {
-   "zh": "出现疼痛时放松，只拉到舒服的程度",
-   "en": "If anything hurts, ease off and stretch only to a comfortable point."
+   "zh": "肩膀前面刺疼或手发麻就把手臂放低一点",
+   "en": "If your shoulders get a sharp pain or hands tingle, lower your arms."
   },
   {
-   "zh": "肩前侧夹着疼时，缩小幅度或换简单版本",
-   "en": "If the front of your shoulder pinches, reduce the range or switch to an easier version."
+   "zh": "肩膀前面夹着疼就往前少探点，或把手臂放低",
+   "en": "If the front of your shoulder pinches, lean in less or lower your arms."
   }
  ],
  "tags": {
@@ -94,16 +94,16 @@
  },
  "phases": {
   "start": {
-   "zh": "慢慢往前",
-   "en": "Lean forward"
+   "zh": "慢慢往前探",
+   "en": "Lean in"
   },
   "peak": {
-   "zh": "保持，慢慢呼气",
-   "en": "Hold and breathe out"
+   "zh": "小臂压门框",
+   "en": "Forearms press"
   },
   "end": {
-   "zh": "呼气再放松",
-   "en": "Relax a bit deeper"
+   "zh": "再探一点",
+   "en": "Lean through more"
   }
  },
  "training": {
@@ -119,6 +119,103 @@
     "按用户决定改为静态保持计时，动画只作示意：30 秒×2 组，休息 15 秒；口令和要点改成进入—保持—呼气放松"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "剂量 2 组×30 秒、休息 15 秒不变",
+    "「腰往前挺代替打开胸口」→「肚子往前挺，胸口没打开」；「缩小幅度或换简单版本」→「往前少探点，或把手臂放低」",
+    "难度 1/1 不变",
+    "r3 第二遍（去套话，2026-11-14）：7 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [
+    "预览帧几乎看不到胸口高亮，请看视频确认"
+   ],
+   "audit": {
+    "dose": [
+     "2 组×30 秒，休息 15 秒",
+     "2 组×30 秒，休息 15 秒"
+    ],
+    "rep": [
+     "计时",
+     "计时"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "动作一致：门框小臂撑门拉胸；预览帧几乎看不到高亮（b9 第 8 行，非极端）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 4,
+    "role": "posture",
+    "zh": "肚子别往前挺",
+    "en": "Don't push your belly out",
+    "from": [
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "at": 12,
+    "role": "halfway",
+    "zh": "脚站稳别动",
+    "en": "Feet stay put",
+    "from": [
+     "cue2"
+    ]
+   },
+   {
+    "at": 20,
+    "role": "form",
+    "zh": "胸口往门里探",
+    "en": "Lean through the doorway",
+    "from": [
+     "cue4"
+    ]
+   },
+   {
+    "at": 27,
+    "key": "n.3"
+   },
+   {
+    "at": 28,
+    "key": "n.2"
+   },
+   {
+    "at": 29,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.release",
+    "p.rest",
+    "sec.15"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
   }
  }
 }

@@ -1,0 +1,58 @@
+# h-side-er 侧卧手臂向外转（Side-Lying Arm Turn-Out）· 动作包核对 r3
+
+- 类型：`rep_updown`，单侧 each-side-separately，先做 right；V4 预览：`/workspace/work/v4run/b13.jpg 第 1 行`（本机，不入库）
+- reviewStatus：`ai-reviewed-r2-needs-user-review` → `ai-reviewed-r3-needs-user-review`
+
+## 1. 剂量
+- 改前：3 组×每侧12 次，休息 30 秒
+- 改后：3 组×每侧12 次，休息 30 秒；换边准备 10 秒（App 未接入）
+
+## 2. 真实节奏（与演示动画时长无关）
+- 一下：4.0 s → 3.0 s
+- 相位：go 1.0s / hold 0.5s / back 1.5s
+
+## 3. 难度
+- 改前 v3 1 / ai-tags 1 → 统一 1
+
+## 4. 指导文字（教练口吻）
+- purpose：练肩膀深处的小肌肉，让肩膀更稳 → 练肩膀里面的小肌肉，让肩膀更结实
+- 要点 改前：手肘贴住身体，小臂往上往外转；手肘下面可以垫条毛巾，身体别往后翻。；顶上停一下，再慢慢放下。
+- 要点 改后：手肘贴着身子，小臂往上往外转；手肘下面可以垫条毛巾，身子别往后翻。；顶上停一下，再慢慢放下。
+- 常见错误 改前：手肘离开身体；身体往后翻借力
+- 常见错误 改后：手肘离开身子；身子往后翻借劲
+- 注意事项 改前：肩膀前面夹着疼时，幅度小一点或换简单版本；想加重量时手里拿一瓶水就够
+- 注意事项 改后：肩膀前面夹着疼就转小点，还疼就停；想加点重量，手里拿瓶水就够
+- 相位口令：向外转 / 停一下 / 慢放下 → 往外转 / 停一下 / 慢慢放
+
+## 5. voiceGuide（脚本，未合成音频）
+- 一下 3.0 s；前 2 下念相位口令，之后每下报数
+| 第几下后 | 中文 | English | 出处 |
+|---|---|---|---|
+| 2 | 手肘贴着身子 | Elbow at your side | cue1, commonErrors[0] |
+| 5 | 身子别往后翻 | Don't roll back | cue2, commonErrors[1] |
+| 8 | 慢慢放下 | Lower slowly | cue3 |
+| 11 | 最后一次 |  | p.last_rep |
+- 组后：moreSets → 休息 + 30 秒；allDone → 很好；sideDone → 换左边
+
+## 6. 画面对照
+- 一致：侧卧屈肘、小臂往上转、肩膀/大臂淡高亮（b13 第 1 行）
+- 极端错误：无
+
+## 7. 改了什么、为什么
+- 节奏按真实带练：一下 4.0 s → 3.0 s（转 1.0 / 停 0.5 / 放 1.5）；顶点 < 0.8 s，kind 维持 rep_updown，r2 flag 结束
+- 新增 sideSwitchSeconds 10（翻身换边侧躺）
+- 「身体」→「身子」；「幅度小一点或换简单版本」→「转小点」
+- 难度 1/1 不变
+
+## 8. 待开哥定
+- 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点3：顶上停一下，再慢慢放下。 → 转到小臂快朝天就停一下，再慢慢落回肚子前。（Pause at the top, then lower slowly. → Pause when your forearm points almost straight up, then lower back to your belly.）
+- 常见错误1：手肘离开身子 → 转的时候手肘抬离身子（Elbow lifting off your side. → Elbow lifting off your side as you turn.）
+- 注意事项1：肩膀前面夹着疼就转小点，还疼就停 → 肩膀里面夹着疼就转一半，换轻哑铃（If the front of your shoulder pinches, don't turn as far. Stop if it still hurts. → If your shoulder pinches inside, turn halfway and use a lighter weight.）
+- 语音 reminders[0]：手肘贴着身子 → 手肘下面夹条毛巾（Elbow at your side → Towel under your elbow）
+- 语音 reminders[1]：身子别往后翻 → 侧躺稳，别往后翻（Don't roll back → Stay on your side）

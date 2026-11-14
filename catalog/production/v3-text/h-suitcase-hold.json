@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-suitcase-hold",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-suitcase-hold.js"
  ],
@@ -10,48 +10,48 @@
   "en": "Single-Arm Suitcase Hold"
  },
  "purpose": {
-  "zh": "练身体侧面，单手提重物时身体不歪",
-  "en": "Build the sides of your trunk so you stay upright carrying weight in one hand."
+  "zh": "练侧腰，单手拎重东西身子也不歪",
+  "en": "Builds the sides of your waist so you don't lean when carrying something heavy in one hand."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "一手提哑铃站直，身体不往任何一边歪",
-    "en": "Hold a dumbbell in one hand and stand tall without leaning"
+    "zh": "一手提哑铃站直，身子哪边都别歪",
+    "en": "Hold a dumbbell in one hand and stand tall. Don't lean either way"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "两边肩膀一样高，正常呼吸。",
-    "en": "Keep your shoulders level and breathe normally."
+    "zh": "两边肩膀一样高，正常喘气。",
+    "en": "Shoulders level, breathe normally."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "时间到后慢慢放下，换手再做。",
-    "en": "Set it down slowly, then switch hands."
+    "zh": "时间到慢慢放下，换手再做。",
+    "en": "When time is up, set it down slowly and switch hands."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "身体往哑铃一侧歪",
+   "zh": "身子往哑铃那边歪",
    "en": "Leaning toward the weight."
   },
   {
-   "zh": "提哑铃的肩膀耸起",
-   "en": "Shrugging the loaded shoulder."
+   "zh": "提哑铃那边肩膀耸起来",
+   "en": "Shrugging the shoulder holding the weight."
   }
  ],
  "cautions": [
   {
-   "zh": "腰或肩膀疼时停止，换轻一点的哑铃",
+   "zh": "腰或肩膀疼就停，换个轻点的哑铃",
    "en": "If your back or shoulder hurts, stop and use a lighter dumbbell."
   }
  ],
@@ -85,12 +85,12 @@
    "en": "Lift and stand"
   },
   "peak": {
-   "zh": "保持住",
-   "en": "Hold"
+   "zh": "稳住",
+   "en": "Hold it"
   },
   "end": {
-   "zh": "慢慢放下",
-   "en": "Set it down"
+   "zh": "别憋气",
+   "en": "Keep breathing"
   }
  },
  "training": {
@@ -109,6 +109,112 @@
     "最终口径：按真实做法定（2026-11-01）"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "剂量 每侧 3 组×30 秒、休息 30 秒不变；站着原地换手，不加换边准备",
+    "「身体侧面」→「侧腰」；相位口令「慢慢放下」→「别憋气」（计时类不写回来）",
+    "难度 1/1 不变"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "3 组×每侧30 秒，休息 30 秒",
+     "3 组×每侧30 秒，休息 30 秒"
+    ],
+    "rep": [
+     "计时",
+     "计时"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：站姿单手提哑铃、侧腰高亮（b14 第 1 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 4,
+    "role": "posture",
+    "zh": "身子别往哑铃那边歪",
+    "en": "Don't lean toward the weight",
+    "from": [
+     "cue1",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "at": 12,
+    "role": "halfway",
+    "zh": "两边肩膀一样高",
+    "en": "Shoulders level",
+    "from": [
+     "cue2"
+    ]
+   },
+   {
+    "at": 20,
+    "role": "form",
+    "zh": "肩膀别耸",
+    "en": "No shrugging",
+    "from": [
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "at": 27,
+    "key": "n.3"
+   },
+   {
+    "at": 28,
+    "key": "n.2"
+   },
+   {
+    "at": 29,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSetsSameSide": [
+    "p.rest",
+    "sec.30"
+   ],
+   "sideDone": [
+    "p.release",
+    "p.switch_left"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
+  },
+  "sides": {
+   "order": [
+    "right",
+    "left"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边"
   }
  }
 }

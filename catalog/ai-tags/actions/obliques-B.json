@@ -5,7 +5,7 @@
   "status": "ai-draft",
   "source": {
     "text": "catalog/production/v3-text/obliques-B.json",
-    "textSha256Lf": "ff1ff6247adb8f6887446da2afabb9cc97e06e389e7101308aced8f5e738baa8",
+    "textSha256Lf": "76db37b7f8a21b3e37ddf01a398c6db2687a4bd463d502c4cdd504724dd61f4d",
     "spec": "drill-anim/specs/obliques-B-r2.js",
     "catalogV1": "catalog/catalog.json"
   },
@@ -167,6 +167,12 @@
         "optionalEquipment": []
       },
       "reason": "同义写法归一到词表 id，并按实际做法区分必需与可选。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 1,
+      "chosen": 1,
+      "reason": "r3 动作包核对（开哥 2026-11-13）：逐个重定，与 v3 tags.difficulty 同值。"
     }
   ],
   "reviewNotes": [

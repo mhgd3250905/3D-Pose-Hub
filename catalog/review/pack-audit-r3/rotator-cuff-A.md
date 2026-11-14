@@ -1,0 +1,53 @@
+# rotator-cuff-A 俯撑交替触肩（Plank Shoulder Taps）· 动作包核对 r3
+
+- 类型：`rep_alternate`，单侧 alternate，先做 right；V4 预览：`/workspace/work/v4run/b22.jpg 第 2 行`（本机，不入库）
+- reviewStatus：`ai-reviewed-r2-needs-user-review` → `ai-reviewed-r3-needs-user-review`
+
+## 1. 剂量
+- 改前：3 组×每侧8 次，休息 45 秒
+- 改后：3 组×每侧8 次，休息 45 秒
+
+## 2. 真实节奏（与演示动画时长无关）
+- 一下：2.0 s/侧（一左一右 4.0 s） → 2.0 s/侧（一左一右 4.0 s）
+- 相位：go 0.8s / hold 0.4s / back 0.8s
+
+## 3. 难度
+- 改前 v3 1 / ai-tags 2 → 统一 2（要撑住高位平板、一只手撑全身；ai-tags 原 2。退阶写进注意事项。）
+
+## 4. 指导文字（教练口吻）
+- purpose：一只手撑住体重，练肩膀稳定 → 一只手撑住体重，练肩膀撑得稳
+- 要点 改前：撑地的手用力推，摸肩时臀部别晃；高位平板，双脚稍微分开。；一只手抬起摸另一边肩膀，再放回。；两边各做一次算 1 次。
+- 要点 改后：撑地的手使劲推，摸肩时屁股别晃；高位平板，两脚稍微分开。；一只手抬起摸另一边肩膀，再放回去。；两边各做一次算 1 下。
+- 常见错误 改前：摸得太快，身体左右晃；撑地那侧肩膀塌下去
+- 常见错误 改后：摸太快，身子左右晃；撑地那边肩膀塌下去
+- 注意事项 改前：手腕不舒服时先活动一下手腕；手腕刺痛或发麻时马上停
+- 注意事项 改后：开始前先转转手腕，刺疼或发麻马上停；撑不住就把脚分宽点，或者跪着做
+- 相位口令：摸肩 / 稳住 / 放回 → 摸肩 / 停 / 放回
+
+## 5. voiceGuide（脚本，未合成音频）
+- 一下 4.0 s；前 2 下念相位口令，之后每下报数
+| 第几下后 | 中文 | English | 出处 |
+|---|---|---|---|
+| 2 | 屁股别晃 | Hips still | cue1, commonErrors[0] |
+| 5 | 慢一点 | Slower | commonErrors[0] |
+| 7 | 最后一次 |  | p.last_rep |
+- 组后：moreSets → 休息 + 45 秒；allDone → 很好
+
+## 6. 画面对照
+- 动作一致：高位平板（俯视）、肩膀高亮（b22 第 2 行）
+- 极端错误：无
+
+## 7. 改了什么、为什么
+- 节奏按真实带练：一侧一下 2.0 s → 2.0 s（摸 0.8 / 停 0.4 / 放 0.8），一左一右 4 s 计 1 下
+- 难度 v3 1 / ai-tags 2 → 统一 2；退阶「脚分宽点或跪着做」写进注意事项
+- purpose 去掉「稳定」；两条手腕注意事项并成一句
+
+## 8. 待开哥定
+- 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点4：两边各做一次算 1 下。 → 左手摸一次、右手摸一次，合起来记 1 下。（One on each side counts as one. → A touch with each hand makes one.）
+- 注意事项1：开始前先转转手腕，刺疼或发麻马上停 → 抬手时一只手腕扛全身，先活动开，疼就跪着做（Roll out your wrists first. Stop right away if they get sharp pain or go numb. → One wrist takes your weight when a hand lifts. Warm up, and drop to your knees if it hurts.）

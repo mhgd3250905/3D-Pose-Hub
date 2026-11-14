@@ -1,0 +1,63 @@
+# n-half-split 半跪半劈叉（扶砖）（Half-Kneeling Half Split (Blocks)）· 动作包核对 r3
+
+- 类型：`hold`，单侧 each-side-separately，先做 right；V4 预览：`/workspace/work/v4run/b17.jpg 第 7 行`（本机，不入库）
+- reviewStatus：`ai-reviewed-r2-needs-user-review` → `ai-reviewed-r3-needs-user-review`
+
+## 1. 剂量
+- 改前：2 组×每侧30 秒，休息 15 秒
+- 改后：2 组×每侧30 秒，休息 15 秒；换边准备 10 秒（App 未接入）
+
+## 2. 真实节奏（与演示动画时长无关）
+- 一下：计时 → 计时
+- 相位：计时
+
+## 3. 难度
+- 改前 v3 1 / ai-tags 2 → 统一 2（半劈叉要一点大腿后面柔韧，扶砖能降低；ai-tags 原 2。）
+
+## 4. 指导文字（教练口吻）
+- purpose：拉伸前腿的大腿后侧，为前后劈叉打基础 → 拉开前腿大腿后面，给前后劈叉打底子
+- 要点 改前：臀部往后坐，前腿伸直，背拉长；后膝跪地，前脚跟着地、勾脚尖。；保持不动，慢慢呼吸，每次呼气再放松一点。；别来回颠，有拉伸感就够，别拉到疼。
+- 要点 改后：屁股往后坐，前腿伸直，背拉长；后膝跪地，前脚后跟着地、勾脚尖。；就停在这儿，慢慢喘气，每次呼气再松一点。；别一下一下往下压，有拉的感觉就够，别拉到疼。
+- 常见错误 改前：弓背去够脚；硬把前腿膝盖伸直；憋气或来回颠
+- 常见错误 改后：弓背去够脚；硬把前腿膝盖伸直；憋气或一下一下往下压
+- 注意事项 改前：跪着的膝盖下面垫个软垫；大腿后侧疼时坐得少一点，还疼就停
+- 注意事项 改后：跪着的膝盖下面垫个软垫；大腿后面疼就少往后坐点，还疼就停
+- 相位口令：慢慢往后坐 / 保持，慢慢呼气 / 呼气再放松 → 慢慢往后坐 / 停住，呼气 / 呼气再松
+
+## 5. voiceGuide（脚本，未合成音频）
+| 秒 | 中文 | English | 出处 |
+|---|---|---|---|
+| 0 | 开始 | Go | p.go |
+| 4 | 背拉长，别弓 | Long back | cue1, commonErrors[0] |
+| 12 | 前膝别硬伸直 | Don't force the knee | commonErrors[1] |
+| 20 | 呼气，再松一点 | Breathe out, let go | cue3 |
+| 27 | 三 | three | n.3 |
+| 28 | 二 | two | n.2 |
+| 29 | 一 | one | n.1 |
+- 组后：moreSetsSameSide → 休息 + 15 秒；sideDone → 慢慢还原 + 换左边；allDone → 慢慢还原 + 很好
+
+## 6. 画面对照
+- 一致：半跪前腿伸直、两手扶砖、大腿后高亮（b17 第 7 行）
+- 极端错误：无
+
+## 7. 改了什么、为什么
+- 剂量 每侧 2 组×30 秒、休息 15 秒不变
+- 新增 sideSwitchSeconds 10（半跪换前后腿要重新摆）
+- 「臀部」→「屁股」，「大腿后侧」→「大腿后面」；「别来回颠」→「别一下一下往下压」
+- 难度 v3 1 / ai-tags 2 → 统一 2
+
+## 8. 待开哥定
+- 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点3：就停在这儿，慢慢喘气，每次呼气再松一点。 → 前脚勾起来，大腿后面会拉得更明显。（Stay right there, breathe slowly, let go a little more each breath out. → Flex your front foot to feel more in the back of your thigh.）
+- 要点4：别一下一下往下压，有拉的感觉就够，别拉到疼。 → 呼气时屁股再往后坐一点，背别弓。（Don't bounce. A clear stretch is enough, never pain. → Each breath out, sit your hips back a little more without rounding.）
+- 常见错误1：弓背去够脚 → 脑袋往脚尖凑，背弓成虾米（Rounding your back to reach your foot. → Reaching your head to your toes and curling your back.）
+- 常见错误3：憋气或一下一下往下压 → 前膝死死锁直，膝盖后面扯着疼（Holding your breath or bouncing. → Locking the front knee hard so the back of it hurts.）
+- 语音 set[1]：背拉长，别弓 → 胸口往前，背别弓（Long back → Chest forward, back flat）
+- 语音 set[3]：呼气，再松一点 → 呼气，屁股往后坐（Breathe out, let go → Breathe out, hips back）
+- 相位口令 peak：停住，呼气 → 前脚勾起（Hold, breathe out → Toes up）
+- 相位口令 end：呼气再松 → 再往后坐（Let go more → Sit back more）

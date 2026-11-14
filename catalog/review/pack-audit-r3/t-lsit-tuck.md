@@ -1,0 +1,53 @@
+# t-lsit-tuck L撑收腿伸腿（L-Sit to Tuck）· 动作包核对 r3
+
+- 类型：`rep_updown`；V4 预览：`/workspace/work/v4run/batch-23.jpg 第 10 行`（本机，不入库）
+- reviewStatus：`ai-reviewed-r2-needs-user-review` → `ai-reviewed-r3-needs-user-review`
+
+## 1. 剂量
+- 改前：3 组×6 次，休息 60 秒
+- 改后：3 组×6 次，休息 60 秒
+
+## 2. 真实节奏（与演示动画时长无关）
+- 一下：4.0 s → 2.5 s
+- 相位：go 1.0s / hold 0.5s / back 1.0s
+
+## 3. 难度
+- 改前 v3 3 / ai-tags 4 → 统一 3（要先撑得住 L 撑；ai-tags 原 4。退阶写进注意事项。）
+
+## 4. 指导文字（教练口吻）
+- purpose：撑住身体，练双腿收回和伸直的控制 → 撑住身子，练两腿收回和伸直
+- 要点 改前：撑住不落地，腿伸直成L撑再收回膝盖；肩膀往下压，手臂伸直。；收腿时脚跟收到身体下面。
+- 要点 改后：撑住别落地，腿伸直成 L 撑再把膝盖收回来；肩膀往下压，手臂伸直。；收腿时脚后跟收到身子下面。
+- 常见错误 改前：耸肩；身体往后仰代替收腿
+- 常见错误 改后：耸肩；身子往后仰代替收腿
+- 注意事项 改前：手腕不舒服时先活动一下手腕；手腕或肩膀疼时少做一点，还疼就停
+- 注意事项 改后：开始前先转转手腕，刺疼或发麻马上停；手腕或肩膀疼就少做点，还疼就停；撑不住就脚跟点地做
+- 相位口令：伸直腿 / 停 / 收膝盖 → 伸直腿 / 停 / 收膝盖
+
+## 5. voiceGuide（脚本，未合成音频）
+- 一下 2.5 s；前 2 下念相位口令，之后每下报数
+| 第几下后 | 中文 | English | 出处 |
+|---|---|---|---|
+| 2 | 肩膀往下压 | Shoulders down | cue2, commonErrors[0] |
+| 5 | 最后一次 |  | p.last_rep |
+- 组后：moreSets → 休息 + 1 分钟；allDone → 很好
+
+## 6. 画面对照
+- 一致：坐地手撑、腿伸直（L 撑）、肚子高亮（batch-23 第 10 行）
+- 极端错误：无
+
+## 7. 改了什么、为什么
+- 节奏按真实带练：一下 4.0 s → 2.5 s（伸 1.0 / 停 0.5 / 收 1.0）；r2「循环接缝停顿」flag 与节奏脱钩
+- 难度 v3 3 / ai-tags 4 → 统一 3；退阶「脚跟点地做」写进注意事项
+- purpose 去掉「控制」；两条手腕注意事项并成一句
+
+## 8. 待开哥定
+- 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点2：肩膀往下压，手臂伸直。 → 胳膊锁直，两手把地往下推。（Press your shoulders down, arms straight. → Lock your arms and shove the floor down.）
+- 注意事项1：开始前先转转手腕，刺疼或发麻马上停 → 手腕疼就换撑杆或撑拳头，先活动开再做（Roll out your wrists first. Stop right away if they get sharp pain or go numb. → If your wrists hurt, use parallettes or fists. Warm them up first.）
+- 语音 reminders[0]：肩膀往下压 → 胳膊锁直，推地（Shoulders down → Arms locked, push）

@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "rotator-cuff-B",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/data/drills.json",
   "drill-anim/specs/rotator-cuff-B-r2.js"
@@ -11,24 +11,24 @@
   "en": "Band Elbow-In Turn-Out"
  },
  "purpose": {
-  "zh": "加强肩膀深处的小肌肉，让肩更稳",
-  "en": "Strengthen the small muscles deep in your shoulder for steadier shoulders."
+  "zh": "练肩膀里面的小肌肉，让肩膀更稳",
+  "en": "Builds the small muscles deep in your shoulder so it feels steadier."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "手肘贴住身体，只把前臂往外打开",
-    "en": "Keep your elbow at your side and swing only your forearm out"
+    "zh": "手肘贴住身子，只把小臂往外打开",
+    "en": "Elbow at your side, swing only your forearm out"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "手肘弯成直角，肘和身体之间夹一块小垫。",
-    "en": "Bend your elbow to a right angle with a small pad between elbow and ribs."
+    "zh": "手肘弯成直角，手肘和身子之间夹一块小垫。",
+    "en": "Elbow at a right angle, small pad between your elbow and ribs."
    }
   },
   {
@@ -36,24 +36,24 @@
    "primary": false,
    "text": {
     "zh": "慢慢放回，肩膀别耸起来。",
-    "en": "Return slowly without shrugging."
+    "en": "Return slowly. No shrugging."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "用转身代替转肩",
+   "zh": "转身代替转肩",
    "en": "Turning your body instead of your arm."
   },
   {
-   "zh": "手肘离开身体",
-   "en": "Letting your elbow leave your side."
+   "zh": "往外转时手肘跟着往外飘",
+   "en": "Elbow drifting out as you rotate."
   }
  ],
  "cautions": [
   {
-   "zh": "肩膀疼时换更轻的弹力带或转小一点",
-   "en": "If your shoulder hurts, use a lighter band or turn less far."
+   "zh": "肩膀疼就换根轻点的弹力带或转小点",
+   "en": "If your shoulder hurts, use a lighter band or don't turn as far."
   }
  ],
  "tags": {
@@ -112,14 +112,10 @@
     "id": "back",
     "seconds": 1.5,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 0.5
    }
   ],
   "perSide": "each-side-separately",
-  "source": "spec-timeline manual r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -132,6 +128,111 @@
     "最终口径：按真实做法定（2026-11-01）"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 4.0 s → 3.5 s（开 1.0 / 停 1.0 / 回 1.5）",
+    "站着转身换手，不加换边准备",
+    "「前臂」→「小臂」，「身体」→「身子」",
+    "难度 1/1 不变",
+    "r3 第二遍（去套话，2026-11-14）：2 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [
+    "预览帧肩膀高亮很淡，请看视频确认"
+   ],
+   "audit": {
+    "dose": [
+     "3 组×每侧12 次，休息 45 秒",
+     "3 组×每侧12 次，休息 45 秒"
+    ],
+    "rep": [
+     "4.0 s",
+     "3.5 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "动作一致：站姿侧对柱子、手肘贴身弹力带往外转；高亮很淡（b22 第 3 行，非极端）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 3.5,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "手肘钉住，小臂打开",
+    "en": "Elbow pinned, forearm opens",
+    "from": [
+     "cue1",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "身子别转",
+    "en": "Body still",
+    "from": [
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 8,
+    "role": "form",
+    "zh": "肩膀别耸",
+    "en": "Shoulders down",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "afterRep": 11,
+    "key": "p.last_rep"
+   }
+  ],
+  "before": [
+   "p.right_first"
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.45"
+   ],
+   "allDone": [
+    "p.nice"
+   ],
+   "sideDone": [
+    "p.switch_left"
+   ]
+  },
+  "sides": {
+   "order": [
+    "right",
+    "left"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边"
   }
  }
 }

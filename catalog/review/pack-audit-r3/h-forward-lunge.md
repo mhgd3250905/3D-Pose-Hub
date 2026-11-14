@@ -1,0 +1,55 @@
+# h-forward-lunge 前跨步弓步蹲（Forward Lunge）· 动作包核对 r3
+
+- 类型：`rep_alternate`，单侧 alternate，先做 right；V4 预览：`/workspace/work/v4run/b10.jpg 第 2 行`（本机，不入库）
+- reviewStatus：`ai-reviewed-r2-needs-user-review` → `ai-reviewed-r3-needs-user-review`
+
+## 1. 剂量
+- 改前：3 组×每侧8 次，休息 45 秒
+- 改后：3 组×每侧8 次，休息 60 秒
+
+## 2. 真实节奏（与演示动画时长无关）
+- 一下：5.0 s/侧（一左一右 10.0 s） → 3.5 s/侧（一左一右 7.0 s）
+- 相位：go 1.5s / hold 0.5s / back 1.2s / rest 0.3s
+
+## 3. 难度
+- 改前 v3 2 / ai-tags 2 → 统一 2
+
+## 4. 指导文字（教练口吻）
+- purpose：练大腿和臀部，提升单腿控制 → 练大腿和屁股，一条腿也能站得稳
+- 要点 改前：向前跨一步，身体直直往下沉；前膝对着脚尖，前脚跟踩实。；前脚推地退回站立，换另一条腿。；两边各做一次算 1 次。
+- 要点 改后：往前迈一大步，身体直直往下沉；前膝对着脚尖，前脚后跟踩实。；前脚一蹬回到站立，换另一条腿。；两边各做一次算 1 下。
+- 常见错误 改前：前膝往里扣；上身前倾太多
+- 常见错误 改后：前膝往里倒；上身往前趴；后膝咚一下砸到地上
+- 注意事项 改前：膝盖不舒服时蹲浅一点，仍痛就停止
+- 注意事项 改后：膝盖不舒服就蹲浅一点，还疼就停
+- 相位口令：跨步下蹲 / 稳住 / 推地退回 → 迈步下蹲 / 稳住 / 蹬地回来
+
+## 5. voiceGuide（脚本，未合成音频）
+- 一下 7.0 s；前 2 下念相位口令，之后每下报数
+| 第几下后 | 中文 | English | 出处 |
+|---|---|---|---|
+| 2 | 前膝对着脚尖，别往里倒 | Knee over toes, not caving in | cue2, commonErrors[0] |
+| 5 | 上身直着往下沉 | Chest up, drop straight down | cue1, commonErrors[1] |
+| 7 | 最后一次 |  | p.last_rep |
+- 组后：moreSets → 休息 + 1 分钟；allDone → 很好
+
+## 6. 画面对照
+- 一致：站姿弓步、无器械、大腿前侧+臀部高亮
+- 极端错误：无
+
+## 7. 改了什么、为什么
+- 节奏按真实带练：一侧一下 5.0 s → 3.5 s（迈步下蹲 1.5 / 停 0.5 / 蹬回 1.2），一左一右 7 s 计 1 下；不再按动画时长
+- 剂量 3 组×每侧 8 次、休息 60 秒不变
+- 文字改教练口吻（「直直往下沉」「后膝轻轻点地，别砸」）
+- 难度 2/2 不变
+
+## 8. 待开哥定
+- 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 要点4：两边各做一次算 1 下。 → 左脚迈一次、右脚迈一次，才算 1 下。（One on each side counts as one. → A lunge with each leg counts as one.）
+- 常见错误1：前膝往里倒 → 迈出去的脚太窄，像走钢丝，膝盖往里晃（Front knee caving in. → Stepping in a tightrope line so the front knee wobbles in.）
+- 注意事项1：膝盖不舒服就蹲浅一点，还疼就停 → 前膝不舒服就步子迈小、蹲浅点（If your knee bugs you, don't go as low. Stop if it still hurts. → If your front knee complains, take a shorter step and don't go as low.）

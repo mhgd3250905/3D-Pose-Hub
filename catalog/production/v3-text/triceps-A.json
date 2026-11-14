@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "triceps-A",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/data/drills.json",
   "drill-anim/specs/triceps-A-r2.js"
@@ -11,53 +11,53 @@
   "en": "Close-Grip Push-Up with Lockout"
  },
  "purpose": {
-  "zh": "练手臂后侧，推到顶把手肘完全伸直",
-  "en": "Build the back of your arms and straighten your elbows fully at the top."
+  "zh": "练大臂后面，推到顶把手肘完全伸直",
+  "en": "Builds the backs of your upper arms, straightening your elbows fully at the top."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "手肘贴着身体往后弯，推起后伸直停一下",
-    "en": "Bend with your elbows close to your body, then press up and pause straight"
+    "zh": "手肘贴着身子往后弯，推起后伸直停一下",
+    "en": "Elbows close to your body as you bend, press up and pause with straight arms"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "双手与肩同宽或稍窄。",
-    "en": "Place your hands shoulder-width apart or a little narrower."
+    "zh": "两手跟肩膀一样宽或稍窄。",
+    "en": "Hands shoulder-width or a little narrower."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "身体一条直线，把地面推远。",
-    "en": "Keep your body in one line and push the floor away."
+    "zh": "身子一条直线，把地面推远。",
+    "en": "Body in one line, push the floor away."
    }
   }
  ],
  "commonErrors": [
   {
    "zh": "手肘往外翻",
-   "en": "Flaring your elbows out."
+   "en": "Elbows flaring out."
   },
   {
-   "zh": "没伸直就开始下一次",
-   "en": "Starting the next rep before your arms are straight."
+   "zh": "没伸直就下一个",
+   "en": "Starting the next one before your arms are straight."
   }
  ],
  "cautions": [
   {
-   "zh": "手腕不舒服时先活动一下手腕",
-   "en": "If your wrists feel stiff, warm them up first."
+   "zh": "手撑窄了手腕更吃劲，疼就把手放宽一点",
+   "en": "A narrow hand position loads your wrists. If they hurt, move your hands a bit wider."
   },
   {
-   "zh": "手腕刺痛或发麻时马上停",
-   "en": "Stop right away if your wrists feel sharp pain or numbness."
+   "zh": "做不满就跪着做",
+   "en": "Can't get them all? Do them on your knees."
   }
  ],
  "tags": {
@@ -72,7 +72,7 @@
   ],
   "equipment": [],
   "position": "plank",
-  "difficulty": 1
+  "difficulty": 3
  },
  "unilateral": false,
  "defaultDose": {
@@ -101,12 +101,13 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 1.3,
+    "seconds": 2.0,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 0.2
+    "seconds": 0.3,
+    "cue": "phase.peak"
    },
    {
     "id": "back",
@@ -115,10 +116,10 @@
    },
    {
     "id": "rest",
-    "seconds": 1.5
+    "seconds": 1.0
    }
   ],
-  "source": "spec-timeline manual r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -129,6 +130,86 @@
    ],
    "flags": [
     "顶端伸直停约 1.5 s（这个动作的重点）落在 rest 段、不念口令；批表 down 轨 hold 0.63 是底部+顶端混算"
+   ]
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 4.0 s → 4.3 s（慢下 2.0 / 底 0.3 / 推起 1.0 / 顶上伸直停 1.0），顶上锁肘停放 rest 段不念口令；r2「批表混算」flag 与节奏脱钩",
+    "难度 v3 1 / ai-tags 3 → 统一 3；退阶「跪着做」写进注意事项",
+    "「手臂后侧」→「大臂后面」；两条手腕注意事项并成一句",
+    "r3 第二遍（去套话，2026-11-14）：1 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "3 组×8 次，休息 60 秒",
+     "3 组×8 次，休息 60 秒"
+    ],
+    "rep": [
+     "4.0 s",
+     "4.3 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 3
+     },
+     3
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：窄距俯卧撑、大臂后淡高亮（batch-24 第 9 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 4.3,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "手肘贴着身子",
+    "en": "Elbows in",
+    "from": [
+     "cue1",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "推到顶伸直",
+    "en": "Lock out at the top",
+    "from": [
+     "cue1",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 7,
+    "key": "p.last_rep"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.60"
+   ],
+   "allDone": [
+    "p.nice"
    ]
   }
  }

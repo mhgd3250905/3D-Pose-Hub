@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-bent-knee-calf-raise",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-bent-knee-calf-raise-rr7.js",
   "drill-anim/specs/h-bent-knee-calf-raise-rr6.js",
@@ -16,49 +16,49 @@
   "en": "Bent-Knee Calf Raise"
  },
  "purpose": {
-  "zh": "练小腿，让脚踝更有力",
-  "en": "Build your calves and stronger ankles."
+  "zh": "练小腿，让脚踝更有劲",
+  "en": "Builds your calves and stronger ankles."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "膝盖一直弯着，踮起脚跟",
-    "en": "Keep your knees bent and rise onto the balls of your feet"
+    "zh": "膝盖一直弯着，踮起脚后跟",
+    "en": "Keep your knees bent and rise up onto your toes"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "双手叉腰，身体挺直。",
-    "en": "Rest your hands on your hips and stand tall."
+    "zh": "两手叉腰，人站直。",
+    "en": "Hands on your hips, stand tall."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "慢慢放下脚跟，膝盖弯度不变。",
-    "en": "Lower your heels slowly without changing your knee bend."
+    "zh": "脚后跟慢慢放下，膝盖弯的角度不变。",
+    "en": "Lower your heels slowly, same knee bend the whole time."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "踮起时膝盖伸直",
+   "zh": "踮起来时膝盖伸直了",
    "en": "Straightening your knees as you rise."
   },
   {
    "zh": "脚往外侧翻",
-   "en": "Rolling onto the outer edges of your feet."
+   "en": "Rolling onto the outside of your feet."
   }
  ],
  "cautions": [
   {
-   "zh": "脚踝或脚后跟上方疼时减小幅度",
-   "en": "If your ankles or the back of your heels hurt, rise less high."
+   "zh": "脚踝或脚后跟上面疼就踮低点",
+   "en": "If your ankles or the back of your heels hurt, don't rise as high."
   }
  ],
  "tags": {
@@ -90,7 +90,7 @@
    "en": "Pause"
   },
   "end": {
-   "zh": "慢慢放下",
+   "zh": "慢慢放",
    "en": "Lower slowly"
   }
  },
@@ -100,25 +100,21 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 1.2,
+    "seconds": 1.0,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 0.7,
+    "seconds": 0.5,
     "cue": "phase.peak"
    },
    {
     "id": "back",
     "seconds": 1.0,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 1.1
    }
   ],
-  "source": "spec-timeline manual r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -127,6 +123,103 @@
     "名字「承重提踵」改「踮脚」；「深层肌肉」「跟腱」改口语"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 4.0 s → 2.5 s（简单小幅度）",
+    "文字改教练口吻",
+    "难度 1/1 不变"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "3 组×15 次，休息 30 秒",
+     "3 组×15 次，休息 30 秒"
+    ],
+    "rep": [
+     "4.0 s",
+     "2.5 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：站姿屈膝提踵、双手叉腰、小腿高亮（b5 第 3 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 2.5,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "膝盖别伸直",
+    "en": "Keep knees bent",
+    "from": [
+     "cue1",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "form",
+    "zh": "脚别外翻",
+    "en": "Feet flat",
+    "from": [
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 8,
+    "role": "halfway",
+    "zh": "慢慢放下",
+    "en": "Lower slowly",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "afterRep": 11,
+    "role": "form",
+    "zh": "膝盖别伸直",
+    "en": "Keep knees bent",
+    "from": [
+     "cue1",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 14,
+    "key": "p.last_rep"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.30"
+   ],
+   "allDone": [
+    "p.nice"
+   ]
   }
  }
 }

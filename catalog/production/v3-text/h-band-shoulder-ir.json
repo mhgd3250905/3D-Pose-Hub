@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-band-shoulder-ir",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-band-shoulder-ir-r2.js",
   "drill-anim/specs/h-band-shoulder-ir.js"
@@ -11,8 +11,8 @@
   "en": "Standing Band Shoulder Turn-In"
  },
  "purpose": {
-  "zh": "练肩膀深层的小肌肉，让肩更稳",
-  "en": "Build the small deep shoulder muscles for a steadier shoulder."
+  "zh": "练肩膀里面的小肌肉，让肩更稳",
+  "en": "Builds the small muscles deep in your shoulder for a steadier shoulder."
  },
  "cues": [
   {
@@ -20,15 +20,15 @@
    "primary": true,
    "text": {
     "zh": "手肘贴身弯成直角，小臂往肚子转",
-    "en": "Keep your elbow bent at your side and turn your forearm in to your belly"
+    "en": "Elbow bent at your side, turn your forearm in to your belly"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "侧对固定点站直，膝盖放松别锁死。",
-    "en": "Stand tall side-on to the anchor, knees relaxed, not locked."
+    "zh": "侧对拴带的地方站直，膝盖微微松开。",
+    "en": "Stand tall side-on to the anchor, knees soft."
    }
   },
   {
@@ -42,22 +42,22 @@
  ],
  "commonErrors": [
   {
-   "zh": "手肘离开身体",
-   "en": "Letting your elbow drift away from your side."
+   "zh": "手肘往外飘，靠甩手臂转进来",
+   "en": "Elbow drifting out so you swing the arm in."
   },
   {
-   "zh": "用转身代替转手臂",
+   "zh": "拿转身代替转手臂",
    "en": "Turning your body instead of your arm."
   }
  ],
  "cautions": [
   {
-   "zh": "固定点不牢时先别开始",
-   "en": "Do not start until the anchor is secure."
+   "zh": "带子拴在手肘高度，先拽一下确认牢",
+   "en": "Anchor the band at elbow height and tug-test it first."
   },
   {
-   "zh": "肩膀疼时减小幅度或停下",
-   "en": "If your shoulder hurts, make the move smaller or stop."
+   "zh": "肩膀疼就做小点，或者停",
+   "en": "If your shoulder hurts, make it smaller or stop."
   }
  ],
  "tags": {
@@ -103,26 +103,22 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 0.9,
+    "seconds": 1.0,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 4.6,
+    "seconds": 0.8,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 0.9,
+    "seconds": 1.2,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 1.6
    }
   ],
   "perSide": "each-side-separately",
-  "source": "spec-pulse-track r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -136,6 +132,99 @@
    "flags": [
     "动画每下停约 4.6 s 偏慢（只是演示节奏）；如要常规节奏需改动画"
    ]
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 8.0 s → 3.0 s；r2 flag「每下停 4.6 s 偏慢」按「与动画无关」解决，不改动画",
+    "文字改教练口吻",
+    "难度 1/1 不变",
+    "r3 第二遍（去套话，2026-11-14）：3 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "3 组×每侧8 次，休息 30 秒",
+     "3 组×每侧8 次，休息 30 秒"
+    ],
+    "rep": [
+     "8.0 s",
+     "3.0 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：站姿侧对柱子、肘贴身弹力带往里转、胸/肩前高亮（b4 第 6 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 3.0,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "手肘夹条毛巾不掉",
+    "en": "Pin your elbow in",
+    "from": [
+     "cue1",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "身子别转",
+    "en": "Body stays still",
+    "from": [
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 7,
+    "key": "p.last_rep"
+   }
+  ],
+  "before": [
+   "p.right_first"
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.30"
+   ],
+   "allDone": [
+    "p.nice"
+   ],
+   "sideDone": [
+    "p.switch_left"
+   ]
+  },
+  "sides": {
+   "order": [
+    "right",
+    "left"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边"
   }
  }
 }

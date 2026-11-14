@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-kneeling-pushup",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-kneeling-pushup-rr1.js"
  ],
@@ -10,16 +10,16 @@
   "en": "Knee-Supported Push-Up"
  },
  "purpose": {
-  "zh": "练胸部和手臂，适合入门的俯卧撑",
-  "en": "Build your chest and arms with a beginner push-up."
+  "zh": "练胸和手臂，入门的俯卧撑",
+  "en": "Builds your chest and arms with a beginner push-up."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "膝盖着地，从头到膝一条直线往下",
-    "en": "Kneel and lower with your body straight from head to knees"
+    "zh": "膝盖着地，从头到膝盖一条直线往下放",
+    "en": "Knees down, lower in one straight line from head to knees"
    }
   },
   {
@@ -27,7 +27,7 @@
    "primary": false,
    "text": {
     "zh": "手肘斜着往后，别往两边张开。",
-    "en": "Bend your elbows back at an angle, not out to the sides."
+    "en": "Elbows angle back, not out to the sides."
    }
   },
   {
@@ -41,18 +41,22 @@
  ],
  "commonErrors": [
   {
-   "zh": "塌腰或屁股翘起来",
-   "en": "Sagging or lifting the hips."
+   "zh": "塌腰或屁股撅起来",
+   "en": "Hips sagging or piking up."
   },
   {
-   "zh": "手肘往两边张开",
-   "en": "Flaring the elbows out."
+   "zh": "手肘往外撇，肩膀先往下掉",
+   "en": "Elbows flaring and shoulders dropping first."
   }
  ],
  "cautions": [
   {
-   "zh": "手腕刺痛或发麻时停止，开始前先活动手腕",
-   "en": "Stop if your wrists feel sharp pain or numbness, and warm them up first."
+   "zh": "跪的地方垫个垫子，手腕不舒服就撑拳头",
+   "en": "Pad your knees, and press on your fists if your wrists complain."
+  },
+  {
+   "zh": "膝盖底下垫块软垫",
+   "en": "Put a soft pad under your knees."
   }
  ],
  "tags": {
@@ -80,7 +84,7 @@
  },
  "phases": {
   "start": {
-   "zh": "下放",
+   "zh": "往下放",
    "en": "Lower"
   },
   "peak": {
@@ -88,7 +92,7 @@
    "en": "Pause"
   },
   "end": {
-   "zh": "撑起",
+   "zh": "撑起来",
    "en": "Push up"
   }
  },
@@ -98,25 +102,21 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 0.8,
+    "seconds": 1.5,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 0.8,
+    "seconds": 0.5,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 0.7,
+    "seconds": 1.0,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 1.7
    }
   ],
-  "source": "spec-pulse-track r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -129,6 +129,95 @@
    ],
    "flags": [
     "派生把顶点算成 ≥0.8 s 判为 rep_hold，但 spec 轨道真正的静止只有约 0.4 s（注释/关键帧），若按实际应为 rep_updown，请确认"
+   ]
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 4.0 s → 3.0 s（放 1.5 / 底 0.5 / 撑 1.0）；底部只是短停，kind 维持 rep_updown，r2 flag 结束",
+    "难度 v3 1 / ai-tags 2 → 统一 1",
+    "补「膝盖底下垫块软垫」",
+    "r3 第二遍（去套话，2026-11-14）：2 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "3 组×10 次，休息 45 秒",
+     "3 组×10 次，休息 45 秒"
+    ],
+    "rep": [
+     "4.0 s",
+     "3.0 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 2
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：跪姿俯卧撑、胸/大臂后面高亮（b11 第 3 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 3.0,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "一条直线，别塌腰",
+    "en": "One straight line",
+    "from": [
+     "cue1",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "手肘别张开",
+    "en": "Elbows don't flare",
+    "from": [
+     "cue2",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 8,
+    "role": "form",
+    "zh": "撑到手臂伸直",
+    "en": "Push to straight arms",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "afterRep": 9,
+    "key": "p.last_rep"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.45"
+   ],
+   "allDone": [
+    "p.nice"
    ]
   }
  }

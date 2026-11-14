@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-db-hammer-curl",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-db-hammer-curl.js"
  ],
@@ -10,41 +10,49 @@
   "en": "Standing Dumbbell Hammer Curl"
  },
  "purpose": {
-  "zh": "练手臂前侧和小臂",
-  "en": "Build the fronts of your upper arms and your forearms."
+  "zh": "练大臂前面和小臂",
+  "en": "Builds the fronts of your upper arms and your forearms."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "掌心一直相对，大臂不动只弯手肘",
-    "en": "Keep your palms facing each other and bend only at the elbows"
+    "zh": "两手心一直对着，大臂不动只弯手肘",
+    "en": "Palms keep facing each other, bend only at the elbows"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "身体站直，别前后晃。",
-    "en": "Stand tall without swinging."
+    "zh": "人站直，别前后晃。",
+    "en": "Stand tall, no rocking."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "放下来慢一点，数两秒。",
+    "en": "Lower slowly, for a count of two."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "身体晃动把哑铃甩起来",
-   "en": "Swinging the body to lift the dumbbells."
+   "zh": "身子晃着把哑铃甩起来",
+   "en": "Swinging your body to lift the dumbbells."
   },
   {
    "zh": "手肘往前跑",
-   "en": "Letting the elbows drift forward."
+   "en": "Elbows drifting forward."
   }
  ],
  "cautions": [
   {
-   "zh": "用轻重量，先做 1 组轻松的 6 次",
-   "en": "Use light weights and start with one easy set of 6 reps."
+   "zh": "用轻哑铃，先做 1 组轻松的 6 次",
+   "en": "Use light dumbbells and start with one easy set of 6."
   }
  ],
  "tags": {
@@ -69,7 +77,7 @@
  },
  "phases": {
   "start": {
-   "zh": "弯起",
+   "zh": "弯起来",
    "en": "Curl up"
   },
   "peak": {
@@ -77,35 +85,31 @@
    "en": "Squeeze"
   },
   "end": {
-   "zh": "慢慢放下",
+   "zh": "慢慢放",
    "en": "Lower slowly"
   }
  },
  "training": {
-  "kind": "rep_hold",
+  "kind": "rep_updown",
   "leadSeconds": 1,
   "phases": [
    {
     "id": "go",
-    "seconds": 0.9,
+    "seconds": 1.0,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 1.7,
+    "seconds": 0.5,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 1.2,
+    "seconds": 1.5,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 4.2
    }
   ],
-  "source": "spec-pulse-track r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -118,6 +122,94 @@
    ],
    "flags": [
     "动画 8 秒只做 1 下，之后静止约 3 s，App 每下间隔 4.2 s，偏慢；要不要动画改成 2 下/8 s，请定"
+   ]
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 8.0 s → 3.0 s（弯 1.0 / 停 0.5 / 放 1.5）；顶点 < 0.8 s，kind rep_hold → rep_updown；r2「动画 8 秒只做 1 下」flag 与节奏脱钩，不改动画",
+    "补 cue3「放下来慢一点，数两秒」",
+    "难度 1/1 不变"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "3 组×12 次，休息 30 秒",
+     "3 组×12 次，休息 30 秒"
+    ],
+    "rep": [
+     "8.0 s",
+     "3.0 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：站姿双哑铃锤式弯举、大臂前/小臂高亮（b8 第 2 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 3.0,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "手肘贴着别往前",
+    "en": "Elbows stay put",
+    "from": [
+     "cue1",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "别晃，别甩",
+    "en": "No swinging",
+    "from": [
+     "cue2",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 8,
+    "role": "form",
+    "zh": "放下来数两秒",
+    "en": "Lower for two",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "afterRep": 11,
+    "key": "p.last_rep"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.30"
+   ],
+   "allDone": [
+    "p.nice"
    ]
   }
  }

@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-quadruped-open",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-quadruped-open-rr1.js"
  ],
@@ -10,8 +10,8 @@
   "en": "Hands-and-Knees Arm Opener"
  },
  "purpose": {
-  "zh": "让上背转动更灵活，打开胸口",
-  "en": "Loosen up your upper back and open your chest."
+  "zh": "让上背转得更开，打开胸口",
+  "en": "Loosens up your upper back and opens your chest."
  },
  "cues": [
   {
@@ -19,7 +19,7 @@
    "primary": true,
    "text": {
     "zh": "一只手撑地，另一只手臂朝天花板打开",
-    "en": "Keep one hand down and open your other arm toward the ceiling"
+    "en": "One hand on the floor, open your other arm up to the ceiling"
    }
   },
   {
@@ -27,7 +27,7 @@
    "primary": false,
    "text": {
     "zh": "眼睛跟着手，胸口转开。",
-    "en": "Follow your hand with your eyes and turn your chest open."
+    "en": "Eyes follow your hand, chest turns open."
    }
   },
   {
@@ -35,28 +35,28 @@
    "primary": false,
    "text": {
     "zh": "屁股不动。",
-    "en": "Keep your hips still."
+    "en": "Hips stay still."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "屁股往一边歪",
-   "en": "Shifting the hips to one side."
+   "zh": "手臂往上打开时屁股往后坐歪",
+   "en": "Hips sliding back and off to one side as you open."
   },
   {
-   "zh": "只扭腰不转上背",
-   "en": "Twisting the lower back instead of the upper back."
+   "zh": "只扭腰，上背没转",
+   "en": "Twisting your lower back instead of your upper back."
   }
  ],
  "cautions": [
   {
-   "zh": "出现疼痛时放松，只拉到舒服的程度",
-   "en": "If anything hurts, ease off and stretch only to a comfortable point."
+   "zh": "打开时肩膀扯着疼就少转一点",
+   "en": "If your shoulder pulls as you open, don't turn as far."
   },
   {
-   "zh": "手腕刺痛或发麻时停止，开始前先活动手腕",
-   "en": "Stop if your wrists feel sharp pain or numbness, and warm them up first."
+   "zh": "撑地那只手腕不舒服就撑拳头",
+   "en": "Press on your fist if your support wrist complains."
   }
  ],
  "tags": {
@@ -89,12 +89,12 @@
    "en": "Open your arm"
   },
   "peak": {
-   "zh": "停住呼吸",
-   "en": "Hold and breathe"
+   "zh": "停住，喘气",
+   "en": "Hold, breathe"
   },
   "end": {
-   "zh": "慢慢收回",
-   "en": "Bring it back"
+   "zh": "手穿回来",
+   "en": "Arm back down"
   }
  },
  "training": {
@@ -103,26 +103,22 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 1.2,
+    "seconds": 1.5,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 1.8,
+    "seconds": 2.0,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 1.2,
+    "seconds": 1.5,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 3.8
    }
   ],
   "perSide": "each-side-separately",
-  "source": "spec-pulse-track r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -134,6 +130,93 @@
     "最终口径：按真实做法定（2026-11-01）"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 8.0 s → 5.0 s（开 1.5 / 停 2.0 / 收 1.5），活动类慢做",
+    "跪撑原地换手，不加换边准备",
+    "文字改教练口吻",
+    "难度 1/1 不变",
+    "r3 第二遍（去套话，2026-11-14）：4 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [
+    "高亮在腰和侧腰，动作要的是上背转、腰别扭；高亮位置可能误导（只报告）"
+   ],
+   "audit": {
+    "dose": [
+     "2 组×每侧6 次，休息 20 秒",
+     "2 组×每侧6 次，休息 20 秒"
+    ],
+    "rep": [
+     "8.0 s",
+     "5.0 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "动作一致：四点跪单臂朝天打开；高亮在腰/侧腰，文字写上背、胸口（b12 第 3 行，非极端）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 5.0,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "halfway",
+    "zh": "屁股别歪",
+    "en": "Hips stay put",
+    "from": [
+     "cue3",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "key": "p.last_rep"
+   }
+  ],
+  "before": [
+   "p.right_first"
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.20"
+   ],
+   "allDone": [
+    "p.nice"
+   ],
+   "sideDone": [
+    "p.switch_left"
+   ]
+  },
+  "sides": {
+   "order": [
+    "right",
+    "left"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边"
   }
  }
 }

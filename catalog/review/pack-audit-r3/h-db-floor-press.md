@@ -1,0 +1,53 @@
+# h-db-floor-press 哑铃地板卧推（Dumbbell Floor Press）· 动作包核对 r3
+
+- 类型：`rep_updown`；V4 预览：`/workspace/work/v4run/b7.jpg 第 10 行`（本机，不入库）
+- reviewStatus：`ai-reviewed-r2-needs-user-review` → `ai-reviewed-r3-needs-user-review`
+
+## 1. 剂量
+- 改前：3 组×10 次，休息 60 秒
+- 改后：3 组×10 次，休息 60 秒
+
+## 2. 真实节奏（与演示动画时长无关）
+- 一下：4.0 s → 4.0 s
+- 相位：go 2.0s / hold 0.5s / back 1.0s / rest 0.5s
+
+## 3. 难度
+- 改前 v3 1 / ai-tags 1 → 统一 1
+
+## 4. 指导文字（教练口吻）
+- purpose：练胸部和手臂后侧 → 练胸和大臂后面
+- 要点 改前：慢慢放到大臂碰地，再推回肩膀上方；手腕在手肘正上方，大臂和身体斜着约 45 度。；碰地轻停，不要弹起来。
+- 要点 改后：慢慢放到大臂碰地，再推回肩膀正上方；手腕在手肘正上方，大臂跟身体斜着分开，别张成一字。；碰地轻轻停一下，别弹起来。
+- 常见错误 改前：手肘往两边张得太开；手腕往后折
+- 常见错误 改后：手肘往两边张得太开；手腕往后折
+- 注意事项 改前：从轻重量开始，疼就停
+- 注意事项 改后：先用轻哑铃，哪儿疼就停
+- 相位口令：慢慢放下 / 轻停 / 推起 → 慢慢放 / 轻停 / 推起来
+
+## 5. voiceGuide（脚本，未合成音频）
+- 一下 4.0 s；前 2 下念相位口令，之后每下报数
+| 第几下后 | 中文 | English | 出处 |
+|---|---|---|---|
+| 2 | 手肘斜着，别张太开 | Elbows angled, don't flare | cue2, commonErrors[0] |
+| 5 | 手腕立直，别折 | Wrists straight | cue2, commonErrors[1] |
+| 8 | 碰地轻停，别弹 | Pause, no bouncing | cue3 |
+| 9 | 最后一次 |  | p.last_rep |
+- 组后：moreSets → 休息 + 1 分钟；allDone → 很好
+
+## 6. 画面对照
+- 一致：仰卧地面哑铃卧推、胸/大臂后面高亮（b7 第 10 行）
+- 极端错误：无
+
+## 7. 改了什么、为什么
+- 节奏按真实带练：一下 4.0 s（放 2.0 / 碰地 0.5 / 推 1.0 / 顶上 0.5），慢放快推；相位按真实做法从手臂在上开始，r2「相位方向反了」flag 不再适用
+- 「大臂和身体斜着约 45 度」→「斜着分开，别张成一字」
+- 难度 1/1 不变
+
+## 8. 待开哥定
+- 无
+
+## r3 第二遍（去套话，2026-11-14）
+
+跨动作重复的句子按这个动作真实怎么做、最容易错在哪重写（改前 → 改后）：
+
+- 注意事项1：先用轻哑铃，哪儿疼就停 → 先用轻哑铃，肩膀疼就放到大臂碰地前停（Start with light dumbbells. Stop if anything hurts. → Start light. If your shoulders hurt, stop just before your arms touch the floor.）

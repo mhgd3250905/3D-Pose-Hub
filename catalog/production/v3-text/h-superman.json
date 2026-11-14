@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-superman",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-superman-r2.js",
   "drill-anim/specs/h-superman.js"
@@ -11,15 +11,15 @@
   "en": "Superman"
  },
  "purpose": {
-  "zh": "练背部和臀部，让身体后面更有力",
-  "en": "Build your back and glutes for a stronger back side."
+  "zh": "练背和屁股，让身子后面更有劲",
+  "en": "Builds your back and butt so the back of your body gets stronger."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "手臂、胸口和双腿一起抬离垫子",
+    "zh": "两手、胸口和两腿一起抬离垫子",
     "en": "Lift your arms, chest and legs off the mat together"
    }
   },
@@ -28,32 +28,32 @@
    "primary": false,
    "text": {
     "zh": "肚子贴着垫子，眼睛看垫子。",
-    "en": "Keep your belly on the mat and your eyes down."
+    "en": "Belly stays on the mat, eyes down."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "顶端停一下，再慢慢放下。",
-    "en": "Pause at the top, then lower slowly."
+    "zh": "手脚抬离垫子停一下，再一起轻轻落回。",
+    "en": "Pause with arms and legs off the mat, then set them down together."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "抬头看前方",
+   "zh": "抬头往前看",
    "en": "Lifting your head to look forward."
   },
   {
-   "zh": "抬太高，腰被挤得发紧",
-   "en": "Lifting too high and squeezing the lower back."
+   "zh": "抬太高，腰挤得发紧",
+   "en": "Lifting so high your lower back feels pinched."
   }
  ],
  "cautions": [
   {
-   "zh": "腰不舒服时减小幅度，仍痛就停止",
-   "en": "If your lower back feels uncomfortable, reduce the range, and stop if it still hurts."
+   "zh": "腰发紧就只抬手或只抬腿",
+   "en": "If your lower back tightens, lift only your arms or only your legs."
   }
  ],
  "tags": {
@@ -82,16 +82,16 @@
  },
  "phases": {
   "start": {
-   "zh": "抬起",
+   "zh": "抬起来",
    "en": "Lift"
   },
   "peak": {
-   "zh": "保持住",
+   "zh": "停住",
    "en": "Hold"
   },
   "end": {
-   "zh": "放下",
-   "en": "Lower"
+   "zh": "慢慢放",
+   "en": "Lower slowly"
   }
  },
  "training": {
@@ -100,25 +100,21 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 0.7,
+    "seconds": 1.0,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 2.0,
+    "seconds": 1.5,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 0.6,
+    "seconds": 1.5,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 0.7
    }
   ],
-  "source": "spec-pulse-track r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -130,6 +126,94 @@
     "最终口径：按真实做法定（2026-11-01）"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 4.0 s → 4.0 s（抬 1.0 / 停 1.5 / 放 1.5）",
+    "「背部和臀部」→「背和屁股」；「减小幅度」→「抬低点」",
+    "难度 1/1 不变",
+    "r3 第二遍（去套话，2026-11-14）：2 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "3 组×10 次，休息 30 秒",
+     "3 组×10 次，休息 30 秒"
+    ],
+    "rep": [
+     "4.0 s",
+     "4.0 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：俯卧手腿一起抬、腰背高亮（b14 第 4 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 4.0,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "眼睛看垫子",
+    "en": "Eyes down",
+    "from": [
+     "cue2",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "别抬太高",
+    "en": "Not too high",
+    "from": [
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 8,
+    "role": "form",
+    "zh": "肚子贴垫子",
+    "en": "Belly on the mat",
+    "from": [
+     "cue2"
+    ]
+   },
+   {
+    "afterRep": 9,
+    "key": "p.last_rep"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.30"
+   ],
+   "allDone": [
+    "p.nice"
+   ]
   }
  }
 }

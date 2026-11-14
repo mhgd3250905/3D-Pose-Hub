@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-wall-pec",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-wall-pec-r5.js"
  ],
@@ -10,23 +10,23 @@
   "en": "Single-Arm Wall Pec Stretch"
  },
  "purpose": {
-  "zh": "拉伸胸部、肩膀前面和上臂前侧",
-  "en": "Stretch your chest, the front of your shoulder and the front of your upper arm."
+  "zh": "拉开胸口、肩膀前面和大臂前面",
+  "en": "Stretches your chest, the front of your shoulder and the front of your upper arm."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "手掌贴墙不动，身体慢慢转离墙面",
-    "en": "Keep your palm on the wall and slowly turn away from it"
+    "zh": "手掌贴墙不动，身子慢慢转开",
+    "en": "Palm stays on the wall, slowly turn your body away"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "手臂向后贴墙，和肩同高，肩膀往下沉。",
+    "zh": "手臂往后贴墙，跟肩膀一样高，肩膀往下放。",
     "en": "Arm back along the wall at shoulder height, shoulder down."
    }
   },
@@ -34,16 +34,16 @@
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "停住不动，慢慢呼吸。",
-    "en": "Stay still and breathe slowly."
+    "zh": "手掌钉在墙上，转到胸口前面有拉的感觉就停。",
+    "en": "Palm pinned to the wall. Stop turning when the front of your chest stretches."
    }
   },
   {
    "id": "cue4",
    "primary": false,
    "text": {
-    "zh": "每次呼气再放松一点，别来回颠。",
-    "en": "Each time you breathe out, relax a little deeper. No bouncing."
+    "zh": "呼气时脚往外挪半步，身子跟着再转开一点。",
+    "en": "Each breath out, shuffle your feet a little and turn a bit further."
    }
   }
  ],
@@ -57,14 +57,14 @@
    "en": "Holding your breath."
   },
   {
-   "zh": "来回颠着往下压",
-   "en": "Bouncing to go deeper."
+   "zh": "肩膀往前耸，拉到的是肩不是胸",
+   "en": "Shoulder rolling forward, so you stretch the shoulder, not the chest."
   }
  ],
  "cautions": [
   {
-   "zh": "肩膀疼时幅度小一点，还疼就停",
-   "en": "If your shoulder hurts, move less far, and stop if it still hurts."
+   "zh": "手发麻或肩膀前面刺疼，就把手放低一点",
+   "en": "If your hand tingles or the front of your shoulder hurts sharply, lower your hand."
   }
  ],
  "tags": {
@@ -96,12 +96,12 @@
    "en": "Turn away"
   },
   "peak": {
-   "zh": "保持，慢慢呼气",
-   "en": "Hold and breathe out"
+   "zh": "手掌贴墙",
+   "en": "Palm on the wall"
   },
   "end": {
-   "zh": "呼气再放松",
-   "en": "Relax a bit deeper"
+   "zh": "再转开点",
+   "en": "Turn further"
   }
  },
  "training": {
@@ -120,6 +120,115 @@
     "按用户决定改为静态保持计时，动画只作示意：30 秒×2 组/每侧，休息 15 秒；口令和要点改成进入—保持—呼气放松"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "剂量 每侧 2 组×30 秒、休息 15 秒不变；站着转身换手，不加换边准备",
+    "「胸部」→「胸口」；「幅度小一点」→「转少点」",
+    "难度 1/1 不变",
+    "r3 第二遍（去套话，2026-11-14）：7 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [
+    "预览帧几乎看不到胸口高亮，请看视频确认"
+   ],
+   "audit": {
+    "dose": [
+     "2 组×每侧30 秒，休息 15 秒",
+     "2 组×每侧30 秒，休息 15 秒"
+    ],
+    "rep": [
+     "计时",
+     "计时"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "动作一致：侧对墙一臂往后贴墙与肩同高；预览帧几乎看不到高亮（b16 第 1 行，非极端）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 4,
+    "role": "posture",
+    "zh": "肩膀往下放",
+    "en": "Shoulder down",
+    "from": [
+     "cue2",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "at": 12,
+    "role": "halfway",
+    "zh": "手掌贴住墙",
+    "en": "Palm stays on the wall",
+    "from": [
+     "cue1"
+    ]
+   },
+   {
+    "at": 20,
+    "role": "form",
+    "zh": "呼气，身子再转开",
+    "en": "Breathe out, turn away",
+    "from": [
+     "cue4"
+    ]
+   },
+   {
+    "at": 27,
+    "key": "n.3"
+   },
+   {
+    "at": 28,
+    "key": "n.2"
+   },
+   {
+    "at": 29,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSetsSameSide": [
+    "p.rest",
+    "sec.15"
+   ],
+   "sideDone": [
+    "p.release",
+    "p.switch_left"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
+  },
+  "sides": {
+   "order": [
+    "right",
+    "left"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边"
   }
  }
 }

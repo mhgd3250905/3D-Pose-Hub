@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "chest-B",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/data/drills.json",
   "drill-anim/specs/chest-B-r2.js",
@@ -12,52 +12,52 @@
   "en": "Deep Parallette Push-Up"
  },
  "purpose": {
-  "zh": "练胸部和手臂，比普通俯卧撑下得更深",
-  "en": "Build your chest and arms with a deeper push-up."
+  "zh": "练胸和手臂，比普通俯卧撑下得更深",
+  "en": "Builds your chest and arms with a push-up that goes deeper than usual."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "胸口沉到两手之间，手肘斜向后",
-    "en": "Sink your chest between your hands with elbows angled back"
+    "zh": "胸口沉到两手中间，手肘斜着往后",
+    "en": "Sink your chest between your hands, elbows angled back"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "推起后手臂伸直，再把地往下推远一点。",
-    "en": "At the top, straighten your arms and push the floor a little further away."
+    "zh": "推到顶手臂伸直，再把地往下推远一点。",
+    "en": "At the top, straighten your arms and push the floor a bit further away."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "身体保持一条直线，别塌腰。",
-    "en": "Keep your body in one straight line without sagging."
+    "zh": "从头到脚跟像一块板，别塌腰。",
+    "en": "Head to heels like one plank, no sagging."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "下得太深，肩膀往前顶",
-   "en": "Going so deep that the shoulders roll forward."
+   "zh": "下得太猛，肩膀往前顶",
+   "en": "Dropping so deep the shoulders roll forward."
   },
   {
-   "zh": "塌腰",
-   "en": "Letting the lower back sag."
+   "zh": "腰塌下去",
+   "en": "Hips sagging."
   }
  ],
  "cautions": [
   {
-   "zh": "肩前面夹着疼时，下浅一点",
-   "en": "If the front of your shoulder pinches, do not go as deep."
+   "zh": "肩膀前面夹着疼就下浅点；做不满 8 个就跪着做",
+   "en": "If the front of your shoulder pinches, don't go as deep. Can't get 8? Do them on your knees."
   },
   {
-   "zh": "手腕疼或发麻时停下",
+   "zh": "手腕疼或发麻就停",
    "en": "Stop if your wrists hurt or go numb."
   }
  ],
@@ -75,7 +75,7 @@
    "parallettes"
   ],
   "position": "plank",
-  "difficulty": 2
+  "difficulty": 3
  },
  "unilateral": false,
  "defaultDose": {
@@ -87,14 +87,14 @@
  "phases": {
   "start": {
    "zh": "沉下去",
-   "en": "Lower down"
+   "en": "Lower"
   },
   "peak": {
    "zh": "停一下",
    "en": "Pause"
   },
   "end": {
-   "zh": "推起",
+   "zh": "推起来",
    "en": "Push up"
   }
  },
@@ -104,25 +104,25 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 0.8,
+    "seconds": 1.5,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 0.7,
+    "seconds": 0.5,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 0.6,
+    "seconds": 1.0,
     "cue": "phase.end"
    },
    {
     "id": "rest",
-    "seconds": 1.9
+    "seconds": 0.5
    }
   ],
-  "source": "spec-pulse-track r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -132,6 +132,85 @@
    ],
    "flags": [
     "批表底部停 0.7 s，spec 写底部只停 0.25 s，按批表取值"
+   ]
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 4.0 s → 3.5 s（下放 1.5 / 底部 0.5 / 推起 1.0 / 顶部 0.5），力量型慢放快推；不再按动画关键帧切分",
+    "难度 v3 2 / ai-tags 3 → 统一 3",
+    "退阶写进注意事项：「做不满 8 个就跪着做」（开哥定）",
+    "文字改教练口吻（「像一块板」「把地往下推远一点」）"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "3 组×8 次，休息 60 秒",
+     "3 组×8 次，休息 60 秒"
+    ],
+    "rep": [
+     "4.0 s",
+     "3.5 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 2,
+      "ai": 3
+     },
+     3
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：平行杆、俯卧撑、胸部高亮",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 3.5,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "一块板，别塌腰",
+    "en": "One plank, no sagging",
+    "from": [
+     "cue3",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "肩膀别往前顶",
+    "en": "Shoulders back",
+    "from": [
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 7,
+    "key": "p.last_rep"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.60"
+   ],
+   "allDone": [
+    "p.nice"
    ]
   }
  }

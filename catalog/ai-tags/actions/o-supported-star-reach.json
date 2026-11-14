@@ -5,7 +5,7 @@
   "status": "ai-draft",
   "source": {
     "text": "catalog/production/v3-text/o-supported-star-reach.json",
-    "textSha256Lf": "52fdf657a59389a37dc8717635c8c70ce7222bf5a4d9927a9dda466e66ef1873",
+    "textSha256Lf": "e69ecb035e3a115d14e1156788d9dbca04b8cbf5e7ce4a7572d3f17c2973b307",
     "spec": "drill-anim/specs/o-supported-star-reach.js",
     "catalogV1": null
   },
@@ -75,7 +75,7 @@
       ]
     }
   ],
-  "difficulty": 2,
+  "difficulty": 1,
   "intensity": "low",
   "prerequisites": [
     "single-leg-supported"
@@ -155,6 +155,12 @@
         ]
       },
       "reason": "v3 粗粒度 id 按实际做法拆到 taxonomy id（core→abs/obliques，glutes→glute-max 或 hip-abductors，upper-back→scapular，lower-back→erectors），只稳定不推动的归稳定肌。"
+    },
+    {
+      "field": "difficulty",
+      "existing": 2,
+      "chosen": 1,
+      "reason": "r3 动作包核对（开哥 2026-11-13）：逐个重定，与 v3 tags.difficulty 同值。扶着椅子，比不扶版容易；ai-tags 原 2。"
     }
   ],
   "reviewNotes": []

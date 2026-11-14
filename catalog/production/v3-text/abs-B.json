@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "abs-B",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/data/drills.json",
   "drill-anim/specs/abs-B.js"
@@ -11,53 +11,53 @@
   "en": "Parallette Tuck L-Sit"
  },
  "purpose": {
-  "zh": "练腹部和抬腿的力量，提升撑住身体的能力",
-  "en": "Build your abs and leg-lifting strength while you hold yourself up."
+  "zh": "练肚子和抬腿的劲，两手把自己撑离地面",
+  "en": "Builds your abs and the strength to lift your legs while you hold yourself up."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "手臂撑直，膝盖抬到胸前",
-    "en": "Lock your arms and pull your knees to your chest"
+    "zh": "手臂撑直，膝盖往胸口收",
+    "en": "Lock your arms, pull your knees to your chest"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "肩膀往下压，别耸肩。",
-    "en": "Press your shoulders down, away from your ears."
+    "zh": "肩膀往下沉，离耳朵远点，别耸肩。",
+    "en": "Push your shoulders down away from your ears. No shrugging."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "做得稳了，再试着两腿轮流往前伸直。",
-    "en": "Once it feels steady, try straightening one leg forward, then the other."
+    "zh": "撑稳了再试着一条腿往前伸直，两条腿轮流。",
+    "en": "Once it's steady, try kicking one leg out straight, then the other."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "耸肩，脖子缩起来",
-   "en": "Shrugging and letting the neck shorten."
+   "zh": "耸肩，脖子缩没了",
+   "en": "Shrugging until your neck disappears."
   },
   {
-   "zh": "膝盖往下掉",
-   "en": "Letting the knees drop."
+   "zh": "膝盖一点点往下掉",
+   "en": "Knees slowly dropping."
   }
  ],
  "cautions": [
   {
-   "zh": "手腕疼或发麻时停下",
-   "en": "Stop if your wrists hurt or go numb."
+   "zh": "撑起来手腕吃全身重量，先转转手腕；刺疼就下来",
+   "en": "Your wrists hold all your weight here. Roll them out first, and come down if they get sharp pain."
   },
   {
-   "zh": "先活动手腕再做",
-   "en": "Warm up your wrists before you start."
+   "zh": "撑不起腿就脚尖点地，先只把身体撑住",
+   "en": "Can't lift your legs yet? Keep your toes down and just hold yourself up."
   }
  ],
  "tags": {
@@ -74,23 +74,23 @@
    "parallettes"
   ],
   "position": "other",
-  "difficulty": 2
+  "difficulty": 3
  },
  "unilateral": false,
  "defaultDose": {
-  "mode": "hold",
-  "sets": 4,
+  "mode": "time",
+  "sets": 3,
   "seconds": 10,
   "restSeconds": 60
  },
  "phases": {
   "start": {
-   "zh": "撑起团身",
-   "en": "Press up and tuck"
+   "zh": "撑起收腿",
+   "en": "Press up, tuck"
   },
   "peak": {
-   "zh": "保持住",
-   "en": "Hold"
+   "zh": "撑住",
+   "en": "Hold it"
   },
   "end": {
    "zh": "慢慢放下",
@@ -113,6 +113,84 @@
     "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "剂量 4 组×10 秒 → 3 组×10 秒，休息 60 秒不变：入门者撑 10 秒已很吃力，4 组偏多",
+    "难度 v3 2 / ai-tags 3 → 统一 3；退阶写进注意事项（脚尖点地只撑身体）",
+    "文字改教练口吻（「脖子缩没了」「离耳朵远点」），两条手腕注意事项合成一句",
+    "r3 第二遍（去套话，2026-11-14）：1 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "4 组×10 秒，休息 60 秒",
+     "3 组×10 秒，休息 60 秒"
+    ],
+    "rep": [
+     "计时",
+     "计时"
+    ],
+    "difficulty": [
+     {
+      "v3": 2,
+      "ai": 3
+     },
+     3
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：平行杆上团身撑起、腹部高亮",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 3,
+    "role": "posture",
+    "zh": "肩膀往下沉，别耸肩",
+    "en": "Shoulders down, no shrugging",
+    "from": [
+     "cue2",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "at": 7,
+    "key": "n.3"
+   },
+   {
+    "at": 8,
+    "key": "n.2"
+   },
+   {
+    "at": 9,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.release",
+    "p.rest",
+    "sec.60"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
   }
  }
 }

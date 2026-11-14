@@ -1,7 +1,7 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "h-db-front-raise",
- "reviewStatus": "ai-reviewed-r2-needs-user-review",
+ "reviewStatus": "ai-reviewed-r3-needs-user-review",
  "sources": [
   "drill-anim/specs/h-db-front-raise.js"
  ],
@@ -10,53 +10,53 @@
   "en": "Standing Dumbbell Front Raise"
  },
  "purpose": {
-  "zh": "练肩膀前侧",
-  "en": "Build the fronts of your shoulders."
+  "zh": "练肩膀前面",
+  "en": "Builds the fronts of your shoulders."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "手肘微弯别动，双臂往前抬到肩高",
-    "en": "Keep your elbows softly bent and raise your arms forward to shoulder height"
+    "zh": "手肘微弯别动，两臂往前抬到肩膀高",
+    "en": "Soft elbows, raise your arms forward to shoulder height"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "身体别往后仰，腿不借力。",
-    "en": "Do not lean back or use your legs."
+    "zh": "身子别往后仰，腿别跟着蹬。",
+    "en": "Don't lean back or bounce with your legs."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "慢慢放下，控制住重量。",
-    "en": "Lower slowly and control the weight."
+    "zh": "慢慢放下来，别让哑铃掉下去。",
+    "en": "Lower slowly. Don't let the weights drop."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "身体后仰把哑铃甩起来",
+   "zh": "身子往后仰，把哑铃甩起来",
    "en": "Leaning back to swing the weights up."
   },
   {
    "zh": "耸肩",
-   "en": "Shrugging the shoulders."
+   "en": "Shrugging."
   }
  ],
  "cautions": [
   {
-   "zh": "用轻重量，先做 1 组轻松的 6 次",
-   "en": "Use light weights and start with one easy set of 6 reps."
+   "zh": "用轻哑铃，先做 1 组轻松的 6 次",
+   "en": "Use light dumbbells and start with one easy set of 6."
   },
   {
-   "zh": "肩膀前面夹着疼时抬低一点",
-   "en": "If the front of your shoulder pinches, raise your arms lower."
+   "zh": "肩膀前面夹着疼就抬低点",
+   "en": "If the front of your shoulder pinches, don't raise as high."
   }
  ],
  "tags": {
@@ -91,7 +91,7 @@
    "en": "Pause"
   },
   "end": {
-   "zh": "慢放下",
+   "zh": "慢慢放",
    "en": "Lower slowly"
   }
  },
@@ -101,25 +101,21 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 0.8,
+    "seconds": 1.0,
     "cue": "phase.start"
    },
    {
     "id": "hold",
-    "seconds": 1.1,
+    "seconds": 0.5,
     "cue": "phase.peak"
    },
    {
     "id": "back",
-    "seconds": 1.0,
+    "seconds": 1.5,
     "cue": "phase.end"
-   },
-   {
-    "id": "rest",
-    "seconds": 1.1
    }
   ],
-  "source": "spec-pulse-track r2"
+  "source": "real-tempo r3"
  },
  "review": {
   "r2": {
@@ -130,6 +126,94 @@
     "节奏核对：动画顶点真正静止约 0.6 秒（<0.8），rep_hold 改为 rep_updown"
    ],
    "flags": []
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 4.0 s → 3.0 s（抬 1.0 / 停 0.5 / 放 1.5）",
+    "「控制住重量」→「别让哑铃掉下去」",
+    "难度 1/1 不变",
+    "r3 第二遍（去套话，2026-11-14）：1 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "3 组×10 次，休息 45 秒",
+     "3 组×10 次，休息 45 秒"
+    ],
+    "rep": [
+     "4.0 s",
+     "3.0 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：站姿双哑铃前平举到肩高、肩前高亮（b8 第 1 行）",
+    "extreme": null
+   }
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 3.0,
+  "phaseCues": "first-2-reps",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "别后仰甩铃",
+    "en": "Don't lean and swing",
+    "from": [
+     "cue2",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "肩膀别耸",
+    "en": "Shoulders down",
+    "from": [
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 8,
+    "role": "form",
+    "zh": "慢慢放，别掉",
+    "en": "Lower slowly",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "afterRep": 9,
+    "key": "p.last_rep"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.45"
+   ],
+   "allDone": [
+    "p.nice"
+   ]
   }
  }
 }
