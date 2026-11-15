@@ -1,0 +1,26 @@
+# o-stand-lunge 扶椅弓步拉胯前（voice-no-tempo-r1）
+
+- 剂量：2 组 × 30 秒；voiceGuide.mode = `hold`
+- 依据：开哥 2026-11-14 23:45/23:47（SF 测试）——计数之间不念「蹲过去、踩住」这类按节拍的动作口令，不干扰用户自己的速度和节奏；只留报数 + 「怎么做对」的要领讲解。
+- 结论：引导句 3 → 3 句：去掉节拍/速度指令和短口令，只留怎么做对的要领
+
+## 引导句
+
+改前（orig 原文）：
+
+- `@4` 夹紧屁股 / Squeeze your butt ——太短，像口令（中文 <5 字或英文 <3 词）
+- `@12` 肚子别往前挺 / Don't push your belly out
+- `@20` 呼气，屁股再夹紧 / Breathe out, squeeze more ——节拍/速度指令词 呼气、再夹、breathe (in|out)
+
+改后：
+
+- `@4` 屁股夹紧，胯往前推 / Butt squeezed, hips forward（新写）
+- `@12` 肚子别往前挺 / Don't push your belly out（保留）
+- `@20` 屁股夹得越紧，胯前面拉得越开 / The harder you squeeze, the more the hip opens（新写）
+
+## 发布时要重合成的语音
+
+- `g.set.1` zh：屁股夹紧，胯往前推
+- `g.set.1` en：Butt squeezed, hips forward
+- `g.set.3` zh：屁股夹得越紧，胯前面拉得越开
+- `g.set.3` en：The harder you squeeze, the more the hip opens

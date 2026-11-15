@@ -1,0 +1,24 @@
+# n-wide-fold 站姿宽距体前屈（扶椅）（voice-no-tempo-r1）
+
+- 剂量：2 组 × 30 秒；voiceGuide.mode = `hold`
+- 依据：开哥 2026-11-14 23:45/23:47（SF 测试）——计数之间不念「蹲过去、踩住」这类按节拍的动作口令，不干扰用户自己的速度和节奏；只留报数 + 「怎么做对」的要领讲解。
+- 结论：引导句 3 → 3 句：去掉节拍/速度指令和短口令，只留怎么做对的要领
+
+## 引导句
+
+改前（orig 原文）：
+
+- `@4` 胸口往前送，背别弓 / Chest forward, back long
+- `@12` 膝盖别锁死 / Soft knees ——太短，像口令（中文 <5 字或英文 <3 词）
+- `@20` 屁股往后，胸口往下 / Hips back, chest down
+
+改后：
+
+- `@4` 胸口往前送，背别弓 / Chest forward, back long（保留）
+- `@12` 膝盖伸直但留一点松，不锁死 / Knees straight but soft, not locked（新写）
+- `@20` 屁股往后，胸口往下 / Hips back, chest down（保留）
+
+## 发布时要重合成的语音
+
+- `g.set.2` zh：膝盖伸直但留一点松，不锁死
+- `g.set.2` en：Knees straight but soft, not locked

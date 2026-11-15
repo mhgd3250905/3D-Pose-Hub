@@ -106,18 +106,15 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 1.5,
-    "cue": "phase.start"
+    "seconds": 1.5
    },
    {
     "id": "hold",
-    "seconds": 0.5,
-    "cue": "phase.peak"
+    "seconds": 0.5
    },
    {
     "id": "back",
-    "seconds": 1.5,
-    "cue": "phase.end"
+    "seconds": 1.5
    }
   ],
   "perSide": "alternate",
@@ -165,6 +162,13 @@
     "frame": "一致：侧弓步、大腿内侧/前面高亮（b11 第 5 行）",
     "extreme": null
    }
+  },
+  "voice-no-tempo-r1": {
+   "changes": [
+    "去掉相位口令绑定（training.phases 的 phase.* 标记），voiceGuide.phaseCues 改为 none：前 2 下不再念「跨步下坐/稳住/蹬回来」"
+   ],
+   "flags": [],
+   "by": "开哥 2026-11-14 23:45（SF 测试反馈）"
   }
  },
  "voiceGuide": {
@@ -178,7 +182,7 @@
   "sharedVocabulary": "catalog/voice-v2/script.json#common",
   "repSeconds": 7.0,
   "repUnit": "left+right",
-  "phaseCues": "first-2-reps",
+  "phaseCues": "none",
   "count": {
    "key": "n.{rep}",
    "at": "rep-end"

@@ -97,18 +97,15 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 1.0,
-    "cue": "phase.start"
+    "seconds": 1.0
    },
    {
     "id": "hold",
-    "seconds": 0.3,
-    "cue": "phase.peak"
+    "seconds": 0.3
    },
    {
     "id": "back",
-    "seconds": 2.0,
-    "cue": "phase.end"
+    "seconds": 2.0
    },
    {
     "id": "rest",
@@ -158,6 +155,14 @@
     "frame": "一致：坐凳、前臂搭大腿、哑铃卷腕、前臂高亮（batch-02 第 7 行）",
     "extreme": null
    }
+  },
+  "voice-no-tempo-r1": {
+   "changes": [
+    "去掉相位口令绑定（training.phases 的 phase.* 标记），voiceGuide.phaseCues 改为 none：前 2 下不再念「往上卷/停一下/慢慢放」",
+    "引导句 4 → 2 句：去掉节拍/速度指令和短口令，只留怎么做对的要领"
+   ],
+   "flags": [],
+   "by": "开哥 2026-11-14 23:45（SF 测试反馈）"
   }
  },
  "voiceGuide": {
@@ -170,7 +175,7 @@
   },
   "sharedVocabulary": "catalog/voice-v2/script.json#common",
   "repSeconds": 3.5,
-  "phaseCues": "first-2-reps",
+  "phaseCues": "none",
   "count": {
    "key": "n.{rep}",
    "at": "rep-end"
@@ -187,31 +192,12 @@
     ]
    },
    {
-    "afterRep": 5,
-    "role": "form",
-    "zh": "慢慢放到底",
-    "en": "All the way down, slowly",
-    "from": [
-     "cue2"
-    ]
-   },
-   {
     "afterRep": 8,
     "role": "halfway",
-    "zh": "别甩",
-    "en": "No swinging",
+    "zh": "手腕往下卷到最低",
+    "en": "Full range at the wrist",
     "from": [
-     "commonErrors[0]"
-    ]
-   },
-   {
-    "afterRep": 11,
-    "role": "form",
-    "zh": "前臂别抬，只动手腕",
-    "en": "Only the wrist moves",
-    "from": [
-     "cue1",
-     "commonErrors[1]"
+     "cue2"
     ]
    },
    {

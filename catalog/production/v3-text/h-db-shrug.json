@@ -97,18 +97,15 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 1.0,
-    "cue": "phase.start"
+    "seconds": 1.0
    },
    {
     "id": "hold",
-    "seconds": 1.0,
-    "cue": "phase.peak"
+    "seconds": 1.0
    },
    {
     "id": "back",
-    "seconds": 1.0,
-    "cue": "phase.end"
+    "seconds": 1.0
    }
   ],
   "source": "real-tempo r3"
@@ -152,6 +149,14 @@
     "frame": "动作一致：站姿双手提哑铃耸肩；预览帧几乎看不到高亮（b9 第 2 行，非极端）",
     "extreme": null
    }
+  },
+  "voice-no-tempo-r1": {
+   "changes": [
+    "去掉相位口令绑定（training.phases 的 phase.* 标记），voiceGuide.phaseCues 改为 none：前 2 下不再念「往上耸/停一下/放下」",
+    "引导句 3 → 2 句：去掉节拍/速度指令和短口令，只留怎么做对的要领"
+   ],
+   "flags": [],
+   "by": "开哥 2026-11-14 23:45（SF 测试反馈）"
   }
  },
  "voiceGuide": {
@@ -164,7 +169,7 @@
   },
   "sharedVocabulary": "catalog/voice-v2/script.json#common",
   "repSeconds": 3.0,
-  "phaseCues": "first-2-reps",
+  "phaseCues": "none",
   "count": {
    "key": "n.{rep}",
    "at": "rep-end"
@@ -181,21 +186,12 @@
     ]
    },
    {
-    "afterRep": 5,
-    "role": "halfway",
-    "zh": "腿别弹",
-    "en": "Don't bounce",
+    "afterRep": 6,
+    "role": "form",
+    "zh": "腿不弹，只动肩膀",
+    "en": "Legs still, only shoulders move",
     "from": [
      "commonErrors[1]"
-    ]
-   },
-   {
-    "afterRep": 8,
-    "role": "form",
-    "zh": "肩膀碰耳朵停住",
-    "en": "Shoulders to ears, hold",
-    "from": [
-     "cue3"
     ]
    },
    {

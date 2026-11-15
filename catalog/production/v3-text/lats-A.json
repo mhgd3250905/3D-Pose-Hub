@@ -96,18 +96,15 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 1.0,
-    "cue": "phase.start"
+    "seconds": 1.0
    },
    {
     "id": "hold",
-    "seconds": 2.0,
-    "cue": "phase.peak"
+    "seconds": 2.0
    },
    {
     "id": "back",
-    "seconds": 1.0,
-    "cue": "phase.end"
+    "seconds": 1.0
    }
   ],
   "source": "real-tempo r3"
@@ -152,6 +149,14 @@
     "frame": "一致：坐地腿伸直、两手撑身旁把屁股撑起、背阔高亮（b17 第 3 行）",
     "extreme": null
    }
+  },
+  "voice-no-tempo-r1": {
+   "changes": [
+    "去掉相位口令绑定（training.phases 的 phase.* 标记），voiceGuide.phaseCues 改为 none：前 2 下不再念「往下压/停住/放下」",
+    "引导句 2 → 2 句：去掉节拍/速度指令和短口令，只留怎么做对的要领"
+   ],
+   "flags": [],
+   "by": "开哥 2026-11-14 23:45（SF 测试反馈）"
   }
  },
  "voiceGuide": {
@@ -164,7 +169,7 @@
   },
   "sharedVocabulary": "catalog/voice-v2/script.json#common",
   "repSeconds": 4.0,
-  "phaseCues": "first-2-reps",
+  "phaseCues": "none",
   "count": {
    "key": "n.{rep}",
    "at": "rep-end"
@@ -173,8 +178,8 @@
    {
     "afterRep": 2,
     "role": "form",
-    "zh": "手臂伸直",
-    "en": "Arms straight",
+    "zh": "手臂一直伸直，不弯手肘",
+    "en": "Arms straight, elbows unbent",
     "from": [
      "cue1",
      "commonErrors[0]"
@@ -183,8 +188,8 @@
    {
     "afterRep": 5,
     "role": "halfway",
-    "zh": "肩膀往下压，把身子顶起",
-    "en": "Shoulders down, push up",
+    "zh": "肩膀往下压，离耳朵远",
+    "en": "Shoulders pressed away from ears",
     "from": [
      "cue1"
     ]

@@ -96,18 +96,15 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 1.5,
-    "cue": "phase.start"
+    "seconds": 1.5
    },
    {
     "id": "hold",
-    "seconds": 2.0,
-    "cue": "phase.peak"
+    "seconds": 2.0
    },
    {
     "id": "back",
-    "seconds": 1.5,
-    "cue": "phase.end"
+    "seconds": 1.5
    }
   ],
   "source": "real-tempo r3"
@@ -155,6 +152,13 @@
     "frame": "一致：俯卧手撑抬起上身（眼镜蛇）、肚子/胯前淡高亮（b7 第 3 行）",
     "extreme": null
    }
+  },
+  "voice-no-tempo-r1": {
+   "changes": [
+    "去掉相位口令绑定（training.phases 的 phase.* 标记），voiceGuide.phaseCues 改为 none：前 2 下不再念「抬胸口/停住，喘气/慢慢趴下」"
+   ],
+   "flags": [],
+   "by": "开哥 2026-11-14 23:45（SF 测试反馈）"
   }
  },
  "voiceGuide": {
@@ -167,7 +171,7 @@
   },
   "sharedVocabulary": "catalog/voice-v2/script.json#common",
   "repSeconds": 5.0,
-  "phaseCues": "first-2-reps",
+  "phaseCues": "none",
   "count": {
    "key": "n.{rep}",
    "at": "rep-end"

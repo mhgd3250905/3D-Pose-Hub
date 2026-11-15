@@ -98,18 +98,15 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 1.0,
-    "cue": "phase.start"
+    "seconds": 1.0
    },
    {
     "id": "hold",
-    "seconds": 2.0,
-    "cue": "phase.peak"
+    "seconds": 2.0
    },
    {
     "id": "back",
-    "seconds": 1.0,
-    "cue": "phase.end"
+    "seconds": 1.0
    }
   ],
   "perSide": "each-side-separately",
@@ -155,6 +152,14 @@
     "frame": "一致：俯卧屈膝往上抬腿、屁股高亮（b17 第 10 行）",
     "extreme": null
    }
+  },
+  "voice-no-tempo-r1": {
+   "changes": [
+    "去掉相位口令绑定（training.phases 的 phase.* 标记），voiceGuide.phaseCues 改为 none：前 2 下不再念「抬腿/停住/放下」",
+    "引导句 3 → 2 句：去掉节拍/速度指令和短口令，只留怎么做对的要领"
+   ],
+   "flags": [],
+   "by": "开哥 2026-11-14 23:45（SF 测试反馈）"
   }
  },
  "voiceGuide": {
@@ -167,7 +172,7 @@
   },
   "sharedVocabulary": "catalog/voice-v2/script.json#common",
   "repSeconds": 4.0,
-  "phaseCues": "first-2-reps",
+  "phaseCues": "none",
   "count": {
    "key": "n.{rep}",
    "at": "rep-end"
@@ -176,29 +181,21 @@
    {
     "afterRep": 2,
     "role": "form",
-    "zh": "腰别拱",
-    "en": "Don't arch",
+    "zh": "大腿只离地几厘米，腰不拱",
+    "en": "Thigh just clears the floor, no arch",
     "from": [
      "cue1",
+     "cue3",
      "commonErrors[0]"
     ]
    },
    {
     "afterRep": 5,
     "role": "halfway",
-    "zh": "两边胯贴地",
-    "en": "Hips down",
+    "zh": "两边胯都贴着地",
+    "en": "Both hips stay on the floor",
     "from": [
      "commonErrors[1]"
-    ]
-   },
-   {
-    "afterRep": 8,
-    "role": "form",
-    "zh": "停 2 秒",
-    "en": "Hold 2",
-    "from": [
-     "cue3"
     ]
    },
    {

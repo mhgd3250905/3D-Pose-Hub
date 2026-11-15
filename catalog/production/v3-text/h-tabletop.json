@@ -103,18 +103,15 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 1.0,
-    "cue": "phase.start"
+    "seconds": 1.0
    },
    {
     "id": "hold",
-    "seconds": 1.0,
-    "cue": "phase.peak"
+    "seconds": 1.0
    },
    {
     "id": "back",
-    "seconds": 1.5,
-    "cue": "phase.end"
+    "seconds": 1.5
    }
   ],
   "source": "real-tempo r3"
@@ -156,6 +153,14 @@
     "frame": "一致：反向桌式（面朝上手撑地、屁股抬平）、胸/肩前高亮（b14 第 10 行）",
     "extreme": null
    }
+  },
+  "voice-no-tempo-r1": {
+   "changes": [
+    "去掉相位口令绑定（training.phases 的 phase.* 标记），voiceGuide.phaseCues 改为 none：前 2 下不再念「抬起来/停住/慢慢放」",
+    "引导句 3 → 2 句：去掉节拍/速度指令和短口令，只留怎么做对的要领"
+   ],
+   "flags": [],
+   "by": "开哥 2026-11-14 23:45（SF 测试反馈）"
   }
  },
  "voiceGuide": {
@@ -168,7 +173,7 @@
   },
   "sharedVocabulary": "catalog/voice-v2/script.json#common",
   "repSeconds": 3.5,
-  "phaseCues": "first-2-reps",
+  "phaseCues": "none",
   "count": {
    "key": "n.{rep}",
    "at": "rep-end"
@@ -177,8 +182,8 @@
    {
     "afterRep": 2,
     "role": "form",
-    "zh": "屁股抬平",
-    "en": "Hips level",
+    "zh": "屁股抬到跟膝盖一样平",
+    "en": "Hips level with your knees",
     "from": [
      "cue1",
      "commonErrors[0]"
@@ -187,19 +192,11 @@
    {
     "afterRep": 5,
     "role": "halfway",
-    "zh": "肩膀别耸",
-    "en": "Shoulders down",
+    "zh": "胸口打开，肩膀不耸",
+    "en": "Chest open, shoulders low",
     "from": [
+     "cue3",
      "commonErrors[1]"
-    ]
-   },
-   {
-    "afterRep": 8,
-    "role": "form",
-    "zh": "胸口打开",
-    "en": "Open your chest",
-    "from": [
-     "cue3"
     ]
    },
    {

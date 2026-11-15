@@ -112,18 +112,15 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 2.0,
-    "cue": "phase.start"
+    "seconds": 2.0
    },
    {
     "id": "hold",
-    "seconds": 0.5,
-    "cue": "phase.peak"
+    "seconds": 0.5
    },
    {
     "id": "back",
-    "seconds": 2.0,
-    "cue": "phase.end"
+    "seconds": 2.0
    },
    {
     "id": "rest",
@@ -173,6 +170,14 @@
     "frame": "一致：四点跪拱背、上背/腰背高亮（b6 第 1–2 行）",
     "extreme": null
    }
+  },
+  "voice-no-tempo-r1": {
+   "changes": [
+    "去掉相位口令绑定（training.phases 的 phase.* 标记），voiceGuide.phaseCues 改为 none：前 2 下不再念「拱背/停一下/抬胸塌腰」",
+    "引导句 2 → 2 句：去掉节拍/速度指令和短口令，只留怎么做对的要领"
+   ],
+   "flags": [],
+   "by": "开哥 2026-11-14 23:45（SF 测试反馈）"
   }
  },
  "voiceGuide": {
@@ -185,7 +190,7 @@
   },
   "sharedVocabulary": "catalog/voice-v2/script.json#common",
   "repSeconds": 5.0,
-  "phaseCues": "first-2-reps",
+  "phaseCues": "none",
   "count": {
    "key": "n.{rep}",
    "at": "rep-end"
@@ -194,8 +199,8 @@
    {
     "afterRep": 2,
     "role": "form",
-    "zh": "慢慢来，别甩头",
-    "en": "Slow, don't throw your head",
+    "zh": "头跟着身子自然动，脖子别甩",
+    "en": "Head follows the spine, no neck flicking",
     "from": [
      "cue3",
      "commonErrors[0]"

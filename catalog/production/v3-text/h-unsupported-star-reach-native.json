@@ -106,18 +106,15 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 1.0,
-    "cue": "phase.start"
+    "seconds": 1.0
    },
    {
     "id": "hold",
-    "seconds": 0.5,
-    "cue": "phase.peak"
+    "seconds": 0.5
    },
    {
     "id": "back",
-    "seconds": 1.0,
-    "cue": "phase.end"
+    "seconds": 1.0
    }
   ],
   "perSide": "each-side-separately",
@@ -165,6 +162,14 @@
     "frame": "一致：单腿站、另一脚往外点地、大腿/屁股淡高亮（b15 第 6 行）",
     "extreme": null
    }
+  },
+  "voice-no-tempo-r1": {
+   "changes": [
+    "去掉相位口令绑定（training.phases 的 phase.* 标记），voiceGuide.phaseCues 改为 none：前 2 下不再念「点地/稳住/收回」",
+    "引导句 1 → 1 句：去掉节拍/速度指令和短口令，只留怎么做对的要领"
+   ],
+   "flags": [],
+   "by": "开哥 2026-11-14 23:45（SF 测试反馈）"
   }
  },
  "voiceGuide": {
@@ -177,7 +182,7 @@
   },
   "sharedVocabulary": "catalog/voice-v2/script.json#common",
   "repSeconds": 2.5,
-  "phaseCues": "first-2-reps",
+  "phaseCues": "none",
   "count": {
    "key": "n.{rep}",
    "at": "rep-end"
@@ -186,8 +191,8 @@
    {
     "afterRep": 2,
     "role": "halfway",
-    "zh": "脚尖轻轻点",
-    "en": "Light tap",
+    "zh": "脚尖轻点不压",
+    "en": "Light toe taps",
     "from": [
      "cue1",
      "commonErrors[0]"

@@ -95,18 +95,15 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 1.5,
-    "cue": "phase.start"
+    "seconds": 1.5
    },
    {
     "id": "hold",
-    "seconds": 3.0,
-    "cue": "phase.peak"
+    "seconds": 3.0
    },
    {
     "id": "back",
-    "seconds": 1.5,
-    "cue": "phase.end"
+    "seconds": 1.5
    }
   ],
   "source": "real-tempo r3"
@@ -151,6 +148,14 @@
     "frame": "一致：站姿两臂往后伸、胸/肩前高亮（b13 第 5 行）",
     "extreme": null
    }
+  },
+  "voice-no-tempo-r1": {
+   "changes": [
+    "去掉相位口令绑定（training.phases 的 phase.* 标记），voiceGuide.phaseCues 改为 none：前 2 下不再念「往后抬/停住，喘气/慢慢放」",
+    "引导句 1 → 1 句：去掉节拍/速度指令和短口令，只留怎么做对的要领"
+   ],
+   "flags": [],
+   "by": "开哥 2026-11-14 23:45（SF 测试反馈）"
   }
  },
  "voiceGuide": {
@@ -163,7 +168,7 @@
   },
   "sharedVocabulary": "catalog/voice-v2/script.json#common",
   "repSeconds": 6.0,
-  "phaseCues": "first-2-reps",
+  "phaseCues": "none",
   "count": {
    "key": "n.{rep}",
    "at": "rep-end"
@@ -172,11 +177,12 @@
    {
     "afterRep": 2,
     "role": "halfway",
-    "zh": "上身别往前倒",
-    "en": "Stay upright",
+    "zh": "上身直立不往前倒，肚子别往前挺",
+    "en": "Stay upright, belly not pushing forward",
     "from": [
      "cue3",
-     "commonErrors[0]"
+     "commonErrors[0]",
+     "commonErrors[1]"
     ]
    },
    {

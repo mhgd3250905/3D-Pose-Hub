@@ -103,18 +103,15 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 1.0,
-    "cue": "phase.start"
+    "seconds": 1.0
    },
    {
     "id": "hold",
-    "seconds": 0.8,
-    "cue": "phase.peak"
+    "seconds": 0.8
    },
    {
     "id": "back",
-    "seconds": 1.2,
-    "cue": "phase.end"
+    "seconds": 1.2
    }
   ],
   "perSide": "each-side-separately",
@@ -161,6 +158,14 @@
     "frame": "一致：站姿侧对柱子、肘贴身弹力带往里转、胸/肩前高亮（b4 第 6 行）",
     "extreme": null
    }
+  },
+  "voice-no-tempo-r1": {
+   "changes": [
+    "去掉相位口令绑定（training.phases 的 phase.* 标记），voiceGuide.phaseCues 改为 none：前 2 下不再念「往里转/停一下/转回」",
+    "引导句 2 → 2 句：去掉节拍/速度指令和短口令，只留怎么做对的要领"
+   ],
+   "flags": [],
+   "by": "开哥 2026-11-14 23:45（SF 测试反馈）"
   }
  },
  "voiceGuide": {
@@ -173,7 +178,7 @@
   },
   "sharedVocabulary": "catalog/voice-v2/script.json#common",
   "repSeconds": 3.0,
-  "phaseCues": "first-2-reps",
+  "phaseCues": "none",
   "count": {
    "key": "n.{rep}",
    "at": "rep-end"
@@ -192,8 +197,8 @@
    {
     "afterRep": 5,
     "role": "halfway",
-    "zh": "身子别转",
-    "en": "Body stays still",
+    "zh": "只转小臂，身子不动",
+    "en": "Forearm turns, body doesn't",
     "from": [
      "commonErrors[1]"
     ]

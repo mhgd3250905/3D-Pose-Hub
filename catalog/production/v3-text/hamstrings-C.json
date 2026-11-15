@@ -99,18 +99,15 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 4.0,
-    "cue": "phase.start"
+    "seconds": 4.0
    },
    {
     "id": "hold",
-    "seconds": 0.5,
-    "cue": "phase.peak"
+    "seconds": 0.5
    },
    {
     "id": "back",
-    "seconds": 1.5,
-    "cue": "phase.end"
+    "seconds": 1.5
    }
   ],
   "source": "real-tempo r3"
@@ -154,6 +151,13 @@
     "frame": "一致：GHD 上脚勾住往前倒、大腿后高亮（b16 第 6 行）",
     "extreme": null
    }
+  },
+  "voice-no-tempo-r1": {
+   "changes": [
+    "去掉相位口令绑定（training.phases 的 phase.* 标记），voiceGuide.phaseCues 改为 none：前 2 下不再念「慢慢往前倒/稳住/拉回来」"
+   ],
+   "flags": [],
+   "by": "开哥 2026-11-14 23:45（SF 测试反馈）"
   }
  },
  "voiceGuide": {
@@ -166,7 +170,7 @@
   },
   "sharedVocabulary": "catalog/voice-v2/script.json#common",
   "repSeconds": 6.0,
-  "phaseCues": "first-2-reps",
+  "phaseCues": "none",
   "count": {
    "key": "n.{rep}",
    "at": "rep-end"

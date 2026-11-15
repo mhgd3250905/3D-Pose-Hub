@@ -107,18 +107,15 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 1.0,
-    "cue": "phase.start"
+    "seconds": 1.0
    },
    {
     "id": "hold",
-    "seconds": 0.5,
-    "cue": "phase.peak"
+    "seconds": 0.5
    },
    {
     "id": "back",
-    "seconds": 2.0,
-    "cue": "phase.end"
+    "seconds": 2.0
    }
   ],
   "perSide": "alternate",
@@ -167,6 +164,14 @@
     "frame": "一致：分腿坐、指尖在一条腿两边、胯前高亮（batch-24 第 4 行）",
     "extreme": null
    }
+  },
+  "voice-no-tempo-r1": {
+   "changes": [
+    "去掉相位口令绑定（training.phases 的 phase.* 标记），voiceGuide.phaseCues 改为 none：前 2 下不再念「抬起/停一下/放下换边」",
+    "引导句 1 → 1 句：去掉节拍/速度指令和短口令，只留怎么做对的要领"
+   ],
+   "flags": [],
+   "by": "开哥 2026-11-14 23:45（SF 测试反馈）"
   }
  },
  "voiceGuide": {
@@ -180,7 +185,7 @@
   "sharedVocabulary": "catalog/voice-v2/script.json#common",
   "repSeconds": 7.0,
   "repUnit": "left+right",
-  "phaseCues": "first-2-reps",
+  "phaseCues": "none",
   "count": {
    "key": "n.{rep}",
    "at": "rep-end"
@@ -189,10 +194,11 @@
    {
     "afterRep": 2,
     "role": "halfway",
-    "zh": "别往后仰",
-    "en": "Don't lean back",
+    "zh": "上身不往后倒，抬起的腿膝盖伸直",
+    "en": "Torso stays forward, lifted knee straight",
     "from": [
-     "commonErrors[0]"
+     "commonErrors[0]",
+     "commonErrors[1]"
     ]
    },
    {

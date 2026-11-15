@@ -101,18 +101,15 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 1.0,
-    "cue": "phase.start"
+    "seconds": 1.0
    },
    {
     "id": "hold",
-    "seconds": 1.0,
-    "cue": "phase.peak"
+    "seconds": 1.0
    },
    {
     "id": "back",
-    "seconds": 1.5,
-    "cue": "phase.end"
+    "seconds": 1.5
    }
   ],
   "source": "real-tempo r3"
@@ -159,6 +156,14 @@
     "frame": "一致：俯身哑铃臂屈伸、大臂后面高亮（b8 第 3 行）",
     "extreme": null
    }
+  },
+  "voice-no-tempo-r1": {
+   "changes": [
+    "去掉相位口令绑定（training.phases 的 phase.* 标记），voiceGuide.phaseCues 改为 none：前 2 下不再念「往后伸直/停一下/慢慢弯回」",
+    "引导句 3 → 2 句：去掉节拍/速度指令和短口令，只留怎么做对的要领"
+   ],
+   "flags": [],
+   "by": "开哥 2026-11-14 23:45（SF 测试反馈）"
   }
  },
  "voiceGuide": {
@@ -171,7 +176,7 @@
   },
   "sharedVocabulary": "catalog/voice-v2/script.json#common",
   "repSeconds": 3.5,
-  "phaseCues": "first-2-reps",
+  "phaseCues": "none",
   "count": {
    "key": "n.{rep}",
    "at": "rep-end"
@@ -180,30 +185,21 @@
    {
     "afterRep": 2,
     "role": "form",
-    "zh": "大臂别甩",
-    "en": "Don't swing your upper arms",
+    "zh": "大臂贴住身体不动",
+    "en": "Upper arm pinned to your side",
     "from": [
      "cue1",
      "commonErrors[0]"
     ]
    },
    {
-    "afterRep": 5,
-    "role": "halfway",
+    "afterRep": 6,
+    "role": "form",
     "zh": "上身前倾，背别拱",
     "en": "Lean forward, back flat",
     "from": [
      "cue2",
      "commonErrors[1]"
-    ]
-   },
-   {
-    "afterRep": 8,
-    "role": "form",
-    "zh": "伸直了停一下",
-    "en": "Pause at straight",
-    "from": [
-     "cue3"
     ]
    },
    {

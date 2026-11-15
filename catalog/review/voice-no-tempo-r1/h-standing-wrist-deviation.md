@@ -1,0 +1,33 @@
+# h-standing-wrist-deviation 站姿手腕侧摆（voice-no-tempo-r1）
+
+- 剂量：2 组 × 10 次；voiceGuide.mode = `reps`，一下 2.5 s
+- 依据：开哥 2026-11-14 23:45/23:47（SF 测试）——计数之间不念「蹲过去、踩住」这类按节拍的动作口令，不干扰用户自己的速度和节奏；只留报数 + 「怎么做对」的要领讲解。
+- 结论：去掉相位口令绑定（training.phases 的 phase.* 标记），voiceGuide.phaseCues 改为 none：前 2 下不再念「摆过去/停一下/回中间」；引导句 3 → 2 句：去掉节拍/速度指令和短口令，只留怎么做对的要领
+
+## 相位口令（前 2 下念）
+
+- 改前：`phaseCues: first-2-reps`，training.phases 绑定 go@phase.start, hold@phase.peak, back@phase.end → 前 2 下念「摆过去 / 停一下 / 回中间」（Tilt / Pause / Center）
+- 改后：`phaseCues: none`，training.phases 去掉 `cue` 标记，整组只报数（phases 文字保留在 JSON 里，不再念）
+
+## 引导句
+
+改前（orig 原文）：
+
+- `r2` 小臂别转 / Forearm still ——太短，像口令（中文 <5 字或英文 <3 词）
+- `r5` 胳膊别晃 / Arm stays still ——太短，像口令（中文 <5 字或英文 <3 词）
+- `r8` 慢慢摆，别硬掰 / Slow, no forcing ——节拍/速度指令词 慢慢、慢、slow(ly|er)?
+
+改后：
+
+- `r2` 小臂不跟着转 / Forearm stays still（新写）
+- `r5` 摆到哪算哪 / No forcing it（新写）
+
+- 最后：倒数第 2 下报数后念 `p.last_rep`「最后一次」（报数类，保留）
+
+## 发布时要重合成的语音
+
+- `g.rem.0` zh：小臂不跟着转
+- `g.rem.0` en：Forearm stays still
+- `g.rem.1` zh：摆到哪算哪
+- `g.rem.1` en：No forcing it
+- 作废：g.rem.2

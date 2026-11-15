@@ -107,18 +107,15 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 6.0,
-    "cue": "phase.start"
+    "seconds": 6.0
    },
    {
     "id": "hold",
-    "seconds": 1.5,
-    "cue": "phase.peak"
+    "seconds": 1.5
    },
    {
     "id": "back",
-    "seconds": 6.0,
-    "cue": "phase.end"
+    "seconds": 6.0
    },
    {
     "id": "rest",
@@ -172,6 +169,15 @@
     "frame": "一致：半程土耳其起立到高桥、哑铃举向上、肩部高亮（batch-02 第 1 行）",
     "extreme": null
    }
+  },
+  "voice-no-tempo-r1": {
+   "changes": [
+    "去掉相位口令绑定（training.phases 的 phase.* 标记），voiceGuide.phaseCues 改为 none：前 2 下不再念「一步步起来/稳住/原路回去」",
+    "去掉 phaseCues steps（每下 7 句步骤口令），改成 1 句要领讲解",
+    "引导句 0 → 1 句：去掉节拍/速度指令和短口令，只留怎么做对的要领"
+   ],
+   "flags": [],
+   "by": "开哥 2026-11-14 23:45（SF 测试反馈）"
   }
  },
  "voiceGuide": {
@@ -184,71 +190,23 @@
   },
   "sharedVocabulary": "catalog/voice-v2/script.json#common",
   "repSeconds": 14.0,
-  "phaseCues": "steps",
+  "phaseCues": "none",
   "count": {
    "key": "n.{rep}",
    "at": "rep-end"
   },
-  "steps": [
+  "reminders": [
    {
-    "at": 1.5,
-    "zh": "撑到手肘",
-    "en": "Up to your elbow",
+    "afterRep": 1,
+    "role": "form",
+    "zh": "手肘、手掌、屁股一步一步撑稳，眼睛一直看着哑铃",
+    "en": "Elbow, hand, hips, each step solid, eyes on the bell",
     "from": [
-     "cue2"
-    ]
-   },
-   {
-    "at": 3.4,
-    "zh": "撑手坐起来",
-    "en": "Up to your hand",
-    "from": [
-     "cue2"
-    ]
-   },
-   {
-    "at": 5.3,
-    "zh": "屁股顶起来",
-    "en": "Hips up",
-    "from": [
-     "cue2"
-    ]
-   },
-   {
-    "at": 6.9,
-    "zh": "停住，看哑铃",
-    "en": "Hold, eyes up",
-    "from": [
+     "cue2",
      "cue3",
      "commonErrors[1]"
     ]
    },
-   {
-    "at": 8.5,
-    "zh": "屁股放下",
-    "en": "Hips down",
-    "from": [
-     "cue3"
-    ]
-   },
-   {
-    "at": 10.3,
-    "zh": "回到手肘",
-    "en": "Back to your elbow",
-    "from": [
-     "cue3"
-    ]
-   },
-   {
-    "at": 12.3,
-    "zh": "躺回去",
-    "en": "Lie back",
-    "from": [
-     "cue3"
-    ]
-   }
-  ],
-  "reminders": [
    {
     "afterRep": 2,
     "key": "p.last_rep"

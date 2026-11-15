@@ -103,18 +103,15 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 2.0,
-    "cue": "phase.start"
+    "seconds": 2.0
    },
    {
     "id": "hold",
-    "seconds": 0.5,
-    "cue": "phase.peak"
+    "seconds": 0.5
    },
    {
     "id": "back",
-    "seconds": 2.0,
-    "cue": "phase.end"
+    "seconds": 2.0
    }
   ],
   "source": "real-tempo r3"
@@ -162,6 +159,13 @@
     "frame": "动作一致：吊环低位俯卧撑；预览帧看不到高亮（batch-23 第 7 行，非极端）",
     "extreme": null
    }
+  },
+  "voice-no-tempo-r1": {
+   "changes": [
+    "去掉相位口令绑定（training.phases 的 phase.* 标记），voiceGuide.phaseCues 改为 none：前 2 下不再念「慢慢下去/稳住/推起再推背」"
+   ],
+   "flags": [],
+   "by": "开哥 2026-11-14 23:45（SF 测试反馈）"
   }
  },
  "voiceGuide": {
@@ -174,7 +178,7 @@
   },
   "sharedVocabulary": "catalog/voice-v2/script.json#common",
   "repSeconds": 4.5,
-  "phaseCues": "first-2-reps",
+  "phaseCues": "none",
   "count": {
    "key": "n.{rep}",
    "at": "rep-end"

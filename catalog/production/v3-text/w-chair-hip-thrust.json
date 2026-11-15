@@ -102,18 +102,15 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 1.0,
-    "cue": "phase.start"
+    "seconds": 1.0
    },
    {
     "id": "hold",
-    "seconds": 1.0,
-    "cue": "phase.peak"
+    "seconds": 1.0
    },
    {
     "id": "back",
-    "seconds": 1.5,
-    "cue": "phase.end"
+    "seconds": 1.5
    }
   ],
   "source": "real-tempo r3"
@@ -157,6 +154,14 @@
     "frame": "待 V4 补看（batch-25 预览未出）",
     "extreme": null
    }
+  },
+  "voice-no-tempo-r1": {
+   "changes": [
+    "去掉相位口令绑定（training.phases 的 phase.* 标记），voiceGuide.phaseCues 改为 none：前 2 下不再念「往上推/夹紧屁股/慢慢放」",
+    "引导句 3 → 2 句：去掉节拍/速度指令和短口令，只留怎么做对的要领"
+   ],
+   "flags": [],
+   "by": "开哥 2026-11-14 23:45（SF 测试反馈）"
   }
  },
  "voiceGuide": {
@@ -169,7 +174,7 @@
   },
   "sharedVocabulary": "catalog/voice-v2/script.json#common",
   "repSeconds": 3.5,
-  "phaseCues": "first-2-reps",
+  "phaseCues": "none",
   "count": {
    "key": "n.{rep}",
    "at": "rep-end"
@@ -178,8 +183,8 @@
    {
     "afterRep": 2,
     "role": "form",
-    "zh": "别拱腰",
-    "en": "Don't arch",
+    "zh": "顶上不拱腰",
+    "en": "No arching up top",
     "from": [
      "commonErrors[0]"
     ]
@@ -187,19 +192,10 @@
    {
     "afterRep": 5,
     "role": "halfway",
-    "zh": "膝盖别往里倒",
-    "en": "Knees out",
+    "zh": "膝盖不往里倒",
+    "en": "Knees don't cave in",
     "from": [
      "commonErrors[1]"
-    ]
-   },
-   {
-    "afterRep": 8,
-    "role": "form",
-    "zh": "下巴微收，屁股夹紧",
-    "en": "Chin tucked, squeeze",
-    "from": [
-     "cue1"
     ]
    },
    {

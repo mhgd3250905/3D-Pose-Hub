@@ -104,18 +104,15 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 1.5,
-    "cue": "phase.start"
+    "seconds": 1.5
    },
    {
     "id": "hold",
-    "seconds": 1.0,
-    "cue": "phase.peak"
+    "seconds": 1.0
    },
    {
     "id": "back",
-    "seconds": 2.5,
-    "cue": "phase.end"
+    "seconds": 2.5
    }
   ],
   "source": "real-tempo r3"
@@ -162,6 +159,14 @@
     "frame": "一致：单杠悬挂引体、肩/背阔高亮（b9 第 9 行）",
     "extreme": null
    }
+  },
+  "voice-no-tempo-r1": {
+   "changes": [
+    "去掉相位口令绑定（training.phases 的 phase.* 标记），voiceGuide.phaseCues 改为 none：前 2 下不再念「往上拉/停一下/慢慢放」",
+    "引导句 1 → 1 句：去掉节拍/速度指令和短口令，只留怎么做对的要领"
+   ],
+   "flags": [],
+   "by": "开哥 2026-11-14 23:45（SF 测试反馈）"
   }
  },
  "voiceGuide": {
@@ -174,7 +179,7 @@
   },
   "sharedVocabulary": "catalog/voice-v2/script.json#common",
   "repSeconds": 5.0,
-  "phaseCues": "first-2-reps",
+  "phaseCues": "none",
   "count": {
    "key": "n.{rep}",
    "at": "rep-end"
@@ -183,8 +188,8 @@
    {
     "afterRep": 2,
     "role": "halfway",
-    "zh": "先沉肩，再拉",
-    "en": "Shoulders down, then pull",
+    "zh": "肩膀先离耳朵远一点，能拉多高就多高",
+    "en": "Shoulders away from ears; go as high as you can",
     "from": [
      "cue2"
     ]

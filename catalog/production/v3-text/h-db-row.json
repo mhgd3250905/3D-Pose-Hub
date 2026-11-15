@@ -104,18 +104,15 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 1.0,
-    "cue": "phase.start"
+    "seconds": 1.0
    },
    {
     "id": "hold",
-    "seconds": 0.5,
-    "cue": "phase.peak"
+    "seconds": 0.5
    },
    {
     "id": "back",
-    "seconds": 1.5,
-    "cue": "phase.end"
+    "seconds": 1.5
    }
   ],
   "perSide": "each-side-separately",
@@ -159,6 +156,14 @@
     "frame": "一致：扶椅单臂哑铃划船、背阔高亮（b9 第 1 行）",
     "extreme": null
    }
+  },
+  "voice-no-tempo-r1": {
+   "changes": [
+    "去掉相位口令绑定（training.phases 的 phase.* 标记），voiceGuide.phaseCues 改为 none：前 2 下不再念「往上拉/夹一下/慢慢放」",
+    "引导句 3 → 2 句：去掉节拍/速度指令和短口令，只留怎么做对的要领"
+   ],
+   "flags": [],
+   "by": "开哥 2026-11-14 23:45（SF 测试反馈）"
   }
  },
  "voiceGuide": {
@@ -171,7 +176,7 @@
   },
   "sharedVocabulary": "catalog/voice-v2/script.json#common",
   "repSeconds": 3.0,
-  "phaseCues": "first-2-reps",
+  "phaseCues": "none",
   "count": {
    "key": "n.{rep}",
    "at": "rep-end"
@@ -180,8 +185,8 @@
    {
     "afterRep": 2,
     "role": "form",
-    "zh": "身子别跟着转",
-    "en": "Don't twist",
+    "zh": "背挺平，身子不扭",
+    "en": "Flat back, no twisting",
     "from": [
      "cue2",
      "commonErrors[0]"
@@ -190,15 +195,6 @@
    {
     "afterRep": 5,
     "role": "halfway",
-    "zh": "肩膀别耸",
-    "en": "Shoulder down",
-    "from": [
-     "commonErrors[1]"
-    ]
-   },
-   {
-    "afterRep": 8,
-    "role": "form",
     "zh": "拉到肋骨旁",
     "en": "Pull to your ribs",
     "from": [

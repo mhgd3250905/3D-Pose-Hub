@@ -96,18 +96,15 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 1.0,
-    "cue": "phase.start"
+    "seconds": 1.0
    },
    {
     "id": "hold",
-    "seconds": 1.0,
-    "cue": "phase.peak"
+    "seconds": 1.0
    },
    {
     "id": "back",
-    "seconds": 2.0,
-    "cue": "phase.end"
+    "seconds": 2.0
    }
   ],
   "source": "real-tempo r3"
@@ -153,6 +150,14 @@
     "frame": "动作一致：坐姿器械两腿往外推；高亮很淡（b16 第 9 行，非极端）",
     "extreme": null
    }
+  },
+  "voice-no-tempo-r1": {
+   "changes": [
+    "去掉相位口令绑定（training.phases 的 phase.* 标记），voiceGuide.phaseCues 改为 none：前 2 下不再念「推开/停住/收回」",
+    "引导句 3 → 2 句：去掉节拍/速度指令和短口令，只留怎么做对的要领"
+   ],
+   "flags": [],
+   "by": "开哥 2026-11-14 23:45（SF 测试反馈）"
   }
  },
  "voiceGuide": {
@@ -165,7 +170,7 @@
   },
   "sharedVocabulary": "catalog/voice-v2/script.json#common",
   "repSeconds": 4.0,
-  "phaseCues": "first-2-reps",
+  "phaseCues": "none",
   "count": {
    "key": "n.{rep}",
    "at": "rep-end"
@@ -174,30 +179,21 @@
    {
     "afterRep": 2,
     "role": "form",
-    "zh": "身子别晃",
-    "en": "Body still",
+    "zh": "背靠稳椅背，身子不前后晃",
+    "en": "Back on the pad, no rocking",
     "from": [
+     "cue1",
      "cue3",
      "commonErrors[0]"
     ]
    },
    {
-    "afterRep": 5,
-    "role": "halfway",
-    "zh": "慢慢收回",
-    "en": "Return slowly",
-    "from": [
-     "cue2",
-     "commonErrors[1]"
-    ]
-   },
-   {
-    "afterRep": 8,
+    "afterRep": 6,
     "role": "form",
-    "zh": "最开停 1 秒",
-    "en": "Pause at the widest",
+    "zh": "合腿时重量不砸",
+    "en": "Don't let the stack crash",
     "from": [
-     "cue2"
+     "commonErrors[1]"
     ]
    },
    {

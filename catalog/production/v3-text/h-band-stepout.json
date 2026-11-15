@@ -105,18 +105,15 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 2.0,
-    "cue": "phase.start"
+    "seconds": 2.0
    },
    {
     "id": "hold",
-    "seconds": 1.5,
-    "cue": "phase.peak"
+    "seconds": 1.5
    },
    {
     "id": "back",
-    "seconds": 2.0,
-    "cue": "phase.end"
+    "seconds": 2.0
    },
    {
     "id": "rest",
@@ -162,6 +159,13 @@
     "frame": "一致：站姿侧对柱子、双手握带在胸前、侧腰高亮（b4 第 9 行）",
     "extreme": null
    }
+  },
+  "voice-no-tempo-r1": {
+   "changes": [
+    "去掉相位口令绑定（training.phases 的 phase.* 标记），voiceGuide.phaseCues 改为 none：前 2 下不再念「两脚外迈/稳住/两脚收回」"
+   ],
+   "flags": [],
+   "by": "开哥 2026-11-14 23:45（SF 测试反馈）"
   }
  },
  "voiceGuide": {
@@ -174,7 +178,7 @@
   },
   "sharedVocabulary": "catalog/voice-v2/script.json#common",
   "repSeconds": 6.0,
-  "phaseCues": "first-2-reps",
+  "phaseCues": "none",
   "count": {
    "key": "n.{rep}",
    "at": "rep-end"

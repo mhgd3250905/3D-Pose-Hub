@@ -95,18 +95,15 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 1.5,
-    "cue": "phase.start"
+    "seconds": 1.5
    },
    {
     "id": "hold",
-    "seconds": 2.0,
-    "cue": "phase.peak"
+    "seconds": 2.0
    },
    {
     "id": "back",
-    "seconds": 1.5,
-    "cue": "phase.end"
+    "seconds": 1.5
    }
   ],
   "perSide": "each-side-separately",
@@ -152,6 +149,13 @@
     "frame": "一致：侧卧头垫高、上面手臂往后打开、上背/胸高亮（b11 第 7 行）",
     "extreme": null
    }
+  },
+  "voice-no-tempo-r1": {
+   "changes": [
+    "去掉相位口令绑定（training.phases 的 phase.* 标记），voiceGuide.phaseCues 改为 none：前 2 下不再念「往后打开/停住，喘气/慢慢回来」"
+   ],
+   "flags": [],
+   "by": "开哥 2026-11-14 23:45（SF 测试反馈）"
   }
  },
  "voiceGuide": {
@@ -164,7 +168,7 @@
   },
   "sharedVocabulary": "catalog/voice-v2/script.json#common",
   "repSeconds": 5.0,
-  "phaseCues": "first-2-reps",
+  "phaseCues": "none",
   "count": {
    "key": "n.{rep}",
    "at": "rep-end"
