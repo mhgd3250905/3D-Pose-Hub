@@ -26,6 +26,7 @@ const MODEL='model/coach-v3r3-wristfix.glb';
 const SOURCES=['tools/v5/render-masters-v5.mjs','tools/v5/profile-v5.json','tools/action-package-v3/skins/v5-toon.json',
   ...MODULES.map(m=>'tools/v5/runtime/'+m),'tools/v5/runtime/'+MODEL,
   'tools/action-package-v3/render-masters.mjs','tools/action-package-v3/recipe-scene.mjs'];
+const SHADOW_MARGIN_PX=4,SHADOW_FRUSTUM_MARGIN_M=0.1;   // guard margins (px of a 1080 master; metres in light space)
 const sourceHashes=()=>Object.fromEntries(SOURCES.map(f=>[f,sha(fs.readFileSync(path.join(REPO,f)))]));
 export function loadV5Profile(p){
   const file=path.resolve(p??path.join(HERE,'profile-v5.json')),bytes=fs.readFileSync(file),data=JSON.parse(bytes);
@@ -97,16 +98,23 @@ export async function run(opts){
       fail(freeGiB()>=.5,'Low free memory at frame '+frame);
       const time=frame/fps,staged=await stageAt(page,source,time,warm);warm=staged.x;
       const record={frame,time,endpoint:frame===plan.endpoint,pulse:staged.pulse,warn:staged.warn??null,files:{}};
-      const r=await page.evaluate(()=>{const d=window.__v5.pose();const url=window.__v5.render();
-        return {d,url,contextLost:flareInspector.viewer.renderer.getContext().isContextLost()};});
+      const r=await page.evaluate(size=>{const d=window.__v5.pose();const ext=window.__v5.extent(size);const url=window.__v5.render();
+        return {d,ext,edge:window.__v5.edge,url,contextLost:flareInspector.viewer.renderer.getContext().isContextLost()};},size);
       fail(!r.contextLost,'WebGL context lost');
+      // shadow guard: the whole ground shadow (analytic: every sampled caster vertex projected along the V5 sun onto the shadow
+      // plane) must lie inside the master canvas with a margin, and casters + shadow inside the V5 sun's shadow frustum.
+      const sh=r.ext.shadow,mg=SHADOW_MARGIN_PX*size/1080;
+      fail(r.ext.shadowPoints===0||(sh[0]>=mg&&sh[1]>=mg&&sh[2]<=size-mg&&sh[3]<=size-mg),`Ground shadow reaches the master canvas edge at frame ${frame}: ${JSON.stringify(sh)}`);
+      fail(r.ext.lightHalfNeeded<=r.ext.lightHalf-SHADOW_FRUSTUM_MARGIN_M,`Shadow casters leave the V5 sun shadow frustum at frame ${frame}: needs ±${r.ext.lightHalfNeeded} m of ±${r.ext.lightHalf}`);
+      fail(r.ext.otherShadowLights===0||report.v5.setup.mutedShadowLights.length===r.ext.otherShadowLights,'Unexpected extra shadow light');
       fail(!report.pageErrors.length,'Browser/shader errors: '+report.pageErrors.join(';'));
       const dir=path.join(out,skin.id,'body');fs.mkdirSync(dir,{recursive:true});
       const bytes=Buffer.from(r.url.split(',')[1],'base64');
       fail(bytes.length>24&&bytes.readUInt32BE(16)===size&&bytes.readUInt32BE(20)===size,'Wrong image size');
       const file=path.join(dir,`m-${String(frame).padStart(4,'0')}.png`);fs.writeFileSync(file,bytes,{flag:'wx'});
       record.files[skin.id+'/body']={path:path.relative(root,file).replaceAll('\\','/'),sha256:sha(bytes),bytes:bytes.length};
-      record.v5={posErr:r.d.posErr,posErrBone:r.d.posErrBone,spineErrBefore:+r.d.spine.e0.toFixed(5),spineErrAfter:+r.d.spine.e.toFixed(5)};
+      record.v5={posErr:r.d.posErr,posErrBone:r.d.posErrBone,spineErrBefore:+r.d.spine.e0.toFixed(5),spineErrAfter:+r.d.spine.e.toFixed(5),
+        shadowBox:sh,bodyBox:r.ext.body,lightHalfNeeded:r.ext.lightHalfNeeded,lightHalf:r.ext.lightHalf,edgeAlpha:r.edge};
       report.frames.push(record);poses.push({frame,...r.d});
       console.log(JSON.stringify({event:'frame',id,frame,ms:Date.now()-started}));
     }
@@ -116,7 +124,11 @@ export async function run(opts){
     const mx=k=>Math.max(...report.frames.map(f=>f.v5[k]));
     report.v5.summary={maxPosErr:mx('posErr'),maxSpineErrBefore:mx('spineErrBefore'),maxSpineErrAfter:mx('spineErrAfter'),
       maxAngleDiffDeg:Math.max(...poses.flatMap(p=>Object.keys(p.angHub).map(k=>Math.abs(p.angHub[k]-p.angV5[k])))),
-      wristWraps:poses.at(-1).wrist.wraps,wristSeeks:poses.at(-1).wrist.seeks};
+      wristWraps:poses.at(-1).wrist.wraps,wristSeeks:poses.at(-1).wrist.seeks,
+      shadow:{box:[Math.min(...report.frames.map(f=>f.v5.shadowBox[0])),Math.min(...report.frames.map(f=>f.v5.shadowBox[1])),Math.max(...report.frames.map(f=>f.v5.shadowBox[2])),Math.max(...report.frames.map(f=>f.v5.shadowBox[3]))],
+        minEdgeGapPx:+Math.min(...report.frames.map(f=>Math.min(f.v5.shadowBox[0],f.v5.shadowBox[1],size-f.v5.shadowBox[2],size-f.v5.shadowBox[3]))).toFixed(1),
+        maxLightHalfNeeded:mx('lightHalfNeeded'),lightHalf:report.frames[0].v5.lightHalf,mutedShadowLights:report.v5.setup.mutedShadowLights,
+        edgeAlphaFrames:report.frames.filter(f=>Object.values(f.v5.edgeAlpha).some(e=>e[0]>0)).length}};
     fs.writeFileSync(path.join(out,'v5-pose.json'),JSON.stringify({format:'pose-hub-v5-pose@1',actionId:id,fps,bones:Object.keys(poses[0].q),frames:poses}));
     report.finished=new Date().toISOString();
     fs.writeFileSync(path.join(out,'layer-manifest.json'),JSON.stringify(report,null,2)+'\n',{flag:'wx'});

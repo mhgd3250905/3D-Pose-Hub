@@ -10,6 +10,10 @@
  *     pivots coincide), except spineLower/spineUpper, which are re-fitted so the torso pivot lands on the hub torso pivot
  *     (the hub torso pivot does not follow spine FK; up to 7 cm off on bridges),
  *  3) drives the wrist helper bones from the full hand-vs-forearm twist (hub wrist-twist share is never applied to V5 bones = 0).
+ * Shadow: only the V5 sun casts. The hub viewer's key light also has castShadow (ortho frustum ±1.9) and, once the shadow map is on,
+ * threw a second long shadow onto the V5 plane, cut hard at its frustum edge and off the canvas; it is muted (2026-11-17).
+ * extent() gives the analytic shadow/body screen box and light-space reach per frame; render-masters-v5.mjs fails a frame whose
+ * shadow comes within 4 px of the canvas edge or leaves the sun frustum, and records the border alpha of every frame.
  * Files toon-r6.js / wristfix-r2.js / model glb are verbatim copies of the v3r8b candidate (see tools/v5/runtime/SOURCES.md). */
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
@@ -63,6 +67,12 @@ export async function installV5({ glb }) {
   sun.shadow.mapSize.set(SHADOW.mapSize, SHADOW.mapSize);
   Object.assign(sun.shadow.camera, { left: -SHADOW.half, right: SHADOW.half, top: SHADOW.half, bottom: -SHADOW.half, near: 0.1, far: 12 }); sun.shadow.bias = -0.0005;
   sun.name = 'V5_ShadowSun'; scene.add(sun); scene.add(sun.target);
+  // The hub viewer's own key light (DirectionalLight at (-2.5,4,4), castShadow, ortho shadow frustum ±1.9) would also cast onto the
+  // V5 shadow plane once the shadow map is on: a second, long shadow toward screen-right that is cut hard by that ±1.9 frustum and
+  // runs off the 1080 canvas (h-squat, h-forward-lunge, ...). V5 has exactly one shadow: the V5 sun's. Every other light: no shadow.
+  const otherShadowLights = [];
+  const muteOtherShadows = () => scene.traverse(o => { if (o.isLight && o !== sun && o.castShadow) { o.castShadow = false; otherShadowLights.push(o.name || o.type); } });
+  muteOtherShadows();
   const plane = new THREE.Mesh(new THREE.CircleGeometry(6, 96).rotateX(-Math.PI / 2), new THREE.ShadowMaterial({ color: SHADOW.color, opacity: SHADOW.opacity }));
   plane.name = 'V5_ShadowPlane'; plane.receiveShadow = true; plane.position.y = 0.0005; scene.add(plane);
   // mat present: the shadow lands on the mat top instead of under it
@@ -135,12 +145,49 @@ export async function installV5({ glb }) {
     return { p: bones.pelvis.position.toArray().map(x => +x.toFixed(6)), q, spine: sp, posErr: +posErr.toFixed(5), posErrBone, angV5: A, angHub: H,
       wrist: { theta: { ...wf.stats.theta }, swing: { ...wf.stats.swing }, wraps: wf.stats.wraps, seeks: wf.stats.seeks } };
   }
+  // ---- analytic shadow / body extent (call after pose()): sampled skinned vertices of every shadow caster, each projected along
+  // the sun direction onto the shadow plane. Returns screen px boxes in the recipe camera's own size x size view (view offset
+  // ignored) and the light-space reach of casters + shadow points (must stay inside the shadow camera's ortho frustum).
+  const sampleIdx = new Map();
+  const shown = o => { for (let q = o; q; q = q.parent) if (!q.visible) return false; return true; };
+  const castersNow = () => { const c = []; scene.traverse(o => { if (!o.isMesh || o.isInstancedMesh || !o.castShadow || !o.geometry?.attributes?.position || o === plane || !shown(o)) return;
+    let idx = sampleIdx.get(o); if (!idx) { const n = o.geometry.attributes.position.count, st = Math.max(1, Math.floor(n / 4000)); idx = []; for (let i = 0; i < n; i += st) idx.push(i); sampleIdx.set(o, idx); }
+    c.push({ o, idx }); }); return c; };
+  const _v = new THREE.Vector3(), _s = new THREE.Vector3();
+  function extent(size) {
+    hideHub(); muteOtherShadows(); scene.updateMatrixWorld(true); camera.updateMatrixWorld(); const casters = castersNow();
+    const view = camera.view && camera.view.enabled ? { ...camera.view } : null; if (view) { camera.view.enabled = false; camera.updateProjectionMatrix(); }
+    sun.updateMatrixWorld(); sun.target.updateMatrixWorld();
+    const sp = sun.getWorldPosition(new THREE.Vector3()), tp = sun.target.getWorldPosition(new THREE.Vector3());
+    const L = tp.clone().sub(sp).normalize(), R = L.clone().cross(new THREE.Vector3(0, 1, 0)).normalize(), U = R.clone().cross(L);
+    const py = plane.position.y, bb = () => [1e9, 1e9, -1e9, -1e9], sh = bb(), bo = bb(); let lmax = 0, dmin = 1e9, dmax = -1e9, nAbove = 0;
+    const px = (p, b) => { _s.copy(p).project(camera); const x = (_s.x + 1) / 2 * size, y = (1 - _s.y) / 2 * size; b[0] = Math.min(b[0], x); b[1] = Math.min(b[1], y); b[2] = Math.max(b[2], x); b[3] = Math.max(b[3], y); };
+    const ls = p => { const d = p.clone().sub(sp); lmax = Math.max(lmax, Math.abs(d.dot(R)), Math.abs(d.dot(U))); const z = d.dot(L); dmin = Math.min(dmin, z); dmax = Math.max(dmax, z); };
+    for (const { o, idx } of casters) for (const i of idx) {
+      o.getVertexPosition(i, _v); _v.applyMatrix4(o.matrixWorld); px(_v, bo); ls(_v);
+      if (_v.y > py) { nAbove++; const s = _v.clone().addScaledVector(L, (_v.y - py) / -L.y); px(s, sh); ls(s); }
+    }
+    if (view) { camera.view.enabled = true; camera.updateProjectionMatrix(); }
+    const r = a => a.map(x => +x.toFixed(1));
+    return { shadow: r(sh), body: r(bo), lightHalfNeeded: +lmax.toFixed(4), lightHalf: SHADOW.half, depth: [+dmin.toFixed(3), +dmax.toFixed(3)], casterMeshes: casters.length, casterSamples: casters.reduce((s, c) => s + c.idx.length, 0), shadowPoints: nAbove, otherShadowLights: otherShadowLights.length };
+  }
   function render() {
     // hub install steps may re-show meshes; keep the hub body hidden on every frame
-    hideHub();
+    hideHub(); muteOtherShadows();
     renderer.render(scene, camera);
+    edge = edgeAlpha();
     return renderer.domElement.toDataURL('image/png');
   }
-  window.__v5 = { pose, render, bones, root, toon, hidden, info: { hiddenHub: hidden.slice(), shadowPlaneY: plane.position.y, matTop, outlines: toon.outlines, hair: toon.hair, outfit: toon.outfit, toonN: toon.toonN, wristSides: wf.sides } };
+  // alpha on the 1-px border of the drawing buffer just rendered: {side: [pixels with alpha > 0, max alpha]} (nothing may reach the edge)
+  let edge = null;
+  function edgeAlpha() {
+    const gl = renderer.getContext(), w = gl.drawingBufferWidth, h = gl.drawingBufferHeight, out = {};
+    for (const [k, x, y, cw, ch] of [['bottom', 0, 0, w, 1], ['top', 0, h - 1, w, 1], ['left', 0, 0, 1, h], ['right', w - 1, 0, 1, h]]) {
+      const b = new Uint8Array(cw * ch * 4); gl.readPixels(x, y, cw, ch, gl.RGBA, gl.UNSIGNED_BYTE, b);
+      let n = 0, m = 0; for (let i = 3; i < b.length; i += 4) if (b[i] > 0) { n++; if (b[i] > m) m = b[i]; } out[k] = [n, m];
+    }
+    return out;
+  }
+  window.__v5 = { pose, render, extent, get edge() { return edge; }, sun, plane, bones, root, toon, hidden, info: { hiddenHub: hidden.slice(), mutedShadowLights: otherShadowLights.slice(), shadowPlaneY: plane.position.y, matTop, outlines: toon.outlines, hair: toon.hair, outfit: toon.outfit, toonN: toon.toonN, wristSides: wf.sides } };
   return window.__v5.info;
 }
