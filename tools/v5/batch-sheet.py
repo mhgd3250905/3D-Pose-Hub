@@ -38,7 +38,12 @@ def main():
         if not ok:
             d.text((6, y + 34), 'FAILED / missing', fill=(200, 0, 0), font=Fs)
             continue
-        meta = json.loads(pkg.read_text(encoding='utf-8'))
+        raw = pkg.read_bytes()
+        try:
+            txt = raw.decode('utf-8')
+        except UnicodeDecodeError:
+            txt = raw.decode('gbk', errors='replace')  # compose.py writes locale encoding on Windows
+        meta = json.loads(txt)
         d.text((6, y + 34), f"{meta.get('durationSeconds')} s  {meta.get('framesUsed')} frames", fill=(80, 80, 80), font=Fs)
         k = meta.get('keyframes', {})
         d.text((6, y + 56), f"start {k.get('start')} peak {k.get('peak')} end {k.get('end')}", fill=(80, 80, 80), font=Fs)
