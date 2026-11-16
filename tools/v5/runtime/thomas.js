@@ -55,13 +55,24 @@ function setFrame(f) {
   for (const j of JOINTS) bones[j].quaternion.fromArray(fr.q[j] || [0, 0, 0, 1]).normalize();
   bones.pelvis.position.fromArray(fr.p); cur = f; root.updateMatrixWorld(true);
 }
+const BG_L = new THREE.Color(QS.get('bgL') || '#f3f2ef'), BG_D = new THREE.Color(QS.get('bgD') || '#101013');   // = profile-v5 themes
+let primed = null;
 const wp = n => bones[n].getWorldPosition(new THREE.Vector3());
 window.__T = {
   ready: true, count: anim.count, fps: anim.fps, info: { hair: toon.hair, outlines: toon.outlines, fx: { casters: fx.casters, params: fx.params }, wrist: wf && wf.sides, shadow: !!shadowGroup },
+  // pass 'bodyL' / 'bodyD': body+fx over the opaque light / dark theme colour (BG_L / BG_D). The fx glow is premultiplied-additive
+  // (rgb > alpha), which a transparent canvas clamps on readback (trails/stars came out ~half as strong as in Pose Studio);
+  // merge-shadow.py pulls a straight-alpha matte from the two opaque renders instead.
   frame(f, pass = 'body') {
-    setFrame(f); camera.layers.set(pass === 'shadow' ? 1 : 0);
+    setFrame(f);
+    // fx.js moves the ground-ring meshes in scene.onBeforeRender, i.e. after three's updateMatrixWorld, so a render shows the ring
+    // where the previous render put it (one frame late; invisible live in the app, but here it broke the loop seam and made the
+    // light/dark passes disagree). Prime once per new frame with a throw-away render so every pass of frame f is exact.
+    if (primed !== f) { renderer.render(scene, camera); primed = f; }
+    camera.layers.set(pass === 'shadow' ? 1 : 0);
+    scene.background = pass === 'bodyL' ? BG_L : pass === 'bodyD' ? BG_D : null;
     renderer.render(scene, camera);
-    camera.layers.set(0);
+    scene.background = null; camera.layers.set(0);
     return renderer.domElement.toDataURL('image/png');
   },
   pose(f) { setFrame(f); wf.update(); const q = {}; for (const j of JOINTS) q[j] = bones[j].quaternion.toArray(); return { q, p: bones.pelvis.position.toArray(), theta: { ...wf.stats.theta }, spread: wp('leftFoot').distanceTo(wp('rightFoot')) }; },

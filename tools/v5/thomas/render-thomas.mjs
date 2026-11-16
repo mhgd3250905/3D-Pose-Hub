@@ -2,8 +2,8 @@
 // V5 托马斯全旋 loop (2026-11-17): Pose Studio v3r7 default flare-arm8legs, spiky hair, fx.js on, + v3r8b wrist fix.
 //   node tools/v5/thomas/render-thomas.mjs --out <run-dir> [--size 1080]
 // 1) headless page tools/v5/runtime/thomas.html (static server on the repo root, no Vite needed): 81 video frames at 30 fps =
-//    one full rotation at the app's default 0.5x playback (video frame k = anim frame 2k of 162 @120 fps). Two passes per frame:
-//    body+fx on transparent, and the fx hard shadow alone.
+//    one full rotation at the app's default 0.5x playback (video frame k = anim frame 2k of 162 @120 fps). Three passes per frame:
+//    body+fx over the opaque light and dark theme colours (two-background matte keeps the additive fx glow), and the fx hard shadow alone.
 // 2) tools/v5/thomas/merge-shadow.py: shadow pass -> translucent two-tone shadow under the body -> masters/<id>/v5-toon/body/m-NNNN.png
 //    + layer-manifest.json (same layout as V5 action masters).
 // 3) tools/action-package-v3/compose.py --profile tools/v5/profile-v5.json -> packages/<id>/ (transparent webm, dark/light mp4, covers,
@@ -25,6 +25,7 @@ if(fs.existsSync(pkgJson))done({ok:true,skipped:true,out,report:`V5 托马斯：
 const mdir=path.join(out,'masters',ID),work=path.join(out,'_thomas-work');
 const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
 const t0=Date.now();
+const {light:TH_L,dark:TH_D}=JSON.parse(fs.readFileSync(path.join(ROOT,'tools/v5/profile-v5.json'),'utf8')).derivatives.themes;
 if(!fs.existsSync(path.join(mdir,'layer-manifest.json'))){
   // half-made masters are moved aside, never deleted
   if(fs.existsSync(mdir)){const q=path.join(out,'_quarantine',`${ID}_${new Date().toISOString().replace(/[:.]/g,'-')}`);fs.mkdirSync(q,{recursive:true});fs.renameSync(mdir,path.join(q,'masters'));}
@@ -42,13 +43,13 @@ if(!fs.existsSync(path.join(mdir,'layer-manifest.json'))){
   try{
     const p=await b.newPage({viewport:{width:size,height:size},deviceScaleFactor:1});
     p.on('pageerror',e=>errs.push(String(e)));p.on('console',m=>{if(m.type()==='error'&&!/GPU stall|GL Driver/.test(m.text()))errs.push(m.text());});
-    await p.goto(`http://127.0.0.1:${srv.address().port}/tools/v5/runtime/thomas.html?hair=spiky&size=${size}`);
+    await p.goto(`http://127.0.0.1:${srv.address().port}/tools/v5/runtime/thomas.html?hair=spiky&size=${size}&bgL=${encodeURIComponent(TH_L)}&bgD=${encodeURIComponent(TH_D)}`);
     await p.waitForFunction(()=>window.__T?.ready,null,{timeout:170000});
     const info=await p.evaluate(()=>({...__T.info,count:__T.count,fps:__T.fps}));
     if(info.count!==N*STEP||info.fps!==120||info.hair!=='spiky'||!info.shadow||info.wrist?.length!==2)throw Error('unexpected page state '+JSON.stringify(info));
     fs.writeFileSync(path.join(work,'info.json'),JSON.stringify(info));
     for(let k=0;k<=N;k++){const f=(k*STEP)%info.count;
-      for(const pass of ['body','shadow']){const fn=path.join(work,`${pass}-${String(k).padStart(4,'0')}.png`);
+      for(const pass of ['bodyL','bodyD','shadow']){const fn=path.join(work,`${pass}-${String(k).padStart(4,'0')}.png`);
         const url=await p.evaluate(([f,pass])=>__T.frame(f,pass),[f,pass]);fs.writeFileSync(fn,Buffer.from(url.split(',')[1],'base64'));}
       poses.push({frame:k,anim:f,...await p.evaluate(f=>__T.pose(f),f)});
       if(errs.length)throw Error('page errors: '+errs.join(' | '));
@@ -56,9 +57,12 @@ if(!fs.existsSync(path.join(mdir,'layer-manifest.json'))){
   }finally{await b.close();srv.close();}
   const mx=Math.max(...poses.map(x=>x.spread));fs.writeFileSync(path.join(work,'spread.json'),JSON.stringify(poses.map(x=>+(x.spread/mx).toFixed(6))));
   fs.writeFileSync(path.join(work,'pose.json'),JSON.stringify({format:'pose-hub-v5-pose@1',actionId:ID,fps:FPS,frames:poses}));
-  const m=spawnSync(PY,[path.join(HERE,'merge-shadow.py'),'--work',work,'--root',out,'--id',ID,'--frames',String(N),'--size',String(size)],{encoding:'utf8',stdio:['ignore','pipe','pipe']});
+  const m=spawnSync(PY,[path.join(HERE,'merge-shadow.py'),'--work',work,'--bg-light',TH_L,'--bg-dark',TH_D,'--root',out,'--id',ID,'--frames',String(N),'--size',String(size)],{encoding:'utf8',stdio:['ignore','pipe','pipe']});
   if(m.status!==0)done({ok:false,report:'V5 托马斯：合成投影失败 '+(m.stderr||'').slice(-300)},3);
 }
+// a package dir without package.json = compose was interrupted: move it aside (never delete), like produce-v5.mjs
+const pdir=path.join(out,'packages',ID);
+if(fs.existsSync(pdir)){const q=path.join(out,'_quarantine',`${ID}_pkg_${new Date().toISOString().replace(/[:.]/g,'-')}`);fs.mkdirSync(q,{recursive:true});fs.renameSync(pdir,path.join(q,'packages'));}
 const c=spawnSync(PY,[path.join(ROOT,'tools/action-package-v3/compose.py'),'--root',out,'--id',ID,'--profile',path.join(ROOT,'tools/v5/profile-v5.json')],{encoding:'utf8',stdio:['ignore','pipe','pipe']});
 if(c.status!==0||!fs.existsSync(pkgJson))done({ok:false,report:'V5 托马斯：打包失败 '+(c.stderr||'').slice(-300)},3);
 const mins=Math.round((Date.now()-t0)/60000);
