@@ -3,8 +3,10 @@
   python tools/v5/check-shadow.py --root <run-dir> --ids a,b,c [--json out.json]
 Per action, over every master frame (masters/<id>/v5-toon/body/m-NNNN.png) and the per-frame records render-masters-v5.mjs wrote
 into layer-manifest.json:
-  - pixel: no pixel with alpha > 0 on the 1-px border of the master canvas (shadow or body), and the gap between the alpha bbox
-    and the canvas edge;
+  - pixel: no shadow pixel on the 1-px border of the master canvas. Shadow pixels = 0 < alpha <= 64 (the shadow is drawn at
+    opacity 0.14 = alpha ~36) with the pixel 3 px further in also 0 < alpha <= 64 (so the anti-aliased rim of an opaque body or prop
+    is not counted). Opaque body/prop pixels on the border are reported (info only: the recipe camera is the V4 one, e.g. the mat
+    corner of h-forearm-plank touches the right edge in V4 too);
   - analytic: the ground-shadow box (caster vertices projected along the V5 sun) stays >= 4 px inside the canvas, and casters +
     shadow stay inside the V5 sun's ortho shadow frustum (lightHalfNeeded <= lightHalf - 0.1 m);
   - only the V5 sun casts (the hub key light's shadow is muted).
@@ -20,12 +22,15 @@ a = ap.parse_args()
 root = Path(a.root); res = []; bad = False
 for aid in a.ids.split(','):
     man = json.loads((root / 'masters' / aid / 'layer-manifest.json').read_text())
-    size = man['size']; edge_px = 0; edge_frames = 0; gap = size; box = [size, size, 0, 0]
+    size = man['size']; edge_px = 0; edge_frames = 0; opaque_px = 0; opaque_frames = 0; gap = size; box = [size, size, 0, 0]
     for f in man['frames']:
         rec = f['files']['v5-toon/body']
         al = np.asarray(Image.open(root / rec['path']).getchannel('A'))
         border = np.concatenate([al[0], al[-1], al[:, 0], al[:, -1]])
-        n = int((border > 0).sum()); edge_px += n; edge_frames += n > 0
+        inner = np.concatenate([al[3], al[-4], al[:, 3], al[:, -4]])
+        sh = lambda x: (x > 0) & (x <= 64)
+        n = int((sh(border) & sh(inner)).sum()); edge_px += n; edge_frames += n > 0
+        o = int((border > 64).sum()); opaque_px += o; opaque_frames += o > 0
         ys, xs = np.nonzero(al)
         if len(xs):
             b = [int(xs.min()), int(ys.min()), int(xs.max()) + 1, int(ys.max()) + 1]
@@ -35,7 +40,7 @@ for aid in a.ids.split(','):
     sh_gap = min(min(x['shadowBox'][0], x['shadowBox'][1], size - x['shadowBox'][2], size - x['shadowBox'][3]) for x in v)
     lh = max(x['lightHalfNeeded'] for x in v); half = v[0]['lightHalf']
     muted = man['v5']['setup'].get('mutedShadowLights')
-    r = {'id': aid, 'frames': len(v), 'size': size, 'pixelEdgePixels': edge_px, 'pixelEdgeFrames': edge_frames, 'alphaBox': box,
+    r = {'id': aid, 'frames': len(v), 'size': size, 'shadowEdgePixels': edge_px, 'shadowEdgeFrames': edge_frames, 'opaqueEdgeFrames(info)': opaque_frames, 'alphaBox': box,
          'pixelMinGapPx': gap, 'shadowMinGapPx': round(sh_gap, 1), 'lightHalfNeeded': lh, 'lightHalf': half, 'mutedShadowLights': muted}
     r['ok'] = edge_px == 0 and sh_gap >= 4 * size / 1080 and lh <= half - 0.1 and bool(muted)
     bad |= not r['ok']; res.append(r); print(json.dumps(r))
