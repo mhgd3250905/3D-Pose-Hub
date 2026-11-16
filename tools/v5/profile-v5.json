@@ -1,0 +1,16 @@
+{
+  "format": "pose-hub-package-profile@1",
+  "id": "v5",
+  "_doc": "V5 production profile (2026-11-17): one skin (v5-toon), body layer only (no muscle highlight in V5). Derivatives are identical to profiles/default.json so V5 packages have the same files, sizes, fps and names as V4 default. Read by tools/v5/render-masters-v5.mjs and tools/action-package-v3/compose.py --profile <this file>. Never edit after it produced packages (outputs record its sha256).",
+  "model": null,
+  "skins": ["v5-toon"],
+  "masters": {"size": 1080, "fps": 30, "layers": ["body"]},
+  "derivatives": {
+    "videoSize": 720, "codec": "libx264", "crf": 18, "pixelFormat": "yuv420p",
+    "themes": {"dark": "#101013", "light": "#f3f2ef"},
+    "highlight": {"source": "body-highlight", "blendBrightness": 0.45},
+    "coverSize": 720, "thumbnailSize": 240, "keyframeSize": 720, "transparentCoverSize": 1080,
+    "keyframes": ["start", "peak", "end"],
+    "framing": {"policy": "union-of-all-skins-all-frames-body-alpha", "padding": 0.08}
+  }
+}

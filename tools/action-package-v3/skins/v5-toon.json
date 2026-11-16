@@ -1,0 +1,18 @@
+{
+ "format": "pose-hub-package-skin@1",
+ "id": "v5-toon",
+ "label": "V5 日漫",
+ "status": "candidate-v5-2026-11-17",
+ "look": {
+  "mode": "toon-v5",
+  "model": "tools/v5/runtime/model/coach-v3r3-wristfix.glb (Pose Studio v3r8b candidate: coach-v3r3 + 6 forearm twist + 2 wrist bend helper bones per side)",
+  "shading": "tools/v5/runtime/toon-r6.js (= Pose Studio v3r7 toon-r5 look: screen-space thick coloured outline, two-tone hard-edge flat shading, no rim; r6 only folds wrist-bend weights back into outline width)",
+  "wrist": "tools/v5/runtime/wristfix-r2.js, full hand-vs-forearm twist on the helper chain; hub wrist-twist share on V5 bones = 0",
+  "hair": "none",
+  "fx": "none",
+  "groundShadow": "hard edge: PCF shadow map 2048, ShadowMaterial #8a6f5c opacity 0.28",
+  "highlight": "none (no mask / body-highlight layers)"
+ },
+ "highlightColor": "#f08a3c",
+ "_doc": "Rendered only by tools/v5/render-masters-v5.mjs (look.mode toon-v5 is not a v3 package skin; the V4 entries refuse it). compose.py reads label/status/highlightColor only; with no mask layer the highlight colour is unused."
+}
