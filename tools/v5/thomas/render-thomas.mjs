@@ -13,6 +13,8 @@ import fs from 'node:fs';import path from 'node:path';import http from 'node:htt
 import {spawnSync,execFileSync} from 'node:child_process';import {fileURLToPath,pathToFileURL} from 'node:url';
 const HERE=path.dirname(fileURLToPath(import.meta.url)),ROOT=path.resolve(HERE,'../../..');
 const ID='thomas-flare-arm8legs',FPS=30,STEP=2,N=81;   // 81 frames x 2 anim frames = 162 = one loop
+// image window (px of the app's 1080 view of anim.cams.v0): loop extent body+fx+shadow measured x 54..1154, y 230..1050 -> centred, 30 px margin
+const WIN={x:24,y:60,w:1160};
 const {config}=await import(pathToFileURL(path.join(ROOT,'drill-anim/lib/config.mjs')).href);const C=config();
 const PY=process.env.PYTHON||(process.platform==='win32'?'python':'python3');
 const args=process.argv.slice(2),opt=k=>{const i=args.indexOf(k);return i>=0?args[i+1]:undefined;};
@@ -43,7 +45,7 @@ if(!fs.existsSync(path.join(mdir,'layer-manifest.json'))){
   try{
     const p=await b.newPage({viewport:{width:size,height:size},deviceScaleFactor:1});
     p.on('pageerror',e=>errs.push(String(e)));p.on('console',m=>{if(m.type()==='error'&&!/GPU stall|GL Driver/.test(m.text()))errs.push(m.text());});
-    await p.goto(`http://127.0.0.1:${srv.address().port}/tools/v5/runtime/thomas.html?hair=spiky&size=${size}&bgL=${encodeURIComponent(TH_L)}&bgD=${encodeURIComponent(TH_D)}`);
+    await p.goto(`http://127.0.0.1:${srv.address().port}/tools/v5/runtime/thomas.html?hair=spiky&size=${size}&vx=${WIN.x*size/1080}&vy=${WIN.y*size/1080}&vw=${WIN.w*size/1080}&bgL=${encodeURIComponent(TH_L)}&bgD=${encodeURIComponent(TH_D)}`);
     await p.waitForFunction(()=>window.__T?.ready,null,{timeout:170000});
     const info=await p.evaluate(()=>({...__T.info,count:__T.count,fps:__T.fps}));
     if(info.count!==N*STEP||info.fps!==120||info.hair!=='spiky'||!info.shadow||info.wrist?.length!==2)throw Error('unexpected page state '+JSON.stringify(info));

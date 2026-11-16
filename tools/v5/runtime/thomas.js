@@ -50,6 +50,11 @@ const shadowGroup = scene.getObjectByName('v3r7-fx-shadow');
 shadowGroup?.traverse(o => o.layers.set(1));   // shadow pass = camera layer 1 only; body pass = layer 0 (everything else)
 // camera = app setCam(anim.cams.v0) on a square canvas
 const c0 = anim.cams.v0; camera.position.fromArray(c0.p); camera.fov = c0.f; camera.aspect = 1; camera.updateProjectionMatrix(); camera.lookAt(new THREE.Vector3().fromArray(c0.t));
+// ?vx=&vy=&vw= : image window in px of the app-equivalent SIZE x SIZE view (same camera position/fov/perspective, only the window
+// moves and widens, i.e. a crop of a wider render). anim.cams.v0 frames the turn off-centre and the far shadow tip reaches x≈1154
+// of 1080 (frames ~28-47): render-thomas.mjs passes a window around the measured extent (x 54..1154, y 230..1050) so nothing clips.
+const VX = +(QS.get('vx') || 0), VY = +(QS.get('vy') || 0), VW = +(QS.get('vw') || SIZE);
+if (VX || VY || VW !== SIZE) camera.setViewOffset(SIZE, SIZE, VX, VY, VW, VW);
 function setFrame(f) {
   const fr = anim.frames[f];
   for (const j of JOINTS) bones[j].quaternion.fromArray(fr.q[j] || [0, 0, 0, 1]).normalize();
@@ -59,7 +64,7 @@ const BG_L = new THREE.Color(QS.get('bgL') || '#f3f2ef'), BG_D = new THREE.Color
 let primed = null;
 const wp = n => bones[n].getWorldPosition(new THREE.Vector3());
 window.__T = {
-  ready: true, count: anim.count, fps: anim.fps, info: { hair: toon.hair, outlines: toon.outlines, fx: { casters: fx.casters, params: fx.params }, wrist: wf && wf.sides, shadow: !!shadowGroup },
+  ready: true, renderer, camera, size: SIZE, count: anim.count, fps: anim.fps, info: { hair: toon.hair, outlines: toon.outlines, fx: { casters: fx.casters, params: fx.params }, wrist: wf && wf.sides, shadow: !!shadowGroup },
   // pass 'bodyL' / 'bodyD': body+fx over the opaque light / dark theme colour (BG_L / BG_D). The fx glow is premultiplied-additive
   // (rgb > alpha), which a transparent canvas clamps on readback (trails/stars came out ~half as strong as in Pose Studio);
   // merge-shadow.py pulls a straight-alpha matte from the two opaque renders instead.
