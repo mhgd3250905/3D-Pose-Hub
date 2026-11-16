@@ -1,0 +1,43 @@
+2026-11-16T17:19:07.087Z abs-A masters
+2026-11-16T17:20:31.146Z abs-A compose
+2026-11-16T17:21:00.708Z abs-A done
+2026-11-16T17:21:00.708Z abs-B masters
+2026-11-16T17:22:15.489Z abs-B compose
+2026-11-16T17:22:42.127Z abs-B done
+2026-11-16T17:22:42.128Z abs-C masters
+2026-11-16T17:23:57.398Z abs-C compose
+2026-11-16T17:24:27.458Z abs-C done
+2026-11-16T17:24:27.459Z adductors-A masters
+2026-11-16T17:25:57.054Z adductors-A compose
+2026-11-16T17:26:27.661Z adductors-A done
+2026-11-16T17:26:27.662Z adductors-B masters
+2026-11-16T17:28:16.910Z adductors-B compose
+2026-11-16T17:28:49.151Z adductors-B done
+2026-11-16T17:28:49.151Z adductors-C masters
+2026-11-16T17:30:12.458Z adductors-C compose
+2026-11-16T17:30:43.251Z adductors-C done
+2026-11-16T17:30:43.251Z chest-A masters
+2026-11-16T17:32:31.685Z chest-A compose
+2026-11-16T17:32:59.576Z chest-A done
+2026-11-16T17:32:59.576Z chest-B masters
+2026-11-16T17:34:16.274Z chest-B compose
+2026-11-16T17:34:45.414Z chest-B done
+2026-11-16T17:34:45.415Z chest-C masters
+2026-11-16T17:36:00.549Z chest-C compose
+2026-11-16T17:36:31.214Z chest-C done
+2026-11-16T17:36:31.214Z deltoids-A masters
+2026-11-16T17:37:58.057Z deltoids-A compose
+2026-11-16T17:38:28.338Z deltoids-A done
+2026-11-16T17:38:30.406Z sheet FAILED Traceback (most recent call last):
+  File "E:\AII-3D\3D-Pose-Hub-worktrees\human-polish-v3-20261110\tools\v5\batch-sheet.py", line 56, in <module>
+    main()
+    ~~~~^^
+  File "E:\AII-3D\3D-Pose-Hub-worktrees\human-polish-v3-20261110\tools\v5\batch-sheet.py", line 41, in main
+    meta = json.loads(pkg.read_text(encoding='utf-8'))
+                      ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\pathlib\__init__.py", line 788, in read_text
+    return f.read()
+           ~~~~~~^^
+  File "<frozen codecs>", line 325, in decode
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xc8 in position 1138: invalid continuation byte
+
