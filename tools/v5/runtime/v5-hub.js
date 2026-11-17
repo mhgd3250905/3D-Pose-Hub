@@ -154,22 +154,30 @@ export async function installV5({ glb }) {
     let idx = sampleIdx.get(o); if (!idx) { const n = o.geometry.attributes.position.count, st = Math.max(1, Math.floor(n / 4000)); idx = []; for (let i = 0; i < n; i += st) idx.push(i); sampleIdx.set(o, idx); }
     c.push({ o, idx }); }); return c; };
   const _v = new THREE.Vector3(), _s = new THREE.Vector3();
-  function extent(size) {
+  // margin > 0: also the span, along each canvas side, of the shadow points that come within margin px of that side
+  // (edgeSpan.left = [yMin, yMax] in px, ...; only sides that are reached). render-masters-v5.mjs then requires the rendered
+  // border to be opaque body/prop over that span: the shadow may leave the canvas only where the surface it lies on (e.g. the
+  // exercise mat, which V4 already cuts at the same edge) leaves it too.
+  function extent(size, margin = 0) {
     hideHub(); muteOtherShadows(); scene.updateMatrixWorld(true); camera.updateMatrixWorld(); const casters = castersNow();
     const view = camera.view && camera.view.enabled ? { ...camera.view } : null; if (view) { camera.view.enabled = false; camera.updateProjectionMatrix(); }
     sun.updateMatrixWorld(); sun.target.updateMatrixWorld();
     const sp = sun.getWorldPosition(new THREE.Vector3()), tp = sun.target.getWorldPosition(new THREE.Vector3());
     const L = tp.clone().sub(sp).normalize(), R = L.clone().cross(new THREE.Vector3(0, 1, 0)).normalize(), U = R.clone().cross(L);
     const py = plane.position.y, bb = () => [1e9, 1e9, -1e9, -1e9], sh = bb(), bo = bb(); let lmax = 0, dmin = 1e9, dmax = -1e9, nAbove = 0;
+    const span = {}, edge = (k, t) => { const e = span[k] || (span[k] = [1e9, -1e9]); e[0] = Math.min(e[0], t); e[1] = Math.max(e[1], t); };
     const px = (p, b) => { _s.copy(p).project(camera); const x = (_s.x + 1) / 2 * size, y = (1 - _s.y) / 2 * size; b[0] = Math.min(b[0], x); b[1] = Math.min(b[1], y); b[2] = Math.max(b[2], x); b[3] = Math.max(b[3], y); };
     const ls = p => { const d = p.clone().sub(sp); lmax = Math.max(lmax, Math.abs(d.dot(R)), Math.abs(d.dot(U))); const z = d.dot(L); dmin = Math.min(dmin, z); dmax = Math.max(dmax, z); };
     for (const { o, idx } of casters) for (const i of idx) {
       o.getVertexPosition(i, _v); _v.applyMatrix4(o.matrixWorld); px(_v, bo); ls(_v);
-      if (_v.y > py) { nAbove++; const s = _v.clone().addScaledVector(L, (_v.y - py) / -L.y); px(s, sh); ls(s); }
+      if (_v.y > py) { nAbove++; const s = _v.clone().addScaledVector(L, (_v.y - py) / -L.y); px(s, sh); ls(s);
+        if (margin > 0) { const x = (_s.x + 1) / 2 * size, y = (1 - _s.y) / 2 * size;
+          if (x < margin) edge('left', y); if (x > size - margin) edge('right', y); if (y < margin) edge('top', x); if (y > size - margin) edge('bottom', x); } }
     }
     if (view) { camera.view.enabled = true; camera.updateProjectionMatrix(); }
     const r = a => a.map(x => +x.toFixed(1));
-    return { shadow: r(sh), body: r(bo), lightHalfNeeded: +lmax.toFixed(4), lightHalf: SHADOW.half, depth: [+dmin.toFixed(3), +dmax.toFixed(3)], casterMeshes: casters.length, casterSamples: casters.reduce((s, c) => s + c.idx.length, 0), shadowPoints: nAbove, otherShadowLights: otherShadowLights.length };
+    return { shadow: r(sh), body: r(bo), lightHalfNeeded: +lmax.toFixed(4), lightHalf: SHADOW.half, depth: [+dmin.toFixed(3), +dmax.toFixed(3)], casterMeshes: casters.length, casterSamples: casters.reduce((s, c) => s + c.idx.length, 0), shadowPoints: nAbove, otherShadowLights: otherShadowLights.length,
+      ...(margin > 0 ? { edgeSpan: Object.fromEntries(Object.entries(span).map(([k, e]) => [k, r(e)])) } : {}) };
   }
   function render() {
     // hub install steps may re-show meshes; keep the hub body hidden on every frame
@@ -188,6 +196,14 @@ export async function installV5({ glb }) {
     }
     return out;
   }
-  window.__v5 = { pose, render, extent, get edge() { return edge; }, sun, plane, bones, root, toon, hidden, info: { hiddenHub: hidden.slice(), mutedShadowLights: otherShadowLights.slice(), shadowPlaneY: plane.position.y, matTop, outlines: toon.outlines, hair: toon.hair, outfit: toon.outfit, toonN: toon.toonN, wristSides: wf.sides } };
+  // alpha along one canvas side of the drawing buffer just rendered, in screen order (left/right: top to bottom; top/bottom: left
+  // to right), on the border line (inset 0) or `inset` px further in. Index i = screen px i of a size x size master.
+  function borderAlpha(side, inset = 0) {
+    const gl = renderer.getContext(), w = gl.drawingBufferWidth, h = gl.drawingBufferHeight, vert = side === 'left' || side === 'right';
+    const x = side === 'left' ? inset : side === 'right' ? w - 1 - inset : 0, y = side === 'bottom' ? inset : side === 'top' ? h - 1 - inset : 0;
+    const n = vert ? h : w, b = new Uint8Array(n * 4); gl.readPixels(x, y, vert ? 1 : w, vert ? h : 1, gl.RGBA, gl.UNSIGNED_BYTE, b);
+    const a = new Array(n); for (let i = 0; i < n; i++) a[i] = b[(vert ? n - 1 - i : i) * 4 + 3]; return a;
+  }
+  window.__v5 = { pose, render, extent, borderAlpha, get edge() { return edge; }, sun, plane, bones, root, toon, hidden, info: { hiddenHub: hidden.slice(), mutedShadowLights: otherShadowLights.slice(), shadowPlaneY: plane.position.y, matTop, outlines: toon.outlines, hair: toon.hair, outfit: toon.outfit, toonN: toon.toonN, wristSides: wf.sides } };
   return window.__v5.info;
 }

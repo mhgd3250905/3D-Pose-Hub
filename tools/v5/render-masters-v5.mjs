@@ -98,13 +98,28 @@ export async function run(opts){
       fail(freeGiB()>=.5,'Low free memory at frame '+frame);
       const time=frame/fps,staged=await stageAt(page,source,time,warm);warm=staged.x;
       const record={frame,time,endpoint:frame===plan.endpoint,pulse:staged.pulse,warn:staged.warn??null,files:{}};
-      const r=await page.evaluate(size=>{const d=window.__v5.pose();const ext=window.__v5.extent(size);const url=window.__v5.render();
-        return {d,ext,edge:window.__v5.edge,url,contextLost:flareInspector.viewer.renderer.getContext().isContextLost()};},size);
+      const mg=SHADOW_MARGIN_PX*size/1080;
+      const r=await page.evaluate(([size,mg])=>{const d=window.__v5.pose();const ext=window.__v5.extent(size,mg);const url=window.__v5.render();
+        // the border lines (and the lines 3 px in) of the frame just rendered, only for the sides the shadow reaches
+        const border={};for(const k of Object.keys(ext.edgeSpan))border[k]=[window.__v5.borderAlpha(k,0),window.__v5.borderAlpha(k,3)];
+        return {d,ext,border,edge:window.__v5.edge,url,contextLost:flareInspector.viewer.renderer.getContext().isContextLost()};},[size,mg]);
       fail(!r.contextLost,'WebGL context lost');
       // shadow guard: the whole ground shadow (analytic: every sampled caster vertex projected along the V5 sun onto the shadow
       // plane) must lie inside the master canvas with a margin, and casters + shadow inside the V5 sun's shadow frustum.
-      const sh=r.ext.shadow,mg=SHADOW_MARGIN_PX*size/1080;
-      fail(r.ext.shadowPoints===0||(sh[0]>=mg&&sh[1]>=mg&&sh[2]<=size-mg&&sh[3]<=size-mg),`Ground shadow reaches the master canvas edge at frame ${frame}: ${JSON.stringify(sh)}`);
+      // One exception (2026-11-17, erectors-A): on a side the shadow reaches, it may leave the canvas where it lies on an opaque prop
+      // that leaves the canvas there too (the exercise mat, cut at the same edge in V4): over the shadow's span on that side the
+      // rendered border must be opaque (alpha > 64), and no border pixel of that side may be free shadow (0 < alpha <= 64 on the
+      // border and 3 px in, as tools/v5/check-shadow.py). Anything else still fails. The rendered image is not changed by this.
+      const sh=r.ext.shadow,inside=sh[0]>=mg&&sh[1]>=mg&&sh[2]<=size-mg&&sh[3]<=size-mg,shadowEdge={};
+      if(r.ext.shadowPoints>0&&!inside)for(const [k,[y0,y1]] of Object.entries(r.ext.edgeSpan)){
+        const [line,inner]=r.border[k],s=v=>v>0&&v<=64,i0=Math.max(0,Math.round(y0)),i1=Math.min(size-1,Math.round(y1));
+        let opaque=true;for(let i=i0;i<=i1;i++)if(line[i]<=64)opaque=false;
+        const free=line.reduce((n,v,i)=>n+(s(v)&&s(inner[i])?1:0),0);
+        shadowEdge[k]={span:[y0,y1],underOpaque:opaque&&i0<=i1,freeShadowPx:free};
+      }
+      const sideOk=e=>e.underOpaque&&e.freeShadowPx===0;
+      fail(r.ext.shadowPoints===0||inside||(Object.keys(shadowEdge).length>0&&Object.values(shadowEdge).every(sideOk)),
+        `Ground shadow reaches the master canvas edge at frame ${frame}: ${JSON.stringify(sh)} ${JSON.stringify(shadowEdge)}`);
       fail(r.ext.lightHalfNeeded<=r.ext.lightHalf-SHADOW_FRUSTUM_MARGIN_M,`Shadow casters leave the V5 sun shadow frustum at frame ${frame}: needs ±${r.ext.lightHalfNeeded} m of ±${r.ext.lightHalf}`);
       fail(r.ext.otherShadowLights===0||report.v5.setup.mutedShadowLights.length===r.ext.otherShadowLights,'Unexpected extra shadow light');
       fail(!report.pageErrors.length,'Browser/shader errors: '+report.pageErrors.join(';'));
@@ -114,7 +129,7 @@ export async function run(opts){
       const file=path.join(dir,`m-${String(frame).padStart(4,'0')}.png`);fs.writeFileSync(file,bytes,{flag:'wx'});
       record.files[skin.id+'/body']={path:path.relative(root,file).replaceAll('\\','/'),sha256:sha(bytes),bytes:bytes.length};
       record.v5={posErr:r.d.posErr,posErrBone:r.d.posErrBone,spineErrBefore:+r.d.spine.e0.toFixed(5),spineErrAfter:+r.d.spine.e.toFixed(5),
-        shadowBox:sh,bodyBox:r.ext.body,lightHalfNeeded:r.ext.lightHalfNeeded,lightHalf:r.ext.lightHalf,edgeAlpha:r.edge};
+        shadowBox:sh,...(Object.keys(shadowEdge).length?{shadowEdge}:{}),bodyBox:r.ext.body,lightHalfNeeded:r.ext.lightHalfNeeded,lightHalf:r.ext.lightHalf,edgeAlpha:r.edge};
       report.frames.push(record);poses.push({frame,...r.d});
       console.log(JSON.stringify({event:'frame',id,frame,ms:Date.now()-started}));
     }
@@ -127,6 +142,7 @@ export async function run(opts){
       wristWraps:poses.at(-1).wrist.wraps,wristSeeks:poses.at(-1).wrist.seeks,
       shadow:{box:[Math.min(...report.frames.map(f=>f.v5.shadowBox[0])),Math.min(...report.frames.map(f=>f.v5.shadowBox[1])),Math.max(...report.frames.map(f=>f.v5.shadowBox[2])),Math.max(...report.frames.map(f=>f.v5.shadowBox[3]))],
         minEdgeGapPx:+Math.min(...report.frames.map(f=>Math.min(f.v5.shadowBox[0],f.v5.shadowBox[1],size-f.v5.shadowBox[2],size-f.v5.shadowBox[3]))).toFixed(1),
+        ...(report.frames.some(f=>f.v5.shadowEdge)?{edgeUnderOpaquePropFrames:report.frames.filter(f=>f.v5.shadowEdge).length}:{}),
         maxLightHalfNeeded:mx('lightHalfNeeded'),lightHalf:report.frames[0].v5.lightHalf,mutedShadowLights:report.v5.setup.mutedShadowLights,
         edgeAlphaFrames:report.frames.filter(f=>Object.values(f.v5.edgeAlpha).some(e=>e[0]>0)).length}};
     fs.writeFileSync(path.join(out,'v5-pose.json'),JSON.stringify({format:'pose-hub-v5-pose@1',actionId:id,fps,bones:Object.keys(poses[0].q),frames:poses}));
