@@ -27,6 +27,12 @@ const SOURCES=['tools/v5/render-masters-v5.mjs','tools/v5/profile-v5.json','tool
   ...MODULES.map(m=>'tools/v5/runtime/'+m),'tools/v5/runtime/'+MODEL,
   'tools/action-package-v3/render-masters.mjs','tools/action-package-v3/recipe-scene.mjs'];
 const SHADOW_MARGIN_PX=4,SHADOW_FRUSTUM_MARGIN_M=0.1;   // guard margins (px of a 1080 master; metres in light space)
+// Per-action view window (px of the recipe camera's own 1080 view): same camera position, fov and perspective; only the image
+// window moves/widens (camera.setViewOffset), i.e. a crop of a wider render, as the Thomas fix (d983e9d). Every action not listed
+// renders the recipe camera's own view, unchanged.
+//  h-open-book (2026-11-17): the floor-side hand's finger shadows reach y=1078.5 of 1080 on frames ~80-160 (open hold; body+shadow
+//  union x 98..948, y 225..1078.5) -> window moved 20 px down: shadow bottom ~1058.5 (21.5 px headroom), body top ~205.
+const VIEW_WINDOW={'h-open-book':{x:0,y:20,w:1080}};
 const sourceHashes=()=>Object.fromEntries(SOURCES.map(f=>[f,sha(fs.readFileSync(path.join(REPO,f)))]));
 export function loadV5Profile(p){
   const file=path.resolve(p??path.join(HERE,'profile-v5.json')),bytes=fs.readFileSync(file),data=JSON.parse(bytes);
@@ -93,6 +99,13 @@ export async function run(opts){
       const m=await import(url['v5-hub.js']);return await m.installV5({glb:bin});
     },{mods,glb});
     fail(report.v5.setup.hair==='none'&&report.v5.setup.wristSides.length===2,'V5 setup incomplete');
+    const win=VIEW_WINDOW[id];
+    if(win){
+      fail(win.w>=1080&&Number.isFinite(win.x)&&Number.isFinite(win.y),'Bad view window for '+id);
+      report.v5.viewWindow={...win,unit:'px of the recipe camera 1080 view',view:await page.evaluate(([s,w])=>{const c=flareInspector.viewer.camera,k=s/1080;
+        c.setViewOffset(s,s,w.x*k,w.y*k,w.w*k,w.w*k);c.updateProjectionMatrix();return {...c.view};},[size,win])};
+      report.camera+=`; view window x${win.x} y${win.y} w${win.w}`;
+    }
     const poses=[];let warm=null;const started=Date.now();
     for(const frame of plan.frames){
       fail(freeGiB()>=.5,'Low free memory at frame '+frame);
@@ -102,8 +115,9 @@ export async function run(opts){
       const r=await page.evaluate(([size,mg])=>{const d=window.__v5.pose();const ext=window.__v5.extent(size,mg);const url=window.__v5.render();
         // the border lines (and the lines 3 px in) of the frame just rendered, only for the sides the shadow reaches
         const border={};for(const k of Object.keys(ext.edgeSpan))border[k]=[window.__v5.borderAlpha(k,0),window.__v5.borderAlpha(k,3)];
-        return {d,ext,border,edge:window.__v5.edge,url,contextLost:flareInspector.viewer.renderer.getContext().isContextLost()};},[size,mg]);
+        return {d,ext,border,edge:window.__v5.edge,url,view:(c=>c.view&&c.view.enabled?{...c.view}:null)(flareInspector.viewer.camera),contextLost:flareInspector.viewer.renderer.getContext().isContextLost()};},[size,mg]);
       fail(!r.contextLost,'WebGL context lost');
+      fail(JSON.stringify(r.view)===JSON.stringify(report.v5.viewWindow?.view??null),'Camera view window changed at frame '+frame);
       // shadow guard: the whole ground shadow (analytic: every sampled caster vertex projected along the V5 sun onto the shadow
       // plane) must lie inside the master canvas with a margin, and casters + shadow inside the V5 sun's shadow frustum.
       // One exception (2026-11-17, erectors-A): on a side the shadow reaches, it may leave the canvas where it lies on an opaque prop

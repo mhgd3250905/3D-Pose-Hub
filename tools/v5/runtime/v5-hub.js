@@ -146,8 +146,9 @@ export async function installV5({ glb }) {
       wrist: { theta: { ...wf.stats.theta }, swing: { ...wf.stats.swing }, wraps: wf.stats.wraps, seeks: wf.stats.seeks } };
   }
   // ---- analytic shadow / body extent (call after pose()): sampled skinned vertices of every shadow caster, each projected along
-  // the sun direction onto the shadow plane. Returns screen px boxes in the recipe camera's own size x size view (view offset
-  // ignored) and the light-space reach of casters + shadow points (must stay inside the shadow camera's ortho frustum).
+  // the sun direction onto the shadow plane. Returns screen px boxes of the size x size master canvas as rendered (with the
+  // camera's view offset when render-masters-v5.mjs sets a per-action view window; none for every other action, where this is the
+  // recipe camera's own view) and the light-space reach of casters + shadow points (must stay inside the shadow camera's ortho frustum).
   const sampleIdx = new Map();
   const shown = o => { for (let q = o; q; q = q.parent) if (!q.visible) return false; return true; };
   const castersNow = () => { const c = []; scene.traverse(o => { if (!o.isMesh || o.isInstancedMesh || !o.castShadow || !o.geometry?.attributes?.position || o === plane || !shown(o)) return;
@@ -160,7 +161,6 @@ export async function installV5({ glb }) {
   // exercise mat, which V4 already cuts at the same edge) leaves it too.
   function extent(size, margin = 0) {
     hideHub(); muteOtherShadows(); scene.updateMatrixWorld(true); camera.updateMatrixWorld(); const casters = castersNow();
-    const view = camera.view && camera.view.enabled ? { ...camera.view } : null; if (view) { camera.view.enabled = false; camera.updateProjectionMatrix(); }
     sun.updateMatrixWorld(); sun.target.updateMatrixWorld();
     const sp = sun.getWorldPosition(new THREE.Vector3()), tp = sun.target.getWorldPosition(new THREE.Vector3());
     const L = tp.clone().sub(sp).normalize(), R = L.clone().cross(new THREE.Vector3(0, 1, 0)).normalize(), U = R.clone().cross(L);
@@ -174,7 +174,6 @@ export async function installV5({ glb }) {
         if (margin > 0) { const x = (_s.x + 1) / 2 * size, y = (1 - _s.y) / 2 * size;
           if (x < margin) edge('left', y); if (x > size - margin) edge('right', y); if (y < margin) edge('top', x); if (y > size - margin) edge('bottom', x); } }
     }
-    if (view) { camera.view.enabled = true; camera.updateProjectionMatrix(); }
     const r = a => a.map(x => +x.toFixed(1));
     return { shadow: r(sh), body: r(bo), lightHalfNeeded: +lmax.toFixed(4), lightHalf: SHADOW.half, depth: [+dmin.toFixed(3), +dmax.toFixed(3)], casterMeshes: casters.length, casterSamples: casters.reduce((s, c) => s + c.idx.length, 0), shadowPoints: nAbove, otherShadowLights: otherShadowLights.length,
       ...(margin > 0 ? { edgeSpan: Object.fromEntries(Object.entries(span).map(([k, e]) => [k, r(e)])) } : {}) };
