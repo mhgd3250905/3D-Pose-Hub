@@ -11,7 +11,7 @@
 // Exit: 0 batch done; 1 preflight refused (nothing rendered); 3 some action failed (others done, report and go on);
 //       4 QA push failed (renders are fine). The last stdout line is one JSON whose "report" field is the text to post.
 import fs from 'node:fs';import path from 'node:path';
-import {spawn,spawnSync,execFileSync} from 'node:child_process';import {fileURLToPath} from 'node:url';
+import {spawn,spawnSync,execFileSync} from 'node:child_process';import {fileURLToPath} from 'node:url';import {config} from '../../drill-anim/lib/config.mjs';
 const SELF=fileURLToPath(import.meta.url),HERE=path.dirname(SELF),ROOT=path.resolve(HERE,'../..');
 const PLAN=JSON.parse(fs.readFileSync(path.join(HERE,'v5-actions.json'),'utf8'));
 const BASE='e4c3c780d6a5506fbedfc5904429ae9be709a78b',QA_BRANCH='qa/v5-render-1117',SIZE=PLAN.batchSize;
@@ -64,12 +64,22 @@ async function ensureServer(appUrl){
   const t0=Date.now();while(!(await reachable(appUrl))){if(server.exitCode!==null)pre('Vite 退出（端口被占？）');if(Date.now()-t0>180000)pre('Vite 180 秒内未就绪');await new Promise(r=>setTimeout(r,500));}
 }
 function stopServer(){if(server&&server.exitCode===null){try{if(process.platform==='win32')spawnSync('taskkill',['/T','/F','/PID',String(server.pid)]);else process.kill(server.pid);}catch{}}}
-const TIMEOUT_MIN=+(process.env.V5_ACTION_TIMEOUT_MIN||90);
+// 2026-11-17 batches 15/16: a masters run hung after a few frames (no output for 90 min); taskkill /F skips its finally, so its
+// package-v3-render.lock stayed and every later action of the batch failed at once ("Active render lock"). Now: the longest good
+// action took 700 s, so the hard limit is 25 min; a run whose log stops growing for STALL_MIN is killed too; after any kill the
+// lock is removed if (and only if) it names the killed PID; a masters run that was killed is tried once more.
+const TIMEOUT_MIN=+(process.env.V5_ACTION_TIMEOUT_MIN||25),STALL_MIN=+(process.env.V5_STALL_MIN||6);
+const RENDER_LOCK=path.join(config().work_dir,'package-v3-render.lock');
+function clearStaleLock(pid){try{if(fs.existsSync(RENDER_LOCK)&&JSON.parse(fs.readFileSync(RENDER_LOCK,'utf8')).pid===pid){fs.unlinkSync(RENDER_LOCK);log(`removed stale render lock of PID ${pid}`);}}catch(e){log('stale lock check failed: '+e);}}
 function killTree(pid){try{if(process.platform==='win32')spawnSync('taskkill',['/T','/F','/PID',String(pid)]);else process.kill(pid,'SIGKILL');}catch{}}
 function run(cmd,a,lf){return new Promise(res=>{const fd=fs.openSync(lf,'a');fs.writeSync(fd,`\n# ${now()} ${cmd} ${a.join(' ')}\n`);
   const c=spawn(cmd,a,{cwd:ROOT,stdio:['ignore',fd,fd],windowsHide:true,env:{...process.env,NO_PROXY:['127.0.0.1','localhost',process.env.NO_PROXY].filter(Boolean).join(',')}});
-  const timer=setTimeout(()=>{log(`timeout ${TIMEOUT_MIN} min, killing PID ${c.pid}`);killTree(c.pid);},TIMEOUT_MIN*60000);
-  c.on('error',()=>{clearTimeout(timer);fs.closeSync(fd);res(-1);});c.on('exit',code=>{clearTimeout(timer);fs.closeSync(fd);res(code??-1);});});}
+  let killed=false;const kill=why=>{if(killed)return;killed=true;log(`${why}, killing PID ${c.pid}`);killTree(c.pid);};
+  const timer=setTimeout(()=>kill(`timeout ${TIMEOUT_MIN} min`),TIMEOUT_MIN*60000);
+  let size=-1,since=Date.now();const watch=setInterval(()=>{let n=-1;try{n=fs.statSync(lf).size;}catch{}
+    if(n!==size){size=n;since=Date.now();}else if(Date.now()-since>STALL_MIN*60000)kill(`no output for ${STALL_MIN} min`);},15000);
+  const end=code=>{clearTimeout(timer);clearInterval(watch);try{fs.closeSync(fd);}catch{}if(killed)clearStaleLock(c.pid);res({code:code??-1,killed});};
+  c.on('error',()=>end(-1));c.on('exit',code=>end(code));});}
 function quarantine(id,why){const q=path.join(out,'_quarantine',`${id}_${stamp()}`);let moved=false;
   for(const sub of ['masters','packages']){const s=path.join(out,sub,id);if(fs.existsSync(s)){fs.mkdirSync(q,{recursive:true});fs.renameSync(s,path.join(q,sub));moved=true;}}
   if(moved){fs.writeFileSync(path.join(q,'WHY.txt'),why+'\n');log(`${id} quarantined -> ${q}`);}}
@@ -87,10 +97,13 @@ try{
     else if(fs.existsSync(path.join(out,'packages',id))){const q=path.join(out,'_quarantine',`${id}_${stamp()}`);fs.mkdirSync(q,{recursive:true});fs.renameSync(path.join(out,'packages',id),path.join(q,'packages'));log(`${id} partial package quarantined`);}
     let ok=true;
     if(!mDone){log(id+' masters');
-      const c=await run(process.execPath,[path.join(ROOT,'tools/v5/render-masters-v5.mjs'),'--recipe',a.recipe,'--root',out,'--profile',PROFILE],lf);
+      const margs=[path.join(ROOT,'tools/v5/render-masters-v5.mjs'),'--recipe',a.recipe,'--root',out,'--profile',PROFILE];
+      let r=await run(process.execPath,margs,lf);
+      if(r.killed){log(id+' masters killed, one more try');quarantine(id,'killed masters run before retry');r=await run(process.execPath,margs,lf);}
+      const c=r.code;
       if(c!==0||!fs.existsSync(path.join(out,'masters',id,'layer-manifest.json'))){log(`${id} masters FAILED ${c}`);res.failed.push(id+':masters');ok=false;}}
     if(ok){log(id+' compose');
-      const c=await run(PY,[path.join(ROOT,'tools/action-package-v3/compose.py'),'--root',out,'--id',id,'--profile',PROFILE],lf);
+      const c=(await run(PY,[path.join(ROOT,'tools/action-package-v3/compose.py'),'--root',out,'--id',id,'--profile',PROFILE],lf)).code;
       if(c!==0||!isDone(id)){log(`${id} compose FAILED ${c}`);res.failed.push(id+':compose');ok=false;}}
     const bytes=ok?dirBytes(path.join(out,'masters',id))+dirBytes(path.join(out,'packages',id)):null;
     state.actions[id]={status:ok?'done':'failed',seconds:Math.round((Date.now()-ts)/1000),bytes,at:now(),batch:label};saveState();
