@@ -69,6 +69,9 @@ class ArmFix:
             if self.prevf[sd] is not None:
                 da = math.degrees(math.acos(max(-1, min(1, fg @ self.prevf[sd])))); c_ += (self.s * da / 8.0) ** 2
                 if da > 1500.0 * self.dt + 1: c_ += 1e4
+            aw = getattr(self, 'away', {}).get(sd)
+            if aw is not None:   # real 2000: palm flat, fingers pointing out, away from the body
+                ga = math.degrees(math.acos(max(-1, min(1, fg @ aw)))); c_ += (max(0.0, ga - 50.0) / 15.0) ** 2
             if bestf is None or c_ < bestf[0]: bestf = (c_, fg, pr_, pm)
         return bestf
 
@@ -76,6 +79,12 @@ class ArmFix:
         """mutates k (Elbow pole, and Fing/Palm of airborne hands); returns diagnostics."""
         rig = self.rig; T = W['torso']; diag = {}; other = None
         HC = P['head'] + W['head'] @ Y * 0.10
+        import os as _os
+        if _os.environ.get('OUTF'):
+            self.away = {}
+            for _sd in ('left', 'right'):
+                _a = k[_sd + 'Wrist'] - P['pelvis']; _a = np.array([_a[0], 0.0, _a[2]])
+                self.away[_sd] = _a / np.linalg.norm(_a) if np.linalg.norm(_a) > 0.05 else None
         for sd, sg in (('left', 1), ('right', -1)):
             S = P[sd + 'UpperArm']; t = k[sd + 'Wrist']
             Lr = rig.l_ua + rig.l_fa; dd = np.linalg.norm(t - S)
