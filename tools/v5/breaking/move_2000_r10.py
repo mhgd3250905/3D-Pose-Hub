@@ -72,7 +72,8 @@ def pitchF(a, twist=0.0):
 # free left arm, straight out sideways, comes down beside the head and lands just ahead of the first hand (0.18 m, head side)
 # -> straddle handstand, the shoulder line levels, legs close/bend -> right hand stacks onto the left wrist -> spin (the spin
 # continues the twist direction, i.e. th decreases).
-PL_R = V(-0.18, 0.045, 0.05)       # first (right) hand plant: on the travel line, ~0.28 m ahead of the front foot
+SX = float(os.environ.get('SX', '0'))   # r10b: whole entry (feet, pelvis, first hand) shifted along the line, away from the axis hand
+PL_R = V(-0.18 + SX, 0.045, 0.05)       # first (right) hand plant: on the travel line, ~0.28 m ahead of the front foot
 PL_L = V(0.0, 0.045, 0.02)         # axis (left) hand: lands 0.18 m further along the line (head side)
 FING_R = n(V(-0.2, 0, 1))          # planted right hand: fingers out to the right-hand side
 LR = (rig.l_ua + rig.l_fa)
@@ -105,29 +106,30 @@ FA2 = _e('FA2', '0.90,0.40,-0.05'); FA2B = _e('FA2B', '0.94,0.32,-0.05')
 TW1, TW1B, TW2, TW2B = _e('TW', '0,22,26,18')          # cartwheel turn of the trunk: planting shoulder down, free shoulder up
 P1B = _e('P1B', '92')[0]
 PEL1B = _e('PEL1B', '-0.68,0.84,0.02'); PEL2 = _e('PEL2', '-0.51,0.85,0.03'); PEL2B = _e('PEL2B', '-0.40,0.90,0.04'); PEL3 = _e('PEL3', '-0.30,0.98,0.03')
+PEL1B, PEL2, PEL2B, PEL3 = [(v[0] + f * SX,) + tuple(v[1:]) for v, f in ((PEL1B, 1), (PEL2, 1), (PEL2B, 0.8), (PEL3, 0.5))]
 LEG2 = _e('LEG2', '-0.14,-0.66,-0.42'); LEG2B = _e('LEG2B', '-0.22,-0.58,-0.52')   # back leg: kicked high behind -> wide split before the drive
 SIDE3, SIDE3B, SIDE4 = _e('SIDE', '22,26,22')
 FB0, FB1 = _e('FB', '0.60,0.601'); UX = _e('UX', '0.55,0.35'); HOV = _e('HOV', '0.035')[0]; SUPW = os.environ.get('SUPW', '0') == '1'
 SHTX = _e('SHTX', '-0.15')[0]   # second (axis) hand landing: where its shoulder sits over the plant along x (r9 -0.15)            # second-hand side raised higher before it lands (r9: 22, 26, 22)
-FL0 = V(-0.96, 0.09, -0.04); FL = V(-0.76, 0.09, -0.07)      # left (front) foot: start, after the step
-FR = V(-1.40, 0.09, 0.07)                                      # right (back) foot
+FL0 = V(SX + -0.96, 0.09, -0.04); FL = V(SX + -0.76, 0.09, -0.07)      # left (front) foot: start, after the step
+FR = V(SX + -1.40, 0.09, 0.07)                                      # right (back) foot
 # 0.00 stand facing the camera (+Z), slight forward lean, arms spread sideways (left about level, right lower)
 R0 = ori(0, 10)
-K0 = key(base, R0, pelvis=V(-1.18, 0.92, 0.0), spine=rvd(6, 0, 0), neck=rvd(-4, 0, 0),
+K0 = key(base, R0, pelvis=V(SX + -1.18, 0.92, 0.0), spine=rvd(6, 0, 0), neck=rvd(-4, 0, 0),
          leftAnkle=FL0, rightAnkle=FR, leftToe=n(V(0.35, 0, 1)), rightToe=n(V(-0.35, 0, 1)), leftSole=V(0, -1, 0), rightSole=V(0, -1, 0),
          leftKnee=n(V(0.3, 0, 1)), rightKnee=n(V(-0.3, 0, 1)), leftElbow=V(0, -0.4, -1), rightElbow=V(0, -0.4, -1), leftLegLen=0.0, rightLegLen=0.0)
 armdir(K0, 'left', (0.95, 0.12, 0.08)); armdir(K0, 'right', (-0.80, -0.55, 0.12))
 K.append((0.00, K0)); K.append((0.08, K0))
 # 0.22 turning left toward the line, left foot in the air stepping forward along it, trunk starts to hinge
 R0b = ori(40, 24)
-K0b = key(K0, R0b, pelvis=V(-1.12, 0.90, 0.0), spine=rvd(10, 0, 0), neck=rvd(-6, 0, 0),
-          leftAnkle=V(-0.86, 0.20, -0.06), leftToe=n(V(0.8, -0.35, 0.4)), leftKnee=n(V(0.8, 0.2, 0.5)),
+K0b = key(K0, R0b, pelvis=V(SX + -1.12, 0.90, 0.0), spine=rvd(10, 0, 0), neck=rvd(-6, 0, 0),
+          leftAnkle=V(SX + -0.86, 0.20, -0.06), leftToe=n(V(0.8, -0.35, 0.4)), leftKnee=n(V(0.8, 0.2, 0.5)),
           rightToe=n(V(0.5, 0, 0.85)), rightKnee=n(V(0.5, 0, 0.85)))
 armdir(K0b, 'left', tuple(bodydir(R0b, FA0b))); armdir(K0b, 'right', (0.30, -0.90, 0.30))   # r10: free arm out to the side, ~25 deg up (r9: nearly vertical)
 K.append((0.22, K0b))
 # 0.34 facing the line (+X), lunge onto the front foot, hinge ~50, right arm reaching forward-down straight, left arm up
 R1 = ori2(82, 50, 0, TW1)
-K1 = key(K0b, R1, pelvis=V(-0.96, 0.86, 0.0), spine=rvd(14, 0, 0), neck=rvd(-8, 0, 0),
+K1 = key(K0b, R1, pelvis=V(SX + -0.96, 0.86, 0.0), spine=rvd(14, 0, 0), neck=rvd(-8, 0, 0),
          leftAnkle=FL, leftToe=V(1, 0, -0.1), leftSole=V(0, -1, 0), leftKnee=V(1, 0.3, -0.1),
          rightToe=n(V(0.75, 0, 0.65)), rightKnee=n(V(0.8, 0, 0.6)))
 armdir(K1, 'left', tuple(bodydir(R1, FA1))); armdir(K1, 'right', (0.55, -0.83, 0.05))
@@ -136,7 +138,7 @@ K.append((0.34, K1))
 R1b = ori2(88, P1B, 0, TW1B)
 K1b = key(K1, R1b, pelvis=V(*PEL1B), spine=rvd(10, 0, 0), neck=rvd(-6, 0, 0),
           rightWrist=PL_R + V(0.0, 0.10, 0.0), rightFing=FING_R, rightPalm=V(0, -1, 0), rightElbow=V(-1, 0, 0),
-          rightAnkle=V(-1.36, 0.17, 0.07), rightToe=n(V(0.8, -0.45, 0.1)), rightSole=n(V(-0.55, -0.8, 0)))
+          rightAnkle=V(SX + -1.36, 0.17, 0.07), rightToe=n(V(0.8, -0.45, 0.1)), rightSole=n(V(-0.55, -0.8, 0)))
 armdir(K1b, 'left', tuple(bodydir(R1b, FA1B)))
 K.append((0.46, K1b))
 # 0.58 right hand planted; back (right) leg kicks up behind, front foot is the support; head goes down past the hand
