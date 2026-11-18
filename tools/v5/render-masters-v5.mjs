@@ -32,7 +32,7 @@ const SHADOW_MARGIN_PX=4,SHADOW_FRUSTUM_MARGIN_M=0.1;   // guard margins (px of 
 // renders the recipe camera's own view, unchanged.
 //  h-open-book (2026-11-17): the floor-side hand's finger shadows reach y=1078.5 of 1080 on frames ~80-160 (open hold; body+shadow
 //  union x 98..948, y 225..1078.5) -> window moved 20 px down: shadow bottom ~1058.5 (21.5 px headroom), body top ~205.
-const VIEW_WINDOW={'h-open-book':{x:0,y:20,w:1080}};
+const VIEW_WINDOW={'h-open-book':{x:0,y:20,w:1080},'triceps-C':{x:0,y:40,w:1080}};
 const sourceHashes=()=>Object.fromEntries(SOURCES.map(f=>[f,sha(fs.readFileSync(path.join(REPO,f)))]));
 export function loadV5Profile(p){
   const file=path.resolve(p??path.join(HERE,'profile-v5.json')),bytes=fs.readFileSync(file),data=JSON.parse(bytes);
