@@ -9,7 +9,7 @@ import numpy as np
 sys.path.insert(0, __import__('os').path.dirname(__file__))
 from kf import *
 ap = argparse.ArgumentParser(); ap.add_argument('rest'); ap.add_argument('out'); ap.add_argument('--keys', action='store_true', help='one frame per key (preview)')
-ap.add_argument('--fps', type=int, default=120); ap.add_argument('--revs', type=float, default=4)
+ap.add_argument('--dump'); ap.add_argument('--fps', type=int, default=120); ap.add_argument('--revs', type=float, default=4)
 A = ap.parse_args(); rig = Rig(A.rest)
 V = lambda *a: np.array(a, float)
 def O(roll=0, yaw=0, pitch=0): return rz(math.radians(roll)) @ ry(math.radians(yaw)) @ rx(math.radians(pitch))
@@ -98,8 +98,9 @@ def frame(k, th):
     k = reach_fix(k); W, P = rig.solve(k); Ry = ry(th)
     loc = {b: (np.eye(3) if b == 'pelvis' else W[PAR[b]]).T @ W[b] for b in JOINTS}
     q = {b: [round(float(x), 6) for x in m2q(loc[b])] for b in JOINTS}; q['pelvis'] = [round(float(x), 6) for x in m2q(Ry @ W['pelvis'])]
+    if A.dump: DUMP.append(({b: Ry @ P[b] for b in P}, {b: Ry @ W[b] for b in W}))
     return {'p': [round(float(x), 5) for x in Ry @ k['pelvis']], 'q': q}, P
-frames, info = [], []
+frames, info = [], []; DUMP = []
 if A.keys:
     for t, k in K[:9]:
         kk = interp(K, t); fr, P = frame(kk, 0.0); frames.append(fr); info.append({'t': t, 'lw': P['leftHand'].round(3).tolist(), 'rw': P['rightHand'].round(3).tolist(), 'head': P['head'].round(3).tolist(), 'la': P['leftFoot'].round(3).tolist(), 'ra': P['rightFoot'].round(3).tolist()})
@@ -109,6 +110,11 @@ else:
         t = i / A.fps; kk = interp(K, t); fr, P = frame(kk, TH[i]); frames.append(fr)
         if i % 12 == 0: info.append({'t': round(t, 2), 'th': round(math.degrees(TH[i]), 1), 'lw': P['leftHand'].round(3).tolist(), 'rw': P['rightHand'].round(3).tolist(), 'la': P['leftFoot'][1].round(3), 'ra': P['rightFoot'][1].round(3)})
 for x in info: print(x, file=sys.stderr)
+if A.dump:
+    d = {'fps': A.fps}
+    for b in DUMP[0][0]: d['P_' + b] = np.array([x[0][b] for x in DUMP])
+    for b in DUMP[0][1]: d['W_' + b] = np.array([x[1][b] for x in DUMP])
+    np.savez_compressed(A.dump, **d)
 anim = {'cams': {'v0': {'p': [-2.45, 1.85, 4.05], 't': [-0.3, 0.88, 0.0], 'f': 30}}, 'id': 'breaking-2000', 'name': '2000（站立起势→上倒立→叠手并腿旋转→原路落地）r2',
         'model': 'v3', 'fps': A.fps, 'count': len(frames),
         'source': 'tools/v5/breaking/move_2000_r2.py + kf.py（关键帧 + 逐帧 IK；参考 bboy阿求 2000s教学 BV158411X7kX 示范段、Coach Sambo / The Ruggeds 2000 教学）',

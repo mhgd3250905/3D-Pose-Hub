@@ -73,7 +73,7 @@ class Rig:
         if arm:   # elbow crease is rest +Z ; knee front is rest +Z and points AWAY from the bend
             W1 = aim(lp1, Z, e, crease)
             if fing is not None:
-                s = palm - f * (palm @ f); w = max(0.0, 1 - np.linalg.norm(s) / 0.5); s = s + (fing - f * (fing @ f)) * w
+                s = palm - f * (palm @ f); w = max(0.0, 1 - np.linalg.norm(s) / 0.5); s = s - (fing - f * (fing @ f)) * w   # dorsiflexed hand: fingers point to the back (+Y) of the forearm
             else: s = W1 @ (-Y)
             W2 = aim(lp2, -Y, f, s)
         else:
@@ -84,7 +84,8 @@ def axang(ax, a):
 def rv(v):
     v = np.array(v, float); a = np.linalg.norm(v); return np.eye(3) if a < 1e-9 else axang(v / a, a)
 VEC = ['pelvis','spine','neck','head','leftWrist','rightWrist','leftElbow','rightElbow','leftAnkle','rightAnkle','leftKnee','rightKnee','leftToe','rightToe','leftSole','rightSole','leftFing','rightFing','leftPalm','rightPalm']
-SCAL = ['th','leftShrug','rightShrug']
+CONTACT = ['leftWrist','rightWrist','leftAnkle','rightAnkle']
+SCAL = ['th','leftShrug','rightShrug','leftLegLen','rightLegLen']
 def cr(p0, p1, p2, p3, t):
     t2, t3 = t*t, t*t*t
     return 0.5*((2*p1) + (-p0+p2)*t + (2*p0-5*p1+4*p2-p3)*t2 + (-p0+3*p1-3*p2+p3)*t3)
@@ -103,6 +104,10 @@ def interp(keys, t):
             for j in (0, 2, 3):
                 if v[j] @ v[1 if j == 0 else j-1] < 0: v[j] = -v[j]
         if np.allclose(v[1], v[2], atol=1e-9): out[ch] = v[1]; continue
+        # a contact that is held on the next/previous segment arrives/leaves with zero velocity (no sliding into a plant)
+        # straight-line ease into the plant / out of the hold, so contacts land and lift without sliding or dipping
+        if ch in CONTACT and i + 2 < len(keys) and np.allclose(v[2], v[3], atol=1e-9): out[ch] = v[1] + (v[2] - v[1]) * (1 - (1 - u) ** 3); continue
+        if ch in CONTACT and i > 0 and np.allclose(v[0], v[1], atol=1e-9): out[ch] = v[1] + (v[2] - v[1]) * u ** 3; continue
         out[ch] = cr(*v, u)
     out['pelvisR'] = q2m(out['pelvisQ'])
     return out
