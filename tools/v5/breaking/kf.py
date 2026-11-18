@@ -35,6 +35,7 @@ def q2m(q):
     return np.array([[1-2*(y*y+z*z), 2*(x*y-z*w), 2*(x*z+y*w)], [2*(x*y+z*w), 1-2*(x*x+z*z), 2*(y*z-x*w)], [2*(x*z-y*w), 2*(y*z+x*w), 1-2*(x*x+y*y)]])
 PAR = {'spineLower':'pelvis','spineUpper':'spineLower','torso':'spineUpper','neck':'torso','head':'neck','leftScapula':'torso','leftUpperArm':'leftScapula','leftForearm':'leftUpperArm','leftHand':'leftForearm','rightScapula':'torso','rightUpperArm':'rightScapula','rightForearm':'rightUpperArm','rightHand':'rightForearm','leftThigh':'pelvis','leftShin':'leftThigh','leftFoot':'leftShin','rightThigh':'pelvis','rightShin':'rightThigh','rightFoot':'rightShin'}
 JOINTS = ['pelvis','spineLower','spineUpper','torso','neck','head','leftScapula','leftUpperArm','leftForearm','leftHand','rightScapula','rightUpperArm','rightForearm','rightHand','leftThigh','leftShin','leftFoot','rightThigh','rightShin','rightFoot']
+WRIST_SWING = [False]   # r8 sets True (see Rig.limb)
 class Rig:
     def __init__(self, rest_json):
         R = json.load(open(rest_json))['out']; self.LP = {k: np.array(v['lp']) for k, v in R.items()}
@@ -72,7 +73,14 @@ class Rig:
         crease = n(crease) if np.linalg.norm(crease) > 1e-4 else -pp
         if arm:   # elbow crease is rest +Z ; knee front is rest +Z and points AWAY from the bend
             W1 = aim(lp1, Z, e, crease)
-            if fing is not None:
+            if fing is not None and WRIST_SWING[0]:
+                # r8: the wrist bends (flexion/extension + deviation) but does not twist: the forearm's palm side is the hand's
+                # palm carried back by the minimal swing from the finger axis to the forearm axis (continuous, no flip when the
+                # forearm passes over the vertical of a flat hand)
+                fn = n(fing); ax_ = np.cross(fn, f); sa = np.linalg.norm(ax_)
+                Rs_ = axang(ax_, math.atan2(sa, fn @ f)) if sa > 1e-6 else np.eye(3); s = Rs_ @ palm; s = s - f * (s @ f)
+                if np.linalg.norm(s) < 1e-6: s = W1 @ (-Y)
+            elif fing is not None:
                 s = palm - f * (palm @ f); w = max(0.0, 1 - np.linalg.norm(s) / 0.5); s = s - (fing - f * (fing @ f)) * w   # dorsiflexed hand: fingers point to the back (+Y) of the forearm
             else: s = W1 @ (-Y)
             W2 = aim(lp2, -Y, f, s)

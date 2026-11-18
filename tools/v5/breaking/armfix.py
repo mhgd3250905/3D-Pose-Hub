@@ -63,7 +63,9 @@ class ArmFix:
             W1, W2 = rig.limb(S, t, pole, rig.LP[sd + 'Forearm'], rig.LP[sd + 'Hand'], rig.l_ua, rig.l_fa, True, fg, pm)
             e = W1 @ n(rig.LP[sd + 'Forearm']); f = W2 @ n(rig.LP[sd + 'Hand'])
             pr_ = pronation(W1, W2, e, f); wr = math.degrees(math.acos(max(-1, min(1, f @ fg))))
-            c_ = (pr_ / 25.0) ** 2 + 0.5 * (tl_ / 12.0) ** 2 + over(wr, 80, 92) + over(abs(pr_), 70, 85) + (1e4 if wr > 95 else 0.0)
+            if getattr(self, 'prcont', False):   # r8: comfortable wrist first (<= ~88), pronation anywhere in the easy band
+                c_ = (pr_ / 40.0) ** 2 + 3 * over(wr, 70, 88) + over(abs(pr_), 65, 82) + (1e4 if wr > 95 else 0.0)
+            else: c_ = (pr_ / 25.0) ** 2 + 0.5 * (tl_ / 12.0) ** 2 + over(wr, 80, 92) + over(abs(pr_), 70, 85) + (1e4 if wr > 95 else 0.0)
             if self.prevp[sd] is not None:
                 dp_ = abs(((pr_ - self.prevp[sd]) + 180) % 360 - 180); c_ += (self.s * dp_ / 10.0) ** 2 + (1e4 if dp_ > 1000.0 * self.dt else 0.0)
             if self.prevf[sd] is not None:
@@ -72,6 +74,7 @@ class ArmFix:
             aw = getattr(self, 'away', {}).get(sd)
             if aw is not None:   # real 2000: palm flat, fingers pointing out, away from the body
                 ga = math.degrees(math.acos(max(-1, min(1, fg @ aw)))); c_ += (max(0.0, ga - 50.0) / 15.0) ** 2
+            if getattr(self, 'dbg', False) and sd == 'right': self.dbgl.append((round(math.degrees(a_)), round(wr), round(pr_), round(c_, 1), round(math.degrees(math.acos(max(-1, min(1, fg @ aw)))) if aw is not None else -1)))
             if bestf is None or c_ < bestf[0]: bestf = (c_, fg, pr_, pm)
         return bestf
 
@@ -82,18 +85,23 @@ class ArmFix:
         import os as _os
         if _os.environ.get('OUTF'):
             self.away = {}
-            for _sd in ('left', 'right'):
-                _a = k[_sd + 'Wrist'] - P['pelvis']; _a = np.array([_a[0], 0.0, _a[2]])
+            for _sd, _sg in (('left', 1), ('right', -1)):
+                if _os.environ.get('OUTF') == '2':   # r8: 'out' = away from the shoulder line centre, plus the torso's own outward side
+                    _m = 0.5 * (P['leftUpperArm'] + P['rightUpperArm']); _a = (k[_sd + 'Wrist'] - _m) / 0.20 + T @ (_sg * X)
+                else: _a = k[_sd + 'Wrist'] - P['pelvis']
+                _a = np.array([_a[0], 0.0, _a[2]])
                 self.away[_sd] = _a / np.linalg.norm(_a) if np.linalg.norm(_a) > 0.05 else None
+                if _os.environ.get('OUTF') == '2' and k[_sd + 'Wrist'][1] > 0.08: self.away[_sd] = None   # top hand of the stack grips the wrist: no floor rule
         for sd, sg in (('left', 1), ('right', -1)):
             S = P[sd + 'UpperArm']; t = k[sd + 'Wrist']
+            ply = planted_y[sd] if isinstance(planted_y, dict) else planted_y
             Lr = rig.l_ua + rig.l_fa; dd = np.linalg.norm(t - S)
-            if t[1] >= planted_y and dd > 0.93 * Lr:   # airborne arm: soft reach, so it never snaps from bent to locked straight
+            if t[1] >= ply and dd > 0.93 * Lr:   # airborne arm: soft reach, so it never snaps from bent to locked straight
                 t = S + (t - S) / dd * (0.93 * Lr + 0.05 * Lr * math.tanh((dd - 0.93 * Lr) / (0.05 * Lr))); k[sd + 'Wrist'] = t
             d = n(t - S); dl = T.T @ d
             c0 = swing(sg * X, dl) @ Z; c0 = n(c0 - dl * (c0 @ dl))
             fing, palm = k[sd + 'Fing'], k[sd + 'Palm']
-            on_floor = t[1] < planted_y and fing is not None
+            on_floor = t[1] < ply and fing is not None
             planted = on_floor and (fixed is None or fixed.get(sd, True))   # hand orientation locked to the floor
             # key's own choice, as a twist angle
             W1k, W2k = rig.limb(S, t, k[sd + 'Elbow'], rig.LP[sd + 'Forearm'], rig.LP[sd + 'Hand'], rig.l_ua, rig.l_fa, True, fing, palm)
@@ -106,9 +114,11 @@ class ArmFix:
                 W1, W2 = rig.limb(S, t, pole, rig.LP[sd + 'Forearm'], rig.LP[sd + 'Hand'], rig.l_ua, rig.l_fa, True, fing, palm)
                 e = W1 @ n(rig.LP[sd + 'Forearm']); f = W2 @ n(rig.LP[sd + 'Hand'])
                 tw = humerus_twist(T, sg, e, W1 @ Z); pr = pronation(W1, W2, e, f)
+                bfc = 0.0
                 if on_floor and not planted:
-                    pr = self.best_fing(sd, S, t, pole, palm, T, sg)[2]
+                    _bf = self.best_fing(sd, S, t, pole, palm, T, sg); pr = _bf[2]; bfc = _bf[0]
                 c = over(tw, TW_SOFT, TW_LIM) + (over(pr, PR_SOFT, PR_LIM) if on_floor else 0.0)
+                if on_floor and self.prevp[sd] is not None and getattr(self, 'prcont', False): c += (self.s * abs(((pr - self.prevp[sd]) + 180) % 360 - 180) / 10.0) ** 2
                 c += 0.2 * (math.degrees(math.atan2(math.sin(b - bkey), math.cos(b - bkey))) / 20.0) ** 2
                 # keep the arm out of the head and away from the other forearm
                 mid = S + e * rig.l_ua; hnd = mid + f * rig.l_fa
@@ -145,15 +155,21 @@ class ArmFix:
                 if cph and t[1] < 0.75:   # aim at the pronation the hand will need once planted (evaluate at the floor point below)
                     tl = np.array([t[0], 0.04, t[2]]); dl_ = np.linalg.norm(tl - S)
                     if dl_ > 0.98 * Lr: tl = S + (tl - S) / dl_ * 0.98 * Lr
-                    sv = self.prevp[sd]; self.prevp[sd] = None; bf = self.best_fing(sd, S, tl, pole, -Y, T, sg); self.prevp[sd] = sv
+                    lh = getattr(self, 'land', {}).get(sd)
+                    if lh is not None:   # r8: the hand will be planted with a known finger direction: pre-turn the forearm to that
+                        W1_, W2_ = rig.limb(S, tl, pole, rig.LP[sd + 'Forearm'], rig.LP[sd + 'Hand'], rig.l_ua, rig.l_fa, True, lh, -Y)
+                        e_ = W1_ @ n(rig.LP[sd + 'Forearm']); f_ = W2_ @ n(rig.LP[sd + 'Hand']); bf = (0.0, lh, pronation(W1_, W2_, e_, f_), -Y)
+                    else:
+                        sv = self.prevp[sd]; self.prevp[sd] = None; bf = self.best_fing(sd, S, tl, pole, -Y, T, sg); self.prevp[sd] = sv
                 if cph and t[1] < 0.25:   # hand about to land (or just lifted): ease into the floor hand (palm down, comfortable fingers)
                     u = min(1.0, (0.25 - t[1]) / 0.13); u = u * u * (3 - 2 * u)
                     fing = n((1 - u) * n(fing) + u * bf[1]); palm = n((1 - u) * n(palm) + u * -Y); self.prevf[sd] = bf[1]
                 pr, f = meas(fing, palm)
                 pp_ = self.prevp[sd] if self.prevp[sd] is not None else max(-45.0, min(45.0, pr))
                 # pronation is a physical angle (no wrap-around): pre-turn toward the landing hand's value, else stay in +-45
-                des = max(-80.0, min(80.0, bf[2])) if bf is not None else max(-45.0, min(45.0, pr))
-                st = 600.0 * self.dt; tgt = pp_ + max(-st, min(st, des - pp_))
+                _pl = getattr(self, 'prland', 80.0)
+                des = max(-_pl, min(_pl, bf[2])) if bf is not None else max(-45.0, min(45.0, pr))
+                st = getattr(self, 'prspeed', 600.0) * self.dt; tgt = pp_ + max(-st, min(st, des - pp_))
                 for _ in range(4):
                     err = ((tgt - pr + 180) % 360) - 180
                     if abs(err) < 1.0: break
