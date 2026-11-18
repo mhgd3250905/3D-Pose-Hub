@@ -6,6 +6,8 @@ Checks per frame: floor penetration (capsules), limb-limb / limb-torso / limb-he
 Usage: check_move.py dump.npz [--sheet out.png --t0 0 --t1 1.6 --step 0.08] [--views front,side,top]"""
 import sys, math, argparse
 import numpy as np
+sys.path.insert(0, __import__('os').path.dirname(__file__))
+def n3(v): return v / np.linalg.norm(v)
 from PIL import Image, ImageDraw
 ap = argparse.ArgumentParser(); ap.add_argument('npz'); ap.add_argument('--sheet'); ap.add_argument('--t0', type=float, default=0)
 ap.add_argument('--t1', type=float, default=99); ap.add_argument('--step', type=float, default=0.08); ap.add_argument('--views', default='front,side,top')
@@ -84,6 +86,21 @@ for s, sg in (('left', 1), ('right', -1)):
         v_ = np.array([M[2,1]-M[1,2], M[0,2]-M[2,0], M[1,0]-M[0,1]]) / (4 * w_ + 1e-12) if w_ > 1e-6 else np.array([1., 0, 0])
         tw[i] = math.degrees(2 * math.atan2(v_ @ ax_, w_)); tw[i] = (tw[i] + 180) % 360 - 180
     add('hand-twist>90', np.abs(tw) > 90, tw, s)
+    # shoulder: humerus axial rotation (0 = T-pose frame swung to the arm direction, crease = upper-arm local +Z) and
+    # forearm pronation (0 = palm normal perpendicular to the elbow crease); each about +-85 deg in a real arm
+    from armfix import humerus_twist, pronation
+    hw = np.zeros(N); pr = np.zeros(N); ejump = np.zeros(N)
+    U_ = W(s + 'UpperArm'); F_ = W(s + 'Forearm'); T_ = W('torso')
+    for i in range(N):
+        e_ = n3(P(s + 'Forearm')[i] - P(s + 'UpperArm')[i]); f_ = n3(P(s + 'Hand')[i] - P(s + 'Forearm')[i])
+        hw[i] = humerus_twist(T_[i], sg, e_, U_[i][:, 2]); pr[i] = pronation(U_[i], F_[i], e_, f_)
+    add('humerus-rot>85', np.abs(hw) > 85, hw, s); add('pronation>85', np.abs(pr) > 85, pr, s)
+    # arm pops: twist or pronation changing faster than 1500 deg/s, or the upper arm swinging faster than 1800 deg/s (a thrown arm)
+    dh = np.abs((np.diff(hw) + 180) % 360 - 180) * fps; dp = np.abs((np.diff(pr) + 180) % 360 - 180) * fps
+    add('arm-twist-pop', np.concatenate([[False], (dh > 1500) | (dp > 1500)]), np.concatenate([[0], np.maximum(dh, dp)]), s)
+    eu = P(s + 'Forearm') - P(s + 'UpperArm'); eu /= np.linalg.norm(eu, axis=1)[:, None]
+    de = np.degrees(np.arccos(np.clip((eu[1:] * eu[:-1]).sum(1), -1, 1))) * fps
+    add('elbow-pop', np.concatenate([[False], de > 1800]), np.concatenate([[0], de]), s)
     # knee pointing: knee front must face roughly the toe direction (no reversed knees): shin x thigh plane consistent
 for j in ('spineLower', 'neck'):
     pass
