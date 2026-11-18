@@ -110,7 +110,7 @@ K3 = key(K2b, R3, pelvis=V(-0.06, 0.90, 0.08), spine=rvd(14, 0, -3), leftLegLen=
 for sd in ('left', 'right'):
     lg = legdir(K3['pelvis'], K3[sd + 'Ankle'], FW3); K3[sd + 'Toe'] = lg['toe']; K3[sd + 'Sole'] = lg['sole']
 _W, _P = rig.solve(reach_fix(interp([(0, K3), (1, K3)], 0)))
-_sh = _P['leftUpperArm']; K3['leftWrist'] = _sh + n(PL_L + V(0, 0.12, 0.20) - _sh) * 0.28   # reaching down toward its spot, arm nearly long
+_sh = _P['leftUpperArm']; K3['leftWrist'] = PL_L + V(0, 0.16, 0.20)   # reaching down toward its spot (arms_long keeps it long)   # reaching down toward its spot, arm nearly long
 K.append((0.85, K3))
 # straddle handstand on both hands, still turning, head looks at the floor between the hands
 R4, UP4, FW4 = pitchF(178, 72)
@@ -197,8 +197,33 @@ def lock_right(k, th, t):
     Rl = ry(w * dth); k['rightWrist'] = Rl @ k['rightWrist']
     if k['rightFing'] is not None: k['rightFing'] = Rl @ k['rightFing']
     return k
+def _ss(x):
+    x = max(0.0, min(1.0, x)); return x * x * (3 - 2 * x)
+def arms_long(k):
+    """real 2000: the arms stay long. (1) while the feet are off the floor, lift the body until every planted arm is ~straight
+    (shoulder-wrist 0.95 L); (2) every airborne arm keeps at least 0.95 L of reach (elbow <= ~35 deg), hand never below the floor."""
+    L = rig.l_ua + rig.l_fa; W, P = rig.solve(k)
+    wf = _ss((min(k['leftAnkle'][1], k['rightAnkle'][1]) - 0.18) / 0.25)
+    dy = 0.0
+    for sd in ('left', 'right'):
+        t = k[sd + 'Wrist']; S = P[sd + 'UpperArm']; wp = _ss((0.25 - t[1]) / 0.15)
+        h = np.hypot(S[0] - t[0], S[2] - t[2]); want = 0.95 * L
+        if wp > 0 and h < want:
+            need = t[1] + math.sqrt(want * want - h * h) - S[1]
+            dy = max(dy, wp * max(0.0, need))
+    dy = min(dy, 0.30) * wf
+    if dy > 0: k['pelvis'] = k['pelvis'] + V(0, dy, 0); W, P = rig.solve(k)
+    for sd in ('left', 'right'):
+        t = k[sd + 'Wrist']; S = P[sd + 'UpperArm']; wa = _ss((t[1] - 0.08) / 0.10)
+        if wa <= 0: continue
+        d = t - S; dd = np.linalg.norm(d)
+        if dd < 0.95 * L:
+            t2 = S + d / dd * 0.95 * L
+            t2[1] = max(t2[1], min(t[1], 0.10))   # an airborne hand never dives to the floor
+            k[sd + 'Wrist'] = t + wa * (t2 - t)
+    return k
 def frame(k, th, t=0.0):
-    k = straighten(reach_fix(lock_right(toe_pivot(k, t), th, t))); W, P = rig.solve(k)
+    k = straighten(arms_long(reach_fix(lock_right(toe_pivot(k, t), th, t)))); W, P = rig.solve(k)
     te_ = t if t <= T_SPIN0 else T_SPIN0 - (t - T_SPIN1)
     dg = AF.apply(k, W, P, fixed={'left': False, 'right': 0.55 <= te_ <= 0.72},
                    contact={'left': 0.60 <= te_ <= 0.93, 'right': 0.45 <= te_ <= 0.60 or 0.96 <= te_ <= 1.12}); W, P = rig.solve(k); Ry = ry(th)

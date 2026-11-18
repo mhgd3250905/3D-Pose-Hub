@@ -79,8 +79,8 @@ class ArmFix:
         for sd, sg in (('left', 1), ('right', -1)):
             S = P[sd + 'UpperArm']; t = k[sd + 'Wrist']
             Lr = rig.l_ua + rig.l_fa; dd = np.linalg.norm(t - S)
-            if t[1] >= planted_y and dd > 0.88 * Lr:   # airborne arm: soft reach, so it never snaps from bent to locked straight
-                t = S + (t - S) / dd * (0.88 * Lr + 0.10 * Lr * math.tanh((dd - 0.88 * Lr) / (0.10 * Lr))); k[sd + 'Wrist'] = t
+            if t[1] >= planted_y and dd > 0.93 * Lr:   # airborne arm: soft reach, so it never snaps from bent to locked straight
+                t = S + (t - S) / dd * (0.93 * Lr + 0.05 * Lr * math.tanh((dd - 0.93 * Lr) / (0.05 * Lr))); k[sd + 'Wrist'] = t
             d = n(t - S); dl = T.T @ d
             c0 = swing(sg * X, dl) @ Z; c0 = n(c0 - dl * (c0 @ dl))
             fing, palm = k[sd + 'Fing'], k[sd + 'Palm']
