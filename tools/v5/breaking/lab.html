@@ -1,0 +1,17 @@
+<!doctype html><html><head><meta charset="utf-8">
+<script type="importmap">{"imports":{"three":"/node_modules/three/build/three.module.js","three/addons/":"/node_modules/three/examples/jsm/"}}</script>
+</head><body><script type="module">
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { MeshoptDecoder } from '/tools/v5/runtime/vendor/meshopt_decoder.module.js';
+const PARENT = {spineLower:'pelvis',spineUpper:'spineLower',torso:'spineUpper',neck:'torso',head:'neck',leftScapula:'torso',leftUpperArm:'leftScapula',leftForearm:'leftUpperArm',leftHand:'leftForearm',rightScapula:'torso',rightUpperArm:'rightScapula',rightForearm:'rightUpperArm',rightHand:'rightForearm',leftThigh:'pelvis',leftShin:'leftThigh',leftPatella:'leftShin',leftFoot:'leftShin',rightThigh:'pelvis',rightShin:'rightThigh',rightPatella:'rightShin',rightFoot:'rightShin'};
+const gltf = await new GLTFLoader().setMeshoptDecoder(MeshoptDecoder).loadAsync('/tools/v5/runtime/model/coach-v3r3-wristfix.glb');
+const root=gltf.scene; root.updateMatrixWorld(true); const bones={};
+root.traverse(o=>{if(o.isBone)bones[o.name]=o;});
+for (const [c,p] of Object.entries(PARENT)) if(bones[c]&&bones[p]) bones[p].attach(bones[c]);
+root.updateMatrixWorld(true);
+const restQ={}; for(const [n,b] of Object.entries(bones)) restQ[n]=b.quaternion.toArray();
+for (const b of Object.values(bones)) b.quaternion.identity(); root.updateMatrixWorld(true);
+const out={}; for(const [n,b] of Object.entries(bones)){const p=b.getWorldPosition(new THREE.Vector3());const q=b.getWorldQuaternion(new THREE.Quaternion());out[n]={p:p.toArray().map(x=>+x.toFixed(4)),wq:q.toArray().map(x=>+x.toFixed(4)),parent:b.parent?.name, lp:b.position.toArray().map(x=>+x.toFixed(4))};}
+window.__L={ready:true,out,restQ};
+</script></body></html>

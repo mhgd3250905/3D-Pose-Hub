@@ -1,0 +1,11 @@
+import fs from 'node:fs';import path from 'node:path';import http from 'node:http';import {pathToFileURL,fileURLToPath} from 'node:url';
+const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../../..');
+const C=JSON.parse(fs.readFileSync(path.join(ROOT,'drill-anim/config.json'),'utf8'));
+process.env.PLAYWRIGHT_BROWSERS_PATH=C.playwright_browsers_path;process.env.LD_LIBRARY_PATH=C.ld_library_path;
+const MIME={'.html':'text/html','.js':'text/javascript','.mjs':'text/javascript','.json':'application/json','.glb':'model/gltf-binary'};
+const srv=http.createServer((q,r)=>{const f=path.join(ROOT,decodeURIComponent(new URL(q.url,'http://x').pathname));if(!fs.existsSync(f)||fs.statSync(f).isDirectory()){r.writeHead(404);return r.end();}r.writeHead(200,{'Content-Type':MIME[path.extname(f)]||'application/octet-stream'});fs.createReadStream(f).pipe(r);});
+await new Promise(ok=>srv.listen(0,'127.0.0.1',ok));
+const {chromium}=await import(pathToFileURL(C.playwright_module).href);
+const b=await chromium.launch({args:C.chromium_args});const p=await b.newPage();p.on('pageerror',e=>console.error(e));
+await p.goto(`http://127.0.0.1:${srv.address().port}/tools/v5/breaking/lab.html`);await p.waitForFunction(()=>window.__L?.ready,null,{timeout:120000});
+fs.writeFileSync(process.argv[2],JSON.stringify(await p.evaluate(()=>__L),null,1));await b.close();srv.close();
