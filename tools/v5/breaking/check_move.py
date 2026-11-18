@@ -12,6 +12,7 @@ from PIL import Image, ImageDraw
 ap = argparse.ArgumentParser(); ap.add_argument('npz'); ap.add_argument('--sheet'); ap.add_argument('--t0', type=float, default=0)
 ap.add_argument('--t1', type=float, default=99); ap.add_argument('--step', type=float, default=0.08); ap.add_argument('--views', default='front,side,top')
 ap.add_argument('--quiet', action='store_true'); ap.add_argument('--cx', type=float, default=0.0)
+ap.add_argument('--cell', type=int, default=230); ap.add_argument('--scale', type=float, default=105.0)
 A = ap.parse_args(); Z = np.load(A.npz); fps = float(Z['fps']); N = Z['P_pelvis'].shape[0]
 P = lambda j: Z['P_' + j]; W = lambda j: Z['W_' + j]
 X3, Y3, Z3 = np.eye(3)
@@ -131,9 +132,10 @@ if A.sheet:
     VIEW = {'front': (np.array([-1., 0, 0]), np.array([0, 1., 0]), np.array([0, 0, 1.])),   # camera at -Z (chest side of the spin pose)
             'side': (np.array([0, 0, -1.]), np.array([0, 1., 0]), np.array([-1., 0, 0])),   # camera at +X
             'diag': (np.array([-0.707, 0, -0.707]), np.array([0, 1., 0]), np.array([-0.707, 0, 0.707])),  # camera at (+X,-Z)
-            'top': (np.array([-1., 0, 0]), np.array([0, 0, 1.]), np.array([0, -1., 0]))}
+            'top': (np.array([-1., 0, 0]), np.array([0, 0, 1.]), np.array([0, -1., 0])),
+            'cam': (np.array([1., 0, 0]), np.array([0, 1., 0]), np.array([0, 0, -1.]))}   # r10: from +Z, the render camera's side
     COL = {'left': (40, 90, 230), 'right': (220, 60, 40), 'torso': (40, 40, 40), 'head': (60, 60, 60)}
-    cell = 230; S = 105.0
+    cell = A.cell; S = A.scale
     frames = [int(round(t * fps)) for t in np.arange(A.t0, min(A.t1, (N - 1) / fps) + 1e-6, A.step)]
     img = Image.new('RGB', (cell * len(frames), cell * len(views) + 18), 'white'); dr = ImageDraw.Draw(img)
     bad = set()
