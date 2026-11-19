@@ -33,7 +33,7 @@ const pre=m=>{try{if(typeof LOCK!=="undefined"&&fs.existsSync(LOCK)&&fs.readFile
 if(args.some((x,i)=>x.startsWith('--')&&!['--out','--only','--no-push','--vite-force'].includes(x)))pre('用法: node tools/thomas-sup/produce.mjs [--out <run-dir>] [--only id,id] [--no-push] [--vite-force]');
 const viteForce=args.includes('--vite-force');   // README: after a Vite 504 Outdated Optimize Dep, delete node_modules/.vite and rerun once with this
 const out=path.resolve(opt('--out')??DEFAULT_OUT),noPush=args.includes('--no-push'),only=opt('--only');
-const PROFILE=path.join(HERE,'profile-v5.json');
+const PROFILE=path.join(ROOT,'tools/v5/profile-v5.json');
 const g=(x,o={})=>execFileSync('git',x,{cwd:ROOT,encoding:'utf8',...o}).trim();
 // ---- preflight
 const head=g(['rev-parse','HEAD']);
