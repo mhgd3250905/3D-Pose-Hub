@@ -4,54 +4,63 @@
  "reviewStatus": "draft-ai-needs-user-review",
  "sources": [
   "catalog/production/thomas-supplement-r1/brief-2026-11-19 (托马斯动作库补充-制作说明 item 6b)",
-  "drill-anim/specs/t-self-resisted-wrist-extension.js"
+  "drill-anim/specs/t-self-resisted-wrist-extension.js",
+  "tools/thomas-sup/standards/t-self-resisted-wrist-extension.md"
  ],
  "name": {
   "zh": "自阻力手腕上抬",
   "en": "Self-Resisted Wrist Lift"
  },
  "purpose": {
-  "zh": "不用器械练手背那侧的力量，护住撑地时的手腕",
-  "en": "Builds strength on the back of your wrist with no gear, to protect it on your hands."
+  "zh": "不用器械给手背那侧加力，撑地时手腕更稳",
+  "en": "Loads the back of your wrist with no gear, so it holds up better when you support your weight."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "掌心朝下，另一只手压在手背上",
-    "en": "Palm down, your other hand on the back of it"
+    "zh": "前臂放大腿上，掌心朝下，另一只手压住手背",
+    "en": "Forearm on your thigh, palm down, other hand pressing on the back of it"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "手背往上抬，上面的手往下压着给阻力，走完全程。",
-    "en": "Lift the back of the hand while the top hand presses down, full range."
+    "zh": "身体往前倾，手腕伸出膝盖外，手先往下垂。",
+    "en": "Lean forward, let your wrist hang past the knee and the hand drop."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "前臂贴住大腿不动，只动手腕。",
-    "en": "Forearm stays on your thigh, only the wrist moves."
+    "zh": "手背往上抬，数两下抬到最高，停一下，再数三下慢慢放回；上面的手一直往下顶。",
+    "en": "Lift the back of your hand for a two count, pause, then lower for three; the top hand keeps pushing down."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "前臂一直贴着大腿，手肘和肩膀都别动，只有手腕在走。",
+    "en": "Forearm stays on your thigh, elbow and shoulder stay still, only the wrist moves."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "前臂、肩膀跟着借力",
-   "en": "Using your forearm or shoulder to help."
+   "zh": "前臂抬起来，或者用肩膀、身体去带",
+   "en": "Lifting the forearm or heaving with your shoulder or body."
   },
   {
-   "zh": "阻力太大，手抬不动还硬抬",
-   "en": "Pressing so hard you can't lift and force it."
+   "zh": "上面的手压太狠，手腕抬不完全程",
+   "en": "Pressing so hard the wrist can't lift all the way."
   },
   {
-   "zh": "手腕已经疼了还继续",
-   "en": "Keeping going with a sore wrist."
+   "zh": "放回去太快，一下就掉下去",
+   "en": "Dropping the hand back down too fast."
   }
  ],
  "cautions": [
@@ -86,12 +95,12 @@
    "en": "Lift up"
   },
   "peak": {
-   "zh": "抬到最高",
-   "en": "Top"
+   "zh": "顶上停住",
+   "en": "Hold"
   },
   "end": {
-   "zh": "顶着放回",
-   "en": "Resist down"
+   "zh": "慢慢放回",
+   "en": "Lower slowly"
   }
  },
  "training": {
@@ -100,31 +109,32 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 1.5
+    "seconds": 2.2
    },
    {
     "id": "hold",
-    "seconds": 0.5
+    "seconds": 0.8
    },
    {
     "id": "back",
-    "seconds": 2.0
+    "seconds": 3.0
    },
    {
     "id": "rest",
-    "seconds": 0.3
+    "seconds": 2.0
    }
   ],
   "perSide": "each-side-separately",
-  "source": "real-tempo r3"
+  "source": "thomas-sup r2 animation tempo (8 s per rep: lift 2.2 s, hold 0.8 s, lower 3.0 s, rest 2.0 s)"
  },
  "thomasSupplement": {
-  "version": "r1",
+  "version": "r2",
   "item": "6b",
   "thomasAngle": "全程（所有支撑角度）",
   "camera": "正侧面特写（前臂＋手）",
   "doseBrief": "2–3 组 × 每侧 8–12 次，留 2–3 次余力",
   "status": "draft-awaiting-user-review",
-  "note": "defaultDose takes the low end of the brief range; the range is in doseBrief."
+  "note": "defaultDose takes the low end of the brief range; the range is in doseBrief. r2: one rep 8 s (lift 2.2 s, hold 0.8 s, lower 3.0 s, rest 2.0 s); close-up camera.",
+  "standard": "tools/thomas-sup/standards/t-self-resisted-wrist-extension.md"
  }
 }

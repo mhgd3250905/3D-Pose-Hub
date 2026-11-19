@@ -3,7 +3,7 @@
   "id": "t-self-resisted-wrist-extension",
   "nameZh": "自阻力手腕上抬",
   "spec": "drill-anim/specs/t-self-resisted-wrist-extension.js",
-  "specSha256Lf": "15b7986efa1349a1039c0f4099d81d4192b87e149946bcc0a1ea44006a3a0bfb",
+  "specSha256Lf": "15766fd98acbd936f9424d772a3c1bf89e98a8daa5e08760adc087bf7c7d33d1",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -13,7 +13,7 @@
     "right": "native"
   },
   "camera": {
-    "pad": 0.12,
+    "pad": 0.1,
     "k": 1,
     "drift": 0,
     "fitTimeline": true,
@@ -21,22 +21,20 @@
     "frontSweepDegrees": 0,
     "dir": [
       -1,
-      0.3,
-      0.3
+      0.2,
+      0.05
     ],
     "fit": [
+      "rightElbow",
+      "rightWrist",
       "rightPalm",
       "leftPalm",
-      "rightElbow",
-      "leftElbow",
-      "rightKnee",
-      "rightWrist",
-      "leftToe",
-      "rightToe"
+      "leftWrist",
+      "rightKnee"
     ],
-    "at": 1.9
+    "at": 3.6
   },
-  "cameraScale": 1.15,
+  "cameraScale": 1.0,
   "output": {
     "groundShadow": false,
     "cameraMotion": false,

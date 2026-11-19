@@ -34,6 +34,7 @@ node tools/thomas-sup/check.mjs --recipe ... --frames ... --mesh-clip forearmR:t
 
 ## 第三批（2026-11-19，腕部 + 分腿主动抬腿）
 - t-self-resisted-wrist-flexion 自阻力手腕上卷：`t-self-resisted-wrist-flexion.md`（新共用构建器 `drill-anim/specs/_thomas-sup-wrist-r2.mjs`：骨盆前倾＋腰前屈代替 r1 的整体上身转，V5 偏差 96 mm → 0；特写机位，v5.groundShadow 关）。
+- t-self-resisted-wrist-extension 自阻力手腕上抬：`t-self-resisted-wrist-extension.md`（同一构建器与特写机位，掌心朝下、左手压手背）。
 - 新增度量（precision.py）：右手腕屈角 `wristFlexR`、腕侧偏 `wristDevR`、前臂旋转角 `supR`（0 = 拇指朝上，+90 = 掌心朝上）、前臂俯仰 `forearmPitchDeg`、大腿后侧最低点 `thighLowMm`；check.mjs 新增 `--gap A:B[:up]`（A 区下表面对 B 区上表面的间距，前臂贴大腿、手压手），actions.json 的 `gap` 为默认值。
 
 ## V5 关地面投影（v5.groundShadow，特写机位）

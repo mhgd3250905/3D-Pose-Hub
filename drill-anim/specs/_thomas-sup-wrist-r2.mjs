@@ -69,7 +69,7 @@ export function wristDrill(kind, id, name, nameEn, item, o = {}) {
     const f = t => rot(fd, lat, a(t) * DEG);                                      // + a = fingers up (rotation about lat)
     const n = t => rot(mul(upF, up), lat, a(t) * DEG);
     const top = t => kind === 'flex' ? n(t) : mul(n(t), -1);                       // the surface the left palm presses on
-    const pc = t => add(add(W, mul(f(t), p.palm)), mul(top(t), p.half));          // centre of that surface
+    const pc = t => add(add(W, mul(f(t), p.palm)), mul(top(t), p.surf ?? p.half)); // centre of that surface (surf: its height off the hand axis)
     desc.hands.right = { mode: 'free', frame: 'world', relax: 0.15, wrist: W, finger: t => r5(f(t)), normal: t => r5(n(t)), pole: p.pole,
       elbowTwist: p.elbowTwistR + (kind === 'ext' ? 180 : 0), upperArmTwist: p.upperArmTwistR ?? 0 };
     // left palm on that surface: palm normal = -top, fingers across toward -X (lat), wrist back along -lat and off the surface

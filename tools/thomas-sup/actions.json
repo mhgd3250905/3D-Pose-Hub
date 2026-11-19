@@ -1181,28 +1181,26 @@
    "camera": {
     "dir": [
      -1,
-     0.3,
-     0.3
+     0.2,
+     0.05
     ],
     "fit": [
+     "rightElbow",
+     "rightWrist",
      "rightPalm",
      "leftPalm",
-     "rightElbow",
-     "leftElbow",
-     "rightKnee",
-     "rightWrist",
-     "leftToe",
-     "rightToe"
+     "leftWrist",
+     "rightKnee"
     ],
-    "pad": 0.12,
+    "pad": 0.1,
     "k": 1,
-    "at": 1.9
+    "at": 3.6
    },
    "checks": {
     "pins": [
      {
       "bone": "rightForearm",
-      "hub": "rightWrist",
+      "hub": "rightElbow",
       "when": [
        [
         0,
@@ -1210,6 +1208,17 @@
        ]
       ],
       "label": "forearm-on-thigh"
+     },
+     {
+      "bone": "rightHand",
+      "hub": "rightWrist",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ],
+      "label": "wrist-still"
      },
      {
       "bone": "leftFoot",
@@ -1239,11 +1248,38 @@
     ]
    },
    "preview": [
-    6,
-    57,
-    114
+    15,
+    108,
+    165
    ],
-   "cameraNote": "V5 render guard (ground shadow must not reach the canvas edge): fit includes both toes like forearms-B; the close-up is a crop for later."
+   "cameraNote": "r2: close-up of the forearm + hands (PDF 正侧面特写); the body is cut by the canvas edge, so V5 ground shadow is off for this action only (spec v5.groundShadow=false, tools/v5/runtime/v5-hub.js).",
+   "phases": {
+    "low": [
+     [
+      0,
+      1.0
+     ],
+     [
+      7.0,
+      8.0
+     ]
+    ],
+    "top": [
+     [
+      3.2,
+      4.0
+     ]
+    ]
+   },
+   "reviewViews": "side:-1,0.15,0.05;front:0,0.2,1;top:0.001,1,0:0,0,1",
+   "reviewFrames": [
+    15,
+    108,
+    165
+   ],
+   "gap": "forearmR:thighR:up,handL:handR",
+   "cameraScale": 1.0,
+   "standard": "tools/thomas-sup/standards/t-self-resisted-wrist-extension.md"
   },
   {
    "id": "t-seated-forearm-rotation",
