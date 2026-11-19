@@ -1,0 +1,127 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "t-kneeling-scap-pushup",
+ "reviewStatus": "draft-ai-needs-user-review",
+ "sources": [
+  "catalog/production/thomas-supplement-r1/brief-2026-11-19 (托马斯动作库补充-制作说明 item 1（初级）)",
+  "drill-anim/specs/t-kneeling-scap-pushup.js"
+ ],
+ "name": {
+  "zh": "跪姿肩胛俯卧撑",
+  "en": "Kneeling Scapula Push-Up"
+ },
+ "purpose": {
+  "zh": "俯卧撑加推的简单版，膝盖着地练肩胛推地",
+  "en": "The easier push-up plus: knees down, train your shoulder blades to push the floor."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "膝盖着地，手肘伸直，只动肩胛骨",
+    "en": "Knees down, elbows straight, move only your shoulder blades"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "胸口往下沉，再把地面推开、上背拱起来。",
+    "en": "Let your chest sink, then push the floor away and round your upper back."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "从膝盖到头是一条斜线，屁股别撅。",
+    "en": "Keep a straight line from knees to head, hips not up."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "手肘跟着弯",
+   "en": "Bending your elbows along with it."
+  },
+  {
+   "zh": "撅屁股或塌腰",
+   "en": "Piking your hips or sagging your lower back."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "膝盖硌得疼就垫块毛巾",
+   "en": "If your knees hurt on the floor, put a towel under them."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "chest"
+  ],
+  "synergistMuscles": [
+   "upper-back",
+   "deltoids"
+  ],
+  "equipment": [
+   "mat"
+  ],
+  "position": "kneeling",
+  "difficulty": 1
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 3,
+  "reps": 10,
+  "restSeconds": 60
+ },
+ "phases": {
+  "start": {
+   "zh": "推开地面",
+   "en": "Push away"
+  },
+  "peak": {
+   "zh": "顶住别动",
+   "en": "Top"
+  },
+  "end": {
+   "zh": "胸口下沉",
+   "en": "Sink"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.0
+   },
+   {
+    "id": "hold",
+    "seconds": 1.0
+   },
+   {
+    "id": "back",
+    "seconds": 1.2
+   },
+   {
+    "id": "rest",
+    "seconds": 0.3
+   }
+  ],
+  "source": "real-tempo r3"
+ },
+ "thomasSupplement": {
+  "version": "r1",
+  "item": "1（初级）",
+  "thomasAngle": "10 第一侧移重 / 14 第二侧移重（初级）",
+  "camera": "正侧面＋斜后上方（同动作 1）",
+  "doseBrief": "同动作 1 的低阶版：3 组 × 10–12 次，休 60 秒；顶端停 1 秒",
+  "status": "draft-awaiting-user-review",
+  "note": "defaultDose takes the low end of the brief range; the range is in doseBrief."
+ }
+}

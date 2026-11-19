@@ -1,0 +1,85 @@
+{
+  "format": "pose-hub-action-recipe@1",
+  "id": "t-straddle-planche",
+  "nameZh": "分腿俄挺",
+  "spec": "drill-anim/specs/t-straddle-planche.js",
+  "specSha256Lf": "1d4e603daf79bb5275a9cec0d421b229b36833026583937360e732fc6f7edaa4",
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "hands": {
+    "left": "support",
+    "right": "support"
+  },
+  "camera": {
+    "pad": 0.18,
+    "k": 1,
+    "drift": 0,
+    "fitTimeline": true,
+    "orbitDegrees": 0,
+    "frontSweepDegrees": 0,
+    "dir": [
+      1,
+      0.2,
+      0.3
+    ],
+    "fit": [
+      "head",
+      "leftPalm",
+      "rightPalm",
+      "leftToe",
+      "rightToe",
+      "pelvis",
+      "leftKnee",
+      "rightKnee"
+    ],
+    "at": 4
+  },
+  "cameraScale": 1.15,
+  "output": {
+    "groundShadow": false,
+    "cameraMotion": false,
+    "wholeCycleContentRect": true,
+    "fps": 30,
+    "exerciseMat": true,
+    "matProp": {
+      "type": "mat",
+      "at": [
+        0,
+        0,
+        -0.45
+      ],
+      "size": [
+        0.9,
+        1.9,
+        0.006
+      ],
+      "yaw": 0,
+      "source": "thomas-sup r1"
+    }
+  },
+  "jointCorrections": [
+    {
+      "profile": "upper-arm-contour-r3",
+      "version": "0.1.0-r3"
+    },
+    {
+      "profile": "ankle-join-r5",
+      "version": "0.1.0-r5"
+    }
+  ],
+  "adaptation": {
+    "status": "thomas-supplement-r1-draft",
+    "method": "New spec authored in the sandbox (CPU solve + V5 low-res preview); V5 720p sample render pending on the render machine."
+  },
+  "source": {
+    "brief": "托马斯动作库补充-制作说明 2026-11-19 item 10",
+    "thomasAngle": "10 / 14 移重（高级）"
+  },
+  "sampledOnly": true,
+  "fullCycleValidated": false,
+  "reviewed": false,
+  "userAccepted": false,
+  "releaseEligible": false
+}

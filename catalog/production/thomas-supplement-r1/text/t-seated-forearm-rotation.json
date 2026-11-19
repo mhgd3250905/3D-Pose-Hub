@@ -1,0 +1,127 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "t-seated-forearm-rotation",
+ "reviewStatus": "draft-ai-needs-user-review",
+ "sources": [
+  "catalog/production/thomas-supplement-r1/brief-2026-11-19 (托马斯动作库补充-制作说明 item 7)",
+  "drill-anim/specs/t-seated-forearm-rotation.js"
+ ],
+ "name": {
+  "zh": "坐姿哑铃翻手腕",
+  "en": "Seated Dumbbell Palm Turn"
+ },
+ "purpose": {
+  "zh": "练前臂转动的力量，换手时手掌能转到位",
+  "en": "Builds the forearm turning strength you need to place your hand when switching hands."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "前臂贴住大腿不动，只把手掌翻过来",
+    "en": "Forearm stays on your thigh, just turn your palm"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "握在哑铃一端，掌心朝上转到朝下，再转回来，一来一回算一次。",
+    "en": "Hold one end of the dumbbell, turn palm up to palm down and back; that's one rep."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "握得离重的那头越远越难，先握近一点。",
+    "en": "The farther from the heavy end you hold, the harder; start closer."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "手肘离开大腿",
+   "en": "Lifting your elbow off your thigh."
+  },
+  {
+   "zh": "甩着哑铃借劲",
+   "en": "Swinging the dumbbell."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "没有哑铃用锤子或水瓶也行",
+   "en": "No dumbbell? A hammer or water bottle works."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "forearms"
+  ],
+  "synergistMuscles": [],
+  "equipment": [
+   "dumbbell",
+   "bench"
+  ],
+  "position": "seated",
+  "difficulty": 1
+ },
+ "unilateral": true,
+ "startingSide": "right",
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 2,
+  "reps": 10,
+  "restSeconds": 45
+ },
+ "phases": {
+  "start": {
+   "zh": "掌心翻下",
+   "en": "Palm down"
+  },
+  "peak": {
+   "zh": "翻到底",
+   "en": "Turned"
+  },
+  "end": {
+   "zh": "掌心翻上",
+   "en": "Palm up"
+  }
+ },
+ "training": {
+  "kind": "rep_cycle",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.6
+   },
+   {
+    "id": "hold",
+    "seconds": 0.3
+   },
+   {
+    "id": "back",
+    "seconds": 1.6
+   },
+   {
+    "id": "rest",
+    "seconds": 0.3
+   }
+  ],
+  "perSide": "each-side-separately",
+  "source": "real-tempo r3"
+ },
+ "thomasSupplement": {
+  "version": "r1",
+  "item": "7",
+  "thomasAngle": "10 / 14 换手",
+  "camera": "正前方特写（看手掌翻转）",
+  "doseBrief": "2–3 组 × 每侧 10–12 次（一来一回算 1 次）",
+  "status": "draft-awaiting-user-review",
+  "note": "defaultDose takes the low end of the brief range; the range is in doseBrief."
+ }
+}

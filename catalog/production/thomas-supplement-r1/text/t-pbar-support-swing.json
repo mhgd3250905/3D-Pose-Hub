@@ -1,0 +1,124 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "t-pbar-support-swing",
+ "reviewStatus": "draft-ai-needs-user-review",
+ "sources": [
+  "catalog/production/thomas-supplement-r1/brief-2026-11-19 (托马斯动作库补充-制作说明 item 11)",
+  "drill-anim/specs/t-pbar-support-swing.js"
+ ],
+ "name": {
+  "zh": "双杠支撑摆动",
+  "en": "Parallel Bar Support Swing"
+ },
+ "purpose": {
+  "zh": "练手臂撑住时身体还能摆，像真实支撑那样",
+  "en": "Trains straight-arm support while your body swings, like the real move."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "手臂一直锁直，以肩为轴前后摆",
+    "en": "Arms locked straight, swing from your shoulders"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "肩往下压，别耸到耳朵边。",
+    "en": "Press your shoulders down, away from your ears."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "先小幅摆，前后都别高过杠面。",
+    "en": "Start small, never swing higher than the bars."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "手肘弯了或者耸肩",
+   "en": "Bending your elbows or shrugging."
+  },
+  {
+   "zh": "腰塌着甩腿",
+   "en": "Sagging and flinging your legs."
+  },
+  {
+   "zh": "摆得太大收不住",
+   "en": "Swinging so big you lose control."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "肩膀前侧疼就把幅度改小",
+   "en": "If the front of your shoulders hurts, swing smaller."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "triceps",
+   "deltoids"
+  ],
+  "synergistMuscles": [
+   "chest",
+   "core"
+  ],
+  "equipment": [
+   "dip-bars"
+  ],
+  "position": "other",
+  "difficulty": 2
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 3,
+  "reps": 10,
+  "restSeconds": 60
+ },
+ "phases": {
+  "start": {
+   "zh": "向前摆",
+   "en": "Swing forward"
+  },
+  "peak": {
+   "zh": "前面最高",
+   "en": "Front"
+  },
+  "end": {
+   "zh": "向后摆",
+   "en": "Swing back"
+  }
+ },
+ "training": {
+  "kind": "rep_cycle",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.0
+   },
+   {
+    "id": "back",
+    "seconds": 1.0
+   }
+  ],
+  "source": "real-tempo r3"
+ },
+ "thomasSupplement": {
+  "version": "r1",
+  "item": "11",
+  "thomasAngle": "9 后侧支撑 / 13 前侧支撑",
+  "camera": "正侧面",
+  "doseBrief": "3 组 × 10–20 次（一来一回 1 次）",
+  "status": "draft-awaiting-user-review",
+  "note": "defaultDose takes the low end of the brief range; the range is in doseBrief."
+ }
+}

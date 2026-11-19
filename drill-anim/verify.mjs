@@ -84,6 +84,8 @@ for (const [file, expected] of Object.entries({
   '_t-lsit-vsit-circles-r5-reach-data.mjs': 'e11b6a88f96789cf7df06d40eec601b21dec37911527adb614071276d3758647',
   '_t-vsit-r7-reach-data.mjs': '68f3b9f2245e5650d4cda1e79fbcb056bf2435edff9f967fcde9d90a674444af',
   '_t-vsit-r6-reach-data.mjs': 'ff2e38c176ac71bbffe89c42d84ed42697c59ffac9acd1d9c57dceb31044593f',
+  // Thomas supplement r1 (2026-11-19): shared seated wrist/forearm builder for t-self-resisted-wrist-*, t-seated-forearm-rotation.
+  '_thomas-sup-wrist-r1.mjs': '54a1adce3de03fc1311075655447a3dacbeecdd3a037ba812ff829c85d073c3d',
 })) assert.equal(textHash(path.join(root, 'specs', file)), expected, `Thomas helper changed: ${file}`);
 // Shared helpers of the HipLab media-fix r2 revisions (PR #121); their importers are hashed above.
 for (const [file, expected] of Object.entries({

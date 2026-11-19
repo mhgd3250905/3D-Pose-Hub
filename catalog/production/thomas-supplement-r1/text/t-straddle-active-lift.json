@@ -1,0 +1,135 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "t-straddle-active-lift",
+ "reviewStatus": "draft-ai-needs-user-review",
+ "sources": [
+  "catalog/production/thomas-supplement-r1/brief-2026-11-19 (托马斯动作库补充-制作说明 item 9)",
+  "drill-anim/specs/t-straddle-active-lift.js"
+ ],
+ "name": {
+  "zh": "分腿坐姿抬腿",
+  "en": "Straddle Active Leg Lift"
+ },
+ "purpose": {
+  "zh": "练腿张开时还能主动抬起来，换腿扫得开",
+  "en": "Trains your legs to lift while spread wide, so they sweep open when you switch."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "腿伸直脚尖朝上，单腿抬离地面一点",
+    "en": "Legs straight, toes up, lift one leg off the floor"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "抬起两三厘米就够，停两秒放下，左右轮流，两边各一次算 1 次。",
+    "en": "Two or three centimetres is enough, pause, set it down, alternate; both sides is one rep."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "背挺直，别往后仰着借力。",
+    "en": "Sit tall, don't lean back to help."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "膝盖弯了",
+   "en": "Bending the knee."
+  },
+  {
+   "zh": "身体往后仰",
+   "en": "Leaning back."
+  },
+  {
+   "zh": "脚尖往前倒",
+   "en": "Letting the toes roll forward."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "背挺不直就屁股靠墙坐",
+   "en": "If you can't sit tall, sit with your butt against a wall."
+  }
+ ],
+ "tags": {
+  "category": "mobility",
+  "activeMuscles": [
+   "hip-flexors",
+   "adductors"
+  ],
+  "synergistMuscles": [
+   "abductors",
+   "quadriceps"
+  ],
+  "equipment": [
+   "mat"
+  ],
+  "position": "seated",
+  "difficulty": 2
+ },
+ "unilateral": true,
+ "startingSide": "left",
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 3,
+  "reps": 6,
+  "restSeconds": 45
+ },
+ "phases": {
+  "start": {
+   "zh": "腿抬起",
+   "en": "Lift"
+  },
+  "peak": {
+   "zh": "停在空中",
+   "en": "Hold up"
+  },
+  "end": {
+   "zh": "腿放下",
+   "en": "Set down"
+  }
+ },
+ "training": {
+  "kind": "rep_alternate",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.0
+   },
+   {
+    "id": "hold",
+    "seconds": 2.0
+   },
+   {
+    "id": "back",
+    "seconds": 1.0
+   },
+   {
+    "id": "rest",
+    "seconds": 0.3
+   }
+  ],
+  "perSide": "alternate",
+  "repUnit": "left+right",
+  "source": "real-tempo r3"
+ },
+ "thomasSupplement": {
+  "version": "r1",
+  "item": "9",
+  "thomasAngle": "9 后侧支撑 / 12 / 16 换腿",
+  "camera": "正前方（看分腿角度和抬起高度）",
+  "doseBrief": "3 组 × 每侧 6–10 次，每次停 2 秒",
+  "status": "draft-awaiting-user-review",
+  "note": "defaultDose takes the low end of the brief range; the range is in doseBrief."
+ }
+}

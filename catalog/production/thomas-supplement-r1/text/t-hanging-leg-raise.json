@@ -1,0 +1,132 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "t-hanging-leg-raise",
+ "reviewStatus": "draft-ai-needs-user-review",
+ "sources": [
+  "catalog/production/thomas-supplement-r1/brief-2026-11-19 (托马斯动作库补充-制作说明 item 8)",
+  "drill-anim/specs/t-hanging-leg-raise.js"
+ ],
+ "name": {
+  "zh": "悬垂举腿",
+  "en": "Hanging Leg Raise"
+ },
+ "purpose": {
+  "zh": "练大腿前侧和腹部抬腿的耐力，腿能扫得过去",
+  "en": "Builds the hip and belly strength to lift and sweep your legs through."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "挂在杠上肩往下沉，腿伸直抬到和地面平",
+    "en": "Shoulders down on the bar, lift straight legs to level"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "抬到平停一下，再用三秒放下来，身体别晃。",
+    "en": "Pause at level, take three seconds to lower, no swinging."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "抬不到平就先屈膝抬。",
+    "en": "If you can't reach level yet, lift with bent knees."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "身体前后晃着借力",
+   "en": "Swinging back and forth for momentum."
+  },
+  {
+   "zh": "只抬到一半就放",
+   "en": "Lifting only halfway."
+  },
+  {
+   "zh": "放得太快",
+   "en": "Dropping the legs too fast."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "手握不住就先做屈膝版，组数少一点",
+   "en": "If your grip gives out, do the bent-knee version and fewer sets."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "hip-flexors",
+   "core"
+  ],
+  "synergistMuscles": [
+   "lats",
+   "forearms"
+  ],
+  "equipment": [
+   "pull-up-bar"
+  ],
+  "position": "hanging",
+  "difficulty": 2
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 3,
+  "reps": 8,
+  "restSeconds": 60
+ },
+ "phases": {
+  "start": {
+   "zh": "腿抬到平",
+   "en": "Legs up"
+  },
+  "peak": {
+   "zh": "停在这",
+   "en": "Top"
+  },
+  "end": {
+   "zh": "腿放下来",
+   "en": "Legs down"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.5
+   },
+   {
+    "id": "hold",
+    "seconds": 1.0
+   },
+   {
+    "id": "back",
+    "seconds": 3.0
+   },
+   {
+    "id": "rest",
+    "seconds": 0.5
+   }
+  ],
+  "source": "real-tempo r3"
+ },
+ "thomasSupplement": {
+  "version": "r1",
+  "item": "8",
+  "thomasAngle": "9 后侧支撑 / 12 第一侧换腿",
+  "camera": "正侧面",
+  "doseBrief": "3 组 × 8–12 次，休 60–90 秒",
+  "status": "draft-awaiting-user-review",
+  "note": "defaultDose takes the low end of the brief range; the range is in doseBrief."
+ }
+}

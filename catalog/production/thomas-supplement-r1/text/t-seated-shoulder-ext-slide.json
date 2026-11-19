@@ -1,0 +1,132 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "t-seated-shoulder-ext-slide",
+ "reviewStatus": "draft-ai-needs-user-review",
+ "sources": [
+  "catalog/production/thomas-supplement-r1/brief-2026-11-19 (托马斯动作库补充-制作说明 item 5（垫上版）)",
+  "drill-anim/specs/t-seated-shoulder-ext-slide.js"
+ ],
+ "name": {
+  "zh": "后撑肩部滑行",
+  "en": "Seated Back-Support Slide"
+ },
+ "purpose": {
+  "zh": "练肩膀往后打开时还能撑得住，前侧支撑用得上",
+  "en": "Trains your shoulders to hold strong when they open up behind you."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "手撑在身后，手臂伸直，屁股往前滑",
+    "en": "Hands behind you, arms straight, slide your hips forward"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "滑到肩前侧拉紧了，用手撑住地，别让肩膀挂着。",
+    "en": "When the front of the shoulders feels stretched, press into the floor, don't hang."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "撑住了再用手推着屁股滑回来。",
+    "en": "Once you hold it, push with your hands to slide back."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "肩膀完全放松，挂在那里",
+   "en": "Letting your shoulders go slack and hang."
+  },
+  {
+   "zh": "做得太快，一下一下往前冲",
+   "en": "Going too fast and lunging forward."
+  },
+  {
+   "zh": "肩前侧刺痛还继续",
+   "en": "Keeping going with a sharp pain at the front of the shoulder."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "肩前侧刺痛就马上停，滑得短一点",
+   "en": "Stop if the front of your shoulder stings, and slide less."
+  }
+ ],
+ "tags": {
+  "category": "mobility",
+  "activeMuscles": [
+   "deltoids",
+   "chest"
+  ],
+  "synergistMuscles": [
+   "biceps",
+   "triceps"
+  ],
+  "equipment": [
+   "mat"
+  ],
+  "position": "seated",
+  "difficulty": 2
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 3,
+  "reps": 6,
+  "restSeconds": 60
+ },
+ "phases": {
+  "start": {
+   "zh": "屁股前滑",
+   "en": "Slide out"
+  },
+  "peak": {
+   "zh": "撑住别挂",
+   "en": "Press"
+  },
+  "end": {
+   "zh": "滑回原位",
+   "en": "Slide in"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 2.0
+   },
+   {
+    "id": "hold",
+    "seconds": 1.5
+   },
+   {
+    "id": "back",
+    "seconds": 2.0
+   },
+   {
+    "id": "rest",
+    "seconds": 0.5
+   }
+  ],
+  "source": "real-tempo r3"
+ },
+ "thomasSupplement": {
+  "version": "r1",
+  "item": "5（垫上版）",
+  "thomasAngle": "13 前侧支撑",
+  "camera": "正侧面（看肩后伸角度）",
+  "doseBrief": "3 组 × 6–8 次（滑行），休 60–90 秒",
+  "status": "draft-awaiting-user-review",
+  "note": "defaultDose takes the low end of the brief range; the range is in doseBrief."
+ }
+}

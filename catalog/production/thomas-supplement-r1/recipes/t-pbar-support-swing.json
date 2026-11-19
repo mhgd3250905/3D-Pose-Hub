@@ -1,0 +1,78 @@
+{
+  "format": "pose-hub-action-recipe@1",
+  "id": "t-pbar-support-swing",
+  "nameZh": "双杠支撑摆动",
+  "spec": "drill-anim/specs/t-pbar-support-swing.js",
+  "specSha256Lf": "ccf4cd36f6d6a347c378b19d1a701c4339e00872d94afcff593bb4910e9ed2b3",
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "hands": {
+    "left": "bar-grasp",
+    "right": "bar-grasp"
+  },
+  "camera": {
+    "pad": 0.25,
+    "k": 1,
+    "drift": 0,
+    "fitTimeline": true,
+    "orbitDegrees": 0,
+    "frontSweepDegrees": 0,
+    "dir": [
+      1,
+      0.15,
+      0.05
+    ],
+    "fit": [
+      "head",
+      "leftPalm",
+      "rightPalm",
+      "leftToe",
+      "rightToe",
+      "pelvis",
+      "leftShoulder",
+      "rightShoulder"
+    ],
+    "at": 0
+  },
+  "cameraScale": 1.15,
+  "output": {
+    "groundShadow": false,
+    "cameraMotion": false,
+    "wholeCycleContentRect": true,
+    "fps": 30,
+    "exerciseMat": false
+  },
+  "jointCorrections": [
+    {
+      "profile": "upper-arm-contour-r3",
+      "version": "0.1.0-r3"
+    },
+    {
+      "profile": "ankle-join-r5",
+      "version": "0.1.0-r5"
+    }
+  ],
+  "fixedCorrectionStack": {
+    "profile": "fixed-wrist-corrections-r1",
+    "version": "0.1.0-r1"
+  },
+  "fixedBarGrip": {
+    "profile": "fixed-bar-grip-r1",
+    "note": "Bars recovered from the source gripPose targets (lib/grip.mjs G), as lats-C."
+  },
+  "adaptation": {
+    "status": "thomas-supplement-r1-draft",
+    "method": "New spec authored in the sandbox (CPU solve + V5 low-res preview); V5 720p sample render pending on the render machine."
+  },
+  "source": {
+    "brief": "托马斯动作库补充-制作说明 2026-11-19 item 11",
+    "thomasAngle": "9 后侧支撑 / 13 前侧支撑"
+  },
+  "sampledOnly": true,
+  "fullCycleValidated": false,
+  "reviewed": false,
+  "userAccepted": false,
+  "releaseEligible": false
+}

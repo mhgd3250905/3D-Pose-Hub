@@ -1,0 +1,70 @@
+{
+  "format": "pose-hub-action-recipe@1",
+  "id": "t-pushup-plus",
+  "nameZh": "俯卧撑加推",
+  "spec": "drill-anim/specs/t-pushup-plus.js",
+  "specSha256Lf": "763bed354aab5c1ab53f9dded15f21058556f4dfb4cb285af7d5d62f5cb0d0af",
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "hands": {
+    "left": "support",
+    "right": "support"
+  },
+  "camera": {
+    "pad": 0.12,
+    "k": 0.9,
+    "drift": 0,
+    "fitTimeline": true,
+    "orbitDegrees": 0,
+    "frontSweepDegrees": 0,
+    "dir": [
+      0.12,
+      0.22,
+      1
+    ],
+    "fit": [
+      "head",
+      "leftPalm",
+      "rightPalm",
+      "leftToe",
+      "rightToe",
+      "pelvis",
+      "leftShoulder",
+      "rightShoulder"
+    ],
+    "at": 3.3
+  },
+  "cameraScale": 1.15,
+  "output": {
+    "groundShadow": false,
+    "cameraMotion": false,
+    "wholeCycleContentRect": true,
+    "fps": 30,
+    "exerciseMat": true
+  },
+  "jointCorrections": [
+    {
+      "profile": "upper-arm-contour-r3",
+      "version": "0.1.0-r3"
+    },
+    {
+      "profile": "ankle-join-r5",
+      "version": "0.1.0-r5"
+    }
+  ],
+  "adaptation": {
+    "status": "thomas-supplement-r1-draft",
+    "method": "New spec authored in the sandbox (CPU solve + V5 low-res preview); V5 720p sample render pending on the render machine."
+  },
+  "source": {
+    "brief": "托马斯动作库补充-制作说明 2026-11-19 item 1",
+    "thomasAngle": "10 第一侧移重 / 14 第二侧移重"
+  },
+  "sampledOnly": true,
+  "fullCycleValidated": false,
+  "reviewed": false,
+  "userAccepted": false,
+  "releaseEligible": false
+}

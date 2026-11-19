@@ -1,0 +1,117 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "t-frog-stand",
+ "reviewStatus": "draft-ai-needs-user-review",
+ "sources": [
+  "catalog/production/thomas-supplement-r1/brief-2026-11-19 (托马斯动作库补充-制作说明 item 2)",
+  "drill-anim/specs/t-frog-stand.js"
+ ],
+ "name": {
+  "zh": "蛙立",
+  "en": "Frog Stand"
+ },
+ "purpose": {
+  "zh": "练手腕和肩，体会身体压到手上的感觉",
+  "en": "Builds your wrists and shoulders and teaches you to put your weight on your hands."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "膝盖顶住上臂外侧，身体往前倾到脚尖离地",
+    "en": "Knees on the backs of your arms, lean until your toes lift"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "手指张开抓地，别把重量全压在掌根。",
+    "en": "Spread your fingers and grip the floor, not all weight on the heel of your hand."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "肩往前送、往下沉，别只是往前倒。",
+    "en": "Shoulders go forward and down, don't just tip over."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "只往前倒，肩不往下沉",
+   "en": "Just falling forward without pressing the shoulders down."
+  },
+  {
+   "zh": "手指没抓地，重量全在掌根",
+   "en": "Fingers loose, all the weight on the heel of the hand."
+  },
+  {
+   "zh": "憋着气",
+   "en": "Holding your breath."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "怕往前栽，就在脸前面放个枕头",
+   "en": "If you're worried about tipping forward, put a pillow in front of your face."
+  },
+  {
+   "zh": "脚尖离不了地，就先踮着脚把重量往手上送",
+   "en": "If your toes won't lift yet, stay on tiptoe and shift weight to your hands."
+  }
+ ],
+ "tags": {
+  "category": "balance",
+  "activeMuscles": [
+   "forearms",
+   "deltoids"
+  ],
+  "synergistMuscles": [
+   "triceps",
+   "core"
+  ],
+  "equipment": [
+   "mat"
+  ],
+  "position": "other",
+  "difficulty": 2
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "time",
+  "sets": 3,
+  "seconds": 10,
+  "restSeconds": 60
+ },
+ "phases": {
+  "start": {
+   "zh": "身体前倾",
+   "en": "Lean forward"
+  },
+  "peak": {
+   "zh": "脚尖离地",
+   "en": "Toes up"
+  },
+  "end": {
+   "zh": "脚落地",
+   "en": "Feet down"
+  }
+ },
+ "training": {
+  "kind": "hold",
+  "leadSeconds": 1
+ },
+ "thomasSupplement": {
+  "version": "r1",
+  "item": "2",
+  "thomasAngle": "10 / 14 移重",
+  "camera": "正侧面为主（看前倾角度和脚离地）",
+  "doseBrief": "3–5 组 × 10–20 秒，休 60–90 秒",
+  "status": "draft-awaiting-user-review",
+  "note": "defaultDose takes the low end of the brief range; the range is in doseBrief."
+ }
+}

@@ -1,0 +1,1066 @@
+{
+ "format": "thomas-sup-plan@1",
+ "base": "main 94ff057a5444d822094dea204cf7629f9ff2a30e",
+ "actions": [
+  {
+   "id": "t-pushup-plus",
+   "item": "1",
+   "nameZh": "俯卧撑加推",
+   "spec": "drill-anim/specs/t-pushup-plus.js",
+   "thomasAngle": "10 第一侧移重 / 14 第二侧移重",
+   "hands": {
+    "left": "support",
+    "right": "support"
+   },
+   "camera": {
+    "dir": [
+     0.12,
+     0.22,
+     1
+    ],
+    "fit": [
+     "head",
+     "leftPalm",
+     "rightPalm",
+     "leftToe",
+     "rightToe",
+     "pelvis",
+     "leftShoulder",
+     "rightShoulder"
+    ],
+    "at": 3.3
+   },
+   "checks": {
+    "lockElbows": [
+     [
+      0,
+      8
+     ]
+    ],
+    "pins": [
+     {
+      "bone": "leftHand",
+      "hub": "leftPalm",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     },
+     {
+      "bone": "rightHand",
+      "hub": "rightPalm",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     },
+     {
+      "bone": "leftFoot",
+      "hub": "leftToe",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     },
+     {
+      "bone": "rightFoot",
+      "hub": "rightToe",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     }
+    ]
+   },
+   "preview": [
+    6,
+    45,
+    99
+   ]
+  },
+  {
+   "id": "t-kneeling-scap-pushup",
+   "item": "1b",
+   "nameZh": "跪姿肩胛俯卧撑",
+   "spec": "drill-anim/specs/t-kneeling-scap-pushup.js",
+   "thomasAngle": "10 第一侧移重 / 14 第二侧移重（初级）",
+   "hands": {
+    "left": "support",
+    "right": "support"
+   },
+   "camera": {
+    "dir": [
+     0.12,
+     0.22,
+     1
+    ],
+    "fit": [
+     "head",
+     "leftPalm",
+     "rightPalm",
+     "leftToe",
+     "rightToe",
+     "pelvis",
+     "leftKnee",
+     "rightKnee",
+     "leftShoulder",
+     "rightShoulder"
+    ],
+    "at": 3.3
+   },
+   "matProp": {
+    "type": "mat",
+    "at": [
+     0.496,
+     0,
+     0
+    ],
+    "size": [
+     1.568,
+     0.87,
+     0.006
+    ],
+    "yaw": 0,
+    "source": "h-kneeling-pushup recipe"
+   },
+   "checks": {
+    "lockElbows": [
+     [
+      0,
+      8
+     ]
+    ],
+    "pins": [
+     {
+      "bone": "leftHand",
+      "hub": "leftPalm",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     },
+     {
+      "bone": "rightHand",
+      "hub": "rightPalm",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     },
+     {
+      "bone": "leftFoot",
+      "hub": "leftToe",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     },
+     {
+      "bone": "rightFoot",
+      "hub": "rightToe",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     },
+     {
+      "bone": "leftShin",
+      "hub": "leftKnee",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ],
+      "label": "knee"
+     },
+     {
+      "bone": "rightShin",
+      "hub": "rightKnee",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ],
+      "label": "knee"
+     }
+    ],
+    "allowContact": [
+     "thighL|shinL",
+     "thighR|shinR"
+    ]
+   },
+   "preview": [
+    6,
+    45,
+    99
+   ]
+  },
+  {
+   "id": "t-frog-stand",
+   "item": "2",
+   "nameZh": "蛙立",
+   "spec": "drill-anim/specs/t-frog-stand.js",
+   "thomasAngle": "10 / 14 移重",
+   "hands": {
+    "left": "support",
+    "right": "support"
+   },
+   "camera": {
+    "dir": [
+     1,
+     0.18,
+     0.12
+    ],
+    "fit": [
+     "head",
+     "leftPalm",
+     "rightPalm",
+     "leftToe",
+     "rightToe",
+     "pelvis",
+     "leftKnee",
+     "rightKnee"
+    ],
+    "pad": 0.22,
+    "k": 1,
+    "at": 4
+   },
+   "matProp": {
+    "type": "mat",
+    "at": [
+     0,
+     0,
+     -0.1
+    ],
+    "size": [
+     0.87,
+     1.2,
+     0.006
+    ],
+    "yaw": 0,
+    "source": "thomas-sup r1"
+   },
+   "checks": {
+    "pins": [
+     {
+      "bone": "leftHand",
+      "hub": "leftPalm",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     },
+     {
+      "bone": "rightHand",
+      "hub": "rightPalm",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     },
+     {
+      "bone": "leftFoot",
+      "hub": "leftToe",
+      "when": [
+       [
+        0,
+        0.6
+       ]
+      ],
+      "label": "toes-down"
+     },
+     {
+      "bone": "rightFoot",
+      "hub": "rightToe",
+      "when": [
+       [
+        0,
+        0.6
+       ]
+      ],
+      "label": "toes-down"
+     }
+    ],
+    "allowContact": [
+     "torso|thighL",
+     "torso|thighR",
+     "upperArmL|thighL",
+     "upperArmR|thighR"
+    ]
+   },
+   "preview": [
+    9,
+    120,
+    225
+   ]
+  },
+  {
+   "id": "t-planche-lean",
+   "item": "3",
+   "nameZh": "俄挺前倾",
+   "spec": "drill-anim/specs/t-planche-lean.js",
+   "thomasAngle": "10 / 14 移重",
+   "hands": {
+    "left": "support",
+    "right": "support"
+   },
+   "camera": {
+    "dir": [
+     0.0,
+     0.2,
+     1
+    ],
+    "fit": [
+     "head",
+     "leftPalm",
+     "rightPalm",
+     "leftToe",
+     "rightToe",
+     "pelvis",
+     "leftShoulder",
+     "rightShoulder"
+    ],
+    "at": 4.5
+   },
+   "checks": {
+    "lockElbows": [
+     [
+      0,
+      8
+     ]
+    ],
+    "pins": [
+     {
+      "bone": "leftHand",
+      "hub": "leftPalm",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     },
+     {
+      "bone": "rightHand",
+      "hub": "rightPalm",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     },
+     {
+      "bone": "leftFoot",
+      "hub": "leftToe",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ],
+      "label": "toe-roll"
+     },
+     {
+      "bone": "rightFoot",
+      "hub": "rightToe",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ],
+      "label": "toe-roll"
+     }
+    ]
+   },
+   "preview": [
+    9,
+    66,
+    150
+   ]
+  },
+  {
+   "id": "t-straddle-planche",
+   "item": "10",
+   "nameZh": "分腿俄挺",
+   "spec": "drill-anim/specs/t-straddle-planche.js",
+   "thomasAngle": "10 / 14 移重（高级）",
+   "hands": {
+    "left": "support",
+    "right": "support"
+   },
+   "camera": {
+    "dir": [
+     1,
+     0.2,
+     0.3
+    ],
+    "fit": [
+     "head",
+     "leftPalm",
+     "rightPalm",
+     "leftToe",
+     "rightToe",
+     "pelvis",
+     "leftKnee",
+     "rightKnee"
+    ],
+    "pad": 0.18,
+    "k": 1,
+    "at": 4
+   },
+   "matProp": {
+    "type": "mat",
+    "at": [
+     0,
+     0,
+     -0.45
+    ],
+    "size": [
+     0.9,
+     1.9,
+     0.006
+    ],
+    "yaw": 0,
+    "source": "thomas-sup r1"
+   },
+   "checks": {
+    "lockElbows": [
+     [
+      0,
+      8
+     ]
+    ],
+    "pins": [
+     {
+      "bone": "leftHand",
+      "hub": "leftPalm",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     },
+     {
+      "bone": "rightHand",
+      "hub": "rightPalm",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     }
+    ]
+   },
+   "preview": [
+    3,
+    42,
+    120
+   ]
+  },
+  {
+   "id": "t-pbar-support-swing",
+   "item": "11",
+   "nameZh": "双杠支撑摆动",
+   "spec": "drill-anim/specs/t-pbar-support-swing.js",
+   "thomasAngle": "9 后侧支撑 / 13 前侧支撑",
+   "hands": {
+    "left": "bar-grasp",
+    "right": "bar-grasp"
+   },
+   "exerciseMat": false,
+   "fixedBarGrip": {
+    "profile": "fixed-bar-grip-r1",
+    "note": "Bars recovered from the source gripPose targets (lib/grip.mjs G), as lats-C."
+   },
+   "fixedCorrectionStack": {
+    "profile": "fixed-wrist-corrections-r1",
+    "version": "0.1.0-r1"
+   },
+   "camera": {
+    "dir": [
+     1,
+     0.15,
+     0.05
+    ],
+    "fit": [
+     "head",
+     "leftPalm",
+     "rightPalm",
+     "leftToe",
+     "rightToe",
+     "pelvis",
+     "leftShoulder",
+     "rightShoulder"
+    ],
+    "pad": 0.25,
+    "k": 1,
+    "at": 0
+   },
+   "checks": {
+    "lockElbows": [
+     [
+      0,
+      8
+     ]
+    ],
+    "pins": [
+     {
+      "bone": "leftHand",
+      "hub": "leftPalm",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     },
+     {
+      "bone": "rightHand",
+      "hub": "rightPalm",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     }
+    ]
+   },
+   "preview": [
+    30,
+    60,
+    90
+   ]
+  },
+  {
+   "id": "t-hanging-leg-raise",
+   "item": "8",
+   "nameZh": "悬垂举腿",
+   "spec": "drill-anim/specs/t-hanging-leg-raise.js",
+   "thomasAngle": "9 后侧支撑 / 12 第一侧换腿",
+   "hands": {
+    "left": "bar-grasp",
+    "right": "bar-grasp"
+   },
+   "exerciseMat": false,
+   "fixedBarGrip": {
+    "profile": "fixed-bar-grip-r1",
+    "note": "Bars recovered from the source gripPose targets (lib/grip.mjs G), as h-straight-arm-hang-native."
+   },
+   "fixedCorrectionStack": {
+    "profile": "fixed-wrist-corrections-r1",
+    "version": "0.1.0-r1"
+   },
+   "camera": {
+    "dir": [
+     1,
+     0.12,
+     0.55
+    ],
+    "fit": [
+     "head",
+     "leftToe",
+     "rightToe",
+     "leftPalm",
+     "rightPalm",
+     "pelvis"
+    ],
+    "pad": 0.3,
+    "k": 1.05,
+    "at": 2.7
+   },
+   "checks": {
+    "lockElbows": [
+     [
+      0,
+      8
+     ]
+    ],
+    "pins": [
+     {
+      "bone": "leftHand",
+      "hub": "leftPalm",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     },
+     {
+      "bone": "rightHand",
+      "hub": "rightPalm",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     }
+    ]
+   },
+   "preview": [
+    9,
+    81,
+    141
+   ]
+  },
+  {
+   "id": "t-straddle-active-lift",
+   "item": "9",
+   "nameZh": "分腿坐姿抬腿",
+   "spec": "drill-anim/specs/t-straddle-active-lift.js",
+   "thomasAngle": "9 后侧支撑 / 12 / 16 换腿",
+   "hands": {
+    "left": "native",
+    "right": "native"
+   },
+   "camera": {
+    "dir": [
+     0,
+     0.28,
+     1
+    ],
+    "fit": [
+     "head",
+     "leftPalm",
+     "rightPalm",
+     "leftToe",
+     "rightToe",
+     "pelvis",
+     "leftKnee",
+     "rightKnee"
+    ],
+    "pad": 0.1,
+    "k": 1,
+    "at": 2
+   },
+   "matProp": {
+    "type": "mat",
+    "at": [
+     0,
+     0,
+     0.3
+    ],
+    "size": [
+     1.6,
+     1.0,
+     0.006
+    ],
+    "yaw": 0,
+    "source": "thomas-sup r1"
+   },
+   "checks": {
+    "pins": [
+     {
+      "bone": "leftHand",
+      "hub": "leftPalm",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     },
+     {
+      "bone": "rightHand",
+      "hub": "rightPalm",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     },
+     {
+      "bone": "rightFoot",
+      "hub": "rightAnkle",
+      "when": [
+       [
+        0,
+        4.3
+       ]
+      ],
+      "label": "down"
+     },
+     {
+      "bone": "leftFoot",
+      "hub": "leftAnkle",
+      "when": [
+       [
+        4.0,
+        8
+       ]
+      ],
+      "label": "down"
+     },
+     {
+      "bone": "pelvis",
+      "hub": "pelvis",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     }
+    ]
+   },
+   "preview": [
+    6,
+    60,
+    180
+   ]
+  },
+  {
+   "id": "t-seated-shoulder-ext-slide",
+   "item": "5",
+   "nameZh": "后撑肩部滑行",
+   "spec": "drill-anim/specs/t-seated-shoulder-ext-slide.js",
+   "thomasAngle": "13 前侧支撑",
+   "hands": {
+    "left": "support",
+    "right": "support"
+   },
+   "camera": {
+    "dir": [
+     1,
+     0.25,
+     0.1
+    ],
+    "fit": [
+     "head",
+     "leftPalm",
+     "rightPalm",
+     "leftToe",
+     "rightToe",
+     "pelvis",
+     "leftKnee",
+     "rightKnee",
+     "leftElbow"
+    ],
+    "pad": 0.12,
+    "k": 0.9,
+    "at": 3.3
+   },
+   "checks": {
+    "lockElbows": [
+     [
+      0,
+      8
+     ]
+    ],
+    "pins": [
+     {
+      "bone": "leftHand",
+      "hub": "leftPalm",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     },
+     {
+      "bone": "rightHand",
+      "hub": "rightPalm",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     },
+     {
+      "bone": "leftFoot",
+      "hub": "leftAnkle",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     },
+     {
+      "bone": "rightFoot",
+      "hub": "rightAnkle",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     }
+    ],
+    "allowContact": [
+     "thighL|shinL",
+     "thighR|shinR"
+    ]
+   },
+   "preview": [
+    6,
+    99,
+    186
+   ]
+  },
+  {
+   "id": "t-self-resisted-wrist-flexion",
+   "item": "6a",
+   "nameZh": "自阻力手腕上卷",
+   "spec": "drill-anim/specs/t-self-resisted-wrist-flexion.js",
+   "thomasAngle": "全程（所有支撑角度）",
+   "hands": {
+    "left": "native",
+    "right": "native"
+   },
+   "exerciseMat": false,
+   "camera": {
+    "dir": [
+     -1,
+     0.3,
+     0.3
+    ],
+    "fit": [
+     "rightPalm",
+     "leftPalm",
+     "rightElbow",
+     "leftElbow",
+     "rightKnee",
+     "rightWrist",
+     "leftToe",
+     "rightToe"
+    ],
+    "pad": 0.12,
+    "k": 1,
+    "at": 1.9
+   },
+   "checks": {
+    "pins": [
+     {
+      "bone": "rightForearm",
+      "hub": "rightWrist",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ],
+      "label": "forearm-on-thigh"
+     },
+     {
+      "bone": "leftFoot",
+      "hub": "leftAnkle",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     },
+     {
+      "bone": "rightFoot",
+      "hub": "rightAnkle",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     }
+    ],
+    "allowContact": [
+     "handL|handR",
+     "forearmL|forearmR",
+     "forearmR|thighR"
+    ]
+   },
+   "preview": [
+    6,
+    57,
+    114
+   ],
+   "cameraNote": "V5 render guard (ground shadow must not reach the canvas edge): fit includes both toes like forearms-B; the close-up is a crop for later."
+  },
+  {
+   "id": "t-self-resisted-wrist-extension",
+   "item": "6b",
+   "nameZh": "自阻力手腕上抬",
+   "spec": "drill-anim/specs/t-self-resisted-wrist-extension.js",
+   "thomasAngle": "全程（所有支撑角度）",
+   "hands": {
+    "left": "native",
+    "right": "native"
+   },
+   "exerciseMat": false,
+   "camera": {
+    "dir": [
+     -1,
+     0.3,
+     0.3
+    ],
+    "fit": [
+     "rightPalm",
+     "leftPalm",
+     "rightElbow",
+     "leftElbow",
+     "rightKnee",
+     "rightWrist",
+     "leftToe",
+     "rightToe"
+    ],
+    "pad": 0.12,
+    "k": 1,
+    "at": 1.9
+   },
+   "checks": {
+    "pins": [
+     {
+      "bone": "rightForearm",
+      "hub": "rightWrist",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ],
+      "label": "forearm-on-thigh"
+     },
+     {
+      "bone": "leftFoot",
+      "hub": "leftAnkle",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     },
+     {
+      "bone": "rightFoot",
+      "hub": "rightAnkle",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     }
+    ],
+    "allowContact": [
+     "handL|handR",
+     "forearmL|forearmR",
+     "forearmR|thighR"
+    ]
+   },
+   "preview": [
+    6,
+    57,
+    114
+   ],
+   "cameraNote": "V5 render guard (ground shadow must not reach the canvas edge): fit includes both toes like forearms-B; the close-up is a crop for later."
+  },
+  {
+   "id": "t-seated-forearm-rotation",
+   "item": "7",
+   "nameZh": "坐姿哑铃翻手腕",
+   "spec": "drill-anim/specs/t-seated-forearm-rotation.js",
+   "thomasAngle": "10 / 14 换手",
+   "hands": {
+    "left": "native",
+    "right": "native"
+   },
+   "exerciseMat": false,
+   "camera": {
+    "dir": [
+     -0.25,
+     0.35,
+     1
+    ],
+    "fit": [
+     "rightPalm",
+     "rightElbow",
+     "rightKnee",
+     "rightWrist",
+     "leftKnee",
+     "leftToe",
+     "rightToe"
+    ],
+    "pad": 0.12,
+    "k": 1,
+    "at": 1.1
+   },
+   "checks": {
+    "pins": [
+     {
+      "bone": "rightForearm",
+      "hub": "rightWrist",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ],
+      "label": "forearm-on-thigh"
+     },
+     {
+      "bone": "leftFoot",
+      "hub": "leftAnkle",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     },
+     {
+      "bone": "rightFoot",
+      "hub": "rightAnkle",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     }
+    ],
+    "allowContact": [
+     "handL|handR",
+     "forearmL|forearmR",
+     "forearmR|thighR"
+    ]
+   },
+   "preview": [
+    6,
+    57,
+    114
+   ],
+   "cameraNote": "V5 render guard (ground shadow must not reach the canvas edge): fit includes both toes like forearms-B; the close-up is a crop for later."
+  }
+ ]
+}
