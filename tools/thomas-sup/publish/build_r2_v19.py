@@ -64,7 +64,12 @@ def sha(b): return hashlib.sha256(b).hexdigest()
 def rd(p):
     with open(p, "rb") as f: return f.read()
 def jl(p):
-    with open(p, encoding="utf-8") as f: return json.load(f)
+    # Windows 上 compose.py 按本机编码（GBK）写 package.json，同 tools/v5/batch-sheet.py 的处理
+    b = rd(p)
+    for enc in ("utf-8-sig", "gbk"):
+        try: return json.loads(b.decode(enc))
+        except UnicodeDecodeError: continue
+    raise SystemExit(f"无法解码 {p}（utf-8/gbk 都不行）")
 def dump(o): return (json.dumps(o, ensure_ascii=False, indent=1) + "\n").encode()
 def sha_lf(p): return sha(rd(p).replace(b"\r\n", b"\n"))
 
