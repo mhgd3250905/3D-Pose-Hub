@@ -58,6 +58,10 @@ def metrics(s):
     up_s = unit(sub([0, 1, 0], mul(ax, dot([0, 1, 0], ax))))
     m['hipOffsetMm'] = round(dot(perp, up_s) * 1000, 1)
     m['bodyLineDeg'] = round(ang(th, hip, ank), 1)
+    # kneeling variants (r3, 2026-11-19): the same signed hip offset, but from the thorax -> knee line (knee = V5 shin pivots)
+    kn = mid(J['leftShin'], J['rightShin']); axk = unit(sub(kn, th)); pk = sub(hip, th); perpk = sub(pk, mul(axk, dot(pk, axk)))
+    up_k = unit(sub([0, 1, 0], mul(axk, dot([0, 1, 0], axk))))
+    m['hipOffsetKneeMm'] = round(dot(perpk, up_k) * 1000, 1)
     # trunk: flexion of the thorax (torso bone) relative to the pelvis, about the body's left axis (+ = rounded/flexed, - = arched)
     tu = qrot(qinv(Q['pelvis']), qrot(Q['torso'], [0, 1, 0]))
     m['trunkFlexDeg'] = round(deg(math.atan2(tu[2], tu[1])), 2)
@@ -149,6 +153,11 @@ for c in std['checks']:
         # hands: V5 hand bones (the hub's metric wrist/palm points are not updated by shoulders.shift; the bones are); feet: hub toe points
         # feet: horizontal drift of the V5 foot contact patch (vertices within 3 mm of the lowest; toe tips on the mat) over each planted window
         which = c.get('which', 'all'); sm = src['summary']
+        if which == 'knees':   # kneeling contacts (r3): V5 shin pivots (= knee joints) over their planted windows
+            v = max([x['driftMm'] for k, x in sm.get('pins', {}).items() if 'Shin' in k] or [None])
+            v = None if v is None else round(v, 2); lo, hi = c.get('min', -1e18), c.get('max', 1e18)
+            res.append({'id': c['id'], 'label': c['label'], 'value': v, 'min': c.get('min'), 'max': c.get('max'), 'unit': c.get('unit', ''),
+                        'pass': v is not None and lo - 1e-9 <= v <= hi + 1e-9}); continue
         v = max([x['driftMm'] for k, x in sm.get('pins', {}).items() if 'Hand' in k] or [0]) if which in ('all', 'hands') else 0
         for p in plan.get('checks', {}).get('pins', []):
             if 'Foot' not in p['bone'] or which == 'hands': continue
