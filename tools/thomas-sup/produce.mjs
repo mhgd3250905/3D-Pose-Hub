@@ -22,7 +22,7 @@ const DEFAULT_OUT='F:/PoseHub-v3/runs/2026-11-19_thomas-supplement-r1';
 // files this branch adds/changes on top of BASE; every other path must equal BASE (render content = main 94ff057)
 const EXCLUDE=['tools/thomas-sup','catalog/production/thomas-supplement-r1','drill-anim/data/home-pr-candidates.json','drill-anim/verify.mjs',
   'drill-anim/specs/_thomas-sup-wrist-r1.mjs',...PLAN0.actions.map(a=>a.spec),
-  // r2 (2026-11-19): opt-in V5 scapula translation (spec v5.scapulaShift; set by t-pushup-plus / t-frog-stand / t-planche-lean and, batch 2, t-kneeling-scap-pushup / t-seated-shoulder-ext-slide / t-hanging-leg-raise); v5.headFlexDeg (opt-in head flexion, batch 2: t-seated-shoulder-ext-slide), same files.
+  // r2 (2026-11-19): opt-in V5 scapula translation (spec v5.scapulaShift; set by t-pushup-plus / t-frog-stand / t-planche-lean and, batch 2, t-kneeling-scap-pushup / t-seated-shoulder-ext-slide / t-hanging-leg-raise / t-straddle-planche); v5.headFlexDeg (opt-in head flexion, batch 2: t-seated-shoulder-ext-slide), same files.
   // Off for every other action: old-action masters + v5-pose.json byte-identical to main (serratus-A, h-open-book; evidence in tools/thomas-sup/standards/README.md).
   'tools/v5/runtime/v5-hub.js','tools/v5/render-masters-v5.mjs'];
 const PY=process.env.PYTHON||(process.platform==='win32'?'python':'python3');

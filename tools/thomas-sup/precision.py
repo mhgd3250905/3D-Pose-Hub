@@ -141,6 +141,10 @@ def metrics(s):
     pu_w = qrot(Q['pelvis'], [0, 1, 0]); m['pelvisPitchDeg'] = round(deg(math.atan2(pu_w[2], pu_w[1])), 1)
     m['anklesApartCm'] = round(norm(sub(J['leftFoot'], J['rightFoot'])) * 100, 1)
     m['shoulderBarZcm'] = round((sh[2] - wr[2]) * 100, 2)
+    # planche (r3): body tilt = thorax -> mid-ankle line vs horizontal (+ = feet higher than the chest); straddle = angle between the legs
+    hz = math.hypot(ank[0] - J['torso'][0], ank[2] - J['torso'][2]); m['bodyTiltDeg'] = round(deg(math.atan2(ank[1] - J['torso'][1], hz)), 1)
+    m['straddleDeg'] = round(deg(math.acos(max(-1, min(1, dot(unit(sub(J['leftFoot'], J['leftThigh'])), unit(sub(J['rightFoot'], J['rightThigh']))))))), 1)
+    m['hipAboveWristMm'] = round((hip[1] - wr[1]) * 1000, 1); m['shoulderAboveWristMm'] = round((sh[1] - wr[1]) * 1000, 1)
     return m
 
 M = [(s['t'], metrics(s)) for s in S]

@@ -1,0 +1,229 @@
+{
+ "format": "thomas-sup-standard@1",
+ "id": "t-straddle-planche",
+ "nameZh": "分腿俄挺",
+ "doc": "tools/thomas-sup/standards/t-straddle-planche.md",
+ "phases": {
+  "hold": "分腿俄挺保持：身体与地面平行，双腿伸直分开，手臂锁直，肩超过手，重心在手掌上"
+ },
+ "series": [
+  "comLeadCm",
+  "shoulderLeadCm",
+  "armFromVerticalDeg",
+  "bodyTiltDeg",
+  "straddleDeg",
+  "hipAboveShoulderMm",
+  "wristExtMax"
+ ],
+ "checks": [
+  {
+   "id": "elbow_lock",
+   "label": "全程锁肘（两肘最小角）",
+   "metric": "elbowMin",
+   "agg": "min",
+   "min": 172,
+   "unit": "°"
+  },
+  {
+   "id": "knee_straight",
+   "label": "腿伸直（两膝最小角）",
+   "metric": "kneeMin",
+   "agg": "min",
+   "min": 170,
+   "unit": "°"
+  },
+  {
+   "id": "com_over_hands_back",
+   "label": "重心在手掌上（重心相对手腕，最靠后）",
+   "metric": "comLeadCm",
+   "agg": "min",
+   "min": 0,
+   "unit": "cm"
+  },
+  {
+   "id": "com_over_hands_fwd",
+   "label": "重心在手掌上（最靠前，不超过掌心太多）",
+   "metric": "comLeadCm",
+   "agg": "max",
+   "max": 4,
+   "unit": "cm"
+  },
+  {
+   "id": "shoulder_lean",
+   "label": "保持：肩超过手腕（最小）",
+   "metric": "shoulderLeadCm",
+   "agg": "min",
+   "min": 25,
+   "max": 45,
+   "unit": "cm",
+   "phase": "hold"
+  },
+  {
+   "id": "body_level",
+   "label": "保持：身体与地面平行（胸廓→踝连线倾角）",
+   "metric": "bodyTiltDeg",
+   "agg": "max",
+   "min": -5,
+   "max": 5,
+   "unit": "°",
+   "phase": "hold"
+  },
+  {
+   "id": "body_level_min",
+   "label": "保持：身体与地面平行（最小）",
+   "metric": "bodyTiltDeg",
+   "agg": "min",
+   "min": -5,
+   "max": 5,
+   "unit": "°",
+   "phase": "hold"
+  },
+  {
+   "id": "hips_level",
+   "label": "保持：髋与肩同高或略高（髋高−肩高）",
+   "metric": "hipAboveShoulderMm",
+   "agg": "max",
+   "min": 0,
+   "max": 50,
+   "unit": "mm",
+   "phase": "hold"
+  },
+  {
+   "id": "no_sag",
+   "label": "不塌腰：髋低于 胸廓–踝 连线",
+   "metric": "hipOffsetMm",
+   "agg": "min",
+   "min": -20,
+   "unit": "mm"
+  },
+  {
+   "id": "no_pike",
+   "label": "髋不太高：髋高于 胸廓–踝 连线",
+   "metric": "hipOffsetMm",
+   "agg": "max",
+   "max": 20,
+   "unit": "mm"
+  },
+  {
+   "id": "straddle_width",
+   "label": "保持：两腿夹角",
+   "metric": "straddleDeg",
+   "agg": "min",
+   "min": 90,
+   "max": 130,
+   "unit": "°",
+   "phase": "hold"
+  },
+  {
+   "id": "hold_time",
+   "label": "分腿保持时长（两腿夹角在最大 2° 内）",
+   "kind": "plateau",
+   "metric": "straddleDeg",
+   "ref": "max",
+   "tol": 2,
+   "min": 4.0,
+   "unit": "s"
+  },
+  {
+   "id": "scap_protracted",
+   "label": "肩胛前伸（肩关节相对胸廓向前，最小）",
+   "metric": "scapFwd",
+   "agg": "min",
+   "min": 15,
+   "unit": "mm"
+  },
+  {
+   "id": "scap_depressed",
+   "label": "肩胛下沉（肩关节相对胸廓，最高处）",
+   "metric": "scapUp",
+   "agg": "max",
+   "max": -5,
+   "unit": "mm"
+  },
+  {
+   "id": "ppt",
+   "label": "骨盆后倾/空心：胸廓相对骨盆屈曲（保持段）",
+   "metric": "trunkFlexDeg",
+   "agg": "min",
+   "min": 3,
+   "max": 12,
+   "unit": "°",
+   "phase": "hold"
+  },
+  {
+   "id": "head_neutral",
+   "label": "头中立（头与胸廓夹角）",
+   "metric": "headVsTrunkDeg",
+   "agg": "max",
+   "max": 15,
+   "unit": "°"
+  },
+  {
+   "id": "fingers_out",
+   "label": "手指向外转（左）",
+   "metric": "fingerTurnOutL",
+   "agg": "min",
+   "min": 30,
+   "max": 90,
+   "unit": "°"
+  },
+  {
+   "id": "fingers_out_r",
+   "label": "手指向外转（右）",
+   "metric": "fingerTurnOutR",
+   "agg": "min",
+   "min": 30,
+   "max": 90,
+   "unit": "°"
+  },
+  {
+   "id": "wrist_ext",
+   "label": "保持：腕背伸角（最大）",
+   "metric": "wristExtMax",
+   "agg": "max",
+   "max": 100,
+   "unit": "°",
+   "phase": "hold"
+  },
+  {
+   "id": "feet_clear",
+   "label": "脚离地（脚最低点）",
+   "metric": "footClearMm",
+   "agg": "min",
+   "min": 50,
+   "unit": "mm"
+  },
+  {
+   "id": "hands_no_clip",
+   "label": "手不穿垫（手最低点）",
+   "metric": "handFloorMm",
+   "agg": "min",
+   "min": -2,
+   "unit": "mm"
+  },
+  {
+   "id": "contacts",
+   "label": "手掌不滑（V5 手骨漂移）",
+   "kind": "pins",
+   "which": "hands",
+   "max": 5,
+   "unit": "mm"
+  },
+  {
+   "id": "palm_flat",
+   "label": "手掌不翻转（手骨转角变化）",
+   "metric": "handRotMax",
+   "agg": "max",
+   "max": 3,
+   "unit": "°"
+  },
+  {
+   "id": "v5_matches_hub",
+   "label": "V5 身体与求解姿态一致（最大关节偏差）",
+   "kind": "summary",
+   "path": "maxPosErrMm",
+   "max": 2,
+   "unit": "mm"
+  }
+ ]
+}
