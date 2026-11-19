@@ -203,20 +203,23 @@ def metrics(s):
     # the first sample (inward/outward rotation drifting over the cycle). Mesh: mean azimuth of the elbow-band skin ([-0.08, 0.04] of
     # the forearm length about the elbow) vs a pure hinge, proximal forearm band [0.04, 0.15], and the elbow-band radius vs the upper-arm
     # band [-0.4, -0.2] (pinch; 1 = as thick as the upper arm band ratio at rest).
-    if 'arm' in s and s['arm'] and 'right' in s['arm']:
-        a = s['arm']['right']; m['elbowTwistR'] = a['elbowTwistDeg']; m['elbowTwistAbsR'] = abs(a['elbowTwistDeg'])
-        m['elbowPitR'] = a['elbowPitDeg']; m['elbowPitAbsR'] = None if a['elbowPitDeg'] is None else abs(a['elbowPitDeg'])
-        m['handTwistR'] = a['handTwistDeg']; m['forearmTwistR'] = round(a['elbowTwistDeg'] + a['handTwistDeg'], 2)
-        a0 = S[0]['arm']['right']; q = a['uaT']; q0 = a0['uaT']; ax = a['aU']
+    # r5 (2026-11-19): the same metrics per side, suffix R (right arm, r4 names unchanged) and L (left arm, the resting arm of
+    # t-seated-forearm-rotation and the pressing hand of the self-resisted wrist drills).
+    for side, k in (('right', 'R'), ('left', 'L')):
+        if not ('arm' in s and s['arm'] and side in s['arm']): continue
+        a = s['arm'][side]; m['elbowTwist' + k] = a['elbowTwistDeg']; m['elbowTwistAbs' + k] = abs(a['elbowTwistDeg'])
+        m['elbowPit' + k] = a['elbowPitDeg']; m['elbowPitAbs' + k] = None if a['elbowPitDeg'] is None else abs(a['elbowPitDeg'])
+        m['handTwist' + k] = a['handTwistDeg']; m['forearmTwist' + k] = round(a['elbowTwistDeg'] + a['handTwistDeg'], 2)
+        a0 = S[0]['arm'][side]; q = a['uaT']; q0 = a0['uaT']; ax = a['aU']
         x0, y0, z0, w0 = qinv(q0); x1, y1, z1, w1 = q   # rel = q0^-1 * q (three.js [x,y,z,w])
         rel = [w0 * x1 + x0 * w1 + y0 * z1 - z0 * y1, w0 * y1 - x0 * z1 + y0 * w1 + z0 * x1, w0 * z1 + x0 * y1 - y0 * x1 + z0 * w1, w0 * w1 - x0 * x1 - y0 * y1 - z0 * z1]
         pp, ww = dot(rel[:3], ax), rel[3]
         if ww < 0: pp, ww = -pp, -ww
-        m['upperArmRotR'] = round(deg(2 * math.atan2(pp, ww)), 2)
+        m['upperArmRot' + k] = round(deg(2 * math.atan2(pp, ww)), 2)
         ms = {tuple(b['at']): b for b in a['mesh']}
         eb, pf, ub = ms[(-0.08, 0.04)], ms[(0.04, 0.15)], ms[(-0.4, -0.2)]
-        m['elbowSkinTwistAbsR'] = abs(eb['azDeg']); m['proxForearmSkinTwistAbsR'] = abs(pf['azDeg'])
-        m['elbowPinchR'] = round(eb['radius'] / ub['radius'], 3)
+        m['elbowSkinTwistAbs' + k] = abs(eb['azDeg']); m['proxForearmSkinTwistAbs' + k] = abs(pf['azDeg'])
+        m['elbowPinch' + k] = round(eb['radius'] / ub['radius'], 3)
     return m
 
 M = [(s['t'], metrics(s)) for s in S]

@@ -7,7 +7,7 @@ import { wristDrill } from './_thomas-sup-wrist-r2.mjs';
 import { gripAttach } from '../lib/grip.mjs';
 const spec = wristDrill('rot', 't-seated-forearm-rotation', '坐姿哑铃翻手腕', 'Seated Forearm Pronation-Supination', '7', {
   pelvis: [0, 0.579, -0.03], hipTilt: 29, waistBend: 25, twist: 0, W: [-0.085, 0.57, 0.463], E: [-0.165, 0.62, 0.257], supDeg: 80, proDeg: 80, rollShare: 0, elbowTwistR: 130.1, upperArmTwistR: 29.3, closeUp: true,
-  restL: { wrist: [0.11, 0.607, 0.26], finger: [-0.05, -0.35, 1], normal: [0, -1, -0.3] }, poleL: [0.6, 1.0, -0.1],
+  restL: { wrist: [0.11, 0.607, 0.26], finger: [-0.05, -0.35, 1], normal: [0, -1, -0.3] }, poleL: [0.6, 1.0, -0.1], upperArmTwistL: 29.3, elbowTwistL: -99.0,
   camera: { dir: [-0.35, 0.45, 1], fit: ['rightElbow', 'rightWrist', 'rightPalm', 'rightKnee'], pad: 0.12 },
 });
 // r3 (2026-11-19, 开哥「抓握的都可以用专门的抓握手模」): the right hand holds the dumbbell with the hub's accepted fixed dumbbell fist
@@ -27,4 +27,8 @@ spec.v5 = { ...spec.v5, hubGraspHands: ['right'] };
 // whole pronation / supination is the hand-vs-forearm twist the V5 forearm twist helpers spread along the forearm (+75 ... -85 deg,
 // 0 at the elbow). W / E 5 mm up and 3 mm forward keep the forearm on the thigh (-3.2 ... -1.4 mm) and the dumbbell off the shin (12 mm).
 // Numbers: tools/thomas-sup/standards/t-seated-forearm-rotation.md (r3 -> r4).
+// r5 (2026-11-19, 开哥批准继续修肘部「糖纸拧转」): the resting left arm had the same fault (hub default forearm roll: elbow twisted
+// 122.6 deg, upper arm 29 deg off the bend plane, elbow band pinched to 0.59). upperArmTwistL 29.3 (pit 0.3 deg) + elbowTwistL -99.0
+// (elbow twist 0.05 deg): joints and the left hand's world pose unchanged, the 76 deg hand-vs-forearm pronation is spread along the
+// forearm by the V5 twist helpers. Right arm unchanged. Numbers: tools/thomas-sup/standards/t-seated-forearm-rotation.md (r4 -> r5).
 export default spec;

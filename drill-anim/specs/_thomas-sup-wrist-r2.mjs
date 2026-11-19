@@ -74,9 +74,15 @@ export function wristDrill(kind, id, name, nameEn, item, o = {}) {
     desc.hands.right = { mode: 'free', frame: 'world', relax: 0.15, wrist: W, finger: t => r5(f(t)), normal: t => r5(n(t)), pole: p.pole,
       elbowTwist: p.elbowTwistR + (kind === 'ext' ? 180 : 0), upperArmTwist: p.upperArmTwistR ?? 0 };
     // left palm on that surface: palm normal = -top, fingers across toward -X (lat), wrist back along -lat and off the surface
+    // r5 (2026-11-19, opt-in): upperArmTwistL / elbowTwistL may be a table [[a deg, twist deg], ...] (piecewise linear in the wrist
+    // angle a): the pressing left hand turns with the right hand, so the left arm rolls that keep its elbow a hinge change with a.
+    // A number (or nothing) is used exactly as before.
+    const byA = v => Array.isArray(v) ? (t => { const x = a(t), k = v.findIndex(([q]) => q >= x);
+      if (k <= 0) return v[k < 0 ? v.length - 1 : 0][1];
+      const [q0, y0] = v[k - 1], [q1, y1] = v[k]; return +(y0 + (y1 - y0) * (x - q0) / (q1 - q0)).toFixed(3); }) : (v ?? 0);
     desc.hands.left = { mode: 'free', frame: 'world', relax: 0.1,
       wrist: t => r5(add(add(pc(t), mul(top(t), p.half)), mul(lat, -p.palm))), finger: r5(lat), normal: t => r5(mul(top(t), -1)),
-      poleUp: p.poleL, upperArmTwist: p.upperArmTwistL ?? 0, elbowTwist: p.elbowTwistL ?? 0 };
+      poleUp: p.poleL, upperArmTwist: byA(p.upperArmTwistL), elbowTwist: byA(p.elbowTwistL) };
     extra = { effort: t => (a(t) - lo) / (hi - lo) };
     hl = { groups: ['forearms'], side: 'right', pulseTrack: 'effort', pulseBase: 0.35 };
     s.keyFrames = [0.5, 3.6, 5.5]; s.stillAt = 3.6;

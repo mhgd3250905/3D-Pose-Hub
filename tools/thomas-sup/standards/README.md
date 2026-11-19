@@ -61,3 +61,9 @@ node tools/thomas-sup/check.mjs --recipe ... --frames ... --mesh-clip forearmR:t
 ## 肘铰链度量（r4 2026-11-19，第 7 项坐姿翻手腕「拧着」）
 - check.mjs 每帧记录 `arm.{left,right}`：前臂骨相对上臂绕前臂轴的扭转 `elbowTwistDeg`（铰链 = 0）、肘窝（上臂静止前侧 +Z）与前臂弯向夹角 `elbowPitDeg`、手对前臂扭转 `handTwistDeg`、上臂在胸廓系的旋转、扭转辅助骨各段转角、以及沿手臂各段蒙皮顶点相对纯铰链系的平均偏转与半径比（`mesh`）。precision.py 给出 `elbowTwistR` / `elbowPitR` / `upperArmRotR` / `forearmTwistR` / `handTwistR` / `elbowSkinTwistAbsR` / `proxForearmSkinTwistAbsR` / `elbowPinchR`（右臂）。只加度量，不影响渲染。
 - t-seated-forearm-rotation r4 只改 spec 参数（upperArmTwistR、elbowTwistR、rollShare 0、手腕/肘目标），共用构建器、v5-hub.js、render-masters-v5.mjs 未动，其余 11 个托马斯动作配方 gen-recipes --check 不变。数字见 `t-seated-forearm-rotation.md` r4 节。
+
+## 肘铰链双臂（r5 2026-11-19，继续修肘部「糖纸拧转」）
+- precision.py 的肘铰链度量改为按侧：右臂沿用 r4 名称（`elbowTwistR` …），左臂同名后缀 `L`（`elbowTwistAbsL` / `elbowPitAbsL` / `upperArmRotL` / `forearmTwistL` / `handTwistL` / `elbowSkinTwistAbsL` / `proxForearmSkinTwistAbsL` / `elbowPinchL`）。check.mjs 的 `arm` 本来就逐帧记双臂，未改。其余动作的检查结果不变（t-pushup-plus 同一 check 输出新旧 precision.py 结果逐项相同）。
+- t-seated-forearm-rotation 左臂（静止）：只改 spec 参数 `upperArmTwistL` 29.3 / `elbowTwistL` −99.0，肘扭转 122.6° → 0.05°、肘窝 29.0° → 0.3°；右臂、哑铃与 r4 逐帧相同。左肘截面 0.79 为提示项（屈 114° 的铰链形态，见该文档）。
+- t-self-resisted-wrist-flexion / -extension：右臂静态 `upperArmTwistR` + `elbowTwistR`；左臂（压手的手跟着右手转）用构建器 `_thomas-sup-wrist-r2.mjs` 新加的 opt-in 查表：`upperArmTwistL` / `elbowTwistL` 写成 `[[腕角°, 值°], …]` 时按腕角 a(t) 线性插值，写数字或不写时与原来相同（坐姿翻手腕配方 r4→r5 只因自身 spec 参数变化）。双臂肘扭转 ≤ 1.1°、肘窝 ≤ 0.6°、肘带蒙皮 ≤ 1.1°、截面 ≥ 0.82；原有各项标准全部通过。
+- 三个动作的标准各加双臂 7 项（坐姿翻手腕加左臂 6 项），前后数字表见各自 `.md` r5 节与 `.json` 的 `r5`。v5-hub.js、render-masters-v5.mjs 未动；render-masters-v5.mjs 240 px 每动作 4 帧通过，V5 关节偏差 0；其余 9 个托马斯动作配方 gen-recipes --check 不变。

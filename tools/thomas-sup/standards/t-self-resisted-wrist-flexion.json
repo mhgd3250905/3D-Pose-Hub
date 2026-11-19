@@ -226,6 +226,265 @@
    "path": "maxPosErrMm",
    "max": 2,
    "unit": "mm"
+  },
+  {
+   "id": "elbow_hingeR",
+   "label": "右肘只做铰链：前臂骨相对上臂绕前臂轴的扭转（最大绝对值）",
+   "metric": "elbowTwistAbsR",
+   "agg": "max",
+   "max": 5,
+   "unit": "°"
+  },
+  {
+   "id": "elbow_pitR",
+   "label": "右肘窝对准弯曲方向：肘窝（上臂解剖前侧）与前臂弯向的夹角（最大绝对值）",
+   "metric": "elbowPitAbsR",
+   "agg": "max",
+   "max": 10,
+   "unit": "°"
+  },
+  {
+   "id": "upper_arm_stillR",
+   "label": "右上臂不内外旋：上臂绕自身轴（胸廓坐标）相对首帧的转角变化",
+   "metric": "upperArmRotR",
+   "agg": "range",
+   "max": 5,
+   "unit": "°"
+  },
+  {
+   "id": "elbow_skin_twistR",
+   "label": "右肘部皮肤不拧：肘带（前臂长 −8%…+4%）蒙皮顶点绕轴偏转（最大绝对值）",
+   "metric": "elbowSkinTwistAbsR",
+   "agg": "max",
+   "max": 5,
+   "unit": "°"
+  },
+  {
+   "id": "prox_forearm_skin_twistR",
+   "label": "右近肘前臂皮肤少转：前臂 4%…15% 段蒙皮顶点绕轴偏转（最大绝对值）",
+   "metric": "proxForearmSkinTwistAbsR",
+   "agg": "max",
+   "max": 10,
+   "unit": "°"
+  },
+  {
+   "id": "elbow_no_pinchR",
+   "label": "右肘部不塌陷：肘带平均半径 / 上臂中段平均半径（最低）",
+   "metric": "elbowPinchR",
+   "agg": "min",
+   "min": 0.8,
+   "unit": ""
+  },
+  {
+   "id": "elbow_hingeL",
+   "label": "左肘只做铰链：前臂骨相对上臂绕前臂轴的扭转（最大绝对值）",
+   "metric": "elbowTwistAbsL",
+   "agg": "max",
+   "max": 5,
+   "unit": "°"
+  },
+  {
+   "id": "elbow_pitL",
+   "label": "左肘窝对准弯曲方向：肘窝（上臂解剖前侧）与前臂弯向的夹角（最大绝对值）",
+   "metric": "elbowPitAbsL",
+   "agg": "max",
+   "max": 10,
+   "unit": "°"
+  },
+  {
+   "id": "upper_arm_stillL",
+   "label": "左上臂不内外旋：上臂绕自身轴（胸廓坐标）相对首帧的转角变化",
+   "metric": "upperArmRotL",
+   "agg": "range",
+   "max": 5,
+   "unit": "°"
+  },
+  {
+   "id": "elbow_skin_twistL",
+   "label": "左肘部皮肤不拧：肘带（前臂长 −8%…+4%）蒙皮顶点绕轴偏转（最大绝对值）",
+   "metric": "elbowSkinTwistAbsL",
+   "agg": "max",
+   "max": 5,
+   "unit": "°"
+  },
+  {
+   "id": "prox_forearm_skin_twistL",
+   "label": "左近肘前臂皮肤少转：前臂 4%…15% 段蒙皮顶点绕轴偏转（最大绝对值）",
+   "metric": "proxForearmSkinTwistAbsL",
+   "agg": "max",
+   "max": 10,
+   "unit": "°"
+  },
+  {
+   "id": "elbow_no_pinchL",
+   "label": "左肘部不塌陷：肘带平均半径 / 上臂中段平均半径（最低）",
+   "metric": "elbowPinchL",
+   "agg": "min",
+   "min": 0.8,
+   "unit": ""
+  },
+  {
+   "id": "forearm_rot_in_forearmL",
+   "label": "左手跟着右手转：旋前旋后在左前臂完成（手相对铰链前臂的扭转全幅）",
+   "metric": "forearmTwistL",
+   "agg": "range",
+   "min": 90,
+   "unit": "°"
   }
- ]
+ ],
+ "r5": {
+  "date": "2026-11-19",
+  "change": "肘铰链（r4→r5）：右臂 upperArmTwistR/elbowTwistR 静态参数，左臂按腕角查表（构建器 opt-in）",
+  "measured": "check.mjs --stride 4（60 帧）+ precision.py",
+  "values": {
+   "flex_peak": {
+    "r4": 69.0,
+    "r5": 69.0
+   },
+   "ext_start": {
+    "r4": -46.0,
+    "r5": -46.0
+   },
+   "rom_total": {
+    "r4": 115.0,
+    "r5": 115.0
+   },
+   "dev_max": {
+    "r4": -0.2,
+    "r5": -0.2
+   },
+   "dev_min": {
+    "r4": -0.4,
+    "r5": -0.4
+   },
+   "palm_up": {
+    "r4": 89.8,
+    "r5": 89.8
+   },
+   "palm_up_max": {
+    "r4": 90.4,
+    "r5": 90.4
+   },
+   "no_forearm_roll": {
+    "r4": 0.6,
+    "r5": 0.6
+   },
+   "concentric": {
+    "r4": 1.73,
+    "r5": 1.73
+   },
+   "eccentric": {
+    "r4": 2.26,
+    "r5": 2.26
+   },
+   "top_hold": {
+    "r4": 1.2,
+    "r5": 1.2
+   },
+   "reps_per_loop": {
+    "r4": 1,
+    "r5": 1
+   },
+   "forearm_still": {
+    "r4": 0.0,
+    "r5": 0.0
+   },
+   "elbow_still": {
+    "r4": 0,
+    "r5": 0
+   },
+   "wrist_still": {
+    "r4": 0,
+    "r5": 0
+   },
+   "forearm_on_thigh": {
+    "r4": -4.1,
+    "r5": -4.8
+   },
+   "forearm_on_thigh_max": {
+    "r4": -3.3,
+    "r5": -4.4
+   },
+   "hand_press": {
+    "r4": -2.4,
+    "r5": -2.4
+   },
+   "hand_press_max": {
+    "r4": 1.8,
+    "r5": 1.8
+   },
+   "trunk_still": {
+    "r4": 0.0,
+    "r5": 0.0
+   },
+   "seat_on_bench": {
+    "r4": 441.7,
+    "r5": 441.7
+   },
+   "feet": {
+    "r4": 0,
+    "r5": 0
+   },
+   "feet_no_clip": {
+    "r4": 0,
+    "r5": 0
+   },
+   "v5_matches_hub": {
+    "r4": 0,
+    "r5": 0
+   },
+   "elbow_hingeR": {
+    "r4": 90.84,
+    "r5": 0.01
+   },
+   "elbow_pitR": {
+    "r4": 28.17,
+    "r5": 0.03
+   },
+   "upper_arm_stillR": {
+    "r4": 0.0,
+    "r5": 0.0
+   },
+   "elbow_skin_twistR": {
+    "r4": 48.13,
+    "r5": 0.01
+   },
+   "prox_forearm_skin_twistR": {
+    "r4": 85.05,
+    "r5": 0.02
+   },
+   "elbow_no_pinchR": {
+    "r4": 0.7,
+    "r5": 0.93
+   },
+   "elbow_hingeL": {
+    "r4": 146.74,
+    "r5": 0.35
+   },
+   "elbow_pitL": {
+    "r4": 37.57,
+    "r5": 0.52
+   },
+   "upper_arm_stillL": {
+    "r4": 24.02,
+    "r5": 0.56
+   },
+   "elbow_skin_twistL": {
+    "r4": 64.29,
+    "r5": 0.89
+   },
+   "prox_forearm_skin_twistL": {
+    "r4": 145.22,
+    "r5": 0.44
+   },
+   "elbow_no_pinchL": {
+    "r4": 0.55,
+    "r5": 0.82
+   },
+   "forearm_rot_in_forearmL": {
+    "r4": 135.84,
+    "r5": 111.04
+   }
+  }
+ }
 }

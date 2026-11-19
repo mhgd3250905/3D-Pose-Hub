@@ -353,6 +353,238 @@
    "agg": "min",
    "min": 0.8,
    "unit": ""
+  },
+  {
+   "id": "elbow_hingeL",
+   "label": "左肘只做铰链：前臂骨相对上臂绕前臂轴的扭转（最大绝对值）",
+   "metric": "elbowTwistAbsL",
+   "agg": "max",
+   "max": 5,
+   "unit": "°"
+  },
+  {
+   "id": "elbow_pitL",
+   "label": "左肘窝对准弯曲方向：肘窝（上臂解剖前侧）与前臂弯向的夹角（最大绝对值）",
+   "metric": "elbowPitAbsL",
+   "agg": "max",
+   "max": 10,
+   "unit": "°"
+  },
+  {
+   "id": "upper_arm_stillL",
+   "label": "左上臂不内外旋：上臂绕自身轴（胸廓坐标）相对首帧的转角变化",
+   "metric": "upperArmRotL",
+   "agg": "range",
+   "max": 5,
+   "unit": "°"
+  },
+  {
+   "id": "elbow_skin_twistL",
+   "label": "左肘部皮肤不拧：肘带（前臂长 −8%…+4%）蒙皮顶点绕轴偏转（最大绝对值）",
+   "metric": "elbowSkinTwistAbsL",
+   "agg": "max",
+   "max": 5,
+   "unit": "°"
+  },
+  {
+   "id": "prox_forearm_skin_twistL",
+   "label": "左近肘前臂皮肤少转：前臂 4%…15% 段蒙皮顶点绕轴偏转（最大绝对值）",
+   "metric": "proxForearmSkinTwistAbsL",
+   "agg": "max",
+   "max": 10,
+   "unit": "°"
+  },
+  {
+   "id": "elbow_no_pinchL",
+   "label": "左肘部不塌陷：肘带平均半径 / 上臂中段平均半径（最低）（提示项：左肘屈 114°，深屈时肘窝皮肤受挤压，属铰链形态而非扭转；扭转修后 0.59→0.79，待开哥定）",
+   "metric": "elbowPinchL",
+   "agg": "min",
+   "min": 0.8,
+   "unit": "",
+   "advisory": true
   }
- ]
+ ],
+ "r5": {
+  "date": "2026-11-19",
+  "change": "肘铰链（r4→r5）：左臂 upperArmTwistL 29.3 / elbowTwistL -99.0；右臂不变",
+  "measured": "check.mjs --stride 4（60 帧）+ precision.py",
+  "values": {
+   "sup_end": {
+    "r4": 79.3,
+    "r5": 79.3
+   },
+   "pro_end": {
+    "r4": -80.7,
+    "r5": -80.7
+   },
+   "rot_total": {
+    "r4": 160.0,
+    "r5": 160.0
+   },
+   "wrist_flex_max": {
+    "r4": 4.5,
+    "r5": 4.5
+   },
+   "wrist_flex_min": {
+    "r4": -2.8,
+    "r5": -2.8
+   },
+   "dev_max": {
+    "r4": 2.4,
+    "r5": 2.4
+   },
+   "dev_min": {
+    "r4": -4.5,
+    "r5": -4.5
+   },
+   "turn_down": {
+    "r4": 2.13,
+    "r5": 2.13
+   },
+   "turn_up": {
+    "r4": 2.53,
+    "r5": 2.53
+   },
+   "hold_up": {
+    "r4": 1.73,
+    "r5": 1.73
+   },
+   "hold_down": {
+    "r4": 1.33,
+    "r5": 1.33
+   },
+   "reps_per_loop": {
+    "r4": 1,
+    "r5": 1
+   },
+   "forearm_still": {
+    "r4": 0.0,
+    "r5": 0.0
+   },
+   "elbow_still": {
+    "r4": 0,
+    "r5": 0
+   },
+   "wrist_still": {
+    "r4": 0,
+    "r5": 0
+   },
+   "forearm_on_thigh": {
+    "r4": -3.2,
+    "r5": -3.2
+   },
+   "forearm_on_thigh_max": {
+    "r4": -1.4,
+    "r5": -1.4
+   },
+   "left_hand_rest": {
+    "r4": -3.5,
+    "r5": -3.5
+   },
+   "left_hand_rest_max": {
+    "r4": -3.5,
+    "r5": -3.5
+   },
+   "left_hand_still": {
+    "r4": 0,
+    "r5": 0
+   },
+   "trunk_still": {
+    "r4": 0.0,
+    "r5": 0.0
+   },
+   "seat_on_bench": {
+    "r4": 441.7,
+    "r5": 441.7
+   },
+   "feet": {
+    "r4": 0,
+    "r5": 0
+   },
+   "feet_no_clip": {
+    "r4": 0,
+    "r5": 0
+   },
+   "v5_matches_hub": {
+    "r4": 0,
+    "r5": 0
+   },
+   "db_no_clip": {
+    "r4": -0.82,
+    "r5": -0.82
+   },
+   "db_in_palm": {
+    "r4": -0.82,
+    "r5": -0.82
+   },
+   "db_wrapped": {
+    "r4": 300,
+    "r5": 300
+   },
+   "dumbbell_clear": {
+    "r4": 12.2,
+    "r5": 12.2
+   },
+   "seam_no_ledge": {
+    "r4": -0.62,
+    "r5": -0.62
+   },
+   "seam_no_gap": {
+    "r4": -1.07,
+    "r5": -1.07
+   },
+   "elbow_hinge": {
+    "r4": 0.04,
+    "r5": 0.04
+   },
+   "elbow_pit": {
+    "r4": 0.55,
+    "r5": 0.55
+   },
+   "upper_arm_still": {
+    "r4": 0.0,
+    "r5": 0.0
+   },
+   "forearm_rot_in_forearm": {
+    "r4": 160.68,
+    "r5": 160.68
+   },
+   "elbow_skin_twist": {
+    "r4": 0.06,
+    "r5": 0.06
+   },
+   "prox_forearm_skin_twist": {
+    "r4": 0.03,
+    "r5": 0.03
+   },
+   "elbow_no_pinch": {
+    "r4": 0.88,
+    "r5": 0.88
+   },
+   "elbow_hingeL": {
+    "r4": 122.57,
+    "r5": 0.05
+   },
+   "elbow_pitL": {
+    "r4": 28.98,
+    "r5": 0.32
+   },
+   "upper_arm_stillL": {
+    "r4": 0.0,
+    "r5": 0.0
+   },
+   "elbow_skin_twistL": {
+    "r4": 43.29,
+    "r5": 1.18
+   },
+   "prox_forearm_skin_twistL": {
+    "r4": 121.66,
+    "r5": 0.13
+   },
+   "elbow_no_pinchL": {
+    "r4": 0.59,
+    "r5": 0.79
+   }
+  }
+ }
 }
