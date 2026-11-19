@@ -4,7 +4,8 @@
  "reviewStatus": "draft-ai-needs-user-review",
  "sources": [
   "catalog/production/thomas-supplement-r1/brief-2026-11-19 (托马斯动作库补充-制作说明 item 5（垫上版）)",
-  "drill-anim/specs/t-seated-shoulder-ext-slide.js"
+  "drill-anim/specs/t-seated-shoulder-ext-slide.js",
+  "tools/thomas-sup/standards/t-seated-shoulder-ext-slide.md"
  ],
  "name": {
   "zh": "后撑肩部滑行",
@@ -19,39 +20,47 @@
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "手撑在身后，手臂伸直，屁股往前滑",
-    "en": "Hands behind you, arms straight, slide your hips forward"
+    "zh": "手撑身后指尖朝后，手臂伸直，屁股慢慢往前滑",
+    "en": "Hands behind you, fingers back, arms straight, slowly slide your hips forward"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "滑到肩前侧拉紧了，用手撑住地，别让肩膀挂着。",
-    "en": "When the front of the shoulders feels stretched, press into the floor, don't hang."
+    "zh": "手掌贴死地面别动，滑到肩膀前面拉紧就停。",
+    "en": "Keep your palms stuck to the floor, and stop when the front of your shoulders gets tight."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "撑住了再用手推着屁股滑回来。",
-    "en": "Once you hold it, push with your hands to slide back."
+    "zh": "停住的时候手往下压地，肩膀往下沉、胸口挺起来；下巴微收，眼睛看前面。",
+    "en": "While you wait there, press the floor, shoulders down, chest up; tuck your chin a little and look ahead."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "撑住了再用手推着屁股慢慢滑回来。",
+    "en": "Then push with your hands and slide your hips back slowly."
    }
   }
  ],
  "commonErrors": [
   {
-   "zh": "肩膀完全放松，挂在那里",
-   "en": "Letting your shoulders go slack and hang."
+   "zh": "肩膀放松挂在那里，或者往耳朵那边耸",
+   "en": "Letting your shoulders hang slack, or shrugging them toward your ears."
   },
   {
    "zh": "做得太快，一下一下往前冲",
    "en": "Going too fast and lunging forward."
   },
   {
-   "zh": "肩前侧刺痛还继续",
-   "en": "Keeping going with a sharp pain at the front of the shoulder."
+   "zh": "头往后仰、看天花板",
+   "en": "Throwing your head back to look at the ceiling."
   }
  ],
  "cautions": [
@@ -103,7 +112,7 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 2.0
+    "seconds": 2.2
    },
    {
     "id": "hold",
@@ -111,22 +120,23 @@
    },
    {
     "id": "back",
-    "seconds": 2.0
+    "seconds": 2.2
    },
    {
     "id": "rest",
-    "seconds": 0.5
+    "seconds": 2.1
    }
   ],
-  "source": "real-tempo r3"
+  "source": "thomas-sup r2 animation tempo (8 s per rep: slide 2.2 s, hold 1.5 s, back 2.2 s, reset 2.1 s)"
  },
  "thomasSupplement": {
-  "version": "r1",
+  "version": "r2",
   "item": "5（垫上版）",
   "thomasAngle": "13 前侧支撑",
   "camera": "正侧面（看肩后伸角度）",
   "doseBrief": "3 组 × 6–8 次（滑行），休 60–90 秒",
   "status": "draft-awaiting-user-review",
-  "note": "defaultDose takes the low end of the brief range; the range is in doseBrief."
+  "note": "defaultDose takes the low end of the brief range; the range is in doseBrief. r2: one rep 8 s (slide 2.2 s, hold 1.5 s, back 2.2 s, reset 2.1 s).",
+  "standard": "tools/thomas-sup/standards/t-seated-shoulder-ext-slide.md"
  }
 }

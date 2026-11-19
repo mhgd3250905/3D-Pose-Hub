@@ -19,6 +19,10 @@
  * (shoulders stayed put, hands slid). With scapulaShift the V5 scapula pivots are also placed at the hub's scapula pivots (offset
  * from the torso pivot, in the torso frame) every frame; the arm chain below follows by FK. Off = the code path is never entered,
  * so every action that does not ask for it renders exactly as before.
+ * headFlexDeg (opt-in per action, default 0 = off; Thomas supplement r2 batch 2, 2026-11-19): the hub rig keeps the head rigid with
+ * the chest, so on reclined bodies (seated back support) the face points at the ceiling. With headFlexDeg the V5 head bone gets that
+ * extra flexion (chin toward the chest, + = flex) about its own pivot after the copy, so the head pivot and every other bone stay
+ * on the hub's; 0/absent = the code path is never entered.
  * Files toon-r6.js / wristfix-r2.js / model glb are verbatim copies of the v3r8b candidate (see tools/v5/runtime/SOURCES.md). */
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
@@ -37,7 +41,7 @@ for (const s of ['left', 'right']) for (let k = 1; k <= 8; k++) { PARENT[s + 'Fo
 export const NAMES = ['pelvis', 'spineLower', 'spineUpper', 'torso', 'neck', 'head', 'leftScapula', 'leftUpperArm', 'leftForearm', 'leftHand', 'rightScapula', 'rightUpperArm', 'rightForearm', 'rightHand', 'leftThigh', 'leftShin', 'leftFoot', 'rightThigh', 'rightShin', 'rightFoot'];
 const SHADOW = { color: 0x2a1a12, opacity: 0.14, mapSize: 2048, half: 2.4, sun: [0.6, 5, 1.2] };   // sample geometry (2026-11-16); colour = warm near-black at 0.14 so it reads like the sample on the light theme and does not glow on the dark theme
 
-export async function installV5({ glb, scapulaShift = false }) {
+export async function installV5({ glb, scapulaShift = false, headFlexDeg = 0 }) {
   const v = flareInspector.viewer, scene = v.scene, renderer = v.renderer, camera = v.camera;
   // ---- model
   const gltf = await new GLTFLoader().setMeshoptDecoder(MeshoptDecoder).parseAsync(glb, '');
@@ -135,6 +139,7 @@ export async function installV5({ glb, scapulaShift = false }) {
     const sp = fitSpine(W, HP.pelvis, HP.torso);
     for (const n of ['spineUpper', 'torso']) bones[n].position.copy(REST[n]).add(stretchOff[n] || new THREE.Vector3());
     for (const n of NAMES) { const p = PARENT[n]; bones[n].quaternion.copy(p ? _q.copy(W[p]).invert().multiply(W[n]) : W[n]); }
+    if (headFlexDeg) bones.head.quaternion.multiply(_q.setFromAxisAngle(new THREE.Vector3(1, 0, 0), headFlexDeg * Math.PI / 180));   // opt-in (see header)
     bones.pelvis.position.copy(HP.pelvis);   // root has identity transform: pelvis local = world
     root.updateMatrixWorld(true);
     let scap = null;
@@ -154,7 +159,7 @@ export async function installV5({ glb, scapulaShift = false }) {
     }
     const q = {}; for (const n of NAMES) q[n] = bones[n].quaternion.toArray().map(x => +x.toFixed(7));
     return { p: bones.pelvis.position.toArray().map(x => +x.toFixed(6)), q, spine: sp, posErr: +posErr.toFixed(5), posErrBone, angV5: A, angHub: H,
-      wrist: { theta: { ...wf.stats.theta }, swing: { ...wf.stats.swing }, wraps: wf.stats.wraps, seeks: wf.stats.seeks }, ...(scap ? { scapulaShift: scap } : {}) };
+      wrist: { theta: { ...wf.stats.theta }, swing: { ...wf.stats.swing }, wraps: wf.stats.wraps, seeks: wf.stats.seeks }, ...(scap ? { scapulaShift: scap } : {}), ...(headFlexDeg ? { headFlexDeg } : {}) };
   }
   // ---- analytic shadow / body extent (call after pose()): sampled skinned vertices of every shadow caster, each projected along
   // the sun direction onto the shadow plane. Returns screen px boxes of the size x size master canvas as rendered (with the
@@ -214,6 +219,6 @@ export async function installV5({ glb, scapulaShift = false }) {
     const n = vert ? h : w, b = new Uint8Array(n * 4); gl.readPixels(x, y, vert ? 1 : w, vert ? h : 1, gl.RGBA, gl.UNSIGNED_BYTE, b);
     const a = new Array(n); for (let i = 0; i < n; i++) a[i] = b[(vert ? n - 1 - i : i) * 4 + 3]; return a;
   }
-  window.__v5 = { pose, render, extent, borderAlpha, get edge() { return edge; }, sun, plane, bones, root, toon, hidden, info: { hiddenHub: hidden.slice(), mutedShadowLights: otherShadowLights.slice(), shadowPlaneY: plane.position.y, matTop, outlines: toon.outlines, hair: toon.hair, outfit: toon.outfit, toonN: toon.toonN, wristSides: wf.sides, ...(scapulaShift ? { scapulaShift: true } : {}) } };
+  window.__v5 = { pose, render, extent, borderAlpha, get edge() { return edge; }, sun, plane, bones, root, toon, hidden, info: { hiddenHub: hidden.slice(), mutedShadowLights: otherShadowLights.slice(), shadowPlaneY: plane.position.y, matTop, outlines: toon.outlines, hair: toon.hair, outfit: toon.outfit, toonN: toon.toonN, wristSides: wf.sides, ...(scapulaShift ? { scapulaShift: true } : {}), ...(headFlexDeg ? { headFlexDeg } : {}) } };
   return window.__v5.info;
 }

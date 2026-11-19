@@ -10,7 +10,8 @@ plan = next(a for a in json.load(open(os.path.join(ROOT, 'tools/thomas-sup/actio
 KEYS = {'t-pushup-plus': [('elbowMin', 'elbow', '°'), ('chestHeightMm', 'chestY', 'mm'), ('scapFwd', 'scapFwd', 'mm'), ('trunkFlexDeg', 'trunkFlex', '°'), ('hipOffsetMm', 'hipOff', 'mm'), ('shoulderLeadCm', 'shLead', 'cm')],
         't-planche-lean': [('elbowMin', 'elbow', '°'), ('shoulderLeadCm', 'shLead', 'cm'), ('armFromVerticalDeg', 'armTilt', '°'), ('scapFwd', 'scapFwd', 'mm'), ('scapUp', 'scapUp', 'mm'), ('hipOffsetMm', 'hipOff', 'mm'), ('trunkFlexDeg', 'trunkFlex', '°')],
         't-frog-stand': [('elbowMin', 'elbow', '°'), ('shoulderLeadCm', 'shLead', 'cm'), ('comLeadCm', 'COM', 'cm'), ('kneeArmGapMin', 'kneeGap', 'mm'), ('kneeArmTmin', 'kneeT', ''), ('footClearMm', 'footUp', 'mm'), ('gazeBelowHorizDeg', 'gaze', '°')],
-        't-kneeling-scap-pushup': [('elbowMin', 'elbow', '°'), ('chestHeightMm', 'chestY', 'mm'), ('scapFwd', 'scapFwd', 'mm'), ('trunkFlexDeg', 'trunkFlex', '°'), ('hipOffsetKneeMm', 'hipOff', 'mm'), ('shoulderLeadCm', 'shLead', 'cm'), ('kneeFloorMm', 'knee', 'mm')]}[aid]
+        't-kneeling-scap-pushup': [('elbowMin', 'elbow', '°'), ('chestHeightMm', 'chestY', 'mm'), ('scapFwd', 'scapFwd', 'mm'), ('trunkFlexDeg', 'trunkFlex', '°'), ('hipOffsetKneeMm', 'hipOff', 'mm'), ('shoulderLeadCm', 'shLead', 'cm'), ('kneeFloorMm', 'knee', 'mm')],
+        't-seated-shoulder-ext-slide': [('elbowMin', 'elbow', '°'), ('shoulderExtMin', 'shExt', '°'), ('gazeBelowHorizDeg', 'gazeDown', '°'), ('headVsTrunkDeg', 'headFlex', '°'), ('scapUp', 'scapUp', 'mm'), ('trunkFlexDeg', 'trunkFlex', '°'), ('seatContactMm', 'seat', 'mm')]}[aid]
 std = {'checks': [], 'series': [k for k, _, _ in KEYS]}
 tf = tempfile.NamedTemporaryFile('w', suffix='.json', delete=False); json.dump(std, tf); tf.close()
 of = tf.name + '.out'

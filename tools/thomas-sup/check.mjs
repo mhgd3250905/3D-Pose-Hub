@@ -29,6 +29,8 @@ const pngDir=opt('--png-dir');
 const meshPairs=(opt('--mesh-clip','')||'').split(',').filter(Boolean).map(p=>p.split(':'));const outFile=opt('--out');
 // --views 'side:0,0.1,1;front:-1,0.15,0;top:0,1,0.001:-1,0,0' = name:dir[:up] (world; camera looks at the body centre from dir)
 const views=(opt('--views','')||'').split(';').filter(Boolean).map(v=>{const [name,d,u]=v.split(':');return {name,dir:d.split(',').map(Number),up:u?u.split(',').map(Number):[0,1,0]};});
+// V5 opt-in head flexion (spec v5.headFlexDeg), same rule as tools/v5/render-masters-v5.mjs
+const v5HeadFlex=s=>{const d=s.v5?.headFlexDeg;if(d===undefined||d===0)return 0;if(!(Number.isFinite(d)&&Math.abs(d)<=30))throw Error('bad v5.headFlexDeg (|deg| <= 30)');return d;};
 const PLAN=JSON.parse(fs.readFileSync(path.join(HERE,'actions.json'),'utf8'));
 
 const loaded=await loadRecipe(recipeFile);
@@ -40,7 +42,7 @@ const res={id,recipe:path.relative(REPO,recipeFile),spec:prepared.recipe.spec,fr
 try{
   const mods=Object.fromEntries(MODULES.map(m=>[m,fs.readFileSync(path.join(RT,m),'utf8')]));
   const glb=fs.readFileSync(path.join(RT,MODEL)).toString('base64');
-  await page.evaluate(async ({mods,glb,scapulaShift})=>{
+  await page.evaluate(async ({mods,glb,scapulaShift,headFlexDeg})=>{
     const src=await (await fetch('/src/viewer.js')).text(),v=src.match(/three\.js\?v=(\w+)/)[1],O=location.origin;
     const map={'three':O+'/node_modules/.vite/deps/three.js?v='+v,'three/addons/loaders/GLTFLoader.js':O+'/node_modules/.vite/deps/three_addons_loaders_GLTFLoader__js.js?v='+v,
       'three/addons/GLTFLoader.js':O+'/node_modules/.vite/deps/three_addons_loaders_GLTFLoader__js.js?v='+v};
@@ -50,8 +52,8 @@ try{
       url[name]=URL.createObjectURL(new Blob([fixed],{type:'text/javascript'}));
     }
     const bin=Uint8Array.from(atob(glb),c=>c.charCodeAt(0)).buffer;
-    const m=await import(url['v5-hub.js']);return await m.installV5(scapulaShift?{glb:bin,scapulaShift}:{glb:bin});
-  },{mods,glb,scapulaShift:source.v5?.scapulaShift===true});
+    const m=await import(url['v5-hub.js']);return await m.installV5(scapulaShift||headFlexDeg?{glb:bin,...(scapulaShift?{scapulaShift}:{}),...(headFlexDeg?{headFlexDeg}:{})}:{glb:bin});
+  },{mods,glb,scapulaShift:source.v5?.scapulaShift===true,headFlexDeg:v5HeadFlex(source)});
   // in-page measurement on the V5 body
   await page.evaluate(()=>{
     const T=window.__toonT,V=window.__v5,v=flareInspector.viewer;

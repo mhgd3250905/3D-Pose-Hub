@@ -74,6 +74,15 @@ def metrics(s):
     m['scapFwd'] = round((m['scapFwdL'] + m['scapFwdR']) / 2, 1); m['scapLat'] = round((m['scapLatL'] + m['scapLatR']) / 2, 1)
     m['scapUp'] = round((m['scapUpL'] + m['scapUpR']) / 2, 1)
     m['chestHeightMm'] = round(J['torso'][1] * 1000, 1)
+    # shoulder flexion/extension (r3, 2026-11-19): upper arm (shoulder -> elbow) in the thorax frame, sagittal angle from the thorax
+    # down axis; + = arm behind the trunk (extension), - = in front (flexion). Per side and the smaller of the two.
+    for side, k in (('left', 'L'), ('right', 'R')):
+        ua = qrot(qinv(Q['torso']), sub(J[side + 'Forearm'], J[side + 'UpperArm']))
+        m['shoulderExt' + k] = round(deg(math.atan2(-ua[2], -ua[1])), 1)
+    m['shoulderExtMin'] = min(m['shoulderExtL'], m['shoulderExtR']); m['shoulderExtMax'] = max(m['shoulderExtL'], m['shoulderExtR'])
+    # whole-body tilt / swing (r3): thorax -> mid-ankle line angle from straight down, sagittal plane of the rig (+ = feet in front, +Z)
+    m['bodySwingDeg'] = round(deg(math.atan2(ank[2] - J['torso'][2], J['torso'][1] - ank[1])), 1)
+    m['legSwingDeg'] = round(deg(math.atan2(ank[2] - hip[2], hip[1] - ank[1])), 1)
     m['shoulderToEarMm'] = None
     # head: angle between the face direction and the thorax front (neutral neck ~ 0-20), and gaze below horizontal
     face, tf = qrot(Q['head'], [0, 0, 1]), qrot(Q['torso'], [0, 0, 1])
@@ -94,6 +103,8 @@ def metrics(s):
     m['kneeFloorMm'] = min(Y.get('shinL', 1e9), Y.get('thighL', 1e9), Y.get('shinR', 1e9), Y.get('thighR', 1e9))
     m['toeY'] = round(min(H['leftToe'][1], H['rightToe'][1]) * 1000, 1)
     m['handFloorMm'] = min(Y.get('handL', 1e9), Y.get('handR', 1e9))
+    m['seatContactMm'] = min(Y.get('torso', 1e9), Y.get('thighL', 1e9), Y.get('thighR', 1e9))   # r3: seated contact (buttocks / backs of thighs)
+    m['seatFloorMm'] = Y.get('torso', 1e9)   # r3: lowest pelvis/torso skin vertex vs the floor (seated: the buttocks on the mat)
     # knee on the upper arm (frog stand): knee pivot (V5 shin bone) vs the upper-arm segment of the same side
     for side, k in (('left', 'L'), ('right', 'R')):
         kn = J[side + 'Shin']; t, c = seg_closest(kn, J[side + 'UpperArm'], J[side + 'Forearm'])
@@ -175,6 +186,15 @@ for c in std['checks']:
         dt = S[1]['t'] - S[0]['t']; best = cur = 0
         for _, m in M + M: cur = cur + 1 if m[c['metric']] >= c['above'] else 0; best = max(best, cur)
         v = round(min(best, len(M)) * dt, 2)
+    elif c.get('kind') == 'transition':   # r3: shortest 10%->90% (or 90%->10%) change of the metric over the loop, s (too fast = bouncing)
+        seq = [m[c['metric']] for _, m in M]; lo_, hi_ = min(seq), max(seq); a_, b_ = lo_ + 0.1 * (hi_ - lo_), lo_ + 0.9 * (hi_ - lo_)
+        dt = S[1]['t'] - S[0]['t']; best = None
+        for up in (True, False):
+            last = None
+            for i, x in enumerate(seq + seq):
+                if (x <= a_ if up else x >= b_): last = i
+                elif last is not None and (x >= b_ if up else x <= a_): best = (i - last) * dt if best is None else min(best, (i - last) * dt); last = None
+        v = best
     elif c.get('kind') == 'reps':
         v = count_peaks(c['metric'], c['ref'], c['tol'])
     else:

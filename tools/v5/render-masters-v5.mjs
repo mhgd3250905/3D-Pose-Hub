@@ -34,6 +34,8 @@ const SHADOW_MARGIN_PX=4,SHADOW_FRUSTUM_MARGIN_M=0.1;   // guard margins (px of 
 //  union x 98..948, y 225..1078.5) -> window moved 20 px down: shadow bottom ~1058.5 (21.5 px headroom), body top ~205.
 // Scapula translation (spec v5.scapulaShift === true, opt-in per action; Thomas supplement r2 2026-11-19): see tools/v5/runtime/v5-hub.js
 // header. Every action without that spec field installs V5 exactly as before (same call, same report).
+// Head flexion (spec v5.headFlexDeg, opt-in per action, default 0 = off; Thomas supplement r2 batch 2 2026-11-19): see tools/v5/runtime/v5-hub.js
+const v5HeadFlex=s=>{const d=s.v5?.headFlexDeg;if(d===undefined||d===0)return 0;if(!(Number.isFinite(d)&&Math.abs(d)<=30))throw Error('bad v5.headFlexDeg (|deg| <= 30)');return d;};
 const VIEW_WINDOW={'h-open-book':{x:0,y:20,w:1080},'triceps-C':{x:0,y:40,w:1080}};
 const sourceHashes=()=>Object.fromEntries(SOURCES.map(f=>[f,sha(fs.readFileSync(path.join(REPO,f)))]));
 export function loadV5Profile(p){
@@ -84,7 +86,7 @@ export async function run(opts){
     const page=scene.page;
     const mods=Object.fromEntries(MODULES.map(m=>[m,fs.readFileSync(path.join(RT,m),'utf8')]));
     const glb=fs.readFileSync(path.join(RT,MODEL)).toString('base64');
-    report.v5.setup=await page.evaluate(async ({mods,glb,scapulaShift})=>{
+    report.v5.setup=await page.evaluate(async ({mods,glb,scapulaShift,headFlexDeg})=>{
       const src=await (await fetch('/src/viewer.js')).text(),v=src.match(/three\.js\?v=(\w+)/)[1],O=location.origin;
       const map={'three':O+'/node_modules/.vite/deps/three.js?v='+v,'three/addons/loaders/GLTFLoader.js':O+'/node_modules/.vite/deps/three_addons_loaders_GLTFLoader__js.js?v='+v,
         'three/addons/GLTFLoader.js':O+'/node_modules/.vite/deps/three_addons_loaders_GLTFLoader__js.js?v='+v};
@@ -98,8 +100,8 @@ export async function run(opts){
         url[name]=URL.createObjectURL(new Blob([fixed],{type:'text/javascript'}));
       }
       const bin=Uint8Array.from(atob(glb),c=>c.charCodeAt(0)).buffer;
-      const m=await import(url['v5-hub.js']);return await m.installV5(scapulaShift?{glb:bin,scapulaShift}:{glb:bin});
-    },{mods,glb,scapulaShift:source.v5?.scapulaShift===true});
+      const m=await import(url['v5-hub.js']);return await m.installV5(scapulaShift||headFlexDeg?{glb:bin,...(scapulaShift?{scapulaShift}:{}),...(headFlexDeg?{headFlexDeg}:{})}:{glb:bin});
+    },{mods,glb,scapulaShift:source.v5?.scapulaShift===true,headFlexDeg:v5HeadFlex(source)});
     fail(report.v5.setup.hair==='none'&&report.v5.setup.wristSides.length===2,'V5 setup incomplete');
     const win=VIEW_WINDOW[id];
     if(win){
