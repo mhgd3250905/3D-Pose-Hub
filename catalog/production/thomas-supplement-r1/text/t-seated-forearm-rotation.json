@@ -4,15 +4,16 @@
  "reviewStatus": "draft-ai-needs-user-review",
  "sources": [
   "catalog/production/thomas-supplement-r1/brief-2026-11-19 (托马斯动作库补充-制作说明 item 7)",
-  "drill-anim/specs/t-seated-forearm-rotation.js"
+  "drill-anim/specs/t-seated-forearm-rotation.js",
+  "tools/thomas-sup/standards/t-seated-forearm-rotation.md"
  ],
  "name": {
   "zh": "坐姿哑铃翻手腕",
   "en": "Seated Dumbbell Palm Turn"
  },
  "purpose": {
-  "zh": "练前臂转动的力量，换手时手掌能转到位",
-  "en": "Builds the forearm turning strength you need to place your hand when switching hands."
+  "zh": "练前臂把手掌翻过来的力量，换手时手掌能转到位再落地",
+  "en": "Builds the forearm strength to turn your palm, so your hand lands the right way when you switch hands."
  },
  "cues": [
   {
@@ -27,12 +28,20 @@
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "握在哑铃一端，掌心朝上转到朝下，再转回来，一来一回算一次。",
-    "en": "Hold one end of the dumbbell, turn palm up to palm down and back; that's one rep."
+    "zh": "握住小哑铃一端，掌心朝上，慢慢翻到掌心朝下，再慢慢翻回来，一来一回算一次。",
+    "en": "Hold one end of a light dumbbell, palm up; slowly turn it palm down, then slowly back. That's one rep."
    }
   },
   {
    "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "手腕别往上翘也别往下勾，像拧门把手一样整个前臂在转。",
+    "en": "Keep the wrist straight, no bending up or down; the whole forearm turns like on a door handle."
+   }
+  },
+  {
+   "id": "cue4",
    "primary": false,
    "text": {
     "zh": "握得离重的那头越远越难，先握近一点。",
@@ -42,12 +51,16 @@
  ],
  "commonErrors": [
   {
-   "zh": "手肘离开大腿",
-   "en": "Lifting your elbow off your thigh."
+   "zh": "手肘离开大腿，整条胳膊跟着转",
+   "en": "Lifting your elbow off your thigh and turning the whole arm."
   },
   {
-   "zh": "甩着哑铃借劲",
-   "en": "Swinging the dumbbell."
+   "zh": "甩着哑铃借劲，一下翻过去",
+   "en": "Swinging the dumbbell over in one go."
+  },
+  {
+   "zh": "只翻一半就回来",
+   "en": "Only turning halfway before coming back."
   }
  ],
  "cautions": [
@@ -79,16 +92,16 @@
  },
  "phases": {
   "start": {
-   "zh": "掌心翻下",
-   "en": "Palm down"
+   "zh": "慢慢翻下",
+   "en": "Turn down"
   },
   "peak": {
    "zh": "翻到底",
-   "en": "Turned"
+   "en": "All the way"
   },
   "end": {
-   "zh": "掌心翻上",
-   "en": "Palm up"
+   "zh": "慢慢翻回",
+   "en": "Turn back"
   }
  },
  "training": {
@@ -97,31 +110,32 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 1.6
+    "seconds": 2.8
    },
    {
     "id": "hold",
-    "seconds": 0.3
+    "seconds": 0.8
    },
    {
     "id": "back",
-    "seconds": 1.6
+    "seconds": 3.2
    },
    {
     "id": "rest",
-    "seconds": 0.3
+    "seconds": 1.2
    }
   ],
   "perSide": "each-side-separately",
-  "source": "real-tempo r3"
+  "source": "thomas-sup r2 animation tempo (8 s per rep: turn down 2.8 s, hold 0.8 s, turn back 3.2 s, palm up 1.2 s)"
  },
  "thomasSupplement": {
-  "version": "r1",
+  "version": "r2",
   "item": "7",
   "thomasAngle": "10 / 14 换手",
   "camera": "正前方特写（看手掌翻转）",
   "doseBrief": "2–3 组 × 每侧 10–12 次（一来一回算 1 次）",
   "status": "draft-awaiting-user-review",
-  "note": "defaultDose takes the low end of the brief range; the range is in doseBrief."
+  "note": "defaultDose takes the low end of the brief range; the range is in doseBrief. r2: one rep 8 s (down 2.8 s, hold 0.8 s, back 3.2 s, palm up 1.2 s); close-up from the front. The animation turns an empty hand: V5 draws hands with a fixed open shape, so a held dumbbell floated beside the fingers (r1); the cues still say to hold one.",
+  "standard": "tools/thomas-sup/standards/t-seated-forearm-rotation.md"
  }
 }

@@ -1294,28 +1294,25 @@
    "exerciseMat": false,
    "camera": {
     "dir": [
-     -0.25,
-     0.35,
+     -0.35,
+     0.45,
      1
     ],
     "fit": [
-     "rightPalm",
      "rightElbow",
-     "rightKnee",
      "rightWrist",
-     "leftKnee",
-     "leftToe",
-     "rightToe"
+     "rightPalm",
+     "rightKnee"
     ],
     "pad": 0.12,
     "k": 1,
-    "at": 1.1
+    "at": 2.0
    },
    "checks": {
     "pins": [
      {
       "bone": "rightForearm",
-      "hub": "rightWrist",
+      "hub": "rightElbow",
       "when": [
        [
         0,
@@ -1323,6 +1320,28 @@
        ]
       ],
       "label": "forearm-on-thigh"
+     },
+     {
+      "bone": "rightHand",
+      "hub": "rightWrist",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ],
+      "label": "wrist-still"
+     },
+     {
+      "bone": "leftHand",
+      "hub": "leftWrist",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ],
+      "label": "left-rest"
      },
      {
       "bone": "leftFoot",
@@ -1346,17 +1365,44 @@
      }
     ],
     "allowContact": [
-     "handL|handR",
-     "forearmL|forearmR",
-     "forearmR|thighR"
+     "forearmR|thighR",
+     "handL|thighL",
+     "forearmL|thighL"
     ]
    },
    "preview": [
-    6,
-    57,
+    9,
+    114,
+    195
+   ],
+   "cameraNote": "r2: close-up from the front of the forearm + hand (PDF 正前方特写：看手掌翻转); V5 ground shadow off for this action only (spec v5.groundShadow=false).",
+   "cameraScale": 1.0,
+   "phases": {
+    "up": [
+     [
+      0,
+      0.6
+     ],
+     [
+      7.4,
+      8.0
+     ]
+    ],
+    "down": [
+     [
+      3.4,
+      4.2
+     ]
+    ]
+   },
+   "standard": "tools/thomas-sup/standards/t-seated-forearm-rotation.md",
+   "reviewViews": "front:0,0.2,1;side:-1,0.15,0.05;top:0.001,1,0:0,0,1",
+   "reviewFrames": [
+    9,
+    60,
     114
    ],
-   "cameraNote": "V5 render guard (ground shadow must not reach the canvas edge): fit includes both toes like forearms-B; the close-up is a crop for later."
+   "gap": "forearmR:thighR:up,handL:thighL:up"
   }
  ]
 }

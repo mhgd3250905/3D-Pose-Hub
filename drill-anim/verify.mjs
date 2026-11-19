@@ -84,10 +84,9 @@ for (const [file, expected] of Object.entries({
   '_t-lsit-vsit-circles-r5-reach-data.mjs': 'e11b6a88f96789cf7df06d40eec601b21dec37911527adb614071276d3758647',
   '_t-vsit-r7-reach-data.mjs': '68f3b9f2245e5650d4cda1e79fbcb056bf2435edff9f967fcde9d90a674444af',
   '_t-vsit-r6-reach-data.mjs': 'ff2e38c176ac71bbffe89c42d84ed42697c59ffac9acd1d9c57dceb31044593f',
-  // Thomas supplement r1 (2026-11-19): shared seated wrist/forearm builder for t-self-resisted-wrist-*, t-seated-forearm-rotation.
-  '_thomas-sup-wrist-r1.mjs': '54a1adce3de03fc1311075655447a3dacbeecdd3a037ba812ff829c85d073c3d',
-  // Thomas supplement r2 batch 3 (2026-11-19): replaces the r1 builder (hip-hinge lean the V5 spine can follow, close-up camera).
-  '_thomas-sup-wrist-r2.mjs': 'd273ab08930a10e1da25b535065cedce68ba1add3e8de4857252970d1f5e3d63',
+  // Thomas supplement r2 batch 3 (2026-11-19): shared seated wrist/forearm builder for t-self-resisted-wrist-*, t-seated-forearm-rotation
+  // (replaces _thomas-sup-wrist-r1.mjs, removed: hip-hinge lean the V5 spine can follow, close-up camera).
+  '_thomas-sup-wrist-r2.mjs': '3fa5b9004423ac82cc6e00e5892417b1aa78c48d318a05b2751961d984972f7f',
 })) assert.equal(textHash(path.join(root, 'specs', file)), expected, `Thomas helper changed: ${file}`);
 // Shared helpers of the HipLab media-fix r2 revisions (PR #121); their importers are hashed above.
 for (const [file, expected] of Object.entries({

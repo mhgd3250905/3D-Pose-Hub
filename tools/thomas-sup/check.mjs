@@ -117,9 +117,9 @@ try{
         const e1=new T.Vector3(1,0,0);if(Math.abs(e1.dot(d))>0.9)e1.set(0,0,1);e1.sub(d.clone().multiplyScalar(e1.dot(d))).normalize();const e2=d.clone().cross(e1);
         const key=(x,y,z)=>Math.floor((x*e1.x+y*e1.y+z*e1.z)/0.008)*100000+Math.floor((x*e2.x+y*e2.y+z*e2.z)/0.008),h=(x,y,z)=>x*d.x+y*d.y+z*d.z;
         const top=new Map();for(let i=0;i<pb.length;i+=3){const k=key(pb[i],pb[i+1],pb[i+2]),v=h(pb[i],pb[i+1],pb[i+2]);if(!(top.get(k)>=v))top.set(k,v);}
-        const bot=new Map();for(let i=0;i<pa.length;i+=3){const k=key(pa[i],pa[i+1],pa[i+2]),v=h(pa[i],pa[i+1],pa[i+2]);if(!(bot.get(k)<=v))bot.set(k,v);}
-        let mn=1e9,cnt=0,both=0;for(const [k,v] of bot){const t=top.get(k);if(t===undefined)continue;both++;const g=v-t;if(g<mn)mn=g;if(g<0.004)cnt++;}
-        out[a+'>'+b]={mm:both?+(mn*1000).toFixed(1):null,contactCells:cnt,overlapCells:both};}
+        const bot=new Map(),bi=new Map();for(let i=0;i<pa.length;i+=3){const k=key(pa[i],pa[i+1],pa[i+2]),v=h(pa[i],pa[i+1],pa[i+2]);if(!(bot.get(k)<=v)){bot.set(k,v);bi.set(k,i);}}
+        let mn=1e9,cnt=0,both=0,at=null;for(const [k,v] of bot){const t=top.get(k);if(t===undefined)continue;both++;const g=v-t;if(g<mn){mn=g;const i=bi.get(k);at=[pa[i],pa[i+1],pa[i+2]].map(x=>+x.toFixed(3));}if(g<0.004)cnt++;}
+        out[a+'>'+b]={mm:both?+(mn*1000).toFixed(1):null,contactCells:cnt,overlapCells:both,at};}
       return out;};
   });
   const props=source.props??[];

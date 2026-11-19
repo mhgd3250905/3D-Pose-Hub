@@ -1,5 +1,5 @@
 // Thomas supplement r2 (2026-11-19): shared builder for the seated forearm drills t-self-resisted-wrist-flexion (6a),
-// t-self-resisted-wrist-extension (6b) and t-seated-forearm-rotation (7). Replaces _thomas-sup-wrist-r1.mjs.
+// t-self-resisted-wrist-extension (6b) and t-seated-forearm-rotation (7). Replaces _thomas-sup-wrist-r1.mjs (removed).
 // Why r2: r1 took forearms-B's torso (chest.body 66 deg = the whole upper body turned rigidly about the pelvis pivot). The V5 spine
 // chain cannot reach that torso pivot (fit error 126 mm, 30 mm stretch cap) so the V5 body sat 96 mm off the solved pose and the
 // drawn forearm floated above the thigh. r2 leans the way a person does on a bench: pelvis tipped forward (hips.rot) plus a modest
@@ -9,8 +9,9 @@
 //  - flex: right palm up, forearm on the right thigh, wrist just past the knee; the hand curls up from extension into flexion
 //          against the left palm pressing on the right palm (fingers across), and lowers again under control.
 //  - ext:  right palm down; the hand lifts from flexion into extension against the left palm on the back of the hand.
-//  - rot:  right hand grips a light dumbbell near one end; the forearm stays on the thigh and turns the palm from up to down and
-//          back about the forearm axis; the left hand rests on the left thigh.
+//  - rot:  the forearm stays on the thigh and turns the palm from up to down and back about the forearm axis (most of the turn in the
+//          lower forearm: rollShare of it on the forearm bone, the rest spread by the V5 wrist helpers); the left hand rests on the
+//          left thigh. Optional dumbbell held near one end (p.dumbbell).
 import { build, keys } from '../lib/home-anim.mjs';
 import { G as GRIP, gripAttach } from '../lib/grip.mjs';
 const DEG = Math.PI / 180, DUR = 8;
@@ -85,15 +86,21 @@ export function wristDrill(kind, id, name, nameEn, item, o = {}) {
     const q = keys([[0, p.supDeg], [0.6, p.supDeg], [3.4, -p.proDeg], [4.2, -p.proDeg], [7.4, p.supDeg]], DUR);
     const n0 = mul(lat, -1);                                                       // thumb-up palm normal = toward the midline
     const n = t => rot(n0, fd, q(t) * DEG);
-    desc.hands.right = { mode: 'free', frame: 'world', relax: 0, wrist: W, finger: r5(fd), normal: t => r5(n(t)), pole: p.pole,
+    // the forearm rolls on the thigh: flat (palm up / down) it sits lower on its wide side than on its narrow edge (thumb up), so the
+    // wrist rises with the turn: lift = rollLift[0] + rollLift[1] * (q / qmax)^2 (m), the elbow stays where it is
+    const qm = Math.max(p.supDeg, p.proDeg), [l0, l1] = p.rollLift ?? [0, 0];
+    const wr = t => r5(add(W, [0, l0 + l1 * (q(t) / qm) ** 2, 0]));
+    desc.hands.right = { mode: 'free', frame: 'world', relax: 0, wrist: l0 || l1 ? wr : W, finger: r5(fd), normal: t => r5(n(t)), pole: p.pole,
       elbowTwist: t => p.elbowTwistR + q(t) * (p.rollShare ?? 1), upperArmTwist: p.upperArmTwistR ?? 0 };
     desc.hands.left = { mode: 'free', frame: 'world', relax: 0.1, wrist: p.restL.wrist, finger: p.restL.finger, normal: p.restL.normal, poleUp: p.poleL,
       upperArmTwist: p.upperArmTwistL ?? 0, elbowTwist: p.elbowTwistL ?? 0 };
     extra = { effort: t => Math.abs(q(t)) / Math.max(p.supDeg, p.proDeg) };
     hl = { groups: ['forearms'], side: 'right', pulseTrack: 'effort', pulseBase: 0.35 };
     s.keyFrames = [0.3, 2.0, 3.8]; s.stillAt = 2.0;
+    // dumbbell (PDF: a light dumbbell held near one end): only when asked for; V5 draws the hand with its fixed open hand shape, so a
+    // held prop floats beside the fingers instead of sitting in a fist (r2 shows the turn empty-handed, see the standard)
     const DBA = gripAttach('right');
-    s.props.push({ type: 'gripHand', side: 'right' },
+    if (p.dumbbell) s.props.push({ type: 'gripHand', side: 'right' },
       { type: 'dumbbell', length: 0.28, plate: 0.045, attach: 'rightHand', rot: DBA.rot, offset: DBA.offset.map((x, i) => +(x + p.dbSlide * GRIP.right.a[i]).toFixed(4)) });
   }
   const B = build(DUR, desc, extra);
