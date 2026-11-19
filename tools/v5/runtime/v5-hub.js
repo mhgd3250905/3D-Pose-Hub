@@ -14,6 +14,11 @@
  * threw a second long shadow onto the V5 plane, cut hard at its frustum edge and off the canvas; it is muted (2026-11-17).
  * extent() gives the analytic shadow/body screen box and light-space reach per frame; render-masters-v5.mjs fails a frame whose
  * shadow comes within 4 px of the canvas edge or leaves the sun frustum, and records the border alpha of every frame.
+ * scapulaShift (opt-in per action, default off; Thomas supplement r2, 2026-11-19): the hub moves the shoulder blades by translating
+ * the scapula bones (spec shoulders.shift, engine.js shiftShoulders); plain V5 copies rotations only, so that translation was lost
+ * (shoulders stayed put, hands slid). With scapulaShift the V5 scapula pivots are also placed at the hub's scapula pivots (offset
+ * from the torso pivot, in the torso frame) every frame; the arm chain below follows by FK. Off = the code path is never entered,
+ * so every action that does not ask for it renders exactly as before.
  * Files toon-r6.js / wristfix-r2.js / model glb are verbatim copies of the v3r8b candidate (see tools/v5/runtime/SOURCES.md). */
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
@@ -32,7 +37,7 @@ for (const s of ['left', 'right']) for (let k = 1; k <= 8; k++) { PARENT[s + 'Fo
 export const NAMES = ['pelvis', 'spineLower', 'spineUpper', 'torso', 'neck', 'head', 'leftScapula', 'leftUpperArm', 'leftForearm', 'leftHand', 'rightScapula', 'rightUpperArm', 'rightForearm', 'rightHand', 'leftThigh', 'leftShin', 'leftFoot', 'rightThigh', 'rightShin', 'rightFoot'];
 const SHADOW = { color: 0x2a1a12, opacity: 0.14, mapSize: 2048, half: 2.4, sun: [0.6, 5, 1.2] };   // sample geometry (2026-11-16); colour = warm near-black at 0.14 so it reads like the sample on the light theme and does not glow on the dark theme
 
-export async function installV5({ glb }) {
+export async function installV5({ glb, scapulaShift = false }) {
   const v = flareInspector.viewer, scene = v.scene, renderer = v.renderer, camera = v.camera;
   // ---- model
   const gltf = await new GLTFLoader().setMeshoptDecoder(MeshoptDecoder).parseAsync(glb, '');
@@ -132,6 +137,12 @@ export async function installV5({ glb }) {
     for (const n of NAMES) { const p = PARENT[n]; bones[n].quaternion.copy(p ? _q.copy(W[p]).invert().multiply(W[n]) : W[n]); }
     bones.pelvis.position.copy(HP.pelvis);   // root has identity transform: pelvis local = world
     root.updateMatrixWorld(true);
+    let scap = null;
+    if (scapulaShift) {   // opt-in: scapula translation (see header). Torso pivot of V5 already sits on the hub's (fitSpine).
+      const tp = wp('torso'), tqi = W.torso.clone().invert(); scap = {};
+      for (const n of ['leftScapula', 'rightScapula']) { bones[n].position.copy(HP[n].clone().sub(tp).applyQuaternion(tqi)); scap[n] = bones[n].position.clone().sub(REST[n]).toArray().map(x => +x.toFixed(5)); }
+      root.updateMatrixWorld(true);
+    }
     wf.update(); for (const s of ['left', 'right']) bones[s + 'Forearm'].updateMatrixWorld(true);
     let posErr = 0, posErrBone = '';
     for (const n of NAMES) { if (n === 'spineLower' || n === 'spineUpper') continue;   // hub spine pivots are not anatomical (not comparable)
@@ -143,7 +154,7 @@ export async function installV5({ glb }) {
     }
     const q = {}; for (const n of NAMES) q[n] = bones[n].quaternion.toArray().map(x => +x.toFixed(7));
     return { p: bones.pelvis.position.toArray().map(x => +x.toFixed(6)), q, spine: sp, posErr: +posErr.toFixed(5), posErrBone, angV5: A, angHub: H,
-      wrist: { theta: { ...wf.stats.theta }, swing: { ...wf.stats.swing }, wraps: wf.stats.wraps, seeks: wf.stats.seeks } };
+      wrist: { theta: { ...wf.stats.theta }, swing: { ...wf.stats.swing }, wraps: wf.stats.wraps, seeks: wf.stats.seeks }, ...(scap ? { scapulaShift: scap } : {}) };
   }
   // ---- analytic shadow / body extent (call after pose()): sampled skinned vertices of every shadow caster, each projected along
   // the sun direction onto the shadow plane. Returns screen px boxes of the size x size master canvas as rendered (with the
@@ -203,6 +214,6 @@ export async function installV5({ glb }) {
     const n = vert ? h : w, b = new Uint8Array(n * 4); gl.readPixels(x, y, vert ? 1 : w, vert ? h : 1, gl.RGBA, gl.UNSIGNED_BYTE, b);
     const a = new Array(n); for (let i = 0; i < n; i++) a[i] = b[(vert ? n - 1 - i : i) * 4 + 3]; return a;
   }
-  window.__v5 = { pose, render, extent, borderAlpha, get edge() { return edge; }, sun, plane, bones, root, toon, hidden, info: { hiddenHub: hidden.slice(), mutedShadowLights: otherShadowLights.slice(), shadowPlaneY: plane.position.y, matTop, outlines: toon.outlines, hair: toon.hair, outfit: toon.outfit, toonN: toon.toonN, wristSides: wf.sides } };
+  window.__v5 = { pose, render, extent, borderAlpha, get edge() { return edge; }, sun, plane, bones, root, toon, hidden, info: { hiddenHub: hidden.slice(), mutedShadowLights: otherShadowLights.slice(), shadowPlaneY: plane.position.y, matTop, outlines: toon.outlines, hair: toon.hair, outfit: toon.outfit, toonN: toon.toonN, wristSides: wf.sides, ...(scapulaShift ? { scapulaShift: true } : {}) } };
   return window.__v5.info;
 }

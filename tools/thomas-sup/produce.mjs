@@ -2,7 +2,7 @@
 // Thomas supplement r1 (2026-11-19): V5 720p SAMPLE render of the 12 new Thomas-library actions (branch codex/thomas-supplement-r1).
 // Copied from tools/v5/produce-v5.mjs (same masters -> compose flow, resume, quarantine, timeouts); differences:
 //   - plan = tools/thomas-sup/actions.json (12 recipes under catalog/production/thomas-supplement-r1/recipes/), one run, no batches;
-//   - preflight baseline = main 94ff057 (V5 r2-v18 merge), with ONLY this branch's new files excluded (EXCLUDE below);
+//   - preflight baseline = main 94ff057 (V5 r2-v18 merge), with ONLY this branch's new/changed files excluded (EXCLUDE below);
 //   - outputs: <out>/masters/<id>/ + <out>/packages/<id>/ (V5 package files, as V5) + <out>/samples/<id>.720.mp4 (copy of the
 //     light loop.720.mp4) + <out>/_qa/overview.jpg (light start/peak/end + dark cover, one row per action);
 //   - QA push: <out>/_qa (overview jpg + json + state + log; no video/png masters) to the orphan branch qa/thomas-supplement-r1.
@@ -21,7 +21,10 @@ const TOTAL=PLAN.actions.length;
 const DEFAULT_OUT='F:/PoseHub-v3/runs/2026-11-19_thomas-supplement-r1';
 // files this branch adds/changes on top of BASE; every other path must equal BASE (render content = main 94ff057)
 const EXCLUDE=['tools/thomas-sup','catalog/production/thomas-supplement-r1','drill-anim/data/home-pr-candidates.json','drill-anim/verify.mjs',
-  'drill-anim/specs/_thomas-sup-wrist-r1.mjs',...PLAN0.actions.map(a=>a.spec)];
+  'drill-anim/specs/_thomas-sup-wrist-r1.mjs',...PLAN0.actions.map(a=>a.spec),
+  // r2 (2026-11-19): opt-in V5 scapula translation (spec v5.scapulaShift; only t-pushup-plus / t-frog-stand / t-planche-lean set it).
+  // Off for every other action: old-action masters + v5-pose.json byte-identical to main (serratus-A, h-open-book; evidence in tools/thomas-sup/standards/README.md).
+  'tools/v5/runtime/v5-hub.js','tools/v5/render-masters-v5.mjs'];
 const PY=process.env.PYTHON||(process.platform==='win32'?'python':'python3');
 const now=()=>new Date().toISOString();const stamp=()=>now().replace(/[:.]/g,'-');
 const out1=o=>console.log(JSON.stringify(o));

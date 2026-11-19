@@ -1,0 +1,168 @@
+{
+ "format": "thomas-sup-standard@1",
+ "id": "t-pushup-plus",
+ "nameZh": "俯卧撑加推",
+ "doc": "tools/thomas-sup/standards/t-pushup-plus.md",
+ "phases": {
+  "top": "肩胛最大前伸（推开地面），顶端停 1 s",
+  "bottom": "肩胛最大后缩（胸口下沉），手肘仍锁直"
+ },
+ "series": [
+  "chestHeightMm",
+  "scapFwd",
+  "trunkFlexDeg",
+  "hipOffsetMm",
+  "elbowMin"
+ ],
+ "checks": [
+  {
+   "id": "elbow_lock",
+   "label": "全程锁肘（两肘最小角）",
+   "metric": "elbowMin",
+   "agg": "min",
+   "min": 172,
+   "unit": "°"
+  },
+  {
+   "id": "knee_straight",
+   "label": "膝伸直",
+   "metric": "kneeMin",
+   "agg": "min",
+   "min": 170,
+   "unit": "°"
+  },
+  {
+   "id": "chest_travel",
+   "label": "胸口（胸廓）上下行程 = 肩胛后缩→前伸",
+   "metric": "chestHeightMm",
+   "agg": "range",
+   "min": 30,
+   "max": 50,
+   "unit": "mm"
+  },
+  {
+   "id": "scap_translation",
+   "label": "肩关节相对胸廓前后平移（真肩胛平移）",
+   "metric": "scapFwd",
+   "agg": "range",
+   "min": 30,
+   "max": 50,
+   "unit": "mm"
+  },
+  {
+   "id": "scap_top_vs_bottom",
+   "label": "顶端比底端肩更靠前（前伸方向正确）",
+   "kind": "diff",
+   "metric": "scapFwd",
+   "phase": "top",
+   "agg": "mean",
+   "phase2": "bottom",
+   "agg2": "mean",
+   "min": 30,
+   "unit": "mm"
+  },
+  {
+   "id": "no_back_rounding",
+   "label": "不靠拱/塌上背代替：胸廓相对骨盆屈伸变化",
+   "metric": "trunkFlexDeg",
+   "agg": "range",
+   "max": 4,
+   "unit": "°"
+  },
+  {
+   "id": "no_shrug",
+   "label": "不耸肩：肩关节相对胸廓上下变化",
+   "metric": "scapUp",
+   "agg": "range",
+   "max": 10,
+   "unit": "mm"
+  },
+  {
+   "id": "no_sag",
+   "label": "不塌腰：髋低于 胸廓(肩高)–踝 连线",
+   "metric": "hipOffsetMm",
+   "agg": "min",
+   "min": -15,
+   "unit": "mm"
+  },
+  {
+   "id": "no_pike",
+   "label": "不撅臀：髋高于 胸廓(肩高)–踝 连线",
+   "metric": "hipOffsetMm",
+   "agg": "max",
+   "max": 15,
+   "unit": "mm"
+  },
+  {
+   "id": "hands_under_shoulders",
+   "label": "手在肩正下方（肩相对手腕前后）",
+   "metric": "shoulderLeadCm",
+   "agg": "max",
+   "min": -5,
+   "max": 6,
+   "unit": "cm"
+  },
+  {
+   "id": "hands_under_shoulders_min",
+   "label": "手在肩正下方（最靠后）",
+   "metric": "shoulderLeadCm",
+   "agg": "min",
+   "min": -5,
+   "max": 6,
+   "unit": "cm"
+  },
+  {
+   "id": "head_neutral",
+   "label": "头中立（头与胸廓夹角）",
+   "metric": "headVsTrunkDeg",
+   "agg": "max",
+   "max": 15,
+   "unit": "°"
+  },
+  {
+   "id": "top_hold",
+   "label": "顶端停留（胸口在最高点 1.5 mm 内，含缓入缓出）",
+   "kind": "plateau",
+   "metric": "chestHeightMm",
+   "ref": "max",
+   "tol": 1.5,
+   "min": 0.9,
+   "max": 1.8,
+   "unit": "s"
+  },
+  {
+   "id": "reps_per_loop",
+   "label": "每 8 s 循环次数（=每次 4 s）",
+   "kind": "reps",
+   "metric": "chestHeightMm",
+   "ref": "max",
+   "tol": 3,
+   "min": 2,
+   "max": 2,
+   "unit": "次"
+  },
+  {
+   "id": "contacts",
+   "label": "手掌（V5 手骨）、脚尖不滑动（最大漂移）",
+   "kind": "pins",
+   "max": 5,
+   "unit": "mm"
+  },
+  {
+   "id": "palm_flat",
+   "label": "手掌不翻转/不晃（手骨转角变化）",
+   "metric": "handRotMax",
+   "agg": "max",
+   "max": 3,
+   "unit": "°"
+  },
+  {
+   "id": "v5_matches_hub",
+   "label": "V5 身体与求解姿态一致（最大关节偏差）",
+   "kind": "summary",
+   "path": "maxPosErrMm",
+   "max": 2,
+   "unit": "mm"
+  }
+ ]
+}

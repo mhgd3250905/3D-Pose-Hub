@@ -1,0 +1,288 @@
+{
+ "format": "thomas-sup-standard@1",
+ "id": "t-frog-stand",
+ "nameZh": "蛙立",
+ "doc": "tools/thomas-sup/standards/t-frog-stand.md",
+ "phases": {
+  "start": "深蹲脚尖着地，手掌撑地，膝已贴在大臂外侧",
+  "lean": "脚尖不动、身体前倾把重心移到手上",
+  "hold": "双脚离地保持，重心在手掌上方"
+ },
+ "series": [
+  "shoulderLeadCm",
+  "elbowMin",
+  "kneeArmGapMin",
+  "kneeArmTmin",
+  "footClearMm",
+  "gazeBelowHorizDeg",
+  "hipAboveShoulderMm",
+  "forearmThighGapMm"
+ ],
+ "checks": [
+  {
+   "id": "elbow_bent_hold",
+   "label": "保持：屈肘（两肘最大角）",
+   "metric": "elbowMin",
+   "phase": "hold",
+   "agg": "max",
+   "min": 100,
+   "max": 135,
+   "unit": "°"
+  },
+  {
+   "id": "elbow_bent_hold_min",
+   "label": "保持：屈肘（两肘最小角）",
+   "metric": "elbowMin",
+   "phase": "hold",
+   "agg": "min",
+   "min": 100,
+   "max": 135,
+   "unit": "°"
+  },
+  {
+   "id": "elbow_start",
+   "label": "起始：手肘微屈（两肘最小角）",
+   "metric": "elbowMin",
+   "phase": "start",
+   "agg": "min",
+   "min": 135,
+   "max": 172,
+   "unit": "°"
+  },
+  {
+   "id": "knee_on_arm_gap",
+   "label": "保持：膝贴大臂（膝-大臂表面间隙，最大）",
+   "metric": "kneeArmGapMax",
+   "phase": "hold",
+   "agg": "max",
+   "min": -20,
+   "max": 5,
+   "unit": "mm"
+  },
+  {
+   "id": "knee_on_arm_gap_min",
+   "label": "保持：膝压大臂不穿模（间隙最小）",
+   "metric": "kneeArmGapMin",
+   "phase": "hold",
+   "agg": "min",
+   "min": -20,
+   "max": 5,
+   "unit": "mm"
+  },
+  {
+   "id": "knee_above_elbow",
+   "label": "保持：贴在肘上方（0=肩,1=肘，最小）",
+   "metric": "kneeArmTmin",
+   "phase": "hold",
+   "agg": "min",
+   "min": 0.6,
+   "max": 0.95,
+   "unit": ""
+  },
+  {
+   "id": "knee_above_elbow_max",
+   "label": "保持：贴在肘上方（最大）",
+   "metric": "kneeArmTmax",
+   "phase": "hold",
+   "agg": "max",
+   "min": 0.6,
+   "max": 0.95,
+   "unit": ""
+  },
+  {
+   "id": "knee_outside_arm",
+   "label": "保持：膝在大臂外侧（膝比接触点更靠外）",
+   "metric": "kneeOutsideMin",
+   "phase": "hold",
+   "agg": "min",
+   "min": 0,
+   "unit": "mm"
+  },
+  {
+   "id": "knee_arm_no_clip",
+   "label": "全程膝不穿入大臂（间隙最小）",
+   "metric": "kneeArmGapMin",
+   "agg": "min",
+   "min": -20,
+   "unit": "mm"
+  },
+  {
+   "id": "elbow_thigh_no_clip",
+   "label": "全程肘/前臂不顶进大腿（前臂-大腿胶囊间隙，最小）",
+   "metric": "forearmThighGapMm",
+   "agg": "min",
+   "min": -5,
+   "unit": "mm"
+  },
+  {
+   "id": "shoulder_lead",
+   "label": "保持：肩超过手腕（最小）",
+   "metric": "shoulderLeadCm",
+   "phase": "hold",
+   "agg": "min",
+   "min": 15,
+   "max": 30,
+   "unit": "cm"
+  },
+  {
+   "id": "shoulder_lead_max",
+   "label": "保持：肩超过手腕（最大）",
+   "metric": "shoulderLeadCm",
+   "phase": "hold",
+   "agg": "max",
+   "min": 15,
+   "max": 30,
+   "unit": "cm"
+  },
+  {
+   "id": "com_over_palms",
+   "label": "保持：重心落在手掌上方（重心在手腕前，最小）",
+   "metric": "comLeadCm",
+   "phase": "hold",
+   "agg": "min",
+   "min": 0,
+   "max": 8,
+   "unit": "cm"
+  },
+  {
+   "id": "com_over_palms_max",
+   "label": "保持：重心落在手掌上方（最大）",
+   "metric": "comLeadCm",
+   "phase": "hold",
+   "agg": "max",
+   "min": 0,
+   "max": 8,
+   "unit": "cm"
+  },
+  {
+   "id": "com_at_liftoff",
+   "label": "脚一离地重心就已在手掌上方（离地各帧重心最小）",
+   "metric": "comLeadAirborneCm",
+   "agg": "min",
+   "min": 0,
+   "unit": "cm"
+  },
+  {
+   "id": "arm_lean",
+   "label": "保持：前臂-上臂整体前倾（肩-腕连线与竖直夹角）",
+   "metric": "armFromVerticalDeg",
+   "phase": "hold",
+   "agg": "mean",
+   "min": 20,
+   "max": 35,
+   "unit": "°"
+  },
+  {
+   "id": "hips_high",
+   "label": "保持：臀部高于肩",
+   "metric": "hipAboveShoulderMm",
+   "phase": "hold",
+   "agg": "min",
+   "min": 50,
+   "unit": "mm"
+  },
+  {
+   "id": "feet_off",
+   "label": "保持：双脚离地（脚最低点）",
+   "metric": "footClearMm",
+   "phase": "hold",
+   "agg": "min",
+   "min": 25,
+   "unit": "mm"
+  },
+  {
+   "id": "toes_down_start",
+   "label": "起始：脚尖着地",
+   "metric": "footClearMm",
+   "phase": "start",
+   "agg": "max",
+   "max": 2,
+   "unit": "mm"
+  },
+  {
+   "id": "toes_down_lean",
+   "label": "前倾过程脚尖不离地（脚最低点）",
+   "metric": "footClearMm",
+   "phase": "lean",
+   "agg": "max",
+   "max": 2,
+   "unit": "mm"
+  },
+  {
+   "id": "hold_time",
+   "label": "离地保持时长（脚离地 ≥ 25 mm）",
+   "kind": "plateau_above",
+   "metric": "footClearMm",
+   "above": 25,
+   "min": 3.5,
+   "unit": "s"
+  },
+  {
+   "id": "fingers_forward",
+   "label": "指尖朝前（手指相对前方外转）",
+   "metric": "fingerTurnOutL",
+   "agg": "max",
+   "max": 25,
+   "unit": "°"
+  },
+  {
+   "id": "shoulders_down",
+   "label": "沉肩（肩关节相对胸廓向下，保持段最高处）",
+   "metric": "scapUp",
+   "phase": "hold",
+   "agg": "max",
+   "max": -5,
+   "unit": "mm"
+  },
+  {
+   "id": "contacts",
+   "label": "手掌（V5 手骨）不滑，着地时脚尖不滑",
+   "kind": "pins",
+   "max": 5,
+   "unit": "mm"
+  },
+  {
+   "id": "palm_flat",
+   "label": "手掌不翻转（手骨转角变化）",
+   "metric": "handRotMax",
+   "agg": "max",
+   "max": 3,
+   "unit": "°"
+  },
+  {
+   "id": "wrist_ext",
+   "label": "腕背伸角（最大，仅参考：蛙立/俄挺类本就大）",
+   "metric": "wristExtMax",
+   "agg": "max",
+   "max": 125,
+   "unit": "°",
+   "advisory": true
+  },
+  {
+   "id": "no_floor_contact",
+   "label": "膝/小腿不碰地",
+   "metric": "kneeFloorMm",
+   "agg": "min",
+   "min": 20,
+   "unit": "mm"
+  },
+  {
+   "id": "gaze",
+   "label": "视线前下方（面部朝向低于水平；引擎头颈与胸廓刚性，靠躯干角度达到）",
+   "metric": "gazeBelowHorizDeg",
+   "phase": "hold",
+   "agg": "max",
+   "min": 30,
+   "max": 70,
+   "unit": "°"
+  },
+  {
+   "id": "v5_matches_hub",
+   "label": "V5 身体与求解姿态一致（最大关节偏差）",
+   "kind": "summary",
+   "path": "maxPosErrMm",
+   "max": 2,
+   "unit": "mm"
+  }
+ ]
+}

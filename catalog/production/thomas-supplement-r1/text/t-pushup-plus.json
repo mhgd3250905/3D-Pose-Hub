@@ -4,39 +4,48 @@
  "reviewStatus": "draft-ai-needs-user-review",
  "sources": [
   "catalog/production/thomas-supplement-r1/brief-2026-11-19 (托马斯动作库补充-制作说明 item 1)",
-  "drill-anim/specs/t-pushup-plus.js"
+  "drill-anim/specs/t-pushup-plus.js",
+  "tools/thomas-sup/standards/t-pushup-plus.md"
  ],
  "name": {
   "zh": "俯卧撑加推",
   "en": "Push-Up Plus"
  },
  "purpose": {
-  "zh": "练肩胛骨下面那块肌肉，单手撑地时肩不塌",
-  "en": "Trains the muscle under your shoulder blades so your shoulder stays solid on one hand."
+  "zh": "练腋下肋骨边上那块肌肉，单手撑地时肩不塌",
+  "en": "Trains the muscle along the side of your ribs so your shoulder holds up on one hand."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "手肘一直锁直，只让肩胛骨动",
-    "en": "Elbows stay locked, only your shoulder blades move"
+    "zh": "手肘锁死别弯，只让肩胛骨动",
+    "en": "Lock your elbows, only your shoulder blades move"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "胸口往地面沉一点，再用手把地面推开、上背拱起来。",
-    "en": "Let your chest sink a little, then push the floor away and round your upper back."
+    "zh": "胸口往地上沉一点，两块肩胛骨靠拢；再用手把地推开，推到后背微微拱起。",
+    "en": "Let your chest drop a little so your shoulder blades come together, then push the floor away until your upper back rounds slightly."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "推到最高停一下，感觉腋下那块在用力。",
-    "en": "Pause at the top and feel the side of your ribs working."
+    "zh": "推到最高别急着落，停一秒，腋下那块会发酸。",
+    "en": "At the highest point, wait a second. You should feel it under your armpits."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "从头到脚跟一块板，屁股别跟着肩上下晃。",
+    "en": "Head to heels stays one plank; your hips shouldn't bob with your shoulders."
    }
   }
  ],
@@ -50,8 +59,8 @@
    "en": "Shrugging and pushing your head forward."
   },
   {
-   "zh": "腰往下塌",
-   "en": "Letting your lower back sag."
+   "zh": "塌腰，或者靠拱背、塌背假装肩胛骨在动",
+   "en": "Sagging your lower back, or rounding and arching your back while the shoulder blades stay put."
   }
  ],
  "cautions": [
@@ -100,7 +109,7 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 1.0
+    "seconds": 1.5
    },
    {
     "id": "hold",
@@ -108,22 +117,23 @@
    },
    {
     "id": "back",
-    "seconds": 1.2
+    "seconds": 1.3
    },
    {
     "id": "rest",
-    "seconds": 0.3
+    "seconds": 0.2
    }
   ],
-  "source": "real-tempo r3"
+  "source": "thomas-sup r2 animation tempo (4 s per rep, 1 s at the top; brief: 顶端停 1 秒)"
  },
  "thomasSupplement": {
-  "version": "r1",
+  "version": "r2",
   "item": "1",
   "thomasAngle": "10 第一侧移重 / 14 第二侧移重",
   "camera": "正侧面（看肩胛下沉与推开）＋斜后上方（看背部拱起）",
   "doseBrief": "3 组 × 10–12 次，休 60 秒；顶端停 1 秒",
   "status": "draft-awaiting-user-review",
-  "note": "defaultDose takes the low end of the brief range; the range is in doseBrief."
+  "note": "defaultDose takes the low end of the brief range; the range is in doseBrief. r2: one rep 4 s (push 1.5 s, top 1 s, sink 1.3 s, 0.2 s at the bottom).",
+  "standard": "tools/thomas-sup/standards/t-pushup-plus.md"
  }
 }

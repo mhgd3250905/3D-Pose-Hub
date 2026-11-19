@@ -4,39 +4,48 @@
  "reviewStatus": "draft-ai-needs-user-review",
  "sources": [
   "catalog/production/thomas-supplement-r1/brief-2026-11-19 (托马斯动作库补充-制作说明 item 2)",
-  "drill-anim/specs/t-frog-stand.js"
+  "drill-anim/specs/t-frog-stand.js",
+  "tools/thomas-sup/standards/t-frog-stand.md"
  ],
  "name": {
   "zh": "蛙立",
   "en": "Frog Stand"
  },
  "purpose": {
-  "zh": "练手腕和肩，体会身体压到手上的感觉",
-  "en": "Builds your wrists and shoulders and teaches you to put your weight on your hands."
+  "zh": "练手腕和肩，找到身体压在手上、脚离地的平衡",
+  "en": "Builds your wrists and shoulders and teaches you to balance your weight on your hands."
  },
  "cues": [
   {
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "膝盖顶住上臂外侧，身体往前倾到脚尖离地",
-    "en": "Knees on the backs of your arms, lean until your toes lift"
+    "zh": "膝盖架在大臂外侧，身体往前送到脚自己离地",
+    "en": "Knees on the backs of your arms, lean until your feet float"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "手指张开抓地，别把重量全压在掌根。",
-    "en": "Spread your fingers and grip the floor, not all weight on the heel of your hand."
+    "zh": "手肘朝后弯着，膝盖压在手肘上面一掌的位置，别挂在肘尖上。",
+    "en": "Elbows bent and pointing back; rest your knees a hand's width above the elbows, not on the tips."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "肩往前送、往下沉，别只是往前倒。",
-    "en": "Shoulders go forward and down, don't just tip over."
+    "zh": "先别急着抬脚，脚尖踩着往前倾，重量到了手上脚自然就轻了。",
+    "en": "Don't lift your feet first. Lean forward on your toes; once your weight is on your hands they get light on their own."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "肩膀往前过手腕、往下沉，手指张开抓地，往前栽了就用指尖按住。",
+    "en": "Shoulders go forward past your wrists and down; spread your fingers, and press your fingertips if you start tipping forward."
    }
   }
  ],
@@ -50,8 +59,8 @@
    "en": "Fingers loose, all the weight on the heel of the hand."
   },
   {
-   "zh": "憋着气",
-   "en": "Holding your breath."
+   "zh": "重量还在脚上就硬抬脚，人往后坐",
+   "en": "Yanking the feet up while the weight is still on them, so you sit back."
   }
  ],
  "cautions": [
@@ -62,6 +71,10 @@
   {
    "zh": "脚尖离不了地，就先踮着脚把重量往手上送",
    "en": "If your toes won't lift yet, stay on tiptoe and shift weight to your hands."
+  },
+  {
+   "zh": "别憋气，脚离地的时候照常喘气",
+   "en": "Keep breathing while your feet are up; don't hold your breath."
   }
  ],
  "tags": {
@@ -93,12 +106,12 @@
    "en": "Lean forward"
   },
   "peak": {
-   "zh": "脚尖离地",
-   "en": "Toes up"
+   "zh": "脚离地",
+   "en": "Feet up"
   },
   "end": {
-   "zh": "脚落地",
-   "en": "Feet down"
+   "zh": "脚尖落地",
+   "en": "Toes down"
   }
  },
  "training": {
@@ -106,12 +119,13 @@
   "leadSeconds": 1
  },
  "thomasSupplement": {
-  "version": "r1",
+  "version": "r2",
   "item": "2",
   "thomasAngle": "10 / 14 移重",
   "camera": "正侧面为主（看前倾角度和脚离地）",
   "doseBrief": "3–5 组 × 10–20 秒，休 60–90 秒",
   "status": "draft-awaiting-user-review",
-  "note": "defaultDose takes the low end of the brief range; the range is in doseBrief."
+  "note": "defaultDose takes the low end of the brief range; the range is in doseBrief. r2 animation (8 s loop): 0.6 s squat on the toes, 1.4 s lean with the toes down, feet up 0.5 s, about 4 s with the feet off, feet down, lean back; elbows about 120 deg, shoulders about 23 cm past the wrists, knees resting on the upper arms above the elbows.",
+  "standard": "tools/thomas-sup/standards/t-frog-stand.md"
  }
 }

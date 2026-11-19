@@ -1,5 +1,5 @@
 // Thomas supplement r1 (2026-11-19): sandbox self-check + low-res V5 preview stills for one recipe. Not a production renderer.
-//   node tools/thomas-sup/check.mjs --recipe <recipe.json> [--stride 3] [--render 0,60,120] [--size 360] [--png-dir <dir>] [--out <json>]
+//   node tools/thomas-sup/check.mjs --recipe <recipe.json> [--stride 3 | --frames 0,60]  [--mesh-clip forearmR:thighR,...] [--render 0,60,120] [--views name:dir[:up];...] [--size 360] [--png-dir <dir>] [--out <json>]
 // One browser: the hub recipe scene (stageAt: applyAt + props + fixed recipe camera, as tools/v5/render-masters-v5.mjs) with the
 // V5 model installed exactly as render-masters-v5.mjs does (same modules, same pose transfer). Every <stride>-th frame is solved and
 // measured on the V5 body that the render machine will draw:
@@ -24,7 +24,11 @@ const args=process.argv.slice(2),opt=(k,d)=>{const i=args.indexOf(k);return i>=0
 const recipeFile=path.resolve(opt('--recipe')),stride=+opt('--stride',3),size=+opt('--size',360);
 fail(size>=128&&size<=480,'preview size must be 128..480');
 const renderFrames=(opt('--render','')||'').split(',').filter(Boolean).map(Number);
-const pngDir=opt('--png-dir');const outFile=opt('--out');
+const pngDir=opt('--png-dir');
+// --mesh-clip 'forearmR:thighR,thighR:forearmR' = mesh-level self-clip pairs (A inside B), regions as in __tsMeasure
+const meshPairs=(opt('--mesh-clip','')||'').split(',').filter(Boolean).map(p=>p.split(':'));const outFile=opt('--out');
+// --views 'side:0,0.1,1;front:-1,0.15,0;top:0,1,0.001:-1,0,0' = name:dir[:up] (world; camera looks at the body centre from dir)
+const views=(opt('--views','')||'').split(';').filter(Boolean).map(v=>{const [name,d,u]=v.split(':');return {name,dir:d.split(',').map(Number),up:u?u.split(',').map(Number):[0,1,0]};});
 const PLAN=JSON.parse(fs.readFileSync(path.join(HERE,'actions.json'),'utf8'));
 
 const loaded=await loadRecipe(recipeFile);
@@ -36,7 +40,7 @@ const res={id,recipe:path.relative(REPO,recipeFile),spec:prepared.recipe.spec,fr
 try{
   const mods=Object.fromEntries(MODULES.map(m=>[m,fs.readFileSync(path.join(RT,m),'utf8')]));
   const glb=fs.readFileSync(path.join(RT,MODEL)).toString('base64');
-  await page.evaluate(async ({mods,glb})=>{
+  await page.evaluate(async ({mods,glb,scapulaShift})=>{
     const src=await (await fetch('/src/viewer.js')).text(),v=src.match(/three\.js\?v=(\w+)/)[1],O=location.origin;
     const map={'three':O+'/node_modules/.vite/deps/three.js?v='+v,'three/addons/loaders/GLTFLoader.js':O+'/node_modules/.vite/deps/three_addons_loaders_GLTFLoader__js.js?v='+v,
       'three/addons/GLTFLoader.js':O+'/node_modules/.vite/deps/three_addons_loaders_GLTFLoader__js.js?v='+v};
@@ -46,8 +50,8 @@ try{
       url[name]=URL.createObjectURL(new Blob([fixed],{type:'text/javascript'}));
     }
     const bin=Uint8Array.from(atob(glb),c=>c.charCodeAt(0)).buffer;
-    const m=await import(url['v5-hub.js']);return await m.installV5({glb:bin});
-  },{mods,glb});
+    const m=await import(url['v5-hub.js']);return await m.installV5(scapulaShift?{glb:bin,scapulaShift}:{glb:bin});
+  },{mods,glb,scapulaShift:source.v5?.scapulaShift===true});
   // in-page measurement on the V5 body
   await page.evaluate(()=>{
     const T=window.__toonT,V=window.__v5,v=flareInspector.viewer;
@@ -59,18 +63,43 @@ try{
       for(let i=0;i<n;i++){let bw=-1,bi=0;for(let k=0;k<4;k++){const w=sw.getComponent(i,k);if(w>bw){bw=w;bi=si.getComponent(i,k);}}reg[i]=region(o.skeleton.bones[bi]?.name);}return {o,reg,n};});
     const _v=new T.Vector3();
     window.__tsMeasure=(floorY,caps)=>{
-      const minY={},prop={};
+      const minY={},minP={},prop={};
       for(const {o,reg,n} of per){o.skeleton.update();
         for(let i=0;i<n;i++){o.getVertexPosition(i,_v);_v.applyMatrix4(o.matrixWorld);const r=reg[i];
-          if(minY[r]===undefined||_v.y<minY[r])minY[r]=_v.y;
+          if(minY[r]===undefined||_v.y<minY[r]){minY[r]=_v.y;minP[r]=[_v.x,_v.y,_v.z];}
           if(caps.length&&!/^hand/.test(r)){for(const c of caps){const a=c.a,b=c.b,ab=[b[0]-a[0],b[1]-a[1],b[2]-a[2]],ap=[_v.x-a[0],_v.y-a[1],_v.z-a[2]];
             const L=ab[0]**2+ab[1]**2+ab[2]**2;let t=(ab[0]*ap[0]+ab[1]*ap[1]+ab[2]*ap[2])/L;t=Math.max(0,Math.min(1,t));
             const d=Math.hypot(ap[0]-ab[0]*t,ap[1]-ab[1]*t,ap[2]-ab[2]*t)-c.r;if(prop[r]===undefined||d<prop[r])prop[r]=d;}}}}
+      // contact patch of each foot: centroid of the skinned vertices within 3 mm of that foot's lowest vertex (the single lowest
+      // vertex jumps between toe vertices when the toes lie flat; the patch centroid does not)
+      const patch={};for(const {o,reg,n} of per)for(let i=0;i<n;i++){const r=reg[i];if(r!=='footL'&&r!=='footR')continue;o.getVertexPosition(i,_v);_v.applyMatrix4(o.matrixWorld);
+        if(_v.y<=minY[r]+0.003){const c=patch[r]||(patch[r]=[0,0,0,0]);c[0]+=_v.x;c[1]+=_v.y;c[2]+=_v.z;c[3]++;}}
+      for(const k in patch){const c=patch[k];minP[k+'Patch']=[c[0]/c[3],c[1]/c[3],c[2]/c[3]];}
       const B=V.bones,wp=n=>B[n].getWorldPosition(new T.Vector3()).toArray();
-      const J={};for(const n of ['pelvis','torso','neck','head','leftUpperArm','leftForearm','leftHand','rightUpperArm','rightForearm','rightHand','leftThigh','leftShin','leftFoot','rightThigh','rightShin','rightFoot'])J[n]=wp(n);
+      const J={};for(const n of ['pelvis','spineLower','spineUpper','torso','neck','head','leftScapula','rightScapula','leftUpperArm','leftForearm','leftHand','rightUpperArm','rightForearm','rightHand','leftThigh','leftShin','leftFoot','rightThigh','rightShin','rightFoot'])J[n]=wp(n);
       for(const k in minY)minY[k]=+((minY[k]-floorY)*1000).toFixed(1);for(const k in prop)prop[k]=+(prop[k]*1000).toFixed(1);
-      return {minY,prop,J};
+      const Q={};for(const n of ['pelvis','spineUpper','torso','head','leftHand','rightHand','leftForearm','rightForearm','leftFoot','rightFoot'])Q[n]=B[n].getWorldQuaternion(new T.Quaternion()).toArray();
+      return {minY,minP,prop,J,Q};
     };
+    // mesh-level self-clip (r2, 2026-11-19): how deep the skinned vertices of region A sit inside the skinned surface of region B.
+    // B's surface = per (axial 15 mm, angular 12 deg) bin around B's bone axis, the largest radius of B's vertices in that bin;
+    // an A vertex whose radius from B's axis is smaller than its bin's surface radius is inside B by the difference (mm, >0 = inside).
+    const AX={upperArmL:['leftUpperArm','leftForearm'],upperArmR:['rightUpperArm','rightForearm'],forearmL:['leftForearm','leftHand'],forearmR:['rightForearm','rightHand'],
+      thighL:['leftThigh','leftShin'],thighR:['rightThigh','rightShin'],shinL:['leftShin','leftFoot'],shinR:['rightShin','rightFoot']};
+    window.__tsMeshClip=pairs=>{const out={};const pos={};
+      for(const {o,reg,n} of per){o.skeleton.update();for(let i=0;i<n;i++){const r=reg[i];if(!AX[r])continue;o.getVertexPosition(i,_v);_v.applyMatrix4(o.matrixWorld);(pos[r]||(pos[r]=[])).push(_v.x,_v.y,_v.z);}}
+      const B=V.bones,wp=n=>B[n].getWorldPosition(new T.Vector3());
+      for(const [a,b] of pairs){const P=wp(AX[b][0]),Qp=wp(AX[b][1]),ax=Qp.clone().sub(P),L=ax.length();ax.normalize();
+        const e1=new T.Vector3(1,0,0);if(Math.abs(e1.dot(ax))>0.9)e1.set(0,0,1);e1.sub(ax.clone().multiplyScalar(e1.dot(ax))).normalize();const e2=ax.clone().cross(e1);
+        const polar=(x,y,z)=>{const d=new T.Vector3(x-P.x,y-P.y,z-P.z),h=d.dot(ax),r=d.sub(ax.clone().multiplyScalar(h));const an=Math.atan2(r.dot(e2),r.dot(e1));
+          return [Math.floor(h/0.015),Math.floor((an+Math.PI)/(Math.PI/15)),r.length(),h];};
+        const bin=new Map(),pb=pos[b]??[],pa=pos[a]??[];
+        for(let i=0;i<pb.length;i+=3){const [hb,ab,r]=polar(pb[i],pb[i+1],pb[i+2]);const k=hb*100+ab;if(!(bin.get(k)>=r))bin.set(k,r);}
+        let worst=-1e9,at=null;
+        for(let i=0;i<pa.length;i+=3){const [hb,ab,r,h]=polar(pa[i],pa[i+1],pa[i+2]);if(h<0||h>L)continue;const R=bin.get(hb*100+ab);if(R===undefined)continue;
+          if(R-r>worst){worst=R-r;at=[+(h/L).toFixed(2),pa[i],pa[i+1],pa[i+2]];}}
+        out[a+'>'+b]={mm:+(worst*1000).toFixed(1),tB:at?.[0]};}
+      return out;};
   });
   const props=source.props??[];
   const matTop=props.some(p=>p.type==='mat')?Math.max(...props.filter(p=>p.type==='mat').map(p=>(p.at?.[1]??0)+(p.size?.[2]??0.006))):0;
@@ -78,14 +107,23 @@ try{
   for(const p of props)if(p.type==='pullupBar'&&p.capsule)caps.push(p.capsule);
   res.floorY=matTop;res.propCapsules=caps.length;
   const want=new Set(renderFrames);let warm=null;
-  const frames=[];for(let f=0;f<N;f+=stride)frames.push(f);for(const f of renderFrames)if(!frames.includes(f))frames.push(f);frames.sort((a,b)=>a-b);
+  const only=opt('--frames');const frames=[];if(only)frames.push(...only.split(',').map(Number));else for(let f=0;f<N;f+=stride)frames.push(f);for(const f of renderFrames)if(!frames.includes(f))frames.push(f);frames.sort((a,b)=>a-b);
   if(pngDir)fs.mkdirSync(pngDir,{recursive:true});
   for(const f of frames){
     fail(freeGiB()>=.5,'Low free memory');
     const st=await stageAt(page,source,f/fps,warm);warm=st.x;
-    const r=await page.evaluate(([fl,caps,render])=>{const d=window.__v5.pose();const m=window.__tsMeasure(fl,caps);const url=render?window.__v5.render():null;return {d,m,url};},[matTop,caps,want.has(f)]);
+    const r=await page.evaluate(([fl,caps,render,mc])=>{const d=window.__v5.pose();const m=window.__tsMeasure(fl,caps);if(mc.length)m.meshClip=window.__tsMeshClip(mc);const url=render?window.__v5.render():null;return {d,m,url};},[matTop,caps,want.has(f),meshPairs]);
     if(r.url&&pngDir)fs.writeFileSync(path.join(pngDir,`${String(f).padStart(4,'0')}.png`),Buffer.from(r.url.split(',')[1],'base64'));
-    res.samples.push({f,t:+(f/fps).toFixed(3),warn:st.warn?.length??0,warnText:(st.warn??[]).slice(0,3).map(w=>typeof w==='string'?w:JSON.stringify(w)).join(' | ').slice(0,300),ang:r.d.angV5,angHub:r.d.angHub,posErr:r.d.posErr,posErrBone:r.d.posErrBone,H:Object.fromEntries(['leftPalm','rightPalm','leftWrist','rightWrist','leftToe','rightToe','leftAnkle','rightAnkle','leftKnee','rightKnee','leftShoulder','rightShoulder','leftElbow','rightElbow','pelvis','head','leftHip','rightHip'].map(n=>[n,st.joints[n]])),minY:r.m.minY,prop:r.m.prop,J:r.m.J});
+    // review views (r2, 2026-11-19): the same V5 frame from fixed directions around the body (camera restored by the next stageAt)
+    if(want.has(f)&&pngDir&&views.length)for(const vw of views){
+      const url=await page.evaluate(([d,up])=>{const T=window.__toonT,V=window.__v5,c=flareInspector.viewer.camera;const P=[];
+        for(const n of ['pelvis','torso','head','leftHand','rightHand','leftFoot','rightFoot','leftShin','rightShin','leftForearm','rightForearm'])P.push(V.bones[n].getWorldPosition(new T.Vector3()));
+        const box=new T.Box3().setFromPoints(P),cen=box.getCenter(new T.Vector3()),rad=box.getSize(new T.Vector3()).length()/2+0.22;
+        const dir=new T.Vector3(...d).normalize(),dist=rad/Math.tan(c.fov*Math.PI/360);
+        c.up.set(...up);c.position.copy(cen).addScaledVector(dir,dist);c.lookAt(cen);c.updateMatrixWorld();const u=V.render();c.up.set(0,1,0);return u;},[vw.dir,vw.up]);
+      fs.writeFileSync(path.join(pngDir,`${String(f).padStart(4,'0')}-${vw.name}.png`),Buffer.from(url.split(',')[1],'base64'));
+    }
+    res.samples.push({f,t:+(f/fps).toFixed(3),warn:st.warn?.length??0,warnText:(st.warn??[]).slice(0,3).map(w=>typeof w==='string'?w:JSON.stringify(w)).join(' | ').slice(0,300),ang:r.d.angV5,angHub:r.d.angHub,posErr:r.d.posErr,posErrBone:r.d.posErrBone,H:Object.fromEntries(['leftPalm','rightPalm','leftWrist','rightWrist','leftToe','rightToe','leftAnkle','rightAnkle','leftKnee','rightKnee','leftShoulder','rightShoulder','leftElbow','rightElbow','pelvis','head','leftHip','rightHip','neck','shoulderCenter','waist','leftHeel','rightHeel','leftFingertip','rightFingertip'].map(n=>[n,st.joints[n]])),minY:r.m.minY,minP:r.m.minP,prop:r.m.prop,J:r.m.J,Q:r.m.Q,...(r.m.meshClip?{meshClip:r.m.meshClip}:{})});
   }
   res.pageErrors=report.pageErrors;
 }finally{await scene.browser.close();}
@@ -126,6 +164,7 @@ let worst={mm:1e9};const names=Object.keys(segs);
 for(const s of S)for(let i=0;i<names.length;i++)for(let j=i+1;j<names.length;j++){const k=[names[i],names[j]].sort().join('|');if(adj.has(k)||allow.has(k))continue;
   const A=segs[names[i]],B=segs[names[j]],d=segDist(s.J[A[0]],s.J[A[1]],s.J[B[0]],s.J[B[1]])*1000-A[2]-B[2];if(d<worst.mm)worst={mm:+d.toFixed(1),pair:k,f:s.f};}
 sum.selfClipWorst=worst;
+if(meshPairs.length){const mw={};for(const s of S)for(const [k,v] of Object.entries(s.meshClip??{}))if(!mw[k]||v.mm>mw[k].mm)mw[k]={mm:v.mm,f:s.f,tB:v.tB};sum.meshClipWorst=mw;}
 sum.maxPosErrMm=+(Math.max(...S.map(s=>s.posErr))*1000).toFixed(2);
 sum.solverWarnFrames=S.filter(s=>s.warn>0).length;
 sum.pageErrors=res.pageErrors.length;

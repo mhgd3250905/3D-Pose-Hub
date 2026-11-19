@@ -1,0 +1,194 @@
+{
+ "format": "thomas-sup-standard@1",
+ "id": "t-planche-lean",
+ "nameZh": "俄挺前倾",
+ "doc": "tools/thomas-sup/standards/t-planche-lean.md",
+ "phases": {
+  "start": "俯卧撑顶端：肩在手腕正上方，肩胛已推开下沉",
+  "hold": "前倾保持：肩超过手腕约 10 cm，锁肘、身体一条线、脚尖着地"
+ },
+ "series": [
+  "shoulderLeadCm",
+  "scapFwd",
+  "scapUp",
+  "hipOffsetMm",
+  "trunkFlexDeg",
+  "elbowMin",
+  "wristExtMax"
+ ],
+ "checks": [
+  {
+   "id": "elbow_lock",
+   "label": "全程锁肘（两肘最小角）",
+   "metric": "elbowMin",
+   "agg": "min",
+   "min": 172,
+   "unit": "°"
+  },
+  {
+   "id": "knee_straight",
+   "label": "膝伸直",
+   "metric": "kneeMin",
+   "agg": "min",
+   "min": 170,
+   "unit": "°"
+  },
+  {
+   "id": "start_stacked",
+   "label": "起始：肩在手腕正上方（肩超过手腕）",
+   "metric": "shoulderLeadCm",
+   "phase": "start",
+   "agg": "max",
+   "min": -3,
+   "max": 3,
+   "unit": "cm"
+  },
+  {
+   "id": "lean_min",
+   "label": "保持：肩超过手腕（最小）",
+   "metric": "shoulderLeadCm",
+   "phase": "hold",
+   "agg": "min",
+   "min": 9,
+   "max": 14,
+   "unit": "cm"
+  },
+  {
+   "id": "lean_max",
+   "label": "保持：肩超过手腕（最大）",
+   "metric": "shoulderLeadCm",
+   "phase": "hold",
+   "agg": "max",
+   "min": 9,
+   "max": 14,
+   "unit": "cm"
+  },
+  {
+   "id": "arm_angle",
+   "label": "保持：手臂与竖直夹角",
+   "metric": "armFromVerticalDeg",
+   "phase": "hold",
+   "agg": "min",
+   "min": 8,
+   "max": 16,
+   "unit": "°"
+  },
+  {
+   "id": "scap_protracted",
+   "label": "肩胛前伸（肩关节相对胸廓向前，最小）",
+   "metric": "scapFwd",
+   "agg": "min",
+   "min": 15,
+   "unit": "mm"
+  },
+  {
+   "id": "scap_depressed",
+   "label": "肩胛下沉（肩关节相对胸廓向下，最高处）",
+   "metric": "scapUp",
+   "agg": "max",
+   "max": -5,
+   "unit": "mm"
+  },
+  {
+   "id": "no_arch",
+   "label": "骨盆后倾/不塌腰：胸廓相对骨盆屈曲（保持段最小）",
+   "metric": "trunkFlexDeg",
+   "phase": "hold",
+   "agg": "min",
+   "min": 0,
+   "max": 12,
+   "unit": "°"
+  },
+  {
+   "id": "no_sag",
+   "label": "不塌腰：髋低于 胸廓(肩高)–踝 连线",
+   "metric": "hipOffsetMm",
+   "agg": "min",
+   "min": -15,
+   "unit": "mm"
+  },
+  {
+   "id": "no_pike",
+   "label": "不撅臀：髋高于 胸廓(肩高)–踝 连线",
+   "metric": "hipOffsetMm",
+   "agg": "max",
+   "max": 20,
+   "unit": "mm"
+  },
+  {
+   "id": "head_neutral",
+   "label": "头中立（头与胸廓夹角）",
+   "metric": "headVsTrunkDeg",
+   "agg": "max",
+   "max": 15,
+   "unit": "°"
+  },
+  {
+   "id": "fingers_out",
+   "label": "手指向外转（减轻腕背伸）",
+   "metric": "fingerTurnOutL",
+   "agg": "min",
+   "min": 30,
+   "max": 90,
+   "unit": "°"
+  },
+  {
+   "id": "wrist_ext",
+   "label": "腕背伸角（最大）",
+   "metric": "wristExtMax",
+   "agg": "max",
+   "max": 100,
+   "unit": "°"
+  },
+  {
+   "id": "hold_time",
+   "label": "保持时长（肩超过手腕在最大值 5 mm 内）",
+   "kind": "plateau",
+   "metric": "shoulderLeadCm",
+   "ref": "max",
+   "tol": 0.5,
+   "min": 3.5,
+   "unit": "s"
+  },
+  {
+   "id": "contacts_hands",
+   "label": "手掌不滑（V5 手骨漂移）",
+   "kind": "pins",
+   "which": "hands",
+   "max": 5,
+   "unit": "mm"
+  },
+  {
+   "id": "contacts_feet",
+   "label": "脚尖接触区不滑（滚过脚尖时接触区从趾腹移到趾尖，允许 ≤ 8 mm）",
+   "kind": "pins",
+   "which": "feet",
+   "max": 8,
+   "unit": "mm"
+  },
+  {
+   "id": "palm_flat",
+   "label": "手掌不翻转（手骨转角变化）",
+   "metric": "handRotMax",
+   "agg": "max",
+   "max": 3,
+   "unit": "°"
+  },
+  {
+   "id": "toe_contact",
+   "label": "脚尖着地（脚最低点离地）",
+   "metric": "footClearMm",
+   "agg": "max",
+   "max": 2,
+   "unit": "mm"
+  },
+  {
+   "id": "v5_matches_hub",
+   "label": "V5 身体与求解姿态一致（最大关节偏差）",
+   "kind": "summary",
+   "path": "maxPosErrMm",
+   "max": 2,
+   "unit": "mm"
+  }
+ ]
+}
