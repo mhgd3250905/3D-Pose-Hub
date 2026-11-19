@@ -36,7 +36,7 @@ node tools/thomas-sup/check.mjs --recipe ... --frames ... --mesh-clip forearmR:t
 - t-self-resisted-wrist-flexion 自阻力手腕上卷：`t-self-resisted-wrist-flexion.md`（新共用构建器 `drill-anim/specs/_thomas-sup-wrist-r2.mjs`：骨盆前倾＋腰前屈代替 r1 的整体上身转，V5 偏差 96 mm → 0；特写机位，v5.groundShadow 关）。
 - t-self-resisted-wrist-extension 自阻力手腕上抬：`t-self-resisted-wrist-extension.md`（同一构建器与特写机位，掌心朝下、左手压手背）。
 - t-seated-forearm-rotation 坐姿翻手腕：`t-seated-forearm-rotation.md`（同一构建器，正前方特写，翻转主要在前臂下段；V5 手是固定张开手型，哑铃不画，空手演示；r1 构建器 `_thomas-sup-wrist-r1.mjs` 已删）。
-- t-straddle-active-lift 主动分腿压抬腿：`t-straddle-active-lift.md`（v5.scapulaShift 开；骨盆前倾 30° 背直、手掌平放两腿之间；`thighTwist/kneeTwist` ±65° 修 hub 摆腿自带的髌骨内旋 53°→3.7°；骨盆高度改为直接脚本给定）。新增度量：抬起脚跟 `legLiftMm`、贴垫脚跟 `footDownMm`、髌骨朝上 `kneeUpDegMax`（大腿+小腿骨）、脚尖朝上 `toeUpDegMax`、掌心朝下 `palmDownDegMax`；check.mjs 记录大腿/小腿骨世界旋转。
+- t-straddle-active-lift 主动分腿压抬腿：`t-straddle-active-lift.md`（v5.scapulaShift 开；第二版按 PDF 起始姿势改为直立坐（骨盆 5°、背直）、手掌平放臀部两侧手指朝后、肩胛下沉 30 mm；`thighTwist/kneeTwist` ∓45° 修 hub 摆腿自带的髌骨内旋（第一版前倾 30° 时为 ∓65°，53°→3.7°，现 1.8°）；骨盆高度直接脚本给定）。新增度量：抬起脚跟 `legLiftMm`、贴垫脚跟 `footDownMm`、髌骨朝上 `kneeUpDegMax`（大腿+小腿骨）、脚尖朝上 `toeUpDegMax`、掌心朝下 `palmDownDegMax`；check.mjs 记录大腿/小腿骨世界旋转。
 - 新增度量（precision.py）：右手腕屈角 `wristFlexR`、腕侧偏 `wristDevR`、前臂旋转角 `supR`（0 = 拇指朝上，+90 = 掌心朝上）、前臂俯仰 `forearmPitchDeg`、大腿后侧最低点 `thighLowMm`；check.mjs 新增 `--gap A:B[:up]`（A 区下表面对 B 区上表面的间距，前臂贴大腿、手压手），actions.json 的 `gap` 为默认值。
 
 ## V5 关地面投影（v5.groundShadow，特写机位）

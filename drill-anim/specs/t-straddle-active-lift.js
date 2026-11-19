@@ -1,20 +1,21 @@
-// t-straddle-active-lift 主动分腿压抬腿 (active straddle leg lift-off) · Thomas supplement r2 (2026-11-19).
-// Seated straddle on the mat (legs 40 deg out each side), back straight, pelvis tipped forward (hip hinge, no rounding), palms flat on
-// the mat between the legs, arms resting straight (they do not push the hips up); one straight leg, knee cap and toes pointing up,
+// t-straddle-active-lift 主动分腿压抬腿 (active straddle leg lift-off) · Thomas supplement r2 (2026-11-19, rev 2 = PDF posture).
+// Seated straddle on the mat (legs 40 deg out each side), sitting tall on the sit bones (pelvis 5 deg forward of vertical, back straight;
+// the PDF start position: "背部挺直（可以臀部靠墙），双手放在大腿两侧地面"), palms flat on the mat beside the hips just outside the thighs,
+// fingers pointing back, arms resting near straight (they do not push the hips up); one straight leg, knee cap and toes pointing up,
 // lifts off the mat (heel ~4 cm above the mat), holds 2 s and lowers under control; then the other leg. Head up (+Y), body faces +Z, left = +X.
 // Measurable standard: tools/thomas-sup/standards/t-straddle-active-lift.md.
-// r1 -> r2: r1 sat nearly upright (pitch 14) with fingertips on the mat because the armfix arm (shoulder -> wrist <= 0.485 m) cannot
-// reach a flat palm beside the hips of an upright seated body; r2 tips the pelvis forward 30 deg (hip hinge, back straight), puts the
-// palms flat on the mat between the legs in front of the hips (fingertips hand mode on the 6 mm mat; z 0.385 keeps the elbow ~170: at
-// 0.39 the arm reaches full length and the solver starts pulling the torso), and depresses the shoulder blades 15 mm (V5 v5.scapulaShift).
-// Knee caps: the hub swings each straight leg from rest by the shortest arc in the pelvis frame, which for a pitched pelvis and a 40 deg
-// straddle rolls the thigh and shin ~65 deg inward (knee caps facing the other leg) while the foot is aligned toes-up on its own;
-// thighTwist / kneeTwist -65 (left) / +65 (right) undo that roll (knee caps and toes up, <= 4 deg). The pelvis height is scripted
-// directly (extra pelvis.1; solve.vars is empty): 0.129 m seats the buttocks / backs of the thighs on the mat (-2 mm) instead of 10 mm above.
+// rev 1 -> rev 2: rev 1 tipped the pelvis forward 30 deg with the palms between the legs in front of the hips (fingers forward); the PDF
+// asks for an upright sit with the hands at the sides. Upright, the armfix arm (shoulder -> wrist <= ~0.487 m) reaches a flat palm beside
+// the hips only with the shoulder blades depressed 30 mm (V5 v5.scapulaShift) and the wrist 5 cm behind / 5 cm outside the shoulder
+// (x 0.24, z -0.03): elbow ~173. Fingers point back (a forward hand would lie on the thigh).
+// Knee caps: the hub swings each straight leg from rest by the shortest arc in the pelvis frame, which rolls the thigh and shin inward
+// (knee caps facing the other leg) while the foot is aligned toes-up on its own; for a 5 deg pelvis thighTwist / kneeTwist -45 (left) /
+// +45 (right) undo that roll (knee caps and toes up, <= 2 deg; rev 1 needed -65 at 30 deg). The pelvis height is scripted directly
+// (extra pelvis.1; solve.vars is empty): 0.137 m seats the buttocks / backs of the thighs on the mat (-2 mm).
 // Loop 8 s: left leg up 0.05-1.05 s, hold 1.05-3.05, down 3.05-3.95; right leg the same from 4.05 s.
 import { floorDrill, curve, qaStd } from './_thomas-armfix-r1.mjs';
-const T = 8, SP = 40, E0 = -1.45, LIFT = 2.5, PITCH = 30, HX = 0.18, HZ = 0.385, SHIFT = 0.015, PY = 0.129, MAT = 0.006, TW = -65;
-const FG = sg => [sg * 0.25, 0, 1];
+const T = 8, SP = 40, E0 = -1.45, LIFT = 2.5, PITCH = 5, HX = 0.24, HZ = -0.03, SHIFT = 0.03, PY = 0.137, MAT = 0.006, TW = -45;
+const FG = sg => [sg * 0.3, 0, -1];   // fingers back, slightly out
 const lift = t0 => curve([[0, 0], [t0, 0], [t0 + 1.0, 1], [t0 + 3.0, 1], [t0 + 3.9, 0]], T);
 const uL = lift(0.05), uR = lift(4.05);
 const spec = floorDrill({

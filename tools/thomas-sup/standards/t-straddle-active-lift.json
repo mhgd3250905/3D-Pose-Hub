@@ -15,7 +15,9 @@
   "kneeUpDegMax",
   "toeUpDegMax",
   "seatContactMm",
-  "elbowMin"
+  "elbowMin",
+  "thoraxPitchDeg",
+  "pelvisPitchDeg"
  ],
  "checks": [
   {
@@ -168,7 +170,7 @@
   },
   {
    "id": "arms_soft_straight",
-   "label": "手臂接近伸直、只轻撑（两肘最小角）",
+   "label": "手臂接近伸直、只轻撑（两肘最小角；手在臀部两侧）",
    "metric": "elbowMin",
    "agg": "min",
    "min": 165,
@@ -176,7 +178,7 @@
   },
   {
    "id": "hands_on_mat",
-   "label": "手掌轻贴垫面不穿垫（最低）",
+   "label": "手掌（臀部两侧）轻贴垫面不穿垫（最低）",
    "metric": "handFloorMm",
    "agg": "min",
    "min": -2,
@@ -207,19 +209,35 @@
    "unit": "mm"
   },
   {
-   "id": "pelvis_forward",
-   "label": "骨盆前倾（骨盆上缘向前，最小）",
+   "id": "pelvis_upright_min",
+   "label": "直立坐姿：骨盆不后倒（骨盆上缘前后倾，最小；PDF 背挺直、可臀部靠墙）",
    "metric": "pelvisPitchDeg",
    "agg": "min",
-   "min": 15,
+   "min": -5,
    "unit": "°"
   },
   {
-   "id": "pelvis_forward_max",
-   "label": "骨盆前倾（最大，不趴下去）",
+   "id": "pelvis_upright_max",
+   "label": "直立坐姿：不前趴（骨盆上缘前倾，最大）",
    "metric": "pelvisPitchDeg",
    "agg": "max",
-   "max": 40,
+   "max": 10,
+   "unit": "°"
+  },
+  {
+   "id": "trunk_upright",
+   "label": "躯干接近竖直（胸廓与竖直夹角，最大）",
+   "metric": "thoraxPitchDeg",
+   "agg": "max",
+   "max": 10,
+   "unit": "°"
+  },
+  {
+   "id": "trunk_not_back",
+   "label": "躯干不后靠（胸廓与竖直夹角，最小）",
+   "metric": "thoraxPitchDeg",
+   "agg": "min",
+   "min": -5,
    "unit": "°"
   },
   {
