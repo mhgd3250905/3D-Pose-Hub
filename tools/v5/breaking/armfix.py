@@ -153,12 +153,24 @@ class ArmFix:
                 cph = bool(contact and contact.get(sd))
                 bf = None
                 if cph and t[1] < 0.75:   # aim at the pronation the hand will need once planted (evaluate at the floor point below)
-                    tl = np.array([t[0], 0.04, t[2]]); dl_ = np.linalg.norm(tl - S)
+                    tl = np.array([t[0], 0.04, t[2]])
+                    if getattr(self, 'landpos', {}).get(sd) is not None: tl = np.array(self.landpos[sd], float)   # r11: aim at the real landing spot (not the floor below a hand still swinging in from the side)
+                    dl_ = np.linalg.norm(tl - S)
                     if dl_ > 0.98 * Lr: tl = S + (tl - S) / dl_ * 0.98 * Lr
                     lh = getattr(self, 'land', {}).get(sd)
                     if lh is not None:   # r8: the hand will be planted with a known finger direction: pre-turn the forearm to that
                         W1_, W2_ = rig.limb(S, tl, pole, rig.LP[sd + 'Forearm'], rig.LP[sd + 'Hand'], rig.l_ua, rig.l_fa, True, lh, -Y)
                         e_ = W1_ @ n(rig.LP[sd + 'Forearm']); f_ = W2_ @ n(rig.LP[sd + 'Hand']); bf = (0.0, lh, pronation(W1_, W2_, e_, f_), -Y)
+                        if getattr(self, 'landpos', {}).get(sd) is not None:   # r11: pre-turn to the pronation the PLANTED solve will pick there (its own best elbow), not the airborne elbow's
+                            dll = T.T @ n(tl - S); c0l = swing(sg * X, dll) @ Z; c0l = n(c0l - dll * (c0l @ dll)); bl = None
+                            for b_ in BETAS:
+                                pl_ = T @ (axang(dll, b_) @ -c0l)
+                                W1_, W2_ = rig.limb(S, tl, pl_, rig.LP[sd + 'Forearm'], rig.LP[sd + 'Hand'], rig.l_ua, rig.l_fa, True, lh, -Y)
+                                e_ = W1_ @ n(rig.LP[sd + 'Forearm']); f_ = W2_ @ n(rig.LP[sd + 'Hand'])
+                                tw_ = humerus_twist(T, sg, e_, W1_ @ Z); pr_ = pronation(W1_, W2_, e_, f_)
+                                c_ = over(tw_, TW_SOFT, TW_LIM) + over(pr_, PR_SOFT, PR_LIM) + 0.2 * (math.degrees(math.atan2(math.sin(b_ - bkey), math.cos(b_ - bkey))) / 20.0) ** 2
+                                if bl is None or c_ < bl[0]: bl = (c_, pr_)
+                            bf = (0.0, lh, bl[1], -Y)
                     else:
                         sv = self.prevp[sd]; self.prevp[sd] = None; bf = self.best_fing(sd, S, tl, pole, -Y, T, sg); self.prevp[sd] = sv
                 if cph and t[1] < 0.25:   # hand about to land (or just lifted): ease into the floor hand (palm down, comfortable fingers)
@@ -169,7 +181,9 @@ class ArmFix:
                 # pronation is a physical angle (no wrap-around): pre-turn toward the landing hand's value, else stay in +-45
                 _pl = getattr(self, 'prland', 80.0)
                 des = max(-_pl, min(_pl, bf[2])) if bf is not None else max(-45.0, min(45.0, pr))
+                if getattr(self, 'prtarget', {}).get(sd) is not None and cph: des = self.prtarget[sd]   # r11: landing pronation given by the move (the planted solve's own choice)
                 st = getattr(self, 'prspeed', 600.0) * self.dt; tgt = pp_ + max(-st, min(st, des - pp_))
+                if _os.environ.get('AFDBG') and sd == 'left': print('AFDBG', round(t[1], 3), 'pr', round(pr, 1), 'bf', None if bf is None else round(bf[2], 1), 'des', round(des, 1), 'pp', round(pp_, 1), 'pole', np.round(pole, 2), file=__import__('sys').stderr)
                 for _ in range(4):
                     err = ((tgt - pr + 180) % 360) - 180
                     if abs(err) < 1.0: break

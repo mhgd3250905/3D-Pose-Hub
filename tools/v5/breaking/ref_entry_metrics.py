@@ -57,7 +57,9 @@ def metrics(d, tmax):
     abd = np.degrees(np.arccos(np.clip((fa * -sv_).sum(1), -1, 1)))   # 0 = arm along the body toward the feet, 90 = out sideways/forward, 180 = overhead
     o['free arm angle from trunk-down (°): plant-0.2s, plant (90=side,180=overhead)'] = f'{abd[max(0, f1 - int(0.2 * fps))]:.0f}, {abd[f1]:.0f}'
     return o
+# r11: refs vs r10 vs r11 (argv: [r11.npz [r10.npz]]); sim tmax covers the slower r11 entry
+_r11 = sys.argv[1] if len(sys.argv) > 1 else '/workspace/work/b2000/r11/r11.npz'; _r10 = sys.argv[2] if len(sys.argv) > 2 else '/workspace/work/b2000/r10/r10.npz'
 R = {'clip01 (另一条, 30fps)': metrics(load_ref('clip01'), 3.4), 'clip02 = upload5 (30fps)': metrics(load_ref('clip02'), 1.6),
-     'r9 (镜像后同侧)': metrics(load_sim('/workspace/work/b2000/r10/r9m.npz'), 1.6), 'r10': metrics(load_sim(sys.argv[1] if len(sys.argv) > 1 else '/workspace/work/b2000/r10/r10.npz'), 1.6)}
+     'r10': metrics(load_sim(_r10), 1.6), 'r11': metrics(load_sim(_r11), 1.8)}
 ks = list(R); print('| 指标 | ' + ' | '.join(ks) + ' |'); print('|---|' + '---|' * len(ks))
 for k in R[ks[0]]: print('| ' + k + ' | ' + ' | '.join(R[c][k] for c in ks) + ' |')
