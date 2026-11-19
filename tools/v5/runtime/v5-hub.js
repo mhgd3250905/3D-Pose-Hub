@@ -33,6 +33,16 @@
  * once at install, before the toon pass (outline shells share the geometry), so the hand holds the handle without any new bone or
  * skin weight; with dumbbell true a one-ended dumbbell (handle + one head on the thumb side) in two-tone toon + ink shell is attached
  * to the V5 hand bone, so it turns with the hand. null/absent = the code path is never entered.
+ * hubGraspHands (opt-in per action, default null = off; Thomas supplement r3, 2026-11-19, 开哥「抓握的都用专门的抓握手模」): for the
+ * listed sides ('left' / 'right') V5 shows the hub's accepted fixed grasp hand (WebXR_Clipped_Hand_<side>, the fist the recipe hand
+ * modes bar-grasp / dumbbell-grasp / fixed-grasp install; its props such as the fixed dumbbell stay as in every V5 dumbbell action)
+ * instead of the V5 open hand. The hub fist keeps its own placement (rigid with the hub hand bone = the V5 hand bone, same pivot and
+ * world rotation) and gets the V5 look: the V5 skin toon material and the V5 ink outline shell (same material objects, skin region,
+ * hand outline weight 0.5). The V5 hand on that side is cut once at install, before the toon pass (outlines share the geometry):
+ * triangles past 10 mm inside the fist's open wrist end are dropped, the last 12 mm of the V5 wrist before that end are blended
+ * onto the fist's wrist cross-section and the part inside the fist onto the fist's own surface (0.6 mm under it, by ray from the axis) and bound rigidly to the hand bone, so the seam is closed on every frame with
+ * no gap and no second wrist. The bridge band the hub draws to its own (hidden) forearm stays hidden. The fist casts the V5 ground
+ * shadow (extent() places it with the posed hub matrix). null/absent = the code path is never entered.
  * Files toon-r6.js / wristfix-r2.js / model glb are verbatim copies of the v3r8b candidate (see tools/v5/runtime/SOURCES.md). */
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
@@ -51,7 +61,7 @@ for (const s of ['left', 'right']) for (let k = 1; k <= 8; k++) { PARENT[s + 'Fo
 export const NAMES = ['pelvis', 'spineLower', 'spineUpper', 'torso', 'neck', 'head', 'leftScapula', 'leftUpperArm', 'leftForearm', 'leftHand', 'rightScapula', 'rightUpperArm', 'rightForearm', 'rightHand', 'leftThigh', 'leftShin', 'leftFoot', 'rightThigh', 'rightShin', 'rightFoot'];
 const SHADOW = { color: 0x2a1a12, opacity: 0.14, mapSize: 2048, half: 2.4, sun: [0.6, 5, 1.2] };   // sample geometry (2026-11-16); colour = warm near-black at 0.14 so it reads like the sample on the light theme and does not glow on the dark theme
 
-export async function installV5({ glb, scapulaShift = false, headFlexDeg = 0, groundShadow = true, grip = null }) {
+export async function installV5({ glb, scapulaShift = false, headFlexDeg = 0, groundShadow = true, grip = null, hubGraspHands = null }) {
   const v = flareInspector.viewer, scene = v.scene, renderer = v.renderer, camera = v.camera;
   // ---- model
   const gltf = await new GLTFLoader().setMeshoptDecoder(MeshoptDecoder).parseAsync(glb, '');
@@ -65,20 +75,24 @@ export async function installV5({ glb, scapulaShift = false, headFlexDeg = 0, gr
   root.updateMatrixWorld(true);
   const REST = {}; for (const n in bones) REST[n] = bones[n].position.clone();   // parent/child rest world rotations are identity → local offset
   const gripInfo = grip ? installGrip(grip, { bones, skinned }) : null;   // opt-in (see header): before the toon pass
+  if (grip && hubGraspHands && hubGraspHands.includes(grip.side)) throw Error('v5.grip and v5.hubGraspHands on the same hand');
+  const hubGrasp = hubGraspHands ? cutForHubGrasp(hubGraspHands, { v, skinned }) : null;   // opt-in (see header): before the toon pass
   // ---- look (toon r6 = r5 look + wrist outline weights); hair none because the page URL has no ?hair
   const bg = scene.background;
   const toon = applyToon({ scene, root, bones, skinned, grid: null, floor: null, renderer, camera });
   scene.background = bg;   // keep the hub's transparent background
   if (toon.hair !== 'none') throw Error('V5 must be bald; got hair ' + toon.hair);
+  if (hubGrasp) styleHubGrasp(hubGrasp, groundShadow);   // opt-in (see header): V5 skin + outline on the hub fist
   const wf = installWristFix({ bones, renderer: { render() { } } });   // drive manually (no hub render wrapper involved)
   if (!wf || wf.sides.length !== 2) throw Error('wristfix helper bones missing');
   // ---- hide the hub body, keep props
   const inCoach = o => { for (let q = o; q; q = q.parent) if (q === v.coach) return true; return false; };
   const hubHand = o => { for (let q = o; q; q = q.parent) if (/^WebXR_(Clipped_Hand|Wrist_Bridge)/.test(q.name || '')) return true; return false; };
+  const keepHub = hubGrasp ? (o => { for (let q = o; q; q = q.parent) { const m = /^WebXR_Clipped_Hand_(left|right)$/.exec(q.name || ''); if (m) return hubGrasp.sides.includes(m[1]); } return false; }) : (() => false);
   const hidden = [];
   function hideHub() {
     scene.traverse(o => { if (!(o.isMesh || o.isLine || o.isPoints) || !o.visible) return; for (let q = o; q; q = q.parent) if (q === root) return;
-      if (inCoach(o) || hubHand(o)) { o.visible = false; hidden.push(o.name || o.type); } });
+      if (inCoach(o) || (hubHand(o) && !keepHub(o))) { o.visible = false; hidden.push(o.name || o.type); } });
   }
   hideHub();
   // ---- hard-edge ground shadow
@@ -183,6 +197,8 @@ export async function installV5({ glb, scapulaShift = false, headFlexDeg = 0, gr
     let idx = sampleIdx.get(o); if (!idx) { const n = o.geometry.attributes.position.count, st = Math.max(1, Math.floor(n / 4000)); idx = []; for (let i = 0; i < n; i += st) idx.push(i); sampleIdx.set(o, idx); }
     c.push({ o, idx }); }); return c; };
   const _v = new THREE.Vector3(), _s = new THREE.Vector3();
+  // hub fist (hubGraspHands): outside a render the hub keeps it at its neutral place, so its posed matrix = V5 hand bone frame x rel
+  const worldOf = hubGrasp ? (o => hubGrasp.posedMatrix(o, bones) || o.matrixWorld) : (o => o.matrixWorld);
   // margin > 0: also the span, along each canvas side, of the shadow points that come within margin px of that side
   // (edgeSpan.left = [yMin, yMax] in px, ...; only sides that are reached). render-masters-v5.mjs then requires the rendered
   // border to be opaque body/prop over that span: the shadow may leave the canvas only where the surface it lies on (e.g. the
@@ -197,7 +213,7 @@ export async function installV5({ glb, scapulaShift = false, headFlexDeg = 0, gr
     const px = (p, b) => { _s.copy(p).project(camera); const x = (_s.x + 1) / 2 * size, y = (1 - _s.y) / 2 * size; b[0] = Math.min(b[0], x); b[1] = Math.min(b[1], y); b[2] = Math.max(b[2], x); b[3] = Math.max(b[3], y); };
     const ls = p => { const d = p.clone().sub(sp); lmax = Math.max(lmax, Math.abs(d.dot(R)), Math.abs(d.dot(U))); const z = d.dot(L); dmin = Math.min(dmin, z); dmax = Math.max(dmax, z); };
     for (const { o, idx } of casters) for (const i of idx) {
-      o.getVertexPosition(i, _v); _v.applyMatrix4(o.matrixWorld); px(_v, bo); ls(_v);
+      o.getVertexPosition(i, _v); _v.applyMatrix4(worldOf(o)); px(_v, bo); ls(_v);
       if (groundShadow !== false && _v.y > py) { nAbove++; const s = _v.clone().addScaledVector(L, (_v.y - py) / -L.y); px(s, sh); ls(s);
         if (margin > 0) { const x = (_s.x + 1) / 2 * size, y = (1 - _s.y) / 2 * size;
           if (x < margin) edge('left', y); if (x > size - margin) edge('right', y); if (y < margin) edge('top', x); if (y > size - margin) edge('bottom', x); } }
@@ -231,7 +247,7 @@ export async function installV5({ glb, scapulaShift = false, headFlexDeg = 0, gr
     const n = vert ? h : w, b = new Uint8Array(n * 4); gl.readPixels(x, y, vert ? 1 : w, vert ? h : 1, gl.RGBA, gl.UNSIGNED_BYTE, b);
     const a = new Array(n); for (let i = 0; i < n; i++) a[i] = b[(vert ? n - 1 - i : i) * 4 + 3]; return a;
   }
-  window.__v5 = { pose, render, extent, borderAlpha, get edge() { return edge; }, sun, plane, bones, root, toon, hidden, ...(gripInfo ? { grip: gripInfo } : {}), info: { hiddenHub: hidden.slice(), mutedShadowLights: otherShadowLights.slice(), shadowPlaneY: plane.position.y, matTop, outlines: toon.outlines, hair: toon.hair, outfit: toon.outfit, toonN: toon.toonN, wristSides: wf.sides, ...(scapulaShift ? { scapulaShift: true } : {}), ...(headFlexDeg ? { headFlexDeg } : {}), ...(groundShadow === false ? { groundShadow: false } : {}), ...(gripInfo ? { grip: gripInfo.info } : {}) } };
+  window.__v5 = { pose, render, extent, borderAlpha, get edge() { return edge; }, sun, plane, bones, root, toon, hidden, ...(gripInfo ? { grip: gripInfo } : {}), ...(hubGrasp ? { hubGrasp } : {}), info: { hiddenHub: hidden.slice(), mutedShadowLights: otherShadowLights.slice(), shadowPlaneY: plane.position.y, matTop, outlines: toon.outlines, hair: toon.hair, outfit: toon.outfit, toonN: toon.toonN, wristSides: wf.sides, ...(scapulaShift ? { scapulaShift: true } : {}), ...(headFlexDeg ? { headFlexDeg } : {}), ...(groundShadow === false ? { groundShadow: false } : {}), ...(gripInfo ? { grip: gripInfo.info } : {}), ...(hubGrasp ? { hubGraspHands: hubGrasp.info } : {}) } };
   return window.__v5.info;
 }
 
@@ -306,4 +322,111 @@ function installGrip(opt, { bones, skinned }) {
   out.dumbbell = !!mesh;
   const handle = { cx: sx * g.cx, cy: g.cy, r: g.r, z0: g.cap.z - g.cap.t, z1: g.head.z0, head: g.head };
   return { info: out, mesh, handle, bone: hand };
+}
+
+// ---- hub grasp hands (opt-in, see header). Hand bone frame (metres, unit scale): wrist pivot at 0, fingers along -X (right hand;
+// mirrored for the left: sx), palm toward -Y, thumb toward +Z. The hub rig and the V5 rig share it (rest world rotations identity,
+// V5 copies the hub hand's world rotation, pivots coincide), so a point rigid with the hub hand has the same hand-frame coordinates on V5.
+const HG = { inShell: 0.001, fistShell: 0.0015, cut: 0.010, ramp: 0.012, rigid0: 0.010, rigid1: 0.002, inset: 0.0006, bins: 36, ring: 0.004, olW: 0.5 };   // olW = toon-r6 OL2.hand
+const unitFrame = (o, m = new THREE.Matrix4()) => { const p = new THREE.Vector3(), q = new THREE.Quaternion(), s = new THREE.Vector3(); o.matrixWorld.decompose(p, q, s); return m.compose(p, q, new THREE.Vector3(1, 1, 1)); };
+function cutForHubGrasp(sidesIn, { v, skinned }) {
+  const sides = [...new Set(sidesIn)];
+  if (!sides.length || sides.some(s => s !== 'left' && s !== 'right')) throw Error('bad v5.hubGraspHands (left/right)');
+  const J = window.__webxrWristJoin;
+  if (!J || !J.active || !J.meshes?.hands) throw Error('v5.hubGraspHands needs the hub fixed grasp hands (recipe hands bar-grasp / dumbbell-grasp / fixed-grasp)');
+  const hubBone = {}; v.coach.traverse(o => { if (o.isBone && /^(left|right)Hand$/.test(o.name) && !hubBone[o.name]) hubBone[o.name] = o; });
+  // rel = hub fist mesh in its hand bone frame, read inside a real hub render (the hub places the fist only during a render)
+  const rel = {};
+  J.sample(() => { for (const s of sides) { const hm = J.meshes.hands[s]; if (!hm) throw Error('no hub fixed hand ' + s); hm.updateMatrixWorld(true);
+    rel[s] = unitFrame(hubBone[s + 'Hand']).invert().multiply(hm.matrixWorld); } });
+  const info = { sides, perSide: {} }, ring = {}, seamIdx = new Map(), inside = new Map();
+  for (const side of sides) {
+    const sx = side === 'left' ? -1 : 1, hm = J.meshes.hands[side], P = hm.geometry.attributes.position, v3 = new THREE.Vector3();
+    const H = []; for (let i = 0; i < P.count; i++) { v3.fromBufferAttribute(P, i).applyMatrix4(rel[side]); H.push([sx * v3.x, v3.y, v3.z]); }
+    const x0 = Math.max(...H.map(p => p[0]));   // the fist's open wrist end (a plane in the hand frame)
+    const R = H.filter(p => p[0] > x0 - HG.ring), cy = R.reduce((a, p) => a + p[1], 0) / R.length, cz = R.reduce((a, p) => a + p[2], 0) / R.length;
+    // fist surface radius about the ring axis, by ray from the axis (hand frame, x mirrored by sx), first hit; null = no hit
+    const fist = new THREE.Mesh(hm.geometry.clone().applyMatrix4(rel[side]), new THREE.MeshBasicMaterial({ side: THREE.DoubleSide })), rc = new THREE.Raycaster();
+    fist.updateMatrixWorld(true);
+    const fistR = (x, a) => { rc.set(new THREE.Vector3(sx * x, cy, cz), new THREE.Vector3(0, Math.cos(a), Math.sin(a))); const h = rc.intersectObject(fist, false)[0]; return h ? h.distance : null; };
+    // ring profile just inside the open end (bins of 10 deg, linear between bin centres)
+    const prof = Array.from({ length: HG.bins }, (_, b) => fistR(x0 - 0.0005, ((b + 0.5) / HG.bins) * 2 * Math.PI - Math.PI));
+    for (let b = 0; b < HG.bins; b++) if (prof[b] === null) { let l = 1, r = 1; while (prof[(b - l + HG.bins) % HG.bins] === null && l < HG.bins) l++; while (prof[(b + r) % HG.bins] === null && r < HG.bins) r++;
+      const a = prof[(b - l + HG.bins) % HG.bins], c = prof[(b + r) % HG.bins]; if (a === null || c === null) throw Error('v5.hubGraspHands: fist wrist ring not found ' + side); prof[b] = a + (c - a) * l / (l + r); }
+    const rAt = (y, z) => { const a = (Math.atan2(z - cz, y - cy) + Math.PI) / (2 * Math.PI) * HG.bins - 0.5, b0 = Math.floor(a), f = a - b0, i0 = ((b0 % HG.bins) + HG.bins) % HG.bins, i1 = (i0 + 1) % HG.bins; return prof[i0] * (1 - f) + prof[i1] * f; };
+    let rayMiss = 0;
+    ring[side] = { x0, cy, cz, prof: prof.slice(), rAt, sx };
+    const st = { fistX0Mm: +(x0 * 1000).toFixed(2), fistRingMm: [Math.min(...prof), Math.max(...prof)].map(x => +(x * 1000).toFixed(1)), cut: 0, blended: 0, rebound: 0, meshes: 0, tris: 0 };
+    const ss = u => { u = Math.min(1, Math.max(0, u)); return u * u * (3 - 2 * u); };
+    for (const m of skinned) {
+      const names = m.skeleton.bones.map(b => b.name), hi = names.indexOf(side + 'Hand'); if (hi < 0) continue;
+      const chain = new Set(names.map((n, i) => (n === side + 'Hand' || n.startsWith(side + 'WristBend') || n.startsWith(side + 'Forearm')) ? i : -1).filter(i => i >= 0));
+      const g = m.geometry, Pm = g.attributes.position, Nm = g.attributes.normal, Ji = g.attributes.skinIndex, Wi = g.attributes.skinWeight;
+      const toL = m.skeleton.boneInverses[hi].clone().multiply(m.bindMatrix), toM = toL.clone().invert(), drop = new Uint8Array(Pm.count), p = new THREE.Vector3();
+      let touched = 0;
+      for (let i = 0; i < Pm.count; i++) {
+        let w = 0; for (let k = 0; k < 4; k++) if (chain.has(Ji.getComponent(i, k))) w += Wi.getComponent(i, k); if (w < 0.5) continue;
+        p.fromBufferAttribute(Pm, i).applyMatrix4(toL); const x = sx * p.x; if (x > x0 + HG.ramp) continue;
+        if (x < x0 - HG.cut) { drop[i] = 1; st.cut++; touched++; continue; }
+        // blend the cross-section onto the fist's wrist ring (radially about the ring centre), 0 at x0+ramp .. 1 at x0; inside the fist
+        // (x < x0) onto the fist's own surface at that x, so the V5 wrist end stays just under the fist
+        const t = ss((x0 + HG.ramp - x) / HG.ramp), r = Math.hypot(p.y - cy, p.z - cz);
+        let rT = rAt(p.y, p.z) - HG.inset;
+        if (x < x0) { const fr = fistR(x, Math.atan2(p.z - cz, p.y - cy)); if (fr === null) rayMiss++; else rT = Math.min(rT + HG.inset, fr) - HG.inset; }
+        if (r > 1e-6) { const k = (r + (rT - r) * t) / r; p.y = cy + (p.y - cy) * k; p.z = cz + (p.z - cz) * k; }
+        p.applyMatrix4(toM); Pm.setXYZ(i, p.x, p.y, p.z); st.blended++; touched++;
+        // rigid with the hand bone from x0+rigid1 on (ramped from x0+rigid0), so the seam follows the fist on every frame
+        const u = ss((x0 + HG.rigid0 - x) / (HG.rigid0 - HG.rigid1));
+        if (u > 0) { const W = [0, 1, 2, 3].map(k => [Ji.getComponent(i, k), Wi.getComponent(i, k)]); let slot = W.findIndex(e => e[0] === hi && e[1] > 0);
+          if (slot < 0) { slot = W.reduce((b, e, k) => e[1] < W[b][1] ? k : b, 0); W[slot] = [hi, 0]; }
+          for (let k = 0; k < 4; k++) W[k][1] = k === slot ? W[k][1] + (1 - W[k][1]) * u : W[k][1] * (1 - u);
+          const sum = W.reduce((a, e) => a + e[1], 0); for (let k = 0; k < 4; k++) { Ji.setComponent(i, k, W[k][0]); Wi.setComponent(i, k, W[k][1] / sum); }
+          st.rebound++; }
+        if (Math.abs(x - x0) <= 0.001) { const l = seamIdx.get(m) || []; l.push([i, side]); seamIdx.set(m, l); }
+        if (x < x0) { const l = inside.get(m) || []; l.push([i, (x0 - x) / HG.inShell]); inside.set(m, l); }
+      }
+      if (!touched) continue;
+      const I = g.index.array, keep = []; for (let t = 0; t < I.length; t += 3) { if (drop[I[t]] || drop[I[t + 1]] || drop[I[t + 2]]) { st.tris++; continue; } keep.push(I[t], I[t + 1], I[t + 2]); }
+      g.setIndex(keep); Pm.needsUpdate = true; Ji.needsUpdate = true; Wi.needsUpdate = true; if (Nm) Nm.needsUpdate = true; g.computeBoundingSphere(); st.meshes++;
+      info.handMesh = info.handMesh || m;
+    }
+    st.rayMiss = rayMiss; fist.geometry.dispose();
+    if (!st.cut || !st.blended) throw Error('v5.hubGraspHands: V5 hand ' + side + ' not found past the fist wrist end');
+    info.perSide[side] = st;
+  }
+  const handMesh = info.handMesh; delete info.handMesh;
+  const posedMatrix = (o, bones) => { for (const s of sides) if (o === J.meshes.hands[s]) return unitFrame(bones[s + 'Hand']).multiply(rel[s]); return null; };
+  // seam measure (call after pose()): V5 seam vertices (within 1 mm of the fist's open end) in the posed V5 hand frame vs the fist ring:
+  // step = V5 radius - fist radius at that angle (mm; - = inside the fist, + = a ledge outside it)
+  const seam = bones => { const out = {}; const p = new THREE.Vector3();
+    for (const s of sides) out[s] = { min: 1e9, max: -1e9, n: 0 };
+    for (const [m, list] of seamIdx) { m.skeleton.update(); m.updateMatrixWorld(true);
+      const inv = {}; for (const s of sides) inv[s] = unitFrame(bones[s + 'Hand']).invert();
+      for (const [i, s] of list) { m.getVertexPosition(i, p); p.applyMatrix4(m.matrixWorld).applyMatrix4(inv[s]); const R = ring[s];
+        const d = Math.hypot(p.y - R.cy, p.z - R.cz) - R.rAt(p.y, p.z), o = out[s]; o.min = Math.min(o.min, d); o.max = Math.max(o.max, d); o.n++; } }
+    for (const s of sides) { out[s].min = +(out[s].min * 1000).toFixed(2); out[s].max = +(out[s].max * 1000).toFixed(2); }
+    return out; };
+  return { sides, rel, ring, inside, info, J, handMesh, posedMatrix, seam };
+}
+function styleHubGrasp(hg, groundShadow) {
+  const mat = hg.handMesh.material, ol = hg.handMesh.children.find(c => c.userData.__outline)?.material;
+  if (!mat || !ol) throw Error('v5.hubGraspHands: V5 toon materials missing');
+  for (const s of hg.sides) {
+    const hm = hg.J.meshes.hands[s], g = hm.geometry, n = g.attributes.position.count, N = g.attributes.normal;
+    const tw = new Float32Array(n * 4); for (let i = 0; i < n; i++) tw[4 * i] = 1;   // skin region
+    g.setAttribute('toonW', new THREE.BufferAttribute(tw, 4));
+    g.setAttribute('toonN', new THREE.BufferAttribute(Float32Array.from(N.array), 3));   // shading normals = the fist's own smooth normals
+    // outline weight = the V5 hand weight 0.5, ramped up from 0 over the first 1.5 mm of the fist's open wrist ring (the ring's shell then
+    // lies on the surface); the V5 wrist inside the fist has no shell (below), so the silhouette line passes from the V5 wrist to the fist
+    const P = g.attributes.position, R = hg.ring[s], w = new Float32Array(n), q = new THREE.Vector3();
+    for (let i = 0; i < n; i++) { q.fromBufferAttribute(P, i).applyMatrix4(hg.rel[s]); const u = Math.min(1, Math.max(0, (R.x0 - R.sx * q.x) / HG.fistShell)); w[i] = HG.olW * u * u * (3 - 2 * u); }
+    g.setAttribute('olW', new THREE.BufferAttribute(w, 1));
+    hm.material = mat; hm.castShadow = groundShadow !== false;
+    const o = new THREE.Mesh(g, ol); o.name = 'V5_HubGraspOutline_' + s; o.userData.__outline = true; o.frustumCulled = false; o.renderOrder = -1; o.raycast = () => { };
+    hm.add(o);
+  }
+  // V5 wrist inside the fist (0.6 mm under its surface): no outline shell there (it would poke through the fist on close shots)
+  for (const [m, list] of hg.inside) { const A = m.geometry.attributes.olW; if (!A) continue;
+    for (const [i, u0] of list) { const u = Math.min(1, u0); A.setX(i, A.getX(i) * (1 - u * u * (3 - 2 * u))); } A.needsUpdate = true; }
+  hg.info.style = { material: mat.name, outline: ol.name, outlineWeight: HG.olW };
 }

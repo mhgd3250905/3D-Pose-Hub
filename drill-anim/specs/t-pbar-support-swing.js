@@ -23,7 +23,8 @@ const A = 24, N = 240, ARM = 178.5, ITERS = 60;
 const sw = Array.from({ length: N }, (_, i) => { const t = i / 30; return [+t.toFixed(4), +Math.sin(2 * Math.PI * t / 4).toFixed(5), 'linear']; });
 s.timeline = { duration: 8, tracks: { sw, hl: sw.map(([t, v]) => [t, +Math.abs(v).toFixed(5), 'linear']) } };
 const b = s.pose.base;
-s.v5 = { scapulaShift: true };
+// V5 hubGraspHands (opt-in, r3 2026-11-19, 开哥「单杠双杠应该用我们专门的抓握手模」): both hands drawn with the hub's accepted bar-grasp fist.
+s.v5 = { scapulaShift: true, hubGraspHands: ['left', 'right'] };
 b.shoulders = { shift: [0, -0.015, 0] };   // chest frame: 15 mm scapular depression (shoulders away from the ears)
 b.chest = { waist: [[[1, 0, 0], 4]] };      // slight hollow
 const PITCH0 = 2.2;                          // hip pitch that centres the swing on the vertical (r1 rest: feet 2.2 deg forward)

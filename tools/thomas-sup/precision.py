@@ -35,6 +35,8 @@ def qinv(q): return [-q[0], -q[1], -q[2], q[3]]
 def seg_closest(p, a, b):
     ab = sub(b, a); t = max(0, min(1, dot(sub(p, a), ab) / (dot(ab, ab) or 1e-12))); return t, add(a, mul(ab, t))
 
+_bars = (plan.get('fixedBarGrip') or {}).get('bars') or {}
+BARZ = (sum(b['bar'][2] for b in _bars.values()) / len(_bars)) if _bars and all(abs(b['axis'][0]) > 0.99 for b in _bars.values()) else None
 KNEE_R, ARM_R = 0.050, 0.042   # knee (distal thigh) and upper-arm half thickness on the V5 body, m (qa.py upperArm radius 42 mm)
 
 S = src['samples']
@@ -44,6 +46,15 @@ def metrics(s):
     m = {}
     if 'grip' in s:   # v5.grip (dumbbell in the hand): handle vs hand (hand frame, rigid), dumbbell vs the rest of the body (per frame)
         m['gripPenMm'] = s['grip']['handlePenMm']; m['gripClearMm'] = s['grip']['clearMm']; m['gripContactMin'] = min(s['grip']['contact'][:4])
+    if 'hubGrasp' in s:   # v5.hubGraspHands (r3): hub fixed fist vs bar / its fixed dumbbell handle, dumbbell vs body, wrist seam (check.mjs)
+        hg = s['hubGrasp']; sd = [k for k in ('left', 'right') if k in hg]
+        m['seamStepMinMm'] = min(hg['seam'][k]['min'] for k in sd); m['seamStepMaxMm'] = max(hg['seam'][k]['max'] for k in sd)
+        bars = [hg[k]['bar'] for k in sd if 'bar' in hg[k]]
+        if bars: m['barMinMm'] = min(b['minMm'] for b in bars); m['barWrapDeg'] = min(b['wrapDeg'] for b in bars); m['barContact'] = min(b['contact2mm'] for b in bars)
+        dbs = [hg[k]['dumbbell'] for k in sd if hg[k].get('dumbbell')]
+        if dbs:
+            m['dbHandleMinMm'] = min(d['handle']['minMm'] for d in dbs); m['dbWrapDeg'] = min(d['handle']['wrapDeg'] for d in dbs)
+            m['dbContact'] = min(d['handle']['contact2mm'] for d in dbs); m['dbClearMm'] = min(d['bodyClearMm'] for d in dbs)
     m['elbowL'], m['elbowR'] = s['ang']['leftElbow'], s['ang']['rightElbow']
     m['elbowMin'] = min(m['elbowL'], m['elbowR'])
     m['kneeMin'] = min(s['ang']['leftKnee'], s['ang']['rightKnee'])
@@ -134,7 +145,9 @@ def metrics(s):
     m['comLeadCm'] = round(dot([com[0] - wr[0], 0, com[2] - wr[2]], f) * 100, 2)   # + = in front of the wrists (over the palms)
     m['comLeadAirborneCm'] = m['comLeadCm'] if m['footClearMm'] > 5 else None   # only while both feet are off the mat
     # hanging / support actions (r3, 2026-11-19), rig facing +Z: world-sagittal measures
-    m['comFwdCm'] = round((com[2] - wr[2]) * 100, 2)   # + = centre of mass in front of the hands (bar) along +Z
+    # r3 (hubGraspHands): a bar the fixed fist really holds (actions.json fixedBarGrip.bars along X) is the support point, so the bar line
+    # replaces the wrist bones as the reference (the wrist hangs ~5 cm behind the bar axis in the fist)
+    m['comFwdCm'] = round((com[2] - (BARZ if BARZ is not None else wr[2])) * 100, 2)   # + = centre of mass in front of the hands (bar) along +Z
     m['comFwdShCm'] = round((com[2] - sh[2]) * 100, 2)
     for side, k in (('left', 'L'), ('right', 'R')):   # leg elevation: hip -> ankle angle from straight down (90 = level)
         lv = unit(sub(J[side + 'Foot'], J[side + 'Thigh'])); m['legElev' + k] = round(deg(math.acos(max(-1, min(1, -lv[1])))), 1)

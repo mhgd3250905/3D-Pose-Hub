@@ -30,11 +30,16 @@ const meshPairs=(opt('--mesh-clip','')||'').split(',').filter(Boolean).map(p=>p.
 // --gap 'forearmR:thighR:up,handL:handR' = surface gap of region A over region B (r4, 2026-11-19; see __tsGap)
 let gapPairs=(opt('--gap','')||'').split(',').filter(Boolean).map(p=>p.split(':'));const outFile=opt('--out');
 // --views 'side:0,0.1,1;front:-1,0.15,0;top:0,1,0.001:-1,0,0' = name:dir[:up] (world; camera looks at the body centre from dir)
-const views=(opt('--views','')||'').split(';').filter(Boolean).map(v=>{const [name,d,u]=v.split(':');return {name,dir:d.split(',').map(Number),up:u?u.split(',').map(Number):[0,1,0]};});
+// r3 (2026-11-19): optional 4th part 'bone,radiusM' = close-up on that V5 bone (a hub grasp fist: on the fist's centre), e.g. 'hr:1,0.2,0.3:0,1,0:rightHand,0.1'
+const views=(opt('--views','')||'').split(';').filter(Boolean).map(v=>{const [name,d,u,f]=v.split(':');const fo=f?f.split(','):null;return {name,dir:d.split(',').map(Number),up:u?u.split(',').map(Number):[0,1,0],...(fo?{focus:{bone:fo[0],r:+(fo[1]??0.12)}}:{})};});
 // V5 opt-in head flexion (spec v5.headFlexDeg), same rule as tools/v5/render-masters-v5.mjs
 const v5HeadFlex=s=>{const d=s.v5?.headFlexDeg;if(d===undefined||d===0)return 0;if(!(Number.isFinite(d)&&Math.abs(d)<=30))throw Error('bad v5.headFlexDeg (|deg| <= 30)');return d;};
 // V5 opt-in grip (spec v5.grip = { side, dumbbell, ... }), same rule as tools/v5/render-masters-v5.mjs
 const v5Grip=s=>{const g=s.v5?.grip;if(g===undefined||g===null)return null;if(typeof g!=='object'||!['left','right'].includes(g.side))throw Error('bad v5.grip ({side:left|right,...})');return g;};
+// Hub grasp hands (spec v5.hubGraspHands = ['left'|'right',...], opt-in per action; Thomas supplement r3 2026-11-19): the hub's accepted fixed
+// grasp fist (recipe hands bar-grasp / dumbbell-grasp / fixed-grasp) drawn in the V5 look instead of the V5 open hand on those sides,
+// see tools/v5/runtime/v5-hub.js header. Every action without that spec field installs V5 exactly as before.
+const v5HubGrasp=s=>{const h=s.v5?.hubGraspHands;if(h===undefined||h===null)return null;if(!Array.isArray(h)||!h.length||h.some(x=>!['left','right'].includes(x))||new Set(h).size!==h.length)throw Error('bad v5.hubGraspHands ([left|right,...])');return h;};
 const PLAN=JSON.parse(fs.readFileSync(path.join(HERE,'actions.json'),'utf8'));
 
 const loaded=await loadRecipe(recipeFile);
@@ -47,7 +52,7 @@ const res={id,recipe:path.relative(REPO,recipeFile),spec:prepared.recipe.spec,fr
 try{
   const mods=Object.fromEntries(MODULES.map(m=>[m,fs.readFileSync(path.join(RT,m),'utf8')]));
   const glb=fs.readFileSync(path.join(RT,MODEL)).toString('base64');
-  await page.evaluate(async ({mods,glb,scapulaShift,headFlexDeg,noShadow,grip})=>{
+  await page.evaluate(async ({mods,glb,scapulaShift,headFlexDeg,noShadow,grip,hubGrasp})=>{
     const src=await (await fetch('/src/viewer.js')).text(),v=src.match(/three\.js\?v=(\w+)/)[1],O=location.origin;
     const map={'three':O+'/node_modules/.vite/deps/three.js?v='+v,'three/addons/loaders/GLTFLoader.js':O+'/node_modules/.vite/deps/three_addons_loaders_GLTFLoader__js.js?v='+v,
       'three/addons/GLTFLoader.js':O+'/node_modules/.vite/deps/three_addons_loaders_GLTFLoader__js.js?v='+v};
@@ -57,8 +62,8 @@ try{
       url[name]=URL.createObjectURL(new Blob([fixed],{type:'text/javascript'}));
     }
     const bin=Uint8Array.from(atob(glb),c=>c.charCodeAt(0)).buffer;
-    const m=await import(url['v5-hub.js']);return await m.installV5(scapulaShift||headFlexDeg||noShadow||grip?{glb:bin,...(scapulaShift?{scapulaShift}:{}),...(headFlexDeg?{headFlexDeg}:{}),...(noShadow?{groundShadow:false}:{}),...(grip?{grip}:{})}:{glb:bin});
-  },{mods,glb,scapulaShift:source.v5?.scapulaShift===true,headFlexDeg:v5HeadFlex(source),noShadow:source.v5?.groundShadow===false,grip:v5Grip(source)});
+    const m=await import(url['v5-hub.js']);return await m.installV5(scapulaShift||headFlexDeg||noShadow||grip||hubGrasp?{glb:bin,...(scapulaShift?{scapulaShift}:{}),...(headFlexDeg?{headFlexDeg}:{}),...(noShadow?{groundShadow:false}:{}),...(grip?{grip}:{}),...(hubGrasp?{hubGraspHands:hubGrasp}:{})}:{glb:bin});
+  },{mods,glb,scapulaShift:source.v5?.scapulaShift===true,headFlexDeg:v5HeadFlex(source),noShadow:source.v5?.groundShadow===false,grip:v5Grip(source),hubGrasp:v5HubGrasp(source)});
   // in-page measurement on the V5 body
   await page.evaluate(()=>{
     const T=window.__toonT,V=window.__v5,v=flareInspector.viewer;
@@ -95,7 +100,37 @@ try{
           const d=Math.min(cyl(h.r,h.z0,h.z1),cyl(h.head.r,h.head.z0,h.head.z1));if(d<best){best=d;at=r;}}
         grip={clearMm:+(best*1000).toFixed(1),region:at,handlePenMm:V.grip.info.handlePenMm,contact:V.grip.info.contact};
       }
-      return {minY,minP,prop,J,Q,...(grip?{grip}:{})};
+      let hubGrasp=null;
+      if(V.hubGrasp){   // v5.hubGraspHands (r3): hub fist vs bar capsule / its fixed dumbbell, dumbbell vs the V5 body, wrist seam (mm)
+        const G=V.hubGrasp,B=V.bones;hubGrasp={seam:G.seam(B)};
+        const segD=(p,c)=>{const ab=[c.b[0]-c.a[0],c.b[1]-c.a[1],c.b[2]-c.a[2]],ap=[p.x-c.a[0],p.y-c.a[1],p.z-c.a[2]],L=ab[0]**2+ab[1]**2+ab[2]**2;let t=(ab[0]*ap[0]+ab[1]*ap[1]+ab[2]*ap[2])/L;t=Math.max(0,Math.min(1,t));
+          const q=[ap[0]-ab[0]*t,ap[1]-ab[1]*t,ap[2]-ab[2]*t];return {d:Math.hypot(...q)-c.r,q,ab};};
+        for(const s of G.sides){const hm=G.J.meshes.hands[s];hm.updateMatrixWorld(true);const M=G.posedMatrix(hm,B),P=hm.geometry.attributes.position,pts=[];
+          for(let i=0;i<P.count;i++)pts.push(new T.Vector3().fromBufferAttribute(P,i).applyMatrix4(M));
+          const out=hubGrasp[s]={fistVerts:pts.length};
+          if(caps.length){let best=null;for(const c of caps){let mn=1e9;for(const p of pts)mn=Math.min(mn,segD(p,c).d);if(!best||mn<best.mn)best={c,mn};}
+            const c=best.c,ax=new T.Vector3(...[c.b[0]-c.a[0],c.b[1]-c.a[1],c.b[2]-c.a[2]]).normalize(),e1=new T.Vector3(0,1,0);if(Math.abs(e1.dot(ax))>0.9)e1.set(1,0,0);e1.sub(ax.clone().multiplyScalar(e1.dot(ax))).normalize();const e2=ax.clone().cross(e1);
+            const bins=new Set();let n2=0;for(const p of pts){const r=segD(p,c);if(r.d<0.002)n2++;if(r.d<0.004){const q=new T.Vector3(...r.q);bins.add(Math.floor((Math.atan2(q.dot(e2),q.dot(e1))+Math.PI)/(Math.PI/18)));}}
+            out.bar={minMm:+(best.mn*1000).toFixed(2),contact2mm:n2,wrapDeg:bins.size*10,barR:c.r};}
+          const inv=hm.matrixWorld.clone().invert(),db=[],names=[];hm.parent.traverse(o=>{if(o.isMesh&&o!==hm&&!o.userData.__outline&&o.visible&&/^wrist_join_/.test(o.name)){names.push(o.name);o.updateMatrixWorld(true);
+            const Q=o.geometry.attributes.position;for(let i=0;i<Q.count;i++)db.push(new T.Vector3().fromBufferAttribute(Q,i).applyMatrix4(o.matrixWorld).applyMatrix4(inv).applyMatrix4(M));}});
+          if(db.length){
+            // the fixed dumbbell's handle ('shaft' part) as a cylinder (axis = principal direction of its vertices, radius = their largest
+            // distance from it); fist vertices along the handle: signed distance to its surface (- = into the handle), contact and wrap
+            const sh=[];hm.parent.traverse(o=>{if(o.isMesh&&o.visible&&/_shaft$/.test(o.name)){const Q=o.geometry.attributes.position;for(let i=0;i<Q.count;i++)sh.push(new T.Vector3().fromBufferAttribute(Q,i).applyMatrix4(o.matrixWorld).applyMatrix4(inv).applyMatrix4(M));}});
+            let handle=null;
+            if(sh.length){const c=sh.reduce((a,q)=>a.add(q),new T.Vector3()).multiplyScalar(1/sh.length);let ax=new T.Vector3(1,0.3,0.2).normalize();
+              for(let k=0;k<60;k++){const nn=new T.Vector3();for(const q of sh){const d=q.clone().sub(c);nn.addScaledVector(d,d.dot(ax));}ax=nn.normalize();}
+              const rad=q=>{const d=q.clone().sub(c);return d.sub(ax.clone().multiplyScalar(d.dot(ax))).length();},R=Math.max(...sh.map(rad)),L=Math.max(...sh.map(q=>Math.abs(q.clone().sub(c).dot(ax))));
+              const e1=new T.Vector3(0,1,0);if(Math.abs(e1.dot(ax))>0.9)e1.set(1,0,0);e1.sub(ax.clone().multiplyScalar(e1.dot(ax))).normalize();const e2=ax.clone().cross(e1);
+              let mn=1e9,n2=0;const bins=new Set();for(const p of pts){const d=p.clone().sub(c),h=d.dot(ax);if(Math.abs(h)>L)continue;const r=d.sub(ax.clone().multiplyScalar(h)),g=r.length()-R;mn=Math.min(mn,g);if(g<0.002)n2++;if(g<0.004)bins.add(Math.floor((Math.atan2(r.dot(e2),r.dot(e1))+Math.PI)/(Math.PI/18)));}
+              handle={rMm:+(R*1000).toFixed(2),halfLenMm:+(L*1000).toFixed(1),minMm:+(mn*1000).toFixed(2),contact2mm:n2,wrapDeg:bins.size*10};}
+            const cen=db.reduce((a,q)=>a.add(q),new T.Vector3()).multiplyScalar(1/db.length),rad=Math.max(...db.map(q=>q.distanceTo(cen)))+0.01,hand=s==='right'?'handR':'handL';
+            let clr=1e9,at=null;for(const {o,reg,n} of per)for(let i=0;i<n;i++){if(reg[i]===hand)continue;o.getVertexPosition(i,_v);_v.applyMatrix4(o.matrixWorld);if(_v.distanceTo(cen)>rad)continue;for(const q of db){const d=_v.distanceTo(q);if(d<clr){clr=d;at=reg[i];}}}
+            out.dumbbell={parts:names,verts:db.length,handle,bodyClearMm:clr<1e8?+(clr*1000).toFixed(1):null,bodyRegion:at};}
+        }
+      }
+      return {minY,minP,prop,J,Q,...(grip?{grip}:{}),...(hubGrasp?{hubGrasp}:{})};
     };
     // mesh-level self-clip (r2, 2026-11-19): how deep the skinned vertices of region A sit inside the skinned surface of region B.
     // B's surface = per (axial 15 mm, angular 12 deg) bin around B's bone axis, the largest radius of B's vertices in that bin;
@@ -137,6 +172,8 @@ try{
   const matTop=props.some(p=>p.type==='mat')?Math.max(...props.filter(p=>p.type==='mat').map(p=>(p.at?.[1]??0)+(p.size?.[2]??0.006))):0;
   const caps=await page.evaluate(()=>{const out=[];try{const q=__props.qaPrims?.()??[];for(const c of q)if(c.a&&c.b&&c.r)out.push({a:c.a,b:c.b,r:c.r});}catch{}return out;});
   for(const p of props)if(p.type==='pullupBar'&&p.capsule)caps.push(p.capsule);
+  // r3 (2026-11-19): a pull-up bar without an explicit capsule = its drawn bar (drill-anim/page/props.js pullupBar: radius 16 mm, along X)
+  for(const p of props)if(p.type==='pullupBar'&&!p.capsule&&!p.yaw){const W=p.width||1.0,H=p.height||2.2,a=p.at||[0,0,0];caps.push({a:[a[0]-W/2,a[1]+H,a[2]],b:[a[0]+W/2,a[1]+H,a[2]],r:0.016});}
   res.floorY=matTop;res.propCapsules=caps.length;
   const want=new Set(renderFrames);let warm=null;
   const only=opt('--frames');const frames=[];if(only)frames.push(...only.split(',').map(Number));else for(let f=0;f<N;f+=stride)frames.push(f);for(const f of renderFrames)if(!frames.includes(f))frames.push(f);frames.sort((a,b)=>a-b);
@@ -148,14 +185,17 @@ try{
     if(r.url&&pngDir)fs.writeFileSync(path.join(pngDir,`${String(f).padStart(4,'0')}.png`),Buffer.from(r.url.split(',')[1],'base64'));
     // review views (r2, 2026-11-19): the same V5 frame from fixed directions around the body (camera restored by the next stageAt)
     if(want.has(f)&&pngDir&&views.length)for(const vw of views){
-      const url=await page.evaluate(([d,up])=>{const T=window.__toonT,V=window.__v5,c=flareInspector.viewer.camera;const P=[];
+      const url=await page.evaluate(([d,up,fc])=>{const T=window.__toonT,V=window.__v5,c=flareInspector.viewer.camera;const P=[];
         for(const n of ['pelvis','torso','head','leftHand','rightHand','leftFoot','rightFoot','leftShin','rightShin','leftForearm','rightForearm'])P.push(V.bones[n].getWorldPosition(new T.Vector3()));
-        const box=new T.Box3().setFromPoints(P),cen=box.getCenter(new T.Vector3()),rad=box.getSize(new T.Vector3()).length()/2+0.22;
+        let box=new T.Box3().setFromPoints(P),cen=box.getCenter(new T.Vector3()),rad=box.getSize(new T.Vector3()).length()/2+0.22;
+        if(fc){const G=V.hubGrasp,s=/^(left|right)Hand$/.exec(fc.bone)?.[1];rad=fc.r;
+          if(G&&G.sides.includes(s)){const hm=G.J.meshes.hands[s];hm.updateMatrixWorld(true);hm.geometry.computeBoundingBox();cen=hm.geometry.boundingBox.getCenter(new T.Vector3()).applyMatrix4(G.posedMatrix(hm,V.bones));}
+          else cen=V.bones[fc.bone].getWorldPosition(new T.Vector3());}
         const dir=new T.Vector3(...d).normalize(),dist=rad/Math.tan(c.fov*Math.PI/360);
-        c.up.set(...up);c.position.copy(cen).addScaledVector(dir,dist);c.lookAt(cen);c.updateMatrixWorld();const u=V.render();c.up.set(0,1,0);return u;},[vw.dir,vw.up]);
+        c.up.set(...up);c.position.copy(cen).addScaledVector(dir,dist);c.lookAt(cen);c.updateMatrixWorld();const u=V.render();c.up.set(0,1,0);return u;},[vw.dir,vw.up,vw.focus??null]);
       fs.writeFileSync(path.join(pngDir,`${String(f).padStart(4,'0')}-${vw.name}.png`),Buffer.from(url.split(',')[1],'base64'));
     }
-    res.samples.push({...(r.m.grip?{grip:r.m.grip}:{}),f,t:+(f/fps).toFixed(3),spine:r.d.spine,warn:st.warn?.length??0,warnText:(st.warn??[]).slice(0,3).map(w=>typeof w==='string'?w:JSON.stringify(w)).join(' | ').slice(0,300),ang:r.d.angV5,angHub:r.d.angHub,posErr:r.d.posErr,posErrBone:r.d.posErrBone,H:Object.fromEntries(['leftPalm','rightPalm','leftWrist','rightWrist','leftToe','rightToe','leftAnkle','rightAnkle','leftKnee','rightKnee','leftShoulder','rightShoulder','leftElbow','rightElbow','pelvis','head','leftHip','rightHip','neck','shoulderCenter','waist','leftHeel','rightHeel','leftFingertip','rightFingertip'].map(n=>[n,st.joints[n]])),minY:r.m.minY,minP:r.m.minP,prop:r.m.prop,J:r.m.J,Q:r.m.Q,...(r.m.meshClip?{meshClip:r.m.meshClip}:{}),...(r.m.gap?{gap:r.m.gap}:{})});
+    res.samples.push({...(r.m.grip?{grip:r.m.grip}:{}),...(r.m.hubGrasp?{hubGrasp:r.m.hubGrasp}:{}),f,t:+(f/fps).toFixed(3),spine:r.d.spine,warn:st.warn?.length??0,warnText:(st.warn??[]).slice(0,3).map(w=>typeof w==='string'?w:JSON.stringify(w)).join(' | ').slice(0,300),ang:r.d.angV5,angHub:r.d.angHub,posErr:r.d.posErr,posErrBone:r.d.posErrBone,H:Object.fromEntries(['leftPalm','rightPalm','leftWrist','rightWrist','leftToe','rightToe','leftAnkle','rightAnkle','leftKnee','rightKnee','leftShoulder','rightShoulder','leftElbow','rightElbow','pelvis','head','leftHip','rightHip','neck','shoulderCenter','waist','leftHeel','rightHeel','leftFingertip','rightFingertip'].map(n=>[n,st.joints[n]])),minY:r.m.minY,minP:r.m.minP,prop:r.m.prop,J:r.m.J,Q:r.m.Q,...(r.m.meshClip?{meshClip:r.m.meshClip}:{}),...(r.m.gap?{gap:r.m.gap}:{})});
   }
   res.pageErrors=report.pageErrors;
 }finally{await scene.browser.close();}

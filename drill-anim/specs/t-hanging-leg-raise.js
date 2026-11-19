@@ -16,14 +16,16 @@ import { leg, legFields, dirW, scripted, curve } from './_thomas-armfix-r1.mjs';
 const T = 8, u = curve([[0, 0], [0.6, 0], [2.2, 1], [3.2, 1], [6.2, 0]], T);
 const s = structuredClone(previous);
 s.id = 't-hanging-leg-raise'; s.name = '悬垂举腿'; s.nameEn = 'Hanging Straight-Leg Raise';
-s.v5 = { scapulaShift: true };
+// V5 hubGraspHands (opt-in, r3 2026-11-19, 开哥「单杠双杠应该用我们专门的抓握手模」): both hands drawn with the hub's accepted bar-grasp fist.
+s.v5 = { scapulaShift: true, hubGraspHands: ['left', 'right'] };
 const b = s.pose.base;
 b.shoulders = { shift: [0, -0.015, 0] };   // chest frame: 15 mm scapular depression (active hang)
 b.hips = { up: [0, 1, 0], front: [0, 0, 1], rot: [[[1, 0, 0], 0]] };
 b.feet = { left: { mode: 'free', frame: 'hips' }, right: { mode: 'free', frame: 'hips' } };
 // pelvis Z = P0 + PK * sin(leg angle from straight down): the legs' forward moment grows with that sine, so the hips move back by it
-// and the centre of mass stays under the bar (P0, PK from the sandbox CoM check, 2026-11-19)
-const P0 = -0.018, PK = -0.0965, ELEV = 95;   // top leg elevation from straight down (deg)
+// and the centre of mass stays under the bar (P0, PK from the sandbox CoM check, 2026-11-19). r3: the fixed fist now really holds the
+// bar (fixedBarGrip.bars), so the support point is the bar line (z 0.02) rather than the r2 wrist targets: P0 -0.018 -> +0.019.
+const P0 = 0.019, PK = -0.0965, ELEV = 95;   // top leg elevation from straight down (deg)
 const fn = t => { const k = u(t), pitch = -10 * k, elev = -88 + (ELEV - 2) * k, o = { 'hips.rot.0.1': pitch, 'pelvis.2': P0 + PK * Math.sin((elev + 90) * Math.PI / 180) };
   for (const side of ['left', 'right']) Object.assign(o, legFields(side, leg(side, dirW(side === 'left' ? 1 : -1, elev, 0.5), pitch, 25 + 10 * k, 178)));
   return o; };

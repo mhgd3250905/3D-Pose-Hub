@@ -3,14 +3,14 @@
   "id": "t-seated-forearm-rotation",
   "nameZh": "坐姿哑铃翻手腕",
   "spec": "drill-anim/specs/t-seated-forearm-rotation.js",
-  "specSha256Lf": "dbe7cd3b152d42b3a489500f922b67a298712be65ccc2907f53e358ff8e22285",
+  "specSha256Lf": "714ca5855ca7041b6f44a6ae250b86f12b6e5d7a8c49b3b41d49d62c24aed960",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
   },
   "hands": {
-    "left": "native",
-    "right": "native"
+    "left": "dumbbell-grasp",
+    "right": "dumbbell-grasp"
   },
   "camera": {
     "pad": 0.12,
@@ -49,6 +49,13 @@
       "profile": "ankle-join-r5",
       "version": "0.1.0-r5"
     }
+  ],
+  "fixedCorrectionStack": {
+    "profile": "fixed-wrist-corrections-r1",
+    "version": "0.1.0-r1"
+  },
+  "fixedDumbbellsHidden": [
+    "left"
   ],
   "adaptation": {
     "status": "thomas-supplement-r1-draft",

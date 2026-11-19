@@ -3,7 +3,7 @@
   "id": "t-pbar-support-swing",
   "nameZh": "双杠支撑摆动",
   "spec": "drill-anim/specs/t-pbar-support-swing.js",
-  "specSha256Lf": "5f1dd8c9bf2ff3f57f82f9e14eef68590ae52144c23db883e90b4243c6749cfc",
+  "specSha256Lf": "ec26551b4ad0159f8a8981cb6c4234ef41df3eec9db47720c2d22f1379dbb13b",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -60,7 +60,43 @@
   },
   "fixedBarGrip": {
     "profile": "fixed-bar-grip-r1",
-    "note": "Bars recovered from the source gripPose targets (lib/grip.mjs G), as lats-C."
+    "note": "r3 (2026-11-19): explicit bars = the dip bars this action draws (x ±0.25, y 1.15, axis +Z), hand fore-aft and palm side from the recovered source grip. The recovered bars (lib/grip.mjs G) sat 52 mm above / 20 mm inside the drawn bars and 19 deg off their axis, so the fixed fist hovered on top of the bar.",
+    "bars": {
+      "left": {
+        "bar": [
+          0.25,
+          1.15,
+          -0.01671
+        ],
+        "axis": [
+          0,
+          0,
+          1
+        ],
+        "palm": [
+          0.99802,
+          0.06293,
+          0.0
+        ]
+      },
+      "right": {
+        "bar": [
+          -0.25,
+          1.15,
+          -0.01671
+        ],
+        "axis": [
+          0,
+          0,
+          1
+        ],
+        "palm": [
+          -0.99802,
+          0.06293,
+          0.0
+        ]
+      }
+    }
   },
   "adaptation": {
     "status": "thomas-supplement-r1-draft",

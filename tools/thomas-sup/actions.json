@@ -629,7 +629,43 @@
    "exerciseMat": false,
    "fixedBarGrip": {
     "profile": "fixed-bar-grip-r1",
-    "note": "Bars recovered from the source gripPose targets (lib/grip.mjs G), as lats-C."
+    "note": "r3 (2026-11-19): explicit bars = the dip bars this action draws (x ±0.25, y 1.15, axis +Z), hand fore-aft and palm side from the recovered source grip. The recovered bars (lib/grip.mjs G) sat 52 mm above / 20 mm inside the drawn bars and 19 deg off their axis, so the fixed fist hovered on top of the bar.",
+    "bars": {
+     "left": {
+      "bar": [
+       0.25,
+       1.15,
+       -0.01671
+      ],
+      "axis": [
+       0,
+       0,
+       1
+      ],
+      "palm": [
+       0.99802,
+       0.06293,
+       0.0
+      ]
+     },
+     "right": {
+      "bar": [
+       -0.25,
+       1.15,
+       -0.01671
+      ],
+      "axis": [
+       0,
+       0,
+       1
+      ],
+      "palm": [
+       -0.99802,
+       0.06293,
+       0.0
+      ]
+     }
+    }
    },
    "fixedCorrectionStack": {
     "profile": "fixed-wrist-corrections-r1",
@@ -733,7 +769,43 @@
    "exerciseMat": false,
    "fixedBarGrip": {
     "profile": "fixed-bar-grip-r1",
-    "note": "Bars recovered from the source gripPose targets (lib/grip.mjs G), as h-straight-arm-hang-native."
+    "note": "r3 (2026-11-19): explicit bars = the pull-up bar this action draws (y 2.15, z 0.02, axis X), hand position along the bar and palm side from the recovered source grip. The recovered bar (lib/grip.mjs G) sat 14 mm in front of the drawn bar and 24 deg off its axis.",
+    "bars": {
+     "left": {
+      "bar": [
+       0.33854,
+       2.15,
+       0.02
+      ],
+      "axis": [
+       -1,
+       0,
+       0
+      ],
+      "palm": [
+       0.0,
+       0.33513,
+       -0.94217
+      ]
+     },
+     "right": {
+      "bar": [
+       -0.33854,
+       2.15,
+       0.02
+      ],
+      "axis": [
+       1,
+       0,
+       0
+      ],
+      "palm": [
+       0.0,
+       0.33513,
+       -0.94217
+      ]
+     }
+    }
    },
    "fixedCorrectionStack": {
     "profile": "fixed-wrist-corrections-r1",
@@ -842,9 +914,9 @@
    },
    "camera": {
     "dir": [
-     0,
+     0.643,
      0.28,
-     1
+     0.766
     ],
     "fit": [
      "head",
@@ -860,6 +932,7 @@
     "k": 1,
     "at": 2
    },
+   "cameraNote": "r3 (2026-11-19, 开哥「把裆部处理一下」): camera turned 40 deg toward the body's left (was straight front [0,0.28,1], crotch dead centre to the lens); the near (left) thigh now covers the crotch, both feet and the lift stay in frame.",
    "matProp": {
     "type": "mat",
     "at": [
@@ -971,7 +1044,7 @@
     ]
    },
    "standard": "tools/thomas-sup/standards/t-straddle-active-lift.md",
-   "reviewViews": "front:0,0.25,1;side:1,0.12,0.05;top:0.001,1,0:0,0,1",
+   "reviewViews": "front:0.643,0.28,0.766;side:1,0.12,0.05;top:0.001,1,0:0,0,1",
    "reviewFrames": [
     1,
     60,
@@ -1329,10 +1402,17 @@
    "spec": "drill-anim/specs/t-seated-forearm-rotation.js",
    "thomasAngle": "10 / 14 换手",
    "hands": {
-    "left": "native",
-    "right": "native"
+    "left": "dumbbell-grasp",
+    "right": "dumbbell-grasp"
    },
    "exerciseMat": false,
+   "fixedCorrectionStack": {
+    "profile": "fixed-wrist-corrections-r1",
+    "version": "0.1.0-r1"
+   },
+   "fixedDumbbellsHidden": [
+    "left"
+   ],
    "camera": {
     "dir": [
      -0.35,

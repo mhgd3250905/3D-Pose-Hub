@@ -3,7 +3,7 @@
   "id": "t-hanging-leg-raise",
   "nameZh": "悬垂举腿",
   "spec": "drill-anim/specs/t-hanging-leg-raise.js",
-  "specSha256Lf": "ef020338fefcabaea3da16a31c95f64c2ffaff3064a3bee40ca47a610f18db3a",
+  "specSha256Lf": "3145261c26431457437adac693c96407b29de9def385f706369f5108609ff5f5",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -58,7 +58,43 @@
   },
   "fixedBarGrip": {
     "profile": "fixed-bar-grip-r1",
-    "note": "Bars recovered from the source gripPose targets (lib/grip.mjs G), as h-straight-arm-hang-native."
+    "note": "r3 (2026-11-19): explicit bars = the pull-up bar this action draws (y 2.15, z 0.02, axis X), hand position along the bar and palm side from the recovered source grip. The recovered bar (lib/grip.mjs G) sat 14 mm in front of the drawn bar and 24 deg off its axis.",
+    "bars": {
+      "left": {
+        "bar": [
+          0.33854,
+          2.15,
+          0.02
+        ],
+        "axis": [
+          -1,
+          0,
+          0
+        ],
+        "palm": [
+          0.0,
+          0.33513,
+          -0.94217
+        ]
+      },
+      "right": {
+        "bar": [
+          -0.33854,
+          2.15,
+          0.02
+        ],
+        "axis": [
+          1,
+          0,
+          0
+        ],
+        "palm": [
+          0.0,
+          0.33513,
+          -0.94217
+        ]
+      }
+    }
   },
   "adaptation": {
     "status": "thomas-supplement-r1-draft",

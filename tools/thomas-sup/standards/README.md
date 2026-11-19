@@ -48,3 +48,12 @@ node tools/thomas-sup/check.mjs --recipe ... --frames ... --mesh-clip forearmR:t
 - `tools/v5/runtime/v5-hub.js` 按动作开启：spec 写了 `v5: { grip: { side: 'right', dumbbell: true } }` 的动作，安装 V5 时在该手骨的绑定坐标里把四指、拇指绕一根握柄（手的 +Z 方向、横过掌心，半径 14.5 mm）弯起来（只改一次该手刚性顶点的位置与法线，在日漫描边之前；描边共享几何），并把单头哑铃（握柄 + 拇指一侧一个六角头，两阶平涂 + 墨线外壳）挂在 V5 手骨上随手转动。不加骨骼、不改蒙皮权重；`render-masters-v5.mjs` 与 `check.mjs` 读这个字段。null/缺省 = 代码路径不进入。check.mjs 每帧量哑铃到身体（握持手除外）的最近距离，precision.py 给出 `gripPenMm` / `gripContactMin` / `gripClearMm`。
 - 老动作不受影响的证据（2026-11-19 沙箱，240 px 母帧）：serratus-A（帧 0/39/69）、h-open-book（帧 0/90，带 view window）分别用 main 94ff057 的 v5-hub.js（fdda01f1…）/ render-masters-v5.mjs（cb284075…）与本分支的 v5-hub.js（de8e6869…）/ render-masters-v5.mjs（4d4f9caf…）各渲一遍：全部母帧 PNG、v5-pose.json、recipe.snapshot.json、source-manifest.json 逐字节相同；layer-manifest.json 只差源文件哈希、时间戳与耗时。
 - 第 7 项渲染护栏实测（沙箱 240 px，帧 0/15/60/114/165/210）：render-masters-v5.mjs 全部通过，V5 关节偏差 0。
+
+## V5 保留 hub 抓握手模（v5.hubGraspHands，r3 2026-11-19，开哥「抓握的都可以用专门的抓握手模」）
+- `tools/v5/runtime/v5-hub.js` 按动作、按侧开启：spec 写了 `v5: { hubGraspHands: ['left','right'] }` 的动作，该侧不画 V5 开手，改为显示 hub 已验收的固定抓握手模（fixed-hand-presets-r1 grasp 组），用 V5 皮肤材质与日漫描边；V5 手在握手模开口内 10 mm 处切开，手腕末 12 mm 贴合到握手模截面（表面下 0.6 mm）并刚性绑到手骨；hub 自带 wrist bridge 仍隐藏。缺省 = 代码路径不进入。`render-masters-v5.mjs` 与 `check.mjs` 读这个字段；check.mjs 新增逐帧手-杠/手-柄距离、绕握角、腕部接缝度量与特写视角。
+- 使用动作：t-pbar-support-swing、t-hanging-leg-raise（双手 bar-grasp，actions.json 显式 `fixedBarGrip.bars` 修正 hub 杠适配器的偏移：双杠原 52 mm 高/20 mm 内/19°，单杠原 14 mm/24°）；t-seated-forearm-rotation（dumbbell-grasp 双手 + `fixedDumbbellsHidden: ['left']`，V5 只右手显示握手模；v5.grip 不再被任何动作使用，代码保留）。
+- 实测（全周期每 4 帧）：双杠/单杠手-杠最近 -0.18 mm、绕杠 320°；哑铃柄-手 -0.82 mm、绕柄 ≥300°、哑铃离身体 ≥10 mm；腕部接缝 V5 腕在握手模内 0.48–1.07 mm，无外凸台阶。render-masters-v5.mjs 240 px 帧 0/60/120/180 四个动作全部通过。
+- 老动作不受影响的证据（沙箱 240 px 母帧，本分支 v5-hub.js f6e35937… / render-masters-v5.mjs 10e6f8ee…）：serratus-A（帧 0/39/69）、h-open-book（帧 0/90）对 main 94ff057，t-pushup-plus、t-self-resisted-wrist-flexion（帧 0/60）对 4c2515f：全部母帧 PNG、v5-pose.json、recipe.snapshot.json、source-manifest.json 逐字节相同；layer-manifest.json 只差源文件哈希、时间戳与耗时。gen-recipes --check 干净，其余配方未变。
+
+## 分腿抬腿裆部处理（r3 2026-11-19）
+- t-straddle-active-lift 机位由正前方 [0, 0.28, 1] 转向身体左侧 40°（dir [0.643, 0.28, 0.766]），近侧大腿挡住裆部；双脚与抬腿全程入框。未加短裤压平开关（机位已足够）。偏离 PDF 正前方机位，待开哥确认。

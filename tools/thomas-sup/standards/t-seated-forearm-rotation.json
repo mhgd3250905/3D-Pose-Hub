@@ -12,9 +12,11 @@
   "wristFlexR",
   "wristDevR",
   "forearmPitchDeg",
-  "gripPenMm",
-  "gripClearMm",
-  "gripContactMin"
+  "dbHandleMinMm",
+  "dbWrapDeg",
+  "dbClearMm",
+  "seamStepMinMm",
+  "seamStepMaxMm"
  ],
  "checks": [
   {
@@ -234,35 +236,59 @@
    "unit": "mm"
   },
   {
-   "id": "grip_no_clip",
-   "label": "握住哑铃不穿手：手的顶点进入握柄（最大）",
-   "metric": "gripPenMm",
-   "agg": "max",
-   "max": 1,
-   "unit": "mm"
-  },
-  {
-   "id": "grip_wrapped",
-   "label": "四指都绕着握柄：每指贴柄（离柄面 ≤ 2 mm）顶点数（最少一指）",
-   "metric": "gripContactMin",
-   "agg": "min",
-   "min": 20,
-   "unit": "个"
-  },
-  {
-   "id": "dumbbell_clear",
-   "label": "哑铃不碰身体：哑铃到身体（握哑铃的手除外）最近距离（最低）",
-   "metric": "gripClearMm",
-   "agg": "min",
-   "min": 5,
-   "unit": "mm"
-  },
-  {
    "id": "v5_matches_hub",
    "label": "V5 身体与求解姿态一致（最大关节偏差）",
    "kind": "summary",
    "path": "maxPosErrMm",
    "max": 2,
+   "unit": "mm"
+  },
+  {
+   "id": "db_no_clip",
+   "label": "抓握手模不穿握柄：手模顶点到握柄面最近（最低，负 = 进入握柄）",
+   "metric": "dbHandleMinMm",
+   "agg": "min",
+   "min": -1,
+   "unit": "mm"
+  },
+  {
+   "id": "db_in_palm",
+   "label": "哑铃在掌心：手模顶点到握柄面最近（每帧，最高）",
+   "metric": "dbHandleMinMm",
+   "agg": "max",
+   "max": 1,
+   "unit": "mm"
+  },
+  {
+   "id": "db_wrapped",
+   "label": "手指绕住握柄：离柄面 ≤ 4 mm 的手模顶点绕柄覆盖角（最少）",
+   "metric": "dbWrapDeg",
+   "agg": "min",
+   "min": 270,
+   "unit": "°"
+  },
+  {
+   "id": "dumbbell_clear",
+   "label": "哑铃不碰身体：哑铃到身体（握哑铃的右手除外）最近距离（最低）",
+   "metric": "dbClearMm",
+   "agg": "min",
+   "min": 5,
+   "unit": "mm"
+  },
+  {
+   "id": "seam_no_ledge",
+   "label": "手腕接缝无台阶：V5 手腕在抓握手模开口处的半径差（最大，+ = 凸出成台阶）",
+   "metric": "seamStepMaxMm",
+   "agg": "max",
+   "max": 0,
+   "unit": "mm"
+  },
+  {
+   "id": "seam_no_gap",
+   "label": "手腕接缝无缝隙：V5 手腕在抓握手模开口处的半径差（最小，− = 缩进手模里）",
+   "metric": "seamStepMinMm",
+   "agg": "min",
+   "min": -1.5,
    "unit": "mm"
   }
  ]

@@ -22,7 +22,7 @@ for a in PLAN['actions']:
         'output': {'groundShadow': False, 'cameraMotion': False, 'wholeCycleContentRect': True, 'fps': 30, 'exerciseMat': a.get('exerciseMat', True),
                    **({'matProp': a['matProp']} if a.get('matProp') else {})},
         'jointCorrections': [{'profile': 'upper-arm-contour-r3', 'version': '0.1.0-r3'}, {'profile': 'ankle-join-r5', 'version': '0.1.0-r5'}],
-        **({k: a[k] for k in ('fixedCorrectionStack', 'fixedBarGrip') if k in a}),
+        **({k: a[k] for k in ('fixedCorrectionStack', 'fixedBarGrip', 'fixedDumbbellsHidden') if k in a}),
         'adaptation': {'status': 'thomas-supplement-r1-draft', 'method': 'New spec authored in the sandbox (CPU solve + V5 low-res preview); V5 720p sample render pending on the render machine.'},
         'source': {'brief': '托马斯动作库补充-制作说明 2026-11-19 item ' + a['item'], 'thomasAngle': a['thomasAngle']},
         'sampledOnly': True, 'fullCycleValidated': False, 'reviewed': False, 'userAccepted': False, 'releaseEligible': False,

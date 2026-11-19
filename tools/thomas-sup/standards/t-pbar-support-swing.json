@@ -13,7 +13,11 @@
   "trunkFlexDeg",
   "scapUp",
   "shoulderBarZcm",
-  "toeTopMm"
+  "toeTopMm",
+  "barMinMm",
+  "barWrapDeg",
+  "seamStepMinMm",
+  "seamStepMaxMm"
  ],
  "checks": [
   {
@@ -166,6 +170,46 @@
    "kind": "summary",
    "path": "maxPosErrMm",
    "max": 2,
+   "unit": "mm"
+  },
+  {
+   "id": "bar_no_clip",
+   "label": "抓握手模不穿杠：手模顶点到杠面最近（最低，负 = 进入杠）",
+   "metric": "barMinMm",
+   "agg": "min",
+   "min": -1,
+   "unit": "mm"
+  },
+  {
+   "id": "bar_no_gap",
+   "label": "抓握手模贴住杠：手模顶点到杠面最近（每帧，最高）",
+   "metric": "barMinMm",
+   "agg": "max",
+   "max": 1,
+   "unit": "mm"
+  },
+  {
+   "id": "bar_wrapped",
+   "label": "手指真握住杠：离杠面 ≤ 4 mm 的手模顶点绕杠覆盖角（最少）",
+   "metric": "barWrapDeg",
+   "agg": "min",
+   "min": 270,
+   "unit": "°"
+  },
+  {
+   "id": "seam_no_ledge",
+   "label": "手腕接缝无台阶：V5 手腕在抓握手模开口处的半径差（最大，+ = 凸出成台阶）",
+   "metric": "seamStepMaxMm",
+   "agg": "max",
+   "max": 0,
+   "unit": "mm"
+  },
+  {
+   "id": "seam_no_gap",
+   "label": "手腕接缝无缝隙：V5 手腕在抓握手模开口处的半径差（最小，− = 缩进手模里）",
+   "metric": "seamStepMinMm",
+   "agg": "min",
+   "min": -1.5,
    "unit": "mm"
   }
  ]
