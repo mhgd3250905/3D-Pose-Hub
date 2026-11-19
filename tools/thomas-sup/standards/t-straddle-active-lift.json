@@ -1,0 +1,274 @@
+{
+ "format": "thomas-sup-standard@1",
+ "id": "t-straddle-active-lift",
+ "nameZh": "主动分腿压抬腿",
+ "doc": "tools/thomas-sup/standards/t-straddle-active-lift.md",
+ "phases": {
+  "hold": "单腿抬起停留 2 s（左 holdL、右 holdR 两段）",
+  "holdL": "左腿停留",
+  "holdR": "右腿停留",
+  "rest": "换腿间隙，两腿都在垫上"
+ },
+ "series": [
+  "legLiftMm",
+  "footDownMm",
+  "kneeUpDegMax",
+  "toeUpDegMax",
+  "seatContactMm",
+  "elbowMin"
+ ],
+ "checks": [
+  {
+   "id": "knee_straight",
+   "label": "直腿（两膝最小角）",
+   "metric": "kneeMin",
+   "agg": "min",
+   "min": 174,
+   "unit": "°"
+  },
+  {
+   "id": "straddle_min",
+   "label": "分腿角（两腿 髋→踝 夹角，最小）",
+   "metric": "straddleDeg",
+   "agg": "min",
+   "min": 75,
+   "unit": "°"
+  },
+  {
+   "id": "straddle_max",
+   "label": "分腿角（最大，不追求极限一字）",
+   "metric": "straddleDeg",
+   "agg": "max",
+   "max": 120,
+   "unit": "°"
+  },
+  {
+   "id": "kneecap_up",
+   "label": "髌骨朝上不内旋（大腿/小腿正面与竖直向上夹角，最大）",
+   "metric": "kneeUpDegMax",
+   "agg": "max",
+   "max": 15,
+   "unit": "°"
+  },
+  {
+   "id": "toes_up",
+   "label": "脚尖朝上不往前倒（足骨正面/脚尖点，最大）",
+   "metric": "toeUpDegMax",
+   "agg": "max",
+   "max": 15,
+   "unit": "°"
+  },
+  {
+   "id": "lift_low",
+   "label": "停留时抬起脚跟离垫（最低）",
+   "metric": "legLiftMm",
+   "agg": "min",
+   "min": 30,
+   "unit": "mm",
+   "phase": "hold"
+  },
+  {
+   "id": "lift_high",
+   "label": "停留时抬起脚跟离垫（最高；PDF 2–5 cm）",
+   "metric": "legLiftMm",
+   "agg": "max",
+   "max": 50,
+   "unit": "mm",
+   "phase": "hold"
+  },
+  {
+   "id": "other_leg_down",
+   "label": "停留时另一条腿脚跟贴垫（最高）",
+   "metric": "footDownMm",
+   "agg": "max",
+   "max": 5,
+   "unit": "mm",
+   "phase": "hold"
+  },
+  {
+   "id": "rest_down",
+   "label": "换腿间隙两脚跟都回到垫上（最高）",
+   "metric": "legLiftMm",
+   "agg": "max",
+   "max": 5,
+   "unit": "mm",
+   "phase": "rest"
+  },
+  {
+   "id": "hold_time",
+   "label": "每次停留（抬起腿在最高 3 mm 内）",
+   "kind": "plateau",
+   "metric": "legLiftMm",
+   "ref": "max",
+   "tol": 3,
+   "min": 1.8,
+   "max": 2.6,
+   "unit": "s"
+  },
+  {
+   "id": "raise_time",
+   "label": "抬腿用时（10%→90%，不踢）",
+   "kind": "transition",
+   "dir": "up",
+   "metric": "legLiftMm",
+   "min": 0.5,
+   "unit": "s"
+  },
+  {
+   "id": "lower_time",
+   "label": "放腿用时（90%→10%，控制放下不砸）",
+   "kind": "transition",
+   "dir": "down",
+   "metric": "legLiftMm",
+   "min": 0.5,
+   "unit": "s"
+  },
+  {
+   "id": "reps_per_loop",
+   "label": "每 8 s 循环（左右各 1 次）",
+   "kind": "reps",
+   "metric": "legLiftMm",
+   "ref": "max",
+   "tol": 3,
+   "min": 2,
+   "max": 2,
+   "unit": "次"
+  },
+  {
+   "id": "seat_on_mat",
+   "label": "臀/大腿后侧坐在垫上（最低；有意接触，压入 ≤ 5 mm）",
+   "metric": "seatContactMm",
+   "agg": "min",
+   "min": -5,
+   "unit": "mm"
+  },
+  {
+   "id": "seat_not_lifted",
+   "label": "手不把臀部撑起（臀/大腿最低点，最高）",
+   "metric": "seatContactMm",
+   "agg": "max",
+   "max": 3,
+   "unit": "mm"
+  },
+  {
+   "id": "legs_no_clip",
+   "label": "小腿肚贴垫（最低；有意接触，压入 ≤ 5 mm）",
+   "metric": "shinClearMm",
+   "agg": "min",
+   "min": -5,
+   "unit": "mm"
+  },
+  {
+   "id": "feet_no_clip",
+   "label": "脚不穿垫（最低）",
+   "metric": "footClearMm",
+   "agg": "min",
+   "min": -2,
+   "unit": "mm"
+  },
+  {
+   "id": "arms_soft_straight",
+   "label": "手臂接近伸直、只轻撑（两肘最小角）",
+   "metric": "elbowMin",
+   "agg": "min",
+   "min": 165,
+   "unit": "°"
+  },
+  {
+   "id": "hands_on_mat",
+   "label": "手掌轻贴垫面不穿垫（最低）",
+   "metric": "handFloorMm",
+   "agg": "min",
+   "min": -2,
+   "unit": "mm"
+  },
+  {
+   "id": "hands_touch",
+   "label": "手掌贴着垫（最低点，最高）",
+   "metric": "handFloorMm",
+   "agg": "max",
+   "max": 3,
+   "unit": "mm"
+  },
+  {
+   "id": "palms_flat",
+   "label": "手掌平放（掌心朝下与竖直夹角，最大）",
+   "metric": "palmDownDegMax",
+   "agg": "max",
+   "max": 15,
+   "unit": "°"
+  },
+  {
+   "id": "hands_still",
+   "label": "手不在垫上滑（V5 手骨漂移）",
+   "kind": "pins",
+   "which": "hands",
+   "max": 5,
+   "unit": "mm"
+  },
+  {
+   "id": "pelvis_forward",
+   "label": "骨盆前倾（骨盆上缘向前，最小）",
+   "metric": "pelvisPitchDeg",
+   "agg": "min",
+   "min": 15,
+   "unit": "°"
+  },
+  {
+   "id": "pelvis_forward_max",
+   "label": "骨盆前倾（最大，不趴下去）",
+   "metric": "pelvisPitchDeg",
+   "agg": "max",
+   "max": 40,
+   "unit": "°"
+  },
+  {
+   "id": "back_straight",
+   "label": "背挺直不弓（胸廓相对骨盆前屈，最大）",
+   "metric": "trunkFlexDeg",
+   "agg": "max",
+   "max": 10,
+   "unit": "°"
+  },
+  {
+   "id": "no_lean_back",
+   "label": "身体不后仰借力（胸廓前后倾变化）",
+   "metric": "thoraxPitchDeg",
+   "agg": "range",
+   "max": 3,
+   "unit": "°"
+  },
+  {
+   "id": "shoulders_down",
+   "label": "肩下沉不耸（肩关节相对胸廓，最高）",
+   "metric": "scapUp",
+   "agg": "max",
+   "max": -5,
+   "unit": "mm"
+  },
+  {
+   "id": "head_neutral",
+   "label": "头中立（头与胸廓夹角）",
+   "metric": "headVsTrunkDeg",
+   "agg": "max",
+   "max": 15,
+   "unit": "°"
+  },
+  {
+   "id": "v5_matches_hub",
+   "label": "V5 身体与求解姿态一致（最大关节偏差）",
+   "kind": "summary",
+   "path": "maxPosErrMm",
+   "max": 2,
+   "unit": "mm"
+  },
+  {
+   "id": "solver_clean",
+   "label": "求解无告警帧（锁手/骨长/地面没有互相拉扯）",
+   "kind": "summary",
+   "path": "solverWarnFrames",
+   "max": 0,
+   "unit": "帧"
+  }
+ ]
+}

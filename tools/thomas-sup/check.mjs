@@ -83,7 +83,7 @@ try{
       const B=V.bones,wp=n=>B[n].getWorldPosition(new T.Vector3()).toArray();
       const J={};for(const n of ['pelvis','spineLower','spineUpper','torso','neck','head','leftScapula','rightScapula','leftUpperArm','leftForearm','leftHand','rightUpperArm','rightForearm','rightHand','leftThigh','leftShin','leftFoot','rightThigh','rightShin','rightFoot'])J[n]=wp(n);
       for(const k in minY)minY[k]=+((minY[k]-floorY)*1000).toFixed(1);for(const k in prop)prop[k]=+(prop[k]*1000).toFixed(1);
-      const Q={};for(const n of ['pelvis','spineUpper','torso','head','leftHand','rightHand','leftForearm','rightForearm','leftFoot','rightFoot'])Q[n]=B[n].getWorldQuaternion(new T.Quaternion()).toArray();
+      const Q={};for(const n of ['pelvis','spineUpper','torso','head','leftHand','rightHand','leftForearm','rightForearm','leftFoot','rightFoot','leftShin','rightShin','leftThigh','rightThigh'])Q[n]=B[n].getWorldQuaternion(new T.Quaternion()).toArray();
       return {minY,minP,prop,J,Q};
     };
     // mesh-level self-clip (r2, 2026-11-19): how deep the skinned vertices of region A sit inside the skinned surface of region B.

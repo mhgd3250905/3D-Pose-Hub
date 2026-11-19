@@ -158,6 +158,29 @@ def metrics(s):
     m['supR'] = round(deg(math.atan2(dot(n0, upP), dot(n0, med))), 1)           # forearm rotation: 0 = thumb up, +90 = palm up, -90 = palm down
     m['thighLowMm'] = min(Y.get('thighL', 1e9), Y.get('thighR', 1e9))           # seated on a bench: backs of the thighs vs the floor (mm)
     m['forearmPitchDeg'] = round(deg(math.asin(max(-1, min(1, F[1])))), 1)       # forearm axis vs horizontal (+ = hand end up)
+    # straddle leg lift (r4, 2026-11-19): lifted heel = the higher of the two feet's lowest skin points; knee cap / toes direction =
+    # shin and foot bone front (+Z at rest) made perpendicular to the shin axis, angle to world up made perpendicular too (0 = up)
+    m['legLiftMm'] = max(Y.get('footL', -1e9), Y.get('footR', -1e9)); m['footDownMm'] = min(Y.get('footL', 1e9), Y.get('footR', 1e9))
+    for side, k in (('left', 'L'), ('right', 'R')):
+        if side + 'Shin' not in Q: continue
+        ax = unit(sub(J[side + 'Foot'], J[side + 'Shin'])); upP = sub([0, 1, 0], mul(ax, ax[1]))
+        if norm(upP) < 1e-6: continue
+        upP = unit(upP)
+        # signed (+ = turned toward the body midline = inward rotation); thigh and shin rolls set where the V5 knee cap (patella =
+        # thigh/shin slerp) faces; the foot only follows the ankle. Toes are also checked on the hub toe point (ankle -> toe).
+        med = cross(upP, ax) if side == 'right' else cross(ax, upP)
+        segs = (('thighUp', 'Thigh', 'Shin'), ('kneeUp', 'Shin', 'Foot'), ('toeUp', 'Foot', 'Foot'))
+        for nm, bone, _ in segs:
+            if bone == 'Thigh' and side + 'Thigh' not in Q: continue
+            v = qrot(Q[side + bone], [0, 0, 1]); v = unit(sub(v, mul(ax, dot(v, ax))))
+            m[nm + 'Deg' + k] = round(deg(math.acos(max(-1, min(1, dot(v, upP))))), 1); m[nm + 'Signed' + k] = round(deg(math.atan2(dot(v, med), dot(v, upP))), 1)
+        tv = sub(H[side + 'Toe'], H[side + 'Ankle']); tv = unit(sub(tv, mul(ax, dot(tv, ax)))); m['toePtUpDeg' + k] = round(deg(math.acos(max(-1, min(1, dot(tv, upP))))), 1)
+    if 'kneeUpDegL' in m:
+        m['kneeUpDegMax'] = max(m['kneeUpDegL'], m['kneeUpDegR'], m.get('thighUpDegL', 0), m.get('thighUpDegR', 0))
+        m['toeUpDegMax'] = max(m['toeUpDegL'], m['toeUpDegR'], m['toePtUpDegL'], m['toePtUpDegR'])
+    for side, k, n0 in (('left', 'L', [0.06068526, -0.99777448, -0.02762938]), ('right', 'R', [-0.06068526, -0.99777448, -0.02762938])):
+        pv = qrot(Q[side + 'Hand'], n0); m['palmDownDeg' + k] = round(deg(math.acos(max(-1, min(1, -pv[1])))), 1)   # 0 = palm flat facing the floor
+    m['palmDownDegMax'] = max(m['palmDownDegL'], m['palmDownDegR'])
     return m
 
 M = [(s['t'], metrics(s)) for s in S]

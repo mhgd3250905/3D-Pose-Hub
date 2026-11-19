@@ -18,7 +18,7 @@ KEYS = {'t-pushup-plus': [('elbowMin', 'elbow', '°'), ('chestHeightMm', 'chestY
         't-self-resisted-wrist-flexion': [('wristFlexR', 'wristFlex', '°'), ('wristDevR', 'dev', '°'), ('supR', 'palmUp', '°'), ('forearmPitchDeg', 'forearm', '°')],
         't-self-resisted-wrist-extension': [('wristFlexR', 'wristFlex', '°'), ('wristDevR', 'dev', '°'), ('supR', 'palmUp', '°'), ('forearmPitchDeg', 'forearm', '°')],
         't-seated-forearm-rotation': [('supR', 'rotation', '°'), ('wristFlexR', 'wristFlex', '°'), ('wristDevR', 'dev', '°'), ('forearmPitchDeg', 'forearm', '°')],
-        't-straddle-active-lift': [('legLiftMm', 'lift', 'mm'), ('kneeMin', 'knee', '°'), ('straddleDeg', 'straddle', '°'), ('toeOutDeg', 'toeOut', '°'), ('pelvisPitchDeg', 'pelvis', '°'), ('handFloorMm', 'hand', 'mm')]}[aid]
+        't-straddle-active-lift': [('legLiftMm', 'lift', 'mm'), ('kneeMin', 'knee', '°'), ('kneeUpDegMax', 'kneeCap', '°'), ('toeUpDegMax', 'toes', '°'), ('elbowMin', 'elbow', '°'), ('pelvisPitchDeg', 'pelvis', '°'), ('seatContactMm', 'seat', 'mm')]}[aid]
 std = {'checks': [], 'series': [k for k, _, _ in KEYS]}
 tf = tempfile.NamedTemporaryFile('w', suffix='.json', delete=False); json.dump(std, tf); tf.close()
 of = tf.name + '.out'
