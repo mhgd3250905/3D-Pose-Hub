@@ -131,6 +131,16 @@ def metrics(s):
     tm = sum(w for w, *_ in seg); com = [sum(w * (a[i] + (b[i] - a[i]) * fr) for w, a, b, fr in seg) / tm for i in range(3)]
     m['comLeadCm'] = round(dot([com[0] - wr[0], 0, com[2] - wr[2]], f) * 100, 2)   # + = in front of the wrists (over the palms)
     m['comLeadAirborneCm'] = m['comLeadCm'] if m['footClearMm'] > 5 else None   # only while both feet are off the mat
+    # hanging / support actions (r3, 2026-11-19), rig facing +Z: world-sagittal measures
+    m['comFwdCm'] = round((com[2] - wr[2]) * 100, 2)   # + = centre of mass in front of the hands (bar) along +Z
+    m['comFwdShCm'] = round((com[2] - sh[2]) * 100, 2)
+    for side, k in (('left', 'L'), ('right', 'R')):   # leg elevation: hip -> ankle angle from straight down (90 = level)
+        lv = unit(sub(J[side + 'Foot'], J[side + 'Thigh'])); m['legElev' + k] = round(deg(math.acos(max(-1, min(1, -lv[1])))), 1)
+    m['legElevMin'] = min(m['legElevL'], m['legElevR'])
+    tu_w = qrot(Q['torso'], [0, 1, 0]); m['thoraxPitchDeg'] = round(deg(math.atan2(tu_w[2], tu_w[1])), 1)   # + = thorax top tipped forward (+Z)
+    pu_w = qrot(Q['pelvis'], [0, 1, 0]); m['pelvisPitchDeg'] = round(deg(math.atan2(pu_w[2], pu_w[1])), 1)
+    m['anklesApartCm'] = round(norm(sub(J['leftFoot'], J['rightFoot'])) * 100, 1)
+    m['shoulderBarZcm'] = round((sh[2] - wr[2]) * 100, 2)
     return m
 
 M = [(s['t'], metrics(s)) for s in S]
@@ -186,10 +196,10 @@ for c in std['checks']:
         dt = S[1]['t'] - S[0]['t']; best = cur = 0
         for _, m in M + M: cur = cur + 1 if m[c['metric']] >= c['above'] else 0; best = max(best, cur)
         v = round(min(best, len(M)) * dt, 2)
-    elif c.get('kind') == 'transition':   # r3: shortest 10%->90% (or 90%->10%) change of the metric over the loop, s (too fast = bouncing)
-        seq = [m[c['metric']] for _, m in M]; lo_, hi_ = min(seq), max(seq); a_, b_ = lo_ + 0.1 * (hi_ - lo_), lo_ + 0.9 * (hi_ - lo_)
+    elif c.get('kind') == 'transition':   # r3: shortest 10%->90% (or 90%->10%; 'frac' overrides) change of the metric over the loop, s (too fast = bouncing)
+        seq = [m[c['metric']] for _, m in M]; lo_, hi_ = min(seq), max(seq); fa, fb = c.get('frac', [0.1, 0.9]); a_, b_ = lo_ + fa * (hi_ - lo_), lo_ + fb * (hi_ - lo_)
         dt = S[1]['t'] - S[0]['t']; best = None
-        for up in (True, False):
+        for up in {'up': (True,), 'down': (False,)}.get(c.get('dir'), (True, False)):   # dir: up = 10%->90% only, down = 90%->10% only
             last = None
             for i, x in enumerate(seq + seq):
                 if (x <= a_ if up else x >= b_): last = i
