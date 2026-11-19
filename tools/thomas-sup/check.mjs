@@ -1,5 +1,5 @@
 // Thomas supplement r1 (2026-11-19): sandbox self-check + low-res V5 preview stills for one recipe. Not a production renderer.
-//   node tools/thomas-sup/check.mjs --recipe <recipe.json> [--stride 3 | --frames 0,60]  [--mesh-clip forearmR:thighR,...] [--render 0,60,120] [--views name:dir[:up];...] [--size 360] [--png-dir <dir>] [--out <json>]
+//   node tools/thomas-sup/check.mjs --recipe <recipe.json> [--stride 3 | --frames 0,60]  [--mesh-clip forearmR:thighR,...] [--gap forearmR:thighR:up,handL:handR] [--render 0,60,120] [--views name:dir[:up];...] [--size 360] [--png-dir <dir>] [--out <json>]
 // One browser: the hub recipe scene (stageAt: applyAt + props + fixed recipe camera, as tools/v5/render-masters-v5.mjs) with the
 // V5 model installed exactly as render-masters-v5.mjs does (same modules, same pose transfer). Every <stride>-th frame is solved and
 // measured on the V5 body that the render machine will draw:
@@ -26,7 +26,9 @@ fail(size>=128&&size<=480,'preview size must be 128..480');
 const renderFrames=(opt('--render','')||'').split(',').filter(Boolean).map(Number);
 const pngDir=opt('--png-dir');
 // --mesh-clip 'forearmR:thighR,thighR:forearmR' = mesh-level self-clip pairs (A inside B), regions as in __tsMeasure
-const meshPairs=(opt('--mesh-clip','')||'').split(',').filter(Boolean).map(p=>p.split(':'));const outFile=opt('--out');
+const meshPairs=(opt('--mesh-clip','')||'').split(',').filter(Boolean).map(p=>p.split(':'));
+// --gap 'forearmR:thighR:up,handL:handR' = surface gap of region A over region B (r4, 2026-11-19; see __tsGap)
+let gapPairs=(opt('--gap','')||'').split(',').filter(Boolean).map(p=>p.split(':'));const outFile=opt('--out');
 // --views 'side:0,0.1,1;front:-1,0.15,0;top:0,1,0.001:-1,0,0' = name:dir[:up] (world; camera looks at the body centre from dir)
 const views=(opt('--views','')||'').split(';').filter(Boolean).map(v=>{const [name,d,u]=v.split(':');return {name,dir:d.split(',').map(Number),up:u?u.split(',').map(Number):[0,1,0]};});
 // V5 opt-in head flexion (spec v5.headFlexDeg), same rule as tools/v5/render-masters-v5.mjs
@@ -36,13 +38,14 @@ const PLAN=JSON.parse(fs.readFileSync(path.join(HERE,'actions.json'),'utf8'));
 const loaded=await loadRecipe(recipeFile);
 const {prepared,source}=loaded,id=prepared.recipe.id,fps=30,N=Math.round(source.timeline.duration*fps);
 const plan=PLAN.actions.find(a=>a.id===id)??{checks:{}};
+if(!gapPairs.length&&plan.gap)gapPairs=plan.gap.split(',').map(p=>p.split(':'));   // actions.json "gap" = default --gap
 const report={pageErrors:[]};
 const scene=await openScene(loaded,{size,theme:loadTheme(),report});const page=scene.page;
 const res={id,recipe:path.relative(REPO,recipeFile),spec:prepared.recipe.spec,frames:N,stride,size,samples:[]};
 try{
   const mods=Object.fromEntries(MODULES.map(m=>[m,fs.readFileSync(path.join(RT,m),'utf8')]));
   const glb=fs.readFileSync(path.join(RT,MODEL)).toString('base64');
-  await page.evaluate(async ({mods,glb,scapulaShift,headFlexDeg})=>{
+  await page.evaluate(async ({mods,glb,scapulaShift,headFlexDeg,noShadow})=>{
     const src=await (await fetch('/src/viewer.js')).text(),v=src.match(/three\.js\?v=(\w+)/)[1],O=location.origin;
     const map={'three':O+'/node_modules/.vite/deps/three.js?v='+v,'three/addons/loaders/GLTFLoader.js':O+'/node_modules/.vite/deps/three_addons_loaders_GLTFLoader__js.js?v='+v,
       'three/addons/GLTFLoader.js':O+'/node_modules/.vite/deps/three_addons_loaders_GLTFLoader__js.js?v='+v};
@@ -52,8 +55,8 @@ try{
       url[name]=URL.createObjectURL(new Blob([fixed],{type:'text/javascript'}));
     }
     const bin=Uint8Array.from(atob(glb),c=>c.charCodeAt(0)).buffer;
-    const m=await import(url['v5-hub.js']);return await m.installV5(scapulaShift||headFlexDeg?{glb:bin,...(scapulaShift?{scapulaShift}:{}),...(headFlexDeg?{headFlexDeg}:{})}:{glb:bin});
-  },{mods,glb,scapulaShift:source.v5?.scapulaShift===true,headFlexDeg:v5HeadFlex(source)});
+    const m=await import(url['v5-hub.js']);return await m.installV5(scapulaShift||headFlexDeg||noShadow?{glb:bin,...(scapulaShift?{scapulaShift}:{}),...(headFlexDeg?{headFlexDeg}:{}),...(noShadow?{groundShadow:false}:{})}:{glb:bin});
+  },{mods,glb,scapulaShift:source.v5?.scapulaShift===true,headFlexDeg:v5HeadFlex(source),noShadow:source.v5?.groundShadow===false});
   // in-page measurement on the V5 body
   await page.evaluate(()=>{
     const T=window.__toonT,V=window.__v5,v=flareInspector.viewer;
@@ -102,6 +105,22 @@ try{
           if(R-r>worst){worst=R-r;at=[+(h/L).toFixed(2),pa[i],pa[i+1],pa[i+2]];}}
         out[a+'>'+b]={mm:+(worst*1000).toFixed(1),tB:at?.[0]};}
       return out;};
+    // surface gap (r4, 2026-11-19): resting contacts (forearm on the thigh, palm on the other hand). Direction d = world up ('up') or
+    // the B->A vertex-centroid direction ('auto'); in the plane normal to d, 8 mm cells; per cell B's top = max height of B's
+    // skinned vertices along d, A's bottom = min height of A's; gap = A bottom - B top over the cells both cover (mm; < 0 = A sunk
+    // into B), contact = cells with gap < 4 mm.
+    window.__tsGap=pairs=>{const out={};const pos={};
+      for(const {o,reg,n} of per){o.skeleton.update();for(let i=0;i<n;i++){const r=reg[i];o.getVertexPosition(i,_v);_v.applyMatrix4(o.matrixWorld);(pos[r]||(pos[r]=[])).push(_v.x,_v.y,_v.z);}}
+      const cen=a=>{const c=[0,0,0];for(let i=0;i<a.length;i+=3){c[0]+=a[i];c[1]+=a[i+1];c[2]+=a[i+2];}return c.map(x=>x/(a.length/3));};
+      for(const [a,b,m] of pairs){const pa=pos[a]??[],pb=pos[b]??[];if(!pa.length||!pb.length){out[a+'>'+b]=null;continue;}
+        let d;if(m==='up')d=new T.Vector3(0,1,0);else{const ca=cen(pa),cb=cen(pb);d=new T.Vector3(ca[0]-cb[0],ca[1]-cb[1],ca[2]-cb[2]).normalize();}
+        const e1=new T.Vector3(1,0,0);if(Math.abs(e1.dot(d))>0.9)e1.set(0,0,1);e1.sub(d.clone().multiplyScalar(e1.dot(d))).normalize();const e2=d.clone().cross(e1);
+        const key=(x,y,z)=>Math.floor((x*e1.x+y*e1.y+z*e1.z)/0.008)*100000+Math.floor((x*e2.x+y*e2.y+z*e2.z)/0.008),h=(x,y,z)=>x*d.x+y*d.y+z*d.z;
+        const top=new Map();for(let i=0;i<pb.length;i+=3){const k=key(pb[i],pb[i+1],pb[i+2]),v=h(pb[i],pb[i+1],pb[i+2]);if(!(top.get(k)>=v))top.set(k,v);}
+        const bot=new Map();for(let i=0;i<pa.length;i+=3){const k=key(pa[i],pa[i+1],pa[i+2]),v=h(pa[i],pa[i+1],pa[i+2]);if(!(bot.get(k)<=v))bot.set(k,v);}
+        let mn=1e9,cnt=0,both=0;for(const [k,v] of bot){const t=top.get(k);if(t===undefined)continue;both++;const g=v-t;if(g<mn)mn=g;if(g<0.004)cnt++;}
+        out[a+'>'+b]={mm:both?+(mn*1000).toFixed(1):null,contactCells:cnt,overlapCells:both};}
+      return out;};
   });
   const props=source.props??[];
   const matTop=props.some(p=>p.type==='mat')?Math.max(...props.filter(p=>p.type==='mat').map(p=>(p.at?.[1]??0)+(p.size?.[2]??0.006))):0;
@@ -114,7 +133,7 @@ try{
   for(const f of frames){
     fail(freeGiB()>=.5,'Low free memory');
     const st=await stageAt(page,source,f/fps,warm);warm=st.x;
-    const r=await page.evaluate(([fl,caps,render,mc])=>{const d=window.__v5.pose();const m=window.__tsMeasure(fl,caps);if(mc.length)m.meshClip=window.__tsMeshClip(mc);const url=render?window.__v5.render():null;return {d,m,url};},[matTop,caps,want.has(f),meshPairs]);
+    const r=await page.evaluate(([fl,caps,render,mc,gp])=>{const d=window.__v5.pose();const m=window.__tsMeasure(fl,caps);if(mc.length)m.meshClip=window.__tsMeshClip(mc);if(gp.length)m.gap=window.__tsGap(gp);const url=render?window.__v5.render():null;return {d,m,url};},[matTop,caps,want.has(f),meshPairs,gapPairs]);
     if(r.url&&pngDir)fs.writeFileSync(path.join(pngDir,`${String(f).padStart(4,'0')}.png`),Buffer.from(r.url.split(',')[1],'base64'));
     // review views (r2, 2026-11-19): the same V5 frame from fixed directions around the body (camera restored by the next stageAt)
     if(want.has(f)&&pngDir&&views.length)for(const vw of views){
@@ -125,7 +144,7 @@ try{
         c.up.set(...up);c.position.copy(cen).addScaledVector(dir,dist);c.lookAt(cen);c.updateMatrixWorld();const u=V.render();c.up.set(0,1,0);return u;},[vw.dir,vw.up]);
       fs.writeFileSync(path.join(pngDir,`${String(f).padStart(4,'0')}-${vw.name}.png`),Buffer.from(url.split(',')[1],'base64'));
     }
-    res.samples.push({f,t:+(f/fps).toFixed(3),warn:st.warn?.length??0,warnText:(st.warn??[]).slice(0,3).map(w=>typeof w==='string'?w:JSON.stringify(w)).join(' | ').slice(0,300),ang:r.d.angV5,angHub:r.d.angHub,posErr:r.d.posErr,posErrBone:r.d.posErrBone,H:Object.fromEntries(['leftPalm','rightPalm','leftWrist','rightWrist','leftToe','rightToe','leftAnkle','rightAnkle','leftKnee','rightKnee','leftShoulder','rightShoulder','leftElbow','rightElbow','pelvis','head','leftHip','rightHip','neck','shoulderCenter','waist','leftHeel','rightHeel','leftFingertip','rightFingertip'].map(n=>[n,st.joints[n]])),minY:r.m.minY,minP:r.m.minP,prop:r.m.prop,J:r.m.J,Q:r.m.Q,...(r.m.meshClip?{meshClip:r.m.meshClip}:{})});
+    res.samples.push({f,t:+(f/fps).toFixed(3),spine:r.d.spine,warn:st.warn?.length??0,warnText:(st.warn??[]).slice(0,3).map(w=>typeof w==='string'?w:JSON.stringify(w)).join(' | ').slice(0,300),ang:r.d.angV5,angHub:r.d.angHub,posErr:r.d.posErr,posErrBone:r.d.posErrBone,H:Object.fromEntries(['leftPalm','rightPalm','leftWrist','rightWrist','leftToe','rightToe','leftAnkle','rightAnkle','leftKnee','rightKnee','leftShoulder','rightShoulder','leftElbow','rightElbow','pelvis','head','leftHip','rightHip','neck','shoulderCenter','waist','leftHeel','rightHeel','leftFingertip','rightFingertip'].map(n=>[n,st.joints[n]])),minY:r.m.minY,minP:r.m.minP,prop:r.m.prop,J:r.m.J,Q:r.m.Q,...(r.m.meshClip?{meshClip:r.m.meshClip}:{}),...(r.m.gap?{gap:r.m.gap}:{})});
   }
   res.pageErrors=report.pageErrors;
 }finally{await scene.browser.close();}
@@ -167,6 +186,7 @@ for(const s of S)for(let i=0;i<names.length;i++)for(let j=i+1;j<names.length;j++
   const A=segs[names[i]],B=segs[names[j]],d=segDist(s.J[A[0]],s.J[A[1]],s.J[B[0]],s.J[B[1]])*1000-A[2]-B[2];if(d<worst.mm)worst={mm:+d.toFixed(1),pair:k,f:s.f};}
 sum.selfClipWorst=worst;
 if(meshPairs.length){const mw={};for(const s of S)for(const [k,v] of Object.entries(s.meshClip??{}))if(!mw[k]||v.mm>mw[k].mm)mw[k]={mm:v.mm,f:s.f,tB:v.tB};sum.meshClipWorst=mw;}
+if(gapPairs.length){const gw={};for(const s of S)for(const [k,v] of Object.entries(s.gap??{})){if(!v||v.mm===null)continue;const g=gw[k]||(gw[k]={min:1e9,max:-1e9,minContactCells:1e9});if(v.mm<g.min){g.min=v.mm;g.fMin=s.f;}if(v.mm>g.max){g.max=v.mm;g.fMax=s.f;}g.minContactCells=Math.min(g.minContactCells,v.contactCells);}sum.gap=gw;}
 sum.maxPosErrMm=+(Math.max(...S.map(s=>s.posErr))*1000).toFixed(2);
 sum.solverWarnFrames=S.filter(s=>s.warn>0).length;
 sum.pageErrors=res.pageErrors.length;

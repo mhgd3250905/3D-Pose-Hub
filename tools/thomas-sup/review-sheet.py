@@ -14,7 +14,11 @@ KEYS = {'t-pushup-plus': [('elbowMin', 'elbow', '°'), ('chestHeightMm', 'chestY
         't-seated-shoulder-ext-slide': [('elbowMin', 'elbow', '°'), ('shoulderExtMin', 'shExt', '°'), ('gazeBelowHorizDeg', 'gazeDown', '°'), ('headVsTrunkDeg', 'headFlex', '°'), ('scapUp', 'scapUp', 'mm'), ('trunkFlexDeg', 'trunkFlex', '°'), ('seatContactMm', 'seat', 'mm')],
         't-hanging-leg-raise': [('elbowMin', 'elbow', '°'), ('kneeMin', 'knee', '°'), ('legElevMin', 'legElev', '°'), ('comFwdCm', 'COMfwd', 'cm'), ('thoraxPitchDeg', 'thorax', '°'), ('scapUp', 'scapUp', 'mm'), ('anklesApartCm', 'ankles', 'cm')],
         't-straddle-planche': [('elbowMin', 'elbow', '°'), ('comLeadCm', 'COM', 'cm'), ('shoulderLeadCm', 'shLead', 'cm'), ('armFromVerticalDeg', 'armTilt', '°'), ('bodyTiltDeg', 'bodyTilt', '°'), ('straddleDeg', 'straddle', '°'), ('wristExtMax', 'wristExt', '°')],
-        't-pbar-support-swing': [('elbowMin', 'elbow', '°'), ('bodySwingDeg', 'swing', '°'), ('bodyLineDeg', 'bodyLine', '°'), ('trunkFlexDeg', 'hollow', '°'), ('scapUp', 'scapUp', 'mm'), ('shoulderBarZcm', 'shOverHand', 'cm'), ('toeTopMm', 'toeTop', 'mm')]}[aid]
+        't-pbar-support-swing': [('elbowMin', 'elbow', '°'), ('bodySwingDeg', 'swing', '°'), ('bodyLineDeg', 'bodyLine', '°'), ('trunkFlexDeg', 'hollow', '°'), ('scapUp', 'scapUp', 'mm'), ('shoulderBarZcm', 'shOverHand', 'cm'), ('toeTopMm', 'toeTop', 'mm')],
+        't-self-resisted-wrist-flexion': [('wristFlexR', 'wristFlex', '°'), ('wristDevR', 'dev', '°'), ('supR', 'palmUp', '°'), ('forearmPitchDeg', 'forearm', '°')],
+        't-self-resisted-wrist-extension': [('wristFlexR', 'wristFlex', '°'), ('wristDevR', 'dev', '°'), ('supR', 'palmUp', '°'), ('forearmPitchDeg', 'forearm', '°')],
+        't-seated-forearm-rotation': [('supR', 'rotation', '°'), ('wristFlexR', 'wristFlex', '°'), ('wristDevR', 'dev', '°'), ('forearmPitchDeg', 'forearm', '°')],
+        't-straddle-active-lift': [('legLiftMm', 'lift', 'mm'), ('kneeMin', 'knee', '°'), ('straddleDeg', 'straddle', '°'), ('toeOutDeg', 'toeOut', '°'), ('pelvisPitchDeg', 'pelvis', '°'), ('handFloorMm', 'hand', 'mm')]}[aid]
 std = {'checks': [], 'series': [k for k, _, _ in KEYS]}
 tf = tempfile.NamedTemporaryFile('w', suffix='.json', delete=False); json.dump(std, tf); tf.close()
 of = tf.name + '.out'

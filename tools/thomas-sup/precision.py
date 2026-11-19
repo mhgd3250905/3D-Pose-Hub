@@ -147,6 +147,17 @@ def metrics(s):
     m['toeTopMm'] = round(max(H['leftToe'][1], H['rightToe'][1]) * 1000, 1)   # r3: highest toe point (support swing: never above the bars)
     m['propClearMm'] = min(s['prop'].values()) if s.get('prop') else None   # r3: closest body skin (hands excluded) to the props' QA capsules
     m['hipAboveWristMm'] = round((hip[1] - wr[1]) * 1000, 1); m['shoulderAboveWristMm'] = round((sh[1] - wr[1]) * 1000, 1)
+    # wrist / forearm drills (r4, 2026-11-19), right hand. Hand frame = the hub's rest palm frame (engine.js palmFrame: right finger
+    # axis [-0.9825, 0.0548, 0.1778], palm normal [-0.0607, -0.9978, -0.0276], out of the palm) carried by the V5 hand bone's world
+    # rotation (V5 copies the hub's). F = forearm axis (V5 forearm pivot -> hand pivot); n0 = palm normal made perpendicular to F.
+    F = unit(sub(J['rightHand'], J['rightForearm'])); fg = qrot(Q['rightHand'], [-0.98253144, 0.05483374, 0.17783482])
+    pn = qrot(Q['rightHand'], [-0.06068526, -0.99777448, -0.02762938]); n0 = unit(sub(pn, mul(F, dot(pn, F)))); sd = cross(F, n0)
+    m['wristFlexR'] = round(deg(math.atan2(dot(fg, n0), dot(fg, F))), 1)        # + = flexion (fingers toward the palm side), - = extension
+    m['wristDevR'] = round(deg(math.asin(max(-1, min(1, dot(fg, sd))))), 1)      # side bend (radial/ulnar deviation), sign = F x n0
+    upP = unit(sub([0, 1, 0], mul(F, F[1]))); med = cross(upP, F)               # med: horizontal, toward the body midline for the right arm
+    m['supR'] = round(deg(math.atan2(dot(n0, upP), dot(n0, med))), 1)           # forearm rotation: 0 = thumb up, +90 = palm up, -90 = palm down
+    m['thighLowMm'] = min(Y.get('thighL', 1e9), Y.get('thighR', 1e9))           # seated on a bench: backs of the thighs vs the floor (mm)
+    m['forearmPitchDeg'] = round(deg(math.asin(max(-1, min(1, F[1])))), 1)       # forearm axis vs horizontal (+ = hand end up)
     return m
 
 M = [(s['t'], metrics(s)) for s in S]

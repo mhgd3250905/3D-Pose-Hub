@@ -23,6 +23,10 @@
  * the chest, so on reclined bodies (seated back support) the face points at the ceiling. With headFlexDeg the V5 head bone gets that
  * extra flexion (chin toward the chest, + = flex) about its own pivot after the copy, so the head pivot and every other bone stay
  * on the hub's; 0/absent = the code path is never entered.
+ * groundShadow (opt-in per action, default true = unchanged; Thomas supplement r2 batch 3, 2026-11-19): close-up shots (forearm +
+ * hand, recipe camera fitted to the arm) cut the body at the canvas edge, so the ground shadow under the body always runs off the
+ * canvas too and the render guard fails. With groundShadow === false the V5 sun casts nothing and the shadow plane is hidden, and
+ * extent() reports no shadow points (body box and light-space reach as before). true/absent = the code path is never entered.
  * Files toon-r6.js / wristfix-r2.js / model glb are verbatim copies of the v3r8b candidate (see tools/v5/runtime/SOURCES.md). */
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
@@ -41,7 +45,7 @@ for (const s of ['left', 'right']) for (let k = 1; k <= 8; k++) { PARENT[s + 'Fo
 export const NAMES = ['pelvis', 'spineLower', 'spineUpper', 'torso', 'neck', 'head', 'leftScapula', 'leftUpperArm', 'leftForearm', 'leftHand', 'rightScapula', 'rightUpperArm', 'rightForearm', 'rightHand', 'leftThigh', 'leftShin', 'leftFoot', 'rightThigh', 'rightShin', 'rightFoot'];
 const SHADOW = { color: 0x2a1a12, opacity: 0.14, mapSize: 2048, half: 2.4, sun: [0.6, 5, 1.2] };   // sample geometry (2026-11-16); colour = warm near-black at 0.14 so it reads like the sample on the light theme and does not glow on the dark theme
 
-export async function installV5({ glb, scapulaShift = false, headFlexDeg = 0 }) {
+export async function installV5({ glb, scapulaShift = false, headFlexDeg = 0, groundShadow = true }) {
   const v = flareInspector.viewer, scene = v.scene, renderer = v.renderer, camera = v.camera;
   // ---- model
   const gltf = await new GLTFLoader().setMeshoptDecoder(MeshoptDecoder).parseAsync(glb, '');
@@ -88,6 +92,7 @@ export async function installV5({ glb, scapulaShift = false, headFlexDeg = 0 }) 
   let matTop = null; scene.traverse(o => { if (o.name === 'prop_mat') { const b = new THREE.Box3().setFromObject(o); if (isFinite(b.max.y)) matTop = Math.max(matTop ?? -1, b.max.y); } });
   if (matTop !== null && matTop > 0 && matTop < 0.05) plane.position.y = matTop + 0.0005;
   root.traverse(o => { if (o.isMesh && !o.userData.__outline && !o.userData.__eye) o.castShadow = true; });
+  if (groundShadow === false) { sun.castShadow = false; plane.visible = false; }   // opt-in close-up: no ground shadow (see header)
 
   // ---- pose transfer
   const hubBones = {}; v.coach.traverse(o => { if (o.isBone && NAMES.includes(o.name) && !hubBones[o.name]) hubBones[o.name] = o; });
@@ -186,7 +191,7 @@ export async function installV5({ glb, scapulaShift = false, headFlexDeg = 0 }) 
     const ls = p => { const d = p.clone().sub(sp); lmax = Math.max(lmax, Math.abs(d.dot(R)), Math.abs(d.dot(U))); const z = d.dot(L); dmin = Math.min(dmin, z); dmax = Math.max(dmax, z); };
     for (const { o, idx } of casters) for (const i of idx) {
       o.getVertexPosition(i, _v); _v.applyMatrix4(o.matrixWorld); px(_v, bo); ls(_v);
-      if (_v.y > py) { nAbove++; const s = _v.clone().addScaledVector(L, (_v.y - py) / -L.y); px(s, sh); ls(s);
+      if (groundShadow !== false && _v.y > py) { nAbove++; const s = _v.clone().addScaledVector(L, (_v.y - py) / -L.y); px(s, sh); ls(s);
         if (margin > 0) { const x = (_s.x + 1) / 2 * size, y = (1 - _s.y) / 2 * size;
           if (x < margin) edge('left', y); if (x > size - margin) edge('right', y); if (y < margin) edge('top', x); if (y > size - margin) edge('bottom', x); } }
     }
@@ -219,6 +224,6 @@ export async function installV5({ glb, scapulaShift = false, headFlexDeg = 0 }) 
     const n = vert ? h : w, b = new Uint8Array(n * 4); gl.readPixels(x, y, vert ? 1 : w, vert ? h : 1, gl.RGBA, gl.UNSIGNED_BYTE, b);
     const a = new Array(n); for (let i = 0; i < n; i++) a[i] = b[(vert ? n - 1 - i : i) * 4 + 3]; return a;
   }
-  window.__v5 = { pose, render, extent, borderAlpha, get edge() { return edge; }, sun, plane, bones, root, toon, hidden, info: { hiddenHub: hidden.slice(), mutedShadowLights: otherShadowLights.slice(), shadowPlaneY: plane.position.y, matTop, outlines: toon.outlines, hair: toon.hair, outfit: toon.outfit, toonN: toon.toonN, wristSides: wf.sides, ...(scapulaShift ? { scapulaShift: true } : {}), ...(headFlexDeg ? { headFlexDeg } : {}) } };
+  window.__v5 = { pose, render, extent, borderAlpha, get edge() { return edge; }, sun, plane, bones, root, toon, hidden, info: { hiddenHub: hidden.slice(), mutedShadowLights: otherShadowLights.slice(), shadowPlaneY: plane.position.y, matTop, outlines: toon.outlines, hair: toon.hair, outfit: toon.outfit, toonN: toon.toonN, wristSides: wf.sides, ...(scapulaShift ? { scapulaShift: true } : {}), ...(headFlexDeg ? { headFlexDeg } : {}), ...(groundShadow === false ? { groundShadow: false } : {}) } };
   return window.__v5.info;
 }

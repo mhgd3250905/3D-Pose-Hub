@@ -1,0 +1,231 @@
+{
+ "format": "thomas-sup-standard@1",
+ "id": "t-self-resisted-wrist-flexion",
+ "nameZh": "自阻力手腕上卷",
+ "doc": "tools/thomas-sup/standards/t-self-resisted-wrist-flexion.md",
+ "phases": {
+  "low": "手垂到腕伸位（掌心朝上），左手掌压在右手掌心",
+  "top": "腕屈到顶，停住约 0.8 s"
+ },
+ "series": [
+  "wristFlexR",
+  "wristDevR",
+  "supR",
+  "forearmPitchDeg"
+ ],
+ "checks": [
+  {
+   "id": "flex_peak",
+   "label": "顶端：腕屈角（最大）",
+   "metric": "wristFlexR",
+   "agg": "max",
+   "min": 60,
+   "max": 80,
+   "unit": "°"
+  },
+  {
+   "id": "ext_start",
+   "label": "起始：腕伸角（屈角最小，负 = 伸）",
+   "metric": "wristFlexR",
+   "agg": "min",
+   "min": -60,
+   "max": -35,
+   "unit": "°"
+  },
+  {
+   "id": "rom_total",
+   "label": "腕屈伸全幅（最大−最小）",
+   "metric": "wristFlexR",
+   "agg": "range",
+   "min": 100,
+   "unit": "°"
+  },
+  {
+   "id": "dev_max",
+   "label": "不歪手：腕侧偏（最大）",
+   "metric": "wristDevR",
+   "agg": "max",
+   "max": 12,
+   "unit": "°"
+  },
+  {
+   "id": "dev_min",
+   "label": "不歪手：腕侧偏（最小）",
+   "metric": "wristDevR",
+   "agg": "min",
+   "min": -12,
+   "unit": "°"
+  },
+  {
+   "id": "palm_up",
+   "label": "掌心朝上：前臂旋转角（最小，90 = 掌心正朝上）",
+   "metric": "supR",
+   "agg": "min",
+   "min": 70,
+   "unit": "°"
+  },
+  {
+   "id": "palm_up_max",
+   "label": "掌心朝上：前臂旋转角（最大）",
+   "metric": "supR",
+   "agg": "max",
+   "max": 110,
+   "unit": "°"
+  },
+  {
+   "id": "no_forearm_roll",
+   "label": "前臂不翻：前臂旋转角变化",
+   "metric": "supR",
+   "agg": "range",
+   "max": 15,
+   "unit": "°"
+  },
+  {
+   "id": "concentric",
+   "label": "向心（上卷）5%→95% 用时",
+   "metric": "wristFlexR",
+   "kind": "transition",
+   "dir": "up",
+   "frac": [
+    0.05,
+    0.95
+   ],
+   "min": 1.3,
+   "max": 2.2,
+   "unit": "s"
+  },
+  {
+   "id": "eccentric",
+   "label": "离心（放下）95%→5% 用时（慢于上卷）",
+   "metric": "wristFlexR",
+   "kind": "transition",
+   "dir": "down",
+   "frac": [
+    0.05,
+    0.95
+   ],
+   "min": 1.7,
+   "max": 2.8,
+   "unit": "s"
+  },
+  {
+   "id": "top_hold",
+   "label": "顶端停顿（屈角在最大值 2° 内）",
+   "metric": "wristFlexR",
+   "kind": "plateau",
+   "ref": "max",
+   "tol": 2,
+   "min": 0.5,
+   "max": 1.4,
+   "unit": "s"
+  },
+  {
+   "id": "reps_per_loop",
+   "label": "每 8 s 循环次数",
+   "metric": "wristFlexR",
+   "kind": "reps",
+   "ref": "max",
+   "tol": 2,
+   "min": 1,
+   "max": 1,
+   "unit": "次"
+  },
+  {
+   "id": "forearm_still",
+   "label": "前臂不抬：前臂与水平夹角变化",
+   "metric": "forearmPitchDeg",
+   "agg": "range",
+   "max": 0.5,
+   "unit": "°"
+  },
+  {
+   "id": "elbow_still",
+   "label": "手肘不动（V5 前臂枢轴最大漂移）",
+   "kind": "summary",
+   "path": "pins.rightForearm:forearm-on-thigh.driftMm",
+   "max": 2,
+   "unit": "mm"
+  },
+  {
+   "id": "wrist_still",
+   "label": "手腕位置不动（V5 手骨枢轴最大漂移）",
+   "kind": "summary",
+   "path": "pins.rightHand:wrist-still.driftMm",
+   "max": 2,
+   "unit": "mm"
+  },
+  {
+   "id": "forearm_on_thigh",
+   "label": "前臂贴在大腿上：前臂下缘−大腿上缘（最低，负 = 压进）",
+   "kind": "summary",
+   "path": "gap.forearmR>thighR.min",
+   "min": -5,
+   "unit": "mm"
+  },
+  {
+   "id": "forearm_on_thigh_max",
+   "label": "前臂贴在大腿上（最高，不悬空）",
+   "kind": "summary",
+   "path": "gap.forearmR>thighR.max",
+   "max": 3,
+   "unit": "mm"
+  },
+  {
+   "id": "hand_press",
+   "label": "左手压在右手掌心：两手间距（最低，负 = 穿入）",
+   "kind": "summary",
+   "path": "gap.handL>handR.min",
+   "min": -5,
+   "unit": "mm"
+  },
+  {
+   "id": "hand_press_max",
+   "label": "左手全程压住（两手间距最高）",
+   "kind": "summary",
+   "path": "gap.handL>handR.max",
+   "max": 3,
+   "unit": "mm"
+  },
+  {
+   "id": "trunk_still",
+   "label": "不借力：胸廓高度变化（身体不动）",
+   "metric": "chestHeightMm",
+   "agg": "range",
+   "max": 1,
+   "unit": "mm"
+  },
+  {
+   "id": "seat_on_bench",
+   "label": "坐在凳上：大腿后侧最低点（凳面 440 mm）",
+   "metric": "thighLowMm",
+   "agg": "min",
+   "min": 437,
+   "max": 445,
+   "unit": "mm"
+  },
+  {
+   "id": "feet",
+   "label": "双脚不滑（最大漂移）",
+   "kind": "pins",
+   "which": "feet",
+   "max": 2,
+   "unit": "mm"
+  },
+  {
+   "id": "feet_no_clip",
+   "label": "脚不穿地",
+   "metric": "footClearMm",
+   "agg": "min",
+   "min": -2,
+   "unit": "mm"
+  },
+  {
+   "id": "v5_matches_hub",
+   "label": "V5 身体与求解姿态一致（最大关节偏差）",
+   "kind": "summary",
+   "path": "maxPosErrMm",
+   "max": 2,
+   "unit": "mm"
+  }
+ ]
+}
