@@ -4,7 +4,8 @@
  "reviewStatus": "draft-ai-needs-user-review",
  "sources": [
   "catalog/production/thomas-supplement-r1/brief-2026-11-19 (托马斯动作库补充-制作说明 item 11)",
-  "drill-anim/specs/t-pbar-support-swing.js"
+  "drill-anim/specs/t-pbar-support-swing.js",
+  "tools/thomas-sup/standards/t-pbar-support-swing.md"
  ],
  "name": {
   "zh": "双杠支撑摆动",
@@ -19,24 +20,32 @@
    "id": "cue1",
    "primary": true,
    "text": {
-    "zh": "手臂一直锁直，以肩为轴前后摆",
-    "en": "Arms locked straight, swing from your shoulders"
+    "zh": "手臂一直锁直，以肩为轴整个人前后摆",
+    "en": "Arms locked straight, swing your whole body from your shoulders"
    }
   },
   {
    "id": "cue2",
    "primary": false,
    "text": {
-    "zh": "肩往下压，别耸到耳朵边。",
-    "en": "Press your shoulders down, away from your ears."
+    "zh": "肩往下压，离耳朵远，肩膀一直停在手的正上方。",
+    "en": "Press your shoulders down away from your ears, and keep them right over your hands."
    }
   },
   {
    "id": "cue3",
    "primary": false,
    "text": {
-    "zh": "先小幅摆，前后都别高过杠面。",
-    "en": "Start small, never swing higher than the bars."
+    "zh": "腿并拢，从肩到脚一根棍，往前别折腰，往后别塌腰。",
+    "en": "Legs together, one stiff line from shoulders to feet: don't bend at the hips in front or sag your back behind."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "先小幅摆，前后一样高，都别高过杠面。",
+    "en": "Start small, same height in front and behind, never above the bars."
    }
   }
  ],
@@ -46,8 +55,8 @@
    "en": "Bending your elbows or shrugging."
   },
   {
-   "zh": "腰塌着甩腿",
-   "en": "Sagging and flinging your legs."
+   "zh": "往前折腰甩腿，往后塌腰",
+   "en": "Bending at the hips to fling your legs forward, or sagging your back behind."
   },
   {
    "zh": "摆得太大收不住",
@@ -103,22 +112,23 @@
   "phases": [
    {
     "id": "go",
-    "seconds": 1.0
+    "seconds": 2.0
    },
    {
     "id": "back",
-    "seconds": 1.0
+    "seconds": 2.0
    }
   ],
-  "source": "real-tempo r3"
+  "source": "thomas-sup r2 animation tempo (4 s per swing: 2 s forward, 2 s back; one forward + back = 1 rep)"
  },
  "thomasSupplement": {
-  "version": "r1",
+  "version": "r2",
   "item": "11",
   "thomasAngle": "9 后侧支撑 / 13 前侧支撑",
   "camera": "正侧面",
   "doseBrief": "3 组 × 10–20 次（一来一回 1 次）",
   "status": "draft-awaiting-user-review",
-  "note": "defaultDose takes the low end of the brief range; the range is in doseBrief."
+  "note": "defaultDose takes the low end of the brief range; the range is in doseBrief. r2: one rep 4 s (2 s forward, 2 s back), same amplitude every swing in the loop.",
+  "standard": "tools/thomas-sup/standards/t-pbar-support-swing.md"
  }
 }

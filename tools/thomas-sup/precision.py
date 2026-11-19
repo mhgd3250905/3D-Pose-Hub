@@ -144,6 +144,8 @@ def metrics(s):
     # planche (r3): body tilt = thorax -> mid-ankle line vs horizontal (+ = feet higher than the chest); straddle = angle between the legs
     hz = math.hypot(ank[0] - J['torso'][0], ank[2] - J['torso'][2]); m['bodyTiltDeg'] = round(deg(math.atan2(ank[1] - J['torso'][1], hz)), 1)
     m['straddleDeg'] = round(deg(math.acos(max(-1, min(1, dot(unit(sub(J['leftFoot'], J['leftThigh'])), unit(sub(J['rightFoot'], J['rightThigh']))))))), 1)
+    m['toeTopMm'] = round(max(H['leftToe'][1], H['rightToe'][1]) * 1000, 1)   # r3: highest toe point (support swing: never above the bars)
+    m['propClearMm'] = min(s['prop'].values()) if s.get('prop') else None   # r3: closest body skin (hands excluded) to the props' QA capsules
     m['hipAboveWristMm'] = round((hip[1] - wr[1]) * 1000, 1); m['shoulderAboveWristMm'] = round((sh[1] - wr[1]) * 1000, 1)
     return m
 

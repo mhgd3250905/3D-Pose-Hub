@@ -1,0 +1,172 @@
+{
+ "format": "thomas-sup-standard@1",
+ "id": "t-pbar-support-swing",
+ "nameZh": "双杠支撑摆动",
+ "doc": "tools/thomas-sup/standards/t-pbar-support-swing.md",
+ "phases": {
+  "front": "前摆最高点附近",
+  "back": "后摆最高点附近"
+ },
+ "series": [
+  "bodySwingDeg",
+  "bodyLineDeg",
+  "trunkFlexDeg",
+  "scapUp",
+  "shoulderBarZcm",
+  "toeTopMm"
+ ],
+ "checks": [
+  {
+   "id": "elbow_lock",
+   "label": "全程锁肘（两肘最小角）",
+   "metric": "elbowMin",
+   "agg": "min",
+   "min": 172,
+   "unit": "°"
+  },
+  {
+   "id": "knee_straight",
+   "label": "腿伸直（两膝最小角）",
+   "metric": "kneeMin",
+   "agg": "min",
+   "min": 170,
+   "unit": "°"
+  },
+  {
+   "id": "swing_front",
+   "label": "前摆幅度（胸廓→踝与竖直夹角，最大）",
+   "metric": "bodySwingDeg",
+   "agg": "max",
+   "min": 15,
+   "max": 35,
+   "unit": "°"
+  },
+  {
+   "id": "swing_back",
+   "label": "后摆幅度（最小，负 = 脚在后）",
+   "metric": "bodySwingDeg",
+   "agg": "min",
+   "min": -35,
+   "max": -15,
+   "unit": "°"
+  },
+  {
+   "id": "feet_below_bars",
+   "label": "前后摆脚都不超过杠面（脚尖最高点，杠面 1150 mm）",
+   "metric": "toeTopMm",
+   "agg": "max",
+   "max": 1150,
+   "unit": "mm"
+  },
+  {
+   "id": "body_straight",
+   "label": "身体直：胸廓–髋–踝夹角（最小，不折髋不塌腰）",
+   "metric": "bodyLineDeg",
+   "agg": "min",
+   "min": 170,
+   "unit": "°"
+  },
+  {
+   "id": "hollow",
+   "label": "微空心不塌腰：胸廓相对骨盆屈曲",
+   "metric": "trunkFlexDeg",
+   "agg": "min",
+   "min": 0,
+   "max": 8,
+   "unit": "°"
+  },
+  {
+   "id": "hollow_max",
+   "label": "微空心不塌腰：胸廓相对骨盆屈曲（最大）",
+   "metric": "trunkFlexDeg",
+   "agg": "max",
+   "min": 0,
+   "max": 8,
+   "unit": "°"
+  },
+  {
+   "id": "shoulders_down",
+   "label": "肩下沉：肩关节相对胸廓（最高处）",
+   "metric": "scapUp",
+   "agg": "max",
+   "max": -10,
+   "unit": "mm"
+  },
+  {
+   "id": "no_shrug",
+   "label": "肩不耸：肩关节相对胸廓上下变化",
+   "metric": "scapUp",
+   "agg": "range",
+   "max": 3,
+   "unit": "mm"
+  },
+  {
+   "id": "pivot_shoulders",
+   "label": "以肩为轴：肩相对手前后移动",
+   "metric": "shoulderBarZcm",
+   "agg": "range",
+   "max": 3,
+   "unit": "cm"
+  },
+  {
+   "id": "pivot_over_hands",
+   "label": "以肩为轴：肩在手正上方（最大偏离）",
+   "metric": "shoulderBarZcm",
+   "agg": "max",
+   "min": -5,
+   "max": 5,
+   "unit": "cm"
+  },
+  {
+   "id": "legs_together",
+   "label": "两腿并拢（两踝间距最大）",
+   "metric": "anklesApartCm",
+   "agg": "max",
+   "max": 20,
+   "unit": "cm"
+  },
+  {
+   "id": "head_neutral",
+   "label": "头中立（头与胸廓夹角）",
+   "metric": "headVsTrunkDeg",
+   "agg": "max",
+   "max": 15,
+   "unit": "°"
+  },
+  {
+   "id": "bar_clear",
+   "label": "身体不穿杠（身体与杠最近距离）",
+   "metric": "propClearMm",
+   "agg": "min",
+   "min": 0,
+   "unit": "mm"
+  },
+  {
+   "id": "reps_per_loop",
+   "label": "每 8 s 前后摆次数（每次 4 s）",
+   "kind": "reps",
+   "metric": "bodySwingDeg",
+   "ref": "max",
+   "tol": 1.5,
+   "min": 2,
+   "max": 2,
+   "unit": "次"
+  },
+  {
+   "id": "contacts",
+   "label": "手在杠上不滑（V5 手骨漂移）",
+   "kind": "pins",
+   "which": "hands",
+   "max": 5,
+   "unit": "mm"
+  },
+  {
+   "id": "v5_matches_hub",
+   "label": "V5 身体与求解姿态一致（最大关节偏差）",
+   "kind": "summary",
+   "path": "maxPosErrMm",
+   "max": 2,
+   "unit": "mm"
+  }
+ ]
+}

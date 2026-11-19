@@ -13,7 +13,8 @@ KEYS = {'t-pushup-plus': [('elbowMin', 'elbow', '°'), ('chestHeightMm', 'chestY
         't-kneeling-scap-pushup': [('elbowMin', 'elbow', '°'), ('chestHeightMm', 'chestY', 'mm'), ('scapFwd', 'scapFwd', 'mm'), ('trunkFlexDeg', 'trunkFlex', '°'), ('hipOffsetKneeMm', 'hipOff', 'mm'), ('shoulderLeadCm', 'shLead', 'cm'), ('kneeFloorMm', 'knee', 'mm')],
         't-seated-shoulder-ext-slide': [('elbowMin', 'elbow', '°'), ('shoulderExtMin', 'shExt', '°'), ('gazeBelowHorizDeg', 'gazeDown', '°'), ('headVsTrunkDeg', 'headFlex', '°'), ('scapUp', 'scapUp', 'mm'), ('trunkFlexDeg', 'trunkFlex', '°'), ('seatContactMm', 'seat', 'mm')],
         't-hanging-leg-raise': [('elbowMin', 'elbow', '°'), ('kneeMin', 'knee', '°'), ('legElevMin', 'legElev', '°'), ('comFwdCm', 'COMfwd', 'cm'), ('thoraxPitchDeg', 'thorax', '°'), ('scapUp', 'scapUp', 'mm'), ('anklesApartCm', 'ankles', 'cm')],
-        't-straddle-planche': [('elbowMin', 'elbow', '°'), ('comLeadCm', 'COM', 'cm'), ('shoulderLeadCm', 'shLead', 'cm'), ('armFromVerticalDeg', 'armTilt', '°'), ('bodyTiltDeg', 'bodyTilt', '°'), ('straddleDeg', 'straddle', '°'), ('wristExtMax', 'wristExt', '°')]}[aid]
+        't-straddle-planche': [('elbowMin', 'elbow', '°'), ('comLeadCm', 'COM', 'cm'), ('shoulderLeadCm', 'shLead', 'cm'), ('armFromVerticalDeg', 'armTilt', '°'), ('bodyTiltDeg', 'bodyTilt', '°'), ('straddleDeg', 'straddle', '°'), ('wristExtMax', 'wristExt', '°')],
+        't-pbar-support-swing': [('elbowMin', 'elbow', '°'), ('bodySwingDeg', 'swing', '°'), ('bodyLineDeg', 'bodyLine', '°'), ('trunkFlexDeg', 'hollow', '°'), ('scapUp', 'scapUp', 'mm'), ('shoulderBarZcm', 'shOverHand', 'cm'), ('toeTopMm', 'toeTop', 'mm')]}[aid]
 std = {'checks': [], 'series': [k for k, _, _ in KEYS]}
 tf = tempfile.NamedTemporaryFile('w', suffix='.json', delete=False); json.dump(std, tf); tf.close()
 of = tf.name + '.out'
