@@ -35,7 +35,7 @@ node tools/thomas-sup/check.mjs --recipe ... --frames ... --mesh-clip forearmR:t
 ## 第三批（2026-11-19，腕部 + 分腿主动抬腿）
 - t-self-resisted-wrist-flexion 自阻力手腕上卷：`t-self-resisted-wrist-flexion.md`（新共用构建器 `drill-anim/specs/_thomas-sup-wrist-r2.mjs`：骨盆前倾＋腰前屈代替 r1 的整体上身转，V5 偏差 96 mm → 0；特写机位，v5.groundShadow 关）。
 - t-self-resisted-wrist-extension 自阻力手腕上抬：`t-self-resisted-wrist-extension.md`（同一构建器与特写机位，掌心朝下、左手压手背）。
-- t-seated-forearm-rotation 坐姿翻手腕：`t-seated-forearm-rotation.md`（同一构建器，正前方特写，翻转主要在前臂下段；V5 手是固定张开手型，哑铃不画，空手演示；r1 构建器 `_thomas-sup-wrist-r1.mjs` 已删）。
+- t-seated-forearm-rotation 坐姿翻手腕：`t-seated-forearm-rotation.md`（同一构建器，正前方特写，翻转主要在前臂下段；r2 追加：右手握住单头小哑铃一端（`v5.grip`，见下）；r1 构建器 `_thomas-sup-wrist-r1.mjs` 已删）。
 - t-straddle-active-lift 主动分腿压抬腿：`t-straddle-active-lift.md`（v5.scapulaShift 开；第二版按 PDF 起始姿势改为直立坐（骨盆 5°、背直）、手掌平放臀部两侧手指朝后、肩胛下沉 30 mm；`thighTwist/kneeTwist` ∓45° 修 hub 摆腿自带的髌骨内旋（第一版前倾 30° 时为 ∓65°，53°→3.7°，现 1.8°）；骨盆高度直接脚本给定）。新增度量：抬起脚跟 `legLiftMm`、贴垫脚跟 `footDownMm`、髌骨朝上 `kneeUpDegMax`（大腿+小腿骨）、脚尖朝上 `toeUpDegMax`、掌心朝下 `palmDownDegMax`；check.mjs 记录大腿/小腿骨世界旋转。
 - 新增度量（precision.py）：右手腕屈角 `wristFlexR`、腕侧偏 `wristDevR`、前臂旋转角 `supR`（0 = 拇指朝上，+90 = 掌心朝上）、前臂俯仰 `forearmPitchDeg`、大腿后侧最低点 `thighLowMm`；check.mjs 新增 `--gap A:B[:up]`（A 区下表面对 B 区上表面的间距，前臂贴大腿、手压手），actions.json 的 `gap` 为默认值。
 
@@ -43,3 +43,8 @@ node tools/thomas-sup/check.mjs --recipe ... --frames ... --mesh-clip forearmR:t
 - `tools/v5/runtime/v5-hub.js` 按动作开启：spec 写了 `v5: { groundShadow: false }` 的动作，V5 太阳不投影、投影平面隐藏，`extent()` 不计投影点（渲染护栏因此不再因投影出边失败；身体框与光照范围照旧记录）；`render-masters-v5.mjs` 与 `check.mjs` 读这个字段。默认 true，不进入代码路径。用于腕部特写（前臂＋手），身体本身被画面边缘切开，投影必然出边。layer-manifest 里这些动作的 shadowBox 记为空框 [1e9, 1e9, -1e9, -1e9]。
 - 老动作不受影响的证据（2026-11-19 沙箱，240 px 母帧）：serratus-A（帧 0/39/69）、h-open-book（帧 0/90，带 view window）分别用 main 94ff057 的 v5-hub.js（fdda01f1…）/ render-masters-v5.mjs（cb284075…）与本分支的 v5-hub.js（32c80b0f…）/ render-masters-v5.mjs（a2da7950…）各渲一遍：全部母帧 PNG、v5-pose.json、recipe.snapshot.json、source-manifest.json 逐字节相同；layer-manifest.json 只差源文件哈希、时间戳与耗时。
 - 特写动作的渲染护栏实测（沙箱 240 px，t-self-resisted-wrist-flexion 帧 15/108/165）：render-masters-v5.mjs 全部通过，V5 关节偏差 0。
+
+## V5 握持（v5.grip，r2 追加 2026-11-19，第 7 项坐姿翻手腕）
+- `tools/v5/runtime/v5-hub.js` 按动作开启：spec 写了 `v5: { grip: { side: 'right', dumbbell: true } }` 的动作，安装 V5 时在该手骨的绑定坐标里把四指、拇指绕一根握柄（手的 +Z 方向、横过掌心，半径 14.5 mm）弯起来（只改一次该手刚性顶点的位置与法线，在日漫描边之前；描边共享几何），并把单头哑铃（握柄 + 拇指一侧一个六角头，两阶平涂 + 墨线外壳）挂在 V5 手骨上随手转动。不加骨骼、不改蒙皮权重；`render-masters-v5.mjs` 与 `check.mjs` 读这个字段。null/缺省 = 代码路径不进入。check.mjs 每帧量哑铃到身体（握持手除外）的最近距离，precision.py 给出 `gripPenMm` / `gripContactMin` / `gripClearMm`。
+- 老动作不受影响的证据（2026-11-19 沙箱，240 px 母帧）：serratus-A（帧 0/39/69）、h-open-book（帧 0/90，带 view window）分别用 main 94ff057 的 v5-hub.js（fdda01f1…）/ render-masters-v5.mjs（cb284075…）与本分支的 v5-hub.js（de8e6869…）/ render-masters-v5.mjs（4d4f9caf…）各渲一遍：全部母帧 PNG、v5-pose.json、recipe.snapshot.json、source-manifest.json 逐字节相同；layer-manifest.json 只差源文件哈希、时间戳与耗时。
+- 第 7 项渲染护栏实测（沙箱 240 px，帧 0/15/60/114/165/210）：render-masters-v5.mjs 全部通过，V5 关节偏差 0。

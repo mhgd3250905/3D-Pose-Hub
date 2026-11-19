@@ -11,7 +11,10 @@
   "supR",
   "wristFlexR",
   "wristDevR",
-  "forearmPitchDeg"
+  "forearmPitchDeg",
+  "gripPenMm",
+  "gripClearMm",
+  "gripContactMin"
  ],
  "checks": [
   {
@@ -228,6 +231,30 @@
    "metric": "footClearMm",
    "agg": "min",
    "min": -2,
+   "unit": "mm"
+  },
+  {
+   "id": "grip_no_clip",
+   "label": "握住哑铃不穿手：手的顶点进入握柄（最大）",
+   "metric": "gripPenMm",
+   "agg": "max",
+   "max": 1,
+   "unit": "mm"
+  },
+  {
+   "id": "grip_wrapped",
+   "label": "四指都绕着握柄：每指贴柄（离柄面 ≤ 2 mm）顶点数（最少一指）",
+   "metric": "gripContactMin",
+   "agg": "min",
+   "min": 20,
+   "unit": "个"
+  },
+  {
+   "id": "dumbbell_clear",
+   "label": "哑铃不碰身体：哑铃到身体（握哑铃的手除外）最近距离（最低）",
+   "metric": "gripClearMm",
+   "agg": "min",
+   "min": 5,
    "unit": "mm"
   },
   {

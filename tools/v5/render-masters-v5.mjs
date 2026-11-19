@@ -36,6 +36,9 @@ const SHADOW_MARGIN_PX=4,SHADOW_FRUSTUM_MARGIN_M=0.1;   // guard margins (px of 
 // header. Every action without that spec field installs V5 exactly as before (same call, same report).
 // Head flexion (spec v5.headFlexDeg, opt-in per action, default 0 = off; Thomas supplement r2 batch 2 2026-11-19): see tools/v5/runtime/v5-hub.js
 const v5HeadFlex=s=>{const d=s.v5?.headFlexDeg;if(d===undefined||d===0)return 0;if(!(Number.isFinite(d)&&Math.abs(d)<=30))throw Error('bad v5.headFlexDeg (|deg| <= 30)');return d;};
+// Grip (spec v5.grip = { side, dumbbell, ... }, opt-in per action; Thomas supplement r2 add-on 2026-11-19): fingers wrapped around a
+// handle + one-ended dumbbell on the V5 hand, see tools/v5/runtime/v5-hub.js header. Every action without that spec field installs V5 exactly as before.
+const v5Grip=s=>{const g=s.v5?.grip;if(g===undefined||g===null)return null;if(typeof g!=='object'||!['left','right'].includes(g.side))throw Error('bad v5.grip ({side:left|right,...})');return g;};
 // Ground shadow off (spec v5.groundShadow === false, opt-in per action; Thomas supplement r2 batch 3 2026-11-19): close-up shots
 // (6a/6b/7 forearm + hand). see tools/v5/runtime/v5-hub.js header. Every action without that spec field installs V5 exactly as before.
 const VIEW_WINDOW={'h-open-book':{x:0,y:20,w:1080},'triceps-C':{x:0,y:40,w:1080}};
@@ -88,7 +91,7 @@ export async function run(opts){
     const page=scene.page;
     const mods=Object.fromEntries(MODULES.map(m=>[m,fs.readFileSync(path.join(RT,m),'utf8')]));
     const glb=fs.readFileSync(path.join(RT,MODEL)).toString('base64');
-    report.v5.setup=await page.evaluate(async ({mods,glb,scapulaShift,headFlexDeg,noShadow})=>{
+    report.v5.setup=await page.evaluate(async ({mods,glb,scapulaShift,headFlexDeg,noShadow,grip})=>{
       const src=await (await fetch('/src/viewer.js')).text(),v=src.match(/three\.js\?v=(\w+)/)[1],O=location.origin;
       const map={'three':O+'/node_modules/.vite/deps/three.js?v='+v,'three/addons/loaders/GLTFLoader.js':O+'/node_modules/.vite/deps/three_addons_loaders_GLTFLoader__js.js?v='+v,
         'three/addons/GLTFLoader.js':O+'/node_modules/.vite/deps/three_addons_loaders_GLTFLoader__js.js?v='+v};
@@ -102,8 +105,8 @@ export async function run(opts){
         url[name]=URL.createObjectURL(new Blob([fixed],{type:'text/javascript'}));
       }
       const bin=Uint8Array.from(atob(glb),c=>c.charCodeAt(0)).buffer;
-      const m=await import(url['v5-hub.js']);return await m.installV5(scapulaShift||headFlexDeg||noShadow?{glb:bin,...(scapulaShift?{scapulaShift}:{}),...(headFlexDeg?{headFlexDeg}:{}),...(noShadow?{groundShadow:false}:{})}:{glb:bin});
-    },{mods,glb,scapulaShift:source.v5?.scapulaShift===true,headFlexDeg:v5HeadFlex(source),noShadow:source.v5?.groundShadow===false});
+      const m=await import(url['v5-hub.js']);return await m.installV5(scapulaShift||headFlexDeg||noShadow||grip?{glb:bin,...(scapulaShift?{scapulaShift}:{}),...(headFlexDeg?{headFlexDeg}:{}),...(noShadow?{groundShadow:false}:{}),...(grip?{grip}:{})}:{glb:bin});
+    },{mods,glb,scapulaShift:source.v5?.scapulaShift===true,headFlexDeg:v5HeadFlex(source),noShadow:source.v5?.groundShadow===false,grip:v5Grip(source)});
     fail(report.v5.setup.hair==='none'&&report.v5.setup.wristSides.length===2,'V5 setup incomplete');
     const win=VIEW_WINDOW[id];
     if(win){

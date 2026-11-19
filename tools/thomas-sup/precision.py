@@ -42,6 +42,8 @@ S = src['samples']
 def metrics(s):
     J, Q, H, Y = s['J'], s['Q'], s['H'], s['minY']
     m = {}
+    if 'grip' in s:   # v5.grip (dumbbell in the hand): handle vs hand (hand frame, rigid), dumbbell vs the rest of the body (per frame)
+        m['gripPenMm'] = s['grip']['handlePenMm']; m['gripClearMm'] = s['grip']['clearMm']; m['gripContactMin'] = min(s['grip']['contact'][:4])
     m['elbowL'], m['elbowR'] = s['ang']['leftElbow'], s['ang']['rightElbow']
     m['elbowMin'] = min(m['elbowL'], m['elbowR'])
     m['kneeMin'] = min(s['ang']['leftKnee'], s['ang']['rightKnee'])

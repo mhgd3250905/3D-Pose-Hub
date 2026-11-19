@@ -27,6 +27,12 @@
  * hand, recipe camera fitted to the arm) cut the body at the canvas edge, so the ground shadow under the body always runs off the
  * canvas too and the render guard fails. With groundShadow === false the V5 sun casts nothing and the shadow plane is hidden, and
  * extent() reports no shadow points (body box and light-space reach as before). true/absent = the code path is never entered.
+ * grip (opt-in per action, default null = off; Thomas supplement r2 add-on, 2026-11-19): V5 hands are one rigid open-hand mesh
+ * (no finger bones). With grip = { side: 'right', dumbbell: true, ... } the fingers and thumb of that hand are wrapped, in the hand
+ * bone's bind frame, around a handle cylinder (axis = hand +Z, across the palm; centre / radius from the grip object, defaults below)
+ * once at install, before the toon pass (outline shells share the geometry), so the hand holds the handle without any new bone or
+ * skin weight; with dumbbell true a one-ended dumbbell (handle + one head on the thumb side) in two-tone toon + ink shell is attached
+ * to the V5 hand bone, so it turns with the hand. null/absent = the code path is never entered.
  * Files toon-r6.js / wristfix-r2.js / model glb are verbatim copies of the v3r8b candidate (see tools/v5/runtime/SOURCES.md). */
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
@@ -45,7 +51,7 @@ for (const s of ['left', 'right']) for (let k = 1; k <= 8; k++) { PARENT[s + 'Fo
 export const NAMES = ['pelvis', 'spineLower', 'spineUpper', 'torso', 'neck', 'head', 'leftScapula', 'leftUpperArm', 'leftForearm', 'leftHand', 'rightScapula', 'rightUpperArm', 'rightForearm', 'rightHand', 'leftThigh', 'leftShin', 'leftFoot', 'rightThigh', 'rightShin', 'rightFoot'];
 const SHADOW = { color: 0x2a1a12, opacity: 0.14, mapSize: 2048, half: 2.4, sun: [0.6, 5, 1.2] };   // sample geometry (2026-11-16); colour = warm near-black at 0.14 so it reads like the sample on the light theme and does not glow on the dark theme
 
-export async function installV5({ glb, scapulaShift = false, headFlexDeg = 0, groundShadow = true }) {
+export async function installV5({ glb, scapulaShift = false, headFlexDeg = 0, groundShadow = true, grip = null }) {
   const v = flareInspector.viewer, scene = v.scene, renderer = v.renderer, camera = v.camera;
   // ---- model
   const gltf = await new GLTFLoader().setMeshoptDecoder(MeshoptDecoder).parseAsync(glb, '');
@@ -58,6 +64,7 @@ export async function installV5({ glb, scapulaShift = false, headFlexDeg = 0, gr
   for (const b of Object.values(bones)) b.quaternion.identity();
   root.updateMatrixWorld(true);
   const REST = {}; for (const n in bones) REST[n] = bones[n].position.clone();   // parent/child rest world rotations are identity → local offset
+  const gripInfo = grip ? installGrip(grip, { bones, skinned }) : null;   // opt-in (see header): before the toon pass
   // ---- look (toon r6 = r5 look + wrist outline weights); hair none because the page URL has no ?hair
   const bg = scene.background;
   const toon = applyToon({ scene, root, bones, skinned, grid: null, floor: null, renderer, camera });
@@ -224,6 +231,79 @@ export async function installV5({ glb, scapulaShift = false, headFlexDeg = 0, gr
     const n = vert ? h : w, b = new Uint8Array(n * 4); gl.readPixels(x, y, vert ? 1 : w, vert ? h : 1, gl.RGBA, gl.UNSIGNED_BYTE, b);
     const a = new Array(n); for (let i = 0; i < n; i++) a[i] = b[(vert ? n - 1 - i : i) * 4 + 3]; return a;
   }
-  window.__v5 = { pose, render, extent, borderAlpha, get edge() { return edge; }, sun, plane, bones, root, toon, hidden, info: { hiddenHub: hidden.slice(), mutedShadowLights: otherShadowLights.slice(), shadowPlaneY: plane.position.y, matTop, outlines: toon.outlines, hair: toon.hair, outfit: toon.outfit, toonN: toon.toonN, wristSides: wf.sides, ...(scapulaShift ? { scapulaShift: true } : {}), ...(headFlexDeg ? { headFlexDeg } : {}), ...(groundShadow === false ? { groundShadow: false } : {}) } };
+  window.__v5 = { pose, render, extent, borderAlpha, get edge() { return edge; }, sun, plane, bones, root, toon, hidden, ...(gripInfo ? { grip: gripInfo } : {}), info: { hiddenHub: hidden.slice(), mutedShadowLights: otherShadowLights.slice(), shadowPlaneY: plane.position.y, matTop, outlines: toon.outlines, hair: toon.hair, outfit: toon.outfit, toonN: toon.toonN, wristSides: wf.sides, ...(scapulaShift ? { scapulaShift: true } : {}), ...(headFlexDeg ? { headFlexDeg } : {}), ...(groundShadow === false ? { groundShadow: false } : {}), ...(gripInfo ? { grip: gripInfo.info } : {}) } };
   return window.__v5.info;
+}
+
+// ---- grip (opt-in, see header). Hand bind frame (metres): wrist pivot at 0, fingers along -X (right hand; mirrored for left),
+// palm toward -Y, thumb toward +Z (rest world rotations are identity, so this is also the bone's local frame).
+const GRIP = { cx: -0.085, cy: -0.0265, r: 0.0145, xs: -0.085, ramp: 0.02, thumbZ: 0.036, thumbLift: 0.012, thumbL0: -0.055, thumbL1: -0.07, thumbXs: -0.075,
+  bands: [0.036, 0.011, -0.012, -0.037], z0: -0.065, z1: 0.10, head: { z0: 0.10, z1: 0.145, r: 0.034 }, cap: { z: -0.072, r: 0.019, t: 0.008 } };
+function installGrip(opt, { bones, skinned }) {
+  const g = { ...GRIP, ...opt }, side = g.side === 'left' ? 'left' : 'right', sx = side === 'left' ? -1 : 1, hand = side + 'Hand';
+  const ss = u => { u = Math.min(1, Math.max(0, u)); return u * u * (3 - 2 * u); };
+  const band = z => z > g.bands[0] ? 4 : z > g.bands[1] ? 0 : z > g.bands[2] ? 1 : z > g.bands[3] ? 2 : 3;
+  const out = { side, verts: 0, meshes: 0, gap: null };
+  // collect the hand's rigid vertices (hand weight >= 0.999) of every skinned mesh in the hand bind frame (x mirrored for the left)
+  const sets = [];
+  for (const m of skinned) {
+    const names = m.skeleton.bones.map(b => b.name), hi = names.indexOf(hand); if (hi < 0) continue;
+    const g0 = m.geometry, P = g0.attributes.position, N = g0.attributes.normal, J = g0.attributes.skinIndex, W = g0.attributes.skinWeight;
+    const toL = m.skeleton.boneInverses[hi].clone().multiply(m.bindMatrix), toM = toL.clone().invert(), idx = [], L = [];
+    const v = new THREE.Vector3();
+    for (let i = 0; i < P.count; i++) { let w = 0; for (let k = 0; k < 4; k++) if (J.getComponent(i, k) === hi) w += W.getComponent(i, k);
+      if (w < 0.999) continue; v.fromBufferAttribute(P, i).applyMatrix4(toL); if (sx * v.x > -0.03) continue; idx.push(i); L.push([sx * v.x, v.y, v.z]); }
+    if (idx.length) sets.push({ m, P, N, toM, idx, L });
+  }
+  const all = sets.flatMap(S => S.L), isThumb = p => p[2] > g.thumbZ;
+  for (const p of all) if (isThumb(p)) p[1] += g.thumbLift * ss((g.thumbL0 - p[0]) / (g.thumbL0 - g.thumbL1));   // thumb lifted onto the handle
+  const xsOf = p => isThumb(p) ? g.thumbXs : g.xs, bandOf = p => isThumb(p) ? 4 : band(p[2]);
+  const gap = [0, 0, 0, 0, 0], gapSet = [false, false, false, false, false];
+  for (const p of all) { const f = bandOf(p), xs = xsOf(p); if (Math.abs(p[0] - xs) < 0.006) { const r = Math.hypot(p[0] - g.cx, p[1] - g.cy) - g.r; if (!gapSet[f] || r < gap[f]) { gap[f] = r; gapSet[f] = true; } } }
+  const wrapR = (p, f, extra) => { const s = xsOf(p) - p[0], r0 = Math.hypot(xsOf(p) - g.cx, p[1] - g.cy), gv = gap[f], c = gv < 0 ? gv : gv * ss(s / g.ramp); return r0 - c - extra * ss(s / g.ramp); };
+  // second pass: each finger's lowest palmar point past the ramp lands on the handle surface
+  const extra = [0, 0, 0, 0, 0];
+  { const lo = [1e9, 1e9, 1e9, 1e9, 1e9]; for (const p of all) { const f = bandOf(p), s = xsOf(p) - p[0]; if (s > g.ramp) lo[f] = Math.min(lo[f], wrapR(p, f, 0) - g.r); }
+    for (let f = 0; f < 5; f++) if (lo[f] < 1e8) extra[f] = lo[f]; }
+  let n = 0;
+  for (const S of sets) {
+    const v = new THREE.Vector3(), q = new THREE.Quaternion(), Z = new THREE.Vector3(0, 0, 1), nv = new THREE.Vector3();
+    S.idx.forEach((i, k) => {
+      const p = S.L[k], f = bandOf(p), xs = xsOf(p); let ang = 0;
+      if (p[0] < xs) { const s = xs - p[0], r = wrapR(p, f, extra[f]), a0 = Math.atan2(p[1] - g.cy, xs - g.cx), phi = s / Math.max(r, 0.005);
+        p[0] = g.cx + r * Math.cos(a0 + phi); p[1] = g.cy + r * Math.sin(a0 + phi); ang = phi; }
+      v.set(sx * p[0], p[1], p[2]).applyMatrix4(S.toM); S.P.setXYZ(i, v.x, v.y, v.z);
+      if (ang && S.N) { q.setFromAxisAngle(Z, sx * ang); nv.fromBufferAttribute(S.N, i).applyQuaternion(q).normalize(); S.N.setXYZ(i, nv.x, nv.y, nv.z); }
+      n++;
+    });
+    S.P.needsUpdate = true; if (S.N) S.N.needsUpdate = true; S.m.geometry.computeBoundingSphere(); out.meshes++;
+  }
+  out.verts = n; out.gapMm = gap.map((x, f) => +((x + extra[f]) * 1000).toFixed(1));
+  // grip measure in the hand frame (rigid with the hand bone, so it holds on every frame): deepest hand vertex inside the handle, and
+  // hand vertices within 2 mm of the handle surface per finger band (index, middle, ring, little, thumb)
+  let pen = -1e9; const contact = [0, 0, 0, 0, 0];
+  for (const S of sets) S.L.forEach(p => { if (p[2] < g.z0 || p[2] > g.z1) return; const d = g.r - Math.hypot(p[0] - g.cx, p[1] - g.cy); pen = Math.max(pen, d); if (d > -0.002) contact[bandOf(p)]++; });
+  out.handlePenMm = +(pen * 1000).toFixed(2); out.contact = contact;
+  // dumbbell (child of the V5 hand bone; local = hand bind frame)
+  let mesh = null;
+  if (g.dumbbell) {
+    const light = new THREE.Vector3(-0.45, 0.75, 0.55).normalize();
+    const mk = (base, shade) => new THREE.ShaderMaterial({ name: 'v5-grip-toon', uniforms: { uBase: { value: new THREE.Color(base) }, uShade: { value: new THREE.Color(shade) }, uLight: { value: light } },
+      vertexShader: 'varying vec3 vN; void main(){ vN = normalize(mat3(modelMatrix) * normal); gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }',
+      fragmentShader: 'uniform vec3 uBase; uniform vec3 uShade; uniform vec3 uLight; varying vec3 vN; void main(){ gl_FragColor = vec4(dot(normalize(vN), uLight) > 0.15 ? uBase : uShade, 1.0); }' });
+    const ink = new THREE.ShaderMaterial({ name: 'v5-grip-ink', side: THREE.BackSide, uniforms: { uInk: { value: new THREE.Color(0x2a1a12) }, uW: { value: 0.0016 } },
+      vertexShader: 'uniform float uW; void main(){ gl_Position = projectionMatrix * modelViewMatrix * vec4(position + normal * uW, 1.0); }',
+      fragmentShader: 'uniform vec3 uInk; void main(){ gl_FragColor = vec4(uInk, 1.0); }' });
+    const grp = new THREE.Group(); grp.name = 'V5_GripDumbbell'; grp.position.set(sx * g.cx, g.cy, 0);
+    const part = (geo, mat, z) => { geo.rotateX(Math.PI / 2); const m = new THREE.Mesh(geo, mat); m.position.z = z; m.frustumCulled = false;
+      const o = new THREE.Mesh(geo, ink); o.frustumCulled = false; o.userData.__outline = true; o.renderOrder = -1; m.add(o); grp.add(m); return m; };
+    const steel = mk(0x9aa3ad, 0x667079), rubber = mk(0x3b4048, 0x24282e);
+    part(new THREE.CylinderGeometry(g.r, g.r, g.head.z0 - g.cap.z, 32), steel, (g.head.z0 + g.cap.z) / 2);
+    part(new THREE.CylinderGeometry(g.head.r, g.head.r, g.head.z1 - g.head.z0, 6), rubber, (g.head.z0 + g.head.z1) / 2);
+    part(new THREE.CylinderGeometry(g.cap.r, g.cap.r, g.cap.t, 32), steel, g.cap.z - g.cap.t / 2);
+    bones[hand].add(grp); mesh = grp;
+  }
+  out.dumbbell = !!mesh;
+  const handle = { cx: sx * g.cx, cy: g.cy, r: g.r, z0: g.cap.z - g.cap.t, z1: g.head.z0, head: g.head };
+  return { info: out, mesh, handle, bone: hand };
 }
