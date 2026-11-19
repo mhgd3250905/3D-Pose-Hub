@@ -196,6 +196,27 @@ def metrics(s):
     for side, k, n0 in (('left', 'L', [0.06068526, -0.99777448, -0.02762938]), ('right', 'R', [-0.06068526, -0.99777448, -0.02762938])):
         pv = qrot(Q[side + 'Hand'], n0); m['palmDownDeg' + k] = round(deg(math.acos(max(-1, min(1, -pv[1])))), 1)   # 0 = palm flat facing the floor
     m['palmDownDegMax'] = max(m['palmDownDegL'], m['palmDownDegR'])
+    # arm twist (r4, 2026-11-19, t-seated-forearm-rotation 肘部「拧着」), right arm, check.mjs 'arm' (V5 bones + skinned mesh):
+    # the elbow is a hinge: no roll of the forearm bone against the upper arm (elbowTwistR), the forearm folds toward the elbow pit
+    # (elbowPitR), pronation/supination = hand vs forearm twist spread along the forearm by the V5 twist helpers (handTwistR); the
+    # whole forearm rotation vs the upper arm = forearmTwistR. upperArmRotR = upper-arm roll about its own axis in the thorax frame vs
+    # the first sample (inward/outward rotation drifting over the cycle). Mesh: mean azimuth of the elbow-band skin ([-0.08, 0.04] of
+    # the forearm length about the elbow) vs a pure hinge, proximal forearm band [0.04, 0.15], and the elbow-band radius vs the upper-arm
+    # band [-0.4, -0.2] (pinch; 1 = as thick as the upper arm band ratio at rest).
+    if 'arm' in s and s['arm'] and 'right' in s['arm']:
+        a = s['arm']['right']; m['elbowTwistR'] = a['elbowTwistDeg']; m['elbowTwistAbsR'] = abs(a['elbowTwistDeg'])
+        m['elbowPitR'] = a['elbowPitDeg']; m['elbowPitAbsR'] = None if a['elbowPitDeg'] is None else abs(a['elbowPitDeg'])
+        m['handTwistR'] = a['handTwistDeg']; m['forearmTwistR'] = round(a['elbowTwistDeg'] + a['handTwistDeg'], 2)
+        a0 = S[0]['arm']['right']; q = a['uaT']; q0 = a0['uaT']; ax = a['aU']
+        x0, y0, z0, w0 = qinv(q0); x1, y1, z1, w1 = q   # rel = q0^-1 * q (three.js [x,y,z,w])
+        rel = [w0 * x1 + x0 * w1 + y0 * z1 - z0 * y1, w0 * y1 - x0 * z1 + y0 * w1 + z0 * x1, w0 * z1 + x0 * y1 - y0 * x1 + z0 * w1, w0 * w1 - x0 * x1 - y0 * y1 - z0 * z1]
+        pp, ww = dot(rel[:3], ax), rel[3]
+        if ww < 0: pp, ww = -pp, -ww
+        m['upperArmRotR'] = round(deg(2 * math.atan2(pp, ww)), 2)
+        ms = {tuple(b['at']): b for b in a['mesh']}
+        eb, pf, ub = ms[(-0.08, 0.04)], ms[(0.04, 0.15)], ms[(-0.4, -0.2)]
+        m['elbowSkinTwistAbsR'] = abs(eb['azDeg']); m['proxForearmSkinTwistAbsR'] = abs(pf['azDeg'])
+        m['elbowPinchR'] = round(eb['radius'] / ub['radius'], 3)
     return m
 
 M = [(s['t'], metrics(s)) for s in S]

@@ -167,6 +167,47 @@ try{
         let mn=1e9,cnt=0,both=0,at=null;for(const [k,v] of bot){const t=top.get(k);if(t===undefined)continue;both++;const g=v-t;if(g<mn){mn=g;const i=bi.get(k);at=[pa[i],pa[i+1],pa[i+2]].map(x=>+x.toFixed(3));}if(g<0.004)cnt++;}
         out[a+'>'+b]={mm:both?+(mn*1000).toFixed(1):null,contactCells:cnt,overlapCells:both,at};}
       return out;};
+    // arm twist (r4, 2026-11-19, t-seated-forearm-rotation 肘部「拧着」): the elbow is a hinge, so the forearm bone may differ from the
+    // upper-arm bone only by a swing (flexion); any roll about the forearm axis there twists the elbow skin. Per side:
+    //   elbowTwistDeg = twist of (upper arm)^-1 * (forearm) world rotation about the forearm rest axis (0 = pure hinge);
+    //   elbowPitDeg   = angle about the upper-arm axis between the elbow pit (rest anterior +Z carried by the upper arm) and the actual
+    //                   bend direction (forearm minus its upper-arm component); 0 = the forearm folds toward the elbow pit;
+    //   handTwistDeg  = hand vs forearm twist about the forearm axis (what tools/v5/runtime/wristfix-r2.js spreads along the forearm);
+    //   uaT           = upper-arm world rotation in the thorax frame (precision.py: upper-arm inward/outward rotation over the cycle);
+    //   mesh          = per station along the arm (fraction of the forearm from the elbow, < 0 = upper arm), mean azimuth (deg) of the
+    //                   skinned vertices about the segment axis vs a pure-hinge frame (upper arm; forearm with its elbow twist removed),
+    //                   and mean radius vs rest (pinch, 1 = rest). Fist / V5 hand vertices excluded.
+    {
+      const ST=[[-0.4,-0.2],[-0.2,-0.08],[-0.08,0.04],[0.04,0.15],[0.15,0.3],[0.3,0.5],[0.5,0.7],[0.7,0.9]];
+      const arm={};
+      for(const s of ['left','right']){const ua=V.bones[s+'UpperArm'],fa=V.bones[s+'Forearm'],h=V.bones[s+'Hand'];
+        const rU=s==='left'?'upperArmL':'upperArmR',rF=s==='left'?'forearmL':'forearmR',L=[];
+        for(const {o,reg,n} of per){const sk=o.skeleton,iF=sk.bones.indexOf(fa);if(iF<0)continue;const eB=new T.Vector3().setFromMatrixPosition(sk.boneInverses[iF].clone().invert());
+          const P=o.geometry.attributes.position;for(let i=0;i<n;i++)if(reg[i]===rU||reg[i]===rF){const r=new T.Vector3().fromBufferAttribute(P,i).applyMatrix4(o.bindMatrix).sub(eB);L.push([o,i,r]);}}
+        arm[s]={L,aU:fa.position.clone().normalize(),aF:h.position.clone().normalize(),lenU:fa.position.length(),lenF:h.position.length()};}
+      const tw=(q,a)=>{let p=q.x*a.x+q.y*a.y+q.z*a.z,w=q.w;if(w<0){w=-w;p=-p;}let t=2*Math.atan2(p,w);if(t>Math.PI)t-=2*Math.PI;return t*180/Math.PI;};
+      const az=(a,b,ax)=>{const pa=a.clone().sub(ax.clone().multiplyScalar(a.dot(ax))),pb=b.clone().sub(ax.clone().multiplyScalar(b.dot(ax)));return Math.atan2(ax.dot(pb.clone().cross(pa)),pb.dot(pa))*180/Math.PI;};
+      const _p=new T.Vector3();
+      window.__tsArm=()=>{const out={},B=V.bones,W=b=>b.getWorldQuaternion(new T.Quaternion()),Pw=b=>b.getWorldPosition(new T.Vector3());
+        for(const s of ['left','right']){const A=arm[s],ua=B[s+'UpperArm'],fa=B[s+'Forearm'],h=B[s+'Hand'];
+          const qu=W(ua),qf=W(fa),qh=W(h),qt=W(B.torso),R=qu.clone().invert().multiply(qf);
+          const et=tw(R,A.aF),tq=new T.Quaternion().setFromAxisAngle(A.aF,et*Math.PI/180),sw=R.clone().multiply(tq.clone().invert()),qI=qu.clone().multiply(sw);
+          const uW=A.aU.clone().applyQuaternion(qu),fW=A.aF.clone().applyQuaternion(qf),pit=new T.Vector3(0,0,1).sub(A.aU.clone().multiplyScalar(A.aU.z)).normalize().applyQuaternion(qu);
+          const bend=fW.clone().sub(uW.clone().multiplyScalar(fW.dot(uW)));
+          const pitDeg=bend.length()<1e-3?null:Math.atan2(uW.dot(pit.clone().cross(bend.normalize())),pit.dot(bend))*180/Math.PI;
+          const iu=qu.clone().invert(),iI=qI.clone().invert(),E=Pw(fa),sc=E.distanceTo(Pw(h))/A.lenF;
+          const acc=ST.map(()=>[0,0,0]);   // sum azimuth, sum radius ratio, count
+          for(const [o,i,r] of A.L){const hf=r.dot(A.aF)/A.lenF,fore=hf>=0,x=fore?hf:r.dot(A.aU)/A.lenF;const k=ST.findIndex(([a,b])=>x>=a&&x<b);if(k<0)continue;
+            const ax=fore?A.aF:A.aU,rr=r.clone().sub(ax.clone().multiplyScalar(r.dot(ax))).length();if(rr<0.12*A.lenF)continue;
+            o.getVertexPosition(i,_p);_p.applyMatrix4(o.matrixWorld);const loc=_p.sub(E).multiplyScalar(1/sc).applyQuaternion(fore?iI:iu);
+            const pr=loc.clone().sub(ax.clone().multiplyScalar(loc.dot(ax))).length();acc[k][0]+=az(loc,r,ax);acc[k][1]+=pr/rr;acc[k][2]++;}
+          const r2=x=>+x.toFixed(2);
+          out[s]={elbowTwistDeg:r2(et),elbowPitDeg:pitDeg===null?null:r2(pitDeg),handTwistDeg:r2(tw(qf.clone().invert().multiply(qh),A.aF)),
+            uaT:qt.clone().invert().multiply(qu).toArray().map(x=>+x.toFixed(6)),aU:A.aU.toArray().map(x=>+x.toFixed(6)),
+            helpers:[1,2,3,4,5,6].filter(k=>B[s+'ForearmTwist'+k]).map(k=>r2(tw(B[s+'ForearmTwist'+k].quaternion,A.aF))),
+            mesh:ST.map(([a,b],k)=>({at:[a,b],azDeg:acc[k][2]?r2(acc[k][0]/acc[k][2]):null,radius:acc[k][2]?+(acc[k][1]/acc[k][2]).toFixed(3):null,n:acc[k][2]}))};}
+        return out;};
+    }
   });
   const props=source.props??[];
   const matTop=props.some(p=>p.type==='mat')?Math.max(...props.filter(p=>p.type==='mat').map(p=>(p.at?.[1]??0)+(p.size?.[2]??0.006))):0;
@@ -181,7 +222,7 @@ try{
   for(const f of frames){
     fail(freeGiB()>=.5,'Low free memory');
     const st=await stageAt(page,source,f/fps,warm);warm=st.x;
-    const r=await page.evaluate(([fl,caps,render,mc,gp])=>{const d=window.__v5.pose();const m=window.__tsMeasure(fl,caps);if(mc.length)m.meshClip=window.__tsMeshClip(mc);if(gp.length)m.gap=window.__tsGap(gp);const url=render?window.__v5.render():null;return {d,m,url};},[matTop,caps,want.has(f),meshPairs,gapPairs]);
+    const r=await page.evaluate(([fl,caps,render,mc,gp])=>{const d=window.__v5.pose();const m=window.__tsMeasure(fl,caps);if(mc.length)m.meshClip=window.__tsMeshClip(mc);if(gp.length)m.gap=window.__tsGap(gp);m.arm=window.__tsArm();const url=render?window.__v5.render():null;return {d,m,url};},[matTop,caps,want.has(f),meshPairs,gapPairs]);
     if(r.url&&pngDir)fs.writeFileSync(path.join(pngDir,`${String(f).padStart(4,'0')}.png`),Buffer.from(r.url.split(',')[1],'base64'));
     // review views (r2, 2026-11-19): the same V5 frame from fixed directions around the body (camera restored by the next stageAt)
     if(want.has(f)&&pngDir&&views.length)for(const vw of views){
@@ -195,7 +236,7 @@ try{
         c.up.set(...up);c.position.copy(cen).addScaledVector(dir,dist);c.lookAt(cen);c.updateMatrixWorld();const u=V.render();c.up.set(0,1,0);return u;},[vw.dir,vw.up,vw.focus??null]);
       fs.writeFileSync(path.join(pngDir,`${String(f).padStart(4,'0')}-${vw.name}.png`),Buffer.from(url.split(',')[1],'base64'));
     }
-    res.samples.push({...(r.m.grip?{grip:r.m.grip}:{}),...(r.m.hubGrasp?{hubGrasp:r.m.hubGrasp}:{}),f,t:+(f/fps).toFixed(3),spine:r.d.spine,warn:st.warn?.length??0,warnText:(st.warn??[]).slice(0,3).map(w=>typeof w==='string'?w:JSON.stringify(w)).join(' | ').slice(0,300),ang:r.d.angV5,angHub:r.d.angHub,posErr:r.d.posErr,posErrBone:r.d.posErrBone,H:Object.fromEntries(['leftPalm','rightPalm','leftWrist','rightWrist','leftToe','rightToe','leftAnkle','rightAnkle','leftKnee','rightKnee','leftShoulder','rightShoulder','leftElbow','rightElbow','pelvis','head','leftHip','rightHip','neck','shoulderCenter','waist','leftHeel','rightHeel','leftFingertip','rightFingertip'].map(n=>[n,st.joints[n]])),minY:r.m.minY,minP:r.m.minP,prop:r.m.prop,J:r.m.J,Q:r.m.Q,...(r.m.meshClip?{meshClip:r.m.meshClip}:{}),...(r.m.gap?{gap:r.m.gap}:{})});
+    res.samples.push({...(r.m.grip?{grip:r.m.grip}:{}),...(r.m.hubGrasp?{hubGrasp:r.m.hubGrasp}:{}),f,t:+(f/fps).toFixed(3),spine:r.d.spine,warn:st.warn?.length??0,warnText:(st.warn??[]).slice(0,3).map(w=>typeof w==='string'?w:JSON.stringify(w)).join(' | ').slice(0,300),ang:r.d.angV5,angHub:r.d.angHub,posErr:r.d.posErr,posErrBone:r.d.posErrBone,H:Object.fromEntries(['leftPalm','rightPalm','leftWrist','rightWrist','leftToe','rightToe','leftAnkle','rightAnkle','leftKnee','rightKnee','leftShoulder','rightShoulder','leftElbow','rightElbow','pelvis','head','leftHip','rightHip','neck','shoulderCenter','waist','leftHeel','rightHeel','leftFingertip','rightFingertip'].map(n=>[n,st.joints[n]])),minY:r.m.minY,minP:r.m.minP,prop:r.m.prop,J:r.m.J,Q:r.m.Q,...(r.m.meshClip?{meshClip:r.m.meshClip}:{}),...(r.m.gap?{gap:r.m.gap}:{}),arm:r.m.arm,wrist:r.d.wrist});
   }
   res.pageErrors=report.pageErrors;
 }finally{await scene.browser.close();}

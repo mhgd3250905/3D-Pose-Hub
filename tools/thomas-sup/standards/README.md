@@ -57,3 +57,7 @@ node tools/thomas-sup/check.mjs --recipe ... --frames ... --mesh-clip forearmR:t
 
 ## 分腿抬腿裆部处理（r3 2026-11-19）
 - t-straddle-active-lift 机位由正前方 [0, 0.28, 1] 转向身体左侧 40°（dir [0.643, 0.28, 0.766]），近侧大腿挡住裆部；双脚与抬腿全程入框。未加短裤压平开关（机位已足够）。偏离 PDF 正前方机位，待开哥确认。
+
+## 肘铰链度量（r4 2026-11-19，第 7 项坐姿翻手腕「拧着」）
+- check.mjs 每帧记录 `arm.{left,right}`：前臂骨相对上臂绕前臂轴的扭转 `elbowTwistDeg`（铰链 = 0）、肘窝（上臂静止前侧 +Z）与前臂弯向夹角 `elbowPitDeg`、手对前臂扭转 `handTwistDeg`、上臂在胸廓系的旋转、扭转辅助骨各段转角、以及沿手臂各段蒙皮顶点相对纯铰链系的平均偏转与半径比（`mesh`）。precision.py 给出 `elbowTwistR` / `elbowPitR` / `upperArmRotR` / `forearmTwistR` / `handTwistR` / `elbowSkinTwistAbsR` / `proxForearmSkinTwistAbsR` / `elbowPinchR`（右臂）。只加度量，不影响渲染。
+- t-seated-forearm-rotation r4 只改 spec 参数（upperArmTwistR、elbowTwistR、rollShare 0、手腕/肘目标），共用构建器、v5-hub.js、render-masters-v5.mjs 未动，其余 11 个托马斯动作配方 gen-recipes --check 不变。数字见 `t-seated-forearm-rotation.md` r4 节。
