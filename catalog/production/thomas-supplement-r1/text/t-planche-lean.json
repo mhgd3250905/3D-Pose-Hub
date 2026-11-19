@@ -120,5 +120,55 @@
   "status": "draft-awaiting-user-review",
   "note": "defaultDose takes the low end of the brief range; the range is in doseBrief. r2 animation is the beginner lean: shoulders about 11 cm past the wrists, held about 4 s, arms locked, shoulder blades pushed apart and down.",
   "standard": "tools/thomas-sup/standards/t-planche-lean.md"
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 3,
+    "role": "posture",
+    "zh": "手臂锁直，把地推开，肩往下压",
+    "en": "Arms locked, push the floor, shoulders down",
+    "from": [
+     "cue1",
+     "cue3",
+     "commonErrors[2]"
+    ]
+   },
+   {
+    "at": 7,
+    "key": "n.3"
+   },
+   {
+    "at": 8,
+    "key": "n.2"
+   },
+   {
+    "at": 9,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.release",
+    "p.rest",
+    "sec.90"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
+  }
  }
 }

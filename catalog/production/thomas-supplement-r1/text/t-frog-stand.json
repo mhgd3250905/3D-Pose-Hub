@@ -127,5 +127,55 @@
   "status": "draft-awaiting-user-review",
   "note": "defaultDose takes the low end of the brief range; the range is in doseBrief. r2 animation (8 s loop): 0.6 s squat on the toes, 1.4 s lean with the toes down, feet up 0.5 s, about 4 s with the feet off, feet down, lean back; elbows about 120 deg, shoulders about 23 cm past the wrists, knees resting on the upper arms above the elbows.",
   "standard": "tools/thomas-sup/standards/t-frog-stand.md"
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 3,
+    "role": "posture",
+    "zh": "肩膀往前往下沉，手指抓地",
+    "en": "Shoulders forward and down, fingers grip",
+    "from": [
+     "cue4",
+     "commonErrors[0]",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "at": 7,
+    "key": "n.3"
+   },
+   {
+    "at": 8,
+    "key": "n.2"
+   },
+   {
+    "at": 9,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.release",
+    "p.rest",
+    "sec.60"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
+  }
  }
 }

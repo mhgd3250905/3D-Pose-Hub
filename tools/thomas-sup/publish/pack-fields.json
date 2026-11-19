@@ -1,0 +1,355 @@
+{
+ "format": "thomas-sup-pack-fields@1",
+ "status": "draft-ai-needs-user-review",
+ "note": "托马斯补充 12 个动作进 pack 需要、而文字稿（catalog/production/thomas-supplement-r1/text）里没有的目录字段。按目录 taxonomy 词表填写：muscleGroups 取《托马斯动作库补充-制作说明》2026-11-19 每项「主练肌群」；doseRange 取说明里的剂量范围（说明没写休息的取 defaultDose 的休息秒数）；equipment/position/category 按目录词表（与文字稿 tags 的 ai-tags 词表不同）；contraindications 取文字稿 cautions 里写到疼的部位；alternative 只填文字稿里明说的退阶动作，其余 null。scenes 不在这里：build 按器械与体位推导（目录 taxonomy.rules）。apps 一律 []（不标 flarelab，等开哥决定托马斯 App 是否接入），tags [\"thomas\",\"thomas:supplement-r1\"]。",
+ "apps": [],
+ "tags": [
+  "thomas",
+  "thomas:supplement-r1"
+ ],
+ "actions": {
+  "t-pushup-plus": {
+   "muscleGroups": [
+    "serratus",
+    "scapular"
+   ],
+   "equipment": [],
+   "category": "strength",
+   "position": "prone",
+   "contraindications": [
+    "肩"
+   ],
+   "alternative": "t-kneeling-scap-pushup",
+   "doseRange": {
+    "sets": [
+     3,
+     3
+    ],
+    "reps": [
+     10,
+     12
+    ],
+    "restSeconds": [
+     60,
+     60
+    ]
+   }
+  },
+  "t-kneeling-scap-pushup": {
+   "muscleGroups": [
+    "serratus",
+    "scapular"
+   ],
+   "equipment": [
+    "mat"
+   ],
+   "category": "strength",
+   "position": "kneeling",
+   "contraindications": [
+    "膝"
+   ],
+   "alternative": null,
+   "doseRange": {
+    "sets": [
+     3,
+     3
+    ],
+    "reps": [
+     10,
+     12
+    ],
+    "restSeconds": [
+     60,
+     60
+    ]
+   }
+  },
+  "t-frog-stand": {
+   "muscleGroups": [
+    "forearms",
+    "deltoids"
+   ],
+   "equipment": [
+    "mat"
+   ],
+   "category": "strength",
+   "position": "prone",
+   "contraindications": [
+    "手腕"
+   ],
+   "alternative": null,
+   "doseRange": {
+    "sets": [
+     3,
+     5
+    ],
+    "seconds": [
+     10,
+     20
+    ],
+    "restSeconds": [
+     60,
+     90
+    ]
+   }
+  },
+  "t-planche-lean": {
+   "muscleGroups": [
+    "deltoids",
+    "serratus",
+    "forearms"
+   ],
+   "equipment": [
+    "mat"
+   ],
+   "category": "strength",
+   "position": "prone",
+   "contraindications": [
+    "手腕"
+   ],
+   "alternative": null,
+   "doseRange": {
+    "sets": [
+     3,
+     4
+    ],
+    "seconds": [
+     10,
+     15
+    ],
+    "restSeconds": [
+     60,
+     120
+    ]
+   }
+  },
+  "t-seated-shoulder-ext-slide": {
+   "muscleGroups": [
+    "deltoids",
+    "chest",
+    "biceps"
+   ],
+   "equipment": [
+    "mat"
+   ],
+   "category": "mobility",
+   "position": "seated",
+   "contraindications": [
+    "肩"
+   ],
+   "alternative": null,
+   "doseRange": {
+    "sets": [
+     3,
+     3
+    ],
+    "reps": [
+     6,
+     8
+    ],
+    "restSeconds": [
+     60,
+     90
+    ]
+   }
+  },
+  "t-self-resisted-wrist-flexion": {
+   "muscleGroups": [
+    "forearms"
+   ],
+   "equipment": [
+    "chair"
+   ],
+   "category": "strength",
+   "position": "seated",
+   "contraindications": [
+    "手腕"
+   ],
+   "alternative": null,
+   "doseRange": {
+    "sets": [
+     2,
+     3
+    ],
+    "reps": [
+     8,
+     12
+    ],
+    "restSeconds": [
+     45,
+     45
+    ]
+   }
+  },
+  "t-self-resisted-wrist-extension": {
+   "muscleGroups": [
+    "forearms"
+   ],
+   "equipment": [
+    "chair"
+   ],
+   "category": "strength",
+   "position": "seated",
+   "contraindications": [
+    "手腕"
+   ],
+   "alternative": null,
+   "doseRange": {
+    "sets": [
+     2,
+     3
+    ],
+    "reps": [
+     8,
+     12
+    ],
+    "restSeconds": [
+     45,
+     45
+    ]
+   }
+  },
+  "t-seated-forearm-rotation": {
+   "muscleGroups": [
+    "forearms"
+   ],
+   "equipment": [
+    "dumbbell",
+    "chair"
+   ],
+   "category": "strength",
+   "position": "seated",
+   "contraindications": [],
+   "alternative": null,
+   "doseRange": {
+    "sets": [
+     2,
+     3
+    ],
+    "reps": [
+     10,
+     12
+    ],
+    "restSeconds": [
+     45,
+     45
+    ]
+   }
+  },
+  "t-hanging-leg-raise": {
+   "muscleGroups": [
+    "hip-flexors",
+    "abs"
+   ],
+   "equipment": [
+    "pullup-bar"
+   ],
+   "category": "strength",
+   "position": "hanging",
+   "contraindications": [],
+   "alternative": null,
+   "doseRange": {
+    "sets": [
+     3,
+     3
+    ],
+    "reps": [
+     8,
+     12
+    ],
+    "restSeconds": [
+     60,
+     90
+    ]
+   }
+  },
+  "t-straddle-active-lift": {
+   "muscleGroups": [
+    "adductors",
+    "hip-abductors",
+    "hip-flexors"
+   ],
+   "equipment": [
+    "mat"
+   ],
+   "category": "mobility",
+   "position": "seated",
+   "contraindications": [],
+   "alternative": null,
+   "doseRange": {
+    "sets": [
+     3,
+     3
+    ],
+    "reps": [
+     6,
+     10
+    ],
+    "restSeconds": [
+     45,
+     45
+    ]
+   }
+  },
+  "t-straddle-planche": {
+   "muscleGroups": [
+    "deltoids",
+    "serratus",
+    "abs"
+   ],
+   "equipment": [
+    "mat"
+   ],
+   "category": "strength",
+   "position": "prone",
+   "contraindications": [
+    "手腕",
+    "肩"
+   ],
+   "alternative": "t-tuck-planche",
+   "doseRange": {
+    "sets": [
+     3,
+     5
+    ],
+    "seconds": [
+     3,
+     8
+    ],
+    "restSeconds": [
+     90,
+     120
+    ]
+   }
+  },
+  "t-pbar-support-swing": {
+   "muscleGroups": [
+    "triceps",
+    "deltoids"
+   ],
+   "equipment": [
+    "dip-bars"
+   ],
+   "category": "strength",
+   "position": "support",
+   "contraindications": [
+    "肩"
+   ],
+   "alternative": null,
+   "doseRange": {
+    "sets": [
+     3,
+     3
+    ],
+    "reps": [
+     10,
+     20
+    ],
+    "restSeconds": [
+     60,
+     60
+    ]
+   }
+  }
+ }
+}

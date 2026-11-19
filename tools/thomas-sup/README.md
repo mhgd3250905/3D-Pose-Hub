@@ -47,3 +47,8 @@ node tools/thomas-sup/produce.mjs --out F:/PoseHub-v3/runs/2026-11-19_thomas-sup
   预检：渲染内容必须等于 main `94ff057`，只允许本分支新增的文件不同（`produce.mjs` 里的 `EXCLUDE`）。
 - 产物（都留在本机）：`<out>\masters\<id>\`（1080 母帧）、`<out>\packages\<id>\v5-toon\`（与 V5 相同的成片文件）、`<out>\samples\<id>.720.mp4`（浅色 720p 循环样片，给开哥看的就是这个）。
 - 总览拼图 `<out>\_qa\overview.jpg`（每动作一行：浅色 start/peak/end + 深色封面）连同 `run-*.json`、`state.json`、`progress.log` 推到孤立分支 `qa/thomas-supplement-r1`；视频、母帧、PNG 不进 Git。
+
+## 正式发布（r2-v19，分支 codex/thomas-sup-publish）
+开哥 2026-11-19 22:27 同意正式渲染、上传、准备新 pack（托马斯 App 用不用之后定；不切任何渠道指针）。
+任务卡 `tools/thomas-sup/publish/PUBLISH-THOMAS-SUP.md`；`node tools/thomas-sup/produce.mjs --final` 是正式渲染入口（渲染内容必须等于样片通过的 b33b9ad）。
+待开哥确认的文字/目录草稿汇总见 `tools/thomas-sup/publish/REVIEW-DRAFTS.md`。

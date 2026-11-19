@@ -136,5 +136,70 @@
   "status": "draft-awaiting-user-review",
   "note": "defaultDose takes the low end of the brief range; the range is in doseBrief. r2: one rep 8 s (lift 2.2 s, hold 0.8 s, lower 3.0 s, rest 2.0 s); close-up camera.",
   "standard": "tools/thomas-sup/standards/t-self-resisted-wrist-extension.md"
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 8.0,
+  "phaseCues": "none",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 3,
+    "role": "form",
+    "zh": "手肘和肩不动，只抬手背",
+    "en": "Elbow and shoulder still, only the hand lifts",
+    "from": [
+     "cue4",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 6,
+    "role": "halfway",
+    "zh": "压手背的手别松劲",
+    "en": "The pressing hand never lets up",
+    "from": [
+     "cue3",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 9,
+    "key": "p.last_rep"
+   }
+  ],
+  "before": [
+   "p.right_first"
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.45"
+   ],
+   "allDone": [
+    "p.nice"
+   ],
+   "sideDone": [
+    "p.switch_left"
+   ]
+  },
+  "sides": {
+   "order": [
+    "right",
+    "left"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边"
+  }
  }
 }

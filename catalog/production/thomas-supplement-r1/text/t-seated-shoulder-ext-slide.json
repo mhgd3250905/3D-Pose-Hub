@@ -138,5 +138,57 @@
   "status": "draft-awaiting-user-review",
   "note": "defaultDose takes the low end of the brief range; the range is in doseBrief. r2: one rep 8 s (slide 2.2 s, hold 1.5 s, back 2.2 s, reset 2.1 s).",
   "standard": "tools/thomas-sup/standards/t-seated-shoulder-ext-slide.md"
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 8.0,
+  "phaseCues": "none",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "手掌贴死地面，肩膀往下沉",
+    "en": "Palms flat, shoulders pressed down",
+    "from": [
+     "cue2",
+     "cue3",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 4,
+    "role": "halfway",
+    "zh": "下巴微收，眼睛看前面",
+    "en": "Chin tucked a little, eyes forward",
+    "from": [
+     "cue3",
+     "commonErrors[2]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "key": "p.last_rep"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.60"
+   ],
+   "allDone": [
+    "p.nice"
+   ]
+  }
  }
 }
