@@ -19,6 +19,7 @@ git pull --ff-only
 git log --oneline -1
 node tools/flare2-moves-r2/produce.mjs --out F:/PoseHub-v3/runs/2026-11-21_flare2-moves-r2
 ```
+- 渲染内容提交（`produce.mjs` 里的 `RENDER`）= `138e3e9`；`git log --oneline -1` 显示的是它之后只改任务卡/`produce.mjs` 的那个提交，正常。
 - 第 2 行如果列出了任何文件（有未提交的改动），停下，把那几行贴到群里，不要往下做。
 - python 不叫 `python` 时先 `$env:PYTHON='<python.exe 路径>'`；PATH 上要有 `ffmpeg`。
 - 中途断电/重启/卡死被关：重新打开 PowerShell，从 `cd` 那行起再做一遍，同一条命令会跳过已完成的动作。
