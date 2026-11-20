@@ -141,6 +141,8 @@ try{
       for(const o of (window.__props?.list||[])){o.updateMatrixWorld(true);const sp=o.userData.spec||{};
         if(sp.type==='wall'){const n=new T.Vector3(0,0,1).applyQuaternion(o.getWorldQuaternion(new T.Quaternion()));walls.push({p:o.getWorldPosition(new T.Vector3()),n});continue;}
         let prims=o.userData.qaPrims||[];if(sp.type==='machine'){const [w,h,d]=sp.size||[0.8,1.6,0.8];prims=[{c:[0,h/2,0],ax:[[1,0,0],[0,1,0],[0,0,1]],h:[w/2,h/2,d/2]}];}
+        if(sp.type==='mat'&&sp.block){const [L,W,H]=sp.size;prims=[{c:[0,-H/2,0],ax:[[1,0,0],[0,1,0],[0,0,1]],h:[L/2,H/2,W/2]}];}
+        else if(sp.type==='mat')prims=[];
         for(const q of prims){if(!q.h)continue;const M=o.matrixWorld,R=new T.Matrix3().setFromMatrix4(M);
           boxes.push({c:new T.Vector3(...q.c).applyMatrix4(M),ax:q.ax.map(a=>new T.Vector3(...a).applyMatrix3(R).normalize()),h:q.h,type:sp.type});}}
       if(!boxes.length&&!walls.length)return null;
@@ -231,7 +233,8 @@ try{
   const props=source.props??[];
   // flare2 (2026-11-20): the mat's top face is at at.y (drill-anim/page/props.js mat: slab spans [at.y - H, at.y]; tools/v5/runtime/v5-hub.js
 // reads the same top from the prop_mat bounding box), not at.y + H as tools/thomas-sup/check.mjs assumes (that put the floor 6 mm high).
-const matTop=props.some(p=>p.type==='mat')?Math.max(...props.filter(p=>p.type==='mat').map(p=>(p.at?.[1]??0))):0;
+const floorMats=props.filter(p=>p.type==='mat'&&!p.block);   // flare2: mats with block:true are yoga blocks (measured as boxes in fm)
+const matTop=floorMats.length?Math.max(...floorMats.map(p=>(p.at?.[1]??0))):0;
   const caps=await page.evaluate(()=>{const out=[];try{const q=__props.qaPrims?.()??[];for(const c of q)if(c.a&&c.b&&c.r)out.push({a:c.a,b:c.b,r:c.r});}catch{}return out;});
   for(const p of props)if(p.type==='pullupBar'&&p.capsule)caps.push(p.capsule);
   // r3 (2026-11-19): a pull-up bar without an explicit capsule = its drawn bar (drill-anim/page/props.js pullupBar: radius 16 mm, along X)

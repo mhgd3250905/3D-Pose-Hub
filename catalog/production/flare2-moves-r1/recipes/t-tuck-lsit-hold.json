@@ -1,0 +1,70 @@
+{
+  "format": "pose-hub-action-recipe@1",
+  "id": "t-tuck-lsit-hold",
+  "nameZh": "团身 L 撑",
+  "spec": "drill-anim/specs/t-tuck-lsit-hold.js",
+  "specSha256Lf": "e8b5d434407de9ea1393758c8aec12b4fd5c4a819e8c381a29fb9f6030c2192e",
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "hands": {
+    "left": "support",
+    "right": "support"
+  },
+  "camera": {
+    "pad": 0.12,
+    "k": 1,
+    "drift": 0,
+    "fitTimeline": true,
+    "orbitDegrees": 0,
+    "frontSweepDegrees": 0,
+    "dir": [
+      0.75,
+      0.2,
+      0.66
+    ],
+    "fit": [
+      "head",
+      "leftPalm",
+      "rightPalm",
+      "leftToe",
+      "rightToe",
+      "pelvis",
+      "leftKnee",
+      "rightKnee"
+    ],
+    "at": 4
+  },
+  "cameraScale": 1.15,
+  "output": {
+    "groundShadow": false,
+    "cameraMotion": false,
+    "wholeCycleContentRect": true,
+    "fps": 30,
+    "exerciseMat": true
+  },
+  "jointCorrections": [
+    {
+      "profile": "upper-arm-contour-r3",
+      "version": "0.1.0-r3"
+    },
+    {
+      "profile": "ankle-join-r5",
+      "version": "0.1.0-r5"
+    }
+  ],
+  "adaptation": {
+    "status": "flare2-moves-r1-draft",
+    "method": "New spec authored in the sandbox (CPU solve + V5 low-res preview); V5 720p sample render pending on the render machine."
+  },
+  "source": {
+    "brief": "Flare 2.0 新动作清单 2026-11-20 (Google 表 1njBhCNMs-iliNbt3gKxDwCZnpQBxQoi-yPFRGQHmJwk) P0-3",
+    "plans": "4 个计划：阶段 9 中级；腹直肌/髂腰肌/背阔肌中级"
+  },
+  "sampledOnly": true,
+  "fullCycleValidated": false,
+  "reviewed": false,
+  "userAccepted": false,
+  "releaseEligible": false
+}

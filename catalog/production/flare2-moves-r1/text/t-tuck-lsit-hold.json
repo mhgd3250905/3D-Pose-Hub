@@ -1,0 +1,177 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "t-tuck-lsit-hold",
+ "reviewStatus": "draft-ai-needs-user-review",
+ "sources": [
+  "Flare 2.0 新动作清单 2026-11-20（Google 表 1njBhCNMs-iliNbt3gKxDwCZnpQBxQoi-yPFRGQHmJwk，P0 地板/垫高团身 L 撑（本条为垫高版：手垫瑜伽砖））",
+  "drill-anim/specs/t-tuck-lsit-hold.js",
+  "tools/flare2-moves/standards/t-tuck-lsit-hold.md"
+ ],
+ "name": {
+  "zh": "团身 L 撑",
+  "en": "Tuck L-Sit Hold"
+ },
+ "purpose": {
+  "zh": "练直臂把身体撑离地面和收腹抬腿，L 撑的入门",
+  "en": "Builds straight-arm support and the hip-flexor/ab tuck; the entry step to the L-sit."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "手臂锁直，把砖往下推，膝盖收到胸前",
+    "en": "Arms locked, push the blocks down, knees to your chest"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "手掌平放在身体两侧的瑜伽砖（或厚书）上，手指朝前。",
+    "en": "Palms flat on yoga blocks (or thick books) beside your hips, fingers forward."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "肩往下压，先把屁股撑离地，再把两脚抬起来。",
+    "en": "Press your shoulders down, lift your hips first, then your feet."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "脚抬不起来先抬一只脚，另一只脚尖点地。",
+    "en": "If both feet will not come up, lift one and keep the other toe on the floor."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "屈肘",
+   "en": "Bending your elbows."
+  },
+  {
+   "zh": "耸肩，肩膀贴近耳朵",
+   "en": "Shrugging your shoulders up."
+  },
+  {
+   "zh": "屁股没离地，只是抬腿",
+   "en": "Lifting only the legs while the hips stay on the floor."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "手腕疼就停；砖要放稳不滑",
+   "en": "Stop if your wrists hurt; make sure the blocks cannot slide."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "abs",
+   "hip-flexors",
+   "triceps"
+  ],
+  "synergistMuscles": [
+   "lats",
+   "scapular",
+   "deltoids",
+   "forearms"
+  ],
+  "equipment": [
+   "mat",
+   "block"
+  ],
+  "position": "seated",
+  "difficulty": 2
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "time",
+  "sets": 3,
+  "seconds": 10,
+  "restSeconds": 60
+ },
+ "phases": {
+  "start": {
+   "zh": "撑起收腿",
+   "en": "Lift and tuck"
+  },
+  "peak": {
+   "zh": "就停这里",
+   "en": "Stay there"
+  },
+  "end": {
+   "zh": "慢慢坐下",
+   "en": "Sit down"
+  }
+ },
+ "training": {
+  "kind": "hold",
+  "leadSeconds": 2
+ },
+ "flare2": {
+  "version": "r1",
+  "item": "P0 地板/垫高团身 L 撑（本条为垫高版：手垫瑜伽砖）",
+  "priority": "P0",
+  "plans": "4 个计划（阶段 9 中级；腹直肌/髂腰肌/背阔肌中级）",
+  "camera": "右前方 48°（看得到砖、臀离地、膝收胸前）",
+  "doseBrief": "表内未给剂量；草稿按 3 组 × 10 秒、休 60 秒",
+  "status": "draft-awaiting-user-review",
+  "note": "Animation (r1): hands on 10 cm cork blocks; seated -> arms lock and shoulders press down (hips 14 cm off the mat) -> knees to chest, feet 3.4 cm off -> hold ~4.3 s -> feet and hips down. Home version with blocks only; the floor version (no blocks) is not drawn.",
+  "standard": "tools/flare2-moves/standards/t-tuck-lsit-hold.md"
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 3,
+    "role": "posture",
+    "zh": "手臂锁直，肩往下压，膝盖收到胸前",
+    "en": "Arms locked, shoulders down, knees to your chest",
+    "from": [
+     "cue1",
+     "cue3"
+    ]
+   },
+   {
+    "at": 7,
+    "key": "n.3"
+   },
+   {
+    "at": 8,
+    "key": "n.2"
+   },
+   {
+    "at": 9,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.release",
+    "p.rest",
+    "sec.60"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
+  }
+ }
+}

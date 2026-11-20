@@ -304,6 +304,139 @@
      "mm"
     ]
    ]
+  },
+  {
+   "id": "t-tuck-lsit-hold",
+   "item": "P0-3",
+   "priority": "P0",
+   "nameZh": "团身 L 撑",
+   "spec": "drill-anim/specs/t-tuck-lsit-hold.js",
+   "plans": "4 个计划：阶段 9 中级；腹直肌/髂腰肌/背阔肌中级",
+   "hands": {
+    "left": "support",
+    "right": "support"
+   },
+   "camera": {
+    "dir": [
+     0.75,
+     0.2,
+     0.66
+    ],
+    "fit": [
+     "head",
+     "leftPalm",
+     "rightPalm",
+     "leftToe",
+     "rightToe",
+     "pelvis",
+     "leftKnee",
+     "rightKnee"
+    ],
+    "pad": 0.12,
+    "k": 1,
+    "at": 4
+   },
+   "checks": {
+    "pins": [
+     {
+      "bone": "leftHand",
+      "hub": "leftPalm",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     },
+     {
+      "bone": "rightHand",
+      "hub": "rightPalm",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     }
+    ],
+    "allowContact": [
+     "thighL|torso",
+     "thighR|torso"
+    ]
+   },
+   "preview": [
+    9,
+    120,
+    222
+   ],
+   "phases": {
+    "seated": [
+     [
+      0,
+      0.5
+     ],
+     [
+      7.6,
+      8.0
+     ]
+    ],
+    "support": [
+     [
+      1.4,
+      7.2
+     ]
+    ],
+    "hold": [
+     [
+      2.2,
+      6.0
+     ]
+    ]
+   },
+   "standard": "tools/flare2-moves/standards/t-tuck-lsit-hold.md",
+   "reviewViews": "side:1,0.08,0.001;front:0,0.15,1;back:0,0.15,-1",
+   "reviewFrames": [
+    9,
+    120,
+    222
+   ],
+   "reviewKeys": [
+    [
+     "elbowMin",
+     "elbow",
+     "°"
+    ],
+    [
+     "seatFloorMm",
+     "seat",
+     "mm"
+    ],
+    [
+     "footClearMm",
+     "foot",
+     "mm"
+    ],
+    [
+     "hipFlexDeg",
+     "hipFlex",
+     "°"
+    ],
+    [
+     "kneeMin",
+     "knee",
+     "°"
+    ],
+    [
+     "scapUp",
+     "scapUp",
+     "mm"
+    ],
+    [
+     "thoraxPitchDeg",
+     "thorax",
+     "°"
+    ]
+   ]
   }
  ]
 }
