@@ -1,0 +1,174 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "t-pike-hold",
+ "reviewStatus": "draft-ai-needs-user-review",
+ "sources": [
+  "Flare 2.0 新动作清单 2026-11-20（Google 表 1njBhCNMs-iliNbt3gKxDwCZnpQBxQoi-yPFRGQHmJwk，P2 地面派克支撑）",
+  "drill-anim/specs/t-pike-hold.js",
+  "tools/flare2-moves/standards/t-pike-hold.md"
+ ],
+ "name": {
+  "zh": "地面派克支撑",
+  "en": "Pike Hold"
+ },
+ "purpose": {
+  "zh": "练直臂顶肩，倒立和派克俯卧撑前的入门",
+  "en": "Builds straight-arm overhead pushing; the entry step before handstands and pike push-ups."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "手臂锁直往上顶肩，屁股是最高点",
+    "en": "Arms locked, push tall, hips are the highest point"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "手与肩同宽撑地，脚往手的方向走近一点。",
+    "en": "Hands shoulder-width; walk your feet in toward your hands."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "耳朵在两臂之间，背别塌。",
+    "en": "Ears between your arms, back flat."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "腿后侧太紧可以微微屈膝。",
+    "en": "If your hamstrings are tight, soften your knees a little."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "屈肘",
+   "en": "Bending your elbows."
+  },
+  {
+   "zh": "耸肩缩脖子，没把地推开",
+   "en": "Sinking into your shoulders instead of pushing the floor away."
+  },
+  {
+   "zh": "屁股掉下来变成平板",
+   "en": "Dropping your hips toward a plank."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "手腕或肩疼就停",
+   "en": "Stop if your wrists or shoulders hurt."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "deltoids",
+   "triceps"
+  ],
+  "synergistMuscles": [
+   "scapular",
+   "serratus",
+   "abs",
+   "forearms"
+  ],
+  "equipment": [
+   "mat"
+  ],
+  "position": "prone",
+  "difficulty": 1
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "time",
+  "sets": 3,
+  "seconds": 20,
+  "restSeconds": 45
+ },
+ "phases": {
+  "start": {
+   "zh": "站稳",
+   "en": "Set"
+  },
+  "peak": {
+   "zh": "顶肩保持",
+   "en": "Push tall and hold"
+  },
+  "end": {
+   "zh": "放松",
+   "en": "Relax"
+  }
+ },
+ "training": {
+  "kind": "hold",
+  "leadSeconds": 1
+ },
+ "flare2": {
+  "version": "r1",
+  "item": "P2 地面派克支撑",
+  "priority": "P2",
+  "plans": "1 个计划（阶段 11/15 初级，徒手）",
+  "camera": "正侧面（与脚垫高派克支撑同一机位）",
+  "doseBrief": "表内未给剂量；草稿按 3 组 × 20 秒、休 45 秒",
+  "status": "draft-awaiting-user-review",
+  "note": "Animation (r1): imported from t-elevated-pike-hold (same camera); feet on the mat, hip angle 69.7 deg, arms 5-9 deg off the trunk line, hips 32 cm above everything else, legs straight.",
+  "standard": "tools/flare2-moves/standards/t-pike-hold.md"
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 3,
+    "role": "posture",
+    "zh": "手臂锁直往上顶肩，屁股顶高",
+    "en": "Arms locked, push tall, hips high",
+    "from": [
+     "cue1"
+    ]
+   },
+   {
+    "at": 17,
+    "key": "n.3"
+   },
+   {
+    "at": 18,
+    "key": "n.2"
+   },
+   {
+    "at": 19,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.release",
+    "p.rest",
+    "sec.45"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
+  }
+ }
+}
