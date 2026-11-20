@@ -1,0 +1,184 @@
+{
+ "format": "flare2-moves-standard@1",
+ "id": "t-kneeling-wrist-flexor-stretch",
+ "nameZh": "跪姿前臂拉伸（指尖朝膝）",
+ "doc": "tools/flare2-moves/standards/t-kneeling-wrist-flexor-stretch.md",
+ "phases": {
+  "start": "跪撑：手在肩下，手指转向朝膝盖，肘伸直",
+  "hold": "臀往后坐：肩退到手后约 10 cm，掌根贴地，前臂内侧被拉开，静止"
+ },
+ "series": [
+  "elbowMin",
+  "wristExtMax",
+  "fingerTurnOutL",
+  "shoulderLeadCm",
+  "elbowTwistAbsR",
+  "creaseFwdDegR",
+  "handTwistR",
+  "handFloorMm"
+ ],
+ "checks": [
+  {
+   "id": "elbow_lock",
+   "label": "肘伸直",
+   "metric": "elbowMin",
+   "agg": "min",
+   "min": 175,
+   "unit": "°"
+  },
+  {
+   "id": "fingers_to_knees_L",
+   "label": "左手手指朝膝（与「膝→手」方向夹角，180 = 正朝膝）",
+   "metric": "fingerTurnOutL",
+   "agg": "min",
+   "min": 150,
+   "unit": "°"
+  },
+  {
+   "id": "fingers_to_knees_R",
+   "label": "右手手指朝膝",
+   "metric": "fingerTurnOutR",
+   "agg": "min",
+   "min": 150,
+   "unit": "°"
+  },
+  {
+   "id": "heel_down",
+   "label": "掌根贴地（V5 手最低点离垫，最大）",
+   "metric": "handFloorMm",
+   "agg": "max",
+   "min": -1,
+   "max": 3,
+   "unit": "mm"
+  },
+  {
+   "id": "palm_flat",
+   "label": "手掌不翻（手骨转角变化）",
+   "metric": "handRotMax",
+   "agg": "max",
+   "max": 2,
+   "unit": "°"
+  },
+  {
+   "id": "contacts_hands",
+   "label": "手掌不滑",
+   "kind": "pins",
+   "which": "hands",
+   "max": 2,
+   "unit": "mm"
+  },
+  {
+   "id": "start_stacked",
+   "label": "起始：肩在手正上方",
+   "metric": "shoulderLeadCm",
+   "phase": "start",
+   "agg": "max",
+   "min": -3,
+   "max": 3,
+   "unit": "cm"
+  },
+  {
+   "id": "sit_back",
+   "label": "保持：臀后坐、肩退到手后（肩相对手腕，最大）",
+   "metric": "shoulderLeadCm",
+   "phase": "hold",
+   "agg": "max",
+   "min": -14,
+   "max": -7,
+   "unit": "cm"
+  },
+  {
+   "id": "stretch_angle",
+   "label": "保持：腕背伸角（拉伸程度）",
+   "metric": "wristExtMax",
+   "phase": "hold",
+   "agg": "min",
+   "min": 95,
+   "max": 115,
+   "unit": "°"
+  },
+  {
+   "id": "elbow_hinge_R",
+   "label": "右肘不拧（前臂相对上臂扭转，最大）",
+   "metric": "elbowTwistAbsR",
+   "agg": "max",
+   "max": 5,
+   "unit": "°"
+  },
+  {
+   "id": "elbow_hinge_L",
+   "label": "左肘不拧",
+   "metric": "elbowTwistAbsL",
+   "agg": "max",
+   "max": 5,
+   "unit": "°"
+  },
+  {
+   "id": "crease_fwd_R",
+   "label": "肘窝朝前（朝头侧，最大偏角）",
+   "metric": "creaseFwdDegR",
+   "agg": "max",
+   "max": 30,
+   "unit": "°"
+  },
+  {
+   "id": "crease_fwd_L",
+   "label": "左肘窝朝前",
+   "metric": "creaseFwdDegL",
+   "agg": "max",
+   "max": 30,
+   "unit": "°"
+  },
+  {
+   "id": "elbow_skin_R",
+   "label": "肘部蒙皮不拧（肘带平均偏转）",
+   "metric": "elbowSkinTwistAbsR",
+   "agg": "max",
+   "max": 5,
+   "unit": "°"
+  },
+  {
+   "id": "forearm_turn",
+   "label": "前臂旋后量（手相对前臂扭转，提示）",
+   "metric": "handTwistR",
+   "agg": "max",
+   "max": 105,
+   "unit": "°",
+   "advisory": true
+  },
+  {
+   "id": "knees_pinned",
+   "label": "膝不滑（膝关节漂移）",
+   "kind": "pins",
+   "which": "knees",
+   "max": 2,
+   "unit": "mm"
+  },
+  {
+   "id": "hold_time",
+   "label": "保持时长（肩后退在最远值 5 mm 内）",
+   "kind": "plateau",
+   "metric": "shoulderLeadCm",
+   "ref": "min",
+   "tol": 0.5,
+   "min": 4,
+   "unit": "s"
+  },
+  {
+   "id": "self_clip",
+   "label": "自身不穿模",
+   "kind": "summary",
+   "path": "selfClipWorst.mm",
+   "min": 0,
+   "unit": "mm"
+  },
+  {
+   "id": "v5_matches_hub",
+   "label": "V5 身体与求解姿态一致",
+   "kind": "summary",
+   "path": "maxPosErrMm",
+   "max": 2,
+   "unit": "mm"
+  }
+ ]
+}

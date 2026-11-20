@@ -1002,6 +1002,178 @@
      "mm"
     ]
    ]
+  },
+  {
+   "id": "t-kneeling-wrist-flexor-stretch",
+   "item": "P1-3（追加）",
+   "priority": "P1",
+   "nameZh": "跪姿前臂拉伸",
+   "spec": "drill-anim/specs/t-kneeling-wrist-flexor-stretch.js",
+   "plans": "追加（hark-mhgd 2026-11-20 16:00）：零器械腕屈肌拉伸",
+   "hands": {
+    "left": "support",
+    "right": "support"
+   },
+   "camera": {
+    "dir": [
+     0.35,
+     0.45,
+     1
+    ],
+    "fit": [
+     "head",
+     "leftPalm",
+     "rightPalm",
+     "leftToe",
+     "rightToe",
+     "pelvis",
+     "leftKnee",
+     "rightKnee",
+     "leftShoulder"
+    ],
+    "pad": 0.14,
+    "k": 1,
+    "at": 4
+   },
+   "checks": {
+    "lockElbows": [
+     [
+      0,
+      8
+     ]
+    ],
+    "pins": [
+     {
+      "bone": "leftHand",
+      "hub": "leftPalm",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     },
+     {
+      "bone": "rightHand",
+      "hub": "rightPalm",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     },
+     {
+      "bone": "leftFoot",
+      "hub": "leftToe",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     },
+     {
+      "bone": "rightFoot",
+      "hub": "rightToe",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     },
+     {
+      "bone": "leftShin",
+      "hub": "leftKnee",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ],
+      "label": "knee"
+     },
+     {
+      "bone": "rightShin",
+      "hub": "rightKnee",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ],
+      "label": "knee"
+     }
+    ],
+    "allowContact": [
+     "thighL|shinL",
+     "thighR|shinR"
+    ]
+   },
+   "preview": [
+    9,
+    120,
+    225
+   ],
+   "phases": {
+    "start": [
+     [
+      0,
+      0.6
+     ]
+    ],
+    "hold": [
+     [
+      2.4,
+      6.8
+     ]
+    ]
+   },
+   "standard": "tools/flare2-moves/standards/t-kneeling-wrist-flexor-stretch.md",
+   "reviewViews": "side:0,0.1,1;front:1,0.3,0;hand:0.5,0.6,0.5:0,1,0:rightHand,0.16",
+   "reviewFrames": [
+    9,
+    120,
+    225
+   ],
+   "reviewKeys": [
+    [
+     "elbowMin",
+     "elbow",
+     "°"
+    ],
+    [
+     "wristExtMax",
+     "wristExt",
+     "°"
+    ],
+    [
+     "fingerTurnOutL",
+     "fingerL",
+     "°"
+    ],
+    [
+     "shoulderLeadCm",
+     "shLead",
+     "cm"
+    ],
+    [
+     "elbowTwistAbsR",
+     "elbTwR",
+     "°"
+    ],
+    [
+     "elbowPitAbsR",
+     "pitR",
+     "°"
+    ],
+    [
+     "handFloorMm",
+     "hand",
+     "mm"
+    ]
+   ]
   }
  ]
 }

@@ -245,6 +245,19 @@ def metrics(s):
         ua = unit(qrot(qinv(Q['torso']), sub(J[side + 'Forearm'], J[side + 'UpperArm']))); m['elbowFlare' + k] = round(deg(math.asin(max(-1, min(1, sg * ua[0])))), 1)
     m['elbowFlareMax'] = max(m['elbowFlareL'], m['elbowFlareR'])
     m['wristYL'] = round(H['leftWrist'][1] * 1000, 1); m['wristYR'] = round(H['rightWrist'][1] * 1000, 1)   # hub wrist height (heel of a lightened hand lifts)
+    # elbow crease direction (straight-arm support): rest anterior (+Z) of the upper arm carried by its world rotation (thorax Q x
+    # check.mjs arm.uaT), made perpendicular to the upper-arm axis, vs the head direction (thorax +Y) made perpendicular too; 0 = crease
+    # faces the head (fingers-back support with the elbow pits forward), 90 = crease faces sideways (inward/outward)
+    def qmul(a, b):
+        x1, y1, z1, w1 = a; x2, y2, z2, w2 = b
+        return [w1 * x2 + x1 * w2 + y1 * z2 - z1 * y2, w1 * y2 - x1 * z2 + y1 * w2 + z1 * x2, w1 * z2 + x1 * y2 - y1 * x2 + z1 * w2, w1 * w2 - x1 * x2 - y1 * y2 - z1 * z2]
+    if s.get('arm'):
+        for side, k in (('left', 'L'), ('right', 'R')):
+            a = s['arm'].get(side)
+            if not a: continue
+            qw = qmul(Q['torso'], a['uaT']); ax = unit(sub(J[side + 'Forearm'], J[side + 'UpperArm']))
+            cr = qrot(qw, [0, 0, 1]); cr = unit(sub(cr, mul(ax, dot(cr, ax)))); hd = qrot(Q['torso'], [0, 1, 0]); hd = unit(sub(hd, mul(ax, dot(hd, ax))))
+            m['creaseFwdDeg' + k] = round(deg(math.acos(max(-1, min(1, dot(cr, hd))))), 1)
     m['handLowL'] = Y.get('handL', 1e9); m['handLowR'] = Y.get('handR', 1e9)
     fm = s.get('fm') or {}
     bx = fm.get('box') or {}; wl = fm.get('wall') or {}
