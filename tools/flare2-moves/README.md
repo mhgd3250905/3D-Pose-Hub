@@ -64,3 +64,7 @@ node tools/flare2-moves/produce.mjs --out F:/PoseHub-v3/runs/2026-11-20_flare2-m
 - 产物（都留在本机）：`<out>\masters\<id>\`（1080 母帧）、`<out>\packages\<id>\v5-toon\`（与 V5 相同的成片文件）、`<out>\samples\<id>.720.mp4`（浅色 720p 循环样片，给开哥看的就是这个）。
 - 总览拼图 `<out>\_qa\overview.jpg`（每动作一行：浅色 start/peak/end + 深色封面）连同 `run-*.json`、`state.json`、`progress.log` 推到孤立分支 `qa/flare2-moves-r1`；视频、母帧、PNG 不进 Git。
 
+
+## 正式出片 + r2-v20 发布包（2026-11-21，分支 codex/flare2-publish）
+开哥 2026-11-21 00:25 同意正式出片、上传、生成新 pack 目录（不切指针）。照 `tools/flare2-moves/publish/PUBLISH-FLARE2.md` 做，
+不要用上面的样片命令。正式渲染是 `node tools/flare2-moves/produce.mjs --final`（渲染内容必须等于样片通过的 3fbc22e）。

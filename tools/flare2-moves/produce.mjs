@@ -1,7 +1,7 @@
 #!/usr/bin/env node
-// Flare 2.0 new moves r1 (2026-11-20): V5 720p SAMPLE render of the 7 new actions (branch codex/flare2-moves-r1).
+// Flare 2.0 new moves r1 (2026-11-20): V5 720p SAMPLE render of the 8 new actions (branch codex/flare2-moves-r1).
 // Copy of tools/thomas-sup/produce.mjs (same masters -> compose flow, resume, quarantine, timeouts, stall kill, stale-lock cleanup); differences:
-//   - plan = tools/flare2-moves/actions.json (recipes under catalog/production/flare2-moves-r1/recipes/), one run, no batches, no --final;
+//   - plan = tools/flare2-moves/actions.json (recipes under catalog/production/flare2-moves-r1/recipes/), one run, no batches (--final below);
 //   - preflight baseline = 6f9afdf (codex/thomas-sup-publish HEAD this branch starts from; render content there = main 94ff057 + the
 //     Thomas-supplement opt-in V5 switches): ONLY this branch's new files may differ (EXCLUDE below), so every existing action renders
 //     byte-identically; tools/v5 and drill-anim/page are NOT excluded (this branch changes no renderer / engine / prop file);
@@ -10,7 +10,12 @@
 //   Resume: a finished action is skipped unless its recipe changed since it was rendered (masters layer-manifest recipe sha256);
 //   then it is quarantined and rendered again (r1 hand-orientation fix 2026-11-20).
 //   default --out F:/PoseHub-v3/runs/2026-11-20_flare2-moves-r1
-// Samples only: nothing here uploads media, publishes a pack, moves a pointer, merges or tags.
+// Samples / final render only: nothing here uploads media, publishes a pack, moves a pointer, merges or tags.
+// --final (2026-11-21, codex/flare2-publish; 开哥 00:25 同意正式出片): the r2-v20 production render, same as tools/thomas-sup/produce.mjs
+//   --final. Same render command and outputs; additionally refuses --only (all 8 from one run), requires the render content to equal
+//   codex/flare2-moves-r1 3fbc22e (样片已由开哥审过; only publish tooling / text drafts / this file / README may differ), default
+//   --out F:/PoseHub-v3/runs/2026-11-21_flare2-final_3fbc22e, writes <out>/_run/final.json and pushes the overview to qa/flare2-final
+//   instead of qa/flare2-moves-r1. Still uploads nothing, publishes nothing, moves no pointer.
 // Exit: 0 all done; 1 preflight refused (nothing rendered); 3 some action failed (others done); 4 QA push failed (renders fine).
 // The last stdout line is one JSON whose "report" field is the text to post.
 import fs from 'node:fs';import path from 'node:path';import crypto from 'node:crypto';
@@ -18,9 +23,13 @@ import {spawn,spawnSync,execFileSync} from 'node:child_process';import {fileURLT
 const SELF=fileURLToPath(import.meta.url),HERE=path.dirname(SELF),ROOT=path.resolve(HERE,'../..');
 const PLAN0=JSON.parse(fs.readFileSync(path.join(HERE,'actions.json'),'utf8'));
 const PLAN={actions:PLAN0.actions.map(a=>({id:a.id,recipe:`catalog/production/flare2-moves-r1/recipes/${a.id}.json`}))};
-const BASE='6f9afdf7ae30b43eba09e7df38f4872654a1cdf0',QA_BRANCH='qa/flare2-moves-r1';
+const args0=process.argv.slice(2),FINAL=args0.includes('--final');
+const FINAL_RENDER='3fbc22e555b4d88cdab5cc4a3eb051c4b1643435';
+// --final: paths that may differ from 3fbc22e (none of them is read by the renderer)
+const FINAL_EXCLUDE=['tools/flare2-moves/publish','tools/flare2-moves/produce.mjs','tools/flare2-moves/README.md','catalog/production/flare2-moves-r1/text'];
+const BASE='6f9afdf7ae30b43eba09e7df38f4872654a1cdf0',QA_BRANCH=FINAL?'qa/flare2-final':'qa/flare2-moves-r1';
 const TOTAL=PLAN.actions.length;
-const DEFAULT_OUT='F:/PoseHub-v3/runs/2026-11-20_flare2-moves-r1';
+const DEFAULT_OUT=FINAL?'F:/PoseHub-v3/runs/2026-11-21_flare2-final_3fbc22e':'F:/PoseHub-v3/runs/2026-11-20_flare2-moves-r1';
 // files this branch adds on top of BASE; every other path must equal BASE (old actions, V5 runtime, engine, props byte-identical)
 const EXCLUDE=['tools/flare2-moves','catalog/production/flare2-moves-r1',...PLAN0.actions.map(a=>a.spec)];
 const PY=process.env.PYTHON||(process.platform==='win32'?'python':'python3');
@@ -28,9 +37,10 @@ const sha256=b=>crypto.createHash('sha256').update(b).digest('hex');
 const now=()=>new Date().toISOString();const stamp=()=>now().replace(/[:.]/g,'-');
 const out1=o=>console.log(JSON.stringify(o));
 const args=process.argv.slice(2);const opt=k=>{const i=args.indexOf(k);return i>=0?args[i+1]:undefined;};
-const KIND='样片';
+const KIND=FINAL?'正式渲染':'样片';
 const pre=m=>{try{if(typeof LOCK!=="undefined"&&fs.existsSync(LOCK)&&fs.readFileSync(LOCK,"utf8")===String(process.pid))fs.rmSync(LOCK);}catch{}out1({ok:false,preflight:true,error:m,report:`Flare 2.0 新动作 V5 ${KIND}预检未通过，未开始渲染：${m}`});process.exit(1);};
-if(args.some((x,i)=>x.startsWith('--')&&!['--out','--only','--no-push','--vite-force'].includes(x)))pre('用法: node tools/flare2-moves/produce.mjs [--out <run-dir>] [--only id,id] [--no-push] [--vite-force]');
+if(args.some((x,i)=>x.startsWith('--')&&!['--out','--only','--no-push','--vite-force','--final'].includes(x)))pre('用法: node tools/flare2-moves/produce.mjs [--final] [--out <run-dir>] [--only id,id] [--no-push] [--vite-force]');
+if(FINAL&&args.includes('--only'))pre('--final 不接受 --only：正式渲染 8 个动作必须同一次跑完（中断后原命令重跑会跳过已完成的）');
 const viteForce=args.includes('--vite-force');   // README: after a Vite 504 Outdated Optimize Dep, delete node_modules/.vite and rerun once with this
 const out=path.resolve(opt('--out')??DEFAULT_OUT),noPush=args.includes('--no-push'),only=opt('--only');
 const PROFILE=path.join(ROOT,'tools/v5/profile-v5.json');
@@ -43,6 +53,10 @@ if(spawnSync('git',['diff','--quiet',BASE,'HEAD','--','.',...EXCLUDE.map(p=>':(e
 for(const a of PLAN.actions)if(!fs.existsSync(path.join(ROOT,a.recipe)))pre('缺少配方 '+a.recipe);
 // every excluded path must be NEW on this branch (an excluded path that exists in BASE could hide a change to an existing action)
 for(const p of EXCLUDE)if(spawnSync('git',['cat-file','-e',`${BASE}:${p}`],{cwd:ROOT}).status===0)pre('排除列表里的 '+p+' 在基准 6f9afdf 已存在（只允许本分支新增文件不同）');
+if(FINAL){
+  if(spawnSync('git',['cat-file','-e',FINAL_RENDER+'^{commit}'],{cwd:ROOT}).status!==0)pre('本地没有样片通过的提交 3fbc22e（先 git fetch origin）');
+  if(spawnSync('git',['diff','--quiet',FINAL_RENDER,'HEAD','--','.',...FINAL_EXCLUDE.map(p=>':(exclude)'+p)],{cwd:ROOT}).status!==0)pre('渲染内容与样片通过的 3fbc22e 不一致（正式渲染只能用开哥看过的动作）');
+}
 for(const f of ['tools/v5/profile-v5.json','tools/action-package-v3/skins/v5-toon.json','tools/v5/runtime/model/coach-v3r3-wristfix.glb','tools/v5/runtime/v5-hub.js'])if(!fs.existsSync(path.join(ROOT,f)))pre('缺少 V5 文件 '+f);
 if(spawnSync(PY,['-c','import numpy,PIL;print("ok")'],{encoding:'utf8'}).stdout?.trim()!=='ok')pre('找不到带 numpy+Pillow 的 python（设 $env:PYTHON）');
 if(spawnSync('ffmpeg',['-version'],{encoding:'utf8'}).status!==0)pre('PATH 上没有 ffmpeg');
@@ -98,7 +112,10 @@ function quarantine(id,why){const q=path.join(out,'_quarantine',`${id}_${stamp()
 function dirBytes(d){let n=0;for(const e of fs.readdirSync(d,{withFileTypes:true})){const p=path.join(d,e.name);n+=e.isDirectory()?dirBytes(p):fs.statSync(p).size;}return n;}
 // ---- batch
 const label=only?'only':'all';
-const t0=Date.now();const res={ok:false,head,base:BASE,out,batch:label,ids:list.map(a=>a.id),done:[],skipped:[],failed:[],rerendered:[],started:now()};
+const t0=Date.now();const res={ok:false,head,base:BASE,out,batch:label,ids:list.map(a=>a.id),done:[],skipped:[],failed:[],rerendered:[],started:now(),...(FINAL?{final:true,renderCommit:FINAL_RENDER}:{})};
+if(FINAL){const fj=path.join(out,'_run','final.json');const prev=fs.existsSync(fj)?JSON.parse(fs.readFileSync(fj,'utf8')):null;
+  if(prev&&prev.renderCommit!==FINAL_RENDER)pre('这个输出目录是别的提交的正式渲染：'+prev.renderCommit);
+  fs.writeFileSync(fj,JSON.stringify({format:'flare2-final-render@1',renderCommit:FINAL_RENDER,heads:[...new Set([...(prev?.heads||[]),head])],firstStarted:prev?.firstStarted||now()},null,1));}
 try{
   await ensureServer(cfg.app_url);
   for(const a of list){
@@ -142,6 +159,7 @@ const secs=Object.values(state.actions).filter(x=>x.status==='done').map(x=>x.se
 state.batches[label]={...res,finished:now(),minutes:mins,freeGB:freeGB()};saveState();
 fs.writeFileSync(path.join(qa,`run-${label}.json`),JSON.stringify(state.batches[label],null,1));
 fs.copyFileSync(STATE,path.join(qa,'state.json'));fs.copyFileSync(LOG,path.join(qa,'progress.log'));
+if(FINAL)fs.copyFileSync(path.join(out,'_run','final.json'),path.join(qa,'final.json'));
 let pushed=null,pushErr=null;
 if(!noPush){try{
   const env={...process.env,GIT_INDEX_FILE:path.join(out,'_run','qa.index')};
@@ -150,12 +168,12 @@ if(!noPush){try{
   gq(['add','-A','.']);const tree=gq(['write-tree']);
   const remote=g(['ls-remote','origin','refs/heads/'+QA_BRANCH]).split(/\s+/)[0];
   if(remote)g(['fetch','-q','origin',`+refs/heads/${QA_BRANCH}:refs/remotes/origin/${QA_BRANCH}`]);
-  const c=gq(['commit-tree',tree,...(remote?['-p',remote]:[]),'-m',`qa: flare2-moves r1 V5 samples (${res.done.length} done, ${res.failed.length} failed; overview only)`]);
+  const c=gq(['commit-tree',tree,...(remote?['-p',remote]:[]),'-m',`qa: flare2-moves ${FINAL?'V5 final render (3fbc22e)':'r1 V5 samples'} (${res.done.length} done, ${res.failed.length} failed; overview only)`]);
   g(['push','origin',`${c}:refs/heads/${QA_BRANCH}`]);pushed=c;
   fs.rmSync(path.join(out,'_run','qa.index'),{force:true});
 }catch(e){pushErr=String(e.message||e).slice(0,300);log('push FAILED '+pushErr);}}
 fs.rmSync(LOCK,{force:true});
 res.ok=res.failed.length===0;res.finished=now();res.minutes=mins;res.allDone=allDone;res.total=TOTAL;res.freeGB=freeGB();res.qaCommit=pushed;
 const url=`https://github.com/mhgd3250905/3D-Pose-Hub/blob/${QA_BRANCH}/overview.jpg`;
-res.report=`Flare 2.0 新动作 V5 ${KIND}完成：本次 ${list.length} 个，成功 ${res.done.length}${res.rerendered.length?'（其中配方已更新重渲 '+res.rerendered.length+' 个：'+res.rerendered.join('、')+'）':''}，跳过（已做过）${res.skipped.length}，失败 ${res.failed.length}${res.failed.length?'（'+res.failed.join('、')+'）':''}；用时 ${mins} 分钟；累计 ${allDone}/${TOTAL}；样片在 ${path.join(out,'samples')}；磁盘剩余 ${res.freeGB} GB。`+(pushed?`总览：${url}`:`总览推送失败：${pushErr??'未推送'}`);
+res.report=`Flare 2.0 新动作 V5 ${KIND}完成：本次 ${list.length} 个，成功 ${res.done.length}${res.rerendered.length?'（其中配方已更新重渲 '+res.rerendered.length+' 个：'+res.rerendered.join('、')+'）':''}，跳过（已做过）${res.skipped.length}，失败 ${res.failed.length}${res.failed.length?'（'+res.failed.join('、')+'）':''}；用时 ${mins} 分钟；累计 ${allDone}/${TOTAL}；${FINAL?'成片包在 '+path.join(out,'packages'):'样片在 '+path.join(out,'samples')}；磁盘剩余 ${res.freeGB} GB。`+(pushed?`总览：${url}`:`总览推送失败：${pushErr??'未推送'}`);
 out1(res);process.exit(pushErr?4:(res.ok?0:3));
