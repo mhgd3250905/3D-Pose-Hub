@@ -31,7 +31,8 @@ const PLAN={actions:PLAN0.actions.filter(a=>FINAL||a.priority===SAMPLE_BATCH).ma
 // RENDER = the commit whose render content was reported (samples and --final both render exactly this content)
 const RENDER='a7a1fb7667b61b60c2e241d0575dba1d02ac3fb0',RS=RENDER.slice(0,7);
 // paths that may differ from RENDER (none of them is read by the renderer)
-const RENDER_EXCLUDE=['tools/flare2-moves-r3/produce.mjs','tools/flare2-moves-r3/README.md','tools/flare2-moves-r3/cards','catalog/production/flare2-moves-r3/text'];
+// tools/flare2-moves-r3/publish = r2-v22 publish tooling (codex/flare2-r3-publish; build/voice/verify/preflight/task card), never read by the renderer
+const RENDER_EXCLUDE=['tools/flare2-moves-r3/produce.mjs','tools/flare2-moves-r3/README.md','tools/flare2-moves-r3/cards','tools/flare2-moves-r3/publish','catalog/production/flare2-moves-r3/text'];
 const BASE='2b59eff26388faa05c9aafa17307c887cd74148c',QA_BRANCH=FINAL?'qa/flare2-moves-r3-final':'qa/flare2-moves-r3b';
 const TOTAL=PLAN.actions.length;
 if(!/^[0-9a-f]{40}$/.test(RENDER))throw Error('RENDER not pinned');

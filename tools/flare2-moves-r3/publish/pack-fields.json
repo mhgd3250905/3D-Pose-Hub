@@ -1,0 +1,297 @@
+{
+ "format": "flare2-moves-pack-fields@1",
+ "status": "draft-ai-needs-user-review",
+ "note": "Flare 2.0 r3 新动作 10 个（第 2a 批 6 + 第 2b 批 4）进 pack 需要、而文字稿（catalog/production/flare2-moves-r3/text）里没有的目录字段，照 r2-v21 pack-fields 的做法填：muscleGroups 取文字稿 tags.activeMuscles 换成目录词表（俯卧 T-W 的 traps 记 scapular = 斜方肌中下部·菱形肌）；category 按目录已有映射 stability→core（拳面支撑、前臂侧桥、直臂侧桥转换），其余同文字稿；position 按目录已有映射 plank→prone、side-lying→side_lying；doseRange 一律按 defaultDose 单点记（上下限相同），剂量本身是草稿（= flare2.doseBrief；表里多数没给组数/次数），等开哥/mhgd 定；equipment 除背后十指交扣扩胸徒手 [] 外都是瑜伽垫；contraindications 取文字稿 cautions 写到且目录词表有的部位（仰卧大分腿只提到腿后侧紧，词表没有，记 []）；alternative 只填文字稿明说的退阶：直臂侧桥转换→t-forearm-side-plank（「手腕或肩膀疼就改成前臂侧桥」）、地面团身支撑→t-tuck-lsit-hold（「撑不起来先用砖或厚书垫高手（团身 L 撑）」），其余 null。scenes 不在这里：build 按器械与体位推导。apps 一律 []（Flare 不读目录 apps/tags，用 flare_action_scope.dart 白名单 + flare-plans.json），tags [\"thomas\",\"flare2:moves-r3\"]。",
+ "apps": [],
+ "tags": [
+  "thomas",
+  "flare2:moves-r3"
+ ],
+ "actions": {
+  "t-kneeling-fist-plank": {
+   "muscleGroups": [
+    "forearms"
+   ],
+   "equipment": [
+    "mat"
+   ],
+   "category": "core",
+   "position": "kneeling",
+   "contraindications": [
+    "手腕"
+   ],
+   "alternative": null,
+   "doseRange": {
+    "sets": [
+     1,
+     1
+    ],
+    "seconds": [
+     20,
+     20
+    ],
+    "restSeconds": [
+     30,
+     30
+    ]
+   }
+  },
+  "t-kneeling-wrist-pushup": {
+   "muscleGroups": [
+    "forearms"
+   ],
+   "equipment": [
+    "mat"
+   ],
+   "category": "strength",
+   "position": "kneeling",
+   "contraindications": [
+    "手腕"
+   ],
+   "alternative": null,
+   "doseRange": {
+    "sets": [
+     1,
+     1
+    ],
+    "reps": [
+     10,
+     10
+    ],
+    "restSeconds": [
+     30,
+     30
+    ]
+   }
+  },
+  "t-planche-lean-hold": {
+   "muscleGroups": [
+    "deltoids",
+    "serratus"
+   ],
+   "equipment": [
+    "mat"
+   ],
+   "category": "strength",
+   "position": "prone",
+   "contraindications": [
+    "手腕"
+   ],
+   "alternative": null,
+   "doseRange": {
+    "sets": [
+     3,
+     3
+    ],
+    "seconds": [
+     15,
+     15
+    ],
+    "restSeconds": [
+     30,
+     30
+    ]
+   }
+  },
+  "t-forearm-side-plank": {
+   "muscleGroups": [
+    "obliques"
+   ],
+   "equipment": [
+    "mat"
+   ],
+   "category": "core",
+   "position": "side_lying",
+   "contraindications": [
+    "肩"
+   ],
+   "alternative": null,
+   "doseRange": {
+    "sets": [
+     1,
+     1
+    ],
+    "seconds": [
+     20,
+     20
+    ],
+    "restSeconds": [
+     15,
+     15
+    ]
+   }
+  },
+  "t-straight-arm-side-plank-switch": {
+   "muscleGroups": [
+    "obliques",
+    "deltoids"
+   ],
+   "equipment": [
+    "mat"
+   ],
+   "category": "core",
+   "position": "prone",
+   "contraindications": [
+    "手腕",
+    "肩"
+   ],
+   "alternative": "t-forearm-side-plank",
+   "doseRange": {
+    "sets": [
+     1,
+     1
+    ],
+    "reps": [
+     6,
+     6
+    ],
+    "restSeconds": [
+     45,
+     45
+    ]
+   }
+  },
+  "t-prone-t-w": {
+   "muscleGroups": [
+    "scapular",
+    "deltoids"
+   ],
+   "equipment": [
+    "mat"
+   ],
+   "category": "strength",
+   "position": "prone",
+   "contraindications": [
+    "肩"
+   ],
+   "alternative": null,
+   "doseRange": {
+    "sets": [
+     1,
+     1
+    ],
+    "reps": [
+     10,
+     10
+    ],
+    "restSeconds": [
+     30,
+     30
+    ]
+   }
+  },
+  "t-pseudo-planche-pushup-v2": {
+   "muscleGroups": [
+    "deltoids",
+    "serratus",
+    "triceps",
+    "chest"
+   ],
+   "equipment": [
+    "mat"
+   ],
+   "category": "strength",
+   "position": "prone",
+   "contraindications": [
+    "手腕"
+   ],
+   "alternative": null,
+   "doseRange": {
+    "sets": [
+     3,
+     3
+    ],
+    "reps": [
+     6,
+     6
+    ],
+    "restSeconds": [
+     90,
+     90
+    ]
+   }
+  },
+  "t-floor-tuck-hold": {
+   "muscleGroups": [
+    "abs",
+    "hip-flexors",
+    "triceps"
+   ],
+   "equipment": [
+    "mat"
+   ],
+   "category": "strength",
+   "position": "seated",
+   "contraindications": [
+    "手腕"
+   ],
+   "alternative": "t-tuck-lsit-hold",
+   "doseRange": {
+    "sets": [
+     3,
+     3
+    ],
+    "seconds": [
+     10,
+     10
+    ],
+    "restSeconds": [
+     60,
+     60
+    ]
+   }
+  },
+  "t-supine-straddle-open-close": {
+   "muscleGroups": [
+    "adductors"
+   ],
+   "equipment": [
+    "mat"
+   ],
+   "category": "mobility",
+   "position": "supine",
+   "contraindications": [],
+   "alternative": null,
+   "doseRange": {
+    "sets": [
+     2,
+     2
+    ],
+    "reps": [
+     8,
+     8
+    ],
+    "restSeconds": [
+     30,
+     30
+    ]
+   }
+  },
+  "t-standing-clasp-chest-opener": {
+   "muscleGroups": [
+    "chest"
+   ],
+   "equipment": [],
+   "category": "stretch",
+   "position": "standing",
+   "contraindications": [
+    "肩"
+   ],
+   "alternative": null,
+   "doseRange": {
+    "sets": [
+     2,
+     2
+    ],
+    "seconds": [
+     20,
+     20
+    ],
+    "restSeconds": [
+     10,
+     10
+    ]
+   }
+  }
+ }
+}
