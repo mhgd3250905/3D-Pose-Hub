@@ -1,0 +1,157 @@
+{
+ "format": "flare2-moves-plan@1",
+ "base": "codex/thomas-sup-publish 6f9afdf7ae30b43eba09e7df38f4872654a1cdf0 (render content = main 94ff057 + Thomas-supplement opt-in V5 switches)",
+ "brief": "Flare 2.0 新动作清单（hark-mhgd 2026-11-20；Google 表 1njBhCNMs-iliNbt3gKxDwCZnpQBxQoi-yPFRGQHmJwk 工作表1）",
+ "actions": [
+  {
+   "id": "t-chair-support-hold",
+   "item": "P0-1",
+   "priority": "P0",
+   "nameZh": "双椅直臂支撑",
+   "spec": "drill-anim/specs/t-chair-support-hold.js",
+   "plans": "17 个计划：三角肌/前臂/肱三头肌/背阔肌/胸大肌中高级；阶段 9、11/15、12、13、16 中高级",
+   "hands": {
+    "left": "support",
+    "right": "support"
+   },
+   "exerciseMat": false,
+   "camera": {
+    "dir": [
+     0.45,
+     0.12,
+     1
+    ],
+    "fit": [
+     "head",
+     "leftPalm",
+     "rightPalm",
+     "leftToe",
+     "rightToe",
+     "pelvis",
+     "leftKnee",
+     "rightKnee",
+     "leftShoulder",
+     "rightShoulder"
+    ],
+    "pad": 0.14,
+    "k": 1,
+    "at": 4
+   },
+   "checks": {
+    "lockElbows": [
+     [
+      0,
+      8
+     ]
+    ],
+    "pins": [
+     {
+      "bone": "leftHand",
+      "hub": "leftPalm",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     },
+     {
+      "bone": "rightHand",
+      "hub": "rightPalm",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     },
+     {
+      "bone": "leftFoot",
+      "hub": "leftToe",
+      "when": [
+       [
+        0,
+        0.8
+       ]
+      ],
+      "label": "toe-touch"
+     },
+     {
+      "bone": "rightFoot",
+      "hub": "rightToe",
+      "when": [
+       [
+        0,
+        0.8
+       ]
+      ],
+      "label": "toe-touch"
+     }
+    ]
+   },
+   "preview": [
+    12,
+    120,
+    216
+   ],
+   "phases": {
+    "relaxed": [
+     [
+      0,
+      0.8
+     ]
+    ],
+    "hold": [
+     [
+      2.0,
+      6.6
+     ]
+    ]
+   },
+   "standard": "tools/flare2-moves/standards/t-chair-support-hold.md",
+   "reviewViews": "front:0,0.12,1;back:0,0.12,-1;side:1,0.08,0.001",
+   "reviewFrames": [
+    12,
+    120,
+    216
+   ],
+   "reviewKeys": [
+    [
+     "elbowMin",
+     "elbow",
+     "°"
+    ],
+    [
+     "scapUp",
+     "scapUp",
+     "mm"
+    ],
+    [
+     "chestHeightMm",
+     "chestY",
+     "mm"
+    ],
+    [
+     "footClearMm",
+     "foot",
+     "mm"
+    ],
+    [
+     "handLowL",
+     "handL",
+     "mm"
+    ],
+    [
+     "boxBodyMinMm",
+     "chairClr",
+     "mm"
+    ],
+    [
+     "thoraxPitchDeg",
+     "thorax",
+     "°"
+    ]
+   ]
+  }
+ ]
+}

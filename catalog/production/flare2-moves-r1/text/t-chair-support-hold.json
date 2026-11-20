@@ -1,0 +1,176 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "t-chair-support-hold",
+ "reviewStatus": "draft-ai-needs-user-review",
+ "sources": [
+  "Flare 2.0 新动作清单 2026-11-20（Google 表 1njBhCNMs-iliNbt3gKxDwCZnpQBxQoi-yPFRGQHmJwk，P0 双椅直臂支撑（肩胛下压））",
+  "drill-anim/specs/t-chair-support-hold.js",
+  "tools/flare2-moves/standards/t-chair-support-hold.md"
+ ],
+ "name": {
+  "zh": "双椅直臂支撑",
+  "en": "Chair Support Hold"
+ },
+ "purpose": {
+  "zh": "练直臂支撑和肩往下压的力量，为双杠和托马斯支撑打底",
+  "en": "Builds straight-arm support and shoulder-blade depression for parallel-bar and Thomas flair support."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "手臂锁直，肩往下沉，别耸肩",
+    "en": "Arms locked, shoulders down, no shrugging"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "两把一样高的椅子靠墙放稳，手掌平放在椅面上，手指朝前。",
+    "en": "Set two equal-height chairs firmly against a wall; palms flat on the seats, fingers forward."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "把椅面往下推，脖子拉长，身体跟着往上升一点。",
+    "en": "Push the seats down and lengthen your neck; your body rises a little."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "膝盖弯着，脚离地，撑不住时脚尖轻轻点地就行。",
+    "en": "Knees bent, feet off the floor; if that is too hard, let your toes lightly touch."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "屈肘",
+   "en": "Bending your elbows."
+  },
+  {
+   "zh": "耸肩，肩膀贴近耳朵",
+   "en": "Shrugging your shoulders up toward your ears."
+  },
+  {
+   "zh": "身体前后晃，椅子跟着晃",
+   "en": "Swinging so the chairs wobble."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "椅子不稳就别撑；手腕疼就停",
+   "en": "Do not use chairs that wobble; stop if your wrists hurt."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "triceps",
+   "scapular",
+   "lats"
+  ],
+  "synergistMuscles": [
+   "deltoids",
+   "chest",
+   "forearms",
+   "core"
+  ],
+  "equipment": [
+   "chair"
+  ],
+  "position": "support",
+  "difficulty": 2
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "time",
+  "sets": 3,
+  "seconds": 15,
+  "restSeconds": 60
+ },
+ "phases": {
+  "start": {
+   "zh": "肩往下沉",
+   "en": "Press down"
+  },
+  "peak": {
+   "zh": "就停这里",
+   "en": "Stay there"
+  },
+  "end": {
+   "zh": "慢慢放松",
+   "en": "Relax"
+  }
+ },
+ "training": {
+  "kind": "hold",
+  "leadSeconds": 1
+ },
+ "flare2": {
+  "version": "r1",
+  "item": "P0 双椅直臂支撑（肩胛下压）",
+  "priority": "P0",
+  "plans": "17 个计划（三角肌/前臂/肱三头肌/背阔肌/胸大肌中高级；阶段 9、11/15、12、13、16 中高级）",
+  "camera": "前方偏右 25°（正面看得出肩下沉；侧面被椅子挡）",
+  "doseBrief": "表内未给剂量；草稿按 3 组 × 15 秒、休 60 秒",
+  "status": "draft-awaiting-user-review",
+  "note": "Animation (r1): relaxed support with the toes lightly on the floor -> shoulders pressed down 42 mm, body rises, feet come off the floor -> held ~4.6 s -> relax. The brief allows feet off or toes lightly touching.",
+  "standard": "tools/flare2-moves/standards/t-chair-support-hold.md"
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 3,
+    "role": "posture",
+    "zh": "手臂锁直，肩往下沉，别耸肩",
+    "en": "Arms locked, shoulders down, no shrugging",
+    "from": [
+     "cue1",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "at": 12,
+    "key": "n.3"
+   },
+   {
+    "at": 13,
+    "key": "n.2"
+   },
+   {
+    "at": 14,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.release",
+    "p.rest",
+    "sec.60"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
+  }
+ }
+}

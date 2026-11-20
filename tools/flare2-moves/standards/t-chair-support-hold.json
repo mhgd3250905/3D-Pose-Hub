@@ -1,0 +1,193 @@
+{
+ "format": "flare2-moves-standard@1",
+ "id": "t-chair-support-hold",
+ "nameZh": "双椅直臂支撑（肩胛下压）",
+ "doc": "tools/flare2-moves/standards/t-chair-support-hold.md",
+ "phases": {
+  "relaxed": "放松：直臂撑在两椅面，肩自然上耸（靠近耳朵），脚尖轻点地",
+  "hold": "保持：肩胛下压（肩远离耳朵），身体随之升高约 4 cm，双脚离地，静止计时"
+ },
+ "series": [
+  "elbowMin",
+  "scapUp",
+  "chestHeightMm",
+  "footClearMm",
+  "boxHandMinMm",
+  "boxBodyMinMm",
+  "thoraxPitchDeg"
+ ],
+ "checks": [
+  {
+   "id": "elbow_lock",
+   "label": "全程锁肘（两肘最小角）",
+   "metric": "elbowMin",
+   "agg": "min",
+   "min": 175,
+   "unit": "°"
+  },
+  {
+   "id": "hands_on_seat",
+   "label": "手掌平放在椅面上（V5 手最低点相对椅面，全程）",
+   "metric": "boxHandMinMm",
+   "agg": "min",
+   "min": -1,
+   "max": 3,
+   "unit": "mm"
+  },
+  {
+   "id": "hands_on_seat_max",
+   "label": "手掌不离开椅面（全程最大）",
+   "metric": "boxHandMinMm",
+   "agg": "max",
+   "min": -1,
+   "max": 3,
+   "unit": "mm"
+  },
+  {
+   "id": "contacts_hands",
+   "label": "手掌不滑（V5 手骨漂移）",
+   "kind": "pins",
+   "which": "hands",
+   "max": 2,
+   "unit": "mm"
+  },
+  {
+   "id": "palm_flat",
+   "label": "手掌不翻转（手骨转角变化）",
+   "metric": "handRotMax",
+   "agg": "max",
+   "max": 2,
+   "unit": "°"
+  },
+  {
+   "id": "relaxed_shrug",
+   "label": "放松段：肩胛上提（肩关节相对胸廓向上，最小）",
+   "metric": "scapUp",
+   "phase": "relaxed",
+   "agg": "min",
+   "min": 5,
+   "max": 20,
+   "unit": "mm"
+  },
+  {
+   "id": "hold_depressed",
+   "label": "保持段：肩胛下压（肩关节相对胸廓向下，最高处）",
+   "metric": "scapUp",
+   "phase": "hold",
+   "agg": "max",
+   "max": -25,
+   "min": -40,
+   "unit": "mm"
+  },
+  {
+   "id": "depression_travel",
+   "label": "肩胛下压行程（保持段最低 − 放松段最高）",
+   "kind": "diff",
+   "metric": "scapUp",
+   "phase": "hold",
+   "agg": "min",
+   "phase2": "relaxed",
+   "agg2": "max",
+   "max": -35,
+   "unit": "mm"
+  },
+  {
+   "id": "body_rises",
+   "label": "身体随下压升高（胸廓高度：保持段最低 − 放松段最高）",
+   "kind": "diff",
+   "metric": "chestHeightMm",
+   "phase": "hold",
+   "agg": "min",
+   "phase2": "relaxed",
+   "agg2": "max",
+   "min": 30,
+   "unit": "mm"
+  },
+  {
+   "id": "toes_touch_relaxed",
+   "label": "放松段：脚尖轻点地（脚最低点离地，最大）",
+   "metric": "footClearMm",
+   "phase": "relaxed",
+   "agg": "max",
+   "max": 2,
+   "unit": "mm"
+  },
+  {
+   "id": "feet_off_hold",
+   "label": "保持段：双脚离地（脚最低点离地，最小）",
+   "metric": "footClearMm",
+   "phase": "hold",
+   "agg": "min",
+   "min": 25,
+   "unit": "mm"
+  },
+  {
+   "id": "toe_no_slide",
+   "label": "放松段脚尖不滑（接触区漂移）",
+   "kind": "pins",
+   "which": "feet",
+   "max": 3,
+   "unit": "mm"
+  },
+  {
+   "id": "trunk_upright",
+   "label": "躯干竖直（胸廓前后倾，最大绝对值）",
+   "metric": "thoraxPitchDeg",
+   "agg": "max",
+   "min": -5,
+   "max": 5,
+   "unit": "°"
+  },
+  {
+   "id": "trunk_upright_min",
+   "label": "躯干竖直（胸廓前后倾，最小）",
+   "metric": "thoraxPitchDeg",
+   "agg": "min",
+   "min": -5,
+   "max": 5,
+   "unit": "°"
+  },
+  {
+   "id": "no_chair_contact",
+   "label": "身体不碰椅子（手、脚以外蒙皮到椅面最近距离）",
+   "metric": "boxBodyMinMm",
+   "agg": "min",
+   "min": 20,
+   "unit": "mm"
+  },
+  {
+   "id": "hold_time",
+   "label": "保持时长（肩胛下压在最低值 1 mm 内）",
+   "kind": "plateau",
+   "metric": "scapUp",
+   "ref": "min",
+   "tol": 1,
+   "min": 4.0,
+   "unit": "s"
+  },
+  {
+   "id": "head_neutral",
+   "label": "头中立（头与胸廓夹角）",
+   "metric": "headVsTrunkDeg",
+   "agg": "max",
+   "max": 15,
+   "unit": "°"
+  },
+  {
+   "id": "self_clip",
+   "label": "自身不穿模（关节胶囊最近距离）",
+   "kind": "summary",
+   "path": "selfClipWorst.mm",
+   "min": 0,
+   "unit": "mm"
+  },
+  {
+   "id": "v5_matches_hub",
+   "label": "V5 身体与求解姿态一致（最大关节偏差）",
+   "kind": "summary",
+   "path": "maxPosErrMm",
+   "max": 2,
+   "unit": "mm"
+  }
+ ]
+}
