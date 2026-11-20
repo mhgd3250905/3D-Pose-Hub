@@ -1,0 +1,216 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "t-step-jack-arm-circles",
+ "reviewStatus": "draft-ai-needs-user-review",
+ "sources": [
+  "Flare 2.0 热身 v2 / 练后三档 2026-11-21（Google 表 1aCseEk4vslsG-QKb-zsZwg30amvoYh5tMxzy6p9n8vA，热身 v2-1：低冲击开合踏步+大绕环 60 秒）",
+  "drill-anim/specs/t-step-jack-arm-circles.js",
+  "tools/flare2-moves-r2/standards/t-step-jack-arm-circles.md"
+ ],
+ "name": {
+  "zh": "低冲击开合踏步+大绕环",
+  "en": "Step Jack with Arm Circles"
+ },
+ "purpose": {
+  "zh": "不跳的全身热身：脚左右踏开、双臂上举和大绕环，把心率和肩膀一起热起来",
+  "en": "A no-jump full-body warm-up: step out side to side while the arms reach overhead and then circle, warming up your heart rate and shoulders."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "脚轮流往旁边踏开再收回，双臂伸直举过头",
+    "en": "Step out and in, straight arms overhead"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "一只脚踏出时另一只脚始终踩在地上，不跳。",
+    "en": "One foot always stays on the floor as the other steps out; no jumping."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "后半分钟手臂换成大绕环：手臂伸直，掌心朝外，绕得越大越好。",
+    "en": "For the second half, straight arms draw big circles, palms facing out."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "支撑腿膝盖微弯，身体站高，别弓背。",
+    "en": "Soft knee on the standing leg, stand tall, no hunching."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "变成跳跃",
+   "en": "Turning it into a jump."
+  },
+  {
+   "zh": "手肘弯着、绕环太小",
+   "en": "Bent elbows and small circles."
+  },
+  {
+   "zh": "耸肩缩脖子",
+   "en": "Shrugging the shoulders up to the ears."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "肩膀有疼痛就把绕环改小",
+   "en": "If your shoulder hurts, make the circles smaller."
+  }
+ ],
+ "tags": {
+  "category": "cardio",
+  "activeMuscles": [
+   "deltoids",
+   "hip-abductors"
+  ],
+  "synergistMuscles": [
+   "calves",
+   "traps"
+  ],
+  "equipment": [],
+  "position": "standing",
+  "difficulty": 1
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "time",
+  "sets": 1,
+  "seconds": 60,
+  "restSeconds": 15
+ },
+ "phases": {
+  "start": {
+   "zh": "脚踏开手上举",
+   "en": "Step out, arms up"
+  },
+  "peak": {
+   "zh": "双臂大绕环",
+   "en": "Big arm circles"
+  },
+  "end": {
+   "zh": "收回站好",
+   "en": "Feet together"
+  }
+ },
+ "training": {
+  "kind": "hold",
+  "leadSeconds": 2
+ },
+ "flare2": {
+  "version": "r2",
+  "batch": 1,
+  "item": "热身 v2-1：低冲击开合踏步+大绕环 60 秒",
+  "camera": "正前略偏右（看得到踏步宽度和手臂绕环）",
+  "doseBrief": "表：60 秒（前 30 秒上举，后 30 秒大绕环），1 组",
+  "status": "draft-awaiting-user-review",
+  "note": "Animation r2: one 16 s loop = 8 s step jack with arms overhead + 8 s step jack with backward arm circles (palms out); about 1 step per second, never airborne. Text/voice carry the 30 s switch.",
+  "standard": "tools/flare2-moves-r2/standards/t-step-jack-arm-circles.md"
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 3,
+    "role": "posture",
+    "zh": "一只脚始终踩在地上，不用跳",
+    "en": "One foot always on the floor, no jumping",
+    "from": [
+     "cue2",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "at": 12,
+    "role": "form",
+    "zh": "手臂伸直，往头顶上方够",
+    "en": "Arms straight, reaching up overhead",
+    "from": [
+     "cue1"
+    ]
+   },
+   {
+    "at": 21,
+    "role": "form",
+    "zh": "支撑腿膝盖微弯，身体站高",
+    "en": "Soft standing knee, stand tall",
+    "from": [
+     "cue4"
+    ]
+   },
+   {
+    "at": 30,
+    "role": "form",
+    "zh": "后半段手臂改成大绕环，掌心朝外",
+    "en": "Second half: big arm circles, palms facing out",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "at": 39,
+    "role": "form",
+    "zh": "绕环画大一点，手肘别弯",
+    "en": "Make the circles big, elbows straight",
+    "from": [
+     "cue3",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "at": 48,
+    "role": "form",
+    "zh": "肩膀放松往下，别耸到耳朵",
+    "en": "Shoulders down, away from your ears",
+    "from": [
+     "commonErrors[2]"
+    ]
+   },
+   {
+    "at": 57,
+    "key": "n.3"
+   },
+   {
+    "at": 58,
+    "key": "n.2"
+   },
+   {
+    "at": 59,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.release",
+    "p.rest",
+    "sec.15"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
+  }
+ }
+}

@@ -1,0 +1,125 @@
+{
+ "format": "flare2-moves-standard@1",
+ "id": "t-step-jack-arm-circles",
+ "nameZh": "低冲击开合踏步+大绕环",
+ "doc": "tools/flare2-moves-r2/standards/t-step-jack-arm-circles.md",
+ "phases": {
+  "jack": "0-8 s 踏出时双臂侧上举过头、收回时放下",
+  "circles": "8-16 s 继续踏步，双臂直臂大绕环（向后），掌心朝外"
+ },
+ "series": [
+  "kneeMin",
+  "elbowMin",
+  "armOverheadMax",
+  "anklesApartCm",
+  "palmOutMax",
+  "footClearMm"
+ ],
+ "checks": [
+  {
+   "id": "elbow_straight",
+   "label": "双臂伸直（全程最小肘角）",
+   "metric": "elbowMin",
+   "agg": "min",
+   "unit": "°",
+   "min": 160
+  },
+  {
+   "id": "arms_overhead",
+   "label": "上举段：手臂举过头（上臂与躯干长轴夹角，0 = 正上举；最大值取左右较差者）",
+   "metric": "armOverheadMax",
+   "agg": "max",
+   "unit": "°",
+   "phase": "overhead",
+   "max": 40
+  },
+  {
+   "id": "circle_top",
+   "label": "绕环段：手臂经过头顶附近（上臂与躯干长轴夹角最小）",
+   "metric": "armOverheadMax",
+   "agg": "min",
+   "unit": "°",
+   "phase": "circles",
+   "max": 40
+  },
+  {
+   "id": "circle_bottom",
+   "label": "绕环段：手臂回到体侧下方（上臂与躯干长轴夹角最大）",
+   "metric": "armOverheadMax",
+   "agg": "max",
+   "unit": "°",
+   "phase": "circles",
+   "min": 140
+  },
+  {
+   "id": "palms_out",
+   "label": "绕环段：掌心朝外（掌心法线与体侧外向夹角，最大）",
+   "metric": "palmOutMax",
+   "agg": "max",
+   "unit": "°",
+   "phase": "circles",
+   "max": 60
+  },
+  {
+   "id": "steps_16s",
+   "label": "每 16 秒踏出次数（两脚分开到最大的次数；8 次踏出 + 8 次收回 = 约 1 步/秒）",
+   "metric": "anklesApartCm",
+   "agg": "",
+   "unit": "次",
+   "min": 8,
+   "max": 8,
+   "kind": "reps",
+   "ref": "max",
+   "tol": 2
+  },
+  {
+   "id": "step_width",
+   "label": "踏出宽度（两踝距离最大）",
+   "metric": "anklesApartCm",
+   "agg": "max",
+   "unit": "cm",
+   "min": 40,
+   "max": 52
+  },
+  {
+   "id": "knees_soft",
+   "label": "支撑腿膝微屈不深蹲（两膝中较直者的最小角；踏步腿离地时会屈膝）",
+   "metric": "kneeStraightMax",
+   "agg": "min",
+   "unit": "°",
+   "min": 155
+  },
+  {
+   "id": "no_jump",
+   "label": "不跳：任一时刻至少一只脚贴地（两脚最低点较低者）",
+   "metric": "footClearMm",
+   "agg": "max",
+   "unit": "mm",
+   "max": 3
+  },
+  {
+   "id": "floor",
+   "label": "脚不穿地",
+   "metric": "footClearMm",
+   "agg": "min",
+   "unit": "mm",
+   "min": -2
+  },
+  {
+   "id": "self_clip",
+   "label": "手臂不穿身体（关节胶囊间距）",
+   "kind": "summary",
+   "path": "selfClipWorst.mm",
+   "min": 0,
+   "unit": "mm"
+  },
+  {
+   "id": "pos_err",
+   "label": "V5 与求解姿态一致",
+   "kind": "summary",
+   "path": "maxPosErrMm",
+   "max": 2,
+   "unit": "mm"
+  }
+ ]
+}

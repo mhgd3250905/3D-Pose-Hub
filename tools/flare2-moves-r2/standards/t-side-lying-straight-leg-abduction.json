@@ -1,0 +1,96 @@
+{
+ "format": "flare2-moves-standard@1",
+ "id": "t-side-lying-straight-leg-abduction",
+ "nameZh": "侧卧直腿外展",
+ "doc": "tools/flare2-moves-r2/standards/t-side-lying-straight-leg-abduction.md",
+ "phases": {
+  "down": "侧卧，双腿伸直叠放",
+  "top": "上侧腿脚跟带动直腿抬到约 35°，脚尖朝前，骨盆不后翻"
+ },
+ "series": [
+  "kneeR",
+  "straddleDeg",
+  "toeElevR",
+  "legBehindCmR",
+  "pelvisRotDeg"
+ ],
+ "checks": [
+  {
+   "id": "knee_straight",
+   "label": "上侧腿膝伸直",
+   "metric": "kneeR",
+   "agg": "min",
+   "unit": "°",
+   "min": 172
+  },
+  {
+   "id": "lift",
+   "label": "顶端：两腿夹角（抬腿幅度）",
+   "metric": "straddleDeg",
+   "agg": "mean",
+   "unit": "°",
+   "phase": "top",
+   "min": 30,
+   "max": 45
+  },
+  {
+   "id": "rest",
+   "label": "底端：腿收回（两腿夹角）",
+   "metric": "straddleDeg",
+   "agg": "mean",
+   "unit": "°",
+   "phase": "down",
+   "max": 12
+  },
+  {
+   "id": "toes_fwd",
+   "label": "顶端：脚尖朝前不朝天（脚尖方向高于水平的角度，最大）",
+   "metric": "toeElevR",
+   "agg": "max",
+   "unit": "°",
+   "phase": "top",
+   "max": 25
+  },
+  {
+   "id": "heel_leads",
+   "label": "顶端：脚跟带动、腿略在身体线后（踝在髋后方）",
+   "metric": "legBehindCmR",
+   "agg": "mean",
+   "unit": "cm",
+   "phase": "top",
+   "min": 1
+  },
+  {
+   "id": "pelvis_still",
+   "label": "骨盆不后翻（骨盆转角变化）",
+   "metric": "pelvisRotDeg",
+   "agg": "max",
+   "unit": "°",
+   "max": 1
+  },
+  {
+   "id": "floor",
+   "label": "不穿垫",
+   "metric": "footClearMm",
+   "agg": "min",
+   "unit": "mm",
+   "min": -2
+  },
+  {
+   "id": "pins",
+   "label": "支撑前臂、下侧脚不滑",
+   "kind": "pins",
+   "min": 0,
+   "max": 3,
+   "unit": "mm"
+  },
+  {
+   "id": "pos_err",
+   "label": "V5 与求解姿态一致",
+   "kind": "summary",
+   "path": "maxPosErrMm",
+   "unit": "mm",
+   "max": 2
+  }
+ ]
+}

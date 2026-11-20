@@ -1,0 +1,128 @@
+{
+ "format": "flare2-moves-standard@1",
+ "id": "t-wide-side-squat-shift",
+ "nameZh": "宽距侧蹲左右移重心",
+ "doc": "tools/flare2-moves-r2/standards/t-wide-side-squat-shift.md",
+ "phases": {
+  "stand": "宽距站立，脚尖外转约 20°",
+  "bottom": "一侧屈膝蹲至大腿接近水平，另一腿伸直锁膝、脚跟着地脚尖朝上，躯干不前塌"
+ },
+ "series": [
+  "kneeMin",
+  "kneeStraightMax",
+  "thighFlatMin",
+  "toesUpStraight",
+  "thoraxPitchDeg",
+  "anklesApartCm"
+ ],
+ "checks": [
+  {
+   "id": "stance_width",
+   "label": "站距（两踝中心距；肩宽 37.6 cm 的 1.8–2 倍 = 67.7–75.2）",
+   "metric": "anklesApartCm",
+   "agg": "mean",
+   "unit": "cm",
+   "phase": "stand",
+   "min": 67.7,
+   "max": 75.2
+  },
+  {
+   "id": "toes_out_L",
+   "label": "左脚尖外转（站立）",
+   "metric": "footYawOutL",
+   "agg": "mean",
+   "unit": "°",
+   "phase": "stand",
+   "min": 15,
+   "max": 25
+  },
+  {
+   "id": "toes_out_R",
+   "label": "右脚尖外转（站立）",
+   "metric": "footYawOutR",
+   "agg": "mean",
+   "unit": "°",
+   "phase": "stand",
+   "min": 15,
+   "max": 25
+  },
+  {
+   "id": "thigh_flat",
+   "label": "底部：屈膝侧大腿接近水平（大腿低于水平的角度，0 = 水平）",
+   "metric": "thighFlatMin",
+   "agg": "mean",
+   "unit": "°",
+   "phase": "bottom",
+   "min": -5,
+   "max": 20
+  },
+  {
+   "id": "not_deep",
+   "label": "底部：不深蹲到哥萨克（屈膝侧膝角最小；大腿水平时约 65–80°，深哥萨克约 40°）",
+   "metric": "kneeMin",
+   "agg": "min",
+   "unit": "°",
+   "phase": "bottom",
+   "min": 60
+  },
+  {
+   "id": "straight_knee",
+   "label": "底部：伸直腿锁膝",
+   "metric": "kneeStraightMax",
+   "agg": "min",
+   "unit": "°",
+   "phase": "bottom",
+   "min": 174
+  },
+  {
+   "id": "toes_up",
+   "label": "底部：伸直腿脚尖朝上（脚尖高于脚跟的角度）",
+   "metric": "toesUpStraight",
+   "agg": "min",
+   "unit": "°",
+   "phase": "bottom",
+   "min": 25
+  },
+  {
+   "id": "torso_tall",
+   "label": "底部：躯干不前塌（胸廓前倾角）",
+   "metric": "thoraxPitchDeg",
+   "agg": "max",
+   "unit": "°",
+   "phase": "bottom",
+   "max": 35
+  },
+  {
+   "id": "elbows",
+   "label": "手臂前伸平举（肘角）",
+   "metric": "elbowMin",
+   "agg": "min",
+   "unit": "°",
+   "min": 170
+  },
+  {
+   "id": "floor",
+   "label": "脚不穿地",
+   "metric": "footClearMm",
+   "agg": "min",
+   "unit": "mm",
+   "min": -2
+  },
+  {
+   "id": "feet_planted",
+   "label": "屈膝侧脚不滑（脚掌接触区漂移）",
+   "kind": "pins",
+   "min": 0,
+   "max": 3,
+   "unit": "mm"
+  },
+  {
+   "id": "pos_err",
+   "label": "V5 与求解姿态一致",
+   "kind": "summary",
+   "path": "maxPosErrMm",
+   "max": 2,
+   "unit": "mm"
+  }
+ ]
+}

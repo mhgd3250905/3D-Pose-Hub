@@ -1,0 +1,97 @@
+{
+ "format": "flare2-moves-standard@1",
+ "id": "t-standing-wrist-flexor-stretch",
+ "nameZh": "站姿屈腕拉伸",
+ "doc": "tools/flare2-moves-r2/standards/t-standing-wrist-flexor-stretch.md",
+ "phases": {
+  "hold": "右臂前伸肘直，掌心朝前指尖朝下，左手把手指往回轻拉，静止"
+ },
+ "series": [
+  "elbowR",
+  "wristFlexR",
+  "palmFwdDegR",
+  "fingerDownDegR",
+  "clashMm",
+  "clashContact"
+ ],
+ "checks": [
+  {
+   "id": "elbow",
+   "label": "右肘伸直",
+   "metric": "elbowR",
+   "agg": "min",
+   "unit": "°",
+   "min": 170
+  },
+  {
+   "id": "arm_forward",
+   "label": "右臂前平举（上臂与躯干夹角，90 = 水平前举）",
+   "metric": "shoulderExtR",
+   "agg": "mean",
+   "unit": "°",
+   "phase": "hold",
+   "min": -100,
+   "max": -75
+  },
+  {
+   "id": "wrist_ext",
+   "label": "保持：腕背伸（负 = 背伸）",
+   "metric": "wristFlexR",
+   "agg": "max",
+   "unit": "°",
+   "phase": "hold",
+   "max": -65
+  },
+  {
+   "id": "palm_fwd",
+   "label": "保持：掌心朝前（掌心法线与正前方夹角）",
+   "metric": "palmFwdDegR",
+   "agg": "max",
+   "unit": "°",
+   "phase": "hold",
+   "max": 40
+  },
+  {
+   "id": "fingers_down",
+   "label": "保持：指尖朝下（中指方向与正下方夹角）",
+   "metric": "fingerDownDegR",
+   "agg": "max",
+   "unit": "°",
+   "phase": "hold",
+   "max": 40
+  },
+  {
+   "id": "hands_touch",
+   "label": "保持：左手贴着右手手指（3 mm 内的顶点数）",
+   "metric": "clashContact",
+   "agg": "min",
+   "unit": "",
+   "phase": "hold",
+   "min": 40
+  },
+  {
+   "id": "hands_no_clip",
+   "label": "两手不穿插（最深穿入）",
+   "metric": "clashMm",
+   "agg": "max",
+   "unit": "mm",
+   "max": 4
+  },
+  {
+   "id": "knees",
+   "label": "站直",
+   "metric": "kneeMin",
+   "agg": "min",
+   "unit": "°",
+   "min": 165
+  },
+  {
+   "id": "pos_err",
+   "label": "V5 与求解姿态一致",
+   "kind": "summary",
+   "path": "maxPosErrMm",
+   "unit": "mm",
+   "max": 2
+  }
+ ]
+}

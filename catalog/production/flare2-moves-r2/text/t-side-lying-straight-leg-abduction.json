@@ -1,0 +1,196 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "t-side-lying-straight-leg-abduction",
+ "reviewStatus": "draft-ai-needs-user-review",
+ "sources": [
+  "Flare 2.0 热身 v2 / 练后三档 2026-11-21（Google 表 1aCseEk4vslsG-QKb-zsZwg30amvoYh5tMxzy6p9n8vA，练后：侧卧直腿外展）",
+  "drill-anim/specs/t-side-lying-straight-leg-abduction.js",
+  "tools/flare2-moves-r2/standards/t-side-lying-straight-leg-abduction.md"
+ ],
+ "name": {
+  "zh": "侧卧直腿外展",
+  "en": "Side-Lying Straight-Leg Raise"
+ },
+ "purpose": {
+  "zh": "练臀部外侧，让髋在分腿和摆腿动作里更稳",
+  "en": "Works the outside of your hip so it holds steady in straddle and leg-swing moves."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "脚尖朝前，脚跟带着直腿往上抬",
+    "en": "Toes forward, lead with the heel, leg straight"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "侧躺，下面手臂撑着，上面的手扶在胯上，身体一条直线。",
+    "en": "Lie on your side propped on the lower forearm, top hand on the hip, body in a line."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "上面的腿伸直，脚尖朝前不朝天，腿略在身体后方。",
+    "en": "Top leg straight, toes pointing forward not up, leg slightly behind the body."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "胯不往后翻，腿慢慢落下，中间不在下面腿上休息。",
+    "en": "Hips stay stacked; lower slowly without resting on the bottom leg."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "脚尖朝天",
+   "en": "Turning the toes up to the ceiling."
+  },
+  {
+   "zh": "身体往后翻",
+   "en": "Rolling the hips back."
+  },
+  {
+   "zh": "甩腿借力",
+   "en": "Swinging the leg."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "胯外侧刺疼就减小高度",
+   "en": "If the outside of your hip hurts sharply, lift lower."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "hip-abductors",
+   "glutes"
+  ],
+  "synergistMuscles": [
+   "obliques"
+  ],
+  "equipment": [
+   "mat"
+  ],
+  "position": "side-lying",
+  "difficulty": 1
+ },
+ "unilateral": true,
+ "startingSide": "right",
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 1,
+  "reps": 10,
+  "restSeconds": 15
+ },
+ "phases": {
+  "start": {
+   "zh": "脚跟带腿上抬",
+   "en": "Heel leads the lift"
+  },
+  "peak": {
+   "zh": "顶端停住",
+   "en": "Pause at the top"
+  },
+  "end": {
+   "zh": "慢慢落下",
+   "en": "Lower slowly"
+  }
+ },
+ "training": {
+  "kind": "rep_updown",
+  "leadSeconds": 2,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.1
+   },
+   {
+    "id": "hold",
+    "seconds": 0.7
+   },
+   {
+    "id": "back",
+    "seconds": 1.4
+   },
+   {
+    "id": "rest",
+    "seconds": 0.8
+   }
+  ],
+  "perSide": "each-side-separately",
+  "source": "flare2 r2 animation tempo (4 s per rep: 1.1 s up, 0.7 s top, 1.4 s down, 0.8 s pause); 表：剂量未写，草稿每侧 10 次"
+ },
+ "flare2": {
+  "version": "r2",
+  "batch": 1,
+  "item": "练后：侧卧直腿外展",
+  "camera": "正前略高（看得到抬腿高度、脚尖方向和骨盆不后翻）",
+  "doseBrief": "表：侧卧直腿外展；草稿每侧 10 次 1 组（次数待定）；动画左侧卧抬右腿示范，App 镜像",
+  "status": "draft-awaiting-user-review",
+  "note": "Animation r2: lying on the left side, right leg lifts ~35 deg, heel first, toes forward, hip slightly extended; pelvis fixed (no roll-back). One side shown, the app mirrors.",
+  "standard": "tools/flare2-moves-r2/standards/t-side-lying-straight-leg-abduction.md"
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 4.0,
+  "phaseCues": "none",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 3,
+    "role": "form",
+    "zh": "脚尖朝前，脚跟带着腿走",
+    "en": "Toes forward, the heel leads the leg",
+    "from": [
+     "cue1",
+     "cue3",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 6,
+    "role": "form",
+    "zh": "胯别往后翻，腿不靠下面",
+    "en": "Hips stacked, top leg stays off",
+    "from": [
+     "cue4",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 9,
+    "key": "p.last_rep"
+   }
+  ],
+  "before": [],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.15"
+   ],
+   "allDone": [
+    "p.nice"
+   ]
+  }
+ }
+}

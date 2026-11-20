@@ -1,0 +1,205 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "t-neck-wrist-finger-wakeup",
+ "reviewStatus": "draft-ai-needs-user-review",
+ "sources": [
+  "Flare 2.0 热身 v2 / 练后三档 2026-11-21（Google 表 1aCseEk4vslsG-QKb-zsZwg30amvoYh5tMxzy6p9n8vA，热身 v2-2：站姿颈-腕-指唤醒 45 秒（表：十指交扣腕绕 8 字；动画改合掌））",
+  "drill-anim/specs/t-neck-wrist-finger-wakeup.js",
+  "tools/flare2-moves-r2/standards/t-neck-wrist-finger-wakeup.md"
+ ],
+ "name": {
+  "zh": "站姿颈腕指唤醒",
+  "en": "Standing Neck, Wrist & Finger Wake-Up"
+ },
+ "purpose": {
+  "zh": "撑地和地板动作前，把脖子、手腕和手指轻轻活动开",
+  "en": "Gently wakes up your neck, wrists and fingers before floor and hand-support work."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "脖子半圈慢绕，只在前面绕，不往后仰",
+    "en": "Slow half circles in front, never tip back"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "耳朵朝右肩，下巴经过胸口，再到左肩，来回慢慢绕。",
+    "en": "Ear toward the right shoulder, chin past the chest, to the left shoulder, and back, slowly."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "双手在胸前合掌，手腕带着手画横着的 8 字。",
+    "en": "Press your palms together in front of your chest and let the wrists draw a sideways figure eight."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "双臂前伸，用力握拳再把手指张到最大，重复几次。",
+    "en": "Arms forward, make a tight fist, then spread your fingers wide; repeat a few times."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "头往后仰",
+   "en": "Tipping the head back."
+  },
+  {
+   "zh": "绕得太快太猛",
+   "en": "Rolling the neck fast or hard."
+  },
+  {
+   "zh": "耸肩",
+   "en": "Shrugging the shoulders."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "脖子发麻、头晕或疼就停下",
+   "en": "Stop if your neck tingles, hurts, or you feel dizzy."
+  }
+ ],
+ "tags": {
+  "category": "mobility",
+  "activeMuscles": [
+   "neck",
+   "forearms"
+  ],
+  "synergistMuscles": [
+   "traps"
+  ],
+  "equipment": [],
+  "position": "standing",
+  "difficulty": 1
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "time",
+  "sets": 1,
+  "seconds": 45,
+  "restSeconds": 15
+ },
+ "phases": {
+  "start": {
+   "zh": "脖子慢绕",
+   "en": "Slow neck rolls"
+  },
+  "peak": {
+   "zh": "合掌绕腕",
+   "en": "Palms-together wrist eights"
+  },
+  "end": {
+   "zh": "握拳张指",
+   "en": "Fist and spread"
+  }
+ },
+ "training": {
+  "kind": "hold",
+  "leadSeconds": 2
+ },
+ "flare2": {
+  "version": "r2",
+  "batch": 1,
+  "item": "热身 v2-2：站姿颈-腕-指唤醒 45 秒（表：十指交扣腕绕 8 字；动画改合掌）",
+  "camera": "正前略偏右（看得到头部绕环和手部）",
+  "doseBrief": "表：45 秒，1 组",
+  "status": "draft-awaiting-user-review",
+  "note": "Animation r2: one 21 s loop = neck half rolls (no extension) 0-6.6 s, palms-together wrist figure-8 6.6-14.6 s (r2 fallback from the brief interlaced fingers, which read as crossed wrists in the sandbox close-ups), fist / spread x3 14.6-21 s. Head and finger motion are V5-only (v5r2-ext.js).",
+  "standard": "tools/flare2-moves-r2/standards/t-neck-wrist-finger-wakeup.md"
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 3,
+    "role": "posture",
+    "zh": "脖子只在前面半圈绕，不往后仰",
+    "en": "Half circles in front only, never tip back",
+    "from": [
+     "cue1",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "at": 11,
+    "role": "form",
+    "zh": "耳朵找肩膀，下巴经过胸口",
+    "en": "Ear to shoulder, chin past the chest",
+    "from": [
+     "cue2"
+    ]
+   },
+   {
+    "at": 19,
+    "role": "form",
+    "zh": "双手合掌，手腕画横着的 8 字",
+    "en": "Palms together, wrists draw a sideways eight",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "at": 28,
+    "role": "form",
+    "zh": "握拳握紧，张开时手指撑到最大",
+    "en": "Tight fist, fingers spread wide after",
+    "from": [
+     "cue4"
+    ]
+   },
+   {
+    "at": 36,
+    "role": "form",
+    "zh": "肩膀放松往下，别耸起来",
+    "en": "Shoulders relaxed and down",
+    "from": [
+     "commonErrors[2]"
+    ]
+   },
+   {
+    "at": 42,
+    "key": "n.3"
+   },
+   {
+    "at": 43,
+    "key": "n.2"
+   },
+   {
+    "at": 44,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.release",
+    "p.rest",
+    "sec.15"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
+  }
+ }
+}

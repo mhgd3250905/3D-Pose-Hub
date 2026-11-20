@@ -1,0 +1,120 @@
+{
+ "format": "flare2-moves-standard@1",
+ "id": "t-child-pose-side-reach",
+ "nameZh": "婴儿式侧伸",
+ "doc": "tools/flare2-moves-r2/standards/t-child-pose-side-reach.md",
+ "phases": {
+  "centre": "婴儿式：臀坐脚跟，手臂前伸",
+  "holdL": "双手走向左侧并保持，拉伸右侧背",
+  "holdR": "镜像"
+ },
+ "series": [
+  "hipAboveAnkleMm",
+  "hipOverAnkleCm",
+  "handsSideCm",
+  "sideBendDeg",
+  "elbowMin"
+ ],
+ "checks": [
+  {
+   "id": "hips_on_heels",
+   "label": "臀坐脚跟：髋关节高于踝关节（最大）",
+   "metric": "hipAboveAnkleMm",
+   "agg": "max",
+   "unit": "mm",
+   "max": 170
+  },
+  {
+   "id": "hips_over_heels",
+   "label": "髋在脚跟正上方（水平距离，最大）",
+   "metric": "hipOverAnkleCm",
+   "agg": "max",
+   "unit": "cm",
+   "max": 12
+  },
+  {
+   "id": "reach_L",
+   "label": "左侧保持：双手移到左侧（手中点相对髋的横向距离）",
+   "metric": "handsSideCm",
+   "agg": "mean",
+   "unit": "cm",
+   "phase": "holdL",
+   "min": 22
+  },
+  {
+   "id": "reach_R",
+   "label": "右侧保持：双手移到右侧",
+   "metric": "handsSideCm",
+   "agg": "mean",
+   "unit": "cm",
+   "phase": "holdR",
+   "max": -22
+  },
+  {
+   "id": "bend_L",
+   "label": "左侧保持：躯干侧屈（胸廓长轴相对骨盆，水平面）",
+   "metric": "sideBendDeg",
+   "agg": "mean",
+   "unit": "°",
+   "phase": "holdL",
+   "min": 12
+  },
+  {
+   "id": "bend_R",
+   "label": "右侧保持：躯干侧屈",
+   "metric": "sideBendDeg",
+   "agg": "mean",
+   "unit": "°",
+   "phase": "holdR",
+   "max": -12
+  },
+  {
+   "id": "arms_long",
+   "label": "手臂伸长（肘角）",
+   "metric": "elbowMin",
+   "agg": "min",
+   "unit": "°",
+   "min": 160
+  },
+  {
+   "id": "hands_on_mat",
+   "label": "手掌贴垫（手最低点离垫，最大）",
+   "metric": "handFloorMm",
+   "agg": "max",
+   "unit": "mm",
+   "max": 4
+  },
+  {
+   "id": "floor",
+   "label": "不穿垫（全身最低点）",
+   "metric": "handFloorMm",
+   "agg": "min",
+   "unit": "mm",
+   "min": -2
+  },
+  {
+   "id": "knees_floor",
+   "label": "膝不穿垫",
+   "metric": "kneeFloorMm",
+   "agg": "min",
+   "unit": "mm",
+   "min": -2
+  },
+  {
+   "id": "pins",
+   "label": "膝、脚不滑",
+   "kind": "pins",
+   "min": 0,
+   "max": 3,
+   "unit": "mm"
+  },
+  {
+   "id": "pos_err",
+   "label": "V5 与求解姿态一致",
+   "kind": "summary",
+   "path": "maxPosErrMm",
+   "unit": "mm",
+   "max": 2
+  }
+ ]
+}

@@ -1,0 +1,199 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "t-standing-wrist-flexor-stretch",
+ "reviewStatus": "draft-ai-needs-user-review",
+ "sources": [
+  "Flare 2.0 热身 v2 / 练后三档 2026-11-21（Google 表 1aCseEk4vslsG-QKb-zsZwg30amvoYh5tMxzy6p9n8vA，练后：站姿屈腕拉伸（无墙））",
+  "drill-anim/specs/t-standing-wrist-flexor-stretch.js",
+  "tools/flare2-moves-r2/standards/t-standing-wrist-flexor-stretch.md"
+ ],
+ "name": {
+  "zh": "站姿屈腕拉伸",
+  "en": "Standing Wrist Flexor Stretch"
+ },
+ "purpose": {
+  "zh": "拉开前臂内侧和手腕，撑地训练后放松",
+  "en": "Stretches the inside of the forearm and wrist after hand-support training."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "手臂伸直掌心朝前，另一手把手指往回拉",
+    "en": "Arm straight, palm out, other hand draws fingers back"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "手臂伸直抬到肩高，手腕往上翻，掌心朝前，指尖朝下。",
+    "en": "Straight arm at shoulder height, palm facing forward, fingertips pointing down."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "另一只手握住手指，轻轻往身体方向拉，前臂里面有拉的感觉就够了。",
+    "en": "The other hand holds the fingers and gently draws them toward you until the inner forearm stretches."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "手肘一直伸直，肩膀放松。",
+    "en": "Keep the elbow straight and the shoulder relaxed."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "手肘弯了",
+   "en": "Bending the elbow."
+  },
+  {
+   "zh": "拉得太猛",
+   "en": "Pulling too hard."
+  },
+  {
+   "zh": "耸肩",
+   "en": "Shrugging the shoulder."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "手腕刺疼就拉轻一点；有腕伤先问医生",
+   "en": "If your wrist feels sharp pain, pull less; check with a doctor if you have a wrist injury."
+  }
+ ],
+ "tags": {
+  "category": "stretch",
+  "activeMuscles": [
+   "forearms"
+  ],
+  "synergistMuscles": [],
+  "equipment": [],
+  "position": "standing",
+  "difficulty": 1
+ },
+ "unilateral": true,
+ "startingSide": "right",
+ "defaultDose": {
+  "mode": "time",
+  "sets": 1,
+  "seconds": 30,
+  "restSeconds": 10
+ },
+ "phases": {
+  "start": {
+   "zh": "手臂伸直抬起",
+   "en": "Arm straight forward"
+  },
+  "peak": {
+   "zh": "拉手指保持",
+   "en": "Draw fingers back"
+  },
+  "end": {
+   "zh": "慢慢放松",
+   "en": "Ease off"
+  }
+ },
+ "training": {
+  "kind": "hold",
+  "leadSeconds": 1,
+  "perSide": "each-side-separately",
+  "sideSwitchSeconds": 10
+ },
+ "flare2": {
+  "version": "r2",
+  "batch": 1,
+  "item": "练后：站姿屈腕拉伸（无墙）",
+  "camera": "右侧前方（看得到腕背伸角度和伸直的手肘）",
+  "doseBrief": "表：静态保持，左右各一次；草稿每侧 30 秒 1 组（秒数待定）；动画右手示范，App 镜像",
+  "status": "draft-awaiting-user-review",
+  "note": "Animation r2: right arm only (one-sided, the app mirrors for the left). 8 s loop: draw back 0.6-1.8 s, hold to 6.6 s, ease off. Finger poses V5-only.",
+  "standard": "tools/flare2-moves-r2/standards/t-standing-wrist-flexor-stretch.md"
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 4,
+    "role": "posture",
+    "zh": "手臂伸直到肩高，掌心朝前",
+    "en": "Arm straight at shoulder height, palm forward",
+    "from": [
+     "cue2"
+    ]
+   },
+   {
+    "at": 12,
+    "role": "halfway",
+    "zh": "前臂里面有拉的感觉就够了，别使劲拽",
+    "en": "A gentle pull inside the forearm is enough",
+    "from": [
+     "cue3",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "at": 20,
+    "role": "form",
+    "zh": "手肘一直伸直，肩膀放松",
+    "en": "Elbow stays straight, shoulder relaxed",
+    "from": [
+     "cue4",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "at": 27,
+    "key": "n.3"
+   },
+   {
+    "at": 28,
+    "key": "n.2"
+   },
+   {
+    "at": 29,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSetsSameSide": [
+    "p.rest",
+    "sec.10"
+   ],
+   "sideDone": [
+    "p.release",
+    "p.switch_left"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
+  },
+  "sides": {
+   "order": [
+    "right",
+    "left"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边；换边准备 10 秒（training.sideSwitchSeconds，App 未接入）"
+  }
+ }
+}

@@ -1,0 +1,950 @@
+{
+ "format": "flare2-moves-plan@1",
+ "base": "codex/flare2-publish 4dde699290bc9abe2603caaed0b26c5c0dd15e83 (r2-v20 published; render content = flare2-moves-r1 3fbc22e)",
+ "brief": "Flare 2.0 热身 v2 + 练后三档（hark-mhgd 2026-11-21 02:01；Google 表 1aCseEk4vslsG-QKb-zsZwg30amvoYh5tMxzy6p9n8vA）r2 第 1 批 7 个（渲染 6 个；婴儿式侧伸暂缓，见 deferred）",
+ "actions": [
+  {
+   "id": "t-step-jack-arm-circles",
+   "item": "热身 v2-1",
+   "priority": "batch1",
+   "nameZh": "低冲击开合踏步+大绕环",
+   "spec": "drill-anim/specs/t-step-jack-arm-circles.js",
+   "plans": "Flare 练前热身 v2：开合踏步（不跳）约 1 步/秒，前 30 秒双臂上举，后 30 秒掌心朝外双臂大绕环，60 秒；h-step-jack 的新变体（不覆盖原动作）",
+   "hands": {
+    "left": "native",
+    "right": "native"
+   },
+   "exerciseMat": false,
+   "camera": {
+    "dir": [
+     0.2,
+     0.12,
+     1
+    ],
+    "fit": [
+     "head",
+     "leftToe",
+     "rightToe",
+     "pelvis",
+     "leftPalm",
+     "rightPalm"
+    ],
+    "pad": 0.12,
+    "k": 1,
+    "at": 1.0
+   },
+   "checks": {
+    "lockElbows": [
+     [
+      0,
+      16
+     ]
+    ],
+    "pins": [],
+    "allowContact": [
+     "thighL|thighR",
+     "upperArmL|torso",
+     "upperArmR|torso"
+    ]
+   },
+   "preview": [
+    30,
+    90,
+    300
+   ],
+   "phases": {
+    "overhead": [
+     [
+      0.8,
+      1.2
+     ],
+     [
+      2.8,
+      3.2
+     ],
+     [
+      4.8,
+      5.2
+     ],
+     [
+      6.8,
+      7.2
+     ]
+    ],
+    "jack": [
+     [
+      0,
+      8
+     ]
+    ],
+    "circles": [
+     [
+      8.9,
+      15.1
+     ]
+    ],
+    "all": [
+     [
+      0,
+      16
+     ]
+    ]
+   },
+   "standard": "tools/flare2-moves-r2/standards/t-step-jack-arm-circles.md",
+   "reviewViews": "front:0,0.15,1;side:1,0.1,0.15;top:0,1,0.001:0,0,-1",
+   "reviewFrames": [
+    30,
+    90,
+    270,
+    285,
+    300
+   ],
+   "reviewKeys": [
+    [
+     "kneeMin",
+     "knee",
+     "°"
+    ],
+    [
+     "elbowMin",
+     "elbow",
+     "°"
+    ],
+    [
+     "armOverheadMax",
+     "armUp",
+     "°"
+    ],
+    [
+     "footClearMm",
+     "foot",
+     "mm"
+    ]
+   ]
+  },
+  {
+   "id": "t-neck-wrist-finger-wakeup",
+   "item": "热身 v2-2",
+   "priority": "batch1",
+   "nameZh": "站姿颈腕指唤醒",
+   "spec": "drill-anim/specs/t-neck-wrist-finger-wakeup.js",
+   "plans": "Flare 练前热身 v2：颈部半圈慢绕（不后仰）+ 合掌腕绕 8 字（十指交扣近景穿插明显，r2 改合掌） + 握拳/张指，45 秒",
+   "hands": {
+    "left": "native",
+    "right": "native"
+   },
+   "exerciseMat": false,
+   "camera": {
+    "dir": [
+     0.25,
+     0.12,
+     1
+    ],
+    "fit": [
+     "head",
+     "leftToe",
+     "rightToe",
+     "pelvis",
+     "leftPalm",
+     "rightPalm"
+    ],
+    "pad": 0.12,
+    "k": 1,
+    "at": 10
+   },
+   "checks": {
+    "lockElbows": [
+     [
+      0,
+      6.6
+     ]
+    ],
+    "pins": [
+     {
+      "bone": "leftFoot",
+      "hub": "leftToe",
+      "when": [
+       [
+        0,
+        21
+       ]
+      ]
+     },
+     {
+      "bone": "rightFoot",
+      "hub": "rightToe",
+      "when": [
+       [
+        0,
+        21
+       ]
+      ]
+     }
+    ],
+    "allowContact": [
+     "thighL|thighR",
+     "upperArmL|torso",
+     "upperArmR|torso",
+     "forearmL|forearmR"
+    ]
+   },
+   "clash": [
+    "left",
+    "right"
+   ],
+   "preview": [
+    78,
+    300,
+    486
+   ],
+   "phases": {
+    "roll": [
+     [
+      1.4,
+      6.2
+     ]
+    ],
+    "clasp": [
+     [
+      8.4,
+      13.2
+     ]
+    ],
+    "fig8": [
+     [
+      8.4,
+      13.2
+     ]
+    ],
+    "fist": [
+     [
+      15.45,
+      15.65
+     ],
+     [
+      17.05,
+      17.25
+     ],
+     [
+      18.65,
+      18.85
+     ]
+    ],
+    "spread": [
+     [
+      16.1,
+      16.45
+     ],
+     [
+      17.7,
+      18.05
+     ],
+     [
+      19.3,
+      19.8
+     ]
+    ]
+   },
+   "standard": "tools/flare2-moves-r2/standards/t-neck-wrist-finger-wakeup.md",
+   "reviewViews": "front:0,0.15,1;side:1,0.1,0.15;hand:0.3,0.5,1:0,1,0:rightHand,0.13;handTop:0.2,1,0.3:0,0,-1:rightHand,0.13",
+   "reviewFrames": [
+    78,
+    258,
+    330,
+    465,
+    486
+   ],
+   "reviewKeys": [
+    [
+     "headFlex",
+     "flex",
+     "°"
+    ],
+    [
+     "headLat",
+     "lat",
+     "°"
+    ],
+    [
+     "clashMm",
+     "clash",
+     "mm"
+    ],
+    [
+     "clashContact",
+     "cont",
+     ""
+    ]
+   ]
+  },
+  {
+   "id": "t-wide-side-squat-shift",
+   "item": "热身 v2-3",
+   "priority": "batch1",
+   "nameZh": "宽距侧蹲左右移重心",
+   "spec": "drill-anim/specs/t-wide-side-squat-shift.js",
+   "plans": "Flare 练前热身 v2：宽距（约 1.9 倍肩宽）脚尖外转约 20°，侧蹲至大腿接近水平，左右移重心，每侧 5 次",
+   "hands": {
+    "left": "native",
+    "right": "native"
+   },
+   "exerciseMat": false,
+   "camera": {
+    "dir": [
+     0.0,
+     0.25,
+     1
+    ],
+    "fit": [
+     "head",
+     "leftToe",
+     "rightToe",
+     "pelvis",
+     "leftPalm",
+     "rightPalm",
+     "leftKnee",
+     "rightKnee"
+    ],
+    "pad": 0.12,
+    "k": 1,
+    "at": 1.95
+   },
+   "checks": {
+    "lockElbows": [
+     [
+      0,
+      8
+     ]
+    ],
+    "pins": [
+     {
+      "bone": "rightFoot",
+      "hub": "rightToe",
+      "when": [
+       [
+        0.3,
+        3.6
+       ]
+      ],
+      "label": "squat-R"
+     },
+     {
+      "bone": "leftFoot",
+      "hub": "leftToe",
+      "when": [
+       [
+        4.3,
+        7.6
+       ]
+      ],
+      "label": "squat-L"
+     }
+    ],
+    "allowContact": [
+     "thighL|thighR",
+     "shinL|shinR",
+     "footL|footR",
+     "thighR|shinR",
+     "thighL|shinL",
+     "torso|thighR",
+     "torso|thighL"
+    ]
+   },
+   "preview": [
+    0,
+    58,
+    178
+   ],
+   "phases": {
+    "stand": [
+     [
+      0,
+      0.2
+     ],
+     [
+      3.7,
+      4.2
+     ],
+     [
+      7.7,
+      8
+     ]
+    ],
+    "bottomR": [
+     [
+      1.6,
+      2.3
+     ]
+    ],
+    "bottomL": [
+     [
+      5.6,
+      6.3
+     ]
+    ],
+    "bottom": [
+     [
+      1.6,
+      2.3
+     ],
+     [
+      5.6,
+      6.3
+     ]
+    ]
+   },
+   "standard": "tools/flare2-moves-r2/standards/t-wide-side-squat-shift.md",
+   "reviewViews": "front:0,0.15,1;side:1,0.1,0.15;top:0,1,0.001:0,0,-1",
+   "reviewFrames": [
+    0,
+    58,
+    178
+   ],
+   "reviewKeys": [
+    [
+     "kneeMin",
+     "knee",
+     "°"
+    ],
+    [
+     "thoraxPitchDeg",
+     "chest",
+     "°"
+    ],
+    [
+     "thighUpDegL",
+     "thighUpL",
+     "°"
+    ],
+    [
+     "toeUpDegL",
+     "toeL",
+     "°"
+    ]
+   ]
+  },
+  {
+   "id": "t-standing-neck-side-stretch",
+   "item": "练后-站姿颈侧拉伸",
+   "priority": "batch1",
+   "nameZh": "站姿颈侧拉伸",
+   "spec": "drill-anim/specs/t-standing-neck-side-stretch.js",
+   "plans": "Flare 练后（瑜伽垫，徒手）：耳朝同侧肩、同侧手轻搭头侧、对侧肩下沉，静态保持，左右各一次",
+   "hands": {
+    "left": "native",
+    "right": "native"
+   },
+   "exerciseMat": false,
+   "camera": {
+    "dir": [
+     0.0,
+     0.1,
+     1
+    ],
+    "fit": [
+     "head",
+     "leftToe",
+     "rightToe",
+     "pelvis",
+     "leftPalm",
+     "rightPalm"
+    ],
+    "pad": 0.12,
+    "k": 1,
+    "at": 4
+   },
+   "checks": {
+    "lockElbows": [
+     [
+      0,
+      0.3
+     ]
+    ],
+    "pins": [
+     {
+      "bone": "leftFoot",
+      "hub": "leftToe",
+      "when": [
+       [
+        0,
+        16
+       ]
+      ]
+     },
+     {
+      "bone": "rightFoot",
+      "hub": "rightToe",
+      "when": [
+       [
+        0,
+        16
+       ]
+      ]
+     }
+    ],
+    "allowContact": [
+     "thighL|thighR",
+     "upperArmL|torso",
+     "upperArmR|torso"
+    ]
+   },
+   "gap": "handR:head:auto,handL:head:auto",
+   "preview": [
+    12,
+    120,
+    360
+   ],
+   "phases": {
+    "holdR": [
+     [
+      1.7,
+      6.5
+     ]
+    ],
+    "holdL": [
+     [
+      9.7,
+      14.5
+     ]
+    ],
+    "stand": [
+     [
+      0,
+      0.3
+     ],
+     [
+      7.95,
+      8.3
+     ]
+    ]
+   },
+   "standard": "tools/flare2-moves-r2/standards/t-standing-neck-side-stretch.md",
+   "reviewViews": "front:0,0.1,1;side:1,0.1,0.15;head:0.3,0.4,1:0,1,0:head,0.2",
+   "reviewFrames": [
+    12,
+    120,
+    360
+   ],
+   "reviewKeys": [
+    [
+     "headLat",
+     "lat",
+     "°"
+    ],
+    [
+     "headFlex",
+     "flex",
+     "°"
+    ],
+    [
+     "headRot",
+     "rot",
+     "°"
+    ],
+    [
+     "scapUpL",
+     "scapUpL",
+     "mm"
+    ]
+   ]
+  },
+  {
+   "id": "t-standing-wrist-flexor-stretch",
+   "item": "练后-站姿屈腕拉伸（无墙）",
+   "priority": "batch1",
+   "nameZh": "站姿屈腕拉伸",
+   "spec": "drill-anim/specs/t-standing-wrist-flexor-stretch.js",
+   "plans": "Flare 练后（徒手）：手臂前伸、掌心朝前、指尖朝下，另一手轻拉手指向后，静态保持（右手示范，App 镜像）",
+   "hands": {
+    "left": "native",
+    "right": "native"
+   },
+   "exerciseMat": false,
+   "camera": {
+    "dir": [
+     -1,
+     0.15,
+     0.55
+    ],
+    "fit": [
+     "head",
+     "leftToe",
+     "rightToe",
+     "pelvis",
+     "leftPalm",
+     "rightPalm",
+     "rightElbow"
+    ],
+    "pad": 0.14,
+    "k": 1,
+    "at": 4
+   },
+   "checks": {
+    "lockElbows": [
+     [
+      0,
+      8
+     ]
+    ],
+    "pins": [
+     {
+      "bone": "leftFoot",
+      "hub": "leftToe",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     },
+     {
+      "bone": "rightFoot",
+      "hub": "rightToe",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     }
+    ],
+    "allowContact": []
+   },
+   "clash": [
+    "left",
+    "right"
+   ],
+   "preview": [
+    9,
+    120,
+    225
+   ],
+   "phases": {
+    "hold": [
+     [
+      1.8,
+      6.6
+     ]
+    ],
+    "relaxed": [
+     [
+      0,
+      0.6
+     ]
+    ]
+   },
+   "standard": "tools/flare2-moves-r2/standards/t-standing-wrist-flexor-stretch.md",
+   "reviewViews": "side:-1,0.1,0.2;front:0,0.15,1;hand:-0.6,0.4,0.8:0,1,0:rightHand,0.13",
+   "reviewFrames": [
+    9,
+    120,
+    225
+   ],
+   "reviewKeys": [
+    [
+     "elbowR",
+     "elbowR",
+     "°"
+    ],
+    [
+     "wristFlexR",
+     "wristFlex",
+     "°"
+    ],
+    [
+     "clashMm",
+     "clash",
+     "mm"
+    ],
+    [
+     "clashContact",
+     "cont",
+     ""
+    ]
+   ]
+  },
+  {
+   "id": "t-side-lying-straight-leg-abduction",
+   "item": "练后-侧卧直腿外展",
+   "priority": "batch1",
+   "nameZh": "侧卧直腿外展",
+   "spec": "drill-anim/specs/t-side-lying-straight-leg-abduction.js",
+   "plans": "Flare 练后（瑜伽垫，徒手）：侧卧，脚尖朝前，脚跟带动直腿上抬，骨盆不后翻（左侧卧抬右腿示范，App 镜像）",
+   "hands": {
+    "left": "support",
+    "right": "native"
+   },
+   "camera": {
+    "dir": [
+     0.1,
+     0.42,
+     0.9
+    ],
+    "fit": [
+     "head",
+     "leftPalm",
+     "leftElbow",
+     "leftToe",
+     "rightToe",
+     "pelvis",
+     "rightKnee",
+     "leftKnee",
+     "rightElbow"
+    ],
+    "pad": 0.13,
+    "k": 1,
+    "at": 1.8
+   },
+   "checks": {
+    "lockElbows": [
+     [
+      0,
+      0.1
+     ]
+    ],
+    "pins": [
+     {
+      "bone": "leftHand",
+      "hub": "leftPalm",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     },
+     {
+      "bone": "leftFoot",
+      "hub": "leftToe",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     }
+    ],
+    "allowContact": [
+     "handR|torso",
+     "forearmR|torso",
+     "handR|thighR",
+     "thighL|thighR",
+     "shinL|shinR",
+     "footL|footR",
+     "upperArmL|torso",
+     "forearmL|torso"
+    ]
+   },
+   "preview": [
+    6,
+    54,
+    105
+   ],
+   "phases": {
+    "down": [
+     [
+      0,
+      0.3
+     ],
+     [
+      3.5,
+      4.3
+     ]
+    ],
+    "top": [
+     [
+      1.4,
+      2.1
+     ],
+     [
+      5.4,
+      6.1
+     ]
+    ]
+   },
+   "standard": "tools/flare2-moves-r2/standards/t-side-lying-straight-leg-abduction.md",
+   "reviewViews": "front:0,0.3,1;feet:-1,0.3,0.2;top:0,1,0.001:1,0,0",
+   "reviewFrames": [
+    6,
+    54,
+    105
+   ],
+   "reviewKeys": [
+    [
+     "kneeR",
+     "kneeR",
+     "°"
+    ],
+    [
+     "pelvisPitchDeg",
+     "pelvis",
+     "°"
+    ],
+    [
+     "footPitchUpR",
+     "toeUpR",
+     "°"
+    ],
+    [
+     "footClearMm",
+     "foot",
+     "mm"
+    ]
+   ]
+  }
+ ],
+ "deferred": [
+  {
+   "id": "t-child-pose-side-reach",
+   "item": "练后-婴儿式侧伸",
+   "priority": "batch1",
+   "nameZh": "婴儿式侧伸",
+   "spec": "drill-anim/specs/t-child-pose-side-reach.js",
+   "plans": "Flare 练后（瑜伽垫，徒手）：臀坐脚跟，双手走向一侧，拉伸对侧背部，静态保持，左右各一次",
+   "hands": {
+    "left": "support",
+    "right": "support"
+   },
+   "camera": {
+    "dir": [
+     0.15,
+     0.95,
+     0.45
+    ],
+    "fit": [
+     "head",
+     "leftPalm",
+     "rightPalm",
+     "leftToe",
+     "rightToe",
+     "pelvis",
+     "leftKnee",
+     "rightKnee",
+     "leftShoulder",
+     "rightShoulder"
+    ],
+    "pad": 0.12,
+    "k": 1,
+    "at": 4
+   },
+   "checks": {
+    "lockElbows": [
+     [
+      0,
+      16
+     ]
+    ],
+    "pins": [
+     {
+      "bone": "leftFoot",
+      "hub": "leftToe",
+      "when": [
+       [
+        0,
+        16
+       ]
+      ]
+     },
+     {
+      "bone": "rightFoot",
+      "hub": "rightToe",
+      "when": [
+       [
+        0,
+        16
+       ]
+      ]
+     },
+     {
+      "bone": "leftShin",
+      "hub": "leftKnee",
+      "when": [
+       [
+        0,
+        16
+       ]
+      ],
+      "label": "knee"
+     },
+     {
+      "bone": "rightShin",
+      "hub": "rightKnee",
+      "when": [
+       [
+        0,
+        16
+       ]
+      ],
+      "label": "knee"
+     }
+    ],
+    "allowContact": [
+     "thighR|shinR",
+     "thighL|shinL",
+     "torso|thighR",
+     "torso|thighL",
+     "thighL|thighR"
+    ]
+   },
+   "preview": [
+    15,
+    120,
+    330
+   ],
+   "phases": {
+    "centre": [
+     [
+      0,
+      0.9
+     ],
+     [
+      15.2,
+      16
+     ]
+    ],
+    "holdL": [
+     [
+      2.7,
+      6.4
+     ]
+    ],
+    "holdR": [
+     [
+      9.7,
+      13.4
+     ]
+    ]
+   },
+   "standard": "tools/flare2-moves-r2/standards/t-child-pose-side-reach.md",
+   "reviewViews": "top:0,1,0.001:1,0,0;side:0,0.25,1;front:1,0.4,0",
+   "reviewFrames": [
+    15,
+    120,
+    330
+   ],
+   "reviewKeys": [
+    [
+     "seatFloorMm",
+     "seat",
+     "mm"
+    ],
+    [
+     "elbowMin",
+     "elbow",
+     "°"
+    ],
+    [
+     "handFloorMm",
+     "hand",
+     "mm"
+    ],
+    [
+     "kneeFloorMm",
+     "knee",
+     "mm"
+    ]
+   ],
+   "deferredWhy": "2026-11-21 r2 b1: two attempts failed the sandbox self-check (knees through the mat, arms bent on the side reach, hips off the heels); kept for the next batch, not rendered (produce.mjs reads \"actions\" only). See standards/t-child-pose-side-reach.md."
+  }
+ ]
+}

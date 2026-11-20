@@ -1,0 +1,72 @@
+{
+  "format": "pose-hub-action-recipe@1",
+  "id": "t-standing-neck-side-stretch",
+  "nameZh": "站姿颈侧拉伸",
+  "spec": "drill-anim/specs/t-standing-neck-side-stretch.js",
+  "specSha256Lf": "12c882a3a0d0cc3173a531f85695482ef99b7a8de17a1b62e455cfa96740dc66",
+  "r2DepsSha256Lf": {
+    "drill-anim/lib/flare2-r2.mjs": "e2ae035877b7337f30c42880e6eb616616e8e73c34d4bab5a34bcc50f376d0fb",
+    "tools/flare2-moves-r2/v5/v5r2-ext.js": "9f211a87c868a3c803061ad24dc6acc1e2293719a5087bfe76c98c60502796e6"
+  },
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "hands": {
+    "left": "native",
+    "right": "native"
+  },
+  "camera": {
+    "pad": 0.12,
+    "k": 1,
+    "drift": 0,
+    "fitTimeline": true,
+    "orbitDegrees": 0,
+    "frontSweepDegrees": 0,
+    "dir": [
+      0.0,
+      0.1,
+      1
+    ],
+    "fit": [
+      "head",
+      "leftToe",
+      "rightToe",
+      "pelvis",
+      "leftPalm",
+      "rightPalm"
+    ],
+    "at": 4
+  },
+  "cameraScale": 1.15,
+  "output": {
+    "groundShadow": false,
+    "cameraMotion": false,
+    "wholeCycleContentRect": true,
+    "fps": 30,
+    "exerciseMat": false
+  },
+  "jointCorrections": [
+    {
+      "profile": "upper-arm-contour-r3",
+      "version": "0.1.0-r3"
+    },
+    {
+      "profile": "ankle-join-r5",
+      "version": "0.1.0-r5"
+    }
+  ],
+  "adaptation": {
+    "status": "flare2-moves-r2-draft",
+    "method": "New spec authored in the sandbox (CPU solve + V5 low-res preview); V5 720p sample render pending on the render machine."
+  },
+  "source": {
+    "brief": "Flare 2.0 热身 v2 / 练后三档 2026-11-21 (hark-mhgd；Google 表 1aCseEk4vslsG-QKb-zsZwg30amvoYh5tMxzy6p9n8vA) 练后-站姿颈侧拉伸",
+    "plans": "Flare 练后（瑜伽垫，徒手）：耳朝同侧肩、同侧手轻搭头侧、对侧肩下沉，静态保持，左右各一次"
+  },
+  "sampledOnly": true,
+  "fullCycleValidated": false,
+  "reviewed": false,
+  "userAccepted": false,
+  "releaseEligible": false
+}

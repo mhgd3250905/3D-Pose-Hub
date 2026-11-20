@@ -1,0 +1,157 @@
+{
+ "format": "flare2-moves-standard@1",
+ "id": "t-standing-neck-side-stretch",
+ "nameZh": "站姿颈侧拉伸",
+ "doc": "tools/flare2-moves-r2/standards/t-standing-neck-side-stretch.md",
+ "phases": {
+  "holdR": "右耳朝右肩，右手轻搭头左侧，左肩下沉",
+  "holdL": "镜像"
+ },
+ "series": [
+  "headLat",
+  "headFlex",
+  "headRot",
+  "scapUpL",
+  "scapUpR"
+ ],
+ "checks": [
+  {
+   "id": "tilt_R",
+   "label": "右侧保持：头侧屈（耳朝肩）",
+   "metric": "headLat",
+   "agg": "min",
+   "unit": "°",
+   "phase": "holdR",
+   "min": 30,
+   "max": 42
+  },
+  {
+   "id": "tilt_L",
+   "label": "左侧保持：头侧屈（负 = 左耳朝左肩）",
+   "metric": "headLat",
+   "agg": "max",
+   "unit": "°",
+   "phase": "holdL",
+   "min": -42,
+   "max": -30
+  },
+  {
+   "id": "no_turn",
+   "label": "头不转（面朝前）",
+   "metric": "headRot",
+   "agg": "max",
+   "unit": "°",
+   "max": 5
+  },
+  {
+   "id": "no_turn2",
+   "label": "头不转（最小）",
+   "metric": "headRot",
+   "agg": "min",
+   "unit": "°",
+   "min": -5
+  },
+  {
+   "id": "no_extension",
+   "label": "不后仰（头后仰角）",
+   "metric": "headExt",
+   "agg": "max",
+   "unit": "°",
+   "max": 2
+  },
+  {
+   "id": "no_chin_drop",
+   "label": "不低头（头前屈）",
+   "metric": "headFlex",
+   "agg": "max",
+   "unit": "°",
+   "max": 8
+  },
+  {
+   "id": "hand_on_head_R",
+   "label": "右侧保持：右手掌轻贴头侧（手-头表面间距，最大；≤ 6 mm 算贴着）",
+   "metric": "gap_handR_head",
+   "agg": "max",
+   "unit": "mm",
+   "phase": "holdR",
+   "min": -4,
+   "max": 6
+  },
+  {
+   "id": "hand_not_press_R",
+   "label": "右侧保持：手不压进头（最小间距）",
+   "metric": "gap_handR_head",
+   "agg": "min",
+   "unit": "mm",
+   "phase": "holdR",
+   "min": -4
+  },
+  {
+   "id": "hand_on_head_L",
+   "label": "左侧保持：左手掌轻贴头侧（最大）",
+   "metric": "gap_handL_head",
+   "agg": "max",
+   "unit": "mm",
+   "phase": "holdL",
+   "min": -4,
+   "max": 6
+  },
+  {
+   "id": "hand_not_press_L",
+   "label": "左侧保持：手不压进头（最小）",
+   "metric": "gap_handL_head",
+   "agg": "min",
+   "unit": "mm",
+   "phase": "holdL",
+   "min": -4
+  },
+  {
+   "id": "shoulder_down_L",
+   "label": "右侧保持：左肩下沉（左肩关节相对胸廓高度，保持减站立；负 = 下沉）",
+   "kind": "diff",
+   "metric": "scapUpL",
+   "phase": "holdR",
+   "agg": "mean",
+   "phase2": "stand",
+   "agg2": "mean",
+   "max": -12,
+   "unit": "mm"
+  },
+  {
+   "id": "shoulder_down_R",
+   "label": "左侧保持：右肩下沉",
+   "kind": "diff",
+   "metric": "scapUpR",
+   "phase": "holdL",
+   "agg": "mean",
+   "phase2": "stand",
+   "agg2": "mean",
+   "max": -12,
+   "unit": "mm"
+  },
+  {
+   "id": "knees",
+   "label": "站直（膝角）",
+   "metric": "kneeMin",
+   "agg": "min",
+   "unit": "°",
+   "min": 165
+  },
+  {
+   "id": "self_clip",
+   "label": "不穿模（关节胶囊）",
+   "kind": "summary",
+   "path": "selfClipWorst.mm",
+   "unit": "",
+   "min": -5
+  },
+  {
+   "id": "pos_err",
+   "label": "V5 与求解姿态一致",
+   "kind": "summary",
+   "path": "maxPosErrMm",
+   "unit": "mm",
+   "max": 2
+  }
+ ]
+}

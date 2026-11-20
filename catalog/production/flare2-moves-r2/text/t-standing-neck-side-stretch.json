@@ -1,0 +1,201 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "t-standing-neck-side-stretch",
+ "reviewStatus": "draft-ai-needs-user-review",
+ "sources": [
+  "Flare 2.0 热身 v2 / 练后三档 2026-11-21（Google 表 1aCseEk4vslsG-QKb-zsZwg30amvoYh5tMxzy6p9n8vA，练后：站姿颈侧拉伸）",
+  "drill-anim/specs/t-standing-neck-side-stretch.js",
+  "tools/flare2-moves-r2/standards/t-standing-neck-side-stretch.md"
+ ],
+ "name": {
+  "zh": "站姿颈侧拉伸",
+  "en": "Standing Neck Side Stretch"
+ },
+ "purpose": {
+  "zh": "放松脖子侧面和肩膀上方，练完撑地动作后舒缓肩颈",
+  "en": "Relaxes the side of your neck and the top of the shoulder after support training."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "耳朵朝肩膀，手轻搭头侧，另一肩下沉",
+    "en": "Ear to shoulder, hand rests, other shoulder down"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "站直，头往一侧歪，脸朝正前方，不转头、不低头。",
+    "en": "Stand tall and tilt your head to one side, face forward, no turning or dropping the chin."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "同侧的手越过头顶轻轻搭在头另一侧，只是搭着，不用力拉。",
+    "en": "The same-side hand reaches over and rests on the other side of your head; no pulling."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "另一只手往地面方向伸长，肩膀往下沉。",
+    "en": "The other arm reaches toward the floor, shoulder sinking down."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "用手使劲拽头",
+   "en": "Pulling the head hard with the hand."
+  },
+  {
+   "zh": "耸起对侧肩膀",
+   "en": "Letting the other shoulder rise."
+  },
+  {
+   "zh": "转头或低头",
+   "en": "Turning or dropping the head."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "手臂发麻或刺疼就减小幅度",
+   "en": "Ease off if your arm tingles or you feel sharp pain."
+  }
+ ],
+ "tags": {
+  "category": "stretch",
+  "activeMuscles": [
+   "neck",
+   "traps"
+  ],
+  "synergistMuscles": [],
+  "equipment": [],
+  "position": "standing",
+  "difficulty": 1
+ },
+ "unilateral": true,
+ "startingSide": "right",
+ "defaultDose": {
+  "mode": "time",
+  "sets": 1,
+  "seconds": 30,
+  "restSeconds": 10
+ },
+ "phases": {
+  "start": {
+   "zh": "头歪向一侧",
+   "en": "Tilt to one side"
+  },
+  "peak": {
+   "zh": "手搭头侧保持",
+   "en": "Hand rests, hold"
+  },
+  "end": {
+   "zh": "慢慢回正",
+   "en": "Slowly back up"
+  }
+ },
+ "training": {
+  "kind": "hold",
+  "leadSeconds": 1,
+  "perSide": "each-side-separately",
+  "sideSwitchSeconds": 10
+ },
+ "flare2": {
+  "version": "r2",
+  "batch": 1,
+  "item": "练后：站姿颈侧拉伸",
+  "camera": "正前（看得到头侧屈和对侧肩下沉）",
+  "doseBrief": "表：左右各一次静态保持；草稿每侧 30 秒 1 组（秒数待开哥/mhgd 定）",
+  "status": "draft-awaiting-user-review",
+  "note": "Animation r2: 16 s loop = right side 0-8 s (tilt ~36 deg, right hand resting on the left side of the head, left shoulder pressed down) then the left side mirrored. Head tilt is V5-only.",
+  "standard": "tools/flare2-moves-r2/standards/t-standing-neck-side-stretch.md"
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 4,
+    "role": "posture",
+    "zh": "耳朵朝肩膀，脸朝正前方",
+    "en": "Ear toward shoulder, face forward",
+    "from": [
+     "cue1",
+     "cue2"
+    ]
+   },
+   {
+    "at": 12,
+    "role": "halfway",
+    "zh": "手只是搭在头上，不用拉",
+    "en": "The hand just rests, no pulling",
+    "from": [
+     "cue3",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "at": 20,
+    "role": "form",
+    "zh": "另一边肩膀往下沉，手往地面伸",
+    "en": "Other shoulder down, hand reaching to the floor",
+    "from": [
+     "cue4",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "at": 27,
+    "key": "n.3"
+   },
+   {
+    "at": 28,
+    "key": "n.2"
+   },
+   {
+    "at": 29,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSetsSameSide": [
+    "p.rest",
+    "sec.10"
+   ],
+   "sideDone": [
+    "p.release",
+    "p.switch_left"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
+  },
+  "sides": {
+   "order": [
+    "right",
+    "left"
+   ],
+   "perSide": "each-side-separately",
+   "note": "一侧全部组做完再换边；换边准备 10 秒（training.sideSwitchSeconds，App 未接入）"
+  }
+ }
+}

@@ -1,0 +1,153 @@
+{
+ "format": "flare2-moves-standard@1",
+ "id": "t-neck-wrist-finger-wakeup",
+ "nameZh": "站姿颈腕指唤醒",
+ "doc": "tools/flare2-moves-r2/standards/t-neck-wrist-finger-wakeup.md",
+ "phases": {
+  "roll": "1.4-6.2 s 颈部半圈慢绕：右耳→下巴朝胸→左耳→回右，不后仰",
+  "clasp": "8.4-13.2 s 合掌（r2 由十指交扣改），腕绕水平 8 字两圈",
+  "fist": "握拳",
+  "spread": "张指"
+ },
+ "series": [
+  "headLat",
+  "headFlex",
+  "headTwist",
+  "clashMm",
+  "clashContact",
+  "mcpMeanR"
+ ],
+ "checks": [
+  {
+   "id": "roll_R",
+   "label": "颈绕：右耳朝右肩（头侧屈最大）",
+   "metric": "headLat",
+   "agg": "max",
+   "unit": "°",
+   "phase": "roll",
+   "min": 30,
+   "max": 45
+  },
+  {
+   "id": "roll_L",
+   "label": "颈绕：左耳朝左肩（头侧屈最小，负 = 左）",
+   "metric": "headLat",
+   "agg": "min",
+   "unit": "°",
+   "phase": "roll",
+   "min": -45,
+   "max": -30
+  },
+  {
+   "id": "chin_down",
+   "label": "颈绕：经过下巴朝胸（头前屈最大）",
+   "metric": "headFlex",
+   "agg": "max",
+   "unit": "°",
+   "phase": "roll",
+   "min": 25,
+   "max": 45
+  },
+  {
+   "id": "no_extension",
+   "label": "全程不后仰（头后仰角，最大）",
+   "metric": "headExt",
+   "agg": "max",
+   "unit": "°",
+   "max": 2
+  },
+  {
+   "id": "no_turn",
+   "label": "头不转（头绕自身长轴的转角，最大；不用 headRot，侧屈+低头组合时它会算出假转角）",
+   "metric": "headTwist",
+   "agg": "max",
+   "unit": "°",
+   "max": 5
+  },
+  {
+   "id": "no_turn2",
+   "label": "头不转（最小）",
+   "metric": "headTwist",
+   "agg": "min",
+   "unit": "°",
+   "min": -5
+  },
+  {
+   "id": "clasp_contact",
+   "label": "合掌段：两手掌贴在一起（3 mm 内接触顶点数，最小）",
+   "metric": "clashContact",
+   "agg": "min",
+   "unit": "",
+   "phase": "clasp",
+   "min": 150
+  },
+  {
+   "id": "clasp_clash",
+   "label": "合掌段：两手互相穿插深度（最大；掌心/指腹软组织挤压 ≤ 5 mm）",
+   "metric": "clashMm",
+   "agg": "max",
+   "unit": "mm",
+   "phase": "clasp",
+   "max": 5
+  },
+  {
+   "id": "fist",
+   "label": "握拳：手指 MCP 平均屈曲（右手，最小）",
+   "metric": "mcpMeanR",
+   "agg": "min",
+   "unit": "°",
+   "phase": "fist",
+   "min": 75
+  },
+  {
+   "id": "spread",
+   "label": "张指：手指 MCP 平均（右手，最大；负 = 微伸）",
+   "metric": "mcpMeanR",
+   "agg": "max",
+   "unit": "°",
+   "phase": "spread",
+   "max": -8
+  },
+  {
+   "id": "spread_abd",
+   "label": "张指：手指外展平均（右手，最小）",
+   "metric": "abdMeanR",
+   "agg": "min",
+   "unit": "°",
+   "phase": "spread",
+   "min": 10
+  },
+  {
+   "id": "knees",
+   "label": "站直（膝角）",
+   "metric": "kneeMin",
+   "agg": "min",
+   "unit": "°",
+   "min": 165
+  },
+  {
+   "id": "feet_planted",
+   "label": "双脚不动（脚掌接触区漂移）",
+   "kind": "pins",
+   "min": 0,
+   "max": 3,
+   "unit": "mm"
+  },
+  {
+   "id": "floor",
+   "label": "脚不穿地",
+   "metric": "footClearMm",
+   "agg": "min",
+   "unit": "mm",
+   "min": -2
+  },
+  {
+   "id": "pos_err",
+   "label": "V5 与求解姿态一致",
+   "kind": "summary",
+   "path": "maxPosErrMm",
+   "unit": "mm",
+   "max": 2
+  }
+ ]
+}

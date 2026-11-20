@@ -1,0 +1,72 @@
+{
+  "format": "pose-hub-action-recipe@1",
+  "id": "t-step-jack-arm-circles",
+  "nameZh": "低冲击开合踏步+大绕环",
+  "spec": "drill-anim/specs/t-step-jack-arm-circles.js",
+  "specSha256Lf": "7e28e7d520b0a2183a697f636c485093c93ea1d97e4128ed2bbabf3a12362964",
+  "r2DepsSha256Lf": {
+    "drill-anim/lib/flare2-r2.mjs": "e2ae035877b7337f30c42880e6eb616616e8e73c34d4bab5a34bcc50f376d0fb",
+    "tools/flare2-moves-r2/v5/v5r2-ext.js": "9f211a87c868a3c803061ad24dc6acc1e2293719a5087bfe76c98c60502796e6"
+  },
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "hands": {
+    "left": "native",
+    "right": "native"
+  },
+  "camera": {
+    "pad": 0.12,
+    "k": 1,
+    "drift": 0,
+    "fitTimeline": true,
+    "orbitDegrees": 0,
+    "frontSweepDegrees": 0,
+    "dir": [
+      0.2,
+      0.12,
+      1
+    ],
+    "fit": [
+      "head",
+      "leftToe",
+      "rightToe",
+      "pelvis",
+      "leftPalm",
+      "rightPalm"
+    ],
+    "at": 1.0
+  },
+  "cameraScale": 1.15,
+  "output": {
+    "groundShadow": false,
+    "cameraMotion": false,
+    "wholeCycleContentRect": true,
+    "fps": 30,
+    "exerciseMat": false
+  },
+  "jointCorrections": [
+    {
+      "profile": "upper-arm-contour-r3",
+      "version": "0.1.0-r3"
+    },
+    {
+      "profile": "ankle-join-r5",
+      "version": "0.1.0-r5"
+    }
+  ],
+  "adaptation": {
+    "status": "flare2-moves-r2-draft",
+    "method": "New spec authored in the sandbox (CPU solve + V5 low-res preview); V5 720p sample render pending on the render machine."
+  },
+  "source": {
+    "brief": "Flare 2.0 热身 v2 / 练后三档 2026-11-21 (hark-mhgd；Google 表 1aCseEk4vslsG-QKb-zsZwg30amvoYh5tMxzy6p9n8vA) 热身 v2-1",
+    "plans": "Flare 练前热身 v2：开合踏步（不跳）约 1 步/秒，前 30 秒双臂上举，后 30 秒掌心朝外双臂大绕环，60 秒；h-step-jack 的新变体（不覆盖原动作）"
+  },
+  "sampledOnly": true,
+  "fullCycleValidated": false,
+  "reviewed": false,
+  "userAccepted": false,
+  "releaseEligible": false
+}
