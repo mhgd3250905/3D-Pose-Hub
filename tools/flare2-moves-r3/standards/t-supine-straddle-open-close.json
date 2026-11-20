@@ -1,0 +1,180 @@
+{
+ "format": "flare2-moves-standard@1",
+ "id": "t-supine-straddle-open-close",
+ "nameZh": "仰卧直腿大分腿慢开合",
+ "doc": "tools/flare2-moves-r3/standards/t-supine-straddle-open-close.md",
+ "phases": {
+  "closed": "仰卧，双腿伸直并拢竖直上举（髋屈约 90°），手臂放身体两侧掌心贴垫",
+  "open": "大分腿停顿：两腿向两侧打开，两腿夹角约 80°，膝仍伸直",
+  "all": "整段：骨盆/背贴垫不动，膝伸直，慢开慢合"
+ },
+ "series": [
+  "straddleDeg",
+  "legElevMin",
+  "kneeMin",
+  "seatFloorMm",
+  "torsoFloorMm",
+  "pelvisRotDeg",
+  "handFloorMm",
+  "headFloorMm"
+ ],
+ "checks": [
+  {
+   "id": "closed_together",
+   "label": "并拢：两腿夹角（并拢段最大）",
+   "metric": "straddleDeg",
+   "agg": "max",
+   "unit": "°",
+   "phase": "closed",
+   "max": 10
+  },
+  {
+   "id": "closed_vertical",
+   "label": "并拢：腿竖直上举（髋→踝 与竖直向上夹角，legElev 180 = 竖直向上）",
+   "metric": "legElevMin",
+   "agg": "min",
+   "unit": "°",
+   "phase": "closed",
+   "min": 170
+  },
+  {
+   "id": "open_wide",
+   "label": "大分腿：两腿夹角（打开停顿段最小）",
+   "metric": "straddleDeg",
+   "agg": "min",
+   "unit": "°",
+   "phase": "open",
+   "min": 70,
+   "max": 95
+  },
+  {
+   "id": "open_side",
+   "label": "向两侧打开而不是往头/脚方向倒（打开时每条腿与竖直夹角 ≈ 外展角：legElev 最小）",
+   "metric": "legElevMin",
+   "agg": "min",
+   "unit": "°",
+   "phase": "open",
+   "min": 132,
+   "max": 148
+  },
+  {
+   "id": "knees",
+   "label": "全程膝伸直",
+   "metric": "kneeMin",
+   "agg": "min",
+   "unit": "°",
+   "phase": "all",
+   "min": 172
+  },
+  {
+   "id": "pelvis_still",
+   "label": "骨盆不动（骨盆转角相对起始，最大）",
+   "metric": "pelvisRotDeg",
+   "agg": "max",
+   "unit": "°",
+   "phase": "all",
+   "max": 2
+  },
+  {
+   "id": "seat_on_mat",
+   "label": "臀/下背贴垫（躯干最低点，最大）",
+   "metric": "seatFloorMm",
+   "agg": "max",
+   "unit": "mm",
+   "phase": "all",
+   "min": -2,
+   "max": 5
+  },
+  {
+   "id": "seat_not_through",
+   "label": "不穿垫（躯干最低点，最小）",
+   "metric": "seatFloorMm",
+   "agg": "min",
+   "unit": "mm",
+   "phase": "all",
+   "min": -2
+  },
+  {
+   "id": "hands_on_mat",
+   "label": "手掌贴垫（最大）",
+   "metric": "handFloorMm",
+   "agg": "max",
+   "unit": "mm",
+   "phase": "all",
+   "min": -2,
+   "max": 6
+  },
+  {
+   "id": "hands_not_through",
+   "label": "手不穿垫",
+   "metric": "handFloorMm",
+   "agg": "min",
+   "unit": "mm",
+   "phase": "all",
+   "min": -2
+  },
+  {
+   "id": "head_on_mat",
+   "label": "头放在垫上（头最低点）",
+   "metric": "headFloorMm",
+   "agg": "max",
+   "unit": "mm",
+   "phase": "all",
+   "min": -2,
+   "max": 8
+  },
+  {
+   "id": "slow_open",
+   "label": "慢开（两腿夹角从 3% 升到 97% 的时间）",
+   "kind": "transition",
+   "metric": "straddleDeg",
+   "dir": "up",
+   "frac": [
+    0.03,
+    0.97
+   ],
+   "min": 2.2,
+   "unit": "s"
+  },
+  {
+   "id": "slow_close",
+   "label": "慢合（两腿夹角从 97% 降到 3% 的时间）",
+   "kind": "transition",
+   "metric": "straddleDeg",
+   "dir": "down",
+   "frac": [
+    0.03,
+    0.97
+   ],
+   "min": 2.2,
+   "unit": "s"
+  },
+  {
+   "id": "reps",
+   "label": "每循环 1 次",
+   "kind": "reps",
+   "metric": "straddleDeg",
+   "ref": "max",
+   "tol": 3,
+   "min": 1,
+   "max": 1,
+   "unit": "次"
+  },
+  {
+   "id": "self_clip",
+   "label": "身体自穿插（胶囊最差间隙）",
+   "kind": "summary",
+   "path": "selfClipWorst.mm",
+   "min": -8,
+   "unit": "mm"
+  },
+  {
+   "id": "v5_matches_hub",
+   "label": "V5 身体与求解姿态一致（最大关节偏差）",
+   "kind": "summary",
+   "path": "maxPosErrMm",
+   "max": 2,
+   "unit": "mm"
+  }
+ ]
+}

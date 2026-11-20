@@ -1,0 +1,194 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "t-pseudo-planche-pushup-v2",
+ "reviewStatus": "draft-ai-needs-user-review",
+ "sources": [
+  "Flare 2.0 练后 专项补强 + Flare2 2026-11-21（Google 表 1aCseEk4vslsG-QKb-zsZwg30amvoYh5tMxzy6p9n8vA，Flare2：伪俄挺俯卧撑新版（指尖朝外 45–90°））",
+  "drill-anim/specs/t-pseudo-planche-pushup-v2.js",
+  "tools/flare2-moves-r3/standards/t-pseudo-planche-pushup-v2.md"
+ ],
+ "name": {
+  "zh": "伪俄挺俯卧撑（指尖朝外）",
+  "en": "Pseudo Planche Push-Up (Fingers Out)"
+ },
+ "purpose": {
+  "zh": "指尖朝外的伪俄挺俯卧撑，练肩前侧、前锯肌和直臂前倾力量，手腕比指尖朝后的版本更好适应",
+  "en": "A pseudo planche push-up with the fingers turned out to the sides. Builds front-shoulder, serratus and lean strength with an easier wrist angle than the fingers-back version."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "指尖朝外，先往前倾，肩在手前面再往下放",
+    "en": "Fingers out, lean first, shoulders ahead of your hands, then lower"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "手放在腰两侧，指尖朝向身体外侧，不要朝脚的方向。",
+    "en": "Hands by your waist, fingertips pointing out to the sides, never back toward your feet."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "屈肘时手肘贴着身体往后，推起时把地推开。",
+    "en": "Elbows go straight back along your body; push the floor away as you press up."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "脚尖踩住垫子，从头到脚跟一条线，别塌腰也别撅屁股。",
+    "en": "Toes planted, head to heels in one line; no sagging, no piking."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "只下放不前倾，肩回到手的正上方",
+   "en": "Lowering without the lean, shoulders back over the hands."
+  },
+  {
+   "zh": "指尖转向脚的方向",
+   "en": "Turning the fingers back toward the feet."
+  },
+  {
+   "zh": "手肘往两边张开",
+   "en": "Flaring the elbows out to the sides."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "手腕承重很大，先活动手腕；疼就停或减小前倾",
+   "en": "Heavy load on the wrists: warm them up; stop or lean less if they hurt."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "deltoids",
+   "serratus",
+   "triceps",
+   "chest"
+  ],
+  "synergistMuscles": [
+   "forearms",
+   "abs",
+   "biceps"
+  ],
+  "equipment": [
+   "mat"
+  ],
+  "position": "prone",
+  "difficulty": 3
+ },
+ "unilateral": false,
+ "phases": {
+  "start": {
+   "zh": "前倾下放",
+   "en": "Lean and lower"
+  },
+  "peak": {
+   "zh": "最低点",
+   "en": "Bottom"
+  },
+  "end": {
+   "zh": "推起",
+   "en": "Press up"
+  }
+ },
+ "training": {
+  "kind": "rep_updown",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.5
+   },
+   {
+    "id": "hold",
+    "seconds": 0.3
+   },
+   {
+    "id": "back",
+    "seconds": 1.2
+   },
+   {
+    "id": "rest",
+    "seconds": 1.0
+   }
+  ],
+  "source": "flare2 r3 2b animation tempo = r1 (4 s per rep: 1.5 s down, 0.3 s bottom, 1.2 s up, 1.0 s top)"
+ },
+ "flare2": {
+  "version": "r3",
+  "batch": "2b",
+  "item": "Flare2：伪俄挺俯卧撑新版（指尖朝外 45–90°）",
+  "camera": "正侧面（看清肩超过手掌多少）；俯视/正前看指尖朝外",
+  "doseBrief": "表：同 r1 伪俄挺俯卧撑；草稿 6 次 × 3 组、休 90 秒（待定）",
+  "doseStatus": "draft (AI, 开哥 to confirm)",
+  "status": "draft-awaiting-user-review",
+  "note": "Animation r3 2b: the r1 pseudo planche push-up (shoulders ~12 cm past the wrists at the top, ~19 cm at the bottom, elbows 88 deg, feet roll over the toes) with the fingers turned OUT ~72 deg (r1 ~100 deg, slightly back). 8 s loop = 2 reps, symmetric.",
+  "standard": "tools/flare2-moves-r3/standards/t-pseudo-planche-pushup-v2.md"
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 4.0,
+  "phaseCues": "none",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "指尖朝外，肩在手前面",
+    "en": "Fingers out, shoulders ahead",
+    "from": [
+     "cue1",
+     "cue2",
+     "commonErrors[0]",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 4,
+    "role": "halfway",
+    "zh": "手肘贴身体，身体一条线",
+    "en": "Elbows in, body in one line",
+    "from": [
+     "cue3",
+     "cue4"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "key": "p.last_rep"
+   }
+  ],
+  "before": [],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.90"
+   ],
+   "allDone": [
+    "p.nice"
+   ]
+  }
+ }
+}

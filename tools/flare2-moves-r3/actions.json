@@ -1,7 +1,7 @@
 {
  "format": "flare2-moves-plan@1",
  "base": "codex/flare2-moves-r2 2b59eff26388faa05c9aafa17307c887cd74148c (r2 batch 1 pinned RENDER 138e3e9)",
- "brief": "Flare 2.0 练后 专项补强 + Flare2（hark-mhgd 2026-11-21；Google 表 1aCseEk4vslsG-QKb-zsZwg30amvoYh5tMxzy6p9n8vA）r3 第 2a 批 6 个新动作（全部自重、瑜伽垫）",
+ "brief": "Flare 2.0 练后 专项补强 + Flare2（hark-mhgd 2026-11-21；Google 表 1aCseEk4vslsG-QKb-zsZwg30amvoYh5tMxzy6p9n8vA）r3 第 2a 批 6 个 + 第 2b 批新动作（全部新 id，自重、瑜伽垫）",
  "actions": [
   {
    "id": "t-kneeling-fist-plank",
@@ -902,7 +902,740 @@
      "mm"
     ]
    ]
+  },
+  {
+   "id": "t-pseudo-planche-pushup-v2",
+   "item": "Flare2：伪俄挺俯卧撑新版（指尖朝外 45–90°）",
+   "nameZh": "伪俄挺俯卧撑（指尖朝外）",
+   "spec": "drill-anim/specs/t-pseudo-planche-pushup-v2.js",
+   "plans": "Flare2：伪俄挺俯卧撑新版，手放腰侧、指尖朝外 45–90°（绝不朝后），身体前倾使肩超过手，屈肘贴身下放再推起；r1 的 t-pseudo-planche-pushup（约 100° 略朝后）不动；草稿 6 次 × 3 组",
+   "hands": {
+    "left": "support",
+    "right": "support"
+   },
+   "camera": {
+    "dir": [
+     0.0,
+     0.2,
+     1
+    ],
+    "fit": [
+     "head",
+     "leftPalm",
+     "rightPalm",
+     "leftToe",
+     "rightToe",
+     "pelvis",
+     "leftShoulder",
+     "rightShoulder",
+     "leftElbow"
+    ],
+    "pad": 0.12,
+    "k": 1,
+    "at": 2.0
+   },
+   "checks": {
+    "pins": [
+     {
+      "bone": "leftHand",
+      "hub": "leftPalm",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     },
+     {
+      "bone": "rightHand",
+      "hub": "rightPalm",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     },
+     {
+      "bone": "leftFoot",
+      "hub": "leftToe",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     },
+     {
+      "bone": "rightFoot",
+      "hub": "rightToe",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     }
+    ],
+    "allowContact": [
+     "upperArmR|torso",
+     "upperArmL|torso"
+    ]
+   },
+   "preview": [
+    6,
+    60,
+    99
+   ],
+   "phases": {
+    "top": [
+     [
+      0,
+      0.4
+     ],
+     [
+      3.4,
+      4.4
+     ],
+     [
+      7.4,
+      8.0
+     ]
+    ],
+    "bottom": [
+     [
+      1.9,
+      2.2
+     ],
+     [
+      5.9,
+      6.2
+     ]
+    ],
+    "all": [
+     [
+      0,
+      8
+     ]
+    ]
+   },
+   "standard": "tools/flare2-moves-r3/standards/t-pseudo-planche-pushup-v2.md",
+   "reviewViews": "side:0,0.08,1;front:-1,0.25,0;top:0.001,1,0:-1,0,0",
+   "reviewFrames": [
+    6,
+    60,
+    99
+   ],
+   "reviewKeys": [
+    [
+     "elbowMin",
+     "elbow",
+     "°"
+    ],
+    [
+     "shoulderLeadCm",
+     "shLead",
+     "cm"
+    ],
+    [
+     "fingerOutMin",
+     "fOutMin",
+     "°"
+    ],
+    [
+     "fingerOutMax",
+     "fOutMax",
+     "°"
+    ],
+    [
+     "hipOffsetMm",
+     "hipOff",
+     "mm"
+    ],
+    [
+     "wristExtMax",
+     "wristExt",
+     "°"
+    ],
+    [
+     "creaseToFingerMax",
+     "crease",
+     "°"
+    ]
+   ],
+   "fingerRef": [
+    -1,
+    0
+   ],
+   "priority": "batch2b"
+  },
+  {
+   "id": "t-floor-tuck-hold",
+   "item": "Flare2：地面团身支撑（双手撑地面，不用瑜伽砖）",
+   "nameZh": "地面团身支撑",
+   "spec": "drill-anim/specs/t-floor-tuck-hold.js",
+   "plans": "Flare2：坐姿双手平放垫上（髋两侧），直臂下压撑起，臀离地，膝收胸前、双脚离地，静止支撑；不用瑜伽砖（r1 的 t-tuck-lsit-hold 砖版不动）；草稿 10 秒 × 3 组",
+   "hands": {
+    "left": "support",
+    "right": "support"
+   },
+   "camera": {
+    "dir": [
+     0.75,
+     0.2,
+     0.66
+    ],
+    "fit": [
+     "head",
+     "leftPalm",
+     "rightPalm",
+     "leftToe",
+     "rightToe",
+     "pelvis",
+     "leftKnee",
+     "rightKnee"
+    ],
+    "pad": 0.12,
+    "k": 1,
+    "at": 4
+   },
+   "checks": {
+    "pins": [
+     {
+      "bone": "leftHand",
+      "hub": "leftPalm",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     },
+     {
+      "bone": "rightHand",
+      "hub": "rightPalm",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     }
+    ],
+    "allowContact": [
+     "thighL|torso",
+     "thighR|torso",
+     "upperArmR|torso",
+     "upperArmL|torso",
+     "thighL|shinL",
+     "thighR|shinR"
+    ]
+   },
+   "preview": [
+    9,
+    120,
+    222
+   ],
+   "phases": {
+    "seated": [
+     [
+      0,
+      0.5
+     ],
+     [
+      7.6,
+      8.0
+     ]
+    ],
+    "support": [
+     [
+      1.4,
+      7.2
+     ]
+    ],
+    "hold": [
+     [
+      2.2,
+      6.0
+     ]
+    ],
+    "all": [
+     [
+      0,
+      8
+     ]
+    ]
+   },
+   "standard": "tools/flare2-moves-r3/standards/t-floor-tuck-hold.md",
+   "reviewViews": "side:1,0.08,0.001;front:0,0.15,1;back:0,0.15,-1",
+   "reviewFrames": [
+    9,
+    120,
+    222
+   ],
+   "reviewKeys": [
+    [
+     "elbowMin",
+     "elbow",
+     "°"
+    ],
+    [
+     "seatFloorMm",
+     "seat",
+     "mm"
+    ],
+    [
+     "footClearMm",
+     "foot",
+     "mm"
+    ],
+    [
+     "hipFlexDeg",
+     "hipFlex",
+     "°"
+    ],
+    [
+     "kneeMin",
+     "knee",
+     "°"
+    ],
+    [
+     "scapUp",
+     "scapUp",
+     "mm"
+    ],
+    [
+     "thoraxPitchDeg",
+     "thorax",
+     "°"
+    ],
+    [
+     "handFloorMm",
+     "hand",
+     "mm"
+    ]
+   ],
+   "fingerRef": [
+    0,
+    1
+   ],
+   "priority": "batch2b"
+  },
+  {
+   "id": "t-supine-straddle-open-close",
+   "item": "Flare2：仰卧直腿大分腿慢开合",
+   "nameZh": "仰卧直腿大分腿慢开合",
+   "spec": "drill-anim/specs/t-supine-straddle-open-close.js",
+   "plans": "Flare2：仰卧，双腿伸直上举到竖直，慢慢向两侧打开成大分腿，停一下再慢慢合拢；骨盆和下背贴垫，膝伸直；双侧同时（左右对称，不镜像）；草稿 8 次 × 2 组",
+   "hands": {
+    "left": "native",
+    "right": "native"
+   },
+   "camera": {
+    "dir": [
+     0.9,
+     0.55,
+     0.15
+    ],
+    "fit": [
+     "head",
+     "leftToe",
+     "rightToe",
+     "pelvis",
+     "leftPalm",
+     "rightPalm",
+     "leftAnkle",
+     "rightAnkle"
+    ],
+    "pad": 0.12,
+    "k": 0.8,
+    "at": 3.7
+   },
+   "checks": {
+    "pins": [],
+    "allowContact": [
+     "thighL|thighR",
+     "shinL|shinR"
+    ]
+   },
+   "preview": [
+    9,
+    111,
+    180
+   ],
+   "phases": {
+    "closed": [
+     [
+      0,
+      0.5
+     ],
+     [
+      7.0,
+      8.0
+     ]
+    ],
+    "open": [
+     [
+      3.5,
+      4.0
+     ]
+    ],
+    "all": [
+     [
+      0,
+      8
+     ]
+    ]
+   },
+   "standard": "tools/flare2-moves-r3/standards/t-supine-straddle-open-close.md",
+   "reviewViews": "side:0,0.15,1;foot:1,0.6,0.001;top:0.001,1,0:-1,0,0",
+   "reviewFrames": [
+    9,
+    60,
+    111,
+    180
+   ],
+   "reviewKeys": [
+    [
+     "straddleDeg",
+     "straddle",
+     "°"
+    ],
+    [
+     "legElevMin",
+     "legElev",
+     "°"
+    ],
+    [
+     "kneeMin",
+     "knee",
+     "°"
+    ],
+    [
+     "seatFloorMm",
+     "seat",
+     "mm"
+    ],
+    [
+     "pelvisRotDeg",
+     "pelvisRot",
+     "°"
+    ],
+    [
+     "handFloorMm",
+     "hand",
+     "mm"
+    ]
+   ],
+   "priority": "batch2b"
+  },
+  {
+   "id": "t-standing-clasp-chest-opener",
+   "item": "Flare2：背后十指交扣扩胸（站姿）",
+   "nameZh": "背后十指交扣扩胸",
+   "spec": "drill-anim/specs/t-standing-clasp-chest-opener.js",
+   "plans": "Flare2：站姿，双手在背后十指交扣，伸直手臂向后下方拉开、肩胛夹紧下沉、挺胸打开胸口，静态保持后放松；左右对称（不镜像）；草稿保持 20 秒 × 2 次",
+   "hands": {
+    "left": "native",
+    "right": "native"
+   },
+   "camera": {
+    "dir": [
+     -1,
+     0.12,
+     -0.45
+    ],
+    "fit": [
+     "head",
+     "leftToe",
+     "rightToe",
+     "pelvis",
+     "leftPalm",
+     "rightPalm",
+     "leftElbow",
+     "rightElbow"
+    ],
+    "pad": 0.15,
+    "k": 0.85,
+    "at": 4
+   },
+   "checks": {
+    "pins": [
+     {
+      "bone": "leftFoot",
+      "hub": "leftToe",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     },
+     {
+      "bone": "rightFoot",
+      "hub": "rightToe",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     }
+    ],
+    "allowContact": [
+     "thighL|thighR",
+     "forearmL|forearmR"
+    ]
+   },
+   "clash": [
+    "left",
+    "right"
+   ],
+   "preview": [
+    12,
+    120,
+    210
+   ],
+   "phases": {
+    "start": [
+     [
+      0,
+      0.8
+     ]
+    ],
+    "hold": [
+     [
+      2.3,
+      6.3
+     ]
+    ],
+    "all": [
+     [
+      0,
+      8
+     ]
+    ]
+   },
+   "standard": "tools/flare2-moves-r3/standards/t-standing-clasp-chest-opener.md",
+   "reviewViews": "side:1,0.1,0.001;back:0,0.15,-1;hands:0.3,-0.2,-1:0,1,0:rightHand,0.11",
+   "reviewFrames": [
+    12,
+    120,
+    210
+   ],
+   "reviewKeys": [
+    [
+     "shoulderExtMin",
+     "shExt",
+     "°"
+    ],
+    [
+     "elbowMin",
+     "elbow",
+     "°"
+    ],
+    [
+     "clashMm",
+     "clash",
+     "mm"
+    ],
+    [
+     "scapFwd",
+     "scapFwd",
+     "mm"
+    ],
+    [
+     "thoraxPitchDeg",
+     "thorax",
+     "°"
+    ],
+    [
+     "headVsTrunkDeg",
+     "head",
+     "°"
+    ]
+   ],
+   "priority": "batch2b"
   }
  ],
- "deferred": []
+ "deferred": [
+  {
+   "id": "t-child-pose-side-reach-v2",
+   "item": "练后-婴儿式侧伸（r2 暂缓项重做）",
+   "nameZh": "婴儿式侧伸",
+   "spec": "drill-anim/specs/t-child-pose-side-reach-v2.js",
+   "plans": "Flare 练后（瑜伽垫，徒手）：臀坐脚跟，双手走向一侧，拉伸对侧背部，静态保持，左右各一次；r2 草稿 t-child-pose-side-reach 两次自检未过（暂缓、文件不动），本 id 重做；草稿每侧 30 秒",
+   "hands": {
+    "left": "support",
+    "right": "support"
+   },
+   "camera": {
+    "dir": [
+     0.15,
+     0.95,
+     0.45
+    ],
+    "fit": [
+     "head",
+     "leftPalm",
+     "rightPalm",
+     "leftToe",
+     "rightToe",
+     "pelvis",
+     "leftKnee",
+     "rightKnee",
+     "leftShoulder",
+     "rightShoulder"
+    ],
+    "pad": 0.12,
+    "k": 1,
+    "at": 4
+   },
+   "checks": {
+    "lockElbows": [
+     [
+      0,
+      16
+     ]
+    ],
+    "pins": [
+     {
+      "bone": "leftFoot",
+      "hub": "leftToe",
+      "when": [
+       [
+        0,
+        16
+       ]
+      ]
+     },
+     {
+      "bone": "rightFoot",
+      "hub": "rightToe",
+      "when": [
+       [
+        0,
+        16
+       ]
+      ]
+     },
+     {
+      "bone": "leftShin",
+      "hub": "leftKnee",
+      "when": [
+       [
+        0,
+        16
+       ]
+      ],
+      "label": "knee"
+     },
+     {
+      "bone": "rightShin",
+      "hub": "rightKnee",
+      "when": [
+       [
+        0,
+        16
+       ]
+      ],
+      "label": "knee"
+     }
+    ],
+    "allowContact": [
+     "thighR|shinR",
+     "thighL|shinL",
+     "torso|thighR",
+     "torso|thighL",
+     "thighL|thighR"
+    ]
+   },
+   "preview": [
+    15,
+    120,
+    330
+   ],
+   "phases": {
+    "centre": [
+     [
+      0,
+      0.9
+     ],
+     [
+      15.2,
+      16
+     ]
+    ],
+    "holdL": [
+     [
+      2.7,
+      6.4
+     ]
+    ],
+    "holdR": [
+     [
+      9.7,
+      13.4
+     ]
+    ],
+    "all": [
+     [
+      0,
+      16
+     ]
+    ]
+   },
+   "standard": "tools/flare2-moves-r3/standards/t-child-pose-side-reach-v2.md",
+   "reviewViews": "top:0,1,0.001:1,0,0;side:0,0.25,1;front:1,0.4,0",
+   "reviewFrames": [
+    15,
+    120,
+    330
+   ],
+   "reviewKeys": [
+    [
+     "hipAboveAnkleMm",
+     "hipUp",
+     "mm"
+    ],
+    [
+     "hipOverAnkleCm",
+     "hipOver",
+     "cm"
+    ],
+    [
+     "elbowMin",
+     "elbow",
+     "°"
+    ],
+    [
+     "handsSideCm",
+     "side",
+     "cm"
+    ],
+    [
+     "sideBendDeg",
+     "bend",
+     "°"
+    ],
+    [
+     "kneeFloorMinMm",
+     "knee",
+     "mm"
+    ],
+    [
+     "handFloorMm",
+     "hand",
+     "mm"
+    ],
+    [
+     "headFloorMm",
+     "head",
+     "mm"
+    ]
+   ],
+   "deferredWhy": "2026-11-21 r3 b2b: two more attempts (waist-solved trunk; then legs placed from the v2plus leg lengths + whole upper body solved) still fail the sandbox self-check. Knees on the mat, hips on the heels and straight arms now pass, but the trunk cannot fold low enough with straight arms: hands within reach (x 0.48) leave the head 16 cm above the mat and the side bend at 10 deg (< 12); hands far enough for a low fold (x 0.54-0.60) put the head 5 cm into the mat and the hub drags the body toward the locked hands (knees off their marks). Needs a spine/shoulder model change (more thoracic flexion + shoulder flexion/protraction), not more tuning. Kept for a later batch, not rendered; r2 file t-child-pose-side-reach untouched. See standards/t-child-pose-side-reach-v2.md.",
+   "priority": "batch2b"
+  }
+ ]
 }

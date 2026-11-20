@@ -1,0 +1,170 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "t-floor-tuck-hold",
+ "reviewStatus": "draft-ai-needs-user-review",
+ "sources": [
+  "Flare 2.0 练后 专项补强 + Flare2 2026-11-21（Google 表 1aCseEk4vslsG-QKb-zsZwg30amvoYh5tMxzy6p9n8vA，Flare2：地面团身支撑（双手撑地面，不用瑜伽砖））",
+  "drill-anim/specs/t-floor-tuck-hold.js",
+  "tools/flare2-moves-r3/standards/t-floor-tuck-hold.md"
+ ],
+ "name": {
+  "zh": "地面团身支撑",
+  "en": "Floor Tuck Support Hold"
+ },
+ "purpose": {
+  "zh": "双手直接撑地面，把身体撑离地、收腿悬空，练直臂下压和收腹，为 L 撑打底",
+  "en": "Hands flat on the floor, press your body up and tuck your legs off the mat. Builds straight-arm pressing and the ab tuck for the L-sit."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "手臂锁直，把地往下推，臀和脚都离地",
+    "en": "Arms locked, push the floor down, hips and feet up"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "坐在垫上，手掌平放在髋两侧的垫子上，手指朝前。",
+    "en": "Sit on the mat, palms flat beside your hips, fingers forward."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "肩往下压，先把屁股撑离地，再把膝盖收向胸口、两脚离地。",
+    "en": "Press your shoulders down, lift your hips first, then draw your knees in and lift your feet."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "上身可以稍微前倾，臀离地几厘米就够。",
+    "en": "Lean slightly forward; a few centimetres of hip clearance is enough."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "屈肘",
+   "en": "Bending your elbows."
+  },
+  {
+   "zh": "耸肩，肩膀贴近耳朵",
+   "en": "Shrugging your shoulders up."
+  },
+  {
+   "zh": "屁股没离地，只是抬腿",
+   "en": "Lifting only the legs while the hips stay on the floor."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "手腕疼就停；撑不起来先用砖或厚书垫高手（团身 L 撑）",
+   "en": "Stop if your wrists hurt; if you cannot lift off, raise your hands on blocks or books first (tuck L-sit)."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "abs",
+   "hip-flexors",
+   "triceps"
+  ],
+  "synergistMuscles": [
+   "lats",
+   "scapular",
+   "deltoids",
+   "forearms"
+  ],
+  "equipment": [
+   "mat"
+  ],
+  "position": "seated",
+  "difficulty": 3
+ },
+ "unilateral": false,
+ "phases": {
+  "start": {
+   "zh": "撑起收腿",
+   "en": "Lift and tuck"
+  },
+  "peak": {
+   "zh": "就停这里",
+   "en": "Stay there"
+  },
+  "end": {
+   "zh": "慢慢坐下",
+   "en": "Sit down"
+  }
+ },
+ "training": {
+  "kind": "hold",
+  "leadSeconds": 2
+ },
+ "flare2": {
+  "version": "r3",
+  "batch": "2b",
+  "item": "Flare2：地面团身支撑（双手撑地面，不用瑜伽砖）",
+  "camera": "右前方 48°（看得到手撑地面、臀离地、脚离地）",
+  "doseBrief": "表：静态保持；草稿 10 秒 × 3 组、休 60 秒（待定）",
+  "doseStatus": "draft (AI, 开哥 to confirm)",
+  "status": "draft-awaiting-user-review",
+  "note": "Animation r3 2b: palms flat on the mat beside the hips (no blocks); seated -> arms lock and shoulders press down (hips 4.6 cm off the mat, trunk leans ~7 deg) -> knees drawn in, feet 3 cm off (knees ~81 deg) -> hold ~4.5 s -> feet and hips down. 8 s loop, symmetric.",
+  "standard": "tools/flare2-moves-r3/standards/t-floor-tuck-hold.md"
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 3,
+    "role": "posture",
+    "zh": "手臂锁直，肩往下压，臀和脚离地",
+    "en": "Arms locked, shoulders down, hips and feet up",
+    "from": [
+     "cue1",
+     "cue3"
+    ]
+   },
+   {
+    "at": 7,
+    "key": "n.3"
+   },
+   {
+    "at": 8,
+    "key": "n.2"
+   },
+   {
+    "at": 9,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.release",
+    "p.rest",
+    "sec.60"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
+  }
+ }
+}

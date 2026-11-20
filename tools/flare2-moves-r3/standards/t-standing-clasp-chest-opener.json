@@ -1,0 +1,168 @@
+{
+ "format": "flare2-moves-standard@1",
+ "id": "t-standing-clasp-chest-opener",
+ "nameZh": "背后十指交扣扩胸",
+ "doc": "tools/flare2-moves-r3/standards/t-standing-clasp-chest-opener.md",
+ "phases": {
+  "start": "站直，双手在背后十指交扣（掌心相对），轻放在下背，肘微屈",
+  "hold": "保持：手臂伸直，交扣的手向后下方拉离身体（肩后伸约 40°），肩胛夹紧下沉，挺胸，头中立",
+  "all": "整段：双脚不动，不前倾，手不松开"
+ },
+ "series": [
+  "shoulderExtMin",
+  "shoulderExtMax",
+  "elbowMin",
+  "clashMm",
+  "clashContact",
+  "scapFwd",
+  "scapUp",
+  "thoraxPitchDeg",
+  "headVsTrunkDeg",
+  "trunkFlexDeg"
+ ],
+ "checks": [
+  {
+   "id": "ext_hold",
+   "label": "保持：肩后伸（大臂在躯干后方的角度，两臂最小）",
+   "metric": "shoulderExtMin",
+   "agg": "min",
+   "unit": "°",
+   "phase": "hold",
+   "min": 30,
+   "max": 55
+  },
+  {
+   "id": "ext_sym",
+   "label": "两臂后伸不过度（最大）",
+   "metric": "shoulderExtMax",
+   "agg": "max",
+   "unit": "°",
+   "phase": "hold",
+   "max": 55
+  },
+  {
+   "id": "ext_start",
+   "label": "起始：手在下背（肩后伸较小，两臂最大）",
+   "metric": "shoulderExtMax",
+   "agg": "max",
+   "unit": "°",
+   "phase": "start",
+   "max": 30
+  },
+  {
+   "id": "arms_straight",
+   "label": "保持：手臂伸直（两肘最小角）",
+   "metric": "elbowMin",
+   "agg": "min",
+   "unit": "°",
+   "phase": "hold",
+   "min": 170
+  },
+  {
+   "id": "retract",
+   "label": "保持：肩胛夹紧（肩关节相对胸廓前后位置，越小越靠后）",
+   "metric": "scapFwd",
+   "agg": "max",
+   "unit": "mm",
+   "phase": "hold",
+   "max": -8
+  },
+  {
+   "id": "depress",
+   "label": "保持：肩不耸（肩关节相对胸廓高度）",
+   "metric": "scapUp",
+   "agg": "max",
+   "unit": "mm",
+   "phase": "hold",
+   "max": 0
+  },
+  {
+   "id": "no_lean",
+   "label": "不前倾（胸廓前后倾，保持段；+ = 前倾）",
+   "metric": "thoraxPitchDeg",
+   "agg": "max",
+   "unit": "°",
+   "phase": "hold",
+   "min": -12,
+   "max": 3
+  },
+  {
+   "id": "chest_up",
+   "label": "挺胸：胸廓相对骨盆后伸（保持段最大，负 = 后伸）",
+   "metric": "trunkFlexDeg",
+   "agg": "max",
+   "unit": "°",
+   "phase": "hold",
+   "min": -12,
+   "max": 0
+  },
+  {
+   "id": "head_neutral",
+   "label": "头中立（头与胸廓夹角）",
+   "metric": "headVsTrunkDeg",
+   "agg": "max",
+   "unit": "°",
+   "phase": "all",
+   "max": 15
+  },
+  {
+   "id": "clasp_clash",
+   "label": "交扣：两手互相穿插深度（最大；指缝/掌面软组织 ≤ 8 mm）",
+   "metric": "clashMm",
+   "agg": "max",
+   "unit": "mm",
+   "phase": "all",
+   "max": 8
+  },
+  {
+   "id": "clasp_contact",
+   "label": "交扣：两手接触（3 mm 内接触顶点数，最小）",
+   "metric": "clashContact",
+   "agg": "min",
+   "unit": "",
+   "phase": "all",
+   "min": 60
+  },
+  {
+   "id": "feet_floor_lo",
+   "label": "脚不穿地",
+   "metric": "footClearMm",
+   "agg": "min",
+   "unit": "mm",
+   "phase": "all",
+   "min": -2
+  },
+  {
+   "id": "feet_floor_hi",
+   "label": "脚踩地",
+   "metric": "footClearMm",
+   "agg": "max",
+   "unit": "mm",
+   "phase": "all",
+   "max": 3
+  },
+  {
+   "id": "pins",
+   "label": "支点不滑（最大漂移）",
+   "kind": "pins",
+   "max": 3,
+   "unit": "mm"
+  },
+  {
+   "id": "self_clip",
+   "label": "身体自穿插（胶囊最差间隙）",
+   "kind": "summary",
+   "path": "selfClipWorst.mm",
+   "min": -8,
+   "unit": "mm"
+  },
+  {
+   "id": "v5_matches_hub",
+   "label": "V5 身体与求解姿态一致（最大关节偏差）",
+   "kind": "summary",
+   "path": "maxPosErrMm",
+   "max": 2,
+   "unit": "mm"
+  }
+ ]
+}

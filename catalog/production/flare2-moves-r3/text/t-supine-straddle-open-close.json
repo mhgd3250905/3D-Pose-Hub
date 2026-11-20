@@ -1,0 +1,190 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "t-supine-straddle-open-close",
+ "reviewStatus": "draft-ai-needs-user-review",
+ "sources": [
+  "Flare 2.0 练后 专项补强 + Flare2 2026-11-21（Google 表 1aCseEk4vslsG-QKb-zsZwg30amvoYh5tMxzy6p9n8vA，Flare2：仰卧直腿大分腿慢开合）",
+  "drill-anim/specs/t-supine-straddle-open-close.js",
+  "tools/flare2-moves-r3/standards/t-supine-straddle-open-close.md"
+ ],
+ "name": {
+  "zh": "仰卧直腿大分腿慢开合",
+  "en": "Supine Straddle Open-Close"
+ },
+ "purpose": {
+  "zh": "仰卧把直腿向两侧打开再合拢，练大腿内侧的控制和髋的开度，为分腿类动作打底",
+  "en": "Lying on your back, open your straight legs wide to the sides and close them. Trains inner-thigh control and hip opening for straddle moves."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "腿伸直，两腿匀速向两侧打开再合拢",
+    "en": "Legs straight, open wide and close evenly"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "仰卧，手臂放在身体两侧掌心贴垫，双腿伸直举到竖直。",
+    "en": "Lie on your back, arms by your sides, palms down, legs straight up."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "膝盖一直伸直，两条腿同时打开，开到大腿内侧有拉伸感。",
+    "en": "Knees stay straight; both legs open together until the inner thighs stretch."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "下背和骨盆贴住垫子，不左右晃。",
+    "en": "Lower back and pelvis stay on the mat, no rocking."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "膝盖弯了",
+   "en": "Bending the knees."
+  },
+  {
+   "zh": "两条腿一快一慢、不对称",
+   "en": "One leg moving faster or wider than the other."
+  },
+  {
+   "zh": "下背拱起离开垫子",
+   "en": "Arching the lower back off the mat."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "腿后侧太紧举不到竖直，可以微屈膝或腿放低一点",
+   "en": "If tight hamstrings keep your legs from vertical, bend the knees slightly or let the legs tilt lower."
+  }
+ ],
+ "tags": {
+  "category": "mobility",
+  "activeMuscles": [
+   "adductors"
+  ],
+  "synergistMuscles": [
+   "hip-flexors",
+   "abs"
+  ],
+  "equipment": [
+   "mat"
+  ],
+  "position": "supine",
+  "difficulty": 1
+ },
+ "unilateral": false,
+ "phases": {
+  "start": {
+   "zh": "双腿竖直并拢",
+   "en": "Legs up, together"
+  },
+  "peak": {
+   "zh": "大分腿",
+   "en": "Wide straddle"
+  },
+  "end": {
+   "zh": "合拢",
+   "en": "Close"
+  }
+ },
+ "training": {
+  "kind": "rep_updown",
+  "leadSeconds": 2,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 3.0
+   },
+   {
+    "id": "hold",
+    "seconds": 0.5
+   },
+   {
+    "id": "back",
+    "seconds": 3.0
+   },
+   {
+    "id": "rest",
+    "seconds": 1.5
+   }
+  ],
+  "source": "flare2 r3 2b animation tempo (8 s per rep: 3 s open, 0.5 s wide, 3 s close, 1.5 s together)"
+ },
+ "flare2": {
+  "version": "r3",
+  "batch": "2b",
+  "item": "Flare2：仰卧直腿大分腿慢开合",
+  "camera": "脚侧斜上方（看得到两腿向两侧打开的幅度和对称）",
+  "doseBrief": "表：慢速开合；草稿 8 次 × 2 组、休 30 秒（待定）",
+  "doseStatus": "draft (AI, 开哥 to confirm)",
+  "status": "draft-awaiting-user-review",
+  "note": "Animation r3 2b: supine, straight legs vertical (hip flexion 88 deg), open evenly to ~40 deg each side (~79 deg between the legs) over 3 s, 0.5 s pause, close over 3 s; pelvis still. 8 s loop = 1 rep, symmetric (no mirror).",
+  "standard": "tools/flare2-moves-r3/standards/t-supine-straddle-open-close.md"
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 8.0,
+  "phaseCues": "none",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "膝盖伸直，两条腿一起打开",
+    "en": "Knees straight, both legs open together",
+    "from": [
+     "cue1",
+     "cue3",
+     "commonErrors[0]",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "form",
+    "zh": "下背贴住垫子，骨盆不晃",
+    "en": "Lower back on the mat, pelvis still",
+    "from": [
+     "cue4",
+     "commonErrors[2]"
+    ]
+   },
+   {
+    "afterRep": 7,
+    "key": "p.last_rep"
+   }
+  ],
+  "before": [],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.30"
+   ],
+   "allDone": [
+    "p.nice"
+   ]
+  }
+ }
+}

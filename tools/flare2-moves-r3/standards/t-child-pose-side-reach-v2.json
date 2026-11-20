@@ -1,0 +1,201 @@
+{
+ "format": "flare2-moves-standard@1",
+ "id": "t-child-pose-side-reach-v2",
+ "nameZh": "婴儿式侧伸",
+ "doc": "tools/flare2-moves-r3/standards/t-child-pose-side-reach-v2.md",
+ "phases": {
+  "centre": "婴儿式：跪坐、臀坐脚跟（脚背贴垫），上身前趴在大腿上，双臂前伸掌心贴垫",
+  "holdL": "双手走到身体左侧并保持，躯干向左侧屈，拉伸右侧背；臀不离脚跟",
+  "holdR": "镜像：双手到右侧，拉伸左侧背",
+  "all": "整段：膝、脚背不动，手臂伸长"
+ },
+ "series": [
+  "hipAboveAnkleMm",
+  "hipOverAnkleCm",
+  "handsSideCm",
+  "sideBendDeg",
+  "elbowMin",
+  "kneeFloorMinMm",
+  "handFloorMm",
+  "footClearMm",
+  "headFloorMm"
+ ],
+ "checks": [
+  {
+   "id": "hips_on_heels",
+   "label": "臀坐脚跟：髋关节高于踝关节（最大）",
+   "metric": "hipAboveAnkleMm",
+   "agg": "max",
+   "unit": "mm",
+   "phase": "all",
+   "max": 170
+  },
+  {
+   "id": "hips_over_heels",
+   "label": "髋在脚跟正上方（水平距离，最大）",
+   "metric": "hipOverAnkleCm",
+   "agg": "max",
+   "unit": "cm",
+   "phase": "all",
+   "max": 12
+  },
+  {
+   "id": "reach_L",
+   "label": "左侧保持：双手移到左侧（手中点相对髋的横向距离，均值）",
+   "metric": "handsSideCm",
+   "agg": "mean",
+   "unit": "cm",
+   "phase": "holdL",
+   "min": 22
+  },
+  {
+   "id": "reach_R",
+   "label": "右侧保持：双手移到右侧",
+   "metric": "handsSideCm",
+   "agg": "mean",
+   "unit": "cm",
+   "phase": "holdR",
+   "max": -22
+  },
+  {
+   "id": "bend_L",
+   "label": "左侧保持：躯干侧屈（胸廓长轴相对骨盆，水平面，均值）",
+   "metric": "sideBendDeg",
+   "agg": "mean",
+   "unit": "°",
+   "phase": "holdL",
+   "min": 12
+  },
+  {
+   "id": "bend_R",
+   "label": "右侧保持：躯干侧屈",
+   "metric": "sideBendDeg",
+   "agg": "mean",
+   "unit": "°",
+   "phase": "holdR",
+   "max": -12
+  },
+  {
+   "id": "centre_mid",
+   "label": "中间段：双手居中（横向距离绝对值 ≤ 3 cm；最大）",
+   "metric": "handsSideCm",
+   "agg": "max",
+   "unit": "cm",
+   "phase": "centre",
+   "min": -3,
+   "max": 3
+  },
+  {
+   "id": "arms_long",
+   "label": "手臂伸长（肘角，全程最小）",
+   "metric": "elbowMin",
+   "agg": "min",
+   "unit": "°",
+   "phase": "all",
+   "min": 160
+  },
+  {
+   "id": "hands_on_mat",
+   "label": "手掌贴垫（手最低点离垫，最大）",
+   "metric": "handFloorMm",
+   "agg": "max",
+   "unit": "mm",
+   "phase": "all",
+   "max": 4
+  },
+  {
+   "id": "hands_floor",
+   "label": "手不穿垫",
+   "metric": "handFloorMm",
+   "agg": "min",
+   "unit": "mm",
+   "phase": "all",
+   "min": -2
+  },
+  {
+   "id": "knees_floor",
+   "label": "膝不穿垫（小腿最低点）",
+   "metric": "kneeFloorMinMm",
+   "agg": "min",
+   "unit": "mm",
+   "phase": "all",
+   "min": -2
+  },
+  {
+   "id": "knees_on_mat",
+   "label": "膝/小腿贴垫（小腿最低点，最大）",
+   "metric": "kneeFloorMinMm",
+   "agg": "max",
+   "unit": "mm",
+   "phase": "all",
+   "max": 8
+  },
+  {
+   "id": "feet_floor",
+   "label": "脚背不穿垫",
+   "metric": "footClearMm",
+   "agg": "min",
+   "unit": "mm",
+   "phase": "all",
+   "min": -2
+  },
+  {
+   "id": "feet_on_mat",
+   "label": "脚背贴垫",
+   "metric": "footClearMm",
+   "agg": "max",
+   "unit": "mm",
+   "phase": "all",
+   "max": 6
+  },
+  {
+   "id": "head_clear",
+   "label": "头不穿垫（头最低点）",
+   "metric": "headFloorMm",
+   "agg": "min",
+   "unit": "mm",
+   "phase": "all",
+   "min": 0
+  },
+  {
+   "id": "head_low",
+   "label": "婴儿式：上身趴低、额头接近垫子（中间段头最低点离垫，最大）",
+   "metric": "headFloorMm",
+   "agg": "max",
+   "unit": "mm",
+   "phase": "centre",
+   "max": 60
+  },
+  {
+   "id": "pins",
+   "label": "膝、脚不滑",
+   "kind": "pins",
+   "max": 3,
+   "unit": "mm"
+  },
+  {
+   "id": "knee_pins",
+   "label": "膝支点不滑（V5 小腿关节漂移）",
+   "kind": "pins",
+   "which": "knees",
+   "max": 3,
+   "unit": "mm"
+  },
+  {
+   "id": "self_clip",
+   "label": "身体自穿插（胶囊最差间隙）",
+   "kind": "summary",
+   "path": "selfClipWorst.mm",
+   "min": -8,
+   "unit": "mm"
+  },
+  {
+   "id": "v5_matches_hub",
+   "label": "V5 身体与求解姿态一致（最大关节偏差）",
+   "kind": "summary",
+   "path": "maxPosErrMm",
+   "max": 2,
+   "unit": "mm"
+  }
+ ]
+}

@@ -1,0 +1,75 @@
+{
+  "format": "pose-hub-action-recipe@1",
+  "id": "t-floor-tuck-hold",
+  "nameZh": "地面团身支撑",
+  "spec": "drill-anim/specs/t-floor-tuck-hold.js",
+  "specSha256Lf": "309ce53660c2eb825313457cc4b75c6bd0d3c0e87329ae3a8a7379530e71b771",
+  "r2DepsSha256Lf": {
+    "drill-anim/lib/flare2-r2.mjs": "e2ae035877b7337f30c42880e6eb616616e8e73c34d4bab5a34bcc50f376d0fb",
+    "drill-anim/lib/flare2-r3.mjs": "376d766fa13d8a66441b6adb573a8bed67dd9a52a66badb72d55f605e34d2074",
+    "tools/flare2-moves-r3/v5/v5r2-ext.js": "9f211a87c868a3c803061ad24dc6acc1e2293719a5087bfe76c98c60502796e6"
+  },
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "hands": {
+    "left": "support",
+    "right": "support"
+  },
+  "camera": {
+    "pad": 0.12,
+    "k": 1,
+    "drift": 0,
+    "fitTimeline": true,
+    "orbitDegrees": 0,
+    "frontSweepDegrees": 0,
+    "dir": [
+      0.75,
+      0.2,
+      0.66
+    ],
+    "fit": [
+      "head",
+      "leftPalm",
+      "rightPalm",
+      "leftToe",
+      "rightToe",
+      "pelvis",
+      "leftKnee",
+      "rightKnee"
+    ],
+    "at": 4
+  },
+  "cameraScale": 1.15,
+  "output": {
+    "groundShadow": false,
+    "cameraMotion": false,
+    "wholeCycleContentRect": true,
+    "fps": 30,
+    "exerciseMat": true
+  },
+  "jointCorrections": [
+    {
+      "profile": "upper-arm-contour-r3",
+      "version": "0.1.0-r3"
+    },
+    {
+      "profile": "ankle-join-r5",
+      "version": "0.1.0-r5"
+    }
+  ],
+  "adaptation": {
+    "status": "flare2-moves-r3-draft",
+    "method": "New spec authored in the sandbox (CPU solve + V5 low-res preview); V5 720p sample render pending on the render machine."
+  },
+  "source": {
+    "brief": "Flare 2.0 练后 专项补强 + Flare2 2026-11-21 (hark-mhgd；Google 表 1aCseEk4vslsG-QKb-zsZwg30amvoYh5tMxzy6p9n8vA) Flare2：地面团身支撑（双手撑地面，不用瑜伽砖）",
+    "plans": "Flare2：坐姿双手平放垫上（髋两侧），直臂下压撑起，臀离地，膝收胸前、双脚离地，静止支撑；不用瑜伽砖（r1 的 t-tuck-lsit-hold 砖版不动）；草稿 10 秒 × 3 组"
+  },
+  "sampledOnly": true,
+  "fullCycleValidated": false,
+  "reviewed": false,
+  "userAccepted": false,
+  "releaseEligible": false
+}

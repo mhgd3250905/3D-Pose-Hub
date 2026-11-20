@@ -1,0 +1,175 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "t-standing-clasp-chest-opener",
+ "reviewStatus": "draft-ai-needs-user-review",
+ "sources": [
+  "Flare 2.0 练后 专项补强 + Flare2 2026-11-21（Google 表 1aCseEk4vslsG-QKb-zsZwg30amvoYh5tMxzy6p9n8vA，Flare2：背后十指交扣扩胸（站姿））",
+  "drill-anim/specs/t-standing-clasp-chest-opener.js",
+  "tools/flare2-moves-r3/standards/t-standing-clasp-chest-opener.md"
+ ],
+ "name": {
+  "zh": "背后十指交扣扩胸",
+  "en": "Standing Clasped-Hands Chest Opener"
+ },
+ "purpose": {
+  "zh": "双手背后交扣把手臂向后拉开，拉伸胸口和肩前侧，练完撑地和俯卧撑类动作后放松",
+  "en": "Clasp your hands behind your back and draw the arms back. Stretches the chest and fronts of the shoulders after support and push-up work."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "手臂伸直往后拉，肩胛夹紧，挺胸",
+    "en": "Arms straight and back, squeeze the shoulder blades, chest up"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "站直，双手在背后十指交扣，掌心相对。",
+    "en": "Stand tall and interlace your fingers behind your back, palms facing."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "伸直手臂，交扣的手往后下方拉离身体。",
+    "en": "Straighten your arms and draw the clasped hands back and away from your body."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "肩膀往下沉，头保持中立，上身不往前弯。",
+    "en": "Shoulders down, head neutral, do not bend forward."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "耸肩",
+   "en": "Shrugging the shoulders up."
+  },
+  {
+   "zh": "上身往前弯来抬手",
+   "en": "Bending forward to lift the hands."
+  },
+  {
+   "zh": "腰往后拱、肋骨外翻",
+   "en": "Arching the lower back and flaring the ribs."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "肩前侧刺疼就减小幅度；手扣不上可以握一条毛巾",
+   "en": "Reduce the range if the front of the shoulder hurts sharply; hold a towel if your hands do not meet."
+  }
+ ],
+ "tags": {
+  "category": "stretch",
+  "activeMuscles": [
+   "chest"
+  ],
+  "synergistMuscles": [
+   "deltoids",
+   "scapular"
+  ],
+  "equipment": [],
+  "position": "standing",
+  "difficulty": 1
+ },
+ "unilateral": false,
+ "phases": {
+  "start": {
+   "zh": "背后交扣",
+   "en": "Clasp behind"
+  },
+  "peak": {
+   "zh": "伸臂扩胸",
+   "en": "Arms back, chest open"
+  },
+  "end": {
+   "zh": "放松",
+   "en": "Release"
+  }
+ },
+ "training": {
+  "kind": "hold",
+  "leadSeconds": 2
+ },
+ "flare2": {
+  "version": "r3",
+  "batch": "2b",
+  "item": "Flare2：背后十指交扣扩胸（站姿）",
+  "camera": "右侧偏后（看得到手臂后伸角度、交扣的手和挺胸）",
+  "doseBrief": "表：静态拉伸；草稿保持 20 秒 × 2 次、间隔 10 秒（待定）",
+  "doseStatus": "draft (AI, 开哥 to confirm)",
+  "status": "draft-awaiting-user-review",
+  "note": "Animation r3 2b: fingers interlaced behind the back (V5 interlace hand pose, fingers curled to wrap the other hand), elbows soft at the start, then arms straight with ~40 deg shoulder extension, shoulder blades back and down, chest lifted (5 deg); 8 s loop, hold 4 s, symmetric.",
+  "standard": "tools/flare2-moves-r3/standards/t-standing-clasp-chest-opener.md"
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 4,
+    "role": "posture",
+    "zh": "手臂伸直往后拉，肩胛夹紧",
+    "en": "Arms straight and back, squeeze your shoulder blades",
+    "from": [
+     "cue1",
+     "cue3"
+    ]
+   },
+   {
+    "at": 10,
+    "role": "form",
+    "zh": "肩膀往下沉，上身不往前弯",
+    "en": "Shoulders down, keep your chest tall",
+    "from": [
+     "cue4",
+     "commonErrors[0]",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "at": 17,
+    "key": "n.3"
+   },
+   {
+    "at": 18,
+    "key": "n.2"
+   },
+   {
+    "at": 19,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.release",
+    "p.rest",
+    "sec.10"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
+  }
+ }
+}

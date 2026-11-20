@@ -1,0 +1,75 @@
+{
+  "format": "pose-hub-action-recipe@1",
+  "id": "t-standing-clasp-chest-opener",
+  "nameZh": "背后十指交扣扩胸",
+  "spec": "drill-anim/specs/t-standing-clasp-chest-opener.js",
+  "specSha256Lf": "c56dc2cc206aa30bceb4d586ca3435cc713e05e11813949b696a73a0bceeb613",
+  "r2DepsSha256Lf": {
+    "drill-anim/lib/flare2-r2.mjs": "e2ae035877b7337f30c42880e6eb616616e8e73c34d4bab5a34bcc50f376d0fb",
+    "drill-anim/lib/flare2-r3.mjs": "376d766fa13d8a66441b6adb573a8bed67dd9a52a66badb72d55f605e34d2074",
+    "tools/flare2-moves-r3/v5/v5r2-ext.js": "9f211a87c868a3c803061ad24dc6acc1e2293719a5087bfe76c98c60502796e6"
+  },
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "hands": {
+    "left": "native",
+    "right": "native"
+  },
+  "camera": {
+    "pad": 0.15,
+    "k": 0.85,
+    "drift": 0,
+    "fitTimeline": true,
+    "orbitDegrees": 0,
+    "frontSweepDegrees": 0,
+    "dir": [
+      -1,
+      0.12,
+      -0.45
+    ],
+    "fit": [
+      "head",
+      "leftToe",
+      "rightToe",
+      "pelvis",
+      "leftPalm",
+      "rightPalm",
+      "leftElbow",
+      "rightElbow"
+    ],
+    "at": 4
+  },
+  "cameraScale": 1.15,
+  "output": {
+    "groundShadow": false,
+    "cameraMotion": false,
+    "wholeCycleContentRect": true,
+    "fps": 30,
+    "exerciseMat": true
+  },
+  "jointCorrections": [
+    {
+      "profile": "upper-arm-contour-r3",
+      "version": "0.1.0-r3"
+    },
+    {
+      "profile": "ankle-join-r5",
+      "version": "0.1.0-r5"
+    }
+  ],
+  "adaptation": {
+    "status": "flare2-moves-r3-draft",
+    "method": "New spec authored in the sandbox (CPU solve + V5 low-res preview); V5 720p sample render pending on the render machine."
+  },
+  "source": {
+    "brief": "Flare 2.0 练后 专项补强 + Flare2 2026-11-21 (hark-mhgd；Google 表 1aCseEk4vslsG-QKb-zsZwg30amvoYh5tMxzy6p9n8vA) Flare2：背后十指交扣扩胸（站姿）",
+    "plans": "Flare2：站姿，双手在背后十指交扣，伸直手臂向后下方拉开、肩胛夹紧下沉、挺胸打开胸口，静态保持后放松；左右对称（不镜像）；草稿保持 20 秒 × 2 次"
+  },
+  "sampledOnly": true,
+  "fullCycleValidated": false,
+  "reviewed": false,
+  "userAccepted": false,
+  "releaseEligible": false
+}

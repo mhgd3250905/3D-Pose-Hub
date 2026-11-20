@@ -1,4 +1,8 @@
 #!/usr/bin/env node
+// Flare 2.0 moves r3 batch 2b (2026-11-21): samples now render only the CURRENT batch (actions.json "actions" whose priority is
+// SAMPLE_BATCH = batch2b; the batch2a actions were sampled from RENDER 103c7c9 at commit 1252a78, out ..._flare2-moves-r3, QA qa/flare2-moves-r3),
+// default out ..._flare2-moves-r3b, QA branch qa/flare2-moves-r3b; --final renders every action in "actions" (2a + 2b). RENDER = the 2b content
+// commit. (A 2a-only final, if wanted before the 2b samples are approved: run --final from commit 1252a78, which pins RENDER 103c7c9.)
 // Flare 2.0 moves r3 batch 2a (2026-11-21, branch codex/flare2-moves-r3): V5 render of the r3 actions ONLY (tools/flare2-moves-r3/actions.json
 // "actions"; ids under "deferred" are not rendered). Copy of tools/flare2-moves-r2/produce.mjs with r3 paths, BASE 2b59eff (codex/flare2-moves-r2
 // head) and its own RENDER pin; the r2 notes below apply unchanged with r2 -> r3.
@@ -21,16 +25,17 @@ import fs from 'node:fs';import path from 'node:path';import crypto from 'node:c
 import {spawn,spawnSync,execFileSync} from 'node:child_process';import {fileURLToPath} from 'node:url';import {config} from '../../drill-anim/lib/config.mjs';
 const SELF=fileURLToPath(import.meta.url),HERE=path.dirname(SELF),ROOT=path.resolve(HERE,'../..');
 const PLAN0=JSON.parse(fs.readFileSync(path.join(HERE,'actions.json'),'utf8'));
-const PLAN={actions:PLAN0.actions.map(a=>({id:a.id,recipe:`catalog/production/flare2-moves-r3/recipes/${a.id}.json`}))};
 const args0=process.argv.slice(2),FINAL=args0.includes('--final');
+const SAMPLE_BATCH='batch2b';   // samples: only this batch; --final: all actions
+const PLAN={actions:PLAN0.actions.filter(a=>FINAL||a.priority===SAMPLE_BATCH).map(a=>({id:a.id,recipe:`catalog/production/flare2-moves-r3/recipes/${a.id}.json`}))};
 // RENDER = the commit whose render content was reported (samples and --final both render exactly this content)
 const RENDER='103c7c91b11aab8ab8be60a2b6455355a30a696d',RS=RENDER.slice(0,7);
 // paths that may differ from RENDER (none of them is read by the renderer)
 const RENDER_EXCLUDE=['tools/flare2-moves-r3/produce.mjs','tools/flare2-moves-r3/README.md','tools/flare2-moves-r3/cards','catalog/production/flare2-moves-r3/text'];
-const BASE='2b59eff26388faa05c9aafa17307c887cd74148c',QA_BRANCH=FINAL?'qa/flare2-moves-r3-final':'qa/flare2-moves-r3';
+const BASE='2b59eff26388faa05c9aafa17307c887cd74148c',QA_BRANCH=FINAL?'qa/flare2-moves-r3-final':'qa/flare2-moves-r3b';
 const TOTAL=PLAN.actions.length;
 if(!/^[0-9a-f]{40}$/.test(RENDER))throw Error('RENDER not pinned');
-const DEFAULT_OUT=FINAL?`F:/PoseHub-v3/runs/2026-11-21_flare2-r3-final_${RS}`:'F:/PoseHub-v3/runs/2026-11-21_flare2-moves-r3';
+const DEFAULT_OUT=FINAL?`F:/PoseHub-v3/runs/2026-11-21_flare2-r3-final_${RS}`:'F:/PoseHub-v3/runs/2026-11-21_flare2-moves-r3b';
 // files this branch adds on top of BASE; every other path must equal BASE (old actions, V5 runtime, engine, props byte-identical)
 // (actions.json "deferred" = new ids drafted on this branch but not rendered in this batch; their specs are new files too)
 const EXCLUDE=['tools/flare2-moves-r3','catalog/production/flare2-moves-r3','drill-anim/lib/flare2-r3.mjs',...PLAN0.actions.map(a=>a.spec),...(PLAN0.deferred||[]).map(a=>a.spec)];
@@ -42,7 +47,8 @@ const args=process.argv.slice(2);const opt=k=>{const i=args.indexOf(k);return i>
 const KIND=FINAL?'正式渲染':'样片';
 const pre=m=>{try{if(typeof LOCK!=="undefined"&&fs.existsSync(LOCK)&&fs.readFileSync(LOCK,"utf8")===String(process.pid))fs.rmSync(LOCK);}catch{}out1({ok:false,preflight:true,error:m,report:`Flare 2.0 r3 新动作 V5 ${KIND}预检未通过，未开始渲染：${m}`});process.exit(1);};
 if(args.some((x,i)=>x.startsWith('--')&&!['--out','--only','--no-push','--vite-force','--final'].includes(x)))pre('用法: node tools/flare2-moves-r3/produce.mjs [--final] [--out <run-dir>] [--only id,id] [--no-push] [--vite-force]');
-if(FINAL&&args.includes('--only'))pre(`--final 不接受 --only：正式渲染 ${PLAN0.actions.length} 个动作必须同一次跑完（中断后原命令重跑会跳过已完成的）`);
+if(FINAL&&args.includes('--only'))pre(`--final 不接受 --only：正式渲染 ${PLAN.actions.length} 个动作必须同一次跑完（中断后原命令重跑会跳过已完成的）`);
+if(!PLAN.actions.length)pre('actions.json 里没有本批（'+SAMPLE_BATCH+'）的动作');
 const viteForce=args.includes('--vite-force');   // README: after a Vite 504 Outdated Optimize Dep, delete node_modules/.vite and rerun once with this
 const out=path.resolve(opt('--out')??DEFAULT_OUT),noPush=args.includes('--no-push'),only=opt('--only');
 const PROFILE=path.join(ROOT,'tools/v5/profile-v5.json');
@@ -69,7 +75,7 @@ const state=fs.existsSync(STATE)?JSON.parse(fs.readFileSync(STATE,'utf8')):{form
 const saveState=()=>fs.writeFileSync(STATE,JSON.stringify(state,null,1));
 const isDone=id=>fs.existsSync(path.join(out,'packages',id,'package.json'));
 let list;
-if(only){list=only.split(',').map(i=>PLAN.actions.find(a=>a.id===i)??pre('未知动作 '+i));}
+if(only){list=only.split(',').map(i=>PLAN.actions.find(a=>a.id===i)??pre('未知动作（或不在本批 '+(FINAL?'正式渲染':SAMPLE_BATCH)+'）'+i));}
 else list=PLAN.actions;
 const freeGB=()=>{try{const s=fs.statfsSync(out);return +(s.bavail*s.bsize/1e9).toFixed(1);}catch{return null;}};
 const doneSizes=Object.values(state.actions).filter(x=>x.status==='done'&&x.bytes).map(x=>x.bytes);
@@ -175,5 +181,5 @@ if(!noPush){try{
 fs.rmSync(LOCK,{force:true});
 res.ok=res.failed.length===0;res.finished=now();res.minutes=mins;res.allDone=allDone;res.total=TOTAL;res.freeGB=freeGB();res.qaCommit=pushed;
 const url=`https://github.com/mhgd3250905/3D-Pose-Hub/blob/${QA_BRANCH}/overview.jpg`;
-res.report=`Flare 2.0 r3 新动作（${RS}）V5 ${KIND}完成：本次 ${list.length} 个，成功 ${res.done.length}${res.rerendered.length?'（其中配方已更新重渲 '+res.rerendered.length+' 个：'+res.rerendered.join('、')+'）':''}，跳过（已做过）${res.skipped.length}，失败 ${res.failed.length}${res.failed.length?'（'+res.failed.join('、')+'）':''}；用时 ${mins} 分钟；累计 ${allDone}/${TOTAL}；${FINAL?'成片包在 '+path.join(out,'packages'):'样片在 '+path.join(out,'samples')}；磁盘剩余 ${res.freeGB} GB。`+(pushed?`总览：${url}`:`总览推送失败：${pushErr??'未推送'}`);
+res.report=`Flare 2.0 r3 新动作${FINAL?'':'第 2b 批'}（${RS}）V5 ${KIND}完成：本次 ${list.length} 个，成功 ${res.done.length}${res.rerendered.length?'（其中配方已更新重渲 '+res.rerendered.length+' 个：'+res.rerendered.join('、')+'）':''}，跳过（已做过）${res.skipped.length}，失败 ${res.failed.length}${res.failed.length?'（'+res.failed.join('、')+'）':''}；用时 ${mins} 分钟；累计 ${allDone}/${TOTAL}；${FINAL?'成片包在 '+path.join(out,'packages'):'样片在 '+path.join(out,'samples')}；磁盘剩余 ${res.freeGB} GB。`+(pushed?`总览：${url}`:`总览推送失败：${pushErr??'未推送'}`);
 out1(res);process.exit(pushErr?4:(res.ok?0:3));

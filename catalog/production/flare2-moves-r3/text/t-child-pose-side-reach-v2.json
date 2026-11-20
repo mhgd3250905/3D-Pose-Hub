@@ -1,0 +1,200 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "t-child-pose-side-reach-v2",
+ "reviewStatus": "draft-ai-needs-user-review",
+ "sources": [
+  "Flare 2.0 练后 专项补强 + Flare2 2026-11-21（Google 表 1aCseEk4vslsG-QKb-zsZwg30amvoYh5tMxzy6p9n8vA，练后-婴儿式侧伸（r2 暂缓项重做；r3 2b 仍暂缓））",
+  "drill-anim/specs/t-child-pose-side-reach-v2.js",
+  "tools/flare2-moves-r3/standards/t-child-pose-side-reach-v2.md"
+ ],
+ "name": {
+  "zh": "婴儿式侧伸",
+  "en": "Child's Pose Side Reach"
+ },
+ "purpose": {
+  "zh": "拉长背部侧面和腋下，练完支撑动作后放松后背",
+  "en": "Lengthens the side of your back and under the arm after support training."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "臀坐脚跟，双手走到一侧，拉长另一边",
+    "en": "Hips on heels, hands to one side, lengthen the other side"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "跪坐，臀部坐在脚跟上，上身趴下，双臂往前伸长。",
+    "en": "Kneel, sit your hips on your heels, fold forward and reach your arms long."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "双手一前一后走到一侧，对侧的背和腋下有拉长的感觉。",
+    "en": "Walk both hands over to one side until the opposite side of your back stretches."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "臀部一直坐在脚跟上，不跟着手走。",
+    "en": "Keep your hips on your heels; they do not follow the hands."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "臀部离开脚跟",
+   "en": "Lifting the hips off the heels."
+  },
+  {
+   "zh": "手只伸到一半",
+   "en": "Reaching only halfway."
+  },
+  {
+   "zh": "憋气",
+   "en": "Holding your breath."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "膝盖不舒服可以在膝下垫毛巾",
+   "en": "Put a towel under your knees if they feel uncomfortable."
+  }
+ ],
+ "tags": {
+  "category": "stretch",
+  "activeMuscles": [
+   "lats"
+  ],
+  "synergistMuscles": [
+   "obliques"
+  ],
+  "equipment": [
+   "mat"
+  ],
+  "position": "kneeling",
+  "difficulty": 1
+ },
+ "unilateral": true,
+ "startingSide": "left",
+ "phases": {
+  "start": {
+   "zh": "双手走到一侧",
+   "en": "Hands to one side"
+  },
+  "peak": {
+   "zh": "侧伸保持",
+   "en": "Hold the reach"
+  },
+  "end": {
+   "zh": "双手回中间",
+   "en": "Hands to centre"
+  }
+ },
+ "training": {
+  "kind": "hold",
+  "leadSeconds": 1,
+  "perSide": "each-side-separately",
+  "sideSwitchSeconds": 10
+ },
+ "flare2": {
+  "version": "r3",
+  "batch": "2b",
+  "item": "练后-婴儿式侧伸（r2 暂缓项重做；r3 2b 仍暂缓）",
+  "camera": "俯视偏前（看得到双手侧移和背部侧弯）",
+  "doseBrief": "表：静态保持，左右各一次；草稿每侧 30 秒 1 组（秒数待定）",
+  "doseStatus": "draft (AI, 开哥 to confirm)",
+  "status": "draft-awaiting-user-review",
+  "note": "Animation r3 2b (DEFERRED, not rendered): 16 s loop = hands walk to the body left (stretches the right side) 1-6.5 s, centre, then to the right 8-13.5 s. Legs fixed (knees on the mat, hips on the heels); the trunk does not yet fold low enough with straight arms - see the standard.",
+  "deferred": "r3 2b: still fails the sandbox self-check (trunk too high with straight arms / head into the mat when folded lower); in actions.json \"deferred\", not rendered.",
+  "standard": "tools/flare2-moves-r3/standards/t-child-pose-side-reach-v2.md"
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 4,
+    "role": "posture",
+    "zh": "臀部坐在脚跟上，双手放到一侧",
+    "en": "Hips on heels, both hands to one side",
+    "from": [
+     "cue1",
+     "cue2"
+    ]
+   },
+   {
+    "at": 12,
+    "role": "halfway",
+    "zh": "另一边的背和腋下拉长就够了",
+    "en": "Feel the other side of your back lengthen",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "at": 20,
+    "role": "form",
+    "zh": "臀部别跟着手走，喘气放松",
+    "en": "Hips stay on heels, keep breathing",
+    "from": [
+     "cue4",
+     "commonErrors[0]",
+     "commonErrors[2]"
+    ]
+   },
+   {
+    "at": 27,
+    "key": "n.3"
+   },
+   {
+    "at": 28,
+    "key": "n.2"
+   },
+   {
+    "at": 29,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSetsSameSide": [
+    "p.rest",
+    "sec.10"
+   ],
+   "sideDone": [
+    "p.release",
+    "p.switch_right"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
+  },
+  "sides": {
+   "order": [
+    "left",
+    "right"
+   ],
+   "perSide": "each-side-separately",
+   "note": "双手先走到身体左侧（拉右侧背），再走右侧；换边准备 10 秒（App 未接入）"
+  }
+ }
+}

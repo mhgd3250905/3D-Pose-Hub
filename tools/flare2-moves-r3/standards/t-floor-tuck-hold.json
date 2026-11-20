@@ -1,0 +1,208 @@
+{
+ "format": "flare2-moves-standard@1",
+ "id": "t-floor-tuck-hold",
+ "nameZh": "地面团身支撑",
+ "doc": "tools/flare2-moves-r3/standards/t-floor-tuck-hold.md",
+ "phases": {
+  "seated": "坐在垫上，双手平放髋两侧垫上（指尖朝前），屈膝脚踩垫",
+  "support": "直臂撑起：肘锁直、肩下压，臀离垫",
+  "hold": "团身保持：膝收到胸前，双脚离垫，静止"
+ },
+ "series": [
+  "elbowMin",
+  "seatFloorMm",
+  "footClearMm",
+  "hipFlexDeg",
+  "kneeMin",
+  "scapUp",
+  "thoraxPitchDeg",
+  "handFloorMm",
+  "comFwdCm"
+ ],
+ "checks": [
+  {
+   "id": "elbow_lock",
+   "label": "撑起后锁肘（支撑段两肘最小角）",
+   "metric": "elbowMin",
+   "agg": "min",
+   "unit": "°",
+   "phase": "support",
+   "min": 175
+  },
+  {
+   "id": "hips_off",
+   "label": "保持段臀离垫（躯干蒙皮最低点）",
+   "metric": "seatFloorMm",
+   "agg": "min",
+   "unit": "mm",
+   "phase": "hold",
+   "min": 15
+  },
+  {
+   "id": "feet_off",
+   "label": "保持段双脚离垫（脚最低点）",
+   "metric": "footClearMm",
+   "agg": "min",
+   "unit": "mm",
+   "phase": "hold",
+   "min": 15,
+   "max": 70
+  },
+  {
+   "id": "knees_chest",
+   "label": "收腿：大腿抬向胸前（胸廓–髋–膝夹角，保持段）",
+   "metric": "hipFlexDeg",
+   "agg": "max",
+   "unit": "°",
+   "phase": "hold",
+   "min": 15,
+   "max": 55
+  },
+  {
+   "id": "knees_chest_min",
+   "label": "膝不顶进胸口（胸廓–髋–膝夹角最小）",
+   "metric": "hipFlexDeg",
+   "agg": "min",
+   "unit": "°",
+   "phase": "hold",
+   "min": 15
+  },
+  {
+   "id": "knee_tuck",
+   "label": "团身屈膝（膝角，保持段最大；地面版臀只离地几厘米，脚刚离垫）",
+   "metric": "kneeMin",
+   "agg": "max",
+   "unit": "°",
+   "phase": "hold",
+   "max": 100
+  },
+  {
+   "id": "scap_down",
+   "label": "肩胛下压（肩关节相对胸廓，保持段最高处）",
+   "metric": "scapUp",
+   "agg": "max",
+   "unit": "mm",
+   "phase": "hold",
+   "min": -40,
+   "max": -15
+  },
+  {
+   "id": "trunk",
+   "label": "躯干前倾不过度（胸廓前倾，保持段；地面版手短，需前倾）",
+   "metric": "thoraxPitchDeg",
+   "agg": "max",
+   "unit": "°",
+   "phase": "hold",
+   "min": -5,
+   "max": 35
+  },
+  {
+   "id": "static",
+   "label": "静止（保持段臀高度变化）",
+   "metric": "seatFloorMm",
+   "agg": "range",
+   "unit": "mm",
+   "phase": "hold",
+   "max": 3
+  },
+  {
+   "id": "seated_start",
+   "label": "起始坐在垫上（臀最低点离垫）",
+   "metric": "seatFloorMm",
+   "agg": "max",
+   "unit": "mm",
+   "phase": "seated",
+   "min": -1,
+   "max": 3
+  },
+  {
+   "id": "seated_feet",
+   "label": "起始脚踩垫",
+   "metric": "footClearMm",
+   "agg": "max",
+   "unit": "mm",
+   "phase": "seated",
+   "min": -1,
+   "max": 3
+  },
+  {
+   "id": "hands_on_mat",
+   "label": "手掌平放在垫上（V5 手最低点离垫，最大）",
+   "metric": "handFloorMm",
+   "agg": "max",
+   "unit": "mm",
+   "phase": "all",
+   "min": -1,
+   "max": 4
+  },
+  {
+   "id": "hands_not_through",
+   "label": "手不穿垫（最小）",
+   "metric": "handFloorMm",
+   "agg": "min",
+   "unit": "mm",
+   "phase": "all",
+   "min": -2
+  },
+  {
+   "id": "palm_flat",
+   "label": "掌心平贴（V5 掌面法线偏离向下）",
+   "metric": "palmDownV5Max",
+   "agg": "max",
+   "unit": "°",
+   "phase": "all",
+   "max": 25
+  },
+  {
+   "id": "fingers_fwd",
+   "label": "指尖朝前（V5 手指方向偏离正前，两手最大）",
+   "metric": "fingerDevMax",
+   "agg": "max",
+   "unit": "°",
+   "phase": "all",
+   "max": 30
+  },
+  {
+   "id": "contacts_hands",
+   "label": "手掌不滑（V5 手骨漂移）",
+   "kind": "pins",
+   "which": "hands",
+   "max": 2,
+   "unit": "mm"
+  },
+  {
+   "id": "hold_time",
+   "label": "保持时长（脚离垫 ≥ 15 mm）",
+   "kind": "plateau_above",
+   "metric": "footClearMm",
+   "above": 15,
+   "min": 3.5,
+   "unit": "s"
+  },
+  {
+   "id": "head_neutral",
+   "label": "头中立",
+   "metric": "headVsTrunkDeg",
+   "agg": "max",
+   "unit": "°",
+   "phase": "all",
+   "max": 20
+  },
+  {
+   "id": "self_clip",
+   "label": "自身不穿模（关节胶囊最近距离）",
+   "kind": "summary",
+   "path": "selfClipWorst.mm",
+   "min": -8,
+   "unit": "mm"
+  },
+  {
+   "id": "v5_matches_hub",
+   "label": "V5 身体与求解姿态一致（最大关节偏差）",
+   "kind": "summary",
+   "path": "maxPosErrMm",
+   "max": 2,
+   "unit": "mm"
+  }
+ ]
+}
