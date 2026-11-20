@@ -2,6 +2,8 @@
 // Standard: tools/flare2-moves/standards/t-pike-hold.md. Imported from t-elevated-pike-hold (same frame, hands, solver, timing and
 // camera, so the two are filmed from exactly the same side view for comparison); only the feet change: balls of the feet on the mat,
 // walked in toward the hands, legs straight, hips the highest point. No chair.
+// Hands/arms come from t-elevated-pike-hold (r1 arm fix 2026-11-20: whole-arm outward roll, elbow pits toward the fingers, elbow not
+// twisted). This file is edited with every hand change there so its recipe hash changes too (produce.mjs re-renders by recipe hash).
 import base, { foot } from './t-elevated-pike-hold.js';
 const s = structuredClone(base);
 s.id = 't-pike-hold'; s.name = '地面派克支撑'; s.nameEn = 'Pike Hold';
