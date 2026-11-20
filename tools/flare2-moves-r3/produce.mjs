@@ -29,7 +29,7 @@ const args0=process.argv.slice(2),FINAL=args0.includes('--final');
 const SAMPLE_BATCH='batch2b';   // samples: only this batch; --final: all actions
 const PLAN={actions:PLAN0.actions.filter(a=>FINAL||a.priority===SAMPLE_BATCH).map(a=>({id:a.id,recipe:`catalog/production/flare2-moves-r3/recipes/${a.id}.json`}))};
 // RENDER = the commit whose render content was reported (samples and --final both render exactly this content)
-const RENDER='103c7c91b11aab8ab8be60a2b6455355a30a696d',RS=RENDER.slice(0,7);
+const RENDER='a7a1fb7667b61b60c2e241d0575dba1d02ac3fb0',RS=RENDER.slice(0,7);
 // paths that may differ from RENDER (none of them is read by the renderer)
 const RENDER_EXCLUDE=['tools/flare2-moves-r3/produce.mjs','tools/flare2-moves-r3/README.md','tools/flare2-moves-r3/cards','catalog/production/flare2-moves-r3/text'];
 const BASE='2b59eff26388faa05c9aafa17307c887cd74148c',QA_BRANCH=FINAL?'qa/flare2-moves-r3-final':'qa/flare2-moves-r3b';
