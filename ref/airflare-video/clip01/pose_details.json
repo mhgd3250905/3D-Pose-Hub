@@ -1,0 +1,224 @@
+{
+  "created_at_utc": "2026-11-20T01:18:10.279196+00:00",
+  "evidence_kind": "monocular_pose_model_estimates_not_ground_truth",
+  "source": {
+    "path": "E:\\AII-3D\\PoseHub-reference-downloads\\airflare-1fxOuGQcEsI\\verified\\airflare_01.mp4",
+    "sha256": "e8ecf89176ec4dff26db0f93e916508cca2691bf5bf0e52b891e054131fe7d91",
+    "decoded_frames": 156,
+    "width": 1920,
+    "height": 1080,
+    "fps": 30.0,
+    "duration_s": 5.2
+  },
+  "timing": "Zero-based frame index / source constant frame rate; no interpolation or extra frames",
+  "joint_positions": "SMPL24; original gravity-aligned world Y-up; metres at uncalibrated model scale",
+  "rotations": "SMPL-X 21 local body rotations plus separate global root orientation; axis-angle vectors in radians, NOT Euler XYZ; no finger/palm rotations estimated",
+  "camera_intrinsics": "Model pipeline camera intrinsics, potentially based on a focal-length heuristic; NOT measured calibration",
+  "native_cache": {
+    "path": "E:\\AII-MotionLab\\Motion2MixamoRig\\outputs\\trajectory_20261120_091701_843328\\gvhmr_work\\airflare_01\\hmr4d_results.pt",
+    "sha256": "3b1b83684cf167f3644bbbd932e3719c75912f7e4ad1db423ea5f8e52dabfc2a"
+  },
+  "keypoints_2d": {
+    "joint_order": [
+      "nose",
+      "left_eye",
+      "right_eye",
+      "left_ear",
+      "right_ear",
+      "left_shoulder",
+      "right_shoulder",
+      "left_elbow",
+      "right_elbow",
+      "left_wrist",
+      "right_wrist",
+      "left_hip",
+      "right_hip",
+      "left_knee",
+      "right_knee",
+      "left_ankle",
+      "right_ankle"
+    ],
+    "coordinates": "Original image pixels, origin top-left, X right, Y down",
+    "used_cache": "E:\\AII-MotionLab\\Motion2MixamoRig\\outputs\\trajectory_20261120_091701_843328\\gvhmr_work\\airflare_01\\preprocess\\vitpose.pt",
+    "raw_backup": "E:\\AII-MotionLab\\Motion2MixamoRig\\outputs\\trajectory_20261120_091701_843328\\gvhmr_work\\airflare_01\\preprocess\\vitpose_raw.pt",
+    "raw_backup_present": true,
+    "raw_equals_used_when_no_backup": false,
+    "changed_frame_count": 33,
+    "changed_frames": [
+      60,
+      64,
+      65,
+      67,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      82,
+      83,
+      97,
+      99,
+      100,
+      101,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      110,
+      133,
+      134,
+      135,
+      136,
+      137
+    ],
+    "raw_values_finite": true,
+    "used_values_finite": true,
+    "mean_body_joint_score_used": 0.630096435546875,
+    "score_note": "Native model scores, uncalibrated; high scores can be incorrect; raw and used scores remain paired with their respective joint labels"
+  },
+  "quality_checks_not_acceptance": {
+    "all_3d_values_finite": true,
+    "max_interframe_step_m_model_scale": 1.8240777254104614,
+    "largest_interframe_steps": [
+      {
+        "from_frame": 102,
+        "to_frame": 103,
+        "joint": "right_foot",
+        "step_m_model_scale": 1.8240777254104614
+      },
+      {
+        "from_frame": 102,
+        "to_frame": 103,
+        "joint": "right_ankle",
+        "step_m_model_scale": 1.7742432355880737
+      },
+      {
+        "from_frame": 102,
+        "to_frame": 103,
+        "joint": "left_foot",
+        "step_m_model_scale": 1.6376041173934937
+      },
+      {
+        "from_frame": 102,
+        "to_frame": 103,
+        "joint": "left_ankle",
+        "step_m_model_scale": 1.5196146965026855
+      },
+      {
+        "from_frame": 134,
+        "to_frame": 135,
+        "joint": "right_foot",
+        "step_m_model_scale": 1.0979113578796387
+      },
+      {
+        "from_frame": 134,
+        "to_frame": 135,
+        "joint": "right_ankle",
+        "step_m_model_scale": 1.095963478088379
+      },
+      {
+        "from_frame": 134,
+        "to_frame": 135,
+        "joint": "left_foot",
+        "step_m_model_scale": 1.0789740085601807
+      },
+      {
+        "from_frame": 102,
+        "to_frame": 103,
+        "joint": "right_knee",
+        "step_m_model_scale": 1.0211237668991089
+      },
+      {
+        "from_frame": 134,
+        "to_frame": 135,
+        "joint": "left_ankle",
+        "step_m_model_scale": 0.9294785261154175
+      },
+      {
+        "from_frame": 74,
+        "to_frame": 75,
+        "joint": "right_foot",
+        "step_m_model_scale": 0.9179832339286804
+      },
+      {
+        "from_frame": 102,
+        "to_frame": 103,
+        "joint": "left_knee",
+        "step_m_model_scale": 0.8497120141983032
+      },
+      {
+        "from_frame": 93,
+        "to_frame": 94,
+        "joint": "left_hand",
+        "step_m_model_scale": 0.8259158134460449
+      }
+    ]
+  },
+  "rendering": {
+    "overlay": "Stabilized 2D detector output on original source; NOT reprojected 3D; no audio",
+    "drawing_score_threshold": 0.35,
+    "export_filtering": "None; all raw and used keypoints exported",
+    "contact_sheet_frames": [
+      0,
+      22,
+      44,
+      66,
+      89,
+      111,
+      133,
+      155
+    ]
+  },
+  "limitations": [
+    "3D has no per-joint calibrated reliability score.",
+    "Monocular inversion, blur and self-occlusion can produce wrong depth, left/right labels and support contacts.",
+    "Positions outside the source frame are model inferences, not observed measurements.",
+    "Existing extractor may stabilize left/right labels before the 3D pass; native raw backup is retained when available.",
+    "No physical body scale or source-camera calibration was supplied; geometry and rotations require source-video review."
+  ],
+  "files": [
+    {
+      "path": "joints_3d_all.csv",
+      "bytes": 332249,
+      "sha256": "647c67345501cda0160a37b27e775d60eccbba84970d680f001a0f6ac1dfb3c8"
+    },
+    {
+      "path": "pose_parameters.npz",
+      "bytes": 90210,
+      "sha256": "0752b791756ea84a31748cd2ee38ff53b55d071632884f251c90084f9420cd20"
+    },
+    {
+      "path": "body_rotations_axis_angle.csv",
+      "bytes": 300892,
+      "sha256": "7bef065a43f4e32698060077cd62f017475b0258fae5198c4aec826e0dda05f1"
+    },
+    {
+      "path": "keypoints_2d.npz",
+      "bytes": 57493,
+      "sha256": "0566e6c7614ff2104409de5f7ba64a1a3092775011dc61470e97309603f67828"
+    },
+    {
+      "path": "keypoints_2d.csv",
+      "bytes": 387285,
+      "sha256": "ed9207c6cf4272f1e776dc7f7df344c35c6d23d5b88e80d523c1ada296b5f759"
+    },
+    {
+      "path": "overlay_2d.mp4",
+      "bytes": 6675019,
+      "sha256": "045e51db850a4029187e9e1e975b1ce85935e049f4218a0efb8a980791de741c"
+    },
+    {
+      "path": "contact_sheet.jpg",
+      "bytes": 497367,
+      "sha256": "e1633980b0d360c1bc4f7f6d4442ef2a0eca2da62076f9f8f7ef243eb96f69b2"
+    }
+  ]
+}

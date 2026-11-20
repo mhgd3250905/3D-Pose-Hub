@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-11-20T01:22:24.434330+00:00",
+  "evidence_kind": "monocular_model_estimate",
+  "source": {
+    "path": "E:\\AII-3D\\PoseHub-reference-downloads\\airflare-1fxOuGQcEsI\\verified\\airflare_02_clean.mp4",
+    "sha256": "3bd54404f78e8aa18ca08e2b0c66a6c4f3d820082552b2d201e04417f9e8cf7c",
+    "size_bytes": 77217639,
+    "automatic_preflight_result": "passed",
+    "preparation": "Unmodified source path.",
+    "pipeline_input_path": "E:\\AII-3D\\PoseHub-reference-downloads\\airflare-1fxOuGQcEsI\\verified\\airflare_02_clean.mp4",
+    "static_camera": true,
+    "device": "cuda"
+  },
+  "npz_file": "skeleton_motion.npz",
+  "npz_sha256": "6b13240f45b76a0aa9c640ebb1353b43358b278e106098556c95f51c456294b0",
+  "frame_count": 169,
+  "fps": 30.0,
+  "first_timestamp_s": 0.0,
+  "last_timestamp_s": 5.6,
+  "timing": "Upstream timestamps = frame index / playback FPS; these are not original per-frame container PTS.",
+  "joint_names": [
+    "pelvis",
+    "left_hip",
+    "right_hip",
+    "spine1",
+    "left_knee",
+    "right_knee",
+    "spine2",
+    "left_ankle",
+    "right_ankle",
+    "spine3",
+    "left_foot",
+    "right_foot",
+    "neck",
+    "left_collar",
+    "right_collar",
+    "head",
+    "left_shoulder",
+    "right_shoulder",
+    "left_elbow",
+    "right_elbow",
+    "left_wrist",
+    "right_wrist",
+    "left_hand",
+    "right_hand"
+  ],
+  "units": {
+    "joint_positions": "metres (model-estimated scale)",
+    "timestamps": "seconds",
+    "root_orientation": "axis-angle vector, radians"
+  },
+  "coordinate_system": {
+    "joint_positions": "GVHMR world-grounded Y-up coordinates as emitted by upstream extract_motion.",
+    "horizontal_axes": "X/Z are estimator world axes; do not assume camera right/forward or R14 alignment.",
+    "root_motion": "Unmodified GVHMR smpl_params_world transl/global_orient; no coordinate conversion applied.",
+    "registration": "No alignment, rescaling, retargeting or comparison with R14 has been performed."
+  },
+  "csv": {
+    "joint_files": "joints/00_pelvis.csv through joints/23_right_hand.csv",
+    "root_file": "root_motion.csv",
+    "frame_index_base": 0
+  },
+  "limitations": [
+    "Monocular model estimates, not measured ground truth or validated motion capture.",
+    "Occlusion, inversion and rapid rotation may produce incorrect depth, left/right identity and contact timing.",
+    "Overlay estimates on the source video and review before using them to modify an animation.",
+    "Wrist/hand joints do not establish palm orientation or true support contacts.",
+    "Upstream model/software licence restrictions remain applicable; reference use does not waive them."
+  ]
+}
