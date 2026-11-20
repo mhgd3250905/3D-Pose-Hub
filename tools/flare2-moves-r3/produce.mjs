@@ -24,7 +24,7 @@ const PLAN0=JSON.parse(fs.readFileSync(path.join(HERE,'actions.json'),'utf8'));
 const PLAN={actions:PLAN0.actions.map(a=>({id:a.id,recipe:`catalog/production/flare2-moves-r3/recipes/${a.id}.json`}))};
 const args0=process.argv.slice(2),FINAL=args0.includes('--final');
 // RENDER = the commit whose render content was reported (samples and --final both render exactly this content)
-const RENDER='138e3e935788db70752387687366e37a41df464d',RS=RENDER.slice(0,7);
+const RENDER='103c7c91b11aab8ab8be60a2b6455355a30a696d',RS=RENDER.slice(0,7);
 // paths that may differ from RENDER (none of them is read by the renderer)
 const RENDER_EXCLUDE=['tools/flare2-moves-r3/produce.mjs','tools/flare2-moves-r3/README.md','tools/flare2-moves-r3/cards','catalog/production/flare2-moves-r3/text'];
 const BASE='2b59eff26388faa05c9aafa17307c887cd74148c',QA_BRANCH=FINAL?'qa/flare2-moves-r3-final':'qa/flare2-moves-r3';
