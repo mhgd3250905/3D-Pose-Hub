@@ -1,0 +1,176 @@
+{
+ "format": "flare2-moves-pack-fields@1",
+ "status": "draft-ai-needs-user-review",
+ "note": "Flare 2.0 r2 第 1 批新动作 6 个进 pack 需要、而文字稿（catalog/production/flare2-moves-r2/text）里没有的目录字段。按目录 taxonomy 词表填写：muscleGroups 取文字稿 tags.activeMuscles 换成目录词表（glutes→glute-max；颈侧拉伸的上斜方肌目录词表没有，只记 neck）；Flare 热身 v2 / 练后三档表（2026-11-21）没给剂量范围，doseRange 一律按 defaultDose 单点记（上下限相同），练后的秒数/次数本身也是草稿（表里没写），等开哥/mhgd 定；equipment：只有侧卧直腿外展用瑜伽垫，其余徒手 []；position：侧卧直腿外展 side_lying，其余 standing；category：开合踏步 cardio、颈腕指唤醒和宽距侧蹲 mobility、两个拉伸 stretch、侧卧外展 strength（同文字稿 tags.category）；contraindications 取文字稿 cautions 写到的部位（开合踏步 肩、颈腕指唤醒 颈、宽距侧蹲 膝+大腿内侧、颈侧拉伸 颈、屈腕拉伸 手腕、侧卧外展 髋）；alternative 文字稿都没明说前置/替代，一律 null。scenes 不在这里：build 按器械与体位推导。apps 一律 []（不标 flarelab：Flare 不读目录 apps/tags，它用 app/lib/data/flare_action_scope.dart 的 id 白名单 + app/assets/data/flare-plans.json 里的 drill id 取动作，见 REVIEW-DRAFTS.md），tags [\"thomas\",\"flare2:moves-r2\"]。",
+ "apps": [],
+ "tags": [
+  "thomas",
+  "flare2:moves-r2"
+ ],
+ "actions": {
+  "t-step-jack-arm-circles": {
+   "muscleGroups": [
+    "deltoids",
+    "hip-abductors"
+   ],
+   "equipment": [],
+   "category": "cardio",
+   "position": "standing",
+   "contraindications": [
+    "肩"
+   ],
+   "alternative": null,
+   "doseRange": {
+    "sets": [
+     1,
+     1
+    ],
+    "seconds": [
+     60,
+     60
+    ],
+    "restSeconds": [
+     15,
+     15
+    ]
+   }
+  },
+  "t-neck-wrist-finger-wakeup": {
+   "muscleGroups": [
+    "neck",
+    "forearms"
+   ],
+   "equipment": [],
+   "category": "mobility",
+   "position": "standing",
+   "contraindications": [
+    "颈"
+   ],
+   "alternative": null,
+   "doseRange": {
+    "sets": [
+     1,
+     1
+    ],
+    "seconds": [
+     45,
+     45
+    ],
+    "restSeconds": [
+     15,
+     15
+    ]
+   }
+  },
+  "t-wide-side-squat-shift": {
+   "muscleGroups": [
+    "adductors",
+    "quadriceps",
+    "glute-max"
+   ],
+   "equipment": [],
+   "category": "mobility",
+   "position": "standing",
+   "contraindications": [
+    "膝",
+    "大腿内侧"
+   ],
+   "alternative": null,
+   "doseRange": {
+    "sets": [
+     1,
+     1
+    ],
+    "reps": [
+     5,
+     5
+    ],
+    "restSeconds": [
+     30,
+     30
+    ]
+   }
+  },
+  "t-standing-neck-side-stretch": {
+   "muscleGroups": [
+    "neck"
+   ],
+   "equipment": [],
+   "category": "stretch",
+   "position": "standing",
+   "contraindications": [
+    "颈"
+   ],
+   "alternative": null,
+   "doseRange": {
+    "sets": [
+     1,
+     1
+    ],
+    "seconds": [
+     30,
+     30
+    ],
+    "restSeconds": [
+     10,
+     10
+    ]
+   }
+  },
+  "t-standing-wrist-flexor-stretch": {
+   "muscleGroups": [
+    "forearms"
+   ],
+   "equipment": [],
+   "category": "stretch",
+   "position": "standing",
+   "contraindications": [
+    "手腕"
+   ],
+   "alternative": null,
+   "doseRange": {
+    "sets": [
+     1,
+     1
+    ],
+    "seconds": [
+     30,
+     30
+    ],
+    "restSeconds": [
+     10,
+     10
+    ]
+   }
+  },
+  "t-side-lying-straight-leg-abduction": {
+   "muscleGroups": [
+    "hip-abductors",
+    "glute-max"
+   ],
+   "equipment": [
+    "mat"
+   ],
+   "category": "strength",
+   "position": "side_lying",
+   "contraindications": [
+    "髋"
+   ],
+   "alternative": null,
+   "doseRange": {
+    "sets": [
+     1,
+     1
+    ],
+    "reps": [
+     10,
+     10
+    ],
+    "restSeconds": [
+     15,
+     15
+    ]
+   }
+  }
+ }
+}
