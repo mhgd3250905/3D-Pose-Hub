@@ -1,0 +1,207 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "t-forearm-side-plank",
+ "reviewStatus": "draft-ai-needs-user-review",
+ "sources": [
+  "Flare 2.0 练后 专项补强 + Flare2 2026-11-21（Google 表 1aCseEk4vslsG-QKb-zsZwg30amvoYh5tMxzy6p9n8vA，练后专项补强：前臂侧桥（直腿））",
+  "drill-anim/specs/t-forearm-side-plank.js",
+  "tools/flare2-moves-r3/standards/t-forearm-side-plank.md"
+ ],
+ "name": {
+  "zh": "前臂侧桥（直腿）",
+  "en": "Forearm Side Plank"
+ },
+ "purpose": {
+  "zh": "直腿侧桥，练身体侧面和肩膀的支撑力，让单手和侧向支撑更稳",
+  "en": "A straight-leg side plank on the forearm. Builds side-body and shoulder strength for one-arm and sideways supports."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "手肘在肩正下方，髋抬高，头到脚一条线",
+    "en": "Elbow under shoulder, hips high, one line"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "侧躺，前臂撑地朝前，双腿伸直并拢。",
+    "en": "On your side, forearm on the mat pointing forward, legs straight and together."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "胸口朝正前方，不往前扑也不往后倒。",
+    "en": "Chest faces straight ahead, not rolling forward or back."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "上面的手臂伸直指向天花板，或扶在髋上。",
+    "en": "Top arm straight up to the ceiling, or hand on the hip."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "髋往下塌",
+   "en": "Letting the hips sag."
+  },
+  {
+   "zh": "手肘离肩膀太远",
+   "en": "Elbow too far from under the shoulder."
+  },
+  {
+   "zh": "耸肩、头往下掉",
+   "en": "Shoulder shrugging up and the head dropping."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "肩膀疼就改成屈膝侧桥",
+   "en": "If your shoulder hurts, switch to the bent-knee side plank."
+  }
+ ],
+ "tags": {
+  "category": "stability",
+  "activeMuscles": [
+   "obliques"
+  ],
+  "synergistMuscles": [
+   "deltoids",
+   "glutes"
+  ],
+  "equipment": [
+   "mat"
+  ],
+  "position": "side-lying",
+  "difficulty": 2
+ },
+ "unilateral": true,
+ "startingSide": "left",
+ "defaultDose": {
+  "mode": "time",
+  "sets": 1,
+  "seconds": 20,
+  "restSeconds": 15
+ },
+ "phases": {
+  "start": {
+   "zh": "前臂撑地侧躺",
+   "en": "Side, on forearm"
+  },
+  "peak": {
+   "zh": "髋抬高成直线",
+   "en": "Hips up, one line"
+  },
+  "end": {
+   "zh": "髋放下",
+   "en": "Hips down"
+  }
+ },
+ "training": {
+  "kind": "hold",
+  "leadSeconds": 3,
+  "perSide": "each-side-separately",
+  "sideSwitchSeconds": 10
+ },
+ "flare2": {
+  "version": "r3",
+  "batch": "2a",
+  "item": "练后专项补强：前臂侧桥（直腿）",
+  "camera": "正前略偏（看得到肘在肩下、髋高度和头到脚一条线）",
+  "doseBrief": "表：静态每侧 20 秒；草稿 1 组（组数待定）；动画左侧着地示范，App 镜像",
+  "doseStatus": "draft (AI, 开哥 to confirm)",
+  "status": "draft-awaiting-user-review",
+  "note": "Animation r3: left side down, left forearm flat forward, elbow under the shoulder (sandbox 0.1 cm), legs straight and stacked, right arm to the ceiling; static 8 s loop. One side shown, the app mirrors.",
+  "standard": "tools/flare2-moves-r3/standards/t-forearm-side-plank.md"
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 4,
+    "role": "posture",
+    "zh": "手肘在肩膀正下方，前臂朝前",
+    "en": "Elbow right under the shoulder, forearm forward",
+    "from": [
+     "cue1",
+     "cue2",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "at": 9,
+    "role": "form",
+    "zh": "髋往上顶，头到脚一条直线",
+    "en": "Hips up, one straight line from head to feet",
+    "from": [
+     "cue1",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "at": 13,
+    "role": "form",
+    "zh": "胸口朝正前方，肩膀离耳朵远一点",
+    "en": "Chest facing forward, shoulder away from your ear",
+    "from": [
+     "cue3",
+     "commonErrors[2]"
+    ]
+   },
+   {
+    "at": 17,
+    "key": "n.3"
+   },
+   {
+    "at": 18,
+    "key": "n.2"
+   },
+   {
+    "at": 19,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSetsSameSide": [
+    "p.rest",
+    "sec.15"
+   ],
+   "sideDone": [
+    "p.release",
+    "p.switch_right"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
+  },
+  "sides": {
+   "order": [
+    "left",
+    "right"
+   ],
+   "perSide": "each-side-separately",
+   "note": "先左侧着地，再右侧；换边准备 10 秒（training.sideSwitchSeconds，App 未接入）"
+  }
+ }
+}

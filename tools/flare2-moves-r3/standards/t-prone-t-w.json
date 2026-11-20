@@ -1,0 +1,261 @@
+{
+ "format": "flare2-moves-standard@1",
+ "id": "t-prone-t-w",
+ "nameZh": "俯卧 T-W",
+ "doc": "tools/flare2-moves-r3/standards/t-prone-t-w.md",
+ "phases": {
+  "rest": "手臂放在垫上（T 或 W 形；T、W 之间换形时手离垫约 3 cm 轻移，不算放下段）",
+  "thold": "T 顶端停 2 秒：双臂伸直侧平举、拇指朝上，整条手臂离垫，肩胛夹紧",
+  "whold": "W 顶端停 2 秒：肘贴近身体两侧（上臂与躯干约 45°）、屈肘约 90°、前臂外旋使手高于肘，手臂离垫，肩胛夹紧"
+ },
+ "series": [
+  "armAbdMin",
+  "armAbdMax",
+  "elbowMin",
+  "handLiftMin",
+  "armLiftMin",
+  "forearmElevMin",
+  "thumbUpDegL",
+  "thumbUpDegR",
+  "scapFwd",
+  "torsoFloorMm"
+ ],
+ "checks": [
+  {
+   "id": "t_abd_lo",
+   "label": "T：手臂侧平举（与躯干夹角，最小）",
+   "metric": "armAbdMin",
+   "agg": "min",
+   "unit": "°",
+   "phase": "thold",
+   "min": 80
+  },
+  {
+   "id": "t_abd_hi",
+   "label": "T：不往上变成 Y（最大）",
+   "metric": "armAbdMax",
+   "agg": "max",
+   "unit": "°",
+   "phase": "thold",
+   "max": 100
+  },
+  {
+   "id": "t_straight",
+   "label": "T：手臂伸直（肘最小角）",
+   "metric": "elbowMin",
+   "agg": "min",
+   "unit": "°",
+   "phase": "thold",
+   "min": 168
+  },
+  {
+   "id": "t_thumbs",
+   "label": "T：拇指朝上（拇指方向偏离竖直向上，左）",
+   "metric": "thumbUpDegL",
+   "agg": "max",
+   "unit": "°",
+   "phase": "thold",
+   "max": 40
+  },
+  {
+   "id": "t_thumbs_r",
+   "label": "T：拇指朝上（右）",
+   "metric": "thumbUpDegR",
+   "agg": "max",
+   "unit": "°",
+   "phase": "thold",
+   "max": 40
+  },
+  {
+   "id": "t_lift",
+   "label": "T：整条手臂离垫（手臂最低点）",
+   "metric": "armLiftMin",
+   "agg": "min",
+   "unit": "mm",
+   "phase": "thold",
+   "min": 25
+  },
+  {
+   "id": "t_lift_hi",
+   "label": "T：抬起幅度适中（手最低点不超过）",
+   "metric": "handLiftMin",
+   "agg": "max",
+   "unit": "mm",
+   "phase": "thold",
+   "max": 180
+  },
+  {
+   "id": "w_abd_lo",
+   "label": "W：肘贴近身体两侧（上臂与躯干夹角，最小）",
+   "metric": "armAbdMin",
+   "agg": "min",
+   "unit": "°",
+   "phase": "whold",
+   "min": 30
+  },
+  {
+   "id": "w_abd_hi",
+   "label": "W：肘不外张（最大）",
+   "metric": "armAbdMax",
+   "agg": "max",
+   "unit": "°",
+   "phase": "whold",
+   "max": 60
+  },
+  {
+   "id": "w_elbow_lo",
+   "label": "W：屈肘约 90°（最小）",
+   "metric": "elbowMin",
+   "agg": "min",
+   "unit": "°",
+   "phase": "whold",
+   "min": 75
+  },
+  {
+   "id": "w_elbow_hi",
+   "label": "W：屈肘约 90°（两肘中较小者最大）",
+   "metric": "elbowMin",
+   "agg": "max",
+   "unit": "°",
+   "phase": "whold",
+   "max": 110
+  },
+  {
+   "id": "w_er",
+   "label": "W：前臂外旋上抬（手高于肘，前臂仰角最小）",
+   "metric": "forearmElevMin",
+   "agg": "min",
+   "unit": "°",
+   "phase": "whold",
+   "min": 5
+  },
+  {
+   "id": "w_lift",
+   "label": "W：手臂离垫（手臂最低点）",
+   "metric": "armLiftMin",
+   "agg": "min",
+   "unit": "mm",
+   "phase": "whold",
+   "min": 20
+  },
+  {
+   "id": "w_lift_hi",
+   "label": "W：抬起幅度适中（手最低点不超过）",
+   "metric": "handLiftMin",
+   "agg": "max",
+   "unit": "mm",
+   "phase": "whold",
+   "max": 200
+  },
+  {
+   "id": "no_y",
+   "label": "全程不做 Y（上臂与躯干夹角最大）",
+   "metric": "armAbdMax",
+   "agg": "max",
+   "unit": "°",
+   "phase": "all",
+   "max": 105
+  },
+  {
+   "id": "rest_on_mat",
+   "label": "放下时手臂回到垫上（手最低点）",
+   "metric": "handLiftMin",
+   "agg": "max",
+   "unit": "mm",
+   "phase": "rest",
+   "max": 8
+  },
+  {
+   "id": "hand_floor",
+   "label": "手不穿垫",
+   "metric": "handLiftMin",
+   "agg": "min",
+   "unit": "mm",
+   "phase": "all",
+   "min": -2
+  },
+  {
+   "id": "arm_floor",
+   "label": "手臂不穿垫",
+   "metric": "armLiftMin",
+   "agg": "min",
+   "unit": "mm",
+   "phase": "all",
+   "min": -2
+  },
+  {
+   "id": "torso_floor_lo",
+   "label": "躯干不穿垫",
+   "metric": "torsoFloorMm",
+   "agg": "min",
+   "unit": "mm",
+   "phase": "all",
+   "min": -2
+  },
+  {
+   "id": "torso_floor_hi",
+   "label": "躯干贴垫（俯卧）",
+   "metric": "torsoFloorMm",
+   "agg": "max",
+   "unit": "mm",
+   "phase": "all",
+   "max": 12
+  },
+  {
+   "id": "feet_floor",
+   "label": "脚不穿垫",
+   "metric": "footClearMm",
+   "agg": "min",
+   "unit": "mm",
+   "phase": "all",
+   "min": -2
+  },
+  {
+   "id": "feet_on_mat",
+   "label": "脚背放在垫上（脚最低点）",
+   "metric": "footClearMm",
+   "agg": "max",
+   "unit": "mm",
+   "phase": "all",
+   "max": 15
+  },
+  {
+   "id": "head_floor",
+   "label": "脸不贴进垫子（头最低点）",
+   "metric": "headFloorMm",
+   "agg": "min",
+   "unit": "mm",
+   "phase": "all",
+   "min": 3
+  },
+  {
+   "id": "retract",
+   "label": "顶端肩胛后缩（保持段减放下段，肩关节前后位置）",
+   "kind": "diff",
+   "metric": "scapFwd",
+   "phase": "thold",
+   "agg": "mean",
+   "phase2": "rest",
+   "agg2": "mean",
+   "max": -8,
+   "unit": "mm"
+  },
+  {
+   "id": "hold_len",
+   "label": "顶端停留（手离垫 ≥ 40 mm 的最长连续时间）",
+   "kind": "plateau_above",
+   "metric": "handLiftMin",
+   "above": 40,
+   "min": 1.9,
+   "unit": "s"
+  },
+  {
+   "id": "self_clip",
+   "label": "身体自穿插（胶囊最差间隙）",
+   "kind": "summary",
+   "path": "selfClipWorst.mm",
+   "min": -8,
+   "unit": "mm"
+  }
+ ]
+}

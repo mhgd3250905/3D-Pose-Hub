@@ -1,0 +1,156 @@
+{
+ "format": "flare2-moves-standard@1",
+ "id": "t-straight-arm-side-plank-switch",
+ "nameZh": "直臂侧桥转换",
+ "doc": "tools/flare2-moves-r3/standards/t-straight-arm-side-plank-switch.md",
+ "phases": {
+  "plank": "直臂平板：手在肩下、锁肘、身体一条线、脚尖着地",
+  "side": "直臂侧桥（左右各一次）：撑地手臂锁肘、肩叠在手正上方，上手指天，髋高、身体一条线，双脚前后错开以脚侧着地",
+  "all": "整段：撑地手臂始终锁肘（不做俯卧撑），身体整体转动"
+ },
+ "series": [
+  "plantedElbowMin",
+  "supShOverHandCm",
+  "chestFrontTiltDeg",
+  "hipOffsetMm",
+  "topArmFromUpDeg",
+  "footClearMm",
+  "feetBothDownMm",
+  "handFloorMm"
+ ],
+ "checks": [
+  {
+   "id": "locked_all",
+   "label": "撑地手臂全程锁肘（着地手的肘最小角）",
+   "metric": "plantedElbowMin",
+   "agg": "min",
+   "unit": "°",
+   "phase": "all",
+   "min": 172
+  },
+  {
+   "id": "locked_plank",
+   "label": "平板时双臂锁肘",
+   "metric": "elbowMin",
+   "agg": "min",
+   "unit": "°",
+   "phase": "plank",
+   "min": 175
+  },
+  {
+   "id": "sh_over_hand",
+   "label": "侧桥：肩在撑地手正上方（水平偏差）",
+   "metric": "supShOverHandCm",
+   "agg": "max",
+   "unit": "cm",
+   "phase": "side",
+   "max": 6
+  },
+  {
+   "id": "turned",
+   "label": "侧桥：身体转满（胸前方向偏离水平，最大）",
+   "metric": "chestFrontTiltDeg",
+   "agg": "max",
+   "unit": "°",
+   "phase": "side",
+   "max": 15
+  },
+  {
+   "id": "turned2",
+   "label": "侧桥：身体转满（最小）",
+   "metric": "chestFrontTiltDeg",
+   "agg": "min",
+   "unit": "°",
+   "phase": "side",
+   "min": -15
+  },
+  {
+   "id": "plank_face_down",
+   "label": "平板：胸口朝下",
+   "metric": "chestFrontTiltDeg",
+   "agg": "max",
+   "unit": "°",
+   "phase": "plank",
+   "max": -60
+  },
+  {
+   "id": "top_arm",
+   "label": "侧桥：上手指天（偏离竖直）",
+   "metric": "topArmFromUpDeg",
+   "agg": "max",
+   "unit": "°",
+   "phase": "side",
+   "max": 20
+  },
+  {
+   "id": "line_lo",
+   "label": "全程身体一条线：不塌腰",
+   "metric": "hipOffsetMm",
+   "agg": "min",
+   "unit": "mm",
+   "phase": "all",
+   "min": -30
+  },
+  {
+   "id": "line_hi",
+   "label": "全程身体一条线：不撅臀",
+   "metric": "hipOffsetMm",
+   "agg": "max",
+   "unit": "mm",
+   "phase": "all",
+   "max": 35
+  },
+  {
+   "id": "knees",
+   "label": "腿伸直",
+   "metric": "kneeMin",
+   "agg": "min",
+   "unit": "°",
+   "phase": "all",
+   "min": 170
+  },
+  {
+   "id": "hand_floor_min",
+   "label": "手不穿地",
+   "metric": "handFloorMm",
+   "agg": "min",
+   "unit": "mm",
+   "phase": "all",
+   "min": -2
+  },
+  {
+   "id": "feet_floor_min",
+   "label": "脚不穿地",
+   "metric": "footClearMm",
+   "agg": "min",
+   "unit": "mm",
+   "phase": "all",
+   "min": -2
+  },
+  {
+   "id": "feet_both_down",
+   "label": "双脚始终着地（较高那只脚最低点）",
+   "metric": "feetBothDownMm",
+   "agg": "max",
+   "unit": "mm",
+   "phase": "all",
+   "max": 8
+  },
+  {
+   "id": "hand_pins",
+   "label": "撑地手不滑（最大漂移）",
+   "kind": "pins",
+   "which": "hands",
+   "max": 3,
+   "unit": "mm"
+  },
+  {
+   "id": "self_clip",
+   "label": "身体自穿插（胶囊最差间隙）",
+   "kind": "summary",
+   "path": "selfClipWorst.mm",
+   "min": -8,
+   "unit": "mm"
+  }
+ ]
+}

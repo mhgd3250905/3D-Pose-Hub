@@ -1,0 +1,186 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "t-planche-lean-hold",
+ "reviewStatus": "draft-ai-needs-user-review",
+ "sources": [
+  "Flare 2.0 练后 专项补强 + Flare2 2026-11-21（Google 表 1aCseEk4vslsG-QKb-zsZwg30amvoYh5tMxzy6p9n8vA，Flare2：前倾支撑（静态））",
+  "drill-anim/specs/t-planche-lean-hold.js",
+  "tools/flare2-moves-r3/standards/t-planche-lean-hold.md"
+ ],
+ "name": {
+  "zh": "前倾支撑",
+  "en": "Planche Lean Hold"
+ },
+ "purpose": {
+  "zh": "直臂撑地、肩膀前移过手腕并停住，练肩前侧和手腕的承重，为 Flare 和俄挺打底",
+  "en": "Straight-arm support with the shoulders moved forward past the wrists, held still. Loads the front of the shoulders and the wrists, a base for flares and planche work."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "锁肘，肩膀前移过手腕，身体一条线",
+    "en": "Elbows locked, shoulders past wrists, one line"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "手指朝外 45 到 90 度，绝不朝后。",
+    "en": "Fingers turned out 45 to 90 degrees, never pointing back."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "肩胛往前推开、往下压，背微微拱起。",
+    "en": "Push the shoulder blades apart and down, upper back slightly rounded."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "脚尖撑地，臀部和腿夹紧，不塌腰。",
+    "en": "On your toes, glutes and legs tight, no sagging."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "手肘弯",
+   "en": "Bending the elbows."
+  },
+  {
+   "zh": "手指朝后",
+   "en": "Turning the fingers backward."
+  },
+  {
+   "zh": "塌腰或撅屁股",
+   "en": "Sagging or piking the hips."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "手腕刺疼就减小前倾",
+   "en": "If your wrists hurt sharply, lean less."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "deltoids",
+   "serratus"
+  ],
+  "synergistMuscles": [
+   "forearms",
+   "abs"
+  ],
+  "equipment": [
+   "mat"
+  ],
+  "position": "plank",
+  "difficulty": 2
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "time",
+  "sets": 3,
+  "seconds": 15,
+  "restSeconds": 30
+ },
+ "phases": {
+  "start": {
+   "zh": "直臂撑地",
+   "en": "Straight-arm plank"
+  },
+  "peak": {
+   "zh": "前倾撑住",
+   "en": "Lean hold"
+  },
+  "end": {
+   "zh": "膝盖放下",
+   "en": "Knees down"
+  }
+ },
+ "training": {
+  "kind": "hold",
+  "leadSeconds": 3
+ },
+ "flare2": {
+  "version": "r3",
+  "batch": "2a",
+  "item": "Flare2：前倾支撑（静态）",
+  "camera": "头侧前方斜上（看得到手指朝外、肩超过手腕和身体一条线）",
+  "doseBrief": "表：15 秒 × 3 组（草稿）",
+  "doseStatus": "draft (AI, 开哥 to confirm)",
+  "status": "draft-awaiting-user-review",
+  "note": "Animation r3: the held position of t-planche-lean r2 (shoulders ~11 cm past the wrists, fingers ~65 deg out, scapula protraction + depression), static 8 s loop.",
+  "standard": "tools/flare2-moves-r3/standards/t-planche-lean-hold.md"
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 4,
+    "role": "posture",
+    "zh": "手指朝外，手肘锁直",
+    "en": "Fingers turned out, elbows locked",
+    "from": [
+     "cue1",
+     "cue2",
+     "commonErrors[0]",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "at": 8,
+    "role": "form",
+    "zh": "肩膀在手腕前面，身体一条线",
+    "en": "Shoulders past the wrists, body in one line",
+    "from": [
+     "cue1",
+     "cue4",
+     "commonErrors[2]"
+    ]
+   },
+   {
+    "at": 12,
+    "key": "n.3"
+   },
+   {
+    "at": 13,
+    "key": "n.2"
+   },
+   {
+    "at": 14,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.release",
+    "p.rest",
+    "sec.30"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
+  }
+ }
+}

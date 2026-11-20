@@ -1,0 +1,226 @@
+{
+ "format": "flare2-moves-standard@1",
+ "id": "t-kneeling-wrist-pushup",
+ "nameZh": "跪姿手腕俯卧撑",
+ "doc": "tools/flare2-moves-r3/standards/t-kneeling-wrist-pushup.md",
+ "phases": {
+  "flat": "手掌平贴垫子",
+  "top": "顶端：掌根抬到指根，只剩手指（指根以下）压在垫上，锁肘",
+  "lower": "3 秒慢放回平贴",
+  "all": "整段：锁肘、手指平贴不动、膝-髋-肩一条线"
+ },
+ "series": [
+  "elbowMin",
+  "heelLiftMin",
+  "heelLiftMax",
+  "handFloorMm",
+  "handAxisFwdDevMax",
+  "hipOffsetKneeMm",
+  "shoulderLeadCm",
+  "kneeFloorMinMm",
+  "fingerDevMax"
+ ],
+ "checks": [
+  {
+   "id": "locked",
+   "label": "全程锁肘（两肘最小角）",
+   "metric": "elbowMin",
+   "agg": "min",
+   "unit": "°",
+   "phase": "all",
+   "min": 175
+  },
+  {
+   "id": "lift_top_lo",
+   "label": "顶端掌根抬到指根（掌骨线抬起角，两手较小者）",
+   "metric": "heelLiftMin",
+   "agg": "min",
+   "unit": "°",
+   "phase": "top",
+   "min": 50
+  },
+  {
+   "id": "lift_top_hi",
+   "label": "顶端不过度（两手较大者）",
+   "metric": "heelLiftMax",
+   "agg": "max",
+   "unit": "°",
+   "phase": "top",
+   "max": 65
+  },
+  {
+   "id": "flat_lo",
+   "label": "放下：手掌平贴（掌骨线角，最小）",
+   "metric": "heelLiftMin",
+   "agg": "min",
+   "unit": "°",
+   "phase": "flat",
+   "min": -8
+  },
+  {
+   "id": "flat_hi",
+   "label": "放下：手掌平贴（最大）",
+   "metric": "heelLiftMax",
+   "agg": "max",
+   "unit": "°",
+   "phase": "flat",
+   "max": 6
+  },
+  {
+   "id": "sym",
+   "label": "双手同时（左右抬起角差）",
+   "metric": "heelLiftAsym",
+   "agg": "max",
+   "unit": "°",
+   "phase": "all",
+   "max": 3
+  },
+  {
+   "id": "slow_lower",
+   "label": "慢放 3 秒（缓起缓停；掌骨线角从 97% 降到 3% 的时间 ≥ 2.2 秒）",
+   "kind": "transition",
+   "metric": "heelLiftMin",
+   "dir": "down",
+   "frac": [
+    0.03,
+    0.97
+   ],
+   "min": 2.2,
+   "unit": "s"
+  },
+  {
+   "id": "top_pause",
+   "label": "顶端停顿（抬起角在最大值 3° 内的时间）",
+   "kind": "plateau",
+   "metric": "heelLiftMin",
+   "ref": "max",
+   "tol": 3,
+   "min": 0.4,
+   "unit": "s"
+  },
+  {
+   "id": "reps",
+   "label": "每循环 2 次",
+   "kind": "reps",
+   "metric": "heelLiftMin",
+   "ref": "max",
+   "tol": 3,
+   "min": 2,
+   "max": 2,
+   "unit": "次"
+  },
+  {
+   "id": "fingers_floor_min",
+   "label": "手指不穿垫（手最低点）",
+   "metric": "handFloorMm",
+   "agg": "min",
+   "unit": "mm",
+   "phase": "all",
+   "min": -2
+  },
+  {
+   "id": "fingers_floor_max",
+   "label": "手指始终压在垫上（手最低点）",
+   "metric": "handFloorMm",
+   "agg": "max",
+   "unit": "mm",
+   "phase": "all",
+   "max": 6
+  },
+  {
+   "id": "mcp_pivot",
+   "label": "指根（中指掌指关节）不动（最大漂移）",
+   "kind": "mcp_drift",
+   "phase": "all",
+   "max": 6,
+   "unit": "mm"
+  },
+  {
+   "id": "fingers_fwd",
+   "label": "手指朝前（V5 掌骨线偏离正前，两手最大）",
+   "metric": "handAxisFwdDevMax",
+   "agg": "max",
+   "unit": "°",
+   "phase": "all",
+   "max": 12
+  },
+  {
+   "id": "line_lo",
+   "label": "膝-髋-肩一条线：不塌腰",
+   "metric": "hipOffsetKneeMm",
+   "agg": "min",
+   "unit": "mm",
+   "phase": "all",
+   "min": -25
+  },
+  {
+   "id": "line_hi",
+   "label": "膝-髋-肩一条线：不撅臀",
+   "metric": "hipOffsetKneeMm",
+   "agg": "max",
+   "unit": "mm",
+   "phase": "all",
+   "max": 25
+  },
+  {
+   "id": "shoulder_over",
+   "label": "肩在手上方（侧视肩超过手腕，平贴时）",
+   "metric": "shoulderLeadCm",
+   "agg": "max",
+   "unit": "cm",
+   "phase": "flat",
+   "max": 6
+  },
+  {
+   "id": "shoulder_over2",
+   "label": "肩不落在手后方太多（平贴时）",
+   "metric": "shoulderLeadCm",
+   "agg": "min",
+   "unit": "cm",
+   "phase": "flat",
+   "min": -6
+  },
+  {
+   "id": "knee_floor_lo",
+   "label": "膝不穿垫",
+   "metric": "kneeFloorMinMm",
+   "agg": "min",
+   "unit": "mm",
+   "phase": "all",
+   "min": -2
+  },
+  {
+   "id": "knee_floor_hi",
+   "label": "膝着垫",
+   "metric": "kneeFloorMinMm",
+   "agg": "max",
+   "unit": "mm",
+   "phase": "all",
+   "max": 6
+  },
+  {
+   "id": "feet_floor",
+   "label": "脚不穿垫",
+   "metric": "footClearMm",
+   "agg": "min",
+   "unit": "mm",
+   "phase": "all",
+   "min": -2
+  },
+  {
+   "id": "pins",
+   "label": "手脚支点不滑（最大漂移）",
+   "kind": "pins",
+   "max": 3,
+   "unit": "mm"
+  },
+  {
+   "id": "self_clip",
+   "label": "身体自穿插（胶囊最差间隙）",
+   "kind": "summary",
+   "path": "selfClipWorst.mm",
+   "min": -8,
+   "unit": "mm"
+  }
+ ]
+}

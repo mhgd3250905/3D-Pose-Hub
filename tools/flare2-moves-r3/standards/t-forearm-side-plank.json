@@ -1,0 +1,180 @@
+{
+ "format": "flare2-moves-standard@1",
+ "id": "t-forearm-side-plank",
+ "nameZh": "前臂侧桥（直腿）",
+ "doc": "tools/flare2-moves-r3/standards/t-forearm-side-plank.md",
+ "phases": {
+  "hold": "整段静态保持：左侧前臂撑地、肘在肩正下方，双腿伸直并拢，髋抬高，头-躯干-腿一条直线，右臂向上伸直"
+ },
+ "series": [
+  "elbowUnderShoulderCm",
+  "upperArmVertDeg",
+  "sideLineHipMm",
+  "headLineDeg",
+  "kneeMin",
+  "chestFrontTiltDeg",
+  "forearmFloorMm",
+  "footClearMm",
+  "bodyInclineDeg"
+ ],
+ "checks": [
+  {
+   "id": "elbow_under",
+   "label": "肘在肩正下方（水平偏差）",
+   "metric": "elbowUnderShoulderCm",
+   "agg": "max",
+   "unit": "cm",
+   "phase": "hold",
+   "max": 4
+  },
+  {
+   "id": "upper_arm_vert",
+   "label": "撑地上臂竖直（偏离竖直）",
+   "metric": "upperArmVertDeg",
+   "agg": "max",
+   "unit": "°",
+   "phase": "hold",
+   "max": 12
+  },
+  {
+   "id": "hips_no_sag",
+   "label": "髋不塌（髋偏离肩-踝线，负=下沉）",
+   "metric": "sideLineHipMm",
+   "agg": "min",
+   "unit": "mm",
+   "phase": "hold",
+   "min": -20
+  },
+  {
+   "id": "hips_no_pike",
+   "label": "髋不撅过线",
+   "metric": "sideLineHipMm",
+   "agg": "max",
+   "unit": "mm",
+   "phase": "hold",
+   "max": 30
+  },
+  {
+   "id": "head_line",
+   "label": "头在躯干延长线上（头颈与躯干夹角）",
+   "metric": "headLineDeg",
+   "agg": "max",
+   "unit": "°",
+   "phase": "hold",
+   "max": 20
+  },
+  {
+   "id": "knees",
+   "label": "双腿伸直（膝最小角）",
+   "metric": "kneeMin",
+   "agg": "min",
+   "unit": "°",
+   "phase": "hold",
+   "min": 172
+  },
+  {
+   "id": "chest_side",
+   "label": "胸口朝正前，不前扑/后翻（胸前方向偏离水平）",
+   "metric": "chestFrontTiltDeg",
+   "agg": "max",
+   "unit": "°",
+   "phase": "hold",
+   "max": 15
+  },
+  {
+   "id": "chest_side2",
+   "label": "胸口不朝下",
+   "metric": "chestFrontTiltDeg",
+   "agg": "min",
+   "unit": "°",
+   "phase": "hold",
+   "min": -15
+  },
+  {
+   "id": "forearm_floor_min",
+   "label": "前臂不穿地",
+   "metric": "forearmFloorMm",
+   "agg": "min",
+   "unit": "mm",
+   "phase": "hold",
+   "min": -2
+  },
+  {
+   "id": "forearm_floor_max",
+   "label": "前臂贴地",
+   "metric": "forearmFloorMm",
+   "agg": "max",
+   "unit": "mm",
+   "phase": "hold",
+   "max": 5
+  },
+  {
+   "id": "hand_floor_min",
+   "label": "撑地手不穿地",
+   "metric": "supportHandFloorMm",
+   "agg": "min",
+   "unit": "mm",
+   "phase": "hold",
+   "min": -2
+  },
+  {
+   "id": "hand_floor_max",
+   "label": "撑地手贴地",
+   "metric": "supportHandFloorMm",
+   "agg": "max",
+   "unit": "mm",
+   "phase": "hold",
+   "max": 5
+  },
+  {
+   "id": "feet_floor_min",
+   "label": "脚不穿地",
+   "metric": "footClearMm",
+   "agg": "min",
+   "unit": "mm",
+   "phase": "hold",
+   "min": -2
+  },
+  {
+   "id": "feet_floor_max",
+   "label": "下面的脚着地（脚外缘）",
+   "metric": "footClearMm",
+   "agg": "max",
+   "unit": "mm",
+   "phase": "hold",
+   "max": 5
+  },
+  {
+   "id": "static",
+   "label": "静态：髋高度不变（全程变化）",
+   "metric": "sideLineHipMm",
+   "agg": "range",
+   "unit": "mm",
+   "phase": "hold",
+   "max": 2
+  },
+  {
+   "id": "elbow_pin",
+   "label": "肘支点不滑",
+   "kind": "summary",
+   "path": "pins.leftForearm.driftMm",
+   "max": 3,
+   "unit": "mm"
+  },
+  {
+   "id": "pins",
+   "label": "手脚支点不滑（最大漂移）",
+   "kind": "pins",
+   "max": 3,
+   "unit": "mm"
+  },
+  {
+   "id": "self_clip",
+   "label": "身体自穿插（胶囊最差间隙）",
+   "kind": "summary",
+   "path": "selfClipWorst.mm",
+   "min": -8,
+   "unit": "mm"
+  }
+ ]
+}

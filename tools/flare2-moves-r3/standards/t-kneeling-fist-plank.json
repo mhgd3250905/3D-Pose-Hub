@@ -1,0 +1,143 @@
+{
+ "format": "flare2-moves-standard@1",
+ "id": "t-kneeling-fist-plank",
+ "nameZh": "跪姿拳面支撑",
+ "doc": "tools/flare2-moves-r3/standards/t-kneeling-fist-plank.md",
+ "phases": {
+  "hold": "整段静态保持：双膝着垫，膝-髋-肩一条线；双拳撑地（指根关节着地、拳心相对），前臂竖直在肩下，手腕绝对直，锁肘"
+ },
+ "series": [
+  "elbowMin",
+  "wristBendMax",
+  "handFloorMm",
+  "hipOffsetKneeMm",
+  "shoulderLeadCm",
+  "kneeFloorMinMm",
+  "armFromVerticalDeg"
+ ],
+ "checks": [
+  {
+   "id": "locked",
+   "label": "锁肘（两肘最小角）",
+   "metric": "elbowMin",
+   "agg": "min",
+   "unit": "°",
+   "phase": "hold",
+   "min": 175
+  },
+  {
+   "id": "wrist_straight",
+   "label": "手腕绝对直（前臂与手背轴夹角，两手最大）",
+   "metric": "wristBendMax",
+   "agg": "max",
+   "unit": "°",
+   "phase": "hold",
+   "max": 10
+  },
+  {
+   "id": "arm_vertical",
+   "label": "前臂/手臂竖直（侧视偏离竖直）",
+   "metric": "armFromVerticalDeg",
+   "agg": "max",
+   "unit": "°",
+   "phase": "hold",
+   "max": 10
+  },
+  {
+   "id": "arm_vertical2",
+   "label": "手臂不后倒",
+   "metric": "armFromVerticalDeg",
+   "agg": "min",
+   "unit": "°",
+   "phase": "hold",
+   "min": -10
+  },
+  {
+   "id": "fist_floor_min",
+   "label": "拳不穿地（拳最低点）",
+   "metric": "handFloorMm",
+   "agg": "min",
+   "unit": "mm",
+   "phase": "hold",
+   "min": -2
+  },
+  {
+   "id": "fist_floor_max",
+   "label": "拳面贴地（拳最低点不悬空）",
+   "metric": "handFloorMm",
+   "agg": "max",
+   "unit": "mm",
+   "phase": "hold",
+   "max": 4
+  },
+  {
+   "id": "line_lo",
+   "label": "膝-髋-肩一条线：不塌腰",
+   "metric": "hipOffsetKneeMm",
+   "agg": "min",
+   "unit": "mm",
+   "phase": "hold",
+   "min": -25
+  },
+  {
+   "id": "line_hi",
+   "label": "膝-髋-肩一条线：不撅臀",
+   "metric": "hipOffsetKneeMm",
+   "agg": "max",
+   "unit": "mm",
+   "phase": "hold",
+   "max": 25
+  },
+  {
+   "id": "knee_floor_lo",
+   "label": "膝不穿垫",
+   "metric": "kneeFloorMinMm",
+   "agg": "min",
+   "unit": "mm",
+   "phase": "hold",
+   "min": -2
+  },
+  {
+   "id": "knee_floor_hi",
+   "label": "膝着垫",
+   "metric": "kneeFloorMinMm",
+   "agg": "max",
+   "unit": "mm",
+   "phase": "hold",
+   "max": 6
+  },
+  {
+   "id": "feet_floor",
+   "label": "脚不穿垫",
+   "metric": "footClearMm",
+   "agg": "min",
+   "unit": "mm",
+   "phase": "hold",
+   "min": -2
+  },
+  {
+   "id": "static",
+   "label": "静态（髋偏离量全程变化）",
+   "metric": "hipOffsetKneeMm",
+   "agg": "range",
+   "unit": "mm",
+   "phase": "hold",
+   "max": 2
+  },
+  {
+   "id": "pins",
+   "label": "手脚支点不滑（最大漂移）",
+   "kind": "pins",
+   "max": 3,
+   "unit": "mm"
+  },
+  {
+   "id": "self_clip",
+   "label": "身体自穿插（胶囊最差间隙）",
+   "kind": "summary",
+   "path": "selfClipWorst.mm",
+   "min": -8,
+   "unit": "mm"
+  }
+ ]
+}

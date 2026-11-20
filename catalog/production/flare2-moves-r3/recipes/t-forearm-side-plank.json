@@ -1,0 +1,74 @@
+{
+  "format": "pose-hub-action-recipe@1",
+  "id": "t-forearm-side-plank",
+  "nameZh": "前臂侧桥（直腿）",
+  "spec": "drill-anim/specs/t-forearm-side-plank.js",
+  "specSha256Lf": "d2b25444043a3004be7d7e3517a8d5a01211aefe349696514fbe1966e31677b0",
+  "r2DepsSha256Lf": {
+    "drill-anim/lib/flare2-r2.mjs": "e2ae035877b7337f30c42880e6eb616616e8e73c34d4bab5a34bcc50f376d0fb",
+    "drill-anim/lib/flare2-r3.mjs": "376d766fa13d8a66441b6adb573a8bed67dd9a52a66badb72d55f605e34d2074",
+    "tools/flare2-moves-r3/v5/v5r2-ext.js": "9f211a87c868a3c803061ad24dc6acc1e2293719a5087bfe76c98c60502796e6"
+  },
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "hands": {
+    "left": "support",
+    "right": "native"
+  },
+  "camera": {
+    "pad": 0.14,
+    "k": 1,
+    "drift": 0,
+    "fitTimeline": true,
+    "orbitDegrees": 0,
+    "frontSweepDegrees": 0,
+    "dir": [
+      0.18,
+      0.12,
+      1
+    ],
+    "fit": [
+      "head",
+      "leftPalm",
+      "rightPalm",
+      "leftElbow",
+      "leftToe",
+      "rightToe",
+      "pelvis"
+    ],
+    "at": 4.0
+  },
+  "cameraScale": 1.15,
+  "output": {
+    "groundShadow": false,
+    "cameraMotion": false,
+    "wholeCycleContentRect": true,
+    "fps": 30,
+    "exerciseMat": true
+  },
+  "jointCorrections": [
+    {
+      "profile": "upper-arm-contour-r3",
+      "version": "0.1.0-r3"
+    },
+    {
+      "profile": "ankle-join-r5",
+      "version": "0.1.0-r5"
+    }
+  ],
+  "adaptation": {
+    "status": "flare2-moves-r3-draft",
+    "method": "New spec authored in the sandbox (CPU solve + V5 low-res preview); V5 720p sample render pending on the render machine."
+  },
+  "source": {
+    "brief": "Flare 2.0 练后 专项补强 + Flare2 2026-11-21 (hark-mhgd；Google 表 1aCseEk4vslsG-QKb-zsZwg30amvoYh5tMxzy6p9n8vA) 练后专项补强：前臂侧桥（直腿）",
+    "plans": "练后专项补强：直腿前臂侧桥，肘在肩正下方、髋抬高、头到脚一条线，静态保持；草稿每侧 20 秒（动画左侧着地示范，App 镜像）；与 h-short-side-plank（屈膝短杠杆）不同"
+  },
+  "sampledOnly": true,
+  "fullCycleValidated": false,
+  "reviewed": false,
+  "userAccepted": false,
+  "releaseEligible": false
+}

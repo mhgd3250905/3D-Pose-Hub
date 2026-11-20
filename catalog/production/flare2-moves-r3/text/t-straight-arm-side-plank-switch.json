@@ -1,0 +1,200 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "t-straight-arm-side-plank-switch",
+ "reviewStatus": "draft-ai-needs-user-review",
+ "sources": [
+  "Flare 2.0 练后 专项补强 + Flare2 2026-11-21（Google 表 1aCseEk4vslsG-QKb-zsZwg30amvoYh5tMxzy6p9n8vA，Flare2：直臂侧桥转换）",
+  "drill-anim/specs/t-straight-arm-side-plank-switch.js",
+  "tools/flare2-moves-r3/standards/t-straight-arm-side-plank-switch.md"
+ ],
+ "name": {
+  "zh": "直臂侧桥转换",
+  "en": "Plank to Side Plank Switch"
+ },
+ "purpose": {
+  "zh": "从直臂平板整体转成直臂侧桥再转回来，练单手支撑时肩膀和身体侧面的稳定，接近 Flare 换手的感觉",
+  "en": "Turn from a straight-arm plank into a straight-arm side plank and back. Trains the shoulder and side body for one-hand support, close to the hand switch in a flare."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "先把手肘锁直，整个身体一起转",
+    "en": "Lock the elbow, turn the whole body"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "平板时手在肩下，身体一条线，脚尖撑地。",
+    "en": "In the plank, hands under the shoulders, body in one line, on your toes."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "转成侧桥：撑地的肩膀叠在手正上方，上面的手指向天花板，髋保持高。",
+    "en": "Side plank: support shoulder stacked over the hand, top arm to the ceiling, hips high."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "不做俯卧撑，转回平板后换另一边。",
+    "en": "No push-up; back to the plank and turn to the other side."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "转的时候手肘弯",
+   "en": "Bending the support elbow while turning."
+  },
+  {
+   "zh": "髋掉下来、身体分段转",
+   "en": "Hips dropping, the body turning in pieces."
+  },
+  {
+   "zh": "肩膀没在手上方",
+   "en": "Shoulder not over the support hand."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "手腕或肩膀疼就改成前臂侧桥",
+   "en": "If your wrist or shoulder hurts, use the forearm side plank instead."
+  }
+ ],
+ "tags": {
+  "category": "stability",
+  "activeMuscles": [
+   "obliques",
+   "deltoids"
+  ],
+  "synergistMuscles": [
+   "abs",
+   "triceps"
+  ],
+  "equipment": [
+   "mat"
+  ],
+  "position": "plank",
+  "difficulty": 2
+ },
+ "unilateral": true,
+ "startingSide": "left",
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 1,
+  "reps": 6,
+  "restSeconds": 45
+ },
+ "phases": {
+  "start": {
+   "zh": "直臂平板",
+   "en": "Straight-arm plank"
+  },
+  "peak": {
+   "zh": "转成侧桥",
+   "en": "Side plank"
+  },
+  "end": {
+   "zh": "转回平板",
+   "en": "Plank again"
+  }
+ },
+ "training": {
+  "kind": "rep_alternate",
+  "leadSeconds": 2,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.65
+   },
+   {
+    "id": "hold",
+    "seconds": 1.0
+   },
+   {
+    "id": "back",
+    "seconds": 1.55
+   },
+   {
+    "id": "rest",
+    "seconds": 1.8
+   }
+  ],
+  "perSide": "alternate",
+  "repUnit": "left+right",
+  "source": "flare2 r3 animation tempo (6 s per side: 1.65 s turn, 1.0 s side plank, 1.55 s back, 1.8 s plank); 表：每侧 6 次左右交替（1 次 = 左右各转一次）"
+ },
+ "flare2": {
+  "version": "r3",
+  "batch": "2a",
+  "item": "Flare2：直臂侧桥转换",
+  "camera": "头前方斜上（看得到撑地手臂锁肘、整体转动和上手指天）",
+  "doseBrief": "表：每侧 6 次、左右交替；草稿 1 组（组数待定）",
+  "doseStatus": "draft (AI, 开哥 to confirm)",
+  "status": "draft-awaiting-user-review",
+  "note": "Animation r3: 12 s loop = turn onto the LEFT hand (support elbow locked, shoulder over the hand ~3 cm, top arm ~15 deg from vertical, 1 s), back to the plank, then onto the RIGHT hand; feet pivot on their spots (staggered side plank).",
+  "standard": "tools/flare2-moves-r3/standards/t-straight-arm-side-plank-switch.md"
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 12.0,
+  "repUnit": "left+right",
+  "phaseCues": "none",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "撑地的手肘锁直，身体整个一起转",
+    "en": "Support elbow locked, the whole body turns together",
+    "from": [
+     "cue1",
+     "commonErrors[0]",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 4,
+    "role": "form",
+    "zh": "侧桥时肩膀在手正上方，髋别掉",
+    "en": "Shoulder stacked over the hand, hips stay high",
+    "from": [
+     "cue3",
+     "commonErrors[2]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "key": "p.last_rep"
+   }
+  ],
+  "before": [],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.45"
+   ],
+   "allDone": [
+    "p.nice"
+   ]
+  }
+ }
+}

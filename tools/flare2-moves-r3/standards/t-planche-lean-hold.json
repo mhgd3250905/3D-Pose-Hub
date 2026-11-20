@@ -1,0 +1,161 @@
+{
+ "format": "flare2-moves-standard@1",
+ "id": "t-planche-lean-hold",
+ "nameZh": "前倾支撑",
+ "doc": "tools/flare2-moves-r3/standards/t-planche-lean-hold.md",
+ "phases": {
+  "hold": "整段静态保持：直臂锁肘，指尖朝外约 65°，肩在手腕前约 10–11 cm，身体一条线，脚尖着地"
+ },
+ "series": [
+  "elbowMin",
+  "shoulderLeadCm",
+  "fingerOutMin",
+  "fingerOutMax",
+  "hipOffsetMm",
+  "wristExtMax",
+  "handFloorMm",
+  "palmDownV5Max"
+ ],
+ "checks": [
+  {
+   "id": "locked",
+   "label": "全程锁肘（两肘最小角）",
+   "metric": "elbowMin",
+   "agg": "min",
+   "unit": "°",
+   "phase": "hold",
+   "min": 175
+  },
+  {
+   "id": "lead_min",
+   "label": "肩超过手腕（最小）",
+   "metric": "shoulderLeadCm",
+   "agg": "min",
+   "unit": "cm",
+   "phase": "hold",
+   "min": 9
+  },
+  {
+   "id": "lead_max",
+   "label": "肩超过手腕（最大）",
+   "metric": "shoulderLeadCm",
+   "agg": "max",
+   "unit": "cm",
+   "phase": "hold",
+   "max": 13
+  },
+  {
+   "id": "static",
+   "label": "静态：前倾量不变（全程变化）",
+   "metric": "shoulderLeadCm",
+   "agg": "range",
+   "unit": "cm",
+   "phase": "hold",
+   "max": 0.5
+  },
+  {
+   "id": "finger_out_min",
+   "label": "指尖朝外（两手最小外旋）",
+   "metric": "fingerOutMin",
+   "agg": "min",
+   "unit": "°",
+   "phase": "hold",
+   "min": 45
+  },
+  {
+   "id": "finger_out_max",
+   "label": "指尖不朝后（两手最大外旋）",
+   "metric": "fingerOutMax",
+   "agg": "max",
+   "unit": "°",
+   "phase": "hold",
+   "max": 90
+  },
+  {
+   "id": "palm_flat",
+   "label": "掌心平贴（V5 掌面法线偏离向下）",
+   "metric": "palmDownV5Max",
+   "agg": "max",
+   "unit": "°",
+   "phase": "hold",
+   "max": 20
+  },
+  {
+   "id": "body_line_lo",
+   "label": "身体一条线：不塌腰（髋偏离肩-踝线）",
+   "metric": "hipOffsetMm",
+   "agg": "min",
+   "unit": "mm",
+   "phase": "hold",
+   "min": -25
+  },
+  {
+   "id": "body_line_hi",
+   "label": "身体一条线：不撅臀",
+   "metric": "hipOffsetMm",
+   "agg": "max",
+   "unit": "mm",
+   "phase": "hold",
+   "max": 25
+  },
+  {
+   "id": "knees",
+   "label": "膝伸直",
+   "metric": "kneeMin",
+   "agg": "min",
+   "unit": "°",
+   "phase": "hold",
+   "min": 172
+  },
+  {
+   "id": "hand_floor_min",
+   "label": "手不穿地（手最低点）",
+   "metric": "handFloorMm",
+   "agg": "min",
+   "unit": "mm",
+   "min": -2
+  },
+  {
+   "id": "hand_floor_max",
+   "label": "手贴地（手最低点不悬空）",
+   "metric": "handFloorMm",
+   "agg": "max",
+   "unit": "mm",
+   "max": 4
+  },
+  {
+   "id": "feet_floor",
+   "label": "脚尖不穿地",
+   "metric": "footClearMm",
+   "agg": "min",
+   "unit": "mm",
+   "phase": "hold",
+   "min": -2
+  },
+  {
+   "id": "pins",
+   "label": "手脚支点不滑（最大漂移）",
+   "kind": "pins",
+   "max": 3,
+   "unit": "mm"
+  },
+  {
+   "id": "self_clip",
+   "label": "身体自穿插（胶囊最差间隙）",
+   "kind": "summary",
+   "path": "selfClipWorst.mm",
+   "min": -8,
+   "unit": "mm"
+  },
+  {
+   "id": "wrist_ext",
+   "label": "手腕背伸（前倾使前臂前倾，提示）",
+   "metric": "wristExtMax",
+   "agg": "max",
+   "unit": "°",
+   "advisory": true,
+   "phase": "hold",
+   "max": 115
+  }
+ ]
+}

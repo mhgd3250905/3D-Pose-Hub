@@ -1,0 +1,908 @@
+{
+ "format": "flare2-moves-plan@1",
+ "base": "codex/flare2-moves-r2 2b59eff26388faa05c9aafa17307c887cd74148c (r2 batch 1 pinned RENDER 138e3e9)",
+ "brief": "Flare 2.0 练后 专项补强 + Flare2（hark-mhgd 2026-11-21；Google 表 1aCseEk4vslsG-QKb-zsZwg30amvoYh5tMxzy6p9n8vA）r3 第 2a 批 6 个新动作（全部自重、瑜伽垫）",
+ "actions": [
+  {
+   "id": "t-kneeling-fist-plank",
+   "item": "练后专项补强：跪姿拳面支撑",
+   "priority": "batch2a",
+   "nameZh": "跪姿拳面支撑",
+   "spec": "drill-anim/specs/t-kneeling-fist-plank.js",
+   "plans": "练后专项补强：跪姿平板、双拳撑地，重心压在食指和中指指根关节，手腕绝对直，锁肘，静态保持；草稿 20 秒",
+   "hands": {
+    "left": "native",
+    "right": "native"
+   },
+   "camera": {
+    "dir": [
+     -0.3,
+     0.22,
+     1
+    ],
+    "fit": [
+     "head",
+     "leftPalm",
+     "rightPalm",
+     "leftToe",
+     "rightToe",
+     "pelvis",
+     "leftKnee",
+     "rightKnee",
+     "leftElbow",
+     "rightElbow"
+    ],
+    "pad": 0.14,
+    "k": 1,
+    "at": 4.0
+   },
+   "checks": {
+    "lockElbows": [
+     [
+      0,
+      8
+     ]
+    ],
+    "pins": [
+     {
+      "bone": "leftHand",
+      "hub": "leftPalm",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     },
+     {
+      "bone": "rightHand",
+      "hub": "rightPalm",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     },
+     {
+      "bone": "leftShin",
+      "hub": "leftKnee",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     },
+     {
+      "bone": "rightShin",
+      "hub": "rightKnee",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     },
+     {
+      "bone": "leftFoot",
+      "hub": "leftToe",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     },
+     {
+      "bone": "rightFoot",
+      "hub": "rightToe",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     }
+    ],
+    "allowContact": [
+     "thighL|shinL",
+     "thighR|shinR"
+    ]
+   },
+   "preview": [
+    15,
+    120,
+    225
+   ],
+   "phases": {
+    "hold": [
+     [
+      0,
+      8
+     ]
+    ]
+   },
+   "standard": "tools/flare2-moves-r3/standards/t-kneeling-fist-plank.md",
+   "reviewViews": "side:0,0.08,1;front:-1,0.25,0;hand:0.2,0.3,1:0,1,0:leftHand,0.14",
+   "reviewFrames": [
+    15,
+    120,
+    225
+   ],
+   "reviewKeys": [
+    [
+     "elbowMin",
+     "elbow",
+     "°"
+    ],
+    [
+     "wristBendMax",
+     "wristBend",
+     "°"
+    ],
+    [
+     "handFloorMm",
+     "handY",
+     "mm"
+    ],
+    [
+     "hipOffsetKneeMm",
+     "hipOff",
+     "mm"
+    ],
+    [
+     "shoulderLeadCm",
+     "shLead",
+     "cm"
+    ],
+    [
+     "kneeFloorMinMm",
+     "kneeY",
+     "mm"
+    ]
+   ]
+  },
+  {
+   "id": "t-kneeling-wrist-pushup",
+   "item": "练后专项补强：跪姿手腕俯卧撑",
+   "priority": "batch2a",
+   "nameZh": "跪姿手腕俯卧撑",
+   "spec": "drill-anim/specs/t-kneeling-wrist-pushup.js",
+   "plans": "练后专项补强：跪姿支撑、锁肘，手指压地把掌根抬到指根，再 3 秒慢放；双手同时；草稿 10 次慢速",
+   "hands": {
+    "left": "native",
+    "right": "native"
+   },
+   "camera": {
+    "dir": [
+     -0.3,
+     0.22,
+     1
+    ],
+    "fit": [
+     "head",
+     "leftPalm",
+     "rightPalm",
+     "leftToe",
+     "rightToe",
+     "pelvis",
+     "leftKnee",
+     "rightKnee",
+     "leftElbow",
+     "rightElbow"
+    ],
+    "pad": 0.14,
+    "k": 1,
+    "at": 1.6
+   },
+   "checks": {
+    "lockElbows": [
+     [
+      0,
+      10
+     ]
+    ],
+    "pins": [
+     {
+      "bone": "leftShin",
+      "hub": "leftKnee",
+      "when": [
+       [
+        0,
+        10
+       ]
+      ]
+     },
+     {
+      "bone": "rightShin",
+      "hub": "rightKnee",
+      "when": [
+       [
+        0,
+        10
+       ]
+      ]
+     },
+     {
+      "bone": "leftFoot",
+      "hub": "leftToe",
+      "when": [
+       [
+        0,
+        10
+       ]
+      ]
+     },
+     {
+      "bone": "rightFoot",
+      "hub": "rightToe",
+      "when": [
+       [
+        0,
+        10
+       ]
+      ]
+     }
+    ],
+    "allowContact": [
+     "thighL|shinL",
+     "thighR|shinR"
+    ]
+   },
+   "preview": [
+    6,
+    48,
+    102
+   ],
+   "phases": {
+    "flat": [
+     [
+      0,
+      0.4
+     ],
+     [
+      4.95,
+      5.4
+     ],
+     [
+      9.95,
+      10
+     ]
+    ],
+    "top": [
+     [
+      1.4,
+      1.9
+     ],
+     [
+      6.4,
+      6.9
+     ]
+    ],
+    "lower": [
+     [
+      1.9,
+      4.9
+     ],
+     [
+      6.9,
+      9.9
+     ]
+    ],
+    "all": [
+     [
+      0,
+      10
+     ]
+    ]
+   },
+   "standard": "tools/flare2-moves-r3/standards/t-kneeling-wrist-pushup.md",
+   "reviewViews": "side:0,0.08,1;front:-1,0.25,0;hand:0.15,0.25,1:0,1,0:leftHand,0.14",
+   "reviewFrames": [
+    6,
+    48,
+    102
+   ],
+   "reviewKeys": [
+    [
+     "elbowMin",
+     "elbow",
+     "°"
+    ],
+    [
+     "heelLiftMin",
+     "heel",
+     "°"
+    ],
+    [
+     "handFloorMm",
+     "fingerY",
+     "mm"
+    ],
+    [
+     "handAxisFwdDevMax",
+     "fDev",
+     "°"
+    ],
+    [
+     "hipOffsetKneeMm",
+     "hipOff",
+     "mm"
+    ],
+    [
+     "shoulderLeadCm",
+     "shLead",
+     "cm"
+    ]
+   ],
+   "fingerRef": [
+    -1,
+    0
+   ]
+  },
+  {
+   "id": "t-planche-lean-hold",
+   "item": "Flare2：前倾支撑（静态）",
+   "priority": "batch2a",
+   "nameZh": "前倾支撑",
+   "spec": "drill-anim/specs/t-planche-lean-hold.js",
+   "plans": "Flare2 练后专项补强：直臂平板、手指向外 45–90°（绝不朝后）、锁肘、肩前移过手腕的静态保持；草稿 15 秒 × 3 组",
+   "hands": {
+    "left": "support",
+    "right": "support"
+   },
+   "camera": {
+    "dir": [
+     -0.55,
+     0.42,
+     1
+    ],
+    "fit": [
+     "head",
+     "leftPalm",
+     "rightPalm",
+     "leftToe",
+     "rightToe",
+     "pelvis",
+     "leftShoulder",
+     "rightShoulder"
+    ],
+    "pad": 0.12,
+    "k": 1,
+    "at": 4.0
+   },
+   "checks": {
+    "lockElbows": [
+     [
+      0,
+      8
+     ]
+    ],
+    "pins": [
+     {
+      "bone": "leftHand",
+      "hub": "leftPalm",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     },
+     {
+      "bone": "rightHand",
+      "hub": "rightPalm",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     },
+     {
+      "bone": "leftFoot",
+      "hub": "leftToe",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     },
+     {
+      "bone": "rightFoot",
+      "hub": "rightToe",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     }
+    ],
+    "allowContact": [
+     "upperArmR|torso",
+     "upperArmL|torso"
+    ]
+   },
+   "preview": [
+    15,
+    120,
+    225
+   ],
+   "phases": {
+    "hold": [
+     [
+      0,
+      8
+     ]
+    ]
+   },
+   "standard": "tools/flare2-moves-r3/standards/t-planche-lean-hold.md",
+   "reviewViews": "side:0,0.08,1;front:-1,0.25,0;top:0.001,1,0:-1,0,0",
+   "reviewFrames": [
+    15,
+    120,
+    225
+   ],
+   "reviewKeys": [
+    [
+     "elbowMin",
+     "elbow",
+     "°"
+    ],
+    [
+     "shoulderLeadCm",
+     "shLead",
+     "cm"
+    ],
+    [
+     "fingerOutMin",
+     "fOut",
+     "°"
+    ],
+    [
+     "hipOffsetMm",
+     "hipOff",
+     "mm"
+    ],
+    [
+     "wristExtMax",
+     "wristExt",
+     "°"
+    ],
+    [
+     "handFloorMm",
+     "handY",
+     "mm"
+    ]
+   ],
+   "fingerRef": [
+    -1,
+    0
+   ]
+  },
+  {
+   "id": "t-forearm-side-plank",
+   "item": "练后专项补强：前臂侧桥（直腿）",
+   "priority": "batch2a",
+   "nameZh": "前臂侧桥（直腿）",
+   "spec": "drill-anim/specs/t-forearm-side-plank.js",
+   "plans": "练后专项补强：直腿前臂侧桥，肘在肩正下方、髋抬高、头到脚一条线，静态保持；草稿每侧 20 秒（动画左侧着地示范，App 镜像）；与 h-short-side-plank（屈膝短杠杆）不同",
+   "hands": {
+    "left": "support",
+    "right": "native"
+   },
+   "camera": {
+    "dir": [
+     0.18,
+     0.12,
+     1
+    ],
+    "fit": [
+     "head",
+     "leftPalm",
+     "rightPalm",
+     "leftElbow",
+     "leftToe",
+     "rightToe",
+     "pelvis"
+    ],
+    "pad": 0.14,
+    "k": 1,
+    "at": 4.0
+   },
+   "checks": {
+    "pins": [
+     {
+      "bone": "leftHand",
+      "hub": "leftPalm",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     },
+     {
+      "bone": "leftForearm",
+      "hub": "leftElbow",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     },
+     {
+      "bone": "leftFoot",
+      "hub": "leftToe",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     }
+    ],
+    "allowContact": [
+     "thighL|thighR",
+     "shinL|shinR"
+    ]
+   },
+   "preview": [
+    15,
+    120,
+    225
+   ],
+   "phases": {
+    "hold": [
+     [
+      0,
+      8
+     ]
+    ]
+   },
+   "standard": "tools/flare2-moves-r3/standards/t-forearm-side-plank.md",
+   "reviewViews": "front:0,0.08,1;head:1,0.15,0.001;top:0.001,1,0:1,0,0",
+   "reviewFrames": [
+    15,
+    120,
+    225
+   ],
+   "reviewKeys": [
+    [
+     "elbowUnderShoulderCm",
+     "elbUnderSh",
+     "cm"
+    ],
+    [
+     "sideLineHipMm",
+     "hipOff",
+     "mm"
+    ],
+    [
+     "headLineDeg",
+     "headLine",
+     "°"
+    ],
+    [
+     "kneeMin",
+     "knee",
+     "°"
+    ],
+    [
+     "chestFrontTiltDeg",
+     "chestTilt",
+     "°"
+    ],
+    [
+     "forearmFloorMm",
+     "faY",
+     "mm"
+    ]
+   ]
+  },
+  {
+   "id": "t-straight-arm-side-plank-switch",
+   "item": "Flare2：直臂侧桥转换",
+   "priority": "batch2a",
+   "nameZh": "直臂侧桥转换",
+   "spec": "drill-anim/specs/t-straight-arm-side-plank-switch.js",
+   "plans": "Flare2 练后专项补强：直臂平板 → 锁肘整体转成直臂侧桥（上手指天）→ 回平板 → 换另一侧；不做俯卧撑；草稿每侧 6 次、左右交替",
+   "hands": {
+    "left": "support",
+    "right": "support"
+   },
+   "camera": {
+    "dir": [
+     -0.75,
+     0.6,
+     0.25
+    ],
+    "fit": [
+     "head",
+     "leftPalm",
+     "rightPalm",
+     "leftToe",
+     "rightToe",
+     "pelvis",
+     "leftShoulder",
+     "rightShoulder"
+    ],
+    "pad": 0.12,
+    "k": 1,
+    "at": 0.0
+   },
+   "checks": {
+    "pins": [
+     {
+      "bone": "leftHand",
+      "hub": "leftPalm",
+      "when": [
+       [
+        0,
+        6.5
+       ],
+       [
+        11.0,
+        12
+       ]
+      ]
+     },
+     {
+      "bone": "rightHand",
+      "hub": "rightPalm",
+      "when": [
+       [
+        0,
+        0.5
+       ],
+       [
+        5.0,
+        12
+       ]
+      ]
+     }
+    ],
+    "allowContact": [
+     "upperArmR|torso",
+     "upperArmL|torso",
+     "thighL|thighR"
+    ]
+   },
+   "preview": [
+    9,
+    84,
+    264
+   ],
+   "phases": {
+    "plank": [
+     [
+      0,
+      0.5
+     ],
+     [
+      5.0,
+      6.5
+     ],
+     [
+      11.0,
+      12
+     ]
+    ],
+    "sideL": [
+     [
+      2.3,
+      3.3
+     ]
+    ],
+    "sideR": [
+     [
+      8.3,
+      9.3
+     ]
+    ],
+    "side": [
+     [
+      2.3,
+      3.3
+     ],
+     [
+      8.3,
+      9.3
+     ]
+    ],
+    "all": [
+     [
+      0,
+      12
+     ]
+    ]
+   },
+   "standard": "tools/flare2-moves-r3/standards/t-straight-arm-side-plank-switch.md",
+   "reviewViews": "side:0,0.08,1;front:-1,0.25,0;top:0.001,1,0:-1,0,0",
+   "reviewFrames": [
+    9,
+    42,
+    84,
+    264
+   ],
+   "reviewKeys": [
+    [
+     "plantedElbowMin",
+     "elbow",
+     "°"
+    ],
+    [
+     "supShOverHandCm",
+     "shOverHand",
+     "cm"
+    ],
+    [
+     "chestFrontTiltDeg",
+     "chest",
+     "°"
+    ],
+    [
+     "hipOffsetMm",
+     "hipOff",
+     "mm"
+    ],
+    [
+     "topArmFromUpDeg",
+     "topArm",
+     "°"
+    ],
+    [
+     "footClearMm",
+     "footY",
+     "mm"
+    ]
+   ]
+  },
+  {
+   "id": "t-prone-t-w",
+   "item": "练后专项补强：俯卧 T-W（无 Y）",
+   "priority": "batch2a",
+   "nameZh": "俯卧 T-W",
+   "spec": "drill-anim/specs/t-prone-t-w.js",
+   "plans": "练后专项补强：俯卧，只做 T 和 W（不做 Y），顶端停 2 秒；W = 肘贴近身体两侧、前臂外旋上抬；草稿 10 次（T+W 为 1 次）",
+   "hands": {
+    "left": "native",
+    "right": "native"
+   },
+   "camera": {
+    "dir": [
+     -0.35,
+     0.85,
+     0.55
+    ],
+    "fit": [
+     "head",
+     "leftPalm",
+     "rightPalm",
+     "leftToe",
+     "rightToe",
+     "pelvis",
+     "leftElbow",
+     "rightElbow"
+    ],
+    "pad": 0.12,
+    "k": 1,
+    "at": 2.4
+   },
+   "checks": {
+    "pins": [],
+    "allowContact": [
+     "thighL|thighR",
+     "shinL|shinR"
+    ]
+   },
+   "preview": [
+    6,
+    72,
+    210
+   ],
+   "phases": {
+    "rest": [
+     [
+      0,
+      0.4
+     ],
+     [
+      4.3,
+      4.3
+     ],
+     [
+      5.0,
+      5.0
+     ],
+     [
+      8.9,
+      8.9
+     ],
+     [
+      9.6,
+      10
+     ]
+    ],
+    "reset": [
+     [
+      4.3,
+      5.0
+     ],
+     [
+      8.9,
+      9.6
+     ]
+    ],
+    "thold": [
+     [
+      1.4,
+      3.4
+     ]
+    ],
+    "whold": [
+     [
+      6.0,
+      8.0
+     ]
+    ],
+    "all": [
+     [
+      0,
+      10
+     ]
+    ]
+   },
+   "standard": "tools/flare2-moves-r3/standards/t-prone-t-w.md",
+   "reviewViews": "side:0,0.3,1;front:1,0.35,0.001;top:0.001,1,0:1,0,0",
+   "reviewFrames": [
+    6,
+    72,
+    150,
+    210
+   ],
+   "reviewKeys": [
+    [
+     "armAbdMin",
+     "abd",
+     "°"
+    ],
+    [
+     "elbowMin",
+     "elbow",
+     "°"
+    ],
+    [
+     "handLiftMin",
+     "handY",
+     "mm"
+    ],
+    [
+     "armLiftMin",
+     "armY",
+     "mm"
+    ],
+    [
+     "forearmElevMin",
+     "faElev",
+     "°"
+    ],
+    [
+     "thumbUpDegL",
+     "thumbUp",
+     "°"
+    ],
+    [
+     "scapFwd",
+     "scapFwd",
+     "mm"
+    ]
+   ]
+  }
+ ],
+ "deferred": []
+}
