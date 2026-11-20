@@ -18,7 +18,10 @@
   "wristYL",
   "wristYR",
   "bodyLineDeg",
-  "wallFootMinMm"
+  "wallFootMinMm",
+  "fingerDevMax",
+  "fingerOutAsym",
+  "creaseToFingerMax"
  ],
  "checks": [
   {
@@ -167,6 +170,72 @@
    "agg": "min",
    "min": 20,
    "unit": "mm"
+  },
+  {
+   "id": "fingers_away_from_wall",
+   "label": "手指背离墙（指向房间）：手腕→中指根 水平方向与「背离墙」夹角（最大）",
+   "metric": "fingerDevMax",
+   "agg": "max",
+   "max": 25,
+   "unit": "°"
+  },
+  {
+   "id": "fingers_turned_out",
+   "label": "手略外旋：指向相对「背离墙」往外侧转（最小）",
+   "metric": "fingerOutMin",
+   "agg": "min",
+   "min": 5,
+   "max": 25,
+   "unit": "°"
+  },
+  {
+   "id": "fingers_turned_out_max",
+   "label": "手略外旋（最大）",
+   "metric": "fingerOutMax",
+   "agg": "max",
+   "min": 5,
+   "max": 25,
+   "unit": "°"
+  },
+  {
+   "id": "fingers_symmetric",
+   "label": "两手外旋对称（左右外旋角差，最大）",
+   "metric": "fingerOutAsym",
+   "agg": "max",
+   "max": 5,
+   "unit": "°"
+  },
+  {
+   "id": "thumbs_inside",
+   "label": "拇指在内侧（拇指尖相对手腕朝另一只手，最小）",
+   "metric": "thumbMedMin",
+   "agg": "min",
+   "min": 20,
+   "unit": "mm"
+  },
+  {
+   "id": "elbow_pits_forward",
+   "label": "肘窝朝手指一侧偏内（肘窝与手指方向夹角，最大；90 = 两肘窝相对，180 = 肘窝朝墙）",
+   "metric": "creaseToFingerMax",
+   "agg": "max",
+   "max": 75,
+   "unit": "°"
+  },
+  {
+   "id": "elbow_not_twisted",
+   "label": "肘不拧：肘弯曲方向与肘窝一致（最大偏差，含减载手屈肘）",
+   "metric": "elbowPitAbsMax",
+   "agg": "max",
+   "max": 30,
+   "unit": "°"
+  },
+  {
+   "id": "forearm_roll",
+   "label": "前臂旋前不过度（手相对前臂扭转，最大）",
+   "metric": "handTwistAbsMax",
+   "agg": "max",
+   "max": 70,
+   "unit": "°"
   },
   {
    "id": "contacts_hands",

@@ -16,9 +16,15 @@ const shL = keys([[0, 0], [0.5, 0], [2.0, 1], [3.0, 1], [4.0, 0]], DUR), shR = k
 const liR = keys([[0, 0], [0.5, 0], [2.0, 1], [3.0, 1], [4.0, 0]], DUR), liL = keys([[0, 0], [4.5, 0], [6.0, 1], [7.0, 1], [8.0, 0]], DUR);
 s.timeline = { duration: DUR, tracks: { shiftL: track(DUR, shL), shiftR: track(DUR, shR), lightR: track(DUR, liR), lightL: track(DUR, liL) } };
 const b = s.pose.base;
-const HX = 0.175, HZ = 0.28;
-const tips = (sg) => ({ mode: 'fingertips', at: [sg * HX, HZ - 0.035], floor: 0, clear: -0.0095, finger: [sg * 0.2, -0.35, -1], normal: [sg * 0.05, -1, 0.25] });
-for (const [side, sg] of [['left', 1], ['right', -1]]) b.hands[side] = { plant: b.hands[side], free: tips(sg), w: 0, blendPole: true };
+const HX = 0.175, HZ = 0.25;   // = t-wall-handstand-hold HX / HZ (wrist on the mat)
+// unloaded hand (r1 fix 2026-11-20, 开哥「手的朝向不对」): fingers point away from the wall like the planted hand (see the hold spec),
+// so the heel of the hand (wall side) lifts while the fingertips stay on the mat; the wrist moves a little up and toward the fingers.
+// Same pole and the same upper-arm / forearm roll as the planted hand (the rolls are read from the outer hand object, engine.js).
+const tips = (sg) => ({ mode: 'fingertips', at: [sg * HX, HZ + 0.012], floor: 0, clear: -0.0095, finger: [sg * 0.035, -0.35, 1], normal: [sg * 0.05, -1, -0.25], poleUp: b.hands[sg > 0 ? 'left' : 'right'].poleUp });
+for (const [side, sg] of [['left', 1], ['right', -1]]) {
+  const plant = b.hands[side];
+  b.hands[side] = { plant, free: tips(sg), w: 0, blendPole: true, upperArmTwist: plant.upperArmTwist, elbowTwist: plant.elbowTwist };
+}
 b.shoulders = { shift: [0, 0.026, 0] };           // pushed tall the whole set
 b.hips.rot = [[[1, 0, 0], b.hips.rot[0][1]], [[0, 0, 1], 0]];
 b.constraints.splice(2, 1);                         // no pelvis-x pin: the shoulders move sideways
