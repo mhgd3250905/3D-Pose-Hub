@@ -15,7 +15,8 @@
   "elbowTwistAbsR",
   "creaseFwdDegR",
   "handTwistR",
-  "handFloorMm"
+  "handFloorMm",
+  "fingerOutMin"
  ],
  "checks": [
   {
@@ -40,6 +41,32 @@
    "metric": "fingerTurnOutR",
    "agg": "min",
    "min": 150,
+   "unit": "°"
+  },
+  {
+   "id": "fingers_turned_out",
+   "label": "手略外转：指尖朝膝方向往外侧转（最小；负 = 内转）",
+   "metric": "fingerOutMin",
+   "agg": "min",
+   "min": 5,
+   "max": 20,
+   "unit": "°"
+  },
+  {
+   "id": "fingers_turned_out_max",
+   "label": "手略外转（最大）",
+   "metric": "fingerOutMax",
+   "agg": "max",
+   "min": 5,
+   "max": 20,
+   "unit": "°"
+  },
+  {
+   "id": "fingers_symmetric",
+   "label": "两手外转对称（左右差，最大）",
+   "metric": "fingerOutAsym",
+   "agg": "max",
+   "max": 5,
    "unit": "°"
   },
   {

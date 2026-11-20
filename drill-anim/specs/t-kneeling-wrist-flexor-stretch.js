@@ -11,8 +11,10 @@ import { track } from '../lib/ss-geo.mjs';
 const DUR = 8, HZ = 0.19, KX = -0.515, KY = 0.0407, KZ = 0.0857, FX = -0.868, BACK = -0.105;
 const p = keys([[0, 0], [0.6, 0], [2.4, 1], [6.8, 1]], DUR);
 // fingers toward the knees (-X), turned out a little (less forearm supination); ua/el = upper-arm / forearm roll (deg) set from the elbow-hinge metrics
+// r1 fix 2026-11-20: finger z 0.15 -> 0.42; the V5 middle finger sits ~13 deg toward the little finger, so 0.15 measured 5 deg turned IN;
+// 0.42 = ~9 deg turned out on V5 (precision.py fingerOutDeg), fingers still toward the knees (157 deg, >= 150).
 const UA = 80, EL = 83;
-const hand = (zs) => ({ mode: 'floor', at: [0.0, zs * HZ], finger: [-1, zs * 0.15], poleUp: [zs * -0.24, 0.95, 0.18], upperArmTwist: zs * UA, elbowTwist: zs * EL });
+const hand = (zs) => ({ mode: 'floor', at: [0.0, zs * HZ], finger: [-1, zs * 0.42], poleUp: [zs * -0.24, 0.95, 0.18], upperArmTwist: zs * UA, elbowTwist: zs * EL });
 export default {
   id: 't-kneeling-wrist-flexor-stretch', name: '跪姿前臂拉伸', nameEn: 'Kneeling Forearm Stretch (Fingers to Knees)',
   modelProfile: 'training-human-v2plus', fps: 30, size: 1080, alignClavicles: false,
