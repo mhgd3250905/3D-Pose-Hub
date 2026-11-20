@@ -2,18 +2,18 @@
 // Standard: tools/flare2-moves/standards/t-pseudo-planche-pushup.md. Frame of serratus-A / t-planche-lean: head points -X, body faces
 // the floor, body left = +Z.
 // Push-up position with the hands down by the waist, fingers turned out (and slightly back). The whole straight body leans forward
-// so the shoulders are well in front of the hands (~17 cm), then the elbows bend straight back along the body (tucked, not flared)
-// and the chest lowers while the lean is kept (the shoulders travel further forward, ~24 cm past the hands at the bottom), and the
+// so the shoulders are well in front of the hands (~11 cm, beginner lean; 2026-11-21 开哥 approved 18 -> 10-12 cm), then the elbows bend straight back along the body (tucked, not flared)
+// and the chest lowers while the lean is kept (the shoulders travel further forward, ~18 cm past the hands at the bottom), and the
 // arms press back up to straight. Body one line from head to heels the whole time; the feet stay on the toes and do not move (the
 // body pivots about the ankles). Shoulder blades pushed apart and down at the top (shoulders.shift, drawn by v5.scapulaShift).
 // Loop 8 s = 2 reps: 0.4 s top, 1.5 s down, 0.3 s bottom, 1.2 s press, 0.6 s top (x2).
 import { keys } from '../lib/home-anim.mjs';
 import { track } from '../lib/ss-geo.mjs';
 const DUR = 8, HZ = 0.19, FZ = 0.10;
-const LEAD_TOP = 0.190, LEAD_BOT = 0.260;   // shoulders in front of the hands (m, along -X)
+const LEAD_TOP = 0.126, LEAD_BOT = 0.195;   // shoulders in front of the hands (m, along -X)
 // Feet: the toe tips stay put on the mat and the feet roll over them as the body lowers (pitch FP_TOP -> FP_BOT, ankles move toward
 // the head by FX_TOP - FX_BOT), so the straight body (thorax-ankle 1.28 m) fits both the high top and the low bottom without sagging.
-const FX_TOP = 1.064, FP_TOP = 76.2, FX_BOT = 1.017, FP_BOT = 90;
+const FX_TOP = 1.125, FP_TOP = 76.2, FX_BOT = 1.078, FP_BOT = 90;
 const ELB_BOT = 88;
 const p = keys([[0, 0], [0.4, 0], [1.9, 1], [2.2, 1], [3.4, 0], [4.4, 0], [5.9, 1], [6.2, 1], [7.4, 0]], DUR);
 const floorHand = (z, side) => ({ mode: 'floor', at: [0, z], finger: [0.18, Math.sign(z) * 1], poleUp: [side === 'right' ? -0.12 : 0.12, -0.85, -0.5] });
