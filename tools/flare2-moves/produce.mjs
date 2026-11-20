@@ -7,11 +7,13 @@
 //     byte-identically; tools/v5 and drill-anim/page are NOT excluded (this branch changes no renderer / engine / prop file);
 //   - QA push: <out>/_qa (overview jpg + json + state + log; no video/png masters) to the orphan branch qa/flare2-moves-r1.
 //   node tools/flare2-moves/produce.mjs [--out <run-dir>] [--only id,id] [--no-push] [--vite-force]
+//   Resume: a finished action is skipped unless its recipe changed since it was rendered (masters layer-manifest recipe sha256);
+//   then it is quarantined and rendered again (r1 hand-orientation fix 2026-11-20).
 //   default --out F:/PoseHub-v3/runs/2026-11-20_flare2-moves-r1
 // Samples only: nothing here uploads media, publishes a pack, moves a pointer, merges or tags.
 // Exit: 0 all done; 1 preflight refused (nothing rendered); 3 some action failed (others done); 4 QA push failed (renders fine).
 // The last stdout line is one JSON whose "report" field is the text to post.
-import fs from 'node:fs';import path from 'node:path';
+import fs from 'node:fs';import path from 'node:path';import crypto from 'node:crypto';
 import {spawn,spawnSync,execFileSync} from 'node:child_process';import {fileURLToPath} from 'node:url';import {config} from '../../drill-anim/lib/config.mjs';
 const SELF=fileURLToPath(import.meta.url),HERE=path.dirname(SELF),ROOT=path.resolve(HERE,'../..');
 const PLAN0=JSON.parse(fs.readFileSync(path.join(HERE,'actions.json'),'utf8'));
@@ -22,6 +24,7 @@ const DEFAULT_OUT='F:/PoseHub-v3/runs/2026-11-20_flare2-moves-r1';
 // files this branch adds on top of BASE; every other path must equal BASE (old actions, V5 runtime, engine, props byte-identical)
 const EXCLUDE=['tools/flare2-moves','catalog/production/flare2-moves-r1',...PLAN0.actions.map(a=>a.spec)];
 const PY=process.env.PYTHON||(process.platform==='win32'?'python':'python3');
+const sha256=b=>crypto.createHash('sha256').update(b).digest('hex');
 const now=()=>new Date().toISOString();const stamp=()=>now().replace(/[:.]/g,'-');
 const out1=o=>console.log(JSON.stringify(o));
 const args=process.argv.slice(2);const opt=k=>{const i=args.indexOf(k);return i>=0?args[i+1]:undefined;};
@@ -95,11 +98,17 @@ function quarantine(id,why){const q=path.join(out,'_quarantine',`${id}_${stamp()
 function dirBytes(d){let n=0;for(const e of fs.readdirSync(d,{withFileTypes:true})){const p=path.join(d,e.name);n+=e.isDirectory()?dirBytes(p):fs.statSync(p).size;}return n;}
 // ---- batch
 const label=only?'only':'all';
-const t0=Date.now();const res={ok:false,head,base:BASE,out,batch:label,ids:list.map(a=>a.id),done:[],skipped:[],failed:[],started:now()};
+const t0=Date.now();const res={ok:false,head,base:BASE,out,batch:label,ids:list.map(a=>a.id),done:[],skipped:[],failed:[],rerendered:[],started:now()};
 try{
   await ensureServer(cfg.app_url);
   for(const a of list){
-    const id=a.id;if(isDone(id)){res.skipped.push(id);continue;}
+    const id=a.id;
+    // r1 fix (2026-11-20): an action whose recipe changed after it was rendered (spec edited -> specSha256Lf in the recipe changes)
+    // is not "done": its masters/package are moved to _quarantine (never deleted) and it renders again with the same command.
+    {const mf=path.join(out,'masters',id,'layer-manifest.json');let stale=false;
+      try{if(fs.existsSync(mf))stale=JSON.parse(fs.readFileSync(mf,'utf8')).recipe?.sha256!==sha256(fs.readFileSync(path.join(ROOT,a.recipe)));}catch{stale=true;}
+      if(stale){quarantine(id,'recipe changed since this render (new commit): re-render');res.rerendered.push(id);}}
+    if(isDone(id)){res.skipped.push(id);continue;}
     const lf=path.join(out,'_run','logs',id+'.log');fs.mkdirSync(path.dirname(lf),{recursive:true});
     const ts=Date.now();const mDone=fs.existsSync(path.join(out,'masters',id,'layer-manifest.json'));
     if(!mDone)quarantine(id,'incomplete masters before re-render');
@@ -148,5 +157,5 @@ if(!noPush){try{
 fs.rmSync(LOCK,{force:true});
 res.ok=res.failed.length===0;res.finished=now();res.minutes=mins;res.allDone=allDone;res.total=TOTAL;res.freeGB=freeGB();res.qaCommit=pushed;
 const url=`https://github.com/mhgd3250905/3D-Pose-Hub/blob/${QA_BRANCH}/overview.jpg`;
-res.report=`Flare 2.0 新动作 V5 ${KIND}完成：本次 ${list.length} 个，成功 ${res.done.length}，跳过（已做过）${res.skipped.length}，失败 ${res.failed.length}${res.failed.length?'（'+res.failed.join('、')+'）':''}；用时 ${mins} 分钟；累计 ${allDone}/${TOTAL}；样片在 ${path.join(out,'samples')}；磁盘剩余 ${res.freeGB} GB。`+(pushed?`总览：${url}`:`总览推送失败：${pushErr??'未推送'}`);
+res.report=`Flare 2.0 新动作 V5 ${KIND}完成：本次 ${list.length} 个，成功 ${res.done.length}${res.rerendered.length?'（其中配方已更新重渲 '+res.rerendered.length+' 个：'+res.rerendered.join('、')+'）':''}，跳过（已做过）${res.skipped.length}，失败 ${res.failed.length}${res.failed.length?'（'+res.failed.join('、')+'）':''}；用时 ${mins} 分钟；累计 ${allDone}/${TOTAL}；样片在 ${path.join(out,'samples')}；磁盘剩余 ${res.freeGB} GB。`+(pushed?`总览：${url}`:`总览推送失败：${pushErr??'未推送'}`);
 out1(res);process.exit(pushErr?4:(res.ok?0:3));

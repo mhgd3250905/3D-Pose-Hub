@@ -20,6 +20,15 @@ node tools/flare2-moves/produce.mjs --out F:/PoseHub-v3/runs/2026-11-20_flare2-m
 - 第 2 行如果列出了任何文件（有未提交的改动），停下，把那几行贴到群里，不要往下做。
 - python 不叫 `python` 时先 `$env:PYTHON='<python.exe 路径>'`；PATH 上要有 `ffmpeg`。
 - 中途断电/重启/卡死被关：重新打开 PowerShell，从 `cd` 那行起再做一遍，同一条命令会跳过已完成的动作。
+- 已渲染过、但之后配方有新提交（动作改过）的动作不算完成：脚本自动把它的旧母帧/成片**移动**到 `_quarantine` 再重渲，回报里写「配方已更新重渲」。
+
+## 只重渲改过的动作（2026-11-20 手朝向修正：面墙倒立两个动作）
+同上先 `cd` / `git status` / `git fetch` / `git checkout` / `git pull --ff-only` / `git log --oneline -1`，然后：
+```powershell
+node tools/flare2-moves/produce.mjs --out F:/PoseHub-v3/runs/2026-11-20_flare2-moves-r1 --only t-wall-handstand-hold,t-wall-handstand-shift
+```
+- 同一个 `--out`：这两个动作的旧结果会被移动到 `_quarantine` 后重渲，其余 6 个不动；总览图仍是 8 个动作。
+- 回报同下面「回报」一节。
 
 ## Vite 报 504（Outdated Optimize Dep）
 某个动作失败、它的日志 `F:\PoseHub-v3\runs\2026-11-20_flare2-moves-r1\_run\logs\<id>.log` 里有 `504` / `Outdated Optimize Dep` 时，只重试**一次**：

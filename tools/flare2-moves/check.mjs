@@ -137,6 +137,23 @@ try{
     // Flare 2.0 r1 (2026-11-20): per-region signed clearance (mm, < 0 = inside) of the V5 skinned body to box props (chair seat slabs
     // from userData.qaPrims; 'machine' boxes = blocks / books) and to wall faces (props type 'wall': face plane through at, normal = yaw
     // rotation of +Z). Hands are measured too (a palm on a block top is a contact, ~0 mm).
+    // hand orientation (flare2 r1 fix, 2026-11-20 开哥「手的朝向不对」): per side, landmarks picked once in the V5 bind pose and read
+    // from the skinned (posed) mesh every sample. In bind the hands lie along the arm (aF = hand rest offset), palm -Y, thumb +Z.
+    //   W = V5 hand bone (wrist); K = middle-finger root (vertices 45-55 % of the hand length along aF, within 12 mm laterally of the
+    //   middle fingertip = the vertex farthest along aF); T = thumb tip (vertex farthest toward bind +Z). precision.py derives the
+    //   finger direction W->K, the thumb side and the palm normal ((K-W) x (T-W), sign per side) from these.
+    {
+      const HL={};
+      for(const s of ['left','right']){const r=s==='left'?'handL':'handR',hb=V.bones[s+'Hand'],aF=hb.position.clone().normalize();let W0=null;const L=[];
+        for(const {o,reg,n} of per){const sk=o.skeleton,iH=sk.bones.indexOf(hb);if(iH<0)continue;const w=new T.Vector3().setFromMatrixPosition(sk.boneInverses[iH].clone().invert());W0=W0||w;
+          const P=o.geometry.attributes.position;for(let i=0;i<n;i++)if(reg[i]===r){const b=new T.Vector3().fromBufferAttribute(P,i).applyMatrix4(o.bindMatrix).sub(w);L.push({o,i,a:b.dot(aF),z:b.z,y:b.y});}}
+        if(!L.length)continue;const Lh=Math.max(...L.map(q=>q.a)),tip=L.reduce((m,q)=>q.a>m.a?q:m,L[0]),th=L.reduce((m,q)=>q.z>m.z?q:m,L[0]);
+        const K=L.filter(q=>q.a>=0.45*Lh&&q.a<=0.55*Lh&&Math.abs(q.z-tip.z)<0.012);
+        HL[s]={K,T:th,Lh};}
+      const pv=new T.Vector3(),cen=a=>{const c=[0,0,0];for(const q of a){q.o.getVertexPosition(q.i,pv);pv.applyMatrix4(q.o.matrixWorld);c[0]+=pv.x;c[1]+=pv.y;c[2]+=pv.z;}return c.map(x=>+(x/a.length).toFixed(5));};
+      window.__fmHands=()=>{const out={};for(const s in HL){const h=HL[s],W=V.bones[s+'Hand'].getWorldPosition(new T.Vector3()).toArray().map(x=>+x.toFixed(5));
+        out[s]={W,K:cen(h.K),T:cen([h.T]),nK:h.K.length,LhMm:+(h.Lh*1000).toFixed(1)};}return out;};
+    }
     window.__fmProps=()=>{const boxes=[],walls=[];
       for(const o of (window.__props?.list||[])){o.updateMatrixWorld(true);const sp=o.userData.spec||{};
         if(sp.type==='wall'){const n=new T.Vector3(0,0,1).applyQuaternion(o.getWorldQuaternion(new T.Quaternion()));walls.push({p:o.getWorldPosition(new T.Vector3()),n});continue;}
@@ -246,7 +263,7 @@ const matTop=floorMats.length?Math.max(...floorMats.map(p=>(p.at?.[1]??0))):0;
   for(const f of frames){
     fail(freeGiB()>=.5,'Low free memory');
     const st=await stageAt(page,source,f/fps,warm);warm=st.x;
-    const r=await page.evaluate(([fl,caps,render,mc,gp])=>{const d=window.__v5.pose();const m=window.__tsMeasure(fl,caps);if(mc.length)m.meshClip=window.__tsMeshClip(mc);if(gp.length)m.gap=window.__tsGap(gp);m.arm=window.__tsArm();m.fm=window.__fmProps();const url=render?window.__v5.render():null;return {d,m,url};},[matTop,caps,want.has(f),meshPairs,gapPairs]);
+    const r=await page.evaluate(([fl,caps,render,mc,gp])=>{const d=window.__v5.pose();const m=window.__tsMeasure(fl,caps);if(mc.length)m.meshClip=window.__tsMeshClip(mc);if(gp.length)m.gap=window.__tsGap(gp);m.arm=window.__tsArm();m.fm=window.__fmProps();m.hands=window.__fmHands();const url=render?window.__v5.render():null;return {d,m,url};},[matTop,caps,want.has(f),meshPairs,gapPairs]);
     if(r.url&&pngDir)fs.writeFileSync(path.join(pngDir,`${String(f).padStart(4,'0')}.png`),Buffer.from(r.url.split(',')[1],'base64'));
     // review views (r2, 2026-11-19): the same V5 frame from fixed directions around the body (camera restored by the next stageAt)
     if(want.has(f)&&pngDir&&views.length)for(const vw of views){
@@ -260,7 +277,7 @@ const matTop=floorMats.length?Math.max(...floorMats.map(p=>(p.at?.[1]??0))):0;
         c.up.set(...up);c.position.copy(cen).addScaledVector(dir,dist);c.lookAt(cen);c.updateMatrixWorld();const u=V.render();c.up.set(0,1,0);return u;},[vw.dir,vw.up,vw.focus??null]);
       fs.writeFileSync(path.join(pngDir,`${String(f).padStart(4,'0')}-${vw.name}.png`),Buffer.from(url.split(',')[1],'base64'));
     }
-    res.samples.push({...(r.m.grip?{grip:r.m.grip}:{}),...(r.m.hubGrasp?{hubGrasp:r.m.hubGrasp}:{}),f,t:+(f/fps).toFixed(3),spine:r.d.spine,warn:st.warn?.length??0,warnText:(st.warn??[]).slice(0,3).map(w=>typeof w==='string'?w:JSON.stringify(w)).join(' | ').slice(0,300),ang:r.d.angV5,angHub:r.d.angHub,posErr:r.d.posErr,posErrBone:r.d.posErrBone,H:Object.fromEntries(['leftPalm','rightPalm','leftWrist','rightWrist','leftToe','rightToe','leftAnkle','rightAnkle','leftKnee','rightKnee','leftShoulder','rightShoulder','leftElbow','rightElbow','pelvis','head','leftHip','rightHip','neck','shoulderCenter','waist','leftHeel','rightHeel','leftFingertip','rightFingertip'].map(n=>[n,st.joints[n]])),minY:r.m.minY,minP:r.m.minP,prop:r.m.prop,J:r.m.J,Q:r.m.Q,...(r.m.meshClip?{meshClip:r.m.meshClip}:{}),...(r.m.gap?{gap:r.m.gap}:{}),arm:r.m.arm,wrist:r.d.wrist,...(r.m.fm?{fm:r.m.fm}:{})});
+    res.samples.push({...(r.m.grip?{grip:r.m.grip}:{}),...(r.m.hubGrasp?{hubGrasp:r.m.hubGrasp}:{}),f,t:+(f/fps).toFixed(3),spine:r.d.spine,warn:st.warn?.length??0,warnText:(st.warn??[]).slice(0,3).map(w=>typeof w==='string'?w:JSON.stringify(w)).join(' | ').slice(0,300),ang:r.d.angV5,angHub:r.d.angHub,posErr:r.d.posErr,posErrBone:r.d.posErrBone,H:Object.fromEntries(['leftPalm','rightPalm','leftWrist','rightWrist','leftToe','rightToe','leftAnkle','rightAnkle','leftKnee','rightKnee','leftShoulder','rightShoulder','leftElbow','rightElbow','pelvis','head','leftHip','rightHip','neck','shoulderCenter','waist','leftHeel','rightHeel','leftFingertip','rightFingertip'].map(n=>[n,st.joints[n]])),minY:r.m.minY,minP:r.m.minP,prop:r.m.prop,J:r.m.J,Q:r.m.Q,...(r.m.meshClip?{meshClip:r.m.meshClip}:{}),...(r.m.gap?{gap:r.m.gap}:{}),arm:r.m.arm,hands:r.m.hands,wrist:r.d.wrist,...(r.m.fm?{fm:r.m.fm}:{})});
   }
   res.pageErrors=report.pageErrors;
 }finally{await scene.browser.close();}

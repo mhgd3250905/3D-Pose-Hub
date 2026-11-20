@@ -258,6 +258,47 @@ def metrics(s):
             qw = qmul(Q['torso'], a['uaT']); ax = unit(sub(J[side + 'Forearm'], J[side + 'UpperArm']))
             cr = qrot(qw, [0, 0, 1]); cr = unit(sub(cr, mul(ax, dot(cr, ax)))); hd = qrot(Q['torso'], [0, 1, 0]); hd = unit(sub(hd, mul(ax, dot(hd, ax))))
             m['creaseFwdDeg' + k] = round(deg(math.acos(max(-1, min(1, dot(cr, hd))))), 1)
+    # hand orientation (flare2 r1 fix 2026-11-20, 开哥「手的朝向不对」), V5 skinned hand landmarks from check.mjs 'hands':
+    # W = wrist (V5 hand bone), K = middle-finger root, T = thumb tip. Finger direction = W -> K made horizontal; reference = actions.json
+    # "fingerRef" [x, z] (world, the direction the fingers should point before turn-out). Per side:
+    #   fingerDevDeg = unsigned horizontal angle between the finger direction and fingerRef;
+    #   fingerOutDeg = signed angle from fingerRef toward that hand's lateral side (+ = turned out / external, - = turned in);
+    #   thumbMedMm   = thumb tip vs wrist toward the other hand (horizontal, mm; + = thumb on the inner side, as in any palm-down
+    #                  fingers-forward support; - = hand turned round so the thumb sits outside);
+    #   palmDownDegV5 = palm normal ((K-W) x (T-W), left; reversed for the right hand) vs straight down (0 = palm flat on the support).
+    hs = s.get('hands'); FR = plan.get('fingerRef')
+    if hs and 'left' in hs and 'right' in hs:
+        for side, k, o, sg in (('left', 'L', 'right', 1), ('right', 'R', 'left', -1)):
+            h = hs[side]; W, K, T = h['W'], h['K'], h['T']; fd = sub(K, W); fh = unit([fd[0], 0, fd[2]])
+            md = unit([hs[o]['W'][0] - W[0], 0, hs[o]['W'][2] - W[2]])
+            m['thumbMedMm' + k] = round(dot(sub(T, W), md) * 1000, 1)
+            nrm = unit(mul(cross(fd, sub(T, W)), sg)); m['palmDownDegV5' + k] = round(deg(math.acos(max(-1, min(1, -nrm[1])))), 1)
+            m['fingerDirX' + k], m['fingerDirZ' + k] = round(fh[0], 3), round(fh[2], 3)
+            if FR:
+                r = unit([FR[0], 0, FR[1]]); lt = mul(md, -1); lt = unit(sub(lt, mul(r, dot(lt, r))))
+                m['fingerDevDeg' + k] = round(deg(math.acos(max(-1, min(1, dot(fh, r))))), 1)
+                m['fingerOutDeg' + k] = round(deg(math.atan2(dot(fh, lt), dot(fh, r))), 1)
+        if FR:
+            m['fingerDevMax'] = max(m['fingerDevDegL'], m['fingerDevDegR'])
+            m['fingerOutMin'] = min(m['fingerOutDegL'], m['fingerOutDegR']); m['fingerOutMax'] = max(m['fingerOutDegL'], m['fingerOutDegR'])
+            m['fingerOutAsym'] = round(abs(m['fingerOutDegL'] - m['fingerOutDegR']), 1)
+        m['thumbMedMin'] = min(m['thumbMedMmL'], m['thumbMedMmR']); m['thumbMedMax'] = max(m['thumbMedMmL'], m['thumbMedMmR'])
+        m['palmDownV5Max'] = max(m['palmDownDegV5L'], m['palmDownDegV5R'])
+    # elbow crease vs the fingers (flare2 r1 fix 2026-11-20): straight-arm support with the palm flat, the elbow pit should face
+    # the way the fingers point (crease = upper-arm rest anterior carried by its world rotation, as creaseFwdDeg; both made
+    # perpendicular to the shoulder -> wrist axis); 0 = pit faces the fingers, 90 = sideways, 180 = olecranon toward the fingers
+    if s.get('arm') and hs and 'left' in hs and 'right' in hs:
+        for side, k in (('left', 'L'), ('right', 'R')):
+            a = s['arm'].get(side)
+            if not a: continue
+            qw = qmul(Q['torso'], a['uaT']); ax = unit(sub(J[side + 'Hand'], J[side + 'UpperArm']))
+            cr = qrot(qw, [0, 0, 1]); cr = unit(sub(cr, mul(ax, dot(cr, ax))))
+            h = hs[side]; fd = sub(h['K'], h['W']); fd = unit(sub(fd, mul(ax, dot(fd, ax))))
+            m['creaseToFingerDeg' + k] = round(deg(math.acos(max(-1, min(1, dot(cr, fd))))), 1)
+        if 'creaseToFingerDegL' in m and 'creaseToFingerDegR' in m:
+            m['creaseToFingerMax'] = max(m['creaseToFingerDegL'], m['creaseToFingerDegR'])
+    if m.get('elbowPitAbsL') is not None and m.get('elbowPitAbsR') is not None: m['elbowPitAbsMax'] = max(m['elbowPitAbsL'], m['elbowPitAbsR'])
+    if 'handTwistL' in m and 'handTwistR' in m: m['handTwistAbsMax'] = max(abs(m['handTwistL']), abs(m['handTwistR']))
     m['handLowL'] = Y.get('handL', 1e9); m['handLowR'] = Y.get('handR', 1e9)
     fm = s.get('fm') or {}
     bx = fm.get('box') or {}; wl = fm.get('wall') or {}
