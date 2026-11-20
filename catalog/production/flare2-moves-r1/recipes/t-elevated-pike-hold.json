@@ -1,0 +1,70 @@
+{
+  "format": "pose-hub-action-recipe@1",
+  "id": "t-elevated-pike-hold",
+  "nameZh": "脚垫高派克支撑",
+  "spec": "drill-anim/specs/t-elevated-pike-hold.js",
+  "specSha256Lf": "44f52aa47511ca1082f6fd56b236d8e6bdbe063a2afd34d27388cadaf005241b",
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "hands": {
+    "left": "support",
+    "right": "support"
+  },
+  "camera": {
+    "pad": 0.2,
+    "k": 1,
+    "drift": 0,
+    "fitTimeline": true,
+    "orbitDegrees": 0,
+    "frontSweepDegrees": 0,
+    "dir": [
+      0.05,
+      0.15,
+      1
+    ],
+    "fit": [
+      "head",
+      "leftPalm",
+      "rightPalm",
+      "leftToe",
+      "rightToe",
+      "pelvis",
+      "leftShoulder",
+      "rightShoulder"
+    ],
+    "at": 4
+  },
+  "cameraScale": 1.15,
+  "output": {
+    "groundShadow": false,
+    "cameraMotion": false,
+    "wholeCycleContentRect": true,
+    "fps": 30,
+    "exerciseMat": true
+  },
+  "jointCorrections": [
+    {
+      "profile": "upper-arm-contour-r3",
+      "version": "0.1.0-r3"
+    },
+    {
+      "profile": "ankle-join-r5",
+      "version": "0.1.0-r5"
+    }
+  ],
+  "adaptation": {
+    "status": "flare2-moves-r1-draft",
+    "method": "New spec authored in the sandbox (CPU solve + V5 low-res preview); V5 720p sample render pending on the render machine."
+  },
+  "source": {
+    "brief": "Flare 2.0 新动作清单 2026-11-20 (Google 表 1njBhCNMs-iliNbt3gKxDwCZnpQBxQoi-yPFRGQHmJwk) P2-1",
+    "plans": "1 个计划：阶段 11/15 初级（健身房/居家）"
+  },
+  "sampledOnly": true,
+  "fullCycleValidated": false,
+  "reviewed": false,
+  "userAccepted": false,
+  "releaseEligible": false
+}

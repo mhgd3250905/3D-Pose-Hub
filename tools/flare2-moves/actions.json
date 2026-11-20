@@ -712,6 +712,151 @@
      "mm"
     ]
    ]
+  },
+  {
+   "id": "t-elevated-pike-hold",
+   "item": "P2-1",
+   "priority": "P2",
+   "nameZh": "脚垫高派克支撑",
+   "spec": "drill-anim/specs/t-elevated-pike-hold.js",
+   "plans": "1 个计划：阶段 11/15 初级（健身房/居家）",
+   "hands": {
+    "left": "support",
+    "right": "support"
+   },
+   "camera": {
+    "dir": [
+     0.05,
+     0.15,
+     1
+    ],
+    "fit": [
+     "head",
+     "leftPalm",
+     "rightPalm",
+     "leftToe",
+     "rightToe",
+     "pelvis",
+     "leftShoulder",
+     "rightShoulder"
+    ],
+    "pad": 0.2,
+    "k": 1,
+    "at": 4
+   },
+   "checks": {
+    "lockElbows": [
+     [
+      0,
+      8
+     ]
+    ],
+    "pins": [
+     {
+      "bone": "leftHand",
+      "hub": "leftPalm",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     },
+     {
+      "bone": "rightHand",
+      "hub": "rightPalm",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     },
+     {
+      "bone": "leftFoot",
+      "hub": "leftToe",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     },
+     {
+      "bone": "rightFoot",
+      "hub": "rightToe",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     }
+    ]
+   },
+   "preview": [
+    12,
+    120,
+    225
+   ],
+   "phases": {
+    "set": [
+     [
+      0,
+      0.8
+     ]
+    ],
+    "hold": [
+     [
+      1.8,
+      7.2
+     ]
+    ]
+   },
+   "standard": "tools/flare2-moves/standards/t-elevated-pike-hold.md",
+   "reviewViews": "side:0,0.08,1;front:-1,0.25,0;back:1,0.3,0.2",
+   "reviewFrames": [
+    12,
+    120,
+    225
+   ],
+   "reviewKeys": [
+    [
+     "elbowMin",
+     "elbow",
+     "°"
+    ],
+    [
+     "armOverheadMax",
+     "armLine",
+     "°"
+    ],
+    [
+     "headFwdOfArmsMm",
+     "headFwd",
+     "mm"
+    ],
+    [
+     "bodyLineDeg",
+     "hipAngle",
+     "°"
+    ],
+    [
+     "hipAboveOthersMm",
+     "hipTop",
+     "mm"
+    ],
+    [
+     "kneeMin",
+     "knee",
+     "°"
+    ],
+    [
+     "scapUp",
+     "scapUp",
+     "mm"
+    ]
+   ]
   }
  ]
 }
