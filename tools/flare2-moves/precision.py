@@ -240,6 +240,9 @@ def metrics(s):
     lat2 = sub(J['leftHand'], J['rightHand']); LL = dot(lat2, lat2) or 1e-12
     m['comLatFrac'] = round(dot(sub(com, J['rightHand']), lat2) / LL, 3)   # 0 = over the right hand, 1 = over the left hand, 0.5 = centred
     m['shLatFrac'] = round(dot(sub(sh, J['rightHand']), lat2) / LL, 3)
+    for side, k, sg in (('left', 'L', 1), ('right', 'R', -1)):   # elbow flare: upper arm away from the thorax mid-sagittal plane (thorax frame), deg (+ = out)
+        ua = unit(qrot(qinv(Q['torso']), sub(J[side + 'Forearm'], J[side + 'UpperArm']))); m['elbowFlare' + k] = round(deg(math.asin(max(-1, min(1, sg * ua[0])))), 1)
+    m['elbowFlareMax'] = max(m['elbowFlareL'], m['elbowFlareR'])
     m['handLowL'] = Y.get('handL', 1e9); m['handLowR'] = Y.get('handR', 1e9)
     fm = s.get('fm') or {}
     bx = fm.get('box') or {}; wl = fm.get('wall') or {}

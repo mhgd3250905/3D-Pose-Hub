@@ -1,0 +1,247 @@
+{
+ "format": "flare2-moves-standard@1",
+ "id": "t-pseudo-planche-pushup",
+ "nameZh": "伪俄挺俯卧撑",
+ "doc": "tools/flare2-moves/standards/t-pseudo-planche-pushup.md",
+ "phases": {
+  "top": "顶端：手在腰侧、指尖朝外，直臂，身体前倾、肩超过手约 18 cm，肩胛推开下沉",
+  "bottom": "底端：屈肘约 90°、肘贴身体向后，肩继续在手前约 25 cm，身体一条线"
+ },
+ "series": [
+  "elbowMin",
+  "shoulderLeadCm",
+  "handAlongBodyFrac",
+  "hipOffsetMm",
+  "trunkFlexDeg",
+  "wristExtMax",
+  "elbowFlareMax",
+  "chestHeightMm"
+ ],
+ "checks": [
+  {
+   "id": "top_locked",
+   "label": "顶端锁肘",
+   "metric": "elbowMin",
+   "phase": "top",
+   "agg": "min",
+   "min": 175,
+   "unit": "°"
+  },
+  {
+   "id": "bottom_depth",
+   "label": "底端屈肘深度（两肘最大角）",
+   "metric": "elbowMin",
+   "phase": "bottom",
+   "agg": "max",
+   "min": 80,
+   "max": 95,
+   "unit": "°"
+  },
+  {
+   "id": "lead_top",
+   "label": "顶端：肩超过手腕（侧视）",
+   "metric": "shoulderLeadCm",
+   "phase": "top",
+   "agg": "min",
+   "min": 15,
+   "max": 22,
+   "unit": "cm"
+  },
+  {
+   "id": "lead_bottom",
+   "label": "底端：肩超过手腕（侧视）",
+   "metric": "shoulderLeadCm",
+   "phase": "bottom",
+   "agg": "min",
+   "min": 22,
+   "max": 30,
+   "unit": "cm"
+  },
+  {
+   "id": "lead_kept",
+   "label": "全程肩在手前（最小）",
+   "metric": "shoulderLeadCm",
+   "agg": "min",
+   "min": 15,
+   "unit": "cm"
+  },
+  {
+   "id": "hands_waist",
+   "label": "手位在腰侧：手腕在 肩→髋 连线上的位置（最小，0 = 肩，1 = 髋）",
+   "metric": "handAlongBodyFrac",
+   "agg": "min",
+   "min": 0.5,
+   "max": 0.8,
+   "unit": ""
+  },
+  {
+   "id": "hands_waist_max",
+   "label": "手位在腰侧（最大）",
+   "metric": "handAlongBodyFrac",
+   "agg": "max",
+   "min": 0.5,
+   "max": 0.8,
+   "unit": ""
+  },
+  {
+   "id": "no_sag",
+   "label": "不塌腰：髋低于 胸廓–踝 连线（最小）",
+   "metric": "hipOffsetMm",
+   "agg": "min",
+   "min": -15,
+   "unit": "mm"
+  },
+  {
+   "id": "no_pike",
+   "label": "不撅臀：髋高于 胸廓–踝 连线（最大）",
+   "metric": "hipOffsetMm",
+   "agg": "max",
+   "max": 20,
+   "unit": "mm"
+  },
+  {
+   "id": "body_line",
+   "label": "身体一条线（胸廓–髋–踝夹角，最小）",
+   "metric": "bodyLineDeg",
+   "agg": "min",
+   "min": 175,
+   "unit": "°"
+  },
+  {
+   "id": "pelvis_tuck",
+   "label": "骨盆微后倾：胸廓相对骨盆屈曲",
+   "metric": "trunkFlexDeg",
+   "agg": "min",
+   "min": 0,
+   "max": 10,
+   "unit": "°"
+  },
+  {
+   "id": "knees_straight",
+   "label": "膝伸直",
+   "metric": "kneeMin",
+   "agg": "min",
+   "min": 172,
+   "unit": "°"
+  },
+  {
+   "id": "elbows_tucked",
+   "label": "肘贴身体向后（大臂偏离躯干矢状面，最大）",
+   "metric": "elbowFlareMax",
+   "agg": "max",
+   "max": 20,
+   "unit": "°"
+  },
+  {
+   "id": "fingers_out",
+   "label": "指尖朝外（略朝后）",
+   "metric": "fingerTurnOutL",
+   "agg": "min",
+   "min": 75,
+   "max": 120,
+   "unit": "°"
+  },
+  {
+   "id": "wrist_ext",
+   "label": "腕背伸角（最大）",
+   "metric": "wristExtMax",
+   "agg": "max",
+   "max": 95,
+   "unit": "°"
+  },
+  {
+   "id": "scap_top",
+   "label": "顶端肩胛推开（肩关节相对胸廓向前）",
+   "metric": "scapFwd",
+   "phase": "top",
+   "agg": "min",
+   "min": 15,
+   "unit": "mm"
+  },
+  {
+   "id": "chest_clear",
+   "label": "底端胸不贴地（躯干蒙皮最低点离垫）",
+   "metric": "seatFloorMm",
+   "agg": "min",
+   "min": 50,
+   "unit": "mm"
+  },
+  {
+   "id": "reps",
+   "label": "每循环 2 次",
+   "kind": "reps",
+   "metric": "elbowMin",
+   "ref": "min",
+   "tol": 3,
+   "min": 2,
+   "max": 2,
+   "unit": "次"
+  },
+  {
+   "id": "contacts_hands",
+   "label": "手掌不滑（V5 手骨漂移）",
+   "kind": "pins",
+   "which": "hands",
+   "max": 2,
+   "unit": "mm"
+  },
+  {
+   "id": "contacts_feet",
+   "label": "脚尖接触区不滑（脚在脚尖上滚动）",
+   "kind": "pins",
+   "which": "feet",
+   "max": 5,
+   "unit": "mm"
+  },
+  {
+   "id": "palm_flat",
+   "label": "手掌不翻转（手骨转角变化）",
+   "metric": "handRotMax",
+   "agg": "max",
+   "max": 2,
+   "unit": "°"
+  },
+  {
+   "id": "hands_on_mat",
+   "label": "手掌贴垫（V5 手最低点离垫面）",
+   "metric": "handFloorMm",
+   "agg": "max",
+   "min": -1,
+   "max": 3,
+   "unit": "mm"
+  },
+  {
+   "id": "toes_on_mat",
+   "label": "脚尖着垫（脚最低点离垫面，最大）",
+   "metric": "footClearMm",
+   "agg": "max",
+   "min": -1,
+   "max": 2,
+   "unit": "mm"
+  },
+  {
+   "id": "head_neutral",
+   "label": "头中立（头与胸廓夹角）",
+   "metric": "headVsTrunkDeg",
+   "agg": "max",
+   "max": 15,
+   "unit": "°"
+  },
+  {
+   "id": "self_clip",
+   "label": "自身不穿模（关节胶囊最近距离）",
+   "kind": "summary",
+   "path": "selfClipWorst.mm",
+   "min": 0,
+   "unit": "mm"
+  },
+  {
+   "id": "v5_matches_hub",
+   "label": "V5 身体与求解姿态一致（最大关节偏差）",
+   "kind": "summary",
+   "path": "maxPosErrMm",
+   "max": 2,
+   "unit": "mm"
+  }
+ ]
+}

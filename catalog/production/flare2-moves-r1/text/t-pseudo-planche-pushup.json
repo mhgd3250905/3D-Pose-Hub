@@ -1,0 +1,202 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "t-pseudo-planche-pushup",
+ "reviewStatus": "draft-ai-needs-user-review",
+ "sources": [
+  "Flare 2.0 新动作清单 2026-11-20（Google 表 1njBhCNMs-iliNbt3gKxDwCZnpQBxQoi-yPFRGQHmJwk，P0 伪俄挺俯卧撑）",
+  "drill-anim/specs/t-pseudo-planche-pushup.js",
+  "tools/flare2-moves/standards/t-pseudo-planche-pushup.md"
+ ],
+ "name": {
+  "zh": "伪俄挺俯卧撑",
+  "en": "Pseudo Planche Push-Up"
+ },
+ "purpose": {
+  "zh": "练肩前侧、前锯肌和直臂前倾力量，托马斯移重的高级辅助",
+  "en": "Builds front-shoulder, serratus and lean strength for the advanced weight shifts in Thomas flairs."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "先往前倾，肩在手前面再往下放",
+    "en": "Lean first, shoulders in front of your hands, then lower"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "手放在腰两侧，指尖朝外，手腕不舒服就再往外转一点。",
+    "en": "Hands by your waist, fingertips turned out; turn them out more if your wrists complain."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "屈肘时手肘贴着身体往后，推起时把地推开。",
+    "en": "Elbows go straight back along your body; push the floor away as you press up."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "脚尖踩住垫子，从头到脚跟一条线，别塌腰也别撅屁股。",
+    "en": "Toes planted, head to heels in one line; no sagging, no piking."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "只下放不前倾，肩回到手的正上方",
+   "en": "Lowering without the lean, shoulders back over the hands."
+  },
+  {
+   "zh": "塌腰或撅臀",
+   "en": "Sagging your hips or piking."
+  },
+  {
+   "zh": "手肘往两边张开",
+   "en": "Flaring your elbows out to the sides."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "手腕承重很大，先活动手腕；疼就停或减小前倾",
+   "en": "Heavy load on the wrists: warm them up; stop or lean less if they hurt."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "deltoids",
+   "serratus",
+   "triceps",
+   "chest"
+  ],
+  "synergistMuscles": [
+   "forearms",
+   "abs",
+   "biceps"
+  ],
+  "equipment": [
+   "mat"
+  ],
+  "position": "prone",
+  "difficulty": 3
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 3,
+  "reps": 6,
+  "restSeconds": 90
+ },
+ "phases": {
+  "start": {
+   "zh": "前倾下放",
+   "en": "Lean and lower"
+  },
+  "peak": {
+   "zh": "最低点",
+   "en": "Bottom"
+  },
+  "end": {
+   "zh": "推起",
+   "en": "Press up"
+  }
+ },
+ "training": {
+  "kind": "rep_updown",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "top",
+    "seconds": 0.4
+   },
+   {
+    "id": "down",
+    "seconds": 1.5
+   },
+   {
+    "id": "bottom",
+    "seconds": 0.3
+   },
+   {
+    "id": "up",
+    "seconds": 1.2
+   },
+   {
+    "id": "reset",
+    "seconds": 0.6
+   }
+  ],
+  "source": "flare2 r1 animation tempo (4 s per rep: 1.5 s down, 0.3 s bottom, 1.2 s up)"
+ },
+ "flare2": {
+  "version": "r1",
+  "item": "P0 伪俄挺俯卧撑",
+  "priority": "P0",
+  "plans": "5 个计划（前锯肌/肱三头肌/胸大肌高级；阶段 10/14 高级）",
+  "camera": "正侧面（看清肩超过手掌多少）",
+  "doseBrief": "表内未给剂量；草稿按 3 组 × 6 次、休 90 秒",
+  "status": "draft-awaiting-user-review",
+  "note": "Animation (r1): shoulders 18 cm past the wrists at the top, 26 cm at the bottom (elbows 88 deg), wrists at 0.56-0.59 of the shoulder->hip line (lower ribs / waist), fingers turned out ~100 deg, feet roll over the toes.",
+  "standard": "tools/flare2-moves/standards/t-pseudo-planche-pushup.md"
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 4.0,
+  "phaseCues": "none",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "肩一直在手前面",
+    "en": "Keep your shoulders in front of your hands",
+    "from": [
+     "cue1",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 4,
+    "role": "halfway",
+    "zh": "手肘贴身体，身体一条线",
+    "en": "Elbows in, body in one line",
+    "from": [
+     "cue3",
+     "cue4"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "key": "p.last_rep"
+   }
+  ],
+  "before": [],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.90"
+   ],
+   "allDone": [
+    "p.nice"
+   ]
+  }
+ }
+}

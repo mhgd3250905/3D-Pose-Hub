@@ -152,6 +152,158 @@
      "°"
     ]
    ]
+  },
+  {
+   "id": "t-pseudo-planche-pushup",
+   "item": "P0-2",
+   "priority": "P0",
+   "nameZh": "伪俄挺俯卧撑",
+   "spec": "drill-anim/specs/t-pseudo-planche-pushup.js",
+   "plans": "5 个计划：前锯肌/肱三头肌/胸大肌高级；阶段 10/14 高级",
+   "hands": {
+    "left": "support",
+    "right": "support"
+   },
+   "camera": {
+    "dir": [
+     0.0,
+     0.2,
+     1
+    ],
+    "fit": [
+     "head",
+     "leftPalm",
+     "rightPalm",
+     "leftToe",
+     "rightToe",
+     "pelvis",
+     "leftShoulder",
+     "rightShoulder",
+     "leftElbow"
+    ],
+    "pad": 0.12,
+    "k": 1,
+    "at": 2.0
+   },
+   "checks": {
+    "pins": [
+     {
+      "bone": "leftHand",
+      "hub": "leftPalm",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     },
+     {
+      "bone": "rightHand",
+      "hub": "rightPalm",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     },
+     {
+      "bone": "leftFoot",
+      "hub": "leftToe",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     },
+     {
+      "bone": "rightFoot",
+      "hub": "rightToe",
+      "when": [
+       [
+        0,
+        8
+       ]
+      ]
+     }
+    ]
+   },
+   "preview": [
+    6,
+    60,
+    99
+   ],
+   "phases": {
+    "top": [
+     [
+      0,
+      0.4
+     ],
+     [
+      3.4,
+      4.4
+     ],
+     [
+      7.4,
+      8.0
+     ]
+    ],
+    "bottom": [
+     [
+      1.9,
+      2.2
+     ],
+     [
+      5.9,
+      6.2
+     ]
+    ]
+   },
+   "standard": "tools/flare2-moves/standards/t-pseudo-planche-pushup.md",
+   "reviewViews": "side:0,0.08,1;front:-1,0.25,0;top:0.001,1,0:-1,0,0",
+   "reviewFrames": [
+    6,
+    60,
+    99
+   ],
+   "reviewKeys": [
+    [
+     "elbowMin",
+     "elbow",
+     "°"
+    ],
+    [
+     "shoulderLeadCm",
+     "shLead",
+     "cm"
+    ],
+    [
+     "handAlongBodyFrac",
+     "handFrac",
+     ""
+    ],
+    [
+     "hipOffsetMm",
+     "hipOff",
+     "mm"
+    ],
+    [
+     "trunkFlexDeg",
+     "trunkFlex",
+     "°"
+    ],
+    [
+     "wristExtMax",
+     "wristExt",
+     "°"
+    ],
+    [
+     "chestHeightMm",
+     "chestY",
+     "mm"
+    ]
+   ]
   }
  ]
 }

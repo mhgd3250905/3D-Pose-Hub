@@ -229,7 +229,9 @@ try{
     }
   });
   const props=source.props??[];
-  const matTop=props.some(p=>p.type==='mat')?Math.max(...props.filter(p=>p.type==='mat').map(p=>(p.at?.[1]??0)+(p.size?.[2]??0.006))):0;
+  // flare2 (2026-11-20): the mat's top face is at at.y (drill-anim/page/props.js mat: slab spans [at.y - H, at.y]; tools/v5/runtime/v5-hub.js
+// reads the same top from the prop_mat bounding box), not at.y + H as tools/thomas-sup/check.mjs assumes (that put the floor 6 mm high).
+const matTop=props.some(p=>p.type==='mat')?Math.max(...props.filter(p=>p.type==='mat').map(p=>(p.at?.[1]??0))):0;
   const caps=await page.evaluate(()=>{const out=[];try{const q=__props.qaPrims?.()??[];for(const c of q)if(c.a&&c.b&&c.r)out.push({a:c.a,b:c.b,r:c.r});}catch{}return out;});
   for(const p of props)if(p.type==='pullupBar'&&p.capsule)caps.push(p.capsule);
   // r3 (2026-11-19): a pull-up bar without an explicit capsule = its drawn bar (drill-anim/page/props.js pullupBar: radius 16 mm, along X)
