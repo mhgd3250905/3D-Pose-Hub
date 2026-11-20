@@ -1,18 +1,26 @@
 // t-wall-handstand-hold 面墙靠墙倒立保持 (chest-to-wall handstand hold) · Flare 2.0 new moves r1 (2026-11-20), P1.
 // Standard: tools/flare2-moves/standards/t-wall-handstand-hold.md.
 // World: the wall face is the plane z = 0 (wall prop at the origin, facing +Z); the trainee is upside down in front of it, chest and
-// belly toward the wall, back toward the room. Hands flat on the mat about a fist from the wall (fingertips ~10 cm), fingers toward the
-// wall and turned out a little, shoulder-width. Arms locked, shoulders fully open (arms in line with the trunk, ears between the
-// arms), body one straight line from wrists to toes leaning ~4 deg into the wall, only the toe tips touching the wall.
+// belly toward the wall, back toward the room. Hands flat on the mat shoulder-width, the heel of the hand ~22 cm from the wall,
+// fingers spread and pointing AWAY from the wall (toward the room) and turned out ~15 deg, thumbs on the inside (r1 fix 2026-11-20,
+// 开哥「手的朝向不对」: r1 had the fingers toward the wall, which on this rig puts the thumbs outside = hands turned round; wall-facing
+// handstand standard = "hands flat, pointed away from the wall, fingers splayed", CrossFit Journal 2015 Long & Iskat). Elbow pits
+// turned forward-in toward the finger side (~60 deg from the fingers): the roll is taken by the whole arm (upperArmTwist = elbowTwist,
+// so the elbow stays a pure hinge) and the forearm pronation stays ~48 deg; the elbow pole (olecranon side) is opposite the pit so the
+// residual 1.5 deg of elbow flexion bends toward the pit (no twisted elbow). Arms locked, shoulders fully open (arms in line with the trunk, ears between the
+// arms), body one straight line from wrists to toes leaning ~5 deg into the wall, only the toe tips touching the wall.
 // "直臂顶肩": the shoulders push tall toward the floor-side of the ears (scapular elevation, shoulders.shift +Y in the chest frame,
 // drawn on V5 by v5.scapulaShift). Loop 8 s: 0.8 s set, 1.0 s push tall, 5.4 s hold, 0.8 s ease (the static hold is the action; the
 // push makes the "顶肩" visible).
 // Rig frame: pelvis 'up' (rest +Y, toward the head) = world -Y; 'front' (rest +Z) = world -Z (toward the wall); body left = +X.
 import { keys } from '../lib/home-anim.mjs';
 import { track } from '../lib/ss-geo.mjs';
-const DUR = 8, HX = 0.175, HZ = 0.28, LEAN = -7.35;
+const DUR = 8, HX = 0.175, HZ = 0.25, LEAN = -6.2;
 const p = keys([[0, 0], [0.8, 0], [1.8, 1], [7.2, 1]], DUR);
-const floorHand = (sg) => ({ mode: 'floor', at: [sg * HX, HZ], finger: [sg * 0.25, -1], poleUp: [sg * 0.9, 0, 0.35] });
+// finger [x, z] = the hub palm axis; the V5 middle finger sits ~13 deg further toward the little finger, so 2 deg asked = ~15.5 deg
+// turned out measured (precision.py fingerOutDeg on the V5 skin). HZ / LEAN: hands as close as the chest (>= 20 mm off the wall) and
+// the 3-10 deg lean allow with the toes touching the wall.
+const floorHand = (sg) => ({ mode: 'floor', at: [sg * HX, HZ], finger: [sg * 0.035, 1], poleUp: [sg * 0.9, 0, 0.72], upperArmTwist: sg * -140, elbowTwist: sg * -140 });
 // legs straight in line with the pelvis (rest standing ankles, carried by the pelvis), feet pointed (toes away from the shins)
 const foot = (sg) => ({ mode: 'free', frame: 'hips', ankle: [sg * 0.075, 0.09, -0.02], rot: [[[1, 0, 0], 62]], poleLow: [sg * 0.05, 0.5, 1.0] });
 export default {
