@@ -1,0 +1,204 @@
+{
+ "format": "flare2-moves-standard@1",
+ "id": "t-wall-handstand-shift",
+ "nameZh": "靠墙倒立移重",
+ "doc": "tools/flare2-moves/standards/t-wall-handstand-shift.md",
+ "phases": {
+  "center": "居中：双手掌平放，重心在两手中间",
+  "left": "移到左手：左臂锁直承重，重心在左手上，右手只剩指尖点地",
+  "right": "移到右手（镜像）"
+ },
+ "series": [
+  "elbowL",
+  "elbowR",
+  "comLatFrac",
+  "shLatFrac",
+  "handLowL",
+  "handLowR",
+  "wristYL",
+  "wristYR",
+  "bodyLineDeg",
+  "wallFootMinMm"
+ ],
+ "checks": [
+  {
+   "id": "supportL_locked",
+   "label": "移左过程左臂（支撑臂）锁直",
+   "metric": "elbowL",
+   "phase": "supportL",
+   "agg": "min",
+   "min": 175,
+   "unit": "°"
+  },
+  {
+   "id": "supportR_locked",
+   "label": "移右过程右臂（支撑臂）锁直",
+   "metric": "elbowR",
+   "phase": "supportR",
+   "agg": "min",
+   "min": 175,
+   "unit": "°"
+  },
+  {
+   "id": "center_both",
+   "label": "居中：重心在两手中间",
+   "metric": "comLatFrac",
+   "phase": "center",
+   "agg": "max",
+   "min": 0.45,
+   "max": 0.55,
+   "unit": ""
+  },
+  {
+   "id": "shift_left",
+   "label": "移到左手：重心在左手掌上（0 = 右手，1 = 左手）",
+   "metric": "comLatFrac",
+   "phase": "left",
+   "agg": "min",
+   "min": 0.85,
+   "max": 1.1,
+   "unit": ""
+  },
+  {
+   "id": "shift_right",
+   "label": "移到右手：重心在右手掌上",
+   "metric": "comLatFrac",
+   "phase": "right",
+   "agg": "max",
+   "min": -0.1,
+   "max": 0.15,
+   "unit": ""
+  },
+  {
+   "id": "light_R_tips",
+   "label": "移左时右手只指尖点地（右手最低点离垫，最小）",
+   "metric": "handLowR",
+   "phase": "left",
+   "agg": "min",
+   "min": -1,
+   "max": 4,
+   "unit": "mm"
+  },
+  {
+   "id": "light_R_tips_max",
+   "label": "移左时右手只指尖点地（最大）",
+   "metric": "handLowR",
+   "phase": "left",
+   "agg": "max",
+   "min": -1,
+   "max": 4,
+   "unit": "mm"
+  },
+  {
+   "id": "light_R_heel",
+   "label": "移左时右手掌根离地（手腕抬高，相对居中）",
+   "kind": "diff",
+   "metric": "wristYR",
+   "phase": "left",
+   "agg": "min",
+   "phase2": "center",
+   "agg2": "max",
+   "min": 10,
+   "max": 70,
+   "unit": "mm"
+  },
+  {
+   "id": "light_L_tips",
+   "label": "移右时左手只指尖点地（最大）",
+   "metric": "handLowL",
+   "phase": "right",
+   "agg": "max",
+   "min": -1,
+   "max": 4,
+   "unit": "mm"
+  },
+  {
+   "id": "light_L_heel",
+   "label": "移右时左手掌根离地（手腕抬高）",
+   "kind": "diff",
+   "metric": "wristYL",
+   "phase": "right",
+   "agg": "min",
+   "phase2": "center",
+   "agg2": "max",
+   "min": 10,
+   "max": 70,
+   "unit": "mm"
+  },
+  {
+   "id": "body_line",
+   "label": "身体一条线（胸廓–髋–踝，最小）",
+   "metric": "bodyLineDeg",
+   "agg": "min",
+   "min": 174,
+   "unit": "°"
+  },
+  {
+   "id": "no_arch",
+   "label": "不塌腰（胸廓相对骨盆）",
+   "metric": "trunkFlexDeg",
+   "agg": "min",
+   "min": -3,
+   "max": 8,
+   "unit": "°"
+  },
+  {
+   "id": "toes_on_wall",
+   "label": "脚尖贴墙（最小）",
+   "metric": "wallFootMinMm",
+   "agg": "min",
+   "min": -1,
+   "max": 3,
+   "unit": "mm"
+  },
+  {
+   "id": "toes_on_wall_max",
+   "label": "脚尖贴墙（最大）",
+   "metric": "wallFootMinMm",
+   "agg": "max",
+   "min": -1,
+   "max": 3,
+   "unit": "mm"
+  },
+  {
+   "id": "chest_off_wall",
+   "label": "躯干不碰墙",
+   "metric": "wallTorsoMm",
+   "agg": "min",
+   "min": 20,
+   "unit": "mm"
+  },
+  {
+   "id": "contacts_hands",
+   "label": "承重手掌不滑（V5 手骨漂移，承重窗口）",
+   "kind": "pins",
+   "which": "hands",
+   "max": 2,
+   "unit": "mm"
+  },
+  {
+   "id": "head_off_floor",
+   "label": "头不碰地",
+   "kind": "summary",
+   "path": "floorMinMm.head",
+   "min": 80,
+   "unit": "mm"
+  },
+  {
+   "id": "self_clip",
+   "label": "自身不穿模",
+   "kind": "summary",
+   "path": "selfClipWorst.mm",
+   "min": 0,
+   "unit": "mm"
+  },
+  {
+   "id": "v5_matches_hub",
+   "label": "V5 身体与求解姿态一致",
+   "kind": "summary",
+   "path": "maxPosErrMm",
+   "max": 2,
+   "unit": "mm"
+  }
+ ]
+}

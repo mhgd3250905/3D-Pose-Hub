@@ -1,0 +1,201 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "t-wall-handstand-shift",
+ "reviewStatus": "draft-ai-needs-user-review",
+ "sources": [
+  "Flare 2.0 新动作清单 2026-11-20（Google 表 1njBhCNMs-iliNbt3gKxDwCZnpQBxQoi-yPFRGQHmJwk，P1 靠墙倒立移重）",
+  "drill-anim/specs/t-wall-handstand-shift.js",
+  "tools/flare2-moves/standards/t-wall-handstand-shift.md"
+ ],
+ "name": {
+  "zh": "靠墙倒立移重",
+  "en": "Chest-to-Wall Handstand Weight Shift"
+ },
+ "purpose": {
+  "zh": "练倒立时把重心移到单手、支撑臂锁直，为托马斯单手支撑打底",
+  "en": "Trains shifting your handstand weight onto one locked arm, a base for one-arm support in flairs."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "支撑手臂锁直，重心慢慢移到这只手上",
+    "en": "Support arm locked, slowly bring your weight over that hand"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "胸腹朝墙倒立，手离墙一拳，肩往上顶。",
+    "en": "Chest-to-wall handstand, hands a fist from the wall, push tall."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "另一只手掌根抬起，只留指尖点地；停一下再回中间换边。",
+    "en": "Let the other palm lift so only the fingertips touch; pause, back to the middle, then switch."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "肩累了就下墙休息。",
+    "en": "When your shoulders tire, come down and rest."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "支撑臂弯了",
+   "en": "The support arm bends."
+  },
+  {
+   "zh": "只是歪头歪身子，重心没移过去",
+   "en": "Leaning your head or hips without actually moving your weight."
+  },
+  {
+   "zh": "塌腰",
+   "en": "Arching your lower back."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "先能稳定保持面墙倒立 30 秒再练；手腕或肩疼就停",
+   "en": "Hold a 30 s chest-to-wall handstand first; stop if your wrists or shoulders hurt."
+  }
+ ],
+ "tags": {
+  "category": "strength",
+  "activeMuscles": [
+   "deltoids",
+   "triceps",
+   "scapular"
+  ],
+  "synergistMuscles": [
+   "abs",
+   "forearms",
+   "serratus",
+   "obliques"
+  ],
+  "equipment": [
+   "wall",
+   "mat"
+  ],
+  "position": "other",
+  "difficulty": 3
+ },
+ "unilateral": true,
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 3,
+  "reps": 4,
+  "restSeconds": 60
+ },
+ "phases": {
+  "start": {
+   "zh": "移到一侧",
+   "en": "Shift"
+  },
+  "peak": {
+   "zh": "停住",
+   "en": "Pause"
+  },
+  "end": {
+   "zh": "回到中间",
+   "en": "Back to centre"
+  }
+ },
+ "training": {
+  "kind": "rep_alternate",
+  "leadSeconds": 3,
+  "phases": [
+   {
+    "id": "center",
+    "seconds": 0.5
+   },
+   {
+    "id": "shift",
+    "seconds": 1.5
+   },
+   {
+    "id": "hold",
+    "seconds": 1.0
+   },
+   {
+    "id": "back",
+    "seconds": 1.0
+   }
+  ],
+  "perSide": "alternate",
+  "repUnit": "left+right",
+  "source": "flare2 r1 animation tempo (4 s per side: 0.5 s centre, 1.5 s shift, 1 s pause, 1 s back); 表：左右各一次计 1 次，剂量标「每侧」"
+ },
+ "flare2": {
+  "version": "r1",
+  "item": "P1 靠墙倒立移重",
+  "priority": "P1",
+  "plans": "2 个计划（三角肌高级；阶段 11/15 高级）",
+  "camera": "背后（房间一侧）偏右 14°，看左右移重和放松手",
+  "doseBrief": "表：左右各一次计 1 次，剂量标「每侧」；草稿 3 组 × 4 次（每侧）、休 60 秒",
+  "status": "draft-awaiting-user-review",
+  "note": "Animation (r1): left first. Shoulders 15 cm toward the support hand, body rolls so the feet slide ~24 cm along the wall, COM over the support palm (0.92); free hand heel up ~16 mm, fingertips on the mat, free elbow ~149 deg.",
+  "standard": "tools/flare2-moves/standards/t-wall-handstand-shift.md"
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 8.0,
+  "repUnit": "left+right",
+  "phaseCues": "none",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 1,
+    "role": "form",
+    "zh": "支撑手臂锁直，重心移过去",
+    "en": "Lock the support arm, move your weight over it",
+    "from": [
+     "cue1",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 2,
+    "role": "halfway",
+    "zh": "另一只手只留指尖点地",
+    "en": "Other hand on fingertips only",
+    "from": [
+     "cue3"
+    ]
+   },
+   {
+    "afterRep": 3,
+    "key": "p.last_rep"
+   }
+  ],
+  "before": [],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.60"
+   ],
+   "allDone": [
+    "p.nice"
+   ]
+  }
+ }
+}

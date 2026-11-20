@@ -567,6 +567,151 @@
      "mm"
     ]
    ]
+  },
+  {
+   "id": "t-wall-handstand-shift",
+   "item": "P1-2",
+   "priority": "P1",
+   "nameZh": "靠墙倒立移重",
+   "spec": "drill-anim/specs/t-wall-handstand-shift.js",
+   "plans": "2 个计划：三角肌高级；阶段 11/15 高级",
+   "hands": {
+    "left": "support",
+    "right": "support"
+   },
+   "camera": {
+    "dir": [
+     0.25,
+     0.12,
+     1
+    ],
+    "fit": [
+     "head",
+     "leftPalm",
+     "rightPalm",
+     "leftToe",
+     "rightToe",
+     "pelvis",
+     "leftShoulder",
+     "rightShoulder"
+    ],
+    "pad": 0.12,
+    "k": 1,
+    "at": 2.5
+   },
+   "checks": {
+    "pins": [
+     {
+      "bone": "leftHand",
+      "hub": "leftPalm",
+      "when": [
+       [
+        0,
+        4.5
+       ]
+      ]
+     },
+     {
+      "bone": "rightHand",
+      "hub": "rightPalm",
+      "when": [
+       [
+        0,
+        0.5
+       ],
+       [
+        4.0,
+        8
+       ]
+      ]
+     }
+    ]
+   },
+   "preview": [
+    9,
+    75,
+    195
+   ],
+   "phases": {
+    "center": [
+     [
+      0,
+      0.5
+     ],
+     [
+      4.0,
+      4.5
+     ]
+    ],
+    "left": [
+     [
+      2.0,
+      3.0
+     ]
+    ],
+    "right": [
+     [
+      6.0,
+      7.0
+     ]
+    ],
+    "supportL": [
+     [
+      0,
+      4.0
+     ]
+    ],
+    "supportR": [
+     [
+      4.0,
+      8.0
+     ]
+    ]
+   },
+   "standard": "tools/flare2-moves/standards/t-wall-handstand-shift.md",
+   "reviewViews": "room:0,0.1,1;side:1,0.05,0.001;hand:0.5,0.6,0.6:0,1,0:rightHand,0.16",
+   "reviewFrames": [
+    9,
+    75,
+    195
+   ],
+   "reviewKeys": [
+    [
+     "elbowL",
+     "elbowL",
+     "°"
+    ],
+    [
+     "elbowR",
+     "elbowR",
+     "°"
+    ],
+    [
+     "comLatFrac",
+     "comLat",
+     ""
+    ],
+    [
+     "handLowL",
+     "handL",
+     "mm"
+    ],
+    [
+     "handLowR",
+     "handR",
+     "mm"
+    ],
+    [
+     "bodyLineDeg",
+     "bodyLine",
+     "°"
+    ],
+    [
+     "wallFootMinMm",
+     "wall",
+     "mm"
+    ]
+   ]
   }
  ]
 }

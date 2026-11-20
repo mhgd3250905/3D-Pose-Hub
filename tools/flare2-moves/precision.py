@@ -237,12 +237,14 @@ def metrics(s):
     m['hipAboveOthersMm'] = round((hip[1] - max(others)) * 1000, 1)  # + = hips are the highest point (pike)
     m['bodyVertDeg'] = round(deg(math.acos(max(-1, min(1, unit(sub(ank, wr))[1])))), 1)   # wrists -> ankles vs world up (handstand 0)
     m['thoraxInvDeg'] = round(deg(math.acos(max(-1, min(1, -tup[1])))), 1)               # thorax long axis vs straight down (handstand 0)
-    lat2 = sub(J['leftHand'], J['rightHand']); LL = dot(lat2, lat2) or 1e-12
-    m['comLatFrac'] = round(dot(sub(com, J['rightHand']), lat2) / LL, 3)   # 0 = over the right hand, 1 = over the left hand, 0.5 = centred
-    m['shLatFrac'] = round(dot(sub(sh, J['rightHand']), lat2) / LL, 3)
+    # lateral position over the hands, horizontal only (a lifted hand must not tilt the axis): palm centres (hub palm points)
+    pL, pR = H['leftPalm'], H['rightPalm']; lat2 = [pL[0] - pR[0], 0, pL[2] - pR[2]]; LL = dot(lat2, lat2) or 1e-12
+    m['comLatFrac'] = round(dot([com[0] - pR[0], 0, com[2] - pR[2]], lat2) / LL, 3)   # 0 = over the right palm, 1 = over the left palm, 0.5 = centred
+    m['shLatFrac'] = round(dot([sh[0] - pR[0], 0, sh[2] - pR[2]], lat2) / LL, 3)
     for side, k, sg in (('left', 'L', 1), ('right', 'R', -1)):   # elbow flare: upper arm away from the thorax mid-sagittal plane (thorax frame), deg (+ = out)
         ua = unit(qrot(qinv(Q['torso']), sub(J[side + 'Forearm'], J[side + 'UpperArm']))); m['elbowFlare' + k] = round(deg(math.asin(max(-1, min(1, sg * ua[0])))), 1)
     m['elbowFlareMax'] = max(m['elbowFlareL'], m['elbowFlareR'])
+    m['wristYL'] = round(H['leftWrist'][1] * 1000, 1); m['wristYR'] = round(H['rightWrist'][1] * 1000, 1)   # hub wrist height (heel of a lightened hand lifts)
     m['handLowL'] = Y.get('handL', 1e9); m['handLowR'] = Y.get('handR', 1e9)
     fm = s.get('fm') or {}
     bx = fm.get('box') or {}; wl = fm.get('wall') or {}
