@@ -6,11 +6,17 @@
 // hip angle about 90 deg, legs straight. The shoulders push the floor away toward the ears ("直臂顶肩": scapular elevation,
 // shoulders.shift +Y in the chest frame, drawn on V5 by v5.scapulaShift) and the position is held.
 // Loop 8 s: 0.8 s set, 1.0 s push tall, 5.4 s hold, 0.8 s ease.
+// Arms (r1 fix 2026-11-20, same method as t-wall-handstand-hold 09dfbe7): r1 had the elbow pits facing the feet (155 deg from the
+// fingers) and the forearm wrung ~95 deg. Now the whole arm rolls outward TW deg (upperArmTwist = elbowTwist, so the elbow stays a pure
+// hinge) and the elbow pole (olecranon side) sits opposite the pit, so the residual 1.5 deg of elbow flexion bends toward the pit.
+// Measured on V5: elbow pit 65 deg from the fingers (forward-in), forearm pronation ~49 deg; fingers still toward the head, turned out
+// ~20 deg, thumbs inside. t-pike-hold inherits these hands.
 import { keys } from '../lib/home-anim.mjs';
 import { track } from '../lib/ss-geo.mjs';
 const DUR = 8, HZ = 0.17;
 const p = keys([[0, 0], [0.8, 0], [1.8, 1], [7.2, 1]], DUR);
-const floorHand = (z, side) => ({ mode: 'floor', at: [0, z], finger: [-1, Math.sign(z) * 0.12], poleUp: [side === 'right' ? -0.6 : 0.6, 0.2, 0.3] });
+const TW = 142;   // whole-arm outward roll, deg (right +, left -); poleUp z 0.4 = olecranon opposite the pit (elbowPit ~ 1.7 deg)
+const floorHand = (z, side) => { const o = side === 'right' ? 1 : -1; return { mode: 'floor', at: [0, z], finger: [-1, Math.sign(z) * 0.12], poleUp: [-o * 0.6, 0.2, 0.4], upperArmTwist: o * TW, elbowTwist: o * TW }; };
 export const SEAT = 0.45, FX = 1.13, FZ = 0.10, SH_X = 0.17;
 export const foot = (sg, fx = FX, floor = SEAT, pitch = 48) => ({ mode: 'floor', at: [fx, sg * FZ], floor, heading: -90, pitch });
 export default {
