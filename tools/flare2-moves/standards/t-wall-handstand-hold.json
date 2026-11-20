@@ -1,0 +1,187 @@
+{
+ "format": "flare2-moves-standard@1",
+ "id": "t-wall-handstand-hold",
+ "nameZh": "面墙靠墙倒立保持",
+ "doc": "tools/flare2-moves/standards/t-wall-handstand-hold.md",
+ "phases": {
+  "set": "倒立位，肩自然",
+  "hold": "顶肩保持：肩上提（往耳朵方向推地），身体一条线，脚尖轻贴墙"
+ },
+ "series": [
+  "elbowMin",
+  "armOverheadMax",
+  "headFwdOfArmsMm",
+  "bodyLineDeg",
+  "trunkFlexDeg",
+  "bodyVertDeg",
+  "wallTorsoMm",
+  "wallFootMinMm",
+  "scapUp"
+ ],
+ "checks": [
+  {
+   "id": "elbow_lock",
+   "label": "全程锁肘",
+   "metric": "elbowMin",
+   "agg": "min",
+   "min": 175,
+   "unit": "°"
+  },
+  {
+   "id": "shoulder_open",
+   "label": "肩完全打开：大臂与躯干长轴夹角（最大）",
+   "metric": "armOverheadMax",
+   "agg": "max",
+   "max": 8,
+   "unit": "°"
+  },
+  {
+   "id": "ears_between_arms",
+   "label": "耳在两臂间：头相对两臂平面（最小）",
+   "metric": "headFwdOfArmsMm",
+   "agg": "min",
+   "min": -30,
+   "max": 30,
+   "unit": "mm"
+  },
+  {
+   "id": "ears_between_arms_max",
+   "label": "耳在两臂间（最大）",
+   "metric": "headFwdOfArmsMm",
+   "agg": "max",
+   "min": -30,
+   "max": 30,
+   "unit": "mm"
+  },
+  {
+   "id": "body_line",
+   "label": "身体一条线（胸廓–髋–踝夹角，最小）",
+   "metric": "bodyLineDeg",
+   "agg": "min",
+   "min": 174,
+   "unit": "°"
+  },
+  {
+   "id": "no_arch",
+   "label": "不塌腰：胸廓相对骨盆不后伸（最小）",
+   "metric": "trunkFlexDeg",
+   "agg": "min",
+   "min": -3,
+   "max": 8,
+   "unit": "°"
+  },
+  {
+   "id": "legs_straight",
+   "label": "腿伸直",
+   "metric": "kneeMin",
+   "agg": "min",
+   "min": 172,
+   "unit": "°"
+  },
+  {
+   "id": "lean_into_wall",
+   "label": "身体向墙微倾（手腕→踝 与竖直夹角）",
+   "metric": "bodyVertDeg",
+   "agg": "max",
+   "min": 3,
+   "max": 10,
+   "unit": "°"
+  },
+  {
+   "id": "toes_on_wall",
+   "label": "只有脚尖轻贴墙（脚最近点到墙面，最小）",
+   "metric": "wallFootMinMm",
+   "agg": "min",
+   "min": -1,
+   "max": 3,
+   "unit": "mm"
+  },
+  {
+   "id": "toes_on_wall_max",
+   "label": "脚尖全程贴墙（最大）",
+   "metric": "wallFootMinMm",
+   "agg": "max",
+   "min": -1,
+   "max": 3,
+   "unit": "mm"
+  },
+  {
+   "id": "chest_off_wall",
+   "label": "胸腹贴近但不碰墙（躯干到墙面）",
+   "metric": "wallTorsoMm",
+   "agg": "min",
+   "min": 20,
+   "max": 90,
+   "unit": "mm"
+  },
+  {
+   "id": "hands_fist_from_wall",
+   "label": "手距墙约一拳（指尖到墙面）",
+   "metric": "wallHandMinMm",
+   "agg": "min",
+   "min": 80,
+   "max": 150,
+   "unit": "mm"
+  },
+  {
+   "id": "push_tall",
+   "label": "保持段顶肩（肩关节相对胸廓往头侧，最低处）",
+   "metric": "scapUp",
+   "phase": "hold",
+   "agg": "min",
+   "min": 20,
+   "unit": "mm"
+  },
+  {
+   "id": "hold_time",
+   "label": "保持时长（顶肩在最高值 1 mm 内）",
+   "kind": "plateau",
+   "metric": "scapUp",
+   "ref": "max",
+   "tol": 1,
+   "min": 5,
+   "unit": "s"
+  },
+  {
+   "id": "contacts_hands",
+   "label": "手掌不滑（V5 手骨漂移）",
+   "kind": "pins",
+   "which": "hands",
+   "max": 2,
+   "unit": "mm"
+  },
+  {
+   "id": "hands_on_mat",
+   "label": "手掌贴垫（V5 手最低点）",
+   "metric": "handFloorMm",
+   "agg": "max",
+   "min": -1,
+   "max": 3,
+   "unit": "mm"
+  },
+  {
+   "id": "head_off_floor",
+   "label": "头不碰地（头最低点离垫）",
+   "kind": "summary",
+   "path": "floorMinMm.head",
+   "min": 80,
+   "unit": "mm"
+  },
+  {
+   "id": "self_clip",
+   "label": "自身不穿模",
+   "kind": "summary",
+   "path": "selfClipWorst.mm",
+   "min": 0,
+   "unit": "mm"
+  },
+  {
+   "id": "v5_matches_hub",
+   "label": "V5 身体与求解姿态一致",
+   "kind": "summary",
+   "path": "maxPosErrMm",
+   "max": 2,
+   "unit": "mm"
+  }
+ ]
+}
