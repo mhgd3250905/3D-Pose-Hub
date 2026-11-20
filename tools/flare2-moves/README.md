@@ -30,6 +30,14 @@ node tools/flare2-moves/produce.mjs --out F:/PoseHub-v3/runs/2026-11-20_flare2-m
 - 同一个 `--out`：这两个动作的旧结果会被移动到 `_quarantine` 后重渲，其余 6 个不动；总览图仍是 8 个动作。
 - 回报同下面「回报」一节。
 
+## 只重渲改过的动作（2026-11-20 第二批：派克两个手臂拧转 + 跪姿前臂拉伸手外转）
+同上先 `cd` / `git status` / `git fetch` / `git checkout` / `git pull --ff-only` / `git log --oneline -1`，然后：
+```powershell
+node tools/flare2-moves/produce.mjs --out F:/PoseHub-v3/runs/2026-11-20_flare2-moves-r1 --only t-elevated-pike-hold,t-pike-hold,t-kneeling-wrist-flexor-stretch
+```
+- 同一个 `--out`：这三个动作的旧结果会被移动到 `_quarantine` 后重渲，其余不动；总览图仍是 8 个动作。
+- 回报同下面「回报」一节。
+
 ## Vite 报 504（Outdated Optimize Dep）
 某个动作失败、它的日志 `F:\PoseHub-v3\runs\2026-11-20_flare2-moves-r1\_run\logs\<id>.log` 里有 `504` / `Outdated Optimize Dep` 时，只重试**一次**：
 ```powershell
