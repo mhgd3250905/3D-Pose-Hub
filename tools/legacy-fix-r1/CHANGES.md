@@ -432,3 +432,8 @@ r1 的求解方法和数值一个不改；在它之上只加**一次局部后缘
 - analyze.py：S1/S2 只剩那条既定误报 text-no-switch（S1，见 `false-positive.md`），**无新增**。
 - 看图（f60 右膝、f180 左膝；产品镜头 / 正 / 侧 / 背）：大腿抬到水平、小腿竖直下垂、脚尖略上翘；支撑腿伸直，上身直立不后仰，左手一直扶椅背、右手垂在体侧；
   左腿抬起时膝在椅座前方、高于椅座约 42 cm，横向离椅座内缘约 4 cm，不碰椅子。对比图（沙箱）：`/workspace/work/legacy-fix/b4/o-supported-march_cmp.jpg`。
+
+### 第 4 批样片
+- 脚本 `tools/legacy-fix-r1/produce-b4.mjs`（照 produce-b3.mjs）：计划 o-supported-march（lfx1）→ t-seated-straddle-ext → s-butterfly（后两个原配方），
+  母帧 `render-masters-v5-cf2 --crotchfix r2`，RENDER = 6fd606e（第 4 批修复提交，含 r2 补丁 d2975b2），BASE = 6ac5b21，QA 孤立分支 `qa/legacy-fix-r1-b4`，
+  默认输出 `F:/PoseHub-v3/runs/2026-11-21_legacy-fix-r1-b4_6fd606e`。任务卡草稿 `tools/legacy-fix-r1/SAMPLE-CARD-b4-draft.md`。
