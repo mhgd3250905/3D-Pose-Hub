@@ -1,0 +1,135 @@
+{
+  "format": "pose-hub-action-recipe@1",
+  "id": "deltoids-B",
+  "nameZh": "哑铃半程土耳其起立（至高桥）",
+  "spec": "drill-anim/specs/deltoids-B-lfx1.js",
+  "specSha256Lf": "282a9785dd458b4738f9a8e18685eb46d7191c84e6573b916f367c832caed5e9",
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "hands": {
+    "left": "native",
+    "right": "native"
+  },
+  "camera": {
+    "dir": [
+      0.9,
+      0.55,
+      0.8
+    ],
+    "fit": [
+      "head",
+      "leftToe",
+      "rightToe",
+      "pelvis",
+      "leftPalm",
+      "rightPalm"
+    ],
+    "pad": 0.15,
+    "k": 1,
+    "at": 4,
+    "drift": 0,
+    "fitTimeline": true,
+    "orbitDegrees": 0,
+    "frontSweepDegrees": 0
+  },
+  "cameraScale": 1.15,
+  "output": {
+    "groundShadow": false,
+    "cameraMotion": false,
+    "wholeCycleContentRect": true,
+    "fps": 30,
+    "exerciseMat": true
+  },
+  "appearance": {
+    "highlight": {
+      "color": "#F05A36",
+      "shade": [
+        0.5,
+        0.42,
+        0.08
+      ],
+      "intensity": [
+        0.75,
+        1
+      ]
+    },
+    "purpose": "Visual cue for target muscle effort, not a physiological measurement",
+    "status": "parameterized-selection-deferred-by-user"
+  },
+  "jointCorrections": [
+    {
+      "profile": "upper-arm-contour-r3",
+      "version": "0.1.0-r3"
+    },
+    {
+      "profile": "ankle-join-r5",
+      "version": "0.1.0-r5"
+    }
+  ],
+  "adaptation": {
+    "status": "remote-keyframe-pending",
+    "method": "Fixed queue source reused unchanged on armfix-r2.",
+    "cameraChanges": "drift->0 (static)"
+  },
+  "source": {
+    "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
+    "selectedSpec": "drill-anim/specs/deltoids-B-r4.js"
+  },
+  "sampledOnly": true,
+  "fullCycleValidated": false,
+  "userAccepted": false,
+  "releaseEligible": false,
+  "groundContactFix": {
+    "r1m2": {
+      "from": "drill-anim/specs/deltoids-B-r2.js",
+      "to": "drill-anim/specs/deltoids-B-r2-gc1.js",
+      "date": "2026-11-04",
+      "branch": "fix/ground-contact-r1"
+    }
+  },
+  "poseFixR1": {
+    "branch": "fix/gc-overlap-limb-r1",
+    "base": "fix/ground-contact-r1",
+    "date": "2026-11-05",
+    "spec": [
+      {
+        "from": "drill-anim/specs/deltoids-B-r2-gc1.js",
+        "to": "drill-anim/specs/deltoids-B-r2-gc1-et1.js",
+        "why": "forearm twist: constant elbowTwist split (pose-fix r8 et, on gc spec)"
+      }
+    ]
+  },
+  "poseFix1108": {
+    "branch": "codex/pose-fix-1108-r1",
+    "date": "2026-11-08",
+    "from": "drill-anim/specs/deltoids-B-r2-gc1-et1.js",
+    "to": "drill-anim/specs/deltoids-B-r3.js",
+    "why": "2026-11-08 用户审核：半程土耳其起立身体来回晃 -> 去掉运行时求解器重写为标准半程 TGU（仰卧→肘撑→手撑→高桥→原路返回），离线逐帧烘焙：左腿伸直脚跟钉地、支撑臂不超伸、哑铃臂始终竖直锁定，骨盆首尾闭合无来回摆",
+    "reviewed": false,
+    "qaStatus": "candidate-awaiting-gpu-and-user-review"
+  },
+  "elbowTwistFix": {
+    "branch": "codex/elbow-twist-r1",
+    "date": "2026-11-10",
+    "from": "drill-anim/specs/deltoids-B-r3.js",
+    "to": "drill-anim/specs/deltoids-B-r4.js",
+    "supersedes": "drill-anim/specs/deltoids-B-r3.js",
+    "why": "2026-11-10 ROM 修复（tools/rom-spec/ROM.md r1.1）：在 r3 上左臂 upperArmTwist +15：前臂总扭转 foreTot 左 141°→126°（限 140），htw 22° 不变。肘部最小截面比 左 0.51→0.59（仍低，PR #38 r3 遗留，未完全解决）；R5 左 0.70→0.72；翻面 39→3；跨肩扭转 |2|°→12°；腕截面 1.00 不变；右侧未动；关节/手掌漂移 0 mm，求解警告不增，近身计数 0（密集 81 帧）。+30 时肘 0.68 但跨肩扭转增 24° 超判据；配方指向 deltoids-B-r4，supersedes deltoids-B-r3，reviewed=false",
+    "reviewed": false,
+    "qaStatus": "candidate-awaiting-gpu-and-user-review",
+    "elbowTwistFix": "r2",
+    "romFix": "r1.1"
+  },
+  "legacyFixR1": {
+    "branch": "codex/legacy-fix-r1",
+    "date": "2026-11-21",
+    "baseRecipe": "catalog/production/remaining219-r1/recipes/deltoids-B.json",
+    "from": "drill-anim/specs/deltoids-B-r4.js",
+    "to": "drill-anim/specs/deltoids-B-lfx1.js",
+    "why": "loaded right knee 12 cm inside the planted foot in the high bridge: planted foot hip-width (14 cm inward) + world knee pole so the shin stands over the foot",
+    "audit": "tools/legacy-audit-r1 (FINDINGS-LIVE @45a1c48)",
+    "reviewed": false
+  }
+}

@@ -1,0 +1,101 @@
+{
+ "id": "h-short-side-plank",
+ "names": {
+  "recipe": "屈膝短杠杆侧平板",
+  "text": "屈膝侧平板",
+  "catalog": null
+ },
+ "position": "side-lying",
+ "unilateral": true,
+ "startingSide": "left",
+ "kind": "hold",
+ "perSide": "each-side-separately",
+ "repUnit": null,
+ "textSource": "catalog/production/v3-text/h-short-side-plank.json",
+ "recipe": "catalog/production/remaining219-r1/recipes/h-short-side-plank.json",
+ "spec": "drill-anim/specs/h-short-side-plank-gc1-et1.js",
+ "basis": [
+  "换边期望：无（单侧动作由 App 镜像，或双侧对称）",
+  "家族：屈膝侧平板（规则见 checks.basis）",
+  "文字→接触：小臂撑地",
+  "含手写逐动作规则（MANUAL）"
+ ],
+ "checks": [
+  {
+   "code": "sideplank-feet-off-floor",
+   "kind": "range",
+   "severity": 1,
+   "metric": "(m['footMinL'] if m['footMinL'] < m['footMinR'] else m['footMinR'])",
+   "hi": 45,
+   "msg": "屈膝侧撑：下侧脚应贴地（外侧缘着地），实际离地 {v:.0f} mm",
+   "basis": "ACE 运动库 Side Plank - modified（#100）：上侧腿直接叠放在下侧腿上（left leg lying directly over your right leg）；ACE Phase 1 教材 Side plank with bent knee：legs stacked on one another。叠放时只有下侧脚着地。"
+  },
+  {
+   "code": "sideplank-top-foot-not-stacked",
+   "kind": "range",
+   "severity": 1,
+   "metric": "(m['footMinR'] if m['footMinL'] < m['footMinR'] else m['footMinL'])",
+   "hi": 130,
+   "msg": "屈膝侧撑：上侧脚应叠放在下侧脚上（离地约一只鞋宽 ≤130 mm），实际离地 {v:.0f} mm",
+   "basis": "同上：上侧脚叠在下侧脚上，最低点 ≈ 下侧脚离地高度 + 鞋宽（V5 鞋宽约 85–95 mm）+ 余量；原 175 mm（脚翻起）仍判失败"
+  },
+  {
+   "code": "sideplank-shin-not-behind",
+   "kind": "range",
+   "severity": 2,
+   "metric": "max(m['footBehindL'], m['footBehindR'])",
+   "hi": 0.05,
+   "msg": "屈膝侧撑：小腿应在身后（脚在髋后方），实际脚在髋前方 {v:.2f} m",
+   "basis": "同上"
+  },
+  {
+   "code": "sideplank-foot-above-knee",
+   "kind": "range",
+   "severity": 1,
+   "metric": "max(m['footAboveKneeL'], m['footAboveKneeR'])",
+   "hi": 0.06,
+   "msg": "屈膝侧撑：小腿/脚翻向上方（脚比膝高 {v:.2f} m）",
+   "basis": "同上"
+  },
+  {
+   "code": "sideplank-knee-angle",
+   "kind": "range",
+   "severity": 2,
+   "metric": "min(m['kneeL'], m['kneeR'])",
+   "lo": 65,
+   "hi": 125,
+   "msg": "屈膝侧撑：屈膝应约 90°（65–125°），实际 {v:.0f}°",
+   "basis": "同上"
+  },
+  {
+   "code": "text-forearm-support",
+   "kind": "range",
+   "severity": 1,
+   "when": [
+    0.25,
+    0.75
+   ],
+   "metric": "min(m['minY'].get('forearmL', 999), m['minY'].get('forearmR', 999))",
+   "hi": 30,
+   "msg": "文字写小臂/前臂撑地，视频里小臂离地 {v:.0f} mm（实际是直臂手掌撑）",
+   "basis": "文字：小臂和膝盖撑地、手肘在肩膀正下方"
+  }
+ ],
+ "expectSwitch": null,
+ "notes": "开哥校准缺陷 4：小腿和脚翻向上方、脚朝向反人类",
+ "generic": [
+  "膝朝向/髌骨侧拧（thighFace/shinFace ≤40°）",
+  "脚尖 vs 膝朝向（footVsKnee ≤60°，±180=脚反）",
+  "膝铰链轴偏离（≤25°）",
+  "负重屈膝腿膝 vs 脚尖（-15°..35°）",
+  "肘扭转（≤35°）",
+  "穿地（≤-8 mm）/站定脚悬空（>8 mm）",
+  "重心投影在支撑面内（≤4 cm，连续帧）",
+  "裆部区域局部凸包（bump，阈值见 REPORT）"
+ ],
+ "legacyFixR1": {
+  "date": "2026-11-21",
+  "by": "Hark-QUA",
+  "why": "原 sideplank-feet-off-floor 用 max(左右脚) ≤45 mm，与本标准自己的依据「双脚叠放」矛盾：真叠放时上侧脚最低点必然在下侧脚之上约一只鞋宽（~90 mm），正确姿态永远过不了。改为：下侧脚 ≤45 mm（阈值不变）+ 上侧脚 ≤130 mm（叠放）。待 hark-sk 复核；原文件未改。"
+ }
+}

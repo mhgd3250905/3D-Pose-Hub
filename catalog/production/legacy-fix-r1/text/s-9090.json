@@ -1,0 +1,25 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "s-9090",
+ "reviewStatus": "draft-legacy-fix-r1-unreviewed",
+ "draftNote": "legacy-fix r1 草稿（Hark-QUA 2026-11-21，未审）：配合 drill-anim/specs/s-9090-lfx1.js（左右换髋往返）。原 Hub 文字 catalog/production/v3-text/s-9090.json（单侧前倾静态保持，开哥 r2 决定）未改。用哪一版（换髋重做 / 保留单侧前倾改名）需开哥选。",
+ "sources": ["drill-anim/specs/s-9090-lfx1.js"],
+ "name": {"zh": "90/90 坐姿换髋", "en": "90/90 Hip Switch"},
+ "purpose": {"zh": "活动两侧髋关节的内旋和外旋", "en": "Moves both hips through internal and external rotation."},
+ "cues": [
+  {"id": "cue1", "primary": true, "text": {"zh": "脚跟压稳，双膝一起翻到另一侧", "en": "Heels planted, turn both knees over to the other side"}},
+  {"id": "cue2", "primary": false, "text": {"zh": "上身尽量坐直，别往后靠", "en": "Sit as tall as you can, don't lean back"}},
+  {"id": "cue3", "primary": false, "text": {"zh": "两边都落成 90/90：前腿小腿横在身前，后腿小腿朝后", "en": "Land in 90/90 each side: front shin across, back shin pointing back"}},
+  {"id": "cue4", "primary": false, "text": {"zh": "膝盖跟着髋转，别硬拧膝盖", "en": "Let the hips turn the knees; don't twist at the knee"}}
+ ],
+ "commonErrors": [
+  {"zh": "双手撑在身后往后躺", "en": "Leaning back on your hands"},
+  {"zh": "脚在地上来回挪", "en": "Feet sliding around"}
+ ],
+ "cautions": [{"zh": "膝盖疼就缩小翻转幅度或手撑在身后辅助，还疼就停", "en": "If your knees hurt, turn less or put your hands behind you. Stop if it still hurts."}],
+ "tags": {"category": "mobility", "activeMuscles": ["glutes"], "synergistMuscles": ["abductors", "adductors"], "equipment": ["mat"], "position": "seated", "difficulty": 2},
+ "unilateral": false,
+ "defaultDose": {"mode": "reps", "sets": 2, "reps": 6, "restSeconds": 15},
+ "phases": {"start": {"zh": "右腿在前 90/90", "en": "90/90, right shin in front"}, "peak": {"zh": "双膝翻到另一侧", "en": "Knees turn over"}, "end": {"zh": "左腿在前 90/90", "en": "90/90, left shin in front"}},
+ "training": {"kind": "rep_alternate", "perSide": "alternate", "repUnit": "left+right", "source": "legacy-fix-r1 draft (Flare 热身文案：脚跟压稳，双膝翻到另一侧，上身尽量坐直)"}
+}
