@@ -437,3 +437,35 @@ r1 的求解方法和数值一个不改；在它之上只加**一次局部后缘
 - 脚本 `tools/legacy-fix-r1/produce-b4.mjs`（照 produce-b3.mjs）：计划 o-supported-march（lfx1）→ t-seated-straddle-ext → s-butterfly（后两个原配方），
   母帧 `render-masters-v5-cf2 --crotchfix r2`，RENDER = 6fd606e（第 4 批修复提交，含 r2 补丁 d2975b2），BASE = 6ac5b21，QA 孤立分支 `qa/legacy-fix-r1-b4`，
   默认输出 `F:/PoseHub-v3/runs/2026-11-21_legacy-fix-r1-b4_6fd606e`。任务卡草稿 `tools/legacy-fix-r1/SAMPLE-CARD-b4-draft.md`。
+
+## 第 5 批（2026-11-21，Hark-QUA）· 蝴蝶坐平掌扶脚 + 耸肩两个（V5 肩胛平移）+ 膝对脚尖两个
+
+分诊见 `TRIAGE-b5.md`（b5-1 耸肩、b5-2 膝对脚尖）；s-butterfly 来自开哥第 4 批样片意见（手压小腿、腕背伸过大）。
+验收一律 `audit-cf2.mjs --crotchfix r2`（stride 10）+ `tools/legacy-audit-r1/analyze.py`；修前 = 同一工具跑原配方。修复提交 7c28fb7。
+
+| id | 新 spec / 配方 | 关键数值 修前 → lfx1 | analyze S1/S2 |
+|---|---|---|---|
+| s-butterfly 蝴蝶坐 | `s-butterfly-lfx1.js`（基于 r2，未改原文件） | 腕背伸 82–113° → **11–20°**；尺桡偏 40–60° → **−10~+4°**；手离脚面 0.9–10.8 mm，掌心世界固定（前屈时手不滑） | 只有修前就有的 rom-thighFace −69/−70°（S1，盘坐外旋，既定误报），**无新增** |
+| h-db-shrug 哑铃耸肩 | `h-db-shrug-lfx1.js`（基于 kn1，打开 `v5.scapulaShift`） | V5 肩上移 0 → **50 mm**（手/哑铃随动），头颈不动 | text-reps-static S2 消失，**无 S1/S2** |
+| h-db-overhead-shrug 过头哑铃耸肩 | `h-db-overhead-shrug-lfx1.js`（同上） | V5 肩上移 0 → **40 mm** | text-reps-static S2 消失，**无 S1/S2** |
+| h-sumo-pry 相扑深蹲肘推膝停留 | `h-sumo-pry-lfx1.js`（第 2 轮） | 膝在脚内侧 21 cm → **3.2 cm 内侧 ~ 0.8 cm 外侧**；膝 vs 脚尖 −20~−6°（内扣）→ **+15~+23°（略外）**；thighFace −43 → **−34°**；shinFace −48 → **−44°**；kneeAxisDev 47 → **38°** | 修前 S1 knee-inside-foot、S2 knee-valgus / shinFace / kneeAxisDev → **全无** |
+| h-lateral-step-lunge 侧弓步 | `h-lateral-step-lunge-lfx1.js`（基于 sc1-et1-kn2） | 膝在脚内侧 7.0 cm → **3.9 cm（最外 +1.0 cm）**；膝 vs 脚尖 −12~+15° → **+7~+10°**；thighFace 14 → −11° | 修前 S2 knee-inside-foot → **全无** |
+
+### h-sumo-pry 两轮
+- 第 1 轮（上一个子代理的首版参数）：膝在脚内侧 21→11 cm、膝 vs 脚尖 −3~+4°，但膝盖朝向 thighFace −66°、kneeAxisDev 62°（新增 S1），弃用。
+- 变体 v1（pole 沿脚尖 +26°、大腿/小腿滚转 30→45 / 15→20°）：膝在脚上方（−1.6~+3.0 cm），膝 vs 脚尖 +20~+28°，thighFace −56°（S2）、kneeAxisDev 53°（S1），弃用。
+- 变体 v2（采用）：pole +22°（肘推再 +6°）、滚转 40→60 / 20→25°：analyze 零条；看图膝在脚尖方向上、肘推时略外展。
+
+### 看图（沙箱对比图）
+`/workspace/work/legacy-fix/b5/{s-butterfly_front_cmp,s-butterfly_top_cmp,h-db-shrug_cmp,h-db-overhead-shrug_cmp,h-sumo-pry_cmp,h-lateral-step-lunge_cmp}.jpg`。
+- s-butterfly：两手平放在脚背上、手指朝脚尖，前臂沿小腿，肘在大腿内侧上方；修前是手掌竖压小腿、腕折起。
+- 耸肩两个：f60 双肩连手明显上提；侧面肩颈处衣领有一道深色线（scapulaShift 时 V5 衣领边缘），样片里请留意。
+- 相扑：正面看蹲底膝在脚尖方向上，不再内扣。侧弓步：负重腿小腿正面接近竖直。
+
+### 腕背伸筛查
+全库 254 个动作中背伸 >70° 的 82 个，结论见 `TRIAGE-b5.md`「腕背伸筛查」：真 4（o-seated-twist、o-stand-quad、deltoids-C、erectors-B，只列不修）、已修 1（s-butterfly）、其余误报/正常。
+
+### 第 5 批样片
+- 脚本 `tools/legacy-fix-r1/produce-b5.mjs`（照 produce-b4.mjs）：计划 s-butterfly → h-db-shrug → h-db-overhead-shrug → h-sumo-pry → h-lateral-step-lunge（全部 lfx1 配方），
+  母帧 `render-masters-v5-cf2 --crotchfix r2`，RENDER = 7c28fb7（第 5 批修复提交），BASE = 6ac5b21，QA 孤立分支 `qa/legacy-fix-r1-b5`，
+  默认输出 `F:/PoseHub-v3/runs/2026-11-21_legacy-fix-r1-b5_7c28fb7`。任务卡草稿 `tools/legacy-fix-r1/SAMPLE-CARD-b5-draft.md`。

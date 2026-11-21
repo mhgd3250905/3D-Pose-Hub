@@ -95,3 +95,48 @@
 
 规则改进（建议 hark-sk 改 analyze.py，不在本批）：squat-heel-up 只判前脚/重心侧那只脚；text-reps-static 改用世界坐标并计入骨骼转角（腕/踝/前臂类）；
 仰卧/俯卧时 mirror_pose 的骨盆朝向退化（cactus 0.0 cm）；asymmetry 跳过文案写明单侧支撑/分腿/交替的动作；ROM 三项在屈膝 <30° 或「thighFace≈shinFace≈footVsKnee」时降级。
+
+## 腕背伸筛查（全库 254 个动作，2026-11-21 补）
+
+开哥看第 4 批样片指出 s-butterfly 手腕背伸过大后，对全库做了一次腕部扫描（沙箱 `wscan.py` / `wsum.py`，hub 关节，每动作 25 个采样点，
+左右各取最坏一帧：背伸 = 手掌相对前臂向手背方向的弯曲，偏斜 = 尺偏/桡偏；结果 `/workspace/work/legacy-fix/b5/wsum.json`）。
+254 个中背伸 >70° 的 82 个。口径：
+- 背伸 >100° 或 |偏斜| >30° 的逐个出图看（沙箱 `shots.mjs`：产品机位全身 + 手肘—手腕—手掌特写两张，`/workspace/work/legacy-fix/b5/wshots/`、`wshots_hi/`）。
+- 80–100° 且 |偏斜| ≤15° 的撑地/撑椅/扶墙动作：手掌平按支撑面时腕背伸 80–100° 是正常解剖范围（俯撑、四点跪、反向桌面都是这样），统一判正常，只列名单。
+- 只判不修。真问题留给下一批。
+
+| id | 帧（30 fps） | 背伸 / 偏斜 | 判定 | 理由 |
+|---|---|---|---|---|
+| o-seated-twist | f100 右手 | 172° / −51° | **真** | 坐姿转体，右手搭在左肩/胸前时手掌向手背方向折过去近 180°，特写里手背贴前臂、手指朝下，解剖上做不到 |
+| o-stand-quad | f110 右手 | 150° / −54° | **真** | 站姿抓脚拉股四头：手扣在脚背上，手掌相对前臂反折，手指朝上顺着鞋面，腕被掰向手背侧（应为手指包住脚背/踝、腕近中立） |
+| deltoids-C | f0 右手 | 114° / 29° | **真** | 半跪位右手悬在胸前做「停止」手势：掌心朝前、手指朝上，腕背伸约 90° 以上且没有接触任何东西；应为手掌自然贴胸或放松 |
+| erectors-B | f90 左手 | 106° / 47° | **真** | 俯卧抬上身、双手抱头：手掌在后脑处向手背方向折并大幅偏斜，指尖朝上翘离头皮；抱头时腕应近中立、手指贴后脑 |
+| s-butterfly | f110 右手 | 113° / −60° | 已修 | 第 5 批 lfx1 平掌扶脚：背伸 11–20°、偏斜 −10~+4°（见 CHANGES.md 第 5 批） |
+| s-pigeon | f110 右手 | 108° / −5° | 误报 | 鸽子式手撑地在髋旁，手掌平按、手指朝前，撑地口径 |
+| h-chair-dip | f0 左手 | 106° / 1° | 误报 | 椅上臂屈伸，掌根压椅沿、手指扣在椅沿前，撑椅口径 |
+| erectors-A | f20 左手 | 106° / 1° | 误报 | 俯卧撑起（眼镜蛇），手掌平按地面，撑地口径 |
+| forearms-A | f140 左手 | 105° / 1° | 误报 | 四点跪手掌平按地面，撑地口径 |
+| h-tabletop | f0 左手 | 102° / −1° | 误报 | 反向桌面，手在身后平按地面、手指朝前 |
+| chest-A | f180 左手 | 101° / 22° | 误报 | 俯卧撑最低点手掌平按，偏斜 22° 来自手略外旋，看图正常 |
+| h-sumo-pry | f80 左手 | 95° / 49° | 误报 | 胸前合掌（掌心相对），合掌本身就是腕背伸 ~90°；偏斜是掌心朝内的测量方向 |
+| n-squat-shift | f60 右手 | 90° / 41° | 误报 | 同上，胸前合掌 |
+| n-slider-lateral | f30 右手 | 89° / 34° | 误报 | 双手叉腰，掌根压髋、手指朝前下，看图正常 |
+| n-half-split | f0 左手 | 85° / −35° | 误报 | 半劈叉双手指尖撑地在前腿两侧 |
+| s-seated-fold | f110 右手 | 75° / −71° | 误报 | 坐位体前屈手搭小腿/脚，只有 3/25 采样 >70°，一过性 |
+| h-9090-liftoff | f40 左手 | 72° / −39° | 误报 | 90/90 坐姿手撑地在身侧 |
+
+背伸 70–100°、|偏斜| ≤30°、按口径判正常（撑地/撑椅/扶墙/握器械/叉腰，不逐个出图）：
+rotator-cuff-A、h-calf-raise、serratus-A、h-goblet-squat、triceps-A、h-wall-calf、o-supported-star-reach、hip-flexors-B、t-flare-side-hold、h-slider-body-saw、
+h-plank-side-step、o-wall-hip-hinge-stretch、t-tuck-planche、h-db-supported-calf-raise、t-lsit-open-close、t-lsit-wide、glute-max-B、
+g-cable-hip-abduction、g-cable-hip-extension、h-band-hip-extension、h-band-standing-abduction、h-band-standing-adduction、h-band-straight-leg-raise、
+t-lsit-tuck、h-supported-single-leg-calf、t-tuck-lsit-hold、o-supported-ankle-eversion、o-supported-ankle-inversion、o-supported-ankle-pump、
+o-supported-hip-ir、o-supported-knee-curl、o-supported-march、o-stand-ham、h-pike-scapular-elevation、h-kneeling-thread-needle、obliques-A、
+o-supported-hip-hitch、h-db-row、h-mountain-climber、h-pike-pushup、h-wall-calf-bent-knee、t-seated-straddle-ext、h-bear-plank、h-adductor-rock、
+h-donkey-kick、h-quad-cars、w-bird-dog、w-fire-hydrant、o-seated-fig4、t-vsit、t-lsit-vsit-circles、deltoids-A、h-incline-pushup、obliques-C、
+h-catcow-quad、h-seated-reachback、n-seated-ir-drop、h-quadruped-open、t-straddle-hold、h-hip-gate、n-wide-fold、lats-A、t-seated-straddle-lifts、
+h-band-pallof、obliques-B（共 65 个；其中 h-calf-raise −17°、h-goblet-squat −22°、h-supported-single-leg-calf −25°、o-seated-fig4 −26°、
+n-wide-fold −29°、h-band-pallof / obliques-B −29° 偏斜在 15–30° 之间，属握哑铃/扶椅/扣手的握持位，本轮未出图，下一轮可抽看）。
+
+合计 82 个：**真 4**（o-seated-twist、o-stand-quad、deltoids-C、erectors-B）、已修 1（s-butterfly）、出图后误报 12、按口径正常 65。
+真问题修法建议（下一批）：4 个都是手的 palm normal / finger 方向跟前臂不一致（手被硬拧到目标朝向），改成 finger 沿前臂、normal 只在 ±30° 内微调，
+接触类（o-stand-quad 抓脚、erectors-B 抱头）按 s-butterfly lfx1 的做法把手放到可达且腕近中立的位置。
