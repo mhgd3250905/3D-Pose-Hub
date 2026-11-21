@@ -1,0 +1,107 @@
+{
+  "format": "pose-hub-action-recipe@1",
+  "id": "o-stand-quad",
+  "nameZh": "扶椅站姿股四头肌拉伸",
+  "spec": "drill-anim/specs/o-stand-quad-lfx1.js",
+  "specSha256Lf": "184799dc7acc46c0db77dd6f7c2fb29010fb3baca317761d370101da55936e9c",
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "hands": {
+    "left": "native",
+    "right": "native"
+  },
+  "camera": {
+    "dir": [
+      -1,
+      0.15,
+      0.3
+    ],
+    "fit": [
+      "head",
+      "leftToe",
+      "rightToe",
+      "pelvis",
+      "leftKnee",
+      "rightKnee",
+      "leftWrist"
+    ],
+    "pad": 0.18,
+    "k": 1.1,
+    "at": 3.8,
+    "drift": 0,
+    "fitTimeline": true,
+    "orbitDegrees": 0,
+    "frontSweepDegrees": 0
+  },
+  "cameraScale": 1.15,
+  "output": {
+    "groundShadow": false,
+    "cameraMotion": false,
+    "wholeCycleContentRect": true,
+    "fps": 30,
+    "exerciseMat": false
+  },
+  "appearance": {
+    "highlight": {
+      "color": "#F05A36",
+      "shade": [
+        0.5,
+        0.42,
+        0.08
+      ],
+      "intensity": [
+        0.75,
+        1
+      ]
+    },
+    "purpose": "Visual cue for target muscle effort, not a physiological measurement",
+    "status": "parameterized-selection-deferred-by-user"
+  },
+  "jointCorrections": [
+    {
+      "profile": "upper-arm-contour-r3",
+      "version": "0.1.0-r3"
+    },
+    {
+      "profile": "ankle-join-r5",
+      "version": "0.1.0-r5"
+    }
+  ],
+  "adaptation": {
+    "status": "remote-keyframe-pending",
+    "method": "Fixed queue source reused unchanged on armfix-r2.",
+    "cameraChanges": "drift->0 (static)"
+  },
+  "source": {
+    "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
+    "selectedSpec": "drill-anim/specs/o-stand-quad-r1.js"
+  },
+  "sampledOnly": true,
+  "fullCycleValidated": false,
+  "userAccepted": false,
+  "releaseEligible": false,
+  "elbowTwistFix": {
+    "branch": "codex/elbow-twist-r1",
+    "date": "2026-11-10",
+    "from": "drill-anim/specs/o-stand-quad.js",
+    "to": "drill-anim/specs/o-stand-quad-r1.js",
+    "supersedes": "drill-anim/specs/o-stand-quad.js",
+    "why": "2026-11-10 ROM 修复（tools/rom-spec/ROM.md r1.1）：左臂 upperArmTwist +15：前臂总扭转 foreTot 左 141°→128°（限 140），htw 40° 不变。肘部最小截面比 左 0.95→0.94；R5 左 0.80→0.81；翻面 4→3；跨肩扭转 |23|°→8°；腕截面 1.00 不变；右侧未动；关节/手掌漂移 0 mm，求解警告不增，近身计数不增（密集 81 帧）；配方指向 o-stand-quad-r1，supersedes o-stand-quad，reviewed=false",
+    "reviewed": false,
+    "qaStatus": "candidate-awaiting-gpu-and-user-review",
+    "elbowTwistFix": "r2",
+    "romFix": "r1.1"
+  },
+  "legacyFixR1": {
+    "branch": "codex/legacy-fix-r1",
+    "date": "2026-11-21",
+    "baseRecipe": "catalog/production/remaining219-r1/recipes/o-stand-quad.json",
+    "from": "drill-anim/specs/o-stand-quad-r1.js",
+    "to": "drill-anim/specs/o-stand-quad-lfx1.js",
+    "why": "Wrist screen b5: right hand holding the foot bent back 150 deg (fingers backward along the shoe). Open palm now on the outside of the ankle, continuing the forearm (text cue0 hold the ankle), wrist near neutral",
+    "audit": "tools/legacy-audit-r1 (FINDINGS-LIVE @45a1c48)",
+    "reviewed": false
+  }
+}
