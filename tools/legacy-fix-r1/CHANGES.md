@@ -535,3 +535,52 @@ hark-sk 00:09 选方案 c（合十放低到上腹/胸骨下缘，肘内侧贴两
 ### 第 5r 批样片
 - 脚本 `tools/legacy-fix-r1/produce-b5r.mjs`（照 produce-b5b.mjs）：计划 h-db-shrug → h-db-overhead-shrug（lfx2），母帧 `render-masters-v5-cf2 --crotchfix r2`，
   RENDER = e12fb81，BASE = 6ac5b21，QA 孤立分支 `qa/legacy-fix-r1-b5r`，默认输出 `F:/PoseHub-v3/runs/2026-11-22_legacy-fix-r1-b5r_e12fb81`。任务卡草稿 `tools/legacy-fix-r1/SAMPLE-CARD-b5r-draft.md`。
+
+## 第 5s 批（2026-11-22，Hark-QUA）· 第 5 批返工第二张：s-butterfly 手离脚 + h-sumo-pry 胸前合十
+修复提交 d6bc7ba（s-butterfly lfx2）、9213177（h-sumo-pry lfx2，RENDER）。**本批取代第 5 批卡里的 s-butterfly、h-sumo-pry（lfx1 → lfx2）**：
+第 5 批卡 `produce-b5.mjs`（RENDER 7c28fb7）在 9213177 之后的分支头上预检会拒绝（配方变了），属预期。
+**改配方也会让第 5r 批卡 `produce-b5r.mjs`（RENDER e12fb81）在分支头上预检拒绝**（新 spec 不在它的排除列表里，已在沙箱 `--dry-run` 核实）：渲染机正在跑 b5b / b5r，两张卡文件不改；
+b5r 卡要重跑时在 `ed30d67` 上跑（`git checkout --detach ed30d67` 后照 b5r 卡命令），b5b 卡本来就固定在 `496ccf7`，不受影响。写在 b5s 卡「与其他卡的关系」里。
+验收同口径：沙箱网格审计 audit-cf2 r2 + 网格级最近距离（`_tmp-audit-pair.mjs`，带符号，负 = 相交；另记无符号）+ analyze + 腕角（b5 wrist.py）。
+
+### R1 s-butterfly lfx2（通过，进 b5s 卡）
+新 spec `drill-anim/specs/s-butterfly-lfx2.js`（基于 lfx1，lfx1 文件未改）：
+- 掌心高度沿用 b5r 最后一轮 bf2e（坐直 +24 外 / +24 上 mm，前屈 +8 / +15 mm）。
+- 新增 `tuck` 增量 + 轨道（坐直和前屈过渡段 = 1，深前屈 = 0）：掌心后移 15 mm、外移约 10 mm（右手低 0.7 mm 抵右鞋网格偏高），手指绕掌心法线外转 25°（离开两脚在中线相碰处），
+  肘 pole 内收后移（让前臂跟手一起转，腕偏不超 15°；只转手指时腕偏 36–42°）。轨道 1 → 0 在 f57–78，0 → 1 在 f150–177。
+- 卡点与取舍：只把掌心后移 15 mm（bf3a）对侧脚趾仍 0.2 mm 相交（指尖垂进中线，不是往前伸）；必须外转手指。另外前屈过渡段 open≈0.55–0.65（f43–47、f183–185）
+  在 bf2e 本身就贴对侧脚趾（无符号 0.4–0.8 mm，b5r 按 stride 10 没采到），所以 tuck 要保持到 open≈0.85 才退，**f50–75 / f155–180 与 bf2e 不同**（仍在 3–8 mm）；f75–155 与 bf2e 逐帧一致。
+
+| 指标（stride 2，120 帧） | lfx1（修前） | bf2e（b5r 最后一轮） | **lfx2（修后）** |
+|---|---|---|---|
+| 手–自侧脚 最近距离 | −16 ~ −39 mm（相交） | 坐直 7.8–8.6，前屈 4.7–6.1 | **4.3–7.9 mm** |
+| 手–对侧脚 最近距离 | −8 mm（相交） | 坐直 −12.5（无符号 0.2，相交）；过渡 0.4–0.8 | **3.2–9.1 mm**（坐直 4.4–7.6；>8 只在 f75–155，即 bf2e 原样的前屈段 8.1 / 9.1） |
+| 任一帧相交（无符号 <1 mm） | 是 | 是 | **否** |
+| 腕背伸 / 偏 | 11–20° / −10 ~ +4° | 9–15° / −4 ~ −11° | **3–15° / −9 ~ +13°** |
+| analyze | S1 rom-thighFace −69/−70°（原有） | 同左 | **同左，无新增 S1/S2** |
+- f105–120 自侧脚带符号 −32 mm、无符号 4.7–5.4 mm：脚背薄壳处法线判反（同 b5r），按无符号计不相交。
+- 看图：`/workspace/work/legacy-fix/b5s/s-butterfly_cmp.jpg`（沙箱；lfx1 vs lfx2，f0 / f60 / f114 俯视 + 手部正面特写，另 lfx2 过渡帧 f40 / f190）。
+
+### R3 h-sumo-pry lfx2（通过，进 b5s 卡）
+hark-sk 2026-11-22 定方案 ①+③：胸前合十、两掌真正贴合；腕背伸放宽到 ≤90°、偏 ≤20°；肘尽量外展朝膝；膝 v2 不动、不收站距；文案改口。
+新 spec `drill-anim/specs/h-sumo-pry-lfx2.js`（lfx1 的拷贝，只改手；lfx1 文件未改）：PX 0.0345 → **0.005**（hub 掌心离中线距离，V5 手网格上两掌刚好贴住），
+PY 1.22 → **1.30**、PZ 0.20 → **0.18**（胸骨前、不再在上腹），手指方向 FG [0, 0.94, 0.34] → **[0, 0.8, 0.6]**（并拢朝上、略前倾）；poleLow 不变。
+| 指标（stride 10） | lfx1（修前） | b5r 草稿（PX 0.0345） | **lfx2（修后）** |
+|---|---|---|---|
+| 两掌网格最近距离 | >20 mm（手低在两膝间，指尖朝前） | >20 mm | **1.3 mm（每帧，不穿）** |
+| 腕背伸 / 偏（绝对值） | 91–95° / 31–49° | 79–83° / 17–28° | **62–68° / 1–11°** |
+| 肘离中线（x） | 0.21–0.26 m | 0.26–0.28 m | **0.23–0.24 m** |
+| analyze | 无 | — | **无** |
+- 试过的：PX 0.016 掌间 23 mm、0.004 相交 0.9 mm；FG [0, 1, 0] 腕偏 22–32°；poleLow 更外 / 更低，肘反而内收 1–2 cm。
+- 肘：合十时手腕在中线 ±0.03 m、前臂 0.228 m，肘最多到离中线约 0.26 m（前臂已近乎水平朝内），够不到膝（蹲底膝在 0.46 m，见第 5r 批几何核算）；
+  b5r 草稿两掌分开 7 cm 时肘更外（0.26–0.28 m），这是两掌贴合的代价。所以文案改成「膝盖主动往外撑」，不再写手肘推膝。
+- 文字（未审，等开哥看）：新文件 `catalog/production/legacy-fix-r1/text/h-sumo-pry.json`（照 s-butterfly / s-9090 的做法：`reviewStatus: unreviewed-legacy-fix-r1`，`decision` 写明来由；
+  原 `catalog/production/v3-text/h-sumo-pry.json` 未改）。cue1 zh「两手合十，用手肘把膝盖往外推」→「两手胸前合十，膝盖主动往外撑」；en 跟改草稿 "Palms together at your chest, actively press your knees out"。
+  **没改、请一起看**：名称「相扑深蹲肘推膝停留」、phases.peak「手肘推膝」、cautions「手肘推轻点」仍提手肘推膝。
+- 另：`catalog/production/legacy-fix-r1/text/s-butterfly.json` 的 `sources` 仍写 lfx1（只增新文件，未改；文字内容对 lfx2 同样适用）。
+- 看图：`/workspace/work/legacy-fix/b5s/h-sumo-pry_cmp.jpg`（沙箱；lfx1 vs lfx2，f50 / f90 正面、侧面 + 双手特写）。
+
+### 第 5s 批样片
+- 脚本 `tools/legacy-fix-r1/produce-b5s.mjs`（照 produce-b5r.mjs）：计划 s-butterfly → h-sumo-pry（lfx2），母帧 `render-masters-v5-cf2 --crotchfix r2`，
+  RENDER = 9213177，BASE = 6ac5b21，QA 孤立分支 `qa/legacy-fix-r1-b5s`，默认输出 `F:/PoseHub-v3/runs/2026-11-22_legacy-fix-r1-b5s_9213177`。任务卡草稿 `tools/legacy-fix-r1/SAMPLE-CARD-b5s-draft.md`。
+- 自检：`node --check` 通过；沙箱分支头 `--dry-run` 返回 `"ok":true`。
