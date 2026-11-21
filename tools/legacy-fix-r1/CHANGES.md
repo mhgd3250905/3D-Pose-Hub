@@ -195,3 +195,6 @@ R 0.20 未试：全量 32 个动作在 R 0.18 下全部 < 28 mm、无新增 S1/S
 ### 样片
 `tools/legacy-fix-r1/produce-b2.mjs`（第 1 批 produce.mjs 的拷贝，母帧换成 `render-masters-v5-cf1.mjs --crotchfix on`），7 个：t-tuck-lsit-hold、s-9090、h-chair-dip、h-bulgarian、h-squat、t-supine-straddle-open-close（修前鼓包最大的 t-tuck/s-9090/h-chair-dip/h-bulgarian + 开哥校准过的 h-squat/t-supine）+ h-calf-raise（站立对照）。
 QA 孤立分支 `qa/legacy-fix-r1-b2`。任务卡 `tools/legacy-fix-r1/SAMPLE-CARD-b2-draft.md`。只出样片，不上传、不切指针、不合并。
+
+## 第 2 批补充：adductors-A 样片卡（2026-11-21）
+- hark-sk 要求 adductors-A（lfx1，921c1b3）随裆部修复单独出样片。新增 `tools/legacy-fix-r1/produce-b2a.mjs`（由 produce-b2.mjs 复制，计划只有 adductors-A，RENDER 仍为 5ada6bc，母帧 render-masters-v5-cf1 --crotchfix on，QA 孤立分支 qa/legacy-fix-r1-b2a，默认输出 F:/PoseHub-v3/runs/2026-11-21_legacy-fix-r1-b2a-adductors-crotchfix_5ada6bc）与任务卡 `SAMPLE-CARD-b2a-draft.md`。不改任何渲染内容。
