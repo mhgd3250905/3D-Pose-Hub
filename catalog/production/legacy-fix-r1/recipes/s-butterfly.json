@@ -2,8 +2,8 @@
   "format": "pose-hub-action-recipe@1",
   "id": "s-butterfly",
   "nameZh": "蝴蝶式",
-  "spec": "drill-anim/specs/s-butterfly-lfx1.js",
-  "specSha256Lf": "b2ebd7efc9f39393a54c929efe407fed1665853006bb0bc0728df44c7934e362",
+  "spec": "drill-anim/specs/s-butterfly-lfx2.js",
+  "specSha256Lf": "e745de71cd84fd24fc2861d537fb71333adb6c2e2e238da44df34f5299f6aaac",
   "model": {
     "profile": "training-human-v3-armfix",
     "version": "0.1.0-r2"
@@ -101,9 +101,17 @@
     "date": "2026-11-21",
     "baseRecipe": "catalog/production/remaining219-r1/recipes/s-butterfly.json",
     "from": "drill-anim/specs/s-butterfly-r2.js",
-    "to": "drill-anim/specs/s-butterfly-lfx1.js",
+    "to": "drill-anim/specs/s-butterfly-lfx2.js",
     "why": "开哥 b4 review: palms pressed flat on the shins with the wrist dorsiflexed 82-113 deg (pressing the legs); text cue3 says hold the feet. Doable version (V5 open-hand mesh cannot grip): open palms rest on top of the feet (0-10 mm), fingers toward the toes, wrist near neutral, forearms along the shins, elbows over the inner thighs",
     "audit": "tools/legacy-fix-r1/audit-cf2.mjs --crotchfix r2 + /workspace/work/legacy-fix/b5/wrist.py",
-    "reviewed": false
+    "reviewed": false,
+    "history": [
+      {
+        "from": "drill-anim/specs/s-butterfly-lfx1.js",
+        "to": "drill-anim/specs/s-butterfly-lfx2.js",
+        "why": "b5s (开哥 b5 review, hark-sk final round): palms 3-8 mm above both feet and never intersecting (lfx1 sank 16-39 mm into the own foot; b5r bf2e fingertips touched the other foot's toes 0.2 mm while sitting tall). bf2e palm heights + new 'tuck' delta while sitting tall / through the hinge: palm 15 mm back, ~10 mm out, fingers turned 25 deg outward, elbow pole in/back; wrist ext 3-15 / dev -9..13 deg",
+        "date": "2026-11-22"
+      }
+    ]
   }
 }
