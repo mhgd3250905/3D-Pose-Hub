@@ -1,0 +1,116 @@
+{
+  "format": "pose-hub-action-recipe@1",
+  "id": "o-supported-march",
+  "nameZh": "扶椅站姿交替抬膝",
+  "spec": "drill-anim/specs/o-supported-march-lfx1.js",
+  "specSha256Lf": "62cb5b38a95d050d31982c29dafc6b0d4e15c982468e754345b0caba99170842",
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "hands": {
+    "left": "native",
+    "right": "native"
+  },
+  "camera": {
+    "dir": [
+      -0.2,
+      0.18,
+      1
+    ],
+    "fit": [
+      "head",
+      "leftKnee",
+      "leftPalm",
+      "leftToe",
+      "pelvis",
+      "rightKnee",
+      "rightPalm",
+      "rightToe"
+    ],
+    "pad": 0.18,
+    "k": 1,
+    "at": 2,
+    "drift": 0,
+    "fitTimeline": true,
+    "orbitDegrees": 0,
+    "frontSweepDegrees": 0
+  },
+  "cameraScale": 1.15,
+  "output": {
+    "groundShadow": false,
+    "cameraMotion": false,
+    "wholeCycleContentRect": true,
+    "fps": 30,
+    "exerciseMat": false
+  },
+  "appearance": {
+    "highlight": {
+      "color": "#F05A36",
+      "shade": [
+        0.5,
+        0.42,
+        0.08
+      ],
+      "intensity": [
+        0.75,
+        1
+      ]
+    },
+    "purpose": "Visual cue for target muscle effort, not a physiological measurement",
+    "status": "parameterized-selection-deferred-by-user"
+  },
+  "jointCorrections": [
+    {
+      "profile": "upper-arm-contour-r3",
+      "version": "0.1.0-r3"
+    },
+    {
+      "profile": "ankle-join-r5",
+      "version": "0.1.0-r5"
+    }
+  ],
+  "adaptation": {
+    "status": "remote-keyframe-pending",
+    "method": "Fixed queue source reused unchanged on armfix-r2.",
+    "cameraChanges": "drift->0 (static)"
+  },
+  "source": {
+    "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
+    "selectedSpec": "drill-anim/specs/o-supported-march-et1-kn1.js"
+  },
+  "sampledOnly": true,
+  "fullCycleValidated": false,
+  "userAccepted": false,
+  "releaseEligible": false,
+  "poseFixR1": {
+    "branch": "fix/limb-twist-collision-r1",
+    "date": "2026-11-05",
+    "spec": [
+      {
+        "from": "drill-anim/specs/o-supported-march.js",
+        "to": "drill-anim/specs/o-supported-march-et1.js",
+        "why": "forearm twist: constant elbowTwist split (pose-fix r2 et)"
+      }
+    ]
+  },
+  "kneeFix": {
+    "r1": {
+      "from": "drill-anim/specs/o-supported-march-et1.js",
+      "to": "drill-anim/specs/o-supported-march-et1-kn1.js",
+      "date": "2026-11-06",
+      "branch": "codex/knee-fix-r1",
+      "note": "knee fix r1 (2026-11-06) of o-supported-march-et1.js: pelvis height rescaled to the v3 leg (kn-lib g); per-frame pelvis-y correction kn1y (standing leg straight ~5 deg)"
+    }
+  },
+  "legacyFixR1": {
+    "branch": "codex/legacy-fix-r1",
+    "date": "2026-11-21",
+    "baseRecipe": "catalog/production/remaining219-r1/recipes/o-supported-march.json",
+    "from": "drill-anim/specs/o-supported-march-et1-kn1.js",
+    "to": "drill-anim/specs/o-supported-march-lfx1.js",
+    "why": "higher knee lift (开哥 after batch-3 sample): lifted thigh 49->85 deg off vertical, knee flexion 90 deg, shin hanging ~5 deg behind vertical, toes 4 deg up; only the 14 baked foot tracks (ankle/pitch/pole) of et1-kn1 recomputed from the v3 leg with the original lift fraction; standing leg, pelvis, hands, timing, easing, camera unchanged",
+    "audit": "tools/legacy-audit-r1 (REPORT @6ac5b21, batch 3 sample review -> batch 4)",
+    "reviewed": false
+  }
+}
