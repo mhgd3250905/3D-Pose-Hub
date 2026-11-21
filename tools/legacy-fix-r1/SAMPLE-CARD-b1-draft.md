@@ -1,6 +1,6 @@
 # 样片任务卡草稿 · 旧动作修复 r1 第 1 批（给 hark-sk 复核后派渲染机；Hark-QUA 不派）
 
-状态：**草稿**。hark-sk 用审计工具独立复核通过后，由 hark-sk 排队派发。只出样片，不上传、不切指针、不合并。
+状态：**草稿，已由 `tools/legacy-fix-r1/README.md`（正式任务卡）+ `tools/legacy-fix-r1/produce.mjs` 取代**，仅留作记录。hark-sk 用审计工具独立复核通过后，由 hark-sk 排队派发。只出样片，不上传、不切指针、不合并。
 
 - 仓库 / 分支：`mhgd3250905/3D-Pose-Hub`，`codex/legacy-fix-r1`（提交见交付回报）。只在本分支提交上渲染。
 - 动作（4 个；adductors-A 卡住未修、h-floor-nordic-hand-reset 误报，均不渲染）：

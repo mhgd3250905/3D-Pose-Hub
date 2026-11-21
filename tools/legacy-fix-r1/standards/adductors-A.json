@@ -1,0 +1,114 @@
+{
+ "id": "adductors-A",
+ "names": {
+  "recipe": "哥萨克蹲",
+  "text": "哥萨克蹲",
+  "catalog": "哥萨克蹲"
+ },
+ "position": "standing",
+ "unilateral": true,
+ "startingSide": "right",
+ "kind": "rep_alternate",
+ "perSide": "alternate",
+ "repUnit": "left+right",
+ "textSource": "catalog/production/v3-text/adductors-A.json",
+ "recipe": "catalog/production/legacy-fix-r1/recipes/adductors-A.json",
+ "spec": "drill-anim/specs/adductors-A-lfx1.js",
+ "basis": [
+  "换边期望：训练参数 perSide=alternate repUnit=left+right（每下左右各一次）",
+  "家族：站姿下蹲/弓步（负重腿全脚掌踩实；膝对脚尖由通用检查覆盖）",
+  "含手写逐动作规则（MANUAL）"
+ ],
+ "checks": [
+  {
+   "code": "squat-heel-up",
+   "kind": "range",
+   "severity": 2,
+   "cond": "min(m['kneeL'], m['kneeR']) < 120 and m['footMinL'] < 25 and m['footMinR'] < 25",
+   "metric": "max(m['soleHeelL'] if m['kneeL'] < 120 else 0, m['soleHeelR'] if m['kneeR'] < 120 else 0)",
+   "hi": 15,
+   "msg": "下蹲时屈膝负重腿脚后跟离地 {v:.0f} mm",
+   "basis": "深蹲/分腿蹲常识：全脚掌踩实（提踵类除外）"
+  },
+  {
+   "code": "sidesquat-com-off-foot",
+   "kind": "range",
+   "severity": 1,
+   "cond": "min(m['kneeL'], m['kneeR']) <= 60 and max(m['kneeL'], m['kneeR']) > 150",
+   "metric": "(m['comVsFootL'] if m['kneeL'] < m['kneeR'] else m['comVsFootR'])",
+   "hi": 0.0,
+   "msg": "侧蹲到底（下蹲腿膝角 ≤60°）时重心投影不在下蹲脚支撑面内（偏出 {v:.3f} m）",
+   "basis": "哥萨克蹲/侧弓步：重心坐到屈膝腿，投影落在该脚中后部（NSCA 动作要领；常识：另一条腿只是伸直点地）；修订：只判到底帧（膝角 ≤60°），重心须在脚接触面内（hark-sk 2026-11-21）"
+  },
+  {
+   "code": "sidesquat-heel-up",
+   "kind": "range",
+   "severity": 2,
+   "cond": "min(m['kneeL'], m['kneeR']) < 110 and max(m['kneeL'], m['kneeR']) > 150",
+   "metric": "(m['soleHeelL'] if m['kneeL'] < m['kneeR'] else m['soleHeelR'])",
+   "hi": 12,
+   "msg": "侧蹲到底时下蹲腿脚后跟离地 {v:.0f} mm（文字要求后跟踩实）",
+   "basis": "文字「蹲的那只脚后跟踩实」/常识"
+  },
+  {
+   "code": "sidesquat-knee-toe",
+   "kind": "range",
+   "severity": 1,
+   "cond": "min(m['kneeL'], m['kneeR']) < 110 and max(m['kneeL'], m['kneeR']) > 150",
+   "metric": "(m['kneeVsToeL'] if m['kneeL'] < m['kneeR'] else m['kneeVsToeR'])",
+   "lo": -12,
+   "hi": 15,
+   "msg": "侧蹲到底时下蹲腿膝盖与脚尖方向偏差 {v:.0f}°（负=膝内扣；文字要求膝盖对着脚尖）",
+   "basis": "文字「膝盖对着脚尖」"
+  },
+  {
+   "code": "cossack-straight-leg",
+   "kind": "range",
+   "severity": 2,
+   "cond": "min(m['kneeL'], m['kneeR']) < 100",
+   "metric": "max(m['kneeL'], m['kneeR'])",
+   "lo": 160,
+   "msg": "哥萨克蹲伸直腿膝盖应伸直（≥160°），实际 {v:.0f}°",
+   "basis": "文字「另一条腿伸直」"
+  }
+ ],
+ "expectSwitch": true,
+ "switchBasis": "文字「左边蹲一次、右边蹲一次，才算 1 下」",
+ "switchStrong": true,
+ "notes": "开哥校准缺陷 1：受力屈膝腿膝内扣、脚与膝方向不一致、重心没落在支撑脚跟上方",
+ "generic": [
+  "膝朝向/髌骨侧拧（thighFace/shinFace ≤40°）",
+  "脚尖 vs 膝朝向（footVsKnee ≤60°，±180=脚反）",
+  "膝铰链轴偏离（≤25°）",
+  "负重屈膝腿膝 vs 脚尖（-15°..35°）",
+  "肘扭转（≤35°）",
+  "穿地（≤-8 mm）/站定脚悬空（>8 mm）",
+  "重心投影在支撑面内（≤4 cm，连续帧）",
+  "裆部区域局部凸包（bump，阈值见 REPORT）"
+ ],
+ "revision": {
+  "file": "tools/legacy-fix-r1/standards/adductors-A.json",
+  "base": "tools/legacy-audit-r1/standards/adductors-A.json (unchanged)",
+  "date": "2026-11-21",
+  "by": "Hark-QUA, per hark-sk review of legacy-fix r1 batch 1",
+  "status": "待 hark-sk 复核",
+  "changes": [
+   "sidesquat-com-off-foot：只判下蹲腿膝角 ≤60°（即屈膝 ≥120°、蹲到底附近）的帧，且阈值从 0.08 m 收紧到 0.0 m（重心投影须在下蹲脚接触面内）。原条件「膝角 <110° 且另一腿 >150°」覆盖了下蹲/起身途中：伸直腿保持伸直时骨盆只能沿以伸直脚为圆心的弧线走，途中重心必然在两脚之间（两脚同时承重，静力上站得住），与本检查自己写的「侧蹲到底时」不符。hark-sk 复核 2026-11-21 定：重心只判下蹲腿「屈膝 ≥60°」的帧；交付记录里的膝角均为关节夹角（180° = 伸直，途中出问题帧膝角 74–84°），按此读作膝角 ≤60°。",
+   "knee-inside-foot 容差从 4 cm 收紧到 3 cm（kneeInTolM 0.03，hark-sk：全程膝对第二脚趾、膝在脚内侧 ≤3 cm）；判定帧沿用通用规则（脚站定、屈膝 ≥45°）。",
+   "小腿拧转 shinFace 阈值从 45°/60° 收紧到 30°/60°（hark-sk：小腿拧转 <30°）。",
+   "其余检查（squat-heel-up、sidesquat-heel-up、sidesquat-knee-toe、cossack-straight-leg、通用检查）不变。"
+  ],
+  "basis": [
+   "NSCA Exercise Technique Manual / ACE Exercise Library 哥萨克蹲与侧弓步要领：髋移到下蹲脚上方坐下，重心在该脚中后部，膝对脚尖，另一腿伸直、脚跟着地脚尖朝上。",
+   "Hub 文字 catalog/production/v3-text/adductors-A.json：往一边蹲，另一条腿伸直、脚尖朝天；蹲的那只脚后跟踩实，膝盖对着脚尖。",
+   "只收紧或限定到动作要领明确描述的阶段，没有放宽任何阈值。"
+  ]
+ },
+ "kneeInTolM": 0.03,
+ "rom": {
+  "shinFace": [
+   30,
+   60
+  ]
+ }
+}
