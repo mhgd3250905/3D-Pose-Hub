@@ -1,0 +1,111 @@
+{
+  "format": "pose-hub-action-recipe@1",
+  "id": "h-db-shrug",
+  "nameZh": "双哑铃站姿耸肩",
+  "spec": "drill-anim/specs/h-db-shrug-lfx1.js",
+  "specSha256Lf": "4591ab5b300500124b3a0e6b85e68af7b44408e0c3ecf615cdd5ccc172c66b5b",
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "hands": {
+    "left": "dumbbell-grasp",
+    "right": "dumbbell-grasp"
+  },
+  "camera": {
+    "dir": [
+      0.65,
+      0.15,
+      1
+    ],
+    "fit": [
+      "head",
+      "leftToe",
+      "rightToe",
+      "leftAnkle",
+      "rightAnkle",
+      "pelvis",
+      "leftKnee",
+      "rightKnee",
+      "leftPalm",
+      "rightPalm"
+    ],
+    "pad": 0.15,
+    "k": 0.9,
+    "at": 2,
+    "drift": 0,
+    "fitTimeline": true,
+    "orbitDegrees": 0,
+    "frontSweepDegrees": 0
+  },
+  "cameraScale": 1.15,
+  "output": {
+    "groundShadow": false,
+    "cameraMotion": false,
+    "wholeCycleContentRect": true,
+    "fps": 30,
+    "exerciseMat": false
+  },
+  "appearance": {
+    "highlight": {
+      "color": "#F05A36",
+      "shade": [
+        0.5,
+        0.42,
+        0.08
+      ],
+      "intensity": [
+        0.75,
+        1
+      ]
+    },
+    "purpose": "Visual cue for target muscle effort, not a physiological measurement",
+    "status": "parameterized-selection-deferred-by-user"
+  },
+  "jointCorrections": [
+    {
+      "profile": "upper-arm-contour-r3",
+      "version": "0.1.0-r3"
+    },
+    {
+      "profile": "ankle-join-r5",
+      "version": "0.1.0-r5"
+    }
+  ],
+  "adaptation": {
+    "status": "remote-keyframe-pending",
+    "method": "Fixed queue source reused unchanged on armfix-r2.",
+    "cameraChanges": "drift->0 (static)"
+  },
+  "source": {
+    "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
+    "selectedSpec": "drill-anim/specs/h-db-shrug-kn1.js"
+  },
+  "sampledOnly": true,
+  "fullCycleValidated": false,
+  "userAccepted": false,
+  "releaseEligible": false,
+  "fixedCorrectionStack": {
+    "profile": "fixed-wrist-corrections-r1",
+    "version": "0.1.0-r1"
+  },
+  "kneeFix": {
+    "r1": {
+      "from": "drill-anim/specs/h-db-shrug.js",
+      "to": "drill-anim/specs/h-db-shrug-kn1.js",
+      "date": "2026-11-06",
+      "branch": "codex/knee-fix-r1",
+      "note": "knee fix r1 (2026-11-06) of h-db-shrug.js: pelvis height rescaled to the v3 leg (kn-lib g); per-frame pelvis-y correction kn1y (standing leg straight ~5 deg)"
+    }
+  },
+  "legacyFixR1": {
+    "branch": "codex/legacy-fix-r1",
+    "date": "2026-11-21",
+    "baseRecipe": "catalog/production/remaining219-r1/recipes/h-db-shrug.json",
+    "from": "drill-anim/specs/h-db-shrug-kn1.js",
+    "to": "drill-anim/specs/h-db-shrug-lfx1.js",
+    "why": "Triage b5: text-reps-static 0.0 cm, the shrug did not move on V5 (hub scapula translation dropped by rotation-only V5 copy). Opt in to v5.scapulaShift for this action",
+    "audit": "tools/legacy-fix-r1/audit-cf2.mjs --crotchfix r2 + tools/legacy-audit-r1/analyze.py",
+    "reviewed": false
+  }
+}

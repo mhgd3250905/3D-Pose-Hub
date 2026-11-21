@@ -1,0 +1,228 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "s-butterfly",
+ "reviewStatus": "unreviewed-legacy-fix-r1",
+ "sources": [
+  "drill-anim/specs/s-butterfly-lfx1.js"
+ ],
+ "name": {
+  "zh": "蝴蝶式",
+  "en": "Seated Butterfly Stretch"
+ },
+ "purpose": {
+  "zh": "拉开大腿内侧",
+  "en": "Stretches your inner thighs."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "脚心相对，背挺直慢慢往前倾",
+    "en": "Soles together, lean forward slowly with a long back"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "脚后跟靠近身子，膝盖自然往两边打开。",
+    "en": "Heels in close, let your knees fall open."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "两手扶住脚，脚跟离身体近一点，膝盖自然往下落",
+    "en": "Hands resting on your feet, heels close in, let your knees drop."
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "呼气时肚子往脚那边送一点，别用手肘压膝盖。",
+    "en": "Each breath out, ease your belly toward your feet. Don't push your knees with your elbows."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "低头弓背，脑袋去凑脚",
+   "en": "Rounding and dropping your head toward your feet."
+  },
+  {
+   "zh": "用手硬压膝盖",
+   "en": "Forcing your knees down with your hands."
+  },
+  {
+   "zh": "手肘使劲往下压膝盖",
+   "en": "Pushing your knees down with your elbows."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "大腿内侧疼就少倾点，还疼就停",
+   "en": "If your inner thighs hurt, don't lean as far. Stop if it still hurts."
+  }
+ ],
+ "tags": {
+  "category": "stretch",
+  "activeMuscles": [
+   "adductors"
+  ],
+  "synergistMuscles": [
+   "lower-back"
+  ],
+  "equipment": [
+   "mat"
+  ],
+  "position": "seated",
+  "difficulty": 1
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "time",
+  "sets": 2,
+  "seconds": 30,
+  "restSeconds": 15
+ },
+ "phases": {
+  "start": {
+   "zh": "握脚往前送",
+   "en": "Hold feet, lean in"
+  },
+  "peak": {
+   "zh": "膝盖往下落",
+   "en": "Knees drop"
+  },
+  "end": {
+   "zh": "肚子往前送",
+   "en": "Belly forward"
+  }
+ },
+ "training": {
+  "kind": "hold",
+  "leadSeconds": 1,
+  "source": "user-decision static-hold r2"
+ },
+ "decision": "hark-sk 2026-11-21 22:20：s-butterfly 走 lfx1 平掌版（V5 手是整块张开的手掌、没有手指骨骼，不能真握），cue3「两手握住脚」→「两手扶住脚」以对上动画；其余字段照抄 catalog/production/v3-text/s-butterfly.json（原文件未改），本文件为替代版本，未审。",
+ "review": {
+  "r2": {
+   "changes": [
+    "剂量 30 s 保持 → 2 组×4 次（rep_hold，stretchLoop）",
+    "primary 去掉「从髋部」",
+    "口令「保持呼吸」→「停住呼吸」",
+    "按用户决定改为静态保持计时，动画只作示意",
+    "剂量 → 2 组×30 秒，休息 15 秒；口令/要点改为进入-保持-呼气放松，去掉来回/计数描述"
+   ],
+   "flags": []
+  },
+  "r3": {
+   "changes": [
+    "剂量 2 组×30 秒、休息 15 秒不变",
+    "「幅度小一点」→「少倾点」",
+    "难度 1/1 不变",
+    "「别来回颠」→「别一下一下往下压」",
+    "r3 第二遍（去套话，2026-11-14）：9 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [],
+   "audit": {
+    "dose": [
+     "2 组×30 秒，休息 15 秒",
+     "2 组×30 秒，休息 15 秒"
+    ],
+    "rep": [
+     "计时",
+     "计时"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 1
+     },
+     1
+    ],
+    "voice": "口吻改写",
+    "frame": "一致：坐地蝴蝶式两脚掌相对、大腿内侧高亮（b22 第 6 行）",
+    "extreme": null
+   }
+  },
+  "voice-no-tempo-r1": {
+   "changes": [
+    "引导句 3 → 3 句：去掉节拍/速度指令和短口令，只留怎么做对的要领"
+   ],
+   "flags": [],
+   "by": "开哥 2026-11-14 23:45（SF 测试反馈）"
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "hold",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "set": [
+   {
+    "at": 0,
+    "key": "p.go"
+   },
+   {
+    "at": 4,
+    "role": "posture",
+    "zh": "胸口往前送，别低头",
+    "en": "Chest forward, don't drop your head",
+    "from": [
+     "cue1",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "at": 12,
+    "role": "halfway",
+    "zh": "别用手压膝盖",
+    "en": "Hands off your knees",
+    "from": [
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "at": 20,
+    "role": "form",
+    "zh": "想更深，肚子往脚那边送，手肘不压膝盖",
+    "en": "To go deeper, lead with your belly, elbows off your knees",
+    "from": [
+     "cue4",
+     "commonErrors[2]"
+    ]
+   },
+   {
+    "at": 27,
+    "key": "n.3"
+   },
+   {
+    "at": 28,
+    "key": "n.2"
+   },
+   {
+    "at": 29,
+    "key": "n.1"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.release",
+    "p.rest",
+    "sec.15"
+   ],
+   "allDone": [
+    "p.release",
+    "p.nice"
+   ]
+  }
+ }
+}

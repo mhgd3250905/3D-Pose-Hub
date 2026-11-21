@@ -1,0 +1,96 @@
+{
+  "format": "pose-hub-action-recipe@1",
+  "id": "h-sumo-pry",
+  "nameZh": "相扑深蹲肘推膝停留",
+  "spec": "drill-anim/specs/h-sumo-pry-lfx1.js",
+  "specSha256Lf": "c15d60ad8beda924da65718a9437788747dbeb3f75108d1b2b3330760f63447f",
+  "model": {
+    "profile": "training-human-v3-armfix",
+    "version": "0.1.0-r2"
+  },
+  "hands": {
+    "left": "native",
+    "right": "native"
+  },
+  "camera": {
+    "dir": [
+      0.55,
+      0.25,
+      1
+    ],
+    "fit": [
+      "head",
+      "leftToe",
+      "rightToe",
+      "pelvis",
+      "leftKnee",
+      "rightKnee",
+      "leftElbow",
+      "rightElbow"
+    ],
+    "pad": 0.2,
+    "k": 0.9,
+    "at": 2.6,
+    "drift": 0,
+    "fitTimeline": true,
+    "orbitDegrees": 0,
+    "frontSweepDegrees": 0
+  },
+  "cameraScale": 1.15,
+  "output": {
+    "groundShadow": false,
+    "cameraMotion": false,
+    "wholeCycleContentRect": true,
+    "fps": 30,
+    "exerciseMat": false
+  },
+  "appearance": {
+    "highlight": {
+      "color": "#F05A36",
+      "shade": [
+        0.5,
+        0.42,
+        0.08
+      ],
+      "intensity": [
+        0.75,
+        1
+      ]
+    },
+    "purpose": "Visual cue for target muscle effort, not a physiological measurement",
+    "status": "parameterized-selection-deferred-by-user"
+  },
+  "jointCorrections": [
+    {
+      "profile": "upper-arm-contour-r3",
+      "version": "0.1.0-r3"
+    },
+    {
+      "profile": "ankle-join-r5",
+      "version": "0.1.0-r5"
+    }
+  ],
+  "adaptation": {
+    "status": "remote-keyframe-pending",
+    "method": "Fixed queue source reused unchanged on armfix-r2.",
+    "cameraChanges": "drift->0 (static); k 0.85->0.9"
+  },
+  "source": {
+    "queue": "catalog/production/remaining219-source-queue-20261029-r1.json",
+    "selectedSpec": "drill-anim/specs/h-sumo-pry-r2.js"
+  },
+  "sampledOnly": true,
+  "fullCycleValidated": false,
+  "userAccepted": false,
+  "releaseEligible": false,
+  "legacyFixR1": {
+    "branch": "codex/legacy-fix-r1",
+    "date": "2026-11-21",
+    "baseRecipe": "catalog/production/remaining219-r1/recipes/h-sumo-pry.json",
+    "from": "drill-anim/specs/h-sumo-pry-r2.js",
+    "to": "drill-anim/specs/h-sumo-pry-lfx1.js",
+    "why": "Triage b5: knees ~20 deg inside the 38 deg toe line on the way down (hips-frame knee pole swung in with the 12->32 deg lean). Knee poles are world points along the foot heading +6 deg (+6 deg more in the pry); round 2: pole 22 deg past the toe heading (+6 in the pry) and thigh/shin roll 40->60 / 20->25 deg toward the bend (earlier tries left thighFace -66/-56, kneeAxisDev 62/53)",
+    "audit": "tools/legacy-fix-r1/audit-cf2.mjs --crotchfix r2 + tools/legacy-audit-r1/analyze.py",
+    "reviewed": false
+  }
+}
