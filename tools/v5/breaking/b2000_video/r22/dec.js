@@ -1,0 +1,2 @@
+const fs=require('fs');eval(fs.readFileSync('../../ps-b2000/vendor/libs/lz-string.min.js','utf8')+';global.LZ=LZString;');
+fs.readFileSync(process.argv[2]||'codes.txt','utf8').trim().split('\n').forEach((c,i)=>{const o=JSON.parse(LZ.decompressFromEncodedURIComponent(c.slice(4)));fs.writeFileSync((process.argv[3]||"u")+(i+1)+".json",JSON.stringify(o));console.log(i+1,'f',o.f,'keys',Object.keys(o.q||{}).length,'p',o.p)});
