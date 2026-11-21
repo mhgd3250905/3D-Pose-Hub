@@ -495,3 +495,43 @@ r1 的求解方法和数值一个不改；在它之上只加**一次局部后缘
 - 脚本 `tools/legacy-fix-r1/produce-b5b.mjs`（照 produce-b5.mjs）：计划 serratus-A → obliques-A → h-side-leg-raise → hamstrings-A → o-stand-quad → erectors-B（全部 lfx1），
   母帧 `render-masters-v5-cf2 --crotchfix r2`，RENDER = 026a351，BASE = 6ac5b21，QA 孤立分支 `qa/legacy-fix-r1-b5b`，
   默认输出 `F:/PoseHub-v3/runs/2026-11-22_legacy-fix-r1-b5b_026a351`。任务卡草稿 `tools/legacy-fix-r1/SAMPLE-CARD-b5b-draft.md`。
+
+## 第 5r 批（2026-11-22，Hark-QUA）· 第 5 批样片返工（开哥 2026-11-21 23:42 三处）
+
+修复提交 e12fb81。**本批取代第 5 批卡里的 h-db-shrug、h-db-overhead-shrug（lfx1 → lfx2）**：第 5 批卡 `produce-b5.mjs` 在 e12fb81 之后的分支头上预检会拒绝（配方变了），属预期；
+第 5b 批卡固定在 `496ccf7` 上跑，不受影响。验收同口径（沙箱网格审计，stride 10）+ analyze。
+
+### R2 耸肩握拳手（通过，进 b5r 卡）
+| id | 新 spec | 修前 lfx1 → lfx2 | analyze S1/S2 |
+|---|---|---|---|
+| h-db-shrug 哑铃耸肩 | `h-db-shrug-lfx2.js`（基于 lfx1，加 `v5.hubGraspHands ['left','right']`） | 张开手、哑铃挂在手边 → **专用握拳手，把手在拳心**；肩上移 50 mm 不变；腕 20° / 20° 不变 | **无** |
+| h-db-overhead-shrug 过头哑铃耸肩 | `h-db-overhead-shrug-lfx2.js`（同上） | 同上，过头握拳；肩上移 40 mm 不变；腕 4° / 10° 不变 | **无** |
+- 原因：配方手型本来就是 dumbbell-grasp（hub 的固定拳 + 哑铃挂手骨），但 V5 只有 spec 打开 `v5.hubGraspHands` 才画拳；lfx1 只开了 scapulaShift。两者可同时用（双侧支持，t-hanging-leg-raise 已在用）。
+- 看图（f0 / f60，手部正面/侧面特写）：四指包住把手、拇指扣在把手上，把手从拳中穿过、手指不穿把手；哑铃挂在手骨上，f0 与 f60 相对手的位置不变（不漂），f60 双肩连哑铃上提。
+  对比图（沙箱）：`/workspace/work/legacy-fix/b5r/h-db-shrug_cmp.jpg`、`/workspace/work/legacy-fix/b5r/h-db-overhead-shrug_cmp.jpg`。
+
+### R1 s-butterfly 手离脚 3–8 mm（未通过，不进 b5r 卡，配方仍为 lfx1）
+目标：手与两只鞋/脚网格最小距离 3–8 mm、任何帧不相交，腕背伸 ≤25°、偏 ≤15°。各轮（基于 lfx1，只动掌心位置；静止段 = 坐直 f0–40 / f190–230，前屈段 f50–180）：
+| 轮 | 静止段 掌心偏移 (x 外, y 上) | 前屈段 | 自侧脚 | 对侧脚（另一只脚的脚趾） | 腕 |
+|---|---|---|---|---|---|
+| lfx1 | — | — | −16 → −39 mm（相交） | −8 mm | 11–20° / −10~+4° |
+| bf2a | +4, +12 mm | 同静止段 | 前屈 −32（无符号 1 mm，贴着） | +2 ~ +6 | 9–15° |
+| bf2b | +6, +20 mm | 同静止段 | 静止 +2，前屈 +8.5 ~ +14 | 静止 −14（无符号 0.2，指尖贴对侧脚趾） | 7–13° |
+| bf2c | +10, +26 | +25, +55 | 静止 +8，前屈 +38 ~ +47（离太远） | 静止 −9 | ≤10° |
+| bf2d | +12, +31 | +30, +62 | 静止 +13，前屈 +44 ~ +54 | 静止 −5 | ≤9° |
+| **bf2e（最后一轮）** | +24, +24 | +8, +15 | 静止 **7.8–8.6**，前屈 **4.7–6.1** ✓ | 前屈 **3.9–9.1** ✓；静止 **−12.5（无符号 0.2 mm）✗** | 背伸 9–15°、偏 −4~−11° ✓ |
+- 卡点：坐直时（f0–40、f190–230）手指尖伸到两脚脚趾在中线相碰处，贴着对侧脚趾（接触点约 (±0.04, 0.11, 0.46)，无符号 0.2 mm）；掌心外移（x）对它无效（bf2c→bf2e 反而 −9 → −12.5）。
+  前屈段已达标。下一步建议：只在静止段把掌心往后收约 15 mm（−z）或手指朝外转 10–15°，让指尖离开对侧脚趾；按「最多再调一轮」本次停在 bf2e。
+- 另：f110–120 自侧脚带符号 −32 mm 但无符号 4.7–5.4 mm，是脚背薄壳处法线判反（同 bf2a），按无符号计不相交。
+- 看图：`/workspace/work/legacy-fix/b5r/s-butterfly_bf2e_cmp.jpg`（lfx1 vs bf2e，f60 手部正面/俯视）。
+
+### R3 h-sumo-pry（未做完，不进 b5r 卡，配方仍为 7c28fb7 的 lfx1）
+hark-sk 00:09 选方案 c（合十放低到上腹/胸骨下缘，肘内侧贴两膝内侧外推），做不到退 a（胸前合十，肘朝膝推不贴）。几何核算（lfx1/lfx2 审计数据，蹲底 f60–90）：
+- c 做不到：蹲底肩关节 (0.188, 0.831, 0.168)、膝关节 (0.457, 0.474, 0.11)，肩到膝 **0.45 m**；上臂只有 **0.257 m**，肘最低只能到 y≈0.64（外展到 x 0.36 时），离膝内侧还有约 **0.19 m**（中心距）。手放到上腹后前臂朝内上，更够不着。
+- a 与腕角上限冲突：两掌在正中合十、指尖朝上时，前臂朝内的分量决定腕背伸。要背伸 ≤45°，肘必须在 x ≤ 0.20 m 以内（几乎贴肋、在肩正下方），肘离膝约 0.25–0.29 m，看不出「肘朝膝推」；
+  而现有 lfx2（胸前合十、肘外展）腕背伸 **79–83°**、偏 17–28°，lfx1 91–92° / 31–40°。另外 lfx2 两掌掌心 >20 mm 没贴上（PX 0.0345 太宽）。
+- 需要 hark-sk 再定其一：放宽合十腕背伸上限（解剖上合十本来 60–90°），或接受「肘夹在肋旁、不朝膝」的合十，或改文案（手不合十、肘推膝）。本次未改 h-sumo-pry。
+
+### 第 5r 批样片
+- 脚本 `tools/legacy-fix-r1/produce-b5r.mjs`（照 produce-b5b.mjs）：计划 h-db-shrug → h-db-overhead-shrug（lfx2），母帧 `render-masters-v5-cf2 --crotchfix r2`，
+  RENDER = e12fb81，BASE = 6ac5b21，QA 孤立分支 `qa/legacy-fix-r1-b5r`，默认输出 `F:/PoseHub-v3/runs/2026-11-22_legacy-fix-r1-b5r_e12fb81`。任务卡草稿 `tools/legacy-fix-r1/SAMPLE-CARD-b5r-draft.md`。

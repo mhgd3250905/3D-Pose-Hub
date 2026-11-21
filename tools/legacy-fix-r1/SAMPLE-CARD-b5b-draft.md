@@ -3,7 +3,7 @@
 只照抄下面的命令，不判断画面好坏，不改任何代码、配方、配置。遇到本卡没写的情况：停下，把最后一行 JSON 原文贴到群里。
 **这张卡只出样片。** 是否正式重渲、替换线上动作，等开哥审过样片后另定，不要自己跑别的命令。
 **整机同时只跑一个渲染**：等 hark-sk 排到本卡再开始，前面有渲染在跑就等它跑完、回报之后再开始。
-**分支头可能已有第 5b 批之后的提交（第 5r 批改了耸肩/蝴蝶/相扑配方，不影响本卡 6 个动作的文件，但预检按整棵树比对），这时 `--dry-run` 会以「渲染内容与 026a351 不一致」拒绝：属预期，停下贴 JSON，等 hark-sk 指示。**
+**本卡固定在提交 `496ccf7`（第 5b 批脚本提交）上跑：分支头之后还有第 5r 批提交（改了两个耸肩配方），在分支头上跑本卡预检会以「渲染内容与 026a351 不一致」拒绝，所以下面用 `git checkout --detach 496ccf7`，不要 `git pull` 到分支头。**
 
 ## 红线
 - 只出样片。不合并、不推 main、不打 tag、不发 Release、不上传媒体、不发布 pack、不切任何指针（dev/beta/stable，含回滚）。
@@ -17,18 +17,17 @@
 cd E:\AII-3D\3D-Pose-Hub-worktrees\human-polish-v3-20261110
 git status --short --untracked-files=no
 git fetch origin
-git checkout codex/legacy-fix-r1
-git pull --ff-only
+git checkout --detach 496ccf7
 git log --oneline -1
 node tools/legacy-fix-r1/produce-b5b.mjs --dry-run
 node tools/legacy-fix-r1/produce-b5b.mjs --out F:/PoseHub-v3/runs/2026-11-22_legacy-fix-r1-b5b_026a351
 ```
-- 渲染内容提交（`produce-b5b.mjs` 里的 `RENDER`）= `026a351`；`git log --oneline -1` 显示的是它之后只加本卡 / `produce-b5b.mjs` 的提交，正常。
+- 渲染内容提交（`produce-b5b.mjs` 里的 `RENDER`）= `026a351`；`git log --oneline -1` 应显示 `496ccf7`（026a351 之后只加了本卡 / `produce-b5b.mjs`）。
 - 第 2 行如果列出了任何文件（有未提交的改动），停下，把那几行贴到群里，不要往下做。
 - `--dry-run` 那行最后一行 JSON 里 `"ok":true` 才继续；`"ok":false` 就停下，把那行贴到群里。
-- `git checkout codex/legacy-fix-r1` 报本地没有这个分支时，改用 `git checkout -b codex/legacy-fix-r1 origin/codex/legacy-fix-r1`，其余照旧。
+- `git checkout --detach 496ccf7` 报找不到这个提交时，先再 `git fetch origin` 一次；还不行就停下贴报错。
 - python 不叫 `python` 时先 `$env:PYTHON='<python.exe 路径>'`；PATH 上要有 `ffmpeg`。
-- 中途断电/重启/卡死被关：重新打开 PowerShell，从 `cd` 那行起再做一遍，同一条命令会跳过已完成的动作。
+- 中途断电/重启/卡死被关：重新打开 PowerShell，从 `cd` 那行起再做一遍（第 2 行若报有改动照样停下），同一条命令会跳过已完成的动作。
 
 ## Vite 报 504（Outdated Optimize Dep）
 某个动作失败、它的日志 `F:\PoseHub-v3\runs\2026-11-22_legacy-fix-r1-b5b_026a351\_run\logs\<id>.log` 里有 `504` / `Outdated Optimize Dep` 时，只重试**一次**：
