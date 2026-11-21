@@ -1,0 +1,328 @@
+{
+ "h-open-book|floor-penetration": {
+  "verdict": "false-positive",
+  "note": "地面高度误取了道具顶面（木块/椅面/靠垫，floorY>0.05），看图人在垫上/椅上，无穿地"
+ },
+ "n-half-split|floor-penetration": {
+  "verdict": "false-positive",
+  "note": "地面高度误取了道具顶面（木块/椅面/靠垫，floorY>0.05），看图人在垫上/椅上，无穿地"
+ },
+ "n-straddle-fold|floor-penetration": {
+  "verdict": "false-positive",
+  "note": "地面高度误取了道具顶面（木块/椅面/靠垫，floorY>0.05），看图人在垫上/椅上，无穿地"
+ },
+ "n-seated-squeeze|floor-penetration": {
+  "verdict": "false-positive",
+  "note": "地面高度误取了道具顶面（木块/椅面/靠垫，floorY>0.05），看图人在垫上/椅上，无穿地"
+ },
+ "h-supine-bilateral-leg-raise|floor-penetration": {
+  "verdict": "false-positive",
+  "note": "地面高度误取了道具顶面（木块/椅面/靠垫，floorY>0.05），看图人在垫上/椅上，无穿地"
+ },
+ "o-seated-ham|knee-inside-foot": {
+  "verdict": "false-positive",
+  "note": "坐在椅上，腿不负重；伸腿/内旋是动作本身，不算膝内扣"
+ },
+ "o-chair-knee-extension|knee-inside-foot": {
+  "verdict": "false-positive",
+  "note": "坐在椅上，腿不负重；伸腿/内旋是动作本身，不算膝内扣"
+ },
+ "o-seated-hip-er|knee-inside-foot": {
+  "verdict": "false-positive",
+  "note": "坐在椅上，腿不负重；伸腿/内旋是动作本身，不算膝内扣"
+ },
+ "n-chair-wiper|knee-inside-foot": {
+  "verdict": "false-positive",
+  "note": "坐在椅上，腿不负重；伸腿/内旋是动作本身，不算膝内扣"
+ },
+ "n-chair-wiper|knee-valgus": {
+  "verdict": "false-positive",
+  "note": "坐姿雨刷：膝内倒就是动作内容，腿不负重"
+ },
+ "h-floor-nordic-hand-reset|*": {
+  "verdict": "false-positive",
+  "note": "已判误报：跪姿膝铰链测量方向错误，看图膝/小腿/脚背贴地正常"
+ },
+ "abs-A|*": {
+  "verdict": "false-positive",
+  "note": "躺姿四肢悬空 2–3 cm 触发重心规则，已判误报"
+ },
+ "s-lizard|floor-penetration": {
+  "verdict": "false-positive",
+  "note": "地面高度误取了瑜伽砖顶面（floorY>0.05），看图人在垫上，无穿地"
+ },
+ "s-pigeon|floor-penetration": {
+  "verdict": "false-positive",
+  "note": "地面高度误取了瑜伽砖顶面（floorY>0.05），看图人在垫上，无穿地"
+ },
+ "quadriceps-A|com-outside-support": {
+  "verdict": "false-positive",
+  "note": "高跪姿：膝、小腿、脚背都贴地，支撑面应含小腿，看图站得住；规则只按脚/手算支撑面"
+ },
+ "h-wall-straddle|rom-thighFace": {
+  "verdict": "needs-check",
+  "severity": 2,
+  "note": "坐/躺姿髋旋转类：看多视角图膝、小腿外形自然，角度规则在髋大幅外/内旋时把髋旋转记到膝上，存疑；降为明显级，修前先看裆部特写/正面图确认"
+ },
+ "h-wall-straddle|rom-shinFace": {
+  "verdict": "needs-check",
+  "severity": 2,
+  "note": "坐/躺姿髋旋转类：看多视角图膝、小腿外形自然，角度规则在髋大幅外/内旋时把髋旋转记到膝上，存疑；降为明显级，修前先看裆部特写/正面图确认"
+ },
+ "h-wall-straddle|rom-kneeAxisDev": {
+  "verdict": "needs-check",
+  "severity": 2,
+  "note": "坐/躺姿髋旋转类：看多视角图膝、小腿外形自然，角度规则在髋大幅外/内旋时把髋旋转记到膝上，存疑；降为明显级，修前先看裆部特写/正面图确认"
+ },
+ "n-seated-ir-drop|rom-thighFace": {
+  "verdict": "needs-check",
+  "severity": 2,
+  "note": "坐/躺姿髋旋转类：看多视角图膝、小腿外形自然，角度规则在髋大幅外/内旋时把髋旋转记到膝上，存疑；降为明显级，修前先看裆部特写/正面图确认"
+ },
+ "n-seated-ir-drop|rom-shinFace": {
+  "verdict": "needs-check",
+  "severity": 2,
+  "note": "坐/躺姿髋旋转类：看多视角图膝、小腿外形自然，角度规则在髋大幅外/内旋时把髋旋转记到膝上，存疑；降为明显级，修前先看裆部特写/正面图确认"
+ },
+ "n-seated-ir-drop|rom-kneeAxisDev": {
+  "verdict": "needs-check",
+  "severity": 2,
+  "note": "坐/躺姿髋旋转类：看多视角图膝、小腿外形自然，角度规则在髋大幅外/内旋时把髋旋转记到膝上，存疑；降为明显级，修前先看裆部特写/正面图确认"
+ },
+ "n-windshield|rom-thighFace": {
+  "verdict": "needs-check",
+  "severity": 2,
+  "note": "坐/躺姿髋旋转类：看多视角图膝、小腿外形自然，角度规则在髋大幅外/内旋时把髋旋转记到膝上，存疑；降为明显级，修前先看裆部特写/正面图确认"
+ },
+ "n-windshield|rom-shinFace": {
+  "verdict": "needs-check",
+  "severity": 2,
+  "note": "坐/躺姿髋旋转类：看多视角图膝、小腿外形自然，角度规则在髋大幅外/内旋时把髋旋转记到膝上，存疑；降为明显级，修前先看裆部特写/正面图确认"
+ },
+ "n-windshield|rom-kneeAxisDev": {
+  "verdict": "needs-check",
+  "severity": 2,
+  "note": "坐/躺姿髋旋转类：看多视角图膝、小腿外形自然，角度规则在髋大幅外/内旋时把髋旋转记到膝上，存疑；降为明显级，修前先看裆部特写/正面图确认"
+ },
+ "n-straddle-fold|rom-thighFace": {
+  "verdict": "needs-check",
+  "severity": 2,
+  "note": "坐/躺姿髋旋转类：看多视角图膝、小腿外形自然，角度规则在髋大幅外/内旋时把髋旋转记到膝上，存疑；降为明显级，修前先看裆部特写/正面图确认"
+ },
+ "n-straddle-fold|rom-shinFace": {
+  "verdict": "needs-check",
+  "severity": 2,
+  "note": "坐/躺姿髋旋转类：看多视角图膝、小腿外形自然，角度规则在髋大幅外/内旋时把髋旋转记到膝上，存疑；降为明显级，修前先看裆部特写/正面图确认"
+ },
+ "n-straddle-fold|rom-kneeAxisDev": {
+  "verdict": "needs-check",
+  "severity": 2,
+  "note": "坐/躺姿髋旋转类：看多视角图膝、小腿外形自然，角度规则在髋大幅外/内旋时把髋旋转记到膝上，存疑；降为明显级，修前先看裆部特写/正面图确认"
+ },
+ "s-pigeon|rom-thighFace": {
+  "verdict": "needs-check",
+  "severity": 2,
+  "note": "坐/躺姿髋旋转类：看多视角图膝、小腿外形自然，角度规则在髋大幅外/内旋时把髋旋转记到膝上，存疑；降为明显级，修前先看裆部特写/正面图确认"
+ },
+ "s-pigeon|rom-shinFace": {
+  "verdict": "needs-check",
+  "severity": 2,
+  "note": "坐/躺姿髋旋转类：看多视角图膝、小腿外形自然，角度规则在髋大幅外/内旋时把髋旋转记到膝上，存疑；降为明显级，修前先看裆部特写/正面图确认"
+ },
+ "s-pigeon|rom-kneeAxisDev": {
+  "verdict": "needs-check",
+  "severity": 2,
+  "note": "坐/躺姿髋旋转类：看多视角图膝、小腿外形自然，角度规则在髋大幅外/内旋时把髋旋转记到膝上，存疑；降为明显级，修前先看裆部特写/正面图确认"
+ },
+ "s-lizard|rom-thighFace": {
+  "verdict": "needs-check",
+  "severity": 2,
+  "note": "坐/躺姿髋旋转类：看多视角图膝、小腿外形自然，角度规则在髋大幅外/内旋时把髋旋转记到膝上，存疑；降为明显级，修前先看裆部特写/正面图确认"
+ },
+ "s-lizard|rom-shinFace": {
+  "verdict": "needs-check",
+  "severity": 2,
+  "note": "坐/躺姿髋旋转类：看多视角图膝、小腿外形自然，角度规则在髋大幅外/内旋时把髋旋转记到膝上，存疑；降为明显级，修前先看裆部特写/正面图确认"
+ },
+ "s-lizard|rom-kneeAxisDev": {
+  "verdict": "needs-check",
+  "severity": 2,
+  "note": "坐/躺姿髋旋转类：看多视角图膝、小腿外形自然，角度规则在髋大幅外/内旋时把髋旋转记到膝上，存疑；降为明显级，修前先看裆部特写/正面图确认"
+ },
+ "s-butterfly|rom-thighFace": {
+  "verdict": "needs-check",
+  "severity": 2,
+  "note": "坐/躺姿髋旋转类：看多视角图膝、小腿外形自然，角度规则在髋大幅外/内旋时把髋旋转记到膝上，存疑；降为明显级，修前先看裆部特写/正面图确认"
+ },
+ "s-butterfly|rom-shinFace": {
+  "verdict": "needs-check",
+  "severity": 2,
+  "note": "坐/躺姿髋旋转类：看多视角图膝、小腿外形自然，角度规则在髋大幅外/内旋时把髋旋转记到膝上，存疑；降为明显级，修前先看裆部特写/正面图确认"
+ },
+ "s-butterfly|rom-kneeAxisDev": {
+  "verdict": "needs-check",
+  "severity": 2,
+  "note": "坐/躺姿髋旋转类：看多视角图膝、小腿外形自然，角度规则在髋大幅外/内旋时把髋旋转记到膝上，存疑；降为明显级，修前先看裆部特写/正面图确认"
+ },
+ "h-sumo-pry|knee-inside-foot": {
+  "verdict": "needs-check",
+  "severity": 2,
+  "note": "只在起始 0–30 帧过渡段出现，到底帧看图膝在脚上方；降为明显级"
+ },
+ "n-squat-shift|knee-inside-foot": {
+  "verdict": "false-positive",
+  "note": "侧移深蹲伸直侧腿外展，膝在脚内侧是动作本身，不负重"
+ },
+ "n-squat-shift|knee-valgus": {
+  "verdict": "false-positive",
+  "note": "同上，伸直侧腿"
+ },
+ "n-squat-shift|rom-thighFace": {
+  "verdict": "confirmed",
+  "severity": 1,
+  "note": "与 h-squat（第1批已证实并修复）同型：宽站深蹲髌骨朝向与屈膝方向差 74°"
+ },
+ "n-squat-shift|rom-kneeAxisDev": {
+  "verdict": "confirmed",
+  "severity": 1,
+  "note": "与 h-squat（第1批已证实并修复）同型：宽站深蹲髌骨朝向与屈膝方向差 74°"
+ },
+ "o-supported-march|text-no-switch": {
+  "verdict": "confirmed",
+  "severity": 1,
+  "note": "看图 25%/75% 都是同一侧抬膝，文字要求左右交替"
+ },
+ "s-9090|*": {
+  "verdict": "confirmed",
+  "note": "第1批已修（codex/legacy-fix-r1 @76d3312，换髋重做版）"
+ },
+ "h-9090-liftoff|rom-thighFace": {
+  "verdict": "needs-check",
+  "severity": 2,
+  "note": "坐/躺姿或抬腿髋旋转类：多视角图膝、小腿外形自然，角度规则在髋大幅旋转/膝接近伸直时把髋旋转记到膝上，存疑；降为明显级，修前先看图确认"
+ },
+ "h-9090-liftoff|rom-shinFace": {
+  "verdict": "needs-check",
+  "severity": 2,
+  "note": "坐/躺姿或抬腿髋旋转类：多视角图膝、小腿外形自然，角度规则在髋大幅旋转/膝接近伸直时把髋旋转记到膝上，存疑；降为明显级，修前先看图确认"
+ },
+ "h-9090-liftoff|rom-kneeAxisDev": {
+  "verdict": "needs-check",
+  "severity": 2,
+  "note": "坐/躺姿或抬腿髋旋转类：多视角图膝、小腿外形自然，角度规则在髋大幅旋转/膝接近伸直时把髋旋转记到膝上，存疑；降为明显级，修前先看图确认"
+ },
+ "h-band-leg-out|rom-thighFace": {
+  "verdict": "needs-check",
+  "severity": 2,
+  "note": "坐/躺姿或抬腿髋旋转类：多视角图膝、小腿外形自然，角度规则在髋大幅旋转/膝接近伸直时把髋旋转记到膝上，存疑；降为明显级，修前先看图确认"
+ },
+ "h-band-leg-out|rom-shinFace": {
+  "verdict": "needs-check",
+  "severity": 2,
+  "note": "坐/躺姿或抬腿髋旋转类：多视角图膝、小腿外形自然，角度规则在髋大幅旋转/膝接近伸直时把髋旋转记到膝上，存疑；降为明显级，修前先看图确认"
+ },
+ "h-band-leg-out|rom-kneeAxisDev": {
+  "verdict": "needs-check",
+  "severity": 2,
+  "note": "坐/躺姿或抬腿髋旋转类：多视角图膝、小腿外形自然，角度规则在髋大幅旋转/膝接近伸直时把髋旋转记到膝上，存疑；降为明显级，修前先看图确认"
+ },
+ "h-butterfly-active|rom-thighFace": {
+  "verdict": "needs-check",
+  "severity": 2,
+  "note": "坐/躺姿或抬腿髋旋转类：多视角图膝、小腿外形自然，角度规则在髋大幅旋转/膝接近伸直时把髋旋转记到膝上，存疑；降为明显级，修前先看图确认"
+ },
+ "h-butterfly-active|rom-shinFace": {
+  "verdict": "needs-check",
+  "severity": 2,
+  "note": "坐/躺姿或抬腿髋旋转类：多视角图膝、小腿外形自然，角度规则在髋大幅旋转/膝接近伸直时把髋旋转记到膝上，存疑；降为明显级，修前先看图确认"
+ },
+ "h-butterfly-active|rom-kneeAxisDev": {
+  "verdict": "needs-check",
+  "severity": 2,
+  "note": "坐/躺姿或抬腿髋旋转类：多视角图膝、小腿外形自然，角度规则在髋大幅旋转/膝接近伸直时把髋旋转记到膝上，存疑；降为明显级，修前先看图确认"
+ },
+ "h-hip-gate|rom-thighFace": {
+  "verdict": "needs-check",
+  "severity": 2,
+  "note": "坐/躺姿或抬腿髋旋转类：多视角图膝、小腿外形自然，角度规则在髋大幅旋转/膝接近伸直时把髋旋转记到膝上，存疑；降为明显级，修前先看图确认"
+ },
+ "h-hip-gate|rom-shinFace": {
+  "verdict": "needs-check",
+  "severity": 2,
+  "note": "坐/躺姿或抬腿髋旋转类：多视角图膝、小腿外形自然，角度规则在髋大幅旋转/膝接近伸直时把髋旋转记到膝上，存疑；降为明显级，修前先看图确认"
+ },
+ "h-hip-gate|rom-kneeAxisDev": {
+  "verdict": "needs-check",
+  "severity": 2,
+  "note": "坐/躺姿或抬腿髋旋转类：多视角图膝、小腿外形自然，角度规则在髋大幅旋转/膝接近伸直时把髋旋转记到膝上，存疑；降为明显级，修前先看图确认"
+ },
+ "h-db-calf-raise|com-outside-support": {
+  "verdict": "false-positive",
+  "note": "看图直立站稳；踮脚时支撑面只取了前脚掌少数点，重心规则误判"
+ },
+ "adductors-A|*": {
+  "verdict": "confirmed",
+  "note": "已在修（@921c1b3），样片随第2批出"
+ },
+ "deltoids-B|*": {
+  "verdict": "confirmed",
+  "note": "第1批已修（@76d3312）"
+ },
+ "h-short-side-plank|*": {
+  "verdict": "confirmed",
+  "note": "第1批已修（@76d3312）"
+ },
+ "h-squat|*": {
+  "verdict": "confirmed",
+  "note": "第1批已修（@76d3312）"
+ },
+ "h-inner-thigh|rom-thighFace": {
+  "verdict": "needs-check",
+  "severity": 2,
+  "note": "多视角图膝、小腿外形自然；角度规则在髋大幅旋转时把髋旋转记到膝上，存疑；降为明显级，修前先看图确认"
+ },
+ "h-inner-thigh|rom-shinFace": {
+  "verdict": "needs-check",
+  "severity": 2,
+  "note": "多视角图膝、小腿外形自然；角度规则在髋大幅旋转时把髋旋转记到膝上，存疑；降为明显级，修前先看图确认"
+ },
+ "h-inner-thigh|rom-kneeAxisDev": {
+  "verdict": "needs-check",
+  "severity": 2,
+  "note": "多视角图膝、小腿外形自然；角度规则在髋大幅旋转时把髋旋转记到膝上，存疑；降为明显级，修前先看图确认"
+ },
+ "h-quad-cars|rom-thighFace": {
+  "verdict": "needs-check",
+  "severity": 2,
+  "note": "多视角图膝、小腿外形自然；角度规则在髋大幅旋转时把髋旋转记到膝上，存疑；降为明显级，修前先看图确认"
+ },
+ "h-quad-cars|rom-shinFace": {
+  "verdict": "needs-check",
+  "severity": 2,
+  "note": "多视角图膝、小腿外形自然；角度规则在髋大幅旋转时把髋旋转记到膝上，存疑；降为明显级，修前先看图确认"
+ },
+ "h-quad-cars|rom-kneeAxisDev": {
+  "verdict": "needs-check",
+  "severity": 2,
+  "note": "多视角图膝、小腿外形自然；角度规则在髋大幅旋转时把髋旋转记到膝上，存疑；降为明显级，修前先看图确认"
+ },
+ "h-russian-twist|rom-thighFace": {
+  "verdict": "needs-check",
+  "severity": 2,
+  "note": "多视角图膝、小腿外形自然；角度规则在髋大幅旋转时把髋旋转记到膝上，存疑；降为明显级，修前先看图确认"
+ },
+ "h-russian-twist|rom-shinFace": {
+  "verdict": "needs-check",
+  "severity": 2,
+  "note": "多视角图膝、小腿外形自然；角度规则在髋大幅旋转时把髋旋转记到膝上，存疑；降为明显级，修前先看图确认"
+ },
+ "h-russian-twist|rom-kneeAxisDev": {
+  "verdict": "needs-check",
+  "severity": 2,
+  "note": "多视角图膝、小腿外形自然；角度规则在髋大幅旋转时把髋旋转记到膝上，存疑；降为明显级，修前先看图确认"
+ },
+ "h-kneeling-pushup|com-outside-support": {
+  "verdict": "false-positive",
+  "note": "跪姿俯卧撑：膝着地也是支撑点，看图稳定；规则只按手脚算支撑面"
+ }
+}

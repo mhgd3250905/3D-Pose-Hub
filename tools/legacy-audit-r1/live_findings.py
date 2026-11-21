@@ -7,6 +7,9 @@ HERE = os.path.dirname(os.path.abspath(__file__)); REPO = os.path.abspath(os.pat
 W = '/workspace/work/legacy-audit-r1'
 V = {a['id']: a for a in json.load(open(os.path.join(REPO, 'tools/v5/v5-actions.json')))['actions']}
 FP = {'abs-A': '躺姿四肢悬空 2–3 cm 触发重心规则，已判误报（重心规则已改为只判站/跪姿）'}
+REV = json.load(open(os.path.join(HERE, 'review.json'))) if os.path.exists(os.path.join(HERE, 'review.json')) else {}
+def rv(aid, code): return REV.get(f'{aid}|{code}') or REV.get(f'{aid}|*') or {}
+FP.update({k: v['note'] for k, v in REV.items() if v.get('verdict') == 'false-positive'})
 P0 = {'rom-footVsKnee', 'sideplank-feet-off-floor', 'sideplank-foot-above-knee', 'sideplank-shin-not-behind', 'text-no-switch', 'text-forearm-support'}
 P1 = {'knee-inside-foot', 'knee-outside-foot', 'sidesquat-com-off-foot', 'com-outside-support', 'rom-thighFace', 'rom-shinFace', 'rom-kneeAxisDev', 'knee-valgus'}
 def tier(f):
@@ -30,12 +33,15 @@ items = []
 for aid, fs in rows.items():
     if aid in FP or not fs: continue
     for x in fs:
+        r = rv(aid, x['code'])
+        if r.get('verdict') == 'false-positive': continue
+        if 'severity' in r: x = dict(x, severity=r['severity'])
         if x['severity'] == 2 and x['code'] == 'crotch-bulge': continue
-        items.append({'id': aid, 'name': name(aid), 'tier': tier(x), 'sev': x['severity'], 'code': x['code'], 'msg': x['msg'], 'value': x.get('value'), 'frames': x.get('frames')})
+        items.append({'id': aid, 'name': name(aid), 'tier': tier(x), 'sev': x['severity'], 'code': x['code'], 'msg': x['msg'], 'value': x.get('value'), 'frames': x.get('frames'), 'review': r.get('verdict', 'unreviewed')})
 order = {'P0': 0, 'P1': 1, 'M': 2, 'P2': 3}
 items.sort(key=lambda r: (order[r['tier']], r['sev'], -abs(r['value'] or 0)))
 json.dump({'generated': time.strftime('%Y-%m-%d %H:%M'), 'analyzed': len(rows), 'false_positive': FP, 'items': items}, open(os.path.join(HERE, 'FINDINGS-LIVE.json'), 'w'), ensure_ascii=False, indent=1)
-L = [f'# 旧动作审计 r1 实时问题清单（未经独立评审，{time.strftime("%Y-%m-%d %H:%M")} 导出，已分析 {len(rows)} 个动作）', '',
+L = [f'# 旧动作审计 r1 终版问题清单（已独立评审，误报已剔除，{time.strftime("%Y-%m-%d %H:%M")} 导出，已分析 {len(rows)} 个动作）', '',
      '分级：P0 反人类/文不对题（先修）→ P1 严重错位 → M 模型级裆部鼓包（V5 皮肤层一次修）→ P2 明显不准。同级按幅度从大到小。', '']
 for t, title in (('P0', 'P0 反人类 / 文不对题'), ('P1', 'P1 严重错位（膝脚朝向、膝内扣外翻、重心）'), ('M', 'M 模型级：裆部鼓包（不逐动作改姿势）'), ('P2', 'P2 明显不准')):
     sub = [r for r in items if r['tier'] == t]
