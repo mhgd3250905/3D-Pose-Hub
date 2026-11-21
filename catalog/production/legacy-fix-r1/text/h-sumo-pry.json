@@ -1,0 +1,214 @@
+{
+ "format": "pose-hub-action-text@1",
+ "id": "h-sumo-pry",
+ "reviewStatus": "unreviewed-legacy-fix-r1",
+ "sources": [
+  "drill-anim/specs/h-sumo-pry-lfx2.js"
+ ],
+ "name": {
+  "zh": "相扑深蹲肘推膝停留",
+  "en": "Sumo Squat Hold with Elbow Pry"
+ },
+ "purpose": {
+  "zh": "让胯打开，拉开大腿内侧",
+  "en": "Opens up your hips and stretches your inner thighs."
+ },
+ "cues": [
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "两手胸前合十，膝盖主动往外撑",
+    "en": "Palms together at your chest, actively press your knees out"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "两脚站宽、脚尖朝外，脚后跟踩实。",
+    "en": "Feet wide, toes turned out, heels down."
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "胸口挺起来，蹲住停一下再站起来。",
+    "en": "Chest up. Pause at the bottom, then stand."
+   }
+  }
+ ],
+ "commonErrors": [
+  {
+   "zh": "脚后跟离地",
+   "en": "Heels lifting."
+  },
+  {
+   "zh": "弓背",
+   "en": "Rounding your back."
+  }
+ ],
+ "cautions": [
+  {
+   "zh": "膝盖不舒服就蹲高点，手肘推轻点",
+   "en": "If your knees complain, sit higher and press more gently."
+  }
+ ],
+ "tags": {
+  "category": "mobility",
+  "activeMuscles": [
+   "adductors",
+   "glutes"
+  ],
+  "synergistMuscles": [
+   "quadriceps",
+   "core"
+  ],
+  "equipment": [],
+  "position": "standing",
+  "difficulty": 2
+ },
+ "unilateral": false,
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 2,
+  "reps": 8,
+  "restSeconds": 20
+ },
+ "phases": {
+  "start": {
+   "zh": "往下蹲",
+   "en": "Sink down"
+  },
+  "peak": {
+   "zh": "手肘推膝",
+   "en": "Push knees out"
+  },
+  "end": {
+   "zh": "站起来",
+   "en": "Stand up"
+  }
+ },
+ "training": {
+  "kind": "rep_hold",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "go",
+    "seconds": 1.5
+   },
+   {
+    "id": "hold",
+    "seconds": 2.5
+   },
+   {
+    "id": "back",
+    "seconds": 1.5
+   }
+  ],
+  "source": "real-tempo r3"
+ },
+ "decision": "hark-sk 2026-11-22 定方案 ①+③：h-sumo-pry 走 lfx2 胸前合十版（两掌贴合、手指朝上，肘在手臂够得到的范围内尽量外展；蹲底肩到膝 0.45 m、上臂 0.257 m，肘够不着膝），cue1「两手合十，用手肘把膝盖往外推」→「两手胸前合十，膝盖主动往外撑」以对上动画。英文 cue1 为本次跟改的草稿。其余字段照抄 catalog/production/v3-text/h-sumo-pry.json（原文件未改），本文件为替代版本，未审（等开哥看）。未改但可能需一起看：phases.peak「手肘推膝」、cautions「手肘推轻点」、名称「肘推膝」。",
+ "review": {
+  "r2": {
+   "changes": [
+    "结束口令按 0.5 s 缩为「站起 / Rise」",
+    "主口令缩成一个指令（去掉「推向脚尖外」）；caution 改「X 时 Y」",
+    "用户已定：改名、计时/计次、每侧/起始侧、计数单位按最终口径处理，相关待定项清除",
+    "最终口径：按真实做法定（2026-11-01）"
+   ],
+   "flags": []
+  },
+  "r3": {
+   "changes": [
+    "节奏按真实带练：一下 4.0 s → 5.5 s（蹲 1.5 / 底下推膝停 2.5 / 起 1.5），活动类慢做",
+    "难度 v3 1 / ai-tags 2 → 统一 2",
+    "purpose「打开髋部」→「让胯打开」；注意事项改短句",
+    "r3 第二遍（去套话，2026-11-14）：2 句跨动作重复的套话按本动作的真实做法重写（见核对记录「r3 第二遍」）"
+   ],
+   "flags": [
+    "预览帧几乎看不到大腿内侧高亮，请看视频确认"
+   ],
+   "audit": {
+    "dose": [
+     "2 组×8 次，休息 20 秒",
+     "2 组×8 次，休息 20 秒"
+    ],
+    "rep": [
+     "4.0 s",
+     "5.5 s"
+    ],
+    "difficulty": [
+     {
+      "v3": 1,
+      "ai": 2
+     },
+     2
+    ],
+    "voice": "口吻改写",
+    "frame": "动作一致：宽站相扑深蹲、两手合十肘推膝；预览帧几乎看不到高亮（b14 第 3 行，非极端）",
+    "extreme": null
+   }
+  },
+  "voice-no-tempo-r1": {
+   "changes": [
+    "去掉相位口令绑定（training.phases 的 phase.* 标记），voiceGuide.phaseCues 改为 none：前 2 下不再念「往下蹲/手肘推膝/站起来」",
+    "引导句 2 → 2 句：去掉节拍/速度指令和短口令，只留怎么做对的要领"
+   ],
+   "flags": [],
+   "by": "开哥 2026-11-14 23:45（SF 测试反馈）"
+  }
+ },
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 5.5,
+  "phaseCues": "none",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 2,
+    "role": "form",
+    "zh": "脚跟压地，胸口挺起",
+    "en": "Heels down, chest up",
+    "from": [
+     "cue2",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "role": "halfway",
+    "zh": "胸口挺着，背不弓",
+    "en": "Chest up, back not rounding",
+    "from": [
+     "cue3",
+     "commonErrors[1]"
+    ]
+   },
+   {
+    "afterRep": 7,
+    "key": "p.last_rep"
+   }
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.20"
+   ],
+   "allDone": [
+    "p.nice"
+   ]
+  }
+ }
+}
