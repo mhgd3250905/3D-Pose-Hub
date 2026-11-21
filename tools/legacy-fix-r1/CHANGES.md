@@ -301,3 +301,102 @@ QA 孤立分支 `qa/legacy-fix-r1-b2`。任务卡 `tools/legacy-fix-r1/SAMPLE-CA
 - 脚本 `tools/legacy-fix-r1/produce-b3.mjs`（照 produce-b2.mjs）：计划 o-supported-march（原配方，误报复核）→ n-squat-shift（lfx1），母帧 `render-masters-v5-cf1 --crotchfix on`，
   RENDER = 991cbf6（修复提交），BASE = 6ac5b21（终版审计），QA 孤立分支 `qa/legacy-fix-r1-b3`，默认输出 `F:/PoseHub-v3/runs/2026-11-21_legacy-fix-r1-b3_991cbf6`。
 - 任务卡草稿 `tools/legacy-fix-r1/SAMPLE-CARD-b3-draft.md`。
+
+## 第 3 批补充 r2（2026-11-21，Hark-QUA）· 裆部补丁 crotchfix-v5-r2（只扩大补丁后缘）
+
+### 原因
+r1 未达标的两个（t-seated-straddle-ext 35.2 mm f220、s-butterfly 28.9 mm f110）鼓包点完全相同：骨盆系 (0.003, −0.028, −0.121) m，法线朝后，
+即**臀沟上端、r1 球形补丁（中心 (0,−0.16,0)、R 0.18）后缘正好切过的位置**（到中心 0.179 m）。补丁内是调和后的权重，补丁外是原硬分界权重，
+深屈髋大外展坐姿时两边在这条边上被拉开，形成一道 29–35 mm 的后缘棱。
+
+### 方案（采用）
+r1 的求解方法和数值一个不改；在它之上只加**一次局部后缘处理**：以臀沟上端（骨盆系 (0, −0.03, −0.12) m）为中心、半径 0.08 m 的小球内，
+以 **r1 权重**为固定边界再做一次双调和插值（同 r1 的四根骨 pelvis / spineLower / 左右大腿）。小球外的顶点权重与 r1 逐字节相同。
+- 补丁 `tools/v5/runtime/model/crotchfix-v5-r2.weights.json`（7569 顶点 = r1 的 7193 + 后缘新增 376；含 r1 区内被小球覆盖的一部分），
+  仍是「对原 glb 权重」的补丁，同一个**未改动**的 applier `crotchfix-v5-r1.js` 加载（版本字段 crotchfix-v5-r2，原权重校验和照旧）。
+- 生成：`tools/legacy-fix-r1/crotchfix-r2/build_r2.py`（先重算 r1 并断言与 `crotchfix-v5-r1.weights.json` 逐字节一致，再做后缘处理）；
+  求解库 `wsolve2.py`（= b2 离线工具 wsolve + 区域形状参数）、`v5lib.py` / `geo.py` / `patch.py` / `dump.mjs`（b2 离线工具原样带进仓库）。
+- 开关：新文件 `tools/v5/render-masters-v5-cf2.mjs`、`tools/legacy-fix-r1/audit-cf2.mjs`，`--crotchfix off|on|r1|r2`（on = r1），默认 off。
+  cf1 渲染器/审计、r1 模块与补丁**一字未改**；不改姿势、不加形状键。
+- 逐字节复核（s-butterfly f0/f110，540 px）：`render-masters-v5.mjs` 与 `cf2 --crotchfix off` 两帧 PNG sha256 相同（e5a68c2d…/81af7d4f…）；
+  `cf1 --crotchfix on` 与 `cf2 --crotchfix on` 两帧相同（5f734f9f…/4b01482e…）。
+
+### 试过、放弃
+- 把整个求解区域往后/往上拉（椭球后半 z 方向 ×1.2–2.0、后上方 y ×1.2–1.5，含只限中线 |x|<5–10 cm 的版本）：两个失败动作能到 23–27 mm，
+  但区域一变全区解都会变，glute-max-B、n-seated-ir-drop 各回退 1.2–1.6 mm（>1 mm），放弃。
+
+### 验收（stride 10，与 r1 同一套 crotch.bump 度量）
+- 「官方」= `audit-cf2.mjs --crotchfix r2` 实测（11 个：两个失败动作、变化最大的 5 个、5 个站立对照）；「离线」= 用各动作 r1 审计 JSON 里的
+  V5 骨骼世界位姿离线蒙皮、按 audit 同一公式算（核对：52 个 off 值与 REPORT 全部一致，r1 值 51/52 与官方完全一致、1 个差 0.1 mm 舍入；
+  两个失败动作离线 r2 = 官方 r2）。同一数值出现在多帧时离线取最早一帧，所以个别帧号与官方不同、数值相同。
+- 结果：**52 个全部 <28 mm（最大 26.6，t-lsit-vsit-circles，与 r1 相同）**；**无回退**（r2−r1 最大 +0.1 mm 舍入，阈值 1 mm）；16 个变好，其余不变；
+  站立基线 2.9–3.3 mm 与 r1 相同。
+- analyze.py 复核（官方 11 个）：没有新增 S1/S2；t-seated-straddle-ext 的 S1 crotch-bulge、s-butterfly 的 S2 crotch-bulge 消失。
+- 离线翻面计数（裆部 0.2 m 内相邻面法线夹角 >107°，全帧最坏）：t-seated-straddle-ext 215→214、n-half-split 96→95、s-pigeon 150→141、s-butterfly 66→76（后者特写看不出差别）。
+- 特写（off / r1 / r2，失败帧）：t-seated-straddle-ext f220 侧后视 r1 腰后有一道折棱，r2 变成连续弧线，正面/裆部与 r1 相同（平滑圆鼓，无尖角、无穿模）；
+  s-butterfly f110 背后腰带下缘 r2 略更平顺，正面被鞋挡住、与 r1 无差别。对比图（沙箱）：`/workspace/work/legacy-fix/b3r2/t-seated-straddle-ext_cmp.jpg`、
+  `/workspace/work/legacy-fix/b3r2/s-butterfly_cmp.jpg`。
+
+| # | id | off mm | r1 mm（帧） | r2 mm（帧） | r2−r1 | r2 来源 |
+|---|---|---|---|---|---|---|
+| 1 | t-lsit-vsit-circles | 73.0 | 26.6 (f210) | 26.6 (f90) | +0.0 | 离线 |
+| 2 | s-butterfly | 70.4 | 28.9 (f110) | 22.8 (f100) | -6.1 | 官方 |
+| 3 | t-seated-straddle-ext | 69.8 | 35.2 (f220) | 21.8 (f0) | -13.4 | 官方 |
+| 4 | o-seated-fig4 | 68.4 | 22.7 (f120) | 20.7 (f100) | -2.0 | 官方 |
+| 5 | s-figure4 | 67.0 | 21.4 (f150) | 21.4 (f110) | +0.0 | 离线 |
+| 6 | n-seated-ir-drop | 58.7 | 20.5 (f130) | 20.5 (f0) | +0.0 | 离线 |
+| 7 | t-lsit-tuck | 57.1 | 21.5 (f230) | 21.5 (f0) | +0.0 | 离线 |
+| 8 | n-thomas-test | 50.9 | 13.8 (f210) | 13.3 (f70) | -0.5 | 离线 |
+| 9 | h-chair-dip | 49.7 | 20.0 (f190) | 19.7 (f80) | -0.3 | 离线 |
+| 10 | h-bulgarian | 49.6 | 11.5 (f190) | 11.5 (f60) | +0.0 | 离线 |
+| 11 | h-seated-reachback | 48.9 | 19.8 (f160) | 19.8 (f90) | +0.0 | 离线 |
+| 12 | h-chair-progressive-front-split-native | 46.8 | 14.2 (f230) | 12.3 (f0) | -1.9 | 离线 |
+| 13 | obliques-A | 46.6 | 17.8 (f230) | 17.8 (f0) | +0.0 | 离线 |
+| 14 | hip-abductors-B | 46.2 | 18.5 (f230) | 18.5 (f20) | +0.0 | 离线 |
+| 15 | s-pigeon | 45.2 | 24.0 (f230) | 15.9 (f0) | -8.1 | 官方 |
+| 16 | deltoids-C | 45.1 | 11.6 (f230) | 11.7 (f0) | +0.1 | 离线 |
+| 17 | h-couch-stretch | 44.0 | 12.9 (f230) | 11.6 (f110) | -1.3 | 离线 |
+| 18 | h-half-kneeling-quad-stretch | 43.5 | 11.7 (f230) | 11.0 (f110) | -0.7 | 离线 |
+| 19 | h-kb-swing | 43.4 | 18.2 (f160) | 18.2 (f0) | +0.0 | 离线 |
+| 20 | h-wall-straddle | 43.4 | 18.2 (f230) | 18.2 (f0) | +0.0 | 离线 |
+| 21 | s-9090 | 43.1 | 19.1 (f120) | 19.1 (f110) | +0.0 | 离线 |
+| 22 | h-quad-cars | 43.0 | 17.4 (f200) | 17.4 (f200) | +0.0 | 离线 |
+| 23 | s-kneel-hipflex | 42.8 | 11.7 (f130) | 11.7 (f110) | +0.0 | 离线 |
+| 24 | hamstrings-A | 41.6 | 10.9 (f190) | 10.9 (f60) | +0.0 | 离线 |
+| 25 | w-bird-dog | 41.0 | 15.6 (f130) | 15.6 (f0) | +0.0 | 离线 |
+| 26 | w-fire-hydrant | 41.0 | 15.7 (f220) | 15.7 (f90) | +0.0 | 离线 |
+| 27 | n-half-split | 40.2 | 22.8 (f140) | 16.3 (f70) | -6.5 | 官方 |
+| 28 | w-wall-sit | 39.9 | 16.9 (f190) | 16.9 (f60) | +0.0 | 离线 |
+| 29 | h-chair-step-up | 39.5 | 15.3 (f210) | 15.3 (f210) | +0.0 | 离线 |
+| 30 | h-mountain-climber | 38.5 | 11.8 (f180) | 11.8 (f170) | +0.0 | 离线 |
+| 31 | s-frog | 38.5 | 18.3 (f170) | 18.0 (f110) | -0.3 | 离线 |
+| 32 | w-dead-bug | 38.4 | 15.5 (f230) | 15.5 (f0) | +0.0 | 离线 |
+| 33 | h-russian-twist | 37.9 | 17.3 (f220) | 17.3 (f90) | +0.0 | 离线 |
+| 34 | t-seated-straddle-lifts | 37.9 | 19.7 (f230) | 18.1 (f30) | -1.6 | 离线 |
+| 35 | h-sumo-pry | 37.8 | 17.3 (f210) | 17.3 (f60) | +0.0 | 离线 |
+| 36 | n-straddle-fold | 37.8 | 20.6 (f150) | 19.2 (f80) | -1.4 | 离线 |
+| 37 | h-reverse-lunge | 37.7 | 11.7 (f70) | 11.7 (f60) | +0.0 | 离线 |
+| 38 | h-squat | 37.7 | 16.5 (f200) | 16.5 (f80) | +0.0 | 离线 |
+| 39 | h-adductor-rock | 37.5 | 15.0 (f200) | 15.0 (f60) | +0.0 | 离线 |
+| 40 | hip-flexors-B | 37.5 | 10.5 (f140) | 10.5 (f20) | +0.0 | 离线 |
+| 41 | h-9090-liftoff | 37.2 | 17.2 (f210) | 17.2 (f50) | +0.0 | 离线 |
+| 42 | t-straddle-hold | 36.8 | 21.3 (f230) | 18.0 (f50) | -3.3 | 官方 |
+| 43 | h-goblet-squat | 36.7 | 16.6 (f190) | 16.6 (f60) | +0.0 | 离线 |
+| 44 | h-donkey-kick | 36.6 | 14.0 (f230) | 14.0 (f0) | +0.0 | 离线 |
+| 45 | n-chair-wiper | 36.6 | 15.6 (f210) | 15.6 (f210) | +0.0 | 离线 |
+| 46 | h-band-leg-out | 36.3 | 11.3 (f210) | 9.9 (f30) | -1.4 | 离线 |
+| 47 | hip-abductors-C | 36.3 | 15.4 (f230) | 15.4 (f0) | +0.0 | 离线 |
+| 48 | h-db-row | 35.6 | 15.0 (f230) | 15.0 (f0) | +0.0 | 离线 |
+| 49 | n-wide-fold | 33.9 | 18.2 (f140) | 15.8 (f80) | -2.4 | 离线 |
+| 50 | n-squat-shift | 33.8 | 15.5 (f100) | 15.5 (f100) | +0.0 | 离线 |
+| 51 | glute-max-B | 33.0 | 11.7 (f190) | 11.7 (f50) | +0.0 | 离线 |
+| 52 | n-leg-circles | 32.3 | 14.1 (f190) | 14.1 (f180) | +0.0 | 离线 |
+
+站立基线（裆部鼓包最坏帧 mm）：
+| id | off | r1 | r2 | r2 来源 |
+|---|---|---|---|---|
+| h-calf-raise | 3.3 | 2.9 | 2.9 | 官方 |
+| h-db-curl | 2.7 | 2.9 | 2.9 | 官方 |
+| h-band-pallof | 5.0 | 3.3 | 3.3 | 官方 |
+| h-db-lateral | 2.7 | 2.9 | 2.9 | 官方 |
+| h-bilateral-farmer-hold-native | 3.1 | 2.9 | 2.9 | 官方 |
