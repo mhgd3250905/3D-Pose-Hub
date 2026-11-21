@@ -35,12 +35,13 @@
 - 现在长什么样：前臂撑地，下侧膝和小腿外侧贴垫，两膝约 87° 屈，小腿平放在身后，两脚叠放、脚尖朝后放松，下侧鞋外缘贴垫，上侧鞋压在下侧鞋上；从正/侧/顶/背看脚都不再翻向上方。
 
 ### 3 s-9090 90/90 坐姿换髋
-- 新文件：`drill-anim/specs/s-9090-lfx1.js`、recipe、文字草稿 `catalog/production/legacy-fix-r1/text/s-9090.json`（**未审**）。
+- 新文件：`drill-anim/specs/s-9090-lfx1.js`、recipe、文字 `catalog/production/legacy-fix-r1/text/s-9090.json`（开哥 2026-11-21 16:21 已选换髋版，文字已定稿，`reviewStatus: user-selected-legacy-fix-r1`，见第 2 批 §s-9090 文字）。
 - 动作来源：仓库已有的 `drill-anim/revisions/hark-4080-v1/s-9090-switch/spec.js`（「90/90左右换髋」v1-local，README 记为用户 2026-10-11 确认可用，dab78b5 交付，文件未改）。
   适配：模型档/v2plus 同 s-9090-r7（V5 渲染路径）；12 s 源按 2/3 时间缩放到 s-9090 原时长 8 s（A 停 1.0 s、每半程翻转 1.0 s、B 停 1.33 s）。
   为符合 Flare 文案「上身尽量坐直」：源动作上身后仰 43°、双手撑在身后，改为后仰缩到 0.3 倍（停顿时 13°）、双手离地前平举（a-9090 的「A 松」坐直手型，随躯干动）。腿、脚、骨盆、髋转动、膝路径照源。
 - recipe 的垫子 `output.matProp` 换成源 spec 自带的垫子（中心 0,0，1.5×1.6 m，yaw 0），原 recipe 的垫子是按旧单侧姿态自动算的脚印、对换边后的脚位不再覆盖。镜头块未改。
-- 剩余：S2 `text-hold-moving`——现行 Hub 文字仍是开哥 r2 定的「单侧前倾静态保持」，与重做版不符；已出草稿（换髋、rep_alternate），**用哪一版需开哥选**（HANDOFF 已注明另一种是改文案保留单侧前倾）。
+- ~~剩余：S2 `text-hold-moving`，用哪一版需开哥选~~ → **已定（2026-11-21 16:21）：开哥选换髋版**，文字定稿在 `catalog/production/legacy-fix-r1/text/s-9090.json`（原 `catalog/production/v3-text/s-9090.json` 单侧前倾版保留未改）；
+  按定稿文字生成的修订标准 `tools/legacy-fix-r1/standards/s-9090.json` 下 `text-hold-moving` 消失（数值见第 2 批）。
 - 现在长什么样：坐地 90/90，右小腿横在身前、左小腿朝后，上身坐直双臂前平举；两脚脚跟基本不动，双膝一起抬起翻到另一侧，落成镜像 90/90（左小腿在前），再翻回；膝始终 90° 只做铰链，髌骨朝屈膝方向。
 
 ### 4 adductors-A 哥萨克蹲（第 3 次换思路后修好，待 hark-sk 复核）
@@ -106,3 +107,91 @@
 | deltoids-B | -1.5（左大腿） | 77.7（shinR|thighL，f0） | 0 | 与原版穿地相同（-1.5）；起始仰卧右小腿与左大腿间隙 77.7 mm（原版最小间隙 114.8 为前臂-躯干），无重叠 |
 
 抖动：四个动作的姿态都由连续曲线插值（h-short-side-plank 为静态保持），无逐帧求解切换，contact drift 无计划窗口（旧动作不在 flare2 actions.json），未单独报。
+
+
+## 第 2 批（2026-11-21）· V5 裆部鼓包模型级修复 crotchfix-v5-r1
+
+HANDOFF §3/§5 的 **M 模型级**问题（crotch-bulge），不按姿势逐个改，在 V5 皮肤层统一修。只增新文件；原 glb、`tools/v5/render-masters-v5.mjs`、`v5-hub.js`、所有 recipe/spec 一字未改。
+
+### 原因
+`coach-v3r3-wristfix.glb` 的短裤/腿网格 `CoachV3r3_3` 裆部蒙皮权重是硬分界且左右不对称（会阴中线相邻顶点 L/R 大腿权重在 0.06↔0.85 间跳），前裆/会阴一大块 100% 跟骨盆。
+髋深屈或大外展时，这些顶点被单侧大腿或骨盆拖出，相对周围 4 cm 形成 33–70 mm 的局部鼓包（`audit.mjs` 的 crotch.bump；阈值 28/32 mm，`analyze.py` CROTCH_BUMP）。
+
+### 方案（v2，采用）
+- 只换权重，不动几何、不加骨骼、不做逐帧计算。以裆点（骨盆系 (0,-0.16,0)）为心、半径 **0.18 m** 的球内，对 `pelvis / spineLower / leftThigh / rightThigh` 四根骨的权重做**双调和（biharmonic）插值**：
+  球外顶点权重逐个不变，球外两圈作为边界固定（C1 连续，不出棱）；球内不再钉中缝、不再钉大腿内侧，自由求解。离线解出，结果写成补丁。
+- 文件：`tools/v5/runtime/crotchfix-v5-r1.js`（`applyCrotchFixV5({root,patch})`，在 installV5 之后、第一次 pose 前调用）+ `tools/v5/runtime/model/crotchfix-v5-r1.weights.json`
+  （7193 个顶点，0..255 整数、每顶点和 = 255，与 glb 的 Uint8 归一化权重同精度；sha256 `9a130955…7061`）。安全检查：网格名、顶点数 39501、骨骼表、补丁前原权重校验和都必须与补丁记录一致，否则抛错，换模型不会误打。
+- **开关**：渲染器 `tools/v5/render-masters-v5-cf1.mjs --crotchfix on|off`（= `render-masters-v5.mjs` 的拷贝 + 这一个开关，manifest 记 `v5.crotchFix` 与补丁 sha256）；审计 `tools/legacy-fix-r1/audit-cf1.mjs --crotchfix on|off`。
+  **默认 off，与原版逐字节一致**：t-tuck-lsit-hold f180 360 px 母帧，`render-masters-v5.mjs` 与 `-cf1 --crotchfix off` 的全部 PNG 逐字节相同；`--crotchfix on` 只在裆部一小块（26×9 px 包围盒）不同。
+  现有流水线（produce-v5、flare2 produce、第 1 批 produce.mjs）都不读这几个文件，行为不变；只有 `tools/legacy-fix-r1/produce-b2.mjs` 打开它。
+
+### 试过、放弃的方案
+| 方案 | 结果 | 放弃原因 |
+|---|---|---|
+| v1：同为双调和 R 0.18，另把会阴中缝钉成「骨盆 + 两腿各半」、大腿内侧钉成 100% 单腿（7383 顶点） | s-9090 鼓包 59.9 → 18.9 mm（比 v2 低 3.5 mm） | 裆部特写里中线出现一道硬折缝（钉死的约束本身就是分界），看图比原版还显眼 |
+| 加大区域：椭球 R 0.24（心下移 4 cm）/ R 0.21（心下移 3 cm） | 离线代理鼓包再低 1–3 mm（t-tuck 27→24/25） | 离线折面计数大幅上升（h-chair-dip 39→138/64、h-squat 58→122/85、s-9090 200→273/256），大腿根前侧出现褶皱；半径越大越伤周边 |
+| 按姿势逐个改（抬腿角/外展角） | — | 鼓包在 25+ 个动作里普遍存在，是模型权重问题；HANDOFF 规定不按姿势改 |
+
+R 0.20 未试：全量 32 个动作在 R 0.18 下全部 < 28 mm、无新增 S1/S2，按约定不再加大半径（加大只会增加折面）。
+
+### 验收（全量 32 个审计，stride 10；修前 = `audit.mjs` 原版，修后 = `audit-cf1.mjs --crotchfix on`，同一 recipe、同一 analyze.py）
+审计键带 `@lfx` 的是第 1 批修好的 legacy-fix-r1 recipe（s-9090/adductors-A/h-short-side-plank 用修订标准），不带的是现行 remaining219 / flare2 recipe（原标准）。
+组：第1批 lfx1 / 校准（开哥校准用的动作）/ M 名单（审计报 crotch-bulge 的动作）/ 站立对照。
+
+| # | 动作（审计键） | 组 | 鼓包 修前→修后 mm（最坏帧） | S1 修前→修后 | S2 修前→修后 | 消失的条目 | 新增 |
+|---|---|---|---|---|---|---|---|
+| 1 | s-9090@lfx | 第1批 lfx1 | 59.9 (f40) → 22.4 (f80) | 1→0 | 0→0 | crotch-bulge:S1 | 无 |
+| 2 | h-squat@lfx | 第1批 lfx1 | 43.7 (f180) → 18.9 (f190) | 1→0 | 0→0 | crotch-bulge:S1 | 无 |
+| 3 | adductors-A@lfx | 第1批 lfx1 | 40.9 (f180) → 12.6 (f70) | 1→0 | 0→0 | crotch-bulge:S1 | 无 |
+| 4 | deltoids-B@lfx | 第1批 lfx1 | 34.0 (f160) → 15.4 (f160) | 1→0 | 0→0 | crotch-bulge:S1 | 无 |
+| 5 | h-short-side-plank@lfx | 第1批 lfx1 | 9.2 (f230) → 5.6 (f230) | 0→0 | 0→0 | — | 无 |
+| 6 | s-9090 | 校准 | 43.1 (f120) → 19.1 (f120) | 3→2 | 2→2 | crotch-bulge:S1 | 无 |
+| 7 | h-squat | 校准 | 37.7 (f170) → 16.5 (f200) | 6→5 | 0→0 | crotch-bulge:S1 | 无 |
+| 8 | adductors-A | 校准 | 28.8 (f180) → 12.4 (f70) | 1→1 | 2→1 | crotch-bulge:S2 | 无 |
+| 9 | h-short-side-plank | 校准 | 9.3 (f230) → 5.6 (f230) | 4→4 | 0→0 | — | 无 |
+| 10 | t-wide-side-squat-shift | 校准+M | 41.6 (f180) → 13.9 (f70) | 1→0 | 0→0 | crotch-bulge:S1 | 无 |
+| 11 | t-forearm-side-plank | 校准 | 6.9 (f230) → 4.0 (f230) | 0→0 | 0→0 | — | 无 |
+| 12 | t-side-lying-straight-leg-abduction | 校准 | 7.5 (f180) → 4.0 (f180) | 0→0 | 0→0 | — | 无 |
+| 13 | t-supine-straddle-open-close | 校准+M | 41.6 (f230) → 15.7 (f230) | 1→0 | 0→0 | crotch-bulge:S1 | 无 |
+| 14 | t-tuck-lsit-hold | 校准 | 70.4 (f180) → 27.4 (f180) | 0→0 | 1→0 | crotch-bulge:S2 | 无 |
+| 15 | h-chair-dip | M 名单 | 49.7 (f170) → 20.0 (f190) | 1→0 | 1→1 | crotch-bulge:S1 | 无 |
+| 16 | h-bulgarian | M 名单 | 49.6 (f190) → 11.5 (f190) | 1→0 | 0→0 | crotch-bulge:S1 | 无 |
+| 17 | h-chair-progressive-front-split-native | M 名单 | 46.8 (f140) → 14.2 (f230) | 1→0 | 1→1 | crotch-bulge:S1 | 无 |
+| 18 | deltoids-C | M 名单 | 45.1 (f230) → 11.6 (f230) | 1→0 | 1→1 | crotch-bulge:S1 | 无 |
+| 19 | h-couch-stretch | M 名单 | 44.0 (f120) → 12.9 (f230) | 1→0 | 2→2 | crotch-bulge:S1 | 无 |
+| 20 | h-chair-step-up | M 名单 | 39.5 (f150) → 15.3 (f210) | 1→0 | 0→0 | crotch-bulge:S1 | 无 |
+| 21 | h-adductor-rock | M 名单 | 37.5 (f200) → 15.0 (f200) | 1→0 | 0→0 | crotch-bulge:S1 | 无 |
+| 22 | h-9090-liftoff | M 名单 | 37.2 (f230) → 17.2 (f210) | 3→2 | 1→1 | crotch-bulge:S1 | 无 |
+| 23 | h-goblet-squat | M 名单 | 36.7 (f190) → 16.6 (f190) | 1→0 | 0→0 | crotch-bulge:S1 | 无 |
+| 24 | h-donkey-kick | M 名单 | 36.6 (f190) → 14.0 (f230) | 1→0 | 0→0 | crotch-bulge:S1 | 无 |
+| 25 | h-band-leg-out | M 名单 | 36.3 (f230) → 11.3 (f210) | 3→2 | 2→2 | crotch-bulge:S1 | 无 |
+| 26 | h-db-row | M 名单 | 35.6 (f230) → 15.0 (f230) | 1→0 | 0→0 | crotch-bulge:S1 | 无 |
+| 27 | glute-max-B | M 名单 | 33.0 (f190) → 11.7 (f190) | 1→0 | 0→0 | crotch-bulge:S1 | 无 |
+| 28 | h-calf-raise | 站立对照 | 3.2 (f230) → 2.9 (f230) | 0→0 | 0→0 | — | 无 |
+| 29 | h-db-curl | 站立对照 | 2.7 (f230) → 2.9 (f230) | 0→0 | 0→0 | — | 无 |
+| 30 | h-band-pallof | 站立对照 | 5.0 (f0) → 3.3 (f0) | 0→0 | 0→0 | — | 无 |
+| 31 | h-db-lateral | 站立对照 | 2.7 (f230) → 2.9 (f230) | 0→0 | 0→0 | — | 无 |
+| 32 | h-bilateral-farmer-hold-native | 站立对照 | 3.1 (f230) → 2.9 (f230) | 0→0 | 0→0 | — | 无 |
+
+- **鼓包**：非站立 27 个最坏 70.4 → **27.4 mm**（t-tuck-lsit-hold，阈值 28，余 0.6 mm），总和下降 62%；全部 < 28 mm。
+- **S1/S2**：32 个动作合计 S1 37 → 16、S2 13 → 11；消失的**只有** crotch-bulge（21 条 S1 + 2 条 S2），**没有任何新增条目**。剩下的 S1/S2 全是修前就有的非裆部问题（原 recipe 的膝/髌骨/拧转等，第 1 批已用 lfx1 修的那几个在 `@lfx` 行里为 0）。
+- **站立基线**（要求不变，3–4 mm）：h-calf-raise 3.2→2.9、h-db-curl 2.7→2.9、h-band-pallof 5.0→3.3、h-db-lateral 2.7→2.9、h-bilateral-farmer-hold-native 3.1→2.9 mm。站立时补丁不改变外形（±0.3 mm 为采样噪声），h-band-pallof 的 5.0 原本就偏高、修后回到基线。
+- **看图**：32 个动作修后 25/50/75% 裆部特写（`camcr`）拼成缩略图看过，无撕裂、无尖刺、无新折缝。重点三个对比图（沙箱，上修前 / 下修后，英文标签）：
+  - `/workspace/work/legacy-fix/b2/b2_cmp_t-tuck-lsit-hold.jpg`：修前从背后看臀下挂一个尖「水滴」，修后变成圆钝的小弧；App 机位下该处被腿遮住。
+  - `/workspace/work/legacy-fix/b2/b2_cmp_s-9090.jpg`：修前 f80 正面特写裆下戳出一片尖角、f40 中线有缺口；修后平顺。
+  - `/workspace/work/legacy-fix/b2/b2_cmp_h-squat.jpg`：修前正面特写裆中间吊一个带凹口的小包；修后是干净的 V 形。
+- **风险点**：① t-tuck-lsit-hold 余量只有 0.6 mm，读数随采样有 ±1–2 mm 波动（第 1 批 adductors-A 见过 stride 3/10 差 13 mm 的情况），加密采样可能略超 28；但该处在 App 机位被腿挡住、背面看已是圆弧。
+  ② s-9090 离线折面计数 130 → 200（区域内三角形翻折数，代理指标），特写图里看不出折痕，样片里请留意换髋到底时的裆部。③ 只修了 `CoachV3r3_3`（短裤/腿网格），其他网格未动。
+
+### s-9090 文字（开哥 16:21 选换髋版，已定稿）
+- 修前（`catalog/production/v3-text/s-9090.json`，原标准）：名称「90/90 坐姿拉胯」，静态保持（kind hold）。对换髋版动画审计：S2 `text-hold-moving`「文字是静态保持，视频里找不到静止段（最稳的 30% 时长内仍变化 20 cm）」。
+- 修后（`catalog/production/legacy-fix-r1/text/s-9090.json`，修订标准 `tools/legacy-fix-r1/standards/s-9090.json`）：**`text-hold-moving` 消失**，修后 S1 0 / S2 0（裆部修复打开时）。
+- 新文字要点：名称「90/90 坐姿换髋 / 90/90 Hip Switch」；`training.kind = rep_alternate`、`perSide alternate`、`repUnit left+right`，8 s 一个往返（右前停约 1 s → 双膝翻到左前约 2.2 s → 停约 1.4 s → 翻回 2.2 s → 停 1.2 s），默认 2 组 × 6 次、组间 15 s；
+  步骤/阶段：右腿在前 90/90 → 双膝翻到另一侧 → 左腿在前 90/90；要点：脚跟压稳双膝一起翻、上身坐直双手前伸别后靠、两边都落成 90/90、膝跟着髋转别硬拧；
+  常见错误新增「翻得太快，落地没停稳就往回翻」；语音引导（script-only）：第 1 下后「脚跟压稳，双膝一起翻过去」、第 3 下「上身坐直，双手往前伸，别往后靠」、第 4 下「每边都落稳成 90/90 再翻回去」、第 5 下共享词条 `p.last_rep`，开始前 `p.right_first`。
+  `reviewStatus: user-selected-legacy-fix-r1`，`decision` 字段记开哥 2026-11-21 选定；原 v3-text 文件未改。
+
+### 样片
+`tools/legacy-fix-r1/produce-b2.mjs`（第 1 批 produce.mjs 的拷贝，母帧换成 `render-masters-v5-cf1.mjs --crotchfix on`），7 个：t-tuck-lsit-hold、s-9090、h-chair-dip、h-bulgarian、h-squat、t-supine-straddle-open-close（修前鼓包最大的 t-tuck/s-9090/h-chair-dip/h-bulgarian + 开哥校准过的 h-squat/t-supine）+ h-calf-raise（站立对照）。
+QA 孤立分支 `qa/legacy-fix-r1-b2`。任务卡 `tools/legacy-fix-r1/SAMPLE-CARD-b2-draft.md`。只出样片，不上传、不切指针、不合并。
