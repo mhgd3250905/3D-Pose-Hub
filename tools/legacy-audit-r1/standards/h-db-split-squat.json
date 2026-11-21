@@ -1,0 +1,44 @@
+{
+ "id": "h-db-split-squat",
+ "names": {
+  "recipe": "双哑铃原地分腿蹲",
+  "text": "双哑铃原地分腿蹲",
+  "catalog": null
+ },
+ "position": "standing",
+ "unilateral": true,
+ "startingSide": "left",
+ "kind": "rep_updown",
+ "perSide": "each-side-separately",
+ "repUnit": null,
+ "textSource": "catalog/production/v3-text/h-db-split-squat.json",
+ "recipe": "catalog/production/remaining219-r1/recipes/h-db-split-squat.json",
+ "spec": "drill-anim/specs/h-db-split-squat-kn1.js",
+ "basis": [
+  "换边期望：无（单侧动作由 App 镜像，或双侧对称）",
+  "家族：站姿下蹲/弓步（负重腿全脚掌踩实；膝对脚尖由通用检查覆盖）"
+ ],
+ "checks": [
+  {
+   "code": "squat-heel-up",
+   "kind": "range",
+   "severity": 2,
+   "cond": "min(m['kneeL'], m['kneeR']) < 120 and m['footMinL'] < 25 and m['footMinR'] < 25",
+   "metric": "max(m['soleHeelL'] if m['kneeL'] < 120 else 0, m['soleHeelR'] if m['kneeR'] < 120 else 0)",
+   "hi": 15,
+   "msg": "下蹲时屈膝负重腿脚后跟离地 {v:.0f} mm",
+   "basis": "深蹲/分腿蹲常识：全脚掌踩实（提踵类除外）"
+  }
+ ],
+ "expectSwitch": null,
+ "generic": [
+  "膝朝向/髌骨侧拧（thighFace/shinFace ≤40°）",
+  "脚尖 vs 膝朝向（footVsKnee ≤60°，±180=脚反）",
+  "膝铰链轴偏离（≤25°）",
+  "负重屈膝腿膝 vs 脚尖（-15°..35°）",
+  "肘扭转（≤35°）",
+  "穿地（≤-8 mm）/站定脚悬空（>8 mm）",
+  "重心投影在支撑面内（≤4 cm，连续帧）",
+  "裆部区域局部凸包（bump，阈值见 REPORT）"
+ ]
+}

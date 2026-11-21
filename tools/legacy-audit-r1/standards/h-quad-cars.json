@@ -1,0 +1,32 @@
+{
+ "id": "h-quad-cars",
+ "names": {
+  "recipe": "四足髋关节画圈",
+  "text": "跪撑抬膝画圈",
+  "catalog": "四足髋关节画圈"
+ },
+ "position": "quadruped",
+ "unilateral": true,
+ "startingSide": "right",
+ "kind": "rep_cycle",
+ "perSide": "each-side-separately",
+ "repUnit": null,
+ "textSource": "catalog/production/v3-text/h-quad-cars.json",
+ "recipe": "catalog/production/remaining219-r1/recipes/h-quad-cars.json",
+ "spec": "drill-anim/specs/h-quad-cars-gc1.js",
+ "basis": [
+  "换边期望：无（单侧动作由 App 镜像，或双侧对称）"
+ ],
+ "checks": [],
+ "expectSwitch": null,
+ "generic": [
+  "膝朝向/髌骨侧拧（thighFace/shinFace ≤40°）",
+  "脚尖 vs 膝朝向（footVsKnee ≤60°，±180=脚反）",
+  "膝铰链轴偏离（≤25°）",
+  "负重屈膝腿膝 vs 脚尖（-15°..35°）",
+  "肘扭转（≤35°）",
+  "穿地（≤-8 mm）/站定脚悬空（>8 mm）",
+  "重心投影在支撑面内（≤4 cm，连续帧）",
+  "裆部区域局部凸包（bump，阈值见 REPORT）"
+ ]
+}

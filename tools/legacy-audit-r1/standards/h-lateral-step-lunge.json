@@ -1,0 +1,78 @@
+{
+ "id": "h-lateral-step-lunge",
+ "names": {
+  "recipe": "侧跨步弓步蹲",
+  "text": "侧跨步弓步蹲",
+  "catalog": null
+ },
+ "position": "standing",
+ "unilateral": true,
+ "startingSide": "right",
+ "kind": "rep_alternate",
+ "perSide": "alternate",
+ "repUnit": "left+right",
+ "textSource": "catalog/production/v3-text/h-lateral-step-lunge.json",
+ "recipe": "catalog/production/remaining219-r1/recipes/h-lateral-step-lunge.json",
+ "spec": "drill-anim/specs/h-lateral-step-lunge-sc1-et1-kn2.js",
+ "basis": [
+  "换边期望：训练参数 perSide=alternate repUnit=left+right（每下左右各一次）",
+  "家族：站姿下蹲/弓步（负重腿全脚掌踩实；膝对脚尖由通用检查覆盖）",
+  "含手写逐动作规则（MANUAL）"
+ ],
+ "checks": [
+  {
+   "code": "squat-heel-up",
+   "kind": "range",
+   "severity": 2,
+   "cond": "min(m['kneeL'], m['kneeR']) < 120 and m['footMinL'] < 25 and m['footMinR'] < 25",
+   "metric": "max(m['soleHeelL'] if m['kneeL'] < 120 else 0, m['soleHeelR'] if m['kneeR'] < 120 else 0)",
+   "hi": 15,
+   "msg": "下蹲时屈膝负重腿脚后跟离地 {v:.0f} mm",
+   "basis": "深蹲/分腿蹲常识：全脚掌踩实（提踵类除外）"
+  },
+  {
+   "code": "sidesquat-com-off-foot",
+   "kind": "range",
+   "severity": 1,
+   "cond": "min(m['kneeL'], m['kneeR']) < 110 and max(m['kneeL'], m['kneeR']) > 150",
+   "metric": "(m['comVsFootL'] if m['kneeL'] < m['kneeR'] else m['comVsFootR'])",
+   "hi": 0.08,
+   "msg": "侧蹲到底时重心没落在下蹲那只脚上（重心投影偏出该脚掌 {v:.2f} m）",
+   "basis": "哥萨克蹲/侧弓步：重心坐到屈膝腿，投影落在该脚中后部（NSCA 动作要领；常识：另一条腿只是伸直点地）"
+  },
+  {
+   "code": "sidesquat-heel-up",
+   "kind": "range",
+   "severity": 2,
+   "cond": "min(m['kneeL'], m['kneeR']) < 110 and max(m['kneeL'], m['kneeR']) > 150",
+   "metric": "(m['soleHeelL'] if m['kneeL'] < m['kneeR'] else m['soleHeelR'])",
+   "hi": 12,
+   "msg": "侧蹲到底时下蹲腿脚后跟离地 {v:.0f} mm（文字要求后跟踩实）",
+   "basis": "文字「蹲的那只脚后跟踩实」/常识"
+  },
+  {
+   "code": "sidesquat-knee-toe",
+   "kind": "range",
+   "severity": 1,
+   "cond": "min(m['kneeL'], m['kneeR']) < 110 and max(m['kneeL'], m['kneeR']) > 150",
+   "metric": "(m['kneeVsToeL'] if m['kneeL'] < m['kneeR'] else m['kneeVsToeR'])",
+   "lo": -12,
+   "hi": 15,
+   "msg": "侧蹲到底时下蹲腿膝盖与脚尖方向偏差 {v:.0f}°（负=膝内扣；文字要求膝盖对着脚尖）",
+   "basis": "文字「膝盖对着脚尖」"
+  }
+ ],
+ "expectSwitch": true,
+ "switchBasis": "训练参数 perSide=alternate repUnit=left+right（每下左右各一次）",
+ "switchStrong": false,
+ "generic": [
+  "膝朝向/髌骨侧拧（thighFace/shinFace ≤40°）",
+  "脚尖 vs 膝朝向（footVsKnee ≤60°，±180=脚反）",
+  "膝铰链轴偏离（≤25°）",
+  "负重屈膝腿膝 vs 脚尖（-15°..35°）",
+  "肘扭转（≤35°）",
+  "穿地（≤-8 mm）/站定脚悬空（>8 mm）",
+  "重心投影在支撑面内（≤4 cm，连续帧）",
+  "裆部区域局部凸包（bump，阈值见 REPORT）"
+ ]
+}

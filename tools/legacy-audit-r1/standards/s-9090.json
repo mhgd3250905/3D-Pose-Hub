@@ -1,0 +1,46 @@
+{
+ "id": "s-9090",
+ "names": {
+  "recipe": "90/90 坐姿换髋",
+  "text": "90/90 坐姿拉胯",
+  "catalog": "90/90 坐姿换髋"
+ },
+ "position": "seated",
+ "unilateral": true,
+ "startingSide": "right",
+ "kind": "hold",
+ "perSide": "each-side-separately",
+ "repUnit": null,
+ "textSource": "catalog/production/v3-text/s-9090.json",
+ "recipe": "catalog/production/remaining219-r1/recipes/s-9090.json",
+ "spec": "drill-anim/specs/s-9090-r7.js",
+ "basis": [
+  "换边期望：动作名含换髋/换边：{'recipe': '90/90 坐姿换髋', 'text': '90/90 坐姿拉胯', 'catalog': '90/90 坐姿换髋'}",
+  "含手写逐动作规则（MANUAL）"
+ ],
+ "checks": [
+  {
+   "code": "9090-torso-upright",
+   "kind": "range",
+   "severity": 2,
+   "metric": "m['spineTotal']",
+   "hi": 35,
+   "msg": "换髋版要求上身尽量坐直，实际上身相对骨盆前屈 {v:.0f}°",
+   "basis": "Flare 文案「上身尽量坐直」"
+  }
+ ],
+ "expectSwitch": true,
+ "switchStrong": true,
+ "switchBasis": "动作名「90/90 坐姿换髋」+ Flare 热身文案「脚跟压稳，双膝翻到另一侧，上身尽量坐直」（左右换髋）；Hub r3 文字已改成单侧前倾，名称仍是换髋",
+ "notes": "开哥校准缺陷 2（文案与动作不符）+ 3（裆部凸起）",
+ "generic": [
+  "膝朝向/髌骨侧拧（thighFace/shinFace ≤40°）",
+  "脚尖 vs 膝朝向（footVsKnee ≤60°，±180=脚反）",
+  "膝铰链轴偏离（≤25°）",
+  "负重屈膝腿膝 vs 脚尖（-15°..35°）",
+  "肘扭转（≤35°）",
+  "穿地（≤-8 mm）/站定脚悬空（>8 mm）",
+  "重心投影在支撑面内（≤4 cm，连续帧）",
+  "裆部区域局部凸包（bump，阈值见 REPORT）"
+ ]
+}

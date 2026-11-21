@@ -1,0 +1,32 @@
+{
+ "id": "h-crossbody",
+ "names": {
+  "recipe": "交叉臂肩后侧拉伸",
+  "text": "交叉臂肩后侧拉伸",
+  "catalog": null
+ },
+ "position": "standing",
+ "unilateral": true,
+ "startingSide": "right",
+ "kind": "hold",
+ "perSide": "each-side-separately",
+ "repUnit": null,
+ "textSource": "catalog/production/v3-text/h-crossbody.json",
+ "recipe": "catalog/production/remaining32-r4/groups/home/h-crossbody.json",
+ "spec": "drill-anim/specs/h-crossbody-r10.js",
+ "basis": [
+  "换边期望：无（单侧动作由 App 镜像，或双侧对称）"
+ ],
+ "checks": [],
+ "expectSwitch": null,
+ "generic": [
+  "膝朝向/髌骨侧拧（thighFace/shinFace ≤40°）",
+  "脚尖 vs 膝朝向（footVsKnee ≤60°，±180=脚反）",
+  "膝铰链轴偏离（≤25°）",
+  "负重屈膝腿膝 vs 脚尖（-15°..35°）",
+  "肘扭转（≤35°）",
+  "穿地（≤-8 mm）/站定脚悬空（>8 mm）",
+  "重心投影在支撑面内（≤4 cm，连续帧）",
+  "裆部区域局部凸包（bump，阈值见 REPORT）"
+ ]
+}

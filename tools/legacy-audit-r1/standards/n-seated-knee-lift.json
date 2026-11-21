@@ -1,0 +1,34 @@
+{
+ "id": "n-seated-knee-lift",
+ "names": {
+  "recipe": "坐姿抬膝悬停",
+  "text": "坐姿抬膝悬停",
+  "catalog": "坐姿抬膝悬停"
+ },
+ "position": "seated",
+ "unilateral": true,
+ "startingSide": "right",
+ "kind": "rep_alternate",
+ "perSide": "alternate",
+ "repUnit": "left+right",
+ "textSource": "catalog/production/v3-text/n-seated-knee-lift.json",
+ "recipe": "catalog/production/remaining219-r1/recipes/n-seated-knee-lift.json",
+ "spec": "drill-anim/specs/n-seated-knee-lift-et1.js",
+ "basis": [
+  "换边期望：训练参数 perSide=alternate repUnit=left+right（每下左右各一次）"
+ ],
+ "checks": [],
+ "expectSwitch": true,
+ "switchBasis": "训练参数 perSide=alternate repUnit=left+right（每下左右各一次）",
+ "switchStrong": false,
+ "generic": [
+  "膝朝向/髌骨侧拧（thighFace/shinFace ≤40°）",
+  "脚尖 vs 膝朝向（footVsKnee ≤60°，±180=脚反）",
+  "膝铰链轴偏离（≤25°）",
+  "负重屈膝腿膝 vs 脚尖（-15°..35°）",
+  "肘扭转（≤35°）",
+  "穿地（≤-8 mm）/站定脚悬空（>8 mm）",
+  "重心投影在支撑面内（≤4 cm，连续帧）",
+  "裆部区域局部凸包（bump，阈值见 REPORT）"
+ ]
+}
