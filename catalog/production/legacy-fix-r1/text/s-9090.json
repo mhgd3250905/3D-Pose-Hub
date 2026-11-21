@@ -1,25 +1,200 @@
 {
  "format": "pose-hub-action-text@1",
  "id": "s-9090",
- "reviewStatus": "draft-legacy-fix-r1-unreviewed",
- "draftNote": "legacy-fix r1 草稿（Hark-QUA 2026-11-21，未审）：配合 drill-anim/specs/s-9090-lfx1.js（左右换髋往返）。原 Hub 文字 catalog/production/v3-text/s-9090.json（单侧前倾静态保持，开哥 r2 决定）未改。用哪一版（换髋重做 / 保留单侧前倾改名）需开哥选。",
- "sources": ["drill-anim/specs/s-9090-lfx1.js"],
- "name": {"zh": "90/90 坐姿换髋", "en": "90/90 Hip Switch"},
- "purpose": {"zh": "活动两侧髋关节的内旋和外旋", "en": "Moves both hips through internal and external rotation."},
+ "reviewStatus": "user-selected-legacy-fix-r1",
+ "sources": [
+  "drill-anim/specs/s-9090-lfx1.js"
+ ],
+ "name": {
+  "zh": "90/90 坐姿换髋",
+  "en": "90/90 Hip Switch"
+ },
+ "purpose": {
+  "zh": "活动两侧髋关节的内旋和外旋",
+  "en": "Moves both hips through internal and external rotation."
+ },
  "cues": [
-  {"id": "cue1", "primary": true, "text": {"zh": "脚跟压稳，双膝一起翻到另一侧", "en": "Heels planted, turn both knees over to the other side"}},
-  {"id": "cue2", "primary": false, "text": {"zh": "上身尽量坐直，别往后靠", "en": "Sit as tall as you can, don't lean back"}},
-  {"id": "cue3", "primary": false, "text": {"zh": "两边都落成 90/90：前腿小腿横在身前，后腿小腿朝后", "en": "Land in 90/90 each side: front shin across, back shin pointing back"}},
-  {"id": "cue4", "primary": false, "text": {"zh": "膝盖跟着髋转，别硬拧膝盖", "en": "Let the hips turn the knees; don't twist at the knee"}}
+  {
+   "id": "cue1",
+   "primary": true,
+   "text": {
+    "zh": "脚跟压稳，双膝一起翻到另一侧",
+    "en": "Heels planted, turn both knees over to the other side"
+   }
+  },
+  {
+   "id": "cue2",
+   "primary": false,
+   "text": {
+    "zh": "上身尽量坐直，双手往前伸，别往后靠",
+    "en": "Sit as tall as you can, arms reaching forward; don't lean back"
+   }
+  },
+  {
+   "id": "cue3",
+   "primary": false,
+   "text": {
+    "zh": "两边都落成 90/90：前腿小腿横在身前，后腿小腿朝后",
+    "en": "Land in 90/90 each side: front shin across, back shin pointing back"
+   }
+  },
+  {
+   "id": "cue4",
+   "primary": false,
+   "text": {
+    "zh": "膝盖跟着髋转，别硬拧膝盖",
+    "en": "Let the hips turn the knees; don't twist at the knee"
+   }
+  }
  ],
  "commonErrors": [
-  {"zh": "双手撑在身后往后躺", "en": "Leaning back on your hands"},
-  {"zh": "脚在地上来回挪", "en": "Feet sliding around"}
+  {
+   "zh": "双手撑在身后往后躺",
+   "en": "Leaning back on your hands"
+  },
+  {
+   "zh": "脚在地上来回挪",
+   "en": "Feet sliding around"
+  },
+  {
+   "zh": "翻得太快，落地没停稳就往回翻",
+   "en": "Rushing the switch without settling into each side"
+  }
  ],
- "cautions": [{"zh": "膝盖疼就缩小翻转幅度或手撑在身后辅助，还疼就停", "en": "If your knees hurt, turn less or put your hands behind you. Stop if it still hurts."}],
- "tags": {"category": "mobility", "activeMuscles": ["glutes"], "synergistMuscles": ["abductors", "adductors"], "equipment": ["mat"], "position": "seated", "difficulty": 2},
+ "cautions": [
+  {
+   "zh": "膝盖疼就缩小翻转幅度或手撑在身后辅助，还疼就停",
+   "en": "If your knees hurt, turn less or put your hands behind you. Stop if it still hurts."
+  }
+ ],
+ "tags": {
+  "category": "mobility",
+  "activeMuscles": [
+   "glutes"
+  ],
+  "synergistMuscles": [
+   "abductors",
+   "adductors"
+  ],
+  "equipment": [
+   "mat"
+  ],
+  "position": "seated",
+  "difficulty": 2
+ },
  "unilateral": false,
- "defaultDose": {"mode": "reps", "sets": 2, "reps": 6, "restSeconds": 15},
- "phases": {"start": {"zh": "右腿在前 90/90", "en": "90/90, right shin in front"}, "peak": {"zh": "双膝翻到另一侧", "en": "Knees turn over"}, "end": {"zh": "左腿在前 90/90", "en": "90/90, left shin in front"}},
- "training": {"kind": "rep_alternate", "perSide": "alternate", "repUnit": "left+right", "source": "legacy-fix-r1 draft (Flare 热身文案：脚跟压稳，双膝翻到另一侧，上身尽量坐直)"}
+ "defaultDose": {
+  "mode": "reps",
+  "sets": 2,
+  "reps": 6,
+  "restSeconds": 15
+ },
+ "phases": {
+  "start": {
+   "zh": "右腿在前 90/90",
+   "en": "90/90, right shin in front"
+  },
+  "peak": {
+   "zh": "双膝翻到另一侧",
+   "en": "Knees turn over"
+  },
+  "end": {
+   "zh": "左腿在前 90/90",
+   "en": "90/90, left shin in front"
+  }
+ },
+ "training": {
+  "kind": "rep_alternate",
+  "leadSeconds": 1,
+  "phases": [
+   {
+    "id": "hold",
+    "seconds": 1.0
+   },
+   {
+    "id": "go",
+    "seconds": 2.2
+   },
+   {
+    "id": "hold",
+    "seconds": 1.4
+   },
+   {
+    "id": "back",
+    "seconds": 2.2
+   },
+   {
+    "id": "hold",
+    "seconds": 1.2
+   }
+  ],
+  "perSide": "alternate",
+  "repUnit": "left+right",
+  "source": "legacy-fix-r1 s-9090-lfx1 动画节奏（8 s 一个往返：右前停约 1 s → 双膝翻到左前约 2 s → 停约 1.5 s → 翻回右前约 2 s → 停）；Flare 热身文案：脚跟压稳，双膝翻到另一侧，上身尽量坐直"
+ },
+ "decision": "开哥 2026-11-21 选定左右换髋重做版（drill-anim/specs/s-9090-lfx1.js）作为 s-9090 的 Hub 动作与文字；原 catalog/production/v3-text/s-9090.json（单侧前倾静态保持）保留未改，本文件为替代版本。",
+ "voiceGuide": {
+  "format": "pose-hub-voice-guide@1",
+  "status": "script-only",
+  "mode": "reps",
+  "speechRate": {
+   "zhCharsPerSecond": 4,
+   "enWordsPerSecond": 2.5
+  },
+  "sharedVocabulary": "catalog/voice-v2/script.json#common",
+  "repSeconds": 8.0,
+  "repUnit": "left+right",
+  "phaseCues": "none",
+  "count": {
+   "key": "n.{rep}",
+   "at": "rep-end"
+  },
+  "reminders": [
+   {
+    "afterRep": 1,
+    "role": "posture",
+    "zh": "脚跟压稳，双膝一起翻过去",
+    "en": "Heels planted, both knees turn over together",
+    "from": [
+     "cue1"
+    ]
+   },
+   {
+    "afterRep": 3,
+    "role": "halfway",
+    "zh": "上身坐直，双手往前伸，别往后靠",
+    "en": "Sit tall, arms forward, don't lean back",
+    "from": [
+     "cue2",
+     "commonErrors[0]"
+    ]
+   },
+   {
+    "afterRep": 4,
+    "role": "form",
+    "zh": "每边都落稳成 90/90 再翻回去",
+    "en": "Settle into 90/90 on each side before you switch back",
+    "from": [
+     "cue3",
+     "commonErrors[2]"
+    ]
+   },
+   {
+    "afterRep": 5,
+    "key": "p.last_rep"
+   }
+  ],
+  "before": [
+   "p.right_first"
+  ],
+  "afterSet": {
+   "moreSets": [
+    "p.rest",
+    "sec.15"
+   ],
+   "allDone": [
+    "p.nice"
+   ]
+  }
+ }
 }
