@@ -1,0 +1,19 @@
+--- app.js.r6orig	2026-11-20 07:44:15.218017177 +0000
++++ dist/app.js	2026-11-20 07:16:12.999230938 +0000
+@@ -126,6 +126,7 @@
+     if (o.isBone) bones[o.name] = o;
+     if (o.isSkinnedMesh) { skinned.push(o); o.frustumCulled = false; }
+   });
++  const pantsMesh = skinned.find(o => o.material && o.material.name === 'pants'); // r7 裆部校正用
+   // 1) 修正枢轴：移动骨骼并补偿绑定逆矩阵，使静止网格不变
+   if (!MODEL) for (const [id, p] of Object.entries(PIVOT_FIX)) {
+     const b = bones[id]; if (!b) continue;
+@@ -141,6 +142,8 @@
+   for (const b of Object.values(bones)) b.quaternion.identity(); // 静止姿势局部旋转均为单位
+   let toon = null;
+   if (TOON) { try { const { applyToon } = await import((new URLSearchParams(location.search).get('model') === 'v3r3') ? './toon-r5.js' : './toon.js'); toon = applyToon({ scene, root, bones, skinned, grid, floor, renderer, camera }); if (toon.hairReady) { try { await toon.hairReady; } catch (e) { console.error('hair failed', e); } } window.__toonInfo = { counts: toon.counts, prims: toon.prims, faceFix: toon.faceFix, face: toon.face, outlines: toon.outlines, hair: toon.hair, outfit: toon.outfit, hairInfo: toon.hairInfo, toonN: toon.toonN }; } catch (e) { console.error('toon skin failed', e); } }
++  // Air Flare r7（仅 b2000 预览）：张腿时裆部绷平校正；静止/小角度为 0；?cf=0 关闭
++  if (MODEL === 'v3r3' && pantsMesh && new URLSearchParams(location.search).get('cf') !== '0') { try { const { applyCrotchFix } = await import('./crotchfix.js'); window.__crotchFix = applyCrotchFix({ scene, mesh: pantsMesh }); } catch (e) { console.error('crotchfix failed', e); } }
+   pelvisRest.copy(bones.pelvis.position);
+   for (const j of JOINTS) {
+     j.restQ = bones[j.id].quaternion.clone();
