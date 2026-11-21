@@ -198,3 +198,106 @@ QA 孤立分支 `qa/legacy-fix-r1-b2`。任务卡 `tools/legacy-fix-r1/SAMPLE-CA
 
 ## 第 2 批补充：adductors-A 样片卡（2026-11-21）
 - hark-sk 要求 adductors-A（lfx1，921c1b3）随裆部修复单独出样片。新增 `tools/legacy-fix-r1/produce-b2a.mjs`（由 produce-b2.mjs 复制，计划只有 adductors-A，RENDER 仍为 5ada6bc，母帧 render-masters-v5-cf1 --crotchfix on，QA 孤立分支 qa/legacy-fix-r1-b2a，默认输出 F:/PoseHub-v3/runs/2026-11-21_legacy-fix-r1-b2a-adductors-crotchfix_5ada6bc）与任务卡 `SAMPLE-CARD-b2a-draft.md`。不改任何渲染内容。
+
+## 第 3 批（2026-11-21，Hark-QUA）· o-supported-march / n-squat-shift / 裆部验收扩到 52 个
+
+先 `git merge origin/codex/legacy-audit-r1 @6ac5b21`（终版审计 REPORT.md / FINDINGS-LIVE / review.json / findings.json，只动 `tools/legacy-audit-r1/`，无冲突，合并提交 1be4c29）。
+审计：`tools/legacy-fix-r1/audit-cf1.mjs --crotchfix on`（stride 10）+ `tools/legacy-audit-r1/analyze.py`；修前修后同一工具、同一开关。
+
+| # | id | 判断 | 修法 | S1 修前→修后 | S2 修前→修后 | 关键数值 修前 → 修后 |
+|---|---|---|---|---|---|---|
+| 1 | o-supported-march | **误报**（不修） | — | 1→1（仅误报那条） | 0→0 | 右膝 f20–110、左膝 f140–230 交替抬起，高度镜像（膝 108°、脚离地 113.9 mm、大腿离竖直 49°）；text-no-switch 因左手全程扶椅、上身不对称而误判（见 false-positive.md） |
+| 2 | n-squat-shift | 属实 | 负重侧膝 pole 按负重混到沿脚尖 +6° 的世界远点 + 大腿/小腿拧转 30°/15° | 6→2（剩下 2 条 = REPORT 已判误报的伸直侧腿 knee-valgus / knee-inside-foot） | 2→0 | 负重膝（峰值 f50–90）：髌骨 vs 屈膝 -74° → -25°；铰链偏离 64° → 28°；小腿拧转 -52° → -30°；膝 vs 脚尖 +17° → +4°；膝在脚长轴 外 5.2 cm → 内 2.1 cm；全程最坏（含过渡帧）thighFace -35°、shinFace -44°、kneeAxisDev 40°（阈 45/45/42）；裆部（cf on）15.5 → 16.4 mm |
+
+### 1 o-supported-march 扶椅站姿交替抬膝 —— 误报
+- 详见 `tools/legacy-fix-r1/false-positive.md`。原配方 / spec / 文字未动；样片卡仍按原配方出一条，供审片直接看换边。
+- 现在长什么样（原片）：左手扶椅背、右臂自然下垂，身体直立；前 4 s 右膝慢抬到大腿前倾约 49° 停住再放下，后 4 s 左膝同样抬放；与文案「两条腿轮流慢慢抬膝 / 左膝一次右膝一次记 1 下」一致。
+
+### 2 n-squat-shift 低位蹲姿左右移重心
+- 新文件：`drill-anim/specs/n-squat-shift-lfx1.js`（运动代码从 `n-squat-shift.js` 原样复制 + `n-squat-shift-r2.js` 的 V2plus 外壳；两个原文件未改）、recipe `catalog/production/legacy-fix-r1/recipes/n-squat-shift.json`（由 remaining219-r1 recipe 复制，只换 spec/sha，加 legacyFixR1 记录）。
+- 看图确认：重心挪到一侧（f30–100 左、f150–220 右）时，负重膝向外弓出、超出脚外 5 cm，髌骨朝内、小腿拧着，和 h-squat 同型。属实。
+  原因：膝 pole 是髋坐标里的点 [±(0.95..1.10), 0.5, 0.85]，骨盆前倾 24–28° 并随移重心侧倾，把这个点带向下外，IK 把负重膝拧向外。
+- 改动（只动负重侧，权重 = 该侧负重 0..1，中位蹲和伸直侧腿权重 0、与原片逐值相同）：
+  1. 膝 pole 从原值混到「脚尖方向 +6°、2 m 外」的世界点（换算回髋坐标）。只用脚尖方向（试 a1/a2）时膝 vs 脚尖 -1.8°，但膝落在脚长轴内侧 5.7–6.1 cm（>4 cm）；外偏 6° 后膝在第 2–3 脚趾上方（内侧 2.1 cm、膝 vs 脚尖 +4°）。
+  2. 大腿拧转 30°、小腿拧转 15°（引擎 thighTwist / kneeTwist，与 adductors-A-lfx1 同约定）：hub 腿 IK 不随 pole 转大腿，只换 pole 时（a1）髌骨仍偏 45°（S2）。
+  脚位、外八 36°、站距、骨盆路径、深度、躯干、手、8 s 节奏（先左后右）、镜头、垫子均未动。轨道比对：与 r2 相比只有两侧 poleLow 三个轨道和新增的 4 个拧转轨道不同。
+- 伸直侧腿的 knee-valgus（-35°）/ knee-inside-foot（-33 cm）是 REPORT 已判的误报，按派单未动，数值修前修后相同。
+- 备注（未改，供复核）：中位蹲（f0/f120，两膝都屈约 105°）两膝 vs 脚尖 -14.9°（阈 15° 内）、膝在脚长轴内侧 18.6 cm、小腿拧转 -41.9°，都是原片数值、没有越阈的单项（knee-inside-foot 那条 S1 的帧里含这两帧，但它整体已判误报）；派单范围是「移重心时屈膝侧」，所以中位没动。若 hark-sk 认为中位也要膝对脚尖，可同法把权重下限设成中位也生效，另开一轮。
+- 现在长什么样：宽站低蹲、双手胸前合十；重心挪到哪边，那边膝盖就弯在脚尖正上方、朝第 2–3 脚趾，正面看小腿接近竖直，不再向外弓出也不内倒；另一条腿和原片一样外展伸长；左右镜像。
+- Flare 风格自检 check.mjs：本批未跑（沙箱需临时副本，见第 1 批说明）；姿态全由连续曲线插值，无逐帧求解切换，脚位/骨盆未动所以穿地与接触同原片。
+- 对比图：沙箱 `/workspace/work/legacy-fix/b3/n-squat-shift_cmp.jpg`（修前/修后 f60、f180 × 正/侧/顶/背/裆部特写/产品镜头）。
+
+### 3 裆部验收扩到 REPORT「模型级裆部严重级」52 个
+- 跑法：`audit-cf1.mjs --crotchfix on --stride 10`（不出图，省时间）+ analyze.py；名单 = REPORT「模型级裆部严重级动作（52 个）」，recipe 按 `tools/v5/v5-actions.json`（线上当前 recipe，未用 lfx1）。
+  其中 15 个已在第 2 批验收集里用**同一 recipe、同一 crotchfix 代码（5ada6bc 起未改）、同一开关**跑过（`b2 accq 复用`），直接取数；其余 37 个本批实测。
+- 修前 = REPORT 审计已有值（findings.json 的 crotch-bulge 证据，原版渲染、无修复），未补跑。
+- 结果：**50/52 < 28 mm**；最坏 52 个中位约 17 mm。**不达标 2 个**（≥28 mm，均为坐姿大分腿/蝴蝶坐，鼓包点在会阴后下方、坐地接触处）：
+
+| # | id | 修前 mm（REPORT/审计，off） | 修后 mm（cf on，最坏帧） | 来源 | 修后 S1/S2（全部检查） |
+|---|---|---|---|---|---|
+| 1 | t-lsit-vsit-circles | 73.0 | 26.6 (f210) | b3 实测 | 0/0 |
+| 2 | s-butterfly | 70.4 | 28.9 (f110) | b3 实测 | 2/1 |
+| 3 | t-seated-straddle-ext | 69.8 | 35.2 (f220) | b3 实测 | 1/0 |
+| 4 | o-seated-fig4 | 68.4 | 22.7 (f120) | b3 实测 | 0/1 |
+| 5 | s-figure4 | 67.0 | 21.4 (f150) | b3 实测 | 0/2 |
+| 6 | n-seated-ir-drop | 58.7 | 20.5 (f130) | b3 实测 | 4/0 |
+| 7 | t-lsit-tuck | 57.1 | 21.5 (f230) | b3 实测 | 0/0 |
+| 8 | n-thomas-test | 50.9 | 13.8 (f210) | b3 实测 | 0/0 |
+| 9 | h-chair-dip | 49.7 | 20.0 (f190) | b2 accq 复用 | 0/1 |
+| 10 | h-bulgarian | 49.6 | 11.5 (f190) | b2 accq 复用 | 0/0 |
+| 11 | h-seated-reachback | 48.9 | 19.8 (f160) | b3 实测 | 0/2 |
+| 12 | h-chair-progressive-front-split-native | 46.8 | 14.2 (f230) | b2 accq 复用 | 0/1 |
+| 13 | obliques-A | 46.6 | 17.8 (f230) | b3 实测 | 0/2 |
+| 14 | hip-abductors-B | 46.2 | 18.5 (f230) | b3 实测 | 0/0 |
+| 15 | s-pigeon | 45.2 | 24.0 (f230) | b3 实测 | 9/2 |
+| 16 | deltoids-C | 45.1 | 11.6 (f230) | b2 accq 复用 | 0/1 |
+| 17 | h-couch-stretch | 44.0 | 12.9 (f230) | b2 accq 复用 | 0/2 |
+| 18 | h-half-kneeling-quad-stretch | 43.5 | 11.7 (f230) | b3 实测 | 0/1 |
+| 19 | h-kb-swing | 43.4 | 18.2 (f160) | b3 实测 | 0/0 |
+| 20 | h-wall-straddle | 43.4 | 18.2 (f230) | b3 实测 | 2/4 |
+| 21 | s-9090 | 43.1 | 19.1 (f120) | b2 accq 复用 | 2/2 |
+| 22 | h-quad-cars | 43.0 | 17.4 (f200) | b3 实测 | 1/2 |
+| 23 | s-kneel-hipflex | 42.8 | 11.7 (f130) | b3 实测 | 0/2 |
+| 24 | hamstrings-A | 41.6 | 10.9 (f190) | b3 实测 | 0/1 |
+| 25 | w-bird-dog | 41.0 | 15.6 (f130) | b3 实测 | 0/0 |
+| 26 | w-fire-hydrant | 41.0 | 15.7 (f220) | b3 实测 | 0/2 |
+| 27 | n-half-split | 40.2 | 22.8 (f140) | b3 实测 | 5/1 |
+| 28 | w-wall-sit | 39.9 | 16.9 (f190) | b3 实测 | 0/0 |
+| 29 | h-chair-step-up | 39.5 | 15.3 (f210) | b2 accq 复用 | 0/0 |
+| 30 | h-mountain-climber | 38.5 | 11.8 (f180) | b3 实测 | 0/0 |
+| 31 | s-frog | 38.5 | 18.3 (f170) | b3 实测 | 0/4 |
+| 32 | w-dead-bug | 38.4 | 15.5 (f230) | b3 实测 | 0/0 |
+| 33 | h-russian-twist | 37.9 | 17.3 (f220) | b3 实测 | 4/0 |
+| 34 | t-seated-straddle-lifts | 37.9 | 19.7 (f230) | b3 实测 | 0/0 |
+| 35 | h-sumo-pry | 37.8 | 17.3 (f210) | b3 实测 | 1/5 |
+| 36 | n-straddle-fold | 37.8 | 20.6 (f150) | b3 实测 | 10/4 |
+| 37 | h-reverse-lunge | 37.7 | 11.7 (f70) | b3 实测 | 0/1 |
+| 38 | h-squat | 37.7 | 16.5 (f200) | b2 accq 复用 | 5/0 |
+| 39 | h-adductor-rock | 37.5 | 15.0 (f200) | b2 accq 复用 | 0/0 |
+| 40 | hip-flexors-B | 37.5 | 10.5 (f140) | b3 实测 | 0/0 |
+| 41 | h-9090-liftoff | 37.2 | 17.2 (f210) | b2 accq 复用 | 2/1 |
+| 42 | t-straddle-hold | 36.8 | 21.3 (f230) | b3 实测 | 0/0 |
+| 43 | h-goblet-squat | 36.7 | 16.6 (f190) | b2 accq 复用 | 0/0 |
+| 44 | h-donkey-kick | 36.6 | 14.0 (f230) | b2 accq 复用 | 0/0 |
+| 45 | n-chair-wiper | 36.6 | 15.6 (f210) | b3 实测 | 2/0 |
+| 46 | h-band-leg-out | 36.3 | 11.3 (f210) | b2 accq 复用 | 2/2 |
+| 47 | hip-abductors-C | 36.3 | 15.4 (f230) | b3 实测 | 0/0 |
+| 48 | h-db-row | 35.6 | 15.0 (f230) | b2 accq 复用 | 0/0 |
+| 49 | n-wide-fold | 33.9 | 18.2 (f140) | b3 实测 | 0/0 |
+| 50 | n-squat-shift | 33.8 | 15.5 (f100) | b3 实测 | 6/2 |
+| 51 | glute-max-B | 33.0 | 11.7 (f190) | b2 accq 复用 | 0/0 |
+| 52 | n-leg-circles | 32.3 | 14.1 (f190) | b3 实测 | 0/0 |
+
+不达标 2 个（看裆部特写判断，**未改方案**，交 hark-sk 定）：
+- **t-seated-straddle-ext 35.2 mm（f220，修前 69.8）**：坐地大分腿、双手撑在身前。鼓包点在会阴后下方（骨盆系 z -0.12 m）、坐地接触处。
+  特写（f220，正面低位 / 背后 / 侧后 / 裆部）：修复前裆中线向下拖出尖楔、前后都有锯齿状 V 形；修复后变成一个平滑的圆鼓（正面低位可见一小团圆弧，背后/侧后是顺滑弧线），无尖角、无凹陷、无穿模。产品镜头里裆部在双臂之间、比例很小。
+- **s-butterfly 28.9 mm（f110，修前 70.4；analyze 判 S2「幅度较小或两腿并拢遮挡」）**：蝴蝶坐，两脚掌并拢放在裆前。鼓包点同在会阴后下方坐地处。
+  特写：正面被两只鞋完全挡住；背后/侧后看坐面轮廓顺滑，修复前后肉眼几乎无差别，看不出鼓包。
+- 两个都是「坐姿 + 髋大外展 + 会阴后部压地」，当前补丁（R0.18 权重平滑）对坐地接触面后侧覆盖不足，属同一类残差。可选：扩大补丁后缘 / 加坐姿修正形状键 / 接受（视觉上已无尖角）。按派单不擅自改。
+- 裆部特写拼图：沙箱 `/workspace/work/legacy-fix/b3/crotch_fail_cu.jpg`；52 个数值表原件 `/workspace/work/legacy-fix/b3/crotch52_table.md`。
+- 修后 S1/S2 一列是该动作全部检查的条目数（裆部之外的条目都是修前就有的动作级问题，不是本批引入）；52 个里除上面 2 个外，**没有 crotch-bulge 条目**。
+
+### 样片
+- 脚本 `tools/legacy-fix-r1/produce-b3.mjs`（照 produce-b2.mjs）：计划 o-supported-march（原配方，误报复核）→ n-squat-shift（lfx1），母帧 `render-masters-v5-cf1 --crotchfix on`，
+  RENDER = 991cbf6（修复提交），BASE = 6ac5b21（终版审计），QA 孤立分支 `qa/legacy-fix-r1-b3`，默认输出 `F:/PoseHub-v3/runs/2026-11-21_legacy-fix-r1-b3_991cbf6`。
+- 任务卡草稿 `tools/legacy-fix-r1/SAMPLE-CARD-b3-draft.md`。
