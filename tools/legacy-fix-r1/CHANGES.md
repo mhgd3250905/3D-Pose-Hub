@@ -469,3 +469,29 @@ r1 的求解方法和数值一个不改；在它之上只加**一次局部后缘
 - 脚本 `tools/legacy-fix-r1/produce-b5.mjs`（照 produce-b4.mjs）：计划 s-butterfly → h-db-shrug → h-db-overhead-shrug → h-sumo-pry → h-lateral-step-lunge（全部 lfx1 配方），
   母帧 `render-masters-v5-cf2 --crotchfix r2`，RENDER = 7c28fb7（第 5 批修复提交），BASE = 6ac5b21，QA 孤立分支 `qa/legacy-fix-r1-b5`，
   默认输出 `F:/PoseHub-v3/runs/2026-11-21_legacy-fix-r1-b5_7c28fb7`。任务卡草稿 `tools/legacy-fix-r1/SAMPLE-CARD-b5-draft.md`。
+
+## 第 5b 批（2026-11-22，Hark-QUA）· 肩胛平移手固定 + 支撑脚随髋 + 单腿站重心 + 腕中立
+
+分诊见 `TRIAGE-b5.md`（b5-3、b5-4、腕背伸筛查）。验收 `audit-cf2` 同口径（沙箱网格审计，stride 10）+ `tools/legacy-audit-r1/analyze.py`。修复提交 026a351。
+
+| id | 新 spec / 配方 | 关键数值 修前 → lfx1 | analyze S1/S2 |
+|---|---|---|---|
+| serratus-A 俯卧撑加强 | `serratus-A-lfx1.js`（基于 r2，打开 `v5.scapulaShift`） | 手随肩胛沉入垫子 22–28 mm / 抬离 18–31 mm → 手离垫最低 **1.2 / 2.1 mm**，全程贴垫 | **无** |
+| obliques-A 野兽踢穿 | `obliques-A-lfx1.js`（基于 r2） | 支撑脚绕前脚掌随髋转；rom-footVsKnee −89° → **−35°** | 修前 S1 → **无** |
+| h-side-leg-raise 站姿侧抬腿 | `h-side-leg-raise-lfx1.js`（基于 r5，第 2 轮） | 抬腿前重心移到左脚：骨盆横移 **9 cm**（x 4.0→13.0 cm），com 在站立脚外 4.5–5.6 cm → **脚内 2.9 cm** | 修前 com-outside-support → **无** |
+| hamstrings-A 单腿 RDL | `hamstrings-A-lfx1.js`（基于 r3） | 骨盆移向站立脚：com 在站立脚外 3.3–4.5 cm → **脚内 1.5 cm** | 修前 com-outside-support → **无** |
+| o-stand-quad 站姿拉股四头 | `o-stand-quad-lfx1.js`（基于 r1，第 2 轮） | 右手腕背伸 139–150°、偏 54–84° → **约 8°、不偏**（平掌扶在脚踝外侧，指朝下） | **无** |
+| erectors-B 瑞士球背伸 | `erectors-B-lfx1.js`（基于 r3） | 双腕背伸 103–106°、偏 47–48° → **约 15°、不偏**（平掌贴头侧，指尖朝太阳穴） | **无** |
+
+### h-side-leg-raise 骨盆横移 9 cm（hark-sk 2026-11-22 00:09 认可，条件已测）
+- 条件 ① 躯干侧倾 ≤10°：全程 **0.0°**（骨盆→颈连线在正面内竖直），骨盆左右水平 0.0°。
+- 条件 ② 支撑腿膝不内扣：左膝相对髋-踝连线 **±0.1 mm**（全程），支撑腿内收 7.4°（髋在脚外、脚在身体中线下，单腿站正常对线）。
+- 正面特写（沙箱）：`/workspace/work/legacy-fix/b5b/h-side-leg-raise_front_cu.jpg`；对比图 `/workspace/work/legacy-fix/b5b/<id>_cmp.jpg`。
+
+### 移出本批
+- o-seated-twist（改按腕点定位）、deltoids-C（改握法几何 + hubGraspHands 拳握把）：hark-sk 00:09 定为下一张卡单独做，不挡本批。
+
+### 第 5b 批样片
+- 脚本 `tools/legacy-fix-r1/produce-b5b.mjs`（照 produce-b5.mjs）：计划 serratus-A → obliques-A → h-side-leg-raise → hamstrings-A → o-stand-quad → erectors-B（全部 lfx1），
+  母帧 `render-masters-v5-cf2 --crotchfix r2`，RENDER = 026a351，BASE = 6ac5b21，QA 孤立分支 `qa/legacy-fix-r1-b5b`，
+  默认输出 `F:/PoseHub-v3/runs/2026-11-22_legacy-fix-r1-b5b_026a351`。任务卡草稿 `tools/legacy-fix-r1/SAMPLE-CARD-b5b-draft.md`。

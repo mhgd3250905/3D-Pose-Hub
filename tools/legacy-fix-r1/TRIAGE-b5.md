@@ -140,3 +140,7 @@ n-wide-fold −29°、h-band-pallof / obliques-B −29° 偏斜在 15–30° 之
 合计 82 个：**真 4**（o-seated-twist、o-stand-quad、deltoids-C、erectors-B）、已修 1（s-butterfly）、出图后误报 12、按口径正常 65。
 真问题修法建议（下一批）：4 个都是手的 palm normal / finger 方向跟前臂不一致（手被硬拧到目标朝向），改成 finger 沿前臂、normal 只在 ±30° 内微调，
 接触类（o-stand-quad 抓脚、erectors-B 抱头）按 s-butterfly lfx1 的做法把手放到可达且腕近中立的位置。
+
+## 第 5b 批处理结果（2026-11-22）
+- 已修（026a351）：serratus-A、obliques-A、h-side-leg-raise、hamstrings-A（b5-3/b5-4），o-stand-quad、erectors-B（腕背伸真 4 中的 2 个）。详见 `CHANGES.md` 第 5b 批。
+- 留给下一张卡：o-seated-twist（改按腕点定位）、deltoids-C（改握法几何 + hubGraspHands 拳握把），hark-sk 2026-11-22 00:09 定。
